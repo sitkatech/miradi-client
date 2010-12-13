@@ -20,9 +20,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 import javax.swing.Icon;
 import javax.swing.JComponent;
 
+import org.martus.swing.Utilities;
+import org.miradi.dialogs.base.DisposablePanel;
+import org.miradi.dialogs.base.ModalDialogWithClose;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
@@ -30,6 +36,7 @@ import org.miradi.objecthelpers.StringChoiceMap;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.utils.Translation;
 
 public class ReadonlyClickableIconField extends ObjectDataInputField
 {
@@ -39,6 +46,7 @@ public class ReadonlyClickableIconField extends ObjectDataInputField
 		
 		stringMapCode = stringMapCodeToUse;
 		iconComponent = new PanelTitleLabel();
+		iconComponent.addMouseListener(new ClickHandler());
 		question = questionToUse;
 	}
 	
@@ -76,6 +84,30 @@ public class ReadonlyClickableIconField extends ObjectDataInputField
 	public String getText()
 	{
 		return "";
+	}
+	
+	private class ClickHandler extends MouseAdapter
+	{
+		@Override
+		public void mouseClicked(MouseEvent mouseEvent)
+		{
+			super.mouseClicked(mouseEvent);
+			
+			try
+			{
+				DisposablePanel editorPanel = new DisposablePanel();
+				ModalDialogWithClose dialog = new ModalDialogWithClose(EAM.getMainWindow(), Translation.fieldLabel(getObjectType(), getTag()));
+				dialog.setScrollableMainPanel(editorPanel);
+				dialog.becomeActive();
+				Utilities.centerDlg(dialog);
+				dialog.setVisible(true);
+			}
+			catch (Exception e)
+			{
+				EAM.logException(e);
+				EAM.unexpectedErrorDialog(e);
+			}
+		}
 	}
 
 	private PanelTitleLabel iconComponent;
