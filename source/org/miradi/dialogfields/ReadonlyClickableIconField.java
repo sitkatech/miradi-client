@@ -29,6 +29,7 @@ import javax.swing.JComponent;
 import org.martus.swing.Utilities;
 import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.base.ModalDialogWithClose;
+import org.miradi.dialogs.dashboard.OpenStandardsProgessPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
@@ -49,7 +50,7 @@ public class ReadonlyClickableIconField extends ObjectDataInputField
 		iconComponent.addMouseListener(new ClickHandler());
 		question = questionToUse;
 	}
-	
+
 	@Override
 	public void setText(String stringCodeMapAsString)
 	{
@@ -95,7 +96,8 @@ public class ReadonlyClickableIconField extends ObjectDataInputField
 			
 			try
 			{
-				DisposablePanel editorPanel = new DisposablePanel();
+				ORef oRef = getORef();
+				DisposablePanel editorPanel = new OpenStandardsProgessPanel(getProject(), oRef, stringMapCode);
 				ModalDialogWithClose dialog = new ModalDialogWithClose(EAM.getMainWindow(), Translation.fieldLabel(getObjectType(), getTag()));
 				dialog.setScrollableMainPanel(editorPanel);
 				dialog.becomeActive();

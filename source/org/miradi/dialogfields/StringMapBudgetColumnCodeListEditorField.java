@@ -52,7 +52,7 @@ public class StringMapBudgetColumnCodeListEditorField extends AbstractChoiceItem
 		}
 	}
 
-	private String getStringMapAsString() throws Exception
+	protected String getStringMapAsString() throws Exception
 	{
 		StringMap existingMap = new StringMap(getProject().getObjectData(getORef(), getTag()));
 		existingMap.add(TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY, getComponentText());
@@ -67,7 +67,7 @@ public class StringMapBudgetColumnCodeListEditorField extends AbstractChoiceItem
 		super.setText(codes.toString());
 	}
 
-	private CodeList createCodeListFromString(String StringMapAsString)
+	protected CodeList createCodeListFromString(String StringMapAsString)
 	{
 		try
 		{
