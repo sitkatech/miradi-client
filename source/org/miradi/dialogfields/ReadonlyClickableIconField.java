@@ -99,7 +99,7 @@ public class ReadonlyClickableIconField extends ObjectDataInputField
 				ORef oRef = getORef();
 				DisposablePanel editorPanel = new OpenStandardsProgessPanel(getProject(), oRef, stringMapCode);
 				ModalDialogWithClose dialog = new ModalDialogWithClose(EAM.getMainWindow(), Translation.fieldLabel(getObjectType(), getTag()));
-				dialog.setScrollableMainPanel(editorPanel);
+				dialog.setMainPanel(editorPanel);
 				dialog.becomeActive();
 				Utilities.centerDlg(dialog);
 				dialog.setVisible(true);
