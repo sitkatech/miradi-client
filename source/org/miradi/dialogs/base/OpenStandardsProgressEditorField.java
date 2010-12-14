@@ -44,7 +44,7 @@ public class OpenStandardsProgressEditorField extends StringMapBudgetColumnCodeL
 	@Override
 	protected QuestionBasedEditorComponent createCodeListEditor(ChoiceQuestion questionToUse, int columnCount)
 	{
-		RadioButtonEditorComponent editorComponent = new RadioButtonEditorComponent(questionToUse);
+		RadioButtonEditorComponent editorComponent = new SingleItemCodeListRadioButtonEditorComponent(questionToUse);
 		editorComponent.addListSelectionListener(this);
 		
 		return editorComponent;
@@ -62,23 +62,43 @@ public class OpenStandardsProgressEditorField extends StringMapBudgetColumnCodeL
 	}
 
 	@Override
-	protected CodeList createCodeListFromString(String mapAsString)
+	public void setText(String stringMapAsString)
 	{
 		try
 		{
-			StringChoiceMap stringChoiceMap = new StringChoiceMap(mapAsString);
+			StringChoiceMap stringChoiceMap = new StringChoiceMap(stringMapAsString);
 			String code = stringChoiceMap.get(mapCode);
-			CodeList singleItemCodeList = new CodeList(code);
-			
-			return singleItemCodeList;
+			codeListEditor.setText(code);
 		}
 		catch(ParseException e)
 		{
 			EAM.unexpectedErrorDialog(e);
 			EAM.logException(e);
-			return new CodeList();
 		}
 	}
 	
+	private class SingleItemCodeListRadioButtonEditorComponent extends RadioButtonEditorComponent
+	{
+		public SingleItemCodeListRadioButtonEditorComponent(ChoiceQuestion questionToUse)
+		{
+			super(questionToUse);
+		}
+		
+		@Override
+		public void setText(String codesToUse)
+		{
+			try
+			{
+				CodeList codeList = new CodeList(codesToUse);
+				updateToggleButtonSelections(codeList);
+			}
+			catch(ParseException e)
+			{
+				EAM.logException(e);
+				EAM.unexpectedErrorDialog(e);
+			}
+		}
+	}
+
 	private String mapCode;
 }
