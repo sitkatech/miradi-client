@@ -52,7 +52,7 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 {
 	public AbstractOpenStandardsQuestionPanel(Project projectToUse, DynamicChoiceWithRootChoiceItem questionToUse) throws Exception
 	{
-		super(projectToUse, ORef.createInvalidWithType(Dashboard.getObjectType()));
+		super(projectToUse, getDashboard(projectToUse).getRef());
 		
 		setLayout(createLayoutManager());
 		question = questionToUse;
@@ -60,6 +60,8 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		
 		final int FIRST_LEVEL_INDENT_COUNT = 0;
 		addRows(question.getHeaderChoiceItem(), FIRST_LEVEL_INDENT_COUNT);
+		
+		updateFieldsFromProject();
 	}
 
 	private GridLayoutPlus createLayoutManager()
@@ -210,8 +212,13 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 	
 	private Dashboard getDashboard()
 	{
-		ORef dashboardRef = getProject().getSingletonObjectRef(Dashboard.getObjectType());
-		return Dashboard.find(getProject(), dashboardRef);
+		return getDashboard(getProject());
+	}
+	
+	private static Dashboard getDashboard(Project projectToUse)
+	{
+		ORef dashboardRef = projectToUse.getSingletonObjectRef(Dashboard.getObjectType());
+		return Dashboard.find(projectToUse, dashboardRef);
 	}
 	
 	protected DashboardRowDefinitionManager getDashboardRowDefinitionManager()

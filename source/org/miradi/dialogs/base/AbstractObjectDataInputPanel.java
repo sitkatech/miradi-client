@@ -41,6 +41,7 @@ import javax.swing.event.ListSelectionListener;
 
 import org.martus.swing.UiLabel;
 import org.miradi.commands.CommandDeleteObject;
+import org.miradi.dialogfields.AnalysisLevelsChooserField;
 import org.miradi.dialogfields.CodeListPopupWithDescriptionPanelField;
 import org.miradi.dialogfields.EditableCodeListField;
 import org.miradi.dialogfields.IndicatorRelevancyOverrideListField;
@@ -68,7 +69,6 @@ import org.miradi.dialogfields.ObjectStringMapInputField;
 import org.miradi.dialogfields.PopupQuestionEditorField;
 import org.miradi.dialogfields.RadioButtonsField;
 import org.miradi.dialogfields.ReadOnlyCodeListField;
-import org.miradi.dialogfields.AnalysisLevelsChooserField;
 import org.miradi.dialogfields.StringMapBudgetColumnCodeListEditorField;
 import org.miradi.dialogfields.StringMapProjectResourceFilterEditorField;
 import org.miradi.dialogs.fieldComponents.PanelFieldLabel;
@@ -635,6 +635,11 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	public RadioButtonsField createRadioButtonsField(int objectType, String tagToUse, ChoiceQuestion question)
 	{
 		return new RadioButtonsField(project, objectType, getObjectIdForType(objectType), tagToUse, question);
+	}
+	
+	public ObjectDataInputField createProgressEditorField(ORef refToUse, String tagToUse, Class questionClassToUse, String mapCodeToUse) throws Exception
+	{
+		return new OpenStandardsProgressEditorField(getProject(), refToUse, tagToUse, getProject().getQuestion(questionClassToUse), mapCodeToUse);
 	}
 	
 	public PopupQuestionEditorField createPopupQuestionEditor(JDialog parentDialog, int objectType, String tagToUse, Class questionClass) throws Exception
