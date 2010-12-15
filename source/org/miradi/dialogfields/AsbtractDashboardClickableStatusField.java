@@ -51,7 +51,6 @@ abstract public class AsbtractDashboardClickableStatusField extends ObjectDataIn
 		iconComponent.addMouseListener(new ClickHandler());
 	}
 	
-
 	@Override
 	public void setText(String stringCodeMapAsString)
 	{

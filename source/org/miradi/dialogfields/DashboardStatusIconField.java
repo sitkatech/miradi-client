@@ -34,7 +34,8 @@ public class DashboardStatusIconField extends AsbtractDashboardClickableStatusFi
 	{
 		super(projectToUse, refToUse, tagToUse, stringMapCodeToUse, questionToUse);
 	}
-
+	
+	@Override
 	protected void updateLabel(ChoiceItem progressChoiceItem, PanelTitleLabel componentToUpdate)
 	{
 		Icon icon = progressChoiceItem.getIcon();
