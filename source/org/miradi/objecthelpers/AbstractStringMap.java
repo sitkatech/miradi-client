@@ -102,6 +102,11 @@ abstract public class AbstractStringMap
 
 	public void add(String code, String object)
 	{
+		put(code, object);
+	}
+	
+	public void put(String code, String object)
+	{
 		data.put(code, object);
 	}
 
