@@ -44,9 +44,7 @@ public class DashboardProgressEditorField extends StringMapBudgetColumnCodeListE
 	@Override
 	protected QuestionBasedEditorComponent createCodeListEditor(ChoiceQuestion questionToUse, int columnCount)
 	{
-		RadioButtonEditorComponent editorComponent = new SingleItemCodeListRadioButtonEditorComponent(questionToUse);
-		
-		return editorComponent;
+		return new SingleItemCodeListRadioButtonEditorComponent(questionToUse);
 	}
 	
 	@Override
