@@ -20,8 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields;
 
+import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
+import org.miradi.questions.ChoiceItem;
 
 
 abstract public class AsbtractDashboardClickableStatusField extends ObjectDataInputField
@@ -30,4 +32,6 @@ abstract public class AsbtractDashboardClickableStatusField extends ObjectDataIn
 	{
 		super(projectToUse, refToUse, tagToUse);
 	}
+	
+	abstract protected void updateLabel(ChoiceItem progressChoiceItem, PanelTitleLabel componentToUpdate);
 }
