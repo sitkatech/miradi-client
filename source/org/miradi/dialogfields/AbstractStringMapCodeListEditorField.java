@@ -46,6 +46,9 @@ abstract public class AbstractStringMapCodeListEditorField extends AbstractChoic
 			return "";
 		}
 	}
+	
+	@Override
+	abstract public void setText(String stringMapAsString);
 
 	abstract protected String getStringMapAsString() throws Exception;
 }
