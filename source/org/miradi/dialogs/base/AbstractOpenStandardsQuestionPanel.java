@@ -43,9 +43,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.DynamicChoiceWithRootChoiceItem;
-import org.miradi.questions.OpenStandardsProgressQuestion;
 import org.miradi.utils.FillerLabel;
 
 import com.jhlabs.awt.GridLayoutPlus;
@@ -133,12 +131,11 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 	private void addRowWithStatusIcon(String leftColumnText, String rightColumnText, HashMap<String, String> tokenReplacementMap, AbstractLongDescriptionProvider longDescriptionProvider, String code, int level) throws Exception
 	{
 		String rightColumnTranslatedText = EAM.substitute(rightColumnText, tokenReplacementMap);
-		ChoiceQuestion thisQuestion = getProject().getQuestion(OpenStandardsProgressQuestion.class);
-		ObjectDataInputField field = new DashboardStatusIconField(getProject(), getDashboard().getRef(), code, thisQuestion);
+		ObjectDataInputField field = new DashboardStatusIconField(getProject(), getDashboard().getRef(), code);
 		addFieldToList(field);
 		field.updateFromObject();
 		
-		ObjectDataInputField statusTextField = new DashboarStatusLabelField(getProject(), getDashboard().getRef(), code, thisQuestion);
+		ObjectDataInputField statusTextField = new DashboarStatusLabelField(getProject(), getDashboard().getRef(), code);
 		addFieldToList(statusTextField);
 		statusTextField.updateFromObject();
 		
