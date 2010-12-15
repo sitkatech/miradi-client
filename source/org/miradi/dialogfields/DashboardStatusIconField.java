@@ -43,7 +43,7 @@ public class DashboardStatusIconField extends AsbtractDashboardClickableStatusFi
 {
 	public DashboardStatusIconField(Project projectToUse, ORef refToUse,	String tagToUse, String stringMapCodeToUse, ChoiceQuestion questionToUse)
 	{
-		super(projectToUse, refToUse, tagToUse);
+		super(projectToUse, refToUse, tagToUse, stringMapCodeToUse, questionToUse);
 		
 		stringMapCode = stringMapCodeToUse;
 		iconComponent = new PanelTitleLabel();
