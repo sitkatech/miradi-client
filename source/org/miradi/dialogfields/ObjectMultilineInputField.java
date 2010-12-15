@@ -24,10 +24,16 @@ import javax.swing.text.JTextComponent;
 
 import org.miradi.ids.BaseId;
 import org.miradi.main.MainWindow;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.utils.MiradiTextPane;
 
 public abstract class ObjectMultilineInputField extends ObjectTextInputField
 {
+	protected ObjectMultilineInputField(MainWindow mainWindowToUse, ORef refToUse, String tagToUse, int initialVisibleRows, int columnsToUse) throws Exception
+	{
+		this(mainWindowToUse, refToUse.getObjectType(), refToUse.getObjectId(), tagToUse, initialVisibleRows, columnsToUse);
+	}
+	
 	protected ObjectMultilineInputField(MainWindow mainWindowToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, int initialVisibleRows, int columnsToUse) throws Exception
 	{
 		super(mainWindowToUse, objectTypeToUse, objectIdToUse, tagToUse, createTextComponent(mainWindowToUse, initialVisibleRows, columnsToUse));

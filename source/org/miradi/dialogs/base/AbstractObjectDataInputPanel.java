@@ -70,6 +70,7 @@ import org.miradi.dialogfields.PopupQuestionEditorField;
 import org.miradi.dialogfields.RadioButtonsField;
 import org.miradi.dialogfields.ReadOnlyCodeListField;
 import org.miradi.dialogfields.StringMapBudgetColumnCodeListEditorField;
+import org.miradi.dialogfields.StringMapMultiLineEditor;
 import org.miradi.dialogfields.StringMapProjectResourceFilterEditorField;
 import org.miradi.dialogs.fieldComponents.PanelFieldLabel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
@@ -421,9 +422,9 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return new ObjectStringMapInputField(getMainWindow(), objectType, getObjectIdForType(objectType), tag, code, length);
 	}
 	
-	public ObjectDataInputField createStringMapField(ORef refToUse, String tag, String code, int length)
+	public ObjectDataInputField createStringMapField(ORef refToUse, String tag, String code) throws Exception
 	{
-		return new ObjectStringMapInputField(getMainWindow(), refToUse, tag, code, length);
+		return new StringMapMultiLineEditor(getMainWindow(), refToUse, tag, code);
 	}
 	
 	public ObjectDataInputField createDateChooserField(String tag)
