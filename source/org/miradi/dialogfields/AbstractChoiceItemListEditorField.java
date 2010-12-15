@@ -56,9 +56,7 @@ abstract public class AbstractChoiceItemListEditorField extends ObjectDataInputF
 
 	protected QuestionBasedEditorComponent createCodeListEditor(ChoiceQuestion questionToUse, int columnCount)
 	{
-		QuestionBasedEditorComponent editorComponent = new QuestionBasedEditorComponent(questionToUse, columnCount);
-		
-		return editorComponent;
+		return new QuestionBasedEditorComponent(questionToUse, columnCount);
 	}
 
 	@Override
