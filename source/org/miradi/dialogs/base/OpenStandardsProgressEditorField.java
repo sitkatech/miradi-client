@@ -85,18 +85,27 @@ public class OpenStandardsProgressEditorField extends StringMapBudgetColumnCodeL
 		}
 		
 		@Override
-		public void setText(String codesToUse)
+		public String getText()
+		{
+			return extractSingleCode(super.getText());
+		}
+
+		private String extractSingleCode(String parentCodes)
 		{
 			try
 			{
-				CodeList codeList = new CodeList(codesToUse);
-				updateToggleButtonSelections(codeList);
+				
+				CodeList codes = new CodeList(parentCodes);
+				if (!codes.isEmpty())
+					return codes.firstElement();
 			}
 			catch(ParseException e)
 			{
 				EAM.logException(e);
 				EAM.unexpectedErrorDialog(e);
 			}
+			
+			return "";
 		}
 	}
 

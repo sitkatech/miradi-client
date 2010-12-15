@@ -252,7 +252,14 @@ public class Dashboard extends BaseObject
 		{
 			String thirdLevelCode = allThirdLevelCodes.get(index);
 			Vector<DashboardRowDefinition> rowDefinitions = getDashboardRowDefinitionManager().getRowDefinitions(thirdLevelCode);
-			map.add(thirdLevelCode, computeStatusCodeFromStatistics(rowDefinitions));
+			
+			if (userStatusChoiceMap.getStringChoiceMap().contains(thirdLevelCode))
+			{
+				String code = userStatusChoiceMap.getStringChoiceMap().get(thirdLevelCode);
+				map.add(thirdLevelCode, code);
+			}
+			else
+				map.add(thirdLevelCode, computeStatusCodeFromStatistics(rowDefinitions));
 		}
 		
 		return map;
