@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogfields;
 
 import org.miradi.ids.BaseId;
+import org.miradi.main.EAM;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 
@@ -30,4 +31,21 @@ abstract public class AbstractStringMapCodeListEditorField extends AbstractChoic
 	{
 		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, questionToUse, AbstractQuestionEditorComponent.SINGLE_COLUMN);
 	}
+	
+	@Override
+	public String getText()
+	{
+		try
+		{
+			return getStringMapAsString();
+		}
+		catch (Exception e)
+		{
+			EAM.unexpectedErrorDialog(e);
+			EAM.logException(e);
+			return "";
+		}
+	}
+
+	abstract protected String getStringMapAsString() throws Exception;
 }

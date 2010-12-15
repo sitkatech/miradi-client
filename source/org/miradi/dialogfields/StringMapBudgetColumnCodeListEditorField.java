@@ -38,20 +38,6 @@ public class StringMapBudgetColumnCodeListEditorField extends AbstractStringMapC
 	}
 
 	@Override
-	public String getText()
-	{
-		try
-		{
-			return getStringMapAsString();
-		}
-		catch (Exception e)
-		{
-			EAM.unexpectedErrorDialog(e);
-			EAM.logException(e);
-			return "";
-		}
-	}
-
 	protected String getStringMapAsString() throws Exception
 	{
 		StringMap existingMap = new StringMap(getProject().getObjectData(getORef(), getTag()));
