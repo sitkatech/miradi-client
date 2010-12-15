@@ -53,7 +53,7 @@ public class StringMapBudgetColumnCodeListEditorField extends AbstractStringMapC
 		super.setText(codes.toString());
 	}
 
-	protected CodeList createCodeListFromString(String StringMapAsString)
+	private CodeList createCodeListFromString(String StringMapAsString)
 	{
 		try
 		{
