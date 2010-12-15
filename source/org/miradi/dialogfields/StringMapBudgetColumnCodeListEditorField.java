@@ -55,7 +55,7 @@ public class StringMapBudgetColumnCodeListEditorField extends AbstractChoiceItem
 	protected String getStringMapAsString() throws Exception
 	{
 		StringMap existingMap = new StringMap(getProject().getObjectData(getORef(), getTag()));
-		existingMap.add(TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY, getComponentText());
+		existingMap.put(TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY, getComponentText());
 		
 		return existingMap.toString();
 	}

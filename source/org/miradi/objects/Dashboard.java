@@ -256,10 +256,10 @@ public class Dashboard extends BaseObject
 			if (userStatusChoiceMap.getStringChoiceMap().contains(thirdLevelCode))
 			{
 				String code = userStatusChoiceMap.getStringChoiceMap().get(thirdLevelCode);
-				map.add(thirdLevelCode, code);
+				map.put(thirdLevelCode, code);
 			}
 			else
-				map.add(thirdLevelCode, computeStatusCodeFromStatistics(rowDefinitions));
+				map.put(thirdLevelCode, computeStatusCodeFromStatistics(rowDefinitions));
 		}
 		
 		return map;

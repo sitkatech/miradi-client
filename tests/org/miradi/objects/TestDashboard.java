@@ -67,7 +67,7 @@ public class TestDashboard extends ObjectTestCase
 		StringChoiceMap emptyMap = new StringChoiceMap();
 		for (int index = 0; index < allThirdLEvelCodes.size(); ++index)
 		{
-			emptyMap.add(allThirdLEvelCodes.get(index), OpenStandardsProgressQuestion.NOT_SPECIFIED_CODE);
+			emptyMap.put(allThirdLEvelCodes.get(index), OpenStandardsProgressQuestion.NOT_SPECIFIED_CODE);
 		}
 		
 		return emptyMap;

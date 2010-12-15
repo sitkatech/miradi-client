@@ -56,7 +56,7 @@ public class OpenStandardsProgressEditorField extends StringMapBudgetColumnCodeL
 		Project project = getProject();
 		ORef oRef = getORef();
 		StringChoiceMap existingMap = new StringChoiceMap(project.getObjectData(oRef, getTag()));
-		existingMap.add(mapCode, getComponentText());
+		existingMap.put(mapCode, getComponentText());
 		
 		return existingMap.toString();
 	}

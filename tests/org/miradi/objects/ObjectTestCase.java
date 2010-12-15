@@ -233,13 +233,13 @@ public class ObjectTestCase extends TestCaseWithProject
 		else if(field instanceof StringMapData)
 		{
 			StringMap list = new StringMap();
-			list.add("A","RolaA");
+			list.put("A","RolaA");
 			return list.toString();
 		}
 		else if (field instanceof StringChoiceMapData)
 		{
 			StringChoiceMap map = new StringChoiceMap();
-			map.add("a", "code");
+			map.put("a", "code");
 			return map.toString();
 		}
 		else if(field instanceof ChoiceData)
