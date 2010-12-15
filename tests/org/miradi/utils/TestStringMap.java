@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.utils;
 
-import org.miradi.objecthelpers.AbstractStringMap;
+import org.miradi.objecthelpers.AbstractStringKeyMap;
 import org.miradi.objecthelpers.StringMap;
 
 public class TestStringMap  extends TestAbstractStringMap
@@ -30,13 +30,13 @@ public class TestStringMap  extends TestAbstractStringMap
 	}
 
 	@Override
-	protected AbstractStringMap createAbstractMap()
+	protected AbstractStringKeyMap createAbstractMap()
 	{
 		return new StringMap();
 	}
 	
 	@Override
-	protected AbstractStringMap createAbstractMap(EnhancedJsonObject json)
+	protected AbstractStringKeyMap createAbstractMap(EnhancedJsonObject json)
 	{
 		return new StringMap(json);
 	}

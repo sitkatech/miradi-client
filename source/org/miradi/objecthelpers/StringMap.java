@@ -27,7 +27,7 @@ import org.martus.util.UnicodeWriter;
 import org.martus.util.xml.XmlUtilities;
 import org.miradi.utils.EnhancedJsonObject;
 
-public class StringMap extends AbstractStringMap
+public class StringMap extends AbstractStringKeyMap
 {
 	public StringMap()
 	{
