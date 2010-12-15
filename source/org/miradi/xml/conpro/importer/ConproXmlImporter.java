@@ -518,10 +518,10 @@ public class ConproXmlImporter implements ConProMiradiXml
 		String fairThreshold = getNodeContent(viabilityAssessmentNode, INDICATOR_DESCRIPTION_FAIR);
 		String goodThreshold = getNodeContent(viabilityAssessmentNode, INDICATOR_DESCRIPTION_GOOD);
 		String veryGoodThreshold = getNodeContent(viabilityAssessmentNode, INDICATOR_DESCRIPTION_VERY_GOOD);
-		thresholds.add(StatusQuestion.POOR, poorThreshold);
-		thresholds.add(StatusQuestion.FAIR, fairThreshold);
-		thresholds.add(StatusQuestion.GOOD, goodThreshold);
-		thresholds.add(StatusQuestion.VERY_GOOD, veryGoodThreshold);
+		thresholds.put(StatusQuestion.POOR, poorThreshold);
+		thresholds.put(StatusQuestion.FAIR, fairThreshold);
+		thresholds.put(StatusQuestion.GOOD, goodThreshold);
+		thresholds.put(StatusQuestion.VERY_GOOD, veryGoodThreshold);
 		setData(indicatorRef, Indicator.TAG_INDICATOR_THRESHOLD, thresholds.toString());
 	}
 
@@ -943,7 +943,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		String threatRatingComment = getPathData(node, new String[]{path,});
 		
 		StringMap threatRatingCommentsMap = threatRatingCommentsData.getThreatRatingCommentsMap();
-		threatRatingCommentsMap.add(threatTargetKey, threatRatingComment);
+		threatRatingCommentsMap.put(threatTargetKey, threatRatingComment);
 		String threatRatingCommentsTag = threatRatingCommentsData.getThreatRatingCommentsMapTag();
 		importField(threatRatingCommentsData.getRef(), threatRatingCommentsTag, threatRatingCommentsMap.toString());
 	}

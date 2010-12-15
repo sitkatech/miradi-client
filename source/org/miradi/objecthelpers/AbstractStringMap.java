@@ -65,7 +65,7 @@ abstract public class AbstractStringMap
 		while (iterator.hasNext())
 		{
 			String key = (String)iterator.next();
-			add(key, (String)array.get(key));
+			put(key, (String)array.get(key));
 		}
 	}
 	

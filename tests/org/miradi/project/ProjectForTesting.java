@@ -1097,17 +1097,17 @@ public class ProjectForTesting extends ProjectWithHelpers
 		addProgressReport(indicator);
 		
 		StringMap threshold = new StringMap();
-		threshold.add(StatusQuestion.POOR, "poor text");
-		threshold.add(StatusQuestion.FAIR, "fair text");
-		threshold.add(StatusQuestion.GOOD, "good text");
-		threshold.add(StatusQuestion.VERY_GOOD, "very good text");
+		threshold.put(StatusQuestion.POOR, "poor text");
+		threshold.put(StatusQuestion.FAIR, "fair text");
+		threshold.put(StatusQuestion.GOOD, "good text");
+		threshold.put(StatusQuestion.VERY_GOOD, "very good text");
 		fillObjectUsingCommand(indicator, Indicator.TAG_INDICATOR_THRESHOLD, threshold.toString());
 		
 		StringMap thresholdDetails = new StringMap();
-		thresholdDetails.add(StatusQuestion.POOR, "poor details");
-		thresholdDetails.add(StatusQuestion.FAIR, "fair details");
-		thresholdDetails.add(StatusQuestion.GOOD, "good details");
-		thresholdDetails.add(StatusQuestion.VERY_GOOD, "very good details");
+		thresholdDetails.put(StatusQuestion.POOR, "poor details");
+		thresholdDetails.put(StatusQuestion.FAIR, "fair details");
+		thresholdDetails.put(StatusQuestion.GOOD, "good details");
+		thresholdDetails.put(StatusQuestion.VERY_GOOD, "very good details");
 		fillObjectUsingCommand(indicator, Indicator.TAG_THRESHOLD_DETAILS, thresholdDetails.toString());
 		
 		fillObjectUsingCommand(indicator, Indicator.TAG_FUTURE_STATUS_RATING, StatusQuestion.GOOD);
@@ -1294,7 +1294,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		String commentsKey = ThreatRatingCommentsData.createKey(factorLink.getFromFactorRef(), factorLink.getToFactorRef());
 		String comment = "Some Comment for Threat and Target";
 		StringMap map = new StringMap();
-		map.add(commentsKey, comment);
+		map.put(commentsKey, comment);
 		
 		fillObjectUsingCommand(threatRatingCommentsData, tagStressBasedThreatRatingCommentsMap, map.toString());
 	}
@@ -1342,11 +1342,11 @@ public class ProjectForTesting extends ProjectWithHelpers
 		String threatTargetKey = ThreatRatingCommentsData.createKey(threatRef, targetRef);
 				
 		StringMap simpleThreatRatingCommentsMap = threatRatingCommentsData.getSimpleThreatRatingCommentsMap();
-		simpleThreatRatingCommentsMap.add(threatTargetKey, SIMPLE_THREAT_RATING_COMMENT);
+		simpleThreatRatingCommentsMap.put(threatTargetKey, SIMPLE_THREAT_RATING_COMMENT);
 		fillObjectUsingCommand(threatRatingCommentsData, ThreatRatingCommentsData.TAG_SIMPLE_THREAT_RATING_COMMENTS_MAP, simpleThreatRatingCommentsMap.toString());
 	
 		StringMap stressBasedThreatRatingCommentsMap = threatRatingCommentsData.getStressBasedThreatRatingCommentsMap();
-		stressBasedThreatRatingCommentsMap.add(threatTargetKey, STRESS_BASED_THREAT_RATING_COMMENT);
+		stressBasedThreatRatingCommentsMap.put(threatTargetKey, STRESS_BASED_THREAT_RATING_COMMENT);
 		fillObjectUsingCommand(threatRatingCommentsData, ThreatRatingCommentsData.TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAP, stressBasedThreatRatingCommentsMap.toString());
 	}
 	
