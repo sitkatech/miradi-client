@@ -27,30 +27,30 @@ import java.util.Map;
 
 import org.miradi.utils.EnhancedJsonObject;
 
-abstract public class AbstractStringMap
+abstract public class AbstractStringKeyMap
 {
-	public AbstractStringMap()
+	public AbstractStringKeyMap()
 	{
 		this(new HashMap<String, String>());
 	}
 
-	public AbstractStringMap(AbstractStringMap copyFrom)
+	public AbstractStringKeyMap(AbstractStringKeyMap copyFrom)
 	{
 		this(new HashMap<String, String>(copyFrom.data));
 	}
 
-	public AbstractStringMap(EnhancedJsonObject json)
+	public AbstractStringKeyMap(EnhancedJsonObject json)
 	{
 		this();
 		copyFromJson(json);
 	}
 	
-	public AbstractStringMap(String mapAsJsonString) throws ParseException
+	public AbstractStringKeyMap(String mapAsJsonString) throws ParseException
 	{
 		this(new EnhancedJsonObject(mapAsJsonString));
 	}
 	
-	private AbstractStringMap(Map<String, String> dataToUse)
+	private AbstractStringKeyMap(Map<String, String> dataToUse)
 	{
 		data = new HashMap<String, String>(dataToUse);
 	}

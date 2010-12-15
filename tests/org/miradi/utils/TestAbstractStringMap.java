@@ -23,7 +23,7 @@ package org.miradi.utils;
 import java.util.Iterator;
 
 import org.miradi.main.EAMTestCase;
-import org.miradi.objecthelpers.AbstractStringMap;
+import org.miradi.objecthelpers.AbstractStringKeyMap;
 
 abstract public class TestAbstractStringMap extends EAMTestCase
 {
@@ -34,7 +34,7 @@ abstract public class TestAbstractStringMap extends EAMTestCase
 	
 	public void testBasics()
 	{
-		AbstractStringMap list = createAbstractMap();
+		AbstractStringKeyMap list = createAbstractMap();
 		assertEquals("wrong initial size?", 0, list.size());
 		String key1 = new String("A");
 		String value1 = new String("RoleA");
@@ -49,12 +49,12 @@ abstract public class TestAbstractStringMap extends EAMTestCase
 	
 	public void testEquals()
 	{
-		AbstractStringMap list = createMapWithSampleData();
-		AbstractStringMap identical = createMapWithSampleData();
+		AbstractStringKeyMap list = createMapWithSampleData();
+		AbstractStringKeyMap identical = createMapWithSampleData();
 		assertEquals(list, identical);
 		assertEquals(list.hashCode(), identical.hashCode());
 		
-		AbstractStringMap different = createAbstractMap();
+		AbstractStringKeyMap different = createAbstractMap();
 		different.put("A", list.get("A"));
 		different.put("C", list.get("C"));
 		different.put("B", list.get("B"));
@@ -66,9 +66,9 @@ abstract public class TestAbstractStringMap extends EAMTestCase
 		assertEquals(false, list.equals(different));
 	}
 	
-	protected AbstractStringMap createMapWithSampleData()
+	protected AbstractStringKeyMap createMapWithSampleData()
 	{
-		AbstractStringMap list = createAbstractMap();
+		AbstractStringKeyMap list = createAbstractMap();
 		list.put("A", "RoleA");
 		list.put("B", "RoleB");
 		list.put("C", "RoleC");
@@ -77,7 +77,7 @@ abstract public class TestAbstractStringMap extends EAMTestCase
 	
 	public void testRemove()
 	{
-		AbstractStringMap list = createMapWithSampleData();
+		AbstractStringKeyMap list = createMapWithSampleData();
 		list.removeCode("A");
 		assertEquals(2, list.size());
 		assertEquals("RoleC", list.get("C"));
@@ -96,7 +96,7 @@ abstract public class TestAbstractStringMap extends EAMTestCase
 	{
 		String[] values = new String[] { new String("Role1"), new String("Role19"), new String("Role3"), };
 		String[] keys = new String[] { new String("1"), new String("19"), new String("3"), };
-		AbstractStringMap list = createAbstractMap();
+		AbstractStringKeyMap list = createAbstractMap();
 		for(int i = 0; i < values.length; ++i)
 			list.put(keys[i], values[i]);
 		for(int i = 0; i < values.length; ++i)
@@ -106,10 +106,10 @@ abstract public class TestAbstractStringMap extends EAMTestCase
 	
 	public void testJson()
 	{
-		AbstractStringMap list = createMapWithSampleData();
+		AbstractStringKeyMap list = createMapWithSampleData();
 		EnhancedJsonObject json = list.toJson();
 		
-		AbstractStringMap loaded = createAbstractMap(json);
+		AbstractStringKeyMap loaded = createAbstractMap(json);
 		assertEquals("wrong size?", list.size(), loaded.size());
 		Iterator iterator = list.toHashMap().keySet().iterator();
 		while (iterator.hasNext())
@@ -119,7 +119,7 @@ abstract public class TestAbstractStringMap extends EAMTestCase
 		}
 	}
 
-	abstract protected AbstractStringMap createAbstractMap(EnhancedJsonObject json);
+	abstract protected AbstractStringKeyMap createAbstractMap(EnhancedJsonObject json);
 	
-	abstract protected AbstractStringMap createAbstractMap();
+	abstract protected AbstractStringKeyMap createAbstractMap();
 }
