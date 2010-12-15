@@ -131,15 +131,15 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 	private void addRowWithStatusIcon(String leftColumnText, String rightColumnText, HashMap<String, String> tokenReplacementMap, AbstractLongDescriptionProvider longDescriptionProvider, String code, int level) throws Exception
 	{
 		String rightColumnTranslatedText = EAM.substitute(rightColumnText, tokenReplacementMap);
-		ObjectDataInputField field = new DashboardStatusIconField(getProject(), getDashboard().getRef(), code);
-		addFieldToList(field);
-		field.updateFromObject();
+		ObjectDataInputField statusIconField = new DashboardStatusIconField(getProject(), getDashboard().getRef(), code);
+		addFieldToList(statusIconField);
+		statusIconField.updateFromObject();
 		
 		ObjectDataInputField statusTextField = new DashboarStatusLabelField(getProject(), getDashboard().getRef(), code);
 		addFieldToList(statusTextField);
 		statusTextField.updateFromObject();
 		
-		addRow(leftColumnText, rightColumnTranslatedText, longDescriptionProvider, level, field.getComponent(), statusTextField.getComponent());
+		addRow(leftColumnText, rightColumnTranslatedText, longDescriptionProvider, level, statusIconField.getComponent(), statusTextField.getComponent());
 	}
 	
 	private void addRowWithoutIcon(String leftColumnText, String rightColumnText, HashMap<String, String> tokenReplacementMap, AbstractLongDescriptionProvider longDescriptionProvider, int level) throws Exception
