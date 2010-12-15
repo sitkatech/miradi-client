@@ -32,9 +32,9 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
 
-public class OpenStandardsProgressEditorField extends StringMapBudgetColumnCodeListEditorField
+public class DashboardProgressEditorField extends StringMapBudgetColumnCodeListEditorField
 {
-	public OpenStandardsProgressEditorField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse, String mapCodeToUse)
+	public DashboardProgressEditorField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse, String mapCodeToUse)
 	{
 		super(projectToUse, refToUse.getObjectType(), refToUse.getObjectId(), tagToUse, questionToUse);
 		
