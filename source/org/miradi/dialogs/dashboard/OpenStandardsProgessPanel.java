@@ -32,7 +32,7 @@ public class OpenStandardsProgessPanel extends AbstractObjectDataInputPanel
 	{
 		super(projectToUse, refToUse);
 		
-		addField(createProgressEditorField(refToUse, Dashboard.TAG_USER_STATUS_CHOICE_MAP, OpenStandardsProgressQuestion.class, mapCodeToUse));
+		addField(createDashboardProgressEditorField(refToUse, Dashboard.TAG_USER_STATUS_CHOICE_MAP, OpenStandardsProgressQuestion.class, mapCodeToUse));
 		
 		updateFieldsFromProject();
 	}

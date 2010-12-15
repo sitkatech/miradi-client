@@ -637,7 +637,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return new RadioButtonsField(project, objectType, getObjectIdForType(objectType), tagToUse, question);
 	}
 	
-	public ObjectDataInputField createProgressEditorField(ORef refToUse, String tagToUse, Class questionClassToUse, String mapCodeToUse) throws Exception
+	public ObjectDataInputField createDashboardProgressEditorField(ORef refToUse, String tagToUse, Class questionClassToUse, String mapCodeToUse) throws Exception
 	{
 		return new OpenStandardsProgressEditorField(getProject(), refToUse, tagToUse, getProject().getQuestion(questionClassToUse), mapCodeToUse);
 	}
