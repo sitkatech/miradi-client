@@ -26,13 +26,12 @@ import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.ChoiceQuestion;
 
 public class DashboardStatusIconField extends AsbtractDashboardClickableStatusField
 {
-	public DashboardStatusIconField(Project projectToUse, ORef refToUse,	String stringMapCodeToUse, ChoiceQuestion questionToUse)
+	public DashboardStatusIconField(Project projectToUse, ORef refToUse,	String stringMapCodeToUse)
 	{
-		super(projectToUse, refToUse, stringMapCodeToUse, questionToUse);
+		super(projectToUse, refToUse, stringMapCodeToUse);
 	}
 	
 	@Override
