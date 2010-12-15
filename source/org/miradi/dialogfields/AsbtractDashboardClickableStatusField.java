@@ -51,7 +51,6 @@ abstract public class AsbtractDashboardClickableStatusField extends ObjectDataIn
 		iconComponent.addMouseListener(new ClickHandler());
 	}
 	
-	abstract protected void updateLabel(ChoiceItem progressChoiceItem, PanelTitleLabel componentToUpdate);
 
 	@Override
 	public void setText(String stringCodeMapAsString)
@@ -111,6 +110,8 @@ abstract public class AsbtractDashboardClickableStatusField extends ObjectDataIn
 			}
 		}
 	}
+	
+	abstract protected void updateLabel(ChoiceItem progressChoiceItem, PanelTitleLabel componentToUpdate);
 
 	protected PanelTitleLabel iconComponent;
 	protected String stringMapCode;
