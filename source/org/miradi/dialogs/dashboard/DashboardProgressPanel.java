@@ -26,9 +26,9 @@ import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
 import org.miradi.questions.OpenStandardsProgressQuestion;
 
-public class DashboardProgessPanel extends AbstractObjectDataInputPanel
+public class DashboardProgressPanel extends AbstractObjectDataInputPanel
 {
-	public DashboardProgessPanel(Project projectToUse, ORef refToUse, String mapCodeToUse) throws Exception
+	public DashboardProgressPanel(Project projectToUse, ORef refToUse, String mapCodeToUse) throws Exception
 	{
 		super(projectToUse, refToUse);
 		
