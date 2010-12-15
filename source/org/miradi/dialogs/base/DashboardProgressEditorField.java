@@ -22,9 +22,9 @@ package org.miradi.dialogs.base;
 
 import java.text.ParseException;
 
+import org.miradi.dialogfields.AbstractStringMapCodeListEditorField;
 import org.miradi.dialogfields.QuestionBasedEditorComponent;
 import org.miradi.dialogfields.RadioButtonEditorComponent;
-import org.miradi.dialogfields.StringMapBudgetColumnCodeListEditorField;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.StringChoiceMap;
@@ -32,7 +32,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
 
-public class DashboardProgressEditorField extends StringMapBudgetColumnCodeListEditorField
+public class DashboardProgressEditorField extends AbstractStringMapCodeListEditorField
 {
 	public DashboardProgressEditorField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse, String mapCodeToUse)
 	{
