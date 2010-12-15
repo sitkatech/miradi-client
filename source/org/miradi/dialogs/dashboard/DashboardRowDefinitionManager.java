@@ -169,7 +169,7 @@ public class DashboardRowDefinitionManager
 		
 		if (code.equals(OpenStandardsPlanActionsAndMonitoringQuestion.PLAN_PROJECT_LIFESPAN_AND_EXIT_STRATEGY_CODE))
 		{
-			rowDefinitions.add(new DashboardRowDefinition(EAM.text("%2 - %1"), Dashboard.PSEUDO_PROJECT_PLANNING_START_DATE, Dashboard.PSEUDO_PROJECT_PLANNING_END_DATE));
+			rowDefinitions.add(new DashboardRowDefinition(EAM.text("%1 - %2"), Dashboard.PSEUDO_PROJECT_PLANNING_START_DATE, Dashboard.PSEUDO_PROJECT_PLANNING_END_DATE));
 		}
 		
 		return rowDefinitions;
