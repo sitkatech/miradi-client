@@ -46,13 +46,13 @@ public class TestDashboard extends ObjectTestCase
 
 	public void testGetEffectiveStatusMapWithData() throws Exception
 	{
-		verifyProgressCode(OpenStandardsProgressQuestion.NOT_SPECIFIED_CODE);
+		verifyTeamMemberEffectiveStatus(OpenStandardsProgressQuestion.NOT_SPECIFIED_CODE);
 		
 		getProject().createProjectResource();
-		verifyProgressCode(OpenStandardsProgressQuestion.IN_PROGRESS_CODE);
+		verifyTeamMemberEffectiveStatus(OpenStandardsProgressQuestion.IN_PROGRESS_CODE);
 	}
 
-	private void verifyProgressCode(String expectedCode) throws Exception
+	private void verifyTeamMemberEffectiveStatus(String expectedCode) throws Exception
 	{
 		StringChoiceMap mapAsString = getEffectiveStatusMap();
 		StringChoiceMap map = new StringChoiceMap(mapAsString);
