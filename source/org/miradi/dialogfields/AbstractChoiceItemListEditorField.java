@@ -42,7 +42,9 @@ abstract public class AbstractChoiceItemListEditorField extends ObjectDataInputF
 	public AbstractChoiceItemListEditorField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, ChoiceQuestion questionToUse, int columnCount)
 	{
 		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse);
+
 		codeListEditor = createCodeListEditor(questionToUse, columnCount);
+		codeListEditor.addListSelectionListener(this);
 		component = new MiradiScrollPane(codeListEditor);
 		Dimension preferredSize = component.getPreferredSize();
 		final int ARBITRARY_REASONABLE_MAX_WIDTH = 800;
@@ -55,7 +57,6 @@ abstract public class AbstractChoiceItemListEditorField extends ObjectDataInputF
 	protected QuestionBasedEditorComponent createCodeListEditor(ChoiceQuestion questionToUse, int columnCount)
 	{
 		QuestionBasedEditorComponent editorComponent = new QuestionBasedEditorComponent(questionToUse, columnCount);
-		editorComponent.addListSelectionListener(this);
 		
 		return editorComponent;
 	}
