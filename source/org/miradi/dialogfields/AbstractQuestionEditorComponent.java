@@ -235,5 +235,5 @@ abstract public class AbstractQuestionEditorComponent extends SavebleComponent
 	private ChoiceQuestion question;
 	protected HashMap<ChoiceItem, JToggleButton> choiceItemToToggleButtonMap;
 	private int columnCount;
-	protected static final int SINGLE_COLUMN = 1;
+	public static final int SINGLE_COLUMN = 1;
 }
