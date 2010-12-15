@@ -33,7 +33,7 @@ public class DashboardProgressPanel extends ObjectDataInputPanel
 		super(projectToUse, refToUse);
 		
 		addField(createDashboardProgressEditorField(refToUse, Dashboard.TAG_USER_STATUS_CHOICE_MAP, OpenStandardsProgressQuestion.class, mapCodeToUse));
-		addField(createStringMapField(refToUse, Dashboard.TAG_USER_COMMENTS_MAP, mapCodeToUse, 1));
+		addField(createStringMapField(refToUse, Dashboard.TAG_USER_COMMENTS_MAP, mapCodeToUse));
 		
 		updateFieldsFromProject();
 	}

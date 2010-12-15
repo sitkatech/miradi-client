@@ -35,12 +35,18 @@ import org.miradi.layout.OneColumnPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.utils.MiradiScrollPane;
 import org.miradi.utils.PopupEditorButton;
 import org.miradi.utils.Translation;
 
 public class ObjectScrollingMultilineInputField extends ObjectMultilineInputField
 {
+	public ObjectScrollingMultilineInputField(MainWindow mainWindow, ORef refToUse, String tagToUse, int columnsToUse) throws Exception
+	{
+		super(mainWindow, refToUse, tagToUse, INITIAL_MULTI_LINE_TEXT_AREA_ROW_COUNT, columnsToUse);
+	}
+	
 	public ObjectScrollingMultilineInputField(MainWindow mainWindow, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, int columnsToUse) throws Exception
 	{
 		super(mainWindow, objectTypeToUse, objectIdToUse, tagToUse, INITIAL_MULTI_LINE_TEXT_AREA_ROW_COUNT, columnsToUse);
@@ -79,6 +85,11 @@ public class ObjectScrollingMultilineInputField extends ObjectMultilineInputFiel
 		super.addFocusListener();
 		getTextField().addFocusListener(this);
 	}
+	
+	protected void setTextFromPopup(String textFronPopupEditor)
+	{
+		setText(textFronPopupEditor);
+	}
 
 	private class PopupButtonHandler implements ActionListener
 	{
@@ -103,7 +114,7 @@ public class ObjectScrollingMultilineInputField extends ObjectMultilineInputFiel
 			@Override
 			public void windowDeactivated(WindowEvent e)
 			{
-				setText(dialog.getText());
+				setTextFromPopup(dialog.getText());
 				forceSave();
 			}
 		}
