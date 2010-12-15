@@ -82,6 +82,11 @@ public class StringList
 		data.addAll(Arrays.asList(listToAdd.toArray()));
 	}
 		
+	public String firstElement()
+	{
+		return get(0);
+	}
+	
 	public String get(int index)
 	{
 		return data.get(index);
