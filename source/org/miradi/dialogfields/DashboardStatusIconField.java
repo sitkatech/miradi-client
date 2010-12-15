@@ -59,14 +59,19 @@ public class DashboardStatusIconField extends ObjectDataInputField
 			StringChoiceMap map = new StringChoiceMap(stringCodeMapAsString);
 			String code = map.get(stringMapCode);
 			ChoiceItem progressChoiceItem = question.findChoiceByCode(code);
-			Icon icon = progressChoiceItem.getIcon();
-			iconComponent.setIcon(icon);
+			updateLabel(progressChoiceItem, iconComponent);
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
 			EAM.unexpectedErrorDialog(e);
 		}
+	}
+
+	protected void updateLabel(ChoiceItem progressChoiceItem, PanelTitleLabel componentToUpdate)
+	{
+		Icon icon = progressChoiceItem.getIcon();
+		componentToUpdate.setIcon(icon);
 	}
 	
 	@Override

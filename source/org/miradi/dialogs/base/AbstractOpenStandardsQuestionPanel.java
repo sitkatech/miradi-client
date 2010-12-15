@@ -29,7 +29,9 @@ import javax.swing.JComponent;
 import javax.swing.event.ListSelectionListener;
 
 import org.miradi.actions.AbstractJumpMenuAction;
+import org.miradi.dialogfields.DashboarStatusLabelField;
 import org.miradi.dialogfields.DashboardStatusIconField;
+import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.dashboard.AbstractLongDescriptionProvider;
 import org.miradi.dialogs.dashboard.DashboardRowDefinition;
 import org.miradi.dialogs.dashboard.DashboardRowDefinitionManager;
@@ -132,19 +134,24 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 	{
 		String rightColumnTranslatedText = EAM.substitute(rightColumnText, tokenReplacementMap);
 		ChoiceQuestion thisQuestion = getProject().getQuestion(OpenStandardsProgressQuestion.class);
-		DashboardStatusIconField field = new DashboardStatusIconField(getProject(), getDashboard().getRef(), Dashboard.PSEUDO_EFFECTIVE_STATUS_MAP, code, thisQuestion);
+		ObjectDataInputField field = new DashboardStatusIconField(getProject(), getDashboard().getRef(), Dashboard.PSEUDO_EFFECTIVE_STATUS_MAP, code, thisQuestion);
 		addFieldToList(field);
 		field.updateFromObject();
-		addRow(leftColumnText, rightColumnTranslatedText, longDescriptionProvider, level, field.getComponent());
+		
+		ObjectDataInputField statusTextField = new DashboarStatusLabelField(getProject(), getDashboard().getRef(), Dashboard.PSEUDO_EFFECTIVE_STATUS_MAP, code, thisQuestion);
+		addFieldToList(statusTextField);
+		statusTextField.updateFromObject();
+		
+		addRow(leftColumnText, rightColumnTranslatedText, longDescriptionProvider, level, field.getComponent(), statusTextField.getComponent());
 	}
 	
 	private void addRowWithoutIcon(String leftColumnText, String rightColumnText, HashMap<String, String> tokenReplacementMap, AbstractLongDescriptionProvider longDescriptionProvider, int level) throws Exception
 	{
 		String rightColumnTranslatedText = EAM.substitute(rightColumnText, tokenReplacementMap);
-		addRow(leftColumnText, rightColumnTranslatedText, longDescriptionProvider, level, new FillerLabel());
+		addRow(leftColumnText, rightColumnTranslatedText, longDescriptionProvider, level, new FillerLabel(), new FillerLabel());
 	}
 
-	private void addRow(String leftColumnTranslatedText, String rightColumnTranslatedText, AbstractLongDescriptionProvider longDescriptionProvider, int level, JComponent iconComponent) throws Exception
+	private void addRow(String leftColumnTranslatedText, String rightColumnTranslatedText, AbstractLongDescriptionProvider longDescriptionProvider, int level, JComponent iconComponent, JComponent statusLabelComponent) throws Exception
 	{
 		JComponent leftComponent = new PanelLabelWithSelectableText(leftColumnTranslatedText);
 		JComponent rightComponent = new PanelLabelWithSelectableText(rightColumnTranslatedText);
@@ -152,13 +159,17 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		Font font = getFontBasedOnLevel(level);
 		leftComponent.setFont(font);
 		rightComponent.setFont(font);
-		Box box = createHorizontalBoxWithIndents(level);
-		box.add(iconComponent);
-		box.add(leftComponent);
+		Box leftBox = createHorizontalBoxWithIndents(level);
+		leftBox.add(iconComponent);
+		leftBox.add(leftComponent);
 		rowSelectionHandler.addSelectableRow(leftComponent, rightComponent, longDescriptionProvider);
-
-		add(box);
-		add(rightComponent);
+		
+		Box rightBox = createHorizontalBoxWithIndents(0);
+		rightBox.add(rightComponent);
+		rightBox.add(statusLabelComponent);
+		
+		add(leftBox);
+		add(rightBox);
 	}
 	
 	private Box createHorizontalBoxWithIndents(int level)
