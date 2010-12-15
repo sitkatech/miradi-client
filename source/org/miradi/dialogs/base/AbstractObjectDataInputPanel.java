@@ -639,7 +639,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ObjectDataInputField createDashboardProgressEditorField(ORef refToUse, String tagToUse, Class questionClassToUse, String mapCodeToUse) throws Exception
 	{
-		return new OpenStandardsProgressEditorField(getProject(), refToUse, tagToUse, getProject().getQuestion(questionClassToUse), mapCodeToUse);
+		return new DashboardProgressEditorField(getProject(), refToUse, tagToUse, getProject().getQuestion(questionClassToUse), mapCodeToUse);
 	}
 	
 	public PopupQuestionEditorField createPopupQuestionEditor(JDialog parentDialog, int objectType, String tagToUse, Class questionClass) throws Exception
