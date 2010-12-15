@@ -29,7 +29,7 @@ import javax.swing.JComponent;
 import org.martus.swing.Utilities;
 import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.base.ModalDialogWithClose;
-import org.miradi.dialogs.dashboard.OpenStandardsProgessPanel;
+import org.miradi.dialogs.dashboard.DashboardProgessPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
@@ -96,7 +96,7 @@ public class DashboardStatusIconField extends ObjectDataInputField
 			
 			try
 			{
-				DisposablePanel editorPanel = new OpenStandardsProgessPanel(getProject(), getORef(), stringMapCode);
+				DisposablePanel editorPanel = new DashboardProgessPanel(getProject(), getORef(), stringMapCode);
 				ModalDialogWithClose dialog = new ModalDialogWithClose(EAM.getMainWindow(), Translation.fieldLabel(getObjectType(), getTag()));
 				dialog.setMainPanel(editorPanel);
 				dialog.becomeActive();
