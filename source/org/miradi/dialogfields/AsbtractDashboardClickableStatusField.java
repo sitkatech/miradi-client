@@ -28,7 +28,7 @@ import javax.swing.JComponent;
 import org.martus.swing.Utilities;
 import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.base.ModalDialogWithClose;
-import org.miradi.dialogs.dashboard.DashboardProgessPanel;
+import org.miradi.dialogs.dashboard.DashboardProgressPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
@@ -97,7 +97,7 @@ abstract public class AsbtractDashboardClickableStatusField extends ObjectDataIn
 			
 			try
 			{
-				DisposablePanel editorPanel = new DashboardProgessPanel(getProject(), getORef(), stringMapCode);
+				DisposablePanel editorPanel = new DashboardProgressPanel(getProject(), getORef(), stringMapCode);
 				ModalDialogWithClose dialog = new ModalDialogWithClose(EAM.getMainWindow(), Translation.fieldLabel(getObjectType(), getTag()));
 				dialog.setMainPanel(editorPanel);
 				dialog.becomeActive();
