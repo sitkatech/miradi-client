@@ -30,11 +30,11 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
 
-public class StringMapBudgetColumnCodeListEditorField extends AbstractChoiceItemListEditorField
+public class StringMapBudgetColumnCodeListEditorField extends AbstractStringMapCodeListEditorField
 {
 	public StringMapBudgetColumnCodeListEditorField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, ChoiceQuestion questionToUse)
 	{
-		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, questionToUse, 1);
+		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, questionToUse);
 	}
 
 	@Override
