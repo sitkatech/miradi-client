@@ -41,7 +41,7 @@ public class TestDashboard extends ObjectTestCase
 	
 	public void testGetEffectiveStatusMapWithNoData() throws Exception
 	{
-		 assertEquals("empty dashboard should not have status?",createdEmptyStringChoiceMap() , getEffectiveStatusMap());
+		 assertEquals("empty dashboard should not have status?",createEmptyStringChoiceMap() , getEffectiveStatusMap());
 	}
 
 	public void testGetEffectiveStatusMapWithData() throws Exception
@@ -61,7 +61,7 @@ public class TestDashboard extends ObjectTestCase
 		assertEquals("Incorrect status count?", expectedCode, targetStatusCount);
 	}
 	
-	private StringChoiceMap createdEmptyStringChoiceMap()
+	private StringChoiceMap createEmptyStringChoiceMap()
 	{
 		CodeList allThirdLEvelCodes = getDashboard().getDashboardRowDefinitionManager().getThirdLevelCodes();
 		StringChoiceMap emptyMap = new StringChoiceMap();
