@@ -29,7 +29,7 @@ import javax.swing.JComponent;
 import javax.swing.event.ListSelectionListener;
 
 import org.miradi.actions.AbstractJumpMenuAction;
-import org.miradi.dialogfields.ReadonlyClickableIconField;
+import org.miradi.dialogfields.DashboardStatusIconField;
 import org.miradi.dialogs.dashboard.AbstractLongDescriptionProvider;
 import org.miradi.dialogs.dashboard.DashboardRowDefinition;
 import org.miradi.dialogs.dashboard.DashboardRowDefinitionManager;
@@ -132,7 +132,7 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 	{
 		String rightColumnTranslatedText = EAM.substitute(rightColumnText, tokenReplacementMap);
 		ChoiceQuestion thisQuestion = getProject().getQuestion(OpenStandardsProgressQuestion.class);
-		ReadonlyClickableIconField field = new ReadonlyClickableIconField(getProject(), getDashboard().getRef(), Dashboard.PSEUDO_EFFECTIVE_STATUS_MAP, code, thisQuestion);
+		DashboardStatusIconField field = new DashboardStatusIconField(getProject(), getDashboard().getRef(), Dashboard.PSEUDO_EFFECTIVE_STATUS_MAP, code, thisQuestion);
 		addFieldToList(field);
 		field.updateFromObject();
 		addRow(leftColumnText, rightColumnTranslatedText, longDescriptionProvider, level, field.getComponent());
