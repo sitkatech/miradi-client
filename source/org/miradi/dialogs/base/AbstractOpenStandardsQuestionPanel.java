@@ -134,11 +134,11 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 	{
 		String rightColumnTranslatedText = EAM.substitute(rightColumnText, tokenReplacementMap);
 		ChoiceQuestion thisQuestion = getProject().getQuestion(OpenStandardsProgressQuestion.class);
-		ObjectDataInputField field = new DashboardStatusIconField(getProject(), getDashboard().getRef(), Dashboard.PSEUDO_EFFECTIVE_STATUS_MAP, code, thisQuestion);
+		ObjectDataInputField field = new DashboardStatusIconField(getProject(), getDashboard().getRef(), code, thisQuestion);
 		addFieldToList(field);
 		field.updateFromObject();
 		
-		ObjectDataInputField statusTextField = new DashboarStatusLabelField(getProject(), getDashboard().getRef(), Dashboard.PSEUDO_EFFECTIVE_STATUS_MAP, code, thisQuestion);
+		ObjectDataInputField statusTextField = new DashboarStatusLabelField(getProject(), getDashboard().getRef(), code, thisQuestion);
 		addFieldToList(statusTextField);
 		statusTextField.updateFromObject();
 		
