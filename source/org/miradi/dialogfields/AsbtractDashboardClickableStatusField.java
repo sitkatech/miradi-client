@@ -33,6 +33,7 @@ import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.StringChoiceMap;
+import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
@@ -41,9 +42,9 @@ import org.miradi.utils.Translation;
 
 abstract public class AsbtractDashboardClickableStatusField extends ObjectDataInputField
 {
-	public AsbtractDashboardClickableStatusField(Project projectToUse, ORef refToUse, String tagToUse, String stringMapCodeToUse, ChoiceQuestion questionToUse)
+	public AsbtractDashboardClickableStatusField(Project projectToUse, ORef refToUse, String stringMapCodeToUse, ChoiceQuestion questionToUse)
 	{
-		super(projectToUse, refToUse, tagToUse);
+		super(projectToUse, refToUse, Dashboard.PSEUDO_EFFECTIVE_STATUS_MAP);
 		
 		stringMapCode = stringMapCodeToUse;
 		question = questionToUse;

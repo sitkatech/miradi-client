@@ -30,9 +30,9 @@ import org.miradi.questions.ChoiceQuestion;
 
 public class DashboardStatusIconField extends AsbtractDashboardClickableStatusField
 {
-	public DashboardStatusIconField(Project projectToUse, ORef refToUse,	String tagToUse, String stringMapCodeToUse, ChoiceQuestion questionToUse)
+	public DashboardStatusIconField(Project projectToUse, ORef refToUse,	String stringMapCodeToUse, ChoiceQuestion questionToUse)
 	{
-		super(projectToUse, refToUse, tagToUse, stringMapCodeToUse, questionToUse);
+		super(projectToUse, refToUse, stringMapCodeToUse, questionToUse);
 	}
 	
 	@Override

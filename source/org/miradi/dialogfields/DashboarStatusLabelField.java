@@ -28,9 +28,9 @@ import org.miradi.questions.ChoiceQuestion;
 
 public class DashboarStatusLabelField extends AsbtractDashboardClickableStatusField
 {
-	public DashboarStatusLabelField(Project projectToUse, ORef refToUse, String tagToUse, String stringMapCodeToUse, ChoiceQuestion questionToUse)
+	public DashboarStatusLabelField(Project projectToUse, ORef refToUse, String stringMapCodeToUse, ChoiceQuestion questionToUse)
 	{
-		super(projectToUse, refToUse, tagToUse, stringMapCodeToUse, questionToUse);
+		super(projectToUse, refToUse, stringMapCodeToUse, questionToUse);
 	}
 	
 	@Override
