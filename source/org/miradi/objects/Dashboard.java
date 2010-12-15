@@ -46,6 +46,7 @@ import org.miradi.utils.CodeList;
 import org.miradi.utils.DoubleUtilities;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.StringChoiceMapData;
+import org.miradi.utils.StringMapData;
 
 public class Dashboard extends BaseObject
 {
@@ -818,6 +819,7 @@ public class Dashboard extends BaseObject
 		targetWithGoalsCount = new PseudoStringData(PSEUDO_TARGETS_WITH_GOALS_COUNT);
 		effectiveStatusMap = new PseudoStringChoiceMapData(PSEUDO_EFFECTIVE_STATUS_MAP);
 		userStatusChoiceMap = new StringChoiceMapData(TAG_USER_STATUS_CHOICE_MAP);
+		userCommentsMap = new StringMapData(TAG_USER_COMMENTS_MAP);
 		
 		addPresentationDataField(PSEUDO_TEAM_MEMBER_COUNT, teamMemberCount);
 		addPresentationDataField(PSEUDO_PROJECT_SCOPE_WORD_COUNT, projectScopeWordCount);
@@ -867,6 +869,7 @@ public class Dashboard extends BaseObject
 		addPresentationDataField(PSEUDO_TARGETS_WITH_GOALS_COUNT, targetWithGoalsCount);
 		addPresentationDataField(PSEUDO_EFFECTIVE_STATUS_MAP, effectiveStatusMap);
 		addPresentationDataField(TAG_USER_STATUS_CHOICE_MAP, userStatusChoiceMap);
+		addPresentationDataField(TAG_USER_COMMENTS_MAP, userCommentsMap);
 	}
 	
 	public static final String OBJECT_NAME = "Dashboard";
@@ -920,6 +923,7 @@ public class Dashboard extends BaseObject
 	public static final String PSEUDO_INDICATORS_AND_METHODS_WITH_PROGRESS_REPORT_PERCENT = "IndicatorsAndMethodsWithProgressReportPercent";
 	public static final String PSEUDO_EFFECTIVE_STATUS_MAP = "effectiveStatusMap";
 	public static final String TAG_USER_STATUS_CHOICE_MAP = "UserStatusChoiceMap";
+	public static final String TAG_USER_COMMENTS_MAP = "UserStatusCommentsMap";
 
 	private DashboardRowDefinitionManager rowDefinitionManager;
 	private PseudoStringChoiceMapData effectiveStatusMap;
@@ -970,4 +974,5 @@ public class Dashboard extends BaseObject
 	private PseudoStringData indicatorsAndMethodsWithProgressReportPercent;
 	private PseudoStringData targetWithGoalsCount;
 	private StringChoiceMapData userStatusChoiceMap;
+	private StringMapData userCommentsMap;
 }

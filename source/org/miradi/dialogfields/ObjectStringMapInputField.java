@@ -24,10 +24,16 @@ import java.text.ParseException;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.StringMap;
 
 public class ObjectStringMapInputField extends ObjectStringInputField
 {
+	public ObjectStringMapInputField(MainWindow mainWindowToUse, ORef refToUse, String tagToUse, String codeToUse, int columnsToUse)
+	{
+		this (mainWindowToUse, refToUse.getObjectType(), refToUse.getObjectId(), tagToUse, codeToUse, columnsToUse);
+	}
+	
 	public ObjectStringMapInputField(MainWindow mainWindowToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, String codeToUse, int columnsToUse)
 	{
 		super(mainWindowToUse, objectTypeToUse, objectIdToUse, tagToUse, columnsToUse);

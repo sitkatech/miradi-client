@@ -20,19 +20,20 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.dashboard;
 
-import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
+import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
 import org.miradi.questions.OpenStandardsProgressQuestion;
 
-public class DashboardProgressPanel extends AbstractObjectDataInputPanel
+public class DashboardProgressPanel extends ObjectDataInputPanel
 {
 	public DashboardProgressPanel(Project projectToUse, ORef refToUse, String mapCodeToUse) throws Exception
 	{
 		super(projectToUse, refToUse);
 		
 		addField(createDashboardProgressEditorField(refToUse, Dashboard.TAG_USER_STATUS_CHOICE_MAP, OpenStandardsProgressQuestion.class, mapCodeToUse));
+		addField(createStringMapField(refToUse, Dashboard.TAG_USER_COMMENTS_MAP, mapCodeToUse, 1));
 		
 		updateFieldsFromProject();
 	}
