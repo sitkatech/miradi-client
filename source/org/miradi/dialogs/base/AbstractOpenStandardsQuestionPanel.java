@@ -166,6 +166,11 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		JComponent leftComponent = new PanelLabelWithSelectableText(leftColumnTranslatedText);
 		JComponent rightComponent = new PanelLabelWithSelectableText(rightColumnTranslatedText);
 		
+		addRow(longDescriptionProvider, level, iconComponent, leftComponent, rightComponent);
+	}
+
+	private void addRow(AbstractLongDescriptionProvider longDescriptionProvider, int level,	JComponent iconComponent, JComponent leftComponent,	JComponent rightComponent)
+	{
 		Font font = getFontBasedOnLevel(level);
 		leftComponent.setFont(font);
 		rightComponent.setFont(font);
