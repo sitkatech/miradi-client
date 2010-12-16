@@ -34,7 +34,7 @@ import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objecthelpers.StringMap;
+import org.miradi.objecthelpers.StringStringMap;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.SortDirectionQuestion;
@@ -73,7 +73,7 @@ public class TableSettings extends BaseObject
 		return NO_OWNERS;
 	}
 	
-	public StringMap getColumnWidthMap()
+	public StringStringMap getColumnWidthMap()
 	{
 		return columnWidths.getStringMap();
 	}
@@ -98,9 +98,9 @@ public class TableSettings extends BaseObject
 		return expandedNodesRefListList.convertToRefListVector();
 	}
 	
-	public StringMap getTableSettingsMap()
+	public StringStringMap getTableSettingsMap()
 	{
-		return new StringMap(tableSettingsMap.getStringMap()); 
+		return new StringStringMap(tableSettingsMap.getStringMap()); 
 	}
 	
 	public CodeList getCodeListFromTableSettingsMap(String codeListKey) throws Exception

@@ -27,24 +27,24 @@ import org.martus.util.UnicodeWriter;
 import org.martus.util.xml.XmlUtilities;
 import org.miradi.utils.EnhancedJsonObject;
 
-public class StringMap extends AbstractStringKeyMap
+public class StringStringMap extends AbstractStringKeyMap
 {
-	public StringMap()
+	public StringStringMap()
 	{
 		super();
 	}
 
-	public StringMap(StringMap copyFrom)
+	public StringStringMap(StringStringMap copyFrom)
 	{
 		super(copyFrom);
 	}
 
-	public StringMap(EnhancedJsonObject json)
+	public StringStringMap(EnhancedJsonObject json)
 	{
 		super(json);
 	}
 	
-	public StringMap(String mapAsJsonString) throws ParseException
+	public StringStringMap(String mapAsJsonString) throws ParseException
 	{
 		super(mapAsJsonString);
 	}
@@ -75,10 +75,10 @@ public class StringMap extends AbstractStringKeyMap
 	@Override
 	public boolean equals(Object rawOther)
 	{
-		if(!(rawOther instanceof StringMap))
+		if(!(rawOther instanceof StringStringMap))
 			return false;
 
-		StringMap other = (StringMap) rawOther;
+		StringStringMap other = (StringStringMap) rawOther;
 		return data.equals(other.data);
 	}
 

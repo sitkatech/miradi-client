@@ -33,7 +33,7 @@ import org.miradi.dialogs.fieldComponents.PanelTextArea;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.StringMap;
+import org.miradi.objecthelpers.StringStringMap;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Target;
 import org.miradi.objects.ThreatRatingCommentsData;
@@ -121,7 +121,7 @@ public class ThreatRatingCommentsEditorComponent extends SavableField
 		try
 		{
 			ThreatRatingCommentsData threatRatingCommentsData = getThreatRatingCommentsData();
-			StringMap commentsMap = threatRatingCommentsData.getThreatRatingCommentsMap();
+			StringStringMap commentsMap = threatRatingCommentsData.getThreatRatingCommentsMap();
 			String threatTargetKey = ThreatRatingCommentsData.createKey(getThreatRef(), getTargetRef());
 			commentsMap.put(threatTargetKey, getTextArea().getText());
 			CommandSetObjectData setComment = new CommandSetObjectData(threatRatingCommentsData.getRef(), threatRatingCommentsData.getThreatRatingCommentsMapTag(), commentsMap.toString());

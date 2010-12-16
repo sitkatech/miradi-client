@@ -21,7 +21,7 @@ package org.miradi.dialogs.planning;
 
 import org.miradi.dialogs.planning.upperPanel.WorkPlanTreeTablePanel;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.StringMap;
+import org.miradi.objecthelpers.StringStringMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.Indicator;
@@ -58,7 +58,7 @@ public class WorkPlanRowColumnProvider implements RowColumnProvider
 		try
 		{
 			TableSettings tableSettings = TableSettings.findOrCreate(getProject(), WorkPlanTreeTablePanel.getTabSpecificModelIdentifier());
-			StringMap tableSettingsMap = tableSettings.getTableSettingsMap();
+			StringStringMap tableSettingsMap = tableSettings.getTableSettingsMap();
 			String codeListAsString = tableSettingsMap.get(TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
 
 			return new CodeList(codeListAsString);
