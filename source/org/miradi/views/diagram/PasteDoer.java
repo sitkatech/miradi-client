@@ -21,8 +21,8 @@ package org.miradi.views.diagram;
 
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
-import org.miradi.dialogs.confirm.ConfirmDialog;
-import org.miradi.dialogs.confirm.ConfirmDialogTemplatePool;
+import org.miradi.dialogs.notify.NotifyDialog;
+import org.miradi.dialogs.notify.NotifyDialogTemplatePool;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.main.TransferableMiradiList;
@@ -48,8 +48,6 @@ public class PasteDoer extends AbstractPasteDoer
 			ORefList beforePasteDiagramLinks = diagramObjectRefBeingPastedInto.getAllDiagramLinkRefs();
 			
 			final String usersChoice = getUsersChoice(list);
-			if (usersChoice.equals(CANCEL_BUTTON))
-				return;
 				
 			DiagramPaster diagramPaster = createDiagramPasterBaseOnUserChoice(list, usersChoice);
 			if (pastingBetweenProjectsInDifferentDiagramType(list, diagramPaster))
@@ -62,6 +60,7 @@ public class PasteDoer extends AbstractPasteDoer
 			paste(diagramPaster);
 			possiblyNotifyUserIfDataWasLost(diagramPaster);
 			notifiyIfNothingWasPasted(beforePasteDiagramFactors, beforePasteDiagramLinks);
+			NotifyDialog.notify(getMainWindow(), NotifyDialogTemplatePool.pastedSharedFactors());
 		} 
 		catch (Exception e) 
 		{
@@ -90,10 +89,7 @@ public class PasteDoer extends AbstractPasteDoer
 		if (isPastingInSameDiagramAsCopiedFrom(list))
 			return AS_COPY_BUTTON;
 		
-		if(ConfirmDialog.confirm(getMainWindow(), ConfirmDialogTemplatePool.shouldPasteSharedFactors()))
-			return AS_SHARED_BUTTON;
-		
-		return CANCEL_BUTTON;
+		return AS_SHARED_BUTTON;
 	}
 
 	private boolean isPastingInSameDiagramAsCopiedFrom(TransferableMiradiList list)
