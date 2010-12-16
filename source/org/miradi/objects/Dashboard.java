@@ -254,11 +254,11 @@ public class Dashboard extends BaseObject
 			String thirdLevelCode = allThirdLevelCodes.get(index);
 			Vector<DashboardRowDefinition> rowDefinitions = getDashboardRowDefinitionManager().getRowDefinitions(thirdLevelCode);
 			
-			String userProgressCode = userStatusChoiceMap.getStringChoiceMap().get(thirdLevelCode);
-			if (userProgressCode != null && !userProgressCode.equals(OpenStandardsProgressQuestion.NOT_SPECIFIED_CODE))
-				map.put(thirdLevelCode, userProgressCode);
-			else
-				map.put(thirdLevelCode, computeStatusCodeFromStatistics(rowDefinitions));
+			String progressCode = userStatusChoiceMap.getStringChoiceMap().get(thirdLevelCode);
+			if (progressCode == null || progressCode.equals(OpenStandardsProgressQuestion.NOT_SPECIFIED_CODE))
+				progressCode = computeStatusCodeFromStatistics(rowDefinitions);
+			
+			map.put(thirdLevelCode, progressCode);
 		}
 		
 		return map;
