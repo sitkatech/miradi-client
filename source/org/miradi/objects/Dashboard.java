@@ -255,7 +255,7 @@ public class Dashboard extends BaseObject
 			Vector<DashboardRowDefinition> rowDefinitions = getDashboardRowDefinitionManager().getRowDefinitions(thirdLevelCode);
 			
 			String progressCode = userStatusChoiceMap.getStringChoiceMap().get(thirdLevelCode);
-			if (progressCode == null || progressCode.equals(OpenStandardsProgressQuestion.NOT_SPECIFIED_CODE))
+			if (progressCode.equals(OpenStandardsProgressQuestion.NOT_SPECIFIED_CODE))
 				progressCode = computeStatusCodeFromStatistics(rowDefinitions);
 			
 			map.put(thirdLevelCode, progressCode);
