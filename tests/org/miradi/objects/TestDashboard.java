@@ -43,11 +43,9 @@ public class TestDashboard extends ObjectTestCase
 	
 	public void testGetEffectiveStatusMapWithNoData() throws Exception
 	{
-		 StringChoiceMap createEmptyStringChoiceMap = createStringChoiceMapForEmptyProject();
+		StringChoiceMap createEmptyStringChoiceMap = createStringChoiceMapForEmptyProject();
 		StringChoiceMap effectiveStatusMap = getEffectiveStatusMap();
 		
-		System.out.println(createEmptyStringChoiceMap);
-		System.out.println(effectiveStatusMap);
 		assertEquals("empty dashboard should not have status?",createEmptyStringChoiceMap , effectiveStatusMap);
 	}
 
