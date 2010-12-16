@@ -27,6 +27,7 @@ public class StringStringMapData extends ObjectData
 	public StringStringMapData(String tagToUse)
 	{
 		super(tagToUse);
+		
 		data = new StringStringMap();
 	}
 
