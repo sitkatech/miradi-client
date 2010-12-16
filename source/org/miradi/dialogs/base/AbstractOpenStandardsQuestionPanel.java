@@ -109,7 +109,7 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		if (choiceItem.hasChildren())
 			addRowWithoutIcon(choiceItem.getLabel(), EMPTY_LEFT_COLUMN_TEXT, new HashMap<String, String>(), choiceItem.getLongDescriptionProvider(), level);
 		else
-			addRowWithStatusIcon(choiceItem.getLabel(), EMPTY_LEFT_COLUMN_TEXT, new HashMap<String, String>(), choiceItem.getLongDescriptionProvider(), choiceItem.getCode(), level);
+			addRowWithStatusIcon(choiceItem.getLabel(), choiceItem.getLongDescriptionProvider(), choiceItem.getCode(), level);
 	}
 
 	private void addRowsWithRightColumn(ChoiceItem choiceItem, int level) throws Exception
@@ -140,7 +140,7 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		}
 	}
 	
-	private void addRowWithStatusIcon(String leftColumnText, String rightColumnText, HashMap<String, String> tokenReplacementMap, AbstractLongDescriptionProvider longDescriptionProvider, String code, int level) throws Exception
+	private void addRowWithStatusIcon(String leftColumnText, AbstractLongDescriptionProvider longDescriptionProvider, String code, int level) throws Exception
 	{
 		ObjectDataInputField statusIconField = new DashboardStatusIconField(getProject(), getDashboard().getRef(), code);
 		addFieldToList(statusIconField);
