@@ -142,7 +142,6 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 	
 	private void addRowWithStatusIcon(String leftColumnText, String rightColumnText, HashMap<String, String> tokenReplacementMap, AbstractLongDescriptionProvider longDescriptionProvider, String code, int level) throws Exception
 	{
-		String rightColumnTranslatedText = EAM.substitute(rightColumnText, tokenReplacementMap);
 		ObjectDataInputField statusIconField = new DashboardStatusIconField(getProject(), getDashboard().getRef(), code);
 		addFieldToList(statusIconField);
 		statusIconField.updateFromObject();
@@ -151,7 +150,7 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		addFieldToList(statusTextField);
 		statusTextField.updateFromObject();
 		
-		addRow(leftColumnText, rightColumnTranslatedText, longDescriptionProvider, level, statusIconField.getComponent());
+		addRow(longDescriptionProvider, level, statusIconField.getComponent(), new PanelTitleLabel(leftColumnText), statusTextField.getComponent());
 	}
 	
 	private void addRowWithoutIcon(String leftColumnText, String rightColumnText, HashMap<String, String> tokenReplacementMap, AbstractLongDescriptionProvider longDescriptionProvider, int level) throws Exception
@@ -160,7 +159,6 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		addRow(leftColumnText, rightColumnTranslatedText, longDescriptionProvider, level, new FillerLabel());
 	}
 
-	//FIXME urgent - add status component as right component
 	private void addRow(String leftColumnTranslatedText, String rightColumnTranslatedText, AbstractLongDescriptionProvider longDescriptionProvider, int level, JComponent iconComponent) throws Exception
 	{
 		JComponent leftComponent = new PanelLabelWithSelectableText(leftColumnTranslatedText);
