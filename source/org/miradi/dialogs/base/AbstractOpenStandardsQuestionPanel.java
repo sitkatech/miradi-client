@@ -171,11 +171,17 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		Box leftBox = createHorizontalBoxWithIndents(level);
 		leftBox.add(iconComponent);
 		leftBox.add(leftComponent);
-		rowSelectionHandler.addSelectableRow(leftComponent, rightComponent, longDescriptionProvider);
-		
+
 		Box rightBox = createHorizontalBoxWithIndents(0);
 		rightBox.add(rightComponent);
 		rightBox.add(statusLabelComponent);
+		
+		Vector<JComponent> components = new Vector<JComponent>();
+		components.add(leftBox);
+		components.add(rightBox);
+		components.add(leftComponent);
+		components.add(rightComponent);
+		rowSelectionHandler.addSelectableRow(components, longDescriptionProvider);
 		
 		add(leftBox);
 		add(rightBox);
