@@ -22,7 +22,7 @@ package org.miradi.xml.wcs;
 
 import org.martus.util.UnicodeWriter;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.StringMap;
+import org.miradi.objecthelpers.StringStringMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
 import org.miradi.questions.ChoiceQuestion;
@@ -62,8 +62,8 @@ public class IndicatorPoolExporter extends BaseObjectPoolExporter
 	
 	private void writeOptionalThreshold(Indicator indicator) throws Exception
 	{
-		StringMap thresholdValues = indicator.getThreshold().getStringMap();
-		StringMap thresholdDetails = indicator.getThresholdDetails();
+		StringStringMap thresholdValues = indicator.getThreshold().getStringMap();
+		StringStringMap thresholdDetails = indicator.getThresholdDetails();
 		if (thresholdValues.size() == 0 && thresholdDetails.size() == 0)
 			return;
 		

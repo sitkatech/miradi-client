@@ -34,7 +34,7 @@ import org.miradi.objecthelpers.NonDraftStrategySet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objecthelpers.StringMap;
+import org.miradi.objecthelpers.StringStringMap;
 import org.miradi.objecthelpers.TargetSet;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
@@ -74,7 +74,7 @@ public class Indicator extends BaseObject
 		return indicatorThreshold;
 	}
 	
-	public StringMap getThresholdDetails()
+	public StringStringMap getThresholdDetails()
 	{
 		return thresholdDetails.getStringMap();
 	}

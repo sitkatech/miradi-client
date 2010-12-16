@@ -28,7 +28,7 @@ import javax.swing.table.TableColumn;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogfields.FieldSaver;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.StringMap;
+import org.miradi.objecthelpers.StringStringMap;
 import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
 
@@ -68,7 +68,7 @@ public class ColumnWidthSaver extends MouseAdapter
 		TableSettings tableSettings = TableSettings.find(getProject(), getUniqueTableIdentifier());
 		if (tableSettings != null)
 		{
-			StringMap columnWidthMap = tableSettings.getColumnWidthMap();
+			StringStringMap columnWidthMap = tableSettings.getColumnWidthMap();
 			columnWidthAsString = columnWidthMap.get(columnKey);
 		}
 		
@@ -106,7 +106,7 @@ public class ColumnWidthSaver extends MouseAdapter
 	public void saveColumnWidths() throws Exception
 	{
 		
-		StringMap columnWidthMap = new StringMap();
+		StringStringMap columnWidthMap = new StringStringMap();
 		for (int tableColumn = 0; tableColumn < table.getColumnCount(); ++tableColumn)
 		{		
 			TableColumn column = table.getColumnModel().getColumn(tableColumn);

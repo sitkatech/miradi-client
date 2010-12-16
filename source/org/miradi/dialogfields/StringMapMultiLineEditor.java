@@ -25,7 +25,7 @@ import java.text.ParseException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.StringMap;
+import org.miradi.objecthelpers.StringStringMap;
 
 public class StringMapMultiLineEditor extends ObjectScrollingMultilineInputField
 {
@@ -57,7 +57,7 @@ public class StringMapMultiLineEditor extends ObjectScrollingMultilineInputField
 	private String getUpdateObjectStringMap(String newValue) throws ParseException
 	{
 		String data = getProject().getObjectData(getORef(), getTag());
-		StringMap stringMap = new StringMap(data);
+		StringStringMap stringMap = new StringStringMap(data);
 		stringMap.put(code, newValue);
 
 		return stringMap.toString();
@@ -68,7 +68,7 @@ public class StringMapMultiLineEditor extends ObjectScrollingMultilineInputField
 	{
 		try
 		{
-			StringMap stringMap = new StringMap(newValue);
+			StringStringMap stringMap = new StringStringMap(newValue);
 
 			super.setText(stringMap.get(code));
 		}

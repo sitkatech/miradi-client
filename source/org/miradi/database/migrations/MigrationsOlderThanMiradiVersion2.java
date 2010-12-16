@@ -53,7 +53,7 @@ import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objecthelpers.StringMap;
+import org.miradi.objecthelpers.StringStringMap;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Stress;
@@ -286,8 +286,8 @@ public class MigrationsOlderThanMiradiVersion2
 		if (! threatRatingCommentsDataManifestFile.exists())
 			throw new RuntimeException("no ThreatRatingCommentsData manifest exist");
 		
-		StringMap simpleThreatRatingCommentsMap = new StringMap();
-		StringMap stressThreatRatingCommentsMap = new StringMap();
+		StringStringMap simpleThreatRatingCommentsMap = new StringStringMap();
+		StringStringMap stressThreatRatingCommentsMap = new StringStringMap();
 		ObjectManifest factorLinkManifestObject = new ObjectManifest(JSONFile.read(factorLinkManifestFile));
 		BaseId[] factorLinkIds = factorLinkManifestObject.getAllKeys();
 		for (int i = 0; i < factorLinkIds.length; ++i)
