@@ -151,16 +151,17 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		addFieldToList(statusTextField);
 		statusTextField.updateFromObject();
 		
-		addRow(leftColumnText, rightColumnTranslatedText, longDescriptionProvider, level, statusIconField.getComponent(), statusTextField.getComponent());
+		addRow(leftColumnText, rightColumnTranslatedText, longDescriptionProvider, level, statusIconField.getComponent());
 	}
 	
 	private void addRowWithoutIcon(String leftColumnText, String rightColumnText, HashMap<String, String> tokenReplacementMap, AbstractLongDescriptionProvider longDescriptionProvider, int level) throws Exception
 	{
 		String rightColumnTranslatedText = EAM.substitute(rightColumnText, tokenReplacementMap);
-		addRow(leftColumnText, rightColumnTranslatedText, longDescriptionProvider, level, new FillerLabel(), new FillerLabel());
+		addRow(leftColumnText, rightColumnTranslatedText, longDescriptionProvider, level, new FillerLabel());
 	}
 
-	private void addRow(String leftColumnTranslatedText, String rightColumnTranslatedText, AbstractLongDescriptionProvider longDescriptionProvider, int level, JComponent iconComponent, JComponent statusLabelComponent) throws Exception
+	//FIXME urgent - add status component as right component
+	private void addRow(String leftColumnTranslatedText, String rightColumnTranslatedText, AbstractLongDescriptionProvider longDescriptionProvider, int level, JComponent iconComponent) throws Exception
 	{
 		JComponent leftComponent = new PanelLabelWithSelectableText(leftColumnTranslatedText);
 		JComponent rightComponent = new PanelLabelWithSelectableText(rightColumnTranslatedText);
@@ -174,7 +175,6 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 
 		Box rightBox = createHorizontalBoxWithIndents(0);
 		rightBox.add(rightComponent);
-		rightBox.add(statusLabelComponent);
 		
 		Vector<JComponent> components = new Vector<JComponent>();
 		components.add(leftBox);
