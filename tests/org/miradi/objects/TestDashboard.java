@@ -24,6 +24,8 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.StringChoiceMap;
 import org.miradi.questions.OpenStandardsConceptualizeQuestion;
+import org.miradi.questions.OpenStandardsImplementActionsAndMonitoringQuestion;
+import org.miradi.questions.OpenStandardsPlanActionsAndMonitoringQuestion;
 import org.miradi.questions.OpenStandardsProgressQuestion;
 import org.miradi.utils.CodeList;
 
@@ -41,7 +43,12 @@ public class TestDashboard extends ObjectTestCase
 	
 	public void testGetEffectiveStatusMapWithNoData() throws Exception
 	{
-		 assertEquals("empty dashboard should not have status?",createEmptyStringChoiceMap() , getEffectiveStatusMap());
+		 StringChoiceMap createEmptyStringChoiceMap = createStringChoiceMapForEmptyProject();
+		StringChoiceMap effectiveStatusMap = getEffectiveStatusMap();
+		
+		System.out.println(createEmptyStringChoiceMap);
+		System.out.println(effectiveStatusMap);
+		assertEquals("empty dashboard should not have status?",createEmptyStringChoiceMap , effectiveStatusMap);
 	}
 
 	public void testGetEffectiveStatusMapWithData() throws Exception
@@ -61,13 +68,21 @@ public class TestDashboard extends ObjectTestCase
 		assertEquals("Incorrect status count?", expectedCode, targetStatusCount);
 	}
 	
-	private StringChoiceMap createEmptyStringChoiceMap()
+	private StringChoiceMap createStringChoiceMapForEmptyProject()
 	{
 		CodeList allThirdLEvelCodes = getDashboard().getDashboardRowDefinitionManager().getThirdLevelCodes();
 		StringChoiceMap emptyMap = new StringChoiceMap();
 		for (int index = 0; index < allThirdLEvelCodes.size(); ++index)
 		{
-			emptyMap.put(allThirdLEvelCodes.get(index), OpenStandardsProgressQuestion.NOT_SPECIFIED_CODE);
+			String progressCode = OpenStandardsProgressQuestion.NOT_SPECIFIED_CODE;
+			String thirdLevelCode = allThirdLEvelCodes.get(index);
+			if (thirdLevelCode.equals(OpenStandardsPlanActionsAndMonitoringQuestion.PLAN_PROJECT_LIFESPAN_AND_EXIT_STRATEGY_CODE))
+				progressCode = OpenStandardsProgressQuestion.IN_PROGRESS_CODE;
+			
+			if (thirdLevelCode.equals(OpenStandardsImplementActionsAndMonitoringQuestion.ESTIMATE_COSTS_FOR_ACTIVITIES_AND_MONITORING_CODE))
+				progressCode = OpenStandardsProgressQuestion.NOT_STARTED_CODE;
+				
+			emptyMap.put(thirdLevelCode, progressCode);
 		}
 		
 		return emptyMap;
