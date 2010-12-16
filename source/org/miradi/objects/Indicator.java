@@ -43,7 +43,7 @@ import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
-import org.miradi.utils.StringMapData;
+import org.miradi.utils.StringStringMapData;
 
 public class Indicator extends BaseObject
 {
@@ -69,7 +69,7 @@ public class Indicator extends BaseObject
 		return new ORefList(Task.getObjectType(), getMethodIds());
 	}
 	
-	public StringMapData getThreshold()
+	public StringStringMapData getThreshold()
 	{
 		return indicatorThreshold;
 	}
@@ -356,13 +356,13 @@ public class Indicator extends BaseObject
 		shortLabel = new StringData(TAG_SHORT_LABEL);
 		priority = new ChoiceData(TAG_PRIORITY, getQuestion(PriorityRatingQuestion.class));
 		methodIds = new IdListData(TAG_METHOD_IDS, Task.getObjectType());
-		indicatorThreshold = new StringMapData(TAG_INDICATOR_THRESHOLD);
+		indicatorThreshold = new StringStringMapData(TAG_INDICATOR_THRESHOLD);
 		ratingSource= new ChoiceData(TAG_RATING_SOURCE, getQuestion(RatingSourceQuestion.class));
 		measurementRefs = new ORefListData(TAG_MEASUREMENT_REFS);
 		detail = new StringData(TAG_DETAIL);
 		comment = new StringData(TAG_COMMENTS);
 		viabilityRatingsComment = new StringData(TAG_VIABILITY_RATINGS_COMMENT);
-	    thresholdDetails = new StringMapData(TAG_THRESHOLD_DETAILS);
+	    thresholdDetails = new StringStringMapData(TAG_THRESHOLD_DETAILS);
 
 		futureStatusRating = new ChoiceData(TAG_FUTURE_STATUS_RATING, getQuestion(StatusQuestion.class));
 		futureStatusDate = new DateData(TAG_FUTURE_STATUS_DATE);
@@ -455,13 +455,13 @@ public class Indicator extends BaseObject
 	private StringData shortLabel;
 	private ChoiceData priority;
 	private IdListData methodIds;
-	private StringMapData indicatorThreshold;
+	private StringStringMapData indicatorThreshold;
 	private ChoiceData ratingSource;
 	private ORefListData measurementRefs;
 	private StringData detail;
 	private StringData comment;
 	private StringData viabilityRatingsComment;
-	private StringMapData thresholdDetails;
+	private StringStringMapData thresholdDetails;
 
 	private ChoiceData futureStatusRating;
 	private DateData futureStatusDate;

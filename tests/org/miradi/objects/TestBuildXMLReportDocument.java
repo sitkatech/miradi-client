@@ -39,7 +39,7 @@ import org.miradi.objects.FactorLink;
 import org.miradi.project.Project;
 import org.miradi.utils.EAMFileSaveChooser;
 import org.miradi.utils.EAMXmlFileChooser;
-import org.miradi.utils.StringMapData;
+import org.miradi.utils.StringStringMapData;
 
 
 public class TestBuildXMLReportDocument extends EAMTestCase
@@ -136,7 +136,7 @@ public class TestBuildXMLReportDocument extends EAMTestCase
 				continue;
 			if (object.getField(tags[i]) instanceof ChoiceData)
 				continue;
-			if (object.getField(tags[i]) instanceof StringMapData)
+			if (object.getField(tags[i]) instanceof StringStringMapData)
 				continue;
 			
 			lineNumber = lineNumber + 10;
