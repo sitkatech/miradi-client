@@ -92,6 +92,9 @@ public class DashboardProgressEditorField extends AbstractStringMapCodeListEdito
 			try
 			{
 				CodeList codes = new CodeList(parentCodesAsString);
+				if (codes.size() > 1)
+					throw new RuntimeException("CodeList as string should not have more than one code:" + parentCodesAsString);
+
 				if (!codes.isEmpty())
 					return codes.firstElement();
 			}
