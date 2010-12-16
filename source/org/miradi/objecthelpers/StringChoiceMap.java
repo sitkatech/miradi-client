@@ -62,11 +62,5 @@ public class StringChoiceMap extends AbstractStringKeyMap
 		return data.equals(other.data);
 	}
 	
-	@Override
-	public String get(String code)
-	{
-		return data.get(code);
-	}
-
 	private static final String TAG_STRING_CHOICE_MAP = "StringChoiceMap";
 }
