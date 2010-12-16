@@ -109,7 +109,7 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		if (choiceItem.hasChildren())
 			addRowWithoutIcon(choiceItem.getLabel(), EMPTY_LEFT_COLUMN_TEXT, new HashMap<String, String>(), choiceItem.getLongDescriptionProvider(), level);
 		else
-			addRowWithStatusIcon(choiceItem.getLabel(), choiceItem.getLongDescriptionProvider(), choiceItem.getCode(), level);
+			addRowWithStatusIcon(choiceItem, level);
 	}
 
 	private void addRowsWithRightColumn(ChoiceItem choiceItem, int level) throws Exception
@@ -140,17 +140,17 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		}
 	}
 	
-	private void addRowWithStatusIcon(String leftColumnText, AbstractLongDescriptionProvider longDescriptionProvider, String code, int level) throws Exception
+	private void addRowWithStatusIcon(ChoiceItem choiceItem, int level) throws Exception
 	{
-		ObjectDataInputField statusIconField = new DashboardStatusIconField(getProject(), getDashboard().getRef(), code);
+		ObjectDataInputField statusIconField = new DashboardStatusIconField(getProject(), getDashboard().getRef(), choiceItem.getCode());
 		addFieldToList(statusIconField);
 		statusIconField.updateFromObject();
 		
-		ObjectDataInputField statusTextField = new DashboarStatusLabelField(getProject(), getDashboard().getRef(), code);
+		ObjectDataInputField statusTextField = new DashboarStatusLabelField(getProject(), getDashboard().getRef(), choiceItem.getCode());
 		addFieldToList(statusTextField);
 		statusTextField.updateFromObject();
 		
-		addRow(longDescriptionProvider, level, statusIconField.getComponent(), new PanelTitleLabel(leftColumnText), statusTextField.getComponent());
+		addRow(choiceItem.getLongDescriptionProvider(), level, statusIconField.getComponent(), new PanelTitleLabel(choiceItem.getLabel()), statusTextField.getComponent());
 	}
 	
 	private void addRowWithoutIcon(String leftColumnText, String rightColumnText, HashMap<String, String> tokenReplacementMap, AbstractLongDescriptionProvider longDescriptionProvider, int level) throws Exception
