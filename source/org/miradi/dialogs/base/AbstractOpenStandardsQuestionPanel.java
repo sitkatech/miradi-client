@@ -100,7 +100,10 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 	private void addRow(ChoiceItem choiceItem, int level) throws Exception
 	{
 		setRowWizardStep(choiceItem);
-		addRowWithStatusIcon(choiceItem.getLabel(), EMPTY_LEFT_COLUMN_TEXT, new HashMap<String, String>(), choiceItem.getLongDescriptionProvider(), choiceItem.getCode(), level);
+		if (choiceItem.hasChildren())
+			addRowWithoutIcon(choiceItem.getLabel(), EMPTY_LEFT_COLUMN_TEXT, new HashMap<String, String>(), choiceItem.getLongDescriptionProvider(), level);
+		else
+			addRowWithStatusIcon(choiceItem.getLabel(), EMPTY_LEFT_COLUMN_TEXT, new HashMap<String, String>(), choiceItem.getLongDescriptionProvider(), choiceItem.getCode(), level);
 		
 		Vector<DashboardRowDefinition> rowDefinitions = getDashboardRowDefinitionManager().getRowDefinitions(choiceItem.getCode());
 		for (DashboardRowDefinition rowDefinition: rowDefinitions)
