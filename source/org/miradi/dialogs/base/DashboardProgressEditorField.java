@@ -87,12 +87,11 @@ public class DashboardProgressEditorField extends AbstractStringMapCodeListEdito
 			return extractSingleCode(super.getText());
 		}
 
-		private String extractSingleCode(String parentCodes)
+		private String extractSingleCode(String parentCodesAsString)
 		{
 			try
 			{
-				
-				CodeList codes = new CodeList(parentCodes);
+				CodeList codes = new CodeList(parentCodesAsString);
 				if (!codes.isEmpty())
 					return codes.firstElement();
 			}
