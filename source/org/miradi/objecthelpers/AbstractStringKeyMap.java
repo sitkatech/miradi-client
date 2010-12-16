@@ -83,8 +83,6 @@ abstract public class AbstractStringKeyMap
 		json.put(getMapTag(), array);
 		return json;
 	}
-
-
 	
 	public String get(String code)
 	{
