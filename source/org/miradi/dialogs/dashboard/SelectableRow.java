@@ -22,6 +22,7 @@ package org.miradi.dialogs.dashboard;
 
 import java.awt.Color;
 import java.awt.event.MouseListener;
+import java.util.Vector;
 
 import javax.swing.JComponent;
 
@@ -29,17 +30,18 @@ import org.miradi.main.AppPreferences;
 
 public class SelectableRow
 {
-	public SelectableRow(JComponent leftSideToUse, JComponent rightSideToUse, AbstractLongDescriptionProvider descriptionProviderToUse)
+	public SelectableRow(Vector<JComponent> selectableComponentsToUse, AbstractLongDescriptionProvider descriptionProviderToUse)
 	{
-		leftSide = leftSideToUse;
-		rightSide = rightSideToUse;
+		selectableComponents = selectableComponentsToUse;
 		descriptionProvider = descriptionProviderToUse;
 	}
 	
 	public void addMouseListener(MouseListener listener)
 	{
-		leftSide.addMouseListener(listener);
-		rightSide.addMouseListener(listener);
+		for (int index = 0; index < selectableComponents.size(); ++index)
+		{
+			selectableComponents.get(index).addMouseListener(listener);
+		}		
 	}
 	
 	public AbstractLongDescriptionProvider getDescriptionProvider()
@@ -50,8 +52,10 @@ public class SelectableRow
 	public void selectRow() throws Exception
 	{
 		isSelected = true;
-		setSelectionBorder(leftSide);
-		setSelectionBorder(rightSide);
+		for (int index = 0; index < selectableComponents.size(); ++index)
+		{
+			setSelectionBorder(selectableComponents.get(index));
+		}
 	}
 	
 	private void unSelect()
@@ -72,8 +76,10 @@ public class SelectableRow
 	public void clearSelection()
 	{
 		unSelect();
-		setBackgroundColor(leftSide, AppPreferences.getDataPanelBackgroundColor());
-		setBackgroundColor(rightSide, AppPreferences.getDataPanelBackgroundColor());
+		for (int index = 0; index < selectableComponents.size(); ++index)
+		{
+			setBackgroundColor(selectableComponents.get(index), AppPreferences.getDataPanelBackgroundColor());
+		}
 	}
 	
 	private void setBackgroundColor(JComponent component, Color backgroundColor)
@@ -85,7 +91,7 @@ public class SelectableRow
 	@Override
 	public int hashCode()
 	{
-		return leftSide.hashCode() + rightSide.hashCode();
+		return selectableComponents.hashCode();
 	}
 
 	@Override
@@ -95,14 +101,11 @@ public class SelectableRow
 			return false;
 
 		SelectableRow selectableRow = (SelectableRow) rawObjet;
-		if(!selectableRow.leftSide.equals(leftSide))
-			return false;
 
-		return selectableRow.rightSide.equals(rightSide);
+		return selectableRow.selectableComponents.equals(selectableComponents);
 	}
-	
-	private JComponent leftSide;
-	private JComponent rightSide;
+
+	private Vector<JComponent> selectableComponents;
 	private boolean isSelected;
 	private AbstractLongDescriptionProvider descriptionProvider;
 }

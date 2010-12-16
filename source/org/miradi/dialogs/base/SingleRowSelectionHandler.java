@@ -58,9 +58,9 @@ public class SingleRowSelectionHandler
 
 	}
 	
-	public void addSelectableRow(JComponent leftComponent, JComponent rightComponent, AbstractLongDescriptionProvider descriptionProviderToUse)
+	public void addSelectableRow(Vector<JComponent> selectableComponentsToUse, AbstractLongDescriptionProvider descriptionProviderToUse)
 	{
-		SelectableRow selectableRow = new SelectableRow(leftComponent, rightComponent, descriptionProviderToUse);
+		SelectableRow selectableRow = new SelectableRow(selectableComponentsToUse, descriptionProviderToUse);
 		selectableRow.addMouseListener(new ClickHandler(selectableRow));
 		getSafeSelectableRows().add(selectableRow);
 	}

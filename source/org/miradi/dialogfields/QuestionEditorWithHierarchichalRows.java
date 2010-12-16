@@ -167,7 +167,10 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 		mainRowsPanel.add(box);
 		mainRowsPanel.add(rightComponent);
 		
-		getSafeRowSelectionHandler().addSelectableRow(leftComponent, rightComponent, choiceItem.getLongDescriptionProvider());
+		Vector<JComponent> selectableComponents = new Vector<JComponent>();
+		selectableComponents.add(leftColumnComponent);
+		selectableComponents.add(rightComponent);
+		getSafeRowSelectionHandler().addSelectableRow(selectableComponents, choiceItem.getLongDescriptionProvider());
 	}
 	
 	protected Box createHorizontalBoxWithIndents(int indentCount)
