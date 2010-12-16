@@ -107,7 +107,7 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 	private void addRowsWithLeftColumn(ChoiceItem choiceItem, int level) throws Exception
 	{
 		if (choiceItem.hasChildren())
-			addRowWithoutIcon(choiceItem.getLabel(), EMPTY_LEFT_COLUMN_TEXT, new HashMap<String, String>(), choiceItem.getLongDescriptionProvider(), level);
+			addRowWithoutIcon(choiceItem.getLabel(), EMPTY_COLUMN_TEXT, new HashMap<String, String>(), choiceItem.getLongDescriptionProvider(), level);
 		else
 			addRowWithStatusIcon(choiceItem, level);
 	}
@@ -125,7 +125,7 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 				tokenReplacementMap.put("%" + Integer.toString(index + 1), getDashboardData(pseudoTags.get(index)));
 			}
 
-			addRowWithoutIcon(EMPTY_LEFT_COLUMN_TEXT, rowDefinition.getRightColumnTemplate(), tokenReplacementMap, choiceItem.getLongDescriptionProvider(), level);
+			addRowWithoutIcon(EMPTY_COLUMN_TEXT, rowDefinition.getRightColumnTemplate(), tokenReplacementMap, choiceItem.getLongDescriptionProvider(), level);
 		}
 	}
 
@@ -254,5 +254,5 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 	private DynamicChoiceWithRootChoiceItem question;
 	private SingleRowSelectionHandler rowSelectionHandler;
 	protected static final int INDENT_PER_LEVEL = 25;
-	protected static final String EMPTY_LEFT_COLUMN_TEXT = "";
+	protected static final String EMPTY_COLUMN_TEXT = "";
 }
