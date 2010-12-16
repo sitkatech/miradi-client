@@ -45,7 +45,7 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DoubleUtilities;
-import org.miradi.utils.StringMapData;
+import org.miradi.utils.StringStringMapData;
 
 public class RtfFormExporter
 {
@@ -229,7 +229,7 @@ public class RtfFormExporter
 			return createFromChoiceData(rawObjectData);
 		
 		if (rawObjectData.isStringMapData())
-			return createFromStringMapData((StringMapData) rawObjectData, formRow);
+			return createFromStringMapData((StringStringMapData) rawObjectData, formRow);
 	
 		return rawObjectData.get();
 	}
@@ -242,7 +242,7 @@ public class RtfFormExporter
 		return choiceItem.getLabel();
 	}
 	
-	private String createFromStringMapData(StringMapData stringMapData, FormRow formRow)
+	private String createFromStringMapData(StringStringMapData stringMapData, FormRow formRow)
 	{
 		if (formRow.getLeftFormItemsCount() == 0)
 			return "";

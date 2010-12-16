@@ -26,7 +26,7 @@ import org.miradi.objecthelpers.StringStringMap;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.utils.EnhancedJsonObject;
-import org.miradi.utils.StringMapData;
+import org.miradi.utils.StringStringMapData;
 
 public class ThreatRatingCommentsData extends BaseObject
 {
@@ -130,8 +130,8 @@ public class ThreatRatingCommentsData extends BaseObject
 	{
 		super.clear();
 		
-		simpleThreatRatingCommentsMap = new StringMapData(TAG_SIMPLE_THREAT_RATING_COMMENTS_MAP);
-		stressBasedThreatRatingCommentsMap = new StringMapData(TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAP);
+		simpleThreatRatingCommentsMap = new StringStringMapData(TAG_SIMPLE_THREAT_RATING_COMMENTS_MAP);
+		stressBasedThreatRatingCommentsMap = new StringStringMapData(TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAP);
 		
 		addField(TAG_SIMPLE_THREAT_RATING_COMMENTS_MAP, simpleThreatRatingCommentsMap);
 		addField(TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAP, stressBasedThreatRatingCommentsMap);
@@ -142,6 +142,6 @@ public class ThreatRatingCommentsData extends BaseObject
 	public static final String TAG_SIMPLE_THREAT_RATING_COMMENTS_MAP = "SimpleThreatRatingCommentsMap";
 	public static final String TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAP = "StressBasedThreatRatingCommentsMap";
 	
-	private StringMapData simpleThreatRatingCommentsMap;
-	private StringMapData stressBasedThreatRatingCommentsMap;
+	private StringStringMapData simpleThreatRatingCommentsMap;
+	private StringStringMapData stressBasedThreatRatingCommentsMap;
 }

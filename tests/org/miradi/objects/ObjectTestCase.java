@@ -68,7 +68,7 @@ import org.miradi.utils.DateRange;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.StringChoiceMapData;
-import org.miradi.utils.StringMapData;
+import org.miradi.utils.StringStringMapData;
 
 public class ObjectTestCase extends TestCaseWithProject
 {
@@ -230,7 +230,7 @@ public class ObjectTestCase extends TestCaseWithProject
 			list.add(new BaseId(7));
 			return list.toString();
 		}
-		else if(field instanceof StringMapData)
+		else if(field instanceof StringStringMapData)
 		{
 			StringStringMap list = new StringStringMap();
 			list.put("A","RolaA");

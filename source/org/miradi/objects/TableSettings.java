@@ -40,7 +40,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.SortDirectionQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
-import org.miradi.utils.StringMapData;
+import org.miradi.utils.StringStringMapData;
 
 public class TableSettings extends BaseObject
 {
@@ -186,11 +186,11 @@ public class TableSettings extends BaseObject
 
 		tableIdentifier = new StringData(TAG_TABLE_IDENTIFIER);
 		columnSequenceCodes = new TagListData(TAG_COLUMN_SEQUENCE_CODES);
-		columnWidths = new StringMapData(TAG_COLUMN_WIDTHS);
+		columnWidths = new StringStringMapData(TAG_COLUMN_WIDTHS);
 		rowHeight = new IntegerData(TAG_ROW_HEIGHT);
 		expandedNodesRefListList = new RefListListData(TAG_TREE_EXPANSION_LIST);
 		dateUnitListList = new DateUnitListData(TAG_DATE_UNIT_LIST_DATA);
-		tableSettingsMap = new StringMapData(TAG_TABLE_SETTINGS_MAP);
+		tableSettingsMap = new StringStringMapData(TAG_TABLE_SETTINGS_MAP);
 		columnSortTag = new StringData(TAG_COLUMN_SORT_TAG);
 		columnSortDirection = new ChoiceData(TAG_COLUMN_SORT_DIRECTION, getQuestion(SortDirectionQuestion.class));
 		
@@ -222,11 +222,11 @@ public class TableSettings extends BaseObject
 	
 	private StringData tableIdentifier;
 	private TagListData columnSequenceCodes;
-	private StringMapData columnWidths;
+	private StringStringMapData columnWidths;
 	private IntegerData rowHeight;
 	private RefListListData expandedNodesRefListList;
 	private DateUnitListData dateUnitListList;
-	private StringMapData tableSettingsMap;
+	private StringStringMapData tableSettingsMap;
 	private StringData columnSortTag;
 	private ChoiceData columnSortDirection;
 }
