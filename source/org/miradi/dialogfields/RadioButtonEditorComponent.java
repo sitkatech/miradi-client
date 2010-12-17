@@ -37,8 +37,14 @@ public class RadioButtonEditorComponent extends QuestionBasedEditorComponent
 		super(questionToUse, SINGLE_COLUMN);
 		
 		setEtchedBorder();
+		initializeRadioButtons();
 	}
 	
+	private void initializeRadioButtons()
+	{
+		setText("");
+	}
+
 	private void setEtchedBorder()
 	{
 		setBorder(BorderFactory.createEtchedBorder());
