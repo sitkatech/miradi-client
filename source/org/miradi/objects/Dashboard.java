@@ -291,7 +291,7 @@ public class Dashboard extends BaseObject
 	private String getStatusCode(Collection<String> rawDataValues)
 	{
 		if (rawDataValues.isEmpty())
-			return OpenStandardsProgressQuestion.NOT_SPECIFIED_CODE;
+			return OpenStandardsProgressQuestion.NOT_STARTED_CODE;
 		
 		int valuesWithDataCount = 0;
 		for (String rawData : rawDataValues)
@@ -301,7 +301,7 @@ public class Dashboard extends BaseObject
 		}
 		
 		if (valuesWithDataCount == 0)
-			return OpenStandardsProgressQuestion.NOT_SPECIFIED_CODE;
+			return OpenStandardsProgressQuestion.NOT_STARTED_CODE;
 			
 		if (valuesWithDataCount < rawDataValues.size())
 			return OpenStandardsProgressQuestion.NOT_STARTED_CODE;

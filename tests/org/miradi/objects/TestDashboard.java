@@ -51,19 +51,28 @@ public class TestDashboard extends ObjectTestCase
 
 	public void testGetEffectiveStatusMapWithData() throws Exception
 	{
-		verifyTeamMemberEffectiveStatus(OpenStandardsProgressQuestion.NOT_SPECIFIED_CODE);
+		verifyTeamMemberEffectiveStatus(OpenStandardsProgressQuestion.NOT_STARTED_CODE);
 		
 		getProject().createProjectResource();
 		verifyTeamMemberEffectiveStatus(OpenStandardsProgressQuestion.IN_PROGRESS_CODE);
+	}
+	
+	public void testGetEffectiveStatusMapWithUserData() throws Exception
+	{
+		getProject().createProjectResource();
+		StringChoiceMap userMap = new StringChoiceMap();
+		userMap.put(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE, OpenStandardsProgressQuestion.COMPLETE_CODE);
+		getDashboard().setData(Dashboard.TAG_USER_STATUS_CHOICE_MAP, userMap.toString());
+		verifyTeamMemberEffectiveStatus(OpenStandardsProgressQuestion.COMPLETE_CODE);
 	}
 
 	private void verifyTeamMemberEffectiveStatus(String expectedCode) throws Exception
 	{
 		StringChoiceMap mapAsString = getEffectiveStatusMap();
 		StringChoiceMap map = new StringChoiceMap(mapAsString);
-		String targetStatusCount = map.get(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE);
+		String teamMemberStatusCode = map.get(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE);
 
-		assertEquals("Incorrect status count?", expectedCode, targetStatusCount);
+		assertEquals("Incorrect status count?", expectedCode, teamMemberStatusCode);
 	}
 	
 	private StringChoiceMap createStringChoiceMapForEmptyProject()
@@ -72,7 +81,7 @@ public class TestDashboard extends ObjectTestCase
 		StringChoiceMap emptyMap = new StringChoiceMap();
 		for (int index = 0; index < allThirdLEvelCodes.size(); ++index)
 		{
-			String progressCode = OpenStandardsProgressQuestion.NOT_SPECIFIED_CODE;
+			String progressCode = OpenStandardsProgressQuestion.NOT_STARTED_CODE;
 			String thirdLevelCode = allThirdLEvelCodes.get(index);
 			if (thirdLevelCode.equals(OpenStandardsPlanActionsAndMonitoringQuestion.PLAN_PROJECT_LIFESPAN_AND_EXIT_STRATEGY_CODE))
 				progressCode = OpenStandardsProgressQuestion.IN_PROGRESS_CODE;
