@@ -24,8 +24,9 @@ import org.miradi.main.EAM;
 
 public class NotifyDialogTemplate
 {
-	public NotifyDialogTemplate(String titleToUse, String notificationTextToUse)
+	public NotifyDialogTemplate(String dialogCodeToUse, String titleToUse, String notificationTextToUse)
 	{
+		dialogCode = dialogCodeToUse;
 		title = titleToUse;
 		notificationText = notificationTextToUse;
 	}
@@ -40,6 +41,11 @@ public class NotifyDialogTemplate
 		return title;
 	}
 
+	public String getDialogCode()
+	{
+		return dialogCode;
+	}
+
 	public String[] getButtonLabels()
 	{
 		return new String[] {CLOSE_TEXT};
@@ -47,6 +53,7 @@ public class NotifyDialogTemplate
 
 	private final String CLOSE_TEXT = EAM.text("Button|Close");
 	
+	private String dialogCode;
 	private String title;
 	private String notificationText;
 }

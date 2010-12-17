@@ -391,6 +391,7 @@ public class AppPreferences
 		json.put(TAG_TAGGED_STRINGS, putStringMapToJson());
 		
 		json.put(TAG_IS_SPELL_CHECK_ENABLED, isSpellCheckEnabled);
+		json.put(TAG_NOTIFY_DIALOGS_TO_NEVER_SHOW_AGAIN, notifyDialogsToNeverShowAgain.toString());
 		
 		return json;
 	}
@@ -461,6 +462,7 @@ public class AppPreferences
 		taggedStringMap = loadTagStringMap(json);
 		
 		isSpellCheckEnabled = json.optBoolean(TAG_IS_SPELL_CHECK_ENABLED);
+		notifyDialogsToNeverShowAgain = json.optCodeList(TAG_NOTIFY_DIALOGS_TO_NEVER_SHOW_AGAIN);
 	}
 
 	private HashMap<String, String> loadTagStringMap(EnhancedJsonObject json)
@@ -630,7 +632,23 @@ public class AppPreferences
 		EAM.logWarning("Unknown work units date unit type: " + dateUnit);
 		return BUDGET_DETAILS_TOTAL_BACKGROUND;
 	}
+	
+	public void neverShowNotifyDialogAgain(String notifyDialogCode)
+	{
+		if(!notifyDialogsToNeverShowAgain.contains(notifyDialogCode))
+			notifyDialogsToNeverShowAgain.add(notifyDialogCode);
+	}
 
+	public void showNotifyDialogAgain(String notifyDialogCode)
+	{
+		if(notifyDialogsToNeverShowAgain.contains(notifyDialogCode))
+			notifyDialogsToNeverShowAgain.removeCode(notifyDialogCode);
+	}
+
+	public boolean shouldNeverShowNotifyDialogAgain(String dialogCode)
+	{
+		return notifyDialogsToNeverShowAgain.contains(dialogCode);
+	}
 
 	public static final String TAG_COLOR_STRATEGY = "ColorIntervention";
 	public static final String TAG_COLOR_ACTIVITIES = "ColorActivities";
@@ -652,6 +670,7 @@ public class AppPreferences
 	public static final String TAG_INSTALLED_SAMPLE_VERSIONS = "InstalledSampleVersions";
 	public static final String TAG_DASHBOARD_WINDOW_SIZE = "DashboardWindowSize";
 	public static final String TAG_DASHBOARD_WINDOW_POSITION = "DashbaoardWindowPosition";
+	public static final String TAG_NOTIFY_DIALOGS_TO_NEVER_SHOW_AGAIN = "NotifyDialogsToNeverShowAgain";
 	
 	public static final String TAG_GRID_VISIBLE = "GridVisible";
 	public static final String TAG_CELL_RATINGS_VISIBLE = "CellRatingsVisible";
@@ -743,6 +762,7 @@ public class AppPreferences
 	private CodeList installedSampleVersions;
 	private DimensionData dashboardWindowSize;
 	private PointData dashboardWindowPosition;
+	private CodeList notifyDialogsToNeverShowAgain;
 	
 	private String wizardFontFamily;
 	private int wizardFontSize;
@@ -754,6 +774,7 @@ public class AppPreferences
 
 	private HashMap<String, Integer> taggedIntMap;
 	private HashMap<String, String> taggedStringMap;
+	
 
 	private boolean isSpellCheckEnabled;
 }

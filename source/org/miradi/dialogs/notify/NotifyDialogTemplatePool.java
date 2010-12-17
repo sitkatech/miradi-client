@@ -41,7 +41,7 @@ public class NotifyDialogTemplatePool
 				"and paste them there. " +
 				"Then use the &lt;Cut&gt; command to move them to the clipboard, " +
 				"return to this diagram, and paste the new copies here.");
-		return new NotifyDialogTemplate(title, notificationTextToUse);
+		return new NotifyDialogTemplate("PastedSharedFactors", title, notificationTextToUse);
 	}
 
 }
