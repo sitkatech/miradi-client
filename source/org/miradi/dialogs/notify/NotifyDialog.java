@@ -32,6 +32,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+import org.martus.swing.UiCheckBox;
 import org.miradi.dialogs.base.DialogWithDisposablePanelAndMainWindowUpdating;
 import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.layout.OneColumnGridLayout;
@@ -44,6 +45,9 @@ public class NotifyDialog extends DialogWithDisposablePanelAndMainWindowUpdating
 {
 	public static void notify(MainWindow mainWindow, NotifyDialogTemplate template)
 	{
+		if(mainWindow.getAppPreferences().shouldNeverShowNotifyDialogAgain(template.getDialogCode()))
+			return;
+		
 		showDialog(mainWindow, template);
 	}
 	
@@ -61,6 +65,12 @@ public class NotifyDialog extends DialogWithDisposablePanelAndMainWindowUpdating
 		FlexibleWidthHtmlViewer htmlPanel = new FlexibleWidthHtmlViewer(mainWindow, template.getNotificationText());
 		panel.add(htmlPanel);
 
+		panel.add(new FillerLabel());
+		UiCheckBox neverShowAgainCheckBox = new UiCheckBox(EAM.text("Don't show this dialog again"));
+		neverShowAgainCheckBox.setBackground(backgroundColor);
+		neverShowAgainCheckBox.addActionListener(new NeverAgainCheckBoxHandler(getMainWindow(), template.getDialogCode()));
+		panel.add(neverShowAgainCheckBox);
+		
 		panel.add(new FillerLabel());
 		Box buttonPanel = Box.createHorizontalBox();
 		buttonPanel.setBackground(backgroundColor);
