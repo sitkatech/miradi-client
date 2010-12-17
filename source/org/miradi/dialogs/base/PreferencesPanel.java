@@ -38,6 +38,7 @@ import org.martus.swing.UiCheckBox;
 import org.martus.swing.UiComboBox;
 import org.martus.swing.UiLabel;
 import org.miradi.diagram.DiagramConstants;
+import org.miradi.dialogs.NeverShowAgainPanel;
 import org.miradi.dialogs.diagram.DiagramProjectPreferencesPanel;
 import org.miradi.dialogs.fieldComponents.PanelCheckBox;
 import org.miradi.dialogs.fieldComponents.PanelComboBox;
@@ -94,6 +95,10 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 			threatRatingPreferencesPanel.dispose();
 		threatRatingPreferencesPanel = null;
 
+		if(neverShowAgainPanel != null)
+			neverShowAgainPanel.dispose();
+		neverShowAgainPanel = null;
+		
 		super.dispose();
 	}
 	
@@ -117,6 +122,8 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		{
 			tabPane.addTab(EAM.text("Data Location"), createDataLocationTab());
 		}
+		
+		tabPane.addTab(EAM.text("Notifications"), createNeverShowAgainPanel());
 			
 		
 		return tabPane;
@@ -125,6 +132,11 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	private JPanel createDataLocationTab()
 	{
 		return new DataLocationChooserPanel(getMainWindow());
+	}
+	
+	private JPanel createNeverShowAgainPanel()
+	{
+		return new NeverShowAgainPanel(getMainWindow());
 	}
 	
 	private JPanel createSystemwideTab()
@@ -393,6 +405,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	private ThreatRatingPreferencesPanel threatRatingPreferencesPanel;
 	private SummaryPlanningPanel summaryPlanningPanel;
 	private ProjectSettingsPanel projectSettingsPanel;
+	private NeverShowAgainPanel neverShowAgainPanel;
 	
 	private UiComboBox interventionDropdown;
 	private UiComboBox directThreatDropdown;
