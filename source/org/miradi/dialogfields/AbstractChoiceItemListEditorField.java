@@ -20,8 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields;
 
-import java.awt.Dimension;
-
 import javax.swing.JComponent;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -30,7 +28,6 @@ import org.miradi.ids.BaseId;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
-import org.miradi.utils.MiradiScrollPane;
 
 abstract public class AbstractChoiceItemListEditorField extends ObjectDataInputField implements ListSelectionListener
 {
@@ -45,13 +42,6 @@ abstract public class AbstractChoiceItemListEditorField extends ObjectDataInputF
 
 		codeListEditor = createCodeListEditor(questionToUse, columnCount);
 		codeListEditor.addListSelectionListener(this);
-		component = new MiradiScrollPane(codeListEditor);
-		Dimension preferredSize = component.getPreferredSize();
-		final int ARBITRARY_REASONABLE_MAX_WIDTH = 800;
-		final int ARBITRARY_REASONABLE_MAX_HEIGHT = 600;
-		int width = Math.min(preferredSize.width, ARBITRARY_REASONABLE_MAX_WIDTH);
-		int height = Math.min(preferredSize.height, ARBITRARY_REASONABLE_MAX_HEIGHT);
-		component.getViewport().setPreferredSize(new Dimension(width, height));
 	}
 
 	protected QuestionBasedEditorComponent createCodeListEditor(ChoiceQuestion questionToUse, int columnCount)
@@ -62,7 +52,7 @@ abstract public class AbstractChoiceItemListEditorField extends ObjectDataInputF
 	@Override
 	public JComponent getComponent()
 	{
-		return component;
+		return codeListEditor;
 	}
 
 	@Override
@@ -105,5 +95,4 @@ abstract public class AbstractChoiceItemListEditorField extends ObjectDataInputF
 	}
 	
 	protected QuestionBasedEditorComponent codeListEditor;
-	protected MiradiScrollPane component;
 }
