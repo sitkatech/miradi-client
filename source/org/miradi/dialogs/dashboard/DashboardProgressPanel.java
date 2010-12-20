@@ -24,7 +24,8 @@ import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
-import org.miradi.questions.OpenStandardsProgressQuestion;
+import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.OpenStandardsDynamicProgressStatuQuestion;
 
 public class DashboardProgressPanel extends ObjectDataInputPanel
 {
@@ -32,7 +33,8 @@ public class DashboardProgressPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, refToUse);
 		
-		addField(createDashboardProgressEditorField(refToUse, Dashboard.TAG_USER_STATUS_CHOICE_MAP, OpenStandardsProgressQuestion.class, mapCodeToUse));
+		ChoiceQuestion question = new OpenStandardsDynamicProgressStatuQuestion(Dashboard.find(getProject(), refToUse), mapCodeToUse);
+		addField(createDashboardProgressEditorField(refToUse, Dashboard.TAG_USER_STATUS_CHOICE_MAP, question, mapCodeToUse));
 		addField(createStringMapField(refToUse, Dashboard.TAG_USER_COMMENTS_MAP, mapCodeToUse));
 		
 		updateFieldsFromProject();
