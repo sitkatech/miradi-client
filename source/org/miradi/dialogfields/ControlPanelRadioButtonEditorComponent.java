@@ -22,6 +22,8 @@ package org.miradi.dialogfields;
 
 import java.awt.Color;
 
+import javax.swing.BorderFactory;
+
 import org.miradi.main.AppPreferences;
 import org.miradi.questions.ChoiceQuestion;
 
@@ -30,11 +32,18 @@ public class ControlPanelRadioButtonEditorComponent extends RadioButtonEditorCom
 	public ControlPanelRadioButtonEditorComponent(ChoiceQuestion questionToUse)
 	{
 		super(questionToUse);
+		
+		setEtchedBorder();
 	}
 	
 	@Override
 	protected Color getTogglePanelBackgroundColor()
 	{
 		return AppPreferences.getControlPanelBackgroundColor();
+	}
+
+	private void setEtchedBorder()
+	{
+		setBorder(BorderFactory.createEtchedBorder());
 	}
 }

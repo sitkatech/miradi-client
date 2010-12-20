@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields;
 
-import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JRadioButton;
 import javax.swing.JToggleButton;
@@ -36,7 +35,6 @@ public class RadioButtonEditorComponent extends QuestionBasedEditorComponent
 	{
 		super(questionToUse, SINGLE_COLUMN);
 		
-		setEtchedBorder();
 		initializeRadioButtons();
 	}
 	
@@ -45,11 +43,6 @@ public class RadioButtonEditorComponent extends QuestionBasedEditorComponent
 		setText("");
 	}
 
-	private void setEtchedBorder()
-	{
-		setBorder(BorderFactory.createEtchedBorder());
-	}
-	
 	@Override
 	protected void addAdditionalComponent()
 	{
