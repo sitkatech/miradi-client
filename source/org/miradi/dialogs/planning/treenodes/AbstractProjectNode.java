@@ -72,7 +72,7 @@ abstract public class AbstractProjectNode extends AbstractPlanningTreeNode
 	@Override
 	public void rebuild() throws Exception
 	{
-		children = new Vector<AbstractPlanningTreeNode>();
+		clearChildren();
 		if (shouldIncludeConceptualModelPage())
 			addConceptualModel();
 
