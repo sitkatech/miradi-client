@@ -61,7 +61,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 	{
 		project = projectToUse;
 		visibleRows = visibleRowsToUse;
-		children = new Vector<AbstractPlanningTreeNode>();
+		clearChildren();
 	}
 	
 	@Override
@@ -81,7 +81,12 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		EAM.logError("getObject() in getObjectTypeName is null");
 		return "";
 	}
-	
+
+	public void clearChildren()
+	{
+		children = new Vector<AbstractPlanningTreeNode>();
+	}
+
 	@Override
 	public TreeTableNode getChild(int index)
 	{
