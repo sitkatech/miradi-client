@@ -61,7 +61,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 	{
 		project = projectToUse;
 		visibleRows = visibleRowsToUse;
-		children = new Vector<AbstractPlanningTreeNode>();
+		clearChildren();
 	}
 	
 	@Override
