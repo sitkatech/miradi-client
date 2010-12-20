@@ -87,8 +87,10 @@ import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.OpenStandardsDynamicProgressStatuQuestion;
 import org.miradi.rtf.RtfWriter;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.TableExporter;
@@ -645,7 +647,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ObjectDataInputField createDashboardProgressEditorField(ORef refToUse, String tagToUse, Class questionClassToUse, String mapCodeToUse) throws Exception
 	{
-		return new DashboardProgressEditorField(getProject(), refToUse, tagToUse, getProject().getQuestion(questionClassToUse), mapCodeToUse);
+		return new DashboardProgressEditorField(getProject(), refToUse, tagToUse, new OpenStandardsDynamicProgressStatuQuestion(Dashboard.find(getProject(), refToUse), mapCodeToUse), mapCodeToUse);
 	}
 	
 	public PopupQuestionEditorField createPopupQuestionEditor(JDialog parentDialog, int objectType, String tagToUse, Class questionClass) throws Exception
