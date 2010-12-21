@@ -112,15 +112,6 @@ abstract public class TabbedView extends UmbrellaView
 		try
 		{
 			createTabs();
-			int desiredTab = getViewData().getCurrentTab();
-			EAM.logVerbose("Selecting tab " + desiredTab);
-			if(desiredTab >= tabs.getTabCount())
-			{
-				EAM.logDebug("Ignoring setting tab selection, setting selection to 0");
-				desiredTab = 0;
-			}
-			forceLayoutSoSplittersWork();
-			setTab(desiredTab);
 		}
 		catch (Exception e)
 		{
@@ -131,6 +122,16 @@ abstract public class TabbedView extends UmbrellaView
 			ignoreTabChanges = false;
 		}
 
+		int desiredTab = getViewData().getCurrentTab();
+		EAM.logVerbose("Selecting tab " + desiredTab);
+		if(desiredTab >= tabs.getTabCount())
+		{
+			EAM.logDebug("Ignoring setting tab selection, setting selection to 0");
+			desiredTab = 0;
+		}
+		setTab(desiredTab);
+
+		forceLayoutSoSplittersWork();
 	}
 
 	@Override
@@ -271,7 +272,6 @@ abstract public class TabbedView extends UmbrellaView
 	public void setTab(int newTab)
 	{
 		tabs.setSelectedIndex(newTab);
-		tabWasSelected();
 	}
 	
 	public void setCurrentSelectedTitle(String text)
