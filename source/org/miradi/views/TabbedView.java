@@ -456,7 +456,7 @@ abstract public class TabbedView extends UmbrellaView
 		menu.show(tabs, event.getX(), event.getY());
 	}
 	
-	public void prepareForTabSwitch()
+	protected void prepareForTabSwitch()
 	{
 		FieldSaver.savePendingEdits();
 		closeActivePropertiesDialog();
