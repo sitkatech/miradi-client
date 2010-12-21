@@ -37,7 +37,7 @@ import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.OpenStandardsProgressQuestion;
+import org.miradi.questions.OpenStandardsDynamicProgressStatuQuestion;
 import org.miradi.utils.Translation;
 
 
@@ -48,7 +48,8 @@ abstract public class AsbtractDashboardClickableStatusField extends ObjectDataIn
 		super(projectToUse, refToUse, Dashboard.PSEUDO_EFFECTIVE_STATUS_MAP);
 		
 		stringMapCode = stringMapCodeToUse;
-		question = getProject().getQuestion(OpenStandardsProgressQuestion.class);
+		Dashboard dashboard = Dashboard.find(getProject(), refToUse);
+		question = new OpenStandardsDynamicProgressStatuQuestion(dashboard, stringMapCodeToUse);
 		iconComponent = new PanelTitleLabel();
 		iconComponent.addMouseListener(new ClickHandler());
 	}

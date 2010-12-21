@@ -24,9 +24,9 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.StringChoiceMap;
 import org.miradi.questions.OpenStandardsConceptualizeQuestion;
+import org.miradi.questions.OpenStandardsDynamicProgressStatuQuestion;
 import org.miradi.questions.OpenStandardsImplementActionsAndMonitoringQuestion;
 import org.miradi.questions.OpenStandardsPlanActionsAndMonitoringQuestion;
-import org.miradi.questions.OpenStandardsProgressQuestion;
 import org.miradi.utils.CodeList;
 
 public class TestDashboard extends ObjectTestCase
@@ -51,19 +51,19 @@ public class TestDashboard extends ObjectTestCase
 
 	public void testGetEffectiveStatusMapWithData() throws Exception
 	{
-		verifyTeamMemberEffectiveStatus(OpenStandardsProgressQuestion.NOT_STARTED_CODE);
+		verifyTeamMemberEffectiveStatus(OpenStandardsDynamicProgressStatuQuestion.NOT_STARTED_CODE);
 		
 		getProject().createProjectResource();
-		verifyTeamMemberEffectiveStatus(OpenStandardsProgressQuestion.IN_PROGRESS_CODE);
+		verifyTeamMemberEffectiveStatus(OpenStandardsDynamicProgressStatuQuestion.IN_PROGRESS_CODE);
 	}
 	
 	public void testGetEffectiveStatusMapWithUserData() throws Exception
 	{
 		getProject().createProjectResource();
 		StringChoiceMap userMap = new StringChoiceMap();
-		userMap.put(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE, OpenStandardsProgressQuestion.COMPLETE_CODE);
+		userMap.put(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE, OpenStandardsDynamicProgressStatuQuestion.COMPLETE_CODE);
 		getDashboard().setData(Dashboard.TAG_USER_STATUS_CHOICE_MAP, userMap.toString());
-		verifyTeamMemberEffectiveStatus(OpenStandardsProgressQuestion.COMPLETE_CODE);
+		verifyTeamMemberEffectiveStatus(OpenStandardsDynamicProgressStatuQuestion.COMPLETE_CODE);
 	}
 
 	private void verifyTeamMemberEffectiveStatus(String expectedCode) throws Exception
@@ -81,13 +81,13 @@ public class TestDashboard extends ObjectTestCase
 		StringChoiceMap emptyMap = new StringChoiceMap();
 		for (int index = 0; index < allThirdLEvelCodes.size(); ++index)
 		{
-			String progressCode = OpenStandardsProgressQuestion.NOT_STARTED_CODE;
+			String progressCode = OpenStandardsDynamicProgressStatuQuestion.NOT_STARTED_CODE;
 			String thirdLevelCode = allThirdLEvelCodes.get(index);
 			if (thirdLevelCode.equals(OpenStandardsPlanActionsAndMonitoringQuestion.PLAN_PROJECT_LIFESPAN_AND_EXIT_STRATEGY_CODE))
-				progressCode = OpenStandardsProgressQuestion.IN_PROGRESS_CODE;
+				progressCode = OpenStandardsDynamicProgressStatuQuestion.IN_PROGRESS_CODE;
 			
 			if (thirdLevelCode.equals(OpenStandardsImplementActionsAndMonitoringQuestion.ESTIMATE_COSTS_FOR_ACTIVITIES_AND_MONITORING_CODE))
-				progressCode = OpenStandardsProgressQuestion.NOT_STARTED_CODE;
+				progressCode = OpenStandardsDynamicProgressStatuQuestion.NOT_STARTED_CODE;
 				
 			emptyMap.put(thirdLevelCode, progressCode);
 		}
