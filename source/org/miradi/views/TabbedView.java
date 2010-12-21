@@ -275,7 +275,15 @@ abstract public class TabbedView extends UmbrellaView
 	
 	public void setTab(int newTab)
 	{
+		int currentTabAccordingToSwing = tabs.getSelectedIndex();
+		boolean doesSwingThinkThisTabIsAlreadyCurrent = (newTab == currentTabAccordingToSwing);
 		tabs.setSelectedIndex(newTab);
+		if(doesSwingThinkThisTabIsAlreadyCurrent)
+		{
+			prepareForTabSwitch();
+			tabWasSelected();
+			getMainWindow().updateActionsAndStatusBar();
+		}
 	}
 	
 	public void setCurrentSelectedTitle(String text)
@@ -294,9 +302,14 @@ abstract public class TabbedView extends UmbrellaView
 		closeActivePropertiesDialog();
 		getMainWindow().updateActionStates();
 		getMainWindow().rebuildToolBar();
-		MiradiTabContentsPanelInterface newPanel = getTabPanel(getSelectedTabIndex());
-		if(newPanel != null)
-			newPanel.becomeActive();
+		currentTabIndex = tabs.getSelectedIndex();
+		if(currentTabIndex >= 0)
+		{
+			MiradiTabContentsPanelInterface newPanel = getTabPanel(currentTabIndex);
+			if(newPanel != null)
+				newPanel.becomeActive();
+		}
+		
 	}
 	
 	public Component getTabContents(int index)
@@ -462,23 +475,21 @@ abstract public class TabbedView extends UmbrellaView
 	{
 		public void stateChanged(ChangeEvent event)
 		{
-			if(!ignoreTabChanges)
-				prepareForTabSwitch();
-			
-			int newTab = tabs.getSelectedIndex();
-			if(!ignoreTabChanges)
-				recordTabChangeCommand(newTab);
-
 			int oldTab = currentTabIndex;
-			currentTabIndex = newTab;
-			if(!ignoreTabChanges)
-				tabWasSelected();
+			int newTab = tabs.getSelectedIndex();
 
+			if(!ignoreTabChanges)
+			{
+				prepareForTabSwitch();
+				tabWasSelected();
+				recordTabChangeCommand(oldTab, newTab);
+			}
+			
 			if(oldTab != newTab)
 				getMainWindow().updateActionsAndStatusBar();
 		}
 
-		private void recordTabChangeCommand(int newTab)
+		private void recordTabChangeCommand(int oldTab, int newTab)
 		{
 			EAM.logVerbose("TabChangeListener.stateChanged");
 			closeActivePropertiesDialog();
@@ -486,7 +497,7 @@ abstract public class TabbedView extends UmbrellaView
 			{
 				// NOTE: We can't execute a command here, but need to set the data, 
 				// and might need to record the command
-				CommandSetObjectData tabChangeCommand = createTabChangeCommand(newTab);
+				CommandSetObjectData tabChangeCommand = createTabChangeCommand(oldTab, newTab);
 				getProject().setObjectData(tabChangeCommand.getObjectORef(), tabChangeCommand.getFieldTag(), tabChangeCommand.getDataValue());
 				if(!getProject().isExecutingACommand())
 				{
@@ -501,10 +512,10 @@ abstract public class TabbedView extends UmbrellaView
 			}
 		}
 		
-		CommandSetObjectData createTabChangeCommand(int newTab) throws Exception
+		CommandSetObjectData createTabChangeCommand(int oldTab, int newTab) throws Exception
 		{
 			CommandSetObjectData cmd = new CommandSetObjectData(ObjectType.VIEW_DATA, getViewData().getId(), ViewData.TAG_CURRENT_TAB, Integer.toString(newTab));
-			cmd.setPreviousDataValue(Integer.toString(currentTabIndex));
+			cmd.setPreviousDataValue(Integer.toString(oldTab));
 			return cmd;
 		}
 
