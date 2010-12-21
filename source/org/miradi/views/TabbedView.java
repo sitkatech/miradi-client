@@ -63,6 +63,7 @@ abstract public class TabbedView extends UmbrellaView
 	{
 		super(mainWindowToUse);
 
+		clearCurrentTabIndex();
 		tabs = new PanelTabbedPane();
 		tabs.addChangeListener(new TabChangeListener());
 		tabs.setFocusable(false);
@@ -72,6 +73,11 @@ abstract public class TabbedView extends UmbrellaView
 		
 		setBackground(AppPreferences.getDarkPanelBackgroundColor());
 		setBorder(BorderFactory.createEmptyBorder(3,0,3,0));
+	}
+
+	private void clearCurrentTabIndex()
+	{
+		currentTabIndex = -1;
 	}
 
 	public abstract void createTabs() throws Exception;
@@ -140,9 +146,7 @@ abstract public class TabbedView extends UmbrellaView
 		ignoreTabChanges = true;
 		try
 		{
-			MiradiTabContentsPanelInterface selectedTabPanel = getSelectedTabPanel();
-			if(selectedTabPanel != null)
-				selectedTabPanel.becomeInactive();
+			prepareForTabSwitch();
 			deleteTabs();
 			tabs.removeAll();
 		}
@@ -447,7 +451,10 @@ abstract public class TabbedView extends UmbrellaView
 		{
 			MiradiTabContentsPanelInterface oldPanel = getTabPanel(currentTabIndex);
 			if(oldPanel != null)
+			{
+				clearCurrentTabIndex();
 				oldPanel.becomeInactive();
+			}
 		}
 	}
 
