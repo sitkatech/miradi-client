@@ -427,7 +427,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	}
 
 	@Override
-	public void prepareForTabSwitch()
+	protected void prepareForTabSwitch()
 	{
 		super.prepareForTabSwitch();
 		try
