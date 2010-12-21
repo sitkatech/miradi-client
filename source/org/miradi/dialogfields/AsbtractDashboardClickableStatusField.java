@@ -114,7 +114,7 @@ abstract public class AsbtractDashboardClickableStatusField extends ObjectDataIn
 	
 	abstract protected void updateLabel(ChoiceItem progressChoiceItem, PanelTitleLabel componentToUpdate);
 
-	protected PanelTitleLabel iconComponent;
-	protected String stringMapCode;
-	protected ChoiceQuestion question;
+	private PanelTitleLabel iconComponent;
+	private String stringMapCode;
+	private ChoiceQuestion question;
 }
