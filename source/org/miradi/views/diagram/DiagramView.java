@@ -580,11 +580,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		setTab(CONCEPTUAL_MODEL_INDEX);
 	}
 	
-	public void setDiagramTab(ORef resultsChainRef)
-	{
-		setTab(getTabIndex(resultsChainRef));
-	}
-	
 	public DiagramModel getDiagramModel()
 	{
 		DiagramComponent diagramComponent = getCurrentDiagramComponent();
