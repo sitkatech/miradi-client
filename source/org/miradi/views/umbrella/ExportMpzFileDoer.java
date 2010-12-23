@@ -24,7 +24,7 @@ import java.io.File;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.project.ProjectZipper;
+import org.miradi.project.ProjectMpzWriter;
 import org.miradi.utils.EAMFileSaveChooser;
 import org.miradi.utils.MpzFileChooser;
 
@@ -73,7 +73,7 @@ public class ExportMpzFileDoer extends AbstractFileSaverDoer
 		
 		try 
 		{
-			ProjectZipper.createProjectZipFile(chosen, directoryToZip);
+			ProjectMpzWriter.createProjectZipFile(chosen, directoryToZip);
 		} 
 		catch (Exception e) 
 		{

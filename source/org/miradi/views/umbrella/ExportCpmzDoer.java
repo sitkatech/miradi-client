@@ -28,7 +28,7 @@ import java.util.zip.ZipOutputStream;
 import org.miradi.exceptions.InvalidICUNSelectionException;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
-import org.miradi.project.ProjectZipper;
+import org.miradi.project.ProjectMpzWriter;
 import org.miradi.utils.CpmzFileChooser;
 import org.miradi.utils.MpzFileFilterForChooserDialog;
 import org.miradi.xml.XmlExporter;
@@ -98,7 +98,7 @@ public class ExportCpmzDoer extends XmlExporterDoer
 		ZipOutputStream out = new ZipOutputStream(byteOut);
 		try
 		{
-			ProjectZipper.writeProjectZip(out, getProject());
+			ProjectMpzWriter.writeProjectZip(out, getProject());
 		}
 		finally
 		{
