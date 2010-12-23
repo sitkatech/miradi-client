@@ -41,7 +41,7 @@ import com.thaiopensource.xml.sax.ErrorHandlerImpl;
 import com.thaiopensource.xml.sax.Jaxp11XMLReaderCreator;
 import com.thaiopensource.xml.sax.XMLReaderCreator;
 
-//NOTE: tis class was duplicated from com.thaiopensource.validate.ValidationDriver. in order to 
+//NOTE: this class was duplicated from com.thaiopensource.validate.ValidationDriver. in order to 
 //have better error handling
 public class MiradiValidationDriver
 {
