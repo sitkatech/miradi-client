@@ -21,9 +21,9 @@ package org.miradi.project;
 
 import org.miradi.main.EAMTestCase;
 
-public class TestProjectZipper extends EAMTestCase
+public class TestProjectMpzWriter extends EAMTestCase
 {
-	public TestProjectZipper(String name)
+	public TestProjectMpzWriter(String name)
 	{
 		super(name);
 	}
