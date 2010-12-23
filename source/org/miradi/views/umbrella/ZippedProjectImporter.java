@@ -25,7 +25,7 @@ import java.io.File;
 import javax.swing.filechooser.FileFilter;
 
 import org.miradi.main.MainWindow;
-import org.miradi.project.ProjectUnzipper;
+import org.miradi.project.ProjectMpzImporter;
 import org.miradi.utils.MpzFileFilterForChooserDialog;
 import org.miradi.utils.ZIPFileFilter;
 
@@ -44,7 +44,7 @@ public class ZippedProjectImporter extends AbstractProjectImporter
 	@Override
 	protected void createProject(File importFile, File homeDirectory, String newProjectFilename) throws Exception
 	{
-		ProjectUnzipper.unzipToProjectDirectory(importFile, homeDirectory, newProjectFilename);
+		ProjectMpzImporter.unzipToProjectDirectory(importFile, homeDirectory, newProjectFilename);
 	}
 
 	@Override

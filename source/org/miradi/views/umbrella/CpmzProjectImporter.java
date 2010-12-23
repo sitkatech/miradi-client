@@ -42,7 +42,7 @@ import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.TncProjectData;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
-import org.miradi.project.ProjectUnzipper;
+import org.miradi.project.ProjectMpzImporter;
 import org.miradi.utils.ConceptualModelByTargetSplitter;
 import org.miradi.utils.CpmzFileFilterForChooserDialog;
 import org.miradi.utils.GroupBoxHelper;
@@ -94,7 +94,7 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 		InputStream inputStream = zipFile.getInputStream(mpzEntry);
 		try
 		{
-			ProjectUnzipper.unzipToProjectDirectory(newProjectDir.getParentFile(), newProjectDir.getName(), inputStream);
+			ProjectMpzImporter.unzipToProjectDirectory(newProjectDir.getParentFile(), newProjectDir.getName(), inputStream);
 		}
 		finally
 		{

@@ -165,7 +165,7 @@ import org.miradi.project.TestProjectCommandExecutions;
 import org.miradi.project.TestProjectInfo;
 import org.miradi.project.TestProjectRepairer;
 import org.miradi.project.TestProjectTotalCalculator;
-import org.miradi.project.TestProjectUnzipper;
+import org.miradi.project.TestProjectMpzImporter;
 import org.miradi.project.TestProjectMpzWriter;
 import org.miradi.project.TestRealProject;
 import org.miradi.project.TestScopeBoxPool;
@@ -285,7 +285,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestSimpleThreatFormula.class));
 		suite.addTest(new TestSuite(TestTNCViabilityFormula.class));
 		suite.addTest(new TestSuite(TestProjectMpzWriter.class));
-		suite.addTest(new TestSuite(TestProjectUnzipper.class));
+		suite.addTest(new TestSuite(TestProjectMpzImporter.class));
 		suite.addTest(new TestSuite(TestFactorDeleteHelper.class));
 		suite.addTest(new TestSuite(TestStressBasedThreatFormula.class));
 		suite.addTest(new TestSuite(TestStressBasedThreatRatingFramework.class));

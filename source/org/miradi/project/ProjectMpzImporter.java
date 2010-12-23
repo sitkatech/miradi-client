@@ -33,7 +33,7 @@ import org.martus.util.DirectoryUtils;
 import org.miradi.database.ProjectServer;
 import org.miradi.main.EAM;
 
-public class ProjectUnzipper
+public class ProjectMpzImporter
 {
 	public static boolean isZipFileImportable(File zipFile) throws IOException
 	{
