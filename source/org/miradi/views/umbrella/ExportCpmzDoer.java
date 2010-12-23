@@ -94,12 +94,11 @@ public class ExportCpmzDoer extends XmlExporterDoer
 
 	private void addProjectAsMpzToZip(ZipOutputStream zipOut) throws Exception
 	{
-		File projectDir = getProject().getDatabase().getCurrentLocalProjectDirectory();
 		ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
 		ZipOutputStream out = new ZipOutputStream(byteOut);
 		try
 		{
-			ProjectZipper.addTreeToZip(out, projectDir.getName(), projectDir);
+			ProjectZipper.writeProjectZip(out, getProject());
 		}
 		finally
 		{

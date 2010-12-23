@@ -21,13 +21,11 @@ package org.miradi.project;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
-import java.text.ParseException;
 import java.util.Collection;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
@@ -43,7 +41,6 @@ import org.miradi.objects.BaseObject;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.utils.EnhancedJsonObject;
-import org.miradi.utils.MpzFileFilterForChooserDialog;
 
 public class ProjectZipper
 {
@@ -68,9 +65,7 @@ public class ProjectZipper
 		blastOut.close();
 	}
 
-	private static void writeProjectZip(ZipOutputStream out, Project project)
-			throws Exception, UnsupportedEncodingException, IOException,
-			ParseException
+	public static void writeProjectZip(ZipOutputStream out, Project project) throws Exception
 	{
 		String projectName = project.getFilename();
 		ProjectServer database = project.getDatabase();
@@ -164,42 +159,4 @@ public class ProjectZipper
 		out.write(bytes);
 		out.closeEntry();
 	}
-
-	// TODO: This method isn't needed. Have the caller use the normal zipper instead.
-	public static void addTreeToZip(ZipOutputStream out, String prefix, File parentDirectory) throws Exception
-	{
-		if(prefix.length() > 0)
-			prefix = prefix + "/";
-
-		File[] files = parentDirectory.listFiles();
-		for(int i = 0; i < files.length; ++i)
-		{
-			File thisFile = files[i];
-			String entryName = prefix + thisFile.getName();
-			if(thisFile.isDirectory())
-			{
-				addTreeToZip(out, entryName, thisFile);
-			}
-			else
-			{
-				if (thisFile.getAbsolutePath().endsWith(MpzFileFilterForChooserDialog.EXTENSION))
-				{
-					EAM.logVerbose("Ignoring zipping file = " + thisFile.getAbsolutePath());
-					continue;
-				}
-				
-				ZipEntry entry = new ZipEntry(entryName);
-				int size = (int) thisFile.length();
-				entry.setSize(size);
-				out.putNextEntry(entry);
-				byte[] contents = new byte[size];
-				FileInputStream in = new FileInputStream(thisFile);
-				in.read(contents);
-				in.close();
-				out.write(contents);
-				out.closeEntry();
-			}
-		}
-	}
-
 }
