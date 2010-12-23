@@ -63,6 +63,8 @@ public class CommandExecutor
 	
 	public void executeCommand(Command command) throws UnexpectedNonSideEffectException, CommandFailedException
 	{
+		if(!isTransactionStateValidFor(command))
+			throw new CommandFailedException("executeCommand bad transaction state: " + command.toString());
 		try
 		{
 			getNormalExecutor().executeCommand(command);
@@ -71,6 +73,16 @@ public class CommandExecutor
 		{
 			EAM.panic(e);
 		}
+	}
+
+	private boolean isTransactionStateValidFor(Command command)
+	{
+		if(command.isBeginTransaction())
+			return !isInTransaction();
+		if(command.isEndTransaction())
+			return isInTransaction();
+		
+		return true;
 	}
 
 	private boolean shouldUpdateLastModfiedTime(Command command)
