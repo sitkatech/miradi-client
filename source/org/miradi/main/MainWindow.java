@@ -193,6 +193,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		new SampleInstaller(getAppPreferences()).installSampleProjects();
 
 		setIconImage(new MiradiResourceImageIcon("images/appIcon.png").getImage());
+		EAM.logDebug("\n\n\n");
 
 		WizardTitlePanel wizardTitlePanel = new WizardTitlePanel(this);
 		mainMenuBar = new MainMenuBar(this);
