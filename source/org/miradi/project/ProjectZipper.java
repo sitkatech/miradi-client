@@ -27,6 +27,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
+import java.text.ParseException;
 import java.util.Collection;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
@@ -58,9 +59,20 @@ public class ProjectZipper
 		project.setLocalDataLocation(projectDirectory.getParentFile());
 		project.rawCreateorOpen(zipTopLevelDirectory);
 
-		String projectName = project.getFilename();
 		ByteArrayOutputStream outputBytes = new ByteArrayOutputStream();
 		ZipOutputStream out = new ZipOutputStream(outputBytes);
+		writeProjectZip(out, project);
+		
+		OutputStream blastOut = new FileOutputStream(destination);
+		blastOut.write(outputBytes.toByteArray());
+		blastOut.close();
+	}
+
+	private static void writeProjectZip(ZipOutputStream out, Project project)
+			throws Exception, UnsupportedEncodingException, IOException,
+			ParseException
+	{
+		String projectName = project.getFilename();
 		ProjectServer database = project.getDatabase();
 		
 		String exceptions = database.readFileContents(new File(EAM.EXCEPTIONS_LOG_FILE_NAME));
@@ -85,10 +97,6 @@ public class ProjectZipper
 		
 		writeBaseObjects(out, project);
 		out.close();
-		
-		OutputStream blastOut = new FileOutputStream(destination);
-		blastOut.write(outputBytes.toByteArray());
-		blastOut.close();
 	}
 
 	private static void writeBaseObjects(ZipOutputStream out, Project project)
