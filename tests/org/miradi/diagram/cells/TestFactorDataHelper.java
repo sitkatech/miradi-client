@@ -22,13 +22,13 @@ package org.miradi.diagram.cells;
 
 import java.awt.Point;
 
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.views.diagram.PointManipulater;
 
 //TODO rename and move to correct package (also when moving to new package, update the code inside
 // the main test suite)
-public class TestFactorDataHelper extends EAMTestCase 
+public class TestFactorDataHelper extends MiradiTestCase 
 {
 	public TestFactorDataHelper(String name)
 	{

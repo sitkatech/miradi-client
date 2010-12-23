@@ -23,13 +23,13 @@ import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandDeleteObject;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Factor;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
 
-public class TestCommandCreateObject extends EAMTestCase
+public class TestCommandCreateObject extends MiradiTestCase
 {
 	public TestCommandCreateObject(String name)
 	{

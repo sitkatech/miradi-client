@@ -20,14 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objecthelpers;
 
 import org.miradi.ids.BaseId;
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objects.Cause;
 import org.miradi.utils.EnhancedJsonObject;
 
-public class TestRelevancyOverrideSet extends EAMTestCase
+public class TestRelevancyOverrideSet extends MiradiTestCase
 {
 	public TestRelevancyOverrideSet(String name)
 	{

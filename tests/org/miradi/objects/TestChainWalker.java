@@ -20,13 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.diagram.ChainWalker;
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.project.ProjectForTesting;
 
-public class TestChainWalker extends EAMTestCase
+public class TestChainWalker extends MiradiTestCase
 {
 	public TestChainWalker(String name)
 	{

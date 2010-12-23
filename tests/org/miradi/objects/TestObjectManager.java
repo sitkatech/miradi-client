@@ -28,7 +28,7 @@ import org.miradi.database.ProjectServer;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.ids.KeyEcologicalAttributeId;
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 import org.miradi.objecthelpers.CreateFactorLinkParameter;
 import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ORef;
@@ -43,7 +43,7 @@ import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 
 
-public class TestObjectManager extends EAMTestCase
+public class TestObjectManager extends MiradiTestCase
 {
 	public TestObjectManager(String name)
 	{

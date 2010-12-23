@@ -26,7 +26,7 @@ import org.miradi.objects.Stress;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
 
-public class TestCommandExecutedEvents extends EAMTestCase
+public class TestCommandExecutedEvents extends MiradiTestCase
 {
 	public TestCommandExecutedEvents(String name)
 	{

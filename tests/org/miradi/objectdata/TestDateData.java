@@ -19,11 +19,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.objectdata;
 
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 import org.miradi.objectdata.DateData;
 
 
-public class TestDateData extends EAMTestCase
+public class TestDateData extends MiradiTestCase
 {
 
 	public TestDateData(String name)

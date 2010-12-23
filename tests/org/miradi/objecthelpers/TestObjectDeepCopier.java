@@ -23,7 +23,7 @@ import java.util.Vector;
 
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectDeepCopier;
 import org.miradi.objecthelpers.ObjectType;
@@ -33,7 +33,7 @@ import org.miradi.objects.Task;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.utils.EnhancedJsonObject;
 
-public class TestObjectDeepCopier extends EAMTestCase
+public class TestObjectDeepCopier extends MiradiTestCase
 {
 	public TestObjectDeepCopier(String name)
 	{

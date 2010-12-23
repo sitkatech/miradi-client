@@ -26,13 +26,13 @@ import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.LinkCell;
 import org.miradi.main.EAM;
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.DiagramLink;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.utils.PointList;
 
-public class TestLinkCell extends EAMTestCase
+public class TestLinkCell extends MiradiTestCase
 {
 	public TestLinkCell(String name)
 	{

@@ -27,7 +27,7 @@ import org.martus.util.xml.XmlUtilities;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 import org.miradi.main.MainWindow;
 import org.miradi.objectdata.IdListData;
 import org.miradi.objectdata.ObjectData;
@@ -40,7 +40,7 @@ import org.miradi.project.Project;
 import org.miradi.utils.EAMFileSaveChooser;
 import org.miradi.utils.EAMXmlFileChooser;
 
-public class TestBuildXMLDocument extends EAMTestCase
+public class TestBuildXMLDocument extends MiradiTestCase
 {
 	public TestBuildXMLDocument(String name)
 	{

@@ -22,10 +22,10 @@ package org.miradi.objecthelpers;
 import java.text.ParseException;
 import java.util.NoSuchElementException;
 
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 import org.miradi.objecthelpers.MapList;
 
-public class TestMapList extends EAMTestCase
+public class TestMapList extends MiradiTestCase
 {
 	public TestMapList(String name)
 	{

@@ -22,10 +22,10 @@ package org.miradi.objecthelpers;
 import java.util.Iterator;
 
 import org.miradi.ids.BaseId;
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 import org.miradi.utils.EnhancedJsonObject;
 
-public class TestStringRefMap extends EAMTestCase
+public class TestStringRefMap extends MiradiTestCase
 {
 	public TestStringRefMap(String name)
 	{

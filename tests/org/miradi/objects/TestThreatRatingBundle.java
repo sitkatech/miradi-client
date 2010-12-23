@@ -21,11 +21,11 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.utils.EnhancedJsonObject;
 
-public class TestThreatRatingBundle extends EAMTestCase
+public class TestThreatRatingBundle extends MiradiTestCase
 {
 	public TestThreatRatingBundle(String name)
 	{

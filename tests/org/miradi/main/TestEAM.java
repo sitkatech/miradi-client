@@ -22,7 +22,7 @@ package org.miradi.main;
 import java.io.File;
 import java.util.HashMap;
 
-public class TestEAM extends EAMTestCase
+public class TestEAM extends MiradiTestCase
 {
 	public TestEAM(String name)
 	{

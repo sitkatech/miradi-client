@@ -28,7 +28,7 @@ import org.jgraph.graph.GraphConstants;
 import org.miradi.ids.IdAssigner;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
@@ -37,7 +37,7 @@ import org.miradi.objects.Factor;
 import org.miradi.objects.Target;
 import org.miradi.project.ProjectForTesting;
 
-public class TestDiagramFactor extends EAMTestCase
+public class TestDiagramFactor extends MiradiTestCase
 {
 	public TestDiagramFactor(String name)
 	{

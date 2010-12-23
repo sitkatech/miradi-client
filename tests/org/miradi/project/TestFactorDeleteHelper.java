@@ -21,7 +21,7 @@ package org.miradi.project;
 
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.ids.DiagramFactorId;
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 import org.miradi.objectpools.CausePool;
 import org.miradi.objectpools.IndicatorPool;
 import org.miradi.objectpools.ObjectivePool;
@@ -31,7 +31,7 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.Objective;
 import org.miradi.project.FactorDeleteHelper;
 
-public class TestFactorDeleteHelper extends EAMTestCase
+public class TestFactorDeleteHelper extends MiradiTestCase
 {
 	public TestFactorDeleteHelper(String name)
 	{
