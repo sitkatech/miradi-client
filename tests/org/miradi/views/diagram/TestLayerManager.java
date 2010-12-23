@@ -24,7 +24,7 @@ import org.miradi.diagram.cells.DiagramTargetCell;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.FactorId;
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 import org.miradi.objecthelpers.CreateDiagramFactorParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -37,7 +37,7 @@ import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.project.ProjectForTesting;
 
-public class TestLayerManager extends EAMTestCase
+public class TestLayerManager extends MiradiTestCase
 {
 	public TestLayerManager(String name)
 	{

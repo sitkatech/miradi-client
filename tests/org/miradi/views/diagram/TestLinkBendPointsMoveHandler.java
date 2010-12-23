@@ -21,11 +21,11 @@ package org.miradi.views.diagram;
 
 import java.awt.Point;
 
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.utils.PointList;
 
-public class TestLinkBendPointsMoveHandler extends EAMTestCase
+public class TestLinkBendPointsMoveHandler extends MiradiTestCase
 {
 	public TestLinkBendPointsMoveHandler(String name)
 	{

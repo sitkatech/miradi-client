@@ -22,9 +22,9 @@ package org.miradi.utils;
 import java.awt.Point;
 import java.awt.Rectangle;
 
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 
-public class TestPointList extends EAMTestCase
+public class TestPointList extends MiradiTestCase
 {
 	public TestPointList(String name)
 	{

@@ -19,11 +19,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.utils;
 
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 
-public class TestCodeList extends EAMTestCase
+public class TestCodeList extends MiradiTestCase
 {
 	public TestCodeList(String name)
 	{

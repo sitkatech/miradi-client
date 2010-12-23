@@ -29,7 +29,7 @@ import org.martus.util.DirectoryUtils;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
@@ -45,7 +45,7 @@ import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.views.diagram.LinkCreator;
 import org.miradi.views.diagram.LinkDeletor;
 
-public class TestSimpleThreatRatingFramework extends EAMTestCase
+public class TestSimpleThreatRatingFramework extends MiradiTestCase
 {
 	public TestSimpleThreatRatingFramework(String name)
 	{

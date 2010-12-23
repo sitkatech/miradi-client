@@ -24,10 +24,10 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.util.Vector;
 
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 import org.miradi.utils.DelimitedFileLoader;
 
-public class TestDelimitedFileLoader extends EAMTestCase
+public class TestDelimitedFileLoader extends MiradiTestCase
 {
 
 	public TestDelimitedFileLoader(String name)

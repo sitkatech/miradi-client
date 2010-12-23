@@ -22,11 +22,11 @@ package org.miradi.utils;
 import java.io.BufferedReader;
 import java.io.StringReader;
 
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 import org.miradi.objecthelpers.TaxonomyFileLoader;
 import org.miradi.objecthelpers.TwoLevelEntry;
 
-public class TestTaxonomyFileLoader extends EAMTestCase
+public class TestTaxonomyFileLoader extends MiradiTestCase
 {
 
 	public TestTaxonomyFileLoader(String name)

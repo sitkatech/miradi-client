@@ -19,9 +19,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.views.diagram;
 
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 
-public class TestInsertFactorLinkDoer extends EAMTestCase
+public class TestInsertFactorLinkDoer extends MiradiTestCase
 {
 	public TestInsertFactorLinkDoer(String name)
 	{

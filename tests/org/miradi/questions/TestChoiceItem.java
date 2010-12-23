@@ -19,10 +19,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.questions;
 
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 import org.miradi.questions.ChoiceItem;
 
-public class TestChoiceItem extends EAMTestCase
+public class TestChoiceItem extends MiradiTestCase
 {
 	public TestChoiceItem(String name)
 	{

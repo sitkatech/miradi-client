@@ -21,10 +21,10 @@ package org.miradi.ratings;
 
 import java.awt.Color;
 
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 import org.miradi.questions.ChoiceItem;
 
-public class TestRatingChoice extends EAMTestCase
+public class TestRatingChoice extends MiradiTestCase
 {
 
 	public TestRatingChoice(String name)

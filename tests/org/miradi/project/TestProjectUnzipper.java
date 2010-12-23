@@ -32,7 +32,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.miradi.objecthelpers.CreateDiagramFactorParameter;
@@ -47,7 +47,7 @@ import org.miradi.objects.Target;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 
-public class TestProjectUnzipper extends EAMTestCase
+public class TestProjectUnzipper extends MiradiTestCase
 {
 
 	public TestProjectUnzipper(String name)
