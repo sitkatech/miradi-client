@@ -162,7 +162,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		loadDiagramModelForTesting();
 	}
 	
-	private ProjectForTesting(String testName, ProjectServer server) throws Exception
+	public ProjectForTesting(String testName, ProjectServer server) throws Exception
 	{
 		super(server);
 		
@@ -721,16 +721,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return DiagramLink.find(this, diagramLink);
 	}
 	
-	public FactorLink createDirectThreatLink() throws Exception
-	{
-		Target target = createAndPopulateTarget();
-		Cause threat = createAndPopulateThreat();
-		
-		ORef directThreatLinkRef = createFactorLink(threat.getRef(), target.getRef());
-		
-		return FactorLink.find(this, directThreatLinkRef);
-	}
-
 	public ThreatStressRating createThreatStressRating() throws Exception
 	{
 		Stress stress = createAndPopulateStress();
