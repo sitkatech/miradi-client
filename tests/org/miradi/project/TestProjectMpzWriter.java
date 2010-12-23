@@ -19,9 +19,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.project;
 
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 
-public class TestProjectMpzWriter extends EAMTestCase
+public class TestProjectMpzWriter extends MiradiTestCase
 {
 	public TestProjectMpzWriter(String name)
 	{

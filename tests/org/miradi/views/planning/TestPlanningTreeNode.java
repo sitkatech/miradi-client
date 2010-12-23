@@ -23,7 +23,7 @@ import org.miradi.dialogs.planning.treenodes.AbstractProjectNode;
 import org.miradi.dialogs.planning.treenodes.HiddenConfigurableProjectRootNode;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
@@ -39,7 +39,7 @@ import org.miradi.project.ProjectForTesting;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.CustomPlanningRowsQuestion;
 
-abstract public class TestPlanningTreeNode extends EAMTestCase
+abstract public class TestPlanningTreeNode extends MiradiTestCase
 {
 	public TestPlanningTreeNode(String name)
 	{

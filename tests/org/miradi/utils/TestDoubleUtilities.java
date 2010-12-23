@@ -22,9 +22,9 @@ package org.miradi.utils;
 
 import java.util.Locale;
 
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 
-public class TestDoubleUtilities extends EAMTestCase
+public class TestDoubleUtilities extends MiradiTestCase
 {
 	public TestDoubleUtilities(String name)
 	{

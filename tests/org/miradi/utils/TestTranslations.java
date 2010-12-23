@@ -23,13 +23,13 @@ import java.io.IOException;
 import java.net.URL;
 
 import org.miradi.main.EAM;
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 import org.miradi.main.Miradi;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Task;
 
-public class TestTranslations extends EAMTestCase
+public class TestTranslations extends MiradiTestCase
 {
 	public TestTranslations(String name)
 	{

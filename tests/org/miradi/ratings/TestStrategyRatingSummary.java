@@ -19,13 +19,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.ratings;
 
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.StrategyFeasibilityQuestion;
 import org.miradi.questions.StrategyImpactQuestion;
 import org.miradi.questions.StrategyRatingSummaryQuestion;
 
-public class TestStrategyRatingSummary extends EAMTestCase
+public class TestStrategyRatingSummary extends MiradiTestCase
 {
 	public TestStrategyRatingSummary(String name)
 	{

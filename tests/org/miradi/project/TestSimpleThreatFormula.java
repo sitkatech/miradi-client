@@ -21,12 +21,12 @@ package org.miradi.project;
 
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 import org.miradi.project.threatrating.SimpleThreatFormula;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 
-public class TestSimpleThreatFormula extends EAMTestCase
+public class TestSimpleThreatFormula extends MiradiTestCase
 {
 
 	public TestSimpleThreatFormula(String name)

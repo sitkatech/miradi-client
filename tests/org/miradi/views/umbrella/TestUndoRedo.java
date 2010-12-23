@@ -26,7 +26,7 @@ import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.ids.DiagramFactorId;
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 import org.miradi.objecthelpers.CreateDiagramFactorParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
@@ -38,7 +38,7 @@ import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.utils.EnhancedJsonObject;
 
-public class TestUndoRedo extends EAMTestCase 
+public class TestUndoRedo extends MiradiTestCase 
 {
 
 	public TestUndoRedo(String name) 

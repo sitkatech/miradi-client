@@ -22,10 +22,10 @@ package org.miradi.project;
 import java.io.File;
 
 import org.martus.util.DirectoryUtils;
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 import org.miradi.project.Project;
 
-public class TestRealProject extends EAMTestCase
+public class TestRealProject extends MiradiTestCase
 {
 	public TestRealProject(String name)
 	{

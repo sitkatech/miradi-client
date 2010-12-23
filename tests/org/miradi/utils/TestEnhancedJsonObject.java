@@ -22,11 +22,11 @@ package org.miradi.utils;
 import java.awt.Color;
 
 import org.miradi.ids.BaseId;
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 import org.miradi.utils.EnhancedJsonArray;
 import org.miradi.utils.EnhancedJsonObject;
 
-public class TestEnhancedJsonObject extends EAMTestCase
+public class TestEnhancedJsonObject extends MiradiTestCase
 {
 	public TestEnhancedJsonObject(String name)
 	{

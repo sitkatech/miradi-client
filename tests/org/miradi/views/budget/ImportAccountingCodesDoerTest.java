@@ -22,7 +22,7 @@ package org.miradi.views.budget;
 import java.io.BufferedReader;
 import java.io.StringReader;
 
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.AccountingCode;
 import org.miradi.objects.BaseObject;
@@ -30,7 +30,7 @@ import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.views.planning.doers.ImportAccountingCodesDoer;
 
-public class ImportAccountingCodesDoerTest extends EAMTestCase
+public class ImportAccountingCodesDoerTest extends MiradiTestCase
 {
 
 	public ImportAccountingCodesDoerTest(String name)

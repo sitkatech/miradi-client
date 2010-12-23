@@ -21,9 +21,9 @@ package org.miradi.utils;
 
 import java.util.HashMap;
 
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 
-public class TestConproMiradiHabitatCodeMap extends EAMTestCase
+public class TestConproMiradiHabitatCodeMap extends MiradiTestCase
 {
 	public TestConproMiradiHabitatCodeMap(String name)
 	{

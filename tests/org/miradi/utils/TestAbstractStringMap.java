@@ -22,10 +22,10 @@ package org.miradi.utils;
 
 import java.util.Iterator;
 
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 import org.miradi.objecthelpers.AbstractStringKeyMap;
 
-abstract public class TestAbstractStringMap extends EAMTestCase
+abstract public class TestAbstractStringMap extends MiradiTestCase
 {
 	public TestAbstractStringMap(String name)
 	{

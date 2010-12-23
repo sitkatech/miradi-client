@@ -43,7 +43,7 @@ import org.miradi.ids.FactorLinkId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.ids.IdList;
 import org.miradi.ids.IndicatorId;
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 import org.miradi.main.TransferableMiradiList;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
@@ -74,7 +74,7 @@ import org.miradi.views.diagram.DiagramPaster;
 import org.miradi.views.diagram.DiagramView;
 import org.miradi.views.diagram.LinkCreator;
 
-public class TestProject extends EAMTestCase
+public class TestProject extends MiradiTestCase
 {
 	public TestProject(String name)
 	{

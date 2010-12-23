@@ -21,7 +21,7 @@ package org.miradi.views.diagram.doers;
 
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Indicator;
@@ -30,7 +30,7 @@ import org.miradi.objects.Task;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.views.diagram.DeleteAnnotationDoer;
 
-public class TestDeleteAnnotationDoer extends EAMTestCase
+public class TestDeleteAnnotationDoer extends MiradiTestCase
 {
 	public TestDeleteAnnotationDoer(String name)
 	{
