@@ -24,7 +24,7 @@ import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.DiagramLinkId;
 import org.miradi.ids.FactorLinkId;
 import org.miradi.ids.IdList;
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.miradi.objecthelpers.CreateDiagramFactorParameter;
 import org.miradi.objecthelpers.CreateFactorLinkParameter;
@@ -48,7 +48,7 @@ import org.miradi.objects.Task;
 import org.miradi.objects.ViewData;
 import org.miradi.project.ProjectForTesting;
 
-public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
+public class TestObjectFindOwnerAndFindReferrer extends MiradiTestCase
 {
 	public TestObjectFindOwnerAndFindReferrer(String name)
 	{

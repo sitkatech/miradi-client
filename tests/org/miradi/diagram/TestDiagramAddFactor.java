@@ -23,14 +23,14 @@ import java.awt.geom.Rectangle2D;
 
 import org.jgraph.graph.GraphConstants;
 import org.miradi.diagram.cells.FactorCell;
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.project.ProjectForTesting;
 
-public class TestDiagramAddFactor extends EAMTestCase
+public class TestDiagramAddFactor extends MiradiTestCase
 {
 	public TestDiagramAddFactor(String name)
 	{

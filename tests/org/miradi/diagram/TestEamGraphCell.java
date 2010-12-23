@@ -21,9 +21,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.diagram;
 
 import org.miradi.diagram.cells.EAMGraphCell;
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 
-public class TestEamGraphCell extends EAMTestCase
+public class TestEamGraphCell extends MiradiTestCase
 {
 	public TestEamGraphCell(String name) 
 	{

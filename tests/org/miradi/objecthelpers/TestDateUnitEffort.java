@@ -19,12 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objecthelpers;
 
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 import org.miradi.project.TestDateUnit;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.EnhancedJsonObject;
 
-public class TestDateUnitEffort extends EAMTestCase
+public class TestDateUnitEffort extends MiradiTestCase
 {
 	public TestDateUnitEffort(String name)
 	{

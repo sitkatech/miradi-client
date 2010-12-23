@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.diagram;
 
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
@@ -28,7 +28,7 @@ import org.miradi.objects.DiagramObject;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.views.diagram.LinkCreator;
 
-public class TestDelete extends EAMTestCase
+public class TestDelete extends MiradiTestCase
 {
 	public TestDelete(String name)
 	{

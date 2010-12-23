@@ -22,10 +22,10 @@ package org.miradi.commands;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandDeleteObject;
 import org.miradi.ids.BaseId;
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 import org.miradi.objecthelpers.ObjectType;
 
-public class TestCommandDeleteObject extends EAMTestCase
+public class TestCommandDeleteObject extends MiradiTestCase
 {
 	public TestCommandDeleteObject(String name)
 	{

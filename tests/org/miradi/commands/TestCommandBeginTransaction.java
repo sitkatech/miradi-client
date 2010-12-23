@@ -21,9 +21,9 @@ package org.miradi.commands;
 
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 
-public class TestCommandBeginTransaction extends EAMTestCase
+public class TestCommandBeginTransaction extends MiradiTestCase
 {
 	public TestCommandBeginTransaction(String name)
 	{

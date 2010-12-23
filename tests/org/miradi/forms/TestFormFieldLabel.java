@@ -19,10 +19,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.forms;
 
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 import org.miradi.objects.Target;
 
-public class TestFormFieldLabel extends EAMTestCase
+public class TestFormFieldLabel extends MiradiTestCase
 {
 	public TestFormFieldLabel(String name)
 	{

@@ -25,14 +25,14 @@ import java.util.Vector;
 
 import org.martus.util.DirectoryUtils;
 import org.martus.util.UnicodeReader;
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.Utility;
 
-abstract public class AbstractMigrationTestCase extends EAMTestCase
+abstract public class AbstractMigrationTestCase extends MiradiTestCase
 {
 	public AbstractMigrationTestCase(String name)
 	{

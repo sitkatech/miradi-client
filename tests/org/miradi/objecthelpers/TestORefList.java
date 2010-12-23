@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objecthelpers;
 
 import org.miradi.ids.BaseId;
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.Indicator;
@@ -28,7 +28,7 @@ import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.utils.EnhancedJsonObject;
 
-public class TestORefList extends EAMTestCase
+public class TestORefList extends MiradiTestCase
 {
 	public TestORefList(String name)
 	{

@@ -29,7 +29,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.main.menu.MainMenuBar;
 
 
-public class TestMainMenu extends EAMTestCase
+public class TestMainMenu extends MiradiTestCase
 {
 	public TestMainMenu(String name)
 	{

@@ -28,10 +28,10 @@ import javax.swing.JButton;
 
 import org.miradi.diagram.BendPointSelectionHelper;
 import org.miradi.diagram.cells.LinkCell;
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 import org.miradi.project.ProjectForTesting;
 
-public class TestBendPointSelectionHelper extends EAMTestCase
+public class TestBendPointSelectionHelper extends MiradiTestCase
 {
 	public TestBendPointSelectionHelper(String name)
 	{

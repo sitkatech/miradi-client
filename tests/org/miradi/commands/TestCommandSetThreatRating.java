@@ -22,9 +22,9 @@ package org.miradi.commands;
 import org.miradi.commands.CommandSetThreatRating;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 
-public class TestCommandSetThreatRating extends EAMTestCase
+public class TestCommandSetThreatRating extends MiradiTestCase
 {
 	public TestCommandSetThreatRating(String name)
 	{

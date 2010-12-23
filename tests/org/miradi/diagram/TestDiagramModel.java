@@ -28,7 +28,7 @@ import org.miradi.diagram.cells.FactorCell;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorLinkId;
 import org.miradi.ids.IdAssigner;
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -40,7 +40,7 @@ import org.miradi.objects.Factor;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.views.diagram.LinkCreator;
 
-public class TestDiagramModel extends EAMTestCase
+public class TestDiagramModel extends MiradiTestCase
 {
 	public TestDiagramModel(String name)
 	{

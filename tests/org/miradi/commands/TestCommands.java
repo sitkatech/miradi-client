@@ -36,7 +36,7 @@ import org.miradi.ids.FactorLinkId;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.miradi.objecthelpers.CreateDiagramFactorParameter;
 import org.miradi.objecthelpers.CreateFactorLinkParameter;
@@ -53,7 +53,7 @@ import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
 
-public class TestCommands extends EAMTestCase
+public class TestCommands extends MiradiTestCase
 {
 	public TestCommands(String name)
 	{

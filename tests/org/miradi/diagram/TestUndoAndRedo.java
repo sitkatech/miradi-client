@@ -25,7 +25,7 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.main.EAM;
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 import org.miradi.objecthelpers.CreateDiagramFactorParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
@@ -37,7 +37,7 @@ import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.views.diagram.LinkCreator;
 
-public class TestUndoAndRedo extends EAMTestCase
+public class TestUndoAndRedo extends MiradiTestCase
 {
 	public TestUndoAndRedo(String name)
 	{

@@ -22,11 +22,11 @@ package org.miradi.objectdata;
 
 import java.util.Vector;
 
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 
-public class TestRefListListData extends EAMTestCase
+public class TestRefListListData extends MiradiTestCase
 {
 	public TestRefListListData(String name)
 	{

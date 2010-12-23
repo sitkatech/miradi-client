@@ -21,9 +21,9 @@ package org.miradi.main;
 
 import org.martus.util.TestCaseEnhanced;
 
-public class EAMTestCase extends TestCaseEnhanced
+public class MiradiTestCase extends TestCaseEnhanced
 {
-	public EAMTestCase(String name)
+	public MiradiTestCase(String name)
 	{
 		super(name);
 	}

@@ -23,11 +23,11 @@ import java.awt.Dimension;
 
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.ids.DiagramFactorId;
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.utils.EnhancedJsonObject;
 
-public class TestCommandSetFactorSize extends EAMTestCase
+public class TestCommandSetFactorSize extends MiradiTestCase
 {
 	public TestCommandSetFactorSize(String name)
 	{

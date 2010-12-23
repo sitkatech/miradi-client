@@ -29,9 +29,9 @@ import java.util.Vector;
 
 import org.martus.util.DirectoryUtils;
 import org.martus.util.DirectoryLock.AlreadyLockedException;
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 
-public class TestMiradiFileSystem extends EAMTestCase
+public class TestMiradiFileSystem extends MiradiTestCase
 {
 	public TestMiradiFileSystem(String name)
 	{

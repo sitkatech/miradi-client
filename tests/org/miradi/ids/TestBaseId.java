@@ -20,9 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.ids;
 
 import org.miradi.ids.BaseId;
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 
-public class TestBaseId extends EAMTestCase
+public class TestBaseId extends MiradiTestCase
 {
 	public TestBaseId(String name)
 	{

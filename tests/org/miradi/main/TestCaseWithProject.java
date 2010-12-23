@@ -23,7 +23,7 @@ import org.miradi.diagram.DiagramModel;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.ProjectForTesting;
 
-public class TestCaseWithProject extends EAMTestCase
+public class TestCaseWithProject extends MiradiTestCase
 {
 	public TestCaseWithProject(String name)
 	{

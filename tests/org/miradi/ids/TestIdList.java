@@ -22,14 +22,14 @@ package org.miradi.ids;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.MiradiTestCase;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Strategy;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.utils.EnhancedJsonObject;
 
-public class TestIdList extends EAMTestCase
+public class TestIdList extends MiradiTestCase
 {
 	public TestIdList(String name)
 	{
