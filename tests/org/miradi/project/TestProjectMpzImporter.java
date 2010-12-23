@@ -47,10 +47,10 @@ import org.miradi.objects.Target;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 
-public class TestProjectUnzipper extends MiradiTestCase
+public class TestProjectMpzImporter extends MiradiTestCase
 {
 
-	public TestProjectUnzipper(String name)
+	public TestProjectMpzImporter(String name)
 	{
 		super(name);
 	}
@@ -67,7 +67,7 @@ public class TestProjectUnzipper extends MiradiTestCase
 		
 		ByteArrayInputStream in = new ByteArrayInputStream(out.toByteArray());
 		ZipInputStream zipIn = new ZipInputStream(in);
-		assertFalse("allowed top level file? ", ProjectUnzipper.isZipFileImportable(zipIn));
+		assertFalse("allowed top level file? ", ProjectMpzImporter.isZipFileImportable(zipIn));
 				
 	}
 
@@ -83,7 +83,7 @@ public class TestProjectUnzipper extends MiradiTestCase
 		
 		ByteArrayInputStream in = new ByteArrayInputStream(out.toByteArray());
 		ZipInputStream zipIn = new ZipInputStream(in);
-		assertFalse("allowed multiple top level dirs? ", ProjectUnzipper.isZipFileImportable(zipIn));
+		assertFalse("allowed multiple top level dirs? ", ProjectMpzImporter.isZipFileImportable(zipIn));
 		
 	}
 
@@ -99,7 +99,7 @@ public class TestProjectUnzipper extends MiradiTestCase
 		
 		ByteArrayInputStream in = new ByteArrayInputStream(out.toByteArray());
 		ZipInputStream zipIn = new ZipInputStream(in);
-		assertFalse("allowed entry with leading slash? ", ProjectUnzipper.isZipFileImportable(zipIn));
+		assertFalse("allowed entry with leading slash? ", ProjectMpzImporter.isZipFileImportable(zipIn));
 		
 	}
 	
@@ -152,7 +152,7 @@ public class TestProjectUnzipper extends MiradiTestCase
 				ProjectMpzWriter.createProjectZipFile(zip, projectDirectory);
 				EAM.setLogToString();
 				EAM.setLogLevel(EAM.LOG_DEBUG);
-				boolean isImportable = ProjectUnzipper.isZipFileImportable(zip);
+				boolean isImportable = ProjectMpzImporter.isZipFileImportable(zip);
 				assertTrue("isn't importable? " + EAM.getLoggedString(), isImportable);
 				
 				String projectFilename = "UnzippedProject";
@@ -163,7 +163,7 @@ public class TestProjectUnzipper extends MiradiTestCase
 					unzippedProject.setLocalDataLocation(fakeHomeDirectory);
 					try
 					{
-						ProjectUnzipper.unzipToProjectDirectory(zip, fakeHomeDirectory, projectFilename);
+						ProjectMpzImporter.unzipToProjectDirectory(zip, fakeHomeDirectory, projectFilename);
 						unzippedProject.createOrOpenWithDefaultObjectsAndDiagramHelp(projectFilename);
 						assertNotNull("didn't find the target we wrote?", unzippedProject.findObject(targetRef));
 						ThreatRatingBundle gotBundle = unzippedProject.getSimpleThreatRatingFramework().getBundle(threatId, targetId);
@@ -212,7 +212,7 @@ public class TestProjectUnzipper extends MiradiTestCase
 				File fakeHomeDirectory = createTempDirectory();
 				try
 				{
-					ProjectUnzipper.unzipToProjectDirectory(zip, fakeHomeDirectory, emptyFilename);
+					ProjectMpzImporter.unzipToProjectDirectory(zip, fakeHomeDirectory, emptyFilename);
 					fail("Should have thrown for empty filename");
 				}
 				finally

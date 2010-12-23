@@ -25,7 +25,7 @@ import java.util.Vector;
 
 import org.miradi.database.ProjectServer;
 import org.miradi.project.Project;
-import org.miradi.project.ProjectUnzipper;
+import org.miradi.project.ProjectMpzImporter;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.MpzFileFilter;
 
@@ -56,7 +56,7 @@ public class SampleInstaller
 		{
 			File projectFileToImport = installableSampleProjects.get(index);
 			String validatedName = getValidatedProjectNameWithoutExtension(projectFileToImport);
-			ProjectUnzipper.unzipToProjectDirectory(projectFileToImport, homeDir, validatedName);
+			ProjectMpzImporter.unzipToProjectDirectory(projectFileToImport, homeDir, validatedName);
 		}
 	}
 

@@ -24,7 +24,7 @@ import java.io.File;
 import org.martus.util.DirectoryUtils;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
-import org.miradi.project.ProjectUnzipper;
+import org.miradi.project.ProjectMpzImporter;
 import org.miradi.project.ProjectMpzWriter;
 import org.miradi.utils.ZIPFileFilter;
 import org.miradi.views.MainWindowDoer;
@@ -71,7 +71,7 @@ public class SaveProjectAsDoer extends MainWindowDoer
 		File tempZipFile = createTempProjectZip(newProjectName);
 		try
 		{			
-			ProjectUnzipper.unzipToProjectDirectory(tempZipFile, projectDirToCopy, newProjectName);
+			ProjectMpzImporter.unzipToProjectDirectory(tempZipFile, projectDirToCopy, newProjectName);
 			return newProjectDir;
 		}
 		catch (Exception e)
