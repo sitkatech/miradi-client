@@ -44,7 +44,7 @@ public class DashboardProgressEditorField extends AbstractStringMapCodeListEdito
 	@Override
 	protected QuestionBasedEditorComponent createCodeListEditor(ChoiceQuestion questionToUse, int columnCount)
 	{
-		return new SingleItemCodeListRadioButtonEditorComponent(questionToUse);
+		return new RadioButtonEditorComponent(questionToUse);
 	}
 	
 	@Override
@@ -53,9 +53,26 @@ public class DashboardProgressEditorField extends AbstractStringMapCodeListEdito
 		Project project = getProject();
 		ORef oRef = getORef();
 		StringChoiceMap existingMap = new StringChoiceMap(project.getObjectData(oRef, getTag()));
-		existingMap.put(mapCode, getComponentText());
+		existingMap.put(mapCode, extractSingleCode());
 		
 		return existingMap.toString();
+	}
+	
+	private String extractSingleCode()
+	{
+		try
+		{
+			CodeList codes = new CodeList(getComponentText());
+			if (!codes.isEmpty())
+				return codes.firstElement();
+		}
+		catch(ParseException e)
+		{
+			EAM.logException(e);
+			EAM.unexpectedErrorDialog(e);
+		}
+		
+		return "";
 	}
 
 	@Override
@@ -74,39 +91,5 @@ public class DashboardProgressEditorField extends AbstractStringMapCodeListEdito
 		}
 	}
 	
-	private class SingleItemCodeListRadioButtonEditorComponent extends RadioButtonEditorComponent
-	{
-		public SingleItemCodeListRadioButtonEditorComponent(ChoiceQuestion questionToUse)
-		{
-			super(questionToUse);
-		}
-		
-		@Override
-		public String getText()
-		{
-			return extractSingleCode(super.getText());
-		}
-
-		private String extractSingleCode(String parentCodesAsString)
-		{
-			try
-			{
-				CodeList codes = new CodeList(parentCodesAsString);
-				if (codes.size() > 1)
-					throw new RuntimeException("CodeList as string should not have more than one code:" + parentCodesAsString);
-
-				if (!codes.isEmpty())
-					return codes.firstElement();
-			}
-			catch(ParseException e)
-			{
-				EAM.logException(e);
-				EAM.unexpectedErrorDialog(e);
-			}
-			
-			return "";
-		}
-	}
-
 	private String mapCode;
 }
