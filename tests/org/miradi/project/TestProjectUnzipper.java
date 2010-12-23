@@ -149,7 +149,7 @@ public class TestProjectUnzipper extends EAMTestCase
 			try
 			{
 				File projectDirectory = new File(tempDirectory, projectName);
-				ProjectZipper.createProjectZipFile(zip, projectDirectory);
+				ProjectMpzWriter.createProjectZipFile(zip, projectDirectory);
 				EAM.setLogToString();
 				EAM.setLogLevel(EAM.LOG_DEBUG);
 				boolean isImportable = ProjectUnzipper.isZipFileImportable(zip);
@@ -207,7 +207,7 @@ public class TestProjectUnzipper extends EAMTestCase
 			File zip = createTempFile();
 			try
 			{
-				ProjectZipper.createProjectZipFile(zip, new File(originalDirectory, originalProjectName));
+				ProjectMpzWriter.createProjectZipFile(zip, new File(originalDirectory, originalProjectName));
 				String emptyFilename = "";
 				File fakeHomeDirectory = createTempDirectory();
 				try

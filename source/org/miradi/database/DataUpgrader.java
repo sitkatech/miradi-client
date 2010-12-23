@@ -28,7 +28,7 @@ import org.martus.util.DirectoryLock.AlreadyLockedException;
 import org.miradi.database.migrations.MigrationsForMiradi3;
 import org.miradi.database.migrations.MigrationsOlderThanMiradiVersion2;
 import org.miradi.main.EAM;
-import org.miradi.project.ProjectZipper;
+import org.miradi.project.ProjectMpzWriter;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class DataUpgrader
@@ -65,7 +65,7 @@ public class DataUpgrader
 		int versionAfterUpgrading = -1;
 		try
 		{
-			ProjectZipper.createProjectZipFile(zipFile, projectDirectory);
+			ProjectMpzWriter.createProjectZipFile(zipFile, projectDirectory);
 			
 			initializeStaticDirectory(projectDirectory);
 			DataUpgrader.upgrade();

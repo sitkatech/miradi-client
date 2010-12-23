@@ -42,7 +42,7 @@ import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.utils.EnhancedJsonObject;
 
-public class ProjectZipper
+public class ProjectMpzWriter
 {
 	public static void createProjectZipFile(File destination, File projectDirectory) throws FileNotFoundException, Exception, IOException
 	{
