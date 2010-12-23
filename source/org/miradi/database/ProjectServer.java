@@ -166,7 +166,7 @@ public class ProjectServer
 	{
 		File versionFile = getRelativeVersionFile();
 		if(!currentFileSystem.doesFileExist(projectName, versionFile))
-			throw new RuntimeException("No version file");
+			throw new RuntimeException("No version file: " + versionFile);
 		JSONObject version = readRelativeJsonFile(currentFileSystem, projectName, versionFile);
 		int dataVersion = version.getInt(TAG_VERSION);
 		return dataVersion;
@@ -291,7 +291,7 @@ public class ProjectServer
 		writeRelativeJsonFile(projectName, manifestFile, manifest.toJson());
 	}
 	
-	private static EnhancedJsonObject createVersionJson(int versionToWrite)
+	public static EnhancedJsonObject createVersionJson(int versionToWrite)
 	{
 		EnhancedJsonObject version = new EnhancedJsonObject();
 		version.put(TAG_VERSION, versionToWrite);
@@ -498,16 +498,16 @@ public class ProjectServer
 	}
 
 	public static final int DATA_VERSION = 61;
-	private static final String LAST_MODIFIED_FILE_NAME = "LastModifiedProjectTime.txt";
-	private static final String QUARANTINE_FILE_NAME = "DeletedOrphans.txt";
+	public static final String LAST_MODIFIED_FILE_NAME = "LastModifiedProjectTime.txt";
+	public static final String QUARANTINE_FILE_NAME = "DeletedOrphans.txt";
 	private static final String TAG_VERSION = "Version";
-	private static final String JSON_DIRECTORY = "json";
+	public static final String JSON_DIRECTORY = "json";
 
-	private static String MANIFEST_FILE = "manifest";
+	public static String MANIFEST_FILE = "manifest";
 	public static String PROJECTINFO_FILE = "project";
-	private static String THREATFRAMEWORK_FILE = "threatframework";
-	private static String THREATRATINGS_DIRECTORY = "threatratings";
-	private static String VERSION_FILE = "version";
+	public static String THREATFRAMEWORK_FILE = "threatframework";
+	public static String THREATRATINGS_DIRECTORY = "threatratings";
+	public static String VERSION_FILE = "version";
 
 	private String currentProjectName;
 	private MiradiFileSystem currentFileSystem;
