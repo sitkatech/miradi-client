@@ -21,6 +21,7 @@ package org.miradi.project.threatrating;
 
 import java.awt.Color;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -151,6 +152,11 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 	public int getBundleCount()
 	{
 		return bundles.size();
+	}
+	
+	public Collection<ThreatRatingBundle> getAllBundles()
+	{
+		return bundles.values();
 	}
 	
 	public ValueOption[] getValueOptions()
