@@ -27,13 +27,25 @@ import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
 import org.martus.util.DirectoryUtils;
+import org.miradi.database.ProjectServer;
+import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
+import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.main.EAMTestCase;
+import org.miradi.objectdata.BooleanData;
+import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
+import org.miradi.objecthelpers.CreateDiagramFactorParameter;
+import org.miradi.objecthelpers.CreateFactorLinkParameter;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.Factor;
+import org.miradi.objects.Cause;
+import org.miradi.objects.DiagramFactor;
+import org.miradi.objects.DiagramLink;
+import org.miradi.objects.DiagramObject;
+import org.miradi.objects.FactorLink;
 import org.miradi.objects.Target;
+import org.miradi.project.threatrating.SimpleThreatRatingFramework;
+import org.miradi.project.threatrating.ThreatRatingBundle;
 
 public class TestProjectUnzipper extends EAMTestCase
 {
@@ -93,16 +105,44 @@ public class TestProjectUnzipper extends EAMTestCase
 	
 	public void testUnzip() throws Exception
 	{
-		FactorId targetId = new FactorId(39);
-		
 		File tempDirectory = createTempDirectory();
 		String projectName = "testUnzip";
 		try
 		{
-			Project project = new Project();
-			project.setLocalDataLocation(tempDirectory);
-			project.createOrOpenWithDefaultObjectsAndDiagramHelp(projectName);
-			project.createObjectAndReturnId(ObjectType.TARGET, targetId);
+			ProjectServer database = new ProjectServer();
+			database.setLocalDataLocation(tempDirectory);
+			ProjectWithHelpers project = new ProjectWithHelpers(database);
+			project.createOrOpenWithDefaultObjects(projectName);
+			project.loadDiagramModelForTesting();
+			
+			ORef diagramRef = project.getTestingDiagramObject().getRef();
+			IdList diagramFactorIds = new IdList(DiagramFactor.getObjectType());
+			IdList diagramLinkIds = new IdList(DiagramLink.getObjectType());
+
+			ORef threatRef = project.createObject(Cause.getObjectType());
+			project.setObjectData(threatRef, Cause.TAG_IS_DIRECT_THREAT, BooleanData.BOOLEAN_TRUE);
+			ORef threatDiagramFactorRef = project.createObject(DiagramFactor.getObjectType(), new CreateDiagramFactorParameter(threatRef));
+			diagramFactorIds.add(threatDiagramFactorRef.getObjectId());
+
+			ORef targetRef = project.createObject(Target.getObjectType());
+			ORef targetDiagramFactorRef = project.createObject(DiagramFactor.getObjectType(), new CreateDiagramFactorParameter(targetRef));
+			diagramFactorIds.add(targetDiagramFactorRef.getObjectId());
+
+			ORef factorLinkRef = project.createObject(FactorLink.getObjectType(), new CreateFactorLinkParameter(threatRef, targetRef));
+			ORef diagramLinkRef = project.createObject(DiagramLink.getObjectType(), new CreateDiagramFactorLinkParameter(factorLinkRef, threatDiagramFactorRef, targetDiagramFactorRef));
+			diagramLinkIds.add(diagramLinkRef.getObjectId());
+			
+			project.setObjectData(DiagramObject.find(project, diagramRef), DiagramObject.TAG_DIAGRAM_FACTOR_IDS, diagramFactorIds.toString());
+			project.setObjectData(DiagramObject.find(project, diagramRef), DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLinkIds.toString());
+
+			SimpleThreatRatingFramework framework = project.getSimpleThreatRatingFramework();
+			FactorId threatId = (FactorId) threatRef.getObjectId();
+			FactorId targetId = (FactorId) targetRef.getObjectId();
+			ThreatRatingBundle bundle = framework.getBundle(threatId, targetId);
+			BaseId criterionId = framework.getCriterionIds().get(1);
+			BaseId valueId = framework.getValueOptionIds().get(1);
+			bundle.setValueId(criterionId, valueId);
+			framework.saveBundle(bundle);
 			project.close();
 
 			File zip = createTempFile();
@@ -125,8 +165,9 @@ public class TestProjectUnzipper extends EAMTestCase
 					{
 						ProjectUnzipper.unzipToProjectDirectory(zip, fakeHomeDirectory, projectFilename);
 						unzippedProject.createOrOpenWithDefaultObjectsAndDiagramHelp(projectFilename);
-						Factor target = Target.find(unzippedProject, new ORef(Target.getObjectType(), targetId));
-						assertNotNull("didn't find the target we wrote?", target);
+						assertNotNull("didn't find the target we wrote?", unzippedProject.findObject(targetRef));
+						ThreatRatingBundle gotBundle = unzippedProject.getSimpleThreatRatingFramework().getBundle(threatId, targetId);
+						assertEquals(valueId, gotBundle.getValueId(criterionId));
 					}
 					finally
 					{
