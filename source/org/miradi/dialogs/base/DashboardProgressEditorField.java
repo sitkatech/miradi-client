@@ -36,7 +36,7 @@ public class DashboardProgressEditorField extends AbstractStringMapCodeListEdito
 {
 	public DashboardProgressEditorField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse, String mapCodeToUse)
 	{
-		super(projectToUse, refToUse.getObjectType(), refToUse.getObjectId(), tagToUse, questionToUse);
+		super(projectToUse, refToUse, tagToUse, questionToUse);
 		
 		mapCode = mapCodeToUse;
 	}
