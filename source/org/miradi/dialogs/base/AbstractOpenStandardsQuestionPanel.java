@@ -30,6 +30,7 @@ import javax.swing.event.ListSelectionListener;
 
 import org.miradi.actions.AbstractJumpMenuAction;
 import org.miradi.dialogfields.DashboarStatusLabelField;
+import org.miradi.dialogfields.DashboardFlagIconField;
 import org.miradi.dialogfields.DashboardStatusIconField;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.dashboard.AbstractLongDescriptionProvider;
@@ -144,6 +145,10 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 	
 	private void addRowWithStatusIcon(ChoiceItem choiceItem, int level) throws Exception
 	{
+		DashboardFlagIconField flagIconField = new DashboardFlagIconField(getProject(), getDashboard().getRef(), choiceItem.getCode());
+		addFieldToList(flagIconField);
+		flagIconField.updateFromObject();
+		
 		ChoiceQuestion progressStatusQuestion = new OpenStandardsDynamicProgressStatuQuestion(getDashboard(), choiceItem.getCode());
 		ObjectDataInputField statusIconField = new DashboardStatusIconField(getProject(), getDashboard().getRef(), choiceItem.getCode(), progressStatusQuestion);
 		addFieldToList(statusIconField);
@@ -153,7 +158,7 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		addFieldToList(statusTextField);
 		statusTextField.updateFromObject();
 		
-		addRow(choiceItem.getLongDescriptionProvider(), level, statusIconField.getComponent(), new PanelTitleLabel(choiceItem.getLabel()), statusTextField.getComponent());
+		addRow(choiceItem.getLongDescriptionProvider(), level, flagIconField.getComponent(), statusIconField.getComponent(), new PanelTitleLabel(choiceItem.getLabel()), statusTextField.getComponent());
 	}
 	
 	private void addRowWithoutIcon(String leftColumnText, String rightColumnText, HashMap<String, String> tokenReplacementMap, AbstractLongDescriptionProvider longDescriptionProvider, int level) throws Exception
@@ -167,15 +172,17 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		JComponent leftComponent = new PanelLabelWithSelectableText(leftColumnTranslatedText);
 		JComponent rightComponent = new PanelLabelWithSelectableText(rightColumnTranslatedText);
 		
-		addRow(longDescriptionProvider, level, iconComponent, leftComponent, rightComponent);
+		addRow(longDescriptionProvider, level, new FillerLabel(), iconComponent, leftComponent, rightComponent);
 	}
 
-	private void addRow(AbstractLongDescriptionProvider longDescriptionProvider, int level,	JComponent iconComponent, JComponent leftComponent,	JComponent rightComponent)
+	private void addRow(AbstractLongDescriptionProvider longDescriptionProvider, int level,	JComponent flagIconComponent, JComponent iconComponent,	JComponent leftComponent, JComponent rightComponent)
 	{
 		Font font = getFontBasedOnLevel(level);
 		leftComponent.setFont(font);
 		rightComponent.setFont(font);
 		Box leftBox = createHorizontalBoxWithIndents(level);
+		leftBox.add(flagIconComponent);
+		leftBox.add(Box.createHorizontalStrut(STRUT_WIDTH_BETWEEN_ICON_AND_TEXT));
 		leftBox.add(iconComponent);
 		leftBox.add(Box.createHorizontalStrut(STRUT_WIDTH_BETWEEN_ICON_AND_TEXT));
 		leftBox.add(leftComponent);
