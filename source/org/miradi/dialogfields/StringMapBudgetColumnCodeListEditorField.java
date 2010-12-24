@@ -39,16 +39,7 @@ public class StringMapBudgetColumnCodeListEditorField extends StringMapCodeListE
 		super(projectToUse, refToUse, tagToUse, questionToUse, TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
 	}
 
-	@Override
-	protected String getStringMapAsString() throws Exception
-	{
-		AbstractStringKeyMap existingMap = createEmptyStringKeyMap();
-		existingMap.put(getMapCode(), getComponentText());
-		
-		return existingMap.toString();
-	}
-	
-	private AbstractStringKeyMap createEmptyStringKeyMap() throws Exception
+	protected AbstractStringKeyMap createEmptyStringKeyMap() throws Exception
 	{
 		return new StringStringMap(getProject().getObjectData(getORef(), getTag()));
 	}

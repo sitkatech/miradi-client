@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.base;
 
 import org.miradi.dialogfields.AbstractStringMapCodeListEditorField;
+import org.miradi.objecthelpers.AbstractStringKeyMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
@@ -31,4 +32,15 @@ abstract public class StringMapCodeListEditorField extends AbstractStringMapCode
 	{
 		super(projectToUse, refToUse, tagToUse, questionToUse, mapCodeToUse);
 	}
+	
+	@Override
+	protected String getStringMapAsString() throws Exception
+	{
+		AbstractStringKeyMap existingMap = createEmptyStringKeyMap();
+		existingMap.put(getMapCode(), getComponentText());
+		
+		return existingMap.toString();
+	}
+
+	abstract protected AbstractStringKeyMap createEmptyStringKeyMap() throws Exception;
 }
