@@ -164,15 +164,10 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 	private void addRowWithoutIcon(String leftColumnText, String rightColumnText, HashMap<String, String> tokenReplacementMap, AbstractLongDescriptionProvider longDescriptionProvider, int level) throws Exception
 	{
 		String rightColumnTranslatedText = EAM.substitute(rightColumnText, tokenReplacementMap);
-		addRow(leftColumnText, rightColumnTranslatedText, longDescriptionProvider, level, new FillerLabel());
-	}
-
-	private void addRow(String leftColumnTranslatedText, String rightColumnTranslatedText, AbstractLongDescriptionProvider longDescriptionProvider, int level, JComponent iconComponent) throws Exception
-	{
-		JComponent leftComponent = new PanelLabelWithSelectableText(leftColumnTranslatedText);
+		JComponent leftComponent = new PanelLabelWithSelectableText(leftColumnText);
 		JComponent rightComponent = new PanelLabelWithSelectableText(rightColumnTranslatedText);
 		
-		addRow(longDescriptionProvider, level, new FillerLabel(), iconComponent, leftComponent, rightComponent);
+		addRow(longDescriptionProvider, level, new FillerLabel(), new FillerLabel(), leftComponent, rightComponent);
 	}
 
 	private void addRow(AbstractLongDescriptionProvider longDescriptionProvider, int level,	JComponent flagIconComponent, JComponent iconComponent,	JComponent leftComponent, JComponent rightComponent)
