@@ -56,7 +56,6 @@ public class TestProjectServer extends TestCaseWithProject
 	public void tearDown() throws Exception
 	{
 		storage.close();
-		storage.deleteProject(getName());
 		super.tearDown();
 	}
 	
