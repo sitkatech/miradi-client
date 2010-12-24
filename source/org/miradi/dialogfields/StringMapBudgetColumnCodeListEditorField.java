@@ -36,7 +36,7 @@ public class StringMapBudgetColumnCodeListEditorField extends StringMapCodeListE
 	}
 
 	@Override
-	protected AbstractStringKeyMap createEmptyStringKeyMap() throws Exception
+	protected AbstractStringKeyMap createCurrentStringKeyMap() throws Exception
 	{
 		return new StringStringMap(getProject().getObjectData(getORef(), getTag()));
 	}

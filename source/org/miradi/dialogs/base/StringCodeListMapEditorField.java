@@ -34,7 +34,7 @@ public class StringCodeListMapEditorField extends StringMapCodeListEditorField
 	}
 
 	@Override
-	protected AbstractStringKeyMap createEmptyStringKeyMap() throws Exception
+	protected AbstractStringKeyMap createCurrentStringKeyMap() throws Exception
 	{
 		return new StringCodeListMap(getProject().getObjectData(getORef(), getTag()));
 	}
