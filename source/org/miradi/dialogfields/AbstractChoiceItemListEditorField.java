@@ -64,11 +64,6 @@ abstract public class AbstractChoiceItemListEditorField extends ObjectDataInputF
 	@Override
 	public String getText()
 	{
-		return getComponentText();
-	}
-
-	protected String getComponentText()
-	{
 		return codeListEditor.getText();
 	}
 

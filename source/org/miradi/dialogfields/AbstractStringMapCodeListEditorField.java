@@ -41,7 +41,7 @@ abstract public class AbstractStringMapCodeListEditorField extends AbstractChoic
 		try
 		{
 			AbstractStringKeyMap existingMap = createCurrentStringKeyMap();
-			existingMap.put(getMapCode(), getComponentText());
+			existingMap.put(getMapCode(), super.getText());
 			
 			return existingMap.toString();
 		}
