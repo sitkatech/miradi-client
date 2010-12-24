@@ -21,10 +21,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.base;
 
 import org.miradi.dialogfields.AbstractStringMapCodeListEditorField;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.AbstractStringKeyMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.utils.CodeList;
 
 abstract public class StringMapCodeListEditorField extends AbstractStringMapCodeListEditorField
 {
@@ -41,6 +43,32 @@ abstract public class StringMapCodeListEditorField extends AbstractStringMapCode
 		
 		return existingMap.toString();
 	}
+	
+	@Override
+	public void setText(String stringMapAsString)
+	{
+		CodeList codes = createCodeListFromString(stringMapAsString);
+		super.setText(codes.toString());
+	}
+
+	private CodeList createCodeListFromString(String StringMapAsString)
+	{
+		try
+		{
+			AbstractStringKeyMap stringMap = createStringKeyMap(StringMapAsString);
+			String codeListAsString = stringMap.get(getMapCode());
+			
+			return new CodeList(codeListAsString);
+		}
+		catch(Exception e)
+		{
+			EAM.unexpectedErrorDialog(e);
+			EAM.logException(e);
+			return new CodeList();
+		}
+	}
 
 	abstract protected AbstractStringKeyMap createEmptyStringKeyMap() throws Exception;
+	
+	abstract protected AbstractStringKeyMap createStringKeyMap(String StringMapAsString) throws Exception;
 }

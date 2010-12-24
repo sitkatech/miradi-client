@@ -20,17 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields;
 
-import java.text.ParseException;
-
 import org.miradi.dialogs.base.StringMapCodeListEditorField;
-import org.miradi.main.EAM;
 import org.miradi.objecthelpers.AbstractStringKeyMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.StringStringMap;
 import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
-import org.miradi.utils.CodeList;
 
 public class StringMapBudgetColumnCodeListEditorField extends StringMapCodeListEditorField
 {
@@ -39,36 +35,14 @@ public class StringMapBudgetColumnCodeListEditorField extends StringMapCodeListE
 		super(projectToUse, refToUse, tagToUse, questionToUse, TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
 	}
 
+	@Override
 	protected AbstractStringKeyMap createEmptyStringKeyMap() throws Exception
 	{
 		return new StringStringMap(getProject().getObjectData(getORef(), getTag()));
 	}
 
 	@Override
-	public void setText(String stringMapAsString)
-	{
-		CodeList codes = createCodeListFromString(stringMapAsString);
-		super.setText(codes.toString());
-	}
-
-	private CodeList createCodeListFromString(String StringMapAsString)
-	{
-		try
-		{
-			AbstractStringKeyMap stringMap = createStringKeyMap(StringMapAsString);
-			String codeListAsString = stringMap.get(getMapCode());
-			
-			return new CodeList(codeListAsString);
-		}
-		catch(ParseException e)
-		{
-			EAM.unexpectedErrorDialog(e);
-			EAM.logException(e);
-			return new CodeList();
-		}
-	}
-
-	private AbstractStringKeyMap createStringKeyMap(String StringMapAsString) throws ParseException
+	protected AbstractStringKeyMap createStringKeyMap(String StringMapAsString) throws Exception
 	{
 		return new StringStringMap(StringMapAsString);
 	}
