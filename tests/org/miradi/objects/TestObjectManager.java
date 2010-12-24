@@ -24,7 +24,6 @@ import java.io.IOException;
 import java.text.ParseException;
 
 import org.martus.util.DirectoryUtils;
-import org.miradi.database.ProjectServer;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.ids.KeyEcologicalAttributeId;
@@ -39,6 +38,7 @@ import org.miradi.objectpools.EAMObjectPool;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
+import org.miradi.project.ProjectServerForTesting;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 
@@ -54,7 +54,7 @@ public class TestObjectManager extends MiradiTestCase
 	{
 		project = new ProjectForTesting(getName());
 		manager = project.getObjectManager();		
-		db = project.getDatabase();
+		db = project.getTestDatabase();
 	}
 	
 	public void tearDown() throws Exception
@@ -261,5 +261,5 @@ public class TestObjectManager extends MiradiTestCase
 	
 	ProjectForTesting project;
 	ObjectManager manager;
-	ProjectServer db;
+	ProjectServerForTesting db;
 }
