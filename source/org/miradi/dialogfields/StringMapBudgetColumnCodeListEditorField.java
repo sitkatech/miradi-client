@@ -22,8 +22,8 @@ package org.miradi.dialogfields;
 
 import java.text.ParseException;
 
-import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.StringStringMap;
 import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
@@ -32,9 +32,9 @@ import org.miradi.utils.CodeList;
 
 public class StringMapBudgetColumnCodeListEditorField extends AbstractStringMapCodeListEditorField
 {
-	public StringMapBudgetColumnCodeListEditorField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, ChoiceQuestion questionToUse)
+	public StringMapBudgetColumnCodeListEditorField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse)
 	{
-		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, questionToUse);
+		super(projectToUse, refToUse, tagToUse, questionToUse);
 	}
 
 	@Override
