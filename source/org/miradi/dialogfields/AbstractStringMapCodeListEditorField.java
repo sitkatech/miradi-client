@@ -27,9 +27,11 @@ import org.miradi.questions.ChoiceQuestion;
 
 abstract public class AbstractStringMapCodeListEditorField extends AbstractChoiceItemListEditorField
 {
-	public AbstractStringMapCodeListEditorField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse)
+	public AbstractStringMapCodeListEditorField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse, String mapCodeToUse)
 	{
 		super(projectToUse, refToUse, tagToUse, questionToUse, AbstractQuestionEditorComponent.SINGLE_COLUMN);
+		
+		mapCode = mapCodeToUse;
 	}
 	
 	@Override
@@ -48,4 +50,6 @@ abstract public class AbstractStringMapCodeListEditorField extends AbstractChoic
 	}
 
 	abstract protected String getStringMapAsString() throws Exception;
+	
+	protected String mapCode;
 }

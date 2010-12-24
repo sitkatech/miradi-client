@@ -34,14 +34,14 @@ public class StringMapBudgetColumnCodeListEditorField extends AbstractStringMapC
 {
 	public StringMapBudgetColumnCodeListEditorField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse)
 	{
-		super(projectToUse, refToUse, tagToUse, questionToUse);
+		super(projectToUse, refToUse, tagToUse, questionToUse, TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
 	}
 
 	@Override
 	protected String getStringMapAsString() throws Exception
 	{
 		StringStringMap existingMap = new StringStringMap(getProject().getObjectData(getORef(), getTag()));
-		existingMap.put(TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY, getComponentText());
+		existingMap.put(mapCode, getComponentText());
 		
 		return existingMap.toString();
 	}
@@ -58,7 +58,7 @@ public class StringMapBudgetColumnCodeListEditorField extends AbstractStringMapC
 		try
 		{
 			StringStringMap stringMap = new StringStringMap(StringMapAsString);
-			String codeListAsString = stringMap.get(TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
+			String codeListAsString = stringMap.get(mapCode);
 			
 			return new CodeList(codeListAsString);
 		}

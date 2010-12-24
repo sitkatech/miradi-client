@@ -35,16 +35,14 @@ public class StringCodeListMapEditorField extends AbstractStringMapCodeListEdito
 {
 	public StringCodeListMapEditorField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse, String mapKeyCodeToUse)
 	{
-		super(projectToUse, refToUse, tagToUse, questionToUse);
-		
-		mapKeyCode = mapKeyCodeToUse;
+		super(projectToUse, refToUse, tagToUse, questionToUse, mapKeyCodeToUse);
 	}
 
 	@Override
 	protected String getStringMapAsString() throws Exception
 	{
 		StringCodeListMap existingMap = new StringCodeListMap(getProject().getObjectData(getORef(), getTag()));
-		existingMap.put(mapKeyCode, getComponentText());
+		existingMap.put(mapCode, getComponentText());
 		
 		return existingMap.toString();
 	}
@@ -61,7 +59,7 @@ public class StringCodeListMapEditorField extends AbstractStringMapCodeListEdito
 		try
 		{
 			StringCodeListMap stringMap = new StringCodeListMap(StringMapAsString);
-			String codeListAsString = stringMap.get(mapKeyCode);
+			String codeListAsString = stringMap.get(mapCode);
 			
 			return new CodeList(codeListAsString);
 		}
@@ -72,6 +70,4 @@ public class StringCodeListMapEditorField extends AbstractStringMapCodeListEdito
 			return new CodeList();
 		}
 	}
-	
-	private String mapKeyCode;
 }
