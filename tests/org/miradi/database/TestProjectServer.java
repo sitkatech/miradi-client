@@ -34,6 +34,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.Target;
+import org.miradi.project.ProjectServerForTesting;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 
 public class TestProjectServer extends TestCaseWithProject
@@ -46,7 +47,7 @@ public class TestProjectServer extends TestCaseWithProject
 	public void setUp() throws Exception
 	{
 		super.setUp();
-		storage = new ProjectServer();
+		storage = new ProjectServerForTesting();
 		storage.setMemoryDataLocation(getName());
 		storage.createProject(getName());
 		idAssigner = new IdAssigner();
@@ -55,7 +56,6 @@ public class TestProjectServer extends TestCaseWithProject
 	public void tearDown() throws Exception
 	{
 		storage.close();
-		storage.deleteProject(getName());
 		super.tearDown();
 	}
 	
@@ -191,5 +191,5 @@ public class TestProjectServer extends TestCaseWithProject
 	}
 
 	IdAssigner idAssigner;
-	private ProjectServer storage;
+	private ProjectServerForTesting storage;
 }
