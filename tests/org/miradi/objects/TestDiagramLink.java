@@ -23,7 +23,6 @@ import java.awt.Point;
 
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.database.ProjectServer;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.DiagramCauseCell;
 import org.miradi.diagram.cells.DiagramTargetCell;
@@ -40,6 +39,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.FactorCommandHelper;
 import org.miradi.project.ProjectForTesting;
+import org.miradi.project.ProjectServerForTesting;
 import org.miradi.utils.PointList;
 import org.miradi.views.diagram.LinkCreator;
 import org.miradi.views.diagram.TestLinkBendPointsMoveHandler;
@@ -135,7 +135,7 @@ public class TestDiagramLink extends ObjectTestCase
 		
 		assertNotNull("link not in model?", model.getDiagramLinkByRef(diagramLinkRef));
 		
-		ProjectServer server = project.getDatabase();
+		ProjectServerForTesting server = project.getTestDatabase();
 		DiagramLink dfl = project.getTestingDiagramModel().getDiagramLinkByRef(diagramLinkRef);
 		FactorLink linkage = (FactorLink)server.readObject(project.getObjectManager(), ObjectType.FACTOR_LINK, dfl.getWrappedId());
 		assertEquals("Didn't load from ref?", intervention.getWrappedORef(), linkage.getFromFactorRef());
