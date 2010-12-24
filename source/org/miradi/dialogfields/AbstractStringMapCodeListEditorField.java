@@ -20,8 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields;
 
-import org.miradi.main.EAM;
-import org.miradi.objecthelpers.AbstractStringKeyMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
@@ -35,30 +33,10 @@ abstract public class AbstractStringMapCodeListEditorField extends AbstractChoic
 		mapCode = mapCodeToUse;
 	}
 	
-	@Override
-	public String getText()
-	{
-		try
-		{
-			AbstractStringKeyMap existingMap = createCurrentStringKeyMap();
-			existingMap.put(getMapCode(), super.getText());
-			
-			return existingMap.toString();
-		}
-		catch (Exception e)
-		{
-			EAM.unexpectedErrorDialog(e);
-			EAM.logException(e);
-			return "";
-		}
-	}
-	
 	protected String getMapCode()
 	{
 		return mapCode;
 	}
-
-	abstract protected AbstractStringKeyMap createCurrentStringKeyMap() throws Exception;
 	
 	private String mapCode;
 }

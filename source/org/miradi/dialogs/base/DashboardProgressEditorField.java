@@ -47,19 +47,16 @@ public class DashboardProgressEditorField extends AbstractStringMapCodeListEdito
 	}
 	
 	@Override
-	protected AbstractStringKeyMap createCurrentStringKeyMap() throws ParseException
-	{
-		return new StringChoiceMap(getProject().getObjectData(getORef(), getTag()));
-	}
-	
-	@Override
 	public String getText()
 	{
 		try
 		{
+			AbstractStringKeyMap existingMap = new StringChoiceMap(getProject().getObjectData(getORef(), getTag()));
 			CodeList codes = new CodeList(super.getText());
 			if (!codes.isEmpty())
-				return codes.firstElement();
+				existingMap.put(getMapCode(), codes.firstElement());
+			
+			return existingMap.toString();
 		}
 		catch(ParseException e)
 		{
@@ -77,7 +74,7 @@ public class DashboardProgressEditorField extends AbstractStringMapCodeListEdito
 		{
 			AbstractStringKeyMap stringChoiceMap = new StringChoiceMap(stringMapAsString);
 			String code = stringChoiceMap.get(getMapCode());
-			codeListEditor.setText(code);
+			super.setText(code);
 		}
 		catch(ParseException e)
 		{

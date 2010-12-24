@@ -58,6 +58,26 @@ abstract public class StringMapCodeListEditorField extends AbstractStringMapCode
 			return new CodeList();
 		}
 	}
-
+	
+	@Override
+	public String getText()
+	{
+		try
+		{
+			AbstractStringKeyMap existingMap = createCurrentStringKeyMap();
+			existingMap.put(getMapCode(), super.getText());
+			
+			return existingMap.toString();
+		}
+		catch (Exception e)
+		{
+			EAM.unexpectedErrorDialog(e);
+			EAM.logException(e);
+			return "";
+		}
+	}
+	
+	abstract protected AbstractStringKeyMap createCurrentStringKeyMap() throws Exception;
+	
 	abstract protected AbstractStringKeyMap createStringKeyMap(String StringMapAsString) throws Exception;
 }
