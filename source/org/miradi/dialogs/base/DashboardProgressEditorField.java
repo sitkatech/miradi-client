@@ -36,9 +36,7 @@ public class DashboardProgressEditorField extends AbstractStringMapCodeListEdito
 {
 	public DashboardProgressEditorField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse, String mapCodeToUse)
 	{
-		super(projectToUse, refToUse, tagToUse, questionToUse);
-		
-		mapCode = mapCodeToUse;
+		super(projectToUse, refToUse, tagToUse, questionToUse, mapCodeToUse);
 	}
 	
 	@Override
@@ -90,6 +88,4 @@ public class DashboardProgressEditorField extends AbstractStringMapCodeListEdito
 			EAM.logException(e);
 		}
 	}
-	
-	private String mapCode;
 }
