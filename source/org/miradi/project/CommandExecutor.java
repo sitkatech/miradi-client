@@ -42,6 +42,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.Target;
+import org.miradi.objects.ViewData;
 import org.miradi.utils.CommandVector;
 
 public class CommandExecutor
@@ -349,6 +350,9 @@ public class CommandExecutor
 			return true;
 		
 		if (setCommand.isTypeAndTag(Target.getObjectType(), Target.TAG_VIABILITY_MODE))
+			return true;
+				
+		if (setCommand.isTypeAndTag(ViewData.getObjectType(), ViewData.TAG_CURRENT_TAB))
 			return true;
 				
 		return false;
