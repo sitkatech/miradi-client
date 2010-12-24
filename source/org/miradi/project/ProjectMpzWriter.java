@@ -56,6 +56,11 @@ public class ProjectMpzWriter
 		project.setLocalDataLocation(projectDirectory.getParentFile());
 		project.rawCreateorOpen(zipTopLevelDirectory);
 
+		createProjectZipFile(destination, project);
+	}
+
+	public static void createProjectZipFile(File destination, Project project) throws Exception
+	{
 		ByteArrayOutputStream outputBytes = new ByteArrayOutputStream();
 		ZipOutputStream out = new ZipOutputStream(outputBytes);
 		writeProjectZip(out, project);
