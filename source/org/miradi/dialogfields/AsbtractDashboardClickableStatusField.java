@@ -33,23 +33,20 @@ import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.StringChoiceMap;
-import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.OpenStandardsDynamicProgressStatuQuestion;
 import org.miradi.utils.Translation;
 
 
 abstract public class AsbtractDashboardClickableStatusField extends ObjectDataInputField
 {
-	public AsbtractDashboardClickableStatusField(Project projectToUse, ORef refToUse, String stringMapCodeToUse, String tagToUse)
+	public AsbtractDashboardClickableStatusField(Project projectToUse, ORef refToUse, String stringMapCodeToUse, String tagToUse, ChoiceQuestion questionToUse)
 	{
 		super(projectToUse, refToUse, tagToUse);
 		
 		stringMapCode = stringMapCodeToUse;
-		Dashboard dashboard = Dashboard.find(getProject(), refToUse);
-		question = new OpenStandardsDynamicProgressStatuQuestion(dashboard, stringMapCodeToUse);
+		question = questionToUse;
 		iconComponent = new PanelTitleLabel();
 		iconComponent.addMouseListener(new ClickHandler());
 	}
