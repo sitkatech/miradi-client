@@ -43,9 +43,9 @@ import org.miradi.utils.Translation;
 
 abstract public class AsbtractDashboardClickableStatusField extends ObjectDataInputField
 {
-	public AsbtractDashboardClickableStatusField(Project projectToUse, ORef refToUse, String stringMapCodeToUse)
+	public AsbtractDashboardClickableStatusField(Project projectToUse, ORef refToUse, String stringMapCodeToUse, String tagToUse)
 	{
-		super(projectToUse, refToUse, Dashboard.PSEUDO_EFFECTIVE_STATUS_MAP);
+		super(projectToUse, refToUse, tagToUse);
 		
 		stringMapCode = stringMapCodeToUse;
 		Dashboard dashboard = Dashboard.find(getProject(), refToUse);

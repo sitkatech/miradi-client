@@ -22,6 +22,7 @@ package org.miradi.dialogfields;
 
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 
@@ -29,7 +30,7 @@ public class DashboarStatusLabelField extends AsbtractDashboardClickableStatusFi
 {
 	public DashboarStatusLabelField(Project projectToUse, ORef refToUse, String stringMapCodeToUse)
 	{
-		super(projectToUse, refToUse, stringMapCodeToUse);
+		super(projectToUse, refToUse, stringMapCodeToUse, Dashboard.PSEUDO_EFFECTIVE_STATUS_MAP);
 	}
 	
 	@Override
