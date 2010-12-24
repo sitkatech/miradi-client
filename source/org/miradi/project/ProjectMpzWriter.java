@@ -1,0 +1,162 @@
+/* 
+Copyright 2005-2009, Foundations of Success, Bethesda, Maryland 
+(on behalf of the Conservation Measures Partnership, "CMP") and 
+Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
+
+This file is part of Miradi
+
+Miradi is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License version 3, 
+as published by the Free Software Foundation.
+
+Miradi is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
+*/ 
+package org.miradi.project;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
+import java.util.Collection;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
+
+import org.miradi.database.ObjectManifest;
+import org.miradi.database.ProjectServer;
+import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefSet;
+import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objectpools.EAMObjectPool;
+import org.miradi.objects.BaseObject;
+import org.miradi.project.threatrating.SimpleThreatRatingFramework;
+import org.miradi.project.threatrating.ThreatRatingBundle;
+import org.miradi.utils.EnhancedJsonObject;
+
+public class ProjectMpzWriter
+{
+	public static void createProjectZipFile(File destination, File projectDirectory) throws FileNotFoundException, Exception, IOException
+	{
+		String projectName = projectDirectory.getName();
+		createProjectZipFile(destination, projectName, projectDirectory);
+	}
+
+	public static void createProjectZipFile(File destination, String zipTopLevelDirectory, File projectDirectory) throws FileNotFoundException, Exception, IOException
+	{
+		Project project = new Project();
+		project.setLocalDataLocation(projectDirectory.getParentFile());
+		project.rawCreateorOpen(zipTopLevelDirectory);
+
+		ByteArrayOutputStream outputBytes = new ByteArrayOutputStream();
+		ZipOutputStream out = new ZipOutputStream(outputBytes);
+		writeProjectZip(out, project);
+		
+		OutputStream blastOut = new FileOutputStream(destination);
+		blastOut.write(outputBytes.toByteArray());
+		blastOut.close();
+	}
+
+	public static void writeProjectZip(ZipOutputStream out, Project project) throws Exception
+	{
+		String projectName = project.getFilename();
+		ProjectServer database = project.getDatabase();
+		
+		String exceptions = database.readFileContents(new File(EAM.EXCEPTIONS_LOG_FILE_NAME));
+		writeZipEntry(out, exceptions, project.getFilename() + "/" + EAM.EXCEPTIONS_LOG_FILE_NAME);
+		
+		String lastModified = database.readLocalLastModifiedProjectTime(database.getCurrentLocalProjectDirectory());
+		writeZipEntry(out, lastModified, project.getFilename() + "/" + ProjectServer.LAST_MODIFIED_FILE_NAME);
+		
+		String quarantine = database.getQuarantineFileContents();
+		writeZipEntry(out, quarantine, project.getFilename() + "/" + ProjectServer.QUARANTINE_FILE_NAME);
+
+		EnhancedJsonObject infoJson = project.getProjectInfo().toJson();
+		writeZipEntry(out, infoJson.toString(), project.getFilename() + "/" + ProjectServer.JSON_DIRECTORY + "/" + ProjectServer.PROJECTINFO_FILE);
+		
+		EnhancedJsonObject threatRatingJson = project.getSimpleThreatRatingFramework().toJson();
+		writeZipEntry(out, threatRatingJson.toString(), project.getFilename() + "/" + ProjectServer.JSON_DIRECTORY + "/" + ProjectServer.THREATFRAMEWORK_FILE);
+		
+		EnhancedJsonObject versionJson = database.createVersionJson(database.readProjectDataVersion(projectName));
+		writeZipEntry(out, versionJson.toString(), project.getFilename() + "/" + ProjectServer.JSON_DIRECTORY + "/" + ProjectServer.VERSION_FILE);
+
+		writeThreatRatingBundles(out, project);
+		
+		writeBaseObjects(out, project);
+		out.close();
+	}
+
+	private static void writeBaseObjects(ZipOutputStream out, Project project)
+			throws UnsupportedEncodingException, IOException, Exception
+	{
+		ObjectManager objectManager = project.getObjectManager();
+		for(int type = 0; type < ObjectType.OBJECT_TYPE_COUNT; ++type)
+		{
+			EAMObjectPool pool = objectManager.getPool(type);
+			if(pool == null)
+				continue;
+			ORefSet refs = pool.getRefSet();
+			if(refs.size() == 0)
+				continue;
+
+			ObjectManifest manifest = new ObjectManifest(pool);
+			writeZipEntry(out, project, manifest.toJson().toString(), type, ProjectServer.MANIFEST_FILE);
+			addObjectFilesToZip(out, project, refs);
+		}
+	}
+
+	private static void writeThreatRatingBundles(ZipOutputStream out, Project project) throws Exception
+	{
+		Collection<ThreatRatingBundle> allBundles = project.getSimpleThreatRatingFramework().getAllBundles();
+		for(ThreatRatingBundle bundle : allBundles)
+		{
+			String contents = bundle.toJson().toString();
+			String bundleName = SimpleThreatRatingFramework.getBundleKey(bundle.getThreatId(), bundle.getTargetId());
+			writeZipEntry(out, contents, project.getFilename() + "/" + ProjectServer.JSON_DIRECTORY + "/" + ProjectServer.THREATRATINGS_DIRECTORY + "/" + bundleName);
+		}
+	}
+
+	private static void addObjectFilesToZip(ZipOutputStream out, Project project, ORefSet refs) throws Exception
+	{
+		for(ORef ref : refs)
+		{
+			BaseObject object = project.findObject(ref);
+			String fileContents = object.toJson().toString();
+			int objectType = ref.getObjectType();
+			String filename = Integer.toString(ref.getObjectId().asInt());
+
+			writeZipEntry(out, project, fileContents, objectType, filename);
+		}
+	}
+
+	private static void writeZipEntry(ZipOutputStream out, Project project,
+			String fileContents, int objectType, String filename)
+			throws UnsupportedEncodingException, IOException
+	{
+		String directory = project.getFilename() + "/" + ProjectServer.JSON_DIRECTORY + "/objects-" + objectType;
+		String path = directory + "/" + filename;
+		writeZipEntry(out, fileContents, path);
+	}
+
+	private static void writeZipEntry(ZipOutputStream out, String fileContents,
+			String path) throws UnsupportedEncodingException, IOException
+	{
+		if(fileContents.length() == 0)
+			return;
+		
+		byte[] bytes = fileContents.getBytes("UTF-8");
+		ZipEntry entry = new ZipEntry(path);
+		entry.setSize(bytes.length);
+		out.putNextEntry(entry);
+		out.write(bytes);
+		out.closeEntry();
+	}
+}
