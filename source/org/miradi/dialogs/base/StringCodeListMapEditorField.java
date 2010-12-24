@@ -38,16 +38,7 @@ public class StringCodeListMapEditorField extends StringMapCodeListEditorField
 		super(projectToUse, refToUse, tagToUse, questionToUse, mapKeyCodeToUse);
 	}
 
-	@Override
-	protected String getStringMapAsString() throws Exception
-	{
-		AbstractStringKeyMap existingMap = createEmptyStringKeyMap();
-		existingMap.put(getMapCode(), getComponentText());
-		
-		return existingMap.toString();
-	}
-
-	private AbstractStringKeyMap createEmptyStringKeyMap() throws Exception
+	protected AbstractStringKeyMap createEmptyStringKeyMap() throws Exception
 	{
 		return new StringCodeListMap(getProject().getObjectData(getORef(), getTag()));
 	}
