@@ -25,6 +25,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import org.miradi.ids.BaseId;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
@@ -34,6 +35,11 @@ abstract public class AbstractChoiceItemListEditorField extends ObjectDataInputF
 	public AbstractChoiceItemListEditorField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, ChoiceQuestion questionToUse)
 	{
 		this(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, questionToUse, 3);
+	}
+	
+	public AbstractChoiceItemListEditorField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse, int columnCount)
+	{
+		this(projectToUse, refToUse.getObjectType(), refToUse.getObjectId(), tagToUse, questionToUse, columnCount);
 	}
 	
 	public AbstractChoiceItemListEditorField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, ChoiceQuestion questionToUse, int columnCount)

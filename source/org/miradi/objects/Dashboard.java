@@ -35,6 +35,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.StringChoiceMap;
+import org.miradi.objecthelpers.StringCodeListMap;
 import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.project.ObjectManager;
@@ -46,6 +47,7 @@ import org.miradi.utils.CodeList;
 import org.miradi.utils.DoubleUtilities;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.StringChoiceMapData;
+import org.miradi.utils.StringCodeListMapData;
 import org.miradi.utils.StringStringMapData;
 
 public class Dashboard extends BaseObject
@@ -832,6 +834,7 @@ public class Dashboard extends BaseObject
 		effectiveStatusMap = new PseudoStringChoiceMapData(PSEUDO_EFFECTIVE_STATUS_MAP);
 		userStatusChoiceMap = new StringChoiceMapData(TAG_USER_STATUS_CHOICE_MAP);
 		userCommentsMap = new StringStringMapData(TAG_USER_COMMENTS_MAP);
+		needsAttentionMap = new StringCodeListMapData(TAG_NEEDS_ATTENTION_MAP);
 		
 		addPresentationDataField(PSEUDO_TEAM_MEMBER_COUNT, teamMemberCount);
 		addPresentationDataField(PSEUDO_PROJECT_SCOPE_WORD_COUNT, projectScopeWordCount);
@@ -882,6 +885,7 @@ public class Dashboard extends BaseObject
 		addPresentationDataField(PSEUDO_EFFECTIVE_STATUS_MAP, effectiveStatusMap);
 		addPresentationDataField(TAG_USER_STATUS_CHOICE_MAP, userStatusChoiceMap);
 		addPresentationDataField(TAG_USER_COMMENTS_MAP, userCommentsMap);
+		addPresentationDataField(TAG_NEEDS_ATTENTION_MAP, needsAttentionMap);
 	}
 	
 	public static final String OBJECT_NAME = "Dashboard";
@@ -936,6 +940,7 @@ public class Dashboard extends BaseObject
 	public static final String PSEUDO_EFFECTIVE_STATUS_MAP = "effectiveStatusMap";
 	public static final String TAG_USER_STATUS_CHOICE_MAP = "UserStatusChoiceMap";
 	public static final String TAG_USER_COMMENTS_MAP = "UserStatusCommentsMap";
+	public static final String TAG_NEEDS_ATTENTION_MAP = "NeedsAttentionMap";
 
 	private DashboardRowDefinitionManager rowDefinitionManager;
 	private PseudoStringChoiceMapData effectiveStatusMap;
@@ -987,4 +992,5 @@ public class Dashboard extends BaseObject
 	private PseudoStringData targetWithGoalsCount;
 	private StringChoiceMapData userStatusChoiceMap;
 	private StringStringMapData userCommentsMap;
+	private StringCodeListMapData needsAttentionMap;
 }

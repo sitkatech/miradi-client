@@ -427,6 +427,11 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return new StringMapMultiLineEditor(getMainWindow(), refToUse, tag, code);
 	}
 	
+	public ObjectDataInputField createStringCodeListField(ORef refToUse, String tagToUse, String mapKeyCodeToUse, ChoiceQuestion choiceQuestionToUse) throws Exception
+	{
+		return new StringCodeListMapEditorField(getProject(), refToUse, tagToUse, choiceQuestionToUse, mapKeyCodeToUse);
+	}
+	
 	public ObjectDataInputField createDateChooserField(String tag)
 	{
 		return new ObjectDateChooserInputField(project,  getFirstSelectedRef().getObjectType(), getObjectIdForType( getFirstSelectedRef().getObjectType()), tag);

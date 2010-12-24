@@ -56,6 +56,7 @@ import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.RelevancyOverrideSetData;
 import org.miradi.objecthelpers.StringChoiceMap;
+import org.miradi.objecthelpers.StringCodeListMap;
 import org.miradi.objecthelpers.StringStringMap;
 import org.miradi.objects.BaseObject.PseudoQuestionData;
 import org.miradi.objects.BaseObject.PseudoStringData;
@@ -64,10 +65,12 @@ import org.miradi.project.ProjectForTesting;
 import org.miradi.project.TestDateUnit;
 import org.miradi.questions.InternalQuestionWithoutValues;
 import org.miradi.questions.StaticQuestionManager;
+import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.StringChoiceMapData;
+import org.miradi.utils.StringCodeListMapData;
 import org.miradi.utils.StringStringMapData;
 
 public class ObjectTestCase extends TestCaseWithProject
@@ -240,6 +243,16 @@ public class ObjectTestCase extends TestCaseWithProject
 		{
 			StringChoiceMap map = new StringChoiceMap();
 			map.put("a", "code");
+			return map.toString();
+		}
+		else if (field instanceof StringCodeListMapData)
+		{
+			StringCodeListMap map = new StringCodeListMap();
+			CodeList randomCodes = new CodeList();
+			randomCodes.add("SomeCodeA");
+			randomCodes.add("SomeCodeB");
+			map.put("SomeKey", randomCodes.toString());
+			
 			return map.toString();
 		}
 		else if(field instanceof ChoiceData)

@@ -96,6 +96,7 @@ public class IconManager
 		addResourceImageIcon(ANALYSIS_ICON_FILE_NAME);
 		addResourceImageIcon(COLLAPSE_ALL_ICON_FILE_NAME);
 		addResourceImageIcon(EXPAND_ALL_ICON_FILE_NAME);
+		addResourceImageIcon(NEEDS_ATTENTION_ICON_FILE_NAME);
 	}
 	
 	private static void addIcon(Icon icon)
@@ -430,6 +431,11 @@ public class IconManager
 	{
 		return getIcon(EXPAND_ALL_ICON_FILE_NAME);
 	}
+	
+	public static Icon getNeedsAttentionIcon()
+	{
+		return getIcon(NEEDS_ATTENTION_ICON_FILE_NAME);
+	}
 
 	public static Icon getResourceIcon()
 	{
@@ -478,4 +484,5 @@ public class IconManager
 	private static final String ANALYSIS_ICON_FILE_NAME = "icons/analysis.png";
 	private static final String COLLAPSE_ALL_ICON_FILE_NAME = "icons/collapseAll.png";
 	private static final String EXPAND_ALL_ICON_FILE_NAME = "icons/expandAll.png";
+	private static final String NEEDS_ATTENTION_ICON_FILE_NAME = "icons/needsAttentionIcon.png";
 }
