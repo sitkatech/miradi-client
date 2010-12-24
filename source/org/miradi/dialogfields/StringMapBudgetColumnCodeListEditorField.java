@@ -24,15 +24,14 @@ import org.miradi.dialogs.base.AbstractStringCodeListMapEditorField;
 import org.miradi.objecthelpers.AbstractStringKeyMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.StringStringMap;
-import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 
 public class StringMapBudgetColumnCodeListEditorField extends AbstractStringCodeListMapEditorField
 {
-	public StringMapBudgetColumnCodeListEditorField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse)
+	public StringMapBudgetColumnCodeListEditorField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse, String mapCodeToUse)
 	{
-		super(projectToUse, refToUse, tagToUse, questionToUse, TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
+		super(projectToUse, refToUse, tagToUse, questionToUse, mapCodeToUse);
 	}
 
 	@Override
