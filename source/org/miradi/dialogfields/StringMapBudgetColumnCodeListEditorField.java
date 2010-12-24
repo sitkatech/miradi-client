@@ -41,7 +41,7 @@ public class StringMapBudgetColumnCodeListEditorField extends AbstractStringMapC
 	protected String getStringMapAsString() throws Exception
 	{
 		StringStringMap existingMap = new StringStringMap(getProject().getObjectData(getORef(), getTag()));
-		existingMap.put(mapCode, getComponentText());
+		existingMap.put(getMapCode(), getComponentText());
 		
 		return existingMap.toString();
 	}
@@ -58,7 +58,7 @@ public class StringMapBudgetColumnCodeListEditorField extends AbstractStringMapC
 		try
 		{
 			StringStringMap stringMap = new StringStringMap(StringMapAsString);
-			String codeListAsString = stringMap.get(mapCode);
+			String codeListAsString = stringMap.get(getMapCode());
 			
 			return new CodeList(codeListAsString);
 		}

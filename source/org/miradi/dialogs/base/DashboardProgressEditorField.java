@@ -51,7 +51,7 @@ public class DashboardProgressEditorField extends AbstractStringMapCodeListEdito
 		Project project = getProject();
 		ORef oRef = getORef();
 		StringChoiceMap existingMap = new StringChoiceMap(project.getObjectData(oRef, getTag()));
-		existingMap.put(mapCode, extractSingleCode());
+		existingMap.put(getMapCode(), extractSingleCode());
 		
 		return existingMap.toString();
 	}
@@ -79,7 +79,7 @@ public class DashboardProgressEditorField extends AbstractStringMapCodeListEdito
 		try
 		{
 			StringChoiceMap stringChoiceMap = new StringChoiceMap(stringMapAsString);
-			String code = stringChoiceMap.get(mapCode);
+			String code = stringChoiceMap.get(getMapCode());
 			codeListEditor.setText(code);
 		}
 		catch(ParseException e)
