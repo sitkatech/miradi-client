@@ -65,7 +65,7 @@ public class DashboardProgressEditorField extends AbstractStringMapCodeListEdito
 	{
 		try
 		{
-			CodeList codes = new CodeList(getComponentText());
+			CodeList codes = new CodeList(super.getComponentText());
 			if (!codes.isEmpty())
 				return codes.firstElement();
 		}
