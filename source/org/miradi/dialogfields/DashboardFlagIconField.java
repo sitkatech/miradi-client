@@ -33,7 +33,7 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.DashboardFlagsQuestion;
 import org.miradi.utils.CodeList;
 
-public class DashboardFlagIconField extends	AsbtractDashboardClickableStatusField
+public class DashboardFlagIconField extends	AsbtractDashboardClickableField
 {
 	public DashboardFlagIconField(Project projectToUse, ORef refToUse, String stringMapCodeToUse)
 	{
