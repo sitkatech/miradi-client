@@ -22,6 +22,7 @@ package org.miradi.dialogfields;
 
 import java.text.ParseException;
 
+import org.miradi.dialogs.base.StringMapCodeListEditorField;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.AbstractStringKeyMap;
 import org.miradi.objecthelpers.ORef;
@@ -31,7 +32,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
 
-public class StringMapBudgetColumnCodeListEditorField extends AbstractStringMapCodeListEditorField
+public class StringMapBudgetColumnCodeListEditorField extends StringMapCodeListEditorField
 {
 	public StringMapBudgetColumnCodeListEditorField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse)
 	{

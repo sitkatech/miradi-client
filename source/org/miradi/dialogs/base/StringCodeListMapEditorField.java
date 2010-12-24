@@ -22,7 +22,6 @@ package org.miradi.dialogs.base;
 
 import java.text.ParseException;
 
-import org.miradi.dialogfields.AbstractStringMapCodeListEditorField;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.AbstractStringKeyMap;
 import org.miradi.objecthelpers.ORef;
@@ -32,7 +31,7 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
 
 //FIXME this class has duplication from StringMapBudgetColumnCodeListEditorField.   
-public class StringCodeListMapEditorField extends AbstractStringMapCodeListEditorField
+public class StringCodeListMapEditorField extends StringMapCodeListEditorField
 {
 	public StringCodeListMapEditorField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse, String mapKeyCodeToUse)
 	{
