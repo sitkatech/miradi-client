@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella;
 
-import org.miradi.commands.Command;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.exceptions.NothingToRedoException;
 import org.miradi.main.EAM;
@@ -42,13 +41,7 @@ public class RedoDoer extends ProjectDoer
 	{
 		try
 		{
-			EAM.logVerbose("Redo starting");
-			Command redone = project.redo();
-			if(redone.isBeginTransaction())
-			{
-				while(!redone.isEndTransaction())
-					redone = project.redo();
-			}
+			project.redo();
 		}
 		catch (NothingToRedoException e)
 		{

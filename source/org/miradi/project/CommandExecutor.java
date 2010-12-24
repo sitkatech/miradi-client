@@ -32,6 +32,8 @@ import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.commands.CommandSetThreatRating;
 import org.miradi.exceptions.CommandFailedException;
+import org.miradi.exceptions.NothingToRedoException;
+import org.miradi.exceptions.NothingToUndoException;
 import org.miradi.exceptions.UnableToBeginTransactionException;
 import org.miradi.exceptions.UnexpectedNonSideEffectException;
 import org.miradi.exceptions.UnexpectedSideEffectException;
@@ -162,7 +164,20 @@ public class CommandExecutor
 		}
 	}
 	
-	public Command undo() throws CommandFailedException, RuntimeException
+	public void undo() throws CommandFailedException, RuntimeException
+	{
+		EAM.logVerbose("Performing undo");
+		Command undone = undoOneCommand();
+		if(undone.isEndTransaction())
+		{
+			while(!undone.isBeginTransaction())
+				undone = undoOneCommand();
+		}
+		transactionOrSingleCommandHasEnded();
+	}
+
+	private Command undoOneCommand() throws NothingToUndoException,
+			CommandFailedException
 	{
 		Command cmd = getUndoRedoState().popCommandToUndo();
 		try
@@ -170,7 +185,6 @@ public class CommandExecutor
 			enableIsExecuting();
 			executeWithoutRecording(cmd.getReverseCommand());
 			enterSideEffectModeAndFireCommandExecuted(cmd.getReverseCommand());
-			transactionOrSingleCommandHasEnded();
 			return cmd;
 		}
 		finally
@@ -179,7 +193,20 @@ public class CommandExecutor
 		}
 	}
 
-	public Command redo() throws CommandFailedException, RuntimeException
+	public void redo() throws CommandFailedException, RuntimeException
+	{
+		EAM.logVerbose("Performing redo");
+		Command redone = redoOneCommand();
+		if(redone.isBeginTransaction())
+		{
+			while(!redone.isEndTransaction())
+				redone = redoOneCommand();
+		}
+		transactionOrSingleCommandHasEnded();
+	}
+
+	private Command redoOneCommand() throws NothingToRedoException,
+			CommandFailedException
 	{
 		Command cmd = getUndoRedoState().popCommandToRedo();
 		try
@@ -188,7 +215,6 @@ public class CommandExecutor
 			enableIsExecuting();
 			executeWithoutRecording(cmd);
 			enterSideEffectModeAndFireCommandExecuted(cmd);
-			transactionOrSingleCommandHasEnded();
 			return cmd;
 		}
 		finally
