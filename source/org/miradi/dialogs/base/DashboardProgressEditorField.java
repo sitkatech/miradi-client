@@ -48,9 +48,7 @@ public class DashboardProgressEditorField extends AbstractStringMapCodeListEdito
 	@Override
 	protected String getStringMapAsString() throws Exception
 	{
-		Project project = getProject();
-		ORef oRef = getORef();
-		StringChoiceMap existingMap = new StringChoiceMap(project.getObjectData(oRef, getTag()));
+		StringChoiceMap existingMap = new StringChoiceMap(getProject().getObjectData(getORef(), getTag()));
 		existingMap.put(getMapCode(), extractSingleCode());
 		
 		return existingMap.toString();
