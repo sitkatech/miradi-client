@@ -29,7 +29,7 @@ import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
 import org.miradi.views.umbrella.DeleteActivityDoer;
-import org.miradi.views.umbrella.Undo;
+import org.miradi.views.umbrella.UndoDoer;
 
 public class TestDeleteActivity extends TestCaseWithProject
 {
@@ -64,19 +64,19 @@ public class TestDeleteActivity extends TestCaseWithProject
 			assertEquals("Parent doesn't have child?", 1, parentHasChild.getSubtaskCount());
 			transactionDeleteTask(getProject(), parentHasChildRef, leafChild);
 			assertEquals("Didn't delete subtasks?", 0, parentHasChild.getSubtaskCount());
-			Undo.undo(getProject());
+			UndoDoer.undo(getProject());
 			assertEquals("Didn't restore subtasks?", 1, parentHasChild.getSubtaskCount());
 			
 			transactionDeleteTask(getProject(), strategy.getRef(), parentNoChild);
 			assertEquals("Didn't delete activity?", 1, strategy.getActivityIds().size());
-			Undo.undo(getProject());
+			UndoDoer.undo(getProject());
 			assertEquals("Didn't restore activity?", 2, strategy.getActivityIds().size());
 			
 			transactionDeleteTask(getProject(), strategy.getRef(), parentHasChild);
 			parentHasChild = null;
 		
 			assertEquals("Didn't delete activity?", 1, strategy.getActivityIds().size());
-			Undo.undo(getProject());
+			UndoDoer.undo(getProject());
 			assertEquals("Didn't delete activity?", 2, strategy.getActivityIds().size());
 			
 			parentHasChild = (Task)getProject().findObject(parentHasChildRef);

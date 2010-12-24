@@ -61,7 +61,7 @@ import org.miradi.objects.ThreatReductionResult;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.utils.CodeList;
-import org.miradi.views.umbrella.Undo;
+import org.miradi.views.umbrella.UndoDoer;
 
 public class TestDiagramPaster extends TestCaseWithProject 
 {
@@ -293,7 +293,7 @@ public class TestDiagramPaster extends TestCaseWithProject
 			getProject().executeCommand(new CommandEndTransaction());
 		}
 		
-		Undo.undo(getProject());
+		UndoDoer.undo(getProject());
 		assertEquals("wrong threat stress ratings count after undo?", 1, getProject().getThreatStressRatingPool().size());
 	}
 	

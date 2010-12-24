@@ -26,7 +26,7 @@ import org.miradi.main.EAM;
 import org.miradi.project.Project;
 import org.miradi.views.ProjectDoer;
 
-public class Redo extends ProjectDoer
+public class RedoDoer extends ProjectDoer
 {
 	public boolean isAvailable()
 	{
