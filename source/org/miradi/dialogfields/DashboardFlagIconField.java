@@ -23,6 +23,7 @@ package org.miradi.dialogfields;
 import javax.swing.Icon;
 
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.icons.EmptyIcon;
 import org.miradi.objecthelpers.AbstractStringKeyMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.StringCodeListMap;
@@ -53,7 +54,7 @@ public class DashboardFlagIconField extends	AsbtractDashboardClickableStatusFiel
 	@Override
 	protected void updateLabel(ChoiceItem progressChoiceItem, PanelTitleLabel componentToUpdate)
 	{
-		componentToUpdate.setIcon(null);
+		componentToUpdate.setIcon(new EmptyIcon());
 		if (progressChoiceItem != null)
 		{
 			Icon icon = progressChoiceItem.getIcon();
