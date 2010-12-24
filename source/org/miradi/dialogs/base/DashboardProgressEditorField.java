@@ -26,6 +26,7 @@ import org.miradi.dialogfields.AbstractStringMapCodeListEditorField;
 import org.miradi.dialogfields.QuestionBasedEditorComponent;
 import org.miradi.dialogfields.RadioButtonEditorComponent;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.AbstractStringKeyMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.StringChoiceMap;
 import org.miradi.project.Project;
@@ -48,7 +49,7 @@ public class DashboardProgressEditorField extends AbstractStringMapCodeListEdito
 	@Override
 	protected String getStringMapAsString() throws Exception
 	{
-		StringChoiceMap existingMap = new StringChoiceMap(getProject().getObjectData(getORef(), getTag()));
+		AbstractStringKeyMap existingMap = new StringChoiceMap(getProject().getObjectData(getORef(), getTag()));
 		existingMap.put(getMapCode(), extractSingleCode());
 		
 		return existingMap.toString();
@@ -76,7 +77,7 @@ public class DashboardProgressEditorField extends AbstractStringMapCodeListEdito
 	{
 		try
 		{
-			StringChoiceMap stringChoiceMap = new StringChoiceMap(stringMapAsString);
+			AbstractStringKeyMap stringChoiceMap = new StringChoiceMap(stringMapAsString);
 			String code = stringChoiceMap.get(getMapCode());
 			codeListEditor.setText(code);
 		}
