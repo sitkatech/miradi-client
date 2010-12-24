@@ -31,6 +31,7 @@ import org.miradi.dialogs.base.ModalDialogWithClose;
 import org.miradi.dialogs.dashboard.DashboardProgressPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.AbstractStringKeyMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.StringChoiceMap;
 import org.miradi.project.Project;
@@ -56,7 +57,7 @@ abstract public class AsbtractDashboardClickableStatusField extends ObjectDataIn
 	{
 		try
 		{
-			StringChoiceMap map = new StringChoiceMap(stringCodeMapAsString);
+			AbstractStringKeyMap map = new StringChoiceMap(stringCodeMapAsString);
 			String code = map.get(stringMapCode);
 			ChoiceItem progressChoiceItem = question.findChoiceByCode(code);
 			updateLabel(progressChoiceItem, iconComponent);
