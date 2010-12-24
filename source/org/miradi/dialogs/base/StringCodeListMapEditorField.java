@@ -42,10 +42,15 @@ public class StringCodeListMapEditorField extends AbstractStringMapCodeListEdito
 	@Override
 	protected String getStringMapAsString() throws Exception
 	{
-		AbstractStringKeyMap existingMap = new StringCodeListMap(getProject().getObjectData(getORef(), getTag()));
+		AbstractStringKeyMap existingMap = createEmptyStringKeyMap();
 		existingMap.put(getMapCode(), getComponentText());
 		
 		return existingMap.toString();
+	}
+
+	private AbstractStringKeyMap createEmptyStringKeyMap() throws Exception
+	{
+		return new StringCodeListMap(getProject().getObjectData(getORef(), getTag()));
 	}
 
 	@Override

@@ -41,10 +41,15 @@ public class StringMapBudgetColumnCodeListEditorField extends AbstractStringMapC
 	@Override
 	protected String getStringMapAsString() throws Exception
 	{
-		AbstractStringKeyMap existingMap = new StringStringMap(getProject().getObjectData(getORef(), getTag()));
+		AbstractStringKeyMap existingMap = createEmptyStringKeyMap();
 		existingMap.put(getMapCode(), getComponentText());
 		
 		return existingMap.toString();
+	}
+	
+	private AbstractStringKeyMap createEmptyStringKeyMap() throws Exception
+	{
+		return new StringStringMap(getProject().getObjectData(getORef(), getTag()));
 	}
 
 	@Override
