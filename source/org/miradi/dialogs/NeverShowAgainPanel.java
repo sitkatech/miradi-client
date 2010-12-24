@@ -27,7 +27,7 @@ import org.miradi.dialogs.fieldComponents.PanelCheckBox;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.notify.NeverAgainCheckBoxHandler;
 import org.miradi.dialogs.notify.NotifyDialogTemplate;
-import org.miradi.dialogs.notify.NotifyDialogTemplatePool;
+import org.miradi.dialogs.notify.NotifyDialogTemplateFactory;
 import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
@@ -51,7 +51,7 @@ public class NeverShowAgainPanel extends DisposablePanelWithDescription
 		
 		// TODO: This should get all the templates from the pool, 
 		// and loop through them creating checkboxes
-		NotifyDialogTemplate template = NotifyDialogTemplatePool.pastedSharedFactors();
+		NotifyDialogTemplate template = NotifyDialogTemplateFactory.pastedSharedFactors();
 		addCheckBox(template);
 	}
 

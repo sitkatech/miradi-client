@@ -22,7 +22,7 @@ package org.miradi.dialogs.notify;
 
 import org.miradi.main.EAM;
 
-public class NotifyDialogTemplatePool
+public class NotifyDialogTemplateFactory
 {
 	public static NotifyDialogTemplate pastedSharedFactors()
 	{
