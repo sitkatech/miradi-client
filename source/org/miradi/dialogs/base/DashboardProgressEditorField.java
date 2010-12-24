@@ -46,15 +46,6 @@ public class DashboardProgressEditorField extends AbstractStringMapCodeListEdito
 		return new RadioButtonEditorComponent(questionToUse);
 	}
 	
-	@Override
-	protected String getStringMapAsString() throws Exception
-	{
-		AbstractStringKeyMap existingMap = createEmptyStringKeyMap();
-		existingMap.put(getMapCode(), getComponentText());
-		
-		return existingMap.toString();
-	}
-
 	protected AbstractStringKeyMap createEmptyStringKeyMap() throws ParseException
 	{
 		return new StringChoiceMap(getProject().getObjectData(getORef(), getTag()));
