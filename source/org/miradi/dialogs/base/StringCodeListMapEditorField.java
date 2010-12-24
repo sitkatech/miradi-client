@@ -42,7 +42,7 @@ public class StringCodeListMapEditorField extends AbstractStringMapCodeListEdito
 	protected String getStringMapAsString() throws Exception
 	{
 		StringCodeListMap existingMap = new StringCodeListMap(getProject().getObjectData(getORef(), getTag()));
-		existingMap.put(mapCode, getComponentText());
+		existingMap.put(getMapCode(), getComponentText());
 		
 		return existingMap.toString();
 	}
@@ -59,7 +59,7 @@ public class StringCodeListMapEditorField extends AbstractStringMapCodeListEdito
 		try
 		{
 			StringCodeListMap stringMap = new StringCodeListMap(StringMapAsString);
-			String codeListAsString = stringMap.get(mapCode);
+			String codeListAsString = stringMap.get(getMapCode());
 			
 			return new CodeList(codeListAsString);
 		}

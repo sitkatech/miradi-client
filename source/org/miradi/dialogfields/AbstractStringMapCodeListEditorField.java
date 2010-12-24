@@ -48,8 +48,13 @@ abstract public class AbstractStringMapCodeListEditorField extends AbstractChoic
 			return "";
 		}
 	}
+	
+	protected String getMapCode()
+	{
+		return mapCode;
+	}
 
 	abstract protected String getStringMapAsString() throws Exception;
 	
-	protected String mapCode;
+	private String mapCode;
 }
