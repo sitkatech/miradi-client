@@ -34,7 +34,7 @@ import com.thaiopensource.validate.SchemaReader;
 import com.thaiopensource.validate.rng.CompactSchemaReader;
 import com.thaiopensource.validate.rng.RngProperty;
 
-//NOTE: tis class was duplicated from com.thaiopensource.validate.ValidationDriver. in order to 
+//NOTE: this class was duplicated from com.thaiopensource.validate.ValidationDriver. in order to 
 //have better error handling
 abstract public class MiradiXmlValidator
 {
