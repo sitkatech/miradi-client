@@ -40,7 +40,10 @@ abstract public class AbstractStringMapCodeListEditorField extends AbstractChoic
 	{
 		try
 		{
-			return getStringMapAsString();
+			AbstractStringKeyMap existingMap = createEmptyStringKeyMap();
+			existingMap.put(getMapCode(), getComponentText());
+			
+			return existingMap.toString();
 		}
 		catch (Exception e)
 		{
@@ -50,14 +53,6 @@ abstract public class AbstractStringMapCodeListEditorField extends AbstractChoic
 		}
 	}
 	
-	protected String getStringMapAsString() throws Exception
-	{
-		AbstractStringKeyMap existingMap = createEmptyStringKeyMap();
-		existingMap.put(getMapCode(), getComponentText());
-		
-		return existingMap.toString();
-	}
-
 	protected String getMapCode()
 	{
 		return mapCode;
