@@ -46,6 +46,7 @@ public class DashboardProgressEditorField extends AbstractStringMapCodeListEdito
 		return new RadioButtonEditorComponent(questionToUse);
 	}
 	
+	@Override
 	protected AbstractStringKeyMap createCurrentStringKeyMap() throws ParseException
 	{
 		return new StringChoiceMap(getProject().getObjectData(getORef(), getTag()));
