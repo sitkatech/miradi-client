@@ -22,6 +22,7 @@ package org.miradi.dialogfields;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.ParseException;
 
 import javax.swing.JComponent;
 
@@ -57,7 +58,7 @@ abstract public class AsbtractDashboardClickableStatusField extends ObjectDataIn
 	{
 		try
 		{
-			AbstractStringKeyMap map = new StringChoiceMap(stringCodeMapAsString);
+			AbstractStringKeyMap map = createStringStringMap(stringCodeMapAsString);
 			String code = map.get(stringMapCode);
 			ChoiceItem progressChoiceItem = question.findChoiceByCode(code);
 			updateLabel(progressChoiceItem, iconComponent);
@@ -67,6 +68,11 @@ abstract public class AsbtractDashboardClickableStatusField extends ObjectDataIn
 			EAM.logException(e);
 			EAM.unexpectedErrorDialog(e);
 		}
+	}
+
+	protected StringChoiceMap createStringStringMap(String stringCodeMapAsString)	throws ParseException
+	{
+		return new StringChoiceMap(stringCodeMapAsString);
 	}
 
 	@Override
