@@ -26,7 +26,7 @@ import org.miradi.main.EAM;
 import org.miradi.project.Project;
 import org.miradi.views.ProjectDoer;
 
-public class Undo extends ProjectDoer
+public class UndoDoer extends ProjectDoer
 {
 	@Override
 	public boolean isAvailable()
