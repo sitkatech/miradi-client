@@ -50,12 +50,13 @@ public class DashboardProgressEditorField extends AbstractStringMapCodeListEdito
 	protected String getStringMapAsString() throws Exception
 	{
 		AbstractStringKeyMap existingMap = new StringChoiceMap(getProject().getObjectData(getORef(), getTag()));
-		existingMap.put(getMapCode(), extractSingleCode());
+		existingMap.put(getMapCode(), getComponentText());
 		
 		return existingMap.toString();
 	}
 	
-	private String extractSingleCode()
+	@Override
+	protected String getComponentText()
 	{
 		try
 		{
