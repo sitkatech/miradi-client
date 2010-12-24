@@ -261,7 +261,7 @@ public class ProjectServer
 		writeRelativeJsonFile(getCurrentProjectName(), getRelativeThreatRatingFrameworkFile(), framework.toJson());
 	}
 
-	public void writeVersion() throws Exception
+	private void writeVersion() throws Exception
 	{
 		int versionToWrite = DATA_VERSION;
 		writeVersion(versionToWrite);
