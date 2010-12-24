@@ -63,7 +63,7 @@ public class StringMapBudgetColumnCodeListEditorField extends AbstractStringMapC
 	{
 		try
 		{
-			AbstractStringKeyMap stringMap = new StringStringMap(StringMapAsString);
+			AbstractStringKeyMap stringMap = createStringKeyMap(StringMapAsString);
 			String codeListAsString = stringMap.get(getMapCode());
 			
 			return new CodeList(codeListAsString);
@@ -74,5 +74,10 @@ public class StringMapBudgetColumnCodeListEditorField extends AbstractStringMapC
 			EAM.logException(e);
 			return new CodeList();
 		}
+	}
+
+	private AbstractStringKeyMap createStringKeyMap(String StringMapAsString) throws ParseException
+	{
+		return new StringStringMap(StringMapAsString);
 	}
 }
