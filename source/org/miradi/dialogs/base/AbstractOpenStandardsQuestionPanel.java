@@ -177,7 +177,6 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		rightComponent.setFont(font);
 		Box leftBox = createHorizontalBoxWithIndents(level);
 		leftBox.add(flagIconComponent);
-		leftBox.add(Box.createHorizontalStrut(STRUT_WIDTH_BETWEEN_ICON_AND_TEXT));
 		leftBox.add(iconComponent);
 		leftBox.add(Box.createHorizontalStrut(STRUT_WIDTH_BETWEEN_ICON_AND_TEXT));
 		leftBox.add(leftComponent);
