@@ -95,6 +95,7 @@ public class StaticQuestionManager
 		addQuestion(new DiagramObjectDataInclusionQuestion());
 		addQuestion(new PlanningTreeTargetPositionQuestion());
 		addQuestion(new WorkPlanCategoryTypesQuestion());
+		addQuestion(new DashboardFlagsQuestion());
 	}
 	
 	private static void addQuestion(ChoiceQuestion question)

@@ -102,6 +102,11 @@ abstract public class ObjectData
 		return false;
 	}
 	
+	public boolean isStringCodeListMapData()
+	{
+		return false;
+	}
+	
 	public ChoiceQuestion getChoiceQuestion()
 	{
 		return null;

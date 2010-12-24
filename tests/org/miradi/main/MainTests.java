@@ -200,6 +200,7 @@ import org.miradi.utils.TestOptionalDouble;
 import org.miradi.utils.TestPointList;
 import org.miradi.utils.TestRtfWriter;
 import org.miradi.utils.TestStringChoiceMap;
+import org.miradi.utils.TestStringCodeListMap;
 import org.miradi.utils.TestStringMap;
 import org.miradi.utils.TestTaxonomyFileLoader;
 import org.miradi.utils.TestThreatStressRatingHelper;
@@ -375,6 +376,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestCodeList.class));
 		suite.addTest(new TestSuite(TestStringMap.class));
 		suite.addTest(new TestSuite(TestStringChoiceMap.class));
+		suite.addTest(new TestSuite(TestStringCodeListMap.class));
 		suite.addTest(new TestSuite(TestIndicator.class));
 		suite.addTest(new TestSuite(TestKeyEcologicalAttribute.class));
 		suite.addTest(new TestSuite(TestObjective.class));
