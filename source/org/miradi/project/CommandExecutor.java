@@ -68,11 +68,19 @@ public class CommandExecutor
 		try
 		{
 			getNormalExecutor().executeCommand(command);
+			if(!isInTransaction())
+				transactionOrSingleCommandHasEnded();
 		}
 		catch (UnableToBeginTransactionException e)
 		{
 			EAM.panic(e);
 		}
+	}
+
+	private void transactionOrSingleCommandHasEnded()
+	{
+		// NOTE: Eventually data will not be written during transactions,
+		// and will be written here instead
 	}
 
 	private boolean isTransactionStateValidFor(Command command)
@@ -161,6 +169,7 @@ public class CommandExecutor
 			enableIsExecuting();
 			executeWithoutRecording(cmd.getReverseCommand());
 			enterSideEffectModeAndFireCommandExecuted(cmd.getReverseCommand());
+			transactionOrSingleCommandHasEnded();
 			return cmd;
 		}
 		finally
@@ -178,6 +187,7 @@ public class CommandExecutor
 			enableIsExecuting();
 			executeWithoutRecording(cmd);
 			enterSideEffectModeAndFireCommandExecuted(cmd);
+			transactionOrSingleCommandHasEnded();
 			return cmd;
 		}
 		finally
