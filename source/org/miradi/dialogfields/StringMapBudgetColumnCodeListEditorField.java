@@ -23,6 +23,7 @@ package org.miradi.dialogfields;
 import java.text.ParseException;
 
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.AbstractStringKeyMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.StringStringMap;
 import org.miradi.objects.TableSettings;
@@ -40,7 +41,7 @@ public class StringMapBudgetColumnCodeListEditorField extends AbstractStringMapC
 	@Override
 	protected String getStringMapAsString() throws Exception
 	{
-		StringStringMap existingMap = new StringStringMap(getProject().getObjectData(getORef(), getTag()));
+		AbstractStringKeyMap existingMap = new StringStringMap(getProject().getObjectData(getORef(), getTag()));
 		existingMap.put(getMapCode(), getComponentText());
 		
 		return existingMap.toString();
@@ -57,7 +58,7 @@ public class StringMapBudgetColumnCodeListEditorField extends AbstractStringMapC
 	{
 		try
 		{
-			StringStringMap stringMap = new StringStringMap(StringMapAsString);
+			AbstractStringKeyMap stringMap = new StringStringMap(StringMapAsString);
 			String codeListAsString = stringMap.get(getMapCode());
 			
 			return new CodeList(codeListAsString);

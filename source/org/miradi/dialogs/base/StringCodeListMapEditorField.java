@@ -24,6 +24,7 @@ import java.text.ParseException;
 
 import org.miradi.dialogfields.AbstractStringMapCodeListEditorField;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.AbstractStringKeyMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.StringCodeListMap;
 import org.miradi.project.Project;
@@ -41,7 +42,7 @@ public class StringCodeListMapEditorField extends AbstractStringMapCodeListEdito
 	@Override
 	protected String getStringMapAsString() throws Exception
 	{
-		StringCodeListMap existingMap = new StringCodeListMap(getProject().getObjectData(getORef(), getTag()));
+		AbstractStringKeyMap existingMap = new StringCodeListMap(getProject().getObjectData(getORef(), getTag()));
 		existingMap.put(getMapCode(), getComponentText());
 		
 		return existingMap.toString();
@@ -58,7 +59,7 @@ public class StringCodeListMapEditorField extends AbstractStringMapCodeListEdito
 	{
 		try
 		{
-			StringCodeListMap stringMap = new StringCodeListMap(StringMapAsString);
+			AbstractStringKeyMap stringMap = new StringCodeListMap(StringMapAsString);
 			String codeListAsString = stringMap.get(getMapCode());
 			
 			return new CodeList(codeListAsString);
