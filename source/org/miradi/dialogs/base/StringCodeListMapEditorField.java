@@ -64,7 +64,7 @@ public class StringCodeListMapEditorField extends AbstractStringMapCodeListEdito
 	{
 		try
 		{
-			AbstractStringKeyMap stringMap = new StringCodeListMap(StringMapAsString);
+			AbstractStringKeyMap stringMap = createStringKeyMap(StringMapAsString);
 			String codeListAsString = stringMap.get(getMapCode());
 			
 			return new CodeList(codeListAsString);
@@ -75,5 +75,10 @@ public class StringCodeListMapEditorField extends AbstractStringMapCodeListEdito
 			EAM.logException(e);
 			return new CodeList();
 		}
+	}
+
+	private AbstractStringKeyMap createStringKeyMap(String StringMapAsString) throws ParseException
+	{
+		return new StringCodeListMap(StringMapAsString);
 	}
 }
