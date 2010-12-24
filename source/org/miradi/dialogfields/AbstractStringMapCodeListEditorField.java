@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields;
 
-import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
@@ -31,11 +30,6 @@ abstract public class AbstractStringMapCodeListEditorField extends AbstractChoic
 	public AbstractStringMapCodeListEditorField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse)
 	{
 		super(projectToUse, refToUse, tagToUse, questionToUse, AbstractQuestionEditorComponent.SINGLE_COLUMN);
-	}
-	
-	public AbstractStringMapCodeListEditorField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, ChoiceQuestion questionToUse)
-	{
-		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, questionToUse, AbstractQuestionEditorComponent.SINGLE_COLUMN);
 	}
 	
 	@Override
