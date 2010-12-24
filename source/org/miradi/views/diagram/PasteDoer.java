@@ -22,7 +22,7 @@ package org.miradi.views.diagram;
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.dialogs.notify.NotifyDialog;
-import org.miradi.dialogs.notify.NotifyDialogTemplatePool;
+import org.miradi.dialogs.notify.NotifyDialogTemplateFactory;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.main.TransferableMiradiList;
@@ -60,7 +60,7 @@ public class PasteDoer extends AbstractPasteDoer
 			paste(diagramPaster);
 			possiblyNotifyUserIfDataWasLost(diagramPaster);
 			notifiyIfNothingWasPasted(beforePasteDiagramFactors, beforePasteDiagramLinks);
-			NotifyDialog.notify(getMainWindow(), NotifyDialogTemplatePool.pastedSharedFactors());
+			NotifyDialog.notify(getMainWindow(), NotifyDialogTemplateFactory.pastedSharedFactors());
 		} 
 		catch (Exception e) 
 		{

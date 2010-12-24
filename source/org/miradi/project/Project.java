@@ -1103,14 +1103,14 @@ public class Project
 		getCommandExecutor().executeCommandsAsTransaction(commands);
 	}
 	
-	public Command undo() throws CommandFailedException, RuntimeException
+	public void undo() throws CommandFailedException, RuntimeException
 	{
-		return getCommandExecutor().undo();
+		getCommandExecutor().undo();
 	}
 	
-	public Command redo() throws CommandFailedException, RuntimeException
+	public void redo() throws CommandFailedException, RuntimeException
 	{
-		return getCommandExecutor().redo();
+		getCommandExecutor().redo();
 	}
 
 	private void executeWithoutRecording(Command command) throws CommandFailedException

@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.confirm;
 
-public class ConfirmDialogTemplatePool
+public class ConfirmDialogTemplateFactory
 {
 	// TODO: Start using this for confirmation dialogs
 //	public static ConfirmDialogTemplate shouldPasteSharedFactors()

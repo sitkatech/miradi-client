@@ -275,15 +275,10 @@ abstract public class TabbedView extends UmbrellaView
 	
 	public void setTab(int newTab)
 	{
-		int currentTabAccordingToSwing = tabs.getSelectedIndex();
-		boolean doesSwingThinkThisTabIsAlreadyCurrent = (newTab == currentTabAccordingToSwing);
+		prepareForTabSwitch();
 		tabs.setSelectedIndex(newTab);
-		if(doesSwingThinkThisTabIsAlreadyCurrent)
-		{
-			prepareForTabSwitch();
-			tabWasSelected();
-			getMainWindow().updateActionsAndStatusBar();
-		}
+		tabWasSelected();
+		getMainWindow().updateActionsAndStatusBar();
 	}
 	
 	public void setCurrentSelectedTitle(String text)
