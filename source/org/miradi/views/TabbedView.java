@@ -475,47 +475,28 @@ abstract public class TabbedView extends UmbrellaView
 	{
 		public void stateChanged(ChangeEvent event)
 		{
-			int oldTab = currentTabIndex;
-			int newTab = tabs.getSelectedIndex();
+			if(ignoreTabChanges)
+				return;
 
-			if(!ignoreTabChanges)
-			{
-				prepareForTabSwitch();
-				tabWasSelected();
-				recordTabChangeCommand(oldTab, newTab);
-			}
+			boolean didUserDirectlyClickOnTheTab = !getProject().getCommandExecutor().isExecutingACommand();
+			if(!didUserDirectlyClickOnTheTab)
+				return;
 			
-			if(oldTab != newTab)
-				getMainWindow().updateActionsAndStatusBar();
-		}
-
-		private void recordTabChangeCommand(int oldTab, int newTab)
-		{
-			EAM.logVerbose("TabChangeListener.stateChanged");
-			closeActivePropertiesDialog();
 			try
 			{
-				// NOTE: We can't execute a command here, but need to set the data, 
-				// and might need to record the command
-				CommandSetObjectData tabChangeCommand = createTabChangeCommand(oldTab, newTab);
-				getProject().setObjectData(tabChangeCommand.getObjectORef(), tabChangeCommand.getFieldTag(), tabChangeCommand.getDataValue());
-				if(!getProject().isExecutingACommand())
-				{
-					getProject().recordCommand(tabChangeCommand);
-					EAM.logVerbose("TabChangeListener.stateChanged recorded command");
-				}
+				int newTab = tabs.getSelectedIndex();
+				CommandSetObjectData command = createTabChangeCommand(newTab);
+				getProject().executeCommand(command);
 			}
-			catch (Exception e)
+			catch(Exception e)
 			{
-				EAM.logException(e);
-				EAM.errorDialog("Unexpected error");
+				EAM.panic(e);
 			}
 		}
-		
-		CommandSetObjectData createTabChangeCommand(int oldTab, int newTab) throws Exception
+
+		private CommandSetObjectData createTabChangeCommand(int newTab) throws Exception
 		{
 			CommandSetObjectData cmd = new CommandSetObjectData(ObjectType.VIEW_DATA, getViewData().getId(), ViewData.TAG_CURRENT_TAB, Integer.toString(newTab));
-			cmd.setPreviousDataValue(Integer.toString(oldTab));
 			return cmd;
 		}
 
