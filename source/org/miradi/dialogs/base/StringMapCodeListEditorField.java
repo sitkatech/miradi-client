@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.base;
 
-import org.miradi.dialogfields.AbstractStringMapCodeListEditorField;
+import org.miradi.dialogfields.AbstractStringStringMapEditorField;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.AbstractStringKeyMap;
 import org.miradi.objecthelpers.ORef;
@@ -28,7 +28,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
 
-abstract public class StringMapCodeListEditorField extends AbstractStringMapCodeListEditorField
+abstract public class StringMapCodeListEditorField extends AbstractStringStringMapEditorField
 {
 	public StringMapCodeListEditorField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse, String mapCodeToUse)
 	{

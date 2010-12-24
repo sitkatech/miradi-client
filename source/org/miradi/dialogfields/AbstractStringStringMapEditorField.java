@@ -24,9 +24,9 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 
-abstract public class AbstractStringMapCodeListEditorField extends AbstractChoiceItemListEditorField
+abstract public class AbstractStringStringMapEditorField extends AbstractChoiceItemListEditorField
 {
-	public AbstractStringMapCodeListEditorField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse, String mapCodeToUse)
+	public AbstractStringStringMapEditorField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse, String mapCodeToUse)
 	{
 		super(projectToUse, refToUse, tagToUse, questionToUse, AbstractQuestionEditorComponent.SINGLE_COLUMN);
 		
