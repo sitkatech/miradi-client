@@ -69,7 +69,7 @@ import org.miradi.dialogfields.ObjectStringMapInputField;
 import org.miradi.dialogfields.PopupQuestionEditorField;
 import org.miradi.dialogfields.RadioButtonsField;
 import org.miradi.dialogfields.ReadOnlyCodeListField;
-import org.miradi.dialogfields.StringMapBudgetColumnCodeListEditorField;
+import org.miradi.dialogfields.StringStringMapEditorField;
 import org.miradi.dialogfields.StringMapMultiLineEditor;
 import org.miradi.dialogfields.StringMapProjectResourceFilterEditorField;
 import org.miradi.dialogs.fieldComponents.PanelFieldLabel;
@@ -565,7 +565,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ObjectDataInputField createStringMapWorkPlanBudgetColumnCodeListEditor(int objectType, String tagToUse, ChoiceQuestion question)
 	{
-		return new StringMapBudgetColumnCodeListEditorField(getProject(), getRefForType(objectType), tagToUse, question, TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
+		return new StringStringMapEditorField(getProject(), getRefForType(objectType), tagToUse, question, TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
 	}
 	
 	public ObjectDataInputField createStringMapProjectResourceFilterCodeListEditor(int objectType, String tagToUse, ChoiceQuestion question)
