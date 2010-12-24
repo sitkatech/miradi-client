@@ -53,11 +53,11 @@ public class DashboardProgressEditorField extends AbstractStringMapCodeListEdito
 	}
 	
 	@Override
-	protected String getComponentText()
+	public String getText()
 	{
 		try
 		{
-			CodeList codes = new CodeList(super.getComponentText());
+			CodeList codes = new CodeList(super.getText());
 			if (!codes.isEmpty())
 				return codes.firstElement();
 		}
