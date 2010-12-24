@@ -36,15 +36,6 @@ abstract public class StringMapCodeListEditorField extends AbstractStringMapCode
 	}
 	
 	@Override
-	protected String getStringMapAsString() throws Exception
-	{
-		AbstractStringKeyMap existingMap = createEmptyStringKeyMap();
-		existingMap.put(getMapCode(), getComponentText());
-		
-		return existingMap.toString();
-	}
-	
-	@Override
 	public void setText(String stringMapAsString)
 	{
 		CodeList codes = createCodeListFromString(stringMapAsString);
@@ -68,7 +59,5 @@ abstract public class StringMapCodeListEditorField extends AbstractStringMapCode
 		}
 	}
 
-	abstract protected AbstractStringKeyMap createEmptyStringKeyMap() throws Exception;
-	
 	abstract protected AbstractStringKeyMap createStringKeyMap(String StringMapAsString) throws Exception;
 }
