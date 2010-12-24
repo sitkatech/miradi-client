@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella;
 
-import org.miradi.commands.Command;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.exceptions.NothingToUndoException;
 import org.miradi.main.EAM;
@@ -47,13 +46,7 @@ public class UndoDoer extends ProjectDoer
 	{
 		try
 		{
-			EAM.logVerbose("Undo starting");
-			Command undone = project.undo();
-			if(undone.isEndTransaction())
-			{
-				while(!undone.isBeginTransaction())
-					undone = project.undo();
-			}
+			project.undo();
 		}
 		catch (NothingToUndoException e)
 		{
