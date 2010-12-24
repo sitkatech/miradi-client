@@ -261,7 +261,7 @@ public class ProjectServer
 		writeRelativeJsonFile(getCurrentProjectName(), getRelativeThreatRatingFrameworkFile(), framework.toJson());
 	}
 
-	public void writeVersion() throws Exception
+	private void writeVersion() throws Exception
 	{
 		int versionToWrite = DATA_VERSION;
 		writeVersion(versionToWrite);
@@ -449,7 +449,7 @@ public class ProjectServer
 		}
 	}
 	
-	public static String timestampToString(long lastModifiedMillis)
+	private static String timestampToString(long lastModifiedMillis)
 	{
 		Date date = new Date(lastModifiedMillis);
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
