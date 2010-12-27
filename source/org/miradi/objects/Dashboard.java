@@ -764,10 +764,15 @@ public class Dashboard extends BaseObject
 
 	private int getWordCount(String text) 
 	{
-		if (text.length() == 0)
-			return 0;
-		
-		return text.split("\\s+").length;
+		String[] splitted = text.split("\\s+");
+		if (splitted.length == 1)
+		{
+			String singleSplitValue = splitted[0];
+			if (singleSplitValue.equals(""))
+				return 0;
+		}
+
+		return splitted.length;
 	}
 	
 	private String getProjectScopeWordCount()
