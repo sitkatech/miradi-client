@@ -748,10 +748,19 @@ public class Dashboard extends BaseObject
 		return getProject().getPool(objectType).size();
 	}
 
+	private int getWordCount(String sentences) 
+	{
+		String[] splitWords = sentences.split("\\s+");
+		
+		return splitWords.length;
+	}
+	
 	private String getProjectScopeWordCount()
 	{
-		int scopeCount = getProject().getMetadata().getProjectScope().length();
-		return Integer.toString(scopeCount);
+		String scope = getProject().getMetadata().getProjectScope();
+		int wordCount = getWordCount(scope);
+		
+		return Integer.toString(wordCount);
 	}
 
 	public static boolean is(BaseObject object)
