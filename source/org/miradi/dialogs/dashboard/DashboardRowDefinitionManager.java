@@ -222,7 +222,8 @@ public class DashboardRowDefinitionManager
 		
 		if (code.equals(OpenStandardsConceptualizeQuestion.RANK_DIRECT_THREATS_CODE))
 		{
-			rowDefinitions.add(new DashboardRowDefinition(EAM.text("%2 of %1 threat/target links ranked"), Dashboard.PSEUDO_THREAT_TARGET_LINK_COUNT, Dashboard.PSEUDO_THREAT_TARGET_LINK_WITH_RATING_COUNT));
+			rowDefinitions.add(new DashboardRowDefinition(EAM.text("%2 of %1 threat/target ranks with simple ranking"), Dashboard.PSEUDO_THREAT_TARGET_LINK_COUNT, Dashboard.PSEUDO_THREAT_TARGET_LINK_WITH_SIMPLE_RATING_COUNT));
+			rowDefinitions.add(new DashboardRowDefinition(EAM.text("%2 of %1 threat/target ranks with stress-based ranking"), Dashboard.PSEUDO_THREAT_TARGET_LINK_COUNT, Dashboard.PSEUDO_THREAT_TARGET_LINK_WITH_STRESS_BASED_RATING_COUNT));
 		}
 		
 		if (code.equals(OpenStandardsConceptualizeQuestion.IDENTIFY_INDIRECT_THREATS_AND_OPPORTUNITIES_CODE))

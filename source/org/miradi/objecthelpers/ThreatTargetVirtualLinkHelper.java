@@ -32,6 +32,7 @@ import org.miradi.objects.ValueOption;
 import org.miradi.project.Project;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
+import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.utils.ThreatStressRatingHelper;
 import org.miradi.utils.Utility;
 
@@ -104,7 +105,12 @@ public class ThreatTargetVirtualLinkHelper
 	
 	public int calculateThreatRatingBundleValue(ORef threatRef, ORef targetRef) throws Exception
 	{
-		if(getProject().isStressBaseMode())
+		return calculateThreatRatingBundleValue(getProject().getMetadata().getThreatRatingMode(), threatRef, targetRef);
+	}
+	
+	public int calculateThreatRatingBundleValue(String threatRatingMode, ORef threatRef, ORef targetRef) throws Exception
+	{
+		if(threatRatingMode.equals(ThreatRatingModeChoiceQuestion.STRESS_BASED_CODE))
 			return calculateStressBasedThreatRating(threatRef, targetRef);
 
 		return calculateSimpleThreatRating(threatRef, targetRef);

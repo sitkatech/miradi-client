@@ -41,6 +41,7 @@ import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.OpenStandardsDynamicProgressStatuQuestion;
 import org.miradi.questions.StrategyRatingSummaryQuestion;
+import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DoubleUtilities;
@@ -118,8 +119,11 @@ public class Dashboard extends BaseObject
 			if (fieldTag.equals(PSEUDO_THREAT_TARGET_LINK_COUNT))
 				return getThreatTargetLinkCount();
 
-			if (fieldTag.equals(PSEUDO_THREAT_TARGET_LINK_WITH_RATING_COUNT))
+			if (fieldTag.equals(PSEUDO_THREAT_TARGET_LINK_WITH_SIMPLE_RATING_COUNT))
 				return getThreatTargetLinkWithRatingCount();
+			
+			if (fieldTag.equals(PSEUDO_THREAT_TARGET_LINK_WITH_STRESS_BASED_RATING_COUNT))
+				return getThreatTargetLinkWithStressBasedRatingCount();
 			
 			if (fieldTag.equals(PSEUDO_TARGETS_WITH_GOALS_COUNT))
 				return getTargetWithGoalCount();
@@ -672,7 +676,17 @@ public class Dashboard extends BaseObject
 		return Integer.toString(threatTargetCount);
 	}
 	
+	private String getThreatTargetLinkWithStressBasedRatingCount() throws Exception
+	{
+		return getThreatTargetLinkWithRatingCount(ThreatRatingModeChoiceQuestion.STRESS_BASED_CODE);
+	}
+	
 	private String getThreatTargetLinkWithRatingCount() throws Exception
+	{
+		return getThreatTargetLinkWithRatingCount(ThreatRatingModeChoiceQuestion.SIMPLE_BASED_CODE);
+	}
+
+	private String getThreatTargetLinkWithRatingCount(String threatRatingMode) throws Exception
 	{
 		ThreatTargetVirtualLinkHelper helper = new ThreatTargetVirtualLinkHelper(getProject());
 		Vector<Target> targets = TargetThreatLinkTableModel.getOnlyTargetsInConceptualModelDiagrams(getProject());
@@ -683,7 +697,7 @@ public class Dashboard extends BaseObject
 			ORefSet upstreamThreats = chain.getUpstreamThreatRefsFromTarget(target);
 			for(ORef threatRef : upstreamThreats)
 			{
-				int ratingValue = helper.calculateThreatRatingBundleValue(threatRef, target.getRef());
+				int ratingValue = helper.calculateThreatRatingBundleValue(threatRatingMode, threatRef, target.getRef());
 				if (ratingValue > 0)
 					++threatTargetWithRatingCount;
 			}
@@ -802,7 +816,8 @@ public class Dashboard extends BaseObject
 		threatCount = new PseudoStringData(PSEUDO_THREAT_COUNT);
 		threatWithTaxonomyCount = new PseudoStringData(PSEUDO_THREAT_WITH_TAXONOMY_COUNT);
 		threatTargetLinkCount = new PseudoStringData(PSEUDO_THREAT_TARGET_LINK_COUNT);
-		threatTargetLinkWithRatingCount = new PseudoStringData(PSEUDO_THREAT_TARGET_LINK_WITH_RATING_COUNT);
+		threatTargetLinkWithSimpleRatingCount = new PseudoStringData(PSEUDO_THREAT_TARGET_LINK_WITH_SIMPLE_RATING_COUNT);
+		threatTargetLinkWithStressBasedRatingCount = new PseudoStringData(PSEUDO_THREAT_TARGET_LINK_WITH_STRESS_BASED_RATING_COUNT);
 		goalCount = new PseudoStringData(PSEUDO_GOAL_COUNT);
 		draftStrategyCount = new PseudoStringData(PSEUDO_DRAFT_STRATEGY_COUNT);
 		rankedDraftStrategyCount = new PseudoStringData(PSEUDO_RANKED_DRAFT_STRATEGY_COUNT);
@@ -853,7 +868,8 @@ public class Dashboard extends BaseObject
 		addPresentationDataField(PSEUDO_THREAT_COUNT, threatCount);
 		addPresentationDataField(PSEUDO_THREAT_WITH_TAXONOMY_COUNT, threatWithTaxonomyCount);
 		addPresentationDataField(PSEUDO_THREAT_TARGET_LINK_COUNT, threatTargetLinkCount);
-		addPresentationDataField(PSEUDO_THREAT_TARGET_LINK_WITH_RATING_COUNT, threatTargetLinkWithRatingCount);
+		addPresentationDataField(PSEUDO_THREAT_TARGET_LINK_WITH_SIMPLE_RATING_COUNT, threatTargetLinkWithSimpleRatingCount);
+		addPresentationDataField(PSEUDO_THREAT_TARGET_LINK_WITH_STRESS_BASED_RATING_COUNT, threatTargetLinkWithStressBasedRatingCount);
 		addPresentationDataField(PSEUDO_GOAL_COUNT, goalCount);
 		addPresentationDataField(PSEUDO_DRAFT_STRATEGY_COUNT, draftStrategyCount);
 		addPresentationDataField(PSEUDO_RANKED_DRAFT_STRATEGY_COUNT, rankedDraftStrategyCount);
@@ -908,7 +924,8 @@ public class Dashboard extends BaseObject
 	public static final String PSEUDO_THREAT_COUNT = "ThreatCount";
 	public static final String PSEUDO_THREAT_WITH_TAXONOMY_COUNT = "ThreatWithTaxonomyCount";
 	public static final String PSEUDO_THREAT_TARGET_LINK_COUNT = "ThreatTargetLinkCount";
-	public static final String PSEUDO_THREAT_TARGET_LINK_WITH_RATING_COUNT = "ThreatTargetLinkWithRatingCount";
+	public static final String PSEUDO_THREAT_TARGET_LINK_WITH_SIMPLE_RATING_COUNT = "ThreatTargetLinkWithSimpleRatingCount";
+	public static final String PSEUDO_THREAT_TARGET_LINK_WITH_STRESS_BASED_RATING_COUNT = "ThreatTargetLinkWithStressedBasedRatingCount";
 	public static final String PSEUDO_TARGETS_WITH_GOALS_COUNT = "TargetsWithGoalsCount";
 	public static final String PSEUDO_GOAL_COUNT = "GoalCount";
 	public static final String PSEUDO_DRAFT_STRATEGY_COUNT = "DraftStrategyCount";
@@ -961,7 +978,8 @@ public class Dashboard extends BaseObject
 	private PseudoStringData threatCount;
 	private PseudoStringData threatWithTaxonomyCount;
 	private PseudoStringData threatTargetLinkCount;
-	private PseudoStringData threatTargetLinkWithRatingCount;
+	private PseudoStringData threatTargetLinkWithSimpleRatingCount;
+	private PseudoStringData threatTargetLinkWithStressBasedRatingCount;
 	private PseudoStringData goalCount;
 	private PseudoStringData draftStrategyCount;
 	private PseudoStringData rankedDraftStrategyCount;
