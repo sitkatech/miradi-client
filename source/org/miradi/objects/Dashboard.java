@@ -762,9 +762,9 @@ public class Dashboard extends BaseObject
 		return getProject().getPool(objectType).size();
 	}
 
-	private int getWordCount(String sentences) 
+	private int getWordCount(String text) 
 	{
-		String[] splitWords = sentences.split("\\s+");
+		String[] splitWords = text.split("\\s+");
 		
 		return splitWords.length;
 	}
