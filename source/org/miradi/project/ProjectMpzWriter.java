@@ -101,7 +101,7 @@ public class ProjectMpzWriter
 			String projectFilename, ProjectServer database, Project project)
 			throws UnsupportedEncodingException, IOException, Exception
 	{
-		EnhancedJsonObject threatRatingJson = project.getSimpleThreatRatingFramework().toJson();
+		EnhancedJsonObject threatRatingJson = database.readRawThreatRatingFramework();
 		writeZipEntry(out, buildPathForZipEntryInJsonDirectory(projectFilename, ProjectServer.THREATFRAMEWORK_FILE), threatRatingJson.toString());
 		
 		Collection<ThreatRatingBundle> allBundles = SimpleThreatRatingFramework.loadSimpleThreatRatingBundles(database);
