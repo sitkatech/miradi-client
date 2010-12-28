@@ -62,11 +62,11 @@ public class ProjectMpzWriter
 
 	public static void createProjectZipFile(File destination, Project project) throws Exception
 	{
+		String projectFilename = project.getFilename();
+		ProjectServer database = project.getDatabase();
 		ByteArrayOutputStream outputBytes = new ByteArrayOutputStream();
 		ZipOutputStream out = new ZipOutputStream(outputBytes);
 		
-		String projectFilename = project.getFilename();
-		ProjectServer database = project.getDatabase();
 		writeProjectZip(out, projectFilename, database);
 		
 		OutputStream blastOut = new FileOutputStream(destination);
