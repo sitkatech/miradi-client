@@ -33,11 +33,12 @@ import java.util.zip.ZipOutputStream;
 import org.miradi.database.ObjectManifest;
 import org.miradi.database.ProjectServer;
 import org.miradi.ids.BaseId;
+import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objectpools.EAMObjectPool;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.utils.EnhancedJsonObject;
@@ -104,17 +105,15 @@ public class ProjectMpzWriter
 	{
 		String projectFilename = project.getFilename();
 		ProjectServer database = project.getDatabase();
-		ObjectManager objectManager = project.getObjectManager();
 		for(int type = 0; type < ObjectType.OBJECT_TYPE_COUNT; ++type)
 		{
-			EAMObjectPool pool = objectManager.getPool(type);
-			if(pool == null)
-				continue;
-			ORefSet refs = pool.getRefSet();
-			if(refs.size() == 0)
-				continue;
-
 			ObjectManifest manifest = database.readObjectManifest(type);
+			if(manifest.size() == 0)
+				continue;
+			
+			IdList ids = new IdList(type, manifest.getAllKeys());
+			ORefSet refs = new ORefSet(new ORefList(type, ids));
+			
 			String path = buildZipEntryPath(projectFilename, type, ProjectServer.MANIFEST_FILE);
 			writeZipEntry(out, path, manifest.toJson().toString());
 			addBaseObjectFilesToZip(out, projectFilename, database, refs);
