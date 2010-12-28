@@ -91,7 +91,7 @@ public class TestWcsExporter extends TestCaseWithProject
 	{
 		ByteArrayOutputStream bytes = new ByteArrayOutputStream();
 		UnicodeWriter writer = new UnicodeWriter(bytes);
-		new WcsXmlExporter(getProject()).exportProject(writer);
+		new XmpzXmlExporter(getProject()).exportProject(writer);
 		writer.close();
 		String xml = new String(bytes.toByteArray(), "UTF-8");
 

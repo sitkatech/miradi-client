@@ -53,7 +53,7 @@ import org.miradi.utils.CodeList;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.EnhancedJsonObject;
-import org.miradi.xml.wcs.WcsXmlExporter;
+import org.miradi.xml.wcs.XmpzXmlExporter;
 import org.miradi.xml.xmpz.XmpzXmlImporter;
 
 public class TestXmpzXmlImporter extends TestCaseWithProject
@@ -256,7 +256,7 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 
 	private UnicodeStringWriter createWriter(ProjectForTesting project) throws Exception
 	{
-		WcsXmlExporter exporter = new WcsXmlExporter(project);
+		XmpzXmlExporter exporter = new XmpzXmlExporter(project);
 		UnicodeStringWriter writer = UnicodeStringWriter.create();
 		exporter.setWriter(writer);
 		exporter.exportProject(writer);
