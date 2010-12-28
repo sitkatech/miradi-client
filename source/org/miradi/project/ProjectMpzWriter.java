@@ -114,7 +114,9 @@ public class ProjectMpzWriter
 				continue;
 
 			ObjectManifest manifest = database.readObjectManifest(type);
-			writeZipEntry(out, project, manifest.toJson().toString(), type, ProjectServer.MANIFEST_FILE);
+			String projectFilename = project.getFilename();
+			writeBaseObjectZipEntry(out, projectFilename, type,
+					ProjectServer.MANIFEST_FILE, manifest.toJson().toString());
 			addObjectFilesToZip(out, project, refs);
 		}
 	}
@@ -139,17 +141,9 @@ public class ProjectMpzWriter
 			int objectType = ref.getObjectType();
 			String filename = Integer.toString(ref.getObjectId().asInt());
 
-			writeZipEntry(out, project, fileContents, objectType, filename);
+			String projectFilename = project.getFilename();
+			writeBaseObjectZipEntry(out, projectFilename, objectType, filename, fileContents);
 		}
-	}
-
-	private static void writeZipEntry(ZipOutputStream out, Project project,
-			String fileContents, int objectType, String objectIdAsString)
-			throws UnsupportedEncodingException, IOException
-	{
-		String projectFilename = project.getFilename();
-		writeBaseObjectZipEntry(out, projectFilename, objectType,
-				objectIdAsString, fileContents);
 	}
 
 	private static void writeBaseObjectZipEntry(ZipOutputStream out,
