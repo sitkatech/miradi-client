@@ -144,12 +144,12 @@ public class ProjectMpzWriter
 	}
 
 	private static void writeZipEntry(ZipOutputStream out, Project project,
-			String fileContents, int objectType, String zipEntryFilename)
+			String fileContents, int objectType, String objectIdAsString)
 			throws UnsupportedEncodingException, IOException
 	{
 		String projectFilename = project.getFilename();
 		String directory = projectFilename + "/" + ProjectServer.JSON_DIRECTORY + "/objects-" + objectType;
-		String path = directory + "/" + zipEntryFilename;
+		String path = directory + "/" + objectIdAsString;
 		writeZipEntry(out, fileContents, path);
 	}
 
