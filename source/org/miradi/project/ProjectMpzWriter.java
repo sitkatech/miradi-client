@@ -139,9 +139,9 @@ public class ProjectMpzWriter
 			BaseObject object = project.findObject(ref);
 			String fileContents = object.toJson().toString();
 			int objectType = ref.getObjectType();
-			String filename = Integer.toString(ref.getObjectId().asInt());
 
 			String projectFilename = project.getFilename();
+			String filename = Integer.toString(ref.getObjectId().asInt());
 			writeBaseObjectZipEntry(out, projectFilename, objectType, filename, fileContents);
 		}
 	}
