@@ -553,7 +553,7 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 		createMissingBuiltInObjects();
 	}
 
-	private HashSet<ThreatRatingBundle> loadSimpleThreatRatingBundles(ProjectServer db) throws Exception
+	public static HashSet<ThreatRatingBundle> loadSimpleThreatRatingBundles(ProjectServer db) throws Exception
 	{
 		EnhancedJsonArray bundleKeys = db.readRawThreatRatingFramework().optJsonArray(TAG_BUNDLE_KEYS);
 		if(bundleKeys == null)
