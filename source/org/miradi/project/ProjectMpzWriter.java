@@ -115,8 +115,9 @@ public class ProjectMpzWriter
 
 			ObjectManifest manifest = database.readObjectManifest(type);
 			String projectFilename = project.getFilename();
-			writeBaseObjectZipEntry(out, projectFilename, type,
-					ProjectServer.MANIFEST_FILE, manifest.toJson().toString());
+			String directory = projectFilename + "/" + ProjectServer.JSON_DIRECTORY + "/objects-" + type;
+			String path = directory + "/" + ProjectServer.MANIFEST_FILE;
+			writeZipEntry(out, manifest.toJson().toString(), path);
 			addObjectFilesToZip(out, project, refs);
 		}
 	}
