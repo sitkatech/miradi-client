@@ -22,14 +22,14 @@ package org.miradi.xml.xmpz;
 
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Audience;
-import org.miradi.xml.wcs.WcsXmlConstants;
+import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.w3c.dom.Node;
 
 public class AudiencePoolImporter extends AbstractBaseObjectPoolImporter
 {
 	public AudiencePoolImporter(XmpzXmlImporter importerToUse)
 	{
-		super(importerToUse, WcsXmlConstants.AUDIENCE, Audience.getObjectType());
+		super(importerToUse, XmpzXmlConstants.AUDIENCE, Audience.getObjectType());
 	}
 	
 	@Override

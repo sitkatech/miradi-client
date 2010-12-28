@@ -23,20 +23,20 @@ package org.miradi.xml.xmpz;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.WcpaProjectData;
 import org.miradi.xml.AbstractXmpzObjectImporter;
-import org.miradi.xml.wcs.WcsXmlConstants;
+import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.w3c.dom.Node;
 
 public class ProjectSummaryScopeImporter extends AbstractXmpzObjectImporter
 {
 	public ProjectSummaryScopeImporter(XmpzXmlImporter importerToUse)
 	{
-		super(importerToUse, WcsXmlConstants.PROJECT_SUMMARY_SCOPE);
+		super(importerToUse, XmpzXmlConstants.PROJECT_SUMMARY_SCOPE);
 	}
 
 	@Override
 	public void importElement() throws Exception
 	{
-		Node projectSummaryNode = getImporter().getNode(getImporter().getRootNode(), WcsXmlConstants.PROJECT_SUMMARY_SCOPE);
+		Node projectSummaryNode = getImporter().getNode(getImporter().getRootNode(), XmpzXmlConstants.PROJECT_SUMMARY_SCOPE);
 		
 		importField(projectSummaryNode, getMetadataRef(), ProjectMetadata.TAG_SHORT_PROJECT_SCOPE);
 		importField(projectSummaryNode, getMetadataRef(), ProjectMetadata.TAG_PROJECT_SCOPE);

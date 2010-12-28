@@ -38,27 +38,27 @@ abstract public class BaseObjectPoolExporter extends ObjectPoolExporter
 	@Override
 	protected void writeObjectStartElement(BaseObject baseObject) throws Exception
 	{
-		getWcsXmlExporter().writeStartElementWithAttribute(getWriter(), getPoolName(), WcsXmlConstants.ID, baseObject.getId().toString());
+		getWcsXmlExporter().writeStartElementWithAttribute(getWriter(), getPoolName(), XmpzXmlConstants.ID, baseObject.getId().toString());
 	}
 	
 	protected void writeProgressReportIds(BaseObject baseObject) throws Exception
 	{
-		writeOptionalIds(WcsXmlConstants.PROGRESS_REPORT_IDS, WcsXmlConstants.PROGRESS_REPORT, baseObject.getRefListData(BaseObject.TAG_PROGRESS_REPORT_REFS));
+		writeOptionalIds(XmpzXmlConstants.PROGRESS_REPORT_IDS, XmpzXmlConstants.PROGRESS_REPORT, baseObject.getRefListData(BaseObject.TAG_PROGRESS_REPORT_REFS));
 	}
 	
 	protected void writeProgressPercetIds(ORefList progressPercentRefs) throws Exception
 	{
-		writeOptionalIds(WcsXmlConstants.PROGRESS_PERCENT_IDS, WcsXmlConstants.PROGRESS_PERCENT, progressPercentRefs);
+		writeOptionalIds(XmpzXmlConstants.PROGRESS_PERCENT_IDS, XmpzXmlConstants.PROGRESS_PERCENT, progressPercentRefs);
 	}
 	
 	protected void writeExpenseAssignmentIds(BaseObject baseObject) throws Exception
 	{
-		writeOptionalIds(WcsXmlConstants.EXPENSE_IDS, WcsXmlConstants.EXPENSE_ASSIGNMENT, baseObject.getRefListData(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS));
+		writeOptionalIds(XmpzXmlConstants.EXPENSE_IDS, XmpzXmlConstants.EXPENSE_ASSIGNMENT, baseObject.getRefListData(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS));
 	}
 	
 	protected void writeResourceAssignmentIds(BaseObject baseObject) throws Exception
 	{
-		writeOptionalIds(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, WcsXmlConstants.RESOURCE_ASSIGNMENT, baseObject.getResourceAssignmentRefs());
+		writeOptionalIds(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, XmpzXmlConstants.RESOURCE_ASSIGNMENT, baseObject.getResourceAssignmentRefs());
 	}
 	
 	protected void writeOptionalIndicatorIds(ORefList indicatorRefs) throws Exception
@@ -68,16 +68,16 @@ abstract public class BaseObjectPoolExporter extends ObjectPoolExporter
 
 	protected void writeOptionalIndicatorIds(String idsElementName, ORefList indicatorRefs) throws Exception
 	{
-		writeOptionalIds(idsElementName, WcsXmlConstants.INDICATOR, indicatorRefs);
+		writeOptionalIds(idsElementName, XmpzXmlConstants.INDICATOR, indicatorRefs);
 	}
 	
 	protected String getFactorTypeName(Factor wrappedFactor)
 	{
 		if (Target.is(wrappedFactor))
-			return WcsXmlConstants.BIODIVERSITY_TARGET;
+			return XmpzXmlConstants.BIODIVERSITY_TARGET;
 		
 		if (Cause.is(wrappedFactor))
-			return WcsXmlConstants.CAUSE;
+			return XmpzXmlConstants.CAUSE;
 		
 		return wrappedFactor.getTypeName();
 	}

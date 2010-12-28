@@ -20,12 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-import org.miradi.xml.wcs.WcsXmlConstants;
+import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class TextBoxObjectSchemaElement extends FactorObjectSchemaElement
 {
 	public TextBoxObjectSchemaElement()
 	{
-		super(WcsXmlConstants.TEXT_BOX);
+		super(XmpzXmlConstants.TEXT_BOX);
 	}
 }

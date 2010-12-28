@@ -21,12 +21,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz;
 
 import org.miradi.objects.FundingSource;
-import org.miradi.xml.wcs.WcsXmlConstants;
+import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class FundingSourcePoolImporter extends AbstractBudgetCategoryPoolImporter
 {
 	public FundingSourcePoolImporter(XmpzXmlImporter importerToUse)
 	{
-		super(importerToUse, WcsXmlConstants.FUNDING_SOURCE, FundingSource.getObjectType());
+		super(importerToUse, XmpzXmlConstants.FUNDING_SOURCE, FundingSource.getObjectType());
 	}
 }

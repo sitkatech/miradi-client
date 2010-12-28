@@ -50,7 +50,7 @@ import org.miradi.objects.TextBox;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.xml.generic.XmlSchemaCreator;
 
-public class TagToElementNameMap implements WcsXmlConstants
+public class TagToElementNameMap implements XmpzXmlConstants
 {
 	public TagToElementNameMap()
 	{
@@ -122,7 +122,7 @@ public class TagToElementNameMap implements WcsXmlConstants
 		HashMap<String, String> taskMap = new HashMap<String, String>();
 		taskMap.put(Task.TAG_LABEL, "Name");
 		taskMap.put(Task.TAG_SHORT_LABEL, "Id");
-		taskMap.put(Task.TAG_SUBTASK_IDS, WcsXmlConstants.SUB_TASK_IDS);
+		taskMap.put(Task.TAG_SUBTASK_IDS, XmpzXmlConstants.SUB_TASK_IDS);
 		return taskMap;
 	}
 
@@ -135,7 +135,7 @@ public class TagToElementNameMap implements WcsXmlConstants
 		indicatorMap.put(Indicator.TAG_DETAIL, DETAILS);
 		indicatorMap.put(Indicator.TAG_VIABILITY_RATINGS_COMMENT, "Comments");
 		indicatorMap.put(Indicator.TAG_FUTURE_STATUS_DETAIL, "FutureStatusDetails");
-		indicatorMap.put(Indicator.TAG_METHOD_IDS, WcsXmlConstants.METHOD_IDS);
+		indicatorMap.put(Indicator.TAG_METHOD_IDS, XmpzXmlConstants.METHOD_IDS);
 		
 		return indicatorMap;
 	}

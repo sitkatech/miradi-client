@@ -21,12 +21,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz;
 
 import org.miradi.objects.ConceptualModelDiagram;
-import org.miradi.xml.wcs.WcsXmlConstants;
+import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class ConceptualModelPoolImporter extends AbstractDiagramPoolImporter
 {
 	public ConceptualModelPoolImporter(XmpzXmlImporter importerToUse)
 	{
-		super(importerToUse, WcsXmlConstants.CONCEPTUAL_MODEL, ConceptualModelDiagram.getObjectType());
+		super(importerToUse, XmpzXmlConstants.CONCEPTUAL_MODEL, ConceptualModelDiagram.getObjectType());
 	}
 }

@@ -38,14 +38,14 @@ public class ResourceAssignmentPoolExporter extends AbstractAssignmentPoolExport
 		super.exportFields(writer, baseObject);
 		
 		ResourceAssignment resourceAssignment = (ResourceAssignment) baseObject;
-		exportId(resourceAssignment.getResourceRef(), XmlSchemaCreator.RESOURCE_ID_ELEMENT_NAME + WcsXmlConstants.ID);
-		exportDateUnitEfforList(resourceAssignment.getDateUnitEffortList(), WcsXmlConstants.DATE_UNIT_WORK_UNITS);
+		exportId(resourceAssignment.getResourceRef(), XmlSchemaCreator.RESOURCE_ID_ELEMENT_NAME + XmpzXmlConstants.ID);
+		exportDateUnitEfforList(resourceAssignment.getDateUnitEffortList(), XmpzXmlConstants.DATE_UNIT_WORK_UNITS);
 	}
 	
 	@Override
 	protected String getDateUnitElementName()
 	{
-		return WcsXmlConstants.WORK_UNITS_DATE_UNIT;
+		return XmpzXmlConstants.WORK_UNITS_DATE_UNIT;
 	}
 	
 	@Override
@@ -81,6 +81,6 @@ public class ResourceAssignmentPoolExporter extends AbstractAssignmentPoolExport
 	@Override
 	protected String getQuantatityElementName()
 	{
-		return WcsXmlConstants.WORK_UNITS;
+		return XmpzXmlConstants.WORK_UNITS;
 	}
 }

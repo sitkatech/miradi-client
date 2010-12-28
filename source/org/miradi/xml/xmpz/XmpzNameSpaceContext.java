@@ -21,19 +21,19 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz;
 
 import org.miradi.xml.AbstractXmlNamespaceContext;
-import org.miradi.xml.wcs.WcsXmlConstants;
+import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class XmpzNameSpaceContext extends AbstractXmlNamespaceContext
 {
 	@Override
 	protected String getNameSpace()
 	{
-		return WcsXmlConstants.NAME_SPACE;
+		return XmpzXmlConstants.NAME_SPACE;
 	}
 
 	@Override
 	protected String getPrefix()
 	{
-		return WcsXmlConstants.RAW_PREFIX;
+		return XmpzXmlConstants.RAW_PREFIX;
 	}
 }

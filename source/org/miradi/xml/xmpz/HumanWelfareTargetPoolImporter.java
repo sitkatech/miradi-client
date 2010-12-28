@@ -21,12 +21,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz;
 
 import org.miradi.objects.HumanWelfareTarget;
-import org.miradi.xml.wcs.WcsXmlConstants;
+import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class HumanWelfareTargetPoolImporter extends AbstractTargetPoolImporter
 {
 	public HumanWelfareTargetPoolImporter(XmpzXmlImporter importerToUse)
 	{
-		super(importerToUse, WcsXmlConstants.HUMAN_WELFARE_TARGET, HumanWelfareTarget.getObjectType());
+		super(importerToUse, XmpzXmlConstants.HUMAN_WELFARE_TARGET, HumanWelfareTarget.getObjectType());
 	}
 }

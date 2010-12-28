@@ -22,14 +22,14 @@ package org.miradi.xml.xmpz;
 
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.IntermediateResult;
-import org.miradi.xml.wcs.WcsXmlConstants;
+import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.w3c.dom.Node;
 
 public class IntermediateResultPoolImporter extends FactorPoolImporter
 {
 	public IntermediateResultPoolImporter(XmpzXmlImporter importerToUse)
 	{
-		super(importerToUse, WcsXmlConstants.INTERMEDIATE_RESULTS, IntermediateResult.getObjectType());
+		super(importerToUse, XmpzXmlConstants.INTERMEDIATE_RESULTS, IntermediateResult.getObjectType());
 	}
 	
 	@Override

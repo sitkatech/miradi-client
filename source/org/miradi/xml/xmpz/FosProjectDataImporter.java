@@ -23,14 +23,14 @@ package org.miradi.xml.xmpz;
 import org.miradi.objects.FosProjectData;
 import org.miradi.questions.FosTrainingTypeQuestion;
 import org.miradi.xml.AbstractXmpzObjectImporter;
-import org.miradi.xml.wcs.WcsXmlConstants;
+import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.w3c.dom.Node;
 
 public class FosProjectDataImporter extends AbstractXmpzObjectImporter
 {
 	public FosProjectDataImporter(XmpzXmlImporter importerToUse)
 	{
-		super(importerToUse, WcsXmlConstants.FOS_PROJECT_DATA);
+		super(importerToUse, XmpzXmlConstants.FOS_PROJECT_DATA);
 	}
 
 	@Override

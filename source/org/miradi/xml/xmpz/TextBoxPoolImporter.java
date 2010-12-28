@@ -21,12 +21,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz;
 
 import org.miradi.objects.TextBox;
-import org.miradi.xml.wcs.WcsXmlConstants;
+import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class TextBoxPoolImporter extends FactorPoolImporter
 {
 	public TextBoxPoolImporter(XmpzXmlImporter importerToUse)
 	{
-		super(importerToUse, WcsXmlConstants.TEXT_BOX, TextBox.getObjectType());
+		super(importerToUse, XmpzXmlConstants.TEXT_BOX, TextBox.getObjectType());
 	}	
 }

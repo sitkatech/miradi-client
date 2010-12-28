@@ -23,14 +23,14 @@ package org.miradi.xml.xmpz;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.questions.DiagramObjectDataInclusionQuestion;
-import org.miradi.xml.wcs.WcsXmlConstants;
+import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.w3c.dom.Node;
 
 public class ObjectTreeTableConfigurationPoolImporter extends AbstractBaseObjectPoolImporter
 {
 	public ObjectTreeTableConfigurationPoolImporter(XmpzXmlImporter importerToUse)
 	{
-		super(importerToUse, WcsXmlConstants.OBJECT_TREE_TABLE_CONFIGURATION, ObjectTreeTableConfiguration.getObjectType());
+		super(importerToUse, XmpzXmlConstants.OBJECT_TREE_TABLE_CONFIGURATION, ObjectTreeTableConfiguration.getObjectType());
 	}
 	
 	@Override

@@ -27,7 +27,7 @@ import org.miradi.objects.Measurement;
 import org.miradi.objects.Task;
 import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.StatusQuestion;
-import org.miradi.xml.wcs.WcsXmlConstants;
+import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -35,7 +35,7 @@ public class IndicatorPoolImporter extends AbstractBaseObjectPoolImporter
 {
 	public IndicatorPoolImporter(XmpzXmlImporter importerToUse)
 	{
-		super(importerToUse, WcsXmlConstants.INDICATOR, Indicator.getObjectType());
+		super(importerToUse, XmpzXmlConstants.INDICATOR, Indicator.getObjectType());
 	}
 	
 	@Override
@@ -55,8 +55,8 @@ public class IndicatorPoolImporter extends AbstractBaseObjectPoolImporter
 		importProgressReportRefs(node, destinationRef);
 		importExpenseAssignmentRefs(node, destinationRef);
 		importResourceAssignmentIds(node, destinationRef);
-		importIds(node, destinationRef, Indicator.TAG_METHOD_IDS, Task.getObjectType(), WcsXmlConstants.METHOD);
-		importRefs(node, WcsXmlConstants.MEASUREMENT_IDS, destinationRef, Indicator.TAG_MEASUREMENT_REFS, Measurement.getObjectType(), WcsXmlConstants.MEASUREMENT);
+		importIds(node, destinationRef, Indicator.TAG_METHOD_IDS, Task.getObjectType(), XmpzXmlConstants.METHOD);
+		importRefs(node, XmpzXmlConstants.MEASUREMENT_IDS, destinationRef, Indicator.TAG_MEASUREMENT_REFS, Measurement.getObjectType(), XmpzXmlConstants.MEASUREMENT);
 		importThresholds(node, destinationRef);
 	}
 

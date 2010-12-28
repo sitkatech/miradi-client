@@ -22,13 +22,13 @@ package org.miradi.xml.generic;
 
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.TncProjectData;
-import org.miradi.xml.wcs.WcsXmlConstants;
+import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class TncProjectDataSchemaElement extends ObjectSchemaElement
 {
 	public TncProjectDataSchemaElement()
 	{
-		super(WcsXmlConstants.TNC_PROJECT_DATA);
+		super(XmpzXmlConstants.TNC_PROJECT_DATA);
 		
 		createOptionalTextField(ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE);
 		createOptionalBooleanField(XmlSchemaCreator.TNC_PROJECT_DATA_SHARE_OUTSIDE_TNC);
