@@ -88,7 +88,9 @@ public class ProjectMpzWriter
 		EnhancedJsonObject versionJson = database.createVersionJson(database.readProjectDataVersion(projectFilename));
 		writeZipEntry(out, buildPathForZipEntryInJsonDirectory(projectFilename, ProjectServer.VERSION_FILE), versionJson.toString());
 
-		EnhancedJsonObject infoJson = project.getProjectInfo().toJson();
+		ProjectInfo projectInfo = new ProjectInfo();
+		database.readProjectInfo(projectInfo);
+		EnhancedJsonObject infoJson = projectInfo.toJson(); 
 		writeZipEntry(out, buildPathForZipEntryInJsonDirectory(projectFilename, ProjectServer.PROJECTINFO_FILE), infoJson.toString());
 		
 		writeSimpleThreatFramework(out, projectFilename, database);
