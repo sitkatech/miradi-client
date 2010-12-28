@@ -117,7 +117,7 @@ public class ProjectMpzWriter
 			String projectFilename = project.getFilename();
 			String path = buildZipEntryPath(projectFilename, type, ProjectServer.MANIFEST_FILE);
 			writeZipEntry(out, path, manifest.toJson().toString());
-			addBaseObjectFilesToZip(out, project.getFilename(), project.getDatabase(), refs);
+			addBaseObjectFilesToZip(out, projectFilename, database, refs);
 		}
 	}
 
