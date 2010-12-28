@@ -122,6 +122,11 @@ public class ProjectMpzWriter
 	{
 		String projectFilename = project.getFilename();
 		ProjectServer db = project.getDatabase();
+		writeThreatRatingBundles(out, projectFilename, db);
+	}
+
+	private static void writeThreatRatingBundles(ZipOutputStream out, String projectFilename, ProjectServer db) throws Exception
+	{
 		Collection<ThreatRatingBundle> allBundles = SimpleThreatRatingFramework.loadSimpleThreatRatingBundles(db);
 		for(ThreatRatingBundle bundle : allBundles)
 		{
