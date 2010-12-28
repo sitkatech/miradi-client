@@ -96,15 +96,12 @@ public class ProjectMpzWriter
 
 		writeThreatRatingBundles(out, projectFilename, database);
 		
-		writeBaseObjects(out, project);
+		writeBaseObjects(out, projectFilename, database);
 		out.close();
 	}
 
-	private static void writeBaseObjects(ZipOutputStream out, Project project)
-			throws UnsupportedEncodingException, IOException, Exception
+	private static void writeBaseObjects(ZipOutputStream out, String projectFilename, ProjectServer database) throws Exception
 	{
-		String projectFilename = project.getFilename();
-		ProjectServer database = project.getDatabase();
 		for(int type = 0; type < ObjectType.OBJECT_TYPE_COUNT; ++type)
 		{
 			ObjectManifest manifest = database.readObjectManifest(type);
