@@ -26,7 +26,7 @@ import org.miradi.objects.BaseObject;
 
 public class AudiencePoolExporter extends BaseObjectPoolExporter
 {
-	public AudiencePoolExporter(WcsXmlExporter wcsXmlExporterToUse)
+	public AudiencePoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, AUDIENCE, Audience.getObjectType());
 	}

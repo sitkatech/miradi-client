@@ -32,7 +32,7 @@ import org.miradi.utils.CodeList;
 
 public class IndicatorPoolExporter extends BaseObjectPoolExporter
 {
-	public IndicatorPoolExporter(WcsXmlExporter wcsXmlExporterToUse)
+	public IndicatorPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, INDICATOR, Indicator.getObjectType());
 	}

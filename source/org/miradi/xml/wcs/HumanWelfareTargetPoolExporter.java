@@ -24,7 +24,7 @@ import org.miradi.objects.HumanWelfareTarget;
 
 public class HumanWelfareTargetPoolExporter extends AbstractTargetPoolExporter
 {
-	public HumanWelfareTargetPoolExporter(WcsXmlExporter wcsXmlExporterToUse)
+	public HumanWelfareTargetPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, HUMAN_WELFARE_TARGET, HumanWelfareTarget.getObjectType());
 	}

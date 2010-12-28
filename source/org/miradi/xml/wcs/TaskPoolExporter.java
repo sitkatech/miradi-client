@@ -22,7 +22,7 @@ package org.miradi.xml.wcs;
 
 public class TaskPoolExporter extends AbstractTaskPoolExporter
 {
-	public TaskPoolExporter(WcsXmlExporter wcsXmlExporterToUse)
+	public TaskPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, TASK);
 	}

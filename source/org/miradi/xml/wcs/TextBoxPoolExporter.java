@@ -24,7 +24,7 @@ import org.miradi.objects.TextBox;
 
 public class TextBoxPoolExporter extends FactorPoolExporter
 {
-	public TextBoxPoolExporter(WcsXmlExporter wcsXmlExporterToUse)
+	public TextBoxPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, TEXT_BOX, TextBox.getObjectType());
 	}

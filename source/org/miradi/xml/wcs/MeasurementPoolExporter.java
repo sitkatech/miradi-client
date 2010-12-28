@@ -29,7 +29,7 @@ import org.miradi.questions.TrendQuestion;
 
 public class MeasurementPoolExporter extends BaseObjectPoolExporter
 {
-	public MeasurementPoolExporter(WcsXmlExporter wcsXmlExporterToUse)
+	public MeasurementPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, MEASUREMENT, Measurement.getObjectType());
 	}

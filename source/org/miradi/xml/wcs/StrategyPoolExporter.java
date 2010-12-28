@@ -29,7 +29,7 @@ import org.miradi.questions.StrategyTaxonomyQuestion;
 
 public class StrategyPoolExporter extends FactorPoolExporter
 {
-	public StrategyPoolExporter(WcsXmlExporter wcsXmlExporterToUse)
+	public StrategyPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, STRATEGY, Strategy.getObjectType());
 	}

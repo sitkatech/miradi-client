@@ -26,7 +26,7 @@ import org.miradi.objects.BaseObject;
 
 public class AbstractBudgetCategoryPoolExporter extends BaseObjectPoolExporter
 {
-	public AbstractBudgetCategoryPoolExporter(WcsXmlExporter wcsXmlExporterToUse, String containerNameToUse, int objectTypeToUse)
+	public AbstractBudgetCategoryPoolExporter(XmpzXmlExporter wcsXmlExporterToUse, String containerNameToUse, int objectTypeToUse)
 	{
 		super(wcsXmlExporterToUse, containerNameToUse, objectTypeToUse);
 	}

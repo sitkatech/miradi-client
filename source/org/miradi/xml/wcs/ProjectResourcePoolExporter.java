@@ -27,7 +27,7 @@ import org.miradi.questions.ResourceTypeQuestion;
 
 public class ProjectResourcePoolExporter extends BaseObjectPoolExporter
 {
-	public ProjectResourcePoolExporter(WcsXmlExporter wcsXmlExporterToUse)
+	public ProjectResourcePoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, PROJECT_RESOURCE, ProjectResource.getObjectType());
 	}

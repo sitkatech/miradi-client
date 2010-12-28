@@ -47,7 +47,7 @@ import org.miradi.utils.ThreatStressRatingDetailsTableExporter;
 
 public class ThreatTargetThreatRatingElementExporter extends AbstractXmlExporter
 {
-	public ThreatTargetThreatRatingElementExporter(WcsXmlExporter wcsXmlExporterToUse)
+	public ThreatTargetThreatRatingElementExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse);
 	}
