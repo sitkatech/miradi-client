@@ -93,7 +93,8 @@ public class ProjectMpzWriter
 		EnhancedJsonObject versionJson = database.createVersionJson(database.readProjectDataVersion(projectName));
 		writeZipEntry(out, versionJson.toString(), project.getFilename() + "/" + ProjectServer.JSON_DIRECTORY + "/" + ProjectServer.VERSION_FILE);
 
-		writeThreatRatingBundles(out, project);
+		String projectFilename = project.getFilename();
+		writeThreatRatingBundles(out, projectFilename, database);
 		
 		writeBaseObjects(out, project);
 		out.close();
@@ -116,13 +117,6 @@ public class ProjectMpzWriter
 			writeZipEntry(out, project, manifest.toJson().toString(), type, ProjectServer.MANIFEST_FILE);
 			addObjectFilesToZip(out, project, refs);
 		}
-	}
-
-	private static void writeThreatRatingBundles(ZipOutputStream out, Project project) throws Exception
-	{
-		String projectFilename = project.getFilename();
-		ProjectServer db = project.getDatabase();
-		writeThreatRatingBundles(out, projectFilename, db);
 	}
 
 	private static void writeThreatRatingBundles(ZipOutputStream out, String projectFilename, ProjectServer db) throws Exception
