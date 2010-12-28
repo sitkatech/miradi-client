@@ -22,7 +22,7 @@ package org.miradi.xml.generic;
 
 import java.io.IOException;
 
-import org.miradi.xml.wcs.WcsXmlConstants;
+import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class CodeListFieldSchemaElement extends FieldSchemaElement
 {
@@ -33,6 +33,6 @@ public class CodeListFieldSchemaElement extends FieldSchemaElement
 
 	public void output(SchemaWriter writer) throws IOException
 	{
-		writer.print(WcsXmlConstants.SINGLE_SPACE + WcsXmlConstants.SINGLE_SPACE + getObjectTypeName() + getConvertedElementName() + WcsXmlConstants.CONTAINER_ELEMENT_TAG + ".element");
+		writer.print(XmpzXmlConstants.SINGLE_SPACE + XmpzXmlConstants.SINGLE_SPACE + getObjectTypeName() + getConvertedElementName() + XmpzXmlConstants.CONTAINER_ELEMENT_TAG + ".element");
 	}
 }

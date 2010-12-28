@@ -21,13 +21,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.generic;
 
 import org.miradi.objects.Measurement;
-import org.miradi.xml.wcs.WcsXmlConstants;
+import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class MeasurementObjectSchemaElement extends BaseObjectSchemaElementWithLabel
 {
 	public MeasurementObjectSchemaElement()
 	{
-		super(WcsXmlConstants.MEASUREMENT);
+		super(XmpzXmlConstants.MEASUREMENT);
 		
 		createCodeField(XmlSchemaCreator.MEASUREMENT_TREND, XmlSchemaCreator.VOCABULARY_MEASUREMENT_TREND);
 		createCodeField(XmlSchemaCreator.MEASUREMENT_STATUS, XmlSchemaCreator.VOCABULARY_MEASUREMENT_STATUS);

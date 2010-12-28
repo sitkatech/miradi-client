@@ -23,7 +23,7 @@ package org.miradi.xml.generic;
 import java.io.IOException;
 import java.util.Vector;
 
-import org.miradi.xml.wcs.WcsXmlConstants;
+import org.miradi.xml.wcs.XmpzXmlConstants;
 
 
 class ProjectSchemaElement extends SchemaElement
@@ -83,18 +83,18 @@ class ProjectSchemaElement extends SchemaElement
 	
 	public void output(SchemaWriter writer) throws IOException
 	{
-		writer.defineAlias(getDotElement(getProjectElementName()), "element " + WcsXmlConstants.PREFIX + getProjectElementName());
+		writer.defineAlias(getDotElement(getProjectElementName()), "element " + XmpzXmlConstants.PREFIX + getProjectElementName());
 		writer.startBlock();
 		for(int i = 0; i < objectTypes.size(); ++i)
 		{
 			ObjectSchemaElement objectElement = objectTypes.get(i);
 			writer.printIndented(getDotElement(objectElement.getObjectTypeName()));
 			if (objectElement.isPool())
-				writer.print(WcsXmlConstants.OPTIONAL_ELEMENT);
+				writer.print(XmpzXmlConstants.OPTIONAL_ELEMENT);
 				
 			writer.println(" &");
 		}
-		writer.println("  element " + WcsXmlConstants.PREFIX + DELETED_ORPHANS_ELEMENT_NAME +  "{ text }?");
+		writer.println("  element " + XmpzXmlConstants.PREFIX + DELETED_ORPHANS_ELEMENT_NAME +  "{ text }?");
 		writer.endBlock();
 		
 		for(ObjectSchemaElement objectElement: objectTypes)
@@ -106,7 +106,7 @@ class ProjectSchemaElement extends SchemaElement
 	
 	String getProjectElementName()
 	{
-		return WcsXmlConstants.CONSERVATION_PROJECT;
+		return XmpzXmlConstants.CONSERVATION_PROJECT;
 	}
 
 	private Vector<ObjectSchemaElement> objectTypes;

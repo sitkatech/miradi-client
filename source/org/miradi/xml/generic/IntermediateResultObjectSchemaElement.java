@@ -21,13 +21,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.generic;
 
 import org.miradi.objects.Factor;
-import org.miradi.xml.wcs.WcsXmlConstants;
+import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class IntermediateResultObjectSchemaElement extends FactorObjectSchemaElement
 {
 	public IntermediateResultObjectSchemaElement()
 	{
-		super(WcsXmlConstants.INTERMEDIATE_RESULTS);
+		super(XmpzXmlConstants.INTERMEDIATE_RESULTS);
 		
 		createOptionalIdListField(Factor.TAG_OBJECTIVE_IDS, OBJECTIVE_TYPE_NAME);
 		createOptionalIdListField(Factor.TAG_INDICATOR_IDS, INDICATOR_TYPE_NAME);

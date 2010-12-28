@@ -22,7 +22,7 @@ package org.miradi.xml.generic;
 
 import java.io.IOException;
 
-import org.miradi.xml.wcs.WcsXmlConstants;
+import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class StylingFieldSchemaElement extends FieldSchemaElement
 {
@@ -35,6 +35,6 @@ public class StylingFieldSchemaElement extends FieldSchemaElement
 	public void output(SchemaWriter writer) throws IOException
 	{
 		super.output(writer);
-		writer.write(" { " + WcsXmlConstants.STYLING + ".element } ");
+		writer.write(" { " + XmpzXmlConstants.STYLING + ".element } ");
 	}
 }

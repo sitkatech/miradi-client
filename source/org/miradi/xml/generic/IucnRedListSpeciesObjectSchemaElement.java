@@ -20,12 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-import org.miradi.xml.wcs.WcsXmlConstants;
+import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class IucnRedListSpeciesObjectSchemaElement extends BaseObjectSchemaElementWithLabel
 {
 	public IucnRedListSpeciesObjectSchemaElement()
 	{
-		super(WcsXmlConstants.IUCN_REDLIST_SPECIES);
+		super(XmpzXmlConstants.IUCN_REDLIST_SPECIES);
 	}
 }

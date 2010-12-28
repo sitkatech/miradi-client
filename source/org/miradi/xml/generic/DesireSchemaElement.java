@@ -21,7 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.generic;
 
 import org.miradi.objects.Desire;
-import org.miradi.xml.wcs.WcsXmlConstants;
+import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class DesireSchemaElement extends BaseObjectSchemaElementWithLabel
 {
@@ -31,10 +31,10 @@ public class DesireSchemaElement extends BaseObjectSchemaElementWithLabel
 		
 		createOptionalTextField(Desire.TAG_SHORT_LABEL);
 		createOptionalTextField(Desire.TAG_FULL_TEXT);
-		createOptionalIdListField(WcsXmlConstants.RELEVANT_INDICATOR_IDS, WcsXmlConstants.INDICATOR);
-		createOptionalIdListField(WcsXmlConstants.RELEVANT_STRATEGY_IDS, WcsXmlConstants.STRATEGY);
-		createOptionalIdListField(WcsXmlConstants.RELEVANT_ACTIVITY_IDS, WcsXmlConstants.ACTIVITY);
-		createOptionalIdListField(WcsXmlConstants.PROGRESS_PERCENT_IDS, XmlSchemaCreator.PROGRESS_PERCENT_ID_ELEMENT_NAME);
+		createOptionalIdListField(XmpzXmlConstants.RELEVANT_INDICATOR_IDS, XmpzXmlConstants.INDICATOR);
+		createOptionalIdListField(XmpzXmlConstants.RELEVANT_STRATEGY_IDS, XmpzXmlConstants.STRATEGY);
+		createOptionalIdListField(XmpzXmlConstants.RELEVANT_ACTIVITY_IDS, XmpzXmlConstants.ACTIVITY);
+		createOptionalIdListField(XmpzXmlConstants.PROGRESS_PERCENT_IDS, XmlSchemaCreator.PROGRESS_PERCENT_ID_ELEMENT_NAME);
 		createOptionalTextField(Desire.TAG_COMMENTS);
 	}
 }

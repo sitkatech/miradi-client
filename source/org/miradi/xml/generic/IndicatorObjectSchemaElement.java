@@ -21,13 +21,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.generic;
 
 import org.miradi.objects.Indicator;
-import org.miradi.xml.wcs.WcsXmlConstants;
+import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class IndicatorObjectSchemaElement extends BaseObjectSchemaElementWithLabel
 {
 	public IndicatorObjectSchemaElement()
 	{
-		super(WcsXmlConstants.INDICATOR);
+		super(XmpzXmlConstants.INDICATOR);
 		
 		createOptionalTextField(Indicator.TAG_SHORT_LABEL);
 		createOptionalTextField(Indicator.TAG_DETAIL);
@@ -38,11 +38,11 @@ public class IndicatorObjectSchemaElement extends BaseObjectSchemaElementWithLab
 		createCodeField(Indicator.TAG_FUTURE_STATUS_RATING, XmlSchemaCreator.VOCABULARY_STATUS_CODE);
 		createOptionalTextField(Indicator.TAG_FUTURE_STATUS_DETAIL);
 		createOptionalTextField(Indicator.TAG_FUTURE_STATUS_COMMENT);	
-		createOptionalIdListField(WcsXmlConstants.PROGRESS_REPORT_IDS, XmlSchemaCreator.PROGRESS_REPORT_ID_ELEMENT_NAME);
-		createOptionalIdListField(WcsXmlConstants.EXPENSE_IDS, XmlSchemaCreator.EXPENSE_ASSIGNMENT_ID_ELEMENT_NAME);
+		createOptionalIdListField(XmpzXmlConstants.PROGRESS_REPORT_IDS, XmlSchemaCreator.PROGRESS_REPORT_ID_ELEMENT_NAME);
+		createOptionalIdListField(XmpzXmlConstants.EXPENSE_IDS, XmlSchemaCreator.EXPENSE_ASSIGNMENT_ID_ELEMENT_NAME);
 		createOptionalIdListField(Indicator.TAG_RESOURCE_ASSIGNMENT_IDS, XmlSchemaCreator.RESOURCE_ASSIGNMENT_ID_ELEMENT_NAME);
-		createOptionalIdListField(WcsXmlConstants.MEASUREMENT_IDS, XmlSchemaCreator.MEASUREMENT_ID_ELEMENT_NAME);
-		createOptionalIdListField(WcsXmlConstants.METHOD_IDS, XmlSchemaCreator.METHOD);
+		createOptionalIdListField(XmpzXmlConstants.MEASUREMENT_IDS, XmlSchemaCreator.MEASUREMENT_ID_ELEMENT_NAME);
+		createOptionalIdListField(XmpzXmlConstants.METHOD_IDS, XmlSchemaCreator.METHOD);
 		createOptionalThresholdsField();
 	}
 }

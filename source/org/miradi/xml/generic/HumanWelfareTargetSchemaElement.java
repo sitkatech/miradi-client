@@ -20,13 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-import org.miradi.xml.wcs.WcsXmlConstants;
+import org.miradi.xml.wcs.XmpzXmlConstants;
 
 
 public class HumanWelfareTargetSchemaElement extends TargetObjectSchemaElement
 {
 	public HumanWelfareTargetSchemaElement()
 	{
-		super(WcsXmlConstants.HUMAN_WELFARE_TARGET);
+		super(XmpzXmlConstants.HUMAN_WELFARE_TARGET);
 	}
 }
