@@ -56,7 +56,7 @@ public class IndicatorPoolExporter extends BaseObjectPoolExporter
 		writeExpenseAssignmentIds(indicator);
 		writeResourceAssignmentIds(indicator);
 		writeMeasurementIds(indicator.getMeasurementRefs());
-		writeOptionalIds(WcsXmlConstants.METHOD_IDS, WcsXmlConstants.METHOD, indicator.getMethodRefs());
+		writeOptionalIds(XmpzXmlConstants.METHOD_IDS, XmpzXmlConstants.METHOD, indicator.getMethodRefs());
 		writeOptionalThreshold(indicator);
 	}
 	
@@ -88,6 +88,6 @@ public class IndicatorPoolExporter extends BaseObjectPoolExporter
 
 	private void writeMeasurementIds(ORefList measurementRefs) throws Exception
 	{
-		writeOptionalIds(WcsXmlConstants.MEASUREMENT_IDS, WcsXmlConstants.MEASUREMENT, measurementRefs);
+		writeOptionalIds(XmpzXmlConstants.MEASUREMENT_IDS, XmpzXmlConstants.MEASUREMENT, measurementRefs);
 	}
 }

@@ -22,14 +22,14 @@ package org.miradi.xml.xmpz;
 
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Task;
-import org.miradi.xml.wcs.WcsXmlConstants;
+import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.w3c.dom.Node;
 
 public class TaskPoolImporter extends FactorPoolImporter
 {
 	public TaskPoolImporter(XmpzXmlImporter importerToUse)
 	{
-		super(importerToUse, WcsXmlConstants.TASK, Task.getObjectType());
+		super(importerToUse, XmpzXmlConstants.TASK, Task.getObjectType());
 	}
 	
 	@Override
@@ -40,7 +40,7 @@ public class TaskPoolImporter extends FactorPoolImporter
 		importProgressReportRefs(node, destinationRef);
 		importExpenseAssignmentRefs(node, destinationRef);
 		importResourceAssignmentIds(node, destinationRef);
-		importIds(node, destinationRef, Task.TAG_SUBTASK_IDS, Task.getObjectType(), WcsXmlConstants.SUB_TASK);
+		importIds(node, destinationRef, Task.TAG_SUBTASK_IDS, Task.getObjectType(), XmpzXmlConstants.SUB_TASK);
 	}
 	
 	@Override

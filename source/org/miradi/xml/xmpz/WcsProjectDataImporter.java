@@ -22,14 +22,14 @@ package org.miradi.xml.xmpz;
 
 import org.miradi.objects.WcsProjectData;
 import org.miradi.xml.AbstractXmpzObjectImporter;
-import org.miradi.xml.wcs.WcsXmlConstants;
+import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.w3c.dom.Node;
 
 public class WcsProjectDataImporter extends AbstractXmpzObjectImporter
 {
 	public WcsProjectDataImporter(XmpzXmlImporter importerToUse)
 	{
-		super(importerToUse, WcsXmlConstants.WCS_PROJECT_DATA);
+		super(importerToUse, XmpzXmlConstants.WCS_PROJECT_DATA);
 	}
 
 	@Override

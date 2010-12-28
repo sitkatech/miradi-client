@@ -23,14 +23,14 @@ package org.miradi.xml.xmpz;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
-import org.miradi.xml.wcs.WcsXmlConstants;
+import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.w3c.dom.Node;
 
 public class KeyEcologicalAttributePoolImporter extends	AbstractBaseObjectPoolImporter
 {
 	public KeyEcologicalAttributePoolImporter(XmpzXmlImporter importerToUse)
 	{
-		super(importerToUse, WcsXmlConstants.KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttribute.getObjectType());
+		super(importerToUse, XmpzXmlConstants.KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttribute.getObjectType());
 	}
 	
 	@Override

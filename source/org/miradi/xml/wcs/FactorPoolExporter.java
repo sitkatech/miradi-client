@@ -55,7 +55,7 @@ public abstract class FactorPoolExporter extends BaseObjectPoolExporter
 
 	protected void writeObjectiveIds(Factor factor) throws Exception
 	{
-		writeOptionalIds("ObjectiveIds", WcsXmlConstants.OBJECTIVE, factor.getObjectiveRefs());
+		writeOptionalIds("ObjectiveIds", XmpzXmlConstants.OBJECTIVE, factor.getObjectiveRefs());
 	}
 	
 	protected DiagramFactor getCoveringDiagramFactor(BaseObject baseObject)

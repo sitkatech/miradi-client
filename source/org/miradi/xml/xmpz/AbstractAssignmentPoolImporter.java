@@ -29,7 +29,7 @@ import org.miradi.objects.BudgetCategoryTwo;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.DoubleUtilities;
-import org.miradi.xml.wcs.WcsXmlConstants;
+import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -45,8 +45,8 @@ abstract public class AbstractAssignmentPoolImporter extends AbstractBaseObjectP
 	{
 		super.importFields(node, destinationRef);
 		
-		importOptionalRef(node, destinationRef, Assignment.TAG_CATEGORY_ONE_REF, WcsXmlConstants.BUDGET_CATEGORY_ONE, BudgetCategoryOne.getObjectType());
-		importOptionalRef(node, destinationRef, Assignment.TAG_CATEGORY_TWO_REF, WcsXmlConstants.BUDGET_CATEGORY_TWO, BudgetCategoryTwo.getObjectType());
+		importOptionalRef(node, destinationRef, Assignment.TAG_CATEGORY_ONE_REF, XmpzXmlConstants.BUDGET_CATEGORY_ONE, BudgetCategoryOne.getObjectType());
+		importOptionalRef(node, destinationRef, Assignment.TAG_CATEGORY_TWO_REF, XmpzXmlConstants.BUDGET_CATEGORY_TWO, BudgetCategoryTwo.getObjectType());
 		importDateUnitEffortList(node, destinationRef);
 	}
 
@@ -81,8 +81,8 @@ abstract public class AbstractAssignmentPoolImporter extends AbstractBaseObjectP
 		Node yearNode = getImporter().getNode(dateUnitNode, getYearElementName());
 		if (yearNode != null)
 		{
-			int startYear = getAttributeAsInt(yearNode, WcsXmlConstants.START_YEAR);
-			int startMonth = getAttributeAsInt(yearNode, WcsXmlConstants.START_MONTH);
+			int startYear = getAttributeAsInt(yearNode, XmpzXmlConstants.START_YEAR);
+			int startMonth = getAttributeAsInt(yearNode, XmpzXmlConstants.START_MONTH);
 
 			return DateUnit.createFiscalYear(startYear, startMonth);
 		}
@@ -90,8 +90,8 @@ abstract public class AbstractAssignmentPoolImporter extends AbstractBaseObjectP
 		Node quarterNode = getImporter().getNode(dateUnitNode, getQuarterElementName());
 		if (quarterNode != null)
 		{
-			int year = getAttributeAsInt(quarterNode, WcsXmlConstants.YEAR);
-			int startMonth = getAttributeAsInt(quarterNode, WcsXmlConstants.START_MONTH);
+			int year = getAttributeAsInt(quarterNode, XmpzXmlConstants.YEAR);
+			int startMonth = getAttributeAsInt(quarterNode, XmpzXmlConstants.START_MONTH);
 			
 			return DateUnit.createQuarterDateUnit(year, startMonth);
 		}
@@ -99,8 +99,8 @@ abstract public class AbstractAssignmentPoolImporter extends AbstractBaseObjectP
 		Node monthNode = getImporter().getNode(dateUnitNode, getMonthElementName());
 		if (monthNode != null)
 		{
-			int year = getAttributeAsInt(monthNode, WcsXmlConstants.YEAR);
-			int month = getAttributeAsInt(monthNode, WcsXmlConstants.MONTH);
+			int year = getAttributeAsInt(monthNode, XmpzXmlConstants.YEAR);
+			int month = getAttributeAsInt(monthNode, XmpzXmlConstants.MONTH);
 			MultiCalendar date = MultiCalendar.createFromGregorianYearMonthDay(year, month, 1);
 			
 			return DateUnit.createMonthDateUnit(date.toIsoDateString());

@@ -24,14 +24,14 @@ import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ThreatReductionResult;
-import org.miradi.xml.wcs.WcsXmlConstants;
+import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.w3c.dom.Node;
 
 public class ThreatReductionResultsPoolImporter extends FactorPoolImporter
 {
 	public ThreatReductionResultsPoolImporter(XmpzXmlImporter importerToUse)
 	{
-		super(importerToUse, WcsXmlConstants.THREAT_REDUCTION_RESULTS, ThreatReductionResult.getObjectType());
+		super(importerToUse, XmpzXmlConstants.THREAT_REDUCTION_RESULTS, ThreatReductionResult.getObjectType());
 	}
 	
 	@Override
@@ -46,12 +46,12 @@ public class ThreatReductionResultsPoolImporter extends FactorPoolImporter
 
 	private void importThreatId(Node node, ORef destinationRef) throws Exception
 	{
-		Node relatedThreatIdNode = getImporter().getNode(node, getPoolName() + WcsXmlConstants.RELATED_THREAT_ID);
+		Node relatedThreatIdNode = getImporter().getNode(node, getPoolName() + XmpzXmlConstants.RELATED_THREAT_ID);
 		if (relatedThreatIdNode == null)
 			return;
 		
-		Node threatIdNode = getImporter().getNode(relatedThreatIdNode, getPoolName() + WcsXmlConstants.THREAT_ID);
-		Node idNode = getImporter().getNode(threatIdNode, WcsXmlConstants.THREAT_ID);
+		Node threatIdNode = getImporter().getNode(relatedThreatIdNode, getPoolName() + XmpzXmlConstants.THREAT_ID);
+		Node idNode = getImporter().getNode(threatIdNode, XmpzXmlConstants.THREAT_ID);
 		BaseId relatedThreatId = new BaseId(idNode.getTextContent());
 		ORef relatedThreatRef = new ORef(Cause.getObjectType(), relatedThreatId);
 		getImporter().setData(destinationRef, ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF, relatedThreatRef.toString());

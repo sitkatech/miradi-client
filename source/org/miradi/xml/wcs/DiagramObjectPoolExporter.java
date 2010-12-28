@@ -45,6 +45,6 @@ public class DiagramObjectPoolExporter extends BaseObjectPoolExporter
 		writeIds(DiagramObject.TAG_DIAGRAM_FACTOR_IDS, DIAGRAM_FACTOR, conceptualModel.getAllDiagramFactorRefs());
 		writeIds(DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, DIAGRAM_LINK, conceptualModel.getAllDiagramLinkRefs());
 		writeCodeListElement(XmlSchemaCreator.HIDDEN_TYPES_ELEMENT_NAME, conceptualModel, DiagramObject.TAG_HIDDEN_TYPES);
-		writeIds(WcsXmlConstants.SELECTED_TAGGED_OBJECT_SET_IDS, WcsXmlConstants.TAGGED_OBJECT_SET_ELEMENT_NAME, conceptualModel.getSelectedTaggedObjectSetRefs());
+		writeIds(XmpzXmlConstants.SELECTED_TAGGED_OBJECT_SET_IDS, XmpzXmlConstants.TAGGED_OBJECT_SET_ELEMENT_NAME, conceptualModel.getSelectedTaggedObjectSetRefs());
 	}
 }

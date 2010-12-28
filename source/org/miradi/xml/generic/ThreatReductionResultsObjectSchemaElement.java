@@ -21,15 +21,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.generic;
 
 import org.miradi.objects.Factor;
-import org.miradi.xml.wcs.WcsXmlConstants;
+import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class ThreatReductionResultsObjectSchemaElement extends FactorObjectSchemaElement
 {
 	public ThreatReductionResultsObjectSchemaElement()
 	{
-		super(WcsXmlConstants.THREAT_REDUCTION_RESULTS);
+		super(XmpzXmlConstants.THREAT_REDUCTION_RESULTS);
 		
-		createThreatReductionResultsThreatIdField(WcsXmlConstants.RELATED_THREAT_ID);
+		createThreatReductionResultsThreatIdField(XmpzXmlConstants.RELATED_THREAT_ID);
 		createOptionalIdListField(Factor.TAG_OBJECTIVE_IDS, OBJECTIVE_TYPE_NAME);
 		createOptionalIdListField(Factor.TAG_INDICATOR_IDS, INDICATOR_TYPE_NAME);
 	}

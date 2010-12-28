@@ -37,12 +37,12 @@ public class ExpenseAssignmentPoolExporter extends AbstractAssignmentPoolExporte
 		super.exportFields(writer, baseObject);
 		
 		ExpenseAssignment expenseAssignment = (ExpenseAssignment) baseObject;
-		exportDateUnitEfforList(expenseAssignment.getDateUnitEffortList(), WcsXmlConstants.DATE_UNITS_EXPENSE);
+		exportDateUnitEfforList(expenseAssignment.getDateUnitEffortList(), XmpzXmlConstants.DATE_UNITS_EXPENSE);
 	}
 	
 	protected String getDateUnitElementName()
 	{
-		return WcsXmlConstants.EXPENSES_DATE_UNIT;
+		return XmpzXmlConstants.EXPENSES_DATE_UNIT;
 	}
 	
 	protected String getDayElementName()
@@ -72,6 +72,6 @@ public class ExpenseAssignmentPoolExporter extends AbstractAssignmentPoolExporte
 	
 	protected String getQuantatityElementName()
 	{
-		return WcsXmlConstants.EXPENSE;
+		return XmpzXmlConstants.EXPENSE;
 	}
 }

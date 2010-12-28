@@ -25,14 +25,14 @@ import org.miradi.objects.TncProjectData;
 import org.miradi.questions.TncProjectSharingQuestion;
 import org.miradi.xml.AbstractXmpzObjectImporter;
 import org.miradi.xml.generic.XmlSchemaCreator;
-import org.miradi.xml.wcs.WcsXmlConstants;
+import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.w3c.dom.Node;
 
 public class TncProjectDataImporter extends AbstractXmpzObjectImporter
 {
 	public TncProjectDataImporter(XmpzXmlImporter importerToUse)
 	{
-		super(importerToUse, WcsXmlConstants.TNC_PROJECT_DATA);
+		super(importerToUse, XmpzXmlConstants.TNC_PROJECT_DATA);
 	}
 
 	@Override

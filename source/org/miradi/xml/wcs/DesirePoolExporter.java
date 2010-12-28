@@ -51,18 +51,18 @@ abstract public class DesirePoolExporter extends BaseObjectPoolExporter
 	
 	protected void writeRelevantIndicatorIds(Desire desire) throws Exception
 	{
-		writeOptionalIndicatorIds(WcsXmlConstants.RELEVANT_INDICATOR_IDS, desire.getRelevantIndicatorRefList());
+		writeOptionalIndicatorIds(XmpzXmlConstants.RELEVANT_INDICATOR_IDS, desire.getRelevantIndicatorRefList());
 	}
 	
 	protected void writeRelevantStrategyIds(Desire desire) throws Exception
 	{
 		ORefList relevantStrategyRefs = desire.getRelevantStrategyAndActivityRefs().getFilteredBy(Strategy.getObjectType());
-		writeOptionalIds(WcsXmlConstants.RELEVANT_STRATEGY_IDS, WcsXmlConstants.STRATEGY, relevantStrategyRefs);
+		writeOptionalIds(XmpzXmlConstants.RELEVANT_STRATEGY_IDS, XmpzXmlConstants.STRATEGY, relevantStrategyRefs);
 	}
 	
 	protected void writeRelevantActivityIds(Desire desire) throws Exception
 	{
 		ORefList relevantActivityRefs = desire.getRelevantStrategyAndActivityRefs().getFilteredBy(Task.getObjectType());
-		writeOptionalIds(WcsXmlConstants.RELEVANT_ACTIVITY_IDS, WcsXmlConstants.ACTIVITY, relevantActivityRefs);
+		writeOptionalIds(XmpzXmlConstants.RELEVANT_ACTIVITY_IDS, XmpzXmlConstants.ACTIVITY, relevantActivityRefs);
 	}
 }
