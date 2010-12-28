@@ -61,7 +61,7 @@ public class ProjectMpzWriter
 		ByteArrayOutputStream outputBytes = new ByteArrayOutputStream();
 		ZipOutputStream out = new ZipOutputStream(outputBytes);
 		
-		writeProjectZip(out, projectName, database);
+		writeProjectZip(out, database);
 		
 		OutputStream blastOut = new FileOutputStream(destination);
 		blastOut.write(outputBytes.toByteArray());
@@ -70,14 +70,14 @@ public class ProjectMpzWriter
 
 	public static void writeProjectZip(ZipOutputStream out, Project project) throws Exception
 	{
-		String projectFilename = project.getFilename();
 		ProjectServer database = project.getDatabase();
 		
-		writeProjectZip(out, projectFilename, database);
+		writeProjectZip(out, database);
 	}
 
-	private static void writeProjectZip(ZipOutputStream out, String projectFilename, ProjectServer database) throws Exception
+	private static void writeProjectZip(ZipOutputStream out, ProjectServer database) throws Exception
 	{
+		String projectFilename = database.getCurrentProjectName();
 		String exceptions = database.readFileContents(new File(EAM.EXCEPTIONS_LOG_FILE_NAME));
 		writeZipEntry(out, projectFilename + "/" + EAM.EXCEPTIONS_LOG_FILE_NAME, exceptions);
 		
@@ -95,14 +95,15 @@ public class ProjectMpzWriter
 		EnhancedJsonObject infoJson = projectInfo.toJson(); 
 		writeZipEntry(out, buildPathForZipEntryInJsonDirectory(projectFilename, ProjectServer.PROJECTINFO_FILE), infoJson.toString());
 		
-		writeSimpleThreatFramework(out, projectFilename, database);
+		writeSimpleThreatFramework(out, database);
 		
 		writeBaseObjects(out, projectFilename, database);
 		out.close();
 	}
 
-	private static void writeSimpleThreatFramework(ZipOutputStream out, String projectFilename, ProjectServer database) throws Exception
+	private static void writeSimpleThreatFramework(ZipOutputStream out, ProjectServer database) throws Exception
 	{
+		String projectFilename = database.getCurrentProjectName();
 		EnhancedJsonObject threatRatingJson = database.readRawThreatRatingFramework();
 		writeZipEntry(out, buildPathForZipEntryInJsonDirectory(projectFilename, ProjectServer.THREATFRAMEWORK_FILE), threatRatingJson.toString());
 		
@@ -128,23 +129,22 @@ public class ProjectMpzWriter
 			
 			String path = buildZipEntryPath(projectFilename, type, ProjectServer.MANIFEST_FILE);
 			writeZipEntry(out, path, manifest.toJson().toString());
-			addBaseObjectFilesToZip(out, projectFilename, database, refs);
+			addBaseObjectFilesToZip(out, database, refs);
 		}
 	}
 
-	private static void addBaseObjectFilesToZip(ZipOutputStream out, String projectFilename, ProjectServer database, ORefSet refs) throws Exception
+	private static void addBaseObjectFilesToZip(ZipOutputStream out, ProjectServer database, ORefSet refs) throws Exception
 	{
 		for(ORef ref : refs)
 		{
 			int objectType = ref.getObjectType();
 			BaseId id = ref.getObjectId();
-			EnhancedJsonObject json = database.readJsonObjectFile(projectFilename, objectType, id);
-			writeBaseObjectZipEntry(out, projectFilename, ref, json.toString());
+			EnhancedJsonObject json = database.readJsonObjectFile(database.getCurrentProjectName(), objectType, id);
+			writeBaseObjectZipEntry(out, database.getCurrentProjectName(), ref, json.toString());
 		}
 	}
 
-	private static void writeBaseObjectZipEntry(ZipOutputStream out,
-			String projectFilename, ORef ref, String fileContents)
+	private static void writeBaseObjectZipEntry(ZipOutputStream out, String projectFilename, ORef ref, String fileContents)
 			throws UnsupportedEncodingException, IOException
 	{
 		int objectType = ref.getObjectType();
