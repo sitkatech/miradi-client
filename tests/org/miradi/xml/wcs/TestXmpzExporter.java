@@ -39,9 +39,9 @@ import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 
 
 
-public class TestWcsExporter extends TestCaseWithProject
+public class TestXmpzExporter extends TestCaseWithProject
 {
-	public TestWcsExporter(String name)
+	public TestXmpzExporter(String name)
 	{
 		super(name);
 	}

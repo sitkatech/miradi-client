@@ -227,7 +227,7 @@ import org.miradi.xml.TestXmpzXmlImporter;
 import org.miradi.xml.conpro.TestConProCodeMapHelper;
 import org.miradi.xml.conpro.exporter.TestConproXmlExporter;
 import org.miradi.xml.conpro.importer.TestConproXmlImporter;
-import org.miradi.xml.wcs.TestWcsExporter;
+import org.miradi.xml.wcs.TestXmpzExporter;
 
 public class MainTests extends TestCase
 {
@@ -495,7 +495,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestMultiCalendar.class));
 		
 		//xml.export
-		suite.addTest(new TestSuite(TestWcsExporter.class));
+		suite.addTest(new TestSuite(TestXmpzExporter.class));
 		
 		//xml.conpro
 		suite.addTest(new TestSuite(TestConProCodeMapHelper.class));
