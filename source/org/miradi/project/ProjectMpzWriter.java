@@ -91,15 +91,13 @@ public class ProjectMpzWriter
 		EnhancedJsonObject infoJson = project.getProjectInfo().toJson();
 		writeZipEntry(out, buildPathForZipEntryInJsonDirectory(projectFilename, ProjectServer.PROJECTINFO_FILE), infoJson.toString());
 		
-		writeSimpleThreatFramework(out, projectFilename, database, project);
+		writeSimpleThreatFramework(out, projectFilename, database);
 		
 		writeBaseObjects(out, projectFilename, database);
 		out.close();
 	}
 
-	private static void writeSimpleThreatFramework(ZipOutputStream out,
-			String projectFilename, ProjectServer database, Project project)
-			throws UnsupportedEncodingException, IOException, Exception
+	private static void writeSimpleThreatFramework(ZipOutputStream out, String projectFilename, ProjectServer database) throws Exception
 	{
 		EnhancedJsonObject threatRatingJson = database.readRawThreatRatingFramework();
 		writeZipEntry(out, buildPathForZipEntryInJsonDirectory(projectFilename, ProjectServer.THREATFRAMEWORK_FILE), threatRatingJson.toString());
