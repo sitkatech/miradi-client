@@ -151,16 +151,8 @@ public class ProjectMpzWriter
 	{
 		int objectType = ref.getObjectType();
 		String filename = Integer.toString(ref.getObjectId().asInt());
-		writeBaseObjectZipEntry(out, projectFilename, objectType, filename, fileContents);
-	}
-
-	private static void writeBaseObjectZipEntry(ZipOutputStream out,
-			String projectFilename, int objectType, String objectIdAsString,
-			String fileContents) throws UnsupportedEncodingException,
-			IOException
-	{
 		String directory = projectFilename + "/" + ProjectServer.JSON_DIRECTORY + "/objects-" + objectType;
-		String path = directory + "/" + objectIdAsString;
+		String path = directory + "/" + filename;
 		writeZipEntry(out, path, fileContents);
 	}
 
