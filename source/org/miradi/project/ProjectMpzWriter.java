@@ -89,10 +89,10 @@ public class ProjectMpzWriter
 		writeZipEntry(out, buildPathForZipEntryInJsonDirectory(projectFilename, ProjectServer.VERSION_FILE), versionJson.toString());
 
 		EnhancedJsonObject infoJson = project.getProjectInfo().toJson();
-		writeZipEntry(out, projectFilename + "/" + ProjectServer.JSON_DIRECTORY + "/" + ProjectServer.PROJECTINFO_FILE, infoJson.toString());
+		writeZipEntry(out, buildPathForZipEntryInJsonDirectory(projectFilename, ProjectServer.PROJECTINFO_FILE), infoJson.toString());
 		
 		EnhancedJsonObject threatRatingJson = project.getSimpleThreatRatingFramework().toJson();
-		writeZipEntry(out, projectFilename + "/" + ProjectServer.JSON_DIRECTORY + "/" + ProjectServer.THREATFRAMEWORK_FILE, threatRatingJson.toString());
+		writeZipEntry(out, buildPathForZipEntryInJsonDirectory(projectFilename, ProjectServer.THREATFRAMEWORK_FILE), threatRatingJson.toString());
 		
 		writeThreatRatingBundles(out, projectFilename, database);
 		
