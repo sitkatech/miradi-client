@@ -151,9 +151,16 @@ public class ProjectMpzWriter
 	{
 		int objectType = ref.getObjectType();
 		String filename = Integer.toString(ref.getObjectId().asInt());
-		String directory = projectFilename + "/" + ProjectServer.JSON_DIRECTORY + "/objects-" + objectType;
-		String path = directory + "/" + filename;
+		String path = buildZipEntryPath(projectFilename, objectType, filename);
 		writeZipEntry(out, path, fileContents);
+	}
+
+	private static String buildZipEntryPath(String projectFilename,
+			int objectType, String zipEntryFilename)
+	{
+		String directory = projectFilename + "/" + ProjectServer.JSON_DIRECTORY + "/objects-" + objectType;
+		String path = directory + "/" + zipEntryFilename;
+		return path;
 	}
 
 	private static void writeZipEntry(ZipOutputStream out, String path,
