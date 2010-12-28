@@ -134,12 +134,12 @@ public class ProjectMpzWriter
 
 	private static void addObjectFilesToZip(ZipOutputStream out, Project project, ORefSet refs) throws Exception
 	{
+		String projectFilename = project.getFilename();
 		for(ORef ref : refs)
 		{
 			BaseObject object = project.findObject(ref);
 			String fileContents = object.toJson().toString();
 
-			String projectFilename = project.getFilename();
 			writeBaseObjectZipEntry(out, projectFilename, ref, fileContents);
 		}
 	}
