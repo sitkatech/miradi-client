@@ -72,28 +72,27 @@ public class ProjectMpzWriter
 
 	public static void writeProjectZip(ZipOutputStream out, Project project) throws Exception
 	{
-		String projectName = project.getFilename();
+		String projectFilename = project.getFilename();
 		ProjectServer database = project.getDatabase();
 		
 		String exceptions = database.readFileContents(new File(EAM.EXCEPTIONS_LOG_FILE_NAME));
-		writeZipEntry(out, exceptions, project.getFilename() + "/" + EAM.EXCEPTIONS_LOG_FILE_NAME);
+		writeZipEntry(out, exceptions, projectFilename + "/" + EAM.EXCEPTIONS_LOG_FILE_NAME);
 		
 		String lastModified = database.readLocalLastModifiedProjectTime(database.getCurrentLocalProjectDirectory());
-		writeZipEntry(out, lastModified, project.getFilename() + "/" + ProjectServer.LAST_MODIFIED_FILE_NAME);
+		writeZipEntry(out, lastModified, projectFilename + "/" + ProjectServer.LAST_MODIFIED_FILE_NAME);
 		
 		String quarantine = database.getQuarantineFileContents();
-		writeZipEntry(out, quarantine, project.getFilename() + "/" + ProjectServer.QUARANTINE_FILE_NAME);
+		writeZipEntry(out, quarantine, projectFilename + "/" + ProjectServer.QUARANTINE_FILE_NAME);
 
 		EnhancedJsonObject infoJson = project.getProjectInfo().toJson();
-		writeZipEntry(out, infoJson.toString(), project.getFilename() + "/" + ProjectServer.JSON_DIRECTORY + "/" + ProjectServer.PROJECTINFO_FILE);
+		writeZipEntry(out, infoJson.toString(), projectFilename + "/" + ProjectServer.JSON_DIRECTORY + "/" + ProjectServer.PROJECTINFO_FILE);
 		
 		EnhancedJsonObject threatRatingJson = project.getSimpleThreatRatingFramework().toJson();
-		writeZipEntry(out, threatRatingJson.toString(), project.getFilename() + "/" + ProjectServer.JSON_DIRECTORY + "/" + ProjectServer.THREATFRAMEWORK_FILE);
+		writeZipEntry(out, threatRatingJson.toString(), projectFilename + "/" + ProjectServer.JSON_DIRECTORY + "/" + ProjectServer.THREATFRAMEWORK_FILE);
 		
-		EnhancedJsonObject versionJson = database.createVersionJson(database.readProjectDataVersion(projectName));
-		writeZipEntry(out, versionJson.toString(), project.getFilename() + "/" + ProjectServer.JSON_DIRECTORY + "/" + ProjectServer.VERSION_FILE);
+		EnhancedJsonObject versionJson = database.createVersionJson(database.readProjectDataVersion(projectFilename));
+		writeZipEntry(out, versionJson.toString(), projectFilename + "/" + ProjectServer.JSON_DIRECTORY + "/" + ProjectServer.VERSION_FILE);
 
-		String projectFilename = project.getFilename();
 		writeThreatRatingBundles(out, projectFilename, database);
 		
 		writeBaseObjects(out, project);
