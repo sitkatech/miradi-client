@@ -28,7 +28,7 @@ import org.miradi.questions.StressSeverityChoiceQuestion;
 
 public class StressPoolExporter extends FactorPoolExporter
 {
-	public StressPoolExporter(WcsXmlExporter wcsXmlExporterToUse)
+	public StressPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, STRESS, Stress.getObjectType());
 	}

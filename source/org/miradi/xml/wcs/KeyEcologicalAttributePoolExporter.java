@@ -27,7 +27,7 @@ import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 
 public class KeyEcologicalAttributePoolExporter extends BaseObjectPoolExporter
 {
-	public KeyEcologicalAttributePoolExporter(WcsXmlExporter wcsXmlExporterToUse)
+	public KeyEcologicalAttributePoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttribute.getObjectType());
 	}

@@ -26,7 +26,7 @@ import org.miradi.objects.Organization;
 
 public class OrganizationPoolExporter extends BaseObjectPoolExporter
 {
-	public OrganizationPoolExporter(WcsXmlExporter wcsXmlExporterToUse)
+	public OrganizationPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, ORGANIZATION, Organization.getObjectType());
 	}

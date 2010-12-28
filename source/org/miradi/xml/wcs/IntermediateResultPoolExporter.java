@@ -26,7 +26,7 @@ import org.miradi.objects.IntermediateResult;
 
 public class IntermediateResultPoolExporter extends FactorPoolExporter
 {
-	public IntermediateResultPoolExporter(WcsXmlExporter wcsXmlExporterToUse)
+	public IntermediateResultPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, INTERMEDIATE_RESULTS, IntermediateResult.getObjectType());
 	}

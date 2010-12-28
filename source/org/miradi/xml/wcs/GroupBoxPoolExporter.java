@@ -24,7 +24,7 @@ import org.miradi.objects.GroupBox;
 
 public class GroupBoxPoolExporter extends FactorPoolExporter
 {
-	public GroupBoxPoolExporter(WcsXmlExporter wcsXmlExporterToUse)
+	public GroupBoxPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, GROUP_BOX, GroupBox.getObjectType());
 	}

@@ -28,7 +28,7 @@ import org.miradi.objects.Factor;
 
 public abstract class FactorPoolExporter extends BaseObjectPoolExporter
 {
-	public FactorPoolExporter(WcsXmlExporter wcsXmlExporterToUse, String containerNameToUse, int objectTypeToUse)
+	public FactorPoolExporter(XmpzXmlExporter wcsXmlExporterToUse, String containerNameToUse, int objectTypeToUse)
 	{
 		super(wcsXmlExporterToUse, containerNameToUse, objectTypeToUse);
 	}

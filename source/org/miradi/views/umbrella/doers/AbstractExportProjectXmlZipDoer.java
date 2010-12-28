@@ -35,7 +35,7 @@ import org.miradi.main.ResourcesHandler;
 import org.miradi.views.umbrella.XmlExporterDoer;
 import org.miradi.xml.XmlExporter;
 import org.miradi.xml.wcs.WcsMiradiXmlValidator;
-import org.miradi.xml.wcs.WcsXmlExporter;
+import org.miradi.xml.wcs.XmpzXmlExporter;
 
 abstract public class AbstractExportProjectXmlZipDoer extends XmlExporterDoer
 {
@@ -112,7 +112,7 @@ abstract public class AbstractExportProjectXmlZipDoer extends XmlExporterDoer
 	@Override
 	protected XmlExporter createExporter() throws Exception
 	{
-		return new WcsXmlExporter(getProject());
+		return new XmpzXmlExporter(getProject());
 	}
 	
 	@Override

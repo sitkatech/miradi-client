@@ -50,9 +50,9 @@ import org.miradi.utils.CodeList;
 import org.miradi.xml.XmlExporter;
 import org.miradi.xml.generic.XmlSchemaCreator;
 
-public class WcsXmlExporter extends XmlExporter implements XmpzXmlConstants
+public class XmpzXmlExporter extends XmlExporter implements XmpzXmlConstants
 {
-	public WcsXmlExporter(Project projectToUse)
+	public XmpzXmlExporter(Project projectToUse)
 	{
 		super(projectToUse);
 	}

@@ -29,7 +29,7 @@ import org.miradi.utils.PointList;
 
 public class DiagramLinkPoolExporter extends BaseObjectPoolExporter
 {
-	public DiagramLinkPoolExporter(WcsXmlExporter wcsXmlExporterToUse)
+	public DiagramLinkPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, DIAGRAM_LINK, DiagramLink.getObjectType());
 	}

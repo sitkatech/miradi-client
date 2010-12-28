@@ -26,7 +26,7 @@ import org.miradi.objects.Target;
 
 public class BiodiversityTargetPoolExporter extends AbstractTargetPoolExporter
 {
-	public BiodiversityTargetPoolExporter(WcsXmlExporter wcsXmlExporterToUse)
+	public BiodiversityTargetPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, BIODIVERSITY_TARGET, Target.getObjectType());
 	}

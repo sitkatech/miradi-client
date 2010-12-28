@@ -30,7 +30,7 @@ import org.miradi.questions.ThreatRatingQuestion;
 
 public class CausePoolExporter extends FactorPoolExporter
 {	
-	public CausePoolExporter(WcsXmlExporter wcsXmlExporterToUse)
+	public CausePoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, CAUSE, Cause.getObjectType());
 	}

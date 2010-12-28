@@ -27,7 +27,7 @@ import org.miradi.questions.ProgressReportLongStatusQuestion;
 
 public class ProgressReportPoolExporter extends BaseObjectPoolExporter
 {
-	public ProgressReportPoolExporter(WcsXmlExporter wcsXmlExporterToUse)
+	public ProgressReportPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, PROGRESS_REPORT, ProgressReport.getObjectType());
 	}

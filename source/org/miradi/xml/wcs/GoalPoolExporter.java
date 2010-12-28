@@ -24,7 +24,7 @@ import org.miradi.objects.Goal;
 
 public class GoalPoolExporter extends DesirePoolExporter
 {
-	public GoalPoolExporter(WcsXmlExporter wcsXmlExporterToUse)
+	public GoalPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, GOAL, Goal.getObjectType());
 	}	

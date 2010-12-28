@@ -28,7 +28,7 @@ import org.miradi.xml.generic.XmlSchemaCreator;
 
 public class DiagramObjectPoolExporter extends BaseObjectPoolExporter
 {
-	public DiagramObjectPoolExporter(WcsXmlExporter wcsXmlExporterToUse, String containerNameToUse, int objectTypeToUse)
+	public DiagramObjectPoolExporter(XmpzXmlExporter wcsXmlExporterToUse, String containerNameToUse, int objectTypeToUse)
 	{
 		super(wcsXmlExporterToUse, containerNameToUse, objectTypeToUse);
 	}

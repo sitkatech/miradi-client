@@ -26,7 +26,7 @@ import org.miradi.objects.ProgressPercent;
 
 public class ProgressPercentPoolExporter extends BaseObjectPoolExporter
 {
-	public ProgressPercentPoolExporter(WcsXmlExporter wcsXmlExporterToUse)
+	public ProgressPercentPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, PROGRESS_PERCENT, ProgressPercent.getObjectType());
 	}

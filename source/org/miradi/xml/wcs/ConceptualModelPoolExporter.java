@@ -24,7 +24,7 @@ import org.miradi.objects.ConceptualModelDiagram;
 
 public class ConceptualModelPoolExporter extends DiagramObjectPoolExporter
 {
-	public ConceptualModelPoolExporter(WcsXmlExporter wcsXmlExporterToUse)
+	public ConceptualModelPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse, CONCEPTUAL_MODEL, ConceptualModelDiagram.getObjectType());
 	}
