@@ -32,12 +32,12 @@ import java.util.zip.ZipOutputStream;
 
 import org.miradi.database.ObjectManifest;
 import org.miradi.database.ProjectServer;
+import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.EAMObjectPool;
-import org.miradi.objects.BaseObject;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.utils.EnhancedJsonObject;
@@ -135,12 +135,13 @@ public class ProjectMpzWriter
 	private static void addObjectFilesToZip(ZipOutputStream out, Project project, ORefSet refs) throws Exception
 	{
 		String projectFilename = project.getFilename();
+		ProjectServer database = project.getDatabase();
 		for(ORef ref : refs)
 		{
-			BaseObject object = project.findObject(ref);
-			String fileContents = object.toJson().toString();
-
-			writeBaseObjectZipEntry(out, projectFilename, ref, fileContents);
+			int objectType = ref.getObjectType();
+			BaseId id = ref.getObjectId();
+			EnhancedJsonObject json = database.readJsonObjectFile(projectFilename, objectType, id);
+			writeBaseObjectZipEntry(out, projectFilename, ref, json.toString());
 		}
 	}
 
