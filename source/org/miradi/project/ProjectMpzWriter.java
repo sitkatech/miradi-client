@@ -76,22 +76,22 @@ public class ProjectMpzWriter
 		ProjectServer database = project.getDatabase();
 		
 		String exceptions = database.readFileContents(new File(EAM.EXCEPTIONS_LOG_FILE_NAME));
-		writeZipEntry(out, exceptions, projectFilename + "/" + EAM.EXCEPTIONS_LOG_FILE_NAME);
+		writeZipEntry(out, projectFilename + "/" + EAM.EXCEPTIONS_LOG_FILE_NAME, exceptions);
 		
 		String lastModified = database.readLocalLastModifiedProjectTime(database.getCurrentLocalProjectDirectory());
-		writeZipEntry(out, lastModified, projectFilename + "/" + ProjectServer.LAST_MODIFIED_FILE_NAME);
+		writeZipEntry(out, projectFilename + "/" + ProjectServer.LAST_MODIFIED_FILE_NAME, lastModified);
 		
 		String quarantine = database.getQuarantineFileContents();
-		writeZipEntry(out, quarantine, projectFilename + "/" + ProjectServer.QUARANTINE_FILE_NAME);
+		writeZipEntry(out, projectFilename + "/" + ProjectServer.QUARANTINE_FILE_NAME, quarantine);
 
 		EnhancedJsonObject infoJson = project.getProjectInfo().toJson();
-		writeZipEntry(out, infoJson.toString(), projectFilename + "/" + ProjectServer.JSON_DIRECTORY + "/" + ProjectServer.PROJECTINFO_FILE);
+		writeZipEntry(out, projectFilename + "/" + ProjectServer.JSON_DIRECTORY + "/" + ProjectServer.PROJECTINFO_FILE, infoJson.toString());
 		
 		EnhancedJsonObject threatRatingJson = project.getSimpleThreatRatingFramework().toJson();
-		writeZipEntry(out, threatRatingJson.toString(), projectFilename + "/" + ProjectServer.JSON_DIRECTORY + "/" + ProjectServer.THREATFRAMEWORK_FILE);
+		writeZipEntry(out, projectFilename + "/" + ProjectServer.JSON_DIRECTORY + "/" + ProjectServer.THREATFRAMEWORK_FILE, threatRatingJson.toString());
 		
 		EnhancedJsonObject versionJson = database.createVersionJson(database.readProjectDataVersion(projectFilename));
-		writeZipEntry(out, versionJson.toString(), projectFilename + "/" + ProjectServer.JSON_DIRECTORY + "/" + ProjectServer.VERSION_FILE);
+		writeZipEntry(out, projectFilename + "/" + ProjectServer.JSON_DIRECTORY + "/" + ProjectServer.VERSION_FILE, versionJson.toString());
 
 		writeThreatRatingBundles(out, projectFilename, database);
 		
@@ -117,7 +117,7 @@ public class ProjectMpzWriter
 			String projectFilename = project.getFilename();
 			String directory = projectFilename + "/" + ProjectServer.JSON_DIRECTORY + "/objects-" + type;
 			String path = directory + "/" + ProjectServer.MANIFEST_FILE;
-			writeZipEntry(out, manifest.toJson().toString(), path);
+			writeZipEntry(out, path, manifest.toJson().toString());
 			addObjectFilesToZip(out, project, refs);
 		}
 	}
@@ -129,7 +129,7 @@ public class ProjectMpzWriter
 		{
 			String contents = bundle.toJson().toString();
 			String bundleName = SimpleThreatRatingFramework.getBundleKey(bundle.getThreatId(), bundle.getTargetId());
-			writeZipEntry(out, contents, projectFilename + "/" + ProjectServer.JSON_DIRECTORY + "/" + ProjectServer.THREATRATINGS_DIRECTORY + "/" + bundleName);
+			writeZipEntry(out, projectFilename + "/" + ProjectServer.JSON_DIRECTORY + "/" + ProjectServer.THREATRATINGS_DIRECTORY + "/" + bundleName, contents);
 		}
 	}
 
@@ -161,11 +161,11 @@ public class ProjectMpzWriter
 	{
 		String directory = projectFilename + "/" + ProjectServer.JSON_DIRECTORY + "/objects-" + objectType;
 		String path = directory + "/" + objectIdAsString;
-		writeZipEntry(out, fileContents, path);
+		writeZipEntry(out, path, fileContents);
 	}
 
-	private static void writeZipEntry(ZipOutputStream out, String fileContents,
-			String path) throws UnsupportedEncodingException, IOException
+	private static void writeZipEntry(ZipOutputStream out, String path,
+			String fileContents) throws UnsupportedEncodingException, IOException
 	{
 		if(fileContents.length() == 0)
 			return;
