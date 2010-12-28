@@ -104,7 +104,13 @@ public class ProjectMpzWriter
 		EnhancedJsonObject threatRatingJson = project.getSimpleThreatRatingFramework().toJson();
 		writeZipEntry(out, buildPathForZipEntryInJsonDirectory(projectFilename, ProjectServer.THREATFRAMEWORK_FILE), threatRatingJson.toString());
 		
-		writeThreatRatingBundles(out, projectFilename, database);
+		Collection<ThreatRatingBundle> allBundles = SimpleThreatRatingFramework.loadSimpleThreatRatingBundles(database);
+		for(ThreatRatingBundle bundle : allBundles)
+		{
+			String contents = bundle.toJson().toString();
+			String bundleName = SimpleThreatRatingFramework.getBundleKey(bundle.getThreatId(), bundle.getTargetId());
+			writeZipEntry(out, projectFilename + "/" + ProjectServer.JSON_DIRECTORY + "/" + ProjectServer.THREATRATINGS_DIRECTORY + "/" + bundleName, contents);
+		}
 	}
 
 	private static void writeBaseObjects(ZipOutputStream out, String projectFilename, ProjectServer database) throws Exception
@@ -121,17 +127,6 @@ public class ProjectMpzWriter
 			String path = buildZipEntryPath(projectFilename, type, ProjectServer.MANIFEST_FILE);
 			writeZipEntry(out, path, manifest.toJson().toString());
 			addBaseObjectFilesToZip(out, projectFilename, database, refs);
-		}
-	}
-
-	private static void writeThreatRatingBundles(ZipOutputStream out, String projectFilename, ProjectServer db) throws Exception
-	{
-		Collection<ThreatRatingBundle> allBundles = SimpleThreatRatingFramework.loadSimpleThreatRatingBundles(db);
-		for(ThreatRatingBundle bundle : allBundles)
-		{
-			String contents = bundle.toJson().toString();
-			String bundleName = SimpleThreatRatingFramework.getBundleKey(bundle.getThreatId(), bundle.getTargetId());
-			writeZipEntry(out, projectFilename + "/" + ProjectServer.JSON_DIRECTORY + "/" + ProjectServer.THREATRATINGS_DIRECTORY + "/" + bundleName, contents);
 		}
 	}
 
