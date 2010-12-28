@@ -51,6 +51,15 @@ public class TestXmpzExporter extends TestCaseWithProject
 		validateProject();
 	}
 	
+	public void testIfWeDoBigSchemaChangesWeShouldIncludeMinorChangesToo() throws Exception
+	{
+		if("49".equals(XmpzXmlConstants.NAME_SPACE_VERSION))
+			return;
+
+		fail("If the schema version number changes, make sure we also do all the\n" +
+				"pending small changes at the same time. Then update this test.");
+	}
+	
 	public void testValidateFilledProject() throws Exception
 	{
 		getProject().populateEverything();
