@@ -117,7 +117,7 @@ public class ProjectMpzWriter
 			String projectFilename = project.getFilename();
 			String path = buildZipEntryPath(projectFilename, type, ProjectServer.MANIFEST_FILE);
 			writeZipEntry(out, path, manifest.toJson().toString());
-			addObjectFilesToZip(out, project, refs);
+			addBaseObjectFilesToZip(out, project.getFilename(), project.getDatabase(), refs);
 		}
 	}
 
@@ -132,10 +132,8 @@ public class ProjectMpzWriter
 		}
 	}
 
-	private static void addObjectFilesToZip(ZipOutputStream out, Project project, ORefSet refs) throws Exception
+	private static void addBaseObjectFilesToZip(ZipOutputStream out, String projectFilename, ProjectServer database, ORefSet refs) throws Exception
 	{
-		String projectFilename = project.getFilename();
-		ProjectServer database = project.getDatabase();
 		for(ORef ref : refs)
 		{
 			int objectType = ref.getObjectType();
