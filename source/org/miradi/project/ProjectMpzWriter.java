@@ -51,7 +51,7 @@ public class ProjectMpzWriter
 		createProjectZipFile(destinationZip, projectName, projectDirectory);
 	}
 
-	public static void createProjectZipFile(File destinationZip, String zipTopLevelDirectory, File projectDirectory) throws FileNotFoundException, Exception, IOException
+	public static void createProjectZipFile(File destinationZip, String zipTopLevelDirectoryName, File projectDirectory) throws FileNotFoundException, Exception, IOException
 	{
 		String projectName = projectDirectory.getName();
 		ProjectServer database = new ProjectServer();
