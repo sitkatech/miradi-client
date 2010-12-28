@@ -21,7 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.generic;
 
 import org.miradi.objects.DiagramObject;
-import org.miradi.xml.wcs.WcsXmlConstants;
+import org.miradi.xml.wcs.XmpzXmlConstants;
 
 abstract public class DiagramSchemaElement extends BaseObjectSchemaElementWithLabel
 {
@@ -35,6 +35,6 @@ abstract public class DiagramSchemaElement extends BaseObjectSchemaElementWithLa
 		createIdListField(DiagramObject.TAG_DIAGRAM_FACTOR_IDS, "DiagramFactor");
 		createIdListField(DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, "DiagramLink");
 		createCodeListField(XmlSchemaCreator.HIDDEN_TYPES_ELEMENT_NAME);
-		createIdListField(WcsXmlConstants.SELECTED_TAGGED_OBJECT_SET_IDS, XmlSchemaCreator.TAGGED_OBJECT_SET_ELEMENT_NAME);
+		createIdListField(XmpzXmlConstants.SELECTED_TAGGED_OBJECT_SET_IDS, XmlSchemaCreator.TAGGED_OBJECT_SET_ELEMENT_NAME);
 	}
 }

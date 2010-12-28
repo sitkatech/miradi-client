@@ -34,12 +34,12 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.xml.generic.XmlSchemaCreator;
 import org.miradi.xml.wcs.TagToElementNameMap;
-import org.miradi.xml.wcs.WcsXmlConstants;
+import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.miradi.xml.xmpz.XmpzXmlImporter;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-abstract public class AbstractXmpzObjectImporter implements WcsXmlConstants
+abstract public class AbstractXmpzObjectImporter implements XmpzXmlConstants
 {
 	public AbstractXmpzObjectImporter(XmpzXmlImporter importerToUse, String poolNameToUse)
 	{
@@ -118,7 +118,7 @@ abstract public class AbstractXmpzObjectImporter implements WcsXmlConstants
 	{
 		TagToElementNameMap map = new TagToElementNameMap();
 		String elementName = map.findElementName(elementContainerName, destinationTag);
-		String containerElementName = elementContainerName + elementName + WcsXmlConstants.CONTAINER_ELEMENT_TAG;
+		String containerElementName = elementContainerName + elementName + XmpzXmlConstants.CONTAINER_ELEMENT_TAG;
 		NodeList codeNodes = getImporter().getNodes(node, new String[]{containerElementName, XmlSchemaCreator.CODE_ELEMENT_NAME});
 		CodeList codesToImport = new CodeList();
 		for (int index = 0; index < codeNodes.getLength(); ++index)
@@ -146,7 +146,7 @@ abstract public class AbstractXmpzObjectImporter implements WcsXmlConstants
 
 	private ORef getRefToImport(Node node, String idElementName, int objectType) throws Exception
 	{
-		String element = getPoolName() + idElementName + WcsXmlConstants.ID;
+		String element = getPoolName() + idElementName + XmpzXmlConstants.ID;
 		Node idNode = getImporter().getNode(node, element);
 		if (idNode == null)
 			return ORef.INVALID;

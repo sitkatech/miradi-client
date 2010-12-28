@@ -21,13 +21,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.generic;
 
 import org.miradi.objects.ProgressPercent;
-import org.miradi.xml.wcs.WcsXmlConstants;
+import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class ProgressPercentObjectSchemaElement extends AbstractBaseObjectSchemaElement
 {
 	public ProgressPercentObjectSchemaElement()
 	{
-		super(WcsXmlConstants.PROGRESS_PERCENT);
+		super(XmpzXmlConstants.PROGRESS_PERCENT);
 		
 		createOptionalDateField(ProgressPercent.TAG_DATE);
 		createOptionalNumericField(ProgressPercent.TAG_PERCENT_COMPLETE);

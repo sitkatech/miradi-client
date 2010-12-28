@@ -22,13 +22,13 @@ package org.miradi.xml.generic;
 
 import org.miradi.objects.Factor;
 import org.miradi.objects.Strategy;
-import org.miradi.xml.wcs.WcsXmlConstants;
+import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class StrategyObjectSchemaElement extends FactorObjectSchemaElement
 {
 	public StrategyObjectSchemaElement()
 	{
-		super(WcsXmlConstants.STRATEGY);
+		super(XmpzXmlConstants.STRATEGY);
 		
 		createOptionalIdListField(Factor.TAG_OBJECTIVE_IDS, XmlSchemaCreator.OBJECTIVE_ID_ELEMENT_NAME);
 		createOptionalIdListField(Strategy.TAG_ACTIVITY_IDS, XmlSchemaCreator.ACITIVTY_ID_ELEMENT_NAME);
@@ -37,8 +37,8 @@ public class StrategyObjectSchemaElement extends FactorObjectSchemaElement
 		createCodeField(XmlSchemaCreator.STRATEGY_IMPACT_RATING_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_STRATEGY_IMAPACT_RATING_CODE);
 		createCodeField(XmlSchemaCreator.STRATEGY_FEASIBILITY_RATING_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_STRATEGY_FEASIBILITY_RATING_CODE);
 		createOptionalTextField(Strategy.TAG_LEGACY_TNC_STRATEGY_RANKING);
-		createOptionalIdListField(WcsXmlConstants.PROGRESS_REPORT_IDS, XmlSchemaCreator.PROGRESS_REPORT_ID_ELEMENT_NAME);
-		createOptionalIdListField(WcsXmlConstants.EXPENSE_IDS, XmlSchemaCreator.EXPENSE_ASSIGNMENT_ID_ELEMENT_NAME);
+		createOptionalIdListField(XmpzXmlConstants.PROGRESS_REPORT_IDS, XmlSchemaCreator.PROGRESS_REPORT_ID_ELEMENT_NAME);
+		createOptionalIdListField(XmpzXmlConstants.EXPENSE_IDS, XmlSchemaCreator.EXPENSE_ASSIGNMENT_ID_ELEMENT_NAME);
 		createOptionalIdListField(Strategy.TAG_RESOURCE_ASSIGNMENT_IDS, XmlSchemaCreator.RESOURCE_ASSIGNMENT_ID_ELEMENT_NAME);
 		createOptionalIdListField(Factor.TAG_INDICATOR_IDS, INDICATOR_TYPE_NAME);
 	}

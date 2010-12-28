@@ -22,7 +22,7 @@ package org.miradi.xml.generic;
 
 import java.io.IOException;
 
-import org.miradi.xml.wcs.WcsXmlConstants;
+import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class ObjectPoolSchemaElement extends ObjectSchemaElement
 {
@@ -35,7 +35,7 @@ public class ObjectPoolSchemaElement extends ObjectSchemaElement
 	@Override
 	public void output(SchemaWriter writer) throws IOException
 	{
-		String result = WcsXmlConstants.ELEMENT_NAME + WcsXmlConstants.PREFIX + getObjectTypeName() + " { " + getDotElement(objectSchemaElement.getObjectTypeName()) + "* }";
+		String result = XmpzXmlConstants.ELEMENT_NAME + XmpzXmlConstants.PREFIX + getObjectTypeName() + " { " + getDotElement(objectSchemaElement.getObjectTypeName()) + "* }";
 		writer.defineAlias(getDotElement(getObjectTypeName()), result);
 		objectSchemaElement.output(writer);
 	}
@@ -48,7 +48,7 @@ public class ObjectPoolSchemaElement extends ObjectSchemaElement
 
 	private static String getPoolName(String wrappedObjectTypeName)
 	{
-		return wrappedObjectTypeName + WcsXmlConstants.POOL_ELEMENT_TAG;
+		return wrappedObjectTypeName + XmpzXmlConstants.POOL_ELEMENT_TAG;
 	}
 	
 	@Override

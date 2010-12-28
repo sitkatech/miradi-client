@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-import org.miradi.xml.wcs.WcsXmlConstants;
+import org.miradi.xml.wcs.XmpzXmlConstants;
 
 abstract public class AbstractAssignmentObjectSchemaElement extends BaseObjectSchemaElementWithLabel
 {
@@ -28,9 +28,9 @@ abstract public class AbstractAssignmentObjectSchemaElement extends BaseObjectSc
 	{
 		super(objectTypeNameToUse);
 		
-		createFundingSourceIdField(WcsXmlConstants.FUNDING_SOURCE_ID);
-		createAccountingCodeIdField(WcsXmlConstants.ACCOUNTING_CODE_ID);
-		createBudgetCategoryOneIdField(WcsXmlConstants.BUDGET_CATEGORY_ONE_ID);
-		createBudgetCategoryTwoIdField(WcsXmlConstants.BUDGET_CATEGORY_TWO_ID);
+		createFundingSourceIdField(XmpzXmlConstants.FUNDING_SOURCE_ID);
+		createAccountingCodeIdField(XmpzXmlConstants.ACCOUNTING_CODE_ID);
+		createBudgetCategoryOneIdField(XmpzXmlConstants.BUDGET_CATEGORY_ONE_ID);
+		createBudgetCategoryTwoIdField(XmpzXmlConstants.BUDGET_CATEGORY_TWO_ID);
 	}
 }

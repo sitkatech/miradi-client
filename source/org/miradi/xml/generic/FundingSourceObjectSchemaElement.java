@@ -20,12 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-import org.miradi.xml.wcs.WcsXmlConstants;
+import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class FundingSourceObjectSchemaElement extends AbstractBudgetCategorySchemaElement
 {
 	public FundingSourceObjectSchemaElement()
 	{
-		super(WcsXmlConstants.FUNDING_SOURCE);
+		super(XmpzXmlConstants.FUNDING_SOURCE);
 	}
 }

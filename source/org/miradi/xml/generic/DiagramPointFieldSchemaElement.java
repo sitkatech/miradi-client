@@ -22,7 +22,7 @@ package org.miradi.xml.generic;
 
 import java.io.IOException;
 
-import org.miradi.xml.wcs.WcsXmlConstants;
+import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class DiagramPointFieldSchemaElement extends FieldSchemaElement
 {
@@ -35,6 +35,6 @@ public class DiagramPointFieldSchemaElement extends FieldSchemaElement
 	public void output(SchemaWriter writer) throws IOException
 	{
 		super.output(writer);
-		writer.write(" { " + WcsXmlConstants.DIAGRAM_POINT_ELEMENT_NAME + ".element }");
+		writer.write(" { " + XmpzXmlConstants.DIAGRAM_POINT_ELEMENT_NAME + ".element }");
 	}
 }
