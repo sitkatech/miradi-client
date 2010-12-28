@@ -83,7 +83,8 @@ public class ProjectRepairer
 				addToQuarantine(object);
 			getProject().deleteObject(object);
 		}
-		EAM.logDebug("Quarantined orphans: " + orphanRefs);
+		if(orphanRefs.size() > 0)
+			EAM.logDebug("Quarantined orphans: " + orphanRefs);
 		
 		return orphanRefs.size();
 	}
