@@ -86,7 +86,7 @@ public class ProjectMpzWriter
 		writeZipEntry(out, projectFilename + "/" + ProjectServer.QUARANTINE_FILE_NAME, quarantine);
 
 		EnhancedJsonObject versionJson = database.createVersionJson(database.readProjectDataVersion(projectFilename));
-		writeZipEntry(out, projectFilename + "/" + ProjectServer.JSON_DIRECTORY + "/" + ProjectServer.VERSION_FILE, versionJson.toString());
+		writeZipEntry(out, buildPathForZipEntryInJsonDirectory(projectFilename, ProjectServer.VERSION_FILE), versionJson.toString());
 
 		EnhancedJsonObject infoJson = project.getProjectInfo().toJson();
 		writeZipEntry(out, projectFilename + "/" + ProjectServer.JSON_DIRECTORY + "/" + ProjectServer.PROJECTINFO_FILE, infoJson.toString());
@@ -149,8 +149,12 @@ public class ProjectMpzWriter
 		writeZipEntry(out, path, fileContents);
 	}
 
-	private static String buildZipEntryPath(String projectFilename,
-			int objectType, String zipEntryFilename)
+	private static String buildPathForZipEntryInJsonDirectory(String projectFilename, String zipEntryFilename)
+	{
+		return projectFilename + "/" + ProjectServer.JSON_DIRECTORY + "/" + zipEntryFilename;
+	}
+
+	private static String buildZipEntryPath(String projectFilename, int objectType, String zipEntryFilename)
 	{
 		String directory = projectFilename + "/" + ProjectServer.JSON_DIRECTORY + "/objects-" + objectType;
 		String path = directory + "/" + zipEntryFilename;
