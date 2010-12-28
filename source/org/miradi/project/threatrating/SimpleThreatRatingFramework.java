@@ -538,6 +538,7 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 	{
 		clear();
 		ProjectServer db = getDatabase();
+		HashSet<ThreatRatingBundle> loadedBundles = new HashSet<ThreatRatingBundle>();
 		EnhancedJsonObject json = db.readRawThreatRatingFramework();
 		if(json != null)
 		{
@@ -550,13 +551,18 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 				BaseId threatId = new BaseId(pair.getInt(TAG_BUNDLE_THREAT_ID));
 				BaseId targetId = new BaseId(pair.getInt(TAG_BUNDLE_TARGET_ID));
 				ThreatRatingBundle bundle = db.readThreatRatingBundle(threatId, targetId);
-				memorize(bundle);
+				loadedBundles.add(bundle);
 			}
 			
 			ratingValueOptions = findValueOptions(new IdList(ValueOption.getObjectType(), json.optJson(TAG_VALUE_OPTION_IDS)));
 			Arrays.sort(ratingValueOptions, new OptionSorter());
 			criteria = findCriteria(new IdList(RatingCriterion.getObjectType(), json.optJson(TAG_CRITERION_IDS)));
 			sortCriteria();
+		}
+		
+		for(ThreatRatingBundle bundle : loadedBundles)
+		{
+			memorize(bundle);
 		}
 
 		createMissingBuiltInObjects();
