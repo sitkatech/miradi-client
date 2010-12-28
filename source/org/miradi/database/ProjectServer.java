@@ -315,7 +315,7 @@ public class ProjectServer
 		return new File(getRelativeJsonDirectory(), PROJECTINFO_FILE);
 	}
 
-	private EnhancedJsonObject readJsonObjectFile(String projectName, int type, BaseId id) throws Exception
+	public EnhancedJsonObject readJsonObjectFile(String projectName, int type, BaseId id) throws Exception
 	{
 		File relativeFile = getRelativeObjectFile(type, id);
 		return readRelativeJsonFile(projectName, relativeFile);
