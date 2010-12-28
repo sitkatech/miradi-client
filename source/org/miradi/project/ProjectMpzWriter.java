@@ -120,13 +120,14 @@ public class ProjectMpzWriter
 
 	private static void writeThreatRatingBundles(ZipOutputStream out, Project project) throws Exception
 	{
+		String projectFilename = project.getFilename();
 		ProjectServer db = project.getDatabase();
 		Collection<ThreatRatingBundle> allBundles = SimpleThreatRatingFramework.loadSimpleThreatRatingBundles(db);
 		for(ThreatRatingBundle bundle : allBundles)
 		{
 			String contents = bundle.toJson().toString();
 			String bundleName = SimpleThreatRatingFramework.getBundleKey(bundle.getThreatId(), bundle.getTargetId());
-			writeZipEntry(out, contents, project.getFilename() + "/" + ProjectServer.JSON_DIRECTORY + "/" + ProjectServer.THREATRATINGS_DIRECTORY + "/" + bundleName);
+			writeZipEntry(out, contents, projectFilename + "/" + ProjectServer.JSON_DIRECTORY + "/" + ProjectServer.THREATRATINGS_DIRECTORY + "/" + bundleName);
 		}
 	}
 
