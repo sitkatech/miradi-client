@@ -45,13 +45,13 @@ import org.miradi.utils.EnhancedJsonObject;
 
 public class ProjectMpzWriter
 {
-	public static void createProjectZipFile(File destination, File projectDirectory) throws FileNotFoundException, Exception, IOException
+	public static void createProjectZipFile(File destinationZip, File projectDirectory) throws FileNotFoundException, Exception, IOException
 	{
 		String projectName = projectDirectory.getName();
-		createProjectZipFile(destination, projectName, projectDirectory);
+		createProjectZipFile(destinationZip, projectName, projectDirectory);
 	}
 
-	public static void createProjectZipFile(File destination, String zipTopLevelDirectory, File projectDirectory) throws FileNotFoundException, Exception, IOException
+	public static void createProjectZipFile(File destinationZip, String zipTopLevelDirectory, File projectDirectory) throws FileNotFoundException, Exception, IOException
 	{
 		String projectName = projectDirectory.getName();
 		ProjectServer database = new ProjectServer();
@@ -63,7 +63,7 @@ public class ProjectMpzWriter
 		
 		writeProjectZip(out, database);
 		
-		OutputStream blastOut = new FileOutputStream(destination);
+		OutputStream blastOut = new FileOutputStream(destinationZip);
 		blastOut.write(outputBytes.toByteArray());
 		blastOut.close();
 	}
