@@ -120,7 +120,8 @@ public class ProjectMpzWriter
 
 	private static void writeThreatRatingBundles(ZipOutputStream out, Project project) throws Exception
 	{
-		Collection<ThreatRatingBundle> allBundles = project.getSimpleThreatRatingFramework().getAllBundles();
+		ProjectServer db = project.getDatabase();
+		Collection<ThreatRatingBundle> allBundles = SimpleThreatRatingFramework.loadSimpleThreatRatingBundles(db);
 		for(ThreatRatingBundle bundle : allBundles)
 		{
 			String contents = bundle.toJson().toString();
