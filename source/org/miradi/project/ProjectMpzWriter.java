@@ -64,7 +64,10 @@ public class ProjectMpzWriter
 	{
 		ByteArrayOutputStream outputBytes = new ByteArrayOutputStream();
 		ZipOutputStream out = new ZipOutputStream(outputBytes);
-		writeProjectZip(out, project);
+		
+		String projectFilename = project.getFilename();
+		ProjectServer database = project.getDatabase();
+		writeProjectZip(out, projectFilename, database);
 		
 		OutputStream blastOut = new FileOutputStream(destination);
 		blastOut.write(outputBytes.toByteArray());
@@ -76,6 +79,11 @@ public class ProjectMpzWriter
 		String projectFilename = project.getFilename();
 		ProjectServer database = project.getDatabase();
 		
+		writeProjectZip(out, projectFilename, database);
+	}
+
+	private static void writeProjectZip(ZipOutputStream out, String projectFilename, ProjectServer database) throws Exception
+	{
 		String exceptions = database.readFileContents(new File(EAM.EXCEPTIONS_LOG_FILE_NAME));
 		writeZipEntry(out, projectFilename + "/" + EAM.EXCEPTIONS_LOG_FILE_NAME, exceptions);
 		
