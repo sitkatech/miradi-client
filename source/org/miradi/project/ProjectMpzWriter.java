@@ -85,15 +85,15 @@ public class ProjectMpzWriter
 		String quarantine = database.getQuarantineFileContents();
 		writeZipEntry(out, projectFilename + "/" + ProjectServer.QUARANTINE_FILE_NAME, quarantine);
 
+		EnhancedJsonObject versionJson = database.createVersionJson(database.readProjectDataVersion(projectFilename));
+		writeZipEntry(out, projectFilename + "/" + ProjectServer.JSON_DIRECTORY + "/" + ProjectServer.VERSION_FILE, versionJson.toString());
+
 		EnhancedJsonObject infoJson = project.getProjectInfo().toJson();
 		writeZipEntry(out, projectFilename + "/" + ProjectServer.JSON_DIRECTORY + "/" + ProjectServer.PROJECTINFO_FILE, infoJson.toString());
 		
 		EnhancedJsonObject threatRatingJson = project.getSimpleThreatRatingFramework().toJson();
 		writeZipEntry(out, projectFilename + "/" + ProjectServer.JSON_DIRECTORY + "/" + ProjectServer.THREATFRAMEWORK_FILE, threatRatingJson.toString());
 		
-		EnhancedJsonObject versionJson = database.createVersionJson(database.readProjectDataVersion(projectFilename));
-		writeZipEntry(out, projectFilename + "/" + ProjectServer.JSON_DIRECTORY + "/" + ProjectServer.VERSION_FILE, versionJson.toString());
-
 		writeThreatRatingBundles(out, projectFilename, database);
 		
 		writeBaseObjects(out, projectFilename, database);
