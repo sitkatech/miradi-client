@@ -102,6 +102,7 @@ public class ProjectMpzWriter
 	private static void writeBaseObjects(ZipOutputStream out, Project project)
 			throws UnsupportedEncodingException, IOException, Exception
 	{
+		ProjectServer database = project.getDatabase();
 		ObjectManager objectManager = project.getObjectManager();
 		for(int type = 0; type < ObjectType.OBJECT_TYPE_COUNT; ++type)
 		{
@@ -112,7 +113,7 @@ public class ProjectMpzWriter
 			if(refs.size() == 0)
 				continue;
 
-			ObjectManifest manifest = new ObjectManifest(pool);
+			ObjectManifest manifest = database.readObjectManifest(type);
 			writeZipEntry(out, project, manifest.toJson().toString(), type, ProjectServer.MANIFEST_FILE);
 			addObjectFilesToZip(out, project, refs);
 		}
