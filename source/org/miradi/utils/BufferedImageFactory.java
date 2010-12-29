@@ -99,10 +99,15 @@ public  class BufferedImageFactory
 
 	public static void realizeComponent(JComponent swingComponent)
 	{
-		//TODO: is there a better way to do this
+		//TODO: is there a better way to do this?
 		JFrame frame = new JFrame();
-		frame.add(new UiScrollPane(swingComponent));
+		UiScrollPane scrollPane = new UiScrollPane(swingComponent);
+		frame.add(scrollPane);
 		frame.pack();
+		
+		// NOTE: Free up frame and scroll pane to avoid memory leaks
+		frame.remove(scrollPane);
+		scrollPane.remove(swingComponent);
 	}
 	
 	public static BufferedImage createImageFromDiagram(MainWindow mainWindow, DiagramObject diagramObject) throws Exception
