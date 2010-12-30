@@ -86,6 +86,7 @@
 	<!-- translations -->
 	<property name="miradi.pot" value="${dist.temp}/miradi.pot" />
     <property name="miradi.po.es" value="${translations.dir}/miradi_es.po" />
+    <property name="miradi.po.fr" value="${translations.dir}/miradi_fr.po" />
     <property name="miradi.po.id" value="${translations.dir}/miradi_id.po" />
     <property name="miradi.po.it" value="${translations.dir}/miradi_it.po" />
     <property name="miradi.po.mn" value="${translations.dir}/miradi_mn.po" />
@@ -549,6 +550,7 @@
 		<property name="po.locale" value="IT" />
 		<property name="po.file" value="${miradi.po.it}" />
 		<antcall target="create-new-po"/>
+	Don't forget to create the new po property at the top of this file!
 -->
 <!-- ================================================================== -->
 <target name="create-new-po" description="Create empty po file">
