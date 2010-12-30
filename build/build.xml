@@ -551,6 +551,9 @@
 		<property name="po.file" value="${miradi.po.it}" />
 		<antcall target="create-new-po"/>
 	Don't forget to create the new po property at the top of this file!
+	Then, grab the new PO file out of the Hudson workspace, 
+	delete the three lines of code mentioned above, 
+	and manually commit the po file as if you had created it from scratch
 -->
 <!-- ================================================================== -->
 <target name="create-new-po" description="Create empty po file">
@@ -655,9 +658,6 @@
 <!-- FRENCH                                                             -->
 <!-- ================================================================== -->
 <target name="french" depends="pot" description="Update French Content">
-	<property name="po.locale" value="FR" />
-	<property name="po.file" value="${miradi.po.fr}" />
-	<antcall target="create-new-po"/>
 	<antcall target="update-po">
 		<param name="po.file" value="${miradi.po.fr}"/>
 		<param name="language.code" value="fr"/>
