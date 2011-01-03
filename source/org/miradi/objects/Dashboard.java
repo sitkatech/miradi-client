@@ -242,6 +242,12 @@ public class Dashboard extends BaseObject
 			if (fieldTag.equals(PSEUDO_CONCEPTUAL_MODEL_COUNT))
 				return getConceptualModelCount();
 			
+			if (fieldTag.equals(PSEUDO_INDICATORS_RELEVANT_TO_OBJECTIVES_PERCENTAGE))
+				return getIndicatorsRelevantToObjectivesPercentage();
+			
+			if (fieldTag.equals(PSEUDO_INDICATORS_IRRELEVANT_TO_OBJECIVES_PERCENTAGE))
+				return getIndicatorsIrrelevantToObjectivesPercentage();
+			
 			return super.getPseudoData(fieldTag);
 		}
 		catch (Exception e)
@@ -251,6 +257,39 @@ public class Dashboard extends BaseObject
 		}
 	}
 	
+	private String getIndicatorsIrrelevantToObjectivesPercentage() throws Exception
+	{
+		ORefSet indicatorRefs = getProject().getIndicatorPool().getRefSet();
+		ORefSet indicatorsRelevantToObjectives = getIndicatorsRelevantToObjectives(indicatorRefs);
+		ORefSet indicatorsIrrelevantToObjectives = new ORefSet(indicatorRefs);
+		indicatorsIrrelevantToObjectives.removeAll(indicatorsRelevantToObjectives);
+		
+		return calculatePercentage(indicatorsIrrelevantToObjectives.size(), indicatorRefs.size());
+	}
+
+	private String getIndicatorsRelevantToObjectivesPercentage() throws Exception
+	{
+		ORefSet indicatorRefs = getProject().getIndicatorPool().getRefSet();
+		ORefSet indicatorsRelevantToObjectives = getIndicatorsRelevantToObjectives(indicatorRefs);
+		
+		return calculatePercentage(indicatorsRelevantToObjectives.size(), indicatorRefs.size());
+	}
+
+	private ORefSet getIndicatorsRelevantToObjectives(ORefSet indicatorRefs) throws Exception
+	{
+		ORefSet objectiveRefs = getProject().getObjectivePool().getRefSet();
+		ORefSet indicatorsRelevantToObjectives = new ORefSet();
+		for (ORef objectiveRef : objectiveRefs)
+		{
+			Objective objective = Objective.find(getProject(), objectiveRef);
+			ORefList relevantIndicatorRefs = objective.getRelevantIndicatorRefList();
+			if (indicatorRefs.containsAny(new ORefSet(relevantIndicatorRefs)))
+				indicatorsRelevantToObjectives.addAllRefs(relevantIndicatorRefs);
+		}
+		
+		return indicatorsRelevantToObjectives;
+	}
+
 	private String getConceptualModelCount()
 	{
 		int count = getProject().getConceptualModelDiagramPool().size();
@@ -884,6 +923,8 @@ public class Dashboard extends BaseObject
 		effectiveStatusMap = new PseudoStringChoiceMapData(PSEUDO_EFFECTIVE_STATUS_MAP);
 		conceptualModelCount = new PseudoStringData(PSEUDO_CONCEPTUAL_MODEL_COUNT);
 		allFactorCount = new PseudoStringData(PSEUDO_ALL_FACTOR_COUNT);
+		indicatorsRelevantToObjectivesPercentage = new PseudoStringData(PSEUDO_INDICATORS_RELEVANT_TO_OBJECTIVES_PERCENTAGE);
+		indicatorsIrrelevantToObjectivesPercentage = new PseudoStringData(PSEUDO_INDICATORS_IRRELEVANT_TO_OBJECIVES_PERCENTAGE);
 		userStatusChoiceMap = new StringChoiceMapData(TAG_USER_STATUS_CHOICE_MAP);
 		userCommentsMap = new StringStringMapData(TAG_USER_COMMENTS_MAP);
 		needsAttentionMap = new StringCodeListMapData(TAG_NEEDS_ATTENTION_MAP);
@@ -939,6 +980,8 @@ public class Dashboard extends BaseObject
 		addPresentationDataField(PSEUDO_EFFECTIVE_STATUS_MAP, effectiveStatusMap);
 		addPresentationDataField(PSEUDO_CONCEPTUAL_MODEL_COUNT, conceptualModelCount);
 		addPresentationDataField(PSEUDO_ALL_FACTOR_COUNT, allFactorCount);
+		addPresentationDataField(PSEUDO_INDICATORS_RELEVANT_TO_OBJECTIVES_PERCENTAGE, indicatorsRelevantToObjectivesPercentage);
+		addPresentationDataField(PSEUDO_INDICATORS_IRRELEVANT_TO_OBJECIVES_PERCENTAGE, indicatorsIrrelevantToObjectivesPercentage);
 		addPresentationDataField(TAG_USER_STATUS_CHOICE_MAP, userStatusChoiceMap);
 		addPresentationDataField(TAG_USER_COMMENTS_MAP, userCommentsMap);
 		addPresentationDataField(TAG_NEEDS_ATTENTION_MAP, needsAttentionMap);
@@ -998,6 +1041,8 @@ public class Dashboard extends BaseObject
 	public static final String PSEUDO_EFFECTIVE_STATUS_MAP = "effectiveStatusMap";
 	public static final String PSEUDO_CONCEPTUAL_MODEL_COUNT = "ConceptualModelCount";
 	public static final String PSEUDO_ALL_FACTOR_COUNT = " AllFactorCount";
+	public static final String PSEUDO_INDICATORS_RELEVANT_TO_OBJECTIVES_PERCENTAGE = "IndicatorsRelevantToObjectivesPercentage";
+	public static final String PSEUDO_INDICATORS_IRRELEVANT_TO_OBJECIVES_PERCENTAGE = "IndicatorsIrrelevantToObjectivesPercentage";
 	public static final String TAG_USER_STATUS_CHOICE_MAP = "UserStatusChoiceMap";
 	public static final String TAG_USER_COMMENTS_MAP = "UserStatusCommentsMap";
 	public static final String TAG_NEEDS_ATTENTION_MAP = "NeedsAttentionMap";
@@ -1054,6 +1099,8 @@ public class Dashboard extends BaseObject
 	private PseudoStringData targetWithGoalsCount;
 	private PseudoStringData conceptualModelCount;
 	private PseudoStringData allFactorCount;
+	private PseudoStringData indicatorsRelevantToObjectivesPercentage;
+	private PseudoStringData indicatorsIrrelevantToObjectivesPercentage;
 	private StringChoiceMapData userStatusChoiceMap;
 	private StringStringMapData userCommentsMap;
 	private StringCodeListMapData needsAttentionMap;
