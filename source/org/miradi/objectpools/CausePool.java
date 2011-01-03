@@ -71,15 +71,15 @@ public class CausePool extends EAMNormalObjectPool
 
 	private Vector<Cause> getCauses(boolean isDirectThreat)
 	{
-		Vector<Cause> cmNodes = new Vector<Cause>();
+		Vector<Cause> causes = new Vector<Cause>();
 		BaseId[] ids = getIds();
 		Arrays.sort(ids);
 		for(int i = 0; i < ids.length; ++i)
 		{
 			Cause cause = (Cause)getRawObject(ids[i]);
 			if(cause.isDirectThreat() == isDirectThreat)
-				cmNodes.add(cause);
+				causes.add(cause);
 		}
-		return cmNodes;
+		return causes;
 	}
 }
