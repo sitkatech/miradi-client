@@ -248,6 +248,9 @@ public class Dashboard extends BaseObject
 			if (fieldTag.equals(PSEUDO_INDICATORS_IRRELEVANT_TO_OBJECIVES_PERCENTAGE))
 				return getIndicatorsIrrelevantToObjectivesPercentage();
 			
+			if (fieldTag.equals(PSEUDO_TARGET_WITH_KEA_INDICATORS_COUNT))
+				return getTargetWithKeaInidicatorsCount();
+			
 			return super.getPseudoData(fieldTag);
 		}
 		catch (Exception e)
@@ -257,6 +260,25 @@ public class Dashboard extends BaseObject
 		}
 	}
 	
+	private String getTargetWithKeaInidicatorsCount()
+	{
+		ORefSet targetRefs = getProject().getTargetPool().getRefSet();
+		ORefSet targetWithKeaIndicators = new ORefSet();
+		for (ORef targetRef : targetRefs)
+		{
+			Target target = Target.find(getProject(), targetRef);
+			ORefSet keaRefs = new ORefSet(target.getKeyEcologicalAttributeRefs());
+			for (ORef keaRef : keaRefs)
+			{
+				KeyEcologicalAttribute kea = KeyEcologicalAttribute.find(getProject(), keaRef);
+				if (kea.getIndicatorRefs().hasRefs())
+					targetWithKeaIndicators.add(targetRef);
+			}
+		}
+		
+		return Integer.toString(targetWithKeaIndicators.size());
+	}
+
 	private String getIndicatorsIrrelevantToObjectivesPercentage() throws Exception
 	{
 		ORefSet indicatorRefs = getProject().getIndicatorPool().getRefSet();
@@ -925,6 +947,7 @@ public class Dashboard extends BaseObject
 		allFactorCount = new PseudoStringData(PSEUDO_ALL_FACTOR_COUNT);
 		indicatorsRelevantToObjectivesPercentage = new PseudoStringData(PSEUDO_INDICATORS_RELEVANT_TO_OBJECTIVES_PERCENTAGE);
 		indicatorsIrrelevantToObjectivesPercentage = new PseudoStringData(PSEUDO_INDICATORS_IRRELEVANT_TO_OBJECIVES_PERCENTAGE);
+		targetsWithKeaIndicatorsCount = new PseudoStringData(PSEUDO_TARGET_WITH_KEA_INDICATORS_COUNT);
 		userStatusChoiceMap = new StringChoiceMapData(TAG_USER_STATUS_CHOICE_MAP);
 		userCommentsMap = new StringStringMapData(TAG_USER_COMMENTS_MAP);
 		needsAttentionMap = new StringCodeListMapData(TAG_NEEDS_ATTENTION_MAP);
@@ -982,6 +1005,7 @@ public class Dashboard extends BaseObject
 		addPresentationDataField(PSEUDO_ALL_FACTOR_COUNT, allFactorCount);
 		addPresentationDataField(PSEUDO_INDICATORS_RELEVANT_TO_OBJECTIVES_PERCENTAGE, indicatorsRelevantToObjectivesPercentage);
 		addPresentationDataField(PSEUDO_INDICATORS_IRRELEVANT_TO_OBJECIVES_PERCENTAGE, indicatorsIrrelevantToObjectivesPercentage);
+		addPresentationDataField(PSEUDO_TARGET_WITH_KEA_INDICATORS_COUNT, targetsWithKeaIndicatorsCount);
 		addPresentationDataField(TAG_USER_STATUS_CHOICE_MAP, userStatusChoiceMap);
 		addPresentationDataField(TAG_USER_COMMENTS_MAP, userCommentsMap);
 		addPresentationDataField(TAG_NEEDS_ATTENTION_MAP, needsAttentionMap);
@@ -1043,6 +1067,7 @@ public class Dashboard extends BaseObject
 	public static final String PSEUDO_ALL_FACTOR_COUNT = " AllFactorCount";
 	public static final String PSEUDO_INDICATORS_RELEVANT_TO_OBJECTIVES_PERCENTAGE = "IndicatorsRelevantToObjectivesPercentage";
 	public static final String PSEUDO_INDICATORS_IRRELEVANT_TO_OBJECIVES_PERCENTAGE = "IndicatorsIrrelevantToObjectivesPercentage";
+	public static final String PSEUDO_TARGET_WITH_KEA_INDICATORS_COUNT = "TargetWithKeaIndicatorsCount";
 	public static final String TAG_USER_STATUS_CHOICE_MAP = "UserStatusChoiceMap";
 	public static final String TAG_USER_COMMENTS_MAP = "UserStatusCommentsMap";
 	public static final String TAG_NEEDS_ATTENTION_MAP = "NeedsAttentionMap";
@@ -1101,6 +1126,7 @@ public class Dashboard extends BaseObject
 	private PseudoStringData allFactorCount;
 	private PseudoStringData indicatorsRelevantToObjectivesPercentage;
 	private PseudoStringData indicatorsIrrelevantToObjectivesPercentage;
+	private PseudoStringData targetsWithKeaIndicatorsCount;
 	private StringChoiceMapData userStatusChoiceMap;
 	private StringStringMapData userCommentsMap;
 	private StringCodeListMapData needsAttentionMap;
