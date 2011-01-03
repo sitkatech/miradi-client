@@ -88,6 +88,9 @@ public class TestDashboard extends ObjectTestCase
 			
 			if (thirdLevelCode.equals(OpenStandardsImplementActionsAndMonitoringQuestion.ESTIMATE_COSTS_FOR_ACTIVITIES_AND_MONITORING_CODE))
 				progressCode = OpenStandardsDynamicProgressStatuQuestion.NOT_STARTED_CODE;
+			
+			if (thirdLevelCode.equals(OpenStandardsConceptualizeQuestion.CREATE_INITIAL_CONCEPTUAL_MODEL_CODE))
+				progressCode = OpenStandardsDynamicProgressStatuQuestion.IN_PROGRESS_CODE;
 				
 			emptyMap.put(thirdLevelCode, progressCode);
 		}
