@@ -276,6 +276,11 @@ public class Dashboard extends BaseObject
 	{
 		int factorType = ThreatReductionResult.getObjectType();
 		ORefSet factorRefs = getProject().getPool(factorType).getRefSet();
+		return getIndicatorCountForFactors(factorRefs);
+	}
+
+	private String getIndicatorCountForFactors(ORefSet factorRefs)
+	{
 		ORefSet factorsWithIndicators = new ORefSet();
 		for (ORef factorRef : factorRefs)
 		{
@@ -290,14 +295,10 @@ public class Dashboard extends BaseObject
 
 	private String getDirectThreatIndicatorsCount()
 	{
-		Vector<Cause> directThreats = getProject().getCausePool().getDirectThreatsAsVector();
-		ORefSet indicatorRefs = new ORefSet();
-		for (Cause threat : directThreats)
-		{
-			indicatorRefs.addAllRefs(threat.getOnlyDirectIndicatorRefs());
-		}
-		
-		return Integer.toString(indicatorRefs.size());
+		Vector<BaseObject> directThreats = new Vector<BaseObject>(getProject().getCausePool().getDirectThreatsAsVector());
+		ORefList directThreatRefs = new ORefList(directThreats);
+
+		return getIndicatorCountForFactors(new ORefSet(directThreatRefs));
 	}
 
 	private String getNumberOfTargetsWithSimpleViabilityIndicators()
