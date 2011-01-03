@@ -262,6 +262,9 @@ public class Dashboard extends BaseObject
 			
 			if (fieldTag.equals(PSEUDO_THREAT_REDUCTION_RESULT_INDICATORS_COUNT))
 				return getThreatReductionResultIndicatorsCount();
+			
+			if (fieldTag.equals(PSEUDO_OTHER_ORGANIZATION_COUNT))
+				return getObjectPoolCountAsString(Organization.getObjectType());
 					
 			return super.getPseudoData(fieldTag);
 		}
@@ -1020,6 +1023,7 @@ public class Dashboard extends BaseObject
 		targetWithSimpleViabilityIndicatorsCount = new PseudoStringData(PSEUDO_TARGET_WITH_SIMPLE_VIABILITY_INDICATORS_COUNT);
 		directThreatIndicatorsCount = new PseudoStringData(PSEUDO_DIRECT_THREAT_INDICATORS_COUNT);
 		threatReductionResultIndicatorsCount = new PseudoStringData(PSEUDO_THREAT_REDUCTION_RESULT_INDICATORS_COUNT);
+		otherOrganizationCount = new PseudoStringData(PSEUDO_OTHER_ORGANIZATION_COUNT);
 		
 		userStatusChoiceMap = new StringChoiceMapData(TAG_USER_STATUS_CHOICE_MAP);
 		userCommentsMap = new StringStringMapData(TAG_USER_COMMENTS_MAP);
@@ -1083,6 +1087,7 @@ public class Dashboard extends BaseObject
 		addPresentationDataField(PSEUDO_TARGET_WITH_SIMPLE_VIABILITY_INDICATORS_COUNT, targetWithSimpleViabilityIndicatorsCount);
 		addPresentationDataField(PSEUDO_DIRECT_THREAT_INDICATORS_COUNT, directThreatIndicatorsCount);
 		addPresentationDataField(PSEUDO_THREAT_REDUCTION_RESULT_INDICATORS_COUNT, threatReductionResultIndicatorsCount);
+		addPresentationDataField(PSEUDO_OTHER_ORGANIZATION_COUNT, otherOrganizationCount);
 		
 		addPresentationDataField(TAG_USER_STATUS_CHOICE_MAP, userStatusChoiceMap);
 		addPresentationDataField(TAG_USER_COMMENTS_MAP, userCommentsMap);
@@ -1150,6 +1155,7 @@ public class Dashboard extends BaseObject
 	public static final String PSEUDO_TARGET_WITH_SIMPLE_VIABILITY_INDICATORS_COUNT = "targetWithSimpleViabilityIndicatorsCount";
 	public static final String PSEUDO_DIRECT_THREAT_INDICATORS_COUNT = "DirectThreatIndicatorsCount";
 	public static final String PSEUDO_THREAT_REDUCTION_RESULT_INDICATORS_COUNT = "ThreatReductionResultIndicatorsCount";
+	public static final String PSEUDO_OTHER_ORGANIZATION_COUNT = "OtherOrganizationCount";
 	
 	public static final String TAG_USER_STATUS_CHOICE_MAP = "UserStatusChoiceMap";
 	public static final String TAG_USER_COMMENTS_MAP = "UserStatusCommentsMap";
@@ -1214,6 +1220,8 @@ public class Dashboard extends BaseObject
 	private PseudoStringData targetWithSimpleViabilityIndicatorsCount;
 	private PseudoStringData directThreatIndicatorsCount;
 	private PseudoStringData threatReductionResultIndicatorsCount;
+	private PseudoStringData otherOrganizationCount;
+	
 	private StringChoiceMapData userStatusChoiceMap;
 	private StringStringMapData userCommentsMap;
 	private StringCodeListMapData needsAttentionMap;
