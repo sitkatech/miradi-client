@@ -145,7 +145,7 @@ public class DashboardRowDefinitionManager
 		
 		if (code.equals(OpenStandardsPlanActionsAndMonitoringQuestion.FINALIZE_MONITORING_PLAN_CODE))
 		{
-			rowDefinitions.add(new DashboardRowDefinition(EAM.text("%1 % of objectives with relevant indicators"), Dashboard.PSEUDO_OBJECTIVES_RELEVANT_TO_INDICATORS_PERCENTAGE));
+			rowDefinitions.add(new DashboardRowDefinition(EAM.text("%1 Objectives associated to 1 or more Indicators"), Dashboard.PSEUDO_OBJECTIVES_RELEVANT_TO_INDICATORS_COUNT));
 		}
 		
 		if (code.equals(OpenStandardsPlanActionsAndMonitoringQuestion.DEFINE_AUDIENCES_AND_INFORMATION_NEEDS_CODE))
