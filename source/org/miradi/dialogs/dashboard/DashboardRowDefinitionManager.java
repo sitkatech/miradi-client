@@ -228,7 +228,7 @@ public class DashboardRowDefinitionManager
 		
 		if (code.equals(OpenStandardsConceptualizeQuestion.IDENTIFY_INDIRECT_THREATS_AND_OPPORTUNITIES_CODE))
 		{
-			addIdentifyIndirectThreatsAndOpportunities();
+			rowDefinitions.add(new DashboardRowDefinition(EAM.text("%1 Contributing Factors Created"), Dashboard.PSEUDO_CONTRIBUTING_FACTOR_COUNT));
 		}
 		
 		if (code.equals(OpenStandardsConceptualizeQuestion.ASSESS_STAKEHOLDERS_CODE))
@@ -254,10 +254,6 @@ public class DashboardRowDefinitionManager
 	}
 
 	private void addDevelopMapOfProjectArea()
-	{
-	}
-
-	private void addIdentifyIndirectThreatsAndOpportunities()
 	{
 	}
 
