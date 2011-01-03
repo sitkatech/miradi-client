@@ -112,6 +112,9 @@ public class Dashboard extends BaseObject
 
 			if (fieldTag.equals(PSEUDO_THREAT_COUNT))
 				return getThreatCount();
+			
+			if (fieldTag.equals(PSEUDO_CONTRIBUTING_FACTOR_COUNT))
+				return getContributingFactorCount();
 
 			if (fieldTag.equals(PSEUDO_THREAT_WITH_TAXONOMY_COUNT))
 				return getThreatWithTaxonomyCount();
@@ -725,6 +728,13 @@ public class Dashboard extends BaseObject
 		
 		return Integer.toString(count);
 	}
+	
+	private String getContributingFactorCount()
+	{
+		int count = getProject().getCausePool().getContributingFactors().size();
+		
+		return Integer.toString(count);
+	}
 
 	private String getTargetWithSimpleViabilityCount()
 	{
@@ -820,6 +830,7 @@ public class Dashboard extends BaseObject
 		targetWithKeaCount = new PseudoStringData(PSEUDO_TARGET_WITH_KEA_COUNT);
 		targetWithSimpleViabilityCount = new PseudoStringData(PSEUDO_TARGET_WITH_SIMPLE_VIABILITY_COUNT);
 		threatCount = new PseudoStringData(PSEUDO_THREAT_COUNT);
+		contributingFactorCount = new PseudoStringData(PSEUDO_CONTRIBUTING_FACTOR_COUNT);
 		threatWithTaxonomyCount = new PseudoStringData(PSEUDO_THREAT_WITH_TAXONOMY_COUNT);
 		threatTargetLinkCount = new PseudoStringData(PSEUDO_THREAT_TARGET_LINK_COUNT);
 		threatTargetLinkWithSimpleRatingCount = new PseudoStringData(PSEUDO_THREAT_TARGET_LINK_WITH_SIMPLE_RATING_COUNT);
@@ -872,6 +883,7 @@ public class Dashboard extends BaseObject
 		addPresentationDataField(PSEUDO_TARGET_WITH_KEA_COUNT, targetWithKeaCount);
 		addPresentationDataField(PSEUDO_TARGET_WITH_SIMPLE_VIABILITY_COUNT, targetWithSimpleViabilityCount);
 		addPresentationDataField(PSEUDO_THREAT_COUNT, threatCount);
+		addPresentationDataField(PSEUDO_CONTRIBUTING_FACTOR_COUNT, contributingFactorCount);
 		addPresentationDataField(PSEUDO_THREAT_WITH_TAXONOMY_COUNT, threatWithTaxonomyCount);
 		addPresentationDataField(PSEUDO_THREAT_TARGET_LINK_COUNT, threatTargetLinkCount);
 		addPresentationDataField(PSEUDO_THREAT_TARGET_LINK_WITH_SIMPLE_RATING_COUNT, threatTargetLinkWithSimpleRatingCount);
@@ -928,6 +940,7 @@ public class Dashboard extends BaseObject
 	public static final String PSEUDO_TARGET_WITH_KEA_COUNT = "TargetWithKeaCount";
 	public static final String PSEUDO_TARGET_WITH_SIMPLE_VIABILITY_COUNT = "TargetWithSimpleViabilityCount";
 	public static final String PSEUDO_THREAT_COUNT = "ThreatCount";
+	public static final String PSEUDO_CONTRIBUTING_FACTOR_COUNT = "ContributingFactorCount";
 	public static final String PSEUDO_THREAT_WITH_TAXONOMY_COUNT = "ThreatWithTaxonomyCount";
 	public static final String PSEUDO_THREAT_TARGET_LINK_COUNT = "ThreatTargetLinkCount";
 	public static final String PSEUDO_THREAT_TARGET_LINK_WITH_SIMPLE_RATING_COUNT = "ThreatTargetLinkWithSimpleRatingCount";
@@ -982,6 +995,7 @@ public class Dashboard extends BaseObject
 	private PseudoStringData targetWithKeaCount;
 	private PseudoStringData targetWithSimpleViabilityCount;
 	private PseudoStringData threatCount;
+	private PseudoStringData contributingFactorCount;
 	private PseudoStringData threatWithTaxonomyCount;
 	private PseudoStringData threatTargetLinkCount;
 	private PseudoStringData threatTargetLinkWithSimpleRatingCount;
