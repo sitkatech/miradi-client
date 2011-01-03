@@ -160,6 +160,7 @@ public class DashboardRowDefinitionManager
 			rowDefinitions.add(new DashboardRowDefinition(EAM.text("%1 % of indicators not linked to objectives"), Dashboard.PSEUDO_INDICATORS_IRRELEVANT_TO_OBJECIVES_PERCENTAGE));
 			rowDefinitions.add(new DashboardRowDefinition(EAM.text("%1 KEA viability indicators associated with %2 targets"), Dashboard.PSEUDO_KEA_INDICATORS_COUNT, Dashboard.PSEUDO_TARGET_WITH_KEA_INDICATORS_COUNT));
 			rowDefinitions.add(new DashboardRowDefinition(EAM.text("%1 simple viability indicators associated with %2 targets"), Dashboard.PSEUDO_SIMPLE_VIABILITY_INDICATORS_COUNT, Dashboard.PSEUDO_TARGET_WITH_SIMPLE_VIABILITY_INDICATORS_COUNT));
+			rowDefinitions.add(new DashboardRowDefinition(EAM.text("%1 Direct Threat Indicators"), Dashboard.PSEUDO_DIRECT_THREAT_INDICATORS_COUNT));
 		}
 		
 		if (code.equals(OpenStandardsPlanActionsAndMonitoringQuestion.ASSESS_HUMAN_FINANCIAL_AND_OTHER_RESOURCES_CODE))
