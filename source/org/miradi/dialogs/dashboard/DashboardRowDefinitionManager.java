@@ -166,6 +166,8 @@ public class DashboardRowDefinitionManager
 		
 		if (code.equals(OpenStandardsPlanActionsAndMonitoringQuestion.ASSESS_HUMAN_FINANCIAL_AND_OTHER_RESOURCES_CODE))
 		{
+			rowDefinitions.add(new DashboardRowDefinition(EAM.text("%1 Team Members"), Dashboard.PSEUDO_TEAM_MEMBER_COUNT));
+			rowDefinitions.add(new DashboardRowDefinition(EAM.text("%1 Other Organizations"), Dashboard.PSEUDO_OTHER_ORGANIZATION_COUNT));
 		}
 		
 		if (code.equals(OpenStandardsPlanActionsAndMonitoringQuestion.ASSESS_RISKS_CODE))
