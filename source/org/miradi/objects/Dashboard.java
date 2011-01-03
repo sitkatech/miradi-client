@@ -238,7 +238,10 @@ public class Dashboard extends BaseObject
 			
 			if (fieldTag.equals(PSEUDO_EFFECTIVE_STATUS_MAP))
 				return getEffectiveStatusMapAsString();
-				
+			
+			if (fieldTag.equals(PSEUDO_CONCEPTUAL_MODEL_COUNT))
+				return getConceptualModelCount();
+			
 			return super.getPseudoData(fieldTag);
 		}
 		catch (Exception e)
@@ -248,6 +251,13 @@ public class Dashboard extends BaseObject
 		}
 	}
 	
+	private String getConceptualModelCount()
+	{
+		int count = getProject().getConceptualModelDiagramPool().size();
+		
+		return Integer.toString(count);
+	}
+
 	public String getAutomaticEffectiveProgressCode(String codeToUse) throws Exception
 	{
 		CodeList allThirdLevelCodes = getDashboardRowDefinitionManager().getThirdLevelCodes();
@@ -872,6 +882,8 @@ public class Dashboard extends BaseObject
 		indicatorsAndMethodsWithProgressReportPercent = new PseudoStringData(PSEUDO_INDICATORS_AND_METHODS_WITH_PROGRESS_REPORT_PERCENT);
 		targetWithGoalsCount = new PseudoStringData(PSEUDO_TARGETS_WITH_GOALS_COUNT);
 		effectiveStatusMap = new PseudoStringChoiceMapData(PSEUDO_EFFECTIVE_STATUS_MAP);
+		conceptualModelCount = new PseudoStringData(PSEUDO_CONCEPTUAL_MODEL_COUNT);
+		allFactorCount = new PseudoStringData(PSEUDO_ALL_FACTOR_COUNT);
 		userStatusChoiceMap = new StringChoiceMapData(TAG_USER_STATUS_CHOICE_MAP);
 		userCommentsMap = new StringStringMapData(TAG_USER_COMMENTS_MAP);
 		needsAttentionMap = new StringCodeListMapData(TAG_NEEDS_ATTENTION_MAP);
@@ -925,6 +937,8 @@ public class Dashboard extends BaseObject
 		addPresentationDataField(PSEUDO_INDICATORS_AND_METHODS_WITH_PROGRESS_REPORT_PERCENT, indicatorsAndMethodsWithProgressReportPercent);
 		addPresentationDataField(PSEUDO_TARGETS_WITH_GOALS_COUNT, targetWithGoalsCount);
 		addPresentationDataField(PSEUDO_EFFECTIVE_STATUS_MAP, effectiveStatusMap);
+		addPresentationDataField(PSEUDO_CONCEPTUAL_MODEL_COUNT, conceptualModelCount);
+		addPresentationDataField(PSEUDO_ALL_FACTOR_COUNT, allFactorCount);
 		addPresentationDataField(TAG_USER_STATUS_CHOICE_MAP, userStatusChoiceMap);
 		addPresentationDataField(TAG_USER_COMMENTS_MAP, userCommentsMap);
 		addPresentationDataField(TAG_NEEDS_ATTENTION_MAP, needsAttentionMap);
@@ -982,6 +996,8 @@ public class Dashboard extends BaseObject
 	public static final String PSEUDO_INDICATORS_AND_METHODS_WITH_PROGRESS_REPORT_COUNT = "IndicatorsAndMethodsWithProgressReportCount";
 	public static final String PSEUDO_INDICATORS_AND_METHODS_WITH_PROGRESS_REPORT_PERCENT = "IndicatorsAndMethodsWithProgressReportPercent";
 	public static final String PSEUDO_EFFECTIVE_STATUS_MAP = "effectiveStatusMap";
+	public static final String PSEUDO_CONCEPTUAL_MODEL_COUNT = "ConceptualModelCount";
+	public static final String PSEUDO_ALL_FACTOR_COUNT = " AllFactorCount";
 	public static final String TAG_USER_STATUS_CHOICE_MAP = "UserStatusChoiceMap";
 	public static final String TAG_USER_COMMENTS_MAP = "UserStatusCommentsMap";
 	public static final String TAG_NEEDS_ATTENTION_MAP = "NeedsAttentionMap";
@@ -1036,6 +1052,8 @@ public class Dashboard extends BaseObject
 	private PseudoStringData indicatorsAndMethodsWithProgressReportCount;
 	private PseudoStringData indicatorsAndMethodsWithProgressReportPercent;
 	private PseudoStringData targetWithGoalsCount;
+	private PseudoStringData conceptualModelCount;
+	private PseudoStringData allFactorCount;
 	private StringChoiceMapData userStatusChoiceMap;
 	private StringStringMapData userCommentsMap;
 	private StringCodeListMapData needsAttentionMap;
