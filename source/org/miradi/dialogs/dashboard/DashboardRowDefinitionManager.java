@@ -140,7 +140,7 @@ public class DashboardRowDefinitionManager
 		if (code.equals(OpenStandardsPlanActionsAndMonitoringQuestion.FINALIZE_STRATEGIC_PLAN_CODE))
 		{
 			rowDefinitions.add(new DashboardRowDefinition(EAM.text("%1 % of Objectives associated with 1 or more Strategies"), Dashboard.PSEUDO_OBJECTIVES_RELEVANT_TO_STRATEGIES_PERCENTAGE));		
-			rowDefinitions.add(new DashboardRowDefinition(EAM.text("%1 Strategies that do not contribute to an Objective"), Dashboard.PSEUDO_IRRELEVANT_STRATEGIES_TO_OBJECTIVES_COUNT));
+			rowDefinitions.add(new DashboardRowDefinition(EAM.text("%1 % of Strategies associated with 1 or more Objectives"), Dashboard.PSEUDO_STRATEGIES_RELEVANT_TO_OBJECTIVES_PERCENTAGE));
 		}
 		
 		if (code.equals(OpenStandardsPlanActionsAndMonitoringQuestion.FINALIZE_MONITORING_PLAN_CODE))
