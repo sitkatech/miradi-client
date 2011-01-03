@@ -40,6 +40,7 @@ public class ThreatRatingMultiPropertiesPanel extends ObjectDataInputPanel
 	public ThreatRatingMultiPropertiesPanel(MainWindow mainWindowToUse, ObjectPicker objectPickerToUse) throws Exception
 	{
 		super(mainWindowToUse.getProject(), ORef.INVALID);
+		
 		mainWindow = mainWindowToUse;
 		objectPicker = objectPickerToUse;
 		cardLayout = new CardLayout();
