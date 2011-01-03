@@ -260,6 +260,9 @@ public class Dashboard extends BaseObject
 			if (fieldTag.equals(PSEUDO_DIRECT_THREAT_INDICATORS_COUNT))
 				return getDirectThreatIndicatorsCount();
 			
+			if (fieldTag.equals(PSEUDO_THREAT_REDUCTION_RESULT_INDICATORS_COUNT))
+				return getThreatReductionResultIndicatorsCount();
+					
 			return super.getPseudoData(fieldTag);
 		}
 		catch (Exception e)
@@ -269,6 +272,22 @@ public class Dashboard extends BaseObject
 		}
 	}
 	
+	private String getThreatReductionResultIndicatorsCount()
+	{
+		int factorType = ThreatReductionResult.getObjectType();
+		ORefSet factorRefs = getProject().getPool(factorType).getRefSet();
+		ORefSet factorsWithIndicators = new ORefSet();
+		for (ORef factorRef : factorRefs)
+		{
+			Factor factor = Factor.findFactor(getProject(), factorRef);
+			if (factor.getOnlyDirectIndicatorRefs().hasRefs())
+				factorsWithIndicators.add(factorRef);
+			
+		}
+		
+		return Integer.toString(factorsWithIndicators.size());
+	}
+
 	private String getDirectThreatIndicatorsCount()
 	{
 		Vector<Cause> directThreats = getProject().getCausePool().getDirectThreatsAsVector();
@@ -999,6 +1018,8 @@ public class Dashboard extends BaseObject
 		simpleViabilityIndicatorsCount = new PseudoStringData(PSEUDO_SIMPLE_VIABILITY_INDICATORS_COUNT);
 		targetWithSimpleViabilityIndicatorsCount = new PseudoStringData(PSEUDO_TARGET_WITH_SIMPLE_VIABILITY_INDICATORS_COUNT);
 		directThreatIndicatorsCount = new PseudoStringData(PSEUDO_DIRECT_THREAT_INDICATORS_COUNT);
+		threatReductionResultIndicatorsCount = new PseudoStringData(PSEUDO_THREAT_REDUCTION_RESULT_INDICATORS_COUNT);
+		
 		userStatusChoiceMap = new StringChoiceMapData(TAG_USER_STATUS_CHOICE_MAP);
 		userCommentsMap = new StringStringMapData(TAG_USER_COMMENTS_MAP);
 		needsAttentionMap = new StringCodeListMapData(TAG_NEEDS_ATTENTION_MAP);
@@ -1060,6 +1081,8 @@ public class Dashboard extends BaseObject
 		addPresentationDataField(PSEUDO_SIMPLE_VIABILITY_INDICATORS_COUNT, simpleViabilityIndicatorsCount);
 		addPresentationDataField(PSEUDO_TARGET_WITH_SIMPLE_VIABILITY_INDICATORS_COUNT, targetWithSimpleViabilityIndicatorsCount);
 		addPresentationDataField(PSEUDO_DIRECT_THREAT_INDICATORS_COUNT, directThreatIndicatorsCount);
+		addPresentationDataField(PSEUDO_THREAT_REDUCTION_RESULT_INDICATORS_COUNT, threatReductionResultIndicatorsCount);
+		
 		addPresentationDataField(TAG_USER_STATUS_CHOICE_MAP, userStatusChoiceMap);
 		addPresentationDataField(TAG_USER_COMMENTS_MAP, userCommentsMap);
 		addPresentationDataField(TAG_NEEDS_ATTENTION_MAP, needsAttentionMap);
@@ -1125,6 +1148,8 @@ public class Dashboard extends BaseObject
 	public static final String PSEUDO_SIMPLE_VIABILITY_INDICATORS_COUNT = "simpleViabilityIndicatorsCount";
 	public static final String PSEUDO_TARGET_WITH_SIMPLE_VIABILITY_INDICATORS_COUNT = "targetWithSimpleViabilityIndicatorsCount";
 	public static final String PSEUDO_DIRECT_THREAT_INDICATORS_COUNT = "DirectThreatIndicatorsCount";
+	public static final String PSEUDO_THREAT_REDUCTION_RESULT_INDICATORS_COUNT = "ThreatReductionResultIndicatorsCount";
+	
 	public static final String TAG_USER_STATUS_CHOICE_MAP = "UserStatusChoiceMap";
 	public static final String TAG_USER_COMMENTS_MAP = "UserStatusCommentsMap";
 	public static final String TAG_NEEDS_ATTENTION_MAP = "NeedsAttentionMap";
@@ -1187,6 +1212,7 @@ public class Dashboard extends BaseObject
 	private PseudoStringData simpleViabilityIndicatorsCount;
 	private PseudoStringData targetWithSimpleViabilityIndicatorsCount;
 	private PseudoStringData directThreatIndicatorsCount;
+	private PseudoStringData threatReductionResultIndicatorsCount;
 	private StringChoiceMapData userStatusChoiceMap;
 	private StringStringMapData userCommentsMap;
 	private StringCodeListMapData needsAttentionMap;
