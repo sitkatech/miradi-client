@@ -38,6 +38,7 @@ public class StressBasedThreatRatingPropertiesPanel extends ObjectDataInputPanel
 	public StressBasedThreatRatingPropertiesPanel(MainWindow mainWindowToUse, ObjectPicker objectPickerToUse) throws Exception
 	{
 		super(mainWindowToUse.getProject(), ObjectType.THREAT_STRESS_RATING, BaseId.INVALID);
+		
 		setLayout(new OneColumnGridLayout());
 		
 		factorsPanel = new LinkPropertiesFactorsSubpanel(getProject(), mainWindowToUse.getActions());
