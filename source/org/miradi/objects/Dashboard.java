@@ -40,6 +40,7 @@ import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.OpenStandardsDynamicProgressStatuQuestion;
+import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.StrategyRatingSummaryQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
@@ -265,6 +266,9 @@ public class Dashboard extends BaseObject
 			
 			if (fieldTag.equals(PSEUDO_OTHER_ORGANIZATION_COUNT))
 				return getObjectPoolCountAsString(Organization.getObjectType());
+			
+			if (fieldTag.equals(PSEUDO_INDICATORS_WITH_DESIRED_FUTURE_STATUS_SPECIFIED_PERCENTAGE))
+				return getIndicatorsWithDesiredFutureStatusSpecifiedPercentage();
 					
 			return super.getPseudoData(fieldTag);
 		}
@@ -275,6 +279,21 @@ public class Dashboard extends BaseObject
 		}
 	}
 	
+	private String getIndicatorsWithDesiredFutureStatusSpecifiedPercentage()
+	{
+		Indicator[] indicators = getProject().getIndicatorPool().getAllIndicators();
+		ORefSet indicatorsWithFutureStatusSpecified = new ORefSet();
+		for (int index = 0; index < indicators.length; ++index)
+		{
+			Indicator indicator = indicators[index];
+			String futureStatusRating = indicator.getFutureStatusRating();
+			if (!futureStatusRating.equals(StatusQuestion.UNSPECIFIED))
+				indicatorsWithFutureStatusSpecified.add(indicator.getRef());
+		}
+		
+		return calculatePercentage(indicatorsWithFutureStatusSpecified.size(), indicators.length);
+	}
+
 	private String getThreatReductionResultIndicatorsCount()
 	{
 		int factorType = ThreatReductionResult.getObjectType();
@@ -1024,6 +1043,7 @@ public class Dashboard extends BaseObject
 		directThreatIndicatorsCount = new PseudoStringData(PSEUDO_DIRECT_THREAT_INDICATORS_COUNT);
 		threatReductionResultIndicatorsCount = new PseudoStringData(PSEUDO_THREAT_REDUCTION_RESULT_INDICATORS_COUNT);
 		otherOrganizationCount = new PseudoStringData(PSEUDO_OTHER_ORGANIZATION_COUNT);
+		indicatorsWithFutureStatusSpecifiedPercentage = new PseudoStringData(PSEUDO_INDICATORS_WITH_DESIRED_FUTURE_STATUS_SPECIFIED_PERCENTAGE);
 		
 		userStatusChoiceMap = new StringChoiceMapData(TAG_USER_STATUS_CHOICE_MAP);
 		userCommentsMap = new StringStringMapData(TAG_USER_COMMENTS_MAP);
@@ -1088,6 +1108,7 @@ public class Dashboard extends BaseObject
 		addPresentationDataField(PSEUDO_DIRECT_THREAT_INDICATORS_COUNT, directThreatIndicatorsCount);
 		addPresentationDataField(PSEUDO_THREAT_REDUCTION_RESULT_INDICATORS_COUNT, threatReductionResultIndicatorsCount);
 		addPresentationDataField(PSEUDO_OTHER_ORGANIZATION_COUNT, otherOrganizationCount);
+		addPresentationDataField(PSEUDO_INDICATORS_WITH_DESIRED_FUTURE_STATUS_SPECIFIED_PERCENTAGE, indicatorsWithFutureStatusSpecifiedPercentage);
 		
 		addPresentationDataField(TAG_USER_STATUS_CHOICE_MAP, userStatusChoiceMap);
 		addPresentationDataField(TAG_USER_COMMENTS_MAP, userCommentsMap);
@@ -1156,6 +1177,7 @@ public class Dashboard extends BaseObject
 	public static final String PSEUDO_DIRECT_THREAT_INDICATORS_COUNT = "DirectThreatIndicatorsCount";
 	public static final String PSEUDO_THREAT_REDUCTION_RESULT_INDICATORS_COUNT = "ThreatReductionResultIndicatorsCount";
 	public static final String PSEUDO_OTHER_ORGANIZATION_COUNT = "OtherOrganizationCount";
+	public static final String PSEUDO_INDICATORS_WITH_DESIRED_FUTURE_STATUS_SPECIFIED_PERCENTAGE = "IndicatorsWithDesiredFutureStatusSpecifiedPercentage";
 	
 	public static final String TAG_USER_STATUS_CHOICE_MAP = "UserStatusChoiceMap";
 	public static final String TAG_USER_COMMENTS_MAP = "UserStatusCommentsMap";
@@ -1221,6 +1243,7 @@ public class Dashboard extends BaseObject
 	private PseudoStringData directThreatIndicatorsCount;
 	private PseudoStringData threatReductionResultIndicatorsCount;
 	private PseudoStringData otherOrganizationCount;
+	private PseudoStringData indicatorsWithFutureStatusSpecifiedPercentage;
 	
 	private StringChoiceMapData userStatusChoiceMap;
 	private StringStringMapData userCommentsMap;
