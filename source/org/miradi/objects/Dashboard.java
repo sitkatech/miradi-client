@@ -251,6 +251,12 @@ public class Dashboard extends BaseObject
 			if (fieldTag.equals(PSEUDO_TARGET_WITH_KEA_INDICATORS_COUNT))
 				return getTargetWithKeaInidicatorsCount();
 			
+			if (fieldTag.equals(PSEUDO_SIMPLE_VIABILITY_INDICATORS_COUNT))
+				return getSimpleViabilityIndicatorsCount();
+			
+			if (fieldTag.equals(PSEUDO_TARGET_WITH_SIMPLE_VIABILITY_INDICATORS_COUNT))
+				return getNumberOfTargetsWithSimpleViabilityIndicators();
+			
 			return super.getPseudoData(fieldTag);
 		}
 		catch (Exception e)
@@ -260,6 +266,33 @@ public class Dashboard extends BaseObject
 		}
 	}
 	
+	private String getNumberOfTargetsWithSimpleViabilityIndicators()
+	{
+		ORefSet targetRefs = getProject().getTargetPool().getRefSet();
+		ORefSet targetWithSimpleViabilityIndicators = new ORefSet();
+		for (ORef targetRef : targetRefs)
+		{
+			Target target = Target.find(getProject(), targetRef);
+			if (target.getDirectOrIndirectIndicatorRefs().hasRefs())
+				targetWithSimpleViabilityIndicators.add(targetRef);
+		}
+		
+		return Integer.toString(targetWithSimpleViabilityIndicators.size());
+	}
+
+	private String getSimpleViabilityIndicatorsCount()
+	{
+		ORefSet targetRefs = getProject().getTargetPool().getRefSet();
+		ORefSet simpleViabilityIndicatorsRefs = new ORefSet();
+		for (ORef targetRef : targetRefs)
+		{
+			Target target = Target.find(getProject(), targetRef);
+			simpleViabilityIndicatorsRefs.addAllRefs(target.getOnlyDirectIndicatorRefs());
+		}
+		
+		return Integer.toString(simpleViabilityIndicatorsRefs.size());
+	}
+
 	private String getTargetWithKeaInidicatorsCount()
 	{
 		ORefSet targetRefs = getProject().getTargetPool().getRefSet();
@@ -948,6 +981,8 @@ public class Dashboard extends BaseObject
 		indicatorsRelevantToObjectivesPercentage = new PseudoStringData(PSEUDO_INDICATORS_RELEVANT_TO_OBJECTIVES_PERCENTAGE);
 		indicatorsIrrelevantToObjectivesPercentage = new PseudoStringData(PSEUDO_INDICATORS_IRRELEVANT_TO_OBJECIVES_PERCENTAGE);
 		targetsWithKeaIndicatorsCount = new PseudoStringData(PSEUDO_TARGET_WITH_KEA_INDICATORS_COUNT);
+		simpleViabilityIndicatorsCount = new PseudoStringData(PSEUDO_SIMPLE_VIABILITY_INDICATORS_COUNT);
+		targetWithSimpleViabilityIndicatorsCount = new PseudoStringData(PSEUDO_TARGET_WITH_SIMPLE_VIABILITY_INDICATORS_COUNT);
 		userStatusChoiceMap = new StringChoiceMapData(TAG_USER_STATUS_CHOICE_MAP);
 		userCommentsMap = new StringStringMapData(TAG_USER_COMMENTS_MAP);
 		needsAttentionMap = new StringCodeListMapData(TAG_NEEDS_ATTENTION_MAP);
@@ -1006,6 +1041,8 @@ public class Dashboard extends BaseObject
 		addPresentationDataField(PSEUDO_INDICATORS_RELEVANT_TO_OBJECTIVES_PERCENTAGE, indicatorsRelevantToObjectivesPercentage);
 		addPresentationDataField(PSEUDO_INDICATORS_IRRELEVANT_TO_OBJECIVES_PERCENTAGE, indicatorsIrrelevantToObjectivesPercentage);
 		addPresentationDataField(PSEUDO_TARGET_WITH_KEA_INDICATORS_COUNT, targetsWithKeaIndicatorsCount);
+		addPresentationDataField(PSEUDO_SIMPLE_VIABILITY_INDICATORS_COUNT, simpleViabilityIndicatorsCount);
+		addPresentationDataField(PSEUDO_TARGET_WITH_SIMPLE_VIABILITY_INDICATORS_COUNT, targetWithSimpleViabilityIndicatorsCount);
 		addPresentationDataField(TAG_USER_STATUS_CHOICE_MAP, userStatusChoiceMap);
 		addPresentationDataField(TAG_USER_COMMENTS_MAP, userCommentsMap);
 		addPresentationDataField(TAG_NEEDS_ATTENTION_MAP, needsAttentionMap);
@@ -1068,6 +1105,8 @@ public class Dashboard extends BaseObject
 	public static final String PSEUDO_INDICATORS_RELEVANT_TO_OBJECTIVES_PERCENTAGE = "IndicatorsRelevantToObjectivesPercentage";
 	public static final String PSEUDO_INDICATORS_IRRELEVANT_TO_OBJECIVES_PERCENTAGE = "IndicatorsIrrelevantToObjectivesPercentage";
 	public static final String PSEUDO_TARGET_WITH_KEA_INDICATORS_COUNT = "TargetWithKeaIndicatorsCount";
+	public static final String PSEUDO_SIMPLE_VIABILITY_INDICATORS_COUNT = "simpleViabilityIndicatorsCount";
+	public static final String PSEUDO_TARGET_WITH_SIMPLE_VIABILITY_INDICATORS_COUNT = "targetWithSimpleViabilityIndicatorsCount";
 	public static final String TAG_USER_STATUS_CHOICE_MAP = "UserStatusChoiceMap";
 	public static final String TAG_USER_COMMENTS_MAP = "UserStatusCommentsMap";
 	public static final String TAG_NEEDS_ATTENTION_MAP = "NeedsAttentionMap";
@@ -1127,6 +1166,8 @@ public class Dashboard extends BaseObject
 	private PseudoStringData indicatorsRelevantToObjectivesPercentage;
 	private PseudoStringData indicatorsIrrelevantToObjectivesPercentage;
 	private PseudoStringData targetsWithKeaIndicatorsCount;
+	private PseudoStringData simpleViabilityIndicatorsCount;
+	private PseudoStringData targetWithSimpleViabilityIndicatorsCount;
 	private StringChoiceMapData userStatusChoiceMap;
 	private StringStringMapData userCommentsMap;
 	private StringCodeListMapData needsAttentionMap;
