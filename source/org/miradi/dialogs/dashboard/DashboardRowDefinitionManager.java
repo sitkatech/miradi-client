@@ -150,7 +150,6 @@ public class DashboardRowDefinitionManager
 		
 		if (code.equals(OpenStandardsPlanActionsAndMonitoringQuestion.DEFINE_AUDIENCES_AND_INFORMATION_NEEDS_CODE))
 		{
-			rowDefinitions.add(new DashboardRowDefinition(EAM.text("Use Comments Field?")));
 		}
 		
 		if (code.equals(OpenStandardsPlanActionsAndMonitoringQuestion.DEFINE_INDICATORS_CODE))
