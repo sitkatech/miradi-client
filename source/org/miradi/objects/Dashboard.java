@@ -167,8 +167,8 @@ public class Dashboard extends BaseObject
 			if (fieldTag.equals(PSEUDO_FACTOR_INDICATORS_COUNT))
 				return getFactorIndicatorCount();
 			
-			if (fieldTag.equals(PSEUDO_OBJECTIVES_RELEVANT_TO_INDICATORS_PERCENTAGE))
-				return getObjectiveRelevantToIndicatorsPercentage();
+			if (fieldTag.equals(PSEUDO_OBJECTIVES_RELEVANT_TO_INDICATORS_COUNT))
+				return getObjectiveRelevantToIndicatorsCount();
 			
 			if (fieldTag.equals(PSEUDO_PROJECT_PLANNING_START_DATE))
 				return getProject().getProjectCalendar().getPlanningStartDate();
@@ -642,7 +642,7 @@ public class Dashboard extends BaseObject
 		return Integer.toString(strategyWithActivities.size());
 	}
 
-	private String getObjectiveRelevantToIndicatorsPercentage() throws Exception
+	private String getObjectiveRelevantToIndicatorsCount() throws Exception
 	{
 		ORefSet objectiveRefs = getProject().getObjectivePool().getRefSet();
 		ORefSet objectivesRelevantToIndictors = new ORefSet();
@@ -653,7 +653,7 @@ public class Dashboard extends BaseObject
 				objectivesRelevantToIndictors.add(objectiveRef);
 		}
 		
-		return calculateRelevantPercentage(objectivesRelevantToIndictors, objectiveRefs);
+		return Integer.toString(objectivesRelevantToIndictors.size());
 	}
 
 	private String getFactorIndicatorCount()
@@ -989,7 +989,7 @@ public class Dashboard extends BaseObject
 		strategiesRelevantToObjectivesPercentage = new PseudoStringData(PSEUDO_STRATEGIES_RELEVANT_TO_OBJECTIVES_PERCENTAGE);
 		keaIndicatorsCount = new PseudoStringData(PSEUDO_KEA_INDICATORS_COUNT);
 		factorIndicatorsCount = new PseudoStringData(PSEUDO_FACTOR_INDICATORS_COUNT);
-		objectivesRelevantToIndicatorsPercentage = new PseudoStringData(PSEUDO_OBJECTIVES_RELEVANT_TO_INDICATORS_PERCENTAGE);
+		objectivesRelevantToIndicatorsCount = new PseudoStringData(PSEUDO_OBJECTIVES_RELEVANT_TO_INDICATORS_COUNT);
 		projectPlanningStartDate = new PseudoStringData(PSEUDO_PROJECT_PLANNING_START_DATE);
 		projectPlanningEndDate = new PseudoStringData(PSEUDO_PROJECT_PLANNING_END_DATE);
 		strategiesWithActivitiesCount = new PseudoStringData(PSEUDO_STRATEGIES_WITH_ACTIVITIES_COUNT);
@@ -1053,7 +1053,7 @@ public class Dashboard extends BaseObject
 		addPresentationDataField(PSEUDO_STRATEGIES_RELEVANT_TO_OBJECTIVES_PERCENTAGE, strategiesRelevantToObjectivesPercentage);
 		addPresentationDataField(PSEUDO_KEA_INDICATORS_COUNT, keaIndicatorsCount);
 		addPresentationDataField(PSEUDO_FACTOR_INDICATORS_COUNT, factorIndicatorsCount);
-		addPresentationDataField(PSEUDO_OBJECTIVES_RELEVANT_TO_INDICATORS_PERCENTAGE, objectivesRelevantToIndicatorsPercentage);
+		addPresentationDataField(PSEUDO_OBJECTIVES_RELEVANT_TO_INDICATORS_COUNT, objectivesRelevantToIndicatorsCount);
 		addPresentationDataField(PSEUDO_PROJECT_PLANNING_START_DATE, projectPlanningStartDate);
 		addPresentationDataField(PSEUDO_PROJECT_PLANNING_END_DATE, projectPlanningEndDate);
 		addPresentationDataField(PSEUDO_STRATEGIES_WITH_ACTIVITIES_COUNT, strategiesWithActivitiesCount);
@@ -1122,7 +1122,7 @@ public class Dashboard extends BaseObject
 	public static final String PSEUDO_STRATEGIES_RELEVANT_TO_OBJECTIVES_PERCENTAGE = "IrrelenvatStratgiesToObjectivesPercentage";
 	public static final String PSEUDO_KEA_INDICATORS_COUNT = "KeaIndicatorsCount";
 	public static final String PSEUDO_FACTOR_INDICATORS_COUNT = "FactorIndicatorsCount";
-	public static final String PSEUDO_OBJECTIVES_RELEVANT_TO_INDICATORS_PERCENTAGE = "ObjectivesRelevantToIndicatorsPercentage";
+	public static final String PSEUDO_OBJECTIVES_RELEVANT_TO_INDICATORS_COUNT = "ObjectivesRelevantToIndicatorsCount";
 	public static final String PSEUDO_PROJECT_PLANNING_START_DATE = "ProjectPlanningStartDate";
 	public static final String PSEUDO_PROJECT_PLANNING_END_DATE = "ProjectPlanningEndDate";
 	public static final String PSEUDO_STRATEGIES_WITH_ACTIVITIES_COUNT = "StrategiesWithActivitiesCount";
@@ -1187,7 +1187,7 @@ public class Dashboard extends BaseObject
 	private PseudoStringData strategiesRelevantToObjectivesPercentage;
 	private PseudoStringData keaIndicatorsCount;
 	private PseudoStringData factorIndicatorsCount;
-	private PseudoStringData objectivesRelevantToIndicatorsPercentage;
+	private PseudoStringData objectivesRelevantToIndicatorsCount;
 	private PseudoStringData projectPlanningStartDate;
 	private PseudoStringData projectPlanningEndDate;
 	private PseudoStringData strategiesWithActivitiesCount;
