@@ -238,7 +238,7 @@ public class DashboardRowDefinitionManager
 
 		if (code.equals(OpenStandardsConceptualizeQuestion.CREATE_INITIAL_CONCEPTUAL_MODEL_CODE))
 		{
-			addCreateInitialConceptualModel();
+			rowDefinitions.add(new DashboardRowDefinition(EAM.text("%1 Conceptual Model Pages created"), Dashboard.PSEUDO_CONCEPTUAL_MODEL_COUNT));
 		}
 		
 		if (code.equals(OpenStandardsConceptualizeQuestion.GROUND_THRUTH_AND_REVISE_MODEL_CODE))
@@ -258,10 +258,6 @@ public class DashboardRowDefinitionManager
 	}
 
 	private void addAssessStakeholders()
-	{
-	}
-
-	private void addCreateInitialConceptualModel()
 	{
 	}
 
