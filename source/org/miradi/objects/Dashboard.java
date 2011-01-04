@@ -160,7 +160,7 @@ public class Dashboard extends BaseObject
 				return getRelevantObjectivesRelevantToStrategiesPercentage();
 			
 			if (fieldTag.equals(PSEUDO_STRATEGIES_RELEVANT_TO_OBJECTIVES_PERCENTAGE))
-				return getStratiesReleventToObjectivesPercentage();
+				return getStrategiesReleventToObjectivesPercentage();
 			
 			if (fieldTag.equals(PSEUDO_KEA_INDICATORS_COUNT))
 				return getKeaIndicatorsCount();
@@ -703,7 +703,7 @@ public class Dashboard extends BaseObject
 		return keaIndicatorRefs;
 	}
 
-	private String getStratiesReleventToObjectivesPercentage() throws Exception
+	private String getStrategiesReleventToObjectivesPercentage() throws Exception
 	{
 		Vector<Strategy> strategies = getProject().getStrategyPool().getNonDraftStrategiesAsVector();
 		Vector<Strategy> relevantStrategiesToObjectives = new Vector<Strategy>();
