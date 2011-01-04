@@ -26,6 +26,7 @@ import org.miradi.dialogs.planning.propertiesPanel.BlankPropertiesPanel;
 import org.miradi.dialogs.strategicPlan.IndicatorPropertiesPanelWithoutBudgetPanels;
 import org.miradi.dialogs.viability.AbstractIndicatorPropertiesPanel;
 import org.miradi.dialogs.viability.IndicatorFutureStatusSubPanel;
+import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Goal;
@@ -57,7 +58,7 @@ public class SimpleViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 	
 	public String getPanelDescription()
 	{
-		return PANEL_DESCRIPTION;
+		return EAM.text("Planning Properties Panel");
 	}
 
 	@Override
@@ -85,8 +86,6 @@ public class SimpleViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 		
 		return blankPropertiesPanel;
 	}
-	
-	public static final String PANEL_DESCRIPTION = "Planning Properties Panel";
 	
 	private AbstractIndicatorPropertiesPanel indicatorPropertiesPanel;
 	private BlankPropertiesPanel blankPropertiesPanel;
