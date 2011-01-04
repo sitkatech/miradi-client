@@ -105,7 +105,10 @@ public abstract class OverlaidObjectDataInputPanel extends AbstractObjectDataInp
 		repaint();
 	}
 
-
+	protected CardLayout getCardLayout()
+	{
+		return cardLayout;
+	}
 		
 	abstract protected AbstractObjectDataInputPanel findPanel(ORef[] orefsToUse);
 
