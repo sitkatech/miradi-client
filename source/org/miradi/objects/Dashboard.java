@@ -381,10 +381,9 @@ public class Dashboard extends BaseObject
 
 	private String getIndicatorsRelevantToObjectivesPercentage() throws Exception
 	{
-		ORefSet indicatorRefs = getProject().getIndicatorPool().getRefSet();
 		ORefSet indicatorsRelevantToObjectives = getIndicatorsRelevantToObjectives();
 		
-		return calculatePercentage(indicatorsRelevantToObjectives.size(), indicatorRefs.size());
+		return calculatePercentage(indicatorsRelevantToObjectives.size(), getProject().getIndicatorPool().size());
 	}
 
 	private ORefSet getIndicatorsRelevantToObjectives() throws Exception
