@@ -27,6 +27,7 @@ import org.miradi.dialogs.base.DisposablePanelWithDescription;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.planning.propertiesPanel.BlankPropertiesPanel;
 import org.miradi.main.CommandExecutedEvent;
+import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
@@ -87,7 +88,7 @@ public class ThreatRatingMultiPropertiesPanel extends ObjectDataInputPanel
 	@Override
 	public String getPanelDescription()
 	{
-		return PANEL_DESCRIPTION;
+		return EAM.text("Threat Rating Properties Panel");
 	}
 
 	@Override
@@ -137,8 +138,6 @@ public class ThreatRatingMultiPropertiesPanel extends ObjectDataInputPanel
 
 		return simplePropertiesPanel;
 	}
-	
-	public static final String PANEL_DESCRIPTION = "Threat Rating Properties Panel";
 	
 	private ObjectPicker objectPicker;
 	private CardLayout cardLayout;
