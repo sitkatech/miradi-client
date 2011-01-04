@@ -41,29 +41,8 @@ public class SpellCheckerManager
 		
 		String english = Translation.DEFAULT_LANGUAGE_CODE;
 		URL dictionaryFolderURL = ResourcesHandler.getEnglishResourceURL("");
-		URL dictionaryURL = new URL(dictionaryFolderURL, getDictionaryName(english));
-		if(dictionaryURL != null)
-		{
-			SpellChecker.registerDictionaries(dictionaryFolderURL, english, english);
-			SpellChecker.setUserDictionaryProvider(new MiradiUserDictionary());
-		}
-		else
-		{
-			EAM.logWarning("English dictionary not found");
-		}
-		// TODO: Probably remove this code, assuming we choose a different mechanism
-		// for loading non-English dictionaries
-//				String dictionaryName = getDictionaryName(languageCode);
-//				ZipFile languagePackZip = new ZipFile(new File(jarFile.toURI()));
-//				ZipEntry dictionaryEntry = languagePackZip.getEntry(dictionaryName);
-//				if(dictionaryEntry != null)
-//					initializeSpellChecker(new URL("jar:" + jarFile.toURI().toURL() + "!/"), languageCode);
-	}
-
-	private static String getDictionaryName(String languageCode)
-	{
-		String dictionaryName = "dictionary_" + languageCode + ".ortho";
-		return dictionaryName;
+		SpellChecker.registerDictionaries(dictionaryFolderURL, english, english);
+		SpellChecker.setUserDictionaryProvider(new MiradiUserDictionary());
 	}
 	
 }
