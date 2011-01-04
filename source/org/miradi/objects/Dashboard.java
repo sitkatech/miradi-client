@@ -330,7 +330,7 @@ public class Dashboard extends BaseObject
 		for (ORef targetRef : targetRefs)
 		{
 			Target target = Target.find(getProject(), targetRef);
-			if (target.getDirectOrIndirectIndicatorRefs().hasRefs())
+			if (target.getOnlyDirectIndicatorRefs().hasRefs())
 				targetWithSimpleViabilityIndicators.add(targetRef);
 		}
 		
