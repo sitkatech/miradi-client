@@ -116,7 +116,7 @@ public class ThreatRatingMultiPropertiesPanel extends ObjectDataInputPanel
 		cardLayout.show(this, findPanel().getPanelDescription());
 	}
 	
-	private DisposablePanelWithDescription findPanel()
+	private AbstractObjectDataInputPanel findPanel()
 	{
 		ORef causeRef = getRefForType(Cause.getObjectType());
 		if(causeRef.isInvalid())
