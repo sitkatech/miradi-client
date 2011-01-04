@@ -66,9 +66,6 @@ public  class BufferedImageFactory
 		realizeComponent(swingComponent);
 
 		Rectangle2D bounds = new Rectangle(swingComponent.getPreferredSize());
-		if (bounds == null) 
-			return null;
-		
 		toScreen(bounds);
 		int width = (int) bounds.getWidth() + 2 * inset;
 		int height = (int) bounds.getHeight() + 2 * inset;
