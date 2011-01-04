@@ -356,17 +356,25 @@ public class Dashboard extends BaseObject
 		ORefSet targetWithKeaIndicators = new ORefSet();
 		for (ORef targetRef : targetRefs)
 		{
-			Target target = Target.find(getProject(), targetRef);
-			ORefSet keaRefs = new ORefSet(target.getKeyEcologicalAttributeRefs());
-			for (ORef keaRef : keaRefs)
-			{
-				KeyEcologicalAttribute kea = KeyEcologicalAttribute.find(getProject(), keaRef);
-				if (kea.getIndicatorRefs().hasRefs())
-					targetWithKeaIndicators.add(targetRef);
-			}
+			if (hasKeaWithIndicators(targetRef))
+			targetWithKeaIndicators.add(targetRef);
 		}
 		
 		return Integer.toString(targetWithKeaIndicators.size());
+	}
+
+	private boolean hasKeaWithIndicators(ORef targetRef)
+	{
+		Target target = Target.find(getProject(), targetRef);
+		ORefSet keaRefs = new ORefSet(target.getKeyEcologicalAttributeRefs());
+		for (ORef keaRef : keaRefs)
+		{
+			KeyEcologicalAttribute kea = KeyEcologicalAttribute.find(getProject(), keaRef);
+			if (kea.getIndicatorRefs().hasRefs())
+				return true;
+		}
+		
+		return false;
 	}
 
 	private String getIndicatorsIrrelevantToObjectivesPercentage() throws Exception
