@@ -71,6 +71,7 @@ public class IndicatorFutureStatusSubPanel extends ObjectDataInputPanel
 		updateFieldsFromProject();
 	}
 	
+	@Override
 	public void setObjectRefs(ORef[] orefsToUse)
 	{
 		super.setObjectRefs(orefsToUse);
@@ -106,6 +107,7 @@ public class IndicatorFutureStatusSubPanel extends ObjectDataInputPanel
 		futureStatusRatingField.setVisible(isVisible);
 	}
 
+	@Override
 	public String getPanelDescription()
 	{
 		return EAM.text("Desired Value/Status");
