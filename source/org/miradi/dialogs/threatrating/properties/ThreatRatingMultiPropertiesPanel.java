@@ -19,12 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.threatrating.properties;
 
-import java.awt.CardLayout;
-import java.awt.Rectangle;
-
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
-import org.miradi.dialogs.base.DisposablePanelWithDescription;
-import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.dialogs.base.OverlaidObjectDataInputPanel;
 import org.miradi.dialogs.planning.propertiesPanel.BlankPropertiesPanel;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
@@ -36,26 +32,15 @@ import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.Target;
 import org.miradi.views.umbrella.ObjectPicker;
 
-public class ThreatRatingMultiPropertiesPanel extends ObjectDataInputPanel
+public class ThreatRatingMultiPropertiesPanel extends OverlaidObjectDataInputPanel
 {
 	public ThreatRatingMultiPropertiesPanel(MainWindow mainWindowToUse, ObjectPicker objectPickerToUse) throws Exception
 	{
-		super(mainWindowToUse.getProject(), ORef.INVALID);
+		super(mainWindowToUse, ORef.INVALID);
 		
 		objectPicker = objectPickerToUse;
-		cardLayout = new CardLayout();
-		setLayout(cardLayout);
 		createPropertiesPanels();
 		addPropertiesPanels();
-	}
-	
-	@Override
-	public void dispose()
-	{
-		super.dispose();
-		simplePropertiesPanel.dispose();
-		stressBasedPropertiesPanel.dispose();
-		blankPropertiesPanel.dispose();
 	}
 	
 	@Override
@@ -75,14 +60,9 @@ public class ThreatRatingMultiPropertiesPanel extends ObjectDataInputPanel
 
 	private void addPropertiesPanels()
 	{
-		add(simplePropertiesPanel);
-		add(stressBasedPropertiesPanel);
-		add(blankPropertiesPanel);
-	}
-	
-	private void add(DisposablePanelWithDescription panelToAdd)
-	{
-		add(panelToAdd, panelToAdd.getPanelDescription());
+		addPanel(simplePropertiesPanel);
+		addPanel(stressBasedPropertiesPanel);
+		addPanel(blankPropertiesPanel);
 	}
 	
 	@Override
@@ -91,29 +71,15 @@ public class ThreatRatingMultiPropertiesPanel extends ObjectDataInputPanel
 		return EAM.text("Threat Rating Properties Panel");
 	}
 
-	@Override
-	public void setObjectRefs(ORef[] orefsToUse)
-	{
-		super.setObjectRefs(orefsToUse);
-		showCorrectPanel();
-	
-		simplePropertiesPanel.setObjectRefs(orefsToUse);
-		stressBasedPropertiesPanel.setObjectRefs(orefsToUse);
-		blankPropertiesPanel.setObjectRefs(orefsToUse);
-		
-		scrollRectToVisible(new Rectangle(0,0,0,0));
-		
-		// NOTE: The following are an attempt to fix a reported problem 
-		// where the screen was not fully repainted when switching objects
-		// This code is duplicated in TargetViabilityTreePropertiesPanel.java
-		// and DirectIndicatorPropertiesPanel.java
-		validate();
-		repaint();
-	}
-
 	private void showCorrectPanel()
 	{
-		cardLayout.show(this, findPanel().getPanelDescription());
+		getCardLayout().show(this, findPanel().getPanelDescription());
+	}
+	
+	@Override
+	protected AbstractObjectDataInputPanel findPanel(ORef[] orefsToUse)
+	{
+		return findPanel();
 	}
 	
 	private AbstractObjectDataInputPanel findPanel()
@@ -140,7 +106,6 @@ public class ThreatRatingMultiPropertiesPanel extends ObjectDataInputPanel
 	}
 	
 	private ObjectPicker objectPicker;
-	private CardLayout cardLayout;
 	
 	private AbstractObjectDataInputPanel simplePropertiesPanel;
 	private AbstractObjectDataInputPanel stressBasedPropertiesPanel;
