@@ -41,7 +41,6 @@ public class ThreatRatingMultiPropertiesPanel extends ObjectDataInputPanel
 	{
 		super(mainWindowToUse.getProject(), ORef.INVALID);
 		
-		mainWindow = mainWindowToUse;
 		objectPicker = objectPickerToUse;
 		cardLayout = new CardLayout();
 		setLayout(cardLayout);
@@ -139,15 +138,8 @@ public class ThreatRatingMultiPropertiesPanel extends ObjectDataInputPanel
 		return simplePropertiesPanel;
 	}
 	
-	@Override
-	public MainWindow getMainWindow()
-	{
-		return mainWindow;
-	}
-		
 	public static final String PANEL_DESCRIPTION = "Threat Rating Properties Panel";
 	
-	private MainWindow mainWindow;
 	private ObjectPicker objectPicker;
 	private CardLayout cardLayout;
 	
