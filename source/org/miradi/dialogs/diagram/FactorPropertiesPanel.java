@@ -582,6 +582,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 			if (currentDiagramFactorRef.equals(diagramFactorToSelect.getRef()))
 				return;
 		
+			becomeInactive();
 			rebuildPanelForDiagramFactor(diagramFactorToSelect);
 			setFocusOnFactorChangeComboBox();
 			selectNewlyChosenDiagramFactor(diagramFactorToSelect.getRef());
