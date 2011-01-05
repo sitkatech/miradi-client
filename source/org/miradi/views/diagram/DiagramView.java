@@ -972,7 +972,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		FactorPropertiesPanel newPropertiesPanel = new FactorPropertiesPanel(getMainWindow(), getCurrentDiagramComponent());
 		String title = EAM.text("Title|Factor Properties");
 		FactorPropertiesDialog newPropertiesDialog = new FactorPropertiesDialog(getMainWindow(), newPropertiesPanel, title);
-		newPropertiesPanel.setCurrentDiagramFactor(getCurrentDiagramComponent(), node);
+		newPropertiesPanel.setCurrentDiagramFactor(node);
 		newPropertiesPanel.selectTab(startingTabIdentifier);
 		newPropertiesDialog.pack();
 		newPropertiesDialog.updatePreferredSize();
