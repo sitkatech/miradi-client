@@ -215,7 +215,6 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 
 	private Component rebuildTabs(DiagramFactor diagramFactor) throws Exception
 	{
-		deactivateCurrentTab();
 		tabs.setFocusable(false);
 		tabs.removeAll();
 		disposeTabs();
@@ -524,7 +523,10 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 	{
 		//TODO: Refactor entire tab add remove mechanism
 		if (shouldRebuildPanel(event))
+		{
+			becomeInactive();
 			rebuildPanel();
+		}
 		
 		if (event.isSetDataCommandWithThisTag(Factor.TAG_LABEL)  || event.isSetDataCommandWithThisTag(Factor.TAG_SHORT_LABEL))
 			rebuildFactorChangerComboBox();
