@@ -178,12 +178,12 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		setObjectRefs(getSelectedRefs().toArray());
 	}
 	
-	public void setObjectRef(ORef oref)
+	public final void setObjectRef(ORef oref)
 	{
 		setObjectRefs(new ORef[] {oref});
 	}
 	
-	public void setObjectRefs(ORefList refsToUse)
+	public final void setObjectRefs(ORefList refsToUse)
 	{
 		setObjectRefs(refsToUse.toArray());
 	}
@@ -195,7 +195,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		updateFieldsFromProject();
 	}
 
-	public void setObjectRefs(ORef[] orefsToUse, String tag)
+	public final void setObjectRefs(ORef[] orefsToUse, String tag)
 	{
 		setObjectRefs(orefsToUse);
 		selectSectionForTag(tag);
@@ -712,7 +712,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return fields;
 	}
 	
-	public void setFieldObjectIds()
+	private void setFieldObjectIds()
 	{
 		for(int i = 0; i < getFields().size(); ++i)
 		{
@@ -741,7 +741,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		}
 	}
 	
-	public void deleteObjectFromList(ORef deletedObjectRef)
+	private void deleteObjectFromList(ORef deletedObjectRef)
 	{
 		selectedRefs.remove(deletedObjectRef);
 	}
