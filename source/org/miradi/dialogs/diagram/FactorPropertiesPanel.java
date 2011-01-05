@@ -384,7 +384,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 			simpleViabilityTab.updateSplitterLocation();
 	}
 	
-	public void setCurrentDiagramFactor(DiagramComponent diagram, DiagramFactor diagramFactor)
+	public void setCurrentDiagramFactor(DiagramFactor diagramFactor)
 	{
 		rebuildPanelForDiagramFactor(diagramFactor);
 		detailsTab.setFocusOnFirstField();
