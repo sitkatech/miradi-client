@@ -264,7 +264,6 @@ public class PropertiesDoer extends LocationDoer
 		selectedHierarchy.add(diagramFactor.getWrappedORef());
 		selectedHierarchy.add(diagramFactor.getRef());
 		propertiesPanel.setObjectRefs(selectedHierarchy);
-		propertiesPanel.becomeActive();
 		ModelessDialogWithClose propertiesDialog = new ModelessDialogWithClose(getMainWindow(), propertiesPanel, propertiesPanel.getPanelDescription()); 
 		getView().showFloatingPropertiesDialog(propertiesDialog);
 		
