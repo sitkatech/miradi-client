@@ -356,23 +356,31 @@ public class Dashboard extends BaseObject
 		ORefSet targetWithKeaIndicators = new ORefSet();
 		for (ORef targetRef : targetRefs)
 		{
-			Target target = Target.find(getProject(), targetRef);
-			ORefSet keaRefs = new ORefSet(target.getKeyEcologicalAttributeRefs());
-			for (ORef keaRef : keaRefs)
-			{
-				KeyEcologicalAttribute kea = KeyEcologicalAttribute.find(getProject(), keaRef);
-				if (kea.getIndicatorRefs().hasRefs())
-					targetWithKeaIndicators.add(targetRef);
-			}
+			if (hasKeaWithIndicators(targetRef))
+			targetWithKeaIndicators.add(targetRef);
 		}
 		
 		return Integer.toString(targetWithKeaIndicators.size());
 	}
 
+	private boolean hasKeaWithIndicators(ORef targetRef)
+	{
+		Target target = Target.find(getProject(), targetRef);
+		ORefSet keaRefs = new ORefSet(target.getKeyEcologicalAttributeRefs());
+		for (ORef keaRef : keaRefs)
+		{
+			KeyEcologicalAttribute kea = KeyEcologicalAttribute.find(getProject(), keaRef);
+			if (kea.getIndicatorRefs().hasRefs())
+				return true;
+		}
+		
+		return false;
+	}
+
 	private String getIndicatorsIrrelevantToObjectivesPercentage() throws Exception
 	{
 		ORefSet indicatorRefs = getProject().getIndicatorPool().getRefSet();
-		ORefSet indicatorsRelevantToObjectives = getIndicatorsRelevantToObjectives(indicatorRefs);
+		ORefSet indicatorsRelevantToObjectives = getIndicatorsRelevantToObjectives();
 		ORefSet indicatorsIrrelevantToObjectives = new ORefSet(indicatorRefs);
 		indicatorsIrrelevantToObjectives.removeAll(indicatorsRelevantToObjectives);
 		
@@ -381,13 +389,12 @@ public class Dashboard extends BaseObject
 
 	private String getIndicatorsRelevantToObjectivesPercentage() throws Exception
 	{
-		ORefSet indicatorRefs = getProject().getIndicatorPool().getRefSet();
-		ORefSet indicatorsRelevantToObjectives = getIndicatorsRelevantToObjectives(indicatorRefs);
+		ORefSet indicatorsRelevantToObjectives = getIndicatorsRelevantToObjectives();
 		
-		return calculatePercentage(indicatorsRelevantToObjectives.size(), indicatorRefs.size());
+		return calculatePercentage(indicatorsRelevantToObjectives.size(), getProject().getIndicatorPool().size());
 	}
 
-	private ORefSet getIndicatorsRelevantToObjectives(ORefSet indicatorRefs) throws Exception
+	private ORefSet getIndicatorsRelevantToObjectives() throws Exception
 	{
 		ORefSet objectiveRefs = getProject().getObjectivePool().getRefSet();
 		ORefSet indicatorsRelevantToObjectives = new ORefSet();
@@ -395,8 +402,7 @@ public class Dashboard extends BaseObject
 		{
 			Objective objective = Objective.find(getProject(), objectiveRef);
 			ORefList relevantIndicatorRefs = objective.getRelevantIndicatorRefList();
-			if (indicatorRefs.containsAny(new ORefSet(relevantIndicatorRefs)))
-				indicatorsRelevantToObjectives.addAllRefs(relevantIndicatorRefs);
+			indicatorsRelevantToObjectives.addAllRefs(relevantIndicatorRefs);
 		}
 		
 		return indicatorsRelevantToObjectives;
