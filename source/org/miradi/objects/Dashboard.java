@@ -357,7 +357,7 @@ public class Dashboard extends BaseObject
 		for (ORef targetRef : targetRefs)
 		{
 			if (hasKeaWithIndicators(targetRef))
-			targetWithKeaIndicators.add(targetRef);
+				targetWithKeaIndicators.add(targetRef);
 		}
 		
 		return Integer.toString(targetWithKeaIndicators.size());
