@@ -395,6 +395,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		currentDiagramFactor = diagramFactor;
 
 		rebuildPanel();
+		becomeActive();
 	}
 
 	private void setFocusOnFactorChangeComboBox()
@@ -414,7 +415,6 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 			add(tabs, BorderLayout.CENTER);
 			
 			getFactorPropertiesDialog().pack();
-			becomeActive();
 		}
 		catch(Exception e)
 		{
@@ -526,6 +526,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		{
 			becomeInactive();
 			rebuildPanel();
+			becomeActive();
 		}
 		
 		if (event.isSetDataCommandWithThisTag(Factor.TAG_LABEL)  || event.isSetDataCommandWithThisTag(Factor.TAG_SHORT_LABEL))
