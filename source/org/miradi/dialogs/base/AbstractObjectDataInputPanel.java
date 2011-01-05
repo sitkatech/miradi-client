@@ -744,6 +744,10 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	private void deleteObjectFromList(ORef deletedObjectRef)
 	{
 		selectedRefs.remove(deletedObjectRef);
+		for(AbstractObjectDataInputPanel subPanel : subPanels)
+		{
+			subPanel.deleteObjectFromList(deletedObjectRef);
+		}
 	}
 
 	private boolean wasOurObjectJustDeleted(CommandExecutedEvent event)
