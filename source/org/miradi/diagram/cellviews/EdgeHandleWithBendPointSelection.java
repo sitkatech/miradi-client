@@ -50,16 +50,19 @@ public class EdgeHandleWithBendPointSelection extends EdgeView.EdgeHandle
 		bendSelectionHelper = linkCell.getBendPointSelectionHelper();
 	}
 	
+	@Override
 	public boolean isAddPointEvent(MouseEvent event)
 	{
 		return false;
 	}
 
+	@Override
 	public boolean isRemovePointEvent(MouseEvent event)
 	{
 		return false;
 	}
 
+	@Override
 	public void mouseReleased(MouseEvent event)
 	{
 		Point mouseEnd = event.getPoint();
@@ -75,6 +78,7 @@ public class EdgeHandleWithBendPointSelection extends EdgeView.EdgeHandle
 		bendPointSelectionChanged();
 	}
 
+	@Override
 	public void mousePressed(MouseEvent event)
 	{
 		super.mousePressed(event);
@@ -105,6 +109,7 @@ public class EdgeHandleWithBendPointSelection extends EdgeView.EdgeHandle
 		diagram.repaint();
 	}
 	
+	@Override
 	public void paint(Graphics g)
 	{
 		super.paint(g);
@@ -135,6 +140,7 @@ public class EdgeHandleWithBendPointSelection extends EdgeView.EdgeHandle
 		return new BasicStroke(2, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 5.0f, dash, 0.0f);
 	}
 	
+	@Override
 	public void updatePoints(Point2D currentPointToUse, Point2D p)
 	{
 		BasicGraphUI graphUi = (BasicGraphUI) graph.getUI();
