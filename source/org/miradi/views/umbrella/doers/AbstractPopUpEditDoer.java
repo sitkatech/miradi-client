@@ -69,14 +69,7 @@ abstract public class AbstractPopUpEditDoer extends ObjectsDoer
 		Utilities.centerDlg(dialog);
 
 		managementPanel.becomeActive();
-		try
-		{
-			dialog.setVisible(true);
-		}
-		finally
-		{
-			managementPanel.becomeInactive();
-		}
+		dialog.setVisible(true);
 	}
 
 	protected int getTypeToFilterOn()
