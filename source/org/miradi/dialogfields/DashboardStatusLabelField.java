@@ -31,7 +31,7 @@ public class DashboardStatusLabelField extends AsbtractDashboardClickableQuestio
 {
 	public DashboardStatusLabelField(Project projectToUse, ORef refToUse, String stringMapCodeToUse, ChoiceQuestion questionToUse)
 	{
-		super(projectToUse, refToUse, stringMapCodeToUse, Dashboard.PSEUDO_EFFECTIVE_STATUS_MAP, questionToUse);
+		super(projectToUse, refToUse, Dashboard.PSEUDO_EFFECTIVE_STATUS_MAP, stringMapCodeToUse, questionToUse);
 	}
 	
 	@Override
