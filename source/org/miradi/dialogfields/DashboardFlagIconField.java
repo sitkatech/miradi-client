@@ -52,7 +52,7 @@ public class DashboardFlagIconField extends	AsbtractDashboardClickableQuestionFi
 	}
 
 	@Override
-	protected void updateLabel(ChoiceItem progressChoiceItem, PanelTitleLabel componentToUpdate)
+	protected void updateLabel(PanelTitleLabel componentToUpdate, ChoiceItem progressChoiceItem)
 	{
 		componentToUpdate.setIcon(new EmptyIcon());
 		if (progressChoiceItem != null)
