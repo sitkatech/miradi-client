@@ -31,7 +31,9 @@ import org.miradi.dialogs.base.ModalDialogWithClose;
 import org.miradi.dialogs.dashboard.DashboardProgressPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.AbstractStringKeyMap;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.StringChoiceMap;
 import org.miradi.project.Project;
 import org.miradi.utils.Translation;
 
@@ -63,8 +65,28 @@ abstract public class AbstractDashboardClickableField extends ObjectDataInputFie
 	{
 		return "";
 	}
-
 	
+	@Override
+	public void setText(String stringCodeMapAsString)
+	{
+		try
+		{
+			String code = getCode(stringCodeMapAsString, stringMapCode);
+			updateLabelComponent(code);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			EAM.unexpectedErrorDialog(e);
+		}
+	}
+
+	protected String getCode(String stringCodeMapAsString, String stringMapCodeToUse) throws Exception
+	{
+		AbstractStringKeyMap map = new StringChoiceMap(stringCodeMapAsString);
+		return map.get(stringMapCodeToUse);
+	}
+
 	protected class ClickHandler extends MouseAdapter
 	{
 		@Override
@@ -88,6 +110,8 @@ abstract public class AbstractDashboardClickableField extends ObjectDataInputFie
 			}
 		}
 	}
+	
+	abstract protected void updateLabelComponent(String code);
 	
 	protected String stringMapCode;
 	protected PanelTitleLabel iconComponent;
