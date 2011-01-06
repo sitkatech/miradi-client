@@ -58,7 +58,9 @@ public class DashboardCommentsField extends AbstractDashboardClickableField
 	{
 		String[] splitValues = mapValue.split("\n");
 		String firstLine = splitValues[0];
-		firstLine  += "...";
+		if (firstLine.length() > 0)
+			firstLine  += "...";
+		
 		labelComponentToUse.setText(firstLine);
 	}
 }
