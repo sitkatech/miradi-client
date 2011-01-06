@@ -29,7 +29,7 @@ import javax.swing.JComponent;
 import javax.swing.event.ListSelectionListener;
 
 import org.miradi.actions.AbstractJumpMenuAction;
-import org.miradi.dialogfields.DashboarStatusLabelField;
+import org.miradi.dialogfields.DashboardStatusLabelField;
 import org.miradi.dialogfields.DashboardFlagIconField;
 import org.miradi.dialogfields.DashboardStatusIconField;
 import org.miradi.dialogfields.ObjectDataInputField;
@@ -154,7 +154,7 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		addFieldToList(statusIconField);
 		statusIconField.updateFromObject();
 		
-		ObjectDataInputField statusTextField = new DashboarStatusLabelField(getProject(), getDashboard().getRef(), choiceItem.getCode(), progressStatusQuestion);
+		ObjectDataInputField statusTextField = new DashboardStatusLabelField(getProject(), getDashboard().getRef(), choiceItem.getCode(), progressStatusQuestion);
 		addFieldToList(statusTextField);
 		statusTextField.updateFromObject();
 		
