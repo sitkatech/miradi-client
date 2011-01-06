@@ -20,8 +20,20 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+import javax.swing.JComponent;
+
+import org.martus.swing.Utilities;
+import org.miradi.dialogs.base.DisposablePanel;
+import org.miradi.dialogs.base.ModalDialogWithClose;
+import org.miradi.dialogs.dashboard.DashboardProgressPanel;
+import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
+import org.miradi.utils.Translation;
 
 abstract public class AbstractDashboardClickableField extends ObjectDataInputField
 {
@@ -30,8 +42,53 @@ abstract public class AbstractDashboardClickableField extends ObjectDataInputFie
 		super(projectToUse, refToUse, tagToUse);
 		
 		stringMapCode = stringMapCodeToUse;
+		iconComponent = new PanelTitleLabel();
+		iconComponent.addMouseListener(new ClickHandler());
 	}
 	
+	@Override
+	public void updateEditableState()
+	{
+		iconComponent.setEnabled(true);
+	}
+
+	@Override
+	public JComponent getComponent()
+	{
+		return iconComponent;
+	}
+
+	@Override
+	public String getText()
+	{
+		return "";
+	}
+
+	
+	protected class ClickHandler extends MouseAdapter
+	{
+		@Override
+		public void mouseClicked(MouseEvent mouseEvent)
+		{
+			super.mouseClicked(mouseEvent);
+			
+			try
+			{
+				DisposablePanel editorPanel = new DashboardProgressPanel(getProject(), getORef(), stringMapCode);
+				ModalDialogWithClose dialog = new ModalDialogWithClose(EAM.getMainWindow(), Translation.fieldLabel(getObjectType(), getTag()));
+				dialog.setMainPanel(editorPanel);
+				dialog.becomeActive();
+				Utilities.centerDlg(dialog);
+				dialog.setVisible(true);
+			}
+			catch (Exception e)
+			{
+				EAM.logException(e);
+				EAM.unexpectedErrorDialog(e);
+			}
+		}
+	}
 	
 	protected String stringMapCode;
+	protected PanelTitleLabel iconComponent;
 }
