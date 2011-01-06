@@ -72,7 +72,7 @@ abstract public class AbstractDashboardClickableField extends ObjectDataInputFie
 		try
 		{
 			String code = getCode(stringCodeMapAsString, stringMapCode);
-			updateLabelComponent(code);
+			updateLabelComponent(labelComponent, code);
 		}
 		catch (Exception e)
 		{
@@ -113,8 +113,8 @@ abstract public class AbstractDashboardClickableField extends ObjectDataInputFie
 	
 	abstract protected AbstractStringKeyMap createStringKeyMap(String stringCodeMapAsString) throws ParseException;
 	
-	abstract protected void updateLabelComponent(String code);
+	abstract protected void updateLabelComponent(PanelTitleLabel labelComponentToUse, String code);
 	
 	protected String stringMapCode;
-	protected PanelTitleLabel labelComponent;
+	private PanelTitleLabel labelComponent;
 }

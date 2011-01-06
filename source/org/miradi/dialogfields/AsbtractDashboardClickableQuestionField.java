@@ -41,10 +41,10 @@ abstract public class AsbtractDashboardClickableQuestionField extends AbstractDa
 	}
 	
 	@Override
-	protected void updateLabelComponent(String code)
+	protected void updateLabelComponent(PanelTitleLabel labelComponentToUse, String code)
 	{
 		ChoiceItem progressChoiceItem = question.findChoiceByCode(code);
-		updateLabel(labelComponent, progressChoiceItem);
+		updateLabel(labelComponentToUse, progressChoiceItem);
 	}
 	
 	@Override

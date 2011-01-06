@@ -22,6 +22,7 @@ package org.miradi.dialogfields;
 
 import java.text.ParseException;
 
+import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.objecthelpers.AbstractStringKeyMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.StringStringMap;
@@ -42,8 +43,8 @@ public class DashboardCommentsField extends AbstractDashboardClickableField
 	}
 
 	@Override
-	protected void updateLabelComponent(String code)
+	protected void updateLabelComponent(PanelTitleLabel labelComponentToUse, String code)
 	{
-		labelComponent.setText(code);
+		labelComponentToUse.setText(code);
 	}
 }
