@@ -23,6 +23,7 @@ package org.miradi.dialogfields;
 import java.text.ParseException;
 
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.objecthelpers.AbstractStringKeyMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.StringChoiceMap;
 import org.miradi.project.Project;
@@ -47,7 +48,7 @@ abstract public class AsbtractDashboardClickableQuestionField extends AbstractDa
 	}
 	
 	@Override
-	protected StringChoiceMap createStringKeyMap(String stringCodeMapAsString) throws ParseException
+	protected AbstractStringKeyMap createStringKeyMap(String stringCodeMapAsString) throws ParseException
 	{
 		return new StringChoiceMap(stringCodeMapAsString);
 	}

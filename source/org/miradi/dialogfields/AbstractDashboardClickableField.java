@@ -34,7 +34,6 @@ import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.AbstractStringKeyMap;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.StringChoiceMap;
 import org.miradi.project.Project;
 import org.miradi.utils.Translation;
 
@@ -112,7 +111,7 @@ abstract public class AbstractDashboardClickableField extends ObjectDataInputFie
 		}
 	}
 	
-	abstract protected StringChoiceMap createStringKeyMap(String stringCodeMapAsString) throws ParseException;
+	abstract protected AbstractStringKeyMap createStringKeyMap(String stringCodeMapAsString) throws ParseException;
 	
 	abstract protected void updateLabelComponent(String code);
 	
