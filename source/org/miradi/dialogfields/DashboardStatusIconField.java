@@ -29,7 +29,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 
-public class DashboardStatusIconField extends AsbtractDashboardClickableField
+public class DashboardStatusIconField extends AsbtractDashboardClickableQuestionField
 {
 	public DashboardStatusIconField(Project projectToUse, ORef refToUse, String stringMapCodeToUse, ChoiceQuestion questionToUse)
 	{
