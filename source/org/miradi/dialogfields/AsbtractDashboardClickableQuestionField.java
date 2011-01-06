@@ -45,14 +45,19 @@ abstract public class AsbtractDashboardClickableQuestionField extends AbstractDa
 		try
 		{
 			String code = getCode(stringCodeMapAsString, stringMapCode);
-			ChoiceItem progressChoiceItem = question.findChoiceByCode(code);
-			updateLabel(progressChoiceItem, iconComponent);
+			updateLabelComponent(code);
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
 			EAM.unexpectedErrorDialog(e);
 		}
+	}
+
+	private void updateLabelComponent(String code)
+	{
+		ChoiceItem progressChoiceItem = question.findChoiceByCode(code);
+		updateLabel(progressChoiceItem, iconComponent);
 	}
 
 	protected String getCode(String stringCodeMapAsString, String stringMapCodeToUse) throws Exception
