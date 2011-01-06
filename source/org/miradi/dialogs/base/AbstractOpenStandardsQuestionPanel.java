@@ -146,19 +146,22 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 	private void addRowWithStatusIcon(ChoiceItem choiceItem, int level) throws Exception
 	{
 		DashboardFlagIconField flagIconField = new DashboardFlagIconField(getProject(), getDashboard().getRef(), choiceItem.getCode());
-		addFieldToList(flagIconField);
-		flagIconField.updateFromObject();
+		addUpdatedCustomField(flagIconField);
 		
 		ChoiceQuestion progressStatusQuestion = new OpenStandardsDynamicProgressStatusQuestion(getDashboard(), choiceItem.getCode());
 		ObjectDataInputField statusIconField = new DashboardStatusIconField(getProject(), getDashboard().getRef(), choiceItem.getCode(), progressStatusQuestion);
-		addFieldToList(statusIconField);
-		statusIconField.updateFromObject();
+		addUpdatedCustomField(statusIconField);
 		
 		ObjectDataInputField statusTextField = new DashboardStatusLabelField(getProject(), getDashboard().getRef(), choiceItem.getCode(), progressStatusQuestion);
-		addFieldToList(statusTextField);
-		statusTextField.updateFromObject();
+		addUpdatedCustomField(statusTextField);
 		
 		addRow(choiceItem.getLongDescriptionProvider(), level, flagIconField.getComponent(), statusIconField.getComponent(), new PanelTitleLabel(choiceItem.getLabel()), statusTextField.getComponent());
+	}
+
+	private void addUpdatedCustomField(ObjectDataInputField field)
+	{
+		addFieldToList(field);
+		field.updateFromObject();
 	}
 	
 	private void addRowWithoutIcon(String leftColumnText, String rightColumnText, HashMap<String, String> tokenReplacementMap, AbstractLongDescriptionProvider longDescriptionProvider, int level) throws Exception
