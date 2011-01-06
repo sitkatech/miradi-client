@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields;
 
+import java.text.ParseException;
+
 import javax.swing.Icon;
 
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
@@ -30,35 +32,38 @@ import org.miradi.objecthelpers.StringCodeListMap;
 import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.DashboardFlagsQuestion;
 import org.miradi.utils.CodeList;
 
-public class DashboardFlagIconField extends	AsbtractDashboardClickableQuestionField
+public class DashboardFlagIconField extends	AbstractDashboardClickableField
 {
 	public DashboardFlagIconField(Project projectToUse, ORef refToUse, String stringMapCodeToUse)
 	{
-		super(projectToUse, refToUse, stringMapCodeToUse, Dashboard.TAG_NEEDS_ATTENTION_MAP, projectToUse.getQuestion(DashboardFlagsQuestion.class));
+		super(projectToUse, refToUse, Dashboard.TAG_NEEDS_ATTENTION_MAP, stringMapCodeToUse);
+		
+		question = getProject().getQuestion(DashboardFlagsQuestion.class);
 	}
 	
 	@Override
-	protected String getMapValue(String stringCodeMapAsString, String stringMapCodeToUse) throws Exception
+	protected void updateLabelComponent(PanelTitleLabel labelComponentToUse, String mapValue) throws Exception
 	{
-		AbstractStringKeyMap map = new StringCodeListMap(stringCodeMapAsString);
-		CodeList codes = new CodeList(map.get(stringMapCode));
-		if (codes.hasData())
-			return codes.firstElement();
-		
-		return "";
-	}
-
-	@Override
-	protected void updateLabel(PanelTitleLabel componentToUpdate, ChoiceItem progressChoiceItem)
-	{
-		componentToUpdate.setIcon(new EmptyIcon());
-		if (progressChoiceItem != null)
+		labelComponentToUse.setIcon(new EmptyIcon());
+		CodeList codeList = new CodeList(mapValue);
+		if (codeList.size() > 0)
 		{
+			String firstCode = codeList.firstElement();
+			ChoiceItem progressChoiceItem = question.findChoiceByCode(firstCode);
 			Icon icon = progressChoiceItem.getIcon();
-			componentToUpdate.setIcon(icon);
+			labelComponentToUse.setIcon(icon);
 		}
 	}
+	
+	@Override
+	protected AbstractStringKeyMap createStringKeyMap(String stringCodeMapAsString) throws ParseException
+	{
+		return new StringCodeListMap(stringCodeMapAsString);
+	}
+	
+	private ChoiceQuestion question;
 }

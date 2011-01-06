@@ -118,7 +118,7 @@ abstract public class AbstractDashboardClickableField extends ObjectDataInputFie
 	
 	abstract protected AbstractStringKeyMap createStringKeyMap(String stringCodeMapAsString) throws ParseException;
 	
-	abstract protected void updateLabelComponent(PanelTitleLabel labelComponentToUse, String mapValue);
+	abstract protected void updateLabelComponent(PanelTitleLabel labelComponentToUse, String mapValue) throws Exception;
 	
 	protected String stringMapCode;
 	private PanelTitleLabel labelComponent;
