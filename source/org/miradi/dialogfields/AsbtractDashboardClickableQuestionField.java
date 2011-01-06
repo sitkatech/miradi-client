@@ -44,7 +44,7 @@ abstract public class AsbtractDashboardClickableQuestionField extends AbstractDa
 	protected void updateLabelComponent(String code)
 	{
 		ChoiceItem progressChoiceItem = question.findChoiceByCode(code);
-		updateLabel(progressChoiceItem, labelComponent);
+		updateLabel(labelComponent, progressChoiceItem);
 	}
 	
 	@Override
@@ -53,7 +53,7 @@ abstract public class AsbtractDashboardClickableQuestionField extends AbstractDa
 		return new StringChoiceMap(stringCodeMapAsString);
 	}
 
-	abstract protected void updateLabel(ChoiceItem progressChoiceItem, PanelTitleLabel componentToUpdate);
+	abstract protected void updateLabel(PanelTitleLabel componentToUpdate, ChoiceItem progressChoiceItem);
 
 	private ChoiceQuestion question;
 }
