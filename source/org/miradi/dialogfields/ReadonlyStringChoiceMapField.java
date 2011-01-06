@@ -18,23 +18,23 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.dialogs.fieldComponents;
+package org.miradi.dialogfields;
 
-import javax.swing.text.JTextComponent;
+import org.miradi.dialogs.fieldComponents.PanelLabelWithSelectableText;
+import org.miradi.dialogs.fieldComponents.PanelTextArea;
+import org.miradi.main.MainWindow;
+import org.miradi.objecthelpers.ORef;
 
-public class PanelLabelWithSelectableText extends PanelTextField
+public class ReadonlyStringChoiceMapField extends ObjectStringMapInputField
 {
-	public PanelLabelWithSelectableText(String textToUse)
+	public ReadonlyStringChoiceMapField(MainWindow mainWindowToUse,	ORef refToUse, String tagToUse,	String codeToUse)
 	{
-		super(textToUse);
-		
-		makeReadonlySelectable(this);
+		super(mainWindowToUse, refToUse, tagToUse, codeToUse, 1);
 	}
 
-	public static void makeReadonlySelectable(JTextComponent textFieldToUse)
+	@Override
+	protected void customizeTextArea(PanelTextArea component)
 	{
-		textFieldToUse.setEditable(false);
-		textFieldToUse.setBorder(null);
-		textFieldToUse.setOpaque(false);
+		PanelLabelWithSelectableText.makeReadonlySelectable(component);
 	}
 }

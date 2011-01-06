@@ -29,10 +29,11 @@ import javax.swing.JComponent;
 import javax.swing.event.ListSelectionListener;
 
 import org.miradi.actions.AbstractJumpMenuAction;
-import org.miradi.dialogfields.DashboardStatusLabelField;
 import org.miradi.dialogfields.DashboardFlagIconField;
 import org.miradi.dialogfields.DashboardStatusIconField;
+import org.miradi.dialogfields.DashboardStatusLabelField;
 import org.miradi.dialogfields.ObjectDataInputField;
+import org.miradi.dialogfields.ReadonlyStringChoiceMapField;
 import org.miradi.dialogs.dashboard.AbstractLongDescriptionProvider;
 import org.miradi.dialogs.dashboard.DashboardRowDefinition;
 import org.miradi.dialogs.dashboard.DashboardRowDefinitionManager;
@@ -155,7 +156,12 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		ObjectDataInputField statusTextField = new DashboardStatusLabelField(getProject(), getDashboard().getRef(), choiceItem.getCode(), progressStatusQuestion);
 		addUpdatedCustomField(statusTextField);
 		
+		ObjectDataInputField commentsField = new ReadonlyStringChoiceMapField(getMainWindow(), getDashboard().getRef(), Dashboard.TAG_USER_COMMENTS_MAP, choiceItem.getCode());
+		commentsField.getComponent().setFont(getCommentsFieldFont());
+		addUpdatedCustomField(commentsField);
+		
 		addRow(choiceItem.getLongDescriptionProvider(), level, flagIconField.getComponent(), statusIconField.getComponent(), new PanelTitleLabel(choiceItem.getLabel()), statusTextField.getComponent());
+		addDefaultFontRow(choiceItem.getLongDescriptionProvider(), level, new FillerLabel(), new FillerLabel(), new FillerLabel(), commentsField.getComponent());
 	}
 
 	private void addUpdatedCustomField(ObjectDataInputField field)
@@ -178,6 +184,11 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		Font font = getFontBasedOnLevel(level);
 		leftComponent.setFont(font);
 		rightComponent.setFont(font);
+		addDefaultFontRow(longDescriptionProvider, level, flagIconComponent, iconComponent, leftComponent, rightComponent);
+	}
+
+	private void addDefaultFontRow(AbstractLongDescriptionProvider longDescriptionProvider, int level, JComponent flagIconComponent, JComponent iconComponent, JComponent leftComponent, JComponent rightComponent)
+	{
 		Box leftBox = createHorizontalBoxWithIndents(level);
 		leftBox.add(flagIconComponent);
 		leftBox.add(iconComponent);
@@ -229,6 +240,15 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 	{
 		Font font = getRawFont();
 		font = font.deriveFont(Font.BOLD);
+		
+		return font;
+	}
+	
+	private Font getCommentsFieldFont()
+	{
+		Font font = getRawFont();
+		font = font.deriveFont(Font.ITALIC);
+		font = font.deriveFont((float)(font.getSize() * 0.8));
 		
 		return font;
 	}
