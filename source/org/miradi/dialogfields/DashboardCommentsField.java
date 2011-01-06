@@ -54,8 +54,8 @@ public class DashboardCommentsField extends AbstractDashboardClickableField
 	}
 
 	@Override
-	protected void updateLabelComponent(PanelTitleLabel labelComponentToUse, String code)
+	protected void updateLabelComponent(PanelTitleLabel labelComponentToUse, String mapValue)
 	{
-		labelComponentToUse.setText(code);
+		labelComponentToUse.setText(mapValue);
 	}
 }
