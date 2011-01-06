@@ -22,6 +22,7 @@ package org.miradi.dialogfields;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.ParseException;
 
 import javax.swing.JComponent;
 
@@ -83,8 +84,13 @@ abstract public class AbstractDashboardClickableField extends ObjectDataInputFie
 
 	protected String getCode(String stringCodeMapAsString, String stringMapCodeToUse) throws Exception
 	{
-		AbstractStringKeyMap map = new StringChoiceMap(stringCodeMapAsString);
+		AbstractStringKeyMap map = createStringKeyMap(stringCodeMapAsString);
 		return map.get(stringMapCodeToUse);
+	}
+
+	private StringChoiceMap createStringKeyMap(String stringCodeMapAsString) throws ParseException
+	{
+		return new StringChoiceMap(stringCodeMapAsString);
 	}
 
 	protected class ClickHandler extends MouseAdapter
