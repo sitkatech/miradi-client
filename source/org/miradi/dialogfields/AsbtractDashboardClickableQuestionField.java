@@ -21,10 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogfields;
 
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
-import org.miradi.main.EAM;
-import org.miradi.objecthelpers.AbstractStringKeyMap;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.StringChoiceMap;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
@@ -39,31 +36,10 @@ abstract public class AsbtractDashboardClickableQuestionField extends AbstractDa
 		question = questionToUse;
 	}
 	
-	@Override
-	public void setText(String stringCodeMapAsString)
-	{
-		try
-		{
-			String code = getCode(stringCodeMapAsString, stringMapCode);
-			updateLabelComponent(code);
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			EAM.unexpectedErrorDialog(e);
-		}
-	}
-
-	private void updateLabelComponent(String code)
+	protected void updateLabelComponent(String code)
 	{
 		ChoiceItem progressChoiceItem = question.findChoiceByCode(code);
 		updateLabel(progressChoiceItem, iconComponent);
-	}
-
-	protected String getCode(String stringCodeMapAsString, String stringMapCodeToUse) throws Exception
-	{
-		AbstractStringKeyMap map = new StringChoiceMap(stringCodeMapAsString);
-		return map.get(stringMapCodeToUse);
 	}
 
 	abstract protected void updateLabel(ChoiceItem progressChoiceItem, PanelTitleLabel componentToUpdate);
