@@ -57,13 +57,7 @@ public class ObjectStringInputField extends ObjectTextInputField
 		DocumentEventHandler handler = new DocumentEventHandler();
 		((JTextComponent)getComponent()).getDocument().addUndoableEditListener(handler);
 		((UiTextArea)getComponent()).setWrapStyleWord(true);
-		((UiTextArea)getComponent()).setLineWrap(true);
-		
-		customizeTextArea((PanelTextArea)getComponent());
-	}
-
-	protected void customizeTextArea(PanelTextArea component)
-	{
+		((UiTextArea)getComponent()).setLineWrap(true);		
 	}
 
 	class DocumentEventHandler implements  UndoableEditListener
