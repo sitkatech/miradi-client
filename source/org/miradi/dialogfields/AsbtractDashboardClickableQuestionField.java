@@ -20,8 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields;
 
+import java.text.ParseException;
+
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.StringChoiceMap;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
@@ -36,10 +39,17 @@ abstract public class AsbtractDashboardClickableQuestionField extends AbstractDa
 		question = questionToUse;
 	}
 	
+	@Override
 	protected void updateLabelComponent(String code)
 	{
 		ChoiceItem progressChoiceItem = question.findChoiceByCode(code);
 		updateLabel(progressChoiceItem, iconComponent);
+	}
+	
+	@Override
+	protected StringChoiceMap createStringKeyMap(String stringCodeMapAsString) throws ParseException
+	{
+		return new StringChoiceMap(stringCodeMapAsString);
 	}
 
 	abstract protected void updateLabel(ChoiceItem progressChoiceItem, PanelTitleLabel componentToUpdate);
