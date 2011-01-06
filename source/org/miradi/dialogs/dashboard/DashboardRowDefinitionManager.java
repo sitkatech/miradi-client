@@ -33,15 +33,18 @@ import org.miradi.utils.CodeList;
 
 public class DashboardRowDefinitionManager
 {
-	public CodeList getThirdLevelCodes()
+	public DashboardRowDefinitionManager()
 	{
-		CodeList allCodes = new CodeList();
+		allCodes = new CodeList();
 		allCodes.addAll(new OpenStandardsConceptualizeQuestion().getAllCodes());
 		allCodes.addAll(new OpenStandardsPlanActionsAndMonitoringQuestion().getAllCodes());
 		allCodes.addAll(new OpenStandardsImplementActionsAndMonitoringQuestion().getAllCodes());
 		allCodes.addAll(new OpenStandardsAnalyzeUseAndAdaptQuestion().getAllCodes());
 		allCodes.addAll(new OpenStandardsCaptureAndShareLearningQuestion().getAllCodes());
-		
+	}
+	
+	public CodeList getThirdLevelCodes()
+	{
 		return allCodes;
 	}
 	
@@ -272,4 +275,6 @@ public class DashboardRowDefinitionManager
 	private void addGroundTruthAndReviseModel()
 	{
 	}	
+
+	private CodeList allCodes;
 }
