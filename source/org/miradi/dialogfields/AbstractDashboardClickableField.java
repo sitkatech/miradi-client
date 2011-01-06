@@ -88,8 +88,6 @@ abstract public class AbstractDashboardClickableField extends ObjectDataInputFie
 		return map.get(stringMapCodeToUse);
 	}
 
-	abstract protected StringChoiceMap createStringKeyMap(String stringCodeMapAsString) throws ParseException;
-
 	protected class ClickHandler extends MouseAdapter
 	{
 		@Override
@@ -113,6 +111,8 @@ abstract public class AbstractDashboardClickableField extends ObjectDataInputFie
 			}
 		}
 	}
+	
+	abstract protected StringChoiceMap createStringKeyMap(String stringCodeMapAsString) throws ParseException;
 	
 	abstract protected void updateLabelComponent(String code);
 	
