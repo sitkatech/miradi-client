@@ -29,11 +29,11 @@ import javax.swing.JComponent;
 import javax.swing.event.ListSelectionListener;
 
 import org.miradi.actions.AbstractJumpMenuAction;
+import org.miradi.dialogfields.DashboardCommentsField;
 import org.miradi.dialogfields.DashboardFlagIconField;
 import org.miradi.dialogfields.DashboardStatusIconField;
 import org.miradi.dialogfields.DashboardStatusLabelField;
 import org.miradi.dialogfields.ObjectDataInputField;
-import org.miradi.dialogfields.ReadonlyStringChoiceMapField;
 import org.miradi.dialogs.dashboard.AbstractLongDescriptionProvider;
 import org.miradi.dialogs.dashboard.DashboardRowDefinition;
 import org.miradi.dialogs.dashboard.DashboardRowDefinitionManager;
@@ -156,7 +156,7 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		ObjectDataInputField statusTextField = new DashboardStatusLabelField(getProject(), getDashboard().getRef(), choiceItem.getCode(), progressStatusQuestion);
 		addUpdatedCustomField(statusTextField);
 		
-		ObjectDataInputField commentsField = new ReadonlyStringChoiceMapField(getMainWindow(), getDashboard().getRef(), Dashboard.TAG_USER_COMMENTS_MAP, choiceItem.getCode());
+		ObjectDataInputField commentsField = new DashboardCommentsField(getProject(), getDashboard().getRef(), choiceItem.getCode());
 		commentsField.getComponent().setFont(getCommentsFieldFont());
 		addUpdatedCustomField(commentsField);
 		
