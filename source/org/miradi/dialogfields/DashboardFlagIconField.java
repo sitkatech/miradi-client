@@ -41,7 +41,7 @@ public class DashboardFlagIconField extends	AsbtractDashboardClickableQuestionFi
 	}
 	
 	@Override
-	protected String getCode(String stringCodeMapAsString, String stringMapCodeToUse) throws Exception
+	protected String getMapValue(String stringCodeMapAsString, String stringMapCodeToUse) throws Exception
 	{
 		AbstractStringKeyMap map = new StringCodeListMap(stringCodeMapAsString);
 		CodeList codes = new CodeList(map.get(stringMapCode));

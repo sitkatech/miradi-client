@@ -71,7 +71,7 @@ abstract public class AbstractDashboardClickableField extends ObjectDataInputFie
 	{
 		try
 		{
-			String code = getCode(stringCodeMapAsString, stringMapCode);
+			String code = getMapValue(stringCodeMapAsString, stringMapCode);
 			updateLabelComponent(labelComponent, code);
 		}
 		catch (Exception e)
@@ -81,7 +81,7 @@ abstract public class AbstractDashboardClickableField extends ObjectDataInputFie
 		}
 	}
 
-	protected String getCode(String stringCodeMapAsString, String stringMapCodeToUse) throws Exception
+	protected String getMapValue(String stringCodeMapAsString, String stringMapCodeToUse) throws Exception
 	{
 		AbstractStringKeyMap map = createStringKeyMap(stringCodeMapAsString);
 		return map.get(stringMapCodeToUse);
