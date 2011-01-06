@@ -44,9 +44,8 @@ abstract public class AsbtractDashboardClickableQuestionField extends AbstractDa
 {
 	public AsbtractDashboardClickableQuestionField(Project projectToUse, ORef refToUse, String stringMapCodeToUse, String tagToUse, ChoiceQuestion questionToUse)
 	{
-		super(projectToUse, refToUse, tagToUse);
+		super(projectToUse, refToUse, tagToUse, stringMapCodeToUse);
 		
-		stringMapCode = stringMapCodeToUse;
 		question = questionToUse;
 		iconComponent = new PanelTitleLabel();
 		iconComponent.addMouseListener(new ClickHandler());
@@ -119,6 +118,5 @@ abstract public class AsbtractDashboardClickableQuestionField extends AbstractDa
 	abstract protected void updateLabel(ChoiceItem progressChoiceItem, PanelTitleLabel componentToUpdate);
 
 	private PanelTitleLabel iconComponent;
-	protected String stringMapCode;
 	private ChoiceQuestion question;
 }

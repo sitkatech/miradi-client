@@ -25,8 +25,13 @@ import org.miradi.project.Project;
 
 abstract public class AbstractDashboardClickableField extends ObjectDataInputField
 {
-	public AbstractDashboardClickableField(Project projectToUse, ORef refToUse,	String tagToUse)
+	public AbstractDashboardClickableField(Project projectToUse, ORef refToUse,	String tagToUse, String stringMapCodeToUse)
 	{
 		super(projectToUse, refToUse, tagToUse);
+		
+		stringMapCode = stringMapCodeToUse;
 	}
+	
+	
+	protected String stringMapCode;
 }
