@@ -28,9 +28,9 @@ import org.miradi.icons.OpenStandardsNotStartedIcon;
 import org.miradi.main.EAM;
 import org.miradi.objects.Dashboard;
 
-public class OpenStandardsDynamicProgressStatuQuestion extends DynamicChoiceQuestion
+public class OpenStandardsDynamicProgressStatusQuestion extends DynamicChoiceQuestion
 {
-	public OpenStandardsDynamicProgressStatuQuestion(Dashboard dashboardToUse, String thirdLevelCodeToUse)
+	public OpenStandardsDynamicProgressStatusQuestion(Dashboard dashboardToUse, String thirdLevelCodeToUse)
 	{
 		dashboard = dashboardToUse;
 		thirdLevelCode = thirdLevelCodeToUse;
