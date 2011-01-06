@@ -44,20 +44,20 @@ abstract public class AbstractDashboardClickableField extends ObjectDataInputFie
 		super(projectToUse, refToUse, tagToUse);
 		
 		stringMapCode = stringMapCodeToUse;
-		iconComponent = new PanelTitleLabel();
-		iconComponent.addMouseListener(new ClickHandler());
+		labelComponent = new PanelTitleLabel();
+		labelComponent.addMouseListener(new ClickHandler());
 	}
 	
 	@Override
 	public void updateEditableState()
 	{
-		iconComponent.setEnabled(true);
+		labelComponent.setEnabled(true);
 	}
 
 	@Override
 	public JComponent getComponent()
 	{
-		return iconComponent;
+		return labelComponent;
 	}
 
 	@Override
@@ -116,5 +116,5 @@ abstract public class AbstractDashboardClickableField extends ObjectDataInputFie
 	abstract protected void updateLabelComponent(String code);
 	
 	protected String stringMapCode;
-	protected PanelTitleLabel iconComponent;
+	protected PanelTitleLabel labelComponent;
 }

@@ -44,6 +44,6 @@ public class DashboardCommentsField extends AbstractDashboardClickableField
 	@Override
 	protected void updateLabelComponent(String code)
 	{
-		iconComponent.setText(code);
+		labelComponent.setText(code);
 	}
 }
