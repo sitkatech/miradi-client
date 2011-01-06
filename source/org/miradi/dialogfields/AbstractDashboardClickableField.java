@@ -71,8 +71,8 @@ abstract public class AbstractDashboardClickableField extends ObjectDataInputFie
 	{
 		try
 		{
-			String code = getMapValue(stringCodeMapAsString, stringMapCode);
-			updateLabelComponent(labelComponent, code);
+			String mapValue = getMapValue(stringCodeMapAsString, stringMapCode);
+			updateLabelComponent(labelComponent, mapValue);
 		}
 		catch (Exception e)
 		{
