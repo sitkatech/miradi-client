@@ -46,7 +46,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.DynamicChoiceWithRootChoiceItem;
-import org.miradi.questions.OpenStandardsDynamicProgressStatuQuestion;
+import org.miradi.questions.OpenStandardsDynamicProgressStatusQuestion;
 import org.miradi.utils.FillerLabel;
 
 import com.jhlabs.awt.GridLayoutPlus;
@@ -149,7 +149,7 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		addFieldToList(flagIconField);
 		flagIconField.updateFromObject();
 		
-		ChoiceQuestion progressStatusQuestion = new OpenStandardsDynamicProgressStatuQuestion(getDashboard(), choiceItem.getCode());
+		ChoiceQuestion progressStatusQuestion = new OpenStandardsDynamicProgressStatusQuestion(getDashboard(), choiceItem.getCode());
 		ObjectDataInputField statusIconField = new DashboardStatusIconField(getProject(), getDashboard().getRef(), choiceItem.getCode(), progressStatusQuestion);
 		addFieldToList(statusIconField);
 		statusIconField.updateFromObject();

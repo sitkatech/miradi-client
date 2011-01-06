@@ -39,7 +39,7 @@ import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.questions.OpenStandardsDynamicProgressStatuQuestion;
+import org.miradi.questions.OpenStandardsDynamicProgressStatusQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.StrategyRatingSummaryQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
@@ -426,7 +426,7 @@ public class Dashboard extends BaseObject
 				return computeStatusCodeFromStatistics(rowDefinitions);			
 		}
 		
-		return OpenStandardsDynamicProgressStatuQuestion.NOT_STARTED_CODE; 
+		return OpenStandardsDynamicProgressStatusQuestion.NOT_STARTED_CODE; 
 	}
 	
 	private String getEffectiveStatusMapAsString() throws Exception
@@ -444,7 +444,7 @@ public class Dashboard extends BaseObject
 			Vector<DashboardRowDefinition> rowDefinitions = getDashboardRowDefinitionManager().getRowDefinitions(thirdLevelCode);
 			
 			String progressCode = userStatusChoiceMap.getStringChoiceMap().get(thirdLevelCode);
-			if (progressCode.equals(OpenStandardsDynamicProgressStatuQuestion.NOT_SPECIFIED_CODE))
+			if (progressCode.equals(OpenStandardsDynamicProgressStatusQuestion.NOT_SPECIFIED_CODE))
 				progressCode = computeStatusCodeFromStatistics(rowDefinitions);
 			
 			map.put(thirdLevelCode, progressCode);
@@ -480,7 +480,7 @@ public class Dashboard extends BaseObject
 	private String getStatusCode(Collection<String> rawDataValues)
 	{
 		if (rawDataValues.isEmpty())
-			return OpenStandardsDynamicProgressStatuQuestion.NOT_STARTED_CODE;
+			return OpenStandardsDynamicProgressStatusQuestion.NOT_STARTED_CODE;
 		
 		int valuesWithDataCount = 0;
 		for (String rawData : rawDataValues)
@@ -490,12 +490,12 @@ public class Dashboard extends BaseObject
 		}
 		
 		if (valuesWithDataCount == 0)
-			return OpenStandardsDynamicProgressStatuQuestion.NOT_STARTED_CODE;
+			return OpenStandardsDynamicProgressStatusQuestion.NOT_STARTED_CODE;
 			
 		if (valuesWithDataCount < rawDataValues.size())
-			return OpenStandardsDynamicProgressStatuQuestion.NOT_STARTED_CODE;
+			return OpenStandardsDynamicProgressStatusQuestion.NOT_STARTED_CODE;
 			
-		return OpenStandardsDynamicProgressStatuQuestion.IN_PROGRESS_CODE;
+		return OpenStandardsDynamicProgressStatusQuestion.IN_PROGRESS_CODE;
 	}
 	
 	private String getIndicatorAndMethodsWithProgressReportPerncet() throws Exception
