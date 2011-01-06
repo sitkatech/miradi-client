@@ -37,4 +37,10 @@ public class ReadonlyStringChoiceMapField extends ObjectStringMapInputField
 	{
 		PanelLabelWithSelectableText.makeReadonlySelectable(component);
 	}
+	
+	@Override
+	public boolean allowEdits()
+	{
+		return false;
+	}
 }
