@@ -40,9 +40,9 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.Translation;
 
 
-abstract public class AsbtractDashboardClickableField extends ObjectDataInputField
+abstract public class AsbtractDashboardClickableQuestionField extends ObjectDataInputField
 {
-	public AsbtractDashboardClickableField(Project projectToUse, ORef refToUse, String stringMapCodeToUse, String tagToUse, ChoiceQuestion questionToUse)
+	public AsbtractDashboardClickableQuestionField(Project projectToUse, ORef refToUse, String stringMapCodeToUse, String tagToUse, ChoiceQuestion questionToUse)
 	{
 		super(projectToUse, refToUse, tagToUse);
 		
