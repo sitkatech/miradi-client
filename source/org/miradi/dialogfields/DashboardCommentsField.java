@@ -43,7 +43,7 @@ public class DashboardCommentsField extends AbstractDashboardClickableField
 	protected void setComponentPreferredSize(JComponent component)
 	{
 		Dimension preferredSize = component.getPreferredSize();
-		int ZERO_ENSURES_NARROWER_THAN_PARENT = 0;
+		final int ZERO_ENSURES_NARROWER_THAN_PARENT = 0;
 		component.setPreferredSize(new Dimension(ZERO_ENSURES_NARROWER_THAN_PARENT, preferredSize.height));
 	}
 
