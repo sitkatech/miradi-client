@@ -45,7 +45,12 @@ abstract public class AbstractDashboardClickableField extends ObjectDataInputFie
 		
 		stringMapCode = stringMapCodeToUse;
 		labelComponent = new PanelTitleLabel();
+		setComponentPreferredSize(labelComponent);
 		labelComponent.addMouseListener(new ClickHandler());
+	}
+	
+	protected void setComponentPreferredSize(JComponent component)
+	{
 	}
 	
 	@Override
