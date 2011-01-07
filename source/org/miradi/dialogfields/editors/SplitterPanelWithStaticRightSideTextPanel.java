@@ -28,9 +28,9 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.questions.ChoiceQuestion;
 
-public class QuestionWithDescriptionEditorPanel extends SplitterPanelWithRightSideTextPanel
+public class SplitterPanelWithStaticRightSideTextPanel extends SplitterPanelWithRightSideTextPanel
 {
-	public QuestionWithDescriptionEditorPanel(MainWindow mainWindowToUse, ChoiceQuestion questionToUse, OneFieldObjectDataInputPanel leftPanelEditorComponentToUse) throws Exception
+	public SplitterPanelWithStaticRightSideTextPanel(MainWindow mainWindowToUse, ChoiceQuestion questionToUse, OneFieldObjectDataInputPanel leftPanelEditorComponentToUse) throws Exception
 	{
 		super(mainWindowToUse, leftPanelEditorComponentToUse);		
 	}		
