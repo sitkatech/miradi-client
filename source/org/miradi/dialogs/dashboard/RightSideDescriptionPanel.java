@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.dashboard;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 
 import javax.swing.JPanel;
 import javax.swing.event.ListSelectionEvent;
@@ -38,12 +39,14 @@ import org.miradi.wizard.SkeletonWizardStep;
 
 public class RightSideDescriptionPanel extends JPanel implements ListSelectionListener
 {
-	public RightSideDescriptionPanel(MainWindow mainWindowToUse, AbstractLongDescriptionProvider mainDescriptionProvider, DisposablePanel activeParentPanelToUse) throws Exception
+	public RightSideDescriptionPanel(MainWindow mainWindowToUse, AbstractLongDescriptionProvider mainDescriptionProvider, DisposablePanel activeParentPanelToUse, Color backgroundColor) throws Exception
 	{
 		setLayout(new BorderLayout());
 		
 		activeParentPanel = activeParentPanelToUse;
 		mainWindow = mainWindowToUse;
+		bg = backgroundColor;
+		
 		viewer = new RightSideDescriptionHtmlViewer(mainWindow);
 		add(new FastScrollPane(viewer));
 		
@@ -95,7 +98,7 @@ public class RightSideDescriptionPanel extends JPanel implements ListSelectionLi
 		return mainWindow;
 	}
 	
-	public static class RightSideDescriptionHtmlViewer extends FlexibleWidthHtmlViewer
+	public class RightSideDescriptionHtmlViewer extends FlexibleWidthHtmlViewer
 	{
 		private RightSideDescriptionHtmlViewer(MainWindow mainWindow)
 		{
@@ -107,11 +110,13 @@ public class RightSideDescriptionPanel extends JPanel implements ListSelectionLi
 		{
 			super.customizeStyleSheet(style);
 			
-			style.addRule("body {background-color: " + AppPreferences.getWizardBackgroundColorForCss() + ";}");
-		}	
+			style.addRule("body {background-color: " + AppPreferences.convertToHexString(bg) + ";}");
+		}
+		
 	}
 	
 	private MainWindow mainWindow;
 	private RightSideDescriptionHtmlViewer viewer;
 	private DisposablePanel activeParentPanel;
+	private Color bg;
 }

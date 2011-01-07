@@ -20,10 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields.editors;
 
+import java.awt.Color;
+
 import org.miradi.dialogs.base.OneFieldObjectDataInputPanel;
 import org.miradi.dialogs.dashboard.AbstractLongDescriptionProvider;
 import org.miradi.dialogs.dashboard.SplitterPanelWithRightSideTextPanel;
 import org.miradi.dialogs.dashboard.StaticLongDescriptionProvider;
+import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.questions.ChoiceQuestion;
@@ -45,5 +48,11 @@ public class SplitterPanelWithStaticRightSideTextPanel extends SplitterPanelWith
 	public String getPanelDescription()
 	{
 		return EAM.text("Edit..");
+	}
+
+	@Override
+	protected Color getRightPanelBackgroundColor()
+	{
+		return AppPreferences.getWizardBackgroundColor();
 	}
 }
