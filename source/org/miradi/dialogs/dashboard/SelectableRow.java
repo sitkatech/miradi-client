@@ -84,7 +84,6 @@ abstract public class SelectableRow
 	
 	private void setColors(JComponent component, Color foregroundColor, Color backgroundColor)
 	{
-		component.setOpaque(true);
 		component.setForeground(foregroundColor);
 		component.setBackground(backgroundColor);
 	}

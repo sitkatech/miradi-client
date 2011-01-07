@@ -27,6 +27,7 @@ import java.text.ParseException;
 import javax.swing.JComponent;
 
 import org.martus.swing.Utilities;
+import org.miradi.dialogs.base.AbstractOpenStandardsQuestionPanel;
 import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.base.ModalDialogWithClose;
 import org.miradi.dialogs.dashboard.DashboardProgressPanel;
@@ -51,6 +52,8 @@ abstract public class AbstractDashboardClickableField extends ObjectDataInputFie
 	
 	protected void configureComponent(JComponent component)
 	{
+		component.setOpaque(true);
+		component.setBackground(AbstractOpenStandardsQuestionPanel.getItemBackgroundColor());
 	}
 	
 	@Override

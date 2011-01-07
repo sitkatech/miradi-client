@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.base;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.util.HashMap;
 import java.util.Vector;
@@ -40,6 +41,7 @@ import org.miradi.dialogs.dashboard.DashboardRowDefinitionManager;
 import org.miradi.dialogs.fieldComponents.PanelLabelWithSelectableText;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.layout.MiradiGridLayoutPlus;
+import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Dashboard;
@@ -58,6 +60,7 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 	{
 		super(projectToUse, getDashboard(projectToUse).getRef());
 		
+		setBackground(DASHBOARD_BACKGROUND_COLOR);
 		setLayout(createLayoutManager());
 		question = questionToUse;
 		rowSelectionHandler = new DashboardSingleRowSelectionHandler();
@@ -160,8 +163,11 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		commentsField.getComponent().setFont(getCommentsFieldFont());
 		addUpdatedCustomField(commentsField);
 		
-		addRow(choiceItem.getLongDescriptionProvider(), level, flagIconField.getComponent(), statusIconField.getComponent(), new PanelTitleLabel(choiceItem.getLabel()), statusTextField.getComponent());
-		if (commentsField.hasComments())
+		PanelTitleLabel labelComponent = new PanelTitleLabel(choiceItem.getLabel());
+		labelComponent.setOpaque(true);
+		labelComponent.setBackground(getItemBackgroundColor());
+		addRow(choiceItem.getLongDescriptionProvider(), level, flagIconField.getComponent(), statusIconField.getComponent(), labelComponent, statusTextField.getComponent());
+		if(commentsField.hasComments())
 			addDefaultFontRow(choiceItem.getLongDescriptionProvider(), level, new FillerLabel(), new FillerLabel(), new FillerLabel(), commentsField.getComponent());
 	}
 
@@ -175,9 +181,18 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 	{
 		String rightColumnTranslatedText = EAM.substitute(rightColumnText, tokenReplacementMap);
 		JComponent leftComponent = new PanelLabelWithSelectableText(leftColumnText);
+		leftComponent.setOpaque(true);
+		leftComponent.setBackground(getItemBackgroundColor());
 		JComponent rightComponent = new PanelLabelWithSelectableText(rightColumnTranslatedText);
+		rightComponent.setOpaque(true);
+		rightComponent.setBackground(getItemBackgroundColor());
 		
 		addRow(longDescriptionProvider, level, new FillerLabel(), new FillerLabel(), leftComponent, rightComponent);
+	}
+
+	public static Color getItemBackgroundColor()
+	{
+		return AppPreferences.getWizardBackgroundColor();
 	}
 
 	private void addRow(AbstractLongDescriptionProvider longDescriptionProvider, int level,	JComponent flagIconComponent, JComponent iconComponent,	JComponent leftComponent, JComponent rightComponent)
@@ -209,6 +224,8 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 	private Box createHorizontalBoxWithIndents(int level)
 	{
 		Box box = Box.createHorizontalBox();
+		box.setOpaque(true);
+		box.setBackground(getItemBackgroundColor());
 		for (int index = 0; index < level; ++index)
 		{
 			box.add(Box.createHorizontalStrut(INDENT_PER_LEVEL));
@@ -280,6 +297,8 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		return getDashboard().getDashboardRowDefinitionManager();
 	}
 
+	public static final Color DASHBOARD_BACKGROUND_COLOR = Color.WHITE;
+	
 	private DynamicChoiceWithRootChoiceItem question;
 	private SingleRowSelectionHandler rowSelectionHandler;
 	protected static final int INDENT_PER_LEVEL = 25;
