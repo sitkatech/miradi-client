@@ -25,7 +25,7 @@ import java.util.Vector;
 
 import javax.swing.JComponent;
 
-import org.miradi.main.AppPreferences;
+import org.miradi.dialogs.base.AbstractOpenStandardsQuestionPanel;
 
 public class DashboardSelectableRow extends SelectableRow
 {
@@ -46,14 +46,11 @@ public class DashboardSelectableRow extends SelectableRow
 
 	protected Color getSelectedBackgroundColor()
 	{
-		return DASHBOARD_SELECTED_BACKGROUND_COLOR;
+		return AbstractOpenStandardsQuestionPanel.DASHBOARD_BACKGROUND_COLOR;
 	}
 
 	protected Color getUnselectedBackgroundColor()
 	{
-		return DASHBOARD_UNSELECTED_BACKGROUND_COLOR;
+		return AbstractOpenStandardsQuestionPanel.getItemBackgroundColor();
 	}
-	
-	public static final Color DASHBOARD_UNSELECTED_BACKGROUND_COLOR = AppPreferences.getDataPanelBackgroundColor();
-	private static final Color DASHBOARD_SELECTED_BACKGROUND_COLOR = new Color(0xEA, 0xF5, 0xDA);
 }
