@@ -44,6 +44,13 @@ public class MiradiGridLayoutPlus extends GridLayoutPlus
 		setColWeight(column, DO_NOT_GROW);	
 	}
 	
+	public void setGaps(int newHorizontalGap, int newVerticalGap)
+	{
+		hGap = newHorizontalGap;
+		vGap = newVerticalGap;
+	}
+	
+	
 	private static final int DO_NOT_GROW = 0;
 	private static final int GROW_TO_FILL = 1;
 }
