@@ -47,6 +47,11 @@ abstract public class SelectableRow
 		return descriptionProvider;
 	}
 	
+	public boolean isSelected()
+	{
+		return isSelected;
+	}
+
 	public void selectRow() throws Exception
 	{
 		isSelected = true;
@@ -56,21 +61,6 @@ abstract public class SelectableRow
 		}
 	}
 	
-	private void unSelect()
-	{
-		isSelected = false;
-	}
-
-	public boolean isSelected()
-	{
-		return isSelected;
-	}
-
-	private void setSelectionBorder(JComponent component)
-	{
-		setColors(component, getSelectedForegroundColor(), getSelectedBackgroundColor());
-	}
-
 	public void clearSelection()
 	{
 		unSelect();
@@ -78,6 +68,16 @@ abstract public class SelectableRow
 		{
 			setColors(selectableComponents.get(index), getUnselectedForegroundColor(), getUnselectedBackgroundColor());
 		}
+	}
+
+	private void unSelect()
+	{
+		isSelected = false;
+	}
+
+	private void setSelectionBorder(JComponent component)
+	{
+		setColors(component, getSelectedForegroundColor(), getSelectedBackgroundColor());
 	}
 
 	abstract protected Color getSelectedForegroundColor();
