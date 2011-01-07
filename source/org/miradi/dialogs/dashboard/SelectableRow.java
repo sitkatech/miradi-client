@@ -72,7 +72,8 @@ abstract public class SelectableRow
 		isSelected = shouldSelect;
 		for (int index = 0; index < selectableComponents.size(); ++index)
 		{
-			setColors(selectableComponents.get(index), fg, bg);
+			JComponent component = selectableComponents.get(index);
+			setColors(component, fg, bg);
 		}
 	}
 
