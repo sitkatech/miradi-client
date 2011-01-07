@@ -268,6 +268,24 @@ public class Dashboard extends BaseObject
 			
 			if (fieldTag.equals(PSEUDO_INDICATORS_WITH_DESIRED_FUTURE_STATUS_SPECIFIED_PERCENTAGE))
 				return getIndicatorsWithDesiredFutureStatusSpecifiedPercentage();
+			
+			if (fieldTag.equals(PSEUDO_INDICATORS_WITH_NO_MEASUREMENT_COUNT))
+				return getIndicatorsWithNoMeasurementCount();
+			
+			if (fieldTag.equals(PSEUDO_INDICATORS_WITH_ONE_MEASUREMENT_COUNT))
+				return getIndicatorsWithOneMeasurementCount();
+			
+			if (fieldTag.equals(PSEUDO_INDICATORS_WITH_MORE_THAN_ONE_MEASUREMENT_COUNT))
+				return getIndicatorsWithMoreThanOneMeasurementCount();
+			
+			if (fieldTag.equals(PSEUDO_OBJECTIVES_WITH_NO_PERCENT_COMPLETE_RECORD_COUNT))
+				return getObjectivesWithNoPercentCompleteRecordCount();
+			
+			if (fieldTag.equals(PSEUDO_OBJECTIVES_WITH_ONE_PERCENT_COMPLETE_RECORD_COUNT))
+				return getObjectivesWithOnePercentCompleteRecordCount();
+			
+			if (fieldTag.equals(PSEUDO_OBJECTIVES_WITH_MORE_THAN_ONE_PERCENT_COMPLETE_RECORD_COUNT))
+				return getObjectivesWithMoreThanOnePercentCompleteRecordCount();
 					
 			return super.getPseudoData(fieldTag);
 		}
@@ -278,6 +296,79 @@ public class Dashboard extends BaseObject
 		}
 	}
 	
+	private String getIndicatorsWithNoMeasurementCount() throws Exception
+	{
+		final int LOWER_BOUND = 0;
+		final int UPPER_BOUND = 0;
+
+		return getMeasurementCount(LOWER_BOUND, UPPER_BOUND);
+	}
+
+	private String getIndicatorsWithOneMeasurementCount() throws Exception
+	{
+		final int LOWER_BOUND = 1;
+		final int UPPER_BOUND = 1;
+
+		return getMeasurementCount(LOWER_BOUND, UPPER_BOUND);
+	}
+
+	private String getIndicatorsWithMoreThanOneMeasurementCount() throws Exception
+	{
+		final int LOWER_BOUND = 2;
+		final int UPPER_BOUND = Integer.MAX_VALUE;
+		
+		return getMeasurementCount(LOWER_BOUND, UPPER_BOUND);
+	}
+
+	private String getObjectivesWithNoPercentCompleteRecordCount() throws Exception
+	{		
+		final int LOWER_BOUND = 0;
+		final int UPPER_BOUND = 0;
+	
+		return getProgressPercentCount(LOWER_BOUND, UPPER_BOUND);
+	}
+
+	private String getObjectivesWithOnePercentCompleteRecordCount() throws Exception
+	{
+		final int LOWER_BOUND = 1;
+		final int UPPER_BOUND = 1;
+		
+		return getProgressPercentCount(LOWER_BOUND, UPPER_BOUND);
+	}
+
+	private String getObjectivesWithMoreThanOnePercentCompleteRecordCount() throws Exception
+	{
+		
+		final int LOWER_BOUND = 2;
+		final int UPPER_BOUND = Integer.MAX_VALUE;
+		
+		return getProgressPercentCount(LOWER_BOUND, UPPER_BOUND);
+	}
+
+	private String getProgressPercentCount(final int LOWER_BOUND, final int UPPER_BOUND) throws Exception
+	{
+		return getAnnotationCountWithinBounds(Objective.getObjectType(), Objective.TAG_PROGRESS_PERCENT_REFS, LOWER_BOUND, UPPER_BOUND);
+	}
+	
+	private String getMeasurementCount(final int LOWER_BOUND, final int UPPER_BOUND) throws Exception
+	{
+		return getAnnotationCountWithinBounds(Indicator.getObjectType(), Indicator.TAG_MEASUREMENT_REFS, LOWER_BOUND, UPPER_BOUND);
+	}
+	
+	private String getAnnotationCountWithinBounds(int objectType, String tag, final int LOWER_BOUND, final int UPPER_BOUND)	throws Exception
+	{
+		Vector<BaseObject> baseObjects = getProject().getPool(objectType).getAllObjects();
+		ORefSet baseObjectsWithAnnotationCountWithinBounds = new ORefSet();
+		for(BaseObject baseObject : baseObjects)
+		{
+			int listSize = baseObject.getRefList(tag).size();
+			if (listSize >= LOWER_BOUND && listSize <= UPPER_BOUND)
+				baseObjectsWithAnnotationCountWithinBounds.addRef(baseObject);
+		}
+		
+		return Integer.toString(baseObjectsWithAnnotationCountWithinBounds.size());
+	}
+
 	private String getIndicatorsWithDesiredFutureStatusSpecifiedPercentage()
 	{
 		Indicator[] indicators = getProject().getIndicatorPool().getAllIndicators();
@@ -1050,6 +1141,12 @@ public class Dashboard extends BaseObject
 		threatReductionResultIndicatorsCount = new PseudoStringData(PSEUDO_THREAT_REDUCTION_RESULT_INDICATORS_COUNT);
 		otherOrganizationCount = new PseudoStringData(PSEUDO_OTHER_ORGANIZATION_COUNT);
 		indicatorsWithFutureStatusSpecifiedPercentage = new PseudoStringData(PSEUDO_INDICATORS_WITH_DESIRED_FUTURE_STATUS_SPECIFIED_PERCENTAGE);
+		indicatorsWithNoMeasurementCount = new PseudoStringData(PSEUDO_INDICATORS_WITH_NO_MEASUREMENT_COUNT);
+		indicatorsWithOneMeasurementCount = new PseudoStringData(PSEUDO_INDICATORS_WITH_ONE_MEASUREMENT_COUNT);
+		indicatorsWithMoreThanOneMeasurementCount = new PseudoStringData(PSEUDO_INDICATORS_WITH_MORE_THAN_ONE_MEASUREMENT_COUNT);
+		objectivesWithNoPercentCompleteRecordCount = new PseudoStringData(PSEUDO_OBJECTIVES_WITH_NO_PERCENT_COMPLETE_RECORD_COUNT);
+		objectivesWithOnePercentCompleteRecordCount = new PseudoStringData(PSEUDO_OBJECTIVES_WITH_ONE_PERCENT_COMPLETE_RECORD_COUNT);
+		objectivesWithMoreThanOnePercentCompleteRecordCount = new PseudoStringData(PSEUDO_OBJECTIVES_WITH_MORE_THAN_ONE_PERCENT_COMPLETE_RECORD_COUNT);
 		
 		userStatusChoiceMap = new StringChoiceMapData(TAG_USER_STATUS_CHOICE_MAP);
 		userCommentsMap = new StringStringMapData(TAG_USER_COMMENTS_MAP);
@@ -1115,6 +1212,12 @@ public class Dashboard extends BaseObject
 		addPresentationDataField(PSEUDO_THREAT_REDUCTION_RESULT_INDICATORS_COUNT, threatReductionResultIndicatorsCount);
 		addPresentationDataField(PSEUDO_OTHER_ORGANIZATION_COUNT, otherOrganizationCount);
 		addPresentationDataField(PSEUDO_INDICATORS_WITH_DESIRED_FUTURE_STATUS_SPECIFIED_PERCENTAGE, indicatorsWithFutureStatusSpecifiedPercentage);
+		addPresentationDataField(PSEUDO_INDICATORS_WITH_NO_MEASUREMENT_COUNT, indicatorsWithNoMeasurementCount);
+		addPresentationDataField(PSEUDO_INDICATORS_WITH_ONE_MEASUREMENT_COUNT, indicatorsWithOneMeasurementCount);
+		addPresentationDataField(PSEUDO_INDICATORS_WITH_MORE_THAN_ONE_MEASUREMENT_COUNT, indicatorsWithMoreThanOneMeasurementCount);
+		addPresentationDataField(PSEUDO_OBJECTIVES_WITH_NO_PERCENT_COMPLETE_RECORD_COUNT, objectivesWithNoPercentCompleteRecordCount);
+		addPresentationDataField(PSEUDO_OBJECTIVES_WITH_ONE_PERCENT_COMPLETE_RECORD_COUNT, objectivesWithOnePercentCompleteRecordCount);
+		addPresentationDataField(PSEUDO_OBJECTIVES_WITH_MORE_THAN_ONE_PERCENT_COMPLETE_RECORD_COUNT, objectivesWithMoreThanOnePercentCompleteRecordCount);
 		
 		addPresentationDataField(TAG_USER_STATUS_CHOICE_MAP, userStatusChoiceMap);
 		addPresentationDataField(TAG_USER_COMMENTS_MAP, userCommentsMap);
@@ -1184,6 +1287,12 @@ public class Dashboard extends BaseObject
 	public static final String PSEUDO_THREAT_REDUCTION_RESULT_INDICATORS_COUNT = "ThreatReductionResultIndicatorsCount";
 	public static final String PSEUDO_OTHER_ORGANIZATION_COUNT = "OtherOrganizationCount";
 	public static final String PSEUDO_INDICATORS_WITH_DESIRED_FUTURE_STATUS_SPECIFIED_PERCENTAGE = "IndicatorsWithDesiredFutureStatusSpecifiedPercentage";
+	public static final String PSEUDO_INDICATORS_WITH_NO_MEASUREMENT_COUNT = "IndicatorsWithNoMeasurementCount";
+	public static final String PSEUDO_INDICATORS_WITH_ONE_MEASUREMENT_COUNT = "IndicatorsWithOneMeasurementCount";
+	public static final String PSEUDO_INDICATORS_WITH_MORE_THAN_ONE_MEASUREMENT_COUNT = "IndicatorsWithMoreThanOneMeasurementCount";
+	public static final String PSEUDO_OBJECTIVES_WITH_NO_PERCENT_COMPLETE_RECORD_COUNT = "ObjectivesWithNoPercentCompleteRecordCount";
+	public static final String PSEUDO_OBJECTIVES_WITH_ONE_PERCENT_COMPLETE_RECORD_COUNT = "ObjectivesWithOnePercentCompleteRecordCount";
+	public static final String PSEUDO_OBJECTIVES_WITH_MORE_THAN_ONE_PERCENT_COMPLETE_RECORD_COUNT = "ObjectivesWithMoreThanOnePercentCompleteRecordCount";
 	
 	public static final String TAG_USER_STATUS_CHOICE_MAP = "UserStatusChoiceMap";
 	public static final String TAG_USER_COMMENTS_MAP = "UserStatusCommentsMap";
@@ -1250,6 +1359,12 @@ public class Dashboard extends BaseObject
 	private PseudoStringData threatReductionResultIndicatorsCount;
 	private PseudoStringData otherOrganizationCount;
 	private PseudoStringData indicatorsWithFutureStatusSpecifiedPercentage;
+	private PseudoStringData indicatorsWithNoMeasurementCount;
+	private PseudoStringData indicatorsWithOneMeasurementCount;
+	private PseudoStringData indicatorsWithMoreThanOneMeasurementCount;
+	private PseudoStringData objectivesWithNoPercentCompleteRecordCount;
+	private PseudoStringData objectivesWithOnePercentCompleteRecordCount;
+	private PseudoStringData objectivesWithMoreThanOnePercentCompleteRecordCount;
 	
 	private StringChoiceMapData userStatusChoiceMap;
 	private StringStringMapData userCommentsMap;

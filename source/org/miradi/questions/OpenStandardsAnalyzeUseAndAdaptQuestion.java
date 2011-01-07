@@ -33,7 +33,7 @@ public class OpenStandardsAnalyzeUseAndAdaptQuestion extends DynamicChoiceWithRo
 		
 		ChoiceItemWithChildren processStep4a = new ChoiceItemWithChildren(PROCESS_STEP_4A_CODE, getProcessStep4a(), EAM.text(""), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_4A_FILENAME));
 		headerChoiceItem.addChild(processStep4a);
-		processStep4a.addChild(new ChoiceItem("DevelopSystemsForRecordingStoringProcessingAndBackingUpProjectData", EAM.text("Develop systems for recording, storing, processing and backing up project data"), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_4A_FILENAME)));
+		processStep4a.addChild(new ChoiceItem(DEVELOP_SYSTEMS_FOR_RECORDING_STORING_PROCESSING_AND_BACKING_UP_DATA_CODE, EAM.text("Develop systems for recording, storing, processing and backing up project data"), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_4A_FILENAME)));
 		
 		ChoiceItemWithChildren processStep4bChoiceItem = new ChoiceItemWithChildren(PROCESS_STEP_4B_CODE, getProcessStep4b(), EAM.text(""), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_4B_FILENAME));
 		headerChoiceItem.addChild(processStep4bChoiceItem);
@@ -77,4 +77,6 @@ public class OpenStandardsAnalyzeUseAndAdaptQuestion extends DynamicChoiceWithRo
 	public static final String PROCESS_STEP_4A_CODE = "ProcessStep4A";
 	public static final String PROCESS_STEP_4B_CODE = "ProcessStep4B";
 	public static final String PROCESS_STEP_4C_CODE = "ProcessStep4C";
+	
+	public static final String DEVELOP_SYSTEMS_FOR_RECORDING_STORING_PROCESSING_AND_BACKING_UP_DATA_CODE = "DevelopSystemsForRecordingStoringProcessingAndBackingUpProjectData";
 }
