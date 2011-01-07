@@ -56,7 +56,8 @@ abstract public class SelectableRow
 	{
 		Color fg = getSelectedForegroundColor();
 		Color bg = getSelectedBackgroundColor();
-		isSelected = true;
+		boolean shouldSelect = true;
+		isSelected = shouldSelect;
 		for (int index = 0; index < selectableComponents.size(); ++index)
 		{
 			setColors(selectableComponents.get(index), fg, bg);
@@ -67,7 +68,8 @@ abstract public class SelectableRow
 	{
 		Color fg = getUnselectedForegroundColor();
 		Color bg = getUnselectedBackgroundColor();
-		isSelected = false;
+		boolean shouldSelect = false;
+		isSelected = shouldSelect;
 		for (int index = 0; index < selectableComponents.size(); ++index)
 		{
 			setColors(selectableComponents.get(index), fg, bg);
