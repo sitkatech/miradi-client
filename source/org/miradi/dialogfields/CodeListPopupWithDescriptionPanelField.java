@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields;
 
-import org.miradi.dialogfields.editors.QuestionWithDescriptionEditorPanel;
+import org.miradi.dialogfields.editors.SplitterPanelWithStaticRightSideTextPanel;
 import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.base.OneFieldObjectDataInputPanel;
 import org.miradi.main.MainWindow;
@@ -44,7 +44,7 @@ public class CodeListPopupWithDescriptionPanelField extends	AbstractEditableCode
 		OneFieldObjectDataInputPanel leftPanel = new OneFieldObjectDataInputPanel(getProject(), getORef(), getTag(), field);
 		
 		if (leftComponent.getQuestion().hasLongDescriptionProvider())
-			return new QuestionWithDescriptionEditorPanel(mainWindow, question, leftPanel);
+			return new SplitterPanelWithStaticRightSideTextPanel(mainWindow, question, leftPanel);
 
 		return leftPanel;
 	}
