@@ -22,6 +22,7 @@ package org.miradi.dialogs.dashboard;
 
 import java.awt.Color;
 import java.awt.event.MouseListener;
+import java.util.HashMap;
 import java.util.Vector;
 
 import javax.swing.JComponent;
@@ -32,6 +33,8 @@ abstract public class SelectableRow
 	{
 		selectableComponents = selectableComponentsToUse;
 		descriptionProvider = descriptionProviderToUse;
+		foregroundColorsOfComponents = new HashMap<JComponent, Color>();
+		backgroundColorsOfComponents = new HashMap<JComponent, Color>();
 	}
 	
 	public void addMouseListener(MouseListener listener)
@@ -57,11 +60,15 @@ abstract public class SelectableRow
 		if(isSelected())
 			return;
 		
+		foregroundColorsOfComponents.clear();
+		backgroundColorsOfComponents.clear();
 		Color fg = getSelectedForegroundColor();
 		Color bg = getSelectedBackgroundColor();
 		for (int index = 0; index < selectableComponents.size(); ++index)
 		{
 			JComponent component = selectableComponents.get(index);
+			foregroundColorsOfComponents.put(component, component.getForeground());
+			backgroundColorsOfComponents.put(component, component.getBackground());
 			setColors(component, fg, bg);
 		}
 		isSelected = true;
@@ -72,20 +79,18 @@ abstract public class SelectableRow
 		if(!isSelected())
 			return;
 		
-		Color fg = getUnselectedForegroundColor();
-		Color bg = getUnselectedBackgroundColor();
 		for (int index = 0; index < selectableComponents.size(); ++index)
 		{
 			JComponent component = selectableComponents.get(index);
+			Color fg = foregroundColorsOfComponents.get(component);
+			Color bg = backgroundColorsOfComponents.get(component);
 			setColors(component, fg, bg);
 		}
 		isSelected = false;
 	}
 
 	abstract protected Color getSelectedForegroundColor();
-	abstract protected Color getUnselectedForegroundColor();
 	abstract protected Color getSelectedBackgroundColor();
-	abstract protected Color getUnselectedBackgroundColor();
 	
 	private void setColors(JComponent component, Color foregroundColor, Color backgroundColor)
 	{
@@ -113,4 +118,6 @@ abstract public class SelectableRow
 	private Vector<JComponent> selectableComponents;
 	private boolean isSelected;
 	private AbstractLongDescriptionProvider descriptionProvider;
+	private HashMap<JComponent, Color> foregroundColorsOfComponents;
+	private HashMap<JComponent, Color> backgroundColorsOfComponents;
 }

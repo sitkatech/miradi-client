@@ -34,23 +34,16 @@ public class DashboardSelectableRow extends SelectableRow
 		super(selectableComponentsToUse, descriptionProviderToUse);
 	}
 
+	@Override
 	protected Color getSelectedForegroundColor()
 	{
 		return Color.BLACK;
 	}
 
-	protected Color getUnselectedForegroundColor()
-	{
-		return Color.BLACK;
-	}
-
+	@Override
 	protected Color getSelectedBackgroundColor()
 	{
 		return AbstractOpenStandardsQuestionPanel.DASHBOARD_BACKGROUND_COLOR;
 	}
 
-	protected Color getUnselectedBackgroundColor()
-	{
-		return AbstractOpenStandardsQuestionPanel.getItemBackgroundColor();
-	}
 }
