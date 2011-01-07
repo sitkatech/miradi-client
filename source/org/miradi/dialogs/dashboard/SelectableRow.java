@@ -70,7 +70,7 @@ public class SelectableRow
 
 	private void setSelectionBorder(JComponent component)
 	{
-		setBackgroundColor(component, getSelectedBackgroundColor());
+		setColors(component, getSelectedForegroundColor(), getSelectedBackgroundColor());
 	}
 
 	public void clearSelection()
@@ -78,8 +78,18 @@ public class SelectableRow
 		unSelect();
 		for (int index = 0; index < selectableComponents.size(); ++index)
 		{
-			setBackgroundColor(selectableComponents.get(index), getUnselectedBackgroundColor());
+			setColors(selectableComponents.get(index), getUnselectedForegroundColor(), getUnselectedBackgroundColor());
 		}
+	}
+
+	private Color getSelectedForegroundColor()
+	{
+		return Color.BLACK;
+	}
+
+	private Color getUnselectedForegroundColor()
+	{
+		return Color.BLACK;
 	}
 
 	private Color getSelectedBackgroundColor()
@@ -92,9 +102,10 @@ public class SelectableRow
 		return AppPreferences.getDataPanelBackgroundColor();
 	}
 	
-	private void setBackgroundColor(JComponent component, Color backgroundColor)
+	private void setColors(JComponent component, Color foregroundColor, Color backgroundColor)
 	{
 		component.setOpaque(true);
+		component.setForeground(foregroundColor);
 		component.setBackground(backgroundColor);
 	}
 
