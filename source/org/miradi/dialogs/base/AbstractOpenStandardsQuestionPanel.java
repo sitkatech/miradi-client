@@ -79,7 +79,7 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		MiradiGridLayoutPlus gridLayout = new MiradiGridLayoutPlus(0, 2);
 		gridLayout.doNotGrowColumn(TEXT_COLUMN);
 		gridLayout.growToFillColumn(RIGHT_COLUMN);
-		gridLayout.setGaps(0, 0);
+		gridLayout.setGaps(0, 1);
 		
 		return gridLayout;
 	}
