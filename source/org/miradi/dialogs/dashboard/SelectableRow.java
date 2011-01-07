@@ -54,27 +54,32 @@ abstract public class SelectableRow
 
 	public void selectRow() throws Exception
 	{
-		updateSelection(true);
-	}
-	
-	public void clearSelection()
-	{
-		updateSelection(false);
-	}
-
-	private void updateSelection(boolean shouldSelect)
-	{
-		if(shouldSelect == isSelected())
+		if(isSelected())
 			return;
 		
-		Color fg = (shouldSelect ? getSelectedForegroundColor() : getUnselectedForegroundColor());
-		Color bg = (shouldSelect ? getSelectedBackgroundColor() : getUnselectedBackgroundColor());
-		isSelected = shouldSelect;
+		Color fg = getSelectedForegroundColor();
+		Color bg = getSelectedBackgroundColor();
 		for (int index = 0; index < selectableComponents.size(); ++index)
 		{
 			JComponent component = selectableComponents.get(index);
 			setColors(component, fg, bg);
 		}
+		isSelected = true;
+	}
+	
+	public void clearSelection()
+	{
+		if(!isSelected())
+			return;
+		
+		Color fg = getUnselectedForegroundColor();
+		Color bg = getUnselectedBackgroundColor();
+		for (int index = 0; index < selectableComponents.size(); ++index)
+		{
+			JComponent component = selectableComponents.get(index);
+			setColors(component, fg, bg);
+		}
+		isSelected = false;
 	}
 
 	abstract protected Color getSelectedForegroundColor();
