@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.dashboard;
 
+import java.awt.Color;
+
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.base.AbstractOpenStandardsQuestionPanel;
 import org.miradi.dialogs.base.DisposablePanelWithDescription;
@@ -43,7 +45,7 @@ abstract public class SplitterPanelWithRightSideTextPanel extends DisposablePane
 	private PersistentHorizontalSplitPane createSplitPane(MainWindow mainWindowToUse) throws Exception
 	{
 		splitPane = new PersistentNonPercentageHorizontalSplitPane(this, mainWindowToUse, SAME_SPLITTER_IDENTIFIER_FOR_ALL_TABS);
-		RightSideDescriptionPanel rightPanel = createRightPanel(getDefaultDescriptionProvider());
+		rightPanel = createRightPanel(getDefaultDescriptionProvider());
 		setupCommunicationBetweenLeftAndRightPanels(rightPanel);
 		
 		splitPane.setLeftComponent(new MiradiScrollPane(leftPanel));
@@ -84,9 +86,11 @@ abstract public class SplitterPanelWithRightSideTextPanel extends DisposablePane
 	
 	private RightSideDescriptionPanel createRightPanel(AbstractLongDescriptionProvider mainDescriptionProvider) throws Exception
 	{
-		return new RightSideDescriptionPanel(getMainWindow(), mainDescriptionProvider, this);
+		return new RightSideDescriptionPanel(getMainWindow(), mainDescriptionProvider, this, getRightPanelBackgroundColor());
 	}
 	
+	abstract protected Color getRightPanelBackgroundColor();
+
 	protected MainWindow getMainWindow()
 	{
 		return mainWindow;
@@ -96,6 +100,7 @@ abstract public class SplitterPanelWithRightSideTextPanel extends DisposablePane
 	
 	private MainWindow mainWindow;
 	protected AbstractObjectDataInputPanel leftPanel;
+	protected RightSideDescriptionPanel rightPanel;
 	private PersistentHorizontalSplitPane splitPane;
 	private static final String SAME_SPLITTER_IDENTIFIER_FOR_ALL_TABS = "PanelWithDescriptionPanel";
 }

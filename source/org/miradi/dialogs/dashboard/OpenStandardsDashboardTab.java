@@ -1,5 +1,8 @@
 package org.miradi.dialogs.dashboard;
+import java.awt.Color;
+
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
+import org.miradi.dialogs.base.AbstractOpenStandardsQuestionPanel;
 import org.miradi.main.MainWindow;
 
 /* 
@@ -27,6 +30,12 @@ abstract public class OpenStandardsDashboardTab extends SplitterPanelWithRightSi
 	public OpenStandardsDashboardTab(MainWindow mainWindowToUse, AbstractObjectDataInputPanel leftPanelToUse) throws Exception
 	{
 		super(mainWindowToUse, leftPanelToUse);
+		rightPanel.setBackground(AbstractOpenStandardsQuestionPanel.DASHBOARD_BACKGROUND_COLOR);
 	}
 
+	@Override
+	protected Color getRightPanelBackgroundColor()
+	{
+		return AbstractOpenStandardsQuestionPanel.DASHBOARD_BACKGROUND_COLOR;
+	}
 }
