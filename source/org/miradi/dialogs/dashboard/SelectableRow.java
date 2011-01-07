@@ -64,6 +64,9 @@ abstract public class SelectableRow
 
 	private void updateSelection(boolean shouldSelect)
 	{
+		if(shouldSelect == isSelected())
+			return;
+		
 		Color fg = (shouldSelect ? getSelectedForegroundColor() : getUnselectedForegroundColor());
 		Color bg = (shouldSelect ? getSelectedBackgroundColor() : getUnselectedBackgroundColor());
 		isSelected = shouldSelect;
