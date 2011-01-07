@@ -229,6 +229,7 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 	{
 		Box box = Box.createHorizontalBox();
 		box.setOpaque(true);
+		box.setBackground(getItemBackgroundColor());
 		for (int index = 0; index < level; ++index)
 		{
 			box.add(Box.createHorizontalStrut(INDENT_PER_LEVEL));
