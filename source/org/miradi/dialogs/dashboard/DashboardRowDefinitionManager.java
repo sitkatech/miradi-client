@@ -54,6 +54,7 @@ public class DashboardRowDefinitionManager
 		rowDefinitions.addAll(addConceptualizeRowDefinitions(code));
 		rowDefinitions.addAll(addPlanActionsAndMonitoringDefinitions(code));
 		rowDefinitions.addAll(addImplementActionsAndMonitoringDefinitions(code));
+		rowDefinitions.addAll(addAnalyzeUseAndAdaptDefinitions(code));
 		
 		return rowDefinitions;
 	}
@@ -257,6 +258,22 @@ public class DashboardRowDefinitionManager
 			addGroundTruthAndReviseModel();
 		}
 		
+		return rowDefinitions;
+	}
+	
+	private Vector<DashboardRowDefinition> addAnalyzeUseAndAdaptDefinitions(String code)
+	{
+		Vector<DashboardRowDefinition> rowDefinitions = new Vector<DashboardRowDefinition>();
+		if (code.equals(OpenStandardsAnalyzeUseAndAdaptQuestion.DEVELOP_SYSTEMS_FOR_RECORDING_STORING_PROCESSING_AND_BACKING_UP_DATA_CODE))
+		{
+			rowDefinitions.add(new DashboardRowDefinition(EAM.text("%1 indicators with no measurement"), Dashboard.PSEUDO_INDICATORS_WITH_NO_MEASUREMENT_COUNT));
+			rowDefinitions.add(new DashboardRowDefinition(EAM.text("%1 indicators with 1 measurement"), Dashboard.PSEUDO_INDICATORS_WITH_ONE_MEASUREMENT_COUNT));
+			rowDefinitions.add(new DashboardRowDefinition(EAM.text("%1 indicators with more than 1 measurement"), Dashboard.PSEUDO_INDICATORS_WITH_MORE_THAN_ONE_MEASUREMENT_COUNT));
+			rowDefinitions.add(new DashboardRowDefinition(EAM.text("%1 objectives with no percent complete record"), Dashboard.PSEUDO_OBJECTIVES_WITH_NO_PERCENT_COMPLETE_RECORD_COUNT));
+			rowDefinitions.add(new DashboardRowDefinition(EAM.text("%1 objectives with 1 percent complete record"), Dashboard.PSEUDO_OBJECTIVES_WITH_ONE_PERCENT_COMPLETE_RECORD_COUNT));
+			rowDefinitions.add(new DashboardRowDefinition(EAM.text("%1 objectives with more than 1 percent complete record"), Dashboard.PSEUDO_OBJECTIVES_WITH_MORE_THAN_ONE_PERCENT_COMPLETE_RECORD_COUNT));
+		}
+
 		return rowDefinitions;
 	}
 
