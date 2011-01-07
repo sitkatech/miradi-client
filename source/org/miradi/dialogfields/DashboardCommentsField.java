@@ -63,4 +63,14 @@ public class DashboardCommentsField extends AbstractDashboardClickableField
 		
 		labelComponentToUse.setText(firstLine);
 	}
+	
+	public boolean hasComments() throws ParseException
+	{
+		ORef dashboardRef = getProject().getSingletonObjectRef(Dashboard.getObjectType());
+		Dashboard dashboard = Dashboard.find(getProject(), dashboardRef);
+		String mapAsString = dashboard.getData(Dashboard.TAG_USER_COMMENTS_MAP);
+		AbstractStringKeyMap commentsMap = createStringKeyMap(mapAsString);
+		String comment = commentsMap.get(stringMapCode);
+		return comment.length() > 0;
+	}
 }
