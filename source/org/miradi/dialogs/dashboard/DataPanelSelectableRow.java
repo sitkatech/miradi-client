@@ -34,24 +34,15 @@ public class DataPanelSelectableRow extends SelectableRow
 		super(selectableComponentsToUse, descriptionProviderToUse);
 	}
 
+	@Override
 	protected Color getSelectedForegroundColor()
 	{
 		return Color.BLACK;
 	}
 
-	protected Color getUnselectedForegroundColor()
-	{
-		return Color.BLACK;
-	}
-
+	@Override
 	protected Color getSelectedBackgroundColor()
 	{
 		return AppPreferences.getWizardBackgroundColor();
 	}
-
-	protected Color getUnselectedBackgroundColor()
-	{
-		return AppPreferences.getDataPanelBackgroundColor();
-	}
-	
 }
