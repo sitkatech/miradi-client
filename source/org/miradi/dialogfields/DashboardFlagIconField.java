@@ -22,17 +22,14 @@ package org.miradi.dialogfields;
 
 import java.text.ParseException;
 
-import javax.swing.Icon;
-
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.icons.EmptyIcon;
+import org.miradi.icons.IconManager;
 import org.miradi.objecthelpers.AbstractStringKeyMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.StringCodeListMap;
 import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
-import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.DashboardFlagsQuestion;
 import org.miradi.utils.CodeList;
 
@@ -40,9 +37,7 @@ public class DashboardFlagIconField extends	AbstractDashboardClickableField
 {
 	public DashboardFlagIconField(Project projectToUse, ORef refToUse, String stringMapCodeToUse)
 	{
-		super(projectToUse, refToUse, Dashboard.TAG_NEEDS_ATTENTION_MAP, stringMapCodeToUse);
-		
-		question = getProject().getQuestion(DashboardFlagsQuestion.class);
+		super(projectToUse, refToUse, Dashboard.TAG_NEEDS_ATTENTION_MAP, stringMapCodeToUse);	
 	}
 	
 	@Override
@@ -50,12 +45,9 @@ public class DashboardFlagIconField extends	AbstractDashboardClickableField
 	{
 		labelComponentToUse.setIcon(new EmptyIcon());
 		CodeList codeList = new CodeList(mapValue);
-		if (codeList.size() > 0)
+		if (codeList.contains(DashboardFlagsQuestion.NEEDS_ATTENTION_CODE))
 		{
-			String firstCode = codeList.firstElement();
-			ChoiceItem progressChoiceItem = question.findChoiceByCode(firstCode);
-			Icon icon = progressChoiceItem.getIcon();
-			labelComponentToUse.setIcon(icon);
+			labelComponentToUse.setIcon(IconManager.getNeedsAttentionIcon());
 		}
 	}
 	
@@ -64,6 +56,4 @@ public class DashboardFlagIconField extends	AbstractDashboardClickableField
 	{
 		return new StringCodeListMap(stringCodeMapAsString);
 	}
-	
-	private ChoiceQuestion question;
 }

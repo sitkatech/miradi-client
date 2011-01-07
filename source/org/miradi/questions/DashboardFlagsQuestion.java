@@ -33,7 +33,9 @@ public class DashboardFlagsQuestion extends StaticChoiceQuestion
 	private static ChoiceItem[] getChoiceItems()
 	{
 		return new ChoiceItem[]{
-				new ChoiceItem("needsAttention", EAM.text("Needs Attention"), IconManager.getNeedsAttentionIcon()),
+				new ChoiceItem(NEEDS_ATTENTION_CODE, EAM.text("Needs Attention"), IconManager.getNeedsAttentionIcon()),
 		};
 	}
+	
+	public static final String NEEDS_ATTENTION_CODE = "needsAttention";
 }
