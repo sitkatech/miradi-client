@@ -57,27 +57,17 @@ abstract public class SelectableRow
 		isSelected = true;
 		for (int index = 0; index < selectableComponents.size(); ++index)
 		{
-			setSelectionBorder(selectableComponents.get(index));
+			setColors(selectableComponents.get(index), getSelectedForegroundColor(), getSelectedBackgroundColor());
 		}
 	}
 	
 	public void clearSelection()
 	{
-		unSelect();
+		isSelected = false;
 		for (int index = 0; index < selectableComponents.size(); ++index)
 		{
 			setColors(selectableComponents.get(index), getUnselectedForegroundColor(), getUnselectedBackgroundColor());
 		}
-	}
-
-	private void unSelect()
-	{
-		isSelected = false;
-	}
-
-	private void setSelectionBorder(JComponent component)
-	{
-		setColors(component, getSelectedForegroundColor(), getSelectedBackgroundColor());
 	}
 
 	abstract protected Color getSelectedForegroundColor();
