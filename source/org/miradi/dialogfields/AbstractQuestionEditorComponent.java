@@ -187,6 +187,7 @@ abstract public class AbstractQuestionEditorComponent extends SavebleComponent
 	public void updateEditableState(JToggleButton toggleButton, boolean isValidObject)
 	{
 		toggleButton.setEnabled(isValidObject);
+		toggleButton.setOpaque(true);
 		Color fg = EAM.EDITABLE_FOREGROUND_COLOR;
 		Color bg = EAM.EDITABLE_BACKGROUND_COLOR;
 		if(!isValidObject)
