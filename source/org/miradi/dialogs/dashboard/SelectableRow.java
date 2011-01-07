@@ -54,19 +54,23 @@ abstract public class SelectableRow
 
 	public void selectRow() throws Exception
 	{
+		Color fg = getSelectedForegroundColor();
+		Color bg = getSelectedBackgroundColor();
 		isSelected = true;
 		for (int index = 0; index < selectableComponents.size(); ++index)
 		{
-			setColors(selectableComponents.get(index), getSelectedForegroundColor(), getSelectedBackgroundColor());
+			setColors(selectableComponents.get(index), fg, bg);
 		}
 	}
 	
 	public void clearSelection()
 	{
+		Color fg = getUnselectedForegroundColor();
+		Color bg = getUnselectedBackgroundColor();
 		isSelected = false;
 		for (int index = 0; index < selectableComponents.size(); ++index)
 		{
-			setColors(selectableComponents.get(index), getUnselectedForegroundColor(), getUnselectedBackgroundColor());
+			setColors(selectableComponents.get(index), fg, bg);
 		}
 	}
 
