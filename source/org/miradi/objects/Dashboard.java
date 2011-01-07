@@ -46,6 +46,7 @@ import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.utils.OptionalDouble;
 import org.miradi.utils.StringChoiceMapData;
 import org.miradi.utils.StringCodeListMapData;
 import org.miradi.utils.StringStringMapData;
@@ -286,6 +287,12 @@ public class Dashboard extends BaseObject
 			
 			if (fieldTag.equals(PSEUDO_OBJECTIVES_WITH_MORE_THAN_ONE_PERCENT_COMPLETE_RECORD_COUNT))
 				return getObjectivesWithMoreThanOnePercentCompleteRecordCount();
+			
+			if (fieldTag.equals(PSEUDO_TOTAL_ACTION_BUDGET))
+				return getTotalActionBudget();
+			
+			if (fieldTag.equals(PSEUDO_TOTAL_MONITORING_BUDGET))
+				return getTotalMonitoringBudget();
 					
 			return super.getPseudoData(fieldTag);
 		}
@@ -295,7 +302,30 @@ public class Dashboard extends BaseObject
 			return EAM.text("Error Retrieving Data");
 		}
 	}
+
+	private String getTotalActionBudget() throws Exception
+	{
+		return calculateTotalCostForType(Strategy.getObjectType());
+	}
+
+	private String getTotalMonitoringBudget() throws Exception
+	{
+		return calculateTotalCostForType(Indicator.getObjectType());
+	}
 	
+	private String calculateTotalCostForType(int objectType) throws Exception
+	{
+		Vector<BaseObject> baseObjects = getProject().getPool(objectType).getAllObjects();
+		OptionalDouble totalCost = new OptionalDouble();
+		for(BaseObject baseObject : baseObjects)
+		{
+			OptionalDouble totalBudgetCost = baseObject.getTotalBudgetCost();
+			totalCost = totalCost.add(totalBudgetCost);
+		}
+		
+		return totalCost.toString();
+	}
+
 	private String getIndicatorsWithNoMeasurementCount() throws Exception
 	{
 		final int LOWER_BOUND = 0;
@@ -1147,6 +1177,8 @@ public class Dashboard extends BaseObject
 		objectivesWithNoPercentCompleteRecordCount = new PseudoStringData(PSEUDO_OBJECTIVES_WITH_NO_PERCENT_COMPLETE_RECORD_COUNT);
 		objectivesWithOnePercentCompleteRecordCount = new PseudoStringData(PSEUDO_OBJECTIVES_WITH_ONE_PERCENT_COMPLETE_RECORD_COUNT);
 		objectivesWithMoreThanOnePercentCompleteRecordCount = new PseudoStringData(PSEUDO_OBJECTIVES_WITH_MORE_THAN_ONE_PERCENT_COMPLETE_RECORD_COUNT);
+		totalActionBudget = new PseudoStringData(PSEUDO_TOTAL_ACTION_BUDGET);
+		totalMonitoringBudget = new PseudoStringData(PSEUDO_TOTAL_MONITORING_BUDGET);
 		
 		userStatusChoiceMap = new StringChoiceMapData(TAG_USER_STATUS_CHOICE_MAP);
 		userCommentsMap = new StringStringMapData(TAG_USER_COMMENTS_MAP);
@@ -1218,6 +1250,8 @@ public class Dashboard extends BaseObject
 		addPresentationDataField(PSEUDO_OBJECTIVES_WITH_NO_PERCENT_COMPLETE_RECORD_COUNT, objectivesWithNoPercentCompleteRecordCount);
 		addPresentationDataField(PSEUDO_OBJECTIVES_WITH_ONE_PERCENT_COMPLETE_RECORD_COUNT, objectivesWithOnePercentCompleteRecordCount);
 		addPresentationDataField(PSEUDO_OBJECTIVES_WITH_MORE_THAN_ONE_PERCENT_COMPLETE_RECORD_COUNT, objectivesWithMoreThanOnePercentCompleteRecordCount);
+		addPresentationDataField(PSEUDO_TOTAL_ACTION_BUDGET, totalActionBudget);
+		addPresentationDataField(PSEUDO_TOTAL_MONITORING_BUDGET, totalMonitoringBudget);
 		
 		addPresentationDataField(TAG_USER_STATUS_CHOICE_MAP, userStatusChoiceMap);
 		addPresentationDataField(TAG_USER_COMMENTS_MAP, userCommentsMap);
@@ -1293,6 +1327,8 @@ public class Dashboard extends BaseObject
 	public static final String PSEUDO_OBJECTIVES_WITH_NO_PERCENT_COMPLETE_RECORD_COUNT = "ObjectivesWithNoPercentCompleteRecordCount";
 	public static final String PSEUDO_OBJECTIVES_WITH_ONE_PERCENT_COMPLETE_RECORD_COUNT = "ObjectivesWithOnePercentCompleteRecordCount";
 	public static final String PSEUDO_OBJECTIVES_WITH_MORE_THAN_ONE_PERCENT_COMPLETE_RECORD_COUNT = "ObjectivesWithMoreThanOnePercentCompleteRecordCount";
+	public static final String PSEUDO_TOTAL_ACTION_BUDGET = "TotalActionBudget";
+	public static final String PSEUDO_TOTAL_MONITORING_BUDGET = "TotalMonitoringBudget";
 	
 	public static final String TAG_USER_STATUS_CHOICE_MAP = "UserStatusChoiceMap";
 	public static final String TAG_USER_COMMENTS_MAP = "UserStatusCommentsMap";
@@ -1365,6 +1401,8 @@ public class Dashboard extends BaseObject
 	private PseudoStringData objectivesWithNoPercentCompleteRecordCount;
 	private PseudoStringData objectivesWithOnePercentCompleteRecordCount;
 	private PseudoStringData objectivesWithMoreThanOnePercentCompleteRecordCount;
+	private PseudoStringData totalActionBudget;
+	private PseudoStringData totalMonitoringBudget;
 	
 	private StringChoiceMapData userStatusChoiceMap;
 	private StringStringMapData userCommentsMap;

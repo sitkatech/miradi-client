@@ -84,9 +84,8 @@ public class DashboardRowDefinitionManager
 		
 		if (code.equals(OpenStandardsImplementActionsAndMonitoringQuestion.ESTIMATE_COSTS_FOR_ACTIVITIES_AND_MONITORING_CODE))
 		{
-			rowDefinitions.add(new DashboardRowDefinition(EAM.text("Work Costs: %1 %2"), Dashboard.PSEUDO_CURRENCY_SYMBOL, Dashboard.PSEUDO_TOTAL_PROJECT_RESOURCES_COSTS));
-			rowDefinitions.add(new DashboardRowDefinition(EAM.text("Expenses: %1 %2"), Dashboard.PSEUDO_CURRENCY_SYMBOL, Dashboard.PSEUDO_TOTAL_PROJECT_EXPENSES));
-			rowDefinitions.add(new DashboardRowDefinition(EAM.text("Project Budget: %1 %2"), Dashboard.PSEUDO_CURRENCY_SYMBOL, Dashboard.PSEUDO_PROJECT_BUDGET));
+			rowDefinitions.add(new DashboardRowDefinition(EAM.text("Total Action Budget: %1 %2"), Dashboard.PSEUDO_CURRENCY_SYMBOL, Dashboard.PSEUDO_TOTAL_ACTION_BUDGET));
+			rowDefinitions.add(new DashboardRowDefinition(EAM.text("Total Monitoring Budget %1 %2"), Dashboard.PSEUDO_CURRENCY_SYMBOL, Dashboard.PSEUDO_TOTAL_MONITORING_BUDGET));
 		}
 		
 		if (code.equals(OpenStandardsImplementActionsAndMonitoringQuestion.DEVELOP_AND_SUBMIT_FUNDING_PROPOSALS_CODE))
