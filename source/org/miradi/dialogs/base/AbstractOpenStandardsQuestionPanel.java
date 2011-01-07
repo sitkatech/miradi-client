@@ -60,7 +60,7 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		
 		setLayout(createLayoutManager());
 		question = questionToUse;
-		rowSelectionHandler = new SingleRowSelectionHandler();
+		rowSelectionHandler = new DashboardSingleRowSelectionHandler();
 		
 		final int FIRST_LEVEL_INDENT_COUNT = 0;
 		addRows(question.getHeaderChoiceItem(), FIRST_LEVEL_INDENT_COUNT);

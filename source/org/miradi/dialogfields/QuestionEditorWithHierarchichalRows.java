@@ -27,6 +27,7 @@ import javax.swing.Box;
 import javax.swing.JComponent;
 import javax.swing.event.ListSelectionListener;
 
+import org.miradi.dialogs.base.DataPanelSingleRowSelectionHandler;
 import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.base.SingleRowSelectionHandler;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
@@ -68,7 +69,7 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 	public SingleRowSelectionHandler getSafeRowSelectionHandler()
 	{
 		if (rowSelectionHandler == null)
-			rowSelectionHandler = new SingleRowSelectionHandler();
+			rowSelectionHandler = new DataPanelSingleRowSelectionHandler();
 		
 		return rowSelectionHandler;
 	}

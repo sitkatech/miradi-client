@@ -26,9 +26,7 @@ import java.util.Vector;
 
 import javax.swing.JComponent;
 
-import org.miradi.main.AppPreferences;
-
-public class SelectableRow
+abstract public class SelectableRow
 {
 	public SelectableRow(Vector<JComponent> selectableComponentsToUse, AbstractLongDescriptionProvider descriptionProviderToUse)
 	{
@@ -82,25 +80,10 @@ public class SelectableRow
 		}
 	}
 
-	private Color getSelectedForegroundColor()
-	{
-		return Color.BLACK;
-	}
-
-	private Color getUnselectedForegroundColor()
-	{
-		return Color.BLACK;
-	}
-
-	private Color getSelectedBackgroundColor()
-	{
-		return AppPreferences.getWizardBackgroundColor();
-	}
-
-	private Color getUnselectedBackgroundColor()
-	{
-		return AppPreferences.getDataPanelBackgroundColor();
-	}
+	abstract protected Color getSelectedForegroundColor();
+	abstract protected Color getUnselectedForegroundColor();
+	abstract protected Color getSelectedBackgroundColor();
+	abstract protected Color getUnselectedBackgroundColor();
 	
 	private void setColors(JComponent component, Color foregroundColor, Color backgroundColor)
 	{
