@@ -45,7 +45,6 @@ import org.miradi.questions.StrategyRatingSummaryQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.utils.CodeList;
-import org.miradi.utils.DoubleUtilities;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.StringChoiceMapData;
 import org.miradi.utils.StringCodeListMapData;
@@ -744,11 +743,12 @@ public class Dashboard extends BaseObject
 
 	private String calculatePercentage(int numinator, int denominator)
 	{
-		double percentage = ((double)numinator / (double)denominator) * 100;
-		if (Double.isNaN(percentage))
+		float percentage = ((float)numinator / (float)denominator) * 100;
+		if (Float.isNaN(percentage))
 			return "";
 
-		return DoubleUtilities.toStringForHumans(percentage);
+		int roundedPercent = Math.round(percentage);
+		return Integer.toString(roundedPercent);
 	}
 	
 	private ORefSet getStrategiesRelevantToObjectives() throws Exception
