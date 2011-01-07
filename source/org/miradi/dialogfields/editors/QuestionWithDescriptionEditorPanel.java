@@ -22,13 +22,13 @@ package org.miradi.dialogfields.editors;
 
 import org.miradi.dialogs.base.OneFieldObjectDataInputPanel;
 import org.miradi.dialogs.dashboard.AbstractLongDescriptionProvider;
-import org.miradi.dialogs.dashboard.PanelWithDescriptionPanel;
+import org.miradi.dialogs.dashboard.SplitterPanelWithRightSideTextPanel;
 import org.miradi.dialogs.dashboard.StaticLongDescriptionProvider;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.questions.ChoiceQuestion;
 
-public class QuestionWithDescriptionEditorPanel extends PanelWithDescriptionPanel
+public class QuestionWithDescriptionEditorPanel extends SplitterPanelWithRightSideTextPanel
 {
 	public QuestionWithDescriptionEditorPanel(MainWindow mainWindowToUse, ChoiceQuestion questionToUse, OneFieldObjectDataInputPanel leftPanelEditorComponentToUse) throws Exception
 	{

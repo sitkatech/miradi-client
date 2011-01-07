@@ -28,9 +28,9 @@ import org.miradi.utils.MiradiScrollPane;
 import org.miradi.views.umbrella.PersistentHorizontalSplitPane;
 import org.miradi.views.umbrella.PersistentNonPercentageHorizontalSplitPane;
 
-abstract public class PanelWithDescriptionPanel extends DisposablePanelWithDescription
+abstract public class SplitterPanelWithRightSideTextPanel extends DisposablePanelWithDescription
 {
-	public PanelWithDescriptionPanel(MainWindow mainWindowToUse, AbstractObjectDataInputPanel leftPanelToUse) throws Exception
+	public SplitterPanelWithRightSideTextPanel(MainWindow mainWindowToUse, AbstractObjectDataInputPanel leftPanelToUse) throws Exception
 	{
 		super();
 		

@@ -24,7 +24,7 @@ import org.miradi.dialogs.base.AbstractOpenStandardsQuestionPanel;
 import org.miradi.main.MainWindow;
 import org.miradi.questions.OpenStandardsImplementActionsAndMonitoringQuestion;
 
-public class OpenStandardsImplementActionsAndMonitoringTab extends PanelWithDescriptionPanel
+public class OpenStandardsImplementActionsAndMonitoringTab extends SplitterPanelWithRightSideTextPanel
 {
 	private OpenStandardsImplementActionsAndMonitoringTab(MainWindow mainWindowToUse, AbstractOpenStandardsQuestionPanel leftPanelToUse) throws Exception
 	{
