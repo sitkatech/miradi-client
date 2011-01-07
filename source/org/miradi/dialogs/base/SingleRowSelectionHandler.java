@@ -36,7 +36,7 @@ import org.miradi.dialogs.dashboard.MouseOverRowEvent;
 import org.miradi.dialogs.dashboard.SelectableRow;
 import org.miradi.main.EAM;
 
-public class SingleRowSelectionHandler
+abstract public class SingleRowSelectionHandler
 {
 	public SingleRowSelectionHandler()
 	{
@@ -65,11 +65,8 @@ public class SingleRowSelectionHandler
 		getSafeSelectableRows().add(selectableRow);
 	}
 
-	private SelectableRow createSelectableRow(Vector<JComponent> selectableComponentsToUse,
-			AbstractLongDescriptionProvider descriptionProviderToUse)
-	{
-		return new SelectableRow(selectableComponentsToUse, descriptionProviderToUse);
-	}
+	abstract protected SelectableRow createSelectableRow(Vector<JComponent> selectableComponentsToUse,
+			AbstractLongDescriptionProvider descriptionProviderToUse);
 	
 	public void addSelectionListener(ListSelectionListener rightSideDescriptionPanel)
 	{
