@@ -151,24 +151,28 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 	private void addRowWithStatusIcon(ChoiceItem choiceItem, int level) throws Exception
 	{
 		DashboardFlagIconField flagIconField = new DashboardFlagIconField(getProject(), getDashboard().getRef(), choiceItem.getCode());
+		flagIconField.getComponent().setBackground(getItemBackgroundColor(level));
 		addUpdatedCustomField(flagIconField);
 		
 		ChoiceQuestion progressStatusQuestion = new OpenStandardsDynamicProgressStatusQuestion(getDashboard(), choiceItem.getCode());
 		ObjectDataInputField statusIconField = new DashboardStatusIconField(getProject(), getDashboard().getRef(), choiceItem.getCode(), progressStatusQuestion);
+		statusIconField.getComponent().setBackground(getItemBackgroundColor(level));
 		addUpdatedCustomField(statusIconField);
 		
 		ObjectDataInputField statusTextField = new DashboardStatusLabelField(getProject(), getDashboard().getRef(), choiceItem.getCode(), progressStatusQuestion);
+		statusTextField.getComponent().setBackground(getItemBackgroundColor(level));
 		addUpdatedCustomField(statusTextField);
 		
 		
 		PanelTitleLabel labelComponent = new PanelTitleLabel(choiceItem.getLabel());
 		labelComponent.setOpaque(true);
-		labelComponent.setBackground(getItemBackgroundColor());
+		labelComponent.setBackground(getItemBackgroundColor(level));
 		addRow(choiceItem.getLongDescriptionProvider(), level, flagIconField.getComponent(), statusIconField.getComponent(), labelComponent, statusTextField.getComponent());
 
 		DashboardCommentsField commentsField = new DashboardCommentsField(getProject(), getDashboard().getRef(), choiceItem.getCode());
 		if(commentsField.hasComments())
 		{
+			commentsField.getComponent().setBackground(getItemBackgroundColor(level));
 			commentsField.getComponent().setFont(getCommentsFieldFont());
 			addUpdatedCustomField(commentsField);
 			addDefaultFontRow(choiceItem.getLongDescriptionProvider(), level, new FillerLabel(), new FillerLabel(), new FillerLabel(), commentsField.getComponent());
@@ -186,17 +190,22 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		String rightColumnTranslatedText = EAM.substitute(rightColumnText, tokenReplacementMap);
 		JComponent leftComponent = new PanelLabelWithSelectableText(leftColumnText);
 		leftComponent.setOpaque(true);
-		leftComponent.setBackground(getItemBackgroundColor());
+		leftComponent.setBackground(getItemBackgroundColor(level));
 		JComponent rightComponent = new PanelLabelWithSelectableText(rightColumnTranslatedText);
 		rightComponent.setOpaque(true);
-		rightComponent.setBackground(getItemBackgroundColor());
+		rightComponent.setBackground(getItemBackgroundColor(level));
 		
 		addRow(longDescriptionProvider, level, new FillerLabel(), new FillerLabel(), leftComponent, rightComponent);
 	}
 
-	public static Color getItemBackgroundColor()
+	private Color getItemBackgroundColor(int level)
 	{
-		return AppPreferences.getWizardBackgroundColor();
+		switch(level)
+		{
+			case 0: return AppPreferences.getWizardTitleBackground();
+			case 1: return AppPreferences.getWizardBackgroundColor();
+			default: return Color.decode(AppPreferences.getWizardSidebarBackgroundColorForCss());
+		}
 	}
 
 	private void addRow(AbstractLongDescriptionProvider longDescriptionProvider, int level,	JComponent flagIconComponent, JComponent iconComponent,	JComponent leftComponent, JComponent rightComponent)
@@ -229,7 +238,7 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 	{
 		Box box = Box.createHorizontalBox();
 		box.setOpaque(true);
-		box.setBackground(getItemBackgroundColor());
+		box.setBackground(getItemBackgroundColor(level));
 		for (int index = 0; index < level; ++index)
 		{
 			box.add(Box.createHorizontalStrut(INDENT_PER_LEVEL));
