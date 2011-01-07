@@ -24,7 +24,7 @@ import org.miradi.dialogs.base.OpenStandardsConceptualizeQuestionPanel;
 import org.miradi.main.MainWindow;
 import org.miradi.questions.OpenStandardsConceptualizeQuestion;
 
-public class OpenStandardsConceptualizeDashboardTab extends	SplitterPanelWithRightSideTextPanel
+public class OpenStandardsConceptualizeDashboardTab extends	OpenStandardsDashboardTab
 {
 	private OpenStandardsConceptualizeDashboardTab(MainWindow mainWindowToUse, OpenStandardsConceptualizeQuestionPanel leftPanelToUse) throws Exception
 	{
