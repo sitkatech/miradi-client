@@ -38,7 +38,7 @@ public class DashboardMainPanel extends DisposablePanel
 		tabs = new PanelTabbedPane();
 		createTabs();
 		setInitialTab();
-		addTabsToTabbedPane();
+		addTabsToTabbedPanel();
 		add(tabs);
 		tabs.addChangeListener(new TabChangeListener());
 	}
@@ -94,7 +94,7 @@ public class DashboardMainPanel extends DisposablePanel
 		captureAndShareLearningTab = OpenStandardsCaptureAndShareLearningTab.createLeftPanel(getMainWindow());
 	}
 
-	private void addTabsToTabbedPane()
+	private void addTabsToTabbedPanel()
 	{
 		addTab(conceptualizeDashboardTab);
 		addTab(planActionsAndMonitoringTab);
