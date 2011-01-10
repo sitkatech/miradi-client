@@ -110,11 +110,11 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		{
 			Box left = createHorizontalBoxWithIndents(level);
 			left.setBackground(DASHBOARD_BACKGROUND_COLOR);
-			add(left);
-			add(new FillerLabel());
+			FillerLabel right = new FillerLabel();
+			addRow(left, right);
 		}
 	}
-	
+
 	private void addRow(ChoiceItem choiceItem, int level) throws Exception
 	{
 		setRowWizardStep(choiceItem);
@@ -240,8 +240,13 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		components.add(rightComponent);
 		rowSelectionHandler.addSelectableRow(components, longDescriptionProvider);
 		
-		add(leftBox);
-		add(rightComponent);
+		addRow(leftBox, rightComponent);
+	}
+	
+	private void addRow(JComponent left, JComponent right)
+	{
+		add(left);
+		add(right);
 	}
 	
 	private Box createHorizontalBoxWithIndents(int level)
