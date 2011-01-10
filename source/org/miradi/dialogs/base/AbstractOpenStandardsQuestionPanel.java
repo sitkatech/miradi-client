@@ -25,6 +25,7 @@ import java.awt.Font;
 import java.util.HashMap;
 import java.util.Vector;
 
+import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.JComponent;
 import javax.swing.event.ListSelectionListener;
@@ -61,6 +62,7 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		super(projectToUse, getDashboard(projectToUse).getRef());
 		
 		setBackground(DASHBOARD_BACKGROUND_COLOR);
+		setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
 		setLayout(createLayoutManager());
 		question = questionToUse;
 		rowSelectionHandler = new DashboardSingleRowSelectionHandler();
@@ -102,6 +104,14 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		for (ChoiceItem thisChoiceItem : children)
 		{
 			addRows(thisChoiceItem, childLevel);
+		}
+		
+		if(level == 1 && children.size() > 0)
+		{
+			Box left = createHorizontalBoxWithIndents(level);
+			left.setBackground(DASHBOARD_BACKGROUND_COLOR);
+			add(left);
+			add(new FillerLabel());
 		}
 	}
 	
