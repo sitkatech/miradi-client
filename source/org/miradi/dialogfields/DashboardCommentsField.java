@@ -20,10 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields;
 
-import java.awt.Dimension;
 import java.text.ParseException;
-
-import javax.swing.JComponent;
 
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.objecthelpers.AbstractStringKeyMap;
@@ -37,15 +34,6 @@ public class DashboardCommentsField extends AbstractDashboardClickableField
 	public DashboardCommentsField(Project projectToUse, ORef refToUse,String stringMapCodeToUse)
 	{
 		super(projectToUse, refToUse, Dashboard.TAG_USER_COMMENTS_MAP, stringMapCodeToUse);
-	}
-
-	@Override
-	protected void configureComponent(JComponent component)
-	{
-		super.configureComponent(component);
-		Dimension preferredSize = component.getPreferredSize();
-		final int ZERO_ENSURES_NARROWER_THAN_PARENT = 0;
-		component.setPreferredSize(new Dimension(ZERO_ENSURES_NARROWER_THAN_PARENT, preferredSize.height));
 	}
 
 	@Override

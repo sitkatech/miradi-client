@@ -51,7 +51,6 @@ abstract public class AbstractDashboardClickableField extends ObjectDataInputFie
 	
 	protected void configureComponent(JComponent component)
 	{
-		component.setOpaque(true);
 	}
 	
 	@Override
