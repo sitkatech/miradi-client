@@ -46,6 +46,7 @@ import org.miradi.dialogs.dashboard.DashboardRowDefinitionManager;
 import org.miradi.dialogs.fieldComponents.PanelLabelWithSelectableText;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.layout.MiradiGridLayoutPlus;
+import org.miradi.layout.OneColumnPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
@@ -183,17 +184,21 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		labelComponent.setOpaque(true);
 		labelComponent.setBackground(getItemBackgroundColor(level));
 
-		JComponent rightComponent = statusTextComponent;
-		addRow(choiceItem.getLongDescriptionProvider(), level, flagIconField.getComponent(), statusIconField.getComponent(), labelComponent, rightComponent);
-
 		DashboardCommentsField commentsField = new DashboardCommentsField(getProject(), getDashboard().getRef(), choiceItem.getCode());
 		if(commentsField.hasComments())
 		{
 			commentsField.getComponent().setBackground(getItemBackgroundColor(level));
 			commentsField.getComponent().setFont(getCommentsFieldFont());
 			addUpdatedCustomField(commentsField);
-			addDefaultFontRow(choiceItem.getLongDescriptionProvider(), level, new FillerLabel(), new FillerLabel(), new FillerLabel(), commentsField.getComponent());
 		}
+
+		OneColumnPanel rightComponent = new OneColumnPanel();
+		rightComponent.setOpaque(true);
+		rightComponent.setBackground(getItemBackgroundColor(level));
+		rightComponent.add(statusTextComponent);
+		rightComponent.add(commentsField.getComponent());
+		addRow(choiceItem.getLongDescriptionProvider(), level, flagIconField.getComponent(), statusIconField.getComponent(), labelComponent, rightComponent);
+
 	}
 
 	private void addUpdatedCustomField(ObjectDataInputField field)
@@ -235,7 +240,12 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 
 	private void addDefaultFontRow(AbstractLongDescriptionProvider longDescriptionProvider, int level, JComponent flagIconComponent, JComponent iconComponent, JComponent leftComponent, JComponent rightComponent)
 	{
+		flagIconComponent.setAlignmentY(TOP_ALIGNMENT);
+		iconComponent.setAlignmentY(TOP_ALIGNMENT);
+		leftComponent.setAlignmentY(TOP_ALIGNMENT);
+		
 		Box leftBox = createHorizontalBoxWithIndents(level);
+		leftBox.setAlignmentY(TOP_ALIGNMENT);
 		leftBox.add(flagIconComponent);
 		leftBox.add(iconComponent);
 		leftBox.add(Box.createHorizontalStrut(STRUT_WIDTH_BETWEEN_ICON_AND_TEXT));
