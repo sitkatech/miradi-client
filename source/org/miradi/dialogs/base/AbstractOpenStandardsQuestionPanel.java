@@ -21,13 +21,17 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.base;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Insets;
 import java.util.HashMap;
 import java.util.Vector;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.JComponent;
+import javax.swing.border.AbstractBorder;
 import javax.swing.event.ListSelectionListener;
 
 import org.miradi.actions.AbstractJumpMenuAction;
@@ -240,6 +244,8 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		components.add(rightComponent);
 		rowSelectionHandler.addSelectableRow(components, longDescriptionProvider);
 		
+		leftBox.setBorder(new LineBorderWithoutRightSide(Color.LIGHT_GRAY));
+		rightComponent.setBorder(new LineBorderWithoutLeftSide(Color.LIGHT_GRAY));
 		addRow(leftBox, rightComponent);
 	}
 	
@@ -324,7 +330,62 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 	{
 		return getDashboard().getDashboardRowDefinitionManager();
 	}
+	
+	class PartialBorder extends AbstractBorder
+	{
+		public PartialBorder(Color colorToUse, Insets insetsToUse)
+		{
+			color = colorToUse;
+			insets = insetsToUse;
+		}
 
+		@Override
+		public Insets getBorderInsets(Component arg0)
+		{
+			return insets;
+		}
+
+		@Override
+		public boolean isBorderOpaque()
+		{
+			return true;
+		}
+
+		@Override
+		public void paintBorder(Component component, Graphics g, int x, int y, int width, int height)
+		{
+			g.setColor(color);
+			if(insets.left > 0)
+				g.drawLine(x, y, x, y+height);
+			if(insets.right > 0)
+				g.drawLine(x+width-1, y, x+width-1, y+height);
+			if(insets.top > 0)
+				g.drawLine(x, y, x+width, y);
+			if(insets.bottom > 0)
+				g.drawLine(x, y+height-1, x+width, y+height-1);
+		}
+		
+		private Color color;
+		private Insets insets;
+	}
+	
+	class LineBorderWithoutRightSide extends PartialBorder
+	{
+		public LineBorderWithoutRightSide(Color colorToUse)
+		{
+			super(colorToUse, new Insets(1, 1, 1, 0));
+		}
+		
+	}
+
+	class LineBorderWithoutLeftSide extends PartialBorder
+	{
+		public LineBorderWithoutLeftSide(Color colorToUse)
+		{
+			super(colorToUse, new Insets(1, 0, 1, 1));
+		}
+		
+	}
 	public static final Color DASHBOARD_BACKGROUND_COLOR = Color.WHITE;
 	
 	private DynamicChoiceWithRootChoiceItem question;
