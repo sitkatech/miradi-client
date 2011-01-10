@@ -23,6 +23,7 @@ package org.miradi.dialogs.dashboard;
 import java.awt.BorderLayout;
 import java.awt.Color;
 
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -103,6 +104,7 @@ public class RightSideDescriptionPanel extends JPanel implements ListSelectionLi
 		private RightSideDescriptionHtmlViewer(MainWindow mainWindow)
 		{
 			super(mainWindow);
+			setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 		}
 		
 		@Override

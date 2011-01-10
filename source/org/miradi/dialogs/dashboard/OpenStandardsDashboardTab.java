@@ -1,8 +1,11 @@
 package org.miradi.dialogs.dashboard;
 import java.awt.Color;
 
+import javax.swing.BorderFactory;
+
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.base.AbstractOpenStandardsQuestionPanel;
+import org.miradi.main.AppPreferences;
 import org.miradi.main.MainWindow;
 
 /* 
@@ -31,6 +34,8 @@ abstract public class OpenStandardsDashboardTab extends SplitterPanelWithRightSi
 	{
 		super(mainWindowToUse, leftPanelToUse);
 		rightPanel.setBackground(AbstractOpenStandardsQuestionPanel.DASHBOARD_BACKGROUND_COLOR);
+		Color color = AppPreferences.getWizardTitleBackground();
+		rightPanel.setBorder(BorderFactory.createLineBorder(color, BORDER_THICKNESS));
 	}
 
 	@Override
@@ -38,4 +43,6 @@ abstract public class OpenStandardsDashboardTab extends SplitterPanelWithRightSi
 	{
 		return AbstractOpenStandardsQuestionPanel.DASHBOARD_BACKGROUND_COLOR;
 	}
+	
+	private static final int BORDER_THICKNESS = 10;
 }
