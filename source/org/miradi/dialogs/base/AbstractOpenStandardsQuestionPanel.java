@@ -174,14 +174,17 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		addUpdatedCustomField(statusIconField);
 		
 		ObjectDataInputField statusTextField = new DashboardStatusLabelField(getProject(), getDashboard().getRef(), choiceItem.getCode(), progressStatusQuestion);
-		statusTextField.getComponent().setBackground(getItemBackgroundColor(level));
+		JComponent statusTextComponent = statusTextField.getComponent();
+		statusTextComponent.setBackground(getItemBackgroundColor(level));
 		addUpdatedCustomField(statusTextField);
-		
+
 		
 		PanelTitleLabel labelComponent = new PanelTitleLabel(choiceItem.getLabel());
 		labelComponent.setOpaque(true);
 		labelComponent.setBackground(getItemBackgroundColor(level));
-		addRow(choiceItem.getLongDescriptionProvider(), level, flagIconField.getComponent(), statusIconField.getComponent(), labelComponent, statusTextField.getComponent());
+
+		JComponent rightComponent = statusTextComponent;
+		addRow(choiceItem.getLongDescriptionProvider(), level, flagIconField.getComponent(), statusIconField.getComponent(), labelComponent, rightComponent);
 
 		DashboardCommentsField commentsField = new DashboardCommentsField(getProject(), getDashboard().getRef(), choiceItem.getCode());
 		if(commentsField.hasComments())
