@@ -55,28 +55,13 @@ public class DashboardPoolExporter extends BaseObjectPoolExporter
 			boolean hasCommentsValue = userCommentsMap.contains(thirdLevelCode);
 			boolean hasStatusValue = userStatusMap.contains(thirdLevelCode);
 			boolean hasNeedsAttentionValue = needsAttentionMap.contains(thirdLevelCode);
-			//FIXME urgent - this logic works but needs to be changed.
 			if (hasCommentsValue || hasStatusValue || hasNeedsAttentionValue)
 			{
 				getWcsXmlExporter().writeStartElementWithAttribute(getWriter(), DASHBOARD_STATUS_ENTRY, KEY_ATTRIBUTE_NAME, thirdLevelCode);
-				if (hasStatusValue)
-				{
-					getWcsXmlExporter().writeElement(getWriter(), DASHBOARD_STATUS, userStatusMap.get(thirdLevelCode));
-				}
-				
-				if (hasNeedsAttentionValue)
-				{
-					CodeList flagCodes = new CodeList(needsAttentionMap.get(thirdLevelCode));
-					if (flagCodes.hasData())
-					{
-						getWcsXmlExporter().writeCodeListElement(DASHBOARD, DASHBOARD_FLAGS, flagCodes);
-					}
-				}
-				
-				if (hasCommentsValue)
-				{
-					getWcsXmlExporter().writeElement(getWriter(), DASHBOARD_COMMENTS, userCommentsMap.get(thirdLevelCode));
-				}
+					
+				getWcsXmlExporter().writeOptionalElement(getWriter(), DASHBOARD_STATUS, userStatusMap.get(thirdLevelCode));
+				getWcsXmlExporter().writeOptionalCodeListElement(DASHBOARD, DASHBOARD_FLAGS, new CodeList(needsAttentionMap.get(thirdLevelCode)));
+				getWcsXmlExporter().writeOptionalElement(getWriter(), DASHBOARD_COMMENTS, userCommentsMap.get(thirdLevelCode));
 				
 				getWcsXmlExporter().writeEndElement(DASHBOARD_STATUS_ENTRY);
 			}
