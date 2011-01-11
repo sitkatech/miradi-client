@@ -23,6 +23,7 @@ package org.miradi.xml;
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.Dashboard;
 import org.miradi.objects.FosProjectData;
 import org.miradi.objects.RareProjectData;
 import org.miradi.objects.TncProjectData;
@@ -87,6 +88,11 @@ abstract public class AbstractXmpzObjectImporter implements XmpzXmlConstants
 		return getSingletonObject(FosProjectData.getObjectType());
 	}
 	
+	protected ORef getDashboardRef()
+	{
+		return getSingletonObject(Dashboard.getObjectType());
+	}
+	
 	private ORef getSingletonObject(int objectType)
 	{
 		return getProject().getSingletonObjectRef(objectType);
@@ -119,6 +125,13 @@ abstract public class AbstractXmpzObjectImporter implements XmpzXmlConstants
 		TagToElementNameMap map = new TagToElementNameMap();
 		String elementName = map.findElementName(elementContainerName, destinationTag);
 		String containerElementName = elementContainerName + elementName + XmpzXmlConstants.CONTAINER_ELEMENT_TAG;
+		CodeList codesToImport = getCodeList(node, containerElementName);
+		
+		getImporter().setData(destinationRef, destinationTag, codesToImport.toString());
+	}
+
+	protected CodeList getCodeList(Node node, String containerElementName) throws Exception
+	{
 		NodeList codeNodes = getImporter().getNodes(node, new String[]{containerElementName, XmlSchemaCreator.CODE_ELEMENT_NAME});
 		CodeList codesToImport = new CodeList();
 		for (int index = 0; index < codeNodes.getLength(); ++index)
@@ -127,8 +140,7 @@ abstract public class AbstractXmpzObjectImporter implements XmpzXmlConstants
 			String code = getImporter().getSafeNodeContent(codeNode);
 			codesToImport.add(code);
 		}
-		
-		getImporter().setData(destinationRef, destinationTag, codesToImport.toString());
+		return codesToImport;
 	}
 	
 	protected void importOptionalRef(Node node, ORef destinationRef, String destinationTag, String idElementName, int objectType) throws Exception

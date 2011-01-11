@@ -50,7 +50,6 @@ public class OpenStandardsDynamicProgressStatusQuestion extends DynamicChoiceQue
 				};
 			}
 			
-			
 			return new ChoiceItem[] {
 					new ChoiceItem(NOT_SPECIFIED_CODE, EAM.text("Automatic"), new OpenStandardsAutomaticIcon()),
 					new ChoiceItem(IN_PROGRESS_CODE, EAM.text("In Progress"), new OpenStandardsInProgressIcon()),

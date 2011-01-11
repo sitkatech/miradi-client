@@ -31,9 +31,11 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
+import org.miradi.objecthelpers.StringChoiceMap;
 import org.miradi.objects.BudgetCategoryOne;
 import org.miradi.objects.BudgetCategoryTwo;
 import org.miradi.objects.Cause;
+import org.miradi.objects.Dashboard;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.ExpenseAssignment;
@@ -48,6 +50,8 @@ import org.miradi.project.ProjectForTesting;
 import org.miradi.questions.DiagramFactorFontSizeQuestion;
 import org.miradi.questions.DiagramFactorFontStyleQuestion;
 import org.miradi.questions.DiagramLegendQuestion;
+import org.miradi.questions.OpenStandardsConceptualizeQuestion;
+import org.miradi.questions.OpenStandardsDynamicProgressStatusQuestion;
 import org.miradi.questions.TextBoxZOrderQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateUnitEffort;
@@ -66,6 +70,43 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 	public void testValidateEmptyProject() throws Exception
 	{
 		validateUsingStringWriter();
+	}
+	
+	private Dashboard getDashboard() throws Exception
+	{
+		ORef dashbaordRef = getProject().getSingletonObjectRef(Dashboard.getObjectType());
+		
+		return Dashboard.find(getProject(), dashbaordRef);
+	}
+
+	public void testDynamicProgressCodesForAutomaticChoice() throws Exception
+	{
+		verifyDynamicProgressCodesInSchema(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE);
+	}
+
+	public void testDynamicProgressCodesForManualChoice()	throws Exception
+	{
+		getProject().createTarget();
+		final String codeToSetToManual = OpenStandardsConceptualizeQuestion.SELECT_CONSERVATION_TARGETS_CODE;
+		StringChoiceMap choiceMap = new StringChoiceMap();
+		choiceMap.put(codeToSetToManual, OpenStandardsDynamicProgressStatusQuestion.IN_PROGRESS_CODE);
+		getProject().fillObjectUsingCommand(getDashboard(), Dashboard.TAG_USER_STATUS_CHOICE_MAP, choiceMap.toString());
+
+		verifyDynamicProgressCodesInSchema(codeToSetToManual);
+	}
+
+	private void verifyDynamicProgressCodesInSchema(String thirdLevelCode) throws Exception
+	{
+		Dashboard dashboard = getDashboard();
+		OpenStandardsDynamicProgressStatusQuestion question = new OpenStandardsDynamicProgressStatusQuestion(dashboard, thirdLevelCode);
+		CodeList allCodes = question.getAllCodes();
+		for (int index = 0; index < allCodes.size(); ++index)
+		{
+			StringChoiceMap choiceMap = new StringChoiceMap();
+			choiceMap.put(thirdLevelCode, allCodes.get(index));
+			getProject().fillObjectUsingCommand(dashboard, Dashboard.TAG_USER_STATUS_CHOICE_MAP, choiceMap.toString());
+			validateUsingStringWriter();
+		}
 	}
 	
 	public void testDefaultIndicatorRelevancyLifeCycle() throws Exception
