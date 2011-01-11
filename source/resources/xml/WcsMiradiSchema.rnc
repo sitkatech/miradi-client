@@ -703,7 +703,7 @@ vocabulary_included_diagram_types = 'AllTypes'|'IncludeConceptualModelData'|'Inc
 vocabulary_planning_tree_target_node_position = 'TargetNodesChildrenOfDiagramObjects'|'TargetNodesTopOfPlanningTree'
 vocabulary_threat_rating_mode = 'Simple'|'StressBased'
 vocabulary_dashboard_row_flags = 'needsAttention'
-vocabulary_dashboard_row_statuses = ''|'1'|'2'|'3'|'4'
+vocabulary_dashboard_row_progress = ''|'1'|'2'|'3'|'4'
 ConceptualModelId.element = element miradi:ConceptualModelId { xsd:integer }
 ResultsChainId.element = element miradi:ResultsChainId { xsd:integer }
 DiagramFactorId.element = element miradi:DiagramFactorId { xsd:integer }
@@ -1007,7 +1007,7 @@ DashboardFlagsContainer.element = element miradi:DashboardFlagsContainer
 StatusEntry.element = element miradi:StatusEntry
 {
   attribute Key { text } &
-  element miradi:Status { vocabulary_dashboard_row_statuses }? &
+  element miradi:Progress { vocabulary_dashboard_row_progress }? &
   DashboardFlagsContainer.element? &
   element miradi:Commments { text }?
 }
