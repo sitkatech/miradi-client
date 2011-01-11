@@ -250,6 +250,7 @@ public class DashboardRowDefinitionManager
 		if (code.equals(OpenStandardsConceptualizeQuestion.CREATE_INITIAL_CONCEPTUAL_MODEL_CODE))
 		{
 			rowDefinitions.add(new DashboardRowDefinition(EAM.text("%1 Conceptual Model Pages created"), Dashboard.PSEUDO_CONCEPTUAL_MODEL_COUNT));
+			rowDefinitions.add(new DashboardRowDefinition(EAM.text("%1 total factors created"), Dashboard.PSEUDO_TOTAL_FACTOR_COUNT));
 		}
 		
 		if (code.equals(OpenStandardsConceptualizeQuestion.GROUND_THRUTH_AND_REVISE_MODEL_CODE))
