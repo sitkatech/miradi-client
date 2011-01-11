@@ -1088,7 +1088,7 @@ public class Dashboard extends BaseObject
 		return userCommentsMap.getStringMap();
 	}
 	
-	public StringChoiceMap getUserStatusChoiceMap()
+	public StringChoiceMap getProgressChoiceMap()
 	{
 		return progressChoiceMap.getStringChoiceMap();
 	}
