@@ -154,11 +154,13 @@ public class ExpenseAssignmentMainTableModel extends AbstractSummaryTableModel
 		return ExpenseAssignment.getObjectType();
 	}
 	
-	@Override
 	protected BaseObject getFundingSource(BaseObject baseObjectToUse)
 	{
 		ExpenseAssignment expense = (ExpenseAssignment) baseObjectToUse;
 		ORef fundingSourceRef = expense.getFundingSourceRef();
+		if (fundingSourceRef.isInvalid())
+			return createInvalidObject(getObjectManager(), FundingSource.getObjectType(), FundingSource.OBJECT_NAME);
+		
 		return FundingSource.find(getProject(), fundingSourceRef);
 	}
 	
@@ -167,9 +169,12 @@ public class ExpenseAssignmentMainTableModel extends AbstractSummaryTableModel
 	{
 		ExpenseAssignment expense = (ExpenseAssignment) baseObjectToUse;
 		ORef accountingCodeRef = expense.getAccountingCodeRef();
+		if (accountingCodeRef.isInvalid())
+			return createInvalidObject(getObjectManager(), AccountingCode.getObjectType(), AccountingCode.OBJECT_NAME);
+		
 		return AccountingCode.find(getProject(), accountingCodeRef);
 	}
-	
+
 	@Override
 	protected String getAccountingCodeTag()
 	{
