@@ -194,9 +194,9 @@ public class ExpenseAssignmentMainTableModel extends AbstractSummaryTableModel
 	}
 
 	@Override
-	protected void setFundingSource(BaseObject fundingSource, ORef assignmentRefForRow, int column)
+	protected void setFundingSource(ORef fundingSourceRef, ORef assignmentRefForRow, int column)
 	{
-		setValueUsingCommand(assignmentRefForRow, getFundingSourceTag(), fundingSource.getRef());
+		setValueUsingCommand(assignmentRefForRow, getFundingSourceTag(), fundingSourceRef);
 	}
 	
 	@Override

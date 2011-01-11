@@ -104,7 +104,7 @@ abstract public class AbstractSummaryTableModel extends PlanningViewAbstractAssi
 			setAccountingCode(((BaseObject) value).getRef(), refForRow, column);
 		
 		if (isFundingSourceColumn(column))
-			setFundingSource((BaseObject) value, refForRow, column);
+			setFundingSource(((BaseObject) value).getRef(), refForRow, column);
 		
 		if (isBudgetCategoryOneColumn(column))
 			setRefValue((BaseObject) value, Assignment.TAG_CATEGORY_ONE_REF, refForRow);
@@ -167,5 +167,5 @@ abstract public class AbstractSummaryTableModel extends PlanningViewAbstractAssi
 	
 	abstract protected void setAccountingCode(ORef accountingCodeRef, ORef assignmentRefForRow, int column);
 
-	abstract protected void setFundingSource(BaseObject value, ORef assignmentRefForRow, int column);
+	abstract protected void setFundingSource(ORef fundingSourceRef, ORef assignmentRefForRow, int column);
 }
