@@ -314,7 +314,7 @@ public class XmlSchemaCreator implements XmpzXmlConstants
 			OpenStandardsDynamicProgressStatusQuestion.NOT_APPLICABLE_CODE,
 		};
 		
-		writer.print(VOCABULARY_DASHBOARD_ROW_STATUSES + " = ");
+		writer.print(VOCABULARY_DASHBOARD_ROW_PROGRESS + " = ");
 		for(int index = 0; index < allCodesFromDynamicQuestion.length; ++index)
 		{
 			String code = allCodesFromDynamicQuestion[index];
@@ -331,7 +331,7 @@ public class XmlSchemaCreator implements XmpzXmlConstants
 		writer.defineAlias(DASHBOARD_STATUS_ENTRY + ".element", "element " + XmpzXmlConstants.PREFIX + DASHBOARD_STATUS_ENTRY);
 		writer.startBlock();
 		writer.printlnIndented("attribute " + KEY_ATTRIBUTE_NAME + " { text } &");
-		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + DASHBOARD_PROGRESS + " { " + VOCABULARY_DASHBOARD_ROW_STATUSES + " }? &");
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + DASHBOARD_PROGRESS + " { " + VOCABULARY_DASHBOARD_ROW_PROGRESS + " }? &");
 		writer.printlnIndented(DASHBOARD + DASHBOARD_FLAGS + CONTAINER_ELEMENT_TAG + ".element? &");
 		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + DASHBOARD_COMMENTS + " { text }?");
 		writer.endBlock();
@@ -579,7 +579,7 @@ public class XmlSchemaCreator implements XmpzXmlConstants
 	public static final String VOCABULARY_DIAGRAM_OBJECT_DATA_INCLUSION = "vocabulary_included_diagram_types";
 	public static final String VOCABULARY_PLANNING_TREE_TARGET_NODE_POSITION = "vocabulary_planning_tree_target_node_position";
 	public static final String VOCABULARY_THREAT_RATING_MODE = "vocabulary_threat_rating_mode";
-	public static final String VOCABULARY_DASHBOARD_ROW_STATUSES = "vocabulary_dashboard_row_statuses";
+	public static final String VOCABULARY_DASHBOARD_ROW_PROGRESS = "vocabulary_dashboard_row_progress";
 	public static final String VOCABULARY_DASHBOARD_ROW_FLAGS = "vocabulary_dashboard_row_flags";
 	public static final String VOCABULARY_DASHBOARD_ROW_FLAG = "vocabulary_dashboard_row_flag";
 	
