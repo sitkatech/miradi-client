@@ -44,6 +44,8 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
+import org.miradi.objecthelpers.StringChoiceMap;
+import org.miradi.objecthelpers.StringCodeListMap;
 import org.miradi.objecthelpers.StringStringMap;
 import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.objecthelpers.TimePeriodCosts;
@@ -54,6 +56,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.BudgetCategoryOne;
 import org.miradi.objects.BudgetCategoryTwo;
 import org.miradi.objects.Cause;
+import org.miradi.objects.Dashboard;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
@@ -96,6 +99,7 @@ import org.miradi.objects.Xenodata;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.CountriesQuestion;
+import org.miradi.questions.DashboardFlagsQuestion;
 import org.miradi.questions.DiagramFactorBackgroundQuestion;
 import org.miradi.questions.DiagramFactorFontColorQuestion;
 import org.miradi.questions.DiagramFactorFontStyleQuestion;
@@ -103,6 +107,8 @@ import org.miradi.questions.DiagramLinkColorQuestion;
 import org.miradi.questions.FosTrainingTypeQuestion;
 import org.miradi.questions.HabitatAssociationQuestion;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
+import org.miradi.questions.OpenStandardsConceptualizeQuestion;
+import org.miradi.questions.OpenStandardsDynamicProgressStatusQuestion;
 import org.miradi.questions.PlanningTreeTargetPositionQuestion;
 import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.ProgressReportLongStatusQuestion;
@@ -1446,6 +1452,25 @@ public class ProjectForTesting extends ProjectWithHelpers
 		createAndPopulateIucnRedlistspecies();
 		createAndPopulateCategoryOne();
 		createAndPopulateCategoryTwo();
+		populateDashboard();
+	}
+
+	private void populateDashboard() throws Exception
+	{
+		ORef dashboardRef = getSingletonObjectRef(Dashboard.getObjectType());
+		StringChoiceMap progressChoiceMap = new StringChoiceMap();
+		progressChoiceMap.put(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE, OpenStandardsDynamicProgressStatusQuestion.IN_PROGRESS_CODE);
+		fillObjectUsingCommand(dashboardRef, Dashboard.TAG_USER_STATUS_CHOICE_MAP, progressChoiceMap.toString());
+		
+		StringStringMap commentsMap = new StringStringMap();
+		commentsMap.put(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE, "Some randome user comment");
+		fillObjectUsingCommand(dashboardRef, Dashboard.TAG_USER_COMMENTS_MAP, commentsMap.toString());
+
+		StringCodeListMap flagsMap = new StringCodeListMap();
+		CodeList flags = new CodeList();
+		flags.add(DashboardFlagsQuestion.NEEDS_ATTENTION_CODE);
+		flagsMap.put(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE, flags.toString());
+		fillObjectUsingCommand(dashboardRef, Dashboard.TAG_NEEDS_ATTENTION_MAP, flagsMap.toString());
 	}
 
 	public void validateObjectOwners(int type)
