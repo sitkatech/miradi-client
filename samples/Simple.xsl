@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <xsl:stylesheet 
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
-	xmlns:miradi="http://xml.miradi.org/schema/ConservationProject/49" 
+	xmlns:miradi="http://xml.miradi.org/schema/ConservationProject/51" 
 	version="1.0">
 <xsl:output method="html" indent="yes"/>
 
@@ -46,7 +46,7 @@
 	<xsl:param name="StrategyId" />
 		<xsl:if test="./miradi:ObjectiveRelevantStrategyIds/miradi:StrategyId = $StrategyId">
 		<xsl:text>
-		</xsl:text> <br/>
+		</xsl:text>
 		<xsl:value-of select="miradi:ObjectiveId" />:
 		<xsl:value-of select="miradi:ObjectiveName" />
 		</xsl:if>
