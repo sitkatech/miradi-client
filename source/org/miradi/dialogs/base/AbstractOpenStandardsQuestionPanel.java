@@ -48,6 +48,7 @@ import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.layout.MiradiGridLayoutPlus;
 import org.miradi.layout.OneColumnPanel;
 import org.miradi.main.AppPreferences;
+import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Dashboard;
@@ -70,6 +71,15 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
 		setLayout(createLayoutManager());
 		question = questionToUse;
+		
+		rebuild();
+	}
+
+	private void rebuild() throws Exception
+	{
+		removeAll();
+		getFields().clear();
+		
 		rowSelectionHandler = new DashboardSingleRowSelectionHandler();
 		
 		final int FIRST_LEVEL_INDENT_COUNT = 0;
@@ -99,6 +109,33 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 	public void removeRowSelectionListener(ListSelectionListener listener)
 	{
 		rowSelectionHandler.removeSelectionListener(listener);
+	}
+	
+	@Override
+	public void commandExecuted(CommandExecutedEvent event)
+	{
+		super.commandExecuted(event);
+		try
+		{
+			if(eventForcesRebuild(event))
+				rebuild();
+		}
+		catch(Exception e)
+		{
+			EAM.unexpectedErrorDialog(e);
+		}
+	}
+	
+	private boolean eventForcesRebuild(CommandExecutedEvent event)
+	{
+		if(event.isSetDataCommandWithThisTypeAndTag(Dashboard.getObjectType(), Dashboard.TAG_USER_STATUS_CHOICE_MAP))
+			return true;
+		if(event.isSetDataCommandWithThisTypeAndTag(Dashboard.getObjectType(), Dashboard.TAG_USER_COMMENTS_MAP))
+			return true;
+		if(event.isSetDataCommandWithThisTypeAndTag(Dashboard.getObjectType(), Dashboard.TAG_NEEDS_ATTENTION_MAP))
+			return true;
+
+		return false;
 	}
 	
 	private void addRows(ChoiceItem choiceItem, int level) throws Exception
