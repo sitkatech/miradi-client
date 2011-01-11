@@ -565,7 +565,7 @@ public class Dashboard extends BaseObject
 			String thirdLevelCode = allThirdLevelCodes.get(index);
 			Vector<DashboardRowDefinition> rowDefinitions = getDashboardRowDefinitionManager().getRowDefinitions(thirdLevelCode);
 			
-			String progressCode = userStatusChoiceMap.getStringChoiceMap().get(thirdLevelCode);
+			String progressCode = progressChoiceMap.getStringChoiceMap().get(thirdLevelCode);
 			if (progressCode.equals(OpenStandardsDynamicProgressStatusQuestion.NOT_SPECIFIED_CODE))
 				progressCode = computeStatusCodeFromStatistics(rowDefinitions);
 			
@@ -1090,7 +1090,7 @@ public class Dashboard extends BaseObject
 	
 	public StringChoiceMap getUserStatusChoiceMap()
 	{
-		return userStatusChoiceMap.getStringChoiceMap();
+		return progressChoiceMap.getStringChoiceMap();
 	}
 	
 	public StringCodeListMap getNeedsAttentionMap()
@@ -1197,7 +1197,7 @@ public class Dashboard extends BaseObject
 		totalActionBudget = new PseudoStringData(PSEUDO_TOTAL_ACTION_BUDGET);
 		totalMonitoringBudget = new PseudoStringData(PSEUDO_TOTAL_MONITORING_BUDGET);
 		
-		userStatusChoiceMap = new StringChoiceMapData(TAG_USER_STATUS_CHOICE_MAP);
+		progressChoiceMap = new StringChoiceMapData(TAG_USER_STATUS_CHOICE_MAP);
 		userCommentsMap = new StringStringMapData(TAG_USER_COMMENTS_MAP);
 		needsAttentionMap = new StringCodeListMapData(TAG_NEEDS_ATTENTION_MAP);
 		
@@ -1270,7 +1270,7 @@ public class Dashboard extends BaseObject
 		addPresentationDataField(PSEUDO_TOTAL_ACTION_BUDGET, totalActionBudget);
 		addPresentationDataField(PSEUDO_TOTAL_MONITORING_BUDGET, totalMonitoringBudget);
 		
-		addPresentationDataField(TAG_USER_STATUS_CHOICE_MAP, userStatusChoiceMap);
+		addPresentationDataField(TAG_USER_STATUS_CHOICE_MAP, progressChoiceMap);
 		addPresentationDataField(TAG_USER_COMMENTS_MAP, userCommentsMap);
 		addPresentationDataField(TAG_NEEDS_ATTENTION_MAP, needsAttentionMap);
 	}
@@ -1421,7 +1421,7 @@ public class Dashboard extends BaseObject
 	private PseudoStringData totalActionBudget;
 	private PseudoStringData totalMonitoringBudget;
 	
-	private StringChoiceMapData userStatusChoiceMap;
+	private StringChoiceMapData progressChoiceMap;
 	private StringStringMapData userCommentsMap;
 	private StringCodeListMapData needsAttentionMap;
 }
