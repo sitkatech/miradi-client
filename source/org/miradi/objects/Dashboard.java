@@ -1093,7 +1093,7 @@ public class Dashboard extends BaseObject
 		return progressChoiceMap.getStringChoiceMap();
 	}
 	
-	public StringCodeListMap getNeedsAttentionMap()
+	public StringCodeListMap getFlagsMap()
 	{
 		return flagsMap.getStringCodeListMap();
 	}
