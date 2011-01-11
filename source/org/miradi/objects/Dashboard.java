@@ -1349,7 +1349,7 @@ public class Dashboard extends BaseObject
 	
 	public static final String TAG_PROGRESS_CHOICE_MAP = "ProgressChoiceMap";
 	public static final String TAG_COMMENTS_MAP = "CommentsMap";
-	public static final String TAG_FLAGS_MAP = "NeedsAttentionMap";
+	public static final String TAG_FLAGS_MAP = "FlagsMap";
 
 	private DashboardRowDefinitionManager rowDefinitionManager;
 	private PseudoStringChoiceMapData effectiveStatusMap;
