@@ -1199,7 +1199,7 @@ public class Dashboard extends BaseObject
 		
 		progressChoiceMap = new StringChoiceMapData(TAG_PROGRESS_CHOICE_MAP);
 		commentsMap = new StringStringMapData(TAG_COMMENTS_MAP);
-		needsAttentionMap = new StringCodeListMapData(TAG_NEEDS_ATTENTION_MAP);
+		needsAttentionMap = new StringCodeListMapData(TAG_FLAGS_MAP);
 		
 		addPresentationDataField(PSEUDO_TEAM_MEMBER_COUNT, teamMemberCount);
 		addPresentationDataField(PSEUDO_PROJECT_SCOPE_WORD_COUNT, projectScopeWordCount);
@@ -1272,7 +1272,7 @@ public class Dashboard extends BaseObject
 		
 		addPresentationDataField(TAG_PROGRESS_CHOICE_MAP, progressChoiceMap);
 		addPresentationDataField(TAG_COMMENTS_MAP, commentsMap);
-		addPresentationDataField(TAG_NEEDS_ATTENTION_MAP, needsAttentionMap);
+		addPresentationDataField(TAG_FLAGS_MAP, needsAttentionMap);
 	}
 	
 	public static final String OBJECT_NAME = "Dashboard";
@@ -1349,7 +1349,7 @@ public class Dashboard extends BaseObject
 	
 	public static final String TAG_PROGRESS_CHOICE_MAP = "ProgressChoiceMap";
 	public static final String TAG_COMMENTS_MAP = "CommentsMap";
-	public static final String TAG_NEEDS_ATTENTION_MAP = "NeedsAttentionMap";
+	public static final String TAG_FLAGS_MAP = "NeedsAttentionMap";
 
 	private DashboardRowDefinitionManager rowDefinitionManager;
 	private PseudoStringChoiceMapData effectiveStatusMap;

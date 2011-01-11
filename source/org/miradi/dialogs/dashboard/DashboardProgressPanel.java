@@ -37,7 +37,7 @@ public class DashboardProgressPanel extends ObjectDataInputPanel
 		ChoiceQuestion question = new OpenStandardsDynamicProgressStatusQuestion(Dashboard.find(getProject(), refToUse), mapCodeToUse);
 		addField(createDashboardProgressEditorField(refToUse, Dashboard.TAG_PROGRESS_CHOICE_MAP, question, mapCodeToUse));
 		addField(createStringMapField(refToUse, Dashboard.TAG_COMMENTS_MAP, mapCodeToUse));
-		addField(createStringCodeListField(refToUse, Dashboard.TAG_NEEDS_ATTENTION_MAP, mapCodeToUse, getProject().getQuestion(DashboardFlagsQuestion.class)));
+		addField(createStringCodeListField(refToUse, Dashboard.TAG_FLAGS_MAP, mapCodeToUse, getProject().getQuestion(DashboardFlagsQuestion.class)));
 		
 		updateFieldsFromProject();
 	}

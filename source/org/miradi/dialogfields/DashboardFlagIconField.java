@@ -37,7 +37,7 @@ public class DashboardFlagIconField extends	AbstractDashboardClickableField
 {
 	public DashboardFlagIconField(Project projectToUse, ORef refToUse, String stringMapCodeToUse)
 	{
-		super(projectToUse, refToUse, Dashboard.TAG_NEEDS_ATTENTION_MAP, stringMapCodeToUse);	
+		super(projectToUse, refToUse, Dashboard.TAG_FLAGS_MAP, stringMapCodeToUse);	
 	}
 	
 	@Override
