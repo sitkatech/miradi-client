@@ -101,10 +101,10 @@ abstract public class AbstractSummaryTableModel extends PlanningViewAbstractAssi
 	{
 		ORef refForRow = getRefForRow(row);
 		if (isAccountingCodeColumn(column))
-			setAccountingCode((AccountingCode)value, refForRow, column);
+			setAccountingCode((BaseObject)value, refForRow, column);
 		
 		if (isFundingSourceColumn(column))
-			setFundingSource((FundingSource) value, refForRow, column);
+			setFundingSource((BaseObject) value, refForRow, column);
 		
 		if (isBudgetCategoryOneColumn(column))
 			setRefValue((BaseObject) value, Assignment.TAG_CATEGORY_ONE_REF, refForRow);
@@ -165,7 +165,7 @@ abstract public class AbstractSummaryTableModel extends PlanningViewAbstractAssi
 	
 	abstract protected String getFundingSourceTag();
 	
-	abstract protected void setAccountingCode(AccountingCode value, ORef assignmentRefForRow, int column);
+	abstract protected void setAccountingCode(BaseObject value, ORef assignmentRefForRow, int column);
 
-	abstract protected void setFundingSource(FundingSource value, ORef assignmentRefForRow, int column);
+	abstract protected void setFundingSource(BaseObject value, ORef assignmentRefForRow, int column);
 }
