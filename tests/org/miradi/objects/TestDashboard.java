@@ -62,7 +62,7 @@ public class TestDashboard extends ObjectTestCase
 		getProject().createProjectResource();
 		StringChoiceMap userMap = new StringChoiceMap();
 		userMap.put(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE, OpenStandardsDynamicProgressStatusQuestion.COMPLETE_CODE);
-		getDashboard().setData(Dashboard.TAG_USER_STATUS_CHOICE_MAP, userMap.toString());
+		getDashboard().setData(Dashboard.TAG_PROGRESS_CHOICE_MAP, userMap.toString());
 		verifyTeamMemberEffectiveStatus(OpenStandardsDynamicProgressStatusQuestion.COMPLETE_CODE);
 	}
 
