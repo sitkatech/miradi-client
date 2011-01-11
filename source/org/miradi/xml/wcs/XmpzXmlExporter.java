@@ -112,6 +112,7 @@ public class XmpzXmlExporter extends XmlExporter implements XmpzXmlConstants
 		new OtherNotableSpeciesPoolExporter(this).exportXml();
 		new AudiencePoolExporter(this).exportXml();
 		new ObjectTreeTableConfigurationPoolExporter(this).exportXml();
+		new DashboardPoolExporter(this).exportXml();
 		
 		writeOptionalElement(out, DELETED_ORPHANS_ELEMENT_NAME, getProject().getQuarantineFileContents());
 
@@ -439,7 +440,11 @@ public class XmpzXmlExporter extends XmlExporter implements XmpzXmlConstants
 		
 	public void writeCodeListElement(String parentElementName, String poolElementName, BaseObject object, String tag) throws Exception
 	{
-		CodeList codes = object.getCodeList(tag);
+		writeCodeListElement(parentElementName, poolElementName, object.getCodeList(tag));
+	}
+
+	public void writeCodeListElement(String parentElementName, String poolElementName, CodeList codes) throws Exception
+	{
 		writeStartContainerElement(parentElementName + poolElementName);
 		for (int index = 0; index < codes.size(); ++index)
 		{

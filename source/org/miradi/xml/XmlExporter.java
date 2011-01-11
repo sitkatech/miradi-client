@@ -111,7 +111,7 @@ public abstract class XmlExporter
 		writeElement(out, elementName, Integer.toString(data));
 	}
 	
-	protected void writeElement(UnicodeWriter out, String elementName, String data) throws Exception
+	public void writeElement(UnicodeWriter out, String elementName, String data) throws Exception
 	{
 		out.write("<" + elementName + ">");
 		writeXmlEncodedData(out, data);

@@ -28,7 +28,7 @@ public interface XmpzXmlConstants
 	public static final String ELEMENT_NAME = "element" + SINGLE_SPACE;
 	public static final String OPTIONAL_ELEMENT = SINGLE_SPACE + "?" + SINGLE_SPACE;
 	
-	public static final String NAME_SPACE_VERSION = "49";
+	public static final String NAME_SPACE_VERSION = "51";
 	public static final String PARTIAL_NAME_SPACE = "http://xml.miradi.org/schema/ConservationProject/";
 	public static final String NAME_SPACE = PARTIAL_NAME_SPACE + NAME_SPACE_VERSION;
 	public static final String XMLNS = "xmlns";
@@ -175,6 +175,13 @@ public interface XmpzXmlConstants
 	public static final String LOCATION = "Location";
 	public static final String SIZE = "Size";
 	public static final String EXTERNAL_PROJECT_ID_ELEMENT_NAME = "ExternalProjectId";
+	public static final String DASHBOARD = "Dashboard";
+	public static final String DASHBOARD_STATUS_ENTRIES = "StatusEntries";
+	public static final String DASHBOARD_STATUS_ENTRY = "StatusEntry";
+	public static final String KEY_ATTRIBUTE_NAME = "Key";
+	public static final String DASHBOARD_STATUS = "Status";
+	public static final String DASHBOARD_COMMENTS = "Commments";
+	public static final String DASHBOARD_FLAGS = "Flags";
 	
 	public static final String DELETED_ORPHANS_ELEMENT_NAME = "DeletedOrphans";
 

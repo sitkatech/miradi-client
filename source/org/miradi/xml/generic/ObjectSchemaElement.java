@@ -218,6 +218,12 @@ class ObjectSchemaElement extends SchemaElement
 		FieldSchemaElement field = new OptionalThresholdSchemaElement(getObjectTypeName());
 		fields.add(field);
 	}
+	
+	protected void createDashboardStringStringMapField(String fieldNameToUse)
+	{
+		FieldSchemaElement field = new DashboardStatusEntriesSchemaElement(getObjectTypeName(), fieldNameToUse);
+		fields.add(field);
+	}
 
 	public String getObjectTypeName()
 	{

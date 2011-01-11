@@ -86,6 +86,7 @@ public class XmpzXmlImporter extends AbstractXmlImporter implements XmpzXmlConst
 		new ObjectTreeTableConfigurationPoolImporter(this).importElement();
 		new ExpenseAssignmentPoolImporter(this).importElement();
 		new ResourceAssignmentPoolImporter(this).importElement();
+		new DashboardPoolImporter(this).importElement();
 		importThreatStressRatings();
 		importDeletedOrphanText();
 	}
