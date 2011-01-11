@@ -52,8 +52,11 @@ public class DashboardPoolImporter extends AbstractXmpzObjectImporter
 			Node statusNode = statusNodes.item(index);
 			String thirdLevelCode = getImporter().getAttributeValue(statusNode, KEY_ATTRIBUTE_NAME);
 			Node progressCodeNode = getImporter().getNode(statusNode, DASHBOARD_STATUS);
-			String statusCode = progressCodeNode.getTextContent();
-			userProgressMap.put(thirdLevelCode, statusCode);
+			if (progressCodeNode != null)
+			{
+				String statusCode = progressCodeNode.getTextContent();
+				userProgressMap.put(thirdLevelCode, statusCode);
+			}
 			
 			CodeList flagCodes = getFlagsCodeList(statusNode);
 			userFlagsMap.put(thirdLevelCode, flagCodes.toString());
@@ -69,7 +72,6 @@ public class DashboardPoolImporter extends AbstractXmpzObjectImporter
 		getImporter().setData(getDashboardRef(), Dashboard.TAG_USER_STATUS_CHOICE_MAP, userProgressMap.toString());
 		getImporter().setData(getDashboardRef(), Dashboard.TAG_NEEDS_ATTENTION_MAP, userFlagsMap.toString());
 		getImporter().setData(getDashboardRef(), Dashboard.TAG_USER_COMMENTS_MAP, userCommentsMap.toString());
-		
 	}
 
 	private CodeList getFlagsCodeList(Node flagsNode) throws Exception
