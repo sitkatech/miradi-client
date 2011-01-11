@@ -128,11 +128,11 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 	
 	private boolean eventForcesRebuild(CommandExecutedEvent event)
 	{
-		if(event.isSetDataCommandWithThisTypeAndTag(Dashboard.getObjectType(), Dashboard.TAG_USER_STATUS_CHOICE_MAP))
+		if(event.isSetDataCommandWithThisTypeAndTag(Dashboard.getObjectType(), Dashboard.TAG_PROGRESS_CHOICE_MAP))
 			return true;
-		if(event.isSetDataCommandWithThisTypeAndTag(Dashboard.getObjectType(), Dashboard.TAG_USER_COMMENTS_MAP))
+		if(event.isSetDataCommandWithThisTypeAndTag(Dashboard.getObjectType(), Dashboard.TAG_COMMENTS_MAP))
 			return true;
-		if(event.isSetDataCommandWithThisTypeAndTag(Dashboard.getObjectType(), Dashboard.TAG_NEEDS_ATTENTION_MAP))
+		if(event.isSetDataCommandWithThisTypeAndTag(Dashboard.getObjectType(), Dashboard.TAG_FLAGS_MAP))
 			return true;
 
 		return false;
