@@ -1085,7 +1085,7 @@ public class Dashboard extends BaseObject
 	
 	public StringStringMap getUserCommentsMap()
 	{
-		return userCommentsMap.getStringMap();
+		return commentsMap.getStringMap();
 	}
 	
 	public StringChoiceMap getProgressChoiceMap()
@@ -1198,7 +1198,7 @@ public class Dashboard extends BaseObject
 		totalMonitoringBudget = new PseudoStringData(PSEUDO_TOTAL_MONITORING_BUDGET);
 		
 		progressChoiceMap = new StringChoiceMapData(TAG_PROGRESS_CHOICE_MAP);
-		userCommentsMap = new StringStringMapData(TAG_USER_COMMENTS_MAP);
+		commentsMap = new StringStringMapData(TAG_USER_COMMENTS_MAP);
 		needsAttentionMap = new StringCodeListMapData(TAG_NEEDS_ATTENTION_MAP);
 		
 		addPresentationDataField(PSEUDO_TEAM_MEMBER_COUNT, teamMemberCount);
@@ -1271,7 +1271,7 @@ public class Dashboard extends BaseObject
 		addPresentationDataField(PSEUDO_TOTAL_MONITORING_BUDGET, totalMonitoringBudget);
 		
 		addPresentationDataField(TAG_PROGRESS_CHOICE_MAP, progressChoiceMap);
-		addPresentationDataField(TAG_USER_COMMENTS_MAP, userCommentsMap);
+		addPresentationDataField(TAG_USER_COMMENTS_MAP, commentsMap);
 		addPresentationDataField(TAG_NEEDS_ATTENTION_MAP, needsAttentionMap);
 	}
 	
@@ -1422,6 +1422,6 @@ public class Dashboard extends BaseObject
 	private PseudoStringData totalMonitoringBudget;
 	
 	private StringChoiceMapData progressChoiceMap;
-	private StringStringMapData userCommentsMap;
+	private StringStringMapData commentsMap;
 	private StringCodeListMapData needsAttentionMap;
 }
