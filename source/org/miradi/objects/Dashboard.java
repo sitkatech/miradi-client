@@ -1348,7 +1348,7 @@ public class Dashboard extends BaseObject
 	public static final String PSEUDO_TOTAL_MONITORING_BUDGET = "TotalMonitoringBudget";
 	
 	public static final String TAG_PROGRESS_CHOICE_MAP = "ProgressChoiceMap";
-	public static final String TAG_COMMENTS_MAP = "UserStatusCommentsMap";
+	public static final String TAG_COMMENTS_MAP = "CommentsMap";
 	public static final String TAG_NEEDS_ATTENTION_MAP = "NeedsAttentionMap";
 
 	private DashboardRowDefinitionManager rowDefinitionManager;
