@@ -179,7 +179,7 @@ public interface XmpzXmlConstants
 	public static final String DASHBOARD_STATUS_ENTRIES = "StatusEntries";
 	public static final String DASHBOARD_STATUS_ENTRY = "StatusEntry";
 	public static final String KEY_ATTRIBUTE_NAME = "Key";
-	public static final String DASHBOARD_STATUS = "Status";
+	public static final String DASHBOARD_PROGRESS = "Progress";
 	public static final String DASHBOARD_COMMENTS = "Commments";
 	public static final String DASHBOARD_FLAGS = "Flags";
 	

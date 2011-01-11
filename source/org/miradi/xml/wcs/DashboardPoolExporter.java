@@ -59,7 +59,7 @@ public class DashboardPoolExporter extends BaseObjectPoolExporter
 			{
 				getWcsXmlExporter().writeStartElementWithAttribute(getWriter(), DASHBOARD_STATUS_ENTRY, KEY_ATTRIBUTE_NAME, thirdLevelCode);
 					
-				getWcsXmlExporter().writeOptionalElement(getWriter(), DASHBOARD_STATUS, userStatusMap.get(thirdLevelCode));
+				getWcsXmlExporter().writeOptionalElement(getWriter(), DASHBOARD_PROGRESS, userStatusMap.get(thirdLevelCode));
 				getWcsXmlExporter().writeOptionalCodeListElement(DASHBOARD, DASHBOARD_FLAGS, new CodeList(needsAttentionMap.get(thirdLevelCode)));
 				getWcsXmlExporter().writeOptionalElement(getWriter(), DASHBOARD_COMMENTS, userCommentsMap.get(thirdLevelCode));
 				
