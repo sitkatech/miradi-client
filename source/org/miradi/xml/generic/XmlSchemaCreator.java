@@ -37,6 +37,7 @@ import org.miradi.objects.TncProjectData;
 import org.miradi.objects.WwfProjectData;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.CountriesQuestion;
+import org.miradi.questions.DashboardFlagsQuestion;
 import org.miradi.questions.DiagramFactorBackgroundQuestion;
 import org.miradi.questions.DiagramFactorFontColorQuestion;
 import org.miradi.questions.DiagramFactorFontSizeQuestion;
@@ -49,6 +50,7 @@ import org.miradi.questions.FosTrainingTypeQuestion;
 import org.miradi.questions.HabitatAssociationQuestion;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 import org.miradi.questions.LanguageQuestion;
+import org.miradi.questions.OpenStandardsDynamicProgressStatusQuestion;
 import org.miradi.questions.PlanningTreeTargetPositionQuestion;
 import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.ProgressReportLongStatusQuestion;
@@ -157,6 +159,8 @@ public class XmlSchemaCreator implements XmpzXmlConstants
 		defineVocabulary(writer, VOCABULARY_DIAGRAM_OBJECT_DATA_INCLUSION, new DiagramObjectDataInclusionQuestion());
 		defineVocabulary(writer, VOCABULARY_PLANNING_TREE_TARGET_NODE_POSITION, new PlanningTreeTargetPositionQuestion());
 		defineVocabulary(writer, VOCABULARY_THREAT_RATING_MODE, new ThreatRatingModeChoiceQuestion());
+		defineVocabulary(writer, VOCABULARY_DASHBOARD_ROW_FLAGS, new DashboardFlagsQuestion());
+		defineDashboardStatusesVocabulary(writer);
 		
 		defineIdElement(writer, "ConceptualModel");
 		defineIdElement(writer, "ResultsChain");
@@ -293,10 +297,46 @@ public class XmlSchemaCreator implements XmpzXmlConstants
 		defineVocabularyDefinedAlias(writer, XmpzXmlConstants.WWF_PROJECT_DATA, VOCABULARY_WWF_REGIONS, WWF_REGIONS);
 		defineVocabularyDefinedAlias(writer, XmpzXmlConstants.WWF_PROJECT_DATA, VOCABULARY_WWF_ECOREGIONS, WWF_ECOREGIONS);
 		defineVocabularyDefinedAlias(writer, XmpzXmlConstants.PROJECT_SUMMARY_LOCATION, VOCABULARY_COUNTRIES, COUNTRIES);
+		defineVocabularyDefinedAlias(writer, DASHBOARD, VOCABULARY_DASHBOARD_ROW_FLAGS, DASHBOARD_FLAGS);
+		
+		defineDashboardUserChoiceMap(writer);
 		
 		writer.flush();
+	}
+
+	private void defineDashboardStatusesVocabulary(SchemaWriter writer)
+	{
+		final String[] allCodesFromDynamicQuestion = new String[]{
+			OpenStandardsDynamicProgressStatusQuestion.NOT_SPECIFIED_CODE,
+			OpenStandardsDynamicProgressStatusQuestion.NOT_STARTED_CODE,
+			OpenStandardsDynamicProgressStatusQuestion.IN_PROGRESS_CODE,
+			OpenStandardsDynamicProgressStatusQuestion.COMPLETE_CODE,
+			OpenStandardsDynamicProgressStatusQuestion.NOT_APPLICABLE_CODE,
+		};
+		
+		writer.print(VOCABULARY_DASHBOARD_ROW_STATUSES + " = ");
+		for(int index = 0; index < allCodesFromDynamicQuestion.length; ++index)
+		{
+			String code = allCodesFromDynamicQuestion[index];
+			writer.write("'" + code + "'");
+			if (index < allCodesFromDynamicQuestion.length - 1)
+				writer.print("|");
+		}
+		
+		writer.println();
 	}	
 	
+	private void defineDashboardUserChoiceMap(SchemaWriter writer)
+	{
+		writer.defineAlias(DASHBOARD_STATUS_ENTRY + ".element", "element " + XmpzXmlConstants.PREFIX + DASHBOARD_STATUS_ENTRY);
+		writer.startBlock();
+		writer.printlnIndented("attribute " + KEY_ATTRIBUTE_NAME + " { text } &");
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + DASHBOARD_STATUS + " { " + VOCABULARY_DASHBOARD_ROW_STATUSES + " }? &");
+		writer.printlnIndented(DASHBOARD + DASHBOARD_FLAGS + CONTAINER_ELEMENT_TAG + ".element? &");
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + DASHBOARD_COMMENTS + " { text }?");
+		writer.endBlock();
+	}
+
 	private void defineDiagramFactorUiSettings(SchemaWriter writer)
 	{
 		writer.defineAlias(STYLING + ".element"	, ELEMENT_NAME + PREFIX + STYLING);
@@ -407,7 +447,6 @@ public class XmlSchemaCreator implements XmpzXmlConstants
 		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + THRESHOLD_VALUE + " { text }? &");
 		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + THRESHOLD_DETAILS + " { text }?");
 		writer.endBlock();
-		
 	}
 	
 	private void defineFullProjectTimeSpanElement(SchemaWriter writer, String fullProjectTimeSpanElementName)
@@ -472,8 +511,8 @@ public class XmlSchemaCreator implements XmpzXmlConstants
 	
 	private void defineVocabulary(SchemaWriter writer, String vocabularyName, ChoiceQuestion question)
 	{
-		writer.print(vocabularyName + " = ");
 		CodeList codes = question.getAllCodes();
+		writer.print(vocabularyName + " = ");
 		for(int index = 0; index < codes.size(); ++index)
 		{
 			String code = codes.get(index);
@@ -540,6 +579,9 @@ public class XmlSchemaCreator implements XmpzXmlConstants
 	public static final String VOCABULARY_DIAGRAM_OBJECT_DATA_INCLUSION = "vocabulary_included_diagram_types";
 	public static final String VOCABULARY_PLANNING_TREE_TARGET_NODE_POSITION = "vocabulary_planning_tree_target_node_position";
 	public static final String VOCABULARY_THREAT_RATING_MODE = "vocabulary_threat_rating_mode";
+	public static final String VOCABULARY_DASHBOARD_ROW_STATUSES = "vocabulary_dashboard_row_statuses";
+	public static final String VOCABULARY_DASHBOARD_ROW_FLAGS = "vocabulary_dashboard_row_flags";
+	public static final String VOCABULARY_DASHBOARD_ROW_FLAG = "vocabulary_dashboard_row_flag";
 	
 	public static final String PROTECTED_AREA_CATEGORIES_ELEMENT_NAME = ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES;
 	public static final String RESOURCE_TYPE_ELEMENT_NAME = ProjectResource.TAG_RESOURCE_TYPE;

@@ -1,4 +1,4 @@
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/50'
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/51'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -47,6 +47,7 @@ ConservationProject.element = element miradi:ConservationProject
   OtherNotableSpeciesPool.element ?  &
   AudiencePool.element ?  &
   PlanningViewConfigurationPool.element ?  &
+  DashboardPool.element ?  &
   element miradi:DeletedOrphans{ text }?
 }
 
@@ -641,6 +642,13 @@ PlanningViewConfiguration.element = element miradi:PlanningViewConfiguration
   element miradi:PlanningViewConfigurationTagDiagramDataInclusion { vocabulary_included_diagram_types  }?
 }
 
+DashboardPool.element = element miradi:DashboardPool { Dashboard.element* }
+Dashboard.element = element miradi:Dashboard
+{
+  attribute Id {xsd:integer}  &
+  element miradi:DashboardStatusEntries { StatusEntry.element* }?
+}
+
 vocabulary_work_units_full_project_timespan = xsd:NMTOKEN { pattern = 'Total' } 
 vocabulary_year = xsd:NMTOKEN { pattern = '[0-9]{4}' } 
 vocabulary_month = xsd:integer { minInclusive='1' maxInclusive='12' } 
@@ -694,6 +702,8 @@ vocabulary_threat_rating = ''|'1'|'2'|'3'|'4'
 vocabulary_included_diagram_types = 'AllTypes'|'IncludeConceptualModelData'|'IncludeResultsChainData'
 vocabulary_planning_tree_target_node_position = 'TargetNodesChildrenOfDiagramObjects'|'TargetNodesTopOfPlanningTree'
 vocabulary_threat_rating_mode = 'Simple'|'StressBased'
+vocabulary_dashboard_row_flags = 'needsAttention'
+vocabulary_dashboard_row_statuses = ''|'1'|'2'|'3'|'4'
 ConceptualModelId.element = element miradi:ConceptualModelId { xsd:integer }
 ResultsChainId.element = element miradi:ResultsChainId { xsd:integer }
 DiagramFactorId.element = element miradi:DiagramFactorId { xsd:integer }
@@ -987,4 +997,17 @@ WwfProjectDataEcoRegionsContainer.element = element miradi:WwfProjectDataEcoRegi
 ProjectSummaryLocationCountriesContainer.element = element miradi:ProjectSummaryLocationCountriesContainer
 {
   element miradi:code { vocabulary_countries } * 
+}
+
+DashboardFlagsContainer.element = element miradi:DashboardFlagsContainer
+{
+  element miradi:code { vocabulary_dashboard_row_flags } * 
+}
+
+StatusEntry.element = element miradi:StatusEntry
+{
+  attribute Key { text } &
+  element miradi:Status { vocabulary_dashboard_row_statuses }? &
+  DashboardFlagsContainer.element? &
+  element miradi:Commments { text }?
 }
