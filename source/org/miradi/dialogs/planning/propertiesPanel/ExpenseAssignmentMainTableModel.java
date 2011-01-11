@@ -188,9 +188,9 @@ public class ExpenseAssignmentMainTableModel extends AbstractSummaryTableModel
 	}
 	
 	@Override
-	protected void setAccountingCode(BaseObject accountingCode, ORef assignmentRefForRow, int column)
+	protected void setAccountingCode(ORef accountingCode, ORef assignmentRefForRow, int column)
 	{
-		setValueUsingCommand(assignmentRefForRow, getAccountingCodeTag(), accountingCode.getRef());
+		setValueUsingCommand(assignmentRefForRow, getAccountingCodeTag(), accountingCode);
 	}
 
 	@Override
