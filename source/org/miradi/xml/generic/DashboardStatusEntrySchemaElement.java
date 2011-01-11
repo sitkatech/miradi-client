@@ -22,9 +22,9 @@ package org.miradi.xml.generic;
 
 import java.io.IOException;
 
-public class DashboardStatusEntriesSchemaElement extends FieldSchemaElement
+public class DashboardStatusEntrySchemaElement extends FieldSchemaElement
 {
-	protected DashboardStatusEntriesSchemaElement(String objectTypeNameToUse, String tagToUse)
+	protected DashboardStatusEntrySchemaElement(String objectTypeNameToUse, String tagToUse)
 	{
 		super(objectTypeNameToUse, tagToUse);
 	}
