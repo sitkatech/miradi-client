@@ -107,13 +107,13 @@ abstract public class AbstractSummaryTableModel extends PlanningViewAbstractAssi
 			setFundingSource(((BaseObject) value).getRef(), refForRow, column);
 		
 		if (isBudgetCategoryOneColumn(column))
-			setRefValue((BaseObject) value, Assignment.TAG_CATEGORY_ONE_REF, refForRow);
+			setRefValue(refForRow, Assignment.TAG_CATEGORY_ONE_REF, (BaseObject) value);
 		
 		if (isBudgetCategoryTwoColumn(column))
-			setRefValue((BaseObject) value, Assignment.TAG_CATEGORY_TWO_REF, refForRow);
+			setRefValue(refForRow, Assignment.TAG_CATEGORY_TWO_REF, (BaseObject) value);
 	}
 	
-	private void setRefValue(BaseObject baseObject, String destinationTag, ORef refForRow)
+	private void setRefValue(ORef refForRow, String destinationTag, BaseObject baseObject)
 	{
 		setValueUsingCommand(refForRow, destinationTag, baseObject.getRef());
 	}
