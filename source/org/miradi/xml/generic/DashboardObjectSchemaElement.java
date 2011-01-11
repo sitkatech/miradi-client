@@ -26,6 +26,6 @@ public class DashboardObjectSchemaElement extends AbstractBaseObjectSchemaElemen
 	{
 		super(DASHBOARD);
 		
-		createDashboardStringStringMapField(DASHBOARD_STATUS_ENTRIES);
+		createDashboardStatusEntryField(DASHBOARD_STATUS_ENTRIES);
 	}
 }

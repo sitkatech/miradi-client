@@ -219,7 +219,7 @@ class ObjectSchemaElement extends SchemaElement
 		fields.add(field);
 	}
 	
-	protected void createDashboardStringStringMapField(String fieldNameToUse)
+	protected void createDashboardStatusEntryField(String fieldNameToUse)
 	{
 		FieldSchemaElement field = new DashboardStatusEntrySchemaElement(getObjectTypeName(), fieldNameToUse);
 		fields.add(field);
