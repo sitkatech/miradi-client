@@ -42,8 +42,8 @@ public class DashboardPoolExporter extends BaseObjectPoolExporter
 		super.exportFields(writer, baseObject);
 		
 		Dashboard dashboard = (Dashboard) baseObject;
-		StringStringMap userCommentsMap = dashboard.getCommentsMap();
-		StringChoiceMap userStatusMap = dashboard.getProgressChoiceMap();
+		StringStringMap commentsMap = dashboard.getCommentsMap();
+		StringChoiceMap progressMap = dashboard.getProgressChoiceMap();
 		StringCodeListMap flagsMap = dashboard.getFlagsMap();
 		
 		DashboardRowDefinitionManager manager = new DashboardRowDefinitionManager();
@@ -52,16 +52,16 @@ public class DashboardPoolExporter extends BaseObjectPoolExporter
 		for (int index = 0; index < allThirdLevelRowCodes.size(); ++index)
 		{
 			String thirdLevelCode = allThirdLevelRowCodes.get(index);
-			boolean hasCommentsValue = userCommentsMap.contains(thirdLevelCode);
-			boolean hasStatusValue = userStatusMap.contains(thirdLevelCode);
-			boolean hasNeedsAttentionValue = flagsMap.contains(thirdLevelCode);
-			if (hasCommentsValue || hasStatusValue || hasNeedsAttentionValue)
+			boolean hasCommentsValue = commentsMap.contains(thirdLevelCode);
+			boolean hasProgressValue = progressMap.contains(thirdLevelCode);
+			boolean hasFlagValue = flagsMap.contains(thirdLevelCode);
+			if (hasCommentsValue || hasProgressValue || hasFlagValue)
 			{
 				getWcsXmlExporter().writeStartElementWithAttribute(getWriter(), DASHBOARD_STATUS_ENTRY, KEY_ATTRIBUTE_NAME, thirdLevelCode);
 					
-				getWcsXmlExporter().writeOptionalElement(getWriter(), DASHBOARD_PROGRESS, userStatusMap.get(thirdLevelCode));
+				getWcsXmlExporter().writeOptionalElement(getWriter(), DASHBOARD_PROGRESS, progressMap.get(thirdLevelCode));
 				getWcsXmlExporter().writeOptionalCodeListElement(DASHBOARD, DASHBOARD_FLAGS, new CodeList(flagsMap.get(thirdLevelCode)));
-				getWcsXmlExporter().writeOptionalElement(getWriter(), DASHBOARD_COMMENTS, userCommentsMap.get(thirdLevelCode));
+				getWcsXmlExporter().writeOptionalElement(getWriter(), DASHBOARD_COMMENTS, commentsMap.get(thirdLevelCode));
 				
 				getWcsXmlExporter().writeEndElement(DASHBOARD_STATUS_ENTRY);
 			}
