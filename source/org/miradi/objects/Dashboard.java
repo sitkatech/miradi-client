@@ -295,6 +295,9 @@ public class Dashboard extends BaseObject
 			
 			if (fieldTag.equals(PSEUDO_TOTAL_MONITORING_BUDGET))
 				return getTotalMonitoringBudget();
+			
+			if (fieldTag.equals(PSEUDO_TOTAL_FACTOR_COUNT))
+				return getTotalUniqueFactorCount();
 					
 			return super.getPseudoData(fieldTag);
 		}
@@ -303,6 +306,26 @@ public class Dashboard extends BaseObject
 			EAM.logException(e);
 			return EAM.text("Error Retrieving Data");
 		}
+	}
+
+	private String getTotalUniqueFactorCount()
+	{
+		int[] factorTypesToCount = new int[]{
+				Target.getObjectType(),
+				HumanWelfareTarget.getObjectType(),
+				Cause.getObjectType(),
+				Strategy.getObjectType(),
+				ThreatReductionResult.getObjectType(),
+				IntermediateResult.getObjectType(),
+		};
+		
+		ORefSet allFactorRefs = new ORefSet();
+		for (int index = 0; index < factorTypesToCount.length; ++index)
+		{
+			allFactorRefs.addAll(getProject().getPool(factorTypesToCount[index]).getRefSet());
+		}
+
+		return Integer.toString(allFactorRefs.size());
 	}
 
 	private String getTotalActionBudget() throws Exception
@@ -1196,6 +1219,7 @@ public class Dashboard extends BaseObject
 		objectivesWithMoreThanOnePercentCompleteRecordCount = new PseudoStringData(PSEUDO_OBJECTIVES_WITH_MORE_THAN_ONE_PERCENT_COMPLETE_RECORD_COUNT);
 		totalActionBudget = new PseudoStringData(PSEUDO_TOTAL_ACTION_BUDGET);
 		totalMonitoringBudget = new PseudoStringData(PSEUDO_TOTAL_MONITORING_BUDGET);
+		totalFactorCount = new PseudoStringData(PSEUDO_TOTAL_FACTOR_COUNT);
 		
 		progressChoiceMap = new StringChoiceMapData(TAG_PROGRESS_CHOICE_MAP);
 		commentsMap = new StringStringMapData(TAG_COMMENTS_MAP);
@@ -1269,6 +1293,7 @@ public class Dashboard extends BaseObject
 		addPresentationDataField(PSEUDO_OBJECTIVES_WITH_MORE_THAN_ONE_PERCENT_COMPLETE_RECORD_COUNT, objectivesWithMoreThanOnePercentCompleteRecordCount);
 		addPresentationDataField(PSEUDO_TOTAL_ACTION_BUDGET, totalActionBudget);
 		addPresentationDataField(PSEUDO_TOTAL_MONITORING_BUDGET, totalMonitoringBudget);
+		addPresentationDataField(PSEUDO_TOTAL_FACTOR_COUNT, totalFactorCount);
 		
 		addPresentationDataField(TAG_PROGRESS_CHOICE_MAP, progressChoiceMap);
 		addPresentationDataField(TAG_COMMENTS_MAP, commentsMap);
@@ -1346,6 +1371,7 @@ public class Dashboard extends BaseObject
 	public static final String PSEUDO_OBJECTIVES_WITH_MORE_THAN_ONE_PERCENT_COMPLETE_RECORD_COUNT = "ObjectivesWithMoreThanOnePercentCompleteRecordCount";
 	public static final String PSEUDO_TOTAL_ACTION_BUDGET = "TotalActionBudget";
 	public static final String PSEUDO_TOTAL_MONITORING_BUDGET = "TotalMonitoringBudget";
+	public static final String PSEUDO_TOTAL_FACTOR_COUNT = "TotalFactorCount";
 	
 	public static final String TAG_PROGRESS_CHOICE_MAP = "ProgressChoiceMap";
 	public static final String TAG_COMMENTS_MAP = "CommentsMap";
@@ -1420,6 +1446,7 @@ public class Dashboard extends BaseObject
 	private PseudoStringData objectivesWithMoreThanOnePercentCompleteRecordCount;
 	private PseudoStringData totalActionBudget;
 	private PseudoStringData totalMonitoringBudget;
+	private PseudoStringData totalFactorCount;
 	
 	private StringChoiceMapData progressChoiceMap;
 	private StringStringMapData commentsMap;
