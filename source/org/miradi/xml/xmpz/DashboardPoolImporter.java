@@ -51,7 +51,7 @@ public class DashboardPoolImporter extends AbstractXmpzObjectImporter
 		{
 			Node statusNode = statusNodes.item(index);
 			String thirdLevelCode = getImporter().getAttributeValue(statusNode, KEY_ATTRIBUTE_NAME);
-			Node progressCodeNode = getImporter().getNode(statusNode, DASHBOARD_STATUS);
+			Node progressCodeNode = getImporter().getNode(statusNode, DASHBOARD_PROGRESS);
 			if (progressCodeNode != null)
 			{
 				String statusCode = progressCodeNode.getTextContent();

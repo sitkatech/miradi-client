@@ -331,7 +331,7 @@ public class XmlSchemaCreator implements XmpzXmlConstants
 		writer.defineAlias(DASHBOARD_STATUS_ENTRY + ".element", "element " + XmpzXmlConstants.PREFIX + DASHBOARD_STATUS_ENTRY);
 		writer.startBlock();
 		writer.printlnIndented("attribute " + KEY_ATTRIBUTE_NAME + " { text } &");
-		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + DASHBOARD_STATUS + " { " + VOCABULARY_DASHBOARD_ROW_STATUSES + " }? &");
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + DASHBOARD_PROGRESS + " { " + VOCABULARY_DASHBOARD_ROW_STATUSES + " }? &");
 		writer.printlnIndented(DASHBOARD + DASHBOARD_FLAGS + CONTAINER_ELEMENT_TAG + ".element? &");
 		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + DASHBOARD_COMMENTS + " { text }?");
 		writer.endBlock();
