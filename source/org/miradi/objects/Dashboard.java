@@ -1197,7 +1197,7 @@ public class Dashboard extends BaseObject
 		totalActionBudget = new PseudoStringData(PSEUDO_TOTAL_ACTION_BUDGET);
 		totalMonitoringBudget = new PseudoStringData(PSEUDO_TOTAL_MONITORING_BUDGET);
 		
-		progressChoiceMap = new StringChoiceMapData(TAG_USER_STATUS_CHOICE_MAP);
+		progressChoiceMap = new StringChoiceMapData(TAG_PROGRESS_CHOICE_MAP);
 		userCommentsMap = new StringStringMapData(TAG_USER_COMMENTS_MAP);
 		needsAttentionMap = new StringCodeListMapData(TAG_NEEDS_ATTENTION_MAP);
 		
@@ -1270,7 +1270,7 @@ public class Dashboard extends BaseObject
 		addPresentationDataField(PSEUDO_TOTAL_ACTION_BUDGET, totalActionBudget);
 		addPresentationDataField(PSEUDO_TOTAL_MONITORING_BUDGET, totalMonitoringBudget);
 		
-		addPresentationDataField(TAG_USER_STATUS_CHOICE_MAP, progressChoiceMap);
+		addPresentationDataField(TAG_PROGRESS_CHOICE_MAP, progressChoiceMap);
 		addPresentationDataField(TAG_USER_COMMENTS_MAP, userCommentsMap);
 		addPresentationDataField(TAG_NEEDS_ATTENTION_MAP, needsAttentionMap);
 	}
@@ -1347,7 +1347,7 @@ public class Dashboard extends BaseObject
 	public static final String PSEUDO_TOTAL_ACTION_BUDGET = "TotalActionBudget";
 	public static final String PSEUDO_TOTAL_MONITORING_BUDGET = "TotalMonitoringBudget";
 	
-	public static final String TAG_USER_STATUS_CHOICE_MAP = "UserStatusChoiceMap";
+	public static final String TAG_PROGRESS_CHOICE_MAP = "UserStatusChoiceMap";
 	public static final String TAG_USER_COMMENTS_MAP = "UserStatusCommentsMap";
 	public static final String TAG_NEEDS_ATTENTION_MAP = "NeedsAttentionMap";
 

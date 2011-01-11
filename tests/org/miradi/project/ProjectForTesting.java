@@ -1460,7 +1460,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		ORef dashboardRef = getSingletonObjectRef(Dashboard.getObjectType());
 		StringChoiceMap progressChoiceMap = new StringChoiceMap();
 		progressChoiceMap.put(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE, OpenStandardsDynamicProgressStatusQuestion.IN_PROGRESS_CODE);
-		fillObjectUsingCommand(dashboardRef, Dashboard.TAG_USER_STATUS_CHOICE_MAP, progressChoiceMap.toString());
+		fillObjectUsingCommand(dashboardRef, Dashboard.TAG_PROGRESS_CHOICE_MAP, progressChoiceMap.toString());
 		
 		StringStringMap commentsMap = new StringStringMap();
 		commentsMap.put(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE, "Some randome user comment");

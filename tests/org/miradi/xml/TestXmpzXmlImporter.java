@@ -90,7 +90,7 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 		final String codeToSetToManual = OpenStandardsConceptualizeQuestion.SELECT_CONSERVATION_TARGETS_CODE;
 		StringChoiceMap choiceMap = new StringChoiceMap();
 		choiceMap.put(codeToSetToManual, OpenStandardsDynamicProgressStatusQuestion.IN_PROGRESS_CODE);
-		getProject().fillObjectUsingCommand(getDashboard(), Dashboard.TAG_USER_STATUS_CHOICE_MAP, choiceMap.toString());
+		getProject().fillObjectUsingCommand(getDashboard(), Dashboard.TAG_PROGRESS_CHOICE_MAP, choiceMap.toString());
 
 		verifyDynamicProgressCodesInSchema(codeToSetToManual);
 	}
@@ -104,7 +104,7 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 		{
 			StringChoiceMap choiceMap = new StringChoiceMap();
 			choiceMap.put(thirdLevelCode, allCodes.get(index));
-			getProject().fillObjectUsingCommand(dashboard, Dashboard.TAG_USER_STATUS_CHOICE_MAP, choiceMap.toString());
+			getProject().fillObjectUsingCommand(dashboard, Dashboard.TAG_PROGRESS_CHOICE_MAP, choiceMap.toString());
 			validateUsingStringWriter();
 		}
 	}
