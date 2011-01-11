@@ -42,7 +42,7 @@ public class DashboardPoolExporter extends BaseObjectPoolExporter
 		super.exportFields(writer, baseObject);
 		
 		Dashboard dashboard = (Dashboard) baseObject;
-		StringStringMap userCommentsMap = dashboard.getUserCommentsMap();
+		StringStringMap userCommentsMap = dashboard.getCommentsMap();
 		StringChoiceMap userStatusMap = dashboard.getProgressChoiceMap();
 		StringCodeListMap needsAttentionMap = dashboard.getNeedsAttentionMap();
 		

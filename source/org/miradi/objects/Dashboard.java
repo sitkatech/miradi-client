@@ -1083,7 +1083,7 @@ public class Dashboard extends BaseObject
 		return Integer.toString(wordCount);
 	}
 	
-	public StringStringMap getUserCommentsMap()
+	public StringStringMap getCommentsMap()
 	{
 		return commentsMap.getStringMap();
 	}
