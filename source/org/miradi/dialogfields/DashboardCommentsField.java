@@ -33,7 +33,7 @@ public class DashboardCommentsField extends AbstractDashboardClickableField
 {
 	public DashboardCommentsField(Project projectToUse, ORef refToUse,String stringMapCodeToUse)
 	{
-		super(projectToUse, refToUse, Dashboard.TAG_USER_COMMENTS_MAP, stringMapCodeToUse);
+		super(projectToUse, refToUse, Dashboard.TAG_COMMENTS_MAP, stringMapCodeToUse);
 	}
 
 	@Override
@@ -57,7 +57,7 @@ public class DashboardCommentsField extends AbstractDashboardClickableField
 	{
 		ORef dashboardRef = getProject().getSingletonObjectRef(Dashboard.getObjectType());
 		Dashboard dashboard = Dashboard.find(getProject(), dashboardRef);
-		String mapAsString = dashboard.getData(Dashboard.TAG_USER_COMMENTS_MAP);
+		String mapAsString = dashboard.getData(Dashboard.TAG_COMMENTS_MAP);
 		AbstractStringKeyMap commentsMap = createStringKeyMap(mapAsString);
 		String comment = commentsMap.get(stringMapCode);
 		return comment.length() > 0;
