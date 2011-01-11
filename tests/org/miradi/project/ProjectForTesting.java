@@ -1470,7 +1470,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		CodeList flags = new CodeList();
 		flags.add(DashboardFlagsQuestion.NEEDS_ATTENTION_CODE);
 		flagsMap.put(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE, flags.toString());
-		fillObjectUsingCommand(dashboardRef, Dashboard.TAG_NEEDS_ATTENTION_MAP, flagsMap.toString());
+		fillObjectUsingCommand(dashboardRef, Dashboard.TAG_FLAGS_MAP, flagsMap.toString());
 	}
 
 	public void validateObjectOwners(int type)
