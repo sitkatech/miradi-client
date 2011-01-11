@@ -201,7 +201,7 @@ public class DashboardRowDefinitionManager
 		
 		if (code.equals(OpenStandardsConceptualizeQuestion.DEFINE_PROJECT_SCOPE_CODE))
 		{
-			rowDefinitions.add(new DashboardRowDefinition(EAM.text("Created (%1 words)"), Dashboard.PSEUDO_PROJECT_SCOPE_WORD_COUNT));
+			rowDefinitions.add(new DashboardRowDefinition(EAM.text("The scope currently consists of %1 words"), Dashboard.PSEUDO_PROJECT_SCOPE_WORD_COUNT));
 		}
 		
 		if (code.equals(OpenStandardsConceptualizeQuestion.DEVELOP_MAP_OF_PROJECT_AREA_CODE))
