@@ -1095,7 +1095,7 @@ public class Dashboard extends BaseObject
 	
 	public StringCodeListMap getNeedsAttentionMap()
 	{
-		return needsAttentionMap.getStringCodeListMap();
+		return flagsMap.getStringCodeListMap();
 	}
 
 	public static boolean is(BaseObject object)
@@ -1199,7 +1199,7 @@ public class Dashboard extends BaseObject
 		
 		progressChoiceMap = new StringChoiceMapData(TAG_PROGRESS_CHOICE_MAP);
 		commentsMap = new StringStringMapData(TAG_COMMENTS_MAP);
-		needsAttentionMap = new StringCodeListMapData(TAG_FLAGS_MAP);
+		flagsMap = new StringCodeListMapData(TAG_FLAGS_MAP);
 		
 		addPresentationDataField(PSEUDO_TEAM_MEMBER_COUNT, teamMemberCount);
 		addPresentationDataField(PSEUDO_PROJECT_SCOPE_WORD_COUNT, projectScopeWordCount);
@@ -1272,7 +1272,7 @@ public class Dashboard extends BaseObject
 		
 		addPresentationDataField(TAG_PROGRESS_CHOICE_MAP, progressChoiceMap);
 		addPresentationDataField(TAG_COMMENTS_MAP, commentsMap);
-		addPresentationDataField(TAG_FLAGS_MAP, needsAttentionMap);
+		addPresentationDataField(TAG_FLAGS_MAP, flagsMap);
 	}
 	
 	public static final String OBJECT_NAME = "Dashboard";
@@ -1423,5 +1423,5 @@ public class Dashboard extends BaseObject
 	
 	private StringChoiceMapData progressChoiceMap;
 	private StringStringMapData commentsMap;
-	private StringCodeListMapData needsAttentionMap;
+	private StringCodeListMapData flagsMap;
 }
