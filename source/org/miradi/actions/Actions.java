@@ -232,6 +232,7 @@ public class Actions
 		registerAction(new ActionExpandToMeasurement(mainWindow));
 		registerAction(new ActionExpandToGoal(mainWindow));
 		registerAction(new ActionPlanningCustomizeDialogPopup(mainWindow));
+		registerAction(new ActionCreateCustomFromCurrentTreeTableConfiguration(mainWindow));
 		
 		registerAction(new ActionCreateIndicator(mainWindow));
 		registerAction(new ActionCloneIndicator(mainWindow));
@@ -449,7 +450,7 @@ public class Actions
 		registerAction(new ActionArrangeConceptualModel(mainWindow));
 		registerAction(new ActionCreatePlanningViewEmptyConfiguration(mainWindow));
 		registerAction(new ActionCreatePlanningViewPrefilledConfiguration(mainWindow));
-		registerAction(new ActionCreatePlanningViewConfigurationMenuDoer(mainWindow));
+		registerAction(new ActionCreatePlanningViewConfigurationMenu(mainWindow));
 		registerAction(new ActionDeletePlanningViewConfiguration(mainWindow));
 		registerAction(new ActionRenamePlanningViewConfiguration(mainWindow));
 		registerAction(new ActionDeletePlanningViewTreeNode(mainWindow));

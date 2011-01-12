@@ -22,9 +22,9 @@ package org.miradi.actions;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class ActionCreatePlanningViewConfigurationMenuDoer extends ObjectsAction
-{
-	public ActionCreatePlanningViewConfigurationMenuDoer(MainWindow mainWindowToUse)
+public class ActionCreatePlanningViewConfigurationMenu extends ObjectsAction
+{ 
+	public ActionCreatePlanningViewConfigurationMenu(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}

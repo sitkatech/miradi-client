@@ -28,7 +28,7 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 
-class ConfigurablePlanningTreeManagementPanel extends PlanningTreeManagementPanel
+public class ConfigurablePlanningTreeManagementPanel extends PlanningTreeManagementPanel
 {
 	public ConfigurablePlanningTreeManagementPanel(
 			MainWindow mainWindowToUse,

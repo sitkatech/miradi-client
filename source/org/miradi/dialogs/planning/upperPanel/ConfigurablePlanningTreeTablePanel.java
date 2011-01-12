@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel;
 
 import org.miradi.actions.ActionCollapseAllRows;
-import org.miradi.actions.ActionCreatePlanningViewConfigurationMenuDoer;
+import org.miradi.actions.ActionCreatePlanningViewConfigurationMenu;
 import org.miradi.actions.ActionDeletePlanningViewConfiguration;
 import org.miradi.actions.ActionDeletePlanningViewTreeNode;
 import org.miradi.actions.ActionExpandAllRows;
@@ -66,7 +66,7 @@ public class ConfigurablePlanningTreeTablePanel extends PlanningTreeTablePanel
 			ActionPlanningCreationMenu.class,
 			ActionDeletePlanningViewTreeNode.class,
 			
-			ActionCreatePlanningViewConfigurationMenuDoer.class,
+			ActionCreatePlanningViewConfigurationMenu.class,
 			ActionRenamePlanningViewConfiguration.class,
 			ActionDeletePlanningViewConfiguration.class,
 			ActionPlanningCustomizeDialogPopup.class, 
