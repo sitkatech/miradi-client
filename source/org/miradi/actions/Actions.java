@@ -450,7 +450,7 @@ public class Actions
 		registerAction(new ActionArrangeConceptualModel(mainWindow));
 		registerAction(new ActionCreatePlanningViewEmptyConfiguration(mainWindow));
 		registerAction(new ActionCreatePlanningViewPrefilledConfiguration(mainWindow));
-		registerAction(new ActionCreatePlanningViewConfigurationMenuDoer(mainWindow));
+		registerAction(new ActionCreatePlanningViewConfigurationMenu(mainWindow));
 		registerAction(new ActionDeletePlanningViewConfiguration(mainWindow));
 		registerAction(new ActionRenamePlanningViewConfiguration(mainWindow));
 		registerAction(new ActionDeletePlanningViewTreeNode(mainWindow));
