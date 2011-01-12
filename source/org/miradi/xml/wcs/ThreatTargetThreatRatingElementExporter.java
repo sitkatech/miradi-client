@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.wcs;
 
 import java.util.Collections;
+import java.util.Set;
 import java.util.Vector;
 
 import org.miradi.diagram.ThreatTargetChainWalker;
@@ -63,7 +64,7 @@ public class ThreatTargetThreatRatingElementExporter extends AbstractXmlExporter
 
 	private void exportSimpleThreatRating() throws Exception
 	{
-		Vector<Target> targets = TargetThreatLinkTableModel.getOnlyTargetsInConceptualModelDiagrams(getProject());
+		Vector<Target> targets = new Vector<Target>(TargetThreatLinkTableModel.getOnlyTargetsInConceptualModelDiagrams(getProject()));
 		Collections.sort(targets, new BaseObjectByRefSorter());
 		ThreatTargetChainWalker chain = new ThreatTargetChainWalker(getProject());
 		for(Target target : targets)
@@ -104,7 +105,7 @@ public class ThreatTargetThreatRatingElementExporter extends AbstractXmlExporter
 
 	private void exportStressBasedThreatRating() throws Exception
 	{
-		Vector<Target> targets = AbstractThreatTargetTableModel.getOnlyTargetsInConceptualModelDiagrams(getProject());
+		Set<Target> targets = AbstractThreatTargetTableModel.getOnlyTargetsInConceptualModelDiagrams(getProject());
 		for(Target target : targets)
 		{
 			if (target.getStressRefs().hasRefs())

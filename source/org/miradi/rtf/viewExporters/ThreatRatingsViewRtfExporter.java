@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.rtf.viewExporters;
 
-import java.util.Vector;
+import java.util.Set;
 
 import org.miradi.diagram.ThreatTargetChainWalker;
 import org.miradi.dialogs.threatrating.upperPanel.TargetThreatLinkTableModel;
@@ -64,7 +64,7 @@ public class ThreatRatingsViewRtfExporter extends RtfViewExporter
 
 	private void exportStressBasedThreatRatingDetails(RtfWriter writer) throws Exception
 	{
-		Vector<Target> targets = TargetThreatLinkTableModel.getOnlyTargetsInConceptualModelDiagrams(getProject());
+		Set<Target> targets = TargetThreatLinkTableModel.getOnlyTargetsInConceptualModelDiagrams(getProject());
 		Cause[] threats =  getProject().getCausePool().getDirectThreats();
 		for(Target target : targets)
 		{
@@ -85,7 +85,7 @@ public class ThreatRatingsViewRtfExporter extends RtfViewExporter
 
 	private void exportSimpleThreatRatingDetails(RtfWriter writer) throws Exception
 	{
-		Vector<Target> targets = TargetThreatLinkTableModel.getOnlyTargetsInConceptualModelDiagrams(getProject());
+		Set<Target> targets = TargetThreatLinkTableModel.getOnlyTargetsInConceptualModelDiagrams(getProject());
 		ThreatTargetChainWalker chain = new ThreatTargetChainWalker(getProject());
 		for(Target target : targets)
 		{
