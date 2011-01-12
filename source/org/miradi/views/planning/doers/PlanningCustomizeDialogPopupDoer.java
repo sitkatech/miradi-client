@@ -33,7 +33,10 @@ public class PlanningCustomizeDialogPopupDoer extends ObjectsDoer
 	@Override
 	public boolean isAvailable()
 	{
-		return true;
+		if(!super.isAvailable())
+			return false;
+
+		return isPlanningView();
 	}
 
 	@Override
