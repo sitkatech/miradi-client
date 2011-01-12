@@ -165,16 +165,24 @@ public class ProjectMpzImporter
 		if(entry.isDirectory())
 			return;
 		
-		destinationFile.getParentFile().mkdirs();
-		FileOutputStream out = new FileOutputStream(destinationFile);
-		byte[] buffer = new byte[512];
-		int got = -1;
-		while( (got = zipInput.read(buffer)) > 0)
+		try
 		{
-			// TODO: Optimize by reading entire file at once?
-			out.write(buffer, 0, got);
+			destinationFile.getParentFile().mkdirs();
+			FileOutputStream out = new FileOutputStream(destinationFile);
+			byte[] buffer = new byte[1024];
+			int got = -1;
+			while( (got = zipInput.read(buffer)) > 0)
+			{
+				// TODO: Optimize by reading entire file at once?
+				out.write(buffer, 0, got);
+			}
+			out.close();
 		}
-		out.close();
+		catch(IOException e)
+		{
+			EAM.logError("Exception extracting zip entry: " + entry.getName());
+			throw(e);
+		}
 	}
 
 	private static int findSlash(String name)
