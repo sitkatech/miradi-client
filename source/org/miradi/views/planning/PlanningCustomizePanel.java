@@ -23,7 +23,6 @@ package org.miradi.views.planning;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.CodeListEditorPanel;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.project.Project;
@@ -50,6 +49,6 @@ public class PlanningCustomizePanel extends ObjectDataInputPanel
 	@Override
 	public String getPanelDescription()
 	{
-		return EAM.text("PlanningCustomizePanel");
+		return "PlanningCustomizePanel";
 	}
 }
