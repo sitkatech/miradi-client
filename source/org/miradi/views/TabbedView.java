@@ -179,7 +179,18 @@ abstract public class TabbedView extends UmbrellaView
 	{
 		MiradiTabContentsPanelInterface tabContentsPanel = getTabPanel(index);
 		return tabContentsPanel.getTabContentsComponent().getPanelIdentifier();
-	}	
+	}
+	
+	public int getTabIndex(String identifier)
+	{
+		for (int index = 0; index < getTabCount(); ++index)
+		{
+			if (identifier.equals(getTabIdentifier(index)))
+				return index;
+		}
+		
+		throw new RuntimeException("Could not find tab index for the identifier = " + identifier);
+	}
 	
 	private MiradiTabContentsPanelInterface getTabPanel(int index)
 	{

@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.upperPanel;
 
+import org.miradi.actions.ActionCreateCustomFromCurrentTreeTableConfiguration;
 import org.miradi.actions.ActionDeletePlanningViewTreeNode;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.planning.ObjectsOnlyRowColumnProvider;
@@ -78,7 +79,8 @@ public class ObjectsOnlyPlanningTreeTablePanel extends PlanningTreeTablePanel
 	private static Class[] getButtonActions()
 	{
 		return new Class[] {
-			ActionDeletePlanningViewTreeNode.class,			
+			ActionDeletePlanningViewTreeNode.class,				
+			ActionCreateCustomFromCurrentTreeTableConfiguration.class,
 		};
 	}
 	

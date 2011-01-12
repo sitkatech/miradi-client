@@ -64,25 +64,33 @@ abstract public class AbstractCreatePlanningViewConfigurationDoer extends ViewDo
 
 	private void createPlanningViewConfiguration() throws Exception
 	{
-		String visibleRowsAsString = getVisibleRowCodes().toString();
-		String visibleColsAsString = getVisibleColumnCodes().toString();
+		CodeList visibleRowCodes = getVisibleRowCodes();
+		CodeList visibleColumnCodes = getVisibleColumnCodes();
+		
+		createPlanningViewConfiguration(getProject(), visibleRowCodes, visibleColumnCodes);
+	}
+
+	public static void createPlanningViewConfiguration(Project projectToUse, CodeList visibleRowCodes, CodeList visibleColumnCodes)	throws Exception
+	{
+		String visibleRowsAsString = visibleRowCodes.toString();
+		String visibleColsAsString = visibleColumnCodes.toString();
 		
 		CommandCreateObject createConfiguration = new CommandCreateObject(ObjectTreeTableConfiguration.getObjectType());
-		getProject().executeCommand(createConfiguration);
+		projectToUse.executeCommand(createConfiguration);
 		
 		ORef newConfigurationRef = createConfiguration.getObjectRef();
 		CommandSetObjectData setVisibleRowsCommand = new CommandSetObjectData(newConfigurationRef, ObjectTreeTableConfiguration.TAG_ROW_CONFIGURATION, visibleRowsAsString);
-		getProject().executeCommand(setVisibleRowsCommand);
+		projectToUse.executeCommand(setVisibleRowsCommand);
 		
 		CommandSetObjectData setVisibleColsCommand = new CommandSetObjectData(newConfigurationRef, ObjectTreeTableConfiguration.TAG_COL_CONFIGURATION, visibleColsAsString);
-		getProject().executeCommand(setVisibleColsCommand);
+		projectToUse.executeCommand(setVisibleColsCommand);
 	
-		ViewData viewData = getProject().getCurrentViewData();
+		ViewData viewData = projectToUse.getCurrentViewData();
 		CommandSetObjectData selectCurrentConfiguration = new CommandSetObjectData(viewData.getRef(), ViewData.TAG_TREE_CONFIGURATION_REF, newConfigurationRef);
-		getProject().executeCommand(selectCurrentConfiguration);
+		projectToUse.executeCommand(selectCurrentConfiguration);
 		
-		CommandSetObjectData setConfigurationLabel = new CommandSetObjectData(newConfigurationRef, ObjectTreeTableConfiguration.TAG_LABEL, getConfigurationDefaultLabel(getProject()));
-		getProject().executeCommand(setConfigurationLabel);
+		CommandSetObjectData setConfigurationLabel = new CommandSetObjectData(newConfigurationRef, ObjectTreeTableConfiguration.TAG_LABEL, getConfigurationDefaultLabel(projectToUse));
+		projectToUse.executeCommand(setConfigurationLabel);
 	}
 
 	public static String getConfigurationDefaultLabel(Project project)
