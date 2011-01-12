@@ -24,6 +24,7 @@ import org.miradi.main.MainWindow;
 
 public class ActionCreatePlanningViewConfigurationMenuDoer extends ObjectsAction
 {
+	//TODO low - rename class to not end in Doer 
 	public ActionCreatePlanningViewConfigurationMenuDoer(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
