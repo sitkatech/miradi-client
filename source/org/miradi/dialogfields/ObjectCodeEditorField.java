@@ -25,11 +25,6 @@ import org.miradi.questions.ChoiceQuestion;
 
 public class ObjectCodeEditorField extends AbstractChoiceItemListEditorField
 {
-	public ObjectCodeEditorField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, ChoiceQuestion questionToUse)
-	{
-		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, questionToUse);
-	}
-	
 	public ObjectCodeEditorField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, ChoiceQuestion questionToUse, int columnCount)
 	{
 		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, questionToUse, columnCount);
