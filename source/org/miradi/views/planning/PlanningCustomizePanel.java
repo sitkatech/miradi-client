@@ -1,0 +1,60 @@
+/* 
+Copyright 2005-2011, Foundations of Success, Bethesda, Maryland 
+(on behalf of the Conservation Measures Partnership, "CMP") and 
+Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
+
+This file is part of Miradi
+
+Miradi is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License version 3, 
+as published by the Free Software Foundation.
+
+Miradi is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
+*/ 
+
+package org.miradi.views.planning;
+
+import org.miradi.dialogfields.ObjectDataInputField;
+import org.miradi.dialogs.base.CodeListEditorPanel;
+import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.ObjectTreeTableConfiguration;
+import org.miradi.objects.ViewData;
+import org.miradi.project.Project;
+import org.miradi.questions.CustomPlanningColumnsQuestion;
+import org.miradi.questions.CustomPlanningRowsQuestion;
+import org.miradi.questions.DiagramObjectDataInclusionQuestion;
+
+public class PlanningCustomizePanel extends ObjectDataInputPanel
+{
+	public PlanningCustomizePanel(Project projectToUse) throws Exception
+	{
+		super(projectToUse, ORef.INVALID);
+		
+		ORef currentViewDataRef = getProject().getCurrentViewData().getRef();
+		ViewData viewData = ViewData.find(getProject(), currentViewDataRef);
+		ORef planningConfigurationRef = viewData.getORef(ViewData.TAG_TREE_CONFIGURATION_REF);
+		
+		ObjectDataInputField dataInclusion = createChoiceField(ObjectTreeTableConfiguration.getObjectType(), ObjectTreeTableConfiguration.TAG_DIAGRAM_DATA_INCLUSION, getProject().getQuestion(DiagramObjectDataInclusionQuestion.class));
+		addField(dataInclusion);
+		
+		ObjectDataInputPanel columnEditor = new CodeListEditorPanel(getProject(), planningConfigurationRef, ObjectTreeTableConfiguration.TAG_COL_CONFIGURATION, getProject().getQuestion(CustomPlanningColumnsQuestion.class), 1);
+		addSubPanelWithoutTitledBorder(columnEditor);
+		
+		ObjectDataInputPanel rowEditor = new CodeListEditorPanel(getProject(), planningConfigurationRef, ObjectTreeTableConfiguration.TAG_ROW_CONFIGURATION, new CustomPlanningRowsQuestion(getProject()), 1);
+		addSubPanelWithoutTitledBorder(rowEditor);
+	}
+	
+	@Override
+	public String getPanelDescription()
+	{
+		return EAM.text("PlanningCustomizePanel");
+	}
+}
