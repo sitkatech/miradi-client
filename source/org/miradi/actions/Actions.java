@@ -231,6 +231,7 @@ public class Actions
 		registerAction(new ActionExpandToIndicator(mainWindow));
 		registerAction(new ActionExpandToMeasurement(mainWindow));
 		registerAction(new ActionExpandToGoal(mainWindow));
+		registerAction(new ActionPlanningCustomizeDialogPopup(mainWindow));
 		
 		registerAction(new ActionCreateIndicator(mainWindow));
 		registerAction(new ActionCloneIndicator(mainWindow));
