@@ -57,13 +57,23 @@ public class CreateCustomFromCurrentTreeTableConfigurationDoer extends ObjectsDo
 			CodeList rowCodes = provider.getRowListToShow();
 			
 			switchToCustomTab();
-			CreatePlanningViewPrefilledConfigurationDoer.createPlanningViewConfiguration(getProject(), rowCodes, columnCodes);
-			PlanningCustomizeDialogPopupDoer.showCustomizeDialog(getMainWindow());
+			saveCannedConfigurationAsNewCustomization(rowCodes, columnCodes);
+			showCustomizationEditorDialog();
 		}
 		finally
 		{
 			getProject().executeCommand(new CommandEndTransaction());
 		}
+	}
+
+	private void showCustomizationEditorDialog() throws Exception
+	{
+		PlanningCustomizeDialogPopupDoer.showCustomizeDialog(getMainWindow());
+	}
+
+	private void saveCannedConfigurationAsNewCustomization(CodeList rowCodes, CodeList columnCodes) throws Exception
+	{
+		CreatePlanningViewPrefilledConfigurationDoer.createPlanningViewConfiguration(getProject(), rowCodes, columnCodes);
 	}
 
 	private void switchToCustomTab() throws Exception
