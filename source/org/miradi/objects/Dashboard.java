@@ -22,6 +22,7 @@ package org.miradi.objects;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Set;
 import java.util.Vector;
 
 import org.miradi.diagram.ThreatTargetChainWalker;
@@ -980,7 +981,7 @@ public class Dashboard extends BaseObject
 
 	private String getThreatTargetLinkCount()
 	{
-		Vector<Target> targets = TargetThreatLinkTableModel.getOnlyTargetsInConceptualModelDiagrams(getProject());
+		Set<Target> targets = TargetThreatLinkTableModel.getOnlyTargetsInConceptualModelDiagrams(getProject());
 		ThreatTargetChainWalker chain = new ThreatTargetChainWalker(getProject());
 		int threatTargetCount = 0;
 		for(Target target : targets)
@@ -1005,7 +1006,7 @@ public class Dashboard extends BaseObject
 	private String getThreatTargetLinkWithRatingCount(String threatRatingMode) throws Exception
 	{
 		ThreatTargetVirtualLinkHelper helper = new ThreatTargetVirtualLinkHelper(getProject());
-		Vector<Target> targets = TargetThreatLinkTableModel.getOnlyTargetsInConceptualModelDiagrams(getProject());
+		Set<Target> targets = TargetThreatLinkTableModel.getOnlyTargetsInConceptualModelDiagrams(getProject());
 		ThreatTargetChainWalker chain = new ThreatTargetChainWalker(getProject());
 		int threatTargetWithRatingCount = 0;
 		for(Target target : targets)

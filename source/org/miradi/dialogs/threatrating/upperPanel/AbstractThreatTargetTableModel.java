@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.threatrating.upperPanel;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Vector;
 
 import org.miradi.objecthelpers.ORef;
@@ -55,10 +57,10 @@ abstract public class AbstractThreatTargetTableModel extends SortableTableModel
 		targetColumns = getOnlyTargetsInConceptualModelDiagrams(getProject()).toArray(new Target[0]);
 	}
 
-	public static Vector<Target> getOnlyTargetsInConceptualModelDiagrams(Project projectToUse)
+	public static Set<Target> getOnlyTargetsInConceptualModelDiagrams(Project projectToUse)
 	{
 		// TODO: Seems like it would be more efficient to loop through CM's, getting targets
-		Vector<Target> targetsInConceptualModelDiagrams = new Vector<Target>();
+		HashSet<Target> targetsInConceptualModelDiagrams = new HashSet<Target>();
 		Target[] allTargets =  projectToUse.getTargetPool().getSortedTargets();
 		for (int index = 0; index < allTargets.length; ++index)
 		{
