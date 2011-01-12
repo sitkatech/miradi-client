@@ -232,6 +232,7 @@ public class Actions
 		registerAction(new ActionExpandToMeasurement(mainWindow));
 		registerAction(new ActionExpandToGoal(mainWindow));
 		registerAction(new ActionPlanningCustomizeDialogPopup(mainWindow));
+		registerAction(new ActionCreateCustomFromCurrentTreeTableConfiguration(mainWindow));
 		
 		registerAction(new ActionCreateIndicator(mainWindow));
 		registerAction(new ActionCloneIndicator(mainWindow));
