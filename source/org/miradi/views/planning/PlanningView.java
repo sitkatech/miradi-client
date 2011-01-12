@@ -24,7 +24,7 @@ import java.util.HashMap;
 
 import org.miradi.actions.ActionCreateChildTask;
 import org.miradi.actions.ActionCreateCustomFromCurrentTreeTableConfiguration;
-import org.miradi.actions.ActionCreatePlanningViewConfigurationMenuDoer;
+import org.miradi.actions.ActionCreatePlanningViewConfigurationMenu;
 import org.miradi.actions.ActionCreatePlanningViewEmptyConfiguration;
 import org.miradi.actions.ActionCreatePlanningViewPrefilledConfiguration;
 import org.miradi.actions.ActionCreateResource;
@@ -184,7 +184,7 @@ public class PlanningView extends TabbedView
 		addDoerToMap(ActionTreeCreateIndicator.class, new TreeNodeCreateIndicatorDoer());
 		addDoerToMap(ActionTreeCreateObjective.class, new TreeNodeCreateObjectiveDoer());
 
-		addDoerToMap(ActionCreatePlanningViewConfigurationMenuDoer.class, new CreatePlanningViewConfigurationMenuDoer());
+		addDoerToMap(ActionCreatePlanningViewConfigurationMenu.class, new CreatePlanningViewConfigurationMenuDoer());
 		addDoerToMap(ActionCreatePlanningViewEmptyConfiguration.class, new CreatePlanningViewEmptyConfigurationDoer());
 		addDoerToMap(ActionCreatePlanningViewPrefilledConfiguration.class, new CreatePlanningViewPrefilledConfigurationDoer());
 		addDoerToMap(ActionDeletePlanningViewConfiguration.class, new DeletePlanningViewConfigurationDoer());
