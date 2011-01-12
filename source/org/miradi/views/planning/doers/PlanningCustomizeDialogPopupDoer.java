@@ -24,6 +24,7 @@ import org.martus.swing.Utilities;
 import org.miradi.dialogs.base.ModalDialogWithClose;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 import org.miradi.views.ObjectsDoer;
 import org.miradi.views.planning.PlanningCustomizePanel;
 
@@ -41,8 +42,13 @@ public class PlanningCustomizeDialogPopupDoer extends ObjectsDoer
 		if(!isAvailable())
 			return;
 		
-		ObjectDataInputPanel editor = new PlanningCustomizePanel(getProject());
-		ModalDialogWithClose dialog = new ModalDialogWithClose(getMainWindow(), EAM.text("Customize..."));
+		showCustomizeDialog(getMainWindow());
+	}
+
+	public static void showCustomizeDialog(MainWindow mainWindowToUse) throws Exception
+	{
+		ObjectDataInputPanel editor = new PlanningCustomizePanel(mainWindowToUse.getProject());
+		ModalDialogWithClose dialog = new ModalDialogWithClose(mainWindowToUse, EAM.text("Customize..."));
 		dialog.setScrollableMainPanel(editor);
 		editor.becomeActive();
 		Utilities.centerDlg(dialog);

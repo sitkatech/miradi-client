@@ -22,11 +22,13 @@ package org.miradi.views.planning;
 
 import java.util.HashMap;
 
-
+import org.miradi.actions.ActionCreateChildTask;
+import org.miradi.actions.ActionCreateCustomFromCurrentTreeTableConfiguration;
 import org.miradi.actions.ActionCreatePlanningViewConfigurationMenuDoer;
 import org.miradi.actions.ActionCreatePlanningViewEmptyConfiguration;
 import org.miradi.actions.ActionCreatePlanningViewPrefilledConfiguration;
 import org.miradi.actions.ActionCreateResource;
+import org.miradi.actions.ActionCreateSameLevelTask;
 import org.miradi.actions.ActionDeletePlanningViewConfiguration;
 import org.miradi.actions.ActionDeletePlanningViewTreeNode;
 import org.miradi.actions.ActionDeleteResource;
@@ -39,8 +41,6 @@ import org.miradi.actions.ActionTreeCreateActivity;
 import org.miradi.actions.ActionTreeCreateIndicator;
 import org.miradi.actions.ActionTreeCreateMethod;
 import org.miradi.actions.ActionTreeCreateObjective;
-import org.miradi.actions.ActionCreateSameLevelTask;
-import org.miradi.actions.ActionCreateChildTask;
 import org.miradi.actions.ActionTreeCreateRelevancyActivity;
 import org.miradi.actions.ActionTreeNodeDown;
 import org.miradi.actions.ActionTreeNodeUp;
@@ -56,6 +56,7 @@ import org.miradi.project.Project;
 import org.miradi.views.TabbedView;
 import org.miradi.views.planning.doers.CreateActivityNodeDoer;
 import org.miradi.views.planning.doers.CreateChildTaskDoer;
+import org.miradi.views.planning.doers.CreateCustomFromCurrentTreeTableConfigurationDoer;
 import org.miradi.views.planning.doers.CreateMethodNodeDoer;
 import org.miradi.views.planning.doers.CreatePlanningViewConfigurationMenuDoer;
 import org.miradi.views.planning.doers.CreatePlanningViewEmptyConfigurationDoer;
@@ -191,6 +192,7 @@ public class PlanningView extends TabbedView
 		addDoerToMap(ActionPlanningRowsEditor.class, new PlanningRowsEditorDoer());
 		addDoerToMap(ActionPlanningColumnsEditor.class, new PlanningColumnsEditorDoer());
 		addDoerToMap(ActionPlanningCustomizeDialogPopup.class, new PlanningCustomizeDialogPopupDoer());
+		addDoerToMap(ActionCreateCustomFromCurrentTreeTableConfiguration.class, new CreateCustomFromCurrentTreeTableConfigurationDoer());
 	}
 	
 	public HashMap<String, PlanningTreeManagementPanel> getManagementPanelMap()
