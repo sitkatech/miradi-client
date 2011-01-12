@@ -32,6 +32,7 @@ import org.miradi.actions.ActionDeletePlanningViewTreeNode;
 import org.miradi.actions.ActionDeleteResource;
 import org.miradi.actions.ActionPlanningColumnsEditor;
 import org.miradi.actions.ActionPlanningCreationMenu;
+import org.miradi.actions.ActionPlanningCustomizeDialogPopup;
 import org.miradi.actions.ActionPlanningRowsEditor;
 import org.miradi.actions.ActionRenamePlanningViewConfiguration;
 import org.miradi.actions.ActionTreeCreateActivity;
@@ -63,6 +64,7 @@ import org.miradi.views.planning.doers.CreateRelevancyActivityDoer;
 import org.miradi.views.planning.doers.CreateSameLevelTaskDoer;
 import org.miradi.views.planning.doers.DeletePlanningViewConfigurationDoer;
 import org.miradi.views.planning.doers.PlanningColumnsEditorDoer;
+import org.miradi.views.planning.doers.PlanningCustomizeDialogPopupDoer;
 import org.miradi.views.planning.doers.PlanningRowsEditorDoer;
 import org.miradi.views.planning.doers.PlanningTreeNodeCreationMenuDoer;
 import org.miradi.views.planning.doers.RenamePlanningViewConfigurationDoer;
@@ -188,6 +190,7 @@ public class PlanningView extends TabbedView
 		addDoerToMap(ActionRenamePlanningViewConfiguration.class, new RenamePlanningViewConfigurationDoer());
 		addDoerToMap(ActionPlanningRowsEditor.class, new PlanningRowsEditorDoer());
 		addDoerToMap(ActionPlanningColumnsEditor.class, new PlanningColumnsEditorDoer());
+		addDoerToMap(ActionPlanningCustomizeDialogPopup.class, new PlanningCustomizeDialogPopupDoer());
 	}
 	
 	public HashMap<String, PlanningTreeManagementPanel> getManagementPanelMap()
