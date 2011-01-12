@@ -57,6 +57,7 @@ abstract public class AbstractThreatTargetTableModel extends SortableTableModel
 
 	public static Vector<Target> getOnlyTargetsInConceptualModelDiagrams(Project projectToUse)
 	{
+		// TODO: Seems like it would be more efficient to loop through CM's, getting targets
 		Vector<Target> targetsInConceptualModelDiagrams = new Vector<Target>();
 		Target[] allTargets =  projectToUse.getTargetPool().getSortedTargets();
 		for (int index = 0; index < allTargets.length; ++index)
