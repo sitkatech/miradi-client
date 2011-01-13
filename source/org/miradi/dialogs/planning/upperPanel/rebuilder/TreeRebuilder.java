@@ -21,11 +21,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel.rebuilder;
 
 import org.miradi.dialogs.planning.treenodes.NewAbstractPlanningTreeNode;
+import org.miradi.dialogs.planning.treenodes.NewPlanningTreeBaseObjectNode;
 import org.miradi.dialogs.planning.treenodes.NewPlanningTreeDiagramNode;
 import org.miradi.dialogs.planning.treenodes.NewPlanningTreeDirectThreatNode;
 import org.miradi.dialogs.planning.treenodes.NewPlanningTreeErrorNode;
 import org.miradi.dialogs.planning.treenodes.NewPlanningTreeIntermediateResultsNode;
-import org.miradi.dialogs.planning.treenodes.NewPlanningTreeTargetNode;
 import org.miradi.dialogs.planning.treenodes.NewPlanningTreeThreatReductionResultNode;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
@@ -140,14 +140,18 @@ public class TreeRebuilder
 				return new NewPlanningTreeDiagramNode(getProject(), refToAdd);
 			if(type == ResultsChainDiagram.getObjectType())
 				return new NewPlanningTreeDiagramNode(getProject(), refToAdd);
+			
 			if(AbstractTarget.isAbstractTarget(type))
-				return new NewPlanningTreeTargetNode(project, refToAdd);
+				return new NewPlanningTreeBaseObjectNode(project, refToAdd);
 			if(type == Cause.getObjectType())
 				return new NewPlanningTreeDirectThreatNode(project, refToAdd);
 			if(type == ThreatReductionResult.getObjectType())
 				return new NewPlanningTreeThreatReductionResultNode(project, refToAdd);
 			if(type == IntermediateResult.getObjectType())
 				return new NewPlanningTreeIntermediateResultsNode(project, refToAdd);
+
+//			if (SubTarget.is(type))
+//				return new SubTargetNode(project, refToAdd);
 
 			// TODO: Remove comments as these get implemented
 //			if(type == Strategy.getObjectType())
@@ -168,8 +172,6 @@ public class TreeRebuilder
 //				return new PlanningTreeResourceAssignmentNode(project, refToAdd, visibleRows);
 //			if (type == ExpenseAssignment.getObjectType())
 //				return new PlanningTreeExpenseAssignmentNode(project, refToAdd, visibleRows);
-//			if (SubTarget.is(type))
-//				return new SubTargetNode(project, refToAdd, visibleRows);
 			
 			throw new Exception("Attempted to create node of unknown type: " + refToAdd);
 		}
