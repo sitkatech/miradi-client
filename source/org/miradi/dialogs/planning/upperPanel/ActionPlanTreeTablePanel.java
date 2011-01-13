@@ -40,7 +40,7 @@ public class ActionPlanTreeTablePanel extends PlanningTreeTablePanel
 
 	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse) throws Exception
 	{
-		PlanningTreeTableModel model = new StrategicPlanTreeTableModel(mainWindowToUse.getProject());
+		PlanningTreeTableModel model = new ActionPlanTreeTableModel(mainWindowToUse.getProject());
 		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse, model);
 		StrategicRowColumnProvider rowColumnProvider = new StrategicRowColumnProvider();
 		
