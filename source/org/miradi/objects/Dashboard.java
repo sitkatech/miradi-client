@@ -577,10 +577,10 @@ public class Dashboard extends BaseObject
 	
 	private String getEffectiveStatusMapAsString() throws Exception
 	{
-		return getEffectiveStatusMap().toString();
+		return calculateEffectiveStatusMap().toString();
 	}
 	
-	public StringChoiceMap getEffectiveStatusMap() throws Exception
+	public StringChoiceMap calculateEffectiveStatusMap() throws Exception
 	{
 		StringChoiceMap map = new StringChoiceMap();
 		CodeList allThirdLevelCodes = getDashboardRowDefinitionManager().getThirdLevelCodes();

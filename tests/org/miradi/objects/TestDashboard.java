@@ -97,7 +97,7 @@ public class TestDashboard extends ObjectTestCase
 
 	private StringChoiceMap getEffectiveStatusMap() throws Exception
 	{
-		return getDashboard().getEffectiveStatusMap();
+		return getDashboard().calculateEffectiveStatusMap();
 	}
 	
 	private Dashboard getDashboard()
