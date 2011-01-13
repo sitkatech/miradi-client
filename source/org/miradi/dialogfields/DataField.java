@@ -45,6 +45,11 @@ abstract public class DataField extends SavableField
 	{
 		getComponent().setVisible(isVisible);
 	}
+
+	public void updateEditableState()
+	{
+		getComponent().setEnabled(false);
+	}
 	
 	void setDefaultFieldBorder()
 	{
