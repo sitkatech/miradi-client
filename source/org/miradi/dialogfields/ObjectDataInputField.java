@@ -58,7 +58,7 @@ abstract public class ObjectDataInputField extends DataField
 	
 	public ORef getORef()
 	{
-		return new ORef(getObjectType(), getObjectId());
+		return ref;
 	}
 	
 	public int getObjectType()
