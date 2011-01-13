@@ -27,7 +27,6 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.ConceptualModelDiagram;
-import org.miradi.objects.DiagramObject;
 import org.miradi.project.Project;
 
 public class TreeRebuilder
@@ -53,22 +52,22 @@ public class TreeRebuilder
 	private void addConceptualModelTo(NewAbstractPlanningTreeNode parent) throws Exception
 	{
 		ORefList conceptualModelRefs = getProject().getConceptualModelDiagramPool().getORefList();
-		createAndAddChildren(parent, conceptualModelRefs, null);
+		createAndAddChildren(parent, conceptualModelRefs);
 	}
 	
-	public void createAndAddChildren(NewAbstractPlanningTreeNode parent, ORefList refsToAdd, DiagramObject diagram) throws Exception
+	public void createAndAddChildren(NewAbstractPlanningTreeNode parent, ORefList refsToAdd) throws Exception
 	{
 		for(int i = 0; i < refsToAdd.size(); ++i)
-			createAndAddChild(parent, refsToAdd.get(i), diagram);
+			createAndAddChild(parent, refsToAdd.get(i));
 	}
 
-	protected void createAndAddChild(NewAbstractPlanningTreeNode parent, ORef refToAdd, DiagramObject diagram) throws Exception
+	protected void createAndAddChild(NewAbstractPlanningTreeNode parent, ORef refToAdd) throws Exception
 	{
-		NewAbstractPlanningTreeNode childNode = createChildNode(refToAdd, diagram);
+		NewAbstractPlanningTreeNode childNode = createChildNode(refToAdd);
 		parent.addChild(childNode);
 	}
 
-	protected NewAbstractPlanningTreeNode createChildNode(ORef refToAdd, DiagramObject diagram) throws Exception
+	protected NewAbstractPlanningTreeNode createChildNode(ORef refToAdd) throws Exception
 	{
 		int type = refToAdd.getObjectType();
 		try
