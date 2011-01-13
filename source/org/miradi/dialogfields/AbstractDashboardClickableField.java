@@ -91,20 +91,6 @@ abstract public class AbstractDashboardClickableField extends ObjectDataField
 		throw new RuntimeException("This is a readonly field and has no saveIfNeeded() implementation. Class = " + getClass().getName());
 	}
 
-	public void setText(String stringCodeMapAsString)
-	{
-		try
-		{
-			String mapValue = getMapValue(stringCodeMapAsString, stringMapCode);
-			updateLabelComponent(labelComponent, mapValue);
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			EAM.unexpectedErrorDialog(e);
-		}
-	}
-
 	protected String getMapValue(String stringCodeMapAsString, String stringMapCodeToUse) throws Exception
 	{
 		AbstractStringKeyMap map = createStringKeyMap(stringCodeMapAsString);
