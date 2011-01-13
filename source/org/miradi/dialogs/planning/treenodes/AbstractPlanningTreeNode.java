@@ -133,7 +133,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 			addChild(node);
 	}
 
-	private void addChild(AbstractPlanningTreeNode node)
+	public void addChild(AbstractPlanningTreeNode node)
 	{
 		ORefSet existingGrandChildRefs = getGrandChildRefs();
 		if(!existingGrandChildRefs.contains(node.getObjectReference()))
