@@ -20,23 +20,60 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
+import org.miradi.main.CommandExecutedEvent;
+import org.miradi.main.CommandExecutedListener;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.AbstractStringKeyMap;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.StringChoiceMap;
 import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
 
-public class DashboardEffectiveMapCache
+public class DashboardEffectiveMapCache implements CommandExecutedListener
 {
-	public DashboardEffectiveMapCache(Project projectToUse)
+	public DashboardEffectiveMapCache(Project projectToUse) throws Exception
 	{
 		project = projectToUse;
 	}
 	
-	public AbstractStringKeyMap calculateEffectiveMap() throws Exception
+	public void enable()
+	{
+		getProject().addCommandExecutedListener(this);
+	}
+	
+	public void disable()
+	{
+		getProject().removeCommandExecutedListener(this);
+	}
+	
+	public void commandExecuted(CommandExecutedEvent event)
+	{
+		try
+		{
+			if (event.isSetDataCommandWithThisTypeAndTag(Dashboard.getObjectType(), Dashboard.TAG_PROGRESS_CHOICE_MAP))
+			{
+				invalidateEffectiveMap();
+			}
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
+	}
+	
+	private void invalidateEffectiveMap() throws Exception
 	{
 		ORef dashboardRef = getProject().getSingletonObjectRef(Dashboard.getObjectType()); 
 		Dashboard dashboard = Dashboard.find(getProject(), dashboardRef);
-		return dashboard.calculateEffectiveStatusMap();
+		effectiveStatusMap = dashboard.calculateEffectiveStatusMap();
+	}
+
+	public AbstractStringKeyMap calculateEffectiveMap() throws Exception
+	{
+		if (effectiveStatusMap == null)
+			invalidateEffectiveMap();
+		
+		return effectiveStatusMap;
 	}
 	
 	private Project getProject()
@@ -45,4 +82,5 @@ public class DashboardEffectiveMapCache
 	}
 	
 	private Project project;
+	private StringChoiceMap effectiveStatusMap;
 }
