@@ -27,9 +27,9 @@ import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.StrategicRowColumnProvider;
 import org.miradi.main.MainWindow;
 
-public class StrategicPlanningTreeTablePanel extends PlanningTreeTablePanel
+public class ActionPlanTreeTablePanel extends PlanningTreeTablePanel
 {
-	protected StrategicPlanningTreeTablePanel(MainWindow mainWindowToUse,
+	protected ActionPlanTreeTablePanel(MainWindow mainWindowToUse,
 			   								  PlanningTreeTable treeToUse, 
 			   								  PlanningTreeTableModel modelToUse, 
 			   								  Class[] buttonActions, 
@@ -44,7 +44,7 @@ public class StrategicPlanningTreeTablePanel extends PlanningTreeTablePanel
 		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse, model);
 		StrategicRowColumnProvider rowColumnProvider = new StrategicRowColumnProvider();
 		
-		return new StrategicPlanningTreeTablePanel(mainWindowToUse, treeTable, model, getButtonActions(), rowColumnProvider);
+		return new ActionPlanTreeTablePanel(mainWindowToUse, treeTable, model, getButtonActions(), rowColumnProvider);
 	}
 
 	private static Class[] getButtonActions()
