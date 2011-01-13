@@ -64,6 +64,17 @@ abstract public class AbstractDashboardClickableField extends ObjectDataInputFie
 	{
 		return labelComponent;
 	}
+	
+	@Override
+	public void updateFromObject()
+	{
+	}
+	
+	@Override
+	public void saveIfNeeded()
+	{
+		throw new RuntimeException("This is a readonly field and has no saveIfNeeded() implementation. Class = " + getClass().getName());
+	}
 
 	@Override
 	public String getText()
