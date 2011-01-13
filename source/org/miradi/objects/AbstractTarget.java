@@ -303,9 +303,14 @@ abstract public class AbstractTarget extends Factor
 	
 	public static boolean isAbstractTarget(BaseObject baseObject)
 	{
-		return isAbstractTarget(baseObject.getType());
+		return isAbstractTarget(baseObject.getRef());
 	}
 	
+	public static boolean isAbstractTarget(ORef ref)
+	{
+		return isAbstractTarget(ref.getObjectType());
+	}
+
 	public static boolean isAbstractTarget(int type)
 	{
 		if (Target.is(type))
