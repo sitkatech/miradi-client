@@ -21,18 +21,25 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel.rebuilder;
 
 import org.miradi.dialogs.planning.treenodes.NewAbstractPlanningTreeNode;
-import org.miradi.dialogs.planning.treenodes.NewPlanningTreeConceptualModelPageNode;
+import org.miradi.dialogs.planning.treenodes.NewPlanningTreeDiagramNode;
+import org.miradi.dialogs.planning.treenodes.NewPlanningTreeDirectThreatNode;
 import org.miradi.dialogs.planning.treenodes.NewPlanningTreeErrorNode;
+import org.miradi.dialogs.planning.treenodes.NewPlanningTreeIntermediateResultsNode;
 import org.miradi.dialogs.planning.treenodes.NewPlanningTreeTargetNode;
+import org.miradi.dialogs.planning.treenodes.NewPlanningTreeThreatReductionResultNode;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.AbstractTarget;
+import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
+import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.ResultsChainDiagram;
+import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
 
 public class TreeRebuilder
@@ -50,7 +57,7 @@ public class TreeRebuilder
 			ORef parentRef = parentNode.getObjectReference();
 			if(ProjectMetadata.is(parentRef))
 				createChildrenOfProjectNode(parentNode);
-			if(ConceptualModelDiagram.is(parentRef))
+			if(DiagramObject.isDiagramObject(parentRef))
 				createChildrenOfDiagramNode(parentNode);
 
 			for(int i = 0; i < parentNode.getChildCount(); ++i)
@@ -66,6 +73,9 @@ public class TreeRebuilder
 	{
 		ORefList conceptualModelRefs = getProject().getConceptualModelDiagramPool().getORefList();
 		createAndAddChildren(parentNode, conceptualModelRefs);
+
+		ORefList resultsChainRefs = getProject().getResultsChainDiagramPool().getORefList();
+		createAndAddChildren(parentNode, resultsChainRefs);
 	}
 
 	private void createChildrenOfDiagramNode(NewAbstractPlanningTreeNode diagramNode) throws Exception
@@ -89,18 +99,17 @@ public class TreeRebuilder
 		if (AbstractTarget.isAbstractTarget(factor) && !shouldTargetsBeAtSameLevelAsDiagrams())
 			return true;
 
-// FIXME: Remove these comments as these are implemented
-//		if (factor.isDirectThreat())
-//			return true;
-//		
-//		if (factor.isContributingFactor())
-//			return true;
-//		
-//		if (factor.isThreatReductionResult())
-//			return true;
-//		
-//		if (factor.isIntermediateResult())
-//			return true;
+		if (factor.isDirectThreat())
+			return true;
+		
+		if (factor.isContributingFactor())
+			return true;
+		
+		if (factor.isThreatReductionResult())
+			return true;
+		
+		if (factor.isIntermediateResult())
+			return true;
 		
 		return false;
 	}
@@ -128,22 +137,21 @@ public class TreeRebuilder
 		try
 		{
 			if(type == ConceptualModelDiagram.getObjectType())
-				return new NewPlanningTreeConceptualModelPageNode(getProject(), refToAdd);
+				return new NewPlanningTreeDiagramNode(getProject(), refToAdd);
+			if(type == ResultsChainDiagram.getObjectType())
+				return new NewPlanningTreeDiagramNode(getProject(), refToAdd);
 			if(AbstractTarget.isAbstractTarget(type))
 				return new NewPlanningTreeTargetNode(project, refToAdd);
+			if(type == Cause.getObjectType())
+				return new NewPlanningTreeDirectThreatNode(project, refToAdd);
+			if(type == ThreatReductionResult.getObjectType())
+				return new NewPlanningTreeThreatReductionResultNode(project, refToAdd);
+			if(type == IntermediateResult.getObjectType())
+				return new NewPlanningTreeIntermediateResultsNode(project, refToAdd);
 
-// TODO: Remove comments as these get implemented
-//			if(type == Cause.getObjectType())
-//			return new PlanningTreeDirectThreatNode(project, diagram, refToAdd, visibleRows);
-//		if(type == ThreatReductionResult.getObjectType())
-//			return new PlanningTreeThreatReductionResultNode(project, diagram, refToAdd, visibleRows);
-//		if(type == IntermediateResult.getObjectType())
-//			return new PlanningTreeIntermediateResultsNode(project, diagram, refToAdd, visibleRows);
-
+			// TODO: Remove comments as these get implemented
 //			if(type == Strategy.getObjectType())
 //				return new PlanningTreeStrategyNode(project, refToAdd, visibleRows);
-//			if(type == ResultsChainDiagram.getObjectType())
-//				return new PlanningTreeResultsChainNode(project, refToAdd, visibleRows);
 //			if(AbstractTarget.isAbstractTarget(type))
 //				return new PlanningTreeTargetNode(project, diagram, refToAdd, visibleRows);
 //			if(type == Goal.getObjectType())

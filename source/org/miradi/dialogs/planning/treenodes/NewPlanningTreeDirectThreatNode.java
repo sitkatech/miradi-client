@@ -21,13 +21,22 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.treenodes;
 
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.BaseObject;
+import org.miradi.objects.Cause;
 import org.miradi.project.Project;
 
-public class NewPlanningTreeConceptualModelPageNode extends NewAbstractPlanningTreeDiagramNode
+public class NewPlanningTreeDirectThreatNode extends NewAbstractPlanningTreeNode
 {
-	public NewPlanningTreeConceptualModelPageNode(Project projectToUse, ORef diagramRef)
+	public NewPlanningTreeDirectThreatNode(Project projectToUse, ORef threatRef) throws Exception
 	{
-		super(projectToUse, diagramRef);
+		super(projectToUse);
+		threat = (Cause)project.findObject(threatRef);
 	}
-
+	
+	public BaseObject getObject()
+	{
+		return threat;
+	}
+	
+	private Cause threat;
 }

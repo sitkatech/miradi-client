@@ -22,23 +22,22 @@ package org.miradi.dialogs.planning.treenodes;
 
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.DiagramObject;
+import org.miradi.objects.IntermediateResult;
 import org.miradi.project.Project;
 
-abstract public class NewAbstractPlanningTreeDiagramNode extends NewAbstractPlanningTreeNode
+public class NewPlanningTreeIntermediateResultsNode extends NewAbstractPlanningTreeNode
 {
-	public NewAbstractPlanningTreeDiagramNode(Project projectToUse, ORef diagramRef)
+	public NewPlanningTreeIntermediateResultsNode(Project projectToUse, ORef intermediateResultRef) throws Exception
 	{
 		super(projectToUse);
-		diagramObject = DiagramObject.findDiagramObject(projectToUse, diagramRef);
+		
+		intermediateResult = IntermediateResult.find(project, intermediateResultRef);
 	}
-
-	@Override
+	
 	public BaseObject getObject()
 	{
-		return diagramObject;
+		return intermediateResult;
 	}
 
-	protected DiagramObject diagramObject;
-
+	private IntermediateResult intermediateResult;
 }
