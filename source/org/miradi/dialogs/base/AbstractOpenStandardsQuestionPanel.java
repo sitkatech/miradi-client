@@ -39,6 +39,7 @@ import org.miradi.dialogfields.DashboardCommentsField;
 import org.miradi.dialogfields.DashboardFlagIconField;
 import org.miradi.dialogfields.DashboardStatusIconField;
 import org.miradi.dialogfields.DashboardStatusLabelField;
+import org.miradi.dialogfields.ObjectDataField;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.dashboard.AbstractLongDescriptionProvider;
 import org.miradi.dialogs.dashboard.DashboardRowDefinition;
@@ -238,7 +239,7 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 
 	}
 
-	private void addUpdatedCustomField(ObjectDataInputField field)
+	private void addUpdatedCustomField(ObjectDataField field)
 	{
 		addFieldToList(field);
 		field.updateFromObject();
