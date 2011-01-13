@@ -405,7 +405,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		return resourceAssignmentNodes;
 	}
 	
-	protected void createAndAddChildren(ORefList refsToAdd, DiagramObject diagram) throws Exception
+	public void createAndAddChildren(ORefList refsToAdd, DiagramObject diagram) throws Exception
 	{
 		for(int i = 0; i < refsToAdd.size(); ++i)
 			createAndAddChild(refsToAdd.get(i), diagram);
