@@ -33,7 +33,7 @@ public class DashboardStatusIconField extends AsbtractDashboardClickableQuestion
 {
 	public DashboardStatusIconField(Project projectToUse, ORef refToUse, String stringMapCodeToUse, ChoiceQuestion questionToUse)
 	{
-		super(projectToUse, refToUse, Dashboard.PSEUDO_EFFECTIVE_STATUS_MAP, stringMapCodeToUse, questionToUse);
+		super(projectToUse, refToUse, Dashboard.TAG_PROGRESS_CHOICE_MAP, stringMapCodeToUse, questionToUse);
 	}
 	
 	@Override

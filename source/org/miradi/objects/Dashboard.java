@@ -240,9 +240,6 @@ public class Dashboard extends BaseObject
 			if (fieldTag.equals(PSEUDO_INDICATORS_AND_METHODS_WITH_PROGRESS_REPORT_PERCENT))
 				return getIndicatorAndMethodsWithProgressReportPerncet();
 			
-			if (fieldTag.equals(PSEUDO_EFFECTIVE_STATUS_MAP))
-				return getEffectiveStatusMapAsString();
-			
 			if (fieldTag.equals(PSEUDO_CONCEPTUAL_MODEL_COUNT))
 				return getConceptualModelCount();
 			
@@ -573,11 +570,6 @@ public class Dashboard extends BaseObject
 		}
 		
 		return OpenStandardsDynamicProgressStatusQuestion.NOT_STARTED_CODE; 
-	}
-	
-	private String getEffectiveStatusMapAsString() throws Exception
-	{
-		return calculateEffectiveStatusMap().toString();
 	}
 	
 	public StringChoiceMap calculateEffectiveStatusMap() throws Exception
@@ -1200,7 +1192,6 @@ public class Dashboard extends BaseObject
 		indicatorsAndMethodsWithProgressReportCount = new PseudoStringData(PSEUDO_INDICATORS_AND_METHODS_WITH_PROGRESS_REPORT_COUNT);
 		indicatorsAndMethodsWithProgressReportPercent = new PseudoStringData(PSEUDO_INDICATORS_AND_METHODS_WITH_PROGRESS_REPORT_PERCENT);
 		targetWithGoalsCount = new PseudoStringData(PSEUDO_TARGETS_WITH_GOALS_COUNT);
-		effectiveStatusMap = new PseudoStringChoiceMapData(PSEUDO_EFFECTIVE_STATUS_MAP);
 		conceptualModelCount = new PseudoStringData(PSEUDO_CONCEPTUAL_MODEL_COUNT);
 		allFactorCount = new PseudoStringData(PSEUDO_ALL_FACTOR_COUNT);
 		indicatorsRelevantToObjectivesPercentage = new PseudoStringData(PSEUDO_INDICATORS_RELEVANT_TO_OBJECTIVES_PERCENTAGE);
@@ -1274,7 +1265,6 @@ public class Dashboard extends BaseObject
 		addPresentationDataField(PSEUDO_INDICATORS_AND_METHODS_WITH_PROGRESS_REPORT_COUNT, indicatorsAndMethodsWithProgressReportCount);
 		addPresentationDataField(PSEUDO_INDICATORS_AND_METHODS_WITH_PROGRESS_REPORT_PERCENT, indicatorsAndMethodsWithProgressReportPercent);
 		addPresentationDataField(PSEUDO_TARGETS_WITH_GOALS_COUNT, targetWithGoalsCount);
-		addPresentationDataField(PSEUDO_EFFECTIVE_STATUS_MAP, effectiveStatusMap);
 		addPresentationDataField(PSEUDO_CONCEPTUAL_MODEL_COUNT, conceptualModelCount);
 		addPresentationDataField(PSEUDO_ALL_FACTOR_COUNT, allFactorCount);
 		addPresentationDataField(PSEUDO_INDICATORS_RELEVANT_TO_OBJECTIVES_PERCENTAGE, indicatorsRelevantToObjectivesPercentage);
@@ -1352,7 +1342,6 @@ public class Dashboard extends BaseObject
 	public static final String PSEUDO_STRATEGIES_AND_ACTIVITIES_WITH_PROGRESS_REPORT_PERCENT = "StrategiesAndActivitiesWithProgressReportPercent";
 	public static final String PSEUDO_INDICATORS_AND_METHODS_WITH_PROGRESS_REPORT_COUNT = "IndicatorsAndMethodsWithProgressReportCount";
 	public static final String PSEUDO_INDICATORS_AND_METHODS_WITH_PROGRESS_REPORT_PERCENT = "IndicatorsAndMethodsWithProgressReportPercent";
-	public static final String PSEUDO_EFFECTIVE_STATUS_MAP = "effectiveStatusMap";
 	public static final String PSEUDO_CONCEPTUAL_MODEL_COUNT = "ConceptualModelCount";
 	public static final String PSEUDO_ALL_FACTOR_COUNT = " AllFactorCount";
 	public static final String PSEUDO_INDICATORS_RELEVANT_TO_OBJECTIVES_PERCENTAGE = "IndicatorsRelevantToObjectivesPercentage";
@@ -1379,7 +1368,6 @@ public class Dashboard extends BaseObject
 	public static final String TAG_FLAGS_MAP = "FlagsMap";
 
 	private DashboardRowDefinitionManager rowDefinitionManager;
-	private PseudoStringChoiceMapData effectiveStatusMap;
 	private PseudoStringData teamMemberCount;
 	private PseudoStringData projectScopeWordCount;
 	private PseudoStringData targetCount;
