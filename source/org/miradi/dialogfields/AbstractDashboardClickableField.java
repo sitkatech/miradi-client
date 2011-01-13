@@ -22,7 +22,6 @@ package org.miradi.dialogfields;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.text.ParseException;
 
 import javax.swing.JComponent;
 
@@ -74,8 +73,7 @@ abstract public class AbstractDashboardClickableField extends ObjectDataField
 		{
 			ORef dashboardRef = getProject().getSingletonObjectRef(Dashboard.getObjectType());
 			Dashboard dashboard = Dashboard.find(getProject(), dashboardRef);
-			String stringCodeMapAsString = dashboard.getData(getTag());
-			String mapValue = getMapValue(stringCodeMapAsString, stringMapCode);
+			String mapValue = getMapValue(dashboard, stringMapCode);
 			updateLabelComponent(labelComponent, mapValue);
 		}
 		catch (Exception e)
@@ -91,9 +89,9 @@ abstract public class AbstractDashboardClickableField extends ObjectDataField
 		throw new RuntimeException("This is a readonly field and has no saveIfNeeded() implementation. Class = " + getClass().getName());
 	}
 
-	protected String getMapValue(String stringCodeMapAsString, String stringMapCodeToUse) throws Exception
+	protected String getMapValue(Dashboard dashboard, String stringMapCodeToUse) throws Exception
 	{
-		AbstractStringKeyMap map = createStringKeyMap(stringCodeMapAsString);
+		AbstractStringKeyMap map = createStringKeyMap(dashboard);
 		return map.get(stringMapCodeToUse);
 	}
 	
@@ -127,7 +125,7 @@ abstract public class AbstractDashboardClickableField extends ObjectDataField
 		}
 	}
 	
-	abstract protected AbstractStringKeyMap createStringKeyMap(String stringCodeMapAsString) throws ParseException;
+	abstract protected AbstractStringKeyMap createStringKeyMap(Dashboard dashboard) throws Exception;
 	
 	abstract protected void updateLabelComponent(PanelTitleLabel labelComponentToUse, String mapValue) throws Exception;
 
