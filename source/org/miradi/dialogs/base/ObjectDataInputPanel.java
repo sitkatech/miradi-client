@@ -29,6 +29,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import org.martus.swing.UiLabel;
+import org.miradi.dialogfields.ObjectDataField;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogfields.RadioButtonsField;
 import org.miradi.dialogs.fieldComponents.PanelButton;
@@ -251,8 +252,8 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanelW
 	
 	protected boolean isOneOfOurFields(String tag)
 	{
-		Vector<ObjectDataInputField> fields = getFields();
-		for(ObjectDataInputField field : fields)
+		Vector<ObjectDataField> fields = getFields();
+		for(ObjectDataField field : fields)
 		{
 			if (tag.equals(field.getTag()))
 				return true;

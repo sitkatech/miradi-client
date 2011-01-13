@@ -50,6 +50,7 @@ import org.miradi.dialogfields.ObjectChoiceField;
 import org.miradi.dialogfields.ObjectClassificationChoiceField;
 import org.miradi.dialogfields.ObjectCodeEditorField;
 import org.miradi.dialogfields.ObjectCurrencyInputField;
+import org.miradi.dialogfields.ObjectDataField;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogfields.ObjectDateChooserInputField;
 import org.miradi.dialogfields.ObjectExpandingMultilineInputField;
@@ -69,9 +70,9 @@ import org.miradi.dialogfields.ObjectStringMapInputField;
 import org.miradi.dialogfields.PopupQuestionEditorField;
 import org.miradi.dialogfields.RadioButtonsField;
 import org.miradi.dialogfields.ReadOnlyCodeListField;
-import org.miradi.dialogfields.StringStringMapEditorField;
 import org.miradi.dialogfields.StringMapMultiLineEditor;
 import org.miradi.dialogfields.StringMapProjectResourceFilterEditorField;
+import org.miradi.dialogfields.StringStringMapEditorField;
 import org.miradi.dialogs.fieldComponents.PanelFieldLabel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.fieldComponents.PanelTitledBorder;
@@ -111,7 +112,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	public AbstractObjectDataInputPanel(Project projectToUse, ORef[] orefsToUse)
 	{
 		project = projectToUse;
-		fields = new Vector<ObjectDataInputField>();
+		fields = new Vector<ObjectDataField>();
 		picker = new Picker();
 		subPanels = new Vector<AbstractObjectDataInputPanel>();
 
@@ -134,7 +135,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		int fieldSize = getFields().size();
 		for(int i = 0; i < fieldSize; ++i)
 		{
-			ObjectDataInputField field = getFields().get(i);
+			ObjectDataField field = getFields().get(i);
 			field.dispose();
 		}
 		
@@ -684,7 +685,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	{
 		for(int i = 0; i < getFields().size(); ++i)
 		{
-			ObjectDataInputField field = getFields().get(i);
+			ObjectDataField field = getFields().get(i);
 			field.saveIfNeeded();
 		}
 		for(AbstractObjectDataInputPanel subPanel : subPanels)
@@ -698,7 +699,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		setFieldObjectIds();
 		for(int i = 0; i < getFields().size(); ++i)
 		{
-			ObjectDataInputField field = getFields().get(i);
+			ObjectDataField field = getFields().get(i);
 			field.updateFromObject();
 		}
 		for(AbstractObjectDataInputPanel subPanel : subPanels)
@@ -707,7 +708,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		}
 	}
 
-	public Vector<ObjectDataInputField> getFields()
+	public Vector<ObjectDataField> getFields()
 	{
 		return fields;
 	}
@@ -716,7 +717,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	{
 		for(int i = 0; i < getFields().size(); ++i)
 		{
-			ObjectDataInputField field = getFields().get(i);
+			ObjectDataField field = getFields().get(i);
 			field.setObjectRef(getRefForType(field.getObjectType()));
 		}
 		for(AbstractObjectDataInputPanel subPanel : subPanels)
@@ -912,8 +913,8 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	protected boolean doesSectionContainFieldWithTag(String tagToUse)
 	{
-		Vector<ObjectDataInputField> thisFields = getFields();
-		for(ObjectDataInputField field : thisFields)
+		Vector<ObjectDataField> thisFields = getFields();
+		for(ObjectDataField field : thisFields)
 		{
 			HashSet<String> tags = getTag(field, tagToUse);
 			if (tags.contains(field.getTag()))
@@ -923,7 +924,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return false;
 	}
 
-	private HashSet<String> getTag(ObjectDataInputField field, String tagToUse)
+	private HashSet<String> getTag(ObjectDataField field, String tagToUse)
 	{
 		BaseObject baseObject = BaseObject.find(getProject(), field.getORef());
 		if (!baseObject.doesFieldExist(tagToUse))
@@ -942,7 +943,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	private Project project;
 	private Picker picker;
 	private ORefList selectedRefs;
-	private Vector<ObjectDataInputField> fields;
+	private Vector<ObjectDataField> fields;
 	private Vector<AbstractObjectDataInputPanel> subPanels;
 }
 
