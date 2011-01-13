@@ -27,9 +27,9 @@ import org.miradi.dialogs.viability.AbstractIndicatorPropertiesPanel;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 
-public class StrategicPlanMultiPropertiesPanel extends	PlanningTreeMultiPropertiesPanel
+public class ActionPlanMultiPropertiesPanel extends	PlanningTreeMultiPropertiesPanel
 {
-	public StrategicPlanMultiPropertiesPanel(MainWindow mainWindowToUse, ORef orefToUse) throws Exception
+	public ActionPlanMultiPropertiesPanel(MainWindow mainWindowToUse, ORef orefToUse) throws Exception
 	{
 		super(mainWindowToUse, orefToUse);
 	}
