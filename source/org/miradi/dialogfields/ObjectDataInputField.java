@@ -53,9 +53,6 @@ abstract public class ObjectDataInputField extends DataField
 		saveIfNeeded();
 	}
 	
-	abstract public String getText();
-	abstract public void setText(String newValue);
-	
 	public ORef getORef()
 	{
 		return ref;
@@ -222,7 +219,11 @@ abstract public class ObjectDataInputField extends DataField
 			setNeedsSave();
 		}
 	}
+	
+	abstract public String getText();
 
+	abstract public void setText(String newValue);
+	
 	private ORef ref;
 	private String tag;
 	private boolean allowEdits;
