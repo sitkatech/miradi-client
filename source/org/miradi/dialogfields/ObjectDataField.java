@@ -20,12 +20,37 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields;
 
+import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 
 abstract public class ObjectDataField extends DataField
 {
-	public ObjectDataField(Project projectToUse)
+	public ObjectDataField(Project projectToUse, ORef refToUse)
 	{
 		super(projectToUse);
+		
+		ref = refToUse;
 	}
+	
+	public boolean isValidObject()
+	{
+		return (!ref.isInvalid());
+	}
+	
+	public int getObjectType()
+	{
+		return ref.getObjectType();
+	}
+	
+	public void setObjectRef(ORef refToUse)
+	{
+		ref = refToUse;
+	}
+	
+	public ORef getORef()
+	{
+		return ref;
+	}
+	
+	private ORef ref;
 }
