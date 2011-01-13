@@ -24,6 +24,7 @@ import java.awt.Component;
 
 import javax.swing.Icon;
 
+import org.miradi.dialogfields.ObjectDataField;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.fieldComponents.PanelTabbedPane;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
@@ -121,7 +122,7 @@ abstract public class ObjectDataInputPanelWithSections extends AbstractObjectDat
 	}
 	
 	@Override
-	public ObjectDataInputField addField(ObjectDataInputField field)
+	public ObjectDataField addField(ObjectDataField field)
 	{
 		return singleSection.addField(field);
 	}

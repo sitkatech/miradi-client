@@ -287,7 +287,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		}
 	}
 		
-	public ObjectDataInputField addField(ObjectDataInputField field)
+	public ObjectDataField addField(ObjectDataField field)
 	{
 		addLabel(field.getObjectType(), field.getTag());
 		addFieldWithoutLabel(field);
@@ -295,13 +295,13 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return field;
 	}
 
-	public void addFieldWithoutLabel(ObjectDataInputField field)
+	public void addFieldWithoutLabel(ObjectDataField field)
 	{
 		addFieldToList(field);
 		addFieldComponent(field.getComponent());
 	}
 	
-	public ObjectDataInputField addFieldToList(ObjectDataInputField field)
+	public ObjectDataField addFieldToList(ObjectDataField field)
 	{
 		getFields().add(field);
 		return field;
