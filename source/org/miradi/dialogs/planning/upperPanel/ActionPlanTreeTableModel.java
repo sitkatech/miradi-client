@@ -23,9 +23,9 @@ import org.miradi.project.Project;
 import org.miradi.views.planning.ColumnManager;
 import org.miradi.views.planning.RowManager;
 
-public class StrategicPlanTreeTableModel extends ExportablePlanningTreeTableModel
+public class ActionPlanTreeTableModel extends ExportablePlanningTreeTableModel
 {
-	public StrategicPlanTreeTableModel(Project project) throws Exception
+	public ActionPlanTreeTableModel(Project project) throws Exception
 	{
 		super(project, RowManager.getStrategicPlanRows(), ColumnManager.getStrategicPlanColumns(), UNIQUE_TREE_TABLE_IDENTIFIER);
 	}
