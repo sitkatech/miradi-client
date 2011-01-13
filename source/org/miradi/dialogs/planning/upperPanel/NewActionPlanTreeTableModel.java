@@ -42,7 +42,7 @@ public class NewActionPlanTreeTableModel extends ExportablePlanningTreeTableMode
 	@Override
 	protected void rebuildNode()
 	{
-		new TreeRebuilder().rebuildTree((NewPlanningRootNode)getRootNode());
+		new TreeRebuilder(getProject()).rebuildTree((NewPlanningRootNode)getRootNode());
 	}
 	
 	private static final String UNIQUE_TREE_TABLE_IDENTIFIER = "ActionPlanTreeTableModel";
