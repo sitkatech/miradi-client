@@ -39,7 +39,7 @@ public class ObjectCurrencyInputField extends ObjectFloatingPointRestrictedInput
 			if (newValue.length() > 0)
 			{
 				double valueToFormat = DoubleUtilities.toDoubleForHumans(newValue);
-				newValue = project.getCurrencyFormatterWithoutCommas().format(valueToFormat);
+				newValue = getProject().getCurrencyFormatterWithoutCommas().format(valueToFormat);
 			}
 		}
 		catch (Exception e)

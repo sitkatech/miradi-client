@@ -110,7 +110,7 @@ abstract public class ObjectDataInputField extends DataField
 		updateEditableState();
 		String text = "";
 		if(isValidObject())
-			text = project.getObjectData(objectType, objectId, tag);
+			text = getProject().getObjectData(objectType, objectId, tag);
 		if (text.equals(getText()))
 			return;
 		setText(text);
@@ -180,7 +180,7 @@ abstract public class ObjectDataInputField extends DataField
 		CommandSetObjectData cmd = new CommandSetObjectData(objectType, objectId, tag, newValue);
 		try
 		{
-			project.executeCommand(cmd);
+			getProject().executeCommand(cmd);
 			updateFromObject();
 		}
 		catch(CommandFailedException e)
@@ -194,7 +194,7 @@ abstract public class ObjectDataInputField extends DataField
 
 	String getOldValue()
 	{
-		String existingValue = project.getObjectData(objectType, objectId, tag);
+		String existingValue = getProject().getObjectData(objectType, objectId, tag);
 		return existingValue;
 	}
 	
