@@ -92,14 +92,14 @@ public class PlanningView extends TabbedView
 	public void createTabs() throws Exception
 	{
 		planningManagementPanel = ConfigurablePlanningTreeManagementPanel.createConfigurablePlanningPanel(getMainWindow());
-		strategicPlanManagementPanel = ActionPlanManagementPanel.createStrategicPlanPanel(getMainWindow());
+		actionPlanManagementPanel = ActionPlanManagementPanel.createActionPlanPanel(getMainWindow());
 		monitoringPlanManagementPanel = MonitoringPlanManagementPanel.createMonitoringPlanPanel(getMainWindow());
 		objectsOnlyManagementPanel = ObjectsOnlyManagementPanel.createObjectsOnlyPanel(getMainWindow());
 		resourceManagementPanel = StrategicPlanResourcesManagementPanel.createProjectResourcesPanelWithoutBudgetColumns(getMainWindow());
 		
 		managementPanelMap = new HashMap<String, PlanningTreeManagementPanel>();
 
-		addPlanningManagementTab(strategicPlanManagementPanel);
+		addPlanningManagementTab(actionPlanManagementPanel);
 		addPlanningManagementTab(monitoringPlanManagementPanel);
 		addPlanningManagementTab(objectsOnlyManagementPanel);
 		addPlanningManagementTab(planningManagementPanel);
@@ -129,8 +129,8 @@ public class PlanningView extends TabbedView
 		planningManagementPanel.dispose();
 		planningManagementPanel = null;
 		
-		strategicPlanManagementPanel.dispose();
-		strategicPlanManagementPanel = null;
+		actionPlanManagementPanel.dispose();
+		actionPlanManagementPanel = null;
 		
 		monitoringPlanManagementPanel.dispose();
 		monitoringPlanManagementPanel = null;
@@ -207,7 +207,7 @@ public class PlanningView extends TabbedView
 
 	private PlanningTreeManagementPanel objectsOnlyManagementPanel;
 	private PlanningTreeManagementPanel planningManagementPanel;
-	private PlanningTreeManagementPanel strategicPlanManagementPanel;
+	private PlanningTreeManagementPanel actionPlanManagementPanel;
 	private PlanningTreeManagementPanel monitoringPlanManagementPanel;
 	private PlanningTreeManagementPanel resourceManagementPanel;
 	

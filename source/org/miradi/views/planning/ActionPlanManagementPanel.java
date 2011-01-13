@@ -53,7 +53,7 @@ class ActionPlanManagementPanel extends PlanningTreeManagementPanel
 		return IconManager.getStrategyIcon();
 	}
 
-	public static ActionPlanManagementPanel createStrategicPlanPanel(MainWindow mainWindowToUse) throws Exception
+	public static ActionPlanManagementPanel createActionPlanPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		PlanningTreeTablePanel strategicPlanTreeTablePanel = StrategicPlanningTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse);
 		PlanningTreeMultiPropertiesPanel strategicPlanPropertiesPanel = new StrategicPlanMultiPropertiesPanel(mainWindowToUse, ORef.INVALID);
