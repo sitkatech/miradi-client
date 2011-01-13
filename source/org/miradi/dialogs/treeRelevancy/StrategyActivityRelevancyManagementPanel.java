@@ -24,7 +24,7 @@ import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.base.ObjectCollectionPanel;
 import org.miradi.dialogs.base.ObjectManagementPanel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningTreeMultiPropertiesPanel;
-import org.miradi.dialogs.strategicPlan.StrategicPlanMultiPropertiesPanel;
+import org.miradi.dialogs.strategicPlan.ActionPlanMultiPropertiesPanel;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Desire;
@@ -42,7 +42,7 @@ public class StrategyActivityRelevancyManagementPanel extends ObjectManagementPa
 		StrategyActivityRelevancyTreeTableModel treeTableModel = new StrategyActivityRelevancyTreeTableModel(rootNode); 
 		StrategyActivityRelevancyTreeTable treeTable = new StrategyActivityRelevancyTreeTable(mainWindow, treeTableModel);
 		StrategyActivityRelevancyTreeTablePanel treeTablePanel = StrategyActivityRelevancyTreeTablePanel.createTreeTablePanel(mainWindow, desire, treeTableModel, treeTable);
-		PlanningTreeMultiPropertiesPanel multiPropertiesPanel = new StrategicPlanMultiPropertiesPanel(mainWindow, ORef.INVALID);
+		PlanningTreeMultiPropertiesPanel multiPropertiesPanel = new ActionPlanMultiPropertiesPanel(mainWindow, ORef.INVALID);
 		
 		return new StrategyActivityRelevancyManagementPanel(mainWindow, treeTablePanel, multiPropertiesPanel);
 	}
