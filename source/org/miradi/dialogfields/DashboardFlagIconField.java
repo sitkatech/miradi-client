@@ -20,14 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields;
 
-import java.text.ParseException;
 
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.icons.EmptyIcon;
 import org.miradi.icons.IconManager;
 import org.miradi.objecthelpers.AbstractStringKeyMap;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.StringCodeListMap;
 import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
 import org.miradi.questions.DashboardFlagsQuestion;
@@ -52,8 +50,8 @@ public class DashboardFlagIconField extends	AbstractDashboardClickableField
 	}
 	
 	@Override
-	protected AbstractStringKeyMap createStringKeyMap(String stringCodeMapAsString) throws ParseException
+	protected AbstractStringKeyMap createStringKeyMap(Dashboard dashboard) throws Exception
 	{
-		return new StringCodeListMap(stringCodeMapAsString);
+		return dashboard.getFlagsMap();
 	}
 }

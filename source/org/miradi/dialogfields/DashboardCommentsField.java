@@ -20,12 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields;
 
-import java.text.ParseException;
 
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.objecthelpers.AbstractStringKeyMap;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.StringStringMap;
 import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
 
@@ -37,9 +35,9 @@ public class DashboardCommentsField extends AbstractDashboardClickableField
 	}
 
 	@Override
-	protected AbstractStringKeyMap createStringKeyMap(String stringCodeMapAsString) throws ParseException
+	protected AbstractStringKeyMap createStringKeyMap(Dashboard dashboard) throws Exception
 	{
-		return new StringStringMap(stringCodeMapAsString);
+		return dashboard.getCommentsMap();
 	}
 
 	@Override
@@ -53,12 +51,11 @@ public class DashboardCommentsField extends AbstractDashboardClickableField
 		labelComponentToUse.setText(firstLine);
 	}
 	
-	public boolean hasComments() throws ParseException
+	public boolean hasComments() throws Exception
 	{
 		ORef dashboardRef = getProject().getSingletonObjectRef(Dashboard.getObjectType());
 		Dashboard dashboard = Dashboard.find(getProject(), dashboardRef);
-		String mapAsString = dashboard.getData(Dashboard.TAG_COMMENTS_MAP);
-		AbstractStringKeyMap commentsMap = createStringKeyMap(mapAsString);
+		AbstractStringKeyMap commentsMap = createStringKeyMap(dashboard);
 		String comment = commentsMap.get(stringMapCode);
 		return comment.length() > 0;
 	}
