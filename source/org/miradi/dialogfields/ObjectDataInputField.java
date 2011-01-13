@@ -31,7 +31,7 @@ import org.miradi.project.Project;
 import org.miradi.utils.InvalidDateException;
 import org.miradi.utils.InvalidNumberException;
 
-abstract public class ObjectDataInputField extends DataField
+abstract public class ObjectDataInputField extends ObjectDataField
 {
 	public ObjectDataInputField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse)
 	{
