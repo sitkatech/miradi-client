@@ -37,14 +37,14 @@ public class TreeRebuilder
 		project = projectToUse;
 	}
 	
-	public void rebuildTree(NewAbstractPlanningTreeNode rootNode)
+	public void rebuildTree(NewAbstractPlanningTreeNode parentNode)
 	{
 		try
 		{
-			rootNode.clearChildren();
-			if(ProjectMetadata.is(rootNode.getObjectReference()))
+			parentNode.clearChildren();
+			if(ProjectMetadata.is(parentNode.getObjectReference()))
 			{
-				addConceptualModelDiagramNodesTo(rootNode);
+				addConceptualModelDiagramNodesTo(parentNode);
 			}
 		}
 		catch(Exception e)
