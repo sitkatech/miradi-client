@@ -22,11 +22,7 @@ package org.miradi.dialogs.planning.upperPanel.rebuilder;
 
 import org.miradi.dialogs.planning.treenodes.NewAbstractPlanningTreeNode;
 import org.miradi.dialogs.planning.treenodes.NewPlanningTreeBaseObjectNode;
-import org.miradi.dialogs.planning.treenodes.NewPlanningTreeDiagramNode;
-import org.miradi.dialogs.planning.treenodes.NewPlanningTreeDirectThreatNode;
 import org.miradi.dialogs.planning.treenodes.NewPlanningTreeErrorNode;
-import org.miradi.dialogs.planning.treenodes.NewPlanningTreeIntermediateResultsNode;
-import org.miradi.dialogs.planning.treenodes.NewPlanningTreeThreatReductionResultNode;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -137,18 +133,18 @@ public class TreeRebuilder
 		try
 		{
 			if(type == ConceptualModelDiagram.getObjectType())
-				return new NewPlanningTreeDiagramNode(getProject(), refToAdd);
+				return new NewPlanningTreeBaseObjectNode(getProject(), refToAdd);
 			if(type == ResultsChainDiagram.getObjectType())
-				return new NewPlanningTreeDiagramNode(getProject(), refToAdd);
+				return new NewPlanningTreeBaseObjectNode(getProject(), refToAdd);
 			
 			if(AbstractTarget.isAbstractTarget(type))
-				return new NewPlanningTreeBaseObjectNode(project, refToAdd);
+				return new NewPlanningTreeBaseObjectNode(getProject(), refToAdd);
 			if(type == Cause.getObjectType())
-				return new NewPlanningTreeDirectThreatNode(project, refToAdd);
+				return new NewPlanningTreeBaseObjectNode(getProject(), refToAdd);
 			if(type == ThreatReductionResult.getObjectType())
-				return new NewPlanningTreeThreatReductionResultNode(project, refToAdd);
+				return new NewPlanningTreeBaseObjectNode(getProject(), refToAdd);
 			if(type == IntermediateResult.getObjectType())
-				return new NewPlanningTreeIntermediateResultsNode(project, refToAdd);
+				return new NewPlanningTreeBaseObjectNode(getProject(), refToAdd);
 
 //			if (SubTarget.is(type))
 //				return new SubTargetNode(project, refToAdd);

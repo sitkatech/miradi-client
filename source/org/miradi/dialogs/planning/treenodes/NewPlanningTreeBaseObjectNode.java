@@ -21,23 +21,22 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.treenodes;
 
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 
 public class NewPlanningTreeBaseObjectNode extends NewAbstractPlanningTreeNode
 {
-	public NewPlanningTreeBaseObjectNode(Project projectToUse, ORef targetRef) throws Exception
+	public NewPlanningTreeBaseObjectNode(Project projectToUse, ORef objectRef) throws Exception
 	{
 		super(projectToUse);
-		target = (AbstractTarget)project.findObject(targetRef);
+		object = project.findObject(objectRef);
 	}
 	
 	@Override
 	public BaseObject getObject()
 	{
-		return target;
+		return object;
 	}
 
-	private AbstractTarget target;
+	private BaseObject object;
 }
