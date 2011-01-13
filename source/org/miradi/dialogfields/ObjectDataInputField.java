@@ -40,9 +40,8 @@ abstract public class ObjectDataInputField extends ObjectDataField
 
 	public ObjectDataInputField(Project projectToUse, ORef refToUse, String tagToUse)
 	{
-		super(projectToUse);
+		super(projectToUse, refToUse);
 		
-		ref = refToUse;
 		tag = tagToUse;
 		allowEdits = true;
 	}
@@ -53,24 +52,9 @@ abstract public class ObjectDataInputField extends ObjectDataField
 		saveIfNeeded();
 	}
 	
-	public ORef getORef()
-	{
-		return ref;
-	}
-	
-	public int getObjectType()
-	{
-		return ref.getObjectType();
-	}
-	
 	public void setTag(String tagToUse)
 	{
 		tag = tagToUse;
-	}
-	
-	public void setObjectRef(ORef refToUse)
-	{
-		ref = refToUse;
 	}
 	
 	public String getTag()
@@ -95,11 +79,6 @@ abstract public class ObjectDataInputField extends ObjectDataField
 		return allowEdits;
 	}
 
-	public boolean isValidObject()
-	{
-		return (!ref.isInvalid());
-	}
-	
 	public void setEditable(boolean newState)
 	{
 		allowEdits = newState;
@@ -219,7 +198,6 @@ abstract public class ObjectDataInputField extends ObjectDataField
 
 	abstract public void setText(String newValue);
 	
-	private ORef ref;
 	private String tag;
 	private boolean allowEdits;
 	private boolean needsSave;
