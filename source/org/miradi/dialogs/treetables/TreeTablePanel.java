@@ -46,6 +46,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.TableSettings;
 import org.miradi.utils.FastScrollPane;
+import org.miradi.utils.FillerLabel;
 
 import com.jhlabs.awt.GridLayoutPlus;
 
@@ -73,6 +74,17 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 	protected void addToButtonBox(Component componentToAdd)
 	{
 		buttonBox.add(componentToAdd); 
+	}
+	
+	protected void addComponentAsFirst(Component componentToAdd)
+	{
+		final int FIRST_BUTTON_IN_PANEL_INDEX = 0;
+		buttonBox.add(componentToAdd, FIRST_BUTTON_IN_PANEL_INDEX);
+	}
+	
+	protected void addToButtonBox(Component componentToAdd, int index)
+	{
+		buttonBox.add(componentToAdd, index); 
 	}
 
 	private JPanel createButtonBox(Class[] buttonActionClasses) throws Exception
@@ -149,8 +161,15 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 	
 	private void addCreateButtonAndAddToBox(Class actionClass, JPanel box, Actions actions)
 	{
-		UiButton button = createObjectsActionButton(actions.getObjectsAction(actionClass), tree);
-		box.add(button);
+		if (actionClass == null)
+		{
+			box.add(new FillerLabel());
+		}
+		else
+		{
+			UiButton button = createObjectsActionButton(actions.getObjectsAction(actionClass), tree);
+			box.add(button);
+		}
 	}
 
 	public void valueChanged(TreeSelectionEvent e)
