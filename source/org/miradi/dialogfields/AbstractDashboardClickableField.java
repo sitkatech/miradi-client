@@ -34,6 +34,7 @@ import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.AbstractStringKeyMap;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
 import org.miradi.utils.Translation;
 
@@ -69,6 +70,19 @@ abstract public class AbstractDashboardClickableField extends ObjectDataField
 	@Override
 	public void updateFromObject()
 	{
+		try
+		{
+			ORef dashboardRef = getProject().getSingletonObjectRef(Dashboard.getObjectType());
+			Dashboard dashboard = Dashboard.find(getProject(), dashboardRef);
+			String stringCodeMapAsString = dashboard.getData(getTag());
+			String mapValue = getMapValue(stringCodeMapAsString, stringMapCode);
+			updateLabelComponent(labelComponent, mapValue);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			EAM.unexpectedErrorDialog(e);
+		}
 	}
 	
 	@Override
