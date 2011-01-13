@@ -47,6 +47,7 @@ import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
 import org.miradi.main.ResourcesHandler;
 import org.miradi.main.VersionConstants;
+import org.miradi.objecthelpers.AbstractStringKeyMap;
 import org.miradi.objecthelpers.CreateDiagramFactorParameter;
 import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ORef;
@@ -126,6 +127,7 @@ import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
+import org.miradi.utils.DashboardEffectiveMapCache;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.Translation;
 import org.miradi.views.diagram.DiagramClipboard;
@@ -152,7 +154,8 @@ public class Project
 		projectCalendar = new ProjectCalendar(this);
 		projectTotalCalculator = new ProjectTotalCalculator(this);
 		threatStressRatingEnsurer = new ThreatStressRatingEnsurer(this);
-		planningPreferencesChangeHandler = new PlanningPreferencesChangeHandler(this);		
+		planningPreferencesChangeHandler = new PlanningPreferencesChangeHandler(this);
+		dashboardEffectiveMapCache = new DashboardEffectiveMapCache(this);
 		enableIsDoNothingCommandOptimization();
 		enableListeners();
 		
@@ -504,6 +507,11 @@ public class Project
 	public ProjectTotalCalculator getProjectTotalCalculator()
 	{
 		return projectTotalCalculator;
+	}
+	
+	public AbstractStringKeyMap getDashboardEffectiveMapCache() throws Exception
+	{
+		return dashboardEffectiveMapCache.calculateEffectiveMap();
 	}
 
 	public BaseObject findObject(ORef ref)
@@ -1435,6 +1443,7 @@ public class Project
 	private ThreatStressRatingEnsurer threatStressRatingEnsurer;
 	private ProjectTotalCalculator projectTotalCalculator;
 	private PlanningPreferencesChangeHandler planningPreferencesChangeHandler;
+	private DashboardEffectiveMapCache dashboardEffectiveMapCache;
 
 	// FIXME low: This should go away, but it's difficult
 	private String currentViewName;
