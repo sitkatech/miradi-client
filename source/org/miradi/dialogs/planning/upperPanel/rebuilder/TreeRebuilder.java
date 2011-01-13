@@ -20,10 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.upperPanel.rebuilder;
 
+import org.miradi.diagram.ChainWalker;
 import org.miradi.dialogs.planning.treenodes.NewAbstractPlanningTreeNode;
 import org.miradi.dialogs.planning.treenodes.NewPlanningTreeBaseObjectNode;
 import org.miradi.dialogs.planning.treenodes.NewPlanningTreeErrorNode;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.AbstractTarget;
@@ -32,9 +34,12 @@ import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
+import org.miradi.objects.Goal;
+import org.miradi.objects.Indicator;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ResultsChainDiagram;
+import org.miradi.objects.Strategy;
 import org.miradi.objects.SubTarget;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
@@ -48,19 +53,31 @@ public class TreeRebuilder
 	
 	public void rebuildTree(NewAbstractPlanningTreeNode parentNode)
 	{
+		rebuildTree(parentNode, null);
+	}
+	
+	private void rebuildTree(NewAbstractPlanningTreeNode parentNode, DiagramObject diagram)
+	{
 		try
 		{
 			parentNode.clearChildren();
 			ORef parentRef = parentNode.getObjectReference();
 			if(ProjectMetadata.is(parentRef))
+			{
 				createChildrenOfProjectNode(parentNode);
+			}
 			if(DiagramObject.isDiagramObject(parentRef))
+			{
 				createChildrenOfDiagramNode(parentNode);
+				diagram = DiagramObject.findDiagramObject(getProject(), parentRef);
+			}
 			if(AbstractTarget.isAbstractTarget(parentRef))
-				createChildrenOfAbstractTarget(parentNode);
+			{
+				createChildrenOfAbstractTarget(parentNode, diagram);
+			}
 
 			for(int i = 0; i < parentNode.getChildCount(); ++i)
-				rebuildTree((NewAbstractPlanningTreeNode) parentNode.getChild(i));
+				rebuildTree((NewAbstractPlanningTreeNode) parentNode.getChild(i), diagram);
 		}
 		catch(Exception e)
 		{
@@ -118,11 +135,29 @@ public class TreeRebuilder
 		return getProject().getMetadata().shouldPutTargetsAtTopLevelOfTree();
 	}
 	
-	private void createChildrenOfAbstractTarget(NewAbstractPlanningTreeNode parentNode) throws Exception
+	private void createChildrenOfAbstractTarget(NewAbstractPlanningTreeNode targetNode, DiagramObject diagram) throws Exception
 	{
-		AbstractTarget target = (AbstractTarget) parentNode.getObject();
-		ORefList subTargetRefs = target.getSubTargetRefs();
-		createAndAddChildren(parentNode, subTargetRefs);
+		AbstractTarget target = (AbstractTarget) targetNode.getObject();
+		createAndAddChildren(targetNode, target.getSubTargetRefs());
+		createAndAddChildren(targetNode, target.getOwnedObjects(Goal.getObjectType()));
+		createAndAddChildren(targetNode, new ORefList(Indicator.getObjectType(), target.getDirectOrIndirectIndicators()));
+		createAndAddChildren(targetNode, getDirectlyLinkedNonDraftStrategies(target, diagram));
+	}
+
+	private ORefList getDirectlyLinkedNonDraftStrategies(AbstractTarget target, DiagramObject diagram)
+	{
+		ORefList strategyRefs = new ORefList();
+		
+		ChainWalker chain = diagram.getDiagramChainWalker();
+		DiagramFactor targetDiagramFactor = diagram.getDiagramFactor(target.getRef());
+		FactorSet factors = chain.buildDirectlyLinkedUpstreamChainAndGetFactors(targetDiagramFactor);
+		for(Factor factor : factors)
+		{
+			if(factor.isStrategy() && !factor.isStatusDraft())
+				strategyRefs.add(factor.getRef());
+		}
+		
+		return strategyRefs;
 	}
 
 
@@ -150,6 +185,8 @@ public class TreeRebuilder
 			if(type == ResultsChainDiagram.getObjectType())
 				return new NewPlanningTreeBaseObjectNode(getProject(), refToAdd);
 			
+			if(type == Strategy.getObjectType())
+				return new NewPlanningTreeBaseObjectNode(getProject(), refToAdd);
 			if(AbstractTarget.isAbstractTarget(type))
 				return new NewPlanningTreeBaseObjectNode(getProject(), refToAdd);
 			if(type == Cause.getObjectType())
@@ -160,18 +197,16 @@ public class TreeRebuilder
 				return new NewPlanningTreeBaseObjectNode(getProject(), refToAdd);
 			if (SubTarget.is(type))
 				return new NewPlanningTreeBaseObjectNode(getProject(), refToAdd);
+			if(type == Goal.getObjectType())
+				return new NewPlanningTreeBaseObjectNode(getProject(), refToAdd);
+			if(type == Indicator.getObjectType())
+				return new NewPlanningTreeBaseObjectNode(getProject(), refToAdd);
 
 			// TODO: Remove comments as these get implemented
-//			if(type == Strategy.getObjectType())
-//				return new PlanningTreeStrategyNode(project, refToAdd, visibleRows);
 //			if(AbstractTarget.isAbstractTarget(type))
 //				return new PlanningTreeTargetNode(project, diagram, refToAdd, visibleRows);
-//			if(type == Goal.getObjectType())
-//				return new PlanningTreeGoalNode(project, diagram, refToAdd, visibleRows);
 //			if(type == Objective.getObjectType())
 //				return new PlanningTreeObjectiveNode(project, diagram, refToAdd, visibleRows);
-//			if(type == Indicator.getObjectType())
-//				return new PlanningTreeIndicatorNode(project, refToAdd, visibleRows);
 //			if (type == Measurement.getObjectType())
 //				return new PlanningTreeMeasurementNode(project, refToAdd, visibleRows);
 //			if (type == Task.getObjectType())
