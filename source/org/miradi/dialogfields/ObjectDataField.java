@@ -52,5 +52,7 @@ abstract public class ObjectDataField extends DataField
 		return ref;
 	}
 	
+	abstract public void updateFromObject();
+	
 	private ORef ref;
 }
