@@ -919,6 +919,7 @@ public class Project
 		getProjectTotalCalculator().enable();
 		enableThreatStressRatingEnsurer();
 		planningPreferencesChangeHandler.enable();
+		dashboardEffectiveMapCache.enable();
 	}
 
 	protected void applyDefaultBehavior() throws Exception
@@ -1010,6 +1011,7 @@ public class Project
 		getProjectTotalCalculator().disable();
 		disableThreatStressRatingEnsurer();
 		planningPreferencesChangeHandler.disable();
+		dashboardEffectiveMapCache.disable();
 	}
 
 	public void closeAndDeleteProject() throws Exception
