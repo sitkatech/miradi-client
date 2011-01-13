@@ -34,5 +34,5 @@ abstract public class DataField extends SavableField
 		return project;
 	}
 
-	protected Project project;
+	private Project project;
 }

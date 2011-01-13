@@ -68,7 +68,7 @@ public class ObjectReadonlyObjectListField extends ObjectDataInputField
 				if (ref.isInvalid())
 					continue;
 				
-				BaseObject object = project.findObject(ref); 
+				BaseObject object = getProject().findObject(ref); 
 				if(object == null)
 				{
 					EAM.logError("Ignored a missing object while in ObjectReadonlyObjectListField.setText(). Ref = " + ref);
