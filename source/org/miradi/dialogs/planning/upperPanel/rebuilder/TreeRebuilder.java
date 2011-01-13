@@ -23,10 +23,15 @@ package org.miradi.dialogs.planning.upperPanel.rebuilder;
 import org.miradi.dialogs.planning.treenodes.NewAbstractPlanningTreeNode;
 import org.miradi.dialogs.planning.treenodes.NewPlanningTreeConceptualModelPageNode;
 import org.miradi.dialogs.planning.treenodes.NewPlanningTreeErrorNode;
+import org.miradi.dialogs.planning.treenodes.NewPlanningTreeTargetNode;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.ConceptualModelDiagram;
+import org.miradi.objects.DiagramFactor;
+import org.miradi.objects.DiagramObject;
+import org.miradi.objects.Factor;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
 
@@ -44,7 +49,12 @@ public class TreeRebuilder
 			parentNode.clearChildren();
 			ORef parentRef = parentNode.getObjectReference();
 			if(ProjectMetadata.is(parentRef))
-				rebuildProjectRootNode(parentNode);
+				createChildrenOfProjectNode(parentNode);
+			if(ConceptualModelDiagram.is(parentRef))
+				createChildrenOfDiagramNode(parentNode);
+
+			for(int i = 0; i < parentNode.getChildCount(); ++i)
+				rebuildTree((NewAbstractPlanningTreeNode) parentNode.getChild(i));
 		}
 		catch(Exception e)
 		{
@@ -52,18 +62,52 @@ public class TreeRebuilder
 		}
 	}
 
-	private void rebuildProjectRootNode(NewAbstractPlanningTreeNode parentNode)
-			throws Exception
-	{
-		addConceptualModelDiagramNodesTo(parentNode);
-	}
-
-	private void addConceptualModelDiagramNodesTo(NewAbstractPlanningTreeNode parent) throws Exception
+	private void createChildrenOfProjectNode(NewAbstractPlanningTreeNode parentNode) throws Exception
 	{
 		ORefList conceptualModelRefs = getProject().getConceptualModelDiagramPool().getORefList();
-		createAndAddChildren(parent, conceptualModelRefs);
-		for(int i = 0; i < parent.getChildCount(); ++i)
-			rebuildTree((NewAbstractPlanningTreeNode) parent.getChild(i));
+		createAndAddChildren(parentNode, conceptualModelRefs);
+	}
+
+	private void createChildrenOfDiagramNode(NewAbstractPlanningTreeNode diagramNode) throws Exception
+	{
+		DiagramObject diagramObject = (DiagramObject)diagramNode.getObject(); 
+		ORefList diagramFactorRefs = diagramObject.getAllDiagramFactorRefs();
+		for(int i = 0; i < diagramFactorRefs.size(); ++i)
+		{
+			DiagramFactor diagramFactor = (DiagramFactor)project.findObject(diagramFactorRefs.get(i));
+			Factor factor = diagramFactor.getWrappedFactor();
+			if(shouldIncludeFactorWithinDiagram(factor))
+			{
+				createAndAddChild(diagramNode, factor.getRef());
+			}
+		}
+		
+	}
+
+	private boolean shouldIncludeFactorWithinDiagram(Factor factor)
+	{
+		if (AbstractTarget.isAbstractTarget(factor) && !shouldTargetsBeAtSameLevelAsDiagrams())
+			return true;
+
+// FIXME: Remove these comments as these are implemented
+//		if (factor.isDirectThreat())
+//			return true;
+//		
+//		if (factor.isContributingFactor())
+//			return true;
+//		
+//		if (factor.isThreatReductionResult())
+//			return true;
+//		
+//		if (factor.isIntermediateResult())
+//			return true;
+		
+		return false;
+	}
+
+	protected boolean shouldTargetsBeAtSameLevelAsDiagrams()
+	{
+		return getProject().getMetadata().shouldPutTargetsAtTopLevelOfTree();
 	}
 	
 	public void createAndAddChildren(NewAbstractPlanningTreeNode parent, ORefList refsToAdd) throws Exception
@@ -85,7 +129,19 @@ public class TreeRebuilder
 		{
 			if(type == ConceptualModelDiagram.getObjectType())
 				return new NewPlanningTreeConceptualModelPageNode(getProject(), refToAdd);
+			if(AbstractTarget.isAbstractTarget(type))
+				return new NewPlanningTreeTargetNode(project, refToAdd);
+
 // TODO: Remove comments as these get implemented
+//			if(type == Cause.getObjectType())
+//			return new PlanningTreeDirectThreatNode(project, diagram, refToAdd, visibleRows);
+//		if(type == ThreatReductionResult.getObjectType())
+//			return new PlanningTreeThreatReductionResultNode(project, diagram, refToAdd, visibleRows);
+//		if(type == IntermediateResult.getObjectType())
+//			return new PlanningTreeIntermediateResultsNode(project, diagram, refToAdd, visibleRows);
+
+//			if(type == Strategy.getObjectType())
+//				return new PlanningTreeStrategyNode(project, refToAdd, visibleRows);
 //			if(type == ResultsChainDiagram.getObjectType())
 //				return new PlanningTreeResultsChainNode(project, refToAdd, visibleRows);
 //			if(AbstractTarget.isAbstractTarget(type))
@@ -94,14 +150,6 @@ public class TreeRebuilder
 //				return new PlanningTreeGoalNode(project, diagram, refToAdd, visibleRows);
 //			if(type == Objective.getObjectType())
 //				return new PlanningTreeObjectiveNode(project, diagram, refToAdd, visibleRows);
-//			if(type == Cause.getObjectType())
-//				return new PlanningTreeDirectThreatNode(project, diagram, refToAdd, visibleRows);
-//			if(type == ThreatReductionResult.getObjectType())
-//				return new PlanningTreeThreatReductionResultNode(project, diagram, refToAdd, visibleRows);
-//			if(type == IntermediateResult.getObjectType())
-//				return new PlanningTreeIntermediateResultsNode(project, diagram, refToAdd, visibleRows);
-//			if(type == Strategy.getObjectType())
-//				return new PlanningTreeStrategyNode(project, refToAdd, visibleRows);
 //			if(type == Indicator.getObjectType())
 //				return new PlanningTreeIndicatorNode(project, refToAdd, visibleRows);
 //			if (type == Measurement.getObjectType())
