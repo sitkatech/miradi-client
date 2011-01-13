@@ -46,8 +46,8 @@ abstract public class ObjectDataInputField extends DataField
 	
 	public ObjectDataInputField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse)
 	{
-		super();
-		project = projectToUse;
+		super(projectToUse);
+		
 		objectType = objectTypeToUse;
 		objectId = objectIdToUse;
 		tag = tagToUse;
@@ -241,11 +241,6 @@ abstract public class ObjectDataInputField extends DataField
 		"Currency symbols and percent signs are not allowed");
 	}
 
-	public Project getProject()
-	{
-		return project;
-	}
-	
 	public DocumentEventHandler createDocumentEventHandler()
 	{
 		return new DocumentEventHandler();
@@ -269,7 +264,6 @@ abstract public class ObjectDataInputField extends DataField
 		}
 	}
 
-	Project project;
 	private int objectType;
 	private BaseId objectId;
 	private String tag;

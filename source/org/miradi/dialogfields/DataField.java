@@ -20,6 +20,19 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields;
 
+import org.miradi.project.Project;
+
 abstract public class DataField extends SavableField
 {
+	public DataField(Project projectToUse)
+	{
+		project = projectToUse;
+	}
+	
+	public Project getProject()
+	{
+		return project;
+	}
+
+	protected Project project;
 }
