@@ -717,7 +717,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		for(int i = 0; i < getFields().size(); ++i)
 		{
 			ObjectDataInputField field = getFields().get(i);
-			field.setObjectId(getRefForType(field.getObjectType()));
+			field.setObjectRef(getRefForType(field.getObjectType()));
 		}
 		for(AbstractObjectDataInputPanel subPanel : subPanels)
 		{
