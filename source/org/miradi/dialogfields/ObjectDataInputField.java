@@ -19,12 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogfields;
 
-import java.awt.Color;
-
-import javax.swing.BorderFactory;
-import javax.swing.JComponent;
-import javax.swing.border.Border;
-import javax.swing.border.CompoundBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
@@ -60,7 +54,6 @@ abstract public class ObjectDataInputField extends DataField
 		saveIfNeeded();
 	}
 	
-	abstract public JComponent getComponent();
 	abstract public String getText();
 	abstract public void setText(String newValue);
 	
@@ -99,11 +92,6 @@ abstract public class ObjectDataInputField extends DataField
 		return tag;
 	}
 	
-	protected void addFocusListener()
-	{
-		getComponent().addFocusListener(this);
-	}
-	
 	public void updateFromObject()
 	{
 		saveIfNeeded();
@@ -124,11 +112,6 @@ abstract public class ObjectDataInputField extends DataField
 	public boolean isValidObject()
 	{
 		return (!objectId.isInvalid());
-	}
-	
-	public void setVisible(boolean isVisible)
-	{
-		getComponent().setVisible(isVisible);
 	}
 	
 	public void setEditable(boolean newState)
@@ -196,19 +179,6 @@ abstract public class ObjectDataInputField extends DataField
 	{
 		String existingValue = getProject().getObjectData(objectType, objectId, tag);
 		return existingValue;
-	}
-	
-	void setDefaultFieldBorder()
-	{
-		getComponent().setBorder(createLineBorderWithMargin());
-	}
-
-	public static CompoundBorder createLineBorderWithMargin()
-	{
-		Border lineBorder = BorderFactory.createLineBorder(Color.BLACK);
-		Border margin = BorderFactory.createEmptyBorder(2, 2, 2, 2);
-		CompoundBorder coumpoundBorder = BorderFactory.createCompoundBorder(lineBorder, margin);
-		return coumpoundBorder;
 	}
 	
 	private void notifyUserOfFailure(CommandFailedException cfe)
