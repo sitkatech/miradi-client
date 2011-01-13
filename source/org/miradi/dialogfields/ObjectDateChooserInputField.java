@@ -62,7 +62,7 @@ public class ObjectDateChooserInputField extends ObjectDataInputField
 	}
 	
 	@Override
-	void clearNeedsSave()
+	public void clearNeedsSave()
 	{
 		dateEditor.clearNeedsSaving();
 	}

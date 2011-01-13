@@ -125,7 +125,7 @@ abstract public class ObjectDataInputField extends DataField
 		needsSave = !currentDataMatchesSaved;
 	}
 	
-	void clearNeedsSave()
+	public void clearNeedsSave()
 	{
 		needsSave = false;
 	}

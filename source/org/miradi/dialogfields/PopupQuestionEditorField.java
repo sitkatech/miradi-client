@@ -57,7 +57,7 @@ public class PopupQuestionEditorField extends ObjectDataInputField
 	}
 	
 	@Override
-	void clearNeedsSave()
+	public void clearNeedsSave()
 	{
 		editorComponent.clearNeedsSaving();
 		super.clearNeedsSave();
