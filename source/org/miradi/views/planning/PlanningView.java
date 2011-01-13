@@ -51,6 +51,7 @@ import org.miradi.dialogs.planning.EmptyRowColumnProvider;
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
 import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.main.MainWindow;
+import org.miradi.main.Miradi;
 import org.miradi.main.MiradiToolBar;
 import org.miradi.project.Project;
 import org.miradi.views.TabbedView;
@@ -92,6 +93,7 @@ public class PlanningView extends TabbedView
 	public void createTabs() throws Exception
 	{
 		actionPlanManagementPanel = ActionPlanManagementPanel.createActionPlanPanel(getMainWindow());
+		actionPlan2ManagementPanel = NewActionPlanManagementPanel.createActionPlanPanel(getMainWindow());
 		monitoringPlanManagementPanel = MonitoringPlanManagementPanel.createMonitoringPlanPanel(getMainWindow());
 		objectsOnlyManagementPanel = ObjectsOnlyManagementPanel.createObjectsOnlyPanel(getMainWindow());
 		planningManagementPanel = ConfigurablePlanningTreeManagementPanel.createConfigurablePlanningPanel(getMainWindow());
@@ -100,6 +102,8 @@ public class PlanningView extends TabbedView
 		managementPanelMap = new HashMap<String, PlanningTreeManagementPanel>();
 
 		addPlanningManagementTab(actionPlanManagementPanel);
+		if(Miradi.isAlphaTesterMode())
+			addPlanningManagementTab(actionPlan2ManagementPanel);
 		addPlanningManagementTab(monitoringPlanManagementPanel);
 		addPlanningManagementTab(objectsOnlyManagementPanel);
 		addPlanningManagementTab(planningManagementPanel);
@@ -131,6 +135,9 @@ public class PlanningView extends TabbedView
 		
 		actionPlanManagementPanel.dispose();
 		actionPlanManagementPanel = null;
+		
+		actionPlan2ManagementPanel.dispose();
+		actionPlan2ManagementPanel = null;
 		
 		monitoringPlanManagementPanel.dispose();
 		monitoringPlanManagementPanel = null;
@@ -208,6 +215,7 @@ public class PlanningView extends TabbedView
 	private PlanningTreeManagementPanel objectsOnlyManagementPanel;
 	private PlanningTreeManagementPanel planningManagementPanel;
 	private PlanningTreeManagementPanel actionPlanManagementPanel;
+	private PlanningTreeManagementPanel actionPlan2ManagementPanel;
 	private PlanningTreeManagementPanel monitoringPlanManagementPanel;
 	private PlanningTreeManagementPanel resourceManagementPanel;
 	
