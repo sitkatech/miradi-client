@@ -44,14 +44,18 @@ public class TreeRebuilder
 			parentNode.clearChildren();
 			ORef parentRef = parentNode.getObjectReference();
 			if(ProjectMetadata.is(parentRef))
-			{
-				addConceptualModelDiagramNodesTo(parentNode);
-			}
+				rebuildProjectRootNode(parentNode);
 		}
 		catch(Exception e)
 		{
 			EAM.panic(e);
 		}
+	}
+
+	private void rebuildProjectRootNode(NewAbstractPlanningTreeNode parentNode)
+			throws Exception
+	{
+		addConceptualModelDiagramNodesTo(parentNode);
 	}
 
 	private void addConceptualModelDiagramNodesTo(NewAbstractPlanningTreeNode parent) throws Exception
