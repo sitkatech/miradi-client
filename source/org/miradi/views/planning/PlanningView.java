@@ -91,10 +91,10 @@ public class PlanningView extends TabbedView
 	@Override
 	public void createTabs() throws Exception
 	{
-		planningManagementPanel = ConfigurablePlanningTreeManagementPanel.createConfigurablePlanningPanel(getMainWindow());
 		actionPlanManagementPanel = ActionPlanManagementPanel.createActionPlanPanel(getMainWindow());
 		monitoringPlanManagementPanel = MonitoringPlanManagementPanel.createMonitoringPlanPanel(getMainWindow());
 		objectsOnlyManagementPanel = ObjectsOnlyManagementPanel.createObjectsOnlyPanel(getMainWindow());
+		planningManagementPanel = ConfigurablePlanningTreeManagementPanel.createConfigurablePlanningPanel(getMainWindow());
 		resourceManagementPanel = StrategicPlanResourcesManagementPanel.createProjectResourcesPanelWithoutBudgetColumns(getMainWindow());
 		
 		managementPanelMap = new HashMap<String, PlanningTreeManagementPanel>();
