@@ -27,6 +27,7 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.ConceptualModelDiagram;
+import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
 
 public class TreeRebuilder
@@ -41,7 +42,10 @@ public class TreeRebuilder
 		try
 		{
 			rootNode.clearChildren();
-			addConceptualModelTo(rootNode);
+			if(ProjectMetadata.is(rootNode.getObjectReference()))
+			{
+				addConceptualModelTo(rootNode);
+			}
 		}
 		catch(Exception e)
 		{
@@ -53,6 +57,8 @@ public class TreeRebuilder
 	{
 		ORefList conceptualModelRefs = getProject().getConceptualModelDiagramPool().getORefList();
 		createAndAddChildren(parent, conceptualModelRefs);
+		for(int i = 0; i < parent.getChildCount(); ++i)
+			rebuildTree((NewAbstractPlanningTreeNode) parent.getChild(i));
 	}
 	
 	public void createAndAddChildren(NewAbstractPlanningTreeNode parent, ORefList refsToAdd) throws Exception
