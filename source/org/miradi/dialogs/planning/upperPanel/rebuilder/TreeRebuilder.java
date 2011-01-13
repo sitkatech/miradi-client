@@ -42,7 +42,8 @@ public class TreeRebuilder
 		try
 		{
 			parentNode.clearChildren();
-			if(ProjectMetadata.is(parentNode.getObjectReference()))
+			ORef parentRef = parentNode.getObjectReference();
+			if(ProjectMetadata.is(parentRef))
 			{
 				addConceptualModelDiagramNodesTo(parentNode);
 			}
