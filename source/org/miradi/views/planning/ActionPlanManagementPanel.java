@@ -55,9 +55,9 @@ class ActionPlanManagementPanel extends PlanningTreeManagementPanel
 
 	public static ActionPlanManagementPanel createActionPlanPanel(MainWindow mainWindowToUse) throws Exception
 	{
-		PlanningTreeTablePanel strategicPlanTreeTablePanel = StrategicPlanningTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse);
-		PlanningTreeMultiPropertiesPanel strategicPlanPropertiesPanel = new StrategicPlanMultiPropertiesPanel(mainWindowToUse, ORef.INVALID);
+		PlanningTreeTablePanel actionPlanTreeTablePanel = StrategicPlanningTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse);
+		PlanningTreeMultiPropertiesPanel actionPlanPropertiesPanel = new StrategicPlanMultiPropertiesPanel(mainWindowToUse, ORef.INVALID);
 		
-		return new ActionPlanManagementPanel(mainWindowToUse, strategicPlanTreeTablePanel, strategicPlanPropertiesPanel);
+		return new ActionPlanManagementPanel(mainWindowToUse, actionPlanTreeTablePanel, actionPlanPropertiesPanel);
 	}
 }
