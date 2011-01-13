@@ -86,10 +86,10 @@ public class LinkPropertiesFactorsSubpanel extends ObjectDataInputPanel
 		{
 			threatLabel.setText("");
 			threatLabel.setIcon(null);
-			threatNameField.setObjectType(ObjectType.FAKE);
+			threatNameField.setObjectId(ORef.INVALID);
 			targetLabel.setText("");
 			targetLabel.setIcon(null);
-			targetNameField.setObjectType(ObjectType.FAKE);
+			targetNameField.setObjectId(ORef.INVALID);
 			return;
 		}
 		
@@ -98,12 +98,12 @@ public class LinkPropertiesFactorsSubpanel extends ObjectDataInputPanel
 			Factor threat = Factor.findFactor(getProject(), threatRef);
 			threatLabel.setText(FactorType.getFactorTypeLabel(threat));
 			threatLabel.setIcon(FactorType.getFactorIcon(threat));
-			threatNameField.setObjectType(threat.getType());
+			threatNameField.setObjectId(threat.getRef());
 
 			Factor target = Factor.findFactor(getProject(), targetRef);
 			targetLabel.setText(FactorType.getFactorTypeLabel(target));
 			targetLabel.setIcon(FactorType.getFactorIcon(target));
-			targetNameField.setObjectType(target.getType());
+			targetNameField.setObjectId(target.getRef());
 		}
 		catch(Exception e)
 		{
