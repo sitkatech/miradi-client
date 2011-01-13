@@ -35,6 +35,7 @@ import org.miradi.objects.Factor;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ResultsChainDiagram;
+import org.miradi.objects.SubTarget;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
 
@@ -55,6 +56,8 @@ public class TreeRebuilder
 				createChildrenOfProjectNode(parentNode);
 			if(DiagramObject.isDiagramObject(parentRef))
 				createChildrenOfDiagramNode(parentNode);
+			if(AbstractTarget.isAbstractTarget(parentRef))
+				createChildrenOfAbstractTarget(parentNode);
 
 			for(int i = 0; i < parentNode.getChildCount(); ++i)
 				rebuildTree((NewAbstractPlanningTreeNode) parentNode.getChild(i));
@@ -115,19 +118,29 @@ public class TreeRebuilder
 		return getProject().getMetadata().shouldPutTargetsAtTopLevelOfTree();
 	}
 	
-	public void createAndAddChildren(NewAbstractPlanningTreeNode parent, ORefList refsToAdd) throws Exception
+	private void createChildrenOfAbstractTarget(NewAbstractPlanningTreeNode parentNode) throws Exception
+	{
+		AbstractTarget target = (AbstractTarget) parentNode.getObject();
+		ORefList subTargetRefs = target.getSubTargetRefs();
+		createAndAddChildren(parentNode, subTargetRefs);
+	}
+
+
+	
+	
+	private void createAndAddChildren(NewAbstractPlanningTreeNode parent, ORefList refsToAdd) throws Exception
 	{
 		for(int i = 0; i < refsToAdd.size(); ++i)
 			createAndAddChild(parent, refsToAdd.get(i));
 	}
 
-	protected void createAndAddChild(NewAbstractPlanningTreeNode parent, ORef refToAdd) throws Exception
+	private void createAndAddChild(NewAbstractPlanningTreeNode parent, ORef refToAdd) throws Exception
 	{
 		NewAbstractPlanningTreeNode childNode = createChildNode(refToAdd);
 		parent.addChild(childNode);
 	}
 
-	protected NewAbstractPlanningTreeNode createChildNode(ORef refToAdd) throws Exception
+	private NewAbstractPlanningTreeNode createChildNode(ORef refToAdd) throws Exception
 	{
 		int type = refToAdd.getObjectType();
 		try
@@ -145,9 +158,8 @@ public class TreeRebuilder
 				return new NewPlanningTreeBaseObjectNode(getProject(), refToAdd);
 			if(type == IntermediateResult.getObjectType())
 				return new NewPlanningTreeBaseObjectNode(getProject(), refToAdd);
-
-//			if (SubTarget.is(type))
-//				return new SubTargetNode(project, refToAdd);
+			if (SubTarget.is(type))
+				return new NewPlanningTreeBaseObjectNode(getProject(), refToAdd);
 
 			// TODO: Remove comments as these get implemented
 //			if(type == Strategy.getObjectType())
