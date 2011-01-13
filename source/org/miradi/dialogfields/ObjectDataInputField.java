@@ -161,7 +161,7 @@ abstract public class ObjectDataInputField extends DataField
 		}
 	}
 
-	String getOldValue()
+	private String getOldValue()
 	{
 		String existingValue = getProject().getObjectData(ref, tag);
 		return existingValue;
