@@ -42,8 +42,7 @@ abstract public class ObjectDataInputField extends DataField
 	{
 		super(projectToUse);
 		
-		objectType = objectTypeToUse;
-		objectId = objectIdToUse;
+		ref = new ORef(objectTypeToUse, objectIdToUse);
 		tag = tagToUse;
 		allowEdits = true;
 	}
@@ -64,12 +63,7 @@ abstract public class ObjectDataInputField extends DataField
 	
 	public int getObjectType()
 	{
-		return objectType;
-	}
-	
-	public void setObjectType(int newType)
-	{
-		objectType = newType;
+		return ref.getObjectType();
 	}
 	
 	public void setTag(String tagToUse)
@@ -79,12 +73,12 @@ abstract public class ObjectDataInputField extends DataField
 	
 	public BaseId getObjectId()
 	{
-		return objectId;
+		return ref.getObjectId();
 	}
 	
-	public void setObjectId(BaseId newId)
+	public void setObjectId(ORef refToUse)
 	{
-		objectId = newId;
+		ref = refToUse;
 	}
 	
 	public String getTag()
@@ -98,7 +92,7 @@ abstract public class ObjectDataInputField extends DataField
 		updateEditableState();
 		String text = "";
 		if(isValidObject())
-			text = getProject().getObjectData(objectType, objectId, tag);
+			text = getProject().getObjectData(ref, tag);
 		if (text.equals(getText()))
 			return;
 		setText(text);
@@ -111,7 +105,7 @@ abstract public class ObjectDataInputField extends DataField
 
 	public boolean isValidObject()
 	{
-		return (!objectId.isInvalid());
+		return (!ref.isInvalid());
 	}
 	
 	public void setEditable(boolean newState)
@@ -160,7 +154,7 @@ abstract public class ObjectDataInputField extends DataField
 		if(existingValue.equals(newValue))
 			return;
 
-		CommandSetObjectData cmd = new CommandSetObjectData(objectType, objectId, tag, newValue);
+		CommandSetObjectData cmd = new CommandSetObjectData(ref, tag, newValue);
 		try
 		{
 			getProject().executeCommand(cmd);
@@ -177,7 +171,7 @@ abstract public class ObjectDataInputField extends DataField
 
 	String getOldValue()
 	{
-		String existingValue = getProject().getObjectData(objectType, objectId, tag);
+		String existingValue = getProject().getObjectData(ref, tag);
 		return existingValue;
 	}
 	
@@ -234,8 +228,7 @@ abstract public class ObjectDataInputField extends DataField
 		}
 	}
 
-	private int objectType;
-	private BaseId objectId;
+	private ORef ref;
 	private String tag;
 	private boolean allowEdits;
 	private boolean needsSave;
