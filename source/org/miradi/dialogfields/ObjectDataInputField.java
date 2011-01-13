@@ -76,7 +76,7 @@ abstract public class ObjectDataInputField extends DataField
 		return ref.getObjectId();
 	}
 	
-	public void setObjectId(ORef refToUse)
+	public void setObjectRef(ORef refToUse)
 	{
 		ref = refToUse;
 	}
