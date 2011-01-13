@@ -33,16 +33,16 @@ import org.miradi.utils.InvalidNumberException;
 
 abstract public class ObjectDataInputField extends DataField
 {
-	public ObjectDataInputField(Project projectToUse, ORef refToUse, String tagToUse)
-	{
-		this(projectToUse, refToUse.getObjectType(), refToUse.getObjectId(), tagToUse);
-	}
-	
 	public ObjectDataInputField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse)
+	{
+		this(projectToUse, new ORef(objectTypeToUse, objectIdToUse), tagToUse);
+	}
+
+	public ObjectDataInputField(Project projectToUse, ORef refToUse, String tagToUse)
 	{
 		super(projectToUse);
 		
-		ref = new ORef(objectTypeToUse, objectIdToUse);
+		ref = refToUse;
 		tag = tagToUse;
 		allowEdits = true;
 	}
