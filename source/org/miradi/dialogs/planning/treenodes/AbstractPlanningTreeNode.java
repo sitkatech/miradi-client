@@ -133,7 +133,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 			addChild(node);
 	}
 
-	private void addChild(AbstractPlanningTreeNode node)
+	public void addChild(AbstractPlanningTreeNode node)
 	{
 		ORefSet existingGrandChildRefs = getGrandChildRefs();
 		if(!existingGrandChildRefs.contains(node.getObjectReference()))
@@ -405,7 +405,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		return resourceAssignmentNodes;
 	}
 	
-	public void createAndAddChildren(ORefList refsToAdd, DiagramObject diagram) throws Exception
+	protected void createAndAddChildren(ORefList refsToAdd, DiagramObject diagram) throws Exception
 	{
 		for(int i = 0; i < refsToAdd.size(); ++i)
 			createAndAddChild(refsToAdd.get(i), diagram);

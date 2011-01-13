@@ -20,43 +20,49 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.treenodes;
 
-import org.miradi.icons.MiradiApplicationIcon;
+import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
-import org.miradi.questions.ChoiceItem;
 
-public class NewPlanningRootNode extends NewAbstractPlanningTreeNode
+public class NewPlanningTreeErrorNode extends NewAbstractPlanningTreeNode
 {
-	public NewPlanningRootNode(Project projectToUse)
+	public NewPlanningTreeErrorNode(Project project, ORef refToAdd)
 	{
-		super(projectToUse);
-	}
-
-	@Override
-	public boolean isAlwaysExpanded()
-	{
-		return true;
+		super(project);
+		
+		ref = refToAdd;
 	}
 
 	@Override
 	public BaseObject getObject()
 	{
-		return project.getMetadata();
+		return BaseObject.find(getProject(), getObjectReference());
 	}
-
+	
 	@Override
-	public Object getValueAt(int column)
+	public ORef getObjectReference()
 	{
-		if (column == 0)
-			return getObject().toString();
-		
-		return new ChoiceItem("", "", new MiradiApplicationIcon());
+		return ref;
 	}
-
+	
+	@Override
+	public int getType()
+	{
+		return getObjectReference().getObjectType();
+	}
+	
 	@Override
 	public String toRawString()
 	{
-		return getProject().getFilename();
+		return EAM.substitute(EAM.text("Error Creating: %s"), getObject().getLabel()) ;
 	}
-
+	
+	@Override
+	public void rebuild() throws Exception
+	{
+		// NOTE: Avoid a call to super rebuild because it always throws
+	}
+	
+	private ORef ref;
 }
