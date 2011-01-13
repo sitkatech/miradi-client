@@ -71,11 +71,6 @@ abstract public class ObjectDataInputField extends DataField
 		tag = tagToUse;
 	}
 	
-	public BaseId getObjectId()
-	{
-		return ref.getObjectId();
-	}
-	
 	public void setObjectRef(ORef refToUse)
 	{
 		ref = refToUse;
