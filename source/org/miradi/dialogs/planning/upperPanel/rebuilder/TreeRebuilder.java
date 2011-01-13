@@ -44,7 +44,7 @@ public class TreeRebuilder
 			rootNode.clearChildren();
 			if(ProjectMetadata.is(rootNode.getObjectReference()))
 			{
-				addConceptualModelTo(rootNode);
+				addConceptualModelDiagramNodesTo(rootNode);
 			}
 		}
 		catch(Exception e)
@@ -53,7 +53,7 @@ public class TreeRebuilder
 		}
 	}
 
-	private void addConceptualModelTo(NewAbstractPlanningTreeNode parent) throws Exception
+	private void addConceptualModelDiagramNodesTo(NewAbstractPlanningTreeNode parent) throws Exception
 	{
 		ORefList conceptualModelRefs = getProject().getConceptualModelDiagramPool().getORefList();
 		createAndAddChildren(parent, conceptualModelRefs);
