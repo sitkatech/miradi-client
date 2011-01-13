@@ -39,7 +39,10 @@ public class CreateCustomFromCurrentTreeTableConfigurationDoer extends ObjectsDo
 	@Override
 	public boolean isAvailable()
 	{
-		return super.isAvailable();
+		if(!super.isAvailable())
+			return false;
+
+		return isPlanningView();
 	}
 	
 	@Override

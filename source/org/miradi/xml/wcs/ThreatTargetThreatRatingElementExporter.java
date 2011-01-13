@@ -21,11 +21,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.wcs;
 
 import java.util.Collections;
-import java.util.Set;
 import java.util.Vector;
 
 import org.miradi.diagram.ThreatTargetChainWalker;
-import org.miradi.dialogs.threatrating.upperPanel.AbstractThreatTargetTableModel;
 import org.miradi.dialogs.threatrating.upperPanel.TargetThreatLinkTableModel;
 import org.miradi.objecthelpers.BaseObjectByRefSorter;
 import org.miradi.objecthelpers.ORef;
@@ -64,8 +62,7 @@ public class ThreatTargetThreatRatingElementExporter extends AbstractXmlExporter
 
 	private void exportSimpleThreatRating() throws Exception
 	{
-		Vector<Target> targets = new Vector<Target>(TargetThreatLinkTableModel.getOnlyTargetsInConceptualModelDiagrams(getProject()));
-		Collections.sort(targets, new BaseObjectByRefSorter());
+		Vector<Target> targets = getSortedTargetsInConceptualModelDiagrams();
 		ThreatTargetChainWalker chain = new ThreatTargetChainWalker(getProject());
 		for(Target target : targets)
 		{
@@ -88,6 +85,14 @@ public class ThreatTargetThreatRatingElementExporter extends AbstractXmlExporter
 		}
 	}
 
+	private Vector<Target> getSortedTargetsInConceptualModelDiagrams()
+	{
+		Vector<Target> targets = new Vector<Target>(TargetThreatLinkTableModel.getOnlyTargetsInConceptualModelDiagrams(getProject()));
+		Collections.sort(targets, new BaseObjectByRefSorter());
+
+		return targets;
+	}
+
 	private void exportSimpleBaseThreatRatingDetails(ORef threatRef, ORef targetRef) throws Exception
 	{
 		getWcsXmlExporter().writeStartElement(THREAT_RATING + RATINGS);
@@ -105,7 +110,7 @@ public class ThreatTargetThreatRatingElementExporter extends AbstractXmlExporter
 
 	private void exportStressBasedThreatRating() throws Exception
 	{
-		Set<Target> targets = AbstractThreatTargetTableModel.getOnlyTargetsInConceptualModelDiagrams(getProject());
+		Vector<Target> targets = getSortedTargetsInConceptualModelDiagrams();
 		for(Target target : targets)
 		{
 			if (target.getStressRefs().hasRefs())

@@ -23,10 +23,8 @@ package org.miradi.views.planning;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.CodeListEditorPanel;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ObjectTreeTableConfiguration;
-import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.questions.CustomPlanningRowsQuestion;
@@ -34,13 +32,9 @@ import org.miradi.questions.DiagramObjectDataInclusionQuestion;
 
 public class PlanningCustomizePanel extends ObjectDataInputPanel
 {
-	public PlanningCustomizePanel(Project projectToUse) throws Exception
+	public PlanningCustomizePanel(Project projectToUse, ORef planningConfigurationRef) throws Exception
 	{
-		super(projectToUse, ORef.INVALID);
-		
-		ORef currentViewDataRef = getProject().getCurrentViewData().getRef();
-		ViewData viewData = ViewData.find(getProject(), currentViewDataRef);
-		ORef planningConfigurationRef = viewData.getORef(ViewData.TAG_TREE_CONFIGURATION_REF);
+		super(projectToUse, planningConfigurationRef);
 		
 		ObjectDataInputField dataInclusion = createChoiceField(ObjectTreeTableConfiguration.getObjectType(), ObjectTreeTableConfiguration.TAG_DIAGRAM_DATA_INCLUSION, getProject().getQuestion(DiagramObjectDataInclusionQuestion.class));
 		addField(dataInclusion);
@@ -55,6 +49,6 @@ public class PlanningCustomizePanel extends ObjectDataInputPanel
 	@Override
 	public String getPanelDescription()
 	{
-		return EAM.text("PlanningCustomizePanel");
+		return "PlanningCustomizePanel";
 	}
 }

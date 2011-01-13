@@ -45,7 +45,7 @@ public class ConfigurablePlanningTreeTablePanel extends PlanningTreeTablePanel
 		super(mainWindowToUse, treeToUse, modelToUse, buttonActions, rowColumnProvider);
 
 		customizationPanel = new PlanningViewConfigurableControlPanel(getProject());
-		addToButtonBox(customizationPanel);
+		addComponentAsFirst(customizationPanel);
 	}
 
 	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse) throws Exception
@@ -59,17 +59,18 @@ public class ConfigurablePlanningTreeTablePanel extends PlanningTreeTablePanel
 	private static Class[] getButtonActions()
 	{
 		return new Class[] {
+			ActionPlanningCustomizeDialogPopup.class,	
+			ActionDeletePlanningViewConfiguration.class,
+			ActionCreatePlanningViewConfigurationMenu.class,
+			ActionRenamePlanningViewConfiguration.class,
+			null,
+				
 			ActionExpandAllRows.class,
 			ActionCollapseAllRows.class,
 			ActionTreeNodeUp.class,
 			ActionTreeNodeDown.class,
 			ActionPlanningCreationMenu.class,
 			ActionDeletePlanningViewTreeNode.class,
-			
-			ActionCreatePlanningViewConfigurationMenu.class,
-			ActionRenamePlanningViewConfiguration.class,
-			ActionDeletePlanningViewConfiguration.class,
-			ActionPlanningCustomizeDialogPopup.class, 
 		};
 	}
 	

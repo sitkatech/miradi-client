@@ -25,6 +25,8 @@ import org.miradi.dialogs.base.ModalDialogWithClose;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.ViewData;
 import org.miradi.views.ObjectsDoer;
 import org.miradi.views.planning.PlanningCustomizePanel;
 
@@ -33,7 +35,10 @@ public class PlanningCustomizeDialogPopupDoer extends ObjectsDoer
 	@Override
 	public boolean isAvailable()
 	{
-		return true;
+		if(!super.isAvailable())
+			return false;
+
+		return isPlanningView();
 	}
 
 	@Override
@@ -47,7 +52,11 @@ public class PlanningCustomizeDialogPopupDoer extends ObjectsDoer
 
 	public static void showCustomizeDialog(MainWindow mainWindowToUse) throws Exception
 	{
-		ObjectDataInputPanel editor = new PlanningCustomizePanel(mainWindowToUse.getProject());
+		ORef currentViewDataRef = mainWindowToUse.getProject().getCurrentViewData().getRef();
+		ViewData viewData = ViewData.find(mainWindowToUse.getProject(), currentViewDataRef);
+		ORef planningConfigurationRef = viewData.getORef(ViewData.TAG_TREE_CONFIGURATION_REF);
+		
+		ObjectDataInputPanel editor = new PlanningCustomizePanel(mainWindowToUse.getProject(), planningConfigurationRef);
 		ModalDialogWithClose dialog = new ModalDialogWithClose(mainWindowToUse, EAM.text("Customize..."));
 		dialog.setScrollableMainPanel(editor);
 		editor.becomeActive();
