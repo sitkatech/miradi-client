@@ -25,9 +25,9 @@ import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 
-public class NewPlanningTreeTargetNode extends NewAbstractPlanningTreeNode
+public class NewPlanningTreeBaseObjectNode extends NewAbstractPlanningTreeNode
 {
-	public NewPlanningTreeTargetNode(Project projectToUse, ORef targetRef) throws Exception
+	public NewPlanningTreeBaseObjectNode(Project projectToUse, ORef targetRef) throws Exception
 	{
 		super(projectToUse);
 		target = (AbstractTarget)project.findObject(targetRef);
