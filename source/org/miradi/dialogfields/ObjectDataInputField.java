@@ -106,11 +106,6 @@ abstract public class ObjectDataInputField extends DataField
 		updateEditableState();
 	}
 
-	public void updateEditableState()
-	{
-		getComponent().setEnabled(false);
-	}
-	
 	public boolean needsToBeSaved()
 	{
 		return needsSave;
