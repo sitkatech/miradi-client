@@ -18,32 +18,46 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.dialogs.planning.upperPanel;
+package org.miradi.dialogs.planning.treenodes;
 
-import org.miradi.dialogs.treetables.TreeTableNode;
+import org.miradi.icons.MiradiApplicationIcon;
+import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
-import org.miradi.views.planning.ColumnManager;
-import org.miradi.views.planning.RowManager;
+import org.miradi.questions.ChoiceItem;
+import org.miradi.utils.CodeList;
 
-public class NewActionPlanTreeTableModel extends ExportablePlanningTreeTableModel
+public class NewPlanningRootNode extends AbstractPlanningTreeNode
 {
-	public NewActionPlanTreeTableModel(Project projectToUse, TreeTableNode rootNode) throws Exception
+	public NewPlanningRootNode(Project projectToUse, CodeList visibleRowsToUse)
 	{
-		super(projectToUse, rootNode, RowManager.getStrategicPlanRows(), ColumnManager.getStrategicPlanColumns(),
-				UNIQUE_TREE_TABLE_IDENTIFIER);
+		super(projectToUse, visibleRowsToUse);
 	}
-	
+
 	@Override
-	public String getUniqueTreeTableModelIdentifier()
+	public boolean isAlwaysExpanded()
 	{
-		return UNIQUE_TREE_TABLE_IDENTIFIER;
+		return true;
 	}
-	
+
 	@Override
-	protected void rebuildNode()
+	public BaseObject getObject()
 	{
-		// FIXME: This should actually rebuild the root node
+		return project.getMetadata();
 	}
-	
-	private static final String UNIQUE_TREE_TABLE_IDENTIFIER = "ActionPlanTreeTableModel";
+
+	@Override
+	public Object getValueAt(int column)
+	{
+		if (column == 0)
+			return getObject().toString();
+		
+		return new ChoiceItem("", "", new MiradiApplicationIcon());
+	}
+
+	@Override
+	public String toRawString()
+	{
+		return getProject().getFilename();
+	}
+
 }
