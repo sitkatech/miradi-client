@@ -40,7 +40,6 @@ import org.miradi.dialogfields.DashboardFlagIconField;
 import org.miradi.dialogfields.DashboardStatusIconField;
 import org.miradi.dialogfields.DashboardStatusLabelField;
 import org.miradi.dialogfields.ObjectDataField;
-import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.dashboard.AbstractLongDescriptionProvider;
 import org.miradi.dialogs.dashboard.DashboardRowDefinition;
 import org.miradi.dialogs.dashboard.DashboardRowDefinitionManager;
@@ -208,11 +207,11 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		addUpdatedCustomField(flagIconField);
 		
 		ChoiceQuestion progressStatusQuestion = new OpenStandardsDynamicProgressStatusQuestion(getDashboard(), choiceItem.getCode());
-		ObjectDataInputField statusIconField = new DashboardStatusIconField(getProject(), getDashboard().getRef(), choiceItem.getCode(), progressStatusQuestion);
+		ObjectDataField statusIconField = new DashboardStatusIconField(getProject(), getDashboard().getRef(), choiceItem.getCode(), progressStatusQuestion);
 		statusIconField.getComponent().setBackground(getItemBackgroundColor(level));
 		addUpdatedCustomField(statusIconField);
 		
-		ObjectDataInputField statusTextField = new DashboardStatusLabelField(getProject(), getDashboard().getRef(), choiceItem.getCode(), progressStatusQuestion);
+		ObjectDataField statusTextField = new DashboardStatusLabelField(getProject(), getDashboard().getRef(), choiceItem.getCode(), progressStatusQuestion);
 		JComponent statusTextComponent = statusTextField.getComponent();
 		statusTextComponent.setBackground(getItemBackgroundColor(level));
 		addUpdatedCustomField(statusTextField);
@@ -236,7 +235,6 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		rightComponent.add(statusTextComponent);
 		rightComponent.add(commentsField.getComponent());
 		addRow(choiceItem.getLongDescriptionProvider(), level, flagIconField.getComponent(), statusIconField.getComponent(), labelComponent, rightComponent);
-
 	}
 
 	private void addUpdatedCustomField(ObjectDataField field)
