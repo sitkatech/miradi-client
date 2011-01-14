@@ -122,6 +122,16 @@ abstract public class NewAbstractPlanningTreeNode extends TreeTableNode
 		children = new Vector<NewAbstractPlanningTreeNode>();
 	}
 	
+	public Vector<NewAbstractPlanningTreeNode> getRawChildren()
+	{
+		return children;
+	}
+	
+	public void setRawChildren(Vector<NewAbstractPlanningTreeNode> newChildren)
+	{
+		children = newChildren;
+	}
+
 	public Project getProject()
 	{
 		return project;
