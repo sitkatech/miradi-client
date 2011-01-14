@@ -52,4 +52,16 @@ public class StrategicRowColumnProvider implements RowColumnProvider
 				Objective.OBJECT_NAME,
 				Strategy.OBJECT_NAME,});
 	}
+
+	public CodeList getFlippedRowListToShow()
+	{
+		return new CodeList(new String[] {
+				ResultsChainDiagram.OBJECT_NAME,
+				ConceptualModelDiagram.OBJECT_NAME,
+				Target.OBJECT_NAME,
+				Strategy.OBJECT_NAME,
+				Goal.OBJECT_NAME,
+				Objective.OBJECT_NAME,
+		});
+	}
 }
