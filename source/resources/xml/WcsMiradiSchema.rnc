@@ -1,4 +1,4 @@
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/51'
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/52'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -138,7 +138,7 @@ ProjectSummaryScope.element = element miradi:ProjectSummaryScope
 ProjectSummaryLocation.element = element miradi:ProjectSummaryLocation
 {
   element miradi:ProjectSummaryLocationProjectLocation { GeospatialLocation.element }? &
-  ProjectSummaryLocationCountriesContainer.element &
+  ProjectSummaryLocationCountriesContainer.element ? &
   element miradi:ProjectSummaryLocationStateAndProvinces { text }? &
   element miradi:ProjectSummaryLocationMunicipalities { text }? &
   element miradi:ProjectSummaryLocationLegislativeDistricts { text }? &

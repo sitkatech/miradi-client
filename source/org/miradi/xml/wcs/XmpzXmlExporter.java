@@ -286,7 +286,7 @@ public class XmpzXmlExporter extends XmlExporter implements XmpzXmlConstants
 		writeStartElement(getWriter(), PROJECT_SUMMARY_LOCATION);
 		
 		createGeospatialLocationField();
-		writeCodeListElement(XmpzXmlConstants.PROJECT_SUMMARY_LOCATION, ProjectMetadata.TAG_COUNTRIES, getMetadata(), ProjectMetadata.TAG_COUNTRIES);
+		writeOptionalCodeListElement(XmpzXmlConstants.PROJECT_SUMMARY_LOCATION, ProjectMetadata.TAG_COUNTRIES, getMetadata(), ProjectMetadata.TAG_COUNTRIES);
 		writeOptionalElementWithSameTag(PROJECT_SUMMARY_LOCATION, getMetadata(), ProjectMetadata.TAG_STATE_AND_PROVINCES);
 		writeOptionalElementWithSameTag(PROJECT_SUMMARY_LOCATION, getMetadata(), ProjectMetadata.TAG_MUNICIPALITIES);
 		writeOptionalElementWithSameTag(PROJECT_SUMMARY_LOCATION, getMetadata(), ProjectMetadata.TAG_LEGISLATIVE_DISTRICTS);
@@ -442,6 +442,12 @@ public class XmpzXmlExporter extends XmlExporter implements XmpzXmlConstants
 	{
 		if (codes.hasData())
 			writeCodeListElement(parentElementName, poolElementName, codes);
+	}
+	
+	public void writeOptionalCodeListElement(String parentElementName, String poolElementName, BaseObject object, String tag) throws Exception
+	{
+		CodeList codes = object.getCodeList(tag);
+		writeOptionalCodeListElement(parentElementName, poolElementName, codes);
 	}
 		
 	public void writeCodeListElement(String parentElementName, String poolElementName, BaseObject object, String tag) throws Exception
