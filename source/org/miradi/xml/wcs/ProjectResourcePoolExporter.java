@@ -39,7 +39,7 @@ public class ProjectResourcePoolExporter extends BaseObjectPoolExporter
 		writeOptionalElementWithSameTag(baseObject, ProjectResource.TAG_GIVEN_NAME);
 		writeOptionalElementWithSameTag(baseObject, ProjectResource.TAG_SUR_NAME);
 		writeOptionalElementWithSameTag(baseObject, ProjectResource.TAG_INITIALS);
-		writeCodeListElement(ProjectResource.TAG_ROLE_CODES, baseObject, ProjectResource.TAG_ROLE_CODES);
+		writeOptionalCodeListElement(ProjectResource.TAG_ROLE_CODES, baseObject, ProjectResource.TAG_ROLE_CODES);
 		writeOptionalElementWithSameTag(baseObject, ProjectResource.TAG_ORGANIZATION);
 		writeOptionalElementWithSameTag(baseObject, ProjectResource.TAG_POSITION);
 		writeOptionalElementWithSameTag(baseObject, ProjectResource.TAG_LOCATION);

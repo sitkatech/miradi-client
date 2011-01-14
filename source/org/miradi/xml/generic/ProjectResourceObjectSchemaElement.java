@@ -33,7 +33,7 @@ public class ProjectResourceObjectSchemaElement extends AbstractBaseObjectSchema
 		createOptionalTextField(ProjectResource.TAG_GIVEN_NAME);
 		createOptionalTextField(ProjectResource.TAG_SUR_NAME);
 		createOptionalTextField(ProjectResource.TAG_INITIALS);
-		createCodeListField(XmlSchemaCreator.RESOURCE_ROLE_CODES_ELEMENT_NAME);
+		createOptionalCodeListField(XmlSchemaCreator.RESOURCE_ROLE_CODES_ELEMENT_NAME);
 		createOptionalTextField(ProjectResource.TAG_ORGANIZATION);
 		createOptionalTextField(ProjectResource.TAG_POSITION);
 		createOptionalTextField(ProjectResource.TAG_LOCATION);

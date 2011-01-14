@@ -76,7 +76,7 @@ ProjectResource.element = element miradi:ProjectResource
   element miradi:ProjectResourceGivenName { text }? &
   element miradi:ProjectResourceSurname { text }? &
   element miradi:ProjectResourceResource_Id { text }? &
-  ProjectResourceRoleCodesContainer.element &
+  ProjectResourceRoleCodesContainer.element ? &
   element miradi:ProjectResourceOrganization { text }? &
   element miradi:ProjectResourcePosition { text }? &
   element miradi:ProjectResourceLocation { text }? &
