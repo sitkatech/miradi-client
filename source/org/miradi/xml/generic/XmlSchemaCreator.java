@@ -242,7 +242,7 @@ public class XmlSchemaCreator implements XmpzXmlConstants
 		writer.defineAlias(XmpzXmlConstants.EXTERNAL_PROJECT_ID_ELEMENT_NAME + ".element", "element " + XmpzXmlConstants.PREFIX + XmpzXmlConstants.EXTERNAL_PROJECT_ID_ELEMENT_NAME);
 		writer.startBlock();
 		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + XmpzXmlConstants.EXTERNAL_APP_ELEMENT_NAME + " { text } &");
-		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + XmpzXmlConstants.EXTERNAL_PROJECT_ID_ELEMENT_NAME + " { text } ");
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + XmpzXmlConstants.PROJECT_ID + " { text } ");
 		writer.endBlock();
 		
 		writer.defineAlias(XmpzXmlConstants.DIAGRAM_POINT_ELEMENT_NAME + ".element", "element " + XmpzXmlConstants.PREFIX + XmpzXmlConstants.DIAGRAM_POINT_ELEMENT_NAME);

@@ -72,7 +72,7 @@ public class ProjectSummaryImporter extends AbstractXmpzObjectImporter
 			Node externalAppNode = getImporter().getNode(node, EXTERNAL_APP_ELEMENT_NAME);
 			String externalAppThatAssignedId = externalAppNode.getTextContent();
 			
-			Node externalProjectIdNode = getImporter().getNode(node, XmpzXmlConstants.EXTERNAL_PROJECT_ID_ELEMENT_NAME);
+			Node externalProjectIdNode = getImporter().getNode(node, XmpzXmlConstants.PROJECT_ID);
 			String externalProjectId = externalProjectIdNode.getTextContent();
 			
 			ORef xenodataRef = getProject().createObject(Xenodata.getObjectType());
