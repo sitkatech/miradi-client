@@ -23,6 +23,7 @@ package org.miradi.dialogs.planning.treenodes;
 import java.util.Vector;
 
 import org.miradi.dialogs.treetables.TreeTableNode;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.project.Project;
@@ -82,6 +83,15 @@ abstract public class NewAbstractPlanningTreeNode extends TreeTableNode
 			return "";
 		
 		return getObject().getFullName();
+	}
+
+	public String getObjectTypeName()
+	{
+		if (getObject() != null)
+			return getObject().getTypeName();
+		
+		EAM.logError("getObject() in getObjectTypeName is null");
+		return "";
 	}
 
 	public void addChild(NewAbstractPlanningTreeNode node)

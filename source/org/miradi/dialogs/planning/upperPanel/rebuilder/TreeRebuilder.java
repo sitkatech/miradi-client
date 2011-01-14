@@ -31,6 +31,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objects.AbstractTarget;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.Desire;
@@ -49,6 +50,8 @@ import org.miradi.objects.SubTarget;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
+import org.miradi.utils.CodeList;
+import org.miradi.views.planning.RowManager;
 
 public class TreeRebuilder
 {
@@ -64,6 +67,7 @@ public class TreeRebuilder
 	
 	private void rebuildTree(NewAbstractPlanningTreeNode parentNode, DiagramObject diagram)
 	{
+		CodeList rows = RowManager.getStrategicPlanRows();
 		try
 		{
 			parentNode.clearChildren();
@@ -71,7 +75,8 @@ public class TreeRebuilder
 			if(DiagramObject.isDiagramObject(parentRef))
 				diagram = DiagramObject.findDiagramObject(getProject(), parentRef);
 
-			ORefSet childRefs = getChildRefs(parentNode.getObjectReference(), diagram);
+			ORefSet candidateChildRefs = getChildRefs(parentNode.getObjectReference(), diagram);
+			ORefSet childRefs = pruneChildRefsAlreadyDone(parentNode, candidateChildRefs, rows);
 			createAndAddChildren(parentNode, childRefs);
 
 			for(int i = 0; i < parentNode.getChildCount(); ++i)
@@ -81,6 +86,21 @@ public class TreeRebuilder
 		{
 			EAM.panic(e);
 		}
+	}
+
+	private ORefSet pruneChildRefsAlreadyDone(NewAbstractPlanningTreeNode parentNode, ORefSet candidateChildRefs, CodeList rows)
+	{
+		ORefSet remainingChildren = new ORefSet();
+		int parentAt = rows.find(parentNode.getObjectTypeName());
+		for(ORef childRef : candidateChildRefs)
+		{
+			BaseObject object = BaseObject.find(getProject(), childRef);
+			String childTypeName = object.getTypeName();
+			int childAt = rows.find(childTypeName);
+			if(childAt < 0 || parentAt < 0 || childAt >= parentAt)
+				remainingChildren.add(childRef);
+		}
+		return remainingChildren;
 	}
 
 	private ORefSet getChildRefs(ORef parentRef, DiagramObject diagram) throws Exception
@@ -195,8 +215,8 @@ public class TreeRebuilder
 	{
 		ORefSet childRefs = new ORefSet();
 		Factor factor = Factor.findFactor(getProject(), parentRef);
-		childRefs.addAllRefs(factor.getOwnedObjects(Objective.getObjectType()));
-		childRefs.addAllRefs(factor.getOwnedObjects(Indicator.getObjectType()));
+		childRefs.addAllRefs(factor.getObjectiveRefs());
+		childRefs.addAllRefs(factor.getDirectOrIndirectIndicatorRefs());
 		return childRefs;
 	}
 
