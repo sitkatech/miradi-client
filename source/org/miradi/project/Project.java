@@ -127,7 +127,7 @@ import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
-import org.miradi.utils.DashboardEffectiveMapCache;
+import org.miradi.utils.DashboardEffectiveMapCacheManager;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.Translation;
 import org.miradi.views.diagram.DiagramClipboard;
@@ -155,7 +155,7 @@ public class Project
 		projectTotalCalculator = new ProjectTotalCalculator(this);
 		threatStressRatingEnsurer = new ThreatStressRatingEnsurer(this);
 		planningPreferencesChangeHandler = new PlanningPreferencesChangeHandler(this);
-		dashboardEffectiveMapCacheManager = new DashboardEffectiveMapCache(this);
+		dashboardEffectiveMapCacheManager = new DashboardEffectiveMapCacheManager(this);
 		enableIsDoNothingCommandOptimization();
 		enableListeners();
 		
@@ -1445,7 +1445,7 @@ public class Project
 	private ThreatStressRatingEnsurer threatStressRatingEnsurer;
 	private ProjectTotalCalculator projectTotalCalculator;
 	private PlanningPreferencesChangeHandler planningPreferencesChangeHandler;
-	private DashboardEffectiveMapCache dashboardEffectiveMapCacheManager;
+	private DashboardEffectiveMapCacheManager dashboardEffectiveMapCacheManager;
 
 	// FIXME low: This should go away, but it's difficult
 	private String currentViewName;
