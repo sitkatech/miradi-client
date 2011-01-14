@@ -360,22 +360,22 @@ public class CommandExecutor
 		return getAddedAndRemovedListeners(new Vector<String>(originalList), new Vector<String>(copy));
 	}
 
-	private HashSet<String> getAddedAndRemovedListeners(Vector<String> originalList, Vector<String> copy)
+	private HashSet<String> getAddedAndRemovedListeners(Vector<String> oldList, Vector<String> newList)
 	{
 		HashSet<String> leftOvers = new HashSet<String>();
-		leftOvers.addAll(getLeftOvers(originalList, copy));
-		leftOvers.addAll(getLeftOvers(copy, originalList));
+		leftOvers.addAll(getMissingListeners(oldList, newList));
+		leftOvers.addAll(getMissingListeners(newList, oldList));
 		
 		return leftOvers;
 	}
 
-	private Vector<String> getLeftOvers(Vector<String> originalList, Vector<String> copy)
+	private Vector<String> getMissingListeners(Vector<String> biggerList, Vector<String> smallerList)
 	{
-		Vector<String> copyOfOriginalList = new Vector<String>(originalList);
-		Vector<String> copyOfCopy = new Vector<String>(copy);
-		copyOfOriginalList.removeAll(copyOfCopy);
+		Vector<String> copyOfBiggerList = new Vector<String>(biggerList);
+		Vector<String> copyOfSmallerList = new Vector<String>(smallerList);
+		copyOfBiggerList.removeAll(copyOfSmallerList);
 		
-		return copyOfOriginalList;
+		return copyOfBiggerList;
 	}
 	
 	private Vector<String> extractClassNames(Vector<CommandExecutedListener> listToGetClassNamesFrom)
