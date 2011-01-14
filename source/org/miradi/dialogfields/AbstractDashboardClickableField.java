@@ -35,7 +35,6 @@ import org.miradi.objecthelpers.AbstractStringKeyMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
-import org.miradi.utils.Translation;
 
 abstract public class AbstractDashboardClickableField extends ObjectDataField
 {
@@ -100,6 +99,11 @@ abstract public class AbstractDashboardClickableField extends ObjectDataField
 	{
 		return tag;
 	}
+	
+	private String getEditorTitle()
+	{
+		return EAM.text("Edit....");
+	}
 
 	protected class ClickHandler extends MouseAdapter
 	{
@@ -111,7 +115,7 @@ abstract public class AbstractDashboardClickableField extends ObjectDataField
 			try
 			{
 				DisposablePanel editorPanel = new DashboardProgressPanel(getProject(), getORef(), stringMapCode);
-				ModalDialogWithClose dialog = new ModalDialogWithClose(EAM.getMainWindow(), Translation.fieldLabel(getObjectType(), getTag()));
+				ModalDialogWithClose dialog = new ModalDialogWithClose(EAM.getMainWindow(), getEditorTitle());
 				dialog.setMainPanel(editorPanel);
 				dialog.becomeActive();
 				Utilities.centerDlg(dialog);
