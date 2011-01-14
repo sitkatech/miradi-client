@@ -37,6 +37,7 @@ import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.Desire;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
+import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
@@ -44,6 +45,7 @@ import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.SubTarget;
@@ -77,6 +79,8 @@ public class TreeRebuilder
 
 			ORefSet candidateChildRefs = getChildRefs(parentNode.getObjectReference(), diagram);
 			ORefSet childRefs = pruneChildRefsAlreadyDone(parentNode, candidateChildRefs, rows);
+			childRefs.addAllRefs(parentNode.getObject().getResourceAssignmentRefs());
+			childRefs.addAllRefs(parentNode.getObject().getExpenseAssignmentRefs());
 			createAndAddChildren(parentNode, childRefs);
 
 			for(int i = 0; i < parentNode.getChildCount(); ++i)
@@ -340,12 +344,10 @@ public class TreeRebuilder
 				return new NewPlanningTreeBaseObjectNode(getProject(), parentNode, refToAdd);
 			if (type == Task.getObjectType())
 				return new NewPlanningTreeBaseObjectNode(getProject(), parentNode, refToAdd);
-
-			// TODO: Remove comments as these get implemented
-//			if (type == ResourceAssignment.getObjectType())
-//				return new PlanningTreeResourceAssignmentNode(project, refToAdd, visibleRows);
-//			if (type == ExpenseAssignment.getObjectType())
-//				return new PlanningTreeExpenseAssignmentNode(project, refToAdd, visibleRows);
+			if (type == ResourceAssignment.getObjectType())
+				return new NewPlanningTreeBaseObjectNode(getProject(), parentNode, refToAdd);
+			if (type == ExpenseAssignment.getObjectType())
+				return new NewPlanningTreeBaseObjectNode(getProject(), parentNode, refToAdd);
 			
 			throw new Exception("Attempted to create node of unknown type: " + refToAdd);
 		}
