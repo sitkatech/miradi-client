@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.upperPanel.rebuilder;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Vector;
 
 import org.miradi.diagram.ChainWalker;
@@ -34,7 +36,10 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objects.AbstractTarget;
+import org.miradi.objects.AccountingCode;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.BudgetCategoryOne;
+import org.miradi.objects.BudgetCategoryTwo;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.Desire;
@@ -42,16 +47,20 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Factor;
+import org.miradi.objects.FundingSource;
 import org.miradi.objects.Goal;
+import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.SubTarget;
+import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
@@ -415,13 +424,12 @@ public class TreeRebuilder
 			}
 		}
 
-		// TODO: Add sorting to this new tree builder
-//		if(shouldSortChildren())
-//			Collections.sort(newChildren, createNodeSorter());
+		if(shouldSortChildren(node))
+			Collections.sort(newChildren, createNodeSorter());
 		node.setRawChildren(newChildren);
 	}
 	
-	public static void mergeChildIntoList(Vector<NewAbstractPlanningTreeNode> destination, NewAbstractPlanningTreeNode newChild)
+	private void mergeChildIntoList(Vector<NewAbstractPlanningTreeNode> destination, NewAbstractPlanningTreeNode newChild)
 	{
 		NewAbstractPlanningTreeNode existingNode = findNodeWithRef(destination, newChild.getObjectReference());
 		if(existingNode == null)
@@ -438,12 +446,11 @@ public class TreeRebuilder
 		// TODO: Need to add allocation logic to this new tree builder
 //		existingNode.addProportionShares(newChild);
 
-		// TODO: Add sorting to this new tree builder
-//		if(existingNode.shouldSortChildren())
-//			Collections.sort(destination, existingNode.createNodeSorter());
+		if(shouldSortChildren(existingNode))
+			Collections.sort(destination, createNodeSorter());
 	}
 	
-	private static boolean isChildOfAnyNodeInList(Vector<NewAbstractPlanningTreeNode> destination, NewAbstractPlanningTreeNode newChild)
+	private boolean isChildOfAnyNodeInList(Vector<NewAbstractPlanningTreeNode> destination, NewAbstractPlanningTreeNode newChild)
 	{
 		for(NewAbstractPlanningTreeNode parentNode : destination)
 		{
@@ -456,7 +463,7 @@ public class TreeRebuilder
 		return false;
 	}
 	
-	private static NewAbstractPlanningTreeNode findNodeWithRef(Vector<NewAbstractPlanningTreeNode> list, ORef ref)
+	private NewAbstractPlanningTreeNode findNodeWithRef(Vector<NewAbstractPlanningTreeNode> list, ORef ref)
 	{
 		for(NewAbstractPlanningTreeNode node : list)
 		{
@@ -467,12 +474,93 @@ public class TreeRebuilder
 		return null;
 	}
 	
-	private static void addChildrenOfNodeToList(Vector<NewAbstractPlanningTreeNode> destination, NewAbstractPlanningTreeNode otherNode)
+	private void addChildrenOfNodeToList(Vector<NewAbstractPlanningTreeNode> destination, NewAbstractPlanningTreeNode otherNode)
 	{
 		for(NewAbstractPlanningTreeNode newChild : otherNode.getRawChildren())
 			mergeChildIntoList(destination, newChild);
 	}
 
+	private boolean shouldSortChildren(NewAbstractPlanningTreeNode parentNode)
+	{
+		ORef parentRef = parentNode.getObjectReference();
+		if(Task.is(parentRef))
+			return false;
+		if(Strategy.is(parentRef))
+			return false;
+		if(Indicator.is(parentRef))
+			return false;
+		
+		return true;
+	}
+
+	private NodeSorter createNodeSorter()
+	{
+		return new NodeSorter();
+	}
+
+	private class NodeSorter implements Comparator<NewAbstractPlanningTreeNode>
+	{
+		public int compare(NewAbstractPlanningTreeNode nodeA, NewAbstractPlanningTreeNode nodeB)
+		{
+
+			int typeSortLocationA = getTypeSortLocation(nodeA.getType());
+			int typeSortLocationB = getTypeSortLocation(nodeB.getType());
+			int diff = typeSortLocationA - typeSortLocationB;
+			if(diff != 0)
+				return diff;
+
+			ORef refA = nodeA.getObjectReference();
+			ORef refB = nodeB.getObjectReference();
+			if(refA.isValid() && refB.isInvalid())
+				return -1;
+			if(refA.isInvalid() && refB.isValid())
+				return 1;
+			
+			String labelA = nodeA.toString();
+			String labelB = nodeB.toString();
+			return labelA.compareToIgnoreCase(labelB);
+		}
+		
+		private int getTypeSortLocation(int type)
+		{
+			int[] sortOrder = getNodeSortOrder();
+			
+			for(int i = 0; i < sortOrder.length; ++i)
+				if(type == sortOrder[i])
+					return i;
+			EAM.logError("NodeSorter unknown type: " + type);
+			return sortOrder.length;
+		}
+
+	}
+	
+	private int[] getNodeSortOrder()
+	{
+		return new int[] {
+			Target.getObjectType(),
+			HumanWelfareTarget.getObjectType(),
+			ResultsChainDiagram.getObjectType(),
+			ConceptualModelDiagram.getObjectType(),
+			Goal.getObjectType(),
+			SubTarget.getObjectType(),
+			Cause.getObjectType(),
+			ThreatReductionResult.getObjectType(),
+			IntermediateResult.getObjectType(),
+			Objective.getObjectType(),
+			Strategy.getObjectType(),
+			Indicator.getObjectType(),
+			ProjectResource.getObjectType(),
+			AccountingCode.getObjectType(),
+			FundingSource.getObjectType(),
+			BudgetCategoryOne.getObjectType(),
+			BudgetCategoryTwo.getObjectType(),
+			Task.getObjectType(),
+			Measurement.getObjectType(),
+			ResourceAssignment.getObjectType(),
+			ExpenseAssignment.getObjectType(),
+		};
+	}
+	
 	
 
 	private Project getProject()
