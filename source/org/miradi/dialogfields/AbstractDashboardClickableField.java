@@ -38,11 +38,10 @@ import org.miradi.project.Project;
 
 abstract public class AbstractDashboardClickableField extends ObjectDataField
 {
-	public AbstractDashboardClickableField(Project projectToUse, ORef refToUse,	String tagToUse, String stringMapCodeToUse)
+	public AbstractDashboardClickableField(Project projectToUse, ORef refToUse,	String stringMapCodeToUse)
 	{
 		super(projectToUse, refToUse);
 		
-		tag = tagToUse;
 		stringMapCode = stringMapCodeToUse;
 		labelComponent = new PanelTitleLabel();
 		configureComponent(labelComponent);
@@ -87,17 +86,17 @@ abstract public class AbstractDashboardClickableField extends ObjectDataField
 	{
 		throw new RuntimeException("This is a readonly field and has no saveIfNeeded() implementation. Class = " + getClass().getName());
 	}
+	
+	@Override
+	public String getTag()
+	{
+		throw new RuntimeException("This is a readonly field and has no getTag implementation. Class = " + getClass().getName());
+	}
 
 	protected String getMapValue(Dashboard dashboard, String stringMapCodeToUse) throws Exception
 	{
 		AbstractStringKeyMap map = createStringKeyMap(dashboard);
 		return map.get(stringMapCodeToUse);
-	}
-	
-	@Override
-	public String getTag()
-	{
-		return tag;
 	}
 	
 	protected class ClickHandler extends MouseAdapter
@@ -128,7 +127,6 @@ abstract public class AbstractDashboardClickableField extends ObjectDataField
 	
 	abstract protected void updateLabelComponent(PanelTitleLabel labelComponentToUse, String mapValue) throws Exception;
 
-	private String tag;
 	protected String stringMapCode;
 	private PanelTitleLabel labelComponent;
 }
