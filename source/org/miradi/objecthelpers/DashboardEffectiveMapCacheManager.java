@@ -63,7 +63,7 @@ public class DashboardEffectiveMapCacheManager implements CommandExecutedListene
 	
 	private void invalidateEffectiveMapCache() throws Exception
 	{
-		rebuildEffectiveMapCache();
+		effectiveStatusMapCache = null;
 	}
 
 	private void rebuildEffectiveMapCache() throws Exception
@@ -76,7 +76,7 @@ public class DashboardEffectiveMapCacheManager implements CommandExecutedListene
 	public AbstractStringKeyMap calculateEffectiveMap() throws Exception
 	{
 		if (effectiveStatusMapCache == null)
-			invalidateEffectiveMapCache();
+			rebuildEffectiveMapCache();
 		
 		return effectiveStatusMapCache;
 	}
