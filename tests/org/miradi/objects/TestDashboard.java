@@ -45,8 +45,13 @@ public class TestDashboard extends ObjectTestCase
 	@Override
 	protected BaseObject createObject(int objectType, CreateObjectParameter extraInfo) throws Exception
 	{
-		ORef dashboardRef = getProject().getSingletonObjectRef(Dashboard.getObjectType());
-		return Dashboard.find(getProject(), dashboardRef);
+		if (Dashboard.is(objectType))
+		{
+			ORef dashboardRef = getProject().getSingletonObjectRef(Dashboard.getObjectType());
+			return Dashboard.find(getProject(), dashboardRef);
+		}
+		
+		return super.createObject(objectType, extraInfo);
 	}
 	
 	public void testGetEffectiveStatusMapWithNoData() throws Exception
