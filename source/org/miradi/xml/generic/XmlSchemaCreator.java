@@ -133,7 +133,6 @@ public class XmlSchemaCreator implements XmpzXmlConstants
 		defineVocabulary(writer, VOCABULARY_STRATEGY_IMAPACT_RATING_CODE, new StrategyImpactQuestion());
 		defineVocabulary(writer, VOCABULARY_STRATEGY_FEASIBILITY_RATING_CODE, new StrategyFeasibilityQuestion());
 		defineVocabulary(writer, VOCABULARY_PRIORITY_RATING_CODE, new PriorityRatingQuestion());
-		defineVocabulary(writer, VOCABULARY_STATUS_CODE, new StatusQuestion());
 		defineVocabulary(writer, VOCABULARY_KEA_TYPE, new KeyEcologicalAttributeTypeQuestion());
 		defineVocabulary(writer, VOCABULARY_THREAT_STRESS_RATING_CONTRIBUTION_CODE, new StressContributionQuestion());
 		defineVocabulary(writer, VOCABULARY_THREAT_STRESS_RATING_IRREVERSIBILITY_CODE, new StressIrreversibilityQuestion());
@@ -443,7 +442,7 @@ public class XmlSchemaCreator implements XmpzXmlConstants
 	{
 		writer.defineAlias(THRESHOLD + ".element", "element " + XmpzXmlConstants.PREFIX + THRESHOLD);
 		writer.startBlock();
-		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + STATUS_CODE + "{vocabulary_status_code}? &");
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + STATUS_CODE + "{" + VOCABULARY_MEASUREMENT_STATUS + "}? &");
 		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + THRESHOLD_VALUE + " { text }? &");
 		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + THRESHOLD_DETAILS + " { text }?");
 		writer.endBlock();
@@ -547,7 +546,6 @@ public class XmlSchemaCreator implements XmpzXmlConstants
 	public static final String VOCABULARY_STRATEGY_IMAPACT_RATING_CODE = "vocabulary_strategy_impact_rating_code";
 	public static final String VOCABULARY_STRATEGY_FEASIBILITY_RATING_CODE = "vocabulary_strategy_feasibility_rating_code";
 	public static final String VOCABULARY_PRIORITY_RATING_CODE = "vocabulary_priority_rating_code";
-	public static final String VOCABULARY_STATUS_CODE = "vocabulary_status_code";
 	public static final String VOCABULARY_KEA_TYPE = "vocabulary_key_ecological_attribute_type";
 	public static final String VOCABULARY_THREAT_STRESS_RATING_IRREVERSIBILITY_CODE = "vocabulary_irreversibility_code";
 	public static final String VOCABULARY_THREAT_STRESS_RATING_CONTRIBUTION_CODE = "vocabulary_contribution_code";
