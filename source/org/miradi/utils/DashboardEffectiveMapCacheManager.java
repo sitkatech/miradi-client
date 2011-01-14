@@ -65,15 +65,15 @@ public class DashboardEffectiveMapCacheManager implements CommandExecutedListene
 	{
 		ORef dashboardRef = getProject().getSingletonObjectRef(Dashboard.getObjectType()); 
 		Dashboard dashboard = Dashboard.find(getProject(), dashboardRef);
-		effectiveStatusMap = dashboard.calculateEffectiveStatusMap();
+		effectiveStatusMapCache = dashboard.calculateEffectiveStatusMap();
 	}
 
 	public AbstractStringKeyMap calculateEffectiveMap() throws Exception
 	{
-		if (effectiveStatusMap == null)
+		if (effectiveStatusMapCache == null)
 			invalidateEffectiveMapCache();
 		
-		return effectiveStatusMap;
+		return effectiveStatusMapCache;
 	}
 	
 	private Project getProject()
@@ -82,5 +82,5 @@ public class DashboardEffectiveMapCacheManager implements CommandExecutedListene
 	}
 	
 	private Project project;
-	private StringChoiceMap effectiveStatusMap;
+	private StringChoiceMap effectiveStatusMapCache;
 }
