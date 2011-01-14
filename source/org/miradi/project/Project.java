@@ -155,7 +155,7 @@ public class Project
 		projectTotalCalculator = new ProjectTotalCalculator(this);
 		threatStressRatingEnsurer = new ThreatStressRatingEnsurer(this);
 		planningPreferencesChangeHandler = new PlanningPreferencesChangeHandler(this);
-		dashboardEffectiveMapCache = new DashboardEffectiveMapCache(this);
+		dashboardEffectiveMapCacheManager = new DashboardEffectiveMapCache(this);
 		enableIsDoNothingCommandOptimization();
 		enableListeners();
 		
@@ -511,7 +511,7 @@ public class Project
 	
 	public AbstractStringKeyMap getDashboardEffectiveMapCache() throws Exception
 	{
-		return dashboardEffectiveMapCache.calculateEffectiveMap();
+		return dashboardEffectiveMapCacheManager.calculateEffectiveMap();
 	}
 
 	public BaseObject findObject(ORef ref)
@@ -919,7 +919,7 @@ public class Project
 		getProjectTotalCalculator().enable();
 		enableThreatStressRatingEnsurer();
 		planningPreferencesChangeHandler.enable();
-		dashboardEffectiveMapCache.enable();
+		dashboardEffectiveMapCacheManager.enable();
 	}
 
 	protected void applyDefaultBehavior() throws Exception
@@ -1011,7 +1011,7 @@ public class Project
 		getProjectTotalCalculator().disable();
 		disableThreatStressRatingEnsurer();
 		planningPreferencesChangeHandler.disable();
-		dashboardEffectiveMapCache.disable();
+		dashboardEffectiveMapCacheManager.disable();
 	}
 
 	public void closeAndDeleteProject() throws Exception
@@ -1445,7 +1445,7 @@ public class Project
 	private ThreatStressRatingEnsurer threatStressRatingEnsurer;
 	private ProjectTotalCalculator projectTotalCalculator;
 	private PlanningPreferencesChangeHandler planningPreferencesChangeHandler;
-	private DashboardEffectiveMapCache dashboardEffectiveMapCache;
+	private DashboardEffectiveMapCache dashboardEffectiveMapCacheManager;
 
 	// FIXME low: This should go away, but it's difficult
 	private String currentViewName;
