@@ -35,15 +35,13 @@ import org.miradi.objecthelpers.AbstractStringKeyMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
-import org.miradi.utils.Translation;
 
 abstract public class AbstractDashboardClickableField extends ObjectDataField
 {
-	public AbstractDashboardClickableField(Project projectToUse, ORef refToUse,	String tagToUse, String stringMapCodeToUse)
+	public AbstractDashboardClickableField(Project projectToUse, ORef refToUse,	String stringMapCodeToUse)
 	{
 		super(projectToUse, refToUse);
 		
-		tag = tagToUse;
 		stringMapCode = stringMapCodeToUse;
 		labelComponent = new PanelTitleLabel();
 		configureComponent(labelComponent);
@@ -88,6 +86,12 @@ abstract public class AbstractDashboardClickableField extends ObjectDataField
 	{
 		throw new RuntimeException("This is a readonly field and has no saveIfNeeded() implementation. Class = " + getClass().getName());
 	}
+	
+	@Override
+	public String getTag()
+	{
+		throw new RuntimeException("This is a readonly field and has no getTag implementation. Class = " + getClass().getName());
+	}
 
 	protected String getMapValue(Dashboard dashboard, String stringMapCodeToUse) throws Exception
 	{
@@ -95,12 +99,6 @@ abstract public class AbstractDashboardClickableField extends ObjectDataField
 		return map.get(stringMapCodeToUse);
 	}
 	
-	@Override
-	public String getTag()
-	{
-		return tag;
-	}
-
 	protected class ClickHandler extends MouseAdapter
 	{
 		@Override
@@ -111,7 +109,7 @@ abstract public class AbstractDashboardClickableField extends ObjectDataField
 			try
 			{
 				DisposablePanel editorPanel = new DashboardProgressPanel(getProject(), getORef(), stringMapCode);
-				ModalDialogWithClose dialog = new ModalDialogWithClose(EAM.getMainWindow(), Translation.fieldLabel(getObjectType(), getTag()));
+				ModalDialogWithClose dialog = new ModalDialogWithClose(EAM.getMainWindow(), EAM.text("Edit...."));
 				dialog.setMainPanel(editorPanel);
 				dialog.becomeActive();
 				Utilities.centerDlg(dialog);
@@ -129,7 +127,6 @@ abstract public class AbstractDashboardClickableField extends ObjectDataField
 	
 	abstract protected void updateLabelComponent(PanelTitleLabel labelComponentToUse, String mapValue) throws Exception;
 
-	private String tag;
 	protected String stringMapCode;
 	private PanelTitleLabel labelComponent;
 }
