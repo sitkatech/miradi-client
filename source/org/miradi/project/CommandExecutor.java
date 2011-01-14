@@ -357,10 +357,10 @@ public class CommandExecutor
 		Vector<String> copy = extractClassNames(copyForComparison);
 		Collections.sort(copy);
 		
-		return logDebugChangedListeners(new Vector<String>(originalList), new Vector<String>(copy));
+		return getAddedAndRemovedListeners(new Vector<String>(originalList), new Vector<String>(copy));
 	}
 
-	private HashSet<String> logDebugChangedListeners(Vector<String> originalList, Vector<String> copy)
+	private HashSet<String> getAddedAndRemovedListeners(Vector<String> originalList, Vector<String> copy)
 	{
 		HashSet<String> leftOvers = new HashSet<String>();
 		leftOvers.addAll(getLeftOvers(originalList, copy));
