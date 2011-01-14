@@ -172,6 +172,7 @@ public interface XmpzXmlConstants
 	public static final String STATUS_CODE = "StatusCode";
 	public static final String SUB_TASK_IDS = "SubTaskIds";
 	public static final String EXTERNAL_APP_ELEMENT_NAME = "ExternalApp";
+	public static final String PROJECT_ID = "ProjectId";
 	public static final String LOCATION = "Location";
 	public static final String SIZE = "Size";
 	public static final String EXTERNAL_PROJECT_ID_ELEMENT_NAME = "ExternalProjectId";

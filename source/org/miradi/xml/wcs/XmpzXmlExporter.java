@@ -249,7 +249,7 @@ public class XmpzXmlExporter extends XmlExporter implements XmpzXmlConstants
 			String projectId = xenodata.getData(Xenodata.TAG_PROJECT_ID);
 			writeStartElement(EXTERNAL_PROJECT_ID_ELEMENT_NAME);
 			writeElement(out, EXTERNAL_APP_ELEMENT_NAME, key);
-			writeElement(out, EXTERNAL_PROJECT_ID_ELEMENT_NAME, projectId);
+			writeElement(out, PROJECT_ID, projectId);
 			writeEndElement(EXTERNAL_PROJECT_ID_ELEMENT_NAME);
 		}
 		
