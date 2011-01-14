@@ -68,6 +68,7 @@ public class TreeRebuilder
 	{
 		CodeList rows = new StrategicRowColumnProvider().getFlippedRowListToShow();
 		rebuildTree(rootNode, null, rows);
+		pruneUncles(rootNode);
 		pruneUnwantedLayers(rootNode, rows);
 	}
 	
@@ -362,7 +363,34 @@ public class TreeRebuilder
 		}
 	}
 	
-	protected void pruneUnwantedLayers(NewAbstractPlanningTreeNode node, CodeList objectTypesToShow)
+	private void pruneUncles(NewAbstractPlanningTreeNode rootNode)
+	{
+		Vector<NewAbstractPlanningTreeNode> childrenToKeep = new Vector<NewAbstractPlanningTreeNode>();
+		for(NewAbstractPlanningTreeNode childNode : rootNode.getRawChildren())
+		{
+			boolean keepThisChild = true;
+			for(NewAbstractPlanningTreeNode otherChildNode : rootNode.getRawChildren())
+			{
+				if(childNode.equals(otherChildNode))
+					continue;
+				if(otherChildNode.getRawChildren().contains(childNode))
+				{
+					keepThisChild = false;
+					break;
+				}
+			}
+			
+			if(keepThisChild)
+			{
+				childrenToKeep.add(childNode);
+				pruneUncles(childNode);
+			}
+		}
+		
+		rootNode.setRawChildren(childrenToKeep);
+	}
+
+	private void pruneUnwantedLayers(NewAbstractPlanningTreeNode node, CodeList objectTypesToShow)
 	{
 		// TODO: Need to add allocation logic to this new tree builder
 //		if(isAnyChildAllocated(children))
@@ -426,7 +454,7 @@ public class TreeRebuilder
 		return false;
 	}
 	
-	static NewAbstractPlanningTreeNode findNodeWithRef(Vector<NewAbstractPlanningTreeNode> list, ORef ref)
+	private static NewAbstractPlanningTreeNode findNodeWithRef(Vector<NewAbstractPlanningTreeNode> list, ORef ref)
 	{
 		for(NewAbstractPlanningTreeNode node : list)
 		{
