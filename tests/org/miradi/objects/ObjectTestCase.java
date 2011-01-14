@@ -94,7 +94,7 @@ public class ObjectTestCase extends TestCaseWithProject
 
 	public void verifyFields(int objectType, CreateObjectParameter extraInfo) throws Exception
 	{
-		BaseObject object = createOrFindObject(objectType, extraInfo);
+		BaseObject object = createObject(objectType, extraInfo);
 		verifyTypeName(object);
 
 		Vector<String> fieldTags = object.getStoredFieldTags();
@@ -113,7 +113,7 @@ public class ObjectTestCase extends TestCaseWithProject
 		verifyLoadPool(objectType, extraInfo);
 	}
 
-	protected BaseObject createOrFindObject(int objectType, CreateObjectParameter extraInfo) throws Exception
+	protected BaseObject createObject(int objectType, CreateObjectParameter extraInfo) throws Exception
 	{
 		BaseId id = getProject().createObject(objectType, BaseId.INVALID, extraInfo);
 		
