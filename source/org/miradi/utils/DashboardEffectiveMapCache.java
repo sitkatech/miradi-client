@@ -52,7 +52,7 @@ public class DashboardEffectiveMapCache implements CommandExecutedListener
 		{
 			if (event.isSetDataCommandWithThisTypeAndTag(Dashboard.getObjectType(), Dashboard.TAG_PROGRESS_CHOICE_MAP))
 			{
-				invalidateEffectiveMap();
+				invalidateEffectiveMapCache();
 			}
 		}
 		catch (Exception e)
@@ -61,7 +61,7 @@ public class DashboardEffectiveMapCache implements CommandExecutedListener
 		}
 	}
 	
-	private void invalidateEffectiveMap() throws Exception
+	private void invalidateEffectiveMapCache() throws Exception
 	{
 		ORef dashboardRef = getProject().getSingletonObjectRef(Dashboard.getObjectType()); 
 		Dashboard dashboard = Dashboard.find(getProject(), dashboardRef);
@@ -71,7 +71,7 @@ public class DashboardEffectiveMapCache implements CommandExecutedListener
 	public AbstractStringKeyMap calculateEffectiveMap() throws Exception
 	{
 		if (effectiveStatusMap == null)
-			invalidateEffectiveMap();
+			invalidateEffectiveMapCache();
 		
 		return effectiveStatusMap;
 	}
