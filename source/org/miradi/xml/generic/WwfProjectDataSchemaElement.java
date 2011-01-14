@@ -29,8 +29,8 @@ public class WwfProjectDataSchemaElement extends ObjectSchemaElement
 	{
 		super(XmpzXmlConstants.WWF_PROJECT_DATA);
 		
-		createCodeListField(XmlSchemaCreator.WWF_MANAGING_OFFICES);
-		createCodeListField(XmlSchemaCreator.WWF_REGIONS);
-		createCodeListField(XmlSchemaCreator.WWF_ECOREGIONS);
+		createOptionalCodeListField(XmlSchemaCreator.WWF_MANAGING_OFFICES);
+		createOptionalCodeListField(XmlSchemaCreator.WWF_REGIONS);
+		createOptionalCodeListField(XmlSchemaCreator.WWF_ECOREGIONS);
 	}
 }

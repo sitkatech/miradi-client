@@ -1,4 +1,4 @@
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/52'
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/53'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -120,7 +120,7 @@ ProjectSummaryScope.element = element miradi:ProjectSummaryScope
   element miradi:ProjectSummaryScopeHumanPopulation { xsd:decimal }? &
   element miradi:ProjectSummaryScopeHumanPopulationNotes { text }? &
   element miradi:ProjectSummaryScopeSocialContext { text }? &
-  ProjectSummaryScopeProtectedAreaCategoriesContainer.element &
+  ProjectSummaryScopeProtectedAreaCategoriesContainer.element ? &
   element miradi:ProjectSummaryScopeProtectedAreaCategoryNotes { text }? &
   element miradi:ProjectSummaryScopeLegalStatus { text }? &
   element miradi:ProjectSummaryScopeLegislativeContext { text }? &
@@ -171,14 +171,14 @@ TncProjectData.element = element miradi:TncProjectData
   element miradi:TncProjectDataTNC.DatabaseDownloadDate { text }? &
   element miradi:TncProjectDataShareOutsideTnc { xsd:boolean }? &
   element miradi:TncProjectDataOtherOrgRelatedProjects { text }? &
-  TncProjectDataProjectPlaceTypesContainer.element &
-  TncProjectDataOrganizationalPrioritiesContainer.element &
+  TncProjectDataProjectPlaceTypesContainer.element ? &
+  TncProjectDataOrganizationalPrioritiesContainer.element ? &
   element miradi:TncProjectDataTNC.PlanningTeamComment { text }? &
   element miradi:TncProjectDataConProParentChildProjectText { text }? &
-  TncProjectDataTNC.OperatingUnitListContainer.element &
-  TncProjectDataTNC.TerrestrialEcoRegionContainer.element &
-  TncProjectDataTNC.MarineEcoRegionContainer.element &
-  TncProjectDataTNC.FreshwaterEcoRegionContainer.element &
+  TncProjectDataTNC.OperatingUnitListContainer.element ? &
+  TncProjectDataTNC.TerrestrialEcoRegionContainer.element ? &
+  TncProjectDataTNC.MarineEcoRegionContainer.element ? &
+  TncProjectDataTNC.FreshwaterEcoRegionContainer.element ? &
   element miradi:TncProjectDataTNC.LessonsLearned { text }? &
   element miradi:TncProjectDataProjectResourcesScorecard { text }? &
   element miradi:TncProjectDataProjectLevelComments { text }? &
@@ -188,9 +188,9 @@ TncProjectData.element = element miradi:TncProjectData
 
 WwfProjectData.element = element miradi:WwfProjectData
 {
-  WwfProjectDataManagingOfficesContainer.element &
-  WwfProjectDataRegionsContainer.element &
-  WwfProjectDataEcoRegionsContainer.element
+  WwfProjectDataManagingOfficesContainer.element ? &
+  WwfProjectDataRegionsContainer.element ? &
+  WwfProjectDataEcoRegionsContainer.element ?
 }
 
 WCSData.element = element miradi:WCSData
@@ -236,7 +236,7 @@ ConceptualModel.element = element miradi:ConceptualModel
   element miradi:ConceptualModelZoomScale { xsd:decimal }? &
   element miradi:ConceptualModelDiagramFactorIds { DiagramFactorId.element* } &
   element miradi:ConceptualModelDiagramFactorLinkIds { DiagramLinkId.element* } &
-  ConceptualModelHiddenTypesContainer.element &
+  ConceptualModelHiddenTypesContainer.element ? &
   element miradi:ConceptualModelSelectedTaggedObjectSetIds { TaggedObjectSetId.element* }
 }
 
@@ -250,7 +250,7 @@ ResultsChain.element = element miradi:ResultsChain
   element miradi:ResultsChainZoomScale { xsd:decimal }? &
   element miradi:ResultsChainDiagramFactorIds { DiagramFactorId.element* } &
   element miradi:ResultsChainDiagramFactorLinkIds { DiagramLinkId.element* } &
-  ResultsChainHiddenTypesContainer.element &
+  ResultsChainHiddenTypesContainer.element ? &
   element miradi:ResultsChainSelectedTaggedObjectSetIds { TaggedObjectSetId.element* }
 }
 
