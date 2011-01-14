@@ -43,7 +43,7 @@ public class TestDashboard extends ObjectTestCase
 	}
 
 	@Override
-	protected BaseObject createOrFindObject(int objectType, CreateObjectParameter extraInfo) throws Exception
+	protected BaseObject createObject(int objectType, CreateObjectParameter extraInfo) throws Exception
 	{
 		ORef dashboardRef = getProject().getSingletonObjectRef(Dashboard.getObjectType());
 		return Dashboard.find(getProject(), dashboardRef);
