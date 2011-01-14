@@ -297,7 +297,7 @@ BiodiversityTarget.element = element miradi:BiodiversityTarget
   element miradi:BiodiversityTargetIndicatorIds { IndicatorId.element* }? &
   element miradi:BiodiversityTargetThreatRating { vocabulary_threat_rating  }? &
   element miradi:BiodiversityTargetStressIds { StressId.element* }? &
-  BiodiversityTargetHabitatAssociationContainer.element &
+  BiodiversityTargetHabitatAssociationContainer.element ? &
   element miradi:BiodiversityTargetSpeciesLatinName { text }?
 }
 
