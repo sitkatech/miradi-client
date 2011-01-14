@@ -1106,7 +1106,7 @@ abstract public class BaseObject
 				list.addAll(getResourceAssignmentRefs());
 				break;
 			case ObjectType.EXPENSE_ASSIGNMENT:
-				list.addAll(getRefListData(TAG_EXPENSE_ASSIGNMENT_REFS));
+				list.addAll(getExpenseAssignmentRefs());
 				break;
 			case ObjectType.PROGRESS_REPORT:
 				list.addAll(getRefListData(TAG_PROGRESS_REPORT_REFS));
@@ -1114,6 +1114,11 @@ abstract public class BaseObject
 		}
 		
 		return list;
+	}
+
+	public ORefList getExpenseAssignmentRefs()
+	{
+		return getRefListData(TAG_EXPENSE_ASSIGNMENT_REFS);
 	}
 	
 	public ORefList getResourceAssignmentRefs()
