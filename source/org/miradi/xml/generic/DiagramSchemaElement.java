@@ -34,7 +34,7 @@ abstract public class DiagramSchemaElement extends BaseObjectSchemaElementWithLa
 		createOptionalNumericField(DiagramObject.TAG_ZOOM_SCALE);
 		createIdListField(DiagramObject.TAG_DIAGRAM_FACTOR_IDS, "DiagramFactor");
 		createIdListField(DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, "DiagramLink");
-		createCodeListField(XmlSchemaCreator.HIDDEN_TYPES_ELEMENT_NAME);
+		createOptionalCodeListField(XmlSchemaCreator.HIDDEN_TYPES_ELEMENT_NAME);
 		createIdListField(XmpzXmlConstants.SELECTED_TAGGED_OBJECT_SET_IDS, XmlSchemaCreator.TAGGED_OBJECT_SET_ELEMENT_NAME);
 	}
 }
