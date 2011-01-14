@@ -330,41 +330,36 @@ public class TreeRebuilder
 
 	private NewAbstractPlanningTreeNode createChildNode(TreeTableNode parentNode, ORef refToAdd) throws Exception
 	{
-		int type = refToAdd.getObjectType();
+		int[] supportedTypes = new int[] {
+			ConceptualModelDiagram.getObjectType(),
+			ResultsChainDiagram.getObjectType(),
+			
+			Strategy.getObjectType(),
+			Target.getObjectType(),
+			HumanWelfareTarget.getObjectType(),
+			Cause.getObjectType(),
+			IntermediateResult.getObjectType(),
+			ThreatReductionResult.getObjectType(),
+			
+			SubTarget.getObjectType(),
+			Goal.getObjectType(),
+			Objective.getObjectType(),
+			Indicator.getObjectType(),
+			Task.getObjectType(),
+			
+			Measurement.getObjectType(),
+			ResourceAssignment.getObjectType(),
+			ExpenseAssignment.getObjectType(),
+		};
+		
 		try
 		{
-			if(type == ConceptualModelDiagram.getObjectType())
-				return new NewPlanningTreeBaseObjectNode(getProject(), parentNode, refToAdd);
-			if(type == ResultsChainDiagram.getObjectType())
-				return new NewPlanningTreeBaseObjectNode(getProject(), parentNode, refToAdd);
-			
-			if(type == Strategy.getObjectType())
-				return new NewPlanningTreeBaseObjectNode(getProject(), parentNode, refToAdd);
-			if(AbstractTarget.isAbstractTarget(type))
-				return new NewPlanningTreeBaseObjectNode(getProject(), parentNode, refToAdd);
-			if(type == Cause.getObjectType())
-				return new NewPlanningTreeBaseObjectNode(getProject(), parentNode, refToAdd);
-			if(type == ThreatReductionResult.getObjectType())
-				return new NewPlanningTreeBaseObjectNode(getProject(), parentNode, refToAdd);
-			if(type == IntermediateResult.getObjectType())
-				return new NewPlanningTreeBaseObjectNode(getProject(), parentNode, refToAdd);
-			if (SubTarget.is(type))
-				return new NewPlanningTreeBaseObjectNode(getProject(), parentNode, refToAdd);
-			if(type == Goal.getObjectType())
-				return new NewPlanningTreeBaseObjectNode(getProject(), parentNode, refToAdd);
-			if(type == Indicator.getObjectType())
-				return new NewPlanningTreeBaseObjectNode(getProject(), parentNode, refToAdd);
-			if(type == Objective.getObjectType())
-				return new NewPlanningTreeBaseObjectNode(getProject(), parentNode, refToAdd);
-			if (type == Measurement.getObjectType())
-				return new NewPlanningTreeBaseObjectNode(getProject(), parentNode, refToAdd);
-			if (type == Task.getObjectType())
-				return new NewPlanningTreeBaseObjectNode(getProject(), parentNode, refToAdd);
-			if (type == ResourceAssignment.getObjectType())
-				return new NewPlanningTreeBaseObjectNode(getProject(), parentNode, refToAdd);
-			if (type == ExpenseAssignment.getObjectType())
-				return new NewPlanningTreeBaseObjectNode(getProject(), parentNode, refToAdd);
-			
+			int type = refToAdd.getObjectType();
+			for(int i = 0; i < supportedTypes.length; ++i)
+			{
+				if(type == supportedTypes[i])
+					return new NewPlanningTreeBaseObjectNode(getProject(), parentNode, refToAdd);
+			}
 			throw new Exception("Attempted to create node of unknown type: " + refToAdd);
 		}
 		catch (Exception e)
