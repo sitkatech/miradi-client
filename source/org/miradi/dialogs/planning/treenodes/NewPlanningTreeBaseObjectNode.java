@@ -20,15 +20,16 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.treenodes;
 
+import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 
 public class NewPlanningTreeBaseObjectNode extends NewAbstractPlanningTreeNode
 {
-	public NewPlanningTreeBaseObjectNode(Project projectToUse, ORef objectRef) throws Exception
+	public NewPlanningTreeBaseObjectNode(Project projectToUse, TreeTableNode parentNodeToUse, ORef objectRef) throws Exception
 	{
-		super(projectToUse);
+		super(projectToUse, parentNodeToUse);
 		object = project.findObject(objectRef);
 	}
 	

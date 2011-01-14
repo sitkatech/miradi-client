@@ -29,12 +29,19 @@ import org.miradi.project.Project;
 
 abstract public class NewAbstractPlanningTreeNode extends TreeTableNode
 {
-	public NewAbstractPlanningTreeNode(Project projectToUse)
+	public NewAbstractPlanningTreeNode(Project projectToUse, TreeTableNode parentNodeToUse)
 	{
 		project = projectToUse;
+		parentNode = parentNodeToUse;
 		clearChildren();
 	}
 
+	@Override
+	public TreeTableNode getParentNode() throws Exception
+	{
+		return parentNode;
+	}
+	
 	@Override
 	public ORef getObjectReference()
 	{
@@ -111,5 +118,6 @@ abstract public class NewAbstractPlanningTreeNode extends TreeTableNode
 	}
 
 	protected Project project;
+	private TreeTableNode parentNode;
 	protected Vector<NewAbstractPlanningTreeNode> children;
 }

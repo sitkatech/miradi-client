@@ -24,6 +24,7 @@ import org.miradi.diagram.ChainWalker;
 import org.miradi.dialogs.planning.treenodes.NewAbstractPlanningTreeNode;
 import org.miradi.dialogs.planning.treenodes.NewPlanningTreeBaseObjectNode;
 import org.miradi.dialogs.planning.treenodes.NewPlanningTreeErrorNode;
+import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORef;
@@ -32,12 +33,14 @@ import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
+import org.miradi.objects.Desire;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.IntermediateResult;
+import org.miradi.objects.Objective;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
@@ -84,8 +87,16 @@ public class TreeRebuilder
 			return getChildrenOfProjectNode(parentRef);
 		if(DiagramObject.isDiagramObject(parentRef))
 			return getChildrenOfDiagramNode(parentRef);
+		
 		if(AbstractTarget.isAbstractTarget(parentRef))
 			return getChildrenOfAbstractTarget(parentRef, diagram);
+		else if(Cause.is(parentRef))
+			return getChildrenOfBasicFactor(parentRef, diagram);
+		else if(Strategy.is(parentRef))
+			return getChildrenOfStrategy(parentRef, diagram);
+		
+		if(Desire.isDesire(parentRef))
+			return getChildrenOfDesire(parentRef, diagram);
 		
 		EAM.logDebug("Don't know how to get children of " + parentRef);
 		return new ORefSet();
@@ -123,6 +134,9 @@ public class TreeRebuilder
 		if (AbstractTarget.isAbstractTarget(factor) && !shouldTargetsBeAtSameLevelAsDiagrams())
 			return true;
 
+		if (factor.isStrategy() && !factor.isStatusDraft())
+			return true;
+		
 		if (factor.isDirectThreat())
 			return true;
 		
@@ -169,6 +183,54 @@ public class TreeRebuilder
 		
 		return strategyRefs;
 	}
+	
+	private ORefSet getChildrenOfBasicFactor(ORef parentRef, DiagramObject diagram)
+	{
+		ORefSet childRefs = new ORefSet();
+		Factor factor = Factor.findFactor(getProject(), parentRef);
+		childRefs.addAllRefs(factor.getOwnedObjects(Objective.getObjectType()));
+		childRefs.addAllRefs(factor.getOwnedObjects(Indicator.getObjectType()));
+		return childRefs;
+	}
+
+	private ORefSet getChildrenOfStrategy(ORef parentRef, DiagramObject diagram) throws Exception
+	{
+		ORefSet childRefs = new ORefSet();
+		Strategy strategy = Strategy.find(getProject(), parentRef);
+		childRefs.addAllRefs(strategy.getActivityRefs());
+		childRefs.addAll(findRelevantObjectivesAndGoals(parentRef));
+		childRefs.addAllRefs(strategy.getOwnedObjects(Indicator.getObjectType()));
+		return childRefs;
+	}
+
+	private ORefSet findRelevantObjectivesAndGoals(ORef strategyRef) throws Exception
+	{
+		ORefSet relevant = new ORefSet();
+		relevant.addAll(findRelevantDesires(strategyRef, getProject().getObjectivePool().getRefSet()));
+		relevant.addAll(findRelevantDesires(strategyRef, getProject().getGoalPool().getRefSet()));
+		return relevant;
+	}
+	
+	private ORefSet findRelevantDesires(ORef strategyRef, ORefSet desireRefs) throws Exception
+	{
+		ORefSet relevant = new ORefSet();
+		for(ORef desireRef: desireRefs)
+		{
+			Desire desire = Desire.findDesire(getProject(), desireRef);
+			if(desire.getRelevantStrategyRefs().contains(strategyRef))
+				relevant.add(desire.getRef());
+		}
+		return relevant;
+	}
+
+	private ORefSet getChildrenOfDesire(ORef parentRef, DiagramObject diagram) throws Exception
+	{
+		ORefSet childRefs = new ORefSet();
+		Desire desire = Desire.findDesire(getProject(), parentRef);
+		childRefs.addAllRefs(desire.getRelevantStrategyAndActivityRefs());
+		childRefs.addAllRefs(desire.getRelevantIndicatorRefList());
+		return childRefs;
+	}
 
 
 	
@@ -183,42 +245,55 @@ public class TreeRebuilder
 
 	private void createAndAddChild(NewAbstractPlanningTreeNode parent, ORef childRefToAdd) throws Exception
 	{
-		NewAbstractPlanningTreeNode childNode = createChildNode(childRefToAdd);
+		if(wouldCreateRecursiveTree(parent, childRefToAdd))
+			return;
+		
+		NewAbstractPlanningTreeNode childNode = createChildNode(parent, childRefToAdd);
 		parent.addChild(childNode);
 	}
 
-	private NewAbstractPlanningTreeNode createChildNode(ORef refToAdd) throws Exception
+	private boolean wouldCreateRecursiveTree(TreeTableNode node, ORef childRefToAdd) throws Exception
+	{
+		if(node.getObjectReference().equals(childRefToAdd))
+			return true;
+
+		TreeTableNode parentNode = node.getParentNode();
+		if(parentNode == null)
+			return false;
+		
+		return wouldCreateRecursiveTree(parentNode, childRefToAdd);
+	}
+
+	private NewAbstractPlanningTreeNode createChildNode(TreeTableNode parentNode, ORef refToAdd) throws Exception
 	{
 		int type = refToAdd.getObjectType();
 		try
 		{
 			if(type == ConceptualModelDiagram.getObjectType())
-				return new NewPlanningTreeBaseObjectNode(getProject(), refToAdd);
+				return new NewPlanningTreeBaseObjectNode(getProject(), parentNode, refToAdd);
 			if(type == ResultsChainDiagram.getObjectType())
-				return new NewPlanningTreeBaseObjectNode(getProject(), refToAdd);
+				return new NewPlanningTreeBaseObjectNode(getProject(), parentNode, refToAdd);
 			
 			if(type == Strategy.getObjectType())
-				return new NewPlanningTreeBaseObjectNode(getProject(), refToAdd);
+				return new NewPlanningTreeBaseObjectNode(getProject(), parentNode, refToAdd);
 			if(AbstractTarget.isAbstractTarget(type))
-				return new NewPlanningTreeBaseObjectNode(getProject(), refToAdd);
+				return new NewPlanningTreeBaseObjectNode(getProject(), parentNode, refToAdd);
 			if(type == Cause.getObjectType())
-				return new NewPlanningTreeBaseObjectNode(getProject(), refToAdd);
+				return new NewPlanningTreeBaseObjectNode(getProject(), parentNode, refToAdd);
 			if(type == ThreatReductionResult.getObjectType())
-				return new NewPlanningTreeBaseObjectNode(getProject(), refToAdd);
+				return new NewPlanningTreeBaseObjectNode(getProject(), parentNode, refToAdd);
 			if(type == IntermediateResult.getObjectType())
-				return new NewPlanningTreeBaseObjectNode(getProject(), refToAdd);
+				return new NewPlanningTreeBaseObjectNode(getProject(), parentNode, refToAdd);
 			if (SubTarget.is(type))
-				return new NewPlanningTreeBaseObjectNode(getProject(), refToAdd);
+				return new NewPlanningTreeBaseObjectNode(getProject(), parentNode, refToAdd);
 			if(type == Goal.getObjectType())
-				return new NewPlanningTreeBaseObjectNode(getProject(), refToAdd);
+				return new NewPlanningTreeBaseObjectNode(getProject(), parentNode, refToAdd);
 			if(type == Indicator.getObjectType())
-				return new NewPlanningTreeBaseObjectNode(getProject(), refToAdd);
+				return new NewPlanningTreeBaseObjectNode(getProject(), parentNode, refToAdd);
+			if(type == Objective.getObjectType())
+				return new NewPlanningTreeBaseObjectNode(getProject(), parentNode, refToAdd);
 
 			// TODO: Remove comments as these get implemented
-//			if(AbstractTarget.isAbstractTarget(type))
-//				return new PlanningTreeTargetNode(project, diagram, refToAdd, visibleRows);
-//			if(type == Objective.getObjectType())
-//				return new PlanningTreeObjectiveNode(project, diagram, refToAdd, visibleRows);
 //			if (type == Measurement.getObjectType())
 //				return new PlanningTreeMeasurementNode(project, refToAdd, visibleRows);
 //			if (type == Task.getObjectType())
@@ -233,7 +308,7 @@ public class TreeRebuilder
 		catch (Exception e)
 		{
 			EAM.logException(e);
-			return new NewPlanningTreeErrorNode(getProject(), refToAdd);
+			return new NewPlanningTreeErrorNode(getProject(), parentNode, refToAdd);
 		}
 	}
 
