@@ -39,11 +39,11 @@ public class PlanningCustomizePanel extends ObjectDataInputPanel
 		ObjectDataInputField dataInclusion = createChoiceField(ObjectTreeTableConfiguration.getObjectType(), ObjectTreeTableConfiguration.TAG_DIAGRAM_DATA_INCLUSION, getProject().getQuestion(DiagramObjectDataInclusionQuestion.class));
 		addField(dataInclusion);
 		
-		ObjectDataInputPanel columnEditor = new CodeListEditorPanel(getProject(), planningConfigurationRef, ObjectTreeTableConfiguration.TAG_COL_CONFIGURATION, getProject().getQuestion(CustomPlanningColumnsQuestion.class), 1);
-		addSubPanelWithoutTitledBorder(columnEditor);
-		
 		ObjectDataInputPanel rowEditor = new CodeListEditorPanel(getProject(), planningConfigurationRef, ObjectTreeTableConfiguration.TAG_ROW_CONFIGURATION, new CustomPlanningRowsQuestion(getProject()), 1);
 		addSubPanelWithoutTitledBorder(rowEditor);
+		
+		ObjectDataInputPanel columnEditor = new CodeListEditorPanel(getProject(), planningConfigurationRef, ObjectTreeTableConfiguration.TAG_COL_CONFIGURATION, getProject().getQuestion(CustomPlanningColumnsQuestion.class), 1);
+		addSubPanelWithoutTitledBorder(columnEditor);
 	}
 	
 	@Override
