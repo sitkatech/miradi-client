@@ -23,6 +23,7 @@ package org.miradi.dialogs.planning.upperPanel.rebuilder;
 import java.util.Vector;
 
 import org.miradi.diagram.ChainWalker;
+import org.miradi.dialogs.planning.StrategicRowColumnProvider;
 import org.miradi.dialogs.planning.treenodes.NewAbstractPlanningTreeNode;
 import org.miradi.dialogs.planning.treenodes.NewPlanningTreeBaseObjectNode;
 import org.miradi.dialogs.planning.treenodes.NewPlanningTreeErrorNode;
@@ -55,7 +56,6 @@ import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
-import org.miradi.views.planning.RowManager;
 
 public class TreeRebuilder
 {
@@ -66,7 +66,7 @@ public class TreeRebuilder
 	
 	public void rebuildTree(NewAbstractPlanningTreeNode rootNode)
 	{
-		CodeList rows = RowManager.getStrategicPlanRows();
+		CodeList rows = new StrategicRowColumnProvider().getFlippedRowListToShow();
 		rebuildTree(rootNode, null, rows);
 		pruneUnwantedLayers(rootNode, rows);
 	}
