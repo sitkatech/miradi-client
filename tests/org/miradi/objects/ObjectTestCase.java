@@ -83,7 +83,6 @@ public class ObjectTestCase extends TestCaseWithProject
 	public void verifyFields(int objectType) throws Exception
 	{
 		verifyObjectCount(objectType);
-		getProject().getSingletonObjectRef(Dashboard.getObjectType());
 		verifyFields(objectType, null);
 	}
 	
