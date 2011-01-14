@@ -81,10 +81,10 @@ public class TreeRebuilder
 			if(DiagramObject.isDiagramObject(parentRef))
 				diagram = DiagramObject.findDiagramObject(getProject(), parentRef);
 
-			ORefSet candidateChildRefs = getChildRefs(parentNode.getObjectReference(), diagram);
-			ORefSet childRefs = pruneChildRefsAlreadyDone(parentNode, candidateChildRefs, rows);
-			childRefs.addAllRefs(parentNode.getObject().getResourceAssignmentRefs());
-			childRefs.addAllRefs(parentNode.getObject().getExpenseAssignmentRefs());
+			ORefList candidateChildRefs = getChildRefs(parentNode.getObjectReference(), diagram);
+			ORefList childRefs = pruneChildRefsAlreadyDone(parentNode, candidateChildRefs, rows);
+			childRefs.addAll(parentNode.getObject().getResourceAssignmentRefs());
+			childRefs.addAll(parentNode.getObject().getExpenseAssignmentRefs());
 			createAndAddChildren(parentNode, childRefs);
 
 			for(int i = 0; i < parentNode.getChildCount(); ++i)
@@ -97,12 +97,13 @@ public class TreeRebuilder
 		}
 	}
 
-	private ORefSet pruneChildRefsAlreadyDone(NewAbstractPlanningTreeNode parentNode, ORefSet candidateChildRefs, CodeList rows)
+	private ORefList pruneChildRefsAlreadyDone(NewAbstractPlanningTreeNode parentNode, ORefList candidateChildRefs, CodeList rows)
 	{
-		ORefSet remainingChildren = new ORefSet();
+		ORefList remainingChildren = new ORefList();
 		int parentAt = rows.find(parentNode.getObjectTypeName());
-		for(ORef childRef : candidateChildRefs)
+		for(int i = 0; i < candidateChildRefs.size(); ++i)
 		{
+			ORef childRef = candidateChildRefs.get(i);
 			BaseObject object = BaseObject.find(getProject(), childRef);
 			String childTypeName = object.getTypeName();
 			int childAt = rows.find(childTypeName);
@@ -112,7 +113,7 @@ public class TreeRebuilder
 		return remainingChildren;
 	}
 
-	private ORefSet getChildRefs(ORef parentRef, DiagramObject diagram) throws Exception
+	private ORefList getChildRefs(ORef parentRef, DiagramObject diagram) throws Exception
 	{
 		if(ProjectMetadata.is(parentRef))
 			return getChildrenOfProjectNode(parentRef);
@@ -135,22 +136,22 @@ public class TreeRebuilder
 			return getChildrenOfTask(parentRef, diagram);
 		
 		EAM.logDebug("Don't know how to get children of " + parentRef);
-		return new ORefSet();
+		return new ORefList();
 	}
 
-	private ORefSet getChildrenOfProjectNode(ORef parentRef) throws Exception
+	private ORefList getChildrenOfProjectNode(ORef parentRef) throws Exception
 	{
-		ORefSet childRefs = new ORefSet();
+		ORefList childRefs = new ORefList();
 		ORefList conceptualModelRefs = getProject().getConceptualModelDiagramPool().getORefList();
-		childRefs.addAllRefs(conceptualModelRefs);
+		childRefs.addAll(conceptualModelRefs);
 		ORefList resultsChainRefs = getProject().getResultsChainDiagramPool().getORefList();
-		childRefs.addAllRefs(resultsChainRefs);
+		childRefs.addAll(resultsChainRefs);
 		return childRefs;
 	}
 
-	private ORefSet getChildrenOfDiagramNode(ORef diagramRef) throws Exception
+	private ORefList getChildrenOfDiagramNode(ORef diagramRef) throws Exception
 	{
-		ORefSet childRefs = new ORefSet();
+		ORefList childRefs = new ORefList();
 		DiagramObject diagramObject = DiagramObject.findDiagramObject(getProject(), diagramRef); 
 		ORefList diagramFactorRefs = diagramObject.getAllDiagramFactorRefs();
 		for(int i = 0; i < diagramFactorRefs.size(); ++i)
@@ -193,14 +194,14 @@ public class TreeRebuilder
 		return getProject().getMetadata().shouldPutTargetsAtTopLevelOfTree();
 	}
 	
-	private ORefSet getChildrenOfAbstractTarget(ORef targetRef, DiagramObject diagram) throws Exception
+	private ORefList getChildrenOfAbstractTarget(ORef targetRef, DiagramObject diagram) throws Exception
 	{
-		ORefSet childRefs = new ORefSet();
+		ORefList childRefs = new ORefList();
 		AbstractTarget target = AbstractTarget.findTarget(getProject(), targetRef);
-		childRefs.addAllRefs(target.getSubTargetRefs());
-		childRefs.addAllRefs(target.getOwnedObjects(Goal.getObjectType()));
-		childRefs.addAllRefs(new ORefList(Indicator.getObjectType(), target.getDirectOrIndirectIndicators()));
-		childRefs.addAllRefs(getDirectlyLinkedNonDraftStrategies(target, diagram));
+		childRefs.addAll(target.getSubTargetRefs());
+		childRefs.addAll(target.getOwnedObjects(Goal.getObjectType()));
+		childRefs.addAll(new ORefList(Indicator.getObjectType(), target.getDirectOrIndirectIndicators()));
+		childRefs.addAll(getDirectlyLinkedNonDraftStrategies(target, diagram));
 		return childRefs;
 	}
 
@@ -220,36 +221,36 @@ public class TreeRebuilder
 		return strategyRefs;
 	}
 	
-	private ORefSet getChildrenOfBasicFactor(ORef parentRef, DiagramObject diagram)
+	private ORefList getChildrenOfBasicFactor(ORef parentRef, DiagramObject diagram)
 	{
-		ORefSet childRefs = new ORefSet();
+		ORefList childRefs = new ORefList();
 		Factor factor = Factor.findFactor(getProject(), parentRef);
-		childRefs.addAllRefs(factor.getObjectiveRefs());
-		childRefs.addAllRefs(factor.getDirectOrIndirectIndicatorRefs());
+		childRefs.addAll(factor.getObjectiveRefs());
+		childRefs.addAll(factor.getDirectOrIndirectIndicatorRefs());
 		return childRefs;
 	}
 
-	private ORefSet getChildrenOfStrategy(ORef parentRef, DiagramObject diagram) throws Exception
+	private ORefList getChildrenOfStrategy(ORef parentRef, DiagramObject diagram) throws Exception
 	{
-		ORefSet childRefs = new ORefSet();
+		ORefList childRefs = new ORefList();
 		Strategy strategy = Strategy.find(getProject(), parentRef);
-		childRefs.addAllRefs(strategy.getActivityRefs());
+		childRefs.addAll(strategy.getActivityRefs());
 		childRefs.addAll(findRelevantObjectivesAndGoals(parentRef));
-		childRefs.addAllRefs(strategy.getOwnedObjects(Indicator.getObjectType()));
+		childRefs.addAll(strategy.getOwnedObjects(Indicator.getObjectType()));
 		return childRefs;
 	}
 
-	private ORefSet findRelevantObjectivesAndGoals(ORef strategyRef) throws Exception
+	private ORefList findRelevantObjectivesAndGoals(ORef strategyRef) throws Exception
 	{
-		ORefSet relevant = new ORefSet();
+		ORefList relevant = new ORefList();
 		relevant.addAll(findRelevantDesires(strategyRef, getProject().getObjectivePool().getRefSet()));
 		relevant.addAll(findRelevantDesires(strategyRef, getProject().getGoalPool().getRefSet()));
 		return relevant;
 	}
 	
-	private ORefSet findRelevantDesires(ORef strategyRef, ORefSet desireRefs) throws Exception
+	private ORefList findRelevantDesires(ORef strategyRef, ORefSet desireRefs) throws Exception
 	{
-		ORefSet relevant = new ORefSet();
+		ORefList relevant = new ORefList();
 		for(ORef desireRef: desireRefs)
 		{
 			Desire desire = Desire.findDesire(getProject(), desireRef);
@@ -259,39 +260,40 @@ public class TreeRebuilder
 		return relevant;
 	}
 
-	private ORefSet getChildrenOfDesire(ORef parentRef, DiagramObject diagram) throws Exception
+	private ORefList getChildrenOfDesire(ORef parentRef, DiagramObject diagram) throws Exception
 	{
-		ORefSet childRefs = new ORefSet();
+		ORefList childRefs = new ORefList();
 		Desire desire = Desire.findDesire(getProject(), parentRef);
-		childRefs.addAllRefs(desire.getRelevantStrategyAndActivityRefs());
-		childRefs.addAllRefs(desire.getRelevantIndicatorRefList());
+		childRefs.addAll(desire.getRelevantStrategyAndActivityRefs());
+		childRefs.addAll(desire.getRelevantIndicatorRefList());
 		return childRefs;
 	}
 
-	private ORefSet getChildrenOfIndicator(ORef parentRef, DiagramObject diagram)
+	private ORefList getChildrenOfIndicator(ORef parentRef, DiagramObject diagram)
 	{
-		ORefSet childRefs = new ORefSet();
+		ORefList childRefs = new ORefList();
 		Indicator indicator = Indicator.find(getProject(), parentRef);
-		childRefs.addAllRefs(indicator.getMeasurementRefs());
-		childRefs.addAllRefs(indicator.getMethodRefs());
+		childRefs.addAll(indicator.getMeasurementRefs());
+		childRefs.addAll(indicator.getMethodRefs());
 		return childRefs;
 	}
 
-	private ORefSet getChildrenOfTask(ORef parentRef, DiagramObject diagram)
+	private ORefList getChildrenOfTask(ORef parentRef, DiagramObject diagram)
 	{
-		ORefSet childRefs = new ORefSet();
+		ORefList childRefs = new ORefList();
 		Task task = Task.find(getProject(), parentRef);
-		childRefs.addAllRefs(task.getSubTaskRefs());
+		childRefs.addAll(task.getSubTaskRefs());
 		return childRefs;
 	}
 
 
 	
 	
-	private void createAndAddChildren(NewAbstractPlanningTreeNode parent, ORefSet childRefsToAdd) throws Exception
+	private void createAndAddChildren(NewAbstractPlanningTreeNode parent, ORefList childRefsToAdd) throws Exception
 	{
-		for(ORef childRef : childRefsToAdd)
+		for(int i = 0; i < childRefsToAdd.size(); ++i)
 		{
+			ORef childRef = childRefsToAdd.get(i);
 			createAndAddChild(parent, childRef);
 		}
 	}
