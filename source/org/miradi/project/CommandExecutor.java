@@ -362,11 +362,11 @@ public class CommandExecutor
 
 	private HashSet<String> getAddedAndRemovedListeners(Vector<String> oldList, Vector<String> newList)
 	{
-		HashSet<String> leftOvers = new HashSet<String>();
-		leftOvers.addAll(getMissingListeners(oldList, newList));
-		leftOvers.addAll(getMissingListeners(newList, oldList));
+		HashSet<String> missingListeners = new HashSet<String>();
+		missingListeners.addAll(getMissingListeners(oldList, newList));
+		missingListeners.addAll(getMissingListeners(newList, oldList));
 		
-		return leftOvers;
+		return missingListeners;
 	}
 
 	private Vector<String> getMissingListeners(Vector<String> biggerList, Vector<String> smallerList)
