@@ -109,7 +109,7 @@ abstract public class AbstractDashboardClickableField extends ObjectDataField
 			try
 			{
 				DisposablePanel editorPanel = new DashboardProgressPanel(getProject(), getORef(), stringMapCode);
-				ModalDialogWithClose dialog = new ModalDialogWithClose(EAM.getMainWindow(), EAM.text("Edit...."));
+				ModalDialogWithClose dialog = new ModalDialogWithClose(EAM.getMainWindow(), EAM.text("Title|Open Standards Status"));
 				dialog.setMainPanel(editorPanel);
 				dialog.becomeActive();
 				Utilities.centerDlg(dialog);
