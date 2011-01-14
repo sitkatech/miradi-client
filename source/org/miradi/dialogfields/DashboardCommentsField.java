@@ -31,7 +31,7 @@ public class DashboardCommentsField extends AbstractDashboardClickableField
 {
 	public DashboardCommentsField(Project projectToUse, ORef refToUse,String stringMapCodeToUse)
 	{
-		super(projectToUse, refToUse, Dashboard.TAG_COMMENTS_MAP, stringMapCodeToUse);
+		super(projectToUse, refToUse, stringMapCodeToUse);
 	}
 
 	@Override
