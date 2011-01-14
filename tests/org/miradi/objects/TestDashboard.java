@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objects;
 
+import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.StringChoiceMap;
@@ -39,6 +40,13 @@ public class TestDashboard extends ObjectTestCase
 	public void testFields() throws Exception
 	{
 		verifyFields(ObjectType.DASHBOARD);
+	}
+
+	@Override
+	protected BaseObject createOrFindObject(int objectType, CreateObjectParameter extraInfo) throws Exception
+	{
+		ORef dashboardRef = getProject().getSingletonObjectRef(Dashboard.getObjectType());
+		return Dashboard.find(getProject(), dashboardRef);
 	}
 	
 	public void testGetEffectiveStatusMapWithNoData() throws Exception

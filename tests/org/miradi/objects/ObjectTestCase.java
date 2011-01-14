@@ -83,6 +83,7 @@ public class ObjectTestCase extends TestCaseWithProject
 	public void verifyFields(int objectType) throws Exception
 	{
 		verifyObjectCount(objectType);
+		getProject().getSingletonObjectRef(Dashboard.getObjectType());
 		verifyFields(objectType, null);
 	}
 	
@@ -94,8 +95,7 @@ public class ObjectTestCase extends TestCaseWithProject
 
 	public void verifyFields(int objectType, CreateObjectParameter extraInfo) throws Exception
 	{
-		BaseId id = getProject().createObject(objectType, BaseId.INVALID, extraInfo);
-		BaseObject object = getProject().findObject(objectType, id);
+		BaseObject object = createOrFindObject(objectType, extraInfo);
 		verifyTypeName(object);
 
 		Vector<String> fieldTags = object.getStoredFieldTags();
@@ -112,6 +112,13 @@ public class ObjectTestCase extends TestCaseWithProject
 		}
 
 		verifyLoadPool(objectType, extraInfo);
+	}
+
+	protected BaseObject createOrFindObject(int objectType, CreateObjectParameter extraInfo) throws Exception
+	{
+		BaseId id = getProject().createObject(objectType, BaseId.INVALID, extraInfo);
+		
+		return getProject().findObject(objectType, id);
 	}
 
 	private void verifyTypeName(BaseObject object)
