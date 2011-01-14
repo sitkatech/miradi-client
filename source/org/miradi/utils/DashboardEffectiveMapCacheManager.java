@@ -29,9 +29,9 @@ import org.miradi.objecthelpers.StringChoiceMap;
 import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
 
-public class DashboardEffectiveMapCache implements CommandExecutedListener
+public class DashboardEffectiveMapCacheManager implements CommandExecutedListener
 {
-	public DashboardEffectiveMapCache(Project projectToUse) throws Exception
+	public DashboardEffectiveMapCacheManager(Project projectToUse) throws Exception
 	{
 		project = projectToUse;
 	}
