@@ -43,6 +43,7 @@ import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.TableSettings;
 import org.miradi.objects.Target;
 import org.miradi.objects.ViewData;
 import org.miradi.utils.CommandVector;
@@ -349,7 +350,18 @@ public class CommandExecutor
 		Vector<String> copy = extractClassNames(copyForComparison);
 		Collections.sort(copy);
 		
+		logDebugChangedListeners(new Vector<String>(originalList), new Vector<String>(copy));
+		
 		return !copy.equals(originalList);
+	}
+
+	private void logDebugChangedListeners(Vector<String> copy1, Vector<String> copy2)
+	{
+		copy1.removeAll(copy2);
+		for (int index = 0; index < copy1.size(); ++index)
+		{
+			EAM.logDebug("Listener changed during fire. Listener = " + copy1.get(index));
+		}
 	}
 	
 	private Vector<String> extractClassNames(Vector<CommandExecutedListener> listToGetClassNamesFrom)
@@ -379,6 +391,9 @@ public class CommandExecutor
 			return true;
 				
 		if (setCommand.isTypeAndTag(ViewData.getObjectType(), ViewData.TAG_CURRENT_TAB))
+			return true;
+		
+		if (setCommand.isTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_TREE_EXPANSION_LIST))
 			return true;
 				
 		return false;
