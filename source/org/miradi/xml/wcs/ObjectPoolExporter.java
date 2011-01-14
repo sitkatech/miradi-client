@@ -92,11 +92,6 @@ abstract public class ObjectPoolExporter extends AbstractXmlExporter
 		getWcsXmlExporter().writeIds(getPoolName(), idsElementName, idElementName + XmpzXmlConstants.ID, refs);
 	}
 	
-	protected void writeCodeListElement(String codeListElementName, BaseObject baseObject, String tag) throws Exception
-	{
-		getWcsXmlExporter().writeCodeListElement(getPoolName(), codeListElementName, baseObject, tag);
-	}
-	
 	protected void writeOptionalCodeListElement(String codeListElementName, BaseObject baseObject, String tag) throws Exception
 	{
 		getWcsXmlExporter().writeOptionalCodeListElement(getPoolName(), codeListElementName, baseObject, tag);
