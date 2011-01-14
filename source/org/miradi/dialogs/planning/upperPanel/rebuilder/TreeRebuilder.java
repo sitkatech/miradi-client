@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.upperPanel.rebuilder;
 
+import java.util.Vector;
+
 import org.miradi.diagram.ChainWalker;
 import org.miradi.dialogs.planning.treenodes.NewAbstractPlanningTreeNode;
 import org.miradi.dialogs.planning.treenodes.NewPlanningTreeBaseObjectNode;
@@ -62,14 +64,15 @@ public class TreeRebuilder
 		project = projectToUse;
 	}
 	
-	public void rebuildTree(NewAbstractPlanningTreeNode parentNode)
-	{
-		rebuildTree(parentNode, null);
-	}
-	
-	private void rebuildTree(NewAbstractPlanningTreeNode parentNode, DiagramObject diagram)
+	public void rebuildTree(NewAbstractPlanningTreeNode rootNode)
 	{
 		CodeList rows = RowManager.getStrategicPlanRows();
+		rebuildTree(rootNode, null, rows);
+		pruneUnwantedLayers(rootNode, rows);
+	}
+	
+	private void rebuildTree(NewAbstractPlanningTreeNode parentNode, DiagramObject diagram, CodeList rows)
+	{
 		try
 		{
 			parentNode.clearChildren();
@@ -84,7 +87,8 @@ public class TreeRebuilder
 			createAndAddChildren(parentNode, childRefs);
 
 			for(int i = 0; i < parentNode.getChildCount(); ++i)
-				rebuildTree((NewAbstractPlanningTreeNode) parentNode.getChild(i), diagram);
+				rebuildTree((NewAbstractPlanningTreeNode) parentNode.getChild(i), diagram, rows);
+		
 		}
 		catch(Exception e)
 		{
@@ -357,6 +361,89 @@ public class TreeRebuilder
 			return new NewPlanningTreeErrorNode(getProject(), parentNode, refToAdd);
 		}
 	}
+	
+	protected void pruneUnwantedLayers(NewAbstractPlanningTreeNode node, CodeList objectTypesToShow)
+	{
+		// TODO: Need to add allocation logic to this new tree builder
+//		if(isAnyChildAllocated(children))
+//			isAllocated = true;
+		
+		Vector<NewAbstractPlanningTreeNode> newChildren = new Vector<NewAbstractPlanningTreeNode>();
+		for(int i = 0; i < node.getChildCount(); ++i)
+		{
+			NewAbstractPlanningTreeNode child = (NewAbstractPlanningTreeNode) node.getChild(i);
+			pruneUnwantedLayers(child, objectTypesToShow);
+			
+			boolean isChildVisible = objectTypesToShow.contains(child.getObjectTypeName());
+			if(isChildVisible)
+			{
+				mergeChildIntoList(newChildren, child);
+			}
+			else
+			{
+				addChildrenOfNodeToList(newChildren, child);
+			}
+		}
+
+		// TODO: Add sorting to this new tree builder
+//		if(shouldSortChildren())
+//			Collections.sort(newChildren, createNodeSorter());
+		node.setRawChildren(newChildren);
+	}
+	
+	public static void mergeChildIntoList(Vector<NewAbstractPlanningTreeNode> destination, NewAbstractPlanningTreeNode newChild)
+	{
+		NewAbstractPlanningTreeNode existingNode = findNodeWithRef(destination, newChild.getObjectReference());
+		if(existingNode == null)
+		{
+			if (isChildOfAnyNodeInList(destination, newChild))
+				return;
+
+			destination.add(newChild);
+			return;
+		}
+		
+		destination = existingNode.getRawChildren();
+		addChildrenOfNodeToList(destination, newChild);
+		// TODO: Need to add allocation logic to this new tree builder
+//		existingNode.addProportionShares(newChild);
+
+		// TODO: Add sorting to this new tree builder
+//		if(existingNode.shouldSortChildren())
+//			Collections.sort(destination, existingNode.createNodeSorter());
+	}
+	
+	private static boolean isChildOfAnyNodeInList(Vector<NewAbstractPlanningTreeNode> destination, NewAbstractPlanningTreeNode newChild)
+	{
+		for(NewAbstractPlanningTreeNode parentNode : destination)
+		{
+			Vector<NewAbstractPlanningTreeNode> children = parentNode.getRawChildren();
+			NewAbstractPlanningTreeNode foundMatchingChild = findNodeWithRef(children, newChild.getObjectReference());
+			if (foundMatchingChild != null)
+				return true;
+		}
+		
+		return false;
+	}
+	
+	static NewAbstractPlanningTreeNode findNodeWithRef(Vector<NewAbstractPlanningTreeNode> list, ORef ref)
+	{
+		for(NewAbstractPlanningTreeNode node : list)
+		{
+			if(ref.equals(node.getObjectReference()))
+				return node;
+		}
+		
+		return null;
+	}
+	
+	private static void addChildrenOfNodeToList(Vector<NewAbstractPlanningTreeNode> destination, NewAbstractPlanningTreeNode otherNode)
+	{
+		for(NewAbstractPlanningTreeNode newChild : otherNode.getRawChildren())
+			mergeChildIntoList(destination, newChild);
+	}
+
+	
 
 	private Project getProject()
 	{
