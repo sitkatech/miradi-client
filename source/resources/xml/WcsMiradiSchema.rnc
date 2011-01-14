@@ -1,4 +1,4 @@
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/53'
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/54'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -483,7 +483,7 @@ Indicator.element = element miradi:Indicator
   element miradi:IndicatorPriority { vocabulary_priority_rating_code  } &
   element miradi:IndicatorFutureStatusDate { vocabulary_date }? &
   element miradi:IndicatorFutureStatusSummary { text }? &
-  element miradi:IndicatorFutureStatusRating { vocabulary_status_code  } &
+  element miradi:IndicatorFutureStatusRating { vocabulary_measurement_status  } &
   element miradi:IndicatorFutureStatusDetails { text }? &
   element miradi:IndicatorFutureStatusComment { text }? &
   element miradi:IndicatorProgressReportIds { ProgressReportId.element* }? &
@@ -676,7 +676,6 @@ vocabulary_strategy_taxonomy_code = ''|'A10'|'A10.10'|'A10.30'|'A20'|'A20.10'|'A
 vocabulary_strategy_impact_rating_code = ''|'1'|'2'|'3'|'4'
 vocabulary_strategy_feasibility_rating_code = ''|'1'|'2'|'3'|'4'
 vocabulary_priority_rating_code = ''|'1'|'2'|'3'|'4'
-vocabulary_status_code = ''|'1'|'2'|'3'|'4'
 vocabulary_key_ecological_attribute_type = ''|'10'|'20'|'30'
 vocabulary_contribution_code = ''|'1'|'2'|'3'|'4'
 vocabulary_irreversibility_code = ''|'1'|'2'|'3'|'4'
@@ -855,7 +854,7 @@ WorkUnitsDay.element = element miradi:WorkUnitsDay
 
 Threshold.element = element miradi:Threshold
 {
-  element miradi:StatusCode{vocabulary_status_code}? &
+  element miradi:StatusCode{vocabulary_measurement_status}? &
   element miradi:ThresholdValue { text }? &
   element miradi:ThresholdDetails { text }?
 }

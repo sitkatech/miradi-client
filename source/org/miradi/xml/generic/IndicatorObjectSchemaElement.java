@@ -35,7 +35,7 @@ public class IndicatorObjectSchemaElement extends BaseObjectSchemaElementWithLab
 		createCodeField(Indicator.TAG_PRIORITY, XmlSchemaCreator.VOCABULARY_PRIORITY_RATING_CODE);
 		createOptionalDateField(Indicator.TAG_FUTURE_STATUS_DATE);
 		createOptionalTextField(Indicator.TAG_FUTURE_STATUS_SUMMARY);
-		createCodeField(Indicator.TAG_FUTURE_STATUS_RATING, XmlSchemaCreator.VOCABULARY_STATUS_CODE);
+		createCodeField(Indicator.TAG_FUTURE_STATUS_RATING, XmlSchemaCreator.VOCABULARY_MEASUREMENT_STATUS);
 		createOptionalTextField(Indicator.TAG_FUTURE_STATUS_DETAIL);
 		createOptionalTextField(Indicator.TAG_FUTURE_STATUS_COMMENT);	
 		createOptionalIdListField(XmpzXmlConstants.PROGRESS_REPORT_IDS, XmlSchemaCreator.PROGRESS_REPORT_ID_ELEMENT_NAME);
