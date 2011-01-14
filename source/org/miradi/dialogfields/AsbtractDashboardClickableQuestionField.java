@@ -49,7 +49,7 @@ abstract public class AsbtractDashboardClickableQuestionField extends AbstractDa
 	@Override
 	protected AbstractStringKeyMap createStringKeyMap(Dashboard dashboard) throws Exception
 	{
-		return getProject().getDashboardEffectiveMapCache();
+		return getProject().getCachedDashboardEffectiveMap();
 	}
 
 	abstract protected void updateLabel(PanelTitleLabel componentToUpdate, ChoiceItem progressChoiceItem);

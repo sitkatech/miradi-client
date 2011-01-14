@@ -509,7 +509,7 @@ public class Project
 		return projectTotalCalculator;
 	}
 	
-	public AbstractStringKeyMap getDashboardEffectiveMapCache() throws Exception
+	public AbstractStringKeyMap getCachedDashboardEffectiveMap() throws Exception
 	{
 		return dashboardEffectiveMapCacheManager.calculateEffectiveMap();
 	}
