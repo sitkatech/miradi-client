@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.treenodes;
 
+import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
@@ -27,9 +28,9 @@ import org.miradi.project.Project;
 
 public class NewPlanningTreeErrorNode extends NewAbstractPlanningTreeNode
 {
-	public NewPlanningTreeErrorNode(Project project, ORef refToAdd)
+	public NewPlanningTreeErrorNode(Project project, TreeTableNode parentNodeToUse, ORef refToAdd)
 	{
-		super(project);
+		super(project, parentNodeToUse);
 		
 		ref = refToAdd;
 	}

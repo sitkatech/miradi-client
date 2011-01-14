@@ -29,7 +29,7 @@ public class NewPlanningRootNode extends NewAbstractPlanningTreeNode
 {
 	public NewPlanningRootNode(Project projectToUse)
 	{
-		super(projectToUse);
+		super(projectToUse, null);
 	}
 
 	@Override
