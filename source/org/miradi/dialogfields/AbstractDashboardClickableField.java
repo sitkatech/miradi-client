@@ -100,11 +100,6 @@ abstract public class AbstractDashboardClickableField extends ObjectDataField
 		return tag;
 	}
 	
-	private String getEditorTitle()
-	{
-		return EAM.text("Edit....");
-	}
-
 	protected class ClickHandler extends MouseAdapter
 	{
 		@Override
@@ -115,7 +110,7 @@ abstract public class AbstractDashboardClickableField extends ObjectDataField
 			try
 			{
 				DisposablePanel editorPanel = new DashboardProgressPanel(getProject(), getORef(), stringMapCode);
-				ModalDialogWithClose dialog = new ModalDialogWithClose(EAM.getMainWindow(), getEditorTitle());
+				ModalDialogWithClose dialog = new ModalDialogWithClose(EAM.getMainWindow(), EAM.text("Edit...."));
 				dialog.setMainPanel(editorPanel);
 				dialog.becomeActive();
 				Utilities.centerDlg(dialog);
