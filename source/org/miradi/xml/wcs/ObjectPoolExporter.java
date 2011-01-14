@@ -41,8 +41,14 @@ abstract public class ObjectPoolExporter extends AbstractXmlExporter
 	@Override
 	public void exportXml() throws Exception
 	{
-		getWcsXmlExporter().writeStartPoolElement(poolName);
 		ORefList refs = getProject().getPool(getObjectType()).getSortedRefList();
+		if (refs.hasRefs())
+			exportPoolRefs(refs);
+	}
+
+	private void exportPoolRefs(ORefList refs) throws Exception, IOException
+	{
+		getWcsXmlExporter().writeStartPoolElement(poolName);
 		for (int index = 0; index < refs.size(); ++index)
 		{
 			BaseObject baseObject = BaseObject.find(getProject(), refs.get(index));
