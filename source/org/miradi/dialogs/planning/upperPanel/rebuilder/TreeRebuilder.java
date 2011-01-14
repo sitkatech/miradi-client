@@ -40,11 +40,13 @@ import org.miradi.objects.Factor;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.IntermediateResult;
+import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.SubTarget;
+import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
 
@@ -97,6 +99,11 @@ public class TreeRebuilder
 		
 		if(Desire.isDesire(parentRef))
 			return getChildrenOfDesire(parentRef, diagram);
+		if(Indicator.is(parentRef))
+			return getChildrenOfIndicator(parentRef, diagram);
+		
+		if(Task.is(parentRef))
+			return getChildrenOfTask(parentRef, diagram);
 		
 		EAM.logDebug("Don't know how to get children of " + parentRef);
 		return new ORefSet();
@@ -232,6 +239,23 @@ public class TreeRebuilder
 		return childRefs;
 	}
 
+	private ORefSet getChildrenOfIndicator(ORef parentRef, DiagramObject diagram)
+	{
+		ORefSet childRefs = new ORefSet();
+		Indicator indicator = Indicator.find(getProject(), parentRef);
+		childRefs.addAllRefs(indicator.getMeasurementRefs());
+		childRefs.addAllRefs(indicator.getMethodRefs());
+		return childRefs;
+	}
+
+	private ORefSet getChildrenOfTask(ORef parentRef, DiagramObject diagram)
+	{
+		ORefSet childRefs = new ORefSet();
+		Task task = Task.find(getProject(), parentRef);
+		childRefs.addAllRefs(task.getSubTaskRefs());
+		return childRefs;
+	}
+
 
 	
 	
@@ -292,12 +316,12 @@ public class TreeRebuilder
 				return new NewPlanningTreeBaseObjectNode(getProject(), parentNode, refToAdd);
 			if(type == Objective.getObjectType())
 				return new NewPlanningTreeBaseObjectNode(getProject(), parentNode, refToAdd);
+			if (type == Measurement.getObjectType())
+				return new NewPlanningTreeBaseObjectNode(getProject(), parentNode, refToAdd);
+			if (type == Task.getObjectType())
+				return new NewPlanningTreeBaseObjectNode(getProject(), parentNode, refToAdd);
 
 			// TODO: Remove comments as these get implemented
-//			if (type == Measurement.getObjectType())
-//				return new PlanningTreeMeasurementNode(project, refToAdd, visibleRows);
-//			if (type == Task.getObjectType())
-//				throw new RuntimeException(EAM.text("This method is not responsible for creating task nodes."));
 //			if (type == ResourceAssignment.getObjectType())
 //				return new PlanningTreeResourceAssignmentNode(project, refToAdd, visibleRows);
 //			if (type == ExpenseAssignment.getObjectType())
