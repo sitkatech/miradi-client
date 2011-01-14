@@ -23,6 +23,7 @@ package org.miradi.xml.wcs;
 import org.martus.util.UnicodeWriter;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Target;
+import org.miradi.xml.generic.XmlSchemaCreator;
 
 public class BiodiversityTargetPoolExporter extends AbstractTargetPoolExporter
 {
@@ -38,7 +39,7 @@ public class BiodiversityTargetPoolExporter extends AbstractTargetPoolExporter
 		
 		Target target = (Target) baseObject;
 		writeOptionalIds(STRESS_IDS_ELEMENT, XmpzXmlConstants.STRESS, target.getStressRefs());
-		writeOptionalCodeListElement("HabitatAssociation", baseObject, Target.TAG_HABITAT_ASSOCIATION);
+		writeOptionalCodeListElement(XmlSchemaCreator.BIODIVERSITY_TARGET_HABITAT_ASSOCIATION_ELEMENT_NAME, baseObject, Target.TAG_HABITAT_ASSOCIATION);
 		writeOptionalElementWithSameTag(baseObject, Target.TAG_SPECIES_LATIN_NAME);
 	}
 }
