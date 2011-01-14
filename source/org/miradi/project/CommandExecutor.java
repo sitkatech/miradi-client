@@ -22,6 +22,7 @@ package org.miradi.project;
 
 import java.io.PrintStream;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Vector;
 
 import org.miradi.commands.Command;
@@ -338,11 +339,17 @@ public class CommandExecutor
 			listener.commandExecuted(event);
 		}
 		
-		if (haveListenersChanged(command, commandExecutedListeners, copyForComparison) && !canBeListenerChangingCommand(command))
-			EAM.logError("Command Listener list was changed during fireCommandExecuted");
+		HashSet<String> changedListeners = haveListenersChanged(command, commandExecutedListeners, copyForComparison);
+		if (changedListeners.size() > 0 && !canBeListenerChangingCommand(command))
+		{
+			for (String changedListenerName : changedListeners)
+			{
+				EAM.logDebug("Command Listener was changed during fire. Listener = " + changedListenerName);
+			}
+		}
 	}
 	
-	private boolean haveListenersChanged(final Command command, final Vector<CommandExecutedListener> currentListenersList, final Vector<CommandExecutedListener> copyForComparison)
+	private HashSet<String> haveListenersChanged(final Command command, final Vector<CommandExecutedListener> currentListenersList, final Vector<CommandExecutedListener> copyForComparison)
 	{
 		Vector<String> originalList = extractClassNames(currentListenersList);
 		Collections.sort(originalList);
@@ -350,18 +357,25 @@ public class CommandExecutor
 		Vector<String> copy = extractClassNames(copyForComparison);
 		Collections.sort(copy);
 		
-		logDebugChangedListeners(new Vector<String>(originalList), new Vector<String>(copy));
-		
-		return !copy.equals(originalList);
+		return logDebugChangedListeners(new Vector<String>(originalList), new Vector<String>(copy));
 	}
 
-	private void logDebugChangedListeners(Vector<String> copy1, Vector<String> copy2)
+	private HashSet<String> logDebugChangedListeners(Vector<String> originalList, Vector<String> copy)
 	{
-		copy1.removeAll(copy2);
-		for (int index = 0; index < copy1.size(); ++index)
-		{
-			EAM.logDebug("Listener changed during fire. Listener = " + copy1.get(index));
-		}
+		HashSet<String> leftOvers = new HashSet<String>();
+		leftOvers.addAll(getLeftOvers(originalList, copy));
+		leftOvers.addAll(getLeftOvers(copy, originalList));
+		
+		return leftOvers;
+	}
+
+	private Vector<String> getLeftOvers(Vector<String> originalList, Vector<String> copy)
+	{
+		Vector<String> copyOfOriginalList = new Vector<String>(originalList);
+		Vector<String> copyOfCopy = new Vector<String>(copy);
+		copyOfOriginalList.removeAll(copyOfCopy);
+		
+		return copyOfOriginalList;
 	}
 	
 	private Vector<String> extractClassNames(Vector<CommandExecutedListener> listToGetClassNamesFrom)
