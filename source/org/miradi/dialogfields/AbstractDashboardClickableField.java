@@ -90,7 +90,7 @@ abstract public class AbstractDashboardClickableField extends ObjectDataField
 	@Override
 	public String getTag()
 	{
-		throw new RuntimeException("This is a readonly field and has no getTag implementation. Class = " + getClass().getName());
+		throw new RuntimeException("This is a readonly field and has no getTag() implementation. Class = " + getClass().getName());
 	}
 
 	protected String getMapValue(Dashboard dashboard, String stringMapCodeToUse) throws Exception
