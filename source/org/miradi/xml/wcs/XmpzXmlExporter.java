@@ -450,11 +450,6 @@ public class XmpzXmlExporter extends XmlExporter implements XmpzXmlConstants
 		writeOptionalCodeListElement(parentElementName, poolElementName, codes);
 	}
 		
-	public void writeCodeListElement(String parentElementName, String poolElementName, BaseObject object, String tag) throws Exception
-	{
-		writeCodeListElement(parentElementName, poolElementName, object.getCodeList(tag));
-	}
-
 	public void writeCodeListElement(String parentElementName, String poolElementName, CodeList codes) throws Exception
 	{
 		writeStartContainerElement(parentElementName + poolElementName);
