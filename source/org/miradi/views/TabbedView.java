@@ -80,8 +80,6 @@ abstract public class TabbedView extends UmbrellaView
 		currentTabIndex = -1;
 	}
 
-	public abstract void createTabs() throws Exception;
-	
 	public void deleteTabs() throws Exception
 	{
 		tabPanels.clear();
@@ -529,6 +527,8 @@ abstract public class TabbedView extends UmbrellaView
 			handleRightClick(event);
 		}
 	}
+	
+	public abstract void createTabs() throws Exception;
 
 	private JTabbedPane tabs;
 	private int currentTabIndex;
