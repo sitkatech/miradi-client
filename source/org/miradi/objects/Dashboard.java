@@ -313,8 +313,6 @@ public class Dashboard extends BaseObject
 				HumanWelfareTarget.getObjectType(),
 				Cause.getObjectType(),
 				Strategy.getObjectType(),
-				ThreatReductionResult.getObjectType(),
-				IntermediateResult.getObjectType(),
 		};
 		
 		ORefSet allFactorRefs = new ORefSet();
