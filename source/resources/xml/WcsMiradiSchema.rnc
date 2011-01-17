@@ -178,12 +178,12 @@ TncProjectData.element = element miradi:TncProjectData
   element miradi:TncProjectDataProjectLevelComments { text }? &
   element miradi:TncProjectDataProjectCitations { text }? &
   element miradi:TncProjectDataCapStandardsScorecard { text }? &
-  TncProjectDataProjectPlaceTypesContainer.element ? &
-  TncProjectDataOrganizationalPrioritiesContainer.element ? &
-  TncProjectDataTNC.OperatingUnitsContainer.element ? &
-  TncProjectDataTNC.TerrestrialEcoRegionContainer.element ? &
-  TncProjectDataTNC.MarineEcoRegionContainer.element ? &
-  TncProjectDataTNC.FreshwaterEcoRegionContainer.element ?
+  TncProjectDataTNCProjectPlaceTypesContainer.element ? &
+  TncProjectDataTNCOrganizationalPrioritiesContainer.element ? &
+  TncProjectDataTNCOperatingUnitsContainer.element ? &
+  TncProjectDataTNCTerrestrialEcoRegionContainer.element ? &
+  TncProjectDataTNCMarineEcoRegionContainer.element ? &
+  TncProjectDataTNCFreshwaterEcoRegionContainer.element ?
 }
 
 WwfProjectData.element = element miradi:WwfProjectData
@@ -948,32 +948,32 @@ StressScopeContainer.element = element miradi:StressScopeContainer
   element miradi:code { vocabulary_stress_scope } * 
 }
 
-TncProjectDataProjectPlaceTypesContainer.element = element miradi:TncProjectDataProjectPlaceTypesContainer
+TncProjectDataTNCProjectPlaceTypesContainer.element = element miradi:TncProjectDataTNCProjectPlaceTypesContainer
 {
   element miradi:code { vocabulary_tnc_project_place_types } * 
 }
 
-TncProjectDataOrganizationalPrioritiesContainer.element = element miradi:TncProjectDataOrganizationalPrioritiesContainer
+TncProjectDataTNCOrganizationalPrioritiesContainer.element = element miradi:TncProjectDataTNCOrganizationalPrioritiesContainer
 {
   element miradi:code { vocabulary_tnc_organizational_priorities } * 
 }
 
-TncProjectDataTNC.OperatingUnitsContainer.element = element miradi:TncProjectDataTNC.OperatingUnitsContainer
+TncProjectDataTNCOperatingUnitsContainer.element = element miradi:TncProjectDataTNCOperatingUnitsContainer
 {
   element miradi:code { vocabulary_tnc_operating_units } * 
 }
 
-TncProjectDataTNC.TerrestrialEcoRegionContainer.element = element miradi:TncProjectDataTNC.TerrestrialEcoRegionContainer
+TncProjectDataTNCTerrestrialEcoRegionContainer.element = element miradi:TncProjectDataTNCTerrestrialEcoRegionContainer
 {
   element miradi:code { vocabulary_tnc_terrestrial_eco_region } * 
 }
 
-TncProjectDataTNC.MarineEcoRegionContainer.element = element miradi:TncProjectDataTNC.MarineEcoRegionContainer
+TncProjectDataTNCMarineEcoRegionContainer.element = element miradi:TncProjectDataTNCMarineEcoRegionContainer
 {
   element miradi:code { vocabulary_tnc_marine_eco_region } * 
 }
 
-TncProjectDataTNC.FreshwaterEcoRegionContainer.element = element miradi:TncProjectDataTNC.FreshwaterEcoRegionContainer
+TncProjectDataTNCFreshwaterEcoRegionContainer.element = element miradi:TncProjectDataTNCFreshwaterEcoRegionContainer
 {
   element miradi:code { vocabulary_tnc_freshwater_eco_region } * 
 }
