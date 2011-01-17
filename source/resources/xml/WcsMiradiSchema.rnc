@@ -175,7 +175,7 @@ TncProjectData.element = element miradi:TncProjectData
   TncProjectDataOrganizationalPrioritiesContainer.element ? &
   element miradi:TncProjectDataTNC.PlanningTeamComment { text }? &
   element miradi:TncProjectDataConProParentChildProjectText { text }? &
-  TncProjectDataTNC.OperatingUnitListContainer.element ? &
+  TncProjectDataTNC.OperatingUnitsContainer.element ? &
   TncProjectDataTNC.TerrestrialEcoRegionContainer.element ? &
   TncProjectDataTNC.MarineEcoRegionContainer.element ? &
   TncProjectDataTNC.FreshwaterEcoRegionContainer.element ? &
@@ -958,7 +958,7 @@ TncProjectDataOrganizationalPrioritiesContainer.element = element miradi:TncProj
   element miradi:code { vocabulary_tnc_organizational_priorities } * 
 }
 
-TncProjectDataTNC.OperatingUnitListContainer.element = element miradi:TncProjectDataTNC.OperatingUnitListContainer
+TncProjectDataTNC.OperatingUnitsContainer.element = element miradi:TncProjectDataTNC.OperatingUnitsContainer
 {
   element miradi:code { vocabulary_tnc_operating_units } * 
 }
