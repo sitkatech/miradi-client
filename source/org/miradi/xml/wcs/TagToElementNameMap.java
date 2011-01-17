@@ -168,14 +168,6 @@ public class TagToElementNameMap implements XmpzXmlConstants
 		map.put(ProjectMetadata.TAG_SHORT_PROJECT_SCOPE, "ScopeName");
 		map.put(ProjectMetadata.TAG_PROJECT_VISION, "VisionStatementText");
 		map.put(ProjectMetadata.TAG_SHORT_PROJECT_SCOPE, "VisionLabel");	
-		map.put(ProjectMetadata.TAG_TNC_LESSONS_LEARNED, "LessonsLearned");
-		map.put(ProjectMetadata.TAG_TNC_WORKBOOK_VERSION_NUMBER, "CAPWorkbookVersionNumber");
-		map.put(ProjectMetadata.TAG_TNC_WORKBOOK_VERSION_DATE, "CAPWorkbookVersionDate");
-		map.put(ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE, "ConProDatabaseDownloadDate");
-		map.put(ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENT, "PlanningTeamLegacy");
-		map.put(ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION, "TerrestrialEcoregion");
-		map.put(ProjectMetadata.TAG_TNC_MARINE_ECO_REGION, "MarineEcoregion");
-		map.put(ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION, "FreshwaterEcoregion");
 		map.put(ProjectMetadata.TAG_LOCATION_DETAIL, "LocationDetails");
 		map.put(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, "ConProProjectNumber");
 
