@@ -178,6 +178,10 @@ public class TagToElementNameMap implements XmpzXmlConstants
 	private HashMap<String, String> createTncProjectDataMap()
 	{
 		HashMap<String, String> map = new HashMap<String, String>();
+		
+		map.put(ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE, XmlSchemaCreator.TNC_DATABASE_DOWNLOAD_DATE);
+		map.put(ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENT, XmlSchemaCreator.TNC_PLANNING_TEAM_COMMENT);
+		map.put(ProjectMetadata.TAG_TNC_LESSONS_LEARNED, XmlSchemaCreator.TNC_LESSONS_LEARNED);
 		map.put(ProjectMetadata.TAG_TNC_OPERATING_UNITS, XmlSchemaCreator.TNC_OPERATING_UNITS);
 		map.put(TncProjectData.TAG_PROJECT_PLACE_TYPES, XmlSchemaCreator.TNC_PROJECT_PLACE_TYPES);
 		map.put(TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES, XmlSchemaCreator.TNC_ORGANIZATIONAL_PRIORITIES);

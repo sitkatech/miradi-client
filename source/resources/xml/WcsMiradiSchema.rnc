@@ -168,12 +168,12 @@ Organization.element = element miradi:Organization
 
 TncProjectData.element = element miradi:TncProjectData
 {
-  element miradi:TncProjectDataTNC.DatabaseDownloadDate { text }? &
+  element miradi:TncProjectDataDatabaseDownloadDate { text }? &
   element miradi:TncProjectDataShareOutsideTnc { xsd:boolean }? &
   element miradi:TncProjectDataOtherOrgRelatedProjects { text }? &
-  element miradi:TncProjectDataTNC.PlanningTeamComment { text }? &
+  element miradi:TncProjectDataPlanningTeamComment { text }? &
   element miradi:TncProjectDataConProParentChildProjectText { text }? &
-  element miradi:TncProjectDataTNC.LessonsLearned { text }? &
+  element miradi:TncProjectDataLessonsLearned { text }? &
   element miradi:TncProjectDataProjectResourcesScorecard { text }? &
   element miradi:TncProjectDataProjectLevelComments { text }? &
   element miradi:TncProjectDataProjectCitations { text }? &
