@@ -108,6 +108,7 @@ public class TagToElementNameMap implements XmpzXmlConstants
 		fieldTagToElementMap.put(OTHER_NOTABLE_SPECIES, createBaseObjectMap());
 		fieldTagToElementMap.put(AUDIENCE, createBaseObjectMap());
 		fieldTagToElementMap.put(OBJECT_TREE_TABLE_CONFIGURATION, createBaseObjectMap());
+		fieldTagToElementMap.put(TNC_PROJECT_DATA, createTncProjectDataMap());
 	}
 
 	private HashMap<String, String> createBaseObjectMap()
@@ -172,13 +173,20 @@ public class TagToElementNameMap implements XmpzXmlConstants
 		map.put(ProjectMetadata.TAG_TNC_WORKBOOK_VERSION_DATE, "CAPWorkbookVersionDate");
 		map.put(ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE, "ConProDatabaseDownloadDate");
 		map.put(ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENT, "PlanningTeamLegacy");
-		map.put(ProjectMetadata.TAG_TNC_OPERATING_UNITS, "OperatingUnitsFieldProgram");
 		map.put(ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION, "TerrestrialEcoregion");
 		map.put(ProjectMetadata.TAG_TNC_MARINE_ECO_REGION, "MarineEcoregion");
 		map.put(ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION, "FreshwaterEcoregion");
 		map.put(ProjectMetadata.TAG_LOCATION_DETAIL, "LocationDetails");
 		map.put(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, "ConProProjectNumber");
 
+		return map;
+	}
+	
+	private HashMap<String, String> createTncProjectDataMap()
+	{
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put(ProjectMetadata.TAG_TNC_OPERATING_UNITS, XmlSchemaCreator.TNC_OPERATING_UNITS);
+		
 		return map;
 	}
 

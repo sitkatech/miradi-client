@@ -623,7 +623,7 @@ public class XmlSchemaCreator implements XmpzXmlConstants
 	public static final String THREAT_STRESS_RATING_CONTRIBUTION_CODE = ThreatStressRating.TAG_CONTRIBUTION;
 	public static final String TNC_PROJECT_PLACE_TYPES = TncProjectData.TAG_PROJECT_PLACE_TYPES;
 	public static final String TNC_ORGANIZATIONAL_PRIORITIES = TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES;
-	public static final String TNC_OPERATING_UNITS = ProjectMetadata.TAG_TNC_OPERATING_UNITS;
+	public static final String TNC_OPERATING_UNITS = "TNC.OperatingUnits";
 	public static final String TNC_TERRESTRIAL_ECO_REGION = ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION;
 	public static final String TNC_MARINE_ECO_REGION = ProjectMetadata.TAG_TNC_MARINE_ECO_REGION;
 	public static final String TNC_FRESHWATER_ECO_REGION = ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION;
