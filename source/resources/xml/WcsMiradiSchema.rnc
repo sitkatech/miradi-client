@@ -3,11 +3,11 @@ start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
   ProjectSummary.element &
-  ProjectResourcePool.element ?  &
-  OrganizationPool.element ?  &
   ProjectSummaryScope.element &
   ProjectSummaryLocation.element &
   ProjectSummaryPlanning.element &
+  ProjectResourcePool.element ?  &
+  OrganizationPool.element ?  &
   TncProjectData.element &
   WwfProjectData.element &
   WCSData.element &
@@ -68,47 +68,6 @@ ProjectSummary.element = element miradi:ProjectSummary
   element miradi:ProjectSummaryThreatRatingMode { vocabulary_threat_rating_mode  }
 }
 
-ProjectResourcePool.element = element miradi:ProjectResourcePool { ProjectResource.element* }
-ProjectResource.element = element miradi:ProjectResource
-{
-  attribute Id {xsd:integer}  &
-  element miradi:ProjectResourceResourceType { vocabulary_resource_type  } &
-  element miradi:ProjectResourceGivenName { text }? &
-  element miradi:ProjectResourceSurname { text }? &
-  element miradi:ProjectResourceResource_Id { text }? &
-  ProjectResourceRoleCodesContainer.element ? &
-  element miradi:ProjectResourceOrganization { text }? &
-  element miradi:ProjectResourcePosition { text }? &
-  element miradi:ProjectResourceLocation { text }? &
-  element miradi:ProjectResourceOfficePhoneNumber { text }? &
-  element miradi:ProjectResourcePhoneNumberMobile { text }? &
-  element miradi:ProjectResourcePhoneNumberHome { text }? &
-  element miradi:ProjectResourcePhoneNumberOther { text }? &
-  element miradi:ProjectResourceEmail { text }? &
-  element miradi:ProjectResourceAlternativeEmail { text }? &
-  element miradi:ProjectResourceIMAddress { text }? &
-  element miradi:ProjectResourceIMService { text }? &
-  element miradi:ProjectResourceDateUpdated { vocabulary_date }? &
-  element miradi:ProjectResourceDailyRate { xsd:decimal }? &
-  element miradi:ProjectResourceComments { text }? &
-  element miradi:ProjectResourceCustom.Custom1 { text }? &
-  element miradi:ProjectResourceCustom.Custom2 { text }?
-}
-
-OrganizationPool.element = element miradi:OrganizationPool { Organization.element* }
-Organization.element = element miradi:Organization
-{
-  attribute Id {xsd:integer}  &
-  element miradi:OrganizationName { text }? &
-  element miradi:OrganizationId { text }? &
-  element miradi:OrganizationRolesDescription { text }? &
-  element miradi:OrganizationGivenName { text }? &
-  element miradi:OrganizationSurname { text }? &
-  element miradi:OrganizationEmail { text }? &
-  element miradi:OrganizationPhoneNumber { text }? &
-  element miradi:OrganizationComments { text }?
-}
-
 ProjectSummaryScope.element = element miradi:ProjectSummaryScope
 {
   element miradi:ProjectSummaryScopeShortProjectScope { text }? &
@@ -164,6 +123,47 @@ ProjectSummaryPlanning.element = element miradi:ProjectSummaryPlanning
   element miradi:ProjectSummaryPlanningBudgetSecuredPercent { xsd:decimal }? &
   element miradi:ProjectSummaryPlanningKeyFundingSources { text }? &
   element miradi:ProjectSummaryPlanningFinancialComments { text }?
+}
+
+ProjectResourcePool.element = element miradi:ProjectResourcePool { ProjectResource.element* }
+ProjectResource.element = element miradi:ProjectResource
+{
+  attribute Id {xsd:integer}  &
+  element miradi:ProjectResourceResourceType { vocabulary_resource_type  } &
+  element miradi:ProjectResourceGivenName { text }? &
+  element miradi:ProjectResourceSurname { text }? &
+  element miradi:ProjectResourceResource_Id { text }? &
+  ProjectResourceRoleCodesContainer.element ? &
+  element miradi:ProjectResourceOrganization { text }? &
+  element miradi:ProjectResourcePosition { text }? &
+  element miradi:ProjectResourceLocation { text }? &
+  element miradi:ProjectResourceOfficePhoneNumber { text }? &
+  element miradi:ProjectResourcePhoneNumberMobile { text }? &
+  element miradi:ProjectResourcePhoneNumberHome { text }? &
+  element miradi:ProjectResourcePhoneNumberOther { text }? &
+  element miradi:ProjectResourceEmail { text }? &
+  element miradi:ProjectResourceAlternativeEmail { text }? &
+  element miradi:ProjectResourceIMAddress { text }? &
+  element miradi:ProjectResourceIMService { text }? &
+  element miradi:ProjectResourceDateUpdated { vocabulary_date }? &
+  element miradi:ProjectResourceDailyRate { xsd:decimal }? &
+  element miradi:ProjectResourceComments { text }? &
+  element miradi:ProjectResourceCustom.Custom1 { text }? &
+  element miradi:ProjectResourceCustom.Custom2 { text }?
+}
+
+OrganizationPool.element = element miradi:OrganizationPool { Organization.element* }
+Organization.element = element miradi:Organization
+{
+  attribute Id {xsd:integer}  &
+  element miradi:OrganizationName { text }? &
+  element miradi:OrganizationId { text }? &
+  element miradi:OrganizationRolesDescription { text }? &
+  element miradi:OrganizationGivenName { text }? &
+  element miradi:OrganizationSurname { text }? &
+  element miradi:OrganizationEmail { text }? &
+  element miradi:OrganizationPhoneNumber { text }? &
+  element miradi:OrganizationComments { text }?
 }
 
 TncProjectData.element = element miradi:TncProjectData
