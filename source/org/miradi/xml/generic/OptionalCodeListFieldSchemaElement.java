@@ -24,7 +24,6 @@ import java.io.IOException;
 
 import org.miradi.xml.wcs.XmpzXmlConstants;
 
-//FIXME urgent - this is duplicated (except for ?) from CodeListFieldSchemaElement
 public class OptionalCodeListFieldSchemaElement extends FieldSchemaElement
 {
 	protected OptionalCodeListFieldSchemaElement(String objectTypeNameToUse, String fieldNameToUse)
