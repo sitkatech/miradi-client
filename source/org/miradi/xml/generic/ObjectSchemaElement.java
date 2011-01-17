@@ -189,12 +189,6 @@ class ObjectSchemaElement extends SchemaElement
 		fields.add(field);	
 	}
 	
-	protected void createCodeListField(String fieldNameToUse)
-	{
-		FieldSchemaElement field = new CodeListFieldSchemaElement(getObjectTypeName(), fieldNameToUse);
-		fields.add(field);
-	}
-	
 	protected void createCodeField(String fieldNameToUse, String vocabularyNameToUse)
 	{
 		FieldSchemaElement field = new CodeFieldSchemaElement(getObjectTypeName(), fieldNameToUse, vocabularyNameToUse);
