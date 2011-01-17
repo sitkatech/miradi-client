@@ -38,14 +38,22 @@ import org.miradi.exceptions.NothingToUndoException;
 import org.miradi.exceptions.UnableToBeginTransactionException;
 import org.miradi.exceptions.UnexpectedNonSideEffectException;
 import org.miradi.exceptions.UnexpectedSideEffectException;
+import org.miradi.ids.IdList;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.ConceptualModelDiagram;
+import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.ResultsChainDiagram;
+import org.miradi.objects.Stress;
 import org.miradi.objects.TableSettings;
 import org.miradi.objects.Target;
+import org.miradi.objects.Task;
 import org.miradi.objects.ViewData;
 import org.miradi.utils.CommandVector;
 
@@ -409,10 +417,38 @@ public class CommandExecutor
 		
 		if (setCommand.isTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_TREE_EXPANSION_LIST))
 			return true;
+		
+		if (setCommand.isTypeAndTag(ConceptualModelDiagram.getObjectType(), ConceptualModelDiagram.TAG_DIAGRAM_FACTOR_IDS))
+			return wasWrappedTypeAddedOrRemoved(setCommand, Stress.getObjectType());
+		
+		if (setCommand.isTypeAndTag(ResultsChainDiagram.getObjectType(), ConceptualModelDiagram.TAG_DIAGRAM_FACTOR_IDS))
+			return wasWrappedTypeAddedOrRemoved(setCommand, Task.getObjectType());
 				
 		return false;
 	}
 	
+	private boolean wasWrappedTypeAddedOrRemoved(CommandSetObjectData setCommand, int objectType)
+	{
+		try
+		{
+			ORefSet previousDiagramFactorIds = new ORefSet(new IdList(DiagramFactor.getObjectType(), setCommand.getPreviousDataValue()));
+			ORefSet currentDiagramFactorIds = new ORefSet(new IdList(DiagramFactor.getObjectType(), setCommand.getDataValue()));
+			ORefSet nonOverlappingRefs = ORefSet.getNonOverlappingRefs(previousDiagramFactorIds, currentDiagramFactorIds);
+			for(ORef diagramFactorRef : nonOverlappingRefs)
+			{
+				DiagramFactor diagramFactor = DiagramFactor.find(getProject(), diagramFactorRef);
+				if (diagramFactor.getWrappedType() == objectType)
+					return true;
+			}
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+		}
+		
+		return false;
+	}
+
 	public int getCommandListenerCount()
 	{
 		return commandExecutedListeners.size();
