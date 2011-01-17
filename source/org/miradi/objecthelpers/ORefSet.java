@@ -43,6 +43,11 @@ public class ORefSet extends HashSet<ORef>
 		this();
 		add(ref);
 	}
+	
+	public ORefSet(IdList idList)
+	{
+		this(new ORefList(idList));
+	}
 
 	public ORefSet(ORefList refList)
 	{
@@ -118,5 +123,26 @@ public class ORefSet extends HashSet<ORef>
 	public boolean hasData()
 	{
 		return !isEmpty();
+	}
+	
+	public static ORefSet getNonOverlappingRefs(ORefSet list1, ORefSet list2)
+	{
+		ORefSet nonOverlappingRefs = new ORefSet();
+		nonOverlappingRefs.addAll(getNonOverlapping(list1, list2));
+		nonOverlappingRefs.addAll(getNonOverlapping(list2, list1));
+		
+		return nonOverlappingRefs;
+	}
+	
+	private static ORefSet getNonOverlapping(ORefSet smallerList, ORefSet biggerList)
+	{
+		ORefSet nonOverlapping = new ORefSet();
+		for (ORef ref : biggerList)
+		{
+			if (!smallerList.contains(ref))
+				nonOverlapping.add(ref);
+		}
+		
+		return nonOverlapping;
 	}
 }

@@ -89,6 +89,11 @@ public class ORefList
 		}
 	}
 	
+	public ORefList(IdList idList)
+	{
+		this(idList.getObjectType(), idList);
+	}
+	
 	public ORefList(int objectType, IdList idList)
 	{
 		this();
