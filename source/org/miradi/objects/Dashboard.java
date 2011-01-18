@@ -315,10 +315,16 @@ public class Dashboard extends BaseObject
 				Strategy.getObjectType(),
 		};
 		
-		ORefSet allFactorRefs = new ORefSet();
-		for (int index = 0; index < factorTypesToCount.length; ++index)
+		ORefSet conceptualModelRefs = getProject().getConceptualModelDiagramPool().getRefSet();
+		HashSet<Factor> allFactorRefs = new HashSet<Factor>();
+		for(ORef conceptualModelRef : conceptualModelRefs)
 		{
-			allFactorRefs.addAll(getProject().getPool(factorTypesToCount[index]).getRefSet());
+			ConceptualModelDiagram conceptualModel = ConceptualModelDiagram.find(getProject(), conceptualModelRef);
+			for (int index = 0; index < factorTypesToCount.length; ++index)
+			{
+				HashSet<Factor> factorsOnDiagram = conceptualModel.getFactors(factorTypesToCount[index]);
+				allFactorRefs.addAll(factorsOnDiagram);
+			}
 		}
 
 		return Integer.toString(allFactorRefs.size());
