@@ -51,6 +51,7 @@ abstract public class PersistentSplitPane extends JSplitPane
 		setDividerLocation(getSplitterLocation(name));
 	}
 	
+	@Override
 	public void setDividerLocation(int location)
 	{
 		super.setDividerLocation(location);
@@ -114,6 +115,7 @@ abstract public class PersistentSplitPane extends JSplitPane
 		setDividerLocation(location);
 	}
 	
+	@Override
 	public Container getParent()
 	{
 		Container parent = super.getParent();
