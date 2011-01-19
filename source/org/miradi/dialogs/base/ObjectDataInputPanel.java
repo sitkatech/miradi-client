@@ -28,6 +28,7 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import org.martus.swing.HyperlinkHandler;
 import org.martus.swing.UiLabel;
 import org.miradi.dialogfields.ObjectDataField;
 import org.miradi.dialogfields.ObjectDataInputField;
@@ -42,6 +43,8 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.Translation;
+import org.miradi.wizard.MiradiHtmlViewer;
 
 import com.jhlabs.awt.Alignment;
 import com.jhlabs.awt.GridLayoutPlus;
@@ -93,6 +96,32 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanelW
 	public ObjectDataInputField addRadioButtonFieldWithCustomLabel(int objectType, String fieldTag, ChoiceQuestion question, String customLabel)
 	{
 		RadioButtonsField radioButtonField = createRadioButtonsField(objectType, fieldTag, question);
+		Vector<JComponent> radioButtons = createRadioButtons(question, radioButtonField);
+		
+		return addRadioButtonFieldWithCustomLabel(radioButtonField, customLabel, radioButtons.toArray(new JComponent[0]));	
+	}
+	
+	public ObjectDataInputField addRadioButtonFieldWithCustomLabelAndLink(int objectType, String fieldTag, ChoiceQuestion question, String customLabel, String htmlFileName) throws Exception
+	{
+		RadioButtonsField radioButtonField = createRadioButtonsField(objectType, fieldTag, question);
+		Vector<JComponent> components = createRadioButtons(question, radioButtonField);
+		components.add(createHyperLinkPanel(htmlFileName));
+		
+		return addRadioButtonFieldWithCustomLabel(radioButtonField, customLabel, components.toArray(new JComponent[0]));	
+	}
+
+	private MiradiHtmlViewer createHyperLinkPanel(String htmlFileName)
+			throws Exception
+	{
+		HyperlinkHandler handler = getMainWindow().getHyperlinkHandler();
+		MiradiHtmlViewer logoPanel = new MiradiHtmlViewer(getMainWindow(), handler);
+		String html = Translation.getHtmlContent(htmlFileName);
+		logoPanel.setText(html);
+		return logoPanel;
+	}
+
+	private Vector<JComponent> createRadioButtons(ChoiceQuestion question, RadioButtonsField radioButtonField)
+	{
 		Vector<JComponent> radioButtons = new Vector<JComponent>();
 		CodeList allCodes = question.getAllCodes();
 		for (int index = 0; index < allCodes.size(); ++index)
@@ -100,8 +129,7 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanelW
 			JComponent radioButton = radioButtonField.getComponent(question.findIndexByCode(allCodes.get(index)));
 			radioButtons.add(radioButton);
 		}
-		
-		return addRadioButtonFieldWithCustomLabel(radioButtonField, customLabel, radioButtons.toArray(new JComponent[0]));	
+		return radioButtons;
 	}
 	
 	public ObjectDataInputField addRadioButtonFieldWithCustomLabel(ObjectDataInputField field, String customLabel, JComponent[] radioButtons)
