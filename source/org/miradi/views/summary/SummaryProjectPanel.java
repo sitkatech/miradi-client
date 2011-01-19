@@ -28,8 +28,11 @@ import org.miradi.icons.MiradiApplicationIcon;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.TncProjectData;
 import org.miradi.project.Project;
+import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.LanguageQuestion;
+import org.miradi.questions.TncProjectSharingQuestion;
 import org.miradi.rtf.RtfFormExporter;
 import org.miradi.rtf.RtfWriter;
 
@@ -40,6 +43,8 @@ public class SummaryProjectPanel extends ObjectDataInputPanel
 		super(projectToUse, refToUse);
 		
 		addField(createStringField(ProjectMetadata.TAG_PROJECT_NAME));
+		ChoiceQuestion tncProjectSharingQuestion = getProject().getQuestion(TncProjectSharingQuestion.class);
+		addRadioButtonFieldWithCustomLabel(TncProjectData.getObjectType(), TncProjectData.TAG_PROJECT_SHARING_CODE, tncProjectSharingQuestion, EAM.text("Share Outside of TNC?"));
 		addField(createChoiceField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_PROJECT_LANGUAGE, new LanguageQuestion()));
 		addField(createDateChooserField(ProjectMetadata.TAG_DATA_EFFECTIVE_DATE));
 		addField(createReadonlyTextField(ProjectMetadata.PSEUDO_TAG_PROJECT_FILENAME));
@@ -53,6 +58,7 @@ public class SummaryProjectPanel extends ObjectDataInputPanel
 		addField(createMultilineField(ProjectMetadata.TAG_PROJECT_STATUS));
 		addField(createMultilineField(ProjectMetadata.TAG_NEXT_STEPS));
 		
+		setObjectRefs(new ORef[]{refToUse, getProject().getSingletonObjectRef(TncProjectData.getObjectType()), });
 		updateFieldsFromProject();
 	}
 
