@@ -35,7 +35,7 @@ public class StrategicRowColumnProvider implements RowColumnProvider
 	public CodeList getColumnListToShow()
 	{
 		return new CodeList(new String[] {
-				Strategy.PSEUDO_TAG_RATING_SUMMARY,
+				CustomPlanningColumnsQuestion.META_CURRENT_RATING,
 				CustomPlanningColumnsQuestion.META_WHO_TOTAL,
 				BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
 				Desire.TAG_FULL_TEXT,
