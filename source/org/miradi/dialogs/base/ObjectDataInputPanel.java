@@ -28,14 +28,15 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import org.martus.swing.HyperlinkHandler;
 import org.martus.swing.UiLabel;
 import org.miradi.dialogfields.ObjectDataField;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogfields.RadioButtonsField;
+import org.miradi.dialogs.fieldComponents.ClickablePanelTitleLabel;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.dialogs.fieldComponents.PanelFieldLabel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.icons.QuestionMarkIcon;
 import org.miradi.ids.BaseId;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
@@ -43,8 +44,6 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
-import org.miradi.utils.Translation;
-import org.miradi.wizard.MiradiHtmlViewer;
 
 import com.jhlabs.awt.Alignment;
 import com.jhlabs.awt.GridLayoutPlus;
@@ -110,14 +109,9 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanelW
 		return addRadioButtonFieldWithCustomLabel(radioButtonField, customLabel, components.toArray(new JComponent[0]));	
 	}
 
-	private MiradiHtmlViewer createHyperLinkPanel(String htmlFileName)
-			throws Exception
+	private JComponent createHyperLinkPanel(String htmlFileName) throws Exception
 	{
-		HyperlinkHandler handler = getMainWindow().getHyperlinkHandler();
-		MiradiHtmlViewer logoPanel = new MiradiHtmlViewer(getMainWindow(), handler);
-		String html = Translation.getHtmlContent(htmlFileName);
-		logoPanel.setText(html);
-		return logoPanel;
+		return new ClickablePanelTitleLabel(new QuestionMarkIcon(), htmlFileName);
 	}
 
 	private Vector<JComponent> createRadioButtons(ChoiceQuestion question, RadioButtonsField radioButtonField)
