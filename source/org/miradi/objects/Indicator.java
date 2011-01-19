@@ -33,6 +33,7 @@ import org.miradi.objecthelpers.DirectThreatSet;
 import org.miradi.objecthelpers.NonDraftStrategySet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.StringStringMap;
 import org.miradi.objecthelpers.TargetSet;
@@ -291,6 +292,27 @@ public class Indicator extends BaseObject
 		return futureStatusSummary.get();
 	}
 		
+	public ORefList getRelevantDesireRefs() throws Exception
+	{
+		ORefList relevantDesireRefs = new ORefList();
+		relevantDesireRefs.addAll(extractRelevantDesireRefs(getProject().getGoalPool().getRefSet()));
+		relevantDesireRefs.addAll(extractRelevantDesireRefs(getProject().getObjectivePool().getRefSet()));
+		return relevantDesireRefs;
+	}
+
+	private ORefList extractRelevantDesireRefs(ORefSet desireRefs) throws Exception
+	{
+		ORefList relevantDesireRefs = new ORefList();
+		for(ORef desireRef : desireRefs)
+		{
+			Desire goal = Desire.findDesire(getProject(), desireRef);
+			if(goal.getRelevantIndicatorRefList().contains(getRef()))
+				relevantDesireRefs.add(desireRef);
+		}
+		
+		return relevantDesireRefs;
+	}
+
 	@Override
 	public ORefList getAllObjectsToDeepCopy(ORefList deepCopiedFactorRefs)
 	{
