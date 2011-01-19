@@ -225,7 +225,7 @@ public class XmpzXmlExporter extends XmlExporter implements XmpzXmlConstants
 		if (getTncProjectData().canShareOutsideOfTnc())
 			shareOutSideOfTnc = BooleanData.BOOLEAN_TRUE;
 		
-		writeOptionalElement(getWriter(), PROJECT_SUMMARY + XmlSchemaCreator.TNC_PROJECT_DATA_SHARE_OUTSIDE_TNC, shareOutSideOfTnc);
+		writeOptionalElement(getWriter(), PROJECT_SUMMARY + XmlSchemaCreator.PROJECT_DATA_SHARING_LEVEL, shareOutSideOfTnc);
 	}
 	
 	private void writeExternalAppIds() throws Exception

@@ -61,7 +61,7 @@ public class ProjectSummaryImporter extends AbstractXmpzObjectImporter
 	
 	private void writeShareOutsideOfTncElement(Node projectSumaryNode) throws Exception
 	{
-		Node shareOutsideTncNode = getImporter().getNode(projectSumaryNode, getPoolName() + XmlSchemaCreator.TNC_PROJECT_DATA_SHARE_OUTSIDE_TNC);
+		Node shareOutsideTncNode = getImporter().getNode(projectSumaryNode, getPoolName() + XmlSchemaCreator.PROJECT_DATA_SHARING_LEVEL);
 		String isShareWithAnyOneCode = TncProjectSharingQuestion.SHARE_TNC_ONLY;
 		if (getImporter().isTrue(shareOutsideTncNode.getTextContent()))
 			isShareWithAnyOneCode = TncProjectSharingQuestion.SHARE_OUTSIDE_TNC;

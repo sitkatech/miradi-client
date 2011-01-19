@@ -629,7 +629,7 @@ public class XmlSchemaCreator implements XmpzXmlConstants
 	public static final String TNC_TERRESTRIAL_ECO_REGION = "TNCTerrestrialEcoRegion";
 	public static final String TNC_MARINE_ECO_REGION = "TNCMarineEcoRegion";
 	public static final String TNC_FRESHWATER_ECO_REGION = "TNCFreshwaterEcoRegion";
-	public static final String TNC_PROJECT_DATA_SHARE_OUTSIDE_TNC = "ShareOutsideTnc";
+	public static final String PROJECT_DATA_SHARING_LEVEL = "ShareOutsideTnc";
 	public static final String WWF_MANAGING_OFFICES = WwfProjectData.TAG_MANAGING_OFFICES;
 	public static final String WWF_REGIONS = WwfProjectData.TAG_REGIONS;
 	public static final String WWF_ECOREGIONS = WwfProjectData.TAG_ECOREGIONS;
