@@ -43,6 +43,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.StringList;
 
 public class ColumnManager
 {
@@ -251,12 +252,21 @@ public class ColumnManager
 	{
 		ChoiceQuestion question = project.getQuestion(CustomPlanningColumnsQuestion.class);
 		CodeList validColumnCodes = question.getAllCodes();
+		validColumnCodes.addAll(getLegacyUselessButHarmlessColumnCodes());
 		CodeList originalCodeList = new CodeList(rawCodes);
 		rawCodes.retainAll(validColumnCodes);
 		
 		boolean wereCodesRemoved = originalCodeList.size() != rawCodes.size();
 		originalCodeList.subtract(validColumnCodes);
 		if (wereCodesRemoved)
-			EAM.logWarning(("Column codes list was filtered and had unknown codes removed from it. Codes removed:" + originalCodeList));
+			EAM.logWarning(("Custom tab list of custom codes was filtered and had unknown codes removed from it. Codes removed:" + originalCodeList));
+	}
+
+	private static StringList getLegacyUselessButHarmlessColumnCodes()
+	{
+		StringList legacyCodes = new StringList();
+		legacyCodes.add("PseudoTaskBudgetTotal");
+		legacyCodes.add("Who");
+		return legacyCodes;
 	}
 }
