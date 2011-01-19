@@ -31,6 +31,7 @@ class ProjectSummarySchemaElement extends ObjectSchemaElement
 		super(XmpzXmlConstants.PROJECT_SUMMARY);
 	
 		createOptionalTextField(ProjectMetadata.TAG_PROJECT_NAME);
+		createOptionalBooleanField(XmlSchemaCreator.TNC_PROJECT_DATA_SHARE_OUTSIDE_TNC);
 		createOptionalCodeField(ProjectMetadata.TAG_PROJECT_LANGUAGE, XmlSchemaCreator.VOCABULARY_LANGUAGE_CODE);
 		createOptionalDateField(ProjectMetadata.TAG_DATA_EFFECTIVE_DATE);
 		createOptionalTextField(ProjectMetadata.TAG_OTHER_ORG_PROJECT_NUMBER);

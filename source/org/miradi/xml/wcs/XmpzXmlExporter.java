@@ -200,7 +200,6 @@ public class XmpzXmlExporter extends XmlExporter implements XmpzXmlConstants
 		writeStartElement(out, TNC_PROJECT_DATA);
 		
 		writeOptionalElementWithSameTag(TNC_PROJECT_DATA, getMetadata(), ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE);
-		writeShareOutsideOfTncElement();
 		writeOptionalElementWithSameTag(TNC_PROJECT_DATA, getMetadata(), ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
 		writeOptionalCodeListElement(TNC_PROJECT_DATA, XmlSchemaCreator.TNC_PROJECT_PLACE_TYPES, getTncProjectData(), TncProjectData.TAG_PROJECT_PLACE_TYPES);
 		writeOptionalCodeListElement(TNC_PROJECT_DATA, XmlSchemaCreator.TNC_ORGANIZATIONAL_PRIORITIES, getTncProjectData(), TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES);
@@ -226,7 +225,7 @@ public class XmpzXmlExporter extends XmlExporter implements XmpzXmlConstants
 		if (getTncProjectData().canShareOutsideOfTnc())
 			shareOutSideOfTnc = BooleanData.BOOLEAN_TRUE;
 		
-		writeOptionalElement(getWriter(), TNC_PROJECT_DATA + XmlSchemaCreator.TNC_PROJECT_DATA_SHARE_OUTSIDE_TNC, shareOutSideOfTnc);
+		writeOptionalElement(getWriter(), PROJECT_SUMMARY + XmlSchemaCreator.TNC_PROJECT_DATA_SHARE_OUTSIDE_TNC, shareOutSideOfTnc);
 	}
 	
 	private void writeExternalAppIds() throws Exception
@@ -344,6 +343,7 @@ public class XmpzXmlExporter extends XmlExporter implements XmpzXmlConstants
 		writeStartElement(out, PROJECT_SUMMARY);
 		
 		writeOptionalElement(PROJECT_SUMMARY, ProjectMetadata.TAG_PROJECT_NAME, getMetadata(), ProjectMetadata.TAG_PROJECT_NAME);
+		writeShareOutsideOfTncElement();
 		writeOptionalElement(PROJECT_SUMMARY, ProjectMetadata.TAG_PROJECT_LANGUAGE, getMetadata(), ProjectMetadata.TAG_PROJECT_LANGUAGE);
 		writeOptionalElement(PROJECT_SUMMARY, ProjectMetadata.TAG_DATA_EFFECTIVE_DATE, getMetadata(), ProjectMetadata.TAG_DATA_EFFECTIVE_DATE);
 		writeOptionalElement(PROJECT_SUMMARY, ProjectMetadata.TAG_OTHER_ORG_PROJECT_NUMBER, getMetadata(), ProjectMetadata.TAG_OTHER_ORG_PROJECT_NUMBER);
