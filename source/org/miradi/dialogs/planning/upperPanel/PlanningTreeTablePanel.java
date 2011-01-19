@@ -212,80 +212,71 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 
 		mainTableScrollPane.showVerticalScrollBar();
 
-		CodeList columnsToShow = getColumnsToShow();
+		CodeList columnsToShow = getRowColumnProvider().getColumnListToShow();
+		
 		if (columnsToShow.contains(Measurement.META_COLUMN_TAG))
 			multiModel.addModel(measurementModel);
 
 		if (columnsToShow.contains(Indicator.META_COLUMN_TAG))
 			multiModel.addModel(futureStatusModel);
 		
-		if (shouldShow(WorkPlanColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE))
+		if (columnsToShow.contains(WorkPlanColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE))
 			multiModel.addModel(workUnitsTableModel);
 		
-		if (shouldShow(WorkPlanColumnConfigurationQuestion.META_PROJECT_RESOURCE_WORK_UNITS_COLUMN_CODE))
+		if (columnsToShow.contains(WorkPlanColumnConfigurationQuestion.META_PROJECT_RESOURCE_WORK_UNITS_COLUMN_CODE))
 			multiModel.addModel(resourceWorkUnitsTableModel);
 		
-		if (shouldShow(WorkPlanColumnConfigurationQuestion.META_PROJECT_RESOURCE_BUDGET_DETAILS_COLUMN_CODE))
+		if (columnsToShow.contains(WorkPlanColumnConfigurationQuestion.META_PROJECT_RESOURCE_BUDGET_DETAILS_COLUMN_CODE))
 			multiModel.addModel(resourceBudgetDetailsTableModel);
 		
-		if (shouldShow(WorkPlanColumnConfigurationQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE))
+		if (columnsToShow.contains(WorkPlanColumnConfigurationQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE))
 			multiModel.addModel(expenseAmountsTableModel);
 		
-		if (shouldShow(WorkPlanColumnConfigurationQuestion.META_FUNDING_SOURCE_EXPENSE_COLUMN_CODE))
+		if (columnsToShow.contains(WorkPlanColumnConfigurationQuestion.META_FUNDING_SOURCE_EXPENSE_COLUMN_CODE))
 			multiModel.addModel(fundingSourceExpenseTableModel);
 		
-		if (shouldShow(WorkPlanColumnConfigurationQuestion.META_ACCOUNTING_CODE_EXPENSE_COLUMN_CODE))
+		if (columnsToShow.contains(WorkPlanColumnConfigurationQuestion.META_ACCOUNTING_CODE_EXPENSE_COLUMN_CODE))
 			multiModel.addModel(accountingCodeExpenseTableModel);
 		
-		if (shouldShow(WorkPlanColumnConfigurationQuestion.META_FUNDING_SOURCE_BUDGET_DETAILS_COLUMN_CODE))
+		if (columnsToShow.contains(WorkPlanColumnConfigurationQuestion.META_FUNDING_SOURCE_BUDGET_DETAILS_COLUMN_CODE))
 			multiModel.addModel(fundingSourceBudgetDetailsTableModel);
 		
-		if (shouldShow(WorkPlanColumnConfigurationQuestion.META_ACCOUNTING_CODE_BUDGET_DETAILS_COLUMN_CODE))
+		if (columnsToShow.contains(WorkPlanColumnConfigurationQuestion.META_ACCOUNTING_CODE_BUDGET_DETAILS_COLUMN_CODE))
 			multiModel.addModel(accoundingCodeBudgetDetailsTableModel);
 		
-		if (shouldShow(WorkPlanColumnConfigurationQuestion.META_BUDGET_DETAIL_COLUMN_CODE))
+		if (columnsToShow.contains(WorkPlanColumnConfigurationQuestion.META_BUDGET_DETAIL_COLUMN_CODE))
 			multiModel.addModel(budgetDetailsTableModel);
 		
-		if (shouldShow(WorkPlanColumnConfigurationQuestion.META_ANALYSIS_WORK_UNITS_COLUMN_CODE))
+		if (columnsToShow.contains(WorkPlanColumnConfigurationQuestion.META_ANALYSIS_WORK_UNITS_COLUMN_CODE))
 			multiModel.addModel(rollupReportsWorkUnitsModel);
 		
-		if (shouldShow(WorkPlanColumnConfigurationQuestion.META_ANALYSIS_EXPENSES_CODE))
+		if (columnsToShow.contains(WorkPlanColumnConfigurationQuestion.META_ANALYSIS_EXPENSES_CODE))
 			multiModel.addModel(rollupReportsExpenseModel);
 		
-		if (shouldShow(WorkPlanColumnConfigurationQuestion.META_ANALYSIS_BUDGET_DETAILS_COLUMN_CODE))
+		if (columnsToShow.contains(WorkPlanColumnConfigurationQuestion.META_ANALYSIS_BUDGET_DETAILS_COLUMN_CODE))
 			multiModel.addModel(rollupReportsBudgetDetailsModel);
 		
-		if (shouldShow(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_ONE_WORK_UNITS_COLUMN_CODE))
+		if (columnsToShow.contains(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_ONE_WORK_UNITS_COLUMN_CODE))
 			multiModel.addModel(budgetCategoryOneWorkUnitsModel);
 		
-		if (shouldShow(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_ONE_EXPENSE_COLUMN_CODE))
+		if (columnsToShow.contains(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_ONE_EXPENSE_COLUMN_CODE))
 			multiModel.addModel(budgetCategoryOneExpenseModel);
 		
-		if (shouldShow(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_ONE_BUDGET_DETAILS_COLUMN_CODE))
+		if (columnsToShow.contains(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_ONE_BUDGET_DETAILS_COLUMN_CODE))
 			multiModel.addModel(budgetCategoryOneBudgetDetailsModel);
 		
-		if (shouldShow(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_TWO_WORK_UNITS_COLUMN_CODE))
+		if (columnsToShow.contains(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_TWO_WORK_UNITS_COLUMN_CODE))
 			multiModel.addModel(budgetCategoryTwoWorkUnitsModel);
 		
-		if (shouldShow(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_TWO_EXPENSE_COLUMN_CODE))
+		if (columnsToShow.contains(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_TWO_EXPENSE_COLUMN_CODE))
 			multiModel.addModel(budgetCategoryTwoExpenseModel);
 		
-		if (shouldShow(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_TWO_BUDGET_DETAILS_COLUMN_CODE))
+		if (columnsToShow.contains(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_TWO_BUDGET_DETAILS_COLUMN_CODE))
 			multiModel.addModel(budgetCategoryTwoBudgetDetailsModel);
 		
 		mainTable.updateToReflectNewColumns();
 		validate();
 		repaint();
-	}
-
-	private boolean shouldShow(String metaColumnCode) throws Exception
-	{
-		return getColumnsToShow().contains(metaColumnCode);
-	}
-
-	private CodeList getColumnsToShow() throws Exception
-	{
-		return getRowColumnProvider().getColumnListToShow();
 	}
 
 	public TableExporter getTableForExporting() throws Exception
