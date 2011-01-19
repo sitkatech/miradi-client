@@ -21,9 +21,9 @@ package org.miradi.questions;
 
 import org.miradi.main.EAM;
 
-public class TncProjectSharingQuestion extends StaticChoiceQuestion
+public class ProjectSharingQuestion extends StaticChoiceQuestion
 {
-	public TncProjectSharingQuestion()
+	public ProjectSharingQuestion()
 	{
 		super(getSharingCodes());
 	}

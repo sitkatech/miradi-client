@@ -56,7 +56,7 @@ import org.miradi.objects.TncProjectData;
 import org.miradi.objects.Xenodata;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.questions.ResourceRoleQuestion;
-import org.miradi.questions.TncProjectSharingQuestion;
+import org.miradi.questions.ProjectSharingQuestion;
 import org.miradi.questions.TrendQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.utils.CodeList;
@@ -239,10 +239,10 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		getProject().populateEverything();
 		ORef tncProjectDataRef = getProject().getSingletonObjectRef(TncProjectData.getObjectType());
 		
-		getProject().fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_PROJECT_SHARING_CODE, TncProjectSharingQuestion.SHARE_OUTSIDE_TNC);
+		getProject().fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_PROJECT_SHARING_CODE, ProjectSharingQuestion.SHARE_OUTSIDE_TNC);
 		verifyImport();
 		
-		getProject().fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_PROJECT_SHARING_CODE, TncProjectSharingQuestion.SHARE_TNC_ONLY);
+		getProject().fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_PROJECT_SHARING_CODE, ProjectSharingQuestion.SHARE_TNC_ONLY);
 		verifyImport();
 	}
 

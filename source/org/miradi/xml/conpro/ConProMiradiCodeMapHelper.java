@@ -30,7 +30,7 @@ import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.questions.TncOrganizationalPrioritiesQuestion;
 import org.miradi.questions.TncProjectPlaceTypeQuestion;
-import org.miradi.questions.TncProjectSharingQuestion;
+import org.miradi.questions.ProjectSharingQuestion;
 import org.miradi.questions.TrendQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.utils.ConproMiradiHabitatCodeMap;
@@ -84,8 +84,8 @@ public class ConProMiradiCodeMapHelper
 		viabilityModeMap.put(ViabilityModeQuestion.TNC_STYLE_CODE, "kea");
 		
 		tncProjectSharingMap = new HashMap<String, String>();
-		tncProjectSharingMap.put(TncProjectSharingQuestion.SHARE_TNC_ONLY, "false");
-		tncProjectSharingMap.put(TncProjectSharingQuestion.SHARE_OUTSIDE_TNC, "true");
+		tncProjectSharingMap.put(ProjectSharingQuestion.SHARE_TNC_ONLY, "false");
+		tncProjectSharingMap.put(ProjectSharingQuestion.SHARE_OUTSIDE_TNC, "true");
 		
 		indicatorRatingSourceMap = new HashMap<String, String>();
 		indicatorRatingSourceMap.put(RatingSourceQuestion.NOT_SPECIFIED_CODE, "Not Specified");
