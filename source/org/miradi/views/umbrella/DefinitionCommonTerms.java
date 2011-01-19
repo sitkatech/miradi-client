@@ -340,6 +340,11 @@ public class DefinitionCommonTerms
 		def = Definition.createDefinitionFromHtmlFilename(EAM.text("Bundle Rules"), "ThreatRatingBundleRules.html");
 		defs.put("Definition:ShowRulesBundles", def);
 		
+		def = Definition.createDefinitionFromTextString(EAM.text("ProjectSharing"), EAM.text("If this project is uploaded to ConPro, this setting will control who can see the data." +
+																							 "Public (anyone) means that anyone who uses ConPro will be able to view all the project data, and can download a copy of the project to use in Miradi." +
+																							 "Within your Organization Only means that only ConPro users associated with the same organization as this project will be able to view it." +
+																							 "With either setting, nobody will be able to modify the project data within Miradi, nor to upload new versions, unless they have specifically been granted permission to do so."));
+		defs.put("Definition:ProjectSharing", def);
 		
 		definitions = defs;
     }
