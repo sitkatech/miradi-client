@@ -44,7 +44,7 @@ public class SummaryProjectPanel extends ObjectDataInputPanel
 		
 		addField(createStringField(ProjectMetadata.TAG_PROJECT_NAME));
 		ChoiceQuestion tncProjectSharingQuestion = getProject().getQuestion(ProjectSharingQuestion.class);
-		addRadioButtonFieldWithCustomLabelAndLink(TncProjectData.getObjectType(), TncProjectData.TAG_PROJECT_SHARING_CODE, tncProjectSharingQuestion, EAM.text("ConPro Data Sharing:"), "ProjectSharingMessage.html");
+		addRadioButtonFieldWithCustomLabelAndLink(TncProjectData.getObjectType(), TncProjectData.TAG_PROJECT_SHARING_CODE, tncProjectSharingQuestion, "", "ProjectSharingMessage.html");
 		addField(createChoiceField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_PROJECT_LANGUAGE, new LanguageQuestion()));
 		addField(createDateChooserField(ProjectMetadata.TAG_DATA_EFFECTIVE_DATE));
 		addField(createReadonlyTextField(ProjectMetadata.PSEUDO_TAG_PROJECT_FILENAME));
