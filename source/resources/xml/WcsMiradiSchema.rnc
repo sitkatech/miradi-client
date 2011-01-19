@@ -54,7 +54,7 @@ ConservationProject.element = element miradi:ConservationProject
 ProjectSummary.element = element miradi:ProjectSummary
 {
   element miradi:ProjectSummaryProjectName { text }? &
-  element miradi:ProjectSummaryShareOutsideTnc { xsd:boolean }? &
+  element miradi:ProjectSummaryShareOutsideOrganization { xsd:boolean }? &
   element miradi:ProjectSummaryProjectLanguage { vocabulary_language_code  }? &
   element miradi:ProjectSummaryDataEffectiveDate { vocabulary_date }? &
   element miradi:ProjectSummaryOtherOrgProjectNumber { text }? &
