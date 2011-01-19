@@ -100,6 +100,7 @@ import org.miradi.objects.TestConceptualModelDiagram;
 import org.miradi.objects.TestConceptualModelThreatRatings;
 import org.miradi.objects.TestCostAllocationRule;
 import org.miradi.objects.TestDashboard;
+import org.miradi.objects.TestDashboardEffectiveMapCacheManager;
 import org.miradi.objects.TestDiagramChainObject;
 import org.miradi.objects.TestDiagramContentsObject;
 import org.miradi.objects.TestDiagramLink;
@@ -163,10 +164,10 @@ import org.miradi.project.TestProject;
 import org.miradi.project.TestProjectCalendar;
 import org.miradi.project.TestProjectCommandExecutions;
 import org.miradi.project.TestProjectInfo;
-import org.miradi.project.TestProjectRepairer;
-import org.miradi.project.TestProjectTotalCalculator;
 import org.miradi.project.TestProjectMpzImporter;
 import org.miradi.project.TestProjectMpzWriter;
+import org.miradi.project.TestProjectRepairer;
+import org.miradi.project.TestProjectTotalCalculator;
 import org.miradi.project.TestRealProject;
 import org.miradi.project.TestScopeBoxPool;
 import org.miradi.project.TestSimpleThreatFormula;
@@ -362,6 +363,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestResultsChainCreatorHelper.class));
 		suite.addTest(new TestSuite(TestCategorizedQuantity.class));
 		suite.addTest(new TestSuite(TestThreatTargetVirtualLinkHelper.class));
+		suite.addTest(new TestSuite(TestDashboardEffectiveMapCacheManager.class));
 		
 		// objects package
 		suite.addTest(new TestSuite(TestStrategy.class));
