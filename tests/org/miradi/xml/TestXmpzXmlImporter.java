@@ -98,7 +98,7 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 	private void verifyDynamicProgressCodesInSchema(String thirdLevelCode) throws Exception
 	{
 		Dashboard dashboard = getDashboard();
-		OpenStandardsDynamicProgressStatusQuestion question = new OpenStandardsDynamicProgressStatusQuestion(dashboard, thirdLevelCode);
+		OpenStandardsDynamicProgressStatusQuestion question = new OpenStandardsDynamicProgressStatusQuestion(getProject(), thirdLevelCode);
 		CodeList allCodes = question.getAllCodes();
 		for (int index = 0; index < allCodes.size(); ++index)
 		{
