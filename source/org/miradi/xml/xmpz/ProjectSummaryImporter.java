@@ -46,7 +46,7 @@ public class ProjectSummaryImporter extends AbstractXmpzObjectImporter
 		Node projectSumaryNode = getImporter().getNode(getImporter().getRootNode(), XmpzXmlConstants.PROJECT_SUMMARY);
 				
 		importProjectMetadataField(projectSumaryNode, ProjectMetadata.TAG_PROJECT_NAME);
-		writeShareOutsideOfTncElement(projectSumaryNode);
+		writeDataSharingLevelElement(projectSumaryNode);
 		importProjectMetadataField(projectSumaryNode, ProjectMetadata.TAG_PROJECT_LANGUAGE);
 		importProjectMetadataField(projectSumaryNode, ProjectMetadata.TAG_DATA_EFFECTIVE_DATE);
 		importProjectMetadataField(projectSumaryNode, ProjectMetadata.TAG_OTHER_ORG_PROJECT_NUMBER);
@@ -59,7 +59,7 @@ public class ProjectSummaryImporter extends AbstractXmpzObjectImporter
 		importCodeField(projectSumaryNode, getMetadataRef(), ProjectMetadata.TAG_THREAT_RATING_MODE, new ThreatRatingModeChoiceQuestion());
 	}
 	
-	private void writeShareOutsideOfTncElement(Node projectSumaryNode) throws Exception
+	private void writeDataSharingLevelElement(Node projectSumaryNode) throws Exception
 	{
 		Node shareOutsideTncNode = getImporter().getNode(projectSumaryNode, getPoolName() + XmlSchemaCreator.PROJECT_DATA_SHARING_LEVEL);
 		String isShareWithAnyOneCode = TncProjectSharingQuestion.SHARE_TNC_ONLY;
