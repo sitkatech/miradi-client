@@ -1,0 +1,16 @@
+License and Copying
+
+Miradi is distributed under the terms of the GNU General Public License 
+version 3, as published by the Free Software Foundation. Miradi is 
+distributed in the hope that it will be useful, but without any warranty; 
+without even the implied warranty of merchantability or fitness for a 
+particular purpose.
+
+Miradi development is done using Eclipse as the editing environment, 
+and Sun's Java 5 or 6 compiler. You will also need the third-party 
+libraries that are available from the normal Miradi download site.
+
+If you have any questions about this source code, please send them to:
+   info@miradi.org
+   
+   
