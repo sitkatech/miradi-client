@@ -673,6 +673,9 @@
 		<arg value="--message"/>
 		<arg value="Updated PO files: ${version.timestamp}"/>
 	</exec>
+	<exec executable="hg" failonerror="false" dir="${translations.dir}">
+		<arg value="rebase"/>
+	</exec>
 	<exec executable="hg" failonerror="true" dir="${translations.dir}">
 		<arg value="push"/>
 	</exec>
