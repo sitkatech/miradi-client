@@ -27,13 +27,12 @@ import org.miradi.icons.OpenStandardsNotApplicableIcon;
 import org.miradi.icons.OpenStandardsNotStartedIcon;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.AbstractStringKeyMap;
-import org.miradi.project.Project;
 
 public class OpenStandardsDynamicProgressStatusQuestion extends DynamicChoiceQuestion
 {
-	public OpenStandardsDynamicProgressStatusQuestion(Project projectToUse, String thirdLevelCodeToUse)
+	public OpenStandardsDynamicProgressStatusQuestion(AbstractStringKeyMap cachedDashboardEffectiveMapToUse, String thirdLevelCodeToUse)
 	{
-		project = projectToUse;
+		cachedDashboardEffectiveMap = cachedDashboardEffectiveMapToUse;
 		thirdLevelCode = thirdLevelCodeToUse;
 	}
 	
@@ -67,17 +66,10 @@ public class OpenStandardsDynamicProgressStatusQuestion extends DynamicChoiceQue
 
 	private String getThirdLevelValue() throws Exception
 	{
-		AbstractStringKeyMap cachedDashboardEffectiveMap = getProject().getCachedDashboardEffectiveMap();
-		
 		return cachedDashboardEffectiveMap.get(thirdLevelCode);
 	}
 
-	private Project getProject()
-	{
-		return project;
-	}
-
-	private Project project;
+	private AbstractStringKeyMap cachedDashboardEffectiveMap;
 	private String thirdLevelCode;
 	
 	public static final String NOT_SPECIFIED_CODE = "";
