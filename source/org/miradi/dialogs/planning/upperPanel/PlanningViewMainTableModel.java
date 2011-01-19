@@ -386,7 +386,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		if(columnTag.equals(Indicator.TAG_PRIORITY))
 			return true;
 		
-		if(columnTag.equals(CustomPlanningColumnsQuestion.META_THREAT_RATING))
+		if(columnTag.equals(CustomPlanningColumnsQuestion.META_CURRENT_RATING))
 			return true;
 		
 		return false;
@@ -473,7 +473,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			String columnTag = getTagForCell(baseObject.getType(), column);
 			if(isWhoColumn(columnTag))
 				return appendedProjectResources(baseObject);
-			if (columnTag.equals(CustomPlanningColumnsQuestion.META_THREAT_RATING))
+			if (columnTag.equals(CustomPlanningColumnsQuestion.META_CURRENT_RATING))
 				return getRatingChoiceItem(baseObject);
 			
 			if (! baseObject.doesFieldExist(columnTag))
