@@ -1,0 +1,818 @@
+<!-- Ant build file - Needs Ant v1.6.x or later -->
+<project name="miradi" default="release" basedir="../../">
+    <description>
+        Miradi Build File
+    </description>
+	
+	<!-- product version -->
+	<!-- NOTE: Remember to change install4j version too! -->
+	<property name="version.prefix" value="INTERNAL PRE-"/>
+	<property name="version.main" value = "3.3"/>
+	<property name="version.minor" value = ".0"/>
+	<property name="version.full" value="${version.main}${version.minor}"/>
+	<property name="version.langpack" value="${version.main}" />
+  
+	<!-- module name  -->
+    <property name="source.cvs.module"  value="Miradi"/>
+    <property name="binaries.cvs.module"  value="Miradi"/>
+	
+	<!-- directories -->
+	<property name="build.dir" value="${source.cvs.module}/build"/>
+    <property name="dist.dir" value="${binaries.cvs.module}/dist"/>
+
+    <property name="dist.temp" value="${dist.dir}/temp"/>
+    <property name="dist.temp.jars" value="${dist.temp}/jars"/>
+    
+    <property name="eam.src.root" value="${source.cvs.module}/source"/>
+    <property name="eam.test.src.root" value="${source.cvs.module}/tests"/>
+    <property name="eam.class.root" value="${dist.temp}/bin"/>
+    <property name="eam.test.class.root" value="${dist.temp}/testbin"/>
+	<property name="eam.thirdparty" value="${dist.temp.jars}"/>
+	<property name="eam.resources" value="${eam.src.root}/resources" />
+	<property name="eam.fieldlabels.properties" value="${eam.resources}/FieldLabels.properties"/>
+	<property name="eam.translations.dir" value = "${eam.src.root}/translations"/>
+    
+    <property name="translations.dir" value="${source.cvs.module}/translations" />
+
+	<property name="version.file" value = "${dist.dir}/miradi.version.txt" />
+	<property name="timestamp.file" value = "${dist.dir}/miradi.timestamp.txt" />
+
+	<!-- third-party jars -->
+	<property name="browserlauncher.jar" value="${dist.temp.jars}/BrowserLauncher2/BrowserLauncher2-all-10rc4.jar"/>
+	<property name="miradi-jgraph.jar" value="${dist.temp.jars}/jgraph/miradi-jgraph-5.12.2.2b.jar"/>
+	<property name="jcalendar.jar" value="${dist.temp.jars}/jcalendar-1.3.2/jcalendar-1.3.2.jar"/>
+	<property name="jing.jar" value="${dist.temp.jars}/jing/bin/jing.jar" />
+	<property name="martus-swing.jar" value="${dist.temp.jars}/martus-swing/bin/martus-swing.jar" />
+	<property name="martus-utils.jar" value="${dist.temp.jars}/martus-utils/bin/martus-utils.jar" />
+	<property name="swingx.jar" value="${dist.temp.jars}/swingx/0.9.7/swingx-0.9.7.jar" />
+	<property name="jortho.jar" value="${dist.temp.jars}/jortho/jortho/0.5/jortho.jar" />
+    
+	<property name="junit.jar" value="${dist.temp.jars}/junit/3.8.1/bin/junit-3.8.1.jar" />
+
+	<!-- classpath -->
+    <path id="eam.class.path">
+        <pathelement path="${eam.class.root}/"/>
+        <pathelement path="${eam.test.class.root}/"/>
+        <pathelement path="${martus-swing.jar}/"/>
+        <pathelement path="${martus-utils.jar}/"/>
+		<pathelement path="${browserlauncher.jar}"/>
+		<pathelement path="${miradi-jgraph.jar}"/>
+    	<pathelement path="${jxl.jar}"/>
+    	<pathelement path="${jcalendar.jar}"/>
+    	<pathelement path="${jing.jar}"/>
+    	<pathelement path="${swingx.jar}"/>
+    	<pathelement path="${cleansheets.jar}"/>
+    	<pathelement path="${antlr.jar}"/>
+    	<pathelement path="${jortho.jar}"/>
+     </path>
+    
+    <!-- defined values -->
+	<property name="installer.top" value="${build.dir}/installer"/>
+	<property name="installer.win32" value="${installer.top}/Win32_NSIS/"/>
+	<property name="installer.buildfiles.dir" value="${installer.top}/BuildFiles"/>
+    <property name="installer.src" value="${installer.win32}"/>
+    <property name="installer.bin" value="${installer.win32}/bin"/>
+	<property name="installer.mac" value="${installer.top}/Mac" />
+	
+	<property name="samples.marine" value="MarineExample-${version.full}"/>
+	<property name="samples.marine.mpz" value="${samples.marine}.mpz"/>
+	
+	<property name="dist.mactree" value="${dist.dir}/MiradiMacInstall" />
+	<property name="mac.app.name" value="Miradi-${version.full}" />
+	<condition property="nsis.executable" value="makensis.exe" else="makensis">
+		<os family="windows"/>
+	</condition>
+
+	<!-- translations -->
+	<property name="miradi.pot" value="${dist.temp}/miradi.pot" />
+    <property name="miradi.po.es" value="${translations.dir}/miradi_es.po" />
+    <property name="miradi.po.fr" value="${translations.dir}/miradi_fr.po" />
+    <property name="miradi.po.id" value="${translations.dir}/miradi_id.po" />
+    <property name="miradi.po.it" value="${translations.dir}/miradi_it.po" />
+    <property name="miradi.po.mn" value="${translations.dir}/miradi_mn.po" />
+    <property name="miradi.po.uk" value="${translations.dir}/miradi_uk.po" />
+    <property name="miradi.po.zh" value="${translations.dir}/miradi_zh.po" />
+
+	
+	<!-- ================================================================== -->
+    <!-- I N I T                                                            -->
+    <!-- ================================================================== -->
+
+    <target name="init" description="Initialize build number, timestamp and version">
+        <tstamp>
+            <format property="version.timestamp" pattern="yyyy-MM-dd HH:mm:ss"/>
+        </tstamp>
+
+        <tstamp/>
+
+        <echo message="Date timestamp is ${DSTAMP}" />
+        <echo message="Time timestamp is ${TSTAMP}" />
+        <echo message="Version timestamp is ${version.timestamp}" />
+    	
+    	<mkdir dir='${binaries.cvs.module}' />
+    	<mkdir dir='${dist.dir}' />
+    	<mkdir dir='${dist.temp.jars}' />
+    	
+	    <echo file="${version.file}" append="false" message="${version.prefix}${version.full}"/>
+	    <echo file="${timestamp.file}" append="false" message="${version.timestamp}"/>
+	
+    </target>
+
+    <!-- ================================================================== -->
+    <!-- C L E A N                                                          -->
+    <!-- ================================================================== -->
+
+  <target name="clean" description="Remove all class files and jars">
+    <delete dir="${dist.dir}"/>
+  </target>
+
+    <!-- ================================================================== -->
+    <!-- CLEANUP                                                          -->
+    <!-- ================================================================== -->
+
+  <target name="cleanup" description="Delete temp files">
+    <delete dir="${dist.temp}"/>
+  </target>
+
+  <!-- ================================================================== -->
+  <!-- B U I L D                                                          -->
+  <!-- ================================================================== -->
+
+  <target name="build" depends="init, ThirdParty" description="Compile Miradi">
+    <mkdir dir="${eam.class.root}"/>
+
+    <javac source="1.5" target="1.5" compiler="javac1.5" optimize="on" failonerror="true" 
+    		srcdir="${eam.src.root}" destdir="${eam.class.root}" >
+    	<compilerarg value="-Xlint:unchecked" />
+    	<compilerarg value="-Werror" />
+        <classpath refid="eam.class.path"/>
+        <include name="**/*.java"/>
+    </javac>
+    
+  </target>
+
+  <!-- ================================================================== -->
+  <!-- T E S T                                                            -->
+  <!-- ================================================================== -->
+
+  <target name="test" depends="init, build" description="Run unit tests">
+  	<mkdir dir="${eam.test.class.root}"/>
+    <javac source="1.5" target="1.5" compiler="javac1.5" optimize="on" failonerror="true" 
+    		srcdir="${eam.test.src.root}" destdir="${eam.test.class.root}" >
+    	<compilerarg value="-Xlint:unchecked" />
+        <classpath refid="eam.class.path"/>
+		<classpath location='${junit.jar}' />
+        <include name="**/*.java"/>
+    </javac>
+  	
+  	<copy todir="${eam.test.class.root}/resources">
+  		<fileset dir="${eam.resources}" />
+  	</copy>
+  	<copy todir="${eam.test.class.root}/translations">
+  		<fileset dir="${eam.test.src.root}/translations" />
+  	</copy>
+  	<copy todir="${eam.test.class.root}">
+  		<fileset dir="${eam.src.root}">
+  			<include name="**/*.txt" />
+  		</fileset>
+  	</copy>
+
+  	<!--
+  	<java classname='org.miradi.main.MainTests'>
+  		<classpath refid='eam.class.path' />
+		<classpath>
+			<pathelement location='${eam.test.class.root}' />
+			<pathelement location='${eam.class.root}' />
+			<pathelement location='/work/benetech/miradi3/eclipse/miradi-thirdparty/JUnit/bin/junit.jar' />
+		</classpath>
+  	</java>
+  	-->
+	<junit haltonfailure='on' showoutput='on'>
+		<classpath location='${junit.jar}' />
+  		<classpath refid='eam.class.path' />
+		<classpath location='${eam.class.root}' />
+
+		<test name='org.miradi.main.MainTests' todir='${eam.test.class.root}' />
+<!--
+		<batchtest fork="yes">
+			<fileset dir="${eam.test.src.root}">
+				<include name="**/Test*.java"/>
+				<exclude name="**/MainTests.java"/>
+			</fileset>
+		</batchtest>
+-->
+
+  	    <formatter type="plain" />
+
+  	</junit>
+  </target>
+
+  <!-- ================================================================== -->
+  <!-- J A R                                                          -->
+  <!-- ================================================================== -->
+	<!-- TODO: Change depends from build to test after unit tests no longer depend on Swing -->
+    <target name="jar" depends="build" description="Create jar">
+        <mkdir dir="${dist.dir}"/>
+        <jar destfile="${dist.dir}/miradi.jar">
+          	<manifest>
+          		<attribute name="main-class" value="org.miradi.main.Miradi"/>
+          	</manifest>
+            <fileset dir="${eam.class.root}" includes="**/*.class"/>
+            <fileset dir="${eam.src.root}" includes="resources/**/*" />
+            <fileset dir="${eam.src.root}" includes="org/miradi/xml/**/*.txt" />
+        	<fileset dir="${dist.dir}" includes="*.txt" />
+        </jar>
+    </target>
+    
+
+<!-- ================================================================== -->
+<!-- DOWNLOAD FROM ARTIFACTS.MIRADI.ORG                                 -->
+<!-- ================================================================== -->
+<target name='download'>
+	<property name='dir' value='${dist.temp.jars}/${directory}' />
+	<property name='from' value='http://artifacts.miradi.org/repo/${directory}/${filename}' />
+	<mkdir dir='${dir}' />
+	<get verbose='true' usetimestamp='true' 
+		src='${from}' 
+		dest='${dir}/${filename}' />
+</target>
+
+    
+<!-- ================================================================== -->
+<!-- THIRD-PARTY JARS, SOURCE, LICENSES                                 -->
+<!-- ================================================================== -->
+<target name='ThirdParty' depends='' description='Download third-party jars'>
+	<antcall target='download'>
+		<param name='directory' value='BrowserLauncher2' />
+		<param name='filename' value='BrowserLauncher2-all-10rc4.jar' />
+	</antcall>
+	<antcall target='download'>
+		<param name='directory' value='BrowserLauncher2' />
+		<param name='filename' value='License.BrowserLauncher2' />
+	</antcall>
+	<move file="${dist.temp.jars}/BrowserLauncher2/License.BrowserLauncher2" tofile="${dist.temp.jars}/BrowserLauncher2/BrowserLauncher2-license.txt"/>
+
+	<antcall target='download'>
+		<param name='directory' value='jcalendar-1.3.2' />
+		<param name='filename' value='jcalendar-1.3.2-src.zip' />
+	</antcall>
+	<antcall target='download'>
+		<param name='directory' value='jcalendar-1.3.2' />
+		<param name='filename' value='jcalendar-1.3.2.jar' />
+	</antcall>
+	<antcall target='download'>
+		<param name='directory' value='jcalendar-1.3.2' />
+		<param name='filename' value='LICENSE.jcalendar' />
+	</antcall>
+	<move file="${dist.temp.jars}/jcalendar-1.3.2/LICENSE.jcalendar" tofile="${dist.temp.jars}/jcalendar-1.3.2/jcalendar-license.txt"/>
+
+	<antcall target='download'>
+		<param name='directory' value='jgraph' />
+		<param name='filename' value='miradi-jgraph-5.12.2.2b-src.zip' />
+	</antcall>
+	<antcall target='download'>
+		<param name='directory' value='jgraph' />
+		<param name='filename' value='miradi-jgraph-5.12.2.2b.jar' />
+	</antcall>
+	<antcall target='download'>
+		<param name='directory' value='jgraph' />
+		<param name='filename' value='LICENSE.jgraph' />
+	</antcall>
+	<move file="${dist.temp.jars}/jgraph/LICENSE.jgraph" tofile="${dist.temp.jars}/jgraph/jgraph-license.txt"/>
+
+	<antcall target='download'>
+		<param name='directory' value='jhlabs' />
+		<param name='filename' value='layouts.zip' />
+	</antcall>
+	<antcall target='download'>
+		<param name='directory' value='jhlabs' />
+		<param name='filename' value='LICENSE.TXT' />
+	</antcall>
+
+	<antcall target='download'>
+		<param name='directory' value='jing' />
+		<param name='filename' value='jing-src-20030619.zip' />
+	</antcall>
+	<antcall target='download'>
+		<param name='directory' value='jing' />
+		<param name='filename' value='LICENSE-xerces.copying.txt' />
+	</antcall>
+	<move file="${dist.temp.jars}/jing/LICENSE-xerces.copying.txt" tofile="${dist.temp.jars}/jing/xerces-license.txt"/>
+	
+	<antcall target='download'>
+		<param name='directory' value='jing' />
+		<param name='filename' value='LICENSE-jing.txt' />
+	</antcall>
+	<move file="${dist.temp.jars}/jing/LICENSE-jing.txt" tofile="${dist.temp.jars}/jing/jing-license.txt"/>
+	
+	<antcall target='download'>
+		<param name='directory' value='jing' />
+		<param name='filename' value='readme.html' />
+	</antcall>
+	<antcall target='download'>
+		<param name='directory' value='jing/bin' />
+		<param name='filename' value='isorelax.jar' />
+	</antcall>
+	<antcall target='download'>
+		<param name='directory' value='jing/bin' />
+		<param name='filename' value='jing.jar' />
+	</antcall>
+	<antcall target='download'>
+		<param name='directory' value='jing/bin' />
+		<param name='filename' value='saxon.jar' />
+	</antcall>
+	<antcall target='download'>
+		<param name='directory' value='jing/bin' />
+		<param name='filename' value='xercesImpl.jar' />
+	</antcall>
+	<antcall target='download'>
+		<param name='directory' value='jing/bin' />
+		<param name='filename' value='xml-apis.jar' />
+	</antcall>
+	<antcall target='download'>
+		<param name='directory' value='jing/lib' />
+		<param name='filename' value='mns.rng' />
+	</antcall>
+	<antcall target='download'>
+		<param name='directory' value='jing/lib' />
+		<param name='filename' value='nrl.rng' />
+	</antcall>
+	<antcall target='download'>
+		<param name='directory' value='jing/lib' />
+		<param name='filename' value='relaxCore.rng' />
+	</antcall>
+	<antcall target='download'>
+		<param name='directory' value='jing/lib' />
+		<param name='filename' value='relaxCoreDatatypes.rng' />
+	</antcall>
+	<antcall target='download'>
+		<param name='directory' value='jing/lib' />
+		<param name='filename' value='relaxng.rnc' />
+	</antcall>
+	<antcall target='download'>
+		<param name='directory' value='jing/lib' />
+		<param name='filename' value='relaxng.rng' />
+	</antcall>
+	<antcall target='download'>
+		<param name='directory' value='jing/lib' />
+		<param name='filename' value='schematron.rnc' />
+	</antcall>
+	<antcall target='download'>
+		<param name='directory' value='jing/lib' />
+		<param name='filename' value='xslt.rng' />
+	</antcall>
+
+	<antcall target='download'>
+		<param name='directory' value='jtreetable' />
+		<param name='filename' value='license.txt' />
+	</antcall>
+	
+	<antcall target='download'>
+		<param name='directory' value='junit/3.8.1/bin' />
+		<param name='filename' value='junit-3.8.1.jar' />
+	</antcall>
+	
+	<antcall target='download'>
+		<param name='directory' value='martus-swing/bin' />
+		<param name='filename' value='martus-swing.jar' />
+	</antcall>
+	<antcall target='download'>
+		<param name='directory' value='martus-swing/source' />
+		<param name='filename' value='martus-swing-src.jar' />
+	</antcall>
+	
+	<antcall target='download'>
+			<param name='directory' value='martus-swing' />
+			<param name='filename' value='martus-swing-license.txt' />
+		</antcall>
+	
+	<antcall target='download'>
+		<param name='directory' value='martus-utils/bin' />
+		<param name='filename' value='martus-utils.jar' />
+	</antcall>
+	<antcall target='download'>
+		<param name='directory' value='martus-utils/source' />
+		<param name='filename' value='martus-utils-src.jar' />
+	</antcall>
+	<antcall target='download'>
+		<param name='directory' value='martus-utils' />
+		<param name='filename' value='martus-utils-license.txt' />
+	</antcall>
+	
+	<antcall target='download'>
+		<param name='directory' value='swingx/0.9.7' />
+		<param name='filename' value='swingx-0.9.7.jar' />
+	</antcall>
+	<antcall target='download'>
+		<param name='directory' value='swingx/0.9.7' />
+		<param name='filename' value='swingx-0.9.7-src.zip' />
+	</antcall>
+	<antcall target='download'>
+			<param name='directory' value='swingx/0.9.7' />
+			<param name='filename' value='COPYING' />
+	</antcall>
+	<move file="${dist.temp.jars}/swingx/0.9.7/COPYING" tofile="${dist.temp.jars}/swingx/0.9.7/swingx-license.txt"/>
+	
+	<antcall target='download'>
+		<param name='directory' value='jortho/jortho/0.5' />
+		<param name='filename' value='jortho.jar' />
+	</antcall>
+	<antcall target='download'>
+		<param name='directory' value='jortho/jortho/0.5' />
+		<param name='filename' value='JOrtho-source.zip' />
+	</antcall>
+	<antcall target='download'>
+		<param name='directory' value='jortho/jortho/0.5' />
+		<param name='filename' value='license-jortho.txt' />
+	</antcall>
+	<move file="${dist.temp.jars}/jortho/jortho/0.5/license-jortho.txt" tofile="${dist.temp.jars}/jortho/jortho/0.5/jortho-license.txt"/>
+	
+	<antcall target='download'>
+		<param name='directory' value='jortho/dictionaries/2009-01' />
+		<param name='filename' value='dictionary_en_2009_01.zip' />
+	</antcall>
+	<unzip src='${dist.temp.jars}/jortho/dictionaries/2009-01/dictionary_en_2009_01.zip' dest='${dist.temp}'>
+		<patternset>
+			<include name="**/*.ortho"/>
+		</patternset>
+	</unzip>
+</target>
+
+<!-- ================================================================== -->
+<!-- Z I P S                                                            -->
+<!-- ================================================================== -->
+<target name='zips' depends='ThirdParty, jar' description='Create Linux/Mac Zip Files'>
+	<property name='JarFolder' value='ThirdParty'/>
+	
+    <zip destfile="${dist.dir}/Miradi-Linux.zip">
+		<zipfileset dir="${installer.buildfiles.dir}" includes="README.txt"/>
+		<zipfileset dir="${installer.buildfiles.dir}" includes="LICENSE.txt"/>
+		<zipfileset dir="${installer.buildfiles.dir}" includes="LicenseOverview.txt"/>
+    	<zipfileset dir="${dist.dir}" includes="miradi.jar"/>
+		<zipfileset dir="${installer.buildfiles.dir}" includes="${samples.marine.mpz}" />
+    	
+    	<!-- ThirdParty jars -->
+    	<zipfileset dir="${dist.temp.jars}/BrowserLauncher2/" prefix='${JarFolder}' includes="BrowserLauncher*.jar" />
+    	<zipfileset dir="${dist.temp.jars}/BrowserLauncher2/" prefix='${JarFolder}' includes="BrowserLauncher2-license.txt" />
+    	<zipfileset dir="${dist.temp.jars}/jcalendar-1.3.2/" prefix='${JarFolder}' includes="jcalendar*.jar" />
+    	<zipfileset dir="${dist.temp.jars}/jcalendar-1.3.2/" prefix='${JarFolder}' includes="jcalendar-license.txt" />
+    	<zipfileset dir="${dist.temp.jars}/jgraph/" prefix='${JarFolder}' includes="miradi-jgraph-5.12.2.2b.jar" />
+    	<zipfileset dir="${dist.temp.jars}/jgraph/" prefix='${JarFolder}' includes="jgraph-license.txt" />
+    	<zipfileset dir="${dist.temp.jars}/martus-utils/bin/" prefix='${JarFolder}' includes="martus-utils.jar" />
+    	<zipfileset dir="${dist.temp.jars}/martus-utils/" prefix='${JarFolder}' includes="martus-utils-license.txt" />
+       	<zipfileset dir="${dist.temp.jars}/martus-swing/bin/" prefix='${JarFolder}' includes="martus-swing.jar" />
+    	<zipfileset dir="${dist.temp.jars}/martus-swing/" prefix='${JarFolder}' includes="martus-swing-license.txt" />
+        <zipfileset dir="${dist.temp.jars}/jing/bin/" prefix='${JarFolder}' includes="jing.jar" />
+    	<zipfileset dir="${dist.temp.jars}/jing/" prefix='${JarFolder}' includes="jing-license.txt" />
+    	<zipfileset dir="${dist.temp.jars}/jing/" prefix='${JarFolder}' includes="xerces-license.txt" />
+        <zipfileset dir="${dist.temp.jars}/swingx/0.9.7/" prefix='${JarFolder}' includes="swingx-0.9.7.jar" />
+    	<zipfileset dir="${dist.temp.jars}/swingx/0.9.7/" prefix='${JarFolder}' includes="swingx-license.txt" />
+    	<zipfileset dir="${dist.temp.jars}/jortho/jortho/0.5/" prefix='${JarFolder}' includes="*.jar"/>
+    	<zipfileset dir="${dist.temp.jars}/jortho/jortho/0.5/" prefix='${JarFolder}' includes="jortho-license.txt"/>
+    </zip>
+	
+	<!-- Third-party source code -->
+	<zip destfile="${dist.dir}/Miradi-Thirdparty-Source.zip">
+    	<zipfileset dir="${dist.temp.jars}/BrowserLauncher2/" prefix='source' includes="BrowserLauncher2-all-10rc4.jar" />
+    	<zipfileset dir="${dist.temp.jars}/jcalendar-1.3.2/" prefix='source' includes="jcalendar-1.3.2-src.zip" />
+    	<zipfileset dir="${dist.temp.jars}/jgraph/" prefix='source' includes="miradi-jgraph-5.12.2.2b-src.zip" />
+    	<zipfileset dir="${dist.temp.jars}/martus-swing/source/" prefix='source' includes="martus-swing-src.jar" />
+		<zipfileset dir="${dist.temp.jars}/martus-utils/source/" prefix='source' includes="martus-utils-src.jar" />
+    	<zipfileset dir="${dist.temp.jars}/jing/" prefix='source' includes="jing-src*.zip" />
+    	<zipfileset dir="${dist.temp.jars}/swingx/0.9.7" prefix="source" includes="swingx-0.9.7-src.zip" />
+		<zipfileset dir="${dist.temp.jars}/jortho/" prefix="source" includes="**/JOrtho*.zip" />
+		<zipfileset dir="${dist.temp.jars}/jortho/" prefix="source" includes="**/dictionary*.zip" />
+	</zip>
+	
+	<copy file="${installer.buildfiles.dir}/${samples.marine.mpz}" todir="${dist.dir}" />
+	<copy file="${installer.buildfiles.dir}/README.txt" todir="${dist.dir}" />
+	
+</target>
+	
+<!-- ================================================================== -->
+<!-- P O T                                            -->
+<!-- ================================================================== -->
+<target name="pot" depends="init" description="Create Translatable POT file">
+	<property name="java_files" value="${dist.dir}/java_files.txt"/>
+	
+	<!-- Required for all languages -->
+	<echo message="build list of all files that contain translatable strings"/>
+	<echo message="Writing list of java files in ${eam.src.root} to ${java_files}..." />
+	<exec executable="find" output="${java_files}" failonerror="true">
+		<arg value="${eam.src.root}"/>
+		<arg value="-name"/>
+		<arg value="*.java"/>
+	</exec>
+	<echo message="extract code text strings to pot file"/>
+	<exec executable="xgettext" failonerror="true">
+		<arg value="--language=java"/>
+		<arg value="--from-code=UTF-8"/>
+		<arg value="--sort-output"/>
+		<arg value="--keyword"/>
+		<arg value="--keyword=EAM.text"/>
+		<arg value="--copyright-holder=Benetech"/>
+		<arg value="--output=${miradi.pot}"/>
+		<arg value="--files-from=${java_files}"/>
+	</exec>
+	<!-- Hopefully abort if there are non-UTF-8 characters in the pot -->
+	<exec executable="iconv" failonerror="true">
+		<arg value="${miradi.pot}"/>
+		<arg value="-o"/>
+		<arg value="/dev/null"/>
+		</exec>
+	<delete file="${java_files}"/>
+	<echo message="append FieldLabels.properties strings to pot file"/>
+	<exec executable="ruby" failonerror="true">
+		<arg value="${build.dir}/AddFieldLabelsToPOT.rb"/>
+		<arg value="${eam.fieldlabels.properties}"/>
+		<arg value="${miradi.pot}"/>
+	</exec>
+	<echo message="append each HTML file as an entry in the pot file"/>
+	<exec executable="ruby" failonerror="true">
+		<arg value="${build.dir}/AddHtmlFilesToPOT.rb"/>
+		<arg value="${eam.src.root}"/>
+		<arg value="${miradi.pot}"/>
+	</exec>
+	<echo message="append each fieldoptions choice as an entry in the pot file"/>
+	<exec executable="ruby" failonerror="true">
+		<arg value="${build.dir}/AddChoicesToPOT.rb"/>
+		<arg value="${eam.src.root}"/>
+		<arg value="${miradi.pot}"/>
+	</exec>
+	
+</target>
+
+<!-- ================================================================== -->
+<!-- CREATE NEW PO                                            -->
+<!--   
+	To use this, insert three lines like this 
+	at the start of the new language target:	
+		<property name="po.locale" value="IT" />
+		<property name="po.file" value="${miradi.po.it}" />
+		<antcall target="create-new-po"/>
+	Don't forget to create the new po property at the top of this file!
+	Then, grab the new PO file out of the Hudson workspace, 
+	delete the three lines of code mentioned above, 
+	and manually commit the po file as if you had created it from scratch
+-->
+<!-- ================================================================== -->
+<target name="create-new-po" description="Create empty po file">
+	<echo message="Creating po file: ${po.locale} ${po.file}"/>
+	<exec executable="msginit" failonerror="true">
+		<arg value="--no-translator"/>
+		<arg value="--input=${miradi.pot}"/>
+		<arg value="--output-file=${po.file}"/>
+		<arg value="--locale=${po.locale}"/>
+	</exec>
+	<echo message="Updating PO to UTF-8"/>
+	<exec executable="sed" failonerror="true">
+		<arg value="--in-place" />
+		<arg value='s/^"Content-Type:.*$/"Content-Type: text\/plain; charset=UTF-8\\n"/'/>
+		<arg value="${po.file}" />
+	</exec>
+</target>
+
+<!-- ================================================================== -->
+<!-- UPDATE PO CONTENTS                                            -->
+<!-- ================================================================== -->
+<target name="update-po" description="Update ${po.file}">
+	<echo message="updating ${po.file}"/>
+	<exec executable="msgmerge" failonerror="true">
+		<arg value="--update"/>
+		<arg value="--backup=none"/>
+		<arg value="--no-fuzzy-matching"/>
+		<arg value="${po.file}"/>
+		<arg value="${miradi.pot}"/>
+	</exec>
+	<echo message="building ${language.code} content jar"/>
+	<zip destfile="${dist.dir}/MiradiContent-${version.langpack}-${language.code}.jar">
+        <fileset dir="${eam.src.root}" includes="resources/**/*.txt" />
+        <fileset dir="${eam.src.root}" includes="**/*.jpg"/>
+        <fileset dir="${eam.src.root}" includes="**/*.png"/>
+        <fileset dir="${eam.src.root}" includes="**/*.gif"/>
+		<fileset dir="${translations.dir}" includes="miradi_${language.code}.po"/>
+	</zip>
+</target>
+
+<!-- ================================================================== -->
+<!-- S P A N I S H                                            -->
+<!-- ================================================================== -->
+<target name="spanish" depends="pot" description="Update Spanish Content">
+	<antcall target="update-po">
+		<param name="po.file" value="${miradi.po.es}"/>
+		<param name="language.code" value="es"/>
+	</antcall>
+</target>
+	
+<!-- ================================================================== -->
+<!-- I N D O N E S I A N                   -->
+<!-- ================================================================== -->
+<target name="indonesian" depends="pot" description="Update Indonesian Content">
+	<antcall target="update-po">
+		<param name="po.file" value="${miradi.po.id}"/>
+		<param name="language.code" value="id"/>
+	</antcall>
+</target>
+	
+<!-- ================================================================== -->
+<!-- C H I N E S E                   -->
+<!-- ================================================================== -->
+<target name="chinese" depends="pot" description="Update Chinese Content">
+	<antcall target="update-po">
+		<param name="po.file" value="${miradi.po.zh}"/>
+		<param name="language.code" value="zh"/>
+	</antcall>
+</target>
+	
+<!-- ================================================================== -->
+<!-- UKRAINIAN                   -->
+<!-- ================================================================== -->
+<target name="ukrainian" depends="pot" description="Update Ukrainian Content">
+	<antcall target="update-po">
+		<param name="po.file" value="${miradi.po.uk}"/>
+		<param name="language.code" value="uk"/>
+	</antcall>
+</target>
+	
+<!-- ================================================================== -->
+<!-- ITALIAN                   -->
+<!-- ================================================================== -->
+<target name="italian" depends="pot" description="Update Italian Content">
+	<antcall target="update-po">
+		<param name="po.file" value="${miradi.po.it}"/>
+		<param name="language.code" value="it"/>
+	</antcall>
+</target>
+	
+<!-- ================================================================== -->
+<!-- MONGOLIAN (CYRILLIC SCRIPT)                   -->
+<!-- ================================================================== -->
+<target name="mongolian" depends="pot" description="Update Mongolian Content">
+	<antcall target="update-po">
+		<param name="po.file" value="${miradi.po.mn}"/>
+		<param name="language.code" value="mn"/>
+	</antcall>
+</target>
+	
+<!-- ================================================================== -->
+<!-- FRENCH                                                             -->
+<!-- ================================================================== -->
+<target name="french" depends="pot" description="Update French Content">
+	<antcall target="update-po">
+		<param name="po.file" value="${miradi.po.fr}"/>
+		<param name="language.code" value="fr"/>
+	</antcall>
+</target>
+		
+<!-- ================================================================== -->
+<!-- T R A N S L A T I O N S                                            -->
+<!-- ================================================================== -->
+<target name="translations" depends="pot, spanish, indonesian, italian, mongolian, ukrainian, chinese, french" description="Create Translatable Content jars/zips">
+	<exec executable="hg" failonerror="true" dir="${translations.dir}">
+		<arg value="commit"/>
+		<arg value="--message"/>
+		<arg value="Updated PO files: ${version.timestamp}"/>
+	</exec>
+	<exec executable="hg" failonerror="false" dir="${translations.dir}">
+		<arg value="rebase"/>
+	</exec>
+	<exec executable="hg" failonerror="true" dir="${translations.dir}">
+		<arg value="push"/>
+	</exec>
+</target>
+	
+<!-- ================================================================== -->
+<!-- S O U R C E                                                        -->
+<!-- ================================================================== -->
+<target name="source" depends="init" description="Create Source zip">
+	<echo message="building Mirad-Source.zip"/>
+	<zip destfile="${dist.dir}/Miradi-Source.zip">
+		<zipfileset dir="${eam.src.root}/" prefix='Miradi-${version.full}' includes="**/*" excludes=".svn" />
+		<zipfileset dir="${installer.buildfiles.dir}" includes="README.txt"/>
+		<zipfileset dir="${installer.buildfiles.dir}" includes="LICENSE.txt"/>
+		<zipfileset dir="${installer.buildfiles.dir}" includes="LicenseOverview.txt"/>
+		<zipfileset dir="${build.dir}" includes='build.xml'/>
+	</zip>
+	
+</target>
+
+<!-- ================================================================== -->
+<!-- M A C   A P P   B U N D L E                                        -->
+<!-- ================================================================== -->
+<target name="macappbundle" depends="" description="create a jar app bundle for the mac">
+	<property name="macjavastubfile" value="${installer.mac}/JavaApplicationStub/JavaApplicationStub" />
+	<taskdef name="jarbundler" 
+		classname="net.sourceforge.jarbundler.JarBundler" 
+		classpath="${installer.mac}/jarbundler-2.1.0/jarbundler-2.1.0.jar" />
+
+	<mkdir dir="${dist.mactree}" />
+	<delete>
+		<fileset dir="${dist.mactree}" includes="*" />
+	</delete>
+	
+	<jarbundler 
+		dir="${dist.mactree}" 
+		name="${mac.app.name}" 
+		mainclass="org.miradi.main.Miradi" 
+		jvmversion="1.5+" 
+		stubfile="${macjavastubfile}" 
+		shortname="Miradi" 
+		version="${version.full}"
+		build="${version.timestamp}"
+		vmoptions="-Xmx512m"
+		>
+
+		<jarfileset dir="${dist.dir}">
+			<include name="miradi.jar" />
+		</jarfileset>
+		<jarfileset dir="${dist.temp.jars}/">
+			<include name="**/*.jar" />
+			<exclude name="junit*" />
+		</jarfileset>
+
+		<javaproperty name="apple.laf.useScreenMenuBar" value="true" />
+		<javaproperty name="apple.awt.brushMetal" value="true" />
+		<javaproperty name="apple.awt.showGrowBox" value="true" />
+		<javaproperty name="apple.awt.antialiasing" value="true" />
+		<javaproperty name="apple.awt.textantialiasing" value="true" />
+	</jarbundler>
+
+</target>
+
+<!-- ================================================================== -->
+<!-- M A C   D M G   F I L E                                            -->
+<!-- ================================================================== -->
+<target name="macdmgfile" depends="macappbundle" description="create a mac dmg file">
+	<property name="rawdmgfile" value="../mac-client-build-dependencies/images/Miradi.dmg" />
+	<property name="dmgsizemegs" value="16" />
+	<property name="dmgmount" value="/home/j2ee-hudson/.hudson/slaves/miradi/mac-client-build-dependencies/mounts/dmgfile" />
+
+	<exec os="Linux"  executable="umount" failonerror="false">
+		<arg value="-d"/>
+		<arg value="${dmgmount}"/>
+	</exec>
+
+	<!-- Create an empty .dmg file of the appropriate size -->
+	<delete file="${rawdmgfile}" />	
+	<exec os="Linux"  executable="dd" failonerror="true">
+		<arg value="if=/dev/zero"/>
+		<arg value="of=${rawdmgfile}"/>
+		<arg value="bs=1M"/>
+		<arg value="count=${dmgsizemegs}"/>
+	</exec>
+	
+	<!-- Format that file as an hfsplus disk image -->
+	<exec os="Linux"  executable="mkfs.hfsplus" failonerror="true">
+		<arg value="-v"/>
+		<arg value="Miradi ${version.full} Mac Install"/>
+		<arg value="${rawdmgfile}"/>
+	</exec>
+	
+	<echo message="Mounting ${dmgmount} (must be in fstab)" />
+	<echo message="  ${rawdmgfile} ${dmgmount} hfsplus rw,user,loop 0 0" />
+	<exec os="Linux"  executable="mount" failonerror="true">
+		<arg value="${dmgmount}"/>
+	</exec>
+	
+	<!-- Copy .app directory to the disk image -->
+	<!-- USING cp to PRESERVE FILE PERMISSIONS! -->
+	<exec executable="cp">
+		<arg value="-r" />
+		<arg value="${dist.mactree}/${mac.app.name}.app" />
+		<arg value="${dmgmount}" />
+	</exec> 
+	
+	<copy todir="${dmgmount}">
+		<fileset dir="${installer.buildfiles.dir}" includes="README.txt" />
+		<fileset dir="${installer.buildfiles.dir}" includes="LICENSE.txt" />
+		<fileset dir="${installer.buildfiles.dir}" includes="${samples.marine.mpz}" />
+	</copy>
+
+	<exec os="Linux"  executable="umount" failonerror="true">
+		<arg value="-d"/>
+		<arg value="${dmgmount}"/>
+	</exec>
+	
+	<copy todir="${dist.dir}" file="${rawdmgfile}" />
+
+	<delete dir="${dist.mactree}" />
+</target>
+
+<!-- ================================================================== -->
+<!-- win32installer                                                    -->
+<!-- ================================================================== -->
+<target name="win32installer" depends="jar" description="Windows install4j installer build">
+ 	<exec executable="install4jc" failonerror="true">
+ 		<arg value="${build.dir}/miradi.install4j" />
+ 	</exec>	
+</target>
+
+<!-- ================================================================== -->
+<!-- R E L E A S E                                                      -->
+<!-- ================================================================== -->
+    <target name="release" depends="translations,source,zips,macdmgfile,win32installer,cleanup">
+        <echo message="Release Built"/>
+        <echo message="REMEMBER TO TAG THIS RELEASE WITH ${version.timestamp} !"/>
+    </target>
+
+</project>
