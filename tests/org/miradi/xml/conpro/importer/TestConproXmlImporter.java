@@ -242,7 +242,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		getProject().fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_PROJECT_SHARING_CODE, ProjectSharingQuestion.SHARE_OUTSIDE_TNC);
 		verifyImport();
 		
-		getProject().fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_PROJECT_SHARING_CODE, ProjectSharingQuestion.SHARE_TNC_ONLY);
+		getProject().fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_PROJECT_SHARING_CODE, ProjectSharingQuestion.SHARE_ONLY_INSIDE_ORGANIZATION);
 		verifyImport();
 	}
 

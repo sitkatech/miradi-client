@@ -84,7 +84,7 @@ public class ConProMiradiCodeMapHelper
 		viabilityModeMap.put(ViabilityModeQuestion.TNC_STYLE_CODE, "kea");
 		
 		tncProjectSharingMap = new HashMap<String, String>();
-		tncProjectSharingMap.put(ProjectSharingQuestion.SHARE_TNC_ONLY, "false");
+		tncProjectSharingMap.put(ProjectSharingQuestion.SHARE_ONLY_INSIDE_ORGANIZATION, "false");
 		tncProjectSharingMap.put(ProjectSharingQuestion.SHARE_OUTSIDE_TNC, "true");
 		
 		indicatorRatingSourceMap = new HashMap<String, String>();
