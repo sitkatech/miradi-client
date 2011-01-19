@@ -22,9 +22,7 @@ package org.miradi.xml.xmpz;
 
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.TncProjectData;
-import org.miradi.questions.TncProjectSharingQuestion;
 import org.miradi.xml.AbstractXmpzObjectImporter;
-import org.miradi.xml.generic.XmlSchemaCreator;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.w3c.dom.Node;
 
@@ -40,7 +38,6 @@ public class TncProjectDataImporter extends AbstractXmpzObjectImporter
 	{
 		Node tncProjectDataNode = getImporter().getNode(getImporter().getRootNode(), getPoolName());
 		importField(tncProjectDataNode, getMetadataRef(), ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE);
-		writeShareOutsideOfTncElement(tncProjectDataNode);
 		importField(tncProjectDataNode, getMetadataRef(), ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
 		importCodeListField(tncProjectDataNode, getTncProjectDataRef(), TncProjectData.TAG_PROJECT_PLACE_TYPES);
 		importCodeListField(tncProjectDataNode, getTncProjectDataRef(), TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES);
@@ -56,15 +53,5 @@ public class TncProjectDataImporter extends AbstractXmpzObjectImporter
 		importField(tncProjectDataNode, getTncProjectDataRef(), TncProjectData.TAG_PROJECT_LEVEL_COMMENTS);
 		importField(tncProjectDataNode, getTncProjectDataRef(), TncProjectData.TAG_PROJECT_CITATIONS);
 		importField(tncProjectDataNode, getTncProjectDataRef(), TncProjectData.TAG_CAP_STANDARDS_SCORECARD);
-	}
-	
-	private void writeShareOutsideOfTncElement(Node tncProjectDataNode) throws Exception
-	{
-		Node shareOutsideTncNode = getImporter().getNode(tncProjectDataNode, getPoolName() + XmlSchemaCreator.TNC_PROJECT_DATA_SHARE_OUTSIDE_TNC);
-		String isShareWithAnyOneCode = TncProjectSharingQuestion.SHARE_TNC_ONLY;
-		if (getImporter().isTrue(shareOutsideTncNode.getTextContent()))
-			isShareWithAnyOneCode = TncProjectSharingQuestion.SHARE_OUTSIDE_TNC;
-		
-		getImporter().setData(getTncProjectDataRef(), TncProjectData.TAG_PROJECT_SHARING_CODE, isShareWithAnyOneCode);
 	}	
 }

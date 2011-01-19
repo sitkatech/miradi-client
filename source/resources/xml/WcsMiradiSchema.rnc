@@ -1,4 +1,4 @@
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/54'
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/55'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -54,6 +54,7 @@ ConservationProject.element = element miradi:ConservationProject
 ProjectSummary.element = element miradi:ProjectSummary
 {
   element miradi:ProjectSummaryProjectName { text }? &
+  element miradi:ProjectSummaryShareOutsideTnc { xsd:boolean }? &
   element miradi:ProjectSummaryProjectLanguage { vocabulary_language_code  }? &
   element miradi:ProjectSummaryDataEffectiveDate { vocabulary_date }? &
   element miradi:ProjectSummaryOtherOrgProjectNumber { text }? &
@@ -169,7 +170,6 @@ Organization.element = element miradi:Organization
 TncProjectData.element = element miradi:TncProjectData
 {
   element miradi:TncProjectDataDatabaseDownloadDate { text }? &
-  element miradi:TncProjectDataShareOutsideTnc { xsd:boolean }? &
   element miradi:TncProjectDataOtherOrgRelatedProjects { text }? &
   element miradi:TncProjectDataPlanningTeamComment { text }? &
   element miradi:TncProjectDataConProParentChildProjectText { text }? &

@@ -31,7 +31,6 @@ public class TncProjectDataSchemaElement extends ObjectSchemaElement
 		super(XmpzXmlConstants.TNC_PROJECT_DATA);
 		
 		createOptionalTextField(ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE);
-		createOptionalBooleanField(XmlSchemaCreator.TNC_PROJECT_DATA_SHARE_OUTSIDE_TNC);
 		createOptionalTextField(ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
 		createOptionalTextField(ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENT);
 		createOptionalTextField(TncProjectData.TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT);

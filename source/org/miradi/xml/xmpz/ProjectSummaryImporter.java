@@ -23,9 +23,12 @@ package org.miradi.xml.xmpz;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.TncProjectData;
 import org.miradi.objects.Xenodata;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
+import org.miradi.questions.TncProjectSharingQuestion;
 import org.miradi.xml.AbstractXmpzObjectImporter;
+import org.miradi.xml.generic.XmlSchemaCreator;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -43,6 +46,7 @@ public class ProjectSummaryImporter extends AbstractXmpzObjectImporter
 		Node projectSumaryNode = getImporter().getNode(getImporter().getRootNode(), XmpzXmlConstants.PROJECT_SUMMARY);
 				
 		importProjectMetadataField(projectSumaryNode, ProjectMetadata.TAG_PROJECT_NAME);
+		writeShareOutsideOfTncElement(projectSumaryNode);
 		importProjectMetadataField(projectSumaryNode, ProjectMetadata.TAG_PROJECT_LANGUAGE);
 		importProjectMetadataField(projectSumaryNode, ProjectMetadata.TAG_DATA_EFFECTIVE_DATE);
 		importProjectMetadataField(projectSumaryNode, ProjectMetadata.TAG_OTHER_ORG_PROJECT_NUMBER);
@@ -54,6 +58,16 @@ public class ProjectSummaryImporter extends AbstractXmpzObjectImporter
 		importExternalProjectId(projectSumaryNode);
 		importCodeField(projectSumaryNode, getMetadataRef(), ProjectMetadata.TAG_THREAT_RATING_MODE, new ThreatRatingModeChoiceQuestion());
 	}
+	
+	private void writeShareOutsideOfTncElement(Node projectSumaryNode) throws Exception
+	{
+		Node shareOutsideTncNode = getImporter().getNode(projectSumaryNode, getPoolName() + XmlSchemaCreator.TNC_PROJECT_DATA_SHARE_OUTSIDE_TNC);
+		String isShareWithAnyOneCode = TncProjectSharingQuestion.SHARE_TNC_ONLY;
+		if (getImporter().isTrue(shareOutsideTncNode.getTextContent()))
+			isShareWithAnyOneCode = TncProjectSharingQuestion.SHARE_OUTSIDE_TNC;
+		
+		getImporter().setData(getTncProjectDataRef(), TncProjectData.TAG_PROJECT_SHARING_CODE, isShareWithAnyOneCode);
+	}	
 
 	private void importProjectMetadataField(Node projectSummaryNode, String tag) throws Exception
 	{
