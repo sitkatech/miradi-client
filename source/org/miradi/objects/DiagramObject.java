@@ -58,13 +58,13 @@ abstract public class DiagramObject extends BaseObject
 
 	public HashSet<Factor> getAbstractTargets()
 	{
-		HashSet<Factor> diagramAbstractTargets = getFactors(Target.getObjectType());
-		diagramAbstractTargets.addAll(getFactors(HumanWelfareTarget.getObjectType()));
+		HashSet<Factor> diagramAbstractTargets = getFactorsOfType(Target.getObjectType());
+		diagramAbstractTargets.addAll(getFactorsOfType(HumanWelfareTarget.getObjectType()));
 		
 		return diagramAbstractTargets;
 	}
 
-	public HashSet<Factor> getFactors(int wrappedType)
+	public HashSet<Factor> getFactorsOfType(int wrappedType)
 	{
 		HashSet<Factor> filteredFactorsByType = new HashSet<Factor>();
 		HashSet<DiagramFactor> filteredDiagramFactors = getFactorsFromDiagram(wrappedType);

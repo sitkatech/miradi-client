@@ -94,8 +94,8 @@ public class CreateResultsChainDoer extends ViewDoer
 	{
 		ResultsChainDiagram resultsChain = ResultsChainDiagram.find(project, newResultsChainRef);
 		HashSet<Factor> factors = new HashSet<Factor>();
-		factors.addAll(resultsChain.getFactors(ThreatReductionResult.getObjectType()));
-		factors.addAll(resultsChain.getFactors(IntermediateResult.getObjectType()));
+		factors.addAll(resultsChain.getFactorsOfType(ThreatReductionResult.getObjectType()));
+		factors.addAll(resultsChain.getFactorsOfType(IntermediateResult.getObjectType()));
 		for (Factor factor :factors)
 		{
 			if (factor.getDirectOrIndirectIndicatorRefs().hasRefs())

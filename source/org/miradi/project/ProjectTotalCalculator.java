@@ -149,7 +149,7 @@ public class ProjectTotalCalculator implements CommandExecutedListener
 	private Set<Strategy> getNonDraftStrategies(DiagramObject diagramObject)
 	{
 		Set<Strategy> nonDraftStrategies = new HashSet<Strategy>();
-		Set<Factor> strategies = diagramObject.getFactors(Strategy.getObjectType());
+		Set<Factor> strategies = diagramObject.getFactorsOfType(Strategy.getObjectType());
 		for(Factor factor : strategies)
 		{
 			Strategy strategy = (Strategy) factor;

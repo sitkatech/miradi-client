@@ -322,7 +322,7 @@ public class Dashboard extends BaseObject
 			ConceptualModelDiagram conceptualModel = ConceptualModelDiagram.find(getProject(), conceptualModelRef);
 			for (int index = 0; index < factorTypesToCount.length; ++index)
 			{
-				HashSet<Factor> factorsOnDiagram = conceptualModel.getFactors(factorTypesToCount[index]);
+				HashSet<Factor> factorsOnDiagram = conceptualModel.getFactorsOfType(factorTypesToCount[index]);
 				allFactorRefs.addAll(factorsOnDiagram);
 			}
 		}
