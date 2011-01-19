@@ -68,7 +68,6 @@ import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.ProgressReportShortStatusQuestion;
 import org.miradi.questions.ResourceTypeQuestion;
 import org.miradi.questions.StatusQuestion;
-import org.miradi.questions.StrategyRatingSummaryQuestion;
 import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 import org.miradi.utils.CodeList;
@@ -380,9 +379,6 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	public boolean isChoiceItemColumn(int column)
 	{
 		String columnTag = getColumnTag(column);
-		if(columnTag.equals(Strategy.PSEUDO_TAG_RATING_SUMMARY))
-			return true;
-		
 		if(columnTag.equals(Indicator.TAG_PRIORITY))
 			return true;
 		
@@ -497,9 +493,6 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			if(columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
 				return new ProgressReportShortStatusQuestion().findChoiceByCode(rawValue);
 			
-			if(columnTag.equals(Strategy.PSEUDO_TAG_RATING_SUMMARY))
-				return new StrategyRatingSummaryQuestion().findChoiceByCode(rawValue);
-			
 			if (Desire.isDesire(baseObject.getRef()) && columnTag.equals(Desire.PSEUDO_TAG_RELEVANT_INDICATOR_REFS))
 				return createAppendedRelevantIndicatorLabels((Desire)baseObject);
 			
@@ -543,7 +536,15 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		if (Target.is(baseObject))
 			return getTargetViabilityRating((AbstractTarget) baseObject);
 		
+		if (Strategy.is(baseObject))
+			return getStrategyRating((Strategy) baseObject);
+		
 		return new EmptyChoiceItem();
+	}
+
+	private ChoiceItem getStrategyRating(Strategy strategy)
+	{
+		return strategy.getStrategyRating();
 	}
 
 	private ChoiceItem getThreatRatingChoiceItem(Cause threat) throws Exception
@@ -702,11 +703,6 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 				return Objective.PSEUDO_TAG_LATEST_PROGRESS_PERCENT_COMPLETE;
 			if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS))
 				return Objective.PSEUDO_TAG_LATEST_PROGRESS_PERCENT_DETAILS;
-		}
-		if(Strategy.is(nodeType))
-		{
-			if(columnTag.equals(Indicator.TAG_PRIORITY))
-				return Strategy.PSEUDO_TAG_RATING_SUMMARY;
 		}
 		if(Task.is(nodeType))
 		{
