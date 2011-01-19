@@ -50,10 +50,7 @@ public class DashboardEffectiveMapCacheManager implements CommandExecutedListene
 	{
 		try
 		{
-			if (event.isSetDataCommandWithThisTypeAndTag(Dashboard.getObjectType(), Dashboard.TAG_PROGRESS_CHOICE_MAP))
-			{
-				invalidateEffectiveMapCache();
-			}
+			invalidateEffectiveMapCache();
 		}
 		catch (Exception e)
 		{

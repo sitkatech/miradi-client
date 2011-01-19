@@ -41,7 +41,7 @@ public class OpenStandardsDynamicProgressStatusQuestion extends DynamicChoiceQue
 	{
 		try
 		{
-			if (dashboard.getAutomaticEffectiveProgressCode(thirdLevelCode).equals(NOT_STARTED_CODE))
+			if (dashboard.getProject().getCachedDashboardEffectiveMap().get(thirdLevelCode).equals(NOT_STARTED_CODE))
 			{
 				return new ChoiceItem[] {
 						new ChoiceItem(NOT_SPECIFIED_CODE, EAM.text("Automatic"), new OpenStandardsAutomaticIcon()),

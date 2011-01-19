@@ -562,20 +562,6 @@ public class Dashboard extends BaseObject
 		return Integer.toString(count);
 	}
 
-	public String getAutomaticEffectiveProgressCode(String codeToUse) throws Exception
-	{
-		CodeList allThirdLevelCodes = getDashboardRowDefinitionManager().getThirdLevelCodes();
-		for (int index = 0; index < allThirdLevelCodes.size(); ++index)
-		{
-			String thirdLevelCode = allThirdLevelCodes.get(index);
-			Vector<DashboardRowDefinition> rowDefinitions = getDashboardRowDefinitionManager().getRowDefinitions(thirdLevelCode);
-			if (thirdLevelCode.equals(codeToUse))
-				return computeStatusCodeFromStatistics(rowDefinitions);			
-		}
-		
-		return OpenStandardsDynamicProgressStatusQuestion.NOT_STARTED_CODE; 
-	}
-	
 	public StringChoiceMap calculateEffectiveStatusMap() throws Exception
 	{
 		StringChoiceMap map = new StringChoiceMap();
