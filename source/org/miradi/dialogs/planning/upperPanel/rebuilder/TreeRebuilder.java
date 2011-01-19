@@ -155,6 +155,12 @@ public class TreeRebuilder
 		childRefs.addAll(conceptualModelRefs);
 		ORefList resultsChainRefs = getProject().getResultsChainDiagramPool().getORefList();
 		childRefs.addAll(resultsChainRefs);
+		if(shouldTargetsBeAtSameLevelAsDiagrams())
+		{
+			childRefs.addAll(getProject().getTargetPool().getRefList());
+			if(getProject().getMetadata().isHumanWelfareTargetMode())
+				childRefs.addAll(getProject().getHumanWelfareTargetPool().getRefList());
+		}
 		return childRefs;
 	}
 
@@ -218,6 +224,9 @@ public class TreeRebuilder
 	{
 		ORefList strategyRefs = new ORefList();
 		
+		if(diagram == null)
+			return strategyRefs;
+		
 		ChainWalker chain = diagram.getDiagramChainWalker();
 		DiagramFactor targetDiagramFactor = diagram.getDiagramFactor(target.getRef());
 		FactorSet factors = chain.buildDirectlyLinkedUpstreamChainAndGetFactors(targetDiagramFactor);
@@ -278,10 +287,11 @@ public class TreeRebuilder
 		return childRefs;
 	}
 
-	private ORefList getChildrenOfIndicator(ORef parentRef, DiagramObject diagram)
+	private ORefList getChildrenOfIndicator(ORef parentRef, DiagramObject diagram) throws Exception
 	{
 		ORefList childRefs = new ORefList();
 		Indicator indicator = Indicator.find(getProject(), parentRef);
+		childRefs.addAll(indicator.getRelevantDesireRefs());
 		childRefs.addAll(indicator.getMeasurementRefs());
 		childRefs.addAll(indicator.getMethodRefs());
 		return childRefs;
