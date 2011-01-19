@@ -26,6 +26,7 @@ import org.miradi.icons.OpenStandardsInProgressIcon;
 import org.miradi.icons.OpenStandardsNotApplicableIcon;
 import org.miradi.icons.OpenStandardsNotStartedIcon;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.AbstractStringKeyMap;
 import org.miradi.project.Project;
 
 public class OpenStandardsDynamicProgressStatusQuestion extends DynamicChoiceQuestion
@@ -41,7 +42,7 @@ public class OpenStandardsDynamicProgressStatusQuestion extends DynamicChoiceQue
 	{
 		try
 		{
-			if (project.getCachedDashboardEffectiveMap().get(thirdLevelCode).equals(NOT_STARTED_CODE))
+			if (getThirdLevelValue().equals(NOT_STARTED_CODE))
 			{
 				return new ChoiceItem[] {
 						new ChoiceItem(NOT_SPECIFIED_CODE, EAM.text("Automatic"), new OpenStandardsAutomaticIcon()),
@@ -62,6 +63,18 @@ public class OpenStandardsDynamicProgressStatusQuestion extends DynamicChoiceQue
 			EAM.logException(e);
 			return new ChoiceItem[0];
 		}
+	}
+
+	private String getThirdLevelValue() throws Exception
+	{
+		AbstractStringKeyMap cachedDashboardEffectiveMap = getProject().getCachedDashboardEffectiveMap();
+		
+		return cachedDashboardEffectiveMap.get(thirdLevelCode);
+	}
+
+	private Project getProject()
+	{
+		return project;
 	}
 
 	private Project project;
