@@ -31,8 +31,8 @@ public class TncProjectSharingQuestion extends StaticChoiceQuestion
 	private static ChoiceItem[] getSharingCodes()
 	{
 		return new ChoiceItem[] {
-				new ChoiceItem(SHARE_TNC_ONLY, EAM.text("No")),
-				new ChoiceItem(SHARE_OUTSIDE_TNC, EAM.text("Yes")),
+				new ChoiceItem(SHARE_TNC_ONLY, EAM.text("Within your Organization Only")),
+				new ChoiceItem(SHARE_OUTSIDE_TNC, EAM.text("Public (anyone)")),
 		};
 	}
 	
