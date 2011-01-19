@@ -219,7 +219,7 @@ public class XmpzXmlExporter extends XmlExporter implements XmpzXmlConstants
 		writeEndElement(out, TNC_PROJECT_DATA);
 	}
 
-	private void writeDataSharingLevelElement() throws Exception
+	private void writeShareOutsideOrganizationElement() throws Exception
 	{
 		String shareOutSideOfTnc = "0";
 		if (getTncProjectData().canShareOutsideOfTnc())
@@ -343,7 +343,7 @@ public class XmpzXmlExporter extends XmlExporter implements XmpzXmlConstants
 		writeStartElement(out, PROJECT_SUMMARY);
 		
 		writeOptionalElement(PROJECT_SUMMARY, ProjectMetadata.TAG_PROJECT_NAME, getMetadata(), ProjectMetadata.TAG_PROJECT_NAME);
-		writeDataSharingLevelElement();
+		writeShareOutsideOrganizationElement();
 		writeOptionalElement(PROJECT_SUMMARY, ProjectMetadata.TAG_PROJECT_LANGUAGE, getMetadata(), ProjectMetadata.TAG_PROJECT_LANGUAGE);
 		writeOptionalElement(PROJECT_SUMMARY, ProjectMetadata.TAG_DATA_EFFECTIVE_DATE, getMetadata(), ProjectMetadata.TAG_DATA_EFFECTIVE_DATE);
 		writeOptionalElement(PROJECT_SUMMARY, ProjectMetadata.TAG_OTHER_ORG_PROJECT_NUMBER, getMetadata(), ProjectMetadata.TAG_OTHER_ORG_PROJECT_NUMBER);
