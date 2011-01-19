@@ -487,8 +487,8 @@ abstract public class TabbedView extends UmbrellaView
 			
 			try
 			{
-				int newTab = tabs.getSelectedIndex();
 				FieldSaver.savePendingEdits();
+				int newTab = tabs.getSelectedIndex();
 				CommandSetObjectData command = createTabChangeCommand(newTab);
 				getProject().executeCommand(command);
 			}
