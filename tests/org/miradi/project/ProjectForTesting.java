@@ -225,7 +225,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_PROJECT_LEVEL_COMMENTS, "some tnc project level comments");
 		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_PROJECT_CITATIONS, "some tnc project citations");
 		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_CAP_STANDARDS_SCORECARD, "some tnc cap standards scorecard");
-		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_PROJECT_SHARING_CODE, ProjectSharingQuestion.SHARE_OUTSIDE_TNC);
+		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_PROJECT_SHARING_CODE, ProjectSharingQuestion.SHARE_WITH_ANYONE);
 	}
 	
 	private void fillWwfProjectData() throws Exception

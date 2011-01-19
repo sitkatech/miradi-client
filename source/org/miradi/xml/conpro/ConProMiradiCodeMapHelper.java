@@ -85,7 +85,7 @@ public class ConProMiradiCodeMapHelper
 		
 		tncProjectSharingMap = new HashMap<String, String>();
 		tncProjectSharingMap.put(ProjectSharingQuestion.SHARE_ONLY_INSIDE_ORGANIZATION, "false");
-		tncProjectSharingMap.put(ProjectSharingQuestion.SHARE_OUTSIDE_TNC, "true");
+		tncProjectSharingMap.put(ProjectSharingQuestion.SHARE_WITH_ANYONE, "true");
 		
 		indicatorRatingSourceMap = new HashMap<String, String>();
 		indicatorRatingSourceMap.put(RatingSourceQuestion.NOT_SPECIFIED_CODE, "Not Specified");
