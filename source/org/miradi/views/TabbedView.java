@@ -462,7 +462,6 @@ abstract public class TabbedView extends UmbrellaView
 	
 	protected void prepareForTabSwitch()
 	{
-		FieldSaver.savePendingEdits();
 		closeActivePropertiesDialog();
 		if(currentTabIndex >= 0)
 		{
@@ -489,6 +488,7 @@ abstract public class TabbedView extends UmbrellaView
 			try
 			{
 				int newTab = tabs.getSelectedIndex();
+				FieldSaver.savePendingEdits();
 				CommandSetObjectData command = createTabChangeCommand(newTab);
 				getProject().executeCommand(command);
 			}
