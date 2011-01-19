@@ -32,10 +32,10 @@ public class ProjectSharingQuestion extends StaticChoiceQuestion
 	{
 		return new ChoiceItem[] {
 				new ChoiceItem(SHARE_ONLY_INSIDE_ORGANIZATION, EAM.text("Within your Organization Only")),
-				new ChoiceItem(SHARE_OUTSIDE_TNC, EAM.text("Public (anyone)")),
+				new ChoiceItem(SHARE_WITH_ANYONE, EAM.text("Public (anyone)")),
 		};
 	}
 	
 	public static final String SHARE_ONLY_INSIDE_ORGANIZATION = "";
-	public static final String SHARE_OUTSIDE_TNC = "ShareWithAnyone";
+	public static final String SHARE_WITH_ANYONE = "ShareWithAnyone";
 }

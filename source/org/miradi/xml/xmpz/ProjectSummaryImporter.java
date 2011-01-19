@@ -64,7 +64,7 @@ public class ProjectSummaryImporter extends AbstractXmpzObjectImporter
 		Node shareOutsideTncNode = getImporter().getNode(projectSumaryNode, getPoolName() + XmlSchemaCreator.PROJECT_SHARE_OUTSIDE_ORGANIZATION);
 		String isShareWithAnyOneCode = ProjectSharingQuestion.SHARE_ONLY_INSIDE_ORGANIZATION;
 		if (getImporter().isTrue(shareOutsideTncNode.getTextContent()))
-			isShareWithAnyOneCode = ProjectSharingQuestion.SHARE_OUTSIDE_TNC;
+			isShareWithAnyOneCode = ProjectSharingQuestion.SHARE_WITH_ANYONE;
 		
 		getImporter().setData(getTncProjectDataRef(), TncProjectData.TAG_PROJECT_SHARING_CODE, isShareWithAnyOneCode);
 	}	
