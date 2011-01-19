@@ -51,6 +51,7 @@ public class MemberOrgTabPanel extends DisposablePanelWithDescription implements
 		add(dataPanel, BorderLayout.CENTER);
 	}
 	
+	@Override
 	public void dispose()
 	{
 		super.dispose();
@@ -112,11 +113,13 @@ public class MemberOrgTabPanel extends DisposablePanelWithDescription implements
 		dataPanel.exportRtf(writer);
 	}
 	
+	@Override
 	public void becomeActive()
 	{
 		dataPanel.becomeActive();
 	}
 	
+	@Override
 	public void becomeInactive()
 	{
 		dataPanel.becomeInactive();
