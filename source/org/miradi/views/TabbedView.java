@@ -134,6 +134,7 @@ abstract public class TabbedView extends UmbrellaView
 			desiredTab = 0;
 		}
 		
+		//NOTE Must validate before setting splitter to ensure that the height is not 0 during construction
 		forceLayoutSoSplittersWork();
 		setTab(desiredTab);
 	}
