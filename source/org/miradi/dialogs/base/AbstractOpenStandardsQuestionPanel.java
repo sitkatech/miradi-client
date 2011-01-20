@@ -22,15 +22,18 @@ package org.miradi.dialogs.base;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Insets;
+import java.awt.Rectangle;
 import java.util.HashMap;
 import java.util.Vector;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.JComponent;
+import javax.swing.Scrollable;
 import javax.swing.border.AbstractBorder;
 import javax.swing.event.ListSelectionListener;
 
@@ -61,7 +64,7 @@ import org.miradi.utils.FillerLabel;
 
 import com.jhlabs.awt.GridLayoutPlus;
 
-abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectDataInputPanel
+abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectDataInputPanel implements Scrollable
 {
 	public AbstractOpenStandardsQuestionPanel(Project projectToUse, DynamicChoiceWithRootChoiceItem questionToUse) throws Exception
 	{
@@ -73,6 +76,36 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		question = questionToUse;
 		
 		rebuild();
+	}
+	
+	public boolean getScrollableTracksViewportWidth()
+	{
+		return true;
+	}
+	
+	public boolean getScrollableTracksViewportHeight()
+	{
+		return false;
+	}
+
+	public Dimension getPreferredScrollableViewportSize()
+	{
+		// NOTE: Required by implements Scrollable, but default behavior is fine
+		return super.getPreferredSize();
+	}
+
+	public int getScrollableBlockIncrement(Rectangle visibleRect,
+			int orientation, int direction)
+	{
+		// NOTE: Required by implements Scrollable, but seems to have no effect
+		return 0;
+	}
+
+	public int getScrollableUnitIncrement(Rectangle visibleRect,
+			int orientation, int direction)
+	{
+		// NOTE: Required by implements Scrollable, but seems to have no effect
+		return 0;
 	}
 
 	private void rebuild() throws Exception
