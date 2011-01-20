@@ -678,10 +678,10 @@
 		<arg value="status"/>
 	</exec>
 	<exec executable="hg" failonerror="false" dir="${miradi.root.dir}">
-		<arg value="outgoing"/>
+		<arg value="incoming"/>
 	</exec>
 	<exec executable="hg" failonerror="false" dir="${miradi.root.dir}">
-		<arg value="rebase"/>
+		<arg value="merge"/>
 	</exec>
 	<exec executable="hg" failonerror="true" dir="${miradi.root.dir}">
 		<arg value="push"/>
