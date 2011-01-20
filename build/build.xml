@@ -669,13 +669,10 @@
 <!-- T R A N S L A T I O N S                                            -->
 <!-- ================================================================== -->
 <target name="translations" depends="pot, spanish, indonesian, italian, mongolian, ukrainian, chinese, french" description="Create Translatable Content jars/zips">
-	<exec executable="hg" failonerror="true" dir="${translations.dir}">
+	<exec executable="hg" failonerror="false" dir="${translations.dir}">
 		<arg value="commit"/>
 		<arg value="--message"/>
 		<arg value="Updated PO files: ${version.timestamp}"/>
-	</exec>
-	<exec executable="hg" failonerror="false" dir="${miradi.root.dir}">
-		<arg value="status"/>
 	</exec>
 	<exec executable="hg" failonerror="true" dir="${miradi.root.dir}">
 		<arg value="push"/>
