@@ -565,8 +565,6 @@ public class TreeRebuilder
 			ExpenseAssignment.getObjectType(),
 		};
 	}
-	
-	
 
 	private Project getProject()
 	{
