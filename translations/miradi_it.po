@@ -3,11 +3,20 @@
 # This file is distributed under the GPL 3.0
 # Automatically generated, 2010.
 #
+#: Miradi/source/org/miradi/questions/OpenStandardsPlanActionsAndMonitoringQuestion.java:33
+#: Miradi/source/org/miradi/questions/OpenStandardsPlanActionsAndMonitoringQuestion.java:43
+#: Miradi/source/org/miradi/questions/OpenStandardsPlanActionsAndMonitoringQuestion.java:48
+#: Miradi/source/org/miradi/questions/OpenStandardsAnalyzeUseAndAdaptQuestion.java:34
+#: Miradi/source/org/miradi/questions/OpenStandardsAnalyzeUseAndAdaptQuestion.java:38
+#: Miradi/source/org/miradi/questions/OpenStandardsAnalyzeUseAndAdaptQuestion.java:44
+#: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:33
+#: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:37
+#: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:45
 msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-31 09:37-0500\n"
+"POT-Creation-Date: 2011-01-20 14:08-0600\n"
 "PO-Revision-Date: 2010-05-12 21:01-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -62,7 +71,7 @@ msgstr ""
 msgid " 2) Connect threat to relevant targets"
 msgstr ""
 
-#: Miradi/source/org/miradi/project/Project.java:183
+#: Miradi/source/org/miradi/project/Project.java:184
 msgid " A project by this name already exists: "
 msgstr ""
 
@@ -70,39 +79,202 @@ msgstr ""
 msgid " was empty"
 msgstr ""
 
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:145
+msgid "%1 % of Objectives associated with 1 or more Strategies"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:146
+msgid "%1 % of Strategies associated with 1 or more Objectives"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:163
+msgid "%1 % of indicators linked to objectives"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:164
+msgid "%1 % of indicators not linked to objectives"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:152
+msgid "%1 % of indicators with Desired Future Status specified"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:82
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:183
+msgid "%1 - %2"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:252
+msgid "%1 Conceptual Model Pages created"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:242
+msgid "%1 Contributing Factors Created"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:167
+msgid "%1 Direct Threat Indicators"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:230
+msgid "%1 Direct Threats created"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:122
+msgid "%1 Draft Strategies Created"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:127
+msgid "%1 Draft Strategies Ranked"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:161
+msgid "%1 Indicators associated to KEA's"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:99
+msgid "%1 Indicators/methods (%2%) have progress reports"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:165
+msgid "%1 KEA viability indicators associated with %2 targets"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:139
+msgid "%1 Objectives Created"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:151
+msgid "%1 Objectives associated to 1 or more Indicators"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:174
+msgid "%1 Other Organizations"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:134
+msgid "%1 Results Chains Created"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:132
+msgid "%1 Strategies Created"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:98
+msgid "%1 Strategies/activities (%2%) have progress reports"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:173
+msgid "%1 Team Members"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:168
+msgid "%1 Threat Reduction Result indicators"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:69
+msgid "%1 Total activities created"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:76
+msgid "%1 Total methods created"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:214
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:219
+msgid "%1 created"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:117
+msgid "%1 goals Created"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:162
+msgid "%1 indicators associate to Factors"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:270
+msgid "%1 indicators with 1 measurement"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:271
+msgid "%1 indicators with more than 1 measurement"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:269
+msgid "%1 indicators with no measurement"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:273
+msgid "%1 objectives with 1 percent complete record"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:274
+msgid "%1 objectives with more than 1 percent complete record"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:272
+msgid "%1 objectives with no percent complete record"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:75
+msgid "%1 of %2 Indicators have Methods."
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:77
+msgid "%1 of %2 Methods and Tasks have assignments"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:68
+msgid "%1 of %2 Strategies have at least 1 Activity."
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:116
+msgid "%1 of %2 Targets have Goals"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:166
+msgid "%1 simple viability indicators associated with %2 targets"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:224
+msgid "%1 targets have KEA"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:225
+msgid "%1 targets have simple viablity information"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:253
+msgid "%1 total factors created"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:133
+msgid "%1 with taxonomy assignments"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:70
+msgid "%2 of %1 Activities and tasks have assignments"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:140
+msgid "%2 of %1 RCs have at least 1 objective"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:231
+msgid "%2 of %1 have taxonomy assignments"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:236
+msgid "%2 of %1 threat/target ranks with simple ranking"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:237
+msgid "%2 of %1 threat/target ranks with stress-based ranking"
+msgstr ""
+
 #: Miradi/source/org/miradi/dialogfields/ReadOnlyCodeListField.java:81
 msgid "%countLabel: %itemCount"
-msgstr ""
-
-#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:78
-msgid "%s created"
-msgstr ""
-
-#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:73
-msgid "%targetCount created"
-msgstr ""
-
-#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:85
-msgid "%targetWithKeaCount targets have KEA"
-msgstr ""
-
-#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:92
-msgid ""
-"%targetWithSimpleViabilityCount targets have simple viablity information"
-msgstr ""
-
-#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:107
-msgid "%threatCount Direct Threats created"
-msgstr ""
-
-#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:118
-msgid ""
-"%threatTargetWithRatingCount of %threatTargetLinkCount threat/target links "
-"ranked"
-msgstr ""
-
-#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:111
-msgid "%threatWithTaxonomyCount of %threatCount have taxonomy assignments"
 msgstr ""
 
 #: Miradi/source/org/miradi/utils/DiagramCorruptionDetector.java:222
@@ -117,7 +289,7 @@ msgstr ""
 msgid "(Definition Not Available)"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:115
+#: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:116
 msgid "(Error)"
 msgstr ""
 
@@ -223,18 +395,6 @@ msgstr ""
 msgid "1) Select target and threat to work on"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:49
-msgid "1A. Define Initial Project Team"
-msgstr ""
-
-#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:60
-msgid "1B. Define Scope Vision and Targets"
-msgstr ""
-
-#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:97
-msgid "1C. Identify Critical Threats"
-msgstr ""
-
 #: Miradi/source/org/miradi/questions/CurrencyDecimalQuestion.java:36
 msgid "2"
 msgstr ""
@@ -303,7 +463,7 @@ msgstr ""
 msgid "3b) Refine indicator ratings"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/planning/WorkPlanAssignResourcesStep.java:47
+#: Miradi/source/org/miradi/wizard/planning/WorkPlanAssignResourcesStep.java:49
 msgid "4) Assign resources"
 msgstr ""
 
@@ -363,21 +523,12 @@ msgstr ""
 msgid "7C. Create a Learning Environment"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1199
+#: Miradi/source/org/miradi/main/MainWindow.java:1200
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
 "available in the next version of Miradi. <BR>If you have questions, contact "
 "support@miradi.org.</HTML>"
-msgstr ""
-
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:102
-msgid ""
-"<HTML>One or more of these factors cannot be pasted as shared into this "
-"diagram.<BR><BR>Contributing Factors and Direct Threats cannot be pasted as "
-"shared into a Results Chain.<BR>Intermediate Results and Threat Reduction "
-"Results cannot be pasted as shared into a Conceptual Model page.<BR><BR>Do "
-"you want to paste all these factors as copies?</HTML>"
 msgstr ""
 
 #: Miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:107
@@ -396,7 +547,7 @@ msgid ""
 "and verify that the ecoregion(s) are correct for this project.</HTML>"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:63
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:55
 msgid ""
 "<HTML>When pasting between projects, can't paste from CM to RC or vice "
 "versa</HTML>"
@@ -412,7 +563,7 @@ msgid ""
 "correctly."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:239
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:251
 msgid ""
 "<div class='DataPanel'><p>Why are my choices limited to one color family for "
 "each type of factor?</p>"
@@ -643,7 +794,7 @@ msgid ""
 "proportion of the target's population.</html>"
 msgstr ""
 
-#: Miradi/source/org/miradi/database/migrations/MigrationsForMiradi3.java:154
+#: Miradi/source/org/miradi/database/migrations/MigrationsForMiradi3.java:156
 msgid ""
 "<html>An Operating Unit for this project has been <br>superseded. Please "
 "select its replacement on the TNC Tab of the Summary Page.</html>"
@@ -673,7 +824,7 @@ msgid ""
 "about options for realigning it to match your <br>fiscal year."
 msgstr ""
 
-#: Miradi/source/org/miradi/database/migrations/MigrationsForMiradi3.java:114
+#: Miradi/source/org/miradi/database/migrations/MigrationsForMiradi3.java:116
 msgid ""
 "<html>One or more Overrides (High Level Estimates) have been migrated. "
 "<br><br>Any Budget overrides have been converted to Expenses, <br>and any "
@@ -718,11 +869,7 @@ msgid ""
 "<br>will enter zeros in the appropriate time period column(s)."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:57
-msgid "<html>This paste cannot be performed for unexpected reasons"
-msgstr ""
-
-#: Miradi/source/org/miradi/database/migrations/MigrationsForMiradi3.java:182
+#: Miradi/source/org/miradi/database/migrations/MigrationsForMiradi3.java:184
 msgid ""
 "<html>This project has more than one TNC ConPro project ID. It is safe to "
 "view and make <BR>changes to this project, but the ConPro ID will not be "
@@ -759,7 +906,7 @@ msgid ""
 "safe to do this, unless an earlier migration attempt failed."
 msgstr ""
 
-#: Miradi/source/org/miradi/project/Project.java:189
+#: Miradi/source/org/miradi/project/Project.java:190
 msgid "A file or folder exist by the same name:"
 msgstr ""
 
@@ -863,7 +1010,9 @@ msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionEditObjectiveIndicatorRelevancyList.java:34
 #: Miradi/source/org/miradi/actions/ActionManageFactorTags.java:35
+#: Miradi/source/org/miradi/actions/ActionEditStrategyObjectiveRelevancyList.java:36
 #: Miradi/source/org/miradi/actions/ActionEditGoalIndicatorRelevancyList.java:34
+#: Miradi/source/org/miradi/actions/ActionEditStrategyGoalRelevancyList.java:35
 #: Miradi/source/org/miradi/actions/ActionEditGoalStrategyActivityRelevancyList.java:34
 #: Miradi/source/org/miradi/actions/ActionEditObjectiveStrategyActivityRelevancyList.java:34
 msgid "Action|Choose..."
@@ -919,7 +1068,7 @@ msgstr ""
 msgid "Action|Create Conceptual Model Page"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionCreatePlanningViewConfigurationMenuDoer.java:34
+#: Miradi/source/org/miradi/actions/ActionCreatePlanningViewConfigurationMenu.java:34
 msgid "Action|Create Custom"
 msgstr ""
 
@@ -964,11 +1113,16 @@ msgstr ""
 msgid "Action|Credits"
 msgstr ""
 
+#: Miradi/source/org/miradi/actions/ActionCreateCustomFromCurrentTreeTableConfiguration.java:35
+#: Miradi/source/org/miradi/actions/ActionPlanningCustomizeDialogPopup.java:35
+msgid "Action|Customize..."
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/ActionCut.java:34
 msgid "Action|Cut"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionInvokeDashboard.java:35
+#: Miradi/source/org/miradi/actions/ActionInvokeDashboard.java:36
 msgid "Action|Dashboard"
 msgstr ""
 
@@ -1701,12 +1855,8 @@ msgstr ""
 msgid "Add '%s' to User Dictionary"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/jump/ActionJumpDiagramWizardHumanWelfareTargetsStep.java:36
+#: Miradi/source/org/miradi/questions/OpenStandardsConceptualizeQuestion.java:113
 msgid "Add Human Welfare Targets If Desired"
-msgstr ""
-
-#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:77
-msgid "Add Human Welfare Targets:"
 msgstr ""
 
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:134
@@ -1721,7 +1871,7 @@ msgstr ""
 msgid "Agree on Project Vision"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/jump/ActionJumpSummaryWizardRolesAndResponsibilities.java:35
+#: Miradi/source/org/miradi/questions/OpenStandardsConceptualizeQuestion.java:93
 msgid "Agree on roles and responsibilities"
 msgstr ""
 
@@ -1737,17 +1887,17 @@ msgstr ""
 msgid "All subtasks within this item will be removed as well."
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/MultiTableRowSortController.java:146
+#: Miradi/source/org/miradi/utils/MultiTableRowSortController.java:143
 msgid "An Error Occurred During Sorting."
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAssignmentMainTableModel.java:75
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:107
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:115
 msgid "An error has occured while writing assignment data."
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/DiagramSplitPane.java:332
-#: Miradi/source/org/miradi/diagram/DiagramModel.java:798
+#: Miradi/source/org/miradi/diagram/DiagramModel.java:789
 msgid ""
 "An error is preventing this diagram from displaying correctly. Most likely, "
 "the project has gotten corrupted. Please contact the Miradi team for help "
@@ -1784,11 +1934,11 @@ msgstr ""
 msgid "Analyze Resources, Feasibility, and Risk"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/ProcessMenu4b.java:32
+#: Miradi/source/org/miradi/questions/OpenStandardsAnalyzeUseAndAdaptQuestion.java:41
 msgid "Analyze operational and financial data"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/ProcessMenu4b.java:31
+#: Miradi/source/org/miradi/questions/OpenStandardsAnalyzeUseAndAdaptQuestion.java:40
 msgid "Analyze project results and assumptions"
 msgstr ""
 
@@ -1968,15 +2118,15 @@ msgstr ""
 msgid "Ascending"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/jump/ActionJumpAssessStakeholders.java:35
+#: Miradi/source/org/miradi/questions/OpenStandardsConceptualizeQuestion.java:138
 msgid "Assess Stakeholders"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/jump/ActionJumpAssessResources.java:35
+#: Miradi/source/org/miradi/questions/OpenStandardsPlanActionsAndMonitoringQuestion.java:124
 msgid "Assess human, financial and other resources"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/jump/ActionJumpAssessRisks.java:35
+#: Miradi/source/org/miradi/questions/OpenStandardsPlanActionsAndMonitoringQuestion.java:129
 msgid "Assess risks"
 msgstr ""
 
@@ -2038,6 +2188,8 @@ msgid "Aug"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/TableRowHeightModeQuestion.java:38
+#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:47
+#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:54
 msgid "Automatic"
 msgstr ""
 
@@ -2057,11 +2209,11 @@ msgstr ""
 msgid "Biodiversity Target"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:225
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:237
 msgid "Biodiversity Target (Lighter Green)"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:227
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:239
 msgid "Biodiversity Target Scope (Darker Green)"
 msgstr ""
 
@@ -2117,10 +2269,6 @@ msgstr ""
 msgid "Bundle Rules"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:197
-msgid "Button|As Copy"
-msgstr ""
-
 #: Miradi/source/org/miradi/database/DataUpgrader.java:48
 #: Miradi/source/org/miradi/database/DataUpgrader.java:60
 #: Miradi/source/org/miradi/views/diagram/doers/AbstractPasteDoer.java:71
@@ -2129,12 +2277,14 @@ msgstr ""
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/DirectoryChooserDialog.java:76
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:127
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:166
+#: Miradi/source/org/miradi/dialogs/confirm/ConfirmDialogTemplate.java:51
 #: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:233
 msgid "Button|Cancel"
 msgstr ""
 
 #: Miradi/source/org/miradi/utils/HtmlViewPanel.java:186
 #: Miradi/source/org/miradi/dialogs/base/AbstractDialogWithClose.java:63
+#: Miradi/source/org/miradi/dialogs/notify/NotifyDialogTemplate.java:54
 msgid "Button|Close"
 msgstr ""
 
@@ -2182,8 +2332,16 @@ msgstr ""
 msgid "Button|Ok"
 msgstr ""
 
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:171
+msgid "Button|Paste As Copies"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/diagram/doers/PasteFactorContentDoer.java:194
 msgid "Button|Paste Contents"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:172
+msgid "Button|Paste Shared"
 msgstr ""
 
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:165
@@ -2200,10 +2358,6 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:114
 msgid "Button|Save"
-msgstr ""
-
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:198
-msgid "Button|Shared"
 msgstr ""
 
 #: Miradi/source/org/miradi/main/SampleInstaller.java:69
@@ -2248,7 +2402,7 @@ msgid "Can't link an item to itself"
 msgstr ""
 
 #: Miradi/source/org/miradi/utils/ConstantButtonNames.java:28
-#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:69
+#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:73
 #: Miradi/source/org/miradi/dialogs/base/AbstractSelectionDialog.java:90
 msgid "Cancel"
 msgstr ""
@@ -2364,8 +2518,16 @@ msgstr ""
 msgid "Choose Objective to Create from"
 msgstr ""
 
+#: Miradi/source/org/miradi/views/umbrella/doers/EditStrategyGoalRelevancyListDoer.java:45
+msgid "Choose Relevant Goal(s)"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/umbrella/AbstractRelevancyEditListDoer.java:51
 msgid "Choose Relevant Indicator(s)"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/doers/EditStrategyObjectiveRelevancyListDoer.java:45
+msgid "Choose Relevant Objective(s)"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/doers/CloneStressDoer.java:32
@@ -2376,7 +2538,7 @@ msgstr ""
 msgid "Choose Tags"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:221
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:233
 msgid "Choose the colors that look best on your system:"
 msgstr ""
 
@@ -2408,6 +2570,10 @@ msgstr ""
 msgid "Comments"
 msgstr ""
 
+#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:56
+msgid "Complete"
+msgstr ""
+
 #: Miradi/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:36
 msgid "Completed"
 msgstr ""
@@ -2437,11 +2603,7 @@ msgid ""
 "factors that are believed to impact or lead to a conservation target."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:136
-msgid "Conceptualize"
-msgstr ""
-
-#: Miradi/source/org/miradi/main/menu/ProcessMenu5c.java:32
+#: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:48
 msgid ""
 "Conduct evaluations and/or audits at appropriate times during the project "
 "cycle"
@@ -2449,10 +2611,6 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/workplan/doers/EditAnalysisRowsDoer.java:44
 msgid "Configure Work Plan Analysis"
-msgstr ""
-
-#: Miradi/source/org/miradi/dialogs/base/ConfirmDialog.java:36
-msgid "Confirmation"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:45
@@ -2465,7 +2623,7 @@ msgstr ""
 msgid "Contributing Factor"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:224
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:236
 msgid "Contributing Factor (Orange)"
 msgstr ""
 
@@ -2534,20 +2692,16 @@ msgstr ""
 msgid "Create from Existing"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/jump/ActionJumpDiagramWizardCreateInitialModelStep.java:36
+#: Miradi/source/org/miradi/questions/OpenStandardsConceptualizeQuestion.java:143
 msgid "Create initial conceptual model"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/jump/ActionJumpDiagramWizardResultsChainSelectStrategyStep.java:35
+#: Miradi/source/org/miradi/questions/OpenStandardsPlanActionsAndMonitoringQuestion.java:94
 msgid "Create results chains showing assumptions"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/jump/ActionJumpWelcomeCreateStep.java:47
 msgid "Create..."
-msgstr ""
-
-#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:67
-msgid "Created (%s chars)"
 msgstr ""
 
 #: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:77
@@ -2595,8 +2749,12 @@ msgstr ""
 msgid "Currently, Miradi can only import one project file at a time"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/reports/ReportsView.java:87
+#: Miradi/source/org/miradi/views/reports/ReportsView.java:94
 msgid "Custom Reports"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/planning/doers/PlanningCustomizeDialogPopupDoer.java:60
+msgid "Customize..."
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:95
@@ -2648,11 +2806,11 @@ msgstr ""
 msgid "Dark Yellow"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/dashboard/DashboardDialog.java:32
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardDialog.java:36
 msgid "Dashboard"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:118
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:123
 msgid "Data Location"
 msgstr ""
 
@@ -2681,19 +2839,15 @@ msgstr ""
 msgid "Default Mode"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:65
-msgid "Define Project Scope:"
-msgstr ""
-
-#: Miradi/source/org/miradi/actions/jump/ActionJumpDiagramWizardDefineAudienceStep.java:35
+#: Miradi/source/org/miradi/questions/OpenStandardsPlanActionsAndMonitoringQuestion.java:109
 msgid "Define audiences and information needs"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/jump/ActionJumpMonitoringWizardDefineIndicatorsStep.java:35
+#: Miradi/source/org/miradi/questions/OpenStandardsPlanActionsAndMonitoringQuestion.java:114
 msgid "Define indicators"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/jump/ActionJumpSummaryWizardDefineProjecScope.java:35
+#: Miradi/source/org/miradi/questions/OpenStandardsConceptualizeQuestion.java:98
 msgid "Define project scope"
 msgstr ""
 
@@ -2720,7 +2874,7 @@ msgstr ""
 msgid "Delete..."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/ProcessMenu5c.java:33
+#: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:49
 msgid "Demonstrate commitment from leaders to learning and innovation"
 msgstr ""
 
@@ -2728,11 +2882,7 @@ msgstr ""
 msgid "Descending"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:82
-msgid "Describe Status of Targets:"
-msgstr ""
-
-#: Miradi/source/org/miradi/actions/jump/ActionJumpTargetViabilityMethodChoiceStep.java:35
+#: Miradi/source/org/miradi/questions/OpenStandardsConceptualizeQuestion.java:118
 msgid "Describe status of targets"
 msgstr ""
 
@@ -2753,7 +2903,7 @@ msgid "Desert - Temperate"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:329
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:79
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:80
 msgid "Desired Future Status"
 msgstr ""
 
@@ -2764,26 +2914,26 @@ msgid ""
 "time in the future. Generally equivalent to a project sub-goal."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:86
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:87
 msgid "Desired Future Value"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:111
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:113
 msgid "Desired Value/Status"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/jump/ActionJumpWorkPlanDevelopActivitiesAndTasksStep.java:35
+#: Miradi/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:73
 msgid "Detail activities, tasks, and responsibilities"
 msgstr ""
 
 #: Miradi/source/org/miradi/wizard/planning/WorkPlanCreateResourcesStep.java:42
-#: Miradi/source/org/miradi/wizard/planning/WorkPlanAssignResourcesStep.java:42
+#: Miradi/source/org/miradi/wizard/planning/WorkPlanAssignResourcesStep.java:43
 #: Miradi/source/org/miradi/wizard/planning/WorkPlanDevelopActivitiesAndTasksStep.java:42
 #: Miradi/source/org/miradi/wizard/planning/WorkPlanDevelopMethodsAndTasksStep.java:42
 msgid "Detail activities/methods, tasks, and responsibilities"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/jump/ActionJumpWorkPlanDevelopMethodsAndTasksStep.java:35
+#: Miradi/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:78
 msgid "Detail methods, tasks, and responsibilities"
 msgstr ""
 
@@ -2811,15 +2961,15 @@ msgstr ""
 msgid "Develop activities and action plan"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/ProcessMenu5b.java:34
+#: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:42
 msgid "Develop and share communication products"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/jump/ActionJumpDevelopFundingProposals.java:35
+#: Miradi/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:93
 msgid "Develop and submit funding proposals"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/ProcessMenu5b.java:32
+#: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:40
 msgid "Develop communications strategy"
 msgstr ""
 
@@ -2827,23 +2977,23 @@ msgstr ""
 msgid "Develop draft strategies"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/jump/ActionJumpStrategicPlanDevelopGoalStep.java:35
+#: Miradi/source/org/miradi/questions/OpenStandardsPlanActionsAndMonitoringQuestion.java:79
 msgid "Develop goals for each target"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/jump/ActionJumpDevelopMap.java:35
+#: Miradi/source/org/miradi/questions/OpenStandardsConceptualizeQuestion.java:103
 msgid "Develop map of project area"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/jump/ActionJumpStrategicPlanDevelopObjectivesStep.java:35
+#: Miradi/source/org/miradi/questions/OpenStandardsPlanActionsAndMonitoringQuestion.java:99
 msgid "Develop objectives"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/jump/ActionJumpPlanningWizardDevelopOperationalPlan.java:37
+#: Miradi/source/org/miradi/actions/jump/ActionJumpPlanningWizardDevelopOperationalPlan.java:36
 msgid "Develop operational plan"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/jump/ActionJumpDevelopSchedule.java:35
+#: Miradi/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:83
 msgid "Develop project timeline or calendar"
 msgstr ""
 
@@ -2851,7 +3001,7 @@ msgstr ""
 msgid "Develop short-term work plans"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/ProcessMenu4a.java:34
+#: Miradi/source/org/miradi/questions/OpenStandardsAnalyzeUseAndAdaptQuestion.java:36
 msgid ""
 "Develop systems for recording, storing, processing and backing up project "
 "data"
@@ -2861,7 +3011,7 @@ msgstr ""
 msgid "Develop target viability"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:107
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:112
 msgid "Diagram"
 msgstr ""
 
@@ -2882,7 +3032,7 @@ msgstr ""
 msgid "Direct Threat"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:223
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:235
 msgid "Direct Threat (Pink)"
 msgstr ""
 
@@ -2912,11 +3062,11 @@ msgstr ""
 msgid "Do you want to install the sample project?"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/ProcessMenu4b.java:33
+#: Miradi/source/org/miradi/questions/OpenStandardsAnalyzeUseAndAdaptQuestion.java:42
 msgid "Document discussions and decisions"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/ProcessMenu5a.java:31
+#: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:35
 msgid "Document key results and lessons"
 msgstr ""
 
@@ -2930,6 +3080,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/questions/CurrencyTypeQuestion.java:35
 msgid "Dollar (United States)"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/notify/NotifyDialog.java:69
+msgid "Don't show this dialog again"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:82
@@ -2971,6 +3125,10 @@ msgstr ""
 msgid "Edit Text"
 msgstr ""
 
+#: Miradi/source/org/miradi/dialogfields/editors/SplitterPanelWithStaticRightSideTextPanel.java:50
+msgid "Edit.."
+msgstr ""
+
 #: Miradi/source/org/miradi/dialogs/base/ObjectRefListEditorPanel.java:51
 #: Miradi/source/org/miradi/dialogs/base/CodeListEditorPanel.java:46
 msgid "Editor"
@@ -2980,7 +3138,7 @@ msgstr ""
 msgid "Effective"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:147
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:159
 msgid "Enable Spell Checking"
 msgstr ""
 
@@ -3004,16 +3162,18 @@ msgstr ""
 msgid "Entire Project Duration"
 msgstr ""
 
-#: Miradi/source/org/miradi/objecthelpers/ThreatTargetVirtualLinkHelper.java:85
+#: Miradi/source/org/miradi/objecthelpers/ThreatTargetVirtualLinkHelper.java:102
 #: Miradi/source/org/miradi/dialogfields/ReadOnlyCodeListField.java:87
-#: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:84
+#: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:79
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetThreatLinkTableModel.java:76
-#: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetSummaryRowTableModel.java:71
+#: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetSummaryRowTableModel.java:66
 #: Miradi/source/org/miradi/dialogs/viability/IndicatorTreeModel.java:72
-#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:102
+#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:112
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:103
 msgid "Error"
 msgstr ""
 
+#: Miradi/source/org/miradi/dialogs/planning/treenodes/NewPlanningTreeErrorNode.java:59
 #: Miradi/source/org/miradi/dialogs/planning/treenodes/PlanningTreeErrorNode.java:58
 msgid "Error Creating: %s"
 msgstr ""
@@ -3022,7 +3182,7 @@ msgstr ""
 msgid "Error Export To Miradi Zip: Possible Write Protected: "
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/MultiTableRowSortController.java:175
+#: Miradi/source/org/miradi/utils/MultiTableRowSortController.java:172
 msgid "Error Occurred During Sorting"
 msgstr ""
 
@@ -3030,7 +3190,7 @@ msgstr ""
 msgid "Error Occurred please try saving under different name."
 msgstr ""
 
-#: Miradi/source/org/miradi/objects/Dashboard.java:115
+#: Miradi/source/org/miradi/objects/Dashboard.java:305
 msgid "Error Retrieving Data"
 msgstr ""
 
@@ -3046,11 +3206,11 @@ msgstr ""
 msgid "Error deleting project: "
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/Redo.java:60
+#: Miradi/source/org/miradi/views/umbrella/RedoDoer.java:53
 msgid "Error during redo"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/Undo.java:65
+#: Miradi/source/org/miradi/views/umbrella/UndoDoer.java:58
 msgid "Error during undo"
 msgstr ""
 
@@ -3095,11 +3255,11 @@ msgstr ""
 msgid "Error renaming project: "
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/treetables/TreeTablePanel.java:112
+#: Miradi/source/org/miradi/dialogs/treetables/TreeTablePanel.java:124
 msgid "Error restoring tree state"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/jump/ActionJumpBudgetWizardAccountingAndFunding.java:36
+#: Miradi/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:88
 msgid "Estimate costs for activities and monitoring"
 msgstr ""
 
@@ -3107,7 +3267,7 @@ msgstr ""
 msgid "Euro"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:782
+#: Miradi/source/org/miradi/main/MainWindow.java:778
 msgid "Existing data for a different fiscal year is being excluded"
 msgstr ""
 
@@ -3166,11 +3326,11 @@ msgstr ""
 msgid "FOS Training Type|Other"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:122
+#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:132
 msgid "FTE Days Per Year:"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:520
+#: Miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:519
 msgid "Factor Properties"
 msgstr ""
 
@@ -3196,7 +3356,7 @@ msgid "File name must contain only alpha numeric and/or '_' characters."
 msgstr ""
 
 #: Miradi/source/org/miradi/xml/AbstractXmlImporter.java:90
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:169
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:170
 msgid "File to import does not validate."
 msgstr ""
 
@@ -3252,7 +3412,7 @@ msgstr ""
 msgid "FileFilter|ZIP (*.zip)"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/jump/ActionJumpPlanningWizardFinalizeMonitoringPlanStep.java:35
+#: Miradi/source/org/miradi/questions/OpenStandardsPlanActionsAndMonitoringQuestion.java:119
 msgid "Finalize monitoring plan"
 msgstr ""
 
@@ -3260,7 +3420,7 @@ msgstr ""
 msgid "Finalize project conceptual model"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/jump/ActionJumpPlanningWizardFinalizeStrategicPlanStep.java:35
+#: Miradi/source/org/miradi/questions/OpenStandardsPlanActionsAndMonitoringQuestion.java:104
 msgid "Finalize strategic plan"
 msgstr ""
 
@@ -3276,11 +3436,11 @@ msgstr ""
 msgid "Financial Settings"
 msgstr ""
 
-#: Miradi/source/org/miradi/project/ProjectCalendar.java:364
+#: Miradi/source/org/miradi/project/ProjectCalendar.java:368
 msgid "Fiscal Quarter Prefix|FQ"
 msgstr ""
 
-#: Miradi/source/org/miradi/project/ProjectCalendar.java:354
+#: Miradi/source/org/miradi/project/ProjectCalendar.java:358
 msgid "Fiscal Year|FY"
 msgstr ""
 
@@ -3303,15 +3463,15 @@ msgid "Folder Chooser"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:51
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:66
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:68
 msgid "Font"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:140
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:152
 msgid "Font Family"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:137
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:149
 msgid "Font Size"
 msgstr ""
 
@@ -3387,11 +3547,11 @@ msgstr ""
 msgid "Found null underlying factor  .Diagram = %s"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:57
+#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:59
 msgid "Fraction of FTE..."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:129
+#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:139
 msgid "Fraction:"
 msgstr ""
 
@@ -3439,7 +3599,12 @@ msgid ""
 "Miradi, a goal is represented by a small blue oval."
 msgstr ""
 
+#: Miradi/source/org/miradi/dialogs/base/RelevancyGoalPanel.java:42
+msgid "Goal Relevancy Panel"
+msgstr ""
+
 #: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:168
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:90
 msgid "Goals"
 msgstr ""
 
@@ -3491,7 +3656,7 @@ msgstr ""
 msgid "Ground Truth and Revise Model"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/jump/ActionJumpDiagramWizardReviewModelAndAdjustStep.java:35
+#: Miradi/source/org/miradi/questions/OpenStandardsConceptualizeQuestion.java:148
 msgid "Ground-truth and revise model"
 msgstr ""
 
@@ -3530,7 +3695,7 @@ msgstr ""
 msgid "High"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1353
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1354
 msgid "High/Very-High Threat Chains"
 msgstr ""
 
@@ -3552,7 +3717,7 @@ msgstr ""
 msgid "Human Welfare Target"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:226
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:238
 msgid "Human Welfare Target (Lighter Brown)"
 msgstr ""
 
@@ -3560,7 +3725,7 @@ msgstr ""
 msgid "Human Welfare Target Mode"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:228
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:240
 msgid "Human Welfare Target Scope (Darker Brown)"
 msgstr ""
 
@@ -3584,23 +3749,19 @@ msgstr ""
 msgid "IUCN Redlist Species"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/jump/ActionJumpSelectChainStep.java:35
+#: Miradi/source/org/miradi/questions/OpenStandardsPlanActionsAndMonitoringQuestion.java:84
 msgid "Identify \"key factors\" and draft strategies"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:106
-msgid "Identify Direct Threats:"
-msgstr ""
-
-#: Miradi/source/org/miradi/actions/jump/ActionJumpDiagramWizardIdentifyDirectThreatStep.java:35
+#: Miradi/source/org/miradi/questions/OpenStandardsConceptualizeQuestion.java:123
 msgid "Identify direct threats"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/jump/ActionJumpDiagramWizardIdentifyIndirectThreatStep.java:35
+#: Miradi/source/org/miradi/questions/OpenStandardsConceptualizeQuestion.java:133
 msgid "Identify indirect threats and opportunities"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/ProcessMenu5b.java:31
+#: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:39
 msgid "Identify key audiences"
 msgstr ""
 
@@ -3612,6 +3773,10 @@ msgstr ""
 msgid "Identify stresses (optional)"
 msgstr ""
 
+#: Miradi/source/org/miradi/dialogs/NeverShowAgainPanel.java:47
+msgid "If a notification dialog in this list is checked, "
+msgstr ""
+
 #: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:99
 msgid "Ignoring unlinked factors..."
 msgstr ""
@@ -3620,11 +3785,11 @@ msgstr ""
 msgid "Implement plans"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/jump/ActionJumpImplementStrategicAndMonitoringPlans.java:36
+#: Miradi/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:103
 msgid "Implement strategic and monitoring plans"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/jump/ActionJumpImplementWorkPlan.java:35
+#: Miradi/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:108
 msgid "Implement work plan"
 msgstr ""
 
@@ -3666,6 +3831,10 @@ msgstr ""
 msgid "In Front"
 msgstr ""
 
+#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:55
+msgid "In Progress"
+msgstr ""
+
 #: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:250
 msgid "Incomplete Link"
 msgstr ""
@@ -3687,7 +3856,7 @@ msgid ""
 "by a purple triangle."
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1253
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1254
 msgid "Indicator Holder"
 msgstr ""
 
@@ -3695,7 +3864,7 @@ msgstr ""
 msgid "Indicator Relevancy Panel"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:152
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:153
 msgid "Indicator does not have a direct/indirect factor parent. "
 msgstr ""
 
@@ -3708,12 +3877,12 @@ msgstr ""
 msgid "Indicators Only"
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:95
-msgid "Indicators:"
+#: Miradi/source/org/miradi/database/migrations/MigrationsForMiradi3.java:246
+msgid "Indicators no longer referrer to same Resource Assignment"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:331
-msgid "Information"
+#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:95
+msgid "Indicators:"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:187
@@ -3729,11 +3898,11 @@ msgstr ""
 msgid "Initializing..."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:66
+#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:70
 msgid "Insert"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:72
+#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:76
 msgid "Insert FTE Fraction"
 msgstr ""
 
@@ -3757,7 +3926,7 @@ msgstr ""
 msgid "Installed successfully"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/TabbedView.java:233
+#: Miradi/source/org/miradi/views/TabbedView.java:248
 #: Miradi/source/org/miradi/dialogs/base/ModelessDialogWithDirections.java:76
 msgid "Instructions"
 msgstr ""
@@ -3771,7 +3940,7 @@ msgstr ""
 msgid "Intermediate Result"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:229
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:241
 msgid "Intermediate Result (Light Blue)"
 msgstr ""
 
@@ -3884,7 +4053,7 @@ msgstr ""
 msgid "Label|(Undefined Funding Source)"
 msgstr ""
 
-#: Miradi/source/org/miradi/objects/ProjectResource.java:125
+#: Miradi/source/org/miradi/objects/ProjectResource.java:126
 msgid "Label|(Undefined Resource)"
 msgstr ""
 
@@ -4079,7 +4248,7 @@ msgid "Leader/Manager"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:55
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:87
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:88
 msgid "Legacy TNC Ratings"
 msgstr ""
 
@@ -4157,7 +4326,7 @@ msgstr ""
 msgid "Low"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1354
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1355
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr ""
 
@@ -4401,47 +4570,47 @@ msgstr ""
 msgid "Medium (Default)"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:232
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:241
 msgid "MenuBar|Actions"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:162
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:171
 msgid "MenuBar|Edit"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:87
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:96
 msgid "MenuBar|File"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:511
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:573
 msgid "MenuBar|Help"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:493
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:504
 msgid "MenuBar|Step-by-Step"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:424
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:433
 msgid "MenuBar|View"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/ProcessMenu1.java:31
+#: Miradi/source/org/miradi/questions/OpenStandardsConceptualizeQuestion.java:63
 msgid "Menu|1. Conceptualize Project"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/ProcessMenu2.java:31
+#: Miradi/source/org/miradi/questions/OpenStandardsPlanActionsAndMonitoringQuestion.java:59
 msgid "Menu|2. Plan Actions and Monitoring"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/ProcessMenu3.java:31
+#: Miradi/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:53
 msgid "Menu|3. Implement Actions &  Monitoring"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/ProcessMenu4.java:31
+#: Miradi/source/org/miradi/questions/OpenStandardsAnalyzeUseAndAdaptQuestion.java:53
 msgid "Menu|4. Analyze, Use, Adapt"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/ProcessMenu5.java:31
+#: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:58
 msgid "Menu|5. Capture and Share Learning"
 msgstr ""
 
@@ -4449,20 +4618,20 @@ msgstr ""
 msgid "Menu|Add Tag to %n Selected Item(s)"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:131
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:140
 msgid "Menu|Export Current Page as..."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:110
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:119
 msgid "Menu|Export Current Project as..."
 msgstr ""
 
 #: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:282
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:412
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:421
 msgid "Menu|Group Box"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:144
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:153
 msgid "Menu|Import"
 msgstr ""
 
@@ -4536,7 +4705,7 @@ msgstr ""
 msgid "Miradi does not recognize %s as a project file"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:625
+#: Miradi/source/org/miradi/main/MainWindow.java:623
 msgid ""
 "Miradi has detected one or more problems with this project which could cause "
 "errors or further damage in the future. \n"
@@ -4544,6 +4713,10 @@ msgid ""
 "damage. \n"
 "We recommend that you close this project and contact the Miradi support team "
 "so they can safely repair this project."
+msgstr ""
+
+#: Miradi/source/org/miradi/database/migrations/MigrationsForMiradi3.java:237
+msgid "Missing Resource Assignment Id(s) were removed from Indicator(s)."
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/jump/ActionJumpMonitoringPlanOverviewStep.java:35
@@ -4575,7 +4748,7 @@ msgstr ""
 msgid "Move To..."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:215
+#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:225
 msgid "Must be a positive number"
 msgstr ""
 
@@ -4591,7 +4764,7 @@ msgid ""
 "for some quarters."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:155
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:167
 msgid ""
 "NOTE: Spell checking is currently only available in English. <br>If the "
 "'Primary Project Data Language' in the Project tab of the Summary view "
@@ -4601,6 +4774,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAssignmentMainTableModel.java:41
 msgid "Name"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/DashboardFlagsQuestion.java:36
+msgid "Needs Attention"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/subTarget/SubTargetPropertiesPanel.java:38
@@ -4629,12 +4806,16 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:57
 #: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:70
-#: Miradi/source/org/miradi/questions/TncProjectSharingQuestion.java:34
 msgid "No"
 msgstr ""
 
 #: Miradi/source/org/miradi/objecthelpers/DateUnit.java:175
 msgid "No date range for date Unit = "
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:49
+#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:57
+msgid "Not Applicable"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/StrategyRatingSummaryQuestion.java:38
@@ -4658,17 +4839,29 @@ msgstr ""
 #: Miradi/source/org/miradi/questions/FosTrainingTypeQuestion.java:35
 #: Miradi/source/org/miradi/questions/TrendQuestion.java:37
 #: Miradi/source/org/miradi/utils/Translation.java:306
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:270
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:276
 #: Miradi/source/org/miradi/dialogs/planning/treenodes/UnspecifiedBaseObject.java:59
 msgid "Not Specified"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:617
+#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:48
+msgid "Not Started"
+msgstr ""
+
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:618
 msgid "Not all classification Codes could imported."
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/DiagramSplitPane.java:421
 msgid "Not all factors are being shown because %s tag(s) are checked"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/NeverShowAgainPanel.java:76
+msgid "Notification Dialogs"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:126
+msgid "Notifications"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/MonthAbbreviationsQuestion.java:45
@@ -4694,8 +4887,12 @@ msgid ""
 "by a small blue rectangle."
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1247
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1248
 msgid "Objective Holder"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:89
+msgid "Objectives"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:50
@@ -4710,7 +4907,7 @@ msgstr ""
 msgid "Objs"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/jump/ActionJumpObtainFinancing.java:35
+#: Miradi/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:98
 msgid "Obtain financial resources"
 msgstr ""
 
@@ -4814,16 +5011,12 @@ msgstr ""
 msgid "Paste"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:107
-msgid "Paste As Copy"
-msgstr ""
-
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:114
-msgid "Paste As..."
-msgstr ""
-
 #: Miradi/source/org/miradi/views/diagram/doers/PasteFactorContentDoer.java:102
 msgid "Paste Content..."
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/notify/NotifyDialogTemplateFactory.java:29
+msgid "Pasted Shared Factors"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/ResourceTypeQuestion.java:35
@@ -4845,7 +5038,7 @@ msgstr ""
 msgid "Place scope on diagram"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1243
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1244
 msgid "Placeholder - From ConPro"
 msgstr ""
 
@@ -4857,12 +5050,12 @@ msgstr ""
 msgid "Plan for Data Storage"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/jump/ActionJumpPlanProjectLifespan.java:35
+#: Miradi/source/org/miradi/questions/OpenStandardsPlanActionsAndMonitoringQuestion.java:134
 msgid "Plan project lifespan and exit strategy"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/summary/SummaryPlanningPanel.java:61
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:111
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:116
 msgid "Planning"
 msgstr ""
 
@@ -4870,11 +5063,15 @@ msgstr ""
 msgid "Planning Parameters"
 msgstr ""
 
+#: Miradi/source/org/miradi/dialogs/indicator/SimpleViabilityMultiPropertiesPanel.java:61
+msgid "Planning Properties Panel"
+msgstr ""
+
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewCustomLabelPropertiesPanel.java:39
 msgid "Planning View Configuration Label Properties"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/planning/doers/AbstractCreatePlanningViewConfigurationDoer.java:90
+#: Miradi/source/org/miradi/views/planning/doers/AbstractCreatePlanningViewConfigurationDoer.java:98
 msgid "PlanningSubViewName|Custom"
 msgstr ""
 
@@ -4912,7 +5109,7 @@ msgstr ""
 msgid "Pound (United Kingdom)"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:373
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:385
 msgid "Preferences"
 msgstr ""
 
@@ -4922,7 +5119,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/forms/objects/StrategyCoreSubForm.java:36
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:53
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:85
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:87
 msgid "Priority"
 msgstr ""
 
@@ -4940,67 +5137,73 @@ msgstr ""
 msgid "Process Facilitator"
 msgstr ""
 
+#: Miradi/source/org/miradi/questions/OpenStandardsConceptualizeQuestion.java:68
 #: Miradi/source/org/miradi/main/menu/ProcessSteps.java:27
 msgid "ProcessStep|1A. Define Initial Project Team"
 msgstr ""
 
+#: Miradi/source/org/miradi/questions/OpenStandardsConceptualizeQuestion.java:73
 #: Miradi/source/org/miradi/main/menu/ProcessSteps.java:28
 msgid "ProcessStep|1B. Define Scope, Vision, and Targets"
 msgstr ""
 
+#: Miradi/source/org/miradi/questions/OpenStandardsConceptualizeQuestion.java:78
 #: Miradi/source/org/miradi/main/menu/ProcessSteps.java:29
 msgid "ProcessStep|1C. Identify Critical Threats"
 msgstr ""
 
+#: Miradi/source/org/miradi/questions/OpenStandardsConceptualizeQuestion.java:83
 #: Miradi/source/org/miradi/main/menu/ProcessSteps.java:30
 msgid "ProcessStep|1D. Complete Situation Analysis"
 msgstr ""
 
+#: Miradi/source/org/miradi/questions/OpenStandardsPlanActionsAndMonitoringQuestion.java:64
 #: Miradi/source/org/miradi/main/menu/ProcessSteps.java:32
 msgid "ProcessStep|2A. Develop Strategic Plan"
 msgstr ""
 
+#: Miradi/source/org/miradi/questions/OpenStandardsPlanActionsAndMonitoringQuestion.java:69
 #: Miradi/source/org/miradi/main/menu/ProcessSteps.java:33
 msgid "ProcessStep|2B. Develop Monitoring Plan"
 msgstr ""
 
+#: Miradi/source/org/miradi/questions/OpenStandardsPlanActionsAndMonitoringQuestion.java:74
 #: Miradi/source/org/miradi/main/menu/ProcessSteps.java:34
 msgid "ProcessStep|2C. Develop Operational Plan"
 msgstr ""
 
+#: Miradi/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:58
 #: Miradi/source/org/miradi/main/menu/ProcessSteps.java:36
 msgid "ProcessStep|3A. Develop Short-Term Work Plan"
 msgstr ""
 
+#: Miradi/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:63
 #: Miradi/source/org/miradi/main/menu/ProcessSteps.java:37
 msgid "ProcessStep|3B. Develop and Refine Project Budget"
 msgstr ""
 
+#: Miradi/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:68
 #: Miradi/source/org/miradi/main/menu/ProcessSteps.java:38
 msgid "ProcessStep|3C. Implement Plans"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/ProcessSteps.java:40
+#: Miradi/source/org/miradi/questions/OpenStandardsAnalyzeUseAndAdaptQuestion.java:58
 msgid "ProcessStep|4A. Prepare Data for Analysis"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/ProcessSteps.java:41
+#: Miradi/source/org/miradi/questions/OpenStandardsAnalyzeUseAndAdaptQuestion.java:63
 msgid "ProcessStep|4B. Analyze Results"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/ProcessSteps.java:42
+#: Miradi/source/org/miradi/questions/OpenStandardsAnalyzeUseAndAdaptQuestion.java:68
 msgid "ProcessStep|4C. Adapt Project Plan"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/ProcessSteps.java:44
-msgid "ProcessStep|5A. Document Learning"
-msgstr ""
-
-#: Miradi/source/org/miradi/main/menu/ProcessSteps.java:45
+#: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:68
 msgid "ProcessStep|5B. Share Learning"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/ProcessSteps.java:46
+#: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:73
 msgid "ProcessStep|5C. Create a Learning Environment"
 msgstr ""
 
@@ -5020,7 +5223,7 @@ msgstr ""
 msgid "Progress Reports"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:89
+#: Miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:95
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:240
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:104
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:69
@@ -5031,11 +5234,11 @@ msgstr ""
 msgid "Project Advisor"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:623
+#: Miradi/source/org/miradi/main/MainWindow.java:621
 msgid "Project Corruption Detected"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:900
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:903
 msgid "Project Description:"
 msgstr ""
 
@@ -5060,7 +5263,7 @@ msgstr ""
 msgid "Project Resource Filter Editor"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:780
+#: Miradi/source/org/miradi/main/MainWindow.java:776
 msgid "Project Resource Filter Is On"
 msgstr ""
 
@@ -5075,7 +5278,7 @@ msgid "Project Scope"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/ProjectSettingsPanel.java:46
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:114
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:119
 msgid "Project Settings"
 msgstr ""
 
@@ -5117,8 +5320,12 @@ msgstr ""
 msgid "Protected Area Information"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/ProcessMenu5c.java:34
+#: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:50
 msgid "Provide a safe environment for encouraging experimentation"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/ProjectSharingQuestion.java:35
+msgid "Public (anyone)"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:207
@@ -5132,7 +5339,7 @@ msgid ""
 "Jun, 3rd quarter is Jul - Sep, and 4th qtr is Oct - Dec. "
 msgstr ""
 
-#: Miradi/source/org/miradi/project/ProjectCalendar.java:359
+#: Miradi/source/org/miradi/project/ProjectCalendar.java:363
 msgid "Quarter Prefix|Q"
 msgstr ""
 
@@ -5148,15 +5355,11 @@ msgstr ""
 msgid "Rand (South Africa)"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:114
-msgid "Rank Direct Threats:"
-msgstr ""
-
-#: Miradi/source/org/miradi/actions/jump/ActionJumpThreatMatrixOverviewStep.java:35
+#: Miradi/source/org/miradi/questions/OpenStandardsConceptualizeQuestion.java:128
 msgid "Rank direct threats"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/jump/ActionJumpRankDraftStrategiesStep.java:35
+#: Miradi/source/org/miradi/questions/OpenStandardsPlanActionsAndMonitoringQuestion.java:89
 msgid "Rank draft strategies"
 msgstr ""
 
@@ -5164,7 +5367,7 @@ msgstr ""
 msgid "Rapid Assessment"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:59
+#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:67
 msgid "Ratings"
 msgstr ""
 
@@ -5206,7 +5409,7 @@ msgstr ""
 msgid "Report Template"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/ProcessMenu5b.java:33
+#: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:41
 msgid "Report to project team and stakeholders"
 msgstr ""
 
@@ -5253,7 +5456,7 @@ msgstr ""
 msgid "Retain"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/jump/ActionJumpDiagramWizardReviewAndModifyTargetsStep.java:36
+#: Miradi/source/org/miradi/actions/jump/ActionJumpDiagramWizardReviewAndModifyTargetsStep.java:35
 msgid "Review and modify targets"
 msgstr ""
 
@@ -5261,7 +5464,7 @@ msgstr ""
 msgid "Review threat rating summary"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/ProcessMenu4c.java:32
+#: Miradi/source/org/miradi/questions/OpenStandardsAnalyzeUseAndAdaptQuestion.java:46
 msgid "Revise project plan: strategic, monitoring, operational, and work plans"
 msgstr ""
 
@@ -5374,18 +5577,6 @@ msgstr ""
 msgid "Select"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:115
-msgid ""
-"Select \"Shared\" to show the original factors again in this diagram. Edits "
-"to the pasted, shared factors will also affect the originals. Select \"As "
-"Copy\" if you want to create brand new, duplicate copies with no "
-"relationship to the originals."
-msgstr ""
-
-#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:70
-msgid "Select Conservation Targets:"
-msgstr ""
-
 #: Miradi/source/org/miradi/utils/LanguagePackFileChooser.java:55
 msgid "Select Language Pack to Install"
 msgstr ""
@@ -5398,11 +5589,11 @@ msgstr ""
 msgid "Select appropriate methods"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/jump/ActionJumpDiagramWizardDefineTargetsStep.java:35
+#: Miradi/source/org/miradi/questions/OpenStandardsConceptualizeQuestion.java:108
 msgid "Select conservation targets"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/jump/ActionJumpSummaryWizardDefineTeamMembers.java:35
+#: Miradi/source/org/miradi/questions/OpenStandardsConceptualizeQuestion.java:88
 msgid "Select initial team members"
 msgstr ""
 
@@ -5421,7 +5612,7 @@ msgid ""
 "As.../ RTF&nbsp;File&gt;</code> menu command from within that view.</span>"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/EditableCodeListField.java:50
+#: Miradi/source/org/miradi/dialogfields/AbstractEditableCodeListField.java:52
 msgid "Select..."
 msgstr ""
 
@@ -5430,7 +5621,6 @@ msgid "Selected Report Template Was Exported as RTF."
 msgstr ""
 
 #: Miradi/source/org/miradi/views/planning/doers/AbstractPlanningViewConfigurationCodeListEditorDoer.java:54
-#: Miradi/source/org/miradi/dialogfields/EditableCodeListField.java:92
 msgid "Selection Dialog"
 msgstr ""
 
@@ -5465,23 +5655,19 @@ msgstr ""
 msgid "Share Method"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:54
-msgid "Share Outside of TNC?"
-msgstr ""
-
-#: Miradi/source/org/miradi/main/menu/ProcessMenu5c.java:31
+#: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:47
 msgid "Share feedback formally or informally"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/ProcessMenu5c.java:35
+#: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:51
 msgid "Share success & failures with practitioners around the world"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:604
+#: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:605
 msgid "Should Now Allow Full Time Employee To Be Calculated For "
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:254
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:266
 msgid "Show Diagram Grid"
 msgstr ""
 
@@ -5489,11 +5675,11 @@ msgstr ""
 msgid "Show Quarter Columns"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:199
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:211
 msgid "Show Ratings in Cell"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/upperPanel/ObjectsOnlyPlanningTreeTablePanel.java:43
+#: Miradi/source/org/miradi/dialogs/planning/upperPanel/ObjectsOnlyPlanningTreeTablePanel.java:44
 msgid "Show: "
 msgstr ""
 
@@ -5549,7 +5735,7 @@ msgstr ""
 msgid "Simple viability"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:905
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:908
 msgid "Site/Scope Description:"
 msgstr ""
 
@@ -5561,7 +5747,7 @@ msgstr ""
 msgid "Smallest"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:150
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:122
 msgid ""
 "Some of the data could not be moved to this project because it refers to "
 "other data that only exists in the old project"
@@ -5603,11 +5789,11 @@ msgstr ""
 msgid "Stakeholder"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/reports/ReportsView.java:86
+#: Miradi/source/org/miradi/views/reports/ReportsView.java:93
 msgid "Standard Reports"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:814
+#: Miradi/source/org/miradi/main/MainWindow.java:810
 msgid ""
 "Start date (currently %startDate) must be earlier than end date (currently %"
 "endDate)"
@@ -5679,7 +5865,7 @@ msgstr ""
 msgid "Strategy"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:222
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:234
 msgid "Strategy (Yellow)"
 msgstr ""
 
@@ -5704,7 +5890,7 @@ msgstr ""
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:60
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:81
 #: Miradi/source/org/miradi/utils/ThreatStressRatingDetailsTableExporter.java:71
-#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:46
+#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:50
 msgid "Stress"
 msgstr ""
 
@@ -5754,9 +5940,9 @@ msgstr ""
 #: Miradi/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:37
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:35
 #: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:105
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:145
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:131
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:61
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:123
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:131
 msgid "Summary"
 msgstr ""
 
@@ -5772,11 +5958,11 @@ msgstr ""
 msgid "Summary Threat Rating"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:106
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:111
 msgid "Systemwide"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:86
+#: Miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:81
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:40
 msgid "TNC"
 msgstr ""
@@ -5833,12 +6019,20 @@ msgstr ""
 msgid "TT|Choose which factors are tagged."
 msgstr ""
 
+#: Miradi/source/org/miradi/actions/ActionEditStrategyGoalRelevancyList.java:41
+msgid "TT|Choose which goals are relevant to this strategy"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/ActionEditGoalIndicatorRelevancyList.java:40
 msgid "TT|Choose which indicators are relevant to this goal"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionEditObjectiveIndicatorRelevancyList.java:40
 msgid "TT|Choose which indicators are relevant to this objective"
+msgstr ""
+
+#: Miradi/source/org/miradi/actions/ActionEditStrategyObjectiveRelevancyList.java:42
+msgid "TT|Choose which objectives are relevant to this strategy"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionEditGoalStrategyActivityRelevancyList.java:40
@@ -5860,6 +6054,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionCopy.java:40
 msgid "TT|Copy the selection to the clipboard"
+msgstr ""
+
+#: Miradi/source/org/miradi/actions/ActionCreateCustomFromCurrentTreeTableConfiguration.java:41
+msgid "TT|Create Custom View From Current View"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionCreateAudience.java:41
@@ -5930,7 +6128,7 @@ msgstr ""
 msgid "TT|Create a child Task for the selected item"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionCreatePlanningViewConfigurationMenuDoer.java:40
+#: Miradi/source/org/miradi/actions/ActionCreatePlanningViewConfigurationMenu.java:40
 msgid "TT|Create a new Custom Planning View"
 msgstr ""
 
@@ -6038,6 +6236,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionManageStresses.java:41
 msgid "TT|Create, Delete, or Edit Stresses"
+msgstr ""
+
+#: Miradi/source/org/miradi/actions/ActionPlanningCustomizeDialogPopup.java:41
+msgid "TT|Customize View"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionCut.java:40
@@ -6539,12 +6741,16 @@ msgstr ""
 msgid "TabDelimitedFile"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:145
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:157
 msgid "Table Row Height Mode"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/planning/ActionPlanManagementPanel.java:47
 msgid "Tab|Action Plan"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/planning/NewActionPlanManagementPanel.java:48
+msgid "Tab|Action Plan 2"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/activity/ActivityListManagementPanel.java:66
@@ -6580,7 +6786,7 @@ msgstr ""
 msgid "Tab|Objectives"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/reportTemplate/ReportTemplateManagementPanel.java:46
+#: Miradi/source/org/miradi/dialogs/reportTemplate/ReportTemplateManagementPanel.java:48
 msgid "Tab|Report Templates"
 msgstr ""
 
@@ -6599,16 +6805,16 @@ msgid "Tab|Work Plan"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/doers/DeleteTaggedObjectSetDoer.java:37
-#: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:41
+#: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:40
 msgid "Tag"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/doers/EditTaggedObjectSetDoer.java:48
-#: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:43
+#: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:42
 msgid "Tagged Items"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:102
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:110
 msgid "Tags"
 msgstr ""
 
@@ -6624,7 +6830,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/forms/objects/TargetPropertiesForm.java:33
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:72
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:348
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:351
 #: Miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:53
 msgid "Target"
 msgstr ""
@@ -6712,8 +6918,8 @@ msgstr ""
 msgid "Team Member"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/dashboard/ConceptualizeDashboardTab.java:54
-msgid "Team Members:"
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:194
+msgid "Team Members: %1"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:82
@@ -6724,11 +6930,11 @@ msgstr ""
 msgid "Text Box Properties"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:222
+#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:152
 msgid "Text|Dates must be in YYYY-MM-DD format"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:234
+#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:164
 msgid "Text|Unknown error prevented saving this data"
 msgstr ""
 
@@ -6740,18 +6946,18 @@ msgstr ""
 msgid "That language pack is already installed"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:572
+#: Miradi/source/org/miradi/main/MainWindow.java:570
 msgid ""
 "That project cannot be opened because it was created by a newer version of "
 "this application"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:576
+#: Miradi/source/org/miradi/main/MainWindow.java:574
 msgid ""
 "That project cannot be opened until it is migrated to the current data format"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:568
+#: Miradi/source/org/miradi/main/MainWindow.java:566
 msgid "That project is in use by another copy of this application"
 msgstr ""
 
@@ -6787,6 +6993,23 @@ msgid ""
 "Chains, not just this one. "
 msgstr ""
 
+#: Miradi/source/org/miradi/dialogs/notify/NotifyDialogTemplateFactory.java:31
+msgid ""
+"The pasted factors are now shared, meaning that any changes made in this "
+"diagram will also be reflected in other diagrams that these factors appear. "
+"In other words, each factor will only exist once in this project, but will "
+"be visible in multiple diagram pages. Normally, this is what you want."
+"<br><br>If you really wanted to create duplicate copies of the factors, "
+"separate from the originals, you must undo the paste, return to the diagram "
+"where these factors originated, and paste them there. Then use the &lt;"
+"Cut&gt; command to move them to the clipboard, return to this diagram, and "
+"paste the new copies here."
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:204
+msgid "The scope currently consists of %1 words"
+msgstr ""
+
 #: Miradi/source/org/miradi/dialogfields/AnalysisLevelsEditorComponent.java:65
 msgid "Then by"
 msgstr ""
@@ -6811,7 +7034,7 @@ msgstr ""
 msgid "This item is shared, so will be deleted from multiple places."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/treenodes/AbstractPlanningTreeNode.java:443
+#: Miradi/source/org/miradi/dialogs/planning/treenodes/AbstractPlanningTreeNode.java:448
 msgid "This method is not responsible for creating task nodes."
 msgstr ""
 
@@ -6826,7 +7049,7 @@ msgid ""
 "is in a newer data format. Please upgrade to the latest version of Miradi."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:614
+#: Miradi/source/org/miradi/main/MainWindow.java:612
 msgid ""
 "This project has been optimized to remove data that is no longer needed.\n"
 msgstr ""
@@ -6843,7 +7066,7 @@ msgid ""
 "be saved first in case anything goes wrong. Perform the automatic migration?"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:240
+#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:170
 msgid ""
 "This value must be numeric<br><br>Currency symbols and percent signs are not "
 "allowed"
@@ -6860,7 +7083,7 @@ msgstr ""
 msgid "This will replace the existing file."
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:373
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:376
 #: Miradi/source/org/miradi/utils/AbstractThreatRatingDetailsTableExporter.java:59
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:34
 msgid "Threat"
@@ -6883,7 +7106,11 @@ msgstr ""
 msgid "Threat Rating Preferences Panel"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:110
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/ThreatRatingMultiPropertiesPanel.java:71
+msgid "Threat Rating Properties Panel"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:115
 msgid "Threat Ratings"
 msgstr ""
 
@@ -6900,7 +7127,7 @@ msgstr ""
 msgid "Threat Reduction Result"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:230
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:242
 msgid "Threat Reduction Result (Light Purple)"
 msgstr ""
 
@@ -6972,7 +7199,7 @@ msgstr ""
 msgid "Title|Delete"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/DiagramPanel.java:158
+#: Miradi/source/org/miradi/dialogs/diagram/DiagramPanel.java:163
 msgid "Title|Diagram Panel"
 msgstr ""
 
@@ -6988,7 +7215,7 @@ msgstr ""
 msgid "Title|Error"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:978
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:973
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:57
 msgid "Title|Factor Properties"
 msgstr ""
@@ -7056,6 +7283,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:67
 msgid "Title|Objective Properties"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogfields/AbstractDashboardClickableField.java:112
+msgid "Title|Open Standards Status"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/organization/OrganizationPropertiesPanel.java:56
@@ -7127,7 +7358,7 @@ msgstr ""
 msgid "Title|Stress Comments"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:66
+#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:74
 msgid "Title|Stress Details"
 msgstr ""
 
@@ -7139,11 +7370,11 @@ msgstr ""
 msgid "Title|Stress Visibility"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/StressBasedThreatRatingPropertiesPanel.java:67
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/StressBasedThreatRatingPropertiesPanel.java:68
 msgid "Title|Stress-Based Threat Rating"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:57
+#: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:50
 msgid "Title|Tag Properties Panel"
 msgstr ""
 
@@ -7179,9 +7410,21 @@ msgstr ""
 msgid "Title|View..."
 msgstr ""
 
-#: Miradi/source/org/miradi/project/ProjectCalendar.java:59
-#: Miradi/source/org/miradi/project/ProjectCalendar.java:198
+#: Miradi/source/org/miradi/project/ProjectCalendar.java:63
+#: Miradi/source/org/miradi/project/ProjectCalendar.java:202
 msgid "Total"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:87
+msgid "Total Action Budget: %1 %2"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:93
+msgid "Total Budget for Funding: %  %1 Budget Secured"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:88
+msgid "Total Monitoring Budget %1 %2"
 msgstr ""
 
 #: Miradi/source/org/miradi/diagram/factortypes/FactorTypeContributingFactor.java:36
@@ -7204,7 +7447,7 @@ msgid ""
 "application:\n"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1183
+#: Miradi/source/org/miradi/main/MainWindow.java:1184
 msgid "Unable to launch external web browser"
 msgstr ""
 
@@ -7223,7 +7466,7 @@ msgid ""
 "application:\n"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:971
+#: Miradi/source/org/miradi/main/MainWindow.java:967
 msgid "Unable to save preferences"
 msgstr ""
 
@@ -7233,7 +7476,7 @@ msgid ""
 "to write to it, or you are using invalid characters in the file name."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:351
+#: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:350
 msgid "Undefined"
 msgstr ""
 
@@ -7241,11 +7484,21 @@ msgstr ""
 msgid "Underline"
 msgstr ""
 
+#: Miradi/source/org/miradi/dialogfields/FactorTagListEditor.java:87
+msgid "Unexpected call to addListSelectionListener"
+msgstr ""
+
 #: Miradi/source/org/miradi/dialogfields/AbstractQuestionBasedComponent.java:137
+#: Miradi/source/org/miradi/dialogfields/FactorTagListEditor.java:75
 msgid "Unexpected call to getText"
 msgstr ""
 
+#: Miradi/source/org/miradi/dialogfields/FactorTagListEditor.java:92
+msgid "Unexpected call to removeListSelectionListener"
+msgstr ""
+
 #: Miradi/source/org/miradi/dialogfields/AbstractQuestionBasedComponent.java:143
+#: Miradi/source/org/miradi/dialogfields/FactorTagListEditor.java:81
 msgid "Unexpected call to setText"
 msgstr ""
 
@@ -7271,14 +7524,14 @@ msgstr ""
 msgid "Unknown"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:563
+#: Miradi/source/org/miradi/main/MainWindow.java:561
 msgid ""
 "Unknown Command\n"
 "You are probably trying to load an old project that contains obsolete "
 "commands that are no longer supported"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/ChoiceQuestion.java:109
+#: Miradi/source/org/miradi/questions/ChoiceQuestion.java:114
 msgid "Unknown code: "
 msgstr ""
 
@@ -7286,7 +7539,7 @@ msgstr ""
 msgid "Unknown error displaying diagram"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:581
+#: Miradi/source/org/miradi/main/MainWindow.java:579
 msgid "Unknown error prevented opening that project"
 msgstr ""
 
@@ -7304,7 +7557,7 @@ msgstr ""
 msgid "Updating locations..."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/ProcessMenu5b.java:35
+#: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:43
 msgid "Use other's communication products"
 msgstr ""
 
@@ -7348,7 +7601,7 @@ msgstr ""
 msgid "Very Small"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:455
+#: Miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:454
 msgid "Viability Analysis Mode"
 msgstr ""
 
@@ -7412,7 +7665,7 @@ msgstr ""
 msgid "Warning"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:240
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:252
 msgid ""
 "We are trying to create a standard set of symbols that can be recognized "
 "globally. Just like people the world over recognize a red octagon as a stop "
@@ -7530,6 +7783,10 @@ msgstr ""
 msgid "Wintitle|Information"
 msgstr ""
 
+#: Miradi/source/org/miradi/questions/ProjectSharingQuestion.java:34
+msgid "Within your Organization Only"
+msgstr ""
+
 #: Miradi/source/org/miradi/wizard/SkeletonWizardStep.java:186
 msgid "Wizard load of control failed:"
 msgstr ""
@@ -7589,7 +7846,6 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:57
 #: Miradi/source/org/miradi/views/umbrella/DeleteResourceDoer.java:70
-#: Miradi/source/org/miradi/questions/TncProjectSharingQuestion.java:35
 msgid "Yes"
 msgstr ""
 
@@ -7614,11 +7870,11 @@ msgid ""
 "migrations. "
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:517
+#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:510
 msgid "[Error]"
 msgstr ""
 
-#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:86
+#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:97
 msgid "[Main Diagram]"
 msgstr ""
 
@@ -7630,11 +7886,11 @@ msgstr ""
 msgid "[New Results Chain]"
 msgstr ""
 
-#: Miradi/source/org/miradi/project/Project.java:964
+#: Miradi/source/org/miradi/project/Project.java:978
 msgid "[No Project]"
 msgstr ""
 
-#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:87
+#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:98
 msgid "[Not Named]"
 msgstr ""
 
@@ -7648,6 +7904,14 @@ msgstr ""
 
 #: Miradi/source/org/miradi/wizard/noproject/NoProjectOverviewStep.java:95
 msgid "an exported Miradi file (.mpz or .cpmz)"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/NeverShowAgainPanel.java:48
+msgid "it will not be shown. Uncheck it to have Miradi "
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/NeverShowAgainPanel.java:49
+msgid "start displaying it again."
 msgstr ""
 
 msgid "FieldLabel|3.Task|Task"
@@ -7714,12 +7978,6 @@ msgid "FieldLabel|5.BudgetRollupReportTypes|Rollup Types"
 msgstr ""
 
 msgid "FieldLabel|6.Link|Factor Link"
-msgstr ""
-
-msgid "FieldLabel|6.Stress|Stress"
-msgstr ""
-
-msgid "FieldLabel|6.StressLabel|Stress"
 msgstr ""
 
 msgid "FieldLabel|6.Targetlink|Target Link"
@@ -8370,6 +8628,12 @@ msgstr ""
 msgid "FieldLabel|12.PseudoTagActivities|Activities"
 msgstr ""
 
+msgid "FieldLabel|12.CommentsColumnCode|Comments"
+msgstr ""
+
+msgid "FieldLabel|12.DetailsColumnCode|Details"
+msgstr ""
+
 msgid "FieldLabel|13.DiagramLink|Diagram Link"
 msgstr ""
 
@@ -8581,6 +8845,9 @@ msgid "FieldLabel|21.ProgressReportRefs|Progress Reports"
 msgstr ""
 
 msgid "FieldLabel|21.LegacyTncStrategyRanking|Legacy Tnc Strategy Ranking"
+msgstr ""
+
+msgid "FieldLabel|21.RelevantGoalSet|Relevant Goals"
 msgstr ""
 
 msgid "FieldLabel|22.Target|Target"
@@ -8930,7 +9197,7 @@ msgstr ""
 msgid "FieldLabel|40.ConProProjectNumber|ConPro Project Number"
 msgstr ""
 
-msgid "FieldLabel|40.ProjectSharingCode|Data Sharing"
+msgid "FieldLabel|40.ProjectSharingCode|ConPro Data Sharing"
 msgstr ""
 
 msgid "FieldLabel|40.ProjectPlaceTypes|Project Types"
@@ -9205,6 +9472,18 @@ msgid "FieldLabel|57.Comments|Comments"
 msgstr ""
 
 msgid "FieldLabel|58.Dashboard|Dashboard"
+msgstr ""
+
+msgid "FieldLabel|58.effectiveStatusMap|Status"
+msgstr ""
+
+msgid "FieldLabel|58.ProgressChoiceMap|Status"
+msgstr ""
+
+msgid "FieldLabel|58.CommentsMap|Comments"
+msgstr ""
+
+msgid "FieldLabel|58.FlagsMap|Flags"
 msgstr ""
 
 msgid ""
@@ -13395,6 +13674,665 @@ msgid ""
 msgstr ""
 
 msgid ""
+"html|/resources/dashboard/3C.html|<h1>3C. Implement your plans</h1><p>The "
+"next and most important part of Step 3 -- and indeed this entire process -- "
+"is to implementyour strategic plan and your more detailed work plan "
+"according to schedule and withinbudget.</p>Outputs for this standard "
+"practice include:<ul><li>Generally, implementation of strategic plan "
+"(action, monitoring, and operationalplans).</li><li>More specifically, "
+"implementation of your work plan, keeping in mind your projectbudget and "
+"schedule</li></ul>"
+msgstr ""
+
+msgid ""
+"html|/resources/dashboard/4C.html|<h1>4C. Adapt your strategic plan</"
+"h1>C<p>ollecting and analyzing data as part of routine monitoring activities "
+"allow you to determinehow effective your interventions are and what you need "
+"to do to adjust your project to reachyour goals and objectives more "
+"efficiently. As the final part of this step, you need to usewhat you have "
+"learned during the analyses and discussions to modify and optimize "
+"youractivities. This is the essence of adaptive management.</p><p>All the "
+"planning that you did earlier was not meant to be a one-time event, never to "
+"berevisited or used again. Instead, in order to learn over time and to "
+"continue to improve theeffectiveness of your project, you must revisit and "
+"adjust your project parameters and coreassumptions, action plan, monitoring "
+"plan, operational plan, work plan and budget.Therefore, you may need to "
+"update all sections of your strategic plan to reflect what you havelearned. "
+"As you make changes, you should also document the rationale behind them so "
+"thatothers will understand what you learned and why you made these changes.</"
+"p><p>When updating your strategic plan, you should also incorporate findings "
+"from analyses doneoutside of your project team. For example, if your project "
+"has undergone a formal evaluationor audit (see Step 5C), you should examine "
+"the findings and see how you can use them toadapt and improve your project "
+"and your strategic plan.</p>Output for this standard practice includes:"
+"<ul><li>Revised project documents (including action plan, monitoring plan, "
+"operationalplan, work plan, and budget).</li></ul>"
+msgstr ""
+
+msgid ""
+"html|/resources/dashboard/4A.html|<h1>4A. Prepare your data for analysis</"
+"h1><p>Analysis is a process of transforming raw data into useful "
+"information. Analysis should nothappen at only one point in time during the "
+"life of the project. To continuously understandwhat is going on in your "
+"project -- and to be able to change things in a timely fashion -- it "
+"isessential to capture and analyze your monitoring data as part of routine "
+"project work.</p><p>To do this, you need to have sound data management "
+"systems in place. You need to havemethods and systems established for "
+"recording, storing, and processing data. This includesprocesses for "
+"systematically checking, cleaning, and coding raw data as soon as you get "
+"themand for storing and backing-up your data. This work should be done for "
+"both programmaticdata as well as operational and financial data.</p>Output "
+"for this standard practice includes:<ul><li>Development and regular use of "
+"systems for recording, storing, processing andbacking up project data.</li></"
+"ul>"
+msgstr ""
+
+msgid ""
+"html|/resources/dashboard/5C.html|<h1>5C. Create a learning environment</"
+"h1><p>The last standard of practice in the cycle involves creating a "
+"performance and learning culturewithin your project team, across your "
+"organization and partners, and among conservationpractitioners around the "
+"world. A performance and learning culture at these levels isimportant to "
+"ensure that all parties learn and benefit from your team's experience. "
+"Althoughthis is listed as the last step, it really is something you need to "
+"cultivate right from the start.To effectively apply these standards, you "
+"need to work in a project environment thatpromotes learning and adaptation "
+"over time. This means that you, your team, and yourorganization should be "
+"constantly reflecting, seeking feedback, and providing feedback. "
+"Thatfeedback could be formal or informal and might come internally from your "
+"team members orother staff members in your organization. Alternatively, it "
+"might come from externalmechanisms, such as <strong>evaluations</strong>, "
+"which assess a project against its own stated goals andobjectives, and "
+"<strong>audits</strong>, which assess a project against an external set of "
+"process standards,such as the ones outlined in this document. In creating a "
+"learning environment, it is importantto be open to outside opinions that can "
+"give you fresh and insightful perspectives.</p><p>Creating a learning "
+"environment is not easy. It requires leaders and donors who understandthe "
+"need to reallocate scarce resources from immediate action to the long-term "
+"work ofadaptive management. It often requires enabling practitioners to take "
+"some chances andquestion the conventional wisdom related to specific "
+"conservation tools and strategies. Itrequires providing project teams with "
+"the institutional security that innovation andquestioning assumptions are "
+"valued in their organizations. And it requires a commitment toshare both "
+"successes and failures with other practitioners around the world -- to "
+"create true<strong>communities of practice</strong>.</p>Outputs for this "
+"standard practice include:<ul><li>Regular feedback shared formally or "
+"informally.</li><li>Evaluations and/or audits at appropriate times during "
+"the project cycle.</li><li>Demonstrated commitment from leaders to learning "
+"and innovation.</li><li>A safe environment for encouraging experimentation "
+"and questioning the statusquo.</li><li>A commitment to share success and "
+"failures with practitioners around the world.</li></ul>"
+msgstr ""
+
+msgid ""
+"html|/resources/dashboard/5.html|<h1>5. Capture and share learning</"
+"h1><p>The final step in the management cycle involves sharing lessons and "
+"formal products withkey internal and external audiences. It also involves "
+"giving and receiving feedback,conducting <strong>evaluations</strong> and "
+"<strong>audits</strong>, and promoting a learning culture. In this step, it "
+"isimportant to foster learning not only within the project but also at an "
+"institutional level and,more generally, within the conservation community. "
+"With this in mind, these standardsinclude practices that your organization "
+"should adopt at an institutional level to help fosterlearning and sharing.</"
+"p>"
+msgstr ""
+
+msgid ""
+"html|/resources/dashboard/2C.html|<h1>2C. Develop an operational plan</"
+"h1><p>Conservation projects are ultimately implemented by people and "
+"institutions. Even the bestaction and monitoring plans are useless unless "
+"you make sure you can actually put them intooperation. In other words, you "
+"need an Operational Plan for your project. Key componentsfor an operational "
+"plan include analyses of:</p><ul><li>Funding required to implement your "
+"project, and your current and potential sources ofthese funds</li><li>Human "
+"capacity and skills and other non-financial resources required to "
+"implementyour project and what you need to do to develop those resources</"
+"li><li>What risk factors exist for your project and how they can be "
+"addressed.</li><li>How long your project will last, how you will ensure the "
+"sustainability of your project'sachievements, and what your exit strategy "
+"will be.</li></ul><p>The level of detail and formality of your operational "
+"plan will vary depending on the size andlevel of complexity of your project. "
+"Small projects may only briefly touch on each of thesetopics whereas large, "
+"complex ones might have an extensive and formal treatment of each.</"
+"p>Outputs for this standard practice include an operational plan that "
+"contains:<ul><li>Assessment of human, financial, and other resources.</"
+"li><li>Risk assessment and mitigation.</li><li>Estimate of lifespan and exit "
+"strategy.</li></ul><p>In addition, at the conclusion of Step 2, you should "
+"compile the work you did in Steps 1 and 2into your overall Strategic Plan.  "
+"The output here is:</p><ul><li>Your overall Strategic Plan.</li></"
+"ul><h3>Components of a Strategic Plan</h3><h4>Products from Step 1</"
+"h4><ul><li>Project Team</li><li>Scope and Vision</li><li>Conservation "
+"Targets</li><li>Analysis of Project Situation (including conceptual model, "
+"stakeholder assessment, andprioritized threats)</li></ul><h4>Products from "
+"Step 2</h4><ul><li>Action Plan (goals, strategies, objectives, and "
+"assumptions)</li><li>Monitoring Plan</li><li>Operational Plan</li></ul>"
+msgstr ""
+
+msgid ""
+"html|/resources/dashboard/1D.html|<h1>1D. Complete situation analysis</"
+"h1><p>This standard asks you to complete the description of the context "
+"within which your projecttakes place. A situation analysis is a process that "
+"will help you and your project team createtogether a common understanding of "
+"your project's context -- including the biologicalenvironment and the "
+"social, economic, political, and institutional systems that affect "
+"theconservation targets you want to conserve. Depending upon the scale of "
+"the project and theresources available to it, a situation analysis can be an "
+"in-depth formal study of the area or aless formal description based on input "
+"of those familiar with the area. Often referred to a<i>needs assessment</i> "
+"in other fields, this step is one that is sometimes overlooked -- at "
+"leastexplicitly -- in conservation projects, yet it is one of the most "
+"important. By understandingthe biological and social context, you will have "
+"a better chance of designing activities thatwill achieve your conservation "
+"goals and objectives.</p><p>This standard builds off of work you have "
+"already done related to your project context (scope,conservation targets, "
+"and direct threats). It involves completing a situation analysis "
+"byidentifying the key <strong>factors</strong> that drive the direct threats "
+"and ultimately influence your targets.These include <strong>indirect "
+"threats</strong> (also known as root causes and drivers) and opportunities "
+"andenabling conditions. These factors can range in scale from local to "
+"global.</p><p>Each factor can typically be linked to one or more "
+"<strong>stakeholders</strong> -- those individuals, groups,or institutions "
+"that have an interest in or will be affected by your project's activities. "
+"As partof your situation analysis, you should conduct a stakeholder "
+"analysis. You need to considerboth powerful and influential stakeholders, as "
+"well as those that might be disadvantaged ormarginalized. As you review "
+"stakeholders, also keep in mind which stakeholders couldbecome important "
+"strategic partners that you could involve in action planning.</p><p>As part "
+"of your analysis of the situation, you should also describe the "
+"relationships amongtargets, direct threats, opportunities, and stakeholders. "
+"To do this, you should use a<strong>conceptual model</strong>. A conceptual "
+"model is a tool that visually portrays the relationshipsamong the different "
+"factors in your situation analysis. A good model illustrates the cause-"
+"andeffect relationships that you and your team assume exist within the "
+"project area. It should beas simple as possible while still including the "
+"most important details. To make sure yourconceptual model generally "
+"represents what is happening at your site and that all teammembers are in "
+"agreement, you should build it as a team. Likewise, it is ideal to ground-"
+"truth(or field test) the model with key stakeholders and partners both "
+"inside and outside the projectteam to make sure that the model reflects "
+"their understanding of the situation.</p>Outputs for this standard practice "
+"include:<ul><li>Identification and analysis of indirect threats and "
+"opportunities.</li><li>Assessment of stakeholders.</li><li>Initial "
+"conceptual model that illustrates cause and effect relationships "
+"amongfactors operating at your site.</li><li>Ground-truthing and revision of "
+"your model.</li></ul>"
+msgstr ""
+
+msgid ""
+"html|/resources/dashboard/3.html|<h1>3. Implement actions and monitoring</"
+"h1><p>This is the most important step in the entire adaptive management "
+"cycle process. It is thetime in which you put all of the planning efforts "
+"you conducted in the previous steps intoaction. The step involves developing "
+"and implementing specific <strong>work plans</strong> while "
+"ensuringsufficient resources, capacity, and partners.</p>"
+msgstr ""
+
+msgid ""
+"html|/resources/dashboard/2B.html|<h1>2B. Develop a formal monitoring plan</"
+"h1><h2>Audiences and Information Needs</h2><p>The first part of developing "
+"your <strong>Monitoring Plan</strong> involves specifying your audience "
+"andtheir <strong>information needs</strong>. Effective monitoring uses the "
+"minimum amount of financial andhuman resources to provide you with the "
+"minimum information needed to determine if yourproject is on track and what "
+"to do if you are not. All too often project teams either collect "
+"noinformation or too much information because they are unsure of what is "
+"needed. As a firststep, you should be clear about for whom you are doing the "
+"monitoring. For example, areyou monitoring to satisfy external demands for "
+"accountability? While this may be part of thereason behind monitoring, it "
+"ideally should not be your only or even your primary reason. Inthe spirit of "
+"adaptive management, you should conduct monitoring to serve the needs of "
+"theproject and project team, helping the team learn from experience and "
+"integrate those lessonsinto current and future programming. The following "
+"table lists some common audiences andtheir general information needs.</"
+"p><h2>Table 1. Common Monitoring Audiences and Their Information Needs</"
+"h2><table border=1><td><strong>Audience</strong></td><td><strong>Typical "
+"Information Needs/Interests</strong></td><tr><td>Project team</td><td>How is "
+"the project progressing; What is working and what is not and why; Howto "
+"improve the project</td><tr><td>Project partners</td> <td>How is the project "
+"progressing; What is working and what is not and why; Howto improve the "
+"project</td><tr><td>Donors</td> <td>How is the project progressing</td></"
+"tr><tr><td>Communities orstakeholdersaffected</td><td>How is the project "
+"progressing; How will the project impact them</td></"
+"tr><tr><td>Conservationcommunity</td><td>What is working, what is not, and "
+"why</td></tr><tr><td>Academics andstudents</td><td>What is working, what is "
+"not, and why</td></tr></table><p>Once you know for whom you are monitoring, "
+"you need to then identify what you want toknow (your <strong>learning "
+"questions</strong>) and what you should monitor. By focusing your "
+"monitoringefforts squarely on the core assumptions you have made in your "
+"project (illustrated in yourresults chains that link your goals, objectives, "
+"and strategies), you are more likely to collectonly the information that "
+"will be useful to you and your monitoring audiences as you manageyour "
+"project.</p><h2>Indicators and Methods</h2><p>Once you have identified your "
+"audiences and their information needs, the next step is todevelop the "
+"specific indicators you will use to collect and analyze the data required to "
+"meetyour information needs. Good indicators meet the criteria of being "
+"<i>measurable, precise,consistent, and sensitive</i>.</p><p>Your results "
+"chains, along with their corresponding goals and objectives, provide you "
+"withthe basis for identifying what you need to measure and what indicators "
+"you should use. Bydeveloping results chains and setting good goals and "
+"objectives, you have narrowed down anearly infinite set of potential "
+"indicators to a very manageable set.  Remember, you should aim to collect "
+"the least amount ofinformation to show that your project is making progress. "
+"Thus, for the most part, you willwant to limit the indicators you monitor to "
+"those that correspond to your results chains.</p><p>After developing your "
+"indicators, you need to think about how you will measure them -- inother "
+"words, what <strong>methods</strong> you will use. Methods vary in their "
+"<i>accuracy and reliability,cost-effectiveness, feasibility, and "
+"appropriateness</i>. The key is to select the most costeffectivemethod that "
+"will give you data that is reliable enough to meet your managementneeds. For "
+"many information needs, you may not have to collect primary data. For "
+"example,one method for collecting data about a given fish population would "
+"be to \"download harvestrecords posted by a government agency on the "
+"Internet.\" Finally, you should also determineroughly when, where, and by "
+"whom data will be collected, and how data will be analyzed andused. In "
+"developing your MonitoringPlan, it is best to test and adjust indicators and "
+"methods before using them. You should alsoplan for how you will store and "
+"process each type of data in advance, and formally budget formonitoring "
+"activities in your overall financial planning (See Steps 3 and 4 for "
+"moreinformation about managing data and budgeting for monitoring).</"
+"p>Outputs for this standard practice include a formal monitoring plan that "
+"contains:<ul><li>Audiences and their associated information needs clearly "
+"defined.</li><li>Indicators defined.</li><li>Finalized Monitoring Plan.</"
+"li></ul>"
+msgstr ""
+
+msgid ""
+"html|/resources/dashboard/1A.html|<h1>1A. Define initial project team</"
+"h1><p>A project is ultimately designed and implemented by a specific group "
+"of individuals who comprise your <strong>project team</strong>. Team members "
+"typically include your organization's staff as well as other key internal "
+"and external partners. One of the team members is typically designated as "
+"the project leader. This leader should be responsible for the overall "
+"coordination of the project and moving the team forward. You should be clear "
+"about who is on your team and what the roles and responsibilities of each "
+"member are. The team composition may change as you move through the "
+"management cycle. The key, however, is to recognize and make use of existing "
+"skills and experience to ensure that the project moves forward with the best "
+"available knowledge. In addition to the project team, you may also need to "
+"identify one or more advisors to whom the core team can turn for honest "
+"feedbackand counsel and who can champion your cause.</p>Outputs for this "
+"step include:<ul><li>Selection of initial project team, including project "
+"leader, core members, and advisory members.</li><li>Identification of key "
+"skills each team member brings.</li><li>Designation of roles and "
+"responsibilities.</li></ul>"
+msgstr ""
+
+msgid ""
+"html|/resources/dashboard/5A.html|<h1>5A. Document what you learn</h1><p>As "
+"you go through the process described in these standards, you should make "
+"sure youharvest and document the lessons that your project team is learning "
+"on a regular basis.Lessons can take the form of formal statistical results "
+"or anecdotal stories and can focus onsomething as large as your core project "
+"assumptions or something as specific as a new andimproved way of tracking "
+"project expenses. One of the keys to harvesting lessons is to keeptrack of "
+"learning questions that emerge as you go through the project management "
+"processand then try to answer these questions when data become available to "
+"do so. Another key isto provide time and incentives to do this work. "
+"Harvesting lessons requires a balancebetween art and science -- and will "
+"require patience and making time in any work plan forthese tasks.</p><p>To a "
+"large degree, however, you will have already harvested those lessons in Step "
+"4 based onthe learning questions you have defined. Here, you should make "
+"sure that you document orrecord those lessons so that they are available in "
+"the future to your team and yourorganization.</p>Outputs for this standard "
+"practice include:<ul><li>Documentation of key results and lessons.</li></ul>"
+msgstr ""
+
+msgid ""
+"html|/resources/dashboard/1C.html|<h1>1C. Identify critical threats</"
+"h1><p>Once you have settled on your priority targets, you need to identify "
+"the <strong>direct threats</strong> thatinfluence your targets. Direct "
+"threats are primarily <i>human activities</i> that immediately affect "
+"atarget (e.g., unsustainable fishing, hunting, oil drilling, construction of "
+"roads, pollution orintroduction of exotic invasive species), but they can be "
+"<i>natural phenomena</i> altered by humanactivities (e.g., increase in water "
+"temperature caused by global warming) or <i>naturalphenomena whose impact is "
+"increased</i> by other human activities (e.g., a potential tsunamithat "
+"threatens the last remaining population of an Asian rhino).</p><p>As part of "
+"your analysis of the project's context, it is also important to prioritize "
+"the directthreats that affect your targets so that you can concentrate your "
+"activities where they are mostneeded. In particular, you should try to "
+"determine which are <strong>critical threats</strong> -- the ones thatare "
+"most important to address. There are a number of threat rating and ranking "
+"tools that canbe used to help in this prioritization process. Most of these "
+"assess the scope or extent of thethreat and its severity on the targets. "
+"Taken together, these two criteria assess overall threatmagnitude. Other "
+"commonly-used criteria include permanence/irreversibility and urgency."
+"Depending upon the circumstances, you can rate the threats as they affect an "
+"overall site oryou can rate them as they affect specific targets, including "
+"those that may define a thematicprogram.</p>Outputs for this standard "
+"practice include:<ul><li>Identification of direct threats.</li><li>Rating or "
+"ranking of direct threats to identify critical threats.</li></ul>"
+msgstr ""
+
+msgid ""
+"html|/resources/dashboard/3B.html|<h1>3B. Develop and refine your project "
+"budget</h1><p>Once you know exactly what tasks and activities you need to "
+"undertake, you will be in abetter position to figure out what resources you "
+"need. You should work off of your initialanalysis of funding required that "
+"you developed in your operational plan (Step 2C). This,along with your "
+"strategic plan and your work plan, will help you develop a more "
+"refinedestimate of costs for specific activities and tasks and the broader "
+"strategies into which thosetasks feed. Your work plan will be an important "
+"input for this process, but you should keepin mind that the work plan is "
+"short-term in nature, so you will need to make some informedestimates "
+"projecting potential costs over the life of the project. You should not "
+"delay toolong, hoping to get more accurate estimates, as there is often a "
+"long lead time betweendeveloping funding proposals and having money in the "
+"bank that you can spend. Thus, youwill want to develop your project budget "
+"as soon as you have a clear idea of what yourproject will do (in other "
+"words, a good draft of your strategic plan).</p><p>You should work closely "
+"with the finance or accounting staff in your office to develop yourproject "
+"budget. For many projects, your most expensive resource needs will be staff "
+"time. Inaddition, you should consider what other major expenses such as "
+"physical infrastructure,vehicles, boats or machinery are needed. You should "
+"also consider the related functions orlogistical support that the project "
+"might need, ranging from monitoring and managementexpenses, to "
+"administrative or logistical support.</p><p>Once you have developed your "
+"project budget, you will need to identify potential fundingsources, and "
+"develop and submit proposals to those potential donors.</p>Outputs for this "
+"standard practice include:<ul><li>Project budget.</li><li>Potential funding "
+"sources identified.</li><li>Funding proposals developed and submitted.</"
+"li><li>Financial resources obtained.</li></ul>"
+msgstr ""
+
+msgid ""
+"html|/resources/dashboard/2.html|<h1>2. Plan your actions and monitoring</"
+"h1><p>Once you have described the basic parameters for your project, the "
+"next step is to design thespecific strategies you will undertake to achieve "
+"conservation. In particular, this stepinvolves developing your "
+"<strong>Action Plan</strong> that you will use to record your project's "
+"<strong>goals</strong>,<strong>strategies</strong>, and <strong>objectives</"
+"strong>. It also includes developing the <strong>Monitoring Plan</strong> "
+"that you will useto track your progress and developing your "
+"<strong>Operational Plan</strong> that will specify the resourcesyou need "
+"and risks you should consider. Finally, it involves compiling all your work "
+"fromSteps 1 (Conceptualize) and 2 (Plan) into your <strong>Strategic Plan</"
+"strong>.</p>"
+msgstr ""
+
+msgid ""
+"html|/resources/dashboard/3A.html|<h1>3A. Develop a detailed short-term work "
+"plan and timeline</h1><p>In the previous steps of the project cycle, your "
+"project team developed your general action,monitoring, and operational "
+"plans. In this phase of the cycle, you need to turn these generalplans into "
+"more specific ones and then implement these plans on an ongoing basis.</"
+"p><p>The first part of this step is to take your overall plans and work with "
+"your project team andpartners to develop a much more specific short-term "
+"<strong>work plan</strong> covering the next few monthsor at most, year. "
+"This work plan uses your overall action, monitoring, and operational plansto "
+"specify in much greater detail:</p><ul><li>What specific <strong>activities</"
+"strong> and <strong>tasks</strong> are required to complete each planned "
+"strategy,monitoring step, or operational function</li><li>Who will be "
+"responsible for helping to complete each activity and task.</li><li>When "
+"will each task be undertaken and what will be the sequence of linked "
+"activitiesand tasks, and</li><li>How much money and other resources will be "
+"needed to complete each activity andtask (see Step 3B for greater detail).</"
+"li></ul><p>Your work plan can be recorded in a table, Gantt chart, and/or "
+"project calendar.</p><p>Your detailed work plan will also provide you with "
+"the basis for developing a project timelineor calendar. In some situations, "
+"your work plan will not only specify tasks andresponsibilities, it will also "
+"record in a calendar format when these tasks will happen. Inother "
+"situations, your timeline or calendar will be more implicit. It is important "
+"to developyour timeline so that all project team members budget their time "
+"according to the projectneeds.</p>Outputs for this standard practice include:"
+"<ul><li>Work plan detailing the tasks, activities, and responsibilities "
+"associated with yourAction Plan, Monitoring Plan, and Operational Plan</"
+"li><li>Project timeline or calendar.</li></ul>"
+msgstr ""
+
+msgid ""
+"html|/resources/dashboard/2A.html|<h1>2A. Develop a formal action plan: "
+"Goals, strategies, assumptions, andobjectives</h1><h2>Goals</"
+"h2><p>Developing a clear idea of what you would like to accomplish is the "
+"essential first part ofputting together your action plan. <strong>Goals</"
+"strong> are linked to your project's conservation targets andrepresent the "
+"desired status of the targets over the long-term -- they are formal "
+"statements ofthe ultimate impacts you hope to achieve. A good goal meets the "
+"criteria of being <i>linked totargets, impact oriented, measurable, time "
+"limited, and specific</i>.</p><h2>Strategies</h2><p>Once you determine what "
+"you want to accomplish, you then need to think about what youneed to do. "
+"Good strategic planning involves determining where you will intervene -- "
+"andalso where you will not. The first decision that you have to make is to "
+"prioritize on whichfactor in your conceptual model you need to take action "
+"-- these are the key interventionpoints. In some cases, the most obvious key "
+"intervention point is the direct threat itself. Butin many other cases, you "
+"get more leverage if you intervene on an indirect threat oropportunity "
+"affecting the direct threat -- on the chain of factors affecting each direct "
+"threat.</p><p>After you have selected on which factor in your conceptual "
+"model you will intervene, youmay need to brainstorm a list of "
+"<strong>strategies</strong>. Your brainstormed list will likely have "
+"morestrategies than you can realistically undertake with your project. You "
+"could narrow down thefactors through a discussion with your team, or you "
+"could do a ranking exercise to help youchoose your strategies. Regardless of "
+"how you narrow down your strategies, some usefulconditions to consider "
+"include: likelihood the strategy will be successful; feasibility ofstrategy; "
+"cost of strategy; and gap the strategy would address. In addition, you "
+"should makesure each strategy you select meets the following criteria: "
+"<i>linked, focused, feasible, andappropriate</i>. Your strategies can range "
+"inscale from local to global, depending on the situation. Strategies, in "
+"turn, are composed ofmultiple <strong>activities</strong>.</p><p>You can use "
+"your conceptual model to show the strategy you will use, the key "
+"interventionpoint you are addressing with that strategy, and the chain of "
+"factors you presume you willaffect with that strategy.</p><h2>Assumptions "
+"and objectives</h2><p>As implied above, once you have selected your "
+"strategies, you then need to be clear abouthow you think that strategy will "
+"help you achieve your conservation results. This means youneed to make "
+"explicit the <strong>assumptions</strong> that show how you believe your "
+"strategies willcontribute to reducing threats and achieving the conservation "
+"of your targets. A <strong>results chain</strong>is a tool that provides a "
+"graphical depiction of these assumptions. You can use yourconceptual model "
+"as the basis for developing your results chains.</p><p>Results chains are "
+"also a very useful tool for setting objectives.  <strong>Objectives</strong> "
+"specify thedesired changes in specific threats and opportunities that you "
+"wouldlike to achieve in the short and medium-term. In short, they are formal "
+"statements of theoutcomes (or <strong>intermediate results</strong>) that "
+"you believe are necessary to attain your goals. A goodobjective meets the "
+"criteria of being <i>results oriented, measurable, time limited, specific, "
+"andpractical</i></p><p>Your objectives are tied to the results you would "
+"like to see for thedifferent factors in your chain. As a start, you should "
+"always develop an objective for thedirect threat that is in your results "
+"chain.</p><p>The goals and objectives specified in your results chain "
+"represent what you need toaccomplish and the assumptions you hold about how "
+"your strategies will help you reach thoseaccomplishments. As such, these "
+"results chain components become the ultimate measureagainst which you will "
+"gauge the progress of your project.</p><p>Together, your goals, objectives, "
+"strategies, and assumptions form your Action Plan. Youshould have some text "
+"describing each of these components, but you can use your conceptualmodel as "
+"an elegant way to present much of this information in a succinct manner that "
+"can bequickly understood by others.</p><p>You should capture the final "
+"versions of your goals, objectives, strategies, and assumptions inyour "
+"formal Action Plan.</p>Outputs for this standard practice include:"
+"<ul><li>Goals for each target.</li><li>Identification of \"key factors\" and "
+"draft strategies.</li><li>Ranking of draft strategies.</li><li>Results "
+"chains that specify assumptions for key strategies.</li><li>Objectives for "
+"key factors.</li><li>Finalized project conceptual model that incorporates "
+"goals, objectives, andstrategies.</li><li>Finalized Action Plan.</li></ul>"
+msgstr ""
+
+msgid ""
+"html|/resources/dashboard/5B.html|<h1>5B. Share what you learn</h1><p>If you "
+"capture what you have learned in written or recorded documents, you will be "
+"able toremember from year to year what you have done, what you found worked "
+"and what didn't,and what you plan to do in the future. This will help your "
+"current project team over the longterm and will ensure that new project "
+"staff will have a record of what you did and what youlearned. Production of "
+"formal documents will also help you communicate your findings "
+"topractitioners around the world. Documenting and sharing what you have "
+"learned will helppractitioners working under similar conditions, dealing "
+"with similar threats, and using similartools to benefit from your successes "
+"and avoid any pitfalls or problems you may haveencountered during the "
+"implementation of your project.</p><p>In order to create documents that a "
+"variety of audiences will understand, internalize and use,you must "
+"understand how they typically receive messages, and what they would be "
+"interestedin learning. Although we present communications as the final step "
+"in the cycle, you reallyneed to be preparing for communicating your results "
+"and other relevant project informationmuch earlier. For example, in Step 2B, "
+"you should have identified your audiences for yourmonitoring results and "
+"what information they would be interested in having. To effectivelyreach "
+"these audiences, you need a clear communications and dissemination strategy. "
+"Youneed to decide which lessons you wish to communicate to these priority "
+"audiences, determinethe best format to reach each key audience, and then "
+"develop and distribute yourcommunications products. For example, you may use "
+"informal communications means (email,phone calls) to share lessons with your "
+"internal audiences (the project staff, partners andother stakeholders). You "
+"should make sure to provide:</p><ul><li>Clear management recommendations to "
+"all the right people based on your analysis;</li><li>Necessary details to "
+"help interpret results;</li><li>Alternatives and contingencies based on the "
+"results; and</li><li>Regular reports to all team members.</li></ul><p>For "
+"communicating and sharing lessons with your external audiences (donors, "
+"otherpractitioners, broader public), you will probably use more formal "
+"communications means(reports, presentations, videos). Communications "
+"products can encompass many differentforms ranging from formal academic "
+"papers to stories and videos. It is important to evaluateeach product to see "
+"if it effectively communicated your messages and to learn what youmight do "
+"to improve similar efforts in the future.</p><p>Finally, you should also "
+"look to others in the conservation community as sources ofinformation and "
+"learning for your project. Some of the best sources of lessons are "
+"theexperiences of others.</p>Outputs for this standard practice include:"
+"<ul><li>Identification of key audiences.</li><li>Development of a "
+"communications strategy.</li><li>Regular reports or other types of "
+"communication to project team members and keystakeholders.</"
+"li><li>Development and distribution of appropriate communication products.</"
+"li><li>Use of other people's communication products.</li></ul>"
+msgstr ""
+
+msgid ""
+"html|/resources/dashboard/4.html|<h1>4. Analyze, use, adapt</h1><p>This step "
+"involves managing your data as it comes in and regularly analyzing it to "
+"convert itinto useful information. In particular, you need to analyze your "
+"project's results and coreassumptions as well as operational and financial "
+"data and then adapt your work plans asnecessary. The amount of time needed "
+"to complete this step is often underestimated byproject managers, leaving "
+"them with lots of data that they have collected but have notanalyzed or "
+"used. By making this a deliberate step, you should find it easier to observe "
+"andunderstand changes, solve problems, and make improvements to your project."
+"</p>"
+msgstr ""
+
+msgid ""
+"html|/resources/dashboard/1B.html|<h1>1B. Define scope, vision, and targets</"
+"h1><h2>Scope</h2><p>Before you begin to think about what you will do (the "
+"strategies you will implement) you must have a good understanding of what "
+"you hope to accomplish. A project's <strong>scope</strong> defines broad "
+"parameters related to what the project will affect and might include "
+"descriptions of biodiversity and/or maps of the area. Efforts to conserve or "
+"effectively manage ecoregions, priority areas, or protected areas typically "
+"have a geographic scope or <strong>project area</strong>. Efforts to address "
+"specific targets, threats, opportunities, or enabling conditions have a "
+"thematic scope.</p><h2>Vision</h2><p>In addition to defining the scope, it "
+"is also necessary to decide on a clear and common <strong>vision</strong>, a "
+"description of the desired state or ultimate condition that you are working "
+"to achieve. Your vision can be summarized in a <strong>vision statement</"
+"strong>, which meets the criteria of being relatively general, visionary, "
+"and brief.  A project's vision should fit within the context of your "
+"organization's overall mission.</p><h2>Targets</h2><p>Projects select a "
+"limited number of conservation targets (also known as <strong>biodiversity "
+"targets</strong> or, more simply, targets). Conservation targets are "
+"specific species, ecological systems/habitats, or ecological processes that "
+"are chosen to represent and encompass the full suite of biodiversity in the "
+"project area for place-based conservation or the focus of a thematic "
+"program. They are the basis for setting goals, carrying out conservation "
+"actions, and measuring conservation effectiveness. For place-based "
+"conservation a complete suite of targets will -- in theory -- ensure the "
+"conservation of all native biodiversity within the project site.  Most place-"
+"based projects can be reasonably well defined by eight or  fewer well chosen "
+"conservation targets. Thematic programs are often  characterized by focusing "
+"on one main conservation target -- or one main threat  that affects multiple "
+"targets (e.g., a program to conserve blue whales  or reduce world trade in "
+"endangered species). Selection of conservation  targets typically requires "
+"input from experts and analysis of spatial data.</p><p>You should next "
+"determine the current status of each conservation target. At the most basic "
+"level, this involves developing an overall assessment of the \"health\" of "
+"each target. More detailed status assessments involve specifying <strong>key "
+"ecological attributes</strong> of each target, determining indicators for "
+"each attribute, outlining your sense of what the acceptable range of "
+"variation is for each indicator, and finally determining the current status "
+"of the attribute in reference to this range of variation.</p>Outputs for "
+"this standard practice include:<ul>Brief description of the project scope."
+"<li>If appropriate, a map of the project area (GIS file or hand sketch).</"
+"li><li>Vision statement for the project.</li><li>Selection of conservation "
+"targets, including a brief explanation of why they were chosen.</"
+"li><li>Description of the status of each priority conservation target</li></"
+"ul>"
+msgstr ""
+
+msgid ""
+"html|/resources/dashboard/4B.html|<h1>4B. Analyze results</h1><p>One of the "
+"most important aspects of adaptive management is that it allows you "
+"tosystematically assess whether you are on track to achieve your stated "
+"goals and objectives.Your monitoring data should provide you with the "
+"information needed to see whether youhave achieved your expected "
+"intermediate results and whether you are on track to achievelong-term "
+"success. In addition, adaptive management also allows you to determine "
+"whycertain activities have succeeded or failed. Your monitoring data provide "
+"you with theopportunity to see whether the core assumptions you laid out in "
+"the planning steps above holdtrue in reality. By testing these core "
+"assumptions, you are in a better position to adapt andchange your project "
+"activities accordingly.</p><p>For learning and effective communication, it "
+"is important that the right people be involved inthe analyses and/or made "
+"aware of the results of the analyses. As a general rule, analysesshould "
+"involve members of the project team. However, input from outside experts or "
+"thosewith other perspectives is valuable during the analyses of your "
+"monitoring results.</p><p>To check if you are on track or why something may "
+"have succeeded or failed, you shouldundertake the following tasks:</"
+"p><ul><li>Consider your results in the context of your conceptual model and "
+"results chains;</li><li>Review your assumptions and assess if your "
+"assumptions are correct, if you are on trackto meet your goals and "
+"objectives and if your strategies are having the desired impact;</"
+"li><li>Assess the utility of your indicators; and</li><li>Determine if your "
+"goals and objectives were set at an appropriate level and if thetimeline for "
+"achieving them was appropriate.</li></ul><p>Depending on the type of data "
+"that you have and your information needs, these analyses canrange from "
+"formal statistical studies to simple qualitative assessments.It is also "
+"important to consider whether the operational processes supporting your "
+"project arefunctioning properly. You may have a project that uses the "
+"perfect strategies to address thethreats and opportunities affecting your "
+"conservation targets, but maybe your team is notoperating efficiently or it "
+"does not have the administrative or financial support it needs to doits job "
+"well. </p>Some questions you might want to explore during your analysis "
+"include:<ul><li>To what extent do you have sufficient resources (e.g., "
+"financial, human, administrative,political) to carry out your project?</"
+"li><li>To what extent do you have the physical infrastructure and equipment "
+"(e.g., officespace, vehicles, computers) you need to do your job?</li><li>To "
+"what extent does your project team operate smoothly or are there areas where "
+"youcould improve how the team functions? (e.g., communications, delegation "
+"ofresponsibilities)</li></ul>Outputs for this standard practice include:"
+"<ul><li>Analyses of project results and assumptions.</li><li>Analyses of "
+"operational and financial data.</li><li>Documentation of discussions and "
+"decisions.</li></ul>"
+msgstr ""
+
+msgid ""
+"html|/resources/dashboard/1.html|<h1>1. Conceptualize</h1><p>This first step "
+"involves specifying the basic parameters for your project in preparation for "
+"the design work that will come in the next step. Specifically, it involves "
+"identifying who will initially be involved on the <strong>project team</"
+"strong>, articulating your project's geographic and/or thematic "
+"<strong>scope</strong>, your <strong>vision</strong> of what you hope to "
+"achieve, and the <strong>conservation targets</strong> which will be the "
+"focus of your work. It also includes making sense of the context in which "
+"your project is intending to work, including <strong>threats</strong> and "
+"<strong>opportunities</strong>, and key <strong>stakeholders</strong>.</p>"
+msgstr ""
+
+msgid ""
+"html|/resources/DashboardDescription.html|<ol><li>This is a place holder for "
+"field descriptions</li></ol>"
+msgstr ""
+
+msgid ""
+"html|/resources/ProjectSharingMessage.html|  <p>If this project is uploaded "
+"to ConPro, this setting will control who can see the data.Public (anyone) "
+"means that anyone who uses ConPro will be able to view all the project data, "
+"and can download a copy of the project to use in Miradi.Within your "
+"Organization Only means that only ConPro users associated with the same "
+"organization as this project will be able to view it.With either setting, "
+"nobody will be able to modify the project data within Miradi, nor to upload "
+"new versions, unless they have specifically been granted permission to do so."
+"</p>"
+msgstr ""
+
+msgid ""
 "html|/resources/WCSAbout.html|  <h3>About the Wildlife Conservation Society "
 "(WCS)</h3>The Wildlife Conservation Society saves wildlife and wild places "
 "by understanding criticalissues, crafting science-based solutions, and "
@@ -13473,17 +14411,6 @@ msgid ""
 "the Majority Override rule would take effect and the overall project rating "
 "would be High.</p><br>      <img width=\"834\" height=\"350\" src=\"images/"
 "BundleSummaries.png\">    </div>  </body></html>"
-msgstr ""
-
-msgid ""
-"html|/resources/ExpiredWarning.html|<h3>This copy of Miradi should be "
-"upgraded.</h3><p>This copy of Miradi software is now out-of-date. Although "
-"this copy of the software will continue to function indefinitely, newer "
-"versions are available that have many bug fixes and improvements.</"
-"p><p>Please go to <a href='http://www.miradi.org'>www.Miradi.org</a> and "
-"download the most recent version.</p><p>Miradi is a strictly not-for-profit "
-"project. All money raised from distribution and licensing is usedto fund "
-"support for users and to improve Miradi.</p>"
 msgstr ""
 
 msgid ""
@@ -15515,10 +16442,6 @@ msgstr ""
 msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Indonesia"
 msgstr ""
 
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Pacific Island Countries"
-msgstr ""
-
 msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Illinois"
 msgstr ""
 
@@ -15726,6 +16649,15 @@ msgstr ""
 msgid ""
 "choice|/resources/fieldoptions/TncOperatingUnits.tsv|North Asia Regional "
 "Office"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Micronesia"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Solomon Islands"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Papua New Guinea"
 msgstr ""
 
 msgid ""
