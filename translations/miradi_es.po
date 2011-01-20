@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-20 14:08-0600\n"
+"POT-Creation-Date: 2011-01-20 15:43-0600\n"
 "PO-Revision-Date: 2010-09-20 10:32-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -5204,6 +5204,10 @@ msgstr ""
 msgid "Objective Holder"
 msgstr "Marcador de metas"
 
+#: Miradi/source/org/miradi/dialogs/base/RelevancyObjectivePanel.java:44
+msgid "Objective Relevancy Panel"
+msgstr ""
+
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:89
 msgid "Objectives"
 msgstr ""
@@ -9357,6 +9361,9 @@ msgid "FieldLabel|21.LegacyTncStrategyRanking|Legacy Tnc Strategy Ranking"
 msgstr "Jerarquización de estrategias de TNC heredadas "
 
 msgid "FieldLabel|21.RelevantGoalSet|Relevant Goals"
+msgstr ""
+
+msgid "FieldLabel|21.RelevantObjectiveSet|Relevant Objectives"
 msgstr ""
 
 msgid "FieldLabel|22.Target|Target"
