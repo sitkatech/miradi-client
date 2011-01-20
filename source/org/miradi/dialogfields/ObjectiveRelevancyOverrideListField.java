@@ -28,11 +28,11 @@ import org.miradi.objects.Strategy;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 
-public class ObjectiveRelevancyOverrideListField extends RefListEditorField
+public class ObjectiveRelevancyOverrideListField extends AbstractRelevancyOverrideListField
 {
 	public ObjectiveRelevancyOverrideListField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse)
 	{
-		super(projectToUse, refToUse, questionToUse, tagToUse);
+		super(projectToUse, refToUse, tagToUse, questionToUse);
 	}
 	
 	@Override
