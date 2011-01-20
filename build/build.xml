@@ -106,7 +106,7 @@
 
         <tstamp/>
 
-        <echo message="Date timestamp is ${DSTAMP}" />
+    	<echo message="Date timestamp is ${DSTAMP}" />
         <echo message="Time timestamp is ${TSTAMP}" />
         <echo message="Version timestamp is ${version.timestamp}" />
     	
@@ -677,14 +677,10 @@
 	<exec executable="hg" failonerror="false" dir="${miradi.root.dir}">
 		<arg value="status"/>
 	</exec>
-	<exec executable="hg" failonerror="false" dir="${miradi.root.dir}">
-		<arg value="incoming"/>
-	</exec>
-	<exec executable="hg" failonerror="false" dir="${miradi.root.dir}">
-		<arg value="merge"/>
-	</exec>
 	<exec executable="hg" failonerror="true" dir="${miradi.root.dir}">
 		<arg value="push"/>
+		<arg value="-r"/>
+		<arg value="."/>
 	</exec>
 </target>
 	
