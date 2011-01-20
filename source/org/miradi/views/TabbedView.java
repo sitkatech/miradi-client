@@ -133,9 +133,9 @@ abstract public class TabbedView extends UmbrellaView
 			EAM.logDebug("Ignoring setting tab selection, setting selection to 0");
 			desiredTab = 0;
 		}
-		setTab(desiredTab);
-
+		
 		forceLayoutSoSplittersWork();
+		setTab(desiredTab);
 	}
 
 	@Override
