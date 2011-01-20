@@ -1,0 +1,694 @@
+# $LastChangedBy: ecoffman@tnc.org $
+# $LastChangedDate: 2009-09-08 11:34:03 -0400 (Tue, 08 Sep 2009) $
+# $LastChangedRevision: 64 $
+#
+
+namespace cp = "http://services.tnc.org/schema/conservation-project/9"
+
+#
+start = conservation_project.element
+#
+conservation_project.element =
+    [
+        documentation [
+            "Schema definition to represent a Conservation Project. \x{a}" ~
+            "A Conservation Project is any set of strategies taken by \x{a}" ~
+            "group of practitioners working to achieve a set of \x{a}" ~
+            "biodiversity goals and objectives within a specified \x{a}" ~
+            "geographic area. Some of these projects occur at single, \x{a}" ~
+            "priority conservation areas. \x{a}" ~
+            "Larger projects involve whole landscapes or multiple \x{a}" ~
+            "conservation areas to address the needs of coarse-scale \x{a}" ~
+            "systems, wide-ranging species, pervasive threats, and \x{a}" ~
+            "far-reaching factors."
+        ]
+    ]
+    element cp:conservation_project {
+        project_summary.element
+        & targets.element
+        & threats.element
+        & objectives.element
+        & strategies.element
+        & indicators.element
+        & methods.element
+    }
+#
+project_summary.element =
+    element cp:project_summary {
+        attribute share_outside_organization { xsd:boolean }
+        & project_id.element
+        & element cp:name {
+              xsd:string { minLength = "1" }
+          }
+        & element cp:start_date { vocabulary_date }?
+        & element cp:data_effective_date { vocabulary_date }?
+        & area_size.element
+        & geospatial_location.element
+        & element cp:description_comment { text }?
+        & [
+              documentation [
+                  "A general summary of the desired state or ultimate \x{a}" ~
+                  "condition of the project area or scope that a \x{a}" ~
+                  "project is working to achieve. A good vision \x{a}" ~
+                  "statement meets the criteria of being relatively \x{a}" ~
+                  "general, visionary and brief. \x{a}" ~
+                  "For most biodiversity conservation projects, \x{a}" ~
+                  "the vision will describe the desired state of the \x{a}" ~
+                  "biodiversity of the project area."
+              ]
+          ]
+          element cp:goal_comment { text }?
+        & element cp:planning_team_comment { text }?
+        & element cp:lessons_learned { text }?
+        & element cp:related_projects { text }?
+        & element cp:parent_child { text }?
+        & element cp:stressless_threat_ranking { xsd:boolean }?
+        & element cp:project_threat_rank { vocabulary_ranking_vhhml }?
+        & element cp:project_viability_rank { vocabulary_rating_vggfp }?
+        & team.element
+        & ecoregions.element
+        & countries.element
+        & ous.element
+        & classifications.element
+        & element cp:exporter_name { xsd:NMTOKEN }
+        & element cp:exporter_version { xsd:NMTOKEN }
+        & element cp:export_date { vocabulary_date }
+    }
+#
+classifications.element =
+    element cp:classifications {
+        element cp:classification_id { vocabulary_classification_id }*
+    }?
+#
+project_id.element =
+    element cp:project_id {
+        # Context, for now, is 'ConPro.' Revisit as required.
+        attribute context { xsd:NMTOKEN }
+        & xsd:NMTOKEN
+    }?
+#
+area_size.element =
+    element cp:area_size {
+        attribute unit { vocabulary_area_unit }
+        & xsd:nonNegativeInteger
+    }?
+#
+geospatial_location.element =
+    element cp:geospatial_location {
+        attribute type { vocabulary_geospatial_type }
+        & element cp:latitude { xsd:decimal }?
+        & element cp:longitude { xsd:decimal }?
+    }?
+#
+team.element =
+    element cp:team {
+        element cp:person {
+            element cp:role { vocabulary_team }+
+            & element cp:givenname { xsd:string }
+            & element cp:surname { xsd:string }
+            & element cp:email { xsd:string }
+            & element cp:phone { xsd:string }?
+            & element cp:organization { xsd:string }?
+        }*
+    }
+#
+ecoregions.element =
+    element cp:ecoregions {
+        [
+            documentation [
+                "Ecoregions are relatively large geographic areas of \x{a}" ~
+                "land and water delineated by climate, vegetation, \x{a}" ~
+                "geology, and other ecological and environmental \x{a}" ~
+                "patterns. Ecoregional targets are the species, \x{a}" ~
+                "ecological communities, and ecological systems within \x{a}" ~
+                "a given ecoregion systems within a given ecoregion \x{a}" ~
+                "used to set conservation priorities."
+            ]
+        ]
+        element cp:ecoregion_code { vocabulary_ecoregion }*
+    }
+#
+countries.element =
+    element cp:countries {
+        [
+            documentation [
+                "These codes are the 3 letter country code(s) provided \x{a}" ~
+                "by the ISO 3166-1."
+            ]
+        ]
+        element cp:country_code { vocabulary_country }*
+    }
+#
+ous.element =
+    element cp:ous {
+        [
+            documentation [
+                "These are TNC generated 5 character alphanumeric \x{a}" ~
+                "codes to describe Operating Units at TNC."
+            ]
+        ]
+        element cp:ou_code { vocabulary_ou }*
+    }
+#
+targets.element =
+    element cp:targets {
+        [
+            documentation [
+                "A limited suite of species, communities, and \x{a}" ~
+                "ecological systems that are chosen to represent and \x{a}" ~
+                "encompass the needs of the broader set of \x{a}" ~
+                "biodiversity occurring within a project area. They \x{a}" ~
+                "are the basis for setting goals, carrying out \x{a}" ~
+                "conservation actions, and measuring conservation \x{a}" ~
+                "effectiveness. In theory, conservation of the \x{a}" ~
+                "focal targets will ensure conservation of all \x{a}" ~
+                "native biodiversity within functional landscapes."
+            ]
+        ]
+        element cp:target {
+            attribute sequence { vocabulary_sequence }?
+            & attribute id { vocabulary_id }
+            & element cp:name { text }
+            & element cp:description { text }?
+            & element cp:description_comment { text }?
+            & element cp:target_viability_rank {
+                  attribute target_viability_mode { vocabulary_viability_mode }
+                  & vocabulary_ranking_vggfp
+              }?
+            & element cp:target_viability_comment { text }?
+            & habitat_taxonomy_codes.element
+            & nested_targets.element
+            & strategy_threat_target_associations.element
+            & stresses.element
+            & threat_target_associations.element
+            & key_attributes.element
+        }*
+    }
+#
+habitat_taxonomy_codes.element =
+    element cp:habitat_taxonomy_codes {
+        element cp:habitat_taxonomy_code { iucn_habitat_taxonomy }*
+    }
+#
+nested_targets.element =
+    element cp:nested_targets {
+        [
+            documentation [
+                "Species, ecological communities, or ecological system \x{a}" ~
+                "targets whose conservation needs are subsumed in one \x{a}" ~
+                "or more focal conservation targets. Often includes \x{a}" ~
+                "targets identified as ecoregional targets."
+            ]
+        ]
+        element cp:nested_target {
+            attribute sequence { vocabulary_sequence }
+            & element cp:name { text }
+            & element cp:comment { text }?
+        }*
+    }
+#
+strategy_threat_target_associations.element =
+    element cp:strategy_threat_target_associations {
+        element cp:strategy_threat_target_association {
+            element cp:strategy_id { vocabulary_id }
+            & element cp:threat_id { vocabulary_id }
+        }*
+    }
+#
+stresses.element =
+    element cp:stresses {
+        [
+            documentation [
+                "Stresses are impairments or degradations of Key \x{a}" ~
+                "Ecological that ultimately reduce the viability of \x{a}" ~
+                "conservation Targets. \x{a}" ~
+                "Ex: altered vegetation; ecosystem fragmentation. \x{a}" ~
+                "Stresses are subjectively rated as to their: \x{a}" ~
+                "* Scope - the proportion of the overall area of a \x{a}" ~
+                "          project site  or target occurrence likely \x{a}" ~
+                "          to be affected by a threat within 10 years; \x{a}" ~
+                "* Severity - the level of damage to the conservation \x{a}" ~
+                "          target that can reasonably be expected \x{a}" ~
+                "          within 10 years under current circumstances \x{a}" ~
+                "          (i.e., given the continuation of the \x{a}" ~
+                "          existing situation)."
+            ]
+        ]
+        element cp:stress {
+            attribute sequence { vocabulary_sequence }
+            & element cp:name { text }
+            & element cp:stress_severity { vocabulary_ranking_vhhml }?
+            & element cp:stress_scope { vocabulary_ranking_vhhml }?
+            & element cp:stress_to_target_rank { vocabulary_ranking_vhhml }?
+            & element cp:stress_ovrd_rank { text }?
+            & element cp:stress_comment { text }?
+            & threat_stress_ratings.element
+        }*
+    }
+#
+threat_stress_ratings.element =
+    element cp:threat_stress_ratings {
+        [
+            documentation [
+                "The degree to which a Stress contributes to the \x{a}" ~
+                "genesis or ongoing persistence of a Threat. \x{a}" ~
+                "Measured by: \x{a}" ~
+                "* Contribution - The degree to which a source of \x{a}" ~
+                "                 stress, acting alone, is likely \x{a}" ~
+                "                 to be responsible for the full \x{a}" ~
+                "                 expression of a stress within the \x{a}" ~
+                "                 project area within 10 years. \x{a}" ~
+                "* Irreversibility - The degree to which the effects \x{a}" ~
+                "                 of a source of stress can be \x{a}" ~
+                "                 restored or recovered. Typically \x{a}" ~
+                "                 includes an assessment of both the \x{a}" ~
+                "                 technical difficulty and the \x{a}" ~
+                "                 economic and/or social cost of restoration."
+            ]
+        ]
+        element cp:threat_stress_rating {
+            element cp:threat_id { vocabulary_id }
+            & element cp:contrib_rank { vocabulary_ranking_vhhml }?
+            & element cp:irreversible_rank { vocabulary_ranking_vhhml }?
+            & element cp:stress_threat_to_target_rank { vocabulary_ranking_vhhml }?
+        }*
+    }
+#
+threat_target_associations.element =
+    element cp:threat_target_associations {
+        element cp:threat_target_association {
+            element cp:threat_id { vocabulary_id }
+            & element cp:threat_to_target_rank { vocabulary_ranking_vhhml }?
+            & element cp:threat_severity { vocabulary_ranking_vhhml }?
+            & element cp:threat_scope { vocabulary_ranking_vhhml }?
+            & element cp:threat_irreversibility { vocabulary_ranking_vhhml }?
+            & element cp:threat_target_comment { text }?
+        }*
+    }
+#
+key_attributes.element =
+    element cp:key_attributes {
+        [
+            documentation [
+                "Key Ecological Attributes are critical components of \x{a}" ~
+                "target's ecology, physical or biological processes, \x{a}" ~
+                "composition, or structure that: \x{a}" ~
+                "* Determine a target's temporal/spatial distribution \x{a}" ~
+                "  that are necessary for the continued persistence of \x{a}" ~
+                "  the target \x{a}" ~
+                "* Vary within an 'acceptable range of variability' \x{a}" ~
+                "  obtained by reviewing scientific literature, \x{a}" ~
+                "  consulting experts, and in some cases through \x{a}" ~
+                "  modeling efforts \x{a}" ~
+                "* Are assigned to categories of: Size, Condition, \x{a}" ~
+                "  Landscape Context More technically, the most \x{a}" ~
+                "  critical components of biological composition, \x{a}" ~
+                "  structure, interactions and processes, \x{a}" ~
+                "  environmental regimes, and landscape configuration \x{a}" ~
+                "  that sustain a target's viability or ecological \x{a}" ~
+                "  integrity over space and time."
+            ]
+        ]
+        element cp:key_attribute {
+            element cp:name { text }
+            & element cp:category { vocabulary_key_ecological_attribute_category }?
+            & viability.element
+        }*
+    }
+#
+viability.element =
+    element cp:viability_assessments {
+        [
+            documentation [
+                "The status or health of a component of biodiversity. \x{a}" ~
+                "More generally, Viability indicates the ability of a \x{a}" ~
+                "Conservation Target to withstand or recover from most \x{a}" ~
+                "natural or anthropogenic disturbances and thus to \x{a}" ~
+                "persist for many generations or over long time \x{a}" ~
+                "periods. Target Viability is evaluated objectively by \x{a}" ~
+                "scoring Indicator Ratings of the Key Attributes \x{a}" ~
+                "chosen to represent the health of a Target. \x{a}" ~
+                "Overall Project biodiversity Viability is then \x{a}" ~
+                "objectively evaluated by compositing the Viability \x{a}" ~
+                "scores of individual Targets."
+            ]
+        ]
+        element cp:viability_assessment {
+            element cp:indicator_id { vocabulary_id }
+            & element cp:indicator_description_poor { text }?
+            & element cp:indicator_description_fair { text }?
+            & element cp:indicator_description_good { text }?
+            & element cp:indicator_description_very_good { text }?
+            & element cp:source_indicator_ratings { vocabulary_source_indicator_ratings }?
+            & element cp:desired_viability_rating { vocabulary_rating_vggfp }?
+            & element cp:desired_rating_date { vocabulary_date }?
+            & element cp:kea_and_indicator_comment { text }?
+            & element cp:indicator_rating_comment { text }?
+            & element cp:desired_rating_comment { text }?
+        }*
+    }
+#
+threats.element =
+    element cp:threats {
+        [
+            documentation [
+                "Threats, or Sources of Stress, are the proximate \x{a}" ~
+                "activities or processes that directly caused, are \x{a}" ~
+                "causing, or may cause stresses and thus the \x{a}" ~
+                "destruction, degradation and/or impairment of focal \x{a}" ~
+                "conservation targets. (See also Stresses and \x{a}" ~
+                "Threat-Stress Ratings)"
+            ]
+        ]
+        element cp:threat {
+            attribute id { vocabulary_id }
+            & element cp:name { text }
+            & element cp:threat_taxonomy_code { iucn_threat_taxonomy }?
+            & element cp:threat_to_project_rank { vocabulary_ranking_vhhml }?
+            & element cp:indicators {
+                  element cp:indicator_id { vocabulary_id }*
+              }
+        }*
+    }
+#
+objectives.element =
+    element cp:objectives {
+        [
+            documentation [
+                "Specific statements detailing the desired \x{a}" ~
+                "accomplishments or outcomes of a particular set of \x{a}" ~
+                "activities within a project. A typical project will \x{a}" ~
+                "have multiple Objectives. Objectives are typically \x{a}" ~
+                "set for abatement of critical Threats and for \x{a}" ~
+                "restoration of degraded Key Ecological Attributes. \x{a}" ~
+                "They can also be set, however, for the outcomes of \x{a}" ~
+                "specific conservation actions, or the acquisition of \x{a}" ~
+                "project resources. If the project is well \x{a}" ~
+                "conceptualized and designed, realization of all the \x{a}" ~
+                "project's objectives should lead to the fulfillment \x{a}" ~
+                "of the project's vision. \x{a}" ~
+                "Objectives should be: \x{a}" ~
+                "* Impact oriented (represents desired changes in \x{a}" ~
+                "  ecological attributes or critical threat factors) \x{a}" ~
+                "* Measurable (defined in relation to some standard \x{a}" ~
+                "  scale) \x{a}" ~
+                "* Time limited (achievable within a specific period \x{a}" ~
+                "  of time) \x{a}" ~
+                "* Specific (clearly defined for universal \x{a}" ~
+                "  understanding) \x{a}" ~
+                "* Practical (achievable and appropriate within the \x{a}" ~
+                "  project context) \x{a}" ~
+                "* Credible (representing the best scientific judgment \x{a}" ~
+                "  as to what is necessary for conservation success)."
+            ]
+        ]
+        element cp:objective {
+            attribute id { vocabulary_id }
+            & element cp:indicators {
+                  element cp:indicator_id { vocabulary_id }*
+              }
+            & element cp:name { text }
+            & element cp:comment { text }?
+            & percent_complete.element?
+        }*
+    }
+#
+percent_complete.element =
+    element cp:percent_complete_measures {
+        (percent_complete.combination1.element
+         | percent_complete.combination2.element
+         | percent_complete.combination3.element)*
+    }
+percent_complete.combination1.element =
+    element cp:percent_complete_measure {
+        attribute sequence { vocabulary_sequence }
+        & element cp:measure { xsd:decimal }
+        & element cp:date { vocabulary_date }?
+        & element cp:comment { text }?
+    }
+percent_complete.combination2.element =
+    element cp:percent_complete_measure {
+        attribute sequence { vocabulary_sequence }
+        & element cp:measure { xsd:decimal }?
+        & element cp:date { vocabulary_date }
+        & element cp:comment { text }?
+    }
+percent_complete.combination3.element =
+    element cp:percent_complete_measure {
+        attribute sequence { vocabulary_sequence }
+        & element cp:measure { xsd:decimal }?
+        & element cp:date { vocabulary_date }?
+        & element cp:comment { text }
+    }
+#
+strategies.element =
+    element cp:strategies {
+        [
+            documentation [
+                "Interventions undertaken by project staff and/or \x{a}" ~
+                "partners designed to reach the project's objectives. \x{a}" ~
+                "A good action meets the criteria of being linked to \x{a}" ~
+                "objectives, focused, strategic, feasible, and appropriate."
+            ]
+        ]
+        element cp:strategy {
+            attribute id { vocabulary_id }
+            & element cp:objectives {
+                  element cp:objective_id { vocabulary_id }*
+              }
+            & element cp:name { text }
+            & element cp:taxonomy_code { iucn_strategy_taxonomy }?
+            & element cp:selected { xsd:boolean }?
+            & element cp:comment { text }?
+            & element cp:total_cost { xsd:decimal }?
+            & element cp:legacy_strategy_ranking { text }?
+            & statuses.element?
+            & activities.element?
+        }*
+    }
+#
+activities.element =
+    element cp:activities {
+        element cp:activity {
+            element cp:name { text }
+            & element cp:start_date { vocabulary_date }?
+            & element cp:end_date { vocabulary_date }?
+            & element cp:total_cost { xsd:decimal }?
+            & element cp:detail { text }?
+            & statuses.element?
+        }*
+    }
+#
+indicators.element =
+    element cp:indicators {
+        [
+            documentation [
+                "Measurable factors related to a specific information \x{a}" ~
+                "need (for example, the status of a Key Ecological \x{a}" ~
+                "Attribute, change in a Threat, or progress towards an \x{a}" ~
+                "Objective). A good Indicator meets the criteria of \x{a}" ~
+                "being measurable, precise, consistent, and sensitive. \x{a}" ~
+                "Indicator Ratings are described based on criteria \x{a}" ~
+                "that objectively place an indicator into 1 of 4 \x{a}" ~
+                "categories corresponding to Poor, Fair, Good, and \x{a}" ~
+                "Very Good viability status. The guidance for defining \x{a}" ~
+                "different indicator ratings is centered on the \x{a}" ~
+                "concept of acceptable ranges of variability. \x{a}" ~
+                "* Indicators in a 'Good' status are within an \x{a}" ~
+                "  acceptable range of variation; Some intervention is \x{a}" ~
+                "  required for their maintenance. \x{a}" ~
+                "* Very Good is an Ecologically desirable status; \x{a}" ~
+                "  Requires little intervention for maintenance. \x{a}" ~
+                "* Fair status indicates a key attribute that is \x{a}" ~
+                "  outside acceptable range of variation; Requires \x{a}" ~
+                "  human intervention. \x{a}" ~
+                "* Poor status represents a situation where \x{a}" ~
+                "  Restoration increasingly difficult and the current \x{a}" ~
+                "  conditions may lead to the extirpation of the target."
+            ]
+        ]
+        element cp:indicator {
+            attribute id { vocabulary_id }
+            & element cp:name { text }
+            & element cp:factor_type { text }?
+            & element cp:factor_name { text }?
+            & element cp:priority { vocabulary_priority_vhhml }?
+            & element cp:comment { text }?
+            & measures.element?
+            & element cp:methods {
+                  [
+                      documentation [
+                          "An Indicator may have more than one Method, \x{a}" ~
+                          "and a Method is sharable among  \x{a}" ~
+                          "Indicators. For Indicators originating \x{a}" ~
+                          "with the Workbook, an Indicator \x{a}" ~
+                          "will have only one Method but the Method \x{a}" ~
+                          "will be shared among Indicators; for  \x{a}" ~
+                          "Indicators originating with Miradi, there \x{a}" ~
+                          "may be more than one Method and a Method \x{a}" ~
+                          "may be shared among Indicators."
+                      ]
+                  ]
+                  element cp:method_id { vocabulary_id }*
+              }
+            & statuses.element?
+        }*
+    }
+#
+measures.element =
+    element cp:measures {
+        (measures.combination1.element
+         | measures.combination2.element
+         | measures.combination3.element
+         | measures.combination4.element
+         | measures.combination5.element)*
+    }
+measures.combination1.element =
+    element cp:measure {
+        attribute sequence { vocabulary_sequence }
+        & element cp:measurement { text }
+        & element cp:comment { text }?
+        & element cp:date { vocabulary_date }?
+        & element cp:source { vocabulary_source_measures }?
+        & element cp:trend { vocabulary_trend }?
+        & element cp:rating { vocabulary_rating_vggfp }?
+    }
+measures.combination2.element =
+    element cp:measure {
+        attribute sequence { vocabulary_sequence }
+        & element cp:measurement { text }?
+        & element cp:comment { text }?
+        & element cp:date { vocabulary_date }
+        & element cp:source { vocabulary_source_measures }?
+        & element cp:trend { vocabulary_trend }?
+        & element cp:rating { vocabulary_rating_vggfp }?
+    }
+measures.combination3.element =
+    element cp:measure {
+        attribute sequence { vocabulary_sequence }
+        & element cp:measurement { text }?
+        & element cp:comment { text }?
+        & element cp:date { vocabulary_date }?
+        & element cp:source { vocabulary_source_measures }
+        & element cp:trend { vocabulary_trend }?
+        & element cp:rating { vocabulary_rating_vggfp }?
+    }
+measures.combination4.element =
+    element cp:measure {
+        attribute sequence { vocabulary_sequence }
+        & element cp:measurement { text }?
+        & element cp:comment { text }?
+        & element cp:date { vocabulary_date }?
+        & element cp:source { vocabulary_source_measures }?
+        & element cp:trend { vocabulary_trend }
+        & element cp:rating { vocabulary_rating_vggfp }?
+    }
+measures.combination5.element =
+    element cp:measure {
+        attribute sequence { vocabulary_sequence }
+        & element cp:measurement { text }?
+        & element cp:comment { text }?
+        & element cp:date { vocabulary_date }?
+        & element cp:source { vocabulary_source_measures }?
+        & element cp:trend { vocabulary_trend }?
+        & element cp:rating { vocabulary_rating_vggfp }
+    }
+#
+methods.element =
+    element cp:methods {
+        element cp:method {
+            attribute id { vocabulary_id }
+            & element cp:name { text }
+            & element cp:detail { text }?
+            & element cp:comment { text }?
+        }*
+    }
+#
+statuses.element =
+    element cp:statuses {
+        (status.combination1.element | status.combination2.element | status.combination3.element)*
+    }
+status.combination1.element =
+    element cp:status {
+        attribute sequence { vocabulary_sequence }
+        & element cp:date { vocabulary_date }
+        & element cp:measure { vocabulary_progress }?
+        & element cp:comment { text }?
+    }
+status.combination2.element =
+    element cp:status {
+        attribute sequence { vocabulary_sequence }
+        & element cp:date { vocabulary_date }?
+        & element cp:measure { vocabulary_progress }
+        & element cp:comment { text }?
+    }
+status.combination3.element =
+    element cp:status {
+        attribute sequence { vocabulary_sequence }
+        & element cp:date { vocabulary_date }?
+        & element cp:measure { vocabulary_progress }?
+        & element cp:comment { text }
+    }
+# 
+# Aliases
+string_with_collapsed_whitespace = xsd:token
+#
+vocabulary_date = xsd:NMTOKEN { pattern = "[0-9]{4}-[0-9]{2}-[0-9]{2}" }
+vocabulary_area_unit = "hectares"
+vocabulary_country = xsd:NMTOKEN { pattern = "[A-Z]{3}" }
+vocabulary_classification_id = xsd:NMTOKEN { pattern = "[7-9]|1[0-5]" }
+vocabulary_ecoregion = xsd:NMTOKEN { pattern = "[123][\d]{4}" }
+vocabulary_geospatial_type = "point"
+vocabulary_id = xsd:nonNegativeInteger
+vocabulary_key_ecological_attribute_category = "Condition" | "Landscape Context" | "Size"
+vocabulary_ou = xsd:NMTOKEN { pattern = "\S{5}" }
+vocabulary_priority_vhhml = "Very High" | "High" | "Medium" | "Low"
+vocabulary_progress =
+    "Not Specified"
+    | "Planned"
+    | "Major Issues"
+    | "Minor Issues"
+    | "On Track"
+    | "Completed"
+    | "Abandoned"
+vocabulary_rating_vggfp = "Very Good" | "Good" | "Fair" | "Poor"
+vocabulary_ranking_vggfp = "Very Good" | "Good" | "Fair" | "Poor"
+vocabulary_ranking_vhhml = "Very High" | "High" | "Medium" | "Low"
+vocabulary_sequence = xsd:nonNegativeInteger
+vocabulary_source_indicator_ratings =
+    "Not Specified" | "Rough Guess" | "Expert Knowledge" | "External Research" | "Onsite Research"
+vocabulary_source_measures =
+    "Not Specified"
+    | "Rough Guess"
+    | "Expert Knowledge"
+    | "Rapid Assessment"
+    | "Intensive Assessment"
+vocabulary_status =
+    "Planned" | "Major Issues" | "Minor Issues" | "On Track" | "Completed" | "Abandoned"
+vocabulary_team =
+    "Team Contact"
+    | "Leader/Manager"
+    | "Team Member"
+    | "Process Facilitator"
+    | "Project Advisor"
+    | "Stakeholder"
+vocabulary_trend =
+    "Not Specified"
+    | "Unknown"
+    | "Strong Increase"
+    | "Mild Increase"
+    | "Flat"
+    | "Mild Decrease"
+    | "Strong Decrease"
+vocabulary_viability_mode = "kea" | "simple"
+# 
+#
+[
+    documentation [
+        "International Union for Conservation of Nature (IUCN) threat, \x{a}" ~
+        "habitat and strategy taxonomy formats:"
+    ]
+]
+iucn_habitat_taxonomy = xsd:NMTOKEN { pattern = "[H][0-9]{2,3}\.[0-9]{2,3}" }
+iucn_strategy_taxonomy = xsd:NMTOKEN { pattern = "[A][0-9]{2,3}\.[0-9]{2,3}" }
+iucn_threat_taxonomy = xsd:NMTOKEN { pattern = "[T][0-9]{2,3}\.[0-9]{2,3}" }
