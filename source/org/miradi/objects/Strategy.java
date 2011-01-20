@@ -154,12 +154,12 @@ public class Strategy extends Factor
 		
 		if (fieldTag.equals(PSEUDO_TAG_ACTIVITIES))
 			return getBaseObjectLabelsOnASingleLine(getActivityRefs());
-		
+
+		if (fieldTag.equals(PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS))
+			return getRelevantObjectivesRefsAsString();
+
 		if (fieldTag.equals(PSEUDO_TAG_RELEVANT_GOAL_REFS))
 			return getRelevantGoalRefsAsString();
-		
-	if (fieldTag.equals(PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS))
-			return getRelevantObjectivesRefsAsString();
 		
 		return super.getPseudoData(fieldTag);
 	}
