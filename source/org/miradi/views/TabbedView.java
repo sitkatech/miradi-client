@@ -133,9 +133,9 @@ abstract public class TabbedView extends UmbrellaView
 			EAM.logDebug("Ignoring setting tab selection, setting selection to 0");
 			desiredTab = 0;
 		}
-		setTab(desiredTab);
-
+		
 		forceLayoutSoSplittersWork();
+		setTab(desiredTab);
 	}
 
 	@Override
@@ -487,8 +487,8 @@ abstract public class TabbedView extends UmbrellaView
 			
 			try
 			{
-				int newTab = tabs.getSelectedIndex();
 				FieldSaver.savePendingEdits();
+				int newTab = tabs.getSelectedIndex();
 				CommandSetObjectData command = createTabChangeCommand(newTab);
 				getProject().executeCommand(command);
 			}
