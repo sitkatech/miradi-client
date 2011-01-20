@@ -23,6 +23,7 @@ package org.miradi.dialogfields;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objects.Strategy;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
@@ -41,7 +42,7 @@ public class GoalRelevancyOverrideListField extends RefListEditorField
 		{
 			Strategy strategy = Strategy.find(getProject(), getORef());
 			ORefList all = new ORefList(refListEditor.getText());
-			return strategy.getCalculatedRelevantGoalOverrides(all).toString();
+			return getCalculatedRelevantOverrides(strategy, all).toString();
 		}
 		catch(Exception e)
 		{
@@ -51,13 +52,18 @@ public class GoalRelevancyOverrideListField extends RefListEditorField
 		}
 	}
 
+	private RelevancyOverrideSet getCalculatedRelevantOverrides(Strategy strategy, ORefList all) throws Exception
+	{
+		return strategy.getCalculatedRelevantGoalOverrides(all);
+	}
+
 	@Override
 	public void setText(String codes)
 	{
 		try
 		{
 			Strategy strategy = Strategy.find(getProject(), getORef());
-			ORefList relevantRefList = strategy.getRelevantGoalRefs();
+			ORefList relevantRefList = getRelevantRefs(strategy);
 			refListEditor.setText(relevantRefList.toString());
 		}
 		catch(Exception e)
@@ -65,5 +71,10 @@ public class GoalRelevancyOverrideListField extends RefListEditorField
 			EAM.unexpectedErrorDialog(e);
 			EAM.logException(e);
 		}	
+	}
+
+	private ORefList getRelevantRefs(Strategy strategy) throws Exception
+	{
+		return strategy.getRelevantGoalRefs();
 	}
 }
