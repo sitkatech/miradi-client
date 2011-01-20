@@ -190,7 +190,7 @@ public class Strategy extends Factor
 		}
 	}
 
-	//FIXME urgent - need to pass correct relevant objectives to calculateRefList
+	//FIXME Urgent - need to pass correct relevant objectives to calculateRefList
 	public ORefList getRelevantObjectiveRefs() throws Exception
 	{
 		RelevancyOverrideSet relevantOverrides = getObjectiveOverrideSet();
