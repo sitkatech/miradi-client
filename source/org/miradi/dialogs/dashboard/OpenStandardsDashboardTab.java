@@ -33,6 +33,7 @@ abstract public class OpenStandardsDashboardTab extends SplitterPanelWithRightSi
 	public OpenStandardsDashboardTab(MainWindow mainWindowToUse, AbstractObjectDataInputPanel leftPanelToUse) throws Exception
 	{
 		super(mainWindowToUse, leftPanelToUse);
+		
 		rightPanel.setBackground(AbstractOpenStandardsQuestionPanel.DASHBOARD_BACKGROUND_COLOR);
 		Color color = AppPreferences.getWizardTitleBackground();
 		rightPanel.setBorder(BorderFactory.createLineBorder(color, BORDER_THICKNESS));
