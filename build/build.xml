@@ -23,6 +23,7 @@
     <property name="dist.temp" value="${dist.dir}/temp"/>
     <property name="dist.temp.jars" value="${dist.temp}/jars"/>
     
+	<property name="miradi.root.dir" value="${source.cvs.module}" />
     <property name="eam.src.root" value="${source.cvs.module}/source"/>
     <property name="eam.test.src.root" value="${source.cvs.module}/tests"/>
     <property name="eam.class.root" value="${dist.temp}/bin"/>
@@ -673,10 +674,16 @@
 		<arg value="--message"/>
 		<arg value="Updated PO files: ${version.timestamp}"/>
 	</exec>
-	<exec executable="hg" failonerror="false" dir="${translations.dir}">
+	<exec executable="hg" failonerror="false" dir="${miradi.root.dir}">
+		<arg value="status"/>
+	</exec>
+	<exec executable="hg" failonerror="false" dir="${miradi.root.dir}">
+		<arg value="outgoing"/>
+	</exec>
+	<exec executable="hg" failonerror="false" dir="${miradi.root.dir}">
 		<arg value="rebase"/>
 	</exec>
-	<exec executable="hg" failonerror="true" dir="${translations.dir}">
+	<exec executable="hg" failonerror="true" dir="${miradi.root.dir}">
 		<arg value="push"/>
 	</exec>
 </target>
