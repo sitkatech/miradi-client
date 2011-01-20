@@ -33,7 +33,6 @@ import org.miradi.objecthelpers.DirectThreatSet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
-import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.RelevancyOverrideSetData;
 import org.miradi.objecthelpers.TargetSet;
@@ -264,19 +263,6 @@ abstract public class Desire extends BaseObject
 		relevantOverrides.addAll(computeRelevancyOverrides(all, defaultRelevantRefList, true));
 		relevantOverrides.addAll(computeRelevancyOverrides(defaultRelevantRefList, all , false));	
 	
-		return relevantOverrides;
-	}
-
-	public RelevancyOverrideSet computeRelevancyOverrides(ORefList refList1, ORefList refList2,	boolean relevancyValue)
-	{
-		RelevancyOverrideSet relevantOverrides = new RelevancyOverrideSet();
-		ORefList overrideRefs = ORefList.subtract(refList1, refList2);
-		for (int i = 0; i < overrideRefs.size(); ++i)
-		{
-			RelevancyOverride thisOverride = new RelevancyOverride(overrideRefs.get(i), relevancyValue);
-			relevantOverrides.add(thisOverride);
-		}
-		
 		return relevantOverrides;
 	}
 
