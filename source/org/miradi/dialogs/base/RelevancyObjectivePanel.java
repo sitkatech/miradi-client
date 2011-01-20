@@ -38,6 +38,7 @@ public class RelevancyObjectivePanel extends ObjectDataInputPanel
 		updateFieldsFromProject();
 	}
 
+	@Override
 	public String getPanelDescription()
 	{
 		return EAM.text("Objective Relevancy Panel");
