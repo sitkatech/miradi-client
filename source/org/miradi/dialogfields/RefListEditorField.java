@@ -33,10 +33,10 @@ public class RefListEditorField extends ObjectDataInputField implements ListSele
 {
 	public RefListEditorField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, ChoiceQuestion questionToUse, String tagToUse)
 	{
-		this(projectToUse, new ORef(objectTypeToUse, objectIdToUse), questionToUse, tagToUse);
+		this(projectToUse, new ORef(objectTypeToUse, objectIdToUse), tagToUse, questionToUse);
 	}
 	
-	public RefListEditorField(Project projectToUse, ORef refToUse, ChoiceQuestion questionToUse, String tagToUse)
+	public RefListEditorField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse)
 	{
 		super(projectToUse, refToUse, tagToUse);
 		

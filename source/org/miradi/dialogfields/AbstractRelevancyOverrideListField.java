@@ -28,6 +28,6 @@ public class AbstractRelevancyOverrideListField extends RefListEditorField
 {
 	public AbstractRelevancyOverrideListField(Project projectToUse,	ORef refToUse, String tagToUse, ChoiceQuestion questionToUse)
 	{
-		super(projectToUse, refToUse, questionToUse, tagToUse);
+		super(projectToUse, refToUse, tagToUse, questionToUse);
 	}
 }
