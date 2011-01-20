@@ -708,7 +708,7 @@ abstract public class BaseObject
 	}
 	
 
-	protected ORefList calculateRefList(ORefSet relevantRefList, RelevancyOverrideSet relevantOverrides)
+	protected ORefList calculateRelevantRefList(ORefSet relevantRefList, RelevancyOverrideSet relevantOverrides)
 	{
 		for(RelevancyOverride override : relevantOverrides)
 		{
