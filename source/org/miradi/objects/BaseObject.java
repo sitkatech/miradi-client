@@ -729,7 +729,7 @@ abstract public class BaseObject
 		return new ORefList(relevantRefList);
 	}
 	
-	public RelevancyOverrideSet computeRelevancyOverrides(ORefList refList1, ORefList refList2,	boolean relevancyValue)
+	protected RelevancyOverrideSet computeRelevancyOverrides(ORefList refList1, ORefList refList2,	boolean relevancyValue)
 	{
 		RelevancyOverrideSet relevantOverrides = new RelevancyOverrideSet();
 		ORefList overrideRefs = ORefList.subtract(refList1, refList2);
