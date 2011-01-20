@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields;
 
-import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
@@ -34,46 +33,15 @@ public class GoalRelevancyOverrideListField extends AbstractRelevancyOverrideLis
 	{
 		super(projectToUse, refToUse, tagToUse, questionToUse);
 	}
-	
-	@Override
-	public String getText()
-	{
-		try
-		{
-			Strategy strategy = Strategy.find(getProject(), getORef());
-			ORefList all = new ORefList(refListEditor.getText());
-			return getCalculatedRelevantOverrides(strategy, all).toString();
-		}
-		catch(Exception e)
-		{
-			EAM.unexpectedErrorDialog(e);
-			EAM.logException(e);
-			return "";
-		}
-	}
 
-	private RelevancyOverrideSet getCalculatedRelevantOverrides(Strategy strategy, ORefList all) throws Exception
+	@Override
+	protected RelevancyOverrideSet getCalculatedRelevantOverrides(Strategy strategy, ORefList all) throws Exception
 	{
 		return strategy.getCalculatedRelevantGoalOverrides(all);
 	}
 
 	@Override
-	public void setText(String codes)
-	{
-		try
-		{
-			Strategy strategy = Strategy.find(getProject(), getORef());
-			ORefList relevantRefList = getRelevantRefs(strategy);
-			refListEditor.setText(relevantRefList.toString());
-		}
-		catch(Exception e)
-		{
-			EAM.unexpectedErrorDialog(e);
-			EAM.logException(e);
-		}	
-	}
-
-	private ORefList getRelevantRefs(Strategy strategy) throws Exception
+	protected ORefList getRelevantRefs(Strategy strategy) throws Exception
 	{
 		return strategy.getRelevantGoalRefs();
 	}
