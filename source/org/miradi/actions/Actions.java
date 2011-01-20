@@ -463,6 +463,8 @@ public class Actions
 		registerAction(new ActionEditGoalIndicatorRelevancyList(mainWindow));
 		registerAction(new ActionEditObjectiveStrategyActivityRelevancyList(mainWindow));
 		registerAction(new ActionEditGoalStrategyActivityRelevancyList(mainWindow));
+		registerAction(new ActionEditStrategyGoalRelevancyList(mainWindow));
+		registerAction(new ActionEditStrategyObjectiveRelevancyList(mainWindow));
 		registerAction(new ActionDeleteGroupBox(mainWindow));
 		registerAction(new ActionCreateSubTarget(mainWindow));
 		registerAction(new ActionDeleteSubTarget(mainWindow));

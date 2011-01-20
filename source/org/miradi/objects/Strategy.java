@@ -24,12 +24,16 @@ import java.util.Vector;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
+import org.miradi.main.EAM;
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.IdListData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objecthelpers.RelevancyOverrideSet;
+import org.miradi.objecthelpers.RelevancyOverrideSetData;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
@@ -151,7 +155,65 @@ public class Strategy extends Factor
 		if (fieldTag.equals(PSEUDO_TAG_ACTIVITIES))
 			return getBaseObjectLabelsOnASingleLine(getActivityRefs());
 		
+		if (fieldTag.equals(PSEUDO_TAG_RELEVANT_GOAL_REFS))
+			return getRelevantGoalRefsAsString();
+		
+	if (fieldTag.equals(PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS))
+			return getRelevantObjectivesRefsAsString();
+		
 		return super.getPseudoData(fieldTag);
+	}
+	
+	private String getRelevantObjectivesRefsAsString()
+	{
+		try
+		{
+			return getRelevantObjectiveRefs().toString();
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return "";
+		}
+	}
+	
+	private String getRelevantGoalRefsAsString()
+	{
+		try
+		{
+			return getRelevantGoalRefs().toString();
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return "";
+		}
+	}
+
+	//FIXME urgent - need to pass correct relevant objectives to calculateRefList
+	private ORefList getRelevantObjectiveRefs() throws Exception
+	{
+		RelevancyOverrideSet relevantOverrides = getObjectiveOverrideSet();
+		
+		return calculateRelevantRefList(new ORefSet(), relevantOverrides);
+	}
+	
+	//FIXME urgent - need to pass correct relevant objectives to calculateRefList
+	private ORefList getRelevantGoalRefs() throws Exception
+	{
+		RelevancyOverrideSet relevantOverrides = getGaolOverrideSet();
+	
+		return calculateRelevantRefList(new ORefSet(), relevantOverrides);
+	}
+	
+	private RelevancyOverrideSet getObjectiveOverrideSet()
+	{
+		return relevantObjectiveOverrides.getRawRelevancyOverrideSet();
+	}
+	
+	private RelevancyOverrideSet getGaolOverrideSet()
+	{
+		return relevantGoalOverrides.getRawRelevancyOverrideSet();
 	}
 
 	public String getTaxonomyCode()
@@ -299,6 +361,8 @@ public class Strategy extends Factor
 		impactRating = new ChoiceData(TAG_IMPACT_RATING, getQuestion(StrategyImpactQuestion.class));
 		feasibilityRating = new ChoiceData(TAG_FEASIBILITY_RATING, getQuestion(StrategyFeasibilityQuestion.class));
 		legacyTncStrategyRanking = new StringData(TAG_LEGACY_TNC_STRATEGY_RANKING);
+		relevantGoalOverrides = new RelevancyOverrideSetData(TAG_RELEVANT_GOAL_SET);
+		relevantObjectiveOverrides = new RelevancyOverrideSetData(TAG_RELEVANT_OBJECTIVE_SET);
 	
 		tagRatingSummary = new PseudoStringData(PSEUDO_TAG_RATING_SUMMARY);
 		impactRatingLabel = new PseudoQuestionData(PSEUDO_TAG_IMPACT_RATING_VALUE, new StrategyImpactQuestion());
@@ -306,6 +370,8 @@ public class Strategy extends Factor
 		tagRatingSummaryLabel = new PseudoQuestionData(PSEUDO_TAG_RATING_SUMMARY_VALUE, new StrategyRatingSummaryQuestion());
 		taxonomyCodeLabel = new PseudoQuestionData(PSEUDO_TAG_TAXONOMY_CODE_VALUE, new StrategyClassificationQuestion());
 		multiLineActivities = new PseudoStringData(PSEUDO_TAG_ACTIVITIES);
+		relevantGoalRefs = new PseudoORefListData(PSEUDO_TAG_RELEVANT_GOAL_REFS);
+		relevantObjectiveRefs = new PseudoORefListData(PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS);
 		
 		addField(TAG_STATUS, status);
 		addField(TAG_ACTIVITY_IDS, activityIds);
@@ -314,6 +380,8 @@ public class Strategy extends Factor
 		addField(TAG_IMPACT_RATING, impactRating);
 		addField(TAG_FEASIBILITY_RATING, feasibilityRating);
 		addField(TAG_LEGACY_TNC_STRATEGY_RANKING, legacyTncStrategyRanking);
+		addField(TAG_RELEVANT_GOAL_SET, relevantGoalOverrides);
+		addField(TAG_RELEVANT_OBJECTIVE_SET, relevantObjectiveOverrides);
 		
 		addField(PSEUDO_TAG_RATING_SUMMARY, tagRatingSummary);
 		addField(PSEUDO_TAG_IMPACT_RATING_VALUE, impactRatingLabel);
@@ -321,6 +389,8 @@ public class Strategy extends Factor
 		addField(PSEUDO_TAG_RATING_SUMMARY_VALUE, tagRatingSummaryLabel);
 		addField(PSEUDO_TAG_TAXONOMY_CODE_VALUE, taxonomyCodeLabel);
 		addField(PSEUDO_TAG_ACTIVITIES, multiLineActivities);
+		addField(PSEUDO_TAG_RELEVANT_GOAL_REFS, relevantGoalRefs);
+		addField(PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS, relevantObjectiveRefs);
 	}
 
 	public static final String TAG_ACTIVITY_IDS = "ActivityIds";
@@ -332,12 +402,16 @@ public class Strategy extends Factor
 	public static final String TAG_IMPACT_RATING = "ImpactRating";
 	public static final String TAG_FEASIBILITY_RATING = "FeasibilityRating";
 	public static final String TAG_LEGACY_TNC_STRATEGY_RANKING = "LegacyTncStrategyRanking";
+	public static final String TAG_RELEVANT_GOAL_SET = "RelevantGoalSet";
+	public static final String TAG_RELEVANT_OBJECTIVE_SET = "RelevantObjectiveSet";
 	
 	public static final String PSEUDO_TAG_RATING_SUMMARY = "RatingSummary";
 	public static final String PSEUDO_TAG_IMPACT_RATING_VALUE = "ImpactRatingValue";
 	public static final String PSEUDO_TAG_FEASIBILITY_RATING_VALUE = "FeasibilityRatingValue";
 	public static final String PSEUDO_TAG_RATING_SUMMARY_VALUE = "RatingSummaryValue";
 	public static final String PSEUDO_TAG_ACTIVITIES = "PseudoTagActivities";
+	public static final String PSEUDO_TAG_RELEVANT_GOAL_REFS = "PseudoRelevantGoalRefs";
+	public static final String PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS = "PseudoRelevantObjectiveRefs";
 	
 	public static final String OBJECT_NAME = "Strategy";
 	public static final String OBJECT_NAME_DRAFT = "Draft" + Strategy.OBJECT_NAME;
@@ -349,6 +423,8 @@ public class Strategy extends Factor
 	private ChoiceData impactRating;
 	private ChoiceData feasibilityRating;
 	private StringData legacyTncStrategyRanking;
+	private RelevancyOverrideSetData relevantGoalOverrides;
+	private RelevancyOverrideSetData relevantObjectiveOverrides;
 	
 	private PseudoStringData tagRatingSummary;
 	private PseudoQuestionData impactRatingLabel;
@@ -356,4 +432,7 @@ public class Strategy extends Factor
 	private PseudoQuestionData tagRatingSummaryLabel;
 	private PseudoQuestionData taxonomyCodeLabel;
 	private PseudoStringData multiLineActivities;
+	private PseudoORefListData relevantGoalRefs;
+	private PseudoORefListData relevantObjectiveRefs;
+
 }
