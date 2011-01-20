@@ -74,7 +74,7 @@ public class TargetViabililtyTreePanel extends TargetViabililtyTreeTablePanel
 		super(mainWindowToUse, treeToUse, buttonActionsToUse);
 	}
 	
-	static final Class[] buttonActions = new Class[] {
+	private static final Class[] buttonActions = new Class[] {
 		ActionCreateIndicator.class,
 		ActionCreateIndicatorMeasurement.class,
 		ActionCloneIndicator.class,
