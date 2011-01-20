@@ -669,6 +669,10 @@
 <!-- T R A N S L A T I O N S                                            -->
 <!-- ================================================================== -->
 <target name="translations" depends="pot, spanish, indonesian, italian, mongolian, ukrainian, chinese, french" description="Create Translatable Content jars/zips">
+	<exec executable="hg" failonerror="false" dir="${miradi.root.dir}">
+		<arg value="pull"/>
+		<arg value="--rebase"/>
+	</exec>
 	<exec executable="hg" failonerror="true" dir="${translations.dir}">
 		<arg value="commit"/>
 		<arg value="--message"/>
