@@ -52,6 +52,8 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objecthelpers.RelevancyOverride;
+import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.project.CurrencyFormat;
@@ -703,6 +705,28 @@ abstract public class BaseObject
 	{
 		final DateRange projectStartEndDateRange = getProject().getProjectCalendar().getProjectPlanningDateRange();
 		return getTotalTimePeriodCostsMap().getRolledUpDateRange(projectStartEndDateRange);
+	}
+	
+
+	protected ORefList calculateRelevantRefList(ORefSet relevantRefList, RelevancyOverrideSet relevantOverrides)
+	{
+		for(RelevancyOverride override : relevantOverrides)
+		{
+			if (override.getRef().isInvalid())
+			{
+				EAM.logWarning("An invalid ref was found inside the relevancy list for Desire with ref = " + getRef());
+				continue;
+			}
+			
+			if (getProject().findObject(override.getRef()) == null)
+				continue;
+			
+			if (override.isOverride())
+				relevantRefList.add(override.getRef());
+			else
+				relevantRefList.remove(override.getRef());
+		}
+		return new ORefList(relevantRefList);
 	}
 
 	void clear()
