@@ -285,7 +285,7 @@ abstract public class Desire extends BaseObject
 		ORefSet relevantRefList = indicatorsOnSameFactorAsRefSet();
 		RelevancyOverrideSet relevantOverrides = relevantIndicatorOverrides.getRawRelevancyOverrideSet();
 	
-		return calculateRefList(relevantRefList, relevantOverrides);
+		return calculateRelevantRefList(relevantRefList, relevantOverrides);
 	}
 
 	public ORefSet getAllIndicatorRefsFromRelevancyOverrides() throws Exception
@@ -303,7 +303,7 @@ abstract public class Desire extends BaseObject
 		ORefSet relevantRefList = new ORefSet(getDirectlyUpstreamNonDraftStrategies());
 		RelevancyOverrideSet relevantOverrides = getStrategyActivityRelevancyOverrideSet();
 	
-		return calculateRefList(relevantRefList, relevantOverrides);
+		return calculateRelevantRefList(relevantRefList, relevantOverrides);
 	}
 	
 	public ORefList getRelevantStrategyRefs() throws Exception
@@ -316,7 +316,7 @@ abstract public class Desire extends BaseObject
 		ORefSet relevantRefList = new ORefSet(getDirectlyUpstreamNonDraftStrategies());
 		RelevancyOverrideSet relevantOverrides = getStrategyActivityRelevancyOverrideSet();
 	
-		return calculateRefList(relevantRefList, relevantOverrides).getFilteredBy(Task.getObjectType());
+		return calculateRelevantRefList(relevantRefList, relevantOverrides).getFilteredBy(Task.getObjectType());
 	}
 
 	public RelevancyOverrideSet getStrategyActivityRelevancyOverrideSet()

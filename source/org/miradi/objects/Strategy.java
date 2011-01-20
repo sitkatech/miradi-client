@@ -195,7 +195,7 @@ public class Strategy extends Factor
 	{
 		RelevancyOverrideSet relevantOverrides = getObjectiveOverrideSet();
 		
-		return calculateRefList(new ORefSet(), relevantOverrides);
+		return calculateRelevantRefList(new ORefSet(), relevantOverrides);
 	}
 	
 	//FIXME urgent - need to pass correct relevant objectives to calculateRefList
@@ -203,7 +203,7 @@ public class Strategy extends Factor
 	{
 		RelevancyOverrideSet relevantOverrides = getGaolOverrideSet();
 	
-		return calculateRefList(new ORefSet(), relevantOverrides);
+		return calculateRelevantRefList(new ORefSet(), relevantOverrides);
 	}
 	
 	private RelevancyOverrideSet getObjectiveOverrideSet()
