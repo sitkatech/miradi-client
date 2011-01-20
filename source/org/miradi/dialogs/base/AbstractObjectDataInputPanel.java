@@ -44,6 +44,7 @@ import org.miradi.commands.CommandDeleteObject;
 import org.miradi.dialogfields.AnalysisLevelsChooserField;
 import org.miradi.dialogfields.CodeListPopupWithDescriptionPanelField;
 import org.miradi.dialogfields.EditableCodeListField;
+import org.miradi.dialogfields.GoalRelevancyOverrideListField;
 import org.miradi.dialogfields.IndicatorRelevancyOverrideListField;
 import org.miradi.dialogfields.ObjectCheckBoxField;
 import org.miradi.dialogfields.ObjectChoiceField;
@@ -519,6 +520,11 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	public ObjectDataInputField createIndicatorRelevancyOverrideListField(ChoiceQuestion question)
 	{
 		return new IndicatorRelevancyOverrideListField(project, getFirstSelectedRef().getObjectType(), getObjectIdForType(getFirstSelectedRef().getObjectType()), question);
+	}
+	
+	public ObjectDataInputField createGoalRelevancyOverrideListField(String tagToUse, ChoiceQuestion question)
+	{
+		return new GoalRelevancyOverrideListField(project, getFirstSelectedRef(), tagToUse, question);
 	}
 
 	public ObjectDataInputField createSingleColumnCodeListField(int objectType, String tagToUse, ChoiceQuestion question)

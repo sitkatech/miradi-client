@@ -24,6 +24,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import org.miradi.ids.BaseId;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.MiradiScrollPane;
@@ -32,7 +33,12 @@ public class RefListEditorField extends ObjectDataInputField implements ListSele
 {
 	public RefListEditorField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, ChoiceQuestion questionToUse, String tagToUse)
 	{
-		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse);
+		this(projectToUse, new ORef(objectTypeToUse, objectIdToUse), questionToUse, tagToUse);
+	}
+	
+	public RefListEditorField(Project projectToUse, ORef refToUse, ChoiceQuestion questionToUse, String tagToUse)
+	{
+		super(projectToUse, refToUse, tagToUse);
 		
 		refListEditor = new RefListComponent(questionToUse);
 		refListEditor.addListSelectionListener(this);

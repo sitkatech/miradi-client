@@ -18,30 +18,20 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.views.umbrella.doers;
+package org.miradi.questions;
 
-import org.miradi.dialogs.base.DisposablePanel;
-import org.miradi.dialogs.base.RelevancyGoalPanel;
-import org.miradi.main.EAM;
-import org.miradi.objects.Strategy;
+import org.miradi.objects.BaseObject;
+import org.miradi.project.Project;
 
-public class EditStrategyGoalRelevancyListDoer extends AbstractEditListDoer
+public class GoalQuestion extends ObjectQuestion
 {
-	@Override
-	protected int getObjectType()
+	public GoalQuestion(Project project)
 	{
-		return Strategy.getObjectType();
+		super(getAllGoals(project));
 	}
-
-	@Override
-	protected DisposablePanel createEditPanel() throws Exception
+	
+	private static BaseObject[] getAllGoals(Project project)
 	{
-		return new RelevancyGoalPanel(getProject(), getSelectedRef());
-	}
-
-	@Override
-	protected String getDialogTitle()
-	{
-		return EAM.text("Choose Relevant Goal(s)");
+		return project.getGoalPool().getAllObjectsAsArray();
 	}
 }
