@@ -30,7 +30,7 @@ public class IndicatorRelevancyOverrideListField extends RefListEditorField
 {
 	public IndicatorRelevancyOverrideListField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, ChoiceQuestion questionToUse)
 	{
-		super(projectToUse, objectTypeToUse, objectIdToUse, questionToUse, Desire.TAG_RELEVANT_INDICATOR_SET);
+		super(projectToUse, objectTypeToUse, objectIdToUse, Desire.TAG_RELEVANT_INDICATOR_SET, questionToUse);
 	}
 	
 	@Override

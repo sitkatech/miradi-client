@@ -31,7 +31,7 @@ import org.miradi.utils.MiradiScrollPane;
 
 public class RefListEditorField extends ObjectDataInputField implements ListSelectionListener
 {
-	public RefListEditorField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, ChoiceQuestion questionToUse, String tagToUse)
+	public RefListEditorField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, ChoiceQuestion questionToUse)
 	{
 		this(projectToUse, new ORef(objectTypeToUse, objectIdToUse), tagToUse, questionToUse);
 	}
