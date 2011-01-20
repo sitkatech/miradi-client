@@ -30,7 +30,7 @@ public class ObjectOverridenListField extends RefListEditorField
 {
 	public ObjectOverridenListField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, ChoiceQuestion questionToUse)
 	{
-		super(projectToUse, objectTypeToUse, objectIdToUse, questionToUse, tagToUse);
+		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, questionToUse);
 	}
 	
 	@Override
