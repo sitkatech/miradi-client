@@ -323,27 +323,6 @@ abstract public class Desire extends BaseObject
 	{
 		return relevantStrategyActivityOverrides.getRawRelevancyOverrideSet();
 	}
-
-	private ORefList calculateRefList(ORefSet relevantRefList, RelevancyOverrideSet relevantOverrides)
-	{
-		for(RelevancyOverride override : relevantOverrides)
-		{
-			if (override.getRef().isInvalid())
-			{
-				EAM.logWarning("An invalid ref was found inside the relevancy list for Desire with ref = " + getRef());
-				continue;
-			}
-			
-			if (getProject().findObject(override.getRef()) == null)
-				continue;
-			
-			if (override.isOverride())
-				relevantRefList.add(override.getRef());
-			else
-				relevantRefList.remove(override.getRef());
-		}
-		return new ORefList(relevantRefList);
-	}
 	
 	public static CommandVector buildRemoveObjectFromRelevancyListCommands(Project project, int typeWithRelevacnyOverrideSetList, String relevancyTag, ORef relevantObjectRefToRemove) throws Exception
 	{

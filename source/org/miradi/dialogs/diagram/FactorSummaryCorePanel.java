@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.diagram;
 
+import org.miradi.actions.ActionEditStrategyGoalRelevancyList;
+import org.miradi.actions.ActionEditStrategyObjectiveRelevancyList;
 import org.miradi.actions.ActionManageFactorTags;
 import org.miradi.actions.Actions;
 import org.miradi.diagram.factortypes.FactorType;
@@ -83,8 +85,9 @@ public class FactorSummaryCorePanel extends ObjectDataInputPanel
 			ObjectDataInputField feasibilityField = createRatingChoiceField(Strategy.TAG_FEASIBILITY_RATING, new StrategyFeasibilityQuestion());
 			ObjectDataInputField prioritySummaryField = createReadOnlyChoiceField(Strategy.PSEUDO_TAG_RATING_SUMMARY, new StrategyRatingSummaryQuestion());
 			addFieldsOnOneLine(EAM.text("Priority"), new ObjectDataInputField[] {impactField, feasibilityField, prioritySummaryField});
-			
 			addLabeledSubPanelWithoutBorder(new LegacyTncStrategyRankingEditorPropertiesSubPanel(getProject(), factorToEdit.getRef(), actions), EAM.text("Legacy TNC Ratings"));
+			addFieldWithEditButton(EAM.text("Objectives"), createReadOnlyObjectList(Strategy.getObjectType(), Strategy.PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS), createObjectsActionButton(actions.getObjectsAction(ActionEditStrategyObjectiveRelevancyList.class), getPicker()));
+			addFieldWithEditButton(EAM.text("Goals"), createReadOnlyObjectList(Strategy.getObjectType(), Strategy.PSEUDO_TAG_RELEVANT_GOAL_REFS), createObjectsActionButton(actions.getObjectsAction(ActionEditStrategyGoalRelevancyList.class), getPicker()));
 		}
 
 		if(factorToEdit.isTarget())
