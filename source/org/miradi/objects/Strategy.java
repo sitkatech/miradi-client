@@ -191,7 +191,7 @@ public class Strategy extends Factor
 	}
 
 	//FIXME urgent - need to pass correct relevant objectives to calculateRefList
-	private ORefList getRelevantObjectiveRefs() throws Exception
+	public ORefList getRelevantObjectiveRefs() throws Exception
 	{
 		RelevancyOverrideSet relevantOverrides = getObjectiveOverrideSet();
 		
@@ -214,6 +214,16 @@ public class Strategy extends Factor
 	private RelevancyOverrideSet getGaolOverrideSet()
 	{
 		return relevantGoalOverrides.getRawRelevancyOverrideSet();
+	}
+	
+	public RelevancyOverrideSet getCalculatedRelevantObjectiveOverrides(ORefList all) throws Exception
+	{
+		RelevancyOverrideSet relevantOverrides = new RelevancyOverrideSet();
+		ORefList defaultRelevantRefList = getObjectiveRefs();
+		relevantOverrides.addAll(computeRelevancyOverrides(all, defaultRelevantRefList, true));
+		relevantOverrides.addAll(computeRelevancyOverrides(defaultRelevantRefList, all , false));	
+	
+		return relevantOverrides;
 	}
 	
 	public RelevancyOverrideSet getCalculatedRelevantGoalOverrides(ORefList all) throws Exception

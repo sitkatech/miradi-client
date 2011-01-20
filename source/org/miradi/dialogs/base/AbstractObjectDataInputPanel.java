@@ -68,6 +68,7 @@ import org.miradi.dialogfields.ObjectReadonlyObjectListTableField;
 import org.miradi.dialogfields.ObjectScrollingMultilineInputField;
 import org.miradi.dialogfields.ObjectStringInputField;
 import org.miradi.dialogfields.ObjectStringMapInputField;
+import org.miradi.dialogfields.ObjectiveRelevancyOverrideListField;
 import org.miradi.dialogfields.PopupQuestionEditorField;
 import org.miradi.dialogfields.RadioButtonsField;
 import org.miradi.dialogfields.ReadOnlyCodeListField;
@@ -525,6 +526,11 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	public ObjectDataInputField createGoalRelevancyOverrideListField(String tagToUse, ChoiceQuestion question)
 	{
 		return new GoalRelevancyOverrideListField(project, getFirstSelectedRef(), tagToUse, question);
+	}
+	
+	public ObjectDataInputField createObjectiveRelevancyOverrideListField(String tagToUse, ChoiceQuestion question)
+	{
+		return new ObjectiveRelevancyOverrideListField(project, getFirstSelectedRef(), tagToUse, question);
 	}
 
 	public ObjectDataInputField createSingleColumnCodeListField(int objectType, String tagToUse, ChoiceQuestion question)
