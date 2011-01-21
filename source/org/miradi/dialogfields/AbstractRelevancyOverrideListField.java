@@ -34,6 +34,7 @@ abstract public class AbstractRelevancyOverrideListField extends ObjectDataField
 	public AbstractRelevancyOverrideListField(Project projectToUse,	ORef refToUse, int objectTypeToUpdate)
 	{
 		super(projectToUse, refToUse);
+		
 		refListEditor = new RefListComponent(new ObjectPoolChoiceQuestion(getProject(), objectTypeToUpdate));
 		refListEditor.addListSelectionListener(this);
 		//TODO Panels that use this component are still needing to place the component into a scroll pane.
