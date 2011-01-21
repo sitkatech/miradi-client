@@ -29,7 +29,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ObjectPoolChoiceQuestion;
 import org.miradi.utils.MiradiScrollPane;
 
-public class StrategyObjectiveOverrideListField extends ObjectDataField implements ListSelectionListener
+public class StrategyObjectiveOverrideListField extends AbstractRelevancyOverrideListField implements ListSelectionListener
 {
 	public StrategyObjectiveOverrideListField(Project projectToUse, ORef strategyRef, int objectTypeToUpdate)
 	{
