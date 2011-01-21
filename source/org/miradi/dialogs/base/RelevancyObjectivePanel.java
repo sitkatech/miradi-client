@@ -23,7 +23,6 @@ package org.miradi.dialogs.base;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Objective;
-import org.miradi.objects.Strategy;
 import org.miradi.project.Project;
 import org.miradi.questions.ObjectPoolChoiceQuestion;
 
@@ -33,7 +32,7 @@ public class RelevancyObjectivePanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, orefToUse);
 		
-		addField(createObjectiveRelevancyOverrideListField(Strategy.TAG_RELEVANT_OBJECTIVE_SET, new ObjectPoolChoiceQuestion(getProject(), Objective.getObjectType())));
+		addField(createObjectiveRelevancyOverrideListField(new ObjectPoolChoiceQuestion(getProject(), Objective.getObjectType())));
 		
 		updateFieldsFromProject();
 	}

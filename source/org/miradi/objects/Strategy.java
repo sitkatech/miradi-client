@@ -34,7 +34,6 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
-import org.miradi.objecthelpers.RelevancyOverrideSetData;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
@@ -194,27 +193,16 @@ public class Strategy extends Factor
 	public ORefList getRelevantObjectiveRefs() throws Exception
 	{
 		ORefSet relevantObjectives = new ORefSet(TreeRebuilder.findRelevantObjectives(getProject(), getRef()));
-		RelevancyOverrideSet relevantOverrides = getObjectiveOverrideSet();
-		
+		RelevancyOverrideSet relevantOverrides = new RelevancyOverrideSet();
 		return calculateRelevantRefList(relevantObjectives, relevantOverrides);
 	}
 	
 	public ORefList getRelevantGoalRefs() throws Exception
 	{
 		ORefSet relevantGoals = new ORefSet(TreeRebuilder.findRelevantGoals(getProject(), getRef()));
-		RelevancyOverrideSet relevantOverrides = getGoalOverrideSet();
+		RelevancyOverrideSet relevantOverrides = new RelevancyOverrideSet();
 	
 		return calculateRelevantRefList(relevantGoals, relevantOverrides);
-	}
-	
-	private RelevancyOverrideSet getObjectiveOverrideSet()
-	{
-		return relevantObjectiveOverrides.getRawRelevancyOverrideSet();
-	}
-	
-	private RelevancyOverrideSet getGoalOverrideSet()
-	{
-		return relevantGoalOverrides.getRawRelevancyOverrideSet();
 	}
 	
 	public RelevancyOverrideSet getCalculatedRelevantObjectiveOverrides(ORefList all) throws Exception
@@ -382,8 +370,6 @@ public class Strategy extends Factor
 		impactRating = new ChoiceData(TAG_IMPACT_RATING, getQuestion(StrategyImpactQuestion.class));
 		feasibilityRating = new ChoiceData(TAG_FEASIBILITY_RATING, getQuestion(StrategyFeasibilityQuestion.class));
 		legacyTncStrategyRanking = new StringData(TAG_LEGACY_TNC_STRATEGY_RANKING);
-		relevantGoalOverrides = new RelevancyOverrideSetData(TAG_RELEVANT_GOAL_SET);
-		relevantObjectiveOverrides = new RelevancyOverrideSetData(TAG_RELEVANT_OBJECTIVE_SET);
 	
 		tagRatingSummary = new PseudoStringData(PSEUDO_TAG_RATING_SUMMARY);
 		impactRatingLabel = new PseudoQuestionData(PSEUDO_TAG_IMPACT_RATING_VALUE, new StrategyImpactQuestion());
@@ -401,8 +387,6 @@ public class Strategy extends Factor
 		addField(TAG_IMPACT_RATING, impactRating);
 		addField(TAG_FEASIBILITY_RATING, feasibilityRating);
 		addField(TAG_LEGACY_TNC_STRATEGY_RANKING, legacyTncStrategyRanking);
-		addField(TAG_RELEVANT_GOAL_SET, relevantGoalOverrides);
-		addField(TAG_RELEVANT_OBJECTIVE_SET, relevantObjectiveOverrides);
 		
 		addField(PSEUDO_TAG_RATING_SUMMARY, tagRatingSummary);
 		addField(PSEUDO_TAG_IMPACT_RATING_VALUE, impactRatingLabel);
@@ -423,8 +407,6 @@ public class Strategy extends Factor
 	public static final String TAG_IMPACT_RATING = "ImpactRating";
 	public static final String TAG_FEASIBILITY_RATING = "FeasibilityRating";
 	public static final String TAG_LEGACY_TNC_STRATEGY_RANKING = "LegacyTncStrategyRanking";
-	public static final String TAG_RELEVANT_GOAL_SET = "RelevantGoalSet";
-	public static final String TAG_RELEVANT_OBJECTIVE_SET = "RelevantObjectiveSet";
 	
 	public static final String PSEUDO_TAG_RATING_SUMMARY = "RatingSummary";
 	public static final String PSEUDO_TAG_IMPACT_RATING_VALUE = "ImpactRatingValue";
@@ -444,8 +426,6 @@ public class Strategy extends Factor
 	private ChoiceData impactRating;
 	private ChoiceData feasibilityRating;
 	private StringData legacyTncStrategyRanking;
-	private RelevancyOverrideSetData relevantGoalOverrides;
-	private RelevancyOverrideSetData relevantObjectiveOverrides;
 	
 	private PseudoStringData tagRatingSummary;
 	private PseudoQuestionData impactRatingLabel;

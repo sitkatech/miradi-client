@@ -44,7 +44,6 @@ import org.miradi.commands.CommandDeleteObject;
 import org.miradi.dialogfields.AnalysisLevelsChooserField;
 import org.miradi.dialogfields.CodeListPopupWithDescriptionPanelField;
 import org.miradi.dialogfields.EditableCodeListField;
-import org.miradi.dialogfields.GoalRelevancyOverrideListField;
 import org.miradi.dialogfields.IndicatorRelevancyOverrideListField;
 import org.miradi.dialogfields.ObjectCheckBoxField;
 import org.miradi.dialogfields.ObjectChoiceField;
@@ -68,10 +67,11 @@ import org.miradi.dialogfields.ObjectReadonlyObjectListTableField;
 import org.miradi.dialogfields.ObjectScrollingMultilineInputField;
 import org.miradi.dialogfields.ObjectStringInputField;
 import org.miradi.dialogfields.ObjectStringMapInputField;
-import org.miradi.dialogfields.ObjectiveRelevancyOverrideListField;
 import org.miradi.dialogfields.PopupQuestionEditorField;
 import org.miradi.dialogfields.RadioButtonsField;
 import org.miradi.dialogfields.ReadOnlyCodeListField;
+import org.miradi.dialogfields.StrategyGoalOverrideListField;
+import org.miradi.dialogfields.StrategyObjectiveOverrideListField;
 import org.miradi.dialogfields.StringMapMultiLineEditor;
 import org.miradi.dialogfields.StringMapProjectResourceFilterEditorField;
 import org.miradi.dialogfields.StringStringMapEditorField;
@@ -90,6 +90,9 @@ import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.Goal;
+import org.miradi.objects.Objective;
+import org.miradi.objects.Strategy;
 import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
@@ -523,14 +526,14 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return new IndicatorRelevancyOverrideListField(project, getFirstSelectedRef().getObjectType(), getObjectIdForType(getFirstSelectedRef().getObjectType()), question);
 	}
 	
-	public ObjectDataInputField createGoalRelevancyOverrideListField(String tagToUse, ChoiceQuestion question)
+	public ObjectDataField createGoalRelevancyOverrideListField(ChoiceQuestion question)
 	{
-		return new GoalRelevancyOverrideListField(project, getFirstSelectedRef(), tagToUse, question);
+		return new StrategyGoalOverrideListField(getProject(), getRefForType(Strategy.getObjectType()), Goal.getObjectType());
 	}
 	
-	public ObjectDataInputField createObjectiveRelevancyOverrideListField(String tagToUse, ChoiceQuestion question)
+	public ObjectDataField createObjectiveRelevancyOverrideListField(ChoiceQuestion question)
 	{
-		return new ObjectiveRelevancyOverrideListField(project, getFirstSelectedRef(), tagToUse, question);
+		return new StrategyObjectiveOverrideListField(getProject(), getRefForType(Strategy.getObjectType()), Objective.getObjectType());
 	}
 
 	public ObjectDataInputField createSingleColumnCodeListField(int objectType, String tagToUse, ChoiceQuestion question)

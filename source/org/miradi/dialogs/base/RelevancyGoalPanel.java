@@ -22,7 +22,6 @@ package org.miradi.dialogs.base;
 
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.Strategy;
 import org.miradi.project.Project;
 import org.miradi.questions.GoalQuestion;
 
@@ -32,7 +31,7 @@ public class RelevancyGoalPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, orefToUse);
 		
-		addField(createGoalRelevancyOverrideListField(Strategy.TAG_RELEVANT_GOAL_SET, new GoalQuestion(getProject())));
+		addField(createGoalRelevancyOverrideListField(new GoalQuestion(getProject())));
 		
 		updateFieldsFromProject();
 	}
