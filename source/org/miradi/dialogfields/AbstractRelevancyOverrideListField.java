@@ -43,11 +43,11 @@ abstract public class AbstractRelevancyOverrideListField extends ObjectDataField
 		super(projectToUse, refToUse);
 		
 		desireType = objectTypeToUpdate;
-		refListEditor = new RefListComponent(new ObjectPoolChoiceQuestion(getProject(), objectTypeToUpdate));
-		refListEditor.addListSelectionListener(this);
+		relevantDesireRefListEditor = new RefListComponent(new ObjectPoolChoiceQuestion(getProject(), objectTypeToUpdate));
+		relevantDesireRefListEditor.addListSelectionListener(this);
 		//TODO Panels that use this component are still needing to place the component into a scroll pane.
 		//IF they dont, the list will not be scrollable.  
-		refListScroller = new MiradiScrollPane(refListEditor);
+		refListScroller = new MiradiScrollPane(relevantDesireRefListEditor);
 	}
 
 	@Override
@@ -59,7 +59,7 @@ abstract public class AbstractRelevancyOverrideListField extends ObjectDataField
 	@Override
 	public void updateEditableState()
 	{
-		refListEditor.setEnabled(true);
+		relevantDesireRefListEditor.setEnabled(true);
 	}
 	
 	public void valueChanged(ListSelectionEvent arg0)
@@ -73,7 +73,7 @@ abstract public class AbstractRelevancyOverrideListField extends ObjectDataField
 		CommandVector updateDesireRelevancyRefCommands = new CommandVector();
 		try
 		{
-			ORefList selectedDesireRefs = new ORefList(refListEditor.getText());
+			ORefList selectedDesireRefs = new ORefList(relevantDesireRefListEditor.getText());
 			ORefList singleStrategyRefList = new ORefList(getORef());
 			for(int index = 0; index < selectedDesireRefs.size(); ++index)
 			{
@@ -99,7 +99,7 @@ abstract public class AbstractRelevancyOverrideListField extends ObjectDataField
 		try
 		{
 			ORefList relevantDesireRefs = TreeRebuilder.findRelevantDesires(getProject(), getORef(), desireType);
-			refListEditor.setText(relevantDesireRefs.toString());
+			relevantDesireRefListEditor.setText(relevantDesireRefs.toString());
 		}
 		catch(Exception e)
 		{
@@ -115,6 +115,6 @@ abstract public class AbstractRelevancyOverrideListField extends ObjectDataField
 	}
 
 	private int desireType;
-	private RefListComponent refListEditor;
+	private RefListComponent relevantDesireRefListEditor;
 	private MiradiScrollPane refListScroller;
 }
