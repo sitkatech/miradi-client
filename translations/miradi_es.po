@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-20 15:43-0600\n"
+"POT-Creation-Date: 2011-01-21 14:24-0600\n"
 "PO-Revision-Date: 2010-09-20 10:32-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -3841,7 +3841,7 @@ msgstr ""
 "En proyectos de conservación, es el estado futuro deseado de un objeto. En "
 "Miradi, un objetivo está representada por un pequeño óvalo azul."
 
-#: Miradi/source/org/miradi/dialogs/base/RelevancyGoalPanel.java:42
+#: Miradi/source/org/miradi/dialogs/base/RelevancyGoalPanel.java:40
 msgid "Goal Relevancy Panel"
 msgstr ""
 
@@ -5204,7 +5204,7 @@ msgstr ""
 msgid "Objective Holder"
 msgstr "Marcador de metas"
 
-#: Miradi/source/org/miradi/dialogs/base/RelevancyObjectivePanel.java:44
+#: Miradi/source/org/miradi/dialogs/base/RelevancyObjectivePanel.java:41
 msgid "Objective Relevancy Panel"
 msgstr ""
 
