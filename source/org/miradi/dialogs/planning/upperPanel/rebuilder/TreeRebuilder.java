@@ -276,7 +276,7 @@ public class TreeRebuilder
 		return findRelevantDesires(projectToUse, strategyRef, Objective.getObjectType());
 	}
 
-	private static ORefList findRelevantDesires(Project projectToUse, ORef strategyRef, final int desireType) throws Exception
+	public static ORefList findRelevantDesires(Project projectToUse, ORef strategyRef, final int desireType) throws Exception
 	{
 		ORefSet desireRefs = projectToUse.getPool(desireType).getRefSet();
 		ORefList relevant = new ORefList();
