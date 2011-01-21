@@ -73,11 +73,11 @@ abstract public class AbstractRelevancyOverrideListField extends ObjectDataField
 		CommandVector updateDesireRelevancyRefCommands = new CommandVector();
 		try
 		{
-			ORefList selectedRefs = new ORefList(refListEditor.getText());
+			ORefList selectedDesireRefs = new ORefList(refListEditor.getText());
 			ORefList singleStrategyRefList = new ORefList(getORef());
-			for(int index = 0; index < selectedRefs.size(); ++index)
+			for(int index = 0; index < selectedDesireRefs.size(); ++index)
 			{
-				ORef desireRef = selectedRefs.get(index);
+				ORef desireRef = selectedDesireRefs.get(index);
 				Desire desire = Desire.findDesire(getProject(), desireRef);
 				RelevancyOverrideSet relevantOverrides = desire.getCalculatedRelevantStrategyActivityOverrides(singleStrategyRefList);
 				CommandSetObjectData setCommand = new CommandSetObjectData(desire, Desire.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevantOverrides.toString());
