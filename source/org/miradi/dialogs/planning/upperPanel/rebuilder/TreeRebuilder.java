@@ -266,12 +266,12 @@ public class TreeRebuilder
 		return relevant;
 	}
 
-	private static ORefList findRelevantGoals(Project projectToUse, ORef strategyRef) throws Exception
+	public static ORefList findRelevantGoals(Project projectToUse, ORef strategyRef) throws Exception
 	{
 		return findRelevantDesires(projectToUse, strategyRef, Goal.getObjectType());
 	}
 
-	private static ORefList findRelevantObjectives(Project projectToUse, ORef strategyRef) throws Exception
+	public static ORefList findRelevantObjectives(Project projectToUse, ORef strategyRef) throws Exception
 	{
 		return findRelevantDesires(projectToUse, strategyRef, Objective.getObjectType());
 	}
