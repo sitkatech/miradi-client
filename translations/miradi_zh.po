@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-20 15:43-0600\n"
+"POT-Creation-Date: 2011-01-21 14:24-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -3685,7 +3685,7 @@ msgstr ""
 "目的——是一份正式的声明，详尽描述了某个项目期望达到的效果。对于保护项目，它是"
 "指某个对象期望达到的的未来状态。在Miradi中，目的是以蓝色小椭圆形来表示的。"
 
-#: Miradi/source/org/miradi/dialogs/base/RelevancyGoalPanel.java:42
+#: Miradi/source/org/miradi/dialogs/base/RelevancyGoalPanel.java:40
 msgid "Goal Relevancy Panel"
 msgstr ""
 
@@ -4993,7 +4993,7 @@ msgstr ""
 msgid "Objective Holder"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/RelevancyObjectivePanel.java:44
+#: Miradi/source/org/miradi/dialogs/base/RelevancyObjectivePanel.java:41
 msgid "Objective Relevancy Panel"
 msgstr ""
 
