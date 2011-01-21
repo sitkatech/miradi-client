@@ -261,19 +261,19 @@ public class TreeRebuilder
 	private ORefList findRelevantObjectivesAndGoals(ORef strategyRef) throws Exception
 	{
 		ORefList relevant = new ORefList();
-		relevant.addAll(findRelevantObjectives(strategyRef));
-		relevant.addAll(findRelevantGoals(strategyRef));
+		relevant.addAll(findRelevantObjectives(getProject(), strategyRef));
+		relevant.addAll(findRelevantGoals(getProject(), strategyRef));
 		return relevant;
 	}
 
-	private ORefList findRelevantGoals(ORef strategyRef) throws Exception
+	private static ORefList findRelevantGoals(Project projectToUse, ORef strategyRef) throws Exception
 	{
-		return findRelevantDesires(getProject(), strategyRef, Goal.getObjectType());
+		return findRelevantDesires(projectToUse, strategyRef, Goal.getObjectType());
 	}
 
-	private ORefList findRelevantObjectives(ORef strategyRef) throws Exception
+	private static ORefList findRelevantObjectives(Project projectToUse, ORef strategyRef) throws Exception
 	{
-		return findRelevantDesires(getProject(), strategyRef, Objective.getObjectType());
+		return findRelevantDesires(projectToUse, strategyRef, Objective.getObjectType());
 	}
 
 	private static ORefList findRelevantDesires(Project projectToUse, ORef strategyRef, final int desireType) throws Exception
