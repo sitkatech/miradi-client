@@ -21,6 +21,7 @@ package org.miradi.objects;
 
 import java.util.Vector;
 
+import org.miradi.dialogs.planning.upperPanel.rebuilder.TreeRebuilder;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
@@ -190,20 +191,20 @@ public class Strategy extends Factor
 		}
 	}
 
-	//FIXME urgent - need to pass correct relevant objectives to calculateRefList
 	public ORefList getRelevantObjectiveRefs() throws Exception
 	{
+		ORefSet relevantObjectives = new ORefSet(TreeRebuilder.findRelevantObjectives(getProject(), getRef()));
 		RelevancyOverrideSet relevantOverrides = getObjectiveOverrideSet();
 		
-		return calculateRelevantRefList(new ORefSet(), relevantOverrides);
+		return calculateRelevantRefList(relevantObjectives, relevantOverrides);
 	}
 	
-	//FIXME urgent - need to pass correct relevant objectives to calculateRefList
 	public ORefList getRelevantGoalRefs() throws Exception
 	{
+		ORefSet relevantGoals = new ORefSet(TreeRebuilder.findRelevantGoals(getProject(), getRef()));
 		RelevancyOverrideSet relevantOverrides = getGoalOverrideSet();
 	
-		return calculateRelevantRefList(new ORefSet(), relevantOverrides);
+		return calculateRelevantRefList(relevantGoals, relevantOverrides);
 	}
 	
 	private RelevancyOverrideSet getObjectiveOverrideSet()
