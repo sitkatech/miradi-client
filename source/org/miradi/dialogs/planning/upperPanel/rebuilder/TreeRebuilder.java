@@ -261,8 +261,8 @@ public class TreeRebuilder
 	private ORefList findRelevantObjectivesAndGoals(ORef strategyRef) throws Exception
 	{
 		ORefList relevant = new ORefList();
-		relevant.addAll(findRelevantDesires(strategyRef, getProject().getObjectivePool().getRefSet()));
-		relevant.addAll(findRelevantDesires(strategyRef, getProject().getGoalPool().getRefSet()));
+		relevant.addAll(findRelevantDesires(strategyRef, getProject().getPool(Objective.getObjectType()).getRefSet()));
+		relevant.addAll(findRelevantDesires(strategyRef, getProject().getPool(Goal.getObjectType()).getRefSet()));
 		return relevant;
 	}
 	
