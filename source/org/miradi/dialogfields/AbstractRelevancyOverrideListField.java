@@ -24,9 +24,16 @@ import javax.swing.JComponent;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import org.miradi.commands.CommandSetObjectData;
+import org.miradi.dialogs.planning.upperPanel.rebuilder.TreeRebuilder;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.RelevancyOverrideSet;
+import org.miradi.objects.Desire;
 import org.miradi.project.Project;
 import org.miradi.questions.ObjectPoolChoiceQuestion;
+import org.miradi.utils.CommandVector;
 import org.miradi.utils.MiradiScrollPane;
 
 abstract public class AbstractRelevancyOverrideListField extends ObjectDataField implements ListSelectionListener
@@ -35,6 +42,7 @@ abstract public class AbstractRelevancyOverrideListField extends ObjectDataField
 	{
 		super(projectToUse, refToUse);
 		
+		desireType = objectTypeToUpdate;
 		refListEditor = new RefListComponent(new ObjectPoolChoiceQuestion(getProject(), objectTypeToUpdate));
 		refListEditor.addListSelectionListener(this);
 		//TODO Panels that use this component are still needing to place the component into a scroll pane.
@@ -42,12 +50,6 @@ abstract public class AbstractRelevancyOverrideListField extends ObjectDataField
 		refListScroller = new MiradiScrollPane(refListEditor);
 	}
 
-	public void refreshRefs()
-	{
-		refListEditor.getQuestion().reloadQuestion();
-		refListEditor.rebuildToggleButtonsBoxes();
-	}
-	
 	@Override
 	public JComponent getComponent()
 	{
@@ -68,13 +70,42 @@ abstract public class AbstractRelevancyOverrideListField extends ObjectDataField
 	@Override
 	public void saveIfNeeded()
 	{
-		//FIXME needs to write to objectives
+		CommandVector updateDesireRelevancyRefCommands = new CommandVector();
+		try
+		{
+			ORefList selectedRefs = new ORefList(refListEditor.getText());
+			ORefList singleStrategyRefList = new ORefList(getORef());
+			for(int index = 0; index < selectedRefs.size(); ++index)
+			{
+				ORef desireRef = selectedRefs.get(index);
+				Desire desire = Desire.findDesire(getProject(), desireRef);
+				RelevancyOverrideSet relevantOverrides = desire.getCalculatedRelevantStrategyActivityOverrides(singleStrategyRefList);
+				CommandSetObjectData setCommand = new CommandSetObjectData(desire, Desire.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevantOverrides.toString());
+				updateDesireRelevancyRefCommands.add(setCommand);
+			}
+			
+			getProject().executeCommandsAsTransaction(updateDesireRelevancyRefCommands);
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			EAM.unexpectedErrorDialog(e);
+		}
 	}
 	
 	@Override
 	public void updateFromObject()
 	{
-		//FIXME needs to read from strategy or use TreeRebuilder
+		try
+		{
+			ORefList relevantDesireRefs = TreeRebuilder.findRelevantDesires(getProject(), getORef(), desireType);
+			refListEditor.setText(relevantDesireRefs.toString());
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			EAM.unexpectedErrorDialog(e);
+		}
 	}
 	
 	@Override
@@ -83,6 +114,7 @@ abstract public class AbstractRelevancyOverrideListField extends ObjectDataField
 		return "";
 	}
 
-	protected RefListComponent refListEditor;
+	private int desireType;
+	private RefListComponent refListEditor;
 	private MiradiScrollPane refListScroller;
 }
