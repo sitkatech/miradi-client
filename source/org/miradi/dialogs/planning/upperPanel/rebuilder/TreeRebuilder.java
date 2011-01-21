@@ -268,9 +268,9 @@ public class TreeRebuilder
 		return relevant;
 	}
 
-	private ORefList findRelevantDesires(ORef strategyRef, final int objectiveType) throws Exception
+	private ORefList findRelevantDesires(ORef strategyRef, final int desireType) throws Exception
 	{
-		return findRelevantDesires(strategyRef, getProject().getPool(objectiveType).getRefSet());
+		return findRelevantDesires(strategyRef, getProject().getPool(desireType).getRefSet());
 	}
 	
 	private ORefList findRelevantDesires(ORef strategyRef, ORefSet desireRefs) throws Exception
