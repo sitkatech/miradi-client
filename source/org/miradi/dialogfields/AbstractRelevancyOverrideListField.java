@@ -52,8 +52,6 @@ abstract public class AbstractRelevancyOverrideListField extends RefListEditorFi
 		}
 	}
 
-	
-
 	@Override
 	public void setText(String codes)
 	{
