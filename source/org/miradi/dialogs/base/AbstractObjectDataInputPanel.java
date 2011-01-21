@@ -526,7 +526,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return new IndicatorRelevancyOverrideListField(project, getFirstSelectedRef().getObjectType(), getObjectIdForType(getFirstSelectedRef().getObjectType()), question);
 	}
 	
-	public ObjectDataField createGoalRelevancyOverrideListField(ChoiceQuestion question)
+	public ObjectDataField createGoalRelevancyOverrideListField()
 	{
 		return new StrategyGoalOverrideListField(getProject(), getRefForType(Strategy.getObjectType()), Goal.getObjectType());
 	}
