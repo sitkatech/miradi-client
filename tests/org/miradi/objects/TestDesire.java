@@ -1,5 +1,5 @@
 /* 
-Copyright 2005-2009, Foundations of Success, Bethesda, Maryland 
+Copyright 2005-2011, Foundations of Success, Bethesda, Maryland 
 (on behalf of the Conservation Measures Partnership, "CMP") and 
 Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 
@@ -16,25 +16,14 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
-*/
+*/ 
+
 package org.miradi.objects;
 
-import org.miradi.objecthelpers.ObjectType;
-
-public class TestGoal extends TestDesire
+public class TestDesire extends ObjectTestCase
 {
-	public TestGoal(String name)
+	public TestDesire(String name)
 	{
 		super(name);
-	}
-
-	public void testFields() throws Exception
-	{
-		verifyFields(ObjectType.GOAL);
-	}
-	
-	public void testCreateCommandsToDeleteChildren() throws Exception
-	{
-		TestObjective.verifyProgressPercentIsDeleted(getProject());
 	}
 }

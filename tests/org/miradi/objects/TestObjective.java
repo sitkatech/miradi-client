@@ -29,7 +29,7 @@ import org.miradi.project.ProjectForTesting;
 import org.miradi.utils.CommandVector;
 
 
-public class TestObjective extends ObjectTestCase
+public class TestObjective extends TestDesire
 {
 	public TestObjective(String name)
 	{
