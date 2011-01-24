@@ -691,11 +691,10 @@
 	</exec>
 	<exec executable="hg" failonerror="false" dir="${miradi.root.dir}">
 		<arg value="add"/>
-		<arg value="${translations.subdir}/*.po"/>
+		<arg value="${translations.subdir}"/>
 	</exec>
 	<exec executable="hg" failonerror="false" dir="${miradi.root.dir}">
 		<arg value="commit"/>
-		<arg value="${translations.subdir}/" />
 		<arg value="--message"/>
 		<arg value="Updated PO files: ${version.timestamp}"/>
 	</exec>
