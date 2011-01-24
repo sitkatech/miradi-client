@@ -22,6 +22,8 @@
 
     <property name="dist.temp" value="${dist.dir}/temp"/>
     <property name="dist.temp.jars" value="${dist.temp}/jars"/>
+	
+	<property name="translations.subdir" value="translations"/>
     
 	<property name="miradi.root.dir" value="${source.cvs.module}" />
     <property name="eam.src.root" value="${source.cvs.module}/source"/>
@@ -31,9 +33,9 @@
 	<property name="eam.thirdparty" value="${dist.temp.jars}"/>
 	<property name="eam.resources" value="${eam.src.root}/resources" />
 	<property name="eam.fieldlabels.properties" value="${eam.resources}/FieldLabels.properties"/>
-	<property name="eam.translations.dir" value = "${eam.src.root}/translations"/>
+	<property name="eam.translations.dir" value = "${eam.src.root}/${translations.subdir}"/>
     
-    <property name="translations.dir" value="${source.cvs.module}/translations" />
+    <property name="translations.dir" value="${source.cvs.module}/${translations.subdir}" />
 
 	<property name="version.file" value = "${dist.dir}/miradi.version.txt" />
 	<property name="timestamp.file" value = "${dist.dir}/miradi.timestamp.txt" />
@@ -689,10 +691,11 @@
 	</exec>
 	<exec executable="hg" failonerror="false" dir="${miradi.root.dir}">
 		<arg value="add"/>
-		<arg value="${translations.dir}/*.po"/>
+		<arg value="${translations.subdir}/*.po"/>
 	</exec>
-	<exec executable="hg" failonerror="false" dir="${translations.dir}">
+	<exec executable="hg" failonerror="false" dir="${miradi.root.dir}">
 		<arg value="commit"/>
+		<arg value="${translations.subdir}/" />
 		<arg value="--message"/>
 		<arg value="Updated PO files: ${version.timestamp}"/>
 	</exec>
