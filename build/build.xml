@@ -685,6 +685,9 @@
 <!-- ================================================================== -->
 <target name="translations" depends="pot, spanish, indonesian, italian, mongolian, ukrainian, chinese, french, german" description="Create Translatable Content jars/zips">
 	<exec executable="hg" failonerror="false" dir="${translations.dir}">
+		<arg value="status"/>
+	</exec>
+	<exec executable="hg" failonerror="false" dir="${translations.dir}">
 		<arg value="add"/>
 		<arg value="*.po"/>
 	</exec>
