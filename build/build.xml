@@ -673,9 +673,6 @@
 <!-- GERMAN                                                             -->
 <!-- ================================================================== -->
 <target name="german" depends="pot" description="Update German Content">
-	<property name="po.locale" value="DE" />
-	<property name="po.file" value="${miradi.po.de}" />
-	<antcall target="create-new-po"/>
 	<antcall target="update-po">
 		<param name="po.file" value="${miradi.po.de}"/>
 		<param name="language.code" value="de"/>
