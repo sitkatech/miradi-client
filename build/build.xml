@@ -553,6 +553,7 @@
 		<property name="po.file" value="${miradi.po.it}" />
 		<antcall target="create-new-po"/>
 	Don't forget to create the new po property at the top of this file!
+	Don't forget to add the new language to the dependencies of translations
 	Then, grab the new PO file out of the Hudson workspace, 
 	delete the three lines of code mentioned above, 
 	and manually commit the po file as if you had created it from scratch
@@ -682,7 +683,7 @@
 <!-- ================================================================== -->
 <!-- T R A N S L A T I O N S                                            -->
 <!-- ================================================================== -->
-<target name="translations" depends="pot, spanish, indonesian, italian, mongolian, ukrainian, chinese, french" description="Create Translatable Content jars/zips">
+<target name="translations" depends="pot, spanish, indonesian, italian, mongolian, ukrainian, chinese, french, german" description="Create Translatable Content jars/zips">
 	<exec executable="hg" failonerror="false" dir="${translations.dir}">
 		<arg value="add"/>
 		<arg value="*.po"/>
