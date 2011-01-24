@@ -687,9 +687,9 @@
 	<exec executable="hg" failonerror="false" dir="${translations.dir}">
 		<arg value="status"/>
 	</exec>
-	<exec executable="hg" failonerror="false" dir="${translations.dir}">
+	<exec executable="hg" failonerror="false" dir="${miradi.root.dir}">
 		<arg value="add"/>
-		<arg value="*.po"/>
+		<arg value="${translations.dir}/*.po"/>
 	</exec>
 	<exec executable="hg" failonerror="false" dir="${translations.dir}">
 		<arg value="commit"/>
