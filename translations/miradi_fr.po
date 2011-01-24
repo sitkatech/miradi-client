@@ -1,6 +1,6 @@
-# Language FR translations for j package.
+# Language FR translations for Miradi package.
 # Copyright (C) 2010 Benetech
-# This file is distributed under the same license as the j package.
+# This file is distributed under the same license as the Miradi package.
 # Automatically generated, 2010.
 #
 #: Miradi/source/org/miradi/questions/OpenStandardsPlanActionsAndMonitoringQuestion.java:33
@@ -14,7 +14,7 @@
 #: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:45
 msgid ""
 msgstr ""
-"Project-Id-Version: j 2ee-hudson\n"
+"Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-01-21 14:24-0600\n"
 "PO-Revision-Date: 2010-12-30 12:19-0600\n"
