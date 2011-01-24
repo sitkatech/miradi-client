@@ -86,6 +86,7 @@
 
 	<!-- translations -->
 	<property name="miradi.pot" value="${dist.temp}/miradi.pot" />
+    <property name="miradi.po.de" value="${translations.dir}/miradi_de.po" />
     <property name="miradi.po.es" value="${translations.dir}/miradi_es.po" />
     <property name="miradi.po.fr" value="${translations.dir}/miradi_fr.po" />
     <property name="miradi.po.id" value="${translations.dir}/miradi_id.po" />
@@ -665,6 +666,19 @@
 	</antcall>
 </target>
 		
+<!-- ================================================================== -->
+<!-- GERMAN                                                             -->
+<!-- ================================================================== -->
+<target name="german" depends="pot" description="Update German Content">
+	<property name="po.locale" value="DE" />
+	<property name="po.file" value="${miradi.po.de}" />
+	<antcall target="create-new-po"/>
+	<antcall target="update-po">
+		<param name="po.file" value="${miradi.po.de}"/>
+		<param name="language.code" value="de"/>
+	</antcall>
+</target>
+			
 <!-- ================================================================== -->
 <!-- T R A N S L A T I O N S                                            -->
 <!-- ================================================================== -->
