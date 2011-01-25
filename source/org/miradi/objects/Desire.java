@@ -265,7 +265,7 @@ abstract public class Desire extends BaseObject
 	{
 		RelevancyOverrideSet strategyActivityRelevancyOverrideSet = new RelevancyOverrideSet(getStrategyActivityRelevancyOverrideSet());
 		RelevancyOverride override = strategyActivityRelevancyOverrideSet.find(strategyRef);
-		boolean isAlreadyCorrectlyOverriden = override != null && override.isOverride() == shouldBeRelevant;
+		boolean isAlreadyCorrectlyOverriden = (override != null) && (override.isOverride() == shouldBeRelevant);
 		if (isAlreadyCorrectlyOverriden)
 			return new CommandVector();
 		
@@ -279,10 +279,8 @@ abstract public class Desire extends BaseObject
 		else
 			strategyActivityRelevancyOverrideSet.add(new RelevancyOverride(strategyRef, shouldBeRelevant));
 		
-		CommandVector commands = new CommandVector();
-		commands.add(new CommandSetObjectData(getRef(), TAG_RELEVANT_STRATEGY_ACTIVITY_SET, strategyActivityRelevancyOverrideSet.toString()));
-		
-		return commands;
+		CommandSetObjectData commandToEnsureProperRelevancy = new CommandSetObjectData(getRef(), TAG_RELEVANT_STRATEGY_ACTIVITY_SET, strategyActivityRelevancyOverrideSet.toString());
+		return new CommandVector(commandToEnsureProperRelevancy);
 	}
 
 	public RelevancyOverrideSet getCalculatedRelevantIndicatorOverrides(ORefList all) throws Exception

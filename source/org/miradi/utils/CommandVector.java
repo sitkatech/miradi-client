@@ -36,4 +36,11 @@ public class CommandVector extends Vector<Command>
 	{
 		super();
 	}
+	
+	public CommandVector(Command commandToAdd)
+	{
+		this();
+		
+		add(commandToAdd);
+	}
 }
