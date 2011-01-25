@@ -20,20 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.legend;
 
 import org.miradi.main.EAM;
-import org.miradi.objects.Cause;
-import org.miradi.objects.Goal;
-import org.miradi.objects.HumanWelfareTarget;
-import org.miradi.objects.Indicator;
-import org.miradi.objects.Objective;
-import org.miradi.objects.Strategy;
-import org.miradi.objects.Target;
-import org.miradi.objects.Task;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.PlanningViewSingleLevelQuestion;
-import org.miradi.utils.CodeList;
-import org.miradi.views.planning.ColumnManager;
 import org.miradi.views.planning.PlanningView;
 
 public class PlanningViewSingleLevelComboBox extends PlanningViewComboBox
@@ -41,55 +31,6 @@ public class PlanningViewSingleLevelComboBox extends PlanningViewComboBox
 	public PlanningViewSingleLevelComboBox(Project projectToUse) throws Exception
 	{
 		super(projectToUse, new PlanningViewSingleLevelQuestion(projectToUse).getChoices());
-	}
-	
-	public CodeList getRowCodesToShow() throws Exception
-	{
-		CodeList listToShow = new CodeList();
-		listToShow.add(getSelectedItemProperty());
-		return listToShow;
-	}
-	
-	private String getSelectedItemProperty()
-	{
-		ChoiceItem choiceItem = (ChoiceItem) getSelectedItem();
-		return choiceItem.getCode();
-	}
-
-	public CodeList getColumnCodesToShow() throws Exception
-	{
-		String propertyName = getSelectedItemProperty();
-		if (propertyName.equals(Goal.OBJECT_NAME))
-			return ColumnManager.getGoalColumns();
-
-		if (propertyName.equals(Objective.OBJECT_NAME))
-			return ColumnManager.getObjectiveColumns();
-		
-		if (propertyName.equals(Strategy.OBJECT_NAME))
-			return ColumnManager.getStrategyColumns();
-		
-		if (propertyName.equals(Task.ACTIVITY_NAME))
-			return ColumnManager.getActivityColumns();
-
-		if (propertyName.equals(Indicator.OBJECT_NAME))
-			return ColumnManager.getIndicatorColumns();
-
-		if (propertyName.equals(Task.METHOD_NAME))
-			return ColumnManager.getMethodColumns();
-
-		if (propertyName.equals(Task.OBJECT_NAME))
-			return ColumnManager.getTaskColumns();
-		
-		if (propertyName.equals(Target.OBJECT_NAME))
-			return ColumnManager.getTargetColumns();
-		
-		if (getProject().getMetadata().isHumanWelfareTargetMode() && propertyName.equals(HumanWelfareTarget.OBJECT_NAME))
-			return ColumnManager.getTargetColumns();
-		
-		if (propertyName.equals(Cause.OBJECT_NAME_THREAT))
-			return ColumnManager.getDirectThreatsColumns();
-		
-		return new CodeList();
 	}
 	
 	public String getChoiceTag()

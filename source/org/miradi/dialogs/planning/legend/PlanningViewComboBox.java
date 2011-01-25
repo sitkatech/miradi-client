@@ -26,14 +26,13 @@ import org.miradi.commands.Command;
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.main.EAM;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.utils.UiComboBoxWithSaneActionFiring;
 
-abstract public class PlanningViewComboBox extends UiComboBoxWithSaneActionFiring implements RowColumnProvider
+abstract public class PlanningViewComboBox extends UiComboBoxWithSaneActionFiring 
 {
 	public PlanningViewComboBox(Project projectToUse, ChoiceItem[] choices) throws Exception
 	{
