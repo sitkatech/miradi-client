@@ -28,12 +28,7 @@ public class ObjectsOnlyPlanningTreeTableModel extends ExportablePlanningTreeTab
 {
 	public ObjectsOnlyPlanningTreeTableModel(Project project) throws Exception
 	{
-		super(project, getVisibleRowCodes(project), new ObjectsOnlyRowColumnProvider(project).getColumnCodesToShow(), UNIQUE_TREE_TABLE_IDENTIFIER);
-	}
-
-	public static CodeList getVisibleRowCodes(Project projectToUse) throws Exception
-	{
-		return new ObjectsOnlyRowColumnProvider(projectToUse).getRowCodesToShow();
+		super(project, new ObjectsOnlyRowColumnProvider(project).getRowCodesToShow(), new ObjectsOnlyRowColumnProvider(project).getColumnCodesToShow(), UNIQUE_TREE_TABLE_IDENTIFIER);
 	}
 
 	@Override
@@ -41,7 +36,7 @@ public class ObjectsOnlyPlanningTreeTableModel extends ExportablePlanningTreeTab
 	{
 		try
 		{
-			return getVisibleRowCodes(getProject());
+			return new ObjectsOnlyRowColumnProvider(getProject()).getRowCodesToShow();
 		}
 		catch(Exception e)
 		{
