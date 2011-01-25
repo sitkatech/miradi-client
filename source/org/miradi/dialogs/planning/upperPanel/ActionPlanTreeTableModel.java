@@ -26,7 +26,7 @@ public class ActionPlanTreeTableModel extends ExportablePlanningTreeTableModel
 {
 	public ActionPlanTreeTableModel(Project project) throws Exception
 	{
-		super(project, new StrategicRowColumnProvider(project).getRowCodesToShow(), new StrategicRowColumnProvider(project).getColumnCodesToShow(), UNIQUE_TREE_TABLE_IDENTIFIER);
+		super(project, new StrategicRowColumnProvider(project), UNIQUE_TREE_TABLE_IDENTIFIER);
 	}
 
 	@Override
