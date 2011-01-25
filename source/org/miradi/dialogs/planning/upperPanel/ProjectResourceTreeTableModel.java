@@ -36,7 +36,7 @@ public class ProjectResourceTreeTableModel extends ExportablePlanningTreeTableMo
 	
 	private ProjectResourceTreeTableModel(Project project, TreeTableNode rootNode, RowColumnProvider rowColumnProvider, String uniqueTreeTableModeIdentifier) throws Exception
 	{
-		super(project, rootNode, rowColumnProvider.getRowCodesToShow(), rowColumnProvider.getColumnCodesToShow(), uniqueTreeTableModeIdentifier);
+		super(project, rootNode, rowColumnProvider, uniqueTreeTableModeIdentifier);
 	}
 	
 	public static ProjectResourceTreeTableModel createProjectResourceTreeTableModel(Project project, RowColumnProvider rowColumnProvider) throws Exception
