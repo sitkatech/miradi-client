@@ -51,10 +51,10 @@ public class ObjectsOnlyRowColumnProvider extends PlanningViewRowColumnProvider
 
 	public CodeList getRowCodesToShow() throws Exception
 	{
-		return ObjectsOnlyRowColumnProvider.getVisibleRowsForSingleType(getCurrentViewData());
+		return getVisibleRowsForSingleType(getCurrentViewData());
 	}
 
-	public static CodeList getVisibleRowsForSingleType(ViewData viewData)
+	public CodeList getVisibleRowsForSingleType(ViewData viewData)
 	{
 		String singleType = viewData.getData(ViewData.TAG_PLANNING_SINGLE_LEVEL_CHOICE);
 		if(singleType.length() == 0)
