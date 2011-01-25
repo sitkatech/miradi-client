@@ -23,7 +23,6 @@ import org.miradi.dialogs.planning.ObjectsOnlyRowColumnProvider;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
-import org.miradi.views.planning.RowManager;
 
 public class ObjectsOnlyPlanningTreeTableModel extends ExportablePlanningTreeTableModel
 {
@@ -39,7 +38,7 @@ public class ObjectsOnlyPlanningTreeTableModel extends ExportablePlanningTreeTab
 	
 	public static CodeList getVisibleRowCodes(Project projectToUse) throws Exception
 	{
-		return RowManager.getVisibleRowsForSingleType(projectToUse.getCurrentViewData());
+		return ObjectsOnlyRowColumnProvider.getVisibleRowsForSingleType(projectToUse.getCurrentViewData());
 	}
 
 	@Override

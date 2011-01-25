@@ -36,7 +36,6 @@ import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.CodeList;
-import org.miradi.views.planning.RowManager;
 
 public class ObjectsOnlyRowColumnProvider extends PlanningViewRowColumnProvider
 {
@@ -52,7 +51,18 @@ public class ObjectsOnlyRowColumnProvider extends PlanningViewRowColumnProvider
 
 	public CodeList getRowCodesToShow() throws Exception
 	{
-		return RowManager.getVisibleRowsForSingleType(getCurrentViewData());
+		return ObjectsOnlyRowColumnProvider.getVisibleRowsForSingleType(getCurrentViewData());
+	}
+
+	public static CodeList getVisibleRowsForSingleType(ViewData viewData)
+	{
+		String singleType = viewData.getData(ViewData.TAG_PLANNING_SINGLE_LEVEL_CHOICE);
+		if(singleType.length() == 0)
+			singleType = Goal.OBJECT_NAME;
+		
+		CodeList codes = new CodeList();
+		codes.add(singleType);
+		return codes;
 	}
 
 	public static CodeList getVisibleColumnsForSingleType(ViewData viewData)
