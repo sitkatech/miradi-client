@@ -38,12 +38,12 @@ public class ConfigurableRowColumnProvider extends PlanningViewRowColumnProvider
 
 	public CodeList getColumnCodesToShow() throws Exception
 	{
-		return ConfigurableRowColumnProvider.getVisibleColumnsForCustomization(getCurrentViewData());
+		return getVisibleColumnsForCustomization(getCurrentViewData());
 	}
 
 	public CodeList getRowCodesToShow() throws Exception
 	{
-		return ConfigurableRowColumnProvider.getVisibleRowsForCustomization(getCurrentViewData());
+		return getVisibleRowsForCustomization(getCurrentViewData());
 	}
 
 	public static CodeList getVisibleRowsForCustomization(ViewData viewData)
