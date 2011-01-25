@@ -27,7 +27,7 @@ public class MonitoringPlanTreeTableModel extends ExportablePlanningTreeTableMod
 {
 	public MonitoringPlanTreeTableModel(Project project) throws Exception
 	{
-		super(project, RowManager.getMonitoringPlanRows(), new MonitoringRowColumnProvider().getColumnCodesToShow(), UNIQUE_TREE_TABLE_IDENTIFIER);
+		super(project, new MonitoringRowColumnProvider().getRowCodesToShow(), new MonitoringRowColumnProvider().getColumnCodesToShow(), UNIQUE_TREE_TABLE_IDENTIFIER);
 	}
 
 	@Override
