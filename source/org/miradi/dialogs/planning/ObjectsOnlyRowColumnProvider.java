@@ -65,7 +65,7 @@ public class ObjectsOnlyRowColumnProvider extends PlanningViewRowColumnProvider
 		return codes;
 	}
 
-	public static CodeList getVisibleColumnsForSingleType(ViewData viewData)
+	public CodeList getVisibleColumnsForSingleType(ViewData viewData)
 	{
 		String propertyName = viewData.getData(ViewData.TAG_PLANNING_SINGLE_LEVEL_CHOICE);
 		if(propertyName.length() == 0)
