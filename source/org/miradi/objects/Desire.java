@@ -282,6 +282,7 @@ abstract public class Desire extends BaseObject
 		boolean isAlready = isDefaultRelevant != isOverridden;
 		boolean shouldBeRelevant = true;
 		boolean needsOverride = !isDefaultRelevant && !isOverridden;		
+		boolean needsOverrideRemoved = isDefaultRelevant && isOverridden;
 		
 		if (isAlready)
 			return new CommandVector();
@@ -289,7 +290,6 @@ abstract public class Desire extends BaseObject
 		if (needsOverride)
 			strategyActivityRelevancyOverrideSet.add(new RelevancyOverride(strategyRef, shouldBeRelevant));
 		
-		boolean needsOverrideRemoved = isDefaultRelevant && isOverridden;
 		if (needsOverrideRemoved)
 			strategyActivityRelevancyOverrideSet.remove(strategyRef);
 		
