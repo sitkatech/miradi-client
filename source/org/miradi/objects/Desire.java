@@ -272,7 +272,19 @@ abstract public class Desire extends BaseObject
 		boolean needsOverride = !isDefaultRelevant && !isOverridden;		
 		boolean needsOverrideRemoved = isDefaultRelevant && isOverridden;
 		
-		return createCommandsToEnsureProperRelevancy(strategyRef, strategyActivityRelevancyOverrideSet, isRelevant,	shouldBeRelevant, needsOverride, needsOverrideRemoved);
+		if (isRelevant)
+			return new CommandVector();
+		
+		if (needsOverride)
+			strategyActivityRelevancyOverrideSet.add(new RelevancyOverride(strategyRef, shouldBeRelevant));
+		
+		if (needsOverrideRemoved)
+			strategyActivityRelevancyOverrideSet.remove(strategyRef);
+		
+		CommandVector commands = new CommandVector();
+		commands.add(new CommandSetObjectData(getRef(), TAG_RELEVANT_STRATEGY_ACTIVITY_SET, strategyActivityRelevancyOverrideSet.toString()));
+		
+		return commands;
 	}
 
 	private CommandVector createCommandsToEnsureProperRelevancy(ORef strategyRef,RelevancyOverrideSet strategyActivityRelevancyOverrideSet, boolean isAlready, boolean shouldBeRelevant, boolean needsOverride, boolean needsOverrideRemoved)
