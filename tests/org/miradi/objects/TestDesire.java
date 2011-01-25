@@ -68,6 +68,18 @@ public class TestDesire extends ObjectTestCase
 		assertEquals("incorrect command to ensure already relevant strategy?", expectedMakeRelevantCommand, makeRelevantCommand);
 	}
 	
+	public void testStrategyDefaultRelevantOverrideIrrelevantMakeIrrelevant() throws Exception
+	{
+		Strategy strategy = getProject().createStrategy();
+		Desire desire = createDesire(strategy);
+		getProject().executeCommandsAsTransaction(desire.createCommandsToEnsureStrategyIsIrrelevant(strategy.getRef()));
+		
+		assertFalse("default relevant stratgey should be irrelevant override?", desire.getRelevantStrategyRefs().contains(strategy.getRef()));
+		
+		CommandVector commands = desire.createCommandsToEnsureStrategyIsIrrelevant(strategy.getRef());
+		assertTrue("Should not make already irrelevant strategy irrelevant again", commands.isEmpty());
+	}
+	
 	public void testStrategyDefaultIrrelevantNoOverrideMakeRelevant() throws Exception
 	{
 		Strategy strategyWithObjective = getProject().createStrategy();
@@ -102,18 +114,6 @@ public class TestDesire extends ObjectTestCase
 		RelevancyOverrideSet overrides = new RelevancyOverrideSet();
 		CommandSetObjectData expectedMakeIrrelevantCommand = new CommandSetObjectData(desire.getRef(), Desire.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, overrides.toString());
 		assertEquals("incorrect command to ensure already relevant strategy?", expectedMakeIrrelevantCommand, makeIrrelevantCommand);
-	}
-	
-	public void testStrategyDefaultRelevantOverrideIrrelevantMakeIrrelevant() throws Exception
-	{
-		Strategy strategy = getProject().createStrategy();
-		Desire desire = createDesire(strategy);
-		getProject().executeCommandsAsTransaction(desire.createCommandsToEnsureStrategyIsIrrelevant(strategy.getRef()));
-		
-		assertFalse("default relevant stratgey should be irrelevant override?", desire.getRelevantStrategyRefs().contains(strategy.getRef()));
-		
-		CommandVector commands = desire.createCommandsToEnsureStrategyIsIrrelevant(strategy.getRef());
-		assertTrue("Should not make already irrelevant strategy irrelevant again", commands.isEmpty());
 	}
 	
 	public void testStrategyDefaultIrrelevantNoOverrideMakeIrrelevant() throws Exception
