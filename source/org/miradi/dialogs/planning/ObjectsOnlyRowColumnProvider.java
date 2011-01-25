@@ -98,7 +98,7 @@ public class ObjectsOnlyRowColumnProvider extends PlanningViewRowColumnProvider
 		return new CodeList();
 	}
 
-	public static CodeList getGoalColumns()
+	private static CodeList getGoalColumns()
 	{
 		String[] list = {
 			Goal.PSEUDO_TAG_FACTOR,
@@ -109,7 +109,7 @@ public class ObjectsOnlyRowColumnProvider extends PlanningViewRowColumnProvider
 		return new CodeList(list);
 	}
 
-	public static CodeList getObjectiveColumns()
+	private static CodeList getObjectiveColumns()
 	{
 		String[] list = {
 				Objective.PSEUDO_TAG_FACTOR,
@@ -134,7 +134,7 @@ public class ObjectsOnlyRowColumnProvider extends PlanningViewRowColumnProvider
 			return new CodeList(list);
 		}
 
-	public static CodeList getActivityColumns()
+	private static CodeList getActivityColumns()
 	{
 		String[] list = {
 				CustomPlanningColumnsQuestion.META_WHO_TOTAL,
@@ -186,7 +186,7 @@ public class ObjectsOnlyRowColumnProvider extends PlanningViewRowColumnProvider
 		return new CodeList(list);		
 	}
 
-	public static CodeList getTargetColumns()
+	private static CodeList getTargetColumns()
 	{
 		String[] list = {
 				Factor.PSEUDO_TAG_TAXONOMY_CODE_VALUE,
@@ -204,7 +204,7 @@ public class ObjectsOnlyRowColumnProvider extends PlanningViewRowColumnProvider
 		return new CodeList(list);		
 	}
 
-	public static CodeList getAssignmentColumns()
+	private static CodeList getAssignmentColumns()
 	{
 		String[] list = {
 				CustomPlanningColumnsQuestion.META_WHO_TOTAL,
