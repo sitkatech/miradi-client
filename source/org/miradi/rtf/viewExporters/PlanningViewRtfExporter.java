@@ -66,7 +66,7 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 			exportReport(writer, new StrategicRowColumnProvider(getProject()), ReportTemplateContentQuestion.getStrategicPlanLabel());
 		
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.PLANNING_VIEW_MONITORING_PLAN_CODE))
-			exportReport(writer, new MonitoringRowColumnProvider(), ReportTemplateContentQuestion.getMonitoringPlanLabel());
+			exportReport(writer, new MonitoringRowColumnProvider(getProject()), ReportTemplateContentQuestion.getMonitoringPlanLabel());
 		
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.PLANNING_VIEW_WORK_PLAN_CODE))
 			exportReport(writer, new WorkPlanRowColumnProviderWithBudgetColumns(getProject()), ReportTemplateContentQuestion.getWorkPlanLabel());

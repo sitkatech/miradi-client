@@ -42,7 +42,7 @@ public class MonitoringPlanningTreeTablePanel extends PlanningTreeTablePanel
 	{
 		PlanningTreeTableModel model = new MonitoringPlanTreeTableModel(mainWindowToUse.getProject());
 		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse, model);
-		MonitoringRowColumnProvider rowColumnProvider = new MonitoringRowColumnProvider();
+		MonitoringRowColumnProvider rowColumnProvider = new MonitoringRowColumnProvider(mainWindowToUse.getProject());
 		return new MonitoringPlanningTreeTablePanel(mainWindowToUse, treeTable, model, getButtonActions(), rowColumnProvider);
 	}
 	
