@@ -21,13 +21,12 @@ package org.miradi.dialogs.planning.upperPanel;
 
 import org.miradi.dialogs.planning.StrategicRowColumnProvider;
 import org.miradi.project.Project;
-import org.miradi.views.planning.RowManager;
 
 public class ActionPlanTreeTableModel extends ExportablePlanningTreeTableModel
 {
 	public ActionPlanTreeTableModel(Project project) throws Exception
 	{
-		super(project, new StrategicRowColumnProvider().getRowCodesToShow(), new StrategicRowColumnProvider().getColumnCodesToShow(), UNIQUE_TREE_TABLE_IDENTIFIER);
+		super(project, new StrategicRowColumnProvider(project).getRowCodesToShow(), new StrategicRowColumnProvider(project).getColumnCodesToShow(), UNIQUE_TREE_TABLE_IDENTIFIER);
 	}
 
 	@Override

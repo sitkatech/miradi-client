@@ -24,7 +24,6 @@ import org.miradi.dialogs.planning.treenodes.WorkPlanHiddenTreeRootNode;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
-import org.miradi.views.planning.RowManager;
 
 public class WorkPlanTreeTableModel extends ExportablePlanningTreeTableModel
 {

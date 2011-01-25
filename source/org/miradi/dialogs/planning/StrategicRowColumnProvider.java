@@ -27,11 +27,17 @@ import org.miradi.objects.Objective;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
+import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.CodeList;
 
-public class StrategicRowColumnProvider implements RowColumnProvider
+public class StrategicRowColumnProvider extends PlanningViewRowColumnProvider
 {	
+	public StrategicRowColumnProvider(Project projectToUse)
+	{
+		super(projectToUse);
+	}
+
 	public CodeList getColumnCodesToShow()
 	{
 		return new CodeList(new String[] {
