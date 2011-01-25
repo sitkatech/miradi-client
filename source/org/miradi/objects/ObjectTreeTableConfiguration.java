@@ -49,7 +49,7 @@ public class ObjectTreeTableConfiguration extends BaseObject implements Planning
 	/* (non-Javadoc)
 	 * @see org.miradi.objects.PlanningTreeConfiguration#getRowConfiguration()
 	 */
-	public CodeList getRowConfiguration()
+	public CodeList getRowCodesToShow()
 	{
 		return rowConfigurationList.getCodeList();
 	}
