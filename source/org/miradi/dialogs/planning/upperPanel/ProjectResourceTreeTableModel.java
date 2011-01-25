@@ -71,7 +71,7 @@ public class ProjectResourceTreeTableModel extends ExportablePlanningTreeTableMo
 	
 	private static CodeList getProjectResourceRows()
 	{
-		return new ProjectResourceRowColumnProvider().getRowListToShow();
+		return new ProjectResourceRowColumnProvider().getRowCodesToShow();
 	}
 
 	@Override

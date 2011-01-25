@@ -51,7 +51,7 @@ public class ExportablePlanningTreeTableModel extends PlanningTreeTableModel imp
 
 	public ExportablePlanningTreeTableModel(Project projectToUse, RowColumnProvider rowColumnProvider, String uniqueTreeTableModelIdentifierToUse) throws Exception
 	{
-		this(projectToUse, rowColumnProvider.getRowListToShow(), rowColumnProvider.getColumnListToShow(), uniqueTreeTableModelIdentifierToUse);
+		this(projectToUse, rowColumnProvider.getRowCodesToShow(), rowColumnProvider.getColumnCodesToShow(), uniqueTreeTableModelIdentifierToUse);
 	}
 
 	private void setRowObjectRefs() throws Exception

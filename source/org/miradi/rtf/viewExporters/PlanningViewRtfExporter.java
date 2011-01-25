@@ -115,7 +115,7 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 		PlanningViewMainTableModel mainModel = new PlanningViewMainTableModel(project, model, rowColumnProvider);
 		multiModelExporter.addExportable(new PlanningViewMainModelExporter(project, mainModel, model, model.getUniqueTreeTableModelIdentifier()));
 		
-		CodeList columnsToShow = rowColumnProvider.getColumnListToShow();
+		CodeList columnsToShow = rowColumnProvider.getColumnCodesToShow();
 		if (columnsToShow.contains(Measurement.META_COLUMN_TAG))
 		{
 			PlanningViewMeasurementTableModel measurementModel = new PlanningViewMeasurementTableModel(project, model);

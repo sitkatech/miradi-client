@@ -28,7 +28,7 @@ import org.miradi.utils.CodeList;
 
 public class ProgressReportRowColumnProvider implements RowColumnProvider
 {
-	public CodeList getRowListToShow()
+	public CodeList getRowCodesToShow()
 	{
 		return new CodeList(new String[] {
 				IntermediateResult.OBJECT_NAME,
@@ -38,7 +38,7 @@ public class ProgressReportRowColumnProvider implements RowColumnProvider
 		});
 	}
 
-	public CodeList getColumnListToShow()
+	public CodeList getColumnCodesToShow()
 	{
 		return new CodeList(new String[]{
 				BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,

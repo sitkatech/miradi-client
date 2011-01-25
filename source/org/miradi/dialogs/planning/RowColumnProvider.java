@@ -23,6 +23,6 @@ import org.miradi.utils.CodeList;
 
 public interface RowColumnProvider
 {
-	public CodeList getRowListToShow() throws Exception;
-	public CodeList getColumnListToShow() throws Exception;
+	public CodeList getRowCodesToShow() throws Exception;
+	public CodeList getColumnCodesToShow() throws Exception;
 }

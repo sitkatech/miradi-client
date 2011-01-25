@@ -27,7 +27,7 @@ import org.miradi.utils.CodeList;
 public class ProjectResourceRowColumnProvider extends AbstractBudgetCategoryRowColumnProvider
 {
 	@Override
-	public CodeList getColumnListToShow()
+	public CodeList getColumnCodesToShow()
 	{
 		return new CodeList(new String[] {
 				ProjectResource.TAG_RESOURCE_TYPE,

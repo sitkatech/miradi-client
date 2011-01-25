@@ -27,7 +27,7 @@ import org.miradi.utils.CodeList;
 public class AccountingCodeRowColumnProvider extends AccountingCodeCoreRowColumnProvider
 {
 	@Override
-	public CodeList getColumnListToShow()
+	public CodeList getColumnCodesToShow()
 	{
 		CodeList columnCodes = new CodeList();
 		columnCodes.add(AbstractBudgetCategoryObject.TAG_CODE);

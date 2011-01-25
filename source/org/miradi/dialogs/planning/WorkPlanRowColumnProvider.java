@@ -40,7 +40,7 @@ public class WorkPlanRowColumnProvider implements RowColumnProvider
 		project = projectToUse;
 	}
 	
-	public CodeList getColumnListToShow()
+	public CodeList getColumnCodesToShow()
 	{
 		CodeList columnCodesToShow = new CodeList(new String[] {
 				BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
@@ -70,7 +70,7 @@ public class WorkPlanRowColumnProvider implements RowColumnProvider
 		}
 	}
 
-	public CodeList getRowListToShow()
+	public CodeList getRowCodesToShow()
 	{
 		return new CodeList(new String[] {
 				ConceptualModelDiagram.OBJECT_NAME,

@@ -27,7 +27,7 @@ import org.miradi.utils.CodeList;
 public class FundingSourceRowColumnProvider extends FundingSourceCoreRowColumnProvider
 {
 	@Override
-	public CodeList getColumnListToShow()
+	public CodeList getColumnCodesToShow()
 	{
 		CodeList columnCodes = new CodeList();
 		columnCodes.add(FundingSource.TAG_CODE);

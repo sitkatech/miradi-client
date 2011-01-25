@@ -31,12 +31,12 @@ public class ConfigurableRowColumnProvider extends PlanningViewRowColumnProvider
 		super(projectToUse);
 	}
 
-	public CodeList getColumnListToShow() throws Exception
+	public CodeList getColumnCodesToShow() throws Exception
 	{
 		return ColumnManager.getVisibleColumnsForCustomization(getCurrentViewData());
 	}
 
-	public CodeList getRowListToShow() throws Exception
+	public CodeList getRowCodesToShow() throws Exception
 	{
 		return RowManager.getVisibleRowsForCustomization(getCurrentViewData());
 	}

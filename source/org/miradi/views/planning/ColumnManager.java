@@ -165,22 +165,22 @@ public class ColumnManager
 
 	public static CodeList getProgressReportColumns()
 	{
-		return new ProgressReportRowColumnProvider().getColumnListToShow();
+		return new ProgressReportRowColumnProvider().getColumnCodesToShow();
 	}
 	
 	public static CodeList getStrategicPlanColumns()
 	{
-		return new StrategicRowColumnProvider().getColumnListToShow();
+		return new StrategicRowColumnProvider().getColumnCodesToShow();
 	}
 
 	public static CodeList getMonitoringPlanColumns()
 	{
-		return new MonitoringRowColumnProvider().getColumnListToShow();
+		return new MonitoringRowColumnProvider().getColumnCodesToShow();
 	}
 
 	public static CodeList getWorkPlanColumns(Project project)
 	{
-		return new WorkPlanRowColumnProvider(project).getColumnListToShow();
+		return new WorkPlanRowColumnProvider(project).getColumnCodesToShow();
 	}
 
 	public static CodeList getVisibleColumnsForSingleType(ViewData viewData)

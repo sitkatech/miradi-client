@@ -23,12 +23,12 @@ import org.miradi.utils.CodeList;
 
 public class EmptyRowColumnProvider implements RowColumnProvider
 {
-	public CodeList getColumnListToShow() throws Exception
+	public CodeList getColumnCodesToShow() throws Exception
 	{
 		return new CodeList();
 	}
 
-	public CodeList getRowListToShow() throws Exception
+	public CodeList getRowCodesToShow() throws Exception
 	{
 		return new CodeList();
 	}

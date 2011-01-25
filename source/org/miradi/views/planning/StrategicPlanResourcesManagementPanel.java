@@ -45,14 +45,14 @@ public class StrategicPlanResourcesManagementPanel extends ProjectResourceManage
 
 	protected PlanningTreeTablePanel createPlanningTreeTablePanel(String uniqueTreeTableModelIdentifier, RowColumnProvider rowColumnProvider) throws Exception
 	{
-		PlanningTreeTableModel model = ProjectResourceTreeTableModel.createProjectResourceTreeTableModel(getProject(), rowColumnProvider.getColumnListToShow());
+		PlanningTreeTableModel model = ProjectResourceTreeTableModel.createProjectResourceTreeTableModel(getProject(), rowColumnProvider.getColumnCodesToShow());
 		return ExportablePlanningTreeTablePanel.createPlanningTreeTablePanelWithoutButtonsForExporting(getMainWindow(), rowColumnProvider, model);
 	}
 	
 	public static PlanningTreeManagementPanel createProjectResourcesPanelWithoutBudgetColumns(MainWindow mainWindowToUse) throws Exception
 	{
 		RowColumnProvider rowColumnProvider = new ProjectResourceCoreRowColumnProvider();
-		PlanningTreeTableModel treeTableModel = ProjectResourceTreeTableModel.createProjectResourceTreeTableModel(mainWindowToUse.getProject(), rowColumnProvider.getColumnListToShow());
+		PlanningTreeTableModel treeTableModel = ProjectResourceTreeTableModel.createProjectResourceTreeTableModel(mainWindowToUse.getProject(), rowColumnProvider.getColumnCodesToShow());
 		PlanningTreeTablePanel treeTablePanel = ProjectResourceTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, treeTableModel, rowColumnProvider);
 		PlanningTreeMultiPropertiesPanel propertiesPanel = new ActionPlanMultiPropertiesPanel(mainWindowToUse, ORef.INVALID);
 		

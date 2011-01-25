@@ -29,7 +29,7 @@ public class WorkPlanCategoryTreeTableModel extends ExportablePlanningTreeTableM
 {
 	private WorkPlanCategoryTreeTableModel(Project project, TreeTableNode rootNode, WorkPlanCategoryTreeRowColumnProvider rowColumnProvider, String uniqueTreeTableModeIdentifier) throws Exception
 	{
-		super(project, rootNode, rowColumnProvider.getRowListToShow(), rowColumnProvider.getColumnListToShow(), uniqueTreeTableModeIdentifier);
+		super(project, rootNode, rowColumnProvider.getRowCodesToShow(), rowColumnProvider.getColumnCodesToShow(), uniqueTreeTableModeIdentifier);
 	}
 	
 	public static WorkPlanCategoryTreeTableModel createCategoryTreeTableModel(Project project, WorkPlanCategoryTreeRowColumnProvider rowColumnProvider, String uniqueTreeTableModeIdentifier) throws Exception

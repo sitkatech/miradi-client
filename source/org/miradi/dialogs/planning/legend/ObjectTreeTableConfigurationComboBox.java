@@ -39,12 +39,12 @@ public class ObjectTreeTableConfigurationComboBox extends PlanningViewComboBox
 		super(projectToUse, new ObjectTreeTableConfigurationQuestion(projectToUse).getChoices());
 	}
 	
-	public CodeList getColumnListToShow() throws Exception
+	public CodeList getColumnCodesToShow() throws Exception
 	{
 		return getList(ObjectTreeTableConfiguration.TAG_COL_CONFIGURATION);
 	}
 
-	public CodeList getRowListToShow() throws Exception
+	public CodeList getRowCodesToShow() throws Exception
 	{
 		return getList(ObjectTreeTableConfiguration.TAG_ROW_CONFIGURATION);
 	}

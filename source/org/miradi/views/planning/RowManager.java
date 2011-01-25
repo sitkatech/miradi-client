@@ -34,17 +34,17 @@ public class RowManager
 {
 	public static CodeList getStrategicPlanRows()
 	{
-		return new StrategicRowColumnProvider().getRowListToShow();
+		return new StrategicRowColumnProvider().getRowCodesToShow();
 	}
 
 	public static CodeList getMonitoringPlanRows()
 	{
-		return new MonitoringRowColumnProvider().getRowListToShow();
+		return new MonitoringRowColumnProvider().getRowCodesToShow();
 	}
 
 	public static CodeList getWorkPlanRows(Project project)
 	{
-		return new WorkPlanRowColumnProvider(project).getRowListToShow();
+		return new WorkPlanRowColumnProvider(project).getRowCodesToShow();
 	}
 	
 	public static CodeList getVisibleRowsForSingleType(ViewData viewData)

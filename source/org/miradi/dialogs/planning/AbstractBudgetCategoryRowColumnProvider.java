@@ -26,7 +26,7 @@ import org.miradi.utils.CodeList;
 
 abstract public class AbstractBudgetCategoryRowColumnProvider implements WorkPlanCategoryTreeRowColumnProvider
 {
-	public CodeList getColumnListToShow()
+	public CodeList getColumnCodesToShow()
 	{
 		return new CodeList(new String[] {
 				AbstractBudgetCategoryObject.TAG_CODE,
@@ -34,7 +34,7 @@ abstract public class AbstractBudgetCategoryRowColumnProvider implements WorkPla
 		});
 	}
 	
-	public CodeList getRowListToShow()
+	public CodeList getRowCodesToShow()
 	{
 		return new CodeList(new String[] {
 				getObjectTypeName(),

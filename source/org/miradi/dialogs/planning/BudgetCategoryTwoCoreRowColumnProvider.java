@@ -27,9 +27,9 @@ import org.miradi.utils.CodeList;
 public class BudgetCategoryTwoCoreRowColumnProvider extends AbstractBudgetCategoryRowColumnProvider
 {
 	@Override
-	public CodeList getColumnListToShow()
+	public CodeList getColumnCodesToShow()
 	{
-		CodeList columnCodes = super.getColumnListToShow();
+		CodeList columnCodes = super.getColumnCodesToShow();
 		columnCodes.add(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_TWO_WORK_UNITS_COLUMN_CODE);
 		columnCodes.add(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_TWO_EXPENSE_COLUMN_CODE);
 		columnCodes.add(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_TWO_BUDGET_DETAILS_COLUMN_CODE);

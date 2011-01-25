@@ -32,7 +32,7 @@ import org.miradi.utils.CodeList;
 
 public class MonitoringRowColumnProvider implements RowColumnProvider
 {
-	public CodeList getColumnListToShow()
+	public CodeList getColumnCodesToShow()
 	{
 		return new CodeList(new String[] {
 				Indicator.PSEUDO_TAG_METHODS,
@@ -44,7 +44,7 @@ public class MonitoringRowColumnProvider implements RowColumnProvider
 		});
 	}
 
-	public CodeList getRowListToShow()
+	public CodeList getRowCodesToShow()
 	{
 		return new CodeList(new String[] {
 				ResultsChainDiagram.OBJECT_NAME,

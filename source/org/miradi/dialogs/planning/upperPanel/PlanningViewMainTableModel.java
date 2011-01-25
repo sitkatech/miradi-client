@@ -752,7 +752,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	
 	private CodeList getVisibleColumnCodes(Project projectToUse) throws Exception
 	{
-		return getRowColumnProvider().getColumnListToShow();
+		return getRowColumnProvider().getColumnCodesToShow();
 	}
 	
 	public RowColumnProvider getRowColumnProvider()
