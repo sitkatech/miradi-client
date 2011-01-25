@@ -250,25 +250,24 @@ abstract public class Desire extends BaseObject
 	public CommandVector createCommandsToEnsureStrategyIsIrrelevant(ORef strategyRef) throws Exception
 	{
 		ORefList defaultRelevantStrategyRefs = getDefaultRelevantStrategyRefs();
-		RelevancyOverrideSet strategyActivityRelevancyOverrideSet = new RelevancyOverrideSet(getStrategyActivityRelevancyOverrideSet());
 		boolean isDefaultIrrelevant = !defaultRelevantStrategyRefs.contains(strategyRef);
 		boolean shouldBeRelevant = false;
 		
-		return createCommandsToEnsureProperRelevancy(strategyRef, strategyActivityRelevancyOverrideSet, isDefaultIrrelevant, shouldBeRelevant);
+		return createCommandsToEnsureProperRelevancy(strategyRef, isDefaultIrrelevant, shouldBeRelevant);
 	}
 	
 	public CommandVector createCommandsToEnsureStrategyIsRelevant(ORef strategyRef) throws Exception
 	{
 		ORefList defaultRelevantStrategyRefs = getDefaultRelevantStrategyRefs();
-		RelevancyOverrideSet strategyActivityRelevancyOverrideSet = new RelevancyOverrideSet(getStrategyActivityRelevancyOverrideSet());
 		boolean isDefaultRelevant = defaultRelevantStrategyRefs.contains(strategyRef);
 		boolean shouldBeRelevant = true;
 		
-		return createCommandsToEnsureProperRelevancy(strategyRef, strategyActivityRelevancyOverrideSet, isDefaultRelevant, shouldBeRelevant);
+		return createCommandsToEnsureProperRelevancy(strategyRef, isDefaultRelevant, shouldBeRelevant);
 	}
 
-	private CommandVector createCommandsToEnsureProperRelevancy(ORef strategyRef, RelevancyOverrideSet strategyActivityRelevancyOverrideSet, boolean isDefaultRelevant, boolean shouldBeRelevant)
+	private CommandVector createCommandsToEnsureProperRelevancy(ORef strategyRef, boolean isDefaultRelevant, boolean shouldBeRelevant)
 	{
+		RelevancyOverrideSet strategyActivityRelevancyOverrideSet = new RelevancyOverrideSet(getStrategyActivityRelevancyOverrideSet());
 		RelevancyOverride override = strategyActivityRelevancyOverrideSet.find(strategyRef);
 		boolean isAlreadyCorrectlyOverriden = override != null && override.isOverride() == shouldBeRelevant;
 		if (isAlreadyCorrectlyOverriden)
