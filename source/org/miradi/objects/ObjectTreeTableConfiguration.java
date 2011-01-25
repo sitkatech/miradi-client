@@ -32,7 +32,7 @@ import org.miradi.questions.DiagramObjectDataInclusionQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 
-public class ObjectTreeTableConfiguration extends BaseObject
+public class ObjectTreeTableConfiguration extends BaseObject implements PlanningTreeConfiguration
 {
 	public ObjectTreeTableConfiguration(ObjectManager objectManager, BaseId id)
 	{
@@ -46,11 +46,17 @@ public class ObjectTreeTableConfiguration extends BaseObject
 		super(objectManager, new BaseId(idAsInt), jsonObject);
 	}
 	
+	/* (non-Javadoc)
+	 * @see org.miradi.objects.PlanningTreeConfiguration#getRowConfiguration()
+	 */
 	public CodeList getRowConfiguration()
 	{
 		return rowConfigurationList.getCodeList();
 	}
 	
+	/* (non-Javadoc)
+	 * @see org.miradi.objects.PlanningTreeConfiguration#getColumnConfiguration()
+	 */
 	public CodeList getColumnConfiguration()
 	{
 		return colConfigurationList.getCodeList();
@@ -79,11 +85,17 @@ public class ObjectTreeTableConfiguration extends BaseObject
 		return ObjectType.OBJECT_TREE_TABLE_CONFIGURATION;
 	}	
 	
+	/* (non-Javadoc)
+	 * @see org.miradi.objects.PlanningTreeConfiguration#shouldIncludeResultsChain()
+	 */
 	public boolean shouldIncludeResultsChain()
 	{
 		return DiagramObjectDataInclusionQuestion.shouldIncludeResultsChain(getDiagramInclusionCode());
 	}
 
+	/* (non-Javadoc)
+	 * @see org.miradi.objects.PlanningTreeConfiguration#shouldIncludeConceptualModelPage()
+	 */
 	public boolean shouldIncludeConceptualModelPage()
 	{
 		return DiagramObjectDataInclusionQuestion.shouldIncludeConceptualModelPage(getDiagramInclusionCode());
