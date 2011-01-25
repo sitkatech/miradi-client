@@ -254,11 +254,11 @@ abstract public class Desire extends BaseObject
 		RelevancyOverrideSet strategyActivityRelevancyOverrideSet = new RelevancyOverrideSet(getStrategyActivityRelevancyOverrideSet());
 		boolean isDefaultRelevant = defaultRelevantStrategyRefs.contains(strategyRef);
 		boolean isOverride = strategyActivityRelevancyOverrideSet.contains(strategyRef);
-		boolean isIrrelevantByDefault = !isDefaultRelevant && !isOverride;
+		boolean isAlreadyProperlyRelevantByDefaultDefault = !isDefaultRelevant && !isOverride;
 		boolean isIrrelevantByOverride = isDefaultRelevant && isOverride;
 		boolean overrideFlagToUse = false;
 	
-		if (isIrrelevantByDefault)
+		if (isAlreadyProperlyRelevantByDefaultDefault)
 			return new CommandVector();
 		
 		if (isIrrelevantByOverride)
@@ -282,11 +282,11 @@ abstract public class Desire extends BaseObject
 		RelevancyOverrideSet strategyActivityRelevancyOverrideSet = new RelevancyOverrideSet(getStrategyActivityRelevancyOverrideSet());
 		boolean isDefaultRelevant = defaultRelevantStrategyRefs.contains(strategyRef);
 		boolean isOverride = strategyActivityRelevancyOverrideSet.contains(strategyRef);
-		boolean isRelevantByDefault = isDefaultRelevant && !isOverride;
+		boolean isAlreadyProperlyRelevantByDefaultDefault = isDefaultRelevant && !isOverride;
 		boolean isRelevantByOverride = !isDefaultRelevant && isOverride;
 		boolean overrideFlagToUse = true;
 		
-		if (isRelevantByDefault)
+		if (isAlreadyProperlyRelevantByDefaultDefault)
 			return new CommandVector();
 
 		if (isRelevantByOverride)
