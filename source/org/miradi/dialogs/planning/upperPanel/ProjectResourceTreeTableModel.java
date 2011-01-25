@@ -30,9 +30,9 @@ import org.miradi.utils.CodeList;
 
 public class ProjectResourceTreeTableModel extends ExportablePlanningTreeTableModel
 {
-	private ProjectResourceTreeTableModel(Project project, TreeTableNode rootNode, CodeList visibleColumnCodes) throws Exception
+	private ProjectResourceTreeTableModel(Project project, TreeTableNode rootNode, RowColumnProvider rowColumnProvider) throws Exception
 	{
-		this(project, rootNode, visibleColumnCodes, UNIQUE_TREE_TABLE_IDENTIFIER);
+		this(project, rootNode, rowColumnProvider.getColumnCodesToShow(), UNIQUE_TREE_TABLE_IDENTIFIER);
 	}
 	
 	private ProjectResourceTreeTableModel(Project project, TreeTableNode rootNode, CodeList visibleColumns, String uniqueTreeTableModeIdentifier) throws Exception
@@ -43,7 +43,7 @@ public class ProjectResourceTreeTableModel extends ExportablePlanningTreeTableMo
 	public static ProjectResourceTreeTableModel createProjectResourceTreeTableModel(Project project, RowColumnProvider rowColumnProvider) throws Exception
 	{
 		TreeTableNode projectRootNode = createProjectResourceRootNode(project);
-		return new ProjectResourceTreeTableModel(project, projectRootNode, rowColumnProvider.getColumnCodesToShow());
+		return new ProjectResourceTreeTableModel(project, projectRootNode, rowColumnProvider);
 	}
 	
 	public static ProjectResourceTreeTableModel createProjectResourceTreeTableModel(Project project, CodeList visibleColumns, String uniqueTreeTableModeIdentifier) throws Exception
