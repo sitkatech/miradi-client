@@ -27,6 +27,7 @@ import java.util.Vector;
 import org.miradi.diagram.ChainWalker;
 import org.miradi.dialogs.planning.StrategicRowColumnProvider;
 import org.miradi.dialogs.planning.treenodes.NewAbstractPlanningTreeNode;
+import org.miradi.dialogs.planning.treenodes.NewPlanningTaskNode;
 import org.miradi.dialogs.planning.treenodes.NewPlanningTreeBaseObjectNode;
 import org.miradi.dialogs.planning.treenodes.NewPlanningTreeErrorNode;
 import org.miradi.dialogs.treetables.TreeTableNode;
@@ -54,6 +55,7 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
+import org.miradi.objects.PlanningTreeConfiguration;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResourceAssignment;
@@ -74,9 +76,9 @@ public class TreeRebuilder
 		rowColumnProvider = new StrategicRowColumnProvider(getProject());
 	}
 	
-	public void rebuildTree(NewAbstractPlanningTreeNode rootNode)
+	public void rebuildTree(NewAbstractPlanningTreeNode rootNode) throws Exception
 	{
-		CodeList rows = rowColumnProvider.getFlippedRowListToShow();
+		CodeList rows = rowColumnProvider.getRowCodesToShow();
 		rebuildTree(rootNode, null, rows);
 		pruneUncles(rootNode);
 		pruneUnwantedLayers(rootNode, rows);
@@ -356,7 +358,7 @@ public class TreeRebuilder
 		return wouldCreateRecursiveTree(parentNode, childRefToAdd);
 	}
 
-	private NewAbstractPlanningTreeNode createChildNode(TreeTableNode parentNode, ORef refToAdd) throws Exception
+	private NewAbstractPlanningTreeNode createChildNode(NewAbstractPlanningTreeNode parentNode, ORef refToAdd) throws Exception
 	{
 		int[] supportedTypes = new int[] {
 			ConceptualModelDiagram.getObjectType(),
@@ -382,6 +384,9 @@ public class TreeRebuilder
 		
 		try
 		{
+			if(Task.is(refToAdd))
+				return new NewPlanningTaskNode(getProject(), parentNode.getContextRef(), parentNode, refToAdd);
+			
 			int type = refToAdd.getObjectType();
 			for(int i = 0; i < supportedTypes.length; ++i)
 			{
@@ -426,9 +431,8 @@ public class TreeRebuilder
 
 	private void pruneUnwantedLayers(NewAbstractPlanningTreeNode node, CodeList objectTypesToShow)
 	{
-		// TODO: Need to add allocation logic to this new tree builder
-//		if(isAnyChildAllocated(children))
-//			isAllocated = true;
+		if(node.isAnyChildAllocated())
+			node.setAllocated();
 		
 		Vector<NewAbstractPlanningTreeNode> newChildren = new Vector<NewAbstractPlanningTreeNode>();
 		for(int i = 0; i < node.getChildCount(); ++i)
@@ -466,8 +470,8 @@ public class TreeRebuilder
 		
 		destination = existingNode.getRawChildren();
 		addChildrenOfNodeToList(destination, newChild);
-		// TODO: Need to add allocation logic to this new tree builder
-//		existingNode.addProportionShares(newChild);
+
+		existingNode.addProportionShares(newChild);
 
 		if(shouldSortChildren(existingNode))
 			Collections.sort(destination, createNodeSorter());
@@ -590,5 +594,5 @@ public class TreeRebuilder
 	}
 
 	private Project project;
-	private StrategicRowColumnProvider rowColumnProvider;
+	private PlanningTreeConfiguration rowColumnProvider;
 }

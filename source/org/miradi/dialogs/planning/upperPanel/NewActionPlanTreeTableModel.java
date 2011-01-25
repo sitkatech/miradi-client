@@ -23,6 +23,7 @@ package org.miradi.dialogs.planning.upperPanel;
 import org.miradi.dialogs.planning.StrategicRowColumnProvider;
 import org.miradi.dialogs.planning.treenodes.NewPlanningRootNode;
 import org.miradi.dialogs.planning.upperPanel.rebuilder.TreeRebuilder;
+import org.miradi.main.EAM;
 import org.miradi.project.Project;
 
 public class NewActionPlanTreeTableModel extends ExportablePlanningTreeTableModel
@@ -41,7 +42,14 @@ public class NewActionPlanTreeTableModel extends ExportablePlanningTreeTableMode
 	@Override
 	protected void rebuildNode()
 	{
-		new TreeRebuilder(getProject()).rebuildTree((NewPlanningRootNode)getRootNode());
+		try
+		{
+			new TreeRebuilder(getProject()).rebuildTree((NewPlanningRootNode)getRootNode());
+		}
+		catch(Exception e)
+		{
+			EAM.panic(e);
+		}
 	}
 	
 	private static final String UNIQUE_TREE_TABLE_IDENTIFIER = "ActionPlanTreeTableModel";
