@@ -45,6 +45,14 @@ public class TestDesire extends ObjectTestCase
 		assertEquals("incorrect command to ensure already relevant strategy?", expectedMakeIrrelevantCommand, makeIrrelevantCommand);
 	}
 	
+	public void testStrategyDefaultRelevantNoOverrideMakeRelevant() throws Exception
+	{
+		Strategy strategy = getProject().createStrategy();
+		Desire desire = createDesire(strategy);
+		CommandVector commands = desire.createCommandsToEnsureStrategyIsRelevant(strategy.getRef());
+		assertTrue("Should not make already relevant strategy relevant again", commands.isEmpty());
+	}
+	
 	public void testStrategyDefaultRelevantOverrideIrrelevantMakeRelevant() throws Exception
 	{
 		Strategy strategy = getProject().createStrategy();
@@ -94,14 +102,6 @@ public class TestDesire extends ObjectTestCase
 		RelevancyOverrideSet overrides = new RelevancyOverrideSet();
 		CommandSetObjectData expectedMakeIrrelevantCommand = new CommandSetObjectData(desire.getRef(), Desire.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, overrides.toString());
 		assertEquals("incorrect command to ensure already relevant strategy?", expectedMakeIrrelevantCommand, makeIrrelevantCommand);
-	}
-	
-	public void testStrategyDefaultRelevantNoOverrideMakeRelevant() throws Exception
-	{
-		Strategy strategy = getProject().createStrategy();
-		Desire desire = createDesire(strategy);
-		CommandVector commands = desire.createCommandsToEnsureStrategyIsRelevant(strategy.getRef());
-		assertTrue("Should not make already relevant strategy relevant again", commands.isEmpty());
 	}
 	
 	public void testStrategyDefaultRelevantOverrideIrrelevantMakeIrrelevant() throws Exception
