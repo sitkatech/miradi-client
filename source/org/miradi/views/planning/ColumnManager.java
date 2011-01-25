@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.planning;
 
 import org.miradi.dialogs.planning.MonitoringRowColumnProvider;
-import org.miradi.dialogs.planning.ProgressReportRowColumnProvider;
 import org.miradi.dialogs.planning.StrategicRowColumnProvider;
 import org.miradi.dialogs.planning.WorkPlanRowColumnProvider;
 import org.miradi.main.EAM;
@@ -47,7 +46,7 @@ import org.miradi.utils.StringList;
 
 public class ColumnManager
 {
-	public static CodeList getGoalColumns()
+	private static CodeList getGoalColumns()
 	{
 		String[] list = {
 			Goal.PSEUDO_TAG_FACTOR,
@@ -58,7 +57,7 @@ public class ColumnManager
 		return new CodeList(list);
 	}
 
-	public static CodeList getObjectiveColumns()
+	private static CodeList getObjectiveColumns()
 	{
 		String[] list = {
 				Objective.PSEUDO_TAG_FACTOR,
@@ -69,7 +68,7 @@ public class ColumnManager
 			return new CodeList(list);
 	}
 
-	public static CodeList getStrategyColumns()
+	private static CodeList getStrategyColumns()
 	{
 		String[] list = {
 				Indicator.TAG_PRIORITY,
@@ -83,7 +82,7 @@ public class ColumnManager
 		return new CodeList(list);
 	}
 
-	public static CodeList getActivityColumns()
+	private static CodeList getActivityColumns()
 	{
 		String[] list = {
 				CustomPlanningColumnsQuestion.META_WHO_TOTAL,
@@ -93,7 +92,7 @@ public class ColumnManager
 		return new CodeList(list);
 	}
 
-	public static CodeList getIndicatorColumns()
+	private static CodeList getIndicatorColumns()
 	{
 		String[] list = {
 				Indicator.TAG_PRIORITY,
@@ -106,7 +105,7 @@ public class ColumnManager
 		return new CodeList(list);
 	}
 
-	public static CodeList getMethodColumns()
+	private static CodeList getMethodColumns()
 	{
 		String[] list = {
 				CustomPlanningColumnsQuestion.META_WHO_TOTAL,
@@ -116,7 +115,7 @@ public class ColumnManager
 		return new CodeList(list);
 	}
 
-	public static CodeList getTaskColumns()
+	private static CodeList getTaskColumns()
 	{		
 		String[] list = {
 				CustomPlanningColumnsQuestion.META_WHO_TOTAL,
@@ -126,7 +125,7 @@ public class ColumnManager
 		return new CodeList(list);
 	}
 	
-	public static CodeList getMeasurementColumns()
+	private static CodeList getMeasurementColumns()
 	{
 		String[] list = {
 				Measurement.TAG_DATE,
@@ -135,7 +134,7 @@ public class ColumnManager
 		return new CodeList(list);		
 	}
 	
-	public static CodeList getTargetColumns()
+	private static CodeList getTargetColumns()
 	{
 		String[] list = {
 				Factor.PSEUDO_TAG_TAXONOMY_CODE_VALUE,
@@ -144,7 +143,7 @@ public class ColumnManager
 		return new CodeList(list);		
 	}
 
-	public static CodeList getDirectThreatsColumns()
+	private static CodeList getDirectThreatsColumns()
 	{
 		String[] list = {
 				Cause.PSEUDO_TAG_TAXONOMY_CODE_VALUE,
@@ -163,11 +162,6 @@ public class ColumnManager
 		return new CodeList(list);
 	}
 
-	public static CodeList getProgressReportColumns()
-	{
-		return new ProgressReportRowColumnProvider().getColumnCodesToShow();
-	}
-	
 	public static CodeList getStrategicPlanColumns()
 	{
 		return new StrategicRowColumnProvider().getColumnCodesToShow();
