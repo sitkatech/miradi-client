@@ -47,7 +47,7 @@ public class ObjectsOnlyRowColumnProvider extends PlanningViewRowColumnProvider
 	
 	public CodeList getColumnCodesToShow() throws Exception
 	{
-		return new CodeList(ObjectsOnlyRowColumnProvider.getVisibleColumnsForSingleType(getCurrentViewData()));
+		return new CodeList(getVisibleColumnsForSingleType(getCurrentViewData()));
 	}
 
 	public CodeList getRowCodesToShow() throws Exception
