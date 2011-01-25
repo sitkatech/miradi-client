@@ -21,11 +21,17 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning;
 
 import org.miradi.objects.ProjectResource;
+import org.miradi.project.Project;
 import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 import org.miradi.utils.CodeList;
 
 public class ProjectResourceRowColumnProvider extends AbstractBudgetCategoryRowColumnProvider
 {
+	public ProjectResourceRowColumnProvider(Project projectToUse)
+	{
+		super(projectToUse);
+	}
+
 	@Override
 	public CodeList getColumnCodesToShow()
 	{

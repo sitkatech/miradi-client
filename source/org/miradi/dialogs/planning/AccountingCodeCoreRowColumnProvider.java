@@ -21,9 +21,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning;
 
 import org.miradi.objects.AccountingCode;
+import org.miradi.project.Project;
 
 public class AccountingCodeCoreRowColumnProvider extends AbstractBudgetCategoryRowColumnProvider
 {
+	public AccountingCodeCoreRowColumnProvider(Project projectToUse)
+	{
+		super(projectToUse);
+	}
+
 	@Override
 	protected String getObjectTypeName()
 	{

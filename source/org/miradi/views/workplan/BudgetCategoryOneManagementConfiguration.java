@@ -61,7 +61,7 @@ public class BudgetCategoryOneManagementConfiguration extends AbstractManagement
 	@Override
 	public WorkPlanCategoryTreeRowColumnProvider getRowColumnProvider()	throws Exception
 	{
-		return new BudgetCategoryOneCoreRowColumnProvider();
+		return new BudgetCategoryOneCoreRowColumnProvider(getProject());
 	}
 
 	@Override

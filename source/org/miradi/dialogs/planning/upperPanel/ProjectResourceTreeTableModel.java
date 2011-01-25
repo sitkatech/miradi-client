@@ -37,7 +37,7 @@ public class ProjectResourceTreeTableModel extends ExportablePlanningTreeTableMo
 	
 	private ProjectResourceTreeTableModel(Project project, TreeTableNode rootNode, CodeList visibleColumns, String uniqueTreeTableModeIdentifier) throws Exception
 	{
-		super(project, rootNode, getProjectResourceRows(), visibleColumns, uniqueTreeTableModeIdentifier);
+		super(project, rootNode, getProjectResourceRows(project), visibleColumns, uniqueTreeTableModeIdentifier);
 	}
 	
 	public static ProjectResourceTreeTableModel createProjectResourceTreeTableModel(Project project, CodeList visibleColumns) throws Exception
@@ -61,17 +61,17 @@ public class ProjectResourceTreeTableModel extends ExportablePlanningTreeTableMo
 	
 	private static TreeTableNode createProjectResourceRootNode(Project project) throws Exception
 	{
-		return new BaseObjectTreeRootNode(project, ProjectResource.getObjectType(), ProjectResource.OBJECT_NAME, getProjectResourceRows());
+		return new BaseObjectTreeRootNode(project, ProjectResource.getObjectType(), ProjectResource.OBJECT_NAME, getProjectResourceRows(project));
 	}
 	
 	private static TreeTableNode createHiddenResourceRootNode(Project project) throws Exception
 	{
-		return new HiddenRootNodeWithBaseObjectChild(project, ProjectResource.getObjectType(), ProjectResource.OBJECT_NAME, getProjectResourceRows());
+		return new HiddenRootNodeWithBaseObjectChild(project, ProjectResource.getObjectType(), ProjectResource.OBJECT_NAME, getProjectResourceRows(project));
 	}
 	
-	private static CodeList getProjectResourceRows()
+	private static CodeList getProjectResourceRows(Project project)
 	{
-		return new ProjectResourceRowColumnProvider().getRowCodesToShow();
+		return new ProjectResourceRowColumnProvider(project).getRowCodesToShow();
 	}
 
 	@Override

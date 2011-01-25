@@ -21,11 +21,17 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning;
 
 import org.miradi.objects.FundingSource;
+import org.miradi.project.Project;
 import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 import org.miradi.utils.CodeList;
 
 public class FundingSourceRowColumnProvider extends FundingSourceCoreRowColumnProvider
 {
+	public FundingSourceRowColumnProvider(Project projectToUse)
+	{
+		super(projectToUse);
+	}
+
 	@Override
 	public CodeList getColumnCodesToShow()
 	{
