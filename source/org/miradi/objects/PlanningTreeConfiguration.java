@@ -25,7 +25,7 @@ import org.miradi.utils.CodeList;
 public interface PlanningTreeConfiguration
 {
 	public abstract CodeList getRowCodesToShow();
-	public abstract CodeList getColumnConfiguration();
+	public abstract CodeList getColumnCodesToShow();
 	public abstract boolean shouldIncludeResultsChain();
 	public abstract boolean shouldIncludeConceptualModelPage();
 }

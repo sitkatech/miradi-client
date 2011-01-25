@@ -57,7 +57,7 @@ public class ObjectTreeTableConfiguration extends BaseObject implements Planning
 	/* (non-Javadoc)
 	 * @see org.miradi.objects.PlanningTreeConfiguration#getColumnConfiguration()
 	 */
-	public CodeList getColumnConfiguration()
+	public CodeList getColumnCodesToShow()
 	{
 		return colConfigurationList.getCodeList();
 	}
