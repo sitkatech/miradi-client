@@ -253,10 +253,9 @@ abstract public class Desire extends BaseObject
 		RelevancyOverrideSet strategyActivityRelevancyOverrideSet = new RelevancyOverrideSet(getStrategyActivityRelevancyOverrideSet());
 		boolean isDefaultIrrelevant = !defaultRelevantStrategyRefs.contains(strategyRef);
 		boolean shouldBeRelevant = false;
-		RelevancyOverride override = strategyActivityRelevancyOverrideSet.find(strategyRef);
 		boolean needsOverrideRemoved = isDefaultIrrelevant;
 		
-		return createCommandsToEnsureProperRelevancy(strategyRef, strategyActivityRelevancyOverrideSet, override, isDefaultIrrelevant, shouldBeRelevant, needsOverrideRemoved);
+		return createCommandsToEnsureProperRelevancy(strategyRef, strategyActivityRelevancyOverrideSet, isDefaultIrrelevant, shouldBeRelevant, needsOverrideRemoved);
 	}
 	
 	public CommandVector createCommandsToEnsureStrategyIsRelevant(ORef strategyRef) throws Exception
@@ -265,14 +264,14 @@ abstract public class Desire extends BaseObject
 		RelevancyOverrideSet strategyActivityRelevancyOverrideSet = new RelevancyOverrideSet(getStrategyActivityRelevancyOverrideSet());
 		boolean isDefaultRelevant = defaultRelevantStrategyRefs.contains(strategyRef);
 		boolean shouldBeRelevant = true;
-		RelevancyOverride override = strategyActivityRelevancyOverrideSet.find(strategyRef);
 		boolean needsOverrideRemoved = isDefaultRelevant;
 		
-		return createCommandsToEnsureProperRelevancy(strategyRef, strategyActivityRelevancyOverrideSet, override, isDefaultRelevant, shouldBeRelevant, needsOverrideRemoved);
+		return createCommandsToEnsureProperRelevancy(strategyRef, strategyActivityRelevancyOverrideSet, isDefaultRelevant, shouldBeRelevant, needsOverrideRemoved);
 	}
 
-	private CommandVector createCommandsToEnsureProperRelevancy(ORef strategyRef, RelevancyOverrideSet strategyActivityRelevancyOverrideSet, RelevancyOverride override, boolean isDefaultRelevant,	boolean shouldBeRelevant, boolean needsOverrideRemoved)
+	private CommandVector createCommandsToEnsureProperRelevancy(ORef strategyRef, RelevancyOverrideSet strategyActivityRelevancyOverrideSet, boolean isDefaultRelevant, boolean shouldBeRelevant,	boolean needsOverrideRemoved)
 	{
+		RelevancyOverride override = strategyActivityRelevancyOverrideSet.find(strategyRef);
 		boolean isAlreadyCorrectlyOverriden = override != null && override.isOverride() == shouldBeRelevant;
 		if (isAlreadyCorrectlyOverriden)
 			return new CommandVector();
