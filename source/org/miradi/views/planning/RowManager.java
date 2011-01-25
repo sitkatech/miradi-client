@@ -24,7 +24,6 @@ import org.miradi.dialogs.planning.StrategicRowColumnProvider;
 import org.miradi.dialogs.planning.WorkPlanRowColumnProvider;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.Goal;
 import org.miradi.objects.PlanningTreeConfiguration;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
@@ -47,17 +46,6 @@ public class RowManager
 		return new WorkPlanRowColumnProvider(project).getRowCodesToShow();
 	}
 	
-	public static CodeList getVisibleRowsForSingleType(ViewData viewData)
-	{
-		String singleType = viewData.getData(ViewData.TAG_PLANNING_SINGLE_LEVEL_CHOICE);
-		if(singleType.length() == 0)
-			singleType = Goal.OBJECT_NAME;
-		
-		CodeList codes = new CodeList();
-		codes.add(singleType);
-		return codes;
-	}
-
 	public static CodeList getVisibleRowsForCustomization(ViewData viewData)
 	{
 		try
