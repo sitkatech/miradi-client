@@ -253,9 +253,9 @@ abstract public class Desire extends BaseObject
 		ORefList defaultRelevantStrategyRefs = getDefaultRelevantStrategyRefs();
 		RelevancyOverrideSet strategyActivityRelevancyOverrideSet = new RelevancyOverrideSet(getStrategyActivityRelevancyOverrideSet());
 		boolean isDefaultRelevant = defaultRelevantStrategyRefs.contains(strategyRef);
-		boolean isOverride = strategyActivityRelevancyOverrideSet.contains(strategyRef);
-		boolean isAlreadyProperlyRelevantByDefaultDefault = !isDefaultRelevant && !isOverride;
-		boolean isAlreadyProperlyRelevantByOverride = isDefaultRelevant && isOverride;
+		boolean isOverridden = strategyActivityRelevancyOverrideSet.contains(strategyRef);
+		boolean isAlreadyProperlyRelevantByDefaultDefault = !isDefaultRelevant && !isOverridden;
+		boolean isAlreadyProperlyRelevantByOverride = isDefaultRelevant && isOverridden;
 		boolean overrideFlagToUse = false;
 	
 		if (isAlreadyProperlyRelevantByDefaultDefault)
@@ -264,10 +264,10 @@ abstract public class Desire extends BaseObject
 		if (isAlreadyProperlyRelevantByOverride)
 			return new CommandVector();
 		
-		if (isDefaultRelevant && !isOverride)
+		if (isDefaultRelevant && !isOverridden)
 			strategyActivityRelevancyOverrideSet.add(new RelevancyOverride(strategyRef, overrideFlagToUse));
 		
-		if (!isDefaultRelevant && isOverride)
+		if (!isDefaultRelevant && isOverridden)
 			strategyActivityRelevancyOverrideSet.remove(strategyRef);
 
 		commands.add(new CommandSetObjectData(getRef(), TAG_RELEVANT_STRATEGY_ACTIVITY_SET, strategyActivityRelevancyOverrideSet.toString()));
