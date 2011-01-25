@@ -268,7 +268,7 @@ abstract public class Desire extends BaseObject
 		boolean isDefaultRelevant = defaultRelevantStrategyRefs.contains(strategyRef);
 		boolean shouldBeRelevant = true;
 		RelevancyOverride override = strategyActivityRelevancyOverrideSet.find(strategyRef);
-		boolean isAlreadyCorrectlyOverriden = override != null && override.isOverride();
+		boolean isAlreadyCorrectlyOverriden = override != null && override.isOverride() == shouldBeRelevant;
 		if (isAlreadyCorrectlyOverriden)
 			return new CommandVector();
 		
