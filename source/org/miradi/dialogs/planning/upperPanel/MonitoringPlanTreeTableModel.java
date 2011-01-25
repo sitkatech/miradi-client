@@ -21,7 +21,6 @@ package org.miradi.dialogs.planning.upperPanel;
 
 import org.miradi.dialogs.planning.MonitoringRowColumnProvider;
 import org.miradi.project.Project;
-import org.miradi.views.planning.ColumnManager;
 import org.miradi.views.planning.RowManager;
 
 public class MonitoringPlanTreeTableModel extends ExportablePlanningTreeTableModel

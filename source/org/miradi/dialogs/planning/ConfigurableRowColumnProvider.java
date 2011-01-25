@@ -19,9 +19,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning;
 
+import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.PlanningTreeConfiguration;
+import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
+import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.CodeList;
-import org.miradi.views.planning.ColumnManager;
+import org.miradi.utils.StringList;
 import org.miradi.views.planning.RowManager;
 
 public class ConfigurableRowColumnProvider extends PlanningViewRowColumnProvider
@@ -33,11 +39,55 @@ public class ConfigurableRowColumnProvider extends PlanningViewRowColumnProvider
 
 	public CodeList getColumnCodesToShow() throws Exception
 	{
-		return ColumnManager.getVisibleColumnsForCustomization(getCurrentViewData());
+		return ConfigurableRowColumnProvider.getVisibleColumnsForCustomization(getCurrentViewData());
 	}
 
 	public CodeList getRowCodesToShow() throws Exception
 	{
 		return RowManager.getVisibleRowsForCustomization(getCurrentViewData());
+	}
+
+	public static CodeList getVisibleColumnsForCustomization(ViewData viewData)
+	{
+		try
+		{
+			ORef customizationRef = viewData.getORef(ViewData.TAG_TREE_CONFIGURATION_REF);
+			if(customizationRef.isInvalid())
+				return new CodeList();
+			
+			PlanningTreeConfiguration customization = (PlanningTreeConfiguration)viewData.getProject().findObject(customizationRef);
+			CodeList columnCodes = customization.getColumnCodesToShow();
+			omitUnknownColumnTagsInPlace(viewData.getProject(), columnCodes);
+			
+			return columnCodes;
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			EAM.errorDialog("Error: Unable to read customized columns");
+			return new CodeList();
+		}
+	}
+
+	private static void omitUnknownColumnTagsInPlace(Project project, CodeList rawCodes)
+	{
+		ChoiceQuestion question = project.getQuestion(CustomPlanningColumnsQuestion.class);
+		CodeList validColumnCodes = question.getAllCodes();
+		validColumnCodes.addAll(getLegacyUselessButHarmlessColumnCodes());
+		CodeList originalCodeList = new CodeList(rawCodes);
+		rawCodes.retainAll(validColumnCodes);
+		
+		boolean wereCodesRemoved = originalCodeList.size() != rawCodes.size();
+		originalCodeList.subtract(validColumnCodes);
+		if (wereCodesRemoved)
+			EAM.logWarning(("Custom tab list of custom codes was filtered and had unknown codes removed from it. Codes removed:" + originalCodeList));
+	}
+
+	private static StringList getLegacyUselessButHarmlessColumnCodes()
+	{
+		StringList legacyCodes = new StringList();
+		legacyCodes.add("PseudoTaskBudgetTotal");
+		legacyCodes.add("Who");
+		return legacyCodes;
 	}
 }
