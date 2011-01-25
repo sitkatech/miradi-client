@@ -42,7 +42,7 @@ public class ActionPlanTreeTablePanel extends PlanningTreeTablePanel
 	{
 		PlanningTreeTableModel model = new ActionPlanTreeTableModel(mainWindowToUse.getProject());
 		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse, model);
-		StrategicRowColumnProvider rowColumnProvider = new StrategicRowColumnProvider();
+		StrategicRowColumnProvider rowColumnProvider = new StrategicRowColumnProvider(mainWindowToUse.getProject());
 		
 		return new ActionPlanTreeTablePanel(mainWindowToUse, treeTable, model, getButtonActions(), rowColumnProvider);
 	}

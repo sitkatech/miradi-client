@@ -75,7 +75,7 @@ public class TreeRebuilder
 	
 	public void rebuildTree(NewAbstractPlanningTreeNode rootNode)
 	{
-		CodeList rows = new StrategicRowColumnProvider().getFlippedRowListToShow();
+		CodeList rows = new StrategicRowColumnProvider(getProject()).getFlippedRowListToShow();
 		rebuildTree(rootNode, null, rows);
 		pruneUncles(rootNode);
 		pruneUnwantedLayers(rootNode, rows);
