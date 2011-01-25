@@ -26,7 +26,6 @@ import org.miradi.dialogs.planning.treenodes.BaseObjectTreeRootNode;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.objects.ProjectResource;
 import org.miradi.project.Project;
-import org.miradi.utils.CodeList;
 
 public class ProjectResourceTreeTableModel extends ExportablePlanningTreeTableModel
 {
@@ -37,7 +36,7 @@ public class ProjectResourceTreeTableModel extends ExportablePlanningTreeTableMo
 	
 	private ProjectResourceTreeTableModel(Project project, TreeTableNode rootNode, RowColumnProvider rowColumnProvider, String uniqueTreeTableModeIdentifier) throws Exception
 	{
-		super(project, rootNode, getProjectResourceRows(project), rowColumnProvider.getColumnCodesToShow(), uniqueTreeTableModeIdentifier);
+		super(project, rootNode, rowColumnProvider.getRowCodesToShow(), rowColumnProvider.getColumnCodesToShow(), uniqueTreeTableModeIdentifier);
 	}
 	
 	public static ProjectResourceTreeTableModel createProjectResourceTreeTableModel(Project project, RowColumnProvider rowColumnProvider) throws Exception
@@ -48,14 +47,9 @@ public class ProjectResourceTreeTableModel extends ExportablePlanningTreeTableMo
 	
 	private static TreeTableNode createProjectResourceRootNode(Project project) throws Exception
 	{
-		return new BaseObjectTreeRootNode(project, ProjectResource.getObjectType(), ProjectResource.OBJECT_NAME, getProjectResourceRows(project));
+		return new BaseObjectTreeRootNode(project, ProjectResource.getObjectType(), ProjectResource.OBJECT_NAME, new ProjectResourceRowColumnProvider(project).getRowCodesToShow());
 	}
 	
-	private static CodeList getProjectResourceRows(Project project)
-	{
-		return new ProjectResourceRowColumnProvider(project).getRowCodesToShow();
-	}
-
 	@Override
 	public String getUniqueTreeTableModelIdentifier()
 	{
