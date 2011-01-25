@@ -76,8 +76,7 @@ abstract public class AbstractRelevancyOverrideListField extends ObjectDataField
 			for(int index = 0; index < allDesires.size(); ++index)
 			{
 				ORef desireRef = allDesires.get(index);
-				CommandVector commands = getCommandsToEnsureProperRelevancy(
-						selectedDesireRefs, desireRef);
+				CommandVector commands = getCommandsToEnsureProperRelevancy(selectedDesireRefs, desireRef);
 				
 				updateDesireRelevancyRefCommands.addAll(commands);
 			}
@@ -91,8 +90,7 @@ abstract public class AbstractRelevancyOverrideListField extends ObjectDataField
 		}
 	}
 
-	private CommandVector getCommandsToEnsureProperRelevancy(
-			ORefList selectedDesireRefs, ORef desireRef) throws Exception
+	private CommandVector getCommandsToEnsureProperRelevancy(ORefList selectedDesireRefs, ORef desireRef) throws Exception
 	{
 		Desire desire = Desire.findDesire(getProject(), desireRef);
 		CommandVector commands = new CommandVector();
