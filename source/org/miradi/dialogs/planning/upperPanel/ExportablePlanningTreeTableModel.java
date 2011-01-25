@@ -34,7 +34,7 @@ public class ExportablePlanningTreeTableModel extends PlanningTreeTableModel imp
 {
 	public ExportablePlanningTreeTableModel(Project projectToUse, TreeTableNode rootNode, RowColumnProvider rowColumnProvider, String uniqueTreeTableModelIdentifierToUse) throws Exception
 	{
-		super(projectToUse, rootNode, rowColumnProvider.getRowCodesToShow(), rowColumnProvider.getColumnCodesToShow());
+		super(projectToUse, rootNode, rowColumnProvider);
 		
 		uniqueTreeTableModelIdentifier = uniqueTreeTableModelIdentifierToUse;
 		setRowObjectRefs();
