@@ -279,7 +279,7 @@ abstract public class Desire extends BaseObject
 		if (isDefaultRelevant && override == null)
 			return new CommandVector();
 		
-		if (needsOverrideRemoved)
+		if (isDefaultRelevant)
 			strategyActivityRelevancyOverrideSet.remove(strategyRef);
 		else
 			strategyActivityRelevancyOverrideSet.add(new RelevancyOverride(strategyRef, shouldBeRelevant));
