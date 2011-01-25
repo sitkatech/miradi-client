@@ -32,12 +32,12 @@ public class ProjectResourceTreeTableModel extends ExportablePlanningTreeTableMo
 {
 	private ProjectResourceTreeTableModel(Project project, TreeTableNode rootNode, RowColumnProvider rowColumnProvider) throws Exception
 	{
-		this(project, rootNode, rowColumnProvider.getColumnCodesToShow(), UNIQUE_TREE_TABLE_IDENTIFIER);
+		this(project, rootNode, rowColumnProvider, UNIQUE_TREE_TABLE_IDENTIFIER);
 	}
 	
-	private ProjectResourceTreeTableModel(Project project, TreeTableNode rootNode, CodeList visibleColumns, String uniqueTreeTableModeIdentifier) throws Exception
+	private ProjectResourceTreeTableModel(Project project, TreeTableNode rootNode, RowColumnProvider rowColumnProvider, String uniqueTreeTableModeIdentifier) throws Exception
 	{
-		super(project, rootNode, getProjectResourceRows(project), visibleColumns, uniqueTreeTableModeIdentifier);
+		super(project, rootNode, getProjectResourceRows(project), rowColumnProvider.getColumnCodesToShow(), uniqueTreeTableModeIdentifier);
 	}
 	
 	public static ProjectResourceTreeTableModel createProjectResourceTreeTableModel(Project project, RowColumnProvider rowColumnProvider) throws Exception
