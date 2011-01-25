@@ -25,8 +25,8 @@ import org.miradi.utils.CodeList;
 
 public interface PlanningTreeConfiguration extends RowColumnProvider
 {
-	public abstract CodeList getRowCodesToShow();
-	public abstract CodeList getColumnCodesToShow();
+	public abstract CodeList getRowCodesToShow() throws Exception;
+	public abstract CodeList getColumnCodesToShow() throws Exception;
 	public abstract boolean shouldIncludeResultsChain();
 	public abstract boolean shouldIncludeConceptualModelPage();
 }
