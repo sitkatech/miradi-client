@@ -28,7 +28,7 @@ public class ObjectsOnlyPlanningTreeTableModel extends ExportablePlanningTreeTab
 {
 	public ObjectsOnlyPlanningTreeTableModel(Project project) throws Exception
 	{
-		super(project, new ObjectsOnlyRowColumnProvider(project).getRowCodesToShow(), new ObjectsOnlyRowColumnProvider(project).getColumnCodesToShow(), UNIQUE_TREE_TABLE_IDENTIFIER);
+		super(project, new ObjectsOnlyRowColumnProvider(project), UNIQUE_TREE_TABLE_IDENTIFIER);
 	}
 
 	@Override
