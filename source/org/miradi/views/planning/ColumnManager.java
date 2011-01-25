@@ -235,7 +235,7 @@ public class ColumnManager
 				return new CodeList();
 			
 			PlanningTreeConfiguration customization = (PlanningTreeConfiguration)viewData.getProject().findObject(customizationRef);
-			CodeList columnCodes = customization.getColumnConfiguration();
+			CodeList columnCodes = customization.getColumnCodesToShow();
 			omitUnknownColumnTagsInPlace(viewData.getProject(), columnCodes);
 			
 			return columnCodes;

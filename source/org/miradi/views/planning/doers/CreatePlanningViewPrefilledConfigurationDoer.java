@@ -31,7 +31,7 @@ public class CreatePlanningViewPrefilledConfigurationDoer extends AbstractCreate
 	protected CodeList getVisibleColumnCodes() throws Exception
 	{
 		
-		return getCurrentConfiguration().getColumnConfiguration();
+		return getCurrentConfiguration().getColumnCodesToShow();
 	}
 
 	@Override
