@@ -20,9 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objects;
 
+import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.utils.CodeList;
 
-public interface PlanningTreeConfiguration
+public interface PlanningTreeConfiguration extends RowColumnProvider
 {
 	public abstract CodeList getRowCodesToShow();
 	public abstract CodeList getColumnCodesToShow();
