@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.upperPanel;
 
+import org.miradi.dialogs.planning.StrategicRowColumnProvider;
 import org.miradi.project.Project;
 import org.miradi.views.planning.ColumnManager;
 import org.miradi.views.planning.RowManager;
@@ -27,7 +28,7 @@ public class ActionPlanTreeTableModel extends ExportablePlanningTreeTableModel
 {
 	public ActionPlanTreeTableModel(Project project) throws Exception
 	{
-		super(project, RowManager.getStrategicPlanRows(), ColumnManager.getStrategicPlanColumns(), UNIQUE_TREE_TABLE_IDENTIFIER);
+		super(project, RowManager.getStrategicPlanRows(), new StrategicRowColumnProvider().getColumnCodesToShow(), UNIQUE_TREE_TABLE_IDENTIFIER);
 	}
 
 	@Override
