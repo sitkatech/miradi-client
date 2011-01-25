@@ -29,7 +29,7 @@ public class NewActionPlanTreeTableModel extends ExportablePlanningTreeTableMode
 {
 	public NewActionPlanTreeTableModel(Project projectToUse, NewPlanningRootNode rootNode) throws Exception
 	{
-		super(projectToUse, rootNode, new StrategicRowColumnProvider(projectToUse).getRowCodesToShow(), new StrategicRowColumnProvider(projectToUse).getColumnCodesToShow(), UNIQUE_TREE_TABLE_IDENTIFIER);
+		super(projectToUse, rootNode, new StrategicRowColumnProvider(projectToUse), UNIQUE_TREE_TABLE_IDENTIFIER);
 	}
 	
 	@Override
