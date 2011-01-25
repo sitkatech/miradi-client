@@ -34,7 +34,7 @@ abstract public class AbstractTreeNodeDoer extends ObjectsDoer
 		if (isPlanningView())
 		{
 			RowColumnProvider rowColumnProvider = getPlanningView().getRowColumnProvider();
-			CodeList visibleRowCodes = rowColumnProvider.getRowListToShow();
+			CodeList visibleRowCodes = rowColumnProvider.getRowCodesToShow();
 			return (visibleRowCodes.contains(objectTypeName));
 		}
 

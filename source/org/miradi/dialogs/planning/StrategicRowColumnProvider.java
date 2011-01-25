@@ -32,7 +32,7 @@ import org.miradi.utils.CodeList;
 
 public class StrategicRowColumnProvider implements RowColumnProvider
 {	
-	public CodeList getColumnListToShow()
+	public CodeList getColumnCodesToShow()
 	{
 		return new CodeList(new String[] {
 				CustomPlanningColumnsQuestion.META_CURRENT_RATING,
@@ -42,7 +42,7 @@ public class StrategicRowColumnProvider implements RowColumnProvider
 				});
 	}
 
-	public CodeList getRowListToShow()
+	public CodeList getRowCodesToShow()
 	{
 		return new CodeList(new String[] {
 				ResultsChainDiagram.OBJECT_NAME,

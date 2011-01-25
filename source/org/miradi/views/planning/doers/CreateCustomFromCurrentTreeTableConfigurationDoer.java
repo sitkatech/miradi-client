@@ -56,8 +56,8 @@ public class CreateCustomFromCurrentTreeTableConfigurationDoer extends ObjectsDo
 		{
 			PlanningTreeManagementPanel tab = (PlanningTreeManagementPanel) getView().getCurrentTabPanel();
 			RowColumnProvider provider = tab.getPlanningTreeTablePanel().getRowColumnProvider();
-			CodeList columnCodes = provider.getColumnListToShow();
-			CodeList rowCodes = provider.getRowListToShow();
+			CodeList columnCodes = provider.getColumnCodesToShow();
+			CodeList rowCodes = provider.getRowCodesToShow();
 			
 			switchToCustomTab();
 			saveCannedConfigurationAsNewCustomization(rowCodes, columnCodes);

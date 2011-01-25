@@ -25,7 +25,7 @@ import org.miradi.utils.CodeList;
 
 public class ProjectResourceCoreRowColumnProvider implements RowColumnProvider
 {
-	public CodeList getColumnListToShow()
+	public CodeList getColumnCodesToShow()
 	{
 		return getVisibleColumns();
 	}
@@ -44,7 +44,7 @@ public class ProjectResourceCoreRowColumnProvider implements RowColumnProvider
 		});
 	}
 
-	public CodeList getRowListToShow()
+	public CodeList getRowCodesToShow()
 	{
 		return new CodeList(new String[] {
 				ProjectResource.OBJECT_NAME,

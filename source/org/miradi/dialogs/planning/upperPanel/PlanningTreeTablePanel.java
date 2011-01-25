@@ -151,7 +151,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 	@Override
 	protected boolean wereAssignmentNodesAddedOrRemoved(CommandExecutedEvent event) throws Exception
 	{
-		CodeList rowCodes = getRowColumnProvider().getRowListToShow();
+		CodeList rowCodes = getRowColumnProvider().getRowCodesToShow();
 		if (rowCodes.contains(ResourceAssignment.OBJECT_NAME) && event.isSetDataCommandWithThisTag(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS))
 			return true;
 
@@ -212,7 +212,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 
 		mainTableScrollPane.showVerticalScrollBar();
 
-		CodeList columnsToShow = getRowColumnProvider().getColumnListToShow();
+		CodeList columnsToShow = getRowColumnProvider().getColumnCodesToShow();
 		
 		if (columnsToShow.contains(Measurement.META_COLUMN_TAG))
 			multiModel.addModel(measurementModel);

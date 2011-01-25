@@ -31,7 +31,7 @@ public class WorkPlanCategoryTreeRootNode extends AbstractPlanningTreeNode
 {
 	public WorkPlanCategoryTreeRootNode(Project projectToUse, WorkPlanCategoryTreeRowColumnProvider rowColumnProviderToUse) throws Exception
 	{
-		super(projectToUse, rowColumnProviderToUse.getRowListToShow());
+		super(projectToUse, rowColumnProviderToUse.getRowCodesToShow());
 		
 		rowColumnProvider = rowColumnProviderToUse;
 		rebuild();
