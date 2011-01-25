@@ -252,16 +252,17 @@ abstract public class Desire extends BaseObject
 		CommandVector commands = new CommandVector();
 		ORefList defaultRelevantStrategyRefs = getDefaultRelevantStrategyRefs();
 		RelevancyOverrideSet strategyActivityRelevancyOverrideSet = new RelevancyOverrideSet(getStrategyActivityRelevancyOverrideSet());
-		if (!defaultRelevantStrategyRefs.contains(strategyRef) && !strategyActivityRelevancyOverrideSet.contains(strategyRef))
+		boolean isDefaultRelevant = defaultRelevantStrategyRefs.contains(strategyRef);
+		if (!isDefaultRelevant && !strategyActivityRelevancyOverrideSet.contains(strategyRef))
 			return new CommandVector();
 		
-		if (defaultRelevantStrategyRefs.contains(strategyRef) && strategyActivityRelevancyOverrideSet.contains(strategyRef))
+		if (isDefaultRelevant && strategyActivityRelevancyOverrideSet.contains(strategyRef))
 			return new CommandVector();
 		
-		if (defaultRelevantStrategyRefs.contains(strategyRef) && !strategyActivityRelevancyOverrideSet.contains(strategyRef))
+		if (isDefaultRelevant && !strategyActivityRelevancyOverrideSet.contains(strategyRef))
 			strategyActivityRelevancyOverrideSet.add(new RelevancyOverride(strategyRef, false));
 		
-		if (!defaultRelevantStrategyRefs.contains(strategyRef) && strategyActivityRelevancyOverrideSet.contains(strategyRef))
+		if (!isDefaultRelevant && strategyActivityRelevancyOverrideSet.contains(strategyRef))
 			strategyActivityRelevancyOverrideSet.remove(strategyRef);
 
 		commands.add(new CommandSetObjectData(getRef(), TAG_RELEVANT_STRATEGY_ACTIVITY_SET, strategyActivityRelevancyOverrideSet.toString()));
