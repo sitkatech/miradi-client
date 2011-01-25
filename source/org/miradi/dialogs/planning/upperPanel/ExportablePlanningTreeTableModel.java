@@ -41,17 +41,12 @@ public class ExportablePlanningTreeTableModel extends PlanningTreeTableModel imp
 		setRowObjectRefs();
 	}
 	
-	public ExportablePlanningTreeTableModel(Project projectToUse, CodeList visibleRowCodes, CodeList visibleColumnCodes, String uniqueTreeTableModelIdentifierToUse) throws Exception
+	public ExportablePlanningTreeTableModel(Project projectToUse, RowColumnProvider rowColumnProvider, String uniqueTreeTableModelIdentifierToUse) throws Exception
 	{
-		super(projectToUse, visibleRowCodes, visibleColumnCodes);
+		super(projectToUse, rowColumnProvider.getRowCodesToShow(), rowColumnProvider.getColumnCodesToShow());
 		
 		uniqueTreeTableModelIdentifier = uniqueTreeTableModelIdentifierToUse;
 		setRowObjectRefs();
-	}
-
-	public ExportablePlanningTreeTableModel(Project projectToUse, RowColumnProvider rowColumnProvider, String uniqueTreeTableModelIdentifierToUse) throws Exception
-	{
-		this(projectToUse, rowColumnProvider.getRowCodesToShow(), rowColumnProvider.getColumnCodesToShow(), uniqueTreeTableModelIdentifierToUse);
 	}
 
 	private void setRowObjectRefs() throws Exception
