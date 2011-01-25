@@ -258,7 +258,8 @@ abstract public class Desire extends BaseObject
 		if (isIrrelevantByDefault)
 			return new CommandVector();
 		
-		if (isDefaultRelevant && isOverride)
+		boolean isIrrelevantByOverride = isDefaultRelevant && isOverride;
+		if (isIrrelevantByOverride)
 			return new CommandVector();
 		
 		if (isDefaultRelevant && !isOverride)
