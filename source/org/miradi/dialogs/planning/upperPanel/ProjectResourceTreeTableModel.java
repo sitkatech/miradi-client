@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel;
 
 import org.miradi.dialogs.planning.ProjectResourceRowColumnProvider;
+import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.treenodes.BaseObjectTreeRootNode;
 import org.miradi.dialogs.planning.treenodes.HiddenRootNodeWithBaseObjectChild;
 import org.miradi.dialogs.treetables.TreeTableNode;
@@ -40,10 +41,10 @@ public class ProjectResourceTreeTableModel extends ExportablePlanningTreeTableMo
 		super(project, rootNode, getProjectResourceRows(project), visibleColumns, uniqueTreeTableModeIdentifier);
 	}
 	
-	public static ProjectResourceTreeTableModel createProjectResourceTreeTableModel(Project project, CodeList visibleColumns) throws Exception
+	public static ProjectResourceTreeTableModel createProjectResourceTreeTableModel(Project project, RowColumnProvider rowColumnProvider) throws Exception
 	{
 		TreeTableNode projectRootNode = createProjectResourceRootNode(project);
-		return new ProjectResourceTreeTableModel(project, projectRootNode, visibleColumns);
+		return new ProjectResourceTreeTableModel(project, projectRootNode, rowColumnProvider.getColumnCodesToShow());
 	}
 	
 	public static ProjectResourceTreeTableModel createOperationalPlanResourceTreeTableModel(Project project, CodeList visibleColumns) throws Exception
