@@ -66,7 +66,7 @@ public class RowManager
 			if(customizationRef.isInvalid())
 				return new CodeList();
 			PlanningTreeConfiguration customization = (PlanningTreeConfiguration)viewData.getProject().findObject(customizationRef);
-			return customization.getRowConfiguration();
+			return customization.getRowCodesToShow();
 		}
 		catch(Exception e)
 		{

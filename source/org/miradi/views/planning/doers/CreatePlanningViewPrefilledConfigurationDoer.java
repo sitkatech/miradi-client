@@ -37,7 +37,7 @@ public class CreatePlanningViewPrefilledConfigurationDoer extends AbstractCreate
 	@Override
 	protected CodeList getVisibleRowCodes() throws Exception
 	{
-		return getCurrentConfiguration().getRowConfiguration();
+		return getCurrentConfiguration().getRowCodesToShow();
 	}
 	
 	private PlanningTreeConfiguration getCurrentConfiguration() throws Exception
