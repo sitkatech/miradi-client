@@ -35,12 +35,12 @@ public class ConfigurablePlanningTreeTableModel extends ExportablePlanningTreeTa
 
 	private static CodeList getVisibleColumnCodes(Project projectToUse) throws Exception
 	{
-		return ConfigurableRowColumnProvider.getVisibleColumnsForCustomization(projectToUse.getCurrentViewData());
+		return new ConfigurableRowColumnProvider(projectToUse).getVisibleColumnsForCustomization(projectToUse.getCurrentViewData());
 	}
 	
 	public static CodeList getVisibleRowCodes(Project projectToUse) throws Exception
 	{
-		return ConfigurableRowColumnProvider.getVisibleRowsForCustomization(projectToUse.getCurrentViewData());
+		return new ConfigurableRowColumnProvider(projectToUse).getVisibleRowsForCustomization(projectToUse.getCurrentViewData());
 	}
 	
 	private static TreeTableNode createConfigurablePlanningTreeRootNode(Project projectToUse) throws Exception

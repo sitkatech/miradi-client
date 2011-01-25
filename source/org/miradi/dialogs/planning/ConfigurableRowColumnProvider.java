@@ -46,7 +46,7 @@ public class ConfigurableRowColumnProvider extends PlanningViewRowColumnProvider
 		return getVisibleRowsForCustomization(getCurrentViewData());
 	}
 
-	public static CodeList getVisibleRowsForCustomization(ViewData viewData)
+	public CodeList getVisibleRowsForCustomization(ViewData viewData)
 	{
 		try
 		{
@@ -64,7 +64,7 @@ public class ConfigurableRowColumnProvider extends PlanningViewRowColumnProvider
 		}
 	}
 
-	public static CodeList getVisibleColumnsForCustomization(ViewData viewData)
+	public CodeList getVisibleColumnsForCustomization(ViewData viewData)
 	{
 		try
 		{
