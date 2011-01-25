@@ -46,13 +46,6 @@ public class ProjectResourceTreeTableModel extends ExportablePlanningTreeTableMo
 		return new ProjectResourceTreeTableModel(project, projectRootNode, rowColumnProvider);
 	}
 	
-	public static ProjectResourceTreeTableModel createProjectResourceTreeTableModel(Project project, CodeList visibleColumns, String uniqueTreeTableModeIdentifier) throws Exception
-	{
-		TreeTableNode projectRootNode = createProjectResourceRootNode(project);
-		
-		return new ProjectResourceTreeTableModel(project, projectRootNode, visibleColumns, uniqueTreeTableModeIdentifier);
-	}
-	
 	private static TreeTableNode createProjectResourceRootNode(Project project) throws Exception
 	{
 		return new BaseObjectTreeRootNode(project, ProjectResource.getObjectType(), ProjectResource.OBJECT_NAME, getProjectResourceRows(project));
