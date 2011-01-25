@@ -30,7 +30,7 @@ public class ConfigurablePlanningTreeTableModel extends ExportablePlanningTreeTa
 {
 	public ConfigurablePlanningTreeTableModel(Project project) throws Exception
 	{
-		super(project, createConfigurablePlanningTreeRootNode(project), getVisibleRowCodes(project), getVisibleColumnCodes(project), UNIQUE_TREE_TABLE_IDENTIFIER);
+		super(project, createConfigurablePlanningTreeRootNode(project), new ConfigurableRowColumnProvider(project), UNIQUE_TREE_TABLE_IDENTIFIER);
 	}
 
 	private static CodeList getVisibleColumnCodes(Project projectToUse) throws Exception
