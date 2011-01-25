@@ -28,7 +28,6 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.StringList;
-import org.miradi.views.planning.RowManager;
 
 public class ConfigurableRowColumnProvider extends PlanningViewRowColumnProvider
 {
@@ -44,7 +43,25 @@ public class ConfigurableRowColumnProvider extends PlanningViewRowColumnProvider
 
 	public CodeList getRowCodesToShow() throws Exception
 	{
-		return RowManager.getVisibleRowsForCustomization(getCurrentViewData());
+		return ConfigurableRowColumnProvider.getVisibleRowsForCustomization(getCurrentViewData());
+	}
+
+	public static CodeList getVisibleRowsForCustomization(ViewData viewData)
+	{
+		try
+		{
+			ORef customizationRef = viewData.getORef(ViewData.TAG_TREE_CONFIGURATION_REF);
+			if(customizationRef.isInvalid())
+				return new CodeList();
+			PlanningTreeConfiguration customization = (PlanningTreeConfiguration)viewData.getProject().findObject(customizationRef);
+			return customization.getRowCodesToShow();
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			EAM.errorDialog("Error: Unable to read customized rows");
+			return new CodeList();
+		}
 	}
 
 	public static CodeList getVisibleColumnsForCustomization(ViewData viewData)

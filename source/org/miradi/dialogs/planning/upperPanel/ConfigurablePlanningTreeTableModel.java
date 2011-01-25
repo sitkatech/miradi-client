@@ -25,7 +25,6 @@ import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
-import org.miradi.views.planning.RowManager;
 
 public class ConfigurablePlanningTreeTableModel extends ExportablePlanningTreeTableModel
 {
@@ -41,7 +40,7 @@ public class ConfigurablePlanningTreeTableModel extends ExportablePlanningTreeTa
 	
 	public static CodeList getVisibleRowCodes(Project projectToUse) throws Exception
 	{
-		return RowManager.getVisibleRowsForCustomization(projectToUse.getCurrentViewData());
+		return ConfigurableRowColumnProvider.getVisibleRowsForCustomization(projectToUse.getCurrentViewData());
 	}
 	
 	private static TreeTableNode createConfigurablePlanningTreeRootNode(Project projectToUse) throws Exception

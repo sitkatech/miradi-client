@@ -22,10 +22,6 @@ package org.miradi.views.planning;
 import org.miradi.dialogs.planning.MonitoringRowColumnProvider;
 import org.miradi.dialogs.planning.StrategicRowColumnProvider;
 import org.miradi.dialogs.planning.WorkPlanRowColumnProvider;
-import org.miradi.main.EAM;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.PlanningTreeConfiguration;
-import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 
@@ -44,23 +40,5 @@ public class RowManager
 	public static CodeList getWorkPlanRows(Project project)
 	{
 		return new WorkPlanRowColumnProvider(project).getRowCodesToShow();
-	}
-	
-	public static CodeList getVisibleRowsForCustomization(ViewData viewData)
-	{
-		try
-		{
-			ORef customizationRef = viewData.getORef(ViewData.TAG_TREE_CONFIGURATION_REF);
-			if(customizationRef.isInvalid())
-				return new CodeList();
-			PlanningTreeConfiguration customization = (PlanningTreeConfiguration)viewData.getProject().findObject(customizationRef);
-			return customization.getRowCodesToShow();
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			EAM.errorDialog("Error: Unable to read customized rows");
-			return new CodeList();
-		}
 	}
 }
