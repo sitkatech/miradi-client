@@ -28,14 +28,9 @@ public class ObjectsOnlyPlanningTreeTableModel extends ExportablePlanningTreeTab
 {
 	public ObjectsOnlyPlanningTreeTableModel(Project project) throws Exception
 	{
-		super(project, getVisibleRowCodes(project), getVisibleColumnCodes(project), UNIQUE_TREE_TABLE_IDENTIFIER);
+		super(project, getVisibleRowCodes(project), new ObjectsOnlyRowColumnProvider(project).getColumnCodesToShow(), UNIQUE_TREE_TABLE_IDENTIFIER);
 	}
 
-	private static CodeList getVisibleColumnCodes(Project projectToUse) throws Exception
-	{
-		return new ObjectsOnlyRowColumnProvider(projectToUse).getColumnCodesToShow();
-	}
-	
 	public static CodeList getVisibleRowCodes(Project projectToUse) throws Exception
 	{
 		return new ObjectsOnlyRowColumnProvider(projectToUse).getRowCodesToShow();
