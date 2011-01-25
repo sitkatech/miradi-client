@@ -34,16 +34,16 @@ abstract public class PlanningTreeTableModel extends GenericTreeTableModel
 {	
 	public PlanningTreeTableModel(Project projectToUse, RowColumnProvider rowColumnProvider) throws Exception
 	{
-		this(projectToUse, createPlanningTreeRootNode(projectToUse, rowColumnProvider.getRowCodesToShow()), rowColumnProvider.getRowCodesToShow(), rowColumnProvider.getColumnCodesToShow());
+		this(projectToUse, createPlanningTreeRootNode(projectToUse, rowColumnProvider.getRowCodesToShow()), rowColumnProvider);
 	}
 
-	public PlanningTreeTableModel(Project projectToUse, TreeTableNode rootNode, CodeList visibleRowCodesToUse, CodeList visibleColumnCodesToUse) throws Exception
+	public PlanningTreeTableModel(Project projectToUse, TreeTableNode rootNode, RowColumnProvider rowColumnProvider) throws Exception
 	{
 		super(rootNode);
 		
 		project = projectToUse;
-		rowsToShow = visibleRowCodesToUse;
-		updateColumnsToShow(visibleColumnCodesToUse);
+		rowsToShow = rowColumnProvider.getRowCodesToShow();
+		updateColumnsToShow(rowColumnProvider.getColumnCodesToShow());
 	}
 
 	private static TreeTableNode createPlanningTreeRootNode(Project projectToUse, CodeList visibleRowCodesToUse) throws Exception
