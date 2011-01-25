@@ -280,11 +280,11 @@ abstract public class Desire extends BaseObject
 		if (!defaultRelevantStrategyRefs.contains(strategyRef) && strategyActivityRelevancyOverrideSet.contains(strategyRef))
 			return new CommandVector();
 		
-		if (defaultRelevantStrategyRefs.contains(strategyRef) && strategyActivityRelevancyOverrideSet.contains(strategyRef))
-			strategyActivityRelevancyOverrideSet.remove(strategyRef);
-
 		if (!defaultRelevantStrategyRefs.contains(strategyRef) && !strategyActivityRelevancyOverrideSet.contains(strategyRef))
 			strategyActivityRelevancyOverrideSet.add(new RelevancyOverride(strategyRef, true));
+		
+		if (defaultRelevantStrategyRefs.contains(strategyRef) && strategyActivityRelevancyOverrideSet.contains(strategyRef))
+			strategyActivityRelevancyOverrideSet.remove(strategyRef);
 		
 		commands.add(new CommandSetObjectData(getRef(), TAG_RELEVANT_STRATEGY_ACTIVITY_SET, strategyActivityRelevancyOverrideSet.toString()));
 		return commands;
