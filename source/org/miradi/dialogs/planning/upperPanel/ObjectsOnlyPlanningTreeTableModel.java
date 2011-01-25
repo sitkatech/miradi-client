@@ -33,12 +33,12 @@ public class ObjectsOnlyPlanningTreeTableModel extends ExportablePlanningTreeTab
 
 	private static CodeList getVisibleColumnCodes(Project projectToUse) throws Exception
 	{
-		return ObjectsOnlyRowColumnProvider.getVisibleColumnsForSingleType(projectToUse.getCurrentViewData());
+		return new ObjectsOnlyRowColumnProvider(projectToUse).getVisibleColumnsForSingleType(projectToUse.getCurrentViewData());
 	}
 	
 	public static CodeList getVisibleRowCodes(Project projectToUse) throws Exception
 	{
-		return ObjectsOnlyRowColumnProvider.getVisibleRowsForSingleType(projectToUse.getCurrentViewData());
+		return new ObjectsOnlyRowColumnProvider(projectToUse).getVisibleRowsForSingleType(projectToUse.getCurrentViewData());
 	}
 
 	@Override
