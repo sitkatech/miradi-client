@@ -93,16 +93,10 @@ abstract public class AbstractRelevancyOverrideListField extends ObjectDataField
 	private CommandVector getCommandsToEnsureProperRelevancy(ORefList selectedDesireRefs, ORef desireRef) throws Exception
 	{
 		Desire desire = Desire.findDesire(getProject(), desireRef);
-		CommandVector commands = new CommandVector();
 		if (selectedDesireRefs.contains(desireRef))
-		{
-			commands = desire.createCommandsToEnsureStrategyIsRelevant(getORef());
-		}
-		else
-		{
-			commands = desire.createCommandsToEnsureStrategyIsIrrelevant(getORef());
-		}
-		return commands;
+			return  desire.createCommandsToEnsureStrategyIsRelevant(getORef());
+		
+		return  desire.createCommandsToEnsureStrategyIsIrrelevant(getORef());
 	}
 	
 	@Override
