@@ -54,7 +54,7 @@ public class ObjectsOnlyRowColumnProvider extends PlanningViewRowColumnProvider
 		return getVisibleRowsForSingleType(getCurrentViewData());
 	}
 
-	public CodeList getVisibleRowsForSingleType(ViewData viewData)
+	private CodeList getVisibleRowsForSingleType(ViewData viewData)
 	{
 		String singleType = viewData.getData(ViewData.TAG_PLANNING_SINGLE_LEVEL_CHOICE);
 		if(singleType.length() == 0)
@@ -65,7 +65,7 @@ public class ObjectsOnlyRowColumnProvider extends PlanningViewRowColumnProvider
 		return codes;
 	}
 
-	public CodeList getVisibleColumnsForSingleType(ViewData viewData)
+	private CodeList getVisibleColumnsForSingleType(ViewData viewData)
 	{
 		String propertyName = viewData.getData(ViewData.TAG_PLANNING_SINGLE_LEVEL_CHOICE);
 		if(propertyName.length() == 0)
