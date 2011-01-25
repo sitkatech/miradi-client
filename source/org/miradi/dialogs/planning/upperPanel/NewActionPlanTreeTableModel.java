@@ -24,7 +24,6 @@ import org.miradi.dialogs.planning.StrategicRowColumnProvider;
 import org.miradi.dialogs.planning.treenodes.NewPlanningRootNode;
 import org.miradi.dialogs.planning.upperPanel.rebuilder.TreeRebuilder;
 import org.miradi.project.Project;
-import org.miradi.views.planning.ColumnManager;
 import org.miradi.views.planning.RowManager;
 
 public class NewActionPlanTreeTableModel extends ExportablePlanningTreeTableModel
