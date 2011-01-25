@@ -19,10 +19,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.upperPanel;
 
+import org.miradi.dialogs.planning.ObjectsOnlyRowColumnProvider;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
-import org.miradi.views.planning.ColumnManager;
 import org.miradi.views.planning.RowManager;
 
 public class ObjectsOnlyPlanningTreeTableModel extends ExportablePlanningTreeTableModel
@@ -34,7 +34,7 @@ public class ObjectsOnlyPlanningTreeTableModel extends ExportablePlanningTreeTab
 
 	private static CodeList getVisibleColumnCodes(Project projectToUse) throws Exception
 	{
-		return ColumnManager.getVisibleColumnsForSingleType(projectToUse.getCurrentViewData());
+		return ObjectsOnlyRowColumnProvider.getVisibleColumnsForSingleType(projectToUse.getCurrentViewData());
 	}
 	
 	public static CodeList getVisibleRowCodes(Project projectToUse) throws Exception
