@@ -38,6 +38,49 @@ import org.miradi.utils.CodeList;
 
 public class ColumnManager
 {
+	public static CodeList getVisibleColumnsForSingleType(ViewData viewData)
+	{
+		String propertyName = viewData.getData(ViewData.TAG_PLANNING_SINGLE_LEVEL_CHOICE);
+		if(propertyName.length() == 0)
+			return ColumnManager.getGoalColumns();
+		
+		if (propertyName.equals(Goal.OBJECT_NAME))
+			return ColumnManager.getGoalColumns();
+	
+		if (propertyName.equals(Objective.OBJECT_NAME))
+			return ColumnManager.getObjectiveColumns();
+		
+		if (propertyName.equals(Strategy.OBJECT_NAME))
+			return ColumnManager.getStrategyColumns();
+		
+		if (propertyName.equals(Task.ACTIVITY_NAME))
+			return ColumnManager.getActivityColumns();
+	
+		if (propertyName.equals(Indicator.OBJECT_NAME))
+			return ColumnManager.getIndicatorColumns();
+	
+		if (propertyName.equals(Task.METHOD_NAME))
+			return ColumnManager.getMethodColumns();
+	
+		if (propertyName.equals(Task.OBJECT_NAME))
+			return ColumnManager.getTaskColumns();
+		
+		if (propertyName.equals(Measurement.OBJECT_NAME))
+			return ColumnManager.getMeasurementColumns();
+		
+		if (propertyName.equals(Target.OBJECT_NAME) || propertyName.equals(HumanWelfareTarget.OBJECT_NAME))
+			return ColumnManager.getTargetColumns();
+		
+		if (propertyName.equals(Cause.OBJECT_NAME_THREAT) || propertyName.equals(Cause.OBJECT_NAME_CONTRIBUTING_FACTOR))
+			return ColumnManager.getDirectThreatsColumns();
+		
+		if (propertyName.equals(ResourceAssignment.OBJECT_NAME))
+			return ColumnManager.getAssignmentColumns();
+		
+		EAM.logError("getVisibleColumnsForSingleType unknown choice: " + propertyName);
+		return new CodeList();
+	}
+
 	private static CodeList getGoalColumns()
 	{
 		String[] list = {
@@ -154,46 +197,4 @@ public class ColumnManager
 		return new CodeList(list);
 	}
 
-	public static CodeList getVisibleColumnsForSingleType(ViewData viewData)
-	{
-		String propertyName = viewData.getData(ViewData.TAG_PLANNING_SINGLE_LEVEL_CHOICE);
-		if(propertyName.length() == 0)
-			return ColumnManager.getGoalColumns();
-		
-		if (propertyName.equals(Goal.OBJECT_NAME))
-			return ColumnManager.getGoalColumns();
-	
-		if (propertyName.equals(Objective.OBJECT_NAME))
-			return ColumnManager.getObjectiveColumns();
-		
-		if (propertyName.equals(Strategy.OBJECT_NAME))
-			return ColumnManager.getStrategyColumns();
-		
-		if (propertyName.equals(Task.ACTIVITY_NAME))
-			return ColumnManager.getActivityColumns();
-	
-		if (propertyName.equals(Indicator.OBJECT_NAME))
-			return ColumnManager.getIndicatorColumns();
-	
-		if (propertyName.equals(Task.METHOD_NAME))
-			return ColumnManager.getMethodColumns();
-	
-		if (propertyName.equals(Task.OBJECT_NAME))
-			return ColumnManager.getTaskColumns();
-		
-		if (propertyName.equals(Measurement.OBJECT_NAME))
-			return ColumnManager.getMeasurementColumns();
-		
-		if (propertyName.equals(Target.OBJECT_NAME) || propertyName.equals(HumanWelfareTarget.OBJECT_NAME))
-			return ColumnManager.getTargetColumns();
-		
-		if (propertyName.equals(Cause.OBJECT_NAME_THREAT) || propertyName.equals(Cause.OBJECT_NAME_CONTRIBUTING_FACTOR))
-			return ColumnManager.getDirectThreatsColumns();
-		
-		if (propertyName.equals(ResourceAssignment.OBJECT_NAME))
-			return ColumnManager.getAssignmentColumns();
-		
-		EAM.logError("getVisibleColumnsForSingleType unknown choice: " + propertyName);
-		return new CodeList();
-	}
 }
