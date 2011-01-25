@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-21 14:24-0600\n"
+"POT-Creation-Date: 2011-01-25 13:43-0600\n"
 "PO-Revision-Date: 2010-06-07 17:23-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -8849,12 +8849,6 @@ msgid "FieldLabel|21.ProgressReportRefs|Progress Reports"
 msgstr ""
 
 msgid "FieldLabel|21.LegacyTncStrategyRanking|Legacy Tnc Strategy Ranking"
-msgstr ""
-
-msgid "FieldLabel|21.RelevantGoalSet|Relevant Goals"
-msgstr ""
-
-msgid "FieldLabel|21.RelevantObjectiveSet|Relevant Objectives"
 msgstr ""
 
 msgid "FieldLabel|22.Target|Target"
