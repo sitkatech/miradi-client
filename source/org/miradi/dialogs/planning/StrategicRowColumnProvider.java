@@ -24,6 +24,7 @@ import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.Desire;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Objective;
+import org.miradi.objects.PlanningTreeConfiguration;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
@@ -31,7 +32,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.CodeList;
 
-public class StrategicRowColumnProvider extends PlanningViewRowColumnProvider
+public class StrategicRowColumnProvider extends PlanningViewRowColumnProvider implements PlanningTreeConfiguration
 {	
 	public StrategicRowColumnProvider(Project projectToUse)
 	{
@@ -69,5 +70,15 @@ public class StrategicRowColumnProvider extends PlanningViewRowColumnProvider
 				Goal.OBJECT_NAME,
 				Objective.OBJECT_NAME,
 		});
+	}
+
+	public boolean shouldIncludeResultsChain()
+	{
+		return true;
+	}
+
+	public boolean shouldIncludeConceptualModelPage()
+	{
+		return true;
 	}
 }
