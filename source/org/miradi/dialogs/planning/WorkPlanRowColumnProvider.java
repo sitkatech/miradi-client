@@ -33,11 +33,11 @@ import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.CodeList;
 
-public class WorkPlanRowColumnProvider implements RowColumnProvider
+public class WorkPlanRowColumnProvider extends PlanningViewRowColumnProvider
 {
 	public WorkPlanRowColumnProvider(Project projectToUse)
 	{
-		project = projectToUse;
+		super(projectToUse);
 	}
 	
 	public CodeList getColumnCodesToShow()
@@ -83,10 +83,4 @@ public class WorkPlanRowColumnProvider implements RowColumnProvider
 				});
 	}
 	
-	private Project getProject()
-	{
-		return project;
-	}
-	
-	private Project project;
 }
