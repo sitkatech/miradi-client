@@ -24,12 +24,10 @@ import javax.swing.JComponent;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.planning.upperPanel.rebuilder.TreeRebuilder;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objects.Desire;
 import org.miradi.project.Project;
 import org.miradi.questions.ObjectPoolChoiceQuestion;
@@ -70,18 +68,19 @@ abstract public class AbstractRelevancyOverrideListField extends ObjectDataField
 	@Override
 	public void saveIfNeeded()
 	{
-		CommandVector updateDesireRelevancyRefCommands = new CommandVector();
 		try
 		{
+			CommandVector updateDesireRelevancyRefCommands = new CommandVector();
 			ORefList selectedDesireRefs = new ORefList(relevantDesireRefListEditor.getText());
-			ORefList singleStrategyRefList = new ORefList(getORef());
-			for(int index = 0; index < selectedDesireRefs.size(); ++index)
+			ORefList allDesires = getProject().getPool(desireType).getORefList();
+			for(int index = 0; index < allDesires.size(); ++index)
 			{
-				ORef desireRef = selectedDesireRefs.get(index);
+				ORef desireRef = allDesires.get(index);
 				Desire desire = Desire.findDesire(getProject(), desireRef);
-				RelevancyOverrideSet relevantOverrides = desire.getCalculatedRelevantStrategyActivityOverrides(singleStrategyRefList);
-				CommandSetObjectData setCommand = new CommandSetObjectData(desire, Desire.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevantOverrides.toString());
-				updateDesireRelevancyRefCommands.add(setCommand);
+				if (selectedDesireRefs.contains(desireRef))
+					updateDesireRelevancyRefCommands.addAll(desire.createCommandsToEnsureStrategyIsRelevant(getORef()));
+				else
+					updateDesireRelevancyRefCommands.addAll(desire.createCommandsToEnsureStrategyIsIrrelevant(getORef()));
 			}
 			
 			getProject().executeCommandsAsTransaction(updateDesireRelevancyRefCommands);

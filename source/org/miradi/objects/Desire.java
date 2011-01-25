@@ -33,6 +33,7 @@ import org.miradi.objecthelpers.DirectThreatSet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
+import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.RelevancyOverrideSetData;
 import org.miradi.objecthelpers.TargetSet;
@@ -246,6 +247,49 @@ abstract public class Desire extends BaseObject
 		return new ChainWalker().getDirectlyUpstreamNonDraftStrategies(owningFactor);
 	}
 	
+	public CommandVector createCommandsToEnsureStrategyIsIrrelevant(ORef strategyRef) throws Exception
+	{
+		CommandVector commands = new CommandVector();
+		ORefList defaultRelevantStrategyRefs = getDefaultRelevantStrategyRefs();
+		RelevancyOverrideSet strategyActivityRelevancyOverrideSet = new RelevancyOverrideSet(getStrategyActivityRelevancyOverrideSet());
+		if (!defaultRelevantStrategyRefs.contains(strategyRef) && !strategyActivityRelevancyOverrideSet.contains(strategyRef))
+			return new CommandVector();
+		
+		if (defaultRelevantStrategyRefs.contains(strategyRef) && strategyActivityRelevancyOverrideSet.contains(strategyRef))
+			return new CommandVector();
+		
+		if (defaultRelevantStrategyRefs.contains(strategyRef)&& !strategyActivityRelevancyOverrideSet.contains(strategyRef))
+			strategyActivityRelevancyOverrideSet.add(new RelevancyOverride(strategyRef, false));
+		
+		if (!defaultRelevantStrategyRefs.contains(strategyRef)&& strategyActivityRelevancyOverrideSet.contains(strategyRef))
+			strategyActivityRelevancyOverrideSet.remove(strategyRef);
+
+		commands.add(new CommandSetObjectData(getRef(), TAG_RELEVANT_STRATEGY_ACTIVITY_SET, strategyActivityRelevancyOverrideSet.toString()));
+		
+		return commands;
+	}
+	
+	public CommandVector createCommandsToEnsureStrategyIsRelevant(ORef strategyRef) throws Exception
+	{
+		CommandVector commands = new CommandVector();
+		ORefList defaultRelevantStrategyRefs = getDefaultRelevantStrategyRefs();
+		RelevancyOverrideSet strategyActivityRelevancyOverrideSet = new RelevancyOverrideSet(getStrategyActivityRelevancyOverrideSet());
+		if (defaultRelevantStrategyRefs.contains(strategyRef) && !strategyActivityRelevancyOverrideSet.contains(strategyRef))
+			return new CommandVector();
+
+		if (!defaultRelevantStrategyRefs.contains(strategyRef) && strategyActivityRelevancyOverrideSet.contains(strategyRef))
+			return new CommandVector();
+		
+		if (defaultRelevantStrategyRefs.contains(strategyRef) && strategyActivityRelevancyOverrideSet.contains(strategyRef))
+			strategyActivityRelevancyOverrideSet.remove(strategyRef);
+
+		if (!defaultRelevantStrategyRefs.contains(strategyRef) && !strategyActivityRelevancyOverrideSet.contains(strategyRef))
+			strategyActivityRelevancyOverrideSet.add(new RelevancyOverride(strategyRef, true));
+		
+		commands.add(new CommandSetObjectData(getRef(), TAG_RELEVANT_STRATEGY_ACTIVITY_SET, strategyActivityRelevancyOverrideSet.toString()));
+		return commands;
+	}
+	
 	public RelevancyOverrideSet getCalculatedRelevantIndicatorOverrides(ORefList all) throws Exception
 	{
 		RelevancyOverrideSet relevantOverrides = new RelevancyOverrideSet();
@@ -256,16 +300,21 @@ abstract public class Desire extends BaseObject
 		return relevantOverrides;
 	}
 
-	public RelevancyOverrideSet getCalculatedRelevantStrategyActivityOverrides(ORefList all) throws Exception
+	public RelevancyOverrideSet getCalculatedRelevantStrategyActivityOverrides(ORefList selectedStrategyAndActivityRefs) throws Exception
 	{
 		RelevancyOverrideSet relevantOverrides = new RelevancyOverrideSet();
-		ORefList defaultRelevantRefList = getDirectlyUpstreamNonDraftStrategies();
-		relevantOverrides.addAll(computeRelevancyOverrides(all, defaultRelevantRefList, true));
-		relevantOverrides.addAll(computeRelevancyOverrides(defaultRelevantRefList, all , false));	
+		ORefList defaultRelevantRefList = getDefaultRelevantStrategyRefs();
+		relevantOverrides.addAll(computeRelevancyOverrides(selectedStrategyAndActivityRefs, defaultRelevantRefList, true));
+		relevantOverrides.addAll(computeRelevancyOverrides(defaultRelevantRefList, selectedStrategyAndActivityRefs , false));	
 	
 		return relevantOverrides;
 	}
 
+	private ORefList getDefaultRelevantStrategyRefs() throws Exception
+	{
+		return getDirectlyUpstreamNonDraftStrategies();
+	}
+	
 	public ORefList getRelevantIndicatorRefList() throws Exception
 	{
 		ORefSet relevantRefList = indicatorsOnSameFactorAsRefSet();
@@ -286,7 +335,7 @@ abstract public class Desire extends BaseObject
 
 	public ORefList getRelevantStrategyAndActivityRefs() throws Exception
 	{
-		ORefSet relevantRefList = new ORefSet(getDirectlyUpstreamNonDraftStrategies());
+		ORefSet relevantRefList = new ORefSet(getDefaultRelevantStrategyRefs());
 		RelevancyOverrideSet relevantOverrides = getStrategyActivityRelevancyOverrideSet();
 	
 		return calculateRelevantRefList(relevantRefList, relevantOverrides);
@@ -299,7 +348,7 @@ abstract public class Desire extends BaseObject
 
 	public ORefList getRelevantActivityRefs() throws Exception
 	{
-		ORefSet relevantRefList = new ORefSet(getDirectlyUpstreamNonDraftStrategies());
+		ORefSet relevantRefList = new ORefSet(getDefaultRelevantStrategyRefs());
 		RelevancyOverrideSet relevantOverrides = getStrategyActivityRelevancyOverrideSet();
 	
 		return calculateRelevantRefList(relevantRefList, relevantOverrides).getFilteredBy(Task.getObjectType());
