@@ -249,7 +249,6 @@ abstract public class Desire extends BaseObject
 	
 	public CommandVector createCommandsToEnsureStrategyIsIrrelevant(ORef strategyRef) throws Exception
 	{
-		CommandVector commands = new CommandVector();
 		ORefList defaultRelevantStrategyRefs = getDefaultRelevantStrategyRefs();
 		RelevancyOverrideSet strategyActivityRelevancyOverrideSet = new RelevancyOverrideSet(getStrategyActivityRelevancyOverrideSet());
 		boolean isDefaultRelevant = defaultRelevantStrategyRefs.contains(strategyRef);
@@ -268,6 +267,7 @@ abstract public class Desire extends BaseObject
 		if (needsOverrideRemoved)
 			strategyActivityRelevancyOverrideSet.remove(strategyRef);
 
+		CommandVector commands = new CommandVector();
 		commands.add(new CommandSetObjectData(getRef(), TAG_RELEVANT_STRATEGY_ACTIVITY_SET, strategyActivityRelevancyOverrideSet.toString()));
 		
 		return commands;
@@ -275,7 +275,6 @@ abstract public class Desire extends BaseObject
 	
 	public CommandVector createCommandsToEnsureStrategyIsRelevant(ORef strategyRef) throws Exception
 	{
-		CommandVector commands = new CommandVector();
 		ORefList defaultRelevantStrategyRefs = getDefaultRelevantStrategyRefs();
 		RelevancyOverrideSet strategyActivityRelevancyOverrideSet = new RelevancyOverrideSet(getStrategyActivityRelevancyOverrideSet());
 		boolean isDefaultRelevant = defaultRelevantStrategyRefs.contains(strategyRef);
@@ -294,6 +293,7 @@ abstract public class Desire extends BaseObject
 		if (needsOverrideRemoved)
 			strategyActivityRelevancyOverrideSet.remove(strategyRef);
 		
+		CommandVector commands = new CommandVector();
 		commands.add(new CommandSetObjectData(getRef(), TAG_RELEVANT_STRATEGY_ACTIVITY_SET, strategyActivityRelevancyOverrideSet.toString()));
 	
 		return commands;
