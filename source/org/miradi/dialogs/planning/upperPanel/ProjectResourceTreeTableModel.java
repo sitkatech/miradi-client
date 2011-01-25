@@ -23,7 +23,6 @@ package org.miradi.dialogs.planning.upperPanel;
 import org.miradi.dialogs.planning.ProjectResourceRowColumnProvider;
 import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.treenodes.BaseObjectTreeRootNode;
-import org.miradi.dialogs.planning.treenodes.HiddenRootNodeWithBaseObjectChild;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.objects.ProjectResource;
 import org.miradi.project.Project;
@@ -47,12 +46,6 @@ public class ProjectResourceTreeTableModel extends ExportablePlanningTreeTableMo
 		return new ProjectResourceTreeTableModel(project, projectRootNode, rowColumnProvider.getColumnCodesToShow());
 	}
 	
-	public static ProjectResourceTreeTableModel createOperationalPlanResourceTreeTableModel(Project project, CodeList visibleColumns) throws Exception
-	{
-		TreeTableNode projectRootNode = createHiddenResourceRootNode(project);
-		return new ProjectResourceTreeTableModel(project, projectRootNode, visibleColumns);
-	}
-	
 	public static ProjectResourceTreeTableModel createProjectResourceTreeTableModel(Project project, CodeList visibleColumns, String uniqueTreeTableModeIdentifier) throws Exception
 	{
 		TreeTableNode projectRootNode = createProjectResourceRootNode(project);
@@ -63,11 +56,6 @@ public class ProjectResourceTreeTableModel extends ExportablePlanningTreeTableMo
 	private static TreeTableNode createProjectResourceRootNode(Project project) throws Exception
 	{
 		return new BaseObjectTreeRootNode(project, ProjectResource.getObjectType(), ProjectResource.OBJECT_NAME, getProjectResourceRows(project));
-	}
-	
-	private static TreeTableNode createHiddenResourceRootNode(Project project) throws Exception
-	{
-		return new HiddenRootNodeWithBaseObjectChild(project, ProjectResource.getObjectType(), ProjectResource.OBJECT_NAME, getProjectResourceRows(project));
 	}
 	
 	private static CodeList getProjectResourceRows(Project project)
