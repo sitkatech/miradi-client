@@ -254,10 +254,9 @@ abstract public class Desire extends BaseObject
 		boolean isDefaultRelevant = !defaultRelevantStrategyRefs.contains(strategyRef);
 		boolean shouldBeRelevant = false;
 		RelevancyOverride override = strategyActivityRelevancyOverrideSet.find(strategyRef);
-		boolean isAlreadyCorrectlyOverriden = override != null && override.isOverride() == shouldBeRelevant;
 		boolean needsOverrideRemoved = isDefaultRelevant;
 		
-		return createCommandsToEnsureProperRelevancy(strategyRef, strategyActivityRelevancyOverrideSet, override, isDefaultRelevant, shouldBeRelevant, isAlreadyCorrectlyOverriden, needsOverrideRemoved);
+		return createCommandsToEnsureProperRelevancy(strategyRef, strategyActivityRelevancyOverrideSet, override, isDefaultRelevant, shouldBeRelevant, needsOverrideRemoved);
 	}
 	
 	public CommandVector createCommandsToEnsureStrategyIsRelevant(ORef strategyRef) throws Exception
@@ -267,14 +266,14 @@ abstract public class Desire extends BaseObject
 		boolean isDefaultRelevant = defaultRelevantStrategyRefs.contains(strategyRef);
 		boolean shouldBeRelevant = true;
 		RelevancyOverride override = strategyActivityRelevancyOverrideSet.find(strategyRef);
-		boolean isAlreadyCorrectlyOverriden = override != null && override.isOverride() == shouldBeRelevant;
 		boolean needsOverrideRemoved = isDefaultRelevant;
 		
-		return createCommandsToEnsureProperRelevancy(strategyRef, strategyActivityRelevancyOverrideSet, override, isDefaultRelevant, shouldBeRelevant, isAlreadyCorrectlyOverriden, needsOverrideRemoved);
+		return createCommandsToEnsureProperRelevancy(strategyRef, strategyActivityRelevancyOverrideSet, override, isDefaultRelevant, shouldBeRelevant, needsOverrideRemoved);
 	}
 
-	private CommandVector createCommandsToEnsureProperRelevancy(ORef strategyRef, RelevancyOverrideSet strategyActivityRelevancyOverrideSet, RelevancyOverride override, boolean isDefaultRelevant,	boolean shouldBeRelevant, boolean isAlreadyCorrectlyOverriden, boolean needsOverrideRemoved)
+	private CommandVector createCommandsToEnsureProperRelevancy(ORef strategyRef, RelevancyOverrideSet strategyActivityRelevancyOverrideSet, RelevancyOverride override, boolean isDefaultRelevant,	boolean shouldBeRelevant, boolean needsOverrideRemoved)
 	{
+		boolean isAlreadyCorrectlyOverriden = override != null && override.isOverride() == shouldBeRelevant;
 		if (isAlreadyCorrectlyOverriden)
 			return new CommandVector();
 		
