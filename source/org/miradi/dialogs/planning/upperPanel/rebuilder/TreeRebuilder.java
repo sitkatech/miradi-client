@@ -71,11 +71,12 @@ public class TreeRebuilder
 	public TreeRebuilder(Project projectToUse)
 	{
 		project = projectToUse;
+		rowColumnProvider = new StrategicRowColumnProvider(getProject());
 	}
 	
 	public void rebuildTree(NewAbstractPlanningTreeNode rootNode)
 	{
-		CodeList rows = new StrategicRowColumnProvider(getProject()).getFlippedRowListToShow();
+		CodeList rows = rowColumnProvider.getFlippedRowListToShow();
 		rebuildTree(rootNode, null, rows);
 		pruneUncles(rootNode);
 		pruneUnwantedLayers(rootNode, rows);
@@ -151,10 +152,16 @@ public class TreeRebuilder
 	private ORefList getChildrenOfProjectNode(ORef parentRef) throws Exception
 	{
 		ORefList childRefs = new ORefList();
-		ORefList conceptualModelRefs = getProject().getConceptualModelDiagramPool().getORefList();
-		childRefs.addAll(conceptualModelRefs);
-		ORefList resultsChainRefs = getProject().getResultsChainDiagramPool().getORefList();
-		childRefs.addAll(resultsChainRefs);
+		if(rowColumnProvider.shouldIncludeConceptualModelPage())
+		{
+			ORefList conceptualModelRefs = getProject().getConceptualModelDiagramPool().getORefList();
+			childRefs.addAll(conceptualModelRefs);
+		}
+		if(rowColumnProvider.shouldIncludeResultsChain())
+		{
+			ORefList resultsChainRefs = getProject().getResultsChainDiagramPool().getORefList();
+			childRefs.addAll(resultsChainRefs);
+		}
 		if(shouldTargetsBeAtSameLevelAsDiagrams())
 		{
 			childRefs.addAll(getProject().getTargetPool().getRefList());
@@ -583,4 +590,5 @@ public class TreeRebuilder
 	}
 
 	private Project project;
+	private StrategicRowColumnProvider rowColumnProvider;
 }
