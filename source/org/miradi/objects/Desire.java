@@ -251,12 +251,12 @@ abstract public class Desire extends BaseObject
 	{
 		ORefList defaultRelevantStrategyRefs = getDefaultRelevantStrategyRefs();
 		RelevancyOverrideSet strategyActivityRelevancyOverrideSet = new RelevancyOverrideSet(getStrategyActivityRelevancyOverrideSet());
-		boolean isDefaultRelevant = !defaultRelevantStrategyRefs.contains(strategyRef);
+		boolean isDefaultIrrelevant = !defaultRelevantStrategyRefs.contains(strategyRef);
 		boolean shouldBeRelevant = false;
 		RelevancyOverride override = strategyActivityRelevancyOverrideSet.find(strategyRef);
-		boolean needsOverrideRemoved = isDefaultRelevant;
+		boolean needsOverrideRemoved = isDefaultIrrelevant;
 		
-		return createCommandsToEnsureProperRelevancy(strategyRef, strategyActivityRelevancyOverrideSet, override, isDefaultRelevant, shouldBeRelevant, needsOverrideRemoved);
+		return createCommandsToEnsureProperRelevancy(strategyRef, strategyActivityRelevancyOverrideSet, override, isDefaultIrrelevant, shouldBeRelevant, needsOverrideRemoved);
 	}
 	
 	public CommandVector createCommandsToEnsureStrategyIsRelevant(ORef strategyRef) throws Exception
