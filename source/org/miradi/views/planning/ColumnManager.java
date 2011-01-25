@@ -19,9 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.views.planning;
 
-import org.miradi.dialogs.planning.MonitoringRowColumnProvider;
-import org.miradi.dialogs.planning.StrategicRowColumnProvider;
-import org.miradi.dialogs.planning.WorkPlanRowColumnProvider;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
@@ -160,21 +157,6 @@ public class ColumnManager
 				Indicator.PSEUDO_TAG_FACTOR,
 				};
 		return new CodeList(list);
-	}
-
-	public static CodeList getStrategicPlanColumns()
-	{
-		return new StrategicRowColumnProvider().getColumnCodesToShow();
-	}
-
-	public static CodeList getMonitoringPlanColumns()
-	{
-		return new MonitoringRowColumnProvider().getColumnCodesToShow();
-	}
-
-	public static CodeList getWorkPlanColumns(Project project)
-	{
-		return new WorkPlanRowColumnProvider(project).getColumnCodesToShow();
 	}
 
 	public static CodeList getVisibleColumnsForSingleType(ViewData viewData)
