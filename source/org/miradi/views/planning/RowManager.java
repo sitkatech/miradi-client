@@ -19,26 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.views.planning;
 
-import org.miradi.dialogs.planning.MonitoringRowColumnProvider;
-import org.miradi.dialogs.planning.StrategicRowColumnProvider;
-import org.miradi.dialogs.planning.WorkPlanRowColumnProvider;
-import org.miradi.project.Project;
-import org.miradi.utils.CodeList;
 
 public class RowManager
 {
-	public static CodeList getStrategicPlanRows()
-	{
-		return new StrategicRowColumnProvider().getRowCodesToShow();
-	}
-
-	public static CodeList getMonitoringPlanRows()
-	{
-		return new MonitoringRowColumnProvider().getRowCodesToShow();
-	}
-
-	public static CodeList getWorkPlanRows(Project project)
-	{
-		return new WorkPlanRowColumnProvider(project).getRowCodesToShow();
-	}
 }

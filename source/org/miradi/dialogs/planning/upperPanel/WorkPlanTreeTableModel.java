@@ -30,7 +30,7 @@ public class WorkPlanTreeTableModel extends ExportablePlanningTreeTableModel
 {
 	public WorkPlanTreeTableModel(Project project) throws Exception
 	{
-		super(project, createWorkPlanRootNode(project, RowManager.getWorkPlanRows(project)), RowManager.getWorkPlanRows(project), new WorkPlanRowColumnProvider(project).getColumnCodesToShow(), UNIQUE_TREE_TABLE_IDENTIFIER);
+		super(project, createWorkPlanRootNode(project, new WorkPlanRowColumnProvider(project).getRowCodesToShow()), new WorkPlanRowColumnProvider(project).getRowCodesToShow(), new WorkPlanRowColumnProvider(project).getColumnCodesToShow(), UNIQUE_TREE_TABLE_IDENTIFIER);
 	}
 
 	private static TreeTableNode createWorkPlanRootNode(Project project, CodeList visibleRowCodes) throws Exception
