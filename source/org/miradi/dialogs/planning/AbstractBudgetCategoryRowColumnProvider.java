@@ -22,10 +22,16 @@ package org.miradi.dialogs.planning;
 
 import org.miradi.objects.AbstractBudgetCategoryObject;
 import org.miradi.objects.BaseObject;
+import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 
-abstract public class AbstractBudgetCategoryRowColumnProvider implements WorkPlanCategoryTreeRowColumnProvider
+abstract public class AbstractBudgetCategoryRowColumnProvider extends PlanningViewRowColumnProvider implements WorkPlanCategoryTreeRowColumnProvider
 {
+	public AbstractBudgetCategoryRowColumnProvider(Project projectToUse)
+	{
+		super(projectToUse);
+	}
+
 	public CodeList getColumnCodesToShow()
 	{
 		return new CodeList(new String[] {

@@ -61,7 +61,7 @@ public class FundingSourceManagementConfiguration extends AbstractManagementConf
 	@Override
 	public WorkPlanCategoryTreeRowColumnProvider getRowColumnProvider() throws Exception
 	{
-		return new FundingSourceRowColumnProvider();
+		return new FundingSourceRowColumnProvider(getProject());
 	}
 
 	@Override

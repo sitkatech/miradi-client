@@ -61,7 +61,7 @@ public class ProjectResourceManagementConfiguration extends	AbstractManagementCo
 	@Override
 	public WorkPlanCategoryTreeRowColumnProvider getRowColumnProvider() throws Exception
 	{
-		return new ProjectResourceRowColumnProvider();
+		return new ProjectResourceRowColumnProvider(getProject());
 	}
 
 	@Override

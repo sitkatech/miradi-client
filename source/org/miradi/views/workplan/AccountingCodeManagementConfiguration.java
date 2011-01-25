@@ -63,7 +63,7 @@ public class AccountingCodeManagementConfiguration extends AbstractManagementCon
 	@Override
 	public WorkPlanCategoryTreeRowColumnProvider getRowColumnProvider() throws Exception
 	{
-		return new AccountingCodeRowColumnProvider();
+		return new AccountingCodeRowColumnProvider(getProject());
 	}
 
 	@Override

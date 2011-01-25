@@ -21,9 +21,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning;
 
 import org.miradi.objects.FundingSource;
+import org.miradi.project.Project;
 
 public class FundingSourceCoreRowColumnProvider extends AbstractBudgetCategoryRowColumnProvider
 {
+	public FundingSourceCoreRowColumnProvider(Project projectToUse)
+	{
+		super(projectToUse);
+	}
+
 	@Override
 	protected String getObjectTypeName()
 	{
