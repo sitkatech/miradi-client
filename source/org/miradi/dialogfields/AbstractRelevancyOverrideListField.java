@@ -76,9 +76,7 @@ abstract public class AbstractRelevancyOverrideListField extends ObjectDataField
 			for(int index = 0; index < allDesires.size(); ++index)
 			{
 				ORef desireRef = allDesires.get(index);
-				CommandVector commands = getCommandsToEnsureProperRelevancy(selectedDesireRefs, desireRef);
-				
-				updateDesireRelevancyRefCommands.addAll(commands);
+				updateDesireRelevancyRefCommands.addAll(getCommandsToEnsureProperRelevancy(selectedDesireRefs, desireRef));
 			}
 			
 			getProject().executeCommandsAsTransaction(updateDesireRelevancyRefCommands);
