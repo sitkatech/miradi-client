@@ -253,9 +253,8 @@ abstract public class Desire extends BaseObject
 		RelevancyOverrideSet strategyActivityRelevancyOverrideSet = new RelevancyOverrideSet(getStrategyActivityRelevancyOverrideSet());
 		boolean isDefaultIrrelevant = !defaultRelevantStrategyRefs.contains(strategyRef);
 		boolean shouldBeRelevant = false;
-		boolean needsOverrideRemoved = isDefaultIrrelevant;
 		
-		return createCommandsToEnsureProperRelevancy(strategyRef, strategyActivityRelevancyOverrideSet, isDefaultIrrelevant, shouldBeRelevant, needsOverrideRemoved);
+		return createCommandsToEnsureProperRelevancy(strategyRef, strategyActivityRelevancyOverrideSet, isDefaultIrrelevant, shouldBeRelevant);
 	}
 	
 	public CommandVector createCommandsToEnsureStrategyIsRelevant(ORef strategyRef) throws Exception
@@ -264,12 +263,11 @@ abstract public class Desire extends BaseObject
 		RelevancyOverrideSet strategyActivityRelevancyOverrideSet = new RelevancyOverrideSet(getStrategyActivityRelevancyOverrideSet());
 		boolean isDefaultRelevant = defaultRelevantStrategyRefs.contains(strategyRef);
 		boolean shouldBeRelevant = true;
-		boolean needsOverrideRemoved = isDefaultRelevant;
 		
-		return createCommandsToEnsureProperRelevancy(strategyRef, strategyActivityRelevancyOverrideSet, isDefaultRelevant, shouldBeRelevant, needsOverrideRemoved);
+		return createCommandsToEnsureProperRelevancy(strategyRef, strategyActivityRelevancyOverrideSet, isDefaultRelevant, shouldBeRelevant);
 	}
 
-	private CommandVector createCommandsToEnsureProperRelevancy(ORef strategyRef, RelevancyOverrideSet strategyActivityRelevancyOverrideSet, boolean isDefaultRelevant, boolean shouldBeRelevant,	boolean needsOverrideRemoved)
+	private CommandVector createCommandsToEnsureProperRelevancy(ORef strategyRef, RelevancyOverrideSet strategyActivityRelevancyOverrideSet, boolean isDefaultRelevant, boolean shouldBeRelevant)
 	{
 		RelevancyOverride override = strategyActivityRelevancyOverrideSet.find(strategyRef);
 		boolean isAlreadyCorrectlyOverriden = override != null && override.isOverride() == shouldBeRelevant;
