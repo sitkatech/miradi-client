@@ -88,11 +88,16 @@ public class TestDesire extends ObjectTestCase
 		Desire desire = createDesire(strategyWithObjective);
 		getProject().createFactorLink(strategyWithObjective.getRef(), strategy.getRef());
 		
-		CommandVector commandsToMakeRelevant = desire.createCommandsToEnsureStrategyIsRelevant(strategy.getRef());
+		testFactorDefaultIrrelevantNoOverrideMakeRelevant(strategy, desire);
+	}
+	
+	private void testFactorDefaultIrrelevantNoOverrideMakeRelevant(Factor owner, Desire desire) throws Exception
+	{
+		CommandVector commandsToMakeRelevant = desire.createCommandsToEnsureStrategyIsRelevant(owner.getRef());
 		assertEquals("Should contain exactly one command to make irrelevant strategy with no override, relevant with override?", 1, commandsToMakeRelevant.size());
 		CommandSetObjectData makeRlevantCommand = (CommandSetObjectData) commandsToMakeRelevant.get(0);
 		RelevancyOverrideSet overrides = new RelevancyOverrideSet();
-		overrides.add(new RelevancyOverride(strategy.getRef(), true));
+		overrides.add(new RelevancyOverride(owner.getRef(), true));
 		CommandSetObjectData expectedMakeRelevantCommand = new CommandSetObjectData(desire.getRef(), Desire.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, overrides.toString());
 		assertEquals("Incorrect method to make irrelevant strategy with no override, relevant with override?", makeRlevantCommand, expectedMakeRelevantCommand);
 	}
