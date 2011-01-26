@@ -53,6 +53,7 @@ import org.miradi.actions.ActionDeleteMethod;
 import org.miradi.actions.ActionDeleteOtherNotableSpecies;
 import org.miradi.actions.ActionDeleteProgressPercent;
 import org.miradi.actions.ActionDeleteProgressReport;
+import org.miradi.actions.ActionEditActivityObjectiveRelevancyList;
 import org.miradi.actions.ActionEditEstimatedResource;
 import org.miradi.actions.ActionEditGoalIndicatorRelevancyList;
 import org.miradi.actions.ActionEditGoalStrategyActivityRelevancyList;
@@ -214,6 +215,7 @@ import org.miradi.views.umbrella.doers.DeleteLegacyTncStrategyRankingDoer;
 import org.miradi.views.umbrella.doers.DeleteMethodDoer;
 import org.miradi.views.umbrella.doers.DeleteOtherNotableSpeciesDoer;
 import org.miradi.views.umbrella.doers.DeleteProgressPercentDoer;
+import org.miradi.views.umbrella.doers.EditActivityObjectiveRelevancyListDoer;
 import org.miradi.views.umbrella.doers.EditGoalIndicatorRelevancyListDoer;
 import org.miradi.views.umbrella.doers.EditGoalStrategyActivityRelevacyListDoer;
 import org.miradi.views.umbrella.doers.EditMethodsDoer;
@@ -442,6 +444,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		
 		addDoerToMap(ActionEditStrategyObjectiveRelevancyList.class, new EditStrategyObjectiveRelevancyListDoer());
 		addDoerToMap(ActionEditStrategyGoalRelevancyList.class, new EditStrategyGoalRelevancyListDoer());
+		addDoerToMap(ActionEditActivityObjectiveRelevancyList.class, new EditActivityObjectiveRelevancyListDoer());
 		
 		addDoerToMap(ActionViewLegacyTncStrategtyRanking.class, new ViewLegacyTncStrategyRankingDoer());
 		addDoerToMap(ActionDeleteLegacyTncStrategyRanking.class, new DeleteLegacyTncStrategyRankingDoer());

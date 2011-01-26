@@ -298,6 +298,19 @@ public class TreeRebuilder
 		return relevant;
 	}
 	
+	public static ORefList findAllRelevantDesires(Project projectToUse, ORef parentRef, final int desireType) throws Exception
+	{
+		ORefSet desireRefs = projectToUse.getPool(desireType).getRefSet();
+		ORefList relevant = new ORefList();
+		for(ORef desireRef: desireRefs)
+		{
+			Desire desire = Desire.findDesire(projectToUse, desireRef);
+			if(desire.getRelevantStrategyAndActivityRefs().contains(parentRef))
+				relevant.add(desire.getRef());
+		}
+		return relevant;
+	}
+	
 	private ORefList getChildrenOfDesire(ORef parentRef, DiagramObject diagram) throws Exception
 	{
 		ORefList childRefs = new ORefList();

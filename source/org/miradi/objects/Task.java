@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.dialogs.planning.upperPanel.rebuilder.TreeRebuilder;
 import org.miradi.exceptions.UnknownTaskParentTypeException;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
@@ -31,6 +32,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
@@ -271,7 +273,30 @@ public class Task extends Factor
 		if(fieldTag.equals(PSEUDO_TAG_INDICATOR_LABEL))
 			return getLabelOfTaskParent();
 		
+		if (fieldTag.equals(PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS))
+			return getRelevantObjectivesRefsAsString();
+		
 		return super.getPseudoData(fieldTag);
+	}
+	
+	private String getRelevantObjectivesRefsAsString()
+	{
+		try
+		{
+			return getRelevantObjectiveRefs().toString();
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return "";
+		}
+	}
+	
+	public ORefList getRelevantObjectiveRefs() throws Exception
+	{
+		ORefSet relevantObjectives = new ORefSet(TreeRebuilder.findRelevantObjectives(getProject(), getRef()));
+		RelevancyOverrideSet relevantOverrides = new RelevancyOverrideSet();
+		return calculateRelevantRefList(relevantObjectives, relevantOverrides);
 	}
 
 	public boolean hasSubTasks()
@@ -488,12 +513,14 @@ public class Task extends Factor
 		
 		strategyLabel = new PseudoStringData(PSEUDO_TAG_STRATEGY_LABEL);
 		indicatorLabel = new PseudoStringData(PSEUDO_TAG_INDICATOR_LABEL);
+		relevantObjectiveRefs = new PseudoORefListData(PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS);
 		
 		addField(TAG_SUBTASK_IDS, subtaskIds);
 		addField(TAG_DETAILS, details);
 		
 		addField(PSEUDO_TAG_STRATEGY_LABEL, strategyLabel);
 		addField(PSEUDO_TAG_INDICATOR_LABEL, indicatorLabel);
+		addField(PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS, relevantObjectiveRefs);
 	}
 
 	
@@ -502,6 +529,7 @@ public class Task extends Factor
 	
 	public final static String PSEUDO_TAG_STRATEGY_LABEL = "StrategyLabel";
 	public final static String PSEUDO_TAG_INDICATOR_LABEL = "IndicatorLabel";
+	public static final String PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS = "PseudoRelevantObjectiveRefs";
 	
 	public static final String OBJECT_NAME = "Task";
 	public static final String METHOD_NAME = "Method";
@@ -514,4 +542,5 @@ public class Task extends Factor
 	
 	private PseudoStringData strategyLabel;
 	private PseudoStringData indicatorLabel;
+	private PseudoORefListData relevantObjectiveRefs;
 }
