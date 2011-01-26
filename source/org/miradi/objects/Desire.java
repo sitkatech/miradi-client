@@ -261,23 +261,23 @@ abstract public class Desire extends BaseObject
 		return createCommandsToEnsureProperRelevancy(strategyRef, shouldBeRelevant);
 	}
 
-	private CommandVector createCommandsToEnsureProperRelevancy(ORef strategyRef, boolean shouldBeRelevant) throws Exception
+	private CommandVector createCommandsToEnsureProperRelevancy(ORef ownerRef, boolean shouldBeRelevant) throws Exception
 	{
 		RelevancyOverrideSet strategyActivityRelevancyOverrideSet = new RelevancyOverrideSet(getStrategyActivityRelevancyOverrideSet());
-		RelevancyOverride existingOverride = strategyActivityRelevancyOverrideSet.find(strategyRef);
+		RelevancyOverride existingOverride = strategyActivityRelevancyOverrideSet.find(ownerRef);
 		boolean isAlreadyCorrectlyOverriden = (existingOverride != null) && (existingOverride.isOverride() == shouldBeRelevant);
 		if (isAlreadyCorrectlyOverriden)
 			return new CommandVector();
 		
 		ORefList defaultRelevantStrategyRefs = getDefaultRelevantStrategyRefs();
-		boolean isCorrectDefaultRelevancy = defaultRelevantStrategyRefs.contains(strategyRef) == shouldBeRelevant;
+		boolean isCorrectDefaultRelevancy = defaultRelevantStrategyRefs.contains(ownerRef) == shouldBeRelevant;
 		if (isCorrectDefaultRelevancy && existingOverride == null)
 			return new CommandVector();
 		
 		if (isCorrectDefaultRelevancy)
-			strategyActivityRelevancyOverrideSet.remove(strategyRef);
+			strategyActivityRelevancyOverrideSet.remove(ownerRef);
 		else
-			strategyActivityRelevancyOverrideSet.add(new RelevancyOverride(strategyRef, shouldBeRelevant));
+			strategyActivityRelevancyOverrideSet.add(new RelevancyOverride(ownerRef, shouldBeRelevant));
 		
 		CommandSetObjectData commandToEnsureProperRelevancy = new CommandSetObjectData(getRef(), TAG_RELEVANT_STRATEGY_ACTIVITY_SET, strategyActivityRelevancyOverrideSet.toString());
 		return new CommandVector(commandToEnsureProperRelevancy);
