@@ -109,13 +109,6 @@ public class TestDesire extends ObjectTestCase
 		
 		testFactorDefaultIrrelevantNoOverrideMakeIrrelevant(strategy, desire);
 	}
-
-	private void testFactorDefaultIrrelevantNoOverrideMakeIrrelevant(Factor owner, Desire desire) throws Exception
-	{
-		CommandVector commands = desire.createCommandsToEnsureStrategyIsIrrelevant(owner.getRef());
-		assertTrue("Should not make already irrelevant strategy irrelevant again?", commands.isEmpty());
-	}
-	
 	public void testStrategyDefaultIrrelevantRelevantOverrideMakeIrrelevant() throws Exception
 	{
 		Strategy strategyWithObjective = getProject().createStrategy();
@@ -157,6 +150,12 @@ public class TestDesire extends ObjectTestCase
 		overrides.add(new RelevancyOverride(owner.getRef(), true));
 		CommandSetObjectData expectedMakeRelevantCommand = new CommandSetObjectData(desire.getRef(), Desire.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, overrides.toString());
 		assertEquals("Incorrect method to make irrelevant strategy with no override, relevant with override?", makeRlevantCommand, expectedMakeRelevantCommand);
+	}
+
+	private void testFactorDefaultIrrelevantNoOverrideMakeIrrelevant(Factor owner, Desire desire) throws Exception
+	{
+		CommandVector commands = desire.createCommandsToEnsureStrategyIsIrrelevant(owner.getRef());
+		assertTrue("Should not make already irrelevant strategy irrelevant again?", commands.isEmpty());
 	}
 	
 	protected Desire createDesire(Factor owner) throws Exception
