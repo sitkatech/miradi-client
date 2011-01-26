@@ -117,7 +117,7 @@ public class TestDesire extends ObjectTestCase
 		Desire desire = createDesire(strategyWithObjective);
 		getProject().createFactorLink(strategyWithObjective.getRef(), strategy.getRef());
 		
-		testFactorDefaultIrrelevantRelevantOverrideMakeIrrelevant(strategy,	desire);
+		verifyFactorDefaultIrrelevantRelevantOverrideMakeIrrelevant(strategy,	desire);
 	}
 	
 	public void testActivityDefaultIrrelevantRelevantOverrideMakeIrrelevant() throws Exception
@@ -126,7 +126,7 @@ public class TestDesire extends ObjectTestCase
 		Desire desire = createDesire(strategyWithObjective);
 		Task activity = getProject().createTask(strategyWithObjective);
 			
-		testFactorDefaultIrrelevantRelevantOverrideMakeIrrelevant(activity,	desire);
+		verifyFactorDefaultIrrelevantRelevantOverrideMakeIrrelevant(activity,	desire);
 	}
 	
 	public void testActivityDefaultIrrelevantOverrideRelevantMakeRelevant() throws Exception
@@ -165,7 +165,7 @@ public class TestDesire extends ObjectTestCase
 		assertTrue("Should not make already irrelevant strategy irrelevant again?", commands.isEmpty());
 	}
 	
-	private void testFactorDefaultIrrelevantRelevantOverrideMakeIrrelevant(Factor owner, Desire desire) throws Exception
+	private void verifyFactorDefaultIrrelevantRelevantOverrideMakeIrrelevant(Factor owner, Desire desire) throws Exception
 	{
 		CommandVector makeRelevantCommands = desire.createCommandsToEnsureStrategyIsRelevant(owner.getRef());
 		getProject().executeCommandsAsTransaction(makeRelevantCommands);
