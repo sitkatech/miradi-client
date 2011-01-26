@@ -254,7 +254,7 @@ abstract public class Desire extends BaseObject
 		return createCommandsToEnsureProperRelevancy(ownerRef, shouldBeRelevant);
 	}
 	
-	public CommandVector createCommandsToEnsureStrategyIsRelevant(ORef strategyRef) throws Exception
+	public CommandVector createCommandsToEnsureFactorIsRelevant(ORef strategyRef) throws Exception
 	{
 		boolean shouldBeRelevant = true;
 		

@@ -91,7 +91,7 @@ abstract public class AbstractRelevancyOverrideListField extends ObjectDataField
 	{
 		Desire desire = Desire.findDesire(getProject(), desireRef);
 		if (selectedDesireRefs.contains(desireRef))
-			return  desire.createCommandsToEnsureStrategyIsRelevant(getORef());
+			return  desire.createCommandsToEnsureFactorIsRelevant(getORef());
 		
 		return  desire.createCommandsToEnsureFactorIsIrrelevant(getORef());
 	}
