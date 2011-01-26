@@ -91,6 +91,15 @@ public class TestDesire extends ObjectTestCase
 		testFactorDefaultIrrelevantNoOverrideMakeRelevant(strategy, desire);
 	}
 	
+	public void testActivityDefaultIrrelevantNoOverrideMakeRelevant() throws Exception
+	{
+		Strategy strategyWithObjective = getProject().createStrategy();
+		Task activity = getProject().createTask(strategyWithObjective);
+		Desire desire = createDesire(strategyWithObjective);
+		
+		testFactorDefaultIrrelevantNoOverrideMakeRelevant(activity, desire);
+	}
+	
 	private void testFactorDefaultIrrelevantNoOverrideMakeRelevant(Factor owner, Desire desire) throws Exception
 	{
 		CommandVector commandsToMakeRelevant = desire.createCommandsToEnsureStrategyIsRelevant(owner.getRef());
