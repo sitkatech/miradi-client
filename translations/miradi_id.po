@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-25 13:43-0600\n"
+"POT-Creation-Date: 2011-01-26 12:05-0600\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -1133,6 +1133,7 @@ msgstr "Standar Terbuka CMP "
 #: Miradi/source/org/miradi/actions/ActionEditObjectiveIndicatorRelevancyList.java:34
 #: Miradi/source/org/miradi/actions/ActionManageFactorTags.java:35
 #: Miradi/source/org/miradi/actions/ActionEditStrategyObjectiveRelevancyList.java:36
+#: Miradi/source/org/miradi/actions/ActionEditActivityObjectiveRelevancyList.java:35
 #: Miradi/source/org/miradi/actions/ActionEditGoalIndicatorRelevancyList.java:34
 #: Miradi/source/org/miradi/actions/ActionEditStrategyGoalRelevancyList.java:35
 #: Miradi/source/org/miradi/actions/ActionEditGoalStrategyActivityRelevancyList.java:34
@@ -1948,7 +1949,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:198
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:86
-#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:78
+#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:85
 msgid "Activity"
 msgstr "Aktivitas"
 
@@ -2684,6 +2685,7 @@ msgstr ""
 msgid "Choose Relevant Indicator(s)"
 msgstr "Pilih Indikator(-indikator) yang Relevan "
 
+#: Miradi/source/org/miradi/views/umbrella/doers/EditActivityObjectiveRelevancyListDoer.java:45
 #: Miradi/source/org/miradi/views/umbrella/doers/EditStrategyObjectiveRelevancyListDoer.java:45
 msgid "Choose Relevant Objective(s)"
 msgstr ""
@@ -4902,7 +4904,7 @@ msgstr "Hapus Tag dari %n Item yang Dipilih "
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:146
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:85
-#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:80
+#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:87
 msgid "Method"
 msgstr "Metode"
 
@@ -5171,6 +5173,7 @@ msgstr "Pemilik Tujuan "
 msgid "Objective Relevancy Panel"
 msgstr ""
 
+#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:54
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:89
 msgid "Objectives"
 msgstr ""
@@ -6292,7 +6295,7 @@ msgstr "Subkelas harus menggantikan metode ini. "
 #: Miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:67
 #: Miradi/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:37
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:35
-#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:105
+#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:112
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:131
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:61
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:131
@@ -6384,6 +6387,10 @@ msgstr "Pilih indikator mana yang sesuai dengan sasaran ini "
 #: Miradi/source/org/miradi/actions/ActionEditObjectiveIndicatorRelevancyList.java:40
 msgid "TT|Choose which indicators are relevant to this objective"
 msgstr "Pilih indikator mana yang relevan dengan sasaran ini "
+
+#: Miradi/source/org/miradi/actions/ActionEditActivityObjectiveRelevancyList.java:41
+msgid "TT|Choose which objectives are relevant to this activity"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionEditStrategyObjectiveRelevancyList.java:42
 msgid "TT|Choose which objectives are relevant to this strategy"
@@ -7260,7 +7267,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:202
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:84
-#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:82
+#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:89
 msgid "Task"
 msgstr "Tugas "
 
@@ -7275,7 +7282,7 @@ msgstr ""
 "subtugas-subtugas. Dalam Miradi, tugas diwakili oleh bentuk oval pipih warna "
 "abu-abu."
 
-#: Miradi/source/org/miradi/objects/Task.java:346
+#: Miradi/source/org/miradi/objects/Task.java:371
 msgid "Task does not have a parent"
 msgstr ""
 
