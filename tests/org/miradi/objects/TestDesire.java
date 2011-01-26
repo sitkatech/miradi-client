@@ -140,8 +140,8 @@ public class TestDesire extends ObjectTestCase
 		assertTrue("Should not make already relevant strategy relevant again?", commands.isEmpty());
 	}
 	
-	protected Desire createDesire(Strategy strategy) throws Exception
+	protected Desire createDesire(Factor owner) throws Exception
 	{
-		return getProject().createObjective(strategy);
+		return getProject().createObjective(owner);
 	}
 }
