@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.exceptions.CommandFailedException;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.utils.CommandVector;
@@ -136,11 +137,9 @@ public class TestDesire extends ObjectTestCase
 		Desire desire = createDesire(strategyWithObjective);
 		getProject().createFactorLink(strategyWithObjective.getRef(), strategy.getRef());
 		
-		getProject().executeCommandsAsTransaction(desire.createCommandsToEnsureStrategyIsRelevant(strategy.getRef()));
-		CommandVector commands = desire.createCommandsToEnsureStrategyIsRelevant(strategy.getRef());
-		assertTrue("Should not make already relevant strategy relevant again?", commands.isEmpty());
+		testFactorDefaultIrrelevantOverrideRelevantMakeRelevant(strategy, desire);
 	}
-	
+
 	private void testFactorDefaultIrrelevantNoOverrideMakeRelevant(Factor owner, Desire desire) throws Exception
 	{
 		CommandVector commandsToMakeRelevant = desire.createCommandsToEnsureStrategyIsRelevant(owner.getRef());
@@ -171,6 +170,13 @@ public class TestDesire extends ObjectTestCase
 		RelevancyOverrideSet overrides = new RelevancyOverrideSet();
 		CommandSetObjectData expectedMakeIrrelevantCommand = new CommandSetObjectData(desire.getRef(), Desire.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, overrides.toString());
 		assertEquals("incorrect command to ensure already relevant strategy?", expectedMakeIrrelevantCommand, makeIrrelevantCommand);
+	}
+	
+	private void testFactorDefaultIrrelevantOverrideRelevantMakeRelevant(Strategy owner, Desire desire) throws Exception
+	{
+		getProject().executeCommandsAsTransaction(desire.createCommandsToEnsureStrategyIsRelevant(owner.getRef()));
+		CommandVector commands = desire.createCommandsToEnsureStrategyIsRelevant(owner.getRef());
+		assertTrue("Should not make already relevant strategy relevant again?", commands.isEmpty());
 	}
 	
 	protected Desire createDesire(Factor owner) throws Exception
