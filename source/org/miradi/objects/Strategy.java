@@ -205,16 +205,6 @@ public class Strategy extends Factor
 		return calculateRelevantRefList(relevantGoals, relevantOverrides);
 	}
 	
-	public RelevancyOverrideSet getCalculatedRelevantGoalOverrides(ORefList all) throws Exception
-	{
-		RelevancyOverrideSet relevantOverrides = new RelevancyOverrideSet();
-		ORefList defaultRelevantRefList = getGoalRefs();
-		relevantOverrides.addAll(computeRelevancyOverrides(all, defaultRelevantRefList, true));
-		relevantOverrides.addAll(computeRelevancyOverrides(defaultRelevantRefList, all , false));	
-	
-		return relevantOverrides;
-	}
-
 	public String getTaxonomyCode()
 	{
 		return taxonomyCode.get();
