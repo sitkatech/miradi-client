@@ -21,7 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.exceptions.CommandFailedException;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.utils.CommandVector;
@@ -129,6 +128,15 @@ public class TestDesire extends ObjectTestCase
 			
 		testFactorDefaultIrrelevantRelevantOverrideMakeIrrelevant(activity,	desire);
 	}
+	
+	public void testActivityDefaultIrrelevantOverrideRelevantMakeRelevant() throws Exception
+	{
+		Strategy strategyWithObjective = getProject().createStrategy();
+		Desire desire = createDesire(strategyWithObjective);
+		Task activity = getProject().createTask(strategyWithObjective);
+		
+		testFactorDefaultIrrelevantOverrideRelevantMakeRelevant(activity, desire);
+	}
 
 	public void testStrategyDefaultIrrelevantOverrideRelevantMakeRelevant() throws Exception
 	{
@@ -172,7 +180,7 @@ public class TestDesire extends ObjectTestCase
 		assertEquals("incorrect command to ensure already relevant strategy?", expectedMakeIrrelevantCommand, makeIrrelevantCommand);
 	}
 	
-	private void testFactorDefaultIrrelevantOverrideRelevantMakeRelevant(Strategy owner, Desire desire) throws Exception
+	private void testFactorDefaultIrrelevantOverrideRelevantMakeRelevant(Factor owner, Desire desire) throws Exception
 	{
 		getProject().executeCommandsAsTransaction(desire.createCommandsToEnsureStrategyIsRelevant(owner.getRef()));
 		CommandVector commands = desire.createCommandsToEnsureStrategyIsRelevant(owner.getRef());
