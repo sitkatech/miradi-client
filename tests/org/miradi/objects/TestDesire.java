@@ -107,7 +107,12 @@ public class TestDesire extends ObjectTestCase
 		Desire desire = createDesire(strategyWithObjective);
 		getProject().createFactorLink(strategyWithObjective.getRef(), strategy.getRef());
 		
-		CommandVector commands = desire.createCommandsToEnsureStrategyIsIrrelevant(strategy.getRef());
+		testFactorDefaultIrrelevantNoOverrideMakeIrrelevant(strategy, desire);
+	}
+
+	private void testFactorDefaultIrrelevantNoOverrideMakeIrrelevant(Factor owner, Desire desire) throws Exception
+	{
+		CommandVector commands = desire.createCommandsToEnsureStrategyIsIrrelevant(owner.getRef());
 		assertTrue("Should not make already irrelevant strategy irrelevant again?", commands.isEmpty());
 	}
 	
