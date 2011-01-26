@@ -272,9 +272,8 @@ abstract public class Desire extends BaseObject
 		if (isCorrectDefaultRelevancy && existingOverride == null)
 			return new CommandVector();
 		
-		if (isCorrectDefaultRelevancy)
-			relevancyOverrideSet.remove(ownerRef);
-		else
+		relevancyOverrideSet.remove(ownerRef);
+		if (!isCorrectDefaultRelevancy)
 			relevancyOverrideSet.add(new RelevancyOverride(ownerRef, shouldBeRelevant));
 		
 		CommandSetObjectData commandToEnsureProperRelevancy = new CommandSetObjectData(getRef(), TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevancyOverrideSet.toString());
