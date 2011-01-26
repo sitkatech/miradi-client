@@ -158,7 +158,22 @@ public class TestDesire extends ObjectTestCase
 		
 		verifyFactorDefaultIrrelevantOverrideRelevantMakeRelevant(strategy, desire);
 	}
+	
+	public void testDefaultIrrelevantOverrideIrrelevantMakeRelevant() throws Exception
+	{
+		Strategy strategyWithObjective = getProject().createStrategy();
+		Task activity = getProject().createTask(strategyWithObjective);
+		Desire desire = createDesire(strategyWithObjective);
+		forceIrrelevancyForDefaultIrrelevantFactor(activity, desire);
 
+		CommandVector commandsToEnsureDefaultRelevantIsIrrelevant = desire.createCommandsToEnsureFactorIsRelevant(activity.getRef());
+		assertEquals("Should contain one command to remove incorrect irrelevant override for default irrelevant", 1, commandsToEnsureDefaultRelevantIsIrrelevant.size());
+		
+		CommandSetObjectData setCommand = (CommandSetObjectData) commandsToEnsureDefaultRelevantIsIrrelevant.get(0);
+		CommandSetObjectData expectedCommand = createExpectedRelevancyOverrideCommand(activity, desire, true);
+		assertEquals("Command should only make activity default irrelevant, relevant?", expectedCommand, setCommand);
+	}
+	
 	private void verifyFactorDefaultIrrelevantNoOverrideMakeRelevant(Factor owner, Desire desire) throws Exception
 	{
 		CommandVector commandsToMakeRelevant = desire.createCommandsToEnsureFactorIsRelevant(owner.getRef());
@@ -201,6 +216,11 @@ public class TestDesire extends ObjectTestCase
 	private void forceRelevancyForDefaultRelevantStrategy(Factor factor, Desire desire) throws Exception
 	{
 		forceOverride(factor, desire, true);
+	}
+	
+	private void forceIrrelevancyForDefaultIrrelevantFactor(Factor factor, Desire desire) throws Exception
+	{
+		forceOverride(factor, desire, false);
 	}
 	
 	private void forceOverride(Factor factor, Desire desire, boolean isRelevant) throws Exception
