@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.dialogs.planning.upperPanel.rebuilder.TreeRebuilder;
 import org.miradi.exceptions.UnknownTaskParentTypeException;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
@@ -294,7 +293,7 @@ public class Task extends Factor
 	
 	public ORefList getRelevantObjectiveRefs() throws Exception
 	{
-		ORefSet relevantObjectives = new ORefSet(TreeRebuilder.findRelevantObjectives(getProject(), getRef()));
+		ORefSet relevantObjectives = new ORefSet(Desire.findAllRelevantDesires(getProject(), getRef(), Objective.getObjectType()));
 		RelevancyOverrideSet relevantOverrides = new RelevancyOverrideSet();
 		return calculateRelevantRefList(relevantObjectives, relevantOverrides);
 	}
