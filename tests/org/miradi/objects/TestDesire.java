@@ -36,6 +36,11 @@ public class TestDesire extends ObjectTestCase
 	{
 		Strategy strategy = getProject().createStrategy();
 		Desire desire = createDesire(strategy);
+		testDefaultRelevantNoOverridesMakeIrrelevant(strategy, desire);
+	}
+
+	private void testDefaultRelevantNoOverridesMakeIrrelevant(Strategy strategy, Desire desire) throws Exception
+	{
 		CommandVector createCommandsToEnsureStrategyIsRelevant = desire.createCommandsToEnsureStrategyIsIrrelevant(strategy.getRef());
 		assertEquals("Should contain one command to make default strategy irrelevant?", 1, createCommandsToEnsureStrategyIsRelevant.size());
 		CommandSetObjectData expectedMakeIrrelevantCommand = (CommandSetObjectData) createCommandsToEnsureStrategyIsRelevant.get(0);
