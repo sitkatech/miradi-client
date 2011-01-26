@@ -18,26 +18,26 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.dialogs.base;
+package org.miradi.actions;
 
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.project.Project;
+import org.miradi.main.MainWindow;
 
-public class RelevancyObjectivePanel extends ObjectDataInputPanel
+public class ActionEditActivityObjectiveRelevancyList extends ObjectsAction
 {
-	public RelevancyObjectivePanel(Project projectToUse, ORef orefToUse)
+	public ActionEditActivityObjectiveRelevancyList(MainWindow mainWindow)
 	{
-		super(projectToUse, orefToUse);
-		
-		addField(createObjectiveRelevancyOverrideListField(orefToUse.getObjectType()));
-		
-		updateFieldsFromProject();
+		super(mainWindow, getLabel());
+	}
+
+	private static String getLabel()
+	{
+		return EAM.text("Action|Choose...");
 	}
 
 	@Override
-	public String getPanelDescription()
+	public String getToolTipText()
 	{
-		return EAM.text("Objective Relevancy Panel");
+		return EAM.text("TT|Choose which objectives are relevant to this activity");
 	}
 }

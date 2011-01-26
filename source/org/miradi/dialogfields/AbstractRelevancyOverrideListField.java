@@ -102,7 +102,7 @@ abstract public class AbstractRelevancyOverrideListField extends ObjectDataField
 	{
 		try
 		{
-			ORefList relevantDesireRefs = TreeRebuilder.findRelevantDesires(getProject(), getORef(), desireType);
+			ORefList relevantDesireRefs = TreeRebuilder.findAllRelevantDesires(getProject(), getORef(), desireType);
 			relevantDesireRefListEditor.setText(relevantDesireRefs.toString());
 		}
 		catch(Exception e)

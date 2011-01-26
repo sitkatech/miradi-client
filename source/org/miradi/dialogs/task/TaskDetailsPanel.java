@@ -21,7 +21,9 @@ package org.miradi.dialogs.task;
 
 import javax.swing.Icon;
 
+import org.miradi.actions.ActionEditStrategyObjectiveRelevancyList;
 import org.miradi.actions.Actions;
+import org.miradi.actions.ObjectsAction;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
@@ -46,6 +48,11 @@ public class TaskDetailsPanel extends ObjectDataInputPanel
 		ObjectDataInputField taskIdField = createShortStringField(ObjectType.TASK, Task.TAG_SHORT_LABEL);
 		addFieldsOnOneLine(taskNameLabel, new ObjectDataInputField[] {taskIdField, taskNameField,} );
 		addField(createMultilineField(Task.getObjectType(), Task.TAG_DETAILS));
+		
+		//FIXME urgent - this editor needs to only appear under activity properties panel
+		ObjectsAction relevancyEditAction = actionsToUse.getObjectsAction(ActionEditStrategyObjectiveRelevancyList.class);
+		addFieldWithEditButton(EAM.text("Objectives"), createReadOnlyObjectList(Task.getObjectType(), Task.PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS), createObjectsActionButton(relevancyEditAction, getPicker()));
+		
 		addField(createMultilineField(Task.getObjectType(), Task.TAG_COMMENTS));
 	}
 

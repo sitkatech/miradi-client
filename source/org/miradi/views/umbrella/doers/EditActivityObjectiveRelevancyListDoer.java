@@ -18,26 +18,30 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.dialogs.base;
+package org.miradi.views.umbrella.doers;
 
+import org.miradi.dialogs.base.DisposablePanel;
+import org.miradi.dialogs.base.RelevancyObjectivePanel;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.project.Project;
+import org.miradi.objects.Task;
 
-public class RelevancyObjectivePanel extends ObjectDataInputPanel
+public class EditActivityObjectiveRelevancyListDoer extends	AbstractEditListDoer
 {
-	public RelevancyObjectivePanel(Project projectToUse, ORef orefToUse)
+	@Override
+	protected int getObjectType()
 	{
-		super(projectToUse, orefToUse);
-		
-		addField(createObjectiveRelevancyOverrideListField(orefToUse.getObjectType()));
-		
-		updateFieldsFromProject();
+		return Task.getObjectType();
 	}
 
 	@Override
-	public String getPanelDescription()
+	protected DisposablePanel createEditPanel() throws Exception
 	{
-		return EAM.text("Objective Relevancy Panel");
+		return new RelevancyObjectivePanel(getProject(), getSelectedRef());
+	}
+
+	@Override
+	protected String getDialogTitle()
+	{
+		return EAM.text("Choose Relevant Objective(s)");
 	}
 }
