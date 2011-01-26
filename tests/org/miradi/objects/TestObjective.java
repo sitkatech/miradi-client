@@ -89,11 +89,5 @@ public class TestObjective extends TestDesire
 		
 		ORefList shouldBeEmptyRefList = projectToUse.getPool(annotationType).getRefList();
 		assertTrue("Annotation was not deleted?", shouldBeEmptyRefList.isEmpty());
-	}
-	
-	@Override
-	protected Desire createDesire(Strategy strategyOwner) throws Exception
-	{
-		return getProject().createObjective(strategyOwner);
-	}
+	}	
 }
