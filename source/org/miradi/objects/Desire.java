@@ -268,8 +268,7 @@ abstract public class Desire extends BaseObject
 		if (isAlreadyCorrectlyOverridden(shouldBeRelevant, existingOverride))
 			return new CommandVector();
 		
-		ORefList defaultRelevantStrategyRefs = getDefaultRelevantStrategyRefs();
-		boolean isCorrectDefaultRelevancy = defaultRelevantStrategyRefs.contains(ownerRef) == shouldBeRelevant;
+		boolean isCorrectDefaultRelevancy = getDefaultRelevantStrategyRefs().contains(ownerRef) == shouldBeRelevant;
 		if (isCorrectDefaultRelevancy && existingOverride == null)
 			return new CommandVector();
 		
