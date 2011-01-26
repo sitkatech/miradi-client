@@ -264,14 +264,14 @@ abstract public class Desire extends BaseObject
 	private CommandVector createCommandsToEnsureProperRelevancy(ORef strategyRef, boolean shouldBeRelevant) throws Exception
 	{
 		RelevancyOverrideSet strategyActivityRelevancyOverrideSet = new RelevancyOverrideSet(getStrategyActivityRelevancyOverrideSet());
-		RelevancyOverride override = strategyActivityRelevancyOverrideSet.find(strategyRef);
-		boolean isAlreadyCorrectlyOverriden = (override != null) && (override.isOverride() == shouldBeRelevant);
+		RelevancyOverride existingOverride = strategyActivityRelevancyOverrideSet.find(strategyRef);
+		boolean isAlreadyCorrectlyOverriden = (existingOverride != null) && (existingOverride.isOverride() == shouldBeRelevant);
 		if (isAlreadyCorrectlyOverriden)
 			return new CommandVector();
 		
 		ORefList defaultRelevantStrategyRefs = getDefaultRelevantStrategyRefs();
 		boolean isCorrectDefaultRelevancy = defaultRelevantStrategyRefs.contains(strategyRef) == shouldBeRelevant;
-		if (isCorrectDefaultRelevancy && override == null)
+		if (isCorrectDefaultRelevancy && existingOverride == null)
 			return new CommandVector();
 		
 		if (isCorrectDefaultRelevancy)
