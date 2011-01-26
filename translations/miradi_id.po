@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-26 12:05-0600\n"
+"POT-Creation-Date: 2011-01-26 16:05-0600\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -7282,7 +7282,7 @@ msgstr ""
 "subtugas-subtugas. Dalam Miradi, tugas diwakili oleh bentuk oval pipih warna "
 "abu-abu."
 
-#: Miradi/source/org/miradi/objects/Task.java:371
+#: Miradi/source/org/miradi/objects/Task.java:370
 msgid "Task does not have a parent"
 msgstr ""
 

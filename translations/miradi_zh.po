@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-26 12:05-0600\n"
+"POT-Creation-Date: 2011-01-26 16:05-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -7051,7 +7051,7 @@ msgstr ""
 "任务——指为展开某个活动或实施某个方法所需的专门行动。如果有必要，任务本身可以"
 "分解成亚任务。在Miradi中，任务是以灰色扁椭圆形来代表的。"
 
-#: Miradi/source/org/miradi/objects/Task.java:371
+#: Miradi/source/org/miradi/objects/Task.java:370
 msgid "Task does not have a parent"
 msgstr ""
 
