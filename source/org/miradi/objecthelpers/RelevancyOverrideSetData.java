@@ -40,7 +40,7 @@ public class RelevancyOverrideSetData extends ObjectData
 
 	public RelevancyOverrideSet getRawRelevancyOverrideSet()
 	{
-		return relevancyOverrideSet;
+		return new RelevancyOverrideSet(relevancyOverrideSet);
 	}
 	
 	public ORefSet extractRelevantRefs()
