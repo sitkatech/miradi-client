@@ -192,7 +192,7 @@ public class Strategy extends Factor
 
 	public ORefList getRelevantObjectiveRefs() throws Exception
 	{
-		ORefSet relevantObjectives = new ORefSet(TreeRebuilder.findRelevantObjectives(getProject(), getRef()));
+		ORefSet relevantObjectives = new ORefSet(Desire.findAllRelevantDesires(getProject(), getRef(), Objective.getObjectType()));
 		RelevancyOverrideSet relevantOverrides = new RelevancyOverrideSet();
 		return calculateRelevantRefList(relevantObjectives, relevantOverrides);
 	}
