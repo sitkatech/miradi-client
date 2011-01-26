@@ -35,7 +35,6 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.AccountingCode;
 import org.miradi.objects.BaseObject;
@@ -274,41 +273,15 @@ public class TreeRebuilder
 		relevant.addAll(findRelevantGoals(getProject(), strategyRef));
 		return relevant;
 	}
-
+	
 	public static ORefList findRelevantGoals(Project projectToUse, ORef strategyRef) throws Exception
 	{
-		return findRelevantDesires(projectToUse, strategyRef, Goal.getObjectType());
+		return Desire.findRelevantDesires(projectToUse, strategyRef, Goal.getObjectType());
 	}
 
 	public static ORefList findRelevantObjectives(Project projectToUse, ORef strategyRef) throws Exception
 	{
-		return findRelevantDesires(projectToUse, strategyRef, Objective.getObjectType());
-	}
-
-	public static ORefList findRelevantDesires(Project projectToUse, ORef strategyRef, final int desireType) throws Exception
-	{
-		ORefSet desireRefs = projectToUse.getPool(desireType).getRefSet();
-		ORefList relevant = new ORefList();
-		for(ORef desireRef: desireRefs)
-		{
-			Desire desire = Desire.findDesire(projectToUse, desireRef);
-			if(desire.getRelevantStrategyRefs().contains(strategyRef))
-				relevant.add(desire.getRef());
-		}
-		return relevant;
-	}
-	
-	public static ORefList findAllRelevantDesires(Project projectToUse, ORef parentRef, final int desireType) throws Exception
-	{
-		ORefSet desireRefs = projectToUse.getPool(desireType).getRefSet();
-		ORefList relevant = new ORefList();
-		for(ORef desireRef: desireRefs)
-		{
-			Desire desire = Desire.findDesire(projectToUse, desireRef);
-			if(desire.getRelevantStrategyAndActivityRefs().contains(parentRef))
-				relevant.add(desire.getRef());
-		}
-		return relevant;
+		return Desire.findRelevantDesires(projectToUse, strategyRef, Objective.getObjectType());
 	}
 	
 	private ORefList getChildrenOfDesire(ORef parentRef, DiagramObject diagram) throws Exception
@@ -337,9 +310,6 @@ public class TreeRebuilder
 		childRefs.addAll(task.getSubTaskRefs());
 		return childRefs;
 	}
-
-
-	
 	
 	private void createAndAddChildren(NewAbstractPlanningTreeNode parent, ORefList childRefsToAdd) throws Exception
 	{

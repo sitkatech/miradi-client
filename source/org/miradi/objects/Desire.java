@@ -372,6 +372,32 @@ abstract public class Desire extends BaseObject
 		return removeFromRelevancyListCommands;
 	}
 	
+	public static ORefList findRelevantDesires(Project projectToUse, ORef strategyRef, final int desireType) throws Exception
+	{
+		ORefSet desireRefs = projectToUse.getPool(desireType).getRefSet();
+		ORefList relevant = new ORefList();
+		for(ORef desireRef: desireRefs)
+		{
+			Desire desire = Desire.findDesire(projectToUse, desireRef);
+			if(desire.getRelevantStrategyRefs().contains(strategyRef))
+				relevant.add(desire.getRef());
+		}
+		return relevant;
+	}
+	
+	public static ORefList findAllRelevantDesires(Project projectToUse, ORef parentRef, final int desireType) throws Exception
+	{
+		ORefSet desireRefs = projectToUse.getPool(desireType).getRefSet();
+		ORefList relevant = new ORefList();
+		for(ORef desireRef: desireRefs)
+		{
+			Desire desire = Desire.findDesire(projectToUse, desireRef);
+			if(desire.getRelevantStrategyAndActivityRefs().contains(parentRef))
+				relevant.add(desire.getRef());
+		}
+		return relevant;
+	}
+	
 	private String getLatestProgressPercentDetails()
 	{
 		ProgressPercent latestProgressPercent = getLatestProgressPercent();

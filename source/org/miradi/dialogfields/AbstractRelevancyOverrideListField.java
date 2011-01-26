@@ -24,7 +24,6 @@ import javax.swing.JComponent;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import org.miradi.dialogs.planning.upperPanel.rebuilder.TreeRebuilder;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -102,7 +101,7 @@ abstract public class AbstractRelevancyOverrideListField extends ObjectDataField
 	{
 		try
 		{
-			ORefList relevantDesireRefs = TreeRebuilder.findAllRelevantDesires(getProject(), getORef(), desireType);
+			ORefList relevantDesireRefs = Desire.findAllRelevantDesires(getProject(), getORef(), desireType);
 			relevantDesireRefListEditor.setText(relevantDesireRefs.toString());
 		}
 		catch(Exception e)
