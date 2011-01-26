@@ -109,6 +109,7 @@ public class TestDesire extends ObjectTestCase
 		
 		testFactorDefaultIrrelevantNoOverrideMakeIrrelevant(strategy, desire);
 	}
+	
 	public void testStrategyDefaultIrrelevantRelevantOverrideMakeIrrelevant() throws Exception
 	{
 		Strategy strategyWithObjective = getProject().createStrategy();
@@ -116,12 +117,17 @@ public class TestDesire extends ObjectTestCase
 		Desire desire = createDesire(strategyWithObjective);
 		getProject().createFactorLink(strategyWithObjective.getRef(), strategy.getRef());
 		
-		CommandVector makeRelevantCommands = desire.createCommandsToEnsureStrategyIsRelevant(strategy.getRef());
+		testFactorDefaultIrrelevantRelevantOverrideMakeIrrelevant(strategy,	desire);
+	}
+
+	private void testFactorDefaultIrrelevantRelevantOverrideMakeIrrelevant(Factor owner, Desire desire) throws Exception
+	{
+		CommandVector makeRelevantCommands = desire.createCommandsToEnsureStrategyIsRelevant(owner.getRef());
 		getProject().executeCommandsAsTransaction(makeRelevantCommands);
 		
-		assertTrue("Irrelevant strategy should be relevant?", desire.getRelevantStrategyRefs().contains(strategy.getRef()));
+		assertTrue("Irrelevant strategy should be relevant?", desire.getRelevantStrategyRefs().contains(owner.getRef()));
 		
-		CommandVector makeIrrelevantCommands = desire.createCommandsToEnsureStrategyIsIrrelevant(strategy.getRef());
+		CommandVector makeIrrelevantCommands = desire.createCommandsToEnsureStrategyIsIrrelevant(owner.getRef());
 		assertEquals("Should contain one command to make relevant upstream strategy irrelevant?", 1, makeIrrelevantCommands.size());
 		CommandSetObjectData makeIrrelevantCommand = (CommandSetObjectData) makeIrrelevantCommands.get(0);
 		RelevancyOverrideSet overrides = new RelevancyOverrideSet();
