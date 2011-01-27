@@ -266,7 +266,7 @@ abstract public class Desire extends BaseObject
 		RelevancyOverrideSet relevancyOverrideSet = getStrategyActivityRelevancyOverrideSet();
 		
 		RelevancyOverride existingOverride = relevancyOverrideSet.find(strategyOrActivityRef);
-		if (isAlreadyCorrectlyOverridden(shouldBeRelevant, existingOverride))
+		if (isAlreadyCorrectlyOverridden(existingOverride, shouldBeRelevant))
 			return new CommandVector();
 		
 		boolean isCorrectDefaultRelevancy = isCorrectDefaultRelevancy(strategyOrActivityRef, shouldBeRelevant);
@@ -286,7 +286,7 @@ abstract public class Desire extends BaseObject
 		return getDefaultRelevantStrategyRefs().contains(ownerRef) == shouldBeRelevant;
 	}
 
-	private boolean isAlreadyCorrectlyOverridden(boolean shouldBeRelevant, RelevancyOverride existingOverride)
+	private boolean isAlreadyCorrectlyOverridden(RelevancyOverride existingOverride, boolean shouldBeRelevant)
 	{
 		return (existingOverride != null) && (existingOverride.isOverride() == shouldBeRelevant);
 	}
