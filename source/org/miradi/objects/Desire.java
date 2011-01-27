@@ -497,7 +497,7 @@ abstract public class Desire extends BaseObject
 	public static final String TAG_RELEVANT_STRATEGY_ACTIVITY_SET = "RelevantStrategySet";
 	public static final String TAG_PROGRESS_PERCENT_REFS = "ProgressPrecentRefs";
 	public static final String PSEUDO_TAG_RELEVANT_INDICATOR_REFS = "PseudoRelevantIndicatorRefs";
-	public static final String PSEUDO_TAG_RELEVANT_STRATEGY_ACTIVITY_REFS = "PseudoRelevantStrategyRefs";
+	public static final String PSEUDO_TAG_RELEVANT_STRATEGY_ACTIVITY_REFS = "PseudoDesireRelevantStrategyRefs";
 	public static final String PSEUDO_TAG_RELEVANT_ACTIVITY_REFS = "PseudoRelevantActivityRefs";
 	public static final String PSEUDO_TAG_LATEST_PROGRESS_PERCENT_COMPLETE = "PseudoLatestProgressPercentComplete";
 	public static final String PSEUDO_TAG_LATEST_PROGRESS_PERCENT_DETAILS = "PseudoLatestProgressPercentDetails";

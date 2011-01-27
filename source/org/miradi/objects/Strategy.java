@@ -393,8 +393,8 @@ public class Strategy extends Factor
 	public static final String PSEUDO_TAG_FEASIBILITY_RATING_VALUE = "FeasibilityRatingValue";
 	public static final String PSEUDO_TAG_RATING_SUMMARY_VALUE = "RatingSummaryValue";
 	public static final String PSEUDO_TAG_ACTIVITIES = "PseudoTagActivities";
-	public static final String PSEUDO_TAG_RELEVANT_GOAL_REFS = "PseudoRelevantGoalRefs";
-	public static final String PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS = "PseudoRelevantObjectiveRefs";
+	public static final String PSEUDO_TAG_RELEVANT_GOAL_REFS = "PseudoStrategyRelevantGoalRefs";
+	public static final String PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS = "PseudoStrategyRelevantObjectiveRefs";
 	
 	public static final String OBJECT_NAME = "Strategy";
 	public static final String OBJECT_NAME_DRAFT = "Draft" + Strategy.OBJECT_NAME;
