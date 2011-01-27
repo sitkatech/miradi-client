@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-26 16:05-0600\n"
+"POT-Creation-Date: 2011-01-27 10:22-0600\n"
 "PO-Revision-Date: 2010-05-12 21:01-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -4897,7 +4897,7 @@ msgstr ""
 msgid "Objective Relevancy Panel"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:54
+#: Miradi/source/org/miradi/dialogs/task/ActivityDetailsPanelWithRelevancyOverrideFields.java:41
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:89
 msgid "Objectives"
 msgstr ""
@@ -7182,7 +7182,7 @@ msgstr ""
 msgid "Title|Accounting Code Properties"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/task/ActivityPropertiesPanelWithoutBudgetPanels.java:43
+#: Miradi/source/org/miradi/dialogs/task/ActivityPropertiesPanelWithoutBudgetPanels.java:50
 msgid "Title|Activity Properties"
 msgstr ""
 
