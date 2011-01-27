@@ -109,12 +109,12 @@ public class ViewData extends BaseObject
 		return ObjectTreeTableConfiguration.find(getProject(), getTreeConfigurationRef());
 	}
 	
-	public boolean shouldIncludeResultsChain()
+	public boolean shouldIncludeResultsChain() throws Exception
 	{
 		return getTreeConfiguration().shouldIncludeResultsChain();
 	}
 
-	public boolean shouldIncludeConceptualModelPage()
+	public boolean shouldIncludeConceptualModelPage() throws Exception
 	{
 		return getTreeConfiguration().shouldIncludeConceptualModelPage();
 	}

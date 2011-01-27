@@ -25,13 +25,14 @@ import org.miradi.objects.Desire;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Objective;
+import org.miradi.objects.PlanningTreeConfiguration;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.CodeList;
 
-public class MonitoringRowColumnProvider extends PlanningViewRowColumnProvider
+public class MonitoringRowColumnProvider extends PlanningViewRowColumnProvider implements PlanningTreeConfiguration
 {
 	public MonitoringRowColumnProvider(Project projectToUse)
 	{
@@ -60,4 +61,15 @@ public class MonitoringRowColumnProvider extends PlanningViewRowColumnProvider
 				Objective.OBJECT_NAME,
 				Indicator.OBJECT_NAME, });
 	}
+
+	public boolean shouldIncludeResultsChain() throws Exception
+	{
+		return true;
+	}
+
+	public boolean shouldIncludeConceptualModelPage() throws Exception
+	{
+		return true;
+	}
+
 }

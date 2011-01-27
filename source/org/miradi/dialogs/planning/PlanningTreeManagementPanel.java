@@ -30,6 +30,7 @@ import org.miradi.dialogs.planning.upperPanel.ExportablePlanningTreeTablePanel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
 import org.miradi.icons.PlanningIcon;
 import org.miradi.main.MainWindow;
+import org.miradi.objects.PlanningTreeConfiguration;
 import org.miradi.utils.BufferedImageFactory;
 import org.miradi.utils.TableExporter;
 
@@ -90,7 +91,7 @@ abstract public class PlanningTreeManagementPanel extends ObjectListManagementPa
 		return table;
 	}
 
-	protected PlanningTreeTablePanel createPlanningTreeTablePanel(String uniqueTreeTableModelIdentifier, RowColumnProvider rowColumnProvider) throws Exception
+	protected PlanningTreeTablePanel createPlanningTreeTablePanel(String uniqueTreeTableModelIdentifier, PlanningTreeConfiguration rowColumnProvider) throws Exception
 	{
 		return ExportablePlanningTreeTablePanel.createPlanningTreeTablePanelWithoutButtons(getMainWindow(), rowColumnProvider, uniqueTreeTableModelIdentifier);
 	}
@@ -106,7 +107,7 @@ abstract public class PlanningTreeManagementPanel extends ObjectListManagementPa
 	private PlanningTreeTablePanel createPlanningTreeTablePanelForExport() throws Exception
 	{
 		String uniqueTreeTableModelIdentifier = getPlanningTreeTablePanel().getTree().getTreeTableModel().getUniqueTreeTableModelIdentifier();
-		RowColumnProvider rowColumnProvider = getPlanningTreeTablePanel().getRowColumnProvider();
+		PlanningTreeConfiguration rowColumnProvider = getPlanningTreeTablePanel().getRowColumnProvider();
 		PlanningTreeTablePanel panel = createPlanningTreeTablePanel(uniqueTreeTableModelIdentifier,	rowColumnProvider);
 		panel.becomeActive();
 		

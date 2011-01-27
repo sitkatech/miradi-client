@@ -22,7 +22,6 @@ package org.miradi.rtf.viewExporters;
 import org.miradi.dialogs.AnalysisRowColumnProvider;
 import org.miradi.dialogs.planning.AccountingCodeCoreRowColumnProvider;
 import org.miradi.dialogs.planning.BudgetCategoryOneCoreRowColumnProvider;
-import org.miradi.dialogs.planning.WorkPlanCategoryTreeRowColumnProvider;
 import org.miradi.dialogs.planning.BudgetCategoryTwoCoreRowColumnProvider;
 import org.miradi.dialogs.planning.FundingSourceCoreRowColumnProvider;
 import org.miradi.dialogs.planning.MonitoringRowColumnProvider;
@@ -30,6 +29,7 @@ import org.miradi.dialogs.planning.ProgressReportRowColumnProvider;
 import org.miradi.dialogs.planning.ProjectResourceRowColumnProvider;
 import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.StrategicRowColumnProvider;
+import org.miradi.dialogs.planning.WorkPlanCategoryTreeRowColumnProvider;
 import org.miradi.dialogs.planning.WorkPlanRowColumnProviderWithBudgetColumns;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewMainModelExporter;
 import org.miradi.dialogs.planning.propertiesPanel.WorkPlanBudgetDetailsTableModel;
@@ -44,6 +44,7 @@ import org.miradi.dialogs.treetables.WorkPlanCategoryTreeTableModel;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
+import org.miradi.objects.PlanningTreeConfiguration;
 import org.miradi.project.Project;
 import org.miradi.questions.ReportTemplateContentQuestion;
 import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
@@ -100,7 +101,7 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 		exportTableWithPageBreak(writer, multiExporter, translatedTableName);
 	}
 	
-	public static MultiTableCombinedAsOneExporter createTables(Project project, RowColumnProvider rowColumnProvider) throws Exception
+	public static MultiTableCombinedAsOneExporter createTables(Project project, PlanningTreeConfiguration rowColumnProvider) throws Exception
 	{
 		ExportablePlanningTreeTableModel model = new ExportablePlanningTreeTableModel(project, rowColumnProvider, AbstractTableExporter.NO_UNIQUE_MODEL_IDENTIFIER);
 		
@@ -145,7 +146,7 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 		return multiModelExporter;
 	}
 	
-	private void exportReport(RtfWriter writer, RowColumnProvider rowColumnProvider, String translatedTableName) throws Exception
+	private void exportReport(RtfWriter writer, PlanningTreeConfiguration rowColumnProvider, String translatedTableName) throws Exception
 	{
 		exportTableWithPageBreak(writer, createTables(getProject(), rowColumnProvider), translatedTableName);
 	}

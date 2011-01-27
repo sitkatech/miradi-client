@@ -33,11 +33,6 @@ public class ConfigurablePlanningTreeTableModel extends ExportablePlanningTreeTa
 		super(project, createConfigurablePlanningTreeRootNode(project), new ConfigurableRowColumnProvider(project), UNIQUE_TREE_TABLE_IDENTIFIER);
 	}
 
-	private static CodeList getVisibleColumnCodes(Project projectToUse) throws Exception
-	{
-		return new ConfigurableRowColumnProvider(projectToUse).getColumnCodesToShow();
-	}
-	
 	public static CodeList getVisibleRowCodes(Project projectToUse) throws Exception
 	{
 		return new ConfigurableRowColumnProvider(projectToUse).getRowCodesToShow();
@@ -48,13 +43,6 @@ public class ConfigurablePlanningTreeTableModel extends ExportablePlanningTreeTa
 		return new HiddenConfigurableProjectRootNode(projectToUse, getVisibleRowCodes(projectToUse));
 	}
 
-	@Override
-	public void updateColumnsToShow() throws Exception
-	{
-		CodeList visibleColumnCodes = getVisibleColumnCodes(getProject());
-		updateColumnsToShow(visibleColumnCodes);
-	}
-	
 	@Override
 	public CodeList getRowCodesToShow()
 	{

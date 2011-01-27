@@ -33,7 +33,6 @@ import javax.swing.event.TableColumnModelEvent;
 import javax.swing.event.TableColumnModelListener;
 
 import org.miradi.dialogs.base.EditableObjectTableModel;
-import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.propertiesPanel.AboveBudgetColumnsBar;
 import org.miradi.dialogs.planning.propertiesPanel.AbstractFixedHeightDirectlyAboveTreeTablePanel;
 import org.miradi.dialogs.planning.propertiesPanel.AbstractWorkUnitsTableModel;
@@ -55,6 +54,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
+import org.miradi.objects.PlanningTreeConfiguration;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 import org.miradi.utils.CodeList;
@@ -66,12 +66,12 @@ import org.miradi.utils.TreeTableExporter;
 
 abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 {
-	protected PlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTable treeToUse, GenericTreeTableModel modelToUse, Class[] buttonActions, RowColumnProvider rowColumnProviderToUse) throws Exception
+	protected PlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTable treeToUse, GenericTreeTableModel modelToUse, Class[] buttonActions, PlanningTreeConfiguration rowColumnProviderToUse) throws Exception
 	{
 		this(mainWindowToUse, treeToUse, modelToUse, buttonActions, rowColumnProviderToUse, new AbstractFixedHeightDirectlyAboveTreeTablePanel());
 	}
 	
-	protected PlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTable treeToUse, GenericTreeTableModel modelToUse, Class[] buttonActions, RowColumnProvider rowColumnProviderToUse, JComponent filterStatusPanelToUse) throws Exception
+	protected PlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTable treeToUse, GenericTreeTableModel modelToUse, Class[] buttonActions, PlanningTreeConfiguration rowColumnProviderToUse, JComponent filterStatusPanelToUse) throws Exception
 	{
 		super(mainWindowToUse, treeToUse, buttonActions);
 		
@@ -173,7 +173,6 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		// only rebuild the columns or the rows rather than always doing both
 	
 		// NOTE: The following rebuild the columns but don't touch the tree
-		getTreeTableModel().updateColumnsToShow();
 		tree.rebuildTableCompletely();
 
 		updateResourceFilter();
@@ -294,7 +293,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		return mainTable;
 	}
 	
-	public RowColumnProvider getRowColumnProvider()
+	public PlanningTreeConfiguration getRowColumnProvider()
 	{
 		return rowColumnProvider;
 	}
@@ -476,7 +475,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		private int column;
 	}
 	
-	private RowColumnProvider rowColumnProvider;
+	private PlanningTreeConfiguration rowColumnProvider;
 	private PlanningViewMainTableModel mainModel;
 	private PlanningTreeMultiTableModel multiModel;
 	private PlanningUpperMultiTable mainTable;

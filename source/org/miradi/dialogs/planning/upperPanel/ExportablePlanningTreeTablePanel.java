@@ -20,9 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel;
 
 
-import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.main.MainWindow;
+import org.miradi.objects.PlanningTreeConfiguration;
 
 public class ExportablePlanningTreeTablePanel extends PlanningTreeTablePanel
 {
@@ -30,18 +30,18 @@ public class ExportablePlanningTreeTablePanel extends PlanningTreeTablePanel
 											   PlanningTreeTable treeToUse, 
 											   GenericTreeTableModel modelToUse,
 											   Class[] buttonActions,
-											   RowColumnProvider rowColumnProvider) throws Exception
+											   PlanningTreeConfiguration rowColumnProvider) throws Exception
 	{
 		super(mainWindowToUse, treeToUse, modelToUse, buttonActions, rowColumnProvider);
 	}
 
-	public static PlanningTreeTablePanel createPlanningTreeTablePanelWithoutButtons(MainWindow mainWindowToUse, RowColumnProvider rowColumnProvider, String uniqueTreeTableModelIdentifier) throws Exception
+	public static PlanningTreeTablePanel createPlanningTreeTablePanelWithoutButtons(MainWindow mainWindowToUse, PlanningTreeConfiguration rowColumnProvider, String uniqueTreeTableModelIdentifier) throws Exception
 	{
 		PlanningTreeTableModel model = new ExportablePlanningTreeTableModel(mainWindowToUse.getProject(), rowColumnProvider, uniqueTreeTableModelIdentifier);
 		return createPlanningTreeTablePanelWithoutButtonsForExporting(mainWindowToUse, rowColumnProvider, model);
 	}
 
-	public static PlanningTreeTablePanel createPlanningTreeTablePanelWithoutButtonsForExporting(MainWindow mainWindowToUse, RowColumnProvider rowColumnProvider, GenericTreeTableModel model) throws Exception
+	public static PlanningTreeTablePanel createPlanningTreeTablePanelWithoutButtonsForExporting(MainWindow mainWindowToUse, PlanningTreeConfiguration rowColumnProvider, GenericTreeTableModel model) throws Exception
 	{
 		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse, model);
 		ExportablePlanningTreeTablePanel exportablePlanningTreeTablePanel = new ExportablePlanningTreeTablePanel(mainWindowToUse, treeTable, model, new Class[0], rowColumnProvider);

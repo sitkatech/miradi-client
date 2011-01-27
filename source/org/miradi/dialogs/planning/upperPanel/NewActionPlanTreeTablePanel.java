@@ -24,10 +24,10 @@ import org.miradi.actions.ActionCollapseAllRows;
 import org.miradi.actions.ActionCreateCustomFromCurrentTreeTableConfiguration;
 import org.miradi.actions.ActionExpandAllRows;
 import org.miradi.actions.ActionPlanningCreationMenu;
-import org.miradi.dialogs.planning.RowColumnProvider;
-import org.miradi.dialogs.planning.StrategicRowColumnProvider;
+import org.miradi.dialogs.planning.ConfigurableRowColumnProvider;
 import org.miradi.dialogs.planning.treenodes.NewPlanningRootNode;
 import org.miradi.main.MainWindow;
+import org.miradi.objects.PlanningTreeConfiguration;
 
 
 public class NewActionPlanTreeTablePanel extends PlanningTreeTablePanel
@@ -36,17 +36,17 @@ public class NewActionPlanTreeTablePanel extends PlanningTreeTablePanel
 			PlanningTreeTable treeToUse, 
 			PlanningTreeTableModel modelToUse,
 			Class[] buttonActions, 
-			RowColumnProvider rowColumnProvider) throws Exception
+			PlanningTreeConfiguration rowColumnProvider) throws Exception
 	{
 		super(mainWindowToUse, treeToUse, modelToUse, buttonActions, rowColumnProvider);
 	}
 
 	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse) throws Exception
 	{
+		PlanningTreeConfiguration rowColumnProvider = new ConfigurableRowColumnProvider(mainWindowToUse.getProject());
 		NewPlanningRootNode rootNode = new NewPlanningRootNode(mainWindowToUse.getProject());
-		PlanningTreeTableModel model = new NewActionPlanTreeTableModel(mainWindowToUse.getProject(), rootNode);
+		PlanningTreeTableModel model = new NewActionPlanTreeTableModel(mainWindowToUse.getProject(), rowColumnProvider, rootNode);
 		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse, model);
-		StrategicRowColumnProvider rowColumnProvider = new StrategicRowColumnProvider(mainWindowToUse.getProject());
 
 		return new ActionPlanTreeTablePanel(mainWindowToUse, treeTable, model, getButtonActions(), rowColumnProvider);
 	}

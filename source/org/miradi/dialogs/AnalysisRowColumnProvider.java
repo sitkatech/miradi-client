@@ -59,6 +59,16 @@ public class AnalysisRowColumnProvider implements WorkPlanCategoryTreeRowColumnP
 		});
 	}
 	
+	public boolean shouldIncludeResultsChain() throws Exception
+	{
+		return true;
+	}
+
+	public boolean shouldIncludeConceptualModelPage() throws Exception
+	{
+		return true;
+	}
+
 	public boolean shouldIncludeEmptyRows()
 	{
 		return false;

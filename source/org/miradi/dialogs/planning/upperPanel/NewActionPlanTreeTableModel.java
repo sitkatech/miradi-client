@@ -20,17 +20,17 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.upperPanel;
 
-import org.miradi.dialogs.planning.StrategicRowColumnProvider;
 import org.miradi.dialogs.planning.treenodes.NewPlanningRootNode;
 import org.miradi.dialogs.planning.upperPanel.rebuilder.TreeRebuilder;
 import org.miradi.main.EAM;
+import org.miradi.objects.PlanningTreeConfiguration;
 import org.miradi.project.Project;
 
 public class NewActionPlanTreeTableModel extends ExportablePlanningTreeTableModel
 {
-	public NewActionPlanTreeTableModel(Project projectToUse, NewPlanningRootNode rootNode) throws Exception
+	public NewActionPlanTreeTableModel(Project projectToUse, PlanningTreeConfiguration rowColumnProvider, NewPlanningRootNode rootNode) throws Exception
 	{
-		super(projectToUse, rootNode, new StrategicRowColumnProvider(projectToUse), UNIQUE_TREE_TABLE_IDENTIFIER);
+		super(projectToUse, rootNode, rowColumnProvider, UNIQUE_TREE_TABLE_IDENTIFIER);
 	}
 	
 	@Override
@@ -44,7 +44,8 @@ public class NewActionPlanTreeTableModel extends ExportablePlanningTreeTableMode
 	{
 		try
 		{
-			new TreeRebuilder(getProject()).rebuildTree((NewPlanningRootNode)getRootNode());
+			TreeRebuilder treeRebuilder = new TreeRebuilder(getProject(), getRowColumnProvider());
+			treeRebuilder.rebuildTree((NewPlanningRootNode)getRootNode());
 		}
 		catch(Exception e)
 		{

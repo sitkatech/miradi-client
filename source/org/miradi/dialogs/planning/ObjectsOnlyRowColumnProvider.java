@@ -28,6 +28,7 @@ import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
+import org.miradi.objects.PlanningTreeConfiguration;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
@@ -37,7 +38,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.CodeList;
 
-public class ObjectsOnlyRowColumnProvider extends PlanningViewRowColumnProvider
+public class ObjectsOnlyRowColumnProvider extends PlanningViewRowColumnProvider implements PlanningTreeConfiguration
 {
 	public ObjectsOnlyRowColumnProvider(Project project)
 	{
@@ -52,6 +53,16 @@ public class ObjectsOnlyRowColumnProvider extends PlanningViewRowColumnProvider
 	public CodeList getRowCodesToShow() throws Exception
 	{
 		return getVisibleRowsForSingleType(getCurrentViewData());
+	}
+
+	public boolean shouldIncludeResultsChain() throws Exception
+	{
+		return true;
+	}
+
+	public boolean shouldIncludeConceptualModelPage() throws Exception
+	{
+		return true;
 	}
 
 	private CodeList getVisibleRowsForSingleType(ViewData viewData)

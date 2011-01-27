@@ -20,10 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning;
 
+import org.miradi.objects.PlanningTreeConfiguration;
 import org.miradi.utils.CodeList;
 
 
-public interface WorkPlanCategoryTreeRowColumnProvider extends RowColumnProvider
+public interface WorkPlanCategoryTreeRowColumnProvider extends PlanningTreeConfiguration
 {
 	public boolean shouldIncludeEmptyRows();
 	

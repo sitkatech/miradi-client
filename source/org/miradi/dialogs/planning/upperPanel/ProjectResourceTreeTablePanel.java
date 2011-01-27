@@ -22,9 +22,9 @@ package org.miradi.dialogs.planning.upperPanel;
 
 import org.miradi.actions.ActionCreateResource;
 import org.miradi.actions.ActionDeleteResource;
-import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
+import org.miradi.objects.PlanningTreeConfiguration;
 import org.miradi.objects.ProjectResource;
 
 public class ProjectResourceTreeTablePanel  extends PlanningTreeTablePanel
@@ -33,14 +33,14 @@ public class ProjectResourceTreeTablePanel  extends PlanningTreeTablePanel
 			PlanningTreeTable treeToUse, 
 			PlanningTreeTableModel modelToUse,
 			Class[] buttonClasses,
-			RowColumnProvider rowColumnProvider
+			PlanningTreeConfiguration rowColumnProvider
 	) throws Exception
 	{
 		super(mainWindowToUse, treeToUse, modelToUse, buttonClasses, rowColumnProvider);
 
 	}
 
-	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTableModel model, RowColumnProvider rowColumnProvider) throws Exception
+	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTableModel model, PlanningTreeConfiguration rowColumnProvider) throws Exception
 	{
 		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse, model);
 

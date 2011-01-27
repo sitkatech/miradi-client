@@ -24,10 +24,10 @@ import org.miradi.actions.ActionDeletePlanningViewTreeNode;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.planning.ObjectsOnlyRowColumnProvider;
 import org.miradi.dialogs.planning.PlanningViewObjectsOnlyDropDownPanel;
-import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.objects.PlanningTreeConfiguration;
 import org.miradi.objects.ViewData;
 
 public class ObjectsOnlyPlanningTreeTablePanel extends PlanningTreeTablePanel
@@ -35,7 +35,7 @@ public class ObjectsOnlyPlanningTreeTablePanel extends PlanningTreeTablePanel
 	protected ObjectsOnlyPlanningTreeTablePanel(MainWindow mainWindowToUse,
 												PlanningTreeTable treeToUse, 
 												PlanningTreeTableModel modelToUse, 
-												RowColumnProvider rowColumnProvider, Class[] buttonActions
+												PlanningTreeConfiguration rowColumnProvider, Class[] buttonActions
 												) throws Exception
 	{
 		super(mainWindowToUse, treeToUse, modelToUse, buttonActions, rowColumnProvider);
