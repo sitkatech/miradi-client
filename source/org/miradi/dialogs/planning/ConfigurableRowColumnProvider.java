@@ -29,7 +29,7 @@ import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.StringList;
 
-public class ConfigurableRowColumnProvider extends PlanningViewRowColumnProvider
+public class ConfigurableRowColumnProvider extends PlanningViewRowColumnProvider implements PlanningTreeConfiguration
 {
 	public ConfigurableRowColumnProvider(Project projectToUse)
 	{
@@ -84,6 +84,32 @@ public class ConfigurableRowColumnProvider extends PlanningViewRowColumnProvider
 			EAM.errorDialog("Error: Unable to read customized columns");
 			return new CodeList();
 		}
+	}
+
+	public boolean shouldIncludeResultsChain() throws Exception
+	{
+		PlanningTreeConfiguration customization = getCurrentCustomization();
+		if(customization == null)
+			return false;
+		return customization.shouldIncludeResultsChain();
+	}
+
+	public boolean shouldIncludeConceptualModelPage() throws Exception
+	{
+		PlanningTreeConfiguration customization = getCurrentCustomization();
+		if(customization == null)
+			return false;
+		return customization.shouldIncludeConceptualModelPage();
+	}
+
+	private PlanningTreeConfiguration getCurrentCustomization() throws Exception
+	{
+		ViewData viewData = getCurrentViewData();
+		ORef customizationRef = viewData.getORef(ViewData.TAG_TREE_CONFIGURATION_REF);
+		if(customizationRef.isInvalid())
+			return null;
+		PlanningTreeConfiguration customization = (PlanningTreeConfiguration)viewData.getProject().findObject(customizationRef);
+		return customization;
 	}
 
 	private static void omitUnknownColumnTagsInPlace(Project project, CodeList rawCodes)

@@ -23,10 +23,11 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Objective;
+import org.miradi.objects.PlanningTreeConfiguration;
 import org.miradi.objects.Task;
 import org.miradi.utils.CodeList;
 
-public class ProgressReportRowColumnProvider implements RowColumnProvider
+public class ProgressReportRowColumnProvider implements RowColumnProvider, PlanningTreeConfiguration
 {
 	public CodeList getRowCodesToShow()
 	{
@@ -44,5 +45,15 @@ public class ProgressReportRowColumnProvider implements RowColumnProvider
 				BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
 				BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS,
 		});
+	}
+
+	public boolean shouldIncludeResultsChain() throws Exception
+	{
+		return true;
+	}
+
+	public boolean shouldIncludeConceptualModelPage() throws Exception
+	{
+		return true;
 	}
 }

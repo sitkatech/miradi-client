@@ -27,12 +27,12 @@ import org.miradi.actions.ActionPlanningCreationMenu;
 import org.miradi.actions.ActionTreeNodeDown;
 import org.miradi.actions.ActionTreeNodeUp;
 import org.miradi.actions.ActionWorkPlanBudgetColumnsEditor;
-import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.WorkPlanRowColumnProvider;
 import org.miradi.dialogs.planning.propertiesPanel.AbstractFixedHeightDirectlyAboveTreeTablePanel;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
+import org.miradi.objects.PlanningTreeConfiguration;
 import org.miradi.objects.TableSettings;
 
 import com.jhlabs.awt.GridLayoutPlus;
@@ -43,7 +43,7 @@ public class WorkPlanTreeTablePanel extends PlanningTreeTablePanel
 									 PlanningTreeTable treeToUse,
 									 PlanningTreeTableModel modelToUse,
 									 Class[] buttonActions,
-									 RowColumnProvider rowColumnProvider, 
+									 PlanningTreeConfiguration rowColumnProvider, 
 									 AbstractFixedHeightDirectlyAboveTreeTablePanel filterStatusPanelToUse) throws Exception
 	{
 		super(mainWindowToUse, treeToUse, modelToUse, buttonActions, rowColumnProvider, filterStatusPanelToUse);

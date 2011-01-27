@@ -22,7 +22,6 @@ package org.miradi.views.workplan;
 import javax.swing.Icon;
 
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
-import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningTreeMultiPropertiesPanel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
 import org.miradi.dialogs.planning.upperPanel.WorkPlanTreeTablePanel;
@@ -30,6 +29,7 @@ import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.PlanningTreeConfiguration;
 
 class WorkPlanManagementPanel extends PlanningTreeManagementPanel
 {
@@ -65,7 +65,7 @@ class WorkPlanManagementPanel extends PlanningTreeManagementPanel
 	}
 	
 	@Override
-	protected PlanningTreeTablePanel createPlanningTreeTablePanel(String uniqueTreeTableModelIdentifier, RowColumnProvider rowColumnProvider) throws Exception
+	protected PlanningTreeTablePanel createPlanningTreeTablePanel(String uniqueTreeTableModelIdentifier, PlanningTreeConfiguration rowColumnProvider) throws Exception
 	{
 		return WorkPlanTreeTablePanel.createPlanningTreeTablePanel(getMainWindow());
 	}

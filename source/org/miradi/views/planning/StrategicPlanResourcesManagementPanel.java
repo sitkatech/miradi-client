@@ -22,7 +22,6 @@ package org.miradi.views.planning;
 
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
 import org.miradi.dialogs.planning.ProjectResourceCoreRowColumnProvider;
-import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningTreeMultiPropertiesPanel;
 import org.miradi.dialogs.planning.upperPanel.ExportablePlanningTreeTablePanel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTableModel;
@@ -32,6 +31,7 @@ import org.miradi.dialogs.planning.upperPanel.ProjectResourceTreeTablePanel;
 import org.miradi.dialogs.strategicPlan.ActionPlanMultiPropertiesPanel;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.PlanningTreeConfiguration;
 
 public class StrategicPlanResourcesManagementPanel extends ProjectResourceManagementPanel
 {
@@ -43,7 +43,7 @@ public class StrategicPlanResourcesManagementPanel extends ProjectResourceManage
 		super(mainWindowToUse, planningTreeTablePanel, planningTreePropertiesPanel);
 	}
 
-	protected PlanningTreeTablePanel createPlanningTreeTablePanel(String uniqueTreeTableModelIdentifier, RowColumnProvider rowColumnProvider) throws Exception
+	protected PlanningTreeTablePanel createPlanningTreeTablePanel(String uniqueTreeTableModelIdentifier, PlanningTreeConfiguration rowColumnProvider) throws Exception
 	{
 		PlanningTreeTableModel model = ProjectResourceTreeTableModel.createProjectResourceTreeTableModel(getProject(), rowColumnProvider);
 		return ExportablePlanningTreeTablePanel.createPlanningTreeTablePanelWithoutButtonsForExporting(getMainWindow(), rowColumnProvider, model);
@@ -51,7 +51,7 @@ public class StrategicPlanResourcesManagementPanel extends ProjectResourceManage
 	
 	public static PlanningTreeManagementPanel createProjectResourcesPanelWithoutBudgetColumns(MainWindow mainWindowToUse) throws Exception
 	{
-		RowColumnProvider rowColumnProvider = new ProjectResourceCoreRowColumnProvider();
+		PlanningTreeConfiguration rowColumnProvider = new ProjectResourceCoreRowColumnProvider();
 		PlanningTreeTableModel treeTableModel = ProjectResourceTreeTableModel.createProjectResourceTreeTableModel(mainWindowToUse.getProject(), rowColumnProvider);
 		PlanningTreeTablePanel treeTablePanel = ProjectResourceTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, treeTableModel, rowColumnProvider);
 		PlanningTreeMultiPropertiesPanel propertiesPanel = new ActionPlanMultiPropertiesPanel(mainWindowToUse, ORef.INVALID);

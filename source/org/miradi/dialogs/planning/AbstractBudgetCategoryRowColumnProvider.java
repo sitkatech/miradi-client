@@ -47,6 +47,16 @@ abstract public class AbstractBudgetCategoryRowColumnProvider extends PlanningVi
 		});
 	}
 	
+	public boolean shouldIncludeResultsChain() throws Exception
+	{
+		return true;
+	}
+
+	public boolean shouldIncludeConceptualModelPage() throws Exception
+	{
+		return true;
+	}
+
 	public boolean shouldIncludeEmptyRows()
 	{
 		return true;

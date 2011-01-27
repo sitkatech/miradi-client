@@ -21,18 +21,18 @@ package org.miradi.dialogs.planning.upperPanel;
 
 import javax.swing.tree.TreePath;
 
-import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.PlanningTreeConfiguration;
 import org.miradi.project.Project;
 
 public class ExportablePlanningTreeTableModel extends PlanningTreeTableModel implements RowColumnBaseObjectProvider
 {
-	public ExportablePlanningTreeTableModel(Project projectToUse, TreeTableNode rootNode, RowColumnProvider rowColumnProvider, String uniqueTreeTableModelIdentifierToUse) throws Exception
+	public ExportablePlanningTreeTableModel(Project projectToUse, TreeTableNode rootNode, PlanningTreeConfiguration rowColumnProvider, String uniqueTreeTableModelIdentifierToUse) throws Exception
 	{
 		super(projectToUse, rootNode, rowColumnProvider);
 		
@@ -40,7 +40,7 @@ public class ExportablePlanningTreeTableModel extends PlanningTreeTableModel imp
 		setRowObjectRefs();
 	}
 	
-	public ExportablePlanningTreeTableModel(Project projectToUse, RowColumnProvider rowColumnProvider, String uniqueTreeTableModelIdentifierToUse) throws Exception
+	public ExportablePlanningTreeTableModel(Project projectToUse, PlanningTreeConfiguration rowColumnProvider, String uniqueTreeTableModelIdentifierToUse) throws Exception
 	{
 		super(projectToUse, rowColumnProvider);
 		

@@ -25,7 +25,6 @@ import java.util.Comparator;
 import java.util.Vector;
 
 import org.miradi.diagram.ChainWalker;
-import org.miradi.dialogs.planning.StrategicRowColumnProvider;
 import org.miradi.dialogs.planning.treenodes.NewAbstractPlanningTreeNode;
 import org.miradi.dialogs.planning.treenodes.NewPlanningTaskNode;
 import org.miradi.dialogs.planning.treenodes.NewPlanningTreeBaseObjectNode;
@@ -69,10 +68,10 @@ import org.miradi.utils.CodeList;
 
 public class TreeRebuilder
 {
-	public TreeRebuilder(Project projectToUse)
+	public TreeRebuilder(Project projectToUse, PlanningTreeConfiguration rowColumnProviderToUse)
 	{
 		project = projectToUse;
-		rowColumnProvider = new StrategicRowColumnProvider(getProject());
+		rowColumnProvider = rowColumnProviderToUse;
 	}
 	
 	public void rebuildTree(NewAbstractPlanningTreeNode rootNode) throws Exception

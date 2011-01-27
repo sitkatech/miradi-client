@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.upperPanel;
 
-import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.treenodes.AbstractPlanningTreeNode;
 import org.miradi.dialogs.planning.treenodes.PlanningRootNode;
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
@@ -27,23 +26,28 @@ import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.PlanningTreeConfiguration;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 
 abstract public class PlanningTreeTableModel extends GenericTreeTableModel
 {	
-	public PlanningTreeTableModel(Project projectToUse, RowColumnProvider rowColumnProvider) throws Exception
+	public PlanningTreeTableModel(Project projectToUse, PlanningTreeConfiguration rowColumnProvider) throws Exception
 	{
 		this(projectToUse, createPlanningTreeRootNode(projectToUse, rowColumnProvider.getRowCodesToShow()), rowColumnProvider);
 	}
 
-	public PlanningTreeTableModel(Project projectToUse, TreeTableNode rootNode, RowColumnProvider rowColumnProvider) throws Exception
+	public PlanningTreeTableModel(Project projectToUse, TreeTableNode rootNode, PlanningTreeConfiguration rowColumnProviderToUse) throws Exception
 	{
 		super(rootNode);
 		
 		project = projectToUse;
-		rowsToShow = rowColumnProvider.getRowCodesToShow();
-		updateColumnsToShow(rowColumnProvider.getColumnCodesToShow());
+		rowColumnProvider = rowColumnProviderToUse;
+	}
+	
+	public PlanningTreeConfiguration getRowColumnProvider()
+	{
+		return rowColumnProvider;
 	}
 
 	private static TreeTableNode createPlanningTreeRootNode(Project projectToUse, CodeList visibleRowCodesToUse) throws Exception
@@ -51,12 +55,6 @@ abstract public class PlanningTreeTableModel extends GenericTreeTableModel
 		return new PlanningRootNode(projectToUse, visibleRowCodesToUse);
 	}
 	
-	protected void updateColumnsToShow(CodeList visibleColumnCodes)
-	{
-		columnsToShow = new CodeList();
-		columnsToShow.add(DEFAULT_COLUMN);
-	}
-
 	public int getColumnCount()
 	{
 		return getColumnTags().size();
@@ -118,12 +116,22 @@ abstract public class PlanningTreeTableModel extends GenericTreeTableModel
 
 	public CodeList getColumnTags()
 	{
-		return columnsToShow;	
+		CodeList columnsToShow = new CodeList();
+		columnsToShow.add(DEFAULT_COLUMN);
+		return columnsToShow;
 	}
 	
 	public CodeList getRowCodesToShow()
 	{
-		return rowsToShow;
+		try
+		{
+			return rowColumnProvider.getRowCodesToShow();
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return new CodeList();
+		}
 	}
 	
 	protected Project getProject()
@@ -132,6 +140,5 @@ abstract public class PlanningTreeTableModel extends GenericTreeTableModel
 	}
 	
 	private Project project;
-	private CodeList columnsToShow;
-	private CodeList rowsToShow;
+	private PlanningTreeConfiguration rowColumnProvider;
 }

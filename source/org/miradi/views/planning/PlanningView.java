@@ -93,20 +93,20 @@ public class PlanningView extends TabbedView
 	public void createTabs() throws Exception
 	{
 		actionPlanManagementPanel = ActionPlanManagementPanel.createActionPlanPanel(getMainWindow());
-		actionPlan2ManagementPanel = NewActionPlanManagementPanel.createActionPlanPanel(getMainWindow());
 		monitoringPlanManagementPanel = MonitoringPlanManagementPanel.createMonitoringPlanPanel(getMainWindow());
 		objectsOnlyManagementPanel = ObjectsOnlyManagementPanel.createObjectsOnlyPanel(getMainWindow());
 		planningManagementPanel = ConfigurablePlanningTreeManagementPanel.createConfigurablePlanningPanel(getMainWindow());
+		actionPlan2ManagementPanel = NewActionPlanManagementPanel.createActionPlanPanel(getMainWindow());
 		resourceManagementPanel = StrategicPlanResourcesManagementPanel.createProjectResourcesPanelWithoutBudgetColumns(getMainWindow());
 		
 		managementPanelMap = new HashMap<String, PlanningTreeManagementPanel>();
 
 		addPlanningManagementTab(actionPlanManagementPanel);
-		if(Miradi.isAlphaTesterMode())
-			addPlanningManagementTab(actionPlan2ManagementPanel);
 		addPlanningManagementTab(monitoringPlanManagementPanel);
 		addPlanningManagementTab(objectsOnlyManagementPanel);
 		addPlanningManagementTab(planningManagementPanel);
+		if(Miradi.isAlphaTesterMode())
+			addPlanningManagementTab(actionPlan2ManagementPanel);
 		
 		addNonScrollingTab(resourceManagementPanel);
 	}
@@ -130,20 +130,20 @@ public class PlanningView extends TabbedView
 	@Override
 	public void deleteTabs() throws Exception
 	{
-		planningManagementPanel.dispose();
-		planningManagementPanel = null;
-		
 		actionPlanManagementPanel.dispose();
 		actionPlanManagementPanel = null;
-		
-		actionPlan2ManagementPanel.dispose();
-		actionPlan2ManagementPanel = null;
 		
 		monitoringPlanManagementPanel.dispose();
 		monitoringPlanManagementPanel = null;
 		
 		objectsOnlyManagementPanel.dispose();
 		objectsOnlyManagementPanel = null;
+		
+		planningManagementPanel.dispose();
+		planningManagementPanel = null;
+		
+		actionPlan2ManagementPanel.dispose();
+		actionPlan2ManagementPanel = null;
 		
 		resourceManagementPanel.dispose();
 		resourceManagementPanel = null;
@@ -212,11 +212,11 @@ public class PlanningView extends TabbedView
 		return view.cardName().equals(getViewName());
 	}
 
+	private PlanningTreeManagementPanel actionPlanManagementPanel;
+	private PlanningTreeManagementPanel monitoringPlanManagementPanel;
 	private PlanningTreeManagementPanel objectsOnlyManagementPanel;
 	private PlanningTreeManagementPanel planningManagementPanel;
-	private PlanningTreeManagementPanel actionPlanManagementPanel;
 	private PlanningTreeManagementPanel actionPlan2ManagementPanel;
-	private PlanningTreeManagementPanel monitoringPlanManagementPanel;
 	private PlanningTreeManagementPanel resourceManagementPanel;
 	
 	private HashMap<String, PlanningTreeManagementPanel> managementPanelMap;

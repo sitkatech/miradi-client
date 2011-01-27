@@ -20,10 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning;
 
+import org.miradi.objects.PlanningTreeConfiguration;
 import org.miradi.objects.ProjectResource;
 import org.miradi.utils.CodeList;
 
-public class ProjectResourceCoreRowColumnProvider implements RowColumnProvider
+public class ProjectResourceCoreRowColumnProvider implements PlanningTreeConfiguration
 {
 	public CodeList getColumnCodesToShow()
 	{
@@ -49,5 +50,15 @@ public class ProjectResourceCoreRowColumnProvider implements RowColumnProvider
 		return new CodeList(new String[] {
 				ProjectResource.OBJECT_NAME,
 		});
+	}
+
+	public boolean shouldIncludeResultsChain() throws Exception
+	{
+		return true;
+	}
+
+	public boolean shouldIncludeConceptualModelPage() throws Exception
+	{
+		return true;
 	}
 }

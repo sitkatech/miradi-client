@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.workplan;
 
-import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.WorkPlanCategoryTreeRowColumnProvider;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTable;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTableModel;
@@ -28,6 +27,7 @@ import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.ExpenseAssignment;
+import org.miradi.objects.PlanningTreeConfiguration;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.ViewData;
 import org.miradi.questions.WorkPlanCategoryTypesQuestion;
@@ -39,7 +39,7 @@ public class WorkPlanCategoryTreeTablePanel extends PlanningTreeTablePanel
 			PlanningTreeTable treeToUse, 
 			PlanningTreeTableModel modelToUse,
 			Class[] buttonClasses,
-			RowColumnProvider rowColumnProvider
+			PlanningTreeConfiguration rowColumnProvider
 	) throws Exception
 	{
 		super(mainWindowToUse, treeToUse, modelToUse, buttonClasses, rowColumnProvider);
