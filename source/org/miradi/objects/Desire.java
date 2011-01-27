@@ -393,14 +393,14 @@ abstract public class Desire extends BaseObject
 		return relevant;
 	}
 	
-	public static ORefList findAllRelevantDesires(Project projectToUse, ORef parentRef, final int desireType) throws Exception
+	public static ORefList findAllRelevantDesires(Project projectToUse, ORef strategyOrActivityRef, final int desireType) throws Exception
 	{
 		ORefSet desireRefs = projectToUse.getPool(desireType).getRefSet();
 		ORefList relevant = new ORefList();
 		for(ORef desireRef: desireRefs)
 		{
 			Desire desire = Desire.findDesire(projectToUse, desireRef);
-			if(desire.getRelevantStrategyAndActivityRefs().contains(parentRef))
+			if(desire.getRelevantStrategyAndActivityRefs().contains(strategyOrActivityRef))
 				relevant.add(desire.getRef());
 		}
 		return relevant;
