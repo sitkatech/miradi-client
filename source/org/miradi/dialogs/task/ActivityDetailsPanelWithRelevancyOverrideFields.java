@@ -37,7 +37,9 @@ public class ActivityDetailsPanelWithRelevancyOverrideFields extends TaskDetails
 	@Override
 	protected void addCustomFields(Actions actionsToUse)
 	{
-		ObjectsAction relevancyEditAction = actionsToUse.getObjectsAction(ActionEditStrategyObjectiveRelevancyList.class);
-		addFieldWithEditButton(EAM.text("Objectives"), createReadOnlyObjectList(Task.getObjectType(), Task.PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS), createObjectsActionButton(relevancyEditAction, getPicker()));
+		ObjectsAction objectiveRelevancyEditAction = actionsToUse.getObjectsAction(ActionEditStrategyObjectiveRelevancyList.class);
+		addFieldWithEditButton(EAM.text("Objectives"), createReadOnlyObjectList(Task.getObjectType(), Task.PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS), createObjectsActionButton(objectiveRelevancyEditAction, getPicker()));
+		
+		
 	}
 }
