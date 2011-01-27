@@ -93,7 +93,7 @@ abstract public class AbstractRelevancyOverrideListField extends ObjectDataField
 		if (selectedDesireRefs.contains(desireRef))
 			return  desire.createCommandsToEnsureFactorIsRelevant(getORef());
 		
-		return  desire.createCommandsToEnsureFactorIsIrrelevant(getORef());
+		return  desire.createCommandsToEnsureStrategyOrActivityIsIrrelevant(getORef());
 	}
 	
 	@Override

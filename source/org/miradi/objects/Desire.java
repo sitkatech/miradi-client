@@ -247,7 +247,7 @@ abstract public class Desire extends BaseObject
 		return new ChainWalker().getDirectlyUpstreamNonDraftStrategies(owningFactor);
 	}
 	
-	public CommandVector createCommandsToEnsureFactorIsIrrelevant(ORef strategyOrActivityRef) throws Exception
+	public CommandVector createCommandsToEnsureStrategyOrActivityIsIrrelevant(ORef strategyOrActivityRef) throws Exception
 	{
 		boolean shouldBeRelevant = false;
 		
