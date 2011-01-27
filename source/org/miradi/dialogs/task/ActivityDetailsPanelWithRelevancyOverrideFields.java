@@ -27,9 +27,9 @@ import org.miradi.main.EAM;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
 
-public class TaskDetailsPanelWithRelevancyOverrideFields extends TaskDetailsPanel
+public class ActivityDetailsPanelWithRelevancyOverrideFields extends TaskDetailsPanel
 {
-	public TaskDetailsPanelWithRelevancyOverrideFields(Project projectToUse, Actions actionsToUse) throws Exception
+	public ActivityDetailsPanelWithRelevancyOverrideFields(Project projectToUse, Actions actionsToUse) throws Exception
 	{
 		super(projectToUse, actionsToUse);
 	}
