@@ -92,7 +92,6 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Objective;
-import org.miradi.objects.Strategy;
 import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
@@ -526,9 +525,9 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return new IndicatorRelevancyOverrideListField(project, getFirstSelectedRef().getObjectType(), getObjectIdForType(getFirstSelectedRef().getObjectType()), question);
 	}
 	
-	public ObjectDataField createGoalRelevancyOverrideListField()
+	public ObjectDataField createGoalRelevancyOverrideListField(int objectType)
 	{
-		return new StrategyGoalOverrideListField(getProject(), getRefForType(Strategy.getObjectType()), Goal.getObjectType());
+		return new StrategyGoalOverrideListField(getProject(), getRefForType(objectType), Goal.getObjectType());
 	}
 	
 	public ObjectDataField createObjectiveRelevancyOverrideListField(int objectType)
