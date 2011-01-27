@@ -49,11 +49,16 @@ public class TaskDetailsPanel extends ObjectDataInputPanel
 		addFieldsOnOneLine(taskNameLabel, new ObjectDataInputField[] {taskIdField, taskNameField,} );
 		addField(createMultilineField(Task.getObjectType(), Task.TAG_DETAILS));
 		
+		addCustomFields(actionsToUse);
+		
+		addField(createMultilineField(Task.getObjectType(), Task.TAG_COMMENTS));
+	}
+
+	private void addCustomFields(Actions actionsToUse)
+	{
 		//FIXME urgent - this editor needs to only appear under activity properties panel
 		ObjectsAction relevancyEditAction = actionsToUse.getObjectsAction(ActionEditStrategyObjectiveRelevancyList.class);
 		addFieldWithEditButton(EAM.text("Objectives"), createReadOnlyObjectList(Task.getObjectType(), Task.PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS), createObjectsActionButton(relevancyEditAction, getPicker()));
-		
-		addField(createMultilineField(Task.getObjectType(), Task.TAG_COMMENTS));
 	}
 
 	private void updateTaskNameLabel()
