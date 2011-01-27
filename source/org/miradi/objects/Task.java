@@ -275,6 +275,9 @@ public class Task extends Factor
 		if (fieldTag.equals(PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS))
 			return getRelevantDesireRefsAsString(Objective.getObjectType());
 		
+		if (fieldTag.equals(PSEUDO_TAG_RELEVANT_GOAL_REFS))
+			return getRelevantDesireRefsAsString(Goal.getObjectType());
+		
 		return super.getPseudoData(fieldTag);
 	}
 	
@@ -513,6 +516,7 @@ public class Task extends Factor
 		strategyLabel = new PseudoStringData(PSEUDO_TAG_STRATEGY_LABEL);
 		indicatorLabel = new PseudoStringData(PSEUDO_TAG_INDICATOR_LABEL);
 		relevantObjectiveRefs = new PseudoORefListData(PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS);
+		relevantGoalRefs = new PseudoORefListData(PSEUDO_TAG_RELEVANT_GOAL_REFS);
 		
 		addField(TAG_SUBTASK_IDS, subtaskIds);
 		addField(TAG_DETAILS, details);
@@ -520,8 +524,8 @@ public class Task extends Factor
 		addField(PSEUDO_TAG_STRATEGY_LABEL, strategyLabel);
 		addField(PSEUDO_TAG_INDICATOR_LABEL, indicatorLabel);
 		addField(PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS, relevantObjectiveRefs);
+		addField(PSEUDO_TAG_RELEVANT_GOAL_REFS, relevantGoalRefs);
 	}
-
 	
 	public final static String TAG_SUBTASK_IDS = "SubtaskIds";
 	public final static String TAG_DETAILS = "Details";
@@ -529,6 +533,7 @@ public class Task extends Factor
 	public final static String PSEUDO_TAG_STRATEGY_LABEL = "StrategyLabel";
 	public final static String PSEUDO_TAG_INDICATOR_LABEL = "IndicatorLabel";
 	public static final String PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS = "PseudoTaskRelevantObjectiveRefs";
+	public static final String PSEUDO_TAG_RELEVANT_GOAL_REFS = "PseudoTaskRelevantGoalRefs";
 	
 	public static final String OBJECT_NAME = "Task";
 	public static final String METHOD_NAME = "Method";
@@ -542,4 +547,5 @@ public class Task extends Factor
 	private PseudoStringData strategyLabel;
 	private PseudoStringData indicatorLabel;
 	private PseudoORefListData relevantObjectiveRefs;
+	private PseudoORefListData relevantGoalRefs;
 }
