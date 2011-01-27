@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.task;
 
+import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.views.umbrella.ObjectPicker;
@@ -29,6 +30,12 @@ public class ActivityPropertiesPanelWithoutBudgetPanels extends TaskPropertiesPa
 	public ActivityPropertiesPanelWithoutBudgetPanels(MainWindow mainWindow, ObjectPicker objectPickerToUse) throws Exception
 	{
 		super(mainWindow, objectPickerToUse);
+	}
+	
+	@Override
+	protected ObjectDataInputPanel createDetailsPanel(MainWindow mainWindow) throws Exception
+	{
+		return new TaskDetailsPanelWithRelevancyOverrideFields(getProject(), mainWindow.getActions());
 	}
 	
 	@Override
