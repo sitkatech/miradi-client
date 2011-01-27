@@ -247,34 +247,34 @@ abstract public class Desire extends BaseObject
 		return new ChainWalker().getDirectlyUpstreamNonDraftStrategies(owningFactor);
 	}
 	
-	public CommandVector createCommandsToEnsureFactorIsIrrelevant(ORef factorRef) throws Exception
+	public CommandVector createCommandsToEnsureFactorIsIrrelevant(ORef strategyOrActivityRef) throws Exception
 	{
 		boolean shouldBeRelevant = false;
 		
-		return createCommandsToEnsureProperRelevancy(factorRef, shouldBeRelevant);
+		return createCommandsToEnsureProperRelevancy(strategyOrActivityRef, shouldBeRelevant);
 	}
 	
-	public CommandVector createCommandsToEnsureFactorIsRelevant(ORef factorRef) throws Exception
+	public CommandVector createCommandsToEnsureFactorIsRelevant(ORef strategyOrActivityRef) throws Exception
 	{
 		boolean shouldBeRelevant = true;
 		
-		return createCommandsToEnsureProperRelevancy(factorRef, shouldBeRelevant);
+		return createCommandsToEnsureProperRelevancy(strategyOrActivityRef, shouldBeRelevant);
 	}
 
-	private CommandVector createCommandsToEnsureProperRelevancy(ORef ownerRef, boolean shouldBeRelevant) throws Exception
+	private CommandVector createCommandsToEnsureProperRelevancy(ORef strategyOrActivityRef, boolean shouldBeRelevant) throws Exception
 	{
 		RelevancyOverrideSet relevancyOverrideSet = getStrategyActivityRelevancyOverrideSet();
-		RelevancyOverride existingOverride = relevancyOverrideSet.find(ownerRef);
+		RelevancyOverride existingOverride = relevancyOverrideSet.find(strategyOrActivityRef);
 		if (isAlreadyCorrectlyOverridden(shouldBeRelevant, existingOverride))
 			return new CommandVector();
 		
-		boolean isCorrectDefaultRelevancy = isCorrectDefaultRelevancy(ownerRef, shouldBeRelevant);
+		boolean isCorrectDefaultRelevancy = isCorrectDefaultRelevancy(strategyOrActivityRef, shouldBeRelevant);
 		if (isCorrectDefaultRelevancy && existingOverride == null)
 			return new CommandVector();
 		
-		relevancyOverrideSet.remove(ownerRef);
+		relevancyOverrideSet.remove(strategyOrActivityRef);
 		if (!isCorrectDefaultRelevancy)
-			relevancyOverrideSet.add(new RelevancyOverride(ownerRef, shouldBeRelevant));
+			relevancyOverrideSet.add(new RelevancyOverride(strategyOrActivityRef, shouldBeRelevant));
 		
 		CommandSetObjectData commandToEnsureProperRelevancy = new CommandSetObjectData(getRef(), TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevancyOverrideSet.toString());
 		return new CommandVector(commandToEnsureProperRelevancy);
