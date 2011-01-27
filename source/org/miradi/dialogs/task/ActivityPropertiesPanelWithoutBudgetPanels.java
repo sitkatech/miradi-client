@@ -35,7 +35,7 @@ public class ActivityPropertiesPanelWithoutBudgetPanels extends TaskPropertiesPa
 	@Override
 	protected ObjectDataInputPanel createDetailsPanel(MainWindow mainWindow) throws Exception
 	{
-		return new TaskDetailsPanelWithRelevancyOverrideFields(getProject(), mainWindow.getActions());
+		return new ActivityDetailsPanelWithRelevancyOverrideFields(getProject(), mainWindow.getActions());
 	}
 	
 	@Override
