@@ -47,7 +47,7 @@ public abstract class TaskPropertiesPanel extends ObjectDataInputPanelWithSectio
 		updateFieldsFromProject();
 	}
 
-	private ObjectDataInputPanel createDetailsPanel(MainWindow mainWindow) throws Exception
+	protected ObjectDataInputPanel createDetailsPanel(MainWindow mainWindow) throws Exception
 	{
 		return new TaskDetailsPanel(getProject(), mainWindow.getActions());
 	}
