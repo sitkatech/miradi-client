@@ -273,16 +273,16 @@ public class Task extends Factor
 			return getLabelOfTaskParent();
 		
 		if (fieldTag.equals(PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS))
-			return getRelevantObjectivesRefsAsString();
+			return getRelevantDesireRefsAsString(Objective.getObjectType());
 		
 		return super.getPseudoData(fieldTag);
 	}
 	
-	private String getRelevantObjectivesRefsAsString()
+	private String getRelevantDesireRefsAsString(int desireType)
 	{
 		try
 		{
-			return getRelevantObjectiveRefs().toString();
+			return getRelevantDesireRefs(desireType).toString();
 		}
 		catch(Exception e)
 		{
@@ -291,9 +291,9 @@ public class Task extends Factor
 		}
 	}
 	
-	public ORefList getRelevantObjectiveRefs() throws Exception
+	public ORefList getRelevantDesireRefs(int desireType) throws Exception
 	{
-		ORefSet relevantObjectives = new ORefSet(Desire.findAllRelevantDesires(getProject(), getRef(), Objective.getObjectType()));
+		ORefSet relevantObjectives = new ORefSet(Desire.findAllRelevantDesires(getProject(), getRef(), desireType));
 		RelevancyOverrideSet relevantOverrides = new RelevancyOverrideSet();
 		return calculateRelevantRefList(relevantObjectives, relevantOverrides);
 	}
