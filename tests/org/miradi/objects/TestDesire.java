@@ -58,63 +58,39 @@ public class TestDesire extends ObjectTestCase
 		verifyStrategyDefaultRelevantNoOverridesMakeIrrelevant(objective);
 	}
 
-	public void testStrategyDefaultRelevantNoOverrideMakeRelevantToObjective() throws Exception
+	public void testStrategyDefaultRelevantNoOverrideMakeRelevant() throws Exception
 	{
 		verifyStrategyDefaultRelevantNoOverrideMakeRelevant(objective);
-	}
-	
-	public void testStrategyDefaultRelevantNoOverrideMakeRelevantToGoal() throws Exception
-	{
 		verifyStrategyDefaultRelevantNoOverrideMakeRelevant(goal);
 	}
 	
-	public void testStrategyDefaultRelevantOverrideIrrelevantMakeRelevantToObjective() throws Exception
+	public void testStrategyDefaultRelevantOverrideIrrelevantMakeRelevant() throws Exception
 	{
 		verifyStrategyDefaultRelevantOverrideIrrelevantMakeRelevant(objective);
-	}
-	
-	public void testStrategyDefaultRelevantOverrideIrrelevantMakeRelevantToGoal() throws Exception
-	{
 		verifyStrategyDefaultRelevantOverrideIrrelevantMakeRelevant(goal);
 	}
-
-	public void testStrategyDefaultRelevantOverrideIrrelevantMakeIrrelevantToObjective() throws Exception
+	
+	public void testStrategyDefaultRelevantOverrideIrrelevantMakeIrrelevant() throws Exception
 	{
 		verifyStrategyDefaultRelevantOverrideIrrelevantMakeIrrelevant(objective);
-	}
-	
-	public void testStrategyDefaultRelevantOverrideIrrelevantMakeIrrelevantToGoal() throws Exception
-	{
 		verifyStrategyDefaultRelevantOverrideIrrelevantMakeIrrelevant(goal);
 	}
-
-	public void testStrategyDefaultRelevantOverrideRelevantMakeIrrelevantToObjective() throws Exception
+	
+	public void testStrategyDefaultRelevantOverrideRelevantMakeIrrelevant() throws Exception
 	{
 		verifyStrategyDefaultRelevantOverrideRelevantMakeIrrelevant(objective);
-	}
-	
-	public void testStrategyDefaultRelevantOverrideRelevantMakeIrrelevantToGoal() throws Exception
-	{
 		verifyStrategyDefaultRelevantOverrideRelevantMakeIrrelevant(goal);
 	}
 
 	public void testStrategyDefaultIrrelevantNoOverrideMakeRelevantToObjective() throws Exception
 	{
 		verifyStrategyOrActivityDefaultIrrelevantNoOverrideMakeRelevant(strategy, objective);
-	}
-	
-	public void testStrategyDefaultIrrelevantNoOverrideMakeRelevantToGoal() throws Exception
-	{
 		verifyStrategyOrActivityDefaultIrrelevantNoOverrideMakeRelevant(strategy, goal);
 	}
 	
 	public void testActivityDefaultIrrelevantNoOverrideMakeRelevant() throws Exception
 	{
 		verifyStrategyOrActivityDefaultIrrelevantNoOverrideMakeRelevant(activity, objective);
-	}
-	
-	public void testActivityDefaultIrrelevantNoOverrideMakeRelevantToGoal() throws Exception
-	{
 		verifyStrategyOrActivityDefaultIrrelevantNoOverrideMakeRelevant(activity, goal);
 	}
 	
