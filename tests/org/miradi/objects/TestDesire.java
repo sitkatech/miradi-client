@@ -52,16 +52,12 @@ public class TestDesire extends ObjectTestCase
 		getProject().createDiagramLinkAndAddToDiagram(strategyWithObjectiveDiagramFactor, targetDiagramFactor);
 	}
 	
-	public void testStrategyDefaultRelevantNoOverridesMakeIrrelevantToGoal() throws Exception
+	public void testStrategyDefaultRelevantNoOverridesMakeIrrelevant() throws Exception
 	{
 		verifyStrategyDefaultRelevantNoOverridesMakeIrrelevant(goal);
-	}
-
-	public void testStrategyDefaultRelevantNoOverridesMakeIrrelevantToObjective() throws Exception
-	{
 		verifyStrategyDefaultRelevantNoOverridesMakeIrrelevant(objective);
 	}
-	
+
 	public void testStrategyDefaultRelevantNoOverrideMakeRelevantToObjective() throws Exception
 	{
 		verifyStrategyDefaultRelevantNoOverrideMakeRelevant(objective);
