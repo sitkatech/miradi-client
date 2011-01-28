@@ -37,18 +37,37 @@ public class TestDesire extends ObjectTestCase
 	{
 		super.setUp();
 		
-		strategy = getProject().createStrategy();
-		strategyWithObjective = getProject().createStrategy();
+		DiagramFactor strategyDiagramFactor = getProject().createAndAddFactorToDiagram(Strategy.getObjectType());
+		strategy = (Strategy) strategyDiagramFactor.getWrappedFactor();
+		
+		DiagramFactor strategyWithObjectiveDiagramFactor = getProject().createAndAddFactorToDiagram(Strategy.getObjectType());
+		strategyWithObjective = (Strategy) strategyWithObjectiveDiagramFactor.getWrappedFactor();
+		activity = getProject().createTask(strategyWithObjective);
 		objective = createObjective(strategyWithObjective);
-		getProject().createFactorLink(strategyWithObjective.getRef(), strategy.getRef());
+		getProject().createDiagramFactorLinkAndAddToDiagram(strategyWithObjectiveDiagramFactor, strategyDiagramFactor);
+
+		DiagramFactor targetDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		targetWithGoal = (Target) targetDiagramFactor.getWrappedFactor();
+		goal = getProject().createGoal(targetWithGoal);
+		getProject().createDiagramLinkAndAddToDiagram(strategyWithObjectiveDiagramFactor, targetDiagramFactor);
 	}
 	
+	public void testStrategyDefaultRelevantNoOverridesMakeIrrelevantToGoal() throws Exception
+	{
+		verifyStrategyDefaultRelevantNoOverridesMakeIrrelevant(goal);
+	}
+
 	public void testStrategyDefaultRelevantNoOverridesMakeIrrelevant() throws Exception
 	{
-		CommandVector createCommandsToEnsureStrategyIsRelevant = objective.createCommandsToEnsureStrategyOrActivityIsIrrelevant(strategyWithObjective.getRef());
+		verifyStrategyDefaultRelevantNoOverridesMakeIrrelevant(objective);
+	}
+	
+	private void verifyStrategyDefaultRelevantNoOverridesMakeIrrelevant(Desire desireToUse) throws Exception
+	{
+		CommandVector createCommandsToEnsureStrategyIsRelevant = desireToUse.createCommandsToEnsureStrategyOrActivityIsIrrelevant(strategyWithObjective.getRef());
 		assertEquals("Should contain one command to make default strategy irrelevant?", 1, createCommandsToEnsureStrategyIsRelevant.size());
 		CommandSetObjectData expectedMakeIrrelevantCommand = (CommandSetObjectData) createCommandsToEnsureStrategyIsRelevant.get(0);
-		CommandSetObjectData makeIrrelevantCommand = createExpectedRelevancyOverrideCommand(strategyWithObjective, objective, false);
+		CommandSetObjectData makeIrrelevantCommand = createExpectedRelevancyOverrideCommand(strategyWithObjective, desireToUse, false);
 		assertEquals("incorrect command to ensure already relevant strategy?", expectedMakeIrrelevantCommand, makeIrrelevantCommand);
 	}
 	
@@ -99,8 +118,6 @@ public class TestDesire extends ObjectTestCase
 	
 	public void testActivityDefaultIrrelevantNoOverrideMakeRelevant() throws Exception
 	{
-		Task activity = getProject().createTask(strategyWithObjective);
-		
 		verifyStrategyOrActivityDefaultIrrelevantNoOverrideMakeRelevant(activity, objective);
 	}
 	
@@ -116,15 +133,11 @@ public class TestDesire extends ObjectTestCase
 	
 	public void testActivityDefaultIrrelevantRelevantOverrideMakeIrrelevant() throws Exception
 	{
-		Task activity = getProject().createTask(strategyWithObjective);
-			
 		verifyStrategyOrActivityDefaultIrrelevantRelevantOverrideMakeIrrelevant(activity,	objective);
 	}
 	
 	public void testActivityDefaultIrrelevantOverrideRelevantMakeRelevant() throws Exception
 	{
-		Task activity = getProject().createTask(strategyWithObjective);
-		
 		verifyStrategyOrActivityDefaultIrrelevantOverrideRelevantMakeRelevant(activity, objective);
 	}
 
@@ -135,7 +148,6 @@ public class TestDesire extends ObjectTestCase
 	
 	public void testDefaultIrrelevantOverrideIrrelevantMakeRelevant() throws Exception
 	{
-		Task activity = getProject().createTask(strategyWithObjective);
 		forceIrrelevancyForDefaultIrrelevantStrategyOrActivity(activity, objective);
 
 		CommandVector commandsToEnsureDefaultRelevantIsIrrelevant = objective.createCommandsToEnsureStrategyOrActivityIsRelevant(activity.getRef());
@@ -215,8 +227,11 @@ public class TestDesire extends ObjectTestCase
 	{
 		return getProject().createObjective(owner);
 	}
-	
+
+	private Target targetWithGoal;
 	private Strategy strategy;
 	private Strategy strategyWithObjective;
 	private Desire objective;
+	private Desire goal;
+	private Task activity;
 }
