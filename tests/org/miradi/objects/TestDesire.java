@@ -154,13 +154,18 @@ public class TestDesire extends ObjectTestCase
 	
 	public void testDefaultIrrelevantOverrideIrrelevantMakeRelevant() throws Exception
 	{
-		forceIrrelevancyForDefaultIrrelevantStrategyOrActivity(activity, objective);
+		verifyDefaultIrrelevantOverrideIrrelevantMakeRelevant(objective);
+	}
 
-		CommandVector commandsToEnsureDefaultRelevantIsIrrelevant = objective.createCommandsToEnsureStrategyOrActivityIsRelevant(activity.getRef());
+	private void verifyDefaultIrrelevantOverrideIrrelevantMakeRelevant(Desire desire) throws Exception
+	{
+		forceIrrelevancyForDefaultIrrelevantStrategyOrActivity(activity, desire);
+
+		CommandVector commandsToEnsureDefaultRelevantIsIrrelevant = desire.createCommandsToEnsureStrategyOrActivityIsRelevant(activity.getRef());
 		assertEquals("Should contain one command to remove incorrect irrelevant override for default irrelevant", 1, commandsToEnsureDefaultRelevantIsIrrelevant.size());
 		
 		CommandSetObjectData setCommand = (CommandSetObjectData) commandsToEnsureDefaultRelevantIsIrrelevant.get(0);
-		CommandSetObjectData expectedCommand = createExpectedRelevancyOverrideCommand(activity, objective, true);
+		CommandSetObjectData expectedCommand = createExpectedRelevancyOverrideCommand(activity, desire, true);
 		assertEquals("Command should only make activity default irrelevant, relevant?", expectedCommand, setCommand);
 	}
 	
