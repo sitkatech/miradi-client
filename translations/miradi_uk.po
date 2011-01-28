@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-28 13:38-0600\n"
+"POT-Creation-Date: 2011-01-28 13:54-0600\n"
 "PO-Revision-Date: 2010-09-30 09:31+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -7179,10 +7179,6 @@ msgstr "Опція висоти табличних рядків"
 msgid "Tab|Action Plan"
 msgstr "Tab|План дій"
 
-#: Miradi/source/org/miradi/views/planning/NewActionPlanManagementPanel.java:48
-msgid "Tab|Action Plan 2"
-msgstr ""
-
 #: Miradi/source/org/miradi/dialogs/activity/ActivityListManagementPanel.java:66
 msgid "Tab|Activities"
 msgstr "Tab|Діяльності"
@@ -7190,6 +7186,10 @@ msgstr "Tab|Діяльності"
 #: Miradi/source/org/miradi/views/planning/ConfigurablePlanningTreeManagementPanel.java:45
 msgid "Tab|Custom"
 msgstr "Tab|Податок"
+
+#: Miradi/source/org/miradi/views/planning/NewConfigurablePlanningManagementPanel.java:48
+msgid "Tab|Custom 2"
+msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/goal/GoalListManagementPanel.java:59
 msgid "Tab|Goals"
