@@ -96,7 +96,7 @@ public class PlanningView extends TabbedView
 		monitoringPlanManagementPanel = MonitoringPlanManagementPanel.createMonitoringPlanPanel(getMainWindow());
 		objectsOnlyManagementPanel = ObjectsOnlyManagementPanel.createObjectsOnlyPanel(getMainWindow());
 		planningManagementPanel = ConfigurablePlanningTreeManagementPanel.createConfigurablePlanningPanel(getMainWindow());
-		customPlan2ManagementPanel = NewActionPlanManagementPanel.createActionPlanPanel(getMainWindow());
+		customPlan2ManagementPanel = NewConfigurablePlanningManagementPanel.createActionPlanPanel(getMainWindow());
 		resourceManagementPanel = StrategicPlanResourcesManagementPanel.createProjectResourcesPanelWithoutBudgetColumns(getMainWindow());
 		
 		managementPanelMap = new HashMap<String, PlanningTreeManagementPanel>();
