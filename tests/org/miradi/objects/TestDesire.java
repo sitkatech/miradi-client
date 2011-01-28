@@ -64,13 +64,17 @@ public class TestDesire extends ObjectTestCase
 	
 	public void testStrategyDefaultRelevantNoOverrideMakeRelevant() throws Exception
 	{
-		CommandVector commands = objective.createCommandsToEnsureStrategyOrActivityIsRelevant(strategyWithObjective.getRef());
-		assertTrue("Should not make already relevant strategy relevant again", commands.isEmpty());
+		verifyStrategyDefaultRelevantNoOverrideMakeRelevant(objective);
 	}
 	
 	public void testStrategyDefaultRelevantNoOverrideMakeRelevantToGoal() throws Exception
 	{
-		CommandVector commands = goal.createCommandsToEnsureStrategyOrActivityIsRelevant(strategyWithObjective.getRef());
+		verifyStrategyDefaultRelevantNoOverrideMakeRelevant(goal);
+	}
+	
+	private void verifyStrategyDefaultRelevantNoOverrideMakeRelevant(Desire desire) throws Exception
+	{
+		CommandVector commands = desire.createCommandsToEnsureStrategyOrActivityIsRelevant(strategyWithObjective.getRef());
 		assertTrue("Should not make already relevant strategy relevant again", commands.isEmpty());
 	}
 	
