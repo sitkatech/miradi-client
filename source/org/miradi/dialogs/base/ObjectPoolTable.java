@@ -36,7 +36,6 @@ public class ObjectPoolTable extends ObjectTable
 	public ObjectPoolTable(MainWindow mainWindowToUse, ObjectPoolTableModel modelToUse, int sortColumn)
 	{
 		this(mainWindowToUse, modelToUse);
-		sort(sortColumn);
 	}
 	
 	public ObjectPoolTableModel getObjectPoolTableModel()
