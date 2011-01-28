@@ -39,7 +39,8 @@ public class TncTerrestrialEcoRegionFileLoader extends TwoLevelFileLoader
 			String name = (String) row.get(1);
 			String description = (String) row.get(5);
 		
-			entries.add(new AlwaysSelectableTwoLevelEntry(code, name, description));
+			TwoLevelEntry entry = new AlwaysSelectableTwoLevelEntry(code, name, description);
+			entries.add(entry);
 		}
 		return entries;
 	}

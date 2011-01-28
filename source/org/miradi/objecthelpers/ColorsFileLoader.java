@@ -39,7 +39,8 @@ public class ColorsFileLoader extends TwoLevelFileLoader
 			String varName = (String) row.get(0);
 			String color = (String) row.get(1);
 		
-			entries.add(new TwoLevelEntry(varName, color));
+			TwoLevelEntry entry = new TwoLevelEntry(varName, color);
+			entries.add(entry);
 		}
 		return entries;
 	}
