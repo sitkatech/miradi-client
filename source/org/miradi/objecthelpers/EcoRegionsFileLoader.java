@@ -36,13 +36,18 @@ public class EcoRegionsFileLoader extends TwoLevelFileLoader
 		{
 			Vector row = fileVector.get(i);
 
-			String regionCode = (String) row.get(0);
-			String regionName = (String) row.get(1) + " - " + (String) row.get(2) + " - " +(String) row.get(3);
-			String description = (String) row.get(4);
-		
-			TwoLevelEntry entry = new AlwaysSelectableTwoLevelEntry(regionCode, regionName, description);
+			TwoLevelEntry entry = createEntry(row);
 			entries.add(entry);
 		}
 		return entries;
+	}
+
+	protected TwoLevelEntry createEntry(Vector row)
+	{
+		String regionCode = (String) row.get(0);
+		String regionName = (String) row.get(1) + " - " + (String) row.get(2) + " - " +(String) row.get(3);
+		String description = (String) row.get(4);
+
+		return new AlwaysSelectableTwoLevelEntry(regionCode, regionName, description);
 	}
 }

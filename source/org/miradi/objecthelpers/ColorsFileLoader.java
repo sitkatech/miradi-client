@@ -36,12 +36,17 @@ public class ColorsFileLoader extends TwoLevelFileLoader
 		{
 			Vector row = fileVector.get(i);
 
-			String varName = (String) row.get(0);
-			String color = (String) row.get(1);
-		
-			TwoLevelEntry entry = new TwoLevelEntry(varName, color);
+			TwoLevelEntry entry = createEntry(row);
 			entries.add(entry);
 		}
 		return entries;
+	}
+
+	protected TwoLevelEntry createEntry(Vector row)
+	{
+		String varName = (String) row.get(0);
+		String color = (String) row.get(1);
+
+		return new TwoLevelEntry(varName, color);
 	}
 }

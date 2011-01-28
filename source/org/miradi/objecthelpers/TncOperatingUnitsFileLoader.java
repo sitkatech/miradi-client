@@ -35,12 +35,18 @@ public class TncOperatingUnitsFileLoader extends TwoLevelFileLoader
 		for (int i  = 0; i < fileVector.size(); ++i)
 		{
 			Vector row = fileVector.get(i);
-			String operatingUnitCode = (String) row.get(0);
-			String operatingUnitSourceName = (String) row.get(1);
-		
-			TwoLevelEntry entry = new AlwaysSelectableTwoLevelEntry(operatingUnitCode, operatingUnitSourceName);
+			TwoLevelEntry entry = createEntry(row);
 			entries.add(entry);
 		}
 		return entries;
+	}
+
+	protected TwoLevelEntry createEntry(Vector row)
+	{
+		String operatingUnitCode = (String) row.get(0);
+		String operatingUnitSourceName = (String) row.get(1);
+
+		TwoLevelEntry entry = new AlwaysSelectableTwoLevelEntry(operatingUnitCode, operatingUnitSourceName);
+		return entry;
 	}
 }
