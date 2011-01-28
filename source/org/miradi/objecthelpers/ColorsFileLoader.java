@@ -28,6 +28,7 @@ public class ColorsFileLoader extends TwoLevelFileLoader
 		super("");
 	}
 	
+	@Override
 	protected TwoLevelEntry createEntry(Vector row)
 	{
 		String varName = (String) row.get(0);
