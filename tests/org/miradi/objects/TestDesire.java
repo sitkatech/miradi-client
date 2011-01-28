@@ -92,7 +92,7 @@ public class TestDesire extends ObjectTestCase
 		verifyStrategyDefaultRelevantOverrideIrrelevantMakeIrrelevant(goal);
 	}
 
-	public void testStrategyDefaultRelevantOverrideRelevantMakeIrrelevant() throws Exception
+	public void testStrategyDefaultRelevantOverrideRelevantMakeIrrelevantToObjective() throws Exception
 	{
 		verifyStrategyDefaultRelevantOverrideRelevantMakeIrrelevant(objective);
 	}
