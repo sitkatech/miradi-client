@@ -125,26 +125,31 @@ public class TestDesire extends ObjectTestCase
 	public void testStrategyDefaultIrrelevantNoOverrideMakeIrrelevant() throws Exception
 	{
 		verifyStrategyOrActivityDefaultIrrelevantNoOverrideMakeIrrelevant(strategy, objective);
+		verifyStrategyOrActivityDefaultIrrelevantNoOverrideMakeIrrelevant(strategy, goal);
 	}
 	
 	public void testStrategyDefaultIrrelevantRelevantOverrideMakeIrrelevant() throws Exception
 	{
-		verifyStrategyOrActivityDefaultIrrelevantRelevantOverrideMakeIrrelevant(strategy,	objective);
+		verifyStrategyOrActivityDefaultIrrelevantRelevantOverrideMakeIrrelevant(strategy, objective);
+		verifyStrategyOrActivityDefaultIrrelevantRelevantOverrideMakeIrrelevant(strategy, goal);
 	}
 	
 	public void testActivityDefaultIrrelevantRelevantOverrideMakeIrrelevant() throws Exception
 	{
-		verifyStrategyOrActivityDefaultIrrelevantRelevantOverrideMakeIrrelevant(activity,	objective);
+		verifyStrategyOrActivityDefaultIrrelevantRelevantOverrideMakeIrrelevant(activity, objective);
+		verifyStrategyOrActivityDefaultIrrelevantRelevantOverrideMakeIrrelevant(activity, goal);
 	}
 	
 	public void testActivityDefaultIrrelevantOverrideRelevantMakeRelevant() throws Exception
 	{
 		verifyStrategyOrActivityDefaultIrrelevantOverrideRelevantMakeRelevant(activity, objective);
+		verifyStrategyOrActivityDefaultIrrelevantOverrideRelevantMakeRelevant(activity, goal);
 	}
 
 	public void testStrategyDefaultIrrelevantOverrideRelevantMakeRelevant() throws Exception
 	{
 		verifyStrategyOrActivityDefaultIrrelevantOverrideRelevantMakeRelevant(strategy, objective);
+		verifyStrategyOrActivityDefaultIrrelevantOverrideRelevantMakeRelevant(strategy, goal);
 	}
 	
 	public void testDefaultIrrelevantOverrideIrrelevantMakeRelevant() throws Exception
