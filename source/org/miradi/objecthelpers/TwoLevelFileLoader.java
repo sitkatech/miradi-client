@@ -75,9 +75,6 @@ abstract public class TwoLevelFileLoader extends DelimitedFileLoader
 		return path;
 	}
 	
-	//FIXME medium - there is a lot of duplication in the overriding processVector methods.
-	//The only real difference is the index the code name and description within a line tht is read.
-	//Maybe have each subclass return the index for code, name, description, or a map.  
 	protected Vector<TwoLevelEntry> processVector(Vector<Vector<String>> fileVector)
 	{
 		Vector<TwoLevelEntry> entries = new Vector<TwoLevelEntry>();
