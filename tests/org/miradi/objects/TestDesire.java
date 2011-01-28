@@ -38,55 +38,55 @@ public class TestDesire extends ObjectTestCase
 		super.setUp();
 		
 		strategyWithObjective = getProject().createStrategy();
-		desire = createObjective(strategyWithObjective);
+		objective = createObjective(strategyWithObjective);
 	}
 	
 	public void testStrategyDefaultRelevantNoOverridesMakeIrrelevant() throws Exception
 	{
-		CommandVector createCommandsToEnsureStrategyIsRelevant = desire.createCommandsToEnsureStrategyOrActivityIsIrrelevant(strategyWithObjective.getRef());
+		CommandVector createCommandsToEnsureStrategyIsRelevant = objective.createCommandsToEnsureStrategyOrActivityIsIrrelevant(strategyWithObjective.getRef());
 		assertEquals("Should contain one command to make default strategy irrelevant?", 1, createCommandsToEnsureStrategyIsRelevant.size());
 		CommandSetObjectData expectedMakeIrrelevantCommand = (CommandSetObjectData) createCommandsToEnsureStrategyIsRelevant.get(0);
-		CommandSetObjectData makeIrrelevantCommand = createExpectedRelevancyOverrideCommand(strategyWithObjective, desire, false);
+		CommandSetObjectData makeIrrelevantCommand = createExpectedRelevancyOverrideCommand(strategyWithObjective, objective, false);
 		assertEquals("incorrect command to ensure already relevant strategy?", expectedMakeIrrelevantCommand, makeIrrelevantCommand);
 	}
 	
 	public void testStrategyDefaultRelevantNoOverrideMakeRelevant() throws Exception
 	{
-		CommandVector commands = desire.createCommandsToEnsureStrategyOrActivityIsRelevant(strategyWithObjective.getRef());
+		CommandVector commands = objective.createCommandsToEnsureStrategyOrActivityIsRelevant(strategyWithObjective.getRef());
 		assertTrue("Should not make already relevant strategy relevant again", commands.isEmpty());
 	}
 	
 	public void testStrategyDefaultRelevantOverrideIrrelevantMakeRelevant() throws Exception
 	{
-		CommandVector commandsToMakeDefaultStrategyIrrelevant = desire.createCommandsToEnsureStrategyOrActivityIsIrrelevant(strategyWithObjective.getRef());
+		CommandVector commandsToMakeDefaultStrategyIrrelevant = objective.createCommandsToEnsureStrategyOrActivityIsIrrelevant(strategyWithObjective.getRef());
 		getProject().executeCommandsAsTransaction(commandsToMakeDefaultStrategyIrrelevant);
 		
-		CommandVector commandsToMakeIrrelevantStrategyRelevant = desire.createCommandsToEnsureStrategyOrActivityIsRelevant(strategyWithObjective.getRef());
+		CommandVector commandsToMakeIrrelevantStrategyRelevant = objective.createCommandsToEnsureStrategyOrActivityIsRelevant(strategyWithObjective.getRef());
 		assertEquals("Should contain one command to make irrelevant strategy relevant by default?", 1, commandsToMakeIrrelevantStrategyRelevant.size());
 		CommandSetObjectData makeRelevantCommand = (CommandSetObjectData) commandsToMakeIrrelevantStrategyRelevant.get(0);
 		RelevancyOverrideSet overrides = new RelevancyOverrideSet();
-		CommandSetObjectData expectedMakeRelevantCommand = new CommandSetObjectData(desire.getRef(), Desire.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, overrides.toString());
+		CommandSetObjectData expectedMakeRelevantCommand = new CommandSetObjectData(objective.getRef(), Desire.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, overrides.toString());
 		assertEquals("incorrect command to ensure already relevant strategy?", expectedMakeRelevantCommand, makeRelevantCommand);
 	}
 	
 	public void testStrategyDefaultRelevantOverrideIrrelevantMakeIrrelevant() throws Exception
 	{
-		getProject().executeCommandsAsTransaction(desire.createCommandsToEnsureStrategyOrActivityIsIrrelevant(strategyWithObjective.getRef()));
+		getProject().executeCommandsAsTransaction(objective.createCommandsToEnsureStrategyOrActivityIsIrrelevant(strategyWithObjective.getRef()));
 		
-		assertFalse("default relevant stratgey should be irrelevant override?", desire.getRelevantStrategyRefs().contains(strategyWithObjective.getRef()));
+		assertFalse("default relevant stratgey should be irrelevant override?", objective.getRelevantStrategyRefs().contains(strategyWithObjective.getRef()));
 		
-		CommandVector commands = desire.createCommandsToEnsureStrategyOrActivityIsIrrelevant(strategyWithObjective.getRef());
+		CommandVector commands = objective.createCommandsToEnsureStrategyOrActivityIsIrrelevant(strategyWithObjective.getRef());
 		assertTrue("Should not make already irrelevant strategy irrelevant again", commands.isEmpty());
 	}
 	
 	public void testStrategyDefaultRelevantOverrideRelevantMakeIrrelevant() throws Exception
 	{
-		forceRelevancyForDefaultRelevantStrategy(strategyWithObjective, desire);
-		CommandVector commandsToEnsureDefaultRelevantIsIrrelevant = desire.createCommandsToEnsureStrategyOrActivityIsIrrelevant(strategyWithObjective.getRef());
+		forceRelevancyForDefaultRelevantStrategy(strategyWithObjective, objective);
+		CommandVector commandsToEnsureDefaultRelevantIsIrrelevant = objective.createCommandsToEnsureStrategyOrActivityIsIrrelevant(strategyWithObjective.getRef());
 		assertEquals("Should contain one command to remove incorrect relevant override for default relevant", 1, commandsToEnsureDefaultRelevantIsIrrelevant.size());
 		
 		CommandSetObjectData setCommand = (CommandSetObjectData) commandsToEnsureDefaultRelevantIsIrrelevant.get(0);
-		CommandSetObjectData expectedCommand = createExpectedRelevancyOverrideCommand(strategyWithObjective, desire, false);
+		CommandSetObjectData expectedCommand = createExpectedRelevancyOverrideCommand(strategyWithObjective, objective, false);
 		assertEquals("Command should only make strategy default relevant, irrelevant?", expectedCommand, setCommand);
 	}
 
@@ -95,14 +95,14 @@ public class TestDesire extends ObjectTestCase
 		Strategy strategy = getProject().createStrategy();
 		getProject().createFactorLink(strategyWithObjective.getRef(), strategy.getRef());
 		
-		verifyStrategyOrActivityDefaultIrrelevantNoOverrideMakeRelevant(strategy, desire);
+		verifyStrategyOrActivityDefaultIrrelevantNoOverrideMakeRelevant(strategy, objective);
 	}
 	
 	public void testActivityDefaultIrrelevantNoOverrideMakeRelevant() throws Exception
 	{
 		Task activity = getProject().createTask(strategyWithObjective);
 		
-		verifyStrategyOrActivityDefaultIrrelevantNoOverrideMakeRelevant(activity, desire);
+		verifyStrategyOrActivityDefaultIrrelevantNoOverrideMakeRelevant(activity, objective);
 	}
 	
 	public void testStrategyDefaultIrrelevantNoOverrideMakeIrrelevant() throws Exception
@@ -110,7 +110,7 @@ public class TestDesire extends ObjectTestCase
 		Strategy strategy = getProject().createStrategy();
 		getProject().createFactorLink(strategyWithObjective.getRef(), strategy.getRef());
 		
-		verifyStrategyOrActivityDefaultIrrelevantNoOverrideMakeIrrelevant(strategy, desire);
+		verifyStrategyOrActivityDefaultIrrelevantNoOverrideMakeIrrelevant(strategy, objective);
 	}
 	
 	public void testStrategyDefaultIrrelevantRelevantOverrideMakeIrrelevant() throws Exception
@@ -118,21 +118,21 @@ public class TestDesire extends ObjectTestCase
 		Strategy strategy = getProject().createStrategy();
 		getProject().createFactorLink(strategyWithObjective.getRef(), strategy.getRef());
 		
-		verifyStrategyOrActivityDefaultIrrelevantRelevantOverrideMakeIrrelevant(strategy,	desire);
+		verifyStrategyOrActivityDefaultIrrelevantRelevantOverrideMakeIrrelevant(strategy,	objective);
 	}
 	
 	public void testActivityDefaultIrrelevantRelevantOverrideMakeIrrelevant() throws Exception
 	{
 		Task activity = getProject().createTask(strategyWithObjective);
 			
-		verifyStrategyOrActivityDefaultIrrelevantRelevantOverrideMakeIrrelevant(activity,	desire);
+		verifyStrategyOrActivityDefaultIrrelevantRelevantOverrideMakeIrrelevant(activity,	objective);
 	}
 	
 	public void testActivityDefaultIrrelevantOverrideRelevantMakeRelevant() throws Exception
 	{
 		Task activity = getProject().createTask(strategyWithObjective);
 		
-		verifyStrategyOrActivityDefaultIrrelevantOverrideRelevantMakeRelevant(activity, desire);
+		verifyStrategyOrActivityDefaultIrrelevantOverrideRelevantMakeRelevant(activity, objective);
 	}
 
 	public void testStrategyDefaultIrrelevantOverrideRelevantMakeRelevant() throws Exception
@@ -140,19 +140,19 @@ public class TestDesire extends ObjectTestCase
 		Strategy strategy = getProject().createStrategy();
 		getProject().createFactorLink(strategyWithObjective.getRef(), strategy.getRef());
 		
-		verifyStrategyOrActivityDefaultIrrelevantOverrideRelevantMakeRelevant(strategy, desire);
+		verifyStrategyOrActivityDefaultIrrelevantOverrideRelevantMakeRelevant(strategy, objective);
 	}
 	
 	public void testDefaultIrrelevantOverrideIrrelevantMakeRelevant() throws Exception
 	{
 		Task activity = getProject().createTask(strategyWithObjective);
-		forceIrrelevancyForDefaultIrrelevantStrategyOrActivity(activity, desire);
+		forceIrrelevancyForDefaultIrrelevantStrategyOrActivity(activity, objective);
 
-		CommandVector commandsToEnsureDefaultRelevantIsIrrelevant = desire.createCommandsToEnsureStrategyOrActivityIsRelevant(activity.getRef());
+		CommandVector commandsToEnsureDefaultRelevantIsIrrelevant = objective.createCommandsToEnsureStrategyOrActivityIsRelevant(activity.getRef());
 		assertEquals("Should contain one command to remove incorrect irrelevant override for default irrelevant", 1, commandsToEnsureDefaultRelevantIsIrrelevant.size());
 		
 		CommandSetObjectData setCommand = (CommandSetObjectData) commandsToEnsureDefaultRelevantIsIrrelevant.get(0);
-		CommandSetObjectData expectedCommand = createExpectedRelevancyOverrideCommand(activity, desire, true);
+		CommandSetObjectData expectedCommand = createExpectedRelevancyOverrideCommand(activity, objective, true);
 		assertEquals("Command should only make activity default irrelevant, relevant?", expectedCommand, setCommand);
 	}
 	
@@ -227,5 +227,6 @@ public class TestDesire extends ObjectTestCase
 	}
 	
 	private Strategy strategyWithObjective;
-	private Desire desire;
+	private Desire objective
+	;
 }
