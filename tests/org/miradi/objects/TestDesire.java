@@ -72,12 +72,6 @@ public class TestDesire extends ObjectTestCase
 		verifyStrategyDefaultRelevantNoOverrideMakeRelevant(goal);
 	}
 	
-	private void verifyStrategyDefaultRelevantNoOverrideMakeRelevant(Desire desire) throws Exception
-	{
-		CommandVector commands = desire.createCommandsToEnsureStrategyOrActivityIsRelevant(strategyWithObjective.getRef());
-		assertTrue("Should not make already relevant strategy relevant again", commands.isEmpty());
-	}
-	
 	public void testStrategyDefaultRelevantOverrideIrrelevantMakeRelevant() throws Exception
 	{
 		CommandVector commandsToMakeDefaultStrategyIrrelevant = objective.createCommandsToEnsureStrategyOrActivityIsIrrelevant(strategyWithObjective.getRef());
@@ -205,6 +199,12 @@ public class TestDesire extends ObjectTestCase
 		CommandSetObjectData expectedMakeIrrelevantCommand = (CommandSetObjectData) createCommandsToEnsureStrategyIsRelevant.get(0);
 		CommandSetObjectData makeIrrelevantCommand = createExpectedRelevancyOverrideCommand(strategyWithObjective, desireToUse, false);
 		assertEquals("incorrect command to ensure already relevant strategy?", expectedMakeIrrelevantCommand, makeIrrelevantCommand);
+	}
+	
+	private void verifyStrategyDefaultRelevantNoOverrideMakeRelevant(Desire desire) throws Exception
+	{
+		CommandVector commands = desire.createCommandsToEnsureStrategyOrActivityIsRelevant(strategyWithObjective.getRef());
+		assertTrue("Should not make already relevant strategy relevant again", commands.isEmpty());
 	}
 	
 	private void forceRelevancyForDefaultRelevantStrategy(Factor strategyOrActivityRef, Desire desireToUse) throws Exception
