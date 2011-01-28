@@ -30,9 +30,9 @@ import org.miradi.main.MainWindow;
 import org.miradi.objects.PlanningTreeConfiguration;
 
 
-public class NewActionPlanTreeTablePanel extends PlanningTreeTablePanel
+public class NewConfigurablePlanningTreeTablePanel extends PlanningTreeTablePanel
 {
-	protected NewActionPlanTreeTablePanel(MainWindow mainWindowToUse,
+	protected NewConfigurablePlanningTreeTablePanel(MainWindow mainWindowToUse,
 			PlanningTreeTable treeToUse, 
 			PlanningTreeTableModel modelToUse,
 			Class[] buttonActions, 

@@ -24,7 +24,7 @@ import javax.swing.Icon;
 
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningTreeMultiPropertiesPanel;
-import org.miradi.dialogs.planning.upperPanel.NewActionPlanTreeTablePanel;
+import org.miradi.dialogs.planning.upperPanel.NewConfigurablePlanningTreeTablePanel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
 import org.miradi.dialogs.strategicPlan.ActionPlanMultiPropertiesPanel;
 import org.miradi.icons.IconManager;
@@ -56,7 +56,7 @@ public class NewConfigurablePlanningManagementPanel extends PlanningTreeManageme
 
 	public static NewConfigurablePlanningManagementPanel createActionPlanPanel(MainWindow mainWindowToUse) throws Exception
 	{
-		PlanningTreeTablePanel actionPlanTreeTablePanel = NewActionPlanTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse);
+		PlanningTreeTablePanel actionPlanTreeTablePanel = NewConfigurablePlanningTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse);
 		PlanningTreeMultiPropertiesPanel actionPlanPropertiesPanel = new ActionPlanMultiPropertiesPanel(mainWindowToUse, ORef.INVALID);
 		
 		return new NewConfigurablePlanningManagementPanel(mainWindowToUse, actionPlanTreeTablePanel, actionPlanPropertiesPanel);
