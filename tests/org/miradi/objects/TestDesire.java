@@ -62,15 +62,6 @@ public class TestDesire extends ObjectTestCase
 		verifyStrategyDefaultRelevantNoOverridesMakeIrrelevant(objective);
 	}
 	
-	private void verifyStrategyDefaultRelevantNoOverridesMakeIrrelevant(Desire desireToUse) throws Exception
-	{
-		CommandVector createCommandsToEnsureStrategyIsRelevant = desireToUse.createCommandsToEnsureStrategyOrActivityIsIrrelevant(strategyWithObjective.getRef());
-		assertEquals("Should contain one command to make default strategy irrelevant?", 1, createCommandsToEnsureStrategyIsRelevant.size());
-		CommandSetObjectData expectedMakeIrrelevantCommand = (CommandSetObjectData) createCommandsToEnsureStrategyIsRelevant.get(0);
-		CommandSetObjectData makeIrrelevantCommand = createExpectedRelevancyOverrideCommand(strategyWithObjective, desireToUse, false);
-		assertEquals("incorrect command to ensure already relevant strategy?", expectedMakeIrrelevantCommand, makeIrrelevantCommand);
-	}
-	
 	public void testStrategyDefaultRelevantNoOverrideMakeRelevant() throws Exception
 	{
 		CommandVector commands = objective.createCommandsToEnsureStrategyOrActivityIsRelevant(strategyWithObjective.getRef());
@@ -195,6 +186,15 @@ public class TestDesire extends ObjectTestCase
 		getProject().executeCommandsAsTransaction(desireToUse.createCommandsToEnsureStrategyOrActivityIsRelevant(strategyOrActivityRef.getRef()));
 		CommandVector commands = desireToUse.createCommandsToEnsureStrategyOrActivityIsRelevant(strategyOrActivityRef.getRef());
 		assertTrue("Should not make already relevant factor relevant again?", commands.isEmpty());
+	}
+	
+	private void verifyStrategyDefaultRelevantNoOverridesMakeIrrelevant(Desire desireToUse) throws Exception
+	{
+		CommandVector createCommandsToEnsureStrategyIsRelevant = desireToUse.createCommandsToEnsureStrategyOrActivityIsIrrelevant(strategyWithObjective.getRef());
+		assertEquals("Should contain one command to make default strategy irrelevant?", 1, createCommandsToEnsureStrategyIsRelevant.size());
+		CommandSetObjectData expectedMakeIrrelevantCommand = (CommandSetObjectData) createCommandsToEnsureStrategyIsRelevant.get(0);
+		CommandSetObjectData makeIrrelevantCommand = createExpectedRelevancyOverrideCommand(strategyWithObjective, desireToUse, false);
+		assertEquals("incorrect command to ensure already relevant strategy?", expectedMakeIrrelevantCommand, makeIrrelevantCommand);
 	}
 	
 	private void forceRelevancyForDefaultRelevantStrategy(Factor strategyOrActivityRef, Desire desireToUse) throws Exception
