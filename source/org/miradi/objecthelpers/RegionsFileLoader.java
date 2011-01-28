@@ -29,18 +29,6 @@ public class RegionsFileLoader extends TwoLevelFileLoader
 	}
 
 	@Override
-	protected Vector<TwoLevelEntry> processVector(Vector<Vector<String>> fileVector)
-	{
-		Vector<TwoLevelEntry> entries = new Vector<TwoLevelEntry>();
-		for (int i  = 0; i < fileVector.size(); ++i)
-		{
-			Vector row = fileVector.get(i);
-			TwoLevelEntry entry = createEntry(row);
-			entries.add(entry);
-		}
-		return entries;
-	}
-
 	protected TwoLevelEntry createEntry(Vector row)
 	{
 		String officeCode = (String) row.get(0);

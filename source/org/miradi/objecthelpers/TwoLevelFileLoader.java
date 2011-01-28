@@ -78,7 +78,20 @@ abstract public class TwoLevelFileLoader extends DelimitedFileLoader
 	//FIXME medium - there is a lot of duplication in the overriding processVector methods.
 	//The only real difference is the index the code name and description within a line tht is read.
 	//Maybe have each subclass return the index for code, name, description, or a map.  
-	abstract protected Vector<TwoLevelEntry> processVector(Vector<Vector<String>> fileVector);
+	protected Vector<TwoLevelEntry> processVector(Vector<Vector<String>> fileVector)
+	{
+		Vector<TwoLevelEntry> entries = new Vector<TwoLevelEntry>();
+		for (int i  = 0; i < fileVector.size(); ++i)
+		{
+			Vector row = fileVector.get(i);
+
+			TwoLevelEntry entry = createEntry(row);
+			entries.add(entry);
+		}
+		return entries;
+	}
+
+	abstract protected TwoLevelEntry createEntry(Vector row);
 
 	private String fileName;
 	public final static String COUNTRIES_FILE = "Countries.tsv";
