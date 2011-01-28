@@ -81,7 +81,6 @@ abstract public class TwoLevelFileLoader extends DelimitedFileLoader
 		for (int i  = 0; i < fileVector.size(); ++i)
 		{
 			Vector row = fileVector.get(i);
-
 			TwoLevelEntry entry = createEntry(row);
 			entries.add(entry);
 		}
