@@ -67,4 +67,10 @@ public class TaxonomyFileLoader extends TwoLevelFileLoader
 	{
 		return code.substring(0, code.indexOf("."));
 	}
+
+	@Override
+	protected TwoLevelEntry createEntry(Vector row)
+	{
+		throw new RuntimeException("TaxonomyFileLoader overrides processVector and does not call super.processVector");
+	}
 }

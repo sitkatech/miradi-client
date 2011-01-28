@@ -28,20 +28,6 @@ public class ColorsFileLoader extends TwoLevelFileLoader
 		super("");
 	}
 	
-	@Override
-	protected Vector<TwoLevelEntry> processVector(Vector<Vector<String>> fileVector)
-	{
-		Vector<TwoLevelEntry> entries = new Vector<TwoLevelEntry>();
-		for (int i  = 0; i < fileVector.size(); ++i)
-		{
-			Vector row = fileVector.get(i);
-
-			TwoLevelEntry entry = createEntry(row);
-			entries.add(entry);
-		}
-		return entries;
-	}
-
 	protected TwoLevelEntry createEntry(Vector row)
 	{
 		String varName = (String) row.get(0);
