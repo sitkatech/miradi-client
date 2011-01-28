@@ -72,12 +72,6 @@ abstract public class SortableRowTable extends TableWithColumnWidthAndSequenceSa
 		super.dispose();
 	}
 	
-	public void sort(int sortByTableColumn) 
-	{
-		//FIXME urgent: this method is no longer used since sort column and direction are stored by a different mechanism.
-		//Look at both callers of this method and verify that they can be removed.  
-	}
-
 	protected Comparator getComparator(int sortByTableColumn)
 	{
 		int sortByModelColumn = convertColumnIndexToModel(sortByTableColumn);

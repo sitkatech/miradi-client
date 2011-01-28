@@ -43,7 +43,6 @@ public class ObjectListTable extends ObjectTable
 	public ObjectListTable(MainWindow mainWindowToUse, ObjectTableModel modelToUse, int sortColumn)
 	{
 		this(mainWindowToUse, modelToUse);
-		sort(sortColumn);
 	}
 	
 	public ObjectListTableModel getObjectListTableModel()
