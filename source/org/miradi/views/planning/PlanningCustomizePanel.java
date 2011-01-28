@@ -44,6 +44,8 @@ public class PlanningCustomizePanel extends ObjectDataInputPanel
 		
 		ObjectDataInputPanel columnEditor = new CodeListEditorPanel(getProject(), planningConfigurationRef, ObjectTreeTableConfiguration.TAG_COL_CONFIGURATION, getProject().getQuestion(CustomPlanningColumnsQuestion.class), 1);
 		addSubPanelWithoutTitledBorder(columnEditor);
+		
+		updateFieldsFromProject();
 	}
 	
 	@Override
