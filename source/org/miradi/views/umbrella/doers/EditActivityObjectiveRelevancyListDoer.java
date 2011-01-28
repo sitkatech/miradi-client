@@ -36,7 +36,7 @@ public class EditActivityObjectiveRelevancyListDoer extends	AbstractEditListDoer
 	@Override
 	protected DisposablePanel createEditPanel() throws Exception
 	{
-		return new RelevancyObjectivePanel(getProject(), getSelectedRef());
+		return new RelevancyObjectivePanel(getProject(), getSelectedRef(), EAM.text("Select the Objectives which this Activity helps to achieve"));
 	}
 
 	@Override

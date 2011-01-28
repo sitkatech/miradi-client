@@ -97,6 +97,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.rtf.RtfWriter;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.FillerLabel;
 import org.miradi.utils.TableExporter;
 import org.miradi.views.MiradiTabContentsPanelInterface;
 import org.miradi.views.umbrella.ObjectPicker;
@@ -303,6 +304,13 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	{
 		addFieldToList(field);
 		addFieldComponent(field.getComponent());
+	}
+	
+	public void addFieldWithDescriptionOnly(ObjectDataField field, String translatedText)
+	{
+		addLabel(translatedText);
+		addLabel(new FillerLabel());
+		addFieldWithoutLabel(field);
 	}
 	
 	public ObjectDataField addFieldToList(ObjectDataField field)
