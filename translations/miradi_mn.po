@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-28 13:38-0600\n"
+"POT-Creation-Date: 2011-01-28 13:54-0600\n"
 "PO-Revision-Date: 2010-06-07 17:23-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -6783,16 +6783,16 @@ msgstr ""
 msgid "Tab|Action Plan"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/planning/NewActionPlanManagementPanel.java:48
-msgid "Tab|Action Plan 2"
-msgstr ""
-
 #: Miradi/source/org/miradi/dialogs/activity/ActivityListManagementPanel.java:66
 msgid "Tab|Activities"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/planning/ConfigurablePlanningTreeManagementPanel.java:45
 msgid "Tab|Custom"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/planning/NewConfigurablePlanningManagementPanel.java:48
+msgid "Tab|Custom 2"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/goal/GoalListManagementPanel.java:59

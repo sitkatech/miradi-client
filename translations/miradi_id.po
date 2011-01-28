@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-28 13:38-0600\n"
+"POT-Creation-Date: 2011-01-28 13:54-0600\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -7140,10 +7140,6 @@ msgstr "Mode Tinggi Baris Tabel"
 msgid "Tab|Action Plan"
 msgstr "Rencana Tindakan "
 
-#: Miradi/source/org/miradi/views/planning/NewActionPlanManagementPanel.java:48
-msgid "Tab|Action Plan 2"
-msgstr ""
-
 #: Miradi/source/org/miradi/dialogs/activity/ActivityListManagementPanel.java:66
 msgid "Tab|Activities"
 msgstr "Kegiatan "
@@ -7151,6 +7147,10 @@ msgstr "Kegiatan "
 #: Miradi/source/org/miradi/views/planning/ConfigurablePlanningTreeManagementPanel.java:45
 msgid "Tab|Custom"
 msgstr "Khusus "
+
+#: Miradi/source/org/miradi/views/planning/NewConfigurablePlanningManagementPanel.java:48
+msgid "Tab|Custom 2"
+msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/goal/GoalListManagementPanel.java:59
 msgid "Tab|Goals"
