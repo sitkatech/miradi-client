@@ -227,6 +227,5 @@ public class TestDesire extends ObjectTestCase
 	}
 	
 	private Strategy strategyWithObjective;
-	private Desire objective
-	;
+	private Desire objective;
 }
