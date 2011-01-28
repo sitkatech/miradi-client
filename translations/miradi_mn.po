@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-27 11:15-0600\n"
+"POT-Creation-Date: 2011-01-28 13:38-0600\n"
 "PO-Revision-Date: 2010-06-07 17:23-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -5605,6 +5605,22 @@ msgstr ""
 
 #: Miradi/source/org/miradi/questions/OpenStandardsConceptualizeQuestion.java:88
 msgid "Select initial team members"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/doers/EditActivityGoalRelevancyListDoer.java:39
+msgid "Select the Goals which this Activity helps to achieve"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/doers/EditStrategyGoalRelevancyListDoer.java:39
+msgid "Select the Goals which this Strategy helps to achieve"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/doers/EditActivityObjectiveRelevancyListDoer.java:39
+msgid "Select the Objectives which this Activity helps to achieve"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/doers/EditStrategyObjectiveRelevancyListDoer.java:39
+msgid "Select the Objectives which this Strategy helps to achieve"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:79

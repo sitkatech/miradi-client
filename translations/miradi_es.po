@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-27 11:15-0600\n"
+"POT-Creation-Date: 2011-01-28 13:38-0600\n"
 "PO-Revision-Date: 2010-09-20 10:32-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -5956,6 +5956,22 @@ msgstr "Seleccionar objetos de conservación"
 #: Miradi/source/org/miradi/questions/OpenStandardsConceptualizeQuestion.java:88
 msgid "Select initial team members"
 msgstr "Seleccionar miembros iniciales del equipo"
+
+#: Miradi/source/org/miradi/views/umbrella/doers/EditActivityGoalRelevancyListDoer.java:39
+msgid "Select the Goals which this Activity helps to achieve"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/doers/EditStrategyGoalRelevancyListDoer.java:39
+msgid "Select the Goals which this Strategy helps to achieve"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/doers/EditActivityObjectiveRelevancyListDoer.java:39
+msgid "Select the Objectives which this Activity helps to achieve"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/doers/EditStrategyObjectiveRelevancyListDoer.java:39
+msgid "Select the Objectives which this Strategy helps to achieve"
+msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:79
 msgid ""
