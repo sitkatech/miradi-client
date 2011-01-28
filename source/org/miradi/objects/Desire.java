@@ -281,9 +281,9 @@ abstract public class Desire extends BaseObject
 		return new CommandVector(commandToEnsureProperRelevancy);
 	}
 
-	private boolean isCorrectDefaultRelevancy(ORef ownerRef, boolean shouldBeRelevant) throws Exception
+	private boolean isCorrectDefaultRelevancy(ORef strategyOrActivityRef, boolean shouldBeRelevant) throws Exception
 	{
-		return getDefaultRelevantStrategyRefs().contains(ownerRef) == shouldBeRelevant;
+		return getDefaultRelevantStrategyRefs().contains(strategyOrActivityRef) == shouldBeRelevant;
 	}
 
 	private boolean isAlreadyCorrectlyOverridden(RelevancyOverride existingOverride, boolean shouldBeRelevant)
