@@ -44,7 +44,6 @@ public class TestDesire extends ObjectTestCase
 		strategyWithObjective = (Strategy) strategyWithObjectiveDiagramFactor.getWrappedFactor();
 		activity = getProject().createTask(strategyWithObjective);
 		objective = createObjective(strategyWithObjective);
-		getProject().createDiagramFactorLinkAndAddToDiagram(strategyWithObjectiveDiagramFactor, strategyDiagramFactor);
 
 		DiagramFactor targetDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
 		targetWithGoal = (Target) targetDiagramFactor.getWrappedFactor();
