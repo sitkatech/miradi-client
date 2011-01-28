@@ -22,6 +22,7 @@ package org.miradi.dialogs.planning.upperPanel.rebuilder;
 
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.Vector;
 
 import org.miradi.diagram.ChainWalker;
@@ -36,7 +37,6 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.AccountingCode;
-import org.miradi.objects.BaseObject;
 import org.miradi.objects.BudgetCategoryOne;
 import org.miradi.objects.BudgetCategoryTwo;
 import org.miradi.objects.Cause;
@@ -107,18 +107,25 @@ public class TreeRebuilder
 		}
 	}
 
-	private ORefList pruneChildRefsAlreadyDone(NewAbstractPlanningTreeNode parentNode, ORefList candidateChildRefs, CodeList rows)
+	private ORefList pruneChildRefsAlreadyDone(NewAbstractPlanningTreeNode parentNode, ORefList candidateChildRefs, CodeList rows) throws Exception
 	{
+		TreeTableNode node = parentNode;
+		HashSet<Integer> hierarchySoFar = new HashSet<Integer>();
+		while(node != null)
+		{
+			hierarchySoFar.add(node.getObjectReference().getObjectType());
+			node = node.getParentNode();
+		}
+	
 		ORefList remainingChildren = new ORefList();
-		int parentAt = rows.find(parentNode.getObjectTypeName());
 		for(int i = 0; i < candidateChildRefs.size(); ++i)
 		{
 			ORef childRef = candidateChildRefs.get(i);
-			BaseObject object = BaseObject.find(getProject(), childRef);
-			String childTypeName = object.getTypeName();
-			int childAt = rows.find(childTypeName);
-			if(childAt < 0 || parentAt < 0 || childAt >= parentAt)
+			int childType = childRef.getObjectType();
+			if(!hierarchySoFar.contains(childType))
 				remainingChildren.add(childRef);
+			else
+				System.out.println("omitting " + childRef + " because hierarchy is: " + hierarchySoFar);
 		}
 		return remainingChildren;
 	}
