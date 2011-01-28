@@ -98,7 +98,7 @@ abstract public class SingleBooleanColumnEditableModel extends EditableObjectTab
 	@Override
 	public void setObjectRefs(ORefList hierarchyToSelectedRef)
 	{
-		//FIXME urgent: should this do something
+		//FIXME urgent: should this do something?
 	}
 	
 	protected ORefList getCurrentlyCheckedRefs(Boolean valueAsBoolean, int row) throws Exception
