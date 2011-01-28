@@ -155,6 +155,7 @@ public class TestDesire extends ObjectTestCase
 	public void testDefaultIrrelevantOverrideIrrelevantMakeRelevant() throws Exception
 	{
 		verifyDefaultIrrelevantOverrideIrrelevantMakeRelevant(objective);
+		verifyDefaultIrrelevantOverrideIrrelevantMakeRelevant(goal);
 	}
 
 	private void verifyDefaultIrrelevantOverrideIrrelevantMakeRelevant(Desire desire) throws Exception
