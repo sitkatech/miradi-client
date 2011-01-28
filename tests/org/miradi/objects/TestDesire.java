@@ -92,16 +92,6 @@ public class TestDesire extends ObjectTestCase
 		verifyStrategyDefaultRelevantOverrideIrrelevantMakeIrrelevant(goal);
 	}
 
-	private void verifyStrategyDefaultRelevantOverrideIrrelevantMakeIrrelevant(Desire desire) throws Exception
-	{
-		getProject().executeCommandsAsTransaction(desire.createCommandsToEnsureStrategyOrActivityIsIrrelevant(strategyWithObjective.getRef()));
-		
-		assertFalse("default relevant stratgey should be irrelevant override?", desire.getRelevantStrategyRefs().contains(strategyWithObjective.getRef()));
-		
-		CommandVector commands = desire.createCommandsToEnsureStrategyOrActivityIsIrrelevant(strategyWithObjective.getRef());
-		assertTrue("Should not make already irrelevant strategy irrelevant again", commands.isEmpty());
-	}
-	
 	public void testStrategyDefaultRelevantOverrideRelevantMakeIrrelevant() throws Exception
 	{
 		forceRelevancyForDefaultRelevantStrategy(strategyWithObjective, objective);
@@ -225,6 +215,16 @@ public class TestDesire extends ObjectTestCase
 		RelevancyOverrideSet overrides = new RelevancyOverrideSet();
 		CommandSetObjectData expectedMakeRelevantCommand = new CommandSetObjectData(desire.getRef(), Desire.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, overrides.toString());
 		assertEquals("incorrect command to ensure already relevant strategy?", expectedMakeRelevantCommand, makeRelevantCommand);
+	}
+	
+	private void verifyStrategyDefaultRelevantOverrideIrrelevantMakeIrrelevant(Desire desire) throws Exception
+	{
+		getProject().executeCommandsAsTransaction(desire.createCommandsToEnsureStrategyOrActivityIsIrrelevant(strategyWithObjective.getRef()));
+		
+		assertFalse("default relevant stratgey should be irrelevant override?", desire.getRelevantStrategyRefs().contains(strategyWithObjective.getRef()));
+		
+		CommandVector commands = desire.createCommandsToEnsureStrategyOrActivityIsIrrelevant(strategyWithObjective.getRef());
+		assertTrue("Should not make already irrelevant strategy irrelevant again", commands.isEmpty());
 	}
 	
 	private void forceRelevancyForDefaultRelevantStrategy(Factor strategyOrActivityRef, Desire desireToUse) throws Exception
