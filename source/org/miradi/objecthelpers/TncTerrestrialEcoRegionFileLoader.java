@@ -35,13 +35,18 @@ public class TncTerrestrialEcoRegionFileLoader extends TwoLevelFileLoader
 		for (int i  = 0; i < fileVector.size(); ++i)
 		{
 			Vector row = fileVector.get(i);
-			String code = (String) row.get(0);
-			String name = (String) row.get(1);
-			String description = (String) row.get(5);
-		
-			TwoLevelEntry entry = new AlwaysSelectableTwoLevelEntry(code, name, description);
+			TwoLevelEntry entry = createEntry(row);
 			entries.add(entry);
 		}
 		return entries;
+	}
+
+	protected TwoLevelEntry createEntry(Vector row)
+	{
+		String code = (String) row.get(0);
+		String name = (String) row.get(1);
+		String description = (String) row.get(5);
+
+		return new AlwaysSelectableTwoLevelEntry(code, name, description);
 	}
 }
