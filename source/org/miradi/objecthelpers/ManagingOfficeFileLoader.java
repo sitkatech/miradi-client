@@ -38,7 +38,8 @@ public class ManagingOfficeFileLoader extends TwoLevelFileLoader
 			String officeCode = (String) row.get(0);
 			String officeName = (String) row.get(3);
 		
-			entries.add(new AlwaysSelectableTwoLevelEntry(officeCode, officeName));
+			TwoLevelEntry entry = new AlwaysSelectableTwoLevelEntry(officeCode, officeName);
+			entries.add(entry);
 		}
 		return entries;
 	}

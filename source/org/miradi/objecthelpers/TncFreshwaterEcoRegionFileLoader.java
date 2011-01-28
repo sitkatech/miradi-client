@@ -38,7 +38,8 @@ public class TncFreshwaterEcoRegionFileLoader extends TwoLevelFileLoader
 			String code = (String) row.get(0);
 			String name = (String) row.get(1);
 		
-			entries.add(new AlwaysSelectableTwoLevelEntry(code, name));
+			TwoLevelEntry entry = new AlwaysSelectableTwoLevelEntry(code, name);
+			entries.add(entry);
 		}
 		return entries;
 	}
