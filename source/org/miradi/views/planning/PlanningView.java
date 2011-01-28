@@ -96,7 +96,7 @@ public class PlanningView extends TabbedView
 		monitoringPlanManagementPanel = MonitoringPlanManagementPanel.createMonitoringPlanPanel(getMainWindow());
 		objectsOnlyManagementPanel = ObjectsOnlyManagementPanel.createObjectsOnlyPanel(getMainWindow());
 		planningManagementPanel = ConfigurablePlanningTreeManagementPanel.createConfigurablePlanningPanel(getMainWindow());
-		actionPlan2ManagementPanel = NewActionPlanManagementPanel.createActionPlanPanel(getMainWindow());
+		customPlan2ManagementPanel = NewActionPlanManagementPanel.createActionPlanPanel(getMainWindow());
 		resourceManagementPanel = StrategicPlanResourcesManagementPanel.createProjectResourcesPanelWithoutBudgetColumns(getMainWindow());
 		
 		managementPanelMap = new HashMap<String, PlanningTreeManagementPanel>();
@@ -106,7 +106,7 @@ public class PlanningView extends TabbedView
 		addPlanningManagementTab(objectsOnlyManagementPanel);
 		addPlanningManagementTab(planningManagementPanel);
 		if(Miradi.isAlphaTesterMode())
-			addPlanningManagementTab(actionPlan2ManagementPanel);
+			addPlanningManagementTab(customPlan2ManagementPanel);
 		
 		addNonScrollingTab(resourceManagementPanel);
 	}
@@ -142,8 +142,8 @@ public class PlanningView extends TabbedView
 		planningManagementPanel.dispose();
 		planningManagementPanel = null;
 		
-		actionPlan2ManagementPanel.dispose();
-		actionPlan2ManagementPanel = null;
+		customPlan2ManagementPanel.dispose();
+		customPlan2ManagementPanel = null;
 		
 		resourceManagementPanel.dispose();
 		resourceManagementPanel = null;
@@ -216,7 +216,7 @@ public class PlanningView extends TabbedView
 	private PlanningTreeManagementPanel monitoringPlanManagementPanel;
 	private PlanningTreeManagementPanel objectsOnlyManagementPanel;
 	private PlanningTreeManagementPanel planningManagementPanel;
-	private PlanningTreeManagementPanel actionPlan2ManagementPanel;
+	private PlanningTreeManagementPanel customPlan2ManagementPanel;
 	private PlanningTreeManagementPanel resourceManagementPanel;
 	
 	private HashMap<String, PlanningTreeManagementPanel> managementPanelMap;
