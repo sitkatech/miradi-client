@@ -37,8 +37,10 @@ public class TestDesire extends ObjectTestCase
 	{
 		super.setUp();
 		
+		strategy = getProject().createStrategy();
 		strategyWithObjective = getProject().createStrategy();
 		objective = createObjective(strategyWithObjective);
+		getProject().createFactorLink(strategyWithObjective.getRef(), strategy.getRef());
 	}
 	
 	public void testStrategyDefaultRelevantNoOverridesMakeIrrelevant() throws Exception
@@ -92,9 +94,6 @@ public class TestDesire extends ObjectTestCase
 
 	public void testStrategyDefaultIrrelevantNoOverrideMakeRelevant() throws Exception
 	{
-		Strategy strategy = getProject().createStrategy();
-		getProject().createFactorLink(strategyWithObjective.getRef(), strategy.getRef());
-		
 		verifyStrategyOrActivityDefaultIrrelevantNoOverrideMakeRelevant(strategy, objective);
 	}
 	
@@ -107,17 +106,11 @@ public class TestDesire extends ObjectTestCase
 	
 	public void testStrategyDefaultIrrelevantNoOverrideMakeIrrelevant() throws Exception
 	{
-		Strategy strategy = getProject().createStrategy();
-		getProject().createFactorLink(strategyWithObjective.getRef(), strategy.getRef());
-		
 		verifyStrategyOrActivityDefaultIrrelevantNoOverrideMakeIrrelevant(strategy, objective);
 	}
 	
 	public void testStrategyDefaultIrrelevantRelevantOverrideMakeIrrelevant() throws Exception
 	{
-		Strategy strategy = getProject().createStrategy();
-		getProject().createFactorLink(strategyWithObjective.getRef(), strategy.getRef());
-		
 		verifyStrategyOrActivityDefaultIrrelevantRelevantOverrideMakeIrrelevant(strategy,	objective);
 	}
 	
@@ -137,9 +130,6 @@ public class TestDesire extends ObjectTestCase
 
 	public void testStrategyDefaultIrrelevantOverrideRelevantMakeRelevant() throws Exception
 	{
-		Strategy strategy = getProject().createStrategy();
-		getProject().createFactorLink(strategyWithObjective.getRef(), strategy.getRef());
-		
 		verifyStrategyOrActivityDefaultIrrelevantOverrideRelevantMakeRelevant(strategy, objective);
 	}
 	
@@ -226,6 +216,7 @@ public class TestDesire extends ObjectTestCase
 		return getProject().createObjective(owner);
 	}
 	
+	private Strategy strategy;
 	private Strategy strategyWithObjective;
 	private Desire objective;
 }
