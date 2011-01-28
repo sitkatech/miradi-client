@@ -17,18 +17,23 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-
 package org.miradi.dialogs.planning.upperPanel;
 
 import org.miradi.actions.ActionCollapseAllRows;
-import org.miradi.actions.ActionCreateCustomFromCurrentTreeTableConfiguration;
+import org.miradi.actions.ActionCreatePlanningViewConfigurationMenu;
+import org.miradi.actions.ActionDeletePlanningViewConfiguration;
+import org.miradi.actions.ActionDeletePlanningViewTreeNode;
 import org.miradi.actions.ActionExpandAllRows;
 import org.miradi.actions.ActionPlanningCreationMenu;
+import org.miradi.actions.ActionPlanningCustomizeDialogPopup;
+import org.miradi.actions.ActionRenamePlanningViewConfiguration;
+import org.miradi.actions.ActionTreeNodeDown;
+import org.miradi.actions.ActionTreeNodeUp;
 import org.miradi.dialogs.planning.ConfigurableRowColumnProvider;
+import org.miradi.dialogs.planning.PlanningViewConfigurableControlPanel;
 import org.miradi.dialogs.planning.treenodes.NewPlanningRootNode;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.PlanningTreeConfiguration;
-
 
 public class NewConfigurablePlanningTreeTablePanel extends PlanningTreeTablePanel
 {
@@ -39,6 +44,9 @@ public class NewConfigurablePlanningTreeTablePanel extends PlanningTreeTablePane
 			PlanningTreeConfiguration rowColumnProvider) throws Exception
 	{
 		super(mainWindowToUse, treeToUse, modelToUse, buttonActions, rowColumnProvider);
+
+		customizationPanel = new PlanningViewConfigurableControlPanel(getProject());
+		addComponentAsFirst(customizationPanel);
 	}
 
 	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse) throws Exception
@@ -47,17 +55,34 @@ public class NewConfigurablePlanningTreeTablePanel extends PlanningTreeTablePane
 		NewPlanningRootNode rootNode = new NewPlanningRootNode(mainWindowToUse.getProject());
 		PlanningTreeTableModel model = new NewConfigurablePlanningTreeTableModel(mainWindowToUse.getProject(), rowColumnProvider, rootNode);
 		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse, model);
-
-		return new ActionPlanTreeTablePanel(mainWindowToUse, treeTable, model, getButtonActions(), rowColumnProvider);
+		return new NewConfigurablePlanningTreeTablePanel(mainWindowToUse, treeTable, model, getButtonActions(), rowColumnProvider);
 	}
 
 	private static Class[] getButtonActions()
 	{
-		return new Class[] { ActionExpandAllRows.class,
-				ActionCollapseAllRows.class, 
+		return new Class[] {
+				ActionPlanningCustomizeDialogPopup.class,	
+				ActionDeletePlanningViewConfiguration.class,
+				ActionCreatePlanningViewConfigurationMenu.class,
+				ActionRenamePlanningViewConfiguration.class,
+				null,
+					
+				ActionExpandAllRows.class,
+				ActionCollapseAllRows.class,
+				ActionTreeNodeUp.class,
+				ActionTreeNodeDown.class,
 				ActionPlanningCreationMenu.class,
-				ActionCreateCustomFromCurrentTreeTableConfiguration.class, 
-				};
+				ActionDeletePlanningViewTreeNode.class,
+			};
 	}
 
+	@Override
+	public void dispose()
+	{
+		super.dispose();
+
+		customizationPanel.dispose();
+	}
+
+	private PlanningViewConfigurableControlPanel customizationPanel; 
 }
