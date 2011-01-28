@@ -57,12 +57,12 @@ public class TestDesire extends ObjectTestCase
 		verifyStrategyDefaultRelevantNoOverridesMakeIrrelevant(goal);
 	}
 
-	public void testStrategyDefaultRelevantNoOverridesMakeIrrelevant() throws Exception
+	public void testStrategyDefaultRelevantNoOverridesMakeIrrelevantToObjective() throws Exception
 	{
 		verifyStrategyDefaultRelevantNoOverridesMakeIrrelevant(objective);
 	}
 	
-	public void testStrategyDefaultRelevantNoOverrideMakeRelevant() throws Exception
+	public void testStrategyDefaultRelevantNoOverrideMakeRelevantToObjective() throws Exception
 	{
 		verifyStrategyDefaultRelevantNoOverrideMakeRelevant(objective);
 	}
@@ -72,7 +72,7 @@ public class TestDesire extends ObjectTestCase
 		verifyStrategyDefaultRelevantNoOverrideMakeRelevant(goal);
 	}
 	
-	public void testStrategyDefaultRelevantOverrideIrrelevantMakeRelevant() throws Exception
+	public void testStrategyDefaultRelevantOverrideIrrelevantMakeRelevantToObjective() throws Exception
 	{
 		verifyStrategyDefaultRelevantOverrideIrrelevantMakeRelevant(objective);
 	}
