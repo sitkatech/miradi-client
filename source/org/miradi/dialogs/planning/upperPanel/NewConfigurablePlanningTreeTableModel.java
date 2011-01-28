@@ -26,9 +26,9 @@ import org.miradi.main.EAM;
 import org.miradi.objects.PlanningTreeConfiguration;
 import org.miradi.project.Project;
 
-public class NewActionPlanTreeTableModel extends ExportablePlanningTreeTableModel
+public class NewConfigurablePlanningTreeTableModel extends ExportablePlanningTreeTableModel
 {
-	public NewActionPlanTreeTableModel(Project projectToUse, PlanningTreeConfiguration rowColumnProvider, NewPlanningRootNode rootNode) throws Exception
+	public NewConfigurablePlanningTreeTableModel(Project projectToUse, PlanningTreeConfiguration rowColumnProvider, NewPlanningRootNode rootNode) throws Exception
 	{
 		super(projectToUse, rootNode, rowColumnProvider, UNIQUE_TREE_TABLE_IDENTIFIER);
 	}
@@ -53,5 +53,5 @@ public class NewActionPlanTreeTableModel extends ExportablePlanningTreeTableMode
 		}
 	}
 	
-	private static final String UNIQUE_TREE_TABLE_IDENTIFIER = "ActionPlanTreeTableModel";
+	private static final String UNIQUE_TREE_TABLE_IDENTIFIER = "ConfigurableTreeTableModel";
 }
