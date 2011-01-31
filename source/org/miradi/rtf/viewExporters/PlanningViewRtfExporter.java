@@ -28,7 +28,7 @@ import org.miradi.dialogs.planning.MonitoringRowColumnProvider;
 import org.miradi.dialogs.planning.ProgressReportRowColumnProvider;
 import org.miradi.dialogs.planning.ProjectResourceRowColumnProvider;
 import org.miradi.dialogs.planning.RowColumnProvider;
-import org.miradi.dialogs.planning.StrategicRowColumnProvider;
+import org.miradi.dialogs.planning.ActionPlanRowColumnProvider;
 import org.miradi.dialogs.planning.WorkPlanCategoryTreeRowColumnProvider;
 import org.miradi.dialogs.planning.WorkPlanRowColumnProviderWithBudgetColumns;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewMainModelExporter;
@@ -64,7 +64,7 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 	public void exportView(RtfWriter writer, CodeList reportTemplateContent) throws Exception
 	{
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.PLANNING_VIEW_STRATEGIC_PLAN_CODE))
-			exportReport(writer, new StrategicRowColumnProvider(getProject()), ReportTemplateContentQuestion.getStrategicPlanLabel());
+			exportReport(writer, new ActionPlanRowColumnProvider(getProject()), ReportTemplateContentQuestion.getStrategicPlanLabel());
 		
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.PLANNING_VIEW_MONITORING_PLAN_CODE))
 			exportReport(writer, new MonitoringRowColumnProvider(getProject()), ReportTemplateContentQuestion.getMonitoringPlanLabel());

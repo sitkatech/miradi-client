@@ -23,7 +23,7 @@ import org.miradi.actions.ActionCollapseAllRows;
 import org.miradi.actions.ActionCreateCustomFromCurrentTreeTableConfiguration;
 import org.miradi.actions.ActionExpandAllRows;
 import org.miradi.actions.ActionPlanningCreationMenu;
-import org.miradi.dialogs.planning.StrategicRowColumnProvider;
+import org.miradi.dialogs.planning.ActionPlanRowColumnProvider;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.PlanningTreeConfiguration;
 
@@ -42,7 +42,7 @@ public class ActionPlanTreeTablePanel extends PlanningTreeTablePanel
 	{
 		PlanningTreeTableModel model = new ActionPlanTreeTableModel(mainWindowToUse.getProject());
 		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse, model);
-		StrategicRowColumnProvider rowColumnProvider = new StrategicRowColumnProvider(mainWindowToUse.getProject());
+		ActionPlanRowColumnProvider rowColumnProvider = new ActionPlanRowColumnProvider(mainWindowToUse.getProject());
 		
 		return new ActionPlanTreeTablePanel(mainWindowToUse, treeTable, model, getButtonActions(), rowColumnProvider);
 	}

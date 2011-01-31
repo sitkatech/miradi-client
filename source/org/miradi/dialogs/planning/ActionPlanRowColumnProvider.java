@@ -32,9 +32,9 @@ import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.CodeList;
 
-public class StrategicRowColumnProvider extends PlanningViewRowColumnProvider implements PlanningTreeConfiguration
+public class ActionPlanRowColumnProvider extends PlanningViewRowColumnProvider implements PlanningTreeConfiguration
 {	
-	public StrategicRowColumnProvider(Project projectToUse)
+	public ActionPlanRowColumnProvider(Project projectToUse)
 	{
 		super(projectToUse);
 	}
