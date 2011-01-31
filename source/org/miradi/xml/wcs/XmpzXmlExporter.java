@@ -113,6 +113,7 @@ public class XmpzXmlExporter extends XmlExporter implements XmpzXmlConstants
 		new AudiencePoolExporter(this).exportXml();
 		new ObjectTreeTableConfigurationPoolExporter(this).exportXml();
 		new DashboardPoolExporter(this).exportXml();
+		new TaggedObjectSetPoolExporter(this).exportXml();
 		
 		writeOptionalElement(out, DELETED_ORPHANS_ELEMENT_NAME, getProject().getQuarantineFileContents());
 
