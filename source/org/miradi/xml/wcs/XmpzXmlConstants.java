@@ -28,7 +28,7 @@ public interface XmpzXmlConstants
 	public static final String ELEMENT_NAME = "element" + SINGLE_SPACE;
 	public static final String OPTIONAL_ELEMENT = SINGLE_SPACE + "?" + SINGLE_SPACE;
 	
-	public static final String NAME_SPACE_VERSION = "55";
+	public static final String NAME_SPACE_VERSION = "56";
 	public static final String PARTIAL_NAME_SPACE = "http://xml.miradi.org/schema/ConservationProject/";
 	public static final String NAME_SPACE = PARTIAL_NAME_SPACE + NAME_SPACE_VERSION;
 	public static final String XMLNS = "xmlns";
@@ -103,6 +103,7 @@ public interface XmpzXmlConstants
 	public static final String LONGITUDE = "longitude";
 	public static final String SELECTED_TAGGED_OBJECT_SET_IDS = "SelectedTaggedObjectSetIds";
 	public static final String TAGGED_OBJECT_SET_ELEMENT_NAME = "TaggedObjectSet";
+	public static final String TAGGED_DIAGRAM_FACTOR_IDS = "TaggedDiagramFactorIds";
 	public static final String DIAGRAM_POINT_ELEMENT_NAME = "DiagramPoint";
 	public static final String DIAGRAM_SIZE_ELEMENT_NAME = "DiagramSize";
 	public static final String X_ELEMENT_NAME = "x";
