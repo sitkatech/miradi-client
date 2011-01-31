@@ -132,6 +132,7 @@ public class TreeRebuilder
 
 	private ORefList getChildRefs(ORef parentRef, DiagramObject diagram) throws Exception
 	{
+		final ORefList noChildren = new ORefList();
 		if(ProjectMetadata.is(parentRef))
 			return getChildrenOfProjectNode(parentRef);
 		if(DiagramObject.isDiagramObject(parentRef))
@@ -151,6 +152,9 @@ public class TreeRebuilder
 		
 		if(Task.is(parentRef))
 			return getChildrenOfTask(parentRef, diagram);
+		
+		if(Measurement.is(parentRef))
+			return noChildren;
 		
 		EAM.logDebug("Don't know how to get children of " + parentRef);
 		return new ORefList();
