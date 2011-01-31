@@ -156,6 +156,9 @@ public class TreeRebuilder
 		if(Measurement.is(parentRef))
 			return noChildren;
 		
+		if(ResourceAssignment.is(parentRef))
+			return noChildren;
+		
 		EAM.logDebug("Don't know how to get children of " + parentRef);
 		return new ORefList();
 	}
