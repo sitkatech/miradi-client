@@ -89,7 +89,7 @@ abstract public class PlanningTreeTableModel extends GenericTreeTableModel
 		}
 	}
 	
-	//TODO the nodes need to implement the content of this method
+	//NOTE: PTTM is always just one column wide
 	@Override
 	public Object getValueAt(Object rawNode, int col)
 	{
