@@ -330,9 +330,9 @@ public class TreeRebuilder
 	
 	private void createAndAddChildren(NewAbstractPlanningTreeNode parent, ORefList childRefsToAdd) throws Exception
 	{
-		for(int i = 0; i < childRefsToAdd.size(); ++i)
+		for(int index = 0; index < childRefsToAdd.size(); ++index)
 		{
-			ORef childRef = childRefsToAdd.get(i);
+			ORef childRef = childRefsToAdd.get(index);
 			createAndAddChild(parent, childRef);
 		}
 	}
