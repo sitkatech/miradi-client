@@ -411,7 +411,9 @@ public class TreeRebuilder
 			for(NewAbstractPlanningTreeNode otherChildNode : rootNode.getRawChildren())
 			{
 				if(childNode.equals(otherChildNode))
+				{
 					continue;
+				}
 				if(otherChildNode.getRawChildren().contains(childNode))
 				{
 					keepThisChild = false;
