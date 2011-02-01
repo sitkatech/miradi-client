@@ -20,19 +20,37 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel;
 
 import org.miradi.dialogs.planning.ActionPlanRowColumnProvider;
+import org.miradi.dialogs.planning.treenodes.NewPlanningRootNode;
+import org.miradi.dialogs.planning.upperPanel.rebuilder.TreeRebuilder;
+import org.miradi.dialogs.treetables.TreeTableNode;
+import org.miradi.main.EAM;
 import org.miradi.project.Project;
 
 public class ActionPlanTreeTableModel extends ExportablePlanningTreeTableModel
 {
-	public ActionPlanTreeTableModel(Project project) throws Exception
+	public ActionPlanTreeTableModel(Project project, TreeTableNode rootNodeToUse, ActionPlanRowColumnProvider rowColumnProviderToUse) throws Exception
 	{
-		super(project, new ActionPlanRowColumnProvider(project), UNIQUE_TREE_TABLE_IDENTIFIER);
+		super(project, rootNodeToUse, rowColumnProviderToUse, UNIQUE_TREE_TABLE_IDENTIFIER);
 	}
 
 	@Override
 	public String getUniqueTreeTableModelIdentifier()
 	{
 		return UNIQUE_TREE_TABLE_IDENTIFIER;
+	}
+	
+	@Override
+	protected void rebuildNode()
+	{
+		try
+		{
+			TreeRebuilder treeRebuilder = new TreeRebuilder(getProject(), getRowColumnProvider());
+			treeRebuilder.rebuildTree((NewPlanningRootNode)getRootNode());
+		}
+		catch(Exception e)
+		{
+			EAM.panic(e);
+		}
 	}
 	
 	private static final String UNIQUE_TREE_TABLE_IDENTIFIER = "StrategicPlanTreeTableModel";
