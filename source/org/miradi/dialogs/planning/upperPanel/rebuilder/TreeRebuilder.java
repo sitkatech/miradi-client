@@ -99,7 +99,8 @@ public class TreeRebuilder
 
 			for(int index = 0; index < parentNode.getChildCount(); ++index)
 			{
-				rebuildTree((NewAbstractPlanningTreeNode) parentNode.getChild(index), diagram, rows);
+				NewAbstractPlanningTreeNode childNode = (NewAbstractPlanningTreeNode) parentNode.getChild(index);
+				rebuildTree(childNode, diagram, rows);
 			}
 		}
 		catch(Exception e)
