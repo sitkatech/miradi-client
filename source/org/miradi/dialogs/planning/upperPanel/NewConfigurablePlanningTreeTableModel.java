@@ -20,17 +20,24 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.upperPanel;
 
+import org.miradi.dialogs.planning.ConfigurableRowColumnProvider;
 import org.miradi.dialogs.planning.treenodes.NewPlanningRootNode;
 import org.miradi.dialogs.planning.upperPanel.rebuilder.TreeRebuilder;
 import org.miradi.main.EAM;
 import org.miradi.objects.PlanningTreeConfiguration;
 import org.miradi.project.Project;
+import org.miradi.utils.CodeList;
 
 public class NewConfigurablePlanningTreeTableModel extends ExportablePlanningTreeTableModel
 {
 	public NewConfigurablePlanningTreeTableModel(Project projectToUse, PlanningTreeConfiguration rowColumnProvider, NewPlanningRootNode rootNode) throws Exception
 	{
 		super(projectToUse, rootNode, rowColumnProvider, UNIQUE_TREE_TABLE_IDENTIFIER);
+	}
+	
+	public static CodeList getVisibleRowCodes(Project projectToUse) throws Exception
+	{
+		return new ConfigurableRowColumnProvider(projectToUse).getRowCodesToShow();
 	}
 	
 	@Override
