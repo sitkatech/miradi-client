@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-28 13:54-0600\n"
+"POT-Creation-Date: 2011-02-01 10:48-0600\n"
 "PO-Revision-Date: 2010-05-12 21:01-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -6787,7 +6787,7 @@ msgstr ""
 msgid "Tab|Activities"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/planning/ConfigurablePlanningTreeManagementPanel.java:45
+#: Miradi/source/org/miradi/views/planning/ConfigurablePlanningTreeManagementPanel.java:42
 msgid "Tab|Custom"
 msgstr ""
 
