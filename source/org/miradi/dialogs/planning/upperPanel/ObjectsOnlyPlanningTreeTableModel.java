@@ -20,15 +20,17 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel;
 
 import org.miradi.dialogs.planning.ObjectsOnlyRowColumnProvider;
+import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.EAM;
+import org.miradi.objects.PlanningTreeConfiguration;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 
-public class ObjectsOnlyPlanningTreeTableModel extends ExportablePlanningTreeTableModel
+public class ObjectsOnlyPlanningTreeTableModel extends TreeTableModelWithRebuilder
 {
-	public ObjectsOnlyPlanningTreeTableModel(Project project) throws Exception
+	public ObjectsOnlyPlanningTreeTableModel(Project project, TreeTableNode rootNode, PlanningTreeConfiguration rowColumnProvider) throws Exception
 	{
-		super(project, new ObjectsOnlyRowColumnProvider(project), UNIQUE_TREE_TABLE_IDENTIFIER);
+		super(project, rootNode, rowColumnProvider, UNIQUE_TREE_TABLE_IDENTIFIER);
 	}
 
 	@Override
