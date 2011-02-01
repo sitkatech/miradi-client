@@ -24,6 +24,7 @@ import org.miradi.actions.ActionCreateCustomFromCurrentTreeTableConfiguration;
 import org.miradi.actions.ActionExpandAllRows;
 import org.miradi.actions.ActionPlanningCreationMenu;
 import org.miradi.dialogs.planning.ActionPlanRowColumnProvider;
+import org.miradi.dialogs.planning.PlanningViewActionButtonPanel;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.PlanningTreeConfiguration;
 
@@ -36,6 +37,9 @@ public class ActionPlanTreeTablePanel extends PlanningTreeTablePanel
 			   								PlanningTreeConfiguration rowColumnProvider) throws Exception
 	{
 		super(mainWindowToUse, treeToUse, modelToUse, buttonActions, rowColumnProvider);
+		
+		PlanningViewActionButtonPanel choicePanel = new PlanningViewActionButtonPanel(getProject());
+		addComponentAsFirst(choicePanel);
 	}
 
 	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse) throws Exception
