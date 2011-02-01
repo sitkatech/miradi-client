@@ -39,7 +39,7 @@ public class MonitoringRowColumnProvider extends PlanningViewRowColumnProvider i
 		super(projectToUse);
 	}
 
-	public CodeList getColumnCodesToShow()
+	public CodeList getColumnCodesToShow() throws Exception
 	{
 		return new CodeList(new String[] {
 				Indicator.PSEUDO_TAG_METHODS,
@@ -51,7 +51,7 @@ public class MonitoringRowColumnProvider extends PlanningViewRowColumnProvider i
 		});
 	}
 
-	public CodeList getRowCodesToShow()
+	public CodeList getRowCodesToShow() throws Exception
 	{
 		return new CodeList(new String[] {
 				ResultsChainDiagram.OBJECT_NAME,

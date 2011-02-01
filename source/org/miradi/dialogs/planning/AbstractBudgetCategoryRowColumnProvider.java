@@ -32,7 +32,7 @@ abstract public class AbstractBudgetCategoryRowColumnProvider extends PlanningVi
 		super(projectToUse);
 	}
 
-	public CodeList getColumnCodesToShow()
+	public CodeList getColumnCodesToShow() throws Exception
 	{
 		return new CodeList(new String[] {
 				AbstractBudgetCategoryObject.TAG_CODE,
@@ -40,7 +40,7 @@ abstract public class AbstractBudgetCategoryRowColumnProvider extends PlanningVi
 		});
 	}
 	
-	public CodeList getRowCodesToShow()
+	public CodeList getRowCodesToShow() throws Exception
 	{
 		return new CodeList(new String[] {
 				getObjectTypeName(),

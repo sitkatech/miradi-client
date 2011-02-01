@@ -51,7 +51,7 @@ public class WorkPlanRowColumnProvider extends PlanningViewRowColumnProvider imp
 		return true;
 	}
 	
-	public CodeList getColumnCodesToShow()
+	public CodeList getColumnCodesToShow() throws Exception
 	{
 		CodeList columnCodesToShow = new CodeList(new String[] {
 				BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
@@ -81,7 +81,7 @@ public class WorkPlanRowColumnProvider extends PlanningViewRowColumnProvider imp
 		}
 	}
 
-	public CodeList getRowCodesToShow()
+	public CodeList getRowCodesToShow() throws Exception
 	{
 		return new CodeList(new String[] {
 				ConceptualModelDiagram.OBJECT_NAME,
