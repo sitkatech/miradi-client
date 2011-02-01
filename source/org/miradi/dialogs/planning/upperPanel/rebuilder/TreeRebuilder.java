@@ -340,23 +340,8 @@ public class TreeRebuilder
 
 	private void createAndAddChild(NewAbstractPlanningTreeNode parent, ORef childRefToAdd) throws Exception
 	{
-		if(wouldCreateRecursiveTree(parent, childRefToAdd))
-			return;
-		
 		NewAbstractPlanningTreeNode childNode = createChildNode(parent, childRefToAdd);
 		parent.addChild(childNode);
-	}
-
-	private boolean wouldCreateRecursiveTree(TreeTableNode node, ORef childRefToAdd) throws Exception
-	{
-		if(node.getObjectReference().equals(childRefToAdd))
-			return true;
-
-		TreeTableNode parentNode = node.getParentNode();
-		if(parentNode == null)
-			return false;
-		
-		return wouldCreateRecursiveTree(parentNode, childRefToAdd);
 	}
 
 	private NewAbstractPlanningTreeNode createChildNode(NewAbstractPlanningTreeNode parentNode, ORef refToAdd) throws Exception
