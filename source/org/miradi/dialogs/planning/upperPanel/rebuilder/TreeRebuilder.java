@@ -547,6 +547,7 @@ public class TreeRebuilder
 			ORef refB = nodeB.getObjectReference();
 			if(refA.isValid() && refB.isInvalid())
 				return -1;
+			
 			if(refA.isInvalid() && refB.isValid())
 				return 1;
 			
@@ -558,14 +559,17 @@ public class TreeRebuilder
 		private int getTypeSortLocation(int type)
 		{
 			int[] sortOrder = getNodeSortOrder();
+			for(int index = 0; index < sortOrder.length; ++index)
+			{
+				if(type == sortOrder[index])
+				{
+					return index;
+				}
+			}
 			
-			for(int i = 0; i < sortOrder.length; ++i)
-				if(type == sortOrder[i])
-					return i;
 			EAM.logError("NodeSorter unknown type: " + type);
 			return sortOrder.length;
 		}
-
 	}
 	
 	private int[] getNodeSortOrder()
