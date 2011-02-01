@@ -507,7 +507,9 @@ public class TreeRebuilder
 	private void addChildrenOfNodeToList(Vector<NewAbstractPlanningTreeNode> destination, NewAbstractPlanningTreeNode otherNode)
 	{
 		for(NewAbstractPlanningTreeNode newChild : otherNode.getRawChildren())
+		{
 			mergeChildIntoList(destination, newChild);
+		}
 	}
 
 	private boolean shouldSortChildren(NewAbstractPlanningTreeNode parentNode)
@@ -515,8 +517,10 @@ public class TreeRebuilder
 		ORef parentRef = parentNode.getObjectReference();
 		if(Task.is(parentRef))
 			return false;
+		
 		if(Strategy.is(parentRef))
 			return false;
+		
 		if(Indicator.is(parentRef))
 			return false;
 		
