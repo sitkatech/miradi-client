@@ -45,7 +45,7 @@ public class ConfigurablePlanningManagementPanel extends PlanningTreeManagementP
 	@Override
 	public String getPanelDescription()
 	{
-		return EAM.text("Tab|Custom 2");
+		return EAM.text("Tab|Custom");
 	}
 
 	@Override
