@@ -38,10 +38,10 @@ import org.miradi.objects.PlanningTreeConfiguration;
 public class ConfigurablePlanningTreeTablePanel extends PlanningTreeTablePanel
 {
 	protected ConfigurablePlanningTreeTablePanel(MainWindow mainWindowToUse,
-			PlanningTreeTable treeToUse, 
-			PlanningTreeTableModel modelToUse,
-			Class[] buttonActions, 
-			PlanningTreeConfiguration rowColumnProvider) throws Exception
+													PlanningTreeTable treeToUse, 
+													PlanningTreeTableModel modelToUse,
+													Class[] buttonActions, 
+													PlanningTreeConfiguration rowColumnProvider) throws Exception
 	{
 		super(mainWindowToUse, treeToUse, modelToUse, buttonActions, rowColumnProvider);
 
