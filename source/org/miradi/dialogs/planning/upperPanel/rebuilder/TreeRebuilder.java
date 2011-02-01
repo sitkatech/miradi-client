@@ -455,6 +455,7 @@ public class TreeRebuilder
 
 		if(shouldSortChildren(node))
 			Collections.sort(newChildren, createNodeSorter());
+		
 		node.setRawChildren(newChildren);
 	}
 	
