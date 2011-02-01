@@ -86,6 +86,11 @@ public class ViewData extends BaseObject
 		return super.isRefList(tag);
 	}
 	
+	public String getTreeConfigurationChoice()
+	{
+		return actionTreeConfigurationChoice.get();
+	}
+	
 	public CodeList getBudgetRollupReportLevelTypes()
 	{
 		return budgetRollupReportLevelTypes.getCodeList();

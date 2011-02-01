@@ -36,5 +36,5 @@ public class ActionTreeConfigurationQuestion extends StaticChoiceQuestion
 		};
 	}
 	
-	private static final String NOT_SPECIFIED_CODE = "";
+	public static final String NOT_SPECIFIED_CODE = "";
 }
