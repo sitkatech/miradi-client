@@ -95,7 +95,6 @@ public class PlanningView extends TabbedView
 		actionPlanManagementPanel = ActionPlanManagementPanel.createActionPlanPanel(getMainWindow());
 		monitoringPlanManagementPanel = MonitoringPlanManagementPanel.createMonitoringPlanPanel(getMainWindow());
 		objectsOnlyManagementPanel = ObjectsOnlyManagementPanel.createObjectsOnlyPanel(getMainWindow());
-		planningManagementPanel = ConfigurablePlanningTreeManagementPanel.createConfigurablePlanningPanel(getMainWindow());
 		customPlan2ManagementPanel = NewConfigurablePlanningManagementPanel.createActionPlanPanel(getMainWindow());
 		resourceManagementPanel = StrategicPlanResourcesManagementPanel.createProjectResourcesPanelWithoutBudgetColumns(getMainWindow());
 		
@@ -104,7 +103,6 @@ public class PlanningView extends TabbedView
 		addPlanningManagementTab(actionPlanManagementPanel);
 		addPlanningManagementTab(monitoringPlanManagementPanel);
 		addPlanningManagementTab(objectsOnlyManagementPanel);
-		addPlanningManagementTab(planningManagementPanel);
 		if(Miradi.isAlphaTesterMode())
 			addPlanningManagementTab(customPlan2ManagementPanel);
 		
@@ -138,9 +136,6 @@ public class PlanningView extends TabbedView
 		
 		objectsOnlyManagementPanel.dispose();
 		objectsOnlyManagementPanel = null;
-		
-		planningManagementPanel.dispose();
-		planningManagementPanel = null;
 		
 		customPlan2ManagementPanel.dispose();
 		customPlan2ManagementPanel = null;
@@ -215,7 +210,6 @@ public class PlanningView extends TabbedView
 	private PlanningTreeManagementPanel actionPlanManagementPanel;
 	private PlanningTreeManagementPanel monitoringPlanManagementPanel;
 	private PlanningTreeManagementPanel objectsOnlyManagementPanel;
-	private PlanningTreeManagementPanel planningManagementPanel;
 	private PlanningTreeManagementPanel customPlan2ManagementPanel;
 	private PlanningTreeManagementPanel resourceManagementPanel;
 	
