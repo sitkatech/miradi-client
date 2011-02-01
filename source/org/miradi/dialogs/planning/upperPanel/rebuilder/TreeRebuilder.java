@@ -142,9 +142,11 @@ public class TreeRebuilder
 		
 		if(AbstractTarget.isAbstractTarget(parentRef))
 			return getChildrenOfAbstractTarget(parentRef, diagram);
-		else if(Cause.is(parentRef))
+		
+		if(Cause.is(parentRef))
 			return getChildrenOfBasicFactor(parentRef, diagram);
-		else if(Strategy.is(parentRef))
+		
+		if(Strategy.is(parentRef))
 			return getChildrenOfStrategy(parentRef, diagram);
 		
 		if(Desire.isDesire(parentRef))
