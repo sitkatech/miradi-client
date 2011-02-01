@@ -31,7 +31,7 @@ import org.miradi.objects.ViewData;
 import org.miradi.utils.CodeList;
 import org.miradi.views.ObjectsDoer;
 import org.miradi.views.TabbedView;
-import org.miradi.views.planning.NewConfigurablePlanningManagementPanel;
+import org.miradi.views.planning.ConfigurablePlanningManagementPanel;
 import org.miradi.views.planning.PlanningView;
 
 public class CreateCustomFromCurrentTreeTableConfigurationDoer extends ObjectsDoer
@@ -82,7 +82,7 @@ public class CreateCustomFromCurrentTreeTableConfigurationDoer extends ObjectsDo
 	private void switchToCustomTab() throws Exception
 	{
 		TabbedView view = (TabbedView) getView();	
-		String customTabName = NewConfigurablePlanningManagementPanel.class.getSimpleName();
+		String customTabName = ConfigurablePlanningManagementPanel.class.getSimpleName();
 		int customTabIndex = view.getTabIndex(customTabName);
 		getProject().executeCommand(createTabChangeCommand(customTabIndex));
 	}
