@@ -248,11 +248,10 @@ public class TreeRebuilder
 
 	private ORefList getDirectlyLinkedNonDraftStrategies(AbstractTarget target, DiagramObject diagram)
 	{
-		ORefList strategyRefs = new ORefList();
-		
 		if(diagram == null)
-			return strategyRefs;
+			return new ORefList();
 		
+		ORefList strategyRefs = new ORefList();
 		ChainWalker chain = diagram.getDiagramChainWalker();
 		DiagramFactor targetDiagramFactor = diagram.getDiagramFactor(target.getRef());
 		FactorSet factors = chain.buildDirectlyLinkedUpstreamChainAndGetFactors(targetDiagramFactor);
