@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning;
 
+import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.Desire;
@@ -29,6 +30,7 @@ import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
+import org.miradi.questions.ActionTreeConfigurationQuestion;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.CodeList;
 
@@ -51,6 +53,17 @@ public class ActionPlanRowColumnProvider extends PlanningViewRowColumnProvider i
 
 	public CodeList getRowCodesToShow()
 	{
+		String actionTreeConfigurationCode = getActionTreeConfigurationCode();
+		if (actionTreeConfigurationCode.equals(ActionTreeConfigurationQuestion.NOT_SPECIFIED_CODE))
+		{
+			return createDefaultRowCodeList();
+		}
+		
+		return new CodeList();
+	}
+	
+	private CodeList createDefaultRowCodeList()
+	{
 		return new CodeList(new String[] {
 				ResultsChainDiagram.OBJECT_NAME,
 				ConceptualModelDiagram.OBJECT_NAME,
@@ -58,6 +71,19 @@ public class ActionPlanRowColumnProvider extends PlanningViewRowColumnProvider i
 				Goal.OBJECT_NAME,
 				Objective.OBJECT_NAME,
 				Strategy.OBJECT_NAME,});
+	}
+
+	private String getActionTreeConfigurationCode()
+	{
+		try
+		{
+			return getProject().getCurrentViewData().getTreeConfigurationChoice();
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return ActionTreeConfigurationQuestion.NOT_SPECIFIED_CODE;
+		}
 	}
 
 	public boolean shouldIncludeResultsChain()
