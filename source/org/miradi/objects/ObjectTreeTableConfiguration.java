@@ -46,17 +46,11 @@ public class ObjectTreeTableConfiguration extends BaseObject implements Planning
 		super(objectManager, new BaseId(idAsInt), jsonObject);
 	}
 	
-	/* (non-Javadoc)
-	 * @see org.miradi.objects.PlanningTreeConfiguration#getRowConfiguration()
-	 */
 	public CodeList getRowCodesToShow() throws Exception
 	{
 		return rowConfigurationList.getCodeList();
 	}
 	
-	/* (non-Javadoc)
-	 * @see org.miradi.objects.PlanningTreeConfiguration#getColumnConfiguration()
-	 */
 	public CodeList getColumnCodesToShow() throws Exception
 	{
 		return colConfigurationList.getCodeList();
