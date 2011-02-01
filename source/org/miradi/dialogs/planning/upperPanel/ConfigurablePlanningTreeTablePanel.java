@@ -35,9 +35,9 @@ import org.miradi.dialogs.planning.treenodes.NewPlanningRootNode;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.PlanningTreeConfiguration;
 
-public class NewConfigurablePlanningTreeTablePanel extends PlanningTreeTablePanel
+public class ConfigurablePlanningTreeTablePanel extends PlanningTreeTablePanel
 {
-	protected NewConfigurablePlanningTreeTablePanel(MainWindow mainWindowToUse,
+	protected ConfigurablePlanningTreeTablePanel(MainWindow mainWindowToUse,
 			PlanningTreeTable treeToUse, 
 			PlanningTreeTableModel modelToUse,
 			Class[] buttonActions, 
@@ -55,7 +55,7 @@ public class NewConfigurablePlanningTreeTablePanel extends PlanningTreeTablePane
 		NewPlanningRootNode rootNode = new NewPlanningRootNode(mainWindowToUse.getProject());
 		PlanningTreeTableModel model = new NewConfigurablePlanningTreeTableModel(mainWindowToUse.getProject(), rowColumnProvider, rootNode);
 		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse, model);
-		return new NewConfigurablePlanningTreeTablePanel(mainWindowToUse, treeTable, model, getButtonActions(), rowColumnProvider);
+		return new ConfigurablePlanningTreeTablePanel(mainWindowToUse, treeTable, model, getButtonActions(), rowColumnProvider);
 	}
 
 	private static Class[] getButtonActions()
