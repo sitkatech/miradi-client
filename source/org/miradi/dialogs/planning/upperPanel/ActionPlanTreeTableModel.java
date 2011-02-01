@@ -26,7 +26,7 @@ import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
 
-public class ActionPlanTreeTableModel extends ExportablePlanningTreeTableModel
+public class ActionPlanTreeTableModel extends TreeTableModelWithRebuilder
 {
 	public ActionPlanTreeTableModel(Project project, TreeTableNode rootNodeToUse, ActionPlanRowColumnProvider rowColumnProviderToUse) throws Exception
 	{
