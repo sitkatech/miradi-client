@@ -136,6 +136,7 @@ public class TreeRebuilder
 		final ORefList noChildren = new ORefList();
 		if(ProjectMetadata.is(parentRef))
 			return getChildrenOfProjectNode(parentRef);
+		
 		if(DiagramObject.isDiagramObject(parentRef))
 			return getChildrenOfDiagramNode(parentRef);
 		
@@ -148,6 +149,7 @@ public class TreeRebuilder
 		
 		if(Desire.isDesire(parentRef))
 			return getChildrenOfDesire(parentRef, diagram);
+		
 		if(Indicator.is(parentRef))
 			return getChildrenOfIndicator(parentRef, diagram);
 		
