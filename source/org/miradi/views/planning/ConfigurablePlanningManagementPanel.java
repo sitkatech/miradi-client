@@ -32,9 +32,9 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 
-public class NewConfigurablePlanningManagementPanel extends PlanningTreeManagementPanel
+public class ConfigurablePlanningManagementPanel extends PlanningTreeManagementPanel
 {
-	public NewConfigurablePlanningManagementPanel(MainWindow mainWindowToUse,
+	public ConfigurablePlanningManagementPanel(MainWindow mainWindowToUse,
 			PlanningTreeTablePanel planningTreeTablePanelToUse,
 			PlanningTreeMultiPropertiesPanel planningTreePropertiesPanel)
 			throws Exception
@@ -54,11 +54,11 @@ public class NewConfigurablePlanningManagementPanel extends PlanningTreeManageme
 		return IconManager.getNeedsAttentionIcon();
 	}
 
-	public static NewConfigurablePlanningManagementPanel createActionPlanPanel(MainWindow mainWindowToUse) throws Exception
+	public static ConfigurablePlanningManagementPanel createActionPlanPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		PlanningTreeTablePanel actionPlanTreeTablePanel = NewConfigurablePlanningTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse);
 		PlanningTreeMultiPropertiesPanel actionPlanPropertiesPanel = new ActionPlanMultiPropertiesPanel(mainWindowToUse, ORef.INVALID);
 		
-		return new NewConfigurablePlanningManagementPanel(mainWindowToUse, actionPlanTreeTablePanel, actionPlanPropertiesPanel);
+		return new ConfigurablePlanningManagementPanel(mainWindowToUse, actionPlanTreeTablePanel, actionPlanPropertiesPanel);
 	}
 }
