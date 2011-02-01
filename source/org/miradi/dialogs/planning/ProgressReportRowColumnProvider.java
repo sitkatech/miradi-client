@@ -29,7 +29,7 @@ import org.miradi.utils.CodeList;
 
 public class ProgressReportRowColumnProvider implements RowColumnProvider, PlanningTreeConfiguration
 {
-	public CodeList getRowCodesToShow()
+	public CodeList getRowCodesToShow() throws Exception
 	{
 		return new CodeList(new String[] {
 				IntermediateResult.OBJECT_NAME,
@@ -39,7 +39,7 @@ public class ProgressReportRowColumnProvider implements RowColumnProvider, Plann
 		});
 	}
 
-	public CodeList getColumnCodesToShow()
+	public CodeList getColumnCodesToShow() throws Exception
 	{
 		return new CodeList(new String[]{
 				BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
