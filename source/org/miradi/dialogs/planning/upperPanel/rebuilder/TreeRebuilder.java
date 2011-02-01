@@ -97,9 +97,10 @@ public class TreeRebuilder
 			childRefs.addAll(parentNode.getObject().getExpenseAssignmentRefs());
 			createAndAddChildren(parentNode, childRefs);
 
-			for(int i = 0; i < parentNode.getChildCount(); ++i)
-				rebuildTree((NewAbstractPlanningTreeNode) parentNode.getChild(i), diagram, rows);
-		
+			for(int index = 0; index < parentNode.getChildCount(); ++index)
+			{
+				rebuildTree((NewAbstractPlanningTreeNode) parentNode.getChild(index), diagram, rows);
+			}
 		}
 		catch(Exception e)
 		{
