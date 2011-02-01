@@ -21,12 +21,9 @@ package org.miradi.views.planning;
 
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningTreeMultiPropertiesPanel;
-import org.miradi.dialogs.planning.upperPanel.ConfigurablePlanningTreeTablePanel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
-import org.miradi.dialogs.strategicPlan.ActionPlanMultiPropertiesPanel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.objecthelpers.ORef;
 
 public class ConfigurablePlanningTreeManagementPanel extends PlanningTreeManagementPanel
 {
@@ -44,12 +41,4 @@ public class ConfigurablePlanningTreeManagementPanel extends PlanningTreeManagem
 	{
 		return EAM.text("Tab|Custom");
 	}
-	
-	public static PlanningTreeManagementPanel createConfigurablePlanningPanel(MainWindow mainWindowToUse) throws Exception
-	{
-		PlanningTreeTablePanel planningTreeTablePanel = ConfigurablePlanningTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse);
-		PlanningTreeMultiPropertiesPanel planningTreePropertiesPanel = new ActionPlanMultiPropertiesPanel(mainWindowToUse, ORef.INVALID);
-		return new ConfigurablePlanningTreeManagementPanel(mainWindowToUse, planningTreeTablePanel, planningTreePropertiesPanel);
-	}
-
 }
