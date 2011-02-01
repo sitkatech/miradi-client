@@ -53,7 +53,7 @@ public class ConfigurablePlanningTreeTablePanel extends PlanningTreeTablePanel
 	{
 		PlanningTreeConfiguration rowColumnProvider = new ConfigurableRowColumnProvider(mainWindowToUse.getProject());
 		NewPlanningRootNode rootNode = new NewPlanningRootNode(mainWindowToUse.getProject());
-		PlanningTreeTableModel model = new NewConfigurablePlanningTreeTableModel(mainWindowToUse.getProject(), rowColumnProvider, rootNode);
+		PlanningTreeTableModel model = new ConfigurablePlanningTreeTableModel(mainWindowToUse.getProject(), rowColumnProvider, rootNode);
 		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse, model);
 		return new ConfigurablePlanningTreeTablePanel(mainWindowToUse, treeTable, model, getButtonActions(), rowColumnProvider);
 	}

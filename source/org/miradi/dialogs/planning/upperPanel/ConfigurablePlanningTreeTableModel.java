@@ -28,9 +28,9 @@ import org.miradi.objects.PlanningTreeConfiguration;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 
-public class NewConfigurablePlanningTreeTableModel extends ExportablePlanningTreeTableModel
+public class ConfigurablePlanningTreeTableModel extends ExportablePlanningTreeTableModel
 {
-	public NewConfigurablePlanningTreeTableModel(Project projectToUse, PlanningTreeConfiguration rowColumnProvider, NewPlanningRootNode rootNode) throws Exception
+	public ConfigurablePlanningTreeTableModel(Project projectToUse, PlanningTreeConfiguration rowColumnProvider, NewPlanningRootNode rootNode) throws Exception
 	{
 		super(projectToUse, rootNode, rowColumnProvider, UNIQUE_TREE_TABLE_IDENTIFIER);
 	}
