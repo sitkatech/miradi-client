@@ -38,7 +38,7 @@ public class AnalysisRowColumnProvider implements WorkPlanCategoryTreeRowColumnP
 		project = projectToUse;
 	}
 	
-	public CodeList getColumnCodesToShow()
+	public CodeList getColumnCodesToShow() throws Exception
 	{
 		CodeList columnCodes = new CodeList();		
 		columnCodes.add(WorkPlanColumnConfigurationQuestion.META_ANALYSIS_WORK_UNITS_COLUMN_CODE);
@@ -48,7 +48,7 @@ public class AnalysisRowColumnProvider implements WorkPlanCategoryTreeRowColumnP
 		return columnCodes;
 	}
 
-	public CodeList getRowCodesToShow()
+	public CodeList getRowCodesToShow() throws Exception
 	{
 		return new CodeList(new String[] {
 				ProjectResource.OBJECT_NAME,

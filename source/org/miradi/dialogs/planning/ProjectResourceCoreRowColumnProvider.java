@@ -26,7 +26,7 @@ import org.miradi.utils.CodeList;
 
 public class ProjectResourceCoreRowColumnProvider implements PlanningTreeConfiguration
 {
-	public CodeList getColumnCodesToShow()
+	public CodeList getColumnCodesToShow() throws Exception
 	{
 		return getVisibleColumns();
 	}
@@ -45,7 +45,7 @@ public class ProjectResourceCoreRowColumnProvider implements PlanningTreeConfigu
 		});
 	}
 
-	public CodeList getRowCodesToShow()
+	public CodeList getRowCodesToShow() throws Exception
 	{
 		return new CodeList(new String[] {
 				ProjectResource.OBJECT_NAME,
