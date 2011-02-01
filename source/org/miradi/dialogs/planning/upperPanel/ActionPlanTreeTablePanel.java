@@ -38,7 +38,7 @@ public class ActionPlanTreeTablePanel extends PlanningTreeTablePanel
 	{
 		super(mainWindowToUse, treeToUse, modelToUse, buttonActions, rowColumnProvider);
 		
-		PlanningViewActionButtonPanel choicePanel = new PlanningViewActionButtonPanel(getProject());
+		choicePanel = new PlanningViewActionButtonPanel(getProject());
 		addComponentAsFirst(choicePanel);
 	}
 
@@ -60,4 +60,14 @@ public class ActionPlanTreeTablePanel extends PlanningTreeTablePanel
 				ActionCreateCustomFromCurrentTreeTableConfiguration.class,
 		};
 	}
+	
+	@Override
+	public void dispose()
+	{
+		super.dispose();
+		
+		choicePanel.dispose();
+	}
+	
+	private PlanningViewActionButtonPanel choicePanel;
 }
