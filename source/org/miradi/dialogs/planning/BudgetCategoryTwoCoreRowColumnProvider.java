@@ -33,7 +33,7 @@ public class BudgetCategoryTwoCoreRowColumnProvider extends AbstractBudgetCatego
 	}
 
 	@Override
-	public CodeList getColumnCodesToShow()
+	public CodeList getColumnCodesToShow() throws Exception
 	{
 		CodeList columnCodes = super.getColumnCodesToShow();
 		columnCodes.add(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_TWO_WORK_UNITS_COLUMN_CODE);
