@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-01 10:48-0600\n"
+"POT-Creation-Date: 2011-02-01 12:07-0600\n"
 "PO-Revision-Date: 2010-09-20 10:32-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -7191,13 +7191,9 @@ msgstr "Plan de acción"
 msgid "Tab|Activities"
 msgstr "Actividades"
 
-#: Miradi/source/org/miradi/views/planning/ConfigurablePlanningTreeManagementPanel.java:42
+#: Miradi/source/org/miradi/views/planning/ConfigurablePlanningManagementPanel.java:48
 msgid "Tab|Custom"
 msgstr "Personalizar"
-
-#: Miradi/source/org/miradi/views/planning/NewConfigurablePlanningManagementPanel.java:48
-msgid "Tab|Custom 2"
-msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/goal/GoalListManagementPanel.java:59
 msgid "Tab|Goals"

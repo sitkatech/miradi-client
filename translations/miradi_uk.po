@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-01 10:48-0600\n"
+"POT-Creation-Date: 2011-02-01 12:07-0600\n"
 "PO-Revision-Date: 2010-09-30 09:31+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -7183,13 +7183,9 @@ msgstr "Tab|План дій"
 msgid "Tab|Activities"
 msgstr "Tab|Діяльності"
 
-#: Miradi/source/org/miradi/views/planning/ConfigurablePlanningTreeManagementPanel.java:42
+#: Miradi/source/org/miradi/views/planning/ConfigurablePlanningManagementPanel.java:48
 msgid "Tab|Custom"
 msgstr "Tab|Податок"
-
-#: Miradi/source/org/miradi/views/planning/NewConfigurablePlanningManagementPanel.java:48
-msgid "Tab|Custom 2"
-msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/goal/GoalListManagementPanel.java:59
 msgid "Tab|Goals"
