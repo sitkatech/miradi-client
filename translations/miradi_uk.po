@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-01 13:26-0600\n"
+"POT-Creation-Date: 2011-02-02 08:27-0600\n"
 "PO-Revision-Date: 2010-09-30 09:31+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -4600,7 +4600,7 @@ msgstr "З'єднати Прямі загрози з Цілями"
 msgid "Link Properties"
 msgstr "З'єднати Складові"
 
-#: Miradi/source/org/miradi/views/planning/ObjectsOnlyManagementPanel.java:46
+#: Miradi/source/org/miradi/views/planning/ObjectsOnlyManagementPanel.java:48
 msgid "Lists"
 msgstr "Списки"
 
