@@ -97,7 +97,7 @@ public class ObjectTreeTableConfiguration extends BaseObject implements Planning
 	
 	public boolean doObjectivesContainStrategies() throws Exception
 	{
-		return true;
+		return strategyObjectiveOrder.get().equals(StrategyObjectiveTreeOrderQuestion.OBJECTIVE_CONTAINS_STRATEGY_CODE);
 	}
 	
 	@Override
