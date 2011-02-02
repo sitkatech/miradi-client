@@ -96,6 +96,7 @@ public class StaticQuestionManager
 		addQuestion(new PlanningTreeTargetPositionQuestion());
 		addQuestion(new WorkPlanCategoryTypesQuestion());
 		addQuestion(new DashboardFlagsQuestion());
+		addQuestion(new StragegyObjectiveTreeOrderQuestion());
 	}
 	
 	private static void addQuestion(ChoiceQuestion question)
