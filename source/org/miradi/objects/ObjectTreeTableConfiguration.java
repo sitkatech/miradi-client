@@ -29,7 +29,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.questions.CustomPlanningRowsQuestion;
 import org.miradi.questions.DiagramObjectDataInclusionQuestion;
-import org.miradi.questions.StragegyObjectiveTreeOrderQuestion;
+import org.miradi.questions.StrategyObjectiveTreeOrderQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -133,7 +133,7 @@ public class ObjectTreeTableConfiguration extends BaseObject implements Planning
 		rowConfigurationList = new CodeListData(TAG_ROW_CONFIGURATION, new CustomPlanningRowsQuestion(getProject()));
 		colConfigurationList = new CodeListData(TAG_COL_CONFIGURATION, getQuestion(CustomPlanningColumnsQuestion.class));
 		diagramDataInclusionChoice = new ChoiceData(TAG_DIAGRAM_DATA_INCLUSION, getQuestion(DiagramObjectDataInclusionQuestion.class));
-		strategyObjectiveOrder = new ChoiceData(TAG_STRATEGY_OBJECTIVE_ORDER, getQuestion(StragegyObjectiveTreeOrderQuestion.class));
+		strategyObjectiveOrder = new ChoiceData(TAG_STRATEGY_OBJECTIVE_ORDER, getQuestion(StrategyObjectiveTreeOrderQuestion.class));
 		
 		addField(TAG_ROW_CONFIGURATION, rowConfigurationList);
 		addField(TAG_COL_CONFIGURATION, colConfigurationList);

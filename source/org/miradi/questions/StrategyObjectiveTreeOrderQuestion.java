@@ -22,9 +22,9 @@ package org.miradi.questions;
 
 import org.miradi.main.EAM;
 
-public class StragegyObjectiveTreeOrderQuestion extends StaticChoiceQuestion
+public class StrategyObjectiveTreeOrderQuestion extends StaticChoiceQuestion
 {
-	public StragegyObjectiveTreeOrderQuestion()
+	public StrategyObjectiveTreeOrderQuestion()
 	{
 		super(createStaticChoices());
 	}
