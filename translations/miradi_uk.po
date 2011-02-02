@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-02 12:12-0600\n"
+"POT-Creation-Date: 2011-02-02 14:11-0600\n"
 "PO-Revision-Date: 2010-09-30 09:31+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -5224,7 +5224,7 @@ msgstr ""
 msgid "Objectives Only"
 msgstr "Тільки завдання"
 
-#: Miradi/source/org/miradi/questions/StragegyObjectiveTreeOrderQuestion.java:35
+#: Miradi/source/org/miradi/questions/StrategyObjectiveTreeOrderQuestion.java:35
 msgid "Objectives contain Strategies"
 msgstr ""
 
@@ -6261,7 +6261,7 @@ msgstr "Стратегії і дії"
 msgid "Strategies Only"
 msgstr "Тільки стратегії"
 
-#: Miradi/source/org/miradi/questions/StragegyObjectiveTreeOrderQuestion.java:36
+#: Miradi/source/org/miradi/questions/StrategyObjectiveTreeOrderQuestion.java:36
 msgid "Strategies contain Objectives"
 msgstr ""
 
