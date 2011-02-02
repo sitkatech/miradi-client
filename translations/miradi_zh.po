@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-01 13:26-0600\n"
+"POT-Creation-Date: 2011-02-02 08:27-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -4405,7 +4405,7 @@ msgstr "将直接威胁因子链结到对象 \t\t"
 msgid "Link Properties"
 msgstr "链接属性 \t\t"
 
-#: Miradi/source/org/miradi/views/planning/ObjectsOnlyManagementPanel.java:46
+#: Miradi/source/org/miradi/views/planning/ObjectsOnlyManagementPanel.java:48
 msgid "Lists"
 msgstr ""
 

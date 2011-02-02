@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-01 13:26-0600\n"
+"POT-Creation-Date: 2011-02-02 08:27-0600\n"
 "PO-Revision-Date: 2010-05-12 21:01-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -4311,7 +4311,7 @@ msgstr ""
 msgid "Link Properties"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/planning/ObjectsOnlyManagementPanel.java:46
+#: Miradi/source/org/miradi/views/planning/ObjectsOnlyManagementPanel.java:48
 msgid "Lists"
 msgstr ""
 

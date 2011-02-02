@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-01 13:26-0600\n"
+"POT-Creation-Date: 2011-02-02 08:27-0600\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -4552,7 +4552,7 @@ msgstr "Tautkan Ancaman Langsung ke Target "
 msgid "Link Properties"
 msgstr "Sifat-sifat Tautan "
 
-#: Miradi/source/org/miradi/views/planning/ObjectsOnlyManagementPanel.java:46
+#: Miradi/source/org/miradi/views/planning/ObjectsOnlyManagementPanel.java:48
 msgid "Lists"
 msgstr "Daftar "
 
