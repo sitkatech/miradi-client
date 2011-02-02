@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-02 08:27-0600\n"
+"POT-Creation-Date: 2011-02-02 12:12-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -5012,6 +5012,10 @@ msgstr ""
 msgid "Objectives Only"
 msgstr "仅限于分目标组 \t\t"
 
+#: Miradi/source/org/miradi/questions/StragegyObjectiveTreeOrderQuestion.java:35
+msgid "Objectives contain Strategies"
+msgstr ""
+
 #: Miradi/source/org/miradi/diagram/cells/FactorCell.java:107
 msgid "Objectives:"
 msgstr "分目标组： \t\t"
@@ -6008,6 +6012,10 @@ msgstr "策略和活动"
 #: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:57
 msgid "Strategies Only"
 msgstr "仅限于策略 \t\t"
+
+#: Miradi/source/org/miradi/questions/StragegyObjectiveTreeOrderQuestion.java:36
+msgid "Strategies contain Objectives"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:180
 #: Miradi/source/org/miradi/forms/objects/StrategyCoreSubForm.java:33
