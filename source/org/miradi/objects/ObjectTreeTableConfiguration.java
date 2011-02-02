@@ -79,17 +79,11 @@ public class ObjectTreeTableConfiguration extends BaseObject implements Planning
 		return ObjectType.OBJECT_TREE_TABLE_CONFIGURATION;
 	}	
 	
-	/* (non-Javadoc)
-	 * @see org.miradi.objects.PlanningTreeConfiguration#shouldIncludeResultsChain()
-	 */
 	public boolean shouldIncludeResultsChain()
 	{
 		return DiagramObjectDataInclusionQuestion.shouldIncludeResultsChain(getDiagramInclusionCode());
 	}
 
-	/* (non-Javadoc)
-	 * @see org.miradi.objects.PlanningTreeConfiguration#shouldIncludeConceptualModelPage()
-	 */
 	public boolean shouldIncludeConceptualModelPage()
 	{
 		return DiagramObjectDataInclusionQuestion.shouldIncludeConceptualModelPage(getDiagramInclusionCode());
