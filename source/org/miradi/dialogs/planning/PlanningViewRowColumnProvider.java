@@ -39,5 +39,10 @@ abstract public class PlanningViewRowColumnProvider implements RowColumnProvider
 		return project;
 	}
 	
+	public boolean doObjectivesContainStrategies() throws Exception
+	{
+		return true;
+	}
+	
 	private Project project;
 }

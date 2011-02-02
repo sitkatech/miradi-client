@@ -61,4 +61,9 @@ public class ProjectResourceCoreRowColumnProvider implements PlanningTreeConfigu
 	{
 		return true;
 	}
+	
+	public boolean doObjectivesContainStrategies() throws Exception
+	{
+		return true;
+	}
 }

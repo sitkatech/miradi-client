@@ -100,6 +100,11 @@ public class ObjectTreeTableConfiguration extends BaseObject implements Planning
 		return diagramDataInclusionChoice.get();
 	}
 	
+	public boolean doObjectivesContainStrategies() throws Exception
+	{
+		return true;
+	}
+	
 	@Override
 	public String toString()
 	{
