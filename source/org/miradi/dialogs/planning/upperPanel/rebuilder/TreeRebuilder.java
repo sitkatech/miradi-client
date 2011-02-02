@@ -76,12 +76,12 @@ public class TreeRebuilder
 	
 	public void rebuildTree(NewAbstractPlanningTreeNode rootNode) throws Exception
 	{
-		CodeList rows = rowColumnProvider.getRowCodesToShow();
+		CodeList rows = getRowColumnProvider().getRowCodesToShow();
 		rebuildTree(rootNode, null, rows);
 		pruneUncles(rootNode);
 		pruneUnwantedLayers(rootNode, rows);
 	}
-	
+
 	private void rebuildTree(NewAbstractPlanningTreeNode parentNode, DiagramObject diagram, CodeList rows)
 	{
 		try
@@ -172,12 +172,12 @@ public class TreeRebuilder
 	private ORefList getChildrenOfProjectNode(ORef parentRef) throws Exception
 	{
 		ORefList childRefs = new ORefList();
-		if(rowColumnProvider.shouldIncludeConceptualModelPage())
+		if(getRowColumnProvider().shouldIncludeConceptualModelPage())
 		{
 			ORefList conceptualModelRefs = getProject().getConceptualModelDiagramPool().getORefList();
 			childRefs.addAll(conceptualModelRefs);
 		}
-		if(rowColumnProvider.shouldIncludeResultsChain())
+		if(getRowColumnProvider().shouldIncludeResultsChain())
 		{
 			ORefList resultsChainRefs = getProject().getResultsChainDiagramPool().getORefList();
 			childRefs.addAll(resultsChainRefs);
@@ -583,6 +583,11 @@ public class TreeRebuilder
 			ResourceAssignment.getObjectType(),
 			ExpenseAssignment.getObjectType(),
 		};
+	}
+	
+	private PlanningTreeConfiguration getRowColumnProvider()
+	{
+		return rowColumnProvider;
 	}
 
 	private Project getProject()
