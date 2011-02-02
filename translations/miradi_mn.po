@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-02 08:27-0600\n"
+"POT-Creation-Date: 2011-02-02 12:12-0600\n"
 "PO-Revision-Date: 2010-06-07 17:23-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -4910,6 +4910,10 @@ msgstr ""
 msgid "Objectives Only"
 msgstr ""
 
+#: Miradi/source/org/miradi/questions/StragegyObjectiveTreeOrderQuestion.java:35
+msgid "Objectives contain Strategies"
+msgstr ""
+
 #: Miradi/source/org/miradi/diagram/cells/FactorCell.java:107
 msgid "Objectives:"
 msgstr ""
@@ -5883,6 +5887,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:57
 msgid "Strategies Only"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/StragegyObjectiveTreeOrderQuestion.java:36
+msgid "Strategies contain Objectives"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:180
