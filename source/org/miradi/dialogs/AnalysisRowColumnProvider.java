@@ -74,6 +74,11 @@ public class AnalysisRowColumnProvider implements WorkPlanCategoryTreeRowColumnP
 		return false;
 	}
 	
+	public boolean doObjectivesContainStrategies() throws Exception
+	{
+		return true;
+	}
+	
 	public CodeList getLevelTypeCodes() throws Exception
 	{
 		return getProject().getViewData(WorkPlanView.getViewName()).getBudgetRollupReportLevelTypes();

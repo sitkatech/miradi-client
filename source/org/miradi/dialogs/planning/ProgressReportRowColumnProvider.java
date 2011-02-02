@@ -56,4 +56,9 @@ public class ProgressReportRowColumnProvider implements RowColumnProvider, Plann
 	{
 		return true;
 	}
+	
+	public boolean doObjectivesContainStrategies() throws Exception
+	{
+		return true;
+	}
 }

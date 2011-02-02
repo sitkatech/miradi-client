@@ -29,4 +29,5 @@ public interface PlanningTreeConfiguration extends RowColumnProvider
 	public abstract CodeList getColumnCodesToShow() throws Exception;
 	public abstract boolean shouldIncludeResultsChain() throws Exception;
 	public abstract boolean shouldIncludeConceptualModelPage() throws Exception;
+	public abstract boolean doObjectivesContainStrategies() throws Exception;
 }
