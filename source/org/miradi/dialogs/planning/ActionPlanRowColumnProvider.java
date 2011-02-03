@@ -29,6 +29,7 @@ import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
+import org.miradi.questions.ActionTreeConfigurationQuestion;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.CodeList;
 
@@ -74,5 +75,21 @@ public class ActionPlanRowColumnProvider extends PlanningViewRowColumnProvider i
 	public boolean shouldIncludeConceptualModelPage()
 	{
 		return true;
+	}
+	
+	@Override
+	public boolean doObjectivesContainStrategies() throws Exception
+	{
+		String actionTreeConfigurationCode = getProject().getCurrentViewData().getTreeConfigurationChoice();
+		if (actionTreeConfigurationCode.equals(ActionTreeConfigurationQuestion.NOT_SPECIFIED_CODE))
+		{
+			return true;
+		}
+		else if (actionTreeConfigurationCode.equals(ActionTreeConfigurationQuestion.STRATEGIES_CONTAIN_OBJECTIVES_CODE))
+		{
+			return false;
+		}
+		
+		throw new RuntimeException("");
 	}
 }
