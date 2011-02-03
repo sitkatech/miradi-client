@@ -78,7 +78,7 @@ public class TreeRebuilder
 	{
 		CodeList rows = getRowColumnProvider().getRowCodesToShow();
 		rebuildTree(rootNode, null, rows);
-		deleteUncleSubtrees(rootNode);
+		deleteUnclesAndTheirChildren(rootNode);
 		removeUnwantedLayersAndPromoteChildren(rootNode, rows);
 	}
 
@@ -402,7 +402,7 @@ public class TreeRebuilder
 		}
 	}
 	
-	private void deleteUncleSubtrees(NewAbstractPlanningTreeNode rootNode)
+	private void deleteUnclesAndTheirChildren(NewAbstractPlanningTreeNode rootNode)
 	{
 		Vector<NewAbstractPlanningTreeNode> childrenToKeep = new Vector<NewAbstractPlanningTreeNode>();
 		for(NewAbstractPlanningTreeNode childNode : rootNode.getRawChildren())
@@ -424,7 +424,7 @@ public class TreeRebuilder
 			if(keepThisChild)
 			{
 				childrenToKeep.add(childNode);
-				deleteUncleSubtrees(childNode);
+				deleteUnclesAndTheirChildren(childNode);
 			}
 		}
 		
