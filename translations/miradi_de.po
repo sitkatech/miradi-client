@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-03 13:05-0600\n"
+"POT-Creation-Date: 2011-02-03 14:08-0600\n"
 "PO-Revision-Date: 2011-01-24 10:21-0600\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -4834,7 +4834,6 @@ msgstr ""
 #: Miradi/source/org/miradi/questions/ThreatRatingQuestion.java:42
 #: Miradi/source/org/miradi/questions/KeyEcologicalAttributeTypeQuestion.java:35
 #: Miradi/source/org/miradi/questions/StressScopeChoiceQuestion.java:36
-#: Miradi/source/org/miradi/questions/ActionTreeConfigurationQuestion.java:35
 #: Miradi/source/org/miradi/questions/StrategyFeasibilityQuestion.java:37
 #: Miradi/source/org/miradi/questions/AbstractProgressReportStatusQuestion.java:38
 #: Miradi/source/org/miradi/questions/RatingSourceQuestion.java:35
@@ -4910,6 +4909,7 @@ msgstr ""
 msgid "Objectives Only"
 msgstr ""
 
+#: Miradi/source/org/miradi/questions/ActionTreeConfigurationQuestion.java:35
 #: Miradi/source/org/miradi/questions/StrategyObjectiveTreeOrderQuestion.java:35
 msgid "Objectives contain Strategies"
 msgstr ""
