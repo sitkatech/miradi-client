@@ -81,7 +81,7 @@ public class ActionPlanRowColumnProvider extends PlanningViewRowColumnProvider i
 	public boolean doObjectivesContainStrategies() throws Exception
 	{
 		String actionTreeConfigurationCode = getProject().getCurrentViewData().getTreeConfigurationChoice();
-		if (actionTreeConfigurationCode.equals(ActionTreeConfigurationQuestion.NOT_SPECIFIED_CODE))
+		if (actionTreeConfigurationCode.equals(ActionTreeConfigurationQuestion.OBJECTIVES_CONTAIN_STRATEGIES_CODE))
 		{
 			return true;
 		}

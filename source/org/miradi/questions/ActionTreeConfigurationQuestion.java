@@ -32,11 +32,11 @@ public class ActionTreeConfigurationQuestion extends StaticChoiceQuestion
 	private static ChoiceItem[] getStaticChoices()
 	{
 		return new ChoiceItem[] {
-			new ChoiceItem(NOT_SPECIFIED_CODE, EAM.text("Not Specified")),
+			new ChoiceItem(OBJECTIVES_CONTAIN_STRATEGIES_CODE, EAM.text("Not Specified")),
 			new ChoiceItem(STRATEGIES_CONTAIN_OBJECTIVES_CODE, EAM.text("Strategies Contain Objectives")),
 		};
 	}
 	
-	public static final String NOT_SPECIFIED_CODE = "";
+	public static final String OBJECTIVES_CONTAIN_STRATEGIES_CODE = "";
 	public static final String STRATEGIES_CONTAIN_OBJECTIVES_CODE = "StrategiesContainObjectives";
 }
