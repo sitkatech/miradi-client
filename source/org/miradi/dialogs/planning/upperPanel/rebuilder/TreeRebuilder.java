@@ -79,7 +79,7 @@ public class TreeRebuilder
 		CodeList rows = getRowColumnProvider().getRowCodesToShow();
 		rebuildTree(rootNode, null, rows);
 		deleteUncleSubtrees(rootNode);
-		pruneUnwantedLayers(rootNode, rows);
+		removeUnwantedLayersAndPromoteChildren(rootNode, rows);
 	}
 
 	private void rebuildTree(NewAbstractPlanningTreeNode parentNode, DiagramObject diagram, CodeList rows)
@@ -431,7 +431,7 @@ public class TreeRebuilder
 		rootNode.setRawChildren(childrenToKeep);
 	}
 
-	private void pruneUnwantedLayers(NewAbstractPlanningTreeNode node, CodeList objectTypesToShow)
+	private void removeUnwantedLayersAndPromoteChildren(NewAbstractPlanningTreeNode node, CodeList objectTypesToShow)
 	{
 		if(node.isAnyChildAllocated())
 			node.setAllocated();
@@ -440,7 +440,7 @@ public class TreeRebuilder
 		for(int i = 0; i < node.getChildCount(); ++i)
 		{
 			NewAbstractPlanningTreeNode child = (NewAbstractPlanningTreeNode) node.getChild(i);
-			pruneUnwantedLayers(child, objectTypesToShow);
+			removeUnwantedLayersAndPromoteChildren(child, objectTypesToShow);
 			
 			boolean isChildVisible = objectTypesToShow.contains(child.getObjectTypeName());
 			if(isChildVisible)
