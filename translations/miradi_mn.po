@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-02 14:11-0600\n"
+"POT-Creation-Date: 2011-02-03 13:05-0600\n"
 "PO-Revision-Date: 2010-06-07 17:23-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -5883,6 +5883,10 @@ msgstr ""
 #: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:49
 #: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:55
 msgid "Strategies And Activities"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/ActionTreeConfigurationQuestion.java:36
+msgid "Strategies Contain Objectives"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:57

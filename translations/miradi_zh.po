@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-02 14:11-0600\n"
+"POT-Creation-Date: 2011-02-03 13:05-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -6008,6 +6008,10 @@ msgstr "策略计划"
 #: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:55
 msgid "Strategies And Activities"
 msgstr "策略和活动"
+
+#: Miradi/source/org/miradi/questions/ActionTreeConfigurationQuestion.java:36
+msgid "Strategies Contain Objectives"
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:57
 msgid "Strategies Only"
