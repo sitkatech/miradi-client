@@ -279,7 +279,7 @@ public class TreeRebuilder
 		ORefList childRefs = new ORefList();
 		Strategy strategy = Strategy.find(getProject(), parentRef);
 		childRefs.addAll(strategy.getActivityRefs());
-		if (doObjectivesContainStrategies())
+		if (doStrategiesContainObjectives())
 			childRefs.addAll(findRelevantObjectivesAndGoals(parentRef));
 		
 		childRefs.addAll(strategy.getOwnedObjects(Indicator.getObjectType()));
@@ -318,7 +318,7 @@ public class TreeRebuilder
 	{
 		ORefList childRefs = new ORefList();
 		Desire desire = Desire.findDesire(getProject(), parentRef);
-		if (doStrategiesContainObjectives())
+		if (doObjectivesContainStrategies())
 			childRefs.addAll(desire.getRelevantStrategyAndActivityRefs());
 		
 		childRefs.addAll(desire.getRelevantIndicatorRefList());
