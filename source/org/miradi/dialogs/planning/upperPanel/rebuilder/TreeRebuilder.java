@@ -92,9 +92,9 @@ public class TreeRebuilder
 				diagram = DiagramObject.findDiagramObject(getProject(), parentRef);
 
 			ORefList candidateChildRefs = getChildRefs(parentNode.getObjectReference(), diagram);
+			candidateChildRefs.addAll(parentNode.getObject().getResourceAssignmentRefs());
+			candidateChildRefs.addAll(parentNode.getObject().getExpenseAssignmentRefs());
 			ORefList childRefs = getListWithoutChildrenThatWouldCauseRecursion(parentNode, candidateChildRefs);
-			childRefs.addAll(parentNode.getObject().getResourceAssignmentRefs());
-			childRefs.addAll(parentNode.getObject().getExpenseAssignmentRefs());
 			createAndAddChildren(parentNode, childRefs);
 
 			for(int index = 0; index < parentNode.getChildCount(); ++index)
