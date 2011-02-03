@@ -92,7 +92,7 @@ public class TreeRebuilder
 				diagram = DiagramObject.findDiagramObject(getProject(), parentRef);
 
 			ORefList candidateChildRefs = getChildRefs(parentNode.getObjectReference(), diagram);
-			ORefList childRefs = getListWithoutChildrenThatWouldCauseRecursion(parentNode, candidateChildRefs, rows);
+			ORefList childRefs = getListWithoutChildrenThatWouldCauseRecursion(parentNode, candidateChildRefs);
 			childRefs.addAll(parentNode.getObject().getResourceAssignmentRefs());
 			childRefs.addAll(parentNode.getObject().getExpenseAssignmentRefs());
 			createAndAddChildren(parentNode, childRefs);
@@ -109,7 +109,7 @@ public class TreeRebuilder
 		}
 	}
 
-	private ORefList getListWithoutChildrenThatWouldCauseRecursion(NewAbstractPlanningTreeNode parentNode, ORefList candidateChildRefs, CodeList rows) throws Exception
+	private ORefList getListWithoutChildrenThatWouldCauseRecursion(NewAbstractPlanningTreeNode parentNode, ORefList candidateChildRefs) throws Exception
 	{
 		TreeTableNode node = parentNode;
 		HashSet<Integer> hierarchySoFar = new HashSet<Integer>();
