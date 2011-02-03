@@ -29,7 +29,6 @@ import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
-import org.miradi.questions.ActionTreeConfigurationQuestion;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.CodeList;
 
@@ -52,13 +51,7 @@ public class ActionPlanRowColumnProvider extends PlanningViewRowColumnProvider i
 
 	public CodeList getRowCodesToShow() throws Exception
 	{
-		String actionTreeConfigurationCode = getProject().getCurrentViewData().getTreeConfigurationChoice();
-		if (actionTreeConfigurationCode.equals(ActionTreeConfigurationQuestion.NOT_SPECIFIED_CODE))
-		{
-			return createDefaultRowCodeList();
-		}
-		
-		return new CodeList();
+		return createDefaultRowCodeList();
 	}
 	
 	private CodeList createDefaultRowCodeList()
@@ -69,7 +62,8 @@ public class ActionPlanRowColumnProvider extends PlanningViewRowColumnProvider i
 				Target.OBJECT_NAME,
 				Goal.OBJECT_NAME,
 				Objective.OBJECT_NAME,
-				Strategy.OBJECT_NAME,});
+				Strategy.OBJECT_NAME,
+				});
 	}
 
 	public boolean shouldIncludeResultsChain()
