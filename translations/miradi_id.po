@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-04 10:36-0600\n"
+"POT-Creation-Date: 2011-02-04 10:42-0600\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -2433,7 +2433,7 @@ msgstr "Aturan Bundel"
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:127
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:166
 #: Miradi/source/org/miradi/dialogs/confirm/ConfirmDialogTemplate.java:51
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:233
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:239
 msgid "Button|Cancel"
 msgstr "Batalkan "
 
@@ -2479,7 +2479,7 @@ msgstr "Pindahkan "
 msgid "Button|No"
 msgstr "Tidak "
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:230
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:236
 msgid "Button|OK"
 msgstr "OK "
 
@@ -4067,7 +4067,7 @@ msgstr "Di Depan "
 msgid "In Progress"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:250
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:256
 msgid "Incomplete Link"
 msgstr "Tautan Tidak Lengkap "
 
@@ -4144,7 +4144,7 @@ msgstr "Sisipkan "
 msgid "Insert FTE Fraction"
 msgstr "Sisipkan Pecahan FTE "
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:219
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:225
 msgid "Insert Factor Link dialog|No Label Specified"
 msgstr ""
 
@@ -8358,7 +8358,7 @@ msgstr ""
 "Anda menghilangkan sumber daya ini dari tim proyek, sehingga tidak lagi "
 "muncul di daftar Anggota Tim dalam Tampilan Ringkasan"
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:251
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:257
 msgid "You must select one item in each of the two lists"
 msgstr "Anda harus memilih satu butir dalam masing-masing dari kedua daftar. "
 
