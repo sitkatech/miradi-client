@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-04 10:36-0600\n"
+"POT-Creation-Date: 2011-02-04 10:42-0600\n"
 "PO-Revision-Date: 2010-12-30 12:19-0600\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -2280,7 +2280,7 @@ msgstr ""
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:127
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:166
 #: Miradi/source/org/miradi/dialogs/confirm/ConfirmDialogTemplate.java:51
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:233
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:239
 msgid "Button|Cancel"
 msgstr ""
 
@@ -2326,7 +2326,7 @@ msgstr ""
 msgid "Button|No"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:230
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:236
 msgid "Button|OK"
 msgstr ""
 
@@ -3840,7 +3840,7 @@ msgstr ""
 msgid "In Progress"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:250
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:256
 msgid "Incomplete Link"
 msgstr ""
 
@@ -3911,7 +3911,7 @@ msgstr ""
 msgid "Insert FTE Fraction"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:219
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:225
 msgid "Insert Factor Link dialog|No Label Specified"
 msgstr ""
 
@@ -7898,7 +7898,7 @@ msgid ""
 "longer appear in the list of Team Members in the Summary View. "
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:251
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:257
 msgid "You must select one item in each of the two lists"
 msgstr ""
 

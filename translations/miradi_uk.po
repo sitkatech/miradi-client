@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-04 10:36-0600\n"
+"POT-Creation-Date: 2011-02-04 10:42-0600\n"
 "PO-Revision-Date: 2010-09-30 09:31+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -2502,7 +2502,7 @@ msgstr "Вузлові правила"
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:127
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:166
 #: Miradi/source/org/miradi/dialogs/confirm/ConfirmDialogTemplate.java:51
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:233
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:239
 msgid "Button|Cancel"
 msgstr "Button|Закрити"
 
@@ -2548,7 +2548,7 @@ msgstr "Button|Перемістити"
 msgid "Button|No"
 msgstr "Button|Ні"
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:230
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:236
 msgid "Button|OK"
 msgstr "Button|OK"
 
@@ -4117,7 +4117,7 @@ msgstr "Спереду"
 msgid "In Progress"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:250
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:256
 msgid "Incomplete Link"
 msgstr "Незавершене з'єднання"
 
@@ -4193,7 +4193,7 @@ msgstr "Вставити"
 msgid "Insert FTE Fraction"
 msgstr "Вставити фрагмент FTE"
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:219
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:225
 msgid "Insert Factor Link dialog|No Label Specified"
 msgstr "Insert Factor Link dialog|Не визначений ярлик"
 
@@ -8374,7 +8374,7 @@ msgstr ""
 "Ви забираєте цей ресурс з робочої групи проекту, тому він або вона не "
 "з'явиться більше у списку членів робочої групи у підсумковому виді."
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:251
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:257
 msgid "You must select one item in each of the two lists"
 msgstr "Ви мусите вибрати один пункт у кожному з двох переліків"
 

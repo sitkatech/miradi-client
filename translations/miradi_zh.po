@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-04 10:36-0600\n"
+"POT-Creation-Date: 2011-02-04 10:42-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -2334,7 +2334,7 @@ msgstr "规则集"
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:127
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:166
 #: Miradi/source/org/miradi/dialogs/confirm/ConfirmDialogTemplate.java:51
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:233
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:239
 msgid "Button|Cancel"
 msgstr "取消 \t\t"
 
@@ -2380,7 +2380,7 @@ msgstr ""
 msgid "Button|No"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:230
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:236
 msgid "Button|OK"
 msgstr "确定 \t\t"
 
@@ -3926,7 +3926,7 @@ msgstr ""
 msgid "In Progress"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:250
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:256
 msgid "Incomplete Link"
 msgstr "不完整链接 \t\t"
 
@@ -4000,7 +4000,7 @@ msgstr ""
 msgid "Insert FTE Fraction"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:219
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:225
 msgid "Insert Factor Link dialog|No Label Specified"
 msgstr ""
 
@@ -8078,7 +8078,7 @@ msgstr ""
 "您正从本项目团队中去除本资源，因此他/她将不会在摘要视图里的团队成员列表中出"
 "现。 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:251
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:257
 msgid "You must select one item in each of the two lists"
 msgstr "您必须在两个列表中各选定一个选项 \t\t"
 
