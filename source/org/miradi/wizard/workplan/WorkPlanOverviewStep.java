@@ -30,11 +30,13 @@ public class WorkPlanOverviewStep extends WorkPlanWizardStep
 		super(wizardToUse);
 	}
 
+	@Override
 	public String getProcessStepTitle()
 	{
 		return "";
 	}
 
+	@Override
 	public Class getAssociatedActionClass()
 	{
 		return ActionViewWorkPlan.class;

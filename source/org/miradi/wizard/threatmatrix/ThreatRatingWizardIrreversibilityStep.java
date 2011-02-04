@@ -37,16 +37,19 @@ public class ThreatRatingWizardIrreversibilityStep extends ThreatRatingWizardSet
 		super(wizardToUse, critertion);
 	}
 	
+	@Override
 	public String getProcessStepTitle()
 	{
 		return ProcessSteps.PROCESS_STEP_1C;
 	}
 
+	@Override
 	public Class getAssociatedActionClass()
 	{
 		return ActionJumpThreatMatrixOverviewStep.class;
 	}
 	
+	@Override
 	public String getSubHeading()
 	{
 		return EAM.text("4) Rate the irreversibility of the threat");

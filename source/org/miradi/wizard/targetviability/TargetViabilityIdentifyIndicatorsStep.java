@@ -32,16 +32,19 @@ public class TargetViabilityIdentifyIndicatorsStep extends TargetViabilityWizard
 		super(wizardToUse);
 	}
 	
+	@Override
 	public String getProcessStepTitle()
 	{
 		return ProcessSteps.PROCESS_STEP_1B;
 	}
 
+	@Override
 	public Class getAssociatedActionClass()
 	{
 		return ActionJumpTargetViabilityMethodChoiceStep.class;
 	}
 	
+	@Override
 	public String getSubHeading()
 	{
 		return EAM.text("2) Identify indicators");

@@ -37,16 +37,19 @@ public class ThreatRatingWizardScopeStep extends ThreatRatingWizardSetValue
 		super(wizardToUse, critertion);
 	}
 	
+	@Override
 	public String getProcessStepTitle()
 	{
 		return ProcessSteps.PROCESS_STEP_1C;
 	}
 
+	@Override
 	public Class getAssociatedActionClass()
 	{
 		return ActionJumpThreatMatrixOverviewStep.class;
 	}
 
+	@Override
 	public String getSubHeading()
 	{
 		return EAM.text("2) Rate the scope of the threat ");

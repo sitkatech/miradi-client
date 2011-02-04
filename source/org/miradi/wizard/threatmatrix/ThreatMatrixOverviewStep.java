@@ -32,16 +32,19 @@ public class ThreatMatrixOverviewStep extends ThreatRatingWizardStep
 		super(wizardToUse);
 	}
 
+	@Override
 	public String getProcessStepTitle()
 	{
 		return "";
 	}
 
+	@Override
 	public Class getAssociatedActionClass()
 	{
 		return ActionViewThreatMatrix.class;
 	}
 	
+	@Override
 	public void buttonPressed(String buttonName)
 	{
 		if(isProjectInStressMode() && buttonName.equals(WizardManager.CONTROL_NEXT))

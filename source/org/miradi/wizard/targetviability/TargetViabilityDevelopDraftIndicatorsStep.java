@@ -32,16 +32,19 @@ public class TargetViabilityDevelopDraftIndicatorsStep extends TargetViabilityWi
 		super(wizardToUse);
 	}
 	
+	@Override
 	public String getProcessStepTitle()
 	{
 		return ProcessSteps.PROCESS_STEP_1B;
 	}
 
+	@Override
 	public Class getAssociatedActionClass()
 	{
 		return ActionJumpTargetViabilityMethodChoiceStep.class;
 	}
 
+	@Override
 	public String getSubHeading()
 	{
 		return EAM.text("3a) Develop draft indicator ratings");

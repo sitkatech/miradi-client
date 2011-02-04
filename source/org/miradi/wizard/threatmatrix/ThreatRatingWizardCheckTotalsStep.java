@@ -34,21 +34,25 @@ public class ThreatRatingWizardCheckTotalsStep extends ThreatRatingWizardStep
 		super(panel);
 	}
 	
+	@Override
 	public String getProcessStepTitle()
 	{
 		return ProcessSteps.PROCESS_STEP_1C;
 	}
 
+	@Override
 	public Class getAssociatedActionClass()
 	{
 		return ActionJumpThreatMatrixOverviewStep.class;
 	}
 	
+	@Override
 	public String getSubHeading()
 	{
 		return EAM.text("Review threat rating summary");
 	}
 	
+	@Override
 	public void buttonPressed(String buttonName)
 	{
 		if(!isProjectInStressMode() && buttonName.equals(WizardManager.CONTROL_BACK))

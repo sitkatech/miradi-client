@@ -33,11 +33,13 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep
 	}
 
 	
+	@Override
 	public String getProcessStepTitle()
 	{
 		return ProcessSteps.PROCESS_STEP_1C;
 	}
 
+	@Override
 	public Class getAssociatedActionClass()
 	{
 		return ActionJumpThreatMatrixOverviewStep.class;
@@ -46,6 +48,7 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep
 	
 	
 	
+	@Override
 	public String getSubHeading()
 	{
 		return EAM.text("1) Select target and threat to work on");

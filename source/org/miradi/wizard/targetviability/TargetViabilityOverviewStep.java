@@ -30,11 +30,13 @@ public class TargetViabilityOverviewStep extends TargetViabilityWizardStep
 		super(wizardToUse);
 	}
 
+	@Override
 	public String getProcessStepTitle()
 	{
 		return "";
 	}
 
+	@Override
 	public Class getAssociatedActionClass()
 	{
 		return ActionViewTargetViability.class;
