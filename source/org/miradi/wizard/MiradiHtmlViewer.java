@@ -49,7 +49,7 @@ public class MiradiHtmlViewer extends HtmlFormViewer
 	 * and if you want to affect an _id_ use .xxx
 	 * GRRRR!
 	 */
-	final static String[] rules = {
+	private final static String[] rules = {
 		"code {}",
 		"h3 { margin-top: 2px; margin-bottom: 0; }",
 		"p  {  }",
