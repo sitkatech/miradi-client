@@ -24,6 +24,7 @@ import org.miradi.views.umbrella.AbstractRelevancyEditListDoer;
 
 public class EditGoalIndicatorRelevancyListDoer extends AbstractRelevancyEditListDoer
 {
+	@Override
 	protected int getObjectType()
 	{
 		return Goal.getObjectType();

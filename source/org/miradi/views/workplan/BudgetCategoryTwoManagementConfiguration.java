@@ -49,6 +49,7 @@ public class BudgetCategoryTwoManagementConfiguration extends AbstractManagement
 		return EAM.text("Category #2");
 	}	
 	
+	@Override
 	public Icon getIcon()
 	{
 		return new BudgetCategoryTwoIcon();
