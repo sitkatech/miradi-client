@@ -25,7 +25,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 
-abstract public class AbstractBudgetCategoryRowColumnProvider extends PlanningViewRowColumnProvider implements WorkPlanCategoryTreeRowColumnProvider
+abstract public class AbstractBudgetCategoryRowColumnProvider extends AbstractPlanningViewRowColumnProvider implements WorkPlanCategoryTreeRowColumnProvider
 {
 	public AbstractBudgetCategoryRowColumnProvider(Project projectToUse)
 	{

@@ -22,9 +22,9 @@ package org.miradi.dialogs.planning;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 
-abstract public class PlanningViewRowColumnProvider implements RowColumnProvider
+abstract public class AbstractPlanningViewRowColumnProvider implements RowColumnProvider
 {
-	public PlanningViewRowColumnProvider(Project projectToUse)
+	public AbstractPlanningViewRowColumnProvider(Project projectToUse)
 	{
 		project = projectToUse;
 	}

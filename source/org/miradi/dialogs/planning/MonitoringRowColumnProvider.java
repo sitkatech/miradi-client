@@ -32,7 +32,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.CodeList;
 
-public class MonitoringRowColumnProvider extends PlanningViewRowColumnProvider implements PlanningTreeRowColumnProvider
+public class MonitoringRowColumnProvider extends AbstractPlanningViewRowColumnProvider implements PlanningTreeRowColumnProvider
 {
 	public MonitoringRowColumnProvider(Project projectToUse)
 	{

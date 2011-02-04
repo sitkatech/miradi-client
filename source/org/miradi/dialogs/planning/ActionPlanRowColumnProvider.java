@@ -34,7 +34,7 @@ import org.miradi.questions.ActionTreeConfigurationQuestion;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.CodeList;
 
-public class ActionPlanRowColumnProvider extends PlanningViewRowColumnProvider implements PlanningTreeRowColumnProvider
+public class ActionPlanRowColumnProvider extends AbstractPlanningViewRowColumnProvider implements PlanningTreeRowColumnProvider
 {	
 	public ActionPlanRowColumnProvider(Project projectToUse)
 	{
