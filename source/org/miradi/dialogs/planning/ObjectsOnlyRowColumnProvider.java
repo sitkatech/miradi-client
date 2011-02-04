@@ -38,7 +38,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.CodeList;
 
-public class ObjectsOnlyRowColumnProvider extends PlanningViewRowColumnProvider implements PlanningTreeRowColumnProvider
+public class ObjectsOnlyRowColumnProvider extends AbstractPlanningViewRowColumnProvider implements PlanningTreeRowColumnProvider
 {
 	public ObjectsOnlyRowColumnProvider(Project project)
 	{
