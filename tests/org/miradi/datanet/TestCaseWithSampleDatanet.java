@@ -30,6 +30,7 @@ abstract public class TestCaseWithSampleDatanet extends TestCaseEnhanced
 		super(name);
 	}
 
+	@Override
 	protected void setUp() throws Exception
 	{
 		super.setUp();
@@ -40,6 +41,7 @@ abstract public class TestCaseWithSampleDatanet extends TestCaseEnhanced
 		other = datanet.other;
 	}
 	
+	@Override
 	protected void tearDown() throws Exception
 	{
 		datanet.close();

@@ -81,6 +81,7 @@ public class TestProject extends MiradiTestCase
 		super(name);
 	}
 	
+	@Override
 	public void setUp() throws Exception
 	{
 		project = new ProjectForTesting(getName());
@@ -88,6 +89,7 @@ public class TestProject extends MiradiTestCase
 		super.setUp();
 	}
 	
+	@Override
 	public void tearDown() throws Exception
 	{
 		super.tearDown();

@@ -29,12 +29,14 @@ public class TestThreatReductionResultPool extends TestFactorPool
 		super(name);
 	}
 	
+	@Override
 	public void setUp() throws Exception
 	{
 		super.setUp();
 		pool = project.getThreatReductionResultPool();
 	}
 	
+	@Override
 	public int getObjectType()
 	{
 		return ObjectType.THREAT_REDUCTION_RESULT;

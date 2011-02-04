@@ -31,6 +31,7 @@ public class TestFactorPool extends TestCaseEnhanced
 		super(name);
 	}
 	
+	@Override
 	public void setUp() throws Exception
 	{
 		super.setUp();
@@ -43,6 +44,7 @@ public class TestFactorPool extends TestCaseEnhanced
 		}
 	}	
 	
+	@Override
 	protected void tearDown() throws Exception
 	{
 		super.tearDown();

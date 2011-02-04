@@ -44,6 +44,7 @@ public class TestUndoAndRedo extends MiradiTestCase
 		super(name);
 	}
 	
+	@Override
 	public void setUp() throws Exception
 	{
 		super.setUp();
@@ -59,6 +60,7 @@ public class TestUndoAndRedo extends MiradiTestCase
 		diagramLinkRef = diagramLink.getRef();
 	}
 	
+	@Override
 	public void tearDown() throws Exception
 	{
 		project.close();

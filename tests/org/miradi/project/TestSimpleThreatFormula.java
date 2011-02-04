@@ -34,6 +34,7 @@ public class TestSimpleThreatFormula extends MiradiTestCase
 		super(name);
 	}
 
+	@Override
 	public void setUp() throws Exception
 	{
 		super.setUp();
@@ -44,6 +45,7 @@ public class TestSimpleThreatFormula extends MiradiTestCase
 		formula = new SimpleThreatFormula(framework);
 	}
 	
+	@Override
 	public void tearDown() throws Exception
 	{
 		project.close();

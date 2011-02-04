@@ -55,12 +55,14 @@ public class TestObjectFindOwnerAndFindReferrer extends MiradiTestCase
 		super(name);
 	}
 
+	@Override
 	public void setUp() throws Exception
 	{
 		project = new ProjectForTesting(getName());
 		super.setUp();
 	}
 	
+	@Override
 	public void tearDown() throws Exception
 	{
 		super.tearDown();

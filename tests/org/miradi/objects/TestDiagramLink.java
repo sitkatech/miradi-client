@@ -51,6 +51,7 @@ public class TestDiagramLink extends ObjectTestCase
 		super(name);
 	}
 	
+	@Override
 	public void setUp() throws Exception
 	{
 		super.setUp();
@@ -64,6 +65,7 @@ public class TestDiagramLink extends ObjectTestCase
 		cmTarget = Factor.findFactor(project, targetRef);
 	}
 	
+	@Override
 	public void tearDown() throws Exception
 	{
 		super.tearDown();

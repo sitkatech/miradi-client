@@ -29,18 +29,21 @@ public class TestCausePool extends TestFactorPool
 		super(name);
 	}
 	
+	@Override
 	public void setUp() throws Exception
 	{
 		super.setUp();
 		pool = project.getCausePool();
 	}
 	
+	@Override
 	public void testBasics() throws Exception
 	{
 		super.testBasics();
 		assertEquals("wrong direct threat count?", 0, pool.getDirectThreats().length);
 	}
 	
+	@Override
 	public int getObjectType()
 	{
 		return ObjectType.CAUSE;

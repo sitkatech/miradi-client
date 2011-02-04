@@ -39,6 +39,7 @@ abstract public class AbstractMigrationTestCase extends MiradiTestCase
 		super(name);
 	}
 
+	@Override
 	public void setUp() throws Exception
 	{
 		super.setUp();
@@ -46,6 +47,7 @@ abstract public class AbstractMigrationTestCase extends MiradiTestCase
 		project = new ProjectForTesting(getName());
 	}
 
+	@Override
 	public void tearDown() throws Exception
 	{
 		DirectoryUtils.deleteEntireDirectoryTree(tempDirectory);

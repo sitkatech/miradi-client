@@ -29,12 +29,14 @@ public class TestTextBoxPool extends TestFactorPool
 		super(name);
 	}
 	
+	@Override
 	public void setUp() throws Exception
 	{
 		super.setUp();
 		pool = project.getTextBoxPool();
 	}
 	
+	@Override
 	public int getObjectType()
 	{
 		return ObjectType.TEXT_BOX;

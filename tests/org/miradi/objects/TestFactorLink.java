@@ -52,6 +52,7 @@ public class TestFactorLink extends ObjectTestCase
 		verifyFields(ObjectType.FACTOR_LINK, extraInfo);
 	}
 	
+	@Override
 	public void setUp() throws Exception
 	{
 		super.setUp();
@@ -60,6 +61,7 @@ public class TestFactorLink extends ObjectTestCase
 		nodeB = project.createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
 	}
 
+	@Override
 	public void tearDown() throws Exception
 	{
 		project.close();

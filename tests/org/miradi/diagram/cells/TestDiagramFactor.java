@@ -44,6 +44,7 @@ public class TestDiagramFactor extends MiradiTestCase
 		super(name);
 	}
 	
+	@Override
 	public void setUp() throws Exception
 	{
 		super.setUp();
@@ -60,6 +61,7 @@ public class TestDiagramFactor extends MiradiTestCase
 		targetAttributeMap = target.getAttributes();
 	}
 	
+	@Override
 	public void tearDown() throws Exception
 	{
 		project.close();
