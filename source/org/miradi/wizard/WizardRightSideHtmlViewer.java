@@ -48,7 +48,7 @@ public class WizardRightSideHtmlViewer extends MiradiHtmlViewer
 	 * and if you want to affect an _id_ use .xxx
 	 * GRRRR!
 	 */
-	final static String[] rules = {
+	private final static String[] rules = {
 		"body {margin: 10; background-color: " + AppPreferences.getWizardSidebarBackgroundColorForCss() + ";}",
 	};
 }
