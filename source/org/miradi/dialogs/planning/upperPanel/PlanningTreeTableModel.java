@@ -26,18 +26,18 @@ import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.PlanningTreeConfiguration;
+import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 
 abstract public class PlanningTreeTableModel extends GenericTreeTableModel
 {	
-	public PlanningTreeTableModel(Project projectToUse, PlanningTreeConfiguration rowColumnProvider) throws Exception
+	public PlanningTreeTableModel(Project projectToUse, PlanningTreeRowColumnProvider rowColumnProvider) throws Exception
 	{
 		this(projectToUse, createPlanningTreeRootNode(projectToUse, rowColumnProvider.getRowCodesToShow()), rowColumnProvider);
 	}
 
-	public PlanningTreeTableModel(Project projectToUse, TreeTableNode rootNode, PlanningTreeConfiguration rowColumnProviderToUse) throws Exception
+	public PlanningTreeTableModel(Project projectToUse, TreeTableNode rootNode, PlanningTreeRowColumnProvider rowColumnProviderToUse) throws Exception
 	{
 		super(rootNode);
 		
@@ -45,7 +45,7 @@ abstract public class PlanningTreeTableModel extends GenericTreeTableModel
 		rowColumnProvider = rowColumnProviderToUse;
 	}
 	
-	public PlanningTreeConfiguration getRowColumnProvider()
+	public PlanningTreeRowColumnProvider getRowColumnProvider()
 	{
 		return rowColumnProvider;
 	}
@@ -140,5 +140,5 @@ abstract public class PlanningTreeTableModel extends GenericTreeTableModel
 	}
 	
 	private Project project;
-	private PlanningTreeConfiguration rowColumnProvider;
+	private PlanningTreeRowColumnProvider rowColumnProvider;
 }

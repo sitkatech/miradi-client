@@ -54,7 +54,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
-import org.miradi.objects.PlanningTreeConfiguration;
+import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 import org.miradi.utils.CodeList;
@@ -66,12 +66,12 @@ import org.miradi.utils.TreeTableExporter;
 
 abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 {
-	protected PlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTable treeToUse, GenericTreeTableModel modelToUse, Class[] buttonActions, PlanningTreeConfiguration rowColumnProviderToUse) throws Exception
+	protected PlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTable treeToUse, GenericTreeTableModel modelToUse, Class[] buttonActions, PlanningTreeRowColumnProvider rowColumnProviderToUse) throws Exception
 	{
 		this(mainWindowToUse, treeToUse, modelToUse, buttonActions, rowColumnProviderToUse, new AbstractFixedHeightDirectlyAboveTreeTablePanel());
 	}
 	
-	protected PlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTable treeToUse, GenericTreeTableModel modelToUse, Class[] buttonActions, PlanningTreeConfiguration rowColumnProviderToUse, JComponent filterStatusPanelToUse) throws Exception
+	protected PlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTable treeToUse, GenericTreeTableModel modelToUse, Class[] buttonActions, PlanningTreeRowColumnProvider rowColumnProviderToUse, JComponent filterStatusPanelToUse) throws Exception
 	{
 		super(mainWindowToUse, treeToUse, buttonActions);
 		
@@ -293,7 +293,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		return mainTable;
 	}
 	
-	public PlanningTreeConfiguration getRowColumnProvider()
+	public PlanningTreeRowColumnProvider getRowColumnProvider()
 	{
 		return rowColumnProvider;
 	}
@@ -475,7 +475,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		private int column;
 	}
 	
-	private PlanningTreeConfiguration rowColumnProvider;
+	private PlanningTreeRowColumnProvider rowColumnProvider;
 	private PlanningViewMainTableModel mainModel;
 	private PlanningTreeMultiTableModel multiModel;
 	private PlanningUpperMultiTable mainTable;

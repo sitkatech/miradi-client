@@ -31,7 +31,7 @@ import org.miradi.dialogs.planning.upperPanel.ProjectResourceTreeTablePanel;
 import org.miradi.dialogs.strategicPlan.ActionPlanMultiPropertiesPanel;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.PlanningTreeConfiguration;
+import org.miradi.objects.PlanningTreeRowColumnProvider;
 
 public class StrategicPlanResourcesManagementPanel extends ProjectResourceManagementPanel
 {
@@ -44,7 +44,7 @@ public class StrategicPlanResourcesManagementPanel extends ProjectResourceManage
 	}
 
 	@Override
-	protected PlanningTreeTablePanel createPlanningTreeTablePanel(String uniqueTreeTableModelIdentifier, PlanningTreeConfiguration rowColumnProvider) throws Exception
+	protected PlanningTreeTablePanel createPlanningTreeTablePanel(String uniqueTreeTableModelIdentifier, PlanningTreeRowColumnProvider rowColumnProvider) throws Exception
 	{
 		PlanningTreeTableModel model = ProjectResourceTreeTableModel.createProjectResourceTreeTableModel(getProject(), rowColumnProvider);
 		return ExportablePlanningTreeTablePanel.createPlanningTreeTablePanelWithoutButtonsForExporting(getMainWindow(), rowColumnProvider, model);
@@ -52,7 +52,7 @@ public class StrategicPlanResourcesManagementPanel extends ProjectResourceManage
 	
 	public static PlanningTreeManagementPanel createProjectResourcesPanelWithoutBudgetColumns(MainWindow mainWindowToUse) throws Exception
 	{
-		PlanningTreeConfiguration rowColumnProvider = new ProjectResourceCoreRowColumnProvider();
+		PlanningTreeRowColumnProvider rowColumnProvider = new ProjectResourceCoreRowColumnProvider();
 		PlanningTreeTableModel treeTableModel = ProjectResourceTreeTableModel.createProjectResourceTreeTableModel(mainWindowToUse.getProject(), rowColumnProvider);
 		PlanningTreeTablePanel treeTablePanel = ProjectResourceTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, treeTableModel, rowColumnProvider);
 		PlanningTreeMultiPropertiesPanel propertiesPanel = new ActionPlanMultiPropertiesPanel(mainWindowToUse, ORef.INVALID);

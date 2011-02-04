@@ -23,7 +23,7 @@ package org.miradi.objects;
 import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.utils.CodeList;
 
-public interface PlanningTreeConfiguration extends RowColumnProvider
+public interface PlanningTreeRowColumnProvider extends RowColumnProvider
 {
 	public abstract CodeList getRowCodesToShow() throws Exception;
 	public abstract CodeList getColumnCodesToShow() throws Exception;

@@ -25,7 +25,7 @@ import org.miradi.objecthelpers.StringStringMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.Indicator;
-import org.miradi.objects.PlanningTreeConfiguration;
+import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.TableSettings;
@@ -34,7 +34,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.CodeList;
 
-public class WorkPlanRowColumnProvider extends PlanningViewRowColumnProvider implements PlanningTreeConfiguration
+public class WorkPlanRowColumnProvider extends PlanningViewRowColumnProvider implements PlanningTreeRowColumnProvider
 {
 	public WorkPlanRowColumnProvider(Project projectToUse)
 	{

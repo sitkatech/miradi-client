@@ -27,7 +27,7 @@ import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.ExpenseAssignment;
-import org.miradi.objects.PlanningTreeConfiguration;
+import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.ViewData;
 import org.miradi.questions.WorkPlanCategoryTypesQuestion;
@@ -39,7 +39,7 @@ public class WorkPlanCategoryTreeTablePanel extends PlanningTreeTablePanel
 			PlanningTreeTable treeToUse, 
 			PlanningTreeTableModel modelToUse,
 			Class[] buttonClasses,
-			PlanningTreeConfiguration rowColumnProvider
+			PlanningTreeRowColumnProvider rowColumnProvider
 	) throws Exception
 	{
 		super(mainWindowToUse, treeToUse, modelToUse, buttonClasses, rowColumnProvider);

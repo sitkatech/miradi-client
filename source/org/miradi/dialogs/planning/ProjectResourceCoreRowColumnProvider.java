@@ -20,11 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning;
 
-import org.miradi.objects.PlanningTreeConfiguration;
+import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.objects.ProjectResource;
 import org.miradi.utils.CodeList;
 
-public class ProjectResourceCoreRowColumnProvider implements PlanningTreeConfiguration
+public class ProjectResourceCoreRowColumnProvider implements PlanningTreeRowColumnProvider
 {
 	public CodeList getColumnCodesToShow() throws Exception
 	{

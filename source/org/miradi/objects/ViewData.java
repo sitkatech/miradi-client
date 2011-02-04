@@ -111,7 +111,7 @@ public class ViewData extends BaseObject
 		return treeConfigurationRef.getRef();
 	}
 	
-	private PlanningTreeConfiguration getTreeConfiguration()
+	private PlanningTreeRowColumnProvider getTreeConfiguration()
 	{
 		return ObjectTreeTableConfiguration.find(getProject(), getTreeConfigurationRef());
 	}

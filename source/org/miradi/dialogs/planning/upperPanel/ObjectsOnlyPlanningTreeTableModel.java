@@ -22,13 +22,13 @@ package org.miradi.dialogs.planning.upperPanel;
 import org.miradi.dialogs.planning.ObjectsOnlyRowColumnProvider;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.EAM;
-import org.miradi.objects.PlanningTreeConfiguration;
+import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 
 public class ObjectsOnlyPlanningTreeTableModel extends TreeTableModelWithRebuilder
 {
-	public ObjectsOnlyPlanningTreeTableModel(Project project, TreeTableNode rootNode, PlanningTreeConfiguration rowColumnProvider) throws Exception
+	public ObjectsOnlyPlanningTreeTableModel(Project project, TreeTableNode rootNode, PlanningTreeRowColumnProvider rowColumnProvider) throws Exception
 	{
 		super(project, rootNode, rowColumnProvider, UNIQUE_TREE_TABLE_IDENTIFIER);
 	}

@@ -29,7 +29,7 @@ import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.PlanningTreeConfiguration;
+import org.miradi.objects.PlanningTreeRowColumnProvider;
 
 class WorkPlanManagementPanel extends PlanningTreeManagementPanel
 {
@@ -65,7 +65,7 @@ class WorkPlanManagementPanel extends PlanningTreeManagementPanel
 	}
 	
 	@Override
-	protected PlanningTreeTablePanel createPlanningTreeTablePanel(String uniqueTreeTableModelIdentifier, PlanningTreeConfiguration rowColumnProvider) throws Exception
+	protected PlanningTreeTablePanel createPlanningTreeTablePanel(String uniqueTreeTableModelIdentifier, PlanningTreeRowColumnProvider rowColumnProvider) throws Exception
 	{
 		return WorkPlanTreeTablePanel.createPlanningTreeTablePanel(getMainWindow());
 	}

@@ -25,7 +25,7 @@ import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ObjectTreeTableConfiguration;
-import org.miradi.objects.PlanningTreeConfiguration;
+import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.project.ObjectManager;
 
 public class ObjectTreeTableConfigurationPool extends EAMNormalObjectPool
@@ -35,9 +35,9 @@ public class ObjectTreeTableConfigurationPool extends EAMNormalObjectPool
 		super(idAssignerToUse, ObjectType.OBJECT_TREE_TABLE_CONFIGURATION);
 	}
 	
-	public PlanningTreeConfiguration find(BaseId id)
+	public PlanningTreeRowColumnProvider find(BaseId id)
 	{
-		return (PlanningTreeConfiguration) findObject(id);
+		return (PlanningTreeRowColumnProvider) findObject(id);
 	}
 
 	@Override
@@ -46,10 +46,10 @@ public class ObjectTreeTableConfigurationPool extends EAMNormalObjectPool
 		return new ObjectTreeTableConfiguration(objectManager, actualId);
 	}
 	
-	public PlanningTreeConfiguration[] getAllConfigurations()
+	public PlanningTreeRowColumnProvider[] getAllConfigurations()
 	{
 		BaseId[] allConfigurationIds = getIds();
-		PlanningTreeConfiguration[] allPlanningViewConfigurations = new PlanningTreeConfiguration[allConfigurationIds.length];
+		PlanningTreeRowColumnProvider[] allPlanningViewConfigurations = new PlanningTreeRowColumnProvider[allConfigurationIds.length];
 		for (int i = 0; i < allPlanningViewConfigurations.length; ++i)
 		{
 			allPlanningViewConfigurations[i] = find(allConfigurationIds[i]);
