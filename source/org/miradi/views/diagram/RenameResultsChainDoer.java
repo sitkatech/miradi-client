@@ -23,11 +23,13 @@ import org.miradi.objects.ViewData;
 
 public class RenameResultsChainDoer extends RenameDiagramObjectDoer
 {
+	@Override
 	public boolean isCorrectTab()
 	{
 		return getDiagramView().isResultsChainTab();
 	}
 	
+	@Override
 	public String getDiagramObjectTag()
 	{
 		return ViewData.TAG_CURRENT_RESULTS_CHAIN_REF;

@@ -25,16 +25,19 @@ import org.miradi.objects.Goal;
 
 public class DeleteGoal extends DeleteAnnotationDoer
 {
+	@Override
 	public String[] getDialogText()
 	{
 		return new String[] { EAM.text("Are you sure you want to delete this Goal?"),};
 	}
 
+	@Override
 	public String getAnnotationIdListTag()
 	{
 		return AbstractTarget.TAG_GOAL_IDS;
 	}
 	
+	@Override
 	public int getAnnotationType()
 	{
 		return Goal.getObjectType();

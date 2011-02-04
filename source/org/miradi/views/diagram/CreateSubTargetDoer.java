@@ -25,11 +25,13 @@ import org.miradi.objects.Target;
 
 public class CreateSubTargetDoer extends CreateAnnotationDoer
 {
+	@Override
 	public String getAnnotationListTag()
 	{
 		return Target.TAG_SUB_TARGET_REFS;
 	}
 
+	@Override
 	public int getAnnotationType()
 	{
 		return SubTarget.getObjectType();

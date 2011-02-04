@@ -33,6 +33,7 @@ import org.miradi.views.ViewDoer;
 
 public class CreateConceptualModelPageDoer extends ViewDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		if(!getProject().isOpen())
@@ -47,6 +48,7 @@ public class CreateConceptualModelPageDoer extends ViewDoer
 		return true;
 	}
 	
+	@Override
 	public void doIt() throws Exception
 	{
 		if (! isAvailable())

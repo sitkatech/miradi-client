@@ -28,6 +28,7 @@ import org.miradi.project.Project;
 
 public class CreateBendPointDoer extends LocationDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		if(!getProject().isOpen())
@@ -46,6 +47,7 @@ public class CreateBendPointDoer extends LocationDoer
 		return true;
 	}
 	
+	@Override
 	public void doIt() throws Exception
 	{
 		if (!isAvailable())

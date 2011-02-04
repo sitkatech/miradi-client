@@ -25,16 +25,19 @@ import org.miradi.objects.Objective;
 
 public class DeleteObjective extends DeleteAnnotationDoer
 {
+	@Override
 	public String[] getDialogText()
 	{
 		return new String[] { EAM.text("Are you sure you want to delete this Objective?"),};
 	}
 
+	@Override
 	public String getAnnotationIdListTag()
 	{
 		return Factor.TAG_OBJECTIVE_IDS;
 	}
 	
+	@Override
 	public int getAnnotationType()
 	{
 		return Objective.getObjectType();

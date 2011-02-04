@@ -27,6 +27,7 @@ import org.miradi.objects.KeyEcologicalAttribute;
 public class DeleteKeyEcologicalAttributeDoer extends DeleteAnnotationDoer
 {
 	
+	@Override
 	public boolean isAvailable()
 	{
 		if (getObjects().length != 1)
@@ -39,16 +40,19 @@ public class DeleteKeyEcologicalAttributeDoer extends DeleteAnnotationDoer
 	}
 
 	
+	@Override
 	public String[] getDialogText()
 	{
 		return new String[] { EAM.text("Are you sure you want to delete this Key Ecological Attribute?"),};
 	}
 
+	@Override
 	public String getAnnotationIdListTag()
 	{
 		return AbstractTarget.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS;
 	}
 	
+	@Override
 	public int getAnnotationType()
 	{
 		return KeyEcologicalAttribute.getObjectType();

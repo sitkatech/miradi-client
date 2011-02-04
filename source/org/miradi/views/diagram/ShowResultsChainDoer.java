@@ -33,6 +33,7 @@ import org.miradi.views.ViewDoer;
 
 public class ShowResultsChainDoer extends ViewDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		if (! isInDiagram())
@@ -59,6 +60,7 @@ public class ShowResultsChainDoer extends ViewDoer
 		return strategy.getResultsChains().size() >= 1;
 	}
 
+	@Override
 	public void doIt() throws Exception
 	{
 		if (! isAvailable())

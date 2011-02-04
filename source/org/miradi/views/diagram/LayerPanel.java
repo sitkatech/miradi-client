@@ -53,11 +53,13 @@ public class LayerPanel extends ModelessDialogPanel
 		return new ConceptualModelDiagramLegendPanel(mainWindowToUse);
 	}
 
+	@Override
 	public BaseObject getObject()
 	{
 		return null;
 	}
 
+	@Override
 	public String getPanelDescription()
 	{
 		return EAM.text("Layers");

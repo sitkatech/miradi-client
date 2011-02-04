@@ -24,6 +24,7 @@ import org.miradi.views.umbrella.PrintDoer;
 
 public class Print extends PrintDoer 
 {
+	@Override
 	public boolean isAvailable() 
 	{
 		Project project = getMainWindow().getProject();

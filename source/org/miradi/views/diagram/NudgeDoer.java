@@ -44,6 +44,7 @@ public class NudgeDoer extends LocationDoer
 		direction = directionToNudge;
 	}
 	
+	@Override
 	public boolean isAvailable()
 	{
 		if (!isInDiagram())
@@ -58,6 +59,7 @@ public class NudgeDoer extends LocationDoer
 		return diagramPanel.getOnlySelectedFactorCells().length > 0 || diagramPanel.getOnlySelectedLinkCells().size() > 0;
 	}
 
+	@Override
 	public void doIt() throws Exception
 	{
 		if (! isAvailable())

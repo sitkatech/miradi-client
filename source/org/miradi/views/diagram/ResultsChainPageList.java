@@ -36,16 +36,19 @@ public class ResultsChainPageList extends DiagramPageList
 		return new String[] {ResultsChainDiagram.PSEUDO_COMBINED_LABEL};
 	}
 
+	@Override
 	public boolean isConceptualModelPageList()
 	{
 		return false;
 	}
 
+	@Override
 	public boolean isResultsChainPageList()
 	{
 		return true;
 	}
 
+	@Override
 	public int getManagedDiagramType()
 	{
 		return ObjectType.RESULTS_CHAIN_DIAGRAM;

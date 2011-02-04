@@ -29,6 +29,7 @@ import org.miradi.objects.ViewData;
 
 public class InsertDraftStrategyDoer extends InsertFactorDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		if (!super.isAvailable())
@@ -50,22 +51,26 @@ public class InsertDraftStrategyDoer extends InsertFactorDoer
 		return false;
 	}
 	
+	@Override
 	public int getTypeToInsert()
 	{
 		return ObjectType.STRATEGY;
 	}
 
+	@Override
 	public String getInitialText()
 	{
 		return EAM.text("Label|New Draft Strategy");
 	}
 
+	@Override
 	protected void doExtraSetup(DiagramFactor diagramFactor, FactorCell[] selectedFactorCells) throws Exception
 	{
 		CommandSetObjectData setStatusCommand = new CommandSetObjectData(diagramFactor.getWrappedORef(), Strategy.TAG_STATUS, Strategy.STATUS_DRAFT);
 		getProject().executeCommand(setStatusCommand);
 	}
 
+	@Override
 	public void forceVisibleInLayerManager()
 	{
 		getCurrentLayerManager().setVisibility(Strategy.OBJECT_NAME_DRAFT, true);

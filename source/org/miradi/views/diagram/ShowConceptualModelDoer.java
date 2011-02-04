@@ -23,6 +23,7 @@ import org.miradi.views.ViewDoer;
 
 public class ShowConceptualModelDoer extends ViewDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		if (! isInDiagram())
@@ -34,6 +35,7 @@ public class ShowConceptualModelDoer extends ViewDoer
 		return true;
 	}
 
+	@Override
 	public void doIt() throws Exception
 	{
 		if (! isAvailable())

@@ -26,21 +26,25 @@ import org.miradi.objects.Target;
 
 public class DeleteSubTargetDoer extends DeleteAnnotationDoer
 {	
+	@Override
 	protected BaseObject getParent(BaseObject annotationToDelete)
 	{
 		return getSelectedFactor();  
 	}
 
+	@Override
 	public String getAnnotationIdListTag()
 	{
 		return Target.TAG_SUB_TARGET_REFS;
 	}
 
+	@Override
 	public int getAnnotationType()
 	{
 		return SubTarget.getObjectType();
 	}
 
+	@Override
 	public String[] getDialogText()
 	{
 		return new String[] { EAM.text("Are you sure you want to delete this Nested Target?"),};

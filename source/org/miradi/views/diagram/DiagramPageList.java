@@ -199,6 +199,7 @@ abstract public class DiagramPageList extends ObjectPoolTable
 		private Project listenerProject;
 	}
 	
+	@Override
 	public boolean shouldSaveColumnWidth()
 	{
 		return false;

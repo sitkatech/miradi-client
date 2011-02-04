@@ -23,6 +23,7 @@ import org.miradi.objects.ViewData;
 
 public class DeleteConceptualModelPageDoer extends DeleteDiagramPageDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		boolean isSuperAvailable = super.isAvailable();
@@ -32,11 +33,13 @@ public class DeleteConceptualModelPageDoer extends DeleteDiagramPageDoer
 		return false;
 	}
 
+	@Override
 	public boolean isCorrectTab()
 	{
 		return ! getDiagramView().isResultsChainTab();
 	}
 
+	@Override
 	public String getDiagramObjectTag()
 	{
 		return ViewData.TAG_CURRENT_CONCEPTUAL_MODEL_REF;

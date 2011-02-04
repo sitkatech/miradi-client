@@ -24,6 +24,7 @@ import org.miradi.main.EAM;
 
 public class CloneGoalDoer extends CreateGoal
 {
+	@Override
 	public void doIt() throws Exception
 	{
 		if (!isAvailable())

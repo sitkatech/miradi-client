@@ -25,6 +25,7 @@ import org.miradi.objects.Cause;
 
 public class InsertContributingFactorDoer extends InsertFactorDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		if (!super.isAvailable())
@@ -33,16 +34,19 @@ public class InsertContributingFactorDoer extends InsertFactorDoer
 		return !getDiagramView().isResultsChainTab();
 	}
 	
+	@Override
 	public int getTypeToInsert()
 	{
 		return ObjectType.CAUSE;
 	}
 
+	@Override
 	public String getInitialText()
 	{
 		return EAM.text("Label|New Factor");
 	}
 
+	@Override
 	public void forceVisibleInLayerManager()
 	{
 		getCurrentLayerManager().setVisibility(Cause.OBJECT_NAME_CONTRIBUTING_FACTOR, true);

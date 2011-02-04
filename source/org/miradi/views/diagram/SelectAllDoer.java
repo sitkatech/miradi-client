@@ -28,6 +28,7 @@ public class SelectAllDoer extends ViewDoer
 		super();
 	}
 	
+	@Override
 	public boolean isAvailable()
 	{
 		if(!getProject().isOpen())
@@ -40,6 +41,7 @@ public class SelectAllDoer extends ViewDoer
 		return (nSize > 0);
 	}
 	
+	@Override
 	public void doIt() throws Exception 
 	{
 		getMainWindow().preventActionUpdates();
