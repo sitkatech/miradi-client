@@ -24,8 +24,8 @@ import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 import java.awt.event.MouseMotionListener;
 
 import javax.swing.JComponent;
@@ -40,7 +40,6 @@ public class WidthSetterComponent extends JComponent
 		setCursor(Cursor.getPredefinedCursor(Cursor.W_RESIZE_CURSOR));
 
 		MouseEventHandler mouseHandler = new MouseEventHandler();
-		addMouseListener(mouseHandler);
 		addMouseMotionListener(mouseHandler);
 	}
 	
@@ -93,7 +92,7 @@ public class WidthSetterComponent extends JComponent
 		}
 	}
 
-	class MouseEventHandler extends MouseAdapter implements MouseMotionListener
+	class MouseEventHandler extends MouseMotionAdapter implements MouseMotionListener
 	{
 		@Override
 		public void mouseDragged(MouseEvent e)
