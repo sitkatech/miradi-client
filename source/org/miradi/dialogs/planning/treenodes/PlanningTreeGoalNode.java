@@ -45,6 +45,7 @@ public class PlanningTreeGoalNode extends PlanningTreeAbstractDesireNode
 		rebuild();
 	}
 	
+	@Override
 	protected int[] getNodeSortOrder()
 	{
 		return new int[] {
@@ -60,6 +61,7 @@ public class PlanningTreeGoalNode extends PlanningTreeAbstractDesireNode
 			};
 	}
 
+	@Override
 	public BaseObject getObject()
 	{
 		return goal;

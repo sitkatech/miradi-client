@@ -42,6 +42,7 @@ public class SubTargetPropertiesPanel extends ObjectDataInputPanel
 		updateFieldsFromProject();
 	}
 	
+	@Override
 	public String getPanelDescription()
 	{
 		return EAM.text("Title|Nested Target Properties");

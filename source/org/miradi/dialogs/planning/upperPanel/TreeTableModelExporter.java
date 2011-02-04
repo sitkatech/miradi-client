@@ -52,6 +52,7 @@ public class TreeTableModelExporter extends AbstractTreeTableOrModelExporter
 		return node;
 	}
 	
+	@Override
 	public BaseObject getBaseObjectForRow(int row)
 	{
 		TreeTableNode node = getTreeTableNodeForRow(row);
@@ -62,6 +63,7 @@ public class TreeTableModelExporter extends AbstractTreeTableOrModelExporter
 		return getProject().findObject(rowObjectRef);
 	}
 
+	@Override
 	public int getModelDepth(int row, int modelColumn)
 	{
 		if (isTreeColumn(modelColumn))
@@ -73,11 +75,13 @@ public class TreeTableModelExporter extends AbstractTreeTableOrModelExporter
 		return 0;
 	}
 
+	@Override
 	public String getModelColumnName(int modelColumn)
 	{
 		return getModel().getColumnName(modelColumn);
 	}
 
+	@Override
 	public int getRowCount()
 	{
 		return fullyExpandedTreePaths.size();
@@ -112,6 +116,7 @@ public class TreeTableModelExporter extends AbstractTreeTableOrModelExporter
 		return getSafeValue(value);
 	}
 	
+	@Override
 	public GenericTreeTableModel getModel()
 	{
 		return model;

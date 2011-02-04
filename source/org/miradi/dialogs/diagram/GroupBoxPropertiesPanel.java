@@ -48,6 +48,7 @@ public class GroupBoxPropertiesPanel extends ObjectDataInputPanel
 		updateFieldsFromProject();
 	}
 
+	@Override
 	public String getPanelDescription()
 	{
 		return EAM.text("Group Box Properties");

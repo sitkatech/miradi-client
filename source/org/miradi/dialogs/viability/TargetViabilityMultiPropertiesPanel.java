@@ -63,11 +63,13 @@ public class TargetViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 		updateFieldsFromProject();
 	}
 	
+	@Override
 	public String getPanelDescription()
 	{
 		return EAM.text("Title|Target Viability Properties");
 	}
 
+	@Override
 	protected AbstractObjectDataInputPanel findPanel(ORef[] orefsToUse)
 	{
 		if(orefsToUse.length == 0)

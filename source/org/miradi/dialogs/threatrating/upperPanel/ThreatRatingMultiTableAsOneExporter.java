@@ -107,6 +107,7 @@ public class ThreatRatingMultiTableAsOneExporter extends MultiTableCombinedAsOne
 		return ObjectType.FAKE;
 	}
 	
+	@Override
 	public BaseObject getBaseObjectForRow(int row)
 	{
 		if (isTopRowTable(row))

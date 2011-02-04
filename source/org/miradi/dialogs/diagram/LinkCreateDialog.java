@@ -195,6 +195,7 @@ public class LinkCreateDialog extends DialogWithButtonBar implements ActionListe
 			return factor;
 		}
 		
+		@Override
 		public boolean equals(Object rawOther)
 		{
 			if (! (rawOther instanceof FactorDropDownItem))
@@ -218,6 +219,7 @@ public class LinkCreateDialog extends DialogWithButtonBar implements ActionListe
 			return toString().hashCode();
 		}
 		
+		@Override
 		public String toString()
 		{
 			String factorLabel = factor.getLabel();

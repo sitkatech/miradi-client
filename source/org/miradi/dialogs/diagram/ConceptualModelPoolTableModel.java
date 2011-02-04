@@ -32,6 +32,7 @@ public class ConceptualModelPoolTableModel extends ObjectPoolTableModel
 		super(projectToUse, listedItemType, columnTagsToUse);
 	}
 
+	@Override
 	public String getValueToDisplay(ORef rowObjectRef, String tag)
 	{
 		String valueToDisplay = super.getValueToDisplay(rowObjectRef, tag);

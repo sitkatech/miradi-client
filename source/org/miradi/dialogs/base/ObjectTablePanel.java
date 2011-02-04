@@ -58,6 +58,7 @@ public class ObjectTablePanel extends ObjectCollectionPanel implements ListSelec
 		return getSelectedObject().getRef();
 	}
 	
+	@Override
 	public BaseObject getSelectedObject()
 	{
 		BaseObject[] selected = table.getSelectedObjects();
@@ -90,6 +91,7 @@ public class ObjectTablePanel extends ObjectCollectionPanel implements ListSelec
 		}
 	}
 	
+	@Override
 	public void setPropertiesPanel(AbstractObjectDataInputPanel panel)
 	{
 		super.setPropertiesPanel(panel);
@@ -101,6 +103,7 @@ public class ObjectTablePanel extends ObjectCollectionPanel implements ListSelec
 		table.scrollToAndSelectRow(0);
 	}
 
+	@Override
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		if(event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))

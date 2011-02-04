@@ -45,6 +45,7 @@ public class ProgressReportSubPanel extends EditableObjectListTableSubPanel
 		objectTable = new ProgressReportTable(getMainWindow(), objectTableModel);
 	}
 	
+	@Override
 	protected LinkedHashMap<Class, ObjectPicker> getButtonsActionsPickerMap()
 	{
 		LinkedHashMap<Class, ObjectPicker> buttonsMap = new LinkedHashMap<Class, ObjectPicker>();

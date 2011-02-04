@@ -86,6 +86,7 @@ public class LegacyTncStrategyRankingEditorPropertiesSubPanel extends ObjectData
 		return legacyTncRanking.length() > 0;
 	}
 
+	@Override
 	public String getPanelDescription()
 	{
 		return EAM.text("Title|Legacy TNC Strategy Editor Ranking Properties");

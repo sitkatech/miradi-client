@@ -159,11 +159,13 @@ abstract public class ObjectTableModel extends AbstractObjectTableModel
 		return EAM.fieldLabel(rowObjectType, getColumnTag(column));
 	}
 	
+	@Override
 	public void setRowObjectRefs(ORefList rowObjectRefsToUse)
 	{
 		rowObjectRefs = rowObjectRefsToUse;
 	}
 
+	@Override
 	protected ORefList getRowObjectRefs()
 	{
 		if (rowObjectRefs == null)

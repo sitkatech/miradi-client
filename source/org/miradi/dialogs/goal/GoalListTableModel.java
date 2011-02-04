@@ -42,6 +42,7 @@ public class GoalListTableModel extends ObjectListTableModel
 		};
 	}
 	
+	@Override
 	public String getUniqueTableModelIdentifier()
 	{
 		return UNIQUE_MODEL_IDENTIFIER;

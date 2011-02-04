@@ -38,6 +38,7 @@ public class ExpensesPropertiesPanel extends ObjectDataInputPanel
 		updateFieldsFromProject();
 	}
 
+	@Override
 	public void dispose()
 	{
 		expenseEditor.dispose();
@@ -60,6 +61,7 @@ public class ExpensesPropertiesPanel extends ObjectDataInputPanel
 		super.becomeInactive();
 	}
 	
+	@Override
 	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
 	{
 		super.setObjectRefs(hierarchyToSelectedRef);

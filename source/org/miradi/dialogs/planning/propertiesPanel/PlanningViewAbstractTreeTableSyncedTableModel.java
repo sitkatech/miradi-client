@@ -98,6 +98,7 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 		return false;
 	}
 	
+	@Override
 	public String getColumnGroupCode(int modelColumn)
 	{
 		return getColumnTag(modelColumn);

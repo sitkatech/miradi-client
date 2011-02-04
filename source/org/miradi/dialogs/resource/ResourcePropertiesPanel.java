@@ -87,17 +87,20 @@ public class ResourcePropertiesPanel extends ObjectDataInputPanel
 		updateFieldsFromProject();
 	}
 
+	@Override
 	public String getPanelDescription()
 	{
 		return EAM.text("Title|Resource Properties");
 	}
 	
+	@Override
 	public void setObjectRefs(ORef[] orefsToUse)
 	{
 		super.setObjectRefs(orefsToUse);
 		updateVisibilityOfRoleCodeField();
 	}
 
+	@Override
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		super.commandExecuted(event);

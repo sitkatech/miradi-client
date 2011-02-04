@@ -34,6 +34,7 @@ public class PanelTextFieldWithSelectAllOnFocusGained extends PanelTextField
 		super(text);
 	}
 	
+	@Override
 	protected void initialize()
 	{
 		super.initialize();

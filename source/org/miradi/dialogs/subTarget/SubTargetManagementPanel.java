@@ -36,11 +36,13 @@ public class SubTargetManagementPanel extends ObjectListManagementPanel
 		super(mainWindowToUse, new SubTargetListTablePanel(mainWindowToUse, nodeRef), new SubTargetPropertiesPanel(mainWindowToUse.getProject()));
 	}
 
+	@Override
 	public String getPanelDescription()
 	{
 		return PANEL_DESCRIPTION;
 	}
 	
+	@Override
 	public Icon getIcon()
 	{
 		return new SubTargetIcon();

@@ -35,6 +35,7 @@ public class RelevancyGoalPanel extends ObjectDataInputPanel
 		updateFieldsFromProject();
 	}
 
+	@Override
 	public String getPanelDescription()
 	{
 		return EAM.text("Goal Relevancy Panel");

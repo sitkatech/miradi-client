@@ -39,6 +39,7 @@ public class AssignmentsPropertiesPanel extends ObjectDataInputPanelWithSections
 		updateFieldsFromProject();
 	}
 
+	@Override
 	public void dispose()
 	{
 		assignmentEditor.dispose();
@@ -61,6 +62,7 @@ public class AssignmentsPropertiesPanel extends ObjectDataInputPanelWithSections
 		super.becomeInactive();
 	}
 	
+	@Override
 	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
 	{
 		super.setObjectRefs(hierarchyToSelectedRef);

@@ -36,6 +36,7 @@ public class SingleLineObjectTableCellRendererFactory extends ObjectTableCellEdi
 		rendererComponent = new DefaultTableCellRenderer();
 	}
 	
+	@Override
 	public JComponent getRendererComponent(JTable table, boolean isSelected, boolean hasFocus, int row, int tableColumn, Object value)
 	{
 		JLabel renderer = (JLabel)rendererComponent.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, tableColumn);

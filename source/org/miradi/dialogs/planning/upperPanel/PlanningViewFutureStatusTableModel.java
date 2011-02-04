@@ -49,6 +49,7 @@ public class PlanningViewFutureStatusTableModel extends PlanningViewAbstractTree
 		return columnTags[column];
 	}
 	
+	@Override
 	public String getColumnName(int column)
 	{
 		return EAM.fieldLabel(Indicator.getObjectType(), getColumnTag(column));
@@ -68,6 +69,7 @@ public class PlanningViewFutureStatusTableModel extends PlanningViewAbstractTree
 		return new TaglessChoiceItem(objectForRow.getData(getColumnTag(column)));
 	}
 	
+	@Override
 	public Color getCellBackgroundColor(int column)
 	{
 		return FactorRenderer.ANNOTATIONS_COLOR;

@@ -42,11 +42,13 @@ public class TaggedObjectSetTreeTablePanel extends AbstractEditableTreeTablePane
 		super(mainWindowToUse, modelToUse, treeTable, taggedObjectSet);		
 	}
 	
+	@Override
 	protected SingleBooleanColumnEditableModel createEditableTableModel()
 	{
 		return new TaggedObjectSetEditableTableModel(getProject(), getTree(),  (TaggedObjectSet)getBaseObjectForPanel());
 	}
 	
+	@Override
 	protected EditableObjectTable createEditableTable()
 	{
 		return new TaggedObjectSetEditableTable(getMainWindow(), getEditableSingleBooleanColumnTableModel());

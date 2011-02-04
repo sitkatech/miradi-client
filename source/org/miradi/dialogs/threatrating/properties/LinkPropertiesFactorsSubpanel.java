@@ -111,6 +111,7 @@ public class LinkPropertiesFactorsSubpanel extends ObjectDataInputPanel
 		}
 	}
 
+	@Override
 	public String getPanelDescription()
 	{
 		return "LinkPropertiesFactorsSubpanel";

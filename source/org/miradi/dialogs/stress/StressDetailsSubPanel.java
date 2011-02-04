@@ -69,6 +69,7 @@ public class StressDetailsSubPanel extends ObjectDataInputPanel
 		addField(createReadOnlyChoiceField(Stress.getObjectType(), Stress.PSEUDO_STRESS_RATING, new StressRatingChoiceQuestion()));
 	}
 
+	@Override
 	public String getPanelDescription()
 	{
 		return EAM.text("Title|Stress Details");

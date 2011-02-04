@@ -43,6 +43,7 @@ public class ResultsChainPropertiesPanel extends ObjectDataInputPanelWithSection
 		updateFieldsFromProject();
 	}
 
+	@Override
 	public String getPanelDescription()
 	{
 		return EAM.text("Title|Results Chain Properties");

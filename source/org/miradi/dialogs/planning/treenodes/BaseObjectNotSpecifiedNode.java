@@ -34,6 +34,7 @@ public class BaseObjectNotSpecifiedNode extends AbstractPlanningTreeNode
 		rebuild();
 	}
 	
+	@Override
 	public BaseObject getObject()
 	{
 		return unspecifiedResource;

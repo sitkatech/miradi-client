@@ -74,6 +74,7 @@ public class PlanningTreeTaskNode extends AbstractPlanningTreeNode
 		return subTaskNodes;
 	}
 
+	@Override
 	public BaseObject getObject()
 	{
 		return task;

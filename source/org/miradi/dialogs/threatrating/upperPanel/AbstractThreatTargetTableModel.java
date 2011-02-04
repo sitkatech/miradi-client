@@ -175,6 +175,7 @@ abstract public class AbstractThreatTargetTableModel extends SortableTableModel
 		return getThreat(threatIndex).getRef();
 	}
 
+	@Override
 	public String getColumnGroupCode(int column)
 	{
 		return targetColumns[column].getRef().toString();

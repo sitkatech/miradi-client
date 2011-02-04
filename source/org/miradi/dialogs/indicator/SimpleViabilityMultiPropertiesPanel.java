@@ -56,6 +56,7 @@ public class SimpleViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 		
 	}
 	
+	@Override
 	public String getPanelDescription()
 	{
 		return EAM.text("Planning Properties Panel");
@@ -67,6 +68,7 @@ public class SimpleViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 		currentCard.selectSectionForTag(tag);
 	}
 	
+	@Override
 	protected AbstractObjectDataInputPanel findPanel(ORef[] orefsToUse)
 	{
 		if(orefsToUse.length == 0)

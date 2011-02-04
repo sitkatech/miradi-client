@@ -44,31 +44,37 @@ public class KeyEcologicalAttributeNode extends TreeTableNode
 		rebuild();
 	}
 	
+	@Override
 	public BaseObject getObject()
 	{
 		return kea;
 	}
 
+	@Override
 	public int getChildCount()
 	{
 		return indicators.length;
 	}
 
+	@Override
 	public TreeTableNode getChild(int index)
 	{
 		return indicators[index];
 	}
 
+	@Override
 	public ORef getObjectReference()
 	{
 		return kea.getRef();
 	}
 	
+	@Override
 	public int getType()
 	{
 		return ObjectType.KEY_ECOLOGICAL_ATTRIBUTE;
 	}
 
+	@Override
 	public Object getValueAt(int column)
 	{
 		String tag = COLUMN_TAGS[column];
@@ -97,6 +103,7 @@ public class KeyEcologicalAttributeNode extends TreeTableNode
 		return kea.getId();
 	}
 
+	@Override
 	public void rebuild() throws Exception
 	{
 		int childCount = kea.getIndicatorIds().size();

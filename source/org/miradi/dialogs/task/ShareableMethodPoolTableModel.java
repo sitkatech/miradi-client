@@ -40,6 +40,7 @@ public class ShareableMethodPoolTableModel extends ObjectPoolTableModel
 		Task.TAG_LABEL,
 	};
 	
+	@Override
 	public ORefList getLatestRefListFromProject()
 	{
 		return new ORefList(getRowObjectType(), getLatestIdListFromProject());

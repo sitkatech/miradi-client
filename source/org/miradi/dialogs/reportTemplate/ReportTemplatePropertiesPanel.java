@@ -43,6 +43,7 @@ public class ReportTemplatePropertiesPanel extends ObjectDataInputPanel
 		updateFieldsFromProject();
 	}
 	
+	@Override
 	public String getPanelDescription()
 	{
 		return EAM.text("Title|Report Template Properties");

@@ -35,6 +35,7 @@ abstract public class ObjectPoolTableModel extends ObjectTableModel
 		super(projectToUse, listedItemType, columnTagsToUse);
 	}
 	
+	@Override
 	public ORefList getLatestRefListFromProject()
 	{
 		return new ORefList(getRowObjectType(), getLatestIdListFromProject());

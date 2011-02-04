@@ -87,6 +87,7 @@ public class FactorTagListEditor extends AbstractQuestionEditorComponent impleme
 		throw new RuntimeException(EAM.text("Unexpected call to addListSelectionListener"));
 	}
 	
+	@Override
 	public void removeListSelectionListener(ListSelectionListener listener)
 	{
 		throw new RuntimeException(EAM.text("Unexpected call to removeListSelectionListener"));

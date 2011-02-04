@@ -47,6 +47,7 @@ public class TargetViabilityKeaPropertiesPanel extends ObjectDataInputPanelWithS
 		updateFieldsFromProject();
 	}
 	
+	@Override
 	public String getPanelDescription()
 	{
 		return EAM.text("Title|Key Ecological Attribute Properties");

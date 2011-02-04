@@ -36,21 +36,25 @@ public class GoalListManagementPanel extends ObjectListManagementPanel
 		super(mainWindowToUse, goalListPanel, new GoalPropertiesPanel(mainWindowToUse.getProject(), mainWindowToUse.getActions()));
 	}
 
+	@Override
 	public String getSplitterDescription()
 	{
 		return getPanelDescription() + SPLITTER_TAG;
 	}
 	
+	@Override
 	public String getPanelDescription()
 	{
 		return PANEL_DESCRIPTION;
 	}
 	
+	@Override
 	public Icon getIcon()
 	{
 		return new GoalIcon();
 	}
 	
+	@Override
 	public Class getJumpActionClass()
 	{
 		return ActionJumpStrategicPlanDevelopGoalStep.class;

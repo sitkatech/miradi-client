@@ -188,7 +188,8 @@ public class FullTimeEmployeeDaysPerYearAction extends AbstractAction
 	          super();
 	     }
 	   
-	     public void insertString(int offset, String str, AttributeSet attr) throws BadLocationException 
+	     @Override
+		public void insertString(int offset, String str, AttributeSet attr) throws BadLocationException 
 	     {
 	    	 try
 	    	 {

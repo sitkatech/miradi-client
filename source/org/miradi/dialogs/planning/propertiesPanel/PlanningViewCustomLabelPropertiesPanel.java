@@ -34,6 +34,7 @@ public class PlanningViewCustomLabelPropertiesPanel extends ObjectDataInputPanel
 		updateFieldsFromProject();
 	}
 
+	@Override
 	public String getPanelDescription()
 	{
 		return EAM.text("Planning View Configuration Label Properties");

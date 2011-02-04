@@ -46,6 +46,7 @@ public class UiToggleButton extends JToggleButton
 	 * a good idea to have a UiButton class, so it's not all 
 	 * wasted, even if this method disappears. kbs.
 	 */
+	@Override
 	public Dimension getPreferredSize()
 	{
 		return Utilities.addCushionToHeightIfRequired(super.getPreferredSize(), EXTRA_PIXELS);
@@ -57,6 +58,7 @@ public class UiToggleButton extends JToggleButton
 	 * getMaximumSize() instead of getPreferredSize()
 	 * is being called from Box's horizontal and vertical.
 	 */
+	@Override
 	public Dimension getMaximumSize()
 	{
 		return Utilities.addCushionToHeightIfRequired(super.getMaximumSize(), EXTRA_PIXELS);

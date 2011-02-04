@@ -52,6 +52,7 @@ public class TextBoxPropertiesPanel extends ObjectDataInputPanel
 		updateFieldsFromProject();
 	}
 
+	@Override
 	public String getPanelDescription()
 	{
 		return EAM.text("Text Box Properties");

@@ -33,11 +33,13 @@ public class PlanningViewSingleLevelComboBox extends PlanningViewComboBox
 		super(projectToUse, new PlanningViewSingleLevelQuestion(projectToUse).getChoices());
 	}
 	
+	@Override
 	public String getChoiceTag()
 	{
 		return ViewData.TAG_PLANNING_SINGLE_LEVEL_CHOICE;
 	}
 	
+	@Override
 	boolean comboBoxNeedsSave() throws Exception 
 	{
 		ViewData viewData = getProject().getViewData(PlanningView.getViewName());

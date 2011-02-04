@@ -80,6 +80,7 @@ public class TeamMemberPropertiesPanel extends ObjectDataInputPanel
 		updateFieldsFromProject();
 	}
 
+	@Override
 	public String getPanelDescription()
 	{
 		return EAM.text("Title|Team Properties");

@@ -138,6 +138,7 @@ public class PlanningViewMeasurementTableModel extends PlanningViewAbstractTreeT
 		return null;
 	}
 	
+	@Override
 	public Color getCellBackgroundColor(int column)
 	{
 		return AppPreferences.MEASUREMENT_COLOR_BACKGROUND;

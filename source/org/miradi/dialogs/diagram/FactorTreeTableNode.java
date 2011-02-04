@@ -38,36 +38,43 @@ public class FactorTreeTableNode extends TreeTableNode
 		rebuild();
 	}
 	
+	@Override
 	public BaseObject getObject()
 	{
 		return factor;
 	}
 
+	@Override
 	public TreeTableNode getChild(int index)
 	{
 		return indicators[index];
 	}
 
+	@Override
 	public int getChildCount()
 	{
 		return indicators.length;
 	}
 
+	@Override
 	public ORef getObjectReference()
 	{
 		return factor.getRef();
 	}
 	
+	@Override
 	public int getType()
 	{
 		return factor.getType();
 	}
 	
+	@Override
 	public boolean isAlwaysExpanded()
 	{
 		return true;
 	}
 
+	@Override
 	public Object getValueAt(int column)
 	{
 		return "";
@@ -83,6 +90,7 @@ public class FactorTreeTableNode extends TreeTableNode
 	{
 		return factor.getId();
 	}
+	@Override
 	public void rebuild() throws Exception
 	{
 		ORefList indicatorRefs = factor.getOnlyDirectIndicatorRefs();
