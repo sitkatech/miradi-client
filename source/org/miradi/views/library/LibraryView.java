@@ -36,6 +36,7 @@ public class LibraryView extends TabbedView
 		super(mainWindowToUse);
 	}
 
+	@Override
 	public String cardName() 
 	{
 		return getViewName();
@@ -46,11 +47,13 @@ public class LibraryView extends TabbedView
 		return Project.LIBRARY_VIEW_NAME;
 	}
 
+	@Override
 	public MiradiToolBar createToolBar()
 	{
 		return new LibraryToolBar(getActions());
 	}
 
+	@Override
 	public void createTabs() throws Exception
 	{
 		String[] demoMaps = 
@@ -68,6 +71,7 @@ public class LibraryView extends TabbedView
 		
 	}
 
+	@Override
 	public void deleteTabs() throws Exception
 	{
 		// lightweight tabs...nothing to dispose yet

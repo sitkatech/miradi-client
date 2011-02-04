@@ -27,16 +27,19 @@ import org.miradi.objects.Target;
 
 public class HideStressBubbleDoer extends AbstractStressVisibilityDoer
 {
+	@Override
 	protected boolean isAvailable(ORef selectedStressRef)
 	{
 		return isShowing(selectedStressRef);
 	}
 	
+	@Override
 	protected void doWork() throws Exception
 	{
 		hideBubble();
 	}
 	
+	@Override
 	protected Factor getFactor(ORef factorRef)
 	{
 		return Stress.find(getProject(), factorRef);
@@ -54,6 +57,7 @@ public class HideStressBubbleDoer extends AbstractStressVisibilityDoer
 		return getSelectedTargetRef();
 	}
 	
+	@Override
 	protected ORefList getAnnotationList()
 	{
 		return ((Target) getParent()).getStressRefs();

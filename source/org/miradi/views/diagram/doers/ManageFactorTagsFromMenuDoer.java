@@ -34,6 +34,7 @@ public class ManageFactorTagsFromMenuDoer extends AbstractManageFactorTagDoer
 		return getOnlySelectedFactorCells().length == 1;
 	}
 	
+	@Override
 	protected Factor getSingleSelectedFactor()
 	{
 		FactorCell[] selectedCells = getOnlySelectedFactorCells();

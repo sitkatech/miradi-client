@@ -28,6 +28,7 @@ import org.miradi.objects.Task;
 
 public class ShowActityBubbleDoer extends AbstractActivityVisibilityDoer
 {
+	@Override
 	protected void doWork() throws Exception
 	{
 		showBubble(DiagramFactor.DEFAULT_ACTIVITY_SIZE);
@@ -39,6 +40,7 @@ public class ShowActityBubbleDoer extends AbstractActivityVisibilityDoer
 		return !isShowing(selectedFactorRef);
 	}
 	
+	@Override
 	protected Factor getFactor(ORef factorRef)
 	{
 		return Task.find(getProject(), factorRef);

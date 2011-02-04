@@ -26,16 +26,19 @@ import org.miradi.utils.PointList;
 
 public class CreateOutgoingJunctionDoer extends AbstractCreateJunctionDoer
 {
+	@Override
 	protected int getDirection()
 	{
 		return DiagramLink.FROM;
 	}
 	
+	@Override
 	protected int getInsertBendPointAtIndex(PointList bendPoints)
 	{
 		return 0;
 	}
 	
+	@Override
 	protected int calculateJunctionX(Rectangle bounds)
 	{
 		return (int) bounds.getMaxX() + JUNCTION_DISTANCE_FROM_FACTOR;

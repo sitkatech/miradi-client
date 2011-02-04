@@ -36,6 +36,7 @@ import org.miradi.views.diagram.LinkCreator;
 
 public class InsertGroupBoxDoer extends InsertFactorDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		if (!super.isAvailable())
@@ -50,6 +51,7 @@ public class InsertGroupBoxDoer extends InsertFactorDoer
 		return true;
 	}
 	
+	@Override
 	protected void doExtraSetup(DiagramFactor groupBoxDiagramFactor, FactorCell[] selectedFactorCells) throws Exception
 	{
 		super.doExtraSetup(groupBoxDiagramFactor, selectedFactorCells);
@@ -130,16 +132,19 @@ public class InsertGroupBoxDoer extends InsertFactorDoer
 		return differentTypes.size() > 1;
 	}
 	
+	@Override
 	public void forceVisibleInLayerManager()
 	{
 		getMainWindow().getCurrentDiagramComponent().getLayerManager().setVisibility(GroupBox.OBJECT_NAME, true);
 	}
 
+	@Override
 	public String getInitialText()
 	{
 		return EAM.text("Label|New Group Box");
 	}
 
+	@Override
 	public int getTypeToInsert()
 	{
 		return GroupBox.getObjectType();

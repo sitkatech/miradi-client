@@ -30,6 +30,7 @@ import org.miradi.views.ObjectsDoer;
 
 public class DiagramPropertiesShowDoer extends ObjectsDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		if (!isInDiagram())
@@ -38,6 +39,7 @@ public class DiagramPropertiesShowDoer extends ObjectsDoer
 		return true;
 	}
 
+	@Override
 	public void doIt() throws Exception
 	{
 		if (!isAvailable())

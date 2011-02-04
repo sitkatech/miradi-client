@@ -23,11 +23,13 @@ import org.miradi.utils.CodeList;
 
 public class CreatePlanningViewEmptyConfigurationDoer extends AbstractCreatePlanningViewConfigurationDoer
 {
+	@Override
 	protected CodeList getVisibleRowCodes() throws Exception
 	{
 		return new CodeList();
 	}
 	
+	@Override
 	protected CodeList getVisibleColumnCodes() throws Exception
 	{
 		return new CodeList();

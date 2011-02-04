@@ -26,16 +26,19 @@ import org.miradi.views.diagram.InsertFactorDoer;
 
 public class InsertHumanWelfareTargetDoer extends InsertFactorDoer
 {
+	@Override
 	public int getTypeToInsert()
 	{
 		return HumanWelfareTarget.getObjectType();
 	}
 
+	@Override
 	public String getInitialText()
 	{
 		return EAM.text("Label|New Human Welfare Target");
 	}
 
+	@Override
 	public void forceVisibleInLayerManager()
 	{
 		getCurrentLayerManager().setVisibility(HumanWelfareTarget.OBJECT_NAME, true);

@@ -31,6 +31,7 @@ import org.miradi.utils.CommandVector;
 
 public class DeletePlanningViewConfigurationDoer extends AbstractPlanningViewConfigurationDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		if(getProject().getPlanningViewConfigurationPool().getORefList().size() < 2)
@@ -39,6 +40,7 @@ public class DeletePlanningViewConfigurationDoer extends AbstractPlanningViewCon
 		return super.isAvailable();
 	}
 
+	@Override
 	public void doIt() throws Exception
 	{
 		if (! isAvailable())
