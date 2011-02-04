@@ -204,7 +204,6 @@ public class Stress extends Factor
 		addField(PSEUDO_STRESS_RATING, pseudoStressRating);
 	}
 	
-	public static final String TAG_SHORT_LABEL = "ShortLabel";
 	public static final String TAG_DETAIL = "Detail";
 	public static final String TAG_SCOPE = "Scope";
 	public static final String TAG_SEVERITY = "Severity";
