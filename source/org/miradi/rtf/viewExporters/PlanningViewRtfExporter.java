@@ -22,6 +22,7 @@ package org.miradi.rtf.viewExporters;
 import org.miradi.dialogs.AnalysisRowColumnProvider;
 import org.miradi.dialogs.planning.AccountingCodeCoreRowColumnProvider;
 import org.miradi.dialogs.planning.ActionPlanSubViewObjectiveBasedRowColumnProvider;
+import org.miradi.dialogs.planning.ActionPlanSubViewStrategyBasedRowColumnProvider;
 import org.miradi.dialogs.planning.BudgetCategoryOneCoreRowColumnProvider;
 import org.miradi.dialogs.planning.BudgetCategoryTwoCoreRowColumnProvider;
 import org.miradi.dialogs.planning.FundingSourceCoreRowColumnProvider;
@@ -64,7 +65,10 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 	public void exportView(RtfWriter writer, CodeList reportTemplateContent) throws Exception
 	{
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.ACTION_PLAN_OBJECTIVE_BASED_REPORT_CODE))
-			exportReport(writer, new ActionPlanSubViewObjectiveBasedRowColumnProvider(getProject()), ReportTemplateContentQuestion.getStrategicPlanLabel());
+			exportReport(writer, new ActionPlanSubViewObjectiveBasedRowColumnProvider(getProject()), ReportTemplateContentQuestion.getActionPlanObjectiveBasedActionPlanLabel());
+		
+		if (reportTemplateContent.contains(ReportTemplateContentQuestion.ACTION_PLAN_STRATEGY_BASED_REPORT_CODE))
+			exportReport(writer, new ActionPlanSubViewStrategyBasedRowColumnProvider(getProject()), ReportTemplateContentQuestion.getActionPlanStrategyBasedActionPlanLabel());
 		
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.PLANNING_VIEW_MONITORING_PLAN_CODE))
 			exportReport(writer, new MonitoringRowColumnProvider(getProject()), ReportTemplateContentQuestion.getMonitoringPlanLabel());
