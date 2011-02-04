@@ -32,16 +32,19 @@ public class DescribeTargetStatusStep extends TargetViabilityWizardStep
 		super(panelToUse);
 	}
 	
+	@Override
 	public String getProcessStepTitle()
 	{
 		return ProcessSteps.PROCESS_STEP_1B;
 	}
 
+	@Override
 	public Class getAssociatedActionClass()
 	{
 		return ActionJumpTargetViabilityMethodChoiceStep.class;
 	}
 	
+	@Override
 	public String getSubHeading()
 	{
 		return EAM.text("Simple viability");

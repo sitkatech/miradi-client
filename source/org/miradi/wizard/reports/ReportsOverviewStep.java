@@ -31,11 +31,13 @@ public class ReportsOverviewStep extends SplitWizardStep
 		super(wizardToUse, ReportsView.getViewName());
 	}
 
+	@Override
 	public String getProcessStepTitle()
 	{
 		return "";
 	}
 
+	@Override
 	public Class getAssociatedActionClass()
 	{
 		return ActionViewReports.class;

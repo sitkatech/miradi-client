@@ -32,11 +32,13 @@ public class FileSystemProjectOrDirectoryNode extends FileSystemTreeNode
 		super(databaseToUse, file, sorterToUse);
 	}
 
+	@Override
 	protected FileSystemTreeNode createNode(ProjectServer databaseToUse, File file, FileSystemProjectSorter sorterToUse) throws Exception
 	{
 		return new FileSystemProjectOrDirectoryNode(databaseToUse, file, sorterToUse);
 	}
 	
+	@Override
 	protected boolean shouldBeIncluded(File file)
 	{
 		try

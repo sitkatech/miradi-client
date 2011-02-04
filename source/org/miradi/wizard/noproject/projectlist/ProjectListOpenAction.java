@@ -29,11 +29,13 @@ class ProjectListOpenAction extends ProjectListAction
 		super(tableToUse, getButtonLabel());
 	}
 
+	@Override
 	protected void doWork() throws Exception
 	{
 		ProjectListTreeTable.doProjectOpen(getMainWindow(), getSelectedFile());
 	}
 	
+	@Override
 	protected String getErrorMessage()
 	{
 		return EAM.text("Error opening project: ");

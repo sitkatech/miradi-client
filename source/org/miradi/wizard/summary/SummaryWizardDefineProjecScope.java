@@ -31,11 +31,13 @@ public class SummaryWizardDefineProjecScope extends SummaryWizardStep
 		super(panelToUse);
 	}
 
+	@Override
 	public String getProcessStepTitle()
 	{
 		return ProcessSteps.PROCESS_STEP_1B;
 	}
 
+	@Override
 	public Class getAssociatedActionClass()
 	{
 		return ActionJumpSummaryWizardDefineProjecScope.class;

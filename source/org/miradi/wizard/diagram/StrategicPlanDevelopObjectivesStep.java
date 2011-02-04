@@ -31,11 +31,13 @@ public class StrategicPlanDevelopObjectivesStep extends DiagramWizardStep
 		super(wizardToUse);
 	}
 	
+	@Override
 	public String getProcessStepTitle()
 	{
 		return ProcessSteps.PROCESS_STEP_2A;
 	}
 
+	@Override
 	public Class getAssociatedActionClass()
 	{
 		return ActionJumpStrategicPlanDevelopObjectivesStep.class;

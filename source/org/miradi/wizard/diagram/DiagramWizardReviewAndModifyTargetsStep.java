@@ -33,16 +33,19 @@ public class DiagramWizardReviewAndModifyTargetsStep extends DiagramWizardStep
 		super(panelToUse);
 	}
 
+	@Override
 	public String getProcessStepTitle()
 	{
 		return ProcessSteps.PROCESS_STEP_1B;
 	}
 
+	@Override
 	public Class getAssociatedActionClass()
 	{
 		return ActionJumpDiagramWizardDefineTargetsStep.class;
 	}
 	
+	@Override
 	public String getSubHeading()
 	{
 		return EAM.text("2) Review and modify targets");

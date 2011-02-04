@@ -31,11 +31,13 @@ public class DiagramWizardProjectScopeStep extends DiagramWizardStep
 	{
 		super(panelToUse);
 	}
+	@Override
 	public String getProcessStepTitle()
 	{
 		return ProcessSteps.PROCESS_STEP_1B;
 	}
 
+	@Override
 	public Class getAssociatedActionClass()
 	{
 		return ActionJumpSummaryWizardDefineProjecScope.class;

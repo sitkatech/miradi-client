@@ -31,6 +31,7 @@ public class WorkPlanCreateResourcesStep extends WorkPlanWizardStep
 		super(wizardToUse);
 	}
 	
+	@Override
 	public String getProcessStepTitle()
 	{
 		return ProcessSteps.PROCESS_STEP_3A;
@@ -42,6 +43,7 @@ public class WorkPlanCreateResourcesStep extends WorkPlanWizardStep
 		return EAM.text("Detail activities/methods, tasks, and responsibilities");
 	}
 
+	@Override
 	public String getSubHeading()
 	{
 		return EAM.text("3) Edit resources");

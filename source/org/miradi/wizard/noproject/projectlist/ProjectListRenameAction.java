@@ -36,11 +36,13 @@ class ProjectListRenameAction extends ProjectListAction
 		setEnabled(isDirectorySelected());
 	}
 
+	@Override
 	protected void doWork() throws Exception
 	{
 		RenameProjectDoer.doIt(EAM.getMainWindow(), getSelectedFile());
 	}
 	
+	@Override
 	protected String getErrorMessage()
 	{
 		return EAM.text("Error renaming project: ");

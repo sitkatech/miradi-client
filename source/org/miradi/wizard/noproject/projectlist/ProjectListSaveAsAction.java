@@ -30,11 +30,13 @@ class ProjectListSaveAsAction extends ProjectListAction
 		super(tableToUse, getButtonLabel());
 	}
 
+	@Override
 	protected void doWork()  throws Exception
 	{
 		CopyProject.doIt(EAM.getMainWindow(), getSelectedFile());
 	}
 
+	@Override
 	protected String getErrorMessage()
 	{
 		return EAM.text("Error copying project: ");

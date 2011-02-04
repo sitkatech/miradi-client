@@ -95,6 +95,7 @@ public class WelcomeImportStep extends NoProjectWizardStep
 
 	}
 	
+	@Override
 	public Class getControl(String controlName)
 	{
 		if(controlName.equals(CONTROL_IMPORT_MIRADI))
@@ -103,6 +104,7 @@ public class WelcomeImportStep extends NoProjectWizardStep
 		return super.getControl(controlName);
 	}
 
+	@Override
 	public void buttonPressed(String buttonName)
 	{
 		try

@@ -37,11 +37,13 @@ class ProjectListDeleteAction extends ProjectListAction
 		setEnabled(isDirectorySelected());
 	}
 
+	@Override
 	protected void doWork() throws Exception
 	{
 		DeleteProject.doIt(EAM.getMainWindow(), getSelectedFile());
 	}
 	
+	@Override
 	protected String getErrorMessage()
 	{
 		return EAM.text("Error deleting project: ");

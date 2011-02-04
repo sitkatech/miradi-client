@@ -33,16 +33,19 @@ public class DiagramWizardIdentifyDirectThreatStep extends DiagramWizardStep
 		super(panelToUse);
 	}
 	
+	@Override
 	public String getProcessStepTitle()
 	{
 		return ProcessSteps.PROCESS_STEP_1C;
 	}
 
+	@Override
 	public Class getAssociatedActionClass()
 	{
 		return ActionJumpDiagramWizardIdentifyDirectThreatStep.class;
 	}
 	
+	@Override
 	public String getSubHeading()
 	{
 		return EAM.text("1) Insert direct threat");

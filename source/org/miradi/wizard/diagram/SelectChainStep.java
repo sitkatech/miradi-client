@@ -32,16 +32,19 @@ public class SelectChainStep extends DiagramWizardStep
 		super(panelToUse);
 	}
 	
+	@Override
 	public String getProcessStepTitle()
 	{
 		return ProcessSteps.PROCESS_STEP_2A;
 	}
 
+	@Override
 	public Class getAssociatedActionClass()
 	{
 		return ActionJumpSelectChainStep.class;
 	}
 	
+	@Override
 	public String getSubHeading()
 	{
 		return EAM.text("1) Select factor chain");

@@ -32,16 +32,19 @@ public class DiagramWizardGoodResultsChainCriteriaReview extends DiagramWizardSt
 		super(panelToUse);
 	}
 	
+	@Override
 	public String getProcessStepTitle()
 	{
 		return ProcessSteps.PROCESS_STEP_2A;
 	}
 
+	@Override
 	public Class getAssociatedActionClass()
 	{
 		return ActionJumpDiagramWizardResultsChainSelectStrategyStep.class;
 	}
 
+	@Override
 	public String getSubHeading()
 	{
 		return EAM.text("4) Review the criteria for a good results chain");

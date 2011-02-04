@@ -32,11 +32,13 @@ public class DiagramWizardReviewModelAndAdjustStep extends DiagramWizardStep
 		super(panelToUse);
 	}
 	
+	@Override
 	public String getProcessStepTitle()
 	{
 		return ProcessSteps.PROCESS_STEP_1D;
 	}
 
+	@Override
 	public Class getAssociatedActionClass()
 	{
 		return ActionJumpDiagramWizardReviewModelAndAdjustStep.class;
