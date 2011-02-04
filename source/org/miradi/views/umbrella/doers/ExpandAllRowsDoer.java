@@ -23,6 +23,7 @@ package org.miradi.views.umbrella.doers;
 
 public class ExpandAllRowsDoer extends AbstractTreeRowExpansionDoer
 {
+	@Override
 	public void doWork() throws Exception
 	{
 		getPicker().expandAll();
