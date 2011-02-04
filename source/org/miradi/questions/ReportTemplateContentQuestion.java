@@ -52,7 +52,8 @@ public class ReportTemplateContentQuestion extends StaticChoiceQuestion
 				new ChoiceItem(THREAT_RATING_VIEW_CODE, getThreatRatingsLabel()),
 				new ChoiceItem(THREAT_RATING_DETAILS_CODE, getThreatRatingDetailsLabel()),
 				
-				new ChoiceItem(ACTION_PLAN_OBJECTIVE_BASED_REPORT_CODE, getStrategicPlanLabel()),
+				new ChoiceItem(ACTION_PLAN_OBJECTIVE_BASED_REPORT_CODE, getActionPlanObjectiveBasedActionPlanLabel()),
+				new ChoiceItem(ACTION_PLAN_STRATEGY_BASED_REPORT_CODE, getActionPlanStrategyBasedActionPlanLabel()),
 				new ChoiceItem(PLANNING_VIEW_MONITORING_PLAN_CODE, getMonitoringPlanLabel()),
 				new ChoiceItem(PLANNING_VIEW_WORK_PLAN_CODE, getWorkPlanLabel()),
 				new ChoiceItem(PLANNING_VIEW_RESOURCES_CODE, getResourcesLabel()),
@@ -126,9 +127,14 @@ public class ReportTemplateContentQuestion extends StaticChoiceQuestion
 		return EAM.text("Monitoring Plan");
 	}
 
-	public static String getStrategicPlanLabel()
+	public static String getActionPlanObjectiveBasedActionPlanLabel()
 	{
 		return EAM.text("Objectives contain Strategies");
+	}
+	
+	public static String getActionPlanStrategyBasedActionPlanLabel()
+	{
+		return EAM.text("Strategies contain Objectives");
 	}
 
 	public static String getThreatRatingsLabel()
@@ -169,6 +175,7 @@ public class ReportTemplateContentQuestion extends StaticChoiceQuestion
 	public static final String THREAT_RATING_VIEW_CODE = "ThreatRatings";
 	public static final String THREAT_RATING_DETAILS_CODE = "ThreatRatingDetails";
 	public static final String ACTION_PLAN_OBJECTIVE_BASED_REPORT_CODE = "PlanningViewStrategicPlan";
+	public static final String ACTION_PLAN_STRATEGY_BASED_REPORT_CODE = "PlanningViewActionPlanStrategyBasedCode½";
 	public static final String PLANNING_VIEW_MONITORING_PLAN_CODE = "PlanningViewMonitoringPlan";
 	public static final String PLANNING_VIEW_WORK_PLAN_CODE = "PlanningViewWorkPlan";
 	public static final String PLANNING_VIEW_RESOURCES_CODE = "PlanningViewResourcesTab";
