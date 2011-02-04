@@ -121,14 +121,14 @@ public class QuestionPopupEditorComponent extends PopupEditorComponent
 	}
 	
 	@Override
-	public void addFocusListener(FocusListener listener)
+	public synchronized void addFocusListener(FocusListener listener)
 	{
 		super.addFocusListener(listener);
 		currentSelectionText.addFocusListener(listener);
 	}
 	
 	@Override
-	public void removeFocusListener(FocusListener listener)
+	public synchronized void removeFocusListener(FocusListener listener)
 	{	
 		currentSelectionText.removeFocusListener(listener);
 		super.removeFocusListener(listener);

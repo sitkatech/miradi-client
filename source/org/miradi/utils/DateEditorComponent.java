@@ -75,13 +75,13 @@ public class DateEditorComponent extends JDateChooser
 	}
 	
 	@Override
-	public void addFocusListener(FocusListener focusListener)
+	public synchronized void addFocusListener(FocusListener focusListener)
 	{
 		getDateTextEditor().addFocusListener(focusListener);
 	}
 	
 	@Override
-	public void removeFocusListener(FocusListener focusListener)
+	public synchronized void removeFocusListener(FocusListener focusListener)
 	{
 		getDateTextEditor().removeFocusListener(focusListener);
 	}
