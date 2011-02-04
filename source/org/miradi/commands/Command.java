@@ -39,6 +39,12 @@ public abstract class Command
 		return toString().equals(other.toString());
 	}
 	
+	@Override
+	public int hashCode()
+	{
+		return toString().hashCode();
+	}
+	
 	public boolean isBeginTransaction()
 	{
 		return false;

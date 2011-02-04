@@ -212,6 +212,12 @@ public class LinkCreateDialog extends DialogWithButtonBar implements ActionListe
 			return true;
 		}
 		
+		@Override
+		public int hashCode()
+		{
+			return toString().hashCode();
+		}
+		
 		public String toString()
 		{
 			String factorLabel = factor.getLabel();
