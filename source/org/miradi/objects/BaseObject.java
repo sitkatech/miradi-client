@@ -448,6 +448,12 @@ abstract public class BaseObject
 	abstract public String getTypeName();
 	
 	@Override
+	public int hashCode()
+	{
+		return getRef().hashCode();
+	}
+	
+	@Override
 	public boolean equals(Object rawOther)
 	{
 		if(!(rawOther instanceof BaseObject))
