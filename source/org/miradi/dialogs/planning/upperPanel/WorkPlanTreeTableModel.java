@@ -20,25 +20,16 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel;
 
 import org.miradi.dialogs.planning.WorkPlanRowColumnProvider;
-import org.miradi.dialogs.planning.treenodes.WorkPlanHiddenTreeRootNode;
-import org.miradi.dialogs.treetables.TreeTableNode;
+import org.miradi.dialogs.planning.treenodes.NewPlanningRootNode;
 import org.miradi.project.Project;
-import org.miradi.utils.CodeList;
 
-public class WorkPlanTreeTableModel extends ExportablePlanningTreeTableModel
+public class WorkPlanTreeTableModel extends TreeTableModelWithRebuilder
 {
-	public WorkPlanTreeTableModel(Project project) throws Exception
+	public WorkPlanTreeTableModel(Project project, NewPlanningRootNode rootNode, WorkPlanRowColumnProvider rowColumnProvider) throws Exception
 	{
-		super(project, createWorkPlanRootNode(project, new WorkPlanRowColumnProvider(project).getRowCodesToShow()), 
-				new WorkPlanRowColumnProvider(project), 
-				UNIQUE_TREE_TABLE_IDENTIFIER);
+		super(project, rootNode, rowColumnProvider,	UNIQUE_TREE_TABLE_IDENTIFIER);
 	}
 
-	private static TreeTableNode createWorkPlanRootNode(Project project, CodeList visibleRowCodes) throws Exception
-	{
-		return new WorkPlanHiddenTreeRootNode(project, visibleRowCodes);
-	}
-	
 	@Override
 	public String getUniqueTreeTableModelIdentifier()
 	{
