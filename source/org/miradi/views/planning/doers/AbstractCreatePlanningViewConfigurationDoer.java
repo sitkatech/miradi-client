@@ -34,6 +34,7 @@ import org.miradi.views.ViewDoer;
 
 abstract public class AbstractCreatePlanningViewConfigurationDoer extends ViewDoer
 {
+	@Override
 	public boolean isAvailable()
 	{	
 		if (! isPlanningView())
@@ -42,6 +43,7 @@ abstract public class AbstractCreatePlanningViewConfigurationDoer extends ViewDo
 		return true;
 	}
 
+	@Override
 	public void doIt() throws Exception
 	{
 		if (! isAvailable())

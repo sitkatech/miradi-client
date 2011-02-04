@@ -24,11 +24,13 @@ import org.miradi.objects.Indicator;
 
 public class TreeNodeCreateIndicatorDoer extends AbstractTreeCreateAnnotationDoer
 {
+	@Override
 	protected int getAnnotationType()
 	{
 		return Indicator.getObjectType();
 	}
 	
+	@Override
 	protected String getAnnotationTag()
 	{
 		return Factor.TAG_INDICATOR_IDS;

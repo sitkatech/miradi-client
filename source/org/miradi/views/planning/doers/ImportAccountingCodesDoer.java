@@ -43,11 +43,13 @@ import org.miradi.views.ViewDoer;
 
 public class ImportAccountingCodesDoer extends ViewDoer
 {
+	@Override
 	public boolean isAvailable() 
 	{
 		return getProject().isOpen();
 	}
 
+	@Override
 	public void doIt() throws Exception 
 	{
 		if (!isAvailable())

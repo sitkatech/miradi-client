@@ -25,11 +25,13 @@ import org.miradi.views.diagram.CreateAnnotationDoer;
 
 public class CreateStrategyProgressReportDoer extends CreateAnnotationDoer
 {
+	@Override
 	public String getAnnotationListTag()
 	{
 		return Strategy.TAG_PROGRESS_REPORT_REFS;
 	}
 
+	@Override
 	public int getAnnotationType()
 	{
 		return ProgressReport.getObjectType();

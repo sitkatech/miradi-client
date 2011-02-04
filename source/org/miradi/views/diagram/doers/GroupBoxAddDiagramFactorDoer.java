@@ -33,6 +33,7 @@ import org.miradi.views.diagram.LinkDeletor;
 
 public class GroupBoxAddDiagramFactorDoer extends AbstractGroupBoxDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		if (!super.isAvailable())
@@ -77,6 +78,7 @@ public class GroupBoxAddDiagramFactorDoer extends AbstractGroupBoxDoer
 		return false;
 	}
 
+	@Override
 	protected void updateGroupBoxChildrenUsingCommands() throws Exception
 	{
 		ORefList nonGroupBoxDiagramFactorRefs = getSelectedNonGroupBoxDiagramFactors();

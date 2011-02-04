@@ -39,6 +39,7 @@ public class MapView extends TabbedView
 		super(mainWindowToUse);
 	}
 
+	@Override
 	public String cardName() 
 	{
 		return getViewName();
@@ -49,11 +50,13 @@ public class MapView extends TabbedView
 		return Project.MAP_VIEW_NAME;
 	}
 
+	@Override
 	public MiradiToolBar createToolBar()
 	{
 		return new MapToolBar(getActions());
 	}
 
+	@Override
 	public void createTabs() throws Exception
 	{
 		String[] demoMaps = 
@@ -73,6 +76,7 @@ public class MapView extends TabbedView
 		}
 	}
 
+	@Override
 	public void deleteTabs() throws Exception
 	{
 		// lightweight tabs...nothing to dispose yet

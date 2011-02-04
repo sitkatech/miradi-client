@@ -26,6 +26,7 @@ import org.miradi.views.ViewDoer;
 
 abstract public class AbstractPlanningViewConfigurationDoer extends ViewDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		if(!super.isAvailable())

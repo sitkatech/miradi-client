@@ -29,6 +29,7 @@ import org.miradi.objects.DiagramLink;
 
 public class GroupBoxRemoveDiagramFactorDoer extends AbstractGroupBoxDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		if (!super.isAvailable())
@@ -61,6 +62,7 @@ public class GroupBoxRemoveDiagramFactorDoer extends AbstractGroupBoxDoer
 		return new ORefList(groupBoxDiagramFactorRefs);
 	}
 
+	@Override
 	protected void updateGroupBoxChildrenUsingCommands() throws Exception
 	{ 
 		ORefList groupBoxChildrenToRemove = getSelectedNonGroupBoxDiagramFactors();

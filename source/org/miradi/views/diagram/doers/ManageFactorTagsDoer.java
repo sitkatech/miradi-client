@@ -25,6 +25,7 @@ import org.miradi.objects.Factor;
 
 public class ManageFactorTagsDoer extends AbstractManageFactorTagDoer
 {
+	@Override
 	protected Factor getSingleSelectedFactor()
 	{
 		ORefList[] selectedHierarchies = getSelectedHierarchies();

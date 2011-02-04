@@ -27,21 +27,25 @@ import org.miradi.views.diagram.DeleteAnnotationDoer;
 
 public class DeleteStrategyProgressReportDoer extends DeleteAnnotationDoer
 {
+	@Override
 	protected BaseObject getParent(BaseObject annotationToDelete)
 	{
 		return getSingleSelected(Strategy.getObjectType());  
 	}
 
+	@Override
 	public String getAnnotationIdListTag()
 	{
 		return Strategy.TAG_PROGRESS_REPORT_REFS;
 	}
 
+	@Override
 	public int getAnnotationType()
 	{
 		return ProgressReport.getObjectType();
 	}
 
+	@Override
 	public String[] getDialogText()
 	{
 		return new String[] { EAM.text("Are you sure you want to delete this Progress Report?"),};

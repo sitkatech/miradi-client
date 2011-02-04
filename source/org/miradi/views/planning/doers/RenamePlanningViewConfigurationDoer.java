@@ -29,6 +29,7 @@ import org.miradi.objects.ViewData;
 
 public class RenamePlanningViewConfigurationDoer extends AbstractPlanningViewConfigurationDoer
 {
+	@Override
 	public void doIt() throws Exception
 	{
 		if (! isAvailable())
