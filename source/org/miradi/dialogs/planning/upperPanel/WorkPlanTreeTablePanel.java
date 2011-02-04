@@ -29,6 +29,7 @@ import org.miradi.actions.ActionTreeNodeUp;
 import org.miradi.actions.ActionWorkPlanBudgetColumnsEditor;
 import org.miradi.dialogs.planning.WorkPlanRowColumnProvider;
 import org.miradi.dialogs.planning.propertiesPanel.AbstractFixedHeightDirectlyAboveTreeTablePanel;
+import org.miradi.dialogs.planning.treenodes.NewPlanningRootNode;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
@@ -51,9 +52,10 @@ public class WorkPlanTreeTablePanel extends PlanningTreeTablePanel
 
 	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse) throws Exception
 	{
-		PlanningTreeTableModel model = new WorkPlanTreeTableModel(mainWindowToUse.getProject());
-		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse, model);
 		WorkPlanRowColumnProvider rowColumnProvider = new WorkPlanRowColumnProvider(mainWindowToUse.getProject());
+		NewPlanningRootNode rootNode = new NewPlanningRootNode(mainWindowToUse.getProject());
+		PlanningTreeTableModel model = new WorkPlanTreeTableModel(mainWindowToUse.getProject(), rootNode, rowColumnProvider);
+		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse, model);
 		AbstractFixedHeightDirectlyAboveTreeTablePanel filterStatusPanel = new AbstractFixedHeightDirectlyAboveTreeTablePanel();
 
 		return new WorkPlanTreeTablePanel(mainWindowToUse, treeTable, model, getButtonActions(), rowColumnProvider, filterStatusPanel);
