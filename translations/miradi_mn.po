@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-04 10:42-0600\n"
+"POT-Creation-Date: 2011-02-04 11:26-0600\n"
 "PO-Revision-Date: 2010-06-07 17:23-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -67,7 +67,7 @@ msgid ""
 "Please seek technical help from the Miradi team."
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardLinkDirectThreatsToTargetsStep.java:48
+#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardLinkDirectThreatsToTargetsStep.java:51
 msgid " 2) Connect threat to relevant targets"
 msgstr ""
 
@@ -309,7 +309,7 @@ msgstr ""
 msgid "(See Project tab)"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AboutDoer.java:71
+#: Miradi/source/org/miradi/views/umbrella/AboutDoer.java:73
 msgid "(Translation: %code %date)"
 msgstr ""
 
@@ -362,36 +362,36 @@ msgstr ""
 msgid "1"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/planning/WorkPlanDevelopActivitiesAndTasksStep.java:48
+#: Miradi/source/org/miradi/wizard/planning/WorkPlanDevelopActivitiesAndTasksStep.java:49
 msgid "1) Activities"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/targetviability/TargetViabilityDetermineKeyAttributesStep.java:47
+#: Miradi/source/org/miradi/wizard/targetviability/TargetViabilityDetermineKeyAttributesStep.java:50
 msgid "1) Determine key ecological attributes"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardDefineTargetsStep.java:48
+#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardDefineTargetsStep.java:51
 msgid "1) Identify initial list of targets"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardIdentifyDirectThreatStep.java:48
+#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardIdentifyDirectThreatStep.java:51
 msgid "1) Insert direct threat"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/planning/BudgetWizardAccountingAndFunding.java:47
+#: Miradi/source/org/miradi/wizard/planning/BudgetWizardAccountingAndFunding.java:50
 msgid "1) List accounting codes and funding sources"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/diagram/SelectChainStep.java:47
+#: Miradi/source/org/miradi/wizard/diagram/SelectChainStep.java:50
 msgid "1) Select factor chain"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardResultsChainSelectStrategyStep.java:47
+#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardResultsChainSelectStrategyStep.java:50
 msgid "1) Select strategy to focus on "
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatRatingWizardChooseBundle.java:51
-#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatStressOverviewStep.java:47
+#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatRatingWizardChooseBundle.java:54
+#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatStressOverviewStep.java:50
 msgid "1) Select target and threat to work on"
 msgstr ""
 
@@ -399,35 +399,35 @@ msgstr ""
 msgid "2"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/planning/BudgetWizardBudgetDetail.java:47
+#: Miradi/source/org/miradi/wizard/planning/BudgetWizardBudgetDetail.java:50
 msgid "2) Add budget detail to workplan "
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardConstructInitialResultsChain.java:47
+#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardConstructInitialResultsChain.java:50
 msgid "2) Construct initial results chain "
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/diagram/DevelopDraftStrategiesStep.java:47
+#: Miradi/source/org/miradi/wizard/diagram/DevelopDraftStrategiesStep.java:50
 msgid "2) Develop draft strategies"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/targetviability/TargetViabilityIdentifyIndicatorsStep.java:47
+#: Miradi/source/org/miradi/wizard/targetviability/TargetViabilityIdentifyIndicatorsStep.java:50
 msgid "2) Identify indicators"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/planning/WorkPlanDevelopMethodsAndTasksStep.java:47
+#: Miradi/source/org/miradi/wizard/planning/WorkPlanDevelopMethodsAndTasksStep.java:49
 msgid "2) Methods"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatStressRateScopeAndSeverityStep.java:48
+#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatStressRateScopeAndSeverityStep.java:51
 msgid "2) Rate scope and severity of stress"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatRatingWizardScopeStep.java:52
+#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatRatingWizardScopeStep.java:55
 msgid "2) Rate the scope of the threat "
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardReviewAndModifyTargetsStep.java:48
+#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardReviewAndModifyTargetsStep.java:51
 msgid "2) Review and modify targets"
 msgstr ""
 
@@ -435,31 +435,31 @@ msgstr ""
 msgid "3"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardCompleteResultsChainLinks.java:47
+#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardCompleteResultsChainLinks.java:50
 msgid "3) Complete links in the chain "
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/planning/WorkPlanCreateResourcesStep.java:47
+#: Miradi/source/org/miradi/wizard/planning/WorkPlanCreateResourcesStep.java:49
 msgid "3) Edit resources"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatStressRateContributionAndIrreversibilityStep.java:48
+#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatStressRateContributionAndIrreversibilityStep.java:51
 msgid "3) Rate contribution and irreversibility of threat"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatRatingWizardSeverityStep.java:52
+#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatRatingWizardSeverityStep.java:55
 msgid "3) Rate the severity of the threat"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/planning/BudgetWizardReconcileActualExpendituresStep.java:48
+#: Miradi/source/org/miradi/wizard/planning/BudgetWizardReconcileActualExpendituresStep.java:51
 msgid "3) Reconcile actual expenditures"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/targetviability/TargetViabilityDevelopDraftIndicatorsStep.java:47
+#: Miradi/source/org/miradi/wizard/targetviability/TargetViabilityDevelopDraftIndicatorsStep.java:50
 msgid "3a) Develop draft indicator ratings"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/targetviability/TargetViabilityRefineIndicatorRatingsStep.java:47
+#: Miradi/source/org/miradi/wizard/targetviability/TargetViabilityRefineIndicatorRatingsStep.java:50
 msgid "3b) Refine indicator ratings"
 msgstr ""
 
@@ -467,19 +467,19 @@ msgstr ""
 msgid "4) Assign resources"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatStressCheckThreatRatingStep.java:47
+#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatStressCheckThreatRatingStep.java:50
 msgid "4) Check target-threat rating"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatRatingWizardIrreversibilityStep.java:52
+#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatRatingWizardIrreversibilityStep.java:55
 msgid "4) Rate the irreversibility of the threat"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/targetviability/TargetViabilityRecordInitialMeasurementStep.java:47
+#: Miradi/source/org/miradi/wizard/targetviability/TargetViabilityRecordInitialMeasurementStep.java:50
 msgid "4) Record initial measurement"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardGoodResultsChainCriteriaReview.java:47
+#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardGoodResultsChainCriteriaReview.java:50
 msgid "4) Review the criteria for a good results chain"
 msgstr ""
 
@@ -487,11 +487,11 @@ msgstr ""
 msgid "4C. Refine Work Plans on Ongoing Basis"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatRatingWizardCheckBundleStep.java:48
+#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatRatingWizardCheckBundleStep.java:51
 msgid "5) Check target-threat rating"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/targetviability/TargetViabilityDetermineDesiredStatusStep.java:47
+#: Miradi/source/org/miradi/wizard/targetviability/TargetViabilityDetermineDesiredStatusStep.java:50
 msgid "5) Determine desired status"
 msgstr ""
 
@@ -547,7 +547,7 @@ msgid ""
 "and verify that the ecoregion(s) are correct for this project.</HTML>"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:55
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:56
 msgid ""
 "<HTML>When pasting between projects, can't paste from CM to RC or vice "
 "versa</HTML>"
@@ -578,7 +578,7 @@ msgid ""
 "Miradi Exchange File (.cpmz)'></input></td></tr></table></p><br>"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:75
+#: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:76
 msgid ""
 "<div class='WizardText'><p><table><tr><td><input type='submit' name='Back' "
 "value='&lt; Previous'></input></td><td><input type='submit' name='Next' "
@@ -895,7 +895,7 @@ msgid ""
 "the degree of reduction of the target population within the scope."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AboutDoer.java:58
+#: Miradi/source/org/miradi/views/umbrella/AboutDoer.java:60
 msgid "<strong>Version: %s</strong>"
 msgstr ""
 
@@ -967,7 +967,7 @@ msgstr ""
 msgid "Action|< Previous"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:55
+#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:56
 #: Miradi/source/org/miradi/actions/ActionAboutBenetech.java:35
 msgid "Action|About Benetech"
 msgstr ""
@@ -976,17 +976,17 @@ msgstr ""
 msgid "Action|About Miradi"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:57
+#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:58
 #: Miradi/source/org/miradi/actions/ActionAboutCMP.java:34
 msgid "Action|About the CMP"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:63
+#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:64
 #: Miradi/source/org/miradi/actions/ActionHelpAdaptiveManagement.java:34
 msgid "Action|Adaptive Management"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:59
+#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:60
 #: Miradi/source/org/miradi/actions/ActionHelpAgileSoftware.java:34
 msgid "Action|Agile Software"
 msgstr ""
@@ -1003,7 +1003,7 @@ msgstr ""
 msgid "Action|Brainstorm Mode"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:61
+#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:62
 #: Miradi/source/org/miradi/actions/ActionHelpCMPStandards.java:34
 msgid "Action|CMP Open Standards"
 msgstr ""
@@ -1032,7 +1032,7 @@ msgstr ""
 msgid "Action|Collapse All Rows"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:51
+#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:52
 #: Miradi/source/org/miradi/actions/ActionHelpComingAttractions.java:34
 msgid "Action|Coming Attractions"
 msgstr ""
@@ -1110,7 +1110,7 @@ msgstr ""
 msgid "Action|Create Stress from KEA"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:53
+#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:54
 #: Miradi/source/org/miradi/actions/ActionHelpCredits.java:34
 msgid "Action|Credits"
 msgstr ""
@@ -1199,7 +1199,7 @@ msgstr ""
 msgid "Action|Edit..."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:47
+#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:48
 #: Miradi/source/org/miradi/actions/ActionHelpButtonExamples.java:34
 msgid "Action|Examples"
 msgstr ""
@@ -1508,7 +1508,7 @@ msgstr ""
 msgid "Action|Monitoring Plan"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:45
+#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:46
 #: Miradi/source/org/miradi/actions/ActionHelpButtonMoreInfo.java:34
 msgid "Action|More Info"
 msgstr ""
@@ -1687,7 +1687,7 @@ msgstr ""
 msgid "Action|Summary"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:65
+#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:66
 #: Miradi/source/org/miradi/actions/ActionHelpButtonSupport.java:34
 msgid "Action|Support"
 msgstr ""
@@ -1792,7 +1792,7 @@ msgstr ""
 msgid "Action|Work Plan"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:49
+#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:50
 #: Miradi/source/org/miradi/actions/ActionHelpButtonWorkshop.java:34
 msgid "Action|Workshop"
 msgstr ""
@@ -1960,32 +1960,32 @@ msgstr ""
 msgid "April to March"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/DeleteGoal.java:30
+#: Miradi/source/org/miradi/views/diagram/DeleteGoal.java:31
 msgid "Are you sure you want to delete this Goal?"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/DeleteIndicator.java:41
+#: Miradi/source/org/miradi/views/diagram/DeleteIndicator.java:43
 msgid "Are you sure you want to delete this Indicator?"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/DeleteKeyEcologicalAttributeDoer.java:44
+#: Miradi/source/org/miradi/views/diagram/DeleteKeyEcologicalAttributeDoer.java:46
 msgid "Are you sure you want to delete this Key Ecological Attribute?"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/DeleteSubTargetDoer.java:46
+#: Miradi/source/org/miradi/views/diagram/DeleteSubTargetDoer.java:50
 msgid "Are you sure you want to delete this Nested Target?"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/DeleteObjective.java:30
+#: Miradi/source/org/miradi/views/diagram/DeleteObjective.java:31
 msgid "Are you sure you want to delete this Objective?"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/doers/DeleteProgressPercentDoer.java:48
+#: Miradi/source/org/miradi/views/umbrella/doers/DeleteProgressPercentDoer.java:51
 msgid "Are you sure you want to delete this Progress Percent?"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/doers/DeleteProgressReportDoer.java:50
-#: Miradi/source/org/miradi/views/diagram/doers/DeleteStrategyProgressReportDoer.java:47
+#: Miradi/source/org/miradi/views/diagram/doers/DeleteStrategyProgressReportDoer.java:51
 msgid "Are you sure you want to delete this Progress Report?"
 msgstr ""
 
@@ -2150,7 +2150,7 @@ msgstr ""
 msgid "Assigned Resources Only"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/assignment/AssignmentsPropertiesPanel.java:73
+#: Miradi/source/org/miradi/dialogs/assignment/AssignmentsPropertiesPanel.java:75
 msgid "Assignments"
 msgstr ""
 
@@ -2273,14 +2273,14 @@ msgstr ""
 
 #: Miradi/source/org/miradi/database/DataUpgrader.java:48
 #: Miradi/source/org/miradi/database/DataUpgrader.java:60
-#: Miradi/source/org/miradi/views/diagram/doers/AbstractPasteDoer.java:71
+#: Miradi/source/org/miradi/views/diagram/doers/AbstractPasteDoer.java:72
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:52
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:225
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/DirectoryChooserDialog.java:76
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:127
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:166
 #: Miradi/source/org/miradi/dialogs/confirm/ConfirmDialogTemplate.java:51
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:239
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:241
 msgid "Button|Cancel"
 msgstr ""
 
@@ -2326,7 +2326,7 @@ msgstr ""
 msgid "Button|No"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:236
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:238
 msgid "Button|OK"
 msgstr ""
 
@@ -2334,7 +2334,7 @@ msgstr ""
 msgid "Button|Ok"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:171
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:172
 msgid "Button|Paste As Copies"
 msgstr ""
 
@@ -2342,7 +2342,7 @@ msgstr ""
 msgid "Button|Paste Contents"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:172
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:173
 msgid "Button|Paste Shared"
 msgstr ""
 
@@ -2382,7 +2382,7 @@ msgstr ""
 msgid "CMP"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/schedule/ScheduleView.java:62
+#: Miradi/source/org/miradi/views/schedule/ScheduleView.java:65
 msgid "Calendar"
 msgstr ""
 
@@ -2504,7 +2504,7 @@ msgstr ""
 msgid "Choose Folder"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/CloneGoalDoer.java:32
+#: Miradi/source/org/miradi/views/diagram/CloneGoalDoer.java:33
 msgid "Choose Goal to Create from"
 msgstr ""
 
@@ -2525,7 +2525,7 @@ msgstr ""
 msgid "Choose Relevant Goal(s)"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractRelevancyEditListDoer.java:51
+#: Miradi/source/org/miradi/views/umbrella/AbstractRelevancyEditListDoer.java:53
 msgid "Choose Relevant Indicator(s)"
 msgstr ""
 
@@ -2534,7 +2534,7 @@ msgstr ""
 msgid "Choose Relevant Objective(s)"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/doers/CloneStressDoer.java:32
+#: Miradi/source/org/miradi/views/diagram/doers/CloneStressDoer.java:33
 msgid "Choose Stress to Create from"
 msgstr ""
 
@@ -2589,7 +2589,7 @@ msgstr ""
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:107
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:70
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:46
-#: Miradi/source/org/miradi/dialogs/diagram/ConceptualModelDiagramPanel.java:67
+#: Miradi/source/org/miradi/dialogs/diagram/ConceptualModelDiagramPanel.java:69
 msgid "Conceptual Model"
 msgstr ""
 
@@ -2658,7 +2658,7 @@ msgstr ""
 msgid "Copy"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:93
+#: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:95
 msgid "Copy to..."
 msgstr ""
 
@@ -2680,7 +2680,7 @@ msgstr ""
 msgid "Create"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:153
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:155
 msgid "Create Failed:"
 msgstr ""
 
@@ -2859,7 +2859,7 @@ msgstr ""
 #: Miradi/source/org/miradi/views/noproject/DeleteProject.java:45
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:61
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:52
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:54
 #: Miradi/source/org/miradi/main/EAM.java:447
 #: Miradi/source/org/miradi/main/EAM.java:448
 msgid "Delete"
@@ -2874,7 +2874,7 @@ msgid "Delete Resource"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:45
-#: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:96
+#: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:98
 msgid "Delete..."
 msgstr ""
 
@@ -2930,10 +2930,10 @@ msgstr ""
 msgid "Detail activities, tasks, and responsibilities"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/planning/WorkPlanCreateResourcesStep.java:42
+#: Miradi/source/org/miradi/wizard/planning/WorkPlanCreateResourcesStep.java:43
 #: Miradi/source/org/miradi/wizard/planning/WorkPlanAssignResourcesStep.java:43
-#: Miradi/source/org/miradi/wizard/planning/WorkPlanDevelopActivitiesAndTasksStep.java:42
-#: Miradi/source/org/miradi/wizard/planning/WorkPlanDevelopMethodsAndTasksStep.java:42
+#: Miradi/source/org/miradi/wizard/planning/WorkPlanDevelopActivitiesAndTasksStep.java:43
+#: Miradi/source/org/miradi/wizard/planning/WorkPlanDevelopMethodsAndTasksStep.java:43
 msgid "Detail activities/methods, tasks, and responsibilities"
 msgstr ""
 
@@ -3171,7 +3171,7 @@ msgstr ""
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:79
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetThreatLinkTableModel.java:76
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetSummaryRowTableModel.java:66
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorTreeModel.java:72
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorTreeModel.java:73
 #: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:112
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:103
 msgid "Error"
@@ -3198,7 +3198,7 @@ msgstr ""
 msgid "Error Retrieving Data"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListSaveAsAction.java:40
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListSaveAsAction.java:42
 msgid "Error copying project: "
 msgstr ""
 
@@ -3206,11 +3206,11 @@ msgstr ""
 msgid "Error creating folder: "
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:47
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:49
 msgid "Error deleting project: "
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/RedoDoer.java:53
+#: Miradi/source/org/miradi/views/umbrella/RedoDoer.java:55
 msgid "Error during redo"
 msgstr ""
 
@@ -3218,7 +3218,7 @@ msgstr ""
 msgid "Error during undo"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListExportAction.java:40
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListExportAction.java:42
 msgid "Error exporting project: "
 msgstr ""
 
@@ -3247,7 +3247,7 @@ msgstr ""
 msgid "Error occurred while trying to export to a tab delimited file."
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListOpenAction.java:39
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListOpenAction.java:41
 msgid "Error opening project: "
 msgstr ""
 
@@ -3255,7 +3255,7 @@ msgstr ""
 msgid "Error reading %s. Perhaps it is not a valid zip file."
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListRenameAction.java:46
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListRenameAction.java:48
 msgid "Error renaming project: "
 msgstr ""
 
@@ -3296,11 +3296,11 @@ msgstr ""
 msgid "Export complete"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:94
+#: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:96
 msgid "Export to Miradi Zip..."
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListExportAction.java:45
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListExportAction.java:47
 msgid "Export..."
 msgstr ""
 
@@ -3590,7 +3590,7 @@ msgstr ""
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:31
 #: Miradi/source/org/miradi/forms/objects/GoalPropertiesForm.java:31
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:78
-#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:166
+#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:167
 #: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:41
 #: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:44
 msgid "Goal"
@@ -3603,11 +3603,11 @@ msgid ""
 "Miradi, a goal is represented by a small blue oval."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/RelevancyGoalPanel.java:40
+#: Miradi/source/org/miradi/dialogs/base/RelevancyGoalPanel.java:41
 msgid "Goal Relevancy Panel"
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:168
+#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:169
 #: Miradi/source/org/miradi/dialogs/task/ActivityDetailsPanelWithRelevancyOverrideFields.java:45
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:90
 msgid "Goals"
@@ -3669,7 +3669,7 @@ msgstr ""
 msgid "Group Box"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/GroupBoxPropertiesPanel.java:53
+#: Miradi/source/org/miradi/dialogs/diagram/GroupBoxPropertiesPanel.java:54
 msgid "Group Box Properties"
 msgstr ""
 
@@ -3804,11 +3804,11 @@ msgstr ""
 msgid "Import"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/planning/doers/ImportAccountingCodesDoer.java:57
+#: Miradi/source/org/miradi/views/planning/doers/ImportAccountingCodesDoer.java:59
 msgid "Import Accounting Codes"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/planning/doers/ImportAccountingCodesDoer.java:71
+#: Miradi/source/org/miradi/views/planning/doers/ImportAccountingCodesDoer.java:73
 msgid "Import Completed"
 msgstr ""
 
@@ -3840,7 +3840,7 @@ msgstr ""
 msgid "In Progress"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:256
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:258
 msgid "Incomplete Link"
 msgstr ""
 
@@ -3848,7 +3848,7 @@ msgstr ""
 #: Miradi/source/org/miradi/forms/objects/IndicatorSubForm.java:32
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:80
 #: Miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:38
-#: Miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:49
+#: Miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:50
 msgid "Indicator"
 msgstr ""
 
@@ -3865,7 +3865,7 @@ msgstr ""
 msgid "Indicator Holder"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/RelevancyIndicatorPanel.java:41
+#: Miradi/source/org/miradi/dialogs/diagram/RelevancyIndicatorPanel.java:42
 msgid "Indicator Relevancy Panel"
 msgstr ""
 
@@ -3911,7 +3911,7 @@ msgstr ""
 msgid "Insert FTE Fraction"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:225
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:227
 msgid "Insert Factor Link dialog|No Label Specified"
 msgstr ""
 
@@ -3968,7 +3968,7 @@ msgstr ""
 msgid "Introduced Vegetation"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/diagram/TargetViabilityMethodChoiceStep.java:47
+#: Miradi/source/org/miradi/wizard/diagram/TargetViabilityMethodChoiceStep.java:50
 msgid "Introduction"
 msgstr ""
 
@@ -4079,11 +4079,11 @@ msgstr ""
 msgid "Label|Budget Category Two"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/RareCampaignSummarySubPanel.java:68
+#: Miradi/source/org/miradi/views/summary/RareCampaignSummarySubPanel.java:69
 msgid "Label|Campaign"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/RareCampaignPlanningSummarySubPanel.java:55
+#: Miradi/source/org/miradi/views/summary/RareCampaignPlanningSummarySubPanel.java:56
 msgid "Label|Campaign Planning"
 msgstr ""
 
@@ -4100,7 +4100,7 @@ msgstr ""
 msgid "Label|Existing Projects:"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/FOSSummaryPanel.java:55
+#: Miradi/source/org/miradi/views/summary/FOSSummaryPanel.java:56
 msgid "Label|FOS"
 msgstr ""
 
@@ -4123,24 +4123,24 @@ msgstr ""
 msgid "Label|Methods"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/InsertDraftStrategyDoer.java:60
+#: Miradi/source/org/miradi/views/diagram/InsertDraftStrategyDoer.java:63
 msgid "Label|New Draft Strategy"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/InsertDirectThreatDoer.java:50
-#: Miradi/source/org/miradi/views/diagram/InsertContributingFactorDoer.java:43
+#: Miradi/source/org/miradi/views/diagram/InsertContributingFactorDoer.java:46
 msgid "Label|New Factor"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/doers/InsertGroupBoxDoer.java:140
+#: Miradi/source/org/miradi/views/diagram/doers/InsertGroupBoxDoer.java:144
 msgid "Label|New Group Box"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/doers/InsertHumanWelfareTargetDoer.java:36
+#: Miradi/source/org/miradi/views/diagram/doers/InsertHumanWelfareTargetDoer.java:38
 msgid "Label|New Human Welfare Target"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/InsertIntermediateResultDoer.java:44
+#: Miradi/source/org/miradi/views/diagram/InsertIntermediateResultDoer.java:47
 msgid "Label|New Intermediate Result"
 msgstr ""
 
@@ -4148,19 +4148,19 @@ msgstr ""
 msgid "Label|New Scope Box"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/InsertStrategyDoer.java:43
+#: Miradi/source/org/miradi/views/diagram/InsertStrategyDoer.java:46
 msgid "Label|New Strategy"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/InsertTargetDoer.java:35
+#: Miradi/source/org/miradi/views/diagram/InsertTargetDoer.java:37
 msgid "Label|New Target"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/InsertTextBoxDoer.java:46
+#: Miradi/source/org/miradi/views/diagram/InsertTextBoxDoer.java:49
 msgid "Label|New Text Box"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/InsertThreatReductionResultDoer.java:43
+#: Miradi/source/org/miradi/views/diagram/InsertThreatReductionResultDoer.java:46
 msgid "Label|New Threat Reduction Result"
 msgstr ""
 
@@ -4194,7 +4194,7 @@ msgstr ""
 msgid "Label|RARE"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/RareTrackingSummarySubPanel.java:51
+#: Miradi/source/org/miradi/views/summary/RareTrackingSummarySubPanel.java:52
 msgid "Label|Rare Tracking"
 msgstr ""
 
@@ -4212,11 +4212,11 @@ msgstr ""
 msgid "Label|Team Member"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/WCSSummaryPanel.java:62
+#: Miradi/source/org/miradi/views/summary/WCSSummaryPanel.java:63
 msgid "Label|WCS"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/WWFSummaryPanel.java:71
+#: Miradi/source/org/miradi/views/summary/WWFSummaryPanel.java:72
 msgid "Label|WWF"
 msgstr ""
 
@@ -4244,7 +4244,7 @@ msgstr ""
 msgid "Last Modified"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/LayerPanel.java:63
+#: Miradi/source/org/miradi/views/diagram/LayerPanel.java:65
 msgid "Layers"
 msgstr ""
 
@@ -4315,7 +4315,7 @@ msgstr ""
 msgid "Lists"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryLocationPanel.java:63
+#: Miradi/source/org/miradi/views/summary/SummaryLocationPanel.java:64
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:38
 msgid "Location"
 msgstr ""
@@ -4753,7 +4753,7 @@ msgstr ""
 msgid "Move To..."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:225
+#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:226
 msgid "Must be a positive number"
 msgstr ""
 
@@ -4873,7 +4873,7 @@ msgstr ""
 msgid "Nov"
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:153
+#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:154
 msgid "Obj"
 msgstr ""
 
@@ -4918,7 +4918,7 @@ msgstr ""
 msgid "Objectives:"
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:155
+#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:156
 msgid "Objs"
 msgstr ""
 
@@ -4965,8 +4965,8 @@ msgstr ""
 msgid "Onsite Research"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListOpenAction.java:44
-#: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:90
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListOpenAction.java:46
+#: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:92
 msgid "Open"
 msgstr ""
 
@@ -5009,7 +5009,7 @@ msgstr ""
 msgid "Other Notable Species"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/summary/SummaryWizardRolesAndResponsibilities.java:48
+#: Miradi/source/org/miradi/wizard/summary/SummaryWizardRolesAndResponsibilities.java:50
 msgid "Other Orgs"
 msgstr ""
 
@@ -5048,7 +5048,7 @@ msgstr ""
 msgid "Pink"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardProjectScopeStep.java:47
+#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardProjectScopeStep.java:49
 #: Miradi/source/org/miradi/actions/jump/ActionJumpDiagramWizardProjectScopeStep.java:35
 msgid "Place scope on diagram"
 msgstr ""
@@ -5069,7 +5069,7 @@ msgstr ""
 msgid "Plan project lifespan and exit strategy"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningPanel.java:61
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningPanel.java:62
 #: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:116
 msgid "Planning"
 msgstr ""
@@ -5078,15 +5078,15 @@ msgstr ""
 msgid "Planning Parameters"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/indicator/SimpleViabilityMultiPropertiesPanel.java:61
+#: Miradi/source/org/miradi/dialogs/indicator/SimpleViabilityMultiPropertiesPanel.java:62
 msgid "Planning Properties Panel"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewCustomLabelPropertiesPanel.java:39
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewCustomLabelPropertiesPanel.java:40
 msgid "Planning View Configuration Label Properties"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/planning/doers/AbstractCreatePlanningViewConfigurationDoer.java:98
+#: Miradi/source/org/miradi/views/planning/doers/AbstractCreatePlanningViewConfigurationDoer.java:100
 msgid "PlanningSubViewName|Custom"
 msgstr ""
 
@@ -5110,7 +5110,7 @@ msgid ""
 "Create from Existing  button"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/ShareSelectionDialog.java:41
+#: Miradi/source/org/miradi/dialogs/diagram/ShareSelectionDialog.java:43
 msgid ""
 "Please select which item should be shared to this factor, then press the "
 "Share button"
@@ -5238,7 +5238,7 @@ msgstr ""
 msgid "Progress Reports"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:95
+#: Miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:96
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:240
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:104
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:69
@@ -5327,7 +5327,7 @@ msgstr ""
 msgid "Project was migrated to the current data format"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/expense/ExpensesPropertiesPanel.java:72
+#: Miradi/source/org/miradi/dialogs/expense/ExpensesPropertiesPanel.java:74
 msgid "Projected Expenses"
 msgstr ""
 
@@ -5402,7 +5402,7 @@ msgstr ""
 msgid "Relevant Strategies and Activities"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:141
+#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:144
 msgid "Remove Team Member"
 msgstr ""
 
@@ -5410,8 +5410,8 @@ msgstr ""
 msgid "Rename Failed"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListRenameAction.java:51
-#: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:92
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListRenameAction.java:53
+#: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:94
 msgid "Rename..."
 msgstr ""
 
@@ -5462,7 +5462,7 @@ msgid "Results Chain Properties"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:47
-#: Miradi/source/org/miradi/dialogs/diagram/ResultsChainDiagramPanel.java:49
+#: Miradi/source/org/miradi/dialogs/diagram/ResultsChainDiagramPanel.java:50
 msgid "Results Chains"
 msgstr ""
 
@@ -5475,7 +5475,7 @@ msgstr ""
 msgid "Review and modify targets"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatRatingWizardCheckTotalsStep.java:49
+#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatRatingWizardCheckTotalsStep.java:52
 msgid "Review threat rating summary"
 msgstr ""
 
@@ -5540,7 +5540,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/noproject/CopyProject.java:52
 #: Miradi/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:48
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListSaveAsAction.java:45
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListSaveAsAction.java:47
 msgid "Save As..."
 msgstr ""
 
@@ -5552,7 +5552,7 @@ msgstr ""
 msgid "Scheduled for future implementation"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryScopeTabPanel.java:72
+#: Miradi/source/org/miradi/views/summary/SummaryScopeTabPanel.java:73
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:113
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:37
 #: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:103
@@ -5674,7 +5674,7 @@ msgid ""
 "of the target population within the scope."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/ShareSelectionDialog.java:36
+#: Miradi/source/org/miradi/dialogs/diagram/ShareSelectionDialog.java:37
 msgid "Share"
 msgstr ""
 
@@ -5754,7 +5754,7 @@ msgstr ""
 msgid "Simple"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatSimpleOverviewStep.java:47
+#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatSimpleOverviewStep.java:50
 msgid "Simple Threat Rating"
 msgstr ""
 
@@ -5762,7 +5762,7 @@ msgstr ""
 msgid "Simple Threat Rating Mode"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/diagram/DescribeTargetStatusStep.java:47
+#: Miradi/source/org/miradi/wizard/diagram/DescribeTargetStatusStep.java:50
 msgid "Simple viability"
 msgstr ""
 
@@ -5778,7 +5778,7 @@ msgstr ""
 msgid "Smallest"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:122
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:123
 msgid ""
 "Some of the data could not be moved to this project because it refers to "
 "other data that only exists in the old project"
@@ -6195,7 +6195,7 @@ msgstr ""
 msgid "TT|Create a new Progress Percent"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/ActionCreateProgressReport.java:41
+#: Miradi/source/org/miradi/views/umbrella/ActionCreateProgressReport.java:42
 #: Miradi/source/org/miradi/actions/ActionCreateTaskProgressReport.java:41
 #: Miradi/source/org/miradi/actions/ActionCreateStrategyProgressReport.java:41
 msgid "TT|Create a new Progress Report"
@@ -6416,7 +6416,7 @@ msgstr ""
 msgid "TT|Delete the selection"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/views/ActionViewWorkPlan.java:41
+#: Miradi/source/org/miradi/actions/views/ActionViewWorkPlan.java:42
 msgid "TT|Develop a work plan and budget"
 msgstr ""
 
@@ -6705,55 +6705,55 @@ msgstr ""
 msgid "TT|Switch to a different view"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/views/ActionViewDiagram.java:41
+#: Miradi/source/org/miradi/actions/views/ActionViewDiagram.java:42
 msgid "TT|Switch to the Conceptual Model Diagram"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/views/ActionViewBudget.java:40
+#: Miradi/source/org/miradi/actions/views/ActionViewBudget.java:41
 msgid "TT|Switch to the Financial View"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/views/ActionViewImages.java:40
+#: Miradi/source/org/miradi/actions/views/ActionViewImages.java:41
 msgid "TT|Switch to the Library View"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/views/ActionViewMap.java:40
+#: Miradi/source/org/miradi/actions/views/ActionViewMap.java:41
 msgid "TT|Switch to the Map View"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/views/ActionViewMonitoring.java:40
+#: Miradi/source/org/miradi/actions/views/ActionViewMonitoring.java:41
 msgid "TT|Switch to the Monitoring Plan View"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/views/ActionViewOperationalPlan.java:41
+#: Miradi/source/org/miradi/actions/views/ActionViewOperationalPlan.java:42
 msgid "TT|Switch to the Operational Plan View"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/views/ActionViewReports.java:41
+#: Miradi/source/org/miradi/actions/views/ActionViewReports.java:42
 msgid "TT|Switch to the Reports View"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/views/ActionViewSchedule.java:40
+#: Miradi/source/org/miradi/actions/views/ActionViewSchedule.java:41
 msgid "TT|Switch to the Schedule"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/views/ActionViewStrategicPlan.java:40
+#: Miradi/source/org/miradi/actions/views/ActionViewStrategicPlan.java:41
 msgid "TT|Switch to the Strategic Plan View"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/views/ActionViewPlanning.java:41
+#: Miradi/source/org/miradi/actions/views/ActionViewPlanning.java:42
 msgid "TT|Switch to the Strategic Planning View"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/views/ActionViewSummary.java:41
+#: Miradi/source/org/miradi/actions/views/ActionViewSummary.java:42
 msgid "TT|Switch to the Summary View"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/views/ActionViewTargetViability.java:41
+#: Miradi/source/org/miradi/actions/views/ActionViewTargetViability.java:42
 msgid "TT|Switch to the Target Viability View"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/views/ActionViewThreatMatrix.java:41
+#: Miradi/source/org/miradi/actions/views/ActionViewThreatMatrix.java:42
 msgid "TT|Switch to the Threat Rating View"
 msgstr ""
 
@@ -6796,7 +6796,7 @@ msgstr ""
 msgid "Tab|Action Plan"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/activity/ActivityListManagementPanel.java:66
+#: Miradi/source/org/miradi/dialogs/activity/ActivityListManagementPanel.java:70
 msgid "Tab|Activities"
 msgstr ""
 
@@ -6804,7 +6804,7 @@ msgstr ""
 msgid "Tab|Custom"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/goal/GoalListManagementPanel.java:59
+#: Miradi/source/org/miradi/dialogs/goal/GoalListManagementPanel.java:63
 msgid "Tab|Goals"
 msgstr ""
 
@@ -6821,7 +6821,7 @@ msgstr ""
 msgid "Tab|Monitoring Plan"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/subTarget/SubTargetManagementPanel.java:57
+#: Miradi/source/org/miradi/dialogs/subTarget/SubTargetManagementPanel.java:59
 msgid "Tab|Nested Targets"
 msgstr ""
 
@@ -6839,7 +6839,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/viability/TargetPropertiesKeaViabilityTreeManagementPanel.java:51
 #: Miradi/source/org/miradi/dialogs/viability/ViabilityViewTreeManagementPanel.java:43
-#: Miradi/source/org/miradi/dialogs/indicator/SimpleViabilityManagementPanel.java:37
+#: Miradi/source/org/miradi/dialogs/indicator/SimpleViabilityManagementPanel.java:38
 msgid "Tab|Viability"
 msgstr ""
 
@@ -6945,7 +6945,7 @@ msgstr ""
 msgid "Task does not have a parent"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/schedule/ScheduleView.java:63
+#: Miradi/source/org/miradi/views/schedule/ScheduleView.java:66
 msgid "Tasks"
 msgstr ""
 
@@ -6969,15 +6969,15 @@ msgstr ""
 msgid "Text Box"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/TextBoxPropertiesPanel.java:57
+#: Miradi/source/org/miradi/dialogs/diagram/TextBoxPropertiesPanel.java:58
 msgid "Text Box Properties"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:152
+#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:154
 msgid "Text|Dates must be in YYYY-MM-DD format"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:164
+#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:166
 msgid "Text|Unknown error prevented saving this data"
 msgstr ""
 
@@ -7109,7 +7109,7 @@ msgid ""
 "be saved first in case anything goes wrong. Perform the automatic migration?"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:170
+#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:172
 msgid ""
 "This value must be numeric<br><br>Currency symbols and percent signs are not "
 "allowed"
@@ -7145,7 +7145,7 @@ msgstr ""
 msgid "Threat Rating Details"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/threatrating/ThreatRatingPreferencesPanel.java:40
+#: Miradi/source/org/miradi/dialogs/threatrating/ThreatRatingPreferencesPanel.java:41
 msgid "Threat Rating Preferences Panel"
 msgstr ""
 
@@ -7246,7 +7246,7 @@ msgstr ""
 msgid "Title|Diagram Panel"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:48
+#: Miradi/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:49
 msgid "Title|Diagram Properties"
 msgstr ""
 
@@ -7300,11 +7300,11 @@ msgstr ""
 msgid "Title|Intermediate Result Properties"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:52
+#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:53
 msgid "Title|Key Ecological Attribute Properties"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/LegacyTncStrategyRankingEditorPropertiesSubPanel.java:91
+#: Miradi/source/org/miradi/dialogs/diagram/LegacyTncStrategyRankingEditorPropertiesSubPanel.java:92
 msgid "Title|Legacy TNC Strategy Editor Ranking Properties"
 msgstr ""
 
@@ -7320,7 +7320,7 @@ msgstr ""
 msgid "Title|Method Properties"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/subTarget/SubTargetPropertiesPanel.java:47
+#: Miradi/source/org/miradi/dialogs/subTarget/SubTargetPropertiesPanel.java:48
 msgid "Title|Nested Target Properties"
 msgstr ""
 
@@ -7332,7 +7332,7 @@ msgstr ""
 msgid "Title|Open Standards Status"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/organization/OrganizationPropertiesPanel.java:56
+#: Miradi/source/org/miradi/dialogs/organization/OrganizationPropertiesPanel.java:57
 msgid "Title|Organization Properties"
 msgstr ""
 
@@ -7340,7 +7340,7 @@ msgstr ""
 msgid "Title|Other Notable Species"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/organization/OrganizationManagementPanel.java:49
+#: Miradi/source/org/miradi/dialogs/organization/OrganizationManagementPanel.java:50
 msgid "Title|Other Orgs"
 msgstr ""
 
@@ -7353,7 +7353,7 @@ msgstr ""
 msgid "Title|Progress Percent"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/progressReport/ProgressReportSubPanel.java:60
+#: Miradi/source/org/miradi/dialogs/progressReport/ProgressReportSubPanel.java:61
 msgid "Title|Progress Report"
 msgstr ""
 
@@ -7361,15 +7361,15 @@ msgstr ""
 msgid "Title|Project Filename"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/reportTemplate/ReportTemplatePropertiesPanel.java:48
+#: Miradi/source/org/miradi/dialogs/reportTemplate/ReportTemplatePropertiesPanel.java:49
 msgid "Title|Report Template Properties"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:92
+#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:93
 msgid "Title|Resource Properties"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:48
+#: Miradi/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:49
 msgid "Title|Results Chain Properties"
 msgstr ""
 
@@ -7377,7 +7377,7 @@ msgstr ""
 msgid "Title|Save %s File"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:58
+#: Miradi/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:59
 msgid "Title|Scope Box Properties"
 msgstr ""
 
@@ -7397,11 +7397,11 @@ msgstr ""
 msgid "Title|Strategy Properties"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/stress/StressCommentsSubPanel.java:41
+#: Miradi/source/org/miradi/dialogs/stress/StressCommentsSubPanel.java:42
 msgid "Title|Stress Comments"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:74
+#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:75
 msgid "Title|Stress Details"
 msgstr ""
 
@@ -7417,7 +7417,7 @@ msgstr ""
 msgid "Title|Stress-Based Threat Rating"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:50
+#: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:51
 msgid "Title|Tag Properties Panel"
 msgstr ""
 
@@ -7425,7 +7425,7 @@ msgstr ""
 msgid "Title|Target Properties"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityMultiPropertiesPanel.java:68
+#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityMultiPropertiesPanel.java:69
 msgid "Title|Target Viability Properties"
 msgstr ""
 
@@ -7437,7 +7437,7 @@ msgstr ""
 msgid "Title|Team"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:85
+#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:86
 msgid "Title|Team Properties"
 msgstr ""
 
@@ -7445,7 +7445,7 @@ msgstr ""
 msgid "Title|Threat Reduction Result Properties"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/ConfigureLayers.java:44
+#: Miradi/source/org/miradi/views/diagram/ConfigureLayers.java:46
 msgid "Title|View Layers"
 msgstr ""
 
@@ -7470,11 +7470,11 @@ msgstr ""
 msgid "Total Monitoring Budget %1 %2"
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/factortypes/FactorTypeContributingFactor.java:36
+#: Miradi/source/org/miradi/diagram/factortypes/FactorTypeContributingFactor.java:38
 msgid "Type|Contributing Factor"
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/factortypes/FactorTypeDirectThreat.java:35
+#: Miradi/source/org/miradi/diagram/factortypes/FactorTypeDirectThreat.java:37
 msgid "Type|Direct Threat"
 msgstr ""
 
@@ -7494,12 +7494,12 @@ msgstr ""
 msgid "Unable to launch external web browser"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/planning/doers/ImportAccountingCodesDoer.java:75
+#: Miradi/source/org/miradi/views/planning/doers/ImportAccountingCodesDoer.java:77
 msgid "Unable to process file: verify file format"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:136
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:128
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:138
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:130
 msgid "Unable to process request: "
 msgstr ""
 
@@ -7536,7 +7536,7 @@ msgstr ""
 msgid "Unexpected call to getText"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/FactorTagListEditor.java:92
+#: Miradi/source/org/miradi/dialogfields/FactorTagListEditor.java:93
 msgid "Unexpected call to removeListSelectionListener"
 msgstr ""
 
@@ -7648,7 +7648,7 @@ msgstr ""
 msgid "Viability Analysis Mode"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityRatingsSubPanel.java:71
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityRatingsSubPanel.java:72
 msgid "Viability Ratings"
 msgstr ""
 
@@ -7892,13 +7892,13 @@ msgstr ""
 msgid "Yes"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:142
+#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:145
 msgid ""
 "You are removing this resource from the project team, so he/she will no "
 "longer appear in the list of Team Members in the Summary View. "
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:257
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:259
 msgid "You must select one item in each of the two lists"
 msgstr ""
 
@@ -7937,7 +7937,7 @@ msgstr ""
 msgid "[Not Named]"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/CreateConceptualModelPageDoer.java:96
+#: Miradi/source/org/miradi/views/diagram/CreateConceptualModelPageDoer.java:98
 msgid "[Page %s]"
 msgstr ""
 

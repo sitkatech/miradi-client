@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-04 10:42-0600\n"
+"POT-Creation-Date: 2011-02-04 11:26-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -69,7 +69,7 @@ msgid ""
 "Please seek technical help from the Miradi team."
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardLinkDirectThreatsToTargetsStep.java:48
+#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardLinkDirectThreatsToTargetsStep.java:51
 msgid " 2) Connect threat to relevant targets"
 msgstr "2)将威胁因子链接到相关的对象 \t\t"
 
@@ -311,7 +311,7 @@ msgstr "（参见地点标签） \t\t"
 msgid "(See Project tab)"
 msgstr "（参见项目标签） \t\t"
 
-#: Miradi/source/org/miradi/views/umbrella/AboutDoer.java:71
+#: Miradi/source/org/miradi/views/umbrella/AboutDoer.java:73
 msgid "(Translation: %code %date)"
 msgstr ""
 
@@ -364,36 +364,36 @@ msgstr "0"
 msgid "1"
 msgstr "1"
 
-#: Miradi/source/org/miradi/wizard/planning/WorkPlanDevelopActivitiesAndTasksStep.java:48
+#: Miradi/source/org/miradi/wizard/planning/WorkPlanDevelopActivitiesAndTasksStep.java:49
 msgid "1) Activities"
 msgstr "1) 活动 \t\t"
 
-#: Miradi/source/org/miradi/wizard/targetviability/TargetViabilityDetermineKeyAttributesStep.java:47
+#: Miradi/source/org/miradi/wizard/targetviability/TargetViabilityDetermineKeyAttributesStep.java:50
 msgid "1) Determine key ecological attributes"
 msgstr "1) 确定关键生态属性 \t\t"
 
-#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardDefineTargetsStep.java:48
+#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardDefineTargetsStep.java:51
 msgid "1) Identify initial list of targets"
 msgstr "1) 确定对象的初始列表 \t\t"
 
-#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardIdentifyDirectThreatStep.java:48
+#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardIdentifyDirectThreatStep.java:51
 msgid "1) Insert direct threat"
 msgstr "1) 插入直接威胁因子 \t\t"
 
-#: Miradi/source/org/miradi/wizard/planning/BudgetWizardAccountingAndFunding.java:47
+#: Miradi/source/org/miradi/wizard/planning/BudgetWizardAccountingAndFunding.java:50
 msgid "1) List accounting codes and funding sources"
 msgstr "1) 列出会计编码及资金来源 \t\t"
 
-#: Miradi/source/org/miradi/wizard/diagram/SelectChainStep.java:47
+#: Miradi/source/org/miradi/wizard/diagram/SelectChainStep.java:50
 msgid "1) Select factor chain"
 msgstr "1) 选择因素链 \t\t"
 
-#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardResultsChainSelectStrategyStep.java:47
+#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardResultsChainSelectStrategyStep.java:50
 msgid "1) Select strategy to focus on "
 msgstr "1)选择侧重的策略 \t\t"
 
-#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatRatingWizardChooseBundle.java:51
-#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatStressOverviewStep.java:47
+#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatRatingWizardChooseBundle.java:54
+#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatStressOverviewStep.java:50
 msgid "1) Select target and threat to work on"
 msgstr "1) 选择要处理的对象和威胁因子 \t\t"
 
@@ -401,35 +401,35 @@ msgstr "1) 选择要处理的对象和威胁因子 \t\t"
 msgid "2"
 msgstr "2"
 
-#: Miradi/source/org/miradi/wizard/planning/BudgetWizardBudgetDetail.java:47
+#: Miradi/source/org/miradi/wizard/planning/BudgetWizardBudgetDetail.java:50
 msgid "2) Add budget detail to workplan "
 msgstr "2) 添加预算详情到工作计划中 \t\t"
 
-#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardConstructInitialResultsChain.java:47
+#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardConstructInitialResultsChain.java:50
 msgid "2) Construct initial results chain "
 msgstr "2) 构建初始结果链 \t\t"
 
-#: Miradi/source/org/miradi/wizard/diagram/DevelopDraftStrategiesStep.java:47
+#: Miradi/source/org/miradi/wizard/diagram/DevelopDraftStrategiesStep.java:50
 msgid "2) Develop draft strategies"
 msgstr "2) 拟定策略草案 \t\t"
 
-#: Miradi/source/org/miradi/wizard/targetviability/TargetViabilityIdentifyIndicatorsStep.java:47
+#: Miradi/source/org/miradi/wizard/targetviability/TargetViabilityIdentifyIndicatorsStep.java:50
 msgid "2) Identify indicators"
 msgstr "2) 识别指示物 \t\t"
 
-#: Miradi/source/org/miradi/wizard/planning/WorkPlanDevelopMethodsAndTasksStep.java:47
+#: Miradi/source/org/miradi/wizard/planning/WorkPlanDevelopMethodsAndTasksStep.java:49
 msgid "2) Methods"
 msgstr "2) 方法 \t\t"
 
-#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatStressRateScopeAndSeverityStep.java:48
+#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatStressRateScopeAndSeverityStep.java:51
 msgid "2) Rate scope and severity of stress"
 msgstr "2) 评定压力的范围及严重性 \t\t"
 
-#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatRatingWizardScopeStep.java:52
+#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatRatingWizardScopeStep.java:55
 msgid "2) Rate the scope of the threat "
 msgstr "2) 评定威胁因子范围 \t\t"
 
-#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardReviewAndModifyTargetsStep.java:48
+#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardReviewAndModifyTargetsStep.java:51
 msgid "2) Review and modify targets"
 msgstr "2) 审查并修改对象 \t\t"
 
@@ -437,31 +437,31 @@ msgstr "2) 审查并修改对象 \t\t"
 msgid "3"
 msgstr "3"
 
-#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardCompleteResultsChainLinks.java:47
+#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardCompleteResultsChainLinks.java:50
 msgid "3) Complete links in the chain "
 msgstr "3) 在链中完成链接 \t\t"
 
-#: Miradi/source/org/miradi/wizard/planning/WorkPlanCreateResourcesStep.java:47
+#: Miradi/source/org/miradi/wizard/planning/WorkPlanCreateResourcesStep.java:49
 msgid "3) Edit resources"
 msgstr "3) 编辑资源 \t\t"
 
-#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatStressRateContributionAndIrreversibilityStep.java:48
+#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatStressRateContributionAndIrreversibilityStep.java:51
 msgid "3) Rate contribution and irreversibility of threat"
 msgstr "3) 评定威胁因子所起的作用及不可逆性 \t\t"
 
-#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatRatingWizardSeverityStep.java:52
+#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatRatingWizardSeverityStep.java:55
 msgid "3) Rate the severity of the threat"
 msgstr "3) 评定威胁因子严重性 \t\t"
 
-#: Miradi/source/org/miradi/wizard/planning/BudgetWizardReconcileActualExpendituresStep.java:48
+#: Miradi/source/org/miradi/wizard/planning/BudgetWizardReconcileActualExpendituresStep.java:51
 msgid "3) Reconcile actual expenditures"
 msgstr "3) 协调实际开销 \t\t"
 
-#: Miradi/source/org/miradi/wizard/targetviability/TargetViabilityDevelopDraftIndicatorsStep.java:47
+#: Miradi/source/org/miradi/wizard/targetviability/TargetViabilityDevelopDraftIndicatorsStep.java:50
 msgid "3a) Develop draft indicator ratings"
 msgstr "3a) 拟定指示物评级草案 \t\t"
 
-#: Miradi/source/org/miradi/wizard/targetviability/TargetViabilityRefineIndicatorRatingsStep.java:47
+#: Miradi/source/org/miradi/wizard/targetviability/TargetViabilityRefineIndicatorRatingsStep.java:50
 msgid "3b) Refine indicator ratings"
 msgstr "3b) 修订指示物评级 \t\t"
 
@@ -469,19 +469,19 @@ msgstr "3b) 修订指示物评级 \t\t"
 msgid "4) Assign resources"
 msgstr "4) 分配资源 \t\t"
 
-#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatStressCheckThreatRatingStep.java:47
+#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatStressCheckThreatRatingStep.java:50
 msgid "4) Check target-threat rating"
 msgstr "4) 检查对象——威胁因子评级 \t\t"
 
-#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatRatingWizardIrreversibilityStep.java:52
+#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatRatingWizardIrreversibilityStep.java:55
 msgid "4) Rate the irreversibility of the threat"
 msgstr "4) 评定威胁因子的不可逆性 \t\t"
 
-#: Miradi/source/org/miradi/wizard/targetviability/TargetViabilityRecordInitialMeasurementStep.java:47
+#: Miradi/source/org/miradi/wizard/targetviability/TargetViabilityRecordInitialMeasurementStep.java:50
 msgid "4) Record initial measurement"
 msgstr "4) 记录初始测量 \t\t"
 
-#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardGoodResultsChainCriteriaReview.java:47
+#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardGoodResultsChainCriteriaReview.java:50
 msgid "4) Review the criteria for a good results chain"
 msgstr "4) 审查用于良好结果链的标准 \t\t"
 
@@ -489,11 +489,11 @@ msgstr "4) 审查用于良好结果链的标准 \t\t"
 msgid "4C. Refine Work Plans on Ongoing Basis"
 msgstr "4C.实时改进工作计划 \t\t"
 
-#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatRatingWizardCheckBundleStep.java:48
+#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatRatingWizardCheckBundleStep.java:51
 msgid "5) Check target-threat rating"
 msgstr "5) 检查对象——威胁因子评级 \t\t"
 
-#: Miradi/source/org/miradi/wizard/targetviability/TargetViabilityDetermineDesiredStatusStep.java:47
+#: Miradi/source/org/miradi/wizard/targetviability/TargetViabilityDetermineDesiredStatusStep.java:50
 msgid "5) Determine desired status"
 msgstr "5) 确定期望的状态 \t\t"
 
@@ -558,7 +558,7 @@ msgstr ""
 "生态区数据，但可能仍未成功。<BR>请到概要视图，TNC标签，并确认生态区对于本项目"
 "是正确的。</HTML> \t\t"
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:55
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:56
 msgid ""
 "<HTML>When pasting between projects, can't paste from CM to RC or vice "
 "versa</HTML>"
@@ -590,7 +590,7 @@ msgid ""
 "Miradi Exchange File (.cpmz)'></input></td></tr></table></p><br>"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:75
+#: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:76
 msgid ""
 "<div class='WizardText'><p><table><tr><td><input type='submit' name='Back' "
 "value='&lt; Previous'></input></td><td><input type='submit' name='Next' "
@@ -930,7 +930,7 @@ msgid ""
 "the degree of reduction of the target population within the scope."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AboutDoer.java:58
+#: Miradi/source/org/miradi/views/umbrella/AboutDoer.java:60
 msgid "<strong>Version: %s</strong>"
 msgstr ""
 
@@ -1011,7 +1011,7 @@ msgstr "会计代码 \t\t"
 msgid "Action|< Previous"
 msgstr "<先前的 \t\t"
 
-#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:55
+#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:56
 #: Miradi/source/org/miradi/actions/ActionAboutBenetech.java:35
 msgid "Action|About Benetech"
 msgstr "关于Benetech \t\t"
@@ -1020,17 +1020,17 @@ msgstr "关于Benetech \t\t"
 msgid "Action|About Miradi"
 msgstr "关于Miradi \t\t"
 
-#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:57
+#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:58
 #: Miradi/source/org/miradi/actions/ActionAboutCMP.java:34
 msgid "Action|About the CMP"
 msgstr "关于CMP \t\t"
 
-#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:63
+#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:64
 #: Miradi/source/org/miradi/actions/ActionHelpAdaptiveManagement.java:34
 msgid "Action|Adaptive Management"
 msgstr "适应性管理 \t\t"
 
-#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:59
+#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:60
 #: Miradi/source/org/miradi/actions/ActionHelpAgileSoftware.java:34
 msgid "Action|Agile Software"
 msgstr "敏捷软件 \t\t"
@@ -1047,7 +1047,7 @@ msgstr ""
 msgid "Action|Brainstorm Mode"
 msgstr "集思广益模式 \t\t"
 
-#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:61
+#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:62
 #: Miradi/source/org/miradi/actions/ActionHelpCMPStandards.java:34
 msgid "Action|CMP Open Standards"
 msgstr "CMP打开标准 \t\t"
@@ -1076,7 +1076,7 @@ msgstr "关闭回路 \t\t"
 msgid "Action|Collapse All Rows"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:51
+#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:52
 #: Miradi/source/org/miradi/actions/ActionHelpComingAttractions.java:34
 msgid "Action|Coming Attractions"
 msgstr "即将增添的新功能 \t\t"
@@ -1154,7 +1154,7 @@ msgstr "创建压力 \t\t"
 msgid "Action|Create Stress from KEA"
 msgstr "从KEA创建压力 \t\t"
 
-#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:53
+#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:54
 #: Miradi/source/org/miradi/actions/ActionHelpCredits.java:34
 msgid "Action|Credits"
 msgstr "信用 \t\t"
@@ -1243,7 +1243,7 @@ msgstr "编辑方法… \t\t"
 msgid "Action|Edit..."
 msgstr "|编辑..."
 
-#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:47
+#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:48
 #: Miradi/source/org/miradi/actions/ActionHelpButtonExamples.java:34
 msgid "Action|Examples"
 msgstr "例子 \t\t"
@@ -1552,7 +1552,7 @@ msgstr "Miradi项目Zip（MPZ）文件"
 msgid "Action|Monitoring Plan"
 msgstr "监控计划 \t\t"
 
-#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:45
+#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:46
 #: Miradi/source/org/miradi/actions/ActionHelpButtonMoreInfo.java:34
 msgid "Action|More Info"
 msgstr "更多信息 \t\t"
@@ -1731,7 +1731,7 @@ msgstr "策略计划 \t\t"
 msgid "Action|Summary"
 msgstr "概况 \t\t"
 
-#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:65
+#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:66
 #: Miradi/source/org/miradi/actions/ActionHelpButtonSupport.java:34
 msgid "Action|Support"
 msgstr "支持 \t\t"
@@ -1836,7 +1836,7 @@ msgstr ""
 msgid "Action|Work Plan"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:49
+#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:50
 #: Miradi/source/org/miradi/actions/ActionHelpButtonWorkshop.java:34
 msgid "Action|Workshop"
 msgstr "学习班 \t\t"
@@ -2010,32 +2010,32 @@ msgstr ""
 msgid "April to March"
 msgstr "4月到3月 \t\t"
 
-#: Miradi/source/org/miradi/views/diagram/DeleteGoal.java:30
+#: Miradi/source/org/miradi/views/diagram/DeleteGoal.java:31
 msgid "Are you sure you want to delete this Goal?"
 msgstr "您是否确定要删除此总目标？"
 
-#: Miradi/source/org/miradi/views/diagram/DeleteIndicator.java:41
+#: Miradi/source/org/miradi/views/diagram/DeleteIndicator.java:43
 msgid "Are you sure you want to delete this Indicator?"
 msgstr "您是否确定要删除此指示物？"
 
-#: Miradi/source/org/miradi/views/diagram/DeleteKeyEcologicalAttributeDoer.java:44
+#: Miradi/source/org/miradi/views/diagram/DeleteKeyEcologicalAttributeDoer.java:46
 msgid "Are you sure you want to delete this Key Ecological Attribute?"
 msgstr "您是否确定要删除此关键生态学属性？"
 
-#: Miradi/source/org/miradi/views/diagram/DeleteSubTargetDoer.java:46
+#: Miradi/source/org/miradi/views/diagram/DeleteSubTargetDoer.java:50
 msgid "Are you sure you want to delete this Nested Target?"
 msgstr "您是否确定要删除该嵌套对象？ \t\t"
 
-#: Miradi/source/org/miradi/views/diagram/DeleteObjective.java:30
+#: Miradi/source/org/miradi/views/diagram/DeleteObjective.java:31
 msgid "Are you sure you want to delete this Objective?"
 msgstr "您是否确定要删除本分目标？"
 
-#: Miradi/source/org/miradi/views/umbrella/doers/DeleteProgressPercentDoer.java:48
+#: Miradi/source/org/miradi/views/umbrella/doers/DeleteProgressPercentDoer.java:51
 msgid "Are you sure you want to delete this Progress Percent?"
 msgstr "您是否确定要删除该进展报告？ \t\t"
 
 #: Miradi/source/org/miradi/views/diagram/doers/DeleteProgressReportDoer.java:50
-#: Miradi/source/org/miradi/views/diagram/doers/DeleteStrategyProgressReportDoer.java:47
+#: Miradi/source/org/miradi/views/diagram/doers/DeleteStrategyProgressReportDoer.java:51
 msgid "Are you sure you want to delete this Progress Report?"
 msgstr "您是否确定要删除该进展报告? \t\t"
 
@@ -2200,7 +2200,7 @@ msgstr ""
 msgid "Assigned Resources Only"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/assignment/AssignmentsPropertiesPanel.java:73
+#: Miradi/source/org/miradi/dialogs/assignment/AssignmentsPropertiesPanel.java:75
 msgid "Assignments"
 msgstr ""
 
@@ -2327,14 +2327,14 @@ msgstr "规则集"
 
 #: Miradi/source/org/miradi/database/DataUpgrader.java:48
 #: Miradi/source/org/miradi/database/DataUpgrader.java:60
-#: Miradi/source/org/miradi/views/diagram/doers/AbstractPasteDoer.java:71
+#: Miradi/source/org/miradi/views/diagram/doers/AbstractPasteDoer.java:72
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:52
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:225
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/DirectoryChooserDialog.java:76
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:127
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:166
 #: Miradi/source/org/miradi/dialogs/confirm/ConfirmDialogTemplate.java:51
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:239
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:241
 msgid "Button|Cancel"
 msgstr "取消 \t\t"
 
@@ -2380,7 +2380,7 @@ msgstr ""
 msgid "Button|No"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:236
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:238
 msgid "Button|OK"
 msgstr "确定 \t\t"
 
@@ -2388,7 +2388,7 @@ msgstr "确定 \t\t"
 msgid "Button|Ok"
 msgstr "确定 \t\t"
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:171
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:172
 msgid "Button|Paste As Copies"
 msgstr ""
 
@@ -2396,7 +2396,7 @@ msgstr ""
 msgid "Button|Paste Contents"
 msgstr "粘贴内容 \t\t"
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:172
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:173
 msgid "Button|Paste Shared"
 msgstr ""
 
@@ -2436,7 +2436,7 @@ msgstr ""
 msgid "CMP"
 msgstr "CMP "
 
-#: Miradi/source/org/miradi/views/schedule/ScheduleView.java:62
+#: Miradi/source/org/miradi/views/schedule/ScheduleView.java:65
 msgid "Calendar"
 msgstr "日历 \t\t"
 
@@ -2561,7 +2561,7 @@ msgstr ""
 msgid "Choose Folder"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/CloneGoalDoer.java:32
+#: Miradi/source/org/miradi/views/diagram/CloneGoalDoer.java:33
 msgid "Choose Goal to Create from"
 msgstr ""
 
@@ -2582,7 +2582,7 @@ msgstr ""
 msgid "Choose Relevant Goal(s)"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractRelevancyEditListDoer.java:51
+#: Miradi/source/org/miradi/views/umbrella/AbstractRelevancyEditListDoer.java:53
 msgid "Choose Relevant Indicator(s)"
 msgstr "选择相关的（多种）指示物 \t\t"
 
@@ -2591,7 +2591,7 @@ msgstr "选择相关的（多种）指示物 \t\t"
 msgid "Choose Relevant Objective(s)"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/doers/CloneStressDoer.java:32
+#: Miradi/source/org/miradi/views/diagram/doers/CloneStressDoer.java:33
 msgid "Choose Stress to Create from"
 msgstr ""
 
@@ -2646,7 +2646,7 @@ msgstr "已完成——成功地完成"
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:107
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:70
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:46
-#: Miradi/source/org/miradi/dialogs/diagram/ConceptualModelDiagramPanel.java:67
+#: Miradi/source/org/miradi/dialogs/diagram/ConceptualModelDiagramPanel.java:69
 msgid "Conceptual Model"
 msgstr "概念模型 \t\t"
 
@@ -2722,7 +2722,7 @@ msgstr "控制栏 \t\t"
 msgid "Copy"
 msgstr "复制 \t\t"
 
-#: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:93
+#: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:95
 msgid "Copy to..."
 msgstr "复制到… \t\t"
 
@@ -2746,7 +2746,7 @@ msgstr "国家 \t\t"
 msgid "Create"
 msgstr "创建 \t\t"
 
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:153
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:155
 msgid "Create Failed:"
 msgstr "创建失败： \t\t"
 
@@ -2928,7 +2928,7 @@ msgstr "规定项目范围 \t\t"
 #: Miradi/source/org/miradi/views/noproject/DeleteProject.java:45
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:61
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:52
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:54
 #: Miradi/source/org/miradi/main/EAM.java:447
 #: Miradi/source/org/miradi/main/EAM.java:448
 msgid "Delete"
@@ -2943,7 +2943,7 @@ msgid "Delete Resource"
 msgstr "删除资源"
 
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:45
-#: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:96
+#: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:98
 msgid "Delete..."
 msgstr "删除… \t\t"
 
@@ -3000,10 +3000,10 @@ msgstr "期望的价值/地位 \t\t"
 msgid "Detail activities, tasks, and responsibilities"
 msgstr "详尽的活动、任务及职责 \t\t"
 
-#: Miradi/source/org/miradi/wizard/planning/WorkPlanCreateResourcesStep.java:42
+#: Miradi/source/org/miradi/wizard/planning/WorkPlanCreateResourcesStep.java:43
 #: Miradi/source/org/miradi/wizard/planning/WorkPlanAssignResourcesStep.java:43
-#: Miradi/source/org/miradi/wizard/planning/WorkPlanDevelopActivitiesAndTasksStep.java:42
-#: Miradi/source/org/miradi/wizard/planning/WorkPlanDevelopMethodsAndTasksStep.java:42
+#: Miradi/source/org/miradi/wizard/planning/WorkPlanDevelopActivitiesAndTasksStep.java:43
+#: Miradi/source/org/miradi/wizard/planning/WorkPlanDevelopMethodsAndTasksStep.java:43
 msgid "Detail activities/methods, tasks, and responsibilities"
 msgstr "详尽的活动/方法、任务、以及职责 \t\t"
 
@@ -3248,7 +3248,7 @@ msgstr ""
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:79
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetThreatLinkTableModel.java:76
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetSummaryRowTableModel.java:66
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorTreeModel.java:72
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorTreeModel.java:73
 #: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:112
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:103
 msgid "Error"
@@ -3275,7 +3275,7 @@ msgstr "出错，请尝试用不同的文件名保存。 \t\t"
 msgid "Error Retrieving Data"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListSaveAsAction.java:40
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListSaveAsAction.java:42
 msgid "Error copying project: "
 msgstr "复制项目出错： \t\t"
 
@@ -3283,11 +3283,11 @@ msgstr "复制项目出错： \t\t"
 msgid "Error creating folder: "
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:47
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:49
 msgid "Error deleting project: "
 msgstr "删除项目出错： \t\t"
 
-#: Miradi/source/org/miradi/views/umbrella/RedoDoer.java:53
+#: Miradi/source/org/miradi/views/umbrella/RedoDoer.java:55
 msgid "Error during redo"
 msgstr "撤销时出错 \t\t"
 
@@ -3295,7 +3295,7 @@ msgstr "撤销时出错 \t\t"
 msgid "Error during undo"
 msgstr "撤销时出错 \t\t"
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListExportAction.java:40
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListExportAction.java:42
 msgid "Error exporting project: "
 msgstr "导出项目出错： \t\t"
 
@@ -3328,7 +3328,7 @@ msgstr ""
 msgid "Error occurred while trying to export to a tab delimited file."
 msgstr "试图导出到制表符分隔格式文件时出错。 \t\t"
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListOpenAction.java:39
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListOpenAction.java:41
 msgid "Error opening project: "
 msgstr ""
 
@@ -3336,7 +3336,7 @@ msgstr ""
 msgid "Error reading %s. Perhaps it is not a valid zip file."
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListRenameAction.java:46
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListRenameAction.java:48
 msgid "Error renaming project: "
 msgstr "项目重命名出错： \t\t"
 
@@ -3377,11 +3377,11 @@ msgstr ""
 msgid "Export complete"
 msgstr "导出完成 \t\t"
 
-#: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:94
+#: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:96
 msgid "Export to Miradi Zip..."
 msgstr "导出到Miradi压缩… \t\t"
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListExportAction.java:45
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListExportAction.java:47
 msgid "Export..."
 msgstr "导出… \t\t"
 
@@ -3674,7 +3674,7 @@ msgstr "资金资源——指您的项目可获得的资金来源。"
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:31
 #: Miradi/source/org/miradi/forms/objects/GoalPropertiesForm.java:31
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:78
-#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:166
+#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:167
 #: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:41
 #: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:44
 msgid "Goal"
@@ -3689,11 +3689,11 @@ msgstr ""
 "目的——是一份正式的声明，详尽描述了某个项目期望达到的效果。对于保护项目，它是"
 "指某个对象期望达到的的未来状态。在Miradi中，目的是以蓝色小椭圆形来表示的。"
 
-#: Miradi/source/org/miradi/dialogs/base/RelevancyGoalPanel.java:40
+#: Miradi/source/org/miradi/dialogs/base/RelevancyGoalPanel.java:41
 msgid "Goal Relevancy Panel"
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:168
+#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:169
 #: Miradi/source/org/miradi/dialogs/task/ActivityDetailsPanelWithRelevancyOverrideFields.java:45
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:90
 msgid "Goals"
@@ -3755,7 +3755,7 @@ msgstr "真相与修订模型 \t\t"
 msgid "Group Box"
 msgstr "组合框"
 
-#: Miradi/source/org/miradi/dialogs/diagram/GroupBoxPropertiesPanel.java:53
+#: Miradi/source/org/miradi/dialogs/diagram/GroupBoxPropertiesPanel.java:54
 msgid "Group Box Properties"
 msgstr "组合框属性 \t\t"
 
@@ -3890,11 +3890,11 @@ msgstr "实施工作计划 \t\t"
 msgid "Import"
 msgstr "导入 \t\t"
 
-#: Miradi/source/org/miradi/views/planning/doers/ImportAccountingCodesDoer.java:57
+#: Miradi/source/org/miradi/views/planning/doers/ImportAccountingCodesDoer.java:59
 msgid "Import Accounting Codes"
 msgstr "导入会计编码 \t\t"
 
-#: Miradi/source/org/miradi/views/planning/doers/ImportAccountingCodesDoer.java:71
+#: Miradi/source/org/miradi/views/planning/doers/ImportAccountingCodesDoer.java:73
 msgid "Import Completed"
 msgstr "导入完成 \t\t"
 
@@ -3926,7 +3926,7 @@ msgstr ""
 msgid "In Progress"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:256
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:258
 msgid "Incomplete Link"
 msgstr "不完整链接 \t\t"
 
@@ -3934,7 +3934,7 @@ msgstr "不完整链接 \t\t"
 #: Miradi/source/org/miradi/forms/objects/IndicatorSubForm.java:32
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:80
 #: Miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:38
-#: Miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:49
+#: Miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:50
 msgid "Indicator"
 msgstr "指示物"
 
@@ -3954,7 +3954,7 @@ msgstr ""
 msgid "Indicator Holder"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/RelevancyIndicatorPanel.java:41
+#: Miradi/source/org/miradi/dialogs/diagram/RelevancyIndicatorPanel.java:42
 msgid "Indicator Relevancy Panel"
 msgstr "指示物关联面板 \t\t"
 
@@ -4000,7 +4000,7 @@ msgstr ""
 msgid "Insert FTE Fraction"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:225
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:227
 msgid "Insert Factor Link dialog|No Label Specified"
 msgstr ""
 
@@ -4059,7 +4059,7 @@ msgstr "引入到视图 \t\t"
 msgid "Introduced Vegetation"
 msgstr "引入的植被"
 
-#: Miradi/source/org/miradi/wizard/diagram/TargetViabilityMethodChoiceStep.java:47
+#: Miradi/source/org/miradi/wizard/diagram/TargetViabilityMethodChoiceStep.java:50
 msgid "Introduction"
 msgstr "绪论 \t\t"
 
@@ -4173,11 +4173,11 @@ msgstr ""
 msgid "Label|Budget Category Two"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/RareCampaignSummarySubPanel.java:68
+#: Miradi/source/org/miradi/views/summary/RareCampaignSummarySubPanel.java:69
 msgid "Label|Campaign"
 msgstr "运动 \t\t"
 
-#: Miradi/source/org/miradi/views/summary/RareCampaignPlanningSummarySubPanel.java:55
+#: Miradi/source/org/miradi/views/summary/RareCampaignPlanningSummarySubPanel.java:56
 msgid "Label|Campaign Planning"
 msgstr "运动计划 \t\t"
 
@@ -4194,7 +4194,7 @@ msgstr "货币 \t\t"
 msgid "Label|Existing Projects:"
 msgstr "退出项目： \t\t"
 
-#: Miradi/source/org/miradi/views/summary/FOSSummaryPanel.java:55
+#: Miradi/source/org/miradi/views/summary/FOSSummaryPanel.java:56
 msgid "Label|FOS"
 msgstr "金融巡查官服务（FOS） \t\t"
 
@@ -4217,24 +4217,24 @@ msgstr "缩写名 \t\t"
 msgid "Label|Methods"
 msgstr "方法 \t\t"
 
-#: Miradi/source/org/miradi/views/diagram/InsertDraftStrategyDoer.java:60
+#: Miradi/source/org/miradi/views/diagram/InsertDraftStrategyDoer.java:63
 msgid "Label|New Draft Strategy"
 msgstr "新策略草案 \t\t"
 
 #: Miradi/source/org/miradi/views/diagram/InsertDirectThreatDoer.java:50
-#: Miradi/source/org/miradi/views/diagram/InsertContributingFactorDoer.java:43
+#: Miradi/source/org/miradi/views/diagram/InsertContributingFactorDoer.java:46
 msgid "Label|New Factor"
 msgstr "新因素 \t\t"
 
-#: Miradi/source/org/miradi/views/diagram/doers/InsertGroupBoxDoer.java:140
+#: Miradi/source/org/miradi/views/diagram/doers/InsertGroupBoxDoer.java:144
 msgid "Label|New Group Box"
 msgstr "新的组合框 \t\t"
 
-#: Miradi/source/org/miradi/views/diagram/doers/InsertHumanWelfareTargetDoer.java:36
+#: Miradi/source/org/miradi/views/diagram/doers/InsertHumanWelfareTargetDoer.java:38
 msgid "Label|New Human Welfare Target"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/InsertIntermediateResultDoer.java:44
+#: Miradi/source/org/miradi/views/diagram/InsertIntermediateResultDoer.java:47
 msgid "Label|New Intermediate Result"
 msgstr "新的中途结果 \t\t"
 
@@ -4242,19 +4242,19 @@ msgstr "新的中途结果 \t\t"
 msgid "Label|New Scope Box"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/InsertStrategyDoer.java:43
+#: Miradi/source/org/miradi/views/diagram/InsertStrategyDoer.java:46
 msgid "Label|New Strategy"
 msgstr "新策略 \t\t"
 
-#: Miradi/source/org/miradi/views/diagram/InsertTargetDoer.java:35
+#: Miradi/source/org/miradi/views/diagram/InsertTargetDoer.java:37
 msgid "Label|New Target"
 msgstr "新对象 \t\t"
 
-#: Miradi/source/org/miradi/views/diagram/InsertTextBoxDoer.java:46
+#: Miradi/source/org/miradi/views/diagram/InsertTextBoxDoer.java:49
 msgid "Label|New Text Box"
 msgstr "新文本框 \t\t"
 
-#: Miradi/source/org/miradi/views/diagram/InsertThreatReductionResultDoer.java:43
+#: Miradi/source/org/miradi/views/diagram/InsertThreatReductionResultDoer.java:46
 msgid "Label|New Threat Reduction Result"
 msgstr "新的减少威胁因子的结果 \t\t"
 
@@ -4288,7 +4288,7 @@ msgstr "受保护区域种类 \t\t"
 msgid "Label|RARE"
 msgstr "RARE"
 
-#: Miradi/source/org/miradi/views/summary/RareTrackingSummarySubPanel.java:51
+#: Miradi/source/org/miradi/views/summary/RareTrackingSummarySubPanel.java:52
 msgid "Label|Rare Tracking"
 msgstr "Rare跟踪\t\t"
 
@@ -4306,11 +4306,11 @@ msgstr "角色（仅限于人） \t\t"
 msgid "Label|Team Member"
 msgstr "团队成员 \t\t"
 
-#: Miradi/source/org/miradi/views/summary/WCSSummaryPanel.java:62
+#: Miradi/source/org/miradi/views/summary/WCSSummaryPanel.java:63
 msgid "Label|WCS"
 msgstr "野生动物保护协会（WCS） \t\t"
 
-#: Miradi/source/org/miradi/views/summary/WWFSummaryPanel.java:71
+#: Miradi/source/org/miradi/views/summary/WWFSummaryPanel.java:72
 msgid "Label|WWF"
 msgstr "世界自然基金会（WWF） \t\t"
 
@@ -4338,7 +4338,7 @@ msgstr "最大"
 msgid "Last Modified"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/LayerPanel.java:63
+#: Miradi/source/org/miradi/views/diagram/LayerPanel.java:65
 msgid "Layers"
 msgstr "层 \t\t"
 
@@ -4409,7 +4409,7 @@ msgstr "链接属性 \t\t"
 msgid "Lists"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryLocationPanel.java:63
+#: Miradi/source/org/miradi/views/summary/SummaryLocationPanel.java:64
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:38
 msgid "Location"
 msgstr "地点 \t\t"
@@ -4851,7 +4851,7 @@ msgstr ""
 msgid "Move To..."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:225
+#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:226
 msgid "Must be a positive number"
 msgstr ""
 
@@ -4973,7 +4973,7 @@ msgstr ""
 msgid "Nov"
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:153
+#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:154
 msgid "Obj"
 msgstr "分目标 \t\t"
 
@@ -5020,7 +5020,7 @@ msgstr ""
 msgid "Objectives:"
 msgstr "分目标组： \t\t"
 
-#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:155
+#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:156
 msgid "Objs"
 msgstr "分目标组 \t\t"
 
@@ -5069,8 +5069,8 @@ msgstr ""
 msgid "Onsite Research"
 msgstr "实地研究"
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListOpenAction.java:44
-#: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:90
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListOpenAction.java:46
+#: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:92
 msgid "Open"
 msgstr "打开 \t\t"
 
@@ -5113,7 +5113,7 @@ msgstr "其它"
 msgid "Other Notable Species"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/summary/SummaryWizardRolesAndResponsibilities.java:48
+#: Miradi/source/org/miradi/wizard/summary/SummaryWizardRolesAndResponsibilities.java:50
 msgid "Other Orgs"
 msgstr "其它组织 \t\t"
 
@@ -5152,7 +5152,7 @@ msgstr "比索（墨西哥）"
 msgid "Pink"
 msgstr "粉红色"
 
-#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardProjectScopeStep.java:47
+#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardProjectScopeStep.java:49
 #: Miradi/source/org/miradi/actions/jump/ActionJumpDiagramWizardProjectScopeStep.java:35
 msgid "Place scope on diagram"
 msgstr "在图表上设置范围 \t\t"
@@ -5173,7 +5173,7 @@ msgstr "数据存储计划 \t\t"
 msgid "Plan project lifespan and exit strategy"
 msgstr "计划项目的寿命及退出策略 \t\t"
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningPanel.java:61
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningPanel.java:62
 #: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:116
 msgid "Planning"
 msgstr "计划 \t\t"
@@ -5182,15 +5182,15 @@ msgstr "计划 \t\t"
 msgid "Planning Parameters"
 msgstr "计划参数"
 
-#: Miradi/source/org/miradi/dialogs/indicator/SimpleViabilityMultiPropertiesPanel.java:61
+#: Miradi/source/org/miradi/dialogs/indicator/SimpleViabilityMultiPropertiesPanel.java:62
 msgid "Planning Properties Panel"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewCustomLabelPropertiesPanel.java:39
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewCustomLabelPropertiesPanel.java:40
 msgid "Planning View Configuration Label Properties"
 msgstr "计划视图配置标签属性 \t\t"
 
-#: Miradi/source/org/miradi/views/planning/doers/AbstractCreatePlanningViewConfigurationDoer.java:98
+#: Miradi/source/org/miradi/views/planning/doers/AbstractCreatePlanningViewConfigurationDoer.java:100
 msgid "PlanningSubViewName|Custom"
 msgstr ""
 
@@ -5216,7 +5216,7 @@ msgid ""
 "Create from Existing  button"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/ShareSelectionDialog.java:41
+#: Miradi/source/org/miradi/dialogs/diagram/ShareSelectionDialog.java:43
 msgid ""
 "Please select which item should be shared to this factor, then press the "
 "Share button"
@@ -5344,7 +5344,7 @@ msgstr "进度报告 "
 msgid "Progress Reports"
 msgstr "进展报告 \t\t"
 
-#: Miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:95
+#: Miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:96
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:240
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:104
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:69
@@ -5434,7 +5434,7 @@ msgstr ""
 msgid "Project was migrated to the current data format"
 msgstr "项目被迁移为当前数据格式 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/expense/ExpensesPropertiesPanel.java:72
+#: Miradi/source/org/miradi/dialogs/expense/ExpensesPropertiesPanel.java:74
 msgid "Projected Expenses"
 msgstr ""
 
@@ -5512,7 +5512,7 @@ msgstr "相关的项目 \t\t"
 msgid "Relevant Strategies and Activities"
 msgstr "相关策略和活动"
 
-#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:141
+#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:144
 msgid "Remove Team Member"
 msgstr "去除团队成员 \t\t"
 
@@ -5520,8 +5520,8 @@ msgstr "去除团队成员 \t\t"
 msgid "Rename Failed"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListRenameAction.java:51
-#: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:92
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListRenameAction.java:53
+#: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:94
 msgid "Rename..."
 msgstr "重命名… \t\t"
 
@@ -5574,7 +5574,7 @@ msgid "Results Chain Properties"
 msgstr "结果链属性 \t\t"
 
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:47
-#: Miradi/source/org/miradi/dialogs/diagram/ResultsChainDiagramPanel.java:49
+#: Miradi/source/org/miradi/dialogs/diagram/ResultsChainDiagramPanel.java:50
 msgid "Results Chains"
 msgstr "结果链 \t\t"
 
@@ -5587,7 +5587,7 @@ msgstr "保留 \t\t"
 msgid "Review and modify targets"
 msgstr "审查及修改对象 \t\t"
 
-#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatRatingWizardCheckTotalsStep.java:49
+#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatRatingWizardCheckTotalsStep.java:52
 msgid "Review threat rating summary"
 msgstr "审查威胁因子评级概要 \t\t"
 
@@ -5652,7 +5652,7 @@ msgstr "保存 %s  \t\t"
 
 #: Miradi/source/org/miradi/views/noproject/CopyProject.java:52
 #: Miradi/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:48
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListSaveAsAction.java:45
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListSaveAsAction.java:47
 msgid "Save As..."
 msgstr ""
 
@@ -5664,7 +5664,7 @@ msgstr ""
 msgid "Scheduled for future implementation"
 msgstr "针对未来实施安排日程"
 
-#: Miradi/source/org/miradi/views/summary/SummaryScopeTabPanel.java:72
+#: Miradi/source/org/miradi/views/summary/SummaryScopeTabPanel.java:73
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:113
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:37
 #: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:103
@@ -5792,7 +5792,7 @@ msgstr ""
 "计程度。对于生态系统及生态群落，通常是按照此对象在其范围内受破坏或退化的程度"
 "来衡量。对于物种，通常以在其范围内对象种群数量减少的程度来衡量。"
 
-#: Miradi/source/org/miradi/dialogs/diagram/ShareSelectionDialog.java:36
+#: Miradi/source/org/miradi/dialogs/diagram/ShareSelectionDialog.java:37
 msgid "Share"
 msgstr "共享 \t\t"
 
@@ -5872,7 +5872,7 @@ msgstr "灌丛-温带灌丛"
 msgid "Simple"
 msgstr "简单 "
 
-#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatSimpleOverviewStep.java:47
+#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatSimpleOverviewStep.java:50
 msgid "Simple Threat Rating"
 msgstr "简单威胁因子评级 \t\t"
 
@@ -5880,7 +5880,7 @@ msgstr "简单威胁因子评级 \t\t"
 msgid "Simple Threat Rating Mode"
 msgstr "简单威胁因子评级模式"
 
-#: Miradi/source/org/miradi/wizard/diagram/DescribeTargetStatusStep.java:47
+#: Miradi/source/org/miradi/wizard/diagram/DescribeTargetStatusStep.java:50
 msgid "Simple viability"
 msgstr "简单生存力 \t\t"
 
@@ -5896,7 +5896,7 @@ msgstr "小"
 msgid "Smallest"
 msgstr "最小"
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:122
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:123
 msgid ""
 "Some of the data could not be moved to this project because it refers to "
 "other data that only exists in the old project"
@@ -6327,7 +6327,7 @@ msgstr "创建一个新方法 \t\t"
 msgid "TT|Create a new Progress Percent"
 msgstr "创建新的进展百分比 \t\t"
 
-#: Miradi/source/org/miradi/views/umbrella/ActionCreateProgressReport.java:41
+#: Miradi/source/org/miradi/views/umbrella/ActionCreateProgressReport.java:42
 #: Miradi/source/org/miradi/actions/ActionCreateTaskProgressReport.java:41
 #: Miradi/source/org/miradi/actions/ActionCreateStrategyProgressReport.java:41
 msgid "TT|Create a new Progress Report"
@@ -6548,7 +6548,7 @@ msgstr "删除选定的条目 \t\t"
 msgid "TT|Delete the selection"
 msgstr "删除选定的 \t\t"
 
-#: Miradi/source/org/miradi/actions/views/ActionViewWorkPlan.java:41
+#: Miradi/source/org/miradi/actions/views/ActionViewWorkPlan.java:42
 msgid "TT|Develop a work plan and budget"
 msgstr ""
 
@@ -6837,55 +6837,55 @@ msgstr "显示该压力使之出现于该概念模型页面 \t\t"
 msgid "TT|Switch to a different view"
 msgstr "切换到不同的视图 \t \t\t"
 
-#: Miradi/source/org/miradi/actions/views/ActionViewDiagram.java:41
+#: Miradi/source/org/miradi/actions/views/ActionViewDiagram.java:42
 msgid "TT|Switch to the Conceptual Model Diagram"
 msgstr "切换到概念模型视图 \t\t"
 
-#: Miradi/source/org/miradi/actions/views/ActionViewBudget.java:40
+#: Miradi/source/org/miradi/actions/views/ActionViewBudget.java:41
 msgid "TT|Switch to the Financial View"
 msgstr "切换到财务视图 \t\t"
 
-#: Miradi/source/org/miradi/actions/views/ActionViewImages.java:40
+#: Miradi/source/org/miradi/actions/views/ActionViewImages.java:41
 msgid "TT|Switch to the Library View"
 msgstr "切换到图书馆视图 \t\t"
 
-#: Miradi/source/org/miradi/actions/views/ActionViewMap.java:40
+#: Miradi/source/org/miradi/actions/views/ActionViewMap.java:41
 msgid "TT|Switch to the Map View"
 msgstr "切换到地图视图 \t\t"
 
-#: Miradi/source/org/miradi/actions/views/ActionViewMonitoring.java:40
+#: Miradi/source/org/miradi/actions/views/ActionViewMonitoring.java:41
 msgid "TT|Switch to the Monitoring Plan View"
 msgstr "切换到监控计划视图 \t\t"
 
-#: Miradi/source/org/miradi/actions/views/ActionViewOperationalPlan.java:41
+#: Miradi/source/org/miradi/actions/views/ActionViewOperationalPlan.java:42
 msgid "TT|Switch to the Operational Plan View"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/views/ActionViewReports.java:41
+#: Miradi/source/org/miradi/actions/views/ActionViewReports.java:42
 msgid "TT|Switch to the Reports View"
 msgstr "切换到报告视图 \t\t"
 
-#: Miradi/source/org/miradi/actions/views/ActionViewSchedule.java:40
+#: Miradi/source/org/miradi/actions/views/ActionViewSchedule.java:41
 msgid "TT|Switch to the Schedule"
 msgstr "切换到日程表 \t\t"
 
-#: Miradi/source/org/miradi/actions/views/ActionViewStrategicPlan.java:40
+#: Miradi/source/org/miradi/actions/views/ActionViewStrategicPlan.java:41
 msgid "TT|Switch to the Strategic Plan View"
 msgstr "切换到策略计划视图 \t\t"
 
-#: Miradi/source/org/miradi/actions/views/ActionViewPlanning.java:41
+#: Miradi/source/org/miradi/actions/views/ActionViewPlanning.java:42
 msgid "TT|Switch to the Strategic Planning View"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/views/ActionViewSummary.java:41
+#: Miradi/source/org/miradi/actions/views/ActionViewSummary.java:42
 msgid "TT|Switch to the Summary View"
 msgstr "切换到概况视图 \t\t"
 
-#: Miradi/source/org/miradi/actions/views/ActionViewTargetViability.java:41
+#: Miradi/source/org/miradi/actions/views/ActionViewTargetViability.java:42
 msgid "TT|Switch to the Target Viability View"
 msgstr "切换到对象生存力视图 \t\t"
 
-#: Miradi/source/org/miradi/actions/views/ActionViewThreatMatrix.java:41
+#: Miradi/source/org/miradi/actions/views/ActionViewThreatMatrix.java:42
 msgid "TT|Switch to the Threat Rating View"
 msgstr ">切换到威胁因子评级视图 \t\t"
 
@@ -6930,7 +6930,7 @@ msgstr "表格行高模式"
 msgid "Tab|Action Plan"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/activity/ActivityListManagementPanel.java:66
+#: Miradi/source/org/miradi/dialogs/activity/ActivityListManagementPanel.java:70
 msgid "Tab|Activities"
 msgstr "行动"
 
@@ -6938,7 +6938,7 @@ msgstr "行动"
 msgid "Tab|Custom"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/goal/GoalListManagementPanel.java:59
+#: Miradi/source/org/miradi/dialogs/goal/GoalListManagementPanel.java:63
 msgid "Tab|Goals"
 msgstr "总目标组"
 
@@ -6955,7 +6955,7 @@ msgstr "方法"
 msgid "Tab|Monitoring Plan"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/subTarget/SubTargetManagementPanel.java:57
+#: Miradi/source/org/miradi/dialogs/subTarget/SubTargetManagementPanel.java:59
 msgid "Tab|Nested Targets"
 msgstr "嵌套对象 \t\t"
 
@@ -6973,7 +6973,7 @@ msgstr "压力"
 
 #: Miradi/source/org/miradi/dialogs/viability/TargetPropertiesKeaViabilityTreeManagementPanel.java:51
 #: Miradi/source/org/miradi/dialogs/viability/ViabilityViewTreeManagementPanel.java:43
-#: Miradi/source/org/miradi/dialogs/indicator/SimpleViabilityManagementPanel.java:37
+#: Miradi/source/org/miradi/dialogs/indicator/SimpleViabilityManagementPanel.java:38
 msgid "Tab|Viability"
 msgstr "生存力 \t\t"
 
@@ -7087,7 +7087,7 @@ msgstr ""
 msgid "Task does not have a parent"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/schedule/ScheduleView.java:63
+#: Miradi/source/org/miradi/views/schedule/ScheduleView.java:66
 msgid "Tasks"
 msgstr "任务 \t\t"
 
@@ -7111,15 +7111,15 @@ msgstr ""
 msgid "Text Box"
 msgstr "文本框"
 
-#: Miradi/source/org/miradi/dialogs/diagram/TextBoxPropertiesPanel.java:57
+#: Miradi/source/org/miradi/dialogs/diagram/TextBoxPropertiesPanel.java:58
 msgid "Text Box Properties"
 msgstr "文本框属性 \t\t"
 
-#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:152
+#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:154
 msgid "Text|Dates must be in YYYY-MM-DD format"
 msgstr "日期格式必须是YYYY-MM-DD（年-月-日）"
 
-#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:164
+#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:166
 msgid "Text|Unknown error prevented saving this data"
 msgstr "未知错误阻止保存该数据 \t\t"
 
@@ -7262,7 +7262,7 @@ msgstr ""
 "本项目是用旧版Miradi创建的，因此需要迁移到当前的数据格式才能打开。首先要保存"
 "一个备份以防万一出错。要执行自动迁移吗？"
 
-#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:170
+#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:172
 msgid ""
 "This value must be numeric<br><br>Currency symbols and percent signs are not "
 "allowed"
@@ -7302,7 +7302,7 @@ msgstr "威胁因子名称 \t\t"
 msgid "Threat Rating Details"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/threatrating/ThreatRatingPreferencesPanel.java:40
+#: Miradi/source/org/miradi/dialogs/threatrating/ThreatRatingPreferencesPanel.java:41
 msgid "Threat Rating Preferences Panel"
 msgstr "威胁因子分级优先选择面板 \t\t"
 
@@ -7404,7 +7404,7 @@ msgstr "删除 \t\t"
 msgid "Title|Diagram Panel"
 msgstr "图表面板 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:48
+#: Miradi/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:49
 msgid "Title|Diagram Properties"
 msgstr "图表属性 \t\t"
 
@@ -7458,11 +7458,11 @@ msgstr "信息 \t\t"
 msgid "Title|Intermediate Result Properties"
 msgstr "标题|中途结果属性"
 
-#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:52
+#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:53
 msgid "Title|Key Ecological Attribute Properties"
 msgstr "关键生态学属性的特性 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/diagram/LegacyTncStrategyRankingEditorPropertiesSubPanel.java:91
+#: Miradi/source/org/miradi/dialogs/diagram/LegacyTncStrategyRankingEditorPropertiesSubPanel.java:92
 msgid "Title|Legacy TNC Strategy Editor Ranking Properties"
 msgstr "传承TNC（大自然保护协会）策略编辑器排行属性 \t\t"
 
@@ -7478,7 +7478,7 @@ msgstr "测量属性 \t\t"
 msgid "Title|Method Properties"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/subTarget/SubTargetPropertiesPanel.java:47
+#: Miradi/source/org/miradi/dialogs/subTarget/SubTargetPropertiesPanel.java:48
 msgid "Title|Nested Target Properties"
 msgstr "嵌套对象属性 \t\t"
 
@@ -7490,7 +7490,7 @@ msgstr "分目标属性 \t\t"
 msgid "Title|Open Standards Status"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/organization/OrganizationPropertiesPanel.java:56
+#: Miradi/source/org/miradi/dialogs/organization/OrganizationPropertiesPanel.java:57
 msgid "Title|Organization Properties"
 msgstr "组织属性 \t\t"
 
@@ -7498,7 +7498,7 @@ msgstr "组织属性 \t\t"
 msgid "Title|Other Notable Species"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/organization/OrganizationManagementPanel.java:49
+#: Miradi/source/org/miradi/dialogs/organization/OrganizationManagementPanel.java:50
 msgid "Title|Other Orgs"
 msgstr "其它组织 \t\t"
 
@@ -7511,7 +7511,7 @@ msgstr "重写存在的文件？ \t\t"
 msgid "Title|Progress Percent"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/progressReport/ProgressReportSubPanel.java:60
+#: Miradi/source/org/miradi/dialogs/progressReport/ProgressReportSubPanel.java:61
 msgid "Title|Progress Report"
 msgstr ""
 
@@ -7519,15 +7519,15 @@ msgstr ""
 msgid "Title|Project Filename"
 msgstr "项目文件名 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/reportTemplate/ReportTemplatePropertiesPanel.java:48
+#: Miradi/source/org/miradi/dialogs/reportTemplate/ReportTemplatePropertiesPanel.java:49
 msgid "Title|Report Template Properties"
 msgstr "标题|报告模板属性"
 
-#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:92
+#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:93
 msgid "Title|Resource Properties"
 msgstr "资源特性"
 
-#: Miradi/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:48
+#: Miradi/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:49
 msgid "Title|Results Chain Properties"
 msgstr ""
 
@@ -7535,7 +7535,7 @@ msgstr ""
 msgid "Title|Save %s File"
 msgstr "保存 %s 文件  \t\t"
 
-#: Miradi/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:58
+#: Miradi/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:59
 msgid "Title|Scope Box Properties"
 msgstr ""
 
@@ -7555,11 +7555,11 @@ msgstr "简单生存力 \t\t"
 msgid "Title|Strategy Properties"
 msgstr "策略属性 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/stress/StressCommentsSubPanel.java:41
+#: Miradi/source/org/miradi/dialogs/stress/StressCommentsSubPanel.java:42
 msgid "Title|Stress Comments"
 msgstr "压力诠释"
 
-#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:74
+#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:75
 msgid "Title|Stress Details"
 msgstr "压力详情"
 
@@ -7575,7 +7575,7 @@ msgstr "压力可见度"
 msgid "Title|Stress-Based Threat Rating"
 msgstr "基于压力的威胁因子分级 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:50
+#: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:51
 msgid "Title|Tag Properties Panel"
 msgstr "标题|标签属性面板"
 
@@ -7583,7 +7583,7 @@ msgstr "标题|标签属性面板"
 msgid "Title|Target Properties"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityMultiPropertiesPanel.java:68
+#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityMultiPropertiesPanel.java:69
 msgid "Title|Target Viability Properties"
 msgstr "对象存活属性 \t\t"
 
@@ -7595,7 +7595,7 @@ msgstr "任务属性 \t\t"
 msgid "Title|Team"
 msgstr "团队 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:85
+#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:86
 msgid "Title|Team Properties"
 msgstr "团队属性 \t\t"
 
@@ -7603,7 +7603,7 @@ msgstr "团队属性 \t\t"
 msgid "Title|Threat Reduction Result Properties"
 msgstr "标题|威胁因子减少结果属性"
 
-#: Miradi/source/org/miradi/views/diagram/ConfigureLayers.java:44
+#: Miradi/source/org/miradi/views/diagram/ConfigureLayers.java:46
 msgid "Title|View Layers"
 msgstr "视图层 \t\t"
 
@@ -7628,11 +7628,11 @@ msgstr ""
 msgid "Total Monitoring Budget %1 %2"
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/factortypes/FactorTypeContributingFactor.java:36
+#: Miradi/source/org/miradi/diagram/factortypes/FactorTypeContributingFactor.java:38
 msgid "Type|Contributing Factor"
 msgstr "影响因素 \t\t"
 
-#: Miradi/source/org/miradi/diagram/factortypes/FactorTypeDirectThreat.java:35
+#: Miradi/source/org/miradi/diagram/factortypes/FactorTypeDirectThreat.java:37
 msgid "Type|Direct Threat"
 msgstr "直接威胁因子 \t\t"
 
@@ -7656,12 +7656,12 @@ msgstr ""
 msgid "Unable to launch external web browser"
 msgstr "无法运行外部网页浏览器 \t\t"
 
-#: Miradi/source/org/miradi/views/planning/doers/ImportAccountingCodesDoer.java:75
+#: Miradi/source/org/miradi/views/planning/doers/ImportAccountingCodesDoer.java:77
 msgid "Unable to process file: verify file format"
 msgstr "无法处理文件：确认文件格式 \t\t"
 
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:136
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:128
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:138
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:130
 msgid "Unable to process request: "
 msgstr "无法处理请求： \t\t"
 
@@ -7702,7 +7702,7 @@ msgstr ""
 msgid "Unexpected call to getText"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/FactorTagListEditor.java:92
+#: Miradi/source/org/miradi/dialogfields/FactorTagListEditor.java:93
 msgid "Unexpected call to removeListSelectionListener"
 msgstr ""
 
@@ -7816,7 +7816,7 @@ msgstr "非常小"
 msgid "Viability Analysis Mode"
 msgstr "生存力分析模式 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityRatingsSubPanel.java:71
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityRatingsSubPanel.java:72
 msgid "Viability Ratings"
 msgstr "生存力分级 \t\t"
 
@@ -8070,7 +8070,7 @@ msgstr "日元（日本）"
 msgid "Yes"
 msgstr "是"
 
-#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:142
+#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:145
 msgid ""
 "You are removing this resource from the project team, so he/she will no "
 "longer appear in the list of Team Members in the Summary View. "
@@ -8078,7 +8078,7 @@ msgstr ""
 "您正从本项目团队中去除本资源，因此他/她将不会在摘要视图里的团队成员列表中出"
 "现。 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:257
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:259
 msgid "You must select one item in each of the two lists"
 msgstr "您必须在两个列表中各选定一个选项 \t\t"
 
@@ -8121,7 +8121,7 @@ msgstr "[无项目] \t\t"
 msgid "[Not Named]"
 msgstr "[未命名] \t\t"
 
-#: Miradi/source/org/miradi/views/diagram/CreateConceptualModelPageDoer.java:96
+#: Miradi/source/org/miradi/views/diagram/CreateConceptualModelPageDoer.java:98
 msgid "[Page %s]"
 msgstr "[页 %s] \t\t"
 

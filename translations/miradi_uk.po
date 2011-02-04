@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-04 10:42-0600\n"
+"POT-Creation-Date: 2011-02-04 11:26-0600\n"
 "PO-Revision-Date: 2010-09-30 09:31+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -86,7 +86,7 @@ msgstr ""
 "привести до втрати даних. \n"
 "Будь ласка зверніться за технічною допомогою до розробників Міраді"
 
-#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardLinkDirectThreatsToTargetsStep.java:48
+#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardLinkDirectThreatsToTargetsStep.java:51
 msgid " 2) Connect threat to relevant targets"
 msgstr "2) З'єднати загрозу з відповідними цілями"
 
@@ -328,7 +328,7 @@ msgstr "(Дивись табулятор розміщення)"
 msgid "(See Project tab)"
 msgstr "(Дивись табулятор проекту)"
 
-#: Miradi/source/org/miradi/views/umbrella/AboutDoer.java:71
+#: Miradi/source/org/miradi/views/umbrella/AboutDoer.java:73
 msgid "(Translation: %code %date)"
 msgstr "(Перетворення: %коду %даних) "
 
@@ -381,36 +381,36 @@ msgstr "0"
 msgid "1"
 msgstr "1"
 
-#: Miradi/source/org/miradi/wizard/planning/WorkPlanDevelopActivitiesAndTasksStep.java:48
+#: Miradi/source/org/miradi/wizard/planning/WorkPlanDevelopActivitiesAndTasksStep.java:49
 msgid "1) Activities"
 msgstr "1) Діяльності"
 
-#: Miradi/source/org/miradi/wizard/targetviability/TargetViabilityDetermineKeyAttributesStep.java:47
+#: Miradi/source/org/miradi/wizard/targetviability/TargetViabilityDetermineKeyAttributesStep.java:50
 msgid "1) Determine key ecological attributes"
 msgstr "1) Всановити ключові екологічні характеристики"
 
-#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardDefineTargetsStep.java:48
+#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardDefineTargetsStep.java:51
 msgid "1) Identify initial list of targets"
 msgstr "1) Визначити початковий перелік цілей"
 
-#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardIdentifyDirectThreatStep.java:48
+#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardIdentifyDirectThreatStep.java:51
 msgid "1) Insert direct threat"
 msgstr "1) Вставити пряму загрозу"
 
-#: Miradi/source/org/miradi/wizard/planning/BudgetWizardAccountingAndFunding.java:47
+#: Miradi/source/org/miradi/wizard/planning/BudgetWizardAccountingAndFunding.java:50
 msgid "1) List accounting codes and funding sources"
 msgstr "1) Перелік бухгалтерських кодів і джерел фінансування"
 
-#: Miradi/source/org/miradi/wizard/diagram/SelectChainStep.java:47
+#: Miradi/source/org/miradi/wizard/diagram/SelectChainStep.java:50
 msgid "1) Select factor chain"
 msgstr "1) Вибрати ланцюг факторів"
 
-#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardResultsChainSelectStrategyStep.java:47
+#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardResultsChainSelectStrategyStep.java:50
 msgid "1) Select strategy to focus on "
 msgstr "1) Вибрати фокусну стратегію"
 
-#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatRatingWizardChooseBundle.java:51
-#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatStressOverviewStep.java:47
+#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatRatingWizardChooseBundle.java:54
+#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatStressOverviewStep.java:50
 msgid "1) Select target and threat to work on"
 msgstr "1) Вибрати ціль і загрозу, щоб продовжити працювати"
 
@@ -418,35 +418,35 @@ msgstr "1) Вибрати ціль і загрозу, щоб продовжит�
 msgid "2"
 msgstr "2"
 
-#: Miradi/source/org/miradi/wizard/planning/BudgetWizardBudgetDetail.java:47
+#: Miradi/source/org/miradi/wizard/planning/BudgetWizardBudgetDetail.java:50
 msgid "2) Add budget detail to workplan "
 msgstr "2) Додати деталі бюджету до робочого плану"
 
-#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardConstructInitialResultsChain.java:47
+#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardConstructInitialResultsChain.java:50
 msgid "2) Construct initial results chain "
 msgstr "2) Побудувати первинний ланцюг результатів"
 
-#: Miradi/source/org/miradi/wizard/diagram/DevelopDraftStrategiesStep.java:47
+#: Miradi/source/org/miradi/wizard/diagram/DevelopDraftStrategiesStep.java:50
 msgid "2) Develop draft strategies"
 msgstr "2) Розробити проекти стратегій"
 
-#: Miradi/source/org/miradi/wizard/targetviability/TargetViabilityIdentifyIndicatorsStep.java:47
+#: Miradi/source/org/miradi/wizard/targetviability/TargetViabilityIdentifyIndicatorsStep.java:50
 msgid "2) Identify indicators"
 msgstr "2) Встановити індикатори"
 
-#: Miradi/source/org/miradi/wizard/planning/WorkPlanDevelopMethodsAndTasksStep.java:47
+#: Miradi/source/org/miradi/wizard/planning/WorkPlanDevelopMethodsAndTasksStep.java:49
 msgid "2) Methods"
 msgstr "2) Методи"
 
-#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatStressRateScopeAndSeverityStep.java:48
+#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatStressRateScopeAndSeverityStep.java:51
 msgid "2) Rate scope and severity of stress"
 msgstr "2) Оцінити зону дії та серйозність навантаження"
 
-#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatRatingWizardScopeStep.java:52
+#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatRatingWizardScopeStep.java:55
 msgid "2) Rate the scope of the threat "
 msgstr "2) Оцінити зону дії загрози"
 
-#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardReviewAndModifyTargetsStep.java:48
+#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardReviewAndModifyTargetsStep.java:51
 msgid "2) Review and modify targets"
 msgstr "2) Переглянути і відкоректувати цілі"
 
@@ -454,31 +454,31 @@ msgstr "2) Переглянути і відкоректувати цілі"
 msgid "3"
 msgstr "3"
 
-#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardCompleteResultsChainLinks.java:47
+#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardCompleteResultsChainLinks.java:50
 msgid "3) Complete links in the chain "
 msgstr "3) Завершити зв'язки в ланцюгу"
 
-#: Miradi/source/org/miradi/wizard/planning/WorkPlanCreateResourcesStep.java:47
+#: Miradi/source/org/miradi/wizard/planning/WorkPlanCreateResourcesStep.java:49
 msgid "3) Edit resources"
 msgstr "3) Редагувати ресурси"
 
-#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatStressRateContributionAndIrreversibilityStep.java:48
+#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatStressRateContributionAndIrreversibilityStep.java:51
 msgid "3) Rate contribution and irreversibility of threat"
 msgstr "3) Рівень вкладу і незворотності загрози"
 
-#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatRatingWizardSeverityStep.java:52
+#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatRatingWizardSeverityStep.java:55
 msgid "3) Rate the severity of the threat"
 msgstr "3) Рівень серйозності загрози"
 
-#: Miradi/source/org/miradi/wizard/planning/BudgetWizardReconcileActualExpendituresStep.java:48
+#: Miradi/source/org/miradi/wizard/planning/BudgetWizardReconcileActualExpendituresStep.java:51
 msgid "3) Reconcile actual expenditures"
 msgstr "3) Узгодити поточні витрати"
 
-#: Miradi/source/org/miradi/wizard/targetviability/TargetViabilityDevelopDraftIndicatorsStep.java:47
+#: Miradi/source/org/miradi/wizard/targetviability/TargetViabilityDevelopDraftIndicatorsStep.java:50
 msgid "3a) Develop draft indicator ratings"
 msgstr "3a) Розробити проект рейтингів індикатора"
 
-#: Miradi/source/org/miradi/wizard/targetviability/TargetViabilityRefineIndicatorRatingsStep.java:47
+#: Miradi/source/org/miradi/wizard/targetviability/TargetViabilityRefineIndicatorRatingsStep.java:50
 msgid "3b) Refine indicator ratings"
 msgstr "3b) Вдосконалити рейтинги індикатора"
 
@@ -486,19 +486,19 @@ msgstr "3b) Вдосконалити рейтинги індикатора"
 msgid "4) Assign resources"
 msgstr "4) Встановити ресурси"
 
-#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatStressCheckThreatRatingStep.java:47
+#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatStressCheckThreatRatingStep.java:50
 msgid "4) Check target-threat rating"
 msgstr "4) вибрати рейтинг ціль-загроза"
 
-#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatRatingWizardIrreversibilityStep.java:52
+#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatRatingWizardIrreversibilityStep.java:55
 msgid "4) Rate the irreversibility of the threat"
 msgstr "4) Рівень незворотності загрози"
 
-#: Miradi/source/org/miradi/wizard/targetviability/TargetViabilityRecordInitialMeasurementStep.java:47
+#: Miradi/source/org/miradi/wizard/targetviability/TargetViabilityRecordInitialMeasurementStep.java:50
 msgid "4) Record initial measurement"
 msgstr "4) Записати початкове вимірювання"
 
-#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardGoodResultsChainCriteriaReview.java:47
+#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardGoodResultsChainCriteriaReview.java:50
 msgid "4) Review the criteria for a good results chain"
 msgstr "Переглянути критерії для ланцюга добрих результатів"
 
@@ -506,11 +506,11 @@ msgstr "Переглянути критерії для ланцюга добри
 msgid "4C. Refine Work Plans on Ongoing Basis"
 msgstr "4C. Вдосконалення робочих планів на діючій основі "
 
-#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatRatingWizardCheckBundleStep.java:48
+#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatRatingWizardCheckBundleStep.java:51
 msgid "5) Check target-threat rating"
 msgstr "5) Перевірити рейтинг ціль-загроза"
 
-#: Miradi/source/org/miradi/wizard/targetviability/TargetViabilityDetermineDesiredStatusStep.java:47
+#: Miradi/source/org/miradi/wizard/targetviability/TargetViabilityDetermineDesiredStatusStep.java:50
 msgid "5) Determine desired status"
 msgstr "5) Визначити бажаний стан"
 
@@ -579,7 +579,7 @@ msgstr ""
 "табулятора і перевірте, чи екорегіон(и) є правильними для цього проекту.</"
 "HTML>"
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:55
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:56
 msgid ""
 "<HTML>When pasting between projects, can't paste from CM to RC or vice "
 "versa</HTML>"
@@ -620,7 +620,7 @@ msgstr ""
 "td><td><input type='submit' name='Import ConPro Project' value='ConPro/"
 "Miradi Exchange File (.cpmz)'></input></td></tr></table></p><br>"
 
-#: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:75
+#: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:76
 msgid ""
 "<div class='WizardText'><p><table><tr><td><input type='submit' name='Back' "
 "value='&lt; Previous'></input></td><td><input type='submit' name='Next' "
@@ -1075,7 +1075,7 @@ msgstr ""
 "Для видів, як правило, вимірюється як ступінь зменшення цільової популяції в "
 "межах зони діяльності."
 
-#: Miradi/source/org/miradi/views/umbrella/AboutDoer.java:58
+#: Miradi/source/org/miradi/views/umbrella/AboutDoer.java:60
 msgid "<strong>Version: %s</strong>"
 msgstr "<strong>Версія: %и</strong>"
 
@@ -1160,7 +1160,7 @@ msgstr "Бухгалтерський код"
 msgid "Action|< Previous"
 msgstr "Action|< Попередній"
 
-#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:55
+#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:56
 #: Miradi/source/org/miradi/actions/ActionAboutBenetech.java:35
 msgid "Action|About Benetech"
 msgstr "Action|Про Benetech"
@@ -1169,17 +1169,17 @@ msgstr "Action|Про Benetech"
 msgid "Action|About Miradi"
 msgstr "Action|Про Miradi"
 
-#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:57
+#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:58
 #: Miradi/source/org/miradi/actions/ActionAboutCMP.java:34
 msgid "Action|About the CMP"
 msgstr "Action|Про CMP"
 
-#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:63
+#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:64
 #: Miradi/source/org/miradi/actions/ActionHelpAdaptiveManagement.java:34
 msgid "Action|Adaptive Management"
 msgstr "Action|Адаптивний менеджмент"
 
-#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:59
+#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:60
 #: Miradi/source/org/miradi/actions/ActionHelpAgileSoftware.java:34
 msgid "Action|Agile Software"
 msgstr "Action|Швидке програмне забезпечення"
@@ -1196,7 +1196,7 @@ msgstr "Action|Самовпорядковуюча діаграма (BETA)"
 msgid "Action|Brainstorm Mode"
 msgstr "Action|Мозковий штурм"
 
-#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:61
+#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:62
 #: Miradi/source/org/miradi/actions/ActionHelpCMPStandards.java:34
 msgid "Action|CMP Open Standards"
 msgstr "Action|CMP відкриті стандарти"
@@ -1225,7 +1225,7 @@ msgstr "Action|Завершити"
 msgid "Action|Collapse All Rows"
 msgstr "Action|Згорнути всі ряди"
 
-#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:51
+#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:52
 #: Miradi/source/org/miradi/actions/ActionHelpComingAttractions.java:34
 msgid "Action|Coming Attractions"
 msgstr "Action|Майбутні привабливості"
@@ -1303,7 +1303,7 @@ msgstr "Action|Створити тиск"
 msgid "Action|Create Stress from KEA"
 msgstr "Action|Створити тиск з  KEA"
 
-#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:53
+#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:54
 #: Miradi/source/org/miradi/actions/ActionHelpCredits.java:34
 msgid "Action|Credits"
 msgstr "Action|Розробники"
@@ -1392,7 +1392,7 @@ msgstr "Action|Редагувати методи..."
 msgid "Action|Edit..."
 msgstr "Action|Редагувати..."
 
-#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:47
+#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:48
 #: Miradi/source/org/miradi/actions/ActionHelpButtonExamples.java:34
 msgid "Action|Examples"
 msgstr "Action|Приклади"
@@ -1701,7 +1701,7 @@ msgstr "Action|Miradi Project Zip (MPZ) File  "
 msgid "Action|Monitoring Plan"
 msgstr "Action|План моніторингу"
 
-#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:45
+#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:46
 #: Miradi/source/org/miradi/actions/ActionHelpButtonMoreInfo.java:34
 msgid "Action|More Info"
 msgstr "Action|Більше інформації"
@@ -1880,7 +1880,7 @@ msgstr "Action|Стратегічний план"
 msgid "Action|Summary"
 msgstr "Action|Резюме"
 
-#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:65
+#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:66
 #: Miradi/source/org/miradi/actions/ActionHelpButtonSupport.java:34
 msgid "Action|Support"
 msgstr "Action|Підтримка"
@@ -1985,7 +1985,7 @@ msgstr "Action|WCS Miradi Project ZIP (BETA)"
 msgid "Action|Work Plan"
 msgstr "Action|Робочий план"
 
-#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:49
+#: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:50
 #: Miradi/source/org/miradi/actions/ActionHelpButtonWorkshop.java:34
 msgid "Action|Workshop"
 msgstr "Action|Семінар"
@@ -2168,32 +2168,32 @@ msgstr "Квітень"
 msgid "April to March"
 msgstr "Квітень - березень"
 
-#: Miradi/source/org/miradi/views/diagram/DeleteGoal.java:30
+#: Miradi/source/org/miradi/views/diagram/DeleteGoal.java:31
 msgid "Are you sure you want to delete this Goal?"
 msgstr "Ви впевнені, що хочете видалити цю Мету?"
 
-#: Miradi/source/org/miradi/views/diagram/DeleteIndicator.java:41
+#: Miradi/source/org/miradi/views/diagram/DeleteIndicator.java:43
 msgid "Are you sure you want to delete this Indicator?"
 msgstr "Ви впевнені, що хочете видалити цей Індикатор?"
 
-#: Miradi/source/org/miradi/views/diagram/DeleteKeyEcologicalAttributeDoer.java:44
+#: Miradi/source/org/miradi/views/diagram/DeleteKeyEcologicalAttributeDoer.java:46
 msgid "Are you sure you want to delete this Key Ecological Attribute?"
 msgstr "Ви впевнені, що хочете видалити цю Ключову екологіну характеристику?"
 
-#: Miradi/source/org/miradi/views/diagram/DeleteSubTargetDoer.java:46
+#: Miradi/source/org/miradi/views/diagram/DeleteSubTargetDoer.java:50
 msgid "Are you sure you want to delete this Nested Target?"
 msgstr "Ви впевнені, що хочете видалити цю вставлену ціль? "
 
-#: Miradi/source/org/miradi/views/diagram/DeleteObjective.java:30
+#: Miradi/source/org/miradi/views/diagram/DeleteObjective.java:31
 msgid "Are you sure you want to delete this Objective?"
 msgstr "Ви впевнені, що хочете видалити це Завдання?"
 
-#: Miradi/source/org/miradi/views/umbrella/doers/DeleteProgressPercentDoer.java:48
+#: Miradi/source/org/miradi/views/umbrella/doers/DeleteProgressPercentDoer.java:51
 msgid "Are you sure you want to delete this Progress Percent?"
 msgstr "Ви впевнені. що хочете видалити цей відсоток?"
 
 #: Miradi/source/org/miradi/views/diagram/doers/DeleteProgressReportDoer.java:50
-#: Miradi/source/org/miradi/views/diagram/doers/DeleteStrategyProgressReportDoer.java:47
+#: Miradi/source/org/miradi/views/diagram/doers/DeleteStrategyProgressReportDoer.java:51
 msgid "Are you sure you want to delete this Progress Report?"
 msgstr "Ви впевнені, що хочете видалити цей звіт?"
 
@@ -2363,7 +2363,7 @@ msgstr ""
 msgid "Assigned Resources Only"
 msgstr "Тільки призначені ресурси"
 
-#: Miradi/source/org/miradi/dialogs/assignment/AssignmentsPropertiesPanel.java:73
+#: Miradi/source/org/miradi/dialogs/assignment/AssignmentsPropertiesPanel.java:75
 msgid "Assignments"
 msgstr "Призначення"
 
@@ -2495,14 +2495,14 @@ msgstr "Вузлові правила"
 
 #: Miradi/source/org/miradi/database/DataUpgrader.java:48
 #: Miradi/source/org/miradi/database/DataUpgrader.java:60
-#: Miradi/source/org/miradi/views/diagram/doers/AbstractPasteDoer.java:71
+#: Miradi/source/org/miradi/views/diagram/doers/AbstractPasteDoer.java:72
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:52
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:225
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/DirectoryChooserDialog.java:76
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:127
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:166
 #: Miradi/source/org/miradi/dialogs/confirm/ConfirmDialogTemplate.java:51
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:239
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:241
 msgid "Button|Cancel"
 msgstr "Button|Закрити"
 
@@ -2548,7 +2548,7 @@ msgstr "Button|Перемістити"
 msgid "Button|No"
 msgstr "Button|Ні"
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:236
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:238
 msgid "Button|OK"
 msgstr "Button|OK"
 
@@ -2556,7 +2556,7 @@ msgstr "Button|OK"
 msgid "Button|Ok"
 msgstr "Button|Добре"
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:171
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:172
 msgid "Button|Paste As Copies"
 msgstr ""
 
@@ -2564,7 +2564,7 @@ msgstr ""
 msgid "Button|Paste Contents"
 msgstr "Button|Вставити вміст"
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:172
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:173
 msgid "Button|Paste Shared"
 msgstr ""
 
@@ -2604,7 +2604,7 @@ msgstr "Сторінка CM"
 msgid "CMP"
 msgstr "CMP"
 
-#: Miradi/source/org/miradi/views/schedule/ScheduleView.java:62
+#: Miradi/source/org/miradi/views/schedule/ScheduleView.java:65
 msgid "Calendar"
 msgstr "Календар"
 
@@ -2733,7 +2733,7 @@ msgstr "Вибрати папку даних"
 msgid "Choose Folder"
 msgstr "Вибрати папку"
 
-#: Miradi/source/org/miradi/views/diagram/CloneGoalDoer.java:32
+#: Miradi/source/org/miradi/views/diagram/CloneGoalDoer.java:33
 msgid "Choose Goal to Create from"
 msgstr "Виберіть Ціль щоб Створити з"
 
@@ -2754,7 +2754,7 @@ msgstr "Виберіть Завдання щоб Створити з"
 msgid "Choose Relevant Goal(s)"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractRelevancyEditListDoer.java:51
+#: Miradi/source/org/miradi/views/umbrella/AbstractRelevancyEditListDoer.java:53
 msgid "Choose Relevant Indicator(s)"
 msgstr "Вибрати відповідний індикатор(и)"
 
@@ -2763,7 +2763,7 @@ msgstr "Вибрати відповідний індикатор(и)"
 msgid "Choose Relevant Objective(s)"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/doers/CloneStressDoer.java:32
+#: Miradi/source/org/miradi/views/diagram/doers/CloneStressDoer.java:33
 msgid "Choose Stress to Create from"
 msgstr "Виберіть Навантаження щоб Створити з"
 
@@ -2818,7 +2818,7 @@ msgstr "Завершений - Успішно закінчений"
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:107
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:70
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:46
-#: Miradi/source/org/miradi/dialogs/diagram/ConceptualModelDiagramPanel.java:67
+#: Miradi/source/org/miradi/dialogs/diagram/ConceptualModelDiagramPanel.java:69
 msgid "Conceptual Model"
 msgstr "Концептуальна модель"
 
@@ -2897,7 +2897,7 @@ msgstr "Контрольна панель"
 msgid "Copy"
 msgstr "Копіювати"
 
-#: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:93
+#: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:95
 msgid "Copy to..."
 msgstr "Копіювати у..."
 
@@ -2922,7 +2922,7 @@ msgstr "Країна"
 msgid "Create"
 msgstr "Створити"
 
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:153
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:155
 msgid "Create Failed:"
 msgstr "Створити не вдалося:"
 
@@ -3106,7 +3106,7 @@ msgstr "Визначити сферу дій проекту"
 #: Miradi/source/org/miradi/views/noproject/DeleteProject.java:45
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:61
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:52
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:54
 #: Miradi/source/org/miradi/main/EAM.java:447
 #: Miradi/source/org/miradi/main/EAM.java:448
 msgid "Delete"
@@ -3121,7 +3121,7 @@ msgid "Delete Resource"
 msgstr "Видалити ресурс"
 
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:45
-#: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:96
+#: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:98
 msgid "Delete..."
 msgstr "Видалити..."
 
@@ -3181,10 +3181,10 @@ msgstr "Бажана цінність або стан"
 msgid "Detail activities, tasks, and responsibilities"
 msgstr "Деталізувати види діяльності, завдання та відповідальності"
 
-#: Miradi/source/org/miradi/wizard/planning/WorkPlanCreateResourcesStep.java:42
+#: Miradi/source/org/miradi/wizard/planning/WorkPlanCreateResourcesStep.java:43
 #: Miradi/source/org/miradi/wizard/planning/WorkPlanAssignResourcesStep.java:43
-#: Miradi/source/org/miradi/wizard/planning/WorkPlanDevelopActivitiesAndTasksStep.java:42
-#: Miradi/source/org/miradi/wizard/planning/WorkPlanDevelopMethodsAndTasksStep.java:42
+#: Miradi/source/org/miradi/wizard/planning/WorkPlanDevelopActivitiesAndTasksStep.java:43
+#: Miradi/source/org/miradi/wizard/planning/WorkPlanDevelopMethodsAndTasksStep.java:43
 msgid "Detail activities/methods, tasks, and responsibilities"
 msgstr "Деталізувати дії/методи, завдання та відповідальності"
 
@@ -3435,7 +3435,7 @@ msgstr ""
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:79
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetThreatLinkTableModel.java:76
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetSummaryRowTableModel.java:66
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorTreeModel.java:72
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorTreeModel.java:73
 #: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:112
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:103
 msgid "Error"
@@ -3462,7 +3462,7 @@ msgstr "Сталася помилка. Спробуйте зберегти пі�
 msgid "Error Retrieving Data"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListSaveAsAction.java:40
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListSaveAsAction.java:42
 msgid "Error copying project: "
 msgstr "Помилка копіювання проекту:"
 
@@ -3470,11 +3470,11 @@ msgstr "Помилка копіювання проекту:"
 msgid "Error creating folder: "
 msgstr "Помилка створення папки:"
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:47
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:49
 msgid "Error deleting project: "
 msgstr "Помилка видалення проекту:"
 
-#: Miradi/source/org/miradi/views/umbrella/RedoDoer.java:53
+#: Miradi/source/org/miradi/views/umbrella/RedoDoer.java:55
 msgid "Error during redo"
 msgstr "Помилка при повторній операції"
 
@@ -3482,7 +3482,7 @@ msgstr "Помилка при повторній операції"
 msgid "Error during undo"
 msgstr "Помилка під час відкривання"
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListExportAction.java:40
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListExportAction.java:42
 msgid "Error exporting project: "
 msgstr "Помилка експортування проекту:"
 
@@ -3511,7 +3511,7 @@ msgstr "Помилка під час спроби експортувати ви�
 msgid "Error occurred while trying to export to a tab delimited file."
 msgstr "Сталася помилка під час спроби транспортувати до файлу tab delimited."
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListOpenAction.java:39
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListOpenAction.java:41
 msgid "Error opening project: "
 msgstr "Помилка відкривання проекту:"
 
@@ -3519,7 +3519,7 @@ msgstr "Помилка відкривання проекту:"
 msgid "Error reading %s. Perhaps it is not a valid zip file."
 msgstr "Помилка читання %ів. Можливо це не дійсний zip файл."
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListRenameAction.java:46
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListRenameAction.java:48
 msgid "Error renaming project: "
 msgstr "Помилка перейменування проекту:"
 
@@ -3560,11 +3560,11 @@ msgstr "Експортування проекту (BETA)"
 msgid "Export complete"
 msgstr "Експорт завершено"
 
-#: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:94
+#: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:96
 msgid "Export to Miradi Zip..."
 msgstr "Експортувати до Miradi Zip..."
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListExportAction.java:45
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListExportAction.java:47
 msgid "Export..."
 msgstr "Експортувати..."
 
@@ -3861,7 +3861,7 @@ msgstr "Джерела фінансування - Джерела коштів, �
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:31
 #: Miradi/source/org/miradi/forms/objects/GoalPropertiesForm.java:31
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:78
-#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:166
+#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:167
 #: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:41
 #: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:44
 msgid "Goal"
@@ -3877,11 +3877,11 @@ msgstr ""
 "природоохоронних проектах це є бажаний майбутній стан природоохоронної цілі. "
 "У Міраді мета представляється малим блакитним овалом."
 
-#: Miradi/source/org/miradi/dialogs/base/RelevancyGoalPanel.java:40
+#: Miradi/source/org/miradi/dialogs/base/RelevancyGoalPanel.java:41
 msgid "Goal Relevancy Panel"
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:168
+#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:169
 #: Miradi/source/org/miradi/dialogs/task/ActivityDetailsPanelWithRelevancyOverrideFields.java:45
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:90
 msgid "Goals"
@@ -3943,7 +3943,7 @@ msgstr "Польове уточнення і перевірка моделі"
 msgid "Group Box"
 msgstr "Групова рамка"
 
-#: Miradi/source/org/miradi/dialogs/diagram/GroupBoxPropertiesPanel.java:53
+#: Miradi/source/org/miradi/dialogs/diagram/GroupBoxPropertiesPanel.java:54
 msgid "Group Box Properties"
 msgstr "Складові Групової рамки"
 
@@ -4081,11 +4081,11 @@ msgstr "Реалізувати робочий план"
 msgid "Import"
 msgstr "Імпорт"
 
-#: Miradi/source/org/miradi/views/planning/doers/ImportAccountingCodesDoer.java:57
+#: Miradi/source/org/miradi/views/planning/doers/ImportAccountingCodesDoer.java:59
 msgid "Import Accounting Codes"
 msgstr "Імпортувати розрахункові коди"
 
-#: Miradi/source/org/miradi/views/planning/doers/ImportAccountingCodesDoer.java:71
+#: Miradi/source/org/miradi/views/planning/doers/ImportAccountingCodesDoer.java:73
 msgid "Import Completed"
 msgstr "Імпорт завершений"
 
@@ -4117,7 +4117,7 @@ msgstr "Спереду"
 msgid "In Progress"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:256
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:258
 msgid "Incomplete Link"
 msgstr "Незавершене з'єднання"
 
@@ -4125,7 +4125,7 @@ msgstr "Незавершене з'єднання"
 #: Miradi/source/org/miradi/forms/objects/IndicatorSubForm.java:32
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:80
 #: Miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:38
-#: Miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:49
+#: Miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:50
 msgid "Indicator"
 msgstr "Індикатор"
 
@@ -4147,7 +4147,7 @@ msgstr ""
 msgid "Indicator Holder"
 msgstr "Тримач Індикатора"
 
-#: Miradi/source/org/miradi/dialogs/diagram/RelevancyIndicatorPanel.java:41
+#: Miradi/source/org/miradi/dialogs/diagram/RelevancyIndicatorPanel.java:42
 msgid "Indicator Relevancy Panel"
 msgstr "Панель індикатора важливості"
 
@@ -4193,7 +4193,7 @@ msgstr "Вставити"
 msgid "Insert FTE Fraction"
 msgstr "Вставити фрагмент FTE"
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:225
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:227
 msgid "Insert Factor Link dialog|No Label Specified"
 msgstr "Insert Factor Link dialog|Не визначений ярлик"
 
@@ -4253,7 +4253,7 @@ msgstr "Вступ у вид"
 msgid "Introduced Vegetation"
 msgstr "Інтродукована рослинність"
 
-#: Miradi/source/org/miradi/wizard/diagram/TargetViabilityMethodChoiceStep.java:47
+#: Miradi/source/org/miradi/wizard/diagram/TargetViabilityMethodChoiceStep.java:50
 msgid "Introduction"
 msgstr "Вступ"
 
@@ -4368,11 +4368,11 @@ msgstr ""
 msgid "Label|Budget Category Two"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/RareCampaignSummarySubPanel.java:68
+#: Miradi/source/org/miradi/views/summary/RareCampaignSummarySubPanel.java:69
 msgid "Label|Campaign"
 msgstr "Label|Кампанія"
 
-#: Miradi/source/org/miradi/views/summary/RareCampaignPlanningSummarySubPanel.java:55
+#: Miradi/source/org/miradi/views/summary/RareCampaignPlanningSummarySubPanel.java:56
 msgid "Label|Campaign Planning"
 msgstr "Label|Планування кампаній"
 
@@ -4389,7 +4389,7 @@ msgstr "Label|Валюта"
 msgid "Label|Existing Projects:"
 msgstr "Label|Існуючі проекти:"
 
-#: Miradi/source/org/miradi/views/summary/FOSSummaryPanel.java:55
+#: Miradi/source/org/miradi/views/summary/FOSSummaryPanel.java:56
 msgid "Label|FOS"
 msgstr "Label|FOS"
 
@@ -4412,24 +4412,24 @@ msgstr "Label|Ініціали"
 msgid "Label|Methods"
 msgstr "Label|Методи"
 
-#: Miradi/source/org/miradi/views/diagram/InsertDraftStrategyDoer.java:60
+#: Miradi/source/org/miradi/views/diagram/InsertDraftStrategyDoer.java:63
 msgid "Label|New Draft Strategy"
 msgstr "Label|Новий проект стратегії"
 
 #: Miradi/source/org/miradi/views/diagram/InsertDirectThreatDoer.java:50
-#: Miradi/source/org/miradi/views/diagram/InsertContributingFactorDoer.java:43
+#: Miradi/source/org/miradi/views/diagram/InsertContributingFactorDoer.java:46
 msgid "Label|New Factor"
 msgstr "Label|Новий фактор"
 
-#: Miradi/source/org/miradi/views/diagram/doers/InsertGroupBoxDoer.java:140
+#: Miradi/source/org/miradi/views/diagram/doers/InsertGroupBoxDoer.java:144
 msgid "Label|New Group Box"
 msgstr "Label|Нова групова рамка"
 
-#: Miradi/source/org/miradi/views/diagram/doers/InsertHumanWelfareTargetDoer.java:36
+#: Miradi/source/org/miradi/views/diagram/doers/InsertHumanWelfareTargetDoer.java:38
 msgid "Label|New Human Welfare Target"
 msgstr "Label|Нова ціль Добробут людей"
 
-#: Miradi/source/org/miradi/views/diagram/InsertIntermediateResultDoer.java:44
+#: Miradi/source/org/miradi/views/diagram/InsertIntermediateResultDoer.java:47
 msgid "Label|New Intermediate Result"
 msgstr "Label|Новий проміжний результат"
 
@@ -4437,19 +4437,19 @@ msgstr "Label|Новий проміжний результат"
 msgid "Label|New Scope Box"
 msgstr "Label|Нова рамка цілей"
 
-#: Miradi/source/org/miradi/views/diagram/InsertStrategyDoer.java:43
+#: Miradi/source/org/miradi/views/diagram/InsertStrategyDoer.java:46
 msgid "Label|New Strategy"
 msgstr "Label|Нова стратегія"
 
-#: Miradi/source/org/miradi/views/diagram/InsertTargetDoer.java:35
+#: Miradi/source/org/miradi/views/diagram/InsertTargetDoer.java:37
 msgid "Label|New Target"
 msgstr "Label|Нова ціль"
 
-#: Miradi/source/org/miradi/views/diagram/InsertTextBoxDoer.java:46
+#: Miradi/source/org/miradi/views/diagram/InsertTextBoxDoer.java:49
 msgid "Label|New Text Box"
 msgstr "Label|Нова текстова рамка"
 
-#: Miradi/source/org/miradi/views/diagram/InsertThreatReductionResultDoer.java:43
+#: Miradi/source/org/miradi/views/diagram/InsertThreatReductionResultDoer.java:46
 msgid "Label|New Threat Reduction Result"
 msgstr "Label|Новий результат Зменшення загрози"
 
@@ -4483,7 +4483,7 @@ msgstr "Label|Категорії заповідних територій"
 msgid "Label|RARE"
 msgstr "Label|RARE"
 
-#: Miradi/source/org/miradi/views/summary/RareTrackingSummarySubPanel.java:51
+#: Miradi/source/org/miradi/views/summary/RareTrackingSummarySubPanel.java:52
 msgid "Label|Rare Tracking"
 msgstr "Label|Рідкий трекінг"
 
@@ -4501,11 +4501,11 @@ msgstr "Label|Ролі (тільки люди)"
 msgid "Label|Team Member"
 msgstr "Label|Виконавець"
 
-#: Miradi/source/org/miradi/views/summary/WCSSummaryPanel.java:62
+#: Miradi/source/org/miradi/views/summary/WCSSummaryPanel.java:63
 msgid "Label|WCS"
 msgstr "Label|WCS"
 
-#: Miradi/source/org/miradi/views/summary/WWFSummaryPanel.java:71
+#: Miradi/source/org/miradi/views/summary/WWFSummaryPanel.java:72
 msgid "Label|WWF"
 msgstr "Label|WWF"
 
@@ -4533,7 +4533,7 @@ msgstr "Найбільший"
 msgid "Last Modified"
 msgstr "Останні зміни"
 
-#: Miradi/source/org/miradi/views/diagram/LayerPanel.java:63
+#: Miradi/source/org/miradi/views/diagram/LayerPanel.java:65
 msgid "Layers"
 msgstr "Шари"
 
@@ -4604,7 +4604,7 @@ msgstr "З'єднати Складові"
 msgid "Lists"
 msgstr "Списки"
 
-#: Miradi/source/org/miradi/views/summary/SummaryLocationPanel.java:63
+#: Miradi/source/org/miradi/views/summary/SummaryLocationPanel.java:64
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:38
 msgid "Location"
 msgstr "Місцезнаходження"
@@ -5058,7 +5058,7 @@ msgstr ""
 msgid "Move To..."
 msgstr "Перемістити до:"
 
-#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:225
+#: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:226
 msgid "Must be a positive number"
 msgstr "Мусить бути додатнє число"
 
@@ -5184,7 +5184,7 @@ msgstr ""
 msgid "Nov"
 msgstr "Листопад"
 
-#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:153
+#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:154
 msgid "Obj"
 msgstr "Об'єкт"
 
@@ -5232,7 +5232,7 @@ msgstr ""
 msgid "Objectives:"
 msgstr "Об'єкти:"
 
-#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:155
+#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:156
 msgid "Objs"
 msgstr "Об'єкти"
 
@@ -5282,8 +5282,8 @@ msgstr ""
 msgid "Onsite Research"
 msgstr "Побічні дослідження"
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListOpenAction.java:44
-#: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:90
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListOpenAction.java:46
+#: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:92
 msgid "Open"
 msgstr "Відкрити"
 
@@ -5326,7 +5326,7 @@ msgstr "Інший"
 msgid "Other Notable Species"
 msgstr "Інші важливі види"
 
-#: Miradi/source/org/miradi/wizard/summary/SummaryWizardRolesAndResponsibilities.java:48
+#: Miradi/source/org/miradi/wizard/summary/SummaryWizardRolesAndResponsibilities.java:50
 msgid "Other Orgs"
 msgstr "Інші організації"
 
@@ -5365,7 +5365,7 @@ msgstr "Песо (Мексика)"
 msgid "Pink"
 msgstr "Рожевий"
 
-#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardProjectScopeStep.java:47
+#: Miradi/source/org/miradi/wizard/diagram/DiagramWizardProjectScopeStep.java:49
 #: Miradi/source/org/miradi/actions/jump/ActionJumpDiagramWizardProjectScopeStep.java:35
 msgid "Place scope on diagram"
 msgstr "Встановити сферу дій на діаграмі"
@@ -5386,7 +5386,7 @@ msgstr "План зберігання даних"
 msgid "Plan project lifespan and exit strategy"
 msgstr "Планувати проектний ресурс і вихідну стратегію"
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningPanel.java:61
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningPanel.java:62
 #: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:116
 msgid "Planning"
 msgstr "Планування"
@@ -5395,15 +5395,15 @@ msgstr "Планування"
 msgid "Planning Parameters"
 msgstr "Параметри планування"
 
-#: Miradi/source/org/miradi/dialogs/indicator/SimpleViabilityMultiPropertiesPanel.java:61
+#: Miradi/source/org/miradi/dialogs/indicator/SimpleViabilityMultiPropertiesPanel.java:62
 msgid "Planning Properties Panel"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewCustomLabelPropertiesPanel.java:39
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewCustomLabelPropertiesPanel.java:40
 msgid "Planning View Configuration Label Properties"
 msgstr "Плановані складові виду ярлика конфігурації"
 
-#: Miradi/source/org/miradi/views/planning/doers/AbstractCreatePlanningViewConfigurationDoer.java:98
+#: Miradi/source/org/miradi/views/planning/doers/AbstractCreatePlanningViewConfigurationDoer.java:100
 msgid "PlanningSubViewName|Custom"
 msgstr " PlanningSubViewName|Податок"
 
@@ -5434,7 +5434,7 @@ msgstr ""
 "Виберіть, будь ласка, який пункт має бути створений у цьому факторі, а тоді "
 "натисніть кнопку Створити з існуючого"
 
-#: Miradi/source/org/miradi/dialogs/diagram/ShareSelectionDialog.java:41
+#: Miradi/source/org/miradi/dialogs/diagram/ShareSelectionDialog.java:43
 msgid ""
 "Please select which item should be shared to this factor, then press the "
 "Share button"
@@ -5568,7 +5568,7 @@ msgstr "Проміжний звіт"
 msgid "Progress Reports"
 msgstr "Проміжні звіти"
 
-#: Miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:95
+#: Miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:96
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:240
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:104
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:69
@@ -5659,7 +5659,7 @@ msgstr "У проекті відсутній явний файл концепт�
 msgid "Project was migrated to the current data format"
 msgstr "Проект був переведений у поточний формат даних"
 
-#: Miradi/source/org/miradi/dialogs/expense/ExpensesPropertiesPanel.java:72
+#: Miradi/source/org/miradi/dialogs/expense/ExpensesPropertiesPanel.java:74
 msgid "Projected Expenses"
 msgstr "Витрати проекту"
 
@@ -5737,7 +5737,7 @@ msgstr "Суміжний проект"
 msgid "Relevant Strategies and Activities"
 msgstr "Відповідні Стратегії та Дії"
 
-#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:141
+#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:144
 msgid "Remove Team Member"
 msgstr "Видалити виконавця"
 
@@ -5745,8 +5745,8 @@ msgstr "Видалити виконавця"
 msgid "Rename Failed"
 msgstr "Не вдалося перейменувати "
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListRenameAction.java:51
-#: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:92
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListRenameAction.java:53
+#: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:94
 msgid "Rename..."
 msgstr "Перейменувати..."
 
@@ -5799,7 +5799,7 @@ msgid "Results Chain Properties"
 msgstr "Складові Ланцюга результатів"
 
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:47
-#: Miradi/source/org/miradi/dialogs/diagram/ResultsChainDiagramPanel.java:49
+#: Miradi/source/org/miradi/dialogs/diagram/ResultsChainDiagramPanel.java:50
 msgid "Results Chains"
 msgstr "Ланцюги результатів"
 
@@ -5812,7 +5812,7 @@ msgstr "Утримувати"
 msgid "Review and modify targets"
 msgstr "Переглянути і вдосконалити цілі"
 
-#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatRatingWizardCheckTotalsStep.java:49
+#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatRatingWizardCheckTotalsStep.java:52
 msgid "Review threat rating summary"
 msgstr "Переглянути підсумок рейтингу загроз"
 
@@ -5879,7 +5879,7 @@ msgstr "Зберегти %и"
 
 #: Miradi/source/org/miradi/views/noproject/CopyProject.java:52
 #: Miradi/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:48
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListSaveAsAction.java:45
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListSaveAsAction.java:47
 msgid "Save As..."
 msgstr "Зберегти як..."
 
@@ -5891,7 +5891,7 @@ msgstr "Запланований"
 msgid "Scheduled for future implementation"
 msgstr "Заплановане для майбутньої реалізації"
 
-#: Miradi/source/org/miradi/views/summary/SummaryScopeTabPanel.java:72
+#: Miradi/source/org/miradi/views/summary/SummaryScopeTabPanel.java:73
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:113
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:37
 #: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:103
@@ -6038,7 +6038,7 @@ msgstr ""
 "як правило вимірюється як ступінь зменшення цільової популяції в межах зони "
 "діяльності. "
 
-#: Miradi/source/org/miradi/dialogs/diagram/ShareSelectionDialog.java:36
+#: Miradi/source/org/miradi/dialogs/diagram/ShareSelectionDialog.java:37
 msgid "Share"
 msgstr "Розподілити"
 
@@ -6118,7 +6118,7 @@ msgstr "Буш - помірний"
 msgid "Simple"
 msgstr "Простий"
 
-#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatSimpleOverviewStep.java:47
+#: Miradi/source/org/miradi/wizard/threatmatrix/ThreatSimpleOverviewStep.java:50
 msgid "Simple Threat Rating"
 msgstr "Простий рейтинг загроз"
 
@@ -6126,7 +6126,7 @@ msgstr "Простий рейтинг загроз"
 msgid "Simple Threat Rating Mode"
 msgstr "Опція Простий рейтинг загроз"
 
-#: Miradi/source/org/miradi/wizard/diagram/DescribeTargetStatusStep.java:47
+#: Miradi/source/org/miradi/wizard/diagram/DescribeTargetStatusStep.java:50
 msgid "Simple viability"
 msgstr "Проста життєздатність"
 
@@ -6142,7 +6142,7 @@ msgstr "Малий"
 msgid "Smallest"
 msgstr "Найменший"
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:122
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:123
 msgid ""
 "Some of the data could not be moved to this project because it refers to "
 "other data that only exists in the old project"
@@ -6580,7 +6580,7 @@ msgstr "TT|Створити новий метод"
 msgid "TT|Create a new Progress Percent"
 msgstr "TT|Створити новий відсоток прогресу"
 
-#: Miradi/source/org/miradi/views/umbrella/ActionCreateProgressReport.java:41
+#: Miradi/source/org/miradi/views/umbrella/ActionCreateProgressReport.java:42
 #: Miradi/source/org/miradi/actions/ActionCreateTaskProgressReport.java:41
 #: Miradi/source/org/miradi/actions/ActionCreateStrategyProgressReport.java:41
 msgid "TT|Create a new Progress Report"
@@ -6801,7 +6801,7 @@ msgstr "TT|Видалити вибраний пункт"
 msgid "TT|Delete the selection"
 msgstr "TT|Видалити вибір"
 
-#: Miradi/source/org/miradi/actions/views/ActionViewWorkPlan.java:41
+#: Miradi/source/org/miradi/actions/views/ActionViewWorkPlan.java:42
 msgid "TT|Develop a work plan and budget"
 msgstr "TT|Розробити робочий план і бюджет"
 
@@ -7097,55 +7097,55 @@ msgstr ""
 msgid "TT|Switch to a different view"
 msgstr "TT|Включити інший вид"
 
-#: Miradi/source/org/miradi/actions/views/ActionViewDiagram.java:41
+#: Miradi/source/org/miradi/actions/views/ActionViewDiagram.java:42
 msgid "TT|Switch to the Conceptual Model Diagram"
 msgstr "TT|Переключити на Діаграму концептуальної моделі"
 
-#: Miradi/source/org/miradi/actions/views/ActionViewBudget.java:40
+#: Miradi/source/org/miradi/actions/views/ActionViewBudget.java:41
 msgid "TT|Switch to the Financial View"
 msgstr "TT|Переключити на Фінансовий вид"
 
-#: Miradi/source/org/miradi/actions/views/ActionViewImages.java:40
+#: Miradi/source/org/miradi/actions/views/ActionViewImages.java:41
 msgid "TT|Switch to the Library View"
 msgstr "TT|Переключити на Вид бібліотеки"
 
-#: Miradi/source/org/miradi/actions/views/ActionViewMap.java:40
+#: Miradi/source/org/miradi/actions/views/ActionViewMap.java:41
 msgid "TT|Switch to the Map View"
 msgstr "TT|Переключити на Вид карти"
 
-#: Miradi/source/org/miradi/actions/views/ActionViewMonitoring.java:40
+#: Miradi/source/org/miradi/actions/views/ActionViewMonitoring.java:41
 msgid "TT|Switch to the Monitoring Plan View"
 msgstr "TT|Переключити на Вид плану моніторингу"
 
-#: Miradi/source/org/miradi/actions/views/ActionViewOperationalPlan.java:41
+#: Miradi/source/org/miradi/actions/views/ActionViewOperationalPlan.java:42
 msgid "TT|Switch to the Operational Plan View"
 msgstr "TT|Переключити на Вид оперативного плану"
 
-#: Miradi/source/org/miradi/actions/views/ActionViewReports.java:41
+#: Miradi/source/org/miradi/actions/views/ActionViewReports.java:42
 msgid "TT|Switch to the Reports View"
 msgstr "TT|Переключити на Вид звітів"
 
-#: Miradi/source/org/miradi/actions/views/ActionViewSchedule.java:40
+#: Miradi/source/org/miradi/actions/views/ActionViewSchedule.java:41
 msgid "TT|Switch to the Schedule"
 msgstr "TT|Переключити на Графік"
 
-#: Miradi/source/org/miradi/actions/views/ActionViewStrategicPlan.java:40
+#: Miradi/source/org/miradi/actions/views/ActionViewStrategicPlan.java:41
 msgid "TT|Switch to the Strategic Plan View"
 msgstr "TT|Переключити на Вид стратегічного плану"
 
-#: Miradi/source/org/miradi/actions/views/ActionViewPlanning.java:41
+#: Miradi/source/org/miradi/actions/views/ActionViewPlanning.java:42
 msgid "TT|Switch to the Strategic Planning View"
 msgstr "TT|Переключити на Вид стратегічного планування"
 
-#: Miradi/source/org/miradi/actions/views/ActionViewSummary.java:41
+#: Miradi/source/org/miradi/actions/views/ActionViewSummary.java:42
 msgid "TT|Switch to the Summary View"
 msgstr "TT|Переключити на підсумковий вид"
 
-#: Miradi/source/org/miradi/actions/views/ActionViewTargetViability.java:41
+#: Miradi/source/org/miradi/actions/views/ActionViewTargetViability.java:42
 msgid "TT|Switch to the Target Viability View"
 msgstr "TT|Переключити на Вид життєздатність цілі"
 
-#: Miradi/source/org/miradi/actions/views/ActionViewThreatMatrix.java:41
+#: Miradi/source/org/miradi/actions/views/ActionViewThreatMatrix.java:42
 msgid "TT|Switch to the Threat Rating View"
 msgstr "TT|Переключити на Вид рейтингу загроз"
 
@@ -7192,7 +7192,7 @@ msgstr "Опція висоти табличних рядків"
 msgid "Tab|Action Plan"
 msgstr "Tab|План дій"
 
-#: Miradi/source/org/miradi/dialogs/activity/ActivityListManagementPanel.java:66
+#: Miradi/source/org/miradi/dialogs/activity/ActivityListManagementPanel.java:70
 msgid "Tab|Activities"
 msgstr "Tab|Діяльності"
 
@@ -7200,7 +7200,7 @@ msgstr "Tab|Діяльності"
 msgid "Tab|Custom"
 msgstr "Tab|Податок"
 
-#: Miradi/source/org/miradi/dialogs/goal/GoalListManagementPanel.java:59
+#: Miradi/source/org/miradi/dialogs/goal/GoalListManagementPanel.java:63
 msgid "Tab|Goals"
 msgstr "Tab|Цілі"
 
@@ -7217,7 +7217,7 @@ msgstr "Tab|Методи"
 msgid "Tab|Monitoring Plan"
 msgstr "Tab|План моніторингу"
 
-#: Miradi/source/org/miradi/dialogs/subTarget/SubTargetManagementPanel.java:57
+#: Miradi/source/org/miradi/dialogs/subTarget/SubTargetManagementPanel.java:59
 msgid "Tab|Nested Targets"
 msgstr "Tab|Ущільнені цілі"
 
@@ -7235,7 +7235,7 @@ msgstr "Tab|Навантаження"
 
 #: Miradi/source/org/miradi/dialogs/viability/TargetPropertiesKeaViabilityTreeManagementPanel.java:51
 #: Miradi/source/org/miradi/dialogs/viability/ViabilityViewTreeManagementPanel.java:43
-#: Miradi/source/org/miradi/dialogs/indicator/SimpleViabilityManagementPanel.java:37
+#: Miradi/source/org/miradi/dialogs/indicator/SimpleViabilityManagementPanel.java:38
 msgid "Tab|Viability"
 msgstr "Tab|Життездатність"
 
@@ -7354,7 +7354,7 @@ msgstr ""
 msgid "Task does not have a parent"
 msgstr "Завдання не має автора"
 
-#: Miradi/source/org/miradi/views/schedule/ScheduleView.java:63
+#: Miradi/source/org/miradi/views/schedule/ScheduleView.java:66
 msgid "Tasks"
 msgstr "Завдання"
 
@@ -7378,15 +7378,15 @@ msgstr ""
 msgid "Text Box"
 msgstr "Рамка для тексту"
 
-#: Miradi/source/org/miradi/dialogs/diagram/TextBoxPropertiesPanel.java:57
+#: Miradi/source/org/miradi/dialogs/diagram/TextBoxPropertiesPanel.java:58
 msgid "Text Box Properties"
 msgstr "Складові Текстової рамки"
 
-#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:152
+#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:154
 msgid "Text|Dates must be in YYYY-MM-DD format"
 msgstr "Text|Дані мусять бути у YYYY-MM-DD форматі"
 
-#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:164
+#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:166
 msgid "Text|Unknown error prevented saving this data"
 msgstr "Text|Невідома помилка перешкодила збереженню цих даних"
 
@@ -7546,7 +7546,7 @@ msgstr ""
 "відкривати його треба перевести у поточний формат даних. Спочатку треба "
 "зберегти дублікат на випадок збою. Здійснити автоматичний перехід? "
 
-#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:170
+#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:172
 msgid ""
 "This value must be numeric<br><br>Currency symbols and percent signs are not "
 "allowed"
@@ -7586,7 +7586,7 @@ msgstr "Назва загрози"
 msgid "Threat Rating Details"
 msgstr "Деталі рейтингу загроз"
 
-#: Miradi/source/org/miradi/dialogs/threatrating/ThreatRatingPreferencesPanel.java:40
+#: Miradi/source/org/miradi/dialogs/threatrating/ThreatRatingPreferencesPanel.java:41
 msgid "Threat Rating Preferences Panel"
 msgstr "Панель преференцій рейтингу загроз"
 
@@ -7691,7 +7691,7 @@ msgstr "Title|Видалити"
 msgid "Title|Diagram Panel"
 msgstr "Title|Панель Діаграма"
 
-#: Miradi/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:48
+#: Miradi/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:49
 msgid "Title|Diagram Properties"
 msgstr "Title|Складові Діаграми"
 
@@ -7745,11 +7745,11 @@ msgstr "Title|Інформація"
 msgid "Title|Intermediate Result Properties"
 msgstr "Title|Складові проміжного результату"
 
-#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:52
+#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:53
 msgid "Title|Key Ecological Attribute Properties"
 msgstr "Title|Складові екологічної характеристики"
 
-#: Miradi/source/org/miradi/dialogs/diagram/LegacyTncStrategyRankingEditorPropertiesSubPanel.java:91
+#: Miradi/source/org/miradi/dialogs/diagram/LegacyTncStrategyRankingEditorPropertiesSubPanel.java:92
 msgid "Title|Legacy TNC Strategy Editor Ranking Properties"
 msgstr "Title|Функція TNC стратегії редактора ранжирування складових "
 
@@ -7765,7 +7765,7 @@ msgstr "Title|Складові вимірювання"
 msgid "Title|Method Properties"
 msgstr "Title|Складові Методу"
 
-#: Miradi/source/org/miradi/dialogs/subTarget/SubTargetPropertiesPanel.java:47
+#: Miradi/source/org/miradi/dialogs/subTarget/SubTargetPropertiesPanel.java:48
 msgid "Title|Nested Target Properties"
 msgstr "Title|Складові ущільнених цілей"
 
@@ -7777,7 +7777,7 @@ msgstr "Title|Складові завдань"
 msgid "Title|Open Standards Status"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/organization/OrganizationPropertiesPanel.java:56
+#: Miradi/source/org/miradi/dialogs/organization/OrganizationPropertiesPanel.java:57
 msgid "Title|Organization Properties"
 msgstr "Title|Власність організації"
 
@@ -7785,7 +7785,7 @@ msgstr "Title|Власність організації"
 msgid "Title|Other Notable Species"
 msgstr "Title|Інші важливі види"
 
-#: Miradi/source/org/miradi/dialogs/organization/OrganizationManagementPanel.java:49
+#: Miradi/source/org/miradi/dialogs/organization/OrganizationManagementPanel.java:50
 msgid "Title|Other Orgs"
 msgstr "Title|Інші організації"
 
@@ -7798,7 +7798,7 @@ msgstr "Title|Перезаписати існуючий файл?"
 msgid "Title|Progress Percent"
 msgstr "Title|Відсоток прогресу"
 
-#: Miradi/source/org/miradi/dialogs/progressReport/ProgressReportSubPanel.java:60
+#: Miradi/source/org/miradi/dialogs/progressReport/ProgressReportSubPanel.java:61
 msgid "Title|Progress Report"
 msgstr "Title|Проміжний звіт"
 
@@ -7806,15 +7806,15 @@ msgstr "Title|Проміжний звіт"
 msgid "Title|Project Filename"
 msgstr "Title|Назва файлу проекту"
 
-#: Miradi/source/org/miradi/dialogs/reportTemplate/ReportTemplatePropertiesPanel.java:48
+#: Miradi/source/org/miradi/dialogs/reportTemplate/ReportTemplatePropertiesPanel.java:49
 msgid "Title|Report Template Properties"
 msgstr "Title|Складові шаблонів звітів"
 
-#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:92
+#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:93
 msgid "Title|Resource Properties"
 msgstr "Title|Складові Ресурсу"
 
-#: Miradi/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:48
+#: Miradi/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:49
 msgid "Title|Results Chain Properties"
 msgstr "Title|Складові ланцюга результатів"
 
@@ -7822,7 +7822,7 @@ msgstr "Title|Складові ланцюга результатів"
 msgid "Title|Save %s File"
 msgstr "Title|Зберегти файл %и "
 
-#: Miradi/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:58
+#: Miradi/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:59
 msgid "Title|Scope Box Properties"
 msgstr "Title|Рамка цілей"
 
@@ -7842,11 +7842,11 @@ msgstr "Title|Проста життєздатність"
 msgid "Title|Strategy Properties"
 msgstr "Title|Складові Стратегії"
 
-#: Miradi/source/org/miradi/dialogs/stress/StressCommentsSubPanel.java:41
+#: Miradi/source/org/miradi/dialogs/stress/StressCommentsSubPanel.java:42
 msgid "Title|Stress Comments"
 msgstr "Title|Особливі коментарі"
 
-#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:74
+#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:75
 msgid "Title|Stress Details"
 msgstr "Title|Деталі навантаження"
 
@@ -7862,7 +7862,7 @@ msgstr "Title|Видимість навантаження"
 msgid "Title|Stress-Based Threat Rating"
 msgstr "Title|Рейтинг загроз на основі навантаження"
 
-#: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:50
+#: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:51
 msgid "Title|Tag Properties Panel"
 msgstr "Title|Панель складових тегів"
 
@@ -7870,7 +7870,7 @@ msgstr "Title|Панель складових тегів"
 msgid "Title|Target Properties"
 msgstr "Title|Складові Цілі"
 
-#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityMultiPropertiesPanel.java:68
+#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityMultiPropertiesPanel.java:69
 msgid "Title|Target Viability Properties"
 msgstr "Title|Особливості життєздатності цілі"
 
@@ -7882,7 +7882,7 @@ msgstr "Title|Складові завдання"
 msgid "Title|Team"
 msgstr "Title|Виконавець"
 
-#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:85
+#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:86
 msgid "Title|Team Properties"
 msgstr "Title|Складові робочої групи"
 
@@ -7890,7 +7890,7 @@ msgstr "Title|Складові робочої групи"
 msgid "Title|Threat Reduction Result Properties"
 msgstr "Title|Складові результату зменшення загрози"
 
-#: Miradi/source/org/miradi/views/diagram/ConfigureLayers.java:44
+#: Miradi/source/org/miradi/views/diagram/ConfigureLayers.java:46
 msgid "Title|View Layers"
 msgstr "Title|Шари видів"
 
@@ -7915,11 +7915,11 @@ msgstr ""
 msgid "Total Monitoring Budget %1 %2"
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/factortypes/FactorTypeContributingFactor.java:36
+#: Miradi/source/org/miradi/diagram/factortypes/FactorTypeContributingFactor.java:38
 msgid "Type|Contributing Factor"
 msgstr "Type|Сприяючий фактор"
 
-#: Miradi/source/org/miradi/diagram/factortypes/FactorTypeDirectThreat.java:35
+#: Miradi/source/org/miradi/diagram/factortypes/FactorTypeDirectThreat.java:37
 msgid "Type|Direct Threat"
 msgstr "Type|Пряма загроза"
 
@@ -7942,12 +7942,12 @@ msgstr ""
 msgid "Unable to launch external web browser"
 msgstr "Неможливо запустити зовнішній веб браузер"
 
-#: Miradi/source/org/miradi/views/planning/doers/ImportAccountingCodesDoer.java:75
+#: Miradi/source/org/miradi/views/planning/doers/ImportAccountingCodesDoer.java:77
 msgid "Unable to process file: verify file format"
 msgstr "Неможливо опрацювати файл: перевірте формат"
 
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:136
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:128
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:138
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:130
 msgid "Unable to process request: "
 msgstr "Неможливо виконати вимогу:"
 
@@ -7988,7 +7988,7 @@ msgstr ""
 msgid "Unexpected call to getText"
 msgstr "Неочікувана вимога одержати текст"
 
-#: Miradi/source/org/miradi/dialogfields/FactorTagListEditor.java:92
+#: Miradi/source/org/miradi/dialogfields/FactorTagListEditor.java:93
 msgid "Unexpected call to removeListSelectionListener"
 msgstr ""
 
@@ -8103,7 +8103,7 @@ msgstr "Дуже маленький"
 msgid "Viability Analysis Mode"
 msgstr "Опція аналізу життєздатності"
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityRatingsSubPanel.java:71
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityRatingsSubPanel.java:72
 msgid "Viability Ratings"
 msgstr "Рейтинги життєздатності"
 
@@ -8366,7 +8366,7 @@ msgstr "Єна (Японія)"
 msgid "Yes"
 msgstr "Так"
 
-#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:142
+#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:145
 msgid ""
 "You are removing this resource from the project team, so he/she will no "
 "longer appear in the list of Team Members in the Summary View. "
@@ -8374,7 +8374,7 @@ msgstr ""
 "Ви забираєте цей ресурс з робочої групи проекту, тому він або вона не "
 "з'явиться більше у списку членів робочої групи у підсумковому виді."
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:257
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:259
 msgid "You must select one item in each of the two lists"
 msgstr "Ви мусите вибрати один пункт у кожному з двох переліків"
 
@@ -8420,7 +8420,7 @@ msgstr "[Проект не вибраний]"
 msgid "[Not Named]"
 msgstr "[Не названо]"
 
-#: Miradi/source/org/miradi/views/diagram/CreateConceptualModelPageDoer.java:96
+#: Miradi/source/org/miradi/views/diagram/CreateConceptualModelPageDoer.java:98
 msgid "[Page %s]"
 msgstr "[ %и сторінок]"
 
