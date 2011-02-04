@@ -120,9 +120,4 @@ abstract public class AbstractExportProjectXmlZipDoer extends XmlExporterDoer
 	{
 		return new WcsMiradiXmlValidator().isValid(inputStream);
 	}
-	
-	public static final String PROJECT_XML_FILE_NAME = "project.xml";
-	public static final String IMAGES_DIR_NAME_IN_ZIP = "images/";
-	public static final String CM_IMAGE_PREFIX = "CM";
-	public static final String RC_IMAGE_PREFIX = "RC";
 }
