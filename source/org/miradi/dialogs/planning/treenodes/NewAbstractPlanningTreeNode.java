@@ -168,6 +168,23 @@ abstract public class NewAbstractPlanningTreeNode extends TreeTableNode
 	{
 		isAllocated = true;
 	}
+	
+	@Override
+	public boolean equals(Object rawOther)
+	{
+		if (! (rawOther instanceof NewAbstractPlanningTreeNode))
+			return false;
+		
+		NewAbstractPlanningTreeNode other = (NewAbstractPlanningTreeNode)rawOther;
+		
+		return getObject().equals(other.getObject());
+	}
+	
+	@Override
+	public int hashCode()
+	{
+		return getObject().hashCode();
+	}
 
 	public Project getProject()
 	{
