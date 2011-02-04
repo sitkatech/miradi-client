@@ -33,7 +33,7 @@ import org.miradi.questions.StrategyObjectiveTreeOrderQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 
-public class ObjectTreeTableConfiguration extends BaseObject implements PlanningTreeConfiguration
+public class ObjectTreeTableConfiguration extends BaseObject implements PlanningTreeRowColumnProvider
 {
 	public ObjectTreeTableConfiguration(ObjectManager objectManager, BaseId id)
 	{

@@ -24,12 +24,12 @@ import org.miradi.dialogs.planning.treenodes.NewPlanningRootNode;
 import org.miradi.dialogs.planning.upperPanel.rebuilder.TreeRebuilder;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.EAM;
-import org.miradi.objects.PlanningTreeConfiguration;
+import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.project.Project;
 
 public class TreeTableModelWithRebuilder extends ExportablePlanningTreeTableModel
 {
-	public TreeTableModelWithRebuilder(Project projectToUse, TreeTableNode rootNode, PlanningTreeConfiguration rowColumnProvider, String uniqueTreeTableModelIdentifierToUse) throws Exception
+	public TreeTableModelWithRebuilder(Project projectToUse, TreeTableNode rootNode, PlanningTreeRowColumnProvider rowColumnProvider, String uniqueTreeTableModelIdentifierToUse) throws Exception
 	{
 		super(projectToUse, rootNode, rowColumnProvider, uniqueTreeTableModelIdentifierToUse);
 	}

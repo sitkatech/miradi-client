@@ -21,7 +21,7 @@ package org.miradi.dialogs.planning;
 
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.PlanningTreeConfiguration;
+import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
@@ -29,7 +29,7 @@ import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.StringList;
 
-public class ConfigurableRowColumnProvider extends PlanningViewRowColumnProvider implements PlanningTreeConfiguration
+public class ConfigurableRowColumnProvider extends PlanningViewRowColumnProvider implements PlanningTreeRowColumnProvider
 {
 	public ConfigurableRowColumnProvider(Project projectToUse)
 	{
@@ -53,7 +53,7 @@ public class ConfigurableRowColumnProvider extends PlanningViewRowColumnProvider
 			ORef customizationRef = viewData.getORef(ViewData.TAG_TREE_CONFIGURATION_REF);
 			if(customizationRef.isInvalid())
 				return new CodeList();
-			PlanningTreeConfiguration customization = (PlanningTreeConfiguration)viewData.getProject().findObject(customizationRef);
+			PlanningTreeRowColumnProvider customization = (PlanningTreeRowColumnProvider)viewData.getProject().findObject(customizationRef);
 			return customization.getRowCodesToShow();
 		}
 		catch(Exception e)
@@ -72,7 +72,7 @@ public class ConfigurableRowColumnProvider extends PlanningViewRowColumnProvider
 			if(customizationRef.isInvalid())
 				return new CodeList();
 			
-			PlanningTreeConfiguration customization = (PlanningTreeConfiguration)viewData.getProject().findObject(customizationRef);
+			PlanningTreeRowColumnProvider customization = (PlanningTreeRowColumnProvider)viewData.getProject().findObject(customizationRef);
 			CodeList columnCodes = customization.getColumnCodesToShow();
 			omitUnknownColumnTagsInPlace(viewData.getProject(), columnCodes);
 			
@@ -88,7 +88,7 @@ public class ConfigurableRowColumnProvider extends PlanningViewRowColumnProvider
 
 	public boolean shouldIncludeResultsChain() throws Exception
 	{
-		PlanningTreeConfiguration customization = getCurrentCustomization();
+		PlanningTreeRowColumnProvider customization = getCurrentCustomization();
 		if(customization == null)
 			return false;
 		return customization.shouldIncludeResultsChain();
@@ -96,19 +96,19 @@ public class ConfigurableRowColumnProvider extends PlanningViewRowColumnProvider
 
 	public boolean shouldIncludeConceptualModelPage() throws Exception
 	{
-		PlanningTreeConfiguration customization = getCurrentCustomization();
+		PlanningTreeRowColumnProvider customization = getCurrentCustomization();
 		if(customization == null)
 			return false;
 		return customization.shouldIncludeConceptualModelPage();
 	}
 
-	private PlanningTreeConfiguration getCurrentCustomization() throws Exception
+	private PlanningTreeRowColumnProvider getCurrentCustomization() throws Exception
 	{
 		ViewData viewData = getCurrentViewData();
 		ORef customizationRef = viewData.getORef(ViewData.TAG_TREE_CONFIGURATION_REF);
 		if(customizationRef.isInvalid())
 			return null;
-		PlanningTreeConfiguration customization = (PlanningTreeConfiguration)viewData.getProject().findObject(customizationRef);
+		PlanningTreeRowColumnProvider customization = (PlanningTreeRowColumnProvider)viewData.getProject().findObject(customizationRef);
 		return customization;
 	}
 

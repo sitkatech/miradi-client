@@ -44,7 +44,7 @@ import org.miradi.dialogs.treetables.WorkPlanCategoryTreeTableModel;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
-import org.miradi.objects.PlanningTreeConfiguration;
+import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.project.Project;
 import org.miradi.questions.ReportTemplateContentQuestion;
 import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
@@ -101,7 +101,7 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 		exportTableWithPageBreak(writer, multiExporter, translatedTableName);
 	}
 	
-	public static MultiTableCombinedAsOneExporter createTables(Project project, PlanningTreeConfiguration rowColumnProvider) throws Exception
+	public static MultiTableCombinedAsOneExporter createTables(Project project, PlanningTreeRowColumnProvider rowColumnProvider) throws Exception
 	{
 		ExportablePlanningTreeTableModel model = new ExportablePlanningTreeTableModel(project, rowColumnProvider, AbstractTableExporter.NO_UNIQUE_MODEL_IDENTIFIER);
 		
@@ -146,7 +146,7 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 		return multiModelExporter;
 	}
 	
-	private void exportReport(RtfWriter writer, PlanningTreeConfiguration rowColumnProvider, String translatedTableName) throws Exception
+	private void exportReport(RtfWriter writer, PlanningTreeRowColumnProvider rowColumnProvider, String translatedTableName) throws Exception
 	{
 		exportTableWithPageBreak(writer, createTables(getProject(), rowColumnProvider), translatedTableName);
 	}

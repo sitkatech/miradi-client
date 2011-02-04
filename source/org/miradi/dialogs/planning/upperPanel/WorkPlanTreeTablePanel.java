@@ -33,7 +33,7 @@ import org.miradi.dialogs.planning.treenodes.NewPlanningRootNode;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
-import org.miradi.objects.PlanningTreeConfiguration;
+import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.objects.TableSettings;
 
 import com.jhlabs.awt.GridLayoutPlus;
@@ -44,7 +44,7 @@ public class WorkPlanTreeTablePanel extends PlanningTreeTablePanel
 									 PlanningTreeTable treeToUse,
 									 PlanningTreeTableModel modelToUse,
 									 Class[] buttonActions,
-									 PlanningTreeConfiguration rowColumnProvider, 
+									 PlanningTreeRowColumnProvider rowColumnProvider, 
 									 AbstractFixedHeightDirectlyAboveTreeTablePanel filterStatusPanelToUse) throws Exception
 	{
 		super(mainWindowToUse, treeToUse, modelToUse, buttonActions, rowColumnProvider, filterStatusPanelToUse);

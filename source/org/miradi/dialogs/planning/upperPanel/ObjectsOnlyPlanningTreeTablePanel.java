@@ -27,7 +27,7 @@ import org.miradi.dialogs.planning.PlanningViewObjectsOnlyDropDownPanel;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.objects.PlanningTreeConfiguration;
+import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.objects.ViewData;
 
 public class ObjectsOnlyPlanningTreeTablePanel extends PlanningTreeTablePanel
@@ -35,7 +35,7 @@ public class ObjectsOnlyPlanningTreeTablePanel extends PlanningTreeTablePanel
 	protected ObjectsOnlyPlanningTreeTablePanel(MainWindow mainWindowToUse,
 												PlanningTreeTable treeToUse, 
 												PlanningTreeTableModel modelToUse, 
-												PlanningTreeConfiguration rowColumnProvider, Class[] buttonActions
+												PlanningTreeRowColumnProvider rowColumnProvider, Class[] buttonActions
 												) throws Exception
 	{
 		super(mainWindowToUse, treeToUse, modelToUse, buttonActions, rowColumnProvider);

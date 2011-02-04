@@ -20,12 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel;
 
 import org.miradi.dialogs.treetables.TreeTableNode;
-import org.miradi.objects.PlanningTreeConfiguration;
+import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.project.Project;
 
 public class MonitoringPlanTreeTableModel extends TreeTableModelWithRebuilder
 {
-	public MonitoringPlanTreeTableModel(Project project, TreeTableNode rootNode, PlanningTreeConfiguration rowColumProviderToUse) throws Exception
+	public MonitoringPlanTreeTableModel(Project project, TreeTableNode rootNode, PlanningTreeRowColumnProvider rowColumProviderToUse) throws Exception
 	{
 		super(project, rootNode, rowColumProviderToUse, UNIQUE_TREE_TABLE_IDENTIFIER);
 	}

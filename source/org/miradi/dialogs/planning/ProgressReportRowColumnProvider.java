@@ -23,11 +23,11 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Objective;
-import org.miradi.objects.PlanningTreeConfiguration;
+import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.objects.Task;
 import org.miradi.utils.CodeList;
 
-public class ProgressReportRowColumnProvider implements RowColumnProvider, PlanningTreeConfiguration
+public class ProgressReportRowColumnProvider implements RowColumnProvider, PlanningTreeRowColumnProvider
 {
 	public CodeList getRowCodesToShow() throws Exception
 	{

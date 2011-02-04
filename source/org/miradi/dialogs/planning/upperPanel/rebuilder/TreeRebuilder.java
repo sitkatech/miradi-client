@@ -53,7 +53,7 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
-import org.miradi.objects.PlanningTreeConfiguration;
+import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResourceAssignment;
@@ -68,7 +68,7 @@ import org.miradi.utils.CodeList;
 
 public class TreeRebuilder
 {
-	public TreeRebuilder(Project projectToUse, PlanningTreeConfiguration rowColumnProviderToUse)
+	public TreeRebuilder(Project projectToUse, PlanningTreeRowColumnProvider rowColumnProviderToUse)
 	{
 		project = projectToUse;
 		rowColumnProvider = rowColumnProviderToUse;
@@ -603,7 +603,7 @@ public class TreeRebuilder
 		};
 	}
 	
-	private PlanningTreeConfiguration getRowColumnProvider()
+	private PlanningTreeRowColumnProvider getRowColumnProvider()
 	{
 		return rowColumnProvider;
 	}
@@ -614,5 +614,5 @@ public class TreeRebuilder
 	}
 
 	private Project project;
-	private PlanningTreeConfiguration rowColumnProvider;
+	private PlanningTreeRowColumnProvider rowColumnProvider;
 }

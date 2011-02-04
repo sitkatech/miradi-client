@@ -21,7 +21,7 @@ package org.miradi.views.planning.doers;
 
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ObjectTreeTableConfiguration;
-import org.miradi.objects.PlanningTreeConfiguration;
+import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.objects.ViewData;
 import org.miradi.utils.CodeList;
 
@@ -40,7 +40,7 @@ public class CreatePlanningViewPrefilledConfigurationDoer extends AbstractCreate
 		return getCurrentConfiguration().getRowCodesToShow();
 	}
 	
-	private PlanningTreeConfiguration getCurrentConfiguration() throws Exception
+	private PlanningTreeRowColumnProvider getCurrentConfiguration() throws Exception
 	{
 		ViewData currentViewData = getProject().getCurrentViewData();
 		ORef planningViewConfigurationRef = currentViewData.getTreeConfigurationRef();

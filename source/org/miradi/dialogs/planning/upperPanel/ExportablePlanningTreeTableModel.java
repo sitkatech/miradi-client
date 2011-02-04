@@ -27,12 +27,12 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.PlanningTreeConfiguration;
+import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.project.Project;
 
 public class ExportablePlanningTreeTableModel extends PlanningTreeTableModel implements RowColumnBaseObjectProvider
 {
-	public ExportablePlanningTreeTableModel(Project projectToUse, TreeTableNode rootNode, PlanningTreeConfiguration rowColumnProvider, String uniqueTreeTableModelIdentifierToUse) throws Exception
+	public ExportablePlanningTreeTableModel(Project projectToUse, TreeTableNode rootNode, PlanningTreeRowColumnProvider rowColumnProvider, String uniqueTreeTableModelIdentifierToUse) throws Exception
 	{
 		super(projectToUse, rootNode, rowColumnProvider);
 		
@@ -40,7 +40,7 @@ public class ExportablePlanningTreeTableModel extends PlanningTreeTableModel imp
 		setRowObjectRefs();
 	}
 	
-	public ExportablePlanningTreeTableModel(Project projectToUse, PlanningTreeConfiguration rowColumnProvider, String uniqueTreeTableModelIdentifierToUse) throws Exception
+	public ExportablePlanningTreeTableModel(Project projectToUse, PlanningTreeRowColumnProvider rowColumnProvider, String uniqueTreeTableModelIdentifierToUse) throws Exception
 	{
 		super(projectToUse, rowColumnProvider);
 		

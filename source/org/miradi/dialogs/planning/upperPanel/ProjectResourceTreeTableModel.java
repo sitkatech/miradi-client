@@ -23,23 +23,23 @@ package org.miradi.dialogs.planning.upperPanel;
 import org.miradi.dialogs.planning.ProjectResourceRowColumnProvider;
 import org.miradi.dialogs.planning.treenodes.BaseObjectTreeRootNode;
 import org.miradi.dialogs.treetables.TreeTableNode;
-import org.miradi.objects.PlanningTreeConfiguration;
+import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.objects.ProjectResource;
 import org.miradi.project.Project;
 
 public class ProjectResourceTreeTableModel extends ExportablePlanningTreeTableModel
 {
-	private ProjectResourceTreeTableModel(Project project, TreeTableNode rootNode, PlanningTreeConfiguration rowColumnProvider) throws Exception
+	private ProjectResourceTreeTableModel(Project project, TreeTableNode rootNode, PlanningTreeRowColumnProvider rowColumnProvider) throws Exception
 	{
 		this(project, rootNode, rowColumnProvider, UNIQUE_TREE_TABLE_IDENTIFIER);
 	}
 	
-	private ProjectResourceTreeTableModel(Project project, TreeTableNode rootNode, PlanningTreeConfiguration rowColumnProvider, String uniqueTreeTableModeIdentifier) throws Exception
+	private ProjectResourceTreeTableModel(Project project, TreeTableNode rootNode, PlanningTreeRowColumnProvider rowColumnProvider, String uniqueTreeTableModeIdentifier) throws Exception
 	{
 		super(project, rootNode, rowColumnProvider, uniqueTreeTableModeIdentifier);
 	}
 	
-	public static ProjectResourceTreeTableModel createProjectResourceTreeTableModel(Project project, PlanningTreeConfiguration rowColumnProvider) throws Exception
+	public static ProjectResourceTreeTableModel createProjectResourceTreeTableModel(Project project, PlanningTreeRowColumnProvider rowColumnProvider) throws Exception
 	{
 		TreeTableNode projectRootNode = createProjectResourceRootNode(project);
 		return new ProjectResourceTreeTableModel(project, projectRootNode, rowColumnProvider);
