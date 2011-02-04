@@ -21,11 +21,13 @@ package org.miradi.diagram.factortypes;
 
 public class FactorTypeIntermediateResult extends FactorType
 {
+	@Override
 	public boolean isIntermediateResult()
 	{
 		return true;
 	}
 	
+	@Override
 	public String toString()
 	{
 		return INTERMEDIATE_RESULT;

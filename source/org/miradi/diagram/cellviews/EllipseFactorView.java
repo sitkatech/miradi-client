@@ -68,12 +68,14 @@ public class EllipseFactorView extends FactorView
 		super(nodeToUse);
 	}
 
-    public CellViewRenderer getRenderer() 
+    @Override
+	public CellViewRenderer getRenderer() 
     {
         return ellipseRenderer;
     }
 
-    public GraphCellEditor getEditor() 
+    @Override
+	public GraphCellEditor getEditor() 
     {
         return null;
     }
@@ -83,6 +85,7 @@ public class EllipseFactorView extends FactorView
 	 * straight line between the source and the specified point p.
 	 * The specified point is expected not to intersect the bounds.
 	 */
+	@Override
 	public Point2D getPerimeterPoint(EdgeView arg0, Point2D source, Point2D p)
 	{
 		// TODO: Need better implementation?

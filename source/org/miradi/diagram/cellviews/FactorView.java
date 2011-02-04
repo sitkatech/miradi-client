@@ -38,6 +38,7 @@ public class FactorView extends VertexView
         factor = factorToUse;
     }
 
+	@Override
 	public Point2D getPerimeterPoint(EdgeView arg0, Point2D arg1, Point2D arg2)
 	{
 		EAM.logWarning("MultilineNodeView.getPerimeterPoint not implemented!");

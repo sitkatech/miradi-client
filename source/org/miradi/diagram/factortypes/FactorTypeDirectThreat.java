@@ -25,11 +25,13 @@ import org.miradi.main.EAM;
 
 public class FactorTypeDirectThreat extends FactorTypeCause
 {
+	@Override
 	public boolean isDirectThreat() 
 	{
 		return true;
 	}
 	
+	@Override
 	public String toString()
 	{
 		return EAM.text("Type|Direct Threat");

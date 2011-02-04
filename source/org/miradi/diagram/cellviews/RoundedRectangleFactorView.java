@@ -35,12 +35,14 @@ public class RoundedRectangleFactorView extends FactorView
 		super(factor);
 	}
 
-    public CellViewRenderer getRenderer() 
+    @Override
+	public CellViewRenderer getRenderer() 
     {
         return roundedRectangleRenderer;
     }
 
-    public GraphCellEditor getEditor() 
+    @Override
+	public GraphCellEditor getEditor() 
     {
     	EAM.logWarning("WARNING: RectangleNodeView.getEditor not implemented");
         return null;
@@ -51,6 +53,7 @@ public class RoundedRectangleFactorView extends FactorView
 	 * straight line between the source and the specified point p.
 	 * The specified point is expected not to intersect the bounds.
 	 */
+	@Override
 	public Point2D getPerimeterPoint(EdgeView arg0, Point2D source, Point2D p)
 	{
 		return ((RoundRectangleRenderer)getRenderer()).getPerimeterPoint(p, getBounds());

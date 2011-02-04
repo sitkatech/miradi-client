@@ -34,6 +34,7 @@ public class DiagramStrategyCell extends FactorCell
 		super(strategyToWrap, diagramFactor);
 	}
 
+	@Override
 	public Color getColor()
 	{
 		if(isStatusDraft())

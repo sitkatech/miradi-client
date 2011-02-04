@@ -27,6 +27,7 @@ import java.awt.Rectangle;
 
 public class EllipseWithRatingRenderer extends EllipseRenderer
 {
+	@Override
 	public void fillShape(Graphics g, Rectangle rect, Color color)
 	{
 		super.fillShape(g, rect, color);

@@ -22,6 +22,7 @@ package org.miradi.diagram.factortypes;
 
 public class FactorTypeHumanWelfareTarget extends FactorType
 {
+	@Override
 	public String toString()
 	{
 		return HUMAN_WELFARE_TARGET_TYPE;

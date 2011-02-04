@@ -44,6 +44,7 @@ import org.miradi.project.Project;
 public class ArrowLineRenderer extends EdgeRenderer
 {
 
+	@Override
 	public Component getRendererComponent(JGraph graphToUse, CellView cellView, boolean sel, boolean hasFocus, boolean previewMode)
 	{
 		ArrowLineRenderer renderer = (ArrowLineRenderer)super.getRendererComponent(graphToUse, cellView, sel, hasFocus, previewMode);
@@ -79,6 +80,7 @@ public class ArrowLineRenderer extends EdgeRenderer
 		view.sharedPath = null;
 	}
 	
+	@Override
 	public void paint(Graphics g)
 	{
 		super.paint(g);
@@ -103,6 +105,7 @@ public class ArrowLineRenderer extends EdgeRenderer
 
 	
 	
+	@Override
 	protected Shape createShape()
 	{
 		Shape shape = createShapeWithRoundedCorners();
@@ -304,6 +307,7 @@ public class ArrowLineRenderer extends EdgeRenderer
 		}		
 	}
 
+	@Override
 	protected Shape createLineEnd(int size, int style, Point2D src, Point2D dst)
 	{
 		DiagramComponent diagram = getDiagram();

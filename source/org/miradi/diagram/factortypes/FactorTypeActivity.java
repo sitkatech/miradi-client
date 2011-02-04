@@ -21,11 +21,13 @@ package org.miradi.diagram.factortypes;
 
 public class FactorTypeActivity extends FactorType
 {
+	@Override
 	public boolean isActivity()
 	{
 		return true;
 	}
 	
+	@Override
 	public String toString()
 	{
 		return ACTIVITY_TYPE;

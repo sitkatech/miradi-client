@@ -34,6 +34,7 @@ public class DiagramIntermediateResultCell extends FactorCell
 		super(cmFactor, diagramFactorToUse);
 	}
 
+	@Override
 	public Color getColor()
 	{
 		return EAM.getMainWindow().getColorPreference(AppPreferences.TAG_COLOR_INTERMEDIATE_RESULT);

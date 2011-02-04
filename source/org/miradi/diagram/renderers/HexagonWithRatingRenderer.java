@@ -28,6 +28,7 @@ import java.awt.Rectangle;
 
 public class HexagonWithRatingRenderer extends HexagonRenderer
 {
+	@Override
 	public void fillShape(Graphics g, Rectangle rect, Color color)
 	{
 		super.fillShape(g, rect, color);

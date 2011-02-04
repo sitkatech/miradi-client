@@ -95,6 +95,7 @@ import org.miradi.utils.Utility;
 
 public abstract class FactorRenderer extends MultilineCellRenderer implements CellViewRenderer
 {
+	@Override
 	public Component getRendererComponent(JGraph graphToUse, CellView view,
 			boolean sel, boolean focus, boolean previewMode)
 	{
@@ -285,6 +286,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		g2.setFont(g2.getFont().deriveFont(9.0f).deriveFont(Font.BOLD));
 	}
 	
+	@Override
 	public void paint(Graphics g1)
 	{
 		int originalHeight = getSize().height;
@@ -351,16 +353,19 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		return node.getIndicatorRectWithinNode();
 	}
 
+	@Override
 	Color getFillColor()
 	{
 		return node.getColor();
 	}
 	
+	@Override
 	Dimension getInsetDimension()
 	{
 		return node.getInsetDimension();
 	}
 	
+	@Override
 	Stroke getStroke()
 	{
 		if(!selected)

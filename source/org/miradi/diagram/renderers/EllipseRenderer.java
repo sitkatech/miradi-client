@@ -59,6 +59,7 @@ import java.awt.geom.Rectangle2D;
 
 public class EllipseRenderer extends FactorRenderer
 {
+	@Override
 	public Shape getShape(Rectangle rect)
 	{
 		return new Ellipse2D.Double(rect.x, rect.y, rect.width, rect.height);

@@ -31,6 +31,7 @@ public class DiagramHumanWelfareTarget extends AbstractDiagramTarget
 		super(humanWelfareTargetToWrap, diagramFactor);
 	}
 
+	@Override
 	protected String getColorTag()
 	{
 		return AppPreferences.TAG_COLOR_HUMAN_WELFARE_TARGET;

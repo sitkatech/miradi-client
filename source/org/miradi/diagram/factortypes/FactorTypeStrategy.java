@@ -22,11 +22,13 @@ package org.miradi.diagram.factortypes;
 
 public class FactorTypeStrategy extends FactorType
 {
+	@Override
 	public boolean isStrategy()
 	{
 		return true;
 	}
 	
+	@Override
 	public String toString()
 	{
 		return STRATEGY_TYPE; 

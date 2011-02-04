@@ -21,11 +21,13 @@ package org.miradi.diagram.factortypes;
 
 public class FactorTypeTextBox extends FactorType
 {
+	@Override
 	public boolean isTextBox()
 	{
 		return true;
 	}
 	
+	@Override
 	public String toString()
 	{
 		return TEXT_BOX_TYPE;

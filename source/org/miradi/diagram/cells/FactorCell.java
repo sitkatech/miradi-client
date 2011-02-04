@@ -161,6 +161,7 @@ abstract public class FactorCell extends EAMGraphCell
 		return new Rectangle(getLocation(), getSize());
 	}
 	
+	@Override
 	public boolean isFactor()
 	{
 		return true;
@@ -171,11 +172,13 @@ abstract public class FactorCell extends EAMGraphCell
 		return id;
 	}
 	
+	@Override
 	public ORef getDiagramFactorRef()
 	{
 		return getDiagramFactor().getRef();
 	}
 	
+	@Override
 	public DiagramFactor getDiagramFactor()
 	{
 		return diagramFactor;
@@ -186,6 +189,7 @@ abstract public class FactorCell extends EAMGraphCell
 		return wrappedFactor;
 	}
 		
+	@Override
 	public ORef getWrappedFactorRef()
 	{
 		return getWrappedFactor().getRef();
@@ -265,6 +269,7 @@ abstract public class FactorCell extends EAMGraphCell
 		GraphConstants.setBounds(getAttributes(), new Rectangle(location, size));
 	}
 	
+	@Override
 	public String toString()
 	{
 		return getLabel();
@@ -292,6 +297,7 @@ abstract public class FactorCell extends EAMGraphCell
 		return getWrappedFactor().getObjectiveIds();
 	}
 
+	@Override
 	abstract public Color getColor();
 
 	public boolean isGroupBox()

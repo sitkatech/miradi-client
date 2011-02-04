@@ -21,11 +21,13 @@ package org.miradi.diagram.factortypes;
 
 public class FactorTypeStress extends FactorType
 {
+	@Override
 	public boolean isStress()
 	{
 		return true;
 	}
 	
+	@Override
 	public String toString()
 	{
 		return STRESS_TYPE;
