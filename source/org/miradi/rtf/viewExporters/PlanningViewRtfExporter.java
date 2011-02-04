@@ -63,7 +63,7 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 	@Override
 	public void exportView(RtfWriter writer, CodeList reportTemplateContent) throws Exception
 	{
-		if (reportTemplateContent.contains(ReportTemplateContentQuestion.PLANNING_VIEW_STRATEGIC_PLAN_CODE))
+		if (reportTemplateContent.contains(ReportTemplateContentQuestion.ACTION_PLAN_OBJECTIVE_BASED_REPORT_CODE))
 			exportReport(writer, new ActionPlanSubViewObjectiveBasedRowColumnProvider(getProject()), ReportTemplateContentQuestion.getStrategicPlanLabel());
 		
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.PLANNING_VIEW_MONITORING_PLAN_CODE))

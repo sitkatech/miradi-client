@@ -52,7 +52,7 @@ public class ReportTemplateContentQuestion extends StaticChoiceQuestion
 				new ChoiceItem(THREAT_RATING_VIEW_CODE, getThreatRatingsLabel()),
 				new ChoiceItem(THREAT_RATING_DETAILS_CODE, getThreatRatingDetailsLabel()),
 				
-				new ChoiceItem(PLANNING_VIEW_STRATEGIC_PLAN_CODE, getStrategicPlanLabel()),
+				new ChoiceItem(ACTION_PLAN_OBJECTIVE_BASED_REPORT_CODE, getStrategicPlanLabel()),
 				new ChoiceItem(PLANNING_VIEW_MONITORING_PLAN_CODE, getMonitoringPlanLabel()),
 				new ChoiceItem(PLANNING_VIEW_WORK_PLAN_CODE, getWorkPlanLabel()),
 				new ChoiceItem(PLANNING_VIEW_RESOURCES_CODE, getResourcesLabel()),
@@ -168,7 +168,7 @@ public class ReportTemplateContentQuestion extends StaticChoiceQuestion
 	public static final String TARGET_VIABILITY_VIEW_VIABILITY_TAB_DETAILS_CODE = "ViabilityViewViabilityTabDetails";
 	public static final String THREAT_RATING_VIEW_CODE = "ThreatRatings";
 	public static final String THREAT_RATING_DETAILS_CODE = "ThreatRatingDetails";
-	public static final String PLANNING_VIEW_STRATEGIC_PLAN_CODE = "PlanningViewStrategicPlan";
+	public static final String ACTION_PLAN_OBJECTIVE_BASED_REPORT_CODE = "PlanningViewStrategicPlan";
 	public static final String PLANNING_VIEW_MONITORING_PLAN_CODE = "PlanningViewMonitoringPlan";
 	public static final String PLANNING_VIEW_WORK_PLAN_CODE = "PlanningViewWorkPlan";
 	public static final String PLANNING_VIEW_RESOURCES_CODE = "PlanningViewResourcesTab";
