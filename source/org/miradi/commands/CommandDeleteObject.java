@@ -100,6 +100,12 @@ public class CommandDeleteObject extends Command
 		return dataPairs;
 	}
 	
+	@Override
+	public String toString()
+	{
+		return COMMAND_NAME + ": " + getLogData().toString();
+	}
+	
 	public final static String COMMAND_NAME = "DeleteObject";
 
 	int type;

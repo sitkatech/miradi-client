@@ -32,6 +32,9 @@ public abstract class Command
 	abstract public HashMap<String, Comparable> getLogData();
 	abstract public String getCommandName();
 	abstract public void execute(Project project) throws CommandFailedException;
+
+	@Override
+	public abstract String toString();
 	
 	@Override
 	public boolean equals(Object other)
