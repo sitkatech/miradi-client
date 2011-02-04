@@ -45,6 +45,7 @@ public class FOSSummaryPanel extends ObjectDataInputPanel
 		updateFieldsFromProject();
 	}
 
+	@Override
 	public String getPanelDescription()
 	{
 		return getFosPanelDescription();
@@ -55,6 +56,7 @@ public class FOSSummaryPanel extends ObjectDataInputPanel
 		return EAM.text("Label|FOS");
 	}
 	
+	@Override
 	public Icon getIcon()
 	{
 		return new FosIcon();

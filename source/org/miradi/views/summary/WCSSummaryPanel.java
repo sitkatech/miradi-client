@@ -52,6 +52,7 @@ public class WCSSummaryPanel extends ObjectDataInputPanel
 		updateFieldsFromProject();
 	}
 	
+	@Override
 	public String getPanelDescription()
 	{
 		return getWcsPanelDescription();
@@ -62,6 +63,7 @@ public class WCSSummaryPanel extends ObjectDataInputPanel
 		return EAM.text("Label|WCS");
 	}
 	
+	@Override
 	public Icon getIcon()
 	{
 		return new WcsIcon();

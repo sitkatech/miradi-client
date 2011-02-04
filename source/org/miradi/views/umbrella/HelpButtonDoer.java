@@ -33,11 +33,13 @@ public class HelpButtonDoer extends MainWindowDoer
 	{
 	}
 	
+	@Override
 	public boolean isAvailable()
 	{
 		return true;
 	}
 	
+	@Override
 	public void doIt(EventObject event) throws Exception
 	{
 		try
@@ -53,6 +55,7 @@ public class HelpButtonDoer extends MainWindowDoer
 		}
 	}
 	
+	@Override
 	public void doIt() throws Exception
 	{
 		throw new CommandFailedException("Invalid call; use DoIt(event)");

@@ -36,6 +36,7 @@ public class ActionCreateProgressReport extends ObjectsAction
 		return EAM.text("Action|Manage|Create Progress Report");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Create a new Progress Report");

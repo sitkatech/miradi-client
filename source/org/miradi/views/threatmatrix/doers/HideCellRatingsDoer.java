@@ -23,6 +23,7 @@ import org.miradi.main.AppPreferences;
 
 public class HideCellRatingsDoer extends CellRatingsDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		if (isCellRatingVisible())
@@ -31,6 +32,7 @@ public class HideCellRatingsDoer extends CellRatingsDoer
 		return false;
 	}
 
+	@Override
 	public void doIt() throws Exception
 	{
 		if (!isAvailable())

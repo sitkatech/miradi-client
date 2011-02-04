@@ -34,6 +34,7 @@ abstract public class AbstractRelevancyEditListDoer extends AbstractEditListDoer
 		return getSelectionRef().isInvalid();
 	}
 	
+	@Override
 	protected DisposablePanel createEditPanel()
 	{
 		return new RelevancyIndicatorPanel(getProject(), getSelectionRef());
@@ -46,10 +47,12 @@ abstract public class AbstractRelevancyEditListDoer extends AbstractEditListDoer
 		return ref;
 	}
 	
+	@Override
 	protected String getDialogTitle()
 	{
 		return EAM.text("Choose Relevant Indicator(s)");
 	}
 	
+	@Override
 	abstract protected int getObjectType();
 }

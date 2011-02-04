@@ -52,11 +52,13 @@ class OrganizationalTabPanel extends DisposablePanelWithDescription implements M
 		add(wrappedPanel, BorderLayout.CENTER);
 	}
 
+	@Override
 	public void becomeActive()
 	{
 		wrappedPanel.becomeActive();
 	}
 
+	@Override
 	public void becomeInactive()
 	{
 		wrappedPanel.becomeInactive();
@@ -77,6 +79,7 @@ class OrganizationalTabPanel extends DisposablePanelWithDescription implements M
 		return wrappedPanel.getImage();
 	}
 
+	@Override
 	public Class getJumpActionClass()
 	{
 		return wrappedPanel.getJumpActionClass();

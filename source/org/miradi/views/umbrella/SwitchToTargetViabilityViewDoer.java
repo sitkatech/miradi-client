@@ -23,6 +23,7 @@ import org.miradi.views.targetviability.TargetViabilityView;
 
 public class SwitchToTargetViabilityViewDoer extends ViewSwitchDoer
 {
+	@Override
 	protected String getViewName()
 	{
 		return TargetViabilityView.getViewName();

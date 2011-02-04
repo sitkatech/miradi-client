@@ -23,6 +23,7 @@ import org.miradi.views.map.MapView;
 
 public class SwitchToMapViewDoer extends ViewSwitchDoer 
 {
+	@Override
 	protected String getViewName()
 	{
 		return MapView.getViewName();

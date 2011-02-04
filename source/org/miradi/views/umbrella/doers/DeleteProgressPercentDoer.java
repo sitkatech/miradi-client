@@ -33,16 +33,19 @@ public class DeleteProgressPercentDoer extends DeleteAnnotationDoer
 		return getReferrerParent(annotationToDelete);
 	}
 
+	@Override
 	public String getAnnotationIdListTag()
 	{
 		return Desire.TAG_PROGRESS_PERCENT_REFS;
 	}
 
+	@Override
 	public int getAnnotationType()
 	{
 		return ProgressPercent.getObjectType();
 	}
 
+	@Override
 	public String[] getDialogText()
 	{
 		return new String[] { EAM.text("Are you sure you want to delete this Progress Percent?"),};

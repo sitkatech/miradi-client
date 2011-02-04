@@ -62,6 +62,7 @@ public class SummaryProjectPanel extends ObjectDataInputPanel
 		updateFieldsFromProject();
 	}
 
+	@Override
 	public String getPanelDescription()
 	{
 		return PANEL_DESCRIPTION;

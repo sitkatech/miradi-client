@@ -36,6 +36,7 @@ abstract public class AbstractPopUpEditDoer extends ObjectsDoer
 		dialogTitle = dialogTitleToUse;
 	}
 	
+	@Override
 	public boolean isAvailable()
 	{
 		if(getSelectedHierarchies().length != 1)
@@ -48,6 +49,7 @@ abstract public class AbstractPopUpEditDoer extends ObjectsDoer
 		return true;
 	}
 
+	@Override
 	public void doIt() throws Exception
 	{
 		if(!isAvailable())

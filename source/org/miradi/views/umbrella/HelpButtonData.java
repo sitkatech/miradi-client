@@ -36,6 +36,7 @@ public class HelpButtonData
 		return Translation.getHtmlContent(htmlFile);
 	}
 	
+	@Override
 	public String toString()
 	{
 		return "Title:" + title + " File:" + htmlFile ;

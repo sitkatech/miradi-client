@@ -53,6 +53,7 @@ public class SummaryLocationPanel extends ObjectDataInputPanel
 		updateFieldsFromProject();
 	}
 
+	@Override
 	public String getPanelDescription()
 	{
 		return getLocationPanelDescription();

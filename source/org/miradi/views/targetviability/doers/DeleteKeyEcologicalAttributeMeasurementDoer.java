@@ -34,6 +34,7 @@ import org.miradi.utils.CommandVector;
 
 public class DeleteKeyEcologicalAttributeMeasurementDoer extends AbstractKeyEcologicalAttributeDoer
 {
+	@Override
 	public Vector<Integer> getRequiredObjectTypes()
 	{
 		Vector<Integer> types = new Vector<Integer>(1);
@@ -43,6 +44,7 @@ public class DeleteKeyEcologicalAttributeMeasurementDoer extends AbstractKeyEcol
 
 	}
 
+	@Override
 	public void doIt() throws Exception
 	{
 		if (!isAvailable())

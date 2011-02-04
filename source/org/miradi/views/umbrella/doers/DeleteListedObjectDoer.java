@@ -36,6 +36,7 @@ public abstract class DeleteListedObjectDoer extends ObjectsDoer
 		super();
 	}
 
+	@Override
 	public boolean isAvailable()
 	{
 		if (getObjects().length == 0 )
@@ -44,6 +45,7 @@ public abstract class DeleteListedObjectDoer extends ObjectsDoer
 		return true;
 	}
 
+	@Override
 	public void doIt() throws Exception
 	{
 		if (! isAvailable())

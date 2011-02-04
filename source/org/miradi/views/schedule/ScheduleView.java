@@ -39,6 +39,7 @@ public class ScheduleView extends TabbedView
 		add(createScreenShotLabel(), BorderLayout.BEFORE_FIRST_LINE);
 	}
 
+	@Override
 	public String cardName() 
 	{
 		return getViewName();
@@ -49,11 +50,13 @@ public class ScheduleView extends TabbedView
 		return Project.SCHEDULE_VIEW_NAME;
 	}
 
+	@Override
 	public MiradiToolBar createToolBar()
 	{
 		return new ScheduleToolBar(getActions());
 	}
 
+	@Override
 	public void createTabs() throws Exception
 	{
 		UiScrollPane calendarPanel = new UiScrollPane(new ScheduleComponent("images/Calendar.png"));
@@ -64,6 +67,7 @@ public class ScheduleView extends TabbedView
 	}
 
 
+	@Override
 	public void deleteTabs() throws Exception
 	{
 		// lightweight tabs...nothing to dispose yet

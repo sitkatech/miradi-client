@@ -28,6 +28,7 @@ import org.miradi.views.ObjectsDoer;
  
 public abstract class AbstractEditListDoer extends ObjectsDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		if(!isProjectOpen())

@@ -23,11 +23,13 @@ import org.miradi.views.MainWindowDoer;
 
 public class Exit extends MainWindowDoer
 {
+	@Override
 	public void doIt() throws Exception
 	{
 		getMainWindow().exitNormally();
 	}
 	
+	@Override
 	public boolean isAvailable()
 	{
 		return true;

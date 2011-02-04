@@ -62,6 +62,7 @@ public class SummaryScopeTabPanel extends ObjectDataInputPanelWithSections
 		updateFieldsFromProject();
 	}
 
+	@Override
 	public String getPanelDescription()
 	{
 		return getScopePanelDescription();

@@ -23,6 +23,7 @@ import org.miradi.views.library.LibraryView;
 
 public class SwitchToLibraryViewDoer extends ViewSwitchDoer 
 {
+	@Override
 	protected String getViewName()
 	{
 		return LibraryView.getViewName();

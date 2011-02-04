@@ -51,6 +51,7 @@ public class SummaryPlanningPanel extends ObjectDataInputPanelWithSections
 		updateFieldsFromProject();
 	}
 
+	@Override
 	public String getPanelDescription()
 	{
 		return getPlanningPanelDescription();

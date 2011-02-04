@@ -32,6 +32,7 @@ import org.miradi.objects.Indicator;
 
 public class CreateKeyEcologicalAttributeMeasurementDoer extends AbstractKeyEcologicalAttributeDoer
 {
+	@Override
 	public Vector<Integer> getRequiredObjectTypes()
 	{
 		Vector<Integer> types = new Vector<Integer>(1);
@@ -40,6 +41,7 @@ public class CreateKeyEcologicalAttributeMeasurementDoer extends AbstractKeyEcol
 		return types;
 	}
 
+	@Override
 	public void doIt() throws Exception
 	{
 		if (!isAvailable())

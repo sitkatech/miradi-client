@@ -24,11 +24,13 @@ import org.miradi.objects.BaseObject;
 
 public class CreateAssignmentDoer extends CreateListedObjectDoer
 {
+	@Override
 	protected String getListTag()
 	{
 		return BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS;
 	}
 
+	@Override
 	protected int getTypeToCreate()
 	{
 		return ObjectType.RESOURCE_ASSIGNMENT;
