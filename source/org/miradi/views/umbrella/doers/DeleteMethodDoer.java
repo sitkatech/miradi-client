@@ -26,6 +26,7 @@ import org.miradi.views.umbrella.DeleteActivityDoer;
 
 public class DeleteMethodDoer extends ObjectsDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		if(getSelectedMethod() == null)
@@ -34,6 +35,7 @@ public class DeleteMethodDoer extends ObjectsDoer
 		return true;
 	}
 
+	@Override
 	public void doIt() throws Exception
 	{
 		if(!isAvailable())

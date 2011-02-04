@@ -34,6 +34,7 @@ import org.miradi.views.ObjectsDoer;
 
 public class CreateMethodDoer extends ObjectsDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		if(getSelectedIndicator() == null)
@@ -42,6 +43,7 @@ public class CreateMethodDoer extends ObjectsDoer
 		return true;
 	}
 
+	@Override
 	public void doIt() throws Exception
 	{
 		if(!isAvailable())

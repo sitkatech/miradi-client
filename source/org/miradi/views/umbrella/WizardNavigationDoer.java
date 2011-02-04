@@ -30,6 +30,7 @@ abstract public class WizardNavigationDoer extends ViewDoer
 {
 	abstract String getControlName();
 	
+	@Override
 	public boolean isAvailable()
 	{
 		if(getWizardPanel() == null)
@@ -39,6 +40,7 @@ abstract public class WizardNavigationDoer extends ViewDoer
 		return (destination != null);
 	}
 
+	@Override
 	public void doIt() throws Exception
 	{
 		if(!isAvailable())

@@ -31,6 +31,7 @@ public class PersistentVerticalSplitPane extends PersistentSplitPane
 		setOrientation(VERTICAL_SPLIT);
 	}
 
+	@Override
 	int getContainerHeightOrWidth()
 	{
 		return getParent().getHeight();

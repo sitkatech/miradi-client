@@ -35,11 +35,13 @@ import org.miradi.views.ObjectsDoer;
 
 public class TeamCreateMemberDoer extends ObjectsDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		return getProject().isOpen();
 	}
 
+	@Override
 	public void doIt() throws Exception
 	{
 		if(!isAvailable())

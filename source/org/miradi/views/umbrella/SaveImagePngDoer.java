@@ -30,11 +30,13 @@ import org.miradi.utils.EAMPNGFileChooser;
 
 public class SaveImagePngDoer extends AbstractImageSaverDoer
 {
+	@Override
 	protected EAMFileSaveChooser createFileChooser()
 	{
 		return new EAMPNGFileChooser(getMainWindow());
 	}
 	
+	@Override
 	public void saveImage(OutputStream out, BufferedImage image) throws IOException
 	{
 		ImageIO.write(image, "png", out);

@@ -28,6 +28,7 @@ import org.miradi.views.ObjectsDoer;
 
 abstract public class AbstractKeyEcologicalAttributeDoer extends ObjectsDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		if (getObjects() == null)

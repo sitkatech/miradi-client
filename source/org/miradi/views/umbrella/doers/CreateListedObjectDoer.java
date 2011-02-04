@@ -31,6 +31,7 @@ import org.miradi.views.diagram.CreateAnnotationDoer;
 
 abstract public class CreateListedObjectDoer extends ObjectsDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		if(!super.isAvailable())
@@ -39,6 +40,7 @@ abstract public class CreateListedObjectDoer extends ObjectsDoer
 		return getSelectionHierarchy().size() > 0;
 	}
 	
+	@Override
 	public void doIt() throws Exception
 	{
 		if (! isAvailable())

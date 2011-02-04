@@ -60,6 +60,7 @@ public class RareCampaignSummarySubPanel extends ObjectDataInputPanel
 		add(new PanelTitleLabel(string2));
 	}
 
+	@Override
 	public String getPanelDescription()
 	{
 		return PANEL_DESCRIPTION;

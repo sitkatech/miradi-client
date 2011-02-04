@@ -23,6 +23,7 @@ import org.miradi.views.planning.PlanningView;
 
 public class SwitchToPlanningViewDoer extends ViewSwitchDoer
 {
+	@Override
 	protected String getViewName()
 	{
 		return PlanningView.getViewName();

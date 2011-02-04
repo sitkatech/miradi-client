@@ -39,6 +39,7 @@ public class ManagementPanelSplitPane extends PersistentVerticalSplitPane
 		restoreSavedLocation();
 	}
 	
+	@Override
 	public void setDividerLocation(int location)
 	{
 		location = getMinimumViewableLocation(location);

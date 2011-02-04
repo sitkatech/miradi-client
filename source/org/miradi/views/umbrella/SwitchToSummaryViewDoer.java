@@ -23,6 +23,7 @@ import org.miradi.views.summary.SummaryView;
 
 public class SwitchToSummaryViewDoer extends ViewSwitchDoer
 {
+	@Override
 	protected String getViewName()
 	{
 		return SummaryView.getViewName();

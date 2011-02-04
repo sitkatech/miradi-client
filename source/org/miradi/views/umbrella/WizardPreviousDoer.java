@@ -24,6 +24,7 @@ import org.miradi.wizard.WizardManager;
 
 public class WizardPreviousDoer extends WizardNavigationDoer
 {
+	@Override
 	String getControlName()
 	{
 		return WizardManager.CONTROL_BACK;

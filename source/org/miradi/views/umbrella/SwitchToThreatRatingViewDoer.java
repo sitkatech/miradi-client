@@ -23,6 +23,7 @@ import org.miradi.views.threatmatrix.ThreatMatrixView;
 
 public class SwitchToThreatRatingViewDoer extends ViewSwitchDoer
 {
+	@Override
 	protected String getViewName()
 	{
 		return ThreatMatrixView.getViewName();

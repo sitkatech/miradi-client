@@ -24,11 +24,13 @@ import org.miradi.views.MainWindowDoer;
 
 public class Close extends MainWindowDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		return getMainWindow().getProject().isOpen();
 	}
 
+	@Override
 	public void doIt() throws Exception
 	{
 		try

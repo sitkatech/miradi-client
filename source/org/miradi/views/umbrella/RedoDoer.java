@@ -27,11 +27,13 @@ import org.miradi.views.ProjectDoer;
 
 public class RedoDoer extends ProjectDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		return (getProject().canRedo());
 	}
 
+	@Override
 	public void doIt() throws Exception
 	{
 		redo(getProject());

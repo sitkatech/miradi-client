@@ -30,11 +30,13 @@ public class AboutDoer extends MainWindowDoer
 	{
 	}
 	
+	@Override
 	public boolean isAvailable()
 	{
 		return true;
 	}
 	
+	@Override
 	public void doIt() throws Exception
 	{
 		String text =  buildMainSection();

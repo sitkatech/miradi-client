@@ -61,6 +61,7 @@ public class WWFSummaryPanel extends ObjectDataInputPanel
 		return wwfProjectDataRefs.get(0);
 	}
 
+	@Override
 	public String getPanelDescription()
 	{
 		return getWwfPanelDescription();
@@ -71,6 +72,7 @@ public class WWFSummaryPanel extends ObjectDataInputPanel
 		return EAM.text("Label|WWF"); 
 	}
 	
+	@Override
 	public Icon getIcon()
 	{
 		return new WwfIcon();

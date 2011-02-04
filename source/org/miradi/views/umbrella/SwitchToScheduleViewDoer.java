@@ -23,6 +23,7 @@ import org.miradi.views.schedule.ScheduleView;
 
 public class SwitchToScheduleViewDoer extends ViewSwitchDoer 
 {
+	@Override
 	protected String getViewName()
 	{
 		return ScheduleView.getViewName();
