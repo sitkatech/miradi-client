@@ -25,6 +25,7 @@ import org.miradi.objects.Strategy;
 
 public class InsertStrategyDoer extends InsertFactorDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		if (!super.isAvailable())
@@ -33,16 +34,19 @@ public class InsertStrategyDoer extends InsertFactorDoer
 		return true;
 	}
 	
+	@Override
 	public int getTypeToInsert()
 	{
 		return ObjectType.STRATEGY;
 	}
 
+	@Override
 	public String getInitialText()
 	{
 		return EAM.text("Label|New Strategy");
 	}
 
+	@Override
 	public void forceVisibleInLayerManager()
 	{
 		getCurrentLayerManager().setVisibility(Strategy.OBJECT_NAME, true);

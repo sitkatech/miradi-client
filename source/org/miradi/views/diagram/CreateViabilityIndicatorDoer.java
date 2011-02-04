@@ -64,6 +64,7 @@ public class CreateViabilityIndicatorDoer extends AbstractKeyEcologicalAttribute
 		return true;
 	}
 	
+	@Override
 	public Vector<Integer> getRequiredObjectTypes()
 	{
 		Vector<Integer> types = new Vector<Integer>();
@@ -73,6 +74,7 @@ public class CreateViabilityIndicatorDoer extends AbstractKeyEcologicalAttribute
 		return types;
 	}
 
+	@Override
 	public void doIt() throws Exception
 	{
 		if(!isAvailable())

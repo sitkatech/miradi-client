@@ -25,6 +25,7 @@ import org.miradi.objects.DiagramObject;
 
 abstract public class RenameDiagramObjectDoer extends DiagramPageDoer 
 {	
+	@Override
 	public void doIt() throws Exception 
 	{
 		if (!isAvailable())

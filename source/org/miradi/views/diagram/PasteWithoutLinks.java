@@ -22,6 +22,7 @@ package org.miradi.views.diagram;
 
 public class PasteWithoutLinks extends PasteDoer 
 {
+	@Override
 	public void paste(DiagramPaster diagramPaster) throws Exception 
 	{
 		diagramPaster.pasteFactors(getLocation());

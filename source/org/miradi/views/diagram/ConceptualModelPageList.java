@@ -37,16 +37,19 @@ public class ConceptualModelPageList extends DiagramPageList
 		return new String[] {ConceptualModelDiagram.PSEUDO_COMBINED_LABEL};
 	}
 	
+	@Override
 	public boolean isConceptualModelPageList()
 	{
 		return true;
 	}
 
+	@Override
 	public boolean isResultsChainPageList()
 	{
 		return false;
 	}
 
+	@Override
 	public int getManagedDiagramType()
 	{
 		return ObjectType.CONCEPTUAL_MODEL_DIAGRAM;

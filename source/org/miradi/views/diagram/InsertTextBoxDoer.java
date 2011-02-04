@@ -25,6 +25,7 @@ import org.miradi.objects.TextBox;
 
 public class InsertTextBoxDoer extends InsertFactorDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		if (!super.isAvailable())
@@ -36,16 +37,19 @@ public class InsertTextBoxDoer extends InsertFactorDoer
 		return true;
 	}
 	
+	@Override
 	public void forceVisibleInLayerManager()
 	{
 		getCurrentLayerManager().setVisibility(TextBox.OBJECT_NAME, true);
 	}
 
+	@Override
 	public String getInitialText()
 	{
 		return EAM.text("Label|New Text Box");
 	}
 
+	@Override
 	public int getTypeToInsert()
 	{
 		return ObjectType.TEXT_BOX;

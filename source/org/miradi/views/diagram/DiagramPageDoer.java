@@ -25,6 +25,7 @@ import org.miradi.views.ObjectsDoer;
 
 abstract public class DiagramPageDoer extends ObjectsDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		if(!getProject().isOpen())

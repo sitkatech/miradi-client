@@ -29,6 +29,7 @@ import org.miradi.objects.Target;
 // issue with CreateAnnotationDoer abstract method signitures
 public class CreateViabilityKeyEcologicalAttributeDoer  extends CreateAnnotationDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		if (getPicker()==null)
@@ -46,6 +47,7 @@ public class CreateViabilityKeyEcologicalAttributeDoer  extends CreateAnnotation
 		return false;
 	}
 
+	@Override
 	public Factor getSelectedParentFactor()
 	{
 		if (selectedObject().getType() == ObjectType.TARGET)
@@ -63,11 +65,13 @@ public class CreateViabilityKeyEcologicalAttributeDoer  extends CreateAnnotation
 	}
 	
 	
+	@Override
 	public int getAnnotationType()
 	{
 		return ObjectType.KEY_ECOLOGICAL_ATTRIBUTE;
 	}
 	
+	@Override
 	public String getAnnotationListTag()
 	{
 		return AbstractTarget.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS;

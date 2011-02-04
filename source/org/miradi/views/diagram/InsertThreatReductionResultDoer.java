@@ -25,6 +25,7 @@ import org.miradi.objects.ThreatReductionResult;
 
 public class InsertThreatReductionResultDoer extends InsertFactorDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		if (!super.isAvailable())
@@ -33,16 +34,19 @@ public class InsertThreatReductionResultDoer extends InsertFactorDoer
 		return getDiagramView().isResultsChainTab();
 	}
 	
+	@Override
 	public int getTypeToInsert()
 	{
 		return ObjectType.THREAT_REDUCTION_RESULT;
 	}
 
+	@Override
 	public String getInitialText()
 	{
 		return EAM.text("Label|New Threat Reduction Result");
 	}
 
+	@Override
 	public void forceVisibleInLayerManager()
 	{
 		getCurrentLayerManager().setVisibility(ThreatReductionResult.OBJECT_NAME, true);

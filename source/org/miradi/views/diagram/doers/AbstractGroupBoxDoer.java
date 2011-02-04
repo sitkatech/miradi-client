@@ -38,6 +38,7 @@ import org.miradi.views.diagram.LocationDoer;
 
 abstract public class AbstractGroupBoxDoer extends LocationDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		if (!isInDiagram())
@@ -54,6 +55,7 @@ abstract public class AbstractGroupBoxDoer extends LocationDoer
 		return getDiagramView().getDiagramPanel().getOnlySelectedFactorCells();
 	}
 	
+	@Override
 	public void doIt() throws Exception
 	{
 		if (!isAvailable())

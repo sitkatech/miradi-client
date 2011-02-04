@@ -25,6 +25,7 @@ import org.miradi.objects.Indicator;
 
 public class DeleteIndicator extends DeleteAnnotationDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		if (getObjects().length == 0)
@@ -36,16 +37,19 @@ public class DeleteIndicator extends DeleteAnnotationDoer
 		return true;
 	}
 	
+	@Override
 	public String[] getDialogText()
 	{
 		return new String[] { EAM.text("Are you sure you want to delete this Indicator?"),};
 	}
 
+	@Override
 	public String getAnnotationIdListTag()
 	{
 		return Factor.TAG_INDICATOR_IDS;
 	}
 	
+	@Override
 	public int getAnnotationType()
 	{
 		return Indicator.getObjectType();

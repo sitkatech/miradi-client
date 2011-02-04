@@ -24,11 +24,13 @@ import org.miradi.objects.Factor;
 
 public class CreateIndicator  extends CreateAnnotationDoer
 {
+	@Override
 	public int getAnnotationType()
 	{
 		return ObjectType.INDICATOR;
 	}
 	
+	@Override
 	public String getAnnotationListTag()
 	{
 		return Factor.TAG_INDICATOR_IDS;

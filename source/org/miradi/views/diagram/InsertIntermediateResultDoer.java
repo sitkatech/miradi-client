@@ -26,6 +26,7 @@ import org.miradi.objects.IntermediateResult;
 public class InsertIntermediateResultDoer extends InsertFactorDoer
 {
 	
+	@Override
 	public boolean isAvailable()
 	{
 		if (!super.isAvailable())
@@ -34,16 +35,19 @@ public class InsertIntermediateResultDoer extends InsertFactorDoer
 		return getDiagramView().isResultsChainTab();
 	}
 	
+	@Override
 	public void forceVisibleInLayerManager()
 	{
 		getCurrentLayerManager().setVisibility(IntermediateResult.OBJECT_NAME, true);
 	}
 
+	@Override
 	public String getInitialText()
 	{
 		return EAM.text("Label|New Intermediate Result");
 	}
 
+	@Override
 	public int getTypeToInsert()
 	{
 		return ObjectType.INTERMEDIATE_RESULT;

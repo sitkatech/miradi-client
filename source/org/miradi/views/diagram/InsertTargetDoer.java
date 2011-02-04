@@ -25,16 +25,19 @@ import org.miradi.objects.Target;
 
 public class InsertTargetDoer extends InsertFactorDoer
 {
+	@Override
 	public int getTypeToInsert()
 	{
 		return ObjectType.TARGET;
 	}
 
+	@Override
 	public String getInitialText()
 	{
 		return EAM.text("Label|New Target");
 	}
 
+	@Override
 	public void forceVisibleInLayerManager()
 	{
 		getCurrentLayerManager().setVisibility(Target.OBJECT_NAME, true);

@@ -24,11 +24,13 @@ import org.miradi.objects.ViewData;
 
 public class RenameConceptualModelDoer extends RenameDiagramObjectDoer
 {	
+	@Override
 	public boolean isCorrectTab()
 	{
 		return ! getDiagramView().isResultsChainTab();
 	}
 
+	@Override
 	public String getDiagramObjectTag()
 	{
 		return ViewData.TAG_CURRENT_CONCEPTUAL_MODEL_REF;

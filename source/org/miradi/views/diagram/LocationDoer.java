@@ -25,6 +25,7 @@ import org.miradi.views.ViewDoer;
 
 abstract public class LocationDoer extends ViewDoer
 {
+	@Override
 	public void setLocation(Point locationToUse)
 	{
 		location = locationToUse;

@@ -26,6 +26,7 @@ import org.miradi.views.ViewDoer;
 
 public class Cut extends ViewDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		if(!getProject().isOpen())
@@ -38,6 +39,7 @@ public class Cut extends ViewDoer
 		return (selected.length > 0);
 	}
 
+	@Override
 	public void doIt() throws Exception
 	{
 		CopyDoer copyDoer = (CopyDoer)getView().getDoer(ActionCopy.class);

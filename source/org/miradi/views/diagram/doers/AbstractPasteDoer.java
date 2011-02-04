@@ -32,6 +32,7 @@ import org.miradi.views.diagram.LocationDoer;
 
 abstract public class AbstractPasteDoer extends LocationDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		if(!getProject().isOpen())

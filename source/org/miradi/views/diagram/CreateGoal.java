@@ -24,10 +24,12 @@ import org.miradi.objects.AbstractTarget;
 
 public class CreateGoal  extends CreateAnnotationDoer
 {
+	@Override
 	public int getAnnotationType()
 	{
 		return ObjectType.GOAL;
 	}
+	@Override
 	public String getAnnotationListTag()
 	{
 		return AbstractTarget.TAG_GOAL_IDS;

@@ -26,6 +26,7 @@ import org.miradi.objects.Factor;
 
 public class CreateKeyEcologicalAttributeDoer extends CreateAnnotationDoer
 {
+	@Override
 	public boolean isAvailable() 
 	{
 		if (!super.isAvailable())
@@ -41,11 +42,13 @@ public class CreateKeyEcologicalAttributeDoer extends CreateAnnotationDoer
 		return false;
 	}
 
+	@Override
 	public int getAnnotationType()
 	{
 		return ObjectType.KEY_ECOLOGICAL_ATTRIBUTE;
 	}
 	
+	@Override
 	public String getAnnotationListTag()
 	{
 		return AbstractTarget.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS;

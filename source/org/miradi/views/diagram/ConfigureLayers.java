@@ -29,11 +29,13 @@ import org.miradi.views.ViewDoer;
 
 public class ConfigureLayers extends ViewDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		return true;
 	}
 
+	@Override
 	public void doIt() throws Exception
 	{
 		if(!isAvailable())

@@ -35,6 +35,7 @@ import org.miradi.utils.PointList;
 
 public class DeleteBendPointDoer extends LocationDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		if(!getProject().isOpen())
@@ -73,6 +74,7 @@ public class DeleteBendPointDoer extends LocationDoer
 		return false;
 	}
 
+	@Override
 	public void doIt() throws Exception
 	{
 		if (! isAvailable())
