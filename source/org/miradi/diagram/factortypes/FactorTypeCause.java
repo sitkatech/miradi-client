@@ -23,11 +23,13 @@ package org.miradi.diagram.factortypes;
 
 public class FactorTypeCause extends FactorType
 {
+	@Override
 	public boolean isCause()
 	{
 		return true;
 	}
 	
+	@Override
 	public String toString()
 	{
 		return CAUSE_TYPE;

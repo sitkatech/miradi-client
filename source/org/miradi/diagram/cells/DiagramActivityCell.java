@@ -32,6 +32,7 @@ public class DiagramActivityCell extends FactorCell
 		super(activity, diagramFactorToUse);
 	}
 
+	@Override
 	public Color getColor()
 	{		
 		return DiagramConstants.DEFAULT_ACTIVITIES_COLOR;

@@ -74,6 +74,7 @@ public class LinkCell extends EAMGraphCell implements Edge
 		return getDiagramLink().getToolTipString();
 	}
 	
+	@Override
 	public Color getColor()
 	{
 		return getDiagramLink().getColor();
@@ -89,6 +90,7 @@ public class LinkCell extends EAMGraphCell implements Edge
 		bendSelectionHelper.clearSelection();
 	}
 	
+	@Override
 	public boolean isFactorLink()
 	{
 		return true;
@@ -99,11 +101,13 @@ public class LinkCell extends EAMGraphCell implements Edge
 		return diagramLink.getDiagramLinkId();
 	}
 	
+	@Override
 	public DiagramLink getDiagramLink()
 	{
 		return diagramLink;
 	}
 	
+	@Override
 	public ORef getDiagramLinkRef()
 	{
 		return getDiagramLink().getRef();

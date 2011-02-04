@@ -21,11 +21,13 @@ package org.miradi.diagram.factortypes;
 
 public class FactorTypeScopeBox extends FactorType
 {
+	@Override
 	public boolean isScopeBox()
 	{
 		return true;
 	}
 	
+	@Override
 	public String toString()
 	{
 		return SCOPE_BOX_TYPE;

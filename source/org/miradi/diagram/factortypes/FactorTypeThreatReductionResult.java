@@ -21,11 +21,13 @@ package org.miradi.diagram.factortypes;
 
 public class FactorTypeThreatReductionResult extends FactorType
 {
+	@Override
 	public boolean isThreatReductionResult()
 	{
 		return true;
 	}
 	
+	@Override
 	public String toString()
 	{
 		return THREAT_REDUCTION_RESULT;

@@ -32,6 +32,7 @@ public class DiagramStressCell extends FactorCell
 		super(cmFactor, diagramFactorToUse);
 	}
 
+	@Override
 	public Color getColor()
 	{		
 		return DiagramConstants.COLOR_STRESS;

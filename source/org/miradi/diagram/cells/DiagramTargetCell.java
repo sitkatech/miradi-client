@@ -30,6 +30,7 @@ public class DiagramTargetCell extends AbstractDiagramTarget
 		super(targetToWrap, diagramFactor);
 	}
 
+	@Override
 	protected String getColorTag()
 	{
 		return AppPreferences.TAG_COLOR_TARGET;

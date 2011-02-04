@@ -27,6 +27,7 @@ import org.miradi.diagram.cells.FactorCell;
 
 public class CellViewFactory extends DefaultCellViewFactory
 {
+	@Override
 	protected VertexView createVertexView(Object cell)
 	{
 		// TODO: We should have a MiradiVertexView that is the base 
@@ -91,6 +92,7 @@ public class CellViewFactory extends DefaultCellViewFactory
 		throw new RuntimeException("Unknown node type " + diagramFactor.getWrappedType());
 	}
 
+	@Override
 	protected EdgeView createEdgeView(Object edge)
 	{
 		return new FactorLinkView(edge);

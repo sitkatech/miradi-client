@@ -21,6 +21,7 @@ package org.miradi.diagram.factortypes;
 
 public class FactorTypeGroupBox extends FactorType
 {
+	@Override
 	public String toString()
 	{
 		return GROUP_BOX_TYPE;

@@ -37,11 +37,13 @@ abstract public class AbstractDiagramTarget extends FactorCell
 		super(factorToWrap, diagramFactorToUse);
 	}
 	
+	@Override
 	public Color getColor()
 	{
 		return EAM.getMainWindow().getColorPreference(getColorTag());
 	}
 	
+	@Override
 	public Dimension getInsetDimension()
 	{
 		Rectangle boundingBox = new Rectangle(getSize());

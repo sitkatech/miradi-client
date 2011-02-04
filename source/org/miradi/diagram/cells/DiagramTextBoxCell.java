@@ -37,6 +37,7 @@ public class DiagramTextBoxCell extends FactorCell
 		diagramFactorBackgroundQuestion = cmFactor.getProject().getQuestion(DiagramFactorBackgroundQuestion.class);
 	}
 
+	@Override
 	public Color getColor()
 	{
 		ChoiceItem choiceItem = diagramFactorBackgroundQuestion.findChoiceByCode(getDiagramFactor().getBackgroundColor());

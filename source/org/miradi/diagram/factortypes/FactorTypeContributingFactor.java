@@ -26,11 +26,13 @@ import org.miradi.main.EAM;
 
 public class FactorTypeContributingFactor extends FactorTypeCause
 {
+	@Override
 	public boolean isContributingFactor()
 	{
 		return true;
 	}
 
+	@Override
 	public String toString()
 	{
 		return EAM.text("Type|Contributing Factor");

@@ -34,6 +34,7 @@ public class DiagramCauseCell extends FactorCell
 		super(cmFactor, diagramFactorToUse);
 	}
 
+	@Override
 	public Color getColor()
 	{
 		if(isContributingFactor())

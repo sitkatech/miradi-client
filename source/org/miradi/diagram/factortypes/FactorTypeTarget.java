@@ -22,11 +22,13 @@ package org.miradi.diagram.factortypes;
 
 public class FactorTypeTarget extends FactorType
 {
+	@Override
 	public boolean isTarget()
 	{
 		return true;
 	}
 	
+	@Override
 	public String toString()
 	{
 		return TARGET_TYPE;

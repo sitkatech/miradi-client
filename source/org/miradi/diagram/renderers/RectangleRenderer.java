@@ -30,11 +30,13 @@ import org.jgraph.graph.VertexView;
 
 public class RectangleRenderer extends FactorRenderer
 {
+	@Override
 	public Shape getShape(Rectangle rect)
 	{
 		return rect;
 	}
 
+	@Override
 	Dimension getInsetDimension()
 	{
 		return new Dimension(0, 0);
@@ -53,6 +55,7 @@ public class RectangleRenderer extends FactorRenderer
 	 * between the source and the specified point p. The specified point is
 	 * expected not to intersect the bounds.
 	 */
+	@Override
 	public Point2D getPerimeterPoint(VertexView view, Point2D source, Point2D p) 
 	{
 		return getPerimeterPoint(p, view.getBounds());

@@ -88,6 +88,7 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 				rect.width, rect.height, color, false));
 	}
 
+	@Override
 	public void paint(Graphics g1)
 	{
 		Rectangle rect = getNonBorderBounds();

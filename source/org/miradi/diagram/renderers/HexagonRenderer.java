@@ -28,6 +28,7 @@ import java.awt.Stroke;
 
 public class HexagonRenderer extends FactorRenderer
 {
+	@Override
 	Dimension getInsetDimension()
 	{
 		return getInsetDimension(getSize().width);

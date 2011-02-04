@@ -28,6 +28,7 @@ import java.awt.Rectangle;
 
 public class RectangleWithRatingRenderer extends RectangleRenderer
 {
+	@Override
 	public void fillShape(Graphics g, Rectangle rect, Color color)
 	{
 		super.fillShape(g, rect, color);
@@ -38,6 +39,7 @@ public class RectangleWithRatingRenderer extends RectangleRenderer
 		g2.setPaint(oldPaint);
 	}
 	
+	@Override
 	Dimension getInsetDimension()
 	{
 		return new Dimension(0, PRIORITY_HEIGHT);

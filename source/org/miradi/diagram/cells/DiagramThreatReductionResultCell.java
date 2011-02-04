@@ -33,6 +33,7 @@ public class DiagramThreatReductionResultCell extends FactorCell
 		super(threatReduction, diagramFactorToUse);
 	}
 
+	@Override
 	public Color getColor()
 	{
 		return EAM.getMainWindow().getColorPreference(AppPreferences.TAG_COLOR_THREAT_REDUCTION_RESULT);

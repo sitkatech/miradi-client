@@ -33,11 +33,13 @@ public class FactorLinkView extends EdgeView
 		super(edge);
 	}
 
+	@Override
 	public CellViewRenderer getRenderer()
 	{
 		return arrowLineRenderer;
 	}
 	
+	@Override
 	public CellHandle getHandle(GraphContext context)
 	{
 		edgeHandleWithBendPointSelection = new EdgeHandleWithBendPointSelection(this, context);

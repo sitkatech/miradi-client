@@ -26,6 +26,7 @@ public class IconHexagonRenderer extends HexagonRenderer
 		isDraft = isDraftIcon;
 	}
 	
+	@Override
 	boolean isDraft()
 	{
 		return isDraft;
