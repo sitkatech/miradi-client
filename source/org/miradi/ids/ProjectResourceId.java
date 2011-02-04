@@ -27,6 +27,4 @@ public class ProjectResourceId extends ObjectId
 		super(idToUse);
 	}
 	
-	public static final ProjectResourceId INVALID = new ProjectResourceId(IdAssigner.INVALID_ID);
-
 }

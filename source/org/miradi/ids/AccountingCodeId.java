@@ -25,6 +25,4 @@ public class AccountingCodeId extends ObjectId
 	{
 		super(idToUse);
 	}
-	
-	public static final AccountingCodeId INVALID = new AccountingCodeId(IdAssigner.INVALID_ID);
 }

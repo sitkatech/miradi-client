@@ -25,7 +25,5 @@ public class FundingSourceId extends ObjectId
 	{
 		super(idToUse);
 	}
-	
-	public static final FundingSourceId INVALID = new FundingSourceId(IdAssigner.INVALID_ID);
 }
 
