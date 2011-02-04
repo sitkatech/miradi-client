@@ -103,6 +103,12 @@ public class CommandCreateObject extends Command
 		return dataPairs;
 	}
 	
+	@Override
+	public String toString()
+	{
+		return COMMAND_NAME + ": " + getLogData().toString();
+	}
+	
 	public static final String COMMAND_NAME = "CreateObject";
 
 	private int type;
