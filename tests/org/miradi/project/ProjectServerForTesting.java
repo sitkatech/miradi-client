@@ -41,6 +41,7 @@ public class ProjectServerForTesting extends ProjectServer
 		super.close();
 	}
 	
+	@Override
 	public void close() throws Exception
 	{
 		String projectName = getCurrentProjectName();
@@ -48,6 +49,7 @@ public class ProjectServerForTesting extends ProjectServer
 		deleteProject(projectName);
 	}
 
+	@Override
 	public void writeObject(BaseObject object) throws Exception
 	{
 		super.writeObject(object);
@@ -56,6 +58,7 @@ public class ProjectServerForTesting extends ProjectServer
 	
 	
 
+	@Override
 	public void writeThreatRatingFramework(SimpleThreatRatingFramework framework) throws Exception
 	{
 		super.writeThreatRatingFramework(framework);

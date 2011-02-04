@@ -52,6 +52,7 @@ public class TestSimpleThreatRatingFramework extends MiradiTestCase
 		super(name);
 	}
 	
+	@Override
 	public void setUp() throws Exception
 	{
 		super.setUp();
@@ -59,6 +60,7 @@ public class TestSimpleThreatRatingFramework extends MiradiTestCase
 		framework = project.getSimpleThreatRatingFramework();
 	}
 	
+	@Override
 	public void tearDown() throws Exception
 	{
 		project.close();

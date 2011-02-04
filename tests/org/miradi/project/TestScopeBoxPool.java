@@ -34,6 +34,7 @@ public class TestScopeBoxPool extends TestFactorPool
 		super.testBasics();
 	}
 	
+	@Override
 	public int getObjectType()
 	{
 		return ScopeBox.getObjectType();

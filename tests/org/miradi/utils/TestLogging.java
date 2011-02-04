@@ -29,6 +29,7 @@ public class TestLogging extends MiradiTestCase
 		super(name);
 	}
 	
+	@Override
 	public void tearDown() throws Exception
 	{
 		EAM.setLogLevel(EAM.LOG_NORMAL);

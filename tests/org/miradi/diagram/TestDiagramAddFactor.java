@@ -37,11 +37,13 @@ public class TestDiagramAddFactor extends MiradiTestCase
 		super(name);
 	}
 	
+	@Override
 	public void setUp() throws Exception
 	{
 		project = new ProjectForTesting(getName());
 	}
 	
+	@Override
 	public void tearDown() throws Exception
 	{
 		project.close();

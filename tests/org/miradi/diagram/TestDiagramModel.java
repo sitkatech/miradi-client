@@ -47,6 +47,7 @@ public class TestDiagramModel extends MiradiTestCase
 		super(name);
 	}
 	
+	@Override
 	public void setUp() throws Exception
 	{
 		super.setUp();
@@ -55,6 +56,7 @@ public class TestDiagramModel extends MiradiTestCase
 		idAssigner = new IdAssigner();
 	}
 
+	@Override
 	public void tearDown() throws Exception
 	{
 		project.close();

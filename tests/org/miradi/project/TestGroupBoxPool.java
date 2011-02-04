@@ -29,12 +29,14 @@ public class TestGroupBoxPool extends TestFactorPool
 		super(name);
 	}
 	
+	@Override
 	public void setUp() throws Exception
 	{
 		super.setUp();
 		pool = project.getGroupBoxPool();
 	}
 	
+	@Override
 	public int getObjectType()
 	{
 		return ObjectType.GROUP_BOX;

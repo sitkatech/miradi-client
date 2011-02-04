@@ -33,17 +33,20 @@ public class TestStrategyPool extends TestFactorPool
 		super(name);
 	}
 	
+	@Override
 	public void setUp() throws Exception
 	{
 		super.setUp();
 		pool = project.getStrategyPool();
 	}
 	
+	@Override
 	public int getObjectType()
 	{
 		return ObjectType.STRATEGY;
 	}
 	
+	@Override
 	public void testBasics() throws Exception
 	{
 		super.testBasics();

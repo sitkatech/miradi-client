@@ -55,12 +55,14 @@ public class TestTransferableEamList extends MiradiTestCase
 		super(name);
 	}
 	
+	@Override
 	public void setUp() throws Exception
 	{
 		super.setUp();
 		project = new ProjectForTesting(getName());
 	}
 
+	@Override
 	public void tearDown() throws Exception
 	{
 		super.tearDown();

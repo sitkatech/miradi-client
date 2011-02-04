@@ -60,6 +60,7 @@ public class TestCommands extends MiradiTestCase
 		super(name);
 	}
 	
+	@Override
 	public void setUp() throws Exception
 	{
 		project = new ProjectForTesting(getName());
@@ -72,6 +73,7 @@ public class TestCommands extends MiradiTestCase
 		project.createFactorAndReturnId(ObjectType.TARGET);
 	}
 	
+	@Override
 	public void tearDown() throws Exception
 	{
 		super.tearDown();

@@ -50,6 +50,7 @@ public class TestObjectManager extends MiradiTestCase
 		super(name);
 	}
 
+	@Override
 	public void setUp() throws Exception
 	{
 		project = new ProjectForTesting(getName());
@@ -57,6 +58,7 @@ public class TestObjectManager extends MiradiTestCase
 		db = project.getTestDatabase();
 	}
 	
+	@Override
 	public void tearDown() throws Exception
 	{
 		project.close();

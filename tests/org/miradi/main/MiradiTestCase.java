@@ -28,6 +28,7 @@ public class MiradiTestCase extends TestCaseEnhanced
 		super(name);
 	}
 	
+	@Override
 	public void setUp() throws Exception
 	{
 		verifySetUpAndTearDownCalledEqually(setUpLastCalledBy);
@@ -35,6 +36,7 @@ public class MiradiTestCase extends TestCaseEnhanced
 		setUpLastCalledBy = getCurrentTestName();
 	}
 
+	@Override
 	public void tearDown() throws Exception
 	{
 		--setUpTearDownCount;

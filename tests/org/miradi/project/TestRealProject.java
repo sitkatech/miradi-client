@@ -32,6 +32,7 @@ public class TestRealProject extends MiradiTestCase
 		super(name);
 	}
 	
+	@Override
 	public void setUp() throws Exception
 	{
 		super.setUp();
@@ -39,6 +40,7 @@ public class TestRealProject extends MiradiTestCase
 		projectName = "TestRealProject";
 	}
 	
+	@Override
 	public void tearDown() throws Exception
 	{
 		DirectoryUtils.deleteEntireDirectoryTree(tempDirectory);

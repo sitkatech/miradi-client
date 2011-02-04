@@ -29,12 +29,14 @@ public class TestTargetPool extends TestFactorPool
 		super(name);
 	}
 	
+	@Override
 	public void setUp() throws Exception
 	{
 		super.setUp();
 		pool = project.getTargetPool();
 	}
 	
+	@Override
 	public int getObjectType()
 	{
 		return ObjectType.TARGET;

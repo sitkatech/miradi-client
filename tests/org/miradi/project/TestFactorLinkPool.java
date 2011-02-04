@@ -28,6 +28,7 @@ public class TestFactorLinkPool extends TestCaseWithProject
 		super(name);
 	}
 	
+	@Override
 	public void setUp() throws Exception
 	{
 		super.setUp();

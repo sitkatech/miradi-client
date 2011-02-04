@@ -29,12 +29,14 @@ public class TestIntermediateResultPool extends TestFactorPool
 		super(name);
 	}
 	
+	@Override
 	public void setUp() throws Exception
 	{
 		super.setUp();
 		pool = project.getIntermediateResultPool();
 	}
 	
+	@Override
 	public int getObjectType()
 	{
 		return ObjectType.INTERMEDIATE_RESULT;

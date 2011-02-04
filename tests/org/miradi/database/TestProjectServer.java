@@ -44,6 +44,7 @@ public class TestProjectServer extends TestCaseWithProject
 		super(name);
 	}
 	
+	@Override
 	public void setUp() throws Exception
 	{
 		super.setUp();
@@ -53,6 +54,7 @@ public class TestProjectServer extends TestCaseWithProject
 		idAssigner = new IdAssigner();
 	}
 	
+	@Override
 	public void tearDown() throws Exception
 	{
 		storage.close();

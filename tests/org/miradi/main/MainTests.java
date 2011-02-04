@@ -520,6 +520,7 @@ class MainTestSuite extends TestSuite
 		super(name);
 	}
 
+	@Override
 	public void run(TestResult result)
 	{
 		reportAnyTempFiles("Existing temp file: ");
