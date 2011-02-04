@@ -506,8 +506,6 @@ abstract public class Desire extends BaseObject
 	public final static String PSEUDO_TAG_DIRECT_THREATS = "PseudoTagDirectThreats";
 	public final static String PSEUDO_TAG_FACTOR = "PseudoTagFactor";
 
-	public static final String OBJECT_NAME = "Desire";
-
 	private ObjectData shortLabel;
 	private ObjectData fullText;
 	private ObjectData comments;
