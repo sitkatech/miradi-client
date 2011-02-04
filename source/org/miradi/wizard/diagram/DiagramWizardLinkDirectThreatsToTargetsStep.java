@@ -33,16 +33,19 @@ public class DiagramWizardLinkDirectThreatsToTargetsStep extends DiagramWizardSt
 		super(panelToUse);
 	}
 	
+	@Override
 	public String getProcessStepTitle()
 	{
 		return ProcessSteps.PROCESS_STEP_1C;
 	}
 
+	@Override
 	public Class getAssociatedActionClass()
 	{
 		return ActionJumpDiagramWizardIdentifyDirectThreatStep.class;
 	}
 	
+	@Override
 	public String getSubHeading()
 	{
 		return EAM.text(" 2) Connect threat to relevant targets");

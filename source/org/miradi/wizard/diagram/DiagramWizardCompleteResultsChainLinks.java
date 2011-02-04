@@ -32,16 +32,19 @@ public class DiagramWizardCompleteResultsChainLinks extends DiagramWizardStep
 		super(panelToUse);
 	}
 	
+	@Override
 	public String getProcessStepTitle()
 	{
 		return ProcessSteps.PROCESS_STEP_2A;
 	}
 
+	@Override
 	public Class getAssociatedActionClass()
 	{
 		return ActionJumpDiagramWizardResultsChainSelectStrategyStep.class;
 	}
 	
+	@Override
 	public String getSubHeading()
 	{
 		return EAM.text("3) Complete links in the chain ");

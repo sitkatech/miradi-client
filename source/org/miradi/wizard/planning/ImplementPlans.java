@@ -33,11 +33,13 @@ public class ImplementPlans extends SplitWizardStep
 		super(wizardToUse, WorkPlanView.getViewName());
 	}
 
+	@Override
 	public String getProcessStepTitle()
 	{
 		return ProcessSteps.PROCESS_STEP_3C;
 	}
 
+	@Override
 	public Class getAssociatedActionClass()
 	{
 		return ActionJumpPlanningWizardImplementPlans.class;

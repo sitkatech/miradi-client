@@ -30,11 +30,13 @@ class ProjectListExportAction extends ProjectListAction
 		super(tableToUse, getButtonLabel());
 	}
 
+	@Override
 	protected void doWork() throws Exception
 	{
 		ExportMpzFileDoer.perform(EAM.getMainWindow(), getSelectedFile());
 	}
 	
+	@Override
 	protected String getErrorMessage()
 	{
 		return EAM.text("Error exporting project: ");

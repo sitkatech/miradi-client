@@ -32,16 +32,19 @@ public class BudgetWizardBudgetDetail extends FinancialWizardStep
 		super(wizardToUse);
 	}
 	
+	@Override
 	public String getProcessStepTitle()
 	{
 		return ProcessSteps.PROCESS_STEP_3B;
 	}
 
+	@Override
 	public Class getAssociatedActionClass()
 	{
 		return ActionJumpBudgetWizardAccountingAndFunding.class;
 	}
 
+	@Override
 	public String getSubHeading()
 	{
 		return EAM.text("2) Add budget detail to workplan ");

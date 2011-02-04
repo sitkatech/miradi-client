@@ -31,11 +31,13 @@ public class RankDraftStrategiesStep extends DiagramWizardStep
 		super(panelToUse);
 	}
 	
+	@Override
 	public String getProcessStepTitle()
 	{
 		return ProcessSteps.PROCESS_STEP_2A;
 	}
 
+	@Override
 	public Class getAssociatedActionClass()
 	{
 		return ActionJumpRankDraftStrategiesStep.class;

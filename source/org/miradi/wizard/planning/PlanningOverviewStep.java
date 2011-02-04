@@ -32,11 +32,13 @@ public class PlanningOverviewStep extends SplitWizardStep
 		super(wizardToUse, PlanningView.getViewName());
 	}
 
+	@Override
 	public String getProcessStepTitle()
 	{
 		return "";
 	}
 
+	@Override
 	public Class getAssociatedActionClass()
 	{
 		return ActionViewPlanning.class;

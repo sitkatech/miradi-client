@@ -32,16 +32,19 @@ public class DevelopDraftStrategiesStep extends DiagramWizardStep
 		super(panelToUse);
 	}
 	
+	@Override
 	public String getProcessStepTitle()
 	{
 		return ProcessSteps.PROCESS_STEP_2A;
 	}
 
+	@Override
 	public Class getAssociatedActionClass()
 	{
 		return ActionJumpSelectChainStep.class;
 	}
 	
+	@Override
 	public String getSubHeading()
 	{
 		return EAM.text("2) Develop draft strategies");

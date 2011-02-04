@@ -31,11 +31,13 @@ public class DiagramWizardDefineAudienceStep extends DiagramWizardStep
 		super(wizardToUse);
 	}
 	
+	@Override
 	public String getProcessStepTitle()
 	{
 		return ProcessSteps.PROCESS_STEP_2B;
 	}
 
+	@Override
 	public Class getAssociatedActionClass()
 	{
 		return ActionJumpDiagramWizardDefineAudienceStep.class;

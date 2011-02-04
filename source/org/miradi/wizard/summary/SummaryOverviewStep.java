@@ -31,11 +31,13 @@ public class SummaryOverviewStep extends SummaryWizardStep
 		super(panelToUse);
 	}
 
+	@Override
 	public String getProcessStepTitle()
 	{
 		return "";
 	}
 
+	@Override
 	public Class getAssociatedActionClass()
 	{
 		return ActionViewSummary.class;

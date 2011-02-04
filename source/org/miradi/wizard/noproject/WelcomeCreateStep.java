@@ -109,6 +109,7 @@ public class WelcomeCreateStep extends NoProjectWizardStep
 		return EAM.text("NOTE: Project filenames can contain letters, numbers, spaces, periods, dashes, and underlines.");
 	}
 
+	@Override
 	public Class getControl(String controlName)
 	{
 		if(controlName.equals(WizardManager.CONTROL_NEXT))
@@ -117,6 +118,7 @@ public class WelcomeCreateStep extends NoProjectWizardStep
 	}
 
 
+	@Override
 	public void buttonPressed(String buttonName)
 	{
 		try

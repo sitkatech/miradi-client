@@ -32,11 +32,13 @@ public class MapOverviewStep extends SplitWizardStep
 		super(wizardToUse, MapView.getViewName());
 	}
 
+	@Override
 	public String getProcessStepTitle()
 	{
 		return "";
 	}
 
+	@Override
 	public Class getAssociatedActionClass()
 	{
 		return ActionViewMap.class;

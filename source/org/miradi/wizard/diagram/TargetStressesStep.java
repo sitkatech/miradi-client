@@ -31,11 +31,13 @@ public class TargetStressesStep extends DiagramWizardStep
 		super(wizardToUse);
 	}
 
+	@Override
 	public String getProcessStepTitle()
 	{
 		return ProcessSteps.PROCESS_STEP_1B;
 	}
 
+	@Override
 	public Class getAssociatedActionClass()
 	{
 		return ActionJumpTargetStressesStep.class;

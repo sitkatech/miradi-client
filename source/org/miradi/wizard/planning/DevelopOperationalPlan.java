@@ -33,11 +33,13 @@ public class DevelopOperationalPlan extends SplitWizardStep
 		super(wizardToUse, PlanningView.getViewName());
 	}
 
+	@Override
 	public String getProcessStepTitle()
 	{
 		return ProcessSteps.PROCESS_STEP_2C;
 	}
 
+	@Override
 	public Class getAssociatedActionClass()
 	{
 		return ActionJumpPlanningWizardDevelopOperationalPlan.class;

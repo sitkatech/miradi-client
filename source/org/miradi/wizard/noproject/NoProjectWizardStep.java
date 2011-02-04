@@ -64,6 +64,7 @@ public class NoProjectWizardStep extends SkeletonWizardStep implements KeyListen
 		return "";
 	}
 	
+	@Override
 	public void refresh() throws Exception
 	{
 		projectList.refresh();
@@ -84,6 +85,7 @@ public class NoProjectWizardStep extends SkeletonWizardStep implements KeyListen
 	}
 	
 
+	@Override
 	public JPopupMenu getRightClickMenu(String itemText)
 	{
 		JPopupMenu menu = new JPopupMenu();
@@ -115,6 +117,7 @@ public class NoProjectWizardStep extends SkeletonWizardStep implements KeyListen
 		String url;
 	}
 
+	@Override
 	public void valueChanged(String widget, String newValue)
 	{
 	}

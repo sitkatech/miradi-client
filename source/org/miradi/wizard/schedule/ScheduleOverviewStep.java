@@ -31,11 +31,13 @@ public class ScheduleOverviewStep extends SplitWizardStep
 		super(wizardToUse, ScheduleView.getViewName());
 	}
 
+	@Override
 	public String getProcessStepTitle()
 	{
 		return "";
 	}
 
+	@Override
 	public Class getAssociatedActionClass()
 	{
 		return ActionViewSchedule.class;

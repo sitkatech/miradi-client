@@ -30,11 +30,13 @@ public class DiagramWizardHumanWelfareTargetsStep extends DiagramWizardStep
 	{
 		super(wizardToUse);
 	}
+	@Override
 	public String getProcessStepTitle()
 	{
 		return ProcessSteps.PROCESS_STEP_1B;
 	}
 
+	@Override
 	public Class getAssociatedActionClass()
 	{
 		return ActionJumpDiagramWizardHumanWelfareTargetsStep.class;

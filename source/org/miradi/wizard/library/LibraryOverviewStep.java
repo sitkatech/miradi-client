@@ -33,11 +33,13 @@ public class LibraryOverviewStep extends SplitWizardStep
 	}
 
 
+	@Override
 	public String getProcessStepTitle()
 	{
 		return "";
 	}
 
+	@Override
 	public Class getAssociatedActionClass()
 	{
 		return ActionViewImages.class;

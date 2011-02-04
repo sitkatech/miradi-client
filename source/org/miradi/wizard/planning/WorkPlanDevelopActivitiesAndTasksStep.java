@@ -31,6 +31,7 @@ public class WorkPlanDevelopActivitiesAndTasksStep extends WorkPlanWizardStep
 		super(wizardToUse);
 	}
 	
+	@Override
 	public String getProcessStepTitle()
 	{
 		return ProcessSteps.PROCESS_STEP_3A;

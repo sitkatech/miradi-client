@@ -32,11 +32,13 @@ public class MonitoringWizardDefineIndicatorsStep extends DiagramWizardStep
 	}
 
 	
+	@Override
 	public String getProcessStepTitle()
 	{
 		return ProcessSteps.PROCESS_STEP_2B;
 	}
 
+	@Override
 	public Class getAssociatedActionClass()
 	{
 		return ActionJumpMonitoringWizardDefineIndicatorsStep.class;

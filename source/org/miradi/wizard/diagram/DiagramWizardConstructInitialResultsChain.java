@@ -32,16 +32,19 @@ public class DiagramWizardConstructInitialResultsChain extends DiagramWizardStep
 		super(panelToUse);
 	}
 	
+	@Override
 	public String getProcessStepTitle()
 	{
 		return ProcessSteps.PROCESS_STEP_2A;
 	}
 
+	@Override
 	public Class getAssociatedActionClass()
 	{
 		return ActionJumpDiagramWizardResultsChainSelectStrategyStep.class;
 	}
 
+	@Override
 	public String getSubHeading()
 	{
 		return EAM.text("2) Construct initial results chain ");

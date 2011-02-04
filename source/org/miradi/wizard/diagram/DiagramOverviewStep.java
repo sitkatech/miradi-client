@@ -30,11 +30,13 @@ public class DiagramOverviewStep extends DiagramWizardStep
 		super(panelToUse);
 	}
 
+	@Override
 	public String getProcessStepTitle()
 	{
 		return "";
 	}
 
+	@Override
 	public Class getAssociatedActionClass()
 	{
 		return ActionViewDiagram.class;
