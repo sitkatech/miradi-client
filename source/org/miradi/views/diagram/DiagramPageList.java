@@ -147,7 +147,7 @@ abstract public class DiagramPageList extends ObjectPoolTable
 	{
 		public DiagramObjectListSelectionListener(Project projectToUse)
 		{
-			project = projectToUse;
+			listenerProject = projectToUse;
 		}
 
 		public void valueChanged(ListSelectionEvent event)
@@ -171,12 +171,12 @@ abstract public class DiagramPageList extends ObjectPoolTable
 				return;
 			
 			commandsToExecute.addAll(createSwitchToDefaultModeCommand());
-			project.executeCommandsAsTransaction(commandsToExecute.toArray(new Command[0]));		
+			listenerProject.executeCommandsAsTransaction(commandsToExecute.toArray(new Command[0]));		
 		}
 
 		private CommandVector createSwitchToDefaultModeCommand() throws Exception
 		{
-			ViewData viewData = project.getCurrentViewData();
+			ViewData viewData = listenerProject.getCurrentViewData();
 			if (viewData.getData(ViewData.TAG_CURRENT_MODE).equals(ViewData.MODE_DEFAULT))
 				return new CommandVector();
 			
@@ -196,7 +196,7 @@ abstract public class DiagramPageList extends ObjectPoolTable
 			return selectedDiagramObjectRef;
 		}
 		
-		private Project project;
+		private Project listenerProject;
 	}
 	
 	public boolean shouldSaveColumnWidth()
