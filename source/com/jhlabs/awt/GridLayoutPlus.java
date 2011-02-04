@@ -66,12 +66,14 @@ public class GridLayoutPlus extends BasicGridLayout {
 		colFlags = setWeight(colFlags, col, v);
 	}
 
+	@Override
 	protected int getRowWeight(int row) {
 		if (rowWeights != null && row < rowWeights.length)
 			return rowWeights[row];
 		return 0;
 	}
 
+	@Override
 	protected int getColWeight(int col) {
 		if (colWeights != null && col < colWeights.length)
 			return colWeights[col];
@@ -89,6 +91,7 @@ public class GridLayoutPlus extends BasicGridLayout {
 	 * @param name the String name
 	 * @param comp the component to be added
 	 */
+	@Override
 	public void addLayoutComponent (String name, Component comp) {
 	}
 
@@ -96,13 +99,16 @@ public class GridLayoutPlus extends BasicGridLayout {
 	 * Removes the specified component from the layout.
 	 * @param comp the component to be removed
 	 */
+	@Override
 	public void removeLayoutComponent (Component comp) {
 	}
 
+	@Override
 	protected int alignmentFor(Component c, int row, int col) {
 		return getColAlignment(col);
 	}
 
+	@Override
 	protected int fillFor(Component c, int row, int col) {
 		return fill;
 	}

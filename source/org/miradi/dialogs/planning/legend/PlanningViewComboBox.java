@@ -42,6 +42,7 @@ abstract public class PlanningViewComboBox extends UiComboBoxWithSaneActionFirin
 		addActionListener(this);
 	}
 	
+	@Override
 	public void actionPerformed(ActionEvent event)
 	{		
 		try

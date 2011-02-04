@@ -35,6 +35,7 @@ public class ResourceAssignmentEditorComponent extends AbstractAssignmentEditorC
 		super(mainWindowToUse, objectPickerToUse);
 	}
 	
+	@Override
 	protected void createTables() throws Exception
 	{
 		abstractSummaryTableModel = new ResourceAssignmentMainTableModel(getProject());
@@ -44,6 +45,7 @@ public class ResourceAssignmentEditorComponent extends AbstractAssignmentEditorC
 		assignmentDateUnitsTable = new AssignmentWorkUnitsTable(getMainWindow(), assignmentDateUnitsTableModel);		
 	}
 	
+	@Override
 	protected void addButtons(OneRowPanel box)
 	{
 		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionAssignResource.class), getPicker()));

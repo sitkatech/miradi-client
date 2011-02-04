@@ -106,12 +106,14 @@ public class TreeTableModelAdapter extends AbstractTableModel
 	return treeTableModel.getColumnCount();
     }
 
-    public String getColumnName(int column) {
+    @Override
+	public String getColumnName(int column) {
 	return treeTableModel.getColumnName(column);
     }
 
 	// Modified Benetech 2010-08-16: Added collection typing
-    public Class<?> getColumnClass(int column) {
+    @Override
+	public Class<?> getColumnClass(int column) {
 	return treeTableModel.getColumnClass(column);
     }
 
@@ -128,11 +130,13 @@ public class TreeTableModelAdapter extends AbstractTableModel
 	return treeTableModel.getValueAt(nodeForRow(row), column);
     }
 
-    public boolean isCellEditable(int row, int column) {
+    @Override
+	public boolean isCellEditable(int row, int column) {
          return treeTableModel.isCellEditable(nodeForRow(row), column); 
     }
 
-    public void setValueAt(Object value, int row, int column) {
+    @Override
+	public void setValueAt(Object value, int row, int column) {
 	treeTableModel.setValueAt(value, nodeForRow(row), column);
     }
 

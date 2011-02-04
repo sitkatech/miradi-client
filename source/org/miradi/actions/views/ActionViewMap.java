@@ -35,11 +35,13 @@ public class ActionViewMap extends MainWindowAction
 		return EAM.text("Action|Maps") + DEMO_INDICATOR;
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Switch to the Map View");
 	}
 	
+	@Override
 	public String toString()
 	{
 		return getLabel();

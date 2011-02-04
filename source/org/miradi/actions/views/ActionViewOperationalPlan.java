@@ -36,11 +36,13 @@ public class ActionViewOperationalPlan extends MainWindowAction
 		return EAM.text("Action|Operational Plan");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Switch to the Operational Plan View");
 	}
 	
+	@Override
 	public String toString()
 	{
 		return getLabel();

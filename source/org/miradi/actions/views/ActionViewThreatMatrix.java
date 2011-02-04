@@ -36,11 +36,13 @@ public class ActionViewThreatMatrix extends MainWindowAction
 		return EAM.text("Action|Threat Ratings");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Switch to the Threat Rating View");
 	}
 	
+	@Override
 	public String toString()
 	{
 		return getLabel();
