@@ -35,11 +35,13 @@ public class ActionViewImages extends MainWindowAction
 		return EAM.text("Action|Library") + DEMO_INDICATOR;
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Switch to the Library View");
 	}
 	
+	@Override
 	public String toString()
 	{
 		return getLabel();

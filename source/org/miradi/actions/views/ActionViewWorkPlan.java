@@ -36,11 +36,13 @@ public class ActionViewWorkPlan extends MainWindowAction
 		return EAM.text("Action|Work Plan");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Develop a work plan and budget");
 	}
 	
+	@Override
 	public String toString()
 	{
 		return getLabel();

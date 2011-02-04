@@ -35,11 +35,13 @@ public class ActionViewBudget extends MainWindowAction
 		return EAM.text("Action|Financial");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Switch to the Financial View");
 	}
 	
+	@Override
 	public String toString()
 	{
 		return getLabel();

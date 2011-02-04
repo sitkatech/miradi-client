@@ -35,11 +35,13 @@ public class ActionViewSchedule extends MainWindowAction
 		return EAM.text("Action|Schedule") + DEMO_INDICATOR;
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Switch to the Schedule");
 	}
 	
+	@Override
 	public String toString()
 	{
 		return getLabel();

@@ -35,11 +35,13 @@ public class ActionViewStrategicPlan extends MainWindowAction
 		return EAM.text("Action|Strategic Plan");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Switch to the Strategic Plan View");
 	}
 	
+	@Override
 	public String toString()
 	{
 		return getLabel();

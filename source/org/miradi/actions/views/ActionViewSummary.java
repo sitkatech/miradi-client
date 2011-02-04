@@ -36,11 +36,13 @@ public class ActionViewSummary extends MainWindowAction
 		return EAM.text("Action|Summary");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Switch to the Summary View");
 	}
 	
+	@Override
 	public String toString()
 	{
 		return getLabel();

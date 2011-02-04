@@ -36,11 +36,13 @@ public class ActionViewDiagram extends MainWindowAction
 		return EAM.text("Action|Diagram");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Switch to the Conceptual Model Diagram");
 	}
 	
+	@Override
 	public String toString()
 	{
 		return getLabel();

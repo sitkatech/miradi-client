@@ -35,11 +35,13 @@ public class ActionViewMonitoring extends MainWindowAction
 		return EAM.text("Action|Monitoring Plan");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Switch to the Monitoring Plan View");
 	}
 	
+	@Override
 	public String toString()
 	{
 		return getLabel();

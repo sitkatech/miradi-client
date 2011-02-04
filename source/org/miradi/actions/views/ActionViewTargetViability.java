@@ -36,11 +36,13 @@ public class ActionViewTargetViability extends MainWindowAction
 		return EAM.text("Action|Target Viability");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Switch to the Target Viability View");
 	}
 	
+	@Override
 	public String toString()
 	{
 		return getLabel();

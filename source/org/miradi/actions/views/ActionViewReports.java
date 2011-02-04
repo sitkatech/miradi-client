@@ -36,11 +36,13 @@ public class ActionViewReports extends MainWindowAction
 		return EAM.text("Action|Reports");
 	}
 
+	@Override
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Switch to the Reports View");
 	}
 	
+	@Override
 	public String toString()
 	{
 		return getLabel();
