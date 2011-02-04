@@ -128,7 +128,7 @@ public class ReportTemplateContentQuestion extends StaticChoiceQuestion
 
 	public static String getStrategicPlanLabel()
 	{
-		return EAM.text("Strategic Plan");
+		return EAM.text("Action Plan");
 	}
 
 	public static String getThreatRatingsLabel()
