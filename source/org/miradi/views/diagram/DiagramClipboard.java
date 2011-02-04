@@ -56,13 +56,13 @@ public class DiagramClipboard extends Clipboard
 		pasteCount = 0;
 	}
 	
-	public void setContents(Transferable contents, ClipboardOwner owner) 
+	public synchronized void setContents(Transferable contents, ClipboardOwner owner) 
 	{
 		resetPasteCount();
 		clipboard.setContents(contents, owner);
 	}
 	
-	public Transferable getContents(Object requestor)
+	public synchronized Transferable getContents(Object requestor)
 	{
 		return clipboard.getContents(requestor);
 	}
