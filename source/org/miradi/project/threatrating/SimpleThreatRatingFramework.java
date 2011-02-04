@@ -315,6 +315,7 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 		return convertToChoiceItem(rawOverallProjectRating);
 	}
 	
+	@Override
 	public ChoiceItem getThreatThreatRatingValue(ORef threatRef) throws Exception
 	{
 		ValueOption valueOption = getThreatThreatRatingValue(threatRef.getObjectId());

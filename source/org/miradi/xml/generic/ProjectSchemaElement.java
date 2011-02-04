@@ -81,6 +81,7 @@ class ProjectSchemaElement extends SchemaElement
 		objectTypes.add(new ObjectPoolSchemaElement(new TaggedObjectSetSchemaElement()));
 	}
 	
+	@Override
 	public void output(SchemaWriter writer) throws IOException
 	{
 		writer.defineAlias(getDotElement(getProjectElementName()), "element " + XmpzXmlConstants.PREFIX + getProjectElementName());

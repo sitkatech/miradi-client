@@ -25,6 +25,7 @@ import org.miradi.xml.MiradiXmlValidator;
 
 public class ConProMiradiXmlValidator extends MiradiXmlValidator
 {
+	@Override
 	protected String getSchemaFileRelativePathName()
 	{
 		return MIRADI_CONPRO_SCHEMA_FILE_NAME;

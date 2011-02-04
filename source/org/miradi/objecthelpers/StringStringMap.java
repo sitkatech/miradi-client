@@ -49,6 +49,7 @@ public class StringStringMap extends AbstractStringKeyMap
 		super(mapAsJsonString);
 	}
 	
+	@Override
 	protected String getMapTag()
 	{
 		return TAG_STRING_MAP;

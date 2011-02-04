@@ -74,6 +74,7 @@ public class CreateDiagramFactorLinkParameter extends CreateObjectParameter
 		return new ORef(DiagramFactor.getObjectType(), getToFactorId());
 	}
 	
+	@Override
 	public String getFormatedDataString()
 	{
 		HashMap<String, Comparable> dataPairs = new HashMap<String, Comparable>();

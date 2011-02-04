@@ -40,36 +40,43 @@ public class ExpenseAssignmentPoolExporter extends AbstractAssignmentPoolExporte
 		exportDateUnitEfforList(expenseAssignment.getDateUnitEffortList(), XmpzXmlConstants.DATE_UNITS_EXPENSE);
 	}
 	
+	@Override
 	protected String getDateUnitElementName()
 	{
 		return XmpzXmlConstants.EXPENSES_DATE_UNIT;
 	}
 	
+	@Override
 	protected String getDayElementName()
 	{
 		return EXPENSES_DAY;
 	}
 	
+	@Override
 	protected String getMonthElementName()
 	{
 		return EXPENSES_MONTH;
 	}
 	
+	@Override
 	protected String getQuarterElementName()
 	{
 		return EXPENSES_QUARTER;
 	}
 	
+	@Override
 	protected String getYearElementName()
 	{
 		return EXPENSES_YEAR;
 	}
 	
+	@Override
 	protected String getFullProjectTimespanElementName()
 	{
 		return EXPENSES_FULL_PROJECT_TIMESPAN;
 	}
 	
+	@Override
 	protected String getQuantatityElementName()
 	{
 		return XmpzXmlConstants.EXPENSE;
