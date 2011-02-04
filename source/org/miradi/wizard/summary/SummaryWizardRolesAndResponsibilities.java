@@ -32,11 +32,13 @@ public class SummaryWizardRolesAndResponsibilities extends SummaryWizardStep
 		super(panelToUse);
 	}
 
+	@Override
 	public String getProcessStepTitle()
 	{
 		return ProcessSteps.PROCESS_STEP_1A;
 	}
 
+	@Override
 	public Class getAssociatedActionClass()
 	{
 		return ActionJumpSummaryWizardRolesAndResponsibilities.class;

@@ -32,16 +32,19 @@ public class ThreatStressOverviewStep extends ThreatRatingWizardStep
 		super(wizardToUse);
 	}
 
+	@Override
 	public String getProcessStepTitle()
 	{
 		return ProcessSteps.PROCESS_STEP_1C;
 	}
 
+	@Override
 	public Class getAssociatedActionClass()
 	{
 		return ActionViewThreatMatrix.class;
 	}
 	
+	@Override
 	public String getSubHeading()
 	{
 		return EAM.text("1) Select target and threat to work on");

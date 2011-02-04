@@ -32,16 +32,19 @@ public class TargetViabilityDetermineDesiredStatusStep extends TargetViabilityWi
 		super(wizardToUse);
 	}
 	
+	@Override
 	public String getProcessStepTitle()
 	{
 		return ProcessSteps.PROCESS_STEP_1B;
 	}
 
+	@Override
 	public Class getAssociatedActionClass()
 	{
 		return ActionJumpTargetViabilityMethodChoiceStep.class;
 	}
 
+	@Override
 	public String getSubHeading()
 	{
 		return EAM.text("5) Determine desired status");

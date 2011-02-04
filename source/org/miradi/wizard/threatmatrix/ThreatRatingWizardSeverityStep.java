@@ -37,16 +37,19 @@ public class ThreatRatingWizardSeverityStep extends ThreatRatingWizardSetValue
 		super(wizardToUse, critertion);
 	}
 	
+	@Override
 	public String getProcessStepTitle()
 	{
 		return ProcessSteps.PROCESS_STEP_1C;
 	}
 
+	@Override
 	public Class getAssociatedActionClass()
 	{
 		return ActionJumpThreatMatrixOverviewStep.class;
 	}
 	
+	@Override
 	public String getSubHeading()
 	{
 		return EAM.text("3) Rate the severity of the threat");

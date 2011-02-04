@@ -33,16 +33,19 @@ public class ThreatStressRateContributionAndIrreversibilityStep extends
 		super(wizardToUse);
 	}
 
+	@Override
 	public String getProcessStepTitle()
 	{
 		return ProcessSteps.PROCESS_STEP_1C;
 	}
 
+	@Override
 	public Class getAssociatedActionClass()
 	{
 		return ActionJumpThreatMatrixOverviewStep.class;
 	}
 	
+	@Override
 	public String getSubHeading()
 	{
 		return EAM.text("3) Rate contribution and irreversibility of threat");
