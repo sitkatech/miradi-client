@@ -33,6 +33,7 @@ public class CollapseColumnAction extends AbstractCollapseColumnAction
 		
 	}
 	
+	@Override
 	protected int getSelectedColumn()
 	{
 		int tableColumn = table.getSelectedColumn();

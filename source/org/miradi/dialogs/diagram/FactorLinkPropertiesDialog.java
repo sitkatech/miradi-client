@@ -33,6 +33,7 @@ public class FactorLinkPropertiesDialog extends ModelessDialogWithDirections
 		setScrollableMainPanel(factorPanel);
 	}
 	
+	@Override
 	protected Class getJumpAction()
 	{
 		if(factorPanel == null)

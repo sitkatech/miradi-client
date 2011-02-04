@@ -38,6 +38,7 @@ public class PlanningTreeIndicatorNode extends AbstractPlanningTreeNode
 		rebuild();
 	}
 
+	@Override
 	public void rebuild() throws Exception
 	{
 		addChildren(buildResourceAssignmentNodes(indicator.getResourceAssignmentRefs()));
@@ -59,11 +60,13 @@ public class PlanningTreeIndicatorNode extends AbstractPlanningTreeNode
 		addChildren(measurementChildren);
 	}
 
+	@Override
 	public BaseObject getObject()
 	{
 		return indicator;
 	}
 
+	@Override
 	boolean shouldSortChildren()
 	{
 		return false;

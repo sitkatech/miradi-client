@@ -35,6 +35,7 @@ public class BaseObjectTreeNode extends AbstractPlanningTreeNode
 		baseObject = BaseObject.find(projectToUse, baseObjectRefToUse);
 	}
 	
+	@Override
 	public BaseObject getObject()
 	{
 		return baseObject;

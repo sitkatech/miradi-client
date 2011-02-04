@@ -71,6 +71,7 @@ public class TargetSummaryRowTable extends AbstractTableWithChoiceItemRenderer
 		return columnController != null;
 	}
 		
+	@Override
 	public boolean shouldSaveColumnSequence()
 	{
 		return false;

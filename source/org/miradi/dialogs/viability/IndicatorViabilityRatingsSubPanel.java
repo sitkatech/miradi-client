@@ -66,6 +66,7 @@ public class IndicatorViabilityRatingsSubPanel extends ObjectDataInputPanel
 		addFieldsOnOneLine(label, new ObjectDataInputField[]{mapField, detailsField});
 	}
 
+	@Override
 	public String getPanelDescription()
 	{
 		return EAM.text("Viability Ratings");

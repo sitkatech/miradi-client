@@ -41,12 +41,14 @@ public class ConceptualModelDiagramPanel extends DiagramPanel implements Command
 		mainWindowToUse.getProject().addCommandExecutedListener(this);
 	}
 	
+	@Override
 	public void dispose()
 	{
 		mainWindow.getProject().removeCommandExecutedListener(this);
 		super.dispose();
 	}
 
+	@Override
 	protected DiagramSplitPane createDiagramSplitter() throws Exception
 	{
 		return new ConceptualModelDiagramSplitPane(mainWindow);

@@ -36,6 +36,7 @@ public class RelevancyIndicatorPanel extends ObjectDataInputPanel
 		updateFieldsFromProject();
 	}
 
+	@Override
 	public String getPanelDescription()
 	{
 		return EAM.text("Indicator Relevancy Panel");

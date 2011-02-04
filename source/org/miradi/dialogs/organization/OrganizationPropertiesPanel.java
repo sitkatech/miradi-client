@@ -51,6 +51,7 @@ public class OrganizationPropertiesPanel extends ObjectDataInputPanel
 		updateFieldsFromProject();
 	}
 
+	@Override
 	public String getPanelDescription()
 	{
 		return EAM.text("Title|Organization Properties");

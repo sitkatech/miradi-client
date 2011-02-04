@@ -43,12 +43,14 @@ public class ObjectPoolTable extends ObjectTable
 		return (ObjectPoolTableModel)getModel();
 	}
 	
+	@Override
 	public void updateTableAfterObjectCreated(ORef newObjectRef)
 	{
 		super.updateTableAfterObjectCreated(newObjectRef);
 		getObjectPoolTableModel().rowsWereAddedOrRemoved();
 	}
 	
+	@Override
 	public void updateTableAfterObjectDeleted(ORef deletedObjectRef)
 	{
 		super.updateTableAfterObjectDeleted(deletedObjectRef);

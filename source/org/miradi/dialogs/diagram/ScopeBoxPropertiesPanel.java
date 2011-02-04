@@ -53,6 +53,7 @@ public class ScopeBoxPropertiesPanel extends ObjectDataInputPanel
 		updateFieldsFromProject();
 	}
 	
+	@Override
 	public String getPanelDescription()
 	{
 		return EAM.text("Title|Scope Box Properties");

@@ -44,21 +44,25 @@ public class OrganizationManagementPanel extends ObjectPoolManagementPanel
 
 	}
 
+	@Override
 	public String getPanelDescription()
 	{
 		return EAM.text("Title|Other Orgs");
 	}
 	
+	@Override
 	public Icon getIcon()
 	{
 		return new OrganizationIcon();
 	}
 	
+	@Override
 	public boolean isExportableTableAvailable()
 	{
 		return true;
 	}
 	
+	@Override
 	public TableExporter getTableExporter() throws Exception
 	{
 		return new ObjectTableModelExporter(createTableModel());

@@ -194,6 +194,7 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 		renderer.setFont(font);
 	}
 
+	@Override
 	public Component getTreeCellRendererComponent(JTree tree, Object value, boolean sel, boolean expanded, boolean leaf, int row, boolean hasFocusToUse)
 	{
 		TreeCellRenderer renderer = defaultRenderer;

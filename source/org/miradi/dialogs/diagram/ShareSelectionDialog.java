@@ -31,11 +31,13 @@ public class ShareSelectionDialog extends AbstractSelectionDialog
 		super(mainWindow, title, poolTable);
 	}
 
+	@Override
 	protected String createCustomButtonLabel()
 	{
 		return EAM.text("Share");
 	}
 
+	@Override
 	protected String getPanelTitleInstructions()
 	{
 		return EAM.text("Please select which item should be shared to this factor, then press the Share button");

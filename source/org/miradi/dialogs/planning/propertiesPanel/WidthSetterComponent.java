@@ -95,6 +95,7 @@ public class WidthSetterComponent extends JComponent
 
 	class MouseEventHandler extends MouseAdapter implements MouseMotionListener
 	{
+		@Override
 		public void mouseDragged(MouseEvent e)
 		{
 			int width = controlled.getSize().width + e.getX();
@@ -102,6 +103,7 @@ public class WidthSetterComponent extends JComponent
 			updateWidth(width);
 		}
 
+		@Override
 		public void mouseMoved(MouseEvent e)
 		{
 		}

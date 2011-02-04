@@ -36,6 +36,7 @@ public class IndicatorPoolTableModel extends ObjectPoolTableModel
 		super(projectToUse, ObjectType.INDICATOR, COLUMN_TAGS);
 	}
 		
+	@Override
 	public ChoiceQuestion getColumnQuestion(int column)
 	{
 		if (getColumnTag(column).equals(Indicator.TAG_PRIORITY))

@@ -57,11 +57,13 @@ abstract public class ObjectDataInputField extends ObjectDataField
 		tag = tagToUse;
 	}
 	
+	@Override
 	public String getTag()
 	{
 		return tag;
 	}
 	
+	@Override
 	public void updateFromObject()
 	{
 		saveIfNeeded();

@@ -43,21 +43,25 @@ public class ActivityListManagementPanel extends ObjectListManagementPanel
 		super(mainWindow, tablePanel, properties);
 	}
 	
+	@Override
 	public String getSplitterDescription()
 	{
 		return getPanelDescription() + SPLITTER_TAG;
 	}
 	
+	@Override
 	public String getPanelDescription()
 	{
 		return PANEL_DESCRIPTION;
 	}
 	
+	@Override
 	public Icon getIcon()
 	{
 		return new ActivityIcon();
 	}
 	
+	@Override
 	public Class getJumpActionClass()
 	{
 		return ActionJumpEditAllStrategiesStep.class;

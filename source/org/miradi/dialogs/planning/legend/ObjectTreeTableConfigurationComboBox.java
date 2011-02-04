@@ -103,11 +103,13 @@ public class ObjectTreeTableConfigurationComboBox extends PlanningViewComboBox
 		return viewData.getORef(ViewData.TAG_TREE_CONFIGURATION_REF);
 	}
 	
+	@Override
 	public String getChoiceTag()
 	{
 		return ViewData.TAG_TREE_CONFIGURATION_REF;
 	}
 	
+	@Override
 	boolean comboBoxNeedsSave() throws Exception 
 	{
 		ViewData viewData = getProject().getViewData(PlanningView.getViewName());

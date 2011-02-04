@@ -34,6 +34,7 @@ public class VariableHeightTreeCellRenderer extends DefaultTreeCellRenderer
 		treeTable = treeTableToUse;
 	}
 	
+	@Override
 	public Component getTreeCellRendererComponent(JTree tree, Object value, boolean sel, boolean expanded, boolean leaf, int row, boolean hasFocusToUse)
 	{
 		resetPreferredSizeToAvoidTruncatingNextValue();

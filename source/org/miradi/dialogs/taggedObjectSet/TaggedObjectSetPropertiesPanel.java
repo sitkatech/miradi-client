@@ -45,6 +45,7 @@ public class TaggedObjectSetPropertiesPanel extends ObjectDataInputPanel
 		updateFieldsFromProject();
 	}
 	
+	@Override
 	public String getPanelDescription()
 	{
 		return EAM.text("Title|Tag Properties Panel");

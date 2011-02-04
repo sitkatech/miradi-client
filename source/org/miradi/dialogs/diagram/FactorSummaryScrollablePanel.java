@@ -54,6 +54,7 @@ public class FactorSummaryScrollablePanel extends ModelessDialogPanel
 		summaryPanel.setFocusOnFirstField();
 	}
 	
+	@Override
 	public void dispose()
 	{
 		super.dispose();
@@ -74,6 +75,7 @@ public class FactorSummaryScrollablePanel extends ModelessDialogPanel
 		super.becomeInactive();
 	}
 	
+	@Override
 	public String getPanelDescription()
 	{
 		return summaryPanel.getPanelDescription();
@@ -84,6 +86,7 @@ public class FactorSummaryScrollablePanel extends ModelessDialogPanel
 		return summaryPanel.getIcon();
 	}
 
+	@Override
 	public BaseObject getObject()
 	{
 		return null;

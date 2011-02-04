@@ -43,6 +43,7 @@ public class ChoiceItemTableCellRendererFactory extends SingleLineObjectTableCel
 		setCellBackgroundColor(defaultBackgroundColorToUse);
 	}
 
+	@Override
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int tableColumn)
 	{
 		JLabel renderer = (JLabel)super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, tableColumn);

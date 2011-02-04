@@ -33,15 +33,18 @@ public class PlanningTreeResourceAssignmentNode extends AbstractPlanningTreeNode
 		assignment = ResourceAssignment.find(projectToUse, assignmentRef);
 	}
 
+	@Override
 	public void rebuild() throws Exception
 	{
 	}
 
+	@Override
 	public BaseObject getObject()
 	{
 		return assignment;
 	}
 	
+	@Override
 	public String toRawString()
 	{
 		return assignment.toString();

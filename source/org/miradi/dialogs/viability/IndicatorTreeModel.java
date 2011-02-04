@@ -34,6 +34,7 @@ public class IndicatorTreeModel extends GenericViabilityTreeModel
 		super(root);
 	}
 
+	@Override
 	public Object getValueAt(Object rawNode, int column)
 	{
 		try
@@ -73,6 +74,7 @@ public class IndicatorTreeModel extends GenericViabilityTreeModel
 		}
 	}
 	
+	@Override
 	public String[] getColumnTags()
 	{
 		return columnTags;

@@ -42,6 +42,7 @@ public class ViabilityMeasurementNode extends TreeTableNode
 		parentNode = parent;
 	}
 	
+	@Override
 	public BaseObject getObject()
 	{
 		return measurement;
@@ -52,11 +53,13 @@ public class ViabilityMeasurementNode extends TreeTableNode
 		return (Measurement) getObject();
 	}
 
+	@Override
 	public ORef getObjectReference()
 	{
 		return measurement.getRef();
 	}
 	
+	@Override
 	public int getType()
 	{
 		return measurement.getType();
@@ -68,22 +71,26 @@ public class ViabilityMeasurementNode extends TreeTableNode
 		return measurement.toString();
 	}
 
+	@Override
 	public int getChildCount()
 	{
 		return 0;
 	}
 
+	@Override
 	public TreeTableNode getChild(int index)
 	{
 		return null;
 	}
 	
+	@Override
 	public TreeTableNode getParentNode()
 	{
 		return parentNode;
 	}
 
 	//TODO: this method could be pulled up to the supper
+	@Override
 	public Object getValueAt(int column)
 	{
 		String tag = COLUMN_TAGS[column];
@@ -128,6 +135,7 @@ public class ViabilityMeasurementNode extends TreeTableNode
 		return getObject().getProject();
 	}
 	
+	@Override
 	public void rebuild() throws Exception
 	{
 	}

@@ -43,6 +43,7 @@ public class ConceptualModelPropertiesPanel extends ObjectDataInputPanelWithSect
 		updateFieldsFromProject();
 	}
 
+	@Override
 	public String getPanelDescription()
 	{
 		return EAM.text("Title|Diagram Properties");

@@ -66,6 +66,7 @@ public class ThreatRatingCommonPropertiesSubpanel extends ObjectDataInputPanel
 		rollupField.setObjectRefs(getSelectedRefs());
 	}
 	
+	@Override
 	public String getPanelDescription()
 	{
 		return "ThreatRatingCommonPropertiesSubpanel";

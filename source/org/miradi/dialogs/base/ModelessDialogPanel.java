@@ -48,6 +48,7 @@ abstract public class ModelessDialogPanel extends DisposablePanelWithDescription
 		EAM.logWarning("selectObject not handled by " + getClass().getName());
 	}
 	
+	@Override
 	public Class getJumpActionClass()
 	{
 		return null;

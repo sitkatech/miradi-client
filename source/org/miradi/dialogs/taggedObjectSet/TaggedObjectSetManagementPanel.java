@@ -32,11 +32,13 @@ public class TaggedObjectSetManagementPanel extends ObjectPoolManagementPanel
 		super(mainWindowToUse, new TaggedObjectSetPoolTablePanel(mainWindowToUse, poolTable), new TaggedObjectSetPropertiesPanel(mainWindowToUse, poolTable));
 	}
 
+	@Override
 	public String getPanelDescription()
 	{
 		return PANEL_DESCRIPTION;
 	}
 	
+	@Override
 	public Icon getIcon()
 	{
 		return new TaggedObjectSetIcon();

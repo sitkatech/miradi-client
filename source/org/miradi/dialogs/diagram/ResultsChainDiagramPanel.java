@@ -34,6 +34,7 @@ public class ResultsChainDiagramPanel extends DiagramPanel
 		super(mainWindowToUse);
 	}
 
+	@Override
 	protected DiagramSplitPane createDiagramSplitter() throws Exception
 	{
 		return  new ResultsChainDiagramSplitPane(mainWindow);

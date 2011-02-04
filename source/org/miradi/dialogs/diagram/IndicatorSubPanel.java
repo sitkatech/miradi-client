@@ -44,6 +44,7 @@ public class IndicatorSubPanel extends ObjectDataInputPanel
 		updateFieldsFromProject();
 	}
 
+	@Override
 	public String getPanelDescription()
 	{
 		return EAM.text("Indicator");

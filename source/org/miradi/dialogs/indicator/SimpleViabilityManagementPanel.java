@@ -32,6 +32,7 @@ public class SimpleViabilityManagementPanel extends FactorPropertiesViabilityTre
 		super(mainWindowToUse, factorRef, mainWindowToUse.getActions());
 	}
 
+	@Override
 	public String getPanelDescription()
 	{
 		return EAM.text("Tab|Viability");

@@ -62,6 +62,7 @@ public class ThreatRatingCommentsSubpanel extends ObjectDataInputPanel
 	}
 
 
+	@Override
 	public String getPanelDescription()
 	{
 		return "ThreatRatingCommentsSubpanel";

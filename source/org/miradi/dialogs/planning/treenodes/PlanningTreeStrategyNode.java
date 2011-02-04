@@ -34,6 +34,7 @@ public class PlanningTreeStrategyNode extends AbstractPlanningTreeNode
 		rebuild();
 	}
 	
+	@Override
 	public void rebuild() throws Exception
 	{
 		addChildren(buildResourceAssignmentNodes(strategy.getResourceAssignmentRefs()));
@@ -41,11 +42,13 @@ public class PlanningTreeStrategyNode extends AbstractPlanningTreeNode
 		createAndAddTaskNodes(strategy.getActivityRefs(), getObjectReference());
 	}
 
+	@Override
 	public BaseObject getObject()
 	{
 		return strategy;
 	}
 
+	@Override
 	boolean shouldSortChildren()
 	{
 		return false;

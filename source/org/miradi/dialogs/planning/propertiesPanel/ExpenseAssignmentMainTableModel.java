@@ -154,6 +154,7 @@ public class ExpenseAssignmentMainTableModel extends AbstractSummaryTableModel
 		return ExpenseAssignment.getObjectType();
 	}
 	
+	@Override
 	protected BaseObject getFundingSource(BaseObject baseObjectToUse)
 	{
 		ExpenseAssignment expense = (ExpenseAssignment) baseObjectToUse;
