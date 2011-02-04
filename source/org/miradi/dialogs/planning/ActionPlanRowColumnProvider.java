@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning;
 
+import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.Desire;
@@ -90,6 +91,7 @@ public class ActionPlanRowColumnProvider extends PlanningViewRowColumnProvider i
 			return false;
 		}
 		
-		throw new RuntimeException("");
+		EAM.unexpectedErrorDialog();
+		return true;
 	}
 }

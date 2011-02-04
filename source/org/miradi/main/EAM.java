@@ -370,14 +370,24 @@ public class EAM
 							 "\n\nMiradi has attempted to save your latest changes, and will now exit."));
 		System.exit(0);
 	}
+
+	public static void unexpectedErrorDialog()
+	{
+		EAM.errorDialog(getUnexpectedErrorMessage());
+	}
 	
 	public static void unexpectedErrorDialog(Exception e)
 	{
-		String errorMessage = EAM.text("An unexpected error has occurred");
+		String errorMessage = getUnexpectedErrorMessage();
 		if(e.getMessage() != null && e.getMessage().length() > 0)
 			errorMessage += "\n" + (e.getMessage());
 
 		EAM.errorDialog(errorMessage);
+	}
+
+	private static String getUnexpectedErrorMessage()
+	{
+		return EAM.text("An unexpected error has occurred");
 	}
 	
 	public static void errorDialog(String errorMessage)

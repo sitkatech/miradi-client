@@ -205,6 +205,10 @@ public class TreeRebuilder
 				childRefs.add(factor.getRef());
 			}
 		}
+		
+		childRefs.addAll(getProject().getObjectivePool().getORefList());
+		childRefs.addAll(getProject().getGoalPool().getORefList());
+		
 		return childRefs;
 	}
 
