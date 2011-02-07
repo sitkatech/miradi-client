@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning;
 
+import java.util.HashMap;
+
 import org.miradi.project.Project;
 import org.miradi.questions.ActionTreeConfigurationQuestion;
 import org.miradi.utils.CodeList;
@@ -29,11 +31,10 @@ public class ActionPlanMultiRowColumnProvider extends AbstractPlanningTreeRowCol
 	public ActionPlanMultiRowColumnProvider(Project projectToUse)
 	{
 		super(projectToUse);
-		
-		subView1 = new ActionPlanSubViewObjectiveBasedRowColumnProvider(getProject());
-		subView2 = new ActionPlanSubViewStrategyBasedRowColumnProvider(getProject());
+	
+		createMap();
 	}
-
+	
 	public CodeList getColumnCodesToShow() throws Exception
 	{
 		return getSubViewProvider().getColumnCodesToShow();
@@ -63,15 +64,16 @@ public class ActionPlanMultiRowColumnProvider extends AbstractPlanningTreeRowCol
 	private AbstractPlanningTreeRowColumnProvider getSubViewProvider() throws Exception
 	{
 		String actionTreeConfigurationCode = getProject().getCurrentViewData().getTreeConfigurationChoice();
-		if (actionTreeConfigurationCode.equals(ActionTreeConfigurationQuestion.OBJECTIVES_CONTAIN_STRATEGIES_CODE))
-			return subView1;
-
-			else if (actionTreeConfigurationCode.equals(ActionTreeConfigurationQuestion.STRATEGIES_CONTAIN_OBJECTIVES_CODE))
-			return subView2;
 		
-		throw new RuntimeException("Could not find a matching sub view row column provider");
+		return codeToProviderMap.get(actionTreeConfigurationCode);
 	}
 	
-	private AbstractPlanningTreeRowColumnProvider subView1;
-	private AbstractPlanningTreeRowColumnProvider subView2;
+	private void createMap()
+	{
+		codeToProviderMap = new HashMap<String, AbstractPlanningTreeRowColumnProvider>();
+		codeToProviderMap.put(ActionTreeConfigurationQuestion.OBJECTIVES_CONTAIN_STRATEGIES_CODE, new ActionPlanSubViewObjectiveBasedRowColumnProvider(getProject()));
+		codeToProviderMap.put(ActionTreeConfigurationQuestion.STRATEGIES_CONTAIN_OBJECTIVES_CODE, new ActionPlanSubViewStrategyBasedRowColumnProvider(getProject()));
+	}
+	
+	private HashMap<String, AbstractPlanningTreeRowColumnProvider> codeToProviderMap;
 }
