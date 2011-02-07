@@ -175,7 +175,7 @@ public class ReportTemplateContentQuestion extends StaticChoiceQuestion
 	public static final String THREAT_RATING_VIEW_CODE = "ThreatRatings";
 	public static final String THREAT_RATING_DETAILS_CODE = "ThreatRatingDetails";
 	public static final String ACTION_PLAN_OBJECTIVE_BASED_REPORT_CODE = "PlanningViewStrategicPlan";
-	public static final String ACTION_PLAN_STRATEGY_BASED_REPORT_CODE = "PlanningViewActionPlanStrategyBasedCode½";
+	public static final String ACTION_PLAN_STRATEGY_BASED_REPORT_CODE = "PlanningViewActionPlanStrategyBasedCode";
 	public static final String PLANNING_VIEW_MONITORING_PLAN_CODE = "PlanningViewMonitoringPlan";
 	public static final String PLANNING_VIEW_WORK_PLAN_CODE = "PlanningViewWorkPlan";
 	public static final String PLANNING_VIEW_RESOURCES_CODE = "PlanningViewResourcesTab";
