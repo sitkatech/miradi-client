@@ -32,7 +32,7 @@ public class ActionPlanMultiRowColumnProvider extends AbstractPlanningTreeRowCol
 	{
 		super(projectToUse);
 	
-		createCodeToProviderMap();
+		codeToProviderMap = createCodeToProviderMap();
 	}
 	
 	public CodeList getColumnCodesToShow() throws Exception
@@ -68,11 +68,13 @@ public class ActionPlanMultiRowColumnProvider extends AbstractPlanningTreeRowCol
 		return codeToProviderMap.get(actionTreeConfigurationCode);
 	}
 	
-	private void createCodeToProviderMap()
+	private HashMap<String, AbstractPlanningTreeRowColumnProvider> createCodeToProviderMap()
 	{
-		codeToProviderMap = new HashMap<String, AbstractPlanningTreeRowColumnProvider>();
-		codeToProviderMap.put(ActionTreeConfigurationQuestion.OBJECTIVES_CONTAIN_STRATEGIES_CODE, new ActionPlanSubViewObjectiveBasedRowColumnProvider(getProject()));
-		codeToProviderMap.put(ActionTreeConfigurationQuestion.STRATEGIES_CONTAIN_OBJECTIVES_CODE, new ActionPlanSubViewStrategyBasedRowColumnProvider(getProject()));
+		HashMap<String, AbstractPlanningTreeRowColumnProvider> map = new HashMap<String, AbstractPlanningTreeRowColumnProvider>();
+		map.put(ActionTreeConfigurationQuestion.OBJECTIVES_CONTAIN_STRATEGIES_CODE, new ActionPlanSubViewObjectiveBasedRowColumnProvider(getProject()));
+		map.put(ActionTreeConfigurationQuestion.STRATEGIES_CONTAIN_OBJECTIVES_CODE, new ActionPlanSubViewStrategyBasedRowColumnProvider(getProject()));
+		
+		return map;
 	}
 	
 	private HashMap<String, AbstractPlanningTreeRowColumnProvider> codeToProviderMap;
