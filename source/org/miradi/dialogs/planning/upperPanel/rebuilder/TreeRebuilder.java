@@ -206,8 +206,8 @@ public class TreeRebuilder
 			}
 		}
 		
-		childRefs.addAll(getProject().getObjectivePool().getORefList());
-		childRefs.addAll(getProject().getGoalPool().getORefList());
+		childRefs.addAll(diagramObject.getAllObjectiveRefs());
+		childRefs.addAll(diagramObject.getAllGoalRefs());
 		
 		return childRefs;
 	}
