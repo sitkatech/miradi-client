@@ -25,7 +25,6 @@ import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.Desire;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Objective;
-import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
@@ -34,7 +33,7 @@ import org.miradi.questions.ActionTreeConfigurationQuestion;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.CodeList;
 
-public class ActionPlanRowColumnProvider extends AbstractPlanningViewRowColumnProvider implements PlanningTreeRowColumnProvider
+public class ActionPlanRowColumnProvider extends AbstractPlanningTreeRowColumnProvider
 {	
 	public ActionPlanRowColumnProvider(Project projectToUse)
 	{
