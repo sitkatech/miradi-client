@@ -28,7 +28,6 @@ import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
-import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
@@ -38,7 +37,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.CodeList;
 
-public class ObjectsOnlyRowColumnProvider extends AbstractPlanningViewRowColumnProvider implements PlanningTreeRowColumnProvider
+public class ObjectsOnlyRowColumnProvider extends AbstractPlanningTreeRowColumnProvider
 {
 	public ObjectsOnlyRowColumnProvider(Project project)
 	{

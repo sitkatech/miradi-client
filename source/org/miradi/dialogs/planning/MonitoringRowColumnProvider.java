@@ -25,14 +25,13 @@ import org.miradi.objects.Desire;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Objective;
-import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.CodeList;
 
-public class MonitoringRowColumnProvider extends AbstractPlanningViewRowColumnProvider implements PlanningTreeRowColumnProvider
+public class MonitoringRowColumnProvider extends AbstractPlanningTreeRowColumnProvider
 {
 	public MonitoringRowColumnProvider(Project projectToUse)
 	{
