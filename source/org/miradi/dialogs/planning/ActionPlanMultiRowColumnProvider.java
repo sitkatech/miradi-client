@@ -24,7 +24,6 @@ import org.miradi.project.Project;
 import org.miradi.questions.ActionTreeConfigurationQuestion;
 import org.miradi.utils.CodeList;
 
-//FIXME urgent - this class is still under construction
 public class ActionPlanMultiRowColumnProvider extends AbstractPlanningTreeRowColumnProvider
 {
 	public ActionPlanMultiRowColumnProvider(Project projectToUse)
@@ -47,12 +46,12 @@ public class ActionPlanMultiRowColumnProvider extends AbstractPlanningTreeRowCol
 	
 	public boolean shouldIncludeResultsChain() throws Exception
 	{
-		return true;
+		return getSubViewProvider().shouldIncludeResultsChain();
 	}
 
 	public boolean shouldIncludeConceptualModelPage() throws Exception
 	{
-		return true;
+		return getSubViewProvider().shouldIncludeConceptualModelPage();
 	}
 	
 	@Override
