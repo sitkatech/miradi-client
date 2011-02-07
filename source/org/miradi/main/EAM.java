@@ -373,14 +373,23 @@ public class EAM
 
 	public static void unexpectedErrorDialog()
 	{
-		EAM.errorDialog(getUnexpectedErrorMessage());
+		unexpectedErrorDialog("");
 	}
 	
 	public static void unexpectedErrorDialog(Exception e)
 	{
-		String errorMessage = getUnexpectedErrorMessage();
+		String extraText = "";
 		if(e.getMessage() != null && e.getMessage().length() > 0)
-			errorMessage += "\n" + (e.getMessage());
+			extraText += (e.getMessage());
+
+		unexpectedErrorDialog(extraText);
+	}
+	
+	private static void unexpectedErrorDialog(String extraText)
+	{
+		String errorMessage = getUnexpectedErrorMessage();
+		if(extraText.length() > 0)
+			errorMessage += "\n" + extraText;
 
 		EAM.errorDialog(errorMessage);
 	}
