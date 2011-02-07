@@ -25,7 +25,7 @@ import org.miradi.questions.ActionTreeConfigurationQuestion;
 import org.miradi.utils.CodeList;
 
 //FIXME urgent - this class is still under construction
-public class ActionPlanMultiRowColumnProvider extends AbstractPlanningViewRowColumnProvider
+public class ActionPlanMultiRowColumnProvider extends AbstractPlanningTreeRowColumnProvider
 {
 	public ActionPlanMultiRowColumnProvider(Project projectToUse)
 	{
@@ -61,7 +61,7 @@ public class ActionPlanMultiRowColumnProvider extends AbstractPlanningViewRowCol
 		return getSubViewProvider().doObjectivesContainStrategies();
 	}
 	
-	private AbstractPlanningViewRowColumnProvider getSubViewProvider() throws Exception
+	private AbstractPlanningTreeRowColumnProvider getSubViewProvider() throws Exception
 	{
 		String actionTreeConfigurationCode = getProject().getCurrentViewData().getTreeConfigurationChoice();
 		if (actionTreeConfigurationCode.equals(ActionTreeConfigurationQuestion.OBJECTIVES_CONTAIN_STRATEGIES_CODE))
@@ -73,6 +73,6 @@ public class ActionPlanMultiRowColumnProvider extends AbstractPlanningViewRowCol
 		throw new RuntimeException("Could not find a matching sub view row column provider");
 	}
 	
-	private AbstractPlanningViewRowColumnProvider subView1;
-	private AbstractPlanningViewRowColumnProvider subView2;
+	private AbstractPlanningTreeRowColumnProvider subView1;
+	private AbstractPlanningTreeRowColumnProvider subView2;
 }
