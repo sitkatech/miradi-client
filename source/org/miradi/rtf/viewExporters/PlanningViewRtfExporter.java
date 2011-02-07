@@ -36,11 +36,14 @@ import org.miradi.dialogs.planning.propertiesPanel.PlanningViewMainModelExporter
 import org.miradi.dialogs.planning.propertiesPanel.WorkPlanBudgetDetailsTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.WorkPlanExpenseAmountsTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.WorkPlanWorkUnitsTableModel;
+import org.miradi.dialogs.planning.treenodes.NewAbstractPlanningTreeNode;
+import org.miradi.dialogs.planning.treenodes.NewPlanningRootNode;
 import org.miradi.dialogs.planning.upperPanel.ExportablePlanningTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningViewFutureStatusTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningViewMainTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningViewMeasurementTableModel;
 import org.miradi.dialogs.planning.upperPanel.TreeTableModelExporter;
+import org.miradi.dialogs.planning.upperPanel.rebuilder.TreeRebuilder;
 import org.miradi.dialogs.treetables.WorkPlanCategoryTreeTableModel;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.Indicator;
@@ -107,7 +110,9 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 	
 	public static MultiTableCombinedAsOneExporter createTables(Project project, PlanningTreeRowColumnProvider rowColumnProvider) throws Exception
 	{
-		ExportablePlanningTreeTableModel model = new ExportablePlanningTreeTableModel(project, rowColumnProvider, AbstractTableExporter.NO_UNIQUE_MODEL_IDENTIFIER);
+		NewAbstractPlanningTreeNode rootNode = new NewPlanningRootNode(project);
+ 		new TreeRebuilder(project, rowColumnProvider).rebuildTree(rootNode);
+		ExportablePlanningTreeTableModel model = new ExportablePlanningTreeTableModel(project, rootNode, rowColumnProvider, AbstractTableExporter.NO_UNIQUE_MODEL_IDENTIFIER);
 		
 		return createMultiModelExporter(project, model, rowColumnProvider);
 	}
