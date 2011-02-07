@@ -32,7 +32,7 @@ public class ActionPlanMultiRowColumnProvider extends AbstractPlanningTreeRowCol
 	{
 		super(projectToUse);
 	
-		createMap();
+		createCodeToProviderMap();
 	}
 	
 	public CodeList getColumnCodesToShow() throws Exception
@@ -68,7 +68,7 @@ public class ActionPlanMultiRowColumnProvider extends AbstractPlanningTreeRowCol
 		return codeToProviderMap.get(actionTreeConfigurationCode);
 	}
 	
-	private void createMap()
+	private void createCodeToProviderMap()
 	{
 		codeToProviderMap = new HashMap<String, AbstractPlanningTreeRowColumnProvider>();
 		codeToProviderMap.put(ActionTreeConfigurationQuestion.OBJECTIVES_CONTAIN_STRATEGIES_CODE, new ActionPlanSubViewObjectiveBasedRowColumnProvider(getProject()));
