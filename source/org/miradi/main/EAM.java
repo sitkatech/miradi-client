@@ -379,7 +379,7 @@ public class EAM
 	public static void unexpectedErrorDialog(Exception e)
 	{
 		String extraText = "";
-		if(e.getMessage() != null && e.getMessage().length() > 0)
+		if(e.getMessage() != null)
 			extraText += (e.getMessage());
 
 		unexpectedErrorDialog(extraText);
