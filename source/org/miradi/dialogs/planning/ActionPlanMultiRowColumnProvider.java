@@ -45,12 +45,12 @@ public class ActionPlanMultiRowColumnProvider extends AbstractPlanningTreeRowCol
 		return getSubViewProvider().getRowCodesToShow();
 	}
 	
-	public boolean shouldIncludeResultsChain()
+	public boolean shouldIncludeResultsChain() throws Exception
 	{
 		return true;
 	}
 
-	public boolean shouldIncludeConceptualModelPage()
+	public boolean shouldIncludeConceptualModelPage() throws Exception
 	{
 		return true;
 	}
