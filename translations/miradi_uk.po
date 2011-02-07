@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-07 12:11-0600\n"
+"POT-Creation-Date: 2011-02-07 12:41-0600\n"
 "PO-Revision-Date: 2010-09-30 09:31+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -2127,7 +2127,7 @@ msgstr ""
 msgid "An internal error prevented this operation"
 msgstr "Внутрішня помилка перешкодила цій операції"
 
-#: Miradi/source/org/miradi/main/EAM.java:390
+#: Miradi/source/org/miradi/main/EAM.java:399
 msgid "An unexpected error has occurred"
 msgstr "Сталася нечекана помилка"
 
@@ -3115,8 +3115,8 @@ msgstr "Визначити сферу дій проекту"
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:61
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:54
-#: Miradi/source/org/miradi/main/EAM.java:447
-#: Miradi/source/org/miradi/main/EAM.java:448
+#: Miradi/source/org/miradi/main/EAM.java:456
+#: Miradi/source/org/miradi/main/EAM.java:457
 msgid "Delete"
 msgstr "Видалити"
 
@@ -5812,7 +5812,7 @@ msgid "Results Chains"
 msgstr "Ланцюги результатів"
 
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:61
-#: Miradi/source/org/miradi/main/EAM.java:447
+#: Miradi/source/org/miradi/main/EAM.java:456
 msgid "Retain"
 msgstr "Утримувати"
 
@@ -7703,7 +7703,7 @@ msgstr "Title|Складові Діаграми"
 msgid "Title|Direct Threat Properties"
 msgstr "Title|Складові Прямої загрози"
 
-#: Miradi/source/org/miradi/main/EAM.java:395
+#: Miradi/source/org/miradi/main/EAM.java:404
 msgid "Title|Error"
 msgstr "Title|Помилка"
 
@@ -8296,7 +8296,7 @@ msgstr ""
 msgid "Who Override was: %s"
 msgstr "Ким було перевищено: %"
 
-#: Miradi/source/org/miradi/main/EAM.java:603
+#: Miradi/source/org/miradi/main/EAM.java:612
 msgid "Wintitle|Information"
 msgstr "Wintitle|Інформація"
 

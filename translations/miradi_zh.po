@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-07 12:11-0600\n"
+"POT-Creation-Date: 2011-02-07 12:41-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -1969,7 +1969,7 @@ msgstr ""
 msgid "An internal error prevented this operation"
 msgstr "一个内部错误阻止了该操作 \t\t"
 
-#: Miradi/source/org/miradi/main/EAM.java:390
+#: Miradi/source/org/miradi/main/EAM.java:399
 msgid "An unexpected error has occurred"
 msgstr ""
 
@@ -2937,8 +2937,8 @@ msgstr "规定项目范围 \t\t"
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:61
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:54
-#: Miradi/source/org/miradi/main/EAM.java:447
-#: Miradi/source/org/miradi/main/EAM.java:448
+#: Miradi/source/org/miradi/main/EAM.java:456
+#: Miradi/source/org/miradi/main/EAM.java:457
 msgid "Delete"
 msgstr "删除 \t\t"
 
@@ -5587,7 +5587,7 @@ msgid "Results Chains"
 msgstr "结果链 \t\t"
 
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:61
-#: Miradi/source/org/miradi/main/EAM.java:447
+#: Miradi/source/org/miradi/main/EAM.java:456
 msgid "Retain"
 msgstr "保留 \t\t"
 
@@ -7416,7 +7416,7 @@ msgstr "图表属性 \t\t"
 msgid "Title|Direct Threat Properties"
 msgstr "标题|直接威胁因子属性"
 
-#: Miradi/source/org/miradi/main/EAM.java:395
+#: Miradi/source/org/miradi/main/EAM.java:404
 msgid "Title|Error"
 msgstr "错误 "
 
@@ -8002,7 +8002,7 @@ msgstr ""
 msgid "Who Override was: %s"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAM.java:603
+#: Miradi/source/org/miradi/main/EAM.java:612
 msgid "Wintitle|Information"
 msgstr "信息 \t\t"
 

@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-07 12:11-0600\n"
+"POT-Creation-Date: 2011-02-07 12:41-0600\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -2055,7 +2055,7 @@ msgstr ""
 msgid "An internal error prevented this operation"
 msgstr "Kesalahan internal mencegah operasi ini "
 
-#: Miradi/source/org/miradi/main/EAM.java:390
+#: Miradi/source/org/miradi/main/EAM.java:399
 msgid "An unexpected error has occurred"
 msgstr "Kesalahan tak terduga telah terjadi "
 
@@ -3045,8 +3045,8 @@ msgstr "Definisikan cakupan proyek "
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:61
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:54
-#: Miradi/source/org/miradi/main/EAM.java:447
-#: Miradi/source/org/miradi/main/EAM.java:448
+#: Miradi/source/org/miradi/main/EAM.java:456
+#: Miradi/source/org/miradi/main/EAM.java:457
 msgid "Delete"
 msgstr "Hapus "
 
@@ -5772,7 +5772,7 @@ msgid "Results Chains"
 msgstr "Rangkaian Hasil "
 
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:61
-#: Miradi/source/org/miradi/main/EAM.java:447
+#: Miradi/source/org/miradi/main/EAM.java:456
 msgid "Retain"
 msgstr "Pertahankan "
 
@@ -7668,7 +7668,7 @@ msgstr "Sifat-sifat Diagram "
 msgid "Title|Direct Threat Properties"
 msgstr "Sifat-sifat Ancaman Langsung"
 
-#: Miradi/source/org/miradi/main/EAM.java:395
+#: Miradi/source/org/miradi/main/EAM.java:404
 msgid "Title|Error"
 msgstr "Kesalahan"
 
@@ -8280,7 +8280,7 @@ msgstr ""
 msgid "Who Override was: %s"
 msgstr "Yang Menambah adalah: %s "
 
-#: Miradi/source/org/miradi/main/EAM.java:603
+#: Miradi/source/org/miradi/main/EAM.java:612
 msgid "Wintitle|Information"
 msgstr "Informasi "
 
