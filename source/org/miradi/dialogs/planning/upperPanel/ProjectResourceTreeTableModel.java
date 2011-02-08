@@ -27,16 +27,11 @@ import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.objects.ProjectResource;
 import org.miradi.project.Project;
 
-public class ProjectResourceTreeTableModel extends ExportablePlanningTreeTableModel
+public class ProjectResourceTreeTableModel extends TreeTableModelWithRebuilder
 {
 	private ProjectResourceTreeTableModel(Project project, TreeTableNode rootNode, PlanningTreeRowColumnProvider rowColumnProvider) throws Exception
 	{
-		this(project, rootNode, rowColumnProvider, UNIQUE_TREE_TABLE_IDENTIFIER);
-	}
-	
-	private ProjectResourceTreeTableModel(Project project, TreeTableNode rootNode, PlanningTreeRowColumnProvider rowColumnProvider, String uniqueTreeTableModeIdentifier) throws Exception
-	{
-		super(project, rootNode, rowColumnProvider, uniqueTreeTableModeIdentifier);
+		super(project, rootNode, rowColumnProvider, UNIQUE_TREE_TABLE_IDENTIFIER);
 	}
 	
 	public static ProjectResourceTreeTableModel createProjectResourceTreeTableModel(Project project, PlanningTreeRowColumnProvider rowColumnProvider) throws Exception
