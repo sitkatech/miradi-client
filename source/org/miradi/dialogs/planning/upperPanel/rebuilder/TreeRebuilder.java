@@ -161,6 +161,12 @@ public class TreeRebuilder
 		if(ResourceAssignment.is(parentRef))
 			return noChildren;
 		
+		if(ExpenseAssignment.is(parentRef))
+			return noChildren;
+		
+		if(SubTarget.is(parentRef))
+			return noChildren;
+		
 		EAM.logDebug("Don't know how to get children of " + parentRef);
 		return new ORefList();
 	}
