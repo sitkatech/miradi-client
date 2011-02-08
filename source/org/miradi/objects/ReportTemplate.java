@@ -103,7 +103,7 @@ public class ReportTemplate extends BaseObject
 		super.clear();
 
 		shortLabel = new StringData(TAG_SHORT_LABEL);
-		ChoiceQuestion reportContentsQuestion = getQuestion(ReportTemplateContentQuestion.class);
+		ChoiceQuestion reportContentsQuestion = new ReportTemplateContentQuestion();
 		content = new CodeListData(TAG_INCLUDE_SECTION_CODES, reportContentsQuestion);
 		comment = new StringData(TAG_COMMENTS);
 
