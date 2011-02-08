@@ -124,8 +124,6 @@ public class TreeRebuilder
 			ORef childRef = candidateChildRefs.get(i);
 			if(!hierarchySoFar.contains(childRef))
 				remainingChildren.add(childRef);
-			else
-				EAM.logDebug("omitting recursive child" + childRef + " from hierarchy: " + hierarchySoFar);
 		}
 		return remainingChildren;
 	}
