@@ -26,6 +26,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.ReportTemplateContentQuestion;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -102,7 +103,8 @@ public class ReportTemplate extends BaseObject
 		super.clear();
 
 		shortLabel = new StringData(TAG_SHORT_LABEL);
-		content = new CodeListData(TAG_INCLUDE_SECTION_CODES, getQuestion(ReportTemplateContentQuestion.class));
+		ChoiceQuestion reportContentsQuestion = getQuestion(ReportTemplateContentQuestion.class);
+		content = new CodeListData(TAG_INCLUDE_SECTION_CODES, reportContentsQuestion);
 		comment = new StringData(TAG_COMMENTS);
 
 		addField(TAG_SHORT_LABEL, shortLabel);
