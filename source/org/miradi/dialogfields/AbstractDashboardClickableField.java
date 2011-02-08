@@ -43,7 +43,7 @@ abstract public class AbstractDashboardClickableField extends ObjectDataField
 		super(projectToUse, refToUse);
 		
 		stringMapCode = stringMapCodeToUse;
-		labelComponent = new PanelTitleLabel();
+		labelComponent = new TruncatingPanelLabel();
 		configureComponent(labelComponent);
 		labelComponent.addMouseListener(new ClickHandler());
 	}
