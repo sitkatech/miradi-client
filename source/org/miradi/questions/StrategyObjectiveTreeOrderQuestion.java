@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.questions;
 
+import org.miradi.icons.ObjectiveIcon;
+import org.miradi.icons.StrategyIcon;
 import org.miradi.main.EAM;
 
 public class StrategyObjectiveTreeOrderQuestion extends StaticChoiceQuestion
@@ -32,8 +34,8 @@ public class StrategyObjectiveTreeOrderQuestion extends StaticChoiceQuestion
 	private static ChoiceItem[] createStaticChoices()
 	{
 		return new ChoiceItem[] {
-				new ChoiceItem(OBJECTIVE_CONTAINS_STRATEGY_CODE, EAM.text("Objectives contain Strategies")),
-				new ChoiceItem(STRATEGY_CONTAINS_OBJECTIVE_CODE, EAM.text("Strategies contain Objectives")),
+				new ChoiceItem(OBJECTIVE_CONTAINS_STRATEGY_CODE, EAM.text("Objectives contain Strategies"), new ObjectiveIcon()),
+				new ChoiceItem(STRATEGY_CONTAINS_OBJECTIVE_CODE, EAM.text("Strategies contain Objectives"), new StrategyIcon()),
 		};
 	}
 	
