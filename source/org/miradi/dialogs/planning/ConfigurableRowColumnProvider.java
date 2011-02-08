@@ -101,6 +101,16 @@ public class ConfigurableRowColumnProvider extends AbstractPlanningTreeRowColumn
 			return false;
 		return customization.shouldIncludeConceptualModelPage();
 	}
+	
+	@Override
+	public boolean doObjectivesContainStrategies() throws Exception
+	{
+		PlanningTreeRowColumnProvider customization = getCurrentCustomization();
+		if(customization == null)
+			return true;
+		
+		return customization.doObjectivesContainStrategies();
+	}
 
 	private PlanningTreeRowColumnProvider getCurrentCustomization() throws Exception
 	{
