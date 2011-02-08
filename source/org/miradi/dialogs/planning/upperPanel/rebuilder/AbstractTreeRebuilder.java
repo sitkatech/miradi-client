@@ -65,7 +65,7 @@ import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 
-public class AbstractTreeRebuilder
+abstract public class AbstractTreeRebuilder
 {
 	public AbstractTreeRebuilder(Project projectToUse, PlanningTreeRowColumnProvider rowColumnProviderToUse)
 	{
