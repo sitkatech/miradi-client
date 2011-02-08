@@ -28,7 +28,7 @@ public interface XmpzXmlConstants
 	public static final String ELEMENT_NAME = "element" + SINGLE_SPACE;
 	public static final String OPTIONAL_ELEMENT = SINGLE_SPACE + "?" + SINGLE_SPACE;
 	
-	public static final String NAME_SPACE_VERSION = "56";
+	public static final String NAME_SPACE_VERSION = "57";
 	public static final String PARTIAL_NAME_SPACE = "http://xml.miradi.org/schema/ConservationProject/";
 	public static final String NAME_SPACE = PARTIAL_NAME_SPACE + NAME_SPACE_VERSION;
 	public static final String XMLNS = "xmlns";
@@ -167,7 +167,7 @@ public interface XmpzXmlConstants
 	public static final String OBJECT_TREE_TABLE_CONFIGURATION = "PlanningViewConfiguration";
 	public static final String METHOD_IDS = "MethodIds";
 	public static final String THRESHOLDS = "Thresholds";
-	public static final String THRESHOLD = "Threshold";
+	public static final String THRESHOLD = "IndicatorThreshold";
 	public static final String THRESHOLD_VALUE = "ThresholdValue";
 	public static final String THRESHOLD_DETAILS = "ThresholdDetails";
 	public static final String STATUS_CODE = "StatusCode";

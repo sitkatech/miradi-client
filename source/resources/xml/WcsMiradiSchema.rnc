@@ -1,4 +1,4 @@
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/56'
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/57'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -492,7 +492,7 @@ Indicator.element = element miradi:Indicator
   element miradi:IndicatorAssignmentIds { ResourceAssignmentId.element* }? &
   element miradi:IndicatorMeasurementIds { MeasurementId.element* }? &
   element miradi:IndicatorMethodIds { MethodId.element* }? &
-  element miradi:IndicatorThresholds { Threshold.element* }?
+  element miradi:IndicatorThresholds { IndicatorThreshold.element* }?
 }
 
 TaskPool.element = element miradi:TaskPool { Task.element* }
@@ -863,7 +863,7 @@ WorkUnitsDay.element = element miradi:WorkUnitsDay
   attribute Date {vocabulary_date}
 }
 
-Threshold.element = element miradi:Threshold
+IndicatorThreshold.element = element miradi:IndicatorThreshold
 {
   element miradi:StatusCode{vocabulary_measurement_status}? &
   element miradi:ThresholdValue { text }? &
