@@ -156,6 +156,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		return grandchildRefs;
 	}
 
+	@Override
 	public void setVisibleRowCodes(CodeList visibleRowsToUse)
 	{
 		visibleRows = visibleRowsToUse;

@@ -27,6 +27,7 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.project.Project;
+import org.miradi.utils.CodeList;
 
 abstract public class NewAbstractPlanningTreeNode extends TreeTableNode
 {
@@ -70,10 +71,22 @@ abstract public class NewAbstractPlanningTreeNode extends TreeTableNode
 		return null;
 	}
 	
+	//TODO New node types do not rebuild themselves and there fore this method has 
+	//no implementation and is only here for a transitional period.  
+	//Once Old node hierarchy has been removed, this method needs to go away.
 	@Override
 	public void rebuild() throws Exception
 	{
-		throw new Exception("Can't call rebuild on " + getClass().getCanonicalName());
+		//NOTE, this method is called, but should not do anything.  TreeRebuilder is responsible
+		//for rebuilding new node types.
+	}
+	
+	//TODO Remove method as soon as old planning style nodes are removed.
+	@Override
+	public void setVisibleRowCodes(CodeList visibleRowsToUse)
+	{
+		//NOTE, this method is called, but should not do anything.  This method is
+		//only here during a transition between new and old node types
 	}
 	
 	@Override

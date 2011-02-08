@@ -25,6 +25,7 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
+import org.miradi.utils.CodeList;
 import org.miradi.utils.HtmlUtilities;
 
 public abstract class TreeTableNode implements Comparable<TreeTableNode>
@@ -36,6 +37,13 @@ public abstract class TreeTableNode implements Comparable<TreeTableNode>
 	public abstract BaseObject getObject();
 	abstract public void rebuild() throws Exception;
 
+	//TODO medium - This method was added while having new and old type planning tree nodes.
+	//Remove this method when the old planning node hierarchy is removed.  Also remove its overrides 
+	public void setVisibleRowCodes(CodeList visibleRowsToUse)
+	{
+		throw new RuntimeException("This method should only be called for AbstractPlanningTreeNode");
+	}
+	
 	@Override
 	public String toString()
 	{
