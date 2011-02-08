@@ -37,6 +37,18 @@ public class StrategyObjectiveTreeOrderQuestion extends StaticChoiceQuestion
 		};
 	}
 	
+	@Override
+	protected boolean hasReadableAlternativeDefaultCode()
+	{
+		return true;
+	}
+	
+	@Override
+	protected String getReadableAlternativeDefaultCode()
+	{
+		return "ObjectiveContainsStrategy";
+	}
+	
 	public static final String OBJECTIVE_CONTAINS_STRATEGY_CODE = "";
 	public static final String STRATEGY_CONTAINS_OBJECTIVE_CODE = "StrategyContainsObjective";
 }

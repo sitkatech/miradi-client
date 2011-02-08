@@ -61,6 +61,7 @@ import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.StrategyFeasibilityQuestion;
 import org.miradi.questions.StrategyImpactQuestion;
+import org.miradi.questions.StrategyObjectiveTreeOrderQuestion;
 import org.miradi.questions.StrategyTaxonomyQuestion;
 import org.miradi.questions.StressContributionQuestion;
 import org.miradi.questions.StressIrreversibilityQuestion;
@@ -155,6 +156,7 @@ public class XmlSchemaCreator implements XmpzXmlConstants
 		defineVocabulary(writer, VOCABULARY_COUNTRIES, new CountriesQuestion());
 		defineVocabulary(writer, VOCABULARY_THREAT_RATING, new ThreatRatingQuestion());
 		defineVocabulary(writer, VOCABULARY_DIAGRAM_OBJECT_DATA_INCLUSION, new DiagramObjectDataInclusionQuestion());
+		defineVocabulary(writer, VOCABULARY_PLANNING_TREE_OBJECTIVE_STRATEGY_NODE_ORDER, new StrategyObjectiveTreeOrderQuestion());
 		defineVocabulary(writer, VOCABULARY_PLANNING_TREE_TARGET_NODE_POSITION, new PlanningTreeTargetPositionQuestion());
 		defineVocabulary(writer, VOCABULARY_THREAT_RATING_MODE, new ThreatRatingModeChoiceQuestion());
 		defineVocabulary(writer, VOCABULARY_DASHBOARD_ROW_FLAGS, new DashboardFlagsQuestion());
@@ -579,6 +581,7 @@ public class XmlSchemaCreator implements XmpzXmlConstants
 	public static final String VOCABULARY_DASHBOARD_ROW_PROGRESS = "vocabulary_dashboard_row_progress";
 	public static final String VOCABULARY_DASHBOARD_ROW_FLAGS = "vocabulary_dashboard_row_flags";
 	public static final String VOCABULARY_DASHBOARD_ROW_FLAG = "vocabulary_dashboard_row_flag";
+	public static final String VOCABULARY_PLANNING_TREE_OBJECTIVE_STRATEGY_NODE_ORDER = "vocabulary_planning_tree_objective_strategy_node_order";
 	
 	public static final String PROTECTED_AREA_CATEGORIES_ELEMENT_NAME = ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES;
 	public static final String RESOURCE_TYPE_ELEMENT_NAME = ProjectResource.TAG_RESOURCE_TYPE;
