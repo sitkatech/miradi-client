@@ -146,6 +146,12 @@ public class TreeRebuilder
 		if(Strategy.is(parentRef))
 			return getChildrenOfStrategy(parentRef, diagram);
 		
+		if(ThreatReductionResult.is(parentRef))
+			return getChildrenOfBasicFactor(parentRef, diagram);
+		
+		if(IntermediateResult.is(parentRef))
+			return getChildrenOfBasicFactor(parentRef, diagram);
+		
 		if(Desire.isDesire(parentRef))
 			return getChildrenOfDesire(parentRef, diagram);
 		
