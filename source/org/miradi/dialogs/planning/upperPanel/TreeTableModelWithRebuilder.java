@@ -22,7 +22,7 @@ package org.miradi.dialogs.planning.upperPanel;
 
 import org.miradi.dialogs.planning.treenodes.NewPlanningRootNode;
 import org.miradi.dialogs.planning.upperPanel.rebuilder.NormalTreeRebuilder;
-import org.miradi.dialogs.planning.upperPanel.rebuilder.TreeRebuilder;
+import org.miradi.dialogs.planning.upperPanel.rebuilder.AbstractTreeRebuilder;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.EAM;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
@@ -40,7 +40,7 @@ public class TreeTableModelWithRebuilder extends ExportablePlanningTreeTableMode
 	{
 		try
 		{
-			TreeRebuilder treeRebuilder = new NormalTreeRebuilder(getProject(), getRowColumnProvider());
+			AbstractTreeRebuilder treeRebuilder = new NormalTreeRebuilder(getProject(), getRowColumnProvider());
 			treeRebuilder.rebuildTree((NewPlanningRootNode)getRootNode());
 		}
 		catch(Exception e)
