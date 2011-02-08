@@ -22,7 +22,6 @@ package org.miradi.dialogs.planning.upperPanel.rebuilder;
 
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.Vector;
 
 import org.miradi.diagram.ChainWalker;
@@ -112,10 +111,10 @@ public class TreeRebuilder
 	private ORefList getListWithoutChildrenThatWouldCauseRecursion(NewAbstractPlanningTreeNode parentNode, ORefList candidateChildRefs) throws Exception
 	{
 		TreeTableNode node = parentNode;
-		HashSet<Integer> hierarchySoFar = new HashSet<Integer>();
+		ORefList hierarchySoFar = new ORefList();
 		while(node != null)
 		{
-			hierarchySoFar.add(node.getObjectReference().getObjectType());
+			hierarchySoFar.add(node.getObjectReference());
 			node = node.getParentNode();
 		}
 	
@@ -123,11 +122,10 @@ public class TreeRebuilder
 		for(int i = 0; i < candidateChildRefs.size(); ++i)
 		{
 			ORef childRef = candidateChildRefs.get(i);
-			int childType = childRef.getObjectType();
-			if(!hierarchySoFar.contains(childType))
+			if(!hierarchySoFar.contains(childRef))
 				remainingChildren.add(childRef);
 			else
-				EAM.logDebug("omitting recursive child" + childRef + " from hierarchy types: " + hierarchySoFar);
+				EAM.logDebug("omitting recursive child" + childRef + " from hierarchy: " + hierarchySoFar);
 		}
 		return remainingChildren;
 	}
