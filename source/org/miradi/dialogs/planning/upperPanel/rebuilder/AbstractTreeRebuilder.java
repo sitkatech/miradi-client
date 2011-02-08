@@ -206,7 +206,7 @@ abstract public class AbstractTreeRebuilder
 		ORefList diagramFactorRefs = diagramObject.getAllDiagramFactorRefs();
 		for(int i = 0; i < diagramFactorRefs.size(); ++i)
 		{
-			DiagramFactor diagramFactor = (DiagramFactor)project.findObject(diagramFactorRefs.get(i));
+			DiagramFactor diagramFactor = (DiagramFactor)getProject().findObject(diagramFactorRefs.get(i));
 			Factor factor = diagramFactor.getWrappedFactor();
 			if(shouldIncludeFactorWithinDiagram(factor))
 			{
