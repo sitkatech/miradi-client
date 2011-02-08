@@ -43,10 +43,10 @@ public class DashboardCommentsField extends AbstractDashboardClickableField
 	@Override
 	protected void updateLabelComponent(PanelTitleLabel labelComponentToUse, String mapValue) throws Exception
 	{
-		String[] splitValues = mapValue.split("\n");
-		String firstLine = splitValues[0];
-		if (firstLine.length() > 0)
-			firstLine  += "...";
+		String firstLine = mapValue;
+		int newlineAt = mapValue.indexOf("\n");
+		if (newlineAt >= 0)
+			firstLine = mapValue.substring(0, newlineAt) + "...";
 		
 		labelComponentToUse.setText(firstLine);
 	}
