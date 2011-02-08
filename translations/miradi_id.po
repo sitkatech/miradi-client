@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-08 09:37-0600\n"
+"POT-Creation-Date: 2011-02-08 12:51-0600\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -9504,6 +9504,9 @@ msgid "FieldLabel|29.TagColConfiguration|Columns"
 msgstr "Kolom "
 
 msgid "FieldLabel|29.TagDiagramDataInclusion|Include Data From"
+msgstr ""
+
+msgid "FieldLabel|29.StrategyObjectiveOrder|Objective Strategy Node Order"
 msgstr ""
 
 msgid "FieldLabel|30.WwfProjectData|WwfProjectData"
