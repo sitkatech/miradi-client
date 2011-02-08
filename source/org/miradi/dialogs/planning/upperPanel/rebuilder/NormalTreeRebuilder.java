@@ -23,7 +23,7 @@ package org.miradi.dialogs.planning.upperPanel.rebuilder;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.project.Project;
 
-public class NormalTreeRebuilder extends TreeRebuilder
+public class NormalTreeRebuilder extends AbstractTreeRebuilder
 {
 	public NormalTreeRebuilder(Project projectToUse, PlanningTreeRowColumnProvider rowColumnProviderToUse)
 	{
