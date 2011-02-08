@@ -35,7 +35,6 @@ import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.ReportTemplateContentQuestion;
@@ -155,12 +154,7 @@ public class StandardReportPanel extends TwoColumnPanel
 
 	private ChoiceQuestion getContentQuestion()
 	{
-		return getProject().getQuestion(ReportTemplateContentQuestion.class);
-	}
-	
-	private Project getProject()
-	{
-		return getMainWindow().getProject();
+		return new ReportTemplateContentQuestion();
 	}
 	
 	private MainWindow getMainWindow()
