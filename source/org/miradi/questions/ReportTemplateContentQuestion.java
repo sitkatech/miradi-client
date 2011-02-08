@@ -21,15 +21,11 @@ package org.miradi.questions;
 
 import org.miradi.main.EAM;
 
-public class ReportTemplateContentQuestion extends StaticChoiceQuestion
+public class ReportTemplateContentQuestion extends DynamicChoiceQuestion
 {
-	public ReportTemplateContentQuestion()
+	@Override
+	public ChoiceItem[] getChoices()
 	{
-		super(getContentChoices());
-	}
-
-	static ChoiceItem[] getContentChoices()
-	{		
 		return new ChoiceItem[] {
 				new ChoiceItem(SUMMARY_VIEW_PROJECT_TAB_CODE, EAM.text("Project Summary")),
 				new ChoiceItem(SUMMARY_VIEW_TEAM_TAB_CODE, getTeamLabel()),
