@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-08 09:37-0600\n"
+"POT-Creation-Date: 2011-02-08 12:51-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -9220,6 +9220,9 @@ msgid "FieldLabel|29.TagColConfiguration|Columns"
 msgstr ""
 
 msgid "FieldLabel|29.TagDiagramDataInclusion|Include Data From"
+msgstr ""
+
+msgid "FieldLabel|29.StrategyObjectiveOrder|Objective Strategy Node Order"
 msgstr ""
 
 msgid "FieldLabel|30.WwfProjectData|WwfProjectData"
