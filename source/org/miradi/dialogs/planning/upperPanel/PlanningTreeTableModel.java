@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel;
 
 import org.miradi.dialogs.planning.treenodes.AbstractPlanningTreeNode;
-import org.miradi.dialogs.planning.treenodes.PlanningRootNode;
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.EAM;
@@ -32,11 +31,6 @@ import org.miradi.utils.CodeList;
 
 abstract public class PlanningTreeTableModel extends GenericTreeTableModel
 {	
-	public PlanningTreeTableModel(Project projectToUse, PlanningTreeRowColumnProvider rowColumnProvider) throws Exception
-	{
-		this(projectToUse, createPlanningTreeRootNode(projectToUse, rowColumnProvider.getRowCodesToShow()), rowColumnProvider);
-	}
-
 	public PlanningTreeTableModel(Project projectToUse, TreeTableNode rootNode, PlanningTreeRowColumnProvider rowColumnProviderToUse) throws Exception
 	{
 		super(rootNode);
@@ -50,11 +44,6 @@ abstract public class PlanningTreeTableModel extends GenericTreeTableModel
 		return rowColumnProvider;
 	}
 
-	private static TreeTableNode createPlanningTreeRootNode(Project projectToUse, CodeList visibleRowCodesToUse) throws Exception
-	{
-		return new PlanningRootNode(projectToUse, visibleRowCodesToUse);
-	}
-	
 	public int getColumnCount()
 	{
 		return getColumnTags().size();
