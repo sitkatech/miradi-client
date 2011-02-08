@@ -40,14 +40,6 @@ public class ExportablePlanningTreeTableModel extends PlanningTreeTableModel imp
 		setRowObjectRefs();
 	}
 	
-	public ExportablePlanningTreeTableModel(Project projectToUse, PlanningTreeRowColumnProvider rowColumnProvider, String uniqueTreeTableModelIdentifierToUse) throws Exception
-	{
-		super(projectToUse, rowColumnProvider);
-		
-		uniqueTreeTableModelIdentifier = uniqueTreeTableModelIdentifierToUse;
-		setRowObjectRefs();
-	}
-
 	private void setRowObjectRefs() throws Exception
 	{
 		rowObjectRefs = getFullyExpandedRefList();
