@@ -80,7 +80,6 @@ public class StaticQuestionManager
 		addQuestion(new FosTrainingTypeQuestion());
 		addQuestion(new DiagramLinkColorQuestion());
 		addQuestion(new TableRowHeightModeQuestion());
-		addQuestion(new ReportTemplateContentQuestion());
 		addQuestion(new RtfLegendObjectsQuestion());
 		addQuestion(new ProjectSharingQuestion());
 		addQuestion(new TextBoxZOrderQuestion());
