@@ -29,5 +29,6 @@ public class ObjectTreeTableConfigurationSchemaElement extends	BaseObjectSchemaE
 		super(OBJECT_TREE_TABLE_CONFIGURATION);
 		
 		createOptionalCodeField(ObjectTreeTableConfiguration.TAG_DIAGRAM_DATA_INCLUSION, XmlSchemaCreator.VOCABULARY_DIAGRAM_OBJECT_DATA_INCLUSION);
+		createOptionalCodeField(ObjectTreeTableConfiguration.TAG_STRATEGY_OBJECTIVE_ORDER, XmlSchemaCreator.VOCABULARY_PLANNING_TREE_OBJECTIVE_STRATEGY_NODE_ORDER);
 	}
 }
