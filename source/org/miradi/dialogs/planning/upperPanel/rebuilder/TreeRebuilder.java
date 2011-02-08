@@ -127,7 +127,7 @@ public class TreeRebuilder
 			if(!hierarchySoFar.contains(childType))
 				remainingChildren.add(childRef);
 			else
-				EAM.logDebug("omitting " + childRef + " because hierarchy is: " + hierarchySoFar);
+				EAM.logDebug("omitting recursive child" + childRef + " from hierarchy types: " + hierarchySoFar);
 		}
 		return remainingChildren;
 	}
