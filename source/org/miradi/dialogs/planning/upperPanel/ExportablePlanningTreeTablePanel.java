@@ -21,7 +21,7 @@ package org.miradi.dialogs.planning.upperPanel;
 
 
 import org.miradi.dialogs.planning.treenodes.NewPlanningRootNode;
-import org.miradi.dialogs.planning.upperPanel.rebuilder.TreeRebuilder;
+import org.miradi.dialogs.planning.upperPanel.rebuilder.NormalTreeRebuilder;
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
@@ -40,7 +40,7 @@ public class ExportablePlanningTreeTablePanel extends PlanningTreeTablePanel
 	public static PlanningTreeTablePanel createPlanningTreeTablePanelWithoutButtons(MainWindow mainWindowToUse, PlanningTreeRowColumnProvider rowColumnProvider, String uniqueTreeTableModelIdentifier) throws Exception
 	{
 		NewPlanningRootNode rootNode = new NewPlanningRootNode(mainWindowToUse.getProject());
-		new TreeRebuilder(mainWindowToUse.getProject(), rowColumnProvider).rebuildTree(rootNode);
+		new NormalTreeRebuilder(mainWindowToUse.getProject(), rowColumnProvider).rebuildTree(rootNode);
 		PlanningTreeTableModel model = new ExportablePlanningTreeTableModel(mainWindowToUse.getProject(), rootNode, rowColumnProvider, uniqueTreeTableModelIdentifier);
 		
 		return createPlanningTreeTablePanelWithoutButtonsForExporting(mainWindowToUse, rowColumnProvider, model);

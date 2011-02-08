@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel;
 
 import org.miradi.dialogs.planning.treenodes.NewPlanningRootNode;
+import org.miradi.dialogs.planning.upperPanel.rebuilder.NormalTreeRebuilder;
 import org.miradi.dialogs.planning.upperPanel.rebuilder.TreeRebuilder;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.EAM;
@@ -39,7 +40,7 @@ public class TreeTableModelWithRebuilder extends ExportablePlanningTreeTableMode
 	{
 		try
 		{
-			TreeRebuilder treeRebuilder = new TreeRebuilder(getProject(), getRowColumnProvider());
+			TreeRebuilder treeRebuilder = new NormalTreeRebuilder(getProject(), getRowColumnProvider());
 			treeRebuilder.rebuildTree((NewPlanningRootNode)getRootNode());
 		}
 		catch(Exception e)
