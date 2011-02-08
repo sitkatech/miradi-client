@@ -80,7 +80,7 @@ abstract public class PlanningTreeTableModel extends GenericTreeTableModel
 	{
 		try
 		{
-			((AbstractPlanningTreeNode) getRootNode()).setVisibleRowCodes(getRowCodesToShow());
+			getRootNode().setVisibleRowCodes(getRowCodesToShow());
 			super.rebuildNode();
 		}
 		catch(Exception e)
