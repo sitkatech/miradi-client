@@ -29,6 +29,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.questions.CustomPlanningRowsQuestion;
 import org.miradi.questions.DiagramObjectDataInclusionQuestion;
+import org.miradi.questions.StrategyObjectiveTreeOrderQuestion;
 
 public class PlanningCustomizePanel extends ObjectDataInputPanel
 {
@@ -38,6 +39,9 @@ public class PlanningCustomizePanel extends ObjectDataInputPanel
 		
 		ObjectDataInputField dataInclusion = createChoiceField(ObjectTreeTableConfiguration.getObjectType(), ObjectTreeTableConfiguration.TAG_DIAGRAM_DATA_INCLUSION, getProject().getQuestion(DiagramObjectDataInclusionQuestion.class));
 		addField(dataInclusion);
+		
+		ObjectDataInputField objectiveStrategyNodeOrder = createChoiceField(ObjectTreeTableConfiguration.getObjectType(), ObjectTreeTableConfiguration.TAG_STRATEGY_OBJECTIVE_ORDER, new StrategyObjectiveTreeOrderQuestion());
+		addField(objectiveStrategyNodeOrder);
 		
 		ObjectDataInputPanel rowEditor = new CodeListEditorPanel(getProject(), planningConfigurationRef, ObjectTreeTableConfiguration.TAG_ROW_CONFIGURATION, new CustomPlanningRowsQuestion(getProject()), 1);
 		addSubPanelWithoutTitledBorder(rowEditor);
