@@ -67,7 +67,7 @@ public class AnalysisTreeRebuilder extends AbstractTreeRebuilder
 		if (!getLevelObjectTypes().hasData())
 			return;
 		
-		if (getLevelObjectTypes().size() <= currentLevel)
+		if (currentLevel >= getLevelObjectTypes().size())
 			return;
 		
 		String typeOfChildrenAsString = getLevelObjectTypes().get(currentLevel);
