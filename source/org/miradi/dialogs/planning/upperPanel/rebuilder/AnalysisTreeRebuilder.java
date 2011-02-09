@@ -27,14 +27,12 @@ import org.miradi.dialogs.planning.treenodes.NewAbstractPlanningTreeNode;
 import org.miradi.dialogs.planning.treenodes.NewPlanningTreeAlwaysExpandedBaseObjectNode;
 import org.miradi.dialogs.planning.treenodes.NewPlanningTreeBaseObjectNode;
 import org.miradi.dialogs.planning.treenodes.UnspecifiedBaseObject;
-import org.miradi.dialogs.planning.treenodes.UnspecifiedBaseObjectNode;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
-import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
 import org.miradi.questions.WorkPlanCategoryTypesQuestion;
 import org.miradi.utils.CodeList;
@@ -56,7 +54,6 @@ public class AnalysisTreeRebuilder extends AbstractTreeRebuilder
 
 		NewPlanningTreeBaseObjectNode projectNode = new NewPlanningTreeAlwaysExpandedBaseObjectNode(getProject(), rootNode, getProject().getMetadata());
 		rootNode.addChild(projectNode);
-		projectNode.addChild(new UnspecifiedBaseObjectNode(getProject(), projectNode, ProjectMetadata.getObjectType()));
 		
 		int initialLevel = 0;
 		rebuild(projectNode, allAsignmentRefs, initialLevel, projectNode.getObjectReference());
