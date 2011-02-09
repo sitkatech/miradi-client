@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-08 12:57-0600\n"
+"POT-Creation-Date: 2011-02-09 08:29-0600\n"
 "PO-Revision-Date: 2010-05-12 21:01-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -944,7 +944,7 @@ msgid "Accounting Code"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/workplan/AccountingCodeManagementConfiguration.java:60
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:112
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:108
 msgid "Accounting Codes"
 msgstr ""
 
@@ -963,11 +963,11 @@ msgstr ""
 msgid "Acct Code"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:132
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:128
 msgid "Action Plan: Objective-based"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:137
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:133
 msgid "Action Plan: Strategy-based"
 msgstr ""
 
@@ -1932,7 +1932,7 @@ msgid "An unexpected error occurred: "
 msgstr ""
 
 #: Miradi/source/org/miradi/views/workplan/AnalysisManagementConfiguration.java:50
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:107
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:103
 msgid "Analysis"
 msgstr ""
 
@@ -2258,12 +2258,12 @@ msgid ""
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:50
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:97
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:93
 msgid "Budget Category One"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:51
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:102
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:98
 msgid "Budget Category Two"
 msgstr ""
 
@@ -2596,7 +2596,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:107
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:70
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:46
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:42
 #: Miradi/source/org/miradi/dialogs/diagram/ConceptualModelDiagramPanel.java:69
 msgid "Conceptual Model"
 msgstr ""
@@ -3330,7 +3330,7 @@ msgstr ""
 msgid "Extracting factors..."
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:44
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:40
 msgid "FOS"
 msgstr ""
 
@@ -3575,7 +3575,7 @@ msgstr ""
 msgid "Freshwater Lakes"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:62
+#: Miradi/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:61
 msgid "Full Report"
 msgstr ""
 
@@ -3587,7 +3587,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/workplan/FundingSourceManagementConfiguration.java:58
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:304
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:92
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:88
 msgid "Funding Sources"
 msgstr ""
 
@@ -3712,7 +3712,7 @@ msgstr ""
 msgid "High/Very-High Threat Chains"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:102
+#: Miradi/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:101
 msgid "How Reports Work"
 msgstr ""
 
@@ -4266,7 +4266,7 @@ msgid "Legacy TNC Ratings"
 msgstr ""
 
 #: Miradi/source/org/miradi/rtf/legend/RtfLegendExporter.java:100
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:82
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:78
 msgid "Legend Table"
 msgstr ""
 
@@ -4324,7 +4324,7 @@ msgid "Lists"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/summary/SummaryLocationPanel.java:64
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:38
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:34
 msgid "Location"
 msgstr ""
 
@@ -4737,7 +4737,7 @@ msgid "Monitoring Overview"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:151
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:127
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:123
 #: Miradi/source/org/miradi/dialogs/viability/IndicatorMonitoringPlanSubPanel.java:68
 msgid "Monitoring Plan"
 msgstr ""
@@ -5004,7 +5004,7 @@ msgid "Orange"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/summary/doers/DeleteOranizationDoer.java:32
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:157
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:153
 msgid "Organization"
 msgstr ""
 
@@ -5082,7 +5082,7 @@ msgstr ""
 msgid "Planning"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:39
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:35
 msgid "Planning Parameters"
 msgstr ""
 
@@ -5238,7 +5238,7 @@ msgstr ""
 msgid "Progress Percents"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:87
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:83
 msgid "Progress Report"
 msgstr ""
 
@@ -5305,7 +5305,7 @@ msgstr ""
 msgid "Project Settings"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:34
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:30
 msgid "Project Summary"
 msgstr ""
 
@@ -5370,7 +5370,7 @@ msgstr ""
 msgid "Quarter Selection: "
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:43
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:39
 msgid "RARE"
 msgstr ""
 
@@ -5428,7 +5428,7 @@ msgid "Replace Language Pack"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/reports/doers/DeleteReportTemplateDoer.java:32
-#: Miradi/source/org/miradi/dialogs/reportTemplate/ReportTemplatePropertiesPanel.java:39
+#: Miradi/source/org/miradi/dialogs/reportTemplate/ReportTemplatePropertiesPanel.java:40
 msgid "Report Template"
 msgstr ""
 
@@ -5451,7 +5451,7 @@ msgid ""
 "financial."
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:117
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:113
 msgid "Resources"
 msgstr ""
 
@@ -5469,7 +5469,7 @@ msgstr ""
 msgid "Results Chain Properties"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:47
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:43
 #: Miradi/source/org/miradi/dialogs/diagram/ResultsChainDiagramPanel.java:50
 msgid "Results Chains"
 msgstr ""
@@ -5512,7 +5512,7 @@ msgstr ""
 msgid "Ruble (Russia)"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:122
+#: Miradi/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:121
 msgid "Run..."
 msgstr ""
 
@@ -5562,7 +5562,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/summary/SummaryScopeTabPanel.java:73
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:113
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:37
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:33
 #: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:103
 msgid "Scope"
 msgstr ""
@@ -5636,7 +5636,7 @@ msgstr ""
 msgid "Select the Objectives which this Strategy helps to achieve"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:79
+#: Miradi/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:78
 msgid ""
 "Select the report that you want to run. Miradi will then prompt you to save "
 "the report as a Rich Text Format (RTF) file. Once you have created this "
@@ -5989,7 +5989,7 @@ msgstr ""
 msgid "Summary"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:63
+#: Miradi/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:62
 msgid "Summary Report"
 msgstr ""
 
@@ -6006,7 +6006,7 @@ msgid "Systemwide"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:81
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:40
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:36
 msgid "TNC"
 msgstr ""
 
@@ -6882,11 +6882,11 @@ msgstr ""
 msgid "Target"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:77
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:73
 msgid "Target Viability - Details"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:72
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:68
 msgid "Target Viability - Table"
 msgstr ""
 
@@ -6953,7 +6953,7 @@ msgstr ""
 msgid "Tasks"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:152
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:148
 msgid "Team"
 msgstr ""
 
@@ -7161,11 +7161,11 @@ msgstr ""
 msgid "Threat Ratings"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:147
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:143
 msgid "Threat Ratings - Details"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:142
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:138
 msgid "Threat Ratings - Table"
 msgstr ""
 
@@ -7365,7 +7365,7 @@ msgstr ""
 msgid "Title|Project Filename"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/reportTemplate/ReportTemplatePropertiesPanel.java:49
+#: Miradi/source/org/miradi/dialogs/reportTemplate/ReportTemplatePropertiesPanel.java:51
 msgid "Title|Report Template Properties"
 msgstr ""
 
@@ -7700,11 +7700,11 @@ msgstr ""
 msgid "WARNING"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:42
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:38
 msgid "WCS"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:41
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:37
 msgid "WWF"
 msgstr ""
 
@@ -7839,7 +7839,7 @@ msgid "Wizard load of control failed:"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:191
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:122
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:118
 msgid "Work Plan"
 msgstr ""
 
