@@ -69,7 +69,7 @@ abstract public class AbstractBudgetCategoryRowColumnProvider extends AbstractPl
 		});
 	}
 	
-	abstract protected int getObjectType();
+	public abstract int getObjectType();
 	
 	abstract protected String getObjectTypeName();
 }
