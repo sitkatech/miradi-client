@@ -46,44 +46,23 @@ public class ConfigurableRowColumnProvider extends AbstractPlanningTreeRowColumn
 		return getVisibleRowsForCustomization(getCurrentViewData());
 	}
 
-	public CodeList getVisibleRowsForCustomization(ViewData viewData)
+	private CodeList getVisibleRowsForCustomization(ViewData viewData) throws Exception
 	{
-		try
-		{
-			ORef customizationRef = viewData.getORef(ViewData.TAG_TREE_CONFIGURATION_REF);
-			if(customizationRef.isInvalid())
-				return new CodeList();
-			PlanningTreeRowColumnProvider customization = (PlanningTreeRowColumnProvider)viewData.getProject().findObject(customizationRef);
-			return customization.getRowCodesToShow();
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			EAM.errorDialog("Error: Unable to read customized rows");
+		PlanningTreeRowColumnProvider customization = getCurrentCustomization();
+		if(customization == null)
 			return new CodeList();
-		}
+		return customization.getRowCodesToShow();
 	}
 
-	public CodeList getVisibleColumnsForCustomization(ViewData viewData)
+	private CodeList getVisibleColumnsForCustomization(ViewData viewData) throws Exception
 	{
-		try
-		{
-			ORef customizationRef = viewData.getORef(ViewData.TAG_TREE_CONFIGURATION_REF);
-			if(customizationRef.isInvalid())
-				return new CodeList();
-			
-			PlanningTreeRowColumnProvider customization = (PlanningTreeRowColumnProvider)viewData.getProject().findObject(customizationRef);
-			CodeList columnCodes = customization.getColumnCodesToShow();
-			omitUnknownColumnTagsInPlace(viewData.getProject(), columnCodes);
-			
-			return columnCodes;
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			EAM.errorDialog("Error: Unable to read customized columns");
+		PlanningTreeRowColumnProvider customization = getCurrentCustomization();
+		if(customization == null)
 			return new CodeList();
-		}
+		CodeList columnCodes = customization.getColumnCodesToShow();
+		omitUnknownColumnTagsInPlace(viewData.getProject(), columnCodes);
+		
+		return columnCodes;
 	}
 
 	public boolean shouldIncludeResultsChain() throws Exception
