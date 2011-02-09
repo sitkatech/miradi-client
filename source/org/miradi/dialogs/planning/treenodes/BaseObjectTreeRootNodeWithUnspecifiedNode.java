@@ -44,11 +44,6 @@ public class BaseObjectTreeRootNodeWithUnspecifiedNode extends BaseObjectTreeRoo
 	@Override
 	public String toRawString()
 	{
-		return getProjectTotalsName();
-	}
-
-	public static String getProjectTotalsName()
-	{
 		return EAM.text("Project Totals");
 	}
 }
