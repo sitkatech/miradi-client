@@ -40,12 +40,17 @@ public class TreeTableModelWithRebuilder extends ExportablePlanningTreeTableMode
 	{
 		try
 		{
-			AbstractTreeRebuilder treeRebuilder = new NormalTreeRebuilder(getProject(), getRowColumnProvider());
+			AbstractTreeRebuilder treeRebuilder = createTreeRebuilder();
 			treeRebuilder.rebuildTree((NewPlanningRootNode)getRootNode());
 		}
 		catch(Exception e)
 		{
 			EAM.panic(e);
 		}
+	}
+
+	protected NormalTreeRebuilder createTreeRebuilder()
+	{
+		return new NormalTreeRebuilder(getProject(), getRowColumnProvider());
 	}
 }
