@@ -25,6 +25,7 @@ import java.util.HashMap;
 import java.util.Vector;
 
 import org.miradi.dialogs.planning.WorkPlanCategoryTreeRowColumnProvider;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Assignment;
@@ -58,7 +59,7 @@ public class WorkPlanCategoryTreeNode extends AbstractPlanningTreeNode
 	public String toRawString()
 	{
 		if (ProjectMetadata.is(getObjectReference()))
-			return BaseObjectTreeRootNodeWithUnspecifiedNode.getProjectTotalsName();
+			return EAM.text("Project Totals");
 		
 		return super.toRawString();
 	}
