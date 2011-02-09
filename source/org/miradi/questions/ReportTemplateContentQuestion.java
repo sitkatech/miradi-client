@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.questions;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Vector;
 
 import org.miradi.main.EAM;
@@ -101,9 +103,32 @@ public class ReportTemplateContentQuestion extends DynamicChoiceQuestion
 		choices.add(new ChoiceItem(ACTION_PLAN_OBJECTIVE_BASED_REPORT_CODE, getActionPlanObjectiveBasedActionPlanLabel()));
 		choices.add(new ChoiceItem(ACTION_PLAN_STRATEGY_BASED_REPORT_CODE, getActionPlanStrategyBasedActionPlanLabel()));
 		choices.add(new ChoiceItem(PLANNING_VIEW_MONITORING_PLAN_CODE, getMonitoringPlanLabel()));
+		
+		choices.addAll(createCustomSubviewChoices());
 		return choices;
 	}
 	
+	private Collection<ChoiceItem> createCustomSubviewChoices()
+	{
+		Vector<ChoiceItem> choices = new Vector<ChoiceItem>();
+// FIXME: Temporarily disabled until these are actually functional in reports
+//		EAMObjectPool pool = getProject().getPool(ObjectTreeTableConfiguration.getObjectType());
+//		Vector<BaseObject> subviews = pool.getAllObjects();
+//		for(BaseObject subview : subviews)
+//		{
+//			String code = CUSTOM_TABLE_CODE_PREFIX + subview.getRef().toString();
+//			String name = EAM.substitute(getCustomTableNameTemplate(), subview.getFullName());
+//			choices.add(new ChoiceItem(code, name));
+//		}
+		Collections.sort(choices);
+		return choices;
+	}
+
+	public static String getCustomTableNameTemplate()
+	{
+		return EAM.text("Custom Table: %s");
+	}
+
 	private Vector<ChoiceItem> createWorkPlanViewSectionChoices()
 	{
 		Vector<ChoiceItem> choices = new Vector<ChoiceItem>();
@@ -237,7 +262,7 @@ public class ReportTemplateContentQuestion extends DynamicChoiceQuestion
 	public static final String PROGRESS_REPORT_CODE = "ProgressReport";
 	public static final String LEGEND_TABLE_REPORT_CODE = "LegendTableReport";
 	
-	public static final String CUSTOM_TABLE_PREFIX = "CUSTOM:";
+	public static final String CUSTOM_TABLE_CODE_PREFIX = "CUSTOM:";
 	
 	private Project project;
 }
