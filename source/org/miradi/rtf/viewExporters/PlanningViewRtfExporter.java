@@ -27,6 +27,7 @@ import org.miradi.dialogs.planning.ActionPlanSubViewObjectiveBasedRowColumnProvi
 import org.miradi.dialogs.planning.ActionPlanSubViewStrategyBasedRowColumnProvider;
 import org.miradi.dialogs.planning.BudgetCategoryOneCoreRowColumnProvider;
 import org.miradi.dialogs.planning.BudgetCategoryTwoCoreRowColumnProvider;
+import org.miradi.dialogs.planning.CustomTablePlanningTreeRowColumnProvider;
 import org.miradi.dialogs.planning.FundingSourceCoreRowColumnProvider;
 import org.miradi.dialogs.planning.MonitoringRowColumnProvider;
 import org.miradi.dialogs.planning.ProgressReportRowColumnProvider;
@@ -95,7 +96,7 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 		exportWorkPlanCategoryTab(writer, reportTemplateContent, ReportTemplateContentQuestion.ANALYSIS_CODE, new AnalysisRowColumnProvider(getProject()), ReportTemplateContentQuestion.getAnalysisLabel());
 	}
 
-	private void exportAnyCustomTables(RtfWriter writer, CodeList reportTemplateContent)
+	private void exportAnyCustomTables(RtfWriter writer, CodeList reportTemplateContent) throws Exception
 	{
 		Vector<ObjectTreeTableConfiguration> configurations = extractCustomSections(reportTemplateContent);
 		for(ObjectTreeTableConfiguration configuration : configurations)
@@ -104,9 +105,10 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 		}
 	}
 
-	private void exportCustomSection(RtfWriter writer, ObjectTreeTableConfiguration configuration)
+	private void exportCustomSection(RtfWriter writer, ObjectTreeTableConfiguration configuration) throws Exception
 	{
-		// FIXME: Not implemented yet
+		CustomTablePlanningTreeRowColumnProvider provider = new CustomTablePlanningTreeRowColumnProvider(getProject(), configuration);
+		exportReport(writer, provider, configuration.getFullName());
 	}
 
 	private Vector<ObjectTreeTableConfiguration> extractCustomSections(CodeList reportTemplateContent)

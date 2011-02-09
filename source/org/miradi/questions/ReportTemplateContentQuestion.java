@@ -24,6 +24,9 @@ import java.util.Collections;
 import java.util.Vector;
 
 import org.miradi.main.EAM;
+import org.miradi.objectpools.EAMObjectPool;
+import org.miradi.objects.BaseObject;
+import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.project.Project;
 
 public class ReportTemplateContentQuestion extends DynamicChoiceQuestion
@@ -111,15 +114,14 @@ public class ReportTemplateContentQuestion extends DynamicChoiceQuestion
 	private Collection<ChoiceItem> createCustomSubviewChoices()
 	{
 		Vector<ChoiceItem> choices = new Vector<ChoiceItem>();
-// FIXME: Temporarily disabled until these are actually functional in reports
-//		EAMObjectPool pool = getProject().getPool(ObjectTreeTableConfiguration.getObjectType());
-//		Vector<BaseObject> subviews = pool.getAllObjects();
-//		for(BaseObject subview : subviews)
-//		{
-//			String code = CUSTOM_TABLE_CODE_PREFIX + subview.getRef().toString();
-//			String name = EAM.substitute(getCustomTableNameTemplate(), subview.getFullName());
-//			choices.add(new ChoiceItem(code, name));
-//		}
+		EAMObjectPool pool = getProject().getPool(ObjectTreeTableConfiguration.getObjectType());
+		Vector<BaseObject> subviews = pool.getAllObjects();
+		for(BaseObject subview : subviews)
+		{
+			String code = CUSTOM_TABLE_CODE_PREFIX + subview.getRef().toString();
+			String name = EAM.substitute(getCustomTableNameTemplate(), subview.getFullName());
+			choices.add(new ChoiceItem(code, name));
+		}
 		Collections.sort(choices);
 		return choices;
 	}
