@@ -40,6 +40,23 @@ public class ReportTemplateContentQuestion extends DynamicChoiceQuestion
 	public ChoiceItem[] getChoices()
 	{
 		Vector<ChoiceItem> choices = new Vector<ChoiceItem>();
+		choices.addAll(createSummaryViewSectionChoices());
+		choices.addAll(createDiagramViewSectionChoices());
+		choices.addAll(createViabilityViewSectionChoices());
+		choices.addAll(createThreatRatingViewSectionChoices());
+		choices.addAll(createStrategicPlanViewSectionChoices());
+		choices.addAll(createWorkPlanViewSectionChoices());
+		
+		choices.add(new ChoiceItem(PROGRESS_REPORT_CODE, getProgressReportLabel()));
+
+		choices.add(new ChoiceItem(LEGEND_TABLE_REPORT_CODE, getLegendTableLabel()));
+		
+		return choices.toArray(new ChoiceItem[0]);
+	}
+
+	private Vector<ChoiceItem> createSummaryViewSectionChoices()
+	{
+		Vector<ChoiceItem> choices = new Vector<ChoiceItem>();
 		choices.add(new ChoiceItem(SUMMARY_VIEW_PROJECT_TAB_CODE, EAM.text("Project Summary")));
 		choices.add(new ChoiceItem(SUMMARY_VIEW_TEAM_TAB_CODE, getTeamLabel()));
 		choices.add(new ChoiceItem(SUMMARY_VIEW_ORGANIZATION_TAB_CODE, getOraganizationLabel()));
@@ -51,20 +68,45 @@ public class ReportTemplateContentQuestion extends DynamicChoiceQuestion
 		choices.add(new ChoiceItem(SUMMARY_VIEW_WCS_TAB_CODE, EAM.text("WCS")));
 		choices.add(new ChoiceItem(SUMMARY_VIEW_RARE_TAB_CODE, EAM.text("RARE")));
 		choices.add(new ChoiceItem(SUMMARY_VIEW_FOS_TAB_CODE, EAM.text("FOS")));
-				
+		return choices;
+	}
+
+	private Vector<ChoiceItem> createDiagramViewSectionChoices()
+	{
+		Vector<ChoiceItem> choices = new Vector<ChoiceItem>();
 		choices.add(new ChoiceItem(DIAGRAM_VIEW_CONCEPTUAL_MODEL_TAB_CODE, EAM.text("Conceptual Model")));
 		choices.add(new ChoiceItem(DIAGRAM_VIEW_RESULTS_CHAINS_TAB_CODE, EAM.text("Results Chains")));
-				
+		return choices;
+	}
+	
+	private Vector<ChoiceItem> createViabilityViewSectionChoices()
+	{
+		Vector<ChoiceItem> choices = new Vector<ChoiceItem>();
 		choices.add(new ChoiceItem(TARGET_VIABILITY_VIEW_VIABILITY_TAB_TABLE_CODE, getTargetViabilityTableLabel()));
 		choices.add(new ChoiceItem(TARGET_VIABILITY_VIEW_VIABILITY_TAB_DETAILS_CODE, getTargetViabilityDetailsLabel()));
-				
+		return choices;
+	}
+	
+	private Vector<ChoiceItem> createThreatRatingViewSectionChoices()
+	{
+		Vector<ChoiceItem> choices = new Vector<ChoiceItem>();
 		choices.add(new ChoiceItem(THREAT_RATING_VIEW_CODE, getThreatRatingsLabel()));
 		choices.add(new ChoiceItem(THREAT_RATING_DETAILS_CODE, getThreatRatingDetailsLabel()));
-				
+		return choices;
+	}
+	
+	private Vector<ChoiceItem> createStrategicPlanViewSectionChoices()
+	{
+		Vector<ChoiceItem> choices = new Vector<ChoiceItem>();
 		choices.add(new ChoiceItem(ACTION_PLAN_OBJECTIVE_BASED_REPORT_CODE, getActionPlanObjectiveBasedActionPlanLabel()));
 		choices.add(new ChoiceItem(ACTION_PLAN_STRATEGY_BASED_REPORT_CODE, getActionPlanStrategyBasedActionPlanLabel()));
 		choices.add(new ChoiceItem(PLANNING_VIEW_MONITORING_PLAN_CODE, getMonitoringPlanLabel()));
-				
+		return choices;
+	}
+	
+	private Vector<ChoiceItem> createWorkPlanViewSectionChoices()
+	{
+		Vector<ChoiceItem> choices = new Vector<ChoiceItem>();
 		choices.add(new ChoiceItem(PLANNING_VIEW_WORK_PLAN_CODE, getWorkPlanLabel()));
 		choices.add(new ChoiceItem(PLANNING_VIEW_RESOURCES_CODE, getResourcesLabel()));
 		choices.add(new ChoiceItem(PLANNING_VIEW_ACCOUNTING_CODE_CODE, getAccountingCodesLabel()));
@@ -72,12 +114,9 @@ public class ReportTemplateContentQuestion extends DynamicChoiceQuestion
 		choices.add(new ChoiceItem(BUDGET_CATEGORY_ONE_CODE, getCategoryOneLabel()));
 		choices.add(new ChoiceItem(BUDGET_CATEGORY_TWO_CODE, getCategoryTwoLabel()));
 		choices.add(new ChoiceItem(ANALYSIS_CODE, getAnalysisLabel()));
-		choices.add(new ChoiceItem(PROGRESS_REPORT_CODE, getProgressReportLabel()));
-		choices.add(new ChoiceItem(LEGEND_TABLE_REPORT_CODE, getLegendTableLabel()));
-		
-		return choices.toArray(new ChoiceItem[0]);
+		return choices;
 	}
-
+	
 	public static String getTargetViabilityTableLabel()
 	{
 		return EAM.text("Target Viability - Table");
