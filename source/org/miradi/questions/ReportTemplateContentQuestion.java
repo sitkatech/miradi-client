@@ -20,9 +20,20 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.questions;
 
 import org.miradi.main.EAM;
+import org.miradi.project.Project;
 
 public class ReportTemplateContentQuestion extends DynamicChoiceQuestion
 {
+	public ReportTemplateContentQuestion(Project projectToUse)
+	{
+		project = projectToUse;
+	}
+	
+	public Project getProject()
+	{
+		return project;
+	}
+	
 	@Override
 	public ChoiceItem[] getChoices()
 	{
@@ -51,6 +62,7 @@ public class ReportTemplateContentQuestion extends DynamicChoiceQuestion
 				new ChoiceItem(ACTION_PLAN_OBJECTIVE_BASED_REPORT_CODE, getActionPlanObjectiveBasedActionPlanLabel()),
 				new ChoiceItem(ACTION_PLAN_STRATEGY_BASED_REPORT_CODE, getActionPlanStrategyBasedActionPlanLabel()),
 				new ChoiceItem(PLANNING_VIEW_MONITORING_PLAN_CODE, getMonitoringPlanLabel()),
+				
 				new ChoiceItem(PLANNING_VIEW_WORK_PLAN_CODE, getWorkPlanLabel()),
 				new ChoiceItem(PLANNING_VIEW_RESOURCES_CODE, getResourcesLabel()),
 				new ChoiceItem(PLANNING_VIEW_ACCOUNTING_CODE_CODE, getAccountingCodesLabel()),
@@ -182,4 +194,8 @@ public class ReportTemplateContentQuestion extends DynamicChoiceQuestion
 	public static final String ANALYSIS_CODE = "AnalysisTab";
 	public static final String PROGRESS_REPORT_CODE = "ProgressReport";
 	public static final String LEGEND_TABLE_REPORT_CODE = "LegendTableReport";
+	
+	public static final String CUSTOM_TABLE_PREFIX = "CUSTOM:";
+	
+	private Project project;
 }
