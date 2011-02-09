@@ -22,7 +22,6 @@ package org.miradi.dialogs;
 
 import org.miradi.dialogs.planning.AbstractBudgetCategoryRowColumnProvider;
 import org.miradi.dialogs.planning.WorkPlanCategoryTreeRowColumnProvider;
-import org.miradi.main.EAM;
 import org.miradi.objects.AccountingCode;
 import org.miradi.objects.BudgetCategoryOne;
 import org.miradi.objects.BudgetCategoryTwo;
@@ -88,18 +87,9 @@ public class AnalysisRowColumnProvider extends AbstractBudgetCategoryRowColumnPr
 	}
 	
 	@Override
-	public CodeList getLevelTypeCodes()
+	public CodeList getLevelTypeCodes() throws Exception
 	{
-		//FIXME medium - remove try catch and refactor to make method throw
-		try
-		{
-			return getProject().getViewData(WorkPlanView.getViewName()).getBudgetRollupReportLevelTypes();
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			return new CodeList();
-		}
+		return getProject().getViewData(WorkPlanView.getViewName()).getBudgetRollupReportLevelTypes();
 	}
 	
 	@Override
