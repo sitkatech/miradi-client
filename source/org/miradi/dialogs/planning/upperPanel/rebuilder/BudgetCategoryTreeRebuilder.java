@@ -23,7 +23,6 @@ package org.miradi.dialogs.planning.upperPanel.rebuilder;
 import java.util.HashMap;
 
 import org.miradi.dialogs.planning.AbstractBudgetCategoryRowColumnProvider;
-import org.miradi.dialogs.planning.WorkPlanCategoryTreeRowColumnProvider;
 import org.miradi.dialogs.planning.treenodes.NewAbstractPlanningTreeNode;
 import org.miradi.dialogs.planning.treenodes.NewPlanningTreeAlwaysExpandedBaseObjectNode;
 import org.miradi.dialogs.planning.treenodes.NewPlanningTreeBaseObjectNode;
@@ -149,13 +148,13 @@ public class BudgetCategoryTreeRebuilder extends AbstractTreeRebuilder
 		return getCastedRowColumnProvider().getLevelTypeCodes();
 	}
 
-	private WorkPlanCategoryTreeRowColumnProvider getCastedRowColumnProvider()
+	private AbstractBudgetCategoryRowColumnProvider getCastedRowColumnProvider()
 	{
-		return ((WorkPlanCategoryTreeRowColumnProvider) getRowColumnProvider());
+		return ((AbstractBudgetCategoryRowColumnProvider) getRowColumnProvider());
 	}
 	
 	private int getChildType()
 	{
-		return ((AbstractBudgetCategoryRowColumnProvider)getRowColumnProvider()).getObjectType();
+		return getCastedRowColumnProvider().getObjectType();
 	}
 }
