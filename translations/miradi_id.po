@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-09 08:29-0600\n"
+"POT-Creation-Date: 2011-02-09 10:07-0600\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -1061,7 +1061,7 @@ msgid "Accounting Code"
 msgstr "Kode Akuntansi "
 
 #: Miradi/source/org/miradi/views/workplan/AccountingCodeManagementConfiguration.java:60
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:108
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:189
 msgid "Accounting Codes"
 msgstr "Kode Akuntansi"
 
@@ -1084,11 +1084,11 @@ msgstr "Kode Akuntansi"
 msgid "Acct Code"
 msgstr "Kode Akuntansi "
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:128
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:209
 msgid "Action Plan: Objective-based"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:133
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:214
 msgid "Action Plan: Strategy-based"
 msgstr ""
 
@@ -2068,7 +2068,7 @@ msgid "An unexpected error occurred: "
 msgstr "Terjadi kesalahan yang tidak diharapkan: "
 
 #: Miradi/source/org/miradi/views/workplan/AnalysisManagementConfiguration.java:50
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:103
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:184
 msgid "Analysis"
 msgstr ""
 
@@ -2411,12 +2411,12 @@ msgstr ""
 "melaksanakan rencana strategis dan rencana pemantauan Anda."
 
 #: Miradi/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:50
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:93
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:174
 msgid "Budget Category One"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:51
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:98
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:179
 msgid "Budget Category Two"
 msgstr ""
 
@@ -2754,7 +2754,7 @@ msgstr "Selesai – Berhasil diselesaikan"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:107
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:70
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:42
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:82
 #: Miradi/source/org/miradi/dialogs/diagram/ConceptualModelDiagramPanel.java:69
 msgid "Conceptual Model"
 msgstr "Model Konsep "
@@ -2941,6 +2941,10 @@ msgstr ""
 #: Miradi/source/org/miradi/views/reports/ReportsView.java:94
 msgid "Custom Reports"
 msgstr "Laporan Tersuai "
+
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:131
+msgid "Custom Table: %s"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/planning/doers/PlanningCustomizeDialogPopupDoer.java:60
 msgid "Customize..."
@@ -3532,7 +3536,7 @@ msgstr ""
 msgid "Extracting factors..."
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:40
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:75
 msgid "FOS"
 msgstr "FOS"
 
@@ -3794,7 +3798,7 @@ msgstr "Frank (Swiss)"
 msgid "Freshwater Lakes"
 msgstr "Danau Air Tawar"
 
-#: Miradi/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:61
+#: Miradi/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:62
 msgid "Full Report"
 msgstr "Laporan Lengkap"
 
@@ -3806,7 +3810,7 @@ msgstr "Sumber Dana "
 
 #: Miradi/source/org/miradi/views/workplan/FundingSourceManagementConfiguration.java:58
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:304
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:88
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:169
 msgid "Funding Sources"
 msgstr "Sumber Pendanaan"
 
@@ -3936,7 +3940,7 @@ msgstr "Tinggi"
 msgid "High/Very-High Threat Chains"
 msgstr "Rangkaian Ancaman Tinggi/Sangat Tinggi "
 
-#: Miradi/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:101
+#: Miradi/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:102
 msgid "How Reports Work"
 msgstr "Cara Kerja Laporan"
 
@@ -4507,7 +4511,7 @@ msgid "Legacy TNC Ratings"
 msgstr "Peringkat TNC versi sebelumnya "
 
 #: Miradi/source/org/miradi/rtf/legend/RtfLegendExporter.java:100
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:78
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:159
 msgid "Legend Table"
 msgstr "Tabel Keterangan Gambar"
 
@@ -4565,9 +4569,12 @@ msgid "Lists"
 msgstr "Daftar "
 
 #: Miradi/source/org/miradi/views/summary/SummaryLocationPanel.java:64
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:34
 msgid "Location"
 msgstr "Lokasi "
+
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:69
+msgid "Locaton"
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/ThreatStressRatingChoiceQuestion.java:37
 #: Miradi/source/org/miradi/questions/StrategyImpactQuestion.java:38
@@ -5000,7 +5007,7 @@ msgid "Monitoring Overview"
 msgstr "Ikhtisar Pemantauan "
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:151
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:123
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:204
 #: Miradi/source/org/miradi/dialogs/viability/IndicatorMonitoringPlanSubPanel.java:68
 msgid "Monitoring Plan"
 msgstr "Rencana Pemantauan "
@@ -5283,7 +5290,7 @@ msgid "Orange"
 msgstr "Oranye"
 
 #: Miradi/source/org/miradi/views/summary/doers/DeleteOranizationDoer.java:32
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:153
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:234
 msgid "Organization"
 msgstr "Organisasi "
 
@@ -5361,7 +5368,7 @@ msgstr "Rencanakan umur proyek dan strategi keluar "
 msgid "Planning"
 msgstr "Perencanaan "
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:35
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:70
 msgid "Planning Parameters"
 msgstr "Rangkuman Proyek"
 
@@ -5526,7 +5533,7 @@ msgstr "Kemajuan "
 msgid "Progress Percents"
 msgstr "Persentase Kemajuan "
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:83
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:164
 msgid "Progress Report"
 msgstr "Laporan Kemajuan"
 
@@ -5593,7 +5600,7 @@ msgstr "Cakupan Proyek "
 msgid "Project Settings"
 msgstr "Pengaturan Proyek "
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:30
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:65
 msgid "Project Summary"
 msgstr "Rangkuman Proyek"
 
@@ -5664,7 +5671,7 @@ msgstr "Kw "
 msgid "Quarter Selection: "
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:39
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:74
 msgid "RARE"
 msgstr "RARE"
 
@@ -5748,7 +5755,7 @@ msgstr ""
 "suatu aktivitas/metode atau tugas. Ada tiga jenis sumber daya yang utama – "
 "manusia, bahan, dan keuangan."
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:113
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:194
 msgid "Resources"
 msgstr "Sumber Daya"
 
@@ -5766,7 +5773,7 @@ msgstr "Rangkaian Hasil "
 msgid "Results Chain Properties"
 msgstr "Sifat-sifat Rangkaian Hasil "
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:43
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:83
 #: Miradi/source/org/miradi/dialogs/diagram/ResultsChainDiagramPanel.java:50
 msgid "Results Chains"
 msgstr "Rangkaian Hasil "
@@ -5810,7 +5817,7 @@ msgstr "Perkiraan Kasar"
 msgid "Ruble (Russia)"
 msgstr "Rubel (Rusia)"
 
-#: Miradi/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:121
+#: Miradi/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:122
 msgid "Run..."
 msgstr "Jalankan…"
 
@@ -5860,7 +5867,7 @@ msgstr "Dijadwalkan untuk pelaksanaan di masa datang"
 
 #: Miradi/source/org/miradi/views/summary/SummaryScopeTabPanel.java:73
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:113
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:33
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:68
 #: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:103
 msgid "Scope"
 msgstr "Cakupan "
@@ -5941,7 +5948,7 @@ msgstr ""
 msgid "Select the Objectives which this Strategy helps to achieve"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:78
+#: Miradi/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:79
 msgid ""
 "Select the report that you want to run. Miradi will then prompt you to save "
 "the report as a Rich Text Format (RTF) file. Once you have created this "
@@ -6338,7 +6345,7 @@ msgstr "Subkelas harus menggantikan metode ini. "
 msgid "Summary"
 msgstr "Ringkasan "
 
-#: Miradi/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:62
+#: Miradi/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:63
 msgid "Summary Report"
 msgstr "Laporan Ringkas"
 
@@ -6355,7 +6362,7 @@ msgid "Systemwide"
 msgstr "Di seluruh bagian sistem"
 
 #: Miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:81
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:36
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:71
 msgid "TNC"
 msgstr "TNC "
 
@@ -7239,11 +7246,11 @@ msgstr "Cokelat Muda"
 msgid "Target"
 msgstr "Target"
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:73
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:154
 msgid "Target Viability - Details"
 msgstr "Kelangsungan Target - Perincian "
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:68
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:149
 msgid "Target Viability - Table"
 msgstr "Kelangsungan Target - Tabel "
 
@@ -7326,7 +7333,7 @@ msgstr ""
 msgid "Tasks"
 msgstr "Tugas "
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:148
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:229
 msgid "Team"
 msgstr "Tim"
 
@@ -7567,11 +7574,11 @@ msgstr ""
 msgid "Threat Ratings"
 msgstr "Peringkat Ancaman"
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:143
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:224
 msgid "Threat Ratings - Details"
 msgstr "Peringkat Ancaman - Perincian "
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:138
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:219
 msgid "Threat Ratings - Table"
 msgstr "Peringkat Ancaman - Tabel "
 
@@ -8135,11 +8142,11 @@ msgstr ""
 msgid "WARNING"
 msgstr "PERINGATAN"
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:38
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:73
 msgid "WCS"
 msgstr "WCS"
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:37
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:72
 msgid "WWF"
 msgstr "WWF"
 
@@ -8293,7 +8300,7 @@ msgid "Wizard load of control failed:"
 msgstr "Wizard pengaktifan kontrol gagal: "
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:191
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:118
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:199
 msgid "Work Plan"
 msgstr "Rencana Kerja"
 
