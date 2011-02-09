@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-09 08:29-0600\n"
+"POT-Creation-Date: 2011-02-09 10:07-0600\n"
 "PO-Revision-Date: 2010-09-30 09:31+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -1134,7 +1134,7 @@ msgid "Accounting Code"
 msgstr "Розрахунковий код"
 
 #: Miradi/source/org/miradi/views/workplan/AccountingCodeManagementConfiguration.java:60
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:108
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:189
 msgid "Accounting Codes"
 msgstr "Розрахункові коди"
 
@@ -1156,11 +1156,11 @@ msgstr "Бухгалтерські коди"
 msgid "Acct Code"
 msgstr "Бухгалтерський код"
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:128
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:209
 msgid "Action Plan: Objective-based"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:133
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:214
 msgid "Action Plan: Strategy-based"
 msgstr ""
 
@@ -2140,7 +2140,7 @@ msgid "An unexpected error occurred: "
 msgstr "Сталася нечекана помилка:"
 
 #: Miradi/source/org/miradi/views/workplan/AnalysisManagementConfiguration.java:50
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:103
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:184
 msgid "Analysis"
 msgstr ""
 
@@ -2480,12 +2480,12 @@ msgstr ""
 "стратегічним планом і планом моніторингу."
 
 #: Miradi/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:50
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:93
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:174
 msgid "Budget Category One"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:51
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:98
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:179
 msgid "Budget Category Two"
 msgstr ""
 
@@ -2825,7 +2825,7 @@ msgstr "Завершений - Успішно закінчений"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:107
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:70
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:42
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:82
 #: Miradi/source/org/miradi/dialogs/diagram/ConceptualModelDiagramPanel.java:69
 msgid "Conceptual Model"
 msgstr "Концептуальна модель"
@@ -3011,6 +3011,10 @@ msgstr ""
 #: Miradi/source/org/miradi/views/reports/ReportsView.java:94
 msgid "Custom Reports"
 msgstr "Звичайні звіти"
+
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:131
+msgid "Custom Table: %s"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/planning/doers/PlanningCustomizeDialogPopupDoer.java:60
 msgid "Customize..."
@@ -3594,7 +3598,7 @@ msgstr ""
 msgid "Extracting factors..."
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:40
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:75
 msgid "FOS"
 msgstr "FOS"
 
@@ -3846,7 +3850,7 @@ msgstr "Франк (Швейцарія)"
 msgid "Freshwater Lakes"
 msgstr "Прісноводні озера"
 
-#: Miradi/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:61
+#: Miradi/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:62
 msgid "Full Report"
 msgstr "Повний звіт"
 
@@ -3858,7 +3862,7 @@ msgstr "Шукати джерела"
 
 #: Miradi/source/org/miradi/views/workplan/FundingSourceManagementConfiguration.java:58
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:304
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:88
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:169
 msgid "Funding Sources"
 msgstr "Джерела фінансування"
 
@@ -3986,7 +3990,7 @@ msgstr "Високий"
 msgid "High/Very-High Threat Chains"
 msgstr "Ланцюги високої або дуже високої загрози"
 
-#: Miradi/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:101
+#: Miradi/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:102
 msgid "How Reports Work"
 msgstr "Як звіти працюють"
 
@@ -4555,7 +4559,7 @@ msgid "Legacy TNC Ratings"
 msgstr "Рейтинги функції TNC"
 
 #: Miradi/source/org/miradi/rtf/legend/RtfLegendExporter.java:100
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:78
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:159
 msgid "Legend Table"
 msgstr "Таблиця для легенди"
 
@@ -4613,9 +4617,12 @@ msgid "Lists"
 msgstr "Списки"
 
 #: Miradi/source/org/miradi/views/summary/SummaryLocationPanel.java:64
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:34
 msgid "Location"
 msgstr "Місцезнаходження"
+
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:69
+msgid "Locaton"
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/ThreatStressRatingChoiceQuestion.java:37
 #: Miradi/source/org/miradi/questions/StrategyImpactQuestion.java:38
@@ -5039,7 +5046,7 @@ msgid "Monitoring Overview"
 msgstr "Перегляд моніторингу"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:151
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:123
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:204
 #: Miradi/source/org/miradi/dialogs/viability/IndicatorMonitoringPlanSubPanel.java:68
 msgid "Monitoring Plan"
 msgstr "План моніторингу"
@@ -5321,7 +5328,7 @@ msgid "Orange"
 msgstr "Оранжевий"
 
 #: Miradi/source/org/miradi/views/summary/doers/DeleteOranizationDoer.java:32
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:153
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:234
 msgid "Organization"
 msgstr "Організація"
 
@@ -5399,7 +5406,7 @@ msgstr "Планувати проектний ресурс і вихідну с�
 msgid "Planning"
 msgstr "Планування"
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:35
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:70
 msgid "Planning Parameters"
 msgstr "Параметри планування"
 
@@ -5568,7 +5575,7 @@ msgstr "Прогрес"
 msgid "Progress Percents"
 msgstr "Відсотки прогресу"
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:83
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:164
 msgid "Progress Report"
 msgstr "Проміжний звіт"
 
@@ -5635,7 +5642,7 @@ msgstr "Межі зони діяльності проекту"
 msgid "Project Settings"
 msgstr "Установки проекту"
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:30
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:65
 msgid "Project Summary"
 msgstr "Резюме проекту"
 
@@ -5705,7 +5712,7 @@ msgstr "Quarter Prefix|К"
 msgid "Quarter Selection: "
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:39
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:74
 msgid "RARE"
 msgstr "RARE"
 
@@ -5788,7 +5795,7 @@ msgstr ""
 "Ресурс - особа або щось, необхідне для виконання діяльності, методу або "
 "завдання. Є три основні види ресурсів - люди, матеріали і фінанси."
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:113
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:194
 msgid "Resources"
 msgstr "Ресурси"
 
@@ -5806,7 +5813,7 @@ msgstr "Ланцюг результатів"
 msgid "Results Chain Properties"
 msgstr "Складові Ланцюга результатів"
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:43
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:83
 #: Miradi/source/org/miradi/dialogs/diagram/ResultsChainDiagramPanel.java:50
 msgid "Results Chains"
 msgstr "Ланцюги результатів"
@@ -5851,7 +5858,7 @@ msgstr "Грубе припущення"
 msgid "Ruble (Russia)"
 msgstr "Рубль (Росія)"
 
-#: Miradi/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:121
+#: Miradi/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:122
 msgid "Run..."
 msgstr "Запустити..."
 
@@ -5901,7 +5908,7 @@ msgstr "Заплановане для майбутньої реалізації"
 
 #: Miradi/source/org/miradi/views/summary/SummaryScopeTabPanel.java:73
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:113
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:33
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:68
 #: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:103
 msgid "Scope"
 msgstr "Зона діяльності"
@@ -5983,7 +5990,7 @@ msgstr ""
 msgid "Select the Objectives which this Strategy helps to achieve"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:78
+#: Miradi/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:79
 msgid ""
 "Select the report that you want to run. Miradi will then prompt you to save "
 "the report as a Rich Text Format (RTF) file. Once you have created this "
@@ -6373,7 +6380,7 @@ msgstr "Потрібні підкласи, щоб анулювати цей ме
 msgid "Summary"
 msgstr "Резюме"
 
-#: Miradi/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:62
+#: Miradi/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:63
 msgid "Summary Report"
 msgstr "Резюме звіту"
 
@@ -6390,7 +6397,7 @@ msgid "Systemwide"
 msgstr "Всесистемний"
 
 #: Miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:81
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:36
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:71
 msgid "TNC"
 msgstr "TNC"
 
@@ -7278,11 +7285,11 @@ msgstr "Охристий"
 msgid "Target"
 msgstr "Ціль"
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:73
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:154
 msgid "Target Viability - Details"
 msgstr "Життєздатність цілі - деталі"
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:68
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:149
 msgid "Target Viability - Table"
 msgstr "Життєздатність цілі - таблиця"
 
@@ -7362,7 +7369,7 @@ msgstr "Завдання не має автора"
 msgid "Tasks"
 msgstr "Завдання"
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:148
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:229
 msgid "Team"
 msgstr "Виконавці"
 
@@ -7602,11 +7609,11 @@ msgstr ""
 msgid "Threat Ratings"
 msgstr "Рейтинг загроз"
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:143
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:224
 msgid "Threat Ratings - Details"
 msgstr "Рейтинги загроз - деталі"
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:138
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:219
 msgid "Threat Ratings - Table"
 msgstr "Рейтинги загроз - таблиця"
 
@@ -8163,11 +8170,11 @@ msgstr ""
 msgid "WARNING"
 msgstr "ЗАСТЕРЕЖЕННЯ"
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:38
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:73
 msgid "WCS"
 msgstr "WCS"
 
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:37
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:72
 msgid "WWF"
 msgstr "WWF"
 
@@ -8309,7 +8316,7 @@ msgid "Wizard load of control failed:"
 msgstr "Спеціальне завантаження контролю не вдалося:"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:191
-#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:118
+#: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:199
 msgid "Work Plan"
 msgstr "Робочий план"
 
