@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.questions;
 
+import java.util.Vector;
+
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
 
@@ -37,42 +39,43 @@ public class ReportTemplateContentQuestion extends DynamicChoiceQuestion
 	@Override
 	public ChoiceItem[] getChoices()
 	{
-		return new ChoiceItem[] {
-				new ChoiceItem(SUMMARY_VIEW_PROJECT_TAB_CODE, EAM.text("Project Summary")),
-				new ChoiceItem(SUMMARY_VIEW_TEAM_TAB_CODE, getTeamLabel()),
-				new ChoiceItem(SUMMARY_VIEW_ORGANIZATION_TAB_CODE, getOraganizationLabel()),
-				new ChoiceItem(SUMMARY_VIEW_SCOPE_TAB_CODE, EAM.text("Scope")),
-				new ChoiceItem(SUMMARY_VIEW_LOCATION_TAB_CODE, EAM.text("Location")),
-				new ChoiceItem(SUMMARY_VIEW_PLANNING_TAB_CODE, EAM.text("Planning Parameters")),
-				new ChoiceItem(SUMMARY_VIEW_TNC_TAB_CODE, EAM.text("TNC")),
-				new ChoiceItem(SUMMARY_VIEW_WWF_TAB_CODE, EAM.text("WWF")),
-				new ChoiceItem(SUMMARY_VIEW_WCS_TAB_CODE, EAM.text("WCS")),
-				new ChoiceItem(SUMMARY_VIEW_RARE_TAB_CODE, EAM.text("RARE")),
-				new ChoiceItem(SUMMARY_VIEW_FOS_TAB_CODE, EAM.text("FOS")),
+		Vector<ChoiceItem> choices = new Vector<ChoiceItem>();
+		choices.add(new ChoiceItem(SUMMARY_VIEW_PROJECT_TAB_CODE, EAM.text("Project Summary")));
+		choices.add(new ChoiceItem(SUMMARY_VIEW_TEAM_TAB_CODE, getTeamLabel()));
+		choices.add(new ChoiceItem(SUMMARY_VIEW_ORGANIZATION_TAB_CODE, getOraganizationLabel()));
+		choices.add(new ChoiceItem(SUMMARY_VIEW_SCOPE_TAB_CODE, EAM.text("Scope")));
+		choices.add(new ChoiceItem(SUMMARY_VIEW_LOCATION_TAB_CODE, EAM.text("Locaton")));
+		choices.add(new ChoiceItem(SUMMARY_VIEW_PLANNING_TAB_CODE, EAM.text("Planning Parameters")));
+		choices.add(new ChoiceItem(SUMMARY_VIEW_TNC_TAB_CODE, EAM.text("TNC")));
+		choices.add(new ChoiceItem(SUMMARY_VIEW_WWF_TAB_CODE, EAM.text("WWF")));
+		choices.add(new ChoiceItem(SUMMARY_VIEW_WCS_TAB_CODE, EAM.text("WCS")));
+		choices.add(new ChoiceItem(SUMMARY_VIEW_RARE_TAB_CODE, EAM.text("RARE")));
+		choices.add(new ChoiceItem(SUMMARY_VIEW_FOS_TAB_CODE, EAM.text("FOS")));
 				
-				new ChoiceItem(DIAGRAM_VIEW_CONCEPTUAL_MODEL_TAB_CODE, EAM.text("Conceptual Model")),
-				new ChoiceItem(DIAGRAM_VIEW_RESULTS_CHAINS_TAB_CODE, EAM.text("Results Chains")),
+		choices.add(new ChoiceItem(DIAGRAM_VIEW_CONCEPTUAL_MODEL_TAB_CODE, EAM.text("Conceptual Model")));
+		choices.add(new ChoiceItem(DIAGRAM_VIEW_RESULTS_CHAINS_TAB_CODE, EAM.text("Results Chains")));
 				
-				new ChoiceItem(TARGET_VIABILITY_VIEW_VIABILITY_TAB_TABLE_CODE, getTargetViabilityTableLabel()),
-				new ChoiceItem(TARGET_VIABILITY_VIEW_VIABILITY_TAB_DETAILS_CODE, getTargetViabilityDetailsLabel()),
+		choices.add(new ChoiceItem(TARGET_VIABILITY_VIEW_VIABILITY_TAB_TABLE_CODE, getTargetViabilityTableLabel()));
+		choices.add(new ChoiceItem(TARGET_VIABILITY_VIEW_VIABILITY_TAB_DETAILS_CODE, getTargetViabilityDetailsLabel()));
 				
-				new ChoiceItem(THREAT_RATING_VIEW_CODE, getThreatRatingsLabel()),
-				new ChoiceItem(THREAT_RATING_DETAILS_CODE, getThreatRatingDetailsLabel()),
+		choices.add(new ChoiceItem(THREAT_RATING_VIEW_CODE, getThreatRatingsLabel()));
+		choices.add(new ChoiceItem(THREAT_RATING_DETAILS_CODE, getThreatRatingDetailsLabel()));
 				
-				new ChoiceItem(ACTION_PLAN_OBJECTIVE_BASED_REPORT_CODE, getActionPlanObjectiveBasedActionPlanLabel()),
-				new ChoiceItem(ACTION_PLAN_STRATEGY_BASED_REPORT_CODE, getActionPlanStrategyBasedActionPlanLabel()),
-				new ChoiceItem(PLANNING_VIEW_MONITORING_PLAN_CODE, getMonitoringPlanLabel()),
+		choices.add(new ChoiceItem(ACTION_PLAN_OBJECTIVE_BASED_REPORT_CODE, getActionPlanObjectiveBasedActionPlanLabel()));
+		choices.add(new ChoiceItem(ACTION_PLAN_STRATEGY_BASED_REPORT_CODE, getActionPlanStrategyBasedActionPlanLabel()));
+		choices.add(new ChoiceItem(PLANNING_VIEW_MONITORING_PLAN_CODE, getMonitoringPlanLabel()));
 				
-				new ChoiceItem(PLANNING_VIEW_WORK_PLAN_CODE, getWorkPlanLabel()),
-				new ChoiceItem(PLANNING_VIEW_RESOURCES_CODE, getResourcesLabel()),
-				new ChoiceItem(PLANNING_VIEW_ACCOUNTING_CODE_CODE, getAccountingCodesLabel()),
-				new ChoiceItem(PLANNING_VIEW_FUNDING_SOURCE_CODE, getFundingSourcesLabel()),
-				new ChoiceItem(BUDGET_CATEGORY_ONE_CODE, getCategoryOneLabel()),
-				new ChoiceItem(BUDGET_CATEGORY_TWO_CODE, getCategoryTwoLabel()),
-				new ChoiceItem(ANALYSIS_CODE, getAnalysisLabel()),
-				new ChoiceItem(PROGRESS_REPORT_CODE, getProgressReportLabel()),
-				new ChoiceItem(LEGEND_TABLE_REPORT_CODE, getLegendTableLabel()),
-		};
+		choices.add(new ChoiceItem(PLANNING_VIEW_WORK_PLAN_CODE, getWorkPlanLabel()));
+		choices.add(new ChoiceItem(PLANNING_VIEW_RESOURCES_CODE, getResourcesLabel()));
+		choices.add(new ChoiceItem(PLANNING_VIEW_ACCOUNTING_CODE_CODE, getAccountingCodesLabel()));
+		choices.add(new ChoiceItem(PLANNING_VIEW_FUNDING_SOURCE_CODE, getFundingSourcesLabel()));
+		choices.add(new ChoiceItem(BUDGET_CATEGORY_ONE_CODE, getCategoryOneLabel()));
+		choices.add(new ChoiceItem(BUDGET_CATEGORY_TWO_CODE, getCategoryTwoLabel()));
+		choices.add(new ChoiceItem(ANALYSIS_CODE, getAnalysisLabel()));
+		choices.add(new ChoiceItem(PROGRESS_REPORT_CODE, getProgressReportLabel()));
+		choices.add(new ChoiceItem(LEGEND_TABLE_REPORT_CODE, getLegendTableLabel()));
+		
+		return choices.toArray(new ChoiceItem[0]);
 	}
 
 	public static String getTargetViabilityTableLabel()
