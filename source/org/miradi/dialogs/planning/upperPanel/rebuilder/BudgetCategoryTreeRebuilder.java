@@ -36,9 +36,9 @@ import org.miradi.objects.DiagramObject;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 
-public class BudgetCategoryTeeRebuilder extends AbstractTreeRebuilder
+public class BudgetCategoryTreeRebuilder extends AbstractTreeRebuilder
 {
-	public BudgetCategoryTeeRebuilder(Project projectToUse, AbstractBudgetCategoryRowColumnProvider rowColumnProviderToUse)
+	public BudgetCategoryTreeRebuilder(Project projectToUse, AbstractBudgetCategoryRowColumnProvider rowColumnProviderToUse)
 	{
 		super(projectToUse, rowColumnProviderToUse);
 	}
