@@ -20,7 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs;
 
+import org.miradi.dialogs.planning.AbstractBudgetCategoryRowColumnProvider;
 import org.miradi.dialogs.planning.WorkPlanCategoryTreeRowColumnProvider;
+import org.miradi.main.EAM;
 import org.miradi.objects.AccountingCode;
 import org.miradi.objects.BudgetCategoryOne;
 import org.miradi.objects.BudgetCategoryTwo;
@@ -31,13 +33,14 @@ import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.views.workplan.WorkPlanView;
 
-public class AnalysisRowColumnProvider implements WorkPlanCategoryTreeRowColumnProvider
+public class AnalysisRowColumnProvider extends AbstractBudgetCategoryRowColumnProvider implements WorkPlanCategoryTreeRowColumnProvider
 { 
 	public AnalysisRowColumnProvider(Project projectToUse)
 	{
-		project = projectToUse;
+		super(projectToUse);
 	}
 	
+	@Override
 	public CodeList getColumnCodesToShow() throws Exception
 	{
 		CodeList columnCodes = new CodeList();		
@@ -48,6 +51,7 @@ public class AnalysisRowColumnProvider implements WorkPlanCategoryTreeRowColumnP
 		return columnCodes;
 	}
 
+	@Override
 	public CodeList getRowCodesToShow() throws Exception
 	{
 		return new CodeList(new String[] {
@@ -59,35 +63,54 @@ public class AnalysisRowColumnProvider implements WorkPlanCategoryTreeRowColumnP
 		});
 	}
 	
+	@Override
 	public boolean shouldIncludeResultsChain() throws Exception
 	{
 		return true;
 	}
 
+	@Override
 	public boolean shouldIncludeConceptualModelPage() throws Exception
 	{
 		return true;
 	}
 
+	@Override
 	public boolean shouldIncludeEmptyRows()
 	{
 		return false;
 	}
 	
+	@Override
 	public boolean doObjectivesContainStrategies() throws Exception
 	{
 		return true;
 	}
 	
-	public CodeList getLevelTypeCodes() throws Exception
+	@Override
+	public CodeList getLevelTypeCodes()
 	{
-		return getProject().getViewData(WorkPlanView.getViewName()).getBudgetRollupReportLevelTypes();
+		//FIXME medium - remove try catch and refactor to make method throw
+		try
+		{
+			return getProject().getViewData(WorkPlanView.getViewName()).getBudgetRollupReportLevelTypes();
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return new CodeList();
+		}
 	}
 	
-	private Project getProject()
+	@Override
+	public int getObjectType()
 	{
-		return project;
+		throw new RuntimeException("getObjectType() is not implemented.");
 	}
-	
-	private Project project;
+
+	@Override
+	protected String getObjectTypeName()
+	{
+		throw new RuntimeException("getObjectName() is not implemented.");
+	}
 }
