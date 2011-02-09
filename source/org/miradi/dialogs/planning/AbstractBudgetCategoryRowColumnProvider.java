@@ -62,7 +62,7 @@ abstract public class AbstractBudgetCategoryRowColumnProvider extends AbstractPl
 		return true;
 	}
 	
-	public CodeList getLevelTypeCodes()
+	public CodeList getLevelTypeCodes() throws Exception
 	{
 		return new CodeList(new String[] {
 				Integer.toString(getObjectType()),
