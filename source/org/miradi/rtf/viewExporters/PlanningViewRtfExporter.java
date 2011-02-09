@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.rtf.viewExporters;
 
+import java.util.Collections;
 import java.util.Vector;
 
 import org.miradi.dialogs.AnalysisRowColumnProvider;
@@ -49,6 +50,7 @@ import org.miradi.dialogs.planning.upperPanel.TreeTableModelExporter;
 import org.miradi.dialogs.planning.upperPanel.rebuilder.NormalTreeRebuilder;
 import org.miradi.dialogs.treetables.WorkPlanCategoryTreeTableModel;
 import org.miradi.main.MainWindow;
+import org.miradi.objecthelpers.BaseObjectByFullNameSorter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
@@ -88,6 +90,7 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 			exportReport(writer, new ProgressReportRowColumnProvider(), ReportTemplateContentQuestion.getProgressReportLabel());
 
 		exportAnyCustomTables(writer, reportTemplateContent);
+		
 		exportWorkPlanCategoryTab(writer, reportTemplateContent, ReportTemplateContentQuestion.PLANNING_VIEW_RESOURCES_CODE, new ProjectResourceRowColumnProvider(getProject()), ReportTemplateContentQuestion.getResourcesLabel());
 		exportWorkPlanCategoryTab(writer, reportTemplateContent,ReportTemplateContentQuestion.PLANNING_VIEW_ACCOUNTING_CODE_CODE, new AccountingCodeCoreRowColumnProvider(getProject()), ReportTemplateContentQuestion.getAccountingCodesLabel());
 		exportWorkPlanCategoryTab(writer, reportTemplateContent, ReportTemplateContentQuestion.PLANNING_VIEW_FUNDING_SOURCE_CODE, new FundingSourceCoreRowColumnProvider(getProject()), ReportTemplateContentQuestion.getFundingSourcesLabel());
@@ -99,6 +102,8 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 	private void exportAnyCustomTables(RtfWriter writer, CodeList reportTemplateContent) throws Exception
 	{
 		Vector<ObjectTreeTableConfiguration> configurations = extractCustomSections(reportTemplateContent);
+		Collections.sort(configurations, new BaseObjectByFullNameSorter());
+		
 		for(ObjectTreeTableConfiguration configuration : configurations)
 		{
 			exportCustomSection(writer, configuration);
