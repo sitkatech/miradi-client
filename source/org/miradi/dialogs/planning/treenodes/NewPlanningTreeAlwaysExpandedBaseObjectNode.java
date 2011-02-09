@@ -21,29 +21,19 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.treenodes;
 
 import org.miradi.dialogs.treetables.TreeTableNode;
-import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 
-public class NewPlanningTreeBaseObjectNode extends NewAbstractPlanningTreeNode
+public class NewPlanningTreeAlwaysExpandedBaseObjectNode extends NewPlanningTreeBaseObjectNode
 {
-	public NewPlanningTreeBaseObjectNode(Project projectToUse, TreeTableNode parentNodeToUse, ORef objectRef) throws Exception
+	public NewPlanningTreeAlwaysExpandedBaseObjectNode(Project projectToUse, TreeTableNode parentNodeToUse, BaseObject baseObjectToUse)	throws Exception
 	{
-		this(projectToUse, parentNodeToUse, projectToUse.findObject(objectRef));
-	}
-	
-	public NewPlanningTreeBaseObjectNode(Project projectToUse, TreeTableNode parentNodeToUse, BaseObject baseObjectToUse) throws Exception
-	{
-		super(projectToUse, parentNodeToUse);
-		
-		object = baseObjectToUse;
-	}
-	
-	@Override
-	public BaseObject getObject()
-	{
-		return object;
+		super(projectToUse, parentNodeToUse, baseObjectToUse);
 	}
 
-	private BaseObject object;
+	@Override
+	public boolean isAlwaysExpanded()
+	{
+		return true;
+	}
 }
