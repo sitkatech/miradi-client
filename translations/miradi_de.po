@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-09 10:07-0600\n"
+"POT-Creation-Date: 2011-02-09 11:11-0600\n"
 "PO-Revision-Date: 2011-01-24 10:21-0600\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -5316,7 +5316,7 @@ msgstr ""
 msgid "Project Summary"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/treenodes/BaseObjectTreeRootNodeWithUnspecifiedNode.java:52
+#: Miradi/source/org/miradi/dialogs/planning/treenodes/WorkPlanCategoryTreeNode.java:62
 msgid "Project Totals"
 msgstr ""
 
