@@ -25,6 +25,7 @@ import java.util.HashMap;
 import org.miradi.dialogs.planning.AbstractBudgetCategoryRowColumnProvider;
 import org.miradi.dialogs.planning.WorkPlanCategoryTreeRowColumnProvider;
 import org.miradi.dialogs.planning.treenodes.NewAbstractPlanningTreeNode;
+import org.miradi.dialogs.planning.treenodes.NewPlanningTreeAlwaysExpandedBaseObjectNode;
 import org.miradi.dialogs.planning.treenodes.NewPlanningTreeBaseObjectNode;
 import org.miradi.dialogs.planning.treenodes.UnspecifiedBaseObject;
 import org.miradi.dialogs.planning.treenodes.UnspecifiedBaseObjectNode;
@@ -57,7 +58,9 @@ public class BudgetCategoryTreeRebuilder extends AbstractTreeRebuilder
 		allAsignmentRefs.addAll(getProject().getAssignmentPool().getRefList());
 		allAsignmentRefs.addAll(getProject().getExpenseAssignmentPool().getRefList());
 
-		rebuild(rootNode, allAsignmentRefs);
+		NewPlanningTreeBaseObjectNode projectNode = new NewPlanningTreeAlwaysExpandedBaseObjectNode(getProject(), rootNode, getProject().getMetadata());
+		rootNode.addChild(projectNode);
+		rebuild(projectNode, allAsignmentRefs);
 	}
 	
 	public void rebuild(NewAbstractPlanningTreeNode rootNode, ORefList allAsignmentRefs) throws Exception
