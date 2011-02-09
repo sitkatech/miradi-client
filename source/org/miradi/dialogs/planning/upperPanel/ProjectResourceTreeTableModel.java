@@ -27,7 +27,7 @@ import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.objects.ProjectResource;
 import org.miradi.project.Project;
 
-public class ProjectResourceTreeTableModel extends TreeTableModelWithRebuilder
+public class ProjectResourceTreeTableModel extends ExportablePlanningTreeTableModel
 {
 	private ProjectResourceTreeTableModel(Project project, TreeTableNode rootNode, PlanningTreeRowColumnProvider rowColumnProvider) throws Exception
 	{
