@@ -50,7 +50,7 @@ public class BudgetCategoryTwoCoreRowColumnProvider extends AbstractBudgetCatego
 	}
 	
 	@Override
-	protected int getObjectType()
+	public int getObjectType()
 	{
 		return BudgetCategoryTwo.getObjectType();
 	}

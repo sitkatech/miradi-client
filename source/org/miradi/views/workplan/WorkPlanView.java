@@ -87,7 +87,7 @@ public class WorkPlanView extends TabbedView
 	public void createTabs() throws Exception
 	{
 		workPlanManagementPanel = WorkPlanManagementPanel.createWorkPlanPanel(getMainWindow());
-		rollupReportsManagementPanel = WorkPlanCategoryManagementPanel.createManagementPanel(getMainWindow(), new AnalysisManagementConfiguration(getProject()));
+		//rollupReportsManagementPanel = WorkPlanCategoryManagementPanel.createManagementPanel(getMainWindow(), new AnalysisManagementConfiguration(getProject()));
 		resourceManagementPanel = WorkPlanCategoryManagementPanel.createManagementPanel(getMainWindow(), new ProjectResourceManagementConfiguration(getProject()));
 		accountingCodePoolManagementPanel = WorkPlanCategoryManagementPanel.createManagementPanel(getMainWindow(), new AccountingCodeManagementConfiguration(getProject()));
 		fundingSourcePoolManagementPanel = WorkPlanCategoryManagementPanel.createManagementPanel(getMainWindow(), new FundingSourceManagementConfiguration(getProject())); 
@@ -95,7 +95,7 @@ public class WorkPlanView extends TabbedView
 		categoryTwoPoolMangementPanel = WorkPlanCategoryManagementPanel.createManagementPanel(getMainWindow(), new BudgetCategoryTwoManagementConfiguration(getProject()));
 		
 		addNonScrollingTab(workPlanManagementPanel);
-		addNonScrollingTab(rollupReportsManagementPanel);
+		//addNonScrollingTab(rollupReportsManagementPanel);
 		addNonScrollingTab(resourceManagementPanel);
 		addNonScrollingTab(accountingCodePoolManagementPanel);
 		addNonScrollingTab(fundingSourcePoolManagementPanel);
@@ -109,9 +109,9 @@ public class WorkPlanView extends TabbedView
 		workPlanManagementPanel.dispose();
 		workPlanManagementPanel = null;
 		
-		rollupReportsManagementPanel.dispose();
-		rollupReportsManagementPanel = null;
-		
+//		rollupReportsManagementPanel.dispose();
+//		rollupReportsManagementPanel = null;
+//		
 		resourceManagementPanel.dispose();
 		resourceManagementPanel = null;
 		
@@ -190,7 +190,7 @@ public class WorkPlanView extends TabbedView
 	}
 	
 	private PlanningTreeManagementPanel workPlanManagementPanel;
-	private PlanningTreeManagementPanel rollupReportsManagementPanel;
+	//private PlanningTreeManagementPanel rollupReportsManagementPanel;
 	private PlanningTreeManagementPanel resourceManagementPanel;
 	private PlanningTreeManagementPanel accountingCodePoolManagementPanel;
 	private PlanningTreeManagementPanel fundingSourcePoolManagementPanel;

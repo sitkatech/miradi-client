@@ -44,7 +44,7 @@ public class ProjectResourceRowColumnProvider extends AbstractBudgetCategoryRowC
 	}
 
 	@Override
-	protected int getObjectType()
+	public int getObjectType()
 	{
 		return ProjectResource.getObjectType();
 	}

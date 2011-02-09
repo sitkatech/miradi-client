@@ -18,39 +18,25 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.dialogs.planning.upperPanel;
+package org.miradi.dialogs.treetables;
 
-import org.miradi.dialogs.planning.treenodes.NewPlanningRootNode;
-import org.miradi.dialogs.planning.upperPanel.rebuilder.NormalTreeRebuilder;
+import org.miradi.dialogs.planning.AbstractBudgetCategoryRowColumnProvider;
+import org.miradi.dialogs.planning.upperPanel.TreeTableModelWithRebuilder;
 import org.miradi.dialogs.planning.upperPanel.rebuilder.AbstractTreeRebuilder;
-import org.miradi.dialogs.treetables.TreeTableNode;
-import org.miradi.main.EAM;
+import org.miradi.dialogs.planning.upperPanel.rebuilder.BudgetCategoryTeeRebuilder;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.project.Project;
 
-public class TreeTableModelWithRebuilder extends ExportablePlanningTreeTableModel
+public class NewBudgetCategoryTreeModel extends TreeTableModelWithRebuilder
 {
-	public TreeTableModelWithRebuilder(Project projectToUse, TreeTableNode rootNode, PlanningTreeRowColumnProvider rowColumnProvider, String uniqueTreeTableModelIdentifierToUse) throws Exception
+	public NewBudgetCategoryTreeModel(Project projectToUse,	TreeTableNode rootNode,	PlanningTreeRowColumnProvider rowColumnProvider, String uniqueTreeTableModelIdentifierToUse) throws Exception
 	{
 		super(projectToUse, rootNode, rowColumnProvider, uniqueTreeTableModelIdentifierToUse);
 	}
 
 	@Override
-	protected void rebuildNode()
-	{
-		try
-		{
-			AbstractTreeRebuilder treeRebuilder = createTreeRebuilder();
-			treeRebuilder.rebuildTree((NewPlanningRootNode)getRootNode());
-		}
-		catch(Exception e)
-		{
-			EAM.panic(e);
-		}
-	}
-
 	protected AbstractTreeRebuilder createTreeRebuilder()
 	{
-		return new NormalTreeRebuilder(getProject(), getRowColumnProvider());
+		return new BudgetCategoryTeeRebuilder(getProject(), (AbstractBudgetCategoryRowColumnProvider) getRowColumnProvider());
 	}
 }

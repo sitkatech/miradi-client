@@ -37,7 +37,7 @@ public class FundingSourceCoreRowColumnProvider extends AbstractBudgetCategoryRo
 	}
 	
 	@Override
-	protected int getObjectType()
+	public int getObjectType()
 	{
 		return FundingSource.getObjectType();
 	}
