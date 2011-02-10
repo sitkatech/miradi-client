@@ -24,7 +24,7 @@ import org.miradi.dialogs.planning.WorkPlanCategoryTreeRowColumnProvider;
 import org.miradi.dialogs.planning.treenodes.NewPlanningRootNode;
 import org.miradi.dialogs.planning.upperPanel.TreeTableModelWithRebuilder;
 import org.miradi.dialogs.planning.upperPanel.rebuilder.AbstractTreeRebuilder;
-import org.miradi.dialogs.planning.upperPanel.rebuilder.AnalysisTreeRebuilder;
+import org.miradi.dialogs.planning.upperPanel.rebuilder.BudgetCategoryTreeRebuilder;
 import org.miradi.project.Project;
 
 public class WorkPlanAnalysisTreeTableModel extends TreeTableModelWithRebuilder
@@ -48,6 +48,6 @@ public class WorkPlanAnalysisTreeTableModel extends TreeTableModelWithRebuilder
 	@Override
 	protected AbstractTreeRebuilder createTreeRebuilder()
 	{
-		return new AnalysisTreeRebuilder(getProject(), getRowColumnProvider());
+		return new BudgetCategoryTreeRebuilder(getProject(), getRowColumnProvider());
 	}
 }

@@ -38,9 +38,9 @@ import org.miradi.project.Project;
 import org.miradi.questions.WorkPlanCategoryTypesQuestion;
 import org.miradi.utils.CodeList;
 
-public class AnalysisTreeRebuilder extends AbstractTreeRebuilder
+public class BudgetCategoryTreeRebuilder extends AbstractTreeRebuilder
 {
-	public AnalysisTreeRebuilder(Project projectToUse, PlanningTreeRowColumnProvider rowColumnProviderToUse)
+	public BudgetCategoryTreeRebuilder(Project projectToUse, PlanningTreeRowColumnProvider rowColumnProviderToUse)
 	{
 		super(projectToUse, rowColumnProviderToUse);
 	}
