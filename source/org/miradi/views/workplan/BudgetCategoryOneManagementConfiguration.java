@@ -30,7 +30,7 @@ import org.miradi.icons.BudgetCategoryOneIcon;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
 
-public class BudgetCategoryOneManagementConfiguration extends AbstractManagementConfiguration
+public class BudgetCategoryOneManagementConfiguration extends WorkPlanMangementPanelConfiguration
 {
 	public BudgetCategoryOneManagementConfiguration(Project projectToUse)
 	{

@@ -30,7 +30,7 @@ import org.miradi.icons.ProjectResourceIcon;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
 
-public class ProjectResourceManagementConfiguration extends	AbstractManagementConfiguration
+public class ProjectResourceManagementConfiguration extends	WorkPlanMangementPanelConfiguration
 {
 	public ProjectResourceManagementConfiguration(Project projectToUse)
 	{

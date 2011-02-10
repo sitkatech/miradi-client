@@ -30,7 +30,7 @@ import org.miradi.icons.FundingSourceIcon;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
 
-public class FundingSourceManagementConfiguration extends AbstractManagementConfiguration
+public class FundingSourceManagementConfiguration extends WorkPlanMangementPanelConfiguration
 {
 	public FundingSourceManagementConfiguration(Project projectToUse)
 	{

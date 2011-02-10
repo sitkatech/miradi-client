@@ -37,7 +37,7 @@ public class WorkPlanBudgetCategoryManagementPanel extends PlanningTreeManagemen
 {
 	public WorkPlanBudgetCategoryManagementPanel(MainWindow mainWindowToUse,
 			PlanningTreeTablePanel planningTreeTablePanelToUse,
-			PlanningTreeMultiPropertiesPanel planningTreePropertiesPanel, AbstractManagementConfiguration managementConfiguration)
+			PlanningTreeMultiPropertiesPanel planningTreePropertiesPanel, WorkPlanMangementPanelConfiguration managementConfiguration)
 			throws Exception
 	{
 		super(mainWindowToUse, planningTreeTablePanelToUse, planningTreePropertiesPanel, managementConfiguration.getUniqueTreeTableIdentifier());
@@ -54,7 +54,7 @@ public class WorkPlanBudgetCategoryManagementPanel extends PlanningTreeManagemen
 		return ExportablePlanningTreeTablePanel.createPlanningTreeTablePanelWithoutButtonsForExporting(getMainWindow(), rowColumnProvider, model);
 	}
 	
-	public static WorkPlanBudgetCategoryManagementPanel createManagementPanel(MainWindow mainWindowToUse, AbstractManagementConfiguration managementConfiguration) throws Exception
+	public static WorkPlanBudgetCategoryManagementPanel createManagementPanel(MainWindow mainWindowToUse, WorkPlanMangementPanelConfiguration managementConfiguration) throws Exception
 	{
 		PlanningTreeRootNode rootNode = new PlanningTreeRootNode(mainWindowToUse.getProject());
 		WorkPlanCategoryTreeRowColumnProvider rowColumnProvider = managementConfiguration.getRowColumnProvider();
@@ -71,7 +71,7 @@ public class WorkPlanBudgetCategoryManagementPanel extends PlanningTreeManagemen
 		return getMangementConfiguration().getPanelDescription();
 	}
 
-	private AbstractManagementConfiguration getMangementConfiguration()
+	private WorkPlanMangementPanelConfiguration getMangementConfiguration()
 	{
 		return mangementConfiguration;
 	}
@@ -82,5 +82,5 @@ public class WorkPlanBudgetCategoryManagementPanel extends PlanningTreeManagemen
 		return getMangementConfiguration().getIcon();
 	}
 
-	private AbstractManagementConfiguration mangementConfiguration;
+	private WorkPlanMangementPanelConfiguration mangementConfiguration;
 }
