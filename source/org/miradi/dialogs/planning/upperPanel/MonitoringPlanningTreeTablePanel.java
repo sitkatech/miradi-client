@@ -24,7 +24,7 @@ import org.miradi.actions.ActionCreateCustomFromCurrentTreeTableConfiguration;
 import org.miradi.actions.ActionExpandAllRows;
 import org.miradi.actions.ActionPlanningCreationMenu;
 import org.miradi.dialogs.planning.MonitoringRowColumnProvider;
-import org.miradi.dialogs.planning.treenodes.NewPlanningRootNode;
+import org.miradi.dialogs.planning.treenodes.PlanningRootNode;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
 
@@ -41,7 +41,7 @@ public class MonitoringPlanningTreeTablePanel extends PlanningTreeTablePanel
 
 	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse) throws Exception
 	{
-		NewPlanningRootNode rootNode = new NewPlanningRootNode(mainWindowToUse.getProject());
+		PlanningRootNode rootNode = new PlanningRootNode(mainWindowToUse.getProject());
 		MonitoringRowColumnProvider rowColumnProvider = new MonitoringRowColumnProvider(mainWindowToUse.getProject());
 		PlanningTreeTableModel model = new MonitoringPlanTreeTableModel(mainWindowToUse.getProject(), rootNode, rowColumnProvider);
 		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse, model);

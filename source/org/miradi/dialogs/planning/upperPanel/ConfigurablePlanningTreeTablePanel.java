@@ -31,7 +31,7 @@ import org.miradi.actions.ActionTreeNodeDown;
 import org.miradi.actions.ActionTreeNodeUp;
 import org.miradi.dialogs.planning.ConfigurableRowColumnProvider;
 import org.miradi.dialogs.planning.PlanningViewConfigurableControlPanel;
-import org.miradi.dialogs.planning.treenodes.NewPlanningRootNode;
+import org.miradi.dialogs.planning.treenodes.PlanningRootNode;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
 
@@ -52,7 +52,7 @@ public class ConfigurablePlanningTreeTablePanel extends PlanningTreeTablePanel
 	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse) throws Exception
 	{
 		PlanningTreeRowColumnProvider rowColumnProvider = new ConfigurableRowColumnProvider(mainWindowToUse.getProject());
-		NewPlanningRootNode rootNode = new NewPlanningRootNode(mainWindowToUse.getProject());
+		PlanningRootNode rootNode = new PlanningRootNode(mainWindowToUse.getProject());
 		PlanningTreeTableModel model = new ConfigurablePlanningTreeTableModel(mainWindowToUse.getProject(), rowColumnProvider, rootNode);
 		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse, model);
 		return new ConfigurablePlanningTreeTablePanel(mainWindowToUse, treeTable, model, getButtonActions(), rowColumnProvider);
