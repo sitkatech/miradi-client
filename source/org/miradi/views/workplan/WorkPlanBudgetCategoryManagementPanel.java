@@ -38,12 +38,12 @@ public class WorkPlanBudgetCategoryManagementPanel extends PlanningTreeManagemen
 {
 	public WorkPlanBudgetCategoryManagementPanel(MainWindow mainWindowToUse,
 			PlanningTreeTablePanel planningTreeTablePanelToUse,
-			PlanningTreeMultiPropertiesPanel planningTreePropertiesPanel, AbstractManagementConfiguration analysisManagementConfiguration)
+			PlanningTreeMultiPropertiesPanel planningTreePropertiesPanel, AbstractManagementConfiguration managementConfiguration)
 			throws Exception
 	{
-		super(mainWindowToUse, planningTreeTablePanelToUse, planningTreePropertiesPanel, analysisManagementConfiguration.getUniqueTreeTableIdentifier());
+		super(mainWindowToUse, planningTreeTablePanelToUse, planningTreePropertiesPanel, managementConfiguration.getUniqueTreeTableIdentifier());
 		
-		mangementConfiguration = analysisManagementConfiguration;
+		mangementConfiguration = managementConfiguration;
 	}
 	
 	@Override
