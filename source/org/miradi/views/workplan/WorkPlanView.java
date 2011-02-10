@@ -87,12 +87,12 @@ public class WorkPlanView extends TabbedView
 	public void createTabs() throws Exception
 	{
 		workPlanManagementPanel = WorkPlanManagementPanel.createWorkPlanPanel(getMainWindow());
-		rollupReportsManagementPanel = WorkPlanAnalysisManagementPanel.createManagementPanel(getMainWindow(), new AnalysisManagementConfiguration(getProject()));
-		resourceManagementPanel = WorkPlanAnalysisManagementPanel.createManagementPanel(getMainWindow(), new ProjectResourceManagementConfiguration(getProject()));
-		accountingCodePoolManagementPanel = WorkPlanAnalysisManagementPanel.createManagementPanel(getMainWindow(), new AccountingCodeManagementConfiguration(getProject()));
-		fundingSourcePoolManagementPanel = WorkPlanAnalysisManagementPanel.createManagementPanel(getMainWindow(), new FundingSourceManagementConfiguration(getProject())); 
-		categoryOnePoolMangementPanel = WorkPlanAnalysisManagementPanel.createManagementPanel(getMainWindow(), new BudgetCategoryOneManagementConfiguration(getProject()));
-		categoryTwoPoolMangementPanel = WorkPlanAnalysisManagementPanel.createManagementPanel(getMainWindow(), new BudgetCategoryTwoManagementConfiguration(getProject()));
+		rollupReportsManagementPanel = WorkPlanBudgetCategoryManagementPanel.createManagementPanel(getMainWindow(), new AnalysisManagementConfiguration(getProject()));
+		resourceManagementPanel = WorkPlanBudgetCategoryManagementPanel.createManagementPanel(getMainWindow(), new ProjectResourceManagementConfiguration(getProject()));
+		accountingCodePoolManagementPanel = WorkPlanBudgetCategoryManagementPanel.createManagementPanel(getMainWindow(), new AccountingCodeManagementConfiguration(getProject()));
+		fundingSourcePoolManagementPanel = WorkPlanBudgetCategoryManagementPanel.createManagementPanel(getMainWindow(), new FundingSourceManagementConfiguration(getProject())); 
+		categoryOnePoolMangementPanel = WorkPlanBudgetCategoryManagementPanel.createManagementPanel(getMainWindow(), new BudgetCategoryOneManagementConfiguration(getProject()));
+		categoryTwoPoolMangementPanel = WorkPlanBudgetCategoryManagementPanel.createManagementPanel(getMainWindow(), new BudgetCategoryTwoManagementConfiguration(getProject()));
 		
 		addNonScrollingTab(workPlanManagementPanel);
 		addNonScrollingTab(rollupReportsManagementPanel);
