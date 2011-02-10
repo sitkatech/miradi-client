@@ -38,25 +38,14 @@ public class WorkPlanAnalysisManagementPanel extends PlanningTreeManagementPanel
 {
 	public WorkPlanAnalysisManagementPanel(MainWindow mainWindowToUse,
 			PlanningTreeTablePanel planningTreeTablePanelToUse,
-			PlanningTreeMultiPropertiesPanel planningTreePropertiesPanel, AnalysisManagementConfiguration analysisManagementConfiguration)
+			PlanningTreeMultiPropertiesPanel planningTreePropertiesPanel, AbstractManagementConfiguration analysisManagementConfiguration)
 			throws Exception
 	{
 		super(mainWindowToUse, planningTreeTablePanelToUse, planningTreePropertiesPanel, analysisManagementConfiguration.getUniqueTreeTableIdentifier());
 		
 		mangementConfiguration = analysisManagementConfiguration;
-
 	}
 	
-	public static WorkPlanAnalysisManagementPanel createManagementPanel(MainWindow mainWindowToUse, AnalysisManagementConfiguration analysisManagementConfiguration) throws Exception
-	{
-		WorkPlanCategoryTreeRowColumnProvider rowColumnProvider = analysisManagementConfiguration.getRowColumnProvider();
-		WorkPlanAnalysisTreeTableModel model = WorkPlanAnalysisTreeTableModel.createCategoryTreeTableModel(mainWindowToUse.getProject(), rowColumnProvider, analysisManagementConfiguration.getUniqueTreeTableIdentifier());
-		PlanningTreeTablePanel treeTablePanel = WorkPlanCategoryTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, model, rowColumnProvider, analysisManagementConfiguration.getButtonActions());
-		PlanningTreeMultiPropertiesPanel propertiesPanel = new PlanningTreeMultiPropertiesPanel(mainWindowToUse, ORef.INVALID);
-		
-		return new WorkPlanAnalysisManagementPanel(mainWindowToUse, treeTablePanel, propertiesPanel, analysisManagementConfiguration);
-	}
-
 	@Override
 	protected PlanningTreeTablePanel createPlanningTreeTablePanel(String uniqueTreeTableModelIdentifier, PlanningTreeRowColumnProvider rowColumnProvider) throws Exception
 	{
@@ -64,7 +53,7 @@ public class WorkPlanAnalysisManagementPanel extends PlanningTreeManagementPanel
 		return ExportablePlanningTreeTablePanel.createPlanningTreeTablePanelWithoutButtonsForExporting(getMainWindow(), rowColumnProvider, model);
 	}
 	
-	public static WorkPlanCategoryManagementPanel createManagementPanel(MainWindow mainWindowToUse, AbstractManagementConfiguration managementConfiguration) throws Exception
+	public static WorkPlanAnalysisManagementPanel createManagementPanel(MainWindow mainWindowToUse, AbstractManagementConfiguration managementConfiguration) throws Exception
 	{
 		NewPlanningRootNode rootNode = new NewPlanningRootNode(mainWindowToUse.getProject());
 		WorkPlanCategoryTreeRowColumnProvider rowColumnProvider = managementConfiguration.getRowColumnProvider();
@@ -72,7 +61,7 @@ public class WorkPlanAnalysisManagementPanel extends PlanningTreeManagementPanel
 		PlanningTreeTablePanel treeTablePanel = WorkPlanCategoryTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, model, rowColumnProvider, managementConfiguration.getButtonActions());
 		PlanningTreeMultiPropertiesPanel propertiesPanel = new PlanningTreeMultiPropertiesPanel(mainWindowToUse, ORef.INVALID);
 		
-		return new WorkPlanCategoryManagementPanel(mainWindowToUse, treeTablePanel, propertiesPanel, managementConfiguration);
+		return new WorkPlanAnalysisManagementPanel(mainWindowToUse, treeTablePanel, propertiesPanel, managementConfiguration);
 	}
 
 	@Override
