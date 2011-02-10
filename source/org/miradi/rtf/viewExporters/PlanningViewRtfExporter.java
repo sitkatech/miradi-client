@@ -47,8 +47,9 @@ import org.miradi.dialogs.planning.upperPanel.PlanningViewFutureStatusTableModel
 import org.miradi.dialogs.planning.upperPanel.PlanningViewMainTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningViewMeasurementTableModel;
 import org.miradi.dialogs.planning.upperPanel.TreeTableModelExporter;
+import org.miradi.dialogs.planning.upperPanel.rebuilder.BudgetCategoryTreeRebuilder;
 import org.miradi.dialogs.planning.upperPanel.rebuilder.NormalTreeRebuilder;
-import org.miradi.dialogs.treetables.WorkPlanCategoryTreeTableModel;
+import org.miradi.dialogs.treetables.NewBudgetCategoryTreeModel;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.BaseObjectByFullNameSorter;
 import org.miradi.objecthelpers.ORef;
@@ -143,7 +144,11 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 
 	private void exportCategoryTab(RtfWriter writer, WorkPlanCategoryTreeRowColumnProvider rowColumnProvider, String translatedTableName) throws Exception
 	{
-		ExportablePlanningTreeTableModel model = WorkPlanCategoryTreeTableModel.createCategoryTreeTableModel(getProject(), rowColumnProvider, AbstractTableExporter.NO_UNIQUE_MODEL_IDENTIFIER);
+		NewPlanningRootNode rootNode = new NewPlanningRootNode(getProject());
+		BudgetCategoryTreeRebuilder treeRebuilder = new BudgetCategoryTreeRebuilder(getProject(), rowColumnProvider);
+		treeRebuilder.rebuildTree(rootNode);
+		NewBudgetCategoryTreeModel model = new NewBudgetCategoryTreeModel(getProject(), rootNode, rowColumnProvider, AbstractTableExporter.NO_UNIQUE_MODEL_IDENTIFIER);
+		
 		exportTab(writer, rowColumnProvider, translatedTableName, model);
 	}
 	
