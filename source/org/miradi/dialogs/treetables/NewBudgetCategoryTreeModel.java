@@ -20,10 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.treetables;
 
-import org.miradi.dialogs.planning.AbstractBudgetCategoryRowColumnProvider;
 import org.miradi.dialogs.planning.upperPanel.TreeTableModelWithRebuilder;
 import org.miradi.dialogs.planning.upperPanel.rebuilder.AbstractTreeRebuilder;
-import org.miradi.dialogs.planning.upperPanel.rebuilder.BudgetCategoryTreeRebuilder;
+import org.miradi.dialogs.planning.upperPanel.rebuilder.AnalysisTreeRebuilder;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.project.Project;
 
@@ -37,6 +36,6 @@ public class NewBudgetCategoryTreeModel extends TreeTableModelWithRebuilder
 	@Override
 	protected AbstractTreeRebuilder createTreeRebuilder()
 	{
-		return new BudgetCategoryTreeRebuilder(getProject(), (AbstractBudgetCategoryRowColumnProvider) getRowColumnProvider());
+		return new AnalysisTreeRebuilder(getProject(), getRowColumnProvider());
 	}
 }
