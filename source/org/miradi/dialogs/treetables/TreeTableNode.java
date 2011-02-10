@@ -73,15 +73,6 @@ public abstract class TreeTableNode implements Comparable<TreeTableNode>
 		throw new Exception("getParent not implemented yet for nodes of type " + getType() + " in node:" + getClass());
 	}
 	
-	public int getIndex(TreeTableNode child)
-	{
-		for(int i = 0; i < getChildCount(); ++i)
-			if(child.equals(getChild(i)))
-				return i;
-		
-		return -1;
-	}
-	
 	public boolean isAlwaysExpanded()
 	{
 		return false;
