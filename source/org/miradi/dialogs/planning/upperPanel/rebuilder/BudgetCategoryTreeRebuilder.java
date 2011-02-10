@@ -60,7 +60,7 @@ public class BudgetCategoryTreeRebuilder extends AbstractTreeRebuilder
 		rebuild(projectNode, allAsignmentRefs, initialLevel);
 	}
 	
-	public void rebuild(NewAbstractPlanningTreeNode node, ORefList allAsignmentRefs, int currentLevel) throws Exception
+	public void rebuild(NewAbstractPlanningTreeNode parentNode, ORefList allAsignmentRefs, int currentLevel) throws Exception
 	{
 		final int ONE_LEVEL = 1;
 		int childLevel = currentLevel + ONE_LEVEL;
@@ -90,15 +90,15 @@ public class BudgetCategoryTreeRebuilder extends AbstractTreeRebuilder
 				NewAbstractPlanningTreeNode childNode = null;
 				if (possibleChildRef.isValid())
 				{
-					childNode = new NewPlanningTreeBaseObjectNode(getProject(), node, possibleChildRef);
+					childNode = new NewPlanningTreeBaseObjectNode(getProject(), parentNode, possibleChildRef);
 				}
 				else
 				{
 					String objectNameForType = getProject().getObjectManager().getInternalObjectTypeName(typeOfChildren);
-					childNode = new UnspecifiedBaseObjectNode(getProject(), node, typeOfChildren, objectNameForType);
+					childNode = new UnspecifiedBaseObjectNode(getProject(), parentNode, typeOfChildren, objectNameForType);
 				}
 				
-				node.addChild(childNode);
+				parentNode.addChild(childNode);
 				rebuild(childNode, assignmentRefsThatMatchPossibleChildHierarchy, childLevel);
 			}
 		}
