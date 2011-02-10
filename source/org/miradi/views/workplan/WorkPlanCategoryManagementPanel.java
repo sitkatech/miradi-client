@@ -23,16 +23,12 @@ package org.miradi.views.workplan;
 import javax.swing.Icon;
 
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
-import org.miradi.dialogs.planning.WorkPlanCategoryTreeRowColumnProvider;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningTreeMultiPropertiesPanel;
-import org.miradi.dialogs.planning.treenodes.NewPlanningRootNode;
 import org.miradi.dialogs.planning.upperPanel.ExportablePlanningTreeTablePanel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
-import org.miradi.dialogs.treetables.NewBudgetCategoryTreeModel;
 import org.miradi.dialogs.treetables.WorkPlanCategoryTreeTableModel;
 import org.miradi.main.MainWindow;
-import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
 
 public class WorkPlanCategoryManagementPanel extends PlanningTreeManagementPanel
@@ -54,17 +50,6 @@ public class WorkPlanCategoryManagementPanel extends PlanningTreeManagementPanel
 		return ExportablePlanningTreeTablePanel.createPlanningTreeTablePanelWithoutButtonsForExporting(getMainWindow(), rowColumnProvider, model);
 	}
 
-	public static WorkPlanCategoryManagementPanel createManagementPanel(MainWindow mainWindowToUse, AbstractManagementConfiguration managementConfiguration) throws Exception
-	{
-		NewPlanningRootNode rootNode = new NewPlanningRootNode(mainWindowToUse.getProject());
-		WorkPlanCategoryTreeRowColumnProvider rowColumnProvider = managementConfiguration.getRowColumnProvider();
-		NewBudgetCategoryTreeModel model = new NewBudgetCategoryTreeModel(mainWindowToUse.getProject(), rootNode, rowColumnProvider, managementConfiguration.getUniqueTreeTableIdentifier());
-		PlanningTreeTablePanel treeTablePanel = WorkPlanCategoryTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, model, rowColumnProvider, managementConfiguration.getButtonActions());
-		PlanningTreeMultiPropertiesPanel propertiesPanel = new PlanningTreeMultiPropertiesPanel(mainWindowToUse, ORef.INVALID);
-		
-		return new WorkPlanCategoryManagementPanel(mainWindowToUse, treeTablePanel, propertiesPanel, managementConfiguration);
-	}
-	
 	@Override
 	public String getPanelDescription()
 	{
