@@ -31,7 +31,7 @@ import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
 
-public class AnalysisManagementConfiguration extends AbstractManagementConfiguration
+public class AnalysisManagementConfiguration extends WorkPlanMangementPanelConfiguration
 {
 	public AnalysisManagementConfiguration(Project projectToUse)
 	{
