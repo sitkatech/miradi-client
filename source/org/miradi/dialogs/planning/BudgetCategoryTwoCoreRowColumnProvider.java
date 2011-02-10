@@ -44,7 +44,7 @@ public class BudgetCategoryTwoCoreRowColumnProvider extends AbstractBudgetCatego
 	}
 
 	@Override
-	protected String getObjectTypeName()
+	public String getObjectTypeName()
 	{
 		return BudgetCategoryTwo.OBJECT_NAME;
 	}
