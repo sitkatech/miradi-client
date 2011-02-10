@@ -26,7 +26,7 @@ import java.util.Vector;
 
 import org.miradi.dialogs.planning.treenodes.NewAbstractPlanningTreeNode;
 import org.miradi.dialogs.planning.treenodes.NewPlanningTaskNode;
-import org.miradi.dialogs.planning.treenodes.NewPlanningTreeBaseObjectNode;
+import org.miradi.dialogs.planning.treenodes.PlanningTreeBaseObjectNode;
 import org.miradi.dialogs.planning.treenodes.NewPlanningTreeErrorNode;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.EAM;
@@ -185,7 +185,7 @@ abstract public class AbstractTreeRebuilder
 			for(int i = 0; i < supportedTypes.length; ++i)
 			{
 				if(type == supportedTypes[i])
-					return new NewPlanningTreeBaseObjectNode(getProject(), parentNode, refToAdd);
+					return new PlanningTreeBaseObjectNode(getProject(), parentNode, refToAdd);
 			}
 			throw new Exception("Attempted to create node of unknown type: " + refToAdd);
 		}

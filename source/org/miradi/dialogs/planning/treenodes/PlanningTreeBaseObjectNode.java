@@ -25,14 +25,14 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 
-public class NewPlanningTreeBaseObjectNode extends NewAbstractPlanningTreeNode
+public class PlanningTreeBaseObjectNode extends NewAbstractPlanningTreeNode
 {
-	public NewPlanningTreeBaseObjectNode(Project projectToUse, TreeTableNode parentNodeToUse, ORef objectRef) throws Exception
+	public PlanningTreeBaseObjectNode(Project projectToUse, TreeTableNode parentNodeToUse, ORef objectRef) throws Exception
 	{
 		this(projectToUse, parentNodeToUse, projectToUse.findObject(objectRef));
 	}
 	
-	public NewPlanningTreeBaseObjectNode(Project projectToUse, TreeTableNode parentNodeToUse, BaseObject baseObjectToUse) throws Exception
+	public PlanningTreeBaseObjectNode(Project projectToUse, TreeTableNode parentNodeToUse, BaseObject baseObjectToUse) throws Exception
 	{
 		super(projectToUse, parentNodeToUse);
 		

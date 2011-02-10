@@ -25,7 +25,7 @@ import java.util.HashMap;
 import org.miradi.dialogs.planning.AbstractBudgetCategoryRowColumnProvider;
 import org.miradi.dialogs.planning.treenodes.NewAbstractPlanningTreeNode;
 import org.miradi.dialogs.planning.treenodes.NewPlanningTreeAlwaysExpandedBaseObjectNode;
-import org.miradi.dialogs.planning.treenodes.NewPlanningTreeBaseObjectNode;
+import org.miradi.dialogs.planning.treenodes.PlanningTreeBaseObjectNode;
 import org.miradi.dialogs.planning.treenodes.UnspecifiedBaseObject;
 import org.miradi.dialogs.planning.treenodes.UnspecifiedBaseObjectNode;
 import org.miradi.objecthelpers.ORef;
@@ -53,7 +53,7 @@ public class PlanningCategoryTreeRebuilder extends AbstractTreeRebuilder
 		allAsignmentRefs.addAll(getProject().getAssignmentPool().getRefList());
 		allAsignmentRefs.addAll(getProject().getExpenseAssignmentPool().getRefList());
 
-		NewPlanningTreeBaseObjectNode projectNode = new NewPlanningTreeAlwaysExpandedBaseObjectNode(getProject(), rootNode, getProject().getMetadata());
+		PlanningTreeBaseObjectNode projectNode = new NewPlanningTreeAlwaysExpandedBaseObjectNode(getProject(), rootNode, getProject().getMetadata());
 		rootNode.addChild(projectNode);
 		
 		int initialLevel = 0;
@@ -98,7 +98,7 @@ public class PlanningCategoryTreeRebuilder extends AbstractTreeRebuilder
 	protected NewAbstractPlanningTreeNode createChildNode(NewAbstractPlanningTreeNode parentNode, ORef possibleChildRef, int typeOfChildren) throws Exception
 	{
 		if (possibleChildRef.isValid())
-			return new NewPlanningTreeBaseObjectNode(getProject(), parentNode, possibleChildRef);
+			return new PlanningTreeBaseObjectNode(getProject(), parentNode, possibleChildRef);
 
 		String objectNameForType = getProject().getObjectManager().getInternalObjectTypeName(typeOfChildren);
 		return  new UnspecifiedBaseObjectNode(getProject(), parentNode, typeOfChildren, objectNameForType);

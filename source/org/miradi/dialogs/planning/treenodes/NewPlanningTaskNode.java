@@ -25,7 +25,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.project.Project;
 
-public class NewPlanningTaskNode extends NewPlanningTreeBaseObjectNode
+public class NewPlanningTaskNode extends PlanningTreeBaseObjectNode
 {
 	public NewPlanningTaskNode(Project projectToUse, ORef contextNodeRefToUse, TreeTableNode parentNodeToUse, ORef objectRef) throws Exception
 	{

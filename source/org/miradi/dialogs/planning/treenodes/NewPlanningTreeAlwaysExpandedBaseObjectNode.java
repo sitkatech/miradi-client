@@ -24,7 +24,7 @@ import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 
-public class NewPlanningTreeAlwaysExpandedBaseObjectNode extends NewPlanningTreeBaseObjectNode
+public class NewPlanningTreeAlwaysExpandedBaseObjectNode extends PlanningTreeBaseObjectNode
 {
 	public NewPlanningTreeAlwaysExpandedBaseObjectNode(Project projectToUse, TreeTableNode parentNodeToUse, BaseObject baseObjectToUse)	throws Exception
 	{
