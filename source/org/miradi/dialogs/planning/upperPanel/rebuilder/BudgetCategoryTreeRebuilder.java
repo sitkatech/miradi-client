@@ -60,7 +60,7 @@ public class BudgetCategoryTreeRebuilder extends AbstractTreeRebuilder
 		rebuild(projectNode, allAsignmentRefs, initialLevel);
 	}
 	
-	public void rebuild(NewAbstractPlanningTreeNode parentNode, ORefList allAsignmentRefs, int currentLevel) throws Exception
+	private void rebuild(NewAbstractPlanningTreeNode parentNode, ORefList allAsignmentRefs, int currentLevel) throws Exception
 	{
 		final int ONE_LEVEL = 1;
 		int childLevel = currentLevel + ONE_LEVEL;
