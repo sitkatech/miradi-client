@@ -22,11 +22,6 @@ package org.miradi.exceptions;
 
 public class CpmzVersionTooOldException extends Exception
 {
-	public CpmzVersionTooOldException(CpmzVersionTooOldException e)
-	{
-		super(e);
-	}
-
 	public CpmzVersionTooOldException()
 	{
 		super();
