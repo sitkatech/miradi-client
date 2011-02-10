@@ -34,9 +34,9 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
 
-public class WorkPlanAnalysisManagementPanel extends PlanningTreeManagementPanel
+public class WorkPlanBudgetCategoryManagementPanel extends PlanningTreeManagementPanel
 {
-	public WorkPlanAnalysisManagementPanel(MainWindow mainWindowToUse,
+	public WorkPlanBudgetCategoryManagementPanel(MainWindow mainWindowToUse,
 			PlanningTreeTablePanel planningTreeTablePanelToUse,
 			PlanningTreeMultiPropertiesPanel planningTreePropertiesPanel, AbstractManagementConfiguration analysisManagementConfiguration)
 			throws Exception
@@ -53,7 +53,7 @@ public class WorkPlanAnalysisManagementPanel extends PlanningTreeManagementPanel
 		return ExportablePlanningTreeTablePanel.createPlanningTreeTablePanelWithoutButtonsForExporting(getMainWindow(), rowColumnProvider, model);
 	}
 	
-	public static WorkPlanAnalysisManagementPanel createManagementPanel(MainWindow mainWindowToUse, AbstractManagementConfiguration managementConfiguration) throws Exception
+	public static WorkPlanBudgetCategoryManagementPanel createManagementPanel(MainWindow mainWindowToUse, AbstractManagementConfiguration managementConfiguration) throws Exception
 	{
 		NewPlanningRootNode rootNode = new NewPlanningRootNode(mainWindowToUse.getProject());
 		WorkPlanCategoryTreeRowColumnProvider rowColumnProvider = managementConfiguration.getRowColumnProvider();
@@ -61,7 +61,7 @@ public class WorkPlanAnalysisManagementPanel extends PlanningTreeManagementPanel
 		PlanningTreeTablePanel treeTablePanel = WorkPlanCategoryTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, model, rowColumnProvider, managementConfiguration.getButtonActions());
 		PlanningTreeMultiPropertiesPanel propertiesPanel = new PlanningTreeMultiPropertiesPanel(mainWindowToUse, ORef.INVALID);
 		
-		return new WorkPlanAnalysisManagementPanel(mainWindowToUse, treeTablePanel, propertiesPanel, managementConfiguration);
+		return new WorkPlanBudgetCategoryManagementPanel(mainWindowToUse, treeTablePanel, propertiesPanel, managementConfiguration);
 	}
 
 	@Override
