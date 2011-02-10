@@ -51,11 +51,6 @@ import com.jhlabs.awt.GridLayoutPlus;
 
 abstract public class MultiTreeTablePanel extends TreeTablePanel implements MultiTableSelectionChangingListener
 {
-	public MultiTreeTablePanel(MainWindow mainWindowToUse, TreeTableWithStateSaving treeToUse) throws Exception
-	{
-		this(mainWindowToUse, treeToUse, new Class[0]);
-	}
-	
 	public MultiTreeTablePanel(MainWindow mainWindowToUse, TreeTableWithStateSaving treeToUse, Class[] buttonActionClasses) throws Exception
 	{
 		super(mainWindowToUse, treeToUse, buttonActionClasses);
