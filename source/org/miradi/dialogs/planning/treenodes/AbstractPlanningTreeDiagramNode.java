@@ -92,14 +92,6 @@ public abstract class AbstractPlanningTreeDiagramNode extends AbstractPlanningTr
 		return diagramObject;
 	}
 
-	boolean isGoalOnThisPage(DiagramObject page, ORef refToAdd)
-	{
-		if(refToAdd.getObjectType() != Goal.getObjectType())
-			return false;
-		
-		return page.getAllGoalRefs().contains(refToAdd);
-	}
-	
 	boolean isObjectiveOnThisPage(DiagramObject page, ORef refToAdd)
 	{
 		if(refToAdd.getObjectType() != Objective.getObjectType())
