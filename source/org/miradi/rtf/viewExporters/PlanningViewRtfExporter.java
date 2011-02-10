@@ -41,7 +41,7 @@ import org.miradi.dialogs.planning.propertiesPanel.WorkPlanBudgetDetailsTableMod
 import org.miradi.dialogs.planning.propertiesPanel.WorkPlanExpenseAmountsTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.WorkPlanWorkUnitsTableModel;
 import org.miradi.dialogs.planning.treenodes.NewAbstractPlanningTreeNode;
-import org.miradi.dialogs.planning.treenodes.PlanningRootNode;
+import org.miradi.dialogs.planning.treenodes.PlanningTreeRootNode;
 import org.miradi.dialogs.planning.upperPanel.ExportablePlanningTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningViewFutureStatusTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningViewMainTableModel;
@@ -144,7 +144,7 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 
 	private void exportCategoryTab(RtfWriter writer, WorkPlanCategoryTreeRowColumnProvider rowColumnProvider, String translatedTableName) throws Exception
 	{
-		PlanningRootNode rootNode = new PlanningRootNode(getProject());
+		PlanningTreeRootNode rootNode = new PlanningTreeRootNode(getProject());
 		PlanningCategoryTreeRebuilder treeRebuilder = new PlanningCategoryTreeRebuilder(getProject(), rowColumnProvider);
 		treeRebuilder.rebuildTree(rootNode);
 		NewBudgetCategoryTreeModel model = new NewBudgetCategoryTreeModel(getProject(), rootNode, rowColumnProvider, AbstractTableExporter.NO_UNIQUE_MODEL_IDENTIFIER);
@@ -160,7 +160,7 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 	
 	public static MultiTableCombinedAsOneExporter createTables(Project project, PlanningTreeRowColumnProvider rowColumnProvider) throws Exception
 	{
-		NewAbstractPlanningTreeNode rootNode = new PlanningRootNode(project);
+		NewAbstractPlanningTreeNode rootNode = new PlanningTreeRootNode(project);
  		new NormalTreeRebuilder(project, rowColumnProvider).rebuildTree(rootNode);
 		ExportablePlanningTreeTableModel model = new ExportablePlanningTreeTableModel(project, rootNode, rowColumnProvider, AbstractTableExporter.NO_UNIQUE_MODEL_IDENTIFIER);
 		

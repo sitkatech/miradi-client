@@ -25,7 +25,7 @@ import org.miradi.actions.ActionExpandAllRows;
 import org.miradi.actions.ActionPlanningCreationMenu;
 import org.miradi.dialogs.planning.ActionPlanMultiRowColumnProvider;
 import org.miradi.dialogs.planning.PlanningViewActionButtonPanel;
-import org.miradi.dialogs.planning.treenodes.PlanningRootNode;
+import org.miradi.dialogs.planning.treenodes.PlanningTreeRootNode;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
 
@@ -46,7 +46,7 @@ public class ActionPlanTreeTablePanel extends PlanningTreeTablePanel
 	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse) throws Exception
 	{
 		ActionPlanMultiRowColumnProvider rowColumnProvider = new ActionPlanMultiRowColumnProvider(mainWindowToUse.getProject());
-		PlanningRootNode rootNode = new PlanningRootNode(mainWindowToUse.getProject());
+		PlanningTreeRootNode rootNode = new PlanningTreeRootNode(mainWindowToUse.getProject());
 		PlanningTreeTableModel model = new ActionPlanTreeTableModel(mainWindowToUse.getProject(), rootNode, rowColumnProvider);
 		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse, model);
 		

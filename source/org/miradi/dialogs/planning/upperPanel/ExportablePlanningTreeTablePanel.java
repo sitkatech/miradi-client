@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel;
 
 
-import org.miradi.dialogs.planning.treenodes.PlanningRootNode;
+import org.miradi.dialogs.planning.treenodes.PlanningTreeRootNode;
 import org.miradi.dialogs.planning.upperPanel.rebuilder.NormalTreeRebuilder;
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.main.MainWindow;
@@ -39,7 +39,7 @@ public class ExportablePlanningTreeTablePanel extends PlanningTreeTablePanel
 
 	public static PlanningTreeTablePanel createPlanningTreeTablePanelWithoutButtons(MainWindow mainWindowToUse, PlanningTreeRowColumnProvider rowColumnProvider, String uniqueTreeTableModelIdentifier) throws Exception
 	{
-		PlanningRootNode rootNode = new PlanningRootNode(mainWindowToUse.getProject());
+		PlanningTreeRootNode rootNode = new PlanningTreeRootNode(mainWindowToUse.getProject());
 		new NormalTreeRebuilder(mainWindowToUse.getProject(), rowColumnProvider).rebuildTree(rootNode);
 		PlanningTreeTableModel model = new ExportablePlanningTreeTableModel(mainWindowToUse.getProject(), rootNode, rowColumnProvider, uniqueTreeTableModelIdentifier);
 		

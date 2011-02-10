@@ -25,7 +25,7 @@ import javax.swing.Icon;
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
 import org.miradi.dialogs.planning.WorkPlanCategoryTreeRowColumnProvider;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningTreeMultiPropertiesPanel;
-import org.miradi.dialogs.planning.treenodes.PlanningRootNode;
+import org.miradi.dialogs.planning.treenodes.PlanningTreeRootNode;
 import org.miradi.dialogs.planning.upperPanel.ExportablePlanningTreeTablePanel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
 import org.miradi.dialogs.treetables.NewBudgetCategoryTreeModel;
@@ -48,7 +48,7 @@ public class WorkPlanBudgetCategoryManagementPanel extends PlanningTreeManagemen
 	@Override
 	protected PlanningTreeTablePanel createPlanningTreeTablePanel(String uniqueTreeTableModelIdentifier, PlanningTreeRowColumnProvider rowColumnProvider) throws Exception
 	{
-		PlanningRootNode rootNode = new PlanningRootNode(getMainWindow().getProject());
+		PlanningTreeRootNode rootNode = new PlanningTreeRootNode(getMainWindow().getProject());
 		NewBudgetCategoryTreeModel model = new NewBudgetCategoryTreeModel(getProject(), rootNode, rowColumnProvider, mangementConfiguration.getUniqueTreeTableIdentifier());
 	
 		return ExportablePlanningTreeTablePanel.createPlanningTreeTablePanelWithoutButtonsForExporting(getMainWindow(), rowColumnProvider, model);
@@ -56,7 +56,7 @@ public class WorkPlanBudgetCategoryManagementPanel extends PlanningTreeManagemen
 	
 	public static WorkPlanBudgetCategoryManagementPanel createManagementPanel(MainWindow mainWindowToUse, AbstractManagementConfiguration managementConfiguration) throws Exception
 	{
-		PlanningRootNode rootNode = new PlanningRootNode(mainWindowToUse.getProject());
+		PlanningTreeRootNode rootNode = new PlanningTreeRootNode(mainWindowToUse.getProject());
 		WorkPlanCategoryTreeRowColumnProvider rowColumnProvider = managementConfiguration.getRowColumnProvider();
 		NewBudgetCategoryTreeModel model = new NewBudgetCategoryTreeModel(mainWindowToUse.getProject(), rootNode, rowColumnProvider, managementConfiguration.getUniqueTreeTableIdentifier());
 		PlanningTreeTablePanel treeTablePanel = WorkPlanCategoryTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, model, rowColumnProvider, managementConfiguration.getButtonActions());

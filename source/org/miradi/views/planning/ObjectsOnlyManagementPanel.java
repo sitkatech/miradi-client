@@ -22,7 +22,7 @@ package org.miradi.views.planning;
 import org.miradi.dialogs.planning.ObjectsOnlyRowColumnProvider;
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningTreeMultiPropertiesPanel;
-import org.miradi.dialogs.planning.treenodes.PlanningRootNode;
+import org.miradi.dialogs.planning.treenodes.PlanningTreeRootNode;
 import org.miradi.dialogs.planning.upperPanel.ObjectsOnlyPlanningTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.ObjectsOnlyPlanningTreeTablePanel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTableModel;
@@ -51,7 +51,7 @@ public class ObjectsOnlyManagementPanel extends PlanningTreeManagementPanel
 	public static PlanningTreeManagementPanel createObjectsOnlyPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		ObjectsOnlyRowColumnProvider provider = new ObjectsOnlyRowColumnProvider(mainWindowToUse.getProject());
-		PlanningRootNode rootNode = new PlanningRootNode(mainWindowToUse.getProject());
+		PlanningTreeRootNode rootNode = new PlanningTreeRootNode(mainWindowToUse.getProject());
 		PlanningTreeTableModel objectsOnlyTreeTableModel = new ObjectsOnlyPlanningTreeTableModel(mainWindowToUse.getProject(), rootNode, provider);
 		PlanningTreeTablePanel objectsOnlyPlanTreeTablePanel = ObjectsOnlyPlanningTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, objectsOnlyTreeTableModel);
 		ActionPlanMultiPropertiesPanel objectsOnlyPlanPropertiesPanel = new ActionPlanMultiPropertiesPanel(mainWindowToUse, ORef.INVALID);
