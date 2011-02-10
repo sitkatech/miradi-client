@@ -67,7 +67,7 @@ public class BudgetCategoryTreeRebuilder extends AbstractTreeRebuilder
 		if (!getLevelObjectTypes().hasData())
 			return;
 		
-		rootNode.addChild(new UnspecifiedBaseObjectNode(getProject(), rootNode, getChildType()));
+		rootNode.addChild(new UnspecifiedBaseObjectNode(getProject(), rootNode, getChildType(), getChildObjectTypeName()));
 		int typeOfChildren = getChildType();
 		HashMap<ORef, ORefList> categoryRefToAssignmentRefsMap = createCategoryRefToAssignmentRefsMap(typeOfChildren);
 		ORefList childRefs = getProject().getPool(typeOfChildren).getRefList();
@@ -156,5 +156,10 @@ public class BudgetCategoryTreeRebuilder extends AbstractTreeRebuilder
 	private int getChildType()
 	{
 		return getCastedRowColumnProvider().getObjectType();
+	}
+	
+	private String getChildObjectTypeName()
+	{
+		return getCastedRowColumnProvider().getObjectTypeName();
 	}
 }

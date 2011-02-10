@@ -50,7 +50,7 @@ public class ProjectResourceRowColumnProvider extends AbstractBudgetCategoryRowC
 	}
 
 	@Override
-	protected String getObjectTypeName()
+	public String getObjectTypeName()
 	{
 		return ProjectResource.OBJECT_NAME;
 	}

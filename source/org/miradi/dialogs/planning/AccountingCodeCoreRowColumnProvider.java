@@ -31,7 +31,7 @@ public class AccountingCodeCoreRowColumnProvider extends AbstractBudgetCategoryR
 	}
 
 	@Override
-	protected String getObjectTypeName()
+	public String getObjectTypeName()
 	{
 		return AccountingCode.OBJECT_NAME;
 	}

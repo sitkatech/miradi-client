@@ -22,24 +22,24 @@ package org.miradi.dialogs.planning.treenodes;
 
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.Cause;
 import org.miradi.project.Project;
 
 public class UnspecifiedBaseObjectNode extends NewAbstractPlanningTreeNode
 {
-	public UnspecifiedBaseObjectNode(Project projectToUse, TreeTableNode parentNodeToUse, int objectTypeToUse)
+	public UnspecifiedBaseObjectNode(Project projectToUse, TreeTableNode parentNodeToUse, int objectTypeToUse, String objectTypeNameToUse)
 	{
 		super(projectToUse, parentNodeToUse);
 		
 		objectType = objectTypeToUse;
+		objectTypeName = objectTypeNameToUse;
 	}
 
 	@Override
 	public BaseObject getObject()
 	{
-		//FIXME urgent - change temp object name to something 
-		return new UnspecifiedBaseObject(getProject().getObjectManager(), objectType, Cause.OBJECT_NAME);
+		return new UnspecifiedBaseObject(getProject().getObjectManager(), objectType, objectTypeName);
 	}
 
 	private int objectType;
+	private String objectTypeName;
 }

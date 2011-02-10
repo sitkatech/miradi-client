@@ -99,7 +99,7 @@ public class AnalysisRowColumnProvider extends AbstractBudgetCategoryRowColumnPr
 	}
 
 	@Override
-	protected String getObjectTypeName()
+	public String getObjectTypeName()
 	{
 		throw new RuntimeException("getObjectName() is not implemented.");
 	}
