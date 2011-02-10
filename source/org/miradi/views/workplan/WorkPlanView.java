@@ -88,11 +88,11 @@ public class WorkPlanView extends TabbedView
 	{
 		workPlanManagementPanel = WorkPlanManagementPanel.createWorkPlanPanel(getMainWindow());
 		rollupReportsManagementPanel = WorkPlanAnalysisManagementPanel.createManagementPanel(getMainWindow(), new AnalysisManagementConfiguration(getProject()));
-		resourceManagementPanel = WorkPlanCategoryManagementPanel.createManagementPanel(getMainWindow(), new ProjectResourceManagementConfiguration(getProject()));
-		accountingCodePoolManagementPanel = WorkPlanCategoryManagementPanel.createManagementPanel(getMainWindow(), new AccountingCodeManagementConfiguration(getProject()));
-		fundingSourcePoolManagementPanel = WorkPlanCategoryManagementPanel.createManagementPanel(getMainWindow(), new FundingSourceManagementConfiguration(getProject())); 
-		categoryOnePoolMangementPanel = WorkPlanCategoryManagementPanel.createManagementPanel(getMainWindow(), new BudgetCategoryOneManagementConfiguration(getProject()));
-		categoryTwoPoolMangementPanel = WorkPlanCategoryManagementPanel.createManagementPanel(getMainWindow(), new BudgetCategoryTwoManagementConfiguration(getProject()));
+		resourceManagementPanel = WorkPlanAnalysisManagementPanel.createManagementPanel(getMainWindow(), new ProjectResourceManagementConfiguration(getProject()));
+		accountingCodePoolManagementPanel = WorkPlanAnalysisManagementPanel.createManagementPanel(getMainWindow(), new AccountingCodeManagementConfiguration(getProject()));
+		fundingSourcePoolManagementPanel = WorkPlanAnalysisManagementPanel.createManagementPanel(getMainWindow(), new FundingSourceManagementConfiguration(getProject())); 
+		categoryOnePoolMangementPanel = WorkPlanAnalysisManagementPanel.createManagementPanel(getMainWindow(), new BudgetCategoryOneManagementConfiguration(getProject()));
+		categoryTwoPoolMangementPanel = WorkPlanAnalysisManagementPanel.createManagementPanel(getMainWindow(), new BudgetCategoryTwoManagementConfiguration(getProject()));
 		
 		addNonScrollingTab(workPlanManagementPanel);
 		addNonScrollingTab(rollupReportsManagementPanel);
