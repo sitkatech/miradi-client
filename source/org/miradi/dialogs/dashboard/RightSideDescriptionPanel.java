@@ -36,7 +36,6 @@ import org.miradi.main.MainWindow;
 import org.miradi.utils.FastScrollPane;
 import org.miradi.utils.FlexibleWidthHtmlViewer;
 import org.miradi.views.umbrella.ViewSwitchDoer;
-import org.miradi.wizard.SkeletonWizardStep;
 
 public class RightSideDescriptionPanel extends JPanel implements ListSelectionListener
 {
@@ -74,13 +73,6 @@ public class RightSideDescriptionPanel extends JPanel implements ListSelectionLi
 	private void changeView(AbstractLongDescriptionProvider descriptionProvider) throws Exception
 	{
 		String wizardStepName = descriptionProvider.getWizardStepName();
-		SkeletonWizardStep wizardStep = getMainWindow().getWizardManager().findStep(wizardStepName);
-		if (wizardStep == null)
-		{
-			EAM.logVerbose("There is no wizard step for:" + wizardStepName);
-			return;
-		}
-		
 		if (descriptionProvider.hasWizardStepName())
 		{
 			activeParentPanel.becomeInactive();
