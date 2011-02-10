@@ -82,11 +82,6 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		buttonBox.add(componentToAdd, FIRST_BUTTON_IN_PANEL_INDEX);
 	}
 	
-	protected void addToButtonBox(Component componentToAdd, int index)
-	{
-		buttonBox.add(componentToAdd, index); 
-	}
-
 	private JPanel createButtonBox(Class[] buttonActionClasses) throws Exception
 	{
 		GridLayoutPlus layout = createButtonLayout();
