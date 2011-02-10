@@ -87,21 +87,29 @@ public class PlanningCategoryTreeRebuilder extends AbstractTreeRebuilder
 			ORefList assignmentRefsThatMatchPossibleChildHierarchy = assignmentRefsThatMatchPossibleChild.getOverlappingRefs(assignmentRefsThatApplyToThisNode);
 			if (shouldIncludeChildNode(assignmentRefsThatMatchPossibleChildHierarchy))
 			{
-				NewAbstractPlanningTreeNode childNode = null;
-				if (possibleChildRef.isValid())
-				{
-					childNode = new NewPlanningTreeBaseObjectNode(getProject(), parentNode, possibleChildRef);
-				}
-				else
-				{
-					String objectNameForType = getProject().getObjectManager().getInternalObjectTypeName(typeOfChildren);
-					childNode = new UnspecifiedBaseObjectNode(getProject(), parentNode, typeOfChildren, objectNameForType);
-				}
+				NewAbstractPlanningTreeNode childNode = createChildNode(parentNode, possibleChildRef, typeOfChildren);
 				
 				parentNode.addChild(childNode);
 				rebuild(childNode, assignmentRefsThatMatchPossibleChildHierarchy, childLevel);
 			}
 		}
+	}
+
+	protected NewAbstractPlanningTreeNode createChildNode(
+			NewAbstractPlanningTreeNode parentNode, ORef possibleChildRef,
+			int typeOfChildren) throws Exception
+	{
+		NewAbstractPlanningTreeNode childNode = null;
+		if (possibleChildRef.isValid())
+		{
+			childNode = new NewPlanningTreeBaseObjectNode(getProject(), parentNode, possibleChildRef);
+		}
+		else
+		{
+			String objectNameForType = getProject().getObjectManager().getInternalObjectTypeName(typeOfChildren);
+			childNode = new UnspecifiedBaseObjectNode(getProject(), parentNode, typeOfChildren, objectNameForType);
+		}
+		return childNode;
 	}
 	
 	private boolean shouldIncludeChildNode(ORefList overlappingAssignmentRefs)
