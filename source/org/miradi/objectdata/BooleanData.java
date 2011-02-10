@@ -40,11 +40,6 @@ public class BooleanData extends IntegerData
 		throw new RuntimeException("Invalid boolean value :" + get());
 	}
 	
-	public Boolean asBooleanObject()
-	{
-		return new Boolean(asBoolean());
-	}
-	
 	public static String toString(boolean booleanToConvert)
 	{
 		if (booleanToConvert == true)
