@@ -29,7 +29,6 @@ import org.miradi.dialogs.planning.treenodes.NewPlanningRootNode;
 import org.miradi.dialogs.planning.upperPanel.ExportablePlanningTreeTablePanel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
 import org.miradi.dialogs.treetables.NewBudgetCategoryTreeModel;
-import org.miradi.dialogs.treetables.WorkPlanAnalysisTreeTableModel;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
@@ -49,7 +48,9 @@ public class WorkPlanBudgetCategoryManagementPanel extends PlanningTreeManagemen
 	@Override
 	protected PlanningTreeTablePanel createPlanningTreeTablePanel(String uniqueTreeTableModelIdentifier, PlanningTreeRowColumnProvider rowColumnProvider) throws Exception
 	{
-		WorkPlanAnalysisTreeTableModel model = WorkPlanAnalysisTreeTableModel.createCategoryTreeTableModel(getProject(), mangementConfiguration.getRowColumnProvider(), getMangementConfiguration().getUniqueTreeTableIdentifier());
+		NewPlanningRootNode rootNode = new NewPlanningRootNode(getMainWindow().getProject());
+		NewBudgetCategoryTreeModel model = new NewBudgetCategoryTreeModel(getProject(), rootNode, rowColumnProvider, mangementConfiguration.getUniqueTreeTableIdentifier());
+	
 		return ExportablePlanningTreeTablePanel.createPlanningTreeTablePanelWithoutButtonsForExporting(getMainWindow(), rowColumnProvider, model);
 	}
 	
