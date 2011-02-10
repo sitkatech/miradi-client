@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-09 11:11-0600\n"
+"POT-Creation-Date: 2011-02-10 12:54-0600\n"
 "PO-Revision-Date: 2010-09-20 10:32-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -5642,10 +5642,6 @@ msgstr "Configuraciones del proyecto"
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:65
 msgid "Project Summary"
 msgstr "Resumen del proyecto "
-
-#: Miradi/source/org/miradi/dialogs/planning/treenodes/WorkPlanCategoryTreeNode.java:62
-msgid "Project Totals"
-msgstr "Totales del proyecto"
 
 #: Miradi/source/org/miradi/views/noproject/CopyProject.java:38
 msgid "Project does not exist: "
@@ -32720,6 +32716,9 @@ msgid ""
 msgstr ""
 "Marina___Atlántico tropical occidental___Marina de la plataforma norte de "
 "Brasil___Brasil "
+
+#~ msgid "Project Totals"
+#~ msgstr "Totales del proyecto"
 
 #~ msgid "Strategic Plan"
 #~ msgstr "Plan estratégico"
