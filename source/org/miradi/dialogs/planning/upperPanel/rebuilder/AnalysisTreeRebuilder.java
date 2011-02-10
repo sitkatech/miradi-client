@@ -27,6 +27,7 @@ import org.miradi.dialogs.planning.treenodes.NewAbstractPlanningTreeNode;
 import org.miradi.dialogs.planning.treenodes.NewPlanningTreeAlwaysExpandedBaseObjectNode;
 import org.miradi.dialogs.planning.treenodes.NewPlanningTreeBaseObjectNode;
 import org.miradi.dialogs.planning.treenodes.UnspecifiedBaseObject;
+import org.miradi.dialogs.planning.treenodes.UnspecifiedBaseObjectNode;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Assignment;
@@ -56,10 +57,10 @@ public class AnalysisTreeRebuilder extends AbstractTreeRebuilder
 		rootNode.addChild(projectNode);
 		
 		int initialLevel = 0;
-		rebuild(projectNode, allAsignmentRefs, initialLevel, projectNode.getObjectReference());
+		rebuild(projectNode, allAsignmentRefs, initialLevel);
 	}
 	
-	public void rebuild(NewAbstractPlanningTreeNode node, ORefList allAsignmentRefs, int currentLevel, ORef possibleChildRefToUse) throws Exception
+	public void rebuild(NewAbstractPlanningTreeNode node, ORefList allAsignmentRefs, int currentLevel) throws Exception
 	{
 		final int ONE_LEVEL = 1;
 		int childLevel = currentLevel + ONE_LEVEL;
@@ -74,10 +75,8 @@ public class AnalysisTreeRebuilder extends AbstractTreeRebuilder
 		if (typeOfChildrenAsString.equals(WorkPlanCategoryTypesQuestion.UNSPECIFIED_CODE))
 			return;
 		
-		NewPlanningTreeBaseObjectNode childNode = new NewPlanningTreeBaseObjectNode(getProject(), node, possibleChildRefToUse);
-		node.addChild(childNode);
 		int typeOfChildren = Integer.parseInt(typeOfChildrenAsString);
-		HashMap<ORef, ORefList> categoryRefToAssignmentRefsMap = createCategoryRefToAssignmentRefsMap(typeOfChildren);
+		HashMap<ORef, ORefList> categoryRefToAssignmentRefsMap = createCategoryRefToAssignmentRefsMap(allAsignmentRefs, typeOfChildren);
 		ORefList childRefs = getProject().getPool(typeOfChildren).getRefList();
 		addUnspecifiedRowInPlace(childRefs);
 		for (int index = 0; index < childRefs.size(); ++index)
@@ -85,13 +84,22 @@ public class AnalysisTreeRebuilder extends AbstractTreeRebuilder
 			ORef possibleChildRef = childRefs.get(index);
 			BaseObject possibleChildObject = createOrFindChildObject(possibleChildRef, typeOfChildren);
 			ORefList assignmentRefsThatMatchPossibleChild = getAssignmentsReferringToRow(categoryRefToAssignmentRefsMap, possibleChildObject);
-			ORefList assignmentRefsThatMatchPossibleChildHierarchy = assignmentRefsThatMatchPossibleChild.getOverlappingRefs(getAssignmentRefsThatMatchThisNodeHierarchy());
+			ORefList assignmentRefsThatMatchPossibleChildHierarchy = assignmentRefsThatMatchPossibleChild.getOverlappingRefs(allAsignmentRefs);
 			if (shouldIncludeChildNode(assignmentRefsThatMatchPossibleChildHierarchy))
 			{
+				NewAbstractPlanningTreeNode childNode = null;
 				if (possibleChildRef.isValid())
-				{		
-					rebuild(childNode, allAsignmentRefs, childLevel, possibleChildRef);
+				{
+					childNode = new NewPlanningTreeBaseObjectNode(getProject(), node, possibleChildRef);
 				}
+				else
+				{
+					String objectNameForType = getProject().getObjectManager().getInternalObjectTypeName(typeOfChildren);
+					childNode = new UnspecifiedBaseObjectNode(getProject(), node, typeOfChildren, objectNameForType);
+				}
+				
+				node.addChild(childNode);
+				rebuild(childNode, assignmentRefsThatMatchPossibleChildHierarchy, childLevel);
 			}
 		}
 	}
@@ -118,14 +126,14 @@ public class AnalysisTreeRebuilder extends AbstractTreeRebuilder
 		childRefs.add(ORef.INVALID);
 	}
 
-	private HashMap<ORef, ORefList> createCategoryRefToAssignmentRefsMap(int levelObjectType)
+	private HashMap<ORef, ORefList> createCategoryRefToAssignmentRefsMap(ORefList assignmentRefsThatMatchThisNodeHierarchy, int objectTypeForLevel)
 	{
 		HashMap<ORef, ORefList> categoryRefToAssignmentRefsMap = new HashMap<ORef, ORefList>();
-		for (int index = 0; index < getAssignmentRefsThatMatchThisNodeHierarchy().size(); ++index)
+		for (int index = 0; index < assignmentRefsThatMatchThisNodeHierarchy.size(); ++index)
 		{
-			Assignment assignment = Assignment.findAssignment(getProject(), getAssignmentRefsThatMatchThisNodeHierarchy().get(index));
+			Assignment assignment = Assignment.findAssignment(getProject(), assignmentRefsThatMatchThisNodeHierarchy.get(index));
 			ORefList refList = new ORefList(assignment);
-			ORef categoryRef = assignment.getCategoryRef(levelObjectType);
+			ORef categoryRef = assignment.getCategoryRef(objectTypeForLevel);
 			if (!categoryRefToAssignmentRefsMap.containsKey(categoryRef))
 				categoryRefToAssignmentRefsMap.put(categoryRef, new ORefList());
 				
@@ -142,15 +150,6 @@ public class AnalysisTreeRebuilder extends AbstractTreeRebuilder
 		
 		String objectNameForType = getProject().getObjectManager().getInternalObjectTypeName(levelObjectType);
 		return new UnspecifiedBaseObject(getProject().getObjectManager(), levelObjectType, objectNameForType);
-	}
-
-	private ORefList getAssignmentRefsThatMatchThisNodeHierarchy()
-	{
-		ORefList allAsignmentRefs = new ORefList();
-		allAsignmentRefs.addAll(getProject().getAssignmentPool().getRefList());
-		allAsignmentRefs.addAll(getProject().getExpenseAssignmentPool().getRefList());
-
-		return allAsignmentRefs;
 	}
 
 	private CodeList getLevelObjectTypes() throws Exception
