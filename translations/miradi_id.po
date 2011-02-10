@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-09 11:11-0600\n"
+"POT-Creation-Date: 2011-02-10 12:54-0600\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -5603,10 +5603,6 @@ msgstr "Pengaturan Proyek "
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:65
 msgid "Project Summary"
 msgstr "Rangkuman Proyek"
-
-#: Miradi/source/org/miradi/dialogs/planning/treenodes/WorkPlanCategoryTreeNode.java:62
-msgid "Project Totals"
-msgstr "Total Proyek "
 
 #: Miradi/source/org/miradi/views/noproject/CopyProject.java:38
 msgid "Project does not exist: "
@@ -32458,6 +32454,9 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "Project Totals"
+#~ msgstr "Total Proyek "
 
 #~ msgid "Strategic Plan"
 #~ msgstr "Rencana Strategis "

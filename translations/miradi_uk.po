@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-09 11:11-0600\n"
+"POT-Creation-Date: 2011-02-10 12:54-0600\n"
 "PO-Revision-Date: 2010-09-30 09:31+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -5645,10 +5645,6 @@ msgstr "Установки проекту"
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:65
 msgid "Project Summary"
 msgstr "Резюме проекту"
-
-#: Miradi/source/org/miradi/dialogs/planning/treenodes/WorkPlanCategoryTreeNode.java:62
-msgid "Project Totals"
-msgstr "Підсумки проекту"
 
 #: Miradi/source/org/miradi/views/noproject/CopyProject.java:38
 msgid "Project does not exist: "
@@ -26716,6 +26712,9 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
+
+#~ msgid "Project Totals"
+#~ msgstr "Підсумки проекту"
 
 #~ msgid "Strategic Plan"
 #~ msgstr "Стратегічний план"
