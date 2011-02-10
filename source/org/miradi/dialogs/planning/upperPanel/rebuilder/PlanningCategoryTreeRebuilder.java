@@ -24,7 +24,7 @@ import java.util.HashMap;
 
 import org.miradi.dialogs.planning.AbstractBudgetCategoryRowColumnProvider;
 import org.miradi.dialogs.planning.treenodes.NewAbstractPlanningTreeNode;
-import org.miradi.dialogs.planning.treenodes.NewPlanningTreeAlwaysExpandedBaseObjectNode;
+import org.miradi.dialogs.planning.treenodes.PlanningTreeAlwaysExpandedBaseObjectNode;
 import org.miradi.dialogs.planning.treenodes.PlanningTreeBaseObjectNode;
 import org.miradi.dialogs.planning.treenodes.UnspecifiedBaseObject;
 import org.miradi.dialogs.planning.treenodes.UnspecifiedBaseObjectNode;
@@ -53,7 +53,7 @@ public class PlanningCategoryTreeRebuilder extends AbstractTreeRebuilder
 		allAsignmentRefs.addAll(getProject().getAssignmentPool().getRefList());
 		allAsignmentRefs.addAll(getProject().getExpenseAssignmentPool().getRefList());
 
-		PlanningTreeBaseObjectNode projectNode = new NewPlanningTreeAlwaysExpandedBaseObjectNode(getProject(), rootNode, getProject().getMetadata());
+		PlanningTreeBaseObjectNode projectNode = new PlanningTreeAlwaysExpandedBaseObjectNode(getProject(), rootNode, getProject().getMetadata());
 		rootNode.addChild(projectNode);
 		
 		int initialLevel = 0;
