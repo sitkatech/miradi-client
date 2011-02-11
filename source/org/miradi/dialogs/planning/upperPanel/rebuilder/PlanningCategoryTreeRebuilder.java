@@ -97,13 +97,13 @@ public class PlanningCategoryTreeRebuilder extends AbstractTreeRebuilder
 		possiblySortChildren(parentNode, parentNode.getRawChildrenByReference());
 	}
 
-	protected NewAbstractPlanningTreeNode createChildNode(NewAbstractPlanningTreeNode parentNode, ORef possibleChildRef, int typeOfChildren) throws Exception
+	protected NewAbstractPlanningTreeNode createChildNode(NewAbstractPlanningTreeNode parentNode, ORef possibleChildRef, int typeOfNodeToCreate) throws Exception
 	{
 		if (possibleChildRef.isValid())
 			return new PlanningTreeBaseObjectNode(getProject(), parentNode, possibleChildRef);
 
-		String objectNameForType = getProject().getObjectManager().getInternalObjectTypeName(typeOfChildren);
-		return  new UnspecifiedBaseObjectNode(getProject(), parentNode, typeOfChildren, objectNameForType);
+		String objectNameForType = getProject().getObjectManager().getInternalObjectTypeName(typeOfNodeToCreate);
+		return  new UnspecifiedBaseObjectNode(getProject(), parentNode, typeOfNodeToCreate, objectNameForType);
 	}
 	
 	private boolean shouldIncludeChildNode(ORefList overlappingAssignmentRefs)
