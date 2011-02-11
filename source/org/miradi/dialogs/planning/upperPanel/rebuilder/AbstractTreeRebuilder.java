@@ -199,16 +199,16 @@ abstract public class AbstractTreeRebuilder
 	private void deleteUnclesAndTheirChildren(NewAbstractPlanningTreeNode rootNode)
 	{
 		Vector<NewAbstractPlanningTreeNode> childrenToKeep = new Vector<NewAbstractPlanningTreeNode>();
-		for(NewAbstractPlanningTreeNode childNode : rootNode.getRawChildren())
+		for(NewAbstractPlanningTreeNode childNode : rootNode.getRawChildrenByReference())
 		{
 			boolean keepThisChild = true;
-			for(NewAbstractPlanningTreeNode otherChildNode : rootNode.getRawChildren())
+			for(NewAbstractPlanningTreeNode otherChildNode : rootNode.getRawChildrenByReference())
 			{
 				if(childNode.equals(otherChildNode))
 				{
 					continue;
 				}
-				if(otherChildNode.getRawChildren().contains(childNode))
+				if(otherChildNode.getRawChildrenByReference().contains(childNode))
 				{
 					keepThisChild = false;
 					break;
@@ -264,7 +264,7 @@ abstract public class AbstractTreeRebuilder
 			return;
 		}
 		
-		destination = existingNode.getRawChildren();
+		destination = existingNode.getRawChildrenByReference();
 		addChildrenOfNodeToList(destination, newChild);
 
 		existingNode.addProportionShares(newChild);
@@ -282,7 +282,7 @@ abstract public class AbstractTreeRebuilder
 	{
 		for(NewAbstractPlanningTreeNode parentNode : destination)
 		{
-			Vector<NewAbstractPlanningTreeNode> children = parentNode.getRawChildren();
+			Vector<NewAbstractPlanningTreeNode> children = parentNode.getRawChildrenByReference();
 			NewAbstractPlanningTreeNode foundMatchingChild = findNodeWithRef(children, newChild.getObjectReference());
 			if (foundMatchingChild != null)
 				return true;
@@ -304,7 +304,7 @@ abstract public class AbstractTreeRebuilder
 	
 	private void addChildrenOfNodeToList(Vector<NewAbstractPlanningTreeNode> destination, NewAbstractPlanningTreeNode otherNode)
 	{
-		for(NewAbstractPlanningTreeNode newChild : otherNode.getRawChildren())
+		for(NewAbstractPlanningTreeNode newChild : otherNode.getRawChildrenByReference())
 		{
 			mergeChildIntoList(destination, newChild);
 		}
