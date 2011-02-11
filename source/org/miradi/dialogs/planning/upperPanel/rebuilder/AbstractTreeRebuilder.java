@@ -247,8 +247,7 @@ abstract public class AbstractTreeRebuilder
 			}
 		}
 
-		if(shouldSortChildren(node))
-			Collections.sort(newChildren, createNodeSorter());
+		possiblySortChildren(node, newChildren);
 		
 		node.setRawChildren(newChildren);
 	}
@@ -270,6 +269,11 @@ abstract public class AbstractTreeRebuilder
 
 		existingNode.addProportionShares(newChild);
 
+		possiblySortChildren(existingNode, destination);
+	}
+
+	protected void possiblySortChildren(NewAbstractPlanningTreeNode existingNode, Vector<NewAbstractPlanningTreeNode> destination)
+	{
 		if(shouldSortChildren(existingNode))
 			Collections.sort(destination, createNodeSorter());
 	}
