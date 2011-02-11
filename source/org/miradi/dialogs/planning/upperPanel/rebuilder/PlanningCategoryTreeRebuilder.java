@@ -71,11 +71,11 @@ public class PlanningCategoryTreeRebuilder extends AbstractTreeRebuilder
 		if (currentLevel >= getLevelObjectTypes().size())
 			return;
 		
-		String typeOfChildrenAsString = getLevelObjectTypes().get(currentLevel);
-		if (typeOfChildrenAsString.equals(WorkPlanCategoryTypesQuestion.UNSPECIFIED_CODE))
+		String typeOfNodeBeingCreatedAsString = getLevelObjectTypes().get(currentLevel);
+		if (typeOfNodeBeingCreatedAsString.equals(WorkPlanCategoryTypesQuestion.UNSPECIFIED_CODE))
 			return;
 		
-		int typeOfNodeBeingCreated = Integer.parseInt(typeOfChildrenAsString);
+		int typeOfNodeBeingCreated = Integer.parseInt(typeOfNodeBeingCreatedAsString);
 		HashMap<ORef, ORefList> categoryRefToAssignmentRefsMap = createCategoryRefToAssignmentRefsMap(assignmentRefsThatApplyToThisNode, typeOfNodeBeingCreated);
 		ORefList childRefs = getProject().getPool(typeOfNodeBeingCreated).getRefList();
 		addUnspecifiedRowInPlace(childRefs);
