@@ -26,9 +26,9 @@ import org.miradi.dialogs.planning.WorkPlanCategoryTreeRowColumnProvider;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 
-abstract public class WorkPlanMangementPanelConfiguration
+abstract public class WorkPlanManagementPanelConfiguration
 {
-	public WorkPlanMangementPanelConfiguration(Project projectToUse)
+	public WorkPlanManagementPanelConfiguration(Project projectToUse)
 	{
 		project = projectToUse;
 	}

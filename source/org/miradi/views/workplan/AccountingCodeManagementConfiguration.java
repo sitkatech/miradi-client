@@ -31,7 +31,7 @@ import org.miradi.icons.AccountingCodeIcon;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
 
-public class AccountingCodeManagementConfiguration extends WorkPlanMangementPanelConfiguration
+public class AccountingCodeManagementConfiguration extends WorkPlanManagementPanelConfiguration
 {
 	public AccountingCodeManagementConfiguration(Project projectToUse)
 	{
