@@ -51,7 +51,6 @@ import org.miradi.dialogs.planning.EmptyRowColumnProvider;
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
 import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.main.MainWindow;
-import org.miradi.main.Miradi;
 import org.miradi.main.MiradiToolBar;
 import org.miradi.project.Project;
 import org.miradi.views.TabbedView;
@@ -103,8 +102,7 @@ public class PlanningView extends TabbedView
 		addPlanningManagementTab(actionPlanManagementPanel);
 		addPlanningManagementTab(monitoringPlanManagementPanel);
 		addPlanningManagementTab(objectsOnlyManagementPanel);
-		if(Miradi.isAlphaTesterMode())
-			addPlanningManagementTab(customPlanManagementPanel);
+		addPlanningManagementTab(customPlanManagementPanel);
 		
 		addNonScrollingTab(resourceManagementPanel);
 	}
