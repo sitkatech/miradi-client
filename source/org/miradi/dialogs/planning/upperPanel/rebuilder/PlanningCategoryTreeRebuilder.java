@@ -75,19 +75,19 @@ public class PlanningCategoryTreeRebuilder extends AbstractTreeRebuilder
 		if (typeOfChildrenAsString.equals(WorkPlanCategoryTypesQuestion.UNSPECIFIED_CODE))
 			return;
 		
-		int typeOfChildren = Integer.parseInt(typeOfChildrenAsString);
-		HashMap<ORef, ORefList> categoryRefToAssignmentRefsMap = createCategoryRefToAssignmentRefsMap(assignmentRefsThatApplyToThisNode, typeOfChildren);
-		ORefList childRefs = getProject().getPool(typeOfChildren).getRefList();
+		int typeOfNodeBeingCreated = Integer.parseInt(typeOfChildrenAsString);
+		HashMap<ORef, ORefList> categoryRefToAssignmentRefsMap = createCategoryRefToAssignmentRefsMap(assignmentRefsThatApplyToThisNode, typeOfNodeBeingCreated);
+		ORefList childRefs = getProject().getPool(typeOfNodeBeingCreated).getRefList();
 		addUnspecifiedRowInPlace(childRefs);
 		for (int index = 0; index < childRefs.size(); ++index)
 		{	
 			ORef candidateChildRef = childRefs.get(index);
-			BaseObject possibleChildObject = createOrFindChildObject(candidateChildRef, typeOfChildren);
+			BaseObject possibleChildObject = createOrFindChildObject(candidateChildRef, typeOfNodeBeingCreated);
 			ORefList assignmentRefsThatMatchPossibleChild = getAssignmentsReferringToRow(categoryRefToAssignmentRefsMap, possibleChildObject);
 			ORefList assignmentRefsThatMatchPossibleChildHierarchy = assignmentRefsThatMatchPossibleChild.getOverlappingRefs(assignmentRefsThatApplyToThisNode);
 			if (shouldIncludeChildNode(assignmentRefsThatMatchPossibleChildHierarchy))
 			{
-				NewAbstractPlanningTreeNode childNode = createChildNode(parentNode, candidateChildRef, typeOfChildren);
+				NewAbstractPlanningTreeNode childNode = createChildNode(parentNode, candidateChildRef, typeOfNodeBeingCreated);
 				
 				parentNode.addChild(childNode);
 				rebuild(childNode, assignmentRefsThatMatchPossibleChildHierarchy, childLevel);
