@@ -43,16 +43,16 @@ public class TNCSummaryPanel extends ObjectDataInputPanel
 {
 	public TNCSummaryPanel(Project projectToUse, ProjectMetadata metadata) throws Exception
 	{
-		super(projectToUse, metadata.getType(), metadata.getId());
+		super(projectToUse, metadata.getRef());
 
-		addField(createReadonlyTextField(metadata.TAG_TNC_DATABASE_DOWNLOAD_DATE));
+		addField(createReadonlyTextField(ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE));
 		addField(createReadonlyTextField(Xenodata.getObjectType(), Xenodata.TAG_PROJECT_ID));
 		
 		addField(createStringField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS));
 		addField(createSingleColumnCodeListField(TncProjectData.getObjectType(), TncProjectData.TAG_PROJECT_PLACE_TYPES, getProject().getQuestion(TncProjectPlaceTypeQuestion.class)));
 		addField(createSingleColumnCodeListField(TncProjectData.getObjectType(), TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES, getProject().getQuestion(TncOrganizationalPrioritiesQuestion.class)));
 
-		addField(createStringField(metadata.TAG_TNC_PLANNING_TEAM_COMMENT));
+		addField(createStringField(ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENT));
 		addField(createReadonlyTextField(TncProjectData.getObjectType(), TncProjectData.TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT));
 
 		addField(createSingleColumnCodeListField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_TNC_OPERATING_UNITS, new TncOperatingUnitsQuestion()));
