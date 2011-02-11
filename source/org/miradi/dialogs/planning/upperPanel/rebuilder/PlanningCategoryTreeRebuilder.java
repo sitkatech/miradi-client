@@ -81,13 +81,13 @@ public class PlanningCategoryTreeRebuilder extends AbstractTreeRebuilder
 		addUnspecifiedRowInPlace(childRefs);
 		for (int index = 0; index < childRefs.size(); ++index)
 		{	
-			ORef possibleChildRef = childRefs.get(index);
-			BaseObject possibleChildObject = createOrFindChildObject(possibleChildRef, typeOfChildren);
+			ORef candidateChildRef = childRefs.get(index);
+			BaseObject possibleChildObject = createOrFindChildObject(candidateChildRef, typeOfChildren);
 			ORefList assignmentRefsThatMatchPossibleChild = getAssignmentsReferringToRow(categoryRefToAssignmentRefsMap, possibleChildObject);
 			ORefList assignmentRefsThatMatchPossibleChildHierarchy = assignmentRefsThatMatchPossibleChild.getOverlappingRefs(assignmentRefsThatApplyToThisNode);
 			if (shouldIncludeChildNode(assignmentRefsThatMatchPossibleChildHierarchy))
 			{
-				NewAbstractPlanningTreeNode childNode = createChildNode(parentNode, possibleChildRef, typeOfChildren);
+				NewAbstractPlanningTreeNode childNode = createChildNode(parentNode, candidateChildRef, typeOfChildren);
 				
 				parentNode.addChild(childNode);
 				rebuild(childNode, assignmentRefsThatMatchPossibleChildHierarchy, childLevel);
