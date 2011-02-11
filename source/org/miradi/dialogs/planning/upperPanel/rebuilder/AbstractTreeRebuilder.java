@@ -310,7 +310,7 @@ abstract public class AbstractTreeRebuilder
 		}
 	}
 
-	protected boolean shouldSortChildren(NewAbstractPlanningTreeNode parentNode)
+	private boolean shouldSortChildren(NewAbstractPlanningTreeNode parentNode)
 	{
 		ORef parentRef = parentNode.getObjectReference();
 		if(Task.is(parentRef))
@@ -325,7 +325,7 @@ abstract public class AbstractTreeRebuilder
 		return true;
 	}
 
-	protected NodeSorter createNodeSorter()
+	private NodeSorter createNodeSorter()
 	{
 		return new NodeSorter();
 	}

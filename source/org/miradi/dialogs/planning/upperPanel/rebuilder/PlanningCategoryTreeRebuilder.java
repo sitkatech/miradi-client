@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.upperPanel.rebuilder;
 
-import java.util.Collections;
 import java.util.HashMap;
 
 import org.miradi.dialogs.planning.AbstractBudgetCategoryRowColumnProvider;
@@ -95,8 +94,7 @@ public class PlanningCategoryTreeRebuilder extends AbstractTreeRebuilder
 			}
 		}
 		
-		if(shouldSortChildren(parentNode))
-			Collections.sort(parentNode.getRawChildren(), createNodeSorter());
+		possiblySortChildren(parentNode, parentNode.getRawChildren());
 	}
 
 	protected NewAbstractPlanningTreeNode createChildNode(NewAbstractPlanningTreeNode parentNode, ORef possibleChildRef, int typeOfChildren) throws Exception
