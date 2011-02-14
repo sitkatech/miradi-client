@@ -108,7 +108,7 @@ public class DashboardMainPanel extends DisposablePanel
 		currentTab = conceptualizeDashboardTab;
 	}
 	
-	private void addTab(SplitterPanelWithRightSideTextPanel tab)
+	private void addTab(OpenStandardsDashboardTab tab)
 	{
 		tabs.addTab(tab.getPanelDescription(), tab);
 	}
@@ -123,7 +123,7 @@ public class DashboardMainPanel extends DisposablePanel
 		public void stateChanged(ChangeEvent event)
 		{
 			currentTab.becomeInactive();
-			DisposablePanel selectedTab = (DisposablePanel) tabs.getSelectedComponent();
+			OpenStandardsDashboardTab selectedTab = (OpenStandardsDashboardTab) tabs.getSelectedComponent();
 			currentTab = selectedTab;
 			currentTab.becomeActive();
 		}
@@ -132,9 +132,9 @@ public class DashboardMainPanel extends DisposablePanel
 	private JTabbedPane tabs;
 	private MainWindow mainWindow;
 	private DisposablePanel currentTab;
-	private SplitterPanelWithRightSideTextPanel conceptualizeDashboardTab;
-	private SplitterPanelWithRightSideTextPanel planActionsAndMonitoringTab;
-	private SplitterPanelWithRightSideTextPanel implementActionsAndMonitoringTab;
-	private	SplitterPanelWithRightSideTextPanel analyzeAdaptAndUseTab;
-	private SplitterPanelWithRightSideTextPanel captureAndShareLearningTab;
+	private OpenStandardsDashboardTab conceptualizeDashboardTab;
+	private OpenStandardsDashboardTab planActionsAndMonitoringTab;
+	private OpenStandardsDashboardTab implementActionsAndMonitoringTab;
+	private	OpenStandardsDashboardTab analyzeAdaptAndUseTab;
+	private OpenStandardsDashboardTab captureAndShareLearningTab;
 }
