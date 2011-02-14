@@ -68,7 +68,7 @@ public class DashboardMainPanel extends DisposablePanel
 		super.becomeActive();
 		
 		getCurrentTab().becomeActive();
-		setCurrentTab();
+		selectTabComponent();
 	}
 	
 	@Override
@@ -119,7 +119,7 @@ public class DashboardMainPanel extends DisposablePanel
 		}
 	}
 	
-	private void setCurrentTab()
+	private void selectTabComponent()
 	{
 		ORef dashboardRef = getProject().getSingletonObjectRef(Dashboard.getObjectType());
 		Dashboard dashboard = Dashboard.find(getProject(), dashboardRef);
