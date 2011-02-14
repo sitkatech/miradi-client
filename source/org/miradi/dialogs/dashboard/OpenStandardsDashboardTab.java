@@ -45,5 +45,7 @@ abstract public class OpenStandardsDashboardTab extends SplitterPanelWithRightSi
 		return AbstractOpenStandardsQuestionPanel.DASHBOARD_BACKGROUND_COLOR;
 	}
 	
+	abstract public String getTabCode();
+	
 	private static final int BORDER_THICKNESS = 10;
 }

@@ -31,6 +31,7 @@ import org.miradi.dialogs.dashboard.DashboardRowDefinitionManager;
 import org.miradi.dialogs.threatrating.upperPanel.TargetThreatLinkTableModel;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
+import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
@@ -1206,6 +1207,7 @@ public class Dashboard extends BaseObject
 		progressChoiceMap = new StringChoiceMapData(TAG_PROGRESS_CHOICE_MAP);
 		commentsMap = new StringStringMapData(TAG_COMMENTS_MAP);
 		flagsMap = new StringCodeListMapData(TAG_FLAGS_MAP);
+		currentDashboardTab = new StringData(TAG_CURRENT_DASHBOARD_TAB);
 		
 		addPresentationDataField(PSEUDO_TEAM_MEMBER_COUNT, teamMemberCount);
 		addPresentationDataField(PSEUDO_PROJECT_SCOPE_WORD_COUNT, projectScopeWordCount);
@@ -1279,6 +1281,7 @@ public class Dashboard extends BaseObject
 		addPresentationDataField(TAG_PROGRESS_CHOICE_MAP, progressChoiceMap);
 		addPresentationDataField(TAG_COMMENTS_MAP, commentsMap);
 		addPresentationDataField(TAG_FLAGS_MAP, flagsMap);
+		addPresentationDataField(TAG_CURRENT_DASHBOARD_TAB, currentDashboardTab);
 	}
 	
 	public static final String OBJECT_NAME = "Dashboard";
@@ -1356,6 +1359,13 @@ public class Dashboard extends BaseObject
 	public static final String TAG_PROGRESS_CHOICE_MAP = "ProgressChoiceMap";
 	public static final String TAG_COMMENTS_MAP = "CommentsMap";
 	public static final String TAG_FLAGS_MAP = "FlagsMap";
+	public static final String TAG_CURRENT_DASHBOARD_TAB = "CurrentDashboardTab";
+	
+	public static final String DASHBOARD_CONCEPTUALIZE_TAB_CODE = "Conceptualize";
+	public static final String DASHBOARD_PLAN_TAB_CODE = "Plan";
+	public static final String DASHBOARD_IMPLEMENT_TAB_CODE = "Implement";
+	public static final String DASHBOARD_ANALYZE_TAB_CODE = "Analyze";
+	public static final String DASHBOARD_LEARN_TAB_CODE = "Learn";
 
 	private DashboardRowDefinitionManager rowDefinitionManager;
 	private PseudoStringData teamMemberCount;
@@ -1430,4 +1440,5 @@ public class Dashboard extends BaseObject
 	private StringChoiceMapData progressChoiceMap;
 	private StringStringMapData commentsMap;
 	private StringCodeListMapData flagsMap;
+	private StringData currentDashboardTab;
 }
