@@ -22,6 +22,7 @@ package org.miradi.dialogs.dashboard;
 
 import org.miradi.dialogs.base.OpenStandardsConceptualizeQuestionPanel;
 import org.miradi.main.MainWindow;
+import org.miradi.objects.Dashboard;
 import org.miradi.questions.OpenStandardsConceptualizeQuestion;
 
 public class OpenStandardsConceptualizeDashboardTab extends	OpenStandardsDashboardTab
@@ -47,5 +48,11 @@ public class OpenStandardsConceptualizeDashboardTab extends	OpenStandardsDashboa
 	public String getPanelDescription()
 	{
 		return new OpenStandardsConceptualizeQuestion().getConceptualizeHeaderLabel();
+	}
+	
+	@Override
+	public String getTabCode()
+	{
+		return Dashboard.DASHBOARD_CONCEPTUALIZE_TAB_CODE;
 	}
 }

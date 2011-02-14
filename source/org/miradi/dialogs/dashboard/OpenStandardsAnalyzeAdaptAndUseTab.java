@@ -22,6 +22,7 @@ package org.miradi.dialogs.dashboard;
 
 import org.miradi.dialogs.base.AbstractOpenStandardsQuestionPanel;
 import org.miradi.main.MainWindow;
+import org.miradi.objects.Dashboard;
 import org.miradi.questions.OpenStandardsAnalyzeUseAndAdaptQuestion;
 
 public class OpenStandardsAnalyzeAdaptAndUseTab extends OpenStandardsDashboardTab
@@ -47,5 +48,11 @@ public class OpenStandardsAnalyzeAdaptAndUseTab extends OpenStandardsDashboardTa
 	public String getPanelDescription()
 	{
 		return new OpenStandardsAnalyzeUseAndAdaptQuestion().getHeaderLabel();
+	}
+	
+	@Override
+	public String getTabCode()
+	{
+		return Dashboard.DASHBOARD_ANALYZE_TAB_CODE;
 	}
 }
