@@ -20,13 +20,20 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.dashboard;
 
+import java.util.HashMap;
+
 import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.fieldComponents.PanelTabbedPane;
+import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.Dashboard;
+import org.miradi.project.Project;
 
 public class DashboardMainPanel extends DisposablePanel
 {
@@ -35,9 +42,9 @@ public class DashboardMainPanel extends DisposablePanel
 		super();
 		
 		mainWindow = mainWindowToUse;
+		codeToTabMap = new HashMap<String, OpenStandardsDashboardTab>();
 		tabs = new PanelTabbedPane();
 		createTabs();
-		setInitialTab();
 		addTabsToTabbedPanel();
 		add(tabs);
 		tabs.addChangeListener(new TabChangeListener());
@@ -61,6 +68,7 @@ public class DashboardMainPanel extends DisposablePanel
 		super.becomeActive();
 		
 		getCurrentTab().becomeActive();
+		setCurrentTab();
 	}
 	
 	@Override
@@ -96,21 +104,37 @@ public class DashboardMainPanel extends DisposablePanel
 
 	private void addTabsToTabbedPanel()
 	{
-		addTab(conceptualizeDashboardTab);
-		addTab(planActionsAndMonitoringTab);
-		addTab(implementActionsAndMonitoringTab);
-		addTab(analyzeAdaptAndUseTab);
-		addTab(captureAndShareLearningTab);
+		ignoreTabChanges = true;
+		try
+		{
+			addTab(conceptualizeDashboardTab);
+			addTab(planActionsAndMonitoringTab);
+			addTab(implementActionsAndMonitoringTab);
+			addTab(analyzeAdaptAndUseTab);
+			addTab(captureAndShareLearningTab);
+		}
+		finally 
+		{
+			ignoreTabChanges = false;
+		}
 	}
 	
-	private void setInitialTab()
+	private void setCurrentTab()
 	{
-		currentTab = conceptualizeDashboardTab;
+		ORef dashboardRef = getProject().getSingletonObjectRef(Dashboard.getObjectType());
+		Dashboard dashboard = Dashboard.find(getProject(), dashboardRef);
+		String dashboardTabCode = dashboard.getData(Dashboard.TAG_CURRENT_DASHBOARD_TAB);
+		currentTab = codeToTabMap.get(dashboardTabCode);		
+		if (currentTab == null)
+			currentTab = conceptualizeDashboardTab;
+		
+		tabs.setSelectedComponent(currentTab);
 	}
 	
 	private void addTab(OpenStandardsDashboardTab tab)
 	{
 		tabs.addTab(tab.getPanelDescription(), tab);
+		codeToTabMap.put(tab.getTabCode(), tab);
 	}
 	
 	private MainWindow getMainWindow()
@@ -118,20 +142,47 @@ public class DashboardMainPanel extends DisposablePanel
 		return mainWindow;
 	}
 	
-	class TabChangeListener implements ChangeListener
+	private Project getProject()
+	{
+		return getMainWindow().getProject();
+	}
+	
+	private class TabChangeListener implements ChangeListener
 	{
 		public void stateChanged(ChangeEvent event)
 		{
+			if(ignoreTabChanges)
+				return;
+
 			currentTab.becomeInactive();
 			OpenStandardsDashboardTab selectedTab = (OpenStandardsDashboardTab) tabs.getSelectedComponent();
 			currentTab = selectedTab;
 			currentTab.becomeActive();
+
+			saveTab(selectedTab);
+		}
+
+		private void saveTab(OpenStandardsDashboardTab selectedTab)
+		{
+			try
+			{
+				ORef dashboardRef = getProject().getSingletonObjectRef(Dashboard.getObjectType());
+				CommandSetObjectData setTabCommand = new CommandSetObjectData(dashboardRef, Dashboard.TAG_CURRENT_DASHBOARD_TAB, selectedTab.getTabCode());
+				getProject().executeCommand(setTabCommand);
+			}
+			catch (Exception e)
+			{
+				EAM.logException(e);
+				EAM.unexpectedErrorDialog(e);
+			}
 		}
 	}
 	
 	private JTabbedPane tabs;
 	private MainWindow mainWindow;
 	private DisposablePanel currentTab;
+	private boolean ignoreTabChanges;
+	private HashMap<String, OpenStandardsDashboardTab> codeToTabMap; 
 	private OpenStandardsDashboardTab conceptualizeDashboardTab;
 	private OpenStandardsDashboardTab planActionsAndMonitoringTab;
 	private OpenStandardsDashboardTab implementActionsAndMonitoringTab;
