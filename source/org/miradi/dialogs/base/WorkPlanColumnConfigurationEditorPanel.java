@@ -23,8 +23,10 @@ package org.miradi.dialogs.base;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.WorkPlanVisibleRowsQuestion;
 
 public class WorkPlanColumnConfigurationEditorPanel extends ObjectDataInputPanel
 {
@@ -37,6 +39,8 @@ public class WorkPlanColumnConfigurationEditorPanel extends ObjectDataInputPanel
 
 		PanelTitleLabel label = new PanelTitleLabel(EAM.text("Column groups:"));
 		addFieldWithCustomLabel(createStringMapWorkPlanBudgetColumnCodeListEditor(orefToUse.getObjectType(), tagToUse, question), label);
+		
+		addField(createChoiceField(TableSettings.getObjectType(), TableSettings.TAG_WORK_PLAN_VISIBLE_NODES_CODE, getProject().getQuestion(WorkPlanVisibleRowsQuestion.class)));
 		
 		updateFieldsFromProject();
 	}
