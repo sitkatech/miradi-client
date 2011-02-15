@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-15 13:51-0600\n"
+"POT-Creation-Date: 2011-02-15 16:32-0600\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -948,7 +948,7 @@ msgstr ""
 "class='toolbarbutton'>&lt;Edit&gt;/&lt;Preferensi&gt;</code>, lalu lihat di "
 "bagian bawah tab <code class='toolbarbutton'>&lt;Lokasi Data&gt;</code>. "
 
-#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:36
+#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:38
 msgid "<html>Select which column groups to display."
 msgstr "<html>Pilih grup kolom mana yang akan ditampilkan. "
 
@@ -1244,6 +1244,10 @@ msgstr "Buat Tekanan dari AEK "
 #: Miradi/source/org/miradi/actions/ActionHelpCredits.java:34
 msgid "Action|Credits"
 msgstr "Penghargaan "
+
+#: Miradi/source/org/miradi/actions/ActionWorkPlanBudgetColumnsEditor.java:35
+msgid "Action|Customize Table..."
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionCreateCustomFromCurrentTreeTableConfiguration.java:35
 #: Miradi/source/org/miradi/actions/ActionPlanningCustomizeDialogPopup.java:35
@@ -1764,10 +1768,6 @@ msgstr "Berbagi Metode "
 #: Miradi/source/org/miradi/actions/ActionShowActivityBubble.java:34
 msgid "Action|Show Activity on this page"
 msgstr "Tampakkan Kegiatan pada halaman ini "
-
-#: Miradi/source/org/miradi/actions/ActionWorkPlanBudgetColumnsEditor.java:35
-msgid "Action|Show Columns..."
-msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionShowConceptualModel.java:35
 #: Miradi/source/org/miradi/actions/ActionShowConceptualModel.java:41
@@ -2732,7 +2732,7 @@ msgstr ""
 msgid "Collapse Selected Column"
 msgstr "Lipat Kolom yang Dipilih "
 
-#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:38
+#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:40
 msgid "Column groups:"
 msgstr "Grup kolom: "
 
@@ -6034,9 +6034,21 @@ msgstr ""
 msgid "Should Now Allow Full Time Employee To Be Calculated For "
 msgstr "Memungkinkan Kalkulasi Karyawan Purnawaktu Untuk "
 
+#: Miradi/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:38
+msgid "Show Action-Related Rows"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:37
+msgid "Show All Rows"
+msgstr ""
+
 #: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:266
 msgid "Show Diagram Grid"
 msgstr "Tampakkan Kisi-kisi Diagram "
+
+#: Miradi/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:39
+msgid "Show Monitoring-Related Rows"
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/QuarterColumnsVisibilityQuestion.java:35
 msgid "Show Quarter Columns"
@@ -6407,10 +6419,6 @@ msgstr "Ubah kolom yang tampil "
 msgid "TT|Change visible rows"
 msgstr "Ubah baris yang tampil "
 
-#: Miradi/source/org/miradi/actions/ActionWorkPlanBudgetColumnsEditor.java:41
-msgid "TT|Change which columns are shown"
-msgstr "Ubah kolom mana yang ditampilkan "
-
 #: Miradi/source/org/miradi/actions/ActionEditTaggedObjectSet.java:40
 msgid "TT|Choose which factors are tagged."
 msgstr "Pilih faktor-faktor mana yang ditandai."
@@ -6644,6 +6652,10 @@ msgstr "Buat, Hapus, atau Edit Tekanan "
 
 #: Miradi/source/org/miradi/actions/ActionPlanningCustomizeDialogPopup.java:41
 msgid "TT|Customize View"
+msgstr ""
+
+#: Miradi/source/org/miradi/actions/ActionWorkPlanBudgetColumnsEditor.java:41
+msgid "TT|Customize Work Plan Tree"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionCut.java:40
@@ -8312,7 +8324,7 @@ msgstr ""
 "Anda. Rencana kerja yang baik menunjukkan waktu dan urutan dari setiap tugas "
 "serta sumber daya tertentu yang diperlukan untuk melaksanakannya."
 
-#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:47
+#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:51
 msgid "Work Plan Column Editor"
 msgstr "Editor Kolom Rencana Kerja "
 
@@ -9876,6 +9888,9 @@ msgstr ""
 
 msgid "FieldLabel|48.TagTableSettingsMap|Table Settings"
 msgstr "Pengaturan Tabel "
+
+msgid "FieldLabel|48.WorkPlanVisibleNodesCode|Visible Rows"
+msgstr ""
 
 msgid "FieldLabel|49.ThreatRatingCommentsData|Threat Rating Comments"
 msgstr ""
@@ -32453,6 +32468,9 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "TT|Change which columns are shown"
+#~ msgstr "Ubah kolom mana yang ditampilkan "
 
 #~ msgid "Project Totals"
 #~ msgstr "Total Proyek "

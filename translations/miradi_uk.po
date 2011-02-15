@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-15 13:51-0600\n"
+"POT-Creation-Date: 2011-02-15 16:32-0600\n"
 "PO-Revision-Date: 2010-09-30 09:31+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -1013,7 +1013,7 @@ msgstr ""
 "class='toolbarbutton'>&lt;Edit&gt;/&lt;Preferences&gt;</code> меню і гляньте "
 "на низ <code class='toolbarbutton'>&lt;Data Location&gt;</code> табулятора."
 
-#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:36
+#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:38
 msgid "<html>Select which column groups to display."
 msgstr "<html>Виберіть, яку групу колонок показати."
 
@@ -1315,6 +1315,10 @@ msgstr "Action|Створити тиск з  KEA"
 #: Miradi/source/org/miradi/actions/ActionHelpCredits.java:34
 msgid "Action|Credits"
 msgstr "Action|Розробники"
+
+#: Miradi/source/org/miradi/actions/ActionWorkPlanBudgetColumnsEditor.java:35
+msgid "Action|Customize Table..."
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionCreateCustomFromCurrentTreeTableConfiguration.java:35
 #: Miradi/source/org/miradi/actions/ActionPlanningCustomizeDialogPopup.java:35
@@ -1835,10 +1839,6 @@ msgstr "Action|Розподілити метод"
 #: Miradi/source/org/miradi/actions/ActionShowActivityBubble.java:34
 msgid "Action|Show Activity on this page"
 msgstr "Action|Показати Діяльність на цій сторінці"
-
-#: Miradi/source/org/miradi/actions/ActionWorkPlanBudgetColumnsEditor.java:35
-msgid "Action|Show Columns..."
-msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionShowConceptualModel.java:35
 #: Miradi/source/org/miradi/actions/ActionShowConceptualModel.java:41
@@ -2803,7 +2803,7 @@ msgstr ""
 msgid "Collapse Selected Column"
 msgstr "Видалити вибрану колонку"
 
-#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:38
+#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:40
 msgid "Column groups:"
 msgstr "Групи колонок:"
 
@@ -6073,9 +6073,21 @@ msgstr "Ділитися успіхами і невдачами з практи�
 msgid "Should Now Allow Full Time Employee To Be Calculated For "
 msgstr "Дозволити повночасному працівнику бути врахованим"
 
+#: Miradi/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:38
+msgid "Show Action-Related Rows"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:37
+msgid "Show All Rows"
+msgstr ""
+
 #: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:266
 msgid "Show Diagram Grid"
 msgstr "Показати Сітку діаграми"
+
+#: Miradi/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:39
+msgid "Show Monitoring-Related Rows"
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/QuarterColumnsVisibilityQuestion.java:35
 msgid "Show Quarter Columns"
@@ -6442,10 +6454,6 @@ msgstr "TT|Змінити видимі стовпчики"
 msgid "TT|Change visible rows"
 msgstr "TT|Змінити видимі рядки"
 
-#: Miradi/source/org/miradi/actions/ActionWorkPlanBudgetColumnsEditor.java:41
-msgid "TT|Change which columns are shown"
-msgstr "TT|Змінити показані колонки"
-
 #: Miradi/source/org/miradi/actions/ActionEditTaggedObjectSet.java:40
 msgid "TT|Choose which factors are tagged."
 msgstr "TT|Вибрати, які фактори є з тегами"
@@ -6679,6 +6687,10 @@ msgstr "TT|Створити, видалити або редагувати акц
 
 #: Miradi/source/org/miradi/actions/ActionPlanningCustomizeDialogPopup.java:41
 msgid "TT|Customize View"
+msgstr ""
+
+#: Miradi/source/org/miradi/actions/ActionWorkPlanBudgetColumnsEditor.java:41
+msgid "TT|Customize Work Plan Tree"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionCut.java:40
@@ -8326,7 +8338,7 @@ msgstr ""
 "Робочий план - опис спеціальних дій, методів і завдань, які ви повинні "
 "здійснити згідно з вашими стратегічним планом і планом моніторингу"
 
-#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:47
+#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:51
 msgid "Work Plan Column Editor"
 msgstr "Редактор колонок робочого плану"
 
@@ -9909,6 +9921,9 @@ msgstr ""
 
 msgid "FieldLabel|48.TagTableSettingsMap|Table Settings"
 msgstr "FieldLabel|48.TagTableSettingsMap|Установки таблиці"
+
+msgid "FieldLabel|48.WorkPlanVisibleNodesCode|Visible Rows"
+msgstr ""
 
 msgid "FieldLabel|49.ThreatRatingCommentsData|Threat Rating Comments"
 msgstr ""
@@ -26711,6 +26726,9 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
+
+#~ msgid "TT|Change which columns are shown"
+#~ msgstr "TT|Змінити показані колонки"
 
 #~ msgid "Project Totals"
 #~ msgstr "Підсумки проекту"
