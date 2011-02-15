@@ -67,8 +67,8 @@ public class DashboardMainPanel extends DisposablePanel
 	{
 		super.becomeActive();
 		
-		getCurrentTab().becomeActive();
 		selectTabComponent();
+		getCurrentTab().becomeActive();
 	}
 	
 	@Override
@@ -121,14 +121,22 @@ public class DashboardMainPanel extends DisposablePanel
 	
 	private void selectTabComponent()
 	{
-		ORef dashboardRef = getProject().getSingletonObjectRef(Dashboard.getObjectType());
-		Dashboard dashboard = Dashboard.find(getProject(), dashboardRef);
-		String dashboardTabCode = dashboard.getData(Dashboard.TAG_CURRENT_DASHBOARD_TAB);
-		currentTab = codeToTabMap.get(dashboardTabCode);		
-		if (currentTab == null)
-			currentTab = conceptualizeDashboardTab;
-		
-		tabs.setSelectedComponent(currentTab);
+		ignoreTabChanges = true;
+		try
+		{
+			ORef dashboardRef = getProject().getSingletonObjectRef(Dashboard.getObjectType());
+			Dashboard dashboard = Dashboard.find(getProject(), dashboardRef);
+			String dashboardTabCode = dashboard.getData(Dashboard.TAG_CURRENT_DASHBOARD_TAB);
+			currentTab = codeToTabMap.get(dashboardTabCode);		
+			if (currentTab == null)
+				currentTab = conceptualizeDashboardTab;
+
+			tabs.setSelectedComponent(currentTab);
+		}
+		finally 
+		{
+			ignoreTabChanges = false;
+		}
 	}
 	
 	private void addTab(OpenStandardsDashboardTab tab)
