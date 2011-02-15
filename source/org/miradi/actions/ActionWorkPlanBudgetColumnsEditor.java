@@ -32,12 +32,12 @@ public class ActionWorkPlanBudgetColumnsEditor extends ObjectsAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Show Columns...");
+		return EAM.text("Action|Customize Table...");
 	}
 
 	@Override
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Change which columns are shown");
+		return EAM.text("TT|Customize Work Plan Tree");
 	}
 }
