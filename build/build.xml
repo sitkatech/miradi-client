@@ -684,9 +684,6 @@
 <!-- HUNGARIAN                                                          -->
 <!-- ================================================================== -->
 <target name="hungarian" depends="pot" description="Update Hungarian Content">
-	<property name="po.locale" value="HU" />
-	<property name="po.file" value="${miradi.po.hu}" />
-	<antcall target="create-new-po"/>
 	<antcall target="update-po">
 		<param name="po.file" value="${miradi.po.hu}"/>
 		<param name="language.code" value="hu"/>
