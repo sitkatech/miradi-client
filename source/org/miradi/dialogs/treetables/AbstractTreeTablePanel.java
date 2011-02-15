@@ -201,6 +201,9 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 		if(didAffectTableSettingsMapForBudgetColumns(event))
 			return true;
 		
+		if(event.isSetDataCommandWithThisTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_WORK_PLAN_VISIBLE_NODES_CODE))
+			return true;
+		
 		if (isCustomConfigurationCommand(event))
 			return true;
 		
