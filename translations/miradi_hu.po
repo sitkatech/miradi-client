@@ -1,6 +1,6 @@
-# Language HU translations for j package.
+# Language HU translations for Miradi.
 # Copyright (C) 2011 Benetech
-# This file is distributed under the same license as the j package.
+# This file is distributed under the same license as Miradi.
 # Automatically generated, 2011.
 #
 #: Miradi/source/org/miradi/questions/OpenStandardsPlanActionsAndMonitoringQuestion.java:33
@@ -14,7 +14,7 @@
 #: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:45
 msgid ""
 msgstr ""
-"Project-Id-Version: j 2ee-hudson\n"
+"Project-Id-Version: Miradi\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-02-15 16:35-0600\n"
 "PO-Revision-Date: 2011-02-15 16:35-0600\n"
