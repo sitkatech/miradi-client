@@ -115,7 +115,8 @@ abstract public class XmlExporterDoer extends AbstractFileSaverDoer
 		for (int refIndex = 0; refIndex < allDiagramObjectRefs.size(); ++refIndex)
 		{
 			DiagramObject diagramObject = (DiagramObject) getProject().findObject(allDiagramObjectRefs.get(refIndex));
-			String imageName = getDiagramPrefix(diagramObject.getRef()) + refIndex + PNGFileFilter.EXTENSION;
+			ORef diagramRef = diagramObject.getRef();
+			String imageName = getDiagramPrefix(diagramRef) + refIndex + PNGFileFilter.EXTENSION;
 			writeDiagramImage(zipOut, diagramObject, imageName);
 		}
 	}
