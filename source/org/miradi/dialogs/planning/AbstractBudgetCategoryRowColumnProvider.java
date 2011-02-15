@@ -62,6 +62,11 @@ abstract public class AbstractBudgetCategoryRowColumnProvider extends AbstractPl
 		return true;
 	}
 	
+	public boolean shouldPutTargetsAtTopLevelOfTree() throws Exception
+	{
+		return false;
+	}
+	
 	public CodeList getLevelTypeCodes() throws Exception
 	{
 		return new CodeList(new String[] {

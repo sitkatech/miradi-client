@@ -91,6 +91,12 @@ public class ConfigurableRowColumnProvider extends AbstractPlanningTreeRowColumn
 		return customization.doObjectivesContainStrategies();
 	}
 
+	@Override
+	public boolean shouldPutTargetsAtTopLevelOfTree() throws Exception
+	{
+		return getCurrentCustomization().shouldPutTargetsAtTopLevelOfTree();
+	}
+
 	private PlanningTreeRowColumnProvider getCurrentCustomization() throws Exception
 	{
 		ViewData viewData = getCurrentViewData();
