@@ -67,7 +67,7 @@ public class WorkPlanRowColumnProvider extends AbstractPlanningTreeRowColumnProv
 	{
 		try
 		{
-			TableSettings tableSettings = TableSettings.findOrCreate(getProject(), WorkPlanTreeTablePanel.getTabSpecificModelIdentifier());
+			TableSettings tableSettings = getWorkPlanTableSettings();
 			StringStringMap tableSettingsMap = tableSettings.getTableSettingsMap();
 			String codeListAsString = tableSettingsMap.get(TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
 
@@ -93,4 +93,8 @@ public class WorkPlanRowColumnProvider extends AbstractPlanningTreeRowColumnProv
 				});
 	}
 	
+	private TableSettings getWorkPlanTableSettings() throws Exception
+	{
+		return TableSettings.findOrCreate(getProject(), WorkPlanTreeTablePanel.getTabSpecificModelIdentifier());
+	}
 }
