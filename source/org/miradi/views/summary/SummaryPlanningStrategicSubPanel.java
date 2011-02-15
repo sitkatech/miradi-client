@@ -26,6 +26,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.questions.PlanningTreeTargetPositionQuestion;
 
+//TODO low - this class can be removed.  The Target node position is now in the ObjectTreeTableConfiguration object.
 public class SummaryPlanningStrategicSubPanel extends ObjectDataInputPanel
 {
 	public SummaryPlanningStrategicSubPanel(MainWindow mainWindowToUse)

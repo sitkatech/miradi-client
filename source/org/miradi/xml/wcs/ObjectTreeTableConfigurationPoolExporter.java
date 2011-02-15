@@ -24,6 +24,7 @@ import org.martus.util.UnicodeWriter;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.questions.DiagramObjectDataInclusionQuestion;
+import org.miradi.questions.PlanningTreeTargetPositionQuestion;
 import org.miradi.questions.StrategyObjectiveTreeOrderQuestion;
 
 public class ObjectTreeTableConfigurationPoolExporter extends	BaseObjectPoolExporter
@@ -40,5 +41,6 @@ public class ObjectTreeTableConfigurationPoolExporter extends	BaseObjectPoolExpo
 		
 		writeCodeElementSameAsTag(baseObject, ObjectTreeTableConfiguration.TAG_DIAGRAM_DATA_INCLUSION, new DiagramObjectDataInclusionQuestion());
 		writeCodeElementSameAsTag(baseObject, ObjectTreeTableConfiguration.TAG_STRATEGY_OBJECTIVE_ORDER, new StrategyObjectiveTreeOrderQuestion());
+		writeOptionalCodeElementSameAsTag(baseObject, ObjectTreeTableConfiguration.TAG_TARGET_NODE_POSITION, new PlanningTreeTargetPositionQuestion());
 	}
 }

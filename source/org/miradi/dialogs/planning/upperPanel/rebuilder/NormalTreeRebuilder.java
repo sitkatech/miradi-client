@@ -242,7 +242,7 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		return getRowColumnProvider().doObjectivesContainStrategies();
 	}
 	
-	private boolean shouldIncludeFactorWithinDiagram(Factor factor)
+	private boolean shouldIncludeFactorWithinDiagram(Factor factor) throws Exception
 	{
 		if (AbstractTarget.isAbstractTarget(factor) && !shouldTargetsBeAtSameLevelAsDiagrams())
 			return true;

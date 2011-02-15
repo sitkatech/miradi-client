@@ -29,4 +29,9 @@ abstract public class AbstractPlanningTreeRowColumnProvider extends AbstractPlan
 	{
 		super(projectToUse);
 	}
+	
+	public boolean shouldPutTargetsAtTopLevelOfTree() throws Exception
+	{
+		return false;
+	}
 }

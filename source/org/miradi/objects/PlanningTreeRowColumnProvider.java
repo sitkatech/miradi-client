@@ -30,4 +30,5 @@ public interface PlanningTreeRowColumnProvider extends RowColumnProvider
 	public abstract boolean shouldIncludeResultsChain() throws Exception;
 	public abstract boolean shouldIncludeConceptualModelPage() throws Exception;
 	public abstract boolean doObjectivesContainStrategies() throws Exception;
+	public abstract boolean shouldPutTargetsAtTopLevelOfTree() throws Exception;
 }
