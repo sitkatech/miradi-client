@@ -204,7 +204,7 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 		if (isCustomConfigurationCommand(event))
 			return true;
 		
-		if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_PLANNING_TREE_TARGET_NODE_POSITION))
+		if (event.isSetDataCommandWithThisTypeAndTag(ObjectTreeTableConfiguration.getObjectType(), ObjectTreeTableConfiguration.TAG_TARGET_NODE_POSITION))
 			return true;
 		
 		if (event.isSetDataCommandWithThisTypeAndTag(ViewData.getObjectType(), ViewData.TAG_ACTION_TREE_CONFIGURATION_CHOICE))

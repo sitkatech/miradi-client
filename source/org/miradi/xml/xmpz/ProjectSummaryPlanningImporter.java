@@ -21,7 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz;
 
 import org.miradi.objects.ProjectMetadata;
-import org.miradi.questions.PlanningTreeTargetPositionQuestion;
 import org.miradi.xml.AbstractXmpzObjectImporter;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.w3c.dom.Node;
@@ -53,7 +52,5 @@ public class ProjectSummaryPlanningImporter extends AbstractXmpzObjectImporter
 		importField(projectSummaryPlanningNode, getMetadataRef(), ProjectMetadata.TAG_BUDGET_SECURED_PERCENT);
 		importField(projectSummaryPlanningNode, getMetadataRef(), ProjectMetadata.TAG_KEY_FUNDING_SOURCES);
 		importField(projectSummaryPlanningNode, getMetadataRef(), ProjectMetadata.TAG_FINANCIAL_COMMENTS);
-		
-		importCodeField(projectSummaryPlanningNode, getMetadataRef(), ProjectMetadata.TAG_PLANNING_TREE_TARGET_NODE_POSITION, new PlanningTreeTargetPositionQuestion());
 	}
 }
