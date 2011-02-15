@@ -91,6 +91,7 @@
     <property name="miradi.po.de" value="${translations.dir}/miradi_de.po" />
     <property name="miradi.po.es" value="${translations.dir}/miradi_es.po" />
     <property name="miradi.po.fr" value="${translations.dir}/miradi_fr.po" />
+    <property name="miradi.po.hu" value="${translations.dir}/miradi_hu.po" />
     <property name="miradi.po.id" value="${translations.dir}/miradi_id.po" />
     <property name="miradi.po.it" value="${translations.dir}/miradi_it.po" />
     <property name="miradi.po.mn" value="${translations.dir}/miradi_mn.po" />
@@ -680,9 +681,24 @@
 </target>
 			
 <!-- ================================================================== -->
+<!-- HUNGARIAN                                                          -->
+<!-- ================================================================== -->
+<target name="hungarian" depends="pot" description="Update Hungarian Content">
+	<property name="po.locale" value="HU" />
+	<property name="po.file" value="${miradi.po.hu}" />
+	<antcall target="create-new-po"/>
+	<antcall target="update-po">
+		<param name="po.file" value="${miradi.po.hu}"/>
+		<param name="language.code" value="hu"/>
+	</antcall>
+</target>
+				
+<!-- ================================================================== -->
 <!-- T R A N S L A T I O N S                                            -->
 <!-- ================================================================== -->
-<target name="translations" depends="pot, spanish, indonesian, italian, mongolian, ukrainian, chinese, french, german" description="Create Translatable Content jars/zips">
+<target name="translations" 
+	depends="pot, spanish, indonesian, italian, mongolian, ukrainian, chinese, french, german, hungarian" 
+	description="Create Translatable Content jars/zips">
 	<exec executable="hg" failonerror="false" dir="${translations.dir}">
 		<arg value="status"/>
 	</exec>
