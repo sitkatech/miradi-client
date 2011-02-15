@@ -32,6 +32,8 @@ import org.miradi.exceptions.InvalidICUNSelectionException;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
 import org.miradi.main.ResourcesHandler;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.utils.PNGFileFilter;
 import org.miradi.views.umbrella.XmlExporterDoer;
 import org.miradi.xml.XmlExporter;
 import org.miradi.xml.wcs.WcsMiradiXmlValidator;
@@ -39,6 +41,12 @@ import org.miradi.xml.wcs.XmpzXmlExporter;
 
 abstract public class AbstractExportProjectXmlZipDoer extends XmlExporterDoer
 {
+	@Override
+	protected String createImageFileName(int index, ORef diagramRef)
+	{
+		return getDiagramPrefix(diagramRef) + "-" + diagramRef.getObjectId() + PNGFileFilter.EXTENSION;
+	}
+
 	@Override
 	protected void export(File chosen) throws Exception
 	{
