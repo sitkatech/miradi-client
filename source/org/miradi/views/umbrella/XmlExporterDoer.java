@@ -126,7 +126,7 @@ abstract public class XmlExporterDoer extends AbstractFileSaverDoer
 		return getDiagramPrefix(diagramRef) + index + PNGFileFilter.EXTENSION;
 	}
 
-	private String getDiagramPrefix(ORef diagramObjectRef)
+	protected String getDiagramPrefix(ORef diagramObjectRef)
 	{
 		if (ConceptualModelDiagram.is(diagramObjectRef))
 			return CM_IMAGE_PREFIX;
