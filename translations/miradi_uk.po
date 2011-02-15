@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-15 11:55-0600\n"
+"POT-Creation-Date: 2011-02-15 13:51-0600\n"
 "PO-Revision-Date: 2010-09-30 09:31+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -5401,7 +5401,7 @@ msgstr "План зберігання даних"
 msgid "Plan project lifespan and exit strategy"
 msgstr "Планувати проектний ресурс і вихідну стратегію"
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningPanel.java:62
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningPanel.java:59
 #: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:116
 msgid "Planning"
 msgstr "Планування"
@@ -6243,7 +6243,7 @@ msgstr "Крок (відсутній)"
 msgid "Stop"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningStrategicSubPanel.java:43
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningStrategicSubPanel.java:44
 msgid "Strategic Planning"
 msgstr ""
 
@@ -9006,10 +9006,6 @@ msgstr ""
 msgid "FieldLabel|11.WorkPlanDiagramDataInclusion|Include Work Plan Data From"
 msgstr ""
 
-msgid ""
-"FieldLabel|11.PlanningTreeTargetNodePosition|Position of Targets in Trees"
-msgstr ""
-
 msgid "FieldLabel|12.ShortLabel|ID"
 msgstr "FieldLabel|12.ShortLabel|ID"
 
@@ -9533,6 +9529,9 @@ msgid "FieldLabel|29.TagDiagramDataInclusion|Include Data From"
 msgstr ""
 
 msgid "FieldLabel|29.StrategyObjectiveOrder|Objective Strategy Node Order"
+msgstr ""
+
+msgid "FieldLabel|29.TargetNodePosition|Position of Targets in Trees"
 msgstr ""
 
 msgid "FieldLabel|30.WwfProjectData|WwfProjectData"
