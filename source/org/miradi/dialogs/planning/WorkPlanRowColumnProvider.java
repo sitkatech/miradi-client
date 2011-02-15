@@ -31,6 +31,7 @@ import org.miradi.objects.TableSettings;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
+import org.miradi.questions.WorkPlanVisibleRowsQuestion;
 import org.miradi.utils.CodeList;
 
 public class WorkPlanRowColumnProvider extends AbstractPlanningTreeRowColumnProvider
@@ -81,6 +82,52 @@ public class WorkPlanRowColumnProvider extends AbstractPlanningTreeRowColumnProv
 	}
 
 	public CodeList getRowCodesToShow() throws Exception
+	{
+		
+		TableSettings tableSettings = getWorkPlanTableSettings();
+		String code = tableSettings.getData(TableSettings.TAG_WORK_PLAN_VISIBLE_NODES_CODE);
+		
+		return getRowCodes(code);
+	}
+
+	protected CodeList getRowCodes(String code)
+	{
+		if (code.equals(WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE))
+			return createAllRowCodeList();
+		
+		if (code.equals(WorkPlanVisibleRowsQuestion.SHOW_ACTION_RELATED_ROWS_CODE))
+			return createActionRelatedRowCodeList();
+		
+		if (code.equals(WorkPlanVisibleRowsQuestion.SHOW_MONITORING_RELATED_ROWS_CODE))
+			return createMonitoringRelatedRowCodeList();
+		
+		EAM.logDebug("No proper code found, returning empty row codes for work plan tree table");
+		return new CodeList();
+	}
+
+	private CodeList createMonitoringRelatedRowCodeList()
+	{
+		return new CodeList(new String[] {
+				ConceptualModelDiagram.OBJECT_NAME,
+				ResultsChainDiagram.OBJECT_NAME,
+				Indicator.OBJECT_NAME,
+				Task.METHOD_NAME,
+				Task.OBJECT_NAME,
+				});
+	}
+
+	private CodeList createActionRelatedRowCodeList()
+	{
+		return new CodeList(new String[] {
+				ConceptualModelDiagram.OBJECT_NAME,
+				ResultsChainDiagram.OBJECT_NAME,
+				Strategy.OBJECT_NAME,
+				Task.ACTIVITY_NAME,
+				Task.OBJECT_NAME,
+				});
+	}
+
+	protected CodeList createAllRowCodeList()
 	{
 		return new CodeList(new String[] {
 				ConceptualModelDiagram.OBJECT_NAME,
