@@ -38,6 +38,7 @@ import org.miradi.objecthelpers.StringStringMap;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.SortDirectionQuestion;
+import org.miradi.questions.WorkPlanVisibleRowsQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.StringStringMapData;
@@ -193,6 +194,7 @@ public class TableSettings extends BaseObject
 		tableSettingsMap = new StringStringMapData(TAG_TABLE_SETTINGS_MAP);
 		columnSortTag = new StringData(TAG_COLUMN_SORT_TAG);
 		columnSortDirection = new ChoiceData(TAG_COLUMN_SORT_DIRECTION, getQuestion(SortDirectionQuestion.class));
+		workPlanVisibleNodesChoice = new ChoiceData(TAG_WORK_PLAN_VISIBLE_NODES_CODE, getQuestion(WorkPlanVisibleRowsQuestion.class));
 		
 		addPresentationDataField(TAG_TABLE_IDENTIFIER, tableIdentifier);
 		addPresentationDataField(TAG_COLUMN_SEQUENCE_CODES, columnSequenceCodes);
@@ -203,6 +205,7 @@ public class TableSettings extends BaseObject
 		addPresentationDataField(TAG_TABLE_SETTINGS_MAP, tableSettingsMap);
 		addPresentationDataField(TAG_COLUMN_SORT_TAG, columnSortTag);
 		addPresentationDataField(TAG_COLUMN_SORT_DIRECTION, columnSortDirection);
+		addPresentationDataField(TAG_WORK_PLAN_VISIBLE_NODES_CODE, workPlanVisibleNodesChoice);
 	}
 	
 	public static final String OBJECT_NAME = "TableSettings";
@@ -219,6 +222,7 @@ public class TableSettings extends BaseObject
 	public static final String TAG_TABLE_SETTINGS_MAP = "TagTableSettingsMap";
 	public static final String TAG_COLUMN_SORT_TAG = "ColumnSortTag";
 	public static final String TAG_COLUMN_SORT_DIRECTION = "ColumnSortDirection";
+	public static final String TAG_WORK_PLAN_VISIBLE_NODES_CODE = "WorkPlanVisibleNodesCode";
 	
 	private StringData tableIdentifier;
 	private TagListData columnSequenceCodes;
@@ -229,4 +233,5 @@ public class TableSettings extends BaseObject
 	private StringStringMapData tableSettingsMap;
 	private StringData columnSortTag;
 	private ChoiceData columnSortDirection;
+	private ChoiceData workPlanVisibleNodesChoice;
 }
