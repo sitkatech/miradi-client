@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-14 11:07-0600\n"
+"POT-Creation-Date: 2011-02-15 11:55-0600\n"
 "PO-Revision-Date: 2010-09-30 09:31+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -5422,7 +5422,7 @@ msgstr "Плановані складові виду ярлика конфігу
 msgid "PlanningSubViewName|Custom"
 msgstr " PlanningSubViewName|Податок"
 
-#: Miradi/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:60
+#: Miradi/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:68
 #: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:77
 msgid ""
 "Please choose a specific IUCN classification (Not a category). Fix needed "

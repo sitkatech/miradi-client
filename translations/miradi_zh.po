@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-14 11:07-0600\n"
+"POT-Creation-Date: 2011-02-15 11:55-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -5209,7 +5209,7 @@ msgstr "计划视图配置标签属性 \t\t"
 msgid "PlanningSubViewName|Custom"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:60
+#: Miradi/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:68
 #: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:77
 msgid ""
 "Please choose a specific IUCN classification (Not a category). Fix needed "
