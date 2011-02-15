@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.questions;
 
+import org.miradi.icons.IndicatorIcon;
+import org.miradi.icons.StrategyIcon;
 import org.miradi.main.EAM;
 
 public class WorkPlanVisibleRowsQuestion extends StaticChoiceQuestion
@@ -33,8 +35,8 @@ public class WorkPlanVisibleRowsQuestion extends StaticChoiceQuestion
 	{
 		return new ChoiceItem[] {
 			new ChoiceItem(SHOW_ALL_ROWS_CODE, EAM.text("Show All Rows")),	
-			new ChoiceItem(SHOW_ACTION_RELATED_ROWS_CODE, EAM.text("Show Action-Related Rows")),
-			new ChoiceItem(SHOW_MONITORING_RELATED_ROWS_CODE, EAM.text("Show Monitoring-Related Rows")),
+			new ChoiceItem(SHOW_ACTION_RELATED_ROWS_CODE, EAM.text("Show Action-Related Rows"), new StrategyIcon()),
+			new ChoiceItem(SHOW_MONITORING_RELATED_ROWS_CODE, EAM.text("Show Monitoring-Related Rows"), new IndicatorIcon()),
 		};
 	}
 	
