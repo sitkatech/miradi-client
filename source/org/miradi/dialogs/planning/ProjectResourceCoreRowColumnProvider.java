@@ -66,4 +66,9 @@ public class ProjectResourceCoreRowColumnProvider implements PlanningTreeRowColu
 	{
 		return true;
 	}
+	
+	public boolean shouldPutTargetsAtTopLevelOfTree() throws Exception
+	{
+		return false;
+	}
 }

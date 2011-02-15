@@ -29,6 +29,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.questions.CustomPlanningRowsQuestion;
 import org.miradi.questions.DiagramObjectDataInclusionQuestion;
+import org.miradi.questions.PlanningTreeTargetPositionQuestion;
 import org.miradi.questions.StrategyObjectiveTreeOrderQuestion;
 
 public class PlanningCustomizePanel extends ObjectDataInputPanel
@@ -42,6 +43,8 @@ public class PlanningCustomizePanel extends ObjectDataInputPanel
 		
 		ObjectDataInputField objectiveStrategyNodeOrder = createChoiceField(ObjectTreeTableConfiguration.getObjectType(), ObjectTreeTableConfiguration.TAG_STRATEGY_OBJECTIVE_ORDER, new StrategyObjectiveTreeOrderQuestion());
 		addField(objectiveStrategyNodeOrder);
+		
+		addRadioButtonField(ObjectTreeTableConfiguration.getObjectType(), ObjectTreeTableConfiguration.TAG_TARGET_NODE_POSITION, getProject().getQuestion(PlanningTreeTargetPositionQuestion.class));
 		
 		ObjectDataInputPanel rowEditor = new CodeListEditorPanel(getProject(), planningConfigurationRef, ObjectTreeTableConfiguration.TAG_ROW_CONFIGURATION, new CustomPlanningRowsQuestion(getProject()), 1);
 		addSubPanelWithoutTitledBorder(rowEditor);

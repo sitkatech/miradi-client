@@ -1,4 +1,4 @@
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/58'
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/59'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -116,7 +116,6 @@ ProjectSummaryPlanning.element = element miradi:ProjectSummaryPlanning
   element miradi:ProjectSummaryPlanningWorkPlanEndDate { vocabulary_date }? &
   element miradi:ProjectSummaryPlanningFiscalYearStart { vocabulary_fiscal_year_start_month }? &
   element miradi:ProjectSummaryPlanningFullTimeEmployeeDaysPerYear { xsd:decimal }? &
-  element miradi:ProjectSummaryPlanningPlanningTreeTargetNodePosition { vocabulary_planning_tree_target_node_position  }? &
   element miradi:ProjectSummaryPlanningPlanningComments { text }? &
   element miradi:ProjectSummaryPlanningCurrencyType { text }? &
   element miradi:ProjectSummaryPlanningCurrencySymbol { text }? &
@@ -641,7 +640,8 @@ PlanningViewConfiguration.element = element miradi:PlanningViewConfiguration
   attribute Id {xsd:integer}  &
   element miradi:PlanningViewConfigurationName { text }? &
   element miradi:PlanningViewConfigurationTagDiagramDataInclusion { vocabulary_included_diagram_types  }? &
-  element miradi:PlanningViewConfigurationStrategyObjectiveOrder { vocabulary_planning_tree_objective_strategy_node_order  }?
+  element miradi:PlanningViewConfigurationStrategyObjectiveOrder { vocabulary_planning_tree_objective_strategy_node_order  }? &
+  element miradi:PlanningViewConfigurationTargetNodePosition { vocabulary_planning_tree_target_node_position  }?
 }
 
 DashboardPool.element = element miradi:DashboardPool { Dashboard.element* }

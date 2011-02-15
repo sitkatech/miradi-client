@@ -122,9 +122,9 @@ abstract public class AbstractTreeRebuilder
 		return remainingChildren;
 	}
 
-	protected boolean shouldTargetsBeAtSameLevelAsDiagrams()
+	protected boolean shouldTargetsBeAtSameLevelAsDiagrams() throws Exception
 	{
-		return getProject().getMetadata().shouldPutTargetsAtTopLevelOfTree();
+		return getRowColumnProvider().shouldPutTargetsAtTopLevelOfTree();
 	}
 	
 	public static ORefList findRelevantGoals(Project projectToUse, ORef strategyRef) throws Exception

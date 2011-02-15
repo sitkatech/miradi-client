@@ -61,4 +61,9 @@ public class ProgressReportRowColumnProvider implements RowColumnProvider, Plann
 	{
 		return true;
 	}
+	
+	public boolean shouldPutTargetsAtTopLevelOfTree() throws Exception
+	{
+		return false;
+	}
 }

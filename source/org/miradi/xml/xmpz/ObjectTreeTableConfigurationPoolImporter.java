@@ -23,6 +23,7 @@ package org.miradi.xml.xmpz;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.questions.DiagramObjectDataInclusionQuestion;
+import org.miradi.questions.PlanningTreeTargetPositionQuestion;
 import org.miradi.questions.StrategyObjectiveTreeOrderQuestion;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.w3c.dom.Node;
@@ -41,5 +42,6 @@ public class ObjectTreeTableConfigurationPoolImporter extends AbstractBaseObject
 		
 		importCodeField(node, destinationRef, ObjectTreeTableConfiguration.TAG_DIAGRAM_DATA_INCLUSION, new DiagramObjectDataInclusionQuestion());
 		importCodeField(node, destinationRef, ObjectTreeTableConfiguration.TAG_STRATEGY_OBJECTIVE_ORDER, new StrategyObjectiveTreeOrderQuestion());
+		importCodeField(node, destinationRef, ObjectTreeTableConfiguration.TAG_TARGET_NODE_POSITION, new PlanningTreeTargetPositionQuestion());
 	}
 }
