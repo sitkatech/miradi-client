@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-15 11:55-0600\n"
+"POT-Creation-Date: 2011-02-15 13:51-0600\n"
 "PO-Revision-Date: 2010-09-20 10:32-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -5400,7 +5400,7 @@ msgstr "Plan para almacenamiento de datos"
 msgid "Plan project lifespan and exit strategy"
 msgstr "Planificar duración del proyecto y estrategia de salida"
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningPanel.java:62
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningPanel.java:59
 #: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:116
 msgid "Planning"
 msgstr "Planificación"
@@ -6247,7 +6247,7 @@ msgstr "Paso (no disponible)"
 msgid "Stop"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningStrategicSubPanel.java:43
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningStrategicSubPanel.java:44
 msgid "Strategic Planning"
 msgstr ""
 
@@ -9028,10 +9028,6 @@ msgstr ""
 msgid "FieldLabel|11.WorkPlanDiagramDataInclusion|Include Work Plan Data From"
 msgstr ""
 
-msgid ""
-"FieldLabel|11.PlanningTreeTargetNodePosition|Position of Targets in Trees"
-msgstr ""
-
 msgid "FieldLabel|12.ShortLabel|ID"
 msgstr "ID"
 
@@ -9551,6 +9547,9 @@ msgid "FieldLabel|29.TagDiagramDataInclusion|Include Data From"
 msgstr ""
 
 msgid "FieldLabel|29.StrategyObjectiveOrder|Objective Strategy Node Order"
+msgstr ""
+
+msgid "FieldLabel|29.TargetNodePosition|Position of Targets in Trees"
 msgstr ""
 
 msgid "FieldLabel|30.WwfProjectData|WwfProjectData"
