@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-10 13:05-0600\n"
+"POT-Creation-Date: 2011-02-14 11:07-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -3283,7 +3283,7 @@ msgstr ""
 msgid "Error Occurred please try saving under different name."
 msgstr "出错，请尝试用不同的文件名保存。 \t\t"
 
-#: Miradi/source/org/miradi/objects/Dashboard.java:305
+#: Miradi/source/org/miradi/objects/Dashboard.java:306
 msgid "Error Retrieving Data"
 msgstr ""
 
