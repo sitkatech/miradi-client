@@ -81,9 +81,29 @@ public class ProjectTotalCalculator implements CommandExecutedListener
 		Set<BaseObject> nonDraftStrategies = getIncludedNonDraftStrategies();
 		
 		TimePeriodCostsMap totalTimePeriodCostsMap = new TimePeriodCostsMap();
-		totalTimePeriodCostsMap.mergeAll(getTotalTimePeriodCostsMap(allIndicators));
-		totalTimePeriodCostsMap.mergeAll(getTotalTimePeriodCostsMap(nonDraftStrategies));
+		if (shouldIncludeIndicators(mode))
+			totalTimePeriodCostsMap.mergeAll(getTotalTimePeriodCostsMap(allIndicators));
+		
+		if (shouldIncludeNonDraftStrategies(mode))
+			totalTimePeriodCostsMap.mergeAll(getTotalTimePeriodCostsMap(nonDraftStrategies));
+		
 		return totalTimePeriodCostsMap;
+	}
+
+	private boolean shouldIncludeNonDraftStrategies(String mode)
+	{
+		if (mode.equals(WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE))
+			return true;
+		
+		return  mode.equals(WorkPlanVisibleRowsQuestion.SHOW_ACTION_RELATED_ROWS_CODE);
+	}
+
+	private boolean shouldIncludeIndicators(String mode)
+	{
+		if (mode.equals(WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE))
+			return true;
+		
+		return  mode.equals(WorkPlanVisibleRowsQuestion.SHOW_MONITORING_RELATED_ROWS_CODE);
 	}
 
 	private HashSet<BaseObject> getIncludedDiagramIndicators() throws Exception
