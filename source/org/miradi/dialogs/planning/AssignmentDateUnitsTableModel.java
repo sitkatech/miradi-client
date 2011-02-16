@@ -47,7 +47,6 @@ import org.miradi.project.ProjectTotalCalculator;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.TaglessChoiceItem;
-import org.miradi.questions.WorkPlanVisibleRowsQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.ColumnTagProvider;
 import org.miradi.utils.DateUnitEffort;
