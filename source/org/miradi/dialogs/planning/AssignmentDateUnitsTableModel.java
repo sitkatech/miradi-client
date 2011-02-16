@@ -293,7 +293,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		if(thisCellEffort != null)
 			return true;
 		
-		return !getOptionalDoubleDataFilteredByResource(assignment, dateUnit).hasValue();
+		return !getRawOptionalDoubleData(assignment, dateUnit).hasValue();
 	}
 
 	@Override
@@ -737,6 +737,12 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	private OptionalDouble getOptionalDoubleDataFilteredByResource(BaseObject baseObject, DateUnit dateUnit) throws Exception
 	{
 		ORefSet resourcesFilter = getResourcesFilter();
+		return getOptionalDoubleDataFilteredByResource(baseObject, dateUnit, resourcesFilter);
+	}
+	
+	private OptionalDouble getRawOptionalDoubleData(BaseObject baseObject, DateUnit dateUnit) throws Exception
+	{
+		ORefSet resourcesFilter = getProject().getResourcePool().getRefSet();
 		return getOptionalDoubleDataFilteredByResource(baseObject, dateUnit, resourcesFilter);
 	}
 
