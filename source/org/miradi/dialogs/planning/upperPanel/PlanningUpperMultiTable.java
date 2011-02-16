@@ -57,6 +57,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
+import org.miradi.questions.WorkPlanVisibleRowsQuestion;
 import org.miradi.utils.DoubleClickAutoSelectCellEditor;
 import org.miradi.utils.TableWithColumnWidthAndSequenceSaver;
 
@@ -230,6 +231,11 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 	public ORefList getObjectHiearchy(int row, int column)
 	{
 		throw new RuntimeException("Method is currently unused and has no implementation");
+	}
+	
+	public String getWorkPlanBudgetMode()
+	{
+		return WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE;
 	}
 	
 	private PlanningTreeTable masterTree;

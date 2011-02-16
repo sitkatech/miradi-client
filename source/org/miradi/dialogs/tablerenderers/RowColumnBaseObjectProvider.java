@@ -29,4 +29,5 @@ public interface RowColumnBaseObjectProvider
 	public int getProportionShares(int row);
 	public boolean areBudgetValuesAllocated(int row);
 	public ORefList getObjectHiearchy(int row, int column);
+	public String getWorkPlanBudgetMode();
 }
