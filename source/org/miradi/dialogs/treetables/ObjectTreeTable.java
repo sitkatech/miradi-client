@@ -63,7 +63,7 @@ abstract public class ObjectTreeTable extends TreeTableWithColumnWidthSaving imp
 
 		setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		getTree().setShowsRootHandles(true);
-		getTree().setRootVisible(false);
+		getTree().setRootVisible(isRootVisible());
 		getTree().setCellRenderer(new ObjectTreeCellRenderer(this));
 		getTree().setEditable(false);
 		getColumnModel().getColumn(0).setPreferredWidth(200);
@@ -72,6 +72,11 @@ abstract public class ObjectTreeTable extends TreeTableWithColumnWidthSaving imp
 		
 		final int CUSTOM_HEIGHT_TO_AVOID_ICON_CROPPING = getRowHeight() + 1;
 		setRowHeight(CUSTOM_HEIGHT_TO_AVOID_ICON_CROPPING);
+	}
+
+	protected boolean isRootVisible()
+	{
+		return false;
 	}
 
 	public Project getProject()
