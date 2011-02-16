@@ -47,12 +47,12 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 	
 	public int getRowCount()
 	{
-		return objectProvider.getRowCount();
+		return getRowColumnObjectProvider().getRowCount();
 	}
 	
 	public BaseObject getBaseObjectForRowColumn(int row, int column)
 	{
-		return objectProvider.getBaseObjectForRowColumn(row, column);
+		return getRowColumnObjectProvider().getBaseObjectForRowColumn(row, column);
 	}
 	
 	@Override
@@ -63,13 +63,13 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 	@Override
 	public int getProportionShares(int row)
 	{
-		return objectProvider.getProportionShares(row);
+		return getRowColumnObjectProvider().getProportionShares(row);
 	}
 
 	@Override
 	public boolean areBudgetValuesAllocated(int row)
 	{
-		return objectProvider.areBudgetValuesAllocated(row);
+		return getRowColumnObjectProvider().areBudgetValuesAllocated(row);
 	}
 	
 	public boolean isCurrencyColumn(int column)
@@ -152,7 +152,7 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 		resourceRefsFilter = resourceRefFiltersToUse;
 	}
 	
-	public TimePeriodCosts calculateTimePeriodCosts(BaseObject baseObject, DateUnit dateUnit) throws Exception
+	public TimePeriodCosts calculateTimePeriodCosts(BaseObject baseObject, DateUnit dateUnit, String workPlanBudgetMode) throws Exception
 	{
 		return calculateTimePeriodCostsMap(baseObject).calculateTimePeriodCosts(dateUnit);
 	}
@@ -168,6 +168,11 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 	protected TimePeriodCostsMap getTotalTimePeriodCostsMap(BaseObject baseObject) throws Exception
 	{
 		return baseObject.getTotalTimePeriodCostsMap();
+	}
+	
+	protected RowColumnBaseObjectProvider getRowColumnObjectProvider()
+	{
+		return objectProvider;
 	}
 	
 	abstract public Color getCellBackgroundColor(int column);
