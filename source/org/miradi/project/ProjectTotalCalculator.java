@@ -34,6 +34,7 @@ import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Strategy;
+import org.miradi.questions.WorkPlanVisibleRowsQuestion;
 
 public class ProjectTotalCalculator implements CommandExecutedListener
 {
@@ -57,16 +58,24 @@ public class ProjectTotalCalculator implements CommandExecutedListener
 		// TODO: Only clear the cache when it actually needs it
 		cachedTimePeriodCostMap = null;
 	}
-
-	public TimePeriodCostsMap calculateProjectTotals() throws Exception
+	
+	public TimePeriodCostsMap calculateProjectTotals(String mode) throws Exception
 	{
 		if(cachedTimePeriodCostMap == null)
-			cachedTimePeriodCostMap = computeTotalTimePeriodCostsMap();
+			cachedTimePeriodCostMap = computeTotalTimePeriodCostsMap(mode);
 		
 		return cachedTimePeriodCostMap;
 	}
 
-	private TimePeriodCostsMap computeTotalTimePeriodCostsMap()	throws Exception
+	public TimePeriodCostsMap calculateProjectTotals() throws Exception
+	{
+		if(cachedTimePeriodCostMap == null)
+			cachedTimePeriodCostMap = computeTotalTimePeriodCostsMap(WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE);
+		
+		return cachedTimePeriodCostMap;
+	}
+
+	private TimePeriodCostsMap computeTotalTimePeriodCostsMap(String mode)	throws Exception
 	{
 		Set<BaseObject> allIndicators = getIncludedDiagramIndicators();
 		Set<BaseObject> nonDraftStrategies = getIncludedNonDraftStrategies();

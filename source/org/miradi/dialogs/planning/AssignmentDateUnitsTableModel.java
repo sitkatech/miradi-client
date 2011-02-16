@@ -47,6 +47,7 @@ import org.miradi.project.ProjectTotalCalculator;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.TaglessChoiceItem;
+import org.miradi.questions.WorkPlanVisibleRowsQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.ColumnTagProvider;
 import org.miradi.utils.DateUnitEffort;
@@ -757,7 +758,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	private TimePeriodCosts getProjectTotalTimePeriodCostFor(DateUnit dateUnit) throws Exception
 	{
 		ProjectTotalCalculator projectTotalCalculator = getProject().getProjectTotalCalculator();
-		TimePeriodCostsMap totalProject = projectTotalCalculator.calculateProjectTotals();
+		TimePeriodCostsMap totalProject = projectTotalCalculator.calculateProjectTotals(WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE);
 		
 		return totalProject.calculateTimePeriodCosts(dateUnit);
 	}
