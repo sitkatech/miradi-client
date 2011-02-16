@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-16 09:24-0600\n"
+"POT-Creation-Date: 2011-02-16 16:20-0600\n"
 "PO-Revision-Date: 2010-09-30 09:31+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -308,7 +308,7 @@ msgstr "(Створити, управляти і ранжирувати нава
 msgid "(Definition Not Available)"
 msgstr "(Немає визначення)"
 
-#: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:116
+#: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:117
 msgid "(Error)"
 msgstr "(Помилка)"
 
@@ -6069,7 +6069,7 @@ msgstr "Розподіляти зворотню реакцію формальн�
 msgid "Share success & failures with practitioners around the world"
 msgstr "Ділитися успіхами і невдачами з практиками по всьому світу"
 
-#: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:605
+#: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:606
 msgid "Should Now Allow Full Time Employee To Be Calculated For "
 msgstr "Дозволити повночасному працівнику бути врахованим"
 
