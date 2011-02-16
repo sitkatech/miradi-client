@@ -39,6 +39,7 @@ import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.questions.DiagramObjectDataInclusionQuestion;
+import org.miradi.questions.WorkPlanVisibleRowsQuestion;
 import org.miradi.utils.OptionalDouble;
 
 public class TestProjectTotalCalculator extends TestCaseWithProject
@@ -61,6 +62,25 @@ public class TestProjectTotalCalculator extends TestCaseWithProject
 		fred = getProject().createAndPopulateProjectResource();
 		calculator = getProject().getProjectTotalCalculator();
 		dateUnit = getProject().createDateUnit(YEAR_2008, YEAR_2009);
+	}
+	
+	public void testMonitoringBudgetMode() throws Exception
+	{
+		createNonDraftStrategyWithAssignment(getConceptualModelDiagramObject());
+		createCauseWithIndicatorWithAssignment(getConceptualModelDiagramObject());
+		
+		verifyCalcuationBasedOnMode(WorkPlanVisibleRowsQuestion.SHOW_MONITORING_RELATED_ROWS_CODE, 100.0);
+		verifyCalcuationBasedOnMode(WorkPlanVisibleRowsQuestion.SHOW_ACTION_RELATED_ROWS_CODE, 100.0);
+		verifyCalcuationBasedOnMode(WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE, 200.0);
+	}
+
+	protected void verifyCalcuationBasedOnMode(String workPlanBudgetMode, double expectedTotal) throws Exception
+	{
+		TimePeriodCostsMap projectTotals = calculator.calculateProjectTotals(workPlanBudgetMode);
+		assertEquals("Project totals time period costs map should not be empty?", 1, projectTotals.size());
+
+		OptionalDouble calculateTotalBudgetCost = projectTotals.calculateTotalBudgetCost(getProject());		
+		assertEquals("Incorrect project total", expectedTotal, calculateTotalBudgetCost.getValue());
 	}
 	
 	public void testKeaIndicatorInResultsChain() throws Exception

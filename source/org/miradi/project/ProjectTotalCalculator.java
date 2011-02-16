@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.project;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -41,6 +42,7 @@ public class ProjectTotalCalculator implements CommandExecutedListener
 	public ProjectTotalCalculator(Project projectToUse)
 	{
 		project = projectToUse;
+		modeToTimePeriodCostsMapMap = new HashMap<String, TimePeriodCostsMap>();
 	}
 	
 	public void enable()
@@ -56,15 +58,15 @@ public class ProjectTotalCalculator implements CommandExecutedListener
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		// TODO: Only clear the cache when it actually needs it
-		cachedTimePeriodCostMap = null;
+		modeToTimePeriodCostsMapMap.clear();
 	}
 	
 	public TimePeriodCostsMap calculateProjectTotals(String mode) throws Exception
 	{
-		if(cachedTimePeriodCostMap == null)
-			cachedTimePeriodCostMap = computeTotalTimePeriodCostsMap(mode);
+		if(!modeToTimePeriodCostsMapMap.keySet().contains(mode))
+			computeTotalTimePeriodCostsMap(mode);
 		
-		return cachedTimePeriodCostMap;
+		return modeToTimePeriodCostsMapMap.get(mode);
 	}
 
 	public TimePeriodCostsMap calculateProjectTotals() throws Exception
@@ -72,19 +74,32 @@ public class ProjectTotalCalculator implements CommandExecutedListener
 		return calculateProjectTotals(WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE);
 	}
 
-	private TimePeriodCostsMap computeTotalTimePeriodCostsMap(String mode)	throws Exception
+	private void computeTotalTimePeriodCostsMap(String mode)	throws Exception
 	{
 		Set<BaseObject> allIndicators = getIncludedDiagramIndicators();
 		Set<BaseObject> nonDraftStrategies = getIncludedNonDraftStrategies();
 		
-		TimePeriodCostsMap totalTimePeriodCostsMap = new TimePeriodCostsMap();
 		if (shouldIncludeIndicators(mode))
-			totalTimePeriodCostsMap.mergeAll(getTotalTimePeriodCostsMap(allIndicators));
+		{
+			modeToTimePeriodCostsMapMap.put(WorkPlanVisibleRowsQuestion.SHOW_MONITORING_RELATED_ROWS_CODE, getTotalTimePeriodCostsMap(allIndicators));
+		}
 		
 		if (shouldIncludeNonDraftStrategies(mode))
-			totalTimePeriodCostsMap.mergeAll(getTotalTimePeriodCostsMap(nonDraftStrategies));
+		{
+			modeToTimePeriodCostsMapMap.put(WorkPlanVisibleRowsQuestion.SHOW_ACTION_RELATED_ROWS_CODE, getTotalTimePeriodCostsMap(nonDraftStrategies));
+		}
 		
-		return totalTimePeriodCostsMap;
+		if (mode.equals(WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE))
+		{
+			TimePeriodCostsMap totalTimePeriodCostsMap = new TimePeriodCostsMap();
+			Set<String> modesAsKeys = modeToTimePeriodCostsMapMap.keySet();
+			for (String budgetModeAsKey : modesAsKeys)
+			{
+				totalTimePeriodCostsMap.mergeAll(modeToTimePeriodCostsMapMap.get(budgetModeAsKey));
+			}
+						
+			modeToTimePeriodCostsMapMap.put(mode, totalTimePeriodCostsMap);
+		}		
 	}
 
 	private boolean shouldIncludeNonDraftStrategies(String mode)
@@ -192,5 +207,5 @@ public class ProjectTotalCalculator implements CommandExecutedListener
 	}
 	
 	private Project project;
-	private TimePeriodCostsMap cachedTimePeriodCostMap;
+	private HashMap<String, TimePeriodCostsMap> modeToTimePeriodCostsMapMap;
 }
