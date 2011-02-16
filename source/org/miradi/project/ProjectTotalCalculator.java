@@ -69,10 +69,7 @@ public class ProjectTotalCalculator implements CommandExecutedListener
 
 	public TimePeriodCostsMap calculateProjectTotals() throws Exception
 	{
-		if(cachedTimePeriodCostMap == null)
-			cachedTimePeriodCostMap = computeTotalTimePeriodCostsMap(WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE);
-		
-		return cachedTimePeriodCostMap;
+		return calculateProjectTotals(WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE);
 	}
 
 	private TimePeriodCostsMap computeTotalTimePeriodCostsMap(String mode)	throws Exception
