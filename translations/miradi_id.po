@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-15 16:32-0600\n"
+"POT-Creation-Date: 2011-02-16 09:24-0600\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -6034,11 +6034,11 @@ msgstr ""
 msgid "Should Now Allow Full Time Employee To Be Calculated For "
 msgstr "Memungkinkan Kalkulasi Karyawan Purnawaktu Untuk "
 
-#: Miradi/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:38
+#: Miradi/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:37
 msgid "Show Action-Related Rows"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:37
+#: Miradi/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:36
 msgid "Show All Rows"
 msgstr ""
 
@@ -6046,7 +6046,7 @@ msgstr ""
 msgid "Show Diagram Grid"
 msgstr "Tampakkan Kisi-kisi Diagram "
 
-#: Miradi/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:39
+#: Miradi/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:38
 msgid "Show Monitoring-Related Rows"
 msgstr ""
 
@@ -6655,7 +6655,7 @@ msgid "TT|Customize View"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionWorkPlanBudgetColumnsEditor.java:41
-msgid "TT|Customize Work Plan Tree"
+msgid "TT|Customize Work Plan Table"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionCut.java:40
