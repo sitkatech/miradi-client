@@ -745,9 +745,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	
 	private OptionalDouble getUnfilteredOptionalDoubleData(BaseObject baseObject, DateUnit dateUnit) throws Exception
 	{
-		ORefSet resourcesFilter = getProject().getResourcePool().getRefSet();
 		TimePeriodCosts timePeriodCosts = calculateTimePeriodCosts(baseObject, dateUnit);
-		timePeriodCosts.retainWorkUnitDataRelatedToAnyOf(resourcesFilter);
 		
 		return calculateValue(timePeriodCosts);
 	}
