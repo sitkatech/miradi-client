@@ -755,7 +755,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	private TimePeriodCosts getProjectTotalTimePeriodCostFor(DateUnit dateUnit) throws Exception
 	{
 		ProjectTotalCalculator projectTotalCalculator = getProject().getProjectTotalCalculator();
-		TimePeriodCostsMap totalProject = projectTotalCalculator.calculateProjectTotals(getRowColumnProvider().getWorkPlanBudgetMode());
+		TimePeriodCostsMap totalProject = projectTotalCalculator.calculateProjectTotals();
 		
 		return totalProject.calculateTimePeriodCosts(dateUnit);
 	}
