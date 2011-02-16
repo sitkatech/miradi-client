@@ -45,6 +45,7 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 	public TreeTableWithStateSaving(MainWindow mainWindowToUse, GenericTreeTableModel treeTableModel)
 	{
 		super(mainWindowToUse, treeTableModel);
+		
 		treeTableModelAdapter = new EAMTreeTableModelAdapter(mainWindowToUse.getProject(), treeTableModel, tree);
 		
 		getProject().addCommandExecutedListener(this);
