@@ -55,7 +55,7 @@ public class WorkPlanTreeTablePanel extends PlanningTreeTablePanel
 		WorkPlanRowColumnProvider rowColumnProvider = new WorkPlanRowColumnProvider(mainWindowToUse.getProject());
 		PlanningTreeRootNode rootNode = new PlanningTreeRootNode(mainWindowToUse.getProject());
 		PlanningTreeTableModel model = new WorkPlanTreeTableModel(mainWindowToUse.getProject(), rootNode, rowColumnProvider);
-		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse, model);
+		PlanningTreeTable treeTable = new PlanningTreeTableWithVisibleRootNode(mainWindowToUse, model);
 		AbstractFixedHeightDirectlyAboveTreeTablePanel filterStatusPanel = new AbstractFixedHeightDirectlyAboveTreeTablePanel();
 
 		return new WorkPlanTreeTablePanel(mainWindowToUse, treeTable, model, getButtonActions(), rowColumnProvider, filterStatusPanel);
