@@ -413,13 +413,13 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	@Override
 	public BaseObject getBaseObjectForRowColumn(int row, int column)
 	{
-		return getProvider().getBaseObjectForRowColumn(row, column);
+		return getRowColumnProvider().getBaseObjectForRowColumn(row, column);
 	}
 
 	@Override
 	public int getRowCount()
 	{
-		return getProvider().getRowCount();
+		return getRowColumnProvider().getRowCount();
 	}
 	
 	public Assignment getAssignment(int row)
@@ -476,7 +476,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		return Assignment.findAssignment(getProject(), assignmentRef);
 	}
 
-	public RowColumnBaseObjectProvider getProvider()
+	public RowColumnBaseObjectProvider getRowColumnProvider()
 	{
 		return provider;
 	}
@@ -492,7 +492,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		{
 			DateUnit dateUnit = getDateUnit(column);
 			TimePeriodCosts timePeriodCosts = getProjectTotalTimePeriodCostFor(dateUnit);
-			ORefList objectHierarchy = getProvider().getObjectHiearchy(row, column);
+			ORefList objectHierarchy = getRowColumnProvider().getObjectHiearchy(row, column);
 			ORefSet refsToRetain = new ORefSet(objectHierarchy);
 			removeMetadataRootNodeRefInPlace(refsToRetain);
 			retainDataRelatedToAllOf(timePeriodCosts, refsToRetain);
