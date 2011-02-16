@@ -47,6 +47,7 @@ import org.miradi.project.ProjectTotalCalculator;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.TaglessChoiceItem;
+import org.miradi.questions.WorkPlanVisibleRowsQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.ColumnTagProvider;
 import org.miradi.utils.DateUnitEffort;
@@ -737,7 +738,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	private OptionalDouble getOptionalDoubleDataFilteredByResource(BaseObject baseObject, DateUnit dateUnit) throws Exception
 	{
 		ORefSet resourcesFilter = getResourcesFilter();
-		TimePeriodCosts timePeriodCosts = calculateTimePeriodCosts(baseObject, dateUnit);
+		TimePeriodCosts timePeriodCosts = calculateTimePeriodCosts(baseObject, dateUnit, getRowColumnProvider().getWorkPlanBudgetMode());
 		timePeriodCosts.retainWorkUnitDataRelatedToAnyOf(resourcesFilter);
 		
 		return calculateValue(timePeriodCosts);
@@ -745,7 +746,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	
 	private OptionalDouble getUnfilteredOptionalDoubleData(BaseObject baseObject, DateUnit dateUnit) throws Exception
 	{
-		TimePeriodCosts timePeriodCosts = calculateTimePeriodCosts(baseObject, dateUnit);
+		TimePeriodCosts timePeriodCosts = calculateTimePeriodCosts(baseObject, dateUnit, WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE);
 		
 		return calculateValue(timePeriodCosts);
 	}

@@ -154,13 +154,13 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 	
 	public TimePeriodCosts calculateTimePeriodCosts(BaseObject baseObject, DateUnit dateUnit, String workPlanBudgetMode) throws Exception
 	{
-		return calculateTimePeriodCostsMap(baseObject).calculateTimePeriodCosts(dateUnit);
+		return calculateTimePeriodCostsMap(baseObject, workPlanBudgetMode).calculateTimePeriodCosts(dateUnit);
 	}
 
-	public TimePeriodCostsMap calculateTimePeriodCostsMap(BaseObject baseObject) throws Exception
+	public TimePeriodCostsMap calculateTimePeriodCostsMap(BaseObject baseObject, String workPlanBudgetMode) throws Exception
 	{
 		if (ProjectMetadata.is(baseObject))
-			return getProject().getProjectTotalCalculator().calculateProjectTotals();
+			return getProject().getProjectTotalCalculator().calculateProjectTotals(workPlanBudgetMode);
 			
 		return getTotalTimePeriodCostsMap(baseObject);
 	}
