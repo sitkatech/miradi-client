@@ -38,6 +38,6 @@ public class ActionWorkPlanBudgetColumnsEditor extends ObjectsAction
 	@Override
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Customize Work Plan Tree");
+		return EAM.text("TT|Customize Work Plan Table");
 	}
 }
