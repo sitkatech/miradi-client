@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-15 16:52-0600\n"
+"POT-Creation-Date: 2011-02-16 09:24-0600\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -6082,11 +6082,11 @@ msgstr ""
 msgid "Should Now Allow Full Time Employee To Be Calculated For "
 msgstr "Орон тооны ажилтан авахыг зөвшөөрч тооцож оруулах ёстой "
 
-#: Miradi/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:38
+#: Miradi/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:37
 msgid "Show Action-Related Rows"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:37
+#: Miradi/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:36
 msgid "Show All Rows"
 msgstr ""
 
@@ -6094,7 +6094,7 @@ msgstr ""
 msgid "Show Diagram Grid"
 msgstr "Диаграммын холбоос сүлжээг харуулах"
 
-#: Miradi/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:39
+#: Miradi/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:38
 msgid "Show Monitoring-Related Rows"
 msgstr ""
 
@@ -6716,7 +6716,7 @@ msgid "TT|Customize View"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionWorkPlanBudgetColumnsEditor.java:41
-msgid "TT|Customize Work Plan Tree"
+msgid "TT|Customize Work Plan Table"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionCut.java:40
