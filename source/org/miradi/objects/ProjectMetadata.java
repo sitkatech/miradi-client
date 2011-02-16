@@ -343,11 +343,11 @@ public class ProjectMetadata extends BaseObject
 		return getData(TAG_WORKPLAN_TIME_UNIT).equals(BudgetTimePeriodQuestion.BUDGET_BY_YEAR_CODE);
 	}
 	
-	public static boolean is(BaseObject object)
+	public static boolean is(BaseObject baseObject)
 	{
-		if(object == null)
+		if(baseObject == null)
 			return false;
-		return is(object.getRef());
+		return is(baseObject.getRef());
 	}
 	
 	public static boolean is(ORef ref)
