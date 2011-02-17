@@ -27,7 +27,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ActionTreeConfigurationQuestion;
 import org.miradi.utils.CodeList;
 
-public class ActionPlanMultiRowColumnProvider extends AbstractPlanningTreeRowColumnProvider
+public class ActionPlanMultiRowColumnProvider extends AbstractMultiRowColumnProvider
 {
 	public ActionPlanMultiRowColumnProvider(Project projectToUse)
 	{
