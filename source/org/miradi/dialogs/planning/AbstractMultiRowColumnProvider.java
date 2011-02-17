@@ -29,6 +29,8 @@ abstract public class AbstractMultiRowColumnProvider extends AbstractPlanningTre
 	public AbstractMultiRowColumnProvider(Project projectToUse)
 	{
 		super(projectToUse);
+		
+		codeToProviderMap = createCodeToProviderMap();
 	}
 	
 	protected AbstractPlanningTreeRowColumnProvider getSubViewProvider() throws Exception
