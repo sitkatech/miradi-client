@@ -38,6 +38,8 @@ public class PlanningCustomizePanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, planningConfigurationRef);
 		
+		addField(createStringField(ObjectTreeTableConfiguration.TAG_LABEL));
+		
 		ObjectDataInputField dataInclusion = createChoiceField(ObjectTreeTableConfiguration.getObjectType(), ObjectTreeTableConfiguration.TAG_DIAGRAM_DATA_INCLUSION, getProject().getQuestion(DiagramObjectDataInclusionQuestion.class));
 		addField(dataInclusion);
 		
