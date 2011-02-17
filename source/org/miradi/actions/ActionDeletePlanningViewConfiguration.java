@@ -32,7 +32,7 @@ public class ActionDeletePlanningViewConfiguration extends ObjectsAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Delete Custom");
+		return EAM.text("Action|Delete Table");
 	}
 
 	@Override
