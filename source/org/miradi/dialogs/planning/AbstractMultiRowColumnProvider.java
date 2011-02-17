@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning;
 
+import java.util.HashMap;
+
 import org.miradi.project.Project;
 
 abstract public class AbstractMultiRowColumnProvider extends AbstractPlanningTreeRowColumnProvider
@@ -28,4 +30,6 @@ abstract public class AbstractMultiRowColumnProvider extends AbstractPlanningTre
 	{
 		super(projectToUse);
 	}
+	
+	abstract protected HashMap<String, AbstractPlanningTreeRowColumnProvider> createCodeToProviderMap();
 }
