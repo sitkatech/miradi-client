@@ -32,7 +32,7 @@ public class ActionPlanningCustomizeDialogPopup extends ObjectsAction
 	
 	private static String getLabel()
 	{
-		return EAM.text("Action|Customize...");
+		return EAM.text("Action|Customize Table...");
 	}
 
 	@Override

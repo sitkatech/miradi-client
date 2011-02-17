@@ -32,7 +32,7 @@ public class ActionCreateCustomFromCurrentTreeTableConfiguration extends Objects
 	
 	private static String getLabel()
 	{
-		return EAM.text("Action|Customize...");
+		return EAM.text("Action|Customize Table...");
 	}
 
 	@Override
