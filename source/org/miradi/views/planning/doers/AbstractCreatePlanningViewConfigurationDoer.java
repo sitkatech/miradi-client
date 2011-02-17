@@ -53,6 +53,7 @@ abstract public class AbstractCreatePlanningViewConfigurationDoer extends ViewDo
 		try
 		{
 			createPlanningViewConfiguration();
+			PlanningCustomizeDialogPopupDoer.showCustomizeDialog(getMainWindow());
 		}
 		catch (Exception e)
 		{
