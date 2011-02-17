@@ -28,7 +28,6 @@ import org.miradi.commands.Command;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.planning.AssignmentDateUnitsTableModel;
-import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTableSyncedTableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.AppPreferences;
@@ -756,7 +755,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		return getRowColumnProvider().getColumnCodesToShow();
 	}
 	
-	public RowColumnProvider getRowColumnProvider()
+	public PlanningTreeRowColumnProvider getRowColumnProvider()
 	{
 		return rowColumnProvider;
 	}
@@ -772,5 +771,5 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	private static final String HAS_DATA_OUTSIDE_OF_PROJECT_DATE_ASTERISK = "*";
 
 	private CodeList columnsToShow;
-	private RowColumnProvider rowColumnProvider;
+	private PlanningTreeRowColumnProvider rowColumnProvider;
 }
