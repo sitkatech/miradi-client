@@ -25,33 +25,12 @@ import java.util.HashMap;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.questions.ActionTreeConfigurationQuestion;
-import org.miradi.utils.CodeList;
 
 public class ActionPlanMultiRowColumnProvider extends AbstractMultiRowColumnProvider
 {
 	public ActionPlanMultiRowColumnProvider(Project projectToUse)
 	{
 		super(projectToUse);
-	}
-	
-	public CodeList getColumnCodesToShow() throws Exception
-	{
-		return getSubViewProvider().getColumnCodesToShow();
-	}
-
-	public CodeList getRowCodesToShow() throws Exception
-	{
-		return getSubViewProvider().getRowCodesToShow();
-	}
-	
-	public boolean shouldIncludeResultsChain() throws Exception
-	{
-		return getSubViewProvider().shouldIncludeResultsChain();
-	}
-
-	public boolean shouldIncludeConceptualModelPage() throws Exception
-	{
-		return getSubViewProvider().shouldIncludeConceptualModelPage();
 	}
 	
 	@Override
