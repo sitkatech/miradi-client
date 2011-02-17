@@ -32,8 +32,6 @@ public class MonitoringPlanMultiRowColumnProvider extends AbstractMultiRowColumn
 	public MonitoringPlanMultiRowColumnProvider(Project projectToUse)
 	{
 		super(projectToUse);
-	
-		codeToProviderMap = createCodeToProviderMap();
 	}
 	
 	public CodeList getColumnCodesToShow() throws Exception

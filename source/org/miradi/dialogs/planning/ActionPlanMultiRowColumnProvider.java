@@ -32,8 +32,6 @@ public class ActionPlanMultiRowColumnProvider extends AbstractMultiRowColumnProv
 	public ActionPlanMultiRowColumnProvider(Project projectToUse)
 	{
 		super(projectToUse);
-	
-		codeToProviderMap = createCodeToProviderMap();
 	}
 	
 	public CodeList getColumnCodesToShow() throws Exception
