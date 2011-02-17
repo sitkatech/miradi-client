@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-17 12:38-0600\n"
+"POT-Creation-Date: 2011-02-17 13:58-0600\n"
 "PO-Revision-Date: 2011-01-24 10:21-0600\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -1296,7 +1296,7 @@ msgstr ""
 msgid "Action|Insert|Insert Scope Box"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionInsertStrategy.java:37
+#: Miradi/source/org/miradi/actions/ActionInsertStrategy.java:38
 msgid "Action|Insert|Insert Strategy"
 msgstr ""
 
@@ -1835,7 +1835,7 @@ msgid ""
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:198
-#: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:86
+#: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:85
 #: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:85
 msgid "Activity"
 msgstr ""
@@ -2595,7 +2595,7 @@ msgid "Completed - Successfully accomplished"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:107
-#: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:70
+#: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:69
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:82
 #: Miradi/source/org/miradi/dialogs/diagram/ConceptualModelDiagramPanel.java:69
 msgid "Conceptual Model"
@@ -2630,7 +2630,7 @@ msgid "Conservation Targets"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:101
-#: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:74
+#: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:73
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewContributingFactorPropertiesPanel.java:33
 msgid "Contributing Factor"
 msgstr ""
@@ -3044,7 +3044,7 @@ msgid "Diagram overview"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:90
-#: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:73
+#: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:72
 msgid "Direct Threat"
 msgstr ""
 
@@ -3152,6 +3152,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/questions/StrategyRatingSummaryQuestion.java:40
 msgid "Effective"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/MonitoringTreeConfigurationQuestion.java:35
+msgid "Effectiveness Monitoring Plan"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:159
@@ -3601,7 +3605,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:31
 #: Miradi/source/org/miradi/forms/objects/GoalPropertiesForm.java:31
-#: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:78
+#: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:77
 #: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:167
 #: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:41
 #: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:44
@@ -3677,7 +3681,7 @@ msgstr ""
 msgid "Ground-truth and revise model"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:83
+#: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:82
 msgid "Group Box"
 msgstr ""
 
@@ -3858,7 +3862,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:134
 #: Miradi/source/org/miradi/forms/objects/IndicatorSubForm.java:32
-#: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:80
+#: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:79
 #: Miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:38
 #: Miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:50
 msgid "Indicator"
@@ -3952,7 +3956,7 @@ msgstr ""
 msgid "Intensive Assessment"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:75
+#: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:74
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewIntermediateResultPropertiesPanel.java:33
 msgid "Intermediate Result"
 msgstr ""
@@ -4563,7 +4567,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:323
 #: Miradi/source/org/miradi/forms/objects/MeasurementPropertiesForm.java:32
-#: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:87
+#: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:86
 #: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:44
 #: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:45
 msgid "Measurement"
@@ -4664,7 +4668,7 @@ msgid "Menu|Remove Tag from %n Selected Item(s)"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:146
-#: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:85
+#: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:84
 #: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:87
 msgid "Method"
 msgstr ""
@@ -4894,7 +4898,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:169
 #: Miradi/source/org/miradi/forms/objects/ObjectivePropertiesForm.java:33
-#: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:79
+#: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:78
 #: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:42
 #: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:46
 msgid "Objective"
@@ -5256,7 +5260,7 @@ msgstr ""
 #: Miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:96
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:240
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:104
-#: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:69
+#: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:68
 msgid "Project"
 msgstr ""
 
@@ -5463,7 +5467,7 @@ msgid "Resources:"
 msgstr ""
 
 #: Miradi/source/org/miradi/project/ResultsChainCreatorHelper.java:194
-#: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:71
+#: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:70
 #: Miradi/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:35
 msgid "Results Chain"
 msgstr ""
@@ -5475,6 +5479,10 @@ msgstr ""
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:83
 #: Miradi/source/org/miradi/dialogs/diagram/ResultsChainDiagramPanel.java:50
 msgid "Results Chains"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/MonitoringTreeConfigurationQuestion.java:36
+msgid "Results Monitoring Plan"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:61
@@ -5918,7 +5926,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:180
 #: Miradi/source/org/miradi/forms/objects/StrategyCoreSubForm.java:33
-#: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:77
+#: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:76
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:44
 msgid "Strategy"
 msgstr ""
@@ -5946,7 +5954,7 @@ msgid ""
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:60
-#: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:81
+#: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:80
 #: Miradi/source/org/miradi/utils/ThreatStressRatingDetailsTableExporter.java:71
 #: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:50
 msgid "Stress"
@@ -5998,7 +6006,7 @@ msgstr ""
 #: Miradi/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:37
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:35
 #: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:112
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:131
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:132
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:61
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:131
 msgid "Summary"
@@ -6572,7 +6580,7 @@ msgstr ""
 msgid "TT|Insert a Scope Box"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionInsertStrategy.java:43
+#: Miradi/source/org/miradi/actions/ActionInsertStrategy.java:44
 msgid "TT|Insert a Strategy"
 msgstr ""
 
@@ -6891,7 +6899,7 @@ msgid "Tan"
 msgstr ""
 
 #: Miradi/source/org/miradi/forms/objects/TargetPropertiesForm.java:33
-#: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:72
+#: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:71
 #: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:351
 #: Miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:53
 msgid "Target"
@@ -6948,7 +6956,7 @@ msgid "Targets within Diagrams"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:202
-#: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:84
+#: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:83
 #: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:89
 msgid "Task"
 msgstr ""
@@ -6984,7 +6992,7 @@ msgstr ""
 msgid "Team Members: %1"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:82
+#: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:81
 msgid "Text Box"
 msgstr ""
 
@@ -7184,7 +7192,7 @@ msgstr ""
 msgid "Threat Ratings - Table"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:76
+#: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:75
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewThreatReductionResultPropertiesPanel.java:33
 msgid "Threat Reduction Result"
 msgstr ""
@@ -8040,6 +8048,9 @@ msgid "FieldLabel|5.BudgetRollupReportTypes|Rollup Types"
 msgstr ""
 
 msgid "FieldLabel|5.ActionTreeConfigurationChoice|Tree Configuration"
+msgstr ""
+
+msgid "FieldLabel|5.MonitoringTreeConfigurationChoice|Tree Configuration"
 msgstr ""
 
 msgid "FieldLabel|6.Link|Factor Link"
