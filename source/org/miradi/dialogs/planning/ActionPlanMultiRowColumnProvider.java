@@ -77,6 +77,4 @@ public class ActionPlanMultiRowColumnProvider extends AbstractMultiRowColumnProv
 		
 		return map;
 	}
-	
-	private HashMap<String, AbstractPlanningTreeRowColumnProvider> codeToProviderMap;
 }
