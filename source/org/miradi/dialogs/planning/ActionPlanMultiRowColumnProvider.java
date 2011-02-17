@@ -22,6 +22,7 @@ package org.miradi.dialogs.planning;
 
 import java.util.HashMap;
 
+import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.questions.ActionTreeConfigurationQuestion;
 import org.miradi.utils.CodeList;
@@ -63,7 +64,7 @@ public class ActionPlanMultiRowColumnProvider extends AbstractPlanningTreeRowCol
 	
 	private AbstractPlanningTreeRowColumnProvider getSubViewProvider() throws Exception
 	{
-		String actionTreeConfigurationCode = getProject().getCurrentViewData().getTreeConfigurationChoice();
+		String actionTreeConfigurationCode = getProject().getCurrentViewData().getData(ViewData.TAG_ACTION_TREE_CONFIGURATION_CHOICE);
 		
 		return codeToProviderMap.get(actionTreeConfigurationCode);
 	}
