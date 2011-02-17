@@ -31,7 +31,7 @@ public class ActionCreatePlanningViewConfigurationMenu extends ObjectsAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Create Custom");
+		return EAM.text("Action|Create Table");
 	}
 
 	@Override
