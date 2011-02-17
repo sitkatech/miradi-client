@@ -23,7 +23,8 @@ import org.miradi.actions.ActionCollapseAllRows;
 import org.miradi.actions.ActionCreateCustomFromCurrentTreeTableConfiguration;
 import org.miradi.actions.ActionExpandAllRows;
 import org.miradi.actions.ActionPlanningCreationMenu;
-import org.miradi.dialogs.planning.MonitoringRowColumnProvider;
+import org.miradi.dialogs.planning.MonitoringPlanMultiRowColumnProvider;
+import org.miradi.dialogs.planning.PlanningViewMonitoringButtonPanel;
 import org.miradi.dialogs.planning.treenodes.PlanningTreeRootNode;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
@@ -37,12 +38,15 @@ public class MonitoringPlanningTreeTablePanel extends PlanningTreeTablePanel
 											   PlanningTreeRowColumnProvider rowColumnProvider) throws Exception
 	{
 		super(mainWindowToUse, treeToUse, modelToUse, buttonActions, rowColumnProvider);
+		
+		monitoringButtonPanel = new PlanningViewMonitoringButtonPanel(getProject());
+		addToButtonBox(monitoringButtonPanel);
 	}
 
 	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse) throws Exception
 	{
 		PlanningTreeRootNode rootNode = new PlanningTreeRootNode(mainWindowToUse.getProject());
-		MonitoringRowColumnProvider rowColumnProvider = new MonitoringRowColumnProvider(mainWindowToUse.getProject());
+		MonitoringPlanMultiRowColumnProvider rowColumnProvider = new MonitoringPlanMultiRowColumnProvider(mainWindowToUse.getProject());
 		PlanningTreeTableModel model = new MonitoringPlanTreeTableModel(mainWindowToUse.getProject(), rootNode, rowColumnProvider);
 		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse, model);
 		
@@ -51,11 +55,24 @@ public class MonitoringPlanningTreeTablePanel extends PlanningTreeTablePanel
 	
 	private static Class[] getButtonActions()
 	{
+		final Class FILLER_TO_ENSURE_DROP_DOWN_IS_ON_SECOND_ROW = null;
 		return new Class[] {
 				ActionExpandAllRows.class, 
 				ActionCollapseAllRows.class, 
 				ActionPlanningCreationMenu.class,
 				ActionCreateCustomFromCurrentTreeTableConfiguration.class,
+				FILLER_TO_ENSURE_DROP_DOWN_IS_ON_SECOND_ROW,
+				FILLER_TO_ENSURE_DROP_DOWN_IS_ON_SECOND_ROW,
 		};
 	}
+	
+	@Override
+	public void dispose()
+	{
+		super.dispose();
+		
+		monitoringButtonPanel.dispose();
+	}
+	
+	private PlanningViewMonitoringButtonPanel monitoringButtonPanel;
 }

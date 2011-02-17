@@ -37,6 +37,7 @@ import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.ActionTreeConfigurationQuestion;
 import org.miradi.questions.InternalQuestionWithoutValues;
+import org.miradi.questions.MonitoringTreeConfigurationQuestion;
 import org.miradi.questions.WorkPlanCategoryTypesQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
@@ -196,6 +197,7 @@ public class ViewData extends BaseObject
 		treeConfigurationRef = new ORefData(TAG_TREE_CONFIGURATION_REF);
 		currentWizardStep = new StringData(TAG_CURRENT_WIZARD_STEP);
 		actionTreeConfigurationChoice = new ChoiceData(TAG_ACTION_TREE_CONFIGURATION_CHOICE, new ActionTreeConfigurationQuestion());
+		monitoringTreeConfigurationChoice = new ChoiceData(TAG_MONITORING_TREE_CONFIGURATION_CHOICE, getQuestion(MonitoringTreeConfigurationQuestion.class));
 		
 		addPresentationDataField(TAG_CURRENT_CONCEPTUAL_MODEL_REF, currentConceptualModelRef);
 		addPresentationDataField(TAG_CURRENT_RESULTS_CHAIN_REF, currentResultsChainRef);
@@ -209,6 +211,7 @@ public class ViewData extends BaseObject
 		addPresentationDataField(TAG_TREE_CONFIGURATION_REF, treeConfigurationRef);
 		addPresentationDataField(TAG_CURRENT_WIZARD_STEP, currentWizardStep);
 		addPresentationDataField(TAG_ACTION_TREE_CONFIGURATION_CHOICE, actionTreeConfigurationChoice);
+		addPresentationDataField(TAG_MONITORING_TREE_CONFIGURATION_CHOICE, monitoringTreeConfigurationChoice);
 	}
 
 	public static final String TAG_CURRENT_CONCEPTUAL_MODEL_REF = "CurrentConceptualModelRef";
@@ -223,6 +226,7 @@ public class ViewData extends BaseObject
 	public static final String TAG_TREE_CONFIGURATION_REF = "CustomPlanRef";
 	public static final String TAG_CURRENT_WIZARD_STEP = "CurrentWizardStep";
 	public static final String TAG_ACTION_TREE_CONFIGURATION_CHOICE = "ActionTreeConfigurationChoice";
+	public static final String TAG_MONITORING_TREE_CONFIGURATION_CHOICE = "MonitoringTreeConfigurationChoice";
 	
 	public static final String MODE_DEFAULT = "";
 	public static final String MODE_STRATEGY_BRAINSTORM = "StrategyBrainstorm";
@@ -240,4 +244,5 @@ public class ViewData extends BaseObject
 	private ORefData treeConfigurationRef;
 	private StringData currentWizardStep;
 	private ChoiceData actionTreeConfigurationChoice;
+	private ChoiceData monitoringTreeConfigurationChoice;
 }
