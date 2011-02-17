@@ -69,6 +69,7 @@ public class ActionPlanMultiRowColumnProvider extends AbstractMultiRowColumnProv
 		return codeToProviderMap.get(actionTreeConfigurationCode);
 	}
 
+	@Override
 	protected String getConfigurationTag()
 	{
 		return ViewData.TAG_ACTION_TREE_CONFIGURATION_CHOICE;
