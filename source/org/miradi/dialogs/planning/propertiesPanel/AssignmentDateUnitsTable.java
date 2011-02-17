@@ -48,7 +48,6 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
-import org.miradi.questions.WorkPlanVisibleRowsQuestion;
 import org.miradi.utils.DoubleClickAutoSelectCellEditor;
 
 abstract public class AssignmentDateUnitsTable extends AbstractComponentTable implements RightClickActionProvider, TableWithExpandableColumnsInterface, RowColumnBaseObjectProvider
@@ -231,11 +230,6 @@ abstract public class AssignmentDateUnitsTable extends AbstractComponentTable im
 		throw new RuntimeException("Method is currently unused and has no implementation");
 	}
 	
-	public String getWorkPlanBudgetMode()
-	{
-		return WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE;
-	}
-		
 	public static final String UNIQUE_IDENTIFIER = "WorkUnitsTable";
 
 	private BasicTableCellEditorOrRendererFactory currencyRendererFactory;
