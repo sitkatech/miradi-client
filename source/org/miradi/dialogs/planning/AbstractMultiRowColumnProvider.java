@@ -23,6 +23,7 @@ package org.miradi.dialogs.planning;
 import java.util.HashMap;
 
 import org.miradi.project.Project;
+import org.miradi.utils.CodeList;
 
 abstract public class AbstractMultiRowColumnProvider extends AbstractPlanningTreeRowColumnProvider
 {
@@ -31,6 +32,32 @@ abstract public class AbstractMultiRowColumnProvider extends AbstractPlanningTre
 		super(projectToUse);
 		
 		codeToProviderMap = createCodeToProviderMap();
+	}
+	
+	public CodeList getColumnCodesToShow() throws Exception
+	{
+		return getSubViewProvider().getColumnCodesToShow();
+	}
+
+	public CodeList getRowCodesToShow() throws Exception
+	{
+		return getSubViewProvider().getRowCodesToShow();
+	}
+	
+	public boolean shouldIncludeResultsChain() throws Exception
+	{
+		return getSubViewProvider().shouldIncludeResultsChain();
+	}
+
+	public boolean shouldIncludeConceptualModelPage() throws Exception
+	{
+		return getSubViewProvider().shouldIncludeConceptualModelPage();
+	}
+	
+	@Override
+	public boolean doObjectivesContainStrategies() throws Exception
+	{
+		return getSubViewProvider().doObjectivesContainStrategies();
 	}
 	
 	protected AbstractPlanningTreeRowColumnProvider getSubViewProvider() throws Exception
