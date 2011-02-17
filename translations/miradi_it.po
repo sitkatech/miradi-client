@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-17 13:58-0600\n"
+"POT-Creation-Date: 2011-02-17 15:10-0600\n"
 "PO-Revision-Date: 2010-05-12 21:01-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -1053,10 +1053,6 @@ msgstr ""
 msgid "Action|Configure Export"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionEditAnalysisRows.java:36
-msgid "Action|Configure Rows..."
-msgstr ""
-
 #: Miradi/source/org/miradi/actions/ActionContextualHelp.java:37
 msgid "Action|ContextSensitive|Help"
 msgstr ""
@@ -1076,10 +1072,6 @@ msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionCreateConceptualModel.java:35
 msgid "Action|Create Conceptual Model Page"
-msgstr ""
-
-#: Miradi/source/org/miradi/actions/ActionCreatePlanningViewConfigurationMenu.java:34
-msgid "Action|Create Custom"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionCreateIncomingJunction.java:34
@@ -1118,18 +1110,20 @@ msgstr ""
 msgid "Action|Create Stress from KEA"
 msgstr ""
 
+#: Miradi/source/org/miradi/actions/ActionCreatePlanningViewConfigurationMenu.java:34
+msgid "Action|Create Table"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:54
 #: Miradi/source/org/miradi/actions/ActionHelpCredits.java:34
 msgid "Action|Credits"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionWorkPlanBudgetColumnsEditor.java:35
-msgid "Action|Customize Table..."
-msgstr ""
-
+#: Miradi/source/org/miradi/actions/ActionEditAnalysisRows.java:36
 #: Miradi/source/org/miradi/actions/ActionCreateCustomFromCurrentTreeTableConfiguration.java:35
+#: Miradi/source/org/miradi/actions/ActionWorkPlanBudgetColumnsEditor.java:35
 #: Miradi/source/org/miradi/actions/ActionPlanningCustomizeDialogPopup.java:35
-msgid "Action|Customize..."
+msgid "Action|Customize Table..."
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionCut.java:34
@@ -1159,10 +1153,6 @@ msgstr ""
 msgid "Action|Delete Conceptual Model Page"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionDeletePlanningViewConfiguration.java:35
-msgid "Action|Delete Custom"
-msgstr ""
-
 #: Miradi/source/org/miradi/actions/ActionDeleteGroupBox.java:35
 msgid "Action|Delete Group Box(s)"
 msgstr ""
@@ -1189,6 +1179,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionDeleteStress.java:35
 msgid "Action|Delete Stress"
+msgstr ""
+
+#: Miradi/source/org/miradi/actions/ActionDeletePlanningViewConfiguration.java:35
+msgid "Action|Delete Table"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/views/ActionViewDiagram.java:36
@@ -5741,10 +5735,6 @@ msgstr ""
 msgid "Show Ratings in Cell"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/upperPanel/ObjectsOnlyPlanningTreeTablePanel.java:44
-msgid "Show: "
-msgstr ""
-
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:47
 msgid "Shrubland"
 msgstr ""
@@ -6817,6 +6807,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:157
 msgid "Table Row Height Mode"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/planning/upperPanel/ObjectsOnlyPlanningTreeTablePanel.java:44
+msgid "Table:"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/planning/ActionPlanManagementPanel.java:47
@@ -8047,10 +8041,10 @@ msgstr ""
 msgid "FieldLabel|5.BudgetRollupReportTypes|Rollup Types"
 msgstr ""
 
-msgid "FieldLabel|5.ActionTreeConfigurationChoice|Tree Configuration"
+msgid "FieldLabel|5.ActionTreeConfigurationChoice|Table:"
 msgstr ""
 
-msgid "FieldLabel|5.MonitoringTreeConfigurationChoice|Tree Configuration"
+msgid "FieldLabel|5.MonitoringTreeConfigurationChoice|Table:"
 msgstr ""
 
 msgid "FieldLabel|6.Link|Factor Link"
