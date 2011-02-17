@@ -64,12 +64,17 @@ public class ActionPlanMultiRowColumnProvider extends AbstractMultiRowColumnProv
 	
 	private AbstractPlanningTreeRowColumnProvider getSubViewProvider() throws Exception
 	{
-		String actionTreeConfigurationCode = getProject().getCurrentViewData().getData(ViewData.TAG_ACTION_TREE_CONFIGURATION_CHOICE);
+		String actionTreeConfigurationCode = getProject().getCurrentViewData().getData(getConfigurationTag());
 		
 		return codeToProviderMap.get(actionTreeConfigurationCode);
 	}
+
+	protected String getConfigurationTag()
+	{
+		return ViewData.TAG_ACTION_TREE_CONFIGURATION_CHOICE;
+	}
 	
-	private HashMap<String, AbstractPlanningTreeRowColumnProvider> createCodeToProviderMap()
+	protected HashMap<String, AbstractPlanningTreeRowColumnProvider> createCodeToProviderMap()
 	{
 		HashMap<String, AbstractPlanningTreeRowColumnProvider> map = new HashMap<String, AbstractPlanningTreeRowColumnProvider>();
 		map.put(ActionTreeConfigurationQuestion.OBJECTIVES_CONTAIN_STRATEGIES_CODE, new ActionPlanSubViewObjectiveBasedRowColumnProvider(getProject()));
