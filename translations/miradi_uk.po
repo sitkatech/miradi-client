@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-17 15:25-0600\n"
+"POT-Creation-Date: 2011-02-17 15:40-0600\n"
 "PO-Revision-Date: 2010-09-30 09:31+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -1783,10 +1783,6 @@ msgstr "Action|Remove|Забрати фактор(и) з групової рам
 #: Miradi/source/org/miradi/actions/ActionRenameConceptualModel.java:34
 msgid "Action|Rename Conceptual Model Page"
 msgstr "Action|Перейменувати сторінку концептуальної моделі"
-
-#: Miradi/source/org/miradi/actions/ActionRenamePlanningViewConfiguration.java:34
-msgid "Action|Rename Custom"
-msgstr "Action|Перейменувати клієнтуру"
 
 #: Miradi/source/org/miradi/actions/ActionRenameResultsChain.java:34
 msgid "Action|Rename Results Chain"
@@ -5412,10 +5408,6 @@ msgstr "Параметри планування"
 msgid "Planning Properties Panel"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewCustomLabelPropertiesPanel.java:40
-msgid "Planning View Configuration Label Properties"
-msgstr "Плановані складові виду ярлика конфігурації"
-
 #: Miradi/source/org/miradi/views/planning/doers/AbstractCreatePlanningViewConfigurationDoer.java:100
 msgid "PlanningSubViewName|Custom"
 msgstr " PlanningSubViewName|Податок"
@@ -7044,10 +7036,6 @@ msgstr "TT|Забрати члена з робочої групи"
 #: Miradi/source/org/miradi/actions/ActionResourceListRemove.java:40
 msgid "TT|Remove resource from list"
 msgstr "TT|Забрати ресурси з переліку"
-
-#: Miradi/source/org/miradi/actions/ActionRenamePlanningViewConfiguration.java:40
-msgid "TT|Rename the selected Custom Planning View"
-msgstr "TT|Перейменувати вибраний вид Планування клієнтури"
 
 #: Miradi/source/org/miradi/actions/ActionRenameConceptualModel.java:40
 msgid "TT|Rename this Conceptual Model Page"
@@ -26731,6 +26719,15 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
+
+#~ msgid "Action|Rename Custom"
+#~ msgstr "Action|Перейменувати клієнтуру"
+
+#~ msgid "Planning View Configuration Label Properties"
+#~ msgstr "Плановані складові виду ярлика конфігурації"
+
+#~ msgid "TT|Rename the selected Custom Planning View"
+#~ msgstr "TT|Перейменувати вибраний вид Планування клієнтури"
 
 #~ msgid "Action|Create Custom"
 #~ msgstr "Action|Створити клієнтуру"

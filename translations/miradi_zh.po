@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-17 15:25-0600\n"
+"POT-Creation-Date: 2011-02-17 15:40-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -1634,10 +1634,6 @@ msgstr "从组合框中删除（多个）因素 \t\t"
 #: Miradi/source/org/miradi/actions/ActionRenameConceptualModel.java:34
 msgid "Action|Rename Conceptual Model Page"
 msgstr "重命名概念模型页 \t\t"
-
-#: Miradi/source/org/miradi/actions/ActionRenamePlanningViewConfiguration.java:34
-msgid "Action|Rename Custom"
-msgstr "重命名定制 \t\t"
 
 #: Miradi/source/org/miradi/actions/ActionRenameResultsChain.java:34
 msgid "Action|Rename Results Chain"
@@ -5199,10 +5195,6 @@ msgstr "计划参数"
 msgid "Planning Properties Panel"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewCustomLabelPropertiesPanel.java:40
-msgid "Planning View Configuration Label Properties"
-msgstr "计划视图配置标签属性 \t\t"
-
 #: Miradi/source/org/miradi/views/planning/doers/AbstractCreatePlanningViewConfigurationDoer.java:100
 msgid "PlanningSubViewName|Custom"
 msgstr ""
@@ -6787,10 +6779,6 @@ msgstr "从团队中去除一个成员 \t\t"
 #: Miradi/source/org/miradi/actions/ActionResourceListRemove.java:40
 msgid "TT|Remove resource from list"
 msgstr "从列表中去除资源 \t\t"
-
-#: Miradi/source/org/miradi/actions/ActionRenamePlanningViewConfiguration.java:40
-msgid "TT|Rename the selected Custom Planning View"
-msgstr "重命名选定的定制计划视图 \t\t"
 
 #: Miradi/source/org/miradi/actions/ActionRenameConceptualModel.java:40
 msgid "TT|Rename this Conceptual Model Page"
@@ -28840,6 +28828,15 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid "Action|Rename Custom"
+#~ msgstr "重命名定制 \t\t"
+
+#~ msgid "Planning View Configuration Label Properties"
+#~ msgstr "计划视图配置标签属性 \t\t"
+
+#~ msgid "TT|Rename the selected Custom Planning View"
+#~ msgstr "重命名选定的定制计划视图 \t\t"
 
 #~ msgid "Action|Create Custom"
 #~ msgstr "创建定制 \t\t"

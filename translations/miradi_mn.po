@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-17 15:25-0600\n"
+"POT-Creation-Date: 2011-02-17 15:40-0600\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -1776,10 +1776,6 @@ msgstr "Үйлдэл|Арилгах|Бүлгийн хайрцагаас хүчи
 #: Miradi/source/org/miradi/actions/ActionRenameConceptualModel.java:34
 msgid "Action|Rename Conceptual Model Page"
 msgstr "Үйлдэл|Концепцийн загварын хуудсын нэрийг өөрчлөх"
-
-#: Miradi/source/org/miradi/actions/ActionRenamePlanningViewConfiguration.java:34
-msgid "Action|Rename Custom"
-msgstr "Үйлдэл|Үйлчлүүлэгчийн нэрийг өөрчлөх"
 
 #: Miradi/source/org/miradi/actions/ActionRenameResultsChain.java:34
 msgid "Action|Rename Results Chain"
@@ -5416,10 +5412,6 @@ msgstr "Өгөгдөхүүнийг төлөвлөх"
 msgid "Planning Properties Panel"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewCustomLabelPropertiesPanel.java:40
-msgid "Planning View Configuration Label Properties"
-msgstr "Төлөвлөлийн Харагдац Хэлбэр Хаяг Шинжүүд"
-
 #: Miradi/source/org/miradi/views/planning/doers/AbstractCreatePlanningViewConfigurationDoer.java:100
 msgid "PlanningSubViewName|Custom"
 msgstr "ТөлөвлөлтДэдХарагдацНэр|Үйлчлүүлэгч"
@@ -7072,10 +7064,6 @@ msgstr "TT|Гишүүнийг багаас хасах"
 #: Miradi/source/org/miradi/actions/ActionResourceListRemove.java:40
 msgid "TT|Remove resource from list"
 msgstr "TT|Нөөцийг жагсаалтаас хасах"
-
-#: Miradi/source/org/miradi/actions/ActionRenamePlanningViewConfiguration.java:40
-msgid "TT|Rename the selected Custom Planning View"
-msgstr "TT|Хэрэглэгчийн Төлөвлөлтийн сонгосон View-ийн нэрийг өөрчлөх"
 
 #: Miradi/source/org/miradi/actions/ActionRenameConceptualModel.java:40
 msgid "TT|Rename this Conceptual Model Page"
@@ -31576,6 +31564,15 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid "Action|Rename Custom"
+#~ msgstr "Үйлдэл|Үйлчлүүлэгчийн нэрийг өөрчлөх"
+
+#~ msgid "Planning View Configuration Label Properties"
+#~ msgstr "Төлөвлөлийн Харагдац Хэлбэр Хаяг Шинжүүд"
+
+#~ msgid "TT|Rename the selected Custom Planning View"
+#~ msgstr "TT|Хэрэглэгчийн Төлөвлөлтийн сонгосон View-ийн нэрийг өөрчлөх"
 
 #~ msgid "Action|Create Custom"
 #~ msgstr "Үйлдэл|Үйлчлүүлэгчийг үүсгэх"

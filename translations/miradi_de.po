@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-17 15:25-0600\n"
+"POT-Creation-Date: 2011-02-17 15:40-0600\n"
 "PO-Revision-Date: 2011-01-24 10:21-0600\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -1589,10 +1589,6 @@ msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionRenameConceptualModel.java:34
 msgid "Action|Rename Conceptual Model Page"
-msgstr ""
-
-#: Miradi/source/org/miradi/actions/ActionRenamePlanningViewConfiguration.java:34
-msgid "Action|Rename Custom"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionRenameResultsChain.java:34
@@ -5095,10 +5091,6 @@ msgstr ""
 msgid "Planning Properties Panel"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewCustomLabelPropertiesPanel.java:40
-msgid "Planning View Configuration Label Properties"
-msgstr ""
-
 #: Miradi/source/org/miradi/views/planning/doers/AbstractCreatePlanningViewConfigurationDoer.java:100
 msgid "PlanningSubViewName|Custom"
 msgstr ""
@@ -6654,10 +6646,6 @@ msgstr ""
 #: Miradi/source/org/miradi/actions/ActionRemoveAssignment.java:41
 #: Miradi/source/org/miradi/actions/ActionResourceListRemove.java:40
 msgid "TT|Remove resource from list"
-msgstr ""
-
-#: Miradi/source/org/miradi/actions/ActionRenamePlanningViewConfiguration.java:40
-msgid "TT|Rename the selected Custom Planning View"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionRenameConceptualModel.java:40

@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-17 15:25-0600\n"
+"POT-Creation-Date: 2011-02-17 15:40-0600\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -1712,10 +1712,6 @@ msgstr "Hapus Faktor(-faktor) dari Kotak Grup "
 #: Miradi/source/org/miradi/actions/ActionRenameConceptualModel.java:34
 msgid "Action|Rename Conceptual Model Page"
 msgstr "Ganti Nama Halaman Model Konsep "
-
-#: Miradi/source/org/miradi/actions/ActionRenamePlanningViewConfiguration.java:34
-msgid "Action|Rename Custom"
-msgstr "Ganti nama Sesuaian "
 
 #: Miradi/source/org/miradi/actions/ActionRenameResultsChain.java:34
 msgid "Action|Rename Results Chain"
@@ -5374,10 +5370,6 @@ msgstr "Rangkuman Proyek"
 msgid "Planning Properties Panel"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewCustomLabelPropertiesPanel.java:40
-msgid "Planning View Configuration Label Properties"
-msgstr "Sifat-sifat Label Konfigurasi Tampilan Perencanaan "
-
 #: Miradi/source/org/miradi/views/planning/doers/AbstractCreatePlanningViewConfigurationDoer.java:100
 msgid "PlanningSubViewName|Custom"
 msgstr "Khusus "
@@ -7008,10 +7000,6 @@ msgstr "Hilangkan satu anggota dari tim "
 #: Miradi/source/org/miradi/actions/ActionResourceListRemove.java:40
 msgid "TT|Remove resource from list"
 msgstr "Hilangkan sumber daya dari daftar "
-
-#: Miradi/source/org/miradi/actions/ActionRenamePlanningViewConfiguration.java:40
-msgid "TT|Rename the selected Custom Planning View"
-msgstr "Ganti nama Tampilan Perencanaan Tersuai terpilih "
 
 #: Miradi/source/org/miradi/actions/ActionRenameConceptualModel.java:40
 msgid "TT|Rename this Conceptual Model Page"
@@ -32473,6 +32461,15 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "Action|Rename Custom"
+#~ msgstr "Ganti nama Sesuaian "
+
+#~ msgid "Planning View Configuration Label Properties"
+#~ msgstr "Sifat-sifat Label Konfigurasi Tampilan Perencanaan "
+
+#~ msgid "TT|Rename the selected Custom Planning View"
+#~ msgstr "Ganti nama Tampilan Perencanaan Tersuai terpilih "
 
 #~ msgid "Action|Create Custom"
 #~ msgstr "Buat Sesuaian "
