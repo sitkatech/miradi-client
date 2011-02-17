@@ -30,6 +30,10 @@ import org.miradi.main.EAM;
 
 public class StrategyIcon extends AbstractShapeIcon
 {
+	protected StrategyIcon()
+	{
+	}
+	
 	@Override
 	FactorRenderer getRenderer()
 	{

@@ -35,8 +35,8 @@ import org.miradi.icons.ContributingFactorIcon;
 import org.miradi.icons.DirectThreatIcon;
 import org.miradi.icons.DraftStrategyIcon;
 import org.miradi.icons.HumanWelfareTargetIcon;
+import org.miradi.icons.IconManager;
 import org.miradi.icons.IntermediateResultIcon;
-import org.miradi.icons.StrategyIcon;
 import org.miradi.icons.TargetIcon;
 import org.miradi.icons.ThreatReductionResultIcon;
 import org.miradi.ids.DiagramFactorId;
@@ -97,7 +97,8 @@ public class FactorSummaryPanel extends ObjectDataInputPanelWithSections
 		{
 			if( ((Strategy)factor).isStatusDraft())
 				return new DraftStrategyIcon();
-			return new StrategyIcon();
+			
+			return IconManager.getStrategyIcon();
 		}
 
 		return null;

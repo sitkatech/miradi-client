@@ -26,9 +26,9 @@ import org.miradi.icons.ContributingFactorIcon;
 import org.miradi.icons.DirectThreatIcon;
 import org.miradi.icons.GroupBoxIcon;
 import org.miradi.icons.HumanWelfareTargetIcon;
+import org.miradi.icons.IconManager;
 import org.miradi.icons.IntermediateResultIcon;
 import org.miradi.icons.ScopeBoxIcon;
-import org.miradi.icons.StrategyIcon;
 import org.miradi.icons.StressIcon;
 import org.miradi.icons.TargetIcon;
 import org.miradi.icons.TextBoxIcon;
@@ -121,7 +121,7 @@ public abstract class FactorType
 			return new ContributingFactorIcon();
 		
 		if (factor.isStrategy())
-			return new StrategyIcon();
+			return IconManager.getStrategyIcon();
 		
 		if (factor.isTarget())
 			return new TargetIcon();
