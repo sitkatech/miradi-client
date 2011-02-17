@@ -34,4 +34,6 @@ abstract public class AbstractMultiRowColumnProvider extends AbstractPlanningTre
 	abstract protected String getConfigurationTag();
 	
 	abstract protected HashMap<String, AbstractPlanningTreeRowColumnProvider> createCodeToProviderMap();
+	
+	protected HashMap<String, AbstractPlanningTreeRowColumnProvider> codeToProviderMap;
 }
