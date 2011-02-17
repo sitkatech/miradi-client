@@ -564,7 +564,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 
 	private ChoiceItem getFilteredWhen(BaseObject baseObject) throws Exception
 	{
-		TimePeriodCostsMap totalTimePeriodCostsMap = calculateTimePeriodCostsMap(baseObject, getRowColumnObjectProvider().getWorkPlanBudgetMode());
+		TimePeriodCostsMap totalTimePeriodCostsMap = calculateTimePeriodCostsMap(baseObject, getRowColumnProvider().getWorkPlanBudgetMode());
 		DateRange projectStartEndDateRange = getProject().getProjectCalendar().getProjectPlanningDateRange();
 		DateRange rolledUpResourceAssignmentsDateRange = totalTimePeriodCostsMap.getRolledUpDateRange(projectStartEndDateRange, getResourcesFilter());
 		String rolledUpResourceAssignmentsWhen = getProject().getProjectCalendar().convertToSafeString(rolledUpResourceAssignmentsDateRange);
@@ -580,7 +580,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	
 	private ChoiceItem appendedProjectResources(BaseObject baseObject) throws Exception
 	{
-		TimePeriodCosts timePeriodCosts = calculateTimePeriodCosts(baseObject, new DateUnit(), getRowColumnObjectProvider().getWorkPlanBudgetMode());
+		TimePeriodCosts timePeriodCosts = calculateTimePeriodCosts(baseObject, new DateUnit(), getRowColumnProvider().getWorkPlanBudgetMode());
 		timePeriodCosts.retainWorkUnitDataRelatedToAnyOf(getResourcesFilter());
 		ORefSet filteredResources = new ORefSet(timePeriodCosts.getWorkUnitsRefSetForType(ProjectResource.getObjectType()));
 		
