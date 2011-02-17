@@ -413,13 +413,13 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	@Override
 	public BaseObject getBaseObjectForRowColumn(int row, int column)
 	{
-		return getRowColumnProvider().getBaseObjectForRowColumn(row, column);
+		return getRowColumnBaseObjectProvider().getBaseObjectForRowColumn(row, column);
 	}
 
 	@Override
 	public int getRowCount()
 	{
-		return getRowColumnProvider().getRowCount();
+		return getRowColumnBaseObjectProvider().getRowCount();
 	}
 	
 	public Assignment getAssignment(int row)
@@ -476,7 +476,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		return Assignment.findAssignment(getProject(), assignmentRef);
 	}
 
-	public RowColumnBaseObjectProvider getRowColumnProvider()
+	public RowColumnBaseObjectProvider getRowColumnBaseObjectProvider()
 	{
 		return rowColumnBaseObjectProvider;
 	}
@@ -492,7 +492,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		{
 			DateUnit dateUnit = getDateUnit(column);
 			TimePeriodCosts timePeriodCosts = getProjectTotalTimePeriodCostFor(dateUnit);
-			ORefList objectHierarchy = getRowColumnProvider().getObjectHiearchy(row, column);
+			ORefList objectHierarchy = getRowColumnBaseObjectProvider().getObjectHiearchy(row, column);
 			ORefSet refsToRetain = new ORefSet(objectHierarchy);
 			removeMetadataRootNodeRefInPlace(refsToRetain);
 			retainDataRelatedToAllOf(timePeriodCosts, refsToRetain);
@@ -738,7 +738,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	private OptionalDouble getOptionalDoubleDataFilteredByResource(BaseObject baseObject, DateUnit dateUnit) throws Exception
 	{
 		ORefSet resourcesFilter = getResourcesFilter();
-		TimePeriodCosts timePeriodCosts = calculateTimePeriodCosts(baseObject, dateUnit, getRowColumnProvider().getWorkPlanBudgetMode());
+		TimePeriodCosts timePeriodCosts = calculateTimePeriodCosts(baseObject, dateUnit, getRowColumnBaseObjectProvider().getWorkPlanBudgetMode());
 		timePeriodCosts.retainWorkUnitDataRelatedToAnyOf(resourcesFilter);
 		
 		return calculateValue(timePeriodCosts);
@@ -754,7 +754,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	private TimePeriodCosts getProjectTotalTimePeriodCostFor(DateUnit dateUnit) throws Exception
 	{
 		ProjectTotalCalculator projectTotalCalculator = getProject().getProjectTotalCalculator();
-		TimePeriodCostsMap totalProject = projectTotalCalculator.calculateProjectTotals(getRowColumnProvider().getWorkPlanBudgetMode());
+		TimePeriodCostsMap totalProject = projectTotalCalculator.calculateProjectTotals(getRowColumnBaseObjectProvider().getWorkPlanBudgetMode());
 		
 		return totalProject.calculateTimePeriodCosts(dateUnit);
 	}
