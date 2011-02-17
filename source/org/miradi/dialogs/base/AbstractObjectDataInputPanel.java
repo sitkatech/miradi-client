@@ -162,6 +162,11 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		
 		super.becomeInactive();
 	}
+	
+	protected ChoiceQuestion getQuestion(Class questionClass)
+	{
+		return getProject().getQuestion(questionClass);
+	}
 
 	public Project getProject()
 	{

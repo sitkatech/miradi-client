@@ -196,7 +196,7 @@ public class ViewData extends BaseObject
 		planningSingleLevelChoice = new StringData(TAG_PLANNING_SINGLE_LEVEL_CHOICE);
 		treeConfigurationRef = new ORefData(TAG_TREE_CONFIGURATION_REF);
 		currentWizardStep = new StringData(TAG_CURRENT_WIZARD_STEP);
-		actionTreeConfigurationChoice = new ChoiceData(TAG_ACTION_TREE_CONFIGURATION_CHOICE, new ActionTreeConfigurationQuestion());
+		actionTreeConfigurationChoice = new ChoiceData(TAG_ACTION_TREE_CONFIGURATION_CHOICE, getQuestion(ActionTreeConfigurationQuestion.class));
 		monitoringTreeConfigurationChoice = new ChoiceData(TAG_MONITORING_TREE_CONFIGURATION_CHOICE, getQuestion(MonitoringTreeConfigurationQuestion.class));
 		
 		addPresentationDataField(TAG_CURRENT_CONCEPTUAL_MODEL_REF, currentConceptualModelRef);
