@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-17 13:58-0600\n"
+"POT-Creation-Date: 2011-02-17 15:10-0600\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -1175,10 +1175,6 @@ msgstr "File ConPro (CPMZ) "
 msgid "Action|Configure Export"
 msgstr "Atur Ekspor "
 
-#: Miradi/source/org/miradi/actions/ActionEditAnalysisRows.java:36
-msgid "Action|Configure Rows..."
-msgstr ""
-
 #: Miradi/source/org/miradi/actions/ActionContextualHelp.java:37
 msgid "Action|ContextSensitive|Help"
 msgstr "Bantuan "
@@ -1199,10 +1195,6 @@ msgstr "Buat Titik Belok "
 #: Miradi/source/org/miradi/actions/ActionCreateConceptualModel.java:35
 msgid "Action|Create Conceptual Model Page"
 msgstr "Buat Halaman Model Konsep "
-
-#: Miradi/source/org/miradi/actions/ActionCreatePlanningViewConfigurationMenu.java:34
-msgid "Action|Create Custom"
-msgstr "Buat Sesuaian "
 
 #: Miradi/source/org/miradi/actions/ActionCreateIncomingJunction.java:34
 msgid "Action|Create Incoming Junction"
@@ -1240,18 +1232,20 @@ msgstr "Buat Tekanan "
 msgid "Action|Create Stress from KEA"
 msgstr "Buat Tekanan dari AEK "
 
+#: Miradi/source/org/miradi/actions/ActionCreatePlanningViewConfigurationMenu.java:34
+msgid "Action|Create Table"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:54
 #: Miradi/source/org/miradi/actions/ActionHelpCredits.java:34
 msgid "Action|Credits"
 msgstr "Penghargaan "
 
-#: Miradi/source/org/miradi/actions/ActionWorkPlanBudgetColumnsEditor.java:35
-msgid "Action|Customize Table..."
-msgstr ""
-
+#: Miradi/source/org/miradi/actions/ActionEditAnalysisRows.java:36
 #: Miradi/source/org/miradi/actions/ActionCreateCustomFromCurrentTreeTableConfiguration.java:35
+#: Miradi/source/org/miradi/actions/ActionWorkPlanBudgetColumnsEditor.java:35
 #: Miradi/source/org/miradi/actions/ActionPlanningCustomizeDialogPopup.java:35
-msgid "Action|Customize..."
+msgid "Action|Customize Table..."
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionCut.java:34
@@ -1281,10 +1275,6 @@ msgstr "Hapus Titik Belok "
 msgid "Action|Delete Conceptual Model Page"
 msgstr "Hapus Halaman Model Konsep "
 
-#: Miradi/source/org/miradi/actions/ActionDeletePlanningViewConfiguration.java:35
-msgid "Action|Delete Custom"
-msgstr "Hapus Sesuaian "
-
 #: Miradi/source/org/miradi/actions/ActionDeleteGroupBox.java:35
 msgid "Action|Delete Group Box(s)"
 msgstr "Hapus Kotak(-kotak) Grup "
@@ -1312,6 +1302,10 @@ msgstr "Hapus Rangkaian Hasil "
 #: Miradi/source/org/miradi/actions/ActionDeleteStress.java:35
 msgid "Action|Delete Stress"
 msgstr "Hapus Tekanan "
+
+#: Miradi/source/org/miradi/actions/ActionDeletePlanningViewConfiguration.java:35
+msgid "Action|Delete Table"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/views/ActionViewDiagram.java:36
 msgid "Action|Diagram"
@@ -6066,10 +6060,6 @@ msgstr ""
 msgid "Show Ratings in Cell"
 msgstr "Tampakkan Peringkat dalam Sel "
 
-#: Miradi/source/org/miradi/dialogs/planning/upperPanel/ObjectsOnlyPlanningTreeTablePanel.java:44
-msgid "Show: "
-msgstr "Tampilkan: "
-
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:47
 msgid "Shrubland"
 msgstr "Padang Semak"
@@ -7175,6 +7165,10 @@ msgstr "Berkas yang Dipisahkan Tab"
 #: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:157
 msgid "Table Row Height Mode"
 msgstr "Mode Tinggi Baris Tabel"
+
+#: Miradi/source/org/miradi/dialogs/planning/upperPanel/ObjectsOnlyPlanningTreeTablePanel.java:44
+msgid "Table:"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/planning/ActionPlanManagementPanel.java:47
 msgid "Tab|Action Plan"
@@ -8515,10 +8509,10 @@ msgstr ""
 msgid "FieldLabel|5.BudgetRollupReportTypes|Rollup Types"
 msgstr ""
 
-msgid "FieldLabel|5.ActionTreeConfigurationChoice|Tree Configuration"
+msgid "FieldLabel|5.ActionTreeConfigurationChoice|Table:"
 msgstr ""
 
-msgid "FieldLabel|5.MonitoringTreeConfigurationChoice|Tree Configuration"
+msgid "FieldLabel|5.MonitoringTreeConfigurationChoice|Table:"
 msgstr ""
 
 msgid "FieldLabel|6.Link|Factor Link"
@@ -32479,6 +32473,15 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "Action|Create Custom"
+#~ msgstr "Buat Sesuaian "
+
+#~ msgid "Action|Delete Custom"
+#~ msgstr "Hapus Sesuaian "
+
+#~ msgid "Show: "
+#~ msgstr "Tampilkan: "
 
 #~ msgid "TT|Change which columns are shown"
 #~ msgstr "Ubah kolom mana yang ditampilkan "

@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-17 13:58-0600\n"
+"POT-Creation-Date: 2011-02-17 15:10-0600\n"
 "PO-Revision-Date: 2010-09-30 09:31+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -1246,10 +1246,6 @@ msgstr "Action|ConPro (CPMZ) файл"
 msgid "Action|Configure Export"
 msgstr "Action|Конфігурувати експорт"
 
-#: Miradi/source/org/miradi/actions/ActionEditAnalysisRows.java:36
-msgid "Action|Configure Rows..."
-msgstr ""
-
 #: Miradi/source/org/miradi/actions/ActionContextualHelp.java:37
 msgid "Action|ContextSensitive|Help"
 msgstr "Action|ContextSensitive|Допомога"
@@ -1270,10 +1266,6 @@ msgstr "Action|Створити точку згину"
 #: Miradi/source/org/miradi/actions/ActionCreateConceptualModel.java:35
 msgid "Action|Create Conceptual Model Page"
 msgstr "Action|Створити сторінку концептуальної моделі"
-
-#: Miradi/source/org/miradi/actions/ActionCreatePlanningViewConfigurationMenu.java:34
-msgid "Action|Create Custom"
-msgstr "Action|Створити клієнтуру"
 
 #: Miradi/source/org/miradi/actions/ActionCreateIncomingJunction.java:34
 msgid "Action|Create Incoming Junction"
@@ -1311,18 +1303,20 @@ msgstr "Action|Створити тиск"
 msgid "Action|Create Stress from KEA"
 msgstr "Action|Створити тиск з  KEA"
 
+#: Miradi/source/org/miradi/actions/ActionCreatePlanningViewConfigurationMenu.java:34
+msgid "Action|Create Table"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/umbrella/HelpButtonData.java:54
 #: Miradi/source/org/miradi/actions/ActionHelpCredits.java:34
 msgid "Action|Credits"
 msgstr "Action|Розробники"
 
-#: Miradi/source/org/miradi/actions/ActionWorkPlanBudgetColumnsEditor.java:35
-msgid "Action|Customize Table..."
-msgstr ""
-
+#: Miradi/source/org/miradi/actions/ActionEditAnalysisRows.java:36
 #: Miradi/source/org/miradi/actions/ActionCreateCustomFromCurrentTreeTableConfiguration.java:35
+#: Miradi/source/org/miradi/actions/ActionWorkPlanBudgetColumnsEditor.java:35
 #: Miradi/source/org/miradi/actions/ActionPlanningCustomizeDialogPopup.java:35
-msgid "Action|Customize..."
+msgid "Action|Customize Table..."
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionCut.java:34
@@ -1352,10 +1346,6 @@ msgstr "Action|Видалити точку згину"
 msgid "Action|Delete Conceptual Model Page"
 msgstr "Action|Видалити сторінку концептуальної моделі"
 
-#: Miradi/source/org/miradi/actions/ActionDeletePlanningViewConfiguration.java:35
-msgid "Action|Delete Custom"
-msgstr "Action|Видалити клієнтуру"
-
 #: Miradi/source/org/miradi/actions/ActionDeleteGroupBox.java:35
 msgid "Action|Delete Group Box(s)"
 msgstr "Action|Видалити групову рамку(и)"
@@ -1383,6 +1373,10 @@ msgstr "Action|Видалити ланцюг результатів"
 #: Miradi/source/org/miradi/actions/ActionDeleteStress.java:35
 msgid "Action|Delete Stress"
 msgstr "Action|Видалити навантаження"
+
+#: Miradi/source/org/miradi/actions/ActionDeletePlanningViewConfiguration.java:35
+msgid "Action|Delete Table"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/views/ActionViewDiagram.java:36
 msgid "Action|Diagram"
@@ -6105,10 +6099,6 @@ msgstr ""
 msgid "Show Ratings in Cell"
 msgstr "Показати рейтинги в комірці"
 
-#: Miradi/source/org/miradi/dialogs/planning/upperPanel/ObjectsOnlyPlanningTreeTablePanel.java:44
-msgid "Show: "
-msgstr "Показати:"
-
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:47
 msgid "Shrubland"
 msgstr "Буш"
@@ -7214,6 +7204,10 @@ msgstr "TabDelimitedFile"
 #: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:157
 msgid "Table Row Height Mode"
 msgstr "Опція висоти табличних рядків"
+
+#: Miradi/source/org/miradi/dialogs/planning/upperPanel/ObjectsOnlyPlanningTreeTablePanel.java:44
+msgid "Table:"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/planning/ActionPlanManagementPanel.java:47
 msgid "Tab|Action Plan"
@@ -8530,10 +8524,10 @@ msgstr ""
 msgid "FieldLabel|5.BudgetRollupReportTypes|Rollup Types"
 msgstr ""
 
-msgid "FieldLabel|5.ActionTreeConfigurationChoice|Tree Configuration"
+msgid "FieldLabel|5.ActionTreeConfigurationChoice|Table:"
 msgstr ""
 
-msgid "FieldLabel|5.MonitoringTreeConfigurationChoice|Tree Configuration"
+msgid "FieldLabel|5.MonitoringTreeConfigurationChoice|Table:"
 msgstr ""
 
 msgid "FieldLabel|6.Link|Factor Link"
@@ -26737,6 +26731,15 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
+
+#~ msgid "Action|Create Custom"
+#~ msgstr "Action|Створити клієнтуру"
+
+#~ msgid "Action|Delete Custom"
+#~ msgstr "Action|Видалити клієнтуру"
+
+#~ msgid "Show: "
+#~ msgstr "Показати:"
 
 #~ msgid "TT|Change which columns are shown"
 #~ msgstr "TT|Змінити показані колонки"
