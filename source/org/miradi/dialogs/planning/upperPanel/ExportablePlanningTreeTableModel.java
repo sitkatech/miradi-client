@@ -29,7 +29,6 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.project.Project;
-import org.miradi.questions.WorkPlanVisibleRowsQuestion;
 
 public class ExportablePlanningTreeTableModel extends PlanningTreeTableModel implements RowColumnBaseObjectProvider
 {
@@ -109,11 +108,6 @@ public class ExportablePlanningTreeTableModel extends PlanningTreeTableModel imp
 	public ORefList getObjectHiearchy(int row, int column)
 	{
 		throw new RuntimeException("Method is currently unused and has no implementation");
-	}
-	
-	public String getWorkPlanBudgetMode()
-	{
-		return WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE;
 	}
 	
 	private String uniqueTreeTableModelIdentifier;

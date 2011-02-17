@@ -29,7 +29,6 @@ import javax.swing.table.AbstractTableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.dialogs.threatrating.upperPanel.TableModelStringComparator;
 import org.miradi.questions.SortDirectionQuestion;
-import org.miradi.questions.WorkPlanVisibleRowsQuestion;
 
 
 abstract public class SortableTableModel extends AbstractTableModel implements ColumnTagProvider, RowColumnBaseObjectProvider
@@ -64,10 +63,5 @@ abstract public class SortableTableModel extends AbstractTableModel implements C
 	public void setSortedRowIndexes(Vector<Integer> sortedRowIndexes)
 	{
 		throw new RuntimeException("This model does not support sorted indexes");
-	}
-	
-	public String getWorkPlanBudgetMode()
-	{
-		return WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE;
 	}
 }

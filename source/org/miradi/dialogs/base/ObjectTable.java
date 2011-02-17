@@ -40,7 +40,6 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
-import org.miradi.questions.WorkPlanVisibleRowsQuestion;
 import org.miradi.utils.SortableRowTable;
 import org.miradi.views.umbrella.ObjectPicker;
 
@@ -264,11 +263,6 @@ abstract public class ObjectTable extends SortableRowTable implements ObjectPick
 		throw new RuntimeException("Method is currently unused and has no implementation");
 	}
 	
-	public String getWorkPlanBudgetMode()
-	{
-		return WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE;
-	}
-
 	private Vector<ListSelectionListener> selectionListeners;
 	private ChoiceItemTableCellRendererFactory statusQuestionRenderer;
 	private BasicTableCellEditorOrRendererFactory otherRenderer;

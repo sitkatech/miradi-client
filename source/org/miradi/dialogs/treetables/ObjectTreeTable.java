@@ -48,7 +48,6 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objectpools.EAMObjectPool;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
-import org.miradi.questions.WorkPlanVisibleRowsQuestion;
 import org.miradi.views.umbrella.ObjectPicker;
 
 import com.java.sun.jtreetable.TreeTableModelAdapter;
@@ -340,11 +339,6 @@ abstract public class ObjectTreeTable extends TreeTableWithColumnWidthSaving imp
 		return getTreeTableModel().convertTreePathToRefList(treePathForRow);
 	}
 	
-	public String getWorkPlanBudgetMode()
-	{
-		return WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE;
-	}
-
 	protected Project project;
 	private Vector<ListSelectionListener> selectionListeners;
 	private boolean isActive;
