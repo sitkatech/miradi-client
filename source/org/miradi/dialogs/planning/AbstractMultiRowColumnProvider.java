@@ -31,6 +31,13 @@ abstract public class AbstractMultiRowColumnProvider extends AbstractPlanningTre
 		super(projectToUse);
 	}
 	
+	protected AbstractPlanningTreeRowColumnProvider getSubViewProvider() throws Exception
+	{
+		String currentCode = getProject().getCurrentViewData().getData(getConfigurationTag());
+		
+		return codeToProviderMap.get(currentCode);
+	}
+	
 	abstract protected String getConfigurationTag();
 	
 	abstract protected HashMap<String, AbstractPlanningTreeRowColumnProvider> createCodeToProviderMap();
