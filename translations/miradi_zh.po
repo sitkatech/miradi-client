@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-17 15:10-0600\n"
+"POT-Creation-Date: 2011-02-17 15:25-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -6943,7 +6943,7 @@ msgstr "制表符分隔文件"
 msgid "Table Row Height Mode"
 msgstr "表格行高模式"
 
-#: Miradi/source/org/miradi/dialogs/planning/upperPanel/ObjectsOnlyPlanningTreeTablePanel.java:44
+#: Miradi/source/org/miradi/dialogs/planning/PlanningViewObjectsOnlyDropDownPanel.java:50
 msgid "Table:"
 msgstr ""
 

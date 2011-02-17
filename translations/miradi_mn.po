@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-17 15:10-0600\n"
+"POT-Creation-Date: 2011-02-17 15:25-0600\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -7229,7 +7229,7 @@ msgstr "Tab-аар тусгаарлагдсан файл"
 msgid "Table Row Height Mode"
 msgstr "Table Row Height Mode"
 
-#: Miradi/source/org/miradi/dialogs/planning/upperPanel/ObjectsOnlyPlanningTreeTablePanel.java:44
+#: Miradi/source/org/miradi/dialogs/planning/PlanningViewObjectsOnlyDropDownPanel.java:50
 msgid "Table:"
 msgstr ""
 
