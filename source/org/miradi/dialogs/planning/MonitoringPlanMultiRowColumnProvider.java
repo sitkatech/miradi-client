@@ -69,6 +69,7 @@ public class MonitoringPlanMultiRowColumnProvider extends AbstractMultiRowColumn
 		return codeToProviderMap.get(currentCode);
 	}
 
+	@Override
 	protected String getConfigurationTag()
 	{
 		return ViewData.TAG_MONITORING_TREE_CONFIGURATION_CHOICE;
