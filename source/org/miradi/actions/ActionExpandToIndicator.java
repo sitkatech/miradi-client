@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.actions;
 
-import org.miradi.icons.IndicatorIcon;
+import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
@@ -28,7 +28,7 @@ public class ActionExpandToIndicator extends ObjectsAction
 {
 	public ActionExpandToIndicator(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel(), new IndicatorIcon());
+		super(mainWindowToUse, getLabel(), IconManager.getIndicatorIcon());
 	}
 
 	private static String getLabel()

@@ -25,7 +25,7 @@ import org.miradi.icons.ContributingFactorIcon;
 import org.miradi.icons.DirectThreatIcon;
 import org.miradi.icons.GoalIcon;
 import org.miradi.icons.GroupBoxIcon;
-import org.miradi.icons.IndicatorIcon;
+import org.miradi.icons.IconManager;
 import org.miradi.icons.IntermediateResultIcon;
 import org.miradi.icons.MeasurementIcon;
 import org.miradi.icons.MethodIcon;
@@ -77,7 +77,7 @@ public class RtfLegendObjectsQuestion extends StaticChoiceQuestion
 				new ChoiceItem(Strategy.OBJECT_NAME, EAM.text("Strategy"), new StrategyIcon()),
 				new ChoiceItem(Goal.OBJECT_NAME, EAM.text("Goal"), new GoalIcon()),
 				new ChoiceItem(Objective.OBJECT_NAME, EAM.text("Objective"), new ObjectiveIcon()),
-				new ChoiceItem(Indicator.OBJECT_NAME, EAM.text("Indicator"), new IndicatorIcon()),
+				new ChoiceItem(Indicator.OBJECT_NAME, EAM.text("Indicator"), IconManager.getIndicatorIcon()),
 				new ChoiceItem(Stress.OBJECT_NAME, EAM.text("Stress"), new StressIcon()),
 				new ChoiceItem(TextBox.OBJECT_NAME, EAM.text("Text Box"), new TextBoxIcon()),
 				new ChoiceItem(GroupBox.OBJECT_NAME, EAM.text("Group Box"), new GroupBoxIcon()),

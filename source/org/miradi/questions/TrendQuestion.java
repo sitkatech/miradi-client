@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.questions;
 
-import org.miradi.icons.IndicatorIcon;
+import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
 import org.miradi.utils.MiradiResourceImageIcon;
 
@@ -34,7 +34,7 @@ public class TrendQuestion extends StaticChoiceQuestion
 	static ChoiceItem[] getTrends()
 	{
 		return new ChoiceItem[] {
-				new ChoiceItem(NOT_SPECIFIED_CODE, EAM.text("Not Specified"), new IndicatorIcon()),
+				new ChoiceItem(NOT_SPECIFIED_CODE, EAM.text("Not Specified"), IconManager.getIndicatorIcon()),
 				new ChoiceItem(UNKNOWN_CODE, EAM.text(UNKNOWN_CODE), new MiradiResourceImageIcon("images/arrows/va_unknown16.png")),
 				new ChoiceItem(STRONG_INCREASE_CODE, EAM.text("Strong Increase"), new MiradiResourceImageIcon("images/arrows/va_strongup16.png")),
 				new ChoiceItem(MILD_INCREASE_CODE, EAM.text("Mild Increase"), new MiradiResourceImageIcon("images/arrows/va_mildup16.png")),

@@ -29,7 +29,7 @@ import org.miradi.dialogs.base.ObjectCollectionPanel;
 import org.miradi.dialogs.base.ObjectListManagementPanel;
 import org.miradi.dialogs.indicator.SimpleViabilityMultiPropertiesPanel;
 import org.miradi.dialogs.viability.nodes.ViabilityRoot;
-import org.miradi.icons.IndicatorIcon;
+import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
@@ -64,7 +64,7 @@ abstract public class TargetViabilityManagementPanel extends ObjectListManagemen
 	{
 		super(mainWindowToUse, treePanel, propertiesPanel);
 		panelDescription = PANEL_DESCRIPTION_INDICATORS;
-		icon = new IndicatorIcon();
+		icon = IconManager.getIndicatorIcon();
 		
 		ViabilityTreeModel model = new ViabilityTreeModel(new ViabilityRoot(getProject()));
 		targetViabilityTreeTableExporter = new TargetViabilityTreeTable(getMainWindow(), model);

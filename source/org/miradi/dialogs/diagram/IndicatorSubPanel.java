@@ -21,7 +21,7 @@ package org.miradi.dialogs.diagram;
 
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.icons.IndicatorIcon;
+import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Indicator;
@@ -35,7 +35,7 @@ public class IndicatorSubPanel extends ObjectDataInputPanel
 
 		ObjectDataInputField shortLabelField = createStringField(Indicator.getObjectType(), Indicator.TAG_SHORT_LABEL,10);
 		ObjectDataInputField labelField = createExpandableField(Indicator.getObjectType(), Indicator.TAG_LABEL);
-		addFieldsOnOneLine(EAM.text("Indicator"), new IndicatorIcon(), new ObjectDataInputField[]{shortLabelField, labelField,});
+		addFieldsOnOneLine(EAM.text("Indicator"), IconManager.getIndicatorIcon(), new ObjectDataInputField[]{shortLabelField, labelField,});
 
 		final int COLUMNS = 75;
 		addField(createMultilineField(Indicator.getObjectType(), Indicator.TAG_DETAIL, COLUMNS));

@@ -21,7 +21,7 @@ package org.miradi.dialogs.viability;
 
 import org.miradi.actions.Actions;
 import org.miradi.actions.jump.ActionJumpMonitoringWizardDefineIndicatorsStep;
-import org.miradi.icons.IndicatorIcon;
+import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
@@ -33,7 +33,7 @@ public class FactorPropertiesViabilityTreeManagementPanel extends TargetViabilit
 		super(mainWindowToUse, factorRef);
 		
 		panelDescription = PANEL_DESCRIPTION_INDICATORS;
-		icon = new IndicatorIcon();
+		icon = IconManager.getIndicatorIcon();
 	}  
 	
 	@Override
