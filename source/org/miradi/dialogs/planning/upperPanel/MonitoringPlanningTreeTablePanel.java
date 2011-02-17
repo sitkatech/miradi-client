@@ -40,7 +40,7 @@ public class MonitoringPlanningTreeTablePanel extends PlanningTreeTablePanel
 		super(mainWindowToUse, treeToUse, modelToUse, buttonActions, rowColumnProvider);
 		
 		monitoringButtonPanel = new PlanningViewMonitoringButtonPanel(getProject());
-		addToButtonBox(monitoringButtonPanel);
+		addComponentAsFirst(monitoringButtonPanel);
 	}
 
 	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse) throws Exception
@@ -55,14 +55,19 @@ public class MonitoringPlanningTreeTablePanel extends PlanningTreeTablePanel
 	
 	private static Class[] getButtonActions()
 	{
-		final Class FILLER_TO_ENSURE_DROP_DOWN_IS_ON_SECOND_ROW = null;
+		final Class FILLER_TO_ENSURE_DROP_DOWN_IS_ON_FIRST_ROW = null;
 		return new Class[] {
+				
+				FILLER_TO_ENSURE_DROP_DOWN_IS_ON_FIRST_ROW,
+				FILLER_TO_ENSURE_DROP_DOWN_IS_ON_FIRST_ROW,
+				FILLER_TO_ENSURE_DROP_DOWN_IS_ON_FIRST_ROW,
+				FILLER_TO_ENSURE_DROP_DOWN_IS_ON_FIRST_ROW,
+				FILLER_TO_ENSURE_DROP_DOWN_IS_ON_FIRST_ROW,
+				
 				ActionExpandAllRows.class, 
 				ActionCollapseAllRows.class, 
 				ActionPlanningCreationMenu.class,
 				ActionCreateCustomFromCurrentTreeTableConfiguration.class,
-				FILLER_TO_ENSURE_DROP_DOWN_IS_ON_SECOND_ROW,
-				FILLER_TO_ENSURE_DROP_DOWN_IS_ON_SECOND_ROW,
 		};
 	}
 	
