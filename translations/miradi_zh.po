@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-16 16:20-0600\n"
+"POT-Creation-Date: 2011-02-17 12:38-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -291,7 +291,7 @@ msgstr "（对本对象进行创建、管理、以及压力分级） \t\t"
 msgid "(Definition Not Available)"
 msgstr "（无可用定义） \t\t"
 
-#: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:117
+#: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:119
 msgid "(Error)"
 msgstr "（错误） \t\t"
 
@@ -5823,7 +5823,7 @@ msgstr "正式地或者非正式地共享反馈信息 \t\t"
 msgid "Share success & failures with practitioners around the world"
 msgstr "与全世界的实践者共享成功与失败 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:606
+#: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:608
 msgid "Should Now Allow Full Time Employee To Be Calculated For "
 msgstr ""
 
@@ -7251,7 +7251,7 @@ msgstr "本条目是共享的，因此将会从多个地方删除。 \t\t"
 msgid "This method is not responsible for creating task nodes."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/AbstractBudgetDetailsTableModel.java:88
+#: Miradi/source/org/miradi/dialogs/planning/AbstractBudgetDetailsTableModel.java:89
 msgid ""
 "This model is not for a single assignment and has no assignment information"
 msgstr ""

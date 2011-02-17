@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-16 16:20-0600\n"
+"POT-Creation-Date: 2011-02-17 12:38-0600\n"
 "PO-Revision-Date: 2010-05-12 21:01-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -289,7 +289,7 @@ msgstr ""
 msgid "(Definition Not Available)"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:117
+#: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:119
 msgid "(Error)"
 msgstr ""
 
@@ -5705,7 +5705,7 @@ msgstr ""
 msgid "Share success & failures with practitioners around the world"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:606
+#: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:608
 msgid "Should Now Allow Full Time Employee To Be Calculated For "
 msgstr ""
 
@@ -7100,7 +7100,7 @@ msgstr ""
 msgid "This method is not responsible for creating task nodes."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/AbstractBudgetDetailsTableModel.java:88
+#: Miradi/source/org/miradi/dialogs/planning/AbstractBudgetDetailsTableModel.java:89
 msgid ""
 "This model is not for a single assignment and has no assignment information"
 msgstr ""
