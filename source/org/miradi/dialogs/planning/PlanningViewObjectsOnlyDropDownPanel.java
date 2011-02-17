@@ -20,7 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning;
 
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.planning.legend.PlanningViewSingleLevelComboBox;
+import org.miradi.layout.TwoColumnGridLayout;
+import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
@@ -36,12 +39,15 @@ public class PlanningViewObjectsOnlyDropDownPanel extends PlanningViewCustomButt
 	{
 		super(projectToUse);
 		
+		setLayout(new TwoColumnGridLayout());
+		setBackground(AppPreferences.getDataPanelBackgroundColor());
 		rebuildCustomizationPanel();
 	}
 	
 	protected void rebuildCustomizationPanel() throws Exception
 	{
 		singleLevelCombo = new PlanningViewSingleLevelComboBox(getProject());
+		add(new PanelTitleLabel(EAM.text("Table:")));
 		add(singleLevelCombo);
 
 		selectAppropriateSingleLevelComboBoxItem();
