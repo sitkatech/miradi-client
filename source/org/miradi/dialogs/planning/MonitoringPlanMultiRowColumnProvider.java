@@ -84,6 +84,4 @@ public class MonitoringPlanMultiRowColumnProvider extends AbstractMultiRowColumn
 		
 		return map;
 	}
-	
-	private HashMap<String, AbstractPlanningTreeRowColumnProvider> codeToProviderMap;
 }
