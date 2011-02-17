@@ -41,7 +41,7 @@ public class ObjectsOnlyPlanningTreeTablePanel extends PlanningTreeTablePanel
 		super(mainWindowToUse, treeToUse, modelToUse, buttonActions, rowColumnProvider);
 		
 		customizationPanel = new PlanningViewObjectsOnlyDropDownPanel(getProject());
-		addToButtonBox(new PanelTitleLabel(EAM.text("Show: ")));
+		addToButtonBox(new PanelTitleLabel(EAM.text("Table:")));
 		addToButtonBox(customizationPanel);
 	}
 	
