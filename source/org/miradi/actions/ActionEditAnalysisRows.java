@@ -33,7 +33,7 @@ public class ActionEditAnalysisRows extends ObjectsAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Configure Rows...");
+		return EAM.text("Action|Customize Table...");
 	}
 
 	@Override
