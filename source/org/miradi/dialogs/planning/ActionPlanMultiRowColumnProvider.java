@@ -62,13 +62,6 @@ public class ActionPlanMultiRowColumnProvider extends AbstractMultiRowColumnProv
 		return getSubViewProvider().doObjectivesContainStrategies();
 	}
 	
-	private AbstractPlanningTreeRowColumnProvider getSubViewProvider() throws Exception
-	{
-		String actionTreeConfigurationCode = getProject().getCurrentViewData().getData(getConfigurationTag());
-		
-		return codeToProviderMap.get(actionTreeConfigurationCode);
-	}
-
 	@Override
 	protected String getConfigurationTag()
 	{
