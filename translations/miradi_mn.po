@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-16 16:20-0600\n"
+"POT-Creation-Date: 2011-02-17 12:38-0600\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -297,7 +297,7 @@ msgstr ""
 msgid "(Definition Not Available)"
 msgstr "(Тодорхойлолт байхгүй)"
 
-#: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:117
+#: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:119
 msgid "(Error)"
 msgstr "(Алдаа)"
 
@@ -6078,7 +6078,7 @@ msgstr ""
 "Амжилт болон алдааг дэлхийн бусад практик дээр хэрэгжүүлэгч хүмүүстэй "
 "хуваалцах, солилцох"
 
-#: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:606
+#: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:608
 msgid "Should Now Allow Full Time Employee To Be Calculated For "
 msgstr "Орон тооны ажилтан авахыг зөвшөөрч тооцож оруулах ёстой "
 
@@ -7558,7 +7558,7 @@ msgstr "Энэ зүйлийг хамтаар хэрэглэдэг тул оло�
 msgid "This method is not responsible for creating task nodes."
 msgstr "Энэ арга даалгаварын зангилаа уулзварыг үүсгэх үүрэггүй."
 
-#: Miradi/source/org/miradi/dialogs/planning/AbstractBudgetDetailsTableModel.java:88
+#: Miradi/source/org/miradi/dialogs/planning/AbstractBudgetDetailsTableModel.java:89
 msgid ""
 "This model is not for a single assignment and has no assignment information"
 msgstr ""
