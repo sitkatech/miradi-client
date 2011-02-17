@@ -26,6 +26,7 @@ import org.miradi.actions.ActionRemoveAssignment;
 import org.miradi.dialogs.planning.upperPanel.WorkPlanTreeTableModel;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.main.MainWindow;
+import org.miradi.objects.EmptyPlanningTreeRowColumnProvider;
 import org.miradi.views.umbrella.ObjectPicker;
 
 public class ResourceAssignmentEditorComponent extends AbstractAssignmentEditorComponent
@@ -41,7 +42,7 @@ public class ResourceAssignmentEditorComponent extends AbstractAssignmentEditorC
 		abstractSummaryTableModel = new ResourceAssignmentMainTableModel(getProject());
 		abstractSummaryTable = new ResourceAssignmentDetailsMainTable(getMainWindow(), abstractSummaryTableModel);
 		
-		assignmentDateUnitsTableModel = new WorkPlanWorkUnitsTableModel(getProject(), abstractSummaryTableModel, WorkPlanTreeTableModel.UNIQUE_TREE_TABLE_IDENTIFIER);
+		assignmentDateUnitsTableModel = new WorkPlanWorkUnitsTableModel(getProject(), new EmptyPlanningTreeRowColumnProvider(), abstractSummaryTableModel, WorkPlanTreeTableModel.UNIQUE_TREE_TABLE_IDENTIFIER);
 		assignmentDateUnitsTable = new AssignmentWorkUnitsTable(getMainWindow(), assignmentDateUnitsTableModel);		
 	}
 	
