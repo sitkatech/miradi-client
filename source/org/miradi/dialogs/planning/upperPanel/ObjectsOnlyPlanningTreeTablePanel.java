@@ -21,11 +21,9 @@ package org.miradi.dialogs.planning.upperPanel;
 
 import org.miradi.actions.ActionCreateCustomFromCurrentTreeTableConfiguration;
 import org.miradi.actions.ActionDeletePlanningViewTreeNode;
-import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.planning.ObjectsOnlyRowColumnProvider;
 import org.miradi.dialogs.planning.PlanningViewObjectsOnlyDropDownPanel;
 import org.miradi.main.CommandExecutedEvent;
-import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.objects.ViewData;
@@ -41,7 +39,6 @@ public class ObjectsOnlyPlanningTreeTablePanel extends PlanningTreeTablePanel
 		super(mainWindowToUse, treeToUse, modelToUse, buttonActions, rowColumnProvider);
 		
 		customizationPanel = new PlanningViewObjectsOnlyDropDownPanel(getProject());
-		addToButtonBox(new PanelTitleLabel(EAM.text("Table:")));
 		addToButtonBox(customizationPanel);
 	}
 	
