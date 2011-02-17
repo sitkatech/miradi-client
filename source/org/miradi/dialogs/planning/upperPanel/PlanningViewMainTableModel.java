@@ -755,7 +755,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		return getRowColumnProvider().getColumnCodesToShow();
 	}
 	
-	public PlanningTreeRowColumnProvider getRowColumnProvider()
+	private PlanningTreeRowColumnProvider getRowColumnProvider()
 	{
 		return rowColumnProvider;
 	}
