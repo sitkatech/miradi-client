@@ -24,14 +24,15 @@ import org.miradi.dialogs.planning.propertiesPanel.AbstractWorkUnitsTableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.TimePeriodCosts;
+import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.project.Project;
 import org.miradi.utils.OptionalDouble;
 
 abstract public class CategorizedWorkUnitsTableModel extends AbstractWorkUnitsTableModel
 {
-	public CategorizedWorkUnitsTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, String treeModelIdentifierAsTagToUse) throws Exception
+	public CategorizedWorkUnitsTableModel(Project projectToUse, PlanningTreeRowColumnProvider planningTreeRowColumnProvider, RowColumnBaseObjectProvider providerToUse, String treeModelIdentifierAsTagToUse) throws Exception
 	{
-		super(projectToUse, providerToUse, treeModelIdentifierAsTagToUse);
+		super(projectToUse, planningTreeRowColumnProvider, providerToUse, treeModelIdentifierAsTagToUse);
 	}
 
 	@Override

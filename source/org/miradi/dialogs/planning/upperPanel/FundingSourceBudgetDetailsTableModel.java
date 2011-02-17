@@ -21,14 +21,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel;
 
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
+import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.project.Project;
 import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 
 public class FundingSourceBudgetDetailsTableModel extends CategorizedBudgetDetailsTableModel
 {
-	public FundingSourceBudgetDetailsTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, String treeModelIdentifierAsTagToUse) throws Exception
+	public FundingSourceBudgetDetailsTableModel(Project projectToUse, PlanningTreeRowColumnProvider rowColumnProvider, RowColumnBaseObjectProvider providerToUse, String treeModelIdentifierAsTagToUse) throws Exception
 	{
-		super(projectToUse, providerToUse, treeModelIdentifierAsTagToUse);
+		super(projectToUse, rowColumnProvider, providerToUse, treeModelIdentifierAsTagToUse);
 	}
 	
 	@Override

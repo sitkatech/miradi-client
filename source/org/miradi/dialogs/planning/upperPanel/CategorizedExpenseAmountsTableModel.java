@@ -24,14 +24,15 @@ import org.miradi.dialogs.planning.propertiesPanel.AbstractExpenseTableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.TimePeriodCosts;
+import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.project.Project;
 import org.miradi.utils.OptionalDouble;
 
 abstract public class CategorizedExpenseAmountsTableModel extends AbstractExpenseTableModel
 {
-	public CategorizedExpenseAmountsTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, String treeModelIdentifierAsTagToUse) throws Exception
+	public CategorizedExpenseAmountsTableModel(Project projectToUse, PlanningTreeRowColumnProvider rowColumnProvider, RowColumnBaseObjectProvider providerToUse, String treeModelIdentifierAsTagToUse) throws Exception
 	{
-		super(projectToUse, providerToUse, treeModelIdentifierAsTagToUse);
+		super(projectToUse, rowColumnProvider, providerToUse, treeModelIdentifierAsTagToUse);
 	}
 
 	@Override

@@ -22,14 +22,15 @@ package org.miradi.dialogs.planning.propertiesPanel;
 
 import org.miradi.dialogs.planning.upperPanel.CategorizedWorkUnitsTableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
+import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.project.Project;
 import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 
 public class ProjectResourceWorkUnitsTableModel extends CategorizedWorkUnitsTableModel
 {
-	public ProjectResourceWorkUnitsTableModel(Project projectToUse,	RowColumnBaseObjectProvider providerToUse, String treeModelIdentifierAsTagToUse) throws Exception
+	public ProjectResourceWorkUnitsTableModel(Project projectToUse,	PlanningTreeRowColumnProvider planningTreeRowColumnProvider, RowColumnBaseObjectProvider providerToUse, String treeModelIdentifierAsTagToUse) throws Exception
 	{
-		super(projectToUse, providerToUse, treeModelIdentifierAsTagToUse);
+		super(projectToUse, planningTreeRowColumnProvider, providerToUse, treeModelIdentifierAsTagToUse);
 	}
 	
 	@Override

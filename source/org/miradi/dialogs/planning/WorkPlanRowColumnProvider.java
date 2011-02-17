@@ -144,4 +144,10 @@ public class WorkPlanRowColumnProvider extends AbstractPlanningTreeRowColumnProv
 	{
 		return TableSettings.findOrCreate(getProject(), WorkPlanTreeTablePanel.getTabSpecificModelIdentifier());
 	}
+	
+	@Override
+	public String getWorkPlanBudgetMode() throws Exception
+	{
+		return getWorkPlanTableSettings().getData(TableSettings.TAG_WORK_PLAN_VISIBLE_NODES_CODE);
+	}
 }

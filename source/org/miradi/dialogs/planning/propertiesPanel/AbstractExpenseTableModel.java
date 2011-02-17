@@ -30,6 +30,7 @@ import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ExpenseAssignment;
+import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.project.Project;
 import org.miradi.questions.CurrencyFormattedChoiceItem;
 import org.miradi.questions.TaglessChoiceItem;
@@ -38,9 +39,9 @@ import org.miradi.utils.OptionalDouble;
 
 abstract public class AbstractExpenseTableModel extends AssignmentDateUnitsTableModel
 {
-	public AbstractExpenseTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, String treeModelIdentifierAsTagToUse) throws Exception
+	public AbstractExpenseTableModel(Project projectToUse, PlanningTreeRowColumnProvider rowColumnProviderToUse, RowColumnBaseObjectProvider providerToUse, String treeModelIdentifierAsTagToUse) throws Exception
 	{
-		super(projectToUse, providerToUse, treeModelIdentifierAsTagToUse);
+		super(projectToUse, rowColumnProviderToUse, providerToUse, treeModelIdentifierAsTagToUse);
 	}
 	
 	@Override

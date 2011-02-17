@@ -33,7 +33,6 @@ import org.miradi.dialogs.planning.FundingSourceCoreRowColumnProvider;
 import org.miradi.dialogs.planning.MonitoringRowColumnProvider;
 import org.miradi.dialogs.planning.ProgressReportRowColumnProvider;
 import org.miradi.dialogs.planning.ProjectResourceRowColumnProvider;
-import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.WorkPlanCategoryTreeRowColumnProvider;
 import org.miradi.dialogs.planning.WorkPlanRowColumnProviderWithBudgetColumns;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewMainModelExporter;
@@ -152,7 +151,7 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 		exportTab(writer, rowColumnProvider, translatedTableName, model);
 	}
 	
-	private void exportTab(RtfWriter writer, RowColumnProvider rowColumnProvider, String translatedTableName, ExportablePlanningTreeTableModel model) throws Exception
+	private void exportTab(RtfWriter writer, PlanningTreeRowColumnProvider rowColumnProvider, String translatedTableName, ExportablePlanningTreeTableModel model) throws Exception
 	{
 		MultiTableCombinedAsOneExporter multiExporter = createMultiModelExporter(getProject(), model, rowColumnProvider);	
 		exportTableWithPageBreak(writer, multiExporter, translatedTableName);
@@ -167,7 +166,7 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 		return createMultiModelExporter(project, model, rowColumnProvider);
 	}
 	
-	private static MultiTableCombinedAsOneExporter createMultiModelExporter(Project project, ExportablePlanningTreeTableModel model, RowColumnProvider rowColumnProvider) throws Exception
+	private static MultiTableCombinedAsOneExporter createMultiModelExporter(Project project, ExportablePlanningTreeTableModel model, PlanningTreeRowColumnProvider rowColumnProvider) throws Exception
 	{
 		MultiTableCombinedAsOneExporter multiModelExporter = new MultiTableCombinedAsOneExporter(project);
 		multiModelExporter.addExportable(new TreeTableModelExporter(project, model));
@@ -188,17 +187,17 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 		}
 		if (columnsToShow.contains(WorkPlanColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE))
 		{
-			WorkPlanWorkUnitsTableModel workUnitsModel = new WorkPlanWorkUnitsTableModel(project, model, model.getUniqueTreeTableModelIdentifier());;
+			WorkPlanWorkUnitsTableModel workUnitsModel = new WorkPlanWorkUnitsTableModel(project, rowColumnProvider, model, model.getUniqueTreeTableModelIdentifier());;
 			multiModelExporter.addExportable(new PlanningViewMainModelExporter(project, workUnitsModel, model, workUnitsModel.getUniqueTableModelIdentifier()));
 		}
 		if (columnsToShow.contains(WorkPlanColumnConfigurationQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE))
 		{
-			WorkPlanExpenseAmountsTableModel expensesModel = new WorkPlanExpenseAmountsTableModel(project, model, model.getUniqueTreeTableModelIdentifier());;
+			WorkPlanExpenseAmountsTableModel expensesModel = new WorkPlanExpenseAmountsTableModel(project, rowColumnProvider, model, model.getUniqueTreeTableModelIdentifier());;
 			multiModelExporter.addExportable(new PlanningViewMainModelExporter(project, expensesModel, model, expensesModel.getUniqueTableModelIdentifier()));
 		}
 		if (columnsToShow.contains(WorkPlanColumnConfigurationQuestion.META_BUDGET_DETAIL_COLUMN_CODE))
 		{
-			WorkPlanBudgetDetailsTableModel budgetDetailsModel = new WorkPlanBudgetDetailsTableModel(project, model, model.getUniqueTreeTableModelIdentifier());;
+			WorkPlanBudgetDetailsTableModel budgetDetailsModel = new WorkPlanBudgetDetailsTableModel(project, rowColumnProvider, model, model.getUniqueTreeTableModelIdentifier());;
 			multiModelExporter.addExportable(new PlanningViewMainModelExporter(project, budgetDetailsModel, model, budgetDetailsModel.getUniqueTableModelIdentifier()));
 		}
 		
