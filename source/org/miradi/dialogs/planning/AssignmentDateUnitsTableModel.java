@@ -58,11 +58,11 @@ import org.miradi.utils.OptionalDouble;
 
 abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstractTreeTableSyncedTableModel implements ColumnTagProvider
 {
-	public AssignmentDateUnitsTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, String treeModelIdentifierAsTagToUse) throws Exception
+	public AssignmentDateUnitsTableModel(Project projectToUse, RowColumnBaseObjectProvider rowColumnBaseObjectProviderToUse, String treeModelIdentifierAsTagToUse) throws Exception
 	{
-		super(projectToUse, providerToUse);
+		super(projectToUse, rowColumnBaseObjectProviderToUse);
 
-		provider = providerToUse;
+		rowColumnBaseObjectProvider = rowColumnBaseObjectProviderToUse;
 		resourceRefsFilter = new ORefSet();
 		treeModelIdentifierAsTag = treeModelIdentifierAsTagToUse;
 		currencyFormatter = getProject().getCurrencyFormatterWithCommas();
@@ -478,7 +478,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 
 	public RowColumnBaseObjectProvider getRowColumnProvider()
 	{
-		return provider;
+		return rowColumnBaseObjectProvider;
 	}
 
 	private Vector<DateUnit> getDateUnits()
@@ -788,7 +788,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
     }
 	
 	private Vector<DateUnit> dateUnits;
-	private RowColumnBaseObjectProvider provider;
+	private RowColumnBaseObjectProvider rowColumnBaseObjectProvider;
 	private String treeModelIdentifierAsTag;
 	private CurrencyFormat currencyFormatter;
 }
