@@ -98,6 +98,7 @@ public class StaticQuestionManager
 		addQuestion(new StrategyObjectiveTreeOrderQuestion());
 		addQuestion(new WorkPlanVisibleRowsQuestion());
 		addQuestion(new MonitoringTreeConfigurationQuestion());
+		addQuestion(new ActionTreeConfigurationQuestion());
 	}
 	
 	private static void addQuestion(ChoiceQuestion question)
