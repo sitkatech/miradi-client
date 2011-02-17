@@ -26,7 +26,6 @@ import org.miradi.actions.ActionDeletePlanningViewTreeNode;
 import org.miradi.actions.ActionExpandAllRows;
 import org.miradi.actions.ActionPlanningCreationMenu;
 import org.miradi.actions.ActionPlanningCustomizeDialogPopup;
-import org.miradi.actions.ActionRenamePlanningViewConfiguration;
 import org.miradi.actions.ActionTreeNodeDown;
 import org.miradi.actions.ActionTreeNodeUp;
 import org.miradi.dialogs.planning.ConfigurableRowColumnProvider;
@@ -64,7 +63,7 @@ public class ConfigurablePlanningTreeTablePanel extends PlanningTreeTablePanel
 				ActionPlanningCustomizeDialogPopup.class,	
 				ActionDeletePlanningViewConfiguration.class,
 				ActionCreatePlanningViewConfigurationMenu.class,
-				ActionRenamePlanningViewConfiguration.class,
+				null,
 				null,
 					
 				ActionExpandAllRows.class,

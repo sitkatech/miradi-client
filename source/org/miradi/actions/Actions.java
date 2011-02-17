@@ -452,7 +452,6 @@ public class Actions
 		registerAction(new ActionCreatePlanningViewPrefilledConfiguration(mainWindow));
 		registerAction(new ActionCreatePlanningViewConfigurationMenu(mainWindow));
 		registerAction(new ActionDeletePlanningViewConfiguration(mainWindow));
-		registerAction(new ActionRenamePlanningViewConfiguration(mainWindow));
 		registerAction(new ActionDeletePlanningViewTreeNode(mainWindow));
 		registerAction(new ActionGroupBoxAddFactor(mainWindow));
 		registerAction(new ActionGroupBoxRemoveFactor(mainWindow));
