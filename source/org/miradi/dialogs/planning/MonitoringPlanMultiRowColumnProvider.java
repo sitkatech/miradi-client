@@ -64,12 +64,17 @@ public class MonitoringPlanMultiRowColumnProvider extends AbstractMultiRowColumn
 	
 	private AbstractPlanningTreeRowColumnProvider getSubViewProvider() throws Exception
 	{
-		String currentCode = getProject().getCurrentViewData().getData(ViewData.TAG_MONITORING_TREE_CONFIGURATION_CHOICE);
+		String currentCode = getProject().getCurrentViewData().getData(getConfigurationTag());
 		
 		return codeToProviderMap.get(currentCode);
 	}
+
+	protected String getConfigurationTag()
+	{
+		return ViewData.TAG_MONITORING_TREE_CONFIGURATION_CHOICE;
+	}
 	
-	private HashMap<String, AbstractPlanningTreeRowColumnProvider> createCodeToProviderMap()
+	protected HashMap<String, AbstractPlanningTreeRowColumnProvider> createCodeToProviderMap()
 	{
 		HashMap<String, AbstractPlanningTreeRowColumnProvider> map = new HashMap<String, AbstractPlanningTreeRowColumnProvider>();
 		map.put(MonitoringTreeConfigurationQuestion.EFFECTIVE_MONITORING_PLAN_CODE, new MonitoringPlanSubViewEffectiveMonitoringRowColumnProvider(getProject()));
