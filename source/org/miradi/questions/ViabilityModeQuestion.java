@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.questions;
 
-import org.miradi.icons.IndicatorIcon;
+import org.miradi.icons.IconManager;
 import org.miradi.icons.KeyEcologicalAttributeIcon;
 import org.miradi.main.EAM;
 
@@ -33,7 +33,7 @@ public class ViabilityModeQuestion extends StaticChoiceQuestion
 	static ChoiceItem[] getViabilityModeChoices()
 	{
 		return new ChoiceItem[] {
-				new ChoiceItem("", EAM.text("Simple"), new IndicatorIcon()),
+				new ChoiceItem("", EAM.text("Simple"), IconManager.getIndicatorIcon()),
 				new ChoiceItem(TNC_STYLE_CODE, EAM.text("Key Attribute"), new KeyEcologicalAttributeIcon()),
 		};
 	}

@@ -29,7 +29,7 @@ import org.miradi.icons.ContributingFactorIcon;
 import org.miradi.icons.DirectThreatIcon;
 import org.miradi.icons.GoalIcon;
 import org.miradi.icons.HumanWelfareTargetIcon;
-import org.miradi.icons.IndicatorIcon;
+import org.miradi.icons.IconManager;
 import org.miradi.icons.IntermediateResultIcon;
 import org.miradi.icons.MeasurementIcon;
 import org.miradi.icons.MethodIcon;
@@ -92,7 +92,7 @@ public class CustomPlanningRowsQuestion extends DynamicChoiceQuestion
 		choiceItems.add(createChoiceItem(IntermediateResult.getObjectType(), IntermediateResult.OBJECT_NAME, new IntermediateResultIcon()));
 		choiceItems.add(createChoiceItem(Strategy.getObjectType(), Strategy.OBJECT_NAME, new StrategyIcon()));
 		choiceItems.add(createChoiceItem(Task.getObjectType(), Task.ACTIVITY_NAME, new ActivityIcon()));
-		choiceItems.add(createChoiceItem(Indicator.getObjectType(), Indicator.OBJECT_NAME, new IndicatorIcon()));
+		choiceItems.add(createChoiceItem(Indicator.getObjectType(), Indicator.OBJECT_NAME, IconManager.getIndicatorIcon()));
 		choiceItems.add(createChoiceItem(Task.getObjectType(), Task.METHOD_NAME, new MethodIcon()));
 		choiceItems.add(createChoiceItem(Task.getObjectType(), Task.OBJECT_NAME, new TaskIcon()));
 		choiceItems.add(createChoiceItem(Measurement.getObjectType(), Measurement.OBJECT_NAME, new MeasurementIcon()));

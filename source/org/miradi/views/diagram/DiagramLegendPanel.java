@@ -28,9 +28,9 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import org.miradi.actions.ActionInsertDraftStrategy;
-import org.miradi.actions.ActionInsertLink;
 import org.miradi.actions.ActionInsertGroupBox;
 import org.miradi.actions.ActionInsertHumanWelfareTarget;
+import org.miradi.actions.ActionInsertLink;
 import org.miradi.actions.ActionInsertScopeBox;
 import org.miradi.actions.ActionInsertStrategy;
 import org.miradi.actions.ActionInsertTarget;
@@ -47,7 +47,7 @@ import org.miradi.dialogs.taggedObjectSet.TaggedObjectSetManagementPanel;
 import org.miradi.dialogs.taggedObjectSet.TaggedObjectSetPoolTable;
 import org.miradi.dialogs.taggedObjectSet.TaggedObjectSetPoolTableModel;
 import org.miradi.icons.GoalIcon;
-import org.miradi.icons.IndicatorIcon;
+import org.miradi.icons.IconManager;
 import org.miradi.icons.ObjectiveIcon;
 import org.miradi.icons.TaggedObjectSetIcon;
 import org.miradi.layout.TwoColumnPanel;
@@ -182,7 +182,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		
 		addIconLineWithCheckBox(jpanel, Goal.getObjectType(), Goal.OBJECT_NAME, new GoalIcon());
 		addIconLineWithCheckBox(jpanel, Objective.getObjectType(), Objective.OBJECT_NAME, new ObjectiveIcon());
-		addIconLineWithCheckBox(jpanel, Indicator.getObjectType(), Indicator.OBJECT_NAME, new IndicatorIcon());
+		addIconLineWithCheckBox(jpanel, Indicator.getObjectType(), Indicator.OBJECT_NAME, IconManager.getIndicatorIcon());
 		
 		addStressLine(jpanel);
 		addActivityLine(jpanel);

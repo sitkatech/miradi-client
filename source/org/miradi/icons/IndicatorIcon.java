@@ -25,6 +25,10 @@ import org.miradi.main.AppPreferences;
 
 public class IndicatorIcon extends AbstractTriangleIcon
 {
+	protected IndicatorIcon()
+	{
+	}
+	
 	@Override
 	protected Color getFillColor()
 	{

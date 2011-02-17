@@ -42,7 +42,6 @@ import org.miradi.icons.GoalIcon;
 import org.miradi.icons.GroupBoxIcon;
 import org.miradi.icons.HumanWelfareTargetIcon;
 import org.miradi.icons.IconManager;
-import org.miradi.icons.IndicatorIcon;
 import org.miradi.icons.IntermediateResultIcon;
 import org.miradi.icons.KeyEcologicalAttributeIcon;
 import org.miradi.icons.MeasurementIcon;
@@ -109,7 +108,7 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 		setRendererDefaults(objectiveRenderer, new ObjectiveIcon(), getBoldFont());
 		
 		indicatorRenderer = createRenderer(treeTableToUse);
-		setRendererDefaults(indicatorRenderer, new IndicatorIcon(), getBoldFont());
+		setRendererDefaults(indicatorRenderer, IconManager.getIndicatorIcon(), getBoldFont());
 		
 		goalRenderer = createRenderer(treeTableToUse);
 		setRendererDefaults(goalRenderer, new GoalIcon(), getBoldFont());
