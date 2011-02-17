@@ -25,6 +25,7 @@ import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Objective;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.objects.Task;
+import org.miradi.questions.WorkPlanVisibleRowsQuestion;
 import org.miradi.utils.CodeList;
 
 public class ProgressReportRowColumnProvider implements RowColumnProvider, PlanningTreeRowColumnProvider
@@ -65,5 +66,10 @@ public class ProgressReportRowColumnProvider implements RowColumnProvider, Plann
 	public boolean shouldPutTargetsAtTopLevelOfTree() throws Exception
 	{
 		return false;
+	}
+	
+	public String getWorkPlanBudgetMode() throws Exception
+	{
+		return WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE;
 	}
 }

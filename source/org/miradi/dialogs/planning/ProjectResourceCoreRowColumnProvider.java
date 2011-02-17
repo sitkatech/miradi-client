@@ -22,6 +22,7 @@ package org.miradi.dialogs.planning;
 
 import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.objects.ProjectResource;
+import org.miradi.questions.WorkPlanVisibleRowsQuestion;
 import org.miradi.utils.CodeList;
 
 public class ProjectResourceCoreRowColumnProvider implements PlanningTreeRowColumnProvider
@@ -70,5 +71,10 @@ public class ProjectResourceCoreRowColumnProvider implements PlanningTreeRowColu
 	public boolean shouldPutTargetsAtTopLevelOfTree() throws Exception
 	{
 		return false;
+	}
+	
+	public String getWorkPlanBudgetMode() throws Exception
+	{
+		return WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE;
 	}
 }

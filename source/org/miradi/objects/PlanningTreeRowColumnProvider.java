@@ -31,4 +31,5 @@ public interface PlanningTreeRowColumnProvider extends RowColumnProvider
 	public abstract boolean shouldIncludeConceptualModelPage() throws Exception;
 	public abstract boolean doObjectivesContainStrategies() throws Exception;
 	public abstract boolean shouldPutTargetsAtTopLevelOfTree() throws Exception;
+	public String getWorkPlanBudgetMode() throws Exception;
 }
