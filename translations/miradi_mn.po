@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-17 15:40-0600\n"
+"POT-Creation-Date: 2011-02-17 15:58-0600\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -5412,7 +5412,7 @@ msgstr "Өгөгдөхүүнийг төлөвлөх"
 msgid "Planning Properties Panel"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/planning/doers/AbstractCreatePlanningViewConfigurationDoer.java:100
+#: Miradi/source/org/miradi/views/planning/doers/AbstractCreatePlanningViewConfigurationDoer.java:101
 msgid "PlanningSubViewName|Custom"
 msgstr "ТөлөвлөлтДэдХарагдацНэр|Үйлчлүүлэгч"
 
