@@ -74,6 +74,7 @@ public class ActionPlanMultiRowColumnProvider extends AbstractMultiRowColumnProv
 		return ViewData.TAG_ACTION_TREE_CONFIGURATION_CHOICE;
 	}
 	
+	@Override
 	protected HashMap<String, AbstractPlanningTreeRowColumnProvider> createCodeToProviderMap()
 	{
 		HashMap<String, AbstractPlanningTreeRowColumnProvider> map = new HashMap<String, AbstractPlanningTreeRowColumnProvider>();
