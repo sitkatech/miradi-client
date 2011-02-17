@@ -50,7 +50,6 @@ import org.miradi.icons.ObjectiveIcon;
 import org.miradi.icons.ProjectResourceIcon;
 import org.miradi.icons.ResultsChainIcon;
 import org.miradi.icons.ScopeBoxIcon;
-import org.miradi.icons.StrategyIcon;
 import org.miradi.icons.StressIcon;
 import org.miradi.icons.SubTargetIcon;
 import org.miradi.icons.TargetIcon;
@@ -102,7 +101,7 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 		setRendererDefaults(intermediateResultsRenderer, new IntermediateResultIcon(), getPlainFont());
 
 		strategyRenderer = createRenderer(treeTableToUse);
-		setRendererDefaults(strategyRenderer, new StrategyIcon(), getBoldFont());
+		setRendererDefaults(strategyRenderer, IconManager.getStrategyIcon(), getBoldFont());
 
 		objectiveRenderer = createRenderer(treeTableToUse);
 		setRendererDefaults(objectiveRenderer, new ObjectiveIcon(), getBoldFont());

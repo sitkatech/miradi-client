@@ -22,7 +22,7 @@ package org.miradi.dialogs.diagram;
 import org.miradi.actions.Actions;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.icons.StrategyIcon;
+import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Strategy;
@@ -41,7 +41,7 @@ public class StrategyCoreSubpanel extends ObjectDataInputPanel
 
 		ObjectDataInputField shortLabelField = createStringField(Strategy.getObjectType(), Strategy.TAG_SHORT_LABEL,10);
 		ObjectDataInputField labelField = createExpandableField(Strategy.getObjectType(), Strategy.TAG_LABEL);
-		addFieldsOnOneLine(EAM.text("Strategy"), new StrategyIcon(), new ObjectDataInputField[]{shortLabelField, labelField,});
+		addFieldsOnOneLine(EAM.text("Strategy"), IconManager.getStrategyIcon(), new ObjectDataInputField[]{shortLabelField, labelField,});
 		addField(createMultilineField(Strategy.getObjectType(), Factor.TAG_TEXT));
 
 		addField(createChoiceField(Strategy.getObjectType(), Strategy.TAG_TAXONOMY_CODE, new StrategyTaxonomyQuestion()));
