@@ -23,6 +23,7 @@ package org.miradi.dialogs.planning;
 import org.miradi.objects.AbstractBudgetCategoryObject;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
+import org.miradi.questions.WorkPlanVisibleRowsQuestion;
 import org.miradi.utils.CodeList;
 
 abstract public class AbstractBudgetCategoryRowColumnProvider extends AbstractPlanningViewRowColumnProvider implements WorkPlanCategoryTreeRowColumnProvider
@@ -72,6 +73,11 @@ abstract public class AbstractBudgetCategoryRowColumnProvider extends AbstractPl
 		return new CodeList(new String[] {
 				Integer.toString(getObjectType()),
 		});
+	}
+	
+	public String getWorkPlanBudgetMode() throws Exception
+	{
+		return WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE;
 	}
 	
 	public abstract int getObjectType();
