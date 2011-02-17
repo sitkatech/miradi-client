@@ -39,7 +39,7 @@ public class ObjectsOnlyPlanningTreeTablePanel extends PlanningTreeTablePanel
 		super(mainWindowToUse, treeToUse, modelToUse, buttonActions, rowColumnProvider);
 		
 		customizationPanel = new PlanningViewObjectsOnlyDropDownPanel(getProject());
-		addToButtonBox(customizationPanel);
+		addComponentAsFirst(customizationPanel);
 	}
 	
 	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTableModel model) throws Exception
