@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-17 15:25-0600\n"
+"POT-Creation-Date: 2011-02-17 15:40-0600\n"
 "PO-Revision-Date: 2010-09-20 10:32-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -1718,10 +1718,6 @@ msgstr "Quitar factor(es) del cuadro de grupo"
 #: Miradi/source/org/miradi/actions/ActionRenameConceptualModel.java:34
 msgid "Action|Rename Conceptual Model Page"
 msgstr "Cambiar nombre de la página Modelo conceptual"
-
-#: Miradi/source/org/miradi/actions/ActionRenamePlanningViewConfiguration.java:34
-msgid "Action|Rename Custom"
-msgstr "Cambiar nombre de la personalización"
 
 #: Miradi/source/org/miradi/actions/ActionRenameResultsChain.java:34
 msgid "Action|Rename Results Chain"
@@ -5411,10 +5407,6 @@ msgstr "Parámetros de planificación "
 msgid "Planning Properties Panel"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewCustomLabelPropertiesPanel.java:40
-msgid "Planning View Configuration Label Properties"
-msgstr "Propiedades de la etiqueta de configuración de la vista Planificación"
-
 #: Miradi/source/org/miradi/views/planning/doers/AbstractCreatePlanningViewConfigurationDoer.java:100
 msgid "PlanningSubViewName|Custom"
 msgstr "Personalizar"
@@ -7054,10 +7046,6 @@ msgstr "Quitar un miembro del equipo"
 #: Miradi/source/org/miradi/actions/ActionResourceListRemove.java:40
 msgid "TT|Remove resource from list"
 msgstr "Quitar recurso de la lista"
-
-#: Miradi/source/org/miradi/actions/ActionRenamePlanningViewConfiguration.java:40
-msgid "TT|Rename the selected Custom Planning View"
-msgstr "Eliminar la vista Planificación personalizada seleccionada"
 
 #: Miradi/source/org/miradi/actions/ActionRenameConceptualModel.java:40
 msgid "TT|Rename this Conceptual Model Page"
@@ -32735,6 +32723,16 @@ msgid ""
 msgstr ""
 "Marina___Atlántico tropical occidental___Marina de la plataforma norte de "
 "Brasil___Brasil "
+
+#~ msgid "Action|Rename Custom"
+#~ msgstr "Cambiar nombre de la personalización"
+
+#~ msgid "Planning View Configuration Label Properties"
+#~ msgstr ""
+#~ "Propiedades de la etiqueta de configuración de la vista Planificación"
+
+#~ msgid "TT|Rename the selected Custom Planning View"
+#~ msgstr "Eliminar la vista Planificación personalizada seleccionada"
 
 #~ msgid "Action|Create Custom"
 #~ msgstr "Crear personalización"
