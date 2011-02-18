@@ -31,7 +31,7 @@ public class PlanningViewActionButtonPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, ViewData.getObjectType());
 		
-		addField(createChoiceField(ViewData.getObjectType(), ViewData.TAG_ACTION_TREE_CONFIGURATION_CHOICE, getQuestion(ActionTreeConfigurationQuestion.class)));
+		addFieldWithoutLabelAlignment(createChoiceField(ViewData.getObjectType(), ViewData.TAG_ACTION_TREE_CONFIGURATION_CHOICE, getQuestion(ActionTreeConfigurationQuestion.class)));
 		
 		setObjectRef(getProject().getCurrentViewData().getRef());
 		updateFieldsFromProject();

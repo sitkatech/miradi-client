@@ -31,7 +31,7 @@ public class PlanningViewMonitoringButtonPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, ViewData.getObjectType());
 		
-		addField(createChoiceField(ViewData.getObjectType(), ViewData.TAG_MONITORING_TREE_CONFIGURATION_CHOICE, getProject().getQuestion(MonitoringTreeConfigurationQuestion.class)));
+		addFieldWithoutLabelAlignment(createChoiceField(ViewData.getObjectType(), ViewData.TAG_MONITORING_TREE_CONFIGURATION_CHOICE, getProject().getQuestion(MonitoringTreeConfigurationQuestion.class)));
 		
 		setObjectRef(getProject().getCurrentViewData().getRef());
 		updateFieldsFromProject();

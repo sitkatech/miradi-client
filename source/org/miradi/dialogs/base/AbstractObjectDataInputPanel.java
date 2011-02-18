@@ -296,6 +296,14 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 			subPanel.setFocusOnFirstField();
 		}
 	}
+	
+	public ObjectDataField addFieldWithoutLabelAlignment(ObjectDataField field)
+	{
+		addNonAlignedLabel(field.getObjectType(), field.getTag());
+		addFieldWithoutLabel(field);
+
+		return field;
+	}
 		
 	public ObjectDataField addField(ObjectDataField field)
 	{
@@ -935,6 +943,12 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	public void addTopAlignedLabel(UiLabel label)
 	{
 		label.setVerticalAlignment(SwingConstants.TOP);
+		add(label);
+	}
+	
+	public void addNonAlignedLabel(int objectType, String fieldTag)
+	{
+		UiLabel label = new PanelFieldLabel(objectType, fieldTag);
 		add(label);
 	}
 	
