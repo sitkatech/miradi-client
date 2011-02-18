@@ -63,7 +63,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	{
 		super(projectToUse, rowColumnBaseObjectProviderToUse);
 
-		rowColumnProvider = rowColumnProviderToUse;
+		rowsColumnsProvider = rowColumnProviderToUse;
 		rowColumnBaseObjectProvider = rowColumnBaseObjectProviderToUse;
 		resourceRefsFilter = new ORefSet();
 		treeModelIdentifierAsTag = treeModelIdentifierAsTagToUse;
@@ -773,7 +773,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	
 	private PlanningTreeRowColumnProvider getRowsColumnsProvider()
 	{
-		return rowColumnProvider;
+		return rowsColumnsProvider;
 	}
 	
 	abstract protected OptionalDouble calculateValue(TimePeriodCosts timePeriodCosts) throws Exception;
@@ -795,7 +795,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
     }
 	
 	private Vector<DateUnit> dateUnits;
-	private PlanningTreeRowColumnProvider rowColumnProvider;
+	private PlanningTreeRowColumnProvider rowsColumnsProvider;
 	private RowColumnBaseObjectProvider rowColumnBaseObjectProvider;
 	private String treeModelIdentifierAsTag;
 	private CurrencyFormat currencyFormatter;
