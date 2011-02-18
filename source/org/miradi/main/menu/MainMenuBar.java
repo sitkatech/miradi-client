@@ -470,7 +470,7 @@ public class MainMenuBar extends JMenuBar
 		}
 		if(isWorkPlanView())
 		{
-			addMenuItem(actions, menu, ActionWorkPlanBudgetColumnsEditor.class);
+			addMenuItem(actions, menu, ActionWorkPlanBudgetCustomizeTableEditor.class);
 			addMenuItem(actions, menu, ActionFilterWorkPlanByProjectResource.class);
 		}
 		if (isViabilityView())

@@ -23,9 +23,9 @@ package org.miradi.actions;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class ActionWorkPlanBudgetColumnsEditor extends ObjectsAction
+public class ActionWorkPlanBudgetCustomizeTableEditor extends ObjectsAction
 {
-	public ActionWorkPlanBudgetColumnsEditor(MainWindow mainWindowToUse)
+	public ActionWorkPlanBudgetCustomizeTableEditor(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}

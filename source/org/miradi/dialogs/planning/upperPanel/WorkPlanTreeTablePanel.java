@@ -26,7 +26,7 @@ import org.miradi.actions.ActionFilterWorkPlanByProjectResource;
 import org.miradi.actions.ActionPlanningCreationMenu;
 import org.miradi.actions.ActionTreeNodeDown;
 import org.miradi.actions.ActionTreeNodeUp;
-import org.miradi.actions.ActionWorkPlanBudgetColumnsEditor;
+import org.miradi.actions.ActionWorkPlanBudgetCustomizeTableEditor;
 import org.miradi.dialogs.planning.WorkPlanRowColumnProvider;
 import org.miradi.dialogs.planning.propertiesPanel.AbstractFixedHeightDirectlyAboveTreeTablePanel;
 import org.miradi.dialogs.planning.treenodes.PlanningTreeRootNode;
@@ -94,7 +94,7 @@ public class WorkPlanTreeTablePanel extends PlanningTreeTablePanel
 				ActionExpandAllRows.class, 
 				ActionTreeNodeUp.class,
 				ActionPlanningCreationMenu.class,
-				ActionWorkPlanBudgetColumnsEditor.class,
+				ActionWorkPlanBudgetCustomizeTableEditor.class,
 				
 				ActionCollapseAllRows.class,
 				ActionTreeNodeDown.class,
