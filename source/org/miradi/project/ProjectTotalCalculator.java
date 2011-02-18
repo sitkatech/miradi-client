@@ -82,7 +82,7 @@ public class ProjectTotalCalculator implements CommandExecutedListener
 			return getTotalTimePeriodCostsMap(allIndicators);
 		}
 		
-		if (shouldIncludeNonDraftStrategies(mode))
+		if (shouldOnlyIncludeActionsData(mode))
 		{
 			Set<BaseObject> nonDraftStrategies = getIncludedNonDraftStrategies();
 			return getTotalTimePeriodCostsMap(nonDraftStrategies);
@@ -95,7 +95,7 @@ public class ProjectTotalCalculator implements CommandExecutedListener
 		return merged;
 	}
 
-	private boolean shouldIncludeNonDraftStrategies(String mode)
+	private boolean shouldOnlyIncludeActionsData(String mode)
 	{
 		return  mode.equals(WorkPlanVisibleRowsQuestion.SHOW_ACTION_RELATED_ROWS_CODE);
 	}
