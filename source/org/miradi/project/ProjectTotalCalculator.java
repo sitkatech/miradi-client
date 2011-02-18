@@ -78,14 +78,12 @@ public class ProjectTotalCalculator implements CommandExecutedListener
 	{
 		if (shouldIncludeMonitoringData(mode))
 		{
-			Set<BaseObject> allIndicators = getIncludedDiagramIndicators();
-			return getTotalTimePeriodCostsMap(allIndicators);
+			return getTotalTimePeriodCostsMap(getIncludedDiagramIndicators());
 		}
 		
 		if (shouldOnlyIncludeActionsData(mode))
 		{
-			Set<BaseObject> nonDraftStrategies = getIncludedNonDraftStrategies();
-			return getTotalTimePeriodCostsMap(nonDraftStrategies);
+			return getTotalTimePeriodCostsMap(getIncludedNonDraftStrategies());
 		}
 		
 		TimePeriodCostsMap merged = new TimePeriodCostsMap();
