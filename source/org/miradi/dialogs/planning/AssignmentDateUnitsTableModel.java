@@ -740,7 +740,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	private OptionalDouble getOptionalDoubleDataFilteredByResource(BaseObject baseObject, DateUnit dateUnit) throws Exception
 	{
 		ORefSet resourcesFilter = getResourcesFilter();
-		TimePeriodCosts timePeriodCosts = calculateTimePeriodCosts(baseObject, dateUnit, getRowColumnProvider().getWorkPlanBudgetMode());
+		TimePeriodCosts timePeriodCosts = calculateTimePeriodCosts(baseObject, dateUnit, getRowsColumnsProvider().getWorkPlanBudgetMode());
 		timePeriodCosts.retainWorkUnitDataRelatedToAnyOf(resourcesFilter);
 		
 		return calculateValue(timePeriodCosts);
@@ -756,7 +756,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	private TimePeriodCosts getProjectTotalTimePeriodCostFor(DateUnit dateUnit) throws Exception
 	{
 		ProjectTotalCalculator projectTotalCalculator = getProject().getProjectTotalCalculator();
-		TimePeriodCostsMap totalProject = projectTotalCalculator.calculateProjectTotals(getRowColumnProvider().getWorkPlanBudgetMode());
+		TimePeriodCostsMap totalProject = projectTotalCalculator.calculateProjectTotals(getRowsColumnsProvider().getWorkPlanBudgetMode());
 		
 		return totalProject.calculateTimePeriodCosts(dateUnit);
 	}
@@ -771,7 +771,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		return currencyFormatter;
 	}
 	
-	private PlanningTreeRowColumnProvider getRowColumnProvider()
+	private PlanningTreeRowColumnProvider getRowsColumnsProvider()
 	{
 		return rowColumnProvider;
 	}
