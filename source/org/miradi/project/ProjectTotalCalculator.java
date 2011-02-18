@@ -76,16 +76,16 @@ public class ProjectTotalCalculator implements CommandExecutedListener
 
 	private TimePeriodCostsMap computeTotalTimePeriodCostsMap(String mode)	throws Exception
 	{
-		Set<BaseObject> allIndicators = getIncludedDiagramIndicators();
-		Set<BaseObject> nonDraftStrategies = getIncludedNonDraftStrategies();
 		TimePeriodCostsMap timePeriodCostsMap = new TimePeriodCostsMap();
 		if (shouldIncludeIndicators(mode))
 		{
+			Set<BaseObject> allIndicators = getIncludedDiagramIndicators();
 			timePeriodCostsMap.mergeAll(getTotalTimePeriodCostsMap(allIndicators));
 		}
 		
 		if (shouldIncludeNonDraftStrategies(mode))
 		{
+			Set<BaseObject> nonDraftStrategies = getIncludedNonDraftStrategies();
 			timePeriodCostsMap.mergeAll(getTotalTimePeriodCostsMap(nonDraftStrategies));
 		}
 		
