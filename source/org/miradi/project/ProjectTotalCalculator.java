@@ -61,17 +61,17 @@ public class ProjectTotalCalculator implements CommandExecutedListener
 		modeToTimePeriodCostsMapMap.clear();
 	}
 	
+	public TimePeriodCostsMap calculateProjectTotals() throws Exception
+	{
+		return calculateProjectTotals(WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE);
+	}
+	
 	public TimePeriodCostsMap calculateProjectTotals(String mode) throws Exception
 	{
 		if(!modeToTimePeriodCostsMapMap.keySet().contains(mode))
 			modeToTimePeriodCostsMapMap = computeTotalTimePeriodCostsMap(mode);
 		
 		return modeToTimePeriodCostsMapMap.get(mode);
-	}
-
-	public TimePeriodCostsMap calculateProjectTotals() throws Exception
-	{
-		return calculateProjectTotals(WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE);
 	}
 
 	private HashMap<String, TimePeriodCostsMap> computeTotalTimePeriodCostsMap(String mode)	throws Exception
