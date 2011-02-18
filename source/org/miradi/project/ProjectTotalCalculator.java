@@ -91,17 +91,22 @@ public class ProjectTotalCalculator implements CommandExecutedListener
 		
 		if (mode.equals(WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE))
 		{
-			TimePeriodCostsMap totalTimePeriodCostsMap = new TimePeriodCostsMap();
-			Set<String> modesAsKeys = map.keySet();
-			for (String budgetModeAsKey : modesAsKeys)
-			{
-				totalTimePeriodCostsMap.mergeAll(map.get(budgetModeAsKey));
-			}
-						
-			map.put(mode, totalTimePeriodCostsMap);
+			map.put(mode, mergeAllTimePeriodCostsMapValues(map));
 		}
 		
 		return map;
+	}
+
+	private TimePeriodCostsMap mergeAllTimePeriodCostsMapValues(HashMap<String, TimePeriodCostsMap> map)
+	{
+		TimePeriodCostsMap totalTimePeriodCostsMap = new TimePeriodCostsMap();
+		Set<String> modesAsKeys = map.keySet();
+		for (String budgetModeAsKey : modesAsKeys)
+		{
+			totalTimePeriodCostsMap.mergeAll(map.get(budgetModeAsKey));
+		}
+		
+		return totalTimePeriodCostsMap;
 	}
 
 	private boolean shouldIncludeNonDraftStrategies(String mode)
