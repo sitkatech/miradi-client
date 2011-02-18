@@ -68,7 +68,7 @@ public class ProjectTotalCalculator implements CommandExecutedListener
 	
 	public TimePeriodCostsMap calculateProjectTotals(String mode) throws Exception
 	{
-		if(!modeToTimePeriodCostsMapMap.keySet().contains(mode))
+		if(!modeToTimePeriodCostsMapMap.containsKey(mode))
 			modeToTimePeriodCostsMapMap.put(mode, computeTotalTimePeriodCostsMap(mode));
 		
 		return modeToTimePeriodCostsMapMap.get(mode);
