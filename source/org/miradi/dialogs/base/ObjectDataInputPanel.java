@@ -83,7 +83,7 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanelW
 	
 	public void addBlankHorizontalLine()
 	{
-		addLabel(new UiLabel(" "));
+		addTopAlignedLabel(new UiLabel(" "));
 		addFieldComponent(new UiLabel(" "));
 	}
 	
@@ -148,7 +148,7 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanelW
 	public ObjectDataInputField addFieldWithCustomLabel(ObjectDataInputField field, UiLabel label)
 	{
 		addFieldToList(field);
-		addLabel(label);
+		addTopAlignedLabel(label);
 		addFieldComponent(field.getComponent());
 		return field;
 	}
@@ -198,7 +198,7 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanelW
 			fieldPanel.add((objectDataInputField).getComponent());
 		}
 		
-		addLabel(label);
+		addTopAlignedLabel(label);
 		add(fieldPanel);
 	}
 	
@@ -256,7 +256,7 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanelW
 		fieldPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		fieldPanel.add(field.getComponent());
 		fieldPanel.add(button);
-		addLabel(label);
+		addTopAlignedLabel(label);
 		add(fieldPanel);
 	}
 
