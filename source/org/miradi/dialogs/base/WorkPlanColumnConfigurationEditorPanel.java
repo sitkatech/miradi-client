@@ -39,7 +39,7 @@ public class WorkPlanColumnConfigurationEditorPanel extends ObjectDataInputPanel
 		addLabel("");
 		addLabel(EAM.text("<html>Select which column groups to display."));
 		
-		PanelTitleLabel label = new PanelTitleLabel(EAM.text("Column groups:"));
+		PanelTitleLabel label = new PanelTitleLabel(EAM.text("Column groups"));
 		addFieldWithCustomLabel(createStringMapWorkPlanBudgetColumnCodeListEditor(orefToUse.getObjectType(), tagToUse, question), label);
 		
 		updateFieldsFromProject();
