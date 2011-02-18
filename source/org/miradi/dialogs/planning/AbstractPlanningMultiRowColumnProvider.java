@@ -25,9 +25,9 @@ import java.util.HashMap;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 
-abstract public class AbstractMultiRowColumnProvider extends AbstractPlanningTreeRowColumnProvider
+abstract public class AbstractPlanningMultiRowColumnProvider extends AbstractPlanningTreeRowColumnProvider
 {
-	public AbstractMultiRowColumnProvider(Project projectToUse)
+	public AbstractPlanningMultiRowColumnProvider(Project projectToUse)
 	{
 		super(projectToUse);
 		
