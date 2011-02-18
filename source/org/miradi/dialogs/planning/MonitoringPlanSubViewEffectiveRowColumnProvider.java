@@ -29,9 +29,9 @@ import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.CodeList;
 
-public class MonitoringPlanSubViewEffectiveMonitoringRowColumnProvider extends AbstractPlanningTreeRowColumnProvider
+public class MonitoringPlanSubViewEffectiveRowColumnProvider extends AbstractPlanningTreeRowColumnProvider
 {
-	public MonitoringPlanSubViewEffectiveMonitoringRowColumnProvider(Project projectToUse)
+	public MonitoringPlanSubViewEffectiveRowColumnProvider(Project projectToUse)
 	{
 		super(projectToUse);
 	}
