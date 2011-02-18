@@ -27,7 +27,7 @@ import org.miradi.objects.TableSettings;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 
-public class WorkPlanColumnsEditorDoer extends AbstractWorkPlanStringMapEditorDoer
+public class WorkPlanCustomizeTableEditorDoer extends AbstractWorkPlanStringMapEditorDoer
 {
 	@Override
 	protected WorkPlanColumnConfigurationEditorPanel createEditorPanel(TableSettings workPlanTableSettings)
