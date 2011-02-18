@@ -1,4 +1,4 @@
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/59'
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/60'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -655,8 +655,8 @@ TaggedObjectSetPool.element = element miradi:TaggedObjectSetPool { TaggedObjectS
 TaggedObjectSet.element = element miradi:TaggedObjectSet
 {
   attribute Id {xsd:integer}  &
-  element miradi:TaggedObjectSetLabel { text }? &
-  element miradi:TaggedObjectSetShortLabel { text }? &
+  element miradi:TaggedObjectSetName { text }? &
+  element miradi:TaggedObjectSetId { text }? &
   element miradi:TaggedObjectSetComments { text }? &
   element miradi:TaggedObjectSetTaggedDiagramFactorIds { DiagramFactorId.element* }
 }
