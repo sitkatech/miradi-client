@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-17 15:58-0600\n"
+"POT-Creation-Date: 2011-02-18 09:42-0600\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -6286,14 +6286,11 @@ msgstr "Стратеги Төлөвлөгөө"
 msgid "Strategies And Activities"
 msgstr "Стратегууд ба Үйл ажиллагаа"
 
-#: Miradi/source/org/miradi/questions/ActionTreeConfigurationQuestion.java:38
-msgid "Strategies Contain Objectives"
-msgstr ""
-
 #: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:57
 msgid "Strategies Only"
 msgstr "Зөвхөн Стратегууд"
 
+#: Miradi/source/org/miradi/questions/ActionTreeConfigurationQuestion.java:38
 #: Miradi/source/org/miradi/questions/StrategyObjectiveTreeOrderQuestion.java:38
 msgid "Strategies contain Objectives"
 msgstr ""
@@ -9668,8 +9665,8 @@ msgstr "БаганыХаяг|27.ДиаграммЗорилтХаяг|Диагр�
 msgid "FieldLabel|29.PlanningViewConfiguration|Planning View Configuration"
 msgstr ""
 
-msgid "FieldLabel|29.Label|Label"
-msgstr "БаганыХаяг|29.Хаяг|Хаяг"
+msgid "FieldLabel|29.Label|Custom Table Name"
+msgstr ""
 
 msgid "FieldLabel|29.TagRowConfiguration|Rows"
 msgstr "БаганыХаяг|29.ТэмдэглэгээМөрХэлбэр|Мөр"
@@ -31564,6 +31561,9 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid "FieldLabel|29.Label|Label"
+#~ msgstr "БаганыХаяг|29.Хаяг|Хаяг"
 
 #~ msgid "Action|Rename Custom"
 #~ msgstr "Үйлдэл|Үйлчлүүлэгчийн нэрийг өөрчлөх"

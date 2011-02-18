@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-17 15:58-0600\n"
+"POT-Creation-Date: 2011-02-18 09:42-0600\n"
 "PO-Revision-Date: 2011-01-24 10:21-0600\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -5894,14 +5894,11 @@ msgstr ""
 msgid "Strategies And Activities"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/ActionTreeConfigurationQuestion.java:38
-msgid "Strategies Contain Objectives"
-msgstr ""
-
 #: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:57
 msgid "Strategies Only"
 msgstr ""
 
+#: Miradi/source/org/miradi/questions/ActionTreeConfigurationQuestion.java:38
 #: Miradi/source/org/miradi/questions/StrategyObjectiveTreeOrderQuestion.java:38
 msgid "Strategies contain Objectives"
 msgstr ""
@@ -9030,7 +9027,7 @@ msgstr ""
 msgid "FieldLabel|29.PlanningViewConfiguration|Planning View Configuration"
 msgstr ""
 
-msgid "FieldLabel|29.Label|Label"
+msgid "FieldLabel|29.Label|Custom Table Name"
 msgstr ""
 
 msgid "FieldLabel|29.TagRowConfiguration|Rows"

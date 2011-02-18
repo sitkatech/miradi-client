@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-17 15:58-0600\n"
+"POT-Creation-Date: 2011-02-18 09:42-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -6018,14 +6018,11 @@ msgstr "策略计划"
 msgid "Strategies And Activities"
 msgstr "策略和活动"
 
-#: Miradi/source/org/miradi/questions/ActionTreeConfigurationQuestion.java:38
-msgid "Strategies Contain Objectives"
-msgstr ""
-
 #: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:57
 msgid "Strategies Only"
 msgstr "仅限于策略 \t\t"
 
+#: Miradi/source/org/miradi/questions/ActionTreeConfigurationQuestion.java:38
 #: Miradi/source/org/miradi/questions/StrategyObjectiveTreeOrderQuestion.java:38
 msgid "Strategies contain Objectives"
 msgstr ""
@@ -9214,8 +9211,8 @@ msgstr "图表名称 \t\t"
 msgid "FieldLabel|29.PlanningViewConfiguration|Planning View Configuration"
 msgstr ""
 
-msgid "FieldLabel|29.Label|Label"
-msgstr "标签"
+msgid "FieldLabel|29.Label|Custom Table Name"
+msgstr ""
 
 msgid "FieldLabel|29.TagRowConfiguration|Rows"
 msgstr ""
@@ -28828,6 +28825,9 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid "FieldLabel|29.Label|Label"
+#~ msgstr "标签"
 
 #~ msgid "Action|Rename Custom"
 #~ msgstr "重命名定制 \t\t"
