@@ -60,7 +60,7 @@ import org.miradi.views.planning.doers.DeleteFundingSourceDoer;
 import org.miradi.views.planning.doers.ImportAccountingCodesDoer;
 import org.miradi.views.planning.doers.PlanningTreeNodeCreationMenuDoer;
 import org.miradi.views.planning.doers.TreeNodeDeleteDoer;
-import org.miradi.views.planning.doers.WorkPlanColumnsEditorDoer;
+import org.miradi.views.planning.doers.WorkPlanCustomizeTableEditorDoer;
 import org.miradi.views.umbrella.CreateResource;
 import org.miradi.views.umbrella.DeleteResourceDoer;
 import org.miradi.views.umbrella.UmbrellaView;
@@ -180,7 +180,7 @@ public class WorkPlanView extends TabbedView
 		addDoerToMap(ActionEditAnalysisRows.class, new EditAnalysisRowsDoer());
 		
 		addDoerToMap(ActionPlanningCreationMenu.class, new PlanningTreeNodeCreationMenuDoer());
-		addDoerToMap(ActionWorkPlanBudgetColumnsEditor.class, new WorkPlanColumnsEditorDoer());
+		addDoerToMap(ActionWorkPlanBudgetColumnsEditor.class, new WorkPlanCustomizeTableEditorDoer());
 		addDoerToMap(ActionFilterWorkPlanByProjectResource.class, new ProjectResourceWorkPlanFilterEditDoer());
 	}
 	
