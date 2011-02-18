@@ -76,7 +76,7 @@ public class ProjectTotalCalculator implements CommandExecutedListener
 
 	private TimePeriodCostsMap computeTotalTimePeriodCostsMap(String mode)	throws Exception
 	{
-		if (shouldIncludeMonitoringData(mode))
+		if (shouldOnlyIncludeMonitoringData(mode))
 			return getTotalTimePeriodCostsMap(getIncludedDiagramIndicators());
 		
 		if (shouldOnlyIncludeActionsData(mode))
@@ -94,7 +94,7 @@ public class ProjectTotalCalculator implements CommandExecutedListener
 		return  mode.equals(WorkPlanVisibleRowsQuestion.SHOW_ACTION_RELATED_ROWS_CODE);
 	}
 
-	private boolean shouldIncludeMonitoringData(String mode)
+	private boolean shouldOnlyIncludeMonitoringData(String mode)
 	{
 		return  mode.equals(WorkPlanVisibleRowsQuestion.SHOW_MONITORING_RELATED_ROWS_CODE);
 	}
