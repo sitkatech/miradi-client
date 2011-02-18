@@ -443,7 +443,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		Factor factor = (Factor) getProject().findObject(factorORef);
 		grid = new FactorInputPanel(getProject(), factorORef);
 		
-		grid.addLabel(createFactorTypeLabel(factor));
+		grid.addTopAlignedLabel(createFactorTypeLabel(factor));
 		FilteredDiagramFactorsQuestion currentDiagramFactorsQuestion = new FilteredDiagramFactorsQuestion(getDiagramObject());
 		currentFactorChangerComboBox = new CurrentFactorChangerComboBox(currentDiagramFactorsQuestion);
 		grid.addFieldComponent(currentFactorChangerComboBox);
