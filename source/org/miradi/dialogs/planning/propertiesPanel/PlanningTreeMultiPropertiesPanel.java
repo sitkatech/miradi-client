@@ -68,15 +68,10 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 	{
 		super(mainWindowToUse, orefToUse);
 		
-		createPropertiesPanels();
-	}
-	
-	private void createPropertiesPanels() throws Exception
-	{
 		blankPropertiesPanel = new BlankPropertiesPanel(getProject());
 		addPanel(blankPropertiesPanel);
 	}
-
+	
 	protected PlanningViewTaskPropertiesPanel createTaskPropertiesPanel() throws Exception
 	{
 		return new PlanningViewTaskPropertiesPanel(getMainWindow());
