@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-17 15:58-0600\n"
+"POT-Creation-Date: 2011-02-18 09:42-0600\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -6229,14 +6229,11 @@ msgstr "Rencana Strategis"
 msgid "Strategies And Activities"
 msgstr "Strategi dan Aktivitas"
 
-#: Miradi/source/org/miradi/questions/ActionTreeConfigurationQuestion.java:38
-msgid "Strategies Contain Objectives"
-msgstr ""
-
 #: Miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:57
 msgid "Strategies Only"
 msgstr "Strategi Saja "
 
+#: Miradi/source/org/miradi/questions/ActionTreeConfigurationQuestion.java:38
 #: Miradi/source/org/miradi/questions/StrategyObjectiveTreeOrderQuestion.java:38
 msgid "Strategies contain Objectives"
 msgstr ""
@@ -9498,8 +9495,8 @@ msgstr "Nama Diagram "
 msgid "FieldLabel|29.PlanningViewConfiguration|Planning View Configuration"
 msgstr ""
 
-msgid "FieldLabel|29.Label|Label"
-msgstr "Label"
+msgid "FieldLabel|29.Label|Custom Table Name"
+msgstr ""
 
 msgid "FieldLabel|29.TagRowConfiguration|Rows"
 msgstr "Baris "
@@ -32461,6 +32458,9 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "FieldLabel|29.Label|Label"
+#~ msgstr "Label"
 
 #~ msgid "Action|Rename Custom"
 #~ msgstr "Ganti nama Sesuaian "
