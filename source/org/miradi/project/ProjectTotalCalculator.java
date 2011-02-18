@@ -69,44 +69,27 @@ public class ProjectTotalCalculator implements CommandExecutedListener
 	public TimePeriodCostsMap calculateProjectTotals(String mode) throws Exception
 	{
 		if(!modeToTimePeriodCostsMapMap.keySet().contains(mode))
-			modeToTimePeriodCostsMapMap = computeTotalTimePeriodCostsMap(mode);
+			modeToTimePeriodCostsMapMap.put(mode, computeTotalTimePeriodCostsMap(mode));
 		
 		return modeToTimePeriodCostsMapMap.get(mode);
 	}
 
-	private HashMap<String, TimePeriodCostsMap> computeTotalTimePeriodCostsMap(String mode)	throws Exception
+	private TimePeriodCostsMap computeTotalTimePeriodCostsMap(String mode)	throws Exception
 	{
 		Set<BaseObject> allIndicators = getIncludedDiagramIndicators();
 		Set<BaseObject> nonDraftStrategies = getIncludedNonDraftStrategies();
-		HashMap<String, TimePeriodCostsMap> map = new HashMap<String, TimePeriodCostsMap>();
+		TimePeriodCostsMap timePeriodCostsMap = new TimePeriodCostsMap();
 		if (shouldIncludeIndicators(mode))
 		{
-			map.put(WorkPlanVisibleRowsQuestion.SHOW_MONITORING_RELATED_ROWS_CODE, getTotalTimePeriodCostsMap(allIndicators));
+			timePeriodCostsMap.mergeAll(getTotalTimePeriodCostsMap(allIndicators));
 		}
 		
 		if (shouldIncludeNonDraftStrategies(mode))
 		{
-			map.put(WorkPlanVisibleRowsQuestion.SHOW_ACTION_RELATED_ROWS_CODE, getTotalTimePeriodCostsMap(nonDraftStrategies));
+			timePeriodCostsMap.mergeAll(getTotalTimePeriodCostsMap(nonDraftStrategies));
 		}
 		
-		if (mode.equals(WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE))
-		{
-			map.put(mode, mergeAllTimePeriodCostsMapValues(map));
-		}
-		
-		return map;
-	}
-
-	private TimePeriodCostsMap mergeAllTimePeriodCostsMapValues(HashMap<String, TimePeriodCostsMap> map)
-	{
-		TimePeriodCostsMap totalTimePeriodCostsMap = new TimePeriodCostsMap();
-		Set<String> modesAsKeys = map.keySet();
-		for (String budgetModeAsKey : modesAsKeys)
-		{
-			totalTimePeriodCostsMap.mergeAll(map.get(budgetModeAsKey));
-		}
-		
-		return totalTimePeriodCostsMap;
+		return timePeriodCostsMap;
 	}
 
 	private boolean shouldIncludeNonDraftStrategies(String mode)
