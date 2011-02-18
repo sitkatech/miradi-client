@@ -118,7 +118,7 @@ public class ConfigurableRowColumnProvider extends AbstractPlanningTreeRowColumn
 		boolean wereCodesRemoved = originalCodeList.size() != rawCodes.size();
 		originalCodeList.subtract(validColumnCodes);
 		if (wereCodesRemoved)
-			EAM.logWarning(("This customization uses codes that are no longer valid. Editing the rows or columns will prevent this message from appearing in the future. Codes removed:" + originalCodeList));
+			EAM.logWarning(("This customization uses codes that are no longer valid. Editing the rows or columns will prevent this message from appearing in the future. Unrecognized codes:" + originalCodeList));
 	}
 
 	private static StringList getLegacyUselessButHarmlessColumnCodes()
