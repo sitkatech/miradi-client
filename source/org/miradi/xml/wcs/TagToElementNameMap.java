@@ -44,6 +44,7 @@ import org.miradi.objects.ScopeBox;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.SubTarget;
+import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.TextBox;
@@ -110,6 +111,15 @@ public class TagToElementNameMap implements XmpzXmlConstants
 		fieldTagToElementMap.put(AUDIENCE, createBaseObjectMap());
 		fieldTagToElementMap.put(OBJECT_TREE_TABLE_CONFIGURATION, createBaseObjectMap());
 		fieldTagToElementMap.put(TNC_PROJECT_DATA, createTncProjectDataMap());
+		fieldTagToElementMap.put(TAGGED_OBJECT_SET_ELEMENT_NAME, createTaggedObjectSetMap());
+	}
+
+	private HashMap<String, String> createTaggedObjectSetMap()
+	{
+		HashMap<String, String> map = createBaseObjectMap();
+		map.put(TaggedObjectSet.TAG_SHORT_LABEL, "Id");
+				
+		return map;
 	}
 
 	private HashMap<String, String> createBaseObjectMap()
