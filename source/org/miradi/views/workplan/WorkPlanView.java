@@ -43,7 +43,7 @@ import org.miradi.actions.ActionTreeNodeDown;
 import org.miradi.actions.ActionTreeNodeUp;
 import org.miradi.actions.ActionTreeShareActivity;
 import org.miradi.actions.ActionTreeShareMethod;
-import org.miradi.actions.ActionWorkPlanBudgetColumnsEditor;
+import org.miradi.actions.ActionWorkPlanBudgetCustomizeTableEditor;
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
 import org.miradi.main.MainWindow;
 import org.miradi.main.MiradiToolBar;
@@ -180,7 +180,7 @@ public class WorkPlanView extends TabbedView
 		addDoerToMap(ActionEditAnalysisRows.class, new EditAnalysisRowsDoer());
 		
 		addDoerToMap(ActionPlanningCreationMenu.class, new PlanningTreeNodeCreationMenuDoer());
-		addDoerToMap(ActionWorkPlanBudgetColumnsEditor.class, new WorkPlanCustomizeTableEditorDoer());
+		addDoerToMap(ActionWorkPlanBudgetCustomizeTableEditor.class, new WorkPlanCustomizeTableEditorDoer());
 		addDoerToMap(ActionFilterWorkPlanByProjectResource.class, new ProjectResourceWorkPlanFilterEditDoer());
 	}
 	
