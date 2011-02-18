@@ -34,8 +34,8 @@ public class WorkPlanVisibleRowsQuestion extends StaticChoiceQuestion
 	{
 		return new ChoiceItem[] {
 			new ChoiceItem(SHOW_ALL_ROWS_CODE, EAM.text("Show All Rows")),	
-			new ChoiceItem(SHOW_ACTION_RELATED_ROWS_CODE, EAM.text("Show Action-Related Rows"), IconManager.getStrategyIcon()),
-			new ChoiceItem(SHOW_MONITORING_RELATED_ROWS_CODE, EAM.text("Show Monitoring-Related Rows"), IconManager.getIndicatorIcon()),
+			new ChoiceItem(SHOW_ACTION_RELATED_ROWS_CODE, EAM.text("Action-Related"), IconManager.getStrategyIcon()),
+			new ChoiceItem(SHOW_MONITORING_RELATED_ROWS_CODE, EAM.text("Monitoring-Related"), IconManager.getIndicatorIcon()),
 		};
 	}
 	
