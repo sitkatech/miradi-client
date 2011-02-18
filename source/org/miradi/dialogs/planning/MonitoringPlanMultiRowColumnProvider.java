@@ -44,7 +44,7 @@ public class MonitoringPlanMultiRowColumnProvider extends AbstractMultiRowColumn
 	{
 		HashMap<String, AbstractPlanningTreeRowColumnProvider> map = new HashMap<String, AbstractPlanningTreeRowColumnProvider>();
 		map.put(MonitoringTreeConfigurationQuestion.EFFECTIVE_MONITORING_PLAN_CODE, new MonitoringPlanSubViewEffectiveMonitoringRowColumnProvider(getProject()));
-		map.put(MonitoringTreeConfigurationQuestion.RESULTS_MONITORING_PLAN_CODE, new MonitoringPlanSubViewResultsMonitoringRowColumnProvider(getProject()));
+		map.put(MonitoringTreeConfigurationQuestion.RESULTS_MONITORING_PLAN_CODE, new MonitoringPlanSubViewResultsRowColumnProvider(getProject()));
 		
 		return map;
 	}
