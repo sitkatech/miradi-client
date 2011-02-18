@@ -33,14 +33,14 @@ public class WorkPlanColumnConfigurationEditorPanel extends ObjectDataInputPanel
 	public WorkPlanColumnConfigurationEditorPanel(Project projectToUse, ORef orefToUse, String tagToUse, ChoiceQuestion question)
 	{
 		super(projectToUse, orefToUse);
+
+		addField(createChoiceField(TableSettings.getObjectType(), TableSettings.TAG_WORK_PLAN_VISIBLE_NODES_CODE, getProject().getQuestion(WorkPlanVisibleRowsQuestion.class)));
 		
 		addLabel("");
 		addLabel(EAM.text("<html>Select which column groups to display."));
-
+		
 		PanelTitleLabel label = new PanelTitleLabel(EAM.text("Column groups:"));
 		addFieldWithCustomLabel(createStringMapWorkPlanBudgetColumnCodeListEditor(orefToUse.getObjectType(), tagToUse, question), label);
-		
-		addField(createChoiceField(TableSettings.getObjectType(), TableSettings.TAG_WORK_PLAN_VISIBLE_NODES_CODE, getProject().getQuestion(WorkPlanVisibleRowsQuestion.class)));
 		
 		updateFieldsFromProject();
 	}
