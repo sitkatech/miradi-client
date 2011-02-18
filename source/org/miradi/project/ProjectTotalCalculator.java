@@ -64,7 +64,7 @@ public class ProjectTotalCalculator implements CommandExecutedListener
 	public TimePeriodCostsMap calculateProjectTotals(String mode) throws Exception
 	{
 		if(!modeToTimePeriodCostsMapMap.keySet().contains(mode))
-			computeTotalTimePeriodCostsMap(mode);
+			modeToTimePeriodCostsMapMap = computeTotalTimePeriodCostsMap(mode);
 		
 		return modeToTimePeriodCostsMapMap.get(mode);
 	}
@@ -74,32 +74,34 @@ public class ProjectTotalCalculator implements CommandExecutedListener
 		return calculateProjectTotals(WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE);
 	}
 
-	private void computeTotalTimePeriodCostsMap(String mode)	throws Exception
+	private HashMap<String, TimePeriodCostsMap> computeTotalTimePeriodCostsMap(String mode)	throws Exception
 	{
 		Set<BaseObject> allIndicators = getIncludedDiagramIndicators();
 		Set<BaseObject> nonDraftStrategies = getIncludedNonDraftStrategies();
-		
+		HashMap<String, TimePeriodCostsMap> map = new HashMap<String, TimePeriodCostsMap>();
 		if (shouldIncludeIndicators(mode))
 		{
-			modeToTimePeriodCostsMapMap.put(WorkPlanVisibleRowsQuestion.SHOW_MONITORING_RELATED_ROWS_CODE, getTotalTimePeriodCostsMap(allIndicators));
+			map.put(WorkPlanVisibleRowsQuestion.SHOW_MONITORING_RELATED_ROWS_CODE, getTotalTimePeriodCostsMap(allIndicators));
 		}
 		
 		if (shouldIncludeNonDraftStrategies(mode))
 		{
-			modeToTimePeriodCostsMapMap.put(WorkPlanVisibleRowsQuestion.SHOW_ACTION_RELATED_ROWS_CODE, getTotalTimePeriodCostsMap(nonDraftStrategies));
+			map.put(WorkPlanVisibleRowsQuestion.SHOW_ACTION_RELATED_ROWS_CODE, getTotalTimePeriodCostsMap(nonDraftStrategies));
 		}
 		
 		if (mode.equals(WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE))
 		{
 			TimePeriodCostsMap totalTimePeriodCostsMap = new TimePeriodCostsMap();
-			Set<String> modesAsKeys = modeToTimePeriodCostsMapMap.keySet();
+			Set<String> modesAsKeys = map.keySet();
 			for (String budgetModeAsKey : modesAsKeys)
 			{
-				totalTimePeriodCostsMap.mergeAll(modeToTimePeriodCostsMapMap.get(budgetModeAsKey));
+				totalTimePeriodCostsMap.mergeAll(map.get(budgetModeAsKey));
 			}
 						
-			modeToTimePeriodCostsMapMap.put(mode, totalTimePeriodCostsMap);
-		}		
+			map.put(mode, totalTimePeriodCostsMap);
+		}
+		
+		return map;
 	}
 
 	private boolean shouldIncludeNonDraftStrategies(String mode)
