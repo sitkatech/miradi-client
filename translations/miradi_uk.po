@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-18 09:42-0600\n"
+"POT-Creation-Date: 2011-02-18 09:59-0600\n"
 "PO-Revision-Date: 2010-09-30 09:31+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -1013,7 +1013,7 @@ msgstr ""
 "class='toolbarbutton'>&lt;Edit&gt;/&lt;Preferences&gt;</code> меню і гляньте "
 "на низ <code class='toolbarbutton'>&lt;Data Location&gt;</code> табулятора."
 
-#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:38
+#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:40
 msgid "<html>Select which column groups to display."
 msgstr "<html>Виберіть, яку групу колонок показати."
 
@@ -1164,6 +1164,10 @@ msgstr ""
 msgid "Action Plan: Strategy-based"
 msgstr ""
 
+#: Miradi/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:37
+msgid "Action-Related"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/ActionWizardPrevious.java:36
 msgid "Action|< Previous"
 msgstr "Action|< Попередній"
@@ -1312,9 +1316,9 @@ msgstr ""
 msgid "Action|Credits"
 msgstr "Action|Розробники"
 
+#: Miradi/source/org/miradi/actions/ActionWorkPlanBudgetCustomizeTableEditor.java:35
 #: Miradi/source/org/miradi/actions/ActionEditAnalysisRows.java:36
 #: Miradi/source/org/miradi/actions/ActionCreateCustomFromCurrentTreeTableConfiguration.java:35
-#: Miradi/source/org/miradi/actions/ActionWorkPlanBudgetColumnsEditor.java:35
 #: Miradi/source/org/miradi/actions/ActionPlanningCustomizeDialogPopup.java:35
 msgid "Action|Customize Table..."
 msgstr ""
@@ -2793,9 +2797,9 @@ msgstr ""
 msgid "Collapse Selected Column"
 msgstr "Видалити вибрану колонку"
 
-#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:40
-msgid "Column groups:"
-msgstr "Групи колонок:"
+#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:42
+msgid "Column groups"
+msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCommentsPanel.java:40
 msgid "Comments"
@@ -5055,6 +5059,10 @@ msgstr ""
 "знати про ваш проект. Хороший план включає індикатори, які ви будете "
 "простежувати протягом часу, а також методи, які ви будете використовувати."
 
+#: Miradi/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:38
+msgid "Monitoring-Related"
+msgstr ""
+
 #: Miradi/source/org/miradi/dialogfields/editors/MonthDateUnitStartAndEndCard.java:37
 msgid "Month Selection: "
 msgstr ""
@@ -6067,10 +6075,6 @@ msgstr "Ділитися успіхами і невдачами з практи�
 msgid "Should Now Allow Full Time Employee To Be Calculated For "
 msgstr "Дозволити повночасному працівнику бути врахованим"
 
-#: Miradi/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:37
-msgid "Show Action-Related Rows"
-msgstr ""
-
 #: Miradi/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:36
 msgid "Show All Rows"
 msgstr ""
@@ -6078,10 +6082,6 @@ msgstr ""
 #: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:266
 msgid "Show Diagram Grid"
 msgstr "Показати Сітку діаграми"
-
-#: Miradi/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:38
-msgid "Show Monitoring-Related Rows"
-msgstr ""
 
 #: Miradi/source/org/miradi/questions/QuarterColumnsVisibilityQuestion.java:35
 msgid "Show Quarter Columns"
@@ -6676,7 +6676,7 @@ msgstr "TT|Створити, видалити або редагувати акц
 msgid "TT|Customize View"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionWorkPlanBudgetColumnsEditor.java:41
+#: Miradi/source/org/miradi/actions/ActionWorkPlanBudgetCustomizeTableEditor.java:41
 msgid "TT|Customize Work Plan Table"
 msgstr ""
 
@@ -7689,6 +7689,10 @@ msgstr ""
 msgid "Title|Contributing Factor Properties"
 msgstr "Title|Складові Сприяючого фактора"
 
+#: Miradi/source/org/miradi/views/planning/doers/WorkPlanCustomizeTableEditorDoer.java:43
+msgid "Title|Customize Table"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:80
 msgid "Title|Delete"
 msgstr "Title|Видалити"
@@ -7831,10 +7835,6 @@ msgstr "Title|Зберегти файл %и "
 #: Miradi/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:59
 msgid "Title|Scope Box Properties"
 msgstr "Title|Рамка цілей"
-
-#: Miradi/source/org/miradi/views/planning/doers/WorkPlanColumnsEditorDoer.java:43
-msgid "Title|Show Columns"
-msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingPropertiesPanel.java:63
 msgid "Title|Simple Threat Rating"
@@ -9912,7 +9912,7 @@ msgstr ""
 msgid "FieldLabel|48.TagTableSettingsMap|Table Settings"
 msgstr "FieldLabel|48.TagTableSettingsMap|Установки таблиці"
 
-msgid "FieldLabel|48.WorkPlanVisibleNodesCode|Visible Rows"
+msgid "FieldLabel|48.WorkPlanVisibleNodesCode|Include Data From"
 msgstr ""
 
 msgid "FieldLabel|49.ThreatRatingCommentsData|Threat Rating Comments"
@@ -26716,6 +26716,9 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
+
+#~ msgid "Column groups:"
+#~ msgstr "Групи колонок:"
 
 #~ msgid "FieldLabel|29.Label|Label"
 #~ msgstr "FieldLabel|29.Label|Ярлик"
