@@ -77,14 +77,10 @@ public class ProjectTotalCalculator implements CommandExecutedListener
 	private TimePeriodCostsMap computeTotalTimePeriodCostsMap(String mode)	throws Exception
 	{
 		if (shouldIncludeMonitoringData(mode))
-		{
 			return getTotalTimePeriodCostsMap(getIncludedDiagramIndicators());
-		}
 		
 		if (shouldOnlyIncludeActionsData(mode))
-		{
 			return getTotalTimePeriodCostsMap(getIncludedNonDraftStrategies());
-		}
 		
 		TimePeriodCostsMap merged = new TimePeriodCostsMap();
 		merged.mergeAll(calculateProjectTotals(WorkPlanVisibleRowsQuestion.SHOW_ACTION_RELATED_ROWS_CODE));
