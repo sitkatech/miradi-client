@@ -76,35 +76,32 @@ public class ProjectTotalCalculator implements CommandExecutedListener
 
 	private TimePeriodCostsMap computeTotalTimePeriodCostsMap(String mode)	throws Exception
 	{
-		TimePeriodCostsMap timePeriodCostsMap = new TimePeriodCostsMap();
 		if (shouldIncludeIndicators(mode))
 		{
 			Set<BaseObject> allIndicators = getIncludedDiagramIndicators();
-			timePeriodCostsMap.mergeAll(getTotalTimePeriodCostsMap(allIndicators));
+			return getTotalTimePeriodCostsMap(allIndicators);
 		}
 		
 		if (shouldIncludeNonDraftStrategies(mode))
 		{
 			Set<BaseObject> nonDraftStrategies = getIncludedNonDraftStrategies();
-			timePeriodCostsMap.mergeAll(getTotalTimePeriodCostsMap(nonDraftStrategies));
+			return getTotalTimePeriodCostsMap(nonDraftStrategies);
 		}
 		
-		return timePeriodCostsMap;
+		TimePeriodCostsMap merged = new TimePeriodCostsMap();
+		merged.mergeAll(calculateProjectTotals(WorkPlanVisibleRowsQuestion.SHOW_ACTION_RELATED_ROWS_CODE));
+		merged.mergeAll(calculateProjectTotals(WorkPlanVisibleRowsQuestion.SHOW_MONITORING_RELATED_ROWS_CODE));
+		
+		return merged;
 	}
 
 	private boolean shouldIncludeNonDraftStrategies(String mode)
 	{
-		if (mode.equals(WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE))
-			return true;
-		
 		return  mode.equals(WorkPlanVisibleRowsQuestion.SHOW_ACTION_RELATED_ROWS_CODE);
 	}
 
 	private boolean shouldIncludeIndicators(String mode)
 	{
-		if (mode.equals(WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE))
-			return true;
-		
 		return  mode.equals(WorkPlanVisibleRowsQuestion.SHOW_MONITORING_RELATED_ROWS_CODE);
 	}
 
