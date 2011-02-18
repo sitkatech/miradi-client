@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.planning;
 
+import org.miradi.dialogfields.ObjectDataField;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.CodeListEditorPanel;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
@@ -46,7 +47,8 @@ public class PlanningCustomizePanel extends ObjectDataInputPanel
 		ObjectDataInputField objectiveStrategyNodeOrder = createChoiceField(ObjectTreeTableConfiguration.getObjectType(), ObjectTreeTableConfiguration.TAG_STRATEGY_OBJECTIVE_ORDER, new StrategyObjectiveTreeOrderQuestion());
 		addField(objectiveStrategyNodeOrder);
 		
-		addRadioButtonField(ObjectTreeTableConfiguration.getObjectType(), ObjectTreeTableConfiguration.TAG_TARGET_NODE_POSITION, getProject().getQuestion(PlanningTreeTargetPositionQuestion.class));
+		ObjectDataField targetPositionField = createChoiceField(ObjectTreeTableConfiguration.getObjectType(), ObjectTreeTableConfiguration.TAG_TARGET_NODE_POSITION, getProject().getQuestion(PlanningTreeTargetPositionQuestion.class));
+		addField(targetPositionField);
 		
 		ObjectDataInputPanel rowEditor = new CodeListEditorPanel(getProject(), planningConfigurationRef, ObjectTreeTableConfiguration.TAG_ROW_CONFIGURATION, new CustomPlanningRowsQuestion(getProject()), 1);
 		addSubPanelWithoutTitledBorder(rowEditor);
