@@ -26,7 +26,7 @@ import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.questions.MonitoringTreeConfigurationQuestion;
 
-public class MonitoringPlanMultiRowColumnProvider extends AbstractMultiRowColumnProvider
+public class MonitoringPlanMultiRowColumnProvider extends AbstractPlanningMultiRowColumnProvider
 {
 	public MonitoringPlanMultiRowColumnProvider(Project projectToUse)
 	{
