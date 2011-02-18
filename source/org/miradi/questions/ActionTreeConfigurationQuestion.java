@@ -35,7 +35,7 @@ public class ActionTreeConfigurationQuestion extends StaticChoiceQuestion
 	{
 		return new ChoiceItem[] {
 			new ChoiceItem(OBJECTIVES_CONTAIN_STRATEGIES_CODE, EAM.text("Objectives contain Strategies"), new ObjectiveIcon()),
-			new ChoiceItem(STRATEGIES_CONTAIN_OBJECTIVES_CODE, EAM.text("Strategies Contain Objectives"), IconManager.getStrategyIcon()),
+			new ChoiceItem(STRATEGIES_CONTAIN_OBJECTIVES_CODE, EAM.text("Strategies contain Objectives"), IconManager.getStrategyIcon()),
 		};
 	}
 	
