@@ -27,9 +27,9 @@ import org.miradi.objects.Objective;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 
-public class MonitoringPlanSubViewResultsMonitoringRowColumnProvider extends AbstractPlanningTreeRowColumnProvider
+public class MonitoringPlanSubViewResultsRowColumnProvider extends AbstractPlanningTreeRowColumnProvider
 {
-	public MonitoringPlanSubViewResultsMonitoringRowColumnProvider(Project projectToUse)
+	public MonitoringPlanSubViewResultsRowColumnProvider(Project projectToUse)
 	{
 		super(projectToUse);
 	}
