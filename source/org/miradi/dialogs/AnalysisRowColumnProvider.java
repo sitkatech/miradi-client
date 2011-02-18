@@ -77,7 +77,7 @@ public class AnalysisRowColumnProvider extends AbstractBudgetCategoryRowColumnPr
 	@Override
 	public boolean shouldIncludeEmptyRows()
 	{
-		return false;
+		return true;
 	}
 	
 	@Override
