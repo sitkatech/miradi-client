@@ -150,6 +150,7 @@ public class TestProjectMpzImporter extends MiradiTestCase
 			{
 				File projectDirectory = new File(tempDirectory, projectName);
 				ProjectMpzWriter.createProjectZipFile(zip, projectDirectory);
+				verifySecondZipFileCanBeCreated(zip, projectDirectory);
 				EAM.setLogToString();
 				EAM.setLogLevel(EAM.LOG_DEBUG);
 				boolean isImportable = ProjectMpzImporter.isZipFileImportable(zip);
@@ -191,6 +192,11 @@ public class TestProjectMpzImporter extends MiradiTestCase
 			DirectoryUtils.deleteEntireDirectoryTree(tempDirectory);
 		}
 
+	}
+
+	private void verifySecondZipFileCanBeCreated(File zip, File projectDirectory) throws Exception
+	{
+		ProjectMpzWriter.createProjectZipFile(zip, projectDirectory);
 	}
 	
 	public void testUnzipEmptyFilename() throws Exception

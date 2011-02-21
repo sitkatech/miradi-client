@@ -53,19 +53,26 @@ public class ProjectMpzWriter
 
 	public static void createProjectZipFile(File destinationZip, String zipTopLevelDirectoryName, File projectDirectory) throws FileNotFoundException, Exception, IOException
 	{
-		String projectName = projectDirectory.getName();
 		ProjectServer database = new ProjectServer();
-		database.setLocalDataLocation(projectDirectory.getParentFile());
-		database.openProject(projectName);
+		try
+		{
+			String projectName = projectDirectory.getName();
+			database.setLocalDataLocation(projectDirectory.getParentFile());
+			database.openProject(projectName);
 
-		ByteArrayOutputStream outputBytes = new ByteArrayOutputStream();
-		ZipOutputStream out = new ZipOutputStream(outputBytes);
-		
-		writeProjectZip(out, database);
-		
-		OutputStream blastOut = new FileOutputStream(destinationZip);
-		blastOut.write(outputBytes.toByteArray());
-		blastOut.close();
+			ByteArrayOutputStream outputBytes = new ByteArrayOutputStream();
+			ZipOutputStream out = new ZipOutputStream(outputBytes);
+
+			writeProjectZip(out, database);
+
+			OutputStream blastOut = new FileOutputStream(destinationZip);
+			blastOut.write(outputBytes.toByteArray());
+			blastOut.close();
+		}
+		finally
+		{
+			database.close();
+		}
 	}
 
 	public static void writeProjectZip(ZipOutputStream out, Project project) throws Exception
