@@ -34,7 +34,6 @@ import javax.swing.JTextField;
 import javax.swing.JTree;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.JTableHeader;
-import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.text.Position;
 import javax.swing.tree.TreeModel;
@@ -56,8 +55,6 @@ import org.miradi.utils.SortableTable;
 import org.miradi.wizard.noproject.FileSystemTreeNode;
 import org.miradi.wizard.noproject.NoProjectWizardStep;
 
-import com.java.sun.jtreetable.TreeTableModel;
-
 public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving implements SortableTable
 {
 	public ProjectListTreeTable(MainWindow mainWindowToUse, ProjectListTreeTableModel treeTableModel, NoProjectWizardStep handlerToUse)
@@ -69,8 +66,6 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving impleme
 		tree.setCellRenderer(renderer);
 		getTree().setEditable(false);
 		getColumnModel().getColumn(0).setPreferredWidth(200);
-		TableCellEditor ce = new NonEditableTreeTableCellEditor();
-		setDefaultEditor(TreeTableModel.class, ce);
 		setBackground(AppPreferences.getDataPanelBackgroundColor());
 		setRowSelectionAllowed(true);
 		setColumnSelectionAllowed(false);
