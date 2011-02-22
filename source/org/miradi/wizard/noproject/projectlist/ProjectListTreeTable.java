@@ -120,6 +120,7 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving impleme
 			return;
 		
 		String relativeProjectPath = file.getName();
+		mainWindow.getDatabase().setLocalDataLocation(file.getParentFile());
 		if(!mainWindow.getDatabase().isExistingProject(relativeProjectPath))
 			return;
 		

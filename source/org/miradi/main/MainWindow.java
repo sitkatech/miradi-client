@@ -643,7 +643,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 
 	private void logExceptionsInsideProjectDir(String projectName)
 	{
-		File projectDir = new File(EAM.getHomeDirectory(), projectName);
+		File projectDir = new File(getDatabase().getCurrentLocalProjectDirectory().getParentFile(), projectName);
 		EAM.setExceptionLoggingDestination(new File(projectDir, EAM.EXCEPTIONS_LOG_FILE_NAME));
 	}
 	
