@@ -535,7 +535,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		try
 		{
 			project.createOrOpenWithDefaultObjectsAndDiagramHelp(projectName);
-			logExceptionsInsideProjectDir(projectName);
+			logExceptionsInsideProjectDir();
 			
 			repairProject();
 			refreshWizard();
@@ -641,9 +641,9 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 			throw new AlreadyHandledException();
 	}
 
-	private void logExceptionsInsideProjectDir(String projectName)
+	private void logExceptionsInsideProjectDir()
 	{
-		File projectDir = new File(getDatabase().getCurrentLocalProjectDirectory().getParentFile(), projectName);
+		File projectDir = getDatabase().getCurrentLocalProjectDirectory();
 		EAM.setExceptionLoggingDestination(new File(projectDir, EAM.EXCEPTIONS_LOG_FILE_NAME));
 	}
 	
