@@ -20,8 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.workplan;
 
-import javax.swing.JLabel;
-
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.layout.OneColumnGridLayout;
@@ -29,6 +27,7 @@ import org.miradi.main.EAM;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.questions.WorkPlanCategoryTypesQuestion;
+import org.miradi.utils.FillerLabel;
 
 public class EditAnalysisRowsPanel extends AbstractObjectDataInputPanel
 {
@@ -38,7 +37,7 @@ public class EditAnalysisRowsPanel extends AbstractObjectDataInputPanel
 
 		setLayout(new OneColumnGridLayout());
 		add(new PanelTitleLabel(EAM.text("Specify values in the drop downs to group work and expense assignments for analysis.")));
-		add(new JLabel(" "));
+		add(new FillerLabel());
 		addFieldWithoutLabel(createConfigureAnalysisRowsField(getProject().getCurrentViewData().getRef(), ViewData.TAG_BUDGET_ROLLUP_REPORT_TYPES, getProject().getQuestion(WorkPlanCategoryTypesQuestion.class)));
 
 		setObjectRef(getProject().getCurrentViewData().getRef());
