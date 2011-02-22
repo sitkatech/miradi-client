@@ -24,17 +24,13 @@ import org.miradi.dialogfields.AbstractWorkPlanStringMapEditorDoer;
 import org.miradi.dialogs.base.WorkPlanColumnConfigurationEditorPanel;
 import org.miradi.main.EAM;
 import org.miradi.objects.TableSettings;
-import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 
 public class WorkPlanCustomizeTableEditorDoer extends AbstractWorkPlanStringMapEditorDoer
 {
 	@Override
 	protected WorkPlanColumnConfigurationEditorPanel createEditorPanel(TableSettings workPlanTableSettings)
 	{
-		ChoiceQuestion columnConfigurationQuestion = getProject().getQuestion(WorkPlanColumnConfigurationQuestion.class);
-		
-		return new WorkPlanColumnConfigurationEditorPanel(getProject(), workPlanTableSettings.getRef(), TableSettings.TAG_TABLE_SETTINGS_MAP, columnConfigurationQuestion);
+		return new WorkPlanColumnConfigurationEditorPanel(getProject(), workPlanTableSettings.getRef());
 	}
 
 	@Override

@@ -26,11 +26,12 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 import org.miradi.questions.WorkPlanVisibleRowsQuestion;
 
 public class WorkPlanColumnConfigurationEditorPanel extends ObjectDataInputPanel
 {
-	public WorkPlanColumnConfigurationEditorPanel(Project projectToUse, ORef orefToUse, String tagToUse, ChoiceQuestion question)
+	public WorkPlanColumnConfigurationEditorPanel(Project projectToUse, ORef orefToUse)
 	{
 		super(projectToUse, orefToUse);
 
@@ -40,7 +41,8 @@ public class WorkPlanColumnConfigurationEditorPanel extends ObjectDataInputPanel
 		addLabel(EAM.text("<html>Select which column groups to display."));
 		
 		PanelTitleLabel label = new PanelTitleLabel(EAM.text("Column groups"));
-		addFieldWithCustomLabel(createStringMapWorkPlanBudgetColumnCodeListEditor(orefToUse.getObjectType(), tagToUse, question), label);
+		ChoiceQuestion columnConfigurationQuestion = getProject().getQuestion(WorkPlanColumnConfigurationQuestion.class);
+		addFieldWithCustomLabel(createStringMapWorkPlanBudgetColumnCodeListEditor(orefToUse.getObjectType(), TableSettings.TAG_TABLE_SETTINGS_MAP, columnConfigurationQuestion), label);
 		
 		updateFieldsFromProject();
 	}
