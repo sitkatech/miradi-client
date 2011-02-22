@@ -29,8 +29,6 @@ import java.util.Enumeration;
 
 import javax.swing.JComponent;
 import javax.swing.JPopupMenu;
-import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.JTree;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.JTableHeader;
@@ -269,24 +267,6 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving impleme
 			super(treeTableToUse);
 			setBackgroundNonSelectionColor(AppPreferences.getDataPanelBackgroundColor());
 		}
-	}
-	
-	class NonEditableTreeTableCellEditor extends TreeTableCellEditor
-	{
-		public NonEditableTreeTableCellEditor() 
-		{
-		    super();
-		}
-		
-		@Override
-		public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int r, int c)
-		{
-			JTextField textField = (JTextField) super.getTableCellEditorComponent(table, value, isSelected, r, c);
-			textField.setEditable(false);
-			
-			return textField;
-		}
-
 	}
 	
 	public static class Renderer extends VariableHeightTreeCellRenderer
