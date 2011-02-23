@@ -51,7 +51,7 @@ public class WorkPlanColumnConfigurationQuestion extends StaticChoiceQuestion
 		return choiceItems;
 	}
 	
-	private static ChoiceItem createChoiceItem(String tag)
+	protected static ChoiceItem createChoiceItem(String tag)
 	{
 		return CustomPlanningColumnsQuestion.createChoiceItem(tag);
 	}

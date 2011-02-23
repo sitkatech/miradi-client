@@ -22,13 +22,16 @@ package org.miradi.dialogs;
 
 import org.miradi.dialogs.planning.AbstractBudgetCategoryRowColumnProvider;
 import org.miradi.dialogs.planning.WorkPlanCategoryTreeRowColumnProvider;
+import org.miradi.dialogs.planning.upperPanel.WorkPlanTreeTablePanel;
+import org.miradi.main.EAM;
+import org.miradi.objecthelpers.StringStringMap;
 import org.miradi.objects.AccountingCode;
 import org.miradi.objects.BudgetCategoryOne;
 import org.miradi.objects.BudgetCategoryTwo;
 import org.miradi.objects.FundingSource;
 import org.miradi.objects.ProjectResource;
+import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
-import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.views.workplan.WorkPlanView;
 
@@ -42,12 +45,7 @@ public class AnalysisRowColumnProvider extends AbstractBudgetCategoryRowColumnPr
 	@Override
 	public CodeList getColumnCodesToShow() throws Exception
 	{
-		CodeList columnCodes = new CodeList();		
-		columnCodes.add(WorkPlanColumnConfigurationQuestion.META_ANALYSIS_WORK_UNITS_COLUMN_CODE);
-		columnCodes.add(WorkPlanColumnConfigurationQuestion.META_ANALYSIS_EXPENSES_CODE);
-		columnCodes.add(WorkPlanColumnConfigurationQuestion.META_ANALYSIS_BUDGET_DETAILS_COLUMN_CODE);
-		
-		return columnCodes;
+		return getBudgetColumnCodesFromTableSettingsMap();
 	}
 
 	@Override
@@ -60,6 +58,28 @@ public class AnalysisRowColumnProvider extends AbstractBudgetCategoryRowColumnPr
 				BudgetCategoryOne.OBJECT_NAME,
 				BudgetCategoryTwo.OBJECT_NAME,
 		});
+	}
+	
+	protected CodeList getBudgetColumnCodesFromTableSettingsMap()
+	{
+		try
+		{
+			TableSettings tableSettings = getWorkPlanTableSettings();
+			StringStringMap tableSettingsMap = tableSettings.getTableSettingsMap();
+			String codeListAsString = tableSettingsMap.get(TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
+
+			return new CodeList(codeListAsString);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return new CodeList();
+		}
+	}
+	
+	private TableSettings getWorkPlanTableSettings() throws Exception
+	{
+		return TableSettings.findOrCreate(getProject(), WorkPlanTreeTablePanel.getTabSpecificModelIdentifier());
 	}
 	
 	@Override
