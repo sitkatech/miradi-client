@@ -116,7 +116,7 @@ public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComp
 		addSubHeaderComponents(mainRowsPanel, leftColumnComponent, choiceItem.getChildren());
 	}
 
-	protected void addSubHeaderComponents(MiradiPanel mainRowsPanel, JComponent leftColumnComponent, Vector<ChoiceItem> children) throws Exception
+	private void addSubHeaderComponents(MiradiPanel mainRowsPanel, JComponent leftColumnComponent, Vector<ChoiceItem> children) throws Exception
 	{
 		for(ChoiceItem childChoiceItem : children)
 		{
