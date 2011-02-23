@@ -48,7 +48,7 @@ public class ThreatRatingMultiPropertiesPanel extends OverlaidObjectDataInputPan
 	{
 		super.commandExecuted(event);
 		if(event.isSetDataCommandWithThisTypeAndTag(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_THREAT_RATING_MODE))
-			showCorrectPanel();
+			reloadSelectedRefs();
 	}
 	
 	private void createPropertiesPanels() throws Exception
@@ -71,11 +71,6 @@ public class ThreatRatingMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		return EAM.text("Threat Rating Properties Panel");
 	}
 
-	private void showCorrectPanel()
-	{
-		getCardLayout().show(this, findPanel().getPanelDescription());
-	}
-	
 	@Override
 	protected AbstractObjectDataInputPanel findPanel(ORef[] orefsToUse)
 	{
