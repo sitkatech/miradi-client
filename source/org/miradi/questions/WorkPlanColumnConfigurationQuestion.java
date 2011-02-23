@@ -32,14 +32,15 @@ public class WorkPlanColumnConfigurationQuestion extends StaticChoiceQuestion
 	@Override
 	protected ChoiceItem[] createChoices()
 	{
-		return new ChoiceItem[] 
-		{
-				createChoiceItem(WorkPlanColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE),
-				createChoiceItem(WorkPlanColumnConfigurationQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE),
-				createChoiceItem(WorkPlanColumnConfigurationQuestion.META_BUDGET_DETAIL_COLUMN_CODE),
-				createChoiceItem(COMMENTS_COLUMN_CODE),
-				createChoiceItem(DETAILS_COLUMN_CODE),
-		};
+		Vector<ChoiceItem> choiceItems = new Vector<ChoiceItem>();
+		
+		choiceItems.add(createChoiceItem(WorkPlanColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE));
+		choiceItems.add(createChoiceItem(WorkPlanColumnConfigurationQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE));
+		choiceItems.add(createChoiceItem(WorkPlanColumnConfigurationQuestion.META_BUDGET_DETAIL_COLUMN_CODE));
+		choiceItems.add(createChoiceItem(COMMENTS_COLUMN_CODE));
+		choiceItems.add(createChoiceItem(DETAILS_COLUMN_CODE));
+		
+		return choiceItems.toArray(new ChoiceItem[0]);
 	}
 	
 	private static ChoiceItem createChoiceItem(String tag)
