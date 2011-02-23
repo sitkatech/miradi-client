@@ -34,16 +34,16 @@ public class SimpleThreatRatingPropertiesPanel extends ObjectDataInputPanel
 	public SimpleThreatRatingPropertiesPanel(MainWindow mainWindowToUse, ObjectPicker objectPickerToUse) throws Exception
 	{
 		super(mainWindowToUse.getProject(), FactorLink.getObjectType(), BaseId.INVALID);
+		
 		setLayout(new OneColumnGridLayout());
 		
 		final Project project = mainWindowToUse.getProject();
 		factorNamesPanel = new LinkPropertiesFactorsSubpanel(project, mainWindowToUse.getActions());
 		dropdownsPanel = new SimpleThreatRatingDropdownsPanel(project);
-		commentsPanel = new ThreatRatingCommentsSubpanel(project, mainWindowToUse.getActions());
 		
 		addSubPanelField(factorNamesPanel);
 		addSubPanelField(dropdownsPanel);
-		addSubPanelField(commentsPanel);
+		addSubPanelWithoutTitledBorder(new ThreatRatingCommentsSubpanel(project, mainWindowToUse.getActions(), "Simple"));
 		
 		updateFieldsFromProject();
 	}
@@ -65,5 +65,4 @@ public class SimpleThreatRatingPropertiesPanel extends ObjectDataInputPanel
 
 	private LinkPropertiesFactorsSubpanel factorNamesPanel;
 	private SimpleThreatRatingDropdownsPanel dropdownsPanel;
-	private ThreatRatingCommentsSubpanel commentsPanel;
 }
