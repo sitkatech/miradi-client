@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-23 13:06-0600\n"
+"POT-Creation-Date: 2011-02-23 15:31-0600\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -5237,6 +5237,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/task/ActivityDetailsPanelWithRelevancyOverrideFields.java:42
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:89
+#: Miradi/source/org/miradi/dialogs/diagram/RelatedItemsSubpanel.java:36
 msgid "Objectives"
 msgstr ""
 
@@ -5738,7 +5739,7 @@ msgstr "Үнэлгээ"
 msgid "Red"
 msgstr "Улаан"
 
-#: Miradi/source/org/miradi/dialogs/diagram/RelatedItemsSubpanel.java:41
+#: Miradi/source/org/miradi/dialogs/diagram/RelatedItemsSubpanel.java:42
 msgid "Related Items"
 msgstr "Хамааралтай зүйлүүд"
 
