@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-23 09:39-0600\n"
+"POT-Creation-Date: 2011-02-23 13:06-0600\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -7830,7 +7830,7 @@ msgstr "Sifat-sifat Tekanan "
 msgid "Title|Stress Visibility"
 msgstr "Ketampakan Tekanan "
 
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/StressBasedThreatRatingPropertiesPanel.java:68
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/StressBasedThreatRatingPropertiesPanel.java:67
 msgid "Title|Stress-Based Threat Rating"
 msgstr "Peringkat Ancaman Berdasarkan Tekanan "
 
