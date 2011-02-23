@@ -43,12 +43,11 @@ public class StressBasedThreatRatingPropertiesPanel extends ObjectDataInputPanel
 		
 		factorsPanel = new LinkPropertiesFactorsSubpanel(getProject(), mainWindowToUse.getActions());
 		threatStressRatingFieldPanel = new ThreatRatingCommonPropertiesSubpanel(mainWindowToUse.getProject(), mainWindowToUse.getActions()); 
-		commentsPanel = new ThreatRatingCommentsSubpanel(getProject(), mainWindowToUse.getActions());
 		editorComponent = new ThreatStressRatingEditorComponent(mainWindowToUse, objectPickerToUse);
 
 		addSubPanelWithoutTitledBorder(factorsPanel);
 		addSubPanelWithoutTitledBorder(threatStressRatingFieldPanel);
-		addSubPanelWithoutTitledBorder(commentsPanel);
+		addSubPanelWithoutTitledBorder(new ThreatRatingCommentsSubpanel(getProject(), mainWindowToUse.getActions(), "stresshhhh"));
 		add(editorComponent);
 		
 		updateFieldsFromProject();
@@ -97,6 +96,5 @@ public class StressBasedThreatRatingPropertiesPanel extends ObjectDataInputPanel
 	
 	private LinkPropertiesFactorsSubpanel factorsPanel;
 	private ThreatRatingCommonPropertiesSubpanel threatStressRatingFieldPanel;
-	private ThreatRatingCommentsSubpanel commentsPanel;
 	private ThreatStressRatingEditorComponent editorComponent;
 }
