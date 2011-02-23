@@ -423,6 +423,9 @@ public class CommandExecutor
 		
 		if (setCommand.isTypeAndTag(ResultsChainDiagram.getObjectType(), ConceptualModelDiagram.TAG_DIAGRAM_FACTOR_IDS))
 			return wasWrappedTypeAddedOrRemoved(setCommand, Task.getObjectType());
+		
+		if (setCommand.isTypeAndTag(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_THREAT_RATING_MODE))
+			return true;
 				
 		return false;
 	}
