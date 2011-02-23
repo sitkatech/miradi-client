@@ -45,6 +45,7 @@ public class ThreatRatingCommentsEditorComponent extends SavableField
 	public ThreatRatingCommentsEditorComponent(Project projectToUse, Actions actions)
 	{
 		super();
+		
 		project = projectToUse;		
 		selectedHeirearchy = new ORefList();
 		panelTextArea = new PanelTextArea(ObjectScrollingMultilineInputField.INITIAL_MULTI_LINE_TEXT_AREA_ROW_COUNT, AbstractObjectDataInputPanel.DEFAULT_TEXT_COLUM_COUNT);
