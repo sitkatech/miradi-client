@@ -99,6 +99,7 @@ public class StaticQuestionManager
 		addQuestion(new WorkPlanVisibleRowsQuestion());
 		addQuestion(new MonitoringTreeConfigurationQuestion());
 		addQuestion(new ActionTreeConfigurationQuestion());
+		addQuestion(new WorkPlanAnalysisConfigurationQuestion());
 	}
 	
 	private static void addQuestion(ChoiceQuestion question)
