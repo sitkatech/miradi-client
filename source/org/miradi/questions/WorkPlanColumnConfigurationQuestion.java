@@ -26,10 +26,11 @@ public class WorkPlanColumnConfigurationQuestion extends StaticChoiceQuestion
 {
 	public WorkPlanColumnConfigurationQuestion()
 	{
-		super(getColumnChoiceItems());
+		super();
 	}
 
-	private static ChoiceItem[] getColumnChoiceItems()
+	@Override
+	protected ChoiceItem[] createChoices()
 	{
 		return new ChoiceItem[] 
 		{
