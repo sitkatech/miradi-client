@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-23 13:06-0600\n"
+"POT-Creation-Date: 2011-02-23 15:31-0600\n"
 "PO-Revision-Date: 2010-05-12 21:01-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -4920,6 +4920,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/task/ActivityDetailsPanelWithRelevancyOverrideFields.java:42
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:89
+#: Miradi/source/org/miradi/dialogs/diagram/RelatedItemsSubpanel.java:36
 msgid "Objectives"
 msgstr ""
 
@@ -5400,7 +5401,7 @@ msgstr ""
 msgid "Red"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/RelatedItemsSubpanel.java:41
+#: Miradi/source/org/miradi/dialogs/diagram/RelatedItemsSubpanel.java:42
 msgid "Related Items"
 msgstr ""
 
