@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-18 09:59-0600\n"
+"POT-Creation-Date: 2011-02-23 09:39-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -883,7 +883,7 @@ msgid ""
 "code> tab."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:40
+#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:41
 msgid "<html>Select which column groups to display."
 msgstr ""
 
@@ -2625,7 +2625,8 @@ msgstr ""
 msgid "Collapse Selected Column"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:42
+#: Miradi/source/org/miradi/views/workplan/EditAnalysisRowsPanel.java:49
+#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:43
 msgid "Column groups"
 msgstr ""
 
@@ -2674,7 +2675,7 @@ msgid ""
 "cycle"
 msgstr "在项目周期内适时地实施评估和/或审计 \t\t"
 
-#: Miradi/source/org/miradi/views/workplan/doers/EditAnalysisRowsDoer.java:44
+#: Miradi/source/org/miradi/views/workplan/doers/EditAnalysisRowsDoer.java:43
 msgid "Configure Work Plan Analysis"
 msgstr ""
 
@@ -5942,7 +5943,7 @@ msgstr ""
 msgid "Specific Year(s)"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/workplan/EditAnalysisRowsPanel.java:41
+#: Miradi/source/org/miradi/views/workplan/EditAnalysisRowsPanel.java:44
 msgid ""
 "Specify values in the drop downs to group work and expense assignments for "
 "analysis."
@@ -7402,7 +7403,7 @@ msgstr ""
 msgid "Title|Contributing Factor Properties"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/planning/doers/WorkPlanCustomizeTableEditorDoer.java:43
+#: Miradi/source/org/miradi/views/planning/doers/WorkPlanCustomizeTableEditorDoer.java:39
 msgid "Title|Customize Table"
 msgstr ""
 
@@ -8031,7 +8032,7 @@ msgstr ""
 "工作计划——描述了为实施您的策略和监控计划所需的专门活动/方法和任务。良好的工作"
 "计划显示了各个任务的时间表及执行顺序，以及执行各任务所需的特定资源。"
 
-#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:51
+#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:53
 msgid "Work Plan Column Editor"
 msgstr ""
 
