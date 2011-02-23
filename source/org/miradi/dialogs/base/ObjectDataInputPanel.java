@@ -70,6 +70,7 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanelW
 	public ObjectDataInputPanel(Project projectToUse, ORef[] orefsToUse)
 	{
 		super(projectToUse, orefsToUse);
+		
 		GridLayoutPlus layout = new GridLayoutPlus(0, 2, HGAP, VGAP);
 		layout.setColAlignment(0, Alignment.NORTHEAST);
 		setLayout(layout);
