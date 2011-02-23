@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-18 09:59-0600\n"
+"POT-Creation-Date: 2011-02-23 09:39-0600\n"
 "PO-Revision-Date: 2011-02-15 16:35-0600\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -851,7 +851,7 @@ msgid ""
 "code> tab."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:40
+#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:41
 msgid "<html>Select which column groups to display."
 msgstr ""
 
@@ -2568,7 +2568,8 @@ msgstr ""
 msgid "Collapse Selected Column"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:42
+#: Miradi/source/org/miradi/views/workplan/EditAnalysisRowsPanel.java:49
+#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:43
 msgid "Column groups"
 msgstr ""
 
@@ -2615,7 +2616,7 @@ msgid ""
 "cycle"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/workplan/doers/EditAnalysisRowsDoer.java:44
+#: Miradi/source/org/miradi/views/workplan/doers/EditAnalysisRowsDoer.java:43
 msgid "Configure Work Plan Analysis"
 msgstr ""
 
@@ -5823,7 +5824,7 @@ msgstr ""
 msgid "Specific Year(s)"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/workplan/EditAnalysisRowsPanel.java:41
+#: Miradi/source/org/miradi/views/workplan/EditAnalysisRowsPanel.java:44
 msgid ""
 "Specify values in the drop downs to group work and expense assignments for "
 "analysis."
@@ -7244,7 +7245,7 @@ msgstr ""
 msgid "Title|Contributing Factor Properties"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/planning/doers/WorkPlanCustomizeTableEditorDoer.java:43
+#: Miradi/source/org/miradi/views/planning/doers/WorkPlanCustomizeTableEditorDoer.java:39
 msgid "Title|Customize Table"
 msgstr ""
 
@@ -7853,7 +7854,7 @@ msgid ""
 "required to carry it out."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:51
+#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:53
 msgid "Work Plan Column Editor"
 msgstr ""
 

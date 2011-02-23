@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-18 09:59-0600\n"
+"POT-Creation-Date: 2011-02-23 09:39-0600\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -1010,7 +1010,7 @@ msgstr ""
 "энгээдтоод хэсэгт хар <code class='toolbarbutton'>&lt;Data Location&gt;</"
 "code> tab."
 
-#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:40
+#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:41
 msgid "<html>Select which column groups to display."
 msgstr "<html>Аль бүлгийн баганыг харуулахыг сонгох."
 
@@ -2790,7 +2790,8 @@ msgstr ""
 msgid "Collapse Selected Column"
 msgstr "Сонгосон баганыг нураах"
 
-#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:42
+#: Miradi/source/org/miradi/views/workplan/EditAnalysisRowsPanel.java:49
+#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:43
 msgid "Column groups"
 msgstr ""
 
@@ -2839,7 +2840,7 @@ msgid ""
 "cycle"
 msgstr "Төслийн мөчлөгийн тохиромжтой үед үнэлгээ ба/эсвэл аудит хийлгэх"
 
-#: Miradi/source/org/miradi/views/workplan/doers/EditAnalysisRowsDoer.java:44
+#: Miradi/source/org/miradi/views/workplan/doers/EditAnalysisRowsDoer.java:43
 msgid "Configure Work Plan Analysis"
 msgstr ""
 
@@ -6206,7 +6207,7 @@ msgstr "Онцлог улирал(ууд)"
 msgid "Specific Year(s)"
 msgstr "Онцлог Жил Year(үүд)"
 
-#: Miradi/source/org/miradi/views/workplan/EditAnalysisRowsPanel.java:41
+#: Miradi/source/org/miradi/views/workplan/EditAnalysisRowsPanel.java:44
 msgid ""
 "Specify values in the drop downs to group work and expense assignments for "
 "analysis."
@@ -7721,7 +7722,7 @@ msgstr ""
 msgid "Title|Contributing Factor Properties"
 msgstr "Гарчиг|Хувь нэмэр оруулж буй хүчин зүйлийн Properties"
 
-#: Miradi/source/org/miradi/views/planning/doers/WorkPlanCustomizeTableEditorDoer.java:43
+#: Miradi/source/org/miradi/views/planning/doers/WorkPlanCustomizeTableEditorDoer.java:39
 msgid "Title|Customize Table"
 msgstr ""
 
@@ -8387,7 +8388,7 @@ msgstr ""
 "нь цаг хугацааг болон даалгавар бүрийн дарааллыг түүнчлэн тэдгээрийг "
 "хэрэгжүүлэхэд шаардлагатай тодорхой нөөцийг ч бас өөртөө агуулсан байдаг."
 
-#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:51
+#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:53
 msgid "Work Plan Column Editor"
 msgstr "Ажлын Төлөвлөгөө Баган Редактор"
 
