@@ -50,7 +50,7 @@ public class TwoLevelQuestion extends DynamicChoiceQuestion
 				String code = twoLevelEntry[i].getEntryCode();
 				String label = twoLevelEntry[i].getEntryLabel();
 				String description  = twoLevelEntry[i].getDescription();
-				ChoiceItem choice = createChoiceItem(code, label, description);
+				ChoiceItem choice = createChoiceItem(code, label, description, twoLevelEntry[i].getLongDescription());
 				choice.setSelectable(twoLevelEntry[i].isSelectable());
 				chocies.add(choice);
 			}
@@ -64,7 +64,7 @@ public class TwoLevelQuestion extends DynamicChoiceQuestion
 		}
 	}
 
-	protected ChoiceItem createChoiceItem(String code, String label, String description) throws Exception
+	protected ChoiceItem createChoiceItem(String code, String label, String description, String longDescription) throws Exception
 	{
 		return new ChoiceItem(code, label, description);
 	}

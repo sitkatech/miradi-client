@@ -64,7 +64,7 @@ import org.miradi.utils.FillerLabel;
 
 import com.jhlabs.awt.GridLayoutPlus;
 
-abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectDataInputPanel implements Scrollable
+abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectDataInputPanel implements Scrollable, RowSelectionListener
 {
 	public AbstractOpenStandardsQuestionPanel(Project projectToUse, DynamicChoiceWithRootChoiceItem questionToUse) throws Exception
 	{
