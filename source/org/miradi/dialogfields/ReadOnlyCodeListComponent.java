@@ -21,6 +21,7 @@ package org.miradi.dialogfields;
 
 import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.icons.RatingIcon;
 import org.miradi.main.EAM;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.utils.CodeList;
@@ -59,7 +60,11 @@ public class ReadOnlyCodeListComponent extends MiradiPanel
 				ChoiceItem choiceItem = choiceItems[choiceIndex];
 				if (codeList.contains(choiceItem.getCode()))
 				{
-					add(new PanelTitleLabel(choiceItem.getLabel()));
+					PanelTitleLabel label = new PanelTitleLabel(choiceItem.getLabel());
+					if (choiceItem.getColor() != null)
+						label.setIcon(new RatingIcon(choiceItem));
+					
+					add(label);
 				}
 			}
 		}
