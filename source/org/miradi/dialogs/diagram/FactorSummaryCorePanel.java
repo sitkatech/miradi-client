@@ -79,7 +79,7 @@ public class FactorSummaryCorePanel extends ObjectDataInputPanel
 		if(factorToEdit.isStrategy())
 		{
 			addOptionalDraftStatusCheckBox(Strategy.TAG_STATUS);
-			addField(createClassificationChoiceField(Strategy.TAG_TAXONOMY_CODE, new StrategyClassificationQuestion()));
+			addField(createRadioButtonEditorField(Strategy.getObjectType(), Strategy.TAG_TAXONOMY_CODE, new StrategyClassificationQuestion()));
 
 			ObjectDataInputField impactField = createRadioButtonEditorField(Strategy.getObjectType(), Strategy.TAG_IMPACT_RATING, getQuestion(StrategyImpactQuestion.class));
 			ObjectDataInputField feasibilityField = createRadioButtonEditorField(Strategy.getObjectType(), Strategy.TAG_FEASIBILITY_RATING, getQuestion(StrategyFeasibilityQuestion.class));
