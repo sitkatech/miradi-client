@@ -640,7 +640,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return new ObjectRaitingChoiceField(project,  getFirstSelectedRef().getObjectType(), getObjectIdForType( getFirstSelectedRef().getObjectType()), tagToUse, question);
 	}
 	
-	public ObjectDataInputField createRadioButtonEditor(int objectType, String tagToUse, ChoiceQuestion question)
+	public ObjectDataInputField createRadioButtonEditorField(int objectType, String tagToUse, ChoiceQuestion question)
 	{
 		return new SingleCodeEditableField(getMainWindow(), getRefForType(objectType), tagToUse, question, 1);
 	}
