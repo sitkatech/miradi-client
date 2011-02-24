@@ -30,9 +30,15 @@ public class StrategyClassificationQuestion extends TaxonomyClassificationQuesti
 	}
 	
 	@Override
-	protected ChoiceItem createChoiceItem(String code, String label, String description) throws Exception
+	protected ChoiceItem createChoiceItem(String code, String label, String description, String longDescription) throws Exception
 	{
-		return new ChoiceItemWithLongDescriptionProvider(code, label, description, new StaticLongDescriptionProvider());
+		return new ChoiceItemWithLongDescriptionProvider(code, label, description, new StaticLongDescriptionProvider(longDescription));
+	}
+	
+	@Override
+	public boolean hasLongDescriptionProvider()
+	{
+		return true;
 	}
 	
 	private static String taxonomyFile = TwoLevelFileLoader.STRATEGY_TAXONOMIES_FILE;

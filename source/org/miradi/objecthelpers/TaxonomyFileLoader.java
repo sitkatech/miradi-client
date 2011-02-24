@@ -45,17 +45,18 @@ public class TaxonomyFileLoader extends TwoLevelFileLoader
 			String code = (String) row.get(0);
 			String level1Descriptor = (String) row.get(1);
 			String level2Descriptor = (String) row.get(2);
+			String longDescription = (String) row.get(3) + "<br>" + (String) row.get(4) + "<br>" + (String) row.get(5);
 
 			if(!getLevel1Code(code).equals(prevLevel1Code))
 			{
 				level2Index = 0;
 				String taxonomyLevelText = ++level1Index + "   "+ level1Descriptor;
-				taxonomyItems.add(new TwoLevelEntry(getLevel1Code(code), taxonomyLevelText));
+				taxonomyItems.add(new TwoLevelEntry(getLevel1Code(code), taxonomyLevelText, "", longDescription));
 			}
 			
 			++level2Index;
 			String taxonomyLevel2Text = "    " + level1Index + "." + level2Index + "    " + level2Descriptor;
-			TwoLevelEntry entry = new TwoLevelEntry(code, taxonomyLevel2Text);
+			TwoLevelEntry entry = new TwoLevelEntry(code, taxonomyLevel2Text, "", longDescription);
 			taxonomyItems.add(entry);
 
 			prevLevel1Code = getLevel1Code(code);
