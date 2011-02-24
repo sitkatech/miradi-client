@@ -65,9 +65,6 @@ abstract public class SingleRowSelectionHandler
 		getSafeSelectableRows().add(selectableRow);
 	}
 
-	abstract protected SelectableRow createSelectableRow(Vector<JComponent> selectableComponentsToUse,
-			AbstractLongDescriptionProvider descriptionProviderToUse);
-	
 	public void addSelectionListener(ListSelectionListener rightSideDescriptionPanel)
 	{
 		rowSelectionListeners.add(rightSideDescriptionPanel);
@@ -225,6 +222,8 @@ abstract public class SingleRowSelectionHandler
 			return null;
 		}
 	}
+	
+	abstract protected SelectableRow createSelectableRow(Vector<JComponent> selectableComponentsToUse, AbstractLongDescriptionProvider descriptionProviderToUse);
 
 	private static final int MOVE_UP_DIRECTION_DELTA = -1;
 	private static final int MOVE_DOWN_DIRECTION_DELTA = 1;
