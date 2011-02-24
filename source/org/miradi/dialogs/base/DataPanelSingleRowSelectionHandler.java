@@ -32,8 +32,7 @@ import org.miradi.dialogs.dashboard.SelectableRow;
 public class DataPanelSingleRowSelectionHandler extends	SingleRowSelectionHandler
 {
 	@Override
-	protected SelectableRow createSelectableRow(Vector<JComponent> selectableComponentsToUse,
-			AbstractLongDescriptionProvider descriptionProviderToUse)
+	protected SelectableRow createSelectableRow(Vector<JComponent> selectableComponentsToUse, AbstractLongDescriptionProvider descriptionProviderToUse)
 	{
 		return new DataPanelSelectableRow(selectableComponentsToUse, descriptionProviderToUse);
 	}
