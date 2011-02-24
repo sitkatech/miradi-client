@@ -81,7 +81,7 @@ public class FactorSummaryCorePanel extends ObjectDataInputPanel
 			addOptionalDraftStatusCheckBox(Strategy.TAG_STATUS);
 			addField(createClassificationChoiceField(Strategy.TAG_TAXONOMY_CODE, new StrategyClassificationQuestion()));
 
-			ObjectDataInputField impactField = createRatingChoiceField(Strategy.TAG_IMPACT_RATING, new StrategyImpactQuestion());
+			ObjectDataInputField impactField = createRadioButtonEditor(Strategy.getObjectType(), Strategy.TAG_IMPACT_RATING, new StrategyImpactQuestion());
 			ObjectDataInputField feasibilityField = createRatingChoiceField(Strategy.TAG_FEASIBILITY_RATING, new StrategyFeasibilityQuestion());
 			ObjectDataInputField prioritySummaryField = createReadOnlyChoiceField(Strategy.PSEUDO_TAG_RATING_SUMMARY, new StrategyRatingSummaryQuestion());
 			addFieldsOnOneLine(EAM.text("Priority"), new ObjectDataInputField[] {impactField, feasibilityField, prioritySummaryField});

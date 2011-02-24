@@ -70,6 +70,7 @@ import org.miradi.dialogfields.ObjectStringMapInputField;
 import org.miradi.dialogfields.PopupQuestionEditorField;
 import org.miradi.dialogfields.RadioButtonsField;
 import org.miradi.dialogfields.ReadOnlyCodeListField;
+import org.miradi.dialogfields.SingleCodeEditableField;
 import org.miradi.dialogfields.StrategyGoalOverrideListField;
 import org.miradi.dialogfields.StrategyObjectiveOverrideListField;
 import org.miradi.dialogfields.StringMapMultiLineEditor;
@@ -637,6 +638,11 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	public ObjectDataInputField createRatingChoiceField(String tagToUse, ChoiceQuestion question)
 	{
 		return new ObjectRaitingChoiceField(project,  getFirstSelectedRef().getObjectType(), getObjectIdForType( getFirstSelectedRef().getObjectType()), tagToUse, question);
+	}
+	
+	public ObjectDataInputField createRadioButtonEditor(int objectType, String tagToUse, ChoiceQuestion question)
+	{
+		return new SingleCodeEditableField(getMainWindow(), getRefForType(objectType), tagToUse, question, 1);
 	}
 	
 	public ObjectDataInputField createRatingChoiceField(int objectType, String tagToUse, ChoiceQuestion question)
