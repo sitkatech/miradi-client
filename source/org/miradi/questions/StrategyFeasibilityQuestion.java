@@ -34,11 +34,11 @@ public class StrategyFeasibilityQuestion extends StaticChoiceQuestionSortableByC
 	static ChoiceItem[] getFeasibilityChoices()
 	{
 		return new ChoiceItem[] {
-			new ChoiceItem("", EAM.text("Not Specified"), Color.WHITE),
-			new ChoiceItem(LOW_CODE, EAM.text("Low"), COLOR_ALERT),
-			new ChoiceItem(MEDIUM_CODE, EAM.text("Medium"), COLOR_CAUTION),
-			new ChoiceItem(HIGH_CODE, EAM.text("High"), COLOR_OK),
-			new ChoiceItem(VERY_HIGH_CODE, EAM.text("Very High"), COLOR_GREAT),
+			new ChoiceItemWithLongDescriptionProvider("", EAM.text("Not Specified"), Color.WHITE),
+			new ChoiceItemWithLongDescriptionProvider(LOW_CODE, EAM.text("Low"), COLOR_ALERT),
+			new ChoiceItemWithLongDescriptionProvider(MEDIUM_CODE, EAM.text("Medium"), COLOR_CAUTION),
+			new ChoiceItemWithLongDescriptionProvider(HIGH_CODE, EAM.text("High"), COLOR_OK),
+			new ChoiceItemWithLongDescriptionProvider(VERY_HIGH_CODE, EAM.text("Very High"), COLOR_GREAT),
 		};
 	}
 	
