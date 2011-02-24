@@ -56,9 +56,10 @@ public class ReadOnlyCodeListComponent extends MiradiPanel
 			codeList = new CodeList(codesToUse);
 			for (int choiceIndex = 0; choiceIndex < choiceItems.length; ++choiceIndex)
 			{
-				if (codeList.contains(choiceItems[choiceIndex].getCode()))
+				ChoiceItem choiceItem = choiceItems[choiceIndex];
+				if (codeList.contains(choiceItem.getCode()))
 				{
-					add(new PanelTitleLabel(choiceItems[choiceIndex].getLabel()));
+					add(new PanelTitleLabel(choiceItem.getLabel()));
 				}
 			}
 		}
