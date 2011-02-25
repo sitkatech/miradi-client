@@ -94,6 +94,7 @@ public class IconManager
 		addIcon(new OpenStandardsAutomaticIcon());
 		addIcon(new OpenStandardsNotApplicableIcon());
 		addIcon(new OpenStandardsInProgressIcon());
+		addIcon(new OpenStandardsCompleteIcon());
 		addResourceImageIcon(COLLAPSE_ICON_FILE_NAME);
 		addResourceImageIcon(EXPAND_ICON_FILE_NAME);
 		addResourceImageIcon(SPELLCHECK_ICON_FILE_NAME);
@@ -354,6 +355,11 @@ public class IconManager
 	public static Icon getOpenStandardsInProgressIcon()
 	{
 		return getIcon(OpenStandardsInProgressIcon.class);
+	}
+	
+	public static Icon getOpenStandardsCompleteIcon()
+	{
+		return getIcon(OpenStandardsCompleteIcon.class);
 	}
 	
 	public static Icon getMiradiApplicationIcon()
