@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.questions;
 
-import org.miradi.dialogs.dashboard.StaticLongDescriptionProvider;
 import org.miradi.objecthelpers.TwoLevelFileLoader;
 
 public class StrategyClassificationQuestion extends TaxonomyClassificationQuestion
@@ -27,18 +26,6 @@ public class StrategyClassificationQuestion extends TaxonomyClassificationQuesti
 	public StrategyClassificationQuestion()
 	{
 		super(taxonomyFile);
-	}
-	
-	@Override
-	protected ChoiceItem createChoiceItem(String code, String label, String description, String longDescription) throws Exception
-	{
-		return new ChoiceItemWithLongDescriptionProvider(code, label, description, new StaticLongDescriptionProvider(longDescription));
-	}
-	
-	@Override
-	public boolean hasLongDescriptionProvider()
-	{
-		return true;
 	}
 	
 	private static String taxonomyFile = TwoLevelFileLoader.STRATEGY_TAXONOMIES_FILE;
