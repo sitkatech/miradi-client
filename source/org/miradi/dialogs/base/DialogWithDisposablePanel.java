@@ -49,7 +49,7 @@ public class DialogWithDisposablePanel extends DialogWithButtonBar
 	
 	public void setScrollableMainPanel(DisposablePanel panelToUse)
 	{
-		setRawMainPanel(panelToUse, new MiradiScrollPane(wrappedPanel));
+		setRawMainPanel(panelToUse, new MiradiScrollPane(panelToUse));
 	}
 
 	private void setRawMainPanel(DisposablePanel panelToUse, Component comp)
