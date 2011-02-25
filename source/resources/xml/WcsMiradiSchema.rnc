@@ -1,4 +1,4 @@
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/60'
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/61'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -235,7 +235,7 @@ ConceptualModel.element = element miradi:ConceptualModel
   element miradi:ConceptualModelDetails { text }? &
   element miradi:ConceptualModelZoomScale { xsd:decimal }? &
   element miradi:ConceptualModelDiagramFactorIds { DiagramFactorId.element* } &
-  element miradi:ConceptualModelDiagramFactorLinkIds { DiagramLinkId.element* } &
+  element miradi:ConceptualModelDiagramLinkIds { DiagramLinkId.element* } &
   ConceptualModelHiddenTypesContainer.element ? &
   element miradi:ConceptualModelSelectedTaggedObjectSetIds { TaggedObjectSetId.element* }
 }
@@ -249,7 +249,7 @@ ResultsChain.element = element miradi:ResultsChain
   element miradi:ResultsChainDetails { text }? &
   element miradi:ResultsChainZoomScale { xsd:decimal }? &
   element miradi:ResultsChainDiagramFactorIds { DiagramFactorId.element* } &
-  element miradi:ResultsChainDiagramFactorLinkIds { DiagramLinkId.element* } &
+  element miradi:ResultsChainDiagramLinkIds { DiagramLinkId.element* } &
   ResultsChainHiddenTypesContainer.element ? &
   element miradi:ResultsChainSelectedTaggedObjectSetIds { TaggedObjectSetId.element* }
 }
