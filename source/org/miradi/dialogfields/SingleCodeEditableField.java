@@ -46,7 +46,7 @@ public class SingleCodeEditableField extends AbstractEditableCodeListField
 	@Override
 	protected DisposablePanel createEditorPanel() throws Exception
 	{
-		RadiobButtonEditorComponentWIthHierarchicalRows editor = new RadiobButtonEditorComponentWIthHierarchicalRows(mainWindow, question);
+		RadioButtonEditorComponentWithHierarchicalRows editor = new RadioButtonEditorComponentWithHierarchicalRows(mainWindow, question);
 		OneFieldObjectDataInputPanelWithListenerDelegator leftPanel = new OneFieldObjectDataInputPanelWithListenerDelegator(getProject(), getORef(), getTag(), editor);
 		if (editor.getQuestion().hasLongDescriptionProvider())
 			return new SplitterPanelWithStaticRightSideTextPanel(mainWindow, question, leftPanel);
@@ -56,7 +56,7 @@ public class SingleCodeEditableField extends AbstractEditableCodeListField
 	
 	private class OneFieldObjectDataInputPanelWithListenerDelegator extends OneFieldObjectDataInputPanel  implements RowSelectionListener
 	{
-		public OneFieldObjectDataInputPanelWithListenerDelegator(Project projectToUse, ORef orefToUse, String tagToUse, RadiobButtonEditorComponentWIthHierarchicalRows editorToUse)
+		public OneFieldObjectDataInputPanelWithListenerDelegator(Project projectToUse, ORef orefToUse, String tagToUse, RadioButtonEditorComponentWithHierarchicalRows editorToUse)
 		{
 			super(projectToUse, orefToUse, tagToUse, new ComponentWrapperObjectDataInputField(projectToUse, getORef(), getTag(), editorToUse));
 			
@@ -73,7 +73,7 @@ public class SingleCodeEditableField extends AbstractEditableCodeListField
 			editor.getSafeRowSelectionHandler().removeSelectionListener(listener);
 		}
 		
-		private RadiobButtonEditorComponentWIthHierarchicalRows editor;
+		private RadioButtonEditorComponentWithHierarchicalRows editor;
 	}
 	
 	@Override
