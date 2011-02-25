@@ -44,8 +44,10 @@ public class DialogWithDisposablePanel extends DialogWithButtonBar
 	
 	public void setMainPanel(DisposablePanel panelToUse)
 	{
+		Component comp = panelToUse;
+		
 		wrappedPanel = panelToUse;
-		getContentPane().add(wrappedPanel, BorderLayout.CENTER);
+		getContentPane().add(comp, BorderLayout.CENTER);
 	}
 	
 	public void setScrollableMainPanel(DisposablePanel panelToUse)
