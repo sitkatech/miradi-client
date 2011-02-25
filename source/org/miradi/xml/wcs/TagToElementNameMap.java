@@ -228,16 +228,6 @@ public class TagToElementNameMap implements XmpzXmlConstants
 		return map;
 	}
 
-	private HashMap<String, String> createConceptualModelMap()
-	{
-		HashMap<String, String> map = new HashMap<String, String>();
-		map.put(ConceptualModelDiagram.TAG_LABEL, "Name");
-		map.put(ConceptualModelDiagram.TAG_SHORT_LABEL, "Id");
-		map.put(ConceptualModelDiagram.TAG_DETAIL, DETAILS);
-		
-		return map;
-	}
-
 	private HashMap<String, String> createCauseMap()
 	{
 		HashMap<String, String> map = new HashMap<String, String>();
@@ -276,6 +266,16 @@ public class TagToElementNameMap implements XmpzXmlConstants
 		map.put(IntermediateResult.TAG_LABEL, "Name");
 		map.put(IntermediateResult.TAG_SHORT_LABEL, "Id");
 		map.put(IntermediateResult.TAG_TEXT, DETAILS);
+		
+		return map;
+	}
+	
+	private HashMap<String, String> createConceptualModelMap()
+	{
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put(ConceptualModelDiagram.TAG_LABEL, "Name");
+		map.put(ConceptualModelDiagram.TAG_SHORT_LABEL, "Id");
+		map.put(ConceptualModelDiagram.TAG_DETAIL, DETAILS);
 		
 		return map;
 	}
