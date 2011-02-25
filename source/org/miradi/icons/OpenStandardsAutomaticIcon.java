@@ -24,7 +24,7 @@ import org.miradi.utils.MiradiResourceImageIcon;
 
 public class OpenStandardsAutomaticIcon extends MiradiResourceImageIcon
 {
-	public OpenStandardsAutomaticIcon()
+	protected OpenStandardsAutomaticIcon()
 	{
 		super("icons/OpenStandardsAutomaticIcon.png");
 	}
