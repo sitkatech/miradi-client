@@ -73,7 +73,7 @@ public class FactorSummaryCorePanel extends ObjectDataInputPanel
 		}
 		if (factorToEdit.isDirectThreat())
 		{
-			addField(createClassificationChoiceField(Cause.TAG_TAXONOMY_CODE, new ThreatClassificationQuestion()));
+			addField(createRadioButtonEditorField(Cause.getObjectType(), Cause.TAG_TAXONOMY_CODE, new ThreatClassificationQuestion()));
 		}
 		
 		if(factorToEdit.isStrategy())
