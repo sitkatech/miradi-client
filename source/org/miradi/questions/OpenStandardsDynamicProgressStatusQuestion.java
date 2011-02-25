@@ -21,7 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.questions;
 
 import org.miradi.icons.IconManager;
-import org.miradi.icons.OpenStandardsAutomaticIcon;
 import org.miradi.icons.OpenStandardsCompleteIcon;
 import org.miradi.icons.OpenStandardsInProgressIcon;
 import org.miradi.icons.OpenStandardsNotApplicableIcon;
@@ -44,14 +43,14 @@ public class OpenStandardsDynamicProgressStatusQuestion extends DynamicChoiceQue
 			if (getThirdLevelValue().equals(NOT_STARTED_CODE))
 			{
 				return new ChoiceItem[] {
-						new ChoiceItem(NOT_SPECIFIED_CODE, EAM.text("Automatic"), new OpenStandardsAutomaticIcon()),
+						new ChoiceItem(NOT_SPECIFIED_CODE, EAM.text("Automatic"), IconManager.getOpenStandardsAutomaticIcon()),
 						new ChoiceItem(NOT_STARTED_CODE, EAM.text("Not Started"), IconManager.getHypheIcon()),
 						new ChoiceItem(NOT_APPLICABLE_CODE, EAM.text("Not Applicable"), new OpenStandardsNotApplicableIcon()),
 				};
 			}
 			
 			return new ChoiceItem[] {
-					new ChoiceItem(NOT_SPECIFIED_CODE, EAM.text("Automatic"), new OpenStandardsAutomaticIcon()),
+					new ChoiceItem(NOT_SPECIFIED_CODE, EAM.text("Automatic"), IconManager.getOpenStandardsAutomaticIcon()),
 					new ChoiceItem(IN_PROGRESS_CODE, EAM.text("In Progress"), new OpenStandardsInProgressIcon()),
 					new ChoiceItem(COMPLETE_CODE, EAM.text("Complete"), new OpenStandardsCompleteIcon()),
 					new ChoiceItem(NOT_APPLICABLE_CODE, EAM.text("Not Applicable"), new OpenStandardsNotApplicableIcon()),

@@ -91,6 +91,7 @@ public class IconManager
 		addIcon(new ProgressPercentIcon());
 		addIcon(new SubTargetIcon());
 		addIcon(new HyphenIcon());
+		addIcon(new OpenStandardsAutomaticIcon());
 		addResourceImageIcon(COLLAPSE_ICON_FILE_NAME);
 		addResourceImageIcon(EXPAND_ICON_FILE_NAME);
 		addResourceImageIcon(SPELLCHECK_ICON_FILE_NAME);
@@ -336,6 +337,11 @@ public class IconManager
 	public static Icon getHypheIcon()
 	{
 		return getIcon(HyphenIcon.class);
+	}
+	
+	public static Icon getOpenStandardsAutomaticIcon()
+	{
+		return getIcon(OpenStandardsAutomaticIcon.class);
 	}
 	
 	public static Icon getMiradiApplicationIcon()
