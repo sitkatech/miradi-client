@@ -271,15 +271,15 @@ public class TagToElementNameMap implements XmpzXmlConstants
 	
 	private HashMap<String, String> createConceptualModelMap()
 	{
-		HashMap<String, String> map = new HashMap<String, String>();
-		map.put(DiagramObject.TAG_LABEL, "Name");
-		map.put(DiagramObject.TAG_SHORT_LABEL, "Id");
-		map.put(DiagramObject.TAG_DETAIL, DETAILS);
-		
-		return map;
+		return createDiagramObjectMap();
 	}
 
 	private HashMap<String, String> createResultsChainMap()
+	{
+		return createDiagramObjectMap();
+	}
+	
+	private HashMap<String, String> createDiagramObjectMap()
 	{
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put(DiagramObject.TAG_LABEL, "Name");
