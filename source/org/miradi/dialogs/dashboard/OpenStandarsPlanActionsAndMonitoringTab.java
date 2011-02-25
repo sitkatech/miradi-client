@@ -32,7 +32,7 @@ public class OpenStandarsPlanActionsAndMonitoringTab extends OpenStandardsDashbo
 		super(mainWindowToUse, leftPanelToUse);
 	}
 	
-	public static OpenStandarsPlanActionsAndMonitoringTab createLeftPanel(MainWindow mainWindowToUse) throws Exception
+	public static OpenStandarsPlanActionsAndMonitoringTab createPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		OpenStandardsPlanActionsAndMonitoringQuestionPanel leftPanelToUse = new OpenStandardsPlanActionsAndMonitoringQuestionPanel(mainWindowToUse.getProject());
 		return new OpenStandarsPlanActionsAndMonitoringTab(mainWindowToUse, leftPanelToUse);

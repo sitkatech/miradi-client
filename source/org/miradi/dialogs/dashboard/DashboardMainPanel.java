@@ -96,7 +96,7 @@ public class DashboardMainPanel extends DisposablePanel
 	private void createTabs() throws Exception
 	{
 		conceptualizeDashboardTab = OpenStandardsConceptualizeDashboardTab.createPanel(getMainWindow());
-		planActionsAndMonitoringTab = OpenStandarsPlanActionsAndMonitoringTab.createLeftPanel(getMainWindow());
+		planActionsAndMonitoringTab = OpenStandarsPlanActionsAndMonitoringTab.createPanel(getMainWindow());
 		implementActionsAndMonitoringTab = OpenStandardsImplementActionsAndMonitoringTab.createLeftPanel(getMainWindow());
 		analyzeAdaptAndUseTab = OpenStandardsAnalyzeAdaptAndUseTab.createLeftPanel(getMainWindow());
 		captureAndShareLearningTab = OpenStandardsCaptureAndShareLearningTab.createLeftPanel(getMainWindow());
