@@ -24,7 +24,7 @@ import org.miradi.utils.MiradiResourceImageIcon;
 
 public class OpenStandardsNotApplicableIcon extends MiradiResourceImageIcon
 {
-	public OpenStandardsNotApplicableIcon()
+	protected OpenStandardsNotApplicableIcon()
 	{
 		super("icons/OpenStandardsNotApplicableIcon.png");
 	}
