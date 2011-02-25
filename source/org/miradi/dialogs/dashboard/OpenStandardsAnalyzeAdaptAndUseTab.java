@@ -32,7 +32,7 @@ public class OpenStandardsAnalyzeAdaptAndUseTab extends OpenStandardsDashboardTa
 		super(mainWindowToUse, leftPanelToUse);
 	}
 	
-	public static OpenStandardsAnalyzeAdaptAndUseTab createLeftPanel(MainWindow mainWindowToUse) throws Exception
+	public static OpenStandardsAnalyzeAdaptAndUseTab createPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		OpenStandardsAnalyzeAdaptAndUseQuestionPanel leftPanelToUse = new OpenStandardsAnalyzeAdaptAndUseQuestionPanel(mainWindowToUse.getProject());
 		return new OpenStandardsAnalyzeAdaptAndUseTab(mainWindowToUse, leftPanelToUse);
