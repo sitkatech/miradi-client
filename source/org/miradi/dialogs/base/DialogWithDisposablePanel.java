@@ -52,7 +52,7 @@ public class DialogWithDisposablePanel extends DialogWithButtonBar
 		setRawMainPanel(panelToUse, new MiradiScrollPane(wrappedPanel));
 	}
 
-	protected void setRawMainPanel(DisposablePanel panelToUse, Component comp)
+	private void setRawMainPanel(DisposablePanel panelToUse, Component comp)
 	{
 		wrappedPanel = panelToUse;
 		getContentPane().add(comp, BorderLayout.CENTER);
