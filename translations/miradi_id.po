@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-23 15:31-0600\n"
+"POT-Creation-Date: 2011-02-25 15:27-0600\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -2342,8 +2342,8 @@ msgid "Aug"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/TableRowHeightModeQuestion.java:38
-#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:47
-#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:54
+#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:43
+#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:50
 msgid "Automatic"
 msgstr "Manual"
 
@@ -2735,7 +2735,7 @@ msgstr ""
 msgid "Comments"
 msgstr "Komentar "
 
-#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:56
+#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:52
 msgid "Complete"
 msgstr ""
 
@@ -4074,7 +4074,7 @@ msgstr "Impor Zip"
 msgid "In Front"
 msgstr "Di Depan "
 
-#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:55
+#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:51
 msgid "In Progress"
 msgstr ""
 
@@ -5109,8 +5109,8 @@ msgstr "Tidak"
 msgid "No date range for date Unit = "
 msgstr "Tidak ada rangkaian tanggal untuk Unit tanggal = "
 
-#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:49
-#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:57
+#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:45
+#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:53
 msgid "Not Applicable"
 msgstr ""
 
@@ -5140,7 +5140,7 @@ msgstr "Tidak Efektif"
 msgid "Not Specified"
 msgstr "Tidak Terspesifikasi "
 
-#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:48
+#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:44
 msgid "Not Started"
 msgstr "Tidak Dimulai"
 

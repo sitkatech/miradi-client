@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-23 15:31-0600\n"
+"POT-Creation-Date: 2011-02-25 15:27-0600\n"
 "PO-Revision-Date: 2011-01-24 10:21-0600\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -2192,8 +2192,8 @@ msgid "Aug"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/TableRowHeightModeQuestion.java:38
-#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:47
-#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:54
+#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:43
+#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:50
 msgid "Automatic"
 msgstr ""
 
@@ -2577,7 +2577,7 @@ msgstr ""
 msgid "Comments"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:56
+#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:52
 msgid "Complete"
 msgstr ""
 
@@ -3847,7 +3847,7 @@ msgstr ""
 msgid "In Front"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:55
+#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:51
 msgid "In Progress"
 msgstr ""
 
@@ -4836,8 +4836,8 @@ msgstr ""
 msgid "No date range for date Unit = "
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:49
-#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:57
+#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:45
+#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:53
 msgid "Not Applicable"
 msgstr ""
 
@@ -4867,7 +4867,7 @@ msgstr ""
 msgid "Not Specified"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:48
+#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:44
 msgid "Not Started"
 msgstr ""
 
