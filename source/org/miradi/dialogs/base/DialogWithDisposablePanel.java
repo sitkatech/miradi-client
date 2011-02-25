@@ -44,9 +44,7 @@ public class DialogWithDisposablePanel extends DialogWithButtonBar
 	
 	public void setMainPanel(DisposablePanel panelToUse)
 	{
-		Component comp = panelToUse;
-		
-		setRawMainPanel(panelToUse, comp);
+		setRawMainPanel(panelToUse, panelToUse);
 	}
 	
 	public void setScrollableMainPanel(DisposablePanel panelToUse)
