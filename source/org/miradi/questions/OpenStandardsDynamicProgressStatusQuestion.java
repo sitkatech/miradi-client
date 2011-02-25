@@ -20,11 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.questions;
 
+import org.miradi.icons.IconManager;
 import org.miradi.icons.OpenStandardsAutomaticIcon;
 import org.miradi.icons.OpenStandardsCompleteIcon;
 import org.miradi.icons.OpenStandardsInProgressIcon;
 import org.miradi.icons.OpenStandardsNotApplicableIcon;
-import org.miradi.icons.OpenStandardsNotStartedIcon;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.AbstractStringKeyMap;
 
@@ -45,7 +45,7 @@ public class OpenStandardsDynamicProgressStatusQuestion extends DynamicChoiceQue
 			{
 				return new ChoiceItem[] {
 						new ChoiceItem(NOT_SPECIFIED_CODE, EAM.text("Automatic"), new OpenStandardsAutomaticIcon()),
-						new ChoiceItem(NOT_STARTED_CODE, EAM.text("Not Started"), new OpenStandardsNotStartedIcon()),
+						new ChoiceItem(NOT_STARTED_CODE, EAM.text("Not Started"), IconManager.getHypheIcon()),
 						new ChoiceItem(NOT_APPLICABLE_CODE, EAM.text("Not Applicable"), new OpenStandardsNotApplicableIcon()),
 				};
 			}
