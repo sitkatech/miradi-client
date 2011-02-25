@@ -32,7 +32,7 @@ public class OpenStandardsCaptureAndShareLearningTab extends OpenStandardsDashbo
 		super(mainWindowToUse, leftPanelToUse);
 	}
 	
-	public static OpenStandardsCaptureAndShareLearningTab createLeftPanel(MainWindow mainWindowToUse) throws Exception
+	public static OpenStandardsCaptureAndShareLearningTab createPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		OpenStandardsCaptureAndShareLearningQuestionPanel leftPanelToUse = new OpenStandardsCaptureAndShareLearningQuestionPanel(mainWindowToUse.getProject());
 		return new OpenStandardsCaptureAndShareLearningTab(mainWindowToUse, leftPanelToUse);
