@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.base;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -49,8 +50,10 @@ public class DialogWithDisposablePanel extends DialogWithButtonBar
 	
 	public void setScrollableMainPanel(DisposablePanel panelToUse)
 	{
+		Component comp = new MiradiScrollPane(wrappedPanel);
+		
 		wrappedPanel = panelToUse;
-		getContentPane().add(new MiradiScrollPane(wrappedPanel), BorderLayout.CENTER);
+		getContentPane().add(comp, BorderLayout.CENTER);
 	}
 
 	@Override
