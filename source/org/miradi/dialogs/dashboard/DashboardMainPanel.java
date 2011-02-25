@@ -97,7 +97,7 @@ public class DashboardMainPanel extends DisposablePanel
 	{
 		conceptualizeDashboardTab = OpenStandardsConceptualizeDashboardTab.createPanel(getMainWindow());
 		planActionsAndMonitoringTab = OpenStandarsPlanActionsAndMonitoringTab.createPanel(getMainWindow());
-		implementActionsAndMonitoringTab = OpenStandardsImplementActionsAndMonitoringTab.createLeftPanel(getMainWindow());
+		implementActionsAndMonitoringTab = OpenStandardsImplementActionsAndMonitoringTab.createPanel(getMainWindow());
 		analyzeAdaptAndUseTab = OpenStandardsAnalyzeAdaptAndUseTab.createLeftPanel(getMainWindow());
 		captureAndShareLearningTab = OpenStandardsCaptureAndShareLearningTab.createLeftPanel(getMainWindow());
 	}
