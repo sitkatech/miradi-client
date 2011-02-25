@@ -42,8 +42,7 @@ public class TestTaxonomyFileLoader extends MiradiTestCase
 
 	public void testOne() throws Exception
 	{
-		TwoLevelEntry[] twoLevelItem = loadDelimitedData(new StringReader("# \t \"header\" \t \"xxxx\" \n" +
-				" H10.10 \t \"my level 1 descriptor\"  \t  \"my level 2 descriptor\" "));
+		TwoLevelEntry[] twoLevelItem = loadDelimitedData(new StringReader("# \t \"header\" \t \"xxxx\" \n H10.10 \t \"my level 1 descriptor\"  \t  \"my level 2 descriptor\" \t Descriptor 1 \t descriptor 2 \t someExample "));
 		assertEquals(3, twoLevelItem.length);
 		assertEquals("--Select a classification--", twoLevelItem[0].getEntryLabel());
 		assertEquals("H10", twoLevelItem[1].getEntryCode());		
