@@ -25,7 +25,7 @@ import java.util.HashMap;
 import org.miradi.objects.AccountingCode;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
-import org.miradi.objects.ConceptualModelDiagram;
+import org.miradi.objects.DiagramObject;
 import org.miradi.objects.FundingSource;
 import org.miradi.objects.Goal;
 import org.miradi.objects.GroupBox;
@@ -39,7 +39,6 @@ import org.miradi.objects.Organization;
 import org.miradi.objects.ProgressPercent;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
-import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.ScopeBox;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
@@ -273,9 +272,9 @@ public class TagToElementNameMap implements XmpzXmlConstants
 	private HashMap<String, String> createConceptualModelMap()
 	{
 		HashMap<String, String> map = new HashMap<String, String>();
-		map.put(ConceptualModelDiagram.TAG_LABEL, "Name");
-		map.put(ConceptualModelDiagram.TAG_SHORT_LABEL, "Id");
-		map.put(ConceptualModelDiagram.TAG_DETAIL, DETAILS);
+		map.put(DiagramObject.TAG_LABEL, "Name");
+		map.put(DiagramObject.TAG_SHORT_LABEL, "Id");
+		map.put(DiagramObject.TAG_DETAIL, DETAILS);
 		
 		return map;
 	}
@@ -283,9 +282,9 @@ public class TagToElementNameMap implements XmpzXmlConstants
 	private HashMap<String, String> createResultsChainMap()
 	{
 		HashMap<String, String> map = new HashMap<String, String>();
-		map.put(ResultsChainDiagram.TAG_LABEL, "Name");
-		map.put(ResultsChainDiagram.TAG_SHORT_LABEL, "Id");
-		map.put(ResultsChainDiagram.TAG_DETAIL, DETAILS);
+		map.put(DiagramObject.TAG_LABEL, "Name");
+		map.put(DiagramObject.TAG_SHORT_LABEL, "Id");
+		map.put(DiagramObject.TAG_DETAIL, DETAILS);
 		
 		return map;
 	}
