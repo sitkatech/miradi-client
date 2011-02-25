@@ -93,6 +93,7 @@ public class IconManager
 		addIcon(new HyphenIcon());
 		addIcon(new OpenStandardsAutomaticIcon());
 		addIcon(new OpenStandardsNotApplicableIcon());
+		addIcon(new OpenStandardsInProgressIcon());
 		addResourceImageIcon(COLLAPSE_ICON_FILE_NAME);
 		addResourceImageIcon(EXPAND_ICON_FILE_NAME);
 		addResourceImageIcon(SPELLCHECK_ICON_FILE_NAME);
@@ -348,6 +349,11 @@ public class IconManager
 	public static Icon getOpenStandardsNotApplicableIcon()
 	{
 		return getIcon(OpenStandardsNotApplicableIcon.class);
+	}
+	
+	public static Icon getOpenStandardsInProgressIcon()
+	{
+		return getIcon(OpenStandardsInProgressIcon.class);
 	}
 	
 	public static Icon getMiradiApplicationIcon()
