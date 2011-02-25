@@ -32,7 +32,7 @@ public class OpenStandardsImplementActionsAndMonitoringTab extends OpenStandards
 		super(mainWindowToUse, leftPanelToUse);
 	}
 	
-	public static OpenStandardsImplementActionsAndMonitoringTab createLeftPanel(MainWindow mainWindowToUse) throws Exception
+	public static OpenStandardsImplementActionsAndMonitoringTab createPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		OpenStandardsImplementActionsAndMonitoringQuestionPanel leftPanelToUse = new OpenStandardsImplementActionsAndMonitoringQuestionPanel(mainWindowToUse.getProject());
 		return new OpenStandardsImplementActionsAndMonitoringTab(mainWindowToUse, leftPanelToUse);
