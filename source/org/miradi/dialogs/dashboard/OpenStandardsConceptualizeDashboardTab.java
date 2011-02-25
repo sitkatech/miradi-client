@@ -32,7 +32,7 @@ public class OpenStandardsConceptualizeDashboardTab extends	OpenStandardsDashboa
 		super(mainWindowToUse, leftPanelToUse);
 	}
 	
-	public static OpenStandardsConceptualizeDashboardTab createLeftPanel(MainWindow mainWindowToUse) throws Exception
+	public static OpenStandardsConceptualizeDashboardTab createPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		OpenStandardsConceptualizeQuestionPanel leftPanelToUse = new OpenStandardsConceptualizeQuestionPanel(mainWindowToUse.getProject());
 		return new OpenStandardsConceptualizeDashboardTab(mainWindowToUse, leftPanelToUse);
