@@ -86,6 +86,11 @@ abstract public class AbstractEditableCodeListField extends ObjectDataInputField
 		readOnlyCodeListComponent.setText(newValue);
 	}
 	
+	protected void addDialogMainPanel(ModalDialogWithClose dialog, DisposablePanel editorPanel)
+	{
+		dialog.setScrollableMainPanel(editorPanel);
+	}
+	
 	public class SelectButtonHandler implements ActionListener
 	{
 		public void actionPerformed(ActionEvent event)
@@ -94,7 +99,7 @@ abstract public class AbstractEditableCodeListField extends ObjectDataInputField
 			{
 				DisposablePanel editorPanel = createEditorPanel();
 				ModalDialogWithClose dialog = new ModalDialogWithClose(EAM.getMainWindow(), Translation.fieldLabel(getObjectType(), getTag()));
-				dialog.setScrollableMainPanel(editorPanel);
+				addDialogMainPanel(dialog, editorPanel);
 				dialog.becomeActive();
 				Utilities.centerDlg(dialog);
 				dialog.setVisible(true);
