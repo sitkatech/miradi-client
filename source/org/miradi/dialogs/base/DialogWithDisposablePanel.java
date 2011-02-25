@@ -46,14 +46,18 @@ public class DialogWithDisposablePanel extends DialogWithButtonBar
 	{
 		Component comp = panelToUse;
 		
-		wrappedPanel = panelToUse;
-		getContentPane().add(comp, BorderLayout.CENTER);
+		setRawMainPanel(panelToUse, comp);
 	}
 	
 	public void setScrollableMainPanel(DisposablePanel panelToUse)
 	{
 		Component comp = new MiradiScrollPane(wrappedPanel);
 		
+		setRawMainPanel(panelToUse, comp);
+	}
+
+	protected void setRawMainPanel(DisposablePanel panelToUse, Component comp)
+	{
 		wrappedPanel = panelToUse;
 		getContentPane().add(comp, BorderLayout.CENTER);
 	}
