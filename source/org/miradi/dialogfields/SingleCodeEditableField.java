@@ -24,6 +24,7 @@ import javax.swing.event.ListSelectionListener;
 
 import org.miradi.dialogfields.editors.SplitterPanelWithStaticRightSideTextPanel;
 import org.miradi.dialogs.base.DisposablePanel;
+import org.miradi.dialogs.base.ModalDialogWithClose;
 import org.miradi.dialogs.base.OneFieldObjectDataInputPanel;
 import org.miradi.dialogs.base.RowSelectionListener;
 import org.miradi.main.EAM;
@@ -101,6 +102,12 @@ public class SingleCodeEditableField extends AbstractEditableCodeListField
 		}
 		
 		return "";
+	}
+	
+	@Override
+	protected void addDialogMainPanel(ModalDialogWithClose dialog, DisposablePanel editorPanel)
+	{
+		dialog.setMainPanel(editorPanel);
 	}
 	
 	private MainWindow mainWindow;
