@@ -20,11 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning;
 
-import org.miradi.objects.Desire;
+import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
 import org.miradi.project.Project;
+import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.CodeList;
 
 public class MonitoringPlanSubViewResultsRowColumnProvider extends AbstractPlanningTreeRowColumnProvider
@@ -37,7 +38,7 @@ public class MonitoringPlanSubViewResultsRowColumnProvider extends AbstractPlann
 	public CodeList getColumnCodesToShow() throws Exception
 	{
 		return new CodeList(new String[] {
-				Desire.TAG_FULL_TEXT,
+				CustomPlanningColumnsQuestion.META_WHO_TOTAL,
 				Measurement.META_COLUMN_TAG
 		});
 	}
@@ -46,8 +47,8 @@ public class MonitoringPlanSubViewResultsRowColumnProvider extends AbstractPlann
 	{
 		return new CodeList(new String[] {
 				Objective.OBJECT_NAME,
+				Goal.OBJECT_NAME,
 				Indicator.OBJECT_NAME,
-				Measurement.OBJECT_NAME,
 				});
 	}
 
