@@ -23,11 +23,13 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.Vector;
 import java.util.zip.ZipOutputStream;
 
 import org.miradi.exceptions.InvalidICUNSelectionException;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
+import org.miradi.objects.ProjectResource;
 import org.miradi.project.ProjectMpzWriter;
 import org.miradi.utils.CpmzFileChooser;
 import org.miradi.utils.MpzFileFilterForChooserDialog;
@@ -49,6 +51,20 @@ public class ExportCpmzDoer extends XmlExporterDoer
 	@Override
 	protected void export(File chosen) throws Exception
 	{
+		Vector<String> messages = getMissingRequiredFieldMessages();
+		if (messages.size() > 0)
+		{
+			String message = EAM.text("<HTML>Your project is missing some data that is required for upload to ConPro. Please correct the problems listed below then attempt to export the project again.<BR>");
+			for (String missingFieldMessage : messages)
+			{
+				message += missingFieldMessage + "<BR>";
+			}
+			
+			EAM.errorDialog(message);
+			
+			return;
+		}
+		
 		createCpmzFile(chosen);
 	}
 
@@ -125,6 +141,36 @@ public class ExportCpmzDoer extends XmlExporterDoer
 	{
 		return true;
 	}
-	
+
+	private Vector<String> getMissingRequiredFieldMessages()
+	{
+		Vector<String> missingFieldMessages = new Vector<String>();
+		if (getProject().getMetadata().getProjectName().length() == 0)
+			missingFieldMessages.add(EAM.text("Project Name - Located in Summary View, Project Tab, Project Name field"));
+		
+		if (findATeamContact() == null)
+			missingFieldMessages.add(EAM.text("Team Contact - At least one project Team Member must be specified as Team Contact Located in Summary View, Team Tab, Roles field"));
+		
+		if (findATeamContact() != null && findATeamContact().getEmail().length() == 0)
+			missingFieldMessages.add(EAM.text("Team Contact Email - The Team Contact must have an email address. Located in Summary View, Team Tab, ensure Team Contact has email specified"));
+		
+		if (getProject().getMetadata().getCountryCodes().isEmpty())
+			missingFieldMessages.add(EAM.text("Country - Located in Summary View, Location Tab. Select at least one Country"));
+		
+		return missingFieldMessages;
+	}
+
+	private ProjectResource findATeamContact()
+	{
+		ProjectResource[] resources = getProject().getResourcePool().getAllProjectResources();
+		for (int index = 0; index < resources.length; ++index)
+		{
+			if (resources[index].isTeamContact())
+				return resources[index];
+		}
+		
+		return null;
+	}
+
 	public static final String PROJECT_ZIP_FILE_NAME = "project" + MpzFileFilterForChooserDialog.EXTENSION;
 }
