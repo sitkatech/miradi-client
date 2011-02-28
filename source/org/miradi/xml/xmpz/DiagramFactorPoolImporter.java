@@ -81,15 +81,21 @@ public class DiagramFactorPoolImporter extends AbstractBaseObjectPoolImporter
 	@Override
 	protected CreateObjectParameter getExtraInfo(Node parentNode) throws Exception
 	{
-		ORef wrappedRef = importWrappedRef(parentNode);
+		ORef wrappedRef = importWrappedRef(getImporter(), getPoolName(),  parentNode);
 		
 		return new CreateDiagramFactorParameter(wrappedRef);
 	}
 	
-	private ORef importWrappedRef(Node parentNode) throws Exception
+	private  static ORef importWrappedRef(XmpzXmlImporter importer, String poolName, Node parentNode) throws Exception
 	{
-		Node wrappedFactorIdNode = getImporter().getNode(parentNode, getPoolName() + WRAPPED_FACTOR_ID_ELEMENT_NAME);
-		Node wrappedByDiagamFactorIdNode = getImporter().getNode(wrappedFactorIdNode, WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME);
+		Node wrappedFactorIdNode = importer.getNode(parentNode, poolName + WRAPPED_FACTOR_ID_ELEMENT_NAME);
+
+		return importWrappedRef(importer, wrappedFactorIdNode);
+	}
+
+	public static ORef importWrappedRef(XmpzXmlImporter importer, Node wrappedFactorIdNode) throws Exception
+	{
+		Node wrappedByDiagamFactorIdNode = importer.getNode(wrappedFactorIdNode, WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME);
 		
 		//TODO Should avoid relying on getFirst()
 		final int ONE_CHILD_NODE_FOR_ELEMENT = 1;
@@ -104,7 +110,7 @@ public class DiagramFactorPoolImporter extends AbstractBaseObjectPoolImporter
 		return new ORef(getObjectTypeOfNode(typedIdNode), wrappedId);
 	}
 
-	private int getObjectTypeOfNode(Node typedIdNode)
+	private static int getObjectTypeOfNode(Node typedIdNode)
 	{
 		String nodeName = typedIdNode.getNodeName();
 		String objectTypeName = removeAppendedId(nodeName);
@@ -146,7 +152,7 @@ public class DiagramFactorPoolImporter extends AbstractBaseObjectPoolImporter
 		return ObjectType.FAKE;
 	}
 
-	private boolean isTask(String objectTypeName)
+	private static boolean isTask(String objectTypeName)
 	{
 		if (objectTypeName.equals(Task.ACTIVITY_NAME))
 			return true;
@@ -157,7 +163,7 @@ public class DiagramFactorPoolImporter extends AbstractBaseObjectPoolImporter
 		return objectTypeName.equals(TASK);
 	}
 
-	private String removeAppendedId(String nodeName)
+	private static String removeAppendedId(String nodeName)
 	{
 		return nodeName.replaceFirst(ID, "");
 	}

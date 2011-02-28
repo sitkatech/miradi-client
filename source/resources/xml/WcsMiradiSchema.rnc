@@ -1,4 +1,4 @@
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/62'
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/63'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -658,7 +658,7 @@ TaggedObjectSet.element = element miradi:TaggedObjectSet
   element miradi:TaggedObjectSetName { text }? &
   element miradi:TaggedObjectSetId { text }? &
   element miradi:TaggedObjectSetComments { text }? &
-  element miradi:TaggedObjectSetFactorIds { DiagramFactorId.element* }
+  element miradi:TaggedObjectSetFactorIds { WrappedByDiagramFactorId.element* }
 }
 
 vocabulary_work_units_full_project_timespan = xsd:NMTOKEN { pattern = 'Total' } 

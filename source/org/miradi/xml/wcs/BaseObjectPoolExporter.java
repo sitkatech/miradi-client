@@ -82,6 +82,40 @@ abstract public class BaseObjectPoolExporter extends ObjectPoolExporter
 		return wrappedFactor.getTypeName();
 	}
 	
+	protected void writeWrappedFactorId(Factor wrappedFactor) throws Exception
+	{
+		getWcsXmlExporter().writeStartElement(DIAGRAM_FACTOR + WRAPPED_FACTOR_ID_ELEMENT_NAME);
+		writeWrappedFactorIdElement(wrappedFactor);
+		getWcsXmlExporter().writeEndElement(DIAGRAM_FACTOR + WRAPPED_FACTOR_ID_ELEMENT_NAME);
+	}
+
+	private void writeWrappedFactorIdElement(Factor wrappedFactor) throws Exception
+	{
+		getWcsXmlExporter().writeStartElement(WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME);
+		
+		String factorTypeName = getFactorTypeName(wrappedFactor);
+		getWcsXmlExporter().writeElement(factorTypeName, ID_ELEMENT_NAME, wrappedFactor.getFactorId().toString());
+		
+		getWcsXmlExporter().writeEndElement(WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME);
+	}
+	
+	protected void writeFactorIds(String idsElementName, ORefList refs) throws Exception
+	{
+		writeFactorIds(getPoolName(), idsElementName, refs);
+	}
+	
+	private void writeFactorIds(String parentElementName, String childElementName, ORefList refList) throws Exception
+	{
+		getWcsXmlExporter().writeStartElement(getWriter(), getWcsXmlExporter().createParentAndChildElementName(parentElementName, childElementName));
+		for (int index = 0; index < refList.size(); ++index)
+		{
+			Factor factor = Factor.findFactor(getProject(), refList.get(index));
+			writeWrappedFactorIdElement(factor);
+		}
+		
+		getWcsXmlExporter().writeEndElement(getWriter(), getWcsXmlExporter().createParentAndChildElementName(parentElementName, childElementName));
+	}
+	
 	protected void writeDiagramPoint(Point point) throws Exception
 	{
 		getWcsXmlExporter().writeStartElement(DIAGRAM_POINT_ELEMENT_NAME);

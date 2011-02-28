@@ -28,7 +28,7 @@ public interface XmpzXmlConstants
 	public static final String ELEMENT_NAME = "element" + SINGLE_SPACE;
 	public static final String OPTIONAL_ELEMENT = SINGLE_SPACE + "?" + SINGLE_SPACE;
 	
-	public static final String NAME_SPACE_VERSION = "62";
+	public static final String NAME_SPACE_VERSION = "63";
 	public static final String PARTIAL_NAME_SPACE = "http://xml.miradi.org/schema/ConservationProject/";
 	public static final String NAME_SPACE = PARTIAL_NAME_SPACE + NAME_SPACE_VERSION;
 	public static final String XMLNS = "xmlns";
@@ -112,6 +112,7 @@ public interface XmpzXmlConstants
 	public static final String WIDTH_ELEMENT_NAME = "width";
 	public static final String HEIGHT_ELEMENT_NAME = "height";
 	public static final String WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME = "WrappedByDiagramFactorId";
+	public static final String WRAPPED_BY_DIAGRAM_FACTOR_ELEMENT_NAME = "WrappedByDiagramFactor";
 	public static final String WRAPPED_FACTOR_ID_ELEMENT_NAME = "WrappedFactorId";
 	public static final String ID_ELEMENT_NAME = "Id";
 	public static final String LINKABLE_FACTOR_ID = "LinkableFactorId";

@@ -21,9 +21,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz;
 
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.DiagramFactor;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.TaggedObjectSet;
 import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 public class TaggedObjectSetPoolImporter extends AbstractBaseObjectPoolImporter
 {
@@ -37,6 +38,23 @@ public class TaggedObjectSetPoolImporter extends AbstractBaseObjectPoolImporter
 	{
 		importField(node, destinationRef, TaggedObjectSet.TAG_SHORT_LABEL);
 		importField(node, destinationRef, TaggedObjectSet.TAG_COMMENTS);
-		importRefs(node, TAGGED_FACTOR_IDS, destinationRef, TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, DiagramFactor.getObjectType(), DIAGRAM_FACTOR);
+		importFactorRefs(node, destinationRef, TaggedObjectSet.TAG_TAGGED_OBJECT_REFS);
+		
+	}
+
+	private void importFactorRefs(Node node, ORef destinationRef, String tagTaggedObjectRefs) throws Exception
+	{
+		ORefList taggedFactorRefs = new ORefList();
+		Node taggedFactorIdsNode = getImporter().getNode(node, getPoolName() + TAGGED_FACTOR_IDS);
+		NodeList childNodes = taggedFactorIdsNode.getChildNodes();
+		for (int index = 0; index < childNodes.getLength(); ++index)
+		{
+		
+			Node factorIdNode = childNodes.item(index);
+			ORef taggedFactorRef = DiagramFactorPoolImporter.importWrappedRef(getImporter(), factorIdNode);
+			taggedFactorRefs.add(taggedFactorRef);
+		}
+		
+		getImporter().setData(destinationRef, TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, tagTaggedObjectRefs);
 	}
 }

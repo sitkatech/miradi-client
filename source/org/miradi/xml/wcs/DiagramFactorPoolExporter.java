@@ -44,7 +44,7 @@ public class DiagramFactorPoolExporter extends BaseObjectPoolExporter
 		super.exportFields(writer, baseObject);
 		
 		DiagramFactor diagramFactor = (DiagramFactor) baseObject;
-		writeWrappedFactorId(diagramFactor);
+		writeWrappedFactorId(diagramFactor.getWrappedFactor());
 		writeDiagramFactorLocation(diagramFactor);
 		writeDiagramFactorSize(diagramFactor);
 		getWcsXmlExporter().writeIds(DIAGRAM_FACTOR, GROUP_BOX_CHILDREN_IDS, XmpzXmlConstants.DIAGRAM_FACTOR + ID, diagramFactor.getGroupBoxChildrenRefs());
@@ -80,20 +80,6 @@ public class DiagramFactorPoolExporter extends BaseObjectPoolExporter
 		getWcsXmlExporter().writeEndElement(STYLING_ELEMENT_NAME);
 	}
 
-	private void writeWrappedFactorId(DiagramFactor diagramFactor) throws Exception
-	{
-		getWcsXmlExporter().writeStartElement(DIAGRAM_FACTOR + WRAPPED_FACTOR_ID_ELEMENT_NAME);
-		getWcsXmlExporter().writeStartElement(WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME);
-		
-		Factor wrappedFactor = diagramFactor.getWrappedFactor();
-		String factorTypeName = getFactorTypeName(wrappedFactor);
-		
-		getWcsXmlExporter().writeElement(factorTypeName, ID_ELEMENT_NAME, diagramFactor.getWrappedId().toString());
-		
-		getWcsXmlExporter().writeEndElement(WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME);
-		getWcsXmlExporter().writeEndElement(DIAGRAM_FACTOR + WRAPPED_FACTOR_ID_ELEMENT_NAME);
-	}
-	
 	private void writeDiagramFactorLocation(DiagramFactor diagramFactor) throws Exception
 	{
 		String locationElementName = getWcsXmlExporter().createParentAndChildElementName(DIAGRAM_FACTOR, XmpzXmlConstants.LOCATION);
