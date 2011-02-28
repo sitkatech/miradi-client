@@ -65,7 +65,7 @@ public class ExportCpmzDoer extends XmlExporterDoer
 			return false;
 		}
 		
-		return createCpmzFile(chosen);
+		return exportCpmzFile(chosen);
 	}
 
 	@Override
@@ -74,7 +74,7 @@ public class ExportCpmzDoer extends XmlExporterDoer
 		return new CpmzFileChooser(getMainWindow());
 	}
 
-	private boolean createCpmzFile(File chosen) throws Exception
+	private boolean exportCpmzFile(File chosen) throws Exception
 	{
 		ZipOutputStream zipOut = new ZipOutputStream(new FileOutputStream(chosen));
 		try
