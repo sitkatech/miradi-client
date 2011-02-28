@@ -30,6 +30,6 @@ public class TaggedObjectSetSchemaElement extends BaseObjectSchemaElementWithLab
 		
 		createOptionalTextField(TaggedObjectSet.TAG_SHORT_LABEL);
 		createOptionalTextField(TaggedObjectSet.TAG_COMMENTS);
-		createIdListField(TAGGED_FACTOR_IDS, DIAGRAM_FACTOR);
+		createIdListField(TAGGED_FACTOR_IDS, WRAPPED_BY_DIAGRAM_FACTOR_ELEMENT_NAME);
 	}
 }
