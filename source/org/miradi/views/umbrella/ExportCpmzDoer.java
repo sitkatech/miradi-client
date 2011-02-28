@@ -49,7 +49,7 @@ public class ExportCpmzDoer extends XmlExporterDoer
 	}
 	
 	@Override
-	protected void export(File chosen) throws Exception
+	protected boolean export(File chosen) throws Exception
 	{
 		Vector<String> messages = getMissingRequiredFieldMessages();
 		if (messages.size() > 0)
@@ -62,10 +62,10 @@ public class ExportCpmzDoer extends XmlExporterDoer
 			
 			EAM.errorDialog(message);
 			
-			return;
+			return false;
 		}
 		
-		createCpmzFile(chosen);
+		return createCpmzFile(chosen);
 	}
 
 	@Override
@@ -74,7 +74,7 @@ public class ExportCpmzDoer extends XmlExporterDoer
 		return new CpmzFileChooser(getMainWindow());
 	}
 
-	private void createCpmzFile(File chosen) throws Exception
+	private boolean createCpmzFile(File chosen) throws Exception
 	{
 		ZipOutputStream zipOut = new ZipOutputStream(new FileOutputStream(chosen));
 		try
@@ -82,6 +82,7 @@ public class ExportCpmzDoer extends XmlExporterDoer
 			addProjectAsXmlToZip(zipOut);			
 			addProjectAsMpzToZip(zipOut);
 			addDiagramImagesToZip(zipOut);
+			return true;
 		}
 		catch(ValidationException e)
 		{
@@ -106,6 +107,8 @@ public class ExportCpmzDoer extends XmlExporterDoer
 		{
 			zipOut.close();
 		}
+		
+		return false;
 	}
 
 	private void addProjectAsMpzToZip(ZipOutputStream zipOut) throws Exception

@@ -48,7 +48,7 @@ abstract public class AbstractExportProjectXmlZipDoer extends XmlExporterDoer
 	}
 
 	@Override
-	protected void export(File chosen) throws Exception
+	protected boolean export(File chosen) throws Exception
 	{
 		ZipOutputStream zipOut = new ZipOutputStream(new FileOutputStream(chosen));
 		try
@@ -57,6 +57,7 @@ abstract public class AbstractExportProjectXmlZipDoer extends XmlExporterDoer
 			addSchemaToZip(zipOut);
 			addDiagramImagesToZip(zipOut);
 			addExceptionLogFile(zipOut);
+			return true;
 		}
 		catch(ValidationException e)
 		{
@@ -81,6 +82,8 @@ abstract public class AbstractExportProjectXmlZipDoer extends XmlExporterDoer
 		{
 			zipOut.close();
 		}
+		
+		return false;
 	}
 	
 	private void addExceptionLogFile(ZipOutputStream zipOut) throws Exception

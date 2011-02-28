@@ -163,7 +163,7 @@ abstract public class XmlExporterDoer extends AbstractFileSaverDoer
 	@Override
 	abstract protected EAMFileSaveChooser createFileChooser();
 	
-	abstract protected void export(File chosen) throws Exception;
+	abstract protected boolean export(File chosen) throws Exception;
 	
 	public static final String CM_IMAGE_PREFIX = "CM";
 	public static final String RC_IMAGE_PREFIX = "RC";
