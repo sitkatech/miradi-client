@@ -37,6 +37,6 @@ public class TaggedObjectSetPoolImporter extends AbstractBaseObjectPoolImporter
 	{
 		importField(node, destinationRef, TaggedObjectSet.TAG_SHORT_LABEL);
 		importField(node, destinationRef, TaggedObjectSet.TAG_COMMENTS);
-		importRefs(node, TAGGED_DIAGRAM_FACTOR_IDS, destinationRef, TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, DiagramFactor.getObjectType(), DIAGRAM_FACTOR);
+		importRefs(node, TAGGED_FACTOR_IDS, destinationRef, TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, DiagramFactor.getObjectType(), DIAGRAM_FACTOR);
 	}
 }
