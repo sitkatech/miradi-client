@@ -343,6 +343,11 @@ public class ProjectMetadata extends BaseObject
 		return getData(TAG_WORKPLAN_TIME_UNIT).equals(BudgetTimePeriodQuestion.BUDGET_BY_YEAR_CODE);
 	}
 	
+	public CodeList getCountryCodes()
+	{
+		return countries.getCodeList();
+	}
+	
 	public static boolean is(BaseObject baseObject)
 	{
 		if(baseObject == null)
