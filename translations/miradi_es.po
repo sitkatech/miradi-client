@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-25 15:27-0600\n"
+"POT-Creation-Date: 2011-02-28 10:01-0600\n"
 "PO-Revision-Date: 2010-09-20 10:32-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -588,6 +588,13 @@ msgid ""
 msgstr ""
 "<HTML>Al pegar entre proyectos, se puede pegar de MC a CR o viceversa.</"
 "HTML> "
+
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:57
+msgid ""
+"<HTML>Your project is missing some data that is required for upload to "
+"ConPro. Please correct the problems listed below then attempt to export the "
+"project again.<BR>"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/MainWindowAction.java:105
 msgid "<br> Please report this problem to the Miradi support team "
@@ -2866,6 +2873,11 @@ msgstr "No se pudo encontrar tableColumn en el mapa. tableColumn ="
 msgid "Country"
 msgstr "País"
 
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:161
+msgid ""
+"Country - Located in Summary View, Location Tab. Select at least one Country"
+msgstr ""
+
 #: Miradi/source/org/miradi/utils/ConstantButtonNames.java:29
 msgid "Create"
 msgstr "Crear"
@@ -3403,7 +3415,7 @@ msgstr "Error"
 msgid "Error Creating: %s"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:81
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:82
 msgid "Error Export To Miradi Zip: Possible Write Protected: "
 msgstr ""
 "Error de exportación al zip de Miradi: Es posible que esté protegido contra "
@@ -3413,7 +3425,7 @@ msgstr ""
 msgid "Error Occurred During Sorting"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:84
+#: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:85
 msgid "Error Occurred please try saving under different name."
 msgstr "Se produjo un error. Intente grabar con un nombre diferente."
 
@@ -3522,7 +3534,7 @@ msgstr "Exportar"
 msgid "Export Project (BETA)"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:58
+#: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:59
 msgid "Export complete"
 msgstr "Se completó la exportación."
 
@@ -5421,8 +5433,8 @@ msgstr ""
 msgid "PlanningSubViewName|Custom"
 msgstr "Personalizar"
 
-#: Miradi/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:68
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:77
+#: Miradi/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:69
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:94
 msgid ""
 "Please choose a specific IUCN classification (Not a category). Fix needed "
 "for Strategy named:\n"
@@ -5602,6 +5614,10 @@ msgstr "Descripción del proyecto: "
 #: Miradi/source/org/miradi/database/DataUpgrader.java:49
 msgid "Project Migration Required"
 msgstr "Migración de proyecto requerida"
+
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:152
+msgid "Project Name - Located in Summary View, Project Tab, Project Name field"
+msgstr ""
 
 #: Miradi/source/org/miradi/forms/summary/RareTabTrackingSubPanelForm.java:39
 msgid "Project Number"
@@ -7384,6 +7400,18 @@ msgstr "Equipo "
 msgid "Team Contact"
 msgstr "Contacto del equipo "
 
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:155
+msgid ""
+"Team Contact - At least one project Team Member must be specified as Team "
+"Contact Located in Summary View, Team Tab, Roles field"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:158
+msgid ""
+"Team Contact Email - The Team Contact must have an email address. Located in "
+"Summary View, Team Tab, ensure Team Contact has email specified"
+msgstr ""
+
 #: Miradi/source/org/miradi/questions/ResourceRoleQuestion.java:46
 msgid "Team Member"
 msgstr "Miembro del equipo "
@@ -7463,7 +7491,7 @@ msgstr ""
 "El archivo MPZ no puede guardarse en una carpeta dentro del proyecto que se "
 "exportará."
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:62
+#: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:63
 msgid ""
 "The image is too large to be exported.\n"
 "Please use the <Zoom Out> feature to make it smaller, and try again."
