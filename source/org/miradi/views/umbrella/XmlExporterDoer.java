@@ -62,9 +62,9 @@ abstract public class XmlExporterDoer extends AbstractFileSaverDoer
 	}
 
 	@Override
-	protected void doWork(File destinationFile) throws Exception
+	protected boolean doWork(File destinationFile) throws Exception
 	{
-		export(destinationFile);
+		return export(destinationFile);
 	}
 
 	@Override

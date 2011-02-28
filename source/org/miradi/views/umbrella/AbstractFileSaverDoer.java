@@ -54,8 +54,9 @@ abstract public class AbstractFileSaverDoer extends ViewDoer
 			if (chosen==null) 
 				return;
 
-			doWork(chosen);
-			EAM.notifyDialog(EAM.text("Export complete"));
+			boolean workWasCompleted = doWork(chosen);
+			if (workWasCompleted)
+				EAM.notifyDialog(EAM.text("Export complete"));
 		}
 		catch(ImageTooLargeException e)
 		{
@@ -101,5 +102,5 @@ abstract public class AbstractFileSaverDoer extends ViewDoer
 	
 	abstract protected EAMFileSaveChooser createFileChooser();
 	
-	abstract protected void doWork(File destinationFile) throws Exception;
+	abstract protected boolean doWork(File destinationFile) throws Exception;
 }

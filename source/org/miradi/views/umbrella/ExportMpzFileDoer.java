@@ -48,9 +48,9 @@ public class ExportMpzFileDoer extends AbstractFileSaverDoer
 	}
 
 	@Override
-	protected void doWork(File destinationFile) throws Exception
+	protected boolean doWork(File destinationFile) throws Exception
 	{
-		export(getProject().getDatabase().getCurrentLocalProjectDirectory(), destinationFile); 
+		return export(getProject().getDatabase().getCurrentLocalProjectDirectory(), destinationFile); 
 	}
 
 	static public void perform(MainWindow mainWindow, File directoryToZip) throws CommandFailedException
@@ -63,17 +63,18 @@ public class ExportMpzFileDoer extends AbstractFileSaverDoer
 		export(directoryToZip, chosen);
 	}
 
-	private static void export(File directoryToZip, File chosen) throws CommandFailedException
+	private static boolean export(File directoryToZip, File chosen) throws CommandFailedException
 	{
 		if (isChosenFileInsideProjectHomeDir(chosen))
 		{
 			EAM.errorDialog(EAM.text("The MPZ file cannot be saved to a folder within the project being exported"));
-			return;
+			return false;
 		}
 		
 		try 
 		{
 			ProjectMpzWriter.createProjectZipFile(chosen, directoryToZip);
+			return true;
 		} 
 		catch (Exception e) 
 		{
