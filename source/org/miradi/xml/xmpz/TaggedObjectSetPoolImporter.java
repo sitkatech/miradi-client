@@ -55,6 +55,6 @@ public class TaggedObjectSetPoolImporter extends AbstractBaseObjectPoolImporter
 			taggedFactorRefs.add(taggedFactorRef);
 		}
 		
-		getImporter().setData(destinationRef, TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, tagTaggedObjectRefs);
+		getImporter().setData(destinationRef, TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, taggedFactorRefs);
 	}
 }
