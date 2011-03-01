@@ -27,10 +27,10 @@ import org.miradi.main.EAM;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Strategy;
 import org.miradi.project.Project;
+import org.miradi.questions.StrategyClassificationQuestion;
 import org.miradi.questions.StrategyFeasibilityQuestion;
 import org.miradi.questions.StrategyImpactQuestion;
 import org.miradi.questions.StrategyRatingSummaryQuestion;
-import org.miradi.questions.StrategyTaxonomyQuestion;
 
 
 public class StrategyCoreSubpanel extends ObjectDataInputPanel
@@ -44,7 +44,7 @@ public class StrategyCoreSubpanel extends ObjectDataInputPanel
 		addFieldsOnOneLine(EAM.text("Strategy"), IconManager.getStrategyIcon(), new ObjectDataInputField[]{shortLabelField, labelField,});
 		addField(createMultilineField(Strategy.getObjectType(), Factor.TAG_TEXT));
 
-		addField(createChoiceField(Strategy.getObjectType(), Strategy.TAG_TAXONOMY_CODE, new StrategyTaxonomyQuestion()));
+		addField(createRadioButtonEditorField(Strategy.getObjectType(), Strategy.TAG_TAXONOMY_CODE, new StrategyClassificationQuestion()));
 		
 		ObjectDataInputField impactField = createRadioButtonEditorField(Strategy.getObjectType(), Strategy.TAG_IMPACT_RATING, getQuestion(StrategyImpactQuestion.class));
 		ObjectDataInputField feasibilityField = createRadioButtonEditorField(Strategy.getObjectType(), Strategy.TAG_FEASIBILITY_RATING, getQuestion(StrategyFeasibilityQuestion.class));
