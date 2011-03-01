@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-01 11:59-0600\n"
+"POT-Creation-Date: 2011-03-01 12:15-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -5034,7 +5034,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/task/ActivityDetailsPanelWithRelevancyOverrideFields.java:42
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:89
-#: Miradi/source/org/miradi/dialogs/diagram/RelatedItemsSubpanel.java:36
+#: Miradi/source/org/miradi/dialogs/diagram/RelatedItemsSubpanel.java:40
 msgid "Objectives"
 msgstr ""
 
@@ -5527,7 +5527,7 @@ msgstr "分级 "
 msgid "Red"
 msgstr "红色"
 
-#: Miradi/source/org/miradi/dialogs/diagram/RelatedItemsSubpanel.java:42
+#: Miradi/source/org/miradi/dialogs/diagram/RelatedItemsSubpanel.java:46
 msgid "Related Items"
 msgstr "相关条目 \t\t"
 
