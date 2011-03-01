@@ -149,7 +149,7 @@ public class TestProjectMpzImporter extends MiradiTestCase
 			try
 			{
 				File projectDirectory = new File(tempDirectory, projectName);
-				ProjectMpzWriter.createProjectZipFile(zip, projectDirectory);
+				ProjectMpzWriter.createProjectZipFile(projectDirectory, zip);
 				verifySecondZipFileCanBeCreated(zip, projectDirectory);
 				EAM.setLogToString();
 				EAM.setLogLevel(EAM.LOG_DEBUG);
@@ -196,7 +196,7 @@ public class TestProjectMpzImporter extends MiradiTestCase
 
 	private void verifySecondZipFileCanBeCreated(File zip, File projectDirectory) throws Exception
 	{
-		ProjectMpzWriter.createProjectZipFile(zip, projectDirectory);
+		ProjectMpzWriter.createProjectZipFile(projectDirectory, zip);
 	}
 	
 	public void testUnzipEmptyFilename() throws Exception
@@ -213,7 +213,7 @@ public class TestProjectMpzImporter extends MiradiTestCase
 			File zip = createTempFile();
 			try
 			{
-				ProjectMpzWriter.createProjectZipFile(zip, new File(originalDirectory, originalProjectName));
+				ProjectMpzWriter.createProjectZipFile(new File(originalDirectory, originalProjectName), zip);
 				String emptyFilename = "";
 				File fakeHomeDirectory = createTempDirectory();
 				try

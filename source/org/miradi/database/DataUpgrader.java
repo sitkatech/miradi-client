@@ -65,7 +65,7 @@ public class DataUpgrader
 		int versionAfterUpgrading = -1;
 		try
 		{
-			ProjectMpzWriter.createProjectZipFile(zipFile, projectDirectory);
+			ProjectMpzWriter.createProjectZipFile(projectDirectory, zipFile);
 			
 			initializeStaticDirectory(projectDirectory);
 			DataUpgrader.upgrade();
