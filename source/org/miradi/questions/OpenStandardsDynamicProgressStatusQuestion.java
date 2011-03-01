@@ -41,7 +41,7 @@ public class OpenStandardsDynamicProgressStatusQuestion extends DynamicChoiceQue
 			{
 				return new ChoiceItem[] {
 						new ChoiceItem(NOT_SPECIFIED_CODE, EAM.text("Automatic"), IconManager.getOpenStandardsAutomaticIcon()),
-						new ChoiceItem(NOT_STARTED_CODE, EAM.text("Not Started"), IconManager.getHypheIcon()),
+						new ChoiceItem(NOT_STARTED_CODE, EAM.text("Not Started"), IconManager.getHyphenIcon()),
 						new ChoiceItem(NOT_APPLICABLE_CODE, EAM.text("Not Applicable"), IconManager.getOpenStandardsNotApplicableIcon()),
 				};
 			}

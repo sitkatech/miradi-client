@@ -337,7 +337,7 @@ public class IconManager
 		return getIcon(IndicatorIcon.class);
 	}
 	
-	public static Icon getHypheIcon()
+	public static Icon getHyphenIcon()
 	{
 		return getIcon(HyphenIcon.class);
 	}
