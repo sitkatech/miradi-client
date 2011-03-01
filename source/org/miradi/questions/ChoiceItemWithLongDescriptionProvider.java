@@ -32,6 +32,11 @@ public class ChoiceItemWithLongDescriptionProvider extends ChoiceItemWithAdditio
 		this(codeToUse, labelToUse, "", colorToUse, new StaticLongDescriptionProvider());
 	}
 	
+	public ChoiceItemWithLongDescriptionProvider(String codeToUse, String labelToUse, String additionalTextToUse, Color colorToUse)
+	{
+		this(codeToUse, labelToUse, additionalTextToUse, colorToUse, new StaticLongDescriptionProvider());
+	}
+	
 	public ChoiceItemWithLongDescriptionProvider(String codeToUse, String labelToUse)
 	{
 		this(codeToUse, labelToUse, "", new StaticLongDescriptionProvider());
