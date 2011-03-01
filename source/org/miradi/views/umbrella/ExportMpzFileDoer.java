@@ -73,7 +73,7 @@ public class ExportMpzFileDoer extends AbstractFileSaverDoer
 		
 		try 
 		{
-			ProjectMpzWriter.createProjectZipFile(chosen, directoryToZip);
+			ProjectMpzWriter.createProjectZipFile(directoryToZip, chosen);
 			return true;
 		} 
 		catch (Exception e) 

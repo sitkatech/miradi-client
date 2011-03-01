@@ -45,7 +45,7 @@ import org.miradi.utils.EnhancedJsonObject;
 
 public class ProjectMpzWriter
 {
-	public static void createProjectZipFile(File destinationZip, File projectDirectory) throws FileNotFoundException, Exception, IOException
+	public static void createProjectZipFile(File projectDirectory, File destinationZip) throws FileNotFoundException, Exception, IOException
 	{
 		ProjectServer database = new ProjectServer();
 		try
