@@ -28,7 +28,7 @@ public class StrategyFeasibilityQuestion extends StaticChoiceQuestionSortableByC
 {
 	public StrategyFeasibilityQuestion()
 	{
-		super(getFeasibilityChoices());
+		super(getFeasibilityChoices(), EAM.text("Would your project team be able to implement the strategy within likely time, financial, staffing, ethical, and other constraints?"));
 	}
 	
 	static ChoiceItem[] getFeasibilityChoices()
