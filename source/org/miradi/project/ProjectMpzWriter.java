@@ -47,12 +47,11 @@ public class ProjectMpzWriter
 {
 	public static void createProjectZipFile(File destinationZip, File projectDirectory) throws FileNotFoundException, Exception, IOException
 	{
-		String projectName = projectDirectory.getName();
-		createProjectZipFile2(destinationZip, projectName, projectDirectory);
+		createProjectZipFile2(destinationZip, projectDirectory);
 	}
 
 	//TODO temp project name.
-	public static void createProjectZipFile2(File destinationZip, String zipTopLevelDirectoryName, File projectDirectory) throws FileNotFoundException, Exception, IOException
+	public static void createProjectZipFile2(File destinationZip, File projectDirectory) throws FileNotFoundException, Exception, IOException
 	{
 		ProjectServer database = new ProjectServer();
 		try
