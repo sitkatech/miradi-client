@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the j package.
 #  <EMAIL@ADDRESS>, 2010.
 #
+#: Miradi/source/org/miradi/questions/StrategyImpactQuestion.java:37
 #: Miradi/source/org/miradi/questions/OpenStandardsPlanActionsAndMonitoringQuestion.java:33
 #: Miradi/source/org/miradi/questions/OpenStandardsPlanActionsAndMonitoringQuestion.java:43
 #: Miradi/source/org/miradi/questions/OpenStandardsPlanActionsAndMonitoringQuestion.java:48
@@ -16,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-01 12:15-0600\n"
+"POT-Creation-Date: 2011-03-01 13:43-0600\n"
 "PO-Revision-Date: 2010-09-30 09:31+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -4082,6 +4083,12 @@ msgstr "Ідентифікувати навантаження (не обов'я�
 msgid "If a notification dialog in this list is checked, "
 msgstr ""
 
+#: Miradi/source/org/miradi/questions/StrategyImpactQuestion.java:31
+msgid ""
+"If implemented, will the strategy lead to desired changes in the situation "
+"at your project site?"
+msgstr ""
+
 #: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:99
 msgid "Ignoring unlinked factors..."
 msgstr ""
@@ -4564,7 +4571,7 @@ msgstr "Шари"
 msgid "Leader/Manager"
 msgstr "Керівник"
 
-#: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:55
+#: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:54
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:88
 msgid "Legacy TNC Ratings"
 msgstr "Рейтинги функції TNC"
@@ -5246,7 +5253,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/task/ActivityDetailsPanelWithRelevancyOverrideFields.java:42
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:89
-#: Miradi/source/org/miradi/dialogs/diagram/RelatedItemsSubpanel.java:40
+#: Miradi/source/org/miradi/dialogs/diagram/RelatedItemsSubpanel.java:43
 msgid "Objectives"
 msgstr ""
 
@@ -5486,7 +5493,7 @@ msgid "Preparing groups..."
 msgstr ""
 
 #: Miradi/source/org/miradi/forms/objects/StrategyCoreSubForm.java:36
-#: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:53
+#: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:52
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:87
 msgid "Priority"
 msgstr "Пріоритети"
@@ -5752,7 +5759,7 @@ msgstr "Рейтинги"
 msgid "Red"
 msgstr "Червоний"
 
-#: Miradi/source/org/miradi/dialogs/diagram/RelatedItemsSubpanel.java:46
+#: Miradi/source/org/miradi/dialogs/diagram/RelatedItemsSubpanel.java:49
 msgid "Related Items"
 msgstr "Зв'язані пункти"
 
@@ -6032,7 +6039,7 @@ msgstr ""
 "Current&nbsp;Page&nbsp;As.../ RTF&nbsp;File&gt;</code> командне меню з цього "
 "виду.</span>"
 
-#: Miradi/source/org/miradi/dialogfields/AbstractEditableCodeListField.java:52
+#: Miradi/source/org/miradi/dialogfields/AbstractEditableCodeListField.java:56
 msgid "Select..."
 msgstr "Вибрати..."
 
@@ -6388,7 +6395,7 @@ msgstr "Потрібні підкласи, щоб анулювати цей ме
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:35
 #: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:112
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:132
-#: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:61
+#: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:60
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:131
 msgid "Summary"
 msgstr "Резюме"
@@ -7512,6 +7519,42 @@ msgstr ""
 msgid "The scope currently consists of %1 words"
 msgstr ""
 
+#: Miradi/source/org/miradi/questions/StrategyImpactQuestion.java:39
+msgid "The strategy could possibly help mitigate a threat or restore a target."
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/StrategyFeasibilityQuestion.java:40
+msgid ""
+"The strategy is ethically and technically feasible, but may require some "
+"additional financial resources."
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/StrategyFeasibilityQuestion.java:39
+msgid ""
+"The strategy is ethically feasible, but either technically OR financially "
+"difficult without substantial additional resources."
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/StrategyFeasibilityQuestion.java:41
+msgid "The strategy is ethically, technically, AND financially feasible."
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/StrategyFeasibilityQuestion.java:38
+msgid "The strategy is not ethically, technically, OR financially feasible."
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/StrategyImpactQuestion.java:41
+msgid ""
+"The strategy is very likely to completely mitigate a threat or restore a "
+"target."
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/StrategyImpactQuestion.java:38
+msgid ""
+"The strategy will probably not contribute to meaningful threat mitigation or "
+"target restoration."
+msgstr ""
+
 #: Miradi/source/org/miradi/dialogfields/AnalysisLevelsEditorComponent.java:65
 msgid "Then by"
 msgstr ""
@@ -8385,6 +8428,12 @@ msgstr "Робочий план"
 msgid "Workshop"
 msgstr "Семінар"
 
+#: Miradi/source/org/miradi/questions/StrategyFeasibilityQuestion.java:31
+msgid ""
+"Would your project team be able to implement the strategy within likely "
+"time, financial, staffing, ethical, and other constraints?"
+msgstr ""
+
 #: Miradi/source/org/miradi/dialogfields/editors/CalendarYearDateUnitStartAndEndCard.java:37
 msgid "Year Selection: "
 msgstr ""
@@ -8467,6 +8516,10 @@ msgstr "новий проект з нуля"
 #: Miradi/source/org/miradi/wizard/noproject/NoProjectOverviewStep.java:95
 msgid "an exported Miradi file (.mpz or .cpmz)"
 msgstr "експортований файл Miradi  (.mpz чи .cpmz)"
+
+#: Miradi/source/org/miradi/questions/StrategyImpactQuestion.java:40
+msgid "he strategy is likely to help mitigate a threat or restore a target."
+msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/NeverShowAgainPanel.java:48
 msgid "it will not be shown. Uncheck it to have Miradi "
