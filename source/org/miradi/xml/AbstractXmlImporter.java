@@ -164,7 +164,7 @@ abstract public class AbstractXmlImporter
 		getProject().setObjectData(ref, tag, data.trim());
 	}
 	
-	protected void setData(ORef ref, String tag, ORefList refList) throws Exception
+	public void setData(ORef ref, String tag, ORefList refList) throws Exception
 	{
 		getProject().setObjectData(ref, tag, refList.toString());
 	}
