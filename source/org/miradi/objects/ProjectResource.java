@@ -164,15 +164,15 @@ public class ProjectResource extends BaseObject
 	
 	public boolean isTeamLead()
 	{
-		return isTeamType(ResourceRoleQuestion.TEAM_LEADER_CODE);
+		return hasRoleCode(ResourceRoleQuestion.TEAM_LEADER_CODE);
 	}
 	
 	public boolean isTeamContact()
 	{
-		return isTeamType(ResourceRoleQuestion.CONTACT_CODE);
+		return hasRoleCode(ResourceRoleQuestion.CONTACT_CODE);
 	}
 
-	protected boolean isTeamType(String code)
+	protected boolean hasRoleCode(String code)
 	{
 		return getRoleCodes().contains(code);
 	}
