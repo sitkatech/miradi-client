@@ -172,7 +172,7 @@ public class ProjectResource extends BaseObject
 		return hasRoleCode(ResourceRoleQuestion.CONTACT_CODE);
 	}
 
-	protected boolean hasRoleCode(String code)
+	private boolean hasRoleCode(String code)
 	{
 		return getRoleCodes().contains(code);
 	}
