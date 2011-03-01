@@ -20,10 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.diagram;
 
 import org.miradi.actions.ActionEditStrategyObjectiveRelevancyList;
+import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.main.EAM;
 import org.miradi.objects.Strategy;
 import org.miradi.project.Project;
+import org.miradi.utils.ObjectsActionButton;
 
 public class RelatedItemsSubpanel extends ObjectDataInputPanel
 {
@@ -33,7 +35,9 @@ public class RelatedItemsSubpanel extends ObjectDataInputPanel
 		
 		addField(createReadonlyTextField(Strategy.PSEUDO_TAG_TARGETS));
 		addField(createReadonlyTextField(Strategy.PSEUDO_TAG_DIRECT_THREATS));
-		addFieldWithEditButton(EAM.text("Objectives"), createReadOnlyObjectList(Strategy.getObjectType(), Strategy.PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS), createObjectsActionButton(getMainWindow().getActions().getObjectsAction(ActionEditStrategyObjectiveRelevancyList.class), getPicker()));
+		ObjectsActionButton actionsButton = createObjectsActionButton(getActions().getObjectsAction(ActionEditStrategyObjectiveRelevancyList.class), getPicker());
+		ObjectDataInputField readonlyField = createReadOnlyObjectList(Strategy.getObjectType(), Strategy.PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS);
+		addFieldWithEditButton(EAM.text("Objectives"), readonlyField, actionsButton);
 	}
 
 	@Override
