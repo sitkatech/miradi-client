@@ -21,6 +21,7 @@ package org.miradi.views.umbrella;
 
 import java.io.File;
 
+import org.miradi.database.ProjectServer;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -50,7 +51,7 @@ public class ExportMpzFileDoer extends AbstractFileSaverDoer
 	@Override
 	protected boolean doWork(File destinationFile) throws Exception
 	{
-		return export(getProject().getDatabase().getCurrentLocalProjectDirectory(), destinationFile); 
+		return export(getProject().getDatabase(), getProject().getDatabase().getCurrentLocalProjectDirectory(), destinationFile); 
 	}
 
 	static public void perform(MainWindow mainWindow, File directoryToZip) throws CommandFailedException
@@ -60,10 +61,10 @@ public class ExportMpzFileDoer extends AbstractFileSaverDoer
 		if (chosen == null)
 			return;
 		
-		export(directoryToZip, chosen);
+		export(null, directoryToZip, chosen);
 	}
 
-	private static boolean export(File directoryToZip, File chosen) throws CommandFailedException
+	private static boolean export(ProjectServer database, File directoryToZip, File chosen) throws CommandFailedException
 	{
 		if (isChosenFileInsideProjectHomeDir(chosen))
 		{
@@ -73,7 +74,7 @@ public class ExportMpzFileDoer extends AbstractFileSaverDoer
 		
 		try 
 		{
-			ProjectMpzWriter.createProjectZipFile(directoryToZip, chosen);
+			ProjectMpzWriter.createProjectZipFile(database, directoryToZip, chosen);
 			return true;
 		} 
 		catch (Exception e) 
