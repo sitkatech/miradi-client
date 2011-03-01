@@ -35,7 +35,7 @@ public class RelatedItemsSubpanel extends ObjectDataInputPanel
 		
 		addField(createReadonlyTextField(Strategy.PSEUDO_TAG_TARGETS));
 		addField(createReadonlyTextField(Strategy.PSEUDO_TAG_DIRECT_THREATS));
-		ObjectsActionButton actionsButton = createObjectsActionButton(getActions().getObjectsAction(ActionEditStrategyObjectiveRelevancyList.class), getPicker());
+		ObjectsActionButton actionsButton = createObjectsActionButton(getMainWindow().getActions().getObjectsAction(ActionEditStrategyObjectiveRelevancyList.class), getPicker());
 		ObjectDataInputField readonlyField = createReadOnlyObjectList(Strategy.getObjectType(), Strategy.PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS);
 		addFieldWithEditButton(EAM.text("Objectives"), readonlyField, actionsButton);
 	}

@@ -40,7 +40,6 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import org.martus.swing.UiLabel;
-import org.miradi.actions.Actions;
 import org.miradi.commands.CommandDeleteObject;
 import org.miradi.dialogfields.AnalysisLevelsChooserField;
 import org.miradi.dialogfields.CodeListPopupWithDescriptionPanelField;
@@ -181,11 +180,6 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return EAM.getMainWindow();
 	}
 	
-	protected Actions getActions()
-	{
-		return getMainWindow().getActions();
-	}
-
 	public ObjectPicker getPicker()
 	{
 		return picker;
