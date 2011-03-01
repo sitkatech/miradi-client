@@ -28,7 +28,7 @@ public class StrategyImpactQuestion extends StaticChoiceQuestionSortableByCode
 {
 	public StrategyImpactQuestion()
 	{
-		super(getImpactChoices());
+		super(getImpactChoices(), EAM.text("If implemented, will the strategy lead to desired changes in the situation at your project site?"));
 	}
 	
 	static ChoiceItem[] getImpactChoices()

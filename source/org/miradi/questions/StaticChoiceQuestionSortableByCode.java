@@ -28,6 +28,11 @@ public class StaticChoiceQuestionSortableByCode extends StaticChoiceQuestion
 	{
 		super(questionDescriptionToUse);
 	}
+	
+	public StaticChoiceQuestionSortableByCode(ChoiceItem[] choices, String questionDescriptionToUse)
+	{
+		super(choices, questionDescriptionToUse);
+	}
 
 	public StaticChoiceQuestionSortableByCode(ChoiceItem[] choices)
 	{
