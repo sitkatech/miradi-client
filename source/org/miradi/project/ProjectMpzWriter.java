@@ -62,7 +62,7 @@ public class ProjectMpzWriter
 		}
 	}
 
-	private static void writeProjectZip(ProjectServer database, File destinationZip) throws Exception
+	public static void writeProjectZip(ProjectServer database, File destinationZip) throws Exception
 	{
 		ByteArrayOutputStream outputBytes = new ByteArrayOutputStream();
 		ZipOutputStream out = new ZipOutputStream(outputBytes);
