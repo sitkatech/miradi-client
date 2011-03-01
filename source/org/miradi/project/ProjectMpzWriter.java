@@ -54,19 +54,24 @@ public class ProjectMpzWriter
 			database.setLocalDataLocation(projectDirectory.getParentFile());
 			database.openProject(projectName);
 
-			ByteArrayOutputStream outputBytes = new ByteArrayOutputStream();
-			ZipOutputStream out = new ZipOutputStream(outputBytes);
-
-			writeProjectZip(out, database);
-
-			OutputStream blastOut = new FileOutputStream(destinationZip);
-			blastOut.write(outputBytes.toByteArray());
-			blastOut.close();
+			writeProjectZip(database, destinationZip);
 		}
 		finally
 		{
 			database.close();
 		}
+	}
+
+	private static void writeProjectZip(ProjectServer database, File destinationZip) throws Exception
+	{
+		ByteArrayOutputStream outputBytes = new ByteArrayOutputStream();
+		ZipOutputStream out = new ZipOutputStream(outputBytes);
+
+		writeProjectZip(out, database);
+
+		OutputStream blastOut = new FileOutputStream(destinationZip);
+		blastOut.write(outputBytes.toByteArray());
+		blastOut.close();
 	}
 
 	public static void writeProjectZip(ZipOutputStream out, Project project) throws Exception
