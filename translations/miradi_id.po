@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-02 12:40-0600\n"
+"POT-Creation-Date: 2011-03-02 14:23-0600\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -5995,7 +5995,7 @@ msgstr ""
 "Kini&nbsp;Sebagai.../ File&nbsp;RTF&gt;</code> dari tampilan tersebut.</"
 "span> "
 
-#: Miradi/source/org/miradi/dialogfields/AbstractEditableCodeListField.java:55
+#: Miradi/source/org/miradi/dialogfields/AbstractEditableCodeListField.java:56
 msgid "Select..."
 msgstr "Pilih… "
 

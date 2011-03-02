@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-02 12:40-0600\n"
+"POT-Creation-Date: 2011-03-02 14:23-0600\n"
 "PO-Revision-Date: 2010-09-20 10:32-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -6039,7 +6039,7 @@ msgstr ""
 "<code class='toolbarbutton'>&lt;Archivo/ Exportar&nbsp; página&nbsp;"
 "actual&nbsp;como.../ Archivo&nbsp;RTF&gt;</code> de dicha vista.</span>"
 
-#: Miradi/source/org/miradi/dialogfields/AbstractEditableCodeListField.java:55
+#: Miradi/source/org/miradi/dialogfields/AbstractEditableCodeListField.java:56
 msgid "Select..."
 msgstr "Seleccionar…"
 
