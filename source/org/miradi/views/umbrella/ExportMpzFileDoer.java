@@ -60,10 +60,7 @@ public class ExportMpzFileDoer extends AbstractFileSaverDoer
 		
 		try 
 		{
-			if (database == null)
-				ProjectMpzWriter.createProjectZipFile(getProject().getDatabase().getCurrentLocalProjectDirectory(), destinationFile);
-			else
-				ProjectMpzWriter.writeProjectZip(database, destinationFile);
+			ProjectMpzWriter.writeProjectZip(database, destinationFile);
 			
 			return true;
 		} 
