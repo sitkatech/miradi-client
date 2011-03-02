@@ -89,10 +89,7 @@ public class ExportMpzFileDoer extends AbstractFileSaverDoer
 		
 		try 
 		{
-			if (null == null)
-				ProjectMpzWriter.createProjectZipFile(directoryToZip, chosen);
-			else
-				ProjectMpzWriter.writeProjectZip(null, chosen);
+			ProjectMpzWriter.createProjectZipFile(directoryToZip, chosen);
 			
 			return true;
 		} 
