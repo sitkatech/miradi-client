@@ -189,7 +189,7 @@ abstract public class AbstractQuestionEditorComponent extends SavebleComponent
 		toggleButton.setEnabled(isValidObject);
 		toggleButton.setOpaque(true);
 		Color fg = EAM.EDITABLE_FOREGROUND_COLOR;
-		Color bg = EAM.EDITABLE_BACKGROUND_COLOR;
+		Color bg = getTogglePanelBackgroundColor();
 		if(!isValidObject)
 		{
 			fg = EAM.READONLY_FOREGROUND_COLOR;
