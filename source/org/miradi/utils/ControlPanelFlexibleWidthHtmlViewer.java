@@ -37,6 +37,11 @@ public class ControlPanelFlexibleWidthHtmlViewer extends FlexibleWidthHtmlViewer
 	{
 		super.customizeStyleSheet(style);
 		
-		style.addRule("body {background-color: " + AppPreferences.getControlPanelBackgroundColorForCss() + ";}");
+		style.addRule("body {background-color: " + getBackgroundColorForCss() + ";}");
+	}
+
+	protected String getBackgroundColorForCss()
+	{
+		return AppPreferences.getControlPanelBackgroundColorForCss();
 	}	
 }
