@@ -20,8 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
-import javax.swing.text.html.StyleSheet;
-
 import org.miradi.main.AppPreferences;
 import org.miradi.main.MainWindow;
 
@@ -32,14 +30,6 @@ public class ControlPanelFlexibleWidthHtmlViewer extends FlexibleWidthHtmlViewer
 		super(mainWindow, htmlText);
 	}
 	
-	@Override
-	public void customizeStyleSheet(StyleSheet style)
-	{
-		super.customizeStyleSheet(style);
-		
-		style.addRule("body {background-color: " + getBackgroundColorForCss() + ";}");
-	}
-
 	@Override
 	protected String getBackgroundColorForCss()
 	{
