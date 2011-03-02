@@ -43,6 +43,5 @@ abstract public class AbstractReadOnlyComponent extends MiradiPanel
 	
 	abstract public void setText(String text);
 
-
-	private static final int SINGLE_COULMN_COUNT = 1;
+	protected static final int SINGLE_COULMN_COUNT = 1;
 }
