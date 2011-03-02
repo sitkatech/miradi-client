@@ -32,7 +32,7 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceItemWithLongDescriptionProvider;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
-import org.miradi.utils.ControlPanelFlexibleWidthHtmlViewer;
+import org.miradi.utils.DataPanelFlexibleWidthHtmlViewer;
 
 public class RadioButtonEditorComponentWithHierarchicalRows extends QuestionEditorWithHierarchichalRows
 {
@@ -59,7 +59,7 @@ public class RadioButtonEditorComponentWithHierarchicalRows extends QuestionEdit
 	{
 		super.addAdditionalComponent();
 		
-		ControlPanelFlexibleWidthHtmlViewer htmlArea = new ControlPanelFlexibleWidthHtmlViewer(EAM.getMainWindow(), getQuestion().getQuestionDescription());
+		DataPanelFlexibleWidthHtmlViewer htmlArea = new DataPanelFlexibleWidthHtmlViewer(EAM.getMainWindow(), getQuestion().getQuestionDescription());
 		add(htmlArea);
 	}
 	

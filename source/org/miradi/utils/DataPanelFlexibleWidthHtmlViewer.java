@@ -20,24 +20,19 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
-import javax.swing.text.html.StyleSheet;
-
+import org.miradi.main.AppPreferences;
 import org.miradi.main.MainWindow;
 
-abstract public class FlexibleWidthHtmlViewerWithCustomBackgroundColor extends FlexibleWidthHtmlViewer
+public class DataPanelFlexibleWidthHtmlViewer extends FlexibleWidthHtmlViewerWithCustomBackgroundColor
 {
-	public FlexibleWidthHtmlViewerWithCustomBackgroundColor(MainWindow mainWindow, String htmlText)
+	public DataPanelFlexibleWidthHtmlViewer(MainWindow mainWindow, String htmlText)
 	{
 		super(mainWindow, htmlText);
 	}
-	
+
 	@Override
-	public void customizeStyleSheet(StyleSheet style)
+	protected String getBackgroundColorForCss()
 	{
-		super.customizeStyleSheet(style);
-		
-		style.addRule("body {background-color: " + getBackgroundColorForCss() + ";}");
+		return AppPreferences.getDataPanelBackgroundColorForCss();
 	}
-	
-	abstract protected String getBackgroundColorForCss();
 }
