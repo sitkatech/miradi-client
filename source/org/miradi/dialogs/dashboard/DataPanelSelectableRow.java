@@ -43,6 +43,6 @@ public class DataPanelSelectableRow extends SelectableRow
 	@Override
 	protected Color getSelectedBackgroundColor()
 	{
-		return AppPreferences.getWizardBackgroundColor();
+		return AppPreferences.getDataPanelBackgroundColor();
 	}
 }
