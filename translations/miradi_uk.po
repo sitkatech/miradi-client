@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-02 12:24-0600\n"
+"POT-Creation-Date: 2011-03-02 12:40-0600\n"
 "PO-Revision-Date: 2010-09-30 09:31+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -3465,7 +3465,7 @@ msgstr "Помилка"
 msgid "Error Creating: %s"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:83
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:96
 msgid "Error Export To Miradi Zip: Possible Write Protected: "
 msgstr "Помилка експортування у Miradi Zip: Можливо захист від запису: "
 
@@ -7479,7 +7479,7 @@ msgstr ""
 "інструменти, такі як Міраді. Більше інформації на сайті www."
 "ConservationMeasures.org"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:71
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:101
 msgid ""
 "The MPZ file cannot be saved to a folder within the project being exported"
 msgstr " MPZ файл не може бути збережений у папку коли проект експортується"
