@@ -59,8 +59,7 @@ public class RadioButtonEditorComponentWithHierarchicalRows extends QuestionEdit
 	{
 		super.addAdditionalComponent();
 		
-		DataPanelFlexibleWidthHtmlViewer htmlArea = new DataPanelFlexibleWidthHtmlViewer(EAM.getMainWindow(), getQuestion().getQuestionDescription());
-		add(htmlArea);
+		add(new DataPanelFlexibleWidthHtmlViewer(EAM.getMainWindow(), getQuestion().getQuestionDescription()));
 	}
 	
 	@Override
