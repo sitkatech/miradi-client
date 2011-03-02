@@ -21,8 +21,23 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogfields;
 
 import org.miradi.dialogs.base.MiradiPanel;
+import org.miradi.main.EAM;
+
+import com.jhlabs.awt.BasicGridLayout;
 
 public class AbstractReadonlyComponent extends MiradiPanel
 {
+	public AbstractReadonlyComponent()
+	{
+		this(SINGLE_COULMN_COUNT);
+	}
 
+	public AbstractReadonlyComponent(int columnCount)
+	{
+		setLayout(new BasicGridLayout(0, columnCount));
+		setBackground(EAM.READONLY_BACKGROUND_COLOR);
+		setForeground(EAM.READONLY_FOREGROUND_COLOR);
+	}
+
+	private static final int SINGLE_COULMN_COUNT = 1;
 }

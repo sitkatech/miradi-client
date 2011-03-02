@@ -25,8 +25,6 @@ import org.miradi.main.EAM;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.utils.CodeList;
 
-import com.jhlabs.awt.BasicGridLayout;
-
 public class ReadOnlyCodeListComponent extends AbstractReadonlyComponent
 {
 	public ReadOnlyCodeListComponent(ChoiceItem[] choiceItemsToUse)
@@ -36,11 +34,10 @@ public class ReadOnlyCodeListComponent extends AbstractReadonlyComponent
 	
 	public ReadOnlyCodeListComponent(ChoiceItem[] choiceItemsToUse, int columnCount)
 	{
-		setLayout(new BasicGridLayout(0, columnCount));
+		super(columnCount);
+		
 		choiceItems = choiceItemsToUse;		
 		codeList = new CodeList();
-		setBackground(EAM.READONLY_BACKGROUND_COLOR);
-		setForeground(EAM.READONLY_FOREGROUND_COLOR);
 	}
 
 	public String getText()
