@@ -53,10 +53,7 @@ public class ExportMpzFileDoer extends AbstractFileSaverDoer
 	{
 		ProjectServer database = getProject().getDatabase();
 		if (isChosenFileInsideProjectHomeDir(destinationFile))
-		{
-			showSaveWithingProjectErrorDialog();
-			return false;
-		}
+			return showSaveWithingProjectErrorDialog();
 		
 		try 
 		{
@@ -79,10 +76,7 @@ public class ExportMpzFileDoer extends AbstractFileSaverDoer
 			return false;
 		
 		if (isChosenFileInsideProjectHomeDir(chosen))
-		{
-			showSaveWithingProjectErrorDialog();
-			return false;
-		}
+			return showSaveWithingProjectErrorDialog();
 		
 		try 
 		{
@@ -97,9 +91,11 @@ public class ExportMpzFileDoer extends AbstractFileSaverDoer
 		}
 	}
 
-	private static void showSaveWithingProjectErrorDialog()
+	private static boolean showSaveWithingProjectErrorDialog()
 	{
 		EAM.errorDialog(EAM.text("The MPZ file cannot be saved to a folder within the project being exported"));
+		
+		return false;
 	}
 
 	private static boolean isChosenFileInsideProjectHomeDir(File chosen)
