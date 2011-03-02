@@ -29,7 +29,7 @@ abstract public class AbstractReadOnlyComponent extends MiradiPanel
 {
 	public AbstractReadOnlyComponent()
 	{
-		this(SINGLE_COULMN_COUNT);
+		this(SINGLE_COLUMN_COUNT);
 	}
 
 	public AbstractReadOnlyComponent(int columnCount)
@@ -43,5 +43,5 @@ abstract public class AbstractReadOnlyComponent extends MiradiPanel
 	
 	abstract public void setText(String text);
 
-	protected static final int SINGLE_COULMN_COUNT = 1;
+	protected static final int SINGLE_COLUMN_COUNT = 1;
 }

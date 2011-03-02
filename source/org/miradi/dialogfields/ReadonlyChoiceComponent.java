@@ -30,7 +30,7 @@ public class ReadonlyChoiceComponent extends AbstractReadOnlyComponent
 {
 	public ReadonlyChoiceComponent(ChoiceQuestion questionToUse)
 	{
-		this(questionToUse, SINGLE_COULMN_COUNT);
+		this(questionToUse, SINGLE_COLUMN_COUNT);
 	}
 	
 	public ReadonlyChoiceComponent(ChoiceQuestion questionToUse, int columnCount)
