@@ -25,14 +25,14 @@ import org.miradi.main.EAM;
 
 import com.jhlabs.awt.BasicGridLayout;
 
-abstract public class AbstractReadonlyComponent extends MiradiPanel
+abstract public class AbstractReadOnlyComponent extends MiradiPanel
 {
-	public AbstractReadonlyComponent()
+	public AbstractReadOnlyComponent()
 	{
 		this(SINGLE_COULMN_COUNT);
 	}
 
-	public AbstractReadonlyComponent(int columnCount)
+	public AbstractReadOnlyComponent(int columnCount)
 	{
 		setLayout(new BasicGridLayout(0, columnCount));
 		setBackground(EAM.READONLY_BACKGROUND_COLOR);

@@ -64,7 +64,7 @@ abstract public class AbstractEditableCodeListField extends ObjectDataInputField
 		component.add(buttonPanel, BorderLayout.AFTER_LINE_ENDS);
 	}
 
-	protected AbstractReadonlyComponent createReadOnlyComponent(ChoiceQuestion questionToUse, int columnCount)
+	protected AbstractReadOnlyComponent createReadOnlyComponent(ChoiceQuestion questionToUse, int columnCount)
 	{
 		return new ReadOnlyCodeListComponent(questionToUse.getChoices(), columnCount);
 	}
@@ -127,6 +127,6 @@ abstract public class AbstractEditableCodeListField extends ObjectDataInputField
 	
 	protected ChoiceQuestion question;
 	private MiradiPanel component;
-	private AbstractReadonlyComponent readOnlyCodeListComponent;
+	private AbstractReadOnlyComponent readOnlyCodeListComponent;
 	private PanelButton selectButton;
 }
