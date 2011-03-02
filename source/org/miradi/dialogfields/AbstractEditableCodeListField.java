@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogfields;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -106,6 +107,7 @@ abstract public class AbstractEditableCodeListField extends ObjectDataInputField
 				addDialogMainPanel(dialog, editorPanel);
 				dialog.becomeActive();
 				Utilities.centerDlg(dialog);
+				setFixedDialogWidth(dialog);
 				dialog.setVisible(true);
 			}
 			catch (Exception e)
@@ -113,6 +115,14 @@ abstract public class AbstractEditableCodeListField extends ObjectDataInputField
 				EAM.logException(e);
 				EAM.unexpectedErrorDialog(e);
 			}
+		}
+
+		private void setFixedDialogWidth(ModalDialogWithClose dialog)
+		{
+			final int ARBITRARY_DIALOG_WIDTH = 700;
+			Dimension size = dialog.getSize();
+			size.setSize(ARBITRARY_DIALOG_WIDTH, size.getHeight());
+			dialog.setSize(size);
 		}
 	}
 	
