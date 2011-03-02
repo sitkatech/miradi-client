@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-02 08:34-0600\n"
+"POT-Creation-Date: 2011-03-02 11:03-0600\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -365,10 +365,6 @@ msgstr "- Gua-gua"
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:86
 msgid "- Other Subterranean Habitats"
 msgstr "- Habitat Bawah Tanah Lainnya"
-
-#: Miradi/source/org/miradi/objecthelpers/TaxonomyFileLoader.java:37
-msgid "--Select a classification--"
-msgstr "--Pilih klasifikasi-- "
 
 #: Miradi/source/org/miradi/utils/AbstractSingleTableExporter.java:46
 msgid "."
@@ -5136,6 +5132,7 @@ msgstr ""
 msgid "Not Effective"
 msgstr "Tidak Efektif"
 
+#: Miradi/source/org/miradi/objecthelpers/TaxonomyFileLoader.java:37
 #: Miradi/source/org/miradi/questions/ThreatStressRatingChoiceQuestion.java:36
 #: Miradi/source/org/miradi/questions/DirectThreatQuestion.java:43
 #: Miradi/source/org/miradi/questions/StrategyImpactQuestion.java:37
@@ -32540,6 +32537,9 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "--Select a classification--"
+#~ msgstr "--Pilih klasifikasi-- "
 
 #~ msgid "Column groups:"
 #~ msgstr "Grup kolom: "
