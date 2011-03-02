@@ -24,6 +24,7 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 
 import org.martus.swing.Utilities;
@@ -45,9 +46,7 @@ abstract public class AbstractEditableCodeListField extends ObjectDataInputField
 		super(projectToUse, refToUse, tagToUse);
 		
 		question = questionToUse;
-		BorderLayout layout = new BorderLayout();
-		layout.setHgap(HARD_GAP);
-		component = new MiradiPanel(layout);
+		component = new MiradiPanel(new BorderLayout());
 		
 		readOnlyCodeListComponent = createReadOnlyComponent(questionToUse, columnCount);
 		component.add(readOnlyCodeListComponent, BorderLayout.CENTER);
@@ -57,6 +56,7 @@ abstract public class AbstractEditableCodeListField extends ObjectDataInputField
 
 		selectButton.addActionListener(new SelectButtonHandler());
 		OneColumnPanel buttonPanel = new OneColumnPanel();
+		buttonPanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 		buttonPanel.setBackground(EAM.READONLY_BACKGROUND_COLOR);
 		buttonPanel.setForeground(EAM.READONLY_FOREGROUND_COLOR);
 		buttonPanel.add(selectButton);
@@ -119,8 +119,6 @@ abstract public class AbstractEditableCodeListField extends ObjectDataInputField
 	abstract protected DisposablePanel createEditorPanel() throws Exception;
 	
 	abstract protected AbstractReadOnlyComponent createReadOnlyComponent(ChoiceQuestion questionToUse, int columnCount);
-	
-	private static final int HARD_GAP = 10;
 	
 	protected ChoiceQuestion question;
 	private MiradiPanel component;
