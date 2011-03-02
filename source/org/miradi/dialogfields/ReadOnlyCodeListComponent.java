@@ -40,11 +40,13 @@ public class ReadOnlyCodeListComponent extends AbstractReadonlyComponent
 		codeList = new CodeList();
 	}
 
+	@Override
 	public String getText()
 	{
 		return codeList.toString();
 	}
 	
+	@Override
 	public void setText(String codesToUse)
 	{
 		removeAll();
