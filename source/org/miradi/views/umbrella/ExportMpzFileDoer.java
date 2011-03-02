@@ -64,7 +64,7 @@ public class ExportMpzFileDoer extends AbstractFileSaverDoer
 		catch (Exception e) 
 		{
 			EAM.logException(e);
-			throw new CommandFailedException(EAM.text("Error Export To Miradi Zip: Possible Write Protected: "), e);
+			throw createPossibleWriteProtectedException(e);
 		} 
 	}
 
@@ -87,8 +87,13 @@ public class ExportMpzFileDoer extends AbstractFileSaverDoer
 		catch (Exception e) 
 		{
 			EAM.logException(e);
-			throw new CommandFailedException(EAM.text("Error Export To Miradi Zip: Possible Write Protected: "), e);
+			throw createPossibleWriteProtectedException(e);
 		}
+	}
+
+	private static CommandFailedException createPossibleWriteProtectedException(Exception e)
+	{
+		return new CommandFailedException(EAM.text("Error Export To Miradi Zip: Possible Write Protected: "), e);
 	}
 
 	private static boolean showSaveWithingProjectErrorDialog()
