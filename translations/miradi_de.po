@@ -3,7 +3,6 @@
 # This file is distributed under the same license as the Miradi package.
 # Automatically generated, 2011.
 #
-#: Miradi/source/org/miradi/questions/StrategyImpactQuestion.java:37
 #: Miradi/source/org/miradi/questions/OpenStandardsPlanActionsAndMonitoringQuestion.java:33
 #: Miradi/source/org/miradi/questions/OpenStandardsPlanActionsAndMonitoringQuestion.java:43
 #: Miradi/source/org/miradi/questions/OpenStandardsPlanActionsAndMonitoringQuestion.java:48
@@ -17,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-01 13:43-0600\n"
+"POT-Creation-Date: 2011-03-02 08:34-0600\n"
 "PO-Revision-Date: 2011-01-24 10:21-0600\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
