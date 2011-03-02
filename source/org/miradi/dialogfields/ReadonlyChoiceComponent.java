@@ -35,11 +35,13 @@ public class ReadonlyChoiceComponent extends AbstractReadonlyComponent
 		question = questionToUse;
 	}
 	
+	@Override
 	public String getText()
 	{
 		return "";
 	}
 	
+	@Override
 	public void setText(String code)
 	{
 		removeAll();

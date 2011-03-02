@@ -25,7 +25,7 @@ import org.miradi.main.EAM;
 
 import com.jhlabs.awt.BasicGridLayout;
 
-public class AbstractReadonlyComponent extends MiradiPanel
+abstract public class AbstractReadonlyComponent extends MiradiPanel
 {
 	public AbstractReadonlyComponent()
 	{
@@ -38,6 +38,11 @@ public class AbstractReadonlyComponent extends MiradiPanel
 		setBackground(EAM.READONLY_BACKGROUND_COLOR);
 		setForeground(EAM.READONLY_FOREGROUND_COLOR);
 	}
+	
+	abstract public String getText();
+	
+	abstract public void setText(String text);
+
 
 	private static final int SINGLE_COULMN_COUNT = 1;
 }
