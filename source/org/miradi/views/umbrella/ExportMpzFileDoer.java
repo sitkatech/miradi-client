@@ -81,11 +81,6 @@ public class ExportMpzFileDoer extends AbstractFileSaverDoer
 		if (chosen == null)
 			return false;
 		
-		return export(null, directoryToZip, chosen);
-	}
-
-	private static boolean export(ProjectServer database, File directoryToZip, File chosen) throws CommandFailedException
-	{
 		if (isChosenFileInsideProjectHomeDir(chosen))
 		{
 			EAM.errorDialog(EAM.text("The MPZ file cannot be saved to a folder within the project being exported"));
@@ -94,10 +89,10 @@ public class ExportMpzFileDoer extends AbstractFileSaverDoer
 		
 		try 
 		{
-			if (database == null)
+			if (null == null)
 				ProjectMpzWriter.createProjectZipFile(directoryToZip, chosen);
 			else
-				ProjectMpzWriter.writeProjectZip(database, chosen);
+				ProjectMpzWriter.writeProjectZip(null, chosen);
 			
 			return true;
 		} 
