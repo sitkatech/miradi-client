@@ -34,7 +34,7 @@ public class TaxonomyFileLoader extends TwoLevelFileLoader
 	protected Vector<TwoLevelEntry> processVector(Vector<Vector<String>> fileVector)
 	{
 		Vector<TwoLevelEntry> taxonomyItems = new Vector<TwoLevelEntry>();
-		taxonomyItems.add(new TwoLevelEntry("", EAM.text("--Select a classification--")));
+		taxonomyItems.add(new TwoLevelEntry("", EAM.text("Not Specified")));
 
 		String prevLevel1Code = "";
 		int level1Index = 0;
