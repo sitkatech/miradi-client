@@ -74,14 +74,14 @@ public class ExportMpzFileDoer extends AbstractFileSaverDoer
 		} 
 	}
 
-	static public void perform(MainWindow mainWindow, File directoryToZip) throws CommandFailedException
+	static public boolean perform(MainWindow mainWindow, File directoryToZip) throws CommandFailedException
 	{
 		EAMFileSaveChooser eamFileChooser = new MpzFileChooser(mainWindow);
 		File chosen = eamFileChooser.displayChooser();
 		if (chosen == null)
-			return;
+			return false;
 		
-		export(null, directoryToZip, chosen);
+		return export(null, directoryToZip, chosen);
 	}
 
 	private static boolean export(ProjectServer database, File directoryToZip, File chosen) throws CommandFailedException
