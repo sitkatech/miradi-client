@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-02 11:03-0600\n"
+"POT-Creation-Date: 2011-03-02 12:24-0600\n"
 "PO-Revision-Date: 2010-05-12 21:01-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -5677,7 +5677,7 @@ msgid ""
 "As.../ RTF&nbsp;File&gt;</code> menu command from within that view.</span>"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/AbstractEditableCodeListField.java:56
+#: Miradi/source/org/miradi/dialogfields/AbstractEditableCodeListField.java:55
 msgid "Select..."
 msgstr ""
 
