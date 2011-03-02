@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-02 08:34-0600\n"
+"POT-Creation-Date: 2011-03-02 11:03-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -347,10 +347,6 @@ msgstr "-干燥岩洞"
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:86
 msgid "- Other Subterranean Habitats"
 msgstr "-其它地下生境"
-
-#: Miradi/source/org/miradi/objecthelpers/TaxonomyFileLoader.java:37
-msgid "--Select a classification--"
-msgstr "--选定一个类别-- \t\t"
 
 #: Miradi/source/org/miradi/utils/AbstractSingleTableExporter.java:46
 msgid "."
@@ -4963,6 +4959,7 @@ msgstr ""
 msgid "Not Effective"
 msgstr "无效的 "
 
+#: Miradi/source/org/miradi/objecthelpers/TaxonomyFileLoader.java:37
 #: Miradi/source/org/miradi/questions/ThreatStressRatingChoiceQuestion.java:36
 #: Miradi/source/org/miradi/questions/DirectThreatQuestion.java:43
 #: Miradi/source/org/miradi/questions/StrategyImpactQuestion.java:37
@@ -28907,6 +28904,9 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid "--Select a classification--"
+#~ msgstr "--选定一个类别-- \t\t"
 
 #~ msgid "FieldLabel|29.Label|Label"
 #~ msgstr "标签"
