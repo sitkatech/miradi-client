@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogfields;
 
-import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.icons.RatingIcon;
 import org.miradi.main.EAM;
@@ -28,7 +27,7 @@ import org.miradi.utils.CodeList;
 
 import com.jhlabs.awt.BasicGridLayout;
 
-public class ReadOnlyCodeListComponent extends MiradiPanel
+public class ReadOnlyCodeListComponent extends AbstractReadonlyComponent
 {
 	public ReadOnlyCodeListComponent(ChoiceItem[] choiceItemsToUse)
 	{
