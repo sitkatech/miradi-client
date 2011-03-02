@@ -42,6 +42,12 @@ public class StrategyImpactQuestion extends StaticChoiceQuestionSortableByCode
 		};
 	}
 	
+	@Override
+	public boolean hasAdditionalText()
+	{
+		return true;
+	}
+	
 	public static final String LOW_CODE = "1";
 	public static final String MEDIUM_CODE = "2";
 	public static final String HIGH_CODE = "3";
