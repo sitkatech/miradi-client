@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-02 14:23-0600\n"
+"POT-Creation-Date: 2011-03-02 15:12-0600\n"
 "PO-Revision-Date: 2010-09-20 10:32-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -3411,7 +3411,7 @@ msgstr "Error"
 msgid "Error Creating: %s"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:96
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:104
 msgid "Error Export To Miradi Zip: Possible Write Protected: "
 msgstr ""
 "Error de exportación al zip de Miradi: Es posible que esté protegido contra "
@@ -7487,7 +7487,8 @@ msgstr ""
 "trabajan juntos para desarrollar estándares y herramientas comunes como "
 "Miradi. Puede obtener más información en www.ConservationMeasures.org"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:101
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:57
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:84
 msgid ""
 "The MPZ file cannot be saved to a folder within the project being exported"
 msgstr ""
