@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-02 12:40-0600\n"
+"POT-Creation-Date: 2011-03-02 14:23-0600\n"
 "PO-Revision-Date: 2010-09-30 09:31+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -6035,7 +6035,7 @@ msgstr ""
 "Current&nbsp;Page&nbsp;As.../ RTF&nbsp;File&gt;</code> командне меню з цього "
 "виду.</span>"
 
-#: Miradi/source/org/miradi/dialogfields/AbstractEditableCodeListField.java:55
+#: Miradi/source/org/miradi/dialogfields/AbstractEditableCodeListField.java:56
 msgid "Select..."
 msgstr "Вибрати..."
 
