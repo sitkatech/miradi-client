@@ -53,7 +53,11 @@ public class ExportMpzFileDoer extends AbstractFileSaverDoer
 	{
 		ProjectServer database = getProject().getDatabase();
 		if (isChosenFileInsideProjectHomeDir(destinationFile))
-			return showSaveWithingProjectErrorDialog();
+		{
+			EAM.errorDialog(EAM.text("The MPZ file cannot be saved to a folder within the project being exported"));
+			
+			return false;
+		}
 		
 		try 
 		{
@@ -76,7 +80,11 @@ public class ExportMpzFileDoer extends AbstractFileSaverDoer
 			return false;
 		
 		if (isChosenFileInsideProjectHomeDir(chosen))
-			return showSaveWithingProjectErrorDialog();
+		{
+			EAM.errorDialog(EAM.text("The MPZ file cannot be saved to a folder within the project being exported"));
+			
+			return false;
+		}
 		
 		try 
 		{
@@ -94,13 +102,6 @@ public class ExportMpzFileDoer extends AbstractFileSaverDoer
 	private static CommandFailedException createPossibleWriteProtectedException(Exception e)
 	{
 		return new CommandFailedException(EAM.text("Error Export To Miradi Zip: Possible Write Protected: "), e);
-	}
-
-	private static boolean showSaveWithingProjectErrorDialog()
-	{
-		EAM.errorDialog(EAM.text("The MPZ file cannot be saved to a folder within the project being exported"));
-		
-		return false;
 	}
 
 	private static boolean isChosenFileInsideProjectHomeDir(File chosen)
