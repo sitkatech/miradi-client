@@ -40,6 +40,7 @@ public class ControlPanelFlexibleWidthHtmlViewer extends FlexibleWidthHtmlViewer
 		style.addRule("body {background-color: " + getBackgroundColorForCss() + ";}");
 	}
 
+	@Override
 	protected String getBackgroundColorForCss()
 	{
 		return AppPreferences.getControlPanelBackgroundColorForCss();

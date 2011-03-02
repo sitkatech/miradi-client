@@ -22,10 +22,12 @@ package org.miradi.utils;
 
 import org.miradi.main.MainWindow;
 
-public class FlexibleWidthHtmlViewerWithCustomBackgroundColor extends FlexibleWidthHtmlViewer
+abstract public class FlexibleWidthHtmlViewerWithCustomBackgroundColor extends FlexibleWidthHtmlViewer
 {
 	public FlexibleWidthHtmlViewerWithCustomBackgroundColor(MainWindow mainWindow, String htmlText)
 	{
 		super(mainWindow, htmlText);
 	}
+	
+	abstract protected String getBackgroundColorForCss();
 }
