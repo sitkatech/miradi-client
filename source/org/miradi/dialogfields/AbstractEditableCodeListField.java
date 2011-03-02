@@ -63,11 +63,6 @@ abstract public class AbstractEditableCodeListField extends ObjectDataInputField
 		setDefaultFieldBorder();
 		component.add(buttonPanel, BorderLayout.AFTER_LINE_ENDS);
 	}
-
-	protected AbstractReadOnlyComponent createReadOnlyComponent(ChoiceQuestion questionToUse, int columnCount)
-	{
-		return new ReadOnlyCodeListComponent(questionToUse.getChoices(), columnCount);
-	}
 	
 	@Override
 	public void updateEditableState()
@@ -122,6 +117,8 @@ abstract public class AbstractEditableCodeListField extends ObjectDataInputField
 	}
 	
 	abstract protected DisposablePanel createEditorPanel() throws Exception;
+	
+	abstract protected AbstractReadOnlyComponent createReadOnlyComponent(ChoiceQuestion questionToUse, int columnCount);
 	
 	private static final int HARD_GAP = 10;
 	

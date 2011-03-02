@@ -30,15 +30,27 @@ public class ReadonlyChoiceComponent extends AbstractReadOnlyComponent
 {
 	public ReadonlyChoiceComponent(ChoiceQuestion questionToUse)
 	{
-		super();
-
-		question = questionToUse;
+		this(questionToUse, SINGLE_COULMN_COUNT);
 	}
 	
+	public ReadonlyChoiceComponent(ChoiceQuestion questionToUse, int columnCount)
+	{
+		super(columnCount);
+		
+		question = questionToUse;
+		currentCode = "";
+		initliazeRadioButtons();
+	}
+
+	private void initliazeRadioButtons()
+	{
+		setText(currentCode);
+	}
+
 	@Override
 	public String getText()
 	{
-		return "";
+		return currentCode;
 	}
 	
 	@Override
@@ -47,6 +59,7 @@ public class ReadonlyChoiceComponent extends AbstractReadOnlyComponent
 		removeAll();
 		try
 		{
+			currentCode = code;
 			ChoiceItem choiceItem = question.findChoiceByCode(code);
 			PanelTitleLabel label = new PanelTitleLabel(choiceItem.getLabel());
 			if (choiceItem.getColor() != null)
@@ -65,4 +78,5 @@ public class ReadonlyChoiceComponent extends AbstractReadOnlyComponent
 	}
 
 	private ChoiceQuestion question;
+	private String currentCode;
 }

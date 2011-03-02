@@ -48,6 +48,12 @@ public class CodeListPopupWithDescriptionPanelField extends	AbstractEditableCode
 
 		return leftPanel;
 	}
+
+	@Override
+	protected AbstractReadOnlyComponent createReadOnlyComponent(ChoiceQuestion questionToUse, int columnCount)
+	{
+		return new ReadOnlyCodeListComponent(questionToUse.getChoices(), columnCount);
+	}
 	
 	private MainWindow mainWindow;
 }

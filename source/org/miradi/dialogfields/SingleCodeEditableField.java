@@ -27,12 +27,10 @@ import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.base.ModalDialogWithClose;
 import org.miradi.dialogs.base.OneFieldObjectDataInputPanel;
 import org.miradi.dialogs.base.RowSelectionListener;
-import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
-import org.miradi.utils.CodeList;
 
 public class SingleCodeEditableField extends AbstractEditableCodeListField
 {
@@ -41,6 +39,12 @@ public class SingleCodeEditableField extends AbstractEditableCodeListField
 		super(mainWindowToUse.getProject(), refToUse, tagToUse, questionToUse, columnCount);
 		
 		mainWindow = mainWindowToUse;
+	}
+	
+	@Override
+	protected AbstractReadOnlyComponent createReadOnlyComponent(ChoiceQuestion questionToUse, int columnCount)
+	{
+		return new ReadonlyChoiceComponent(questionToUse, columnCount);
 	}
 
 	@Override
@@ -74,34 +78,6 @@ public class SingleCodeEditableField extends AbstractEditableCodeListField
 		}
 		
 		private RadioButtonEditorComponentWithHierarchicalRows editor;
-	}
-	
-	@Override
-	public void setText(String newValue)
-	{
-		CodeList codeList = new CodeList();
-		codeList.add(newValue);
-		
-		super.setText(codeList.toString());
-	}
-	
-	@Override
-	public String getText()
-	{
-		try
-		{
-			String superGetTextValue = super.getText();
-			CodeList codeList = new CodeList(superGetTextValue);
-			if (codeList.size() > 0)
-				return codeList.firstElement();
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			EAM.unexpectedErrorDialog(e);
-		}
-		
-		return "";
 	}
 	
 	@Override

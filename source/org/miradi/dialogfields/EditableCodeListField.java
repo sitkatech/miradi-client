@@ -37,4 +37,10 @@ public class EditableCodeListField extends AbstractEditableCodeListField
 	{
 		return new CodeListEditorPanel(getProject(), getORef(), getTag(), question, 1);
 	}	
-}
+
+	@Override
+	protected AbstractReadOnlyComponent createReadOnlyComponent(ChoiceQuestion questionToUse, int columnCount)
+	{
+		return new ReadOnlyCodeListComponent(questionToUse.getChoices(), columnCount);
+	}
+}	
