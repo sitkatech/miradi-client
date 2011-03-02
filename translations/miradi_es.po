@@ -3,7 +3,6 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Kevin Smith <support@miradi.org>, 2008.
 #
-#: Miradi/source/org/miradi/questions/StrategyImpactQuestion.java:37
 #: Miradi/source/org/miradi/questions/OpenStandardsPlanActionsAndMonitoringQuestion.java:33
 #: Miradi/source/org/miradi/questions/OpenStandardsPlanActionsAndMonitoringQuestion.java:43
 #: Miradi/source/org/miradi/questions/OpenStandardsPlanActionsAndMonitoringQuestion.java:48
@@ -17,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-01 13:43-0600\n"
+"POT-Creation-Date: 2011-03-02 08:34-0600\n"
 "PO-Revision-Date: 2010-09-20 10:32-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
