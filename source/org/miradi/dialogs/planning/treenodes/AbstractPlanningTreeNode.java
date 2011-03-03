@@ -358,23 +358,6 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		return children;
 	}
 
-	protected void addMissingChildren(ORefList potentialChildRefs, DiagramObject diagram) throws Exception
-	{
-		addMissingChildren(new ORefSet(potentialChildRefs), diagram);
-	}
-	
-	protected void addMissingChildren(ORefSet potentialChildRefs, DiagramObject diagram) throws Exception
-	{
-		ORefSet everythingInTree = getAllRefsInTree();
-		for(ORef ref : potentialChildRefs)
-		{
-			if(everythingInTree.contains(ref))
-				continue;
-			
-			createAndAddChild(ref, diagram);			
-		}
-	}
-	
 	protected void createAndAddTaskNodes(ORefList taskRefs, ORef contextNodeRef) throws Exception
 	{
 		for(int i = 0; i < taskRefs.size(); ++i)
