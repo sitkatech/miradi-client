@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-03 14:23-0600\n"
+"POT-Creation-Date: 2011-03-03 15:06-0600\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -3528,7 +3528,6 @@ msgid "Error"
 msgstr "Алдаа"
 
 #: Miradi/source/org/miradi/dialogs/planning/treenodes/NewPlanningTreeErrorNode.java:59
-#: Miradi/source/org/miradi/dialogs/planning/treenodes/PlanningTreeErrorNode.java:58
 msgid "Error Creating: %s"
 msgstr "Алдаа үүсгэх: %s"
 
@@ -7687,10 +7686,6 @@ msgstr ""
 #: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:76
 msgid "This item is shared, so will be deleted from multiple places."
 msgstr "Энэ зүйлийг хамтаар хэрэглэдэг тул олон газраас устгагдах болно."
-
-#: Miradi/source/org/miradi/dialogs/planning/treenodes/AbstractPlanningTreeNode.java:418
-msgid "This method is not responsible for creating task nodes."
-msgstr "Энэ арга даалгаварын зангилаа уулзварыг үүсгэх үүрэггүй."
 
 #: Miradi/source/org/miradi/dialogs/planning/AbstractBudgetDetailsTableModel.java:89
 msgid ""
@@ -31719,6 +31714,9 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid "This method is not responsible for creating task nodes."
+#~ msgstr "Энэ арга даалгаварын зангилаа уулзварыг үүсгэх үүрэггүй."
 
 #~ msgid "--Select a classification--"
 #~ msgstr "--Ангиллыг сонгох--"

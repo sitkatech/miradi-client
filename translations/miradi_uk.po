@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-03 14:23-0600\n"
+"POT-Creation-Date: 2011-03-03 15:06-0600\n"
 "PO-Revision-Date: 2010-09-30 09:31+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -3537,7 +3537,6 @@ msgid "Error"
 msgstr "Помилка"
 
 #: Miradi/source/org/miradi/dialogs/planning/treenodes/NewPlanningTreeErrorNode.java:59
-#: Miradi/source/org/miradi/dialogs/planning/treenodes/PlanningTreeErrorNode.java:58
 msgid "Error Creating: %s"
 msgstr ""
 
@@ -7661,10 +7660,6 @@ msgstr ""
 msgid "This item is shared, so will be deleted from multiple places."
 msgstr ""
 "Цей пункт вже є розподілений, тому буде видалений з місць, де повторюється."
-
-#: Miradi/source/org/miradi/dialogs/planning/treenodes/AbstractPlanningTreeNode.java:418
-msgid "This method is not responsible for creating task nodes."
-msgstr "Цей метод не є відповідним для створення вузлів завдання"
 
 #: Miradi/source/org/miradi/dialogs/planning/AbstractBudgetDetailsTableModel.java:89
 msgid ""
@@ -26874,6 +26869,9 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
+
+#~ msgid "This method is not responsible for creating task nodes."
+#~ msgstr "Цей метод не є відповідним для створення вузлів завдання"
 
 #~ msgid "--Select a classification--"
 #~ msgstr "--Вибрати класифікацію--"
