@@ -58,10 +58,5 @@ public class StressContributionQuestion extends ThreatRatingQuestion
 						"the source, acting alone, to the full expression of a stress (as determined " +
 						"in the stress assessment) under current circumstances (i.e., given the " +
 						"continuation of the existing management/conservation situation).</html>");
-	}
-	
-	public static final String LOW_CODE = "1";
-	public static final String MEDIUM_CODE = "2";
-	public static final String HIGH_CODE = "3";
-	public static final String VERY_HIGH_CODE = "4";	
+	}	
 }
