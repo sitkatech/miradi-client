@@ -72,12 +72,10 @@ public class ArrangeConceptualModelDoer extends ViewDoer
 		}
 	}
 	
-	static class Worker extends Thread
+	abstract static class MiradiBackgroundWorkerThread extends Thread
 	{
-		public Worker(Project projectToUse, DiagramObject diagramToArrange, ProgressInterface progressToNotify)
+		MiradiBackgroundWorkerThread(ProgressInterface progressToNotify)
 		{
-			project = projectToUse;
-			diagram = diagramToArrange;
 			progress = progressToNotify;
 		}
 		
@@ -103,13 +101,35 @@ public class ArrangeConceptualModelDoer extends ViewDoer
 				progress.finished();
 			}
 		}
+		
+		public ProgressInterface getProgressIndicator()
+		{
+			return progress;
+		}
 
-		private void doRealWork() throws CommandFailedException
+		abstract protected void doRealWork() throws Exception;
+		
+		private ProgressInterface progress;
+		private Exception exception;
+	}
+	
+	static class Worker extends MiradiBackgroundWorkerThread
+	{
+		public Worker(Project projectToUse, DiagramObject diagramToArrange, ProgressInterface progressToNotify)
+		{
+			super(progressToNotify);
+
+			project = projectToUse;
+			diagram = diagramToArrange;
+		}
+		
+		@Override
+		protected void doRealWork() throws CommandFailedException
 		{
 			getProject().executeBeginTransaction();
 			try
 			{
-				MeglerArranger meglerArranger = new MeglerArranger(diagram, progress);
+				MeglerArranger meglerArranger = new MeglerArranger(diagram, getProgressIndicator());
 				if(!meglerArranger.arrange())
 				{
 					EAM.notifyDialog("The auto-arrange process was stopped before it completed, \n" +
@@ -134,8 +154,6 @@ public class ArrangeConceptualModelDoer extends ViewDoer
 		
 		private Project project;
 		private DiagramObject diagram;
-		private ProgressInterface progress;
-		private Exception exception;
 	}
 
 	private DiagramObject getCurrentDiagramObject()
