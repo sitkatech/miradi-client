@@ -29,6 +29,11 @@ public class TestTreeRebuilder extends TestCaseWithProject
 		super(name);
 	}
 	
+	public void testBasics()
+	{
+		//FIXME urgent - add basic tests here.
+	}
+	
 //FIXME urgent - The below commented code is from test classes.  They were testing old nodes.  Need
 // to convert the test to test new TreeRebuilder. 
 	
