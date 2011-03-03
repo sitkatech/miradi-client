@@ -61,7 +61,8 @@ public class PasteDoer extends AbstractPasteDoer
 			paste(diagramPaster);
 			possiblyNotifyUserIfDataWasLost(diagramPaster);
 			notifiyIfNothingWasPasted(beforePasteDiagramFactors, beforePasteDiagramLinks);
-			NotifyDialog.notify(getMainWindow(), NotifyDialogTemplateFactory.pastedSharedFactors());
+			if(wasAutomaticallyPastedAsShared(list))
+				NotifyDialog.notify(getMainWindow(), NotifyDialogTemplateFactory.pastedSharedFactors());
 		} 
 		catch (Exception e) 
 		{
@@ -72,6 +73,17 @@ public class PasteDoer extends AbstractPasteDoer
 		{
 			getProject().executeCommand(new CommandEndTransaction());
 		}
+	}
+
+	private boolean wasAutomaticallyPastedAsShared(TransferableMiradiList list)
+	{
+		if(!isPasteInSameProject(list))
+			return false;
+		
+		if(isPastingInSameDiagramAsCopiedFrom(list))
+			return false;
+		
+		return true;
 	}
 
 	private DiagramObject getDiagramObject()
