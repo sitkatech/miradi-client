@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-03 11:23-0600\n"
+"POT-Creation-Date: 2011-03-03 13:41-0600\n"
 "PO-Revision-Date: 2010-09-30 09:31+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -5723,6 +5723,7 @@ msgid "Project Resource Filter Is On"
 msgstr "Фільтр ресурсу проекту увімкнено"
 
 #: Miradi/source/org/miradi/views/planning/ProjectResourceManagementPanel.java:51
+#: Miradi/source/org/miradi/views/planning/PlanningProjectResourceManagementConfiguration.java:59
 #: Miradi/source/org/miradi/views/workplan/ProjectResourceManagementConfiguration.java:58
 msgid "Project Resources"
 msgstr "Ресурси проекту"
@@ -7661,7 +7662,7 @@ msgid "This item is shared, so will be deleted from multiple places."
 msgstr ""
 "Цей пункт вже є розподілений, тому буде видалений з місць, де повторюється."
 
-#: Miradi/source/org/miradi/dialogs/planning/treenodes/AbstractPlanningTreeNode.java:449
+#: Miradi/source/org/miradi/dialogs/planning/treenodes/AbstractPlanningTreeNode.java:428
 msgid "This method is not responsible for creating task nodes."
 msgstr "Цей метод не є відповідним для створення вузлів завдання"
 
