@@ -28,7 +28,6 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
-import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.AccountingCode;
 import org.miradi.objects.BudgetCategoryOne;
 import org.miradi.objects.BudgetCategoryTwo;
@@ -402,8 +401,6 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		int type = refToAdd.getObjectType();
 		try
 		{
-			if(AbstractTarget.isAbstractTarget(type))
-				return new PlanningTreeTargetNode(project, diagram, refToAdd, visibleRows);
 			if(type == Goal.getObjectType())
 				return new PlanningTreeGoalNode(project, diagram, refToAdd, visibleRows);
 			if(type == Objective.getObjectType())
