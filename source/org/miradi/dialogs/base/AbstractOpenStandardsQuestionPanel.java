@@ -250,10 +250,7 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		statusTextComponent.setBackground(getItemBackgroundColor(level));
 		addUpdatedCustomField(statusTextField);
 
-		PanelLabelWithSelectableText labelComponent = new PanelLabelWithSelectableText(choiceItem.getLabel());
-		new TextAreaRightClickMouseHandler(getMainWindow().getActions(), labelComponent);		
-		labelComponent.setOpaque(true);
-		labelComponent.setBackground(getItemBackgroundColor(level));
+		PanelLabelWithSelectableText labelComponent = createLabelWithSelectableText(level, choiceItem.getLabel());
 
 		DashboardCommentsField commentsField = new DashboardCommentsField(getProject(), getDashboard().getRef(), choiceItem.getCode());
 		if(commentsField.hasComments())
@@ -271,6 +268,16 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		addRow(choiceItem.getLongDescriptionProvider(), level, flagIconField.getComponent(), statusIconField.getComponent(), labelComponent, rightComponent);
 	}
 
+	private PanelLabelWithSelectableText createLabelWithSelectableText(int level, String label)
+	{
+		PanelLabelWithSelectableText component = new PanelLabelWithSelectableText(label);
+		new TextAreaRightClickMouseHandler(getMainWindow().getActions(), component);		
+		component.setOpaque(true);
+		component.setBackground(getItemBackgroundColor(level));
+		
+		return component;
+	}
+
 	private void addUpdatedCustomField(ObjectDataField field)
 	{
 		addFieldToList(field);
@@ -283,10 +290,8 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		JComponent leftComponent = new PanelLabelWithSelectableText(leftColumnText);
 		leftComponent.setOpaque(true);
 		leftComponent.setBackground(getItemBackgroundColor(level));
-		PanelLabelWithSelectableText rightComponent = new PanelLabelWithSelectableText(rightColumnTranslatedText);
-		new TextAreaRightClickMouseHandler(getMainWindow().getActions(), rightComponent);		
-		rightComponent.setOpaque(true);
-		rightComponent.setBackground(getItemBackgroundColor(level));
+		
+		PanelLabelWithSelectableText rightComponent = createLabelWithSelectableText(level, rightColumnTranslatedText);
 		
 		addRow(longDescriptionProvider, level, new FillerLabel(), new FillerLabel(), leftComponent, rightComponent);
 	}
