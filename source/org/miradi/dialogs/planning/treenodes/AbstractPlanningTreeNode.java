@@ -401,8 +401,6 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		int type = refToAdd.getObjectType();
 		try
 		{
-			if(type == Cause.getObjectType())
-				return new PlanningTreeDirectThreatNode(project, diagram, refToAdd, visibleRows);
 			if(type == Indicator.getObjectType())
 				return new PlanningTreeIndicatorNode(project, refToAdd, visibleRows);
 			if (type == Task.getObjectType())
