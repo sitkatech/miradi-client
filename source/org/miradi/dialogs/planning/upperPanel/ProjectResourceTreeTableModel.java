@@ -20,14 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.upperPanel;
 
-import org.miradi.dialogs.planning.ProjectResourceRowColumnProvider;
-import org.miradi.dialogs.planning.treenodes.BaseObjectTreeRootNode;
+import org.miradi.dialogs.planning.treenodes.PlanningTreeRootNode;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
-import org.miradi.objects.ProjectResource;
 import org.miradi.project.Project;
 
-public class ProjectResourceTreeTableModel extends ExportablePlanningTreeTableModel
+public class ProjectResourceTreeTableModel extends TreeTableModelWithRebuilder
 {
 	private ProjectResourceTreeTableModel(Project project, TreeTableNode rootNode, PlanningTreeRowColumnProvider rowColumnProvider) throws Exception
 	{
@@ -36,13 +34,9 @@ public class ProjectResourceTreeTableModel extends ExportablePlanningTreeTableMo
 	
 	public static ProjectResourceTreeTableModel createProjectResourceTreeTableModel(Project project, PlanningTreeRowColumnProvider rowColumnProvider) throws Exception
 	{
-		TreeTableNode projectRootNode = createProjectResourceRootNode(project);
-		return new ProjectResourceTreeTableModel(project, projectRootNode, rowColumnProvider);
-	}
+		TreeTableNode projectRootNode = new PlanningTreeRootNode(project);
 	
-	private static TreeTableNode createProjectResourceRootNode(Project project) throws Exception
-	{
-		return new BaseObjectTreeRootNode(project, ProjectResource.getObjectType(), ProjectResource.OBJECT_NAME, new ProjectResourceRowColumnProvider(project).getRowCodesToShow());
+		return new ProjectResourceTreeTableModel(project, projectRootNode, rowColumnProvider);
 	}
 	
 	@Override

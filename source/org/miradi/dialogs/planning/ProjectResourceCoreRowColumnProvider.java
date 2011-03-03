@@ -20,13 +20,19 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning;
 
-import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.objects.ProjectResource;
+import org.miradi.project.Project;
 import org.miradi.questions.WorkPlanVisibleRowsQuestion;
 import org.miradi.utils.CodeList;
 
-public class ProjectResourceCoreRowColumnProvider implements PlanningTreeRowColumnProvider
+public class ProjectResourceCoreRowColumnProvider extends AbstractBudgetCategoryRowColumnProvider
 {
+	public ProjectResourceCoreRowColumnProvider(Project projectToUse)
+	{
+		super(projectToUse);
+	}
+
+	@Override
 	public CodeList getColumnCodesToShow() throws Exception
 	{
 		return getVisibleColumns();
@@ -46,6 +52,7 @@ public class ProjectResourceCoreRowColumnProvider implements PlanningTreeRowColu
 		});
 	}
 
+	@Override
 	public CodeList getRowCodesToShow() throws Exception
 	{
 		return new CodeList(new String[] {
@@ -53,28 +60,45 @@ public class ProjectResourceCoreRowColumnProvider implements PlanningTreeRowColu
 		});
 	}
 
+	@Override
 	public boolean shouldIncludeResultsChain() throws Exception
 	{
 		return true;
 	}
 
+	@Override
 	public boolean shouldIncludeConceptualModelPage() throws Exception
 	{
 		return true;
 	}
 	
+	@Override
 	public boolean doObjectivesContainStrategies() throws Exception
 	{
 		return true;
 	}
 	
+	@Override
 	public boolean shouldPutTargetsAtTopLevelOfTree() throws Exception
 	{
 		return false;
 	}
 	
+	@Override
 	public String getWorkPlanBudgetMode() throws Exception
 	{
 		return WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE;
+	}
+
+	@Override
+	public int getObjectType()
+	{
+		return ProjectResource.getObjectType();
+	}
+
+	@Override
+	public String getObjectTypeName()
+	{
+		return ProjectResource.OBJECT_NAME;
 	}
 }
