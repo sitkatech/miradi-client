@@ -62,6 +62,7 @@ class TextAreaContextMenuListener extends MiradiCheckerListener
 	public TextAreaContextMenuListener(JPopupMenu menuToUse, JTextComponent textFieldToUse, Actions actionsToUse)
 	{
 		super(menuToUse, null);
+		
 		menu = menuToUse;
 		textField = textFieldToUse;
 		actions = actionsToUse;
