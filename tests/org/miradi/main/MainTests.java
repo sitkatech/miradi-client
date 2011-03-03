@@ -213,7 +213,6 @@ import org.miradi.views.diagram.doers.TestDeleteAnnotationDoer;
 import org.miradi.views.planning.TestAbstractPlanningTreeNode;
 import org.miradi.views.planning.TestFullTimeEmployeeCalculationsInsideModel;
 import org.miradi.views.planning.TestPlanningTreeActivityNode;
-import org.miradi.views.planning.TestPlanningTreeConceptualModelPageNode;
 import org.miradi.views.planning.TestPlanningTreeDirectThreatNode;
 import org.miradi.views.planning.TestPlanningTreeGoalNode;
 import org.miradi.views.planning.TestPlanningTreeIndicatorNode;
@@ -467,7 +466,6 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestPlanningTreeGoalNode.class));
 		suite.addTest(new TestSuite(TestPlanningTreeTargetNode.class));
 		suite.addTest(new TestSuite(TestPlanningTreeDirectThreatNode.class));
-		suite.addTest(new TestSuite(TestPlanningTreeConceptualModelPageNode.class));
 		suite.addTest(new TestSuite(TestPlanningTreeObjectiveNode.class));
 		suite.addTest(new TestSuite(TestPlanningTreeStrategyNode.class));
 		suite.addTest(new TestSuite(TestPlanningTreeActivityNode.class));
