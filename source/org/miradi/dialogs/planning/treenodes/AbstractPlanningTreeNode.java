@@ -414,8 +414,6 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 				return new PlanningTreeDirectThreatNode(project, diagram, refToAdd, visibleRows);
 			if(type == Indicator.getObjectType())
 				return new PlanningTreeIndicatorNode(project, refToAdd, visibleRows);
-			if (type == Measurement.getObjectType())
-				return new PlanningTreeMeasurementNode(project, refToAdd, visibleRows);
 			if (type == Task.getObjectType())
 				throw new RuntimeException(EAM.text("This method is not responsible for creating task nodes."));
 			
