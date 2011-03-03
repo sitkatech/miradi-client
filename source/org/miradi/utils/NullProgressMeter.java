@@ -22,6 +22,10 @@ package org.miradi.utils;
 
 public class NullProgressMeter implements ProgressInterface
 {
+	public void setVisible(boolean visible)
+	{
+	}
+
 	public void finished()
 	{
 	}

@@ -22,9 +22,10 @@ package org.miradi.utils;
 
 public interface ProgressInterface
 {
+	public void setVisible(boolean b);
 	public void setStatusMessage(String translatedMessage, int stepCount);
 	public void incrementProgress();
 	public void updateProgressMeter(int currentValue);
 	public void finished();
-	public abstract boolean shouldExit();
+	public boolean shouldExit();
 }
