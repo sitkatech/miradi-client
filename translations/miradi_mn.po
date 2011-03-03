@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-03 13:41-0600\n"
+"POT-Creation-Date: 2011-03-03 13:46-0600\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -9834,7 +9834,7 @@ msgstr "БаганыХаяг|29.ТэмдэглэгээБаганаХэлбэр|�
 msgid "FieldLabel|29.TagDiagramDataInclusion|Include Data From"
 msgstr "БаганыХаяг|29.ТэмдэглэгээДиаграммМэдээлэлОруулах|-ээс Мэдээлэл Оруулах"
 
-msgid "FieldLabel|29.StrategyObjectiveOrder|Objective Strategy Node Order"
+msgid "FieldLabel|29.StrategyObjectiveOrder|Objective/Strategy Display"
 msgstr ""
 
 msgid "FieldLabel|29.TargetNodePosition|Position of Targets in Trees"
