@@ -27,7 +27,7 @@ import java.util.Vector;
 import org.miradi.dialogs.planning.treenodes.AbstractPlanningTreeNode;
 import org.miradi.dialogs.planning.treenodes.NewPlanningTaskNode;
 import org.miradi.dialogs.planning.treenodes.PlanningTreeBaseObjectNode;
-import org.miradi.dialogs.planning.treenodes.NewPlanningTreeErrorNode;
+import org.miradi.dialogs.planning.treenodes.PlanningTreeErrorNode;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
@@ -192,7 +192,7 @@ abstract public class AbstractTreeRebuilder
 		catch (Exception e)
 		{
 			EAM.logException(e);
-			return new NewPlanningTreeErrorNode(getProject(), parentNode, refToAdd);
+			return new PlanningTreeErrorNode(getProject(), parentNode, refToAdd);
 		}
 	}
 	
