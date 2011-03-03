@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-03 14:23-0600\n"
+"POT-Creation-Date: 2011-03-03 15:06-0600\n"
 "PO-Revision-Date: 2010-05-12 21:01-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -3273,7 +3273,6 @@ msgid "Error"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/planning/treenodes/NewPlanningTreeErrorNode.java:59
-#: Miradi/source/org/miradi/dialogs/planning/treenodes/PlanningTreeErrorNode.java:58
 msgid "Error Creating: %s"
 msgstr ""
 
@@ -7228,10 +7227,6 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:76
 msgid "This item is shared, so will be deleted from multiple places."
-msgstr ""
-
-#: Miradi/source/org/miradi/dialogs/planning/treenodes/AbstractPlanningTreeNode.java:418
-msgid "This method is not responsible for creating task nodes."
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/planning/AbstractBudgetDetailsTableModel.java:89

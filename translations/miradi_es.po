@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-03 14:23-0600\n"
+"POT-Creation-Date: 2011-03-03 15:06-0600\n"
 "PO-Revision-Date: 2010-09-20 10:32-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -3483,7 +3483,6 @@ msgid "Error"
 msgstr "Error"
 
 #: Miradi/source/org/miradi/dialogs/planning/treenodes/NewPlanningTreeErrorNode.java:59
-#: Miradi/source/org/miradi/dialogs/planning/treenodes/PlanningTreeErrorNode.java:58
 msgid "Error Creating: %s"
 msgstr ""
 
@@ -7668,10 +7667,6 @@ msgstr ""
 msgid "This item is shared, so will be deleted from multiple places."
 msgstr ""
 "Este elemento está compartido, por lo que se eliminará de varios lugares."
-
-#: Miradi/source/org/miradi/dialogs/planning/treenodes/AbstractPlanningTreeNode.java:418
-msgid "This method is not responsible for creating task nodes."
-msgstr "Este método no es responsable de la creación de nodos de tarea. "
 
 #: Miradi/source/org/miradi/dialogs/planning/AbstractBudgetDetailsTableModel.java:89
 msgid ""
@@ -32858,6 +32853,9 @@ msgid ""
 msgstr ""
 "Marina___Atlántico tropical occidental___Marina de la plataforma norte de "
 "Brasil___Brasil "
+
+#~ msgid "This method is not responsible for creating task nodes."
+#~ msgstr "Este método no es responsable de la creación de nodos de tarea. "
 
 #~ msgid ""
 #~ "html|/resources/DataLocationInstructions.html|  <HTML><p>Miradi stores "
