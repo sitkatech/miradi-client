@@ -358,15 +358,6 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		return children;
 	}
 
-	protected void createAndAddTaskNodes(ORefList taskRefs, ORef contextNodeRef) throws Exception
-	{
-		for(int i = 0; i < taskRefs.size(); ++i)
-		{
-			ORef taskRef = taskRefs.get(i);
-			addChild(new PlanningTreeTaskNode(project, contextNodeRef, taskRef, visibleRows));
-		}
-	}
-	
 	protected void createAndAddChildren(ORefList refsToAdd, DiagramObject diagram) throws Exception
 	{
 		for(int i = 0; i < refsToAdd.size(); ++i)
