@@ -55,10 +55,5 @@ public class StressIrreversibilityQuestion extends ThreatRatingQuestion
 	private static String getDescription()
 	{
 		return EAM.text("<html><strong>Irreversibility - </strong>The degree to which the effects of a threat can be restored.</html>");
-	}
-	
-	public static final String LOW_CODE = "1";
-	public static final String MEDIUM_CODE = "2";
-	public static final String HIGH_CODE = "3";
-	public static final String VERY_HIGH_CODE = "4";
+	}	
 }
