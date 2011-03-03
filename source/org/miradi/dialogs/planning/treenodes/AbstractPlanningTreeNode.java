@@ -401,8 +401,6 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		int type = refToAdd.getObjectType();
 		try
 		{
-			if(type == Indicator.getObjectType())
-				return new PlanningTreeIndicatorNode(project, refToAdd, visibleRows);
 			if (type == Task.getObjectType())
 				throw new RuntimeException(EAM.text("This method is not responsible for creating task nodes."));
 			
