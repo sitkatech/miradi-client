@@ -25,9 +25,9 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.project.Project;
 
-public class NewPlanningTaskNode extends PlanningTreeBaseObjectNode
+public class PlanningTaskNode extends PlanningTreeBaseObjectNode
 {
-	public NewPlanningTaskNode(Project projectToUse, ORef contextNodeRefToUse, TreeTableNode parentNodeToUse, ORef objectRef) throws Exception
+	public PlanningTaskNode(Project projectToUse, ORef contextNodeRefToUse, TreeTableNode parentNodeToUse, ORef objectRef) throws Exception
 	{
 		super(projectToUse, parentNodeToUse, objectRef);
 
@@ -45,7 +45,7 @@ public class NewPlanningTaskNode extends PlanningTreeBaseObjectNode
 	@Override
 	public void addProportionShares(TreeTableNode rawNode)
 	{
-		NewPlanningTaskNode taskNode = (NewPlanningTaskNode) rawNode;
+		PlanningTaskNode taskNode = (PlanningTaskNode) rawNode;
 		contextNodeRefs.addAll(taskNode.contextNodeRefs);
 	}
 	
