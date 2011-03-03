@@ -23,7 +23,7 @@ package org.miradi.dialogs.planning.upperPanel.rebuilder;
 import java.util.HashMap;
 
 import org.miradi.dialogs.planning.AbstractBudgetCategoryRowColumnProvider;
-import org.miradi.dialogs.planning.treenodes.NewAbstractPlanningTreeNode;
+import org.miradi.dialogs.planning.treenodes.AbstractPlanningTreeNode;
 import org.miradi.dialogs.planning.treenodes.PlanningTreeAlwaysExpandedBaseObjectNode;
 import org.miradi.dialogs.planning.treenodes.PlanningTreeBaseObjectNode;
 import org.miradi.dialogs.planning.treenodes.UnspecifiedBaseObject;
@@ -46,7 +46,7 @@ public class PlanningCategoryTreeRebuilder extends AbstractTreeRebuilder
 	}
 	
 	@Override
-	public void rebuildTree(NewAbstractPlanningTreeNode rootNode) throws Exception
+	public void rebuildTree(AbstractPlanningTreeNode rootNode) throws Exception
 	{
 		rootNode.clearChildren();
 		ORefList allAsignmentRefs = new ORefList();
@@ -60,7 +60,7 @@ public class PlanningCategoryTreeRebuilder extends AbstractTreeRebuilder
 		rebuild(projectNode, allAsignmentRefs, initialLevel);
 	}
 	
-	private void rebuild(NewAbstractPlanningTreeNode parentNode, ORefList assignmentRefsThatApplyToThisNode, int currentLevel) throws Exception
+	private void rebuild(AbstractPlanningTreeNode parentNode, ORefList assignmentRefsThatApplyToThisNode, int currentLevel) throws Exception
 	{
 		final int ONE_LEVEL = 1;
 		int childLevel = currentLevel + ONE_LEVEL;
@@ -87,7 +87,7 @@ public class PlanningCategoryTreeRebuilder extends AbstractTreeRebuilder
 			ORefList assignmentRefsThatMatchPossibleChildHierarchy = assignmentRefsThatMatchPossibleChild.getOverlappingRefs(assignmentRefsThatApplyToThisNode);
 			if (shouldIncludeChildNode(assignmentRefsThatMatchPossibleChildHierarchy))
 			{
-				NewAbstractPlanningTreeNode childNode = createChildNode(parentNode, candidateChildRef, typeOfNodeBeingCreated);
+				AbstractPlanningTreeNode childNode = createChildNode(parentNode, candidateChildRef, typeOfNodeBeingCreated);
 				
 				parentNode.addChild(childNode);
 				rebuild(childNode, assignmentRefsThatMatchPossibleChildHierarchy, childLevel);
@@ -97,7 +97,7 @@ public class PlanningCategoryTreeRebuilder extends AbstractTreeRebuilder
 		possiblySortChildren(parentNode, parentNode.getRawChildrenByReference());
 	}
 
-	protected NewAbstractPlanningTreeNode createChildNode(NewAbstractPlanningTreeNode parentNode, ORef possibleChildRef, int typeOfNodeToCreate) throws Exception
+	protected AbstractPlanningTreeNode createChildNode(AbstractPlanningTreeNode parentNode, ORef possibleChildRef, int typeOfNodeToCreate) throws Exception
 	{
 		if (possibleChildRef.isValid())
 			return new PlanningTreeBaseObjectNode(getProject(), parentNode, possibleChildRef);

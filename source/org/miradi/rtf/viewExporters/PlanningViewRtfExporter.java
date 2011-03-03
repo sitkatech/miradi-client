@@ -39,7 +39,7 @@ import org.miradi.dialogs.planning.propertiesPanel.PlanningViewMainModelExporter
 import org.miradi.dialogs.planning.propertiesPanel.WorkPlanBudgetDetailsTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.WorkPlanExpenseAmountsTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.WorkPlanWorkUnitsTableModel;
-import org.miradi.dialogs.planning.treenodes.NewAbstractPlanningTreeNode;
+import org.miradi.dialogs.planning.treenodes.AbstractPlanningTreeNode;
 import org.miradi.dialogs.planning.treenodes.PlanningTreeRootNode;
 import org.miradi.dialogs.planning.upperPanel.ExportablePlanningTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningViewFutureStatusTableModel;
@@ -159,7 +159,7 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 	
 	public static MultiTableCombinedAsOneExporter createTables(Project project, PlanningTreeRowColumnProvider rowColumnProvider) throws Exception
 	{
-		NewAbstractPlanningTreeNode rootNode = new PlanningTreeRootNode(project);
+		AbstractPlanningTreeNode rootNode = new PlanningTreeRootNode(project);
  		new NormalTreeRebuilder(project, rowColumnProvider).rebuildTree(rootNode);
 		ExportablePlanningTreeTableModel model = new ExportablePlanningTreeTableModel(project, rootNode, rowColumnProvider, AbstractTableExporter.NO_UNIQUE_MODEL_IDENTIFIER);
 		
