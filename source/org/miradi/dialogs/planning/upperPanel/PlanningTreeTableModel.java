@@ -19,12 +19,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.upperPanel;
 
-import org.miradi.dialogs.planning.treenodes.AbstractPlanningTreeNode;
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.BaseObject;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
@@ -82,25 +80,7 @@ abstract public class PlanningTreeTableModel extends GenericTreeTableModel
 	@Override
 	public Object getValueAt(Object rawNode, int col)
 	{
-		AbstractPlanningTreeNode treeNode = (AbstractPlanningTreeNode) rawNode;
-		BaseObject baseObject = treeNode.getObject();
-		return getValueAt(baseObject, col);
-	}
-
-	public Object getValueAt(BaseObject baseObject, int col)
-	{
-		try
-		{	
-			if(baseObject == null)
-				return null;
-
-			return baseObject.toString();
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			return "[Error]";
-		}
+		throw new RuntimeException("TreeTables with more than one column are not supported");
 	}
 
 	public CodeList getColumnTags()
