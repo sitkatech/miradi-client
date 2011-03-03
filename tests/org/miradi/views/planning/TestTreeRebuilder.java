@@ -75,6 +75,22 @@ public class TestTreeRebuilder extends TestCaseWithProject
 //	}
 	
 	
+//	public void testPlanningTreeIndicatorNode() throws Exception
+//	{
+//		String relatedMethods = getIndicator().getPseudoData(Indicator.PSEUDO_TAG_RELATED_METHOD_OREF_LIST);
+//		ORefList methodRefs = new ORefList(relatedMethods);
+//		assertEquals("wrong method count?", 1, methodRefs.size());
+//		assertTrue("wrong type returned?", isMethod(methodRefs.get(0)));
+//	}
+//	
+//	private boolean isMethod(ORef ref)
+//	{
+//		Task task = (Task) project.findObject(ref);
+//		return task.isMethod();
+//	}
+
+	
+	
 	
 	
 
