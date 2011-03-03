@@ -402,8 +402,6 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		int type = refToAdd.getObjectType();
 		try
 		{
-			if(type == ConceptualModelDiagram.getObjectType())
-				return new PlanningTreeConceptualModelPageNode(project, refToAdd, visibleRows);
 			if(AbstractTarget.isAbstractTarget(type))
 				return new PlanningTreeTargetNode(project, diagram, refToAdd, visibleRows);
 			if(type == Goal.getObjectType())
