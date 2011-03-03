@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-03 09:59-0600\n"
+"POT-Creation-Date: 2011-03-03 11:23-0600\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -2129,7 +2129,7 @@ msgid "Adaptive Management Software for Conservation Projects"
 msgstr ""
 "Байгаль хамгааллын төслүүдэд зориулсан дасан зохицох менежментийн Software"
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:141
+#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:144
 msgid "Add '%s' to User Dictionary"
 msgstr "Хэрэглэгчийн толь бичигт '%'-ийг нэмж оруулах"
 
@@ -2968,7 +2968,7 @@ msgstr ""
 msgid "Control Bar"
 msgstr "Control Bar"
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:100
+#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:102
 msgid "Copy"
 msgstr "Хуулах"
 
@@ -3088,7 +3088,7 @@ msgstr ""
 msgid "Customize..."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:95
+#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:97
 msgid "Cut"
 msgstr "Хасах"
 
@@ -5158,7 +5158,7 @@ msgstr ""
 msgid "Month Selection: "
 msgstr "Сарыг сонгох: "
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:113
+#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:116
 msgid "More Suggestions"
 msgstr ""
 
@@ -5453,7 +5453,7 @@ msgstr "Аюулын ерөнхий зэрэглэл"
 msgid "Page:"
 msgstr "Хуудас:"
 
-#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:105
+#: Miradi/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:108
 msgid "Paste"
 msgstr "Оруулах"
 
