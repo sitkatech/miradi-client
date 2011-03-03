@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-03 11:23-0600\n"
+"POT-Creation-Date: 2011-03-03 13:41-0600\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -5726,6 +5726,7 @@ msgid "Project Resource Filter Is On"
 msgstr "Төслийн Нөөцийн Шүүлтүүр ажиллагаатай"
 
 #: Miradi/source/org/miradi/views/planning/ProjectResourceManagementPanel.java:51
+#: Miradi/source/org/miradi/views/planning/PlanningProjectResourceManagementConfiguration.java:59
 #: Miradi/source/org/miradi/views/workplan/ProjectResourceManagementConfiguration.java:58
 msgid "Project Resources"
 msgstr "Төслийн нөөцүүд"
@@ -7687,7 +7688,7 @@ msgstr ""
 msgid "This item is shared, so will be deleted from multiple places."
 msgstr "Энэ зүйлийг хамтаар хэрэглэдэг тул олон газраас устгагдах болно."
 
-#: Miradi/source/org/miradi/dialogs/planning/treenodes/AbstractPlanningTreeNode.java:449
+#: Miradi/source/org/miradi/dialogs/planning/treenodes/AbstractPlanningTreeNode.java:428
 msgid "This method is not responsible for creating task nodes."
 msgstr "Энэ арга даалгаварын зангилаа уулзварыг үүсгэх үүрэггүй."
 
