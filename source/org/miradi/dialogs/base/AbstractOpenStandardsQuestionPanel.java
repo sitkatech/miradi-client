@@ -326,6 +326,7 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		leftBox.add(iconComponent);
 		leftBox.add(Box.createHorizontalStrut(STRUT_WIDTH_BETWEEN_ICON_AND_TEXT));
 		leftBox.add(leftComponent);
+		leftBox.add(Box.createHorizontalStrut(STRUT_WIDTH_AFTER_LEFT_TEXT));
 
 		Vector<JComponent> components = new Vector<JComponent>();
 		components.add(leftBox);
@@ -481,5 +482,6 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 	private SingleRowSelectionHandler rowSelectionHandler;
 	protected static final int INDENT_PER_LEVEL = 25;
 	private static final int STRUT_WIDTH_BETWEEN_ICON_AND_TEXT = 10;
+	private static final int STRUT_WIDTH_AFTER_LEFT_TEXT = 5;
 	protected static final String EMPTY_COLUMN_TEXT = "";
 }
