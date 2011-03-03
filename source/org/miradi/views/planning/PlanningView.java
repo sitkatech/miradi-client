@@ -77,6 +77,7 @@ import org.miradi.views.umbrella.doers.TaskMoveDownDoer;
 import org.miradi.views.umbrella.doers.TaskMoveUpDoer;
 import org.miradi.views.umbrella.doers.TreeNodeShareActivityDoer;
 import org.miradi.views.umbrella.doers.TreeNodeShareMethodDoer;
+import org.miradi.views.workplan.WorkPlanBudgetCategoryManagementPanel;
 
 public class PlanningView extends TabbedView
 {
@@ -93,7 +94,7 @@ public class PlanningView extends TabbedView
 		monitoringPlanManagementPanel = MonitoringPlanManagementPanel.createMonitoringPlanPanel(getMainWindow());
 		objectsOnlyManagementPanel = ObjectsOnlyManagementPanel.createObjectsOnlyPanel(getMainWindow());
 		customPlanManagementPanel = ConfigurablePlanningManagementPanel.createActionPlanPanel(getMainWindow());
-		resourceManagementPanel = StrategicPlanResourcesManagementPanel.createProjectResourcesPanelWithoutBudgetColumns(getMainWindow());
+		resourceManagementPanel = WorkPlanBudgetCategoryManagementPanel.createManagementPanel(getMainWindow(), new PlanningProjectResourceManagementConfiguration(getProject()));
 		
 		managementPanelMap = new HashMap<String, PlanningTreeManagementPanel>();
 
