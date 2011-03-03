@@ -43,6 +43,7 @@ import org.miradi.dialogfields.DashboardFlagIconField;
 import org.miradi.dialogfields.DashboardStatusIconField;
 import org.miradi.dialogfields.DashboardStatusLabelField;
 import org.miradi.dialogfields.ObjectDataField;
+import org.miradi.dialogfields.TextAreaRightClickMouseHandler;
 import org.miradi.dialogs.dashboard.AbstractLongDescriptionProvider;
 import org.miradi.dialogs.dashboard.DashboardRowDefinition;
 import org.miradi.dialogs.dashboard.DashboardRowDefinitionManager;
@@ -249,8 +250,8 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		statusTextComponent.setBackground(getItemBackgroundColor(level));
 		addUpdatedCustomField(statusTextField);
 
-		
-		PanelTitleLabel labelComponent = new PanelTitleLabel(choiceItem.getLabel());
+		PanelLabelWithSelectableText labelComponent = new PanelLabelWithSelectableText(choiceItem.getLabel());
+		new TextAreaRightClickMouseHandler(getMainWindow().getActions(), labelComponent);		
 		labelComponent.setOpaque(true);
 		labelComponent.setBackground(getItemBackgroundColor(level));
 
@@ -282,7 +283,8 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		JComponent leftComponent = new PanelLabelWithSelectableText(leftColumnText);
 		leftComponent.setOpaque(true);
 		leftComponent.setBackground(getItemBackgroundColor(level));
-		JComponent rightComponent = new PanelLabelWithSelectableText(rightColumnTranslatedText);
+		PanelLabelWithSelectableText rightComponent = new PanelLabelWithSelectableText(rightColumnTranslatedText);
+		new TextAreaRightClickMouseHandler(getMainWindow().getActions(), rightComponent);		
 		rightComponent.setOpaque(true);
 		rightComponent.setBackground(getItemBackgroundColor(level));
 		
