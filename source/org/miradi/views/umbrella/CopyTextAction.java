@@ -36,5 +36,5 @@ public class CopyTextAction extends AbstractAction
 		field.copy();
 	}
 	
-	JTextComponent field;
+	private JTextComponent field;
 }

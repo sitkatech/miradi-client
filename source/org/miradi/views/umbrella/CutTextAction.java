@@ -36,6 +36,5 @@ public class CutTextAction extends AbstractAction
 		field.cut();
 	}
 	
-	JTextComponent field;
-
+	private JTextComponent field;
 }
