@@ -26,9 +26,9 @@ import org.miradi.dialogs.planning.upperPanel.rebuilder.PlanningCategoryTreeRebu
 import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.project.Project;
 
-public class NewBudgetCategoryTreeModel extends TreeTableModelWithRebuilder
+public class BudgetCategoryTreeModel extends TreeTableModelWithRebuilder
 {
-	public NewBudgetCategoryTreeModel(Project projectToUse,	TreeTableNode rootNode,	PlanningTreeRowColumnProvider rowColumnProvider, String uniqueTreeTableModelIdentifierToUse) throws Exception
+	public BudgetCategoryTreeModel(Project projectToUse,	TreeTableNode rootNode,	PlanningTreeRowColumnProvider rowColumnProvider, String uniqueTreeTableModelIdentifierToUse) throws Exception
 	{
 		super(projectToUse, rootNode, rowColumnProvider, uniqueTreeTableModelIdentifierToUse);
 	}
