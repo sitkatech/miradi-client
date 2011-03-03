@@ -32,31 +32,31 @@ public class ScopeStressBasedThreatRatingQuestion extends ThreatRatingQuestion
 	@Override
 	protected String getLowRatingChoiceItemDescription()
 	{
-		return EAM.text("<html><b>Low:</b> The threat is likely to be <b>very narrow</b> in its scope, affecting the target across a <b>small proportion (1-10%)</b> of its occurrence/population.</html>");
+		return EAM.text("<html><b>Low:</b> The stress is likely to be <b>very narrow</b> in its scope, affecting the target across a <b>small proportion (1-10%)</b> of its occurrence/population.</html>");
 	}
 	
 	@Override
 	protected String getMediumRatingChoiceItemDescription()
 	{
-		return EAM.text("<html><b>Medium:</b> The threat is likely to be <b>restricted</b> in its scope, affecting the target across <b>some (11-30%)</b> of its occurrence/population.</html>");
+		return EAM.text("<html><b>Medium:</b> The stress is likely to be <b>restricted</b> in its scope, affecting the target across <b>some (11-30%)</b> of its occurrence/population.</html>");
 	}
 
 	@Override
 	protected String getHighRatingChoiceItemDescription()
 	{
-		return EAM.text("<html><b>High:</b> The threat is likely to be <b>widespread</b> in its scope, affecting the target across <b>much (31-70%)</b> of its occurrence/population.</html>");
+		return EAM.text("<html><b>High:</b> The stress is likely to be <b>widespread</b> in its scope, affecting the target across <b>much (31-70%)</b> of its occurrence/population.</html>");
 	}
 
 	@Override
 	protected String getVeryHighRatingChoiceItemDescription()
 	{
-		return EAM.text("<html><b>Very High:</b> The threat is likely to be <b>pervasive</b> in its scope, affecting the target across <b>all or most (71-100%)</b> of its occurrence/population.</html>");
+		return EAM.text("<html><b>Very High:</b> The stress is likely to be <b>pervasive</b> in its scope, affecting the target across <b>all or most (71-100%)</b> of its occurrence/population.</html>");
 	}
 	
 	private static String getDescription()
 	{
 		return EAM.text("<html><strong>Scope - </strong>Most commonly defined spatially as the proportion of the target " +
-				"that can reasonably be expected to be affected by the threat within ten years given " +
+				"that can reasonably be expected to be affected by the stress within ten years given " +
 				"the continuation of current circumstances and trends. For ecosystems and ecological communities, " +
 				"measured as the proportion of the target's occurrence. For species, measured as the proportion " +
 				"of the target's population.</html>");
