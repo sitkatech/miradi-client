@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-03 15:27-0600\n"
+"POT-Creation-Date: 2011-03-03 15:38-0600\n"
 "PO-Revision-Date: 2010-09-30 09:31+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -74,7 +74,7 @@ msgstr ""
 "\n"
 "Ви впевнені, що хочете видалити цей ресурс?"
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:95
+#: Miradi/source/org/miradi/database/DataUpgrader.java:104
 msgid ""
 "\n"
 "WARNING: Attempting to open this project again before repairing the problem "
@@ -1158,7 +1158,7 @@ msgstr ""
 msgid "<strong>Version: %s</strong>"
 msgstr "<strong>Версія: %и</strong>"
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:56
+#: Miradi/source/org/miradi/database/DataUpgrader.java:61
 msgid ""
 "A backup archive for this project already exists.Continuing with this "
 "migration will replace the existing backup with a new copy.It is probably "
@@ -2302,7 +2302,7 @@ msgstr "Ви впевнені?"
 msgid "Arial"
 msgstr "Arial"
 
-#: Miradi/source/org/miradi/views/diagram/doers/ArrangeConceptualModelDoer.java:52
+#: Miradi/source/org/miradi/views/diagram/doers/ArrangeConceptualModelDoer.java:54
 msgid "Arranging Diagram"
 msgstr ""
 
@@ -2460,7 +2460,7 @@ msgstr ""
 "Спробуйте виконати команду в той час як пробується опція побічного ефекту:\n"
 "спробувати  "
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:94
+#: Miradi/source/org/miradi/database/DataUpgrader.java:103
 msgid ""
 "Attempt to migrate project to the current data format FAILED\n"
 "The pre-migration project was archived in: "
@@ -2574,8 +2574,8 @@ msgstr "Бюджет перевищений на: %"
 msgid "Bundle Rules"
 msgstr "Вузлові правила"
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:48
-#: Miradi/source/org/miradi/database/DataUpgrader.java:60
+#: Miradi/source/org/miradi/database/DataUpgrader.java:53
+#: Miradi/source/org/miradi/database/DataUpgrader.java:65
 #: Miradi/source/org/miradi/views/diagram/doers/AbstractPasteDoer.java:72
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:52
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:225
@@ -2617,7 +2617,7 @@ msgstr "Button|Імпорт"
 msgid "Button|Install..."
 msgstr "Button|Встановити..."
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:48
+#: Miradi/source/org/miradi/database/DataUpgrader.java:53
 msgid "Button|Migrate"
 msgstr "Button|Переформатувати"
 
@@ -2653,7 +2653,7 @@ msgstr ""
 msgid "Button|Replace"
 msgstr "Button|Замінити"
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:60
+#: Miradi/source/org/miradi/database/DataUpgrader.java:65
 msgid "Button|Replace Backup"
 msgstr "Button|Замінити дублікат"
 
@@ -5079,6 +5079,14 @@ msgstr "Тільки методи"
 msgid "Migrated High Level Estimate:"
 msgstr "Переведений високий рівень оцінки"
 
+#: Miradi/source/org/miradi/database/DataUpgrader.java:76
+msgid "Migrating Project Data"
+msgstr ""
+
+#: Miradi/source/org/miradi/database/DataUpgrader.java:145
+msgid "Migrating..."
+msgstr ""
+
 #: Miradi/source/org/miradi/questions/TrendQuestion.java:42
 msgid "Mild Decrease"
 msgstr "Плавне зменшення"
@@ -5692,7 +5700,7 @@ msgstr ""
 msgid "Project Description:"
 msgstr "Опис проекту:"
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:49
+#: Miradi/source/org/miradi/database/DataUpgrader.java:54
 msgid "Project Migration Required"
 msgstr "Необхідне переформатування проекту"
 
@@ -5761,7 +5769,7 @@ msgstr "У проекті відсутня діаграма концептуал
 msgid "Project is missing Conceptual Model Manifest File"
 msgstr "У проекті відсутній явний файл концептуальної моделі"
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:92
+#: Miradi/source/org/miradi/database/DataUpgrader.java:101
 msgid "Project was migrated to the current data format"
 msgstr "Проект був переведений у поточний формат даних"
 
@@ -7532,7 +7540,7 @@ msgstr ""
 msgid "That project is in use by another copy of this application"
 msgstr "Цей проект використовується іншим екземпляром цієї аплікації"
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:76
+#: Miradi/source/org/miradi/database/DataUpgrader.java:85
 msgid ""
 "That project is too old to be migrated by this version of Miradi. You can "
 "use Miradi 1.0 to migrate it to a modern data format, and after that it can "
@@ -7684,7 +7692,7 @@ msgid ""
 "This project resource is being used in the Work Plan and Financial Budget."
 msgstr "Цей ресурс проекту використаний у Робочому плані і Бюджеті"
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:43
+#: Miradi/source/org/miradi/database/DataUpgrader.java:48
 msgid ""
 "This project was created with an older version of Miradi, so it needs to be "
 "migrated to the current data format before it can be opened. A backup will "
@@ -8303,7 +8311,7 @@ msgstr ""
 "Очікувані результати - загальний підсумок бажаного стану чи остаточних умов "
 "проектної території, над досягненням яких працює проект."
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:61
+#: Miradi/source/org/miradi/database/DataUpgrader.java:66
 msgid "WARNING"
 msgstr "ЗАСТЕРЕЖЕННЯ"
 
