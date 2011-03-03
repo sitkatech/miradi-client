@@ -451,8 +451,6 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 				return new PlanningTreeResourceAssignmentNode(project, refToAdd, visibleRows);
 			if (type == ExpenseAssignment.getObjectType())
 				return new PlanningTreeExpenseAssignmentNode(project, refToAdd, visibleRows);
-			if (SubTarget.is(type))
-				return new SubTargetNode(project, refToAdd, visibleRows);
 			
 			throw new Exception("Attempted to create node of unknown type: " + refToAdd);
 		}
