@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-02 15:12-0600\n"
+"POT-Creation-Date: 2011-03-03 09:59-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -662,11 +662,25 @@ msgid ""
 "particular stress.</html>"
 msgstr ""
 
+#: Miradi/source/org/miradi/questions/ScopeStressBasedThreatRatingQuestion.java:47
+msgid ""
+"<html><b>High:</b> The stress is likely to be <b>widespread</b> in its "
+"scope, affecting the target across <b>much (31-70%)</b> of its occurrence/"
+"population.</html>"
+msgstr ""
+
 #: Miradi/source/org/miradi/questions/ScopeThreatRatingQuestion.java:47
 msgid ""
 "<html><b>High:</b> The threat is likely to be <b>widespread</b> in its "
 "scope, affecting the target across <b>much (31-70%)</b> of its occurrence/"
 "population.</html>"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/SeverityStressBasedThreatRatingQuestion.java:47
+msgid ""
+"<html><b>High:</b> Within the scope, the stress is likely to <b>seriously "
+"degrade/reduce</b> the target or reduce its population by <b>31-70%</b> "
+"within ten years or three generations.</html>"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/SeverityThreatRatingQuestion.java:47
@@ -690,11 +704,25 @@ msgid ""
 "stress.</html>"
 msgstr ""
 
+#: Miradi/source/org/miradi/questions/ScopeStressBasedThreatRatingQuestion.java:35
+msgid ""
+"<html><b>Low:</b> The stress is likely to be <b>very narrow</b> in its "
+"scope, affecting the target across a <b>small proportion (1-10%)</b> of its "
+"occurrence/population.</html>"
+msgstr ""
+
 #: Miradi/source/org/miradi/questions/ScopeThreatRatingQuestion.java:35
 msgid ""
 "<html><b>Low:</b> The threat is likely to be <b>very narrow</b> in its "
 "scope, affecting the target across a <b>small proportion (1-10%)</b> of its "
 "occurrence/population.</html>"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/SeverityStressBasedThreatRatingQuestion.java:35
+msgid ""
+"<html><b>Low:</b> Within the scope, the stress is likely to only <b>slightly "
+"degrade/reduce</b> the target or reduce its population by <b>1-10%</b> "
+"within ten years or three generations.</html>"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/SeverityThreatRatingQuestion.java:35
@@ -724,11 +752,25 @@ msgid ""
 "particular stress.</html>"
 msgstr ""
 
+#: Miradi/source/org/miradi/questions/ScopeStressBasedThreatRatingQuestion.java:41
+msgid ""
+"<html><b>Medium:</b> The stress is likely to be <b>restricted</b> in its "
+"scope, affecting the target across <b>some (11-30%)</b> of its occurrence/"
+"population.</html>"
+msgstr ""
+
 #: Miradi/source/org/miradi/questions/ScopeThreatRatingQuestion.java:41
 msgid ""
 "<html><b>Medium:</b> The threat is likely to be <b>restricted</b> in its "
 "scope, affecting the target across <b>some (11-30%)</b> of its occurrence/"
 "population.</html>"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/SeverityStressBasedThreatRatingQuestion.java:41
+msgid ""
+"<html><b>Medium:</b> Within the scope, the stress is likely to <b>moderately "
+"degrade/reduce</b> the target or reduce its population by <b>11-30%</b> "
+"within ten years or three generations.</html>"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/SeverityThreatRatingQuestion.java:41
@@ -766,11 +808,25 @@ msgid ""
 "particular stress.</html>"
 msgstr ""
 
+#: Miradi/source/org/miradi/questions/ScopeStressBasedThreatRatingQuestion.java:53
+msgid ""
+"<html><b>Very High:</b> The stress is likely to be <b>pervasive</b> in its "
+"scope, affecting the target across <b>all or most (71-100%)</b> of its "
+"occurrence/population.</html>"
+msgstr ""
+
 #: Miradi/source/org/miradi/questions/ScopeThreatRatingQuestion.java:53
 msgid ""
 "<html><b>Very High:</b> The threat is likely to be <b>pervasive</b> in its "
 "scope, affecting the target across <b>all or most (71-100%)</b> of its "
 "occurrence/population.</html>"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/SeverityStressBasedThreatRatingQuestion.java:53
+msgid ""
+"<html><b>Very High:</b> Within the scope, the stress is likely to <b>destroy "
+"or eliminate</b> the target, or reduce its population by <b>71-100%</b> "
+"within ten years or three generations.</html>"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/SeverityThreatRatingQuestion.java:53
@@ -810,6 +866,16 @@ msgstr ""
 msgid ""
 "<html><strong>Irreversibility - </strong>The degree to which the effects of "
 "a threat can be restored.</html>"
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/ScopeStressBasedThreatRatingQuestion.java:58
+msgid ""
+"<html><strong>Scope - </strong>Most commonly defined spatially as the "
+"proportion of the target that can reasonably be expected to be affected by "
+"the stress within ten years given the continuation of current circumstances "
+"and trends. For ecosystems and ecological communities, measured as the "
+"proportion of the target's occurrence. For species, measured as the "
+"proportion of the target's population.</html>"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/ScopeThreatRatingQuestion.java:58
@@ -922,6 +988,16 @@ msgstr ""
 "<html>本版Miradi已经更改了策略评级选项功能。<br>时段及开支字段已被删除，但"
 "<br>冲击及可行性字段现在包含了那些属性。<br><br>请检查您的策略评级以确保它们"
 "是否恰当。 \t\t"
+
+#: Miradi/source/org/miradi/questions/SeverityStressBasedThreatRatingQuestion.java:58
+msgid ""
+"<strong>Severity - </strong>Within the scope, the level of damage to the "
+"target from the stress that can reasonably be expected given the "
+"continuation of current circumstances and trends. For ecosystems and "
+"ecological communities, typically measured as the degree of destruction or "
+"degradation of the target within the scope. For species, usually measured as "
+"the degree of reduction of the target population within the scope."
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/SeverityThreatRatingQuestion.java:58
 msgid ""
@@ -16056,20 +16132,21 @@ msgid ""
 "operating systems, these are:<ul><li><b>Windows XP:</b> C:\\Documents and "
 "Settings\\<i>Your User Name</i>\\My Documents\\Miradi</li><li><b>Windows "
 "Vista:</b> C:\\Users\\<i>Your User Name</i>\\Documents\\Miradi</"
-"li><li><b>Mac OSX:</b> /Users/<i>yourname</i>/Miradi</li><li><b>Linux:</b> /"
-"home/<i>Your User Name</i>/Miradi</li></ul><p>In this folder, you will see "
-"one folder for each Miradi project. You can move, copy, delete, or rename "
-"these folders. Remember, however, that the folder itself is the Miradi \"file"
-"\" - in other words, the name of the folder is the name of the file in "
-"Miradi. You can also manage these files from the Welcome page of the Miradi "
-"program.</p><p>In some instances, you may need to change the default "
-"location for your Miradi files. For example, if your laptop normally stores "
-"\"My Documents\" on a network drive, but you then disconnect your computer "
-"from the network, you will need to specify a new default local folder. Click "
-"on the button below to make this change.</p><p class='hint'><b>Hint:</b> "
-"Make sure that the folder that you specify is included in the backup routine "
-"for your computer to ensure that you do not lose all your Miradi work in the "
-"event of a system failure.</p><p></p></HTML>"
+"li><li><b>Windows 7:</b> C:\\Users\\<i>Your User Name</i>\\Documents"
+"\\Miradi</li><li><b>Mac OSX:</b> /Users/<i>yourname</i>/Miradi</"
+"li><li><b>Linux:</b> /home/<i>Your User Name</i>/Miradi</li></ul><p>In this "
+"folder, you will see one folder for each Miradi project. You can move, copy, "
+"delete, or rename these folders. Remember, however, that the folder itself "
+"is the Miradi \"file\" - in other words, the name of the folder is the name "
+"of the file in Miradi. You can also manage these files from the Welcome page "
+"of the Miradi program.</p><p>In some instances, you may need to change the "
+"default location for your Miradi files. For example, if your laptop normally "
+"stores \"My Documents\" on a network drive, but you then disconnect your "
+"computer from the network, you will need to specify a new default local "
+"folder. Click on the button below to make this change.</p><p "
+"class='hint'><b>Hint:</b> Make sure that the folder that you specify is "
+"included in the backup routine for your computer to ensure that you do not "
+"lose all your Miradi work in the event of a system failure.</p><p></p></HTML>"
 msgstr ""
 
 msgid ""
