@@ -215,7 +215,6 @@ import org.miradi.views.planning.TestFullTimeEmployeeCalculationsInsideModel;
 import org.miradi.views.planning.TestPlanningTreeActivityNode;
 import org.miradi.views.planning.TestPlanningTreeIndicatorNode;
 import org.miradi.views.planning.TestPlanningTreeStrategyNode;
-import org.miradi.views.planning.TestPlanningTreeTargetNode;
 import org.miradi.views.planning.TestPlanningViewMainTableModel;
 import org.miradi.views.threatrating.TestTargetSummartyRowTableModel;
 import org.miradi.views.umbrella.TestUndoRedo;
@@ -460,7 +459,6 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestDeleteAnnotationDoer.class));
 		
 		// view.planning package
-		suite.addTest(new TestSuite(TestPlanningTreeTargetNode.class));
 		suite.addTest(new TestSuite(TestPlanningTreeStrategyNode.class));
 		suite.addTest(new TestSuite(TestPlanningTreeActivityNode.class));
 		suite.addTest(new TestSuite(TestPlanningTreeIndicatorNode.class));
