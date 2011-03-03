@@ -65,7 +65,7 @@ public class TextAreaRightClickMouseHandler extends MouseAdapter
 		return menu;
 	}
 	
-	public JTextComponent getTextField()
+	private JTextComponent getTextField()
 	{
 		return textField;
 	}
