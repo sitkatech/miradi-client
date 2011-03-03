@@ -90,6 +90,32 @@ public class TestTreeRebuilder extends TestCaseWithProject
 //	}
 
 	
+//	public void testMergeChildIntoList() throws Exception
+//	{
+//		Strategy strategy = getProject().createStrategy();
+//		Task activity = getProject().createTask(strategy);
+//		ORefList relevantActivityRefs = new ORefList(activity);
+//		RelevancyOverrideSet relevantActivities = new RelevancyOverrideSet();
+//		for (int index = 0; index < relevantActivityRefs.size(); ++index)
+//		{
+//			relevantActivities.add(new RelevancyOverride(relevantActivityRefs.get(index), true));
+//		}
+//		
+//		Cause factor = getProject().createCause();
+//		Objective objective = getProject().createObjective(factor);
+//		getProject().fillObjectUsingCommand(objective, Objective.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevantActivities.toString());
+//		
+//		PlanningTreeObjectiveNode objectiveNode = new PlanningTreeObjectiveNode(getProject(), getProject().getTestingDiagramObject(), objective.getRef(), new CodeList());	
+//		assertEquals("Wrong objectice children count?", 1, objectiveNode.getChildCount());
+//		
+//		Vector<AbstractPlanningTreeNode> destination = new Vector<AbstractPlanningTreeNode>();
+//		destination.add(objectiveNode);
+//		
+//		PlanningTreeTaskNode activityNode = new PlanningTreeTaskNode(getProject(), strategy.getRef(), activity.getRef(), new CodeList());
+//		AbstractPlanningTreeNode.mergeChildIntoList(destination, activityNode);
+//		
+//		assertEquals("Activity node should not have been added since its a child of the objective?", 1, destination.size());
+//	}
 	
 	
 	
