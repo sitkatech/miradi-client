@@ -51,7 +51,7 @@ public class TextAreaRightClickMouseHandler extends MouseAdapter
 			fireRightClick(e);
 	}
 	
-	void fireRightClick(MouseEvent e)
+	private void fireRightClick(MouseEvent e)
 	{
 		getRightClickMenu().show(getTextField(), e.getX(), e.getY());
 	}
