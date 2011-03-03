@@ -32,7 +32,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Stress;
 import org.miradi.project.Project;
-import org.miradi.questions.ScopeThreatRatingQuestion;
+import org.miradi.questions.ScopeStressBasedThreatRatingQuestion;
 import org.miradi.questions.SeverityThreatRatingQuestion;
 import org.miradi.questions.StressRatingChoiceQuestion;
 import org.miradi.utils.ObjectsActionButton;
@@ -62,7 +62,7 @@ public class StressDetailsSubPanel extends ObjectDataInputPanel
 
 	private void addRatingsFields() throws Exception
 	{
-		ObjectDataInputField scopeField = createPopupQuestionEditor(parentDialog, Stress.getObjectType(), Stress.TAG_SCOPE, ScopeThreatRatingQuestion.class);
+		ObjectDataInputField scopeField = createPopupQuestionEditor(parentDialog, Stress.getObjectType(), Stress.TAG_SCOPE, ScopeStressBasedThreatRatingQuestion.class);
 		ObjectDataInputField severityField = createPopupQuestionEditor(parentDialog, Stress.getObjectType(), Stress.TAG_SEVERITY, SeverityThreatRatingQuestion.class);		
 		addFieldsOnOneLine(EAM.text("Ratings"), new ObjectDataInputField[]{scopeField, severityField});
 		
