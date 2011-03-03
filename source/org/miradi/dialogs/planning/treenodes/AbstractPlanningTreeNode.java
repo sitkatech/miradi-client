@@ -385,17 +385,6 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		}
 	}
 	
-	protected Vector<AbstractPlanningTreeNode> buildExpenseAssignmentNodes(ORefList expenseAssignmentRefs) throws Exception
-	{
-		Vector<AbstractPlanningTreeNode> expenseAssignmentNodes = new Vector<AbstractPlanningTreeNode>();
-		for (int index = 0; index < expenseAssignmentRefs.size(); ++index)
-		{
-			expenseAssignmentNodes.add(new PlanningTreeExpenseAssignmentNode(project, expenseAssignmentRefs.get(index), visibleRows));
-		}
-	
-		return expenseAssignmentNodes;
-	}
-
 	protected Vector<AbstractPlanningTreeNode> buildResourceAssignmentNodes(ORefList assignmentRefs) throws Exception
 	{
 		Vector<AbstractPlanningTreeNode> resourceAssignmentNodes = new Vector<AbstractPlanningTreeNode>();

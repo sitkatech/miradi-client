@@ -42,7 +42,6 @@ public class PlanningTreeIndicatorNode extends AbstractPlanningTreeNode
 	public void rebuild() throws Exception
 	{
 		addChildren(buildResourceAssignmentNodes(indicator.getResourceAssignmentRefs()));
-		addChildren(buildExpenseAssignmentNodes(indicator.getRefListData(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS)));
 		createAndAddTaskNodes(indicator.getMethodRefs(), getObjectReference());
 		addSortedMeasurementChildren();
 	}
