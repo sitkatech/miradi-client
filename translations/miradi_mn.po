@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-03 15:06-0600\n"
+"POT-Creation-Date: 2011-03-03 15:27-0600\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -3527,7 +3527,7 @@ msgstr "Төсөл үргэлжлэх нийт хугацаа"
 msgid "Error"
 msgstr "Алдаа"
 
-#: Miradi/source/org/miradi/dialogs/planning/treenodes/NewPlanningTreeErrorNode.java:59
+#: Miradi/source/org/miradi/dialogs/planning/treenodes/PlanningTreeErrorNode.java:59
 msgid "Error Creating: %s"
 msgstr "Алдаа үүсгэх: %s"
 
