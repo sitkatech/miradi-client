@@ -24,7 +24,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Vector;
 
-import org.miradi.dialogs.planning.treenodes.NewAbstractPlanningTreeNode;
+import org.miradi.dialogs.planning.treenodes.AbstractPlanningTreeNode;
 import org.miradi.dialogs.planning.treenodes.NewPlanningTaskNode;
 import org.miradi.dialogs.planning.treenodes.PlanningTreeBaseObjectNode;
 import org.miradi.dialogs.planning.treenodes.NewPlanningTreeErrorNode;
@@ -67,7 +67,7 @@ abstract public class AbstractTreeRebuilder
 		rowColumnProvider = rowColumnProviderToUse;
 	}
 	
-	public void rebuildTree(NewAbstractPlanningTreeNode rootNode) throws Exception
+	public void rebuildTree(AbstractPlanningTreeNode rootNode) throws Exception
 	{
 		CodeList rows = getRowColumnProvider().getRowCodesToShow();
 		rebuildTree(rootNode, null, rows);
@@ -75,7 +75,7 @@ abstract public class AbstractTreeRebuilder
 		removeUnwantedLayersAndPromoteChildren(rootNode, rows);
 	}
 
-	private void rebuildTree(NewAbstractPlanningTreeNode parentNode, DiagramObject diagram, CodeList rows)
+	private void rebuildTree(AbstractPlanningTreeNode parentNode, DiagramObject diagram, CodeList rows)
 	{
 		try
 		{
@@ -92,7 +92,7 @@ abstract public class AbstractTreeRebuilder
 
 			for(int index = 0; index < parentNode.getChildCount(); ++index)
 			{
-				NewAbstractPlanningTreeNode childNode = (NewAbstractPlanningTreeNode) parentNode.getChild(index);
+				AbstractPlanningTreeNode childNode = (AbstractPlanningTreeNode) parentNode.getChild(index);
 				rebuildTree(childNode, diagram, rows);
 			}
 		}
@@ -102,7 +102,7 @@ abstract public class AbstractTreeRebuilder
 		}
 	}
 
-	private ORefList getListWithoutChildrenThatWouldCauseRecursion(NewAbstractPlanningTreeNode parentNode, ORefList candidateChildRefs) throws Exception
+	private ORefList getListWithoutChildrenThatWouldCauseRecursion(AbstractPlanningTreeNode parentNode, ORefList candidateChildRefs) throws Exception
 	{
 		TreeTableNode node = parentNode;
 		ORefList hierarchySoFar = new ORefList();
@@ -137,7 +137,7 @@ abstract public class AbstractTreeRebuilder
 		return Desire.findRelevantDesires(projectToUse, strategyRef, Objective.getObjectType());
 	}
 	
-	private void createAndAddChildren(NewAbstractPlanningTreeNode parent, ORefList childRefsToAdd) throws Exception
+	private void createAndAddChildren(AbstractPlanningTreeNode parent, ORefList childRefsToAdd) throws Exception
 	{
 		for(int index = 0; index < childRefsToAdd.size(); ++index)
 		{
@@ -146,13 +146,13 @@ abstract public class AbstractTreeRebuilder
 		}
 	}
 
-	private void createAndAddChild(NewAbstractPlanningTreeNode parent, ORef childRefToAdd) throws Exception
+	private void createAndAddChild(AbstractPlanningTreeNode parent, ORef childRefToAdd) throws Exception
 	{
-		NewAbstractPlanningTreeNode childNode = createChildNode(parent, childRefToAdd);
+		AbstractPlanningTreeNode childNode = createChildNode(parent, childRefToAdd);
 		parent.addChild(childNode);
 	}
 
-	private NewAbstractPlanningTreeNode createChildNode(NewAbstractPlanningTreeNode parentNode, ORef refToAdd) throws Exception
+	private AbstractPlanningTreeNode createChildNode(AbstractPlanningTreeNode parentNode, ORef refToAdd) throws Exception
 	{
 		int[] supportedTypes = new int[] {
 			ConceptualModelDiagram.getObjectType(),
@@ -196,13 +196,13 @@ abstract public class AbstractTreeRebuilder
 		}
 	}
 	
-	private void deleteUnclesAndTheirChildren(NewAbstractPlanningTreeNode rootNode)
+	private void deleteUnclesAndTheirChildren(AbstractPlanningTreeNode rootNode)
 	{
-		Vector<NewAbstractPlanningTreeNode> childrenToKeep = new Vector<NewAbstractPlanningTreeNode>();
-		for(NewAbstractPlanningTreeNode childNode : rootNode.getRawChildrenByReference())
+		Vector<AbstractPlanningTreeNode> childrenToKeep = new Vector<AbstractPlanningTreeNode>();
+		for(AbstractPlanningTreeNode childNode : rootNode.getRawChildrenByReference())
 		{
 			boolean keepThisChild = true;
-			for(NewAbstractPlanningTreeNode otherChildNode : rootNode.getRawChildrenByReference())
+			for(AbstractPlanningTreeNode otherChildNode : rootNode.getRawChildrenByReference())
 			{
 				if(childNode.equals(otherChildNode))
 				{
@@ -225,15 +225,15 @@ abstract public class AbstractTreeRebuilder
 		rootNode.setRawChildren(childrenToKeep);
 	}
 
-	private void removeUnwantedLayersAndPromoteChildren(NewAbstractPlanningTreeNode node, CodeList objectTypesToShow)
+	private void removeUnwantedLayersAndPromoteChildren(AbstractPlanningTreeNode node, CodeList objectTypesToShow)
 	{
 		if(node.isAnyChildAllocated())
 			node.setAllocated();
 		
-		Vector<NewAbstractPlanningTreeNode> newChildren = new Vector<NewAbstractPlanningTreeNode>();
+		Vector<AbstractPlanningTreeNode> newChildren = new Vector<AbstractPlanningTreeNode>();
 		for(int i = 0; i < node.getChildCount(); ++i)
 		{
-			NewAbstractPlanningTreeNode child = (NewAbstractPlanningTreeNode) node.getChild(i);
+			AbstractPlanningTreeNode child = (AbstractPlanningTreeNode) node.getChild(i);
 			removeUnwantedLayersAndPromoteChildren(child, objectTypesToShow);
 			
 			boolean isChildVisible = objectTypesToShow.contains(child.getObjectTypeName());
@@ -252,9 +252,9 @@ abstract public class AbstractTreeRebuilder
 		node.setRawChildren(newChildren);
 	}
 	
-	private void mergeChildIntoList(Vector<NewAbstractPlanningTreeNode> destination, NewAbstractPlanningTreeNode newChild)
+	private void mergeChildIntoList(Vector<AbstractPlanningTreeNode> destination, AbstractPlanningTreeNode newChild)
 	{
-		NewAbstractPlanningTreeNode existingNode = findNodeWithRef(destination, newChild.getObjectReference());
+		AbstractPlanningTreeNode existingNode = findNodeWithRef(destination, newChild.getObjectReference());
 		if(existingNode == null)
 		{
 			if (isChildOfAnyNodeInList(destination, newChild))
@@ -272,18 +272,18 @@ abstract public class AbstractTreeRebuilder
 		possiblySortChildren(existingNode, destination);
 	}
 
-	protected void possiblySortChildren(NewAbstractPlanningTreeNode existingNode, Vector<NewAbstractPlanningTreeNode> destination)
+	protected void possiblySortChildren(AbstractPlanningTreeNode existingNode, Vector<AbstractPlanningTreeNode> destination)
 	{
 		if(shouldSortChildren(existingNode))
 			Collections.sort(destination, createNodeSorter());
 	}
 	
-	private boolean isChildOfAnyNodeInList(Vector<NewAbstractPlanningTreeNode> destination, NewAbstractPlanningTreeNode newChild)
+	private boolean isChildOfAnyNodeInList(Vector<AbstractPlanningTreeNode> destination, AbstractPlanningTreeNode newChild)
 	{
-		for(NewAbstractPlanningTreeNode parentNode : destination)
+		for(AbstractPlanningTreeNode parentNode : destination)
 		{
-			Vector<NewAbstractPlanningTreeNode> children = parentNode.getRawChildrenByReference();
-			NewAbstractPlanningTreeNode foundMatchingChild = findNodeWithRef(children, newChild.getObjectReference());
+			Vector<AbstractPlanningTreeNode> children = parentNode.getRawChildrenByReference();
+			AbstractPlanningTreeNode foundMatchingChild = findNodeWithRef(children, newChild.getObjectReference());
 			if (foundMatchingChild != null)
 				return true;
 		}
@@ -291,9 +291,9 @@ abstract public class AbstractTreeRebuilder
 		return false;
 	}
 	
-	private NewAbstractPlanningTreeNode findNodeWithRef(Vector<NewAbstractPlanningTreeNode> list, ORef ref)
+	private AbstractPlanningTreeNode findNodeWithRef(Vector<AbstractPlanningTreeNode> list, ORef ref)
 	{
-		for(NewAbstractPlanningTreeNode node : list)
+		for(AbstractPlanningTreeNode node : list)
 		{
 			if(ref.equals(node.getObjectReference()))
 				return node;
@@ -302,15 +302,15 @@ abstract public class AbstractTreeRebuilder
 		return null;
 	}
 	
-	private void addChildrenOfNodeToList(Vector<NewAbstractPlanningTreeNode> destination, NewAbstractPlanningTreeNode otherNode)
+	private void addChildrenOfNodeToList(Vector<AbstractPlanningTreeNode> destination, AbstractPlanningTreeNode otherNode)
 	{
-		for(NewAbstractPlanningTreeNode newChild : otherNode.getRawChildrenByReference())
+		for(AbstractPlanningTreeNode newChild : otherNode.getRawChildrenByReference())
 		{
 			mergeChildIntoList(destination, newChild);
 		}
 	}
 
-	private boolean shouldSortChildren(NewAbstractPlanningTreeNode parentNode)
+	private boolean shouldSortChildren(AbstractPlanningTreeNode parentNode)
 	{
 		ORef parentRef = parentNode.getObjectReference();
 		if(Task.is(parentRef))
@@ -330,9 +330,9 @@ abstract public class AbstractTreeRebuilder
 		return new NodeSorter();
 	}
 
-	private class NodeSorter implements Comparator<NewAbstractPlanningTreeNode>
+	private class NodeSorter implements Comparator<AbstractPlanningTreeNode>
 	{
-		public int compare(NewAbstractPlanningTreeNode nodeA, NewAbstractPlanningTreeNode nodeB)
+		public int compare(AbstractPlanningTreeNode nodeA, AbstractPlanningTreeNode nodeB)
 		{
 
 			int typeSortLocationA = getTypeSortLocation(nodeA.getType());

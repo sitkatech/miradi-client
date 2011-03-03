@@ -24,7 +24,7 @@ import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 
-public class UnspecifiedBaseObjectNode extends NewAbstractPlanningTreeNode
+public class UnspecifiedBaseObjectNode extends AbstractPlanningTreeNode
 {
 	public UnspecifiedBaseObjectNode(Project projectToUse, TreeTableNode parentNodeToUse, int objectTypeToUse, String objectTypeNameToUse)
 	{

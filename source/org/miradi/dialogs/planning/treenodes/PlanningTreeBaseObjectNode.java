@@ -25,7 +25,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 
-public class PlanningTreeBaseObjectNode extends NewAbstractPlanningTreeNode
+public class PlanningTreeBaseObjectNode extends AbstractPlanningTreeNode
 {
 	public PlanningTreeBaseObjectNode(Project projectToUse, TreeTableNode parentNodeToUse, ORef objectRef) throws Exception
 	{

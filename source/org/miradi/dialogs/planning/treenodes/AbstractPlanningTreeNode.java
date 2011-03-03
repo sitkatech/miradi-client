@@ -29,9 +29,9 @@ import org.miradi.objecthelpers.ORefSet;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 
-abstract public class NewAbstractPlanningTreeNode extends TreeTableNode
+abstract public class AbstractPlanningTreeNode extends TreeTableNode
 {
-	public NewAbstractPlanningTreeNode(Project projectToUse, TreeTableNode parentNodeToUse)
+	public AbstractPlanningTreeNode(Project projectToUse, TreeTableNode parentNodeToUse)
 	{
 		project = projectToUse;
 		parentNode = parentNodeToUse;
@@ -107,7 +107,7 @@ abstract public class NewAbstractPlanningTreeNode extends TreeTableNode
 		return "";
 	}
 
-	public void addChild(NewAbstractPlanningTreeNode node)
+	public void addChild(AbstractPlanningTreeNode node)
 	{
 		ORefSet existingGrandChildRefs = getGrandChildRefs();
 		if(!existingGrandChildRefs.contains(node.getObjectReference()))
@@ -132,15 +132,15 @@ abstract public class NewAbstractPlanningTreeNode extends TreeTableNode
 
 	public void clearChildren()
 	{
-		children = new Vector<NewAbstractPlanningTreeNode>();
+		children = new Vector<AbstractPlanningTreeNode>();
 	}
 	
-	public Vector<NewAbstractPlanningTreeNode> getRawChildrenByReference()
+	public Vector<AbstractPlanningTreeNode> getRawChildrenByReference()
 	{
 		return children;
 	}
 	
-	public void setRawChildren(Vector<NewAbstractPlanningTreeNode> newChildren)
+	public void setRawChildren(Vector<AbstractPlanningTreeNode> newChildren)
 	{
 		children = newChildren;
 	}
@@ -168,7 +168,7 @@ abstract public class NewAbstractPlanningTreeNode extends TreeTableNode
 
 	public boolean isAnyChildAllocated()
 	{
-		for(NewAbstractPlanningTreeNode node : children)
+		for(AbstractPlanningTreeNode node : children)
 		{
 			if(node.areBudgetValuesAllocated())
 				return true;
@@ -185,10 +185,10 @@ abstract public class NewAbstractPlanningTreeNode extends TreeTableNode
 	@Override
 	public boolean equals(Object rawOther)
 	{
-		if (! (rawOther instanceof NewAbstractPlanningTreeNode))
+		if (! (rawOther instanceof AbstractPlanningTreeNode))
 			return false;
 		
-		NewAbstractPlanningTreeNode other = (NewAbstractPlanningTreeNode)rawOther;
+		AbstractPlanningTreeNode other = (AbstractPlanningTreeNode)rawOther;
 		
 		return getObject().equals(other.getObject());
 	}
@@ -206,6 +206,6 @@ abstract public class NewAbstractPlanningTreeNode extends TreeTableNode
 
 	protected Project project;
 	private TreeTableNode parentNode;
-	protected Vector<NewAbstractPlanningTreeNode> children;
+	protected Vector<AbstractPlanningTreeNode> children;
 	private boolean isAllocated;
 }
