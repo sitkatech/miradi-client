@@ -25,7 +25,7 @@ import java.util.Comparator;
 import java.util.Vector;
 
 import org.miradi.dialogs.planning.treenodes.AbstractPlanningTreeNode;
-import org.miradi.dialogs.planning.treenodes.NewPlanningTaskNode;
+import org.miradi.dialogs.planning.treenodes.PlanningTaskNode;
 import org.miradi.dialogs.planning.treenodes.PlanningTreeBaseObjectNode;
 import org.miradi.dialogs.planning.treenodes.PlanningTreeErrorNode;
 import org.miradi.dialogs.treetables.TreeTableNode;
@@ -179,7 +179,7 @@ abstract public class AbstractTreeRebuilder
 		try
 		{
 			if(Task.is(refToAdd))
-				return new NewPlanningTaskNode(getProject(), parentNode.getContextRef(), parentNode, refToAdd);
+				return new PlanningTaskNode(getProject(), parentNode.getContextRef(), parentNode, refToAdd);
 			
 			int type = refToAdd.getObjectType();
 			for(int i = 0; i < supportedTypes.length; ++i)
