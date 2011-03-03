@@ -47,6 +47,7 @@ import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.utils.NullProgressMeter;
 import org.miradi.utils.PointList;
 
 public class TestDataUpgrader extends AbstractMigrationTestCase
@@ -84,7 +85,7 @@ public class TestDataUpgrader extends AbstractMigrationTestCase
 		DataUpgrader.initializeStaticDirectory(tempDirectory);
 		try
 		{
-			DataUpgrader.upgrade();
+			DataUpgrader.upgrade(new NullProgressMeter());
 			fail("Should have thrown for version too old to migrate");
 		}
 		catch(DataUpgrader.MigrationTooOldException ignoreExpected)

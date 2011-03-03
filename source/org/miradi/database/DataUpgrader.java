@@ -19,17 +19,22 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.database;
 
+import java.awt.Dimension;
 import java.io.File;
 import java.io.IOException;
 
+import org.martus.swing.Utilities;
 import org.martus.util.DirectoryLock;
-import org.martus.util.UnicodeWriter;
 import org.martus.util.DirectoryLock.AlreadyLockedException;
+import org.martus.util.UnicodeWriter;
 import org.miradi.database.migrations.MigrationsForMiradi3;
 import org.miradi.database.migrations.MigrationsOlderThanMiradiVersion2;
+import org.miradi.dialogs.base.ProgressDialog;
 import org.miradi.main.EAM;
 import org.miradi.project.ProjectMpzWriter;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.utils.MiradiBackgroundWorkerThread;
+import org.miradi.utils.ProgressInterface;
 
 public class DataUpgrader
 {
@@ -68,7 +73,11 @@ public class DataUpgrader
 			ProjectMpzWriter.createProjectZipFile(projectDirectory, zipFile);
 			
 			initializeStaticDirectory(projectDirectory);
-			DataUpgrader.upgrade();
+			ProgressDialog progressDialog = new ProgressDialog(EAM.getMainWindow(), EAM.text("Migrating Project Data"));
+			progressDialog.setMinimumSize(new Dimension(300, 0));
+			Utilities.centerDlg(progressDialog);
+
+			performUpgradeInBackground(progressDialog);
 			versionAfterUpgrading = DataUpgrader.readDataVersion(projectDirectory);			
 		}
 		catch (DataUpgrader.MigrationTooOldException e)
@@ -98,162 +107,419 @@ public class DataUpgrader
 				"Please seek technical help from the Miradi team."));
 	}
 
+	private static void performUpgradeInBackground(ProgressInterface progressIndicator) throws Exception
+	{
+		Worker worker = new Worker(progressIndicator);
+		worker.start();
+		progressIndicator.setVisible(true);
+		worker.cleanup();
+	}
+	
+	static class Worker extends MiradiBackgroundWorkerThread
+	{
+		protected Worker(ProgressInterface progressToNotify)
+		{
+			super(progressToNotify);
+		}
+
+		@Override
+		protected void doRealWork() throws Exception
+		{
+			upgrade(getProgressIndicator());
+		}
+		
+	}
+
 	public static void initializeStaticDirectory(File projectDirectory) throws IOException
 	{
 		topDirectory = projectDirectory;
 	}
 
-	public static void upgrade() throws Exception
+	public static void upgrade(ProgressInterface progressIndicator) throws Exception
 	{
+		int initialVersion = DataUpgrader.readDataVersion(getTopDirectory());
 		if(DataUpgrader.readDataVersion(getTopDirectory()) < 15)
 			throw new MigrationTooOldException();
-		
+
+		int numberOfMigrations = ProjectServer.DATA_VERSION - initialVersion;
+		progressIndicator.setStatusMessage(EAM.text("Migrating..."), numberOfMigrations);
+
 		DirectoryLock migrationLock = new DirectoryLock();
 		migrationLock.lock(getTopDirectory());
 		try
 		{
-			if (DataUpgrader.readDataVersion(getTopDirectory()) == 15)
+			if(DataUpgrader.readDataVersion(getTopDirectory()) == 15)
+			{
 				MigrationsOlderThanMiradiVersion2.upgradeToVersion16();
-			
-			if (DataUpgrader.readDataVersion(getTopDirectory()) == 16)
+				progressIndicator.incrementProgress();
+				if(progressIndicator.shouldExit())
+					return;
+			}
+
+			if(DataUpgrader.readDataVersion(getTopDirectory()) == 16)
+			{
 				MigrationsOlderThanMiradiVersion2.upgradeToVersion17();
-			
-			if (DataUpgrader.readDataVersion(getTopDirectory()) == 17)
+				progressIndicator.incrementProgress();
+				if(progressIndicator.shouldExit())
+					return;
+			}
+
+			if(DataUpgrader.readDataVersion(getTopDirectory()) == 17)
+			{
 				MigrationsOlderThanMiradiVersion2.upgradeToVersion18();
-			
-			if (DataUpgrader.readDataVersion(getTopDirectory()) == 18)
+				progressIndicator.incrementProgress();
+				if(progressIndicator.shouldExit())
+					return;
+			}
+
+			if(DataUpgrader.readDataVersion(getTopDirectory()) == 18)
+			{
 				MigrationsOlderThanMiradiVersion2.upgradeToVersion19();
-			
-			if (DataUpgrader.readDataVersion(getTopDirectory()) == 19)
+				progressIndicator.incrementProgress();
+				if(progressIndicator.shouldExit())
+					return;
+			}
+
+			if(DataUpgrader.readDataVersion(getTopDirectory()) == 19)
+			{
 				MigrationsOlderThanMiradiVersion2.upgradeToVersion20();
+				progressIndicator.incrementProgress();
+				if(progressIndicator.shouldExit())
+					return;
+			}
 
-			if (DataUpgrader.readDataVersion(getTopDirectory()) == 20)
+			if(DataUpgrader.readDataVersion(getTopDirectory()) == 20)
+			{
 				MigrationsOlderThanMiradiVersion2.upgradeToVersion21();
-			
-			if (DataUpgrader.readDataVersion(getTopDirectory()) == 21)
+				progressIndicator.incrementProgress();
+				if(progressIndicator.shouldExit())
+					return;
+			}
+
+			if(DataUpgrader.readDataVersion(getTopDirectory()) == 21)
+			{
 				MigrationsOlderThanMiradiVersion2.upgradeToVersion22();
-			
-			if (DataUpgrader.readDataVersion(getTopDirectory()) == 22)
+				progressIndicator.incrementProgress();
+				if(progressIndicator.shouldExit())
+					return;
+			}
+
+			if(DataUpgrader.readDataVersion(getTopDirectory()) == 22)
+			{
 				MigrationsOlderThanMiradiVersion2.upgradeToVersion23();
-			
-			if (DataUpgrader.readDataVersion(getTopDirectory()) == 23)
+				progressIndicator.incrementProgress();
+				if(progressIndicator.shouldExit())
+					return;
+			}
+
+			if(DataUpgrader.readDataVersion(getTopDirectory()) == 23)
+			{
 				MigrationsOlderThanMiradiVersion2.upgradeToVersion24();
-			
-			if (DataUpgrader.readDataVersion(getTopDirectory()) == 24)
+				progressIndicator.incrementProgress();
+				if(progressIndicator.shouldExit())
+					return;
+			}
+
+			if(DataUpgrader.readDataVersion(getTopDirectory()) == 24)
+			{
 				MigrationsOlderThanMiradiVersion2.upgradeToVersion25();
-			
-			if (DataUpgrader.readDataVersion(getTopDirectory()) == 25)
+				progressIndicator.incrementProgress();
+				if(progressIndicator.shouldExit())
+					return;
+			}
+
+			if(DataUpgrader.readDataVersion(getTopDirectory()) == 25)
+			{
 				MigrationsOlderThanMiradiVersion2.upgradeToVersion26();
-			
-			if (DataUpgrader.readDataVersion(getTopDirectory()) == 26)
+				progressIndicator.incrementProgress();
+				if(progressIndicator.shouldExit())
+					return;
+			}
+
+			if(DataUpgrader.readDataVersion(getTopDirectory()) == 26)
+			{
 				MigrationsOlderThanMiradiVersion2.upgradeToVersion27();
+				progressIndicator.incrementProgress();
+				if(progressIndicator.shouldExit())
+					return;
+			}
 
-			if (DataUpgrader.readDataVersion(getTopDirectory()) == 27)
+			if(DataUpgrader.readDataVersion(getTopDirectory()) == 27)
+			{
 				MigrationsOlderThanMiradiVersion2.upgradeToVersion28();
-			
-			if (DataUpgrader.readDataVersion(getTopDirectory()) == 28)
+				progressIndicator.incrementProgress();
+				if(progressIndicator.shouldExit())
+					return;
+			}
+
+			if(DataUpgrader.readDataVersion(getTopDirectory()) == 28)
+			{
 				MigrationsOlderThanMiradiVersion2.upgradeToVersion29();
-			
-			if (DataUpgrader.readDataVersion(getTopDirectory()) == 29)
+				progressIndicator.incrementProgress();
+				if(progressIndicator.shouldExit())
+					return;
+			}
+
+			if(DataUpgrader.readDataVersion(getTopDirectory()) == 29)
+			{
 				MigrationsOlderThanMiradiVersion2.upgradeToVersion30();
-			
-			if (DataUpgrader.readDataVersion(getTopDirectory()) == 30)
+				progressIndicator.incrementProgress();
+				if(progressIndicator.shouldExit())
+					return;
+			}
+
+			if(DataUpgrader.readDataVersion(getTopDirectory()) == 30)
+			{
 				MigrationsOlderThanMiradiVersion2.upgradeToVersion31();
-			
-			if (DataUpgrader.readDataVersion(getTopDirectory()) == 31)
+				progressIndicator.incrementProgress();
+				if(progressIndicator.shouldExit())
+					return;
+			}
+
+			if(DataUpgrader.readDataVersion(getTopDirectory()) == 31)
+			{
 				MigrationsOlderThanMiradiVersion2.upgradeToVersion32();
+				progressIndicator.incrementProgress();
+				if(progressIndicator.shouldExit())
+					return;
+			}
 
-			if (DataUpgrader.readDataVersion(getTopDirectory()) == 32)
+			if(DataUpgrader.readDataVersion(getTopDirectory()) == 32)
+			{
 				MigrationsOlderThanMiradiVersion2.upgradeToVersion33();
+				progressIndicator.incrementProgress();
+				if(progressIndicator.shouldExit())
+					return;
+			}
 
-			if (DataUpgrader.readDataVersion(getTopDirectory()) == 33)
+			if(DataUpgrader.readDataVersion(getTopDirectory()) == 33)
+			{
 				MigrationsOlderThanMiradiVersion2.upgradeToVersion34();
-			
-			if (DataUpgrader.readDataVersion(getTopDirectory()) == 34)
+				progressIndicator.incrementProgress();
+				if(progressIndicator.shouldExit())
+					return;
+			}
+
+			if(DataUpgrader.readDataVersion(getTopDirectory()) == 34)
+			{
 				MigrationsOlderThanMiradiVersion2.upgradeToVersion35();
-			
-			if (DataUpgrader.readDataVersion(getTopDirectory()) == 35)
+				progressIndicator.incrementProgress();
+				if(progressIndicator.shouldExit())
+					return;
+			}
+
+			if(DataUpgrader.readDataVersion(getTopDirectory()) == 35)
+			{
 				MigrationsOlderThanMiradiVersion2.upgradeToVersion36();
-			
-			if (DataUpgrader.readDataVersion(getTopDirectory()) == 36)
+				progressIndicator.incrementProgress();
+				if(progressIndicator.shouldExit())
+					return;
+			}
+
+			if(DataUpgrader.readDataVersion(getTopDirectory()) == 36)
+			{
 				MigrationsForMiradi3.upgradeToVersion37();
-			
-			if (DataUpgrader.readDataVersion(getTopDirectory()) == 37)
+				progressIndicator.incrementProgress();
+				if(progressIndicator.shouldExit())
+					return;
+			}
+
+			if(DataUpgrader.readDataVersion(getTopDirectory()) == 37)
+			{
 				MigrationsForMiradi3.upgradeToVersion38();
-			
-			if (DataUpgrader.readDataVersion(getTopDirectory()) == 38)
+				progressIndicator.incrementProgress();
+				if(progressIndicator.shouldExit())
+					return;
+			}
+
+			if(DataUpgrader.readDataVersion(getTopDirectory()) == 38)
+			{
 				MigrationsForMiradi3.upgradeToVersion39();
-			
-			if (DataUpgrader.readDataVersion(getTopDirectory()) == 39)
+				progressIndicator.incrementProgress();
+				if(progressIndicator.shouldExit())
+					return;
+			}
+
+			if(DataUpgrader.readDataVersion(getTopDirectory()) == 39)
+			{
 				MigrationsForMiradi3.upgradeToVersion40();
-			
-			if (DataUpgrader.readDataVersion(getTopDirectory()) == 40)
+				progressIndicator.incrementProgress();
+				if(progressIndicator.shouldExit())
+					return;
+			}
+
+			if(DataUpgrader.readDataVersion(getTopDirectory()) == 40)
+			{
 				MigrationsForMiradi3.upgradeToVersion41();
-			
-			if (DataUpgrader.readDataVersion(getTopDirectory()) == 41)
+				progressIndicator.incrementProgress();
+				if(progressIndicator.shouldExit())
+					return;
+			}
+
+			if(DataUpgrader.readDataVersion(getTopDirectory()) == 41)
+			{
 				MigrationsForMiradi3.upgradeToVersion42();
-			
-			if (DataUpgrader.readDataVersion(getTopDirectory()) == 42)
+				progressIndicator.incrementProgress();
+				if(progressIndicator.shouldExit())
+					return;
+			}
+
+			if(DataUpgrader.readDataVersion(getTopDirectory()) == 42)
+			{
 				MigrationsForMiradi3.upgradeToVersion43();
-			
-			if (DataUpgrader.readDataVersion(getTopDirectory()) == 43)
+				progressIndicator.incrementProgress();
+				if(progressIndicator.shouldExit())
+					return;
+			}
+
+			if(DataUpgrader.readDataVersion(getTopDirectory()) == 43)
+			{
 				MigrationsForMiradi3.upgradeToVersion44();
-			
-			if (DataUpgrader.readDataVersion(getTopDirectory()) == 44)
+				progressIndicator.incrementProgress();
+				if(progressIndicator.shouldExit())
+					return;
+			}
+
+			if(DataUpgrader.readDataVersion(getTopDirectory()) == 44)
+			{
 				MigrationsForMiradi3.upgradeToVersion45();
-			
-			if (DataUpgrader.readDataVersion(getTopDirectory()) == 45)
+				progressIndicator.incrementProgress();
+				if(progressIndicator.shouldExit())
+					return;
+			}
+
+			if(DataUpgrader.readDataVersion(getTopDirectory()) == 45)
+			{
 				MigrationsForMiradi3.upgradeToVersion46();
-			
-			if (DataUpgrader.readDataVersion(getTopDirectory()) == 46)
+				progressIndicator.incrementProgress();
+				if(progressIndicator.shouldExit())
+					return;
+			}
+
+			if(DataUpgrader.readDataVersion(getTopDirectory()) == 46)
+			{
 				MigrationsForMiradi3.upgradeToVersion47();
-			
-			if (DataUpgrader.readDataVersion(getTopDirectory()) == 47)
+				progressIndicator.incrementProgress();
+				if(progressIndicator.shouldExit())
+					return;
+			}
+
+			if(DataUpgrader.readDataVersion(getTopDirectory()) == 47)
+			{
 				MigrationsForMiradi3.upgradeToVersion48();
-			
-			if (DataUpgrader.readDataVersion(getTopDirectory()) == 48)
+				progressIndicator.incrementProgress();
+				if(progressIndicator.shouldExit())
+					return;
+			}
+
+			if(DataUpgrader.readDataVersion(getTopDirectory()) == 48)
+			{
 				MigrationsForMiradi3.upgradeToVersion49();
-			
-			if (DataUpgrader.readDataVersion(getTopDirectory()) == 49)
+				progressIndicator.incrementProgress();
+				if(progressIndicator.shouldExit())
+					return;
+			}
+
+			if(DataUpgrader.readDataVersion(getTopDirectory()) == 49)
+			{
 				MigrationsForMiradi3.upgradeToVersion50();
-			
-			if (DataUpgrader.readDataVersion(getTopDirectory()) == 50)
+				progressIndicator.incrementProgress();
+				if(progressIndicator.shouldExit())
+					return;
+			}
+
+			if(DataUpgrader.readDataVersion(getTopDirectory()) == 50)
+			{
 				MigrationsForMiradi3.upgradeToVersion51();
-			
-			if (DataUpgrader.readDataVersion(getTopDirectory()) == 51)
+				progressIndicator.incrementProgress();
+				if(progressIndicator.shouldExit())
+					return;
+			}
+
+			if(DataUpgrader.readDataVersion(getTopDirectory()) == 51)
+			{
 				MigrationsForMiradi3.upgradeToVersion52();
-			
-			if (DataUpgrader.readDataVersion(getTopDirectory()) == 52)
+				progressIndicator.incrementProgress();
+				if(progressIndicator.shouldExit())
+					return;
+			}
+
+			if(DataUpgrader.readDataVersion(getTopDirectory()) == 52)
+			{
 				MigrationsForMiradi3.upgradeToVersion53();
-			
-			if (DataUpgrader.readDataVersion(getTopDirectory()) == 53)
+				progressIndicator.incrementProgress();
+				if(progressIndicator.shouldExit())
+					return;
+			}
+
+			if(DataUpgrader.readDataVersion(getTopDirectory()) == 53)
+			{
 				MigrationsForMiradi3.upgradeToVersion54();
-			
-			if (DataUpgrader.readDataVersion(getTopDirectory()) == 54)
+				progressIndicator.incrementProgress();
+				if(progressIndicator.shouldExit())
+					return;
+			}
+
+			if(DataUpgrader.readDataVersion(getTopDirectory()) == 54)
+			{
 				MigrationsForMiradi3.upgradeToVersion55();
-			
-			if (DataUpgrader.readDataVersion(getTopDirectory()) == 55)
+				progressIndicator.incrementProgress();
+				if(progressIndicator.shouldExit())
+					return;
+			}
+
+			if(DataUpgrader.readDataVersion(getTopDirectory()) == 55)
+			{
 				MigrationsForMiradi3.upgradeToVersion56();
-			
-			if (DataUpgrader.readDataVersion(getTopDirectory()) == 56)
+				progressIndicator.incrementProgress();
+				if(progressIndicator.shouldExit())
+					return;
+			}
+
+			if(DataUpgrader.readDataVersion(getTopDirectory()) == 56)
+			{
 				MigrationsForMiradi3.upgradeToVersion57();
-			
-			if (DataUpgrader.readDataVersion(getTopDirectory()) == 57)
+				progressIndicator.incrementProgress();
+				if(progressIndicator.shouldExit())
+					return;
+			}
+
+			if(DataUpgrader.readDataVersion(getTopDirectory()) == 57)
+			{
 				MigrationsForMiradi3.upgradeToVersion58();
-			
-			if (DataUpgrader.readDataVersion(getTopDirectory()) == 58)
+				progressIndicator.incrementProgress();
+				if(progressIndicator.shouldExit())
+					return;
+			}
+
+			if(DataUpgrader.readDataVersion(getTopDirectory()) == 58)
+			{
 				MigrationsForMiradi3.upgradeToVersion59();
-			
-			if (DataUpgrader.readDataVersion(getTopDirectory()) == 59)
+				progressIndicator.incrementProgress();
+				if(progressIndicator.shouldExit())
+					return;
+			}
+
+			if(DataUpgrader.readDataVersion(getTopDirectory()) == 59)
+			{
 				MigrationsForMiradi3.upgradeToVersion60();
-			
-			if (DataUpgrader.readDataVersion(getTopDirectory()) == 60)
+				progressIndicator.incrementProgress();
+				if(progressIndicator.shouldExit())
+					return;
+			}
+
+			if(DataUpgrader.readDataVersion(getTopDirectory()) == 60)
+			{
 				MigrationsForMiradi3.upgradeToVersion61();
+				progressIndicator.incrementProgress();
+				if(progressIndicator.shouldExit())
+					return;
+			}
 		}
-		finally 
+		finally
 		{
 			migrationLock.close();
-		}			
+		}
 	}
 	
 	public static int readDataVersion(File projectDirectory) throws Exception

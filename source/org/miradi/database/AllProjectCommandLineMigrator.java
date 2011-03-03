@@ -25,6 +25,7 @@ import java.io.File;
 import org.miradi.exceptions.FutureVersionException;
 import org.miradi.exceptions.OldVersionException;
 import org.miradi.main.EAM;
+import org.miradi.utils.NullProgressMeter;
 import org.miradi.views.umbrella.CreateProjectDialog;
 
 public class AllProjectCommandLineMigrator
@@ -72,7 +73,7 @@ public class AllProjectCommandLineMigrator
 	private static void upgrade(ProjectServer database, String projectName) throws Exception
 	{
 		DataUpgrader.initializeStaticDirectory(new File(database.getDataLocation(), projectName));
-		DataUpgrader.upgrade();
+		DataUpgrader.upgrade(new NullProgressMeter());
 	}
 
 	private static File[] getProjectDirectories()
