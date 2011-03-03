@@ -210,7 +210,6 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 	{
 		ORefList childRefs = new ORefList();
 		Indicator indicator = Indicator.find(getProject(), parentRef);
-		childRefs.addAll(indicator.getRelevantDesireRefs());
 		childRefs.addAll(indicator.getMeasurementRefs());
 		childRefs.addAll(indicator.getMethodRefs());
 		return childRefs;
