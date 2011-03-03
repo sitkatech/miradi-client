@@ -428,8 +428,6 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 				throw new RuntimeException(EAM.text("This method is not responsible for creating task nodes."));
 			if (type == ResourceAssignment.getObjectType())
 				return new PlanningTreeResourceAssignmentNode(project, refToAdd, visibleRows);
-			if (type == ExpenseAssignment.getObjectType())
-				return new PlanningTreeExpenseAssignmentNode(project, refToAdd, visibleRows);
 			
 			throw new Exception("Attempted to create node of unknown type: " + refToAdd);
 		}
