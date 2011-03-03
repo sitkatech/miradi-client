@@ -33,7 +33,6 @@ import org.miradi.objects.BudgetCategoryOne;
 import org.miradi.objects.BudgetCategoryTwo;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
-import org.miradi.objects.DiagramObject;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FundingSource;
@@ -356,23 +355,6 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 	private Vector<AbstractPlanningTreeNode> getChildren()
 	{
 		return children;
-	}
-
-	protected AbstractPlanningTreeNode createChildNode(ORef refToAdd, DiagramObject diagram) throws Exception
-	{
-		int type = refToAdd.getObjectType();
-		try
-		{
-			if (type == Task.getObjectType())
-				throw new RuntimeException(EAM.text("This method is not responsible for creating task nodes."));
-			
-			throw new Exception("Attempted to create node of unknown type: " + refToAdd);
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			return new PlanningTreeErrorNode(getProject(), refToAdd);
-		}
 	}
 
 	protected ORefSet extractNonDraftStrategyRefs(Factor[] factors)
