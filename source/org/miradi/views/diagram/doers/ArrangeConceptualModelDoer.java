@@ -29,6 +29,7 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramObject;
+import org.miradi.project.Project;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.views.ViewDoer;
 
@@ -53,7 +54,7 @@ public class ArrangeConceptualModelDoer extends ViewDoer
 		progressDialog.setMinimumSize(new Dimension(300, 0));
 		Utilities.centerDlg(progressDialog);
 		
-		Worker worker = new Worker(progressDialog);
+		Worker worker = new Worker(getProject(), getCurrentDiagramObject(), progressDialog);
 		getDiagramView().getCurrentDiagramComponent().setVisible(false);
 		try
 		{
@@ -71,10 +72,12 @@ public class ArrangeConceptualModelDoer extends ViewDoer
 		}
 	}
 	
-	class Worker extends Thread
+	static class Worker extends Thread
 	{
-		public Worker(ProgressInterface progressToNotify)
+		public Worker(Project projectToUse, DiagramObject diagramToArrange, ProgressInterface progressToNotify)
 		{
+			project = projectToUse;
+			diagram = diagramToArrange;
 			progress = progressToNotify;
 		}
 		
@@ -106,7 +109,7 @@ public class ArrangeConceptualModelDoer extends ViewDoer
 			getProject().executeBeginTransaction();
 			try
 			{
-				MeglerArranger meglerArranger = new MeglerArranger(getCurrentDiagramObject(), progress);
+				MeglerArranger meglerArranger = new MeglerArranger(diagram, progress);
 				if(!meglerArranger.arrange())
 				{
 					EAM.notifyDialog("The auto-arrange process was stopped before it completed, \n" +
@@ -124,6 +127,13 @@ public class ArrangeConceptualModelDoer extends ViewDoer
 			}
 		}
 		
+		public Project getProject()
+		{
+			return project;
+		}
+		
+		private Project project;
+		private DiagramObject diagram;
 		private ProgressInterface progress;
 		private Exception exception;
 	}
