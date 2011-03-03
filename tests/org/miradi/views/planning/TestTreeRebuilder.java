@@ -44,6 +44,39 @@ public class TestTreeRebuilder extends TestCaseWithProject
 //		Task task = (Task) project.findObject(ref);
 //		return task.isActivity();
 //	}
+	
+	
+//	public void testPlanningTreeActivityNode() throws Exception
+//	{
+//		ORefList taskRefs = getTask().getSubTaskRefs();
+//		assertEquals("wrong subtask count?", 1, taskRefs.size());
+//		assertEquals("wrong type returned?", Task.getObjectType(), taskRefs.get(0).getObjectType());
+//	}
+//
+//	public void testSubtasks() throws Exception
+//	{
+//		AbstractProjectNode root = createCompleteTree();
+//		ORefSet refsInTree = root.getAllRefsInTree();
+//		assertTrue("Didn't add subtask to tree?", refsInTree.contains(getSubtask().getRef()));
+//	}
+//
+//	public void testMerging() throws Exception
+//	{
+//		CodeList rowCodes = new CodeList();
+//		rowCodes.add(Task.ACTIVITY_NAME);
+//		HiddenConfigurableProjectRootNode root = new HiddenConfigurableProjectRootNode(project, rowCodes);
+//		assertEquals(1, root.getChildCount());
+//
+//		final TreeTableNode firstChild = root.getChild(0);
+//		assertEquals(Task.getObjectType(), firstChild.getType());
+//		assertEquals(2, firstChild.getProportionShares());
+//		assertFalse("Full proportion task is allocated?", firstChild.areBudgetValuesAllocated());
+//
+//	}
+	
+	
+	
+	
 
 
 }

@@ -212,7 +212,6 @@ import org.miradi.views.diagram.TestLinkBendPointsMoveHandler;
 import org.miradi.views.diagram.doers.TestDeleteAnnotationDoer;
 import org.miradi.views.planning.TestAbstractPlanningTreeNode;
 import org.miradi.views.planning.TestFullTimeEmployeeCalculationsInsideModel;
-import org.miradi.views.planning.TestPlanningTreeActivityNode;
 import org.miradi.views.planning.TestPlanningTreeIndicatorNode;
 import org.miradi.views.planning.TestPlanningViewMainTableModel;
 import org.miradi.views.planning.TestTreeRebuilder;
@@ -459,7 +458,6 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestDeleteAnnotationDoer.class));
 		
 		// view.planning package
-		suite.addTest(new TestSuite(TestPlanningTreeActivityNode.class));
 		suite.addTest(new TestSuite(TestPlanningTreeIndicatorNode.class));
 		suite.addTest(new TestSuite(TestFullTimeEmployeeCalculationsInsideModel.class));
 		suite.addTest(new TestSuite(TestAbstractPlanningTreeNode.class));
