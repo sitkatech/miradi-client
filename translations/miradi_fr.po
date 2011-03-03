@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-03 15:38-0600\n"
+"POT-Creation-Date: 2011-03-03 16:01-0600\n"
 "PO-Revision-Date: 2010-12-30 12:19-0600\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -1386,7 +1386,6 @@ msgid "Action|Insert|Insert Text Box"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionInsertThreatReductionResult.java:35
-#: Miradi/source/org/miradi/actions/ActionCreateThreatReductionResult.java:37
 msgid "Action|Insert|Insert Threat Reduction Result"
 msgstr ""
 
@@ -6677,7 +6676,6 @@ msgid "TT|Insert a Text Box"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionInsertThreatReductionResult.java:41
-#: Miradi/source/org/miradi/actions/ActionCreateThreatReductionResult.java:43
 msgid "TT|Insert a Threat Reduction Result"
 msgstr ""
 
