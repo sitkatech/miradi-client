@@ -36,6 +36,5 @@ public class PasteTextAction extends AbstractAction
 		field.paste();
 	}
 	
-	JTextComponent field;
-
+	private JTextComponent field;
 }
