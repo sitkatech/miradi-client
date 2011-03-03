@@ -93,6 +93,7 @@ class TextAreaContextMenuListener extends MiradiCheckerListener
 		menu.addSeparator();
 		
 		JMenuItem menuItemCut = createMenuItem(new CutTextAction(getTextField()), "icons/cut.gif");
+		menuItemCut.setEnabled(getTextField().isEditable());
 		menuItemCut.setText(EAM.text("Cut"));
 		menuItemCut.setAccelerator(KeyStroke.getKeyStroke('X', KeyEvent.CTRL_DOWN_MASK));
 		menu.add(menuItemCut);
@@ -103,6 +104,7 @@ class TextAreaContextMenuListener extends MiradiCheckerListener
 		menu.add(menuItemCopy);
 	
 		JMenuItem menuItemPaste = createMenuItem(new PasteTextAction(getTextField()), "icons/paste.gif");
+		menuItemPaste.setEnabled(getTextField().isEditable());
 		menuItemPaste.setText(EAM.text("Paste"));
 		menuItemPaste.setAccelerator(KeyStroke.getKeyStroke('V', KeyEvent.CTRL_DOWN_MASK));
 		menu.add(menuItemPaste);
