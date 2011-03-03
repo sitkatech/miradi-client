@@ -26,7 +26,6 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
@@ -53,10 +52,6 @@ public class PlanningTreeTaskNode extends AbstractPlanningTreeNode
 		if(visibleRows.contains(ResourceAssignment.OBJECT_NAME))
 			addChildren(buildResourceAssignmentNodes(task.getResourceAssignmentRefs()));
 		
-		// NOTE: IF is for Speed optimization
-		if(visibleRows.contains(ExpenseAssignment.OBJECT_NAME))
-			addChildren(buildExpenseAssignmentNodes(task.getRefListData(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS)));
-
 		// NOTE: IF is for Speed optimization
 		if(visibleRows.contains(Task.OBJECT_NAME))
 			addChildren(buildTaskNodes(task.getSubTaskRefs()));
