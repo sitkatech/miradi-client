@@ -30,6 +30,7 @@ import org.miradi.main.EAM;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramObject;
 import org.miradi.project.Project;
+import org.miradi.utils.MiradiBackgroundWorkerThread;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.views.ViewDoer;
 
@@ -70,47 +71,6 @@ public class ArrangeConceptualModelDoer extends ViewDoer
 		{
 			getDiagramView().getCurrentDiagramComponent().setVisible(true);
 		}
-	}
-	
-	abstract static class MiradiBackgroundWorkerThread extends Thread
-	{
-		MiradiBackgroundWorkerThread(ProgressInterface progressToNotify)
-		{
-			progress = progressToNotify;
-		}
-		
-		public void cleanup() throws Exception
-		{
-			if(exception != null)
-				throw exception;
-		}
-
-		@Override
-		public void run()
-		{
-			try
-			{
-				doRealWork();
-			}
-			catch(Exception e)
-			{
-				exception = e;
-			}
-			finally
-			{
-				progress.finished();
-			}
-		}
-		
-		public ProgressInterface getProgressIndicator()
-		{
-			return progress;
-		}
-
-		abstract protected void doRealWork() throws Exception;
-		
-		private ProgressInterface progress;
-		private Exception exception;
 	}
 	
 	static class Worker extends MiradiBackgroundWorkerThread
