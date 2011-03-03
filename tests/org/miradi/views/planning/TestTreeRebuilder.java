@@ -117,8 +117,107 @@ public class TestTreeRebuilder extends TestCaseWithProject
 //		assertEquals("Activity node should not have been added since its a child of the objective?", 1, destination.size());
 //	}
 	
-	
-	
-
-
+//	private void setupFactors() throws Exception
+//	{
+//		projectMetadata = project.getMetadata();
+//		diagramStrategy1 = project.createDiagramFactorAndAddToDiagram(Strategy.getObjectType());		
+//		diagramStrategy2 = project.createDiagramFactorAndAddToDiagram(Strategy.getObjectType());		
+//		diagramCause = project.createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+//		diagramTarget = project.createDiagramFactorAndAddToDiagram(Target.getObjectType());
+//		
+//		stratToCauseLinkId = project.createDiagramLinkAndAddToDiagram(diagramStrategy1, diagramCause).getObjectId();		
+//		causeToTargetLinkId = project.createDiagramLinkAndAddToDiagram(diagramCause, diagramTarget).getObjectId();
+//		
+//		objectiveId = project.addItemToObjectiveList(diagramCause.getWrappedORef(), Cause.TAG_OBJECTIVE_IDS);
+//		indicatorId = project.addItemToIndicatorList(diagramCause.getWrappedORef(), Cause.TAG_INDICATOR_IDS);
+//		goalId = project.addItemToGoalList(diagramTarget.getWrappedORef(), Target.TAG_GOAL_IDS);
+//		taskId = project.addItemToIndicatorList(indicatorId, Task.getObjectType(), Indicator.TAG_METHOD_IDS);
+//		activityId = project.addActivityToStrateyList(diagramStrategy1.getWrappedORef(), Strategy.TAG_ACTIVITY_IDS);
+//		subtaskId = project.addSubtaskToActivity(getTask().getRef(), Task.TAG_SUBTASK_IDS);
+//		
+//		IdList activityIds = new IdList(Task.getObjectType(), new BaseId[] {activityId});
+//		project.setObjectData(diagramStrategy2.getWrappedORef(), Strategy.TAG_ACTIVITY_IDS, activityIds.toString());
+//		
+//		strategyResourceAssignmentRef = project.addResourceAssignment(getStrategy(), 1, 2001, 2001).getRef();
+//		indicatorResourceAssignmentRef = project.addResourceAssignment(getIndicator(), 2, 2002, 2002).getRef();
+//		subtaskResourceAssignmentRef = project.addResourceAssignment(getSubtask(), 4, 2004, 2004).getRef();
+//	}
+//	
+//	public AbstractProjectNode createCompleteTree() throws Exception
+//	{
+//		ChoiceQuestion rowChoiceQuestion= new CustomPlanningRowsQuestion(project);
+//		HiddenConfigurableProjectRootNode root = new HiddenConfigurableProjectRootNode(project, rowChoiceQuestion.getAllCodes());
+//		return root;
+//	}
+//	
+//	public Goal getGoal()
+//	{
+//		return (Goal) project.findObject(new ORef(Goal.getObjectType(), goalId));
+//	}
+//	
+//	public Objective getObjective()
+//	{
+//		return (Objective) project.findObject(new ORef(Objective.getObjectType(), objectiveId));
+//	}
+//	
+//	public Strategy getStrategy()
+//	{
+//		return (Strategy) project.findObject(diagramStrategy1.getWrappedORef());
+//	}
+//	
+//	public Strategy getStrategy2()
+//	{
+//		return (Strategy) project.findObject(diagramStrategy2.getWrappedORef());
+//	}
+//	
+//	public Task getActivity()
+//	{
+//		return Task.find(project, new ORef(Task.getObjectType(), activityId));
+//	}
+//	
+//	public Indicator getIndicator()
+//	{
+//		return (Indicator) project.findObject(new ORef(Indicator.getObjectType(), indicatorId));
+//	}
+//	
+//	public Task getTask()
+//	{
+//		return (Task) project.findObject(new ORef(Task.getObjectType(), taskId));
+//	}
+//	
+//	public Task getSubtask()
+//	{
+//		return (Task) project.findObject(new ORef(Task.getObjectType(), subtaskId));
+//	}
+//	
+//	public Target getTarget()
+//	{
+//		return (Target) project.findObject(diagramTarget.getWrappedORef());
+//	}
+//	
+//	public Cause getThreat()
+//	{
+//		return (Cause) project.findObject(diagramCause.getWrappedORef());
+//	}
+//	
+//	public ProjectMetadata getProjectMetadata()
+//	{
+//		return projectMetadata;
+//	}
+//	
+//	public ResourceAssignment getStrategyResourceAssignment()
+//	{
+//		return ResourceAssignment.find(project, strategyResourceAssignmentRef);
+//	}
+//	
+//	public ResourceAssignment getIndicatorResourceAssignment()
+//	{
+//		return ResourceAssignment.find(project, indicatorResourceAssignmentRef);
+//	}
+//	
+//	public ResourceAssignment getSubtaskResourceAssignment()
+//	{
+//		return ResourceAssignment.find(project, subtaskResourceAssignmentRef);
+//	}
+//	
 }
