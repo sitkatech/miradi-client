@@ -358,18 +358,6 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		return children;
 	}
 
-	protected void createAndAddChildren(ORefList refsToAdd, DiagramObject diagram) throws Exception
-	{
-		for(int i = 0; i < refsToAdd.size(); ++i)
-			createAndAddChild(refsToAdd.get(i), diagram);
-	}
-
-	protected void createAndAddChild(ORef refToAdd, DiagramObject diagram) throws Exception
-	{
-		AbstractPlanningTreeNode childNode = createChildNode(refToAdd, diagram);
-		addChild(childNode);
-	}
-
 	protected AbstractPlanningTreeNode createChildNode(ORef refToAdd, DiagramObject diagram) throws Exception
 	{
 		int type = refToAdd.getObjectType();
