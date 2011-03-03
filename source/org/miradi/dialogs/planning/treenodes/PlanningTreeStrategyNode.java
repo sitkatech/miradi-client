@@ -37,7 +37,6 @@ public class PlanningTreeStrategyNode extends AbstractPlanningTreeNode
 	@Override
 	public void rebuild() throws Exception
 	{
-		addChildren(buildResourceAssignmentNodes(strategy.getResourceAssignmentRefs()));
 		createAndAddTaskNodes(strategy.getActivityRefs(), getObjectReference());
 	}
 

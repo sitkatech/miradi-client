@@ -41,7 +41,6 @@ public class PlanningTreeIndicatorNode extends AbstractPlanningTreeNode
 	@Override
 	public void rebuild() throws Exception
 	{
-		addChildren(buildResourceAssignmentNodes(indicator.getResourceAssignmentRefs()));
 		createAndAddTaskNodes(indicator.getMethodRefs(), getObjectReference());
 		addSortedMeasurementChildren();
 	}
