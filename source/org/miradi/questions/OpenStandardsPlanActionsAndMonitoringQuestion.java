@@ -145,7 +145,7 @@ public class OpenStandardsPlanActionsAndMonitoringQuestion extends DynamicChoice
 	public static final String DEVELOP_OBJECTIVES_CODE = "DevelopObjectives";
 	public static final String FINALIZE_STRATEGIC_PLAN_CODE = "FinalizeStrategicPlan";
 	public static final String DEFINE_AUDIENCES_AND_INFORMATION_NEEDS_CODE = "DefineAudiencesAndInformationNeeds";
-	public static final String DEFINE_INDICATORS_CODE = "DefineInidcators";
+	public static final String DEFINE_INDICATORS_CODE = "DefineIndicators";
 	public static final String FINALIZE_MONITORING_PLAN_CODE = "FinalizeMonitoringPlan";
 	public static final String ASSESS_HUMAN_FINANCIAL_AND_OTHER_RESOURCES_CODE = "AssessHumanFinacialAndOtherResources";
 	public static final String ASSESS_RISKS_CODE = "AssessRisks";
