@@ -43,6 +43,8 @@ abstract public class AsbtractDashboardClickableQuestionField extends AbstractDa
 	protected void updateLabelComponent(PanelTitleLabel labelComponentToUse, String mapValue) throws Exception
 	{
 		ChoiceItem progressChoiceItem = question.findChoiceByCode(mapValue);
+		if(progressChoiceItem == null)
+			throw new RuntimeException("Couldn't find choice " + mapValue + " in question " + question.getClass().getSimpleName());
 		updateLabel(labelComponentToUse, progressChoiceItem);
 	}
 	
