@@ -67,14 +67,24 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements C
 		setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 	}
 	
-	
 	@Override
 	public void dispose()
 	{
 		getProject().removeCommandExecutedListener(this);
 		super.dispose();
 	}
+	
+	@Override
+	public void becomeActive()
+	{
+		getPicker().becomeActive();
+	}
 
+	@Override
+	public void becomeInactive()
+	{
+		getPicker().becomeInactive();
+	}
 	
 	public void setPropertiesPanel(AbstractObjectDataInputPanel panel)
 	{
@@ -137,18 +147,6 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements C
 		return component;
 	}
 	
-	@Override
-	public void becomeActive()
-	{
-		getPicker().becomeActive();
-	}
-
-	@Override
-	public void becomeInactive()
-	{
-		getPicker().becomeInactive();
-	}
-
 	abstract public BaseObject getSelectedObject();
 	
 	abstract public void commandExecuted(CommandExecutedEvent event);
