@@ -61,28 +61,22 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements C
 
 		add(buttons, BorderLayout.BEFORE_FIRST_LINE);
 		setFocusCycleRoot(true);
-		getProject().addCommandExecutedListener(this);
 
 		setBackground(AppPreferences.getDataPanelBackgroundColor());
 		setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 	}
 	
 	@Override
-	public void dispose()
-	{
-		getProject().removeCommandExecutedListener(this);
-		super.dispose();
-	}
-	
-	@Override
 	public void becomeActive()
 	{
 		getPicker().becomeActive();
+		getProject().addCommandExecutedListener(this);
 	}
 
 	@Override
 	public void becomeInactive()
 	{
+		getProject().removeCommandExecutedListener(this);
 		getPicker().becomeInactive();
 	}
 	
