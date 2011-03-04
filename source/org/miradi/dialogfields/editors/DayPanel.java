@@ -53,7 +53,10 @@ public class DayPanel extends TwoColumnPanel
 
 	public DateUnit getDateUnit()
 	{
-		return DateUnit.createDayDateUnit(dateEditor.getText()); 
+		String dateString = dateEditor.getText();
+		if(dateString.length() == 0)
+			return null;
+		return DateUnit.createDayDateUnit(dateString); 
 	}
 	
 	private DateEditorComponent dateEditor;
