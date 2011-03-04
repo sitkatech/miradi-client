@@ -36,6 +36,7 @@ public class DashboardStatusLabelField extends AsbtractDashboardClickableQuestio
 	@Override
 	protected void updateLabel(PanelTitleLabel componentToUpdate, ChoiceItem progressChoiceItem)
 	{
-		componentToUpdate.setText(progressChoiceItem.getLabel());
+		String newText = progressChoiceItem.getLabel();
+		componentToUpdate.setText(newText);
 	}
 }
