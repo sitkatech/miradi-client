@@ -183,12 +183,19 @@ public class ORefList
 	}
 	
 	@Override
-	public boolean equals(Object other)
+	public boolean equals(Object rawOther)
 	{	
-		if (! (other instanceof ORefList))
+		if (! (rawOther instanceof ORefList))
 			return false;
 		
-		return other.toString().equals(toString());	
+		ORefList other = (ORefList)rawOther;
+		if(size() != other.size())
+			return false;
+		for(int index = 0; index < size(); ++index)
+			if(!get(index).equals(other.get(index)))
+				return false;
+		
+		return true;
 	}
 	
 	public boolean contains(ORef objectRef)
