@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.main;
 
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Locale;
 
@@ -37,6 +38,47 @@ public class MiradiUserDictionary extends FileUserDictionary
 	@Override
 	public Iterator<String> getWords(Locale locale)
 	{
-		return super.getWords(new Locale(Translation.getCurrentLanguageCode()));
+		Locale currentLocale = new Locale(Translation.getCurrentLanguageCode());
+		Iterator<String> userWords = super.getWords(currentLocale);
+		return new UserDictionaryWordsWithMiradiAlwaysIncluded(userWords);
+	}
+	
+	static class UserDictionaryWordsWithMiradiAlwaysIncluded implements Iterator<String>
+	{
+		public UserDictionaryWordsWithMiradiAlwaysIncluded(Iterator<String> originalIterator)
+		{
+			original = originalIterator;
+			if(original == null)
+				original = new HashSet<String>().iterator();
+			HashSet<String> extraWords = new HashSet<String>();
+			extraWords.add("Miradi");
+			extraWords.add("Benetech");
+			extras = extraWords.iterator();
+		}
+		
+		public boolean hasNext()
+		{
+			boolean result = original.hasNext();
+			if(result)
+				return result;
+			
+			return extras.hasNext();
+		}
+
+		public String next()
+		{
+			if(original.hasNext())
+				return original.next();
+
+			return extras.next();
+		}
+
+		public void remove()
+		{
+			original.remove();
+		}
+		
+		private Iterator<String> original;
+		private Iterator<String> extras;
 	}
 }
