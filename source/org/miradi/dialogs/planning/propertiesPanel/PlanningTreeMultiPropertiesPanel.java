@@ -34,6 +34,7 @@ import org.miradi.dialogs.objective.ObjectivePropertiesPanel;
 import org.miradi.dialogs.planning.MeasurementPropertiesPanel;
 import org.miradi.dialogs.resource.ResourcePropertiesPanel;
 import org.miradi.dialogs.subTarget.SubTargetPropertiesPanel;
+import org.miradi.dialogs.task.ActivityDetailsPanelWithRelevancyOverrideFields;
 import org.miradi.dialogs.viability.AbstractIndicatorPropertiesPanel;
 import org.miradi.dialogs.viability.IndicatorPropertiesPanelWithBudgetPanels;
 import org.miradi.dialogs.viability.NonDiagramAbstractTargetPropertiesPanel;
@@ -120,6 +121,9 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 			
 			if (Strategy.getObjectType() == objectType)
 				return getStrategyPropertiesPanel();
+			
+			if (Task.isActivity(getProject(), firstRef))
+				return getActivityPropertiesPanel();
 			
 			if (Task.getObjectType() == objectType)
 				return getTaskPropertiesPanel();
@@ -223,6 +227,17 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 			addPanel(taskPropertiesInputPanel);
 		}
 		return taskPropertiesInputPanel;
+	}
+	
+	private AbstractObjectDataInputPanel getActivityPropertiesPanel() throws Exception
+	{
+		if (activityPropertiesPanel == null)
+		{
+			activityPropertiesPanel = new ActivityDetailsPanelWithRelevancyOverrideFields(getProject(), getMainWindow().getActions());
+			addPanel(activityPropertiesPanel);
+		}
+		
+		return activityPropertiesPanel;
 	}
 
 	private AbstractObjectDataInputPanel getMeasurementPropertiesPanel() throws Exception
@@ -402,6 +417,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 	private AbstractIndicatorPropertiesPanel indicatorPropertiesPanel;
 	private AbstractStrategyPropertiesPanel strategyPropertiesPanel;
 	private PlanningViewTaskPropertiesPanel taskPropertiesInputPanel;
+	private ActivityDetailsPanelWithRelevancyOverrideFields activityPropertiesPanel;
 	private NonDiagramAbstractTargetPropertiesPanel targetPropertiesPanel;
 	private NonDiagramAbstractTargetPropertiesPanel humanWelfareTargetPropertiesPanel; 
 	private PlanningViewIntermediateResultPropertiesPanel intermediateResultPropertiesPanel;
