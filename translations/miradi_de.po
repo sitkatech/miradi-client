@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-03 16:01-0600\n"
+"POT-Creation-Date: 2011-03-07 10:51-0600\n"
 "PO-Revision-Date: 2011-01-24 10:21-0600\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -3702,6 +3702,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:169
 #: Miradi/source/org/miradi/dialogs/task/ActivityDetailsPanelWithRelevancyOverrideFields.java:45
+#: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:59
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:90
 msgid "Goals"
 msgstr ""
@@ -4351,7 +4352,7 @@ msgstr ""
 msgid "Leader/Manager"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:54
+#: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:56
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:88
 msgid "Legacy TNC Ratings"
 msgstr ""
@@ -5016,6 +5017,7 @@ msgid "Objective Relevancy Panel"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/task/ActivityDetailsPanelWithRelevancyOverrideFields.java:42
+#: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:58
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:89
 #: Miradi/source/org/miradi/dialogs/diagram/RelatedItemsSubpanel.java:43
 msgid "Objectives"
@@ -5245,7 +5247,7 @@ msgid "Preparing groups..."
 msgstr ""
 
 #: Miradi/source/org/miradi/forms/objects/StrategyCoreSubForm.java:36
-#: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:52
+#: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:54
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:87
 msgid "Priority"
 msgstr ""
@@ -6010,7 +6012,7 @@ msgstr ""
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:180
 #: Miradi/source/org/miradi/forms/objects/StrategyCoreSubForm.java:33
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:76
-#: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:44
+#: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:46
 msgid "Strategy"
 msgstr ""
 
@@ -6090,7 +6092,7 @@ msgstr ""
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:35
 #: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:112
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:132
-#: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:60
+#: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:65
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:131
 msgid "Summary"
 msgstr ""
