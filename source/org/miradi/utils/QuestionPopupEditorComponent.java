@@ -222,6 +222,14 @@ public class QuestionPopupEditorComponent extends PopupEditorComponent
 		
 		return components;
 	}
+	
+	@Override
+	public void setEnabled(boolean isEnabled)
+	{
+		super.setEnabled(isEnabled);
+		
+		popupInvokeButton.setEnabled(isEnabled);
+	}
 
 	private class PopUpEditorHandler extends MouseAdapter implements ActionListener 
 	{
