@@ -455,7 +455,7 @@ return true;
     </applications>
   </installerGui>
   <mediaSets>
-    <win32 name="Windows" id="22" mediaFileName="" installDir="Miradi" overridePrincipalLanguage="false" requires64bit="false" runPostProcessor="false" postProcessor="" failOnPostProcessorError="false" includedJRE="windows-x86-1.6.0_11" manualJREEntry="false" bundleType="2" jreURL="http://artifacts.miradi.org/jres/windows-x86-1.6.0.tar.gz" jreFtpURL="" jreShared="true" customInstallBaseDir="" createUninstallIcon="true" contentFilesType="1" downloadURL="" runAsAdmin="true">
+    <win32 name="Windows" id="22" mediaFileName="" installDir="Miradi" overridePrincipalLanguage="false" requires64bit="false" runPostProcessor="false" postProcessor="" failOnPostProcessorError="false" includedJRE="windows-x86-1.6.0_11" manualJREEntry="false" bundleType="2" jreURL="http://artifacts.miradi.org/jres/windows-x86-1.6.0-Miradi-3.3.tgz" jreFtpURL="" jreShared="true" customInstallBaseDir="" createUninstallIcon="true" contentFilesType="1" downloadURL="" runAsAdmin="true">
       <excludedLaunchers />
       <excludedComponents />
       <excludedBeans />
