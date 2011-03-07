@@ -69,5 +69,11 @@ public class PopupQuestionEditorField extends ObjectDataInputField
 		return editorComponent.needsToBeSaved();
 	}
 	
+	@Override
+	public void updateEditableState()
+	{
+		editorComponent.setEnabled(isValidObject());
+	}
+	
 	private QuestionPopupEditorComponent editorComponent; 
 }
