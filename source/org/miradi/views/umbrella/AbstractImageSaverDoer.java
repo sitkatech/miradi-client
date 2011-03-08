@@ -74,13 +74,11 @@ abstract public class AbstractImageSaverDoer extends AbstractFileSaverDoer
 	
 	private void saveImage(FileOutputStream out) throws Exception
 	{
-		BufferedImage image = getView().getImage();
+		BufferedImage image = getView().getImage(scale);
 		saveImage(out, image);
 	}
 
 	abstract public void saveImage(OutputStream out, BufferedImage image) throws IOException;
 
-	// FIXME: Disabling warnings so I can commit this before doing some refactoring to continue
-	@SuppressWarnings("unused")
 	private int scale;
 }

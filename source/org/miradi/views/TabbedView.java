@@ -344,7 +344,7 @@ abstract public class TabbedView extends UmbrellaView
 	}
 	
 	@Override
-	public BufferedImage getImage() throws Exception
+	public BufferedImage getImage(int scale) throws Exception
 	{
 		MiradiTabContentsPanelInterface panel = getSelectedTabPanel();
 		if(panel == null)

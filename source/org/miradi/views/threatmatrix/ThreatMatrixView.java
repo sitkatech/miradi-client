@@ -104,7 +104,7 @@ public class ThreatMatrixView extends CardedView
 	}
 
 	@Override
-	public BufferedImage getImage() throws Exception
+	public BufferedImage getImage(int scale) throws Exception
 	{
 		return createStressBasedImage();
 	}
