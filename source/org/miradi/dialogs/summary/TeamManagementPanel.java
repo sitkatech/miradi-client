@@ -63,7 +63,7 @@ public class TeamManagementPanel extends ObjectManagementPanel
 	}
 	
 	@Override
-	public BufferedImage getImage() throws ImageTooLargeException
+	public BufferedImage getImage(int scale) throws ImageTooLargeException
 	{
 		TeamPoolTable table = createTable();
 		BufferedImage image = BufferedImageFactory.createImageFromTable(table);

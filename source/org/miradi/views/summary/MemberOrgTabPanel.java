@@ -73,9 +73,9 @@ public class MemberOrgTabPanel extends DisposablePanelWithDescription implements
 		return dataPanel.getIcon();
 	}
 
-	public BufferedImage getImage() throws Exception
+	public BufferedImage getImage(int scale) throws Exception
 	{
-		return dataPanel.getImage();
+		return dataPanel.getImage(scale);
 	}
 
 	public String getTabName()

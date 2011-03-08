@@ -98,7 +98,7 @@ abstract public class TargetViabilityManagementPanel extends ObjectListManagemen
 	}
 	
 	@Override
-	public BufferedImage getImage() throws Exception
+	public BufferedImage getImage(int scale) throws Exception
 	{
 		targetViabilityTreeTableExporter.restoreTreeState();
 		BufferedImage image = BufferedImageFactory.createImageFromTreeTable(targetViabilityTreeTableExporter);

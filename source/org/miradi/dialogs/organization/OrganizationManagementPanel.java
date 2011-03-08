@@ -97,7 +97,7 @@ public class OrganizationManagementPanel extends ObjectPoolManagementPanel
 	}
 	
 	@Override
-	public BufferedImage getImage() throws ImageTooLargeException
+	public BufferedImage getImage(int scale) throws ImageTooLargeException
 	{
 		return BufferedImageFactory.createImageFromTable(createTable());
 	}

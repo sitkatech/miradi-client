@@ -350,7 +350,7 @@ abstract public class TabbedView extends UmbrellaView
 		if(panel == null)
 			return null;
 		
-		return panel.getImage();
+		return panel.getImage(scale);
 	}
 	
 	@Override
