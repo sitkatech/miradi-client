@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-08 13:22-0600\n"
+"POT-Creation-Date: 2011-03-08 13:41-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -77,7 +77,7 @@ msgstr "2)将威胁因子链接到相关的对象 \t\t"
 msgid " A project by this name already exists: "
 msgstr "已存在使用相同名称的项目: \t\t"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractZippedXmlImporter.java:47
+#: Miradi/source/org/miradi/views/umbrella/AbstractZippedXmlImporter.java:48
 msgid " was empty"
 msgstr ""
 
@@ -894,7 +894,7 @@ msgid ""
 "select its replacement on the TNC Tab of the Summary Page.</html>"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:155
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:156
 msgid "<html>Import failed: <br><p> %s </p></html>"
 msgstr "<html>导入失败：<br><p> %s </p></html> \t\t"
 
@@ -3990,7 +3990,7 @@ msgstr "实施策略及监控计划 \t\t"
 msgid "Implement work plan"
 msgstr "实施工作计划 \t\t"
 
-#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:233
+#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:237
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:70
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:119
 msgid "Import"
@@ -4004,7 +4004,7 @@ msgstr "导入会计编码 \t\t"
 msgid "Import Completed"
 msgstr "导入完成 \t\t"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:135
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:136
 msgid "Import Completed.  Would you like to open %s?"
 msgstr ""
 
@@ -4026,6 +4026,10 @@ msgstr "导入Zip"
 
 #: Miradi/source/org/miradi/views/umbrella/ZippedProjectImporter.java:49
 msgid "Importing mpz file..."
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:78
+msgid "Importing..."
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/TextBoxZOrderQuestion.java:35
@@ -5206,7 +5210,7 @@ msgstr "打开 \t\t"
 msgid "Open Anyway"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:136
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:137
 msgid "Open Project"
 msgstr ""
 
@@ -7382,7 +7386,7 @@ msgid ""
 "the data in different formats."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:186
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:187
 msgid ""
 "This file cannot be imported because it is a newer format than this version "
 "of Miradi supports. <br>Please make sure you are running the latest version "
