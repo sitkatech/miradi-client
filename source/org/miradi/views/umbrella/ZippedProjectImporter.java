@@ -46,7 +46,7 @@ public class ZippedProjectImporter extends AbstractProjectImporter
 	@Override
 	protected void createProject(File importFile, File homeDirectory, String newProjectFilename, ProgressInterface progressIndicator) throws Exception
 	{
-		progressIndicator.setStatusMessage(EAM.text("Importing mpz file..."), 1);
+		progressIndicator.setStatusMessage(EAM.text("Importing mpz file..."), 2);
 		ProjectMpzImporter.unzipToProjectDirectory(importFile, homeDirectory, newProjectFilename);
 		progressIndicator.incrementProgress();
 	}
