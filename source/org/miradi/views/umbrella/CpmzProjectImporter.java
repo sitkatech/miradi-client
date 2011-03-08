@@ -141,7 +141,7 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 	}
 
 	@Override
-	protected void importProjectXml(Project projectToFill, ZipFile zipFile, InputStreamWithSeek projectAsInputStream) throws Exception
+	protected void importProjectXml(Project projectToFill, ZipFile zipFile, InputStreamWithSeek projectAsInputStream, ProgressInterface progressIndicator) throws Exception
 	{
 		ConproXmlImporter conProXmlImporter = new ConproXmlImporter(projectToFill);
 		conProXmlImporter.importConProProject(projectAsInputStream);

@@ -68,7 +68,7 @@ public class XmpzProjectImporter extends AbstractZippedXmlImporter
 	}
 	
 	@Override
-	protected void importProjectXml(Project projectToFill, ZipFile zipFile, InputStreamWithSeek projectAsInputStream) throws Exception
+	protected void importProjectXml(Project projectToFill, ZipFile zipFile, InputStreamWithSeek projectAsInputStream, ProgressInterface progressIndicator) throws Exception
 	{
 		XmpzXmlImporter xmpzImporter = new XmpzXmlImporter(projectToFill);
 		xmpzImporter.importProject(projectAsInputStream);

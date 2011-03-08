@@ -49,7 +49,7 @@ abstract public class AbstractZippedXmlImporter extends AbstractProjectImporter
 
 			try
 			{
-				importProjectXml(projectToFill, zipFile, projectAsInputStream);
+				importProjectXml(projectToFill, zipFile, projectAsInputStream, progressIndicator);
 			}
 			finally
 			{
@@ -67,6 +67,6 @@ abstract public class AbstractZippedXmlImporter extends AbstractProjectImporter
 	
 	abstract protected void createOrOpenProject(Project projectToFill, String projectName) throws Exception;
 
-	abstract protected void importProjectXml(Project projectToFill, ZipFile zipFile, InputStreamWithSeek projectAsInputStream) throws Exception;
+	abstract protected void importProjectXml(Project projectToFill, ZipFile zipFile, InputStreamWithSeek projectAsInputStream, ProgressInterface progressIndicator) throws Exception;
 
 }
