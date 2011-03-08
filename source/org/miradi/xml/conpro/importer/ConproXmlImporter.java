@@ -58,8 +58,8 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
-import org.miradi.objecthelpers.StringStringMap;
 import org.miradi.objecthelpers.StringRefMap;
+import org.miradi.objecthelpers.StringStringMap;
 import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
@@ -109,6 +109,7 @@ import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.DoubleUtilities;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.utils.ProgressInterface;
 import org.miradi.xml.conpro.ConProMiradiCodeMapHelper;
 import org.miradi.xml.conpro.ConProMiradiXml;
 import org.miradi.xml.conpro.exporter.ConProMiradiXmlValidator;
@@ -121,9 +122,11 @@ import org.xml.sax.SAXException;
 
 public class ConproXmlImporter implements ConProMiradiXml
 {
-	public ConproXmlImporter(Project projectToFill) throws Exception
+	public ConproXmlImporter(Project projectToFill, ProgressInterface progressIndicatorToUse) throws Exception
 	{
 		project = projectToFill;
+		progressIndicator = progressIndicatorToUse;
+		
 		codeMapHelper = new ConProMiradiCodeMapHelper();
 
 		wrappedToDiagramMap = new HashMap<ORef, ORef>();
@@ -176,26 +179,47 @@ public class ConproXmlImporter implements ConProMiradiXml
 	private void importXml() throws Exception
 	{
 		importProjectSummaryElement();
+		progressIndicator.incrementProgress();
 
 		// NOTE: Must import methods before strategies, because methods have specific ids
 		// which could conflict with activities that had been imported already
 		// TODO: Should assign all our own ids and keep a map of theirs to ours,
 		// to avoid any possible conflicts
 		importMethods();
+		progressIndicator.incrementProgress();
 
 		importStrategies();
+		progressIndicator.incrementProgress();
+		
 		importThreats();
+		progressIndicator.incrementProgress();
+		
 		importIndicators();
+		progressIndicator.incrementProgress();
+		
 		importObjectives();
+		progressIndicator.incrementProgress();
+		
 		importTargets();
+		progressIndicator.incrementProgress();
 		
 		setDiagramFactorDefaultLocations();
+		progressIndicator.incrementProgress();
 		
 		createDefaultObjects();
+		progressIndicator.incrementProgress();
+		
 		attachObjectivesToHolder();
+		progressIndicator.incrementProgress();
+		
 		attachIndicatorsToHolder();
+		progressIndicator.incrementProgress();
+		
 		updateObjectiveRelevantStrategyList();
+		progressIndicator.incrementProgress();
+		
 		createTaggedThreatChains();
+		progressIndicator.incrementProgress();
 	}
 
 	private void importStrategies() throws Exception
@@ -1454,6 +1478,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 	private ORef objectiveHolderRef;
 	private ORef indicatorHolderRef;
 	private ORef highOrAboveRankedThreatsTag;
+	private ProgressInterface progressIndicator;
 	
 	public static final String PREFIX = "cp:";
 	
