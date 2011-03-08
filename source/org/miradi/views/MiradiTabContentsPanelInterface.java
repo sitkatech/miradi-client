@@ -34,7 +34,7 @@ public interface MiradiTabContentsPanelInterface
 	public Icon getIcon();
 	public DisposablePanelWithDescription getTabContentsComponent();
 	public boolean isImageAvailable();
-	public BufferedImage getImage() throws Exception;
+	public BufferedImage getImage(int scale) throws Exception;
 	public boolean isExportableTableAvailable();
 	public TableExporter getTableExporter() throws Exception;
 	public JComponent getPrintableComponent() throws Exception;

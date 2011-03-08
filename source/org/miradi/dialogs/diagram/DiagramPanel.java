@@ -189,7 +189,7 @@ abstract public class DiagramPanel extends DisposablePanelWithDescription implem
 		return this;
 	}
 
-	public BufferedImage getImage() throws Exception
+	public BufferedImage getImage(int scale) throws Exception
 	{
 		return BufferedImageFactory.createImageFromDiagramWithCurrentSettings(mainWindow, getDiagramObject());
 	}

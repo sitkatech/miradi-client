@@ -126,7 +126,7 @@ abstract public class ObjectManagementPanel extends VerticalSplitPanel implement
 		return false;
 	}
 	
-	public BufferedImage getImage() throws Exception
+	public BufferedImage getImage(int scale) throws Exception
 	{
 		return null;
 	}

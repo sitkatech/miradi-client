@@ -68,7 +68,7 @@ abstract public class PlanningTreeManagementPanel extends ObjectListManagementPa
 	}
 	
 	@Override
-	public BufferedImage getImage() throws Exception
+	public BufferedImage getImage(int scale) throws Exception
 	{
 		JComponent panel = getPrintableComponent();
 		BufferedImage image = BufferedImageFactory.createImageFromComponent(panel);

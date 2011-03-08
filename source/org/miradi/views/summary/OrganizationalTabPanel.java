@@ -74,9 +74,9 @@ class OrganizationalTabPanel extends DisposablePanelWithDescription implements M
 		return wrappedPanel.getIcon();
 	}
 
-	public BufferedImage getImage() throws Exception
+	public BufferedImage getImage(int scale) throws Exception
 	{
-		return wrappedPanel.getImage();
+		return wrappedPanel.getImage(scale);
 	}
 
 	@Override
