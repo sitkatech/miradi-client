@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-08 13:22-0600\n"
+"POT-Creation-Date: 2011-03-08 13:41-0600\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -81,7 +81,7 @@ msgstr "Аюул заналыг хамаарал бүхий хамгаалах �
 msgid " A project by this name already exists: "
 msgstr "Ийм нэр бүхий төсөл хэдийнээ байгаа:"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractZippedXmlImporter.java:47
+#: Miradi/source/org/miradi/views/umbrella/AbstractZippedXmlImporter.java:48
 msgid " was empty"
 msgstr "хоосон байсан"
 
@@ -999,7 +999,7 @@ msgstr ""
 "<html>Энэ төслийн операторын баг <br>солигдсон. Дүгнэлтийн хуудсан дахь TNC-"
 "ийн Tab-аас орлуулагчийг сонгон уу.</html>"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:155
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:156
 msgid "<html>Import failed: <br><p> %s </p></html>"
 msgstr "<html>Import амжилтгүй болсон: <br><p> %s </p></html>"
 
@@ -4179,7 +4179,7 @@ msgstr "Стратегийн болон хяналтын төвөлөгөөг х
 msgid "Implement work plan"
 msgstr "Ажлын төлөвлөгөөг хэрэгжүүлэх"
 
-#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:233
+#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:237
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:70
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:119
 msgid "Import"
@@ -4193,7 +4193,7 @@ msgstr "Тооцооны код оруулах"
 msgid "Import Completed"
 msgstr "Оролт бүрэн дууссан"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:135
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:136
 msgid "Import Completed.  Would you like to open %s?"
 msgstr "Оролт бүрэн дууссан. Хувийг нээж харах уу%?"
 
@@ -4215,6 +4215,10 @@ msgstr "Zip-ийг оруулах"
 
 #: Miradi/source/org/miradi/views/umbrella/ZippedProjectImporter.java:49
 msgid "Importing mpz file..."
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:78
+msgid "Importing..."
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/TextBoxZOrderQuestion.java:35
@@ -5423,7 +5427,7 @@ msgstr "Нээх"
 msgid "Open Anyway"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:136
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:137
 msgid "Open Project"
 msgstr "Төсөл нээх"
 
@@ -7686,7 +7690,7 @@ msgid ""
 "the data in different formats."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:186
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:187
 msgid ""
 "This file cannot be imported because it is a newer format than this version "
 "of Miradi supports. <br>Please make sure you are running the latest version "
