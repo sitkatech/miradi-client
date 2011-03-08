@@ -32,6 +32,7 @@ import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
+import org.miradi.utils.NullProgressMeter;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.utils.XmpzFileFilter;
 import org.miradi.xml.xmpz.XmpzXmlImporter;
@@ -58,7 +59,7 @@ public class XmpzProjectImporter extends AbstractZippedXmlImporter
 		ZipFile zipFile = new ZipFile(zipFileToImport);
 		try
 		{
-			importProjectFromXmlEntry(zipFile, newProjectDir);
+			importProjectFromXmlEntry(zipFile, newProjectDir, new NullProgressMeter());
 		}
 		finally
 		{

@@ -27,6 +27,7 @@ import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
+import org.miradi.utils.ProgressInterface;
 
 abstract public class AbstractZippedXmlImporter extends AbstractProjectImporter
 {
@@ -35,7 +36,7 @@ abstract public class AbstractZippedXmlImporter extends AbstractProjectImporter
 		super(mainWindowToUse);
 	}
 	
-	protected void importProjectFromXmlEntry(ZipFile zipFile, File newProjectDir) throws Exception
+	protected void importProjectFromXmlEntry(ZipFile zipFile, File newProjectDir, ProgressInterface progressIndicator) throws Exception
 	{
 		Project projectToFill = new Project();
 		projectToFill.setLocalDataLocation(newProjectDir.getParentFile());
