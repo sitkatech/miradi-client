@@ -41,7 +41,7 @@ import com.toedter.components.JSpinField;
 
 public class ImageExportScaleDialog extends DialogWithDisposablePanel
 {
-	public ImageExportScaleDialog(MainWindow mainWindow, int defaultScale)
+	public ImageExportScaleDialog(MainWindow mainWindow, int defaultScalePercent)
 	{
 		super(mainWindow);
 
@@ -52,7 +52,7 @@ public class ImageExportScaleDialog extends DialogWithDisposablePanel
 		scaleRow.setLayout(new OneRowGridLayout());
 		scaleRow.add(new PanelTitleLabel(EAM.text("Image Scale %")));
 		spinner = new JSpinField(1, 300);
-		spinner.setValue(defaultScale);
+		spinner.setValue(defaultScalePercent);
 		scaleRow.add(spinner);
 
 		DataInputPanel panel = new DataInputPanel(mainWindow.getProject());
@@ -81,7 +81,7 @@ public class ImageExportScaleDialog extends DialogWithDisposablePanel
 		return userChoseOk;
 	}
 	
-	public int getScale()
+	public int getScalePercent()
 	{
 		return spinner.getValue();
 	}
