@@ -75,7 +75,7 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 
 	private void importProject(File zipFileToImport, File newProjectDir, ProgressInterface progressIndicator) throws ZipException, IOException, Exception, ValidationException
 	{
-		progressIndicator.setStatusMessage(EAM.text("Importing..."), 13);
+		progressIndicator.setStatusMessage(EAM.text("Importing..."), 15);
 		ZipFile zipFile = new ZipFile(zipFileToImport);
 		try
 		{
