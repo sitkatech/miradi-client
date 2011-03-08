@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-08 11:36-0600\n"
+"POT-Creation-Date: 2011-03-08 13:22-0600\n"
 "PO-Revision-Date: 2011-02-15 16:35-0600\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -3904,7 +3904,7 @@ msgstr ""
 msgid "Implement work plan"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:232
+#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:233
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:70
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:119
 msgid "Import"
@@ -3936,6 +3936,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:270
 msgid "ImportZip"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/ZippedProjectImporter.java:49
+msgid "Importing mpz file..."
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/TextBoxZOrderQuestion.java:35

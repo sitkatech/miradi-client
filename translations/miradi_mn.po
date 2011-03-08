@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-08 11:36-0600\n"
+"POT-Creation-Date: 2011-03-08 13:22-0600\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -4179,7 +4179,7 @@ msgstr "Стратегийн болон хяналтын төвөлөгөөг х
 msgid "Implement work plan"
 msgstr "Ажлын төлөвлөгөөг хэрэгжүүлэх"
 
-#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:232
+#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:233
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:70
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:119
 msgid "Import"
@@ -4212,6 +4212,10 @@ msgstr "Оруулах..."
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:270
 msgid "ImportZip"
 msgstr "Zip-ийг оруулах"
+
+#: Miradi/source/org/miradi/views/umbrella/ZippedProjectImporter.java:49
+msgid "Importing mpz file..."
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/TextBoxZOrderQuestion.java:35
 msgid "In Front"
