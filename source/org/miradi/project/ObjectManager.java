@@ -150,7 +150,6 @@ import org.miradi.objects.WcpaProjectData;
 import org.miradi.objects.WcsProjectData;
 import org.miradi.objects.WwfProjectData;
 import org.miradi.objects.Xenodata;
-import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class ObjectManager
@@ -524,11 +523,6 @@ public class ObjectManager
 	public Project getProject()
 	{
 		return project;
-	}
-
-	SimpleThreatRatingFramework getThreatRatingFramework()
-	{
-		return getProject().getSimpleThreatRatingFramework();
 	}
 
 	ProjectServer getDatabase()
