@@ -346,10 +346,10 @@ public class ObjectManager
 
 	public BaseId createObject(int objectType, BaseId objectId, CreateObjectParameter extraInfo) throws Exception
 	{
-		DEBUG_IN_CREATE = true;
+		DEBUG_IN_SETOBJECTDATA = true;
 		try
 		{
-			if (!DEBUG_IN_CREATE)
+			if (!DEBUG_IN_SETOBJECTDATA)
 			{
 				System.out.println("************someone is already in CREATE**********");
 				System.out.flush();
@@ -388,7 +388,7 @@ public class ObjectManager
 		}
 		finally
 		{
-			DEBUG_IN_CREATE = false;
+			DEBUG_IN_SETOBJECTDATA = false;
 		}
 	}
 	
@@ -435,10 +435,10 @@ public class ObjectManager
 
 	public void deleteObject(BaseObject object) throws Exception
 	{
-		DEBUG_IN_DELETE = true;
+		DEBUG_IN_SETOBJECTDATA = true;
 		try
 		{
-			if (!DEBUG_IN_DELETE)
+			if (!DEBUG_IN_SETOBJECTDATA)
 			{
 				System.out.println("************someone is already in DELETE**********");
 				System.out.flush();
@@ -457,7 +457,7 @@ public class ObjectManager
 		}
 		finally
 		{
-			DEBUG_IN_DELETE = false;
+			DEBUG_IN_SETOBJECTDATA = false;
 		}
 	}
 
@@ -735,6 +735,4 @@ public class ObjectManager
 	private HashMap<Integer, BaseObjectInformation> pools;
 	private HashMap<ORef, ORefSet> referrerCache;
 	private static boolean DEBUG_IN_SETOBJECTDATA;
-	private static boolean DEBUG_IN_DELETE;
-	private static boolean DEBUG_IN_CREATE;
 }
