@@ -32,7 +32,6 @@ import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
-import org.miradi.utils.NullProgressMeter;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.utils.XmpzFileFilter;
 import org.miradi.xml.xmpz.XmpzXmlImporter;
@@ -51,15 +50,15 @@ public class XmpzProjectImporter extends AbstractZippedXmlImporter
 			throw new Exception("Illegal project name: " + newProjectFilename);
 
 		File newProjectDir = new File(EAM.getHomeDirectory(), newProjectFilename);
-		importProject(importFile, newProjectDir);		
+		importProject(importFile, newProjectDir, progressIndicator);		
 	}
 	
-	private void importProject(File zipFileToImport, File newProjectDir) throws ZipException, IOException, Exception, ValidationException
+	private void importProject(File zipFileToImport, File newProjectDir, ProgressInterface progressIndicator) throws ZipException, IOException, Exception, ValidationException
 	{
 		ZipFile zipFile = new ZipFile(zipFileToImport);
 		try
 		{
-			importProjectFromXmlEntry(zipFile, newProjectDir, new NullProgressMeter());
+			importProjectFromXmlEntry(zipFile, newProjectDir, progressIndicator);
 		}
 		finally
 		{
@@ -70,7 +69,7 @@ public class XmpzProjectImporter extends AbstractZippedXmlImporter
 	@Override
 	protected void importProjectXml(Project projectToFill, ZipFile zipFile, InputStreamWithSeek projectAsInputStream, ProgressInterface progressIndicator) throws Exception
 	{
-		XmpzXmlImporter xmpzImporter = new XmpzXmlImporter(projectToFill);
+		XmpzXmlImporter xmpzImporter = new XmpzXmlImporter(projectToFill, progressIndicator);
 		xmpzImporter.importProject(projectAsInputStream);
 	}
 
