@@ -25,7 +25,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import org.miradi.main.EAM;
+import org.miradi.dialogs.ImageExportScaleDialog;
 
 abstract public class AbstractImageSaverDoer extends AbstractFileSaverDoer
 {
@@ -63,10 +63,13 @@ abstract public class AbstractImageSaverDoer extends AbstractFileSaverDoer
 	@Override
 	protected boolean doesUserConfirm() throws Exception
 	{
-		if (isInDiagram())
-			EAM.showHtmlInfoMessageOkDialog(MESSAGE_FILE_NAME);
-		
-		return true;
+		int defaultScale = 100;
+		ImageExportScaleDialog dialog = new ImageExportScaleDialog(getMainWindow(), defaultScale);
+		dialog.showDialog();
+		boolean userChoseOk = dialog.userChoseOk();
+		if(userChoseOk)
+			scale = dialog.getScale();
+		return userChoseOk;
 	}
 	
 	private void saveImage(FileOutputStream out) throws Exception
@@ -76,6 +79,8 @@ abstract public class AbstractImageSaverDoer extends AbstractFileSaverDoer
 	}
 
 	abstract public void saveImage(OutputStream out, BufferedImage image) throws IOException;
-	
-	private final static String MESSAGE_FILE_NAME = "ImageResolutionMessage.html";
+
+	// FIXME: Disabling warnings so I can commit this before doing some refactoring to continue
+	@SuppressWarnings("unused")
+	private int scale;
 }
