@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-08 15:44-0600\n"
+"POT-Creation-Date: 2011-03-08 16:14-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -2415,6 +2415,7 @@ msgstr "规则集"
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:166
 #: Miradi/source/org/miradi/dialogs/confirm/ConfirmDialogTemplate.java:51
 #: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:241
+#: Miradi/source/org/miradi/dialogs/ImageExportScaleDialog.java:78
 msgid "Button|Cancel"
 msgstr "取消 \t\t"
 
@@ -2438,6 +2439,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:134
 msgid "Button|Exit"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/ImageExportScaleDialog.java:76
+msgid "Button|Export..."
 msgstr ""
 
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:132
@@ -3662,6 +3667,14 @@ msgstr "字体集 \t\t"
 msgid "Font Size"
 msgstr "字体大小 \t\t"
 
+#: Miradi/source/org/miradi/dialogs/ImageExportScaleDialog.java:69
+msgid "For a larger, higher-resolution image, choose a scale above 100%"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/ImageExportScaleDialog.java:70
+msgid "For a smaller, lower-resolution image, choose a scale below 100%"
+msgstr ""
+
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:34
 msgid "Forest"
 msgstr "森林"
@@ -3976,6 +3989,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:99
 msgid "Ignoring unlinked factors..."
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/ImageExportScaleDialog.java:54
+msgid "Image Scale %"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/jump/ActionJumpPlanningWizardImplementPlans.java:36
@@ -7591,6 +7608,10 @@ msgstr "标题|直接威胁因子属性"
 msgid "Title|Error"
 msgstr "错误 "
 
+#: Miradi/source/org/miradi/dialogs/ImageExportScaleDialog.java:49
+msgid "Title|Export Image Scale"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/diagram/DiagramView.java:973
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:57
 msgid "Title|Factor Properties"
@@ -9979,17 +10000,6 @@ msgstr ""
 "栏按钮，以各种输出格式进行打印或将其保存到磁盘。在控制栏中点击不同的报告，则"
 "在左边可以预览不同的报告。显示不同的报告可能需要几分钟，时间长短依您电脑的速"
 "度和报告的大小而不同。</p></HTML> \t\t"
-
-msgid ""
-"html|/resources/ImageResolutionMessage.html|<p>The resolution of the "
-"exported image depends on the current zoom level. Zooming out will cause the "
-"image to become fuzzier, and zooming in will cause the image to become "
-"sharper. For clearer images, zoom in farther. For image files that take up "
-"less disk space, zoom out more.</p>"
-msgstr ""
-"<p>导出图像的分辨率取决于当前的放大倍数。缩小会导致图像变得模糊，放大则使图像"
-"变得清晰。要得到更清晰的图像，就进一步放大。要使图像文档占用更少的磁盘空间，"
-"则进一步缩小图像。</p> \t\t"
 
 msgid ""
 "html|/resources/FteDaysPerYearDialogExplanation.html|<p>Enter a value below "
@@ -29001,6 +29011,17 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid ""
+#~ "html|/resources/ImageResolutionMessage.html|<p>The resolution of the "
+#~ "exported image depends on the current zoom level. Zooming out will cause "
+#~ "the image to become fuzzier, and zooming in will cause the image to "
+#~ "become sharper. For clearer images, zoom in farther. For image files that "
+#~ "take up less disk space, zoom out more.</p>"
+#~ msgstr ""
+#~ "<p>导出图像的分辨率取决于当前的放大倍数。缩小会导致图像变得模糊，放大则使"
+#~ "图像变得清晰。要得到更清晰的图像，就进一步放大。要使图像文档占用更少的磁盘"
+#~ "空间，则进一步缩小图像。</p> \t\t"
 
 #~ msgid "--Select a classification--"
 #~ msgstr "--选定一个类别-- \t\t"

@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-08 15:44-0600\n"
+"POT-Creation-Date: 2011-03-08 16:14-0600\n"
 "PO-Revision-Date: 2011-01-24 10:21-0600\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -2361,6 +2361,7 @@ msgstr ""
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:166
 #: Miradi/source/org/miradi/dialogs/confirm/ConfirmDialogTemplate.java:51
 #: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:241
+#: Miradi/source/org/miradi/dialogs/ImageExportScaleDialog.java:78
 msgid "Button|Cancel"
 msgstr ""
 
@@ -2384,6 +2385,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:134
 msgid "Button|Exit"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/ImageExportScaleDialog.java:76
+msgid "Button|Export..."
 msgstr ""
 
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:132
@@ -3578,6 +3583,14 @@ msgstr ""
 msgid "Font Size"
 msgstr ""
 
+#: Miradi/source/org/miradi/dialogs/ImageExportScaleDialog.java:69
+msgid "For a larger, higher-resolution image, choose a scale above 100%"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/ImageExportScaleDialog.java:70
+msgid "For a smaller, lower-resolution image, choose a scale below 100%"
+msgstr ""
+
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:34
 msgid "Forest"
 msgstr ""
@@ -3890,6 +3903,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:99
 msgid "Ignoring unlinked factors..."
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/ImageExportScaleDialog.java:54
+msgid "Image Scale %"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/jump/ActionJumpPlanningWizardImplementPlans.java:36
@@ -7433,6 +7450,10 @@ msgstr ""
 msgid "Title|Error"
 msgstr ""
 
+#: Miradi/source/org/miradi/dialogs/ImageExportScaleDialog.java:49
+msgid "Title|Export Image Scale"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/diagram/DiagramView.java:973
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:57
 msgid "Title|Factor Properties"
@@ -9776,14 +9797,6 @@ msgid ""
 "different report. Displaying a different report may take a few minutes, "
 "depending on the speed of your computer and the size of the report.</p></"
 "HTML>"
-msgstr ""
-
-msgid ""
-"html|/resources/ImageResolutionMessage.html|<p>The resolution of the "
-"exported image depends on the current zoom level. Zooming out will cause the "
-"image to become fuzzier, and zooming in will cause the image to become "
-"sharper. For clearer images, zoom in farther. For image files that take up "
-"less disk space, zoom out more.</p>"
 msgstr ""
 
 msgid ""

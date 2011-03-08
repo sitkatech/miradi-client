@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-08 15:44-0600\n"
+"POT-Creation-Date: 2011-03-08 16:14-0600\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -2574,6 +2574,7 @@ msgstr "Багц Дүрэм"
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:166
 #: Miradi/source/org/miradi/dialogs/confirm/ConfirmDialogTemplate.java:51
 #: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:241
+#: Miradi/source/org/miradi/dialogs/ImageExportScaleDialog.java:78
 msgid "Button|Cancel"
 msgstr "Товчлуур|Цуцлах"
 
@@ -2598,6 +2599,10 @@ msgstr "Товчлуур Import-лохгүй"
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:134
 msgid "Button|Exit"
 msgstr "Товчлуур|Гарах"
+
+#: Miradi/source/org/miradi/dialogs/ImageExportScaleDialog.java:76
+msgid "Button|Export..."
+msgstr ""
 
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:132
 msgid "Button|Import"
@@ -3842,6 +3847,14 @@ msgstr "Font Family"
 msgid "Font Size"
 msgstr "Үсгийн хэмжээ"
 
+#: Miradi/source/org/miradi/dialogs/ImageExportScaleDialog.java:69
+msgid "For a larger, higher-resolution image, choose a scale above 100%"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/ImageExportScaleDialog.java:70
+msgid "For a smaller, lower-resolution image, choose a scale below 100%"
+msgstr ""
+
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:34
 msgid "Forest"
 msgstr "Ой"
@@ -4166,6 +4179,10 @@ msgstr ""
 #: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:99
 msgid "Ignoring unlinked factors..."
 msgstr "Холбоогүй хүчин зүйлүүдийг анхаарахгүй байх..."
+
+#: Miradi/source/org/miradi/dialogs/ImageExportScaleDialog.java:54
+msgid "Image Scale %"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/jump/ActionJumpPlanningWizardImplementPlans.java:36
 msgid "Implement plans"
@@ -7910,6 +7927,10 @@ msgstr "Гарчиг|Шууд үйлчлэх Аюул Заналын Properties"
 msgid "Title|Error"
 msgstr "Гарчиг|Алдаа"
 
+#: Miradi/source/org/miradi/dialogs/ImageExportScaleDialog.java:49
+msgid "Title|Export Image Scale"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/diagram/DiagramView.java:973
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:57
 msgid "Title|Factor Properties"
@@ -10464,18 +10485,6 @@ msgid ""
 "depending on the speed of your computer and the size of the report.</p></"
 "HTML>"
 msgstr ""
-
-msgid ""
-"html|/resources/ImageResolutionMessage.html|<p>The resolution of the "
-"exported image depends on the current zoom level. Zooming out will cause the "
-"image to become fuzzier, and zooming in will cause the image to become "
-"sharper. For clearer images, zoom in farther. For image files that take up "
-"less disk space, zoom out more.</p>"
-msgstr ""
-"html|/resources/ImageResolutionMessage.html|<p>Оруулсан зургийн нягтрал нь "
-"идэвхижүүлсэн zoom-ын түвшингээс хамаарна. zoom –ыг холдуулвал зураг "
-"бүдгэрнэ харин ойртуулж татвал зураг илүү тод болж өгнө. диск дээр бага зай "
-"эзлэх үүднээс зургийн файлд zoom –ыг илүү холдуулж өгөх хэрэгтэй. </p>"
 
 msgid ""
 "html|/resources/FteDaysPerYearDialogExplanation.html|<p>Enter a value below "
@@ -31737,6 +31746,18 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid ""
+#~ "html|/resources/ImageResolutionMessage.html|<p>The resolution of the "
+#~ "exported image depends on the current zoom level. Zooming out will cause "
+#~ "the image to become fuzzier, and zooming in will cause the image to "
+#~ "become sharper. For clearer images, zoom in farther. For image files that "
+#~ "take up less disk space, zoom out more.</p>"
+#~ msgstr ""
+#~ "html|/resources/ImageResolutionMessage.html|<p>Оруулсан зургийн нягтрал "
+#~ "нь идэвхижүүлсэн zoom-ын түвшингээс хамаарна. zoom –ыг холдуулвал зураг "
+#~ "бүдгэрнэ харин ойртуулж татвал зураг илүү тод болж өгнө. диск дээр бага "
+#~ "зай эзлэх үүднээс зургийн файлд zoom –ыг илүү холдуулж өгөх хэрэгтэй. </p>"
 
 #~ msgid "This method is not responsible for creating task nodes."
 #~ msgstr "Энэ арга даалгаварын зангилаа уулзварыг үүсгэх үүрэггүй."
