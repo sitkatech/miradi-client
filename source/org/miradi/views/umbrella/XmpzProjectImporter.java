@@ -32,6 +32,7 @@ import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
+import org.miradi.utils.ProgressInterface;
 import org.miradi.utils.XmpzFileFilter;
 import org.miradi.xml.xmpz.XmpzXmlImporter;
 
@@ -43,7 +44,7 @@ public class XmpzProjectImporter extends AbstractZippedXmlImporter
 	}
 
 	@Override
-	protected void createProject(File importFile, File homeDirectory, String newProjectFilename) throws Exception
+	protected void createProject(File importFile, File homeDirectory, String newProjectFilename, ProgressInterface progressIndicator) throws Exception
 	{
 		if(!Project.isValidProjectFilename(newProjectFilename))
 			throw new Exception("Illegal project name: " + newProjectFilename);

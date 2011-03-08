@@ -47,6 +47,7 @@ import org.miradi.utils.ConceptualModelByTargetSplitter;
 import org.miradi.utils.CpmzFileFilterForChooserDialog;
 import org.miradi.utils.GroupBoxHelper;
 import org.miradi.utils.HtmlViewPanelWithMargins;
+import org.miradi.utils.ProgressInterface;
 import org.miradi.views.diagram.DiagramView;
 import org.miradi.xml.conpro.importer.ConproXmlImporter;
 
@@ -63,7 +64,7 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 	}
 	
 	@Override
-	public void createProject(File importFile, File homeDirectory, String newProjectFilename) throws Exception
+	public void createProject(File importFile, File homeDirectory, String newProjectFilename, ProgressInterface progressIndicator) throws Exception
 	{
 		if(!Project.isValidProjectFilename(newProjectFilename))
 			throw new Exception("Illegal project name: " + newProjectFilename);
