@@ -105,7 +105,6 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 		}
 		
 		importConproProjectNumbers(zipFile, newProjectDir, progressIndicator);
-		progressIndicator.incrementProgress();
 	}
 
 	private void importConproProjectNumbers(ZipFile zipFile, File newProjectDir, ProgressInterface progressIndicator) throws Exception

@@ -144,6 +144,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		Node projectSumaryNode = getNode(getRootNode(), PROJECT_SUMMARY);
 		ORef metadataRef = getProject().getMetadata().getRef();
 		importProjectId(projectSumaryNode, metadataRef);
+		progressIndicator.incrementProgress();
 	}
 
 	private void loadXml(InputStreamWithSeek projectAsInputStream) throws Exception
