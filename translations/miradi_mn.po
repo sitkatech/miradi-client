@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-08 11:06-0600\n"
+"POT-Creation-Date: 2011-03-08 11:26-0600\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -999,7 +999,7 @@ msgstr ""
 "<html>Энэ төслийн операторын баг <br>солигдсон. Дүгнэлтийн хуудсан дахь TNC-"
 "ийн Tab-аас орлуулагчийг сонгон уу.</html>"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:129
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:155
 msgid "<html>Import failed: <br><p> %s </p></html>"
 msgstr "<html>Import амжилтгүй болсон: <br><p> %s </p></html>"
 
@@ -4193,11 +4193,11 @@ msgstr "Тооцооны код оруулах"
 msgid "Import Completed"
 msgstr "Оролт бүрэн дууссан"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:109
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:135
 msgid "Import Completed.  Would you like to open %s?"
 msgstr "Оролт бүрэн дууссан. Хувийг нээж харах уу%?"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:53
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:56
 msgid "Import Project"
 msgstr "Төслийг оруулах"
 
@@ -5419,7 +5419,7 @@ msgstr "Нээх"
 msgid "Open Anyway"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:110
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:136
 msgid "Open Project"
 msgstr "Төсөл нээх"
 
@@ -7682,7 +7682,7 @@ msgid ""
 "the data in different formats."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:160
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:186
 msgid ""
 "This file cannot be imported because it is a newer format than this version "
 "of Miradi supports. <br>Please make sure you are running the latest version "
@@ -7708,7 +7708,7 @@ msgstr ""
 "Энэхүү загвар нь ганц нэг даалгаварт зориуулагдаагүй ба даалгаварын мэдээлэл "
 "байхгүй байна."
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:74
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:77
 msgid ""
 "This project cannot be imported by this version of Miradi because it \n"
 "is in a newer data format. Please upgrade to the latest version of Miradi."

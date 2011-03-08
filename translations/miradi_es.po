@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-08 11:06-0600\n"
+"POT-Creation-Date: 2011-03-08 11:26-0600\n"
 "PO-Revision-Date: 2010-09-20 10:32-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -944,7 +944,7 @@ msgstr ""
 "<html>Una unidad operativa para este proyecto se ha<br>sustituido. "
 "Seleccione su reemplazo en la ficha TNC de la Página de resumen.</html>"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:129
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:155
 msgid "<html>Import failed: <br><p> %s </p></html>"
 msgstr "<html>Falló la importación: <br><p> %s </p></html> "
 
@@ -4165,11 +4165,11 @@ msgstr "Importar códigos contables"
 msgid "Import Completed"
 msgstr "Se completó la importación."
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:109
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:135
 msgid "Import Completed.  Would you like to open %s?"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:53
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:56
 msgid "Import Project"
 msgstr "Importar proyecto"
 
@@ -5414,7 +5414,7 @@ msgstr "Abrir"
 msgid "Open Anyway"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:110
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:136
 msgid "Open Project"
 msgstr ""
 
@@ -7663,7 +7663,7 @@ msgid ""
 "the data in different formats."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:160
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:186
 msgid ""
 "This file cannot be imported because it is a newer format than this version "
 "of Miradi supports. <br>Please make sure you are running the latest version "
@@ -7689,7 +7689,7 @@ msgstr ""
 "Este modelo no es para asignaciones individuales y no cuenta con información "
 "de la asignación."
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:74
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:77
 msgid ""
 "This project cannot be imported by this version of Miradi because it \n"
 "is in a newer data format. Please upgrade to the latest version of Miradi."
