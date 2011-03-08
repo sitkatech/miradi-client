@@ -48,6 +48,7 @@ public class ZippedProjectImporter extends AbstractProjectImporter
 	{
 		progressIndicator.setStatusMessage(EAM.text("Importing mpz file..."), 1);
 		ProjectMpzImporter.unzipToProjectDirectory(importFile, homeDirectory, newProjectFilename);
+		progressIndicator.updateProgressMeter(1);
 		progressIndicator.finished();
 	}
 
