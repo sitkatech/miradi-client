@@ -351,6 +351,16 @@ public class AppPreferences
 	{
 		return rowHeightModeCode;
 	}
+	
+	public void setDiagramImageExportScalePercent(int newPercent)
+	{
+		diagramImageExportScalePercent = newPercent;
+	}
+	
+	public int getDiagramExportScalePercent()
+	{
+		return diagramImageExportScalePercent;
+	}
 
 	public EnhancedJsonObject toJson()
 	{
@@ -392,7 +402,7 @@ public class AppPreferences
 		
 		json.put(TAG_IS_SPELL_CHECK_ENABLED, isSpellCheckEnabled);
 		json.put(TAG_NOTIFY_DIALOGS_TO_NEVER_SHOW_AGAIN, notifyDialogsToNeverShowAgain.toString());
-		
+		json.put(TAG_DIAGRAM_IMAGE_EXPORT_SCALE_PERCENT, diagramImageExportScalePercent);
 		return json;
 	}
 	
@@ -463,6 +473,7 @@ public class AppPreferences
 		
 		isSpellCheckEnabled = json.optBoolean(TAG_IS_SPELL_CHECK_ENABLED);
 		notifyDialogsToNeverShowAgain = json.optCodeList(TAG_NOTIFY_DIALOGS_TO_NEVER_SHOW_AGAIN);
+		diagramImageExportScalePercent = json.optInt(TAG_DIAGRAM_IMAGE_EXPORT_SCALE_PERCENT);
 	}
 
 	private HashMap<String, String> loadTagStringMap(EnhancedJsonObject json)
@@ -689,6 +700,7 @@ public class AppPreferences
 	public static final String TAG_ROW_HEIGHT_MODE = "TableRowHeightMode";
 	
 	public static final String TAG_IS_SPELL_CHECK_ENABLED = "SpellCheckEnabled";
+	public static final String TAG_DIAGRAM_IMAGE_EXPORT_SCALE_PERCENT = "DiagramImageExportScalePercent";
 	
 	public static final Color WIZARD_TITLE_FOREGROUND = new Color(72, 112, 28);
 	public static final String WIZARD_TITLE_FOREGROUND_FOR_CSS = "#48701C";
@@ -775,6 +787,6 @@ public class AppPreferences
 	private HashMap<String, Integer> taggedIntMap;
 	private HashMap<String, String> taggedStringMap;
 	
-
 	private boolean isSpellCheckEnabled;
+	private int diagramImageExportScalePercent;
 }
