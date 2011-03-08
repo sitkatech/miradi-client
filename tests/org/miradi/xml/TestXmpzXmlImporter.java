@@ -57,6 +57,7 @@ import org.miradi.utils.CodeList;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.utils.NullProgressMeter;
 import org.miradi.xml.wcs.XmpzXmlExporter;
 import org.miradi.xml.xmpz.XmpzXmlImporter;
 
@@ -278,7 +279,7 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 		UnicodeStringWriter firstWriter = createWriter(getProject());
 		
 		ProjectForTesting projectToImportInto = ProjectForTesting.createProjectWithoutDefaultObjects("ProjectToImportInto");
-		XmpzXmlImporter xmlImporter = new XmpzXmlImporter(projectToImportInto);
+		XmpzXmlImporter xmlImporter = new XmpzXmlImporter(projectToImportInto, new NullProgressMeter());
 		StringInputStreamWithSeek stringInputputStream = new StringInputStreamWithSeek(firstWriter.toString());
 		try
 		{
