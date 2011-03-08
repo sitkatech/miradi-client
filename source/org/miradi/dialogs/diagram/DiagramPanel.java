@@ -189,9 +189,9 @@ abstract public class DiagramPanel extends DisposablePanelWithDescription implem
 		return this;
 	}
 
-	public BufferedImage getImage(int scale) throws Exception
+	public BufferedImage getImage(int scalePercent) throws Exception
 	{
-		return BufferedImageFactory.createImageFromDiagramWithCurrentSettings(mainWindow, getDiagramObject(), scale);
+		return BufferedImageFactory.createImageFromDiagramWithCurrentSettings(mainWindow, getDiagramObject(), scalePercent);
 	}
 
 	public boolean isImageAvailable()

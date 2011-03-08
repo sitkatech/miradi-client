@@ -113,9 +113,9 @@ public  class BufferedImageFactory
 		return createImageFromDiagram(diagram);
 	}
 	
-	public static BufferedImage createImageFromDiagramWithCurrentSettings(MainWindow mainWindow, DiagramObject diagramObject, int scale) throws Exception
+	public static BufferedImage createImageFromDiagramWithCurrentSettings(MainWindow mainWindow, DiagramObject diagramObject, int scalePercent) throws Exception
 	{
-		DiagramComponent diagram = BufferedImageFactory.createDiagramComponentWithCurrentSettings(mainWindow, diagramObject, scale);
+		DiagramComponent diagram = BufferedImageFactory.createDiagramComponentWithCurrentSettings(mainWindow, diagramObject, scalePercent);
 		return createImageFromDiagram(diagram);
 	}
 	

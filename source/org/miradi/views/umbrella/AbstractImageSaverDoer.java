@@ -63,22 +63,22 @@ abstract public class AbstractImageSaverDoer extends AbstractFileSaverDoer
 	@Override
 	protected boolean doesUserConfirm() throws Exception
 	{
-		int defaultScale = 100;
-		ImageExportScaleDialog dialog = new ImageExportScaleDialog(getMainWindow(), defaultScale);
+		int defaultScalePercent = 100;
+		ImageExportScaleDialog dialog = new ImageExportScaleDialog(getMainWindow(), defaultScalePercent);
 		dialog.showDialog();
 		boolean userChoseOk = dialog.userChoseOk();
 		if(userChoseOk)
-			scale = dialog.getScale();
+			scalePercent = dialog.getScalePercent();
 		return userChoseOk;
 	}
 	
 	private void saveImage(FileOutputStream out) throws Exception
 	{
-		BufferedImage image = getView().getImage(scale);
+		BufferedImage image = getView().getImage(scalePercent);
 		saveImage(out, image);
 	}
 
 	abstract public void saveImage(OutputStream out, BufferedImage image) throws IOException;
 
-	private int scale;
+	private int scalePercent;
 }

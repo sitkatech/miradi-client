@@ -326,7 +326,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		throw new RuntimeException("This view doesn't support getExportableTable");
 	}
 	
-	public BufferedImage getImage(int scale) throws Exception
+	public BufferedImage getImage(int scalePercent) throws Exception
 	{
 		throw new RuntimeException("This view doesn't support getImage");
 	}
