@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-08 13:41-0600\n"
+"POT-Creation-Date: 2011-03-08 14:32-0600\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -3717,7 +3717,7 @@ msgid "File name must contain only alpha numeric and/or '_' characters."
 msgstr "Файлын нэр зөвхөн альфа тоо ба/ '_'тэмдэгтүүдийг агуулах ёстой."
 
 #: Miradi/source/org/miradi/xml/AbstractXmlImporter.java:90
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:170
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:173
 msgid "File to import does not validate."
 msgstr "Оруулах файл хүчин төгөлдөр болохгүй байна."
 
@@ -4072,7 +4072,7 @@ msgstr "Баганы дөрөвний нэгийг нуух"
 msgid "High"
 msgstr "Өндөр"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1354
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1378
 msgid "High/Very-High Threat Chains"
 msgstr "Өндөр/Маш-Өндөр Аюул Заналын Гинжин Холбоо"
 
@@ -4179,7 +4179,7 @@ msgstr "Стратегийн болон хяналтын төвөлөгөөг х
 msgid "Implement work plan"
 msgstr "Ажлын төлөвлөгөөг хэрэгжүүлэх"
 
-#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:237
+#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:238
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:70
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:119
 msgid "Import"
@@ -4255,7 +4255,7 @@ msgstr ""
 "хангасан байдаг : хэмжигдэхүйц, тодорхой, тогтвортой ба мэдрэмтгий.  Шалгуур "
 "үзүүлэлтийг Miradi-д нил ягаан гурвалжингаар төлөөлүүлсэн."
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1254
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1278
 msgid "Indicator Holder"
 msgstr "Indicator Holder"
 
@@ -4736,7 +4736,7 @@ msgstr ""
 msgid "Low"
 msgstr "Сул, бага, доогуур"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1355
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1379
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr "Сул/Дундаж/Үнэлэгдээгүй Аюулын Гинжин холбоос"
 
@@ -5297,7 +5297,7 @@ msgstr "Тодорхой тайлбарлагдаагүй"
 msgid "Not Started"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:618
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:642
 msgid "Not all classification Codes could imported."
 msgstr "Ангиллын бүх код орсонгүй. "
 
@@ -5339,7 +5339,7 @@ msgstr ""
 "албан ёсны мэдэгдэл. Зорилт нь Miradi-д жижиг цэнхэр тэгш өнцөгтөөр "
 "төлөөллөгдсөн."
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1248
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1272
 msgid "Objective Holder"
 msgstr "Зорилтуудын Хайрцаг"
 
@@ -5506,7 +5506,7 @@ msgstr "Ягаан"
 msgid "Place scope on diagram"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1244
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1268
 msgid "Placeholder - From ConPro"
 msgstr ""
 

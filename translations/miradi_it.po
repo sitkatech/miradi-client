@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-08 13:41-0600\n"
+"POT-Creation-Date: 2011-03-08 14:32-0600\n"
 "PO-Revision-Date: 2010-05-12 21:01-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -3459,7 +3459,7 @@ msgid "File name must contain only alpha numeric and/or '_' characters."
 msgstr ""
 
 #: Miradi/source/org/miradi/xml/AbstractXmlImporter.java:90
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:170
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:173
 msgid "File to import does not validate."
 msgstr ""
 
@@ -3800,7 +3800,7 @@ msgstr ""
 msgid "High"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1354
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1378
 msgid "High/Very-High Threat Chains"
 msgstr ""
 
@@ -3904,7 +3904,7 @@ msgstr ""
 msgid "Implement work plan"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:237
+#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:238
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:70
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:119
 msgid "Import"
@@ -3975,7 +3975,7 @@ msgid ""
 "by a purple triangle."
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1254
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1278
 msgid "Indicator Holder"
 msgstr ""
 
@@ -4448,7 +4448,7 @@ msgstr ""
 msgid "Low"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1355
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1379
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr ""
 
@@ -4983,7 +4983,7 @@ msgstr ""
 msgid "Not Started"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:618
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:642
 msgid "Not all classification Codes could imported."
 msgstr ""
 
@@ -5022,7 +5022,7 @@ msgid ""
 "by a small blue rectangle."
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1248
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1272
 msgid "Objective Holder"
 msgstr ""
 
@@ -5185,7 +5185,7 @@ msgstr ""
 msgid "Place scope on diagram"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1244
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1268
 msgid "Placeholder - From ConPro"
 msgstr ""
 

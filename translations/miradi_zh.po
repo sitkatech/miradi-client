@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-08 13:41-0600\n"
+"POT-Creation-Date: 2011-03-08 14:32-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -3540,7 +3540,7 @@ msgid "File name must contain only alpha numeric and/or '_' characters."
 msgstr "文件名只能包含文字数字和/或'_'字符。 \t\t"
 
 #: Miradi/source/org/miradi/xml/AbstractXmlImporter.java:90
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:170
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:173
 msgid "File to import does not validate."
 msgstr "要导入的文件不正确 \t\t"
 
@@ -3886,7 +3886,7 @@ msgstr ""
 msgid "High"
 msgstr "高"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1354
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1378
 msgid "High/Very-High Threat Chains"
 msgstr ""
 
@@ -3990,7 +3990,7 @@ msgstr "实施策略及监控计划 \t\t"
 msgid "Implement work plan"
 msgstr "实施工作计划 \t\t"
 
-#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:237
+#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:238
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:70
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:119
 msgid "Import"
@@ -4064,7 +4064,7 @@ msgstr ""
 "或为达到某分目标而取得的进展等）。良好的指示物应满足的标准是：可测量性、精确"
 "性、一致性和敏感性。在Miradi中，指示物是以紫色三角形来代表的。"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1254
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1278
 msgid "Indicator Holder"
 msgstr ""
 
@@ -4542,7 +4542,7 @@ msgstr ""
 msgid "Low"
 msgstr "低"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1355
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1379
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr ""
 
@@ -5083,7 +5083,7 @@ msgstr "未指定 \t\t"
 msgid "Not Started"
 msgstr "未开始"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:618
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:642
 msgid "Not all classification Codes could imported."
 msgstr ""
 
@@ -5124,7 +5124,7 @@ msgstr ""
 "分目标——指的是一个正式的声明，它详细列出了项目所期望的结果，如某种临界威胁因"
 "子的减少。在Miradi中，分目标是以蓝色小长方形来代表的。 "
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1248
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1272
 msgid "Objective Holder"
 msgstr ""
 
@@ -5289,7 +5289,7 @@ msgstr "粉红色"
 msgid "Place scope on diagram"
 msgstr "在图表上设置范围 \t\t"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1244
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1268
 msgid "Placeholder - From ConPro"
 msgstr ""
 
