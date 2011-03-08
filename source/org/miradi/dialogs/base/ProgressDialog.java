@@ -151,6 +151,9 @@ public class ProgressDialog extends DialogWithDisposablePanel implements Progres
 
 		public void incrementProgress()
 		{
+			if (progressBar.getValue() == progressBar.getMaximum())
+				EAM.logWarning("Incremented progress bar past maximum number of allowed ticks. progress value= " + progressBar.getValue() + " max allowed= " + progressBar.getMaximum());
+				
 			updateProgressMeter(progressBar.getValue() + 1);
 		}
 
