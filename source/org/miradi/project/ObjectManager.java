@@ -397,12 +397,40 @@ public class ObjectManager
 		getDatabase().writeObjectManifest(getFileName(), objectType, createManifest(pool));
 	}
 
+//FIXME urgent :  this is the original setObjectData.  The one currently being used
+// has debug output in order to research a bug.
+//	public void setObjectData(ORef objectRef, String fieldTag, String dataValue) throws Exception
+//	{
+//		BaseObject object = findObject(objectRef);
+//		object.setData(fieldTag, dataValue);
+//		getDatabase().writeObject(object);
+//	}
+	
 	public void setObjectData(ORef objectRef, String fieldTag, String dataValue) throws Exception
 	{
-		BaseObject object = findObject(objectRef);
-		object.setData(fieldTag, dataValue);
-		getDatabase().writeObject(object);
+		System.out.println("setObjectData entererd for ref= " + objectRef + "  tag= " + fieldTag + " dataValue= " + dataValue);
+		DEBUG_IN_SETOBJECTDATA = true;
+		try
+		{
+			if (!DEBUG_IN_SETOBJECTDATA)
+				System.out.println("************someone is already in setObjectData**********");
+				
+			BaseObject object = findObject(objectRef);
+			object.setData(fieldTag, dataValue);
+			getDatabase().writeObject(object);
+
+			System.out.println("EXITING setObjectData");
+			System.out.println();
+			System.out.println();
+			System.out.println();
+			System.out.flush();
+		}
+		finally 
+		{
+			DEBUG_IN_SETOBJECTDATA = false;
+		}
 	}
+
 
 	public BaseObject findObject(ORef ref)
 	{
@@ -630,4 +658,5 @@ public class ObjectManager
 	private ChainWalker diagramChainWalker;
 	private HashMap<Integer, BaseObjectInformation> pools;
 	private HashMap<ORef, ORefSet> referrerCache;
+	private static boolean DEBUG_IN_SETOBJECTDATA;
 }
