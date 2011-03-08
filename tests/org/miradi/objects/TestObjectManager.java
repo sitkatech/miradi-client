@@ -184,7 +184,7 @@ public class TestObjectManager extends MiradiTestCase
 		assertTrue(db.readObjectManifest(type).has(createdId));
 		
 		String tag = RatingCriterion.TAG_LABEL;
-		manager.setObjectData(type, createdId, tag, "data");
+		manager.setObjectData(new ORef(type, createdId), tag, "data");
 		BaseObject withData = db.readObject(manager, type, createdId);
 		assertEquals(type + " didn't write/read data for " + tag + "?", "data", withData.getData(tag));
 		assertEquals(type + " can't get data from project?", "data", manager.getObjectData(type, createdId, tag));
