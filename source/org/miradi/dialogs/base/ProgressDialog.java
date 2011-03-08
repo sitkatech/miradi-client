@@ -34,6 +34,7 @@ import org.miradi.layout.OneColumnPanel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.FlexibleWidthHtmlViewer;
+import org.miradi.utils.MiradiBackgroundWorkerThread;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.wizard.MiradiHtmlViewer;
 
@@ -63,6 +64,13 @@ public class ProgressDialog extends DialogWithDisposablePanel implements Progres
 	{
 		progressPanel.setStatusMessage(translatedMessage, stepCount);
 		invalidate();
+	}
+	
+	public void work(MiradiBackgroundWorkerThread worker) throws Exception
+	{
+		worker.start();
+		setVisible(true);
+		worker.cleanup();
 	}
 	
 	public void finished()
@@ -99,7 +107,6 @@ public class ProgressDialog extends DialogWithDisposablePanel implements Progres
 			progressPanel.requestExit();
 			cancelButton.setEnabled(false);
 		}
-	
 	}
 
 	class ProgressPanel extends OneColumnPanel implements ProgressInterface

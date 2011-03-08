@@ -54,9 +54,7 @@ public class ArrangeConceptualModelDoer extends ViewDoer
 		getDiagramView().getCurrentDiagramComponent().setVisible(false);
 		try
 		{
-			worker.start();
-			progressDialog.setVisible(true);
-			worker.cleanup();
+			progressDialog.work(worker);
 		}
 		catch(Exception e)
 		{
