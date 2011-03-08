@@ -92,19 +92,18 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 
 	private void importProjectFromMpzEntry(ZipFile zipFile, File newProjectDir, ProgressInterface progressIndicator) throws Exception
 	{
-		progressIndicator.incrementProgress();
 		ZipEntry mpzEntry = zipFile.getEntry(ExportCpmzDoer.PROJECT_ZIP_FILE_NAME);
 		InputStream inputStream = zipFile.getInputStream(mpzEntry);
 		try
 		{
 			ProjectMpzImporter.unzipToProjectDirectory(newProjectDir.getParentFile(), newProjectDir.getName(), inputStream);
+			progressIndicator.incrementProgress();
 		}
 		finally
 		{
 			inputStream.close();
 		}
 		
-		progressIndicator.incrementProgress();
 		importConproProjectNumbers(zipFile, newProjectDir);
 		progressIndicator.incrementProgress();
 	}
