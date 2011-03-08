@@ -73,7 +73,10 @@ public class DataUpgrader
 			initializeStaticDirectory(projectDirectory);
 			ProgressDialog progressDialog = new ProgressDialog(EAM.getMainWindow(), EAM.text("Migrating Project Data"));
 
-			performUpgradeInBackground(progressDialog);
+			Worker worker = new Worker(progressDialog);
+			worker.start();
+			progressDialog.setVisible(true);
+			worker.cleanup();
 			versionAfterUpgrading = DataUpgrader.readDataVersion(projectDirectory);			
 		}
 		catch (DataUpgrader.MigrationTooOldException e)
@@ -103,14 +106,6 @@ public class DataUpgrader
 				"Please seek technical help from the Miradi team."));
 	}
 
-	private static void performUpgradeInBackground(ProgressInterface progressIndicator) throws Exception
-	{
-		Worker worker = new Worker(progressIndicator);
-		worker.start();
-		progressIndicator.setVisible(true);
-		worker.cleanup();
-	}
-	
 	static class Worker extends MiradiBackgroundWorkerThread
 	{
 		protected Worker(ProgressInterface progressToNotify)
