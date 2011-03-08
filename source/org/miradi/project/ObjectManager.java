@@ -542,11 +542,6 @@ public class ObjectManager
 		return getProject().getFilename();
 	}
 	
-	public BaseObject[] findObjects(ORefList refList)
-	{
-		return findObjectsAsVector(refList).toArray(new BaseObject[0]);
-	}
-	
 	public Vector<BaseObject> findObjectsAsVector(ORefList refList)
 	{
 		Vector<BaseObject> foundObjects = new Vector<BaseObject>();
