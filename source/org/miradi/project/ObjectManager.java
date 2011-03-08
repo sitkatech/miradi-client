@@ -47,8 +47,8 @@ import org.miradi.objectpools.CausePool;
 import org.miradi.objectpools.ConceptualModelDiagramPool;
 import org.miradi.objectpools.CostAllocationRulePool;
 import org.miradi.objectpools.DashboardPool;
-import org.miradi.objectpools.DiagramLinkPool;
 import org.miradi.objectpools.DiagramFactorPool;
+import org.miradi.objectpools.DiagramLinkPool;
 import org.miradi.objectpools.EAMNormalObjectPool;
 import org.miradi.objectpools.EAMObjectPool;
 import org.miradi.objectpools.ExpensePool;
@@ -405,11 +405,6 @@ public class ObjectManager
 		getDatabase().writeObject(object);
 	}
 
-	public void setObjectData(int objectType, BaseId objectId, String fieldTag, String dataValue) throws Exception
-	{
-		setObjectData(new ORef(objectType, objectId), fieldTag, dataValue);
-	}
-	
 	public BaseObject findObject(ORef ref)
 	{
 		return findObject(ref.getObjectType(), ref.getObjectId());
