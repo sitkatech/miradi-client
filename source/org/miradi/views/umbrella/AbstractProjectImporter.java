@@ -124,6 +124,7 @@ public abstract class AbstractProjectImporter
 		protected void doRealWork() throws Exception
 		{
 			createProject(fileToImport, EAM.getHomeDirectory(), projectName, getProgressIndicator());
+			getProgressIndicator().finished();
 		}
 		
 		private File fileToImport;
