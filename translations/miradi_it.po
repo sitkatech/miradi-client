@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-08 10:53-0600\n"
+"POT-Creation-Date: 2011-03-08 11:06-0600\n"
 "PO-Revision-Date: 2010-05-12 21:01-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -59,7 +59,7 @@ msgid ""
 "Are you sure you want to delete this resource?"
 msgstr ""
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:100
+#: Miradi/source/org/miradi/database/DataUpgrader.java:102
 msgid ""
 "\n"
 "WARNING: Attempting to open this project again before repairing the problem "
@@ -2244,7 +2244,7 @@ msgid ""
 " tried  "
 msgstr ""
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:99
+#: Miradi/source/org/miradi/database/DataUpgrader.java:101
 msgid ""
 "Attempt to migrate project to the current data format FAILED\n"
 "The pre-migration project was archived in: "
@@ -4005,7 +4005,7 @@ msgid ""
 "Initial Project Team - The people who conceive of and initiate the project."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/ProgressDialog.java:50
+#: Miradi/source/org/miradi/dialogs/base/ProgressDialog.java:51
 msgid "Initializing..."
 msgstr ""
 
@@ -4787,7 +4787,7 @@ msgstr ""
 msgid "Migrating Project Data"
 msgstr ""
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:141
+#: Miradi/source/org/miradi/database/DataUpgrader.java:135
 msgid "Migrating..."
 msgstr ""
 
@@ -5444,7 +5444,7 @@ msgstr ""
 msgid "Project is missing Conceptual Model Manifest File"
 msgstr ""
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:97
+#: Miradi/source/org/miradi/database/DataUpgrader.java:99
 msgid "Project was migrated to the current data format"
 msgstr ""
 
@@ -5983,7 +5983,7 @@ msgstr ""
 msgid "Step (not available)"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/ProgressDialog.java:94
+#: Miradi/source/org/miradi/dialogs/base/ProgressDialog.java:102
 msgid "Stop"
 msgstr ""
 
@@ -7133,7 +7133,7 @@ msgstr ""
 msgid "That project is in use by another copy of this application"
 msgstr ""
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:81
+#: Miradi/source/org/miradi/database/DataUpgrader.java:83
 msgid ""
 "That project is too old to be migrated by this version of Miradi. You can "
 "use Miradi 1.0 to migrate it to a modern data format, and after that it can "
