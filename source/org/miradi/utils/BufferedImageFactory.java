@@ -115,7 +115,7 @@ public  class BufferedImageFactory
 	
 	public static BufferedImage createImageFromDiagramWithCurrentSettings(MainWindow mainWindow, DiagramObject diagramObject, int scale) throws Exception
 	{
-		DiagramComponent diagram = BufferedImageFactory.createDiagramComponentWithCurrentSettings(mainWindow, diagramObject);
+		DiagramComponent diagram = BufferedImageFactory.createDiagramComponentWithCurrentSettings(mainWindow, diagramObject, scale);
 		return createImageFromDiagram(diagram);
 	}
 	
@@ -209,7 +209,7 @@ public  class BufferedImageFactory
 		return diagram;
 	}
 	
-	public static DiagramComponent createDiagramComponentWithCurrentSettings(MainWindow mainWindow, DiagramObject diagramObject) throws Exception
+	public static DiagramComponent createDiagramComponentWithCurrentSettings(MainWindow mainWindow, DiagramObject diagramObject, double scale) throws Exception
 	{
 		DiagramComponent diagram = createDiagramComponent(mainWindow, diagramObject);
 		double currentZoomSetting = diagram.getDiagramObject().getZoomScale();
