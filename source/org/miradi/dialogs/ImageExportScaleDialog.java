@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs;
 
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Vector;
@@ -51,8 +52,16 @@ public class ImageExportScaleDialog extends DialogWithDisposablePanel
 		DataInputPanel scaleRow = new DataInputPanel(mainWindow.getProject());
 		scaleRow.setLayout(new OneRowGridLayout());
 		scaleRow.add(new PanelTitleLabel(EAM.text("Image Scale %")));
-		spinner = new JSpinField(1, 300);
+		final int MAX_VALUE = 300;
+		spinner = new JSpinField(1, MAX_VALUE);
+		spinner.setValue(MAX_VALUE);
+		Dimension preferredSize = spinner.getPreferredSize();
+		int width = preferredSize.width;
+		Dimension minimumSize = new Dimension(width, preferredSize.height);
+		spinner.setMinimumSize(minimumSize);
+		spinner.setPreferredSize(minimumSize);
 		spinner.setValue(defaultScalePercent);
+		
 		scaleRow.add(spinner);
 
 		DataInputPanel panel = new DataInputPanel(mainWindow.getProject());
