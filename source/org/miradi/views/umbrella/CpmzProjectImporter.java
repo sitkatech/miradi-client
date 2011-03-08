@@ -70,18 +70,19 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 			throw new Exception("Illegal project name: " + newProjectFilename);
 			
 		File newProjectDir = new File(EAM.getHomeDirectory(), newProjectFilename);
-		importProject(importFile, newProjectDir);
+		importProject(importFile, newProjectDir, progressIndicator);
 	}
 
-	private void importProject(File zipFileToImport, File newProjectDir) throws ZipException, IOException, Exception, ValidationException
+	private void importProject(File zipFileToImport, File newProjectDir, ProgressInterface progressIndicator) throws ZipException, IOException, Exception, ValidationException
 	{
+		progressIndicator.setStatusMessage(EAM.text("Importing..."), 10);
 		ZipFile zipFile = new ZipFile(zipFileToImport);
 		try
 		{
 			if (zipContainsMpzProject(zipFile))
-				importProjectFromMpzEntry(zipFile, newProjectDir);
+				importProjectFromMpzEntry(zipFile, newProjectDir, progressIndicator);
 			else
-				importProjectFromXmlEntry(zipFile, newProjectDir);
+				importProjectFromXmlEntry(zipFile, newProjectDir, progressIndicator);
 		}
 		finally
 		{
@@ -89,8 +90,9 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 		}
 	}
 
-	private void importProjectFromMpzEntry(ZipFile zipFile, File newProjectDir) throws Exception
+	private void importProjectFromMpzEntry(ZipFile zipFile, File newProjectDir, ProgressInterface progressIndicator) throws Exception
 	{
+		progressIndicator.incrementProgress();
 		ZipEntry mpzEntry = zipFile.getEntry(ExportCpmzDoer.PROJECT_ZIP_FILE_NAME);
 		InputStream inputStream = zipFile.getInputStream(mpzEntry);
 		try
@@ -102,7 +104,9 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 			inputStream.close();
 		}
 		
+		progressIndicator.incrementProgress();
 		importConproProjectNumbers(zipFile, newProjectDir);
+		progressIndicator.incrementProgress();
 	}
 
 	private void importConproProjectNumbers(ZipFile zipFile, File newProjectDir) throws Exception
