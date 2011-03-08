@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 import org.miradi.dialogs.ImageExportScaleDialog;
+import org.miradi.main.AppPreferences;
 
 abstract public class AbstractImageSaverDoer extends AbstractFileSaverDoer
 {
@@ -63,12 +64,22 @@ abstract public class AbstractImageSaverDoer extends AbstractFileSaverDoer
 	@Override
 	protected boolean doesUserConfirm() throws Exception
 	{
+		if(!isInDiagram())
+			return true;
+		
 		int defaultScalePercent = 100;
-		ImageExportScaleDialog dialog = new ImageExportScaleDialog(getMainWindow(), defaultScalePercent);
+		AppPreferences appPreferences = getMainWindow().getAppPreferences();
+		scalePercent = appPreferences.getDiagramExportScalePercent();
+		if(scalePercent == 0)
+			scalePercent = defaultScalePercent;
+		ImageExportScaleDialog dialog = new ImageExportScaleDialog(getMainWindow(), scalePercent);
 		dialog.showDialog();
 		boolean userChoseOk = dialog.userChoseOk();
 		if(userChoseOk)
+		{
 			scalePercent = dialog.getScalePercent();
+			appPreferences.setDiagramImageExportScalePercent(scalePercent);
+		}
 		return userChoseOk;
 	}
 	
