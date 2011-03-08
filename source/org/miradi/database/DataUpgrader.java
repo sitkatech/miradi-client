@@ -73,7 +73,7 @@ public class DataUpgrader
 			initializeStaticDirectory(projectDirectory);
 			ProgressDialog progressDialog = new ProgressDialog(EAM.getMainWindow(), EAM.text("Migrating Project Data"));
 
-			Worker worker = new Worker(progressDialog);
+			BackgroundMigrationWorker worker = new BackgroundMigrationWorker(progressDialog);
 			progressDialog.doWorkInBackgroundWhileShowingProgress(worker);
 
 			versionAfterUpgrading = DataUpgrader.readDataVersion(projectDirectory);			
@@ -105,9 +105,9 @@ public class DataUpgrader
 				"Please seek technical help from the Miradi team."));
 	}
 
-	static class Worker extends MiradiBackgroundWorkerThread
+	static class BackgroundMigrationWorker extends MiradiBackgroundWorkerThread
 	{
-		protected Worker(ProgressInterface progressToNotify)
+		protected BackgroundMigrationWorker(ProgressInterface progressToNotify)
 		{
 			super(progressToNotify);
 		}
