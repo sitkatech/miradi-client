@@ -346,37 +346,87 @@ public class ObjectManager
 
 	public BaseId createObject(int objectType, BaseId objectId, CreateObjectParameter extraInfo) throws Exception
 	{
-		BaseId createdId = BaseId.INVALID;
-		switch(objectType)
+		DEBUG_IN_CREATE = true;
+		try
 		{
-			case ObjectType.FACTOR_LINK:
+			if (!DEBUG_IN_CREATE)
 			{
-				CreateFactorLinkParameter parameter = (CreateFactorLinkParameter)extraInfo;
-				FactorLinkId realId = getProject().obtainRealLinkageId(objectId);
-				FactorLink cmLinkage = new FactorLink(this, realId, parameter.getFromRef(), parameter.getToRef());
-				getDatabase().writeObject(cmLinkage);
-				EAMObjectPool pool = getPool(objectType);
-				pool.put(realId, cmLinkage);
-				getDatabase().writeObjectManifest(getFileName(), objectType, createManifest(pool));
-				createdId = cmLinkage.getId();
-				break;
+				System.out.println("************someone is already in CREATE**********");
+				System.out.flush();
 			}
-			default:
+				
+			BaseId createdId = BaseId.INVALID;
+			switch(objectType)
 			{
-				EAMNormalObjectPool pool = (EAMNormalObjectPool)getPool(objectType);
-				if(pool == null)
-					throw new RuntimeException("No pool for " + objectType);
-				BaseObject created = pool.createObject(this, objectId, extraInfo);
-				getDatabase().writeObject(created);
-				getDatabase().writeObjectManifest(getFileName(), objectType, createManifest(pool));
-				createdId = created.getId();
-				break;
+				case ObjectType.FACTOR_LINK:
+				{
+					CreateFactorLinkParameter parameter = (CreateFactorLinkParameter)extraInfo;
+					FactorLinkId realId = getProject().obtainRealLinkageId(objectId);
+					FactorLink cmLinkage = new FactorLink(this, realId, parameter.getFromRef(), parameter.getToRef());
+					getDatabase().writeObject(cmLinkage);
+					EAMObjectPool pool = getPool(objectType);
+					pool.put(realId, cmLinkage);
+					getDatabase().writeObjectManifest(getFileName(), objectType, createManifest(pool));
+					createdId = cmLinkage.getId();
+					break;
+				}
+				default:
+				{
+					EAMNormalObjectPool pool = (EAMNormalObjectPool)getPool(objectType);
+					if(pool == null)
+						throw new RuntimeException("No pool for " + objectType);
+					BaseObject created = pool.createObject(this, objectId, extraInfo);
+					getDatabase().writeObject(created);
+					getDatabase().writeObjectManifest(getFileName(), objectType, createManifest(pool));
+					createdId = created.getId();
+					break;
+				}
+
 			}
 
+			return createdId;
 		}
-
-		return createdId;
+		finally
+		{
+			DEBUG_IN_CREATE = false;
+		}
 	}
+	
+//FIXME this is original mehtod before debug modication.	
+//	public BaseId createObject(int objectType, BaseId objectId, CreateObjectParameter extraInfo) throws Exception
+//	{
+//		BaseId createdId = BaseId.INVALID;
+//		switch(objectType)
+//		{
+//			case ObjectType.FACTOR_LINK:
+//			{
+//				CreateFactorLinkParameter parameter = (CreateFactorLinkParameter)extraInfo;
+//				FactorLinkId realId = getProject().obtainRealLinkageId(objectId);
+//				FactorLink cmLinkage = new FactorLink(this, realId, parameter.getFromRef(), parameter.getToRef());
+//				getDatabase().writeObject(cmLinkage);
+//				EAMObjectPool pool = getPool(objectType);
+//				pool.put(realId, cmLinkage);
+//				getDatabase().writeObjectManifest(getFileName(), objectType, createManifest(pool));
+//				createdId = cmLinkage.getId();
+//				break;
+//			}
+//			default:
+//			{
+//				EAMNormalObjectPool pool = (EAMNormalObjectPool)getPool(objectType);
+//				if(pool == null)
+//					throw new RuntimeException("No pool for " + objectType);
+//				BaseObject created = pool.createObject(this, objectId, extraInfo);
+//				getDatabase().writeObject(created);
+//				getDatabase().writeObjectManifest(getFileName(), objectType, createManifest(pool));
+//				createdId = created.getId();
+//				break;
+//			}
+//
+//		}
+//
+//		return createdId;
+//	}
+
 
 	private ObjectManifest createManifest(EAMObjectPool pool)
 	{
@@ -385,20 +435,50 @@ public class ObjectManager
 
 	public void deleteObject(BaseObject object) throws Exception
 	{
-		ORef objectRef = object.getRef();
-		removeFromReferrerCache(objectRef);
-		int objectType = object.getType();
-		BaseId objectId = object.getId();
-		EAMObjectPool pool = getPool(objectType);
-		if(pool.findObject(objectId) == null)
-			throw new RuntimeException("Attempted to delete missing object: " + objectType + ":" + objectId);
-		pool.remove(objectId);
-		getDatabase().deleteObject(objectType, objectId);
-		getDatabase().writeObjectManifest(getFileName(), objectType, createManifest(pool));
+		DEBUG_IN_DELETE = true;
+		try
+		{
+			if (!DEBUG_IN_DELETE)
+			{
+				System.out.println("************someone is already in DELETE**********");
+				System.out.flush();
+			}
+			
+			ORef objectRef = object.getRef();
+			removeFromReferrerCache(objectRef);
+			int objectType = object.getType();
+			BaseId objectId = object.getId();
+			EAMObjectPool pool = getPool(objectType);
+			if(pool.findObject(objectId) == null)
+				throw new RuntimeException("Attempted to delete missing object: " + objectType + ":" + objectId);
+			pool.remove(objectId);
+			getDatabase().deleteObject(objectType, objectId);
+			getDatabase().writeObjectManifest(getFileName(), objectType, createManifest(pool));
+		}
+		finally
+		{
+			DEBUG_IN_DELETE = false;
+		}
 	}
 
 //FIXME urgent :  this is the original setObjectData.  The one currently being used
 // has debug output in order to research a bug.
+	
+//	public void deleteObject(BaseObject object) throws Exception
+//	{
+//		ORef objectRef = object.getRef();
+//		removeFromReferrerCache(objectRef);
+//		int objectType = object.getType();
+//		BaseId objectId = object.getId();
+//		EAMObjectPool pool = getPool(objectType);
+//		if(pool.findObject(objectId) == null)
+//			throw new RuntimeException("Attempted to delete missing object: " + objectType + ":" + objectId);
+//		pool.remove(objectId);
+//		getDatabase().deleteObject(objectType, objectId);
+//		getDatabase().writeObjectManifest(getFileName(), objectType, createManifest(pool));
+//	}
+	
+	
 //	public void setObjectData(ORef objectRef, String fieldTag, String dataValue) throws Exception
 //	{
 //		BaseObject object = findObject(objectRef);
@@ -408,22 +488,18 @@ public class ObjectManager
 	
 	public void setObjectData(ORef objectRef, String fieldTag, String dataValue) throws Exception
 	{
-		System.out.println("setObjectData entererd for ref= " + objectRef + "  tag= " + fieldTag + " dataValue= " + dataValue);
 		DEBUG_IN_SETOBJECTDATA = true;
 		try
 		{
 			if (!DEBUG_IN_SETOBJECTDATA)
+			{
 				System.out.println("************someone is already in setObjectData**********");
+				System.out.flush();
+			}
 				
 			BaseObject object = findObject(objectRef);
 			object.setData(fieldTag, dataValue);
 			getDatabase().writeObject(object);
-
-			System.out.println("EXITING setObjectData");
-			System.out.println();
-			System.out.println();
-			System.out.println();
-			System.out.flush();
 		}
 		finally 
 		{
@@ -659,4 +735,6 @@ public class ObjectManager
 	private HashMap<Integer, BaseObjectInformation> pools;
 	private HashMap<ORef, ORefSet> referrerCache;
 	private static boolean DEBUG_IN_SETOBJECTDATA;
+	private static boolean DEBUG_IN_DELETE;
+	private static boolean DEBUG_IN_CREATE;
 }
