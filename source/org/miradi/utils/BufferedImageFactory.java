@@ -115,7 +115,9 @@ public  class BufferedImageFactory
 	
 	public static BufferedImage createImageFromDiagramWithCurrentSettings(MainWindow mainWindow, DiagramObject diagramObject, int scalePercent) throws Exception
 	{
-		DiagramComponent diagram = BufferedImageFactory.createDiagramComponentWithCurrentSettings(mainWindow, diagramObject, scalePercent);
+		final double DEFAULT_ZOOM_FOR_GOOD_PRINTING = 2.0; 
+		double scaleRelativeToOne = DEFAULT_ZOOM_FOR_GOOD_PRINTING * scalePercent / 100.0;
+		DiagramComponent diagram = BufferedImageFactory.createDiagramComponentWithCurrentSettings(mainWindow, diagramObject, scaleRelativeToOne);
 		return createImageFromDiagram(diagram);
 	}
 	
