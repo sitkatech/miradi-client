@@ -55,6 +55,7 @@ public class XmpzProjectImporter extends AbstractZippedXmlImporter
 	
 	private void importProject(File zipFileToImport, File newProjectDir, ProgressInterface progressIndicator) throws ZipException, IOException, Exception, ValidationException
 	{
+		progressIndicator.setStatusMessage(EAM.text("Importing..."), 48);
 		ZipFile zipFile = new ZipFile(zipFileToImport);
 		try
 		{

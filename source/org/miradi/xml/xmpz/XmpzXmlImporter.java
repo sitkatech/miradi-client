@@ -100,10 +100,19 @@ public class XmpzXmlImporter extends AbstractXmlImporter implements XmpzXmlConst
 		for (AbstractXmpzObjectImporter importer : importers)
 		{
 			importer.importElement();
+			incrementProgress();
 		}
 		
 		importThreatStressRatings();
+		incrementProgress();
+		
 		importDeletedOrphanText();
+		incrementProgress();
+	}
+
+	private void incrementProgress()
+	{
+		progressIndicator.incrementProgress();
 	}
 
 	private void importDeletedOrphanText() throws Exception
