@@ -28,6 +28,7 @@ import javax.swing.filechooser.FileFilter;
 import org.martus.swing.UiFileChooser;
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.martus.util.inputstreamwithseek.ZipEntryInputStreamWithSeek;
+import org.miradi.dialogs.base.ProgressDialog;
 import org.miradi.exceptions.CpmzVersionTooOldException;
 import org.miradi.exceptions.FutureVersionException;
 import org.miradi.exceptions.UnsupportedNewVersionSchemaException;
@@ -35,6 +36,8 @@ import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.EAMFileSaveChooser;
+import org.miradi.utils.MiradiBackgroundWorkerThread;
+import org.miradi.utils.ProgressInterface;
 import org.miradi.views.noproject.NoProjectView;
 import org.miradi.views.noproject.RenameProjectDoer;
 
@@ -98,10 +101,33 @@ public abstract class AbstractProjectImporter
 		if (projectName == null)
 			return;
 		
-		createProject(fileToImport, EAM.getHomeDirectory(), projectName);
+		ProgressDialog progressDialog = new ProgressDialog(getMainWindow(), "Importing...");
+		Worker worker = new Worker(progressDialog, fileToImport, projectName);
+		progressDialog.work(worker);
+		
 		refreshNoProjectPanel();
 		currentDirectory = fileToImport.getParent();
 		userConfirmOpenImportedProject(projectName);
+	}
+	
+	private class Worker extends MiradiBackgroundWorkerThread
+	{
+		public Worker(ProgressInterface progressInterfaceToUse, File fileToImportToUse, String projectNameToUse)
+		{
+			super(progressInterfaceToUse);
+			
+			fileToImport = fileToImportToUse;
+			projectName = projectNameToUse;
+		}
+		
+		@Override
+		protected void doRealWork() throws Exception
+		{
+			createProject(fileToImport, EAM.getHomeDirectory(), projectName);
+		}
+		
+		private File fileToImport;
+		private String projectName;
 	}
 
 	protected void userConfirmOpenImportedProject(String projectName) throws Exception
