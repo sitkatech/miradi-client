@@ -530,7 +530,7 @@ public class ObjectManager
 		return getProject().getDatabase();
 	}
 
-	//TODO: there shold be a better way to get to the project file name then having to expose it here
+	//TODO: there should be a better way to get to the project file name then having to expose it here
 	public String getFileName()
 	{
 		return getProject().getFilename();
