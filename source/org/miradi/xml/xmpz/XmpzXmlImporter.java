@@ -24,15 +24,18 @@ import javax.xml.namespace.NamespaceContext;
 
 import org.miradi.objecthelpers.ThreatStressRatingEnsurer;
 import org.miradi.project.Project;
+import org.miradi.utils.ProgressInterface;
 import org.miradi.xml.AbstractXmlImporter;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.w3c.dom.Node;
 
 public class XmpzXmlImporter extends AbstractXmlImporter implements XmpzXmlConstants
 {
-	public XmpzXmlImporter(Project projectToFill) throws Exception
+	public XmpzXmlImporter(Project projectToFill, ProgressInterface progressIndicatorToUse) throws Exception
 	{
 		super(projectToFill);
+		
+		progressIndicator = progressIndicatorToUse;
 	}
 	
 	@Override
@@ -153,4 +156,6 @@ public class XmpzXmlImporter extends AbstractXmlImporter implements XmpzXmlConst
 	{
 		return new XmpzNameSpaceContext();
 	}
+	
+	protected ProgressInterface progressIndicator;
 }
