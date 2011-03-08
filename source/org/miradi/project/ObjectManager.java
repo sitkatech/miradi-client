@@ -531,6 +531,7 @@ public class ObjectManager
 	}
 
 	//TODO: there should be a better way to get to the project file name then having to expose it here
+	//Maybe in-line this method?
 	public String getFileName()
 	{
 		return getProject().getFilename();
