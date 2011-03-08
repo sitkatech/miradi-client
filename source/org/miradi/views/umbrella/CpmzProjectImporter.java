@@ -75,7 +75,7 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 
 	private void importProject(File zipFileToImport, File newProjectDir, ProgressInterface progressIndicator) throws ZipException, IOException, Exception, ValidationException
 	{
-		progressIndicator.setStatusMessage(EAM.text("Importing..."), 10);
+		progressIndicator.setStatusMessage(EAM.text("Importing..."), 13);
 		ZipFile zipFile = new ZipFile(zipFileToImport);
 		try
 		{
@@ -104,11 +104,11 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 			inputStream.close();
 		}
 		
-		importConproProjectNumbers(zipFile, newProjectDir);
+		importConproProjectNumbers(zipFile, newProjectDir, progressIndicator);
 		progressIndicator.incrementProgress();
 	}
 
-	private void importConproProjectNumbers(ZipFile zipFile, File newProjectDir) throws Exception
+	private void importConproProjectNumbers(ZipFile zipFile, File newProjectDir, ProgressInterface progressIndicator) throws Exception
 	{
 		Project projectToFill = new Project();
 		projectToFill.setLocalDataLocation(newProjectDir.getParentFile());
@@ -118,7 +118,7 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 			InputStreamWithSeek projectAsInputStream = getProjectAsInputStream(zipFile);
 			try
 			{
-				new ConproXmlImporter(projectToFill).importConProProjectNumbers(projectAsInputStream);
+				new ConproXmlImporter(projectToFill, progressIndicator).importConProProjectNumbers(projectAsInputStream);
 			}
 			finally
 			{
@@ -143,12 +143,14 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 	@Override
 	protected void importProjectXml(Project projectToFill, ZipFile zipFile, InputStreamWithSeek projectAsInputStream, ProgressInterface progressIndicator) throws Exception
 	{
-		ConproXmlImporter conProXmlImporter = new ConproXmlImporter(projectToFill);
+		ConproXmlImporter conProXmlImporter = new ConproXmlImporter(projectToFill, progressIndicator);
 		conProXmlImporter.importConProProject(projectAsInputStream);
 		ORef highOrAboveRankedThreatsTag = conProXmlImporter.getHighOrAboveRankedThreatsTag();
 		splitMainDiagramByTargets(projectToFill, highOrAboveRankedThreatsTag);
+		progressIndicator.incrementProgress();
 		
 		importAdditionalFieldsFromTextFiles(projectToFill, zipFile);
+		progressIndicator.incrementProgress();
 	}
 	
 	private void importAdditionalFieldsFromTextFiles(Project projectToFill, ZipFile zipFile) throws Exception

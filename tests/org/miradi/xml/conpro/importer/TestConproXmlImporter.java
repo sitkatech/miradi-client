@@ -60,6 +60,7 @@ import org.miradi.questions.ProjectSharingQuestion;
 import org.miradi.questions.TrendQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.NullProgressMeter;
 import org.miradi.xml.conpro.ConProMiradiXml;
 import org.miradi.xml.conpro.exporter.ConproXmlExporter;
 
@@ -226,7 +227,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		InputStreamWithSeek in = new StringInputStreamWithSeek(xml);
 		try
 		{
-			new ConproXmlImporter(firstTry).importConProProject(in);
+			new ConproXmlImporter(firstTry, new NullProgressMeter()).importConProProject(in);
 		}
 		finally
 		{
@@ -371,7 +372,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 
 	private void importProject(File beforeXmlOutFile, ProjectForTesting projectToFill1) throws Exception
 	{		
-		ConproXmlImporter conProXmlImporter = new ConproXmlImporter(projectToFill1);
+		ConproXmlImporter conProXmlImporter = new ConproXmlImporter(projectToFill1, new NullProgressMeter());
 		FileInputStreamWithSeek fileInputStream = new FileInputStreamWithSeek(beforeXmlOutFile); 
 		try
 		{
@@ -418,7 +419,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		String expectedPath = "cp:SomeElement/cp:SomeOtherElement";
 		
 		String[] pathElements = new String[]{"SomeElement", "SomeOtherElement"}; 
-		String generatedPath = new ConproXmlImporter(getProject()).generatePath(pathElements);
+		String generatedPath = new ConproXmlImporter(getProject(), new NullProgressMeter()).generatePath(pathElements);
 		assertEquals("xpaths are not same?", expectedPath, generatedPath);
 	}
 	
