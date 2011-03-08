@@ -26,6 +26,7 @@ import java.io.File;
 import javax.swing.AbstractAction;
 import javax.swing.Icon;
 
+import org.miradi.exceptions.ProjectAlreadyExistsException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
@@ -49,6 +50,11 @@ abstract class ProjectListAction extends AbstractAction
 		try
 		{
 			doWork();
+		}
+		catch (ProjectAlreadyExistsException e)
+		{
+			EAM.logException(e);
+			EAM.errorDialog(getErrorMessage() + EAM.text("Cannot move project to folder because a project with the same name already exists in the folder."));
 		}
 		catch(Exception e)
 		{

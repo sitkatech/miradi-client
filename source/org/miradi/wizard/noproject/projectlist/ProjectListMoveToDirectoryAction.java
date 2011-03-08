@@ -20,8 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.wizard.noproject.projectlist;
 
 import java.io.File;
-import java.io.IOException;
 
+import org.miradi.exceptions.ProjectAlreadyExistsException;
 import org.miradi.main.EAM;
 
 public class ProjectListMoveToDirectoryAction extends ProjectListAction
@@ -53,7 +53,7 @@ public class ProjectListMoveToDirectoryAction extends ProjectListAction
 		File newLocation = new File(selectedDirectory, fileToMove.getName());
 		boolean wasMoved = fileToMove.renameTo(newLocation);
 		if (!wasMoved)
-			throw new IOException(EAM.text("Cannot move project to folder because a project with the same name already exists in the folder"));
+			throw new ProjectAlreadyExistsException();
 	}
 
 	@Override
