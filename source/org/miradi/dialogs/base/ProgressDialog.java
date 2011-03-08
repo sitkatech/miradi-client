@@ -42,6 +42,7 @@ public class ProgressDialog extends DialogWithDisposablePanel implements Progres
 	public ProgressDialog(MainWindow mainWindow, String title)
 	{
 		super(mainWindow);
+		
 		setTitle(title);
 		setModal(true);
 
