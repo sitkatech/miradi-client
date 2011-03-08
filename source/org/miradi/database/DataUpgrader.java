@@ -19,11 +19,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.database;
 
-import java.awt.Dimension;
 import java.io.File;
 import java.io.IOException;
 
-import org.martus.swing.Utilities;
 import org.martus.util.DirectoryLock;
 import org.martus.util.DirectoryLock.AlreadyLockedException;
 import org.martus.util.UnicodeWriter;
@@ -74,8 +72,6 @@ public class DataUpgrader
 			
 			initializeStaticDirectory(projectDirectory);
 			ProgressDialog progressDialog = new ProgressDialog(EAM.getMainWindow(), EAM.text("Migrating Project Data"));
-			progressDialog.setMinimumSize(new Dimension(300, 0));
-			Utilities.centerDlg(progressDialog);
 
 			performUpgradeInBackground(progressDialog);
 			versionAfterUpgrading = DataUpgrader.readDataVersion(projectDirectory);			
