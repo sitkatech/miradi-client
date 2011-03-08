@@ -74,7 +74,7 @@ public class DataUpgrader
 			ProgressDialog progressDialog = new ProgressDialog(EAM.getMainWindow(), EAM.text("Migrating Project Data"));
 
 			Worker worker = new Worker(progressDialog);
-			progressDialog.work(worker);
+			progressDialog.doWorkInBackgroundWhileShowingProgress(worker);
 
 			versionAfterUpgrading = DataUpgrader.readDataVersion(projectDirectory);			
 		}

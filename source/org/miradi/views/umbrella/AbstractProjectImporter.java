@@ -103,7 +103,7 @@ public abstract class AbstractProjectImporter
 		
 		ProgressDialog progressDialog = new ProgressDialog(getMainWindow(), "Importing...");
 		Worker worker = new Worker(progressDialog, fileToImport, projectName);
-		progressDialog.work(worker);
+		progressDialog.doWorkInBackgroundWhileShowingProgress(worker);
 		
 		refreshNoProjectPanel();
 		currentDirectory = fileToImport.getParent();

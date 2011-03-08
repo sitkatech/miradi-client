@@ -66,7 +66,7 @@ public class ProgressDialog extends DialogWithDisposablePanel implements Progres
 		invalidate();
 	}
 	
-	public void work(MiradiBackgroundWorkerThread worker) throws Exception
+	public void doWorkInBackgroundWhileShowingProgress(MiradiBackgroundWorkerThread worker) throws Exception
 	{
 		worker.start();
 		setVisible(true);
