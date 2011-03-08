@@ -21,11 +21,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.base;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
 import javax.swing.JProgressBar;
 
+import org.martus.swing.Utilities;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.icons.IconManager;
 import org.miradi.layout.OneColumnPanel;
@@ -51,6 +53,9 @@ public class ProgressDialog extends DialogWithDisposablePanel implements Progres
 		getContentPane().setLayout(new BorderLayout());
 		getContentPane().add(progressPanel, BorderLayout.BEFORE_FIRST_LINE);
 		getContentPane().add(cancelButton, BorderLayout.AFTER_LAST_LINE);
+		
+		setMinimumSize(new Dimension(300, 0));
+		Utilities.centerDlg(this);
 	}
 	
 	public void setStatusMessage(String translatedMessage, int stepCount)

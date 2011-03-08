@@ -20,9 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.diagram.doers;
 
-import java.awt.Dimension;
-
-import org.martus.swing.Utilities;
 import org.miradi.diagram.arranger.MeglerArranger;
 import org.miradi.dialogs.base.ProgressDialog;
 import org.miradi.exceptions.CommandFailedException;
@@ -52,8 +49,6 @@ public class ArrangeConceptualModelDoer extends ViewDoer
 			return;
 		
 		ProgressDialog progressDialog = new ProgressDialog(getMainWindow(), EAM.text("Arranging Diagram"));
-		progressDialog.setMinimumSize(new Dimension(300, 0));
-		Utilities.centerDlg(progressDialog);
 		
 		Worker worker = new Worker(getProject(), getCurrentDiagramObject(), progressDialog);
 		getDiagramView().getCurrentDiagramComponent().setVisible(false);
