@@ -53,7 +53,7 @@ public class ProjectListMoveToDirectoryAction extends ProjectListAction
 		File newLocation = new File(selectedDirectory, fileToMove.getName());
 		boolean wasMoved = fileToMove.renameTo(newLocation);
 		if (!wasMoved)
-			throw new IOException();
+			throw new IOException(EAM.text("Cannot move project to folder because a project with the same name already exists in the folder"));
 	}
 
 	@Override
