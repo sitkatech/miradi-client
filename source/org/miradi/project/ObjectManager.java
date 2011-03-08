@@ -525,7 +525,7 @@ public class ObjectManager
 		return project;
 	}
 
-	ProjectServer getDatabase()
+	private ProjectServer getDatabase()
 	{
 		return getProject().getDatabase();
 	}
