@@ -24,6 +24,7 @@ import java.util.Vector;
 
 import javax.xml.namespace.NamespaceContext;
 
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ThreatStressRatingEnsurer;
 import org.miradi.project.Project;
 import org.miradi.utils.ProgressInterface;
@@ -97,6 +98,10 @@ public class XmpzXmlImporter extends AbstractXmlImporter implements XmpzXmlConst
 		importers.add(new DashboardPoolImporter(this));
 		importers.add(new TaggedObjectSetPoolImporter(this));
 		
+		final int DELETE_ORPHANS_PROGRESS_TASK = 1;
+		final int IMPORT_THREAT_STRESS_RATING_PROGERESS_TASK = 2;
+		final int TOTAL_CUSTOM_TASK_COUNT = DELETE_ORPHANS_PROGRESS_TASK + IMPORT_THREAT_STRESS_RATING_PROGERESS_TASK;
+		progressIndicator.setStatusMessage(EAM.text("Importing..."), importers.size() + TOTAL_CUSTOM_TASK_COUNT);
 		for (AbstractXmpzObjectImporter importer : importers)
 		{
 			importer.importElement();
