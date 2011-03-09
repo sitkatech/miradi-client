@@ -66,10 +66,12 @@ public class ArrowLineRenderer extends EdgeRenderer
 	@Override
 	public Rectangle2D getPaintBounds(EdgeView viewToUse)
 	{
+		Rectangle2D shapeBounds = new Rectangle2D.Double(0, 0, 0, 0);
 		//NOTE: This does not care about the actual shape but just the bounds.
 		Shape shape = createShapeWithRoundedCorners();
-		// TODO: Should handle null return here (saw it in one odd case)
-		Rectangle2D shapeBounds = shape.getBounds2D();
+		if (shape != null)
+			shapeBounds = shape.getBounds2D();
+		
 		clearViewShape();
 		
 		return shapeBounds;	
