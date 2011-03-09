@@ -470,14 +470,14 @@ public class MeglerArranger
 			progressMeter.incrementProgress();
 		}
 		
-		progressMeter.setStatusMessage(EAM.text("Arranging Targets..."), threatClumps.size());
+		progressMeter.setStatusMessage(EAM.text("Arranging Targets..."), arrangedThreatClumps.size());
 		for(DiagramFactorClump diagramFactorClump : arrangedThreatClumps)
 		{
 			addRelatedToArrangedList(arrangedTargetClumps, targetClumps, diagramFactorClump, DiagramLink.TO);
 			progressMeter.incrementProgress();
 		}
 		
-		progressMeter.setStatusMessage(EAM.text("Arranging Strategies..."), threatClumps.size());
+		progressMeter.setStatusMessage(EAM.text("Arranging Strategies..."), arrangedThreatClumps.size());
 		for(DiagramFactorClump diagramFactorClump : arrangedThreatClumps)
 		{
 			addRelatedToArrangedList(arrangedStrategyClumps, strategyClumps, diagramFactorClump, DiagramLink.FROM);
