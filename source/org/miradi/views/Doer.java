@@ -34,7 +34,7 @@ abstract public class Doer
 	
 	public void doIt(EventObject event) throws Exception
 	{
-			doIt();
+			safeDoIt();
 	}
 	
 	public void safeDoIt() throws Exception
