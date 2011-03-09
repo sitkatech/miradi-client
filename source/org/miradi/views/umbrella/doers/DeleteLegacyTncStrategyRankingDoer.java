@@ -27,7 +27,7 @@ import org.miradi.objects.Strategy;
 public class DeleteLegacyTncStrategyRankingDoer extends AbstractLegacyTncRankingDoer
 {
 	@Override
-	public void doIt() throws Exception
+	protected void doIt() throws Exception
 	{
 		if (!isAvailable())
 			return;

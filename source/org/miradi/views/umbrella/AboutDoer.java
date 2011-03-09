@@ -37,7 +37,7 @@ public class AboutDoer extends MainWindowDoer
 	}
 	
 	@Override
-	public void doIt() throws Exception
+	protected void doIt() throws Exception
 	{
 		String text =  buildMainSection();
 		text += loadHtmlFile("AboutExtra.html");

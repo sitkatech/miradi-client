@@ -31,7 +31,7 @@ public class Close extends MainWindowDoer
 	}
 
 	@Override
-	public void doIt() throws Exception
+	protected void doIt() throws Exception
 	{
 		try
 		{
