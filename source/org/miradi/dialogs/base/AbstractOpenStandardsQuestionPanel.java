@@ -120,6 +120,9 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		addRows(question.getHeaderChoiceItem(), FIRST_LEVEL_INDENT_COUNT);
 		
 		updateFieldsFromProject();
+		
+		// NOTE: Without this, first comment won't appear right away
+		doLayout();
 	}
 
 	private GridLayoutPlus createLayoutManager()
@@ -253,12 +256,9 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		PanelLabelWithSelectableText labelComponent = createLabelWithSelectableText(level, choiceItem.getLabel());
 
 		DashboardCommentsField commentsField = new DashboardCommentsField(getProject(), getDashboard().getRef(), choiceItem.getCode());
-		if(commentsField.hasComments())
-		{
-			commentsField.getComponent().setBackground(getItemBackgroundColor(level));
-			commentsField.getComponent().setFont(getCommentsFieldFont());
-			addUpdatedCustomField(commentsField);
-		}
+		commentsField.getComponent().setBackground(getItemBackgroundColor(level));
+		commentsField.getComponent().setFont(getCommentsFieldFont());
+		addUpdatedCustomField(commentsField);
 
 		OneColumnPanel rightComponent = new OneColumnPanel();
 		rightComponent.setOpaque(true);
