@@ -34,7 +34,8 @@ abstract public class Doer
 	
 	public void doIt(EventObject event) throws Exception
 	{
-		doIt();
+		if (isAvailable())
+			doIt();
 	}
 	
 	public void setView(UmbrellaView view)
