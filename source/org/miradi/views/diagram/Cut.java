@@ -40,7 +40,7 @@ public class Cut extends ViewDoer
 	}
 
 	@Override
-	public void doIt() throws Exception
+	protected void doIt() throws Exception
 	{
 		CopyDoer copyDoer = (CopyDoer)getView().getDoer(ActionCopy.class);
 		DeleteSelectedItemDoer deleteDoer = (DeleteSelectedItemDoer)getView().getDoer(ActionDelete.class);

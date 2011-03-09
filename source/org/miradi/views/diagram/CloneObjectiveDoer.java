@@ -25,7 +25,7 @@ import org.miradi.main.EAM;
 public class CloneObjectiveDoer extends CreateObjectiveDoer
 {
 	@Override
-	public void doIt() throws Exception
+	protected void doIt() throws Exception
 	{
 		if (!isAvailable())
 			return;

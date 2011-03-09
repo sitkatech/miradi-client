@@ -34,7 +34,7 @@ abstract public class AbstractZoomDoer extends ViewDoer
 	}
 
 	@Override
-	public void doIt() throws Exception
+	protected void doIt() throws Exception
 	{
 		try
 		{
