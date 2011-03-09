@@ -76,7 +76,7 @@ abstract public class AbstractCreateTaskNodeDoer extends AbstractTreeNodeDoer
 	}
 
 	@Override
-	public void doIt() throws Exception
+	protected void doIt() throws Exception
 	{
 		if (!isAvailable())
 			return;

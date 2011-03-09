@@ -30,7 +30,7 @@ import org.miradi.views.umbrella.UmbrellaView;
 abstract public class Doer
 {
 	abstract public boolean isAvailable();
-	abstract public void doIt() throws Exception;
+	protected abstract void doIt() throws Exception;
 	
 	public void doIt(EventObject event) throws Exception
 	{

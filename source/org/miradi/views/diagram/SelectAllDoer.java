@@ -42,7 +42,7 @@ public class SelectAllDoer extends ViewDoer
 	}
 	
 	@Override
-	public void doIt() throws Exception 
+	protected void doIt() throws Exception 
 	{
 		getMainWindow().preventActionUpdates();
 		try

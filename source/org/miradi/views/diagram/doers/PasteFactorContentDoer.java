@@ -58,7 +58,7 @@ public class PasteFactorContentDoer extends AbstractPasteDoer
 	}
 
 	@Override
-	public void doIt() throws Exception
+	protected void doIt() throws Exception
 	{
 		if (!isAvailable())
 			return;

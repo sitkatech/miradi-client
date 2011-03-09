@@ -30,7 +30,7 @@ public class EditEstimatedResourceDoer extends ObjectsDoer
 	}
 	
 	@Override
-	public void doIt() throws Exception
+	protected void doIt() throws Exception
 	{
 		if (!isAvailable())
 			return;

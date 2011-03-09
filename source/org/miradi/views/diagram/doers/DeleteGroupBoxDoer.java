@@ -49,7 +49,7 @@ public class DeleteGroupBoxDoer extends LocationDoer
 	}
 	
 	@Override
-	public void doIt() throws Exception
+	protected void doIt() throws Exception
 	{
 		if (!isAvailable())
 			return;

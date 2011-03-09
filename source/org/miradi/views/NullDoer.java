@@ -30,7 +30,7 @@ public class NullDoer extends Doer
 	}
 
 	@Override
-	public void doIt() throws Exception
+	protected void doIt() throws Exception
 	{
 		throw new CommandFailedException("Attempted to doIt in NullDoer!");
 	}
