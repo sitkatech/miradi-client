@@ -67,7 +67,7 @@ public abstract class AbstractProjectImporter
 			
 			importProject(fileToImport);
 		}
-		catch (UserCanceledException ignoreException)
+		catch (UserCanceledException e)
 		{
 			EAM.notifyDialog(EAM.text("Import was canceled!"));
 		}
