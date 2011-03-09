@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-09 12:53-0600\n"
+"POT-Creation-Date: 2011-03-09 14:27-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -61,7 +61,7 @@ msgstr ""
 "\n"
 "您是否确定要删除该资源?"
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:102
+#: Miradi/source/org/miradi/database/DataUpgrader.java:108
 msgid ""
 "\n"
 "WARNING: Attempting to open this project again before repairing the problem "
@@ -1013,7 +1013,7 @@ msgstr ""
 msgid "<strong>Version: %s</strong>"
 msgstr ""
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:59
+#: Miradi/source/org/miradi/database/DataUpgrader.java:60
 msgid ""
 "A backup archive for this project already exists.Continuing with this "
 "migration will replace the existing backup with a new copy.It is probably "
@@ -2294,7 +2294,7 @@ msgid ""
 " tried  "
 msgstr ""
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:101
+#: Miradi/source/org/miradi/database/DataUpgrader.java:107
 msgid ""
 "Attempt to migrate project to the current data format FAILED\n"
 "The pre-migration project was archived in: "
@@ -2405,8 +2405,8 @@ msgstr ""
 msgid "Bundle Rules"
 msgstr "规则集"
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:51
-#: Miradi/source/org/miradi/database/DataUpgrader.java:63
+#: Miradi/source/org/miradi/database/DataUpgrader.java:52
+#: Miradi/source/org/miradi/database/DataUpgrader.java:64
 #: Miradi/source/org/miradi/views/diagram/doers/AbstractPasteDoer.java:72
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:52
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:225
@@ -2453,7 +2453,7 @@ msgstr ""
 msgid "Button|Install..."
 msgstr ""
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:51
+#: Miradi/source/org/miradi/database/DataUpgrader.java:52
 msgid "Button|Migrate"
 msgstr "迁移 \t\t"
 
@@ -2489,7 +2489,7 @@ msgstr ""
 msgid "Button|Replace"
 msgstr ""
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:63
+#: Miradi/source/org/miradi/database/DataUpgrader.java:64
 msgid "Button|Replace Backup"
 msgstr "按钮|替换备份 \t\t"
 
@@ -4903,12 +4903,16 @@ msgstr "仅限于方法 \t\t"
 msgid "Migrated High Level Estimate:"
 msgstr ""
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:74
+#: Miradi/source/org/miradi/database/DataUpgrader.java:75
 msgid "Migrating Project Data"
 msgstr ""
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:135
+#: Miradi/source/org/miradi/database/DataUpgrader.java:141
 msgid "Migrating..."
+msgstr ""
+
+#: Miradi/source/org/miradi/database/DataUpgrader.java:84
+msgid "Migration was canceled"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/TrendQuestion.java:42
@@ -5506,7 +5510,7 @@ msgstr ""
 msgid "Project Description:"
 msgstr ""
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:52
+#: Miradi/source/org/miradi/database/DataUpgrader.java:53
 msgid "Project Migration Required"
 msgstr "必须执行项目迁移"
 
@@ -5574,7 +5578,7 @@ msgstr ""
 msgid "Project is missing Conceptual Model Manifest File"
 msgstr ""
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:99
+#: Miradi/source/org/miradi/database/DataUpgrader.java:105
 msgid "Project was migrated to the current data format"
 msgstr "项目被迁移为当前数据格式 \t\t"
 
@@ -7298,7 +7302,7 @@ msgstr "此项目在被转换成当前数据格式之前无法打开 \t\t"
 msgid "That project is in use by another copy of this application"
 msgstr "此项目正被本应用程序的另一个拷贝所使用 \t\t"
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:83
+#: Miradi/source/org/miradi/database/DataUpgrader.java:89
 msgid ""
 "That project is too old to be migrated by this version of Miradi. You can "
 "use Miradi 1.0 to migrate it to a modern data format, and after that it can "
@@ -7438,7 +7442,7 @@ msgid ""
 "This project resource is being used in the Work Plan and Financial Budget."
 msgstr "该项目资源正用于工作计划和财务预算。"
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:46
+#: Miradi/source/org/miradi/database/DataUpgrader.java:47
 msgid ""
 "This project was created with an older version of Miradi, so it needs to be "
 "migrated to the current data format before it can be opened. A backup will "
@@ -8055,7 +8059,7 @@ msgstr ""
 "愿景——指对某个项目致力于在项目区域取得其所期望的状态或最终状况所做的整体概"
 "述。"
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:64
+#: Miradi/source/org/miradi/database/DataUpgrader.java:65
 msgid "WARNING"
 msgstr "警告"
 
