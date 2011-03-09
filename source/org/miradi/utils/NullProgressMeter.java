@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
+import org.miradi.exceptions.UserCanceledException;
+
 public class NullProgressMeter implements ProgressInterface
 {
 	public void setVisible(boolean visible)
@@ -39,11 +41,11 @@ public class NullProgressMeter implements ProgressInterface
 		return false;
 	}
 
-	public void updateProgressMeter(int currentValue)
+	public void updateProgressMeter(int currentValue) throws UserCanceledException
 	{
 	}
 
-	public void incrementProgress()
+	public void incrementProgress() throws UserCanceledException
 	{
 	}
 

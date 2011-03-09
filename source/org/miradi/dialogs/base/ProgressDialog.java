@@ -29,6 +29,7 @@ import javax.swing.JProgressBar;
 
 import org.martus.swing.Utilities;
 import org.miradi.dialogs.fieldComponents.PanelButton;
+import org.miradi.exceptions.UserCanceledException;
 import org.miradi.icons.IconManager;
 import org.miradi.layout.OneColumnPanel;
 import org.miradi.main.EAM;
@@ -85,12 +86,12 @@ public class ProgressDialog extends DialogWithDisposablePanel implements Progres
 		return progressPanel.shouldExit();
 	}
 	
-	public void updateProgressMeter(int currentValue)
+	public void updateProgressMeter(int currentValue) throws UserCanceledException
 	{
 		progressPanel.updateProgressMeter(currentValue);
 	}
 
-	public void incrementProgress()
+	public void incrementProgress() throws UserCanceledException
 	{
 		progressPanel.incrementProgress();
 	}
@@ -143,13 +144,16 @@ public class ProgressDialog extends DialogWithDisposablePanel implements Progres
 			return shouldExit;
 		}
 
-		public void updateProgressMeter(int currentValue)
+		public void updateProgressMeter(int currentValue) throws UserCanceledException
 		{
+			if (shouldExit())
+				throw new UserCanceledException();
+			
 			progressBar.setValue(currentValue);
 			progressBar.repaint();
 		}
 
-		public void incrementProgress()
+		public void incrementProgress() throws UserCanceledException
 		{
 			if (progressBar.getValue() == progressBar.getMaximum())
 				EAM.logWarning("Incremented progress bar past maximum number of allowed ticks. progress value= " + progressBar.getValue() + " max allowed= " + progressBar.getMaximum());
