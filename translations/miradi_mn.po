@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-09 10:26-0600\n"
+"POT-Creation-Date: 2011-03-09 12:53-0600\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -999,7 +999,7 @@ msgstr ""
 "<html>Энэ төслийн операторын баг <br>солигдсон. Дүгнэлтийн хуудсан дахь TNC-"
 "ийн Tab-аас орлуулагчийг сонгон уу.</html>"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:156
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:160
 msgid "<html>Import failed: <br><p> %s </p></html>"
 msgstr "<html>Import амжилтгүй болсон: <br><p> %s </p></html>"
 
@@ -4210,11 +4210,11 @@ msgstr "Тооцооны код оруулах"
 msgid "Import Completed"
 msgstr "Оролт бүрэн дууссан"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:136
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:140
 msgid "Import Completed.  Would you like to open %s?"
 msgstr "Оролт бүрэн дууссан. Хувийг нээж харах уу%?"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:56
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:57
 msgid "Import Project"
 msgstr "Төслийг оруулах"
 
@@ -4308,7 +4308,7 @@ msgid ""
 "Initial Project Team - The people who conceive of and initiate the project."
 msgstr "Төслийн анхны баг - Төслийг бодож олсон ба санаачилсан хүмүүс."
 
-#: Miradi/source/org/miradi/dialogs/base/ProgressDialog.java:51
+#: Miradi/source/org/miradi/dialogs/base/ProgressDialog.java:52
 msgid "Initializing..."
 msgstr "Эхлүүлэх..."
 
@@ -5442,7 +5442,7 @@ msgstr "Нээх"
 msgid "Open Anyway"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:137
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:141
 msgid "Open Project"
 msgstr "Төсөл нээх"
 
@@ -6395,7 +6395,7 @@ msgstr "Үе шат "
 msgid "Step (not available)"
 msgstr "Үе шат (боломжгүй)"
 
-#: Miradi/source/org/miradi/dialogs/base/ProgressDialog.java:102
+#: Miradi/source/org/miradi/dialogs/base/ProgressDialog.java:103
 msgid "Stop"
 msgstr "Зогсоох"
 
@@ -7705,7 +7705,7 @@ msgid ""
 "the data in different formats."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:187
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:191
 msgid ""
 "This file cannot be imported because it is a newer format than this version "
 "of Miradi supports. <br>Please make sure you are running the latest version "
@@ -7731,7 +7731,7 @@ msgstr ""
 "Энэхүү загвар нь ганц нэг даалгаварт зориуулагдаагүй ба даалгаварын мэдээлэл "
 "байхгүй байна."
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:77
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:81
 msgid ""
 "This project cannot be imported by this version of Miradi because it \n"
 "is in a newer data format. Please upgrade to the latest version of Miradi."

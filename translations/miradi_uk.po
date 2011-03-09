@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-09 10:26-0600\n"
+"POT-Creation-Date: 2011-03-09 12:53-0600\n"
 "PO-Revision-Date: 2010-09-30 09:31+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -1001,7 +1001,7 @@ msgstr ""
 "<html>Операційна одиниця для цього проекту <br>замінена. Будь ласка, "
 "виберіть її заміну на TNC табуляторі Підсумкової сторінки.</html>"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:156
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:160
 msgid "<html>Import failed: <br><p> %s </p></html>"
 msgstr "<html>Імпорт не вдався: <br><p> %и </p></html>"
 
@@ -4212,11 +4212,11 @@ msgstr "Імпортувати розрахункові коди"
 msgid "Import Completed"
 msgstr "Імпорт завершений"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:136
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:140
 msgid "Import Completed.  Would you like to open %s?"
 msgstr "Імпорт завершено. Чи бажаєте відкрити %и?"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:56
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:57
 msgid "Import Project"
 msgstr "Імпортувати проект"
 
@@ -4310,7 +4310,7 @@ msgid ""
 "Initial Project Team - The people who conceive of and initiate the project."
 msgstr "Початкова робоча група проекту - які започаткували і ініціювали проект"
 
-#: Miradi/source/org/miradi/dialogs/base/ProgressDialog.java:51
+#: Miradi/source/org/miradi/dialogs/base/ProgressDialog.java:52
 msgid "Initializing..."
 msgstr ""
 
@@ -5438,7 +5438,7 @@ msgstr "Відкрити"
 msgid "Open Anyway"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:137
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:141
 msgid "Open Project"
 msgstr "Відкрити проект"
 
@@ -6376,7 +6376,7 @@ msgstr "Крок"
 msgid "Step (not available)"
 msgstr "Крок (відсутній)"
 
-#: Miradi/source/org/miradi/dialogs/base/ProgressDialog.java:102
+#: Miradi/source/org/miradi/dialogs/base/ProgressDialog.java:103
 msgid "Stop"
 msgstr ""
 
@@ -7679,7 +7679,7 @@ msgstr ""
 "але схема XML все ще змінюється. Майбутні версії Міраді будуть експортувати "
 "дані у різних форматах. "
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:187
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:191
 msgid ""
 "This file cannot be imported because it is a newer format than this version "
 "of Miradi supports. <br>Please make sure you are running the latest version "
@@ -7703,7 +7703,7 @@ msgid ""
 "This model is not for a single assignment and has no assignment information"
 msgstr "Ця модель не для окремого призначення і не має призначеної інформації"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:77
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:81
 msgid ""
 "This project cannot be imported by this version of Miradi because it \n"
 "is in a newer data format. Please upgrade to the latest version of Miradi."

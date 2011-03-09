@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-09 10:26-0600\n"
+"POT-Creation-Date: 2011-03-09 12:53-0600\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -939,7 +939,7 @@ msgstr ""
 "<html>Unit Operasi untuk proyek ini sudah <br>diganti. Silakan pilih "
 "penggantinya pada Tab TNC dalam Halaman Ringkasan.</html> "
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:156
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:160
 msgid "<html>Import failed: <br><p> %s </p></html>"
 msgstr "<html>Impor gagal: <br><p> %s </p></html> "
 
@@ -4162,11 +4162,11 @@ msgstr "Impor Kode Akuntansi "
 msgid "Import Completed"
 msgstr "Impor Selesai "
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:136
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:140
 msgid "Import Completed.  Would you like to open %s?"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:56
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:57
 msgid "Import Project"
 msgstr "Impor Proyek "
 
@@ -4261,7 +4261,7 @@ msgid ""
 "Initial Project Team - The people who conceive of and initiate the project."
 msgstr "Tim Proyek Awal – Orang-orang yang mencetuskan dan memelopori proyek."
 
-#: Miradi/source/org/miradi/dialogs/base/ProgressDialog.java:51
+#: Miradi/source/org/miradi/dialogs/base/ProgressDialog.java:52
 msgid "Initializing..."
 msgstr ""
 
@@ -5400,7 +5400,7 @@ msgstr "Buka \t"
 msgid "Open Anyway"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:137
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:141
 msgid "Open Project"
 msgstr ""
 
@@ -6339,7 +6339,7 @@ msgstr "Langkah "
 msgid "Step (not available)"
 msgstr "Langkah (tidak tersedia)"
 
-#: Miradi/source/org/miradi/dialogs/base/ProgressDialog.java:102
+#: Miradi/source/org/miradi/dialogs/base/ProgressDialog.java:103
 msgid "Stop"
 msgstr ""
 
@@ -7640,7 +7640,7 @@ msgid ""
 "the data in different formats."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:187
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:191
 msgid ""
 "This file cannot be imported because it is a newer format than this version "
 "of Miradi supports. <br>Please make sure you are running the latest version "
@@ -7667,7 +7667,7 @@ msgstr ""
 "Model ini bukan untuk pengalokasian tunggal dan belum mempunyai informasi "
 "pengalokasian "
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:77
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:81
 msgid ""
 "This project cannot be imported by this version of Miradi because it \n"
 "is in a newer data format. Please upgrade to the latest version of Miradi."
