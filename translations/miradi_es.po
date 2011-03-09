@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-09 12:53-0600\n"
+"POT-Creation-Date: 2011-03-09 14:27-0600\n"
 "PO-Revision-Date: 2010-09-20 10:32-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -75,7 +75,7 @@ msgstr ""
 "\n"
 "¿Está seguro de que desea eliminar este recurso? "
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:102
+#: Miradi/source/org/miradi/database/DataUpgrader.java:108
 msgid ""
 "\n"
 "WARNING: Attempting to open this project again before repairing the problem "
@@ -1089,7 +1089,7 @@ msgstr ""
 msgid "<strong>Version: %s</strong>"
 msgstr "<strong>Versión: %s</strong>"
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:59
+#: Miradi/source/org/miradi/database/DataUpgrader.java:60
 msgid ""
 "A backup archive for this project already exists.Continuing with this "
 "migration will replace the existing backup with a new copy.It is probably "
@@ -2398,7 +2398,7 @@ msgstr ""
 "Intento de ejecutar el comando en el modo de efecto secundario:\n"
 " intento"
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:101
+#: Miradi/source/org/miradi/database/DataUpgrader.java:107
 msgid ""
 "Attempt to migrate project to the current data format FAILED\n"
 "The pre-migration project was archived in: "
@@ -2514,8 +2514,8 @@ msgstr "El reemplazo de presupuesto fue: %s"
 msgid "Bundle Rules"
 msgstr "Reglas del paquete "
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:51
-#: Miradi/source/org/miradi/database/DataUpgrader.java:63
+#: Miradi/source/org/miradi/database/DataUpgrader.java:52
+#: Miradi/source/org/miradi/database/DataUpgrader.java:64
 #: Miradi/source/org/miradi/views/diagram/doers/AbstractPasteDoer.java:72
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:52
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:225
@@ -2562,7 +2562,7 @@ msgstr ""
 msgid "Button|Install..."
 msgstr "Instalar... "
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:51
+#: Miradi/source/org/miradi/database/DataUpgrader.java:52
 msgid "Button|Migrate"
 msgstr "Migrar"
 
@@ -2598,7 +2598,7 @@ msgstr ""
 msgid "Button|Replace"
 msgstr "Reemplazar"
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:63
+#: Miradi/source/org/miradi/database/DataUpgrader.java:64
 msgid "Button|Replace Backup"
 msgstr "Reemplazar copia de seguridad"
 
@@ -5105,12 +5105,16 @@ msgstr "Métodos solamente"
 msgid "Migrated High Level Estimate:"
 msgstr "Estimación del nivel alto migrado:"
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:74
+#: Miradi/source/org/miradi/database/DataUpgrader.java:75
 msgid "Migrating Project Data"
 msgstr ""
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:135
+#: Miradi/source/org/miradi/database/DataUpgrader.java:141
 msgid "Migrating..."
+msgstr ""
+
+#: Miradi/source/org/miradi/database/DataUpgrader.java:84
+msgid "Migration was canceled"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/TrendQuestion.java:42
@@ -5727,7 +5731,7 @@ msgstr ""
 msgid "Project Description:"
 msgstr "Descripción del proyecto: "
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:52
+#: Miradi/source/org/miradi/database/DataUpgrader.java:53
 msgid "Project Migration Required"
 msgstr "Migración de proyecto requerida"
 
@@ -5797,7 +5801,7 @@ msgstr ""
 msgid "Project is missing Conceptual Model Manifest File"
 msgstr "Al proyecto le falta el Archivo de manifiesto del modelo conceptual."
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:99
+#: Miradi/source/org/miradi/database/DataUpgrader.java:105
 msgid "Project was migrated to the current data format"
 msgstr "El proyecto se migró al formato actual de datos."
 
@@ -7578,7 +7582,7 @@ msgstr ""
 msgid "That project is in use by another copy of this application"
 msgstr "Otra copia de esta aplicación está usando ese proyecto."
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:83
+#: Miradi/source/org/miradi/database/DataUpgrader.java:89
 msgid ""
 "That project is too old to be migrated by this version of Miradi. You can "
 "use Miradi 1.0 to migrate it to a modern data format, and after that it can "
@@ -7730,7 +7734,7 @@ msgstr ""
 "Este recurso del proyecto se utiliza en el Plan de trabajo y presupuesto "
 "financiero."
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:46
+#: Miradi/source/org/miradi/database/DataUpgrader.java:47
 msgid ""
 "This project was created with an older version of Miradi, so it needs to be "
 "migrated to the current data format before it can be opened. A backup will "
@@ -8359,7 +8363,7 @@ msgstr ""
 "Visión: resumen general del estado deseado o condición final del área que "
 "desea lograr un proyecto."
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:64
+#: Miradi/source/org/miradi/database/DataUpgrader.java:65
 msgid "WARNING"
 msgstr "ADVERTENCIA"
 
