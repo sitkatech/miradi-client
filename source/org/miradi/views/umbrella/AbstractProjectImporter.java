@@ -69,6 +69,7 @@ public abstract class AbstractProjectImporter
 		}
 		catch (UserCanceledException ignoreException)
 		{
+			EAM.notifyDialog(EAM.text("Import was canceled!"));
 		}
 		catch (UnsupportedNewVersionSchemaException e)
 		{
