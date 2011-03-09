@@ -34,7 +34,6 @@ abstract public class Doer
 	
 	public void doIt(EventObject event) throws Exception
 	{
-		if (isAvailable())
 			doIt();
 	}
 	
