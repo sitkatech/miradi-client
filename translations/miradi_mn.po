@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-09 14:27-0600\n"
+"POT-Creation-Date: 2011-03-09 15:06-0600\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -999,7 +999,7 @@ msgstr ""
 "<html>Энэ төслийн операторын баг <br>солигдсон. Дүгнэлтийн хуудсан дахь TNC-"
 "ийн Tab-аас орлуулагчийг сонгон уу.</html>"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:160
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:161
 msgid "<html>Import failed: <br><p> %s </p></html>"
 msgstr "<html>Import амжилтгүй болсон: <br><p> %s </p></html>"
 
@@ -2299,7 +2299,11 @@ msgstr "Та итгэлтэй байна уу?"
 msgid "Arial"
 msgstr "Arial"
 
-#: Miradi/source/org/miradi/views/diagram/doers/ArrangeConceptualModelDoer.java:51
+#: Miradi/source/org/miradi/views/diagram/doers/ArrangeConceptualModelDoer.java:62
+msgid "Arrange operation was canceled!"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/diagram/doers/ArrangeConceptualModelDoer.java:52
 msgid "Arranging Diagram"
 msgstr "Диаграммыг бүтээх"
 
@@ -4210,7 +4214,7 @@ msgstr "Тооцооны код оруулах"
 msgid "Import Completed"
 msgstr "Оролт бүрэн дууссан"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:140
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:141
 msgid "Import Completed.  Would you like to open %s?"
 msgstr "Оролт бүрэн дууссан. Хувийг нээж харах уу%?"
 
@@ -4221,6 +4225,10 @@ msgstr "Төслийг оруулах"
 #: Miradi/source/org/miradi/actions/jump/ActionJumpWelcomeImportStep.java:36
 msgid "Import a Miradi Project Zipfile (.mpz)"
 msgstr "Miradi Project Zipfile (.mpz)-ийг оруулах"
+
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:72
+msgid "Import was canceled!"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/jump/ActionJumpWelcomeImportStep.java:47
 msgid "Import..."
@@ -5112,7 +5120,7 @@ msgid "Migrating..."
 msgstr ""
 
 #: Miradi/source/org/miradi/database/DataUpgrader.java:84
-msgid "Migration was canceled"
+msgid "Migration was canceled!"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/TrendQuestion.java:42
@@ -5446,7 +5454,7 @@ msgstr "Нээх"
 msgid "Open Anyway"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:141
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:142
 msgid "Open Project"
 msgstr "Төсөл нээх"
 
@@ -7709,7 +7717,7 @@ msgid ""
 "the data in different formats."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:191
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:192
 msgid ""
 "This file cannot be imported because it is a newer format than this version "
 "of Miradi supports. <br>Please make sure you are running the latest version "
@@ -7735,7 +7743,7 @@ msgstr ""
 "Энэхүү загвар нь ганц нэг даалгаварт зориуулагдаагүй ба даалгаварын мэдээлэл "
 "байхгүй байна."
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:81
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:82
 msgid ""
 "This project cannot be imported by this version of Miradi because it \n"
 "is in a newer data format. Please upgrade to the latest version of Miradi."
