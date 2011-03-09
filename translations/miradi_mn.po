@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-08 16:14-0600\n"
+"POT-Creation-Date: 2011-03-09 10:26-0600\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -4230,12 +4230,9 @@ msgstr "Оруулах..."
 msgid "ImportZip"
 msgstr "Zip-ийг оруулах"
 
-#: Miradi/source/org/miradi/views/umbrella/ZippedProjectImporter.java:49
-msgid "Importing mpz file..."
-msgstr ""
-
 #: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:78
-#: Miradi/source/org/miradi/views/umbrella/XmpzProjectImporter.java:58
+#: Miradi/source/org/miradi/views/umbrella/ZippedProjectImporter.java:49
+#: Miradi/source/org/miradi/xml/xmpz/XmpzXmlImporter.java:104
 msgid "Importing..."
 msgstr ""
 
