@@ -1,5 +1,5 @@
 /* 
-Copyright 2005-2010, Foundations of Success, Bethesda, Maryland 
+Copyright 2005-2011, Foundations of Success, Bethesda, Maryland 
 (on behalf of the Conservation Measures Partnership, "CMP") and 
 Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 
@@ -18,16 +18,9 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.utils;
+package org.miradi.exceptions;
 
-import org.miradi.exceptions.UserCanceledException;
-
-public interface ProgressInterface
+public class UserCanceledException extends Exception
 {
-	public void setVisible(boolean b);
-	public void setStatusMessage(String translatedMessage, int stepCount);
-	public void incrementProgress() throws UserCanceledException;
-	public void updateProgressMeter(int currentValue) throws UserCanceledException;
-	public void finished();
-	public boolean shouldExit();
+
 }

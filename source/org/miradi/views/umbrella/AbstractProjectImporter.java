@@ -32,6 +32,7 @@ import org.miradi.dialogs.base.ProgressDialog;
 import org.miradi.exceptions.CpmzVersionTooOldException;
 import org.miradi.exceptions.FutureVersionException;
 import org.miradi.exceptions.UnsupportedNewVersionSchemaException;
+import org.miradi.exceptions.UserCanceledException;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -65,6 +66,9 @@ public abstract class AbstractProjectImporter
 			fileToImport = EAMFileSaveChooser.getFileWithExtension(fileChooser, fileToImport);
 			
 			importProject(fileToImport);
+		}
+		catch (UserCanceledException e)
+		{
 		}
 		catch (UnsupportedNewVersionSchemaException e)
 		{

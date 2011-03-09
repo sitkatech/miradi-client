@@ -115,7 +115,7 @@ public class XmpzXmlImporter extends AbstractXmlImporter implements XmpzXmlConst
 		incrementProgress();
 	}
 
-	private void incrementProgress()
+	private void incrementProgress() throws Exception
 	{
 		progressIndicator.incrementProgress();
 	}

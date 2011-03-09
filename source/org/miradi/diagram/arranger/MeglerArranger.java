@@ -93,7 +93,7 @@ public class MeglerArranger
 		return progressMeter.shouldExit();
 	}
 
-	private void segregateUnlinkedFactors()
+	private void segregateUnlinkedFactors() throws Exception
 	{
 		final int steps = 3;
 		progressMeter.setStatusMessage(EAM.text("Ignoring unlinked factors..."), steps);
@@ -452,7 +452,7 @@ public class MeglerArranger
 		}
 	}
 	
-	private void rearrangeClumps(Vector<DiagramFactorClump> strategyClumps, Vector<DiagramFactorClump> threatClumps, Vector<DiagramFactorClump> targetClumps)
+	private void rearrangeClumps(Vector<DiagramFactorClump> strategyClumps, Vector<DiagramFactorClump> threatClumps, Vector<DiagramFactorClump> targetClumps) throws Exception
 	{
 
 		Vector<DiagramFactorClump> arrangedStrategyClumps = new Vector<DiagramFactorClump>();
@@ -549,7 +549,7 @@ public class MeglerArranger
 		return diagram.getProject();
 	}
 
-	private void extractFactorsOfInterest()
+	private void extractFactorsOfInterest() throws Exception
 	{
 		strategies = new Vector<DiagramFactor>();
 		threats = new Vector<DiagramFactor>();
