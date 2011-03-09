@@ -23,6 +23,7 @@ package org.miradi.views.diagram.doers;
 import org.miradi.diagram.arranger.MeglerArranger;
 import org.miradi.dialogs.base.ProgressDialog;
 import org.miradi.exceptions.CommandFailedException;
+import org.miradi.exceptions.UserCanceledException;
 import org.miradi.main.EAM;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramObject;
@@ -56,6 +57,10 @@ public class ArrangeConceptualModelDoer extends ViewDoer
 		{
 			progressDialog.doWorkInBackgroundWhileShowingProgress(worker);
 		}
+		catch (UserCanceledException e)
+		{
+			EAM.notifyDialog(EAM.text("Arrange operation was canceled!"));
+		}
 		catch(Exception e)
 		{
 			throw new CommandFailedException(e);
@@ -77,7 +82,7 @@ public class ArrangeConceptualModelDoer extends ViewDoer
 		}
 		
 		@Override
-		protected void doRealWork() throws CommandFailedException
+		protected void doRealWork() throws Exception
 		{
 			getProject().executeBeginTransaction();
 			try
@@ -89,6 +94,10 @@ public class ArrangeConceptualModelDoer extends ViewDoer
 							"potentially leaving factors in undesirable locations.  \n" +
 							"If this is the case, use Edit/Undo to restore the diagram to its original state.");
 				}
+			}
+			catch(UserCanceledException e)
+			{
+				throw e;
 			}
 			catch(Exception e)
 			{
