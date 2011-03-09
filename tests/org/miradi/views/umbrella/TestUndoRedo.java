@@ -77,12 +77,12 @@ public class TestUndoRedo extends MiradiTestCase
 		project.getTestingDiagramModel().getFactorCellByWrappedRef(insertedRef);
 		UndoDoer undo = new UndoDoer();
 		undo.setProject(project);
-		undo.doIt();
+		undo.safeDoIt();
 		assertEquals("Should have 0 nodes now.", 0, project.getTestingDiagramModel().getFactorCount());
 
 		RedoDoer redo = new RedoDoer();
 		redo.setProject(project);
-		redo.doIt();
+		redo.safeDoIt();
 
 		DiagramFactor[] diagramFactors = project.getAllDiagramFactors();
 		
@@ -94,7 +94,7 @@ public class TestUndoRedo extends MiradiTestCase
 		Factor factor = Factor.findFactor(project, node.getWrappedORef());
 		assertEquals("Incorrect label?", target1Text, factor.getLabel());
 		
-		undo.doIt();
+		undo.safeDoIt();
 		assertEquals("Should have 0 nodes again.", 0, project.getTestingDiagramModel().getFactorCount());
 	}
 
@@ -122,25 +122,25 @@ public class TestUndoRedo extends MiradiTestCase
 
 		UndoDoer undo = new UndoDoer();
 		undo.setProject(project);
-		undo.doIt();
+		undo.safeDoIt();
 		String foundSizeAsString3 = getSizeAsString(insertedRef);
 		assertEquals(newSize1, foundSizeAsString3);
 
 		undo = new UndoDoer();
 		undo.setProject(project);
-		undo.doIt();
+		undo.safeDoIt();
 		String foundSizeAsString4 = getSizeAsString(insertedRef);
 		assertEquals(originalSize, foundSizeAsString4);
 
 		RedoDoer redo = new RedoDoer();
 		redo.setProject(project);
-		redo.doIt();
+		redo.safeDoIt();
 		String foundSizeAsString5 = getSizeAsString(insertedRef);
 		assertEquals(newSize1, foundSizeAsString5);
 
 		redo = new RedoDoer();
 		redo.setProject(project);
-		redo.doIt();
+		redo.safeDoIt();
 		String foundSizeAsString6 = getSizeAsString(insertedRef);
 		assertEquals(newSize2, foundSizeAsString6);
 	}

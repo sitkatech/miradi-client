@@ -37,6 +37,12 @@ abstract public class Doer
 			doIt();
 	}
 	
+	public void safeDoIt() throws Exception
+	{
+		if (isAvailable())
+			doIt();
+	}
+	
 	public void setView(UmbrellaView view)
 	{
 		// overridden by any subclass that cares about projects

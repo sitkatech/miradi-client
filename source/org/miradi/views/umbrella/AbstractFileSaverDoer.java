@@ -97,7 +97,7 @@ abstract public class AbstractFileSaverDoer extends ViewDoer
 
 	protected void tryAgain() throws Exception
 	{
-		doIt();
+		safeDoIt();
 	}
 	
 	abstract protected EAMFileSaveChooser createFileChooser();
