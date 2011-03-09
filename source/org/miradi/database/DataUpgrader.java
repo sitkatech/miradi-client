@@ -81,7 +81,7 @@ public class DataUpgrader
 		}
 		catch (UserCanceledException e)
 		{
-			EAM.notifyDialog(EAM.text("Migration was canceled"));
+			EAM.notifyDialog(EAM.text("Migration was canceled!"));
 			return;
 		}
 		catch (DataUpgrader.MigrationTooOldException e)
