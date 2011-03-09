@@ -32,7 +32,7 @@ abstract public class AbstractExpandToDoer extends ObjectsDoer
 	}
 	
 	@Override
-	public void doIt() throws Exception
+	protected void doIt() throws Exception
 	{
 		try
 		{

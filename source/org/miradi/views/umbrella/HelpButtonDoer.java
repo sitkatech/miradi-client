@@ -56,7 +56,7 @@ public class HelpButtonDoer extends MainWindowDoer
 	}
 	
 	@Override
-	public void doIt() throws Exception
+	protected void doIt() throws Exception
 	{
 		throw new CommandFailedException("Invalid call; use DoIt(event)");
 	}

@@ -32,7 +32,7 @@ abstract public class CreatePoolObjectDoer extends ObjectsDoer
 	}
 
 	@Override
-	public void doIt() throws Exception
+	protected void doIt() throws Exception
 	{
 		getProject().executeBeginTransaction();
 		try

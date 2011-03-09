@@ -48,7 +48,7 @@ abstract public class AbstractPopDownMenuDoer extends ObjectsDoer
 	}
 	
 	@Override
-	public void doIt() throws Exception
+	protected void doIt() throws Exception
 	{
 		EAM.logWarning("AbstractMenuDoer called without an event");
 	}

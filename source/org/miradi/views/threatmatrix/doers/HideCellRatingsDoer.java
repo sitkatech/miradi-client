@@ -33,7 +33,7 @@ public class HideCellRatingsDoer extends CellRatingsDoer
 	}
 
 	@Override
-	public void doIt() throws Exception
+	protected void doIt() throws Exception
 	{
 		if (!isAvailable())
 			return;

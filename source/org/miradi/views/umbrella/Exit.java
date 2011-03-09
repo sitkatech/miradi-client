@@ -24,7 +24,7 @@ import org.miradi.views.MainWindowDoer;
 public class Exit extends MainWindowDoer
 {
 	@Override
-	public void doIt() throws Exception
+	protected void doIt() throws Exception
 	{
 		getMainWindow().exitNormally();
 	}

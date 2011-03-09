@@ -34,7 +34,7 @@ import org.miradi.views.ViewDoer;
 abstract public class PrintDoer extends ViewDoer
 {
 	@Override
-	public void doIt() throws Exception 
+	protected void doIt() throws Exception 
 	{
 		try
 		{
