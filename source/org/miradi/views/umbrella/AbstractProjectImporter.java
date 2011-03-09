@@ -67,7 +67,7 @@ public abstract class AbstractProjectImporter
 			
 			importProject(fileToImport);
 		}
-		catch (UserCanceledException e)
+		catch (UserCanceledException ignoreException)
 		{
 		}
 		catch (UnsupportedNewVersionSchemaException e)
