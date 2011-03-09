@@ -58,7 +58,7 @@ abstract public class AbstractImageSaverDoer extends AbstractFileSaverDoer
 	@Override
 	protected void tryAgain() throws Exception
 	{
-		doIt();
+		safeDoIt();
 	}
 	
 	@Override

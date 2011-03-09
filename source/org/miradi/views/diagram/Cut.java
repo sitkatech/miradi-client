@@ -44,8 +44,8 @@ public class Cut extends ViewDoer
 	{
 		CopyDoer copyDoer = (CopyDoer)getView().getDoer(ActionCopy.class);
 		DeleteSelectedItemDoer deleteDoer = (DeleteSelectedItemDoer)getView().getDoer(ActionDelete.class);
-		copyDoer.doIt();
-		deleteDoer.doIt();
+		copyDoer.safeDoIt();
+		deleteDoer.safeDoIt();
 		copyDoer.decrementPasteCount();
 	}
 
