@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.text.ParseException;
 
 import org.martus.util.DirectoryUtils;
+import org.miradi.database.ObjectManifest;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.ids.KeyEcologicalAttributeId;
@@ -63,6 +64,44 @@ public class TestObjectManager extends MiradiTestCase
 	{
 		project.close();
 		project = null;
+	}
+	
+	public void testDeleteErrorHandling() throws Exception
+	{
+		ProjectForTesting localProject = new ProjectForTesting(getName() + "2");
+		localProject.close();
+		
+		File tempDirectory = createTempDirectory();
+		localProject.setLocalDataLocation(tempDirectory);
+		localProject.createOrOpenWithDefaultObjects(getName()+"2");
+		ProjectServerForTesting localDatabase = localProject.getTestDatabase();
+		ObjectManager localManager = localProject.getObjectManager();
+		try
+		{
+			BaseId createdId = localManager.createObject(ObjectType.ACCOUNTING_CODE, BaseId.INVALID, null);
+			ORef ref = new ORef(ObjectType.ACCOUNTING_CODE, createdId);
+			AccountingCode accountingCode = AccountingCode.find(localProject, ref);
+	
+			localDatabase.setFailAllDeletes(true);
+			try
+			{
+				localManager.deleteObject(accountingCode);
+				fail("Should have thrown an exception");
+			}
+			catch(IOException e)
+			{
+				ObjectManifest manifest = localDatabase.readObjectManifest(ref.getObjectType());
+				assertFalse("Wasn't removed from manifest before deleting json?", manifest.has(ref.getObjectId()));
+			}
+			finally
+			{
+				localDatabase.setFailAllDeletes(false);
+			}
+		}
+		finally
+		{
+			DirectoryUtils.deleteEntireDirectoryTree(tempDirectory);
+		}
 	}
 	
 	public void testCachingInvalidRefs() throws Exception

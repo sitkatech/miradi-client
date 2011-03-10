@@ -393,8 +393,8 @@ public class ObjectManager
 		if(pool.findObject(objectId) == null)
 			throw new RuntimeException("Attempted to delete missing object: " + objectType + ":" + objectId);
 		pool.remove(objectId);
-		getDatabase().deleteObject(objectType, objectId);
 		getDatabase().writeObjectManifest(getFileName(), objectType, createManifest(pool));
+		getDatabase().deleteObject(objectType, objectId);
 	}
 	
 	public void setObjectData(ORef objectRef, String fieldTag, String dataValue) throws Exception

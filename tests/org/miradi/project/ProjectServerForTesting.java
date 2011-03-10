@@ -19,7 +19,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.project;
 
+import java.io.IOException;
+
 import org.miradi.database.ProjectServer;
+import org.miradi.ids.BaseId;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 
@@ -41,6 +44,11 @@ public class ProjectServerForTesting extends ProjectServer
 		super.close();
 	}
 	
+	public void setFailAllDeletes(boolean shouldFailAllDeletes)
+	{
+		failDeletes = shouldFailAllDeletes;
+	}
+	
 	@Override
 	public void close() throws Exception
 	{
@@ -55,8 +63,6 @@ public class ProjectServerForTesting extends ProjectServer
 		super.writeObject(object);
 		++callsToWriteObject;
 	}
-	
-	
 
 	@Override
 	public void writeThreatRatingFramework(SimpleThreatRatingFramework framework) throws Exception
@@ -65,6 +71,15 @@ public class ProjectServerForTesting extends ProjectServer
 		++callsToWriteThreatRatingFramework;
 	}
 	
+	@Override
+	public void deleteObject(int type, BaseId id) throws Exception
+	{
+		super.deleteObject(type, id);
+		if(failDeletes)
+			throw new IOException("TestDatabase set to fail all deletes");
+	}
+	
 	public int callsToWriteObject;
 	public int callsToWriteThreatRatingFramework;
+	private boolean failDeletes;
 }
