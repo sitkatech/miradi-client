@@ -37,6 +37,18 @@ public class QuarterColumnsVisibilityQuestion extends StaticChoiceQuestion
 		};
 	}
 	
+	@Override
+	protected boolean hasReadableAlternativeDefaultCode()
+	{
+		return true;
+	}
+	
+	@Override
+	protected String getReadableAlternativeDefaultCode()
+	{
+		return "ShowQuarterColumns";
+	}
+	
 	public static final String SHOW_QUARTER_COLUMNS_CODE = "";
 	public static final String HIDE_QUARTER_COLUMNS_CODE = "HideQuarterColumns";
 

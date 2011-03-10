@@ -35,6 +35,20 @@ public class BudgetTimePeriodQuestion extends StaticChoiceQuestion
 			new ChoiceItem(BUDGET_BY_YEAR_CODE, EAM.text("By Year")),	
 		};
 	}
+	
+
+	@Override
+	protected boolean hasReadableAlternativeDefaultCode()
+	{
+		return true;
+	}
+	
+	@Override
+	protected String getReadableAlternativeDefaultCode()
+	{
+		return "QUARTERLY";
+	}
+	
 	public static final String BUDGET_BY_QUARTER_CODE = "";
 	public static final String BUDGET_BY_YEAR_CODE = "YEARLY";
 }
