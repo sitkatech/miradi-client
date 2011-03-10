@@ -60,7 +60,8 @@ public class PasteDoer extends AbstractPasteDoer
 			getProject().getDiagramClipboard().incrementPasteCount();
 			paste(diagramPaster);
 			possiblyNotifyUserIfDataWasLost(diagramPaster);
-			notifiyIfNothingWasPasted(beforePasteDiagramFactors, beforePasteDiagramLinks);
+			if(!wasAnythingPasted(beforePasteDiagramFactors, beforePasteDiagramLinks))
+				EAM.showHtmlMessageOkDialog(nothingPastedMessageFileName, "Paste");
 			if(usersChoice.equals(AS_SHARED_BUTTON))
 				NotifyDialog.notify(getMainWindow(), NotifyDialogTemplateFactory.pastedSharedFactors());
 		} 
@@ -156,12 +157,6 @@ public class PasteDoer extends AbstractPasteDoer
 		return false;
 	}
 	
-	private void notifiyIfNothingWasPasted(ORefList beforePasteDiagramFactors, ORefList beforePasteDiagramLinks) throws Exception
-	{
-		if(!wasAnythingPasted(beforePasteDiagramFactors, beforePasteDiagramLinks))
-			EAM.showHtmlMessageOkDialog(nothingPastedMessageFileName, "Paste");
-	}
-
 	private boolean wasAnythingPasted(ORefList beforePasteDiagramFactors, ORefList beforePasteDiagramLinks)
 	{
 		DiagramObject diagramObjectRefBeingPastedInto = getDiagramObject();
