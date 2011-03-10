@@ -22,6 +22,27 @@ package org.miradi.wizard;
 import java.util.Collection;
 import java.util.Hashtable;
 
+import org.miradi.actions.openstandards.ActionOpenStandardsAnalyzeUseAndAdaptParentMenu;
+import org.miradi.actions.openstandards.ActionOpenStandardsAnalyzeUseAndAdaptProcessStep4a;
+import org.miradi.actions.openstandards.ActionOpenStandardsAnalyzeUseAndAdaptProcessStep4b;
+import org.miradi.actions.openstandards.ActionOpenStandardsAnalyzeUseAndAdaptProcessStep4c;
+import org.miradi.actions.openstandards.ActionOpenStandardsCaptureAndShareLearningParentMenu;
+import org.miradi.actions.openstandards.ActionOpenStandardsCaptureAndShareLearningProcessStep5a;
+import org.miradi.actions.openstandards.ActionOpenStandardsCaptureAndShareLearningProcessStep5b;
+import org.miradi.actions.openstandards.ActionOpenStandardsCaptureAndShareLearningProcessStep5c;
+import org.miradi.actions.openstandards.ActionOpenStandardsConceptualizeParentMenu;
+import org.miradi.actions.openstandards.ActionOpenStandardsConceptualizeProcessStep1a;
+import org.miradi.actions.openstandards.ActionOpenStandardsConceptualizeProcessStep1b;
+import org.miradi.actions.openstandards.ActionOpenStandardsConceptualizeProcessStep1c;
+import org.miradi.actions.openstandards.ActionOpenStandardsConceptualizeProcessStep1d;
+import org.miradi.actions.openstandards.ActionOpenStandardsImplementActionsAndMonitoringParentMenu;
+import org.miradi.actions.openstandards.ActionOpenStandardsImplementActionsAndMonitoringProcessStep3a;
+import org.miradi.actions.openstandards.ActionOpenStandardsImplementActionsAndMonitoringProcessStep3b;
+import org.miradi.actions.openstandards.ActionOpenStandardsImplementActionsAndMonitoringProcessStep3c;
+import org.miradi.actions.openstandards.ActionOpenStandardsPlanActionsAndMonitoringParentMenu;
+import org.miradi.actions.openstandards.ActionOpenStandardsPlanActionsAndMonitoringProcessStep2a;
+import org.miradi.actions.openstandards.ActionOpenStandardsPlanActionsAndMonitoringProcessStep2b;
+import org.miradi.actions.openstandards.ActionOpenStandardsPlanActionsAndMonitoringProcessStep2c;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
@@ -126,6 +147,8 @@ public class WizardManager
 		createScheduleStepEntries(panel);
 		createMapViewStepEntries(panel);
 		createImagesViewStepEntries(panel);
+		
+		createDashboardStepEntries(panel);
 	}
 	
 	public String getCurrentStepName()
@@ -349,6 +372,34 @@ public class WizardManager
 		createStepEntry(new LibraryOverviewStep(panel));
 	}
 	
+	public void createDashboardStepEntries(WizardPanel panel) throws Exception
+	{
+		/* 1  */ createStepEntry(new SummaryWizardDefineTeamMembers(panel), ActionOpenStandardsConceptualizeParentMenu.class);
+		/* 1a */ createStepEntry(new SummaryWizardDefineTeamMembers(panel), ActionOpenStandardsConceptualizeProcessStep1a.class);
+		/* 1b */ createStepEntry(new SummaryWizardDefineProjecScope(panel), ActionOpenStandardsConceptualizeProcessStep1b.class);
+		/* 1c */ createStepEntry(new DiagramWizardIdentifyDirectThreatStep(panel), ActionOpenStandardsConceptualizeProcessStep1c.class);
+		/* 1d */ createStepEntry(new DiagramWizardIdentifyIndirectThreatStep(panel), ActionOpenStandardsConceptualizeProcessStep1d.class);
+
+		/* 2  */ createStepEntry(new StrategicPlanDevelopGoalStep(panel), ActionOpenStandardsPlanActionsAndMonitoringParentMenu.class);
+		/* 2a */ createStepEntry(new StrategicPlanDevelopGoalStep(panel), ActionOpenStandardsPlanActionsAndMonitoringProcessStep2a.class);
+		/* 2b */ createStepEntry(new DiagramWizardDefineAudienceStep(panel), ActionOpenStandardsPlanActionsAndMonitoringProcessStep2b.class);
+		/* 2c */ createStepEntry(new DevelopOperationalPlan(panel), ActionOpenStandardsPlanActionsAndMonitoringProcessStep2c.class);
+
+		/* 3  */ createStepEntry(new WorkPlanOverviewStep(panel), ActionOpenStandardsImplementActionsAndMonitoringParentMenu.class);
+		/* 3a */ createStepEntry(new WorkPlanOverviewStep(panel), ActionOpenStandardsImplementActionsAndMonitoringProcessStep3a.class);
+		/* 3b */ createStepEntry(new BudgetWizardAccountingAndFunding(panel), ActionOpenStandardsImplementActionsAndMonitoringProcessStep3b.class);
+		/* 3c */ createStepEntry(new ImplementPlans(panel), ActionOpenStandardsImplementActionsAndMonitoringProcessStep3c.class);
+		
+		/* 4  */ createStepEntry(new ImplementPlans(panel), ActionOpenStandardsAnalyzeUseAndAdaptParentMenu.class);
+		/* 4a */ createStepEntry(new ImplementPlans(panel), ActionOpenStandardsAnalyzeUseAndAdaptProcessStep4a.class);
+		/* 4b */ createStepEntry(new ImplementPlans(panel), ActionOpenStandardsAnalyzeUseAndAdaptProcessStep4b.class);
+		/* 4c */ createStepEntry(new ImplementPlans(panel), ActionOpenStandardsAnalyzeUseAndAdaptProcessStep4c.class);
+		
+		/* 5 */ createStepEntry(new ReportsOverviewStep(panel), ActionOpenStandardsCaptureAndShareLearningParentMenu.class);
+		/* 5a */ createStepEntry(new ReportsOverviewStep(panel), ActionOpenStandardsCaptureAndShareLearningProcessStep5a.class);
+		/* 5b */ createStepEntry(new ReportsOverviewStep(panel), ActionOpenStandardsCaptureAndShareLearningProcessStep5b.class);
+		/* 5c */ createStepEntry(new ReportsOverviewStep(panel), ActionOpenStandardsCaptureAndShareLearningProcessStep5c.class);
+	}
 
 	static Class[] getSequence()
 	{
@@ -477,8 +528,13 @@ public class WizardManager
 	
 	private SkeletonWizardStep createStepEntry(SkeletonWizardStep step)
 	{
-		stepEntries.put(step.getClass().getSimpleName(),step);
+		createStepEntry(step, step.getClass());
 		return step;
+	}
+
+	private void createStepEntry(SkeletonWizardStep step, Class classToUse)
+	{
+		stepEntries.put(classToUse.getSimpleName(), step);
 	}
 
 	
