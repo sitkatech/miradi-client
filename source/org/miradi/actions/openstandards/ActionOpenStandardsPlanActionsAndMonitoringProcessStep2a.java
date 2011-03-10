@@ -18,18 +18,19 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.actions;
+package org.miradi.actions.openstandards;
 
 import java.awt.event.KeyEvent;
 
+import org.miradi.actions.ParentMenuAction;
 import org.miradi.main.MainWindow;
-import org.miradi.questions.OpenStandardsConceptualizeQuestion;
+import org.miradi.questions.OpenStandardsPlanActionsAndMonitoringQuestion;
 
-public class ActionOpenStandardsConceptualizeProcessStep1a extends ParentMenuAction
+public class ActionOpenStandardsPlanActionsAndMonitoringProcessStep2a extends ParentMenuAction
 {
-	public ActionOpenStandardsConceptualizeProcessStep1a(MainWindow mainWindowToUse)
+	public ActionOpenStandardsPlanActionsAndMonitoringProcessStep2a(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, OpenStandardsConceptualizeQuestion.getProcessStep1aLabel());
+		super(mainWindowToUse, OpenStandardsPlanActionsAndMonitoringQuestion.getProcessStep2aLabel());
 	}
 
 	@Override
@@ -41,6 +42,6 @@ public class ActionOpenStandardsConceptualizeProcessStep1a extends ParentMenuAct
 	@Override
 	public String getCode()
 	{
-		return OpenStandardsConceptualizeQuestion.PROCESS_STEP_1A_CODE;
+		return OpenStandardsPlanActionsAndMonitoringQuestion.PROCESS_STEP_2A_CODE;
 	}
 }
