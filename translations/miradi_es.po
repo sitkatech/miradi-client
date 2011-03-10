@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-10 11:18-0600\n"
+"POT-Creation-Date: 2011-03-10 13:30-0600\n"
 "PO-Revision-Date: 2010-09-20 10:32-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -2877,12 +2877,8 @@ msgstr ""
 "conservación. "
 
 #: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:48
-msgid ""
-"Conduct evaluations and/or audits at appropriate times during the project "
-"cycle"
+msgid "Conduct evaluations and/or audits"
 msgstr ""
-"Realizar evaluaciones o auditorías en momentos adecuados durante el ciclo "
-"del proyecto"
 
 #: Miradi/source/org/miradi/views/workplan/doers/EditAnalysisRowsDoer.java:43
 msgid "Configure Work Plan Analysis"
@@ -3175,8 +3171,8 @@ msgid "Delete..."
 msgstr "Eliminar…"
 
 #: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:49
-msgid "Demonstrate commitment from leaders to learning and innovation"
-msgstr "Demostrar compromiso de líderes con el aprendizaje e innovación"
+msgid "Demonstrate commitment to learning"
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/SortDirectionQuestion.java:36
 msgid "Descending"
@@ -3306,12 +3302,8 @@ msgid "Develop short-term work plans"
 msgstr "Desarrollar planes de trabajo a corto plazo"
 
 #: Miradi/source/org/miradi/questions/OpenStandardsAnalyzeUseAndAdaptQuestion.java:36
-msgid ""
-"Develop systems for recording, storing, processing and backing up project "
-"data"
+msgid "Develop systems for handling project data"
 msgstr ""
-"Desarrollar sistemas para registrar, almacenar, procesar y hacer copias de "
-"seguridad de los datos de un proyecto."
 
 #: Miradi/source/org/miradi/actions/jump/ActionJumpTargetViability3Step.java:35
 msgid "Develop target viability"
@@ -5822,8 +5814,8 @@ msgid "Protected Area Information"
 msgstr "Configuraciones del plan de trabajo"
 
 #: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:50
-msgid "Provide a safe environment for encouraging experimentation"
-msgstr "Ofrecer un entorno seguro para incentivar la experimentación"
+msgid "Provide a safe environment for experimentation"
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/ProjectSharingQuestion.java:35
 msgid "Public (anyone)"
@@ -5977,10 +5969,8 @@ msgid "Review threat rating summary"
 msgstr "Revise el resumen de calificación de amenazas."
 
 #: Miradi/source/org/miradi/questions/OpenStandardsAnalyzeUseAndAdaptQuestion.java:46
-msgid "Revise project plan: strategic, monitoring, operational, and work plans"
+msgid "Revise project plans"
 msgstr ""
-"Revisar plan del proyecto: estratégico, de monitoreo, operativo y planes de "
-"trabajo"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:158
 msgid "Riparian Areas"
@@ -6219,8 +6209,8 @@ msgid "Share feedback formally or informally"
 msgstr "Compartir comentarios de modo formal o informal"
 
 #: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:51
-msgid "Share success & failures with practitioners around the world"
-msgstr "Compartir éxitos y fracasos con practicantes de todo el mundo"
+msgid "Share success & failures with other teams"
+msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:608
 msgid "Should Now Allow Full Time Employee To Be Calculated For "
@@ -32893,6 +32883,35 @@ msgid ""
 msgstr ""
 "Marina___Atlántico tropical occidental___Marina de la plataforma norte de "
 "Brasil___Brasil "
+
+#~ msgid ""
+#~ "Conduct evaluations and/or audits at appropriate times during the project "
+#~ "cycle"
+#~ msgstr ""
+#~ "Realizar evaluaciones o auditorías en momentos adecuados durante el ciclo "
+#~ "del proyecto"
+
+#~ msgid "Demonstrate commitment from leaders to learning and innovation"
+#~ msgstr "Demostrar compromiso de líderes con el aprendizaje e innovación"
+
+#~ msgid ""
+#~ "Develop systems for recording, storing, processing and backing up project "
+#~ "data"
+#~ msgstr ""
+#~ "Desarrollar sistemas para registrar, almacenar, procesar y hacer copias "
+#~ "de seguridad de los datos de un proyecto."
+
+#~ msgid "Provide a safe environment for encouraging experimentation"
+#~ msgstr "Ofrecer un entorno seguro para incentivar la experimentación"
+
+#~ msgid ""
+#~ "Revise project plan: strategic, monitoring, operational, and work plans"
+#~ msgstr ""
+#~ "Revisar plan del proyecto: estratégico, de monitoreo, operativo y planes "
+#~ "de trabajo"
+
+#~ msgid "Share success & failures with practitioners around the world"
+#~ msgstr "Compartir éxitos y fracasos con practicantes de todo el mundo"
 
 #~ msgid ""
 #~ "html|/resources/ImageResolutionMessage.html|<p>The resolution of the "

@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-10 11:18-0600\n"
+"POT-Creation-Date: 2011-03-10 13:30-0600\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -2928,10 +2928,8 @@ msgstr ""
 "гэж үзсэн тодорхой хүчин зүйлүүдийн хоорондын иж бүрэн харилцааны диаграмм."
 
 #: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:48
-msgid ""
-"Conduct evaluations and/or audits at appropriate times during the project "
-"cycle"
-msgstr "Төслийн мөчлөгийн тохиромжтой үед үнэлгээ ба/эсвэл аудит хийлгэх"
+msgid "Conduct evaluations and/or audits"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/workplan/doers/EditAnalysisRowsDoer.java:43
 msgid "Configure Work Plan Analysis"
@@ -3220,9 +3218,8 @@ msgid "Delete..."
 msgstr "...устгах"
 
 #: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:49
-msgid "Demonstrate commitment from leaders to learning and innovation"
+msgid "Demonstrate commitment to learning"
 msgstr ""
-"Сурч мэдэх ба шинэчлэлийн талаар манлайлагчийн үүрэг даалгаварыг харуулах"
 
 #: Miradi/source/org/miradi/questions/SortDirectionQuestion.java:36
 msgid "Descending"
@@ -3352,12 +3349,8 @@ msgid "Develop short-term work plans"
 msgstr "Богино хугацааны ажлын төлөвлөгөө боловсруулах"
 
 #: Miradi/source/org/miradi/questions/OpenStandardsAnalyzeUseAndAdaptQuestion.java:36
-msgid ""
-"Develop systems for recording, storing, processing and backing up project "
-"data"
+msgid "Develop systems for handling project data"
 msgstr ""
-"Төслийн мэдээллийг тэмдэглэх, хадгалах, боловсруулах ба хуулан нөөцлөх "
-"системийг боловсруулах"
 
 #: Miradi/source/org/miradi/actions/jump/ActionJumpTargetViability3Step.java:35
 msgid "Develop target viability"
@@ -5827,8 +5820,8 @@ msgid "Protected Area Information"
 msgstr "Тусгай Хамгаалалттай Газрын тухай мэдээлэл"
 
 #: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:50
-msgid "Provide a safe environment for encouraging experimentation"
-msgstr "Туршилт хийхийг дэмжсэн баталгаатай орчинг бүрдүүлэх"
+msgid "Provide a safe environment for experimentation"
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/ProjectSharingQuestion.java:35
 msgid "Public (anyone)"
@@ -5981,10 +5974,8 @@ msgid "Review threat rating summary"
 msgstr "Аюул заналын үнэлгээний дүгнэлтийг хянан үзэх"
 
 #: Miradi/source/org/miradi/questions/OpenStandardsAnalyzeUseAndAdaptQuestion.java:46
-msgid "Revise project plan: strategic, monitoring, operational, and work plans"
+msgid "Revise project plans"
 msgstr ""
-"Төслийн төлөвлөгөөг хянан засварлах: стратегийн, хяналтын, strategic, "
-"monitoring, үйл ажиллагааны төлөвлөгөө болон ажлын төлөвлөгөө"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:158
 msgid "Riparian Areas"
@@ -6222,10 +6213,8 @@ msgid "Share feedback formally or informally"
 msgstr "Хариуг албан аль эсвэл албан бус арга замаар солилцох"
 
 #: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:51
-msgid "Share success & failures with practitioners around the world"
+msgid "Share success & failures with other teams"
 msgstr ""
-"Амжилт болон алдааг дэлхийн бусад практик дээр хэрэгжүүлэгч хүмүүстэй "
-"хуваалцах, солилцох"
 
 #: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:608
 msgid "Should Now Allow Full Time Employee To Be Calculated For "
@@ -31755,6 +31744,36 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid ""
+#~ "Conduct evaluations and/or audits at appropriate times during the project "
+#~ "cycle"
+#~ msgstr "Төслийн мөчлөгийн тохиромжтой үед үнэлгээ ба/эсвэл аудит хийлгэх"
+
+#~ msgid "Demonstrate commitment from leaders to learning and innovation"
+#~ msgstr ""
+#~ "Сурч мэдэх ба шинэчлэлийн талаар манлайлагчийн үүрэг даалгаварыг харуулах"
+
+#~ msgid ""
+#~ "Develop systems for recording, storing, processing and backing up project "
+#~ "data"
+#~ msgstr ""
+#~ "Төслийн мэдээллийг тэмдэглэх, хадгалах, боловсруулах ба хуулан нөөцлөх "
+#~ "системийг боловсруулах"
+
+#~ msgid "Provide a safe environment for encouraging experimentation"
+#~ msgstr "Туршилт хийхийг дэмжсэн баталгаатай орчинг бүрдүүлэх"
+
+#~ msgid ""
+#~ "Revise project plan: strategic, monitoring, operational, and work plans"
+#~ msgstr ""
+#~ "Төслийн төлөвлөгөөг хянан засварлах: стратегийн, хяналтын, strategic, "
+#~ "monitoring, үйл ажиллагааны төлөвлөгөө болон ажлын төлөвлөгөө"
+
+#~ msgid "Share success & failures with practitioners around the world"
+#~ msgstr ""
+#~ "Амжилт болон алдааг дэлхийн бусад практик дээр хэрэгжүүлэгч хүмүүстэй "
+#~ "хуваалцах, солилцох"
 
 #~ msgid ""
 #~ "html|/resources/ImageResolutionMessage.html|<p>The resolution of the "

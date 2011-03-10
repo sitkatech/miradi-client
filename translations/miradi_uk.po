@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-10 11:18-0600\n"
+"POT-Creation-Date: 2011-03-10 13:30-0600\n"
 "PO-Revision-Date: 2010-09-30 09:31+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -2935,11 +2935,8 @@ msgstr ""
 "факторами, які достовірно впливають або спрямовані на природоохоронну ціль."
 
 #: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:48
-msgid ""
-"Conduct evaluations and/or audits at appropriate times during the project "
-"cycle"
+msgid "Conduct evaluations and/or audits"
 msgstr ""
-"Здійснювати оцінку і/або аудит відповідних статей протягом проектного циклу"
 
 #: Miradi/source/org/miradi/views/workplan/doers/EditAnalysisRowsDoer.java:43
 msgid "Configure Work Plan Analysis"
@@ -3231,8 +3228,8 @@ msgid "Delete..."
 msgstr "Видалити..."
 
 #: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:49
-msgid "Demonstrate commitment from leaders to learning and innovation"
-msgstr "Демонструвати погляди лідерів на навчання та інновації"
+msgid "Demonstrate commitment to learning"
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/SortDirectionQuestion.java:36
 msgid "Descending"
@@ -3362,11 +3359,8 @@ msgid "Develop short-term work plans"
 msgstr "Розробити короткотермінові робочі плани"
 
 #: Miradi/source/org/miradi/questions/OpenStandardsAnalyzeUseAndAdaptQuestion.java:36
-msgid ""
-"Develop systems for recording, storing, processing and backing up project "
-"data"
+msgid "Develop systems for handling project data"
 msgstr ""
-"Розробити системи запису, зберігання, обробки і поновлення даних проекту"
 
 #: Miradi/source/org/miradi/actions/jump/ActionJumpTargetViability3Step.java:35
 msgid "Develop target viability"
@@ -5824,8 +5818,8 @@ msgid "Protected Area Information"
 msgstr "Інформація про заповідну територію"
 
 #: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:50
-msgid "Provide a safe environment for encouraging experimentation"
-msgstr "Забезпечити сприятливе середовище для експериментування"
+msgid "Provide a safe environment for experimentation"
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/ProjectSharingQuestion.java:35
 msgid "Public (anyone)"
@@ -5977,10 +5971,8 @@ msgid "Review threat rating summary"
 msgstr "Переглянути підсумок рейтингу загроз"
 
 #: Miradi/source/org/miradi/questions/OpenStandardsAnalyzeUseAndAdaptQuestion.java:46
-msgid "Revise project plan: strategic, monitoring, operational, and work plans"
+msgid "Revise project plans"
 msgstr ""
-"Ревізувати план проекту: стратегічний, оперативний, робочий план та план "
-"моніторингу"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:158
 msgid "Riparian Areas"
@@ -6215,8 +6207,8 @@ msgid "Share feedback formally or informally"
 msgstr "Розподіляти зворотню реакцію формально і неформально"
 
 #: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:51
-msgid "Share success & failures with practitioners around the world"
-msgstr "Ділитися успіхами і невдачами з практиками по всьому світу"
+msgid "Share success & failures with other teams"
+msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:608
 msgid "Should Now Allow Full Time Employee To Be Calculated For "
@@ -26911,6 +26903,34 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
+
+#~ msgid ""
+#~ "Conduct evaluations and/or audits at appropriate times during the project "
+#~ "cycle"
+#~ msgstr ""
+#~ "Здійснювати оцінку і/або аудит відповідних статей протягом проектного "
+#~ "циклу"
+
+#~ msgid "Demonstrate commitment from leaders to learning and innovation"
+#~ msgstr "Демонструвати погляди лідерів на навчання та інновації"
+
+#~ msgid ""
+#~ "Develop systems for recording, storing, processing and backing up project "
+#~ "data"
+#~ msgstr ""
+#~ "Розробити системи запису, зберігання, обробки і поновлення даних проекту"
+
+#~ msgid "Provide a safe environment for encouraging experimentation"
+#~ msgstr "Забезпечити сприятливе середовище для експериментування"
+
+#~ msgid ""
+#~ "Revise project plan: strategic, monitoring, operational, and work plans"
+#~ msgstr ""
+#~ "Ревізувати план проекту: стратегічний, оперативний, робочий план та план "
+#~ "моніторингу"
+
+#~ msgid "Share success & failures with practitioners around the world"
+#~ msgstr "Ділитися успіхами і невдачами з практиками по всьому світу"
 
 #~ msgid ""
 #~ "html|/resources/ImageResolutionMessage.html|<p>The resolution of the "
