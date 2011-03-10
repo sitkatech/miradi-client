@@ -167,10 +167,10 @@ public class PasteDoer extends AbstractPasteDoer
 		if (!beforePasteDiagramLinks.equals(afterPasteDiagramLinks))
 			return;
 		
-		EAM.showHtmlMessageOkDialog(messageFileName, "Paste");
+		EAM.showHtmlMessageOkDialog(nothingPastedMessageFileName, "Paste");
 	}
 
 	private final static String AS_COPY_BUTTON = EAM.text("Button|Paste As Copies");
 	private final static String AS_SHARED_BUTTON = EAM.text("Button|Paste Shared");
-	private final static String messageFileName = "NothingPastedMessage.html";
+	private final static String nothingPastedMessageFileName = "NothingPastedMessage.html";
 }
