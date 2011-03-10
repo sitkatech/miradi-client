@@ -22,6 +22,7 @@ package org.miradi.views;
 import java.awt.Point;
 import java.util.EventObject;
 
+import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
 import org.miradi.views.umbrella.ObjectPicker;
@@ -39,8 +40,13 @@ abstract public class Doer
 	
 	public void safeDoIt() throws Exception
 	{
-		if (isAvailable())
-			doIt();
+		if(!isAvailable())
+		{
+			EAM.logWarning("Attempted to do " + getClass().getSimpleName() + " when not available");
+			return;
+		}
+
+		doIt();
 	}
 	
 	public void setView(UmbrellaView view)
