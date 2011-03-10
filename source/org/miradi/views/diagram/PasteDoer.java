@@ -158,16 +158,22 @@ public class PasteDoer extends AbstractPasteDoer
 	
 	private void notifiyIfNothingWasPasted(ORefList beforePasteDiagramFactors, ORefList beforePasteDiagramLinks) throws Exception
 	{
+		if(!wasAnythingPasted(beforePasteDiagramFactors, beforePasteDiagramLinks))
+			EAM.showHtmlMessageOkDialog(nothingPastedMessageFileName, "Paste");
+	}
+
+	private boolean wasAnythingPasted(ORefList beforePasteDiagramFactors, ORefList beforePasteDiagramLinks)
+	{
 		DiagramObject diagramObjectRefBeingPastedInto = getDiagramObject();
 		ORefList afterPasteDiagramFactors = diagramObjectRefBeingPastedInto.getAllDiagramFactorRefs();
 		if (!beforePasteDiagramFactors.equals(afterPasteDiagramFactors))
-			return;
+			return true;
 		
 		ORefList afterPasteDiagramLinks = diagramObjectRefBeingPastedInto.getAllDiagramLinkRefs();
 		if (!beforePasteDiagramLinks.equals(afterPasteDiagramLinks))
-			return;
+			return true;
 		
-		EAM.showHtmlMessageOkDialog(nothingPastedMessageFileName, "Paste");
+		return false;
 	}
 
 	private final static String AS_COPY_BUTTON = EAM.text("Button|Paste As Copies");
