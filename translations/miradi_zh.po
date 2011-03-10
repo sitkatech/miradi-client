@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-10 11:18-0600\n"
+"POT-Creation-Date: 2011-03-10 13:30-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -2763,10 +2763,8 @@ msgstr ""
 "对象。"
 
 #: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:48
-msgid ""
-"Conduct evaluations and/or audits at appropriate times during the project "
-"cycle"
-msgstr "在项目周期内适时地实施评估和/或审计 \t\t"
+msgid "Conduct evaluations and/or audits"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/workplan/doers/EditAnalysisRowsDoer.java:43
 msgid "Configure Work Plan Analysis"
@@ -3053,8 +3051,8 @@ msgid "Delete..."
 msgstr "删除… \t\t"
 
 #: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:49
-msgid "Demonstrate commitment from leaders to learning and innovation"
-msgstr "表明领导者对学习和革新的承诺 \t\t"
+msgid "Demonstrate commitment to learning"
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/SortDirectionQuestion.java:36
 msgid "Descending"
@@ -3181,10 +3179,8 @@ msgid "Develop short-term work plans"
 msgstr "发展短期工作计划 \t\t"
 
 #: Miradi/source/org/miradi/questions/OpenStandardsAnalyzeUseAndAdaptQuestion.java:36
-msgid ""
-"Develop systems for recording, storing, processing and backing up project "
-"data"
-msgstr "开发用于记录、储存、处理及备份项目数据的系统 \t\t"
+msgid "Develop systems for handling project data"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/jump/ActionJumpTargetViability3Step.java:35
 msgid "Develop target viability"
@@ -5599,8 +5595,8 @@ msgid "Protected Area Information"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:50
-msgid "Provide a safe environment for encouraging experimentation"
-msgstr "为鼓励实验提供安全的环境 \t\t"
+msgid "Provide a safe environment for experimentation"
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/ProjectSharingQuestion.java:35
 msgid "Public (anyone)"
@@ -5752,8 +5748,8 @@ msgid "Review threat rating summary"
 msgstr "审查威胁因子评级概要 \t\t"
 
 #: Miradi/source/org/miradi/questions/OpenStandardsAnalyzeUseAndAdaptQuestion.java:46
-msgid "Revise project plan: strategic, monitoring, operational, and work plans"
-msgstr "修订项目计划：策略、监控、操作及工作计划 \t\t"
+msgid "Revise project plans"
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:158
 msgid "Riparian Areas"
@@ -5969,8 +5965,8 @@ msgid "Share feedback formally or informally"
 msgstr "正式地或者非正式地共享反馈信息 \t\t"
 
 #: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:51
-msgid "Share success & failures with practitioners around the world"
-msgstr "与全世界的实践者共享成功与失败 \t\t"
+msgid "Share success & failures with other teams"
+msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:608
 msgid "Should Now Allow Full Time Employee To Be Calculated For "
@@ -29020,6 +29016,29 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid ""
+#~ "Conduct evaluations and/or audits at appropriate times during the project "
+#~ "cycle"
+#~ msgstr "在项目周期内适时地实施评估和/或审计 \t\t"
+
+#~ msgid "Demonstrate commitment from leaders to learning and innovation"
+#~ msgstr "表明领导者对学习和革新的承诺 \t\t"
+
+#~ msgid ""
+#~ "Develop systems for recording, storing, processing and backing up project "
+#~ "data"
+#~ msgstr "开发用于记录、储存、处理及备份项目数据的系统 \t\t"
+
+#~ msgid "Provide a safe environment for encouraging experimentation"
+#~ msgstr "为鼓励实验提供安全的环境 \t\t"
+
+#~ msgid ""
+#~ "Revise project plan: strategic, monitoring, operational, and work plans"
+#~ msgstr "修订项目计划：策略、监控、操作及工作计划 \t\t"
+
+#~ msgid "Share success & failures with practitioners around the world"
+#~ msgstr "与全世界的实践者共享成功与失败 \t\t"
 
 #~ msgid ""
 #~ "html|/resources/ImageResolutionMessage.html|<p>The resolution of the "

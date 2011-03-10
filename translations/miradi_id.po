@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-10 11:18-0600\n"
+"POT-Creation-Date: 2011-03-10 13:30-0600\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -2864,12 +2864,8 @@ msgstr ""
 "yang dipercayai bisa berdampak atau mengarahkan pada target konservasi. "
 
 #: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:48
-msgid ""
-"Conduct evaluations and/or audits at appropriate times during the project "
-"cycle"
+msgid "Conduct evaluations and/or audits"
 msgstr ""
-"Lakukan evaluasi dan/atau audit pada saat yang wajar selama berlangsungnya "
-"proyek "
 
 #: Miradi/source/org/miradi/views/workplan/doers/EditAnalysisRowsDoer.java:43
 msgid "Configure Work Plan Analysis"
@@ -3161,9 +3157,8 @@ msgid "Delete..."
 msgstr "Hapus… "
 
 #: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:49
-msgid "Demonstrate commitment from leaders to learning and innovation"
+msgid "Demonstrate commitment to learning"
 msgstr ""
-"Tunjukkan komitmen dari pemimpin terhadap upaya pembelajaran dan inovasi  "
 
 #: Miradi/source/org/miradi/questions/SortDirectionQuestion.java:36
 msgid "Descending"
@@ -3293,12 +3288,8 @@ msgid "Develop short-term work plans"
 msgstr "Kembangkan Rencana Kerja Jangka Pendek "
 
 #: Miradi/source/org/miradi/questions/OpenStandardsAnalyzeUseAndAdaptQuestion.java:36
-msgid ""
-"Develop systems for recording, storing, processing and backing up project "
-"data"
+msgid "Develop systems for handling project data"
 msgstr ""
-"Kembangkan sistem untuk merekam, menyimpan, mengolah dan membuat cadangan "
-"data proyek "
 
 #: Miradi/source/org/miradi/actions/jump/ActionJumpTargetViability3Step.java:35
 msgid "Develop target viability"
@@ -5782,8 +5773,8 @@ msgid "Protected Area Information"
 msgstr "Informasi Area yang Dilindungi "
 
 #: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:50
-msgid "Provide a safe environment for encouraging experimentation"
-msgstr "Sediakan lingkungan yang aman untuk mendorong upaya percobaan "
+msgid "Provide a safe environment for experimentation"
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/ProjectSharingQuestion.java:35
 msgid "Public (anyone)"
@@ -5937,9 +5928,8 @@ msgid "Review threat rating summary"
 msgstr "Tinjau ringkasan peringkat ancaman "
 
 #: Miradi/source/org/miradi/questions/OpenStandardsAnalyzeUseAndAdaptQuestion.java:46
-msgid "Revise project plan: strategic, monitoring, operational, and work plans"
+msgid "Revise project plans"
 msgstr ""
-"Revisi rencana proyek: rencana strategis, pemantauan, operasional dan kerja "
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:158
 msgid "Riparian Areas"
@@ -6175,9 +6165,8 @@ msgid "Share feedback formally or informally"
 msgstr "Berikan umpan balik secara formal atau tidak formal "
 
 #: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:51
-msgid "Share success & failures with practitioners around the world"
+msgid "Share success & failures with other teams"
 msgstr ""
-"Berbagi keberhasilan & kegagalan dengan para praktisi di seluruh dunia "
 
 #: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:608
 msgid "Should Now Allow Full Time Employee To Be Calculated For "
@@ -32631,6 +32620,37 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid ""
+#~ "Conduct evaluations and/or audits at appropriate times during the project "
+#~ "cycle"
+#~ msgstr ""
+#~ "Lakukan evaluasi dan/atau audit pada saat yang wajar selama "
+#~ "berlangsungnya proyek "
+
+#~ msgid "Demonstrate commitment from leaders to learning and innovation"
+#~ msgstr ""
+#~ "Tunjukkan komitmen dari pemimpin terhadap upaya pembelajaran dan inovasi  "
+
+#~ msgid ""
+#~ "Develop systems for recording, storing, processing and backing up project "
+#~ "data"
+#~ msgstr ""
+#~ "Kembangkan sistem untuk merekam, menyimpan, mengolah dan membuat cadangan "
+#~ "data proyek "
+
+#~ msgid "Provide a safe environment for encouraging experimentation"
+#~ msgstr "Sediakan lingkungan yang aman untuk mendorong upaya percobaan "
+
+#~ msgid ""
+#~ "Revise project plan: strategic, monitoring, operational, and work plans"
+#~ msgstr ""
+#~ "Revisi rencana proyek: rencana strategis, pemantauan, operasional dan "
+#~ "kerja "
+
+#~ msgid "Share success & failures with practitioners around the world"
+#~ msgstr ""
+#~ "Berbagi keberhasilan & kegagalan dengan para praktisi di seluruh dunia "
 
 #~ msgid ""
 #~ "html|/resources/ImageResolutionMessage.html|<p>The resolution of the "

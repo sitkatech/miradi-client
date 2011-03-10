@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-10 11:18-0600\n"
+"POT-Creation-Date: 2011-03-10 13:30-0600\n"
 "PO-Revision-Date: 2010-05-12 21:01-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -2704,9 +2704,7 @@ msgid ""
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:48
-msgid ""
-"Conduct evaluations and/or audits at appropriate times during the project "
-"cycle"
+msgid "Conduct evaluations and/or audits"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/workplan/doers/EditAnalysisRowsDoer.java:43
@@ -2984,7 +2982,7 @@ msgid "Delete..."
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:49
-msgid "Demonstrate commitment from leaders to learning and innovation"
+msgid "Demonstrate commitment to learning"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/SortDirectionQuestion.java:36
@@ -3111,9 +3109,7 @@ msgid "Develop short-term work plans"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/OpenStandardsAnalyzeUseAndAdaptQuestion.java:36
-msgid ""
-"Develop systems for recording, storing, processing and backing up project "
-"data"
+msgid "Develop systems for handling project data"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/jump/ActionJumpTargetViability3Step.java:35
@@ -5492,7 +5488,7 @@ msgid "Protected Area Information"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:50
-msgid "Provide a safe environment for encouraging experimentation"
+msgid "Provide a safe environment for experimentation"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/ProjectSharingQuestion.java:35
@@ -5640,7 +5636,7 @@ msgid "Review threat rating summary"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/OpenStandardsAnalyzeUseAndAdaptQuestion.java:46
-msgid "Revise project plan: strategic, monitoring, operational, and work plans"
+msgid "Revise project plans"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:158
@@ -5851,7 +5847,7 @@ msgid "Share feedback formally or informally"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:51
-msgid "Share success & failures with practitioners around the world"
+msgid "Share success & failures with other teams"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:608
