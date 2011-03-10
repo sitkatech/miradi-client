@@ -73,7 +73,7 @@ abstract public class AbstractThreatTargetTableModel extends SortableTableModel
 		return targetsInConceptualModelDiagrams;
 	}
 	
-	protected static String convertIntToString(int calculatedValue)
+	public static String convertIntToString(int calculatedValue)
 	{
 		if (calculatedValue == 0)
 			return "";
