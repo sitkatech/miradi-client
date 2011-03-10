@@ -33,7 +33,7 @@ public class OpenStandardsAnalyzeUseAndAdaptQuestion extends DynamicChoiceWithRo
 		
 		ChoiceItemWithChildren processStep4a = new ChoiceItemWithChildren(PROCESS_STEP_4A_CODE, getProcessStep4a(), EAM.text(""), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_4A_FILENAME));
 		headerChoiceItem.addChild(processStep4a);
-		processStep4a.addChild(new ChoiceItem(DEVELOP_SYSTEMS_FOR_RECORDING_STORING_PROCESSING_AND_BACKING_UP_DATA_CODE, EAM.text("Develop systems for recording, storing, processing and backing up project data"), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_4A_FILENAME)));
+		processStep4a.addChild(new ChoiceItem(DEVELOP_SYSTEMS_FOR_RECORDING_STORING_PROCESSING_AND_BACKING_UP_DATA_CODE, EAM.text("Develop systems for handling project data"), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_4A_FILENAME)));
 		
 		ChoiceItemWithChildren processStep4bChoiceItem = new ChoiceItemWithChildren(PROCESS_STEP_4B_CODE, getProcessStep4b(), EAM.text(""), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_4B_FILENAME));
 		headerChoiceItem.addChild(processStep4bChoiceItem);
@@ -43,7 +43,7 @@ public class OpenStandardsAnalyzeUseAndAdaptQuestion extends DynamicChoiceWithRo
 
 		ChoiceItemWithChildren processStep4cChoiceItem = new ChoiceItemWithChildren(PROCESS_STEP_4C_CODE, getProcessStep4c(), EAM.text(""), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_4C_FILENAME));
 		headerChoiceItem.addChild(processStep4cChoiceItem);
-		processStep4cChoiceItem.addChild(new ChoiceItem("ReviseProjectPlanStrategicMonitoringOperationalAndWorkPlans", EAM.text("Revise project plan: strategic, monitoring, operational, and work plans"), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_4C_FILENAME)));
+		processStep4cChoiceItem.addChild(new ChoiceItem("ReviseProjectPlanStrategicMonitoringOperationalAndWorkPlans", EAM.text("Revise project plans"), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_4C_FILENAME)));
 		
 		return headerChoiceItem;
 	}
