@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-09 15:06-0600\n"
+"POT-Creation-Date: 2011-03-10 11:18-0600\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -2636,7 +2636,7 @@ msgstr "Товчлуур|Зөвшөөрөн сонгох"
 msgid "Button|Ok"
 msgstr "Товчлуур|Зөвшөөрөн сонгох"
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:173
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:176
 msgid "Button|Paste As Copies"
 msgstr ""
 
@@ -2644,7 +2644,7 @@ msgstr ""
 msgid "Button|Paste Contents"
 msgstr "Товчлуур|Өөр газраас хуулсан агуулгыг оруулах"
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:174
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:177
 msgid "Button|Paste Shared"
 msgstr ""
 
@@ -6312,7 +6312,7 @@ msgstr "Жижиг"
 msgid "Smallest"
 msgstr "Хамгийн жижигхэн"
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:124
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:127
 msgid ""
 "Some of the data could not be moved to this project because it refers to "
 "other data that only exists in the old project"

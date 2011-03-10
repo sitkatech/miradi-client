@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-09 15:06-0600\n"
+"POT-Creation-Date: 2011-03-10 11:18-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -2477,7 +2477,7 @@ msgstr "确定 \t\t"
 msgid "Button|Ok"
 msgstr "确定 \t\t"
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:173
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:176
 msgid "Button|Paste As Copies"
 msgstr ""
 
@@ -2485,7 +2485,7 @@ msgstr ""
 msgid "Button|Paste Contents"
 msgstr "粘贴内容 \t\t"
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:174
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:177
 msgid "Button|Paste Shared"
 msgstr ""
 
@@ -6056,7 +6056,7 @@ msgstr "小"
 msgid "Smallest"
 msgstr "最小"
 
-#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:124
+#: Miradi/source/org/miradi/views/diagram/PasteDoer.java:127
 msgid ""
 "Some of the data could not be moved to this project because it refers to "
 "other data that only exists in the old project"
