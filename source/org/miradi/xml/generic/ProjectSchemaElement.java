@@ -30,55 +30,55 @@ class ProjectSchemaElement extends SchemaElement
 {
 	public ProjectSchemaElement()
 	{
-		objectTypes = new Vector<ObjectSchemaElement>();
+		schemaElements= new Vector<ObjectSchemaElement>();
 		
-		objectTypes.add(new ProjectSummarySchemaElement());
-		objectTypes.add(new ProjectSummaryScopeSchemaElement());
-		objectTypes.add(new ProjectSummaryLocationSchemaElement());
-		objectTypes.add(new ProjectSummaryPlanningSchemaElement());
-		objectTypes.add(new ObjectPoolSchemaElement(new ProjectResourceObjectSchemaElement()));
-		objectTypes.add(new ObjectPoolSchemaElement(new OrganizationObjectSchemaElement()));
-		objectTypes.add(new TncProjectDataSchemaElement());
-		objectTypes.add(new WwfProjectDataSchemaElement());
-		objectTypes.add(new WcsDataSchemaElement());
-		objectTypes.add(new RareProjectDataSchemaElement());
-		objectTypes.add(new FosProjectDataSchemaElement());
-		objectTypes.add(new ObjectPoolSchemaElement(new ConceptualModelSchemaElement()));
-		objectTypes.add(new ObjectPoolSchemaElement(new ResultsChainSchemaElement()));
-		objectTypes.add(new ObjectPoolSchemaElement(new DiagramFactorSchemaElement()));
-		objectTypes.add(new ObjectPoolSchemaElement(new DiagramLinkSchemaElement()));
-		objectTypes.add(new ObjectPoolSchemaElement(new BiodiversityTargetObjectSchemaElement()));
-		objectTypes.add(new ObjectPoolSchemaElement(new HumanWelfareTargetSchemaElement()));
-		objectTypes.add(new ObjectPoolSchemaElement(new CauseObjectSchemaElement()));
-		objectTypes.add(new ObjectPoolSchemaElement(new StrategyObjectSchemaElement()));
-		objectTypes.add(new ObjectPoolSchemaElement(new ThreatReductionResultsObjectSchemaElement()));
-		objectTypes.add(new ObjectPoolSchemaElement(new IntermediateResultObjectSchemaElement()));
-		objectTypes.add(new ObjectPoolSchemaElement(new GroupBoxObjectSchemaElement()));
-		objectTypes.add(new ObjectPoolSchemaElement(new TextBoxObjectSchemaElement()));
-		objectTypes.add(new ObjectPoolSchemaElement(new ScopeBoxObjectSchemaElement()));
-		objectTypes.add(new ObjectPoolSchemaElement(new KeyEcologicalAttributeObjectSchemaElement()));
-		objectTypes.add(new ObjectPoolSchemaElement(new StressObjectSchemaElement()));
-		objectTypes.add(new ObjectPoolSchemaElement(new SubTargetObjectSchemaElement()));
-		objectTypes.add(new ObjectPoolSchemaElement(new GoalObjectSchemaElement()));
-		objectTypes.add(new ObjectPoolSchemaElement(new ObjectiveSchemaElement()));
-		objectTypes.add(new ObjectPoolSchemaElement(new IndicatorObjectSchemaElement()));
-		objectTypes.add(new ObjectPoolSchemaElement(new TaskObjectSchemaElement()));
-		objectTypes.add(new ObjectPoolSchemaElement(new ProgressReportObjectSchemaElement()));
-		objectTypes.add(new ObjectPoolSchemaElement(new ProgressPercentObjectSchemaElement()));
-		objectTypes.add(new ObjectPoolSchemaElement(new MeasurementObjectSchemaElement()));
-		objectTypes.add(new ObjectPoolSchemaElement(new AccountingCodeObjectSchemaElement()));
-		objectTypes.add(new ObjectPoolSchemaElement(new FundingSourceObjectSchemaElement()));
-		objectTypes.add(new ObjectPoolSchemaElement(new BudgetCategoryOneObjectSchemaElement()));
-		objectTypes.add(new ObjectPoolSchemaElement(new BudgetCategoryTwoObjectSchemaElement()));
-		objectTypes.add(new ObjectPoolSchemaElement(new ExpenseAssignmentObjectSchemaElement()));
-		objectTypes.add(new ObjectPoolSchemaElement(new ResourceAssignmentObjectSchemaElement()));
-		objectTypes.add(new ObjectPoolSchemaElement(new ThreatTargetThreatRatingElement()));
-		objectTypes.add(new ObjectPoolSchemaElement(new IucnRedListSpeciesObjectSchemaElement()));
-		objectTypes.add(new ObjectPoolSchemaElement(new OtherNotableSpeciesObjectSchemaElement()));
-		objectTypes.add(new ObjectPoolSchemaElement(new AudienceObjectSchemaElement()));
-		objectTypes.add(new ObjectPoolSchemaElement(new ObjectTreeTableConfigurationSchemaElement()));
-		objectTypes.add(new ObjectPoolSchemaElement(new DashboardObjectSchemaElement()));
-		objectTypes.add(new ObjectPoolSchemaElement(new TaggedObjectSetSchemaElement()));
+		schemaElements.add(new ProjectSummarySchemaElement());
+		schemaElements.add(new ProjectSummaryScopeSchemaElement());
+		schemaElements.add(new ProjectSummaryLocationSchemaElement());
+		schemaElements.add(new ProjectSummaryPlanningSchemaElement());
+		schemaElements.add(new ObjectPoolSchemaElement(new ProjectResourceObjectSchemaElement()));
+		schemaElements.add(new ObjectPoolSchemaElement(new OrganizationObjectSchemaElement()));
+		schemaElements.add(new TncProjectDataSchemaElement());
+		schemaElements.add(new WwfProjectDataSchemaElement());
+		schemaElements.add(new WcsDataSchemaElement());
+		schemaElements.add(new RareProjectDataSchemaElement());
+		schemaElements.add(new FosProjectDataSchemaElement());
+		schemaElements.add(new ObjectPoolSchemaElement(new ConceptualModelSchemaElement()));
+		schemaElements.add(new ObjectPoolSchemaElement(new ResultsChainSchemaElement()));
+		schemaElements.add(new ObjectPoolSchemaElement(new DiagramFactorSchemaElement()));
+		schemaElements.add(new ObjectPoolSchemaElement(new DiagramLinkSchemaElement()));
+		schemaElements.add(new ObjectPoolSchemaElement(new BiodiversityTargetObjectSchemaElement()));
+		schemaElements.add(new ObjectPoolSchemaElement(new HumanWelfareTargetSchemaElement()));
+		schemaElements.add(new ObjectPoolSchemaElement(new CauseObjectSchemaElement()));
+		schemaElements.add(new ObjectPoolSchemaElement(new StrategyObjectSchemaElement()));
+		schemaElements.add(new ObjectPoolSchemaElement(new ThreatReductionResultsObjectSchemaElement()));
+		schemaElements.add(new ObjectPoolSchemaElement(new IntermediateResultObjectSchemaElement()));
+		schemaElements.add(new ObjectPoolSchemaElement(new GroupBoxObjectSchemaElement()));
+		schemaElements.add(new ObjectPoolSchemaElement(new TextBoxObjectSchemaElement()));
+		schemaElements.add(new ObjectPoolSchemaElement(new ScopeBoxObjectSchemaElement()));
+		schemaElements.add(new ObjectPoolSchemaElement(new KeyEcologicalAttributeObjectSchemaElement()));
+		schemaElements.add(new ObjectPoolSchemaElement(new StressObjectSchemaElement()));
+		schemaElements.add(new ObjectPoolSchemaElement(new SubTargetObjectSchemaElement()));
+		schemaElements.add(new ObjectPoolSchemaElement(new GoalObjectSchemaElement()));
+		schemaElements.add(new ObjectPoolSchemaElement(new ObjectiveSchemaElement()));
+		schemaElements.add(new ObjectPoolSchemaElement(new IndicatorObjectSchemaElement()));
+		schemaElements.add(new ObjectPoolSchemaElement(new TaskObjectSchemaElement()));
+		schemaElements.add(new ObjectPoolSchemaElement(new ProgressReportObjectSchemaElement()));
+		schemaElements.add(new ObjectPoolSchemaElement(new ProgressPercentObjectSchemaElement()));
+		schemaElements.add(new ObjectPoolSchemaElement(new MeasurementObjectSchemaElement()));
+		schemaElements.add(new ObjectPoolSchemaElement(new AccountingCodeObjectSchemaElement()));
+		schemaElements.add(new ObjectPoolSchemaElement(new FundingSourceObjectSchemaElement()));
+		schemaElements.add(new ObjectPoolSchemaElement(new BudgetCategoryOneObjectSchemaElement()));
+		schemaElements.add(new ObjectPoolSchemaElement(new BudgetCategoryTwoObjectSchemaElement()));
+		schemaElements.add(new ObjectPoolSchemaElement(new ExpenseAssignmentObjectSchemaElement()));
+		schemaElements.add(new ObjectPoolSchemaElement(new ResourceAssignmentObjectSchemaElement()));
+		schemaElements.add(new ObjectPoolSchemaElement(new ThreatTargetThreatRatingElement()));
+		schemaElements.add(new ObjectPoolSchemaElement(new IucnRedListSpeciesObjectSchemaElement()));
+		schemaElements.add(new ObjectPoolSchemaElement(new OtherNotableSpeciesObjectSchemaElement()));
+		schemaElements.add(new ObjectPoolSchemaElement(new AudienceObjectSchemaElement()));
+		schemaElements.add(new ObjectPoolSchemaElement(new ObjectTreeTableConfigurationSchemaElement()));
+		schemaElements.add(new ObjectPoolSchemaElement(new DashboardObjectSchemaElement()));
+		schemaElements.add(new ObjectPoolSchemaElement(new TaggedObjectSetSchemaElement()));
 	}
 	
 	@Override
@@ -86,9 +86,9 @@ class ProjectSchemaElement extends SchemaElement
 	{
 		writer.defineAlias(getDotElement(getProjectElementName()), "element " + XmpzXmlConstants.PREFIX + getProjectElementName());
 		writer.startBlock();
-		for(int i = 0; i < objectTypes.size(); ++i)
+		for(int i = 0; i < schemaElements.size(); ++i)
 		{
-			ObjectSchemaElement objectElement = objectTypes.get(i);
+			ObjectSchemaElement objectElement = schemaElements.get(i);
 			writer.printIndented(getDotElement(objectElement.getObjectTypeName()));
 			if (objectElement.isPool())
 				writer.print(XmpzXmlConstants.OPTIONAL_ELEMENT);
@@ -98,7 +98,7 @@ class ProjectSchemaElement extends SchemaElement
 		writer.println("  element " + XmpzXmlConstants.PREFIX + DELETED_ORPHANS_ELEMENT_NAME +  "{ text }?");
 		writer.endBlock();
 		
-		for(ObjectSchemaElement objectElement: objectTypes)
+		for(ObjectSchemaElement objectElement: schemaElements)
 		{
 			objectElement.output(writer);
 		}
@@ -110,5 +110,5 @@ class ProjectSchemaElement extends SchemaElement
 		return XmpzXmlConstants.CONSERVATION_PROJECT;
 	}
 
-	private Vector<ObjectSchemaElement> objectTypes;
+	private Vector<ObjectSchemaElement> schemaElements;
 }
