@@ -59,10 +59,12 @@ public class PasteDoer extends AbstractPasteDoer
 
 			getProject().getDiagramClipboard().incrementPasteCount();
 			paste(diagramPaster);
+			
 			possiblyNotifyUserIfDataWasLost(diagramPaster);
+			
 			if(!wasAnythingPasted(beforePasteDiagramFactors, beforePasteDiagramLinks))
 				EAM.showHtmlMessageOkDialog(nothingPastedMessageFileName, "Paste");
-			if(usersChoice.equals(AS_SHARED_BUTTON))
+			else if(usersChoice.equals(AS_SHARED_BUTTON))
 				NotifyDialog.notify(getMainWindow(), NotifyDialogTemplateFactory.pastedSharedFactors());
 		} 
 		catch (Exception e) 
