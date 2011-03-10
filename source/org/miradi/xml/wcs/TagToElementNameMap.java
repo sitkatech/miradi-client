@@ -34,6 +34,7 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
+import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.objects.Objective;
 import org.miradi.objects.Organization;
 import org.miradi.objects.ProgressPercent;
@@ -108,9 +109,17 @@ public class TagToElementNameMap implements XmpzXmlConstants
 		fieldTagToElementMap.put(IUCN_REDLIST_SPECIES, createBaseObjectMap());
 		fieldTagToElementMap.put(OTHER_NOTABLE_SPECIES, createBaseObjectMap());
 		fieldTagToElementMap.put(AUDIENCE, createBaseObjectMap());
-		fieldTagToElementMap.put(OBJECT_TREE_TABLE_CONFIGURATION, createBaseObjectMap());
+		fieldTagToElementMap.put(OBJECT_TREE_TABLE_CONFIGURATION, createObjectTreeTableConfigurationMap());
 		fieldTagToElementMap.put(TNC_PROJECT_DATA, createTncProjectDataMap());
 		fieldTagToElementMap.put(TAGGED_OBJECT_SET_ELEMENT_NAME, createTaggedObjectSetMap());
+	}
+	
+	private HashMap<String, String> createObjectTreeTableConfigurationMap()
+	{
+		HashMap<String, String> map = createBaseObjectMap();
+		map.put(ObjectTreeTableConfiguration.TAG_DIAGRAM_DATA_INCLUSION, "DiagramDataInclusion");
+		
+		return map;
 	}
 
 	private HashMap<String, String> createTaggedObjectSetMap()
