@@ -1021,6 +1021,5 @@ StatusEntry.element = element miradi:StatusEntry
   attribute Key { text } &
   element miradi:Progress { vocabulary_dashboard_row_progress }? &
   DashboardFlagsContainer.element? &
-  element miradi:Commments { text }?
+  element miradi:Comments { text }?
 }
-
