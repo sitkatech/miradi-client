@@ -24,6 +24,7 @@ import java.util.Collections;
 import java.util.Vector;
 
 import org.miradi.diagram.ThreatTargetChainWalker;
+import org.miradi.dialogs.threatrating.upperPanel.AbstractThreatTargetTableModel;
 import org.miradi.dialogs.threatrating.upperPanel.TargetThreatLinkTableModel;
 import org.miradi.objecthelpers.BaseObjectByRefSorter;
 import org.miradi.objecthelpers.ORef;
@@ -41,6 +42,8 @@ import org.miradi.project.threatrating.ThreatRatingFramework;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.StressRatingChoiceQuestion;
+import org.miradi.questions.ThreatRatingModeChoiceQuestion;
+import org.miradi.questions.ThreatRatingQuestion;
 import org.miradi.questions.ThreatStressRatingChoiceQuestion;
 import org.miradi.utils.ThreatStressRatingDetailsTableExporter;
 
@@ -77,6 +80,7 @@ public class ThreatTargetThreatRatingElementExporter extends AbstractXmlExporter
 				ORef targetRef = target.getRef();
 				exportTargetId(targetRef);
 				exportThreatId(threatRef);
+				exportThreatRating(ThreatRatingModeChoiceQuestion.SIMPLE_BASED_CODE, targetRef, threatRef);
 				exportSimpleRatingComment(threatRef, targetRef);				
 				exportSimpleBaseThreatRatingDetails(threatRef, targetRef);
 				
@@ -136,11 +140,21 @@ public class ThreatTargetThreatRatingElementExporter extends AbstractXmlExporter
 				ORef threatRef = threat.getRef();
 				exportTargetId(targetRef);
 				exportThreatId(threatRef);
+				exportThreatRating(ThreatRatingModeChoiceQuestion.STRESS_BASED_CODE, targetRef, threatRef);
 				exportStressBasedRatingComment(threatRef, targetRef);
 				exportStressBasedThreatRatingDetails(target, stress, threat);
 				getWcsXmlExporter().writeEndElement(THREAT_RATING);
 			}
 		}
+	}
+
+	private void exportThreatRating(String threatRatingMode, ORef targetRef, ORef threatRef) throws Exception
+	{
+		ThreatTargetVirtualLinkHelper threatTargetVirtualLink = new ThreatTargetVirtualLinkHelper(getProject());
+		int calculatedValue = threatTargetVirtualLink.calculateThreatRatingBundleValue(threatRatingMode, threatRef, targetRef);
+		String threatRatingCode = AbstractThreatTargetTableModel.convertIntToString(calculatedValue);
+		final ChoiceQuestion threatRatingQuestion = getProject().getQuestion(ThreatRatingQuestion.class);
+		getWcsXmlExporter().writeOptionalCodeElement(THREAT_RATING, THREAT_TARGET_RATING, threatRatingQuestion, threatRatingCode);
 	}
 
 	private void exportStressBasedThreatRatingDetails(Target target, Stress stress, Cause threat) throws Exception
