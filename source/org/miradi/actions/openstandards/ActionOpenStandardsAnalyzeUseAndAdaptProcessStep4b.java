@@ -18,29 +18,30 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.actions;
+package org.miradi.actions.openstandards;
 
 import java.awt.event.KeyEvent;
 
+import org.miradi.actions.ParentMenuAction;
 import org.miradi.main.MainWindow;
-import org.miradi.questions.OpenStandardsImplementActionsAndMonitoringQuestion;
+import org.miradi.questions.OpenStandardsAnalyzeUseAndAdaptQuestion;
 
-public class ActionOpenStandardsImplementActionsAndMonitoringProcessStep3a extends ParentMenuAction
+public class ActionOpenStandardsAnalyzeUseAndAdaptProcessStep4b extends	ParentMenuAction
 {
-	public ActionOpenStandardsImplementActionsAndMonitoringProcessStep3a(MainWindow mainWindowToUse)
+	public ActionOpenStandardsAnalyzeUseAndAdaptProcessStep4b(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, OpenStandardsImplementActionsAndMonitoringQuestion.getProcessStep3a());
+		super(mainWindowToUse, OpenStandardsAnalyzeUseAndAdaptQuestion.getProcessStep4b());
 	}
 
 	@Override
 	public int getMnemonic()
 	{
-		return KeyEvent.VK_F;
+		return KeyEvent.VK_I;
 	}
 
 	@Override
 	public String getCode()
 	{
-		return OpenStandardsImplementActionsAndMonitoringQuestion.PROCESS_STEP_3A_CODE;
+		return OpenStandardsAnalyzeUseAndAdaptQuestion.PROCESS_STEP_4B_CODE;
 	}
 }
