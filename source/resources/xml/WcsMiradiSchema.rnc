@@ -1,4 +1,4 @@
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/63'
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/64'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -639,7 +639,7 @@ PlanningViewConfiguration.element = element miradi:PlanningViewConfiguration
 {
   attribute Id {xsd:integer}  &
   element miradi:PlanningViewConfigurationName { text }? &
-  element miradi:PlanningViewConfigurationTagDiagramDataInclusion { vocabulary_included_diagram_types  }? &
+  element miradi:PlanningViewConfigurationDiagramDataInclusion { vocabulary_included_diagram_types  }? &
   element miradi:PlanningViewConfigurationStrategyObjectiveOrder { vocabulary_planning_tree_objective_strategy_node_order  }? &
   element miradi:PlanningViewConfigurationTargetNodePosition { vocabulary_planning_tree_target_node_position  }?
 }
@@ -1023,3 +1023,4 @@ StatusEntry.element = element miradi:StatusEntry
   DashboardFlagsContainer.element? &
   element miradi:Commments { text }?
 }
+
