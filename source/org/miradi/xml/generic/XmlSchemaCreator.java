@@ -34,6 +34,7 @@ import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.WwfProjectData;
+import org.miradi.questions.BudgetTimePeriodQuestion;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.CountriesQuestion;
 import org.miradi.questions.DashboardFlagsQuestion;
@@ -54,6 +55,7 @@ import org.miradi.questions.PlanningTreeTargetPositionQuestion;
 import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.ProgressReportLongStatusQuestion;
 import org.miradi.questions.ProtectedAreaCategoryQuestion;
+import org.miradi.questions.QuarterColumnsVisibilityQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.ResourceTypeQuestion;
 import org.miradi.questions.ScopeBoxTypeQuestion;
@@ -160,6 +162,8 @@ public class XmlSchemaCreator implements XmpzXmlConstants
 		defineVocabulary(writer, VOCABULARY_PLANNING_TREE_TARGET_NODE_POSITION, new PlanningTreeTargetPositionQuestion());
 		defineVocabulary(writer, VOCABULARY_THREAT_RATING_MODE, new ThreatRatingModeChoiceQuestion());
 		defineVocabulary(writer, VOCABULARY_DASHBOARD_ROW_FLAGS, new DashboardFlagsQuestion());
+		defineVocabulary(writer, VOCABULARY_QUARTER_COLUMNS_VISIBILITY, new QuarterColumnsVisibilityQuestion());
+		defineVocabulary(writer, VOCABULARY_WORK_PLAN_TIME_UNIT, new BudgetTimePeriodQuestion());
 		defineDashboardStatusesVocabulary(writer);
 		
 		defineIdElement(writer, "ConceptualModel");
@@ -582,6 +586,8 @@ public class XmlSchemaCreator implements XmpzXmlConstants
 	public static final String VOCABULARY_DASHBOARD_ROW_FLAGS = "vocabulary_dashboard_row_flags";
 	public static final String VOCABULARY_DASHBOARD_ROW_FLAG = "vocabulary_dashboard_row_flag";
 	public static final String VOCABULARY_PLANNING_TREE_OBJECTIVE_STRATEGY_NODE_ORDER = "vocabulary_planning_tree_objective_strategy_node_order";
+	public static final String VOCABULARY_QUARTER_COLUMNS_VISIBILITY = "vocabulary_quarter_columns_visibility";
+	public static final String VOCABULARY_WORK_PLAN_TIME_UNIT = "vocabulary_work_plan_time_unit";
 	
 	public static final String PROTECTED_AREA_CATEGORIES_ELEMENT_NAME = ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES;
 	public static final String RESOURCE_TYPE_ELEMENT_NAME = ProjectResource.TAG_RESOURCE_TYPE;

@@ -1,4 +1,4 @@
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/64'
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/65'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -67,7 +67,9 @@ ProjectSummary.element = element miradi:ProjectSummary
   element miradi:ProjectSummaryOverallProjectThreatRating { vocabulary_threat_rating  }? &
   element miradi:ProjectSummaryOverallProjectViabilityRating { vocabulary_target_status  }? &
   element miradi:ProjectSummaryProjectId { ExternalProjectId.element *}  &
-  element miradi:ProjectSummaryThreatRatingMode { vocabulary_threat_rating_mode  }
+  element miradi:ProjectSummaryThreatRatingMode { vocabulary_threat_rating_mode  } &
+  element miradi:ProjectSummaryQuarterColumnsVisibility { vocabulary_quarter_columns_visibility  } &
+  element miradi:ProjectSummaryWorkPlanTimeUnit { vocabulary_work_plan_time_unit  }
 }
 
 ProjectSummaryScope.element = element miradi:ProjectSummaryScope
@@ -715,6 +717,8 @@ vocabulary_planning_tree_objective_strategy_node_order = 'ObjectiveContainsStrat
 vocabulary_planning_tree_target_node_position = 'TargetNodesChildrenOfDiagramObjects'|'TargetNodesTopOfPlanningTree'
 vocabulary_threat_rating_mode = 'Simple'|'StressBased'
 vocabulary_dashboard_row_flags = 'needsAttention'
+vocabulary_quarter_columns_visibility = 'ShowQuarterColumns'|'HideQuarterColumns'
+vocabulary_work_plan_time_unit = 'QUARTERLY'|'YEARLY'
 vocabulary_dashboard_row_progress = ''|'1'|'2'|'3'|'4'
 ConceptualModelId.element = element miradi:ConceptualModelId { xsd:integer }
 ResultsChainId.element = element miradi:ResultsChainId { xsd:integer }

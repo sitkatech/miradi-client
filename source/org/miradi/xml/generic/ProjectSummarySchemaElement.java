@@ -44,5 +44,7 @@ class ProjectSummarySchemaElement extends ObjectSchemaElement
 		createOptionalCodeField(OVERALL_PROJECT_VIABILITY_RATING, XmlSchemaCreator.VOCABULARY_TARGET_STATUS);
 		createExternalProjectIdField(Xenodata.TAG_PROJECT_ID);
 		createCodeField(ProjectMetadata.TAG_THREAT_RATING_MODE, XmlSchemaCreator.VOCABULARY_THREAT_RATING_MODE);
+		createCodeField(ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY, XmlSchemaCreator.VOCABULARY_QUARTER_COLUMNS_VISIBILITY);
+		createCodeField(ProjectMetadata.TAG_WORKPLAN_TIME_UNIT, XmlSchemaCreator.VOCABULARY_WORK_PLAN_TIME_UNIT);
 	}
 }
