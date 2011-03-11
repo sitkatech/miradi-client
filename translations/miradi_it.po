@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-11 17:18-0600\n"
+"POT-Creation-Date: 2011-03-11 17:24-0600\n"
 "PO-Revision-Date: 2010-05-12 21:01-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -2365,7 +2365,7 @@ msgstr ""
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:166
 #: Miradi/source/org/miradi/dialogs/confirm/ConfirmDialogTemplate.java:51
 #: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:241
-#: Miradi/source/org/miradi/dialogs/ImageExportScaleDialog.java:78
+#: Miradi/source/org/miradi/dialogs/ImageExportScaleDialog.java:80
 msgid "Button|Cancel"
 msgstr ""
 
@@ -2391,7 +2391,7 @@ msgstr ""
 msgid "Button|Exit"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/ImageExportScaleDialog.java:76
+#: Miradi/source/org/miradi/dialogs/ImageExportScaleDialog.java:78
 msgid "Button|Export..."
 msgstr ""
 
@@ -3598,14 +3598,6 @@ msgstr ""
 msgid "Font Size"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/ImageExportScaleDialog.java:69
-msgid "For a larger, higher-resolution image, choose a scale above 100%"
-msgstr ""
-
-#: Miradi/source/org/miradi/dialogs/ImageExportScaleDialog.java:70
-msgid "For a smaller, lower-resolution image, choose a scale below 100%"
-msgstr ""
-
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:34
 msgid "Forest"
 msgstr ""
@@ -3991,6 +3983,14 @@ msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:258
 msgid "Incomplete Link"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/ImageExportScaleDialog.java:70
+msgid ""
+"Increasing the image scale will produce higher resolution images with larger "
+"file size and dimensions. <br>For the highest image quality, set image scale "
+"to 300%.<br><br> Images exported as PNG may produce a smaller file size than "
+"JPG at the same scale."
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:134
