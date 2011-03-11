@@ -34,6 +34,7 @@ import org.miradi.main.EAM;
 import org.miradi.main.ResourcesHandler;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.utils.PNGFileFilter;
+import org.miradi.utils.ProgressInterface;
 import org.miradi.views.umbrella.XmlExporterDoer;
 import org.miradi.xml.XmlExporter;
 import org.miradi.xml.wcs.WcsMiradiXmlValidator;
@@ -48,15 +49,24 @@ abstract public class AbstractExportProjectXmlZipDoer extends XmlExporterDoer
 	}
 
 	@Override
-	protected boolean export(File chosen) throws Exception
+	protected boolean export(File chosen, ProgressInterface progressInterface) throws Exception
 	{
+		progressInterface.setStatusMessage(EAM.text("save..."), 4);
 		ZipOutputStream zipOut = new ZipOutputStream(new FileOutputStream(chosen));
 		try
 		{
 			addProjectAsXmlToZip(zipOut);
+			progressInterface.incrementProgress();
+			
 			addSchemaToZip(zipOut);
+			progressInterface.incrementProgress();
+			
 			addDiagramImagesToZip(zipOut);
+			progressInterface.incrementProgress();
+			
 			addExceptionLogFile(zipOut);
+			progressInterface.incrementProgress();
+			
 			return true;
 		}
 		catch(ValidationException e)

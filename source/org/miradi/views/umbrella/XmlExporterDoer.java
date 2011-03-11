@@ -39,6 +39,7 @@ import org.miradi.utils.BufferedImageFactory;
 import org.miradi.utils.ConstantButtonNames;
 import org.miradi.utils.EAMFileSaveChooser;
 import org.miradi.utils.PNGFileFilter;
+import org.miradi.utils.ProgressInterface;
 import org.miradi.xml.XmlExporter;
 
 abstract public class XmlExporterDoer extends AbstractFileSaverDoer
@@ -62,9 +63,9 @@ abstract public class XmlExporterDoer extends AbstractFileSaverDoer
 	}
 
 	@Override
-	protected boolean doWork(File destinationFile) throws Exception
+	protected boolean doWork(File destinationFile, ProgressInterface progressInterface) throws Exception
 	{
-		return export(destinationFile);
+		return export(destinationFile, progressInterface);
 	}
 
 	@Override
@@ -169,7 +170,7 @@ abstract public class XmlExporterDoer extends AbstractFileSaverDoer
 	@Override
 	abstract protected EAMFileSaveChooser createFileChooser();
 	
-	abstract protected boolean export(File chosen) throws Exception;
+	abstract protected boolean export(File chosen, ProgressInterface progressInterface) throws Exception;
 	
 	public static final String CM_IMAGE_PREFIX = "CM";
 	public static final String RC_IMAGE_PREFIX = "RC";
