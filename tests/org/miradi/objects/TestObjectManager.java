@@ -69,12 +69,13 @@ public class TestObjectManager extends MiradiTestCase
 	
 	public void testDeleteErrorHandling() throws Exception
 	{
-		final String projectName = getName() + "2";
-		ProjectForTesting localProject = new ProjectForTesting(projectName);
+		String testName = getName() + "-local";
+		ProjectForTesting localProject = new ProjectForTesting(testName);
 		localProject.close();
 		
 		File tempDirectory = createTempDirectory();
 		localProject.setLocalDataLocation(tempDirectory);
+		String projectName = getName() + "2";
 		localProject.createOrOpenWithDefaultObjects(projectName, new NullProgressMeter());
 		ProjectServerForTesting localDatabase = localProject.getTestDatabase();
 		ObjectManager localManager = localProject.getObjectManager();
