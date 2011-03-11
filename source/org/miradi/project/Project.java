@@ -677,7 +677,7 @@ public class Project
 		{
 			int stepCount = ObjectManager.getAllObjectTypes().length + FINISH_OPENING_STEP_COUNT;
 			progressMeter.setStatusMessage(EAM.text("Opening..."), stepCount);
-			openProject(projectName);
+			openProject(projectName, progressMeter);
 		}
 		else
 		{
@@ -870,7 +870,7 @@ public class Project
 		return ConceptualModelDiagram.DEFAULT_MAIN_NAME;
 	}
 	
-	public void openProject(String projectName) throws Exception
+	public void openProject(String projectName, ProgressInterface progressMeter) throws Exception
 	{
 		int existingVersion = getDatabase().readProjectDataVersion(projectName); 
 		if(existingVersion > ProjectServer.DATA_VERSION)
