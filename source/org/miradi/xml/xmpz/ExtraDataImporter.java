@@ -42,8 +42,14 @@ public class ExtraDataImporter extends AbstractXmpzObjectImporter
 	{
 		Node extraDataNode = getImporter().getNode(getImporter().getRootNode(), EXTRA_DATA);
 		Node extraDataSection = getImporter().getNode(extraDataNode, EXTRA_DATA_SECTION);
-		NodeList extraDataNodes = getImporter().getNodes(extraDataSection, new String[]{EXTRA_DATA_ITEM, });
+		if (extraDataSection == null)
+			return;
 		
+		String sectionOwner = getImporter().getAttributeValue(extraDataSection, EXTRA_DATA_SECTION_OWNER_ATTRIBUTE);
+		if (!sectionOwner.equals(MIRADI_CLIENT_EXTRA_DATA_SECTION))
+			return;
+		
+		NodeList extraDataNodes = getImporter().getNodes(extraDataSection, new String[]{EXTRA_DATA_ITEM, });
 		for (int index = 0; index < extraDataNodes.getLength(); ++index)
 		{
 			Node extraDataItemNode = extraDataNodes.item(index);
