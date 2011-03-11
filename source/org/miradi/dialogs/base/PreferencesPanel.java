@@ -56,6 +56,7 @@ import org.miradi.questions.FontFamiliyQuestion;
 import org.miradi.questions.FontSizeQuestion;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.TableRowHeightModeQuestion;
+import org.miradi.utils.FillerLabel;
 import org.miradi.utils.HyperlinkLabel;
 import org.miradi.views.ProjectSettingsPanel;
 import org.miradi.views.summary.SummaryPlanningPanel;
@@ -155,7 +156,13 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		String rowHeightMode = getMainWindow().getRowHeightModeString();
 		ChoiceQuestion rowHeightModeQuestion = StaticQuestionManager.getQuestion(TableRowHeightModeQuestion.class);
 		panelRowHeightModeCombo = createAndAddLabelAndCombo(htmlTab, EAM.text("Table Row Height Mode"), rowHeightModeQuestion, rowHeightMode);
+		htmlTab.add(new FillerLabel());
+		htmlTab.add(new PanelTitleLabel("<html><i>" + EAM.text("" +
+				"NOTE: Automatic Table Row Height Mode may impact the speed of expand and <br>" +
+				"collapse actions in the tables this setting affects. For better <br>" +
+				"performance, select Manual Row Height Mode.")));
 		
+		createAndAddBlankRow(htmlTab);
 		htmlTab.add(new PanelTitleLabel(EAM.text("Enable Spell Checking")));
 		enableSpellCheckingCheckBox = new PanelCheckBox();
 		enableSpellCheckingCheckBox.setBackground(AppPreferences.getDataPanelBackgroundColor());
