@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-11 17:24-0600\n"
+"POT-Creation-Date: 2011-03-11 17:30-0600\n"
 "PO-Revision-Date: 2011-01-24 10:21-0600\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -566,7 +566,7 @@ msgid ""
 "correctly."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:251
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:258
 msgid ""
 "<div class='DataPanel'><p>Why are my choices limited to one color family for "
 "each type of factor?</p>"
@@ -2295,11 +2295,11 @@ msgstr ""
 msgid "Biodiversity Target"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:237
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:244
 msgid "Biodiversity Target (Lighter Green)"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:239
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:246
 msgid "Biodiversity Target Scope (Darker Green)"
 msgstr ""
 
@@ -2641,7 +2641,7 @@ msgstr ""
 msgid "Choose Tags"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:233
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:240
 msgid "Choose the colors that look best on your system:"
 msgstr ""
 
@@ -2725,7 +2725,7 @@ msgstr ""
 msgid "Contributing Factor"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:236
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:243
 msgid "Contributing Factor (Orange)"
 msgstr ""
 
@@ -2929,7 +2929,7 @@ msgstr ""
 msgid "Dashboard"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:123
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:124
 msgid "Data Location"
 msgstr ""
 
@@ -3128,7 +3128,7 @@ msgstr ""
 msgid "Develop target viability"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:112
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:113
 msgid "Diagram"
 msgstr ""
 
@@ -3149,7 +3149,7 @@ msgstr ""
 msgid "Direct Threat"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:235
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:242
 msgid "Direct Threat (Pink)"
 msgstr ""
 
@@ -3259,7 +3259,7 @@ msgstr ""
 msgid "Effectiveness Monitoring Plan"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:159
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:166
 msgid "Enable Spell Checking"
 msgstr ""
 
@@ -3590,11 +3590,11 @@ msgstr ""
 msgid "Font"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:152
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:153
 msgid "Font Family"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:149
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:150
 msgid "Font Size"
 msgstr ""
 
@@ -3842,7 +3842,7 @@ msgstr ""
 msgid "Human Welfare Target"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:238
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:245
 msgid "Human Welfare Target (Lighter Brown)"
 msgstr ""
 
@@ -3850,7 +3850,7 @@ msgstr ""
 msgid "Human Welfare Target Mode"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:240
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:247
 msgid "Human Welfare Target Scope (Darker Brown)"
 msgstr ""
 
@@ -4094,7 +4094,7 @@ msgstr ""
 msgid "Intermediate Result"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:241
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:248
 msgid "Intermediate Result (Light Blue)"
 msgstr ""
 
@@ -4925,6 +4925,13 @@ msgstr ""
 msgid "Must be a positive number"
 msgstr ""
 
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:160
+msgid ""
+"NOTE: Automatic Table Row Height Mode may impact the speed of expand and "
+"<br>collapse actions in the tables this setting affects. For better "
+"<br>performance, select Manual Row Height Mode."
+msgstr ""
+
 #: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:109
 msgid ""
 "NOTE: Project filenames can contain letters, numbers, spaces, periods, "
@@ -4937,7 +4944,7 @@ msgid ""
 "for some quarters."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:167
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:174
 msgid ""
 "NOTE: Spell checking is currently only available in English. <br>If the "
 "'Primary Project Data Language' in the Project tab of the Summary view "
@@ -5034,7 +5041,7 @@ msgstr ""
 msgid "Notification Dialogs"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:126
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:127
 msgid "Notifications"
 msgstr ""
 
@@ -5250,7 +5257,7 @@ msgid "Plan project lifespan and exit strategy"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/summary/SummaryPlanningPanel.java:59
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:116
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:117
 msgid "Planning"
 msgstr ""
 
@@ -5300,7 +5307,7 @@ msgstr ""
 msgid "Pound (United Kingdom)"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:385
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:392
 msgid "Preferences"
 msgstr ""
 
@@ -5474,7 +5481,7 @@ msgid "Project Scope"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/ProjectSettingsPanel.java:46
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:119
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:120
 msgid "Project Settings"
 msgstr ""
 
@@ -5887,7 +5894,7 @@ msgstr ""
 msgid "Show All Rows"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:266
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:273
 msgid "Show Diagram Grid"
 msgstr ""
 
@@ -5895,7 +5902,7 @@ msgstr ""
 msgid "Show Quarter Columns"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:211
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:218
 msgid "Show Ratings in Cell"
 msgstr ""
 
@@ -6082,7 +6089,7 @@ msgstr ""
 msgid "Strategy"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:234
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:241
 msgid "Strategy (Yellow)"
 msgstr ""
 
@@ -6175,7 +6182,7 @@ msgstr ""
 msgid "Summary Threat Rating"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:111
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:112
 msgid "Systemwide"
 msgstr ""
 
@@ -6961,7 +6968,7 @@ msgstr ""
 msgid "TabDelimitedFile"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:157
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:158
 msgid "Table Row Height Mode"
 msgstr ""
 
@@ -7375,7 +7382,7 @@ msgstr ""
 msgid "Threat Rating Properties Panel"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:115
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:116
 msgid "Threat Ratings"
 msgstr ""
 
@@ -7392,7 +7399,7 @@ msgstr ""
 msgid "Threat Reduction Result"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:242
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:249
 msgid "Threat Reduction Result (Light Purple)"
 msgstr ""
 
@@ -7934,7 +7941,7 @@ msgstr ""
 msgid "Warning"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:252
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:259
 msgid ""
 "We are trying to create a standard set of symbols that can be recognized "
 "globally. Just like people the world over recognize a red octagon as a stop "
