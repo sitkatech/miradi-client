@@ -534,7 +534,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		project.beginCommandSideEffectMode();
 		try
 		{
-			project.createOrOpenWithDefaultObjectsAndDiagramHelp(projectName);
+			createOrOpenProjectInBackground(projectName);
 			logExceptionsInsideProjectDir();
 			
 			repairProject();
@@ -593,6 +593,12 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 			updateActionsAndStatusBar();
 			project.endCommandSideEffectMode();
 		}
+	}
+
+	private void createOrOpenProjectInBackground(String projectName)
+			throws Exception
+	{
+		project.createOrOpenWithDefaultObjectsAndDiagramHelp(projectName);
 	}
 
 	private void repairProject() throws Exception
