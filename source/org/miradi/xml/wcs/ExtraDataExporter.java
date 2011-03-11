@@ -58,10 +58,14 @@ public class ExtraDataExporter extends AbstractXmlExporter
 		for (int index = 0; index < fieldTags.length; ++index)
 		{
 			String fieldTag = fieldTags[index];
-			String extraDataItemName = baseObject.getTypeName() + TYPE_ID_TAG_SPLIT_TOKEN + baseObject.getId() + TYPE_ID_TAG_SPLIT_TOKEN + fieldTag; 
-			getWcsXmlExporter().writeStartElementWithAttribute(getWcsXmlExporter().getWriter(), EXTRA_DATA_ITEM, EXTRA_DATA_ITEM_NAME, extraDataItemName);
-			getWcsXmlExporter().writeOptionalElement(getWcsXmlExporter().getWriter(), EXTRA_DATA_ITEM_VALUE, baseObject.getData(fieldTag));
-			getWcsXmlExporter().writeEndElement(EXTRA_DATA_ITEM);
+			String extraDataItemName = baseObject.getTypeName() + TYPE_ID_TAG_SPLIT_TOKEN + baseObject.getId() + TYPE_ID_TAG_SPLIT_TOKEN + fieldTag;
+			String data = baseObject.getData(fieldTag);
+			if (data.length() > 0)
+			{
+				getWcsXmlExporter().writeStartElementWithAttribute(getWcsXmlExporter().getWriter(), EXTRA_DATA_ITEM, EXTRA_DATA_ITEM_NAME, extraDataItemName);
+				getWcsXmlExporter().writeOptionalElement(getWcsXmlExporter().getWriter(), EXTRA_DATA_ITEM_VALUE, data);
+				getWcsXmlExporter().writeEndElement(EXTRA_DATA_ITEM);
+			}
 		}
 	}
 	
