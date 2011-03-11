@@ -59,7 +59,7 @@ abstract public class AbstractFileSaverDoer extends ViewDoer
 				return;
 
 			ProgressDialog progressDialog = new ProgressDialog(getMainWindow(), getProgressTitle());
-			Worker worker = new Worker(progressDialog, chosen);
+			ExportWorker worker = new ExportWorker(progressDialog, chosen);
 			progressDialog.doWorkInBackgroundWhileShowingProgress(worker);
 		}
 		catch (UserCanceledException e)
@@ -117,9 +117,9 @@ abstract public class AbstractFileSaverDoer extends ViewDoer
 		safeDoIt();
 	}
 	
-	private class Worker extends MiradiBackgroundWorkerThread
+	private class ExportWorker extends MiradiBackgroundWorkerThread
 	{
-		public Worker(ProgressInterface progressToNotify, File destinationFileToUse)
+		public ExportWorker(ProgressInterface progressToNotify, File destinationFileToUse)
 		{
 			super(progressToNotify);
 			
