@@ -55,6 +55,7 @@ import org.miradi.diagram.DiagramModel;
 import org.miradi.dialogfields.AbstractWorkPlanStringMapEditorDoer;
 import org.miradi.dialogfields.FieldSaver;
 import org.miradi.dialogs.ProjectCorruptionDialog;
+import org.miradi.dialogs.base.ProgressDialog;
 import org.miradi.exceptions.FutureVersionException;
 import org.miradi.exceptions.OldVersionException;
 import org.miradi.exceptions.UnknownCommandException;
@@ -78,7 +79,9 @@ import org.miradi.questions.TableRowHeightModeQuestion;
 import org.miradi.utils.DefaultHyperlinkHandler;
 import org.miradi.utils.HtmlViewPanel;
 import org.miradi.utils.HtmlViewPanelWithMargins;
+import org.miradi.utils.MiradiBackgroundWorkerThread;
 import org.miradi.utils.MiradiResourceImageIcon;
+import org.miradi.utils.ProgressInterface;
 import org.miradi.utils.SplitterPositionSaverAndGetter;
 import org.miradi.views.diagram.DiagramView;
 import org.miradi.views.library.LibraryView;
@@ -595,10 +598,33 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		}
 	}
 
-	private void createOrOpenProjectInBackground(String projectName)
-			throws Exception
+	private void createOrOpenProjectInBackground(String projectName) throws Exception
 	{
-		project.createOrOpenWithDefaultObjectsAndDiagramHelp(projectName);
+		ProgressDialog progressDialog = new ProgressDialog(this, EAM.text("Opening..."));
+		ProjectOpenWorker worker = new ProjectOpenWorker(progressDialog, project, projectName);
+		progressDialog.doWorkInBackgroundWhileShowingProgress(worker);
+
+	}
+
+	private static class ProjectOpenWorker extends MiradiBackgroundWorkerThread
+	{
+		public ProjectOpenWorker(ProgressInterface progressInterfaceToUse, Project projectToUse, String projectNameToUse)
+		{
+			super(progressInterfaceToUse);
+			
+			project = projectToUse;
+			projectName = projectNameToUse;
+		}
+		
+		@Override
+		protected void doRealWork() throws Exception
+		{
+			project.createOrOpenWithDefaultObjectsAndDiagramHelp(projectName);
+			getProgressIndicator().finished();
+		}
+		
+		private Project project;
+		private String projectName;
 	}
 
 	private void repairProject() throws Exception
