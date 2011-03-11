@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-11 14:07-0600\n"
+"POT-Creation-Date: 2011-03-11 14:37-0600\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -4243,7 +4243,7 @@ msgstr "Pemilik Indikator "
 msgid "Indicator Relevancy Panel"
 msgstr "Panel Relevansi Indikator "
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:153
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:154
 msgid "Indicator does not have a direct/indirect factor parent. "
 msgstr ""
 
@@ -5705,7 +5705,7 @@ msgstr "Penasihat Proyek"
 msgid "Project Corruption Detected"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:903
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:905
 msgid "Project Description:"
 msgstr "Keterangan Proyek: "
 
@@ -6258,7 +6258,7 @@ msgstr "Mode Peringkat Ancaman Sederhana"
 msgid "Simple viability"
 msgstr "Kelangsungan sederhana "
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:908
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:910
 msgid "Site/Scope Description:"
 msgstr "Keterangan Lokasi/Cakupan: "
 
@@ -7389,7 +7389,7 @@ msgstr "Cokelat Muda"
 
 #: Miradi/source/org/miradi/forms/objects/TargetPropertiesForm.java:33
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:71
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:351
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:353
 #: Miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:53
 msgid "Target"
 msgstr "Target"
@@ -7736,7 +7736,7 @@ msgstr ""
 msgid "This will replace the existing file."
 msgstr "Ini akan mengganti berkas yang ada. "
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:376
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:378
 #: Miradi/source/org/miradi/utils/AbstractThreatRatingDetailsTableExporter.java:59
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:34
 msgid "Threat"
