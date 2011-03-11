@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-11 17:18-0600\n"
+"POT-Creation-Date: 2011-03-11 17:24-0600\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -2578,7 +2578,7 @@ msgstr "Багц Дүрэм"
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:166
 #: Miradi/source/org/miradi/dialogs/confirm/ConfirmDialogTemplate.java:51
 #: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:241
-#: Miradi/source/org/miradi/dialogs/ImageExportScaleDialog.java:78
+#: Miradi/source/org/miradi/dialogs/ImageExportScaleDialog.java:80
 msgid "Button|Cancel"
 msgstr "Товчлуур|Цуцлах"
 
@@ -2604,7 +2604,7 @@ msgstr "Товчлуур Import-лохгүй"
 msgid "Button|Exit"
 msgstr "Товчлуур|Гарах"
 
-#: Miradi/source/org/miradi/dialogs/ImageExportScaleDialog.java:76
+#: Miradi/source/org/miradi/dialogs/ImageExportScaleDialog.java:78
 msgid "Button|Export..."
 msgstr ""
 
@@ -3859,14 +3859,6 @@ msgstr "Font Family"
 msgid "Font Size"
 msgstr "Үсгийн хэмжээ"
 
-#: Miradi/source/org/miradi/dialogs/ImageExportScaleDialog.java:69
-msgid "For a larger, higher-resolution image, choose a scale above 100%"
-msgstr ""
-
-#: Miradi/source/org/miradi/dialogs/ImageExportScaleDialog.java:70
-msgid "For a smaller, lower-resolution image, choose a scale below 100%"
-msgstr ""
-
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:34
 msgid "Forest"
 msgstr "Ой"
@@ -4264,6 +4256,14 @@ msgstr ""
 #: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:258
 msgid "Incomplete Link"
 msgstr "Link бүрэн бус"
+
+#: Miradi/source/org/miradi/dialogs/ImageExportScaleDialog.java:70
+msgid ""
+"Increasing the image scale will produce higher resolution images with larger "
+"file size and dimensions. <br>For the highest image quality, set image scale "
+"to 300%.<br><br> Images exported as PNG may produce a smaller file size than "
+"JPG at the same scale."
+msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:134
 #: Miradi/source/org/miradi/forms/objects/IndicatorSubForm.java:32
