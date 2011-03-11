@@ -41,11 +41,11 @@ public class ExtraDataImporter extends AbstractXmpzObjectImporter
 	public void importElement() throws Exception
 	{
 		Node extraDataNode = getImporter().getNode(getImporter().getRootNode(), EXTRA_DATA);
-		NodeList statusNodes = getImporter().getNodes(extraDataNode, new String[]{EXTRA_DATA_ITEM, });
+		NodeList extraDataNodes = getImporter().getNodes(extraDataNode, new String[]{EXTRA_DATA_ITEM, });
 		
-		for (int index = 0; index < statusNodes.getLength(); ++index)
+		for (int index = 0; index < extraDataNodes.getLength(); ++index)
 		{
-			Node extraDataItemNode = statusNodes.item(index);
+			Node extraDataItemNode = extraDataNodes.item(index);
 			String extraDataName = getImporter().getAttributeValue(extraDataItemNode, EXTRA_DATA_ITEM_NAME);
 			String[] splitValues = extraDataName.split("\\" + ExtraDataExporter.TYPE_ID_TAG_SPLIT_TOKEN);
 			String typeName = splitValues[0];
