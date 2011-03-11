@@ -54,9 +54,7 @@ abstract public class AbstractFileSaverDoer extends ViewDoer
 			if (chosen==null) 
 				return;
 
-			boolean workWasCompleted = doWork(chosen);
-			if (workWasCompleted)
-				EAM.notifyDialog(EAM.text("Export complete"));
+			doWorkWIthProgressDialog(chosen);
 		}
 		catch(ImageTooLargeException e)
 		{
@@ -78,6 +76,13 @@ abstract public class AbstractFileSaverDoer extends ViewDoer
 		{
 			throw new CommandFailedException(e);
 		} 
+	}
+
+	private void doWorkWIthProgressDialog(File chosen) throws Exception
+	{
+		boolean workWasCompleted = doWork(chosen);
+		if (workWasCompleted)
+			EAM.notifyDialog(EAM.text("Export complete"));
 	}
 
 	protected String getIOExceptionErrorMessage()
