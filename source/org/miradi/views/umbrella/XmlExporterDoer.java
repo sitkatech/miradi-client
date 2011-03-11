@@ -156,6 +156,12 @@ abstract public class XmlExporterDoer extends AbstractFileSaverDoer
 		out.write(bytes);
 	}
 	
+	@Override
+	protected String getProgressTitle()
+	{
+		return EAM.text("Export...");
+	}
+	
 	abstract protected XmlExporter createExporter() throws Exception;
 	
 	abstract protected boolean isValidXml(ByteArrayInputStream inputStream) throws Exception;
