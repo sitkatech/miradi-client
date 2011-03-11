@@ -86,6 +86,6 @@ public class ExtraDataImporter extends AbstractXmpzObjectImporter
 		if (typeName.equals(TableSettings.OBJECT_NAME))
 			return TableSettings.getObjectType();
 		
-		throw new RuntimeException("Objec type name is not recognized as type, " + typeName);
+		throw new RuntimeException("Object type name is not recognized as type, " + typeName);
 	}
 }
