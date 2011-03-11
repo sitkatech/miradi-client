@@ -661,12 +661,12 @@ public class Project
 
 	public void createOrOpenWithDefaultObjects(String projectName, ProgressInterface progressMeter) throws Exception
 	{
-		rawCreateorOpen(projectName);
+		rawCreateorOpen(projectName, progressMeter);
 		createMissingDefaultObjects();
 		applyDefaultBehavior();
 	}
 
-	public void rawCreateorOpen(String projectName) throws Exception
+	public void rawCreateorOpen(String projectName, ProgressInterface progressMeter) throws Exception
 	{
 		clear();
 		
