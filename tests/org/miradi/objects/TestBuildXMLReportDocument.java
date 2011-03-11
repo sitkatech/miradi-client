@@ -28,17 +28,16 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.FactorLinkId;
 import org.miradi.main.EAM;
-import org.miradi.main.MiradiTestCase;
 import org.miradi.main.MainWindow;
+import org.miradi.main.MiradiTestCase;
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.IdListData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.FactorLink;
 import org.miradi.project.Project;
 import org.miradi.utils.EAMFileSaveChooser;
 import org.miradi.utils.EAMXmlFileChooser;
+import org.miradi.utils.NullProgressMeter;
 import org.miradi.utils.StringStringMapData;
 
 
@@ -67,7 +66,7 @@ public class TestBuildXMLReportDocument extends MiradiTestCase
 			
 			Project project = new Project();
 			project.setLocalDataLocation(tempDirectory);
-			project.createOrOpenWithDefaultObjectsAndDiagramHelp(projectName);
+			project.createOrOpenWithDefaultObjectsAndDiagramHelp(projectName, new NullProgressMeter());
 			
 			writeXMLVersionLine();
 			writeLineReturn();

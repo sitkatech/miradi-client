@@ -23,7 +23,7 @@ import java.io.File;
 
 import org.martus.util.DirectoryUtils;
 import org.miradi.main.MiradiTestCase;
-import org.miradi.project.Project;
+import org.miradi.utils.NullProgressMeter;
 
 public class TestRealProject extends MiradiTestCase
 {
@@ -52,7 +52,7 @@ public class TestRealProject extends MiradiTestCase
 		Project project = new Project();
 		assertFalse("already open?", project.isOpen());
 		project.setLocalDataLocation(tempDirectory);
-		project.createOrOpenWithDefaultObjectsAndDiagramHelp(projectName);
+		project.createOrOpenWithDefaultObjectsAndDiagramHelp(projectName, new NullProgressMeter());
 		assertTrue("not open?", project.isOpen());
 		project.close();
 		assertFalse("still open?", project.isOpen());

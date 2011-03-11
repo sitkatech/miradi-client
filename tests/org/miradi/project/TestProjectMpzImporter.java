@@ -46,6 +46,7 @@ import org.miradi.objects.FactorLink;
 import org.miradi.objects.Target;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
+import org.miradi.utils.NullProgressMeter;
 
 public class TestProjectMpzImporter extends MiradiTestCase
 {
@@ -165,7 +166,7 @@ public class TestProjectMpzImporter extends MiradiTestCase
 					try
 					{
 						ProjectMpzImporter.unzipToProjectDirectory(zip, fakeHomeDirectory, projectFilename);
-						unzippedProject.createOrOpenWithDefaultObjectsAndDiagramHelp(projectFilename);
+						unzippedProject.createOrOpenWithDefaultObjectsAndDiagramHelp(projectFilename, new NullProgressMeter());
 						assertNotNull("didn't find the target we wrote?", unzippedProject.findObject(targetRef));
 						ThreatRatingBundle gotBundle = unzippedProject.getSimpleThreatRatingFramework().getBundle(threatId, targetId);
 						assertEquals(valueId, gotBundle.getValueId(criterionId));
@@ -207,7 +208,7 @@ public class TestProjectMpzImporter extends MiradiTestCase
 		{
 			Project project = new Project();
 			project.setLocalDataLocation(originalDirectory);
-			project.createOrOpenWithDefaultObjectsAndDiagramHelp(originalProjectName);
+			project.createOrOpenWithDefaultObjectsAndDiagramHelp(originalProjectName, new NullProgressMeter());
 			project.close();
 			
 			File zip = createTempFile();
