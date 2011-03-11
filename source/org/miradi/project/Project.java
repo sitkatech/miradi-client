@@ -675,7 +675,8 @@ public class Project
 		boolean didProjectAlreadyExist = getDatabase().isExistingProject(projectName);
 		if(didProjectAlreadyExist)
 		{
-			int stepCount = ObjectManager.getAllObjectTypes().length + FINISH_OPENING_STEP_COUNT;
+			final int READ_MANIFESTS = 1;
+			int stepCount = READ_MANIFESTS + ObjectManager.getAllObjectTypes().length + FINISH_OPENING_STEP_COUNT;
 			progressMeter.setStatusMessage(EAM.text("Opening..."), stepCount);
 			openProject(projectName, progressMeter);
 		}
@@ -887,7 +888,7 @@ public class Project
 		try
 		{
 			loadProjectInfo();
-			objectManager.loadFromDatabase();
+			objectManager.loadFromDatabase(progressMeter);
 			EAM.logVerbose("Highest BaseObject Id: " + getNormalIdAssigner().getHighestAssignedId());
 		}
 		catch(Exception e)
