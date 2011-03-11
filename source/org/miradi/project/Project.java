@@ -920,7 +920,9 @@ public class Project
 	protected void finishOpening(ProgressInterface progressMeter) throws Exception
 	{
 		createMissingBuiltInObjects();
+		progressMeter.incrementProgress();
 		loadThreatRatingFramework();		
+		progressMeter.incrementProgress();
 	}
 
 	protected void enableListeners()

@@ -140,6 +140,7 @@ import org.miradi.utils.DateRange;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.utils.NullProgressMeter;
 import org.miradi.utils.OptionalDouble;
 import org.miradi.utils.PointList;
 import org.miradi.utils.ThreatStressRatingHelper;
@@ -176,7 +177,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		getDatabase().setMemoryDataLocation("Memory");
 		getDatabase().createProject(testName);
 
-		finishOpening();
+		finishOpening(new NullProgressMeter());
 	}
 	
 	public DiagramObject getMainDiagramObject()

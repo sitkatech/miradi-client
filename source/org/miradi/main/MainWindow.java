@@ -59,6 +59,7 @@ import org.miradi.dialogs.base.ProgressDialog;
 import org.miradi.exceptions.FutureVersionException;
 import org.miradi.exceptions.OldVersionException;
 import org.miradi.exceptions.UnknownCommandException;
+import org.miradi.exceptions.UserCanceledException;
 import org.miradi.main.menu.MainMenuBar;
 import org.miradi.objecthelpers.ColorsFileLoader;
 import org.miradi.objecthelpers.ORef;
@@ -547,6 +548,10 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 			updateTitle();
 			updateStatusBar();
 			getDiagramView().updateVisibilityOfFactorsAndClearSelectionModel();
+		}
+		catch(UserCanceledException e)
+		{
+			EAM.notifyDialog(EAM.text("Cancelled"));
 		}
 		catch(AlreadyHandledException e)
 		{
