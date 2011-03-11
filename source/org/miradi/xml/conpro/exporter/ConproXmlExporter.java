@@ -42,6 +42,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectToStringSorter;
 import org.miradi.objecthelpers.StringRefMap;
+import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Desire;
@@ -344,9 +345,10 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	private void writeTargetGoalsAsObjectives(UnicodeWriter out) throws Exception
 	{
 		ORefList targetRefs = getProject().getTargetPool().getRefList();
+		targetRefs.addAll(getProject().getHumanWelfareTargetPool().getORefList());
 		for (int index = 0; index < targetRefs.size(); ++index)
 		{
-			Target target = Target.find(getProject(), targetRefs.get(index));
+			AbstractTarget target = AbstractTarget.findTarget(getProject(), targetRefs.get(index));
 			ORefList goalRefs = target.getGoalRefs();
 			String targetAnnotationLabel = " (" + EAM.text("Target") + " = " + target.getLabel() + ")";
 			writeGoalsAsObjectives(out, goalRefs, targetAnnotationLabel);
