@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-11 14:07-0600\n"
+"POT-Creation-Date: 2011-03-11 14:37-0600\n"
 "PO-Revision-Date: 2010-09-30 09:31+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -4295,7 +4295,7 @@ msgstr "Тримач Індикатора"
 msgid "Indicator Relevancy Panel"
 msgstr "Панель індикатора важливості"
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:153
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:154
 msgid "Indicator does not have a direct/indirect factor parent. "
 msgstr "Індикатор не має джерела прямого або непрямогой фактора. "
 
@@ -5750,7 +5750,7 @@ msgstr "Консультант проекту"
 msgid "Project Corruption Detected"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:903
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:905
 msgid "Project Description:"
 msgstr "Опис проекту:"
 
@@ -6300,7 +6300,7 @@ msgstr "Опція Простий рейтинг загроз"
 msgid "Simple viability"
 msgstr "Проста життєздатність"
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:908
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:910
 msgid "Site/Scope Description:"
 msgstr "Опис Ділянки або Зони діяльності:"
 
@@ -7431,7 +7431,7 @@ msgstr "Охристий"
 
 #: Miradi/source/org/miradi/forms/objects/TargetPropertiesForm.java:33
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:71
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:351
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:353
 #: Miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:53
 msgid "Target"
 msgstr "Ціль"
@@ -7774,7 +7774,7 @@ msgstr ""
 msgid "This will replace the existing file."
 msgstr "Це замінить існуючий файл."
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:376
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:378
 #: Miradi/source/org/miradi/utils/AbstractThreatRatingDetailsTableExporter.java:59
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:34
 msgid "Threat"
