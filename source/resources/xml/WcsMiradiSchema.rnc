@@ -1,7 +1,8 @@
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/65'
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/66'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
+  ExtraData.element &
   ProjectSummary.element &
   ProjectSummaryScope.element &
   ProjectSummaryLocation.element &
@@ -50,6 +51,11 @@ ConservationProject.element = element miradi:ConservationProject
   DashboardPool.element ?  &
   TaggedObjectSetPool.element ?  &
   element miradi:DeletedOrphans{ text }?
+}
+
+ExtraData.element = element miradi:ExtraData
+{
+ExtraDataItem.element *
 }
 
 ProjectSummary.element = element miradi:ProjectSummary
@@ -1026,4 +1032,10 @@ StatusEntry.element = element miradi:StatusEntry
   element miradi:Progress { vocabulary_dashboard_row_progress }? &
   DashboardFlagsContainer.element? &
   element miradi:Comments { text }?
+}
+
+ExtraDataItem.element = element miradi:ExtraDataItem
+{
+  attribute ExtraDataItemName { text } &
+  element miradi:ExtraDataItemValue { text }?
 }

@@ -224,6 +224,12 @@ class ObjectSchemaElement extends SchemaElement
 		FieldSchemaElement field = new DashboardStatusEntrySchemaElement(getObjectTypeName(), fieldNameToUse);
 		fields.add(field);
 	}
+	
+	protected void createExtraDataField()
+	{
+		FieldSchemaElement field = new ExtraDataFieldSchemaElement(getObjectTypeName());
+		fields.add(field);
+	}
 
 	public String getObjectTypeName()
 	{

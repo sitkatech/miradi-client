@@ -47,6 +47,7 @@ public class XmpzXmlImporter extends AbstractXmlImporter implements XmpzXmlConst
 	{
 		Vector<AbstractXmpzObjectImporter> importers = new Vector<AbstractXmpzObjectImporter>();
 		
+		importers.add(new ExtraDataImporter(this));
 		importers.add(new ProjectSummaryImporter(this));
 		importers.add(new ProjectResourceImporter(this));
 		importers.add(new OrganizationImporter(this));
