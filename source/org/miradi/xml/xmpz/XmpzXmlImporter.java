@@ -47,7 +47,6 @@ public class XmpzXmlImporter extends AbstractXmlImporter implements XmpzXmlConst
 	{
 		Vector<AbstractXmpzObjectImporter> importers = new Vector<AbstractXmpzObjectImporter>();
 		
-		importers.add(new ExtraDataImporter(this));
 		importers.add(new ProjectSummaryImporter(this));
 		importers.add(new ProjectResourceImporter(this));
 		importers.add(new OrganizationImporter(this));
@@ -98,6 +97,7 @@ public class XmpzXmlImporter extends AbstractXmlImporter implements XmpzXmlConst
 		importers.add(new ResourceAssignmentPoolImporter(this));
 		importers.add(new DashboardPoolImporter(this));
 		importers.add(new TaggedObjectSetPoolImporter(this));
+		importers.add(new ExtraDataImporter(this));
 		
 		final int DELETE_ORPHANS_PROGRESS_TASK = 1;
 		final int IMPORT_THREAT_STRESS_RATING_PROGERESS_TASK = 1;
