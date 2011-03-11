@@ -27,18 +27,16 @@ import org.martus.util.xml.XmlUtilities;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
-import org.miradi.main.MiradiTestCase;
 import org.miradi.main.MainWindow;
+import org.miradi.main.MiradiTestCase;
 import org.miradi.objectdata.IdListData;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.EAMObjectPool;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.Factor;
-import org.miradi.objects.Task;
 import org.miradi.project.Project;
 import org.miradi.utils.EAMFileSaveChooser;
 import org.miradi.utils.EAMXmlFileChooser;
+import org.miradi.utils.NullProgressMeter;
 
 public class TestBuildXMLDocument extends MiradiTestCase
 {
@@ -61,7 +59,7 @@ public class TestBuildXMLDocument extends MiradiTestCase
 		{
 			Project project = new Project();
 			project.setLocalDataLocation(tempDirectory);
-			project.createOrOpenWithDefaultObjectsAndDiagramHelp(projectName);
+			project.createOrOpenWithDefaultObjectsAndDiagramHelp(projectName, new NullProgressMeter());
 			
 			//processObjectPool(project, "Fake",ObjectType.FAKE);
 			

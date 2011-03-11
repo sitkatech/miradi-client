@@ -42,6 +42,7 @@ import org.miradi.project.ProjectForTesting;
 import org.miradi.project.ProjectServerForTesting;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
+import org.miradi.utils.NullProgressMeter;
 
 
 public class TestObjectManager extends MiradiTestCase
@@ -68,13 +69,13 @@ public class TestObjectManager extends MiradiTestCase
 	
 	public void testDeleteErrorHandling() throws Exception
 	{
-		final String projectName = getName()+"2";
+		final String projectName = getName() + "2";
 		ProjectForTesting localProject = new ProjectForTesting(projectName);
 		localProject.close();
 		
 		File tempDirectory = createTempDirectory();
 		localProject.setLocalDataLocation(tempDirectory);
-		localProject.createOrOpenWithDefaultObjects(projectName);
+		localProject.createOrOpenWithDefaultObjects(projectName, new NullProgressMeter());
 		ProjectServerForTesting localDatabase = localProject.getTestDatabase();
 		ObjectManager localManager = localProject.getObjectManager();
 		try
@@ -261,13 +262,13 @@ public class TestObjectManager extends MiradiTestCase
 		{
 			Project projectToWrite = new Project();
 			projectToWrite.setLocalDataLocation(tempDirectory);
-			projectToWrite.createOrOpenWithDefaultObjectsAndDiagramHelp(projectName);
+			projectToWrite.createOrOpenWithDefaultObjectsAndDiagramHelp(projectName, new NullProgressMeter());
 			BaseId idToReload = projectToWrite.createObject(type, BaseId.INVALID, parameter);
 			projectToWrite.close();
 			
 			Project projectToRead = new Project();
 			projectToRead.setLocalDataLocation(tempDirectory);
-			projectToRead.createOrOpenWithDefaultObjectsAndDiagramHelp(projectName);
+			projectToRead.createOrOpenWithDefaultObjectsAndDiagramHelp(projectName, new NullProgressMeter());
 			try
 			{
 				projectToRead.getObjectData(type, idToReload, BaseObject.TAG_LABEL);

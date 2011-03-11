@@ -129,6 +129,7 @@ import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.utils.ProgressInterface;
 import org.miradi.utils.Translation;
 import org.miradi.views.diagram.DiagramClipboard;
 import org.miradi.views.diagram.DiagramPageList;
@@ -649,35 +650,46 @@ public class Project
 	/////////////////////////////////////////////////////////////////////////////////
 	// database
 	
-	public void createOrOpenWithDefaultObjectsAndDiagramHelp(String projectName) throws Exception
+	public void createOrOpenWithDefaultObjectsAndDiagramHelp(String projectName, ProgressInterface progressMeter) throws Exception
 	{
 		boolean didProjectAlreadyExist = getDatabase().isExistingProject(projectName);
-		createOrOpenWithDefaultObjects(projectName);
+		createOrOpenWithDefaultObjects(projectName, progressMeter);
 		
 		if (!didProjectAlreadyExist)
 			createDefaultHelpTextBoxDiagramFactor();
 	}
 
-	public void createOrOpenWithDefaultObjects(String projectName) throws Exception
+	public void createOrOpenWithDefaultObjects(String projectName, ProgressInterface progressMeter) throws Exception
 	{
-		rawCreateorOpen(projectName);
+		rawCreateorOpen(projectName, progressMeter);
 		createMissingDefaultObjects();
 		applyDefaultBehavior();
 	}
 
-	public void rawCreateorOpen(String projectName) throws Exception
+	public void rawCreateorOpen(String projectName, ProgressInterface progressMeter) throws Exception
 	{
 		clear();
+
+		final int FINISH_OPENING_STEP_COUNT = 2;
 		
 		boolean didProjectAlreadyExist = getDatabase().isExistingProject(projectName);
 		if(didProjectAlreadyExist)
-			openProject(projectName);
+		{
+			final int READ_MANIFESTS = 1;
+			int stepCount = READ_MANIFESTS + ObjectManager.getAllObjectTypes().length + FINISH_OPENING_STEP_COUNT;
+			progressMeter.setStatusMessage(EAM.text("Opening..."), stepCount);
+			openProject(projectName, progressMeter);
+		}
 		else
+		{
+			progressMeter.setStatusMessage(EAM.text("Creating..."), 1 + FINISH_OPENING_STEP_COUNT);
 			createProject(projectName);
+			progressMeter.incrementProgress();
+		}
 		
 		writeStartingLogEntry();
 	
-		finishOpening();
+		finishOpening(progressMeter);
 	}
 
 	public void setLocalDataLocation(File dataDirectory) throws Exception
@@ -859,7 +871,7 @@ public class Project
 		return ConceptualModelDiagram.DEFAULT_MAIN_NAME;
 	}
 	
-	public void openProject(String projectName) throws Exception
+	public void openProject(String projectName, ProgressInterface progressMeter) throws Exception
 	{
 		int existingVersion = getDatabase().readProjectDataVersion(projectName); 
 		if(existingVersion > ProjectServer.DATA_VERSION)
@@ -876,7 +888,7 @@ public class Project
 		try
 		{
 			loadProjectInfo();
-			objectManager.loadFromDatabase();
+			objectManager.loadFromDatabase(progressMeter);
 			EAM.logVerbose("Highest BaseObject Id: " + getNormalIdAssigner().getHighestAssignedId());
 		}
 		catch(Exception e)
@@ -907,10 +919,12 @@ public class Project
 		getSimpleThreatRatingFramework().load();
 	}
 	
-	protected void finishOpening() throws Exception
+	protected void finishOpening(ProgressInterface progressMeter) throws Exception
 	{
 		createMissingBuiltInObjects();
+		progressMeter.incrementProgress();
 		loadThreatRatingFramework();		
+		progressMeter.incrementProgress();
 	}
 
 	protected void enableListeners()
