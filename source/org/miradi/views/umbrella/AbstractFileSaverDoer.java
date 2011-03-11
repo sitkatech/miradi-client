@@ -23,10 +23,14 @@ import java.io.File;
 import java.io.IOException;
 import java.util.zip.ZipException;
 
+import org.miradi.dialogs.base.ProgressDialog;
 import org.miradi.exceptions.CommandFailedException;
+import org.miradi.exceptions.UserCanceledException;
 import org.miradi.main.EAM;
 import org.miradi.utils.EAMFileSaveChooser;
 import org.miradi.utils.ImageTooLargeException;
+import org.miradi.utils.MiradiBackgroundWorkerThread;
+import org.miradi.utils.ProgressInterface;
 import org.miradi.views.ViewDoer;
 
 abstract public class AbstractFileSaverDoer extends ViewDoer
@@ -54,7 +58,13 @@ abstract public class AbstractFileSaverDoer extends ViewDoer
 			if (chosen==null) 
 				return;
 
-			doWorkWIthProgressDialog(chosen);
+			ProgressDialog progressDialog = new ProgressDialog(getMainWindow(), getProgressTitle());
+			Worker worker = new Worker(progressDialog, chosen);
+			progressDialog.doWorkInBackgroundWhileShowingProgress(worker);
+		}
+		catch (UserCanceledException e)
+		{
+			EAM.notifyDialog(EAM.text("Operation was canceled!"));
 		}
 		catch(ImageTooLargeException e)
 		{
@@ -78,9 +88,16 @@ abstract public class AbstractFileSaverDoer extends ViewDoer
 		} 
 	}
 
-	private void doWorkWIthProgressDialog(File chosen) throws Exception
+	protected String getProgressTitle()
 	{
+		return EAM.text("...");
+	}
+
+	private void doWorkWIthProgressDialog(ProgressInterface progressInterface, File chosen) throws Exception
+	{
+		progressInterface.setStatusMessage(EAM.text("save..."), 1);
 		boolean workWasCompleted = doWork(chosen);
+		progressInterface.incrementProgress();
 		if (workWasCompleted)
 			EAM.notifyDialog(EAM.text("Export complete"));
 	}
@@ -103,6 +120,24 @@ abstract public class AbstractFileSaverDoer extends ViewDoer
 	protected void tryAgain() throws Exception
 	{
 		safeDoIt();
+	}
+	
+	private class Worker extends MiradiBackgroundWorkerThread
+	{
+		public Worker(ProgressInterface progressToNotify, File destinationFileToUse)
+		{
+			super(progressToNotify);
+			
+			destinationFile = destinationFileToUse;
+		}
+		
+		@Override
+		protected void doRealWork() throws Exception
+		{
+			doWorkWIthProgressDialog(getProgressIndicator(), destinationFile);
+		}
+		
+		private File destinationFile;
 	}
 	
 	abstract protected EAMFileSaveChooser createFileChooser();
