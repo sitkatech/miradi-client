@@ -687,7 +687,7 @@ public class Project
 		
 		writeStartingLogEntry();
 	
-		finishOpening();
+		finishOpening(progressMeter);
 	}
 
 	public void setLocalDataLocation(File dataDirectory) throws Exception
@@ -917,7 +917,7 @@ public class Project
 		getSimpleThreatRatingFramework().load();
 	}
 	
-	protected void finishOpening() throws Exception
+	protected void finishOpening(ProgressInterface progressMeter) throws Exception
 	{
 		createMissingBuiltInObjects();
 		loadThreatRatingFramework();		
