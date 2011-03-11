@@ -47,6 +47,7 @@ import org.miradi.utils.ConceptualModelByTargetSplitter;
 import org.miradi.utils.CpmzFileFilterForChooserDialog;
 import org.miradi.utils.GroupBoxHelper;
 import org.miradi.utils.HtmlViewPanelWithMargins;
+import org.miradi.utils.NullProgressMeter;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.views.diagram.DiagramView;
 import org.miradi.xml.conpro.importer.ConproXmlImporter;
@@ -136,7 +137,7 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 	@Override
 	protected void createOrOpenProject(Project projectToFill, String projectName)	throws Exception
 	{
-		projectToFill.createOrOpenWithDefaultObjects(projectName);
+		projectToFill.createOrOpenWithDefaultObjects(projectName, new NullProgressMeter());
 	}
 
 	@Override

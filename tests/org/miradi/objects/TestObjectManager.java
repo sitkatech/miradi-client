@@ -74,7 +74,7 @@ public class TestObjectManager extends MiradiTestCase
 		
 		File tempDirectory = createTempDirectory();
 		localProject.setLocalDataLocation(tempDirectory);
-		localProject.createOrOpenWithDefaultObjects(getName()+"2");
+		localProject.createOrOpenWithDefaultObjects(getName()+"2", new NullProgressMeter());
 		ProjectServerForTesting localDatabase = localProject.getTestDatabase();
 		ObjectManager localManager = localProject.getObjectManager();
 		try

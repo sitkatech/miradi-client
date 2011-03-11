@@ -113,7 +113,7 @@ public class TestProjectMpzImporter extends MiradiTestCase
 			ProjectServer database = new ProjectServer();
 			database.setLocalDataLocation(tempDirectory);
 			ProjectWithHelpers project = new ProjectWithHelpers(database);
-			project.createOrOpenWithDefaultObjects(projectName);
+			project.createOrOpenWithDefaultObjects(projectName, new NullProgressMeter());
 			project.loadDiagramModelForTesting();
 			
 			ORef diagramRef = project.getTestingDiagramObject().getRef();
