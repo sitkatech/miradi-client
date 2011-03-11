@@ -72,9 +72,22 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigrationTestCase
 		
 		DataUpgrader.initializeStaticDirectory(tempDirectory);
 		ORefSet updatedIndicatorIds = CloneIndicatorSharedResouceAssignmentsMigration.cloneSharedResourceAssignment();
-		ORefSet expectedIndicatorsToBeUpdated = new ORefSet();
-		expectedIndicatorsToBeUpdated.add(new ORef(INDICATOR_TYPE, new BaseId(29)));
-		assertEquals("Incorrect indicators were udpated?", expectedIndicatorsToBeUpdated, updatedIndicatorIds);
+		assertEquals("Didn't update exactly 1 indicator?", 1, updatedIndicatorIds.size());
+		ORef updatedIndicatorRef = updatedIndicatorIds.iterator().next();
+		
+		ORefSet possibleExpectedIndicatorsToBeUpdated = new ORefSet();
+		possibleExpectedIndicatorsToBeUpdated.add(new ORef(INDICATOR_TYPE, new BaseId(29)));
+		possibleExpectedIndicatorsToBeUpdated.add(new ORef(INDICATOR_TYPE, new BaseId(169)));
+		assertContains("Incorrect indicator was udpated?", updatedIndicatorRef, possibleExpectedIndicatorsToBeUpdated);
+		
+		File indicatorDirectory = DataUpgrader.createObjectsDir(jsonDir, INDICATOR_TYPE);
+		File updatedIndicatorFile = new File(indicatorDirectory, Integer.toString(updatedIndicatorRef.getObjectId().asInt()));
+		EnhancedJsonObject updatedIndicatorJson = new EnhancedJsonObject(readFile(updatedIndicatorFile));
+		IdList newAssignmentIds = updatedIndicatorJson.getIdList(INDICATOR_TYPE, "AssignmentIds");
+		assertFalse("Still contains 158?", newAssignmentIds.contains(new BaseId(158)));
+		assertFalse("Still contains 15?", newAssignmentIds.contains(new BaseId(15)));
+		assertTrue("Doesn't contain 191?", newAssignmentIds.contains(new BaseId(191)));
+		assertTrue("Doesn't contain 192?", newAssignmentIds.contains(new BaseId(192)));
 		
 		File resourceAssignmentDir = DataUpgrader.getObjectsDir(jsonDir, RemoveMissingResourceAssignmentIdsFromIndicatorsMigration.RESOURCE_ASSIGNMENT_TYPE);
 		File resourceAssignmentManifestFile = new File(resourceAssignmentDir, "manifest");
