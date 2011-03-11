@@ -33,6 +33,7 @@ import org.miradi.objects.ProjectResource;
 import org.miradi.project.ProjectMpzWriter;
 import org.miradi.utils.CpmzFileChooser;
 import org.miradi.utils.MpzFileFilterForChooserDialog;
+import org.miradi.utils.ProgressInterface;
 import org.miradi.xml.XmlExporter;
 import org.miradi.xml.conpro.exporter.ConProMiradiXmlValidator;
 import org.miradi.xml.conpro.exporter.ConproXmlExporter;
@@ -49,7 +50,7 @@ public class ExportCpmzDoer extends XmlExporterDoer
 	}
 	
 	@Override
-	protected boolean export(File chosen) throws Exception
+	protected boolean export(File chosen, ProgressInterface progressInterface) throws Exception
 	{
 		Vector<String> messages = getMissingRequiredFieldMessages();
 		if (messages.size() > 0)
@@ -65,7 +66,7 @@ public class ExportCpmzDoer extends XmlExporterDoer
 			return false;
 		}
 		
-		return exportCpmzFile(chosen);
+		return exportCpmzFile(chosen, progressInterface);
 	}
 
 	@Override
@@ -74,14 +75,21 @@ public class ExportCpmzDoer extends XmlExporterDoer
 		return new CpmzFileChooser(getMainWindow());
 	}
 
-	private boolean exportCpmzFile(File chosen) throws Exception
+	private boolean exportCpmzFile(File chosen, ProgressInterface progressInterface) throws Exception
 	{
+		progressInterface.setStatusMessage(EAM.text("save..."), 3);
 		ZipOutputStream zipOut = new ZipOutputStream(new FileOutputStream(chosen));
 		try
 		{
-			addProjectAsXmlToZip(zipOut);			
+			addProjectAsXmlToZip(zipOut);
+			progressInterface.incrementProgress();
+			
 			addProjectAsMpzToZip(zipOut);
+			progressInterface.incrementProgress();
+			
 			addDiagramImagesToZip(zipOut);
+			progressInterface.incrementProgress();
+			
 			return true;
 		}
 		catch(ValidationException e)

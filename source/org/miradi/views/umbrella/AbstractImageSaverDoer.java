@@ -28,6 +28,7 @@ import java.io.OutputStream;
 import org.miradi.dialogs.ImageExportScaleDialog;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
+import org.miradi.utils.ProgressInterface;
 
 abstract public class AbstractImageSaverDoer extends AbstractFileSaverDoer
 {
@@ -42,12 +43,12 @@ abstract public class AbstractImageSaverDoer extends AbstractFileSaverDoer
 	}
 
 	@Override
-	protected boolean doWork(File destinationFile) throws Exception
+	protected boolean doWork(File destinationFile, ProgressInterface progressInterface) throws Exception
 	{
 		FileOutputStream out = new FileOutputStream(destinationFile);
 		try
 		{
-			saveImage(out);
+			saveImage(out, progressInterface);
 			return true;
 		}
 		finally
@@ -84,10 +85,14 @@ abstract public class AbstractImageSaverDoer extends AbstractFileSaverDoer
 		return userChoseOk;
 	}
 	
-	private void saveImage(FileOutputStream out) throws Exception
+	private void saveImage(FileOutputStream out, ProgressInterface progressInterface) throws Exception
 	{
+		progressInterface.setStatusMessage(EAM.text("save..."), 2);
 		BufferedImage image = getView().getImage(scalePercent);
+		progressInterface.incrementProgress();
+		
 		saveImage(out, image);
+		progressInterface.incrementProgress();
 	}
 	
 	@Override

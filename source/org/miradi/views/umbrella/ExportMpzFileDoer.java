@@ -28,6 +28,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.project.ProjectMpzWriter;
 import org.miradi.utils.EAMFileSaveChooser;
 import org.miradi.utils.MpzFileChooser;
+import org.miradi.utils.ProgressInterface;
 
 
 
@@ -49,7 +50,7 @@ public class ExportMpzFileDoer extends AbstractFileSaverDoer
 	}
 
 	@Override
-	protected boolean doWork(File destinationFile) throws Exception
+	protected boolean doWork(File destinationFile, ProgressInterface progressInterface) throws Exception
 	{
 		ProjectServer database = getProject().getDatabase();
 		if (isChosenFileInsideProjectHomeDir(destinationFile))
@@ -61,7 +62,9 @@ public class ExportMpzFileDoer extends AbstractFileSaverDoer
 		
 		try 
 		{
+			progressInterface.setStatusMessage(EAM.text("Export..."), 1);
 			ProjectMpzWriter.writeProjectZip(database, destinationFile);
+			progressInterface.incrementProgress();
 			
 			return true;
 		} 
