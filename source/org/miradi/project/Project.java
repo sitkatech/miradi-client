@@ -653,13 +653,13 @@ public class Project
 	public void createOrOpenWithDefaultObjectsAndDiagramHelp(String projectName, ProgressInterface progressMeter) throws Exception
 	{
 		boolean didProjectAlreadyExist = getDatabase().isExistingProject(projectName);
-		createOrOpenWithDefaultObjects(projectName);
+		createOrOpenWithDefaultObjects(projectName, progressMeter);
 		
 		if (!didProjectAlreadyExist)
 			createDefaultHelpTextBoxDiagramFactor();
 	}
 
-	public void createOrOpenWithDefaultObjects(String projectName) throws Exception
+	public void createOrOpenWithDefaultObjects(String projectName, ProgressInterface progressMeter) throws Exception
 	{
 		rawCreateorOpen(projectName);
 		createMissingDefaultObjects();
