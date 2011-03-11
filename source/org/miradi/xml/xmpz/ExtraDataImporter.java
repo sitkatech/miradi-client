@@ -41,7 +41,8 @@ public class ExtraDataImporter extends AbstractXmpzObjectImporter
 	public void importElement() throws Exception
 	{
 		Node extraDataNode = getImporter().getNode(getImporter().getRootNode(), EXTRA_DATA);
-		NodeList extraDataNodes = getImporter().getNodes(extraDataNode, new String[]{EXTRA_DATA_ITEM, });
+		Node extraDataSection = getImporter().getNode(extraDataNode, EXTRA_DATA_SECTION);
+		NodeList extraDataNodes = getImporter().getNodes(extraDataSection, new String[]{EXTRA_DATA_ITEM, });
 		
 		for (int index = 0; index < extraDataNodes.getLength(); ++index)
 		{

@@ -32,6 +32,6 @@ public class ExtraDataFieldSchemaElement extends FieldSchemaElement
 	@Override
 	public void output(SchemaWriter writer) throws IOException
 	{
-		writer.write(EXTRA_DATA_ITEM + ".element *");
+		writer.write(EXTRA_DATA_SECTION + ".element *");
 	}
 }

@@ -37,12 +37,14 @@ public class ExtraDataExporter extends AbstractXmlExporter
 	public void exportXml() throws Exception
 	{
 		getWcsXmlExporter().writeStartElement(EXTRA_DATA);
+		getWcsXmlExporter().writeStartElementWithAttribute(getWcsXmlExporter().getWriter(), EXTRA_DATA_SECTION, EXTRA_DATA_SECTION_OWNER_ATTRIBUTE, "MiradiClient");
 		exportPool(ViewData.getObjectType());
 		exportPool(TableSettings.getObjectType());
+		getWcsXmlExporter().writeEndElement(EXTRA_DATA_SECTION);
 		getWcsXmlExporter().writeEndElement(EXTRA_DATA);
 	}
 
-	protected void exportPool(int poolTypeToImport) throws Exception
+	private void exportPool(int poolTypeToImport) throws Exception
 	{
 		ORefList objectRefs = getProject().getPool(poolTypeToImport).getRefList();
 		for (int index = 0; index < objectRefs.size(); ++index)
