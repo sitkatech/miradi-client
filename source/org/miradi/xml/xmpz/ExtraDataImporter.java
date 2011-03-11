@@ -47,7 +47,8 @@ public class ExtraDataImporter extends AbstractXmpzObjectImporter
 		{
 			Node extraDataItemNode = extraDataNodes.item(index);
 			String extraDataName = getImporter().getAttributeValue(extraDataItemNode, EXTRA_DATA_ITEM_NAME);
-			String[] splitValues = extraDataName.split("\\" + ExtraDataExporter.TYPE_ID_TAG_SPLIT_TOKEN);
+			final String ESCAPE_CHAR = "\\";
+			String[] splitValues = extraDataName.split(ESCAPE_CHAR + ExtraDataExporter.TYPE_ID_TAG_SPLIT_TOKEN);
 			String typeName = splitValues[0];
 			String id = splitValues[1];
 			String tag = splitValues[2];
