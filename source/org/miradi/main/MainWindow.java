@@ -619,7 +619,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		@Override
 		protected void doRealWork() throws Exception
 		{
-			project.createOrOpenWithDefaultObjectsAndDiagramHelp(projectName);
+			project.createOrOpenWithDefaultObjectsAndDiagramHelp(projectName, getProgressIndicator());
 			getProgressIndicator().finished();
 		}
 		

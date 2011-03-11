@@ -69,6 +69,7 @@ import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.ViewData;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.utils.NullProgressMeter;
 import org.miradi.views.diagram.DiagramCopyPaster;
 import org.miradi.views.diagram.DiagramPaster;
 import org.miradi.views.diagram.DiagramView;
@@ -792,7 +793,7 @@ public class TestProject extends MiradiTestCase
 		String projectName = "testOpenProject";
 		Project diskProject = new Project();
 		diskProject.setLocalDataLocation(tempDir);
-		diskProject.createOrOpenWithDefaultObjectsAndDiagramHelp(projectName);
+		diskProject.createOrOpenWithDefaultObjectsAndDiagramHelp(projectName, new NullProgressMeter());
 		
 		ORef conceptualModelRef = diskProject.getConceptualModelDiagramPool().getORefList().getRefForType(ConceptualModelDiagram.getObjectType());
 		ConceptualModelDiagram conceptualModel = ConceptualModelDiagram.find(diskProject, conceptualModelRef);
@@ -822,7 +823,7 @@ public class TestProject extends MiradiTestCase
 		
 		Project loadedProject = new Project();
 		loadedProject.setLocalDataLocation(tempDir);
-		loadedProject.createOrOpenWithDefaultObjectsAndDiagramHelp(projectName);
+		loadedProject.createOrOpenWithDefaultObjectsAndDiagramHelp(projectName, new NullProgressMeter());
 		try
 		{
 			assertEquals("didn't read cause pool?", 1, loadedProject.getCausePool().size());
@@ -866,7 +867,7 @@ public class TestProject extends MiradiTestCase
 		String projectName = "testCreateNewProject";
 		Project newProject = new Project();
 		newProject.setLocalDataLocation(tempDir);
-		newProject.createOrOpenWithDefaultObjectsAndDiagramHelp(projectName);
+		newProject.createOrOpenWithDefaultObjectsAndDiagramHelp(projectName, new NullProgressMeter());
 		
 		try
 		{

@@ -129,6 +129,7 @@ import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.utils.ProgressInterface;
 import org.miradi.utils.Translation;
 import org.miradi.views.diagram.DiagramClipboard;
 import org.miradi.views.diagram.DiagramPageList;
@@ -649,7 +650,7 @@ public class Project
 	/////////////////////////////////////////////////////////////////////////////////
 	// database
 	
-	public void createOrOpenWithDefaultObjectsAndDiagramHelp(String projectName) throws Exception
+	public void createOrOpenWithDefaultObjectsAndDiagramHelp(String projectName, ProgressInterface progressMeter) throws Exception
 	{
 		boolean didProjectAlreadyExist = getDatabase().isExistingProject(projectName);
 		createOrOpenWithDefaultObjects(projectName);

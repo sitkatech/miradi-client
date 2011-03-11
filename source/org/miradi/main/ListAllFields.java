@@ -39,6 +39,7 @@ import org.miradi.objects.FactorLink;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.Project;
+import org.miradi.utils.NullProgressMeter;
 import org.miradi.utils.Translation;
 
 public class ListAllFields
@@ -51,7 +52,7 @@ public class ListAllFields
 		Project project = new Project();
 		project.getDatabase().setMemoryDataLocation("Memory");
 
-		project.createOrOpenWithDefaultObjectsAndDiagramHelp("ListAllFields");
+		project.createOrOpenWithDefaultObjectsAndDiagramHelp("ListAllFields", new NullProgressMeter());
 		listFieldsToConsole(project);
 		project.close();
 	}
