@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-11 15:11-0600\n"
+"POT-Creation-Date: 2011-03-11 15:27-0600\n"
 "PO-Revision-Date: 2010-09-30 09:31+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -3560,7 +3560,7 @@ msgstr "Помилка"
 msgid "Error Creating: %s"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:104
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:101
 msgid "Error Export To Miradi Zip: Possible Write Protected: "
 msgstr "Помилка експортування у Miradi Zip: Можливо захист від запису: "
 
@@ -3679,7 +3679,7 @@ msgid "Export to Miradi Zip..."
 msgstr "Експортувати до Miradi Zip..."
 
 #: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:162
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:115
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:112
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListExportAction.java:47
 msgid "Export..."
 msgstr "Експортувати..."

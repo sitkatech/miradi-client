@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-11 15:11-0600\n"
+"POT-Creation-Date: 2011-03-11 15:27-0600\n"
 "PO-Revision-Date: 2010-09-20 10:32-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -3504,7 +3504,7 @@ msgstr "Error"
 msgid "Error Creating: %s"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:104
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:101
 msgid "Error Export To Miradi Zip: Possible Write Protected: "
 msgstr ""
 "Error de exportación al zip de Miradi: Es posible que esté protegido contra "
@@ -3632,7 +3632,7 @@ msgid "Export to Miradi Zip..."
 msgstr "Exportar al zip de Miradi…"
 
 #: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:162
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:115
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:112
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListExportAction.java:47
 msgid "Export..."
 msgstr "Exportar…"
