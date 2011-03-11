@@ -66,7 +66,6 @@ public class XmpzXmlExporter extends XmlExporter implements XmpzXmlConstants
 		getWriter().writeln("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>");
 		writeStartElementWithAttribute(getWriter(), CONSERVATION_PROJECT, XMLNS, NAME_SPACE);
 		
-		new ExtraDataExporter(this).exportXml();
 		writeProjectSummaryElement();
 		new ProjectResourcePoolExporter(this).exportXml();
 		new OrganizationPoolExporter(this).exportXml();
@@ -116,6 +115,7 @@ public class XmpzXmlExporter extends XmlExporter implements XmpzXmlConstants
 		new ObjectTreeTableConfigurationPoolExporter(this).exportXml();
 		new DashboardPoolExporter(this).exportXml();
 		new TaggedObjectSetPoolExporter(this).exportXml();
+		new ExtraDataExporter(this).exportXml();
 		
 		writeOptionalElement(out, DELETED_ORPHANS_ELEMENT_NAME, getProject().getQuarantineFileContents());
 
