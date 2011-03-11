@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-11 17:24-0600\n"
+"POT-Creation-Date: 2011-03-11 17:30-0600\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -592,7 +592,7 @@ msgstr ""
 "<br> Үйлдэл амжилттай дууслаа, гэхдээ Undo/Redo зөв ажиллахгүй байх "
 "магадлалтай."
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:251
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:258
 msgid ""
 "<div class='DataPanel'><p>Why are my choices limited to one color family for "
 "each type of factor?</p>"
@@ -2505,11 +2505,11 @@ msgstr "Биологийн төрөл зүйлийн өвөрмөц шинж т�
 msgid "Biodiversity Target"
 msgstr "Биологийн төрөл зүйлийг хамгаалах зорилго"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:237
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:244
 msgid "Biodiversity Target (Lighter Green)"
 msgstr "Биологийн төрөл зүйлийн Хамгаалах Объект (Цайвар ногоон)"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:239
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:246
 msgid "Biodiversity Target Scope (Darker Green)"
 msgstr "Биологийн төрөл зүйлийн Цар Хүрээ (Бараан ногоон)"
 
@@ -2863,7 +2863,7 @@ msgstr "Эхлэл үүсгэлийн Дарамтыг сонгох"
 msgid "Choose Tags"
 msgstr "Зүүлтүүдийг сонгох"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:233
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:240
 msgid "Choose the colors that look best on your system:"
 msgstr "Таны системд хамгийн сайн харагддаг өнгүүдийг сонгох:"
 
@@ -2949,7 +2949,7 @@ msgstr "Хамгаалах объектууд"
 msgid "Contributing Factor"
 msgstr "Үйлчлэл үзүүлэгч Хүчин Зүйл"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:236
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:243
 msgid "Contributing Factor (Orange)"
 msgstr "Үйлчлэл үзүүлэгч Хүчин Зүйл (Улбар шар)"
 
@@ -3165,7 +3165,7 @@ msgstr "Гүн шар"
 msgid "Dashboard"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:123
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:124
 msgid "Data Location"
 msgstr "Мэдээллийн байршил"
 
@@ -3368,7 +3368,7 @@ msgstr ""
 msgid "Develop target viability"
 msgstr "Хамгаалах объектын амьдрах чадварыг боловсруулах"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:112
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:113
 msgid "Diagram"
 msgstr "Диаграмм"
 
@@ -3389,7 +3389,7 @@ msgstr "Диаграммын ерөнхйи төсөөлөл"
 msgid "Direct Threat"
 msgstr "Шууд үйлчлэх аюул"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:235
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:242
 msgid "Direct Threat (Pink)"
 msgstr "Шууд үйлчлэх аюул (Ягаан)"
 
@@ -3511,7 +3511,7 @@ msgstr "Үр ашигтай"
 msgid "Effectiveness Monitoring Plan"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:159
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:166
 msgid "Enable Spell Checking"
 msgstr "Зөв бичлэгийг шалгахыг ажиллуулж эхлэх"
 
@@ -3851,11 +3851,11 @@ msgstr "Фолдэр Сонгогч"
 msgid "Font"
 msgstr "Үсгийн фонд"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:152
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:153
 msgid "Font Family"
 msgstr "Font Family"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:149
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:150
 msgid "Font Size"
 msgstr "Үсгийн хэмжээ"
 
@@ -4111,7 +4111,7 @@ msgstr "Human Stakeholders"
 msgid "Human Welfare Target"
 msgstr "Нийгмийн халамуийн зорилт"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:238
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:245
 msgid "Human Welfare Target (Lighter Brown)"
 msgstr "Нийгмийн халамжийн зорилт (Цайвар бор)"
 
@@ -4119,7 +4119,7 @@ msgstr "Нийгмийн халамжийн зорилт (Цайвар бор)"
 msgid "Human Welfare Target Mode"
 msgstr "Нийгмийн халамжийн зорилтын горим"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:240
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:247
 msgid "Human Welfare Target Scope (Darker Brown)"
 msgstr "Нийгмийн халамжийн зорилтын цар хүрээ (Бараан бор)"
 
@@ -4371,7 +4371,7 @@ msgstr "Нарийн үнэлгээ"
 msgid "Intermediate Result"
 msgstr "Завсрын үр дүн"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:241
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:248
 msgid "Intermediate Result (Light Blue)"
 msgstr "Завсрын үр дүн (Цайвар цэнхэр)"
 
@@ -5227,6 +5227,13 @@ msgstr "...рүү шилжих"
 msgid "Must be a positive number"
 msgstr "Нэмэх тэмдэгтэй тоо байх ёстой"
 
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:160
+msgid ""
+"NOTE: Automatic Table Row Height Mode may impact the speed of expand and "
+"<br>collapse actions in the tables this setting affects. For better "
+"<br>performance, select Manual Row Height Mode."
+msgstr ""
+
 #: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:109
 msgid ""
 "NOTE: Project filenames can contain letters, numbers, spaces, periods, "
@@ -5243,7 +5250,7 @@ msgstr ""
 "Тэмдэглэл: Улиралын баганыг нуух боломжгүй, яагаад гэвэл энэхүү төсөл нь "
 "зарим нэгулиралын мэдээллийг хэдийнээ агуулсан байна."
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:167
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:174
 msgid ""
 "NOTE: Spell checking is currently only available in English. <br>If the "
 "'Primary Project Data Language' in the Project tab of the Summary view "
@@ -5345,7 +5352,7 @@ msgstr "Бүх хүчин зүйлс харагдахгүй, яагаад гэв
 msgid "Notification Dialogs"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:126
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:127
 msgid "Notifications"
 msgstr ""
 
@@ -5568,7 +5575,7 @@ msgid "Plan project lifespan and exit strategy"
 msgstr "Төслийн үргэлжлэх хугацаа ба төслийн дуусах шатны стратегийг төлөвлөх"
 
 #: Miradi/source/org/miradi/views/summary/SummaryPlanningPanel.java:59
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:116
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:117
 msgid "Planning"
 msgstr "Төлөвлөлт"
 
@@ -5626,7 +5633,7 @@ msgstr "Муу"
 msgid "Pound (United Kingdom)"
 msgstr "Pound (Нэгдсэн Вант Улс)"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:385
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:392
 msgid "Preferences"
 msgstr "Сонголт"
 
@@ -5804,7 +5811,7 @@ msgid "Project Scope"
 msgstr "Төслийн цар хүрээ"
 
 #: Miradi/source/org/miradi/views/ProjectSettingsPanel.java:46
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:119
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:120
 msgid "Project Settings"
 msgstr "Төслийн нөхцөл байдал"
 
@@ -6253,7 +6260,7 @@ msgstr "Орон тооны ажилтан авахыг зөвшөөрч тоо�
 msgid "Show All Rows"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:266
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:273
 msgid "Show Diagram Grid"
 msgstr "Диаграммын холбоос сүлжээг харуулах"
 
@@ -6261,7 +6268,7 @@ msgstr "Диаграммын холбоос сүлжээг харуулах"
 msgid "Show Quarter Columns"
 msgstr "Улирлын Багануудыг харуулах"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:211
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:218
 msgid "Show Ratings in Cell"
 msgstr "Нүдэн дэх үнэлгээг харуулахl"
 
@@ -6467,7 +6474,7 @@ msgstr ""
 msgid "Strategy"
 msgstr "Стратеги"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:234
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:241
 msgid "Strategy (Yellow)"
 msgstr "Стратеги (Шар)"
 
@@ -6575,7 +6582,7 @@ msgstr "Хамгаалах Объектын Үнэлгээний Дүгнэлт:
 msgid "Summary Threat Rating"
 msgstr "Аюулын Үнэлгээний Дүгнэлт"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:111
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:112
 msgid "Systemwide"
 msgstr "Нийт системээр"
 
@@ -7374,7 +7381,7 @@ msgstr ""
 msgid "TabDelimitedFile"
 msgstr "Tab-аар тусгаарлагдсан файл"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:157
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:158
 msgid "Table Row Height Mode"
 msgstr "Table Row Height Mode"
 
@@ -7840,7 +7847,7 @@ msgstr "Аюул заналыг үнэлэхэд эрхэмлэн үзэх зү�
 msgid "Threat Rating Properties Panel"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:115
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:116
 msgid "Threat Ratings"
 msgstr "Аюул заналын Үнэлгээнүүд"
 
@@ -7857,7 +7864,7 @@ msgstr "Аюул заналын Үнэлгээнүүд  - Хүснэгт"
 msgid "Threat Reduction Result"
 msgstr "Аюул заналыг бууруулах үр дүн"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:242
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:249
 msgid "Threat Reduction Result (Light Purple)"
 msgstr "Ауюл заналыг бууруулах Үр Дүн (Цайвар Нил Ягаан)"
 
@@ -8425,7 +8432,7 @@ msgstr "WWF"
 msgid "Warning"
 msgstr "САНУУЛГА"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:252
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:259
 msgid ""
 "We are trying to create a standard set of symbols that can be recognized "
 "globally. Just like people the world over recognize a red octagon as a stop "

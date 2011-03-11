@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-11 17:24-0600\n"
+"POT-Creation-Date: 2011-03-11 17:30-0600\n"
 "PO-Revision-Date: 2010-09-30 09:31+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -601,7 +601,7 @@ msgid ""
 msgstr ""
 "<br> Операція завершена успішно, але Undo/Redo можливо працюють неправильно."
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:251
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:258
 msgid ""
 "<div class='DataPanel'><p>Why are my choices limited to one color family for "
 "each type of factor?</p>"
@@ -2514,11 +2514,11 @@ msgstr "Характеристики біорізноманіття"
 msgid "Biodiversity Target"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:237
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:244
 msgid "Biodiversity Target (Lighter Green)"
 msgstr "Ціль біорізноманіття (Світло зелений)"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:239
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:246
 msgid "Biodiversity Target Scope (Darker Green)"
 msgstr "Цільовий об'єкт біорізноманіття (темно зелений)"
 
@@ -2870,7 +2870,7 @@ msgstr "Виберіть Навантаження щоб Створити з"
 msgid "Choose Tags"
 msgstr "Вибрати теги"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:233
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:240
 msgid "Choose the colors that look best on your system:"
 msgstr "Виберіть кольори, які виглядають кращими на вашій системі:"
 
@@ -2956,7 +2956,7 @@ msgstr "Природоохоронні цілі"
 msgid "Contributing Factor"
 msgstr "Сприяючий фактор"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:236
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:243
 msgid "Contributing Factor (Orange)"
 msgstr "Сприяючий фактор (Оранжевий)"
 
@@ -3175,7 +3175,7 @@ msgstr "Темно-жовтий"
 msgid "Dashboard"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:123
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:124
 msgid "Data Location"
 msgstr "Розміщення даних"
 
@@ -3378,7 +3378,7 @@ msgstr ""
 msgid "Develop target viability"
 msgstr "Розробити життєздатність цілі"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:112
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:113
 msgid "Diagram"
 msgstr "Діаграма"
 
@@ -3399,7 +3399,7 @@ msgstr "Перегляд діаграми"
 msgid "Direct Threat"
 msgstr "Пряма загроза  "
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:235
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:242
 msgid "Direct Threat (Pink)"
 msgstr "Пряма загроза (Рожевий)"
 
@@ -3521,7 +3521,7 @@ msgstr "Ефективний"
 msgid "Effectiveness Monitoring Plan"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:159
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:166
 msgid "Enable Spell Checking"
 msgstr ""
 
@@ -3855,11 +3855,11 @@ msgstr "Вибирач папки"
 msgid "Font"
 msgstr "Шрифт"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:152
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:153
 msgid "Font Family"
 msgstr "Група шрифтів"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:149
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:150
 msgid "Font Size"
 msgstr "Розмір шрифту"
 
@@ -4114,7 +4114,7 @@ msgstr "Зацікавлені сторони"
 msgid "Human Welfare Target"
 msgstr "Ціль Добробут людей"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:238
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:245
 msgid "Human Welfare Target (Lighter Brown)"
 msgstr "Ціль Добробут людей (Світло коричневий)"
 
@@ -4122,7 +4122,7 @@ msgstr "Ціль Добробут людей (Світло коричневий)
 msgid "Human Welfare Target Mode"
 msgstr "Опція Ціль добробут людей"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:240
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:247
 msgid "Human Welfare Target Scope (Darker Brown)"
 msgstr "Сфера діяльності цілі Добробут людей (Темно коричневий)"
 
@@ -4374,7 +4374,7 @@ msgstr "Інтенсивна оцінка"
 msgid "Intermediate Result"
 msgstr "Проміжний результат"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:241
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:248
 msgid "Intermediate Result (Light Blue)"
 msgstr "Проміжний результат (Блакитний)"
 
@@ -5228,6 +5228,13 @@ msgstr "Перемістити до:"
 msgid "Must be a positive number"
 msgstr "Мусить бути додатнє число"
 
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:160
+msgid ""
+"NOTE: Automatic Table Row Height Mode may impact the speed of expand and "
+"<br>collapse actions in the tables this setting affects. For better "
+"<br>performance, select Manual Row Height Mode."
+msgstr ""
+
 #: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:109
 msgid ""
 "NOTE: Project filenames can contain letters, numbers, spaces, periods, "
@@ -5242,7 +5249,7 @@ msgid ""
 "for some quarters."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:167
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:174
 msgid ""
 "NOTE: Spell checking is currently only available in English. <br>If the "
 "'Primary Project Data Language' in the Project tab of the Summary view "
@@ -5343,7 +5350,7 @@ msgstr ""
 msgid "Notification Dialogs"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:126
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:127
 msgid "Notifications"
 msgstr ""
 
@@ -5565,7 +5572,7 @@ msgid "Plan project lifespan and exit strategy"
 msgstr "Планувати проектний ресурс і вихідну стратегію"
 
 #: Miradi/source/org/miradi/views/summary/SummaryPlanningPanel.java:59
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:116
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:117
 msgid "Planning"
 msgstr "Планування"
 
@@ -5624,7 +5631,7 @@ msgstr "Поганий"
 msgid "Pound (United Kingdom)"
 msgstr "Фунт (Великобританія)"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:385
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:392
 msgid "Preferences"
 msgstr "Преференції"
 
@@ -5802,7 +5809,7 @@ msgid "Project Scope"
 msgstr "Межі зони діяльності проекту"
 
 #: Miradi/source/org/miradi/views/ProjectSettingsPanel.java:46
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:119
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:120
 msgid "Project Settings"
 msgstr "Установки проекту"
 
@@ -6247,7 +6254,7 @@ msgstr "Дозволити повночасному працівнику бут�
 msgid "Show All Rows"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:266
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:273
 msgid "Show Diagram Grid"
 msgstr "Показати Сітку діаграми"
 
@@ -6255,7 +6262,7 @@ msgstr "Показати Сітку діаграми"
 msgid "Show Quarter Columns"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:211
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:218
 msgid "Show Ratings in Cell"
 msgstr "Показати рейтинги в комірці"
 
@@ -6450,7 +6457,7 @@ msgstr ""
 msgid "Strategy"
 msgstr "Стратегія"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:234
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:241
 msgid "Strategy (Yellow)"
 msgstr "Стратегія (Жовтий)"
 
@@ -6555,7 +6562,7 @@ msgstr "Підсумкові рейтинги цілей:"
 msgid "Summary Threat Rating"
 msgstr "Підсумковий рейтинг загроз"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:111
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:112
 msgid "Systemwide"
 msgstr "Всесистемний"
 
@@ -7353,7 +7360,7 @@ msgstr ""
 msgid "TabDelimitedFile"
 msgstr "TabDelimitedFile"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:157
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:158
 msgid "Table Row Height Mode"
 msgstr "Опція висоти табличних рядків"
 
@@ -7812,7 +7819,7 @@ msgstr "Панель преференцій рейтингу загроз"
 msgid "Threat Rating Properties Panel"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:115
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:116
 msgid "Threat Ratings"
 msgstr "Рейтинг загроз"
 
@@ -7829,7 +7836,7 @@ msgstr "Рейтинги загроз - таблиця"
 msgid "Threat Reduction Result"
 msgstr "Результат зменшення загрози"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:242
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:249
 msgid "Threat Reduction Result (Light Purple)"
 msgstr "Результат зменшення загрози (Світло фіолетовий)"
 
@@ -8393,7 +8400,7 @@ msgstr "WWF"
 msgid "Warning"
 msgstr "Застереження"
 
-#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:252
+#: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:259
 msgid ""
 "We are trying to create a standard set of symbols that can be recognized "
 "globally. Just like people the world over recognize a red octagon as a stop "
