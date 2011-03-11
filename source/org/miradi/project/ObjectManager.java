@@ -436,6 +436,13 @@ public class ObjectManager
 	{
 		Map<Integer, String> manifests = getDatabase().readAllManifestFiles();
 		
+		int[] types = getAllObjectTypes();
+		for(int type : types)
+			loadPool(type, extractManifest(manifests, type));
+	}
+
+	public static int[] getAllObjectTypes()
+	{
 		int[] types = {
 			ObjectType.CAUSE,
 			ObjectType.STRATEGY,
@@ -492,8 +499,7 @@ public class ObjectManager
 			ObjectType.BUDGET_CATEGORY_TWO,
 			ObjectType.DASHBOARD,
 		};
-		for(int type : types)
-			loadPool(type, extractManifest(manifests, type));
+		return types;
 	}
 
 	private ObjectManifest extractManifest(Map<Integer, String> manifests, int type) throws Exception
