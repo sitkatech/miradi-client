@@ -189,6 +189,7 @@ public interface XmpzXmlConstants
 	public static final String EXTRA_DATA = "ExtraData";
 	public static final String EXTRA_DATA_SECTION = "ExtraDataSection";
 	public static final String EXTRA_DATA_SECTION_OWNER_ATTRIBUTE = "owner";
+	public static final String MIRADI_CLIENT_EXTRA_DATA_SECTION = "MiradiClient";
 	public static final String EXTRA_DATA_ITEM = "ExtraDataItem";
 	public static final String EXTRA_DATA_ITEM_NAME = "ExtraDataItemName";
 	public static final String EXTRA_DATA_ITEM_VALUE = "ExtraDataItemValue";
