@@ -600,7 +600,10 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 
 	private void createOrOpenProjectInBackground(String projectName) throws Exception
 	{
-		ProgressDialog progressDialog = new ProgressDialog(this, EAM.text("Opening..."));
+		String title = EAM.text("Create Project");
+		if(getDatabase().isExistingProject(projectName))
+			title = EAM.text("Open Project");
+		ProgressDialog progressDialog = new ProgressDialog(this, title);
 		ProjectOpenWorker worker = new ProjectOpenWorker(progressDialog, project, projectName);
 		progressDialog.doWorkInBackgroundWhileShowingProgress(worker);
 
