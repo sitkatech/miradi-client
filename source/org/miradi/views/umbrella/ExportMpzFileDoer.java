@@ -72,25 +72,22 @@ public class ExportMpzFileDoer extends AbstractFileSaverDoer
 		} 
 	}
 
-	static public boolean perform(MainWindow mainWindow, File directoryToZip) throws CommandFailedException
+	static public void perform(MainWindow mainWindow, File directoryToZip) throws CommandFailedException
 	{
 		EAMFileSaveChooser eamFileChooser = new MpzFileChooser(mainWindow);
 		File chosen = eamFileChooser.displayChooser();
 		if (chosen == null)
-			return false;
+			return;
 		
 		if (isChosenFileInsideProjectHomeDir(chosen))
 		{
 			EAM.errorDialog(EAM.text("The MPZ file cannot be saved to a folder within the project being exported"));
 			
-			return false;
+			return;
 		}
-		
 		try 
 		{
 			ProjectMpzWriter.createProjectZipFile(directoryToZip, chosen);
-			
-			return true;
 		} 
 		catch (Exception e) 
 		{
