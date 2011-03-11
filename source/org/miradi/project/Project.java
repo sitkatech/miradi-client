@@ -683,6 +683,7 @@ public class Project
 		{
 			progressMeter.setStatusMessage(EAM.text("Creating..."), 1 + FINISH_OPENING_STEP_COUNT);
 			createProject(projectName);
+			progressMeter.incrementProgress();
 		}
 		
 		writeStartingLogEntry();
