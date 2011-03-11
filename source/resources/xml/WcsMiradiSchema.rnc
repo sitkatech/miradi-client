@@ -666,7 +666,7 @@ TaggedObjectSet.element = element miradi:TaggedObjectSet
 
 ExtraData.element = element miradi:ExtraData
 {
-ExtraDataItem.element *
+ExtraDataSection.element *
 }
 
 vocabulary_work_units_full_project_timespan = xsd:NMTOKEN { pattern = 'Total' } 
@@ -1032,6 +1032,12 @@ StatusEntry.element = element miradi:StatusEntry
   element miradi:Progress { vocabulary_dashboard_row_progress }? &
   DashboardFlagsContainer.element? &
   element miradi:Comments { text }?
+}
+
+ExtraDataSection.element = element miradi:ExtraDataSection
+{
+  attribute owner { text } &
+  ExtraDataItem.element *
 }
 
 ExtraDataItem.element = element miradi:ExtraDataItem

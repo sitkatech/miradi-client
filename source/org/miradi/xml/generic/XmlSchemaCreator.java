@@ -304,11 +304,22 @@ public class XmlSchemaCreator implements XmpzXmlConstants
 		defineVocabularyDefinedAlias(writer, DASHBOARD, VOCABULARY_DASHBOARD_ROW_FLAGS, DASHBOARD_FLAGS);
 		
 		defineDashboardUserChoiceMap(writer);
-		defineExtraDataItemElement(writer);
+		defineExtraDataSectionElement(writer);
 		
 		writer.flush();
 	}
 	
+	private void defineExtraDataSectionElement(SchemaWriter writer)
+	{
+		writer.defineAlias(EXTRA_DATA_SECTION + ".element", "element " + XmpzXmlConstants.PREFIX + EXTRA_DATA_SECTION);
+		writer.startBlock();
+		writer.printlnIndented("attribute " + EXTRA_DATA_SECTION_OWNER_ATTRIBUTE + " { text } &");
+		writer.printlnIndented(EXTRA_DATA_ITEM + ".element *");
+		writer.endBlock();
+		
+		defineExtraDataItemElement(writer);
+	}
+
 	private void defineExtraDataItemElement(SchemaWriter writer)
 	{
 		writer.defineAlias(EXTRA_DATA_ITEM + ".element", "element " + XmpzXmlConstants.PREFIX + EXTRA_DATA_ITEM);
