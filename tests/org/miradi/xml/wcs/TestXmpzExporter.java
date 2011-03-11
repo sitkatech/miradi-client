@@ -51,6 +51,11 @@ public class TestXmpzExporter extends TestCaseWithProject
 		validateProject();
 	}
 	
+	public void testExtraDataNameSplitChar()
+	{
+		assertContains("Mismatch? ", ExtraDataExporter.TYPE_ID_TAG_SPLIT_TOKEN, ExtraDataExporter.TYPE_ID_TAG_SPLIT_TOKEN_FOR_REGULAR_EXPRESSION);
+	}
+	
 	public void testIfWeDoBigSchemaChangesWeShouldIncludeMinorChangesToo() throws Exception
 	{
 		if("66".equals(XmpzXmlConstants.NAME_SPACE_VERSION))

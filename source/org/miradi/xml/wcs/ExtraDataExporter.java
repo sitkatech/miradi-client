@@ -72,4 +72,5 @@ public class ExtraDataExporter extends AbstractXmlExporter
 	}
 	
 	public static final String TYPE_ID_TAG_SPLIT_TOKEN = ".";
+	public static final String TYPE_ID_TAG_SPLIT_TOKEN_FOR_REGULAR_EXPRESSION = "\\."; 
 }
