@@ -170,7 +170,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		enableSpellCheckingCheckBox.addActionListener(this);
 		htmlTab.add(enableSpellCheckingCheckBox);
 
-		htmlTab.add(new JLabel(" "));
+		htmlTab.add(new FillerLabel());
 		htmlTab.add(new PanelTitleLabel("<html><i>" + EAM.text("" +
 				"NOTE: Spell checking is currently only available in English. <br>" +
 				"If the 'Primary Project Data Language' in the Project tab of the Summary view <br>" +
