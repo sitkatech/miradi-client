@@ -112,7 +112,9 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 	{
 		Project projectToFill = new Project();
 		projectToFill.setLocalDataLocation(newProjectDir.getParentFile());
-		projectToFill.openProject(newProjectDir.getName());
+		
+		ProgressInterface nonImportProgressMeter = new NullProgressMeter();
+		projectToFill.openProject(newProjectDir.getName(), nonImportProgressMeter);
 		try
 		{
 			InputStreamWithSeek projectAsInputStream = getProjectAsInputStream(zipFile);
