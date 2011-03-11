@@ -67,7 +67,7 @@ public class ExtraDataImporter extends AbstractXmpzObjectImporter
 
 	private BaseObject createOrGetExisting(String typeName, String idAsString) throws Exception
 	{
-		int type = convertTypObjectType(typeName);
+		int type = convertTypeNameToObjectType(typeName);
 		BaseId id = new BaseId(Integer.parseInt(idAsString));
 		BaseObject foundObject = getProject().getPool(type).findObject(id);
 		if (foundObject != null)
@@ -78,7 +78,7 @@ public class ExtraDataImporter extends AbstractXmpzObjectImporter
 		return BaseObject.find(getProject(), createObjectRef);
 	}
 
-	private int convertTypObjectType(String typeName)
+	private int convertTypeNameToObjectType(String typeName)
 	{
 		if (typeName.equals(ViewData.OBJECT_NAME))
 			return ViewData.getObjectType();
