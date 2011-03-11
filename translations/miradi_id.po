@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-11 14:37-0600\n"
+"POT-Creation-Date: 2011-03-11 15:11-0600\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -3498,7 +3498,7 @@ msgstr "Kesalahan Ekspor ke Zip Miradi: Mungkin Terproteksi Tulis: "
 msgid "Error Occurred During Sorting"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:85
+#: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:102
 msgid "Error Occurred please try saving under different name."
 msgstr "Terjadi Kesalahan, harap simpan dengan nama lain. "
 
@@ -3605,7 +3605,7 @@ msgstr "Ekspor "
 msgid "Export Project (BETA)"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:59
+#: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:97
 msgid "Export complete"
 msgstr "Ekspor selesai "
 
@@ -3613,6 +3613,8 @@ msgstr "Ekspor selesai "
 msgid "Export to Miradi Zip..."
 msgstr "Ekspor ke Zip Miradi… "
 
+#: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:162
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:115
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListExportAction.java:47
 msgid "Export..."
 msgstr "Ekspor… "
@@ -5438,6 +5440,10 @@ msgstr "Standar Terbuka"
 msgid "Opening..."
 msgstr ""
 
+#: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:67
+msgid "Operation was canceled!"
+msgstr ""
+
 #: Miradi/source/org/miradi/questions/DiagramLinkColorQuestion.java:48
 msgid "Orange"
 msgstr "Oranye"
@@ -6009,6 +6015,10 @@ msgstr "Simpan %s "
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListSaveAsAction.java:47
 msgid "Save As..."
 msgstr "Simpan Sebagai... "
+
+#: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:96
+msgid "Save..."
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:60
 msgid "Scheduled"
@@ -7581,7 +7591,7 @@ msgid ""
 msgstr ""
 "File MPZ tidak dapat disimpan ke folder dalam proyek yang sedang diimpor. "
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:63
+#: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:71
 msgid ""
 "The image is too large to be exported.\n"
 "Please use the <Zoom Out> feature to make it smaller, and try again."
@@ -8637,6 +8647,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/NeverShowAgainPanel.java:48
 msgid "it will not be shown. Uncheck it to have Miradi "
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:93
+msgid "save..."
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/NeverShowAgainPanel.java:49
