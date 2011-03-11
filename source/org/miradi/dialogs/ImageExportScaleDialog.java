@@ -66,8 +66,10 @@ public class ImageExportScaleDialog extends DialogWithDisposablePanel
 
 		DataInputPanel panel = new DataInputPanel(mainWindow.getProject());
 		panel.setLayout(new OneColumnGridLayout());
-		panel.add(new PanelTitleLabel(EAM.text("For a larger, higher-resolution image, choose a scale above 100%")));
-		panel.add(new PanelTitleLabel(EAM.text("For a smaller, lower-resolution image, choose a scale below 100%")));
+		panel.add(new PanelTitleLabel("<html>" + EAM.text(
+				"Increasing the image scale will produce higher resolution images with larger file size and dimensions. <br>" +
+				"For the highest image quality, set image scale to 300%.<br><br> " +
+				"Images exported as PNG may produce a smaller file size than JPG at the same scale.")));
 		panel.add(new FillerLabel());
 		panel.add(scaleRow);
 		panel.add(new FillerLabel());
