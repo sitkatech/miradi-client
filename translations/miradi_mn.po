@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-11 15:27-0600\n"
+"POT-Creation-Date: 2011-03-11 17:18-0600\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -573,7 +573,7 @@ msgstr ""
 "<HTML>Төсөл хооронд мэдээлэл оруулахад CM -ээс RC-руу эсвэл мөн адил "
 "мэдээллийг оруулж чадахгүй </HTML>"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:57
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:58
 msgid ""
 "<HTML>Your project is missing some data that is required for upload to "
 "ConPro. Please correct the problems listed below then attempt to export the "
@@ -3008,7 +3008,7 @@ msgstr "map. tableColumn =-аас хүснэгтийн багана(tableColumn)
 msgid "Country"
 msgstr "Улс"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:161
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:169
 msgid ""
 "Country - Located in Summary View, Location Tab. Select at least one Country"
 msgstr ""
@@ -3550,7 +3550,7 @@ msgstr "Алдаа"
 msgid "Error Creating: %s"
 msgstr "Алдаа үүсгэх: %s"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:101
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:104
 msgid "Error Export To Miradi Zip: Possible Write Protected: "
 msgstr ""
 "Алдаа Miradi Zip-д оруулах: Бичихээс сэргийлж хамгаалагдсан байж магадгүй: "
@@ -3559,7 +3559,7 @@ msgstr ""
 msgid "Error Occurred During Sorting"
 msgstr "Ангилахад алдаа"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:102
+#: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:100
 msgid "Error Occurred please try saving under different name."
 msgstr "Алдаа гарсан тул өөр нэр өгч хадгалах."
 
@@ -3653,15 +3653,15 @@ msgstr "Сонгосон баганыг өргөжүүлэх"
 msgid "Expert Knowledge"
 msgstr "Экспертийн мэдлэг"
 
-#: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:57
+#: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:58
 msgid "Export"
 msgstr "Гаргахt"
 
-#: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:49
+#: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:50
 msgid "Export Project (BETA)"
 msgstr "Төслийг гаргах (BETA)"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:97
+#: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:95
 msgid "Export complete"
 msgstr "Оруулах бүрэн дууссан"
 
@@ -3669,13 +3669,14 @@ msgstr "Оруулах бүрэн дууссан"
 msgid "Export to Miradi Zip..."
 msgstr "Miradi Zip...рүү оруулах"
 
-#: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:162
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:112
+#: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:163
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:65
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:115
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListExportAction.java:47
 msgid "Export..."
 msgstr "Оруулахt..."
 
-#: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:86
+#: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:87
 msgid "Exported file does not validate."
 msgstr "Оруулсан файл хүчин төгөлдөр болоогүй."
 
@@ -5583,8 +5584,8 @@ msgstr ""
 msgid "PlanningSubViewName|Custom"
 msgstr "ТөлөвлөлтДэдХарагдацНэр|Үйлчлүүлэгч"
 
-#: Miradi/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:69
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:94
+#: Miradi/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:79
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:102
 msgid ""
 "Please choose a specific IUCN classification (Not a category). Fix needed "
 "for Strategy named:\n"
@@ -5766,7 +5767,7 @@ msgstr "Project Description:"
 msgid "Project Migration Required"
 msgstr "Төслийн шилжилт зайлшгүй шаардалагатай"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:152
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:160
 msgid "Project Name - Located in Summary View, Project Tab, Project Name field"
 msgstr ""
 
@@ -6062,7 +6063,7 @@ msgstr "Хадгалах %s"
 msgid "Save As..."
 msgstr "Нэр, төрөл, байрлал...сольж хадгалах"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:96
+#: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:101
 msgid "Save..."
 msgstr ""
 
@@ -7562,13 +7563,13 @@ msgstr "Баг"
 msgid "Team Contact"
 msgstr "Багтай холбоо барих"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:155
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:163
 msgid ""
 "Team Contact - At least one project Team Member must be specified as Team "
 "Contact Located in Summary View, Team Tab, Roles field"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:158
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:166
 msgid ""
 "Team Contact Email - The Team Contact must have an email address. Located in "
 "Summary View, Team Tab, ensure Team Contact has email specified"
@@ -7647,8 +7648,8 @@ msgstr ""
 "дэлгэрэнгүй мэдээллийг www.ConservationMeasures.org вэб хуудаснаас олж авах "
 "боломжтой "
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:57
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:84
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:58
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:87
 msgid ""
 "The MPZ file cannot be saved to a folder within the project being exported"
 msgstr "Төслийг гаргаж байхад MPZ файлыг хадгалах боломжгүй"
@@ -7727,7 +7728,7 @@ msgstr ""
 msgid "Then by"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:51
+#: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:52
 msgid ""
 "This feature is not yet fully supported. It exports all the project data, "
 "but the XML schema is still in flux. Future versions of Miradi will export "
@@ -8215,7 +8216,7 @@ msgstr ""
 msgid "Unable to save preferences"
 msgstr "\"preference\"-ийг хадгалах боломжгүй байна"
 
-#: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:73
+#: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:74
 msgid ""
 "Unable to write XML. Perhaps the disk was full, or you don't have permission "
 "to write to it, or you are using invalid characters in the file name."
@@ -8724,7 +8725,9 @@ msgstr ""
 msgid "it will not be shown. Uncheck it to have Miradi "
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:93
+#: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:90
+#: Miradi/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:54
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:80
 msgid "save..."
 msgstr ""
 
