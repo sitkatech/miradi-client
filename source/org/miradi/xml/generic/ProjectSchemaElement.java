@@ -32,7 +32,6 @@ class ProjectSchemaElement extends SchemaElement
 	{
 		schemaElements= new Vector<ObjectSchemaElement>();
 		
-		schemaElements.add(new ExtraDataSchemaElement());
 		schemaElements.add(new ProjectSummarySchemaElement());
 		schemaElements.add(new ProjectSummaryScopeSchemaElement());
 		schemaElements.add(new ProjectSummaryLocationSchemaElement());
@@ -80,6 +79,7 @@ class ProjectSchemaElement extends SchemaElement
 		schemaElements.add(new ObjectPoolSchemaElement(new ObjectTreeTableConfigurationSchemaElement()));
 		schemaElements.add(new ObjectPoolSchemaElement(new DashboardObjectSchemaElement()));
 		schemaElements.add(new ObjectPoolSchemaElement(new TaggedObjectSetSchemaElement()));
+		schemaElements.add(new ExtraDataSchemaElement());
 	}
 	
 	@Override

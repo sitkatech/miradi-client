@@ -2,7 +2,6 @@ namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/66'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
-  ExtraData.element &
   ProjectSummary.element &
   ProjectSummaryScope.element &
   ProjectSummaryLocation.element &
@@ -50,12 +49,8 @@ ConservationProject.element = element miradi:ConservationProject
   PlanningViewConfigurationPool.element ?  &
   DashboardPool.element ?  &
   TaggedObjectSetPool.element ?  &
+  ExtraData.element &
   element miradi:DeletedOrphans{ text }?
-}
-
-ExtraData.element = element miradi:ExtraData
-{
-ExtraDataItem.element *
 }
 
 ProjectSummary.element = element miradi:ProjectSummary
@@ -667,6 +662,11 @@ TaggedObjectSet.element = element miradi:TaggedObjectSet
   element miradi:TaggedObjectSetId { text }? &
   element miradi:TaggedObjectSetComments { text }? &
   element miradi:TaggedObjectSetFactorIds { WrappedByDiagramFactorId.element* }
+}
+
+ExtraData.element = element miradi:ExtraData
+{
+ExtraDataItem.element *
 }
 
 vocabulary_work_units_full_project_timespan = xsd:NMTOKEN { pattern = 'Total' } 
