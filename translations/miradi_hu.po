@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-11 11:13-0600\n"
+"POT-Creation-Date: 2011-03-11 14:07-0600\n"
 "PO-Revision-Date: 2011-02-15 16:35-0600\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -3974,7 +3974,7 @@ msgstr ""
 #: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:109
 #: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:79
 #: Miradi/source/org/miradi/views/umbrella/ZippedProjectImporter.java:49
-#: Miradi/source/org/miradi/xml/xmpz/XmpzXmlImporter.java:104
+#: Miradi/source/org/miradi/xml/xmpz/XmpzXmlImporter.java:105
 msgid "Importing..."
 msgstr ""
 

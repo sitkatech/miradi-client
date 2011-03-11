@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-11 11:13-0600\n"
+"POT-Creation-Date: 2011-03-11 14:07-0600\n"
 "PO-Revision-Date: 2010-09-30 09:31+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -4249,7 +4249,7 @@ msgstr "Імпортувати Zip"
 #: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:109
 #: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:79
 #: Miradi/source/org/miradi/views/umbrella/ZippedProjectImporter.java:49
-#: Miradi/source/org/miradi/xml/xmpz/XmpzXmlImporter.java:104
+#: Miradi/source/org/miradi/xml/xmpz/XmpzXmlImporter.java:105
 msgid "Importing..."
 msgstr ""
 
