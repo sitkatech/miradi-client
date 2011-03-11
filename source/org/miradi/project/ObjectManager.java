@@ -151,6 +151,7 @@ import org.miradi.objects.WcsProjectData;
 import org.miradi.objects.WwfProjectData;
 import org.miradi.objects.Xenodata;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.utils.ProgressInterface;
 
 public class ObjectManager
 {
@@ -430,12 +431,23 @@ public class ObjectManager
 		return object.getData(fieldTag);
 	}
 
-	//NOTE: Can't just iterate through all the pools because 
-	// they have to be loaded in a specific sequence
-	public void loadFromDatabase() throws Exception
+	public void loadFromDatabase(ProgressInterface progressMeter) throws Exception
 	{
 		Map<Integer, String> manifests = getDatabase().readAllManifestFiles();
+		progressMeter.incrementProgress();
 		
+		//NOTE: Pools must be loaded in a specific sequence
+		int[] types = getAllObjectTypes();
+		for(int type : types)
+		{
+			loadPool(type, extractManifest(manifests, type));
+			progressMeter.incrementProgress();
+		}
+	}
+
+	public static int[] getAllObjectTypes()
+	{
+		//NOTE: Pools must be loaded in a specific sequence
 		int[] types = {
 			ObjectType.CAUSE,
 			ObjectType.STRATEGY,
@@ -492,8 +504,7 @@ public class ObjectManager
 			ObjectType.BUDGET_CATEGORY_TWO,
 			ObjectType.DASHBOARD,
 		};
-		for(int type : types)
-			loadPool(type, extractManifest(manifests, type));
+		return types;
 	}
 
 	private ObjectManifest extractManifest(Map<Integer, String> manifests, int type) throws Exception

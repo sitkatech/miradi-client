@@ -42,6 +42,7 @@ import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.utils.ColorManager;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.utils.NullProgressMeter;
 import org.miradi.views.diagram.LinkCreator;
 import org.miradi.views.diagram.LinkDeletor;
 
@@ -83,7 +84,7 @@ public class TestSimpleThreatRatingFramework extends MiradiTestCase
 		{
 			Project realProject = new Project();
 			realProject.setLocalDataLocation(tempDir);
-			realProject.createOrOpenWithDefaultObjectsAndDiagramHelp(projectName);
+			realProject.createOrOpenWithDefaultObjectsAndDiagramHelp(projectName, new NullProgressMeter());
 			BaseId createdId = realProject.createObjectAndReturnId(ObjectType.RATING_CRITERION);
 			
 			FactorId threatId = new FactorId(283);
@@ -97,7 +98,7 @@ public class TestSimpleThreatRatingFramework extends MiradiTestCase
 
 			Project loadedProject = new Project();
 			loadedProject.setLocalDataLocation(tempDir);
-			loadedProject.createOrOpenWithDefaultObjectsAndDiagramHelp(projectName);
+			loadedProject.createOrOpenWithDefaultObjectsAndDiagramHelp(projectName, new NullProgressMeter());
 			IdList loadedOptionIds = loadedProject.getSimpleThreatRatingFramework().getValueOptionIds();
 			SimpleThreatRatingFramework loadedFramework = loadedProject.getSimpleThreatRatingFramework();
 			assertEquals("didn't reload framework?", createdId, loadedFramework.getCriterion(createdId).getId());

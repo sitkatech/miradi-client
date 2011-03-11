@@ -106,7 +106,7 @@ public abstract class AbstractProjectImporter
 		if (projectName == null)
 			return;
 		
-		ProgressDialog progressDialog = new ProgressDialog(getMainWindow(), "Importing...");
+		ProgressDialog progressDialog = new ProgressDialog(getMainWindow(), EAM.text("Importing..."));
 		Worker worker = new Worker(progressDialog, fileToImport, projectName);
 		progressDialog.doWorkInBackgroundWhileShowingProgress(worker);
 		

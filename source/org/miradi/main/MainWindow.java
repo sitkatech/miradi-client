@@ -55,9 +55,11 @@ import org.miradi.diagram.DiagramModel;
 import org.miradi.dialogfields.AbstractWorkPlanStringMapEditorDoer;
 import org.miradi.dialogfields.FieldSaver;
 import org.miradi.dialogs.ProjectCorruptionDialog;
+import org.miradi.dialogs.base.ProgressDialog;
 import org.miradi.exceptions.FutureVersionException;
 import org.miradi.exceptions.OldVersionException;
 import org.miradi.exceptions.UnknownCommandException;
+import org.miradi.exceptions.UserCanceledException;
 import org.miradi.main.menu.MainMenuBar;
 import org.miradi.objecthelpers.ColorsFileLoader;
 import org.miradi.objecthelpers.ORef;
@@ -78,7 +80,9 @@ import org.miradi.questions.TableRowHeightModeQuestion;
 import org.miradi.utils.DefaultHyperlinkHandler;
 import org.miradi.utils.HtmlViewPanel;
 import org.miradi.utils.HtmlViewPanelWithMargins;
+import org.miradi.utils.MiradiBackgroundWorkerThread;
 import org.miradi.utils.MiradiResourceImageIcon;
+import org.miradi.utils.ProgressInterface;
 import org.miradi.utils.SplitterPositionSaverAndGetter;
 import org.miradi.views.diagram.DiagramView;
 import org.miradi.views.library.LibraryView;
@@ -534,7 +538,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		project.beginCommandSideEffectMode();
 		try
 		{
-			project.createOrOpenWithDefaultObjectsAndDiagramHelp(projectName);
+			createOrOpenProjectInBackground(projectName);
 			logExceptionsInsideProjectDir();
 			
 			repairProject();
@@ -544,6 +548,10 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 			updateTitle();
 			updateStatusBar();
 			getDiagramView().updateVisibilityOfFactorsAndClearSelectionModel();
+		}
+		catch(UserCanceledException e)
+		{
+			EAM.notifyDialog(EAM.text("Cancelled"));
 		}
 		catch(AlreadyHandledException e)
 		{
@@ -593,6 +601,38 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 			updateActionsAndStatusBar();
 			project.endCommandSideEffectMode();
 		}
+	}
+
+	private void createOrOpenProjectInBackground(String projectName) throws Exception
+	{
+		String title = EAM.text("Create Project");
+		if(getDatabase().isExistingProject(projectName))
+			title = EAM.text("Open Project");
+		ProgressDialog progressDialog = new ProgressDialog(this, title);
+		ProjectOpenWorker worker = new ProjectOpenWorker(progressDialog, project, projectName);
+		progressDialog.doWorkInBackgroundWhileShowingProgress(worker);
+
+	}
+
+	private static class ProjectOpenWorker extends MiradiBackgroundWorkerThread
+	{
+		public ProjectOpenWorker(ProgressInterface progressInterfaceToUse, Project projectToUse, String projectNameToUse)
+		{
+			super(progressInterfaceToUse);
+			
+			project = projectToUse;
+			projectName = projectNameToUse;
+		}
+		
+		@Override
+		protected void doRealWork() throws Exception
+		{
+			project.createOrOpenWithDefaultObjectsAndDiagramHelp(projectName, getProgressIndicator());
+			getProgressIndicator().finished();
+		}
+		
+		private Project project;
+		private String projectName;
 	}
 
 	private void repairProject() throws Exception
