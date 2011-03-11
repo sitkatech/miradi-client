@@ -108,4 +108,10 @@ public class ExportMpzFileDoer extends AbstractFileSaverDoer
 	{
 		return EAM.isOneFileInsideTheOther(EAM.getHomeDirectory(), chosen);
 	}
+	
+	@Override
+	protected String getProgressTitle()
+	{
+		return EAM.text("Export...");
+	}
 }

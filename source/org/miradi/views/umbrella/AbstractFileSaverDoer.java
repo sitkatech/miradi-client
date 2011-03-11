@@ -88,11 +88,6 @@ abstract public class AbstractFileSaverDoer extends ViewDoer
 		} 
 	}
 
-	protected String getProgressTitle()
-	{
-		return EAM.text("...");
-	}
-
 	private void doWorkWIthProgressDialog(ProgressInterface progressInterface, File chosen) throws Exception
 	{
 		progressInterface.setStatusMessage(EAM.text("save..."), 1);
@@ -143,4 +138,6 @@ abstract public class AbstractFileSaverDoer extends ViewDoer
 	abstract protected EAMFileSaveChooser createFileChooser();
 	
 	abstract protected boolean doWork(File destinationFile) throws Exception;
+	
+	abstract protected String getProgressTitle();
 }
