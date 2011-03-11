@@ -669,12 +669,21 @@ public class Project
 	public void rawCreateorOpen(String projectName, ProgressInterface progressMeter) throws Exception
 	{
 		clear();
+
+		final int FINISH_OPENING_STEP_COUNT = 2;
 		
 		boolean didProjectAlreadyExist = getDatabase().isExistingProject(projectName);
 		if(didProjectAlreadyExist)
+		{
+			int stepCount = ObjectManager.getAllObjectTypes().length + FINISH_OPENING_STEP_COUNT;
+			progressMeter.setStatusMessage(EAM.text("Opening..."), stepCount);
 			openProject(projectName);
+		}
 		else
+		{
+			progressMeter.setStatusMessage(EAM.text("Creating..."), 1 + FINISH_OPENING_STEP_COUNT);
 			createProject(projectName);
+		}
 		
 		writeStartingLogEntry();
 	
