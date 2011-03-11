@@ -159,8 +159,8 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		htmlTab.add(new FillerLabel());
 		htmlTab.add(new PanelTitleLabel("<html><i>" + EAM.text("" +
 				"NOTE: Automatic Table Row Height Mode may impact the speed of expand and <br>" +
-				"collapse actions in the tables this setting affects. For better <br>" +
-				"performance, select Manual Row Height Mode.")));
+				"collapse actions in the tables this setting affects. For better performance, <br>" +
+				"select Manual Row Height Mode.")));
 		
 		createAndAddBlankRow(htmlTab);
 		htmlTab.add(new PanelTitleLabel(EAM.text("Enable Spell Checking")));
