@@ -26,6 +26,7 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Task;
 import org.miradi.questions.PriorityRatingQuestion;
+import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.w3c.dom.Node;
@@ -58,6 +59,8 @@ public class IndicatorPoolImporter extends AbstractBaseObjectPoolImporter
 		importIds(node, destinationRef, Indicator.TAG_METHOD_IDS, Task.getObjectType(), XmpzXmlConstants.METHOD);
 		importRefs(node, XmpzXmlConstants.MEASUREMENT_IDS, destinationRef, Indicator.TAG_MEASUREMENT_REFS, Measurement.getObjectType(), XmpzXmlConstants.MEASUREMENT);
 		importThresholds(node, destinationRef);
+		importCodeField(node, destinationRef, Indicator.TAG_RATING_SOURCE, getProject().getQuestion(RatingSourceQuestion.class));
+		importField(node, destinationRef, Indicator.TAG_VIABILITY_RATINGS_COMMENT);
 	}
 
 	private void importThresholds(Node indicatorNode, ORef destinationRef) throws Exception

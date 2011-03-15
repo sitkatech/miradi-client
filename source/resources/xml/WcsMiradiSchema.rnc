@@ -1,4 +1,4 @@
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/66'
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/67'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -494,7 +494,9 @@ Indicator.element = element miradi:Indicator
   element miradi:IndicatorAssignmentIds { ResourceAssignmentId.element* }? &
   element miradi:IndicatorMeasurementIds { MeasurementId.element* }? &
   element miradi:IndicatorMethodIds { MethodId.element* }? &
-  element miradi:IndicatorThresholds { IndicatorThreshold.element* }?
+  element miradi:IndicatorThresholds { IndicatorThreshold.element* }? &
+  element miradi:IndicatorRatingSource { vocabulary_rating_source  }? &
+  element miradi:IndicatorViabilityRatingsComment { text }?
 }
 
 TaskPool.element = element miradi:TaskPool { Task.element* }
@@ -725,6 +727,7 @@ vocabulary_threat_rating_mode = 'Simple'|'StressBased'
 vocabulary_dashboard_row_flags = 'needsAttention'
 vocabulary_quarter_columns_visibility = 'ShowQuarterColumns'|'HideQuarterColumns'
 vocabulary_work_plan_time_unit = 'QUARTERLY'|'YEARLY'
+vocabulary_rating_source = ''|'RoughGuess'|'ExpertKnowlege'|'ExternalResearch'|'OnsiteResearch'
 vocabulary_dashboard_row_progress = ''|'1'|'2'|'3'|'4'
 ConceptualModelId.element = element miradi:ConceptualModelId { xsd:integer }
 ResultsChainId.element = element miradi:ResultsChainId { xsd:integer }
