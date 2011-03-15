@@ -60,6 +60,7 @@ public class TestConproXmlExporter extends TestCaseWithProject
 	{
 		super.setUp();
 		getProject().populateEverything();
+		getProject().createIndicatorContainingWhiteSpacePaddedCode();
 	}
 	
 	public void testValidatedExport() throws Exception

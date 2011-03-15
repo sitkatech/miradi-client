@@ -238,6 +238,8 @@ public class TestConproXmlImporter extends TestCaseWithProject
 	public void testImportConProProject() throws Exception
 	{
 		getProject().populateEverything();
+		getProject().createIndicatorContainingWhiteSpacePaddedCode();
+		
 		ORef tncProjectDataRef = getProject().getSingletonObjectRef(TncProjectData.getObjectType());
 		
 		getProject().fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_PROJECT_SHARING_CODE, ProjectSharingQuestion.SHARE_WITH_ANYONE);
