@@ -27,6 +27,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.PriorityRatingQuestion;
+import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.utils.CodeList;
 
@@ -58,6 +59,8 @@ public class IndicatorPoolExporter extends BaseObjectPoolExporter
 		writeMeasurementIds(indicator.getMeasurementRefs());
 		writeOptionalIds(XmpzXmlConstants.METHOD_IDS, XmpzXmlConstants.METHOD, indicator.getMethodRefs());
 		writeOptionalThreshold(indicator);
+		writeCodeElementSameAsTag(indicator, Indicator.TAG_RATING_SOURCE, getProject().getQuestion(RatingSourceQuestion.class));
+		writeOptionalElementWithSameTag(indicator, Indicator.TAG_VIABILITY_RATINGS_COMMENT);
 	}
 	
 	private void writeOptionalThreshold(Indicator indicator) throws Exception
