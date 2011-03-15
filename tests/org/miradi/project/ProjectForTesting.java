@@ -1440,7 +1440,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 		createAndPopulateObjective(strategy);
 		Task activity = createAndPopulateActivity();
 		createAndPopulateTask(activity, "Some Task Label");
-		createIndicatorContainingWhiteSpacePaddedCode();
 		createAndPopulateOrganization();
 		createAndPopulateExpenseAssignment();
 		createAndPopulateResourceAssignment();
