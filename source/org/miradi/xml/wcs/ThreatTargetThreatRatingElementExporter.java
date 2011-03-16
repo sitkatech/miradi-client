@@ -217,8 +217,8 @@ public class ThreatTargetThreatRatingElementExporter extends AbstractXmlExporter
 	{
 		ThreatRatingCommentsData threatRatingCommentsData = getProject().getSingletonThreatRatingCommentsData();
 		String threatTargetRefsAsKey = threatRatingCommentsData.createKey(threatRef, targetRef);
-		String threatRatingComment = threatRatingCommentsData.getThreatRatingCommentsMap(threatRatingCommentsMapTag).get(threatTargetRefsAsKey);
-		getWcsXmlExporter().writeOptionalElement(getWcsXmlExporter().getWriter(), THREAT_RATING + COMMENTS, threatRatingComment);
+		String threatRatingComments = threatRatingCommentsData.getThreatRatingCommentsMap(threatRatingCommentsMapTag).get(threatTargetRefsAsKey);
+		getWcsXmlExporter().writeOptionalElement(getWcsXmlExporter().getWriter(), THREAT_RATING + COMMENTS, threatRatingComments);
 	}
 	
 	private void exportThreatId(ORef threatRef) throws Exception
