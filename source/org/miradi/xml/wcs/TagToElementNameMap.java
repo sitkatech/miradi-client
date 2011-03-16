@@ -155,6 +155,8 @@ public class TagToElementNameMap implements XmpzXmlConstants
 		indicatorMap.put(Indicator.TAG_DETAIL, DETAILS);
 		indicatorMap.put(Indicator.TAG_FUTURE_STATUS_DETAIL, "FutureStatusDetails");
 		indicatorMap.put(Indicator.TAG_METHOD_IDS, XmpzXmlConstants.METHOD_IDS);
+		indicatorMap.put(Indicator.TAG_FUTURE_STATUS_COMMENT, "FutureStatusComments");
+		indicatorMap.put(Indicator.TAG_VIABILITY_RATINGS_COMMENT, "ViabilityRatingsComments");
 		
 		return indicatorMap;
 	}

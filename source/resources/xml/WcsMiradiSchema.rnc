@@ -1,4 +1,4 @@
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/67'
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/68'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -174,7 +174,7 @@ TncProjectData.element = element miradi:TncProjectData
 {
   element miradi:TncProjectDataDatabaseDownloadDate { text }? &
   element miradi:TncProjectDataOtherOrgRelatedProjects { text }? &
-  element miradi:TncProjectDataPlanningTeamComment { text }? &
+  element miradi:TncProjectDataPlanningTeamComments { text }? &
   element miradi:TncProjectDataConProParentChildProjectText { text }? &
   element miradi:TncProjectDataLessonsLearned { text }? &
   element miradi:TncProjectDataProjectResourcesScorecard { text }? &
@@ -488,7 +488,7 @@ Indicator.element = element miradi:Indicator
   element miradi:IndicatorFutureStatusSummary { text }? &
   element miradi:IndicatorFutureStatusRating { vocabulary_measurement_status  } &
   element miradi:IndicatorFutureStatusDetails { text }? &
-  element miradi:IndicatorFutureStatusComment { text }? &
+  element miradi:IndicatorFutureStatusComments { text }? &
   element miradi:IndicatorProgressReportIds { ProgressReportId.element* }? &
   element miradi:IndicatorExpenseIds { ExpenseAssignmentId.element* }? &
   element miradi:IndicatorAssignmentIds { ResourceAssignmentId.element* }? &
@@ -496,7 +496,7 @@ Indicator.element = element miradi:Indicator
   element miradi:IndicatorMethodIds { MethodId.element* }? &
   element miradi:IndicatorThresholds { IndicatorThreshold.element* }? &
   element miradi:IndicatorRatingSource { vocabulary_rating_source  }? &
-  element miradi:IndicatorViabilityRatingsComment { text }?
+  element miradi:IndicatorViabilityRatingsComments { text }?
 }
 
 TaskPool.element = element miradi:TaskPool { Task.element* }
