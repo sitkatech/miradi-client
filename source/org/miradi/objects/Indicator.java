@@ -383,7 +383,7 @@ public class Indicator extends BaseObject
 		measurementRefs = new ORefListData(TAG_MEASUREMENT_REFS);
 		detail = new StringData(TAG_DETAIL);
 		comment = new StringData(TAG_COMMENTS);
-		viabilityRatingsComment = new StringData(TAG_VIABILITY_RATINGS_COMMENTS);
+		viabilityRatingsComments = new StringData(TAG_VIABILITY_RATINGS_COMMENTS);
 	    thresholdDetails = new StringStringMapData(TAG_THRESHOLD_DETAILS);
 
 		futureStatusRating = new ChoiceData(TAG_FUTURE_STATUS_RATING, getQuestion(StatusQuestion.class));
@@ -414,7 +414,7 @@ public class Indicator extends BaseObject
 		addField(TAG_MEASUREMENT_REFS, measurementRefs);
 		addField(TAG_DETAIL, detail);
 		addField(TAG_COMMENTS, comment);
-		addField(TAG_VIABILITY_RATINGS_COMMENTS, viabilityRatingsComment);
+		addField(TAG_VIABILITY_RATINGS_COMMENTS, viabilityRatingsComments);
 		addField(TAG_THRESHOLD_DETAILS, thresholdDetails); 
 		
 		addField(TAG_FUTURE_STATUS_RATING, futureStatusRating);
@@ -482,7 +482,7 @@ public class Indicator extends BaseObject
 	private ORefListData measurementRefs;
 	private StringData detail;
 	private StringData comment;
-	private StringData viabilityRatingsComment;
+	private StringData viabilityRatingsComments;
 	private StringStringMapData thresholdDetails;
 
 	private ChoiceData futureStatusRating;
