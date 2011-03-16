@@ -109,12 +109,12 @@ abstract public class Factor extends BaseObject
 	
 	public String getComment()
 	{
-		return comment.get();
+		return comments.get();
 	}
 	
 	public void setComment(String newComment) throws Exception
 	{
-		comment.set(newComment);
+		comments.set(newComment);
 	}
 	
 	public String getDetails()
@@ -506,7 +506,7 @@ abstract public class Factor extends BaseObject
 	void clear()
 	{
 		super.clear();
-		comment = new StringData(TAG_COMMENTS);
+		comments = new StringData(TAG_COMMENTS);
 		text = new StringData(TAG_TEXT);
 		shortLabel = new StringData(TAG_SHORT_LABEL);
 	    indicators = new IdListData(TAG_INDICATOR_IDS, Indicator.getObjectType());
@@ -519,7 +519,7 @@ abstract public class Factor extends BaseObject
 		pseudoResultsChainRefs = new PseudoORefListData(PSEUDO_TAG_RESULTS_CHAIN_REFS);
 		pseudoTagReferringTagRefs = new PseudoORefListData(PSEUDO_TAG_REFERRING_TAG_REFS);
 		
-		addField(TAG_COMMENTS, comment);
+		addField(TAG_COMMENTS, comments);
 		addField(TAG_TEXT, text);
 		addField(TAG_SHORT_LABEL, shortLabel);
 		addField(TAG_INDICATOR_IDS, indicators);
@@ -561,7 +561,7 @@ abstract public class Factor extends BaseObject
 	public static final String PSEUDO_TAG_INDICATORS = "PseudoTagIndicators";
 	
 	private FactorType type;
-	private StringData comment;
+	private StringData comments;
 	private StringData text;
 	private StringData shortLabel;
 
