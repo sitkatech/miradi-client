@@ -52,7 +52,7 @@ public class IndicatorPoolExporter extends BaseObjectPoolExporter
 		writeOptionalElementWithSameTag(baseObject, Indicator.TAG_FUTURE_STATUS_SUMMARY);
 		writeCodeElementSameAsTag(indicator, Indicator.TAG_FUTURE_STATUS_RATING, new StatusQuestion());
 		writeOptionalElementWithSameTag(baseObject, Indicator.TAG_FUTURE_STATUS_DETAIL);
-		writeOptionalElementWithSameTag(baseObject, Indicator.TAG_FUTURE_STATUS_COMMENT);	
+		writeOptionalElementWithSameTag(baseObject, Indicator.TAG_FUTURE_STATUS_COMMENTS);	
 		writeProgressReportIds(indicator);
 		writeExpenseAssignmentIds(indicator);
 		writeResourceAssignmentIds(indicator);

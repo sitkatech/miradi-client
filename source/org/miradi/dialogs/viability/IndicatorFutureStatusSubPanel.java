@@ -66,7 +66,7 @@ public class IndicatorFutureStatusSubPanel extends ObjectDataInputPanel
 		addFieldsOnOneLine(futureStatusLabel, components);
 
 		addField(createMultilineField(Indicator.getObjectType(), Indicator.TAG_FUTURE_STATUS_DETAIL));
-		addField(createMultilineField(Indicator.getObjectType(), Indicator.TAG_FUTURE_STATUS_COMMENT));
+		addField(createMultilineField(Indicator.getObjectType(), Indicator.TAG_FUTURE_STATUS_COMMENTS));
 		
 		updateFieldsFromProject();
 	}

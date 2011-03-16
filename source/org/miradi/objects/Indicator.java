@@ -390,7 +390,7 @@ public class Indicator extends BaseObject
 		futureStatusDate = new DateData(TAG_FUTURE_STATUS_DATE);
 		futureStatusSummary = new StringData(TAG_FUTURE_STATUS_SUMMARY);
 		futureStatusDetail = new StringData(TAG_FUTURE_STATUS_DETAIL);
-		futureStatusComment = new StringData(TAG_FUTURE_STATUS_COMMENT);
+		futureStatusComment = new StringData(TAG_FUTURE_STATUS_COMMENTS);
 		
 		multiLineTargets = new PseudoStringData(PSEUDO_TAG_TARGETS);
 		multiLineDirectThreats = new PseudoStringData(PSEUDO_TAG_DIRECT_THREATS);
@@ -421,7 +421,7 @@ public class Indicator extends BaseObject
 		addField(TAG_FUTURE_STATUS_DATE, futureStatusDate);
 		addField(TAG_FUTURE_STATUS_SUMMARY, futureStatusSummary);
 		addField(TAG_FUTURE_STATUS_DETAIL, futureStatusDetail);
-		addField(TAG_FUTURE_STATUS_COMMENT, futureStatusComment);
+		addField(TAG_FUTURE_STATUS_COMMENTS, futureStatusComment);
 		
 		addField(PSEUDO_TAG_INDICATOR_THRESHOLD_VALUE, indicatorThresholdLabel);
 		addField(PSEUDO_TAG_TARGETS, multiLineTargets);
@@ -453,7 +453,7 @@ public class Indicator extends BaseObject
 	public static final String TAG_FUTURE_STATUS_DATE = "FutureStatusDate";
 	public static final String TAG_FUTURE_STATUS_SUMMARY = "FutureStatusSummary";
 	public static final String TAG_FUTURE_STATUS_DETAIL = "FutureStatusDetail";
-	public static final String TAG_FUTURE_STATUS_COMMENT = "FutureStatusComment";
+	public static final String TAG_FUTURE_STATUS_COMMENTS = "FutureStatusComment";
 
 	public static final String PSEUDO_TAG_FACTOR = "PseudoTagFactor";
 	
