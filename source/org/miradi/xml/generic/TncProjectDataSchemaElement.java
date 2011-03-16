@@ -32,7 +32,7 @@ public class TncProjectDataSchemaElement extends ObjectSchemaElement
 		
 		createOptionalTextField(ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE);
 		createOptionalTextField(ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
-		createOptionalTextField(ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENT);
+		createOptionalTextField(ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENTS);
 		createOptionalTextField(TncProjectData.TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT);
 		createOptionalTextField(ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
 		createOptionalTextField(TncProjectData.TAG_PROJECT_RESOURCES_SCORECARD);

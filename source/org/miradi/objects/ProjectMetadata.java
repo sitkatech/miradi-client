@@ -481,7 +481,7 @@ public class ProjectMetadata extends BaseObject
 		tncWorkbookVersionNumber = new StringData(TAG_TNC_WORKBOOK_VERSION_NUMBER);
 		tncWorkbookVersionDate = new DateData(TAG_TNC_WORKBOOK_VERSION_DATE);
 		tncDatabaseDownloadDate = new DateData(TAG_TNC_DATABASE_DOWNLOAD_DATE);
-		tncPlanningTeamComments = new StringData(TAG_TNC_PLANNING_TEAM_COMMENT);
+		tncPlanningTeamComments = new StringData(TAG_TNC_PLANNING_TEAM_COMMENTS);
 		tncOperatingUnits = new CodeListData(TAG_TNC_OPERATING_UNITS, getQuestion(TncOperatingUnitsQuestion.class));
 		tncTerrestrialEcoRegion = new CodeListData(TAG_TNC_TERRESTRIAL_ECO_REGION, getQuestion(TncTerrestrialEcoRegionQuestion.class));
 		tncMarineEcoRegion = new CodeListData(TAG_TNC_MARINE_ECO_REGION, getQuestion(TncMarineEcoRegionQuestion.class));
@@ -491,7 +491,7 @@ public class ProjectMetadata extends BaseObject
 		addField(TAG_TNC_WORKBOOK_VERSION_NUMBER, tncWorkbookVersionNumber);
 		addField(TAG_TNC_WORKBOOK_VERSION_DATE, tncWorkbookVersionDate);
 		addField(TAG_TNC_DATABASE_DOWNLOAD_DATE, tncDatabaseDownloadDate);
-		addField(TAG_TNC_PLANNING_TEAM_COMMENT, tncPlanningTeamComments);
+		addField(TAG_TNC_PLANNING_TEAM_COMMENTS, tncPlanningTeamComments);
 		addField(TAG_TNC_OPERATING_UNITS, tncOperatingUnits);
 		addField(TAG_TNC_TERRESTRIAL_ECO_REGION, tncTerrestrialEcoRegion);
 		addField(TAG_TNC_MARINE_ECO_REGION, tncMarineEcoRegion);
@@ -576,7 +576,7 @@ public class ProjectMetadata extends BaseObject
 	public static final String TAG_TNC_WORKBOOK_VERSION_NUMBER = "TNC.WorkbookVersionNumber";
 	public static final String TAG_TNC_WORKBOOK_VERSION_DATE = "TNC.WorkbookVersionDate";
 	public static final String TAG_TNC_DATABASE_DOWNLOAD_DATE = "TNC.DatabaseDownloadDate";
-	public static final String TAG_TNC_PLANNING_TEAM_COMMENT = "TNC.PlanningTeamComment";
+	public static final String TAG_TNC_PLANNING_TEAM_COMMENTS = "TNC.PlanningTeamComment";
 	public static final String TAG_TNC_OPERATING_UNITS = "TNC.OperatingUnitList";
 	public static final String TAG_TNC_TERRESTRIAL_ECO_REGION = "TNC.TerrestrialEcoRegion";
 	public static final String TAG_TNC_MARINE_ECO_REGION = "TNC.MarineEcoRegion";
