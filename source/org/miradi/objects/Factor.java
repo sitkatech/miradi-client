@@ -112,9 +112,9 @@ abstract public class Factor extends BaseObject
 		return comments.get();
 	}
 	
-	public void setComment(String newComment) throws Exception
+	public void setComment(String newComments) throws Exception
 	{
-		comments.set(newComment);
+		comments.set(newComments);
 	}
 	
 	public String getDetails()
