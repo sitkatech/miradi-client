@@ -64,8 +64,8 @@ public class DashboardPoolImporter extends AbstractXmpzObjectImporter
 			Node commentsNode = getImporter().getNode(statusNode, DASHBOARD_COMMENTS);
 			if (commentsNode != null)
 			{
-				String userComment = commentsNode.getTextContent();
-				userCommentsMap.put(thirdLevelCode, userComment);
+				String userComments = commentsNode.getTextContent();
+				userCommentsMap.put(thirdLevelCode, userComments);
 			}
 		}
 		
