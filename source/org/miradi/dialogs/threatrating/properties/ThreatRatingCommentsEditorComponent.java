@@ -72,9 +72,9 @@ public class ThreatRatingCommentsEditorComponent extends SavableField
 	{
 		ORef threatRef = getThreatRef();
 		ORef targetRef = getTargetRef();
-		String comment = getThreatRatingCommentsData().findComment(threatRef, targetRef);
+		String comments = getThreatRatingCommentsData().findComment(threatRef, targetRef);
 		
-		getTextArea().setText(comment);
+		getTextArea().setText(comments);
 		getTextArea().invalidate();
 	}
 
