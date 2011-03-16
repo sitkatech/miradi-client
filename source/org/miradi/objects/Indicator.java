@@ -390,7 +390,7 @@ public class Indicator extends BaseObject
 		futureStatusDate = new DateData(TAG_FUTURE_STATUS_DATE);
 		futureStatusSummary = new StringData(TAG_FUTURE_STATUS_SUMMARY);
 		futureStatusDetail = new StringData(TAG_FUTURE_STATUS_DETAIL);
-		futureStatusComment = new StringData(TAG_FUTURE_STATUS_COMMENTS);
+		futureStatusComments = new StringData(TAG_FUTURE_STATUS_COMMENTS);
 		
 		multiLineTargets = new PseudoStringData(PSEUDO_TAG_TARGETS);
 		multiLineDirectThreats = new PseudoStringData(PSEUDO_TAG_DIRECT_THREATS);
@@ -421,7 +421,7 @@ public class Indicator extends BaseObject
 		addField(TAG_FUTURE_STATUS_DATE, futureStatusDate);
 		addField(TAG_FUTURE_STATUS_SUMMARY, futureStatusSummary);
 		addField(TAG_FUTURE_STATUS_DETAIL, futureStatusDetail);
-		addField(TAG_FUTURE_STATUS_COMMENTS, futureStatusComment);
+		addField(TAG_FUTURE_STATUS_COMMENTS, futureStatusComments);
 		
 		addField(PSEUDO_TAG_INDICATOR_THRESHOLD_VALUE, indicatorThresholdLabel);
 		addField(PSEUDO_TAG_TARGETS, multiLineTargets);
@@ -489,7 +489,7 @@ public class Indicator extends BaseObject
 	private DateData futureStatusDate;
 	private StringData futureStatusSummary;
 	private StringData futureStatusDetail;
-	private StringData futureStatusComment;
+	private StringData futureStatusComments;
 	
 	private PseudoStringData multiLineTargets;
 	private PseudoStringData multiLineDirectThreats;
