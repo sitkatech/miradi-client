@@ -30,7 +30,6 @@ public class StaticQuestionManager
 		
 		addQuestion(new BudgetTimePeriodQuestion());
 		addQuestion(new CountriesQuestion());
-		addQuestion(new CurrencyDecimalQuestion());
 		addQuestion(new CurrencyTypeQuestion());
 		addQuestion(new DiagramFactorBackgroundQuestion());
 		addQuestion(new DiagramFactorFontColorQuestion());
