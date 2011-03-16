@@ -123,11 +123,11 @@ public class TaggedObjectSet extends BaseObject
 
 		shortLabel = new StringData(TAG_SHORT_LABEL);
 		taggedObjectRefs = new ORefListData(TAG_TAGGED_OBJECT_REFS);
-		comment = new StringData(TAG_COMMENTS);
+		comments = new StringData(TAG_COMMENTS);
 
 		addField(TAG_SHORT_LABEL, shortLabel);
 		addField(TAG_TAGGED_OBJECT_REFS, taggedObjectRefs);
-		addField(TAG_COMMENTS, comment);
+		addField(TAG_COMMENTS, comments);
 	}
 
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
@@ -136,7 +136,7 @@ public class TaggedObjectSet extends BaseObject
 	
 	private StringData shortLabel;
 	private ORefListData taggedObjectRefs;
-	private StringData comment;
+	private StringData comments;
 	
 	public static final String OBJECT_NAME = "TaggedObjectSet";
 }
