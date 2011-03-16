@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-11 17:43-0600\n"
+"POT-Creation-Date: 2011-03-16 14:46-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -370,14 +370,6 @@ msgstr "- Habitat Bawah Tanah Lainnya"
 msgid "."
 msgstr "."
 
-#: Miradi/source/org/miradi/questions/CurrencyDecimalQuestion.java:34
-msgid "0"
-msgstr "0 "
-
-#: Miradi/source/org/miradi/questions/CurrencyDecimalQuestion.java:35
-msgid "1"
-msgstr "1"
-
 #: Miradi/source/org/miradi/wizard/planning/WorkPlanDevelopActivitiesAndTasksStep.java:49
 msgid "1) Activities"
 msgstr "1) Kegiatan "
@@ -411,10 +403,6 @@ msgstr "1) Pilih strategi untuk difokuskan "
 msgid "1) Select target and threat to work on"
 msgstr "1) Pilih target dan ancaman yang akan digarap "
 
-#: Miradi/source/org/miradi/questions/CurrencyDecimalQuestion.java:36
-msgid "2"
-msgstr "2 "
-
 #: Miradi/source/org/miradi/wizard/planning/BudgetWizardBudgetDetail.java:50
 msgid "2) Add budget detail to workplan "
 msgstr "2) Menambahkan rincian anggaran ke dalam rencana kerja "
@@ -446,10 +434,6 @@ msgstr "2) Nilai cakupan ancaman "
 #: Miradi/source/org/miradi/wizard/diagram/DiagramWizardReviewAndModifyTargetsStep.java:51
 msgid "2) Review and modify targets"
 msgstr "2) Tinjau dan modifikasi target "
-
-#: Miradi/source/org/miradi/questions/CurrencyDecimalQuestion.java:37
-msgid "3"
-msgstr "3 "
 
 #: Miradi/source/org/miradi/wizard/diagram/DiagramWizardCompleteResultsChainLinks.java:50
 msgid "3) Complete links in the chain "
@@ -5272,7 +5256,6 @@ msgstr "Tidak Efektif"
 
 #: Miradi/source/org/miradi/objecthelpers/TaxonomyFileLoader.java:37
 #: Miradi/source/org/miradi/questions/ThreatStressRatingChoiceQuestion.java:36
-#: Miradi/source/org/miradi/questions/DirectThreatQuestion.java:43
 #: Miradi/source/org/miradi/questions/StrategyImpactQuestion.java:37
 #: Miradi/source/org/miradi/questions/StatusConfidenceQuestion.java:35
 #: Miradi/source/org/miradi/questions/ThreatRatingQuestion.java:42
@@ -32662,6 +32645,18 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "0"
+#~ msgstr "0 "
+
+#~ msgid "1"
+#~ msgstr "1"
+
+#~ msgid "2"
+#~ msgstr "2 "
+
+#~ msgid "3"
+#~ msgstr "3 "
 
 #~ msgid ""
 #~ "Conduct evaluations and/or audits at appropriate times during the project "
