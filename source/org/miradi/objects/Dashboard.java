@@ -176,10 +176,10 @@ public class Dashboard extends BaseObject
 				return getObjectiveRelevantToIndicatorsCount();
 			
 			if (fieldTag.equals(PSEUDO_PROJECT_PLANNING_START_DATE))
-				return getProject().getProjectCalendar().getPlanningStartDate();
+				return getUserEnteredPlanningStartDate();
 			
 			if (fieldTag.equals(PSEUDO_PROJECT_PLANNING_END_DATE))
-				return getProject().getProjectCalendar().getPlanningEndDate();
+				return getUserEnteredPlanningEndDate();
 			
 			if (fieldTag.equals(PSEUDO_STRATEGIES_WITH_ACTIVITIES_COUNT))
 				return getStrategiesWithActivitiesCount();
@@ -305,6 +305,36 @@ public class Dashboard extends BaseObject
 			EAM.logException(e);
 			return EAM.text("Error Retrieving Data");
 		}
+	}
+	
+	private String getUserEnteredPlanningStartDate()
+	{
+		Vector<String> startDateTags = new Vector<String>();
+		startDateTags.add(ProjectMetadata.TAG_WORKPLAN_START_DATE);
+		startDateTags.add(ProjectMetadata.TAG_START_DATE);
+			
+		return firstNonBlank(startDateTags);
+	}
+	
+	private String getUserEnteredPlanningEndDate()
+	{
+		Vector<String> endDateTags = new Vector<String>();
+		endDateTags.add(ProjectMetadata.TAG_WORKPLAN_END_DATE);
+		endDateTags.add(ProjectMetadata.TAG_EXPECTED_END_DATE);
+		
+		return firstNonBlank(endDateTags);
+	}
+
+	private String firstNonBlank(Vector<String> tags)
+	{
+		for(String tag : tags)
+		{
+			String data = getProject().getMetadata().getData(tag);
+			if(data.length() != 0)
+				return data;
+		}
+		
+		return "";
 	}
 
 	private String getTotalUniqueFactorCount()
