@@ -60,7 +60,7 @@ public class IndicatorPoolExporter extends BaseObjectPoolExporter
 		writeOptionalIds(XmpzXmlConstants.METHOD_IDS, XmpzXmlConstants.METHOD, indicator.getMethodRefs());
 		writeOptionalThreshold(indicator);
 		writeCodeElementSameAsTag(indicator, Indicator.TAG_RATING_SOURCE, getProject().getQuestion(RatingSourceQuestion.class));
-		writeOptionalElementWithSameTag(indicator, Indicator.TAG_VIABILITY_RATINGS_COMMENT);
+		writeOptionalElementWithSameTag(indicator, Indicator.TAG_VIABILITY_RATINGS_COMMENTS);
 	}
 	
 	private void writeOptionalThreshold(Indicator indicator) throws Exception

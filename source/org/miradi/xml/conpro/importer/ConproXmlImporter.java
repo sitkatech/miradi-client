@@ -531,7 +531,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 			importCodeField(viabilityAssessmentNode, SOURCE_INDICATOR_RATINGS, indicatorRef, Indicator.TAG_RATING_SOURCE, getCodeMapHelper().getConProToMiradiIndicatorRatingSourceMap());
 			importField(viabilityAssessmentNode, DESIRED_RATING_DATE, indicatorRef, Indicator.TAG_FUTURE_STATUS_DATE);
 			importField(viabilityAssessmentNode, KEA_AND_INDICATOR_COMMENT, indicatorRef, Indicator.TAG_DETAIL);
-			importField(viabilityAssessmentNode, INDICATOR_RATING_COMMENT, indicatorRef, Indicator.TAG_VIABILITY_RATINGS_COMMENT);
+			importField(viabilityAssessmentNode, INDICATOR_RATING_COMMENT, indicatorRef, Indicator.TAG_VIABILITY_RATINGS_COMMENTS);
 			importField(viabilityAssessmentNode, DESIRED_RATING_COMMENT, indicatorRef, Indicator.TAG_FUTURE_STATUS_COMMENT);
 		}
 	}

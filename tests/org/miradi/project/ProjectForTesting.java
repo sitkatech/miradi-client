@@ -1077,7 +1077,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(indicator, Indicator.TAG_LABEL, "Some Indicator Label");
 		fillObjectUsingCommand(indicator, Indicator.TAG_PRIORITY, PriorityRatingQuestion.HIGH_CODE);
 		fillObjectUsingCommand(indicator, Indicator.TAG_DETAIL, "Some Indicator detail");
-		fillObjectUsingCommand(indicator, Indicator.TAG_VIABILITY_RATINGS_COMMENT, "Some Indicator viability ratings comment");
+		fillObjectUsingCommand(indicator, Indicator.TAG_VIABILITY_RATINGS_COMMENTS, "Some Indicator viability ratings comment");
 		fillObjectUsingCommand(indicator, Indicator.TAG_RATING_SOURCE, RatingSourceQuestion.ONSITE_RESEARCH_CODE);
 		
 		Task task = createAndPopulateTask(indicator, "Some Method Name");

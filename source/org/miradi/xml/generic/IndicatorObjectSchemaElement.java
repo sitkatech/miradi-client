@@ -45,6 +45,6 @@ public class IndicatorObjectSchemaElement extends BaseObjectSchemaElementWithLab
 		createOptionalIdListField(XmpzXmlConstants.METHOD_IDS, XmlSchemaCreator.METHOD);
 		createOptionalThresholdsField();
 		createOptionalCodeField(Indicator.TAG_RATING_SOURCE, XmlSchemaCreator.VOCABULARY_RATING_SOURCE);
-		createOptionalTextField(Indicator.TAG_VIABILITY_RATINGS_COMMENT);
+		createOptionalTextField(Indicator.TAG_VIABILITY_RATINGS_COMMENTS);
 	}
 }
