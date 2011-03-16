@@ -37,7 +37,7 @@ public class IndicatorObjectSchemaElement extends BaseObjectSchemaElementWithLab
 		createOptionalTextField(Indicator.TAG_FUTURE_STATUS_SUMMARY);
 		createCodeField(Indicator.TAG_FUTURE_STATUS_RATING, XmlSchemaCreator.VOCABULARY_MEASUREMENT_STATUS);
 		createOptionalTextField(Indicator.TAG_FUTURE_STATUS_DETAIL);
-		createOptionalTextField(Indicator.TAG_FUTURE_STATUS_COMMENT);	
+		createOptionalTextField(Indicator.TAG_FUTURE_STATUS_COMMENTS);	
 		createOptionalIdListField(XmpzXmlConstants.PROGRESS_REPORT_IDS, XmlSchemaCreator.PROGRESS_REPORT_ID_ELEMENT_NAME);
 		createOptionalIdListField(XmpzXmlConstants.EXPENSE_IDS, XmlSchemaCreator.EXPENSE_ASSIGNMENT_ID_ELEMENT_NAME);
 		createOptionalIdListField(Indicator.TAG_RESOURCE_ASSIGNMENT_IDS, XmlSchemaCreator.RESOURCE_ASSIGNMENT_ID_ELEMENT_NAME);

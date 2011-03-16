@@ -32,6 +32,6 @@ public class IndicatorFutureStatusSubForm extends FieldPanelSpec
 																				Indicator.TAG_FUTURE_STATUS_RATING,});
 		
 		addLabelAndField(Indicator.getObjectType(), Indicator.TAG_FUTURE_STATUS_DETAIL);
-		addLabelAndField(Indicator.getObjectType(), Indicator.TAG_FUTURE_STATUS_COMMENT);
+		addLabelAndField(Indicator.getObjectType(), Indicator.TAG_FUTURE_STATUS_COMMENTS);
 	}
 }
