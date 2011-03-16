@@ -36,7 +36,7 @@ public class IndicatorViabilityRatingsSubForm extends FieldPanelSpec
 		createThreshholdField(statusQuestion.findChoiceByCode(StatusQuestion.VERY_GOOD));
 				
 		addLabelAndField(Indicator.getObjectType(), Indicator.TAG_RATING_SOURCE);
-		addLabelAndField(Indicator.getObjectType(), Indicator.TAG_VIABILITY_RATINGS_COMMENT);
+		addLabelAndField(Indicator.getObjectType(), Indicator.TAG_VIABILITY_RATINGS_COMMENTS);
 	}
 	
 	private void createThreshholdField(ChoiceItem choiceItem)

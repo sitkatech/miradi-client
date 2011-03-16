@@ -48,7 +48,7 @@ public class IndicatorViabilityRatingsSubPanel extends ObjectDataInputPanel
 		createThreshholdField(statusQuestion.findChoiceByCode(StatusQuestion.VERY_GOOD));
 				
 		addField(createRatingChoiceField(ObjectType.INDICATOR, Indicator.TAG_RATING_SOURCE, new RatingSourceQuestion()));
-		addField(createMultilineField(ObjectType.INDICATOR, Indicator.TAG_VIABILITY_RATINGS_COMMENT));
+		addField(createMultilineField(ObjectType.INDICATOR, Indicator.TAG_VIABILITY_RATINGS_COMMENTS));
 		
 		updateFieldsFromProject();
 	}

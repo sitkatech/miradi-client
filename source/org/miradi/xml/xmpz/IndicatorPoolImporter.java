@@ -60,7 +60,7 @@ public class IndicatorPoolImporter extends AbstractBaseObjectPoolImporter
 		importRefs(node, XmpzXmlConstants.MEASUREMENT_IDS, destinationRef, Indicator.TAG_MEASUREMENT_REFS, Measurement.getObjectType(), XmpzXmlConstants.MEASUREMENT);
 		importThresholds(node, destinationRef);
 		importCodeField(node, destinationRef, Indicator.TAG_RATING_SOURCE, getProject().getQuestion(RatingSourceQuestion.class));
-		importField(node, destinationRef, Indicator.TAG_VIABILITY_RATINGS_COMMENT);
+		importField(node, destinationRef, Indicator.TAG_VIABILITY_RATINGS_COMMENTS);
 	}
 
 	private void importThresholds(Node indicatorNode, ORef destinationRef) throws Exception
