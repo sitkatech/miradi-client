@@ -140,7 +140,7 @@ public class Measurement extends BaseObject
 		summary= new StringData(TAG_SUMMARY);
 		detail= new StringData(TAG_DETAIL);
 		statusConfidence = new ChoiceData(TAG_STATUS_CONFIDENCE, getQuestion(StatusConfidenceQuestion.class));
-		comment = new StringData(TAG_COMMENTS);
+		comments = new StringData(TAG_COMMENTS);
 
 		addField(TAG_TREND, trend);
 		addField(TAG_STATUS, status);
@@ -148,7 +148,7 @@ public class Measurement extends BaseObject
 		addField(TAG_SUMMARY, summary);
 		addField(TAG_DETAIL, detail);
 		addField(TAG_STATUS_CONFIDENCE, statusConfidence);
-		addField(TAG_COMMENTS, comment);
+		addField(TAG_COMMENTS, comments);
 	}
 	
 	public static final String OBJECT_NAME = "Measurement";
@@ -169,5 +169,5 @@ public class Measurement extends BaseObject
 	private StringData summary;
 	private StringData detail;
 	private ChoiceData statusConfidence;
-	private StringData comment;
+	private StringData comments;
 }
