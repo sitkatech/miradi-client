@@ -838,7 +838,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			
 			writeOptionalElement(out, DESCRIPTION_COMMENT, getConcatenatedProjectDescriptionAndScope());
 			writeOptionalElement(out, GOAL_COMMENT, getProjectMetadata(), ProjectMetadata.TAG_PROJECT_VISION);
-			writeOptionalElement(out, PLANNING_TEAM_COMMENT, getProjectMetadata(), ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENT);
+			writeOptionalElement(out, PLANNING_TEAM_COMMENT, getProjectMetadata(), ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENTS);
 			writeOptionalElement(out, LESSONS_LEARNED, getProjectMetadata(), ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
 			writeOptionalElement(out, RELATED_PROJECTS, getProjectMetadata(), ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
 			writeOptionalElement(out, PARENT_CHILD, getTncProjectData(), TncProjectData.TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT);

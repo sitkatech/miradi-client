@@ -48,7 +48,7 @@ public class TncTabForm extends FieldPanelSpec
 		addLabelAndField(projectMetadataType, ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
 		addCodeListField(TncProjectData.getObjectType(), TncProjectData.TAG_PROJECT_PLACE_TYPES, StaticQuestionManager.getQuestion(TncProjectPlaceTypeQuestion.class));
 		addCodeListField(TncProjectData.getObjectType(), TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES, StaticQuestionManager.getQuestion(TncOrganizationalPrioritiesQuestion.class));
-		addLabelAndField(projectMetadataType, ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENT);
+		addLabelAndField(projectMetadataType, ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENTS);
 		addLabelAndField(TncProjectData.getObjectType(), TncProjectData.TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT);
 		addCodeListField(projectMetadataType, ProjectMetadata.TAG_TNC_OPERATING_UNITS, StaticQuestionManager.getQuestion(TncOperatingUnitsQuestion.class));
 		addCodeListField(projectMetadataType, ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION, StaticQuestionManager.getQuestion(TncTerrestrialEcoRegionQuestion.class));

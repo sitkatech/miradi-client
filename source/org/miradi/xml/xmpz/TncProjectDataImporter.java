@@ -41,7 +41,7 @@ public class TncProjectDataImporter extends AbstractXmpzObjectImporter
 		importField(tncProjectDataNode, getMetadataRef(), ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
 		importCodeListField(tncProjectDataNode, getTncProjectDataRef(), TncProjectData.TAG_PROJECT_PLACE_TYPES);
 		importCodeListField(tncProjectDataNode, getTncProjectDataRef(), TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES);
-		importField(tncProjectDataNode, getMetadataRef(), ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENT);
+		importField(tncProjectDataNode, getMetadataRef(), ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENTS);
 		importField(tncProjectDataNode, getTncProjectDataRef(), TncProjectData.TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT);
 		importCodeListField(tncProjectDataNode, getMetadataRef(), ProjectMetadata.TAG_TNC_OPERATING_UNITS);
 		importCodeListField(tncProjectDataNode, getMetadataRef(), ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION);
