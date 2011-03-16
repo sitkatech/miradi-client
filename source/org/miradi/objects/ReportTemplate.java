@@ -105,11 +105,11 @@ public class ReportTemplate extends BaseObject
 		shortLabel = new StringData(TAG_SHORT_LABEL);
 		ChoiceQuestion reportContentsQuestion = new ReportTemplateContentQuestion(getProject());
 		content = new CodeListData(TAG_INCLUDE_SECTION_CODES, reportContentsQuestion);
-		comment = new StringData(TAG_COMMENTS);
+		comments = new StringData(TAG_COMMENTS);
 
 		addField(TAG_SHORT_LABEL, shortLabel);
 		addField(TAG_INCLUDE_SECTION_CODES, content);
-		addField(TAG_COMMENTS, comment);
+		addField(TAG_COMMENTS, comments);
 	}
 
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
@@ -118,7 +118,7 @@ public class ReportTemplate extends BaseObject
 	
 	private StringData shortLabel;
 	private CodeListData content;
-	private StringData comment;
+	private StringData comments;
 	
 	public static final String OBJECT_NAME = "ReportTemplate";
 
