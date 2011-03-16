@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-11 17:43-0600\n"
+"POT-Creation-Date: 2011-03-16 14:46-0500\n"
 "PO-Revision-Date: 2010-09-20 10:32-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -370,14 +370,6 @@ msgstr "- Otros hábitats subterráneos"
 msgid "."
 msgstr "."
 
-#: Miradi/source/org/miradi/questions/CurrencyDecimalQuestion.java:34
-msgid "0"
-msgstr "0"
-
-#: Miradi/source/org/miradi/questions/CurrencyDecimalQuestion.java:35
-msgid "1"
-msgstr "1"
-
 #: Miradi/source/org/miradi/wizard/planning/WorkPlanDevelopActivitiesAndTasksStep.java:49
 msgid "1) Activities"
 msgstr "1) Actividades"
@@ -411,10 +403,6 @@ msgstr "1) Seleccionar estrategia para que se centre en"
 msgid "1) Select target and threat to work on"
 msgstr "1) Seleccione el objeto y la amenaza con los que desee trabajar."
 
-#: Miradi/source/org/miradi/questions/CurrencyDecimalQuestion.java:36
-msgid "2"
-msgstr "2"
-
 #: Miradi/source/org/miradi/wizard/planning/BudgetWizardBudgetDetail.java:50
 msgid "2) Add budget detail to workplan "
 msgstr "2) Agregar detalle del presupuesto al plan de trabajo"
@@ -446,10 +434,6 @@ msgstr "2) Calificar el alcance de la amenaza"
 #: Miradi/source/org/miradi/wizard/diagram/DiagramWizardReviewAndModifyTargetsStep.java:51
 msgid "2) Review and modify targets"
 msgstr "2) Revisar y modificar objetos"
-
-#: Miradi/source/org/miradi/questions/CurrencyDecimalQuestion.java:37
-msgid "3"
-msgstr "3"
 
 #: Miradi/source/org/miradi/wizard/diagram/DiagramWizardCompleteResultsChainLinks.java:50
 msgid "3) Complete links in the chain "
@@ -5308,7 +5292,6 @@ msgstr "No efectivo "
 
 #: Miradi/source/org/miradi/objecthelpers/TaxonomyFileLoader.java:37
 #: Miradi/source/org/miradi/questions/ThreatStressRatingChoiceQuestion.java:36
-#: Miradi/source/org/miradi/questions/DirectThreatQuestion.java:43
 #: Miradi/source/org/miradi/questions/StrategyImpactQuestion.java:37
 #: Miradi/source/org/miradi/questions/StatusConfidenceQuestion.java:35
 #: Miradi/source/org/miradi/questions/ThreatRatingQuestion.java:42
@@ -32925,6 +32908,18 @@ msgid ""
 msgstr ""
 "Marina___Atlántico tropical occidental___Marina de la plataforma norte de "
 "Brasil___Brasil "
+
+#~ msgid "0"
+#~ msgstr "0"
+
+#~ msgid "1"
+#~ msgstr "1"
+
+#~ msgid "2"
+#~ msgstr "2"
+
+#~ msgid "3"
+#~ msgstr "3"
 
 #~ msgid ""
 #~ "Conduct evaluations and/or audits at appropriate times during the project "
