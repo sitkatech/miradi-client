@@ -70,6 +70,14 @@ public class TestDashboard extends ObjectTestCase
 		verifyTeamMemberEffectiveStatus(OpenStandardsDynamicProgressStatusQuestion.IN_PROGRESS_CODE);
 	}
 	
+	public void testGetEffectiveStatusMapWithOneOfTwoRowsHavingData() throws Exception
+	{
+		verifyEffectiveStatus(OpenStandardsConceptualizeQuestion.IDENTIFY_DIRECT_THREATS_CODE, OpenStandardsDynamicProgressStatusQuestion.NOT_STARTED_CODE);
+		
+		getProject().createThreat();
+		verifyEffectiveStatus(OpenStandardsConceptualizeQuestion.IDENTIFY_DIRECT_THREATS_CODE, OpenStandardsDynamicProgressStatusQuestion.IN_PROGRESS_CODE);
+	}
+	
 	public void testGetEffectiveStatusMapWithUserData() throws Exception
 	{
 		getProject().createProjectResource();
@@ -81,11 +89,16 @@ public class TestDashboard extends ObjectTestCase
 
 	private void verifyTeamMemberEffectiveStatus(String expectedCode) throws Exception
 	{
+		verifyEffectiveStatus(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE, expectedCode);
+	}
+
+	private void verifyEffectiveStatus(final String thirdLevelRowCode, String expectedCode) throws Exception
+	{
 		StringChoiceMap mapAsString = getEffectiveStatusMap();
 		StringChoiceMap map = new StringChoiceMap(mapAsString);
-		String teamMemberStatusCode = map.get(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE);
+		String calculatedStatusCode = map.get(thirdLevelRowCode);
 
-		assertEquals("Incorrect status count?", expectedCode, teamMemberStatusCode);
+		assertEquals("Incorrect status code?", expectedCode, calculatedStatusCode);
 	}
 	
 	private StringChoiceMap createStringChoiceMapForEmptyProject()
@@ -100,7 +113,10 @@ public class TestDashboard extends ObjectTestCase
 				progressCode = OpenStandardsDynamicProgressStatusQuestion.IN_PROGRESS_CODE;
 			
 			if (thirdLevelCode.equals(OpenStandardsImplementActionsAndMonitoringQuestion.ESTIMATE_COSTS_FOR_ACTIVITIES_AND_MONITORING_CODE))
-				progressCode = OpenStandardsDynamicProgressStatusQuestion.NOT_STARTED_CODE;
+				progressCode = OpenStandardsDynamicProgressStatusQuestion.IN_PROGRESS_CODE;
+			
+			if (thirdLevelCode.equals(OpenStandardsConceptualizeQuestion.CREATE_INITIAL_CONCEPTUAL_MODEL_CODE))
+				progressCode = OpenStandardsDynamicProgressStatusQuestion.IN_PROGRESS_CODE;
 			
 			emptyMap.put(thirdLevelCode, progressCode);
 		}

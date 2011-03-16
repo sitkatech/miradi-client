@@ -621,9 +621,6 @@ public class Dashboard extends BaseObject
 		if (valuesWithDataCount == 0)
 			return OpenStandardsDynamicProgressStatusQuestion.NOT_STARTED_CODE;
 			
-		if (valuesWithDataCount < rawDataValues.size())
-			return OpenStandardsDynamicProgressStatusQuestion.NOT_STARTED_CODE;
-			
 		return OpenStandardsDynamicProgressStatusQuestion.IN_PROGRESS_CODE;
 	}
 	
