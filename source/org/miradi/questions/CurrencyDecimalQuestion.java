@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.questions;
 
 import org.miradi.main.EAM;
-
+//TODO low seems like this class is no longer used
 public class CurrencyDecimalQuestion extends StaticChoiceQuestion
 {
 	public CurrencyDecimalQuestion()
