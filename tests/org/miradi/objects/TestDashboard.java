@@ -27,7 +27,6 @@ import org.miradi.objecthelpers.StringChoiceMap;
 import org.miradi.questions.OpenStandardsConceptualizeQuestion;
 import org.miradi.questions.OpenStandardsDynamicProgressStatusQuestion;
 import org.miradi.questions.OpenStandardsImplementActionsAndMonitoringQuestion;
-import org.miradi.questions.OpenStandardsPlanActionsAndMonitoringQuestion;
 import org.miradi.utils.CodeList;
 
 public class TestDashboard extends ObjectTestCase
@@ -109,9 +108,6 @@ public class TestDashboard extends ObjectTestCase
 		{
 			String progressCode = OpenStandardsDynamicProgressStatusQuestion.NOT_STARTED_CODE;
 			String thirdLevelCode = allThirdLEvelCodes.get(index);
-			if (thirdLevelCode.equals(OpenStandardsPlanActionsAndMonitoringQuestion.PLAN_PROJECT_LIFESPAN_AND_EXIT_STRATEGY_CODE))
-				progressCode = OpenStandardsDynamicProgressStatusQuestion.IN_PROGRESS_CODE;
-			
 			if (thirdLevelCode.equals(OpenStandardsImplementActionsAndMonitoringQuestion.ESTIMATE_COSTS_FOR_ACTIVITIES_AND_MONITORING_CODE))
 				progressCode = OpenStandardsDynamicProgressStatusQuestion.IN_PROGRESS_CODE;
 			
