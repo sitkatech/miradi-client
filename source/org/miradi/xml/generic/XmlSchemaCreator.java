@@ -654,7 +654,7 @@ public class XmlSchemaCreator implements XmpzXmlConstants
 	public static final String THREAT_STRESS_RATING_IRREVERSIBILITY_CODE = ThreatStressRating.TAG_IRREVERSIBILITY;
 	public static final String THREAT_STRESS_RATING_CONTRIBUTION_CODE = ThreatStressRating.TAG_CONTRIBUTION;
 	public static final String TNC_DATABASE_DOWNLOAD_DATE = "DatabaseDownloadDate";
-	public static final String TNC_PLANNING_TEAM_COMMENT = "PlanningTeamComments";
+	public static final String TNC_PLANNING_TEAM_COMMENTS = "PlanningTeamComments";
 	public static final String TNC_LESSONS_LEARNED = "LessonsLearned";
 	public static final String TNC_PROJECT_PLACE_TYPES = "TNCProjectPlaceTypes";
 	public static final String TNC_ORGANIZATIONAL_PRIORITIES = "TNCOrganizationalPriorities";
