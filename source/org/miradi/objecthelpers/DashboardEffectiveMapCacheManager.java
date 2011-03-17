@@ -72,7 +72,7 @@ public class DashboardEffectiveMapCacheManager implements CommandExecutedListene
 
 	private void rebuildEffectiveMapCache() throws Exception
 	{
-		effectiveStatusMapCache = calculateEffectiveStatusMap();
+		calculateEffectiveStatusMap();
 	}
 
 	private Dashboard getDashboardSingletonObject()
@@ -91,7 +91,7 @@ public class DashboardEffectiveMapCacheManager implements CommandExecutedListene
 	
 	public StringChoiceMap calculateEffectiveStatusMap() throws Exception
 	{
-		effectiveStatusMap = new StringChoiceMap();
+		effectiveStatusMapCache = new StringChoiceMap();
 		CodeList allThirdLevelCodes = getDashboardRowDefinitionManager().getThirdLevelCodes();
 		for (int index = 0; index < allThirdLevelCodes.size(); ++index)
 		{
@@ -102,10 +102,10 @@ public class DashboardEffectiveMapCacheManager implements CommandExecutedListene
 			if (progressCode.equals(OpenStandardsDynamicProgressStatusQuestion.NOT_SPECIFIED_CODE))
 				progressCode = computeStatusCodeFromStatistics(rowDefinitions);
 			
-			effectiveStatusMap.put(thirdLevelCode, progressCode);
+			effectiveStatusMapCache.put(thirdLevelCode, progressCode);
 		}
 		
-		return effectiveStatusMap;
+		return effectiveStatusMapCache;
 	}
 
 	private String computeStatusCodeFromStatistics(Vector<DashboardRowDefinition> rowDefinitions)
@@ -154,5 +154,4 @@ public class DashboardEffectiveMapCacheManager implements CommandExecutedListene
 	
 	private Project project;
 	private StringChoiceMap effectiveStatusMapCache;
-	private StringChoiceMap effectiveStatusMap;
 }
