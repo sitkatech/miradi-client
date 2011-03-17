@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-17 14:39-0500\n"
+"POT-Creation-Date: 2011-03-17 16:40-0500\n"
 "PO-Revision-Date: 2010-09-20 10:32-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -2979,7 +2979,7 @@ msgstr "Crear…"
 msgid "Creating group boxes..."
 msgstr ""
 
-#: Miradi/source/org/miradi/project/Project.java:685
+#: Miradi/source/org/miradi/project/Project.java:690
 msgid "Creating..."
 msgstr ""
 
@@ -3493,7 +3493,7 @@ msgstr ""
 msgid "Error Occurred please try saving under different name."
 msgstr "Se produjo un error. Intente grabar con un nombre diferente."
 
-#: Miradi/source/org/miradi/objects/Dashboard.java:305
+#: Miradi/source/org/miradi/objects/Dashboard.java:301
 msgid "Error Retrieving Data"
 msgstr ""
 
@@ -5456,7 +5456,7 @@ msgstr ""
 msgid "OpenStandards"
 msgstr "Estándares abiertos "
 
-#: Miradi/source/org/miradi/project/Project.java:680
+#: Miradi/source/org/miradi/project/Project.java:685
 msgid "Opening..."
 msgstr ""
 
@@ -8643,7 +8643,7 @@ msgstr "[NO ESPECIFICADO]"
 msgid "[New Results Chain]"
 msgstr "[Nueva cadena de resultados]"
 
-#: Miradi/source/org/miradi/project/Project.java:992
+#: Miradi/source/org/miradi/project/Project.java:997
 msgid "[No Project]"
 msgstr "[Sin proyecto]"
 
