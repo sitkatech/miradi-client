@@ -263,7 +263,7 @@ public class ProjectResource extends BaseObject
 		iMAddress = new StringData(TAG_IM_ADDRESS);
 		iMService = new StringData(TAG_IM_SERVICE);
 		dateUpdated = new DateData(TAG_DATE_UPDATED);
-		isAffiliatedToConservationCoachNetwork = new BooleanData(TAG_IS_AFFILIATED_TO_CONSERVATION_COACHES_NETWORK);
+		isAffiliatedToConservationCoachNetwork = new BooleanData(TAG_IS_CCN_COACH);
 
 		addField(TAG_RESOURCE_TYPE, resourceType);
 		addField(TAG_INITIALS, initials);
@@ -284,7 +284,7 @@ public class ProjectResource extends BaseObject
 		addField(TAG_IM_ADDRESS, iMAddress);
 		addField(TAG_IM_SERVICE, iMService);
 		addField(TAG_DATE_UPDATED, dateUpdated);
-		addField(TAG_IS_AFFILIATED_TO_CONSERVATION_COACHES_NETWORK, isAffiliatedToConservationCoachNetwork);
+		addField(TAG_IS_CCN_COACH, isAffiliatedToConservationCoachNetwork);
 		
 		customUserField1 = new StringData(TAG_CUSTOM_FIELD_1);
 		customUserField2 = new StringData(TAG_CUSTOM_FIELD_2);
@@ -313,7 +313,7 @@ public class ProjectResource extends BaseObject
 	public static final String TAG_IM_ADDRESS = "IMAddress";
 	public static final String TAG_IM_SERVICE = "IMService";
 	public static final String TAG_DATE_UPDATED = "DateUpdated";
-	public static final String TAG_IS_AFFILIATED_TO_CONSERVATION_COACHES_NETWORK = "IsAffiliatedToConservationCoachesNetwork";
+	public static final String TAG_IS_CCN_COACH = "IsAffiliatedToConservationCoachesNetwork";
 	
 	public static final String TAG_CUSTOM_FIELD_1 = "Custom.Custom1";
 	public static final String TAG_CUSTOM_FIELD_2 = "Custom.Custom2";

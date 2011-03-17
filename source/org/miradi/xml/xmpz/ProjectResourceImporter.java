@@ -58,6 +58,6 @@ public class ProjectResourceImporter extends AbstractBaseObjectPoolImporter
 		importField(node, destinationRef, ProjectResource.TAG_COMMENTS);
 		importField(node, destinationRef, ProjectResource.TAG_CUSTOM_FIELD_1);
 		importField(node, destinationRef, ProjectResource.TAG_CUSTOM_FIELD_2);
-		importBooleanField(node, destinationRef, ProjectResource.TAG_IS_AFFILIATED_TO_CONSERVATION_COACHES_NETWORK);
+		importBooleanField(node, destinationRef, ProjectResource.TAG_IS_CCN_COACH);
 	}
 }
