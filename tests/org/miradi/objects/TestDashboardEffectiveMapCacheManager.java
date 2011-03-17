@@ -35,7 +35,7 @@ public class TestDashboardEffectiveMapCacheManager extends TestCaseWithProject
 		initializeCache();
 		getProject().createAndAddFactorToDiagram(Cause.getObjectType());
 		AbstractStringKeyMap cachedMap = getProject().getCachedDashboardEffectiveMap();
-		AbstractStringKeyMap nonCachedMap = getProject().getDashboardEffectiveMapCacheManager().calculateEffectiveStatusMap();
+		AbstractStringKeyMap nonCachedMap = getProject().getDashboardEffectiveMapCacheManager().getCalculatedEffectiveStatusMap();
 		assertEquals("Cached map is not in sync with dashbard's effective status map?", nonCachedMap, cachedMap);
 	}
 
