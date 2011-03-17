@@ -581,82 +581,12 @@
 </target>
 
 <!-- ================================================================== -->
-<!-- HEBREW                                            -->
-<!-- ================================================================== -->
-<target name="hebrew" depends="pot" description="Update Hebrew Content">
-	<antcall target="update-po">
-		<param name="po.file" value="${miradi.po.heb}"/>
-		<param name="language.code" value="heb"/>
-	</antcall>
-</target>
-	
-<!-- ================================================================== -->
-<!-- PLATEAU MALAGASY                                            -->
-<!-- ================================================================== -->
-<target name="malagasy" depends="pot" description="Update Malagasy Content">
-	<antcall target="update-po">
-		<param name="po.file" value="${miradi.po.plt}"/>
-		<param name="language.code" value="plt"/>
-	</antcall>
-</target>
-	
-<!-- ================================================================== -->
-<!-- S P A N I S H                                            -->
-<!-- ================================================================== -->
-<target name="spanish" depends="pot" description="Update Spanish Content">
-	<antcall target="update-po">
-		<param name="po.file" value="${miradi.po.es}"/>
-		<param name="language.code" value="es"/>
-	</antcall>
-</target>
-	
-<!-- ================================================================== -->
-<!-- I N D O N E S I A N                   -->
-<!-- ================================================================== -->
-<target name="indonesian" depends="pot" description="Update Indonesian Content">
-	<antcall target="update-po">
-		<param name="po.file" value="${miradi.po.id}"/>
-		<param name="language.code" value="id"/>
-	</antcall>
-</target>
-	
-<!-- ================================================================== -->
 <!-- C H I N E S E                   -->
 <!-- ================================================================== -->
 <target name="chinese" depends="pot" description="Update Chinese Content">
 	<antcall target="update-po">
 		<param name="po.file" value="${miradi.po.zh}"/>
 		<param name="language.code" value="zh"/>
-	</antcall>
-</target>
-	
-<!-- ================================================================== -->
-<!-- UKRAINIAN                   -->
-<!-- ================================================================== -->
-<target name="ukrainian" depends="pot" description="Update Ukrainian Content">
-	<antcall target="update-po">
-		<param name="po.file" value="${miradi.po.uk}"/>
-		<param name="language.code" value="uk"/>
-	</antcall>
-</target>
-	
-<!-- ================================================================== -->
-<!-- ITALIAN                   -->
-<!-- ================================================================== -->
-<target name="italian" depends="pot" description="Update Italian Content">
-	<antcall target="update-po">
-		<param name="po.file" value="${miradi.po.it}"/>
-		<param name="language.code" value="it"/>
-	</antcall>
-</target>
-	
-<!-- ================================================================== -->
-<!-- MONGOLIAN (CYRILLIC SCRIPT)                   -->
-<!-- ================================================================== -->
-<target name="mongolian" depends="pot" description="Update Mongolian Content">
-	<antcall target="update-po">
-		<param name="po.file" value="${miradi.po.mn}"/>
-		<param name="language.code" value="mn"/>
 	</antcall>
 </target>
 	
@@ -681,6 +611,16 @@
 </target>
 			
 <!-- ================================================================== -->
+<!-- HEBREW                                            -->
+<!-- ================================================================== -->
+<target name="hebrew" depends="pot" description="Update Hebrew Content">
+	<antcall target="update-po">
+		<param name="po.file" value="${miradi.po.heb}"/>
+		<param name="language.code" value="heb"/>
+	</antcall>
+</target>
+	
+<!-- ================================================================== -->
 <!-- HUNGARIAN                                                          -->
 <!-- ================================================================== -->
 <target name="hungarian" depends="pot" description="Update Hungarian Content">
@@ -689,7 +629,68 @@
 		<param name="language.code" value="hu"/>
 	</antcall>
 </target>
-				
+
+<!-- ================================================================== -->
+<!-- I N D O N E S I A N                   -->
+<!-- ================================================================== -->
+<target name="indonesian" depends="pot" description="Update Indonesian Content">
+	<antcall target="update-po">
+		<param name="po.file" value="${miradi.po.id}"/>
+		<param name="language.code" value="id"/>
+	</antcall>
+</target>
+	
+<!-- ================================================================== -->
+<!-- ITALIAN                   -->
+<!-- ================================================================== -->
+<target name="italian" depends="pot" description="Update Italian Content">
+<antcall target="update-po">
+	<param name="po.file" value="${miradi.po.it}"/>
+	<param name="language.code" value="it"/>
+</antcall>
+</target>
+
+<!-- ================================================================== -->
+<!-- MALAGASY (PLATEAU)                                            -->
+<!-- ================================================================== -->
+<target name="malagasy" depends="pot" description="Update Malagasy Content">
+<antcall target="update-po">
+	<param name="po.file" value="${miradi.po.plt}"/>
+	<param name="language.code" value="plt"/>
+</antcall>
+</target>
+
+<!-- ================================================================== -->
+<!-- MONGOLIAN (CYRILLIC SCRIPT)                   -->
+<!-- ================================================================== -->
+<target name="mongolian" depends="pot" description="Update Mongolian Content">
+<antcall target="update-po">
+	<param name="po.file" value="${miradi.po.mn}"/>
+	<param name="language.code" value="mn"/>
+</antcall>
+</target>
+
+			
+<!-- ================================================================== -->
+<!-- S P A N I S H                                            -->
+<!-- ================================================================== -->
+<target name="spanish" depends="pot" description="Update Spanish Content">
+	<antcall target="update-po">
+		<param name="po.file" value="${miradi.po.es}"/>
+		<param name="language.code" value="es"/>
+	</antcall>
+</target>
+	
+<!-- ================================================================== -->
+<!-- UKRAINIAN                   -->
+<!-- ================================================================== -->
+<target name="ukrainian" depends="pot" description="Update Ukrainian Content">
+	<antcall target="update-po">
+		<param name="po.file" value="${miradi.po.uk}"/>
+		<param name="language.code" value="uk"/>
+	</antcall>
+</target>
+	
 <!-- ================================================================== -->
 <!-- UPDATE PO CONTENTS                                            -->
 <!-- ================================================================== -->
