@@ -72,8 +72,7 @@ public class DashboardEffectiveMapCacheManager implements CommandExecutedListene
 	private Dashboard getDashboardSingletonObject()
 	{
 		ORef dashboardRef = getProject().getSingletonObjectRef(Dashboard.getObjectType()); 
-		Dashboard dashboard = Dashboard.find(getProject(), dashboardRef);
-		return dashboard;
+		return Dashboard.find(getProject(), dashboardRef);
 	}
 
 	public AbstractStringKeyMap calculateEffectiveMap() throws Exception
