@@ -47,7 +47,6 @@ import org.miradi.questions.OpenStandardsDynamicProgressStatusQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.StrategyRatingSummaryQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
-import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.OptionalDouble;
@@ -1060,25 +1059,24 @@ public class Dashboard extends BaseObject
 		return Integer.toString(count);
 	}
 
-	private String getTargetWithSimpleViabilityCount()
+	private String getTargetWithSimpleViabilityCount() throws Exception
 	{
-		return getTargetCountForMode(ViabilityModeQuestion.SIMPLE_MODE_CODE);
+		return getParentCountWithAnnotations(Target.TAG_INDICATOR_IDS);
 	}
 
-	private String getTargetWithKeaCount()
+	private String getTargetWithKeaCount() throws Exception
 	{
-		return getTargetCountForMode(ViabilityModeQuestion.TNC_STYLE_CODE);
+		return getParentCountWithAnnotations(Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
 	}
-
-	private String getTargetCountForMode(String tncModeCode)
+	
+	private String getParentCountWithAnnotations(String tag) throws Exception
 	{
 		int count = 0;
 		ORefSet targetRefs = getProject().getTargetPool().getRefSet();
 		for (ORef targetRef : targetRefs)
 		{
 			Target target = Target.find(getProject(), targetRef);
-			
-			if (target.getViabilityMode().equals(tncModeCode))
+			if (target.getRefList(tag).hasRefs())
 				++count;
 		}
 		
