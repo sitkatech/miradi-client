@@ -30,11 +30,11 @@ public class OpenStandardsCaptureAndShareLearningQuestion extends DynamicChoiceW
 	{
 		ChoiceItemWithChildren headerChoiceItem = new ChoiceItemWithChildren(HEADER_CODE, getHeaderLabel(), new HtmlResourceLongDescriptionProvider(MAIN_DESCRIPTION_FILENAME));
 		
-		ChoiceItemWithChildren processStep5a = new ChoiceItemWithChildren(PROCESS_STEP_5A_CODE, EAM.text(getProcessStep5aLabel()), EAM.text(""), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_5A_FILENAME));
+		ChoiceItemWithChildren processStep5a = new ChoiceItemWithChildren(PROCESS_STEP_5A_CODE, EAM.text(getProcessStep5aLabel()), EAM.emptyText(), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_5A_FILENAME));
 		headerChoiceItem.addChild(processStep5a);
 		processStep5a.addChild(new ChoiceItem("DocumentKeyResultsAndLessons", EAM.text("Document key results and lessons"), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_5A_FILENAME)));
 		
-		ChoiceItemWithChildren processStep5bChoiceItem = new ChoiceItemWithChildren(PROCESS_STEP_5B_CODE, getProcessStep5bLabel(), EAM.text(""), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_5B_FILENAME));
+		ChoiceItemWithChildren processStep5bChoiceItem = new ChoiceItemWithChildren(PROCESS_STEP_5B_CODE, getProcessStep5bLabel(), EAM.text(EAM.emptyText()), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_5B_FILENAME));
 		headerChoiceItem.addChild(processStep5bChoiceItem);
 		processStep5bChoiceItem.addChild(new ChoiceItem("IdentifyKeyAudiences", EAM.text("Identify key audiences"), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_5B_FILENAME)));
 		processStep5bChoiceItem.addChild(new ChoiceItem("DevelopCommunicationsStrategy", EAM.text("Develop communications strategy"), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_5B_FILENAME)));
@@ -42,7 +42,7 @@ public class OpenStandardsCaptureAndShareLearningQuestion extends DynamicChoiceW
 		processStep5bChoiceItem.addChild(new ChoiceItem("DevelopAndShareCommunicationProducts", EAM.text("Develop and share communication products"), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_5B_FILENAME)));
 		processStep5bChoiceItem.addChild(new ChoiceItem("UseOthersCommunicationProducts", EAM.text("Use other's communication products"), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_5B_FILENAME)));
 		
-		ChoiceItemWithChildren processStep5cChoiceItem = new ChoiceItemWithChildren(PROCESS_STEP_5C_CODE, getProcessStep5cLabel(), EAM.text(""), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_5C_FILENAME));
+		ChoiceItemWithChildren processStep5cChoiceItem = new ChoiceItemWithChildren(PROCESS_STEP_5C_CODE, getProcessStep5cLabel(), EAM.emptyText(), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_5C_FILENAME));
 		headerChoiceItem.addChild(processStep5cChoiceItem);
 		processStep5cChoiceItem.addChild(new ChoiceItem("ShareFeedbackFormallyOrInformally", EAM.text("Share feedback formally or informally"), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_5C_FILENAME)));
 		processStep5cChoiceItem.addChild(new ChoiceItem("ConductEvaluationsAndOrAuditsAtAppropriateTimesDuringTheProjectCycle", EAM.text("Conduct evaluations and/or audits"), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_5C_FILENAME)));

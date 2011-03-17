@@ -330,6 +330,11 @@ public class EAM
 		return Translation.text(key);
 	}
 	
+	public static String emptyText()
+	{
+		return "";
+	}
+	
 	public static String substitute(String text, HashMap<String, String> tokenReplacementMap)
 	{
 		Set<String> tokens = tokenReplacementMap.keySet();
