@@ -47,5 +47,11 @@ abstract public class OpenStandardsDashboardTab extends SplitterPanelWithRightSi
 	
 	abstract public String getTabCode();
 	
+	@Override
+	protected String getSplitterIdentifier()
+	{
+		return SAME_SPLITTER_IDENTIFIER_FOR_ALL_TABS;
+	}
+
 	private static final int BORDER_THICKNESS = 10;
 }

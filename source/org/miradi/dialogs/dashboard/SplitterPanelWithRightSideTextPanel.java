@@ -53,10 +53,7 @@ abstract public class SplitterPanelWithRightSideTextPanel extends DisposablePane
 		return splitPane;
 	}
 
-	private String getSplitterIdentifier()
-	{
-		return SAME_SPLITTER_IDENTIFIER_FOR_ALL_TABS;
-	}
+	protected abstract String getSplitterIdentifier();
 
 	private void setupCommunicationBetweenLeftAndRightPanels(RightSideDescriptionPanel rightPanel)
 	{
@@ -107,5 +104,5 @@ abstract public class SplitterPanelWithRightSideTextPanel extends DisposablePane
 	protected AbstractObjectDataInputPanel leftPanel;
 	protected RightSideDescriptionPanel rightPanel;
 	private PersistentHorizontalSplitPane splitPane;
-	private static final String SAME_SPLITTER_IDENTIFIER_FOR_ALL_TABS = "PanelWithDescriptionPanel";
+	protected static final String SAME_SPLITTER_IDENTIFIER_FOR_ALL_TABS = "PanelWithDescriptionPanel";
 }
