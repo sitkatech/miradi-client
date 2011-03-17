@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml;
 
 import org.miradi.ids.BaseId;
+import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Dashboard;
@@ -212,6 +213,16 @@ abstract public class AbstractXmpzObjectImporter implements XmpzXmlConstants
 	protected void importField(Node node, String elementName, ORef destinationRef, String destinationTag) throws Exception
 	{
 		getImporter().importField(node, elementName, destinationRef, destinationTag);
+	}
+	
+	protected void importBooleanField(Node node, ORef destinationRef, String tag) throws Exception
+	{
+		Node booleanNode = getImporter().getNode(node, getPoolName() + tag);
+		String isValue = BooleanData.BOOLEAN_FALSE;
+		if (booleanNode != null && getImporter().isTrue(booleanNode.getTextContent()))
+			isValue = BooleanData.BOOLEAN_TRUE;
+
+		getImporter().setData(destinationRef, tag, isValue);
 	}
 	
 	public String getPoolName()
