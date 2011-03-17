@@ -91,10 +91,12 @@
     <property name="miradi.po.de" value="${translations.dir}/miradi_de.po" />
     <property name="miradi.po.es" value="${translations.dir}/miradi_es.po" />
     <property name="miradi.po.fr" value="${translations.dir}/miradi_fr.po" />
+    <property name="miradi.po.heb" value="${translations.dir}/miradi_heb.po" />
     <property name="miradi.po.hu" value="${translations.dir}/miradi_hu.po" />
     <property name="miradi.po.id" value="${translations.dir}/miradi_id.po" />
     <property name="miradi.po.it" value="${translations.dir}/miradi_it.po" />
     <property name="miradi.po.mn" value="${translations.dir}/miradi_mn.po" />
+    <property name="miradi.po.plt" value="${translations.dir}/miradi_plt.po" />
     <property name="miradi.po.uk" value="${translations.dir}/miradi_uk.po" />
     <property name="miradi.po.zh" value="${translations.dir}/miradi_zh.po" />
 
@@ -600,6 +602,32 @@
 	</zip>
 </target>
 
+<!-- ================================================================== -->
+<!-- HEBREW                                            -->
+<!-- ================================================================== -->
+<target name="hebrew" depends="pot" description="Update Hebrew Content">
+	<property name="po.locale" value="HEB" />
+	<property name="po.file" value="${miradi.po.heb}" />
+	<antcall target="create-new-po"/>
+	<antcall target="update-po">
+		<param name="po.file" value="${miradi.po.heb}"/>
+		<param name="language.code" value="heb"/>
+	</antcall>
+</target>
+	
+<!-- ================================================================== -->
+<!-- PLATEAU MALAGASY                                            -->
+<!-- ================================================================== -->
+<target name="malagasy" depends="pot" description="Update Malagasy Content">
+	<property name="po.locale" value="PLT" />
+	<property name="po.file" value="${miradi.po.plt}" />
+	<antcall target="create-new-po"/>
+	<antcall target="update-po">
+		<param name="po.file" value="${miradi.po.plt}"/>
+		<param name="language.code" value="plt"/>
+	</antcall>
+</target>
+	
 <!-- ================================================================== -->
 <!-- S P A N I S H                                            -->
 <!-- ================================================================== -->
