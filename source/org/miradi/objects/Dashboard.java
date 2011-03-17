@@ -20,13 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objects;
 
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Vector;
 
 import org.miradi.diagram.ThreatTargetChainWalker;
-import org.miradi.dialogs.dashboard.DashboardRowDefinition;
 import org.miradi.dialogs.dashboard.DashboardRowDefinitionManager;
 import org.miradi.dialogs.threatrating.upperPanel.TargetThreatLinkTableModel;
 import org.miradi.ids.BaseId;
@@ -43,11 +41,9 @@ import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.questions.OpenStandardsDynamicProgressStatusQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.StrategyRatingSummaryQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
-import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.OptionalDouble;
 import org.miradi.utils.StringChoiceMapData;
@@ -592,25 +588,6 @@ public class Dashboard extends BaseObject
 		return Integer.toString(count);
 	}
 
-	public StringChoiceMap calculateEffectiveStatusMap() throws Exception
-	{
-		StringChoiceMap map = new StringChoiceMap();
-		CodeList allThirdLevelCodes = getDashboardRowDefinitionManager().getThirdLevelCodes();
-		for (int index = 0; index < allThirdLevelCodes.size(); ++index)
-		{
-			String thirdLevelCode = allThirdLevelCodes.get(index);
-			Vector<DashboardRowDefinition> rowDefinitions = getDashboardRowDefinitionManager().getRowDefinitions(thirdLevelCode);
-			
-			String progressCode = progressChoiceMap.getStringChoiceMap().get(thirdLevelCode);
-			if (progressCode.equals(OpenStandardsDynamicProgressStatusQuestion.NOT_SPECIFIED_CODE))
-				progressCode = computeStatusCodeFromStatistics(rowDefinitions);
-			
-			map.put(thirdLevelCode, progressCode);
-		}
-		
-		return map;
-	}
-
 	public DashboardRowDefinitionManager getDashboardRowDefinitionManager()
 	{
 		if (rowDefinitionManager == null)
@@ -619,40 +596,6 @@ public class Dashboard extends BaseObject
 		return rowDefinitionManager;
 	}
 
-	private String computeStatusCodeFromStatistics(Vector<DashboardRowDefinition> rowDefinitions)
-	{
-		Vector<String> pseudoValues = new Vector<String>();
-		for (DashboardRowDefinition rowDefinition: rowDefinitions)
-		{
-			Vector<String> pseudoTags = rowDefinition.getPseudoTags();
-			for (String pseudoTag: pseudoTags)
-			{
-				String pseudoDataValue = getPseudoData(pseudoTag);
-				pseudoValues.add(pseudoDataValue);
-			}
-		}
-		
-		return getStatusCode(pseudoValues);
-	}
-	
-	private String getStatusCode(Collection<String> rawDataValues)
-	{
-		if (rawDataValues.isEmpty())
-			return OpenStandardsDynamicProgressStatusQuestion.NOT_STARTED_CODE;
-		
-		int valuesWithDataCount = 0;
-		for (String rawData : rawDataValues)
-		{
-			if (rawData.length() > 0 && !rawData.equals("0"))
-				++valuesWithDataCount;
-		}
-		
-		if (valuesWithDataCount == 0)
-			return OpenStandardsDynamicProgressStatusQuestion.NOT_STARTED_CODE;
-			
-		return OpenStandardsDynamicProgressStatusQuestion.IN_PROGRESS_CODE;
-	}
-	
 	private String getIndicatorAndMethodsWithProgressReportPerncet() throws Exception
 	{
 		int strategiesAndActiviesWithProgressReports = getIndicatorsAndMethodsWithProgressReports().size();
