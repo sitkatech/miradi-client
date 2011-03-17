@@ -31,17 +31,17 @@ public class OpenStandardsAnalyzeUseAndAdaptQuestion extends DynamicChoiceWithRo
 		ChoiceItemWithChildren headerChoiceItem = new ChoiceItemWithChildren(ANALYZE_USE_AND_ADAPT_HEADER_CODE, getHeaderLabel(), new HtmlResourceLongDescriptionProvider(MAIN_DESCRIPTION_FILENAME));
 		
 		
-		ChoiceItemWithChildren processStep4a = new ChoiceItemWithChildren(PROCESS_STEP_4A_CODE, getProcessStep4a(), EAM.text(""), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_4A_FILENAME));
+		ChoiceItemWithChildren processStep4a = new ChoiceItemWithChildren(PROCESS_STEP_4A_CODE, getProcessStep4a(), EAM.emptyText(), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_4A_FILENAME));
 		headerChoiceItem.addChild(processStep4a);
 		processStep4a.addChild(new ChoiceItem(DEVELOP_SYSTEMS_FOR_RECORDING_STORING_PROCESSING_AND_BACKING_UP_DATA_CODE, EAM.text("Develop systems for handling project data"), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_4A_FILENAME)));
 		
-		ChoiceItemWithChildren processStep4bChoiceItem = new ChoiceItemWithChildren(PROCESS_STEP_4B_CODE, getProcessStep4b(), EAM.text(""), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_4B_FILENAME));
+		ChoiceItemWithChildren processStep4bChoiceItem = new ChoiceItemWithChildren(PROCESS_STEP_4B_CODE, getProcessStep4b(), EAM.emptyText(), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_4B_FILENAME));
 		headerChoiceItem.addChild(processStep4bChoiceItem);
 		processStep4bChoiceItem.addChild(new ChoiceItem("AnalyzeProjectResultsSndSssumptions", (EAM.text("Analyze project results and assumptions")), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_4B_FILENAME)));
 		processStep4bChoiceItem.addChild(new ChoiceItem("AnalyzeOperationalAndFinancialData", (EAM.text("Analyze operational and financial data")), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_4B_FILENAME)));
 		processStep4bChoiceItem.addChild(new ChoiceItem("DocumentDiscussionsAndDecisions", (EAM.text("Document discussions and decisions")), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_4B_FILENAME)));
 
-		ChoiceItemWithChildren processStep4cChoiceItem = new ChoiceItemWithChildren(PROCESS_STEP_4C_CODE, getProcessStep4c(), EAM.text(""), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_4C_FILENAME));
+		ChoiceItemWithChildren processStep4cChoiceItem = new ChoiceItemWithChildren(PROCESS_STEP_4C_CODE, getProcessStep4c(), EAM.emptyText(), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_4C_FILENAME));
 		headerChoiceItem.addChild(processStep4cChoiceItem);
 		processStep4cChoiceItem.addChild(new ChoiceItem("ReviseProjectPlanStrategicMonitoringOperationalAndWorkPlans", EAM.text("Revise project plans"), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_4C_FILENAME)));
 		
