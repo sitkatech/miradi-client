@@ -597,13 +597,13 @@
 <!-- PLATEAU MALAGASY                                            -->
 <!-- ================================================================== -->
 <target name="malagasy" depends="pot" description="Update Malagasy Content">
-	<property name="po.locale" value="PLT" />
+<!--	<property name="po.locale" value="PLT" />
 	<property name="po.file" value="${miradi.po.plt}" />
 	<antcall target="create-new-po"/>
 	<antcall target="update-po">
 		<param name="po.file" value="${miradi.po.plt}"/>
 		<param name="language.code" value="plt"/>
-	</antcall>
+	</antcall>-->
 </target>
 	
 <!-- ================================================================== -->
