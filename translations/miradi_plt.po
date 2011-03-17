@@ -3,20 +3,11 @@
 # This file is distributed under the same license as the Miradi package.
 # Automatically generated, 2011.
 #
-#: Miradi/source/org/miradi/questions/OpenStandardsPlanActionsAndMonitoringQuestion.java:33
-#: Miradi/source/org/miradi/questions/OpenStandardsPlanActionsAndMonitoringQuestion.java:43
-#: Miradi/source/org/miradi/questions/OpenStandardsPlanActionsAndMonitoringQuestion.java:48
-#: Miradi/source/org/miradi/questions/OpenStandardsAnalyzeUseAndAdaptQuestion.java:34
-#: Miradi/source/org/miradi/questions/OpenStandardsAnalyzeUseAndAdaptQuestion.java:38
-#: Miradi/source/org/miradi/questions/OpenStandardsAnalyzeUseAndAdaptQuestion.java:44
-#: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:33
-#: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:37
-#: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:45
 msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-17 08:40-0500\n"
+"POT-Creation-Date: 2011-03-17 13:40-0500\n"
 "PO-Revision-Date: 2011-03-17 08:40-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -24,14 +15,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: Miradi/source/org/miradi/main/EAM.java:370
+#: Miradi/source/org/miradi/main/EAM.java:375
 msgid ""
 "\n"
 "\n"
 "Miradi has attempted to save your latest changes, and will now exit."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAM.java:367
+#: Miradi/source/org/miradi/main/EAM.java:372
 msgid ""
 "\n"
 "\n"
@@ -1975,7 +1966,7 @@ msgstr ""
 msgid "An internal error prevented this operation"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAM.java:399
+#: Miradi/source/org/miradi/main/EAM.java:404
 msgid "An unexpected error has occurred"
 msgstr ""
 
@@ -1983,7 +1974,7 @@ msgstr ""
 msgid "An unexpected error has occurred."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAM.java:366
+#: Miradi/source/org/miradi/main/EAM.java:371
 msgid "An unexpected error occurred: "
 msgstr ""
 
@@ -2959,8 +2950,8 @@ msgstr ""
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:61
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:54
-#: Miradi/source/org/miradi/main/EAM.java:456
-#: Miradi/source/org/miradi/main/EAM.java:457
+#: Miradi/source/org/miradi/main/EAM.java:461
+#: Miradi/source/org/miradi/main/EAM.java:462
 msgid "Delete"
 msgstr ""
 
@@ -3294,7 +3285,7 @@ msgstr ""
 msgid "Error Occurred please try saving under different name."
 msgstr ""
 
-#: Miradi/source/org/miradi/objects/Dashboard.java:306
+#: Miradi/source/org/miradi/objects/Dashboard.java:305
 msgid "Error Retrieving Data"
 msgstr ""
 
@@ -5638,7 +5629,7 @@ msgid "Results Monitoring Plan"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:61
-#: Miradi/source/org/miradi/main/EAM.java:456
+#: Miradi/source/org/miradi/main/EAM.java:461
 msgid "Retain"
 msgstr ""
 
@@ -7470,7 +7461,7 @@ msgstr ""
 msgid "Title|Direct Threat Properties"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAM.java:404
+#: Miradi/source/org/miradi/main/EAM.java:409
 msgid "Title|Error"
 msgstr ""
 
@@ -8038,7 +8029,7 @@ msgstr ""
 msgid "Who Override was: %s"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAM.java:612
+#: Miradi/source/org/miradi/main/EAM.java:617
 msgid "Wintitle|Information"
 msgstr ""
 
