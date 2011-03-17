@@ -552,16 +552,17 @@
 <!-- ================================================================== -->
 <!-- CREATE NEW PO                                            -->
 <!--   
-	To use this, insert three lines like this 
-	at the start of the new language target:	
-		<property name="po.locale" value="IT" />
-		<property name="po.file" value="${miradi.po.it}" />
+	NOTE: You can only create ONE po file at a time
+	1. Create the new po property at the top of this file
+	2. Add the new language to the dependencies of the translations target
+	3. Insert three lines like this	at the start of the new language target:	
+		<property name="po.locale" value="XXX" />
+		<property name="po.file" value="${miradi.po.xxx}" />
 		<antcall target="create-new-po"/>
-	Don't forget to create the new po property at the top of this file!
-	Don't forget to add the new language to the dependencies of translations
-	Then, grab the new PO file out of the Hudson workspace, 
-	delete the three lines of code mentioned above, 
-	and manually commit the po file as if you had created it from scratch
+		
+	4. Allow the build to run
+	5. The new PO file should be in your workspace next time you sync and pull
+	6. Delete the three lines of code mentioned above
 -->
 <!-- ================================================================== -->
 <target name="create-new-po" description="Create empty po file">
