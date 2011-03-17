@@ -512,7 +512,12 @@ public class Project
 	
 	public AbstractStringKeyMap getCachedDashboardEffectiveMap() throws Exception
 	{
-		return dashboardEffectiveMapCacheManager.calculateEffectiveMap();
+		return getDashboardEffectiveMapCacheManager().calculateEffectiveMap();
+	}
+	
+	public DashboardEffectiveMapCacheManager getDashboardEffectiveMapCacheManager()
+	{
+		return dashboardEffectiveMapCacheManager;
 	}
 
 	public BaseObject findObject(ORef ref)

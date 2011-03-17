@@ -20,6 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objecthelpers;
 
+import java.util.Collection;
+import java.util.Vector;
+
+import org.miradi.dialogs.dashboard.DashboardRowDefinition;
+import org.miradi.dialogs.dashboard.DashboardRowDefinitionManager;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
@@ -28,6 +33,8 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.StringChoiceMap;
 import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
+import org.miradi.questions.OpenStandardsDynamicProgressStatusQuestion;
+import org.miradi.utils.CodeList;
 
 public class DashboardEffectiveMapCacheManager implements CommandExecutedListener
 {
@@ -65,8 +72,7 @@ public class DashboardEffectiveMapCacheManager implements CommandExecutedListene
 
 	private void rebuildEffectiveMapCache() throws Exception
 	{
-		Dashboard dashboard = getDashboardSingletonObject();
-		effectiveStatusMapCache = dashboard.calculateEffectiveStatusMap();
+		effectiveStatusMapCache = calculateEffectiveStatusMap();
 	}
 
 	private Dashboard getDashboardSingletonObject()
@@ -81,6 +87,64 @@ public class DashboardEffectiveMapCacheManager implements CommandExecutedListene
 			rebuildEffectiveMapCache();
 		
 		return effectiveStatusMapCache;
+	}
+	
+	public StringChoiceMap calculateEffectiveStatusMap() throws Exception
+	{
+		StringChoiceMap map = new StringChoiceMap();
+		CodeList allThirdLevelCodes = getDashboardRowDefinitionManager().getThirdLevelCodes();
+		for (int index = 0; index < allThirdLevelCodes.size(); ++index)
+		{
+			String thirdLevelCode = allThirdLevelCodes.get(index);
+			Vector<DashboardRowDefinition> rowDefinitions = getDashboardRowDefinitionManager().getRowDefinitions(thirdLevelCode);
+			
+			String progressCode = getDashboardSingletonObject().getProgressChoiceMap().get(thirdLevelCode);
+			if (progressCode.equals(OpenStandardsDynamicProgressStatusQuestion.NOT_SPECIFIED_CODE))
+				progressCode = computeStatusCodeFromStatistics(rowDefinitions);
+			
+			map.put(thirdLevelCode, progressCode);
+		}
+		
+		return map;
+	}
+
+	private String computeStatusCodeFromStatistics(Vector<DashboardRowDefinition> rowDefinitions)
+	{
+		Vector<String> pseudoValues = new Vector<String>();
+		for (DashboardRowDefinition rowDefinition: rowDefinitions)
+		{
+			Vector<String> pseudoTags = rowDefinition.getPseudoTags();
+			for (String pseudoTag: pseudoTags)
+			{
+				String pseudoDataValue = getDashboardSingletonObject().getPseudoData(pseudoTag);
+				pseudoValues.add(pseudoDataValue);
+			}
+		}
+		
+		return getStatusCode(pseudoValues);
+	}
+	
+	private String getStatusCode(Collection<String> rawDataValues)
+	{
+		if (rawDataValues.isEmpty())
+			return OpenStandardsDynamicProgressStatusQuestion.NOT_STARTED_CODE;
+		
+		int valuesWithDataCount = 0;
+		for (String rawData : rawDataValues)
+		{
+			if (rawData.length() > 0 && !rawData.equals("0"))
+				++valuesWithDataCount;
+		}
+		
+		if (valuesWithDataCount == 0)
+			return OpenStandardsDynamicProgressStatusQuestion.NOT_STARTED_CODE;
+			
+		return OpenStandardsDynamicProgressStatusQuestion.IN_PROGRESS_CODE;
+	}
+	
+	private DashboardRowDefinitionManager getDashboardRowDefinitionManager()
+	{
+		return getDashboardSingletonObject().getDashboardRowDefinitionManager();
 	}
 	
 	private Project getProject()
