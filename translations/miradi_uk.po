@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-17 13:45-0500\n"
+"POT-Creation-Date: 2011-03-17 14:39-0500\n"
 "PO-Revision-Date: 2010-09-30 09:31+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -4469,7 +4469,7 @@ msgstr "Label|(Невизначений код облікового запису
 msgid "Label|(Undefined Funding Source)"
 msgstr "Label|(Невизначене джерело фінансування)"
 
-#: Miradi/source/org/miradi/objects/ProjectResource.java:126
+#: Miradi/source/org/miradi/objects/ProjectResource.java:127
 msgid "Label|(Undefined Resource)"
 msgstr "Label|(Невизначений ресурс)"
 
@@ -8085,7 +8085,7 @@ msgstr "Title|Складові завдання"
 msgid "Title|Team"
 msgstr "Title|Виконавець"
 
-#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:86
+#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:89
 msgid "Title|Team Properties"
 msgstr "Title|Складові робочої групи"
 
@@ -8811,6 +8811,9 @@ msgstr "FieldLabel|7.Comments|Коментарі"
 
 msgid "FieldLabel|7.ProjectResource|Resource"
 msgstr "FieldLabel|7.ProjectResource|Ресурс"
+
+msgid "FieldLabel|7.IsAffiliatedToConservationCoachesNetwork|CCN Coach"
+msgstr ""
 
 msgid "FieldLabel|8.Indicator|Indicator"
 msgstr "FieldLabel|8.Indicator|Індикатор"
