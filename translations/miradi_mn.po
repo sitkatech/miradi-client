@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-17 14:39-0500\n"
+"POT-Creation-Date: 2011-03-17 16:40-0500\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -3028,7 +3028,7 @@ msgstr "Үүсгэх..."
 msgid "Creating group boxes..."
 msgstr "Бүлгийн хайрцгуудыг үүсгэх..."
 
-#: Miradi/source/org/miradi/project/Project.java:685
+#: Miradi/source/org/miradi/project/Project.java:690
 msgid "Creating..."
 msgstr ""
 
@@ -3538,7 +3538,7 @@ msgstr "Ангилахад алдаа"
 msgid "Error Occurred please try saving under different name."
 msgstr "Алдаа гарсан тул өөр нэр өгч хадгалах."
 
-#: Miradi/source/org/miradi/objects/Dashboard.java:305
+#: Miradi/source/org/miradi/objects/Dashboard.java:301
 msgid "Error Retrieving Data"
 msgstr ""
 
@@ -5462,7 +5462,7 @@ msgstr ""
 msgid "OpenStandards"
 msgstr "Стандартыг нээх"
 
-#: Miradi/source/org/miradi/project/Project.java:680
+#: Miradi/source/org/miradi/project/Project.java:685
 msgid "Opening..."
 msgstr ""
 
@@ -8678,7 +8678,7 @@ msgstr "[ТОДОРХОЙ ЗААГДААГҮЙ]"
 msgid "[New Results Chain]"
 msgstr "[Шинэ Үр Дүнгийн Гинжих Холбоос]"
 
-#: Miradi/source/org/miradi/project/Project.java:992
+#: Miradi/source/org/miradi/project/Project.java:997
 msgid "[No Project]"
 msgstr "Төсөл байхгүй]"
 

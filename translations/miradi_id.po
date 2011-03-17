@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-17 14:39-0500\n"
+"POT-Creation-Date: 2011-03-17 16:40-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -2965,7 +2965,7 @@ msgstr "Buat… "
 msgid "Creating group boxes..."
 msgstr ""
 
-#: Miradi/source/org/miradi/project/Project.java:685
+#: Miradi/source/org/miradi/project/Project.java:690
 msgid "Creating..."
 msgstr ""
 
@@ -3477,7 +3477,7 @@ msgstr ""
 msgid "Error Occurred please try saving under different name."
 msgstr "Terjadi Kesalahan, harap simpan dengan nama lain. "
 
-#: Miradi/source/org/miradi/objects/Dashboard.java:305
+#: Miradi/source/org/miradi/objects/Dashboard.java:301
 msgid "Error Retrieving Data"
 msgstr ""
 
@@ -5418,7 +5418,7 @@ msgstr ""
 msgid "OpenStandards"
 msgstr "Standar Terbuka"
 
-#: Miradi/source/org/miradi/project/Project.java:680
+#: Miradi/source/org/miradi/project/Project.java:685
 msgid "Opening..."
 msgstr ""
 
@@ -8603,7 +8603,7 @@ msgstr "[TIDAK TERSPESIFIKASI] "
 msgid "[New Results Chain]"
 msgstr "[Rangkaian Hasil Baru] "
 
-#: Miradi/source/org/miradi/project/Project.java:992
+#: Miradi/source/org/miradi/project/Project.java:997
 msgid "[No Project]"
 msgstr "[Tidak Ada Proyek] "
 

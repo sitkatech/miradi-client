@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-17 14:39-0500\n"
+"POT-Creation-Date: 2011-03-17 16:40-0500\n"
 "PO-Revision-Date: 2010-09-30 09:31+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -3035,7 +3035,7 @@ msgstr "Створити..."
 msgid "Creating group boxes..."
 msgstr ""
 
-#: Miradi/source/org/miradi/project/Project.java:685
+#: Miradi/source/org/miradi/project/Project.java:690
 msgid "Creating..."
 msgstr ""
 
@@ -3547,7 +3547,7 @@ msgstr "Під час сортування сталася помилка"
 msgid "Error Occurred please try saving under different name."
 msgstr "Сталася помилка. Спробуйте зберегти під іншою назвою."
 
-#: Miradi/source/org/miradi/objects/Dashboard.java:305
+#: Miradi/source/org/miradi/objects/Dashboard.java:301
 msgid "Error Retrieving Data"
 msgstr ""
 
@@ -5459,7 +5459,7 @@ msgstr ""
 msgid "OpenStandards"
 msgstr "Відкриті Стандарти"
 
-#: Miradi/source/org/miradi/project/Project.java:680
+#: Miradi/source/org/miradi/project/Project.java:685
 msgid "Opening..."
 msgstr ""
 
@@ -8621,7 +8621,7 @@ msgstr "[НЕ ВКАЗАНИЙ]"
 msgid "[New Results Chain]"
 msgstr "[Новий ланцюг результатів]"
 
-#: Miradi/source/org/miradi/project/Project.java:992
+#: Miradi/source/org/miradi/project/Project.java:997
 msgid "[No Project]"
 msgstr "[Проект не вибраний]"
 
