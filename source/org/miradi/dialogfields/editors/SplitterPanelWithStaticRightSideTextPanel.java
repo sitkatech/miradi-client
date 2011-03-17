@@ -59,6 +59,6 @@ public class SplitterPanelWithStaticRightSideTextPanel extends SplitterPanelWith
 	@Override
 	protected String getSplitterIdentifier()
 	{
-		return SAME_SPLITTER_IDENTIFIER_FOR_ALL_TABS;
+		return "PanelWithDescriptionPanel";
 	}
 }
