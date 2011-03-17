@@ -22,7 +22,6 @@ package org.miradi.objects;
 
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.AbstractStringKeyMap;
-import org.miradi.objecthelpers.ORef;
 
 public class TestDashboardEffectiveMapCacheManager extends TestCaseWithProject
 {
@@ -36,18 +35,12 @@ public class TestDashboardEffectiveMapCacheManager extends TestCaseWithProject
 		initializeCache();
 		getProject().createAndAddFactorToDiagram(Cause.getObjectType());
 		AbstractStringKeyMap cachedMap = getProject().getCachedDashboardEffectiveMap();
-		AbstractStringKeyMap nonCachedMap = getDashboard().calculateEffectiveStatusMap();
+		AbstractStringKeyMap nonCachedMap = getProject().getDashboardEffectiveMapCacheManager().calculateEffectiveStatusMap();
 		assertEquals("Cached map is not in sync with dashbard's effective status map?", nonCachedMap, cachedMap);
 	}
 
 	private void initializeCache() throws Exception
 	{
 		getProject().getCachedDashboardEffectiveMap();
-	}
-	
-	private Dashboard getDashboard()
-	{
-		ORef dashboardRef = getProject().getSingletonObjectRef(Dashboard.getObjectType());
-		return Dashboard.find(getProject(), dashboardRef);
 	}
 }

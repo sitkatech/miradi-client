@@ -122,7 +122,7 @@ public class TestDashboard extends ObjectTestCase
 
 	private StringChoiceMap getEffectiveStatusMap() throws Exception
 	{
-		return getDashboard().calculateEffectiveStatusMap();
+		return getProject().getDashboardEffectiveMapCacheManager().calculateEffectiveStatusMap();
 	}
 	
 	private Dashboard getDashboard()
