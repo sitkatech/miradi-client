@@ -55,4 +55,10 @@ public class SplitterPanelWithStaticRightSideTextPanel extends SplitterPanelWith
 	{
 		return AppPreferences.getWizardBackgroundColor();
 	}
+
+	@Override
+	protected String getSplitterIdentifier()
+	{
+		return SAME_SPLITTER_IDENTIFIER_FOR_ALL_TABS;
+	}
 }
