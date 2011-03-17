@@ -563,6 +563,7 @@
 	4. Allow the build to run
 	5. The new PO file should be in your workspace next time you sync and pull
 	6. Delete the three lines of code mentioned above
+	7. Manually edit the PO headers as needed, and re-commit
 -->
 <!-- ================================================================== -->
 <target name="create-new-po" description="Create empty po file">
