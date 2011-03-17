@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-17 13:45-0500\n"
+"POT-Creation-Date: 2011-03-17 14:39-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -4276,7 +4276,7 @@ msgstr "（未定义的会计代码） \t\t"
 msgid "Label|(Undefined Funding Source)"
 msgstr ""
 
-#: Miradi/source/org/miradi/objects/ProjectResource.java:126
+#: Miradi/source/org/miradi/objects/ProjectResource.java:127
 msgid "Label|(Undefined Resource)"
 msgstr "（未定义的资源） \t\t"
 
@@ -7802,7 +7802,7 @@ msgstr "任务属性 \t\t"
 msgid "Title|Team"
 msgstr "团队 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:86
+#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:89
 msgid "Title|Team Properties"
 msgstr "团队属性 \t\t"
 
@@ -8515,6 +8515,9 @@ msgid "FieldLabel|7.Comments|Comments"
 msgstr "评论 \t\t"
 
 msgid "FieldLabel|7.ProjectResource|Resource"
+msgstr ""
+
+msgid "FieldLabel|7.IsAffiliatedToConservationCoachesNetwork|CCN Coach"
 msgstr ""
 
 msgid "FieldLabel|8.Indicator|Indicator"

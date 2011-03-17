@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-17 13:45-0500\n"
+"POT-Creation-Date: 2011-03-17 14:39-0500\n"
 "PO-Revision-Date: 2010-05-12 21:01-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -4182,7 +4182,7 @@ msgstr ""
 msgid "Label|(Undefined Funding Source)"
 msgstr ""
 
-#: Miradi/source/org/miradi/objects/ProjectResource.java:126
+#: Miradi/source/org/miradi/objects/ProjectResource.java:127
 msgid "Label|(Undefined Resource)"
 msgstr ""
 
@@ -7644,7 +7644,7 @@ msgstr ""
 msgid "Title|Team"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:86
+#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:89
 msgid "Title|Team Properties"
 msgstr ""
 
@@ -8331,6 +8331,9 @@ msgid "FieldLabel|7.Comments|Comments"
 msgstr ""
 
 msgid "FieldLabel|7.ProjectResource|Resource"
+msgstr ""
+
+msgid "FieldLabel|7.IsAffiliatedToConservationCoachesNetwork|CCN Coach"
 msgstr ""
 
 msgid "FieldLabel|8.Indicator|Indicator"

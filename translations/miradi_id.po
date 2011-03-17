@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-17 13:45-0500\n"
+"POT-Creation-Date: 2011-03-17 14:39-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -4418,7 +4418,7 @@ msgstr " (Kode Akuntansi Tak Terdefinisi) "
 msgid "Label|(Undefined Funding Source)"
 msgstr "(Sumber Dana Tidak Jelas) "
 
-#: Miradi/source/org/miradi/objects/ProjectResource.java:126
+#: Miradi/source/org/miradi/objects/ProjectResource.java:127
 msgid "Label|(Undefined Resource)"
 msgstr " (Sumber Daya Tak Terdefinisi) "
 
@@ -8047,7 +8047,7 @@ msgstr "Sifat-sifat Tugas "
 msgid "Title|Team"
 msgstr "Tim "
 
-#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:86
+#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:89
 msgid "Title|Team Properties"
 msgstr "Sifat-sifat Tim "
 
@@ -8793,6 +8793,9 @@ msgstr "Komentar "
 
 msgid "FieldLabel|7.ProjectResource|Resource"
 msgstr "Sumber daya "
+
+msgid "FieldLabel|7.IsAffiliatedToConservationCoachesNetwork|CCN Coach"
+msgstr ""
 
 msgid "FieldLabel|8.Indicator|Indicator"
 msgstr "Indikator "
