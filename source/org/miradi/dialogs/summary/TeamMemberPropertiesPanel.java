@@ -75,8 +75,7 @@ public class TeamMemberPropertiesPanel extends ObjectDataInputPanel
 
 		addField(createMultilineField(ProjectResource.TAG_COMMENTS));
 		
-		ObjectDataInputField checkBox = createCheckBoxField(ProjectResource.TAG_IS_AFFILIATED_TO_CONSERVATION_COACHES_NETWORK);
-		addFieldsOnOneLine(EAM.text("This person is a coach within the Conservation Coaches Network"), new ObjectDataInputField[]{checkBox, });
+		addFieldWithCustomLabelAndHint(createCheckBoxField(ProjectResource.TAG_IS_AFFILIATED_TO_CONSERVATION_COACHES_NETWORK), "This person is a coach within the Conservation Coaches Network");
 		
 		addField(createStringField(ProjectResource.TAG_CUSTOM_FIELD_1));
 		addField(createStringField(ProjectResource.TAG_CUSTOM_FIELD_2));
