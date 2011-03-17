@@ -59,7 +59,6 @@ public class SplitterPanelWithStaticRightSideTextPanel extends SplitterPanelWith
 	@Override
 	protected String getSplitterIdentifier()
 	{
-		// FIXME: Change this to use the question instead of static text
-		return "PanelWithDescriptionPanel";
+		return "Splitter:" + getPanelDescription();
 	}
 }
