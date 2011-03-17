@@ -84,7 +84,7 @@ public class DashboardEffectiveMapCacheManager implements CommandExecutedListene
 		return effectiveStatusMapCache;
 	}
 	
-	public StringChoiceMap calculateEffectiveStatusMap() throws Exception
+	private void calculateEffectiveStatusMap() throws Exception
 	{
 		effectiveStatusMapCache = new StringChoiceMap();
 		CodeList allThirdLevelCodes = getDashboardRowDefinitionManager().getThirdLevelCodes();
@@ -99,7 +99,11 @@ public class DashboardEffectiveMapCacheManager implements CommandExecutedListene
 			
 			effectiveStatusMapCache.put(thirdLevelCode, progressCode);
 		}
-		
+	}
+	
+	public StringChoiceMap getCalculatedEffectiveStatusMap() throws Exception
+	{
+		calculateEffectiveStatusMap();
 		return effectiveStatusMapCache;
 	}
 
