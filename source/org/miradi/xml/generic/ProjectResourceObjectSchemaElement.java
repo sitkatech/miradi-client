@@ -48,6 +48,7 @@ public class ProjectResourceObjectSchemaElement extends AbstractBaseObjectSchema
 		createOptionalDateField(ProjectResource.TAG_DATE_UPDATED);
 		createOptionalNumericField(ProjectResource.TAG_COST_PER_UNIT);
 		createOptionalTextField(ProjectResource.TAG_COMMENTS);
+		createOptionalBooleanField(ProjectResource.TAG_IS_AFFILIATED_TO_CONSERVATION_COACHES_NETWORK);
 		createOptionalTextField(ProjectResource.TAG_CUSTOM_FIELD_1);
 		createOptionalTextField(ProjectResource.TAG_CUSTOM_FIELD_2);
 	}
