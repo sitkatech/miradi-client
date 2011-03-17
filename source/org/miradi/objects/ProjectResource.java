@@ -263,7 +263,7 @@ public class ProjectResource extends BaseObject
 		iMAddress = new StringData(TAG_IM_ADDRESS);
 		iMService = new StringData(TAG_IM_SERVICE);
 		dateUpdated = new DateData(TAG_DATE_UPDATED);
-		isAffiliatedToConservationCoachNetwork = new BooleanData(TAG_IS_CCN_COACH);
+		isCcnCoach = new BooleanData(TAG_IS_CCN_COACH);
 
 		addField(TAG_RESOURCE_TYPE, resourceType);
 		addField(TAG_INITIALS, initials);
@@ -284,7 +284,7 @@ public class ProjectResource extends BaseObject
 		addField(TAG_IM_ADDRESS, iMAddress);
 		addField(TAG_IM_SERVICE, iMService);
 		addField(TAG_DATE_UPDATED, dateUpdated);
-		addField(TAG_IS_CCN_COACH, isAffiliatedToConservationCoachNetwork);
+		addField(TAG_IS_CCN_COACH, isCcnCoach);
 		
 		customUserField1 = new StringData(TAG_CUSTOM_FIELD_1);
 		customUserField2 = new StringData(TAG_CUSTOM_FIELD_2);
@@ -339,7 +339,7 @@ public class ProjectResource extends BaseObject
 	private StringData iMAddress;
 	private StringData iMService;
 	private DateData dateUpdated;
-	private BooleanData isAffiliatedToConservationCoachNetwork;
+	private BooleanData isCcnCoach;
 	
 	private StringData customUserField1;
 	private StringData customUserField2;
