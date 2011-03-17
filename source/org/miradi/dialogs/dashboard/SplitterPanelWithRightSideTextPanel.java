@@ -104,5 +104,4 @@ abstract public class SplitterPanelWithRightSideTextPanel extends DisposablePane
 	protected AbstractObjectDataInputPanel leftPanel;
 	protected RightSideDescriptionPanel rightPanel;
 	private PersistentHorizontalSplitPane splitPane;
-	protected static final String SAME_SPLITTER_IDENTIFIER_FOR_ALL_TABS = "PanelWithDescriptionPanel";
 }
