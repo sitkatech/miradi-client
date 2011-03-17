@@ -54,7 +54,7 @@ public class ProjectResourcePoolExporter extends BaseObjectPoolExporter
 		writeOptionalElementWithSameTag(baseObject, ProjectResource.TAG_DATE_UPDATED);
 		writeOptionalElementWithSameTag(baseObject, ProjectResource.TAG_COST_PER_UNIT);
 		writeOptionalElementWithSameTag(baseObject, ProjectResource.TAG_COMMENTS);
-		writeOptionalElementWithSameTag(baseObject, ProjectResource.TAG_IS_AFFILIATED_TO_CONSERVATION_COACHES_NETWORK);
+		writeOptionalElementWithSameTag(baseObject, ProjectResource.TAG_IS_CCN_COACH);
 		writeOptionalElementWithSameTag(baseObject, ProjectResource.TAG_CUSTOM_FIELD_1);
 		writeOptionalElementWithSameTag(baseObject, ProjectResource.TAG_CUSTOM_FIELD_2);
 	}

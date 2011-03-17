@@ -1045,7 +1045,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(projectResource, ProjectResource.TAG_ORGANIZATION, "TurtleWise Corp");
 		fillObjectUsingCommand(projectResource, ProjectResource.TAG_RESOURCE_TYPE, ResourceTypeQuestion.GROUP_CODE);
 		fillCostPerUnitField(projectResource, "10");
-		fillObjectUsingCommand(projectResource, ProjectResource.TAG_IS_AFFILIATED_TO_CONSERVATION_COACHES_NETWORK, BooleanData.BOOLEAN_TRUE);
+		fillObjectUsingCommand(projectResource, ProjectResource.TAG_IS_CCN_COACH, BooleanData.BOOLEAN_TRUE);
 	}
 	
 	public void populateSubTarget(SubTarget subTarget) throws Exception
