@@ -581,28 +581,6 @@
 </target>
 
 <!-- ================================================================== -->
-<!-- UPDATE PO CONTENTS                                            -->
-<!-- ================================================================== -->
-<target name="update-po" description="Update ${po.file}">
-	<echo message="updating ${po.file}"/>
-	<exec executable="msgmerge" failonerror="true">
-		<arg value="--update"/>
-		<arg value="--backup=none"/>
-		<arg value="--no-fuzzy-matching"/>
-		<arg value="${po.file}"/>
-		<arg value="${miradi.pot}"/>
-	</exec>
-	<echo message="building ${language.code} content jar"/>
-	<zip destfile="${dist.dir}/MiradiContent-${version.langpack}-${language.code}.jar">
-        <fileset dir="${eam.src.root}" includes="resources/**/*.txt" />
-        <fileset dir="${eam.src.root}" includes="**/*.jpg"/>
-        <fileset dir="${eam.src.root}" includes="**/*.png"/>
-        <fileset dir="${eam.src.root}" includes="**/*.gif"/>
-		<fileset dir="${translations.dir}" includes="miradi_${language.code}.po"/>
-	</zip>
-</target>
-
-<!-- ================================================================== -->
 <!-- HEBREW                                            -->
 <!-- ================================================================== -->
 <target name="hebrew" depends="pot" description="Update Hebrew Content">
@@ -718,6 +696,28 @@
 	</antcall>
 </target>
 				
+<!-- ================================================================== -->
+<!-- UPDATE PO CONTENTS                                            -->
+<!-- ================================================================== -->
+<target name="update-po" description="Update ${po.file}">
+	<echo message="updating ${po.file}"/>
+	<exec executable="msgmerge" failonerror="true">
+		<arg value="--update"/>
+		<arg value="--backup=none"/>
+		<arg value="--no-fuzzy-matching"/>
+		<arg value="${po.file}"/>
+		<arg value="${miradi.pot}"/>
+	</exec>
+	<echo message="building ${language.code} content jar"/>
+	<zip destfile="${dist.dir}/MiradiContent-${version.langpack}-${language.code}.jar">
+        <fileset dir="${eam.src.root}" includes="resources/**/*.txt" />
+        <fileset dir="${eam.src.root}" includes="**/*.jpg"/>
+        <fileset dir="${eam.src.root}" includes="**/*.png"/>
+        <fileset dir="${eam.src.root}" includes="**/*.gif"/>
+		<fileset dir="${translations.dir}" includes="miradi_${language.code}.po"/>
+	</zip>
+</target>
+
 <!-- ================================================================== -->
 <!-- T R A N S L A T I O N S                                            -->
 <!-- ================================================================== -->
