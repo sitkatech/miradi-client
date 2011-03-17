@@ -722,7 +722,7 @@
 <!-- T R A N S L A T I O N S                                            -->
 <!-- ================================================================== -->
 <target name="translations" 
-	depends="pot, spanish, indonesian, italian, mongolian, ukrainian, chinese, french, german, hungarian" 
+	depends="pot, chinese, french, german, hebrew, hungarian, indonesian, italian, malagasy, mongolian, spanish, ukrainian" 
 	description="Create Translatable Content jars/zips">
 	<exec executable="hg" failonerror="false" dir="${translations.dir}">
 		<arg value="status"/>
