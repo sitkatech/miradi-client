@@ -44,13 +44,18 @@ abstract public class SplitterPanelWithRightSideTextPanel extends DisposablePane
 
 	private PersistentHorizontalSplitPane createSplitPane(MainWindow mainWindowToUse) throws Exception
 	{
-		splitPane = new PersistentNonPercentageHorizontalSplitPane(this, mainWindowToUse, SAME_SPLITTER_IDENTIFIER_FOR_ALL_TABS);
+		splitPane = new PersistentNonPercentageHorizontalSplitPane(this, mainWindowToUse, getSplitterIdentifier());
 		rightPanel = createRightPanel(getDefaultDescriptionProvider());
 		setupCommunicationBetweenLeftAndRightPanels(rightPanel);
 		
 		splitPane.setLeftComponent(new MiradiScrollPane(leftPanel));
 		splitPane.setRightComponent(rightPanel);
 		return splitPane;
+	}
+
+	private String getSplitterIdentifier()
+	{
+		return SAME_SPLITTER_IDENTIFIER_FOR_ALL_TABS;
 	}
 
 	private void setupCommunicationBetweenLeftAndRightPanels(RightSideDescriptionPanel rightPanel)
