@@ -91,7 +91,7 @@ public class DashboardEffectiveMapCacheManager implements CommandExecutedListene
 	
 	public StringChoiceMap calculateEffectiveStatusMap() throws Exception
 	{
-		StringChoiceMap map = new StringChoiceMap();
+		map = new StringChoiceMap();
 		CodeList allThirdLevelCodes = getDashboardRowDefinitionManager().getThirdLevelCodes();
 		for (int index = 0; index < allThirdLevelCodes.size(); ++index)
 		{
@@ -154,4 +154,5 @@ public class DashboardEffectiveMapCacheManager implements CommandExecutedListene
 	
 	private Project project;
 	private StringChoiceMap effectiveStatusMapCache;
+	private StringChoiceMap map;
 }
