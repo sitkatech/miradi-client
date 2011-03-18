@@ -512,10 +512,10 @@ public class Project
 	
 	public AbstractStringKeyMap getCachedDashboardEffectiveMap() throws Exception
 	{
-		return getDashboardEffectiveMapCacheManager().calculateEffectiveMap();
+		return getDashboardStatusMapsCacher().calculateEffectiveMap();
 	}
 	
-	public DashboardStatusMapsCacher getDashboardEffectiveMapCacheManager()
+	public DashboardStatusMapsCacher getDashboardStatusMapsCacher()
 	{
 		return dashboardEffectiveMapCacheManager;
 	}
