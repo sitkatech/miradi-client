@@ -79,12 +79,12 @@ public class DashboardEffectiveMapCacheManager implements CommandExecutedListene
 	public AbstractStringKeyMap calculateEffectiveMap() throws Exception
 	{
 		if (effectiveStatusMapCache == null)
-			calculateEffectiveStatusMap();
+			rebuildCachedMaps();
 		
 		return effectiveStatusMapCache;
 	}
 	
-	private void calculateEffectiveStatusMap() throws Exception
+	private void rebuildCachedMaps() throws Exception
 	{
 		effectiveStatusMapCache = new StringChoiceMap();
 		CodeList allThirdLevelCodes = getDashboardRowDefinitionManager().getThirdLevelCodes();
@@ -103,7 +103,7 @@ public class DashboardEffectiveMapCacheManager implements CommandExecutedListene
 	
 	public StringChoiceMap getCalculatedEffectiveStatusMap() throws Exception
 	{
-		calculateEffectiveStatusMap();
+		rebuildCachedMaps();
 		return effectiveStatusMapCache;
 	}
 
