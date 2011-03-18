@@ -67,7 +67,7 @@ public class DashboardEffectiveMapCacheManager implements CommandExecutedListene
 	
 	private void invalidateEffectiveMapCache() throws Exception
 	{
-		effectiveStatusMapCache = null;
+		cachedEffectiveStatusMap = null;
 		cachedCalculatedStatusMap = null;
 	}
 
@@ -79,15 +79,15 @@ public class DashboardEffectiveMapCacheManager implements CommandExecutedListene
 
 	public AbstractStringKeyMap calculateEffectiveMap() throws Exception
 	{
-		if (effectiveStatusMapCache == null || cachedCalculatedStatusMap == null)
+		if (cachedEffectiveStatusMap == null || cachedCalculatedStatusMap == null)
 			rebuildCachedMaps();
 		
-		return effectiveStatusMapCache;
+		return cachedEffectiveStatusMap;
 	}
 	
 	private void rebuildCachedMaps() throws Exception
 	{
-		effectiveStatusMapCache = new StringChoiceMap();
+		cachedEffectiveStatusMap = new StringChoiceMap();
 		cachedCalculatedStatusMap = new StringChoiceMap();
 		CodeList allThirdLevelCodes = getDashboardRowDefinitionManager().getThirdLevelCodes();
 		for (int index = 0; index < allThirdLevelCodes.size(); ++index)
@@ -99,7 +99,7 @@ public class DashboardEffectiveMapCacheManager implements CommandExecutedListene
 			if (progressCode.equals(OpenStandardsDynamicProgressStatusQuestion.NOT_SPECIFIED_CODE))
 				progressCode = computeStatusCodeFromStatistics(rowDefinitions);
 			
-			effectiveStatusMapCache.put(thirdLevelCode, progressCode);
+			cachedEffectiveStatusMap.put(thirdLevelCode, progressCode);
 			cachedCalculatedStatusMap.put(thirdLevelCode, computeStatusCodeFromStatistics(rowDefinitions));
 		}
 	}
@@ -107,7 +107,7 @@ public class DashboardEffectiveMapCacheManager implements CommandExecutedListene
 	public StringChoiceMap getCalculatedEffectiveStatusMap() throws Exception
 	{
 		rebuildCachedMaps();
-		return effectiveStatusMapCache;
+		return cachedEffectiveStatusMap;
 	}
 
 	private String computeStatusCodeFromStatistics(Vector<DashboardRowDefinition> rowDefinitions)
@@ -155,6 +155,6 @@ public class DashboardEffectiveMapCacheManager implements CommandExecutedListene
 	}
 	
 	private Project project;
-	private StringChoiceMap effectiveStatusMapCache;
+	private StringChoiceMap cachedEffectiveStatusMap;
 	private StringChoiceMap cachedCalculatedStatusMap;
 }
