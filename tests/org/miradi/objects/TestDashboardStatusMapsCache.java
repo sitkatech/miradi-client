@@ -61,7 +61,7 @@ public class TestDashboardStatusMapsCache extends TestCaseWithProject
 		AbstractStringKeyMap cachedMap = getProject().getCachedDashboardEffectiveMap();
 		
 		getDashboardStatusMapsCache().invalidateAllCachedMaps();
-		AbstractStringKeyMap nonCachedMap = getDashboardStatusMapsCache().getEffectiveStatusMap();
+		AbstractStringKeyMap nonCachedMap = getDashboardStatusMapsCache().getEffectiveMap();
 		assertEquals("Cached map is not in sync with dashbard's effective status map?", nonCachedMap, cachedMap);
 	}
 
@@ -125,7 +125,7 @@ public class TestDashboardStatusMapsCache extends TestCaseWithProject
 	{
 		getDashboardStatusMapsCache().invalidateAllCachedMaps();
 
-		return getDashboardStatusMapsCache().getEffectiveStatusMap();
+		return getDashboardStatusMapsCache().getEffectiveMap();
 	}
 	
 	private StringChoiceMap createStringChoiceMapForEmptyProject()
