@@ -37,7 +37,7 @@ public class TestDashboardStatusMapsCacher extends TestCaseWithProject
 		super(name);
 	}
 	
-	public void testValidCashAfterProjectOpen() throws Exception
+	public void testValidCacheAfterProjectOpen() throws Exception
 	{
 		initializeCache();
 		getProject().createAndAddFactorToDiagram(Cause.getObjectType());
