@@ -20,7 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.wizard.noproject.projectlist;
 
+import java.io.File;
+
+import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
+import org.miradi.project.ProjectMpzWriter;
+import org.miradi.utils.EAMFileSaveChooser;
+import org.miradi.utils.MpzFileChooser;
 import org.miradi.views.umbrella.ExportMpzFileDoer;
 
 class ProjectListExportAction extends ProjectListAction
@@ -33,7 +40,7 @@ class ProjectListExportAction extends ProjectListAction
 	@Override
 	protected void doWork() throws Exception
 	{
-		ExportMpzFileDoer.perform(EAM.getMainWindow(), getSelectedFile());
+		ProjectListExportAction.perform(EAM.getMainWindow(), getSelectedFile());
 	}
 	
 	@Override
@@ -42,6 +49,30 @@ class ProjectListExportAction extends ProjectListAction
 		return EAM.text("Error exporting project: ");
 	}
 	
+	static public void perform(MainWindow mainWindow, File directoryToZip) throws CommandFailedException
+	{
+		EAMFileSaveChooser eamFileChooser = new MpzFileChooser(mainWindow);
+		File chosen = eamFileChooser.displayChooser();
+		if (chosen == null)
+			return;
+		
+		if (ExportMpzFileDoer.isChosenFileInsideProjectHomeDir(chosen))
+		{
+			EAM.errorDialog(EAM.text("The MPZ file cannot be saved to a folder within the project being exported"));
+			
+			return;
+		}
+		try 
+		{
+			ProjectMpzWriter.createProjectZipFile(directoryToZip, chosen);
+		} 
+		catch (Exception e) 
+		{
+			EAM.logException(e);
+			throw ExportMpzFileDoer.createPossibleWriteProtectedException(e);
+		}
+	}
+
 	private static String getButtonLabel()
 	{
 		return EAM.text("Export...");

@@ -24,7 +24,6 @@ import java.io.File;
 import org.miradi.database.ProjectServer;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
-import org.miradi.main.MainWindow;
 import org.miradi.project.ProjectMpzWriter;
 import org.miradi.utils.EAMFileSaveChooser;
 import org.miradi.utils.MpzFileChooser;
@@ -75,36 +74,12 @@ public class ExportMpzFileDoer extends AbstractFileSaverDoer
 		} 
 	}
 
-	static public void perform(MainWindow mainWindow, File directoryToZip) throws CommandFailedException
-	{
-		EAMFileSaveChooser eamFileChooser = new MpzFileChooser(mainWindow);
-		File chosen = eamFileChooser.displayChooser();
-		if (chosen == null)
-			return;
-		
-		if (isChosenFileInsideProjectHomeDir(chosen))
-		{
-			EAM.errorDialog(EAM.text("The MPZ file cannot be saved to a folder within the project being exported"));
-			
-			return;
-		}
-		try 
-		{
-			ProjectMpzWriter.createProjectZipFile(directoryToZip, chosen);
-		} 
-		catch (Exception e) 
-		{
-			EAM.logException(e);
-			throw createPossibleWriteProtectedException(e);
-		}
-	}
-
-	private static CommandFailedException createPossibleWriteProtectedException(Exception e)
+	public static CommandFailedException createPossibleWriteProtectedException(Exception e)
 	{
 		return new CommandFailedException(EAM.text("Error Export To Miradi Zip: Possible Write Protected: "), e);
 	}
 
-	private static boolean isChosenFileInsideProjectHomeDir(File chosen)
+	public static boolean isChosenFileInsideProjectHomeDir(File chosen)
 	{
 		return EAM.isOneFileInsideTheOther(EAM.getHomeDirectory(), chosen);
 	}
