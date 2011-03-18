@@ -49,7 +49,7 @@ class ProjectListExportAction extends ProjectListAction
 		return EAM.text("Error exporting project: ");
 	}
 	
-	static public void perform(MainWindow mainWindow, File directoryToZip) throws CommandFailedException
+	private static void perform(MainWindow mainWindow, File directoryToZip) throws CommandFailedException
 	{
 		EAMFileSaveChooser eamFileChooser = new MpzFileChooser(mainWindow);
 		File chosen = eamFileChooser.displayChooser();
