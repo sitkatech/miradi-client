@@ -30,9 +30,9 @@ import org.miradi.questions.OpenStandardsDynamicProgressStatusQuestion;
 import org.miradi.questions.OpenStandardsImplementActionsAndMonitoringQuestion;
 import org.miradi.utils.CodeList;
 
-public class TestDashboardStatusMapsCacher extends TestCaseWithProject
+public class TestDashboardStatusMapsCache extends TestCaseWithProject
 {
-	public TestDashboardStatusMapsCacher(String name)
+	public TestDashboardStatusMapsCache(String name)
 	{
 		super(name);
 	}
