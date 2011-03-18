@@ -34,7 +34,7 @@ import org.miradi.dialogs.objective.ObjectivePropertiesPanel;
 import org.miradi.dialogs.planning.MeasurementPropertiesPanel;
 import org.miradi.dialogs.resource.ResourcePropertiesPanel;
 import org.miradi.dialogs.subTarget.SubTargetPropertiesPanel;
-import org.miradi.dialogs.task.ActivityDetailsPanelWithRelevancyOverrideFields;
+import org.miradi.dialogs.task.WorkPlanActivityPropertiesPanel;
 import org.miradi.dialogs.viability.AbstractIndicatorPropertiesPanel;
 import org.miradi.dialogs.viability.IndicatorPropertiesPanelWithBudgetPanels;
 import org.miradi.dialogs.viability.NonDiagramAbstractTargetPropertiesPanel;
@@ -233,7 +233,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 	{
 		if (activityPropertiesPanel == null)
 		{
-			activityPropertiesPanel = new ActivityDetailsPanelWithRelevancyOverrideFields(getProject(), getMainWindow().getActions());
+			activityPropertiesPanel = new WorkPlanActivityPropertiesPanel(getMainWindow());
 			addPanel(activityPropertiesPanel);
 		}
 		
@@ -417,7 +417,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 	private AbstractIndicatorPropertiesPanel indicatorPropertiesPanel;
 	private AbstractStrategyPropertiesPanel strategyPropertiesPanel;
 	private PlanningViewTaskPropertiesPanel taskPropertiesInputPanel;
-	private ActivityDetailsPanelWithRelevancyOverrideFields activityPropertiesPanel;
+	private WorkPlanActivityPropertiesPanel activityPropertiesPanel;
 	private NonDiagramAbstractTargetPropertiesPanel targetPropertiesPanel;
 	private NonDiagramAbstractTargetPropertiesPanel humanWelfareTargetPropertiesPanel; 
 	private PlanningViewIntermediateResultPropertiesPanel intermediateResultPropertiesPanel;
