@@ -36,9 +36,9 @@ import org.miradi.project.Project;
 import org.miradi.questions.OpenStandardsDynamicProgressStatusQuestion;
 import org.miradi.utils.CodeList;
 
-public class DashboardEffectiveMapCacheManager implements CommandExecutedListener
+public class DashboardStatusMapsCacher implements CommandExecutedListener
 {
-	public DashboardEffectiveMapCacheManager(Project projectToUse) throws Exception
+	public DashboardStatusMapsCacher(Project projectToUse) throws Exception
 	{
 		project = projectToUse;
 	}
