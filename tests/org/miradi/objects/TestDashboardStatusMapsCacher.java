@@ -22,7 +22,7 @@ package org.miradi.objects;
 
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.AbstractStringKeyMap;
-import org.miradi.objecthelpers.DashboardStatusMapsCacher;
+import org.miradi.objecthelpers.DashboardStatusMapsCache;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.StringChoiceMap;
 import org.miradi.questions.OpenStandardsConceptualizeQuestion;
@@ -166,7 +166,7 @@ public class TestDashboardStatusMapsCacher extends TestCaseWithProject
 		getProject().getCachedDashboardEffectiveMap();
 	}
 	
-	private DashboardStatusMapsCacher getDashboardStatusMapsCacher()
+	private DashboardStatusMapsCache getDashboardStatusMapsCacher()
 	{
 		return getProject().getDashboardStatusMapsCacher();
 	}
