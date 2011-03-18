@@ -62,7 +62,7 @@ public class OpenStandardsDynamicProgressStatusQuestion extends DynamicChoiceQue
 
 	private String getThirdLevelValue() throws Exception
 	{
-		return dashboardStatusMapCache.calculateStatusMap().get(thirdLevelCode);
+		return dashboardStatusMapCache.getCalculatedStatusMap().get(thirdLevelCode);
 	}
 
 	private DashboardStatusMapsCache dashboardStatusMapCache;

@@ -76,7 +76,7 @@ public class DashboardStatusMapsCache implements CommandExecutedListener
 		return cachedEffectiveStatusMap;
 	}
 	
-	public StringChoiceMap calculateStatusMap() throws Exception
+	public StringChoiceMap getCalculatedStatusMap() throws Exception
 	{
 		if (cachedCalculatedStatusMap == null)
 			rebuildCachedMaps();
