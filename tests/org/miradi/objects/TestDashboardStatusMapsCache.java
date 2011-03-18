@@ -41,7 +41,7 @@ public class TestDashboardStatusMapsCache extends TestCaseWithProject
 	{
 		StringChoiceMap createEmptyStringChoiceMap = createStringChoiceMapForEmptyProject();
 		getDashboardStatusMapsCache().invalidateAllCachedMaps();
-		StringChoiceMap calculatedStatusMap = getDashboardStatusMapsCache().calculateStatusMap();
+		StringChoiceMap calculatedStatusMap = getDashboardStatusMapsCache().getCalculatedStatusMap();
 		
 		assertEquals("empty dashboard should not have status?",createEmptyStringChoiceMap , calculatedStatusMap);		
 	}
@@ -109,7 +109,7 @@ public class TestDashboardStatusMapsCache extends TestCaseWithProject
 	
 	private void verifyCalculatedStatusCode(final String thirdLevelRowCode, String expectedProgressCode) throws Exception
 	{
-		StringChoiceMap mapAsString = getDashboardStatusMapsCache().calculateStatusMap();
+		StringChoiceMap mapAsString = getDashboardStatusMapsCache().getCalculatedStatusMap();
 		verifyCodeInMap(mapAsString, thirdLevelRowCode, expectedProgressCode);
 	}
 
