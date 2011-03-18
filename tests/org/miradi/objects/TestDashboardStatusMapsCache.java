@@ -168,6 +168,6 @@ public class TestDashboardStatusMapsCache extends TestCaseWithProject
 	
 	private DashboardStatusMapsCache getDashboardStatusMapsCache()
 	{
-		return getProject().getDashboardStatusMapsCacher();
+		return getProject().getDashboardStatusMapsCache();
 	}
 }
