@@ -79,7 +79,7 @@ public class DashboardEffectiveMapCacheManager implements CommandExecutedListene
 
 	public AbstractStringKeyMap calculateEffectiveMap() throws Exception
 	{
-		if (cachedEffectiveStatusMap == null || cachedCalculatedStatusMap == null)
+		if (cachedEffectiveStatusMap == null)
 			rebuildCachedMaps();
 		
 		return cachedEffectiveStatusMap;
