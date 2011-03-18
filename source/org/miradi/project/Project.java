@@ -156,7 +156,7 @@ public class Project
 		projectTotalCalculator = new ProjectTotalCalculator(this);
 		threatStressRatingEnsurer = new ThreatStressRatingEnsurer(this);
 		planningPreferencesChangeHandler = new PlanningPreferencesChangeHandler(this);
-		dashboardStatusMapsCacher = new DashboardStatusMapsCache(this);
+		dashboardStatusMapsCache = new DashboardStatusMapsCache(this);
 		enableIsDoNothingCommandOptimization();
 		enableListeners();
 		
@@ -517,7 +517,7 @@ public class Project
 	
 	public DashboardStatusMapsCache getDashboardStatusMapsCacher()
 	{
-		return dashboardStatusMapsCacher;
+		return dashboardStatusMapsCache;
 	}
 
 	public BaseObject findObject(ORef ref)
@@ -938,7 +938,7 @@ public class Project
 		getProjectTotalCalculator().enable();
 		enableThreatStressRatingEnsurer();
 		planningPreferencesChangeHandler.enable();
-		dashboardStatusMapsCacher.enable();
+		dashboardStatusMapsCache.enable();
 	}
 
 	protected void applyDefaultBehavior() throws Exception
@@ -1030,7 +1030,7 @@ public class Project
 		getProjectTotalCalculator().disable();
 		disableThreatStressRatingEnsurer();
 		planningPreferencesChangeHandler.disable();
-		dashboardStatusMapsCacher.disable();
+		dashboardStatusMapsCache.disable();
 	}
 
 	public void closeAndDeleteProject() throws Exception
@@ -1464,7 +1464,7 @@ public class Project
 	private ThreatStressRatingEnsurer threatStressRatingEnsurer;
 	private ProjectTotalCalculator projectTotalCalculator;
 	private PlanningPreferencesChangeHandler planningPreferencesChangeHandler;
-	private DashboardStatusMapsCache dashboardStatusMapsCacher;
+	private DashboardStatusMapsCache dashboardStatusMapsCache;
 
 	// FIXME low: This should go away, but it's difficult
 	private String currentViewName;
