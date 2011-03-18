@@ -50,7 +50,7 @@ import org.miradi.main.VersionConstants;
 import org.miradi.objecthelpers.AbstractStringKeyMap;
 import org.miradi.objecthelpers.CreateDiagramFactorParameter;
 import org.miradi.objecthelpers.CreateObjectParameter;
-import org.miradi.objecthelpers.DashboardEffectiveMapCacheManager;
+import org.miradi.objecthelpers.DashboardStatusMapsCacher;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -156,7 +156,7 @@ public class Project
 		projectTotalCalculator = new ProjectTotalCalculator(this);
 		threatStressRatingEnsurer = new ThreatStressRatingEnsurer(this);
 		planningPreferencesChangeHandler = new PlanningPreferencesChangeHandler(this);
-		dashboardEffectiveMapCacheManager = new DashboardEffectiveMapCacheManager(this);
+		dashboardEffectiveMapCacheManager = new DashboardStatusMapsCacher(this);
 		enableIsDoNothingCommandOptimization();
 		enableListeners();
 		
@@ -515,7 +515,7 @@ public class Project
 		return getDashboardEffectiveMapCacheManager().calculateEffectiveMap();
 	}
 	
-	public DashboardEffectiveMapCacheManager getDashboardEffectiveMapCacheManager()
+	public DashboardStatusMapsCacher getDashboardEffectiveMapCacheManager()
 	{
 		return dashboardEffectiveMapCacheManager;
 	}
@@ -1464,7 +1464,7 @@ public class Project
 	private ThreatStressRatingEnsurer threatStressRatingEnsurer;
 	private ProjectTotalCalculator projectTotalCalculator;
 	private PlanningPreferencesChangeHandler planningPreferencesChangeHandler;
-	private DashboardEffectiveMapCacheManager dashboardEffectiveMapCacheManager;
+	private DashboardStatusMapsCacher dashboardEffectiveMapCacheManager;
 
 	// FIXME low: This should go away, but it's difficult
 	private String currentViewName;
