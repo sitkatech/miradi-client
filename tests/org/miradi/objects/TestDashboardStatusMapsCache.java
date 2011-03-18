@@ -40,8 +40,8 @@ public class TestDashboardStatusMapsCache extends TestCaseWithProject
 	public void testValidCalculatedStatusCacheWithNoData() throws Exception
 	{
 		StringChoiceMap createEmptyStringChoiceMap = createStringChoiceMapForEmptyProject();
-		getDashboardStatusMapsCacher().invalidateAllCachedMaps();
-		StringChoiceMap calculatedStatusMap = getDashboardStatusMapsCacher().calculateStatusMap();
+		getDashboardStatusMapsCache().invalidateAllCachedMaps();
+		StringChoiceMap calculatedStatusMap = getDashboardStatusMapsCache().calculateStatusMap();
 		
 		assertEquals("empty dashboard should not have status?",createEmptyStringChoiceMap , calculatedStatusMap);		
 	}
@@ -60,8 +60,8 @@ public class TestDashboardStatusMapsCache extends TestCaseWithProject
 		getProject().createAndAddFactorToDiagram(Cause.getObjectType());
 		AbstractStringKeyMap cachedMap = getProject().getCachedDashboardEffectiveMap();
 		
-		getDashboardStatusMapsCacher().invalidateAllCachedMaps();
-		AbstractStringKeyMap nonCachedMap = getDashboardStatusMapsCacher().calculateEffectiveMap();
+		getDashboardStatusMapsCache().invalidateAllCachedMaps();
+		AbstractStringKeyMap nonCachedMap = getDashboardStatusMapsCache().calculateEffectiveMap();
 		assertEquals("Cached map is not in sync with dashbard's effective status map?", nonCachedMap, cachedMap);
 	}
 
@@ -109,7 +109,7 @@ public class TestDashboardStatusMapsCache extends TestCaseWithProject
 	
 	private void verifyCalculatedStatusCode(final String thirdLevelRowCode, String expectedProgressCode) throws Exception
 	{
-		StringChoiceMap mapAsString = getDashboardStatusMapsCacher().calculateStatusMap();
+		StringChoiceMap mapAsString = getDashboardStatusMapsCache().calculateStatusMap();
 		verifyCodeInMap(mapAsString, thirdLevelRowCode, expectedProgressCode);
 	}
 
@@ -123,9 +123,9 @@ public class TestDashboardStatusMapsCache extends TestCaseWithProject
 	
 	private StringChoiceMap getEffectiveStatusMap() throws Exception
 	{
-		getDashboardStatusMapsCacher().invalidateAllCachedMaps();
+		getDashboardStatusMapsCache().invalidateAllCachedMaps();
 
-		return getDashboardStatusMapsCacher().calculateEffectiveMap();
+		return getDashboardStatusMapsCache().calculateEffectiveMap();
 	}
 	
 	private StringChoiceMap createStringChoiceMapForEmptyProject()
@@ -166,7 +166,7 @@ public class TestDashboardStatusMapsCache extends TestCaseWithProject
 		getProject().getCachedDashboardEffectiveMap();
 	}
 	
-	private DashboardStatusMapsCache getDashboardStatusMapsCacher()
+	private DashboardStatusMapsCache getDashboardStatusMapsCache()
 	{
 		return getProject().getDashboardStatusMapsCacher();
 	}
