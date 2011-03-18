@@ -92,12 +92,12 @@ public class DashboardStatusMapsCacher implements CommandExecutedListener
 			String thirdLevelCode = allThirdLevelCodes.get(index);
 			Vector<DashboardRowDefinition> rowDefinitions = getDashboardRowDefinitionManager().getRowDefinitions(thirdLevelCode);
 			
-			String progressCode = getDashboardSingletonObject().getProgressChoiceMap().get(thirdLevelCode);
+			String effectiveCode = getDashboardSingletonObject().getProgressChoiceMap().get(thirdLevelCode);
 			String calculatedCode = computeStatusCodeFromStatistics(rowDefinitions);
-			if (progressCode.equals(OpenStandardsDynamicProgressStatusQuestion.NOT_SPECIFIED_CODE))
-				progressCode = calculatedCode;
+			if (effectiveCode.equals(OpenStandardsDynamicProgressStatusQuestion.NOT_SPECIFIED_CODE))
+				effectiveCode = calculatedCode;
 			
-			cachedEffectiveStatusMap.put(thirdLevelCode, progressCode);
+			cachedEffectiveStatusMap.put(thirdLevelCode, effectiveCode);
 			cachedCalculatedStatusMap.put(thirdLevelCode, calculatedCode);
 		}
 	}
