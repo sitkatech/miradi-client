@@ -313,7 +313,7 @@ public class ProjectResource extends BaseObject
 	public static final String TAG_IM_ADDRESS = "IMAddress";
 	public static final String TAG_IM_SERVICE = "IMService";
 	public static final String TAG_DATE_UPDATED = "DateUpdated";
-	public static final String TAG_IS_CCN_COACH = "IsCchCoach";
+	public static final String TAG_IS_CCN_COACH = "IsCcnCoach";
 	
 	public static final String TAG_CUSTOM_FIELD_1 = "Custom.Custom1";
 	public static final String TAG_CUSTOM_FIELD_2 = "Custom.Custom2";
