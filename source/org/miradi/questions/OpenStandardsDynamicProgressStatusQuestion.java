@@ -22,13 +22,13 @@ package org.miradi.questions;
 
 import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.AbstractStringKeyMap;
+import org.miradi.objecthelpers.DashboardStatusMapsCache;
 
 public class OpenStandardsDynamicProgressStatusQuestion extends DynamicChoiceQuestion
 {
-	public OpenStandardsDynamicProgressStatusQuestion(AbstractStringKeyMap cachedDashboardEffectiveMapToUse, String thirdLevelCodeToUse)
+	public OpenStandardsDynamicProgressStatusQuestion(DashboardStatusMapsCache dashboardStatusMapCacheToUse, String thirdLevelCodeToUse)
 	{
-		cachedDashboardEffectiveMap = cachedDashboardEffectiveMapToUse;
+		dashboardStatusMapCache = dashboardStatusMapCacheToUse;
 		thirdLevelCode = thirdLevelCodeToUse;
 	}
 	
@@ -62,10 +62,10 @@ public class OpenStandardsDynamicProgressStatusQuestion extends DynamicChoiceQue
 
 	private String getThirdLevelValue() throws Exception
 	{
-		return cachedDashboardEffectiveMap.get(thirdLevelCode);
+		return dashboardStatusMapCache.calculateEffectiveMap().get(thirdLevelCode);
 	}
 
-	private AbstractStringKeyMap cachedDashboardEffectiveMap;
+	private DashboardStatusMapsCache dashboardStatusMapCache;
 	private String thirdLevelCode;
 	
 	public static final String NOT_SPECIFIED_CODE = "";
