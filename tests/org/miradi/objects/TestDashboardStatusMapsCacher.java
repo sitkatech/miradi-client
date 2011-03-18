@@ -37,6 +37,23 @@ public class TestDashboardStatusMapsCacher extends TestCaseWithProject
 		super(name);
 	}
 	
+	public void testValidCalculatedStatusCacheWithNoData() throws Exception
+	{
+		StringChoiceMap createEmptyStringChoiceMap = createStringChoiceMapForEmptyProject();
+		getDashboardStatusMapsCacher().invalidateAllCachedMaps();
+		StringChoiceMap calculatedStatusMap = getDashboardStatusMapsCacher().calculateStatusMap();
+		
+		assertEquals("empty dashboard should not have status?",createEmptyStringChoiceMap , calculatedStatusMap);		
+	}
+	
+	public void testValidCalculatedStatusCacheWithData() throws Exception
+	{
+		verifyCalculatedStatusCode(OpenStandardsConceptualizeQuestion.IDENTIFY_DIRECT_THREATS_CODE, OpenStandardsDynamicProgressStatusQuestion.NOT_STARTED_CODE);
+		putUserChoice(OpenStandardsConceptualizeQuestion.IDENTIFY_DIRECT_THREATS_CODE, OpenStandardsDynamicProgressStatusQuestion.NOT_APPLICABLE_CODE);
+		getProject().createThreat();
+		verifyCalculatedStatusCode(OpenStandardsConceptualizeQuestion.IDENTIFY_DIRECT_THREATS_CODE, OpenStandardsDynamicProgressStatusQuestion.IN_PROGRESS_CODE);
+	}
+	
 	public void testValidCacheAfterProjectOpen() throws Exception
 	{
 		initializeCache();
@@ -75,9 +92,7 @@ public class TestDashboardStatusMapsCacher extends TestCaseWithProject
 	public void testGetEffectiveStatusMapWithUserData() throws Exception
 	{
 		getProject().createProjectResource();
-		StringChoiceMap userMap = new StringChoiceMap();
-		userMap.put(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE, OpenStandardsDynamicProgressStatusQuestion.COMPLETE_CODE);
-		getDashboard().setData(Dashboard.TAG_PROGRESS_CHOICE_MAP, userMap.toString());
+		putUserChoice(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE, OpenStandardsDynamicProgressStatusQuestion.COMPLETE_CODE);
 		verifyTeamMemberEffectiveStatus(OpenStandardsDynamicProgressStatusQuestion.COMPLETE_CODE);
 	}
 
@@ -89,10 +104,21 @@ public class TestDashboardStatusMapsCacher extends TestCaseWithProject
 	private void verifyEffectiveStatus(final String thirdLevelRowCode, String expectedCode) throws Exception
 	{
 		StringChoiceMap mapAsString = getEffectiveStatusMap();
+		verifyCodeInMap(mapAsString, thirdLevelRowCode, expectedCode);
+	}
+	
+	private void verifyCalculatedStatusCode(final String thirdLevelRowCode, String expectedProgressCode) throws Exception
+	{
+		StringChoiceMap mapAsString = getDashboardStatusMapsCacher().calculateStatusMap();
+		verifyCodeInMap(mapAsString, thirdLevelRowCode, expectedProgressCode);
+	}
+
+	private void verifyCodeInMap(StringChoiceMap mapAsString, final String thirdLevelRowCode, String expectedProgressCode)
+	{
 		StringChoiceMap map = new StringChoiceMap(mapAsString);
 		String calculatedStatusCode = map.get(thirdLevelRowCode);
 
-		assertEquals("Incorrect status code?", expectedCode, calculatedStatusCode);
+		assertEquals("Incorrect status code?", expectedProgressCode, calculatedStatusCode);
 	}
 	
 	private StringChoiceMap getEffectiveStatusMap() throws Exception
@@ -120,6 +146,13 @@ public class TestDashboardStatusMapsCacher extends TestCaseWithProject
 		}
 		
 		return emptyMap;
+	}
+	
+	private void putUserChoice(final String thirdLevelCode, final String progressCode) throws Exception
+	{
+		StringChoiceMap userMap = new StringChoiceMap();
+		userMap.put(thirdLevelCode, progressCode);
+		getDashboard().setData(Dashboard.TAG_PROGRESS_CHOICE_MAP, userMap.toString());
 	}
 	
 	private Dashboard getDashboard()
