@@ -68,12 +68,6 @@ public class DashboardStatusMapsCache implements CommandExecutedListener
 		cachedCalculatedStatusMap = null;
 	}
 
-	private Dashboard getDashboardSingletonObject()
-	{
-		ORef dashboardRef = getProject().getSingletonObjectRef(Dashboard.getObjectType()); 
-		return Dashboard.find(getProject(), dashboardRef);
-	}
-
 	public StringChoiceMap calculateEffectiveMap() throws Exception
 	{
 		if (cachedEffectiveStatusMap == null)
@@ -147,6 +141,12 @@ public class DashboardStatusMapsCache implements CommandExecutedListener
 	private DashboardRowDefinitionManager getDashboardRowDefinitionManager()
 	{
 		return getDashboardSingletonObject().getDashboardRowDefinitionManager();
+	}
+	
+	private Dashboard getDashboardSingletonObject()
+	{
+		ORef dashboardRef = getProject().getSingletonObjectRef(Dashboard.getObjectType()); 
+		return Dashboard.find(getProject(), dashboardRef);
 	}
 	
 	private Project getProject()
