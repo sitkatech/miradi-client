@@ -152,7 +152,7 @@ ProjectResource.element = element miradi:ProjectResource
   element miradi:ProjectResourceDateUpdated { vocabulary_date }? &
   element miradi:ProjectResourceDailyRate { xsd:decimal }? &
   element miradi:ProjectResourceComments { text }? &
-  element miradi:ProjectResourceIsCchCoach { xsd:boolean }? &
+  element miradi:ProjectResourceIsCcnCoach { xsd:boolean }? &
   element miradi:ProjectResourceCustom.Custom1 { text }? &
   element miradi:ProjectResourceCustom.Custom2 { text }?
 }
