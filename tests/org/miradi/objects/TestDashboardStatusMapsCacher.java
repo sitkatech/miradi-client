@@ -43,10 +43,15 @@ public class TestDashboardStatusMapsCacher extends TestCaseWithProject
 		getProject().createAndAddFactorToDiagram(Cause.getObjectType());
 		AbstractStringKeyMap cachedMap = getProject().getCachedDashboardEffectiveMap();
 		
-		DashboardStatusMapsCacher statusMapCacher = getProject().getDashboardStatusMapsCacher();
+		DashboardStatusMapsCacher statusMapCacher = getDashboardStatusMapsCacher();
 		statusMapCacher.invalidateAllCachedMaps();
 		AbstractStringKeyMap nonCachedMap = statusMapCacher.calculateEffectiveMap();
 		assertEquals("Cached map is not in sync with dashbard's effective status map?", nonCachedMap, cachedMap);
+	}
+
+	protected DashboardStatusMapsCacher getDashboardStatusMapsCacher()
+	{
+		return getProject().getDashboardStatusMapsCacher();
 	}
 	
 	public void testGetEffectiveStatusMapWithNoData() throws Exception
@@ -98,7 +103,7 @@ public class TestDashboardStatusMapsCacher extends TestCaseWithProject
 	
 	private StringChoiceMap getEffectiveStatusMap() throws Exception
 	{
-		DashboardStatusMapsCacher statusMapCacher = getProject().getDashboardStatusMapsCacher();
+		DashboardStatusMapsCacher statusMapCacher = getDashboardStatusMapsCacher();
 		statusMapCacher.invalidateAllCachedMaps();
 
 		return statusMapCacher.calculateEffectiveMap();
