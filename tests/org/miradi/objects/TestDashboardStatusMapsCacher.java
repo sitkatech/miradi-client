@@ -49,11 +49,6 @@ public class TestDashboardStatusMapsCacher extends TestCaseWithProject
 		assertEquals("Cached map is not in sync with dashbard's effective status map?", nonCachedMap, cachedMap);
 	}
 
-	protected DashboardStatusMapsCacher getDashboardStatusMapsCacher()
-	{
-		return getProject().getDashboardStatusMapsCacher();
-	}
-	
 	public void testGetEffectiveStatusMapWithNoData() throws Exception
 	{
 		StringChoiceMap createEmptyStringChoiceMap = createStringChoiceMapForEmptyProject();
@@ -138,5 +133,10 @@ public class TestDashboardStatusMapsCacher extends TestCaseWithProject
 	private void initializeCache() throws Exception
 	{
 		getProject().getCachedDashboardEffectiveMap();
+	}
+	
+	private DashboardStatusMapsCacher getDashboardStatusMapsCacher()
+	{
+		return getProject().getDashboardStatusMapsCacher();
 	}
 }
