@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-18 09:03-0500\n"
+"POT-Creation-Date: 2011-03-18 12:37-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -3465,7 +3465,7 @@ msgstr "Kesalahan "
 msgid "Error Creating: %s"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:104
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:79
 msgid "Error Export To Miradi Zip: Possible Write Protected: "
 msgstr "Kesalahan Ekspor ke Zip Miradi: Mungkin Terproteksi Tulis: "
 
@@ -3501,7 +3501,7 @@ msgstr "Kesalahan selama pengulangan "
 msgid "Error during undo"
 msgstr "Kesalahan selama pembatalan "
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListExportAction.java:42
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListExportAction.java:49
 msgid "Error exporting project: "
 msgstr "Kesalahan mengekspor proyek: "
 
@@ -3589,9 +3589,9 @@ msgid "Export to Miradi Zip..."
 msgstr "Ekspor ke Zip Miradi… "
 
 #: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:163
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:65
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:115
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListExportAction.java:47
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:64
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:90
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListExportAction.java:78
 msgid "Export..."
 msgstr "Ekspor… "
 
@@ -7566,8 +7566,8 @@ msgstr ""
 "untuk mengembangkan standar dan alat bantu yang dipakai bersama seperti "
 "Miradi. Informasi lebih lanjut bisa diperoleh di www.ConservationMeasures.org"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:58
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:87
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:57
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListExportAction.java:61
 msgid ""
 "The MPZ file cannot be saved to a folder within the project being exported"
 msgstr ""
