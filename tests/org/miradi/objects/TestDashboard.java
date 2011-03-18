@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.objecthelpers.CreateObjectParameter;
+import org.miradi.objecthelpers.DashboardStatusMapsCacher;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.StringChoiceMap;
@@ -122,7 +123,10 @@ public class TestDashboard extends ObjectTestCase
 
 	private StringChoiceMap getEffectiveStatusMap() throws Exception
 	{
-		return getProject().getDashboardEffectiveMapCacheManager().getCalculatedEffectiveStatusMap();
+		DashboardStatusMapsCacher statusMapCacher = getProject().getDashboardEffectiveMapCacheManager();
+		statusMapCacher.invalidateAllCachedMaps();
+
+		return statusMapCacher.calculateEffectiveMap();
 	}
 	
 	private Dashboard getDashboard()
