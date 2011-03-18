@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-18 09:03-0500\n"
+"POT-Creation-Date: 2011-03-18 12:37-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -3350,7 +3350,7 @@ msgstr ""
 msgid "Error Creating: %s"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:104
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:79
 msgid "Error Export To Miradi Zip: Possible Write Protected: "
 msgstr "导出到Miradi Zip时出错：可能有写保护： \t\t"
 
@@ -3386,7 +3386,7 @@ msgstr "撤销时出错 \t\t"
 msgid "Error during undo"
 msgstr "撤销时出错 \t\t"
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListExportAction.java:42
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListExportAction.java:49
 msgid "Error exporting project: "
 msgstr "导出项目出错： \t\t"
 
@@ -3473,9 +3473,9 @@ msgid "Export to Miradi Zip..."
 msgstr "导出到Miradi压缩… \t\t"
 
 #: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:163
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:65
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:115
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListExportAction.java:47
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:64
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:90
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListExportAction.java:78
 msgid "Export..."
 msgstr "导出… \t\t"
 
@@ -7335,8 +7335,8 @@ msgstr ""
 "保护监测联盟（CMP）——是世界领先保护组织的联盟。CMP会员共同致力于开发共同的标"
 "准和工具，如Miradi。在此可获得详情www.ConservationMeasures.org "
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:58
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:87
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:57
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListExportAction.java:61
 msgid ""
 "The MPZ file cannot be saved to a folder within the project being exported"
 msgstr ""

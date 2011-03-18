@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-18 09:03-0500\n"
+"POT-Creation-Date: 2011-03-18 12:37-0500\n"
 "PO-Revision-Date: 2010-12-30 12:19-0600\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -3273,7 +3273,7 @@ msgstr ""
 msgid "Error Creating: %s"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:104
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:79
 msgid "Error Export To Miradi Zip: Possible Write Protected: "
 msgstr ""
 
@@ -3309,7 +3309,7 @@ msgstr ""
 msgid "Error during undo"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListExportAction.java:42
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListExportAction.java:49
 msgid "Error exporting project: "
 msgstr ""
 
@@ -3392,9 +3392,9 @@ msgid "Export to Miradi Zip..."
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:163
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:65
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:115
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListExportAction.java:47
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:64
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:90
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListExportAction.java:78
 msgid "Export..."
 msgstr ""
 
@@ -7189,8 +7189,8 @@ msgid ""
 "available at www.ConservationMeasures.org "
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:58
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:87
+#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:57
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListExportAction.java:61
 msgid ""
 "The MPZ file cannot be saved to a folder within the project being exported"
 msgstr ""
