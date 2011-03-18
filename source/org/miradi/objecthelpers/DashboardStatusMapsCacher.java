@@ -28,9 +28,6 @@ import org.miradi.dialogs.dashboard.DashboardRowDefinitionManager;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.AbstractStringKeyMap;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.StringChoiceMap;
 import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
 import org.miradi.questions.OpenStandardsDynamicProgressStatusQuestion;
@@ -65,7 +62,7 @@ public class DashboardStatusMapsCacher implements CommandExecutedListener
 		}
 	}
 	
-	private void invalidateAllCachedMaps() throws Exception
+	public void invalidateAllCachedMaps() throws Exception
 	{
 		cachedEffectiveStatusMap = null;
 		cachedCalculatedStatusMap = null;
@@ -77,7 +74,7 @@ public class DashboardStatusMapsCacher implements CommandExecutedListener
 		return Dashboard.find(getProject(), dashboardRef);
 	}
 
-	public AbstractStringKeyMap calculateEffectiveMap() throws Exception
+	public StringChoiceMap calculateEffectiveMap() throws Exception
 	{
 		if (cachedEffectiveStatusMap == null)
 			rebuildCachedMaps();
@@ -105,12 +102,6 @@ public class DashboardStatusMapsCacher implements CommandExecutedListener
 		}
 	}
 	
-	public StringChoiceMap getCalculatedEffectiveStatusMap() throws Exception
-	{
-		rebuildCachedMaps();
-		return cachedEffectiveStatusMap;
-	}
-
 	private String computeStatusCodeFromStatistics(Vector<DashboardRowDefinition> rowDefinitions)
 	{
 		Vector<String> pseudoValues = new Vector<String>();
