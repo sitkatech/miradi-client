@@ -23,9 +23,9 @@ package org.miradi.objects;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.AbstractStringKeyMap;
 
-public class TestDashboardEffectiveMapCacheManager extends TestCaseWithProject
+public class TestDashboardStatusMapsCacher extends TestCaseWithProject
 {
-	public TestDashboardEffectiveMapCacheManager(String name)
+	public TestDashboardStatusMapsCacher(String name)
 	{
 		super(name);
 	}

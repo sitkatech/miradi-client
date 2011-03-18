@@ -100,7 +100,7 @@ import org.miradi.objects.TestConceptualModelDiagram;
 import org.miradi.objects.TestConceptualModelThreatRatings;
 import org.miradi.objects.TestCostAllocationRule;
 import org.miradi.objects.TestDashboard;
-import org.miradi.objects.TestDashboardEffectiveMapCacheManager;
+import org.miradi.objects.TestDashboardStatusMapsCacher;
 import org.miradi.objects.TestDiagramChainObject;
 import org.miradi.objects.TestDiagramContentsObject;
 import org.miradi.objects.TestDiagramLink;
@@ -355,7 +355,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestResultsChainCreatorHelper.class));
 		suite.addTest(new TestSuite(TestCategorizedQuantity.class));
 		suite.addTest(new TestSuite(TestThreatTargetVirtualLinkHelper.class));
-		suite.addTest(new TestSuite(TestDashboardEffectiveMapCacheManager.class));
+		suite.addTest(new TestSuite(TestDashboardStatusMapsCacher.class));
 		
 		// objects package
 		suite.addTest(new TestSuite(TestStrategy.class));
