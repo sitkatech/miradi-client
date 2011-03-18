@@ -57,7 +57,7 @@ public class DashboardEffectiveMapCacheManager implements CommandExecutedListene
 	{
 		try
 		{
-			invalidateEffectiveMapCache();
+			invalidateAllCachedMaps();
 		}
 		catch (Exception e)
 		{
@@ -65,7 +65,7 @@ public class DashboardEffectiveMapCacheManager implements CommandExecutedListene
 		}
 	}
 	
-	private void invalidateEffectiveMapCache() throws Exception
+	private void invalidateAllCachedMaps() throws Exception
 	{
 		cachedEffectiveStatusMap = null;
 		cachedCalculatedStatusMap = null;
