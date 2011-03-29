@@ -63,4 +63,9 @@ public class TimePeriodCostsMapsCache implements CommandExecutedListener
 	{
 		return baseObject.getWhenTotalAsString();
 	}
+
+	public TimePeriodCostsMap calculateProjectTotals(String workPlanBudgetMode) throws Exception
+	{
+		return getProject().getProjectTotalCalculator().calculateProjectTotals(workPlanBudgetMode);
+	}
 }
