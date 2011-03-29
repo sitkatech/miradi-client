@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-18 12:37-0500\n"
+"POT-Creation-Date: 2011-03-29 11:13-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -64,7 +64,7 @@ msgstr ""
 msgid " 2) Connect threat to relevant targets"
 msgstr "2)将威胁因子链接到相关的对象 \t\t"
 
-#: Miradi/source/org/miradi/project/Project.java:185
+#: Miradi/source/org/miradi/project/Project.java:187
 msgid " A project by this name already exists: "
 msgstr "已存在使用相同名称的项目: \t\t"
 
@@ -282,7 +282,7 @@ msgstr "（对本对象进行创建、管理、以及压力分级） \t\t"
 msgid "(Definition Not Available)"
 msgstr "（无可用定义） \t\t"
 
-#: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:119
+#: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:118
 msgid "(Error)"
 msgstr "（错误） \t\t"
 
@@ -997,7 +997,7 @@ msgstr ""
 "已存在该项目的备份文档。继续该移动将会使已存在的备份被替换为新的拷贝。这样做"
 "可能是安全的，除非早先的移动尝试失败。 \t\t"
 
-#: Miradi/source/org/miradi/project/Project.java:191
+#: Miradi/source/org/miradi/project/Project.java:193
 msgid "A file or folder exist by the same name:"
 msgstr ""
 
@@ -2860,7 +2860,7 @@ msgstr "创建… \t\t"
 msgid "Creating group boxes..."
 msgstr ""
 
-#: Miradi/source/org/miradi/project/Project.java:690
+#: Miradi/source/org/miradi/project/Project.java:697
 msgid "Creating..."
 msgstr ""
 
@@ -5248,7 +5248,7 @@ msgstr ""
 msgid "OpenStandards"
 msgstr "开放标准"
 
-#: Miradi/source/org/miradi/project/Project.java:685
+#: Miradi/source/org/miradi/project/Project.java:692
 msgid "Opening..."
 msgstr ""
 
@@ -5978,7 +5978,7 @@ msgstr "正式地或者非正式地共享反馈信息 \t\t"
 msgid "Share success & failures with other teams"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:608
+#: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:606
 msgid "Should Now Allow Full Time Employee To Be Calculated For "
 msgstr ""
 
@@ -8310,7 +8310,7 @@ msgstr ""
 "意：如果您使用导出和导入命令，Miradi将自动为您压缩或解压文件夹。Mirad也会为在"
 "格式迁移过程中创建的项目备份文件而创建压缩文件。"
 
-#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:510
+#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:512
 msgid "[Error]"
 msgstr ""
 
@@ -8326,7 +8326,7 @@ msgstr "[未指定的] \t\t"
 msgid "[New Results Chain]"
 msgstr "[新结果链] \t\t"
 
-#: Miradi/source/org/miradi/project/Project.java:997
+#: Miradi/source/org/miradi/project/Project.java:1005
 msgid "[No Project]"
 msgstr "[无项目] \t\t"
 
