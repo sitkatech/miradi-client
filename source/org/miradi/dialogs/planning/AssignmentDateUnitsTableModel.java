@@ -234,8 +234,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		if (baseObjectForRow.getSubTaskRefs().size() == 0)
 			return false;
 		
-		ORefList subTaskRefs = baseObjectForRow.getSubTaskRefs();
-		TimePeriodCostsMap timePeriodCostsMap = baseObjectForRow.getTotalTimePeriodCostsMapForSubTasks(subTaskRefs, getAssignmentsTag());
+		TimePeriodCostsMap timePeriodCostsMap = getProject().getTimePeriodCostsMapsCache().getTotalTimePeriodCostsMapForSubTasks(baseObjectForRow, getAssignmentsTag());
 		TimePeriodCosts timePeriodCosts = timePeriodCostsMap.calculateTimePeriodCosts(dateUnit);
 		OptionalDouble totalCost = timePeriodCosts.calculateTotalCost(getProject());
 
