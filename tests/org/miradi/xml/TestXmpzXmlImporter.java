@@ -41,6 +41,7 @@ import org.miradi.objects.DiagramObject;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Objective;
+import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.TaggedObjectSet;
@@ -205,6 +206,18 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 		BudgetCategoryTwo categoryTwo = getProject().createCategoryTwo();
 		getProject().fillObjectUsingCommand(expense, ExpenseAssignment.TAG_CATEGORY_TWO_REF, categoryTwo.getRef().toString());
 		
+		validateUsingStringWriter();
+	}
+	
+	public void testProjectWithAllPossibleAsciiCharacters() throws Exception
+	{
+		char[] allAscii = new char[128];
+		for(int i = 0; i < allAscii.length; ++i)
+			allAscii[i] = (char)i;
+		for(int i = 0; i < 32; ++i)
+			allAscii[i] = '-';
+		allAscii[127] = '-';
+		getProject().getMetadata().setData(ProjectMetadata.TAG_PROJECT_NAME, new String(allAscii));
 		validateUsingStringWriter();
 	}
 
