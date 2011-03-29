@@ -45,6 +45,8 @@ public abstract class OverlaidObjectDataInputPanel extends AbstractObjectDataInp
 	{
 		if (currentCard != null)
 			currentCard.becomeInactive();
+		
+		// TODO: Should probably set to null here
 	}
 
 	protected void activateCurrentCard()
@@ -72,7 +74,8 @@ public abstract class OverlaidObjectDataInputPanel extends AbstractObjectDataInp
 	@Override
 	public void setFocusOnFirstField()
 	{
-		currentCard.setFocusOnFirstField();
+		if(currentCard != null)
+			currentCard.setFocusOnFirstField();
 	}
 	
 	protected boolean isMultiPropertiesPanelActive()
@@ -87,10 +90,10 @@ public abstract class OverlaidObjectDataInputPanel extends AbstractObjectDataInp
 
 		deactivateCurrentCard();
 		
-		currentCard = findPanel(orefsToUse);
-		cardLayout.show(this, currentCard.getPanelDescription());
 		if (isMultiPropertiesPanelActive())
 		{
+			currentCard = findPanel(orefsToUse);
+			cardLayout.show(this, currentCard.getPanelDescription());
 			activateCurrentCard();
 			currentCard.setObjectRefs(orefsToUse);
 		}

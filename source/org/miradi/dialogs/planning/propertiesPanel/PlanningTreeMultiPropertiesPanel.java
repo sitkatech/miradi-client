@@ -97,7 +97,8 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 	@Override
 	public void selectSectionForTag(String tag)
 	{
-		currentCard.selectSectionForTag(tag);
+		if(currentCard != null)
+			currentCard.selectSectionForTag(tag);
 	}
 	
 	@Override

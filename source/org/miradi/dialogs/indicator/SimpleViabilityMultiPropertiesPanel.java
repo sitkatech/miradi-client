@@ -65,7 +65,8 @@ public class SimpleViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 	@Override
 	public void selectSectionForTag(String tag)
 	{
-		currentCard.selectSectionForTag(tag);
+		if(currentCard != null)
+			currentCard.selectSectionForTag(tag);
 	}
 	
 	@Override
