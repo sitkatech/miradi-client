@@ -52,8 +52,6 @@ public class TimePeriodCostsMapsCache implements CommandExecutedListener
 		return project;
 	}
 
-	private Project project;
-
 	public TimePeriodCostsMap getTotalTimePeriodCostsMap(BaseObject baseObject) throws Exception
 	{
 		return baseObject.getTotalTimePeriodCostsMap();
@@ -68,4 +66,6 @@ public class TimePeriodCostsMapsCache implements CommandExecutedListener
 	{
 		return getProject().getProjectTotalCalculator().calculateProjectTotals(workPlanBudgetMode);
 	}
+
+	private Project project;
 }
