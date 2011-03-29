@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-18 12:37-0500\n"
+"POT-Creation-Date: 2011-03-29 11:13-0500\n"
 "PO-Revision-Date: 2010-09-30 09:31+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -81,7 +81,7 @@ msgstr ""
 msgid " 2) Connect threat to relevant targets"
 msgstr "2) З'єднати загрозу з відповідними цілями"
 
-#: Miradi/source/org/miradi/project/Project.java:185
+#: Miradi/source/org/miradi/project/Project.java:187
 msgid " A project by this name already exists: "
 msgstr "Проект з таким іменем уже існує:"
 
@@ -299,7 +299,7 @@ msgstr "(Створити, управляти і ранжирувати нава
 msgid "(Definition Not Available)"
 msgstr "(Немає визначення)"
 
-#: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:119
+#: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:118
 msgid "(Error)"
 msgstr "(Помилка)"
 
@@ -1143,7 +1143,7 @@ msgstr ""
 "існуючий дублікат новою копією. Таким чином він можливо буде збережений, "
 "якщо попередня спроба переходу зазнала невдачі.   "
 
-#: Miradi/source/org/miradi/project/Project.java:191
+#: Miradi/source/org/miradi/project/Project.java:193
 msgid "A file or folder exist by the same name:"
 msgstr "Файл чи папка з такою самою назвою  існує:"
 
@@ -3035,7 +3035,7 @@ msgstr "Створити..."
 msgid "Creating group boxes..."
 msgstr ""
 
-#: Miradi/source/org/miradi/project/Project.java:690
+#: Miradi/source/org/miradi/project/Project.java:697
 msgid "Creating..."
 msgstr ""
 
@@ -5459,7 +5459,7 @@ msgstr ""
 msgid "OpenStandards"
 msgstr "Відкриті Стандарти"
 
-#: Miradi/source/org/miradi/project/Project.java:685
+#: Miradi/source/org/miradi/project/Project.java:692
 msgid "Opening..."
 msgstr ""
 
@@ -6220,7 +6220,7 @@ msgstr "Розподіляти зворотню реакцію формальн�
 msgid "Share success & failures with other teams"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:608
+#: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:606
 msgid "Should Now Allow Full Time Employee To Be Calculated For "
 msgstr "Дозволити повночасному працівнику бути врахованим"
 
@@ -8605,7 +8605,7 @@ msgstr ""
 "команди експорту та  імпорту. Міраді також створить зіп-файли для дублікатів "
 "проекту, що були створені протягом форматувальних переходів."
 
-#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:510
+#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:512
 msgid "[Error]"
 msgstr "[Помилка]"
 
@@ -8621,7 +8621,7 @@ msgstr "[НЕ ВКАЗАНИЙ]"
 msgid "[New Results Chain]"
 msgstr "[Новий ланцюг результатів]"
 
-#: Miradi/source/org/miradi/project/Project.java:997
+#: Miradi/source/org/miradi/project/Project.java:1005
 msgid "[No Project]"
 msgstr "[Проект не вибраний]"
 

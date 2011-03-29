@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-18 12:37-0500\n"
+"POT-Creation-Date: 2011-03-29 11:13-0500\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -68,7 +68,7 @@ msgstr ""
 msgid " 2) Connect threat to relevant targets"
 msgstr "Аюул заналыг хамаарал бүхий хамгаалах объекттэй холбож өгөх."
 
-#: Miradi/source/org/miradi/project/Project.java:185
+#: Miradi/source/org/miradi/project/Project.java:187
 msgid " A project by this name already exists: "
 msgstr "Ийм нэр бүхий төсөл хэдийнээ байгаа:"
 
@@ -288,7 +288,7 @@ msgstr ""
 msgid "(Definition Not Available)"
 msgstr "(Тодорхойлолт байхгүй)"
 
-#: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:119
+#: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:118
 msgid "(Error)"
 msgstr "(Алдаа)"
 
@@ -1134,7 +1134,7 @@ msgstr ""
 "backup шинэ хуулбараар солигдоно. Өмнөх шилжилт амжилтгүй болсон бол үүнийг "
 "хийх нь найдвартай байх."
 
-#: Miradi/source/org/miradi/project/Project.java:191
+#: Miradi/source/org/miradi/project/Project.java:193
 msgid "A file or folder exist by the same name:"
 msgstr "Адил нэр бүхий файл эсвэл фолдэр байна:"
 
@@ -3028,7 +3028,7 @@ msgstr "Үүсгэх..."
 msgid "Creating group boxes..."
 msgstr "Бүлгийн хайрцгуудыг үүсгэх..."
 
-#: Miradi/source/org/miradi/project/Project.java:690
+#: Miradi/source/org/miradi/project/Project.java:697
 msgid "Creating..."
 msgstr ""
 
@@ -5462,7 +5462,7 @@ msgstr ""
 msgid "OpenStandards"
 msgstr "Стандартыг нээх"
 
-#: Miradi/source/org/miradi/project/Project.java:685
+#: Miradi/source/org/miradi/project/Project.java:692
 msgid "Opening..."
 msgstr ""
 
@@ -6226,7 +6226,7 @@ msgstr "Хариуг албан аль эсвэл албан бус арга з�
 msgid "Share success & failures with other teams"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:608
+#: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:606
 msgid "Should Now Allow Full Time Employee To Be Calculated For "
 msgstr "Орон тооны ажилтан авахыг зөвшөөрч тооцож оруулах ёстой "
 
@@ -8662,7 +8662,7 @@ msgstr ""
 "гэдгийг анхаарна уу. Форматыг шилжүүлж байхад үүссэн төслийн backup-д ч "
 "Miradi мөн адил  zip файл үүсгэнэ.  "
 
-#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:510
+#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:512
 msgid "[Error]"
 msgstr "[Алдаа]"
 
@@ -8678,7 +8678,7 @@ msgstr "[ТОДОРХОЙ ЗААГДААГҮЙ]"
 msgid "[New Results Chain]"
 msgstr "[Шинэ Үр Дүнгийн Гинжих Холбоос]"
 
-#: Miradi/source/org/miradi/project/Project.java:997
+#: Miradi/source/org/miradi/project/Project.java:1005
 msgid "[No Project]"
 msgstr "Төсөл байхгүй]"
 
