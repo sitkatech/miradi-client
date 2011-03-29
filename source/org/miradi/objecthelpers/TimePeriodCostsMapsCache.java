@@ -67,5 +67,12 @@ public class TimePeriodCostsMapsCache implements CommandExecutedListener
 		return getProject().getProjectTotalCalculator().calculateProjectTotals(workPlanBudgetMode);
 	}
 
+	public TimePeriodCostsMap getTotalTimePeriodCostsMapForSubTasks(BaseObject baseObjectForRow, String assignmentsTag) throws Exception
+	{
+		ORefList subTaskRefs = baseObjectForRow.getSubTaskRefs();
+		return baseObjectForRow.getTotalTimePeriodCostsMapForSubTasks(subTaskRefs, assignmentsTag);
+	}
+
 	private Project project;
+
 }
