@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-29 11:13-0500\n"
+"POT-Creation-Date: 2011-03-29 13:48-0500\n"
 "PO-Revision-Date: 2011-03-27 19:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -558,11 +558,11 @@ msgstr ""
 "<HTML>Quando incolli tra progetti non si può fare da CM a RC o vice versa</"
 "HTML>"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:58
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:59
 msgid ""
 "<HTML>Your project is missing some data that is required for upload to "
-"ConPro. Please correct the problems listed below then attempt to export the "
-"project again.<BR>"
+"ConPro.<br>Please correct the problems listed below then attempt to export "
+"the project again:<BR><BR>"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/MainWindowAction.java:105
@@ -3028,7 +3028,7 @@ msgstr "non trovo tableColumn in map. tableColumn = "
 msgid "Country"
 msgstr "Paese"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:169
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:173
 msgid ""
 "Country - Located in Summary View, Location Tab. Select at least one Country"
 msgstr ""
@@ -5642,7 +5642,7 @@ msgid "PlanningSubViewName|Custom"
 msgstr "Personalizzato"
 
 #: Miradi/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:79
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:102
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:104
 msgid ""
 "Please choose a specific IUCN classification (Not a category). Fix needed "
 "for Strategy named:\n"
@@ -5824,7 +5824,7 @@ msgstr "Descrizione del Progetto:"
 msgid "Project Migration Required"
 msgstr "E' richiesta la migrazione del Progetto"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:160
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:162
 msgid "Project Name - Located in Summary View, Project Tab, Project Name field"
 msgstr ""
 
@@ -6642,6 +6642,13 @@ msgstr "Per l'intero sistema"
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:71
 msgid "TNC"
 msgstr "TNC"
+
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:176
+msgid ""
+"TNC Operating Unit - At least one TNC Operating Unit must be selected, "
+"<br>located in Summary View, TNC tab. Organizations other than TNC should "
+"select 'Non-TNC'"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionResourceListAdd.java:40
 msgid "TT|Add"
@@ -7622,16 +7629,17 @@ msgstr "Team"
 msgid "Team Contact"
 msgstr "Contatto del Team"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:163
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:165
 msgid ""
 "Team Contact - At least one project Team Member must be specified as Team "
-"Contact Located in Summary View, Team Tab, Roles field"
+"Contact, <br>located in Summary View, Team Tab, Roles field"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:166
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:169
 msgid ""
-"Team Contact Email - The Team Contact must have an email address. Located in "
-"Summary View, Team Tab, ensure Team Contact has email specified"
+"Team Contact Email - The Team Contact must have an email address, "
+"<br>located in Summary View, Team Tab, ensure Team Contact has email "
+"specified"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/ResourceRoleQuestion.java:46
@@ -8767,7 +8775,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:90
 #: Miradi/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:54
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:80
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:82
 msgid "save..."
 msgstr ""
 
