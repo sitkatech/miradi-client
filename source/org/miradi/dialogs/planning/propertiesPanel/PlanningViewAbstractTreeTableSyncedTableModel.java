@@ -160,7 +160,7 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 	public TimePeriodCostsMap calculateTimePeriodCostsMap(BaseObject baseObject, String workPlanBudgetMode) throws Exception
 	{
 		if (ProjectMetadata.is(baseObject))
-			return getProject().getProjectTotalCalculator().calculateProjectTotals(workPlanBudgetMode);
+			return getProject().getTimePeriodCostsMapsCache().calculateProjectTotals(workPlanBudgetMode);
 			
 		return getTotalTimePeriodCostsMap(baseObject);
 	}
