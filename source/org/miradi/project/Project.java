@@ -57,6 +57,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.PlanningPreferencesChangeHandler;
 import org.miradi.objecthelpers.StringStringMap;
 import org.miradi.objecthelpers.ThreatStressRatingEnsurer;
+import org.miradi.objecthelpers.TimePeriodCostsMapsCache;
 import org.miradi.objectpools.AssignmentPool;
 import org.miradi.objectpools.CausePool;
 import org.miradi.objectpools.ConceptualModelDiagramPool;
@@ -157,6 +158,7 @@ public class Project
 		threatStressRatingEnsurer = new ThreatStressRatingEnsurer(this);
 		planningPreferencesChangeHandler = new PlanningPreferencesChangeHandler(this);
 		dashboardStatusMapsCache = new DashboardStatusMapsCache(this);
+		timePeriodCostsMapsCache = new TimePeriodCostsMapsCache(this);
 		enableIsDoNothingCommandOptimization();
 		enableListeners();
 		
@@ -939,6 +941,7 @@ public class Project
 		enableThreatStressRatingEnsurer();
 		planningPreferencesChangeHandler.enable();
 		dashboardStatusMapsCache.enable();
+		timePeriodCostsMapsCache.enable();
 	}
 
 	protected void applyDefaultBehavior() throws Exception
@@ -1031,6 +1034,7 @@ public class Project
 		disableThreatStressRatingEnsurer();
 		planningPreferencesChangeHandler.disable();
 		dashboardStatusMapsCache.disable();
+		timePeriodCostsMapsCache.disable();
 	}
 
 	public void closeAndDeleteProject() throws Exception
@@ -1465,6 +1469,7 @@ public class Project
 	private ProjectTotalCalculator projectTotalCalculator;
 	private PlanningPreferencesChangeHandler planningPreferencesChangeHandler;
 	private DashboardStatusMapsCache dashboardStatusMapsCache;
+	private TimePeriodCostsMapsCache timePeriodCostsMapsCache;
 
 	// FIXME low: This should go away, but it's difficult
 	private String currentViewName;
