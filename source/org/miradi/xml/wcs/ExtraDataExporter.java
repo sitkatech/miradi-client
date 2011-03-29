@@ -47,6 +47,7 @@ public class ExtraDataExporter extends AbstractXmlExporter
 	private void exportPool(int poolTypeToImport) throws Exception
 	{
 		ORefList objectRefs = getProject().getPool(poolTypeToImport).getRefList();
+		objectRefs.sort();
 		for (int index = 0; index < objectRefs.size(); ++index)
 		{
 			BaseObject baseObject = BaseObject.find(getProject(), objectRefs.get(index));
