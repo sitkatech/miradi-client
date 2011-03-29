@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objecthelpers;
 
+import java.util.HashMap;
+
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.objects.BaseObject;
@@ -30,11 +32,20 @@ public class TimePeriodCostsMapsCache implements CommandExecutedListener
 	public TimePeriodCostsMapsCache(Project projectToUse)
 	{
 		project = projectToUse;
+		clearAllCachedData();
 	}
 	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
-		// FIXME: Update cache status here
+		clearAllCachedData();
+	}
+
+	private void clearAllCachedData()
+	{
+		totalTimePeriodCostsMapsByBaseObject = new HashMap<ORef, TimePeriodCostsMap>();
+		whenTotalAsStringByBaseObject = new HashMap<ORef, String>();
+		projectTotalsByBudgetMode = new HashMap<String, TimePeriodCostsMap>();
+		totalTimePeriodCostsMapForSubTasksByBaseObjectAndAssignmentsTag = new HashMap<String, TimePeriodCostsMap>();
 	}
 
 	public void enable()
@@ -54,25 +65,59 @@ public class TimePeriodCostsMapsCache implements CommandExecutedListener
 
 	public TimePeriodCostsMap getTotalTimePeriodCostsMap(BaseObject baseObject) throws Exception
 	{
-		return baseObject.getTotalTimePeriodCostsMap();
+		ORef ref = baseObject.getRef();
+		TimePeriodCostsMap result = totalTimePeriodCostsMapsByBaseObject.get(ref);
+		if(result == null)
+		{
+			result = baseObject.getTotalTimePeriodCostsMap();
+			totalTimePeriodCostsMapsByBaseObject.put(ref, result);
+		}
+		
+		return result;
 	}
 
 	public String getWhenTotalAsString(BaseObject baseObject)
 	{
-		return baseObject.getWhenTotalAsString();
+		ORef ref = baseObject.getRef();
+		String result = whenTotalAsStringByBaseObject.get(ref);
+		if(result == null)
+		{
+			result = baseObject.getWhenTotalAsString();
+			whenTotalAsStringByBaseObject.put(ref, result);
+		}
+		
+		return result;
 	}
 
 	public TimePeriodCostsMap calculateProjectTotals(String workPlanBudgetMode) throws Exception
 	{
-		return getProject().getProjectTotalCalculator().calculateProjectTotals(workPlanBudgetMode);
+		TimePeriodCostsMap result = projectTotalsByBudgetMode.get(workPlanBudgetMode);
+		if(result == null)
+		{
+			result = getProject().getProjectTotalCalculator().calculateProjectTotals(workPlanBudgetMode);
+			projectTotalsByBudgetMode.put(workPlanBudgetMode, result);
+		}
+		
+		return result;
 	}
 
 	public TimePeriodCostsMap getTotalTimePeriodCostsMapForSubTasks(BaseObject baseObjectForRow, String assignmentsTag) throws Exception
 	{
-		ORefList subTaskRefs = baseObjectForRow.getSubTaskRefs();
-		return baseObjectForRow.getTotalTimePeriodCostsMapForSubTasks(subTaskRefs, assignmentsTag);
+		String key = baseObjectForRow.getRef().toString() + " " + assignmentsTag;
+		TimePeriodCostsMap result = totalTimePeriodCostsMapForSubTasksByBaseObjectAndAssignmentsTag.get(key);
+		if(result == null)
+		{
+			ORefList subTaskRefs = baseObjectForRow.getSubTaskRefs();
+			result = baseObjectForRow.getTotalTimePeriodCostsMapForSubTasks(subTaskRefs, assignmentsTag);
+			totalTimePeriodCostsMapForSubTasksByBaseObjectAndAssignmentsTag.put(key, result);
+		}
+		
+		return result;
 	}
 
 	private Project project;
-
+	private HashMap<ORef, TimePeriodCostsMap> totalTimePeriodCostsMapsByBaseObject;
+	private HashMap<ORef, String> whenTotalAsStringByBaseObject;
+	private HashMap<String, TimePeriodCostsMap> projectTotalsByBudgetMode;
+	private HashMap<String, TimePeriodCostsMap> totalTimePeriodCostsMapForSubTasksByBaseObjectAndAssignmentsTag;
 }
