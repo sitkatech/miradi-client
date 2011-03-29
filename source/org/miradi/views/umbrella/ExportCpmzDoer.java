@@ -29,6 +29,7 @@ import java.util.zip.ZipOutputStream;
 import org.miradi.exceptions.InvalidICUNSelectionException;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
+import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
 import org.miradi.project.ProjectMpzWriter;
 import org.miradi.utils.CpmzFileChooser;
@@ -55,10 +56,11 @@ public class ExportCpmzDoer extends XmlExporterDoer
 		Vector<String> messages = getMissingRequiredFieldMessages();
 		if (messages.size() > 0)
 		{
-			String message = EAM.text("<HTML>Your project is missing some data that is required for upload to ConPro. Please correct the problems listed below then attempt to export the project again.<BR>");
+			String message = EAM.text("<HTML>Your project is missing some data that is required for upload to ConPro.<br>" +
+					"Please correct the problems listed below then attempt to export the project again:<BR><BR>");
 			for (String missingFieldMessage : messages)
 			{
-				message += missingFieldMessage + "<BR>";
+				message += missingFieldMessage + "<BR><BR>";
 			}
 			
 			EAM.errorDialog(message);
@@ -160,15 +162,40 @@ public class ExportCpmzDoer extends XmlExporterDoer
 			missingFieldMessages.add(EAM.text("Project Name - Located in Summary View, Project Tab, Project Name field"));
 		
 		if (findATeamContact() == null)
-			missingFieldMessages.add(EAM.text("Team Contact - At least one project Team Member must be specified as Team Contact Located in Summary View, Team Tab, Roles field"));
+			missingFieldMessages.add(EAM.text("Team Contact - At least one project Team Member must be specified as Team Contact, <br>" +
+					"located in Summary View, Team Tab, Roles field"));
 		
 		if (findATeamContact() != null && findATeamContact().getEmail().length() == 0)
-			missingFieldMessages.add(EAM.text("Team Contact Email - The Team Contact must have an email address. Located in Summary View, Team Tab, ensure Team Contact has email specified"));
+			missingFieldMessages.add(EAM.text("Team Contact Email - The Team Contact must have an email address, <br>" +
+					"located in Summary View, Team Tab, ensure Team Contact has email specified"));
 		
 		if (getProject().getMetadata().getCountryCodes().isEmpty())
 			missingFieldMessages.add(EAM.text("Country - Located in Summary View, Location Tab. Select at least one Country"));
 		
+		if (!hasTncOperatingUnit())
+			missingFieldMessages.add(EAM.text("TNC Operating Unit - At least one TNC Operating Unit must be selected, <br>" +
+					"located in Summary View, TNC tab. Organizations other than TNC should select 'Non-TNC'"));
+		
 		return missingFieldMessages;
+	}
+
+	private boolean hasTncOperatingUnit()
+	{
+		ProjectMetadata metadata = getProject().getMetadata();
+		if(metadata == null)
+			return false;
+		
+		try
+		{
+			if(metadata.getCodeList(metadata.TAG_TNC_OPERATING_UNITS).size() > 0)
+				return true;
+		}
+		catch(Exception e)
+		{
+			EAM.unexpectedErrorDialog(e);
+		}
+		
+		return false;
 	}
 
 	private ProjectResource findATeamContact()
