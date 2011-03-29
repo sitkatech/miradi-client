@@ -167,7 +167,7 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 
 	protected TimePeriodCostsMap getTotalTimePeriodCostsMap(BaseObject baseObject) throws Exception
 	{
-		return baseObject.getTotalTimePeriodCostsMap();
+		return getProject().getTimePeriodCostsMapsCache().getTotalTimePeriodCostsMap(baseObject);
 	}
 	
 	protected RowColumnBaseObjectProvider getRowColumnObjectProvider()
