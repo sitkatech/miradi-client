@@ -22,6 +22,7 @@ package org.miradi.objecthelpers;
 
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
+import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 
 public class TimePeriodCostsMapsCache implements CommandExecutedListener
@@ -52,4 +53,9 @@ public class TimePeriodCostsMapsCache implements CommandExecutedListener
 	}
 
 	private Project project;
+
+	public TimePeriodCostsMap getTotalTimePeriodCostsMap(BaseObject baseObject) throws Exception
+	{
+		return baseObject.getTotalTimePeriodCostsMap();
+	}
 }

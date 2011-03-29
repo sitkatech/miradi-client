@@ -521,6 +521,11 @@ public class Project
 	{
 		return dashboardStatusMapsCache;
 	}
+	
+	public TimePeriodCostsMapsCache getTimePeriodCostsMapsCache()
+	{
+		return timePeriodCostsMapsCache;
+	}
 
 	public BaseObject findObject(ORef ref)
 	{
