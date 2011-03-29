@@ -476,7 +476,9 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 				return new EmptyChoiceItem();
 
 			String rawValue = "";
-			if (baseObject.isPseudoField(columnTag))
+			if(columnTag.equals(BaseObject.PSEUDO_TAG_WHEN_TOTAL))
+				rawValue = getProject().getTimePeriodCostsMapsCache().getWhenTotalAsString(baseObject);
+			else if (baseObject.isPseudoField(columnTag))
 				rawValue = baseObject.getPseudoData(columnTag);
 			else
 				rawValue = baseObject.getData(columnTag);

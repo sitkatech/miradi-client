@@ -694,7 +694,7 @@ abstract public class BaseObject
 		return formater.format(cost);
 	}
 	
-	private String getWhenTotalAsString()
+	public String getWhenTotalAsString()
 	{
 		try
 		{

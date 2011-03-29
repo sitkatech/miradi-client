@@ -58,4 +58,9 @@ public class TimePeriodCostsMapsCache implements CommandExecutedListener
 	{
 		return baseObject.getTotalTimePeriodCostsMap();
 	}
+
+	public String getWhenTotalAsString(BaseObject baseObject)
+	{
+		return baseObject.getWhenTotalAsString();
+	}
 }
