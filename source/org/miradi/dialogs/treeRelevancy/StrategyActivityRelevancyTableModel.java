@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.treeRelevancy;
 
+import org.miradi.dialogfields.FieldSaver;
 import org.miradi.dialogs.base.SingleBooleanColumnEditableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.EAM;
@@ -45,6 +46,9 @@ public class StrategyActivityRelevancyTableModel extends SingleBooleanColumnEdit
 	@Override
 	public void setValueAt(Object value, int row, int column)
 	{
+		// NOTE: Avoid recursive call to stopCellEditing
+		FieldSaver.setEditingTable(null);
+
 		if (value == null)
 			return;
 
