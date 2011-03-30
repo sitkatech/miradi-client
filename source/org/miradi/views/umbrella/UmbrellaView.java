@@ -357,12 +357,6 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		activePropertiesDlg.setVisible(true);
 	}
 
-	private ModelessDialogPanel getActivePropertiesPanel(
-			ModelessDialogWithClose newDialog)
-	{
-		return (ModelessDialogPanel)newDialog.getWrappedPanel();
-	}
-	
 	protected UiLabel createScreenShotLabel()
 	{
 		UiLabel label = new PanelTitleLabel("Demo Screen Shot");
@@ -614,7 +608,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		if(activePropertiesDlg == null)
 			return false;
 		
-		ModelessDialogPanel panel = getActivePropertiesPanel(activePropertiesDlg);
+		ModelessDialogPanel panel = (ModelessDialogPanel)activePropertiesDlg.getWrappedPanel();
 		if(panel == null)
 			return false;
 		
