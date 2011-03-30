@@ -28,7 +28,7 @@ public interface XmpzXmlConstants
 	public static final String ELEMENT_NAME = "element" + SINGLE_SPACE;
 	public static final String OPTIONAL_ELEMENT = SINGLE_SPACE + "?" + SINGLE_SPACE;
 	
-	public static final String NAME_SPACE_VERSION = "69";
+	public static final String NAME_SPACE_VERSION = "70";
 	public static final String PARTIAL_NAME_SPACE = "http://xml.miradi.org/schema/ConservationProject/";
 	public static final String NAME_SPACE = PARTIAL_NAME_SPACE + NAME_SPACE_VERSION;
 	public static final String XMLNS = "xmlns";
@@ -130,7 +130,7 @@ public interface XmpzXmlConstants
 	public static final String EXPENSE_IDS = "ExpenseIds";
 	public static final String RELATED_THREAT_ID = "RelatedDirectThreatId";
 	public static final String THREAT_ID = "ThreatId";
-	public static final String RELEVANT_ACTIVITY_IDS = "RelevantActiviyIds";
+	public static final String RELEVANT_ACTIVITY_IDS = "RelevantActivityIds";
 	public static final String RELEVANT_STRATEGY_IDS = "RelevantStrategyIds";	
 	public static final String RELEVANT_INDICATOR_IDS = "RelevantIndicatorIds";
 	public static final String DATE_UNITS_EXPENSE = "DateUnitExpense";
