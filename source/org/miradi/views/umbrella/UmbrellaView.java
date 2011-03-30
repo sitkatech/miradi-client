@@ -614,7 +614,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		if(activePropertiesDlg == null)
 			return false;
 		
-		ModelessDialogPanel panel = getActivePropertiesPanel();
+		ModelessDialogPanel panel = getActivePropertiesPanel(activePropertiesDlg);
 		if(panel == null)
 			return false;
 		
@@ -638,11 +638,6 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 	protected void forceLayoutSoSplittersWork()
 	{
 		getTopLevelAncestor().validate();
-	}
-
-	private ModelessDialogPanel getActivePropertiesPanel()
-	{
-		return getActivePropertiesPanel(activePropertiesDlg);
 	}
 
 	private MainWindow mainWindow;
