@@ -99,7 +99,7 @@ public abstract class Command
 		{
 			String name = keys[i];
 			Object object = logData.get(name);
-			logLine = logLine + logItemAsString(name, object)+ ", " ;
+			logLine = logLine + logItemAsString(name, object)+ "\n" ;
 		}
 		return logLine;
 	}
