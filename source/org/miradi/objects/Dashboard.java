@@ -41,7 +41,6 @@ import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.StrategyRatingSummaryQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.utils.EnhancedJsonObject;
@@ -468,8 +467,20 @@ public class Dashboard extends BaseObject
 
 	private boolean hasAnyFutureStatusInformation(Indicator indicator)
 	{
-		String futureStatusRating = indicator.getFutureStatusRating();
-		return !futureStatusRating.equals(StatusQuestion.UNSPECIFIED);
+		String[] futureStatusTags = {
+			Indicator.TAG_FUTURE_STATUS_COMMENTS,
+			Indicator.TAG_FUTURE_STATUS_DATE,
+			Indicator.TAG_FUTURE_STATUS_DETAIL,
+			Indicator.TAG_FUTURE_STATUS_RATING,
+			Indicator.TAG_FUTURE_STATUS_SUMMARY,
+		};
+		for(String tag : futureStatusTags)
+		{
+			if(!indicator.getField(tag).isEmpty())
+				return true;
+		}
+		
+		return false;
 	}
 
 	private String getThreatReductionResultIndicatorsCount()
