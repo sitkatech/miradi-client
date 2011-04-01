@@ -460,7 +460,8 @@ public class Dashboard extends BaseObject
 		{
 			Indicator indicator = indicators[index];
 			String futureStatusRating = indicator.getFutureStatusRating();
-			if (!futureStatusRating.equals(StatusQuestion.UNSPECIFIED))
+			boolean hasFutureStatus = !futureStatusRating.equals(StatusQuestion.UNSPECIFIED);
+			if (hasFutureStatus)
 				indicatorsWithFutureStatusSpecified.add(indicator.getRef());
 		}
 		
