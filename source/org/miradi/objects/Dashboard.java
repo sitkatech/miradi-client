@@ -459,13 +459,19 @@ public class Dashboard extends BaseObject
 		for (int index = 0; index < indicators.length; ++index)
 		{
 			Indicator indicator = indicators[index];
-			String futureStatusRating = indicator.getFutureStatusRating();
-			boolean hasFutureStatus = !futureStatusRating.equals(StatusQuestion.UNSPECIFIED);
+			boolean hasFutureStatus = hasAnyFutureStatusInformation(indicator);
 			if (hasFutureStatus)
 				indicatorsWithFutureStatusSpecified.add(indicator.getRef());
 		}
 		
 		return calculatePercentage(indicatorsWithFutureStatusSpecified.size(), indicators.length);
+	}
+
+	private boolean hasAnyFutureStatusInformation(Indicator indicator)
+	{
+		String futureStatusRating = indicator.getFutureStatusRating();
+		boolean hasFutureStatus = !futureStatusRating.equals(StatusQuestion.UNSPECIFIED);
+		return hasFutureStatus;
 	}
 
 	private String getThreatReductionResultIndicatorsCount()
