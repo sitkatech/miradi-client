@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-01 07:54-0500\n"
+"POT-Creation-Date: 2011-04-01 16:23-0500\n"
 "PO-Revision-Date: 2011-03-28 15:06-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -5268,7 +5268,7 @@ msgstr "Nombre del nuevo proyecto: "
 msgid "No"
 msgstr "No"
 
-#: Miradi/source/org/miradi/objecthelpers/DateUnit.java:175
+#: Miradi/source/org/miradi/objecthelpers/DateUnit.java:177
 msgid "No date range for date Unit = "
 msgstr "No se encontró ningún rango de fechas para la Unidad de fechas ="
 

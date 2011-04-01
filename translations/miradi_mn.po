@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-01 07:54-0500\n"
+"POT-Creation-Date: 2011-04-01 16:23-0500\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -5275,7 +5275,7 @@ msgstr "Шинэ төслийн нэр: "
 msgid "No"
 msgstr "Үгүй"
 
-#: Miradi/source/org/miradi/objecthelpers/DateUnit.java:175
+#: Miradi/source/org/miradi/objecthelpers/DateUnit.java:177
 msgid "No date range for date Unit = "
 msgstr "Хугацааны нэгж хоногийн хэлбэлзэлгүй = "
 
