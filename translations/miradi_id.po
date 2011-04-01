@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-01 07:54-0500\n"
+"POT-Creation-Date: 2011-04-01 16:23-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -5232,7 +5232,7 @@ msgstr "Nama proyek baru: "
 msgid "No"
 msgstr "Tidak"
 
-#: Miradi/source/org/miradi/objecthelpers/DateUnit.java:175
+#: Miradi/source/org/miradi/objecthelpers/DateUnit.java:177
 msgid "No date range for date Unit = "
 msgstr "Tidak ada rangkaian tanggal untuk Unit tanggal = "
 

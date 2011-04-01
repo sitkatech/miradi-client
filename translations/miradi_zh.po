@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-01 07:54-0500\n"
+"POT-Creation-Date: 2011-04-01 16:23-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -5064,7 +5064,7 @@ msgstr ""
 msgid "No"
 msgstr "否"
 
-#: Miradi/source/org/miradi/objecthelpers/DateUnit.java:175
+#: Miradi/source/org/miradi/objecthelpers/DateUnit.java:177
 msgid "No date range for date Unit = "
 msgstr ""
 
