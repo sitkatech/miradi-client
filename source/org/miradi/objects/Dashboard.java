@@ -459,8 +459,7 @@ public class Dashboard extends BaseObject
 		for (int index = 0; index < indicators.length; ++index)
 		{
 			Indicator indicator = indicators[index];
-			boolean hasFutureStatus = hasAnyFutureStatusInformation(indicator);
-			if (hasFutureStatus)
+			if (hasAnyFutureStatusInformation(indicator))
 				indicatorsWithFutureStatusSpecified.add(indicator.getRef());
 		}
 		
