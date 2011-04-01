@@ -469,8 +469,7 @@ public class Dashboard extends BaseObject
 	private boolean hasAnyFutureStatusInformation(Indicator indicator)
 	{
 		String futureStatusRating = indicator.getFutureStatusRating();
-		boolean hasFutureStatus = !futureStatusRating.equals(StatusQuestion.UNSPECIFIED);
-		return hasFutureStatus;
+		return !futureStatusRating.equals(StatusQuestion.UNSPECIFIED);
 	}
 
 	private String getThreatReductionResultIndicatorsCount()
