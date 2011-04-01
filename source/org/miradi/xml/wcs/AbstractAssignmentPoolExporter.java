@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.wcs;
 
+import org.martus.util.MultiCalendar;
 import org.martus.util.UnicodeWriter;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objects.Assignment;
@@ -99,9 +100,9 @@ abstract public class AbstractAssignmentPoolExporter extends BaseObjectPoolExpor
 	}
 
 	private void writeQuarter(DateUnit dateUnit) throws Exception
-	{		
-		int fiscalYearFirstMonth = getProject().getProjectCalendar().getFiscalYearFirstMonth();
-		getWcsXmlExporter().writeStartElementWithTwoAttributes(getWriter(), getQuarterElementName(), YEAR, dateUnit.getYear(), START_MONTH, fiscalYearFirstMonth);
+	{
+		MultiCalendar start = dateUnit.getQuarterDateRange().getStartDate();
+		getWcsXmlExporter().writeStartElementWithTwoAttributes(getWriter(), getQuarterElementName(), YEAR, start.getGregorianYear(), START_MONTH, start.getGregorianMonth());
 		getWcsXmlExporter().writeEndElement(getQuarterElementName());
 	}
 

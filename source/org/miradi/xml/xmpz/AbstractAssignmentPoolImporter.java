@@ -93,7 +93,7 @@ abstract public class AbstractAssignmentPoolImporter extends AbstractBaseObjectP
 			int year = getAttributeAsInt(quarterNode, XmpzXmlConstants.YEAR);
 			int startMonth = getAttributeAsInt(quarterNode, XmpzXmlConstants.START_MONTH);
 			
-			return DateUnit.createQuarterDateUnit(year, startMonth);
+			return DateUnit.createQuarterDateUnit(year, (startMonth-1)/3 + 1);
 		}
 			
 		Node monthNode = getImporter().getNode(dateUnitNode, getMonthElementName());

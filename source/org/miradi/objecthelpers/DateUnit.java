@@ -102,6 +102,8 @@ public class DateUnit implements Comparable<DateUnit>
 
 	public static DateUnit createQuarterDateUnit(int year, int startingQuarter)
 	{
+		if(startingQuarter < 1 || startingQuarter > 4)
+			throw new RuntimeException("Unknown quarter: " + year + " " + startingQuarter);
 		return new DateUnit(year + QUARTER_PREFIX_CODE + startingQuarter);
 	}
 
@@ -228,7 +230,7 @@ public class DateUnit implements Comparable<DateUnit>
 		return Integer.parseInt(getDateUnitCode().substring(startAt, startAt+2));
 	}
 	
-	private DateRange getQuarterDateRange() throws Exception
+	public DateRange getQuarterDateRange() throws Exception
 	{
 		int quarter = getQuarter();
 		int startYear = getYear();

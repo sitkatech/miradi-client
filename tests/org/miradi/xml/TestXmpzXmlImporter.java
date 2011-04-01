@@ -23,6 +23,7 @@ package org.miradi.xml;
 import java.awt.Dimension;
 import java.awt.Point;
 
+import org.martus.util.MultiCalendar;
 import org.martus.util.UnicodeStringWriter;
 import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
 import org.miradi.main.TestCaseWithProject;
@@ -55,6 +56,7 @@ import org.miradi.questions.OpenStandardsConceptualizeQuestion;
 import org.miradi.questions.OpenStandardsDynamicProgressStatusQuestion;
 import org.miradi.questions.TextBoxZOrderQuestion;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.DateRange;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.EnhancedJsonObject;
@@ -207,6 +209,31 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 		getProject().fillObjectUsingCommand(expense, ExpenseAssignment.TAG_CATEGORY_TWO_REF, categoryTwo.getRef().toString());
 		
 		validateUsingStringWriter();
+	}
+	
+	public void testExpenseAssignmentsWithFiscalYear() throws Exception
+	{
+		getProject().getMetadata().setData(ProjectMetadata.TAG_FISCAL_YEAR_START, "7");
+		ExpenseAssignment expense = getProject().createExpenseAssignment();
+		DateUnitEffortList lis = new DateUnitEffortList();
+		MultiCalendar start = MultiCalendar.createFromGregorianYearMonthDay(2008, 10, 1);
+		MultiCalendar end = MultiCalendar.createFromGregorianYearMonthDay(2008, 12, 31);
+		DateRange dateRange = new DateRange(start, end);
+		DateUnit quarter = DateUnit.createFromDateRange(dateRange);
+		DateUnitEffort dateUnitEffort = new DateUnitEffort(quarter, 22.9);
+		lis.add(dateUnitEffort);
+		getProject().fillObjectUsingCommand(expense, ExpenseAssignment.TAG_DATEUNIT_EFFORTS, lis.toString());
+		
+		BudgetCategoryOne categoryOne = getProject().createCategoryOne();
+		getProject().fillObjectUsingCommand(expense, ExpenseAssignment.TAG_CATEGORY_ONE_REF, categoryOne.getRef().toString());
+		
+		BudgetCategoryTwo categoryTwo = getProject().createCategoryTwo();
+		getProject().fillObjectUsingCommand(expense, ExpenseAssignment.TAG_CATEGORY_TWO_REF, categoryTwo.getRef().toString());
+		
+		ProjectForTesting resultingProject = validateUsingStringWriter();
+		ExpenseAssignment got = ExpenseAssignment.find(resultingProject, expense.getRef());
+		assertEquals(got.getDateUnitEffortList(), expense.getDateUnitEffortList());
+		
 	}
 	
 	public void testProjectWithAllPossibleAsciiCharacters() throws Exception
