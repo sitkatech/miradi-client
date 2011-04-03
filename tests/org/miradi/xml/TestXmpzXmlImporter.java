@@ -211,7 +211,7 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 		validateUsingStringWriter();
 	}
 	
-	public void testExpenseAssignmentsWithFiscalYear() throws Exception
+	public void testExpenseAssignmentsWithQuarterDataFiscalYear() throws Exception
 	{
 		getProject().getMetadata().setData(ProjectMetadata.TAG_FISCAL_YEAR_START, "7");
 		ExpenseAssignment expense = getProject().createExpenseAssignment();
