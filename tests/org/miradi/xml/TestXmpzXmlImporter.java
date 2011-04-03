@@ -236,6 +236,31 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 		
 	}
 	
+	public void testExpenseAssignmentsWithYearDataFiscalYear() throws Exception
+	{
+		getProject().getMetadata().setData(ProjectMetadata.TAG_FISCAL_YEAR_START, "7");
+		ExpenseAssignment expense = getProject().createExpenseAssignment();
+		DateUnitEffortList lis = new DateUnitEffortList();
+		MultiCalendar start = MultiCalendar.createFromGregorianYearMonthDay(2008, 7, 1);
+		MultiCalendar end = MultiCalendar.createFromGregorianYearMonthDay(2008, 8, 31);
+		DateRange dateRange = new DateRange(start, end);
+		DateUnit year = DateUnit.createFromDateRange(dateRange);
+		DateUnitEffort dateUnitEffort = new DateUnitEffort(year, 22.9);
+		lis.add(dateUnitEffort);
+		getProject().fillObjectUsingCommand(expense, ExpenseAssignment.TAG_DATEUNIT_EFFORTS, lis.toString());
+		
+		BudgetCategoryOne categoryOne = getProject().createCategoryOne();
+		getProject().fillObjectUsingCommand(expense, ExpenseAssignment.TAG_CATEGORY_ONE_REF, categoryOne.getRef().toString());
+		
+		BudgetCategoryTwo categoryTwo = getProject().createCategoryTwo();
+		getProject().fillObjectUsingCommand(expense, ExpenseAssignment.TAG_CATEGORY_TWO_REF, categoryTwo.getRef().toString());
+		
+		ProjectForTesting resultingProject = validateUsingStringWriter();
+		ExpenseAssignment got = ExpenseAssignment.find(resultingProject, expense.getRef());
+		assertEquals(got.getDateUnitEffortList(), expense.getDateUnitEffortList());
+		
+	}
+	
 	public void testProjectWithAllPossibleAsciiCharacters() throws Exception
 	{
 		char[] allAscii = new char[128];
