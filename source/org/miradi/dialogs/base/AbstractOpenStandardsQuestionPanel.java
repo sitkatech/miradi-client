@@ -239,7 +239,10 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		{
 			WizardManager wizardManager = getMainWindow().getWizardManager();
 			String stepName = wizardManager.stripJumpPrefix(action.getClass());
-			longDescriptionProvider.setWizardStepName(stepName);
+			if(wizardManager.findStep(stepName) != null)
+				longDescriptionProvider.setWizardStepName(stepName);
+			else
+				EAM.logDebug("Dashboard " + choiceItem.getCode() + " uses action "+ action.getClass().getSimpleName() + " which has no wizard step " + stepName);
 		}
 	}
 	
