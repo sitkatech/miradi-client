@@ -135,20 +135,29 @@ public class TestDashboardStatusMapsCache extends TestCaseWithProject
 		for (int index = 0; index < allThirdLEvelCodes.size(); ++index)
 		{
 			String thirdLevelCode = allThirdLEvelCodes.get(index);
-			String progressCode = OpenStandardsDynamicProgressStatusQuestion.NOT_STARTED_CODE;
-			if (thirdLevelCode.equals(OpenStandardsImplementActionsAndMonitoringQuestion.ESTIMATE_COSTS_FOR_ACTIVITIES_AND_MONITORING_CODE))
-				progressCode = OpenStandardsDynamicProgressStatusQuestion.IN_PROGRESS_CODE;
-			
-			if (thirdLevelCode.equals(OpenStandardsImplementActionsAndMonitoringQuestion.DEVELOP_AND_SUBMIT_FUNDING_PROPOSALS_CODE))
-				progressCode = OpenStandardsDynamicProgressStatusQuestion.IN_PROGRESS_CODE;
-			
-			if (thirdLevelCode.equals(OpenStandardsConceptualizeQuestion.CREATE_INITIAL_CONCEPTUAL_MODEL_CODE))
-				progressCode = OpenStandardsDynamicProgressStatusQuestion.IN_PROGRESS_CODE;
+			String progressCode = getProgressCodeWithSpecialCases(thirdLevelCode);
 			
 			emptyMap.put(thirdLevelCode, progressCode);
 		}
 		
 		return emptyMap;
+	}
+
+	private String getProgressCodeWithSpecialCases(String thirdLevelCode)
+	{
+		// NOTE: In a perfect world, an empty project would have all NOT STARTED values
+		// but for now, there are a few cases that are already IN PROGRESS
+		String progressCode = OpenStandardsDynamicProgressStatusQuestion.NOT_STARTED_CODE;
+		if (thirdLevelCode.equals(OpenStandardsImplementActionsAndMonitoringQuestion.ESTIMATE_COSTS_FOR_ACTIVITIES_AND_MONITORING_CODE))
+			progressCode = OpenStandardsDynamicProgressStatusQuestion.IN_PROGRESS_CODE;
+		
+		if (thirdLevelCode.equals(OpenStandardsImplementActionsAndMonitoringQuestion.DEVELOP_AND_SUBMIT_FUNDING_PROPOSALS_CODE))
+			progressCode = OpenStandardsDynamicProgressStatusQuestion.IN_PROGRESS_CODE;
+		
+		if (thirdLevelCode.equals(OpenStandardsConceptualizeQuestion.CREATE_INITIAL_CONCEPTUAL_MODEL_CODE))
+			progressCode = OpenStandardsDynamicProgressStatusQuestion.IN_PROGRESS_CODE;
+		
+		return progressCode;
 	}
 	
 	private void putUserChoice(final String thirdLevelCode, final String progressCode) throws Exception
