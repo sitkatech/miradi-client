@@ -53,6 +53,8 @@ public class TestEAM extends MiradiTestCase
 		String substitudedText = EAM.substitute(beforeSubstitute, substituteString);
 		String expectedText = "some text with some more text";
 		assertEquals("didnt substitude correctly?", expectedText, substitudedText); 
+		
+		assertEquals("abc\\", EAM.substitute("abc%s", "\\"));
 	}
 	
 	public void testIsOneFileInsideTheOther()

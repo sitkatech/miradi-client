@@ -90,7 +90,8 @@ public class DashboardRowDefinitionManager
 		
 		if (code.equals(OpenStandardsImplementActionsAndMonitoringQuestion.DEVELOP_AND_SUBMIT_FUNDING_PROPOSALS_CODE))
 		{
-			rowDefinitions.add(new DashboardRowDefinition(EAM.text("Total Budget for Funding: %  %1 Budget Secured"), Dashboard.PSEUDO_BUDGET_SECURED_PERCENT));
+			rowDefinitions.add(new DashboardRowDefinition(EAM.text("Total Budget for Funding: %1 %2"), Dashboard.PSEUDO_CURRENCY_SYMBOL, Dashboard.PSEUDO_TOTAL_PROPOSED_BUDGET));
+			rowDefinitions.add(new DashboardRowDefinition(EAM.text("Percent of Budget Secured:  %1 %"), Dashboard.PSEUDO_BUDGET_SECURED_PERCENT));
 		}
 		
 		if (code.equals(OpenStandardsImplementActionsAndMonitoringQuestion.IMPLEMENT_STRATEGIC_AND_MONITORING_PLANS))
