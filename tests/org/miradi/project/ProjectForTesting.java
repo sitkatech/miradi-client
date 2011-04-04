@@ -108,7 +108,7 @@ import org.miradi.questions.FosTrainingTypeQuestion;
 import org.miradi.questions.HabitatAssociationQuestion;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 import org.miradi.questions.OpenStandardsConceptualizeQuestion;
-import org.miradi.questions.OpenStandardsDynamicProgressStatusQuestion;
+import org.miradi.questions.OpenStandardsProgressStatusQuestion;
 import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.ProgressReportLongStatusQuestion;
 import org.miradi.questions.ProjectSharingQuestion;
@@ -1458,7 +1458,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		ORef dashboardRef = getSingletonObjectRef(Dashboard.getObjectType());
 		StringChoiceMap progressChoiceMap = new StringChoiceMap();
-		progressChoiceMap.put(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE, OpenStandardsDynamicProgressStatusQuestion.IN_PROGRESS_CODE);
+		progressChoiceMap.put(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE, OpenStandardsProgressStatusQuestion.IN_PROGRESS_CODE);
 		fillObjectUsingCommand(dashboardRef, Dashboard.TAG_PROGRESS_CHOICE_MAP, progressChoiceMap.toString());
 		
 		StringStringMap commentsMap = new StringStringMap();

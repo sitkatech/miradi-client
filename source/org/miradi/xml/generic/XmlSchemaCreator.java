@@ -50,7 +50,7 @@ import org.miradi.questions.FosTrainingTypeQuestion;
 import org.miradi.questions.HabitatAssociationQuestion;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 import org.miradi.questions.LanguageQuestion;
-import org.miradi.questions.OpenStandardsDynamicProgressStatusQuestion;
+import org.miradi.questions.OpenStandardsProgressStatusQuestion;
 import org.miradi.questions.PlanningTreeTargetPositionQuestion;
 import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.ProgressReportLongStatusQuestion;
@@ -334,11 +334,11 @@ public class XmlSchemaCreator implements XmpzXmlConstants
 	private void defineDashboardStatusesVocabulary(SchemaWriter writer)
 	{
 		final String[] allCodesFromDynamicQuestion = new String[]{
-			OpenStandardsDynamicProgressStatusQuestion.NOT_SPECIFIED_CODE,
-			OpenStandardsDynamicProgressStatusQuestion.NOT_STARTED_CODE,
-			OpenStandardsDynamicProgressStatusQuestion.IN_PROGRESS_CODE,
-			OpenStandardsDynamicProgressStatusQuestion.COMPLETE_CODE,
-			OpenStandardsDynamicProgressStatusQuestion.NOT_APPLICABLE_CODE,
+			OpenStandardsProgressStatusQuestion.NOT_SPECIFIED_CODE,
+			OpenStandardsProgressStatusQuestion.NOT_STARTED_CODE,
+			OpenStandardsProgressStatusQuestion.IN_PROGRESS_CODE,
+			OpenStandardsProgressStatusQuestion.COMPLETE_CODE,
+			OpenStandardsProgressStatusQuestion.NOT_APPLICABLE_CODE,
 		};
 		
 		writer.print(VOCABULARY_DASHBOARD_ROW_PROGRESS + " = ");

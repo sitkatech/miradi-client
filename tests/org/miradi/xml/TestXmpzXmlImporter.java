@@ -54,7 +54,7 @@ import org.miradi.questions.DiagramFactorFontSizeQuestion;
 import org.miradi.questions.DiagramFactorFontStyleQuestion;
 import org.miradi.questions.DiagramLegendQuestion;
 import org.miradi.questions.OpenStandardsConceptualizeQuestion;
-import org.miradi.questions.OpenStandardsDynamicProgressStatusQuestion;
+import org.miradi.questions.OpenStandardsProgressStatusQuestion;
 import org.miradi.questions.TextBoxZOrderQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
@@ -94,7 +94,7 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 		getProject().createTarget();
 		final String codeToSetToManual = OpenStandardsConceptualizeQuestion.SELECT_CONSERVATION_TARGETS_CODE;
 		StringChoiceMap choiceMap = new StringChoiceMap();
-		choiceMap.put(codeToSetToManual, OpenStandardsDynamicProgressStatusQuestion.IN_PROGRESS_CODE);
+		choiceMap.put(codeToSetToManual, OpenStandardsProgressStatusQuestion.IN_PROGRESS_CODE);
 		getProject().fillObjectUsingCommand(getDashboard(), Dashboard.TAG_PROGRESS_CHOICE_MAP, choiceMap.toString());
 
 		verifyDynamicProgressCodesInSchema(codeToSetToManual);
@@ -103,7 +103,7 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 	private void verifyDynamicProgressCodesInSchema(String thirdLevelCode) throws Exception
 	{
 		Dashboard dashboard = getDashboard();
-		ChoiceQuestion question = getProject().getQuestion(OpenStandardsDynamicProgressStatusQuestion.class);
+		ChoiceQuestion question = getProject().getQuestion(OpenStandardsProgressStatusQuestion.class);
 		CodeList allCodes = question.getAllCodes();
 		for (int index = 0; index < allCodes.size(); ++index)
 		{

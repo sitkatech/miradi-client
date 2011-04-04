@@ -32,7 +32,7 @@ import org.miradi.objecthelpers.StringChoiceMap;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.OpenStandardsDynamicProgressStatusQuestion;
+import org.miradi.questions.OpenStandardsProgressStatusQuestion;
 import org.miradi.utils.CodeList;
 
 public class DashboardProgressEditorField extends AbstractStringStringMapEditorField
@@ -58,20 +58,20 @@ public class DashboardProgressEditorField extends AbstractStringStringMapEditorF
 
 			String calculatedState = getProject().getDashboardStatusMapsCache().getCalculatedStatusMap().get(getMapCode());
 
-			setRadioButtonEnabled(OpenStandardsDynamicProgressStatusQuestion.NOT_SPECIFIED_CODE, true);
-			setRadioButtonEnabled(OpenStandardsDynamicProgressStatusQuestion.NOT_APPLICABLE_CODE, true);
+			setRadioButtonEnabled(OpenStandardsProgressStatusQuestion.NOT_SPECIFIED_CODE, true);
+			setRadioButtonEnabled(OpenStandardsProgressStatusQuestion.NOT_APPLICABLE_CODE, true);
 
-			if(calculatedState.equals(OpenStandardsDynamicProgressStatusQuestion.NOT_STARTED_CODE))
+			if(calculatedState.equals(OpenStandardsProgressStatusQuestion.NOT_STARTED_CODE))
 			{
-				setRadioButtonEnabled(OpenStandardsDynamicProgressStatusQuestion.NOT_STARTED_CODE, true);
-				setRadioButtonEnabled(OpenStandardsDynamicProgressStatusQuestion.IN_PROGRESS_CODE, false);
-				setRadioButtonEnabled(OpenStandardsDynamicProgressStatusQuestion.COMPLETE_CODE, false);
+				setRadioButtonEnabled(OpenStandardsProgressStatusQuestion.NOT_STARTED_CODE, true);
+				setRadioButtonEnabled(OpenStandardsProgressStatusQuestion.IN_PROGRESS_CODE, false);
+				setRadioButtonEnabled(OpenStandardsProgressStatusQuestion.COMPLETE_CODE, false);
 			}
 			else
 			{
-				setRadioButtonEnabled(OpenStandardsDynamicProgressStatusQuestion.NOT_STARTED_CODE, false);
-				setRadioButtonEnabled(OpenStandardsDynamicProgressStatusQuestion.IN_PROGRESS_CODE, true);
-				setRadioButtonEnabled(OpenStandardsDynamicProgressStatusQuestion.COMPLETE_CODE, true);
+				setRadioButtonEnabled(OpenStandardsProgressStatusQuestion.NOT_STARTED_CODE, false);
+				setRadioButtonEnabled(OpenStandardsProgressStatusQuestion.IN_PROGRESS_CODE, true);
+				setRadioButtonEnabled(OpenStandardsProgressStatusQuestion.COMPLETE_CODE, true);
 			}
 		}
 		catch(Exception e)
@@ -84,7 +84,7 @@ public class DashboardProgressEditorField extends AbstractStringStringMapEditorF
 	private void setRadioButtonEnabled(String questionCode, boolean shouldBeEnabled)
 	{
 		RadioButtonEditorComponent radioButtons = (RadioButtonEditorComponent) getComponent();
-		ChoiceQuestion question = getProject().getQuestion(OpenStandardsDynamicProgressStatusQuestion.class);
+		ChoiceQuestion question = getProject().getQuestion(OpenStandardsProgressStatusQuestion.class);
 		ChoiceItem choice = question.findChoiceByCode(questionCode);
 		radioButtons.setSingleButtonEnabled(choice, shouldBeEnabled);
 	}
