@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-04 11:02-0500\n"
+"POT-Creation-Date: 2011-04-04 11:38-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -2301,8 +2301,7 @@ msgid "Aug"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/TableRowHeightModeQuestion.java:38
-#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:43
-#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:50
+#: Miradi/source/org/miradi/questions/OpenStandardsProgressStatusQuestion.java:32
 msgid "Automatic"
 msgstr "自动的"
 
@@ -2706,7 +2705,7 @@ msgstr ""
 msgid "Comments"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:52
+#: Miradi/source/org/miradi/questions/OpenStandardsProgressStatusQuestion.java:35
 msgid "Complete"
 msgstr ""
 
@@ -4038,7 +4037,7 @@ msgstr ""
 msgid "In Front"
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:51
+#: Miradi/source/org/miradi/questions/OpenStandardsProgressStatusQuestion.java:34
 msgid "In Progress"
 msgstr ""
 
@@ -5068,8 +5067,7 @@ msgstr "否"
 msgid "No date range for date Unit = "
 msgstr ""
 
-#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:45
-#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:53
+#: Miradi/source/org/miradi/questions/OpenStandardsProgressStatusQuestion.java:36
 msgid "Not Applicable"
 msgstr ""
 
@@ -5099,7 +5097,7 @@ msgstr "无效的 "
 msgid "Not Specified"
 msgstr "未指定 \t\t"
 
-#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:44
+#: Miradi/source/org/miradi/questions/OpenStandardsProgressStatusQuestion.java:33
 msgid "Not Started"
 msgstr "未开始"
 
@@ -7916,7 +7914,7 @@ msgstr "下划线"
 msgid "Unexpected call to addListSelectionListener"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/AbstractQuestionBasedComponent.java:137
+#: Miradi/source/org/miradi/dialogfields/AbstractQuestionBasedComponent.java:143
 #: Miradi/source/org/miradi/dialogfields/FactorTagListEditor.java:75
 msgid "Unexpected call to getText"
 msgstr ""
@@ -7925,7 +7923,7 @@ msgstr ""
 msgid "Unexpected call to removeListSelectionListener"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/AbstractQuestionBasedComponent.java:143
+#: Miradi/source/org/miradi/dialogfields/AbstractQuestionBasedComponent.java:149
 #: Miradi/source/org/miradi/dialogfields/FactorTagListEditor.java:81
 msgid "Unexpected call to setText"
 msgstr ""
