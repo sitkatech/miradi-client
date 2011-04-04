@@ -62,6 +62,7 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.DynamicChoiceWithRootChoiceItem;
 import org.miradi.questions.OpenStandardsProgressStatusQuestion;
 import org.miradi.utils.FillerLabel;
+import org.miradi.wizard.WizardManager;
 
 import com.jhlabs.awt.GridLayoutPlus;
 
@@ -236,7 +237,8 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		AbstractJumpMenuAction action = getMainWindow().getActions().getJumpMenuAction(choiceItem.getCode());
 		if (action != null)
 		{
-			String stepName = getMainWindow().getWizardManager().stripJumpPrefix(action.getClass());
+			WizardManager wizardManager = getMainWindow().getWizardManager();
+			String stepName = wizardManager.stripJumpPrefix(action.getClass());
 			longDescriptionProvider.setWizardStepName(stepName);
 		}
 	}
