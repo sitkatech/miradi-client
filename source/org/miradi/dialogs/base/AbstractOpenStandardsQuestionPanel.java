@@ -123,6 +123,10 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		
 		// NOTE: Without this, first comment won't appear right away
 		doLayout();
+		
+		// NOTE: Without these, toggling between auto and its default blank out the dashboard
+		validate();
+		repaint();
 	}
 
 	private GridLayoutPlus createLayoutManager()
