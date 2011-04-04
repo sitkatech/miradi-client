@@ -49,6 +49,7 @@ import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
+import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.DiagramFactorFontSizeQuestion;
 import org.miradi.questions.DiagramFactorFontStyleQuestion;
 import org.miradi.questions.DiagramLegendQuestion;
@@ -102,7 +103,7 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 	private void verifyDynamicProgressCodesInSchema(String thirdLevelCode) throws Exception
 	{
 		Dashboard dashboard = getDashboard();
-		OpenStandardsDynamicProgressStatusQuestion question = new OpenStandardsDynamicProgressStatusQuestion(getProject().getDashboardStatusMapsCache(), thirdLevelCode);
+		ChoiceQuestion question = getProject().getQuestion(OpenStandardsDynamicProgressStatusQuestion.class);
 		CodeList allCodes = question.getAllCodes();
 		for (int index = 0; index < allCodes.size(); ++index)
 		{

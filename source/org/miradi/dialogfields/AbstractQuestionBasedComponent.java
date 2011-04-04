@@ -114,6 +114,12 @@ abstract public class AbstractQuestionBasedComponent extends AbstractDataValueLi
 		super.setEnabled(isValidObject);
 		disableCheckBoxes();
 	}
+	
+	public void setSingleButtonEnabled(ChoiceItem buttonChoice, boolean shouldBeEnabled)
+	{
+		JToggleButton button = choiceItemToToggleButtonMap.get(buttonChoice);
+		button.setEnabled(shouldBeEnabled);
+	}
 
 	private void disableCheckBoxes()
 	{

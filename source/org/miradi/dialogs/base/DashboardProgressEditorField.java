@@ -30,7 +30,9 @@ import org.miradi.objecthelpers.AbstractStringKeyMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.StringChoiceMap;
 import org.miradi.project.Project;
+import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.OpenStandardsDynamicProgressStatusQuestion;
 import org.miradi.utils.CodeList;
 
 public class DashboardProgressEditorField extends AbstractStringStringMapEditorField
@@ -44,6 +46,47 @@ public class DashboardProgressEditorField extends AbstractStringStringMapEditorF
 	protected QuestionBasedEditorComponent createCodeListEditor(ChoiceQuestion questionToUse, int columnCount)
 	{
 		return new RadioButtonEditorComponent(questionToUse);
+	}
+	
+	@Override
+	public void updateEditableState()
+	{
+		super.updateEditableState();
+
+		try
+		{
+
+			String calculatedState = getProject().getDashboardStatusMapsCache().getCalculatedStatusMap().get(getMapCode());
+
+			setRadioButtonEnabled(OpenStandardsDynamicProgressStatusQuestion.NOT_SPECIFIED_CODE, true);
+			setRadioButtonEnabled(OpenStandardsDynamicProgressStatusQuestion.NOT_APPLICABLE_CODE, true);
+
+			if(calculatedState.equals(OpenStandardsDynamicProgressStatusQuestion.NOT_STARTED_CODE))
+			{
+				setRadioButtonEnabled(OpenStandardsDynamicProgressStatusQuestion.NOT_STARTED_CODE, true);
+				setRadioButtonEnabled(OpenStandardsDynamicProgressStatusQuestion.IN_PROGRESS_CODE, false);
+				setRadioButtonEnabled(OpenStandardsDynamicProgressStatusQuestion.COMPLETE_CODE, false);
+			}
+			else
+			{
+				setRadioButtonEnabled(OpenStandardsDynamicProgressStatusQuestion.NOT_STARTED_CODE, false);
+				setRadioButtonEnabled(OpenStandardsDynamicProgressStatusQuestion.IN_PROGRESS_CODE, true);
+				setRadioButtonEnabled(OpenStandardsDynamicProgressStatusQuestion.COMPLETE_CODE, true);
+			}
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			setEditable(false);
+		}
+	}
+
+	private void setRadioButtonEnabled(String questionCode, boolean shouldBeEnabled)
+	{
+		RadioButtonEditorComponent radioButtons = (RadioButtonEditorComponent) getComponent();
+		ChoiceQuestion question = getProject().getQuestion(OpenStandardsDynamicProgressStatusQuestion.class);
+		ChoiceItem choice = question.findChoiceByCode(questionCode);
+		radioButtons.setSingleButtonEnabled(choice, shouldBeEnabled);
 	}
 	
 	@Override

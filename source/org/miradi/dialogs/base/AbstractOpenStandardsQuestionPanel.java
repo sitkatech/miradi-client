@@ -243,7 +243,7 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		flagIconField.getComponent().setBackground(getItemBackgroundColor(level));
 		addUpdatedCustomField(flagIconField);
 		
-		ChoiceQuestion progressStatusQuestion = new OpenStandardsDynamicProgressStatusQuestion(getProject().getDashboardStatusMapsCache(), choiceItem.getCode());
+		ChoiceQuestion progressStatusQuestion = getProject().getQuestion(OpenStandardsDynamicProgressStatusQuestion.class);
 		ObjectDataField statusIconField = new DashboardStatusIconField(getProject(), getDashboard().getRef(), choiceItem.getCode(), progressStatusQuestion);
 		statusIconField.getComponent().setBackground(getItemBackgroundColor(level));
 		addUpdatedCustomField(statusIconField);
