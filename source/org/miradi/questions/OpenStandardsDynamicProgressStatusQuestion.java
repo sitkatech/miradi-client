@@ -22,52 +22,21 @@ package org.miradi.questions;
 
 import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.DashboardStatusMapsCache;
 
-public class OpenStandardsDynamicProgressStatusQuestion extends DynamicChoiceQuestion
+public class OpenStandardsDynamicProgressStatusQuestion extends StaticChoiceQuestion
 {
-	public OpenStandardsDynamicProgressStatusQuestion(DashboardStatusMapsCache dashboardStatusMapCacheToUse, String thirdLevelCodeToUse)
-	{
-		dashboardStatusMapCache = dashboardStatusMapCacheToUse;
-		thirdLevelCode = thirdLevelCodeToUse;
-	}
-	
 	@Override
-	public ChoiceItem[] getChoices()
+	public ChoiceItem[] createChoices()
 	{
-		try
-		{
-			if (getThirdLevelValue().equals(NOT_STARTED_CODE))
-			{
-				return new ChoiceItem[] {
-						new ChoiceItem(NOT_SPECIFIED_CODE, EAM.text("Automatic"), IconManager.getOpenStandardsAutomaticIcon()),
-						new ChoiceItem(NOT_STARTED_CODE, EAM.text("Not Started"), IconManager.getHyphenIcon()),
-						new ChoiceItem(NOT_APPLICABLE_CODE, EAM.text("Not Applicable"), IconManager.getOpenStandardsNotApplicableIcon()),
-				};
-			}
-			
-			return new ChoiceItem[] {
+		return new ChoiceItem[] {
 					new ChoiceItem(NOT_SPECIFIED_CODE, EAM.text("Automatic"), IconManager.getOpenStandardsAutomaticIcon()),
+					new ChoiceItem(NOT_STARTED_CODE, EAM.text("Not Started"), IconManager.getHyphenIcon()),
 					new ChoiceItem(IN_PROGRESS_CODE, EAM.text("In Progress"), IconManager.getOpenStandardsInProgressIcon()),
 					new ChoiceItem(COMPLETE_CODE, EAM.text("Complete"), IconManager.getOpenStandardsCompleteIcon()),
 					new ChoiceItem(NOT_APPLICABLE_CODE, EAM.text("Not Applicable"), IconManager.getOpenStandardsNotApplicableIcon()),
 			};
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			return new ChoiceItem[0];
-		}
 	}
 
-	private String getThirdLevelValue() throws Exception
-	{
-		return dashboardStatusMapCache.getCalculatedStatusMap().get(thirdLevelCode);
-	}
-
-	private DashboardStatusMapsCache dashboardStatusMapCache;
-	private String thirdLevelCode;
-	
 	public static final String NOT_SPECIFIED_CODE = "";
 	public static final String NOT_STARTED_CODE = "1";
 	public static final String IN_PROGRESS_CODE = "2";
