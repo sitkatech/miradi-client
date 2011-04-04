@@ -26,7 +26,7 @@ import org.miradi.objecthelpers.DashboardStatusMapsCache;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.StringChoiceMap;
 import org.miradi.questions.OpenStandardsConceptualizeQuestion;
-import org.miradi.questions.OpenStandardsDynamicProgressStatusQuestion;
+import org.miradi.questions.OpenStandardsProgressStatusQuestion;
 import org.miradi.questions.OpenStandardsImplementActionsAndMonitoringQuestion;
 import org.miradi.utils.CodeList;
 
@@ -48,10 +48,10 @@ public class TestDashboardStatusMapsCache extends TestCaseWithProject
 	
 	public void testValidCalculatedStatusCacheWithData() throws Exception
 	{
-		verifyCalculatedStatusCode(OpenStandardsConceptualizeQuestion.IDENTIFY_DIRECT_THREATS_CODE, OpenStandardsDynamicProgressStatusQuestion.NOT_STARTED_CODE);
-		putUserChoice(OpenStandardsConceptualizeQuestion.IDENTIFY_DIRECT_THREATS_CODE, OpenStandardsDynamicProgressStatusQuestion.NOT_APPLICABLE_CODE);
+		verifyCalculatedStatusCode(OpenStandardsConceptualizeQuestion.IDENTIFY_DIRECT_THREATS_CODE, OpenStandardsProgressStatusQuestion.NOT_STARTED_CODE);
+		putUserChoice(OpenStandardsConceptualizeQuestion.IDENTIFY_DIRECT_THREATS_CODE, OpenStandardsProgressStatusQuestion.NOT_APPLICABLE_CODE);
 		getProject().createThreat();
-		verifyCalculatedStatusCode(OpenStandardsConceptualizeQuestion.IDENTIFY_DIRECT_THREATS_CODE, OpenStandardsDynamicProgressStatusQuestion.IN_PROGRESS_CODE);
+		verifyCalculatedStatusCode(OpenStandardsConceptualizeQuestion.IDENTIFY_DIRECT_THREATS_CODE, OpenStandardsProgressStatusQuestion.IN_PROGRESS_CODE);
 	}
 	
 	public void testValidCacheAfterProjectOpen() throws Exception
@@ -75,25 +75,25 @@ public class TestDashboardStatusMapsCache extends TestCaseWithProject
 	
 	public void testGetEffectiveStatusMapWithData() throws Exception
 	{
-		verifyTeamMemberEffectiveStatus(OpenStandardsDynamicProgressStatusQuestion.NOT_STARTED_CODE);
+		verifyTeamMemberEffectiveStatus(OpenStandardsProgressStatusQuestion.NOT_STARTED_CODE);
 		
 		getProject().createProjectResource();
-		verifyTeamMemberEffectiveStatus(OpenStandardsDynamicProgressStatusQuestion.IN_PROGRESS_CODE);
+		verifyTeamMemberEffectiveStatus(OpenStandardsProgressStatusQuestion.IN_PROGRESS_CODE);
 	}
 	
 	public void testGetEffectiveStatusMapWithOneOfTwoRowsHavingData() throws Exception
 	{
-		verifyEffectiveStatus(OpenStandardsConceptualizeQuestion.IDENTIFY_DIRECT_THREATS_CODE, OpenStandardsDynamicProgressStatusQuestion.NOT_STARTED_CODE);
+		verifyEffectiveStatus(OpenStandardsConceptualizeQuestion.IDENTIFY_DIRECT_THREATS_CODE, OpenStandardsProgressStatusQuestion.NOT_STARTED_CODE);
 		
 		getProject().createThreat();
-		verifyEffectiveStatus(OpenStandardsConceptualizeQuestion.IDENTIFY_DIRECT_THREATS_CODE, OpenStandardsDynamicProgressStatusQuestion.IN_PROGRESS_CODE);
+		verifyEffectiveStatus(OpenStandardsConceptualizeQuestion.IDENTIFY_DIRECT_THREATS_CODE, OpenStandardsProgressStatusQuestion.IN_PROGRESS_CODE);
 	}
 	
 	public void testGetEffectiveStatusMapWithUserData() throws Exception
 	{
 		getProject().createProjectResource();
-		putUserChoice(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE, OpenStandardsDynamicProgressStatusQuestion.COMPLETE_CODE);
-		verifyTeamMemberEffectiveStatus(OpenStandardsDynamicProgressStatusQuestion.COMPLETE_CODE);
+		putUserChoice(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE, OpenStandardsProgressStatusQuestion.COMPLETE_CODE);
+		verifyTeamMemberEffectiveStatus(OpenStandardsProgressStatusQuestion.COMPLETE_CODE);
 	}
 
 	private void verifyTeamMemberEffectiveStatus(String expectedCode) throws Exception
@@ -147,15 +147,15 @@ public class TestDashboardStatusMapsCache extends TestCaseWithProject
 	{
 		// NOTE: In a perfect world, an empty project would have all NOT STARTED values
 		// but for now, there are a few cases that are already IN PROGRESS
-		String progressCode = OpenStandardsDynamicProgressStatusQuestion.NOT_STARTED_CODE;
+		String progressCode = OpenStandardsProgressStatusQuestion.NOT_STARTED_CODE;
 		if (thirdLevelCode.equals(OpenStandardsImplementActionsAndMonitoringQuestion.ESTIMATE_COSTS_FOR_ACTIVITIES_AND_MONITORING_CODE))
-			progressCode = OpenStandardsDynamicProgressStatusQuestion.IN_PROGRESS_CODE;
+			progressCode = OpenStandardsProgressStatusQuestion.IN_PROGRESS_CODE;
 		
 		if (thirdLevelCode.equals(OpenStandardsImplementActionsAndMonitoringQuestion.DEVELOP_AND_SUBMIT_FUNDING_PROPOSALS_CODE))
-			progressCode = OpenStandardsDynamicProgressStatusQuestion.IN_PROGRESS_CODE;
+			progressCode = OpenStandardsProgressStatusQuestion.IN_PROGRESS_CODE;
 		
 		if (thirdLevelCode.equals(OpenStandardsConceptualizeQuestion.CREATE_INITIAL_CONCEPTUAL_MODEL_CODE))
-			progressCode = OpenStandardsDynamicProgressStatusQuestion.IN_PROGRESS_CODE;
+			progressCode = OpenStandardsProgressStatusQuestion.IN_PROGRESS_CODE;
 		
 		return progressCode;
 	}

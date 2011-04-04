@@ -30,7 +30,7 @@ import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
 import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
-import org.miradi.questions.OpenStandardsDynamicProgressStatusQuestion;
+import org.miradi.questions.OpenStandardsProgressStatusQuestion;
 import org.miradi.utils.CodeList;
 
 public class DashboardStatusMapsCache implements CommandExecutedListener
@@ -96,7 +96,7 @@ public class DashboardStatusMapsCache implements CommandExecutedListener
 			
 			String effectiveCode = getDashboardSingletonObject().getProgressChoiceMap().get(thirdLevelCode);
 			String calculatedCode = computeStatusCodeFromStatistics(rowDefinitions);
-			if (effectiveCode.equals(OpenStandardsDynamicProgressStatusQuestion.NOT_SPECIFIED_CODE))
+			if (effectiveCode.equals(OpenStandardsProgressStatusQuestion.NOT_SPECIFIED_CODE))
 				effectiveCode = calculatedCode;
 			
 			cachedEffectiveStatusMap.put(thirdLevelCode, effectiveCode);
@@ -123,7 +123,7 @@ public class DashboardStatusMapsCache implements CommandExecutedListener
 	private String getStatusCode(Collection<String> rawDataValues)
 	{
 		if (rawDataValues.isEmpty())
-			return OpenStandardsDynamicProgressStatusQuestion.NOT_STARTED_CODE;
+			return OpenStandardsProgressStatusQuestion.NOT_STARTED_CODE;
 		
 		int valuesWithDataCount = 0;
 		for (String rawData : rawDataValues)
@@ -133,9 +133,9 @@ public class DashboardStatusMapsCache implements CommandExecutedListener
 		}
 		
 		if (valuesWithDataCount == 0)
-			return OpenStandardsDynamicProgressStatusQuestion.NOT_STARTED_CODE;
+			return OpenStandardsProgressStatusQuestion.NOT_STARTED_CODE;
 			
-		return OpenStandardsDynamicProgressStatusQuestion.IN_PROGRESS_CODE;
+		return OpenStandardsProgressStatusQuestion.IN_PROGRESS_CODE;
 	}
 	
 	private DashboardRowDefinitionManager getDashboardRowDefinitionManager()

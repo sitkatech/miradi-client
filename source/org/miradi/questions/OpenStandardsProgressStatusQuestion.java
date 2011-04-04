@@ -23,7 +23,7 @@ package org.miradi.questions;
 import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
 
-public class OpenStandardsDynamicProgressStatusQuestion extends StaticChoiceQuestion
+public class OpenStandardsProgressStatusQuestion extends StaticChoiceQuestion
 {
 	@Override
 	public ChoiceItem[] createChoices()
