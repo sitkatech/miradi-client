@@ -139,6 +139,9 @@ public class TestDashboardStatusMapsCache extends TestCaseWithProject
 			if (thirdLevelCode.equals(OpenStandardsImplementActionsAndMonitoringQuestion.ESTIMATE_COSTS_FOR_ACTIVITIES_AND_MONITORING_CODE))
 				progressCode = OpenStandardsDynamicProgressStatusQuestion.IN_PROGRESS_CODE;
 			
+			if (thirdLevelCode.equals(OpenStandardsImplementActionsAndMonitoringQuestion.DEVELOP_AND_SUBMIT_FUNDING_PROPOSALS_CODE))
+				progressCode = OpenStandardsDynamicProgressStatusQuestion.IN_PROGRESS_CODE;
+			
 			if (thirdLevelCode.equals(OpenStandardsConceptualizeQuestion.CREATE_INITIAL_CONCEPTUAL_MODEL_CODE))
 				progressCode = OpenStandardsDynamicProgressStatusQuestion.IN_PROGRESS_CODE;
 			

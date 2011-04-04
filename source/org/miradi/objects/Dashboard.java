@@ -214,11 +214,11 @@ public class Dashboard extends BaseObject
 			if (fieldTag.equals(PSEUDO_TOTAL_PROJECT_EXPENSES))
 				return getTotalProjectExpenses();
 			
-			if (fieldTag.equals(PSEUDO_PROJECT_BUDGET))
-				return getProjectBudget();
-			
 			if (fieldTag.equals(PSEUDO_CURRENCY_SYMBOL))
 				return getCurrencySymbol();
+			
+			if (fieldTag.equals(PSEUDO_TOTAL_PROPOSED_BUDGET))
+				return getTotalProposedBudget();
 			
 			if (fieldTag.equals(PSEUDO_BUDGET_SECURED_PERCENT))
 				return getTotalBudgetSecuredPercent();
@@ -677,6 +677,11 @@ public class Dashboard extends BaseObject
 		
 		return objectsWithProgressReports;
 	}
+	
+	private String getTotalProposedBudget()
+	{
+		return getProject().getMetadata().getData(ProjectMetadata.TAG_TOTAL_BUDGET_FOR_FUNDING);
+	}
 
 	private String getTotalBudgetSecuredPercent()
 	{
@@ -698,14 +703,9 @@ public class Dashboard extends BaseObject
 		return getProject().getProjectTotalCalculator().calculateProjectTotals().calculateTotalBudgetCost();
 	}
 
-	private String getProjectBudget()
-	{
-		return getProject().getMetadata().getData(ProjectMetadata.TAG_TOTAL_BUDGET_FOR_FUNDING);
-	}
-
 	private String getCurrencySymbol()
 	{
-		return "\\" + getProject().getMetadata().getData(ProjectMetadata.TAG_CURRENCY_SYMBOL);
+		return getProject().getMetadata().getData(ProjectMetadata.TAG_CURRENCY_SYMBOL);
 	}
 
 	private String getMethodsCount()
@@ -1159,7 +1159,7 @@ public class Dashboard extends BaseObject
 		workPlanEndDate = new PseudoStringData(PSEUDO_WORK_PLAN_END_DATE);
 		totalProjectResourcesCost = new PseudoStringData(PSEUDO_TOTAL_PROJECT_RESOURCES_COSTS);
 		totalProjectExpenses = new PseudoStringData(PSEUDO_TOTAL_PROJECT_EXPENSES);
-		projectBudget = new PseudoStringData(PSEUDO_PROJECT_BUDGET);
+		projectBudget = new PseudoStringData(PSEUDO_TOTAL_PROPOSED_BUDGET);
 		currecnySymbol = new PseudoStringData(PSEUDO_CURRENCY_SYMBOL);
 		budgetSecuredPercent = new PseudoStringData(PSEUDO_BUDGET_SECURED_PERCENT);
 		strategiesAndActivitiesWithProgressReportCount = new PseudoStringData(PSEUDO_STRATEGIES_AND_ACTIVITIES_WITH_PROGRESS_REPORT_COUNT);
@@ -1233,7 +1233,7 @@ public class Dashboard extends BaseObject
 		addPresentationDataField(PSEUDO_WORK_PLAN_END_DATE, workPlanEndDate);
 		addPresentationDataField(PSEUDO_TOTAL_PROJECT_RESOURCES_COSTS, totalProjectResourcesCost);
 		addPresentationDataField(PSEUDO_TOTAL_PROJECT_EXPENSES, totalProjectExpenses);
-		addPresentationDataField(PSEUDO_PROJECT_BUDGET, projectBudget);
+		addPresentationDataField(PSEUDO_TOTAL_PROPOSED_BUDGET, projectBudget);
 		addPresentationDataField(PSEUDO_CURRENCY_SYMBOL, currecnySymbol);
 		addPresentationDataField(PSEUDO_BUDGET_SECURED_PERCENT, budgetSecuredPercent);
 		addPresentationDataField(PSEUDO_STRATEGIES_AND_ACTIVITIES_WITH_PROGRESS_REPORT_COUNT, strategiesAndActivitiesWithProgressReportCount);
@@ -1312,8 +1312,8 @@ public class Dashboard extends BaseObject
 	public static final String PSEUDO_WORK_PLAN_END_DATE = "WorkPlanEndDate";
 	public static final String PSEUDO_TOTAL_PROJECT_RESOURCES_COSTS = "TotalProjectResourcesCosts";
 	public static final String PSEUDO_TOTAL_PROJECT_EXPENSES = "TotalProjectExpenses";
-	public static final String PSEUDO_PROJECT_BUDGET = "ProjectBudget";
 	public static final String PSEUDO_CURRENCY_SYMBOL = "CurrencySymbo";
+	public static final String PSEUDO_TOTAL_PROPOSED_BUDGET = "TotalProposedBudget";
 	public static final String PSEUDO_BUDGET_SECURED_PERCENT = "BudgetSecuredPercent";
 	public static final String PSEUDO_STRATEGIES_AND_ACTIVITIES_WITH_PROGRESS_REPORT_COUNT = "StrategiesAndAcitivitiesWithProgressReportCount";
 	public static final String PSEUDO_STRATEGIES_AND_ACTIVITIES_WITH_PROGRESS_REPORT_PERCENT = "StrategiesAndActivitiesWithProgressReportPercent";

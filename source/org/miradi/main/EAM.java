@@ -354,7 +354,7 @@ public class EAM
 	
 	public static String substitute(String text, String token, String replacement)
 	{
-		return text.replaceAll(token, replacement);
+		return text.replace(token, replacement);
 	}
 
 	public static String fieldLabel(int objectType, String fieldTag)
