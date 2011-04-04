@@ -21,14 +21,17 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.base;
 
 import java.text.ParseException;
+import java.util.Vector;
 
 import org.miradi.dialogfields.AbstractStringStringMapEditorField;
 import org.miradi.dialogfields.QuestionBasedEditorComponent;
 import org.miradi.dialogfields.RadioButtonEditorComponent;
+import org.miradi.dialogs.dashboard.DashboardRowDefinition;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.AbstractStringKeyMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.StringChoiceMap;
+import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
@@ -55,20 +58,34 @@ public class DashboardProgressEditorField extends AbstractStringStringMapEditorF
 
 		try
 		{
-
+			boolean canBeCalculatedFromUserData = false;
+			ORef dashboardRef = getProject().getSingletonObjectRef(Dashboard.getObjectType());
+			Dashboard dashboard = Dashboard.find(getProject(), dashboardRef);
+			Vector<DashboardRowDefinition> rows = dashboard.getDashboardRowDefinitionManager().getRowDefinitions(getMapCode());
+			if(rows.size() > 0)
+				canBeCalculatedFromUserData = true;
+			
 			String calculatedState = getProject().getDashboardStatusMapsCache().getCalculatedStatusMap().get(getMapCode());
 
-			setRadioButtonEnabled(OpenStandardsProgressStatusQuestion.NOT_SPECIFIED_CODE, true);
 			setRadioButtonEnabled(OpenStandardsProgressStatusQuestion.NOT_APPLICABLE_CODE, true);
 
-			if(calculatedState.equals(OpenStandardsProgressStatusQuestion.NOT_STARTED_CODE))
+			if(!canBeCalculatedFromUserData)
 			{
+				setRadioButtonEnabled(OpenStandardsProgressStatusQuestion.NOT_SPECIFIED_CODE, false);
+				setRadioButtonEnabled(OpenStandardsProgressStatusQuestion.NOT_STARTED_CODE, true);
+				setRadioButtonEnabled(OpenStandardsProgressStatusQuestion.IN_PROGRESS_CODE, true);
+				setRadioButtonEnabled(OpenStandardsProgressStatusQuestion.COMPLETE_CODE, true);
+			}
+			else if(calculatedState.equals(OpenStandardsProgressStatusQuestion.NOT_STARTED_CODE))
+			{
+				setRadioButtonEnabled(OpenStandardsProgressStatusQuestion.NOT_SPECIFIED_CODE, true);
 				setRadioButtonEnabled(OpenStandardsProgressStatusQuestion.NOT_STARTED_CODE, true);
 				setRadioButtonEnabled(OpenStandardsProgressStatusQuestion.IN_PROGRESS_CODE, false);
 				setRadioButtonEnabled(OpenStandardsProgressStatusQuestion.COMPLETE_CODE, false);
 			}
 			else
 			{
+				setRadioButtonEnabled(OpenStandardsProgressStatusQuestion.NOT_SPECIFIED_CODE, true);
 				setRadioButtonEnabled(OpenStandardsProgressStatusQuestion.NOT_STARTED_CODE, false);
 				setRadioButtonEnabled(OpenStandardsProgressStatusQuestion.IN_PROGRESS_CODE, true);
 				setRadioButtonEnabled(OpenStandardsProgressStatusQuestion.COMPLETE_CODE, true);
