@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-04 11:02-0500\n"
+"POT-Creation-Date: 2011-04-04 11:38-0500\n"
 "PO-Revision-Date: 2011-03-27 19:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -2502,8 +2502,7 @@ msgid "Aug"
 msgstr "Ago"
 
 #: Miradi/source/org/miradi/questions/TableRowHeightModeQuestion.java:38
-#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:43
-#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:50
+#: Miradi/source/org/miradi/questions/OpenStandardsProgressStatusQuestion.java:32
 msgid "Automatic"
 msgstr "Automatico"
 
@@ -2914,7 +2913,7 @@ msgstr ""
 msgid "Comments"
 msgstr "Commenti"
 
-#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:52
+#: Miradi/source/org/miradi/questions/OpenStandardsProgressStatusQuestion.java:35
 msgid "Complete"
 msgstr ""
 
@@ -4283,7 +4282,7 @@ msgstr ""
 msgid "In Front"
 msgstr "Davanti"
 
-#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:51
+#: Miradi/source/org/miradi/questions/OpenStandardsProgressStatusQuestion.java:34
 msgid "In Progress"
 msgstr ""
 
@@ -5350,8 +5349,7 @@ msgstr "NO"
 msgid "No date range for date Unit = "
 msgstr "Nessun intervallo di data per l'unità data = "
 
-#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:45
-#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:53
+#: Miradi/source/org/miradi/questions/OpenStandardsProgressStatusQuestion.java:36
 msgid "Not Applicable"
 msgstr ""
 
@@ -5381,7 +5379,7 @@ msgstr "Non efficace"
 msgid "Not Specified"
 msgstr "NOn specificato"
 
-#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:44
+#: Miradi/source/org/miradi/questions/OpenStandardsProgressStatusQuestion.java:33
 msgid "Not Started"
 msgstr ""
 
@@ -8302,7 +8300,7 @@ msgstr "Sottolineato"
 msgid "Unexpected call to addListSelectionListener"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/AbstractQuestionBasedComponent.java:137
+#: Miradi/source/org/miradi/dialogfields/AbstractQuestionBasedComponent.java:143
 #: Miradi/source/org/miradi/dialogfields/FactorTagListEditor.java:75
 msgid "Unexpected call to getText"
 msgstr "Chiamata inaspettata al getText"
@@ -8311,7 +8309,7 @@ msgstr "Chiamata inaspettata al getText"
 msgid "Unexpected call to removeListSelectionListener"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/AbstractQuestionBasedComponent.java:143
+#: Miradi/source/org/miradi/dialogfields/AbstractQuestionBasedComponent.java:149
 #: Miradi/source/org/miradi/dialogfields/FactorTagListEditor.java:81
 msgid "Unexpected call to setText"
 msgstr "Chiamata inaspettata al setText"

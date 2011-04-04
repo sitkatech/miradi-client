@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-04 11:02-0500\n"
+"POT-Creation-Date: 2011-04-04 11:38-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -2399,8 +2399,7 @@ msgid "Aug"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/TableRowHeightModeQuestion.java:38
-#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:43
-#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:50
+#: Miradi/source/org/miradi/questions/OpenStandardsProgressStatusQuestion.java:32
 msgid "Automatic"
 msgstr "Manual"
 
@@ -2807,7 +2806,7 @@ msgstr ""
 msgid "Comments"
 msgstr "Komentar "
 
-#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:52
+#: Miradi/source/org/miradi/questions/OpenStandardsProgressStatusQuestion.java:35
 msgid "Complete"
 msgstr ""
 
@@ -4174,7 +4173,7 @@ msgstr ""
 msgid "In Front"
 msgstr "Di Depan "
 
-#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:51
+#: Miradi/source/org/miradi/questions/OpenStandardsProgressStatusQuestion.java:34
 msgid "In Progress"
 msgstr ""
 
@@ -5236,8 +5235,7 @@ msgstr "Tidak"
 msgid "No date range for date Unit = "
 msgstr "Tidak ada rangkaian tanggal untuk Unit tanggal = "
 
-#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:45
-#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:53
+#: Miradi/source/org/miradi/questions/OpenStandardsProgressStatusQuestion.java:36
 msgid "Not Applicable"
 msgstr ""
 
@@ -5267,7 +5265,7 @@ msgstr "Tidak Efektif"
 msgid "Not Specified"
 msgstr "Tidak Terspesifikasi "
 
-#: Miradi/source/org/miradi/questions/OpenStandardsDynamicProgressStatusQuestion.java:44
+#: Miradi/source/org/miradi/questions/OpenStandardsProgressStatusQuestion.java:33
 msgid "Not Started"
 msgstr "Tidak Dimulai"
 
@@ -8164,7 +8162,7 @@ msgstr "Garis Bawah"
 msgid "Unexpected call to addListSelectionListener"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/AbstractQuestionBasedComponent.java:137
+#: Miradi/source/org/miradi/dialogfields/AbstractQuestionBasedComponent.java:143
 #: Miradi/source/org/miradi/dialogfields/FactorTagListEditor.java:75
 msgid "Unexpected call to getText"
 msgstr "Panggilan tak terduga ke getText "
@@ -8173,7 +8171,7 @@ msgstr "Panggilan tak terduga ke getText "
 msgid "Unexpected call to removeListSelectionListener"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/AbstractQuestionBasedComponent.java:143
+#: Miradi/source/org/miradi/dialogfields/AbstractQuestionBasedComponent.java:149
 #: Miradi/source/org/miradi/dialogfields/FactorTagListEditor.java:81
 msgid "Unexpected call to setText"
 msgstr "Panggilan tak terduga ke setText "
