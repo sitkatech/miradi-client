@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objects;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Vector;
@@ -453,7 +454,7 @@ public class Dashboard extends BaseObject
 
 	private String getIndicatorsWithDesiredFutureStatusSpecifiedPercentage()
 	{
-		Indicator[] indicators = getProject().getIndicatorPool().getAllIndicators();
+		Indicator[] indicators = getAllActiveIndicators();
 		ORefSet indicatorsWithFutureStatusSpecified = new ORefSet();
 		for (int index = 0; index < indicators.length; ++index)
 		{
@@ -568,7 +569,7 @@ public class Dashboard extends BaseObject
 
 	private String getIndicatorsIrrelevantToObjectivesPercentage() throws Exception
 	{
-		ORefSet indicatorRefs = getProject().getIndicatorPool().getRefSet();
+		ORefSet indicatorRefs = getAllActiveIndicatorRefs();
 		ORefSet indicatorsRelevantToObjectives = getIndicatorsRelevantToObjectives();
 		ORefSet indicatorsIrrelevantToObjectives = new ORefSet(indicatorRefs);
 		indicatorsIrrelevantToObjectives.removeAll(indicatorsRelevantToObjectives);
@@ -580,7 +581,7 @@ public class Dashboard extends BaseObject
 	{
 		ORefSet indicatorsRelevantToObjectives = getIndicatorsRelevantToObjectives();
 		
-		return calculatePercentage(indicatorsRelevantToObjectives.size(), getProject().getIndicatorPool().size());
+		return calculatePercentage(indicatorsRelevantToObjectives.size(), getAllActiveIndicators().length);
 	}
 
 	private ORefSet getIndicatorsRelevantToObjectives() throws Exception
@@ -591,7 +592,13 @@ public class Dashboard extends BaseObject
 		{
 			Objective objective = Objective.find(getProject(), objectiveRef);
 			ORefList relevantIndicatorRefs = objective.getRelevantIndicatorRefList();
-			indicatorsRelevantToObjectives.addAllRefs(relevantIndicatorRefs);
+			for(int index = 0; index < relevantIndicatorRefs.size(); ++index)
+			{
+				ORef indicatorRef = relevantIndicatorRefs.get(index);
+				Indicator indicator = Indicator.find(getProject(), indicatorRef);
+				if(indicator.isActive())
+					indicatorsRelevantToObjectives.add(indicatorRef);
+			}
 		}
 		
 		return indicatorsRelevantToObjectives;
@@ -628,12 +635,29 @@ public class Dashboard extends BaseObject
 	private Vector<BaseObject> getAllIndicatorsAndMethods()
 	{
 		Vector<BaseObject> baseObjects = new Vector<BaseObject>();
-		baseObjects.addAll(getProject().getIndicatorPool().getAllObjects());
+		baseObjects.addAll(Arrays.asList(getAllActiveIndicators()));
 		baseObjects.addAll(getProject().getTaskPool().getAllMethods());
 		
 		return baseObjects;
 	}
+
+	private Indicator[] getAllActiveIndicators()
+	{
+		Indicator[] allIndicators = getProject().getIndicatorPool().getAllIndicators();
+		Vector<Indicator> activeIndicators = new Vector<Indicator>();
+		for(int index = 0; index < allIndicators.length; ++index)
+		{
+			if(allIndicators[index].isActive())
+				activeIndicators.add(allIndicators[index]);
+		}
+		return activeIndicators.toArray(new Indicator[0]);
+	}
 	
+	private ORefSet getAllActiveIndicatorRefs()
+	{
+		return new ORefSet(getAllActiveIndicators());
+	}
+
 	private Vector<BaseObject> getIndicatorsAndMethodsWithProgressReports() throws Exception
 	{
 		return getBaseObjectsWithProgressReports(getAllIndicatorsAndMethods());
@@ -716,7 +740,7 @@ public class Dashboard extends BaseObject
 
 	private String getIndicatorsWithMethodsCount()
 	{
-		ORefSet indicatorRefs = getProject().getIndicatorPool().getRefSet();
+		ORefSet indicatorRefs = getAllActiveIndicatorRefs();
 		ORefSet indicatorsWithMethods = new ORefSet();
 		for (ORef indicatorRef : indicatorRefs)
 		{
@@ -798,7 +822,7 @@ public class Dashboard extends BaseObject
 	private String getFactorIndicatorCount()
 	{
 		ORefSet keaIndicatorRefs = getKeaIndicatorRefs();
-		ORefSet allIndicatorRefs = getProject().getIndicatorPool().getRefSet();
+		ORefSet allIndicatorRefs = getAllActiveIndicatorRefs();
 		allIndicatorRefs.removeAll(keaIndicatorRefs);
 		
 		return Integer.toString(allIndicatorRefs.size());
@@ -818,7 +842,8 @@ public class Dashboard extends BaseObject
 		for (int index = 0; index < keas.length; ++index)
 		{
 			KeyEcologicalAttribute kea = keas[index];
-			keaIndicatorRefs.addAllRefs(kea.getIndicatorRefs());
+			if(kea.isActive())
+				keaIndicatorRefs.addAllRefs(kea.getIndicatorRefs());
 		}
 		return keaIndicatorRefs;
 	}
