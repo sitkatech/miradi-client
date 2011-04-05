@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-04 11:38-0500\n"
+"POT-Creation-Date: 2011-04-04 20:25-0500\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -3537,7 +3537,7 @@ msgstr "Ангилахад алдаа"
 msgid "Error Occurred please try saving under different name."
 msgstr "Алдаа гарсан тул өөр нэр өгч хадгалах."
 
-#: Miradi/source/org/miradi/objects/Dashboard.java:300
+#: Miradi/source/org/miradi/objects/Dashboard.java:301
 msgid "Error Retrieving Data"
 msgstr ""
 
