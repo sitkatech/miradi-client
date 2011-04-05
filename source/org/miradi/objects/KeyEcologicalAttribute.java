@@ -145,6 +145,13 @@ public class KeyEcologicalAttribute extends BaseObject
 		return TNCViabilityFormula.getAverageRatingCode(statuses);
 	}
 	
+	public boolean isActive()
+	{
+		ORef targetRef = getOwnerRef();
+		AbstractTarget target = AbstractTarget.findTarget(getProject(), targetRef);
+		return target.isViabilityModeTNC();
+	}
+
 	@Override
 	public String getShortLabel()
 	{
