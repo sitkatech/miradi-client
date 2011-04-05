@@ -129,7 +129,16 @@ abstract public class Factor extends BaseObject
 
 	public IdList getOnlyDirectIndicatorIds()
 	{
-		return indicators.getIdList();
+		IdList rawDirectIndicatorIds = indicators.getIdList();
+		ORefList activeIndicatorRefs = new ORefList();
+		for(int index = 0; index < rawDirectIndicatorIds.size(); ++index)
+		{
+			ORef indicatorRef = new ORef(Indicator.getObjectType(), rawDirectIndicatorIds.get(index));
+			Indicator indicator = Indicator.find(getObjectManager(), indicatorRef);
+			if(indicator.isActive())
+				activeIndicatorRefs.add(indicatorRef);
+		}
+		return activeIndicatorRefs.convertToIdList(Indicator.getObjectType());
 	}
 	
 	public ORefList getOnlyDirectIndicatorRefs()
