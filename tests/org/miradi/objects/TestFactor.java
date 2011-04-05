@@ -75,21 +75,15 @@ public class TestFactor extends TestCaseWithProject
 
 	public void testJson() throws Exception
 	{
-		IdList objectives = new IdList(Objective.getObjectType());
-		objectives.add(new BaseId(7));
-		objectives.add(new BaseId(9));
-		
-		IdList indicators = new IdList(Indicator.getObjectType());
-		indicators.add(new BaseId(23));
-		indicators.add(new BaseId(422));
-
-		FactorId factorId = new FactorId(2342);
-		Cause factor = new Cause(getObjectManager(), factorId);
+		Factor factor = getProject().createStrategy();
 		factor.setData(BaseObject.TAG_LABEL, "JustAName");
 		factor.setComment("This is a great comment");
-		factor.setIndicators(indicators);
-		factor.setObjectives(objectives);
-		Cause got = (Cause)Factor.createFromJson(getObjectManager(), factor.getType(), factor.toJson());
+		getProject().createIndicator(factor);
+		getProject().createIndicator(factor);
+		getProject().createObjective(factor);
+		getProject().createObjective(factor);
+
+		Factor got = (Factor)Factor.createFromJson(getObjectManager(), factor.getType(), factor.toJson());
 		assertEquals("wrong type?", factor.getNodeType(), got.getNodeType());
 		assertEquals("wrong id?", factor.getId(), got.getId());
 		assertEquals("wrong name?", factor.getLabel(), got.getLabel());
