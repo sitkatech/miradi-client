@@ -166,6 +166,30 @@ public class Indicator extends BaseObject
 		return super.getPseudoData(fieldTag);
 	}
 
+	public boolean isActive()
+	{
+		ORef ownerRef = getOwnerRef();
+		if(KeyEcologicalAttribute.is(ownerRef))
+			return isOwningKeyEcologicalAttributeActive(ownerRef);
+		
+		if(AbstractTarget.isAbstractTarget(ownerRef))
+			return isOwningTargetInSimpleMode(ownerRef);
+		
+		return true;
+	}
+
+	private boolean isOwningKeyEcologicalAttributeActive(ORef keaRef)
+	{
+		KeyEcologicalAttribute kea = KeyEcologicalAttribute.find(getObjectManager(), keaRef);
+		return kea.isActive();
+	}
+
+	private boolean isOwningTargetInSimpleMode(ORef targetRef)
+	{
+		AbstractTarget target = AbstractTarget.findTarget(getProject(), targetRef);
+		return !target.isViabilityModeTNC();
+	}
+
 	public String getCurrentStatus()
 	{
 		ORef measurementRef = getLatestMeasurementRef();
