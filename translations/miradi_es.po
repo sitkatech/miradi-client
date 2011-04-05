@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-04 11:38-0500\n"
+"POT-Creation-Date: 2011-04-04 20:25-0500\n"
 "PO-Revision-Date: 2011-03-28 15:06-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -3492,7 +3492,7 @@ msgstr ""
 msgid "Error Occurred please try saving under different name."
 msgstr "Se produjo un error. Intente grabar con un nombre diferente."
 
-#: Miradi/source/org/miradi/objects/Dashboard.java:300
+#: Miradi/source/org/miradi/objects/Dashboard.java:301
 msgid "Error Retrieving Data"
 msgstr ""
 
