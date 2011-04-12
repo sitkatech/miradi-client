@@ -46,5 +46,6 @@ public class IndicatorObjectSchemaElement extends BaseObjectSchemaElementWithLab
 		createOptionalThresholdsField();
 		createOptionalCodeField(Indicator.TAG_RATING_SOURCE, XmlSchemaCreator.VOCABULARY_RATING_SOURCE);
 		createOptionalTextField(Indicator.TAG_VIABILITY_RATINGS_COMMENTS);
+		createOptionalCalculatedTimePeriodCosts();
 	}
 }

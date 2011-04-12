@@ -41,5 +41,6 @@ public class StrategyObjectSchemaElement extends FactorObjectSchemaElement
 		createOptionalIdListField(XmpzXmlConstants.EXPENSE_IDS, XmlSchemaCreator.EXPENSE_ASSIGNMENT_ID_ELEMENT_NAME);
 		createOptionalIdListField(Strategy.TAG_RESOURCE_ASSIGNMENT_IDS, XmlSchemaCreator.RESOURCE_ASSIGNMENT_ID_ELEMENT_NAME);
 		createOptionalIdListField(Factor.TAG_INDICATOR_IDS, INDICATOR_TYPE_NAME);
+		createOptionalCalculatedTimePeriodCosts();
 	}
 }

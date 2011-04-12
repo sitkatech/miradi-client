@@ -63,6 +63,12 @@ class ObjectSchemaElement extends SchemaElement
 		fields.add(field);
 	}
 	
+	protected void createOptionalCalculatedTimePeriodCosts()
+	{
+		FieldSchemaElement field = new CalculatedTimePeriodCostsSchemaElement(getObjectTypeName());
+		fields.add(field);
+	}
+	
 	protected void createDateUnitEffortsField(String fieldNameToUse)
 	{
 		FieldSchemaElement field = new DateUnitEffortsFieldSchemaElement(getObjectTypeName(), fieldNameToUse);

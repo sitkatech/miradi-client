@@ -33,6 +33,7 @@ abstract public class AbstractTaskObjectSchemaElement extends FactorObjectSchema
 		createOptionalIdListField(Task.TAG_RESOURCE_ASSIGNMENT_IDS, XmlSchemaCreator.RESOURCE_ASSIGNMENT_ID_ELEMENT_NAME);
 		createOptionalIdListField(XmpzXmlConstants.PROGRESS_REPORT_IDS, XmlSchemaCreator.PROGRESS_REPORT_ID_ELEMENT_NAME);
 		createOptionalIdListField(XmpzXmlConstants.SUB_TASK_IDS, XmlSchemaCreator.SUB_TASK);
+		createOptionalCalculatedTimePeriodCosts();
 	}
 	
 	@Override
