@@ -203,6 +203,7 @@ public interface XmpzXmlConstants
 	public static final String CALCULATED_END_DATE = "CalculatedEndDate";
 	public static final String CALCULATED_EXPENSE_ENTRIES = "CalculatedExpenseEntries";
 	public static final String CALCULATED_WORK_UNITS_ENTRIES = "CalculatedWorkUnitsEntries";
+	public static final String DETAILS = "Details";
 	
 	public static final String DELETED_ORPHANS_ELEMENT_NAME = "DeletedOrphans";
 }
