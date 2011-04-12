@@ -196,6 +196,13 @@ public interface XmpzXmlConstants
 	public static final String TIME_PERIOD_COSTS = "TimePeriodCosts";
 	public static final String EXPENSE_ENTRY = "ExpenseEntry";
 	public static final String WORK_UNITS_ENTRY = "WorkUnitsEntry";
+	public static final String CALCULATED_EXPENSE_TOTAL = "CalculatedExpenseTotal";
+	public static final String CALCULATED_WORK_UNITS_TOTAL = "CalculatedWorkUnitsTotal";
+	public static final String CALCULATED_WHO = "CalculatedWho";
+	public static final String CALCULATED_START_DATE = "CalculatedStartDate";
+	public static final String CALCULATED_END_DATE = "CalculatedEndDate";
+	public static final String CALCULATED_EXPENSE_ENTRIES = "CalculatedExpenseEntries";
+	public static final String CALCULATED_WORK_UNITS_ENTRIES = "CalculatedWorkUnitsEntries";
 	
 	public static final String DELETED_ORPHANS_ELEMENT_NAME = "DeletedOrphans";
 }
