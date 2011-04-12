@@ -274,6 +274,9 @@ public class XmlSchemaCreator implements XmpzXmlConstants
 		defineWorkUnitsMonthElement(writer);
 		defineWorkUnitsDayElement(writer);
 		defineThresholdsElement(writer);
+		defineTimePeriodCostsElement(writer);
+		defineExpenseEntryElement(writer);
+		defineWorkUnitsEntryElement(writer);
 		
 		defineDateUnitExpense(writer);
 		defineExpenseFullProjectTimeSpanElement(writer);
@@ -464,6 +467,46 @@ public class XmlSchemaCreator implements XmpzXmlConstants
 	private void defineWorkUnitsDayElement(SchemaWriter writer)
 	{
 		defineDayElement(writer, "WorkUnitsDay");
+	}
+	
+	private void defineTimePeriodCostsElement(SchemaWriter writer)
+	{
+		writer.defineAlias(TIME_PERIOD_COSTS + ".element", "element " + XmpzXmlConstants.PREFIX + TIME_PERIOD_COSTS);
+		writer.startBlock();
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + "CalculatedExpenseTotal" + "{ xsd:decimal } &");
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + "CalculatedWorkUnitsTotal" + "{ xsd:decimal } &");
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + "CalculatedWho" + "{ ResourceId.element* }? &");
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + "CalculatedStartDate" + "{ vocabulary_date } &");
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + "CalculatedEndDate" + "{ vocabulary_date } &");
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + "CalculatedExpenseEntries" + "{ ExpenseEntry.element* } &");
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + "CalculatedWorkUnitsEntries" + "{ WorkUnitsEntry.element* }");
+		writer.endBlock();
+	}
+	
+	private void defineExpenseEntryElement(SchemaWriter writer)
+	{
+		writer.defineAlias(EXPENSE_ENTRY + ".element", "element " + XmpzXmlConstants.PREFIX + EXPENSE_ENTRY);
+		writer.startBlock();
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + "ExpenseEntryName" + "{ text }? &");
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + "ExpenseEntryFundingSourceId" + "{ FundingSourceId.element }? &");
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + "ExpenseEntryAccountingCodeId" + "{ AccountingCodeId.element }? &");
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + "ExpenseEntryBudgetCategoryOneId" + "{ BudgetCategoryOneId.element }? &");
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + "ExpenseEntryBudgetCategoryTwoId" + "{ BudgetCategoryTwoId.element }? &");
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + "ExpenseEntryDetails" + "{ DateUnitExpense.element* }?");
+		writer.endBlock();
+	}
+	
+	private void defineWorkUnitsEntryElement(SchemaWriter writer)
+	{
+		writer.defineAlias(WORK_UNITS_ENTRY + ".element", "element " + XmpzXmlConstants.PREFIX + WORK_UNITS_ENTRY);
+		writer.startBlock();
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + "WorkUnitsEntryResourceId" + "{ ResourceId.element }? &");
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + "WorkUnitsEntryFundingSourceId" + "{ FundingSourceId.element }? &");
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + "WorkUnitsEntryAccountingCodeId" + "{ AccountingCodeId.element }? &");
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + "WorkUnitsEntryBudgetCategoryOneId" + "{ BudgetCategoryOneId.element }? &");
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + "WorkUnitsEntryBudgetCategoryTwoId" + "{ BudgetCategoryTwoId.element }? &");
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + "WorkUnitsEntryDetails" + "{ DateUnitWorkUnits.element* }?");
+		writer.endBlock();
 	}
 	
 	private void defineThresholdsElement(SchemaWriter writer)
