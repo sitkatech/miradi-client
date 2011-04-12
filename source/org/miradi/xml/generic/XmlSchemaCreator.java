@@ -487,12 +487,12 @@ public class XmlSchemaCreator implements XmpzXmlConstants
 	{
 		writer.defineAlias(EXPENSE_ENTRY + ".element", "element " + XmpzXmlConstants.PREFIX + EXPENSE_ENTRY);
 		writer.startBlock();
-		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + "ExpenseEntryName" + "{ text }? &");
-		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + "ExpenseEntryFundingSourceId" + "{ FundingSourceId.element }? &");
-		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + "ExpenseEntryAccountingCodeId" + "{ AccountingCodeId.element }? &");
-		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + "ExpenseEntryBudgetCategoryOneId" + "{ BudgetCategoryOneId.element }? &");
-		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + "ExpenseEntryBudgetCategoryTwoId" + "{ BudgetCategoryTwoId.element }? &");
-		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + "ExpenseEntryDetails" + "{ DateUnitExpense.element* }?");
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + EXPENSE_ENTRY + "Name" + "{ text }? &");
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + EXPENSE_ENTRY + "FundingSourceId" + "{ FundingSourceId.element }? &");
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + EXPENSE_ENTRY + "AccountingCodeId" + "{ AccountingCodeId.element }? &");
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + EXPENSE_ENTRY + "BudgetCategoryOneId" + "{ BudgetCategoryOneId.element }? &");
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + EXPENSE_ENTRY + "BudgetCategoryTwoId" + "{ BudgetCategoryTwoId.element }? &");
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + EXPENSE_ENTRY + "Details" + "{ DateUnitExpense.element* }?");
 		writer.endBlock();
 	}
 	
@@ -500,12 +500,12 @@ public class XmlSchemaCreator implements XmpzXmlConstants
 	{
 		writer.defineAlias(WORK_UNITS_ENTRY + ".element", "element " + XmpzXmlConstants.PREFIX + WORK_UNITS_ENTRY);
 		writer.startBlock();
-		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + "WorkUnitsEntryResourceId" + "{ ResourceId.element }? &");
-		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + "WorkUnitsEntryFundingSourceId" + "{ FundingSourceId.element }? &");
-		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + "WorkUnitsEntryAccountingCodeId" + "{ AccountingCodeId.element }? &");
-		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + "WorkUnitsEntryBudgetCategoryOneId" + "{ BudgetCategoryOneId.element }? &");
-		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + "WorkUnitsEntryBudgetCategoryTwoId" + "{ BudgetCategoryTwoId.element }? &");
-		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + "WorkUnitsEntryDetails" + "{ DateUnitWorkUnits.element* }?");
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + WORK_UNITS_ENTRY + "ResourceId" + "{ ResourceId.element }? &");
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + WORK_UNITS_ENTRY + "FundingSourceId" + "{ FundingSourceId.element }? &");
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + WORK_UNITS_ENTRY + "AccountingCodeId" + "{ AccountingCodeId.element }? &");
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + WORK_UNITS_ENTRY + "BudgetCategoryOneId" + "{ BudgetCategoryOneId.element }? &");
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + WORK_UNITS_ENTRY + "BudgetCategoryTwoId" + "{ BudgetCategoryTwoId.element }? &");
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + WORK_UNITS_ENTRY + "Details" + "{ DateUnitWorkUnits.element* }?");
 		writer.endBlock();
 	}
 	
