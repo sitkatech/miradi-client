@@ -473,13 +473,13 @@ public class XmlSchemaCreator implements XmpzXmlConstants
 	{
 		writer.defineAlias(TIME_PERIOD_COSTS + ".element", "element " + XmpzXmlConstants.PREFIX + TIME_PERIOD_COSTS);
 		writer.startBlock();
-		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + "CalculatedExpenseTotal" + "{ xsd:decimal } &");
-		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + "CalculatedWorkUnitsTotal" + "{ xsd:decimal } &");
-		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + "CalculatedWho" + "{ ResourceId.element* }? &");
-		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + "CalculatedStartDate" + "{ vocabulary_date } &");
-		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + "CalculatedEndDate" + "{ vocabulary_date } &");
-		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + "CalculatedExpenseEntries" + "{ ExpenseEntry.element* } &");
-		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + "CalculatedWorkUnitsEntries" + "{ WorkUnitsEntry.element* }");
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + CALCULATED_EXPENSE_TOTAL + "{ xsd:decimal } &");
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + CALCULATED_WORK_UNITS_TOTAL + "{ xsd:decimal } &");
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + CALCULATED_WHO + "{ ResourceId.element* }? &");
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + CALCULATED_START_DATE + "{ vocabulary_date } &");
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + CALCULATED_END_DATE + "{ vocabulary_date } &");
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + CALCULATED_EXPENSE_ENTRIES + "{ ExpenseEntry.element* }? &");
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + CALCULATED_WORK_UNITS_ENTRIES + "{ WorkUnitsEntry.element* }?");
 		writer.endBlock();
 	}
 	
