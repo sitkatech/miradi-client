@@ -116,8 +116,7 @@ public class StrategyPoolExporter extends FactorPoolExporter
 			exportId(categorizedQuantity.getAccountingCodeRef(), WORK_UNITS_ENTRY, ACCOUNTING_CODE_ID);
 			exportId(categorizedQuantity.getCategoryOneRef(), WORK_UNITS_ENTRY, BUDGET_CATEGORY_ONE_ID);
 			exportId(categorizedQuantity.getCategoryTwoRef(), WORK_UNITS_ENTRY, BUDGET_CATEGORY_TWO_ID);
-			
-			//FIXME urgent - Needs to export details
+			new WorkUnitsEntryWriter(getWcsXmlExporter()).writeEffortDetails(WORK_UNITS_ENTRY + DETAILS, dateUnit, categorizedQuantity.getQuantity().getValue());
 			
 			getWcsXmlExporter().writeEndElement(WORK_UNITS_ENTRY);
 		}
