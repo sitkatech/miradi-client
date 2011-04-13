@@ -478,8 +478,8 @@ public class XmlSchemaCreator implements XmpzXmlConstants
 		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + CALCULATED_WHO + "{ ResourceId.element* }? &");
 		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + CALCULATED_START_DATE + "{ vocabulary_date } &");
 		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + CALCULATED_END_DATE + "{ vocabulary_date } &");
-		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + CALCULATED_EXPENSE_ENTRIES + "{ ExpenseEntry.element* }? &");
-		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + CALCULATED_WORK_UNITS_ENTRIES + "{ WorkUnitsEntry.element* }?");
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + CALCULATED_EXPENSE_ENTRIES + "{ " + EXPENSE_ENTRY + ".element* }? &");
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + CALCULATED_WORK_UNITS_ENTRIES + "{ " + WORK_UNITS_ENTRY + ".element* }?");
 		writer.endBlock();
 	}
 	
