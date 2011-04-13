@@ -209,7 +209,7 @@ public class TimePeriodCostsMap
 		return false;
 	}
 
-	private HashMap<DateUnit, TimePeriodCosts> getDateUnitTimePeriodCostsMap()
+	public HashMap<DateUnit, TimePeriodCosts> getDateUnitTimePeriodCostsMap()
 	{
 		return new HashMap<DateUnit, TimePeriodCosts>(data);
 	}

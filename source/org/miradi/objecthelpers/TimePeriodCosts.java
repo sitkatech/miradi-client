@@ -385,6 +385,16 @@ public class TimePeriodCosts
 		return getTotalWorkUnits().hasValue();
 	}
 	
+	public Vector<CategorizedQuantity> getWorkUnitCategorizedQuantities()
+	{
+		return new Vector<CategorizedQuantity>(workUnitCategorizedQuantities);
+	}
+	
+	public Vector<CategorizedQuantity> getExpensesCategorizedQuantities()
+	{
+		return new Vector<CategorizedQuantity>(expensesCategorizedQuantities);
+	}
+	
 	private OptionalDouble totalExpenses;
 	private OptionalDouble totalWorkUnits;
 	

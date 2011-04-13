@@ -146,6 +146,26 @@ public class CategorizedQuantity
 		return "rsourceRef=" + resourceRef + " fundingSourceRef=" + fundingSourceRef + " accountingCodeRef=" + accountingCodeRef + " quantiy=" + quantity; 
 	}
 	
+	public ORef getFundingSourceRef()
+	{
+		return fundingSourceRef;
+	}
+	
+	public ORef getAccountingCodeRef()
+	{
+		return accountingCodeRef;
+	}
+	
+	public ORef getCategoryOneRef()
+	{
+		return categoryOneRef;
+	}
+	
+	public ORef getCategoryTwoRef()
+	{
+		return categoryTwoRef;
+	}
+	
 	private ORef resourceRef;
 	private ORef fundingSourceRef;
 	private ORef accountingCodeRef;
