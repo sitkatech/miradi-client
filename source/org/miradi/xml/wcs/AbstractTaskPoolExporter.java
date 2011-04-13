@@ -40,6 +40,7 @@ abstract public class AbstractTaskPoolExporter extends FactorPoolExporter
 		writeExpenseAssignmentIds(baseObject);
 		writeResourceAssignmentIds(baseObject);
 		writeOptionalIds(XmpzXmlConstants.SUB_TASK_IDS, XmpzXmlConstants.SUB_TASK, baseObject.getSubTaskRefs());
+		writeOptionalCalculatedTimePeriodCosts(baseObject);
 	}
 	
 	@Override

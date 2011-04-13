@@ -61,6 +61,7 @@ public class IndicatorPoolExporter extends BaseObjectPoolExporter
 		writeOptionalThreshold(indicator);
 		writeCodeElementSameAsTag(indicator, Indicator.TAG_RATING_SOURCE, getProject().getQuestion(RatingSourceQuestion.class));
 		writeOptionalElementWithSameTag(indicator, Indicator.TAG_VIABILITY_RATINGS_COMMENTS);
+		writeOptionalCalculatedTimePeriodCosts(indicator);
 	}
 	
 	private void writeOptionalThreshold(Indicator indicator) throws Exception
