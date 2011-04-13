@@ -121,6 +121,7 @@ public interface XmpzXmlConstants
 	public static final String BEND_POINTS_ELEMENT_NAME = "BendPoints";
 	public static final String GROUP_BOX_CHILDREN_IDS = "GroupBoxChildrenIds";
 	public static final String GROUP_BOX_DIAGRAM_LINK_CHILDREN_ID = "GroupedDiagramLinkIds";
+	public static final String RESOURCE_ID = "ResourceId";
 	public static final String FUNDING_SOURCE_ID = "FundingSourceId";
 	public static final String ACCOUNTING_CODE_ID = "AccountingCodeId";
 	public static final String BUDGET_CATEGORY_ONE_ID = "BudgetCategoryOneId";
