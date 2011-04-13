@@ -123,15 +123,20 @@ abstract public class ObjectPoolExporter extends AbstractXmlExporter
 	
 	protected void exportId(ORef ref, String idElementName) throws Exception, IOException
 	{
+		exportId(ref, getPoolName(), idElementName);
+	}
+
+	protected void exportId(ORef ref, final String parentElementName, String idElementName) throws Exception, IOException
+	{
 		if (ref.isValid())
 		{
-			getWcsXmlExporter().writeStartElement(getPoolName() + idElementName);
+			getWcsXmlExporter().writeStartElement(parentElementName + idElementName);
 			getWcsXmlExporter().writeStartElement(idElementName);
-			
+
 			getWriter().write(ref.getObjectId().toString());
-			
+
 			getWcsXmlExporter().writeEndElement(idElementName);
-			getWcsXmlExporter().writeEndElement(getPoolName() + idElementName);
+			getWcsXmlExporter().writeEndElement(parentElementName + idElementName);
 		}
 	}
 	
