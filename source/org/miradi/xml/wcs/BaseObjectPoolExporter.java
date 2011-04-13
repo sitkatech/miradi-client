@@ -32,7 +32,6 @@ import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Factor;
-import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.OptionalDouble;
@@ -133,10 +132,10 @@ abstract public class BaseObjectPoolExporter extends ObjectPoolExporter
 		getWcsXmlExporter().writeEndElement(DIAGRAM_POINT_ELEMENT_NAME);
 	}
 	
-	protected void writeOptionalCalculatedTimePeriodCosts(Strategy strategy) throws Exception
+	protected void writeOptionalCalculatedTimePeriodCosts(BaseObject baseObject) throws Exception
 	{
-		TimePeriodCostsMap expenseAssignmentTimePeriodCostsMap = strategy.getExpenseAssignmentsTimePeriodCostsMap();
-		TimePeriodCostsMap resourceAssignmentTimePeriodCostsMap = strategy.getResourceAssignmentsTimePeriodCostsMap();
+		TimePeriodCostsMap expenseAssignmentTimePeriodCostsMap = baseObject.getExpenseAssignmentsTimePeriodCostsMap();
+		TimePeriodCostsMap resourceAssignmentTimePeriodCostsMap = baseObject.getResourceAssignmentsTimePeriodCostsMap();
 		
 		OptionalDouble totalExpenseAssignmentCost = expenseAssignmentTimePeriodCostsMap.calculateTotalBudgetCost(getProject());
 		OptionalDouble totalResourceAssignmentCost = resourceAssignmentTimePeriodCostsMap.calculateTotalBudgetCost(getProject());
