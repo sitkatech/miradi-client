@@ -902,7 +902,6 @@ TimePeriodCosts.element = element miradi:TimePeriodCosts
 
 ExpenseEntry.element = element miradi:ExpenseEntry
 {
-  element miradi:ExpenseEntryName{ text }? &
   element miradi:ExpenseEntryFundingSourceId{ FundingSourceId.element }? &
   element miradi:ExpenseEntryAccountingCodeId{ AccountingCodeId.element }? &
   element miradi:ExpenseEntryBudgetCategoryOneId{ BudgetCategoryOneId.element }? &
