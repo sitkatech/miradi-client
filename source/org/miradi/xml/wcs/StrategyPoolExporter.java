@@ -122,8 +122,16 @@ public class StrategyPoolExporter extends FactorPoolExporter
 		}
 	}
 
-	private void writeExpenseAssignmentTimePeriodCosts(HashMap<DateUnit, TimePeriodCosts> dateUnitTimePeriodCostsMap)
+	private void writeExpenseAssignmentTimePeriodCosts(HashMap<DateUnit, TimePeriodCosts> dateUnitTimePeriodCostsMap) throws Exception
 	{
-		//FIXME urgent - Needs to export expense entries
+		getWcsXmlExporter().writeStartElement(CALCULATED_EXPENSE_ENTRIES);
+		for (DateUnit dateUnit : dateUnitTimePeriodCostsMap.keySet())
+		{
+			TimePeriodCosts timePeriodCosts = dateUnitTimePeriodCostsMap.get(dateUnit);
+			Vector<CategorizedQuantity> categorizedQuantaties = timePeriodCosts.getExpensesCategorizedQuantities();
+			writeCategorizedQuantaties(dateUnit, categorizedQuantaties, EXPENSE_ENTRY, new ExpenseEntryWriter(getWcsXmlExporter()));
+		}
+		
+		getWcsXmlExporter().writeEndElement(CALCULATED_EXPENSE_ENTRIES);
 	}
 }

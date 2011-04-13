@@ -36,7 +36,7 @@ public class ExpenseEntryWriter extends AbstractTimePeriodCostsWriter
 	@Override
 	protected String getQuantityDateUnitElementName()
 	{
-		return XmpzXmlConstants.EXPENSES_DATE_UNIT;
+		return XmpzXmlConstants.DATE_UNITS_EXPENSE;
 	}
 	
 	@Override
