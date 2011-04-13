@@ -99,26 +99,26 @@ public class StrategyPoolExporter extends FactorPoolExporter
 		{
 			TimePeriodCosts timePeriodCosts = dateUnitTimePeriodCostsMap.get(dateUnit);
 			Vector<CategorizedQuantity> categorizedQuantaties = timePeriodCosts.getWorkUnitCategorizedQuantities();
-			writeCategorizedQuantaties(dateUnit, categorizedQuantaties);
+			writeCategorizedQuantaties(dateUnit, categorizedQuantaties, WORK_UNITS_ENTRY);
 		}
 		
 		getWcsXmlExporter().writeEndElement(CALCULATED_WORK_UNITS_ENTRIES);
 	}
 
-	private void writeCategorizedQuantaties(DateUnit dateUnit, Vector<CategorizedQuantity> categorizedQuantaties) throws Exception
+	private void writeCategorizedQuantaties(DateUnit dateUnit, Vector<CategorizedQuantity> categorizedQuantaties, String workUnitsEntryParentElementName) throws Exception
 	{
 		for (CategorizedQuantity categorizedQuantity : categorizedQuantaties)
 		{
-			getWcsXmlExporter().writeStartElement(WORK_UNITS_ENTRY);
+			getWcsXmlExporter().writeStartElement(workUnitsEntryParentElementName);
 			
-			exportId(categorizedQuantity.getResourceRef(), WORK_UNITS_ENTRY, RESOURCE_ID);
-			exportId(categorizedQuantity.getFundingSourceRef(), WORK_UNITS_ENTRY, FUNDING_SOURCE_ID);
-			exportId(categorizedQuantity.getAccountingCodeRef(), WORK_UNITS_ENTRY, ACCOUNTING_CODE_ID);
-			exportId(categorizedQuantity.getCategoryOneRef(), WORK_UNITS_ENTRY, BUDGET_CATEGORY_ONE_ID);
-			exportId(categorizedQuantity.getCategoryTwoRef(), WORK_UNITS_ENTRY, BUDGET_CATEGORY_TWO_ID);
-			new WorkUnitsEntryWriter(getWcsXmlExporter()).writeEffortDetails(WORK_UNITS_ENTRY + DETAILS, dateUnit, categorizedQuantity.getQuantity().getValue());
+			exportId(categorizedQuantity.getResourceRef(), workUnitsEntryParentElementName, RESOURCE_ID);
+			exportId(categorizedQuantity.getFundingSourceRef(), workUnitsEntryParentElementName, FUNDING_SOURCE_ID);
+			exportId(categorizedQuantity.getAccountingCodeRef(), workUnitsEntryParentElementName, ACCOUNTING_CODE_ID);
+			exportId(categorizedQuantity.getCategoryOneRef(), workUnitsEntryParentElementName, BUDGET_CATEGORY_ONE_ID);
+			exportId(categorizedQuantity.getCategoryTwoRef(), workUnitsEntryParentElementName, BUDGET_CATEGORY_TWO_ID);
+			new WorkUnitsEntryWriter(getWcsXmlExporter()).writeEffortDetails(workUnitsEntryParentElementName + DETAILS, dateUnit, categorizedQuantity.getQuantity().getValue());
 			
-			getWcsXmlExporter().writeEndElement(WORK_UNITS_ENTRY);
+			getWcsXmlExporter().writeEndElement(workUnitsEntryParentElementName);
 		}
 	}
 
