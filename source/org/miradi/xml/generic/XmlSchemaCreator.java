@@ -499,7 +499,7 @@ public class XmlSchemaCreator implements XmpzXmlConstants
 	{
 		writer.defineAlias(WORK_UNITS_ENTRY + ".element", "element " + XmpzXmlConstants.PREFIX + WORK_UNITS_ENTRY);
 		writer.startBlock();
-		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + WORK_UNITS_ENTRY + "ResourceId" + "{ ResourceId.element }? &");
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + WORK_UNITS_ENTRY + RESOURCE_ID + "{ " + RESOURCE_ID + ".element }? &");
 		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + WORK_UNITS_ENTRY + FUNDING_SOURCE_ID + "{ " + FUNDING_SOURCE_ID + ".element }? &");
 		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + WORK_UNITS_ENTRY + ACCOUNTING_CODE_ID + "{ " + ACCOUNTING_CODE_ID + ".element }? &");
 		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + WORK_UNITS_ENTRY + BUDGET_CATEGORY_ONE_ID + "{ " + BUDGET_CATEGORY_ONE_ID + ".element }? &");
