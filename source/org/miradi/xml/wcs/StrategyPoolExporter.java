@@ -99,13 +99,13 @@ public class StrategyPoolExporter extends FactorPoolExporter
 		{
 			TimePeriodCosts timePeriodCosts = dateUnitTimePeriodCostsMap.get(dateUnit);
 			Vector<CategorizedQuantity> categorizedQuantaties = timePeriodCosts.getWorkUnitCategorizedQuantities();
-			writeCategorizedQuantaties(dateUnit, categorizedQuantaties, WORK_UNITS_ENTRY);
+			writeCategorizedQuantaties(dateUnit, categorizedQuantaties, WORK_UNITS_ENTRY, new WorkUnitsEntryWriter(getWcsXmlExporter()));
 		}
 		
 		getWcsXmlExporter().writeEndElement(CALCULATED_WORK_UNITS_ENTRIES);
 	}
 
-	private void writeCategorizedQuantaties(DateUnit dateUnit, Vector<CategorizedQuantity> categorizedQuantaties, String workUnitsEntryParentElementName) throws Exception
+	private void writeCategorizedQuantaties(DateUnit dateUnit, Vector<CategorizedQuantity> categorizedQuantaties, String workUnitsEntryParentElementName, AbstractTimePeriodCostsWriter timePeriodCostsWriter) throws Exception
 	{
 		for (CategorizedQuantity categorizedQuantity : categorizedQuantaties)
 		{
@@ -115,8 +115,8 @@ public class StrategyPoolExporter extends FactorPoolExporter
 			exportId(categorizedQuantity.getFundingSourceRef(), workUnitsEntryParentElementName, FUNDING_SOURCE_ID);
 			exportId(categorizedQuantity.getAccountingCodeRef(), workUnitsEntryParentElementName, ACCOUNTING_CODE_ID);
 			exportId(categorizedQuantity.getCategoryOneRef(), workUnitsEntryParentElementName, BUDGET_CATEGORY_ONE_ID);
-			exportId(categorizedQuantity.getCategoryTwoRef(), workUnitsEntryParentElementName, BUDGET_CATEGORY_TWO_ID);
-			new WorkUnitsEntryWriter(getWcsXmlExporter()).writeEffortDetails(workUnitsEntryParentElementName + DETAILS, dateUnit, categorizedQuantity.getQuantity().getValue());
+			exportId(categorizedQuantity.getCategoryTwoRef(), workUnitsEntryParentElementName, BUDGET_CATEGORY_TWO_ID);			
+			timePeriodCostsWriter.writeEffortDetails(workUnitsEntryParentElementName + DETAILS, dateUnit, categorizedQuantity.getQuantity().getValue());
 			
 			getWcsXmlExporter().writeEndElement(workUnitsEntryParentElementName);
 		}
