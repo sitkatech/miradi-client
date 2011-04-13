@@ -162,12 +162,13 @@ abstract public class BaseObjectPoolExporter extends ObjectPoolExporter
 	
 	private void writeExpenseAssignmentTimePeriodCosts(HashMap<DateUnit, TimePeriodCosts> dateUnitTimePeriodCostsMap) throws Exception
 	{
+		final AbstractTimePeriodCostsWriter timePeriodCostsWriter = new ExpenseEntryWriter(getWcsXmlExporter());
 		getWcsXmlExporter().writeStartElement(CALCULATED_EXPENSE_ENTRIES);
 		for (DateUnit dateUnit : dateUnitTimePeriodCostsMap.keySet())
 		{
 			TimePeriodCosts timePeriodCosts = dateUnitTimePeriodCostsMap.get(dateUnit);
 			Vector<CategorizedQuantity> categorizedQuantaties = timePeriodCosts.getExpensesCategorizedQuantities();
-			writeCategorizedQuantaties(dateUnit, categorizedQuantaties, EXPENSE_ENTRY, new ExpenseEntryWriter(getWcsXmlExporter()));
+			writeCategorizedQuantaties(dateUnit, categorizedQuantaties, EXPENSE_ENTRY, timePeriodCostsWriter);
 		}
 		
 		getWcsXmlExporter().writeEndElement(CALCULATED_EXPENSE_ENTRIES);
@@ -175,12 +176,13 @@ abstract public class BaseObjectPoolExporter extends ObjectPoolExporter
 
 	private void writeResourceAssignmentTimePeriodCosts(HashMap<DateUnit, TimePeriodCosts> dateUnitTimePeriodCostsMap) throws Exception
 	{
+		final AbstractTimePeriodCostsWriter timePeriodCostsWriter = new WorkUnitsEntryWriter(getWcsXmlExporter());
 		getWcsXmlExporter().writeStartElement(CALCULATED_WORK_UNITS_ENTRIES);
 		for (DateUnit dateUnit : dateUnitTimePeriodCostsMap.keySet())
 		{
 			TimePeriodCosts timePeriodCosts = dateUnitTimePeriodCostsMap.get(dateUnit);
 			Vector<CategorizedQuantity> categorizedQuantaties = timePeriodCosts.getWorkUnitCategorizedQuantities();
-			writeCategorizedQuantaties(dateUnit, categorizedQuantaties, WORK_UNITS_ENTRY, new WorkUnitsEntryWriter(getWcsXmlExporter()));
+			writeCategorizedQuantaties(dateUnit, categorizedQuantaties, WORK_UNITS_ENTRY, timePeriodCostsWriter);
 		}
 		
 		getWcsXmlExporter().writeEndElement(CALCULATED_WORK_UNITS_ENTRIES);
