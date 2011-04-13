@@ -20,21 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.wcs;
 
-import java.util.HashMap;
-import java.util.Vector;
-
 import org.martus.util.UnicodeWriter;
-import org.miradi.objecthelpers.CategorizedQuantity;
-import org.miradi.objecthelpers.DateUnit;
-import org.miradi.objecthelpers.TimePeriodCosts;
-import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Strategy;
 import org.miradi.questions.StrategyFeasibilityQuestion;
 import org.miradi.questions.StrategyImpactQuestion;
 import org.miradi.questions.StrategyTaxonomyQuestion;
-import org.miradi.utils.DateRange;
-import org.miradi.utils.OptionalDouble;
 
 public class StrategyPoolExporter extends FactorPoolExporter
 {
@@ -62,76 +53,5 @@ public class StrategyPoolExporter extends FactorPoolExporter
 		writeResourceAssignmentIds(strategy);
 		writeIndicatorIds(strategy);
 		writeOptionalCalculatedTimePeriodCosts(strategy);
-	}
-
-	protected void writeOptionalCalculatedTimePeriodCosts(Strategy strategy) throws Exception
-	{
-		TimePeriodCostsMap expenseAssignmentTimePeriodCostsMap = strategy.getExpenseAssignmentsTimePeriodCostsMap();
-		TimePeriodCostsMap resourceAssignmentTimePeriodCostsMap = strategy.getResourceAssignmentsTimePeriodCostsMap();
-		
-		OptionalDouble totalExpenseAssignmentCost = expenseAssignmentTimePeriodCostsMap.calculateTotalBudgetCost(getProject());
-		OptionalDouble totalResourceAssignmentCost = resourceAssignmentTimePeriodCostsMap.calculateTotalBudgetCost(getProject());
-		if (totalExpenseAssignmentCost.hasValue() || totalResourceAssignmentCost.hasValue())
-		{
-			getWcsXmlExporter().writeStartElement(getPoolName() + TIME_PERIOD_COSTS);
-			
-			getWcsXmlExporter().writeStartElement(TIME_PERIOD_COSTS);
-			getWcsXmlExporter().writeElement(getWriter(), CALCULATED_EXPENSE_TOTAL, totalExpenseAssignmentCost.toString());
-			getWcsXmlExporter().writeElement(getWriter(), CALCULATED_WORK_UNITS_TOTAL, totalResourceAssignmentCost.toString());
-			
-			DateRange expenseTotalDateRange = expenseAssignmentTimePeriodCostsMap.getRolledUpDateRange(getProject().getProjectCalendar().getProjectPlanningDateRange());
-			getWcsXmlExporter().writeElement(getWriter(), CALCULATED_START_DATE, expenseTotalDateRange.getStartDate().toIsoDateString());
-			getWcsXmlExporter().writeElement(getWriter(), CALCULATED_END_DATE, expenseTotalDateRange.getEndDate().toIsoDateString());
-			writeExpenseAssignmentTimePeriodCosts(expenseAssignmentTimePeriodCostsMap.getDateUnitTimePeriodCostsMap());
-			writeResourceAssignmentTimePeriodCosts(resourceAssignmentTimePeriodCostsMap.getDateUnitTimePeriodCostsMap());
-			
-			
-			getWcsXmlExporter().writeEndElement(TIME_PERIOD_COSTS);
-			
-			getWcsXmlExporter().writeEndElement(getPoolName() + TIME_PERIOD_COSTS);
-		}
-	}
-
-	private void writeResourceAssignmentTimePeriodCosts(HashMap<DateUnit, TimePeriodCosts> dateUnitTimePeriodCostsMap) throws Exception
-	{
-		getWcsXmlExporter().writeStartElement(CALCULATED_WORK_UNITS_ENTRIES);
-		for (DateUnit dateUnit : dateUnitTimePeriodCostsMap.keySet())
-		{
-			TimePeriodCosts timePeriodCosts = dateUnitTimePeriodCostsMap.get(dateUnit);
-			Vector<CategorizedQuantity> categorizedQuantaties = timePeriodCosts.getWorkUnitCategorizedQuantities();
-			writeCategorizedQuantaties(dateUnit, categorizedQuantaties, WORK_UNITS_ENTRY, new WorkUnitsEntryWriter(getWcsXmlExporter()));
-		}
-		
-		getWcsXmlExporter().writeEndElement(CALCULATED_WORK_UNITS_ENTRIES);
-	}
-
-	private void writeCategorizedQuantaties(DateUnit dateUnit, Vector<CategorizedQuantity> categorizedQuantaties, String dateUnitsDetailsParentElementName, AbstractTimePeriodCostsWriter timePeriodCostsWriter) throws Exception
-	{
-		for (CategorizedQuantity categorizedQuantity : categorizedQuantaties)
-		{
-			getWcsXmlExporter().writeStartElement(dateUnitsDetailsParentElementName);
-			
-			exportId(categorizedQuantity.getResourceRef(), dateUnitsDetailsParentElementName, RESOURCE_ID);
-			exportId(categorizedQuantity.getFundingSourceRef(), dateUnitsDetailsParentElementName, FUNDING_SOURCE_ID);
-			exportId(categorizedQuantity.getAccountingCodeRef(), dateUnitsDetailsParentElementName, ACCOUNTING_CODE_ID);
-			exportId(categorizedQuantity.getCategoryOneRef(), dateUnitsDetailsParentElementName, BUDGET_CATEGORY_ONE_ID);
-			exportId(categorizedQuantity.getCategoryTwoRef(), dateUnitsDetailsParentElementName, BUDGET_CATEGORY_TWO_ID);			
-			timePeriodCostsWriter.writeEffortDetails(dateUnitsDetailsParentElementName + DETAILS, dateUnit, categorizedQuantity.getQuantity().getValue());
-			
-			getWcsXmlExporter().writeEndElement(dateUnitsDetailsParentElementName);
-		}
-	}
-
-	private void writeExpenseAssignmentTimePeriodCosts(HashMap<DateUnit, TimePeriodCosts> dateUnitTimePeriodCostsMap) throws Exception
-	{
-		getWcsXmlExporter().writeStartElement(CALCULATED_EXPENSE_ENTRIES);
-		for (DateUnit dateUnit : dateUnitTimePeriodCostsMap.keySet())
-		{
-			TimePeriodCosts timePeriodCosts = dateUnitTimePeriodCostsMap.get(dateUnit);
-			Vector<CategorizedQuantity> categorizedQuantaties = timePeriodCosts.getExpensesCategorizedQuantities();
-			writeCategorizedQuantaties(dateUnit, categorizedQuantaties, EXPENSE_ENTRY, new ExpenseEntryWriter(getWcsXmlExporter()));
-		}
-		
-		getWcsXmlExporter().writeEndElement(CALCULATED_EXPENSE_ENTRIES);
 	}
 }
