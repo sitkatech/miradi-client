@@ -177,7 +177,7 @@ abstract public class BaseObjectPoolExporter extends ObjectPoolExporter
 	private void writeResourceAssignmentTimePeriodCosts(HashMap<DateUnit, TimePeriodCosts> dateUnitTimePeriodCostsMap) throws Exception
 	{
 		final AbstractTimePeriodCostsWriter timePeriodCostsWriter = new WorkUnitsEntryWriter(getWcsXmlExporter());
-		getWcsXmlExporter().writeStartElement(CALCULATED_WORK_UNITS_ENTRIES);
+		getWcsXmlExporter().writeStartElement(getCalculatedWorkUnitsEntriesElementName());
 		for (DateUnit dateUnit : dateUnitTimePeriodCostsMap.keySet())
 		{
 			TimePeriodCosts timePeriodCosts = dateUnitTimePeriodCostsMap.get(dateUnit);
@@ -185,7 +185,12 @@ abstract public class BaseObjectPoolExporter extends ObjectPoolExporter
 			writeCategorizedQuantaties(dateUnit, categorizedQuantaties, WORK_UNITS_ENTRY, timePeriodCostsWriter);
 		}
 		
-		getWcsXmlExporter().writeEndElement(CALCULATED_WORK_UNITS_ENTRIES);
+		getWcsXmlExporter().writeEndElement(getCalculatedWorkUnitsEntriesElementName());
+	}
+
+	public static String getCalculatedWorkUnitsEntriesElementName()
+	{
+		return CALCULATED_WORK_UNITS_ENTRIES;
 	}
 
 	private void writeCategorizedQuantaties(DateUnit dateUnit, Vector<CategorizedQuantity> categorizedQuantaties, String dateUnitsDetailsParentElementName, AbstractTimePeriodCostsWriter timePeriodCostsWriter) throws Exception
