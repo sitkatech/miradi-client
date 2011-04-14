@@ -47,6 +47,7 @@ public class WorkUnitsEntryWriter extends AbstractTimePeriodCostsWriter
 		getWcsXmlExporter().writeEndElement(getCalculatedWorkUnitsEntriesElementName());
 	}
 
+	@Override
 	protected Vector<CategorizedQuantity> getCategorizedQuantaties(TimePeriodCosts timePeriodCosts)
 	{
 		return timePeriodCosts.getWorkUnitCategorizedQuantities();
