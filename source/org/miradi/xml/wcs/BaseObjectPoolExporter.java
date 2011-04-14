@@ -174,7 +174,7 @@ abstract public class BaseObjectPoolExporter extends ObjectPoolExporter
 		getWcsXmlExporter().writeEndElement(ExpenseEntryWriter.getCalculatedExpenseEntriesElementName());
 	}
 
-	public String getExpenseEntryElementName()
+	public static String getExpenseEntryElementName()
 	{
 		return EXPENSE_ENTRY;
 	}
