@@ -45,7 +45,7 @@ abstract public class AbstractTimePeriodCostsWriter implements XmpzXmlConstants
 		return wcsXmlExporter;
 	}
 	
-	public void writeCategorizedQuantaties(DateUnit dateUnit, Vector<CategorizedQuantity> categorizedQuantaties, String dateUnitsDetailsParentElementName, AbstractTimePeriodCostsWriter timePeriodCostsWriter) throws Exception
+	public void writeCategorizedQuantaties(DateUnit dateUnit, Vector<CategorizedQuantity> categorizedQuantaties, String dateUnitsDetailsParentElementName) throws Exception
 	{
 		for (CategorizedQuantity categorizedQuantity : categorizedQuantaties)
 		{
@@ -56,7 +56,7 @@ abstract public class AbstractTimePeriodCostsWriter implements XmpzXmlConstants
 			getWcsXmlExporter().exportValidId(categorizedQuantity.getAccountingCodeRef(), dateUnitsDetailsParentElementName, ACCOUNTING_CODE_ID);
 			getWcsXmlExporter().exportValidId(categorizedQuantity.getCategoryOneRef(), dateUnitsDetailsParentElementName, BUDGET_CATEGORY_ONE_ID);
 			getWcsXmlExporter().exportValidId(categorizedQuantity.getCategoryTwoRef(), dateUnitsDetailsParentElementName, BUDGET_CATEGORY_TWO_ID);			
-			timePeriodCostsWriter.writeEffortDetails(dateUnitsDetailsParentElementName + DETAILS, dateUnit, categorizedQuantity.getQuantity().getValue());
+			writeEffortDetails(dateUnitsDetailsParentElementName + DETAILS, dateUnit, categorizedQuantity.getQuantity().getValue());
 			
 			getWcsXmlExporter().writeEndElement(dateUnitsDetailsParentElementName);
 		}
