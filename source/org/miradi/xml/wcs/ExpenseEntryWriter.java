@@ -36,7 +36,7 @@ public class ExpenseEntryWriter extends AbstractTimePeriodCostsWriter
 	
 	public void writeExpenseAssignmentTimePeriodCosts(HashMap<DateUnit, TimePeriodCosts> dateUnitTimePeriodCostsMap)	throws Exception
 	{
-		getWcsXmlExporter().writeStartElement(getCalculatedExpenseEntriesElementName());
+		getWcsXmlExporter().writeStartElement(getCalculatedEntriesElementName());
 		for (DateUnit dateUnit : dateUnitTimePeriodCostsMap.keySet())
 		{
 			TimePeriodCosts timePeriodCosts = dateUnitTimePeriodCostsMap.get(dateUnit);
@@ -44,7 +44,7 @@ public class ExpenseEntryWriter extends AbstractTimePeriodCostsWriter
 			writeCategorizedQuantaties(dateUnit, categorizedQuantaties, getExpenseEntryElementName());
 		}
 		
-		getWcsXmlExporter().writeEndElement(getCalculatedExpenseEntriesElementName());
+		getWcsXmlExporter().writeEndElement(getCalculatedEntriesElementName());
 	}
 
 	@Override
@@ -106,7 +106,7 @@ public class ExpenseEntryWriter extends AbstractTimePeriodCostsWriter
 		return EXPENSE_ENTRY;
 	}
 
-	public static String getCalculatedExpenseEntriesElementName()
+	public static String getCalculatedEntriesElementName()
 	{
 		return CALCULATED_EXPENSE_ENTRIES;
 	}
