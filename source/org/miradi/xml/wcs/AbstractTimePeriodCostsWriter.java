@@ -40,7 +40,7 @@ abstract public class AbstractTimePeriodCostsWriter implements XmpzXmlConstants
 		return getWcsXmlExporter().getWriter();
 	}
 	
-	private XmpzXmlExporter getWcsXmlExporter()
+	protected XmpzXmlExporter getWcsXmlExporter()
 	{
 		return wcsXmlExporter;
 	}
