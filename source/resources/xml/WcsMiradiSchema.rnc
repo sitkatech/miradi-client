@@ -893,8 +893,8 @@ CalculatedCosts.element = element miradi:CalculatedCosts
 {
   element miradi:CalculatedStartDate{ vocabulary_date } &
   element miradi:CalculatedEndDate{ vocabulary_date } &
-  element miradi:CalculatedExpenseTotal{ xsd:decimal } &
-  element miradi:CalculatedWorkUnitsTotal{ xsd:decimal } &
+  element miradi:CalculatedExpenseTotal{ xsd:decimal }? &
+  element miradi:CalculatedWorkUnitsTotal{ xsd:decimal }? &
   element miradi:CalculatedWho{ ResourceId.element* }? &
   element miradi:CalculatedExpenseEntries{ ExpenseEntry.element* }? &
   element miradi:CalculatedWorkUnitsEntries{ WorkUnitsEntry.element* }?
