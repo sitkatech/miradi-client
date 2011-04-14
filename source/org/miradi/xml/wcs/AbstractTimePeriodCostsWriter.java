@@ -60,7 +60,7 @@ abstract public class AbstractTimePeriodCostsWriter implements XmpzXmlConstants
 		getWcsXmlExporter().writeEndElement(getCalculatedEntriesElementName());
 	}
 	
-	public void writeCategorizedQuantaties(DateUnit dateUnit, Vector<CategorizedQuantity> categorizedQuantaties, String dateUnitsDetailsParentElementName) throws Exception
+	private void writeCategorizedQuantaties(DateUnit dateUnit, Vector<CategorizedQuantity> categorizedQuantaties, String dateUnitsDetailsParentElementName) throws Exception
 	{
 		for (CategorizedQuantity categorizedQuantity : categorizedQuantaties)
 		{
