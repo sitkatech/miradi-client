@@ -25,9 +25,9 @@ import java.util.Vector;
 import org.miradi.objecthelpers.CategorizedQuantity;
 import org.miradi.objecthelpers.TimePeriodCosts;
 
-public class WorkUnitsEntryWriter extends AbstractTimePeriodCostsWriter
+public class ExpenseTimePeriodCostsWriter extends AbstractTimePeriodCostsWriter
 {
-	public WorkUnitsEntryWriter(XmpzXmlExporter wcsXmlExporterToUse)
+	public ExpenseTimePeriodCostsWriter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse);
 	}
@@ -35,66 +35,66 @@ public class WorkUnitsEntryWriter extends AbstractTimePeriodCostsWriter
 	@Override
 	protected Vector<CategorizedQuantity> getCategorizedQuantaties(TimePeriodCosts timePeriodCosts)
 	{
-		return timePeriodCosts.getWorkUnitCategorizedQuantities();
+		return timePeriodCosts.getExpensesCategorizedQuantities();
 	}
 
 	@Override
 	protected String getDateUnitElementName()
 	{
-		return XmpzXmlConstants.WORK_UNITS_DATE_UNIT;
+		return XmpzXmlConstants.EXPENSES_DATE_UNIT;
 	}
-
+	
 	@Override
 	protected String getQuantityDateUnitElementName()
 	{
-		return XmpzXmlConstants.DATE_UNIT_WORK_UNITS;
+		return XmpzXmlConstants.DATE_UNITS_EXPENSE;
 	}
 	
 	@Override
 	protected String getDayElementName()
 	{
-		return WORK_UNITS_DAY;
+		return EXPENSES_DAY;
 	}
 	
 	@Override
 	protected String getMonthElementName()
 	{
-		return WORK_UNITS_MONTH;
+		return EXPENSES_MONTH;
 	}
 	
 	@Override
 	protected String getQuarterElementName()
 	{
-		return WORK_UNITS_QUARTER;
+		return EXPENSES_QUARTER;
 	}
 	
 	@Override
 	protected String getYearElementName()
 	{
-		return WORK_UNITS_YEAR;
+		return EXPENSES_YEAR;
 	}
 	
 	@Override
 	protected String getFullProjectTimespanElementName()
 	{
-		return WORK_UNITS_FULL_PROJECT_TIMESPAN;
+		return EXPENSES_FULL_PROJECT_TIMESPAN;
 	}
 	
 	@Override
 	protected String getQuantatityElementName()
 	{
-		return XmpzXmlConstants.WORK_UNITS;
-	}
-
-	@Override
-	protected String getCalculatedEntriesElementName()
-	{
-		return CALCULATED_WORK_UNITS_ENTRIES;
+		return XmpzXmlConstants.EXPENSE;
 	}
 
 	@Override
 	protected String getEntryElementName()
 	{
-		return WORK_UNITS_ENTRY;
+		return EXPENSE_ENTRY;
+	}
+
+	@Override
+	protected String getCalculatedEntriesElementName()
+	{
+		return CALCULATED_EXPENSE_ENTRIES;
 	}
 }
