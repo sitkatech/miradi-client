@@ -26,6 +26,7 @@ import org.martus.util.MultiCalendar;
 import org.martus.util.UnicodeWriter;
 import org.miradi.objecthelpers.CategorizedQuantity;
 import org.miradi.objecthelpers.DateUnit;
+import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.utils.DoubleUtilities;
 
 abstract public class AbstractTimePeriodCostsWriter implements XmpzXmlConstants
@@ -137,6 +138,8 @@ abstract public class AbstractTimePeriodCostsWriter implements XmpzXmlConstants
 		
 		getWcsXmlExporter().writeEndElement(getQuantatityElementName());
 	}
+	
+	abstract protected Vector<CategorizedQuantity> getCategorizedQuantaties(TimePeriodCosts timePeriodCosts);
 	
 	abstract protected String getDateUnitElementName();
 	
