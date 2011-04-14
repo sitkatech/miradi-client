@@ -136,8 +136,9 @@ abstract public class BaseObjectPoolExporter extends ObjectPoolExporter
 		OptionalDouble totalResourceAssignmentCost = resourceAssignmentTimePeriodCostsMap.calculateTotalBudgetCost(getProject());
 		if (totalExpenseAssignmentCost.hasValue() || totalResourceAssignmentCost.hasValue())
 		{
-			DateRange expenseTotalDateRange = expenseAssignmentTimePeriodCostsMap.getRolledUpDateRange(getProject().getProjectCalendar().getProjectPlanningDateRange());
-			DateRange workUnitsTotalDateRange = resourceAssignmentTimePeriodCostsMap.getRolledUpDateRange(getProject().getProjectCalendar().getProjectPlanningDateRange());
+			final DateRange projectPlanningDateRange = getProject().getProjectCalendar().getProjectPlanningDateRange();
+			DateRange expenseTotalDateRange = expenseAssignmentTimePeriodCostsMap.getRolledUpDateRange(projectPlanningDateRange);
+			DateRange workUnitsTotalDateRange = resourceAssignmentTimePeriodCostsMap.getRolledUpDateRange(projectPlanningDateRange);
 			DateRange totalDateRange = DateRange.combine(expenseTotalDateRange, workUnitsTotalDateRange);
 			getWcsXmlExporter().writeStartElement(getPoolName() + TIME_PERIOD_COSTS);
 
