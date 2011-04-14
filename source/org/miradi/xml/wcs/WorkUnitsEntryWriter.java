@@ -74,4 +74,14 @@ public class WorkUnitsEntryWriter extends AbstractTimePeriodCostsWriter
 	{
 		return XmpzXmlConstants.WORK_UNITS;
 	}
+
+	public static String getCalculatedWorkUnitsEntriesElementName()
+	{
+		return CALCULATED_WORK_UNITS_ENTRIES;
+	}
+
+	public static String getWorkUnitsEntryElementName()
+	{
+		return WORK_UNITS_ENTRY;
+	}
 }
