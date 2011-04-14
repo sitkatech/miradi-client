@@ -34,7 +34,7 @@ public class ExpenseEntryWriter extends AbstractTimePeriodCostsWriter
 		super(wcsXmlExporterToUse);
 	}
 	
-	public void writeExpenseAssignmentTimePeriodCosts(HashMap<DateUnit, TimePeriodCosts> dateUnitTimePeriodCostsMap)	throws Exception
+	public void writeTimePeriodCosts(HashMap<DateUnit, TimePeriodCosts> dateUnitTimePeriodCostsMap)	throws Exception
 	{
 		getWcsXmlExporter().writeStartElement(getCalculatedEntriesElementName());
 		for (DateUnit dateUnit : dateUnitTimePeriodCostsMap.keySet())
