@@ -70,8 +70,9 @@ abstract public class AbstractTimePeriodCostsWriter implements XmpzXmlConstants
 			getWcsXmlExporter().exportValidId(categorizedQuantity.getFundingSourceRef(), dateUnitsDetailsParentElementName, FUNDING_SOURCE_ID);
 			getWcsXmlExporter().exportValidId(categorizedQuantity.getAccountingCodeRef(), dateUnitsDetailsParentElementName, ACCOUNTING_CODE_ID);
 			getWcsXmlExporter().exportValidId(categorizedQuantity.getCategoryOneRef(), dateUnitsDetailsParentElementName, BUDGET_CATEGORY_ONE_ID);
-			getWcsXmlExporter().exportValidId(categorizedQuantity.getCategoryTwoRef(), dateUnitsDetailsParentElementName, BUDGET_CATEGORY_TWO_ID);			
-			writeEffortDetails(dateUnitsDetailsParentElementName + DETAILS, dateUnit, categorizedQuantity.getQuantity().getValue());
+			getWcsXmlExporter().exportValidId(categorizedQuantity.getCategoryTwoRef(), dateUnitsDetailsParentElementName, BUDGET_CATEGORY_TWO_ID);
+			if (categorizedQuantity.getQuantity().hasValue())
+				writeEffortDetails(dateUnitsDetailsParentElementName + DETAILS, dateUnit, categorizedQuantity.getQuantity().getValue());
 			
 			getWcsXmlExporter().writeEndElement(dateUnitsDetailsParentElementName);
 		}
