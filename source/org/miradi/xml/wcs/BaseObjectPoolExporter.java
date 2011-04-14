@@ -162,21 +162,8 @@ abstract public class BaseObjectPoolExporter extends ObjectPoolExporter
 	
 	private void writeExpenseAssignmentTimePeriodCosts(HashMap<DateUnit, TimePeriodCosts> dateUnitTimePeriodCostsMap) throws Exception
 	{
-		final AbstractTimePeriodCostsWriter timePeriodCostsWriter = new ExpenseEntryWriter(getWcsXmlExporter());
-		writeExpenseAssignmentTimePeriodCosts(dateUnitTimePeriodCostsMap, timePeriodCostsWriter);
-	}
-
-	public void writeExpenseAssignmentTimePeriodCosts(HashMap<DateUnit, TimePeriodCosts> dateUnitTimePeriodCostsMap, final AbstractTimePeriodCostsWriter timePeriodCostsWriter)	throws Exception
-	{
-		getWcsXmlExporter().writeStartElement(ExpenseEntryWriter.getCalculatedExpenseEntriesElementName());
-		for (DateUnit dateUnit : dateUnitTimePeriodCostsMap.keySet())
-		{
-			TimePeriodCosts timePeriodCosts = dateUnitTimePeriodCostsMap.get(dateUnit);
-			Vector<CategorizedQuantity> categorizedQuantaties = timePeriodCosts.getExpensesCategorizedQuantities();
-			timePeriodCostsWriter.writeCategorizedQuantaties(dateUnit, categorizedQuantaties, ExpenseEntryWriter.getExpenseEntryElementName());
-		}
-		
-		getWcsXmlExporter().writeEndElement(ExpenseEntryWriter.getCalculatedExpenseEntriesElementName());
+		final ExpenseEntryWriter timePeriodCostsWriter = new ExpenseEntryWriter(getWcsXmlExporter());
+		timePeriodCostsWriter.writeExpenseAssignmentTimePeriodCosts(dateUnitTimePeriodCostsMap);
 	}
 
 	private void writeResourceAssignmentTimePeriodCosts(HashMap<DateUnit, TimePeriodCosts> dateUnitTimePeriodCostsMap) throws Exception
