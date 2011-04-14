@@ -40,11 +40,16 @@ public class WorkUnitsEntryWriter extends AbstractTimePeriodCostsWriter
 		for (DateUnit dateUnit : dateUnitTimePeriodCostsMap.keySet())
 		{
 			TimePeriodCosts timePeriodCosts = dateUnitTimePeriodCostsMap.get(dateUnit);
-			Vector<CategorizedQuantity> categorizedQuantaties = timePeriodCosts.getWorkUnitCategorizedQuantities();
+			Vector<CategorizedQuantity> categorizedQuantaties = getCategorizedQuantaties(timePeriodCosts);
 			writeCategorizedQuantaties(dateUnit, categorizedQuantaties, getWorkUnitsEntryElementName());
 		}
 		
 		getWcsXmlExporter().writeEndElement(getCalculatedWorkUnitsEntriesElementName());
+	}
+
+	protected Vector<CategorizedQuantity> getCategorizedQuantaties(TimePeriodCosts timePeriodCosts)
+	{
+		return timePeriodCosts.getWorkUnitCategorizedQuantities();
 	}
 
 	@Override
