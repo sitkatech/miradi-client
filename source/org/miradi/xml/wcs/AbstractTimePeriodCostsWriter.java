@@ -20,8 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.wcs;
 
+import java.util.Vector;
+
 import org.martus.util.MultiCalendar;
 import org.martus.util.UnicodeWriter;
+import org.miradi.objecthelpers.CategorizedQuantity;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.utils.DoubleUtilities;
 
@@ -40,6 +43,23 @@ abstract public class AbstractTimePeriodCostsWriter implements XmpzXmlConstants
 	private XmpzXmlExporter getWcsXmlExporter()
 	{
 		return wcsXmlExporter;
+	}
+	
+	public void writeCategorizedQuantaties(DateUnit dateUnit, Vector<CategorizedQuantity> categorizedQuantaties, String dateUnitsDetailsParentElementName, AbstractTimePeriodCostsWriter timePeriodCostsWriter) throws Exception
+	{
+		for (CategorizedQuantity categorizedQuantity : categorizedQuantaties)
+		{
+			getWcsXmlExporter().writeStartElement(dateUnitsDetailsParentElementName);
+			
+			getWcsXmlExporter().exportValidId(categorizedQuantity.getResourceRef(), dateUnitsDetailsParentElementName, RESOURCE_ID);
+			getWcsXmlExporter().exportValidId(categorizedQuantity.getFundingSourceRef(), dateUnitsDetailsParentElementName, FUNDING_SOURCE_ID);
+			getWcsXmlExporter().exportValidId(categorizedQuantity.getAccountingCodeRef(), dateUnitsDetailsParentElementName, ACCOUNTING_CODE_ID);
+			getWcsXmlExporter().exportValidId(categorizedQuantity.getCategoryOneRef(), dateUnitsDetailsParentElementName, BUDGET_CATEGORY_ONE_ID);
+			getWcsXmlExporter().exportValidId(categorizedQuantity.getCategoryTwoRef(), dateUnitsDetailsParentElementName, BUDGET_CATEGORY_TWO_ID);			
+			timePeriodCostsWriter.writeEffortDetails(dateUnitsDetailsParentElementName + DETAILS, dateUnit, categorizedQuantity.getQuantity().getValue());
+			
+			getWcsXmlExporter().writeEndElement(dateUnitsDetailsParentElementName);
+		}
 	}
 	
 	public void writeEffortDetails(String dateUnitsElementName, DateUnit dateUnit, double quantity) throws Exception
