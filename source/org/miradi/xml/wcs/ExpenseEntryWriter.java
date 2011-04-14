@@ -41,7 +41,7 @@ public class ExpenseEntryWriter extends AbstractTimePeriodCostsWriter
 		{
 			TimePeriodCosts timePeriodCosts = dateUnitTimePeriodCostsMap.get(dateUnit);
 			Vector<CategorizedQuantity> categorizedQuantaties = getCategorizedQuantaties(timePeriodCosts);
-			writeCategorizedQuantaties(dateUnit, categorizedQuantaties, getExpenseEntryElementName());
+			writeCategorizedQuantaties(dateUnit, categorizedQuantaties, getEntryElementName());
 		}
 		
 		getWcsXmlExporter().writeEndElement(getCalculatedEntriesElementName());
@@ -101,7 +101,7 @@ public class ExpenseEntryWriter extends AbstractTimePeriodCostsWriter
 		return XmpzXmlConstants.EXPENSE;
 	}
 
-	public static String getExpenseEntryElementName()
+	public static String getEntryElementName()
 	{
 		return EXPENSE_ENTRY;
 	}
