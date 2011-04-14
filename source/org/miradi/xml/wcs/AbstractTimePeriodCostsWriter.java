@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.wcs;
 
+import java.util.HashMap;
 import java.util.Vector;
 
 import org.martus.util.MultiCalendar;
@@ -44,6 +45,19 @@ abstract public class AbstractTimePeriodCostsWriter implements XmpzXmlConstants
 	protected XmpzXmlExporter getWcsXmlExporter()
 	{
 		return wcsXmlExporter;
+	}
+	
+	public void writeTimePeriodCosts(HashMap<DateUnit, TimePeriodCosts> dateUnitTimePeriodCostsMap) throws Exception
+	{
+		getWcsXmlExporter().writeStartElement(getCalculatedEntriesElementName());
+		for (DateUnit dateUnit : dateUnitTimePeriodCostsMap.keySet())
+		{
+			TimePeriodCosts timePeriodCosts = dateUnitTimePeriodCostsMap.get(dateUnit);
+			Vector<CategorizedQuantity> categorizedQuantaties = getCategorizedQuantaties(timePeriodCosts);
+			writeCategorizedQuantaties(dateUnit, categorizedQuantaties, getEntryElementName());
+		}
+		
+		getWcsXmlExporter().writeEndElement(getCalculatedEntriesElementName());
 	}
 	
 	public void writeCategorizedQuantaties(DateUnit dateUnit, Vector<CategorizedQuantity> categorizedQuantaties, String dateUnitsDetailsParentElementName) throws Exception
