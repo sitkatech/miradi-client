@@ -21,11 +21,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.wcs;
 
 import java.awt.Point;
-import java.util.HashMap;
 
-import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
@@ -148,23 +145,13 @@ abstract public class BaseObjectPoolExporter extends ObjectPoolExporter
 			DateRange expenseTotalDateRange = expenseAssignmentTimePeriodCostsMap.getRolledUpDateRange(getProject().getProjectCalendar().getProjectPlanningDateRange());
 			getWcsXmlExporter().writeElement(getWriter(), CALCULATED_START_DATE, expenseTotalDateRange.getStartDate().toIsoDateString());
 			getWcsXmlExporter().writeElement(getWriter(), CALCULATED_END_DATE, expenseTotalDateRange.getEndDate().toIsoDateString());
-			writeExpenseAssignmentTimePeriodCosts(expenseAssignmentTimePeriodCostsMap.getDateUnitTimePeriodCostsMap());
-			writeResourceAssignmentTimePeriodCosts(resourceAssignmentTimePeriodCostsMap.getDateUnitTimePeriodCostsMap());
+			new ExpenseEntryWriter(getWcsXmlExporter()).writeExpenseAssignmentTimePeriodCosts(expenseAssignmentTimePeriodCostsMap.getDateUnitTimePeriodCostsMap());
+			new WorkUnitsEntryWriter(getWcsXmlExporter()).writeResourceAssignmentTimePeriodCosts(resourceAssignmentTimePeriodCostsMap.getDateUnitTimePeriodCostsMap());
 			
 			
 			getWcsXmlExporter().writeEndElement(TIME_PERIOD_COSTS);
 			
 			getWcsXmlExporter().writeEndElement(getPoolName() + TIME_PERIOD_COSTS);
 		}
-	}
-	
-	private void writeExpenseAssignmentTimePeriodCosts(HashMap<DateUnit, TimePeriodCosts> dateUnitTimePeriodCostsMap) throws Exception
-	{
-		new ExpenseEntryWriter(getWcsXmlExporter()).writeExpenseAssignmentTimePeriodCosts(dateUnitTimePeriodCostsMap);
-	}
-
-	private void writeResourceAssignmentTimePeriodCosts(HashMap<DateUnit, TimePeriodCosts> dateUnitTimePeriodCostsMap) throws Exception
-	{
-		new WorkUnitsEntryWriter(getWcsXmlExporter()).writeResourceAssignmentTimePeriodCosts(dateUnitTimePeriodCostsMap);
 	}
 }
