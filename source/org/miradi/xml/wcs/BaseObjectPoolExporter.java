@@ -168,15 +168,10 @@ abstract public class BaseObjectPoolExporter extends ObjectPoolExporter
 		{
 			TimePeriodCosts timePeriodCosts = dateUnitTimePeriodCostsMap.get(dateUnit);
 			Vector<CategorizedQuantity> categorizedQuantaties = timePeriodCosts.getExpensesCategorizedQuantities();
-			writeCategorizedQuantaties(dateUnit, categorizedQuantaties, getExpenseEntryElementName(), timePeriodCostsWriter);
+			writeCategorizedQuantaties(dateUnit, categorizedQuantaties, ExpenseEntryWriter.getExpenseEntryElementName(), timePeriodCostsWriter);
 		}
 		
 		getWcsXmlExporter().writeEndElement(ExpenseEntryWriter.getCalculatedExpenseEntriesElementName());
-	}
-
-	public static String getExpenseEntryElementName()
-	{
-		return EXPENSE_ENTRY;
 	}
 
 	private void writeResourceAssignmentTimePeriodCosts(HashMap<DateUnit, TimePeriodCosts> dateUnitTimePeriodCostsMap) throws Exception
