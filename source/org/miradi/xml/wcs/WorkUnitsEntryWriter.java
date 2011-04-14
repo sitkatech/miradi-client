@@ -101,12 +101,12 @@ public class WorkUnitsEntryWriter extends AbstractTimePeriodCostsWriter
 		return XmpzXmlConstants.WORK_UNITS;
 	}
 
-	public static String getCalculatedEntriesElementName()
+	protected String getCalculatedEntriesElementName()
 	{
 		return CALCULATED_WORK_UNITS_ENTRIES;
 	}
 
-	public static String getEntryElementName()
+	protected String getEntryElementName()
 	{
 		return WORK_UNITS_ENTRY;
 	}
