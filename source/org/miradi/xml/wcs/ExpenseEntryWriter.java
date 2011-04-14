@@ -74,4 +74,9 @@ public class ExpenseEntryWriter extends AbstractTimePeriodCostsWriter
 	{
 		return XmpzXmlConstants.EXPENSE;
 	}
+
+	public static String getExpenseEntriesName()
+	{
+		return CALCULATED_EXPENSE_ENTRIES;
+	}
 }
