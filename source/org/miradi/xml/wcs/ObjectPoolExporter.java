@@ -128,23 +128,9 @@ abstract public class ObjectPoolExporter extends AbstractXmlExporter
 
 	protected void exportId(ORef ref, final String parentElementName, String idElementName) throws Exception, IOException
 	{
-		exportValidId(ref, parentElementName, idElementName);
+		getWcsXmlExporter().exportValidId(ref, parentElementName, idElementName);
 	}
 
-	public void exportValidId(ORef ref, final String parentElementName,	String idElementName) throws Exception, IOException
-	{
-		if (ref.isValid())
-		{
-			getWcsXmlExporter().writeStartElement(parentElementName + idElementName);
-			getWcsXmlExporter().writeStartElement(idElementName);
-
-			getWriter().write(ref.getObjectId().toString());
-
-			getWcsXmlExporter().writeEndElement(idElementName);
-			getWcsXmlExporter().writeEndElement(parentElementName + idElementName);
-		}
-	}
-	
 	protected String getPoolName()
 	{
 		return poolName;
