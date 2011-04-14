@@ -26,7 +26,7 @@ public class CalculatedTimePeriodCostsSchemaElement extends FieldSchemaElement
 {
 	protected CalculatedTimePeriodCostsSchemaElement(String objectTypeNameToUse)
 	{
-		super(objectTypeNameToUse, "TimePeriodCosts");
+		super(objectTypeNameToUse, "CalculatedCosts");
 	}
 	
 	@Override
