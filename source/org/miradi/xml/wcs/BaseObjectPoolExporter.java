@@ -22,9 +22,7 @@ package org.miradi.xml.wcs;
 
 import java.awt.Point;
 import java.util.HashMap;
-import java.util.Vector;
 
-import org.miradi.objecthelpers.CategorizedQuantity;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.TimePeriodCosts;
@@ -168,20 +166,7 @@ abstract public class BaseObjectPoolExporter extends ObjectPoolExporter
 
 	private void writeResourceAssignmentTimePeriodCosts(HashMap<DateUnit, TimePeriodCosts> dateUnitTimePeriodCostsMap) throws Exception
 	{
-		final AbstractTimePeriodCostsWriter timePeriodCostsWriter = new WorkUnitsEntryWriter(getWcsXmlExporter());
-		writeResourceAssignmentTimePeriodCosts(dateUnitTimePeriodCostsMap, timePeriodCostsWriter);
-	}
-
-	public void writeResourceAssignmentTimePeriodCosts(HashMap<DateUnit, TimePeriodCosts> dateUnitTimePeriodCostsMap, final AbstractTimePeriodCostsWriter timePeriodCostsWriter) throws Exception
-	{
-		getWcsXmlExporter().writeStartElement(WorkUnitsEntryWriter.getCalculatedWorkUnitsEntriesElementName());
-		for (DateUnit dateUnit : dateUnitTimePeriodCostsMap.keySet())
-		{
-			TimePeriodCosts timePeriodCosts = dateUnitTimePeriodCostsMap.get(dateUnit);
-			Vector<CategorizedQuantity> categorizedQuantaties = timePeriodCosts.getWorkUnitCategorizedQuantities();
-			timePeriodCostsWriter.writeCategorizedQuantaties(dateUnit, categorizedQuantaties, WorkUnitsEntryWriter.getWorkUnitsEntryElementName());
-		}
-		
-		getWcsXmlExporter().writeEndElement(WorkUnitsEntryWriter.getCalculatedWorkUnitsEntriesElementName());
+		final WorkUnitsEntryWriter timePeriodCostsWriter = new WorkUnitsEntryWriter(getWcsXmlExporter());
+		timePeriodCostsWriter.writeResourceAssignmentTimePeriodCosts(dateUnitTimePeriodCostsMap);
 	}
 }
