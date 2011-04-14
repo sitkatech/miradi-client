@@ -137,13 +137,15 @@ abstract public class BaseObjectPoolExporter extends ObjectPoolExporter
 		if (totalExpenseAssignmentCost.hasValue() || totalResourceAssignmentCost.hasValue())
 		{
 			DateRange expenseTotalDateRange = expenseAssignmentTimePeriodCostsMap.getRolledUpDateRange(getProject().getProjectCalendar().getProjectPlanningDateRange());
-			if (expenseTotalDateRange != null)
+			DateRange workUnitsTotalDateRange = resourceAssignmentTimePeriodCostsMap.getRolledUpDateRange(getProject().getProjectCalendar().getProjectPlanningDateRange());
+			DateRange totalDateRange = DateRange.combine(expenseTotalDateRange, workUnitsTotalDateRange);
+			if (totalDateRange != null)
 			{
 				getWcsXmlExporter().writeStartElement(getPoolName() + TIME_PERIOD_COSTS);
 
 				getWcsXmlExporter().writeStartElement(TIME_PERIOD_COSTS);
-				getWcsXmlExporter().writeElement(getWriter(), CALCULATED_START_DATE, expenseTotalDateRange.getStartDate().toIsoDateString());
-				getWcsXmlExporter().writeElement(getWriter(), CALCULATED_END_DATE, expenseTotalDateRange.getEndDate().toIsoDateString());
+				getWcsXmlExporter().writeElement(getWriter(), CALCULATED_START_DATE, totalDateRange.getStartDate().toIsoDateString());
+				getWcsXmlExporter().writeElement(getWriter(), CALCULATED_END_DATE, totalDateRange.getEndDate().toIsoDateString());
 
 				if (totalExpenseAssignmentCost.hasValue())
 					getWcsXmlExporter().writeElement(getWriter(), CALCULATED_EXPENSE_TOTAL, totalExpenseAssignmentCost.toString());
