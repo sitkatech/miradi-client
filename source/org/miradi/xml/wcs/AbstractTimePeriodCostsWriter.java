@@ -157,5 +157,9 @@ abstract public class AbstractTimePeriodCostsWriter implements XmpzXmlConstants
 	
 	abstract protected String getQuantatityElementName();
 	
+	abstract protected String getCalculatedEntriesElementName();
+
+	abstract protected String getEntryElementName();
+	
 	private XmpzXmlExporter wcsXmlExporter;
 }
