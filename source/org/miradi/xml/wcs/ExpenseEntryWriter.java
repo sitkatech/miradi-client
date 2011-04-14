@@ -20,11 +20,31 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.wcs;
 
+import java.util.HashMap;
+import java.util.Vector;
+
+import org.miradi.objecthelpers.CategorizedQuantity;
+import org.miradi.objecthelpers.DateUnit;
+import org.miradi.objecthelpers.TimePeriodCosts;
+
 public class ExpenseEntryWriter extends AbstractTimePeriodCostsWriter
 {
 	public ExpenseEntryWriter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
 		super(wcsXmlExporterToUse);
+	}
+	
+	public void writeExpenseAssignmentTimePeriodCosts(HashMap<DateUnit, TimePeriodCosts> dateUnitTimePeriodCostsMap)	throws Exception
+	{
+		getWcsXmlExporter().writeStartElement(ExpenseEntryWriter.getCalculatedExpenseEntriesElementName());
+		for (DateUnit dateUnit : dateUnitTimePeriodCostsMap.keySet())
+		{
+			TimePeriodCosts timePeriodCosts = dateUnitTimePeriodCostsMap.get(dateUnit);
+			Vector<CategorizedQuantity> categorizedQuantaties = timePeriodCosts.getExpensesCategorizedQuantities();
+			writeCategorizedQuantaties(dateUnit, categorizedQuantaties, ExpenseEntryWriter.getExpenseEntryElementName());
+		}
+		
+		getWcsXmlExporter().writeEndElement(ExpenseEntryWriter.getCalculatedExpenseEntriesElementName());
 	}
 
 	@Override
