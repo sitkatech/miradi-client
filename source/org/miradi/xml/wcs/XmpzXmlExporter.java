@@ -445,6 +445,20 @@ public class XmpzXmlExporter extends XmlExporter implements XmpzXmlConstants
 		return startElementName + POOL_ELEMENT_TAG;
 	}
 	
+	public void exportValidId(ORef ref, final String parentElementName,	String idElementName) throws Exception, IOException
+	{
+		if (ref.isValid())
+		{
+			writeStartElement(parentElementName + idElementName);
+			writeStartElement(idElementName);
+
+			getWriter().write(ref.getObjectId().toString());
+
+			writeEndElement(idElementName);
+			writeEndElement(parentElementName + idElementName);
+		}
+	}
+	
 	public void writeOptionalCodeListElement(String parentElementName, String poolElementName, BaseObject object, String tag) throws Exception
 	{
 		CodeList codes = object.getCodeList(tag);
