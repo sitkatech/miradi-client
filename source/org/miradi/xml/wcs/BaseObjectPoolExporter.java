@@ -145,8 +145,8 @@ abstract public class BaseObjectPoolExporter extends ObjectPoolExporter
 			DateRange expenseTotalDateRange = expenseAssignmentTimePeriodCostsMap.getRolledUpDateRange(getProject().getProjectCalendar().getProjectPlanningDateRange());
 			getWcsXmlExporter().writeElement(getWriter(), CALCULATED_START_DATE, expenseTotalDateRange.getStartDate().toIsoDateString());
 			getWcsXmlExporter().writeElement(getWriter(), CALCULATED_END_DATE, expenseTotalDateRange.getEndDate().toIsoDateString());
-			new ExpenseEntryWriter(getWcsXmlExporter()).writeTimePeriodCosts(expenseAssignmentTimePeriodCostsMap.getDateUnitTimePeriodCostsMap());
-			new WorkUnitsEntryWriter(getWcsXmlExporter()).writeTimePeriodCosts(resourceAssignmentTimePeriodCostsMap.getDateUnitTimePeriodCostsMap());
+			new ExpenseTimePeriodCostsWriter(getWcsXmlExporter()).writeTimePeriodCosts(expenseAssignmentTimePeriodCostsMap.getDateUnitTimePeriodCostsMap());
+			new WorkUnitsTimePeriodCostsWriter(getWcsXmlExporter()).writeTimePeriodCosts(resourceAssignmentTimePeriodCostsMap.getDateUnitTimePeriodCostsMap());
 			
 			
 			getWcsXmlExporter().writeEndElement(TIME_PERIOD_COSTS);
