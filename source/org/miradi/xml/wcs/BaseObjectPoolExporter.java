@@ -173,7 +173,7 @@ abstract public class BaseObjectPoolExporter extends ObjectPoolExporter
 		{
 			TimePeriodCosts timePeriodCosts = dateUnitTimePeriodCostsMap.get(dateUnit);
 			Vector<CategorizedQuantity> categorizedQuantaties = timePeriodCosts.getExpensesCategorizedQuantities();
-			writeCategorizedQuantaties(dateUnit, categorizedQuantaties, ExpenseEntryWriter.getExpenseEntryElementName(), timePeriodCostsWriter);
+			timePeriodCostsWriter.writeCategorizedQuantaties(dateUnit, categorizedQuantaties, ExpenseEntryWriter.getExpenseEntryElementName(), timePeriodCostsWriter);
 		}
 		
 		getWcsXmlExporter().writeEndElement(ExpenseEntryWriter.getCalculatedExpenseEntriesElementName());
@@ -187,26 +187,9 @@ abstract public class BaseObjectPoolExporter extends ObjectPoolExporter
 		{
 			TimePeriodCosts timePeriodCosts = dateUnitTimePeriodCostsMap.get(dateUnit);
 			Vector<CategorizedQuantity> categorizedQuantaties = timePeriodCosts.getWorkUnitCategorizedQuantities();
-			writeCategorizedQuantaties(dateUnit, categorizedQuantaties, WorkUnitsEntryWriter.getWorkUnitsEntryElementName(), timePeriodCostsWriter);
+			timePeriodCostsWriter.writeCategorizedQuantaties(dateUnit, categorizedQuantaties, WorkUnitsEntryWriter.getWorkUnitsEntryElementName(), timePeriodCostsWriter);
 		}
 		
 		getWcsXmlExporter().writeEndElement(WorkUnitsEntryWriter.getCalculatedWorkUnitsEntriesElementName());
-	}
-
-	private void writeCategorizedQuantaties(DateUnit dateUnit, Vector<CategorizedQuantity> categorizedQuantaties, String dateUnitsDetailsParentElementName, AbstractTimePeriodCostsWriter timePeriodCostsWriter) throws Exception
-	{
-		for (CategorizedQuantity categorizedQuantity : categorizedQuantaties)
-		{
-			getWcsXmlExporter().writeStartElement(dateUnitsDetailsParentElementName);
-			
-			getWcsXmlExporter().exportValidId(categorizedQuantity.getResourceRef(), dateUnitsDetailsParentElementName, RESOURCE_ID);
-			getWcsXmlExporter().exportValidId(categorizedQuantity.getFundingSourceRef(), dateUnitsDetailsParentElementName, FUNDING_SOURCE_ID);
-			getWcsXmlExporter().exportValidId(categorizedQuantity.getAccountingCodeRef(), dateUnitsDetailsParentElementName, ACCOUNTING_CODE_ID);
-			getWcsXmlExporter().exportValidId(categorizedQuantity.getCategoryOneRef(), dateUnitsDetailsParentElementName, BUDGET_CATEGORY_ONE_ID);
-			getWcsXmlExporter().exportValidId(categorizedQuantity.getCategoryTwoRef(), dateUnitsDetailsParentElementName, BUDGET_CATEGORY_TWO_ID);			
-			timePeriodCostsWriter.writeEffortDetails(dateUnitsDetailsParentElementName + DETAILS, dateUnit, categorizedQuantity.getQuantity().getValue());
-			
-			getWcsXmlExporter().writeEndElement(dateUnitsDetailsParentElementName);
-		}
 	}
 }
