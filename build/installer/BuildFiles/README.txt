@@ -143,6 +143,75 @@ GNU/Linux:
 ---------------------
 Changes
 
+Miradi 3.3 is a major upgrade, with many new features and enhancements. 
+These are the most notable:
+
+Translations:
+- Several new and updated language packs
+
+Appwide:
+- Wizard content has been updated
+- New "Dashboard" feature shows a quick view of the Miradi project status
+- Long actions, such as Open, Import, and Export, now show a progress bar
+- All sortable tables now save thier sort order 
+- Allow users to choose relevant Objectives and Goals when editing Strategies and Activities
+- Mouse wheel now works in all pop up editors
+- Mouse wheel now works in selection lists like TNC Operating Unit 
+- Sort Progress Report/Percent Status column based on rating rather than alphabetical 
+- Now have consistent cursor position behavior after clicking "Create"
+- Fixed memory leak exporting diagrams, including inside CPMZ/XMPZ
+- Prevent corruption due to power loss while writing project data
+- Migrations to repair existing minor damage in some projects 
+
+Summary View:
+- New Conservation Coaches Network field on the Team tab 
+- Moved the Data Sharing radio button field from TNC tab to Project tab
+- The TNC Operating Unit list has been updated 
+- The TNC "Planning Team (legacy)" field is now editable
+
+Diagram:
+- Export image now allows setting the output image size/resolution
+- Paste into a different diagram is now always as-shared
+- Links can now be bidirectional on some diagrams and unidirectional on others 
+- Can now choose relevant Objectives and Goals when editing Strategies and Activities
+- Prevent mostly-blank output exporting a diagram image with hidden factors
+- Can now manage tags for taggable items (activities, stresses) 
+- Can now edit stress/activity properties from the  diagram
+
+Threat Rating:
+- Target Summary Threat rating sometimes showed incorrect values in threat rating table 
+- Simple threat rating table -> Overall Project Rating cell now works without a stress 
+
+Strategic Plan:
+- New option to flip strategy/objective parent child relationship
+- Consolidate most options into a Customize dialog, and simplify the UI
+- Monitoring Plan now has several pre-built tables
+- Significant speed optimization on larger projects
+- Objectives are now displayed in related items for Strategies
+
+Work Plan:
+- Consolidate most options into a Customize dialog, and simplify the UI
+- Significant speed optimization for Work Plan data entry
+- Avoid certain cases of duplication of Activities in the tree
+- Details and Comments are now available as columns 
+- Fixed a problem that prevented entering "When" values using specific day(s) 
+- Improved behavior when a day is selected but no days are chosen
+
+Reports:
+- Custom Strategic Plan tables are now available as sections for reports
+- Target habitat Association field now prints values instead of internal codes 
+
+CPMZ:
+- Export now checks for required values before continuing
+- Goals associated with Human Welfare Targets are now exported
+- Strategy - Goal Association are now exported
+
+XMPZ:
+- Many changes were made to the XMPZ schema. 
+  NOTE: This only affects developers who are writing code to read XMPZ files.
+
+
+
 Miradi 3.2.3 has the following improvements:
 
 - Eliminate incorrect warning that Miradi should be upgraded
