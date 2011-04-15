@@ -271,6 +271,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 			EAM.logWarning("UmbrellaView.becomeActive was already active: " + getClass().getName());
 		getProject().addCommandExecutedListener(this);
 		isActive = true;
+		getMainWindow().clearStatusBar();
 	}
 	
 	public void becomeInactive() throws Exception
