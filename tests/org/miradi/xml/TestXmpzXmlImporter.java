@@ -328,7 +328,10 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 	{
 		ORef resultsChainRef = getProject().createResultsChainDiagram();
 		TaggedObjectSet taggedOjectSet = getProject().createTaggedObjectSet();
+		Cause causeToTag = getProject().createCause();
+		getProject().fillObjectUsingCommand(taggedOjectSet, TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, new ORefList(causeToTag));
 		ORefList taggedObjectSetRefs = new ORefList(taggedOjectSet);
+		
 		getProject().fillObjectUsingCommand(resultsChainRef, DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, taggedObjectSetRefs);
 		getProject().fillObjectUsingCommand(resultsChainRef, ResultsChainDiagram.TAG_LABEL, "SomeLabel");
 		getProject().fillObjectUsingCommand(resultsChainRef, ResultsChainDiagram.TAG_SHORT_LABEL, "SomeShortLabel");

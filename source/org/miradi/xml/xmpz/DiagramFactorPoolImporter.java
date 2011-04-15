@@ -97,6 +97,11 @@ public class DiagramFactorPoolImporter extends AbstractBaseObjectPoolImporter
 	{
 		Node wrappedByDiagamFactorIdNode = importer.getNode(wrappedFactorIdNode, WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME);
 		
+		return getWrappedRef(wrappedByDiagamFactorIdNode);
+	}
+
+	public static ORef getWrappedRef(Node wrappedByDiagamFactorIdNode)
+	{
 		//TODO Should avoid relying on getFirst()
 		final int ONE_CHILD_NODE_FOR_ELEMENT = 1;
 		final int ONE_CHILD_FOR_TEXT = 1;
