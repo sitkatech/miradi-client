@@ -1,4 +1,4 @@
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/71'
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/72'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -895,6 +895,7 @@ CalculatedCosts.element = element miradi:CalculatedCosts
   element miradi:CalculatedEndDate{ vocabulary_date } &
   element miradi:CalculatedExpenseTotal{ xsd:decimal }? &
   element miradi:CalculatedWorkUnitsTotal{ xsd:decimal }? &
+  element miradi:CalculatedTotalBudgetCost{ xsd:decimal }? &
   element miradi:CalculatedWho{ ResourceId.element* }? &
   element miradi:CalculatedExpenseEntries{ ExpenseEntry.element* }? &
   element miradi:CalculatedWorkUnitsEntries{ WorkUnitsEntry.element* }?
