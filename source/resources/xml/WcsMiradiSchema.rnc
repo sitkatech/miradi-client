@@ -357,7 +357,7 @@ Strategy.element = element miradi:Strategy
   element miradi:StrategyExpenseIds { ExpenseAssignmentId.element* }? &
   element miradi:StrategyAssignmentIds { ResourceAssignmentId.element* }? &
   element miradi:StrategyIndicatorIds { IndicatorId.element* }? &
-  element miradi:StrategyCalculatedCosts { CalculatedCosts.element* }?
+  element miradi:StrategyCalculatedCosts { CalculatedCosts.element? }?
 }
 
 ThreatReductionResultPool.element = element miradi:ThreatReductionResultPool { ThreatReductionResult.element* }
@@ -499,7 +499,7 @@ Indicator.element = element miradi:Indicator
   element miradi:IndicatorThresholds { IndicatorThreshold.element* }? &
   element miradi:IndicatorRatingSource { vocabulary_rating_source  }? &
   element miradi:IndicatorViabilityRatingsComments { text }? &
-  element miradi:IndicatorCalculatedCosts { CalculatedCosts.element* }?
+  element miradi:IndicatorCalculatedCosts { CalculatedCosts.element? }?
 }
 
 TaskPool.element = element miradi:TaskPool { Task.element* }
@@ -514,7 +514,7 @@ Task.element = element miradi:Task
   element miradi:TaskAssignmentIds { ResourceAssignmentId.element* }? &
   element miradi:TaskProgressReportIds { ProgressReportId.element* }? &
   element miradi:TaskSubTaskIds { SubTaskId.element* }? &
-  element miradi:TaskCalculatedCosts { CalculatedCosts.element* }?
+  element miradi:TaskCalculatedCosts { CalculatedCosts.element? }?
 }
 
 ProgressReportPool.element = element miradi:ProgressReportPool { ProgressReport.element* }
