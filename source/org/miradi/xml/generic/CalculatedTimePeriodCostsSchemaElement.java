@@ -34,7 +34,7 @@ public class CalculatedTimePeriodCostsSchemaElement extends FieldSchemaElement
 	{
 		super.output(writer);
 		
-		writer.write(" { " + TIME_PERIOD_COSTS + ".element* }?");
+		writer.write(" { " + TIME_PERIOD_COSTS + ".element? }?");
 	}
 
 }
