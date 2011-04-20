@@ -477,6 +477,7 @@ public class XmlSchemaCreator implements XmpzXmlConstants
 		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + CALCULATED_END_DATE + "{ vocabulary_date } &");
 		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + CALCULATED_EXPENSE_TOTAL + "{ xsd:decimal }? &");
 		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + CALCULATED_WORK_UNITS_TOTAL + "{ xsd:decimal }? &");
+		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + CALCULATED_TOTAL_BUDGET_COST + "{ xsd:decimal }? &");
 		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + CALCULATED_WHO + "{ ResourceId.element* }? &");
 		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + CALCULATED_EXPENSE_ENTRIES + "{ " + EXPENSE_ENTRY + ".element* }? &");
 		writer.printlnIndented("element " + XmpzXmlConstants.PREFIX + CALCULATED_WORK_UNITS_ENTRIES + "{ " + WORK_UNITS_ENTRY + ".element* }?");
