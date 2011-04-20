@@ -23,6 +23,7 @@ package org.miradi.xml.wcs;
 import java.awt.Point;
 
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
@@ -132,8 +133,11 @@ abstract public class BaseObjectPoolExporter extends ObjectPoolExporter
 		TimePeriodCostsMap expenseAssignmentTimePeriodCostsMap = baseObject.getExpenseAssignmentsTimePeriodCostsMap();
 		TimePeriodCostsMap resourceAssignmentTimePeriodCostsMap = baseObject.getResourceAssignmentsTimePeriodCostsMap();
 		
-		OptionalDouble totalExpenseAssignmentCost = expenseAssignmentTimePeriodCostsMap.calculateTotalBudgetCost(getProject());
-		OptionalDouble totalResourceAssignmentCost = resourceAssignmentTimePeriodCostsMap.calculateTotalBudgetCost(getProject());
+		TimePeriodCosts expenseAssignmentTimePeriodCosts = expenseAssignmentTimePeriodCostsMap.calculateTotalBudgetCost();
+		TimePeriodCosts resourceAssignmentTimePeriodCosts = resourceAssignmentTimePeriodCostsMap.calculateTotalBudgetCost();
+		
+		OptionalDouble totalExpenseAssignmentCost = expenseAssignmentTimePeriodCosts.getTotalExpense();
+		OptionalDouble totalResourceAssignmentCost = resourceAssignmentTimePeriodCosts.getTotalWorkUnits();
 		if (totalExpenseAssignmentCost.hasValue() || totalResourceAssignmentCost.hasValue())
 		{
 			final DateRange projectPlanningDateRange = getProject().getProjectCalendar().getProjectPlanningDateRange();
