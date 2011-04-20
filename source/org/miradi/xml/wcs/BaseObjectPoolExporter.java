@@ -137,9 +137,9 @@ abstract public class BaseObjectPoolExporter extends ObjectPoolExporter
 		TimePeriodCosts expenseAssignmentTimePeriodCosts = expenseAssignmentTimePeriodCostsMap.calculateTotalBudgetCost();
 		TimePeriodCosts resourceAssignmentTimePeriodCosts = resourceAssignmentTimePeriodCostsMap.calculateTotalBudgetCost();
 		
-		OptionalDouble totalExpenseAssignmentCost = expenseAssignmentTimePeriodCosts.getTotalExpense();
-		OptionalDouble totalResourceAssignmentCost = resourceAssignmentTimePeriodCosts.getTotalWorkUnits();
-		if (totalExpenseAssignmentCost.hasValue() || totalResourceAssignmentCost.hasValue())
+		OptionalDouble totalExpenses = expenseAssignmentTimePeriodCosts.getTotalExpense();
+		OptionalDouble totalWorkUnits = resourceAssignmentTimePeriodCosts.getTotalWorkUnits();
+		if (totalExpenses.hasValue() || totalWorkUnits.hasValue())
 		{
 			final DateRange projectPlanningDateRange = getProject().getProjectCalendar().getProjectPlanningDateRange();
 			DateRange expenseTotalDateRange = expenseAssignmentTimePeriodCostsMap.getRolledUpDateRange(projectPlanningDateRange);
@@ -152,11 +152,11 @@ abstract public class BaseObjectPoolExporter extends ObjectPoolExporter
 			getWcsXmlExporter().writeElement(getWriter(), CALCULATED_END_DATE, totalDateRange.getEndDate().toIsoDateString());
 			getWcsXmlExporter().writeElement(getWriter(),	CALCULATED_TOTAL_BUDGET_COST, totalTimePeriodCostsMap.calculateTotalBudgetCost(getProject()).toString());
 			
-			if (totalExpenseAssignmentCost.hasValue())
-				getWcsXmlExporter().writeElement(getWriter(), CALCULATED_EXPENSE_TOTAL, totalExpenseAssignmentCost.toString());
+			if (totalExpenses.hasValue())
+				getWcsXmlExporter().writeElement(getWriter(), CALCULATED_EXPENSE_TOTAL, totalExpenses.toString());
 
-			if (totalResourceAssignmentCost.hasValue())
-				getWcsXmlExporter().writeElement(getWriter(), CALCULATED_WORK_UNITS_TOTAL, totalResourceAssignmentCost.toString());			
+			if (totalWorkUnits.hasValue())
+				getWcsXmlExporter().writeElement(getWriter(), CALCULATED_WORK_UNITS_TOTAL, totalWorkUnits.toString());			
 
 			new ExpenseTimePeriodCostsWriter(getWcsXmlExporter()).writeTimePeriodCosts(expenseAssignmentTimePeriodCostsMap.getDateUnitTimePeriodCostsMap());
 			new WorkUnitsTimePeriodCostsWriter(getWcsXmlExporter()).writeTimePeriodCosts(resourceAssignmentTimePeriodCostsMap.getDateUnitTimePeriodCostsMap());
