@@ -33,6 +33,7 @@ import org.miradi.main.EAM;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.Assignment;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.ExpenseAssignment;
@@ -126,6 +127,22 @@ public class TestXmpzExporter extends TestCaseWithProject
 		verifyNodeValue(xmlImporter, timePeriodCostsNode, XmpzXmlConstants.CALCULATED_EXPENSE_TOTAL, "10");
 		verifyNodeValue(xmlImporter, timePeriodCostsNode, XmpzXmlConstants.CALCULATED_WORK_UNITS_TOTAL, "");
 		verifyExpensesEntriesNode(xmlImporter, timePeriodCostsNode);
+		verifyCategoryValue(xmlImporter, expense, timePeriodCostsNode, ExpenseAssignment.TAG_FUNDING_SOURCE_REF, XmpzXmlConstants.FUNDING_SOURCE_ID);
+		verifyCategoryValue(xmlImporter, expense, timePeriodCostsNode, ExpenseAssignment.TAG_ACCOUNTING_CODE_REF, XmpzXmlConstants.ACCOUNTING_CODE_ID);
+		verifyCategoryValue(xmlImporter, expense, timePeriodCostsNode, ExpenseAssignment.TAG_CATEGORY_ONE_REF, XmpzXmlConstants.BUDGET_CATEGORY_ONE_ID);
+		verifyCategoryValue(xmlImporter, expense, timePeriodCostsNode, ExpenseAssignment.TAG_CATEGORY_TWO_REF, XmpzXmlConstants.BUDGET_CATEGORY_TWO_ID);
+	}
+	
+	private void verifyCategoryValue(XmpzXmlImporter xmlImporter, Assignment assignment, Node timePeriodCostsNode, final String categoryRefTag, final String categoryElementName) throws Exception
+	{
+		String value = xmlImporter.getPathData(timePeriodCostsNode, new String[] {
+				XmpzXmlConstants.CALCULATED_EXPENSE_ENTRIES, 
+				XmpzXmlConstants.EXPENSE_ENTRY,  
+				XmpzXmlConstants.EXPENSE_ENTRY + categoryElementName,
+				categoryElementName,
+				});
+		
+		assertEquals("Incorrect category id?", assignment.getRef(categoryRefTag).getObjectId().toString(), value);
 	}
 	
 	private void verifyExpensesEntriesNode(XmpzXmlImporter xmlImporter, Node timePeriodCostsNode) throws Exception
