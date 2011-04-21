@@ -1407,7 +1407,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public void populateResourceAssignment(ResourceAssignment resourceAssignment) throws Exception
 	{
 		fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_LABEL, "Some Resource Assignment");
-		fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_RESOURCE_ID, createProjectResource().getId());
+		fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_RESOURCE_ID, createAndPopulateProjectResource().getId());
 		fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_FUNDING_SOURCE_ID, createFundingSource().getId());
 		fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_ACCOUNTING_CODE_ID, createAccountingCode().getId());
 		fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_CATEGORY_ONE_REF, createCategoryOne().getRef());
