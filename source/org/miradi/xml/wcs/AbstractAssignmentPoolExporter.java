@@ -116,7 +116,7 @@ abstract public class AbstractAssignmentPoolExporter extends BaseObjectPoolExpor
 
 	private void writeProjectTotal(DateUnit dateUnit) throws Exception
 	{		
-		getWcsXmlExporter().writeStartElementWithAttribute(getWriter(), getFullProjectTimespanElementName(), WORK_UNITS_FULL_PROJECT_TIMESPAN, "Total");
+		getWcsXmlExporter().writeStartElementWithAttribute(getWriter(), getFullProjectTimespanElementName(), FULL_PROJECT_TIMESPAN, "Total");
 		getWcsXmlExporter().writeEndElement(getFullProjectTimespanElementName());
 	}
 

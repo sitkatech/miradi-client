@@ -139,6 +139,7 @@ public interface XmpzXmlConstants
 	public static final String EXPENSES_DATE_UNIT = "ExpensesDateUnit";
 	public static final String EXPENSES_FULL_PROJECT_TIMESPAN = "ExpensesFullProjectTimespan";
 	public static final String WORK_UNITS_FULL_PROJECT_TIMESPAN = "WorkUnitsFullProjectTimespan";
+	public static final String FULL_PROJECT_TIMESPAN = "FullProjectTimespan";
 	public static final String EXPENSES_YEAR = "ExpensesYear";
 	public static final String EXPENSES_QUARTER = "ExpensesQuarter";
 	public static final String EXPENSES_MONTH = "ExpensesMonth";
