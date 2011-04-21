@@ -495,7 +495,7 @@ Indicator.element = element miradi:Indicator
   element miradi:IndicatorExpenseIds { ExpenseAssignmentId.element* }? &
   element miradi:IndicatorAssignmentIds { ResourceAssignmentId.element* }? &
   element miradi:IndicatorMeasurementIds { MeasurementId.element* }? &
-  element miradi:IndicatorMethodIds { MethodId.element* }? &
+  element miradi:IndicatorSortedMethodIds { MethodId.element* }? &
   element miradi:IndicatorThresholds { IndicatorThreshold.element* }? &
   element miradi:IndicatorRatingSource { vocabulary_rating_source  }? &
   element miradi:IndicatorViabilityRatingsComments { text }? &
@@ -513,7 +513,7 @@ Task.element = element miradi:Task
   element miradi:TaskExpenseIds { ExpenseAssignmentId.element* }? &
   element miradi:TaskAssignmentIds { ResourceAssignmentId.element* }? &
   element miradi:TaskProgressReportIds { ProgressReportId.element* }? &
-  element miradi:TaskSubTaskIds { SubTaskId.element* }? &
+  element miradi:TaskSortedSubTaskIds { SubTaskId.element* }? &
   element miradi:TaskCalculatedCosts { CalculatedCosts.element }?
 }
 
@@ -1083,3 +1083,4 @@ ExtraDataItem.element = element miradi:ExtraDataItem
   attribute ExtraDataItemName { text } &
   element miradi:ExtraDataItemValue { text }?
 }
+
