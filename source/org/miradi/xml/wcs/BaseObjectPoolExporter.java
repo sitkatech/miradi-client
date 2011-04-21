@@ -133,12 +133,10 @@ abstract public class BaseObjectPoolExporter extends ObjectPoolExporter
 		TimePeriodCostsMap expenseAssignmentTimePeriodCostsMap = baseObject.getExpenseAssignmentsTimePeriodCostsMap();
 		TimePeriodCostsMap resourceAssignmentTimePeriodCostsMap = baseObject.getResourceAssignmentsTimePeriodCostsMap();
 		TimePeriodCostsMap totalBudgetCostsTimePeriodCostsMap = baseObject.getTotalTimePeriodCostsMap();
+		TimePeriodCosts totalBudgetCost = totalBudgetCostsTimePeriodCostsMap.calculateTotalBudgetCost();
 		
-		TimePeriodCosts expenseAssignmentTimePeriodCosts = expenseAssignmentTimePeriodCostsMap.calculateTotalBudgetCost();
-		TimePeriodCosts resourceAssignmentTimePeriodCosts = resourceAssignmentTimePeriodCostsMap.calculateTotalBudgetCost();
-		
-		OptionalDouble totalExpenses = expenseAssignmentTimePeriodCosts.getTotalExpense();
-		OptionalDouble totalWorkUnits = resourceAssignmentTimePeriodCosts.getTotalWorkUnits();
+		OptionalDouble totalExpenses = totalBudgetCost.getTotalExpense();
+		OptionalDouble totalWorkUnits = totalBudgetCost.getTotalWorkUnits();
 		if (totalExpenses.hasValue() || totalWorkUnits.hasValue())
 		{
 			final DateRange projectPlanningDateRange = getProject().getProjectCalendar().getProjectPlanningDateRange();
