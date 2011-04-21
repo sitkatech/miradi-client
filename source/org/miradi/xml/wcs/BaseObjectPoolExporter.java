@@ -137,7 +137,7 @@ abstract public class BaseObjectPoolExporter extends ObjectPoolExporter
 		
 		OptionalDouble totalExpenses = totalBudgetCost.getTotalExpense();
 		OptionalDouble totalWorkUnits = totalBudgetCost.getTotalWorkUnits();
-		if (totalExpenses.hasValue() || totalWorkUnits.hasValue())
+		if (totalBudgetCost.calculateTotalCost(getProject()).hasValue())
 		{
 			final DateRange projectPlanningDateRange = getProject().getProjectCalendar().getProjectPlanningDateRange();
 			DateRange expenseTotalDateRange = expenseAssignmentTimePeriodCostsMap.getRolledUpDateRange(projectPlanningDateRange);
