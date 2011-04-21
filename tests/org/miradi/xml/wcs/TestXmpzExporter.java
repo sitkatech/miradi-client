@@ -29,6 +29,7 @@ import org.martus.util.UnicodeWriter;
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
 import org.miradi.exceptions.ValidationException;
+import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORefList;
@@ -38,6 +39,7 @@ import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.project.ProjectForTesting;
@@ -131,6 +133,22 @@ public class TestXmpzExporter extends TestCaseWithProject
 		verifyCategoryValue(xmlImporter, expense, timePeriodCostsNode, ExpenseAssignment.TAG_ACCOUNTING_CODE_REF, XmpzXmlConstants.ACCOUNTING_CODE_ID);
 		verifyCategoryValue(xmlImporter, expense, timePeriodCostsNode, ExpenseAssignment.TAG_CATEGORY_ONE_REF, XmpzXmlConstants.BUDGET_CATEGORY_ONE_ID);
 		verifyCategoryValue(xmlImporter, expense, timePeriodCostsNode, ExpenseAssignment.TAG_CATEGORY_TWO_REF, XmpzXmlConstants.BUDGET_CATEGORY_TWO_ID);
+	}
+	
+	public void testWorkUnitsTimePeriodCost() throws Exception
+	{
+		Strategy strategy  = getProject().createStrategy();
+		getProject().setProjectStartDate(2007);
+		getProject().setProjectEndDate(2008);
+		ResourceAssignment assignment = getProject().createAndPopulateResourceAssignment();
+		getProject().fillObjectUsingCommand(strategy, Strategy.TAG_RESOURCE_ASSIGNMENT_IDS, new IdList(assignment));
+		XmpzXmlImporter xmlImporter = createProjectImporter(getProject());
+		Node timePeriodCostsNode = getTimePeriodCostsNode(xmlImporter); 
+		verifyNodeValue(xmlImporter, timePeriodCostsNode, XmpzXmlConstants.CALCULATED_START_DATE, "2007-01-01");
+		verifyNodeValue(xmlImporter, timePeriodCostsNode, XmpzXmlConstants.CALCULATED_END_DATE, "2008-01-01");
+		verifyNodeValue(xmlImporter, timePeriodCostsNode, XmpzXmlConstants.CALCULATED_TOTAL_BUDGET_COST, "110");
+		verifyNodeValue(xmlImporter, timePeriodCostsNode, XmpzXmlConstants.CALCULATED_EXPENSE_TOTAL, "");
+		verifyNodeValue(xmlImporter, timePeriodCostsNode, XmpzXmlConstants.CALCULATED_WORK_UNITS_TOTAL, "11");
 	}
 	
 	private void verifyCategoryValue(XmpzXmlImporter xmlImporter, Assignment assignment, Node timePeriodCostsNode, final String categoryRefTag, final String categoryElementName) throws Exception
