@@ -22,20 +22,31 @@ package org.miradi.xml.wcs;
 
 import java.io.ByteArrayOutputStream;
 
+import javax.xml.xpath.XPathExpressionException;
+
+import org.martus.util.UnicodeStringWriter;
 import org.martus.util.UnicodeWriter;
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
 import org.miradi.main.TestCaseWithProject;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
+import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
+import org.miradi.project.ProjectForTesting;
 import org.miradi.project.TestSimpleThreatRatingFramework;
 import org.miradi.project.TestStressBasedThreatRatingFramework;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
+import org.miradi.utils.NullProgressMeter;
+import org.miradi.xml.TestXmpzXmlImporter;
+import org.miradi.xml.xmpz.XmpzXmlImporter;
+import org.w3c.dom.Node;
 
 
 
@@ -99,6 +110,51 @@ public class TestXmpzExporter extends TestCaseWithProject
 		TestSimpleThreatRatingFramework.populateBundle(getProject().getSimpleThreatRatingFramework(), threatDiagramFactor.getWrappedId(), targetDiagramFactor.getWrappedId(), getProject().getSimpleThreatRatingFramework().getValueOptions()[0]);
 		
 		validateProject();
+	}
+	
+	public void testExpenseTimePeriodCost() throws Exception
+	{
+		Strategy strategy = getProject().createStrategy();
+		getProject().setProjectStartDate(2008);
+		ExpenseAssignment expense = getProject().createAndPopulateExpenseAssignment();
+		getProject().fillObjectUsingCommand(strategy, Strategy.TAG_EXPENSE_ASSIGNMENT_REFS, new ORefList(expense));
+		XmpzXmlImporter xmlImporter = createProjectImporter(getProject());
+		Node timePeriodCostsNode = getTimePeriodCostsNode(xmlImporter); 
+		verifyNodeValue(xmlImporter, timePeriodCostsNode, XmpzXmlConstants.CALCULATED_START_DATE, "2008-01-01");
+		verifyNodeValue(xmlImporter, timePeriodCostsNode, XmpzXmlConstants.CALCULATED_END_DATE, "2008-12-31");
+		verifyNodeValue(xmlImporter, timePeriodCostsNode, XmpzXmlConstants.CALCULATED_TOTAL_BUDGET_COST, "10");
+		verifyNodeValue(xmlImporter, timePeriodCostsNode, XmpzXmlConstants.CALCULATED_EXPENSE_TOTAL, "10");
+		verifyNodeValue(xmlImporter, timePeriodCostsNode, XmpzXmlConstants.CALCULATED_WORK_UNITS_TOTAL, "");
+	}
+	
+	private Node getTimePeriodCostsNode(XmpzXmlImporter xmlImporter)	throws Exception
+	{
+		String pathElements = xmlImporter.generatePath(new String[]
+		                                                            {
+			XmpzXmlConstants.CONSERVATION_PROJECT, 
+			XmpzXmlConstants.STRATEGY + XmpzXmlConstants.POOL_ELEMENT_TAG, 
+			XmpzXmlConstants.STRATEGY, 
+			XmpzXmlConstants.STRATEGY + XmpzXmlConstants.TIME_PERIOD_COSTS, 
+			XmpzXmlConstants.TIME_PERIOD_COSTS, 
+		   });
+		
+		return xmlImporter.getNode(pathElements);
+	}
+
+	private void verifyNodeValue(final XmpzXmlImporter importer, final Node node, final String elementName, final String expectedValue) throws XPathExpressionException
+	{
+		assertEquals("Wrong node value for element " + elementName + "?", expectedValue, importer.getPathData(node, elementName));
+	}
+	
+	private XmpzXmlImporter createProjectImporter(final ProjectForTesting projectToExport) throws Exception
+	{
+		UnicodeStringWriter writer = TestXmpzXmlImporter.createWriter(projectToExport);		
+		ProjectForTesting projectToImportInto = ProjectForTesting.createProjectWithoutDefaultObjects("ProjectToImportInto");
+		XmpzXmlImporter xmlImporter = new XmpzXmlImporter(projectToImportInto, new NullProgressMeter());
+		StringInputStreamWithSeek stringInputputStream = new StringInputStreamWithSeek(writer.toString());
+		xmlImporter.importProject(stringInputputStream);
+		
+		return xmlImporter;
 	}
 
 	private void validateProject() throws Exception

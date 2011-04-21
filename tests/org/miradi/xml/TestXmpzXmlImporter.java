@@ -365,7 +365,7 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 		return projectToImportInto;
 	}
 
-	private UnicodeStringWriter createWriter(ProjectForTesting project) throws Exception
+	public static UnicodeStringWriter createWriter(ProjectForTesting project) throws Exception
 	{
 		XmpzXmlExporter exporter = new XmpzXmlExporter(project);
 		UnicodeStringWriter writer = UnicodeStringWriter.create();

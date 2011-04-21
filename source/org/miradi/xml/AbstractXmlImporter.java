@@ -143,6 +143,12 @@ abstract public class AbstractXmlImporter
 		importField(destinationRef, destinationTag, internalCode);
 	}
 
+	public String getPathData(Node node, String element) throws XPathExpressionException
+	{
+		String generatedPath = generatePath(new String[]{element, });
+		return getXPath().evaluate(generatedPath, node);
+	}
+
 	public String getPathData(Node node, String[] elements) throws XPathExpressionException
 	{
 		String generatedPath = generatePath(elements);
