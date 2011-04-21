@@ -144,13 +144,9 @@ abstract public class BaseObjectPoolExporter extends ObjectPoolExporter
 			getWcsXmlExporter().writeElement(getWriter(), CALCULATED_END_DATE, totalDateRange.getEndDate().toIsoDateString());
 			getWcsXmlExporter().writeElement(getWriter(),	CALCULATED_TOTAL_BUDGET_COST, totalBudgetCostsTimePeriodCostsMap.calculateTotalBudgetCost(getProject()).toString());
 
-			OptionalDouble totalExpenses = totalBudgetCost.getTotalExpense();
-			if (totalExpenses.hasValue())
-				getWcsXmlExporter().writeElement(getWriter(), CALCULATED_EXPENSE_TOTAL, totalExpenses.toString());
+			writeOptionalTotalCost(totalBudgetCost.getTotalExpense(), CALCULATED_EXPENSE_TOTAL);
 
-			OptionalDouble totalWorkUnits = totalBudgetCost.getTotalWorkUnits();
-			if (totalWorkUnits.hasValue())
-				getWcsXmlExporter().writeElement(getWriter(), CALCULATED_WORK_UNITS_TOTAL, totalWorkUnits.toString());			
+			writeOptionalTotalCost(totalBudgetCost.getTotalWorkUnits(), CALCULATED_WORK_UNITS_TOTAL);			
 
 			TimePeriodCostsMap expenseAssignmentTimePeriodCostsMap = baseObject.getExpenseAssignmentsTimePeriodCostsMap();
 			TimePeriodCostsMap resourceAssignmentTimePeriodCostsMap = baseObject.getResourceAssignmentsTimePeriodCostsMap();
@@ -159,6 +155,14 @@ abstract public class BaseObjectPoolExporter extends ObjectPoolExporter
 
 			getWcsXmlExporter().writeEndElement(TIME_PERIOD_COSTS);
 			getWcsXmlExporter().writeEndElement(getPoolName() + TIME_PERIOD_COSTS);
+		}
+	}
+
+	private void writeOptionalTotalCost(final OptionalDouble totalCost, final String totalCostElementName) throws Exception
+	{
+		if (totalCost.hasValue())
+		{
+			getWcsXmlExporter().writeElement(getWriter(), totalCostElementName, totalCost.toString());
 		}
 	}
 }
