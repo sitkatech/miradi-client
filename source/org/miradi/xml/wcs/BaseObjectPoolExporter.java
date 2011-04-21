@@ -133,8 +133,8 @@ abstract public class BaseObjectPoolExporter extends ObjectPoolExporter
 		TimePeriodCostsMap totalBudgetCostsTimePeriodCostsMap = baseObject.getTotalTimePeriodCostsMap();
 		TimePeriodCosts totalBudgetCost = totalBudgetCostsTimePeriodCostsMap.calculateTotalBudgetCost();
 		
-		final OptionalDouble calculateTotalCost = totalBudgetCost.calculateTotalCost(getProject());
-		if (calculateTotalCost.hasValue())
+		final OptionalDouble totalCostValue = totalBudgetCost.calculateTotalCost(getProject());
+		if (totalCostValue.hasValue())
 		{
 			final DateRange projectPlanningDateRange = getProject().getProjectCalendar().getProjectPlanningDateRange();
 			DateRange totalDateRange = totalBudgetCostsTimePeriodCostsMap.getRolledUpDateRange(projectPlanningDateRange);
@@ -143,7 +143,7 @@ abstract public class BaseObjectPoolExporter extends ObjectPoolExporter
 			getWcsXmlExporter().writeStartElement(TIME_PERIOD_COSTS);
 			getWcsXmlExporter().writeElement(getWriter(), CALCULATED_START_DATE, totalDateRange.getStartDate().toIsoDateString());
 			getWcsXmlExporter().writeElement(getWriter(), CALCULATED_END_DATE, totalDateRange.getEndDate().toIsoDateString());
-			getWcsXmlExporter().writeElement(getWriter(),	CALCULATED_TOTAL_BUDGET_COST, calculateTotalCost.toString());
+			getWcsXmlExporter().writeElement(getWriter(),	CALCULATED_TOTAL_BUDGET_COST, totalCostValue.toString());
 
 			writeOptionalTotalCost(CALCULATED_EXPENSE_TOTAL, totalBudgetCost.getTotalExpense());
 
