@@ -74,7 +74,7 @@ public class TestXmpzExporter extends TestCaseWithProject
 	
 	public void testIfWeDoBigSchemaChangesWeShouldIncludeMinorChangesToo() throws Exception
 	{
-		if("72".equals(XmpzXmlConstants.NAME_SPACE_VERSION))
+		if("73".equals(XmpzXmlConstants.NAME_SPACE_VERSION))
 			return;
 
 		fail("If the schema version number changes, make sure we also do all the\n" +

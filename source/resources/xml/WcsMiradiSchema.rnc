@@ -1,4 +1,4 @@
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/72'
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/73'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -675,7 +675,7 @@ ExtraData.element = element miradi:ExtraData
 ExtraDataSection.element *
 }
 
-vocabulary_work_units_full_project_timespan = xsd:NMTOKEN { pattern = 'Total' } 
+vocabulary_full_project_timespan = xsd:NMTOKEN { pattern = 'Total' } 
 vocabulary_year = xsd:NMTOKEN { pattern = '[0-9]{4}' } 
 vocabulary_month = xsd:integer { minInclusive='1' maxInclusive='12' } 
 vocabulary_date = xsd:NMTOKEN { pattern = '[0-9]{4}-[0-9]{2}-[0-9]{2}' }
@@ -856,7 +856,7 @@ DateUnitWorkUnits.element = element miradi:DateUnitWorkUnits
 
 WorkUnitsFullProjectTimespan.element = element miradi:WorkUnitsFullProjectTimespan
 {
-  attribute WorkUnitsFullProjectTimespan { vocabulary_work_units_full_project_timespan }
+  attribute WorkUnitsFullProjectTimespan { vocabulary_full_project_timespan }
 }
 
 WorkUnitsYear.element = element miradi:WorkUnitsYear
@@ -928,7 +928,7 @@ DateUnitExpense.element = element miradi:DateUnitExpense
 
 ExpensesFullProjectTimespan.element = element miradi:ExpensesFullProjectTimespan
 {
-  attribute WorkUnitsFullProjectTimespan { vocabulary_work_units_full_project_timespan }
+  attribute WorkUnitsFullProjectTimespan { vocabulary_full_project_timespan }
 }
 
 ExpensesYear.element = element miradi:ExpensesYear

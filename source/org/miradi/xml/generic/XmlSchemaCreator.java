@@ -109,7 +109,7 @@ public class XmlSchemaCreator implements XmpzXmlConstants
 		writer.defineAlias("start", rootElement.getProjectElementName() + ".element");
 		rootElement.output(writer);
 		
-		writer.println("vocabulary_work_units_full_project_timespan = xsd:NMTOKEN { pattern = 'Total' } ");
+		writer.println("vocabulary_full_project_timespan = xsd:NMTOKEN { pattern = 'Total' } ");
 		writer.println("vocabulary_year = xsd:NMTOKEN { pattern = '[0-9]{4}' } ");
 		writer.println("vocabulary_month = xsd:integer { minInclusive='1' maxInclusive='12' } ");
 		writer.println("vocabulary_date = xsd:NMTOKEN { pattern = '[0-9]{4}-[0-9]{2}-[0-9]{2}' }");
@@ -521,7 +521,7 @@ public class XmlSchemaCreator implements XmpzXmlConstants
 	
 	private void defineFullProjectTimeSpanElement(SchemaWriter writer, String fullProjectTimeSpanElementName)
 	{
-		String[] subElements = new String[]{"attribute WorkUnitsFullProjectTimespan { vocabulary_work_units_full_project_timespan }"};
+		String[] subElements = new String[]{"attribute WorkUnitsFullProjectTimespan { vocabulary_full_project_timespan }"};
 		defineElement(writer, fullProjectTimeSpanElementName, subElements);
 	}
 	
