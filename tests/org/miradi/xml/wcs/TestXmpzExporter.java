@@ -125,8 +125,21 @@ public class TestXmpzExporter extends TestCaseWithProject
 		verifyNodeValue(xmlImporter, timePeriodCostsNode, XmpzXmlConstants.CALCULATED_TOTAL_BUDGET_COST, "10");
 		verifyNodeValue(xmlImporter, timePeriodCostsNode, XmpzXmlConstants.CALCULATED_EXPENSE_TOTAL, "10");
 		verifyNodeValue(xmlImporter, timePeriodCostsNode, XmpzXmlConstants.CALCULATED_WORK_UNITS_TOTAL, "");
+		verifyExpensesEntriesNode(xmlImporter, timePeriodCostsNode);
 	}
 	
+	private void verifyExpensesEntriesNode(XmpzXmlImporter xmlImporter, Node timePeriodCostsNode) throws Exception
+	{
+		String value = xmlImporter.getPathData(timePeriodCostsNode, new String[] {
+				XmpzXmlConstants.CALCULATED_EXPENSE_ENTRIES, 
+				XmpzXmlConstants.EXPENSE_ENTRY,  
+				XmpzXmlConstants.EXPENSE_ENTRY + XmpzXmlConstants.DETAILS, 
+				XmpzXmlConstants.DATE_UNITS_EXPENSE, 
+				XmpzXmlConstants.EXPENSE, });
+		
+		assertEquals("Incorrect expense?", "10", value);		
+	}
+
 	private Node getTimePeriodCostsNode(XmpzXmlImporter xmlImporter)	throws Exception
 	{
 		String pathElements = xmlImporter.generatePath(new String[]
