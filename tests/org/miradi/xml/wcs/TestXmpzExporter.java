@@ -207,7 +207,7 @@ public class TestXmpzExporter extends TestCaseWithProject
 				XmpzXmlConstants.WORK_UNITS_DATE_UNIT, 
 				XmpzXmlConstants.WORK_UNITS_FULL_PROJECT_TIMESPAN});
 		
-		assertEquals("Incorrect work units?", "Total", xmlImporter.getAttributeValue(dateUnitNode, "WorkUnitsFullProjectTimespan"));		
+		assertEquals("Incorrect work units?", "Total", xmlImporter.getAttributeValue(dateUnitNode, XmpzXmlConstants.FULL_PROJECT_TIMESPAN));		
 	}
 
 	//FIXME urgent - see callers FIXME

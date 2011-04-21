@@ -856,7 +856,7 @@ DateUnitWorkUnits.element = element miradi:DateUnitWorkUnits
 
 WorkUnitsFullProjectTimespan.element = element miradi:WorkUnitsFullProjectTimespan
 {
-  attribute WorkUnitsFullProjectTimespan { vocabulary_full_project_timespan }
+  attribute FullProjectTimespan { vocabulary_full_project_timespan }
 }
 
 WorkUnitsYear.element = element miradi:WorkUnitsYear
@@ -928,7 +928,7 @@ DateUnitExpense.element = element miradi:DateUnitExpense
 
 ExpensesFullProjectTimespan.element = element miradi:ExpensesFullProjectTimespan
 {
-  attribute WorkUnitsFullProjectTimespan { vocabulary_full_project_timespan }
+  attribute FullProjectTimespan { vocabulary_full_project_timespan }
 }
 
 ExpensesYear.element = element miradi:ExpensesYear

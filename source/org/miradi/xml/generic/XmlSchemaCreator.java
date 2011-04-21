@@ -521,7 +521,7 @@ public class XmlSchemaCreator implements XmpzXmlConstants
 	
 	private void defineFullProjectTimeSpanElement(SchemaWriter writer, String fullProjectTimeSpanElementName)
 	{
-		String[] subElements = new String[]{"attribute WorkUnitsFullProjectTimespan { vocabulary_full_project_timespan }"};
+		String[] subElements = new String[]{"attribute " + FULL_PROJECT_TIMESPAN + " { vocabulary_full_project_timespan }"};
 		defineElement(writer, fullProjectTimeSpanElementName, subElements);
 	}
 	
