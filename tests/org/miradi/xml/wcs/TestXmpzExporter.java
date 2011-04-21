@@ -131,8 +131,7 @@ public class TestXmpzExporter extends TestCaseWithProject
 		verifyNodeValue(xmlImporter, timePeriodCostsNode, XmpzXmlConstants.CALCULATED_EXPENSE_TOTAL, "10");
 		verifyNodeValue(xmlImporter, timePeriodCostsNode, XmpzXmlConstants.CALCULATED_WORK_UNITS_TOTAL, "");
 		verifyExpensesEntriesNode(xmlImporter, timePeriodCostsNode);
-		//FIXME urgent: fix MRD-4600: timespan element name then uncomment this and make it pass
-		//verifyExpenseEntryDateUnitNode(xmlImporter, timePeriodCostsNode);
+		verifyExpenseEntryDateUnitNode(xmlImporter, timePeriodCostsNode);
 		verifyExpenseCategoryValue(xmlImporter, expense, timePeriodCostsNode, ExpenseAssignment.TAG_FUNDING_SOURCE_REF, XmpzXmlConstants.FUNDING_SOURCE_ID);
 		verifyExpenseCategoryValue(xmlImporter, expense, timePeriodCostsNode, ExpenseAssignment.TAG_ACCOUNTING_CODE_REF, XmpzXmlConstants.ACCOUNTING_CODE_ID);
 		verifyExpenseCategoryValue(xmlImporter, expense, timePeriodCostsNode, ExpenseAssignment.TAG_CATEGORY_ONE_REF, XmpzXmlConstants.BUDGET_CATEGORY_ONE_ID);
@@ -210,19 +209,21 @@ public class TestXmpzExporter extends TestCaseWithProject
 		assertEquals("Incorrect work units?", "Total", xmlImporter.getAttributeValue(dateUnitNode, XmpzXmlConstants.FULL_PROJECT_TIMESPAN));		
 	}
 
-	//FIXME urgent - see callers FIXME
-//	private void verifyExpenseEntryDateUnitNode(XmpzXmlImporter xmlImporter, Node timePeriodCostsNode) throws Exception
-//	{
-//		Node dateUnitNode = xmlImporter.getNode(timePeriodCostsNode, new String[] {
-//				XmpzXmlConstants.CALCULATED_EXPENSE_ENTRIES, 
-//				XmpzXmlConstants.EXPENSE_ENTRY,  
-//				XmpzXmlConstants.EXPENSE_ENTRY + XmpzXmlConstants.DETAILS, 
-//				XmpzXmlConstants.DATE_UNITS_EXPENSE, 
-//				XmpzXmlConstants.EXPENSES_DATE_UNIT, 
-//				"ExpensesQuarter"});
-//		
-//		assertEquals("Incorrect work units?", "Total", xmlImporter.getAttributeValue(dateUnitNode, "WorkUnitsFullProjectTimespan"));		
-//	}
+	private void verifyExpenseEntryDateUnitNode(XmpzXmlImporter xmlImporter, Node timePeriodCostsNode) throws Exception
+	{
+		Node dateUnitNode = xmlImporter.getNode(timePeriodCostsNode, new String[] {
+				XmpzXmlConstants.CALCULATED_EXPENSE_ENTRIES, 
+				XmpzXmlConstants.EXPENSE_ENTRY,  
+				XmpzXmlConstants.EXPENSE_ENTRY + XmpzXmlConstants.DETAILS, 
+				XmpzXmlConstants.DATE_UNITS_EXPENSE, 
+				XmpzXmlConstants.EXPENSES_DATE_UNIT, 
+				XmpzXmlConstants.EXPENSES_YEAR,
+				});
+		
+		assertEquals("Incorrect work units?", "2008", xmlImporter.getAttributeValue(dateUnitNode, "StartYear"));
+		assertEquals("Incorrect work units?", "1", xmlImporter.getAttributeValue(dateUnitNode, "StartMonth"));
+		
+	}
 	
 	private void verifyWorkUnitCategoryValue(XmpzXmlImporter xmlImporter, Assignment assignment, Node timePeriodCostsNode, final String categoryRefTag, final String categoryElementName) throws Exception
 	{
