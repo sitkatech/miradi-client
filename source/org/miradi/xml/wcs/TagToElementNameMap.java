@@ -255,6 +255,7 @@ public class TagToElementNameMap implements XmpzXmlConstants
 		map.put(Strategy.TAG_SHORT_LABEL, "Id");
 		map.put(Strategy.TAG_TAXONOMY_CODE, "StandardClassification");
 		map.put(Strategy.TAG_TEXT, DETAILS);
+		map.put(Strategy.TAG_ACTIVITY_IDS, SORTED_ACTIVITY_IDS);
 		
 		return map;
 	}

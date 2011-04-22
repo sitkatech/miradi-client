@@ -347,7 +347,7 @@ Strategy.element = element miradi:Strategy
   element miradi:StrategyDetails { text }? &
   element miradi:StrategyComments { text }? &
   element miradi:StrategyObjectiveIds { ObjectiveId.element* }? &
-  element miradi:StrategyActivityIds { ActivityId.element* }? &
+  element miradi:StrategySortedActivityIds { ActivityId.element* }? &
   element miradi:StrategyStatus { text }? &
   element miradi:StrategyStandardClassification { vocabulary_strategy_taxonomy_code  } &
   element miradi:StrategyImpactRating { vocabulary_strategy_impact_rating_code  } &
@@ -1083,4 +1083,3 @@ ExtraDataItem.element = element miradi:ExtraDataItem
   attribute ExtraDataItemName { text } &
   element miradi:ExtraDataItemValue { text }?
 }
-
