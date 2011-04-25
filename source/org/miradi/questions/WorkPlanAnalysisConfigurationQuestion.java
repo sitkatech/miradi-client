@@ -25,8 +25,14 @@ import java.util.Vector;
 public class WorkPlanAnalysisConfigurationQuestion extends WorkPlanColumnConfigurationQuestion
 {
 	@Override
-	protected Vector<ChoiceItem> createCustomChoices()
+	protected ChoiceItem[] createChoices()
 	{
-		return new Vector<ChoiceItem>();
+		Vector<ChoiceItem> choiceItems = new Vector<ChoiceItem>();
+
+		choiceItems.add(createChoiceItem(WorkPlanColumnConfigurationQuestion.META_ANALYSIS_WORK_UNITS_COLUMN_CODE));
+		choiceItems.add(createChoiceItem(WorkPlanColumnConfigurationQuestion.META_ANALYSIS_EXPENSES_CODE));
+		choiceItems.add(createChoiceItem(WorkPlanColumnConfigurationQuestion.META_ANALYSIS_BUDGET_DETAILS_COLUMN_CODE));
+
+		return choiceItems.toArray(new ChoiceItem[0]);
 	}
 }
