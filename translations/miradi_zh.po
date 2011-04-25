@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-04 20:25-0500\n"
+"POT-Creation-Date: 2011-04-25 16:53-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -9043,6 +9043,15 @@ msgid "FieldLabel|12.MetaExpenseAmountColumnCode|Projected Expenses"
 msgstr ""
 
 msgid "FieldLabel|12.MetaBudgetDetailColumnCode|Budget Totals"
+msgstr ""
+
+msgid "FieldLabel|12.MetaAnalysisWorkUnitsColumnCode|Work Units"
+msgstr ""
+
+msgid "FieldLabel|12.MetaAnalysisExpensesColumnCode|Projected Expenses"
+msgstr ""
+
+msgid "FieldLabel|12.MetaAnalysisBudgetDetailsColumnCode|Budget Totals"
 msgstr ""
 
 msgid "FieldLabel|12.ResourceType|Resource Type"

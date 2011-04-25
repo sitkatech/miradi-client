@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-04 20:25-0500\n"
+"POT-Creation-Date: 2011-04-25 16:53-0500\n"
 "PO-Revision-Date: 2011-03-27 19:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -9455,6 +9455,15 @@ msgstr "Spese previste"
 
 msgid "FieldLabel|12.MetaBudgetDetailColumnCode|Budget Totals"
 msgstr "Totali Bilancio"
+
+msgid "FieldLabel|12.MetaAnalysisWorkUnitsColumnCode|Work Units"
+msgstr ""
+
+msgid "FieldLabel|12.MetaAnalysisExpensesColumnCode|Projected Expenses"
+msgstr ""
+
+msgid "FieldLabel|12.MetaAnalysisBudgetDetailsColumnCode|Budget Totals"
+msgstr ""
 
 msgid "FieldLabel|12.ResourceType|Resource Type"
 msgstr "Tipologia Risorsa"

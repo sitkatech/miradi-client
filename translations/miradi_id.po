@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-04 20:25-0500\n"
+"POT-Creation-Date: 2011-04-25 16:53-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -9321,6 +9321,15 @@ msgstr ""
 
 msgid "FieldLabel|12.MetaBudgetDetailColumnCode|Budget Totals"
 msgstr "Total Anggaran "
+
+msgid "FieldLabel|12.MetaAnalysisWorkUnitsColumnCode|Work Units"
+msgstr ""
+
+msgid "FieldLabel|12.MetaAnalysisExpensesColumnCode|Projected Expenses"
+msgstr ""
+
+msgid "FieldLabel|12.MetaAnalysisBudgetDetailsColumnCode|Budget Totals"
+msgstr ""
 
 msgid "FieldLabel|12.ResourceType|Resource Type"
 msgstr "Jenis Sumber Daya "

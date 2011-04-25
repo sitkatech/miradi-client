@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-04 20:25-0500\n"
+"POT-Creation-Date: 2011-04-25 16:53-0500\n"
 "PO-Revision-Date: 2010-09-30 09:31+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -9346,6 +9346,15 @@ msgstr "FieldLabel|12.MetaExpenseAmountColumnCode|Витрати проекту"
 
 msgid "FieldLabel|12.MetaBudgetDetailColumnCode|Budget Totals"
 msgstr "FieldLabel|12.MetaBudgetDetailColumnCode|Підсумки бюджету"
+
+msgid "FieldLabel|12.MetaAnalysisWorkUnitsColumnCode|Work Units"
+msgstr ""
+
+msgid "FieldLabel|12.MetaAnalysisExpensesColumnCode|Projected Expenses"
+msgstr ""
+
+msgid "FieldLabel|12.MetaAnalysisBudgetDetailsColumnCode|Budget Totals"
+msgstr ""
 
 msgid "FieldLabel|12.ResourceType|Resource Type"
 msgstr "FieldLabel|12.ResourceType|Тип ресурсу"
