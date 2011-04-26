@@ -52,7 +52,6 @@ import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.layout.MiradiGridLayoutPlus;
 import org.miradi.layout.OneColumnPanel;
 import org.miradi.main.AppPreferences;
-import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Dashboard;
@@ -110,7 +109,7 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 		return 0;
 	}
 
-	private void rebuild() throws Exception
+	public void rebuild() throws Exception
 	{
 		removeAll();
 		getFields().clear();
@@ -151,33 +150,6 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 	public void removeRowSelectionListener(ListSelectionListener listener)
 	{
 		rowSelectionHandler.removeSelectionListener(listener);
-	}
-	
-	@Override
-	public void commandExecuted(CommandExecutedEvent event)
-	{
-		super.commandExecuted(event);
-		try
-		{
-			if(eventForcesRebuild(event))
-				rebuild();
-		}
-		catch(Exception e)
-		{
-			EAM.unexpectedErrorDialog(e);
-		}
-	}
-	
-	private boolean eventForcesRebuild(CommandExecutedEvent event)
-	{
-		if(event.isSetDataCommandWithThisTypeAndTag(Dashboard.getObjectType(), Dashboard.TAG_PROGRESS_CHOICE_MAP))
-			return true;
-		if(event.isSetDataCommandWithThisTypeAndTag(Dashboard.getObjectType(), Dashboard.TAG_COMMENTS_MAP))
-			return true;
-		if(event.isSetDataCommandWithThisTypeAndTag(Dashboard.getObjectType(), Dashboard.TAG_FLAGS_MAP))
-			return true;
-
-		return false;
 	}
 	
 	private void addRows(ChoiceItem choiceItem, int level) throws Exception
