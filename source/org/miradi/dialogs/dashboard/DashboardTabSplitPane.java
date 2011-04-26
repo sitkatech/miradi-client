@@ -1,5 +1,5 @@
 /* 
-Copyright 2005-2009, Foundations of Success, Bethesda, Maryland 
+Copyright 2005-2011, Foundations of Success, Bethesda, Maryland 
 (on behalf of the Conservation Measures Partnership, "CMP") and 
 Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 
@@ -17,38 +17,26 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.views.umbrella;
+
+package org.miradi.dialogs.dashboard;
 
 import java.awt.Container;
 
 import org.miradi.utils.SplitterPositionSaverAndGetter;
+import org.miradi.views.umbrella.PersistentNonPercentageHorizontalSplitPane;
 
-public class PersistentNonPercentageHorizontalSplitPane extends PersistentHorizontalSplitPane
+public class DashboardTabSplitPane extends PersistentNonPercentageHorizontalSplitPane
 {
-	public PersistentNonPercentageHorizontalSplitPane(Container futureParent, SplitterPositionSaverAndGetter splitPositionSaverToUse, String splitterNameToUse)
+	public DashboardTabSplitPane(Container futureParent,
+			SplitterPositionSaverAndGetter splitPositionSaverToUse,
+			String splitterNameToUse)
 	{
 		super(futureParent, splitPositionSaverToUse, splitterNameToUse);
-		setResizeWeight(0);
-
 	}
 
 	@Override
-	protected int computeLocationFromPercent(int splitPercentFromMiddle)
-	{
-		if(splitPercentFromMiddle <= 0)
-			splitPercentFromMiddle = getDefaultSplitterLocation();
-		return splitPercentFromMiddle - 1;
-	}
-	
-	@Override
-	protected int computePercentFromLocation(int location)
-	{
-		return location + 1;
-	}
-
 	protected int getDefaultSplitterLocation()
 	{
-		return 200;
+		return 800;
 	}
-
 }
