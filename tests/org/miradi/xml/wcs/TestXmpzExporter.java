@@ -194,9 +194,21 @@ public class TestXmpzExporter extends TestCaseWithProject
 	{
 		XPathExpression expression = xmlImporter.getXPath().compile(xmlImporter.getPrefixedElement(XmpzXmlConstants.CALCULATED_WHO));
 		Node whoNode = (Node) expression.evaluate(timePeriodCostsNode, XPathConstants.NODE);
-
-		NodeList resourceNodes = whoNode.getChildNodes();
 		String elementNameToMatch = XmpzXmlConstants.RESOURCE_ID;
+
+		Vector<Node> matchingNodes = getMatchingChildElementNodes(whoNode, elementNameToMatch);
+		
+		assertEquals("Wrong number of resources?", resourceRefs.size(), matchingNodes.size());
+		for(int index = 0; index < matchingNodes.size(); ++index)
+		{
+			ORef nodeRef = new ORef(ProjectResource.getObjectType(), new BaseId(matchingNodes.get(index).getTextContent()));
+			assertEquals("Wrong resource ref?", resourceRefs.get(index), nodeRef);
+		}
+	}
+
+	private Vector<Node> getMatchingChildElementNodes(Node parentNode,	String elementNameToMatch)
+	{
+		NodeList resourceNodes = parentNode.getChildNodes();
 		Vector<Node> matchingNodes = new Vector<Node>();
 		for(int index = 0; index < resourceNodes.getLength(); ++index)
 		{
@@ -205,13 +217,7 @@ public class TestXmpzExporter extends TestCaseWithProject
 			if(elementName != null && elementName.equals(elementNameToMatch))
 				matchingNodes.add(node);
 		}
-		
-		assertEquals("Wrong number of resources?", resourceRefs.size(), matchingNodes.size());
-		for(int index = 0; index < matchingNodes.size(); ++index)
-		{
-			ORef nodeRef = new ORef(ProjectResource.getObjectType(), new BaseId(matchingNodes.get(index).getTextContent()));
-			assertEquals("Wrong resource ref?", resourceRefs.get(index), nodeRef);
-		}
+		return matchingNodes;
 	}
 
 	private void verifyWorkUnitEntriesNode(XmpzXmlImporter xmlImporter, Node timePeriodCostsNode) throws Exception
