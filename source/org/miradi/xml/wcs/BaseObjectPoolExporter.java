@@ -21,13 +21,16 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.wcs;
 
 import java.awt.Point;
+import java.util.Set;
 
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Factor;
+import org.miradi.objects.ProjectResource;
 import org.miradi.objects.Target;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.OptionalDouble;
@@ -145,6 +148,7 @@ abstract public class BaseObjectPoolExporter extends ObjectPoolExporter
 			getWcsXmlExporter().writeElement(getWriter(), CALCULATED_END_DATE, totalDateRange.getEndDate().toIsoDateString());
 			getWcsXmlExporter().writeElement(getWriter(),	CALCULATED_TOTAL_BUDGET_COST, totalCostValue.toString());
 
+			writeResourceIds(CALCULATED_WHO, totalBudgetCost.getWorkUnitsRefSetForType(ProjectResource.getObjectType()));
 			writeOptionalTotalCost(CALCULATED_EXPENSE_TOTAL, totalBudgetCost.getTotalExpense());
 
 			writeOptionalTotalCost(CALCULATED_WORK_UNITS_TOTAL, totalBudgetCost.getTotalWorkUnits());			
@@ -157,6 +161,19 @@ abstract public class BaseObjectPoolExporter extends ObjectPoolExporter
 			getWcsXmlExporter().writeEndElement(TIME_PERIOD_COSTS);
 			getWcsXmlExporter().writeEndElement(getPoolName() + TIME_PERIOD_COSTS);
 		}
+	}
+
+	private void writeResourceIds(String elementName, Set<ORef> resourceRefs) throws Exception
+	{
+		if(resourceRefs.isEmpty())
+			return;
+		
+		getWcsXmlExporter().writeStartElement(elementName);
+		for(ORef resourceRef : resourceRefs)
+		{
+			getWcsXmlExporter().writeElement("", RESOURCE_ID, resourceRef.getObjectId().toString());
+		}
+		getWcsXmlExporter().writeEndElement(elementName);
 	}
 
 	private void writeOptionalTotalCost(final String totalCostElementName, final OptionalDouble totalCost) throws Exception

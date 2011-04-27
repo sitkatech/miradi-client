@@ -21,7 +21,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.wcs;
 
 import java.io.ByteArrayOutputStream;
+import java.util.Vector;
 
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
 
 import org.martus.util.UnicodeStringWriter;
@@ -29,6 +32,7 @@ import org.martus.util.UnicodeWriter;
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
 import org.miradi.exceptions.ValidationException;
+import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.main.TestCaseWithProject;
@@ -52,6 +56,7 @@ import org.miradi.utils.NullProgressMeter;
 import org.miradi.xml.TestXmpzXmlImporter;
 import org.miradi.xml.xmpz.XmpzXmlImporter;
 import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 
 
@@ -176,6 +181,7 @@ public class TestXmpzExporter extends TestCaseWithProject
 		verifyNodeValue(xmlImporter, timePeriodCostsNode, XmpzXmlConstants.CALCULATED_TOTAL_BUDGET_COST, "0");
 		verifyNodeValue(xmlImporter, timePeriodCostsNode, XmpzXmlConstants.CALCULATED_EXPENSE_TOTAL, "");
 		verifyNodeValue(xmlImporter, timePeriodCostsNode, XmpzXmlConstants.CALCULATED_WORK_UNITS_TOTAL, "11");
+		verifyResourceIds(xmlImporter, timePeriodCostsNode, XmpzXmlConstants.CALCULATED_WHO, new ORefList(resourceRef));
 		verifyWorkUnitEntriesNode(xmlImporter, timePeriodCostsNode);
 		verifyWorkUnitEntryDateUnitNode(xmlImporter, timePeriodCostsNode);
 		verifyWorkUnitCategoryValue(xmlImporter, assignment, timePeriodCostsNode, ResourceAssignment.TAG_FUNDING_SOURCE_ID, XmpzXmlConstants.FUNDING_SOURCE_ID);
@@ -184,6 +190,29 @@ public class TestXmpzExporter extends TestCaseWithProject
 		verifyWorkUnitCategoryValue(xmlImporter, assignment, timePeriodCostsNode, ResourceAssignment.TAG_CATEGORY_TWO_REF, XmpzXmlConstants.BUDGET_CATEGORY_TWO_ID);
 	}
 	
+	private void verifyResourceIds(XmpzXmlImporter xmlImporter, Node timePeriodCostsNode, String calculatedWho, ORefList resourceRefs) throws Exception
+	{
+		XPathExpression expression = xmlImporter.getXPath().compile(xmlImporter.getPrefixedElement(XmpzXmlConstants.CALCULATED_WHO));
+		Node whoNode = (Node) expression.evaluate(timePeriodCostsNode, XPathConstants.NODE);
+
+		NodeList resourceNodes = whoNode.getChildNodes();
+		Vector<String> nodeIds = new Vector<String>();
+		for(int index = 0; index < resourceNodes.getLength(); ++index)
+		{
+			Node node = resourceNodes.item(index);
+			String elementName = node.getLocalName();
+			if(elementName != null && elementName.equals(XmpzXmlConstants.RESOURCE_ID))
+				nodeIds.add(node.getTextContent());
+		}
+		
+		assertEquals("Wrong number of resources?", resourceRefs.size(), nodeIds.size());
+		for(int index = 0; index < nodeIds.size(); ++index)
+		{
+			ORef nodeRef = new ORef(ProjectResource.getObjectType(), new BaseId(nodeIds.get(index)));
+			assertEquals("Wrong resource ref?", resourceRefs.get(index), nodeRef);
+		}
+	}
+
 	private void verifyWorkUnitEntriesNode(XmpzXmlImporter xmlImporter, Node timePeriodCostsNode) throws Exception
 	{
 		String value = xmlImporter.getPathData(timePeriodCostsNode, new String[] {

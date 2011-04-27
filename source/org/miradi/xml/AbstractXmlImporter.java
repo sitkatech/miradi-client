@@ -283,7 +283,7 @@ abstract public class AbstractXmlImporter
 		return getNodes(node, new String[]{containerName, contentName});
 	}
 	
-	private String getPrefixedElement(String elementName)
+	public String getPrefixedElement(String elementName)
 	{
 		return getPrefix() + elementName;
 	}
