@@ -51,7 +51,7 @@ public class ConfigurablePlanningManagementPanel extends PlanningTreeManagementP
 	@Override
 	public Icon getIcon()
 	{
-		return IconManager.getNeedsAttentionIcon();
+		return IconManager.getPlanningIcon();
 	}
 
 	public static ConfigurablePlanningManagementPanel createActionPlanPanel(MainWindow mainWindowToUse) throws Exception
