@@ -196,19 +196,20 @@ public class TestXmpzExporter extends TestCaseWithProject
 		Node whoNode = (Node) expression.evaluate(timePeriodCostsNode, XPathConstants.NODE);
 
 		NodeList resourceNodes = whoNode.getChildNodes();
-		Vector<String> nodeIds = new Vector<String>();
+		String elementNameToMatch = XmpzXmlConstants.RESOURCE_ID;
+		Vector<Node> matchingNodes = new Vector<Node>();
 		for(int index = 0; index < resourceNodes.getLength(); ++index)
 		{
 			Node node = resourceNodes.item(index);
 			String elementName = node.getLocalName();
-			if(elementName != null && elementName.equals(XmpzXmlConstants.RESOURCE_ID))
-				nodeIds.add(node.getTextContent());
+			if(elementName != null && elementName.equals(elementNameToMatch))
+				matchingNodes.add(node);
 		}
 		
-		assertEquals("Wrong number of resources?", resourceRefs.size(), nodeIds.size());
-		for(int index = 0; index < nodeIds.size(); ++index)
+		assertEquals("Wrong number of resources?", resourceRefs.size(), matchingNodes.size());
+		for(int index = 0; index < matchingNodes.size(); ++index)
 		{
-			ORef nodeRef = new ORef(ProjectResource.getObjectType(), new BaseId(nodeIds.get(index)));
+			ORef nodeRef = new ORef(ProjectResource.getObjectType(), new BaseId(matchingNodes.get(index).getTextContent()));
 			assertEquals("Wrong resource ref?", resourceRefs.get(index), nodeRef);
 		}
 	}
