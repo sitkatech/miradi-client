@@ -4,7 +4,7 @@ Copyright 2005-2010, Foundations of Success, Bethesda, Maryland
      (on behalf of the Conservation Measures Partnership, "CMP") and
      Beneficent Technology, Inc. ("Benetech"), Palo Alto, California.
 
-VERSION 3.2.3
+VERSION 3.3
 
 License and Copying
 
@@ -145,9 +145,6 @@ Changes
 
 Miradi 3.3 is a major upgrade, with many new features and enhancements. 
 These are the most notable:
-
-Translations:
-- Several new and updated language packs
 
 Appwide:
 - Wizard content has been updated
