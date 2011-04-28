@@ -163,7 +163,7 @@ Appwide:
 Summary View:
 - New Conservation Coaches Network field on the Team tab 
 - Moved the Data Sharing radio button field from TNC tab to Project tab
-- The TNC Operating Unit list has been updated 
+- The TNC Operating Unit list has been updated
 - The TNC "Planning Team (legacy)" field is now editable
 
 Diagram:
