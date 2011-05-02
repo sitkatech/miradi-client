@@ -29,12 +29,12 @@ import org.miradi.objects.DiagramFactor;
 public class OldToNewDiagramFactorMap extends HashMap<DiagramFactor, DiagramFactor>
 {
 	@Override
-	public DiagramFactor put(DiagramFactor key, DiagramFactor value)
+	public DiagramFactor put(DiagramFactor oldDiagramFactor, DiagramFactor newDiagramFactor)
 	{
-		if (containsKey(key))
-			throw new RuntimeException("Key DiagramFactor already exists in map. DF ref = " + key.getRef());
+		if (containsKey(oldDiagramFactor))
+			throw new RuntimeException("Key DiagramFactor already exists in map. DF ref = " + oldDiagramFactor.getRef());
 		
-		return super.put(key, value);
+		return super.put(oldDiagramFactor, newDiagramFactor);
 	}
 	
 	@Override
