@@ -208,7 +208,7 @@ public class ResultsChainCreatorHelper
 		return clonedBaseObjectRefs;
 	}
 
-	private OldToNewDiagramFactorMap cloneDiagramFactors(HashSet<DiagramFactor> diagramFactors) throws Exception
+	public OldToNewDiagramFactorMap cloneDiagramFactors(HashSet<DiagramFactor> diagramFactors) throws Exception
 	{
 		OldToNewDiagramFactorMap originalAndClonedDiagramFactors = new OldToNewDiagramFactorMap();
 		for(DiagramFactor diagramFactorToBeCloned : diagramFactors)
@@ -229,7 +229,8 @@ public class ResultsChainCreatorHelper
 		for (int childIndex = 0; childIndex < childrenRefs.size(); ++childIndex)
 		{
 			DiagramFactor child = DiagramFactor.find(getProject(), childrenRefs.get(childIndex));
-			originalAndClonedDiagramFactors.putAll(cloneDiagramFactor(diagramFactors, child));
+			if (!diagramFactors.contains(child))
+				originalAndClonedDiagramFactors.putAll(cloneDiagramFactor(diagramFactors, child));
 		}
 		
 		originalAndClonedDiagramFactors.putAll(cloneDiagramFactor(diagramFactors, groupBox));
