@@ -120,8 +120,8 @@ public class ResultsChainCreatorHelper
 		ORefList groupedDiagramLinkRefs = originalDiagramLink.getSelfOrChildren();
 		for (int childIndex = 0; childIndex < groupedDiagramLinkRefs.size(); ++childIndex)
 		{
-			ORef childRef = groupedDiagramLinkRefs.get(childIndex);
-			DiagramLink child = DiagramLink.find(getProject(), childRef);
+			ORef diagramLinkRef = groupedDiagramLinkRefs.get(childIndex);
+			DiagramLink child = DiagramLink.find(getProject(), diagramLinkRef);
 			DiagramLink clonedDiagramLink = clonedDiagramLinks.get(child);
 			newlyClonedChildren.add(clonedDiagramLink.getRef());
 		}
