@@ -153,6 +153,7 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 		catch (Exception e)
 		{
 			EAM.logException(e);
+			throw new RuntimeException(e);
 		}
 	}
 
