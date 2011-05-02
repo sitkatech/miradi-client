@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-27 08:36-0500\n"
+"POT-Creation-Date: 2011-05-02 15:51-0500\n"
 "PO-Revision-Date: 2010-09-30 09:31+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -5946,7 +5946,7 @@ msgstr "Ресурси"
 msgid "Resources:"
 msgstr "Ресурси:"
 
-#: Miradi/source/org/miradi/project/ResultsChainCreatorHelper.java:194
+#: Miradi/source/org/miradi/project/ResultsChainCreatorHelper.java:195
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:70
 #: Miradi/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:35
 msgid "Results Chain"
@@ -8627,7 +8627,7 @@ msgstr "[Головна Діаграма]"
 msgid "[NOT SPECIFIED]"
 msgstr "[НЕ ВКАЗАНИЙ]"
 
-#: Miradi/source/org/miradi/project/ResultsChainCreatorHelper.java:172
+#: Miradi/source/org/miradi/project/ResultsChainCreatorHelper.java:173
 msgid "[New Results Chain]"
 msgstr "[Новий ланцюг результатів]"
 

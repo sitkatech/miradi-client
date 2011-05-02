@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-27 08:36-0500\n"
+"POT-Creation-Date: 2011-05-02 15:51-0500\n"
 "PO-Revision-Date: 2011-04-05 11:46+0100\n"
 "Last-Translator: Emanuela Leonardi <e.leonardi@gmail.com>\n"
 "Language-Team: none\n"
@@ -6057,7 +6057,7 @@ msgstr "Ressources"
 msgid "Resources:"
 msgstr "Ressources :"
 
-#: Miradi/source/org/miradi/project/ResultsChainCreatorHelper.java:194
+#: Miradi/source/org/miradi/project/ResultsChainCreatorHelper.java:195
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:70
 #: Miradi/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:35
 msgid "Results Chain"
@@ -8825,7 +8825,7 @@ msgstr "[Diagramme principal]"
 msgid "[NOT SPECIFIED]"
 msgstr "[NON SPÉCIFIÉ]"
 
-#: Miradi/source/org/miradi/project/ResultsChainCreatorHelper.java:172
+#: Miradi/source/org/miradi/project/ResultsChainCreatorHelper.java:173
 msgid "[New Results Chain]"
 msgstr "[Nouvelle chaîne de résultats]"
 

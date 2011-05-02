@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-27 08:36-0500\n"
+"POT-Creation-Date: 2011-05-02 15:51-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -5903,7 +5903,7 @@ msgstr "Sumber Daya"
 msgid "Resources:"
 msgstr "Sumber daya: "
 
-#: Miradi/source/org/miradi/project/ResultsChainCreatorHelper.java:194
+#: Miradi/source/org/miradi/project/ResultsChainCreatorHelper.java:195
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:70
 #: Miradi/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:35
 msgid "Results Chain"
@@ -8609,7 +8609,7 @@ msgstr "[Diagram Utama] "
 msgid "[NOT SPECIFIED]"
 msgstr "[TIDAK TERSPESIFIKASI] "
 
-#: Miradi/source/org/miradi/project/ResultsChainCreatorHelper.java:172
+#: Miradi/source/org/miradi/project/ResultsChainCreatorHelper.java:173
 msgid "[New Results Chain]"
 msgstr "[Rangkaian Hasil Baru] "
 
