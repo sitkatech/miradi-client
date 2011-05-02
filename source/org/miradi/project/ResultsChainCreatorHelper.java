@@ -117,10 +117,10 @@ public class ResultsChainCreatorHelper
 	{
 		ORefList newlyClonedChildren = new ORefList();
 		DiagramLink clonedGroupBoxDiagramLink = clonedDiagramLinks.get(originalDiagramLink);
-		ORefList groupBoxChildrenRefs = originalDiagramLink.getSelfOrChildren();
-		for (int childIndex = 0; childIndex < groupBoxChildrenRefs.size(); ++childIndex)
+		ORefList groupedDiagramLinkRefs = originalDiagramLink.getSelfOrChildren();
+		for (int childIndex = 0; childIndex < groupedDiagramLinkRefs.size(); ++childIndex)
 		{
-			ORef childRef = groupBoxChildrenRefs.get(childIndex);
+			ORef childRef = groupedDiagramLinkRefs.get(childIndex);
 			DiagramLink child = DiagramLink.find(getProject(), childRef);
 			DiagramLink clonedDiagramLink = clonedDiagramLinks.get(child);
 			newlyClonedChildren.add(clonedDiagramLink.getRef());
