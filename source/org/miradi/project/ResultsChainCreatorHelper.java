@@ -208,15 +208,15 @@ public class ResultsChainCreatorHelper
 		return clonedBaseObjectRefs;
 	}
 
-	public OldToNewDiagramFactorMap cloneDiagramFactors(HashSet<DiagramFactor> diagramFactors) throws Exception
+	public OldToNewDiagramFactorMap cloneDiagramFactors(HashSet<DiagramFactor> selectedDiagramFactors) throws Exception
 	{
 		OldToNewDiagramFactorMap originalAndClonedDiagramFactors = new OldToNewDiagramFactorMap();
-		for(DiagramFactor diagramFactorToBeCloned : diagramFactors)
+		for(DiagramFactor diagramFactorToBeCloned : selectedDiagramFactors)
 		{	
 			if (diagramFactorToBeCloned.isGroupBoxFactor())
-				originalAndClonedDiagramFactors.putAll(cloneGroupBoxDiagramFactor(diagramFactors, diagramFactorToBeCloned));
+				originalAndClonedDiagramFactors.putAll(cloneGroupBoxDiagramFactor(selectedDiagramFactors, diagramFactorToBeCloned));
 			else
-				originalAndClonedDiagramFactors.putAll(cloneDiagramFactor(diagramFactors, diagramFactorToBeCloned));
+				originalAndClonedDiagramFactors.putAll(cloneDiagramFactor(selectedDiagramFactors, diagramFactorToBeCloned));
 		}
 		
 		return originalAndClonedDiagramFactors;
