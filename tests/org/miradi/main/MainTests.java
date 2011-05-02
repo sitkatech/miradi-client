@@ -80,6 +80,7 @@ import org.miradi.objecthelpers.TestORef;
 import org.miradi.objecthelpers.TestORefList;
 import org.miradi.objecthelpers.TestORefSet;
 import org.miradi.objecthelpers.TestObjectDeepCopier;
+import org.miradi.objecthelpers.TestOldToNewDiagramFactorMap;
 import org.miradi.objecthelpers.TestRelevancyOverride;
 import org.miradi.objecthelpers.TestRelevancyOverrideSet;
 import org.miradi.objecthelpers.TestResultsChainCreatorHelper;
@@ -356,6 +357,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestCategorizedQuantity.class));
 		suite.addTest(new TestSuite(TestThreatTargetVirtualLinkHelper.class));
 		suite.addTest(new TestSuite(TestDashboardStatusMapsCache.class));
+		suite.addTest(new TestSuite(TestOldToNewDiagramFactorMap.class));
 		
 		// objects package
 		suite.addTest(new TestSuite(TestStrategy.class));
