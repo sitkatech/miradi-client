@@ -126,8 +126,8 @@ public class ResultsChainCreatorHelper
 			newlyClonedChildren.add(clonedDiagramLink.getRef());
 		}
 		
-		CommandSetObjectData setGroupBoxChildren = new CommandSetObjectData(clonedGroupBoxDiagramLink.getRef(), DiagramLink.TAG_GROUPED_DIAGRAM_LINK_REFS, newlyClonedChildren.toString());
-		getProject().executeCommand(setGroupBoxChildren);
+		CommandSetObjectData setGroupedDiagramLinkRefs = new CommandSetObjectData(clonedGroupBoxDiagramLink.getRef(), DiagramLink.TAG_GROUPED_DIAGRAM_LINK_REFS, newlyClonedChildren.toString());
+		getProject().executeCommand(setGroupedDiagramLinkRefs);
 	}
 	
 	private void updateAllGroupBoxChildren(HashMap<DiagramFactor, DiagramFactor> clonedDiagramFactors) throws Exception
