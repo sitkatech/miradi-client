@@ -238,10 +238,10 @@ public class ResultsChainCreatorHelper
 		return originalAndClonedDiagramFactors;
 	}
 
-	private OldToNewDiagramFactorMap cloneDiagramFactor(HashSet<DiagramFactor> diagramFactors, DiagramFactor diagramFactorToBeCloned) throws Exception, CommandFailedException
+	private OldToNewDiagramFactorMap cloneDiagramFactor(HashSet<DiagramFactor> selectedDiagramFactors, DiagramFactor diagramFactorToBeCloned) throws Exception, CommandFailedException
 	{
 		OldToNewDiagramFactorMap originalAndClonedDiagramFactors = new OldToNewDiagramFactorMap();
-		if (ignoreCloning(diagramFactors, diagramFactorToBeCloned))
+		if (ignoreCloning(selectedDiagramFactors, diagramFactorToBeCloned))
 			return originalAndClonedDiagramFactors;
 		
 		ORef factorRef = createOrReuseWrappedObject(diagramFactorToBeCloned);
