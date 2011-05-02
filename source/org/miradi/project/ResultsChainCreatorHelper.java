@@ -271,14 +271,14 @@ public class ResultsChainCreatorHelper
 		return false;
 	}
 
-	private boolean containsRelatedStrategy(HashSet<DiagramFactor> diagramFactors, Task activity)
+	private boolean containsRelatedStrategy(HashSet<DiagramFactor> selectedDiagramFactors, Task activity)
 	{
 		ORefList strategyReferrerRefs = activity.findObjectsThatReferToUs(Strategy.getObjectType());
 		for (int index = 0; index < strategyReferrerRefs.size(); ++index)
 		{
 			ORef strategyRef = strategyReferrerRefs.get(index);
 			DiagramFactor strategyDiagramFactor = model.getDiagramFactor(strategyRef);
-			if (diagramFactors.contains(strategyDiagramFactor))
+			if (selectedDiagramFactors.contains(strategyDiagramFactor))
 				return true;
 		}
 		
