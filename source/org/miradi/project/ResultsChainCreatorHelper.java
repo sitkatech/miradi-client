@@ -222,18 +222,18 @@ public class ResultsChainCreatorHelper
 		return originalAndClonedDiagramFactors;
 	}
 
-	private OldToNewDiagramFactorMap cloneGroupBoxDiagramFactor(HashSet<DiagramFactor> diagramFactors, DiagramFactor groupBox) throws Exception
+	private OldToNewDiagramFactorMap cloneGroupBoxDiagramFactor(HashSet<DiagramFactor> selectedDiagramFactors, DiagramFactor groupBox) throws Exception
 	{
 		OldToNewDiagramFactorMap originalAndClonedDiagramFactors = new OldToNewDiagramFactorMap();
 		ORefList childrenRefs = groupBox.getGroupBoxChildrenRefs();
 		for (int childIndex = 0; childIndex < childrenRefs.size(); ++childIndex)
 		{
 			DiagramFactor child = DiagramFactor.find(getProject(), childrenRefs.get(childIndex));
-			if (!diagramFactors.contains(child))
-				originalAndClonedDiagramFactors.putAll(cloneDiagramFactor(diagramFactors, child));
+			if (!selectedDiagramFactors.contains(child))
+				originalAndClonedDiagramFactors.putAll(cloneDiagramFactor(selectedDiagramFactors, child));
 		}
 		
-		originalAndClonedDiagramFactors.putAll(cloneDiagramFactor(diagramFactors, groupBox));
+		originalAndClonedDiagramFactors.putAll(cloneDiagramFactor(selectedDiagramFactors, groupBox));
 		
 		return originalAndClonedDiagramFactors;
 	}
