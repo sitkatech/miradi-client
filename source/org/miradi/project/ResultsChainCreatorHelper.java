@@ -260,13 +260,13 @@ public class ResultsChainCreatorHelper
 		return originalAndClonedDiagramFactors;
 	}
 	
-	private boolean ignoreCloning(HashSet<DiagramFactor> diagramFactors, DiagramFactor diagramFactor)
+	private boolean ignoreCloning(HashSet<DiagramFactor> selectedDiagramFactors, DiagramFactor diagramFactor)
 	{
 		if (Stress.is(diagramFactor.getWrappedType()))
 			return true;
 		
 		if (Task.is(diagramFactor.getWrappedType()))
-			return !containsRelatedStrategy(diagramFactors, (Task)diagramFactor.getWrappedFactor());
+			return !containsRelatedStrategy(selectedDiagramFactors, (Task)diagramFactor.getWrappedFactor());
 		
 		return false;
 	}
