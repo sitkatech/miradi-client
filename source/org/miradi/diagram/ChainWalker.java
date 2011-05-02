@@ -274,7 +274,7 @@ public class ChainWalker
 	{
 		ORefList diagramReferrers = diagramFactor.findObjectsThatReferToUs(new int[]{ResultsChainDiagram.getObjectType(), ConceptualModelDiagram.getObjectType(), });
 		if (diagramReferrers.isEmpty() || diagramReferrers.size() > 1)
-			throw new RuntimeException("DiagramFactor " + diagramFactor.getRef() + " is in multiple diagrams: " + diagramReferrers);
+			throw new RuntimeException("DiagramFactor " + diagramFactor.getRef() + " is in zero or multiple diagrams: " + diagramReferrers);
 		
 		diagramObject = DiagramObject.findDiagramObject(diagramFactor.getObjectManager(), diagramReferrers.getFirstElement());
 		setStartingFactor(diagramFactor);
