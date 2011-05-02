@@ -70,7 +70,7 @@ public class ResultsChainCreatorHelper
 		
 	public ORef createResultsChain() throws Exception
 	{
-			HashSet<DiagramFactor> diagramFactors = getSelectedAndRelatedDiagramFactors();
+			HashSet<DiagramFactor> selectedDiagramFactors = getSelectedAndRelatedDiagramFactors();
 			DiagramLink[] diagramLinks = getDiagramLinksInChain();
 			CommandCreateObject createResultsChain = new CommandCreateObject(ObjectType.RESULTS_CHAIN_DIAGRAM);
 			getProject().executeCommand(createResultsChain);
@@ -78,7 +78,7 @@ public class ResultsChainCreatorHelper
 			ORef newResultsChainRef = createResultsChain.getObjectRef();
 			ResultsChainDiagram resultsChain = (ResultsChainDiagram) getProject().findObject(newResultsChainRef);
 			
-			HashMap<DiagramFactor, DiagramFactor> clonedDiagramFactors = cloneDiagramFactors(diagramFactors);
+			HashMap<DiagramFactor, DiagramFactor> clonedDiagramFactors = cloneDiagramFactors(selectedDiagramFactors);
 			ORefList clonedDiagramFactorRefs = extractClonedObjectRefs(clonedDiagramFactors);
 			IdList idList = clonedDiagramFactorRefs.convertToIdList(DiagramFactor.getObjectType());
 			CommandSetObjectData addFactorsToChain = CommandSetObjectData.createAppendListCommand(resultsChain, ResultsChainDiagram.TAG_DIAGRAM_FACTOR_IDS, idList);
@@ -94,7 +94,7 @@ public class ResultsChainCreatorHelper
 			
 			updateAllGroupBoxLinkChildren(clonedDiagramLinks);
 			
-			String label = getFirstStrategyShortLabel(diagramFactors); 
+			String label = getFirstStrategyShortLabel(selectedDiagramFactors); 
 			CommandSetObjectData setLabelCommand = new CommandSetObjectData(newResultsChainRef, DiagramObject.TAG_LABEL, label);
 			getProject().executeCommand(setLabelCommand);
 			
