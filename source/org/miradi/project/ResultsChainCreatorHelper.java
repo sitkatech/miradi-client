@@ -43,6 +43,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objecthelpers.OldToNewDiagramFactorMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
@@ -207,9 +208,9 @@ public class ResultsChainCreatorHelper
 		return clonedBaseObjectRefs;
 	}
 
-	private HashMap<DiagramFactor, DiagramFactor> cloneDiagramFactors(HashSet<DiagramFactor> diagramFactors) throws Exception
+	private OldToNewDiagramFactorMap cloneDiagramFactors(HashSet<DiagramFactor> diagramFactors) throws Exception
 	{
-		HashMap<DiagramFactor, DiagramFactor> originalAndClonedDiagramFactors = new HashMap<DiagramFactor, DiagramFactor>();
+		OldToNewDiagramFactorMap originalAndClonedDiagramFactors = new OldToNewDiagramFactorMap();
 		for(DiagramFactor diagramFactorToBeCloned : diagramFactors)
 		{	
 			if (diagramFactorToBeCloned.isGroupBoxFactor())
@@ -221,9 +222,9 @@ public class ResultsChainCreatorHelper
 		return originalAndClonedDiagramFactors;
 	}
 
-	private HashMap<DiagramFactor, DiagramFactor> cloneGroupBoxDiagramFactor(HashSet<DiagramFactor> diagramFactors, DiagramFactor groupBox) throws Exception
+	private OldToNewDiagramFactorMap cloneGroupBoxDiagramFactor(HashSet<DiagramFactor> diagramFactors, DiagramFactor groupBox) throws Exception
 	{
-		HashMap<DiagramFactor, DiagramFactor> originalAndClonedDiagramFactors = new HashMap<DiagramFactor, DiagramFactor>();
+		OldToNewDiagramFactorMap originalAndClonedDiagramFactors = new OldToNewDiagramFactorMap();
 		ORefList childrenRefs = groupBox.getGroupBoxChildrenRefs();
 		for (int childIndex = 0; childIndex < childrenRefs.size(); ++childIndex)
 		{
@@ -236,10 +237,9 @@ public class ResultsChainCreatorHelper
 		return originalAndClonedDiagramFactors;
 	}
 
-	private HashMap<DiagramFactor, DiagramFactor> cloneDiagramFactor(HashSet<DiagramFactor> diagramFactors, DiagramFactor diagramFactorToBeCloned) throws Exception, CommandFailedException
+	private OldToNewDiagramFactorMap cloneDiagramFactor(HashSet<DiagramFactor> diagramFactors, DiagramFactor diagramFactorToBeCloned) throws Exception, CommandFailedException
 	{
-		
-		HashMap<DiagramFactor, DiagramFactor> originalAndClonedDiagramFactors = new HashMap<DiagramFactor, DiagramFactor>();
+		OldToNewDiagramFactorMap originalAndClonedDiagramFactors = new OldToNewDiagramFactorMap();
 		if (ignoreCloning(diagramFactors, diagramFactorToBeCloned))
 			return originalAndClonedDiagramFactors;
 		
