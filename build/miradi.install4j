@@ -5,7 +5,7 @@
 		  mediaDir="../dist" mediaFilePattern="${compiler:sys.shortName}Setup" compression="9" 
 		  lzmaCompression="true" pack200Compression="true" excludeSignedFromPacking="true" 
 		  keepModificationTimes="false" shortName="Miradi" publisher="Miradi" 
-		  publisherWeb="http://miradi.org" version="3.3" allPathsRelative="true" 
+		  publisherWeb="http://miradi.org" version="4.0" allPathsRelative="true" 
 		  backupOnSave="false" autoSave="false" convertDotsToUnderscores="true" macSignature="????" 
 		  installerName="" javaMinVersion="1.6" javaMaxVersion="" allowBetaVM="false" jdkMode="runtimeJre" jdkName="">
     <languages skipLanguageSelection="false">
@@ -53,7 +53,7 @@
       <fileEntry mountPoint="95" file="../dist/temp/jars/jcalendar-1.3.2/jcalendar-license.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="95" file="../dist/temp/jars/BrowserLauncher2/BrowserLauncher2-all-10rc4.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="95" file="../dist/temp/jars/BrowserLauncher2/BrowserLauncher2-license.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />      
-      <fileEntry mountPoint="17" file="./installer/BuildFiles/MarineExample-3.3.0.mpz" overwrite="4" shared="false" mode="644" uninstallMode="0" />
+      <fileEntry mountPoint="17" file="./installer/BuildFiles/MarineExample-4.0.0.mpz" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="17" file="./installer/BuildFiles/LicenseOverview.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="17" file="./installer/BuildFiles/LICENSE.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="17" file="./installer/BuildFiles/README.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
