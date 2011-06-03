@@ -43,12 +43,12 @@ public class WorkPlanRowColumnProvider extends AbstractPlanningTreeRowColumnProv
 	
 	public boolean shouldIncludeResultsChain()
 	{
-		return true;
+		return getProject().getMetadata().shouldIncludeResultsChain();
 	}
 
 	public boolean shouldIncludeConceptualModelPage()
 	{
-		return true;
+		return getProject().getMetadata().shouldIncludeConceptualModelPage();
 	}
 	
 	public CodeList getColumnCodesToShow() throws Exception
