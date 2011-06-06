@@ -28,24 +28,32 @@ import javax.swing.table.AbstractTableModel;
 
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.dialogs.threatrating.upperPanel.TableModelStringComparator;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.questions.SortDirectionQuestion;
 
 
 abstract public class SortableTableModel extends AbstractTableModel implements ColumnTagProvider, RowColumnBaseObjectProvider
 {
-	protected Vector<Integer> getSortedRowIndexes(int sortByTableColumn, String sortDirectionCode)
+	protected ORefList getSortedRefs(int sortByTableColumn, String sortDirectionCode)
 	{
-		Vector<Integer> rows = new Vector<Integer>();
-		for(int index = 0; index < getRowCount(); ++index)
-		{
-			rows.add(new Integer(index));
-		}
+		Vector<ORef> sortedRefs = getCurrentSortedRefs();
 		
-		Collections.sort(rows, createComparator(sortByTableColumn));
+		Collections.sort(sortedRefs, createComparator(sortByTableColumn));
 		if (sortDirectionCode.equals(SortDirectionQuestion.REVERSED_SORT_ORDER_CODE))
-			Collections.reverse(rows);
+			Collections.reverse(sortedRefs);
 		
-		return rows;
+		return new ORefList(sortedRefs);
+	}
+
+	public Vector<ORef> getCurrentSortedRefs()
+	{
+		Vector<ORef> sortedRefs = new Vector<ORef>();
+		for(int row = 0; row < getRowCount(); ++row)
+		{
+			sortedRefs.add(getBaseObjectForRowColumn(row, 0).getRef());
+		}
+		return sortedRefs;
 	}
 	
 	public String getColumnGroupCode(int column)
@@ -53,14 +61,14 @@ abstract public class SortableTableModel extends AbstractTableModel implements C
 		return getColumnTag(column);
 	}
 
-	public Comparator<Integer> createComparator(int columnToSortOn)
+	public Comparator<ORef> createComparator(int columnToSortOn)
 	{
 		return new TableModelStringComparator(this, columnToSortOn);
 	}
 	
 	public abstract String getUniqueTableModelIdentifier();
 
-	public void setSortedRowIndexes(Vector<Integer> sortedRowIndexes)
+	public void setSortedRefs(ORefList sortedRowIndexes)
 	{
 		throw new RuntimeException("This model does not support sorted indexes");
 	}

@@ -30,6 +30,7 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
 import org.miradi.questions.SortDirectionQuestion;
@@ -91,12 +92,12 @@ public class MultiTableRowSortController implements CommandExecutedListener
 		TableSettings tableSettings = findOrCreateTableSettings(model);
 		int modelColumn = tableToSort.convertColumnIndexToModel(columnToSort);
 		String sortDirectionCode = tableSettings.getData(TableSettings.TAG_COLUMN_SORT_DIRECTION);
-		Vector<Integer> sortedRowIndexes = model.getSortedRowIndexes(modelColumn, sortDirectionCode);
+		ORefList sortedRefs = model.getSortedRefs(modelColumn, sortDirectionCode);
 		for (int index = 0; index < tablesToSort.size(); ++index)
 		{
 			TableWithRowHeightSaver table = tablesToSort.get(index);
 			SortableTableModel modelToSetThreats = (SortableTableModel)table.getModel();
-			modelToSetThreats.setSortedRowIndexes(sortedRowIndexes);
+			modelToSetThreats.setSortedRefs(sortedRefs);
 			table.updateAutomaticRowHeights();
 			table.revalidate();
 			table.repaint();

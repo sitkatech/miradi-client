@@ -21,24 +21,40 @@ package org.miradi.dialogs.threatrating.upperPanel;
 
 import java.util.Comparator;
 
-import javax.swing.table.TableModel;
-
-import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.BaseObject;
+import org.miradi.utils.SortableTableModel;
 
-public abstract class AbstractTableModelComparator implements Comparator<Integer>
+public abstract class AbstractTableModelComparator implements Comparator<ORef>
 {
-	public AbstractTableModelComparator(TableModel modelToUse, int columnToSort)
+	public AbstractTableModelComparator(SortableTableModel modelToUse, int columnToSort)
 	{
 		model = modelToUse;
 		columnToSortBy = columnToSort;	
 	}
 	
-	protected Object getValue(int row)
+	protected Object getValue(ORef ref)
 	{
-		return model.getValueAt(row, columnToSortBy);
+		int foundAt = findRowContainingRef(ref);
+		if(foundAt < 0)
+			return null;
+		return model.getValueAt(foundAt, columnToSortBy);
+	}
+
+	// TODO: Should this become part of the RowColumnBaseObjectProvider interface?
+	// or should we cache the ref->row index map in this class for speed?
+	private int findRowContainingRef(ORef ref)
+	{
+		int foundAt = -1;
+		for(int row = 0; row < model.getRowCount(); ++row)
+		{
+			if(model.getBaseObjectForRowColumn(row, 0).getRef().equals(ref))
+			{
+				foundAt = row;
+				break;
+			}
+		}
+		return foundAt;
 	}
 	
 	protected int compareDetails(Comparable[] sortValues1, Comparable[] sortValues2)
@@ -61,16 +77,8 @@ public abstract class AbstractTableModelComparator implements Comparator<Integer
 
 	abstract protected int compareValues(Comparable element1, Comparable element2);
 	
-	protected ORef getRefForRow(int row)
-	{
-		RowColumnBaseObjectProvider provider = ((RowColumnBaseObjectProvider)model);
-		BaseObject baseObject = provider.getBaseObjectForRowColumn(row, 0);
-		
-		return baseObject.getRef();
-	}
-	
-	abstract public int compare(Integer row1, Integer row2);
+	abstract public int compare(ORef ref1, ORef ref2);
 
-	protected TableModel model;
+	protected SortableTableModel model;
 	protected int columnToSortBy;
 }

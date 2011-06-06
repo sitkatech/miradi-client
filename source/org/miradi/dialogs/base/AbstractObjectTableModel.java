@@ -21,11 +21,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.base;
 
 import java.util.Comparator;
-import java.util.Vector;
 
 import org.miradi.dialogs.threatrating.upperPanel.TableModelChoiceItemComparator;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.SortableTableModel;
@@ -58,20 +57,14 @@ abstract public class AbstractObjectTableModel extends SortableTableModel
 	}
 	
 	@Override
-	public void setSortedRowIndexes(Vector<Integer> sortedRowIndexes)
+	public void setSortedRefs(ORefList sortedRefs)
 	{
-		ORefList newList = new ORefList();
-		for(int index = 0; index < sortedRowIndexes.size(); ++index)
-		{
-			int nextExistingRowIndex = sortedRowIndexes.get(index).intValue();
-			BaseObject baseObject = getBaseObjectForRowColumn(nextExistingRowIndex, 0);
-			newList.add(baseObject.getRef());
-		}
+		ORefList newList = new ORefList(sortedRefs);
 		setRowObjectRefs(newList);
 	}
 		
 	@Override
-	public Comparator<Integer> createComparator(int sortColumn)
+	public Comparator<ORef> createComparator(int sortColumn)
 	{
 		if (isChoiceItemColumn(sortColumn))
 			return new TableModelChoiceItemComparator(this, sortColumn, getColumnQuestion(sortColumn));

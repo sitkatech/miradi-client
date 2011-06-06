@@ -78,7 +78,7 @@ public class TargetThreatLinkTableModel extends AbstractThreatPerRowTableModel
 	}
 
 	@Override
-	public Comparator<Integer> createComparator(int columnToSortOn)
+	public Comparator<ORef> createComparator(int columnToSortOn)
 	{
 		return new TableModelChoiceItemComparator(this, columnToSortOn, getThreatRatingQuestion());
 	}
