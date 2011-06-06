@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-06 16:17-0500\n"
+"POT-Creation-Date: 2011-06-06 16:40-0500\n"
 "PO-Revision-Date: 2010-09-30 09:31+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -3092,7 +3092,7 @@ msgstr "Звичайні звіти"
 msgid "Custom Table: %s"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/planning/doers/PlanningCustomizeDialogPopupDoer.java:60
+#: Miradi/source/org/miradi/views/planning/doers/PlanningCustomizeDialogPopupDoer.java:59
 msgid "Customize..."
 msgstr ""
 
