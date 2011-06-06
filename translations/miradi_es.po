@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-02 15:51-0500\n"
+"POT-Creation-Date: 2011-06-06 16:17-0500\n"
 "PO-Revision-Date: 2011-03-28 15:06-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -2082,7 +2082,7 @@ msgstr "Todo en una página"
 msgid "All subtasks within this item will be removed as well."
 msgstr "Todas las subtareas de este elemento también se quitarán "
 
-#: Miradi/source/org/miradi/utils/MultiTableRowSortController.java:143
+#: Miradi/source/org/miradi/utils/MultiTableRowSortController.java:144
 msgid "An Error Occurred During Sorting."
 msgstr ""
 
@@ -3465,7 +3465,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/objecthelpers/ThreatTargetVirtualLinkHelper.java:102
 #: Miradi/source/org/miradi/dialogfields/ReadOnlyCodeListField.java:87
-#: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:79
+#: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:80
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetThreatLinkTableModel.java:76
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetSummaryRowTableModel.java:66
 #: Miradi/source/org/miradi/dialogs/viability/IndicatorTreeModel.java:73
@@ -3484,7 +3484,7 @@ msgstr ""
 "Error de exportación al zip de Miradi: Es posible que esté protegido contra "
 "escritura."
 
-#: Miradi/source/org/miradi/utils/MultiTableRowSortController.java:172
+#: Miradi/source/org/miradi/utils/MultiTableRowSortController.java:173
 msgid "Error Occurred During Sorting"
 msgstr ""
 
@@ -6539,7 +6539,7 @@ msgstr "Informe resumido "
 msgid "Summary Target Ratings:"
 msgstr "Calificación del Objeto: "
 
-#: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:55
+#: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:56
 msgid "Summary Threat Rating"
 msgstr "Calificación de amenazas"
 
