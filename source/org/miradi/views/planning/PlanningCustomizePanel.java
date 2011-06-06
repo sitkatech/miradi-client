@@ -23,9 +23,12 @@ package org.miradi.views.planning;
 import org.miradi.dialogfields.ObjectDataField;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.CodeListEditorPanel;
+import org.miradi.dialogs.base.MiradiDialog;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.main.CommandExecutedEvent;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ObjectTreeTableConfiguration;
+import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.questions.CustomPlanningRowsQuestion;
@@ -35,9 +38,11 @@ import org.miradi.questions.StrategyObjectiveTreeOrderQuestion;
 
 public class PlanningCustomizePanel extends ObjectDataInputPanel
 {
-	public PlanningCustomizePanel(Project projectToUse, ORef planningConfigurationRef) throws Exception
+	public PlanningCustomizePanel(Project projectToUse, MiradiDialog parentDialogToUse, ORef planningConfigurationRef) throws Exception
 	{
 		super(projectToUse, planningConfigurationRef);
+		
+		parentDialog = parentDialogToUse;
 		
 		addField(createStringField(ObjectTreeTableConfiguration.TAG_LABEL));
 		
@@ -60,8 +65,21 @@ public class PlanningCustomizePanel extends ObjectDataInputPanel
 	}
 	
 	@Override
+	public void commandExecuted(CommandExecutedEvent event)
+	{
+		super.commandExecuted(event);
+		
+		if (event.isSetDataCommandWithThisTypeAndTag(ViewData.getObjectType(), ViewData.TAG_TREE_CONFIGURATION_REF))
+		{
+			parentDialog.dispose();
+		}
+	}
+	
+	@Override
 	public String getPanelDescription()
 	{
 		return "PlanningCustomizePanel";
 	}
+	
+	private MiradiDialog parentDialog;
 }

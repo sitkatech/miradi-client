@@ -20,8 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.planning.doers;
 
-import org.martus.swing.Utilities;
-import org.miradi.dialogs.base.ModalDialogWithClose;
+import org.miradi.dialogs.base.ModelessDialogWithClose;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -29,6 +28,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ViewData;
 import org.miradi.views.ObjectsDoer;
 import org.miradi.views.planning.PlanningCustomizePanel;
+import org.miradi.views.planning.PlanningView;
 
 public class PlanningCustomizeDialogPopupDoer extends ObjectsDoer
 {
@@ -56,11 +56,9 @@ public class PlanningCustomizeDialogPopupDoer extends ObjectsDoer
 		ViewData viewData = ViewData.find(mainWindowToUse.getProject(), currentViewDataRef);
 		ORef planningConfigurationRef = viewData.getORef(ViewData.TAG_TREE_CONFIGURATION_REF);
 		
-		ObjectDataInputPanel editor = new PlanningCustomizePanel(mainWindowToUse.getProject(), planningConfigurationRef);
-		ModalDialogWithClose dialog = new ModalDialogWithClose(mainWindowToUse, EAM.text("Customize..."));
+		ModelessDialogWithClose dialog = new ModelessDialogWithClose(mainWindowToUse, EAM.text("Customize..."));
+		ObjectDataInputPanel editor = new PlanningCustomizePanel(mainWindowToUse.getProject(), dialog, planningConfigurationRef);
 		dialog.setScrollableMainPanel(editor);
-		editor.becomeActive();
-		Utilities.centerDlg(dialog);
-		dialog.setVisible(true);
+		mainWindowToUse.getView(PlanningView.getViewName()).showFloatingPropertiesDialog(dialog);
 	}
 }
