@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-02 15:51-0500\n"
+"POT-Creation-Date: 2011-06-06 16:17-0500\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -2143,7 +2143,7 @@ msgstr "Бүгдийг нэг хуудсанд"
 msgid "All subtasks within this item will be removed as well."
 msgstr "Энэ зүйл дэх бүх дагалдах үүрэг мөн адил арилах болно."
 
-#: Miradi/source/org/miradi/utils/MultiTableRowSortController.java:143
+#: Miradi/source/org/miradi/utils/MultiTableRowSortController.java:144
 msgid "An Error Occurred During Sorting."
 msgstr "Сортлох явцад алдаа гарлаа."
 
@@ -3511,7 +3511,7 @@ msgstr "Төсөл үргэлжлэх нийт хугацаа"
 
 #: Miradi/source/org/miradi/objecthelpers/ThreatTargetVirtualLinkHelper.java:102
 #: Miradi/source/org/miradi/dialogfields/ReadOnlyCodeListField.java:87
-#: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:79
+#: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:80
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetThreatLinkTableModel.java:76
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetSummaryRowTableModel.java:66
 #: Miradi/source/org/miradi/dialogs/viability/IndicatorTreeModel.java:73
@@ -3529,7 +3529,7 @@ msgid "Error Export To Miradi Zip: Possible Write Protected: "
 msgstr ""
 "Алдаа Miradi Zip-д оруулах: Бичихээс сэргийлж хамгаалагдсан байж магадгүй: "
 
-#: Miradi/source/org/miradi/utils/MultiTableRowSortController.java:172
+#: Miradi/source/org/miradi/utils/MultiTableRowSortController.java:173
 msgid "Error Occurred During Sorting"
 msgstr "Ангилахад алдаа"
 
@@ -6554,7 +6554,7 @@ msgstr "Тайлангийн Дүгнэлт"
 msgid "Summary Target Ratings:"
 msgstr "Хамгаалах Объектын Үнэлгээний Дүгнэлт:"
 
-#: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:55
+#: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:56
 msgid "Summary Threat Rating"
 msgstr "Аюулын Үнэлгээний Дүгнэлт"
 

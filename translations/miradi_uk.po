@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-02 15:51-0500\n"
+"POT-Creation-Date: 2011-06-06 16:17-0500\n"
 "PO-Revision-Date: 2010-09-30 09:31+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -2148,7 +2148,7 @@ msgstr "Усе на одну сторінку"
 msgid "All subtasks within this item will be removed as well."
 msgstr "Усі підзавдання в межах цього пункту також будуть забрані."
 
-#: Miradi/source/org/miradi/utils/MultiTableRowSortController.java:143
+#: Miradi/source/org/miradi/utils/MultiTableRowSortController.java:144
 msgid "An Error Occurred During Sorting."
 msgstr "Під час сортування сталася помилка."
 
@@ -3521,7 +3521,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/objecthelpers/ThreatTargetVirtualLinkHelper.java:102
 #: Miradi/source/org/miradi/dialogfields/ReadOnlyCodeListField.java:87
-#: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:79
+#: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:80
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetThreatLinkTableModel.java:76
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetSummaryRowTableModel.java:66
 #: Miradi/source/org/miradi/dialogs/viability/IndicatorTreeModel.java:73
@@ -3538,7 +3538,7 @@ msgstr ""
 msgid "Error Export To Miradi Zip: Possible Write Protected: "
 msgstr "Помилка експортування у Miradi Zip: Можливо захист від запису: "
 
-#: Miradi/source/org/miradi/utils/MultiTableRowSortController.java:172
+#: Miradi/source/org/miradi/utils/MultiTableRowSortController.java:173
 msgid "Error Occurred During Sorting"
 msgstr "Під час сортування сталася помилка"
 
@@ -6534,7 +6534,7 @@ msgstr "Резюме звіту"
 msgid "Summary Target Ratings:"
 msgstr "Підсумкові рейтинги цілей:"
 
-#: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:55
+#: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:56
 msgid "Summary Threat Rating"
 msgstr "Підсумковий рейтинг загроз"
 
