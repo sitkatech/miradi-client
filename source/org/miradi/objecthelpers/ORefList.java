@@ -164,7 +164,7 @@ public class ORefList
 		return data.get(index);
 	}
 		
-	private ORefList(List<ORef> listToUse)
+	public ORefList(List<ORef> listToUse)
 	{
 		data = new Vector<ORef>(listToUse);
 	}
