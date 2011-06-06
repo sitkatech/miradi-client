@@ -25,6 +25,7 @@ import java.util.Vector;
 
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
@@ -117,13 +118,12 @@ abstract public class AbstractThreatTargetTableModel extends SortableTableModel
 	}
 	
 	@Override
-	public void setSortedRowIndexes(Vector<Integer> sortedRowIndexes)
+	public void setSortedRefs(ORefList sortedRefs)
 	{
 		Vector<Factor> newSortedThreatList = new Vector<Factor>();
-		for(int index = 0; index < sortedRowIndexes.size(); ++index)
+		for(int index = 0; index < sortedRefs.size(); ++index)
 		{
-			int nextExistingRowIndex = sortedRowIndexes.get(index).intValue();
-			newSortedThreatList.add(getDirectThreat(nextExistingRowIndex));
+			newSortedThreatList.add(Cause.find(getProject(), sortedRefs.get(index)));
 		}
 		
 		threatRows = newSortedThreatList.toArray(new Factor[0]);

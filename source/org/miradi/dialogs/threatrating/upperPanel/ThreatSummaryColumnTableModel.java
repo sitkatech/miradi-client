@@ -22,6 +22,7 @@ package org.miradi.dialogs.threatrating.upperPanel;
 import java.util.Comparator;
 
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Factor;
 import org.miradi.project.Project;
 
@@ -86,7 +87,7 @@ public class ThreatSummaryColumnTableModel extends AbstractThreatPerRowTableMode
 	}
 	
 	@Override
-	public Comparator<Integer> createComparator(int columnToSortOn)
+	public Comparator<ORef> createComparator(int columnToSortOn)
 	{
 		return new TableModelChoiceItemComparator(this, columnToSortOn, getThreatRatingQuestion());
 	}

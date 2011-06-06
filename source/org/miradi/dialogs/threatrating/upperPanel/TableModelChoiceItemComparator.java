@@ -21,14 +21,14 @@ package org.miradi.dialogs.threatrating.upperPanel;
 
 import java.util.Comparator;
 
-import javax.swing.table.TableModel;
-
+import org.miradi.objecthelpers.ORef;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.utils.SortableTableModel;
 
 public class TableModelChoiceItemComparator extends AbstractTableModelComparator
 {
-		public TableModelChoiceItemComparator(TableModel modelToUse, int columnToSort, ChoiceQuestion questionToUse)
+		public TableModelChoiceItemComparator(SortableTableModel modelToUse, int columnToSort, ChoiceQuestion questionToUse)
 		{	
 			super(modelToUse, columnToSort);
 			
@@ -36,16 +36,16 @@ public class TableModelChoiceItemComparator extends AbstractTableModelComparator
 		}
 		
 		@Override
-		public int compare(Integer row1, Integer row2)
+		public int compare(ORef ref1, ORef ref2)
 		{
-			Object value1 = getValue(row1.intValue());
-			Object value2 = getValue(row2.intValue());
+			Object value1 = getValue(ref1);
+			Object value2 = getValue(ref2);
 			
 			if (value1 == null || value2 == null)
 				return -1;
 			
-			Comparable[] sortValues1 = new Comparable[]{((ChoiceItem) value1), getRefForRow(row1)};
-			Comparable[] sortValues2 = new Comparable[]{((ChoiceItem) value2), getRefForRow(row2)};
+			Comparable[] sortValues1 = new Comparable[]{((ChoiceItem) value1), ref1};
+			Comparable[] sortValues2 = new Comparable[]{((ChoiceItem) value2), ref2};
 			
 			return compareDetails(sortValues1, sortValues2);
 		}
