@@ -426,6 +426,9 @@ public class CommandExecutor
 		
 		if (setCommand.isTypeAndTag(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_THREAT_RATING_MODE))
 			return true;
+		
+		if (setCommand.isTypeAndTag(ViewData.getObjectType(), ViewData.TAG_TREE_CONFIGURATION_REF))
+			return true;
 				
 		return false;
 	}
