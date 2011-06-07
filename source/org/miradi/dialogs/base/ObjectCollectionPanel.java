@@ -64,20 +64,32 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements C
 
 		setBackground(AppPreferences.getDataPanelBackgroundColor());
 		setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+
+		getProject().addCommandExecutedListener(this);
+	}
+	
+	@Override
+	public void dispose()
+	{
+		getProject().removeCommandExecutedListener(this);
+		super.dispose();
 	}
 	
 	@Override
 	public void becomeActive()
 	{
 		getPicker().becomeActive();
-		getProject().addCommandExecutedListener(this);
 	}
 
 	@Override
 	public void becomeInactive()
 	{
-		getProject().removeCommandExecutedListener(this);
 		getPicker().becomeInactive();
+	}
+	
+	public boolean isActive()
+	{
+		return getPicker().isActive();
 	}
 	
 	public void setPropertiesPanel(AbstractObjectDataInputPanel panel)
@@ -141,9 +153,15 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements C
 		return component;
 	}
 	
+	final public void commandExecuted(CommandExecutedEvent event)
+	{
+		if(isActive())
+			handleCommandEventImmediately(event);
+	}
+	
+	abstract public void handleCommandEventImmediately(CommandExecutedEvent event);
 	abstract public BaseObject getSelectedObject();
 	
-	abstract public void commandExecuted(CommandExecutedEvent event);
 	
 	private MainWindow mainWindow;
 	private OneRowPanel buttons;

@@ -103,13 +103,8 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 		}
 	}
 
-	protected boolean isActive()
-	{
-		return getPicker().isActive();
-	}
-
 	@Override
-	public void commandExecuted(CommandExecutedEvent event)
+	public void handleCommandEventImmediately(CommandExecutedEvent event)
 	{
 		try
 		{		

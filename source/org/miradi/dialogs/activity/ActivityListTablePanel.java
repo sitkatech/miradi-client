@@ -46,7 +46,7 @@ public class ActivityListTablePanel extends ObjectListTablePanel
 	}
 	
 	@Override
-	public void commandExecuted(CommandExecutedEvent event)
+	public void handleCommandEventImmediately(CommandExecutedEvent event)
 	{
 		super.commandExecuted(event);
 		

@@ -75,7 +75,7 @@ public class ThreatRatingUpperPanel extends MultiTableUpperPanel
 	}
 	
 	@Override
-	public void commandExecuted(CommandExecutedEvent event)
+	public void handleCommandEventImmediately(CommandExecutedEvent event)
 	{
 		repaint();	
 	}

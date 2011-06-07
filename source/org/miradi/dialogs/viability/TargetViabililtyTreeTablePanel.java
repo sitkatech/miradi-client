@@ -80,7 +80,7 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanel
 	// Also, taskTreeTablePanel and TargetViabilityTreeTablePanel should have very similar 
 	// CommandExecuted methods with very similar structures
 	@Override
-	public void commandExecuted(CommandExecutedEvent event)
+	public void handleCommandEventImmediately(CommandExecutedEvent event)
 	{
 		GenericTreeTableModel treeTableModel = getTreeTableModel();
 		final boolean wereTargetKEANodesAddedOrRemoved = event.isSetDataCommandWithThisTypeAndTag(Target.getObjectType(), AbstractTarget.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
