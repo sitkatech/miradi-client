@@ -37,7 +37,7 @@ public class TeamPoolTablePanel extends ObjectPoolTablePanel
 	}
 	
 	@Override
-	public void commandExecuted(CommandExecutedEvent event)
+	public void handleCommandEventImmediately(CommandExecutedEvent event)
 	{
 		super.commandExecuted(event);
 		if (event.isSetDataCommandWithThisTypeAndTag(ProjectResource.getObjectType(), ProjectResource.TAG_ROLE_CODES))

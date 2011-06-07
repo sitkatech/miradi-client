@@ -104,7 +104,7 @@ public class ObjectTablePanel extends ObjectCollectionPanel implements ListSelec
 	}
 
 	@Override
-	public void commandExecuted(CommandExecutedEvent event)
+	public void handleCommandEventImmediately(CommandExecutedEvent event)
 	{
 		if(event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
 		{
