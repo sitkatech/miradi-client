@@ -71,6 +71,13 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		tree.getTree().addTreeSelectionListener(this);
 	}
 	
+	@Override
+	public void dispose()
+	{
+		tree.dispose();
+		super.dispose();
+	}
+	
 	protected void addToButtonBox(Component componentToAdd)
 	{
 		buttonBox.add(componentToAdd); 
@@ -120,13 +127,6 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		}
 	}
 
-	@Override
-	public void dispose()
-	{
-		tree.dispose();
-		super.dispose();
-	}
-	
 	@Override
 	public BaseObject getSelectedObject()
 	{
