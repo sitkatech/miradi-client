@@ -157,8 +157,15 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements C
 	{
 		if(isActive())
 			handleCommandEventImmediately(event);
+		else
+			handleCommandEventWhileInactive(event);
 	}
 	
+	protected void handleCommandEventWhileInactive(CommandExecutedEvent event)
+	{
+		// NOTE: Most classes ignore; override to pay attention
+	}
+
 	abstract public void handleCommandEventImmediately(CommandExecutedEvent event);
 	abstract public BaseObject getSelectedObject();
 	
