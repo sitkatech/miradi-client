@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-06 16:40-0500\n"
+"POT-Creation-Date: 2011-06-07 14:40-0500\n"
 "PO-Revision-Date: 2011-03-28 15:06-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -3564,7 +3564,7 @@ msgstr ""
 msgid "Error renaming project: "
 msgstr "Error al cambiar nombre del proyecto:"
 
-#: Miradi/source/org/miradi/dialogs/treetables/TreeTablePanel.java:119
+#: Miradi/source/org/miradi/dialogs/treetables/TreeTablePanel.java:126
 msgid "Error restoring tree state"
 msgstr "Error al restaurar el estado de un árbol"
 
