@@ -89,6 +89,23 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 	}
 	
 	@Override
+	protected void handleCommandEventWhileInactive(CommandExecutedEvent event)
+	{
+		try
+		{
+			if(doesCommandForceRebuild(event))
+			{
+				needsFullRebuild = true;
+				EAM.logDebug("Queuing a rebuild for " + getClass().getSimpleName());
+			}
+		}
+		catch(Exception e)
+		{
+			EAM.unexpectedErrorDialog(e);
+		}
+	}
+
+	@Override
 	public void becomeActive()
 	{
 		super.becomeActive();
