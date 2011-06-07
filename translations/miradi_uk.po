@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-06 16:40-0500\n"
+"POT-Creation-Date: 2011-06-07 14:40-0500\n"
 "PO-Revision-Date: 2010-09-30 09:31+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -3611,7 +3611,7 @@ msgstr "Помилка читання %ів. Можливо це не дійсн
 msgid "Error renaming project: "
 msgstr "Помилка перейменування проекту:"
 
-#: Miradi/source/org/miradi/dialogs/treetables/TreeTablePanel.java:119
+#: Miradi/source/org/miradi/dialogs/treetables/TreeTablePanel.java:126
 msgid "Error restoring tree state"
 msgstr "Помилка відновлення стану дерева"
 

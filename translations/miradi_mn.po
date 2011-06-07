@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-06 16:40-0500\n"
+"POT-Creation-Date: 2011-06-07 14:40-0500\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -3602,7 +3602,7 @@ msgstr "Алдаа унших %s. Zip file хүчингүй байж болзо�
 msgid "Error renaming project: "
 msgstr "Төслийн нэрийг солиход алдаа: "
 
-#: Miradi/source/org/miradi/dialogs/treetables/TreeTablePanel.java:119
+#: Miradi/source/org/miradi/dialogs/treetables/TreeTablePanel.java:126
 msgid "Error restoring tree state"
 msgstr "Алдаа сэргээгдэж байна Error restoring tree state"
 
