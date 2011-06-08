@@ -48,7 +48,7 @@ public class ActivityListTablePanel extends ObjectListTablePanel
 	@Override
 	public void handleCommandEventImmediately(CommandExecutedEvent event)
 	{
-		super.commandExecuted(event);
+		super.handleCommandEventImmediately(event);
 		
 		if (event.isSetDataCommandWithThisTypeAndTag(Strategy.getObjectType(), Strategy.TAG_ACTIVITY_IDS))
 		{
