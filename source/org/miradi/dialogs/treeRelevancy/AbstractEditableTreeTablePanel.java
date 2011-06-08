@@ -93,7 +93,7 @@ abstract public class AbstractEditableTreeTablePanel extends AbstractTreeTablePa
 	@Override
 	public void handleCommandEventImmediately(CommandExecutedEvent event)
 	{
-		super.commandExecuted(event);
+		super.handleCommandEventImmediately(event);
 		if(event.isSetDataCommand())
 			editableTable.repaint();
 	}
