@@ -120,15 +120,16 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		for (int refIndex = 0; refIndex < indicatorRefs.size(); ++refIndex)
 		{
 			ORef indicatorRef = indicatorRefs.get(refIndex);
-			writeIndicator(out, indicatorRef);
+			Indicator indicator = Indicator.find(getProject(), indicatorRef);
+			if (indicator.isActive())
+				writeIndicator(out, indicator);
 		}
 		
 		writeEndElement(out, INDICATORS);
 	}
 
-	private void writeIndicator(UnicodeWriter out, ORef indicatorRef) throws Exception
+	private void writeIndicator(UnicodeWriter out, Indicator indicator) throws Exception
 	{
-		Indicator indicator = Indicator.find(getProject(), indicatorRef);
 		writeStartElementWithAttribute(out, INDICATOR, ID, indicator.getId().toString());
 		writeLabelElement(out, NAME, indicator, Indicator.TAG_LABEL);
 		writeParentTypeAndNameElements(out, indicator);
