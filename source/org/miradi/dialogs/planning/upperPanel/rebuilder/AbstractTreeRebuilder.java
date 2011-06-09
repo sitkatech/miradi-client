@@ -339,9 +339,10 @@ abstract public class AbstractTreeRebuilder
 			
 			if(refA.isInvalid() && refB.isValid())
 				return 1;
-			
+
+			final int LEAVE_IN_CURRENT_ORDER = -1;			
 			if (!shouldSortChildType(refA) || !shouldSortChildType(refB))
-				return -1;
+				return LEAVE_IN_CURRENT_ORDER;
 			
 			return compareNodes(nodeA, nodeB);
 		}
