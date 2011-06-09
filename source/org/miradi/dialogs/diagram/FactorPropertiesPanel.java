@@ -318,7 +318,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 
 	private DisposablePanelWithDescription getCastedCurrentTab()
 	{
-		if (tabs.getTabCount() > 0)
+		if (tabs.getTabCount() > 0 && currentTabIndex < tabs.getTabCount())
 			return (DisposablePanelWithDescription)tabs.getComponent(currentTabIndex);
 		
 		return null;
