@@ -350,10 +350,21 @@ abstract public class AbstractTreeRebuilder
 		{
 			String labelA = nodeA.toString();
 			String labelB = nodeB.toString();
+			int comparisonResult = labelA.compareToIgnoreCase(labelB);
+			if (shouldReverseSort(nodeA, nodeB))
+				return -comparisonResult;
 			
-			return labelA.compareToIgnoreCase(labelB);
+			return comparisonResult;
 		}
-		
+
+		public boolean shouldReverseSort(AbstractPlanningTreeNode nodeA, AbstractPlanningTreeNode nodeB)
+		{
+			if (Measurement.is(nodeA.getType()) && Measurement.is(nodeB.getType()))
+				return true;
+			
+			return false;
+		}
+				
 		private int getTypeSortLocation(int type)
 		{
 			int[] sortOrder = getNodeSortOrder();
