@@ -343,8 +343,14 @@ abstract public class AbstractTreeRebuilder
 			if (!shouldSortChildType(refA) || !shouldSortChildType(refB))
 				return -1;
 			
+			return compareNodes(nodeA, nodeB);
+		}
+
+		public int compareNodes(AbstractPlanningTreeNode nodeA, AbstractPlanningTreeNode nodeB)
+		{
 			String labelA = nodeA.toString();
 			String labelB = nodeB.toString();
+			
 			return labelA.compareToIgnoreCase(labelB);
 		}
 		
