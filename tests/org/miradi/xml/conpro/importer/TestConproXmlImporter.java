@@ -71,6 +71,41 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		super(name);
 	}
 	
+	public void testOnlyIndicatorsForCurrentTargetMode() throws Exception
+	{
+		Target target = getProject().createTarget();
+		getProject().turnOnTncMode(target);
+		getProject().createIndicator(target);
+		KeyEcologicalAttribute kea = getProject().createKea();
+		
+		IdList indicatorIds = new IdList(Indicator.getObjectType());
+		final Indicator keaIndicator = getProject().createIndicator(kea);
+		indicatorIds.add(keaIndicator.getId());
+		getProject().fillObjectUsingCommand(kea, KeyEcologicalAttribute.TAG_INDICATOR_IDS, indicatorIds);
+		
+		IdList keaIds = new IdList(KeyEcologicalAttribute.getObjectType());
+		keaIds.addRef(kea.getRef());
+		getProject().fillObjectUsingCommand(target, Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, keaIds.toString());
+		assertEquals("Incorrect indicator pool count?", 2, getProject().getIndicatorPool().size());
+		
+		File beforeXmlOutFile = createTempFileFromName("$$$exportOnlyActiveIndictorsTest.xml");
+		ProjectForTesting projectToFill = new ProjectForTesting("ProjectToFill");
+		try
+		{
+			exportProject(beforeXmlOutFile, getProject());
+			importProject(beforeXmlOutFile, projectToFill);
+			
+			ORefList indicatorRefs = projectToFill.getIndicatorPool().getRefList();
+			assertEquals("Incorrect indictor pool count?", 1, indicatorRefs.size());
+			assertEquals("Incorrect indicator imported?", keaIndicator.getRef(), indicatorRefs.getFirstElement());
+		}
+		finally
+		{
+			beforeXmlOutFile.delete();
+			projectToFill.close();
+		}
+	}
+	
 	public void testEmptyMetaNoXeno() throws Exception
 	{
 		ProjectForTesting projectToExport = createProjectWithConproProjectId();
