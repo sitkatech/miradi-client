@@ -94,7 +94,7 @@ public class PlanningCategoryTreeRebuilder extends AbstractTreeRebuilder
 			}
 		}
 		
-		possiblySortChildren(parentNode, parentNode.getRawChildrenByReference());
+		sortChildren(parentNode, parentNode.getRawChildrenByReference());
 	}
 
 	protected AbstractPlanningTreeNode createChildNode(AbstractPlanningTreeNode parentNode, ORef possibleChildRef, int typeOfNodeToCreate) throws Exception
