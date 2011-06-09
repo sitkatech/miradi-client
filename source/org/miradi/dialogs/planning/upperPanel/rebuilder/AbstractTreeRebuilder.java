@@ -247,7 +247,7 @@ abstract public class AbstractTreeRebuilder
 			}
 		}
 
-		possiblySortChildren(node, newChildren);
+		sortChildren(node, newChildren);
 		
 		node.setRawChildren(newChildren);
 	}
@@ -269,10 +269,10 @@ abstract public class AbstractTreeRebuilder
 
 		existingNode.addProportionShares(newChild);
 
-		possiblySortChildren(existingNode, destination);
+		sortChildren(existingNode, destination);
 	}
 
-	protected void possiblySortChildren(AbstractPlanningTreeNode existingNode, Vector<AbstractPlanningTreeNode> destination)
+	protected void sortChildren(AbstractPlanningTreeNode existingNode, Vector<AbstractPlanningTreeNode> destination)
 	{
 		Collections.sort(destination, createNodeSorter());
 	}
