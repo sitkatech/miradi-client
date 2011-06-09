@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-07 14:40-0500\n"
+"POT-Creation-Date: 2011-06-09 11:40-0500\n"
 "PO-Revision-Date: 2011-03-17 08:40-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -3992,7 +3992,7 @@ msgstr ""
 msgid "Indicator Relevancy Panel"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:154
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:155
 msgid "Indicator does not have a direct/indirect factor parent. "
 msgstr ""
 
@@ -5412,7 +5412,7 @@ msgstr ""
 msgid "Project Corruption Detected"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:905
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:906
 msgid "Project Description:"
 msgstr ""
 
@@ -5934,7 +5934,7 @@ msgstr ""
 msgid "Simple viability"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:910
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:911
 msgid "Site/Scope Description:"
 msgstr ""
 
@@ -7040,7 +7040,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/forms/objects/TargetPropertiesForm.java:33
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:71
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:353
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:354
 #: Miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:53
 msgid "Target"
 msgstr ""
@@ -7339,7 +7339,7 @@ msgstr ""
 msgid "This will replace the existing file."
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:378
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:379
 #: Miradi/source/org/miradi/utils/AbstractThreatRatingDetailsTableExporter.java:59
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:34
 msgid "Threat"
