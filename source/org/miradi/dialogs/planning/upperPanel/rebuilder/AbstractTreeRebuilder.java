@@ -274,8 +274,7 @@ abstract public class AbstractTreeRebuilder
 
 	protected void possiblySortChildren(AbstractPlanningTreeNode existingNode, Vector<AbstractPlanningTreeNode> destination)
 	{
-		if(shouldSortChildren(existingNode))
-			Collections.sort(destination, createNodeSorter());
+		Collections.sort(destination, createNodeSorter());
 	}
 	
 	private boolean isChildOfAnyNodeInList(Vector<AbstractPlanningTreeNode> destination, AbstractPlanningTreeNode newChild)
@@ -310,16 +309,9 @@ abstract public class AbstractTreeRebuilder
 		}
 	}
 
-	private boolean shouldSortChildren(AbstractPlanningTreeNode parentNode)
+	private boolean shouldSortChildType(ORef childRef)
 	{
-		ORef parentRef = parentNode.getObjectReference();
-		if(Task.is(parentRef))
-			return false;
-		
-		if(Strategy.is(parentRef))
-			return false;
-		
-		if(Indicator.is(parentRef))
+		if (Task.is(childRef))
 			return false;
 		
 		return true;
@@ -334,7 +326,6 @@ abstract public class AbstractTreeRebuilder
 	{
 		public int compare(AbstractPlanningTreeNode nodeA, AbstractPlanningTreeNode nodeB)
 		{
-
 			int typeSortLocationA = getTypeSortLocation(nodeA.getType());
 			int typeSortLocationB = getTypeSortLocation(nodeB.getType());
 			int diff = typeSortLocationA - typeSortLocationB;
@@ -348,6 +339,9 @@ abstract public class AbstractTreeRebuilder
 			
 			if(refA.isInvalid() && refB.isValid())
 				return 1;
+			
+			if (!shouldSortChildType(refA) || !shouldSortChildType(refB))
+				return -1;
 			
 			String labelA = nodeA.toString();
 			String labelB = nodeB.toString();
