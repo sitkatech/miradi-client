@@ -152,6 +152,24 @@ public class TestDiagramObject extends ObjectTestCase
 		assertEquals("Didn't find normal link?", diagramLink.getRef(), getDiagramLinkRefFromDiagramFactors(diagramObject, cause, target));
 		assertEquals("Didn't find normal link opposite direction?", diagramLink.getRef(), getDiagramLinkRefFromDiagramFactors(diagramObject, cause, target));
 	}
+	
+	public void testWeirdZoomValues() throws Exception
+	{
+		ORef diagramRef = getProject().createResultsChainDiagram();
+		DiagramObject diagram = DiagramObject.findDiagramObject(getProject(), diagramRef);
+
+		getProject().setObjectData(diagram, DiagramObject.TAG_ZOOM_SCALE, Double.toString(0));
+		assertEquals("Didn't fix 0?", 1.0, diagram.getZoomScale());
+
+		getProject().setObjectData(diagram, DiagramObject.TAG_ZOOM_SCALE, Double.toString(1000000000000000.0));
+		assertEquals("Didn't huge number?", 1.0, diagram.getZoomScale());
+
+		getProject().setObjectData(diagram, DiagramObject.TAG_ZOOM_SCALE, Double.toString(0.0000000000000001));
+		assertEquals("Didn't fix tiny number?", 1.0, diagram.getZoomScale());
+
+		getProject().setObjectData(diagram, DiagramObject.TAG_ZOOM_SCALE, Double.toString(-2.0));
+		assertEquals("Didn't fix negative number?", 1.0, diagram.getZoomScale());
+	}
 
 	private ORef getDiagramLinkRefFromDiagramFactors(DiagramObject diagramObject, DiagramFactor strategy, DiagramFactor cause)
 	{
