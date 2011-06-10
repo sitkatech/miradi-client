@@ -19,11 +19,29 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram.doers;
 
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.Factor;
 import org.miradi.objects.ProgressReport;
+import org.miradi.objects.Strategy;
 
 public class CreateProgressReportDoer extends AbstractCreateProgressDoer
 {
+	@Override
+	public boolean isAvailable()
+	{
+		if(!super.isAvailable())
+			return false;
+		
+		ORef actualSelectedRef = getSelectedRef();
+		boolean isFactorSelected = Factor.isFactor(actualSelectedRef);
+		boolean isFactorThatCanHaveProgressReports = (Strategy.is(actualSelectedRef));
+		if(isFactorSelected && !isFactorThatCanHaveProgressReports)
+			return false;
+		
+		return true;
+	}
+	
 	@Override
 	public String getAnnotationListTag()
 	{
