@@ -37,9 +37,9 @@ public class EditTaggedObjectSetDoer extends AbstractEditListDoer
 	}
 	
 	@Override
-	protected void showDialog(final DisposablePanel editPanel,	Dimension preferredSize)
+	protected boolean shouldHaveScrollBars()
 	{
-		editPanel.showModalDialogWithoutScrollBar(getMainWindow(), getDialogTitle(), preferredSize);
+		return false;
 	}
 
 	@Override

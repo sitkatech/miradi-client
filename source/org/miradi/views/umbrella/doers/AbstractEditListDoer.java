@@ -57,9 +57,12 @@ public abstract class AbstractEditListDoer extends ObjectsDoer
 		}
 	}
 
-	protected void showDialog(final DisposablePanel editPanel,	Dimension preferredSize)
+	private void showDialog(final DisposablePanel editPanel,	Dimension preferredSize)
 	{
-		editPanel.showModalDialogWithScrollBar(getMainWindow(), getDialogTitle(), preferredSize);
+		if (shouldHaveScrollBars())
+			editPanel.showModalDialogWithScrollBar(getMainWindow(), getDialogTitle(), preferredSize);
+		else
+			editPanel.showModalDialogWithoutScrollBar(getMainWindow(), getDialogTitle(), preferredSize);
 	}
 
 	protected Dimension getDialogPreferredSize()
@@ -82,4 +85,6 @@ public abstract class AbstractEditListDoer extends ObjectsDoer
 	abstract protected DisposablePanel createEditPanel() throws Exception;
 	
 	abstract protected String getDialogTitle();
+	
+	abstract protected boolean shouldHaveScrollBars();
 }

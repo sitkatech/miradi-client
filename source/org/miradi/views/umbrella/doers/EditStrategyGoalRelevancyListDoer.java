@@ -44,4 +44,10 @@ public class EditStrategyGoalRelevancyListDoer extends AbstractEditListDoer
 	{
 		return EAM.text("Choose Relevant Goal(s)");
 	}
+	
+	@Override
+	protected boolean shouldHaveScrollBars()
+	{
+		return true;
+	}
 }
