@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-09 11:40-0500\n"
+"POT-Creation-Date: 2011-06-10 14:34-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -7369,7 +7369,7 @@ msgstr "Rencana Kerja "
 msgid "Tag"
 msgstr "Tag"
 
-#: Miradi/source/org/miradi/views/diagram/doers/EditTaggedObjectSetDoer.java:48
+#: Miradi/source/org/miradi/views/diagram/doers/EditTaggedObjectSetDoer.java:54
 #: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:42
 msgid "Tagged Items"
 msgstr "Butir yang Ditandai"
