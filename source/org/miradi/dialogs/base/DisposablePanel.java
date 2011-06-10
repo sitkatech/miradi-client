@@ -76,12 +76,13 @@ public class DisposablePanel extends JPanel
 	public void showModalDialogWithScrollBar(MainWindow mainWindow, String dialogTitle, Dimension preferredSize)
 	{
 		ModalDialogWithClose dialog = new ModalDialogWithClose(mainWindow, dialogTitle);
+		dialog.setScrollableMainPanel(this);
 		showDialog(dialog, preferredSize);
 	}
 
 	private void showDialog(DialogWithDisposablePanel dialog, Dimension preferredSize)
 	{
-		dialog.setScrollableMainPanel(this);
+		
 		if (preferredSize != null)
 			dialog.setPreferredSize(preferredSize);
 		
