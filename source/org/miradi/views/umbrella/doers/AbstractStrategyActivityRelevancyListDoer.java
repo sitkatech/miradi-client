@@ -46,4 +46,10 @@ abstract public class AbstractStrategyActivityRelevancyListDoer extends Abstract
 		Desire desire = (Desire) getSelectedObject();
 		return StrategyActivityRelevancyManagementPanel.createManagementPanel(getMainWindow(), desire);
 	}
+
+	@Override
+	protected void showDialog(final DisposablePanel editPanel,	Dimension preferredSize)
+	{
+		editPanel.showModalDialogWithoutScrollBar(getMainWindow(), getDialogTitle(), preferredSize);
+	}
 }

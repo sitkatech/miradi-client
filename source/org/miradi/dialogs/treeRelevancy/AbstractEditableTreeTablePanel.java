@@ -61,6 +61,7 @@ abstract public class AbstractEditableTreeTablePanel extends AbstractTreeTablePa
 	@Override
 	protected void rebuildEntireTreeTable() throws Exception
 	{
+		mainTableScrollPane.showVerticalScrollBar();
 		ORef selectedRef = ORef.INVALID;
 		BaseObject[] selected = tree.getSelectedObjects();
 		if(selected.length == 1)
