@@ -35,6 +35,12 @@ public class EditTaggedObjectSetDoer extends AbstractEditListDoer
 		TaggedObjectSet taggedObjectSet = (TaggedObjectSet) getSelectedObject();
 		return TaggedObjectSetTreeTablePanel.createTaggedItemTreeTablePanel(getMainWindow(), taggedObjectSet);
 	}
+	
+	@Override
+	protected void showDialog(final DisposablePanel editPanel,	Dimension preferredSize)
+	{
+		editPanel.showModalDialogWithoutScrollBar(getMainWindow(), getDialogTitle(), preferredSize);
+	}
 
 	@Override
 	protected int getObjectType()
