@@ -25,6 +25,7 @@ import org.miradi.dialogs.threatrating.upperPanel.AbstractThreatPerRowTableModel
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.Factor;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.ThreatRatingQuestion;
@@ -51,6 +52,12 @@ public abstract class AbstractTargetPoolExporter extends FactorPoolExporter
 		writeOptionalIds(AbstractTarget.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, XmpzXmlConstants.KEY_ECOLOGICAL_ATTRIBUTE, abstractTarget.getKeyEcologicalAttributeRefs());
 		writeIndicatorIds(abstractTarget);
 		exportThreatRatingThreatTargetRating(abstractTarget);
+	}
+	
+	@Override
+	protected void writeIndicatorIds(Factor factor) throws Exception
+	{
+		writeOptionalIndicatorIds(factor.getActiveAndInactiveDirectIndicatorRefs());
 	}
 	
 	private void exportThreatRatingThreatTargetRating(AbstractTarget abstractTarget) throws Exception
