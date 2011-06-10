@@ -26,6 +26,7 @@ import java.awt.Point;
 import org.martus.util.MultiCalendar;
 import org.martus.util.UnicodeStringWriter;
 import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
+import org.miradi.ids.IdList;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
@@ -41,11 +42,13 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Indicator;
+import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Objective;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.TaggedObjectSet;
+import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
@@ -82,6 +85,45 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 		ORef dashbaordRef = getProject().getSingletonObjectRef(Dashboard.getObjectType());
 		
 		return Dashboard.find(getProject(), dashbaordRef);
+	}
+	
+	public void testSimpleIndicatorExportedForTargetInKeaMode() throws Exception
+	{
+		Target target = getProject().createTarget();
+		getProject().turnOnTncMode(target);
+		Indicator targetIndicator = getProject().createIndicator(target);
+		assertEquals("Incorrect indicator pool count?", 1, getProject().getIndicatorPool().size());
+		
+		ProjectForTesting projectImportedInto = validateUsingStringWriter();
+		assertEquals("Incorrect indicator pool count?", 1, projectImportedInto.getIndicatorPool().size());
+		final ORefList targetRefs = projectImportedInto.getTargetPool().getORefList();
+		assertEquals("Incorrect target pool count?", 1, targetRefs.size());
+		Target importedTarget = Target.find(projectImportedInto, targetRefs.getFirstElement());
+		ORefList activeAndInactiveIndicatorRefs = importedTarget.getActiveAndInactiveDirectIndicatorRefs();
+		assertEquals("Incorrect attached indicator count?", 1, activeAndInactiveIndicatorRefs.size());
+		assertEquals("Incorrect indicator attached to target?", targetIndicator.getRef(), activeAndInactiveIndicatorRefs.getFirstElement());
+	}
+	
+	public void testTargetIsNotDirectParentOfKeaIndicatorAfterImport() throws Exception
+	{
+		Target target = getProject().createTarget();
+		getProject().turnOnTncMode(target);
+		
+		KeyEcologicalAttribute kea = getProject().createKea();
+		IdList keaIds = new IdList(KeyEcologicalAttribute.getObjectType());
+		keaIds.addRef(kea.getRef());
+		getProject().fillObjectUsingCommand(target, Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, keaIds.toString());
+		
+		IdList indicatorIds = new IdList(Indicator.getObjectType());
+		final Indicator keaIndicator = getProject().createIndicator(kea);
+		indicatorIds.add(keaIndicator.getId());
+		getProject().fillObjectUsingCommand(kea, KeyEcologicalAttribute.TAG_INDICATOR_IDS, indicatorIds);
+		
+		ProjectForTesting projectImportedInto = validateUsingStringWriter();
+		assertEquals("Incorrect indicator pool count?", 1, projectImportedInto.getIndicatorPool().size());
+		ORefList importedTargetRefs = projectImportedInto.getTargetPool().getRefList();
+		Target importedTarget = Target.find(projectImportedInto, importedTargetRefs.getFirstElement());
+		assertEquals("Kea indicator should not have been attached to target?", 0, importedTarget.getActiveAndInactiveDirectIndicatorRefs().size());
 	}
 
 	public void testDynamicProgressCodesForAutomaticChoice() throws Exception
