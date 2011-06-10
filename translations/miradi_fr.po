@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-10 14:34-0500\n"
+"POT-Creation-Date: 2011-06-10 15:48-0500\n"
 "PO-Revision-Date: 2011-04-05 11:46+0100\n"
 "Last-Translator: Emanuela Leonardi <e.leonardi@gmail.com>\n"
 "Language-Team: none\n"
@@ -2186,7 +2186,7 @@ msgid "An error has occured while writing assignment data."
 msgstr ""
 "Une erreur s'est produite pendant l'écriture des données d'attribution."
 
-#: Miradi/source/org/miradi/views/diagram/DiagramSplitPane.java:332
+#: Miradi/source/org/miradi/views/diagram/DiagramSplitPane.java:336
 #: Miradi/source/org/miradi/diagram/DiagramModel.java:789
 msgid ""
 "An error is preventing this diagram from displaying correctly. Most likely, "
@@ -5417,7 +5417,7 @@ msgstr "Non démarré"
 msgid "Not all classification Codes could imported."
 msgstr "Importation partielle des Codes de classification"
 
-#: Miradi/source/org/miradi/views/diagram/DiagramSplitPane.java:421
+#: Miradi/source/org/miradi/views/diagram/DiagramSplitPane.java:425
 msgid "Not all factors are being shown because %s tag(s) are checked"
 msgstr ""
 "Affichage partiel des facteurs parce que les %(s) balises sont contrôlées"
