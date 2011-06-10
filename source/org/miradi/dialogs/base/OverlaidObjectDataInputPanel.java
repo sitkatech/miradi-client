@@ -44,15 +44,24 @@ public abstract class OverlaidObjectDataInputPanel extends AbstractObjectDataInp
 	private void deactivateCurrentCard()
 	{
 		if (currentCard != null)
+		{
+			// NOTE: setObjectRefs seems like the right thing to do, but is risky.
+			// In quick testing, closing the project results in this being called
+			// very late, after the project is closed, so you get an error.
+			// Perhaps we could do this only if the OverlaidODIP is still active.
+			//currentCard.setObjectRefs(new ORefList());
+			
 			currentCard.becomeInactive();
-		
-		// TODO: Should probably set to null here
+		}
 	}
 
 	private void activateCurrentCard()
 	{
 		if (currentCard != null)
+		{
 			currentCard.becomeActive();
+			currentCard.setObjectRefs(getSelectedRefs());
+		}
 	}
 
 	@Override
@@ -89,13 +98,12 @@ public abstract class OverlaidObjectDataInputPanel extends AbstractObjectDataInp
 		super.setObjectRefs(orefsToUse);
 
 		deactivateCurrentCard();
+		currentCard = findPanel(orefsToUse);
 		
 		if (isMultiPropertiesPanelActive())
 		{
-			currentCard = findPanel(orefsToUse);
 			cardLayout.show(this, currentCard.getPanelDescription());
 			activateCurrentCard();
-			currentCard.setObjectRefs(orefsToUse);
 		}
 		
 		scrollRectToVisible(new Rectangle(0,0,0,0));
