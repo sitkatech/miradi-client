@@ -41,7 +41,7 @@ public abstract class OverlaidObjectDataInputPanel extends AbstractObjectDataInp
 		add(panelToAdd, panelToAdd.getPanelDescription());
 	}
 	
-	protected void deactivateCurrentCard()
+	private void deactivateCurrentCard()
 	{
 		if (currentCard != null)
 			currentCard.becomeInactive();
@@ -49,7 +49,7 @@ public abstract class OverlaidObjectDataInputPanel extends AbstractObjectDataInp
 		// TODO: Should probably set to null here
 	}
 
-	protected void activateCurrentCard()
+	private void activateCurrentCard()
 	{
 		if (currentCard != null)
 			currentCard.becomeActive();
