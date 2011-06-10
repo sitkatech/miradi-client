@@ -49,7 +49,7 @@ public abstract class AbstractEditListDoer extends ObjectsDoer
 			if (getDialogPreferredSize() != null)
 				preferredSize = getDialogPreferredSize();
 			
-			editPanel.showModalDialog(getMainWindow(), getDialogTitle(), preferredSize);
+			editPanel.showModalDialogWithScrollBar(getMainWindow(), getDialogTitle(), preferredSize);
 		}
 		catch (Exception e)
 		{
