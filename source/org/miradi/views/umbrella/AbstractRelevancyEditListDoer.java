@@ -54,5 +54,11 @@ abstract public class AbstractRelevancyEditListDoer extends AbstractEditListDoer
 	}
 	
 	@Override
+	protected boolean shouldHaveScrollBars()
+	{
+		return true;
+	}
+	
+	@Override
 	abstract protected int getObjectType();
 }

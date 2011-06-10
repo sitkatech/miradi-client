@@ -44,4 +44,10 @@ public class EditStrategyObjectiveRelevancyListDoer extends	AbstractEditListDoer
 	{
 		return EAM.text("Choose Relevant Objective(s)");
 	}
+	
+	@Override
+	protected boolean shouldHaveScrollBars()
+	{
+		return true;
+	}
 }
