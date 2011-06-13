@@ -37,8 +37,7 @@ public class CreateProgressReportDoer extends AbstractCreateProgressDoer
 		
 		ORef actualSelectedRef = getSelectedRef();
 		boolean isFactorSelected = Factor.isFactor(actualSelectedRef);
-		boolean isFactorThatCanHaveProgressReports = canHaveProgressReports(actualSelectedRef);
-		if(isFactorSelected && !isFactorThatCanHaveProgressReports)
+		if(isFactorSelected && !canHaveProgressReports(actualSelectedRef))
 			return false;
 		
 		return true;
