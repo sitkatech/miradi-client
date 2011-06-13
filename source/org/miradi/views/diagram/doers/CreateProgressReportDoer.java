@@ -22,8 +22,10 @@ package org.miradi.views.diagram.doers;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
+import org.miradi.objects.Indicator;
 import org.miradi.objects.ProgressReport;
 import org.miradi.objects.Strategy;
+import org.miradi.objects.Task;
 
 public class CreateProgressReportDoer extends AbstractCreateProgressDoer
 {
@@ -44,7 +46,13 @@ public class CreateProgressReportDoer extends AbstractCreateProgressDoer
 
 	public boolean canHaveProgressReports(ORef actualSelectedRef)
 	{
-		return (Strategy.is(actualSelectedRef));
+		if (Strategy.is(actualSelectedRef))
+			return true;
+		
+		if (Indicator.is(actualSelectedRef))
+			return true;
+		
+		return Task.is(actualSelectedRef);
 	}
 	
 	@Override
