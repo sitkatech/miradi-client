@@ -37,15 +37,15 @@ public class CreateProgressReportDoer extends AbstractCreateProgressDoer
 		return canHaveProgressReports(getSelectedRef());
 	}
 
-	public boolean canHaveProgressReports(ORef actualSelectedRef)
+	public boolean canHaveProgressReports(ORef selectedRef)
 	{
-		if (Strategy.is(actualSelectedRef))
+		if (Strategy.is(selectedRef))
 			return true;
 		
-		if (Indicator.is(actualSelectedRef))
+		if (Indicator.is(selectedRef))
 			return true;
 		
-		return Task.is(actualSelectedRef);
+		return Task.is(selectedRef);
 	}
 	
 	@Override
