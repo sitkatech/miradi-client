@@ -4,7 +4,7 @@ Copyright 2005-2010, Foundations of Success, Bethesda, Maryland
      (on behalf of the Conservation Measures Partnership, "CMP") and
      Beneficent Technology, Inc. ("Benetech"), Palo Alto, California.
 
-VERSION 3.3.0
+VERSION 3.3.1
 
 License and Copying
 
@@ -143,7 +143,33 @@ GNU/Linux:
 ---------------------
 Changes
 
-Miradi 3.3 is a major upgrade, with many new features and enhancements. 
+Miradi 3.3.1 is a minor fix release. Projects are fully 
+compatible between version 3.3 and 3.3.1, but we strongly 
+recommend that all users upgrade to 3.3.1 as soon as possible. 
+
+Notable changes in 3.3.1 include:
+
+Preferences:
+- Planning tab: Choosing to include Conceptual Model and/or 
+  Results Chain data now works properly 
+
+Appwide:
+- Fixed diagrams appearing blank on some Windows 7 computers  
+- Objective Properties: Activity list now shows the Id field 
+- Create Progress Report button was sometimes disabled for no reason 
+
+Threat Rating:
+- Threat Table names sometimes did not match the rest of the row
+
+Strategic Plan:
+- Custom: Now sort measurements by date 
+
+Import/Export:
+- Miscellaneous internal changes to the CMPZ and XMPZ export code
+
+
+
+Miradi 3.3 was a major upgrade, with many new features and enhancements. 
 These are the most notable:
 
 Appwide:
