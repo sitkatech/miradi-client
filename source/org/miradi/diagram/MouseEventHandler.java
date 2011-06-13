@@ -235,7 +235,8 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 				doer.setMainWindow(mainWindow);
 				doer.setView(mainWindow.getCurrentView());
 				doer.setLocation(at);
-				doer.safeDoIt();
+				if (doer.isAvailable())
+					doer.safeDoIt();
 			} 
 			catch (Exception e) 
 			{
