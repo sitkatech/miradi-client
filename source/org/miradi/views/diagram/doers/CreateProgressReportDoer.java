@@ -21,7 +21,6 @@ package org.miradi.views.diagram.doers;
 
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.Factor;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.ProgressReport;
 import org.miradi.objects.Strategy;
@@ -36,8 +35,7 @@ public class CreateProgressReportDoer extends AbstractCreateProgressDoer
 			return false;
 		
 		ORef actualSelectedRef = getSelectedRef();
-		boolean isFactorSelected = Factor.isFactor(actualSelectedRef);
-		if(isFactorSelected && !canHaveProgressReports(actualSelectedRef))
+		if(!canHaveProgressReports(actualSelectedRef))
 			return false;
 		
 		return true;
