@@ -35,10 +35,7 @@ public class CreateProgressReportDoer extends AbstractCreateProgressDoer
 			return false;
 		
 		ORef actualSelectedRef = getSelectedRef();
-		if(!canHaveProgressReports(actualSelectedRef))
-			return false;
-		
-		return true;
+		return canHaveProgressReports(actualSelectedRef);
 	}
 
 	public boolean canHaveProgressReports(ORef actualSelectedRef)
