@@ -157,6 +157,8 @@ Appwide:
 - Fixed diagrams appearing blank on some Windows 7 computers  
 - Objective Properties: Activity list now shows the Id field 
 - Create Progress Report button was sometimes disabled for no reason 
+- Lists of Indicators, Activities, or Methods that appear within
+  a single table cell are now sorted alphabetically
 
 Threat Rating:
 - Threat Table names sometimes did not match the rest of the row
