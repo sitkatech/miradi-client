@@ -34,6 +34,32 @@ public class TestBaseObject extends TestCaseWithProject
 		super(name);
 	}
 	
+	public void testGetBaseObjectLabelsOnASingleLine() throws Exception
+	{
+		final String FIRST_STRING = "first";
+		final String MIDDLE_STRING = "middle";
+		final String LAST_STRING = "ZLast";
+
+		ORef causeMiddleRef = getProject().createObject(ObjectType.CAUSE);
+		getProject().setObjectData(causeMiddleRef, BaseObject.TAG_LABEL, MIDDLE_STRING);
+		ORef causeLastRef = getProject().createObject(ObjectType.CAUSE);
+		getProject().setObjectData(causeLastRef, BaseObject.TAG_LABEL, LAST_STRING);
+		ORef causeFirstRef = getProject().createObject(ObjectType.CAUSE);
+		getProject().setObjectData(causeFirstRef, BaseObject.TAG_LABEL, FIRST_STRING);
+
+		BaseObject doesNotMatterWhichObject = Cause.find(getProject(), causeFirstRef);
+		ORefList refs = new ORefList();
+		refs.add(causeMiddleRef);
+		refs.add(causeLastRef);
+		refs.add(causeFirstRef);
+		String result = doesNotMatterWhichObject.getBaseObjectLabelsOnASingleLine(refs);
+		int firstAt = result.indexOf(FIRST_STRING);
+		int middleAt = result.indexOf(MIDDLE_STRING);
+		int lastAt = result.indexOf(LAST_STRING);
+		assertTrue("First not first in " + result + "?", firstAt < middleAt);
+		assertTrue("Last not last " + result + "?", middleAt < lastAt);
+	}
+	
 	public void testGetOwnerRef() throws Exception
 	{
 		ORef taskRef = getProject().createFactorAndReturnRef(Task.getObjectType());

@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import java.text.ParseException;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -45,6 +46,7 @@ import org.miradi.objectdata.ORefData;
 import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objectdata.StringData;
+import org.miradi.objecthelpers.BaseObjectByNameSorter;
 import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.FactorSet;
@@ -1290,18 +1292,23 @@ abstract public class BaseObject
 	
 	public String getBaseObjectLabelsOnASingleLine(ORefList refs)
 	{
+		Vector<BaseObject> objects = new Vector<BaseObject>();
+		for(int i = 0; i < refs.size(); ++i)
+			objects.add(BaseObject.find(getObjectManager(), refs.get(i)));
+		
+		Collections.sort(objects, new BaseObjectByNameSorter());
+		
 		final String FAKE_BULLET = "- ";
 		final String NEW_LINE = "\n";
 		StringBuffer result = new StringBuffer();
-		for(int index = 0; index < refs.size(); ++index)
+		for(int index = 0; index < objects.size(); ++index)
 		{
-			if(refs.size() > 1)
+			if(objects.size() > 1)
 				result.append(FAKE_BULLET);
 			
-			BaseObject baseObject = BaseObject.find(getProject(), refs.get(index));
-			result.append(baseObject.getData(BaseObject.TAG_LABEL));
+			result.append(objects.get(index).getData(BaseObject.TAG_LABEL));
 
-			if(refs.size() > 1)
+			if(objects.size() > 1)
 				result.append(NEW_LINE);
 		}
 		
