@@ -67,7 +67,7 @@ public class DiagramAsSharedPaster extends DiagramPaster
 		deleteOrphansCreatedDuringPaste();
 	}
 	
-	private void deleteOrphansCreatedDuringPaste() throws Exception
+	public void deleteOrphansCreatedDuringPaste() throws Exception
 	{
 		RemoveDeletionsFromMapHandler removeDeletionsFromMapHandler = new RemoveDeletionsFromMapHandler();
 		getProject().addCommandExecutedListener(removeDeletionsFromMapHandler);

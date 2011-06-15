@@ -79,6 +79,9 @@ public class ConceptualModelByTargetSplitter
 		paster.pasteFactors(PASTE_START_POINT);
 		reloadDiagramModelToIncludeNewlyPastedFactors(toDiagramModel, conceptualModelDiagram);
 		paster.pasteDiagramLinks();
+		
+		//FIXME urgent: Orphan cleanup should be moved inside the paster
+		paster.deleteOrphansCreatedDuringPaste();
 	}
 	
 	private void reloadDiagramModelToIncludeNewlyPastedFactors(DiagramModel toDiagramModel, ConceptualModelDiagram conceptualModelDiagram) throws Exception
