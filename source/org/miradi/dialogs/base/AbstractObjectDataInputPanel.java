@@ -832,7 +832,8 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 			for(int i = 0; i < selectedRefs.size(); ++i)
 			{
 				final ORef selectedObjectRef = selectedRefs.get(i);
-				objects.add(getProject().findObject(selectedObjectRef));
+				if (selectedObjectRef.isValid())
+					objects.add(getProject().findObject(selectedObjectRef));
 			}
 			
 			return objects.toArray(new BaseObject[0]);
