@@ -144,6 +144,10 @@ abstract public class ObjectsDoer extends ViewDoer
 			return ORef.INVALID;
 		
 		BaseObject selected = objects[0];
+		//NOTE: This check probably isn't needed, but it was already there and we are in code freeze
+		if (selected == null)
+			return ORef.INVALID;
+		
 		return selected.getRef();
 	}
 	
