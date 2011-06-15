@@ -70,6 +70,7 @@ abstract public class ObjectManagementPanel extends VerticalSplitPanel implement
 	{
 		getListPanel().becomeActive();
 		propertiesPanel.becomeActive();
+		propertiesPanel.setObjectRefs(getListPanel().getPicker().getSelectionHierarchy());
 		updateSplitterLocation();
 	}
 	
