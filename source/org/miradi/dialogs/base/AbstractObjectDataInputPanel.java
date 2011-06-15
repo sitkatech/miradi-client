@@ -830,7 +830,9 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		{
 			Vector<BaseObject> objects = new Vector<BaseObject>();
 			for(int i = 0; i < selectedRefs.size(); ++i)
+			{
 				objects.add(getProject().findObject(selectedRefs.get(i)));
+			}
 			
 			return objects.toArray(new BaseObject[0]);
 		}
