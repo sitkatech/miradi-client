@@ -138,7 +138,8 @@ abstract public class ObjectsDoer extends ViewDoer
 	
 	public ORef getSelectedRef()
 	{
-		BaseObject selected = getObjects()[0];
+		final BaseObject[] objects = getObjects();
+		BaseObject selected = objects[0];
 		if(selected == null)
 			return ORef.INVALID;
 		
