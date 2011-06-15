@@ -126,7 +126,8 @@ abstract public class ObjectsDoer extends ViewDoer
 		return objectIds;
 	}
 
-	
+	//TODO low : getSelectedObjectType can call getSelectedRef().getType,  removes duplication.
+	//We didnt do this because we are in freeze mode.  
 	public int getSelectedObjectType() 
 	{
 		BaseObject[] objects = getObjects();
