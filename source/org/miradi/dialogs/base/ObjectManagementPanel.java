@@ -25,6 +25,7 @@ import javax.swing.Icon;
 import javax.swing.JComponent;
 
 import org.miradi.main.MainWindow;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.rtf.RtfWriter;
@@ -70,7 +71,8 @@ abstract public class ObjectManagementPanel extends VerticalSplitPanel implement
 	{
 		getListPanel().becomeActive();
 		propertiesPanel.becomeActive();
-		propertiesPanel.setObjectRefs(getListPanel().getPicker().getSelectionHierarchy());
+		final ORefList selectionHierarchy = getListPanel().getPicker().getSelectionHierarchy();
+		propertiesPanel.setObjectRefs(selectionHierarchy);
 		updateSplitterLocation();
 	}
 	
