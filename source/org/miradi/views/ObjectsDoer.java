@@ -136,11 +136,6 @@ abstract public class ObjectsDoer extends ViewDoer
 		return objects[0].getType();
 	}
 	
-	public BaseId getSelectedId()
-	{
-		return getSelectedRef().getObjectId();
-	}
-	
 	public ORef getSelectedRef()
 	{
 		BaseObject selected = getObjects()[0];
