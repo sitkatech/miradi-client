@@ -31,6 +31,8 @@ public class TncTerrestrialEcoRegionFileLoader extends TwoLevelFileLoader
 	@Override
 	protected TwoLevelEntry createEntry(Vector row)
 	{
+		if(row.size() < 6)
+			throw new RuntimeException("Not enough elements in: " + row);
 		String code = (String) row.get(0);
 		String name = (String) row.get(1);
 		String description = (String) row.get(5);
