@@ -42,6 +42,8 @@ public class TaxonomyFileLoader extends TwoLevelFileLoader
 		for(int i = 0; i < fileVector.size(); ++i)
 		{
 			Vector row = fileVector.get(i);
+			if(row.size() < 6)
+				throw new RuntimeException("Not enough elements in: " + row);
 			String code = (String) row.get(0);
 			String level1Descriptor = (String) row.get(1);
 			String level2Descriptor = (String) row.get(2);
