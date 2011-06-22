@@ -26758,7 +26758,7 @@ msgid ""
 "choice|/resources/fieldoptions/TncTerrestrialEcoRegions.tsv|Luzon Montane "
 "Rain Forests___IM___Indo-Malay___1___Tropical and Subtropical Moist "
 "Broadleaf Forests___IM0122"
-msgstr "liados húmedos tropicales y subtropicales___IM0122 "
+msgstr ""
 
 msgid ""
 "choice|/resources/fieldoptions/TncTerrestrialEcoRegions.tsv|Luzon Rain "
