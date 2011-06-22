@@ -19497,6 +19497,7 @@ msgid ""
 "improve human welfare\"___\"land reclamation projects, abandonment of "
 "managed lands, rip-rap along shoreline, mowing grass, tree thinning in "
 "parks, beach construction, removal of snags from streams\""
+msgstr ""
 
 msgid ""
 "choice|/resources/fieldoptions/ThreatTaxonomies.tsv|\"Invasive & Other "
@@ -21536,6 +21537,7 @@ msgid ""
 "choice|/resources/fieldoptions/TncTerrestrialEcoRegions.tsv|Aegean And "
 "Western Turkey Sclerophyllous And Mixed Forests___PA___Palearctic___12___"
 "\"Mediterranean Forests, Woodlands and Scrub\"___PA1201"
+msgstr ""
 
 msgid ""
 "choice|/resources/fieldoptions/TncTerrestrialEcoRegions.tsv|Afghan Mountains "
@@ -26035,6 +26037,7 @@ msgstr "Taiheiyo山地落叶森林___PA___古北区___4___温带阔叶与混交�
 msgid ""
 "choice|/resources/fieldoptions/TncTerrestrialEcoRegions.tsv|Taimyr-Central "
 "Siberian Tundra___PA___Palearctic___11___Tundra___PA1111"
+msgstr ""
 
 msgid ""
 "choice|/resources/fieldoptions/TncTerrestrialEcoRegions.tsv|Taiwan "
