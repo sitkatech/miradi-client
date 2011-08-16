@@ -62,6 +62,7 @@ abstract public class MiradiXmlValidator
 				error += " System Id: " + e.getSystemId();
 				EAM.logError(error);
 				EAM.logException(e);
+				return false;
 			}
 			catch(Exception e)
 			{
