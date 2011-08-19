@@ -30,12 +30,12 @@ public class MainTests extends TestCase
 		runTests();
 	}
 
-	public static void runTests ()
+	public static void runTests()
 	{
-		junit.textui.TestRunner.run (suite());
+		junit.textui.TestRunner.run(suite());
 	}
 	
-	public static Test suite ( )
+	public static Test suite()
 	{
 		return new MainTestSuite("All eAM Tests");
 	}
