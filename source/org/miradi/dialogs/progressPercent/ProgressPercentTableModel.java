@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.progressPercent;
 
 import org.miradi.dialogs.base.EditableObjectRefsTableModel;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
@@ -29,6 +30,7 @@ import org.miradi.objects.ProgressPercent;
 import org.miradi.project.Project;
 import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.TaglessChoiceItem;
+import org.miradi.utils.DoubleUtilities;
 import org.miradi.views.diagram.doers.AbstractCreateProgressDoer;
 
 public class ProgressPercentTableModel extends EditableObjectRefsTableModel
@@ -70,12 +72,28 @@ public class ProgressPercentTableModel extends EditableObjectRefsTableModel
 			return new TaglessChoiceItem(progressPercent.getData(ProgressPercent.TAG_DATE));
 		
 		if (isPercentCompleteColumn(columnIndex))
-			return new TaglessChoiceItem(progressPercent.getData(ProgressPercent.TAG_PERCENT_COMPLETE));
+			return new TaglessChoiceItem(getFormattedForDisplayValue(progressPercent));
 		
 		if (isPercentCompleteNotesColumn(columnIndex))
 			return new TaglessChoiceItem(progressPercent.getData(ProgressPercent.TAG_PERCENT_COMPLETE_NOTES)); 
 			
 		return new EmptyChoiceItem();
+	}
+
+	public String getFormattedForDisplayValue(ProgressPercent progressPercent)
+	{
+		try
+		{
+			final String rawDataAsString = progressPercent.getData(ProgressPercent.TAG_PERCENT_COMPLETE);
+			final double rawData = DoubleUtilities.toDoubleFromDataFormat(rawDataAsString);
+			
+			return DoubleUtilities.toStringForHumans(rawData);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return EAM.text("Error");
+		}
 	}
 
 	@Override
@@ -84,13 +102,24 @@ public class ProgressPercentTableModel extends EditableObjectRefsTableModel
 		if (value == null)
 			return;
 		
-		ORef ref = getBaseObjectForRowColumn(row, column).getRef();
-		setProgressPercentValue(ref, column, value.toString());
+		try
+		{
+			ORef ref = getBaseObjectForRowColumn(row, column).getRef();
+			if (value.toString().length() > 0)
+				setProgressPercentValue(ref, column, value.toString());
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
 	}
 	
-	private void setProgressPercentValue(ORef ref, int column, String value)
+	private void setProgressPercentValue(ORef ref, int column, String value) throws Exception
 	{
-		setValueUsingCommand(ref, getColumnTag(column), value);
+		final double unformattedPercent = DoubleUtilities.toDoubleForHumans(value);
+		final String rawPercent = DoubleUtilities.toStringForData(unformattedPercent);
+		
+		setValueUsingCommand(ref, getColumnTag(column), rawPercent);
 	}
 	
 	public boolean isDateColumn(int modelColumn)
