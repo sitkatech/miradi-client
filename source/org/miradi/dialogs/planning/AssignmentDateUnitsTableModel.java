@@ -341,7 +341,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		if (valueAsString.equals(""))
 			return value;
 		
-		double parsedValue = DoubleUtilities.toDoubleFromDataFormat(valueAsString);
+		double parsedValue = DoubleUtilities.toDoubleForHumans(valueAsString);
 		return parsedValue  / portionCount;
 	}
 
@@ -702,7 +702,9 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	
 	protected ChoiceItem createFormattedChoiceItem(OptionalDouble optionalDouble)
 	{
+		System.out.println("before f = " + optionalDouble.toString());
 		String formattedValue = FloatingPointFormatter.formatEditableValue(optionalDouble);
+		System.out.println("afterr f = " + formattedValue);
 		
 		return new ChoiceItem(formattedValue, formattedValue);
 	}
