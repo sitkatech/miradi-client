@@ -21,13 +21,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.project;
 
 import java.text.DecimalFormat;
+import java.util.Locale;
 
 
 public class FloatingNumberFormat
 {
 	public FloatingNumberFormat()
 	{
-		decimalFormat = new DecimalFormat();
+		decimalFormat = (DecimalFormat) DecimalFormat.getNumberInstance(Locale.US);
 		decimalFormat.setGroupingUsed(false);
 		decimalFormat.setMaximumFractionDigits(Integer.MAX_VALUE);
 	}
