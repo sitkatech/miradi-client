@@ -26,6 +26,7 @@ import java.net.URL;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Vector;
 
 import javax.swing.SwingUtilities;
@@ -66,6 +67,7 @@ public class Miradi
 		EAM.setLogLevel(EAM.LOG_VERBOSE);
 		EAM.logDebug("Miradi version " + VersionConstants.getVersionAndTimestamp());
 		EAM.logDebug("Java version = " + System.getProperty("java.version"));
+		EAM.logDebug("Locale = " + Locale.getDefault().toString());
 		
 		EAM.setLogLevel(EAM.LOG_DEBUG);
 		for(String arg : argsAsList)
