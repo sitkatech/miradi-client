@@ -27,14 +27,9 @@ public class MainTests extends TestCase
 {
 	public static void main(String[] args)
 	{
-		runTests();
-	}
-
-	public static void runTests()
-	{
 		junit.textui.TestRunner.run(suite());
 	}
-	
+
 	public static Test suite()
 	{
 		return new MainTestSuite("All eAM Tests");
