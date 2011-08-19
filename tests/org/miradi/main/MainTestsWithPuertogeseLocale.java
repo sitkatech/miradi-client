@@ -35,7 +35,7 @@ public class MainTestsWithPuertogeseLocale extends TestCase
 
 	public static Test suite()
 	{
-		return new MainTestSuite(MainTests.TEST_NAME + " in Puertogese", createPuertogeseLocale());
+		return new MainTestSuite(MainTests.TEST_NAME + " in Portuguese", createPuertogeseLocale());
 	}
 	
 	private static Locale createPuertogeseLocale()
