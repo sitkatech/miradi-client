@@ -22,7 +22,6 @@ package org.miradi.main;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
-import junit.framework.TestSuite;
 
 public class MainTests extends TestCase
 {
@@ -38,9 +37,6 @@ public class MainTests extends TestCase
 	
 	public static Test suite ( )
 	{
-		TestSuite suite= new MainTestSuite("All eAM Tests");
-
-
-	    return suite;
+		return new MainTestSuite("All eAM Tests");
 	}
 }
