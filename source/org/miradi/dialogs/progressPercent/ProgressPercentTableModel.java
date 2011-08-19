@@ -85,9 +85,9 @@ public class ProgressPercentTableModel extends EditableObjectRefsTableModel
 		try
 		{
 			final String rawDataAsString = progressPercent.getData(ProgressPercent.TAG_PERCENT_COMPLETE);
-			final double rawData = DoubleUtilities.toDoubleFromDataFormat(rawDataAsString);
+			final double value = DoubleUtilities.toDoubleFromDataFormat(rawDataAsString);
 			
-			return DoubleUtilities.toStringForHumans(rawData);
+			return DoubleUtilities.toStringForHumans(value);
 		}
 		catch (Exception e)
 		{
