@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.main;
 
 
+import java.util.Locale;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 
@@ -32,7 +34,7 @@ public class MainTests extends TestCase
 
 	public static Test suite()
 	{
-		return new MainTestSuite(TEST_NAME);
+		return new MainTestSuite(TEST_NAME, Locale.getDefault());
 	}
 	
 	public static final String TEST_NAME = "All Miradi Unit Tests";
