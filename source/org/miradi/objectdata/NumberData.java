@@ -21,7 +21,6 @@ package org.miradi.objectdata;
 
 
 import org.miradi.utils.DoubleUtilities;
-import org.miradi.utils.FloatingPointFormatter;
 import org.miradi.utils.InvalidNumberException;
 
 public class NumberData extends ObjectData
