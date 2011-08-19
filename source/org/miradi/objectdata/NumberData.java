@@ -58,8 +58,7 @@ public class NumberData extends ObjectData
 		if(new Double(value).isNaN())
 			return "";
 
-		FloatingPointFormatter format = new FloatingPointFormatter();
-		return format.format(value);
+		return DoubleUtilities.toStringForData(value);
 	}
 	
 	@Override

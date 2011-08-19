@@ -49,6 +49,7 @@ public class DoubleUtilities
 	private static void applyPatternToAvoidScientificNotation(DecimalFormat formatter)
 	{
 		formatter.applyPattern("#.#");
+		formatter.setMaximumFractionDigits(Integer.MAX_VALUE);
 	}
 
 	public static String toStringForHumans(double doubleToConvert)
