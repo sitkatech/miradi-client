@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-09 07:23-0500\n"
+"POT-Creation-Date: 2011-08-19 15:14-0500\n"
 "PO-Revision-Date: 2011-08-09 03:02+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -3507,6 +3507,7 @@ msgstr "Gesamtlaufzeit des Projekts"
 #: Miradi/source/org/miradi/dialogs/viability/IndicatorTreeModel.java:73
 #: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:112
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:103
+#: Miradi/source/org/miradi/dialogs/progressPercent/ProgressPercentTableModel.java:95
 msgid "Error"
 msgstr "Fehler"
 
