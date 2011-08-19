@@ -105,8 +105,7 @@ public class ProgressPercentTableModel extends EditableObjectRefsTableModel
 		try
 		{
 			ORef ref = getBaseObjectForRowColumn(row, column).getRef();
-			if (value.toString().length() > 0)
-				setProgressPercentValue(ref, column, value.toString());
+			setProgressPercentValue(ref, column, value.toString());
 		}
 		catch (Exception e)
 		{
@@ -123,6 +122,9 @@ public class ProgressPercentTableModel extends EditableObjectRefsTableModel
 
 	public String getUnformattedValue(String value) throws Exception
 	{
+		if (value.toString().length() == 0)
+			return "";
+			
 		final double percentValue = DoubleUtilities.toDoubleFromHumanFormat(value);
 		final String percentInDataStringFormat = DoubleUtilities.toStringForData(percentValue);
 		
