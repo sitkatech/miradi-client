@@ -22,6 +22,7 @@ package org.miradi.main;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Locale;
 
 import org.martus.util.TestMultiCalendar;
 import org.martus.util.xml.TestSimpleXmlParser;
@@ -225,9 +226,11 @@ import junit.framework.TestSuite;
 
 public class MainTestSuite extends TestSuite
 {
-	public MainTestSuite(String name)
+	public MainTestSuite(String name, Locale localeToUse)
 	{
 		super(name);
+		
+		locale = localeToUse;
 		
 		addAllTests();
 	}
@@ -495,9 +498,19 @@ public class MainTestSuite extends TestSuite
 	@Override
 	public void run(TestResult result)
 	{
-		reportAnyTempFiles("Existing temp file: ");
-		super.run(result);
-		reportAnyTempFiles("Orphaned temp file: ");
+		Locale originalLocale = Locale.getDefault();
+		try
+		{
+			Locale.setDefault(locale);
+
+			reportAnyTempFiles("Existing temp file: ");
+			super.run(result);
+			reportAnyTempFiles("Orphaned temp file: ");
+		}
+		finally 
+		{
+			Locale.setDefault(originalLocale);
+		}
 	}
 	
 	public void reportAnyTempFiles(String message)
@@ -532,4 +545,6 @@ public class MainTestSuite extends TestSuite
 			throw new RuntimeException("Unable to create temp file!");
 		}
 	}
+	
+	private Locale locale;
 }
