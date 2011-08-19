@@ -341,7 +341,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		if (valueAsString.equals(""))
 			return value;
 		
-		double parsedValue = DoubleUtilities.toDoubleForHumans(valueAsString);
+		double parsedValue = DoubleUtilities.toDoubleFromHumanFormat(valueAsString);
 		return parsedValue  / portionCount;
 	}
 

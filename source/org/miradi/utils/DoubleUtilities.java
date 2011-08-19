@@ -32,7 +32,7 @@ public class DoubleUtilities
 		return formatter.parse(doubleAsString).doubleValue();
 	}
 
-	public static double toDoubleForHumans(String doubleAsString) throws Exception
+	public static double toDoubleFromHumanFormat(String doubleAsString) throws Exception
 	{
 		NumberFormat formatter = NumberFormat.getInstance();
 		return formatter.parse(doubleAsString).doubleValue();

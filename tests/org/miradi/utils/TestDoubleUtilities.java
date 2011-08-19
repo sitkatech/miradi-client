@@ -66,14 +66,14 @@ public class TestDoubleUtilities extends MiradiTestCase
 	public void testToDoubleForHumans() throws Exception
 	{
 		switchToGermanLocale();
-		assertEquals("incorrect value?", 0.5, DoubleUtilities.toDoubleForHumans("0,5"));
-		assertEquals("incorrect value?", 1000.5, DoubleUtilities.toDoubleForHumans("1.000,5"));
-		assertEquals("incorrect value?", -1000.5, DoubleUtilities.toDoubleForHumans("-1.000,5"));
+		assertEquals("incorrect value?", 0.5, DoubleUtilities.toDoubleFromHumanFormat("0,5"));
+		assertEquals("incorrect value?", 1000.5, DoubleUtilities.toDoubleFromHumanFormat("1.000,5"));
+		assertEquals("incorrect value?", -1000.5, DoubleUtilities.toDoubleFromHumanFormat("-1.000,5"));
 		
 		switchToUsLocale();
-		assertEquals("incorrect value?", 0.5, DoubleUtilities.toDoubleForHumans("0.5"));
-		assertEquals("incorrect value?", 1000.5, DoubleUtilities.toDoubleForHumans("1000.5"));
-		assertEquals("incorrect value?", -1000.5, DoubleUtilities.toDoubleForHumans("-1000.5"));
+		assertEquals("incorrect value?", 0.5, DoubleUtilities.toDoubleFromHumanFormat("0.5"));
+		assertEquals("incorrect value?", 1000.5, DoubleUtilities.toDoubleFromHumanFormat("1000.5"));
+		assertEquals("incorrect value?", -1000.5, DoubleUtilities.toDoubleFromHumanFormat("-1000.5"));
 	}
 	
 	public void testToStringForData()

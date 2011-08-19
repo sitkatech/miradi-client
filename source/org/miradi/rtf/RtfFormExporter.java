@@ -180,7 +180,7 @@ public class RtfFormExporter
 			if (value.length() == 0)
 				return "";
 			
-			return formatter.format(DoubleUtilities.toDoubleForHumans(value));
+			return formatter.format(DoubleUtilities.toDoubleFromHumanFormat(value));
 		}
 		else if (formItem.isCodeListFormFieldData())
 		{
