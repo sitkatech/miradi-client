@@ -47,14 +47,15 @@ public class TestDoubleUtilities extends MiradiTestCase
 		super.tearDown();
 	}
 	
+	public void testToDoubleForDataUnderPuertogeseLocale() throws Exception
+	{
+		Locale.setDefault(new Locale("pt", "BR"));
+		assertEquals("incorrect value?", 5.0, DoubleUtilities.toDoubleFromDataFormat("5.0"));
+	}
+	
 	public void testToDoubleForData() throws Exception
 	{
 		switchToGermanLocale();
-		assertEquals("incorrect value?", 0.5, DoubleUtilities.toDoubleFromDataFormat("0,5"));
-		assertEquals("incorrect value?", 1000.5, DoubleUtilities.toDoubleFromDataFormat("1.000,5"));
-		assertEquals("incorrect value?", -1000.5, DoubleUtilities.toDoubleFromDataFormat("-1.000,5"));	
-
-		switchToUsLocale();
 		assertEquals("incorrect value?", 0.5, DoubleUtilities.toDoubleFromDataFormat("0.5"));
 		assertEquals("incorrect value?", 1000.5, DoubleUtilities.toDoubleFromDataFormat("1,000.5"));
 		assertEquals("incorrect value?", -1000.5, DoubleUtilities.toDoubleFromDataFormat("-1,000.5"));

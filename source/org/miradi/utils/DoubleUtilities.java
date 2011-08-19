@@ -28,7 +28,7 @@ public class DoubleUtilities
 {
 	public static double toDoubleFromDataFormat(String doubleAsString) throws Exception
 	{
-		NumberFormat formatter = NumberFormat.getInstance();
+		NumberFormat formatter = NumberFormat.getInstance(createUsLocale());
 		return formatter.parse(doubleAsString).doubleValue();
 	}
 
@@ -40,8 +40,7 @@ public class DoubleUtilities
 
 	public static String toStringForData(double doubleToConvert)
 	{
-		Locale usLocale = Locale.US;
-		DecimalFormat formatter = (DecimalFormat) DecimalFormat.getNumberInstance(usLocale);
+		DecimalFormat formatter = (DecimalFormat) DecimalFormat.getNumberInstance(createUsLocale());
 		applyPatternToAvoidScientificNotation(formatter);
 
 		return formatter.format(doubleToConvert).toString();
@@ -56,5 +55,10 @@ public class DoubleUtilities
 	{
 		NumberFormat formatter = NumberFormat.getInstance();
 		return formatter.format(doubleToConvert);
+	}
+	
+	private static Locale createUsLocale()
+	{
+		return Locale.US;
 	}
 }
