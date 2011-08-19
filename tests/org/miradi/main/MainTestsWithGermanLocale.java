@@ -26,7 +26,7 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 
 
-public class MainTestsWithPortugueseLocale extends TestCase
+public class MainTestsWithGermanLocale extends TestCase
 {
 	public static void main(String[] args)
 	{
