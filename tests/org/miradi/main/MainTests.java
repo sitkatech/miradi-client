@@ -32,6 +32,8 @@ public class MainTests extends TestCase
 
 	public static Test suite()
 	{
-		return new MainTestSuite("All Miradi Unit Tests");
+		return new MainTestSuite(TEST_NAME);
 	}
+	
+	public static final String TEST_NAME = "All Miradi Unit Tests";
 }
