@@ -35,10 +35,10 @@ public class MainTestsWithGermanLocale extends TestCase
 
 	public static Test suite()
 	{
-		return new MainTestSuite(MainTests.TEST_NAME + " in German", createPortugueseLocale());
+		return new MainTestSuite(MainTests.TEST_NAME + " in German", createGermanLocale());
 	}
 	
-	private static Locale createPortugueseLocale()
+	private static Locale createGermanLocale()
 	{
 		return Locale.GERMAN;
 	}
