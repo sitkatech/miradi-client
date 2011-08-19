@@ -32,6 +32,6 @@ public class MainTests extends TestCase
 
 	public static Test suite()
 	{
-		return new MainTestSuite("All eAM Tests");
+		return new MainTestSuite("All Miradi Unit Tests");
 	}
 }
