@@ -47,7 +47,7 @@ public class TestDoubleUtilities extends MiradiTestCase
 		super.tearDown();
 	}
 	
-	public void testToDoubleForDataUnderPuertogeseLocale() throws Exception
+	public void testToDoubleForDataUnderPortugueseLocale() throws Exception
 	{
 		Locale.setDefault(new Locale("pt", "BR"));
 		assertEquals("incorrect value?", 5.0, DoubleUtilities.toDoubleFromDataFormat("5.0"));
