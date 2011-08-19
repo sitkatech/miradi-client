@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
+import java.util.Locale;
+
 import org.miradi.main.MiradiTestCase;
 
 public class TestFloatingPointFormatter extends MiradiTestCase
@@ -27,6 +29,23 @@ public class TestFloatingPointFormatter extends MiradiTestCase
 	public TestFloatingPointFormatter(String name)
 	{
 		super(name);
+	}
+	
+	@Override
+	public void setUp() throws Exception
+	{
+		super.setUp();
+		
+		previousLocale =  Locale.getDefault();
+		Locale.setDefault(Locale.US);
+	}
+	
+	@Override
+	public void tearDown() throws Exception
+	{
+		Locale.setDefault(previousLocale);
+		
+		super.tearDown();
 	}
 	
 	public void testFormatEditableValue()
@@ -41,4 +60,6 @@ public class TestFloatingPointFormatter extends MiradiTestCase
 		
 		assertEquals("formatted using scientific value?", "100000000000000", FloatingPointFormatter.formatEditableValue(new OptionalDouble(100000000000000.0)));
 	}
+	
+	private Locale previousLocale;
 }
