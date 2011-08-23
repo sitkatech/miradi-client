@@ -49,26 +49,47 @@ public class TestDoubleUtilities extends MiradiTestCase
 	
 	public void testToDoubleForDataUnderGermanLocale() throws Exception
 	{
-		switchToGermanLocale();
-		assertEquals("incorrect value?", 5.0, DoubleUtilities.toDoubleFromDataFormat("5.0"));
-		assertEquals("incorrect value?", 1000.5, DoubleUtilities.toDoubleFromDataFormat("1,000.5"));
-		assertEquals("incorrect value?", -1000.5, DoubleUtilities.toDoubleFromDataFormat("-1,000.5"));
+		try
+		{
+			switchToGermanLocale();
+			assertEquals("incorrect value?", 5.0, DoubleUtilities.toDoubleFromDataFormat("5.0"));
+			assertEquals("incorrect value?", 1000.5, DoubleUtilities.toDoubleFromDataFormat("1,000.5"));
+			assertEquals("incorrect value?", -1000.5, DoubleUtilities.toDoubleFromDataFormat("-1,000.5"));
+		}
+		finally 
+		{
+			setLocale(previousLocale);
+		}
 	}
 	
 	public void testToDoubleForData() throws Exception
 	{
-		switchToGermanLocale();
-		assertEquals("incorrect value?", 0.5, DoubleUtilities.toDoubleFromDataFormat("0.5"));
-		assertEquals("incorrect value?", 1000.5, DoubleUtilities.toDoubleFromDataFormat("1,000.5"));
-		assertEquals("incorrect value?", -1000.5, DoubleUtilities.toDoubleFromDataFormat("-1,000.5"));
+		try
+		{
+			switchToGermanLocale();
+			assertEquals("incorrect value?", 0.5, DoubleUtilities.toDoubleFromDataFormat("0.5"));
+			assertEquals("incorrect value?", 1000.5, DoubleUtilities.toDoubleFromDataFormat("1,000.5"));
+			assertEquals("incorrect value?", -1000.5, DoubleUtilities.toDoubleFromDataFormat("-1,000.5"));
+		}
+		finally 
+		{
+			setLocale(previousLocale);
+		}
 	}
 
 	public void testToDoubleForHumans() throws Exception
 	{
-		switchToGermanLocale();
-		assertEquals("incorrect value?", 0.5, DoubleUtilities.toDoubleFromHumanFormat("0,5"));
-		assertEquals("incorrect value?", 1000.5, DoubleUtilities.toDoubleFromHumanFormat("1.000,5"));
-		assertEquals("incorrect value?", -1000.5, DoubleUtilities.toDoubleFromHumanFormat("-1.000,5"));
+		try
+		{
+			switchToGermanLocale();
+			assertEquals("incorrect value?", 0.5, DoubleUtilities.toDoubleFromHumanFormat("0,5"));
+			assertEquals("incorrect value?", 1000.5, DoubleUtilities.toDoubleFromHumanFormat("1.000,5"));
+			assertEquals("incorrect value?", -1000.5, DoubleUtilities.toDoubleFromHumanFormat("-1.000,5"));
+		}
+		finally 
+		{
+			setLocale(previousLocale);
+		}
 		
 		switchToUsLocale();
 		assertEquals("incorrect value?", 0.5, DoubleUtilities.toDoubleFromHumanFormat("0.5"));
@@ -78,10 +99,17 @@ public class TestDoubleUtilities extends MiradiTestCase
 	
 	public void testToStringForData()
 	{
-		switchToGermanLocale();
-		assertEquals("incorrect value?", "0.5", DoubleUtilities.toStringForData(0.5));
-		assertEquals("incorrect value?", "1000.5", DoubleUtilities.toStringForData(1000.5));
-		assertEquals("incorrect value?", "-1000.5", DoubleUtilities.toStringForData(-1000.5));
+		try
+		{
+			switchToGermanLocale();
+			assertEquals("incorrect value?", "0.5", DoubleUtilities.toStringForData(0.5));
+			assertEquals("incorrect value?", "1000.5", DoubleUtilities.toStringForData(1000.5));
+			assertEquals("incorrect value?", "-1000.5", DoubleUtilities.toStringForData(-1000.5));
+		}
+		finally 
+		{
+			setLocale(previousLocale);
+		}
 		
 		switchToUsLocale();
 		assertEquals("incorrect value", "0.5", DoubleUtilities.toStringForData(0.5));
@@ -91,10 +119,17 @@ public class TestDoubleUtilities extends MiradiTestCase
 	
 	public void testToStringForHumans()
 	{
-		switchToGermanLocale();
-		assertEquals("incorrect value?", "0,5", DoubleUtilities.toStringForHumans(0.5));
-		assertEquals("incorrect value?", "1.000,5", DoubleUtilities.toStringForHumans(1000.5));
-		assertEquals("incorrect value?", "-1.000,5", DoubleUtilities.toStringForHumans(-1000.5));
+		try
+		{
+			switchToGermanLocale();
+			assertEquals("incorrect value?", "0,5", DoubleUtilities.toStringForHumans(0.5));
+			assertEquals("incorrect value?", "1.000,5", DoubleUtilities.toStringForHumans(1000.5));
+			assertEquals("incorrect value?", "-1.000,5", DoubleUtilities.toStringForHumans(-1000.5));
+		}
+		finally 
+		{
+			setLocale(previousLocale);
+		}
 		
 		switchToUsLocale();
 		assertEquals("incorrect value?", "0.5", DoubleUtilities.toStringForHumans(0.5));
