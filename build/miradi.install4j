@@ -5,7 +5,7 @@
 		  mediaDir="../dist" mediaFilePattern="${compiler:sys.shortName}Setup" compression="9" 
 		  lzmaCompression="true" pack200Compression="true" excludeSignedFromPacking="true" 
 		  keepModificationTimes="false" shortName="Miradi" publisher="Miradi" 
-		  publisherWeb="http://miradi.org" version="3.3.1" allPathsRelative="true" 
+		  publisherWeb="http://miradi.org" version="3.3.2" allPathsRelative="true" 
 		  backupOnSave="false" autoSave="false" convertDotsToUnderscores="true" macSignature="????" 
 		  installerName="" javaMinVersion="1.6" javaMaxVersion="" allowBetaVM="false" jdkMode="runtimeJre" jdkName="">
     <languages skipLanguageSelection="false">
