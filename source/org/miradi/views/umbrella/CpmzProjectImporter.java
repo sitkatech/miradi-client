@@ -46,7 +46,6 @@ import org.miradi.project.ProjectMpzImporter;
 import org.miradi.utils.ConceptualModelByTargetSplitter;
 import org.miradi.utils.CpmzFileFilterForChooserDialog;
 import org.miradi.utils.GroupBoxHelper;
-import org.miradi.utils.HtmlViewPanelWithMargins;
 import org.miradi.utils.NullProgressMeter;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.views.diagram.DiagramView;
