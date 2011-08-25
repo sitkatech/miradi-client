@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-19 16:07-0500\n"
+"POT-Creation-Date: 2011-08-25 14:49-0500\n"
 "PO-Revision-Date: 2011-04-29 11:26+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -4248,7 +4248,6 @@ msgstr "Sviluppa i piani strategici e di monitoraggio"
 msgid "Implement work plan"
 msgstr "Sviluppa il piano di lavoro"
 
-#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:240
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:70
 #: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:119
 msgid "Import"
@@ -4287,7 +4286,7 @@ msgid "ImportZip"
 msgstr "ImportZip"
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:109
-#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:79
+#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:78
 #: Miradi/source/org/miradi/views/umbrella/ZippedProjectImporter.java:49
 #: Miradi/source/org/miradi/xml/xmpz/XmpzXmlImporter.java:105
 msgid "Importing..."
