@@ -29,6 +29,7 @@ import org.martus.swing.PrintPageFormat;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.utils.BufferedImageFactory;
+import org.miradi.utils.RealizedComponentWrapper;
 import org.miradi.views.ViewDoer;
 
 abstract public class PrintDoer extends ViewDoer
@@ -50,14 +51,27 @@ abstract public class PrintDoer extends ViewDoer
 					break;
 				//TODO: Allow user to either go back and change the setting or continue to print
 			}
-			JComponent componentToPrint = getMainWindow().getCurrentView().getPrintableComponent();
-			BufferedImageFactory.realizeComponent(componentToPrint);
-			PrintPage.printJComponent(componentToPrint, job, format, attributes);
+			printComponent(format, job, attributes);
 		}
 		catch(Exception e)
 		{
 			EAM.logException(e);
 			throw new CommandFailedException(e);
+		}
+	}
+
+	private void printComponent(PrintPageFormat format, PrinterJob job, HashPrintRequestAttributeSet attributes) throws Exception
+	{
+		JComponent componentToPrint = getMainWindow().getCurrentView().getPrintableComponent();
+		RealizedComponentWrapper realizedComponentWrapper = BufferedImageFactory.realizeComponent(componentToPrint);
+		try
+		{
+			JComponent realizedComponent = realizedComponentWrapper.getComponent();
+			PrintPage.printJComponent(realizedComponent, job, format, attributes);
+		}
+		finally
+		{
+			realizedComponentWrapper.cleanup();
 		}
 	}
 }
