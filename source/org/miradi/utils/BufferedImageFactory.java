@@ -29,11 +29,9 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.Icon;
 import javax.swing.JComponent;
-import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
-import org.martus.swing.UiScrollPane;
 import org.miradi.diagram.DiagramComponent;
 import org.miradi.dialogs.treetables.TreeTableWithRowHeightSaver;
 import org.miradi.main.MainWindow;
@@ -63,8 +61,20 @@ public  class BufferedImageFactory
 	
 	public static BufferedImage getImage(JComponent swingComponent,  int inset) throws ImageTooLargeException
 	{
-		realizeComponent(swingComponent);
+		RealizedComponentWrapper realizedComponentWrapper = realizeComponent(swingComponent);
+		JComponent realizedComponent = realizedComponentWrapper.getComponent();
+		try
+		{
+			return createImage(realizedComponent, inset);
+		}
+		finally
+		{
+			realizedComponentWrapper.cleanup();
+		}
+	}
 
+	private static BufferedImage createImage(JComponent swingComponent, int inset) throws OutOfMemoryError, ImageTooLargeException
+	{
 		Rectangle2D bounds = new Rectangle(swingComponent.getPreferredSize());
 		toScreen(bounds);
 		int width = (int) bounds.getWidth() + 2 * inset;
@@ -91,20 +101,11 @@ public  class BufferedImageFactory
 			
 			throw new ImageTooLargeException(tooBigByPercent);
 		}
-
 	}
 
-	public static void realizeComponent(JComponent swingComponent)
+	public static RealizedComponentWrapper realizeComponent(JComponent swingComponent)
 	{
-		//TODO: is there a better way to do this?
-		JFrame frame = new JFrame();
-		UiScrollPane scrollPane = new UiScrollPane(swingComponent);
-		frame.add(scrollPane);
-		frame.pack();
-		
-		// NOTE: Free up frame and scroll pane to avoid memory leaks
-		frame.remove(scrollPane);
-		scrollPane.remove(swingComponent);
+		return new RealizedComponentWrapper(swingComponent);
 	}
 	
 	public static BufferedImage createImageFromDiagram(MainWindow mainWindow, DiagramObject diagramObject) throws Exception
