@@ -47,10 +47,10 @@ import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.views.diagram.DiagramPaster;
 import org.miradi.views.diagram.LinkCreator;
 
-public class TestTransferableEamList extends MiradiTestCase 
+public class TestTransferableMiradiList extends MiradiTestCase 
 {
 
-	public TestTransferableEamList(String name) 
+	public TestTransferableMiradiList(String name) 
 	{
 		super(name);
 	}

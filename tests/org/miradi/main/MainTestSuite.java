@@ -253,7 +253,7 @@ public class MainTestSuite extends TestSuite
 		// main package
 		addTest(new TestSuite(TestCommandExecutedEvents.class));
 		addTest(new TestSuite(TestMainMenu.class));
-		addTest(new TestSuite(TestTransferableEamList.class));
+		addTest(new TestSuite(TestTransferableMiradiList.class));
 		addTest(new TestSuite(TestEAM.class));
 		
 		// project package
