@@ -234,9 +234,4 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 	{
 		return new FileFilter[] {new CpmzFileFilterForChooserDialog()};
 	}
-
-	protected void showImportCompletedDialog() throws Exception
-	{
-		HtmlViewPanelWithMargins.createFromHtmlFileName(getMainWindow(), EAM.text("Import"), "NextStepAfterCpmzImport.html").showAsOkDialog();
-	}
 }
