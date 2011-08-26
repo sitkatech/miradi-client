@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-26 11:55-0500\n"
+"POT-Creation-Date: 2011-08-26 15:25-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -7909,7 +7909,7 @@ msgstr "Title|Видалити"
 msgid "Title|Diagram Panel"
 msgstr "Title|Панель Діаграма"
 
-#: Miradi/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:49
+#: Miradi/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:50
 msgid "Title|Diagram Properties"
 msgstr "Title|Складові Діаграми"
 
@@ -8622,7 +8622,7 @@ msgstr ""
 msgid "[Error]"
 msgstr "[Помилка]"
 
-#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:97
+#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:131
 msgid "[Main Diagram]"
 msgstr "[Головна Діаграма]"
 
@@ -8638,7 +8638,7 @@ msgstr "[Новий ланцюг результатів]"
 msgid "[No Project]"
 msgstr "[Проект не вибраний]"
 
-#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:98
+#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:132
 msgid "[Not Named]"
 msgstr "[Не названо]"
 
@@ -9514,6 +9514,9 @@ msgid "FieldLabel|19.SelectedTaggedObjectSetRefs|Tags"
 msgstr "FieldLabel|19.SelectedTaggedObjectSetRefs|Ярлички"
 
 msgid "FieldLabel|19.Detail|Details"
+msgstr ""
+
+msgid "FieldLabel|19.PseudoDraftStrategies|Draft Strategies"
 msgstr ""
 
 msgid "FieldLabel|20.Label|Name"

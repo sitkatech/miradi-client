@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-26 11:55-0500\n"
+"POT-Creation-Date: 2011-08-26 15:25-0500\n"
 "PO-Revision-Date: 2011-03-28 15:06-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -7912,7 +7912,7 @@ msgstr "Eliminar"
 msgid "Title|Diagram Panel"
 msgstr "Panel del diagrama"
 
-#: Miradi/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:49
+#: Miradi/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:50
 msgid "Title|Diagram Properties"
 msgstr "Propiedades del diagrama"
 
@@ -8641,7 +8641,7 @@ msgstr ""
 msgid "[Error]"
 msgstr "[Error]"
 
-#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:97
+#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:131
 msgid "[Main Diagram]"
 msgstr "[Diagrama principal]"
 
@@ -8657,7 +8657,7 @@ msgstr "[Nueva cadena de resultados]"
 msgid "[No Project]"
 msgstr "[Sin proyecto]"
 
-#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:98
+#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:132
 msgid "[Not Named]"
 msgstr "[Sin nombre]"
 
@@ -9528,6 +9528,9 @@ msgstr "Etiquetas"
 
 msgid "FieldLabel|19.Detail|Details"
 msgstr "Detalles"
+
+msgid "FieldLabel|19.PseudoDraftStrategies|Draft Strategies"
+msgstr ""
 
 msgid "FieldLabel|20.Label|Name"
 msgstr "Nombre"

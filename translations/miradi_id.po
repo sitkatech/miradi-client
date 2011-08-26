@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-26 11:55-0500\n"
+"POT-Creation-Date: 2011-08-26 15:25-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -7866,7 +7866,7 @@ msgstr "Hapus "
 msgid "Title|Diagram Panel"
 msgstr "Panel Diagram "
 
-#: Miradi/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:49
+#: Miradi/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:50
 msgid "Title|Diagram Properties"
 msgstr "Sifat-sifat Diagram "
 
@@ -8601,7 +8601,7 @@ msgstr ""
 msgid "[Error]"
 msgstr "[Kesalahan] "
 
-#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:97
+#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:131
 msgid "[Main Diagram]"
 msgstr "[Diagram Utama] "
 
@@ -8617,7 +8617,7 @@ msgstr "[Rangkaian Hasil Baru] "
 msgid "[No Project]"
 msgstr "[Tidak Ada Proyek] "
 
-#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:98
+#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:132
 msgid "[Not Named]"
 msgstr "[Tidak Diberi Nama] "
 
@@ -9485,6 +9485,9 @@ msgid "FieldLabel|19.SelectedTaggedObjectSetRefs|Tags"
 msgstr "Tag-tag"
 
 msgid "FieldLabel|19.Detail|Details"
+msgstr ""
+
+msgid "FieldLabel|19.PseudoDraftStrategies|Draft Strategies"
 msgstr ""
 
 msgid "FieldLabel|20.Label|Name"

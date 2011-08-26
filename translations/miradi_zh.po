@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-26 11:55-0500\n"
+"POT-Creation-Date: 2011-08-26 15:25-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -7621,7 +7621,7 @@ msgstr "删除 \t\t"
 msgid "Title|Diagram Panel"
 msgstr "图表面板 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:49
+#: Miradi/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:50
 msgid "Title|Diagram Properties"
 msgstr "图表属性 \t\t"
 
@@ -8324,7 +8324,7 @@ msgstr ""
 msgid "[Error]"
 msgstr ""
 
-#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:97
+#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:131
 msgid "[Main Diagram]"
 msgstr "[主要图表] \t\t"
 
@@ -8340,7 +8340,7 @@ msgstr "[新结果链] \t\t"
 msgid "[No Project]"
 msgstr "[无项目] \t\t"
 
-#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:98
+#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:132
 msgid "[Not Named]"
 msgstr "[未命名] \t\t"
 
@@ -9208,6 +9208,9 @@ msgid "FieldLabel|19.SelectedTaggedObjectSetRefs|Tags"
 msgstr "标签"
 
 msgid "FieldLabel|19.Detail|Details"
+msgstr ""
+
+msgid "FieldLabel|19.PseudoDraftStrategies|Draft Strategies"
 msgstr ""
 
 msgid "FieldLabel|20.Label|Name"

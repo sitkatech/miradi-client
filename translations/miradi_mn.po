@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-26 11:55-0500\n"
+"POT-Creation-Date: 2011-08-26 15:25-0500\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -7933,7 +7933,7 @@ msgstr "Гарчиг|Устгах"
 msgid "Title|Diagram Panel"
 msgstr "Гарчиг|Диаграммын жагсаалт"
 
-#: Miradi/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:49
+#: Miradi/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:50
 msgid "Title|Diagram Properties"
 msgstr "Гарчиг|Диаграммын Properties"
 
@@ -8676,7 +8676,7 @@ msgstr ""
 msgid "[Error]"
 msgstr "[Алдаа]"
 
-#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:97
+#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:131
 msgid "[Main Diagram]"
 msgstr "Үндсэн Диаграмм]"
 
@@ -8692,7 +8692,7 @@ msgstr "[Шинэ Үр Дүнгийн Гинжих Холбоос]"
 msgid "[No Project]"
 msgstr "Төсөл байхгүй]"
 
-#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:98
+#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:132
 msgid "[Not Named]"
 msgstr "[Нэрлээгүй"
 
@@ -9623,6 +9623,9 @@ msgstr "БаганыХаяг|19.СонгогдонТэмдэглэгдсэнБа
 
 msgid "FieldLabel|19.Detail|Details"
 msgstr "БаганыХаяг|19.ДэлгэрэнгүйБайдал|Дэлгэрэнгүй Байдал"
+
+msgid "FieldLabel|19.PseudoDraftStrategies|Draft Strategies"
+msgstr ""
 
 msgid "FieldLabel|20.Label|Name"
 msgstr "БаганыХаяг|20.Хаяг|Нэр"
