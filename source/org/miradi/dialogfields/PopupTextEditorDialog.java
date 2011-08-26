@@ -24,6 +24,7 @@ import org.miradi.dialogs.base.ModalDialogWithClose;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.MiradiScrollPane;
 import org.miradi.utils.MiradiTextPane;
+import org.miradi.utils.TextPaneUndoRedoHandler;
 
 import com.inet.jortho.SpellChecker;
 
@@ -34,6 +35,7 @@ public class PopupTextEditorDialog extends ModalDialogWithClose
 		super(mainWindow, title);
 		
 		popupTextField = new MiradiTextPane(getMainWindow(), COLUMN_COUNT, ROW_COUNT);
+		new TextPaneUndoRedoHandler(popupTextField).applyUndoRedoActions();
 		new TextAreaRightClickMouseHandler(getMainWindow().getActions(), popupTextField);
 		popupTextField.setText(initialText);
 		add(new MiradiScrollPane(popupTextField));
