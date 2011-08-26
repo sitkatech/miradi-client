@@ -62,9 +62,9 @@ public  class BufferedImageFactory
 	public static BufferedImage getImage(JComponent swingComponent,  int inset) throws ImageTooLargeException
 	{
 		RealizedComponentWrapper realizedComponentWrapper = realizeComponent(swingComponent);
-		JComponent realizedComponent = realizedComponentWrapper.getComponent();
 		try
 		{
+			JComponent realizedComponent = realizedComponentWrapper.getComponent();
 			return createImage(realizedComponent, inset);
 		}
 		finally
