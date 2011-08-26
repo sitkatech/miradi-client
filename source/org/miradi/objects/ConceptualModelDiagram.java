@@ -19,9 +19,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
+import java.util.HashSet;
+import java.util.Vector;
+
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
@@ -68,6 +72,24 @@ public class ConceptualModelDiagram extends DiagramObject
 		return NO_OWNERS;
 	}
 	
+	@Override
+	public String getPseudoData(String fieldTag)
+	{
+		if (fieldTag.equals(PSEUDO_DRAFT_STRATEGIES))
+			return getDarftStrategyRefsAsString();
+		
+		return super.getPseudoData(fieldTag);
+	}
+	
+	private String getDarftStrategyRefsAsString()
+	{
+		HashSet<Factor> strategies = getFactorsOfType(Strategy.getObjectType());
+		Vector<Strategy> allDraftStrategies = getProject().getStrategyPool().getDraftStrategiesAsVector();
+		allDraftStrategies.retainAll(strategies);
+		
+		return new ORefList(new Vector<BaseObject>(allDraftStrategies)).toString();
+	}
+
 	public static int getObjectType()
 	{
 		return ObjectType.CONCEPTUAL_MODEL_DIAGRAM;
@@ -93,7 +115,21 @@ public class ConceptualModelDiagram extends DiagramObject
 		return find(project.getObjectManager(), conceptualModelRef);
 	}
 	
+	@Override
+	public void clear()
+	{
+		super.clear();
+		
+		draftStrategies = new PseudoORefListData(PSEUDO_DRAFT_STRATEGIES);
+		
+		addField(PSEUDO_DRAFT_STRATEGIES, draftStrategies);
+	}
+
+	public static final String PSEUDO_DRAFT_STRATEGIES = "PseudoDraftStrategies";
+	
 	public static final String OBJECT_NAME = "ConceptualModelDiagram";
 	public static final String DEFAULT_MAIN_NAME = EAM.text("[Main Diagram]");
 	public static final String DEFAULT_BLANK_NAME = EAM.text("[Not Named]");
+	
+	private PseudoORefListData draftStrategies;
 }
