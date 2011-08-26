@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-25 14:49-0500\n"
+"POT-Creation-Date: 2011-08-26 11:55-0500\n"
 "PO-Revision-Date: 2011-04-05 11:46+0100\n"
 "Last-Translator: Emanuela Leonardi <e.leonardi@gmail.com>\n"
 "Language-Team: none\n"
@@ -3774,7 +3774,7 @@ msgstr ""
 "'_'"
 
 #: Miradi/source/org/miradi/xml/AbstractXmlImporter.java:90
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:174
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:175
 msgid "File to import does not validate."
 msgstr "Impossible de valider le fichier à importer."
 
@@ -4131,7 +4131,7 @@ msgstr "Masquer colonnes trimestre"
 msgid "High"
 msgstr "Haut"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1379
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1385
 msgid "High/Very-High Threat Chains"
 msgstr "Chaînes de menace haute/très haute"
 
@@ -4329,7 +4329,7 @@ msgstr ""
 "suivants : être mesurable, précis, stable et sensible. Dans Miradi un "
 "indicateur est représenté par un triangle violet."
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1279
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1285
 msgid "Indicator Holder"
 msgstr "Détenteur de l'indicateur"
 
@@ -4813,7 +4813,7 @@ msgstr ""
 msgid "Low"
 msgstr "Bas"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1380
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1386
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr "Chaînes de menace Basses/Moyennes/Non évaluées"
 
@@ -5413,7 +5413,7 @@ msgstr "Non spécifié"
 msgid "Not Started"
 msgstr "Non démarré"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:643
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:649
 msgid "Not all classification Codes could imported."
 msgstr "Importation partielle des Codes de classification"
 
@@ -5456,7 +5456,7 @@ msgstr ""
 "réduire une menace critique. Dans Miradi un objectif est représenté par un "
 "petit rectangle bleu."
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1273
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1279
 msgid "Objective Holder"
 msgstr "Détenteur objectif"
 
@@ -5640,7 +5640,7 @@ msgstr "Rose"
 msgid "Place scope on diagram"
 msgstr "Placer la portée sur le diagramme"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1269
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1275
 msgid "Placeholder - From ConPro"
 msgstr "Espace réservé - De ConPro"
 

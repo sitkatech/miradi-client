@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-25 14:49-0500\n"
+"POT-Creation-Date: 2011-08-26 11:55-0500\n"
 "PO-Revision-Date: 2011-02-15 16:35-0600\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -3454,7 +3454,7 @@ msgid "File name must contain only alpha numeric and/or '_' characters."
 msgstr ""
 
 #: Miradi/source/org/miradi/xml/AbstractXmlImporter.java:90
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:174
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:175
 msgid "File to import does not validate."
 msgstr ""
 
@@ -3795,7 +3795,7 @@ msgstr ""
 msgid "High"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1379
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1385
 msgid "High/Very-High Threat Chains"
 msgstr ""
 
@@ -3984,7 +3984,7 @@ msgid ""
 "by a purple triangle."
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1279
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1285
 msgid "Indicator Holder"
 msgstr ""
 
@@ -4457,7 +4457,7 @@ msgstr ""
 msgid "Low"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1380
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1386
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr ""
 
@@ -5001,7 +5001,7 @@ msgstr ""
 msgid "Not Started"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:643
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:649
 msgid "Not all classification Codes could imported."
 msgstr ""
 
@@ -5040,7 +5040,7 @@ msgid ""
 "by a small blue rectangle."
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1273
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1279
 msgid "Objective Holder"
 msgstr ""
 
@@ -5216,7 +5216,7 @@ msgstr ""
 msgid "Place scope on diagram"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1269
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1275
 msgid "Placeholder - From ConPro"
 msgstr ""
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-25 14:49-0500\n"
+"POT-Creation-Date: 2011-08-26 11:55-0500\n"
 "PO-Revision-Date: 2011-04-29 11:26+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -3776,7 +3776,7 @@ msgstr ""
 "Il nome del file  deve contenere solo caratteri alpha numerici e/o '_' ."
 
 #: Miradi/source/org/miradi/xml/AbstractXmlImporter.java:90
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:174
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:175
 msgid "File to import does not validate."
 msgstr "Il file da importare non è valido."
 
@@ -4137,7 +4137,7 @@ msgstr "Nascondi le colonne trimestre"
 msgid "High"
 msgstr "Alto"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1379
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1385
 msgid "High/Very-High Threat Chains"
 msgstr "Alta/molto-alta Catene di PressionI"
 
@@ -4335,7 +4335,7 @@ msgstr ""
 "preciso, coerente e sensibile. In Miradi, un Indicatore è rappresentato da "
 "un triangolo viola."
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1279
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1285
 msgid "Indicator Holder"
 msgstr "Indicatore di possesso"
 
@@ -4819,7 +4819,7 @@ msgstr ""
 msgid "Low"
 msgstr "Basso"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1380
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1386
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr "Catene della Pressione Bassa/Media/Non Valutata"
 
@@ -5398,7 +5398,7 @@ msgstr "NOn specificato"
 msgid "Not Started"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:643
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:649
 msgid "Not all classification Codes could imported."
 msgstr "Non tutti i codici di classificazione possono essere importati."
 
@@ -5443,7 +5443,7 @@ msgstr ""
 "Pressione critica. In Miradi, un Obiettivo Gestionale è rappresentato da un "
 "piccolo rettangolo blu."
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1273
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1279
 msgid "Objective Holder"
 msgstr "Obiettivo Gestionale Holder"
 
@@ -5623,7 +5623,7 @@ msgstr "Rosa"
 msgid "Place scope on diagram"
 msgstr "Inserisci l'Ambito nel diagramma"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1269
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1275
 msgid "Placeholder - From ConPro"
 msgstr "Segnaposto - Da ConPro"
 
