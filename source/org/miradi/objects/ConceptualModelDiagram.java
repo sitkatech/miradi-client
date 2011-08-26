@@ -75,7 +75,7 @@ public class ConceptualModelDiagram extends DiagramObject
 	@Override
 	public String getPseudoData(String fieldTag)
 	{
-		if (fieldTag.equals(PSEUDO_DRAFT_STRATEGIES))
+		if (fieldTag.equals(PSEUDO_DRAFT_STRATEGY_REFS))
 			return getDraftStrategyRefsAsString();
 		
 		return super.getPseudoData(fieldTag);
@@ -120,12 +120,12 @@ public class ConceptualModelDiagram extends DiagramObject
 	{
 		super.clear();
 		
-		draftStrategies = new PseudoORefListData(PSEUDO_DRAFT_STRATEGIES);
+		draftStrategies = new PseudoORefListData(PSEUDO_DRAFT_STRATEGY_REFS);
 		
-		addField(PSEUDO_DRAFT_STRATEGIES, draftStrategies);
+		addField(PSEUDO_DRAFT_STRATEGY_REFS, draftStrategies);
 	}
 
-	public static final String PSEUDO_DRAFT_STRATEGIES = "PseudoDraftStrategies";
+	public static final String PSEUDO_DRAFT_STRATEGY_REFS = "PseudoDraftStrategies";
 	
 	public static final String OBJECT_NAME = "ConceptualModelDiagram";
 	public static final String DEFAULT_MAIN_NAME = EAM.text("[Main Diagram]");
