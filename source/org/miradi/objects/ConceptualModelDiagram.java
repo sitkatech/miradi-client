@@ -76,12 +76,12 @@ public class ConceptualModelDiagram extends DiagramObject
 	public String getPseudoData(String fieldTag)
 	{
 		if (fieldTag.equals(PSEUDO_DRAFT_STRATEGIES))
-			return getDarftStrategyRefsAsString();
+			return getDraftStrategyRefsAsString();
 		
 		return super.getPseudoData(fieldTag);
 	}
 	
-	private String getDarftStrategyRefsAsString()
+	private String getDraftStrategyRefsAsString()
 	{
 		HashSet<Factor> strategies = getFactorsOfType(Strategy.getObjectType());
 		Vector<Strategy> allDraftStrategies = getProject().getStrategyPool().getDraftStrategiesAsVector();
