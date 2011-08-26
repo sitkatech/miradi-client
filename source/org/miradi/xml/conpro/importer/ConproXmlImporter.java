@@ -144,6 +144,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		Node projectSumaryNode = getNode(getRootNode(), PROJECT_SUMMARY);
 		ORef metadataRef = getProject().getMetadata().getRef();
 		importProjectId(projectSumaryNode, metadataRef);
+		importParentChildField(projectSumaryNode, getSingletonTncProjectDataRef());
 		progressIndicator.incrementProgress();
 	}
 
@@ -611,7 +612,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		importField(projectSumaryNode, PLANNING_TEAM_COMMENT, metadataRef, ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENTS);
 		importField(projectSumaryNode, LESSONS_LEARNED, metadataRef, ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
 		importField(projectSumaryNode, RELATED_PROJECTS, metadataRef, ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
-		importField(projectSumaryNode, PARENT_CHILD, tncProjectDataRef, TncProjectData.TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT);
+		importParentChildField(projectSumaryNode, tncProjectDataRef);
 		importThreatRatingValueInMode(projectSumaryNode, metadataRef);
 		importTeamMembers(projectSumaryNode, metadataRef);
 		
@@ -627,6 +628,11 @@ public class ConproXmlImporter implements ConProMiradiXml
 		
 		importCodeListField(generatePath(new String[] {CONSERVATION_PROJECT, PROJECT_SUMMARY, COUNTRIES, COUNTRY_CODE}), metadataRef, ProjectMetadata.TAG_COUNTRIES);
 		importCodeListField(generatePath(new String[] {CONSERVATION_PROJECT, PROJECT_SUMMARY, OUS, OU_CODE}), metadataRef, ProjectMetadata.TAG_TNC_OPERATING_UNITS);
+	}
+
+	private void importParentChildField(Node projectSumaryNode, ORef tncProjectDataRef) throws Exception
+	{
+		importField(projectSumaryNode, PARENT_CHILD, tncProjectDataRef, TncProjectData.TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT);
 	}
 
 	private void importClassificationCodes(Node projectSumaryNode) throws Exception
