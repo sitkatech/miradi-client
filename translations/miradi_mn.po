@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-29 10:55-0500\n"
+"POT-Creation-Date: 2011-08-29 12:53-0500\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -2544,7 +2544,7 @@ msgstr "Багц Дүрэм"
 
 #: Miradi/source/org/miradi/database/DataUpgrader.java:52
 #: Miradi/source/org/miradi/database/DataUpgrader.java:64
-#: Miradi/source/org/miradi/views/diagram/doers/AbstractPasteDoer.java:77
+#: Miradi/source/org/miradi/views/diagram/doers/AbstractPasteDoer.java:83
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:52
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:225
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/DirectoryChooserDialog.java:76
