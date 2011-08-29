@@ -141,6 +141,19 @@ public class EAM
 		htmlViwer.showAsOkDialog();
 	}
 	
+	public static void showSafeHtmlOkMessageDialog(String messageFileName, String title)
+	{
+		try
+		{
+			EAM.showHtmlMessageOkDialog(messageFileName, title);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			EAM.unexpectedErrorDialog();
+		}
+	}
+
 	public static void showHtmlMessageOkDialog(String messageFileName, String title) throws Exception
 	{
 		HtmlViewPanelWithMargins.createFromHtmlFileName(getMainWindow(), EAM.text(title), messageFileName).showAsOkDialog();
@@ -370,10 +383,9 @@ public class EAM
 	{
 		logException(e);
 		
-		if (FileInUseByAnotherProcessException.isThisException(e))
+		if ((e instanceof FileNotFoundException) || FileInUseByAnotherProcessException.isThisException(e))
 		{
-			EAM.errorDialog(EAM.text("Miradi resource file in use by possible anitvirus software.  " 
-								   + "Please shut down your anti virus and try again"));
+			showSafeHtmlOkMessageDialog(FILEINUSE_ERROR_MESSAGE_FILE_NAME, EAM.text("Error"));			
 		}
 		else
 		{
@@ -628,6 +640,7 @@ public class EAM
 	public static final String INFORMATION_DIALOG_TITLE = EAM.text("Wintitle|Information");
 	
 	public static final String EXCEPTIONS_LOG_FILE_NAME = "exceptions.log";
+	private final static String FILEINUSE_ERROR_MESSAGE_FILE_NAME = "FileInUseErrorMessage.html";
 }
 
 
