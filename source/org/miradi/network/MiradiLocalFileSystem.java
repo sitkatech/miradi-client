@@ -34,6 +34,7 @@ import org.martus.util.DirectoryUtils;
 import org.martus.util.UnicodeReader;
 import org.martus.util.UnicodeWriter;
 import org.martus.util.DirectoryLock.AlreadyLockedException;
+import org.miradi.exceptions.FileInUseByAnotherProcessException;
 
 public class MiradiLocalFileSystem extends AbstractNonRemoteMiradiFileSystem
 {
@@ -203,6 +204,13 @@ public class MiradiLocalFileSystem extends AbstractNonRemoteMiradiFileSystem
 		try
 		{
 			writer.write(contents);
+		}
+		catch (Exception e)
+		{
+			if (FileInUseByAnotherProcessException.isThisException(e))
+				throw new FileInUseByAnotherProcessException(); 
+				
+			throw e;
 		}
 		finally
 		{
