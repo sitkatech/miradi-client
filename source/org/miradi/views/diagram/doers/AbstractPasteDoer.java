@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram.doers;
 
-import java.awt.Toolkit;
-import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.Transferable;
 
 import org.miradi.diagram.DiagramModel;
@@ -41,8 +39,7 @@ abstract public class AbstractPasteDoer extends LocationDoer
 		if (! isInDiagram())
 			return false;
 		
-		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-		Transferable contents = clipboard.getContents(null);
+		Transferable contents = getProject().getDiagramClipboard().getContents(null);
 		if(contents == null)
 			return false;
 
