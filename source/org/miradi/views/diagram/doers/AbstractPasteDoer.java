@@ -39,11 +39,19 @@ abstract public class AbstractPasteDoer extends LocationDoer
 		if (! isInDiagram())
 			return false;
 		
-		Transferable contents = getProject().getDiagramClipboard().getContents(null);
-		if(contents == null)
+		try
+		{
+			Transferable contents = getProject().getDiagramClipboard().getContents(null);
+			if(contents == null)
+				return false;
+			
+			return contents.isDataFlavorSupported(TransferableMiradiList.miradiListDataFlavor);
+		}
+		catch (IllegalStateException e)
+		{
+			EAM.logException(e);
 			return false;
-
-		return contents.isDataFlavorSupported(TransferableMiradiList.miradiListDataFlavor);
+		}
 	}
 	
 	protected TransferableMiradiList getTransferableMiradiList() throws Exception
