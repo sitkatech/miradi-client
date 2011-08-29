@@ -41,7 +41,7 @@ abstract public class AbstractPasteDoer extends LocationDoer
 		
 		try
 		{
-			Transferable contents = getProject().getDiagramClipboard().getContents(null);
+			Transferable contents = getDiagramClipboardContents();
 			if(contents == null)
 				return false;
 			
@@ -56,12 +56,18 @@ abstract public class AbstractPasteDoer extends LocationDoer
 	
 	protected TransferableMiradiList getTransferableMiradiList() throws Exception
 	{
-		DiagramClipboard clipboard = getProject().getDiagramClipboard();
-		Transferable contents = clipboard.getContents(null);
+		Transferable contents = getDiagramClipboardContents();
 		if(!contents.isDataFlavorSupported(TransferableMiradiList.miradiListDataFlavor))
 			return null;
 
 		return (TransferableMiradiList)contents.getTransferData(TransferableMiradiList.miradiListDataFlavor);
+	}
+
+	private Transferable getDiagramClipboardContents()
+	{
+		DiagramClipboard clipboard = getProject().getDiagramClipboard();
+		
+		return clipboard.getContents(null);
 	}
 	
 	protected DiagramModel getDiagramModel()
