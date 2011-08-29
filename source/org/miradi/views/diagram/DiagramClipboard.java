@@ -24,6 +24,7 @@ import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.ClipboardOwner;
 import java.awt.datatransfer.Transferable;
 
+import org.miradi.main.EAM;
 import org.miradi.project.Project;
 
 public class DiagramClipboard extends Clipboard
@@ -69,7 +70,13 @@ public class DiagramClipboard extends Clipboard
 		return clipboard.getContents(requestor);
 	}
 	
+	public synchronized Transferable getContents()
+	{
+		return getContents(UNUSED_METHOD_ARG);
+	}
+	
 	private Project project;
 	private int pasteCount;
 	private final Clipboard clipboard;
+	private static final Object UNUSED_METHOD_ARG = null;
 }
