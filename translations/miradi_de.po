@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-26 15:25-0500\n"
+"POT-Creation-Date: 2011-08-29 09:07-0500\n"
 "PO-Revision-Date: 2011-08-09 03:02+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Virtaal 0.7.0\n"
 
-#: Miradi/source/org/miradi/main/EAM.java:375
+#: Miradi/source/org/miradi/main/EAM.java:384
 #, fuzzy
 msgid ""
 "\n"
@@ -30,7 +30,7 @@ msgstr ""
 "Miradi hat versucht Ihre letzten Änderungen zu speichern und wird jetzt "
 "beendet."
 
-#: Miradi/source/org/miradi/main/EAM.java:372
+#: Miradi/source/org/miradi/main/EAM.java:381
 #, fuzzy
 msgid ""
 "\n"
@@ -2180,7 +2180,7 @@ msgstr ""
 msgid "An internal error prevented this operation"
 msgstr "ein interner Fehler hat diesen Befehl verhindert"
 
-#: Miradi/source/org/miradi/main/EAM.java:404
+#: Miradi/source/org/miradi/main/EAM.java:415
 msgid "An unexpected error has occurred"
 msgstr "Ein unerwarteter Fehler ist aufgetreten"
 
@@ -2188,7 +2188,7 @@ msgstr "Ein unerwarteter Fehler ist aufgetreten"
 msgid "An unexpected error has occurred."
 msgstr "Ein unerwarteter Fehler ist aufgetreten."
 
-#: Miradi/source/org/miradi/main/EAM.java:371
+#: Miradi/source/org/miradi/main/EAM.java:380
 msgid "An unexpected error occurred: "
 msgstr "Ein unerwarteter Fehler ist aufgetreten:"
 
@@ -3187,8 +3187,8 @@ msgstr "Planungsraum definieren"
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:61
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:54
-#: Miradi/source/org/miradi/main/EAM.java:461
-#: Miradi/source/org/miradi/main/EAM.java:462
+#: Miradi/source/org/miradi/main/EAM.java:472
+#: Miradi/source/org/miradi/main/EAM.java:473
 msgid "Delete"
 msgstr "Löschen"
 
@@ -5129,6 +5129,12 @@ msgid ""
 "so they can safely repair this project."
 msgstr ""
 
+#: Miradi/source/org/miradi/main/EAM.java:375
+msgid ""
+"Miradi resource file in use by possible anitvirus software.  Please shut "
+"down your anti virus and try again"
+msgstr ""
+
 #: Miradi/source/org/miradi/database/migrations/MigrationsForMiradi3.java:237
 msgid "Missing Resource Assignment Id(s) were removed from Indicator(s)."
 msgstr ""
@@ -5934,7 +5940,7 @@ msgid "Results Monitoring Plan"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:61
-#: Miradi/source/org/miradi/main/EAM.java:461
+#: Miradi/source/org/miradi/main/EAM.java:472
 msgid "Retain"
 msgstr "Behalten"
 
@@ -7892,7 +7898,7 @@ msgstr ""
 msgid "Title|Direct Threat Properties"
 msgstr "Direkte Bedrohungen Eigenschaften"
 
-#: Miradi/source/org/miradi/main/EAM.java:409
+#: Miradi/source/org/miradi/main/EAM.java:420
 msgid "Title|Error"
 msgstr "Fehler"
 
@@ -8348,7 +8354,7 @@ msgstr "WCS"
 msgid "WWF"
 msgstr "WWF"
 
-#: Miradi/source/org/miradi/main/EAM.java:139
+#: Miradi/source/org/miradi/main/EAM.java:140
 msgid "Warning"
 msgstr "Warnung"
 
@@ -8501,7 +8507,7 @@ msgstr ""
 msgid "Who Override was: %s"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAM.java:617
+#: Miradi/source/org/miradi/main/EAM.java:628
 msgid "Wintitle|Information"
 msgstr "Information"
 

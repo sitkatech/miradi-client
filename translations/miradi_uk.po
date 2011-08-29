@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-26 15:25-0500\n"
+"POT-Creation-Date: 2011-08-29 09:07-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: Miradi/source/org/miradi/main/EAM.java:375
+#: Miradi/source/org/miradi/main/EAM.java:384
 msgid ""
 "\n"
 "\n"
@@ -25,7 +25,7 @@ msgstr ""
 "\n"
 "Міраді спробувала зберегти ваші останні зміни і зараз закриється"
 
-#: Miradi/source/org/miradi/main/EAM.java:372
+#: Miradi/source/org/miradi/main/EAM.java:381
 msgid ""
 "\n"
 "\n"
@@ -2173,7 +2173,7 @@ msgstr ""
 msgid "An internal error prevented this operation"
 msgstr "Внутрішня помилка перешкодила цій операції"
 
-#: Miradi/source/org/miradi/main/EAM.java:404
+#: Miradi/source/org/miradi/main/EAM.java:415
 msgid "An unexpected error has occurred"
 msgstr "Сталася нечекана помилка"
 
@@ -2181,7 +2181,7 @@ msgstr "Сталася нечекана помилка"
 msgid "An unexpected error has occurred."
 msgstr "Сталася нечекана помилка"
 
-#: Miradi/source/org/miradi/main/EAM.java:371
+#: Miradi/source/org/miradi/main/EAM.java:380
 msgid "An unexpected error occurred: "
 msgstr "Сталася нечекана помилка:"
 
@@ -3194,8 +3194,8 @@ msgstr "Визначити сферу дій проекту"
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:61
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:54
-#: Miradi/source/org/miradi/main/EAM.java:461
-#: Miradi/source/org/miradi/main/EAM.java:462
+#: Miradi/source/org/miradi/main/EAM.java:472
+#: Miradi/source/org/miradi/main/EAM.java:473
 msgid "Delete"
 msgstr "Видалити"
 
@@ -5164,6 +5164,12 @@ msgid ""
 "so they can safely repair this project."
 msgstr ""
 
+#: Miradi/source/org/miradi/main/EAM.java:375
+msgid ""
+"Miradi resource file in use by possible anitvirus software.  Please shut "
+"down your anti virus and try again"
+msgstr ""
+
 #: Miradi/source/org/miradi/database/migrations/MigrationsForMiradi3.java:237
 msgid "Missing Resource Assignment Id(s) were removed from Indicator(s)."
 msgstr ""
@@ -5972,7 +5978,7 @@ msgid "Results Monitoring Plan"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:61
-#: Miradi/source/org/miradi/main/EAM.java:461
+#: Miradi/source/org/miradi/main/EAM.java:472
 msgid "Retain"
 msgstr "Утримувати"
 
@@ -7917,7 +7923,7 @@ msgstr "Title|Складові Діаграми"
 msgid "Title|Direct Threat Properties"
 msgstr "Title|Складові Прямої загрози"
 
-#: Miradi/source/org/miradi/main/EAM.java:409
+#: Miradi/source/org/miradi/main/EAM.java:420
 msgid "Title|Error"
 msgstr "Title|Помилка"
 
@@ -8385,7 +8391,7 @@ msgstr "WCS"
 msgid "WWF"
 msgstr "WWF"
 
-#: Miradi/source/org/miradi/main/EAM.java:139
+#: Miradi/source/org/miradi/main/EAM.java:140
 msgid "Warning"
 msgstr "Застереження"
 
@@ -8510,7 +8516,7 @@ msgstr ""
 msgid "Who Override was: %s"
 msgstr "Ким було перевищено: %s"
 
-#: Miradi/source/org/miradi/main/EAM.java:617
+#: Miradi/source/org/miradi/main/EAM.java:628
 msgid "Wintitle|Information"
 msgstr "Wintitle|Інформація"
 

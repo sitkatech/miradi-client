@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-26 15:25-0500\n"
+"POT-Creation-Date: 2011-08-29 09:07-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: Miradi/source/org/miradi/main/EAM.java:375
+#: Miradi/source/org/miradi/main/EAM.java:384
 msgid ""
 "\n"
 "\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Miradi telah berusaha untuk menyimpan perubahan yang terakhir, dan sekarang "
 "akan ditutup. "
 
-#: Miradi/source/org/miradi/main/EAM.java:372
+#: Miradi/source/org/miradi/main/EAM.java:381
 msgid ""
 "\n"
 "\n"
@@ -2102,7 +2102,7 @@ msgstr ""
 msgid "An internal error prevented this operation"
 msgstr "Kesalahan internal mencegah operasi ini "
 
-#: Miradi/source/org/miradi/main/EAM.java:404
+#: Miradi/source/org/miradi/main/EAM.java:415
 msgid "An unexpected error has occurred"
 msgstr "Kesalahan tak terduga telah terjadi "
 
@@ -2110,7 +2110,7 @@ msgstr "Kesalahan tak terduga telah terjadi "
 msgid "An unexpected error has occurred."
 msgstr "Kesalahan yang tak terduga telah terjadi. "
 
-#: Miradi/source/org/miradi/main/EAM.java:371
+#: Miradi/source/org/miradi/main/EAM.java:380
 msgid "An unexpected error occurred: "
 msgstr "Terjadi kesalahan yang tidak diharapkan: "
 
@@ -3124,8 +3124,8 @@ msgstr "Definisikan cakupan proyek "
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:61
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:54
-#: Miradi/source/org/miradi/main/EAM.java:461
-#: Miradi/source/org/miradi/main/EAM.java:462
+#: Miradi/source/org/miradi/main/EAM.java:472
+#: Miradi/source/org/miradi/main/EAM.java:473
 msgid "Delete"
 msgstr "Hapus "
 
@@ -5116,6 +5116,12 @@ msgid ""
 "so they can safely repair this project."
 msgstr ""
 
+#: Miradi/source/org/miradi/main/EAM.java:375
+msgid ""
+"Miradi resource file in use by possible anitvirus software.  Please shut "
+"down your anti virus and try again"
+msgstr ""
+
 #: Miradi/source/org/miradi/database/migrations/MigrationsForMiradi3.java:237
 msgid "Missing Resource Assignment Id(s) were removed from Indicator(s)."
 msgstr ""
@@ -5923,7 +5929,7 @@ msgid "Results Monitoring Plan"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:61
-#: Miradi/source/org/miradi/main/EAM.java:461
+#: Miradi/source/org/miradi/main/EAM.java:472
 msgid "Retain"
 msgstr "Pertahankan "
 
@@ -7874,7 +7880,7 @@ msgstr "Sifat-sifat Diagram "
 msgid "Title|Direct Threat Properties"
 msgstr "Sifat-sifat Ancaman Langsung"
 
-#: Miradi/source/org/miradi/main/EAM.java:409
+#: Miradi/source/org/miradi/main/EAM.java:420
 msgid "Title|Error"
 msgstr "Kesalahan"
 
@@ -8349,7 +8355,7 @@ msgstr "WCS"
 msgid "WWF"
 msgstr "WWF"
 
-#: Miradi/source/org/miradi/main/EAM.java:139
+#: Miradi/source/org/miradi/main/EAM.java:140
 msgid "Warning"
 msgstr "Peringatan "
 
@@ -8486,7 +8492,7 @@ msgstr ""
 msgid "Who Override was: %s"
 msgstr "Yang Menambah adalah: %s "
 
-#: Miradi/source/org/miradi/main/EAM.java:617
+#: Miradi/source/org/miradi/main/EAM.java:628
 msgid "Wintitle|Information"
 msgstr "Informasi "
 
