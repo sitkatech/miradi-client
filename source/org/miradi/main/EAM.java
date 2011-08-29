@@ -36,6 +36,7 @@ import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileSystemView;
 
 import org.martus.swing.UiNotifyDlg;
+import org.miradi.exceptions.FileInUseByAnotherProcessException;
 import org.miradi.utils.HtmlViewPanel;
 import org.miradi.utils.HtmlViewPanelWithMargins;
 import org.miradi.utils.MiradiLogger;
@@ -368,11 +369,21 @@ public class EAM
 	public static void panic(Exception e)
 	{
 		logException(e);
-		errorDialog(EAM.text("An unexpected error occurred: " + e.getMessage() +
-							 "\n\nPlease report this to the Miradi support team, " +
-							 "ideally including the contents of this file: " +
-							 "\n\n   " + getDefaultExceptionsLogFile().getAbsolutePath() + 
-							 "\n\nMiradi has attempted to save your latest changes, and will now exit."));
+		
+		if (FileInUseByAnotherProcessException.isThisException(e))
+		{
+			EAM.errorDialog(EAM.text("Miradi resource file in use by possible anitvirus software.  " 
+								   + "Please shut down your anti virus and try again"));
+		}
+		else
+		{
+			errorDialog(EAM.text("An unexpected error occurred: " + e.getMessage() +
+					"\n\nPlease report this to the Miradi support team, " +
+					"ideally including the contents of this file: " +
+					"\n\n   " + getDefaultExceptionsLogFile().getAbsolutePath() + 
+			"\n\nMiradi has attempted to save your latest changes, and will now exit."));
+		}
+		
 		System.exit(0);
 	}
 
