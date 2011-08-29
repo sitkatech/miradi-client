@@ -75,6 +75,21 @@ public class DiagramClipboard extends Clipboard
 		return getContents(UNUSED_METHOD_ARG);
 	}
 	
+	public boolean isClipboardAvailable()
+	{
+		try
+		{
+			getContents();
+			
+			return true;
+		}
+		catch (IllegalStateException exceptionIfClipboardInUse)
+		{
+			EAM.logException(exceptionIfClipboardInUse);
+			return false;
+		}
+	}
+	
 	private Project project;
 	private int pasteCount;
 	private final Clipboard clipboard;

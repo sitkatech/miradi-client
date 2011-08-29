@@ -35,6 +35,9 @@ public class Cut extends ViewDoer
 		if (! isInDiagram())
 			return false;
 		
+		if (!getProject().getDiagramClipboard().isClipboardAvailable())
+			return false;
+		
 		EAMGraphCell[] selected = getDiagramView().getDiagramPanel().getSelectedAndRelatedCells();
 		return (selected.length > 0);
 	}
