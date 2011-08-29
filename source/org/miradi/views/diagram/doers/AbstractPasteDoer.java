@@ -66,8 +66,9 @@ abstract public class AbstractPasteDoer extends LocationDoer
 	private Transferable getDiagramClipboardContents()
 	{
 		DiagramClipboard clipboard = getProject().getDiagramClipboard();
+		final Object UNUSED_METHOD_ARG = null;
 		
-		return clipboard.getContents(null);
+		return clipboard.getContents(UNUSED_METHOD_ARG);
 	}
 	
 	protected DiagramModel getDiagramModel()
