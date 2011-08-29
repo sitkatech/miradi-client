@@ -72,7 +72,7 @@ public class DiagramClipboard extends Clipboard
 	
 	public synchronized Transferable getContents()
 	{
-		return getContents(UNUSED_METHOD_ARG);
+		return getContents(REQUESTOR_WHICH_JAVA_IGNORES);
 	}
 	
 	public boolean isClipboardAvailable()
@@ -93,5 +93,5 @@ public class DiagramClipboard extends Clipboard
 	private Project project;
 	private int pasteCount;
 	private final Clipboard clipboard;
-	private static final Object UNUSED_METHOD_ARG = null;
+	private static final Object REQUESTOR_WHICH_JAVA_IGNORES = null;
 }
