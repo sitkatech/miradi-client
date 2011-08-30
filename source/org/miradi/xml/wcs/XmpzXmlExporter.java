@@ -47,6 +47,7 @@ import org.miradi.questions.FosTrainingTypeQuestion;
 import org.miradi.questions.QuarterColumnsVisibilityQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
+import org.miradi.questions.TncOperatingUnitsQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.xml.XmlExporter;
 import org.miradi.xml.generic.XmlSchemaCreator;
@@ -208,7 +209,7 @@ public class XmpzXmlExporter extends XmlExporter implements XmpzXmlConstants
 		writeOptionalCodeListElement(TNC_PROJECT_DATA, XmlSchemaCreator.TNC_ORGANIZATIONAL_PRIORITIES, getTncProjectData(), TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES);
 		writeOptionalElementWithSameTag(TNC_PROJECT_DATA, getMetadata(), ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENTS);
 		writeOptionalElementWithSameTag(TNC_PROJECT_DATA, getTncProjectData(), TncProjectData.TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT);
-		writeOptionalCodeListElement(TNC_PROJECT_DATA, XmlSchemaCreator.TNC_OPERATING_UNITS, getMetadata(), ProjectMetadata.TAG_TNC_OPERATING_UNITS);
+		exportTncOperatingUnits();
 		writeOptionalCodeListElement(TNC_PROJECT_DATA, XmlSchemaCreator.TNC_TERRESTRIAL_ECO_REGION, getMetadata(), ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION);
 		writeOptionalCodeListElement(TNC_PROJECT_DATA, XmlSchemaCreator.TNC_MARINE_ECO_REGION, getMetadata(), ProjectMetadata.TAG_TNC_MARINE_ECO_REGION);
 		writeOptionalCodeListElement(TNC_PROJECT_DATA, XmlSchemaCreator.TNC_FRESHWATER_ECO_REGION, getMetadata(), ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION);
@@ -220,6 +221,19 @@ public class XmpzXmlExporter extends XmlExporter implements XmpzXmlConstants
 		writeOptionalElementWithSameTag(TNC_PROJECT_DATA, getTncProjectData(), TncProjectData.TAG_CAP_STANDARDS_SCORECARD);
 		
 		writeEndElement(out, TNC_PROJECT_DATA);
+	}
+
+	public void exportTncOperatingUnits() throws Exception
+	{
+		CodeList codes = getMetadata().getCodeList(ProjectMetadata.TAG_TNC_OPERATING_UNITS);
+		final String LEGACY_CODE_TO_BE_REMOVED = "PACIF";
+		if (codes.contains(LEGACY_CODE_TO_BE_REMOVED))
+		{
+			codes.removeCode(LEGACY_CODE_TO_BE_REMOVED);
+			codes.add(TncOperatingUnitsQuestion.TNC_SUPERSEDED_OU_CODE);
+		}
+		
+		writeOptionalCodeListElement(TNC_PROJECT_DATA, XmlSchemaCreator.TNC_OPERATING_UNITS, codes);
 	}
 
 	private void writeShareOutsideOrganizationElement() throws Exception

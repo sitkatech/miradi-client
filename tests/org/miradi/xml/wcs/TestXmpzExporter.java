@@ -52,8 +52,10 @@ import org.miradi.project.ProjectForTesting;
 import org.miradi.project.TestSimpleThreatRatingFramework;
 import org.miradi.project.TestStressBasedThreatRatingFramework;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
+import org.miradi.utils.CodeList;
 import org.miradi.utils.NullProgressMeter;
 import org.miradi.xml.TestXmpzXmlImporter;
+import org.miradi.xml.generic.XmlSchemaCreator;
 import org.miradi.xml.xmpz.XmpzXmlImporter;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -70,6 +72,26 @@ public class TestXmpzExporter extends TestCaseWithProject
 	public void testValidateEmptyProject() throws Exception
 	{
 		validateProject();
+	}
+	
+	public void testExportingOfLegacyOperatingUnits() throws Exception
+	{
+		CodeList operatingUnitCodes = new CodeList();
+		operatingUnitCodes.add("PACIF");
+		getProject().fillObjectUsingCommand(getProject().getMetadata(), ProjectMetadata.TAG_TNC_OPERATING_UNITS, operatingUnitCodes.toString());
+		
+		validateProject();
+		
+		XmpzXmlImporter xmlImporter = createProjectImporter(getProject());
+		String pathElements = xmlImporter.generatePath(new String[]                      		                                                            {
+				XmpzXmlConstants.CONSERVATION_PROJECT,
+				XmpzXmlConstants.TNC_PROJECT_DATA, 
+				XmpzXmlConstants.TNC_PROJECT_DATA + XmlSchemaCreator.TNC_OPERATING_UNITS + XmpzXmlConstants.CONTAINER_ELEMENT_TAG,
+				XmlSchemaCreator.CODE_ELEMENT_NAME,
+			   });
+			
+		Node operatingUnitsCodeNode = xmlImporter.getNode(pathElements);
+ 		assertEquals("incorrect code for legacy replacement?", "OBSOLETE", operatingUnitsCodeNode.getTextContent());
 	}
 	
 	public void testExtraDataNameSplitChar()
@@ -338,9 +360,9 @@ public class TestXmpzExporter extends TestCaseWithProject
 		// NOTE: Uncomment for debugging only
 //		File file = createTempFile();
 //		file.createNewFile();
-//		UnicodeWriter tempWriter = new UnicodeWriter(file);
-//		tempWriter.writeln(xml);
-//		tempWriter.close();
+		UnicodeWriter tempWriter = new UnicodeWriter(System.out);
+		tempWriter.writeln(xml);
+		tempWriter.close();
 		
 		InputStreamWithSeek inputStream = new StringInputStreamWithSeek(xml);
 		if (!new WcsMiradiXmlValidator().isValid(inputStream))
