@@ -102,7 +102,7 @@ public class TestXmpzExporter extends TestCaseWithProject
 		operatingUnitCodes.add(TncOperatingUnitsQuestion.TNC_SUPERSEDED_OU_CODE);
 		getProject().fillObjectUsingCommand(getProject().getMetadata(), ProjectMetadata.TAG_TNC_OPERATING_UNITS, operatingUnitCodes.toString());
 		
-		CodeList codeListWithoutLegacyCode = XmpzXmlExporter.getOpertingUnitsWithoutLegacyCode(getProject().getMetadata());
+		CodeList codeListWithoutLegacyCode = XmpzXmlExporter.getOperatingUnitsWithoutLegacyCode(getProject().getMetadata());
 		assertEquals("incorrect list size?", 1, codeListWithoutLegacyCode.size());
 		assertEquals("legacy code was not replaced?", TncOperatingUnitsQuestion.TNC_SUPERSEDED_OU_CODE, codeListWithoutLegacyCode.get(0));
 	}
