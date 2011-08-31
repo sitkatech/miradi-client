@@ -360,9 +360,9 @@ public class TestXmpzExporter extends TestCaseWithProject
 		// NOTE: Uncomment for debugging only
 //		File file = createTempFile();
 //		file.createNewFile();
-		UnicodeWriter tempWriter = new UnicodeWriter(System.out);
-		tempWriter.writeln(xml);
-		tempWriter.close();
+//		UnicodeWriter tempWriter = new UnicodeWriter(System.out);
+//		tempWriter.writeln(xml);
+//		tempWriter.close();
 		
 		InputStreamWithSeek inputStream = new StringInputStreamWithSeek(xml);
 		if (!new WcsMiradiXmlValidator().isValid(inputStream))
