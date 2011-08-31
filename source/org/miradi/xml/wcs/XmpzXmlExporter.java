@@ -225,12 +225,12 @@ public class XmpzXmlExporter extends XmlExporter implements XmpzXmlConstants
 
 	public void exportTncOperatingUnits() throws Exception
 	{
-		CodeList codes = getOpertingUnitsWithoutLegacyCode(getMetadata());
+		CodeList codes = getOperatingUnitsWithoutLegacyCode(getMetadata());
 		
 		writeOptionalCodeListElement(TNC_PROJECT_DATA, XmlSchemaCreator.TNC_OPERATING_UNITS, codes);
 	}
 
-	public static CodeList getOpertingUnitsWithoutLegacyCode(ProjectMetadata projectMetadata) throws Exception
+	public static CodeList getOperatingUnitsWithoutLegacyCode(ProjectMetadata projectMetadata) throws Exception
 	{
 		CodeList codes = projectMetadata.getCodeList(ProjectMetadata.TAG_TNC_OPERATING_UNITS);
 		final String LEGACY_CODE_TO_BE_REMOVED = "PACIF";
