@@ -52,6 +52,7 @@ import org.miradi.project.ProjectForTesting;
 import org.miradi.project.TestSimpleThreatRatingFramework;
 import org.miradi.project.TestStressBasedThreatRatingFramework;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
+import org.miradi.questions.TncOperatingUnitsQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.NullProgressMeter;
 import org.miradi.xml.TestXmpzXmlImporter;
@@ -92,6 +93,18 @@ public class TestXmpzExporter extends TestCaseWithProject
 			
 		Node operatingUnitsCodeNode = xmlImporter.getNode(pathElements);
  		assertEquals("incorrect code for legacy replacement?", "OBSOLETE", operatingUnitsCodeNode.getTextContent());
+	}
+
+	public void testGetOpertingUnitsWithoutLegacyCode() throws Exception
+	{
+		CodeList operatingUnitCodes = new CodeList();
+		operatingUnitCodes.add("PACIF");
+		operatingUnitCodes.add(TncOperatingUnitsQuestion.TNC_SUPERSEDED_OU_CODE);
+		getProject().fillObjectUsingCommand(getProject().getMetadata(), ProjectMetadata.TAG_TNC_OPERATING_UNITS, operatingUnitCodes.toString());
+		
+		CodeList codeListWithoutLegacyCode = XmpzXmlExporter.getOpertingUnitsWithoutLegacyCode(getProject().getMetadata());
+		assertEquals("incorrect list size?", 1, codeListWithoutLegacyCode.size());
+		assertEquals("legacy code was not replaced?", TncOperatingUnitsQuestion.TNC_SUPERSEDED_OU_CODE, codeListWithoutLegacyCode.get(0));
 	}
 	
 	public void testExtraDataNameSplitChar()
