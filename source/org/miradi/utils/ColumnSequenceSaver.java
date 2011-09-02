@@ -69,8 +69,6 @@ public class ColumnSequenceSaver extends MouseAdapter
 	{
 		CodeList currentColumnTagSequences = getCurrentSequence();		
 		CodeList storedColumnSequenceCodes = getDesiredColumnSequenceCodes();
-		if (storedColumnSequenceCodes == null)
-			storedColumnSequenceCodes = getCurrentSequence();
 		
 		return calculateArrangedColumnCodes(storedColumnSequenceCodes, currentColumnTagSequences);
 	}
@@ -87,13 +85,18 @@ public class ColumnSequenceSaver extends MouseAdapter
 
 	public static CodeList calculateArrangedColumnCodes(CodeList desiredColumnCodes, CodeList currentColumnTagSequences)
 	{
+		if (desiredColumnCodes == null)
+			desiredColumnCodes = currentColumnTagSequences;
+
 		CodeList storedColumnTags = new CodeList(desiredColumnCodes);
 		storedColumnTags.retainAll(currentColumnTagSequences);
-		currentColumnTagSequences.subtract(storedColumnTags);
+		
+		CodeList newColumnTags = new CodeList(currentColumnTagSequences);
+		newColumnTags.subtract(storedColumnTags);
 		
 		CodeList arrangedColumnCodes = new CodeList();
 		arrangedColumnCodes.addAll(storedColumnTags);
-		arrangedColumnCodes.addAll(currentColumnTagSequences);
+		arrangedColumnCodes.addAll(newColumnTags);
 		
 		return arrangedColumnCodes.withoutDuplicates();
 	}
