@@ -85,7 +85,7 @@ public class ColumnSequenceSaver extends MouseAdapter
 
 	public static CodeList calculateArrangedColumnCodes(CodeList desiredColumnCodes, CodeList currentColumnTagSequences)
 	{
-		if (desiredColumnCodes == null)
+		if (desiredColumnCodes == null || hasColumnsThatWereNotExpected(desiredColumnCodes, currentColumnTagSequences))
 			desiredColumnCodes = currentColumnTagSequences;
 
 		CodeList storedColumnTags = new CodeList(desiredColumnCodes);
@@ -101,6 +101,16 @@ public class ColumnSequenceSaver extends MouseAdapter
 		return arrangedColumnCodes.withoutDuplicates();
 	}
 	
+	private static boolean hasColumnsThatWereNotExpected(CodeList desiredColumnCodes, CodeList currentColumnTagSequences)
+	{
+		CodeList inFirstNotSecond = new CodeList(desiredColumnCodes);
+		inFirstNotSecond.subtract(currentColumnTagSequences);
+		if(inFirstNotSecond.hasData())
+			return true;
+		
+		return false;
+	}
+
 	protected CodeList getDesiredColumnSequenceCodes()
 	{
 		return getDesiredColumnCodes(getProject(), uniqueTableIdentifier);

@@ -38,7 +38,7 @@ public class TestAbstractTableExporter extends TestCaseWithProject
 		verifyColumnIndexes("acbd", "abcd", "acb");
 		verifyColumnIndexes("cadb", "abcd", "cadb");
 		verifyColumnIndexes("abcd", "abcd", "efgh");
-		verifyColumnIndexes("bacd", "abcd", "ebag");
+		verifyColumnIndexes("abcd", "abcd", "ebag");
 		verifyColumnIndexes("cabb", "abbc", "cab");
 	}
 	
