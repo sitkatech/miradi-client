@@ -35,6 +35,7 @@ import org.martus.util.UnicodeReader;
 import org.martus.util.UnicodeWriter;
 import org.martus.util.DirectoryLock.AlreadyLockedException;
 import org.miradi.exceptions.FileInUseByAnotherProcessException;
+import org.miradi.main.EAM;
 
 public class MiradiLocalFileSystem extends AbstractNonRemoteMiradiFileSystem
 {
@@ -215,7 +216,7 @@ public class MiradiLocalFileSystem extends AbstractNonRemoteMiradiFileSystem
 		catch (Exception e)
 		{
 			if (FileInUseByAnotherProcessException.isThisException(e))
-				throw new FileInUseByAnotherProcessException(); 
+				EAM.panic(e);
 
 			throw e;
 		}
