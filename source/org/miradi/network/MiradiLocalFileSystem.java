@@ -200,21 +200,24 @@ public class MiradiLocalFileSystem extends AbstractNonRemoteMiradiFileSystem
 		
 		File path = filePath(projectName, file);
 		path.getParentFile().mkdirs();
-		UnicodeWriter writer = new UnicodeWriter(path);
 		try
 		{
-			writer.write(contents);
+			UnicodeWriter writer = new UnicodeWriter(path);
+			try
+			{
+				writer.write(contents);
+			}
+			finally
+			{
+				writer.close();
+			}
 		}
 		catch (Exception e)
 		{
 			if (FileInUseByAnotherProcessException.isThisException(e))
 				throw new FileInUseByAnotherProcessException(); 
-				
+
 			throw e;
-		}
-		finally
-		{
-			writer.close();
 		}
 	}
 	
