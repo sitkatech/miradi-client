@@ -4,7 +4,7 @@ Copyright 2005-2010, Foundations of Success, Bethesda, Maryland
      (on behalf of the Conservation Measures Partnership, "CMP") and
      Beneficent Technology, Inc. ("Benetech"), Palo Alto, California.
 
-VERSION 3.3.1
+VERSION 3.3.2
 
 License and Copying
 
@@ -142,6 +142,39 @@ GNU/Linux:
 
 ---------------------
 Changes
+
+Miradi 3.3.2 is a minor fix release. Projects are fully 
+compatible between version 3.3, 3.3.1, and 3.3.2, but we  
+recommend that all users upgrade to 3.3.2 as soon as possible. 
+
+Notable changes in 3.3.2 include:
+
+Appwide:
+- Popup text editors now support Undo/Redo (Ctrl-Z/Ctrl-Y)
+- All numeric fields now handle data input in the current 
+  computer locale numeric format, such as 1.234,56
+- Avoid crashing if another app has the clipboard locked
+
+Diagram:
+- Conceptual Model Properties panel now includes a list of 
+  Draft Strategies on that diagram
+- Zoom did not work correctly if the computer was set to 
+  a locale that used numeric formatting like 1.234.56
+
+Threat Rating:
+- Export to image (JPEG/PNG) was omitting the table headers
+
+Work Plan:
+- Values were not saved correctly if the computer was set to 
+  a locale that used numeric formatting like 1.234.56
+
+CPMZ Import/Export:
+- Import now preserves Parent-Child project relationship 
+  changes that were made in ConPro
+- Export no longer fails for projects that have a legacy 
+  Operating Unit value
+  
+  
 
 Miradi 3.3.1 is a minor fix release. Projects are fully 
 compatible between version 3.3 and 3.3.1, but we strongly 
