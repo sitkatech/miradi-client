@@ -153,7 +153,7 @@ Appwide:
 - Popup text editors now support Undo/Redo (Ctrl-Z/Ctrl-Y)
 - All numeric fields now handle data input in the current 
   computer locale numeric format, such as 1.234,56
-- Avoid crashing if another app has the clipboard locked
+- Miradi now avoids crashing if another app has the clipboard locked
 
 Diagram:
 - Conceptual Model Properties panel now includes a list of 
