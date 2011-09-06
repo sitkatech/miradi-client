@@ -35,11 +35,10 @@ public class PopupTextEditorDialog extends ModalDialogWithClose
 		super(mainWindow, title);
 		
 		popupTextField = new MiradiTextPane(getMainWindow(), COLUMN_COUNT, ROW_COUNT);
-		new TextPaneUndoRedoHandler(popupTextField).applyUndoRedoActions();
 		new TextAreaRightClickMouseHandler(getMainWindow().getActions(), popupTextField);
 		popupTextField.setText(initialText);
 		add(new MiradiScrollPane(popupTextField));
-		
+		new TextPaneUndoRedoHandler(popupTextField).applyUndoRedoActions();
 		if(mainWindow.isSpellCheckerActive())
 			SpellChecker.register(popupTextField, false, false, true);
 
