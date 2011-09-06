@@ -34,6 +34,9 @@ public class FileInUseByAnotherProcessException extends Exception
 		if (e.getMessage() == null)
 			return false;
 		
+		if (e.getMessage().contains("Access is denied"))
+			return true;
+		
 		return e.getMessage().contains(UNTRANSLATED_MESSAGE);
 	}
 	
