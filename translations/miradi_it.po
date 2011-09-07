@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-07 10:48-0500\n"
+"POT-Creation-Date: 2011-09-07 10:51-0500\n"
 "PO-Revision-Date: 2011-04-29 11:26+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -2210,7 +2210,7 @@ msgstr ""
 msgid "An internal error prevented this operation"
 msgstr "Un errore interno ha impedito questa operazione"
 
-#: Miradi/source/org/miradi/main/EAM.java:426
+#: Miradi/source/org/miradi/main/EAM.java:432
 msgid "An unexpected error has occurred"
 msgstr "Si è verificato un errore inaspettato"
 
@@ -3244,8 +3244,8 @@ msgstr "Definisci l'Ambito del progetto di conservazione"
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:61
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:54
-#: Miradi/source/org/miradi/main/EAM.java:483
-#: Miradi/source/org/miradi/main/EAM.java:484
+#: Miradi/source/org/miradi/main/EAM.java:489
+#: Miradi/source/org/miradi/main/EAM.java:490
 msgid "Delete"
 msgstr "Cancella"
 
@@ -6060,7 +6060,7 @@ msgid "Results Monitoring Plan"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:61
-#: Miradi/source/org/miradi/main/EAM.java:483
+#: Miradi/source/org/miradi/main/EAM.java:489
 msgid "Retain"
 msgstr "Mantieni"
 
@@ -8042,7 +8042,7 @@ msgstr "Proprietà Diagramma"
 msgid "Title|Direct Threat Properties"
 msgstr "Proprietà della Pressione Diretta"
 
-#: Miradi/source/org/miradi/main/EAM.java:431
+#: Miradi/source/org/miradi/main/EAM.java:437
 msgid "Title|Error"
 msgstr "Errore"
 
@@ -8642,7 +8642,7 @@ msgstr "Il Chi ignorato è:"
 msgid "Who Override was: %s"
 msgstr "Il Chi ignorato è: %s"
 
-#: Miradi/source/org/miradi/main/EAM.java:639
+#: Miradi/source/org/miradi/main/EAM.java:645
 msgid "Wintitle|Information"
 msgstr "Informazione"
 
