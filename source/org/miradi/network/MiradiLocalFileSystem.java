@@ -214,7 +214,7 @@ public class MiradiLocalFileSystem extends AbstractNonRemoteMiradiFileSystem
 		}
 		catch (Exception e)
 		{
-			EAM.handleWriteFailure(e, path);
+			EAM.handleWriteFailure(path, e);
 		}
 	}
 	
