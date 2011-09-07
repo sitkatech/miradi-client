@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-06 10:00-0500\n"
+"POT-Creation-Date: 2011-09-07 10:48-0500\n"
 "PO-Revision-Date: 2011-03-17 08:35-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -15,14 +15,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: Miradi/source/org/miradi/main/EAM.java:396
+#: Miradi/source/org/miradi/main/EAM.java:389
 msgid ""
 "\n"
 "\n"
 "Miradi has attempted to save your latest changes, and will now exit."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAM.java:393
+#: Miradi/source/org/miradi/main/EAM.java:386
 msgid ""
 "\n"
 "\n"
@@ -1966,7 +1966,7 @@ msgstr ""
 msgid "An internal error prevented this operation"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAM.java:427
+#: Miradi/source/org/miradi/main/EAM.java:426
 msgid "An unexpected error has occurred"
 msgstr ""
 
@@ -1974,7 +1974,7 @@ msgstr ""
 msgid "An unexpected error has occurred."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAM.java:392
+#: Miradi/source/org/miradi/main/EAM.java:385
 msgid "An unexpected error occurred: "
 msgstr ""
 
@@ -2949,8 +2949,8 @@ msgstr ""
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:61
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:54
+#: Miradi/source/org/miradi/main/EAM.java:483
 #: Miradi/source/org/miradi/main/EAM.java:484
-#: Miradi/source/org/miradi/main/EAM.java:485
 msgid "Delete"
 msgstr ""
 
@@ -3258,7 +3258,7 @@ msgid "Entire Project Duration"
 msgstr ""
 
 #: Miradi/source/org/miradi/objecthelpers/ThreatTargetVirtualLinkHelper.java:102
-#: Miradi/source/org/miradi/main/EAM.java:388
+#: Miradi/source/org/miradi/main/EAM.java:398
 #: Miradi/source/org/miradi/dialogfields/ReadOnlyCodeListField.java:87
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:80
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetThreatLinkTableModel.java:76
@@ -5632,7 +5632,7 @@ msgid "Results Monitoring Plan"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:61
-#: Miradi/source/org/miradi/main/EAM.java:484
+#: Miradi/source/org/miradi/main/EAM.java:483
 msgid "Retain"
 msgstr ""
 
@@ -7472,7 +7472,7 @@ msgstr ""
 msgid "Title|Direct Threat Properties"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAM.java:432
+#: Miradi/source/org/miradi/main/EAM.java:431
 msgid "Title|Error"
 msgstr ""
 
@@ -7922,7 +7922,7 @@ msgstr ""
 msgid "WWF"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAM.java:140
+#: Miradi/source/org/miradi/main/EAM.java:139
 msgid "Warning"
 msgstr ""
 
@@ -8040,7 +8040,7 @@ msgstr ""
 msgid "Who Override was: %s"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAM.java:640
+#: Miradi/source/org/miradi/main/EAM.java:639
 msgid "Wintitle|Information"
 msgstr ""
 
