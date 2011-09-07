@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-07 10:48-0500\n"
+"POT-Creation-Date: 2011-09-07 10:51-0500\n"
 "PO-Revision-Date: 2011-03-17 08:40-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -1966,7 +1966,7 @@ msgstr ""
 msgid "An internal error prevented this operation"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAM.java:426
+#: Miradi/source/org/miradi/main/EAM.java:432
 msgid "An unexpected error has occurred"
 msgstr ""
 
@@ -2949,8 +2949,8 @@ msgstr ""
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:61
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:54
-#: Miradi/source/org/miradi/main/EAM.java:483
-#: Miradi/source/org/miradi/main/EAM.java:484
+#: Miradi/source/org/miradi/main/EAM.java:489
+#: Miradi/source/org/miradi/main/EAM.java:490
 msgid "Delete"
 msgstr ""
 
@@ -5632,7 +5632,7 @@ msgid "Results Monitoring Plan"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:61
-#: Miradi/source/org/miradi/main/EAM.java:483
+#: Miradi/source/org/miradi/main/EAM.java:489
 msgid "Retain"
 msgstr ""
 
@@ -7472,7 +7472,7 @@ msgstr ""
 msgid "Title|Direct Threat Properties"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAM.java:431
+#: Miradi/source/org/miradi/main/EAM.java:437
 msgid "Title|Error"
 msgstr ""
 
@@ -8040,7 +8040,7 @@ msgstr ""
 msgid "Who Override was: %s"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAM.java:639
+#: Miradi/source/org/miradi/main/EAM.java:645
 msgid "Wintitle|Information"
 msgstr ""
 
