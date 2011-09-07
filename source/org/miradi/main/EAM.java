@@ -391,7 +391,7 @@ public class EAM
 		exitMiradiNowDueToFatalError();
 	}
 
-	public static void handleWriteFailure(Exception e, File file)
+	public static void handleWriteFailure(File file, Exception e)
 	{
 		logError("write failure happend for: " + file.getAbsolutePath());
 		logException(e);
