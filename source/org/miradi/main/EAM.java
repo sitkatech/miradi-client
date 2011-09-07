@@ -388,14 +388,20 @@ public class EAM
 				"\n\n   " + getDefaultExceptionsLogFile().getAbsolutePath() + 
 		"\n\nMiradi has attempted to save your latest changes, and will now exit."));
 		
-		System.exit(0);
+		exitMiradiNowDueToFatalError();
 	}
-	
+
 	public static void handleWriteFailure(Exception e, File file)
 	{
 		logError("write failure happend for: " + file.getAbsolutePath());
 		logException(e);
-		showSafeHtmlOkMessageDialog(FILEINUSE_ERROR_MESSAGE_FILE_NAME, EAM.text("Error"));			
+		showSafeHtmlOkMessageDialog(FILEINUSE_ERROR_MESSAGE_FILE_NAME, EAM.text("Error"));
+		exitMiradiNowDueToFatalError();
+	}
+	
+	public static void exitMiradiNowDueToFatalError()
+	{
+		System.exit(0);
 	}
 
 	public static void unexpectedErrorDialog()
