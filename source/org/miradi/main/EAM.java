@@ -36,7 +36,6 @@ import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileSystemView;
 
 import org.martus.swing.UiNotifyDlg;
-import org.miradi.exceptions.FileInUseByAnotherProcessException;
 import org.miradi.utils.HtmlViewPanel;
 import org.miradi.utils.HtmlViewPanelWithMargins;
 import org.miradi.utils.MiradiLogger;
@@ -383,20 +382,20 @@ public class EAM
 	{
 		logException(e);
 		
-		if ((e instanceof FileNotFoundException) || FileInUseByAnotherProcessException.isThisException(e))
-		{
-			showSafeHtmlOkMessageDialog(FILEINUSE_ERROR_MESSAGE_FILE_NAME, EAM.text("Error"));			
-		}
-		else
-		{
-			errorDialog(EAM.text("An unexpected error occurred: " + e.getMessage() +
-					"\n\nPlease report this to the Miradi support team, " +
-					"ideally including the contents of this file: " +
-					"\n\n   " + getDefaultExceptionsLogFile().getAbsolutePath() + 
-			"\n\nMiradi has attempted to save your latest changes, and will now exit."));
-		}
+		errorDialog(EAM.text("An unexpected error occurred: " + e.getMessage() +
+				"\n\nPlease report this to the Miradi support team, " +
+				"ideally including the contents of this file: " +
+				"\n\n   " + getDefaultExceptionsLogFile().getAbsolutePath() + 
+		"\n\nMiradi has attempted to save your latest changes, and will now exit."));
 		
 		System.exit(0);
+	}
+	
+	public static void handleWriteFailure(Exception e, File file)
+	{
+		logError("write failure happend for: " + file.getAbsolutePath());
+		logException(e);
+		showSafeHtmlOkMessageDialog(FILEINUSE_ERROR_MESSAGE_FILE_NAME, EAM.text("Error"));			
 	}
 
 	public static void unexpectedErrorDialog()
