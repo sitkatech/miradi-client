@@ -30,11 +30,10 @@ import java.util.Set;
 import java.util.Vector;
 
 import org.martus.util.DirectoryLock;
+import org.martus.util.DirectoryLock.AlreadyLockedException;
 import org.martus.util.DirectoryUtils;
 import org.martus.util.UnicodeReader;
 import org.martus.util.UnicodeWriter;
-import org.martus.util.DirectoryLock.AlreadyLockedException;
-import org.miradi.exceptions.FileInUseByAnotherProcessException;
 import org.miradi.main.EAM;
 
 public class MiradiLocalFileSystem extends AbstractNonRemoteMiradiFileSystem
@@ -215,10 +214,7 @@ public class MiradiLocalFileSystem extends AbstractNonRemoteMiradiFileSystem
 		}
 		catch (Exception e)
 		{
-			if (FileInUseByAnotherProcessException.isThisException(e))
-				EAM.panic(e);
-
-			throw e;
+			EAM.handleWriteFailure(e, path);
 		}
 	}
 	
