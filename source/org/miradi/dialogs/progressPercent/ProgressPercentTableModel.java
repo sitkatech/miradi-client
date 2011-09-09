@@ -118,9 +118,7 @@ public class ProgressPercentTableModel extends EditableObjectRefsTableModel
 	
 	private void setProgressPercentValue(ORef ref, int column, String value) throws Exception
 	{
-		final String percentInDataStringFormat = getUnformattedValue(value);
-		
-		setValueUsingCommand(ref, getColumnTag(column), percentInDataStringFormat);
+		setValueUsingCommand(ref, getColumnTag(column), getUnformattedValue(value));
 	}
 
 	public String getUnformattedValue(String value) throws Exception
