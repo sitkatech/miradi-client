@@ -496,23 +496,24 @@ public class CommandExecutor
 	
 	public void beginTransaction() throws CommandFailedException
 	{
-		if(isInTransaction())
-			throw new CommandFailedException("Attempted to nest transactions");
 		try
 		{
 			getProject().getDatabase().beginTransaction();
+			++transactionLevel;
 		}
 		catch(Exception e)
 		{
 			EAM.logException(e);
 			throw new CommandFailedException("Unable to initiate transaction");
 		}
-		inTransaction = true;
 	}
 	
 	public void endTransaction() throws CommandFailedException
 	{
-		inTransaction = false;
+		--transactionLevel;
+		if(transactionLevel < 0)
+			throw new CommandFailedException("Attempted to end transaction with no transaction open");
+		
 		try
 		{
 			getProject().getDatabase().endTransaction();
@@ -526,7 +527,7 @@ public class CommandExecutor
 	
 	public boolean isInTransaction()
 	{
-		return inTransaction;
+		return (transactionLevel > 0);
 	}	
 	
 	public void beginCommandSideEffectMode()
@@ -679,7 +680,7 @@ public class CommandExecutor
 	private SideEffectExecutor sideEffectExecutor;
 	private Vector<CommandExecutedListener> commandExecutedListeners;
 	private UndoRedoState undoRedoState;
-	private boolean inTransaction;
+	private int transactionLevel;
 	private boolean isExecuting;
 	private boolean inCommandSideEffectMode;
 	private boolean isDoNothingCommandOptimizationEnabled;	
