@@ -47,6 +47,28 @@ public class TestCommandExecutor extends TestCaseWithProject
 		}
 	}
 	
+	public void testAllowNestedTransactions() throws Exception
+	{
+		CommandExecutor executor = getProject().getCommandExecutor();
+		assertFalse(executor.isInTransaction());
+		executor.beginTransaction();
+		assertTrue(executor.isInTransaction());
+		executor.beginTransaction();
+		assertTrue(executor.isInTransaction());
+		executor.endTransaction();
+		assertTrue(executor.isInTransaction());
+		executor.endTransaction();
+		assertFalse(executor.isInTransaction());
+		try
+		{
+			executor.endTransaction();
+			fail("Should have thrown for ending a transaction that wasn't begun");
+		}
+		catch(Exception ignoreExpected)
+		{
+		}
+	}
+	
 	private class CommandHandler implements CommandExecutedListener
 	{
 		public CommandHandler(Project projectToUse)
