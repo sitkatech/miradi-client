@@ -134,14 +134,6 @@ public class CommandExecutor
 		executeCommand(new CommandBeginTransaction());
 	}
 	
-	private void executeCommandsWithoutTransaction(Command[] commands) throws CommandFailedException
-	{
-		for(int i = 0; i < commands.length; ++i)
-		{
-			executeCommand(commands[i]);
-		}
-	}
-
 	public void executeCommandAsTransaction(Command command) throws CommandFailedException
 	{
 		CommandVector singleItemList = new CommandVector();
@@ -159,7 +151,10 @@ public class CommandExecutor
 		executeCommand(new CommandBeginTransaction());
 		try
 		{
-			executeCommandsWithoutTransaction(commands);
+			for(int i = 0; i < commands.length; ++i)
+			{
+				executeCommand(commands[i]);
+			}
 		}
 		finally
 		{
