@@ -173,6 +173,26 @@ public class TestProject extends MiradiTestCase
 		
 		
 	}
+	
+	public void testUndoRedoNestedTransactions() throws Exception
+	{
+		project.executeBeginTransaction();
+		ORef diagramFactorRef1 = project.createAndAddFactorToDiagram(ObjectType.CAUSE).getRef();
+		project.executeBeginTransaction();
+		ORef diagramFactorRef2 = project.createAndAddFactorToDiagram(ObjectType.CAUSE).getRef();
+		project.executeEndTransaction();
+		ORef diagramFactorRef3 = project.createAndAddFactorToDiagram(ObjectType.CAUSE).getRef();
+		project.executeEndTransaction();
+
+		project.undo();
+		assertNull("Didn't undo start of outer transaction?", DiagramFactor.find(project, diagramFactorRef1));
+		assertNull("Didn't undo nested transaction?", DiagramFactor.find(project, diagramFactorRef2));
+		assertNull("Didn't undo end of outer transaction?", DiagramFactor.find(project, diagramFactorRef3));
+		project.redo();
+		assertNotNull("Didn't redo start of outer transaction?", DiagramFactor.find(project, diagramFactorRef1));
+		assertNotNull("Didn't redo nested transaction?", DiagramFactor.find(project, diagramFactorRef2));
+		assertNotNull("Didn't redo end of outer transaction?", DiagramFactor.find(project, diagramFactorRef3));
+	}
 
 	public void testGetSnappedSize() throws Exception
 	{		
