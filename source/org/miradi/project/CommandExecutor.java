@@ -98,8 +98,6 @@ public class CommandExecutor
 
 	private boolean isTransactionStateValidFor(Command command)
 	{
-		if(command.isBeginTransaction())
-			return !isInTransaction();
 		if(command.isEndTransaction())
 			return isInTransaction();
 		
@@ -510,9 +508,9 @@ public class CommandExecutor
 	
 	public void endTransaction() throws CommandFailedException
 	{
-		--transactionLevel;
-		if(transactionLevel < 0)
+		if(transactionLevel < 1)
 			throw new CommandFailedException("Attempted to end transaction with no transaction open");
+		--transactionLevel;
 		
 		try
 		{
