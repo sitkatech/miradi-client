@@ -67,6 +67,11 @@ public class TestCommandExecutor extends TestCaseWithProject
 		catch(Exception ignoreExpected)
 		{
 		}
+		
+		executor.executeBeginTransaction();
+		executor.executeBeginTransaction();
+		executor.executeEndTransaction();
+		executor.executeEndTransaction();
 	}
 	
 	private class CommandHandler implements CommandExecutedListener
