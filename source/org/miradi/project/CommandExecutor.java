@@ -142,11 +142,6 @@ public class CommandExecutor
 		}
 	}
 
-	public void executeCommandsWithoutTransaction(CommandVector commands) throws CommandFailedException
-	{
-		executeCommandsWithoutTransaction(commands.toArray(new Command[0]));
-	}
-	
 	public void executeCommandAsTransaction(Command command) throws CommandFailedException
 	{
 		CommandVector singleItemList = new CommandVector();
