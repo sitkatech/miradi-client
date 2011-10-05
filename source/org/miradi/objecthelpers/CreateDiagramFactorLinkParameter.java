@@ -23,6 +23,7 @@ import java.util.HashMap;
 
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.FactorLinkId;
+import org.miradi.ids.ObjectId;
 import org.miradi.objects.DiagramFactor;
 
 public class CreateDiagramFactorLinkParameter extends CreateObjectParameter
@@ -54,14 +55,14 @@ public class CreateDiagramFactorLinkParameter extends CreateObjectParameter
 		return factorLinkId;
 	}
 	
-	public DiagramFactorId getFromFactorId()
+	public ObjectId getFromFactorId()
 	{
-		return fromId;
+		return new ObjectId(fromId.asInt());
 	}
 	
-	public DiagramFactorId getToFactorId()
+	public ObjectId getToFactorId()
 	{
-		return toId;
+		return new ObjectId(toId.asInt());
 	}
 	
 	public ORef getFromDiagramFactorRef()
