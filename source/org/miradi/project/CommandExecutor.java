@@ -205,8 +205,16 @@ public class CommandExecutor
 		Command redone = redoOneCommand();
 		if(redone.isBeginTransaction())
 		{
-			while(!redone.isEndTransaction())
+			int transactionLevelToRedo = 1;
+			while(transactionLevelToRedo > 0)
+			{
 				redone = redoOneCommand();
+
+				if(redone.isBeginTransaction())
+					++transactionLevelToRedo;
+				else if(redone.isEndTransaction())
+					--transactionLevelToRedo;
+			}
 		}
 		transactionOrSingleCommandHasEnded();
 	}
