@@ -290,7 +290,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		if (resourceAssignment.isEmpty())
 		{
 			CommandVector removeAssignmentCommands = TreeNodeDeleteDoer.buildCommandsToDeleteAnnotation(getProject(), resourceAssignment, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS);
-			getProject().executeCommandsWithoutTransaction(removeAssignmentCommands);
+			getProject().executeCommandsAsTransaction(removeAssignmentCommands);
 		}
 	}
 

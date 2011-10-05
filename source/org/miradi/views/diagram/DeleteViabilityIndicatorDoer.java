@@ -54,7 +54,7 @@ public class DeleteViabilityIndicatorDoer extends AbstractKeyEcologicalAttribute
 		{
 			TreeTableNode selectedIndicatorNode = getSelectedTreeNodes()[0];
 			Command[] commands = createDeleteCommands(getProject(), selectedIndicatorNode); 
-			getProject().executeCommandsWithoutTransaction(commands);
+			getProject().executeCommandsAsTransaction(commands);
 		}
 		catch(Exception e)
 		{

@@ -252,7 +252,7 @@ public class ResultsChainCreatorHelper
 		
 		DiagramFactorId newlyCreatedId = (DiagramFactorId) createDiagramFactor.getCreatedId();
 		Command[] commandsToClone = diagramFactorToBeCloned.createCommandsToMirror(newlyCreatedId);
-		getProject().executeCommandsWithoutTransaction(commandsToClone);
+		getProject().executeCommandsAsTransaction(commandsToClone);
 		
 		DiagramFactor clonedDiagramFactor = (DiagramFactor) getProject().findObject(new ORef(ObjectType.DIAGRAM_FACTOR, newlyCreatedId));
 		originalAndClonedDiagramFactors.put(diagramFactorToBeCloned, clonedDiagramFactor);

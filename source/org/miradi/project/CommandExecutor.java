@@ -134,7 +134,7 @@ public class CommandExecutor
 		executeCommand(new CommandBeginTransaction());
 	}
 	
-	public void executeCommandsWithoutTransaction(Command[] commands) throws CommandFailedException
+	private void executeCommandsWithoutTransaction(Command[] commands) throws CommandFailedException
 	{
 		for(int i = 0; i < commands.length; ++i)
 		{
@@ -178,8 +178,16 @@ public class CommandExecutor
 		Command undone = undoOneCommand();
 		if(undone.isEndTransaction())
 		{
-			while(!undone.isBeginTransaction())
+			int transactionLevelToUndo = 1;
+			while(transactionLevelToUndo > 0)
+			{
 				undone = undoOneCommand();
+
+				if(undone.isBeginTransaction())
+					--transactionLevelToUndo;
+				else if(undone.isEndTransaction())
+					++transactionLevelToUndo;
+			}
 		}
 		transactionOrSingleCommandHasEnded();
 	}

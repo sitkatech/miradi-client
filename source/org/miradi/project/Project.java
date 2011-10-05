@@ -1116,16 +1116,6 @@ public class Project
 		getCommandExecutor().executeBeginTransaction();
 	}
 	
-	public void executeCommandsWithoutTransaction(Command[] commands) throws CommandFailedException
-	{
-		getCommandExecutor().executeCommandsWithoutTransaction(commands);
-	}
-
-	public void executeCommandsWithoutTransaction(CommandVector commands) throws CommandFailedException
-	{
-		getCommandExecutor().executeCommandsWithoutTransaction(commands);
-	}
-	
 	public void executeCommandAsTransaction(Command command) throws CommandFailedException
 	{
 		getCommandExecutor().executeCommandAsTransaction(command);

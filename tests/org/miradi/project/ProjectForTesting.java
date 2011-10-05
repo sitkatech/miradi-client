@@ -1937,7 +1937,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public void setBidrectionality(DiagramLink diagramLink, String isBidirectional)	throws CommandFailedException
 	{
 		CommandVector setBidirectionality = diagramLink.createCommandsToEnableBidirectionalFlag();
-		executeCommandsWithoutTransaction(setBidirectionality);
+		executeCommandsAsTransaction(setBidirectionality);
 	}
 
 	public void disableAsThreat(Cause threat) throws CommandFailedException

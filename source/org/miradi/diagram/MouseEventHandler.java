@@ -220,7 +220,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 			bendPointsMoveCommands.add(bendPointMoveCommand);
 		}
 		
-		getProject().executeCommandsWithoutTransaction(bendPointsMoveCommands);
+		getProject().executeCommandsAsTransaction(bendPointsMoveCommands);
 	}
 	
 	@Override

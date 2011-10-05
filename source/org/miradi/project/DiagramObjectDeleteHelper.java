@@ -54,7 +54,7 @@ public class DiagramObjectDeleteHelper
 	private void deleteDiagramObject(DiagramObject diagramObject) throws Exception
 	{
 		CommandVector commandsToDeleteChildrenAndDiagramObject = diagramObject.createCommandsToDeleteChildrenAndObject();
-		getProject().executeCommandsWithoutTransaction(commandsToDeleteChildrenAndDiagramObject);
+		getProject().executeCommandsAsTransaction(commandsToDeleteChildrenAndDiagramObject);
 	}
 
 	private void removeAsCurrentDiagram() throws Exception, CommandFailedException
