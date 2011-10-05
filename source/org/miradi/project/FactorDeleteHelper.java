@@ -170,13 +170,13 @@ public class FactorDeleteHelper
 	
 	private void removeFromTaggedObjectSets(ORef refToUntag) throws Exception
 	{
-		getProject().executeCommandsWithoutTransaction(DeleteAnnotationDoer.buildCommandsToUntag(getProject(), refToUntag));
+		getProject().executeCommandsAsTransaction(DeleteAnnotationDoer.buildCommandsToUntag(getProject(), refToUntag));
 	}
 
 	private void removeFromDiagramAndDelete(DiagramFactor diagramFactor) throws Exception
 	{
 		removeNodeFromDiagram(getDiagramObject(), diagramFactor.getDiagramFactorId());
-		getProject().executeCommandsWithoutTransaction(buildCommandsToDeleteDiagramFactor(diagramFactor));
+		getProject().executeCommandsAsTransaction(buildCommandsToDeleteDiagramFactor(diagramFactor));
 	}
 
 	private void removeFromGroupBox(DiagramFactor diagramFactor) throws Exception
@@ -215,7 +215,7 @@ public class FactorDeleteHelper
 	
 	private void deleteUnderlyingNode(Factor factorToDelete) throws Exception
 	{
-		getProject().executeCommandsWithoutTransaction(factorToDelete.createCommandsToDeleteChildrenAndObject());
+		getProject().executeCommandsAsTransaction(factorToDelete.createCommandsToDeleteChildrenAndObject());
 	}
 	
 	public void deleteAnnotations(Factor factorToDelete) throws Exception
@@ -265,7 +265,7 @@ public class FactorDeleteHelper
 		{
 			BaseObject thisAnnotation = getProject().findObject(annotationRefs.get(i));
 			Command[] commands = DeleteAnnotationDoer.buildCommandsToDeleteAnnotation(getProject(), factorToDelete, annotationListTag, thisAnnotation);
-			getProject().executeCommandsWithoutTransaction(commands);
+			getProject().executeCommandsAsTransaction(commands);
 		}
 	}
 	

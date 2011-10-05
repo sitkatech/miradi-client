@@ -128,7 +128,7 @@ public class LinkDeletor
 		project.executeCommand(removeDiagramFactorLink);
 
 		CommandVector commandsToDeleteChildrenAndDiagramLink = diagramLink.createCommandsToDeleteChildrenAndObject();
-		getProject().executeCommandsWithoutTransaction(commandsToDeleteChildrenAndDiagramLink);
+		getProject().executeCommandsAsTransaction(commandsToDeleteChildrenAndDiagramLink);
 	}
 
 	private void removeFromGroupBoxDiagramLinkChildren(DiagramLink diagramLink) throws Exception
@@ -151,7 +151,7 @@ public class LinkDeletor
 			return;
 		
 		CommandVector commandsToDeleteChildrenAndFactorLink = factorLink.createCommandsToDeleteChildrenAndObject();
-		getProject().executeCommandsWithoutTransaction(commandsToDeleteChildrenAndFactorLink);		
+		getProject().executeCommandsAsTransaction(commandsToDeleteChildrenAndFactorLink);		
 	}
 
 	private Project getProject()

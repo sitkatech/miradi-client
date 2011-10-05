@@ -94,7 +94,7 @@ public class ShowFullModelModeDoer extends ViewDoer
 	public static void showFullModelModeWithoutSelecting(Project project) throws Exception
 	{
 		ORef viewDataRef = project.getCurrentViewData().getRef();
-		project.executeCommandsWithoutTransaction(createCommandsToSwithToDefaultMode(viewDataRef));
+		project.executeCommandsAsTransaction(createCommandsToSwithToDefaultMode(viewDataRef));
 	}
 	
 	public static CommandVector createCommandsToSwithToDefaultMode(ORef viewDataRef)

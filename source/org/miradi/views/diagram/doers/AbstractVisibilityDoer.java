@@ -170,7 +170,7 @@ abstract public class AbstractVisibilityDoer extends ObjectsDoer
 		ORefList diagramFactorRefsToBeRemoved = diagramFactorReferrerRefs.getOverlappingRefs(diagramFactorRefsFromCurrentDiagram);
 		
 		CommandVector commandsToHideBubble = hideDiagramFactors(diagramFactorRefsToBeRemoved);
-		getProject().executeCommandsWithoutTransaction(commandsToHideBubble);
+		getProject().executeCommandsAsTransaction(commandsToHideBubble);
 	}
 	
 	private DiagramObject getDiagramObject()

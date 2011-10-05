@@ -123,7 +123,7 @@ abstract public class DiagramPaster
 	private void fixupRefs(HashMap pastedObjectMap, BaseObject newObject) throws Exception
 	{
 		Command[] commandsToFixRefs = createCommandToFixupRefLists(pastedObjectMap, newObject);
-		getProject().executeCommandsWithoutTransaction(commandsToFixRefs);
+		getProject().executeCommandsAsTransaction(commandsToFixRefs);
 	}
 	
 	public Command[] createCommandToFixupRefLists(HashMap pastedObjectMap, BaseObject newObject) throws Exception
@@ -375,7 +375,7 @@ abstract public class DiagramPaster
 	private void loadNewObjectFromOldJson(BaseObject newObject, EnhancedJsonObject json) throws Exception, CommandFailedException
 	{
 		Command[] commandsToLoadFromJson = newObject.createCommandsToLoadFromJson(json);
-		getProject().executeCommandsWithoutTransaction(commandsToLoadFromJson);
+		getProject().executeCommandsAsTransaction(commandsToLoadFromJson);
 	}
 	
 	private BaseObject createObject(int type) throws CommandFailedException
@@ -470,7 +470,7 @@ abstract public class DiagramPaster
 			if(threatStressRating != null)
 			{
 				Command[] commands = threatStressRating.createCommandsToLoadFromJson(tsrJson);
-				getProject().executeCommandsWithoutTransaction(commands);
+				getProject().executeCommandsAsTransaction(commands);
 			}
 		}
 	}
@@ -687,7 +687,7 @@ abstract public class DiagramPaster
 			DiagramLink newDiagramLink = (DiagramLink) createObject(type, extraInfo);
 			
 			Command[]  commandsToLoadFromJson = newDiagramLink.createCommandsToLoadFromJson(diagramLinkJson);
-			getProject().executeCommandsWithoutTransaction(commandsToLoadFromJson);
+			getProject().executeCommandsAsTransaction(commandsToLoadFromJson);
 	
 			if(newDiagramLink.getWrappedFactorLink() == null && !newDiagramLink.isGroupBoxLink())
 				throw new RuntimeException("Created non-group DiagramLink with no wrapped FactorLink: " + newDiagramLink.getRef());
@@ -810,7 +810,7 @@ abstract public class DiagramPaster
 		FactorLink newFactorLink = (FactorLink) getProject().findObject(factorLinkRef);
 		
 		Command[]  commandsToLoadFromJson = newFactorLink.createCommandsToLoadFromJson(json);
-		getProject().executeCommandsWithoutTransaction(commandsToLoadFromJson);
+		getProject().executeCommandsAsTransaction(commandsToLoadFromJson);
 
 		BaseId oldFactorLinkId = json.getId(FactorLink.TAG_ID);
 		getOldToNewObjectRefMap().put(new ORef(FactorLink.getObjectType(), oldFactorLinkId), newFactorLink.getRef());
