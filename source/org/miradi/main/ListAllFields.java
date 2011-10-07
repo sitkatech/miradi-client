@@ -23,7 +23,7 @@ import java.io.IOException;
 import java.util.Vector;
 
 import org.miradi.ids.BaseId;
-import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
+import org.miradi.objecthelpers.CreateDiagramLinkParameter;
 import org.miradi.objecthelpers.CreateDiagramFactorParameter;
 import org.miradi.objecthelpers.CreateFactorLinkParameter;
 import org.miradi.objecthelpers.CreateObjectParameter;
@@ -101,7 +101,7 @@ public class ListAllFields
 			BaseId factorLinkId = BaseId.INVALID;
 			BaseId fromId = BaseId.INVALID;
 			BaseId toId = BaseId.INVALID;
-			return new CreateDiagramFactorLinkParameter(factorLinkId, fromId, toId);
+			return new CreateDiagramLinkParameter(factorLinkId, fromId, toId);
 		}
 		
 		if(type == ThreatStressRating.getObjectType())

@@ -25,21 +25,21 @@ import org.miradi.ids.BaseId;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.FactorLink;
 
-public class CreateDiagramFactorLinkParameter extends CreateObjectParameter
+public class CreateDiagramLinkParameter extends CreateObjectParameter
 {
-	public CreateDiagramFactorLinkParameter(ORef fromRefToUse, ORef toRefToUse)
+	public CreateDiagramLinkParameter(ORef fromRefToUse, ORef toRefToUse)
 	{
 		this(ORef.createInvalidWithType(FactorLink.getObjectType()), fromRefToUse, toRefToUse);
 	}
 		
-	public CreateDiagramFactorLinkParameter(ORef factorLinkRefToUse, ORef fromRefToUse, ORef toRefToUse)
+	public CreateDiagramLinkParameter(ORef factorLinkRefToUse, ORef fromRefToUse, ORef toRefToUse)
 	{
 		factorLinkRef = factorLinkRefToUse;
 		fromRef = fromRefToUse;
 		toRef = toRefToUse;
 	}
 	
-	public CreateDiagramFactorLinkParameter(BaseId factorLinkIdToUse, BaseId fromIdToUse, BaseId toIdToUse)
+	public CreateDiagramLinkParameter(BaseId factorLinkIdToUse, BaseId fromIdToUse, BaseId toIdToUse)
 	{
 		this(new ORef(FactorLink.getObjectType(), factorLinkIdToUse), new ORef(DiagramFactor.getObjectType(), fromIdToUse), new ORef(DiagramFactor.getObjectType(), toIdToUse));
 	}

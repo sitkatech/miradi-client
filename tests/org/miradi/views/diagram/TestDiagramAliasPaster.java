@@ -33,7 +33,7 @@ import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.main.TransferableMiradiList;
-import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
+import org.miradi.objecthelpers.CreateDiagramLinkParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
@@ -515,7 +515,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 	private DiagramLink createGroupBoxLinkWithChildren(DiagramFactor from, DiagramFactor to, DiagramLink diagramLinkToCover) throws Exception
 	{
 		ORefList coveredLinkRefs = new ORefList(diagramLinkToCover);
-		CreateDiagramFactorLinkParameter extraInfoWithNoFactorLink = new CreateDiagramFactorLinkParameter(from.getRef(), to.getRef());
+		CreateDiagramLinkParameter extraInfoWithNoFactorLink = new CreateDiagramLinkParameter(from.getRef(), to.getRef());
 		LinkCreator linkCreator = new LinkCreator(getProject());
 		ORef newGroupBoxDiagramLinkRef = linkCreator.createDiagramLink(getDiagramObject(), extraInfoWithNoFactorLink);
 		linkCreator.updateGroupBoxChildrenRefs(coveredLinkRefs, newGroupBoxDiagramLinkRef);		

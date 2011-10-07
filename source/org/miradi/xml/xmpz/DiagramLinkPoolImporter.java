@@ -24,7 +24,7 @@ import java.awt.Point;
 
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
-import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
+import org.miradi.objecthelpers.CreateDiagramLinkParameter;
 import org.miradi.objecthelpers.CreateFactorLinkParameter;
 import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ORef;
@@ -101,6 +101,6 @@ public class DiagramLinkPoolImporter extends AbstractBaseObjectPoolImporter
 			factorLinkRef = getProject().createObjectAndReturnRef(FactorLink.getObjectType(), extraInfo);
 		}
 		
-		return new CreateDiagramFactorLinkParameter(factorLinkRef, fromDiagramFactorRef, toDiagramFactorRef);
+		return new CreateDiagramLinkParameter(factorLinkRef, fromDiagramFactorRef, toDiagramFactorRef);
 	}
 }

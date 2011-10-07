@@ -22,7 +22,7 @@ package org.miradi.utils;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.TestCaseWithProject;
-import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
+import org.miradi.objecthelpers.CreateDiagramLinkParameter;
 import org.miradi.objecthelpers.CreateDiagramFactorParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -123,7 +123,7 @@ public class TestDiagramCorruptionDetector extends TestCaseWithProject
 			ORef groupBoxDiagramFactorRef, ORef targetDiagramFactorRef)
 			throws Exception
 	{
-		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = new CreateDiagramFactorLinkParameter(targetDiagramFactorRef, groupBoxDiagramFactorRef);
+		CreateDiagramLinkParameter diagramLinkExtraInfo = new CreateDiagramLinkParameter(targetDiagramFactorRef, groupBoxDiagramFactorRef);
 		ORef diagramLinkRef = getProject().createObject(DiagramLink.getObjectType(), diagramLinkExtraInfo);
 		
 		IdList diagramLinkIds = new IdList(DiagramLink.getObjectType());

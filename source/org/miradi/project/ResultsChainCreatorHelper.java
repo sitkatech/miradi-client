@@ -35,7 +35,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
+import org.miradi.objecthelpers.CreateDiagramLinkParameter;
 import org.miradi.objecthelpers.CreateDiagramFactorParameter;
 import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.FactorSet;
@@ -554,13 +554,13 @@ public class ResultsChainCreatorHelper
 	private CreateObjectParameter createDiagramLinkExtraInfo(DiagramLink diagramLink, DiagramFactor from, DiagramFactor fromCloned, DiagramFactor to, DiagramFactor toCloned) throws Exception
 	{
 		if (areSharingTheSameFactor(from, fromCloned, to, toCloned))
-			return new CreateDiagramFactorLinkParameter(diagramLink.getWrappedId(), fromCloned.getDiagramFactorId(), toCloned.getDiagramFactorId());
+			return new CreateDiagramLinkParameter(diagramLink.getWrappedId(), fromCloned.getDiagramFactorId(), toCloned.getDiagramFactorId());
 
 		ORef factorLinkRef = new ORef(FactorLink.getObjectType(), BaseId.INVALID);
 		if(!diagramLink.isGroupBoxLink())
 			factorLinkRef = new LinkCreator(getProject()).createFactorLink(fromCloned, toCloned);
 
-		return new CreateDiagramFactorLinkParameter(factorLinkRef, fromCloned.getRef(), toCloned.getRef());
+		return new CreateDiagramLinkParameter(factorLinkRef, fromCloned.getRef(), toCloned.getRef());
 	}
 
 	private boolean areSharingTheSameFactor(DiagramFactor from, DiagramFactor fromCloned, DiagramFactor to, DiagramFactor toCloned)

@@ -34,7 +34,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.objectdata.BooleanData;
-import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
+import org.miradi.objecthelpers.CreateDiagramLinkParameter;
 import org.miradi.objecthelpers.CreateFactorLinkParameter;
 import org.miradi.objecthelpers.CreateThreatStressRatingParameter;
 import org.miradi.objecthelpers.DateUnit;
@@ -1856,7 +1856,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		if(!shouldCreateGroupBoxLink(from, to))
 			baseId = createFactorLink(from.getWrappedORef(), to.getWrappedORef()).getObjectId();
 		
-		CreateDiagramFactorLinkParameter extraInfo = createDiagramLinkExtraInfo(from, to, baseId);
+		CreateDiagramLinkParameter extraInfo = createDiagramLinkExtraInfo(from, to, baseId);
 
 		return createObject(ObjectType.DIAGRAM_LINK, extraInfo);
 	}
@@ -1873,7 +1873,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		if(!shouldCreateGroupBoxLink(from, to))
 			baseId = createFactorLinkWithCommand(from.getWrappedORef(), to.getWrappedORef()).getObjectId();
 		
-		CreateDiagramFactorLinkParameter extraInfo = createDiagramLinkExtraInfo(from, to, baseId);
+		CreateDiagramLinkParameter extraInfo = createDiagramLinkExtraInfo(from, to, baseId);
 		CommandCreateObject createDiagramLink = new CommandCreateObject(DiagramLink.getObjectType(), extraInfo);
 		executeCommand(createDiagramLink);
 
@@ -1894,9 +1894,9 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return from.isGroupBoxFactor() || to.isGroupBoxFactor();
 	}
 	
-	private CreateDiagramFactorLinkParameter createDiagramLinkExtraInfo(DiagramFactor from, DiagramFactor to, BaseId baseId)
+	private CreateDiagramLinkParameter createDiagramLinkExtraInfo(DiagramFactor from, DiagramFactor to, BaseId baseId)
 	{
-		return new CreateDiagramFactorLinkParameter(baseId, from.getDiagramFactorId(), to.getDiagramFactorId());
+		return new CreateDiagramLinkParameter(baseId, from.getDiagramFactorId(), to.getDiagramFactorId());
 	}
 	
 	private CreateFactorLinkParameter createFactorLinkExtraInfo(ORef fromFactorRef, ORef toFactorRef)

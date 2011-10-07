@@ -32,7 +32,7 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.DiagramLinkId;
-import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
+import org.miradi.objecthelpers.CreateDiagramLinkParameter;
 import org.miradi.objecthelpers.CreateFactorLinkParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
@@ -78,7 +78,7 @@ public class TestDiagramLink extends ObjectTestCase
 		DiagramFactor diagramFactor2 = project.createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
 		BaseId factorLinkId = new BaseId(44);
 		createDiagramFactorLink(project, diagramFactor1.getWrappedORef(), diagramFactor2.getWrappedORef(), factorLinkId);
-		CreateDiagramFactorLinkParameter extraInfo = new CreateDiagramFactorLinkParameter(factorLinkId, diagramFactor1.getDiagramFactorId(), diagramFactor2.getDiagramFactorId());
+		CreateDiagramLinkParameter extraInfo = new CreateDiagramLinkParameter(factorLinkId, diagramFactor1.getDiagramFactorId(), diagramFactor2.getDiagramFactorId());
 
 		verifyFields(ObjectType.DIAGRAM_LINK, extraInfo);
 	}
@@ -108,13 +108,13 @@ public class TestDiagramLink extends ObjectTestCase
 		
 		BaseId linkId = new BaseId(5);
 		DiagramLinkId id = new DiagramLinkId(17);
-		CreateDiagramFactorLinkParameter extraInfoForTestIds = new CreateDiagramFactorLinkParameter(
+		CreateDiagramLinkParameter extraInfoForTestIds = new CreateDiagramLinkParameter(
 				linkId, factor.getDiagramFactorId(), diagramTarget.getDiagramFactorId());
 		DiagramLink linkage = new DiagramLink(getObjectManager(), id, extraInfoForTestIds);
 		assertEquals(id, linkage.getDiagramLinkId());
 		assertEquals(linkId, linkage.getWrappedId());
 		
-		CreateDiagramFactorLinkParameter gotExtraInfo = (CreateDiagramFactorLinkParameter)linkage.getCreationExtraInfo();
+		CreateDiagramLinkParameter gotExtraInfo = (CreateDiagramLinkParameter)linkage.getCreationExtraInfo();
 		assertEquals(extraInfoForTestIds.getFactorLinkRef(), gotExtraInfo.getFactorLinkRef());
 		assertEquals(extraInfoForTestIds.getFromDiagramFactorRef(), gotExtraInfo.getFromDiagramFactorRef());
 		assertEquals(extraInfoForTestIds.getToDiagramFactorRef(), gotExtraInfo.getToDiagramFactorRef());
@@ -149,7 +149,7 @@ public class TestDiagramLink extends ObjectTestCase
 		FactorCell factorCell = diagramModel.getFactorCellByWrappedRef(strategyRef);
 		DiagramFactorId fromDiagramFactorId = factorCell.getDiagramFactorId();
 		DiagramFactorId toDiagramFactorId = diagramModel.getFactorCellByWrappedRef(factorRef).getDiagramFactorId();
-		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = new CreateDiagramFactorLinkParameter(modelLinkageId, fromDiagramFactorId, toDiagramFactorId);
+		CreateDiagramLinkParameter diagramLinkExtraInfo = new CreateDiagramLinkParameter(modelLinkageId, fromDiagramFactorId, toDiagramFactorId);
 		
 		CommandCreateObject createDiagramLinkCommand =  new CommandCreateObject(ObjectType.DIAGRAM_LINK, diagramLinkExtraInfo);
 		projectForTesting.executeCommand(createDiagramLinkCommand);

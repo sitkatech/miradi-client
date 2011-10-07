@@ -36,7 +36,7 @@ import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
 import org.miradi.main.MiradiTestCase;
-import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
+import org.miradi.objecthelpers.CreateDiagramLinkParameter;
 import org.miradi.objecthelpers.CreateDiagramFactorParameter;
 import org.miradi.objecthelpers.CreateFactorLinkParameter;
 import org.miradi.objecthelpers.ORef;
@@ -296,7 +296,7 @@ public class TestCommands extends MiradiTestCase
 		ORef factorLinkRef = createModelLinkage.getObjectRef();
 		DiagramFactorId fromDiagramFactorId = from.getDiagramFactorId();
 		DiagramFactorId toDiagramFactorId = to.getDiagramFactorId();
-		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = new CreateDiagramFactorLinkParameter(modelLinkageId, fromDiagramFactorId, toDiagramFactorId);
+		CreateDiagramLinkParameter diagramLinkExtraInfo = new CreateDiagramLinkParameter(modelLinkageId, fromDiagramFactorId, toDiagramFactorId);
 		
 		CommandCreateObject createDiagramLinkCommand =  new CommandCreateObject(ObjectType.DIAGRAM_LINK, diagramLinkExtraInfo);
     	project.executeCommand(createDiagramLinkCommand);
