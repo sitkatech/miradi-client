@@ -22,7 +22,7 @@ package org.miradi.views.diagram;
 import java.util.Vector;
 
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.ids.FactorLinkId;
+import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -52,7 +52,7 @@ public class LinkDeletor
 			deleteDiagramLinkAndOrphandFactorLink(noDiagramFactorsToBeDeleted, diagramLink);
 	}
 	
-	public void deleteFactorLinkAndAllRefferers(FactorLinkId factorLinkId) throws Exception
+	public void deleteFactorLinkAndAllRefferers(BaseId factorLinkId) throws Exception
 	{
 		FactorLink factorLink = (FactorLink) project.findObject(new ORef(ObjectType.FACTOR_LINK, factorLinkId));
 		deleteDiagramLinkAndReferrers(factorLink);

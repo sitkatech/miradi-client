@@ -25,7 +25,6 @@ import org.miradi.ids.DiagramContentsId;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.DiagramLinkId;
 import org.miradi.ids.FactorId;
-import org.miradi.ids.FactorLinkId;
 import org.miradi.ids.FundingSourceId;
 import org.miradi.ids.GoalId;
 import org.miradi.ids.IndicatorId;
@@ -81,8 +80,6 @@ public class ORef implements Comparable<ORef>
 				return new DiagramLinkId(idToUse);
 			case ObjectType.ACCOUNTING_CODE:
 				return new AccountingCodeId(idToUse);
-			case ObjectType.FACTOR_LINK:
-				return new FactorLinkId(idToUse);
 			case ObjectType.FUNDING_SOURCE:
 				return new FundingSourceId(idToUse);
 			case ObjectType.GOAL:

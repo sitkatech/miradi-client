@@ -26,7 +26,6 @@ import java.util.Vector;
 
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.ids.BaseId;
-import org.miradi.ids.FactorLinkId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.main.MiradiTestCase;
 import org.miradi.objecthelpers.FactorSet;
@@ -247,7 +246,7 @@ public class TestDiagramModel extends MiradiTestCase
 	{
 		FactorCell factor = project.createFactorCell(ObjectType.CAUSE);
 		FactorCell target = project.createFactorCell(ObjectType.TARGET);
-		createLinkage(new FactorLinkId(BaseId.INVALID.asInt()), factor.getDiagramFactor(), target.getDiagramFactor());
+		createLinkage(BaseId.INVALID, factor.getDiagramFactor(), target.getDiagramFactor());
 		assertEquals(2, model.getFactorCount());
 		assertEquals(1, model.getFactorLinkCount());
 	}
@@ -259,7 +258,7 @@ public class TestDiagramModel extends MiradiTestCase
 		DiagramFactor cause = project.createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
 		DiagramFactor target = project.createDiagramFactorAndAddToDiagram(ObjectType.TARGET);
 		assertFalse("already linked?", model.areDiagramFactorsLinked(cause.getRef(), target.getRef()));
-		createLinkage(new FactorLinkId(BaseId.INVALID.asInt()), cause, target);
+		createLinkage(BaseId.INVALID, cause, target);
 		
 		assertTrue("not linked?", model.areDiagramFactorsLinked(cause.getRef(), target.getRef()));
 		assertTrue("reverse link not detected?", model.areDiagramFactorsLinked(target.getRef(), cause.getRef()));
@@ -278,9 +277,10 @@ public class TestDiagramModel extends MiradiTestCase
 		assertTrue("missed second?", found.contains(model.findLinkCell(linkage2)));
 	}
 
-	private FactorLinkId takeNextLinkageId()
+	private BaseId takeNextLinkageId()
 	{
-		return new FactorLinkId(idAssigner.takeNextId().asInt());
+		BaseId nextId = idAssigner.takeNextId();
+		return nextId;
 	}
 	
 	
@@ -300,7 +300,7 @@ public class TestDiagramModel extends MiradiTestCase
 	{
 		DiagramFactor node1 = project.createDiagramFactorAndAddToDiagram(ObjectType.TARGET);
 		DiagramFactor node2 = project.createDiagramFactorAndAddToDiagram(ObjectType.TARGET);		
-		createLinkage(new FactorLinkId(BaseId.INVALID.asInt()), node1, node2);
+		createLinkage(BaseId.INVALID, node1, node2);
 		DiagramFactor node3 = project.createDiagramFactorAndAddToDiagram(ObjectType.TARGET);		
 		
 		DiagramFactor[] diagramFactors = project.getAllDiagramFactors();
@@ -369,7 +369,7 @@ public class TestDiagramModel extends MiradiTestCase
 
 		FactorCell node2 = project.createFactorCell(ObjectType.TARGET);
 		FactorCell node3 = project.createFactorCell(ObjectType.TARGET);
-		DiagramLink link1 = createLinkage(new FactorLinkId(BaseId.INVALID.asInt()), node2.getDiagramFactor(), node3.getDiagramFactor());
+		DiagramLink link1 = createLinkage(BaseId.INVALID, node2.getDiagramFactor(), node3.getDiagramFactor());
 		assertEquals("didn't do more node add notify's?", 3, testModel.nodeAdded);
 		assertEquals("add link did a node delete notify?", 1, testModel.nodeDeleted);
 		assertEquals("add link did a node change notify?", 1, testModel.nodeChanged);
@@ -398,7 +398,7 @@ public class TestDiagramModel extends MiradiTestCase
 		
 	}
 	
-	private DiagramLink createLinkage(FactorLinkId id, DiagramFactor fromDiagramFactor, DiagramFactor toDiagramFactor) throws Exception
+	private DiagramLink createLinkage(BaseId id, DiagramFactor fromDiagramFactor, DiagramFactor toDiagramFactor) throws Exception
 	{
 		LinkCreator linkCreator = new LinkCreator(project);
 		DiagramLink diagramLink = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(project.getTestingDiagramObject(), fromDiagramFactor, toDiagramFactor);

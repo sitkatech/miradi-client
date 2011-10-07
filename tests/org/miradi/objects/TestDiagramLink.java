@@ -32,7 +32,6 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.DiagramLinkId;
-import org.miradi.ids.FactorLinkId;
 import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.miradi.objecthelpers.CreateFactorLinkParameter;
 import org.miradi.objecthelpers.ORef;
@@ -77,7 +76,7 @@ public class TestDiagramLink extends ObjectTestCase
 	{
 		DiagramFactor diagramFactor1 = project.createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
 		DiagramFactor diagramFactor2 = project.createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
-		FactorLinkId factorLinkId = new FactorLinkId(44);
+		BaseId factorLinkId = new BaseId(44);
 		createDiagramFactorLink(project, diagramFactor1.getWrappedORef(), diagramFactor2.getWrappedORef(), factorLinkId);
 		CreateDiagramFactorLinkParameter extraInfo = new CreateDiagramFactorLinkParameter(factorLinkId, diagramFactor1.getDiagramFactorId(), diagramFactor2.getDiagramFactorId());
 
@@ -107,7 +106,7 @@ public class TestDiagramLink extends ObjectTestCase
 		DiagramCauseCell factor = (DiagramCauseCell) project.createFactorCell(ObjectType.CAUSE);
 		DiagramTargetCell diagramTarget = (DiagramTargetCell) project.createFactorCell(ObjectType.TARGET);
 		
-		FactorLinkId linkId = new FactorLinkId(5);
+		BaseId linkId = new BaseId(5);
 		DiagramLinkId id = new DiagramLinkId(17);
 		CreateDiagramFactorLinkParameter extraInfoForTestIds = new CreateDiagramFactorLinkParameter(
 				linkId, factor.getDiagramFactorId(), diagramTarget.getDiagramFactorId());

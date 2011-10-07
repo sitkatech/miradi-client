@@ -32,7 +32,6 @@ import org.miradi.diagram.cells.LinkCell;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
-import org.miradi.ids.FactorLinkId;
 import org.miradi.ids.IdList;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
@@ -1897,7 +1896,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	private CreateDiagramFactorLinkParameter createDiagramLinkExtraInfo(DiagramFactor from, DiagramFactor to, BaseId baseId)
 	{
-		return new CreateDiagramFactorLinkParameter(new FactorLinkId(baseId.asInt()), from.getDiagramFactorId(), to.getDiagramFactorId());
+		return new CreateDiagramFactorLinkParameter(baseId, from.getDiagramFactorId(), to.getDiagramFactorId());
 	}
 	
 	private CreateFactorLinkParameter createFactorLinkExtraInfo(ORef fromFactorRef, ORef toFactorRef)

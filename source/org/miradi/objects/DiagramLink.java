@@ -27,7 +27,6 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.DiagramLinkId;
-import org.miradi.ids.FactorLinkId;
 import org.miradi.objectdata.BaseIdData;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objectdata.ChoiceData;
@@ -208,9 +207,9 @@ public class DiagramLink extends BaseObject
 		return new ORef(FactorLink.getObjectType(), underlyingObjectId.getId());
 	}
 	
-	public FactorLinkId getWrappedId()
+	public BaseId getWrappedId()
 	{
-		return new FactorLinkId(underlyingObjectId.getId().asInt());
+		return underlyingObjectId.getId();
 	}
 	
 	public DiagramObject getDiagramObject()

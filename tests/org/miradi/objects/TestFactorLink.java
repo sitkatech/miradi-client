@@ -20,14 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
-import org.miradi.ids.FactorLinkId;
 import org.miradi.objecthelpers.CreateFactorLinkParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.DiagramLink;
-import org.miradi.objects.FactorLink;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -91,7 +86,7 @@ public class TestFactorLink extends ObjectTestCase
 		assertEquals(extraInfo.getToRef(), gotExtraInfo.getToRef());
 	}
 
-	static final FactorLinkId id = new FactorLinkId(1);
+	static final BaseId id = new BaseId(1);
 	DiagramFactor nodeA;
 	DiagramFactor nodeB;
 	ProjectForTesting project;

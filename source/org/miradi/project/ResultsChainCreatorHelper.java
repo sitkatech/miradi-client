@@ -31,8 +31,8 @@ import org.miradi.diagram.ChainWalker;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.exceptions.CommandFailedException;
+import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
-import org.miradi.ids.FactorLinkId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
@@ -556,7 +556,7 @@ public class ResultsChainCreatorHelper
 		if (areSharingTheSameFactor(from, fromCloned, to, toCloned))
 			return new CreateDiagramFactorLinkParameter(diagramLink.getWrappedId(), fromCloned.getDiagramFactorId(), toCloned.getDiagramFactorId());
 
-		ORef factorLinkRef = new ORef(FactorLink.getObjectType(), new FactorLinkId(FactorLinkId.INVALID.asInt()));
+		ORef factorLinkRef = new ORef(FactorLink.getObjectType(), BaseId.INVALID);
 		if(!diagramLink.isGroupBoxLink())
 			factorLinkRef = new LinkCreator(getProject()).createFactorLink(fromCloned, toCloned);
 

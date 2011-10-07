@@ -21,7 +21,6 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
-import org.miradi.ids.FactorLinkId;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objectdata.ORefData;
 import org.miradi.objecthelpers.CreateFactorLinkParameter;
@@ -44,7 +43,7 @@ public class FactorLink extends BaseObject
 
 	public FactorLink(ObjectManager objectManager, int idAsInt, EnhancedJsonObject jsonObject) throws Exception 
 	{
-		super(objectManager, new FactorLinkId(idAsInt), jsonObject);
+		super(objectManager, new BaseId(idAsInt), jsonObject);
 	}
 	
 	@Override
