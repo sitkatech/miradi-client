@@ -29,7 +29,6 @@ import org.miradi.database.ObjectManifest;
 import org.miradi.database.ProjectServer;
 import org.miradi.diagram.ChainWalker;
 import org.miradi.ids.BaseId;
-import org.miradi.ids.FactorLinkId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.CreateFactorLinkParameter;
@@ -353,7 +352,7 @@ public class ObjectManager
 			case ObjectType.FACTOR_LINK:
 			{
 				CreateFactorLinkParameter parameter = (CreateFactorLinkParameter)extraInfo;
-				FactorLinkId realId = getProject().obtainRealLinkageId(objectId);
+				BaseId realId = getProject().obtainRealLinkageId(objectId);
 				FactorLink cmLinkage = new FactorLink(this, realId, parameter.getFromRef(), parameter.getToRef());
 				getDatabase().writeObject(cmLinkage);
 				EAMObjectPool pool = getPool(objectType);

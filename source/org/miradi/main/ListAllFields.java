@@ -23,8 +23,6 @@ import java.io.IOException;
 import java.util.Vector;
 
 import org.miradi.ids.BaseId;
-import org.miradi.ids.DiagramFactorId;
-import org.miradi.ids.FactorLinkId;
 import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.miradi.objecthelpers.CreateDiagramFactorParameter;
 import org.miradi.objecthelpers.CreateFactorLinkParameter;
@@ -100,9 +98,9 @@ public class ListAllFields
 		
 		if(type == DiagramLink.getObjectType())
 		{
-			FactorLinkId factorLinkId = new FactorLinkId(BaseId.INVALID.asInt());
-			DiagramFactorId fromId = new DiagramFactorId(BaseId.INVALID.asInt());
-			DiagramFactorId toId = new DiagramFactorId(BaseId.INVALID.asInt());
+			BaseId factorLinkId = BaseId.INVALID;
+			BaseId fromId = BaseId.INVALID;
+			BaseId toId = BaseId.INVALID;
 			return new CreateDiagramFactorLinkParameter(factorLinkId, fromId, toId);
 		}
 		

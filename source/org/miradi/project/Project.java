@@ -40,7 +40,6 @@ import org.miradi.exceptions.UnexpectedSideEffectException;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.DiagramLinkId;
-import org.miradi.ids.FactorLinkId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.ids.IdList;
 import org.miradi.main.CommandExecutedListener;
@@ -575,7 +574,7 @@ public class Project
 		setObjectData(ObjectType.PROJECT_METADATA, getMetadataId(), tag, value);
 	}
 	
-	public FactorLinkId obtainRealLinkageId(BaseId proposedId)
+	public BaseId obtainRealLinkageId(BaseId proposedId)
 	{
 		return projectInfo.obtainFactorLinkId(proposedId);
 	}

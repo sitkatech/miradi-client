@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
+import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.FactorLinkId;
 import org.miradi.objectdata.BooleanData;
@@ -33,7 +34,7 @@ import org.miradi.utils.EnhancedJsonObject;
 
 public class FactorLink extends BaseObject
 {
-	public FactorLink(ObjectManager objectManager, FactorLinkId id, ORef fromFactorRef, ORef toFactorRef) throws Exception
+	public FactorLink(ObjectManager objectManager, BaseId id, ORef fromFactorRef, ORef toFactorRef) throws Exception
 	{
 		super(objectManager, id);
 		clear();

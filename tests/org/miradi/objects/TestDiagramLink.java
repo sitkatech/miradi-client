@@ -128,7 +128,7 @@ public class TestDiagramLink extends ObjectTestCase
 		CreateFactorLinkParameter extraInfoForLinkParameters = new CreateFactorLinkParameter(intervention.getWrappedORef(), cause.getWrappedORef());
 		CommandCreateObject createModelLinkage = new CommandCreateObject(ObjectType.FACTOR_LINK, extraInfoForLinkParameters);
 		project.executeCommand(createModelLinkage);
-		FactorLinkId modelLinkageId = (FactorLinkId)createModelLinkage.getCreatedId();
+		BaseId modelLinkageId = createModelLinkage.getCreatedId();
 		
 		ORef diagramLinkRef = createDiagramFactorLink(project, intervention.getWrappedORef(), cause.getWrappedORef(), modelLinkageId);
 		DiagramObject diagramObject = project.getTestingDiagramObject();
@@ -144,7 +144,7 @@ public class TestDiagramLink extends ObjectTestCase
 		assertEquals("Didn't load to ref?", cause.getWrappedORef(), linkage.getToFactorRef());
 	}
 
-	private static ORef createDiagramFactorLink(ProjectForTesting projectForTesting, ORef strategyRef, ORef factorRef, FactorLinkId modelLinkageId) throws CommandFailedException
+	private static ORef createDiagramFactorLink(ProjectForTesting projectForTesting, ORef strategyRef, ORef factorRef, BaseId modelLinkageId) throws CommandFailedException
 	{
 		DiagramModel diagramModel = projectForTesting.getTestingDiagramModel();
 		FactorCell factorCell = diagramModel.getFactorCellByWrappedRef(strategyRef);

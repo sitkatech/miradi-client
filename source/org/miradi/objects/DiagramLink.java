@@ -337,9 +337,9 @@ public class DiagramLink extends BaseObject
 	public CreateObjectParameter getCreationExtraInfo()
 	{
 		return new CreateDiagramFactorLinkParameter(
-				new FactorLinkId(underlyingObjectId.getId().asInt()), 
-				new DiagramFactorId(fromId.getId().asInt()), 
-				new DiagramFactorId(toId.getId().asInt()));
+				new BaseId(underlyingObjectId.getId().asInt()), 
+				new BaseId(fromId.getId().asInt()), 
+				new BaseId(toId.getId().asInt()));
 	}
 	
 	public PointList getBendPoints()

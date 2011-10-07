@@ -22,7 +22,6 @@ package org.miradi.objects;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.DiagramLinkId;
-import org.miradi.ids.FactorLinkId;
 import org.miradi.ids.IdList;
 import org.miradi.main.MiradiTestCase;
 import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
@@ -31,21 +30,6 @@ import org.miradi.objecthelpers.CreateFactorLinkParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.ResourceAssignment;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.Cause;
-import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.DiagramLink;
-import org.miradi.objects.Factor;
-import org.miradi.objects.FactorLink;
-import org.miradi.objects.Indicator;
-import org.miradi.objects.KeyEcologicalAttribute;
-import org.miradi.objects.Measurement;
-import org.miradi.objects.ResultsChainDiagram;
-import org.miradi.objects.Strategy;
-import org.miradi.objects.Target;
-import org.miradi.objects.Task;
-import org.miradi.objects.ViewData;
 import org.miradi.project.ProjectForTesting;
 
 public class TestObjectFindOwnerAndFindReferrer extends MiradiTestCase
@@ -299,7 +283,7 @@ public class TestObjectFindOwnerAndFindReferrer extends MiradiTestCase
 	private DiagramLink createDiagramFactorLink(DiagramFactor from, DiagramFactor to) throws Exception
 	{
 		CreateFactorLinkParameter linkExtraInfo = new CreateFactorLinkParameter(from.getWrappedORef(), to.getWrappedORef());
-		FactorLinkId linkId = (FactorLinkId)project.createObjectAndReturnId(FactorLink.getObjectType(), linkExtraInfo);
+		BaseId linkId = project.createObjectAndReturnId(FactorLink.getObjectType(), linkExtraInfo);
 		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = new CreateDiagramFactorLinkParameter(linkId, from.getDiagramFactorId(), to.getDiagramFactorId());
 		DiagramLinkId diagramLinkId = (DiagramLinkId)project.createObjectAndReturnId(DiagramLink.getObjectType(), diagramLinkExtraInfo);
 		return (DiagramLink)project.findObject(DiagramLink.getObjectType(), diagramLinkId);
