@@ -23,8 +23,8 @@ import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
+import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
-import org.miradi.ids.FactorLinkId;
 import org.miradi.main.MiradiTestCase;
 import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.miradi.objecthelpers.CreateFactorLinkParameter;
@@ -52,7 +52,7 @@ public class TestDiagramAddFactorLink extends MiradiTestCase
 		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(intervention.getWrappedFactorRef(), factor.getWrappedFactorRef());
 		CommandCreateObject createModelLinkage = new CommandCreateObject(ObjectType.FACTOR_LINK, extraInfo);
 		project.executeCommand(createModelLinkage);
-		FactorLinkId modelLinkageId = (FactorLinkId)createModelLinkage.getCreatedId();
+		BaseId modelLinkageId = createModelLinkage.getCreatedId();
 
 		DiagramFactorId fromDiagramFactorId = intervention.getDiagramFactorId();
 		DiagramFactorId toDiagramFactorId = factor.getDiagramFactorId();

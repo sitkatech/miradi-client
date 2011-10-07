@@ -22,7 +22,6 @@ package org.miradi.objecthelpers;
 import java.util.HashMap;
 
 import org.miradi.ids.BaseId;
-import org.miradi.ids.FactorLinkId;
 import org.miradi.objects.DiagramFactor;
 
 public class CreateDiagramFactorLinkParameter extends CreateObjectParameter
@@ -78,7 +77,7 @@ public class CreateDiagramFactorLinkParameter extends CreateObjectParameter
 	public String getFormatedDataString()
 	{
 		HashMap<String, Comparable> dataPairs = new HashMap<String, Comparable>();
-		dataPairs.put(FactorLinkId.class.getSimpleName(), factorLinkId);
+		dataPairs.put("FactorLinkId", factorLinkId);
 		dataPairs.put("FactorFromId", fromId);
 		dataPairs.put("FactorToID", toId);
 		return formatDataString(dataPairs);

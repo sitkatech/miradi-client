@@ -20,9 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objectpools;
 
 import org.miradi.ids.BaseId;
-import org.miradi.ids.FactorLinkId;
 import org.miradi.ids.IdAssigner;
-import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -42,7 +40,7 @@ public class FactorLinkPool extends PoolWithIdAssigner
 		put(linkage.getId(), linkage);
 	}
 	
-	public FactorLink find(FactorLinkId id)
+	public FactorLink find(BaseId id)
 	{
 		return (FactorLink)getRawObject(id);
 	}
@@ -67,18 +65,9 @@ public class FactorLinkPool extends PoolWithIdAssigner
 	}
 
 	
-	public FactorLinkId[] getFactorLinkIds()
-	{
-		BaseId[] rawIds = getIds();
-		FactorLinkId[] linkageIds = new FactorLinkId[rawIds.length];
-		System.arraycopy(rawIds, 0, linkageIds, 0, rawIds.length);
-		return linkageIds;
-	}
-	
 	public ORefList getFactorLinkRefs()
 	{
-		IdList factorLinkIds = new IdList(FactorLink.getObjectType(), getFactorLinkIds());
-		return new ORefList(FactorLink.getObjectType(), factorLinkIds);
+		return getORefList();
 	}
 	
 }

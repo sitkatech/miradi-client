@@ -32,7 +32,6 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.DiagramLinkId;
 import org.miradi.ids.FactorId;
-import org.miradi.ids.FactorLinkId;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
@@ -293,7 +292,7 @@ public class TestCommands extends MiradiTestCase
 		CommandCreateObject createModelLinkage = new CommandCreateObject(ObjectType.FACTOR_LINK, extraInfo);
 		project.executeCommand(createModelLinkage);
 		
-		FactorLinkId modelLinkageId = (FactorLinkId)createModelLinkage.getCreatedId();
+		BaseId modelLinkageId = createModelLinkage.getCreatedId();
 		ORef factorLinkRef = createModelLinkage.getObjectRef();
 		DiagramFactorId fromDiagramFactorId = from.getDiagramFactorId();
 		DiagramFactorId toDiagramFactorId = to.getDiagramFactorId();

@@ -39,7 +39,6 @@ import org.miradi.exceptions.NothingToUndoException;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.FactorId;
-import org.miradi.ids.FactorLinkId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.ids.IdList;
 import org.miradi.ids.IndicatorId;
@@ -697,8 +696,8 @@ public class TestProject extends MiradiTestCase
 		ORef refA = nodeA.getWrappedFactorRef();
 		ORef refB = nodeB.getWrappedFactorRef();
 		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(nodeA.getWrappedFactorRef(), nodeB.getWrappedFactorRef());
-		FactorLinkId createdId = (FactorLinkId)project.createObject(ObjectType.FACTOR_LINK, idAssigner.takeNextId(), parameter);
-		FactorLinkId linkageId = createdId;
+		BaseId createdId = project.createObject(ObjectType.FACTOR_LINK, idAssigner.takeNextId(), parameter);
+		BaseId linkageId = createdId;
 		FactorLinkPool linkagePool = project.getFactorLinkPool();
 		assertEquals("not in pool?", 1, linkagePool.size());
 		FactorLink cmLinkage = linkagePool.find(linkageId);
@@ -907,7 +906,7 @@ public class TestProject extends MiradiTestCase
 		DiagramFactor fromDiagramFactor = project.getTestingDiagramModel().getFactorCellByWrappedRef(fromFactorRef).getDiagramFactor();
 		DiagramFactor toDiagramFactor = project.getTestingDiagramModel().getFactorCellByWrappedRef(toFactorRef).getDiagramFactor();
 		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(fromDiagramFactor.getWrappedORef(), toDiagramFactor.getWrappedORef());
-		FactorLinkId createdId = (FactorLinkId)project.createObject(ObjectType.FACTOR_LINK, id, parameter);
+		BaseId createdId = project.createObject(ObjectType.FACTOR_LINK, id, parameter);
 		
 		CreateDiagramFactorLinkParameter extraInfo = new CreateDiagramFactorLinkParameter(createdId, fromDiagramFactor.getDiagramFactorId(), toDiagramFactor.getDiagramFactorId());
 		ORef diagramLinkRef = project.createObject(DiagramLink.getObjectType(), extraInfo);
