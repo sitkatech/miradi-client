@@ -46,8 +46,8 @@ public class CreateDiagramFactorLinkParameter extends CreateObjectParameter
 	public CreateDiagramFactorLinkParameter(FactorLinkId factorLinkIdToUse, DiagramFactorId fromIdToUse, DiagramFactorId toIdToUse)
 	{
 		factorLinkId = factorLinkIdToUse;
-		fromId = fromIdToUse;
-		toId = toIdToUse;
+		fromId = new ObjectId(fromIdToUse.asInt());
+		toId = new ObjectId(toIdToUse.asInt());
 	}
 	
 	public FactorLinkId getFactorLinkId()
@@ -86,6 +86,6 @@ public class CreateDiagramFactorLinkParameter extends CreateObjectParameter
 	}
 	
 	private FactorLinkId factorLinkId;
-	private DiagramFactorId fromId;
-	private DiagramFactorId toId;
+	private ObjectId fromId;
+	private ObjectId toId;
 }
