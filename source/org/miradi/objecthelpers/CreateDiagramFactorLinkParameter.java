@@ -39,11 +39,6 @@ public class CreateDiagramFactorLinkParameter extends CreateObjectParameter
 		toRef = toRefToUse;
 	}
 	
-	public CreateDiagramFactorLinkParameter(BaseId fromIdToUse, BaseId toIdToUse)
-	{
-		this(BaseId.INVALID, fromIdToUse, toIdToUse);
-	}
-	
 	public CreateDiagramFactorLinkParameter(BaseId factorLinkIdToUse, BaseId fromIdToUse, BaseId toIdToUse)
 	{
 		this(new ORef(FactorLink.getObjectType(), factorLinkIdToUse), new ORef(DiagramFactor.getObjectType(), fromIdToUse), new ORef(DiagramFactor.getObjectType(), toIdToUse));
