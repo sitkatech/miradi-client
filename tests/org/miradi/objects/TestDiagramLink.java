@@ -115,9 +115,9 @@ public class TestDiagramLink extends ObjectTestCase
 		assertEquals(linkId, linkage.getWrappedId());
 		
 		CreateDiagramFactorLinkParameter gotExtraInfo = (CreateDiagramFactorLinkParameter)linkage.getCreationExtraInfo();
-		assertEquals(extraInfoForTestIds.getFactorLinkId(), gotExtraInfo.getFactorLinkId());
-		assertEquals(extraInfoForTestIds.getFromFactorId(), gotExtraInfo.getFromFactorId());
-		assertEquals(extraInfoForTestIds.getToFactorId(), gotExtraInfo.getToFactorId());
+		assertEquals(extraInfoForTestIds.getFactorLinkRef(), gotExtraInfo.getFactorLinkRef());
+		assertEquals(extraInfoForTestIds.getFromDiagramFactorRef(), gotExtraInfo.getFromDiagramFactorRef());
+		assertEquals(extraInfoForTestIds.getToDiagramFactorRef(), gotExtraInfo.getToDiagramFactorRef());
 	}
 	
 	public void testLinkNodes() throws Exception
