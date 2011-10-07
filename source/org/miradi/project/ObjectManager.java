@@ -31,7 +31,6 @@ import org.miradi.diagram.ChainWalker;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.CreateFactorLinkParameter;
 import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -347,34 +346,13 @@ public class ObjectManager
 	public BaseId createObject(int objectType, BaseId objectId, CreateObjectParameter extraInfo) throws Exception
 	{
 		BaseId createdId = BaseId.INVALID;
-		switch(objectType)
-		{
-			case ObjectType.FACTOR_LINK:
-			{
-				CreateFactorLinkParameter parameter = (CreateFactorLinkParameter)extraInfo;
-				BaseId realId = getProject().obtainRealLinkageId(objectId);
-				FactorLink cmLinkage = new FactorLink(this, realId, parameter.getFromRef(), parameter.getToRef());
-				getDatabase().writeObject(cmLinkage);
-				EAMObjectPool pool = getPool(objectType);
-				pool.put(realId, cmLinkage);
-				getDatabase().writeObjectManifest(getFileName(), objectType, createManifest(pool));
-				createdId = cmLinkage.getId();
-				break;
-			}
-			default:
-			{
-				EAMNormalObjectPool pool = (EAMNormalObjectPool)getPool(objectType);
-				if(pool == null)
-					throw new RuntimeException("No pool for " + objectType);
-				BaseObject created = pool.createObject(this, objectId, extraInfo);
-				getDatabase().writeObject(created);
-				getDatabase().writeObjectManifest(getFileName(), objectType, createManifest(pool));
-				createdId = created.getId();
-				break;
-			}
-
-		}
-
+		EAMNormalObjectPool pool = (EAMNormalObjectPool)getPool(objectType);
+		if(pool == null)
+			throw new RuntimeException("No pool for " + objectType);
+		BaseObject created = pool.createObject(this, objectId, extraInfo);
+		getDatabase().writeObject(created);
+		getDatabase().writeObjectManifest(getFileName(), objectType, createManifest(pool));
+		createdId = created.getId();
 		return createdId;
 	}
 

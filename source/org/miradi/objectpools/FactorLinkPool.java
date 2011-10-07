@@ -22,17 +22,21 @@ package org.miradi.objectpools;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.CreateFactorLinkParameter;
+import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
+import org.miradi.project.ObjectManager;
 
-public class FactorLinkPool extends PoolWithIdAssigner
+public class FactorLinkPool extends EAMNormalObjectPool
 {
 	public FactorLinkPool(IdAssigner idAssignerToUse)
 	{
-		super(ObjectType.FACTOR_LINK, idAssignerToUse);
+		super(idAssignerToUse, ObjectType.FACTOR_LINK);
 	}
 	
 	public void put(FactorLink linkage) throws Exception
@@ -68,6 +72,15 @@ public class FactorLinkPool extends PoolWithIdAssigner
 	public ORefList getFactorLinkRefs()
 	{
 		return getORefList();
+	}
+
+	@Override
+	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo) throws Exception
+	{
+		CreateFactorLinkParameter parameter = (CreateFactorLinkParameter)extraInfo;
+		BaseId realId = objectManager.getProject().obtainRealLinkageId(actualId);
+		FactorLink cmLinkage = new FactorLink(objectManager, realId, parameter.getFromRef(), parameter.getToRef());
+		return cmLinkage;
 	}
 	
 }
