@@ -21,46 +21,45 @@ package org.miradi.objecthelpers;
 
 import java.util.HashMap;
 
-import org.miradi.ids.DiagramFactorId;
+import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorLinkId;
-import org.miradi.ids.ObjectId;
 import org.miradi.objects.DiagramFactor;
 
 public class CreateDiagramFactorLinkParameter extends CreateObjectParameter
 {
 	public CreateDiagramFactorLinkParameter(ORef fromRefToUse, ORef toRefToUse)
 	{
-		this(new FactorLinkId(FactorLinkId.INVALID.asInt()), (DiagramFactorId) fromRefToUse.getObjectId(), (DiagramFactorId) toRefToUse.getObjectId());
+		this(BaseId.INVALID, fromRefToUse.getObjectId(), toRefToUse.getObjectId());
 	}
 		
 	public CreateDiagramFactorLinkParameter(ORef factorLinkRef, ORef fromRefToUse, ORef toRefToUse)
 	{
-		this((FactorLinkId) factorLinkRef.getObjectId(), (DiagramFactorId)fromRefToUse.getObjectId(), (DiagramFactorId)toRefToUse.getObjectId());
+		this(factorLinkRef.getObjectId(), fromRefToUse.getObjectId(), toRefToUse.getObjectId());
 	}
 	
-	public CreateDiagramFactorLinkParameter(DiagramFactorId fromIdToUse, DiagramFactorId toIdToUse)
+	public CreateDiagramFactorLinkParameter(BaseId fromIdToUse, BaseId toIdToUse)
 	{
-		this(new FactorLinkId(FactorLinkId.INVALID.asInt()), fromIdToUse, toIdToUse);
+		this(BaseId.INVALID, fromIdToUse, toIdToUse);
 	}
 	
-	public CreateDiagramFactorLinkParameter(FactorLinkId factorLinkIdToUse, DiagramFactorId fromIdToUse, DiagramFactorId toIdToUse)
+	public CreateDiagramFactorLinkParameter(BaseId factorLinkIdToUse, BaseId fromIdToUse, BaseId toIdToUse)
 	{
 		factorLinkId = factorLinkIdToUse;
-		fromId = new ObjectId(fromIdToUse.asInt());
-		toId = new ObjectId(toIdToUse.asInt());
+		fromId = fromIdToUse;
+		toId = toIdToUse;
 	}
 	
-	public FactorLinkId getFactorLinkId()
+	public BaseId getFactorLinkId()
 	{
 		return factorLinkId;
 	}
 	
-	public ObjectId getFromFactorId()
+	public BaseId getFromFactorId()
 	{
 		return fromId;
 	}
 	
-	public ObjectId getToFactorId()
+	public BaseId getToFactorId()
 	{
 		return toId;
 	}
@@ -85,7 +84,7 @@ public class CreateDiagramFactorLinkParameter extends CreateObjectParameter
 		return formatDataString(dataPairs);
 	}
 	
-	private FactorLinkId factorLinkId;
-	private ObjectId fromId;
-	private ObjectId toId;
+	private BaseId factorLinkId;
+	private BaseId fromId;
+	private BaseId toId;
 }
