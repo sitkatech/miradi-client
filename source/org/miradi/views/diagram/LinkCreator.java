@@ -30,7 +30,7 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramLinkId;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
+import org.miradi.objecthelpers.CreateDiagramLinkParameter;
 import org.miradi.objecthelpers.CreateFactorLinkParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -286,7 +286,7 @@ public class LinkCreator
 	
 	private void createDiagramLinkWithChildren(DiagramObject diagramObject, ORefList allLinkRefs, ORef fromDiagramFactorRef, ORef toDiagramFactorRef) throws Exception
 	{
-		CreateDiagramFactorLinkParameter extraInfoWithNoFactorLink = new CreateDiagramFactorLinkParameter(fromDiagramFactorRef, toDiagramFactorRef);
+		CreateDiagramLinkParameter extraInfoWithNoFactorLink = new CreateDiagramLinkParameter(fromDiagramFactorRef, toDiagramFactorRef);
 		ORef newGroupBoxDiagramLinkRef = createDiagramLink(diagramObject, extraInfoWithNoFactorLink);
 	
 		updateGroupBoxChildrenRefs(allLinkRefs, newGroupBoxDiagramLinkRef);
@@ -300,11 +300,11 @@ public class LinkCreator
 	
 	public ORef createGroupDiagramLink(DiagramObject diagramObject, ORef fromDiagramFactorRef, ORef toDiagramFactorRef) throws CommandFailedException, ParseException
 	{
-		CreateDiagramFactorLinkParameter extraInfo = createDiagramFactorLinkParameter(fromDiagramFactorRef, toDiagramFactorRef);
+		CreateDiagramLinkParameter extraInfo = createDiagramFactorLinkParameter(fromDiagramFactorRef, toDiagramFactorRef);
 		return createDiagramLink(diagramObject, extraInfo);
 	}
 	
-	public ORef createDiagramLink(DiagramObject diagramObject, CreateDiagramFactorLinkParameter diagramLinkExtraInfo) throws CommandFailedException, ParseException
+	public ORef createDiagramLink(DiagramObject diagramObject, CreateDiagramLinkParameter diagramLinkExtraInfo) throws CommandFailedException, ParseException
 	{
 		CommandCreateObject createDiagramLinkCommand =  new CommandCreateObject(ObjectType.DIAGRAM_LINK, diagramLinkExtraInfo);
 		project.executeCommand(createDiagramLinkCommand);
@@ -318,16 +318,16 @@ public class LinkCreator
 		return createDiagramLinkCommand.getObjectRef();
 	}
 
-	private CreateDiagramFactorLinkParameter createDiagramFactorLinkParameter(ORef fromDiagramFactorRef, ORef toDiagramFactorRef)
+	private CreateDiagramLinkParameter createDiagramFactorLinkParameter(ORef fromDiagramFactorRef, ORef toDiagramFactorRef)
 	{
-		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = new CreateDiagramFactorLinkParameter(fromDiagramFactorRef, toDiagramFactorRef);
+		CreateDiagramLinkParameter diagramLinkExtraInfo = new CreateDiagramLinkParameter(fromDiagramFactorRef, toDiagramFactorRef);
 		
 		return diagramLinkExtraInfo;
 	}
 
-	private CreateDiagramFactorLinkParameter createDiagramFactorLinkParameter(ORef fromDiagramFactorRef, ORef toDiagramFactorRef, ORef factorlLinkRef)
+	private CreateDiagramLinkParameter createDiagramFactorLinkParameter(ORef fromDiagramFactorRef, ORef toDiagramFactorRef, ORef factorlLinkRef)
 	{
-		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = new CreateDiagramFactorLinkParameter(factorlLinkRef, fromDiagramFactorRef, toDiagramFactorRef);
+		CreateDiagramLinkParameter diagramLinkExtraInfo = new CreateDiagramLinkParameter(factorlLinkRef, fromDiagramFactorRef, toDiagramFactorRef);
 		
 		return diagramLinkExtraInfo;
 	}

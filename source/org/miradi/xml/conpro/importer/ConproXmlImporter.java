@@ -48,7 +48,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.BooleanData;
-import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
+import org.miradi.objecthelpers.CreateDiagramLinkParameter;
 import org.miradi.objecthelpers.CreateDiagramFactorParameter;
 import org.miradi.objecthelpers.CreateFactorLinkParameter;
 import org.miradi.objecthelpers.CreateThreatStressRatingParameter;
@@ -1184,7 +1184,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		ORef fromDiagramFactorRef = wrappedToDiagramMap.get(fromRef);
 		ORef toDiagramFactorRef = wrappedToDiagramMap.get(toRef);
 			
-		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = new CreateDiagramFactorLinkParameter(createdFactorLinkRef, fromDiagramFactorRef, toDiagramFactorRef);
+		CreateDiagramLinkParameter diagramLinkExtraInfo = new CreateDiagramLinkParameter(createdFactorLinkRef, fromDiagramFactorRef, toDiagramFactorRef);
 		ORef diagramLinkRef = getProject().createObject(DiagramLink.getObjectType(), diagramLinkExtraInfo);
 		wrappedToDiagramMap.put(createdFactorLinkRef, diagramLinkRef);
 		appendRefToDiagramObject(DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLinkRef);

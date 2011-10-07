@@ -54,7 +54,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramLinkId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
+import org.miradi.objecthelpers.CreateDiagramLinkParameter;
 import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -239,7 +239,7 @@ abstract public class DiagramModel extends DefaultGraphModel
 
     public DiagramLink addLinkToDiagram(DiagramLink diagramFactorLink) throws Exception
     {
-    	CreateDiagramFactorLinkParameter extraInfo = (CreateDiagramFactorLinkParameter) diagramFactorLink.getCreationExtraInfo();
+    	CreateDiagramLinkParameter extraInfo = (CreateDiagramLinkParameter) diagramFactorLink.getCreationExtraInfo();
 		FactorCell from = rawGetFactorCellByRef(extraInfo.getFromDiagramFactorRef());
 		if(from == null)
 			EAM.logError("Missing from, DFL=" + diagramFactorLink.getId() + ", From=" + extraInfo.getFromDiagramFactorRef());
