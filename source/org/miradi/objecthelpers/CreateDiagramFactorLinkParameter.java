@@ -44,29 +44,19 @@ public class CreateDiagramFactorLinkParameter extends CreateObjectParameter
 		this(new ORef(FactorLink.getObjectType(), factorLinkIdToUse), new ORef(DiagramFactor.getObjectType(), fromIdToUse), new ORef(DiagramFactor.getObjectType(), toIdToUse));
 	}
 	
-	public BaseId getFactorLinkId()
+	public ORef getFactorLinkRef()
 	{
-		return factorLinkRef.getObjectId();
-	}
-	
-	public BaseId getFromFactorId()
-	{
-		return fromRef.getObjectId();
-	}
-	
-	public BaseId getToFactorId()
-	{
-		return toRef.getObjectId();
+		return factorLinkRef;
 	}
 	
 	public ORef getFromDiagramFactorRef()
 	{
-		return new ORef(DiagramFactor.getObjectType(), getFromFactorId());
+		return fromRef;
 	}
 	
 	public ORef getToDiagramFactorRef()
 	{
-		return new ORef(DiagramFactor.getObjectType(), getToFactorId());
+		return toRef;
 	}
 	
 	@Override

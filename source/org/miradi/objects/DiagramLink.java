@@ -53,9 +53,9 @@ public class DiagramLink extends BaseObject
 	{
 		super(objectManager, new DiagramLinkId(idToUse.asInt()));
 		
-		setData(TAG_WRAPPED_ID, extraInfo.getFactorLinkId().toString());
-		setData(TAG_FROM_DIAGRAM_FACTOR_ID, extraInfo.getFromFactorId().toString());
-		setData(TAG_TO_DIAGRAM_FACTOR_ID, extraInfo.getToFactorId().toString());
+		setData(TAG_WRAPPED_ID, extraInfo.getFactorLinkRef().getObjectId().toString());
+		setData(TAG_FROM_DIAGRAM_FACTOR_ID, extraInfo.getFromDiagramFactorRef().getObjectId().toString());
+		setData(TAG_TO_DIAGRAM_FACTOR_ID, extraInfo.getToDiagramFactorRef().getObjectId().toString());
 	}
 	
 	public DiagramLink(ObjectManager objectManager, int idToUse, EnhancedJsonObject json) throws Exception
