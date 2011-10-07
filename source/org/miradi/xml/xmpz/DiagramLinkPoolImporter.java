@@ -22,8 +22,8 @@ package org.miradi.xml.xmpz;
 
 import java.awt.Point;
 
+import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
-import org.miradi.ids.FactorLinkId;
 import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.miradi.objecthelpers.CreateFactorLinkParameter;
 import org.miradi.objecthelpers.CreateObjectParameter;
@@ -94,7 +94,7 @@ public class DiagramLinkPoolImporter extends AbstractBaseObjectPoolImporter
 		ORef toDiagramFactorRef = new ORef(DiagramFactor.getObjectType(), toId);
 		DiagramFactor fromDiagramFactor = DiagramFactor.find(getProject(), fromDiagramFactorRef);
 		DiagramFactor toDiagramFactor = DiagramFactor.find(getProject(), toDiagramFactorRef);	
-		ORef factorLinkRef = new ORef(ObjectType.FAKE, new FactorLinkId(FactorLinkId.INVALID.asInt()));
+		ORef factorLinkRef = new ORef(ObjectType.FAKE, BaseId.INVALID);
 		if (!fromDiagramFactor.isGroupBoxFactor() && !toDiagramFactor.isGroupBoxFactor())
 		{
 			CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(fromDiagramFactor.getWrappedORef(), toDiagramFactor.getWrappedORef());

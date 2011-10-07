@@ -27,7 +27,6 @@ import org.martus.util.DirectoryUtils;
 import org.martus.util.UnicodeWriter;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
-import org.miradi.ids.FactorLinkId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
@@ -96,7 +95,7 @@ public class TestProjectServer extends TestCaseWithProject
 	{
 		ORef fromRef = new ORef(ObjectType.CAUSE, new FactorId(2));
 		ORef toRef = new ORef(ObjectType.CAUSE, new FactorId(3));
-		FactorLink original = new FactorLink(getObjectManager(), new FactorLinkId(1), fromRef, toRef);
+		FactorLink original = new FactorLink(getObjectManager(), new BaseId(1), fromRef, toRef);
 		storage.writeObject(original);
 		storage.deleteObject(original.getType(), original.getId());
 		assertEquals("didn't delete?", 0, storage.readObjectManifest(original.getType()).size());

@@ -26,7 +26,6 @@ import java.util.Vector;
 import org.martus.util.DirectoryUtils;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
-import org.miradi.ids.FactorLinkId;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.main.MiradiTestCase;
@@ -79,7 +78,7 @@ public class TestBuildXMLReportDocument extends MiradiTestCase
 //			processObject(project, new Cause(new FactorId(BASE_INT)));
 			ORef toRef = new ORef(ObjectType.CAUSE, new FactorId( BASE_INT));
 			ORef fromRef = new ORef(ObjectType.CAUSE, new FactorId( BASE_INT));
-			processObject(project, new FactorLink(project.getObjectManager(), new FactorLinkId(BASE_INT), fromRef, toRef ));
+			processObject(project, new FactorLink(project.getObjectManager(), new BaseId(BASE_INT), fromRef, toRef ));
 //			processObject(project, new FundingSource(BaseId.INVALID));
 //*			processObject(project, new Goal(BaseId.INVALID));
 //*			processObject(project, new Indicator(new IndicatorId(BASE_INT)));
