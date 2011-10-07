@@ -57,12 +57,12 @@ public class CreateDiagramFactorLinkParameter extends CreateObjectParameter
 	
 	public ObjectId getFromFactorId()
 	{
-		return new ObjectId(fromId.asInt());
+		return fromId;
 	}
 	
 	public ObjectId getToFactorId()
 	{
-		return new ObjectId(toId.asInt());
+		return toId;
 	}
 	
 	public ORef getFromDiagramFactorRef()
