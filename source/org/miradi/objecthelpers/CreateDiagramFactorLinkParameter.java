@@ -23,17 +23,20 @@ import java.util.HashMap;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objects.DiagramFactor;
+import org.miradi.objects.FactorLink;
 
 public class CreateDiagramFactorLinkParameter extends CreateObjectParameter
 {
 	public CreateDiagramFactorLinkParameter(ORef fromRefToUse, ORef toRefToUse)
 	{
-		this(BaseId.INVALID, fromRefToUse.getObjectId(), toRefToUse.getObjectId());
+		this(ORef.createInvalidWithType(FactorLink.getObjectType()), fromRefToUse, toRefToUse);
 	}
 		
-	public CreateDiagramFactorLinkParameter(ORef factorLinkRef, ORef fromRefToUse, ORef toRefToUse)
+	public CreateDiagramFactorLinkParameter(ORef factorLinkRefToUse, ORef fromRefToUse, ORef toRefToUse)
 	{
-		this(factorLinkRef.getObjectId(), fromRefToUse.getObjectId(), toRefToUse.getObjectId());
+		factorLinkRef = factorLinkRefToUse;
+		fromRef = fromRefToUse;
+		toRef = toRefToUse;
 	}
 	
 	public CreateDiagramFactorLinkParameter(BaseId fromIdToUse, BaseId toIdToUse)
@@ -43,24 +46,22 @@ public class CreateDiagramFactorLinkParameter extends CreateObjectParameter
 	
 	public CreateDiagramFactorLinkParameter(BaseId factorLinkIdToUse, BaseId fromIdToUse, BaseId toIdToUse)
 	{
-		factorLinkId = factorLinkIdToUse;
-		fromId = fromIdToUse;
-		toId = toIdToUse;
+		this(new ORef(FactorLink.getObjectType(), factorLinkIdToUse), new ORef(DiagramFactor.getObjectType(), fromIdToUse), new ORef(DiagramFactor.getObjectType(), toIdToUse));
 	}
 	
 	public BaseId getFactorLinkId()
 	{
-		return factorLinkId;
+		return factorLinkRef.getObjectId();
 	}
 	
 	public BaseId getFromFactorId()
 	{
-		return fromId;
+		return fromRef.getObjectId();
 	}
 	
 	public BaseId getToFactorId()
 	{
-		return toId;
+		return toRef.getObjectId();
 	}
 	
 	public ORef getFromDiagramFactorRef()
@@ -77,13 +78,13 @@ public class CreateDiagramFactorLinkParameter extends CreateObjectParameter
 	public String getFormatedDataString()
 	{
 		HashMap<String, Comparable> dataPairs = new HashMap<String, Comparable>();
-		dataPairs.put("FactorLinkId", factorLinkId);
-		dataPairs.put("FactorFromId", fromId);
-		dataPairs.put("FactorToID", toId);
+		dataPairs.put("FactorLinkId", factorLinkRef.getObjectId());
+		dataPairs.put("FactorFromId", fromRef.getObjectId());
+		dataPairs.put("FactorToID", toRef.getObjectId());
 		return formatDataString(dataPairs);
 	}
 	
-	private BaseId factorLinkId;
-	private BaseId fromId;
-	private BaseId toId;
+	private ORef factorLinkRef;
+	private ORef fromRef;
+	private ORef toRef;
 }
