@@ -124,18 +124,6 @@ abstract public class BaseObject
 		return data.getPoint();
 	}
 	
-	public ORef getDataRef(String tag)
-	{
-		ORefData data = (ORefData)getField(tag);
-		return data.getRef();
-	}
-	
-	public ORefList getDataRefList(String tag)
-	{
-		ORefListData data = (ORefListData)getField(tag);
-		return data.getRefList();
-	}
-	
 	public IdList getIdListData(String fieldTag)
 	{
 		ObjectData field = getField(fieldTag);
