@@ -118,10 +118,22 @@ abstract public class BaseObject
 		return data.getDimension();
 	}
 	
+	public void setDimensionData(String tag, Dimension value)
+	{
+		DimensionData data = (DimensionData)getField(tag);
+		data.setDimension(value);
+	}
+	
 	public Point getPointData(String tag)
 	{
 		PointData data = (PointData)getField(tag);
 		return data.getPoint();
+	}
+	
+	public void setPointData(String tag, Point point)
+	{
+		PointData data = (PointData)getField(tag);
+		data.setPoint(point);
 	}
 	
 	public IdList getIdListData(String fieldTag)
@@ -152,6 +164,17 @@ abstract public class BaseObject
 			return new ORef(((BaseIdData)field).getRef());
 		
 		throw new RuntimeException("Attempted to get Ref data from non-Ref field " + fieldTag);
+	}
+	
+	public void setRefData(String fieldTag, ORef ref)
+	{
+		ObjectData field = getField(fieldTag);
+		if(field.isRefData())
+			((ORefData)field).set(ref);
+		else if(field.isBaseIdData())
+			((BaseIdData)field).setRef(ref);
+		else
+			throw new RuntimeException("Attempted to set Ref data on non-Ref field " + fieldTag);
 	}
 
 	public void loadFromJson(EnhancedJsonObject json) throws Exception

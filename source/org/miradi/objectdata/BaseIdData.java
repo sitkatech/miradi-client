@@ -74,6 +74,11 @@ public class BaseIdData extends ObjectData
 			id = new BaseId(Integer.parseInt(newValue));
 	}
 	
+	public void setRef(ORef ref)
+	{
+		id = ref.getObjectId();
+	}
+
 	@Override
 	public boolean equals(Object rawOther)
 	{
