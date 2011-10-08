@@ -106,19 +106,19 @@ abstract public class BaseObject
 		return getField(fieldTag).get();
 	}
 	
-	public String getDataString(String tag)
+	public String getStringData(String tag)
 	{
 		StringData data = (StringData)getField(tag);
 		return data.get();
 	}
 	
-	public Dimension getDataDimension(String tag)
+	public Dimension getDimensionData(String tag)
 	{
 		DimensionData data = (DimensionData)getField(tag);
 		return data.getDimension();
 	}
 	
-	public Point getDataPoint(String tag)
+	public Point getPointData(String tag)
 	{
 		PointData data = (PointData)getField(tag);
 		return data.getPoint();

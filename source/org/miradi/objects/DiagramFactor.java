@@ -152,12 +152,12 @@ public class DiagramFactor extends BaseObject
 
 	public Dimension getSize()
 	{
-		return getDataDimension(TAG_SIZE);
+		return getDimensionData(TAG_SIZE);
 	}
 	
 	public Point getLocation()
 	{
-		return getDataPoint(TAG_LOCATION);
+		return getPointData(TAG_LOCATION);
 	}
 	
 	public Rectangle getBounds()
@@ -167,22 +167,22 @@ public class DiagramFactor extends BaseObject
 	
 	public String getFontSize()
 	{
-		return getDataString(TAG_FONT_SIZE);
+		return getStringData(TAG_FONT_SIZE);
 	}
 	
 	public String getFontColor()
 	{
-		return getDataString(TAG_FOREGROUND_COLOR);
+		return getStringData(TAG_FOREGROUND_COLOR);
 	}
 	
 	public String getFontStyle()
 	{
-		return getDataString(TAG_FONT_STYLE);
+		return getStringData(TAG_FONT_STYLE);
 	}
 	
 	public String getBackgroundColor()
 	{
-		return getDataString(TAG_BACKGROUND_COLOR);
+		return getStringData(TAG_BACKGROUND_COLOR);
 	}
 	
 	public void setLocation(Point pointToUse)
@@ -313,7 +313,7 @@ public class DiagramFactor extends BaseObject
 	
 	public boolean isDefaultZOrder()
 	{
-		String zOrderCode = getDataString(TAG_TEXT_BOX_Z_ORDER_CODE);
+		String zOrderCode = getStringData(TAG_TEXT_BOX_Z_ORDER_CODE);
 		return zOrderCode.equals(TextBoxZOrderQuestion.DEFAULT_Z_ORDER);
 	}
 		
