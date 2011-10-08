@@ -57,7 +57,7 @@ public class DiagramFactor extends BaseObject
 		
 		clear();
 		setData(TAG_WRAPPED_REF, extraInfo.getFactorRef().toString());
-		size.setDimension(getDefaultSize());
+		setDimensionData(TAG_SIZE, getDefaultSize());
 	}
 	
 	public DiagramFactor(ObjectManager objectManager, int idToUse, EnhancedJsonObject json) throws Exception
@@ -65,7 +65,7 @@ public class DiagramFactor extends BaseObject
 		super(objectManager, new DiagramFactorId(idToUse), json);
 		
 		ORef wrappedRef = ORef.createFromString(json.getString(TAG_WRAPPED_REF));
-		underlyingObjectRef.set(wrappedRef);
+		setRefData(TAG_WRAPPED_REF, wrappedRef);
 	}
 	
 	@Override
@@ -187,12 +187,12 @@ public class DiagramFactor extends BaseObject
 	
 	public void setLocation(Point pointToUse)
 	{
-		location.setPoint(pointToUse);
+		setPointData(TAG_LOCATION, pointToUse);
 	}
 	
 	public void setSize(Dimension dimensionToUse)
 	{
-		size.setDimension(dimensionToUse);
+		setDimensionData(TAG_SIZE, dimensionToUse);
 	}
 	
 	public ORefList getGroupBoxChildrenRefs()
