@@ -147,7 +147,7 @@ public class DiagramFactor extends BaseObject
 	
 	public Factor getWrappedFactor()
 	{
-		return Factor.findFactor(objectManager, getWrappedORef());
+		return Factor.findFactor(getObjectManager(), getWrappedORef());
 	}
 
 	public Dimension getSize()
@@ -233,7 +233,7 @@ public class DiagramFactor extends BaseObject
 	@Override
 	public String getFullName()
 	{
-		Factor wrappedFactor = Factor.findFactor(objectManager, getWrappedORef());
+		Factor wrappedFactor = Factor.findFactor(getObjectManager(), getWrappedORef());
 		if(wrappedFactor == null)
 			return EAM.text("(Unknown)");
 		return wrappedFactor.getFullName();
