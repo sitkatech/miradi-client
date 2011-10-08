@@ -142,7 +142,7 @@ public class DiagramFactor extends BaseObject
 	
 	public ORef getWrappedORef()
 	{
-		return underlyingObjectRef.getRef();
+		return getDataRef(underlyingObjectRef);
 	}
 	
 	public Factor getWrappedFactor()
@@ -152,12 +152,12 @@ public class DiagramFactor extends BaseObject
 
 	public Dimension getSize()
 	{
-		return size.getDimension();
+		return getDataDimension(size);
 	}
 	
 	public Point getLocation()
 	{
-		return location.getPoint();
+		return getDataPoint(location);
 	}
 	
 	public Rectangle getBounds()
@@ -167,22 +167,22 @@ public class DiagramFactor extends BaseObject
 	
 	public String getFontSize()
 	{
-		return fontSize.get();
+		return getDataString(fontSize);
 	}
 	
 	public String getFontColor()
 	{
-		return fontColor.get();
+		return getDataString(fontColor);
 	}
 	
 	public String getFontStyle()
 	{
-		return fontStyle.get();
+		return getDataString(fontStyle);
 	}
 	
 	public String getBackgroundColor()
 	{
-		return backgroundColor.get();
+		return getDataString(backgroundColor);
 	}
 	
 	public void setLocation(Point pointToUse)
@@ -197,7 +197,7 @@ public class DiagramFactor extends BaseObject
 	
 	public ORefList getGroupBoxChildrenRefs()
 	{
-		return groupBoxChildrenRefs.getRefList();
+		return getDataRefList(groupBoxChildrenRefs);
 	}
 	
 	public ORefSet getGroupBoxChildrenSet()
@@ -313,7 +313,8 @@ public class DiagramFactor extends BaseObject
 	
 	public boolean isDefaultZOrder()
 	{
-		return textBoxZOrderCode.get().equals(TextBoxZOrderQuestion.DEFAULT_Z_ORDER);
+		String zOrderCode = getDataString(textBoxZOrderCode);
+		return zOrderCode.equals(TextBoxZOrderQuestion.DEFAULT_Z_ORDER);
 	}
 		
 	public static boolean is(ORef ref)
