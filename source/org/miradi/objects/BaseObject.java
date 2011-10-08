@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
+import java.awt.Dimension;
+import java.awt.Point;
 import java.text.ParseException;
 import java.util.Collections;
 import java.util.Date;
@@ -41,10 +43,12 @@ import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.BaseIdData;
+import org.miradi.objectdata.DimensionData;
 import org.miradi.objectdata.IdListData;
 import org.miradi.objectdata.ORefData;
 import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.ObjectData;
+import org.miradi.objectdata.PointData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.BaseObjectByNameSorter;
 import org.miradi.objecthelpers.CreateObjectParameter;
@@ -100,6 +104,31 @@ abstract public class BaseObject
 			throw new RuntimeException("Attempted to get data for bad field: " + fieldTag + " in object type: " + getClass().getSimpleName());
 
 		return getField(fieldTag).get();
+	}
+	
+	public String getDataString(StringData data)
+	{
+		return data.get();
+	}
+	
+	public Dimension getDataDimension(DimensionData data)
+	{
+		return data.getDimension();
+	}
+	
+	public Point getDataPoint(PointData data)
+	{
+		return data.getPoint();
+	}
+	
+	public ORef getDataRef(ORefData data)
+	{
+		return data.getRef();
+	}
+	
+	public ORefList getDataRefList(ORefListData data)
+	{
+		return data.getRefList();
 	}
 	
 	public IdList getIdListData(String fieldTag)
