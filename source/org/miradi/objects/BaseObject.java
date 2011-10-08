@@ -43,6 +43,7 @@ import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.BaseIdData;
+import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.DimensionData;
 import org.miradi.objectdata.IdListData;
 import org.miradi.objectdata.ORefData;
@@ -827,6 +828,31 @@ abstract public class BaseObject
 	protected ChoiceQuestion getQuestion(Class questionClass)
 	{
 		return getProject().getQuestion(questionClass);
+	}
+	
+	protected void createChoiceField(String tag,	Class questionClass)
+	{
+		addField(new ChoiceData(tag, getQuestion(questionClass)));
+	}
+
+	protected void createRefListField(String tag)
+	{
+		addField(new ORefListData(tag));
+	}
+
+	protected void createRefField(String tag)
+	{
+		addField(new ORefData(tag));
+	}
+
+	protected void createPointField(String tag)
+	{
+		addField(new PointData(tag));
+	}
+
+	protected void createDimensionField(String tag)
+	{
+		addField(new DimensionData(tag));
 	}
 	
 	protected void addField(ObjectData data)
