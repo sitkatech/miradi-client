@@ -348,25 +348,15 @@ public class DiagramFactor extends BaseObject
 	{
 		super.clear();
 
-		DimensionData size = new DimensionData(TAG_SIZE);
-		PointData location = new PointData(TAG_LOCATION);
-		ORefData underlyingObjectRef = new ORefData(TAG_WRAPPED_REF);
-		ChoiceData fontSize = new ChoiceData(TAG_FONT_SIZE, getQuestion(DiagramFactorFontSizeQuestion.class));
-		ChoiceData fontColor = new ChoiceData(TAG_FOREGROUND_COLOR, getQuestion(DiagramFactorFontColorQuestion.class));
-		ChoiceData fontStyle = new ChoiceData(TAG_FONT_STYLE, getQuestion(DiagramFactorFontStyleQuestion.class));
-		ORefListData groupBoxChildrenRefs = new ORefListData(TAG_GROUP_BOX_CHILDREN_REFS);
-		ChoiceData backgroundColor = new ChoiceData(TAG_BACKGROUND_COLOR, getQuestion(DiagramFactorBackgroundQuestion.class));
-		ChoiceData textBoxZOrderCode = new ChoiceData(TAG_TEXT_BOX_Z_ORDER_CODE, getQuestion(TextBoxZOrderQuestion.class));
-		
-		addField(TAG_SIZE, size);
-		addField(TAG_LOCATION, location);
-		addField(TAG_WRAPPED_REF, underlyingObjectRef);
-		addField(TAG_FONT_SIZE, fontSize);
-		addField(TAG_FOREGROUND_COLOR, fontColor);
-		addField(TAG_FONT_STYLE, fontStyle);
-		addField(TAG_GROUP_BOX_CHILDREN_REFS, groupBoxChildrenRefs);
-		addField(TAG_BACKGROUND_COLOR, backgroundColor);
-		addField(textBoxZOrderCode);
+		addField(TAG_SIZE, new DimensionData(TAG_SIZE));
+		addField(TAG_LOCATION, new PointData(TAG_LOCATION));
+		addField(TAG_WRAPPED_REF, new ORefData(TAG_WRAPPED_REF));
+		addField(TAG_FONT_SIZE, new ChoiceData(TAG_FONT_SIZE, getQuestion(DiagramFactorFontSizeQuestion.class)));
+		addField(TAG_FOREGROUND_COLOR, new ChoiceData(TAG_FOREGROUND_COLOR, getQuestion(DiagramFactorFontColorQuestion.class)));
+		addField(TAG_FONT_STYLE, new ChoiceData(TAG_FONT_STYLE, getQuestion(DiagramFactorFontStyleQuestion.class)));
+		addField(TAG_GROUP_BOX_CHILDREN_REFS, new ORefListData(TAG_GROUP_BOX_CHILDREN_REFS));
+		addField(TAG_BACKGROUND_COLOR, new ChoiceData(TAG_BACKGROUND_COLOR, getQuestion(DiagramFactorBackgroundQuestion.class)));
+		addField(new ChoiceData(TAG_TEXT_BOX_Z_ORDER_CODE, getQuestion(TextBoxZOrderQuestion.class)));
 	}
 	
 	public static final String TAG_LOCATION = "Location";
