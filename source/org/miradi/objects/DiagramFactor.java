@@ -72,7 +72,7 @@ public class DiagramFactor extends BaseObject
 	public EnhancedJsonObject toJson()
 	{
 		EnhancedJsonObject jsonObject = super.toJson();
-		jsonObject.put(TAG_WRAPPED_REF, underlyingObjectRef.toString());
+		jsonObject.put(TAG_WRAPPED_REF, getWrappedORef().toString());
 		
 		return jsonObject;
 	}
@@ -284,16 +284,16 @@ public class DiagramFactor extends BaseObject
 		CommandSetObjectData setLocationCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, newlyCreatedId, DiagramFactor.TAG_LOCATION, locationAsString);
 		commands.add(setLocationCommand);
 		
-		CommandSetObjectData setFontSizeCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, newlyCreatedId, DiagramFactor.TAG_FONT_SIZE, fontSize.get());
+		CommandSetObjectData setFontSizeCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, newlyCreatedId, DiagramFactor.TAG_FONT_SIZE, getStringData(TAG_FONT_SIZE));
 		commands.add(setFontSizeCommand);
 		
-		CommandSetObjectData setFontColorCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, newlyCreatedId, DiagramFactor.TAG_FOREGROUND_COLOR, fontColor.get());
+		CommandSetObjectData setFontColorCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, newlyCreatedId, DiagramFactor.TAG_FOREGROUND_COLOR, getStringData(TAG_FOREGROUND_COLOR));
 		commands.add(setFontColorCommand);
 		
-		CommandSetObjectData setFontStyleCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, newlyCreatedId, DiagramFactor.TAG_FONT_STYLE, fontStyle.get());
+		CommandSetObjectData setFontStyleCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, newlyCreatedId, DiagramFactor.TAG_FONT_STYLE, getStringData(TAG_FONT_STYLE));
 		commands.add(setFontStyleCommand);
 		
-		CommandSetObjectData setBackgroundColorCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, newlyCreatedId, DiagramFactor.TAG_BACKGROUND_COLOR, backgroundColor.get());
+		CommandSetObjectData setBackgroundColorCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, newlyCreatedId, DiagramFactor.TAG_BACKGROUND_COLOR, getStringData(TAG_BACKGROUND_COLOR));
 		commands.add(setBackgroundColorCommand);
 		
 		return commands.toArray(new Command[0]);
@@ -348,15 +348,15 @@ public class DiagramFactor extends BaseObject
 	{
 		super.clear();
 
-		size = new DimensionData(TAG_SIZE);
-		location = new PointData(TAG_LOCATION);
-		underlyingObjectRef = new ORefData(TAG_WRAPPED_REF);
-		fontSize = new ChoiceData(TAG_FONT_SIZE, getQuestion(DiagramFactorFontSizeQuestion.class));
-		fontColor = new ChoiceData(TAG_FOREGROUND_COLOR, getQuestion(DiagramFactorFontColorQuestion.class));
-		fontStyle = new ChoiceData(TAG_FONT_STYLE, getQuestion(DiagramFactorFontStyleQuestion.class));
-		groupBoxChildrenRefs = new ORefListData(TAG_GROUP_BOX_CHILDREN_REFS);
-		backgroundColor = new ChoiceData(TAG_BACKGROUND_COLOR, getQuestion(DiagramFactorBackgroundQuestion.class));
-		textBoxZOrderCode = new ChoiceData(TAG_TEXT_BOX_Z_ORDER_CODE, getQuestion(TextBoxZOrderQuestion.class));
+		DimensionData size = new DimensionData(TAG_SIZE);
+		PointData location = new PointData(TAG_LOCATION);
+		ORefData underlyingObjectRef = new ORefData(TAG_WRAPPED_REF);
+		ChoiceData fontSize = new ChoiceData(TAG_FONT_SIZE, getQuestion(DiagramFactorFontSizeQuestion.class));
+		ChoiceData fontColor = new ChoiceData(TAG_FOREGROUND_COLOR, getQuestion(DiagramFactorFontColorQuestion.class));
+		ChoiceData fontStyle = new ChoiceData(TAG_FONT_STYLE, getQuestion(DiagramFactorFontStyleQuestion.class));
+		ORefListData groupBoxChildrenRefs = new ORefListData(TAG_GROUP_BOX_CHILDREN_REFS);
+		ChoiceData backgroundColor = new ChoiceData(TAG_BACKGROUND_COLOR, getQuestion(DiagramFactorBackgroundQuestion.class));
+		ChoiceData textBoxZOrderCode = new ChoiceData(TAG_TEXT_BOX_Z_ORDER_CODE, getQuestion(TextBoxZOrderQuestion.class));
 		
 		addField(TAG_SIZE, size);
 		addField(TAG_LOCATION, location);
@@ -383,14 +383,4 @@ public class DiagramFactor extends BaseObject
 	
 	public static final Dimension DEFAULT_STRESS_SIZE = new Dimension(60, 30);
 	public static final Dimension DEFAULT_ACTIVITY_SIZE = new Dimension(60, 30);
-
-	private DimensionData size;
-	private PointData location;
-	private ORefData underlyingObjectRef;
-	private ChoiceData fontSize;
-	private ChoiceData fontColor;
-	private ChoiceData fontStyle;
-	private ORefListData groupBoxChildrenRefs;
-	private ChoiceData backgroundColor;
-	public ChoiceData textBoxZOrderCode;
 }
