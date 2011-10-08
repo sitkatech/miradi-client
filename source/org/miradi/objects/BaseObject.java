@@ -106,28 +106,33 @@ abstract public class BaseObject
 		return getField(fieldTag).get();
 	}
 	
-	public String getDataString(StringData data)
+	public String getDataString(String tag)
 	{
+		StringData data = (StringData)getField(tag);
 		return data.get();
 	}
 	
-	public Dimension getDataDimension(DimensionData data)
+	public Dimension getDataDimension(String tag)
 	{
+		DimensionData data = (DimensionData)getField(tag);
 		return data.getDimension();
 	}
 	
-	public Point getDataPoint(PointData data)
+	public Point getDataPoint(String tag)
 	{
+		PointData data = (PointData)getField(tag);
 		return data.getPoint();
 	}
 	
-	public ORef getDataRef(ORefData data)
+	public ORef getDataRef(String tag)
 	{
+		ORefData data = (ORefData)getField(tag);
 		return data.getRef();
 	}
 	
-	public ORefList getDataRefList(ORefListData data)
+	public ORefList getDataRefList(String tag)
 	{
+		ORefListData data = (ORefListData)getField(tag);
 		return data.getRefList();
 	}
 	

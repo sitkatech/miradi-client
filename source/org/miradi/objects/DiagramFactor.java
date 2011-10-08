@@ -142,7 +142,7 @@ public class DiagramFactor extends BaseObject
 	
 	public ORef getWrappedORef()
 	{
-		return getDataRef(underlyingObjectRef);
+		return getDataRef(TAG_WRAPPED_REF);
 	}
 	
 	public Factor getWrappedFactor()
@@ -152,12 +152,12 @@ public class DiagramFactor extends BaseObject
 
 	public Dimension getSize()
 	{
-		return getDataDimension(size);
+		return getDataDimension(TAG_SIZE);
 	}
 	
 	public Point getLocation()
 	{
-		return getDataPoint(location);
+		return getDataPoint(TAG_LOCATION);
 	}
 	
 	public Rectangle getBounds()
@@ -167,22 +167,22 @@ public class DiagramFactor extends BaseObject
 	
 	public String getFontSize()
 	{
-		return getDataString(fontSize);
+		return getDataString(TAG_FONT_SIZE);
 	}
 	
 	public String getFontColor()
 	{
-		return getDataString(fontColor);
+		return getDataString(TAG_FOREGROUND_COLOR);
 	}
 	
 	public String getFontStyle()
 	{
-		return getDataString(fontStyle);
+		return getDataString(TAG_FONT_STYLE);
 	}
 	
 	public String getBackgroundColor()
 	{
-		return getDataString(backgroundColor);
+		return getDataString(TAG_BACKGROUND_COLOR);
 	}
 	
 	public void setLocation(Point pointToUse)
@@ -197,7 +197,7 @@ public class DiagramFactor extends BaseObject
 	
 	public ORefList getGroupBoxChildrenRefs()
 	{
-		return getDataRefList(groupBoxChildrenRefs);
+		return getDataRefList(TAG_GROUP_BOX_CHILDREN_REFS);
 	}
 	
 	public ORefSet getGroupBoxChildrenSet()
@@ -313,7 +313,7 @@ public class DiagramFactor extends BaseObject
 	
 	public boolean isDefaultZOrder()
 	{
-		String zOrderCode = getDataString(textBoxZOrderCode);
+		String zOrderCode = getDataString(TAG_TEXT_BOX_Z_ORDER_CODE);
 		return zOrderCode.equals(TextBoxZOrderQuestion.DEFAULT_Z_ORDER);
 	}
 		
