@@ -142,7 +142,7 @@ public class DiagramFactor extends BaseObject
 	
 	public ORef getWrappedORef()
 	{
-		return getDataRef(TAG_WRAPPED_REF);
+		return getRefData(TAG_WRAPPED_REF);
 	}
 	
 	public Factor getWrappedFactor()
@@ -197,7 +197,7 @@ public class DiagramFactor extends BaseObject
 	
 	public ORefList getGroupBoxChildrenRefs()
 	{
-		return getDataRefList(TAG_GROUP_BOX_CHILDREN_REFS);
+		return getRefListData(TAG_GROUP_BOX_CHILDREN_REFS);
 	}
 	
 	public ORefSet getGroupBoxChildrenSet()
