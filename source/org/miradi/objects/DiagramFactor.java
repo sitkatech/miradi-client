@@ -348,14 +348,14 @@ public class DiagramFactor extends BaseObject
 	{
 		super.clear();
 
-		addField(TAG_SIZE, new DimensionData(TAG_SIZE));
-		addField(TAG_LOCATION, new PointData(TAG_LOCATION));
-		addField(TAG_WRAPPED_REF, new ORefData(TAG_WRAPPED_REF));
-		addField(TAG_FONT_SIZE, new ChoiceData(TAG_FONT_SIZE, getQuestion(DiagramFactorFontSizeQuestion.class)));
-		addField(TAG_FOREGROUND_COLOR, new ChoiceData(TAG_FOREGROUND_COLOR, getQuestion(DiagramFactorFontColorQuestion.class)));
-		addField(TAG_FONT_STYLE, new ChoiceData(TAG_FONT_STYLE, getQuestion(DiagramFactorFontStyleQuestion.class)));
-		addField(TAG_GROUP_BOX_CHILDREN_REFS, new ORefListData(TAG_GROUP_BOX_CHILDREN_REFS));
-		addField(TAG_BACKGROUND_COLOR, new ChoiceData(TAG_BACKGROUND_COLOR, getQuestion(DiagramFactorBackgroundQuestion.class)));
+		addField(new DimensionData(TAG_SIZE));
+		addField(new PointData(TAG_LOCATION));
+		addField(new ORefData(TAG_WRAPPED_REF));
+		addField(new ChoiceData(TAG_FONT_SIZE, getQuestion(DiagramFactorFontSizeQuestion.class)));
+		addField(new ChoiceData(TAG_FOREGROUND_COLOR, getQuestion(DiagramFactorFontColorQuestion.class)));
+		addField(new ChoiceData(TAG_FONT_STYLE, getQuestion(DiagramFactorFontStyleQuestion.class)));
+		addField(new ORefListData(TAG_GROUP_BOX_CHILDREN_REFS));
+		addField(new ChoiceData(TAG_BACKGROUND_COLOR, getQuestion(DiagramFactorBackgroundQuestion.class)));
 		addField(new ChoiceData(TAG_TEXT_BOX_Z_ORDER_CODE, getQuestion(TextBoxZOrderQuestion.class)));
 	}
 	
