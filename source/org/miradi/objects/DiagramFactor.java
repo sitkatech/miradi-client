@@ -29,11 +29,6 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.FactorId;
 import org.miradi.main.EAM;
-import org.miradi.objectdata.ChoiceData;
-import org.miradi.objectdata.DimensionData;
-import org.miradi.objectdata.ORefData;
-import org.miradi.objectdata.ORefListData;
-import org.miradi.objectdata.PointData;
 import org.miradi.objecthelpers.CreateDiagramFactorParameter;
 import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ORef;
@@ -348,17 +343,17 @@ public class DiagramFactor extends BaseObject
 	{
 		super.clear();
 
-		addField(new DimensionData(TAG_SIZE));
-		addField(new PointData(TAG_LOCATION));
-		addField(new ORefData(TAG_WRAPPED_REF));
-		addField(new ChoiceData(TAG_FONT_SIZE, getQuestion(DiagramFactorFontSizeQuestion.class)));
-		addField(new ChoiceData(TAG_FOREGROUND_COLOR, getQuestion(DiagramFactorFontColorQuestion.class)));
-		addField(new ChoiceData(TAG_FONT_STYLE, getQuestion(DiagramFactorFontStyleQuestion.class)));
-		addField(new ORefListData(TAG_GROUP_BOX_CHILDREN_REFS));
-		addField(new ChoiceData(TAG_BACKGROUND_COLOR, getQuestion(DiagramFactorBackgroundQuestion.class)));
-		addField(new ChoiceData(TAG_TEXT_BOX_Z_ORDER_CODE, getQuestion(TextBoxZOrderQuestion.class)));
+		createDimensionField(TAG_SIZE);
+		createPointField(TAG_LOCATION);
+		createRefField(TAG_WRAPPED_REF);
+		createChoiceField(TAG_FONT_SIZE, DiagramFactorFontSizeQuestion.class);
+		createChoiceField(TAG_FOREGROUND_COLOR, DiagramFactorFontColorQuestion.class);
+		createChoiceField(TAG_FONT_STYLE, DiagramFactorFontStyleQuestion.class);
+		createRefListField(TAG_GROUP_BOX_CHILDREN_REFS);
+		createChoiceField(TAG_BACKGROUND_COLOR, DiagramFactorBackgroundQuestion.class);
+		createChoiceField(TAG_TEXT_BOX_Z_ORDER_CODE, TextBoxZOrderQuestion.class);
 	}
-	
+
 	public static final String TAG_LOCATION = "Location";
 	public static final String TAG_SIZE = "Size";
 	public static final String TAG_WRAPPED_REF = "WrappedFactorRef";
