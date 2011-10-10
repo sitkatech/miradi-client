@@ -61,11 +61,16 @@ abstract public class AbstractBaseObjectPoolImporter extends AbstractXmpzObjectI
 			Node node = nodes.item(index);
 			String intIdAsString = getImporter().getAttributeValue(node, XmpzXmlConstants.ID);
 			ORef ref = getProject().createObjectAndReturnRef(getObjectTypeToImport(), new BaseId(intIdAsString), getExtraInfo(node));
+			postCreateFix(ref, node);
 			
 			importFields(node, ref);
 		}
 	}
 	
+	protected void postCreateFix(ORef ref, Node node) throws Exception
+	{
+	}
+
 	protected CreateObjectParameter getExtraInfo(Node node) throws Exception
 	{
 		return null;
