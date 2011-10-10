@@ -323,11 +323,8 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 			// behaved differently. SEE ALSO DiagramView.getPrintableComponent()
 			diagramComponent.clearSelection();
 
-			System.out.println("DiagramSplitPane.showCard Before validation:  " + diagramComponent.getBounds());
 			diagramComponent.forceRepaint();
-			System.out.println("DiagramSplitPane.showCard Between validation: " + diagramComponent.getBounds());
 			validate();
-			System.out.println("DiagramSplitPane.showCard After validation:   " + diagramComponent.getBounds());
 			updateStatusBar();
 		}
 		catch (Exception e)
