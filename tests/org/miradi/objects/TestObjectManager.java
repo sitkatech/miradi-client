@@ -29,7 +29,6 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.ids.KeyEcologicalAttributeId;
 import org.miradi.main.MiradiTestCase;
-import org.miradi.objecthelpers.CreateFactorLinkParameter;
 import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -134,11 +133,7 @@ public class TestObjectManager extends MiradiTestCase
 		}
 		
 		verifyObjectLifecycle(ObjectType.CAUSE);
-		
-		DiagramFactor cause = project.createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
-		DiagramFactor target = project.createDiagramFactorAndAddToDiagram(ObjectType.TARGET);		
-		CreateFactorLinkParameter link = new CreateFactorLinkParameter(cause.getWrappedORef(), target.getWrappedORef());
-		verifyBasicObjectLifecycle(ObjectType.FACTOR_LINK, link);
+		verifyObjectLifecycle(ObjectType.FACTOR_LINK);
 	}
 
 	public void testPseudoTagTargetViability() throws Exception
@@ -288,15 +283,7 @@ public class TestObjectManager extends MiradiTestCase
 	
 	private void verifyGetPool(int type) throws Exception
 	{
-		CreateObjectParameter cop = null;
-		if(type == ObjectType.FACTOR_LINK)
-		{
-			DiagramFactor cause1 = project.createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
-			DiagramFactor cause2 = project.createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
-			cop = new CreateFactorLinkParameter(cause1.getWrappedORef(), cause2.getWrappedORef());			
-		}
-			
-		BaseId createdId = manager.createObject(type, BaseId.INVALID, cop);
+		BaseId createdId = manager.createObject(type, BaseId.INVALID, null);
 		EAMObjectPool pool = manager.getPool(type);
 		assertNotNull("Missing pool type " + type, pool);
 		BaseObject created = (BaseObject)pool.getRawObject(createdId);

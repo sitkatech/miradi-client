@@ -45,9 +45,8 @@ import org.miradi.ids.IndicatorId;
 import org.miradi.main.MiradiTestCase;
 import org.miradi.main.TransferableMiradiList;
 import org.miradi.objectdata.BooleanData;
-import org.miradi.objecthelpers.CreateDiagramLinkParameter;
 import org.miradi.objecthelpers.CreateDiagramFactorParameter;
-import org.miradi.objecthelpers.CreateFactorLinkParameter;
+import org.miradi.objecthelpers.CreateDiagramLinkParameter;
 import org.miradi.objecthelpers.DirectThreatSet;
 import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORef;
@@ -695,8 +694,7 @@ public class TestProject extends MiradiTestCase
 		FactorCell nodeB = project.createFactorCell(ObjectType.TARGET);
 		ORef refA = nodeA.getWrappedFactorRef();
 		ORef refB = nodeB.getWrappedFactorRef();
-		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(nodeA.getWrappedFactorRef(), nodeB.getWrappedFactorRef());
-		BaseId createdId = project.createObject(ObjectType.FACTOR_LINK, idAssigner.takeNextId(), parameter);
+		BaseId createdId = project.createObject(ObjectType.FACTOR_LINK, idAssigner.takeNextId(), null);
 		final ORef factorLinkRef = new ORef(ObjectType.FACTOR_LINK, createdId);
 		project.setObjectData(factorLinkRef, FactorLink.TAG_FROM_REF, nodeA.getWrappedFactorRef().toString());
 		project.setObjectData(factorLinkRef, FactorLink.TAG_TO_REF, nodeB.getWrappedFactorRef().toString());
@@ -787,16 +785,14 @@ public class TestProject extends MiradiTestCase
 		getProject().enableAsThreat(nodeDirectThreatA.getWrappedFactorRef());
 		
 		FactorCell target = project.createFactorCell(ObjectType.TARGET);
-		CreateFactorLinkParameter parameter1 = new CreateFactorLinkParameter(nodeDirectThreatA.getWrappedFactorRef(), target.getWrappedFactorRef());
-		BaseId factorLinkId = project.createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, parameter1);
+		BaseId factorLinkId = project.createObjectAndReturnId(ObjectType.FACTOR_LINK, BaseId.INVALID);
 		final ORef factorLinkRef = new ORef(ObjectType.FACTOR_LINK, factorLinkId);
 		project.setObjectData(factorLinkRef, FactorLink.TAG_FROM_REF, nodeDirectThreatA.getWrappedFactorRef().toString());
 		project.setObjectData(factorLinkRef, FactorLink.TAG_TO_REF, target.getWrappedFactorRef().toString());
 		
 		FactorCell nodeDirectThreatB = project.createFactorCell(ObjectType.CAUSE);
 		getProject().enableAsThreat(nodeDirectThreatB.getWrappedFactorRef());
-		CreateFactorLinkParameter parameter2 = new CreateFactorLinkParameter(nodeDirectThreatB.getWrappedFactorRef(), target.getWrappedFactorRef());
-		final BaseId factorLinkId2 = project.createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, parameter2);
+		final BaseId factorLinkId2 = project.createObjectAndReturnId(ObjectType.FACTOR_LINK, BaseId.INVALID);
 		final ORef factorLinkRef2 = new ORef(ObjectType.FACTOR_LINK, factorLinkId2);
 		project.setObjectData(factorLinkRef2, FactorLink.TAG_FROM_REF, nodeDirectThreatB.getWrappedFactorRef().toString());
 		project.setObjectData(factorLinkRef2, FactorLink.TAG_TO_REF, target.getWrappedFactorRef().toString());
@@ -915,8 +911,7 @@ public class TestProject extends MiradiTestCase
 	{
 		DiagramFactor fromDiagramFactor = project.getTestingDiagramModel().getFactorCellByWrappedRef(fromFactorRef).getDiagramFactor();
 		DiagramFactor toDiagramFactor = project.getTestingDiagramModel().getFactorCellByWrappedRef(toFactorRef).getDiagramFactor();
-		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(fromDiagramFactor.getWrappedORef(), toDiagramFactor.getWrappedORef());
-		BaseId createdId = project.createObject(ObjectType.FACTOR_LINK, id, parameter);
+		BaseId createdId = project.createObjectAndReturnId(ObjectType.FACTOR_LINK, id);
 		final ORef factorLinkRef = new ORef(ObjectType.FACTOR_LINK, createdId);
 		getProject().setObjectData(factorLinkRef, FactorLink.TAG_FROM_REF, fromDiagramFactor.getWrappedORef().toString());
 		getProject().setObjectData(factorLinkRef, FactorLink.TAG_TO_REF, toDiagramFactor.getWrappedORef().toString());

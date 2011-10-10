@@ -31,7 +31,6 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramLinkId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.CreateDiagramLinkParameter;
-import org.miradi.objecthelpers.CreateFactorLinkParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
@@ -278,8 +277,7 @@ public class LinkCreator
 
 	public ORef createFactorLink(ORef fromFactorRef, ORef toFactorRef) throws CommandFailedException
 	{
-		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(fromFactorRef, toFactorRef);
-		CommandCreateObject createFactorLink = new CommandCreateObject(ObjectType.FACTOR_LINK, extraInfo);
+		CommandCreateObject createFactorLink = new CommandCreateObject(ObjectType.FACTOR_LINK);
 		project.executeCommand(createFactorLink);
 		final ORef factorLinkRef = createFactorLink.getObjectRef();
 		project.executeCommand(new CommandSetObjectData(factorLinkRef, FactorLink.TAG_FROM_REF, fromFactorRef));

@@ -23,8 +23,6 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objectdata.ORefData;
-import org.miradi.objecthelpers.CreateFactorLinkParameter;
-import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
@@ -37,8 +35,6 @@ public class FactorLink extends BaseObject
 	{
 		super(objectManager, id);
 		clear();
-		setData(TAG_FROM_REF, fromFactorRef.toString());
-		setData(TAG_TO_REF, toFactorRef.toString());
 	}
 
 	public FactorLink(ObjectManager objectManager, int idAsInt, EnhancedJsonObject jsonObject) throws Exception 
@@ -82,14 +78,6 @@ public class FactorLink extends BaseObject
 	{
 		ORef rawRef = toRef.getRef();
 		return new ORef(rawRef.getObjectType(), new FactorId(rawRef.getObjectId().asInt()));
-	}
-	
-	@Override
-	public CreateObjectParameter getCreationExtraInfo()
-	{
-		Factor fromFactor = (Factor) objectManager.findObject(getFromFactorRef());
-		Factor toFactor = (Factor) objectManager.findObject(getToFactorRef());
-		return new CreateFactorLinkParameter(fromFactor.getRef(), toFactor.getRef());
 	}
 	
 	public ORef getFactorRef(int direction)

@@ -20,8 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
-import org.miradi.objecthelpers.CreateFactorLinkParameter;
-import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.utils.EnhancedJsonObject;
@@ -37,14 +35,11 @@ public class TestFactorLink extends ObjectTestCase
 	{
 		FactorLink linkageData = new FactorLink(getObjectManager(), id, nodeA.getWrappedORef(), nodeB.getWrappedORef());
 		assertEquals("Id not the same?", id, linkageData.getId());
-		assertEquals("From Node refs don't match", nodeA.getWrappedORef(), linkageData.getFromFactorRef());
-		assertEquals("To Node refs don't match", nodeB.getWrappedORef(), linkageData.getToFactorRef());
 	}
 
 	public void testFields() throws Exception
 	{
-		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(nodeA.getWrappedORef(), nodeB.getWrappedORef());
-		verifyFields(ObjectType.FACTOR_LINK, extraInfo);
+		verifyFields(ObjectType.FACTOR_LINK);
 	}
 	
 	@Override
@@ -74,18 +69,6 @@ public class TestFactorLink extends ObjectTestCase
 		assertEquals("wrong to?", original.getToFactorRef(), gotBack.getToFactorRef());
 	}
 	
-	public void testExtraInfo() throws Exception
-	{
-		BaseId diagramLinkId = project.createDiagramFactorLink(nodeA, nodeB);
-		DiagramLink diagramLink = (DiagramLink) project.findObject(new ORef(ObjectType.DIAGRAM_LINK, diagramLinkId));
-		FactorLink linkage = (FactorLink) project.findObject(new ORef(ObjectType.FACTOR_LINK, diagramLink.getWrappedId()));
-		
-		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(nodeA.getWrappedORef(), nodeB.getWrappedORef());
-		CreateFactorLinkParameter gotExtraInfo = (CreateFactorLinkParameter)linkage.getCreationExtraInfo();
-		assertEquals(extraInfo.getFromRef(), gotExtraInfo.getFromRef());
-		assertEquals(extraInfo.getToRef(), gotExtraInfo.getToRef());
-	}
-
 	static final BaseId id = new BaseId(1);
 	DiagramFactor nodeA;
 	DiagramFactor nodeB;

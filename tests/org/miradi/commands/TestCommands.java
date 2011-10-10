@@ -36,9 +36,8 @@ import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
 import org.miradi.main.MiradiTestCase;
-import org.miradi.objecthelpers.CreateDiagramLinkParameter;
 import org.miradi.objecthelpers.CreateDiagramFactorParameter;
-import org.miradi.objecthelpers.CreateFactorLinkParameter;
+import org.miradi.objecthelpers.CreateDiagramLinkParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
@@ -289,8 +288,7 @@ public class TestCommands extends MiradiTestCase
 		DiagramFactor from = insertNode(ObjectType.CAUSE);
 		DiagramFactor to = insertNode(ObjectType.TARGET);
 		
-		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(from.getWrappedORef(), to.getWrappedORef());
-		CommandCreateObject createModelLinkage = new CommandCreateObject(ObjectType.FACTOR_LINK, extraInfo);
+		CommandCreateObject createModelLinkage = new CommandCreateObject(ObjectType.FACTOR_LINK);
 		project.executeCommand(createModelLinkage);
 		
 		

@@ -33,7 +33,6 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.DiagramLinkId;
 import org.miradi.objecthelpers.CreateDiagramLinkParameter;
-import org.miradi.objecthelpers.CreateFactorLinkParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.FactorCommandHelper;
@@ -124,8 +123,7 @@ public class TestDiagramLink extends ObjectTestCase
 	{
 		DiagramFactor intervention = project.createDiagramFactorAndAddToDiagram(ObjectType.STRATEGY);
 		DiagramFactor cause = project.createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
-		CreateFactorLinkParameter extraInfoForLinkParameters = new CreateFactorLinkParameter(intervention.getWrappedORef(), cause.getWrappedORef());
-		CommandCreateObject createModelLinkage = new CommandCreateObject(ObjectType.FACTOR_LINK, extraInfoForLinkParameters);
+		CommandCreateObject createModelLinkage = new CommandCreateObject(ObjectType.FACTOR_LINK);
 		project.executeCommand(createModelLinkage);
 		BaseId modelLinkageId = createModelLinkage.getCreatedId();
 		

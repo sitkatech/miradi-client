@@ -121,6 +121,12 @@ public class TestUndoAndRedo extends MiradiTestCase
 		project.undo();
 		
 		verifyNodeNotPresent(fromFactorRef);
+		
+		//undo setting from for link
+		project.undo();
+		
+		//undo setting to for link
+		project.undo();
 
 		try
 		{
