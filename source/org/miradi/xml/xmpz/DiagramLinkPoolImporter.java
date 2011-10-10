@@ -99,6 +99,8 @@ public class DiagramLinkPoolImporter extends AbstractBaseObjectPoolImporter
 		{
 			CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(fromDiagramFactor.getWrappedORef(), toDiagramFactor.getWrappedORef());
 			factorLinkRef = getProject().createObjectAndReturnRef(FactorLink.getObjectType(), extraInfo);
+			getProject().setObjectData(factorLinkRef, FactorLink.TAG_FROM_REF, fromDiagramFactor.getWrappedORef().toString());
+			getProject().setObjectData(factorLinkRef, FactorLink.TAG_TO_REF, toDiagramFactor.getWrappedORef().toString());
 		}
 		
 		return new CreateDiagramLinkParameter(factorLinkRef, fromDiagramFactorRef, toDiagramFactorRef);

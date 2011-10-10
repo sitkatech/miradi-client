@@ -1864,7 +1864,11 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public ORef createFactorLink(ORef fromFactorRef, ORef toFactorRef) throws Exception
 	{
 		CreateFactorLinkParameter parameter = createFactorLinkExtraInfo(fromFactorRef, toFactorRef);
-		return createObject(ObjectType.FACTOR_LINK, parameter);
+		final ORef factorLinkRef = createObject(ObjectType.FACTOR_LINK, parameter);
+		setObjectData(factorLinkRef, FactorLink.TAG_FROM_REF, fromFactorRef.toString());
+		setObjectData(factorLinkRef, FactorLink.TAG_TO_REF, toFactorRef.toString());
+
+		return factorLinkRef;
 	}
 	
 	public ORef createDiagramLinkWithCommand(DiagramFactor from, DiagramFactor to) throws Exception
@@ -1930,7 +1934,11 @@ public class ProjectForTesting extends ProjectWithHelpers
 
 		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(threat.getWrappedORef(), target.getWrappedORef());
 		
-		return createObject(ObjectType.FACTOR_LINK, parameter);
+		final ORef factorLinkRef = createObject(ObjectType.FACTOR_LINK, parameter);
+		setObjectData(factorLinkRef, FactorLink.TAG_FROM_REF, threat.getWrappedORef().toString());
+		setObjectData(factorLinkRef, FactorLink.TAG_TO_REF, target.getWrappedORef().toString());
+		
+		return factorLinkRef;
 	}
 	
 	public void setBidrectionality(DiagramLink diagramLink, String isBidirectional)	throws CommandFailedException

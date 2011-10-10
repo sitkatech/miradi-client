@@ -41,6 +41,7 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
+import org.miradi.objects.FactorLink;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.IntermediateResult;
@@ -280,8 +281,11 @@ public class LinkCreator
 		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(fromFactorRef, toFactorRef);
 		CommandCreateObject createFactorLink = new CommandCreateObject(ObjectType.FACTOR_LINK, extraInfo);
 		project.executeCommand(createFactorLink);
+		final ORef factorLinkRef = createFactorLink.getObjectRef();
+		project.executeCommand(new CommandSetObjectData(factorLinkRef, FactorLink.TAG_FROM_REF, fromFactorRef));
+		project.executeCommand(new CommandSetObjectData(factorLinkRef, FactorLink.TAG_TO_REF, toFactorRef));
 		
-		return createFactorLink.getObjectRef();
+		return factorLinkRef;
 	}
 	
 	private void createDiagramLinkWithChildren(DiagramObject diagramObject, ORefList allLinkRefs, ORef fromDiagramFactorRef, ORef toDiagramFactorRef) throws Exception

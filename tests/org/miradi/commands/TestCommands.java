@@ -45,6 +45,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
+import org.miradi.objects.FactorLink;
 import org.miradi.objects.RatingCriterion;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
@@ -292,8 +293,11 @@ public class TestCommands extends MiradiTestCase
 		CommandCreateObject createModelLinkage = new CommandCreateObject(ObjectType.FACTOR_LINK, extraInfo);
 		project.executeCommand(createModelLinkage);
 		
+		
 		BaseId modelLinkageId = createModelLinkage.getCreatedId();
 		ORef factorLinkRef = createModelLinkage.getObjectRef();
+		project.setObjectData(factorLinkRef, FactorLink.TAG_FROM_REF, from.getWrappedORef().toString());
+		project.setObjectData(factorLinkRef, FactorLink.TAG_TO_REF, to.getWrappedORef().toString());
 		DiagramFactorId fromDiagramFactorId = from.getDiagramFactorId();
 		DiagramFactorId toDiagramFactorId = to.getDiagramFactorId();
 		CreateDiagramLinkParameter diagramLinkExtraInfo = new CreateDiagramLinkParameter(modelLinkageId, fromDiagramFactorId, toDiagramFactorId);

@@ -34,8 +34,8 @@ import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.main.MiradiTestCase;
 import org.miradi.objectdata.BooleanData;
-import org.miradi.objecthelpers.CreateDiagramLinkParameter;
 import org.miradi.objecthelpers.CreateDiagramFactorParameter;
+import org.miradi.objecthelpers.CreateDiagramLinkParameter;
 import org.miradi.objecthelpers.CreateFactorLinkParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Cause;
@@ -130,6 +130,9 @@ public class TestProjectMpzImporter extends MiradiTestCase
 			diagramFactorIds.add(targetDiagramFactorRef.getObjectId());
 
 			ORef factorLinkRef = project.createObject(FactorLink.getObjectType(), new CreateFactorLinkParameter(threatRef, targetRef));
+			project.setObjectData(factorLinkRef, FactorLink.TAG_FROM_REF, threatRef.toString());
+			project.setObjectData(factorLinkRef, FactorLink.TAG_TO_REF, targetRef.toString());
+			
 			ORef diagramLinkRef = project.createObject(DiagramLink.getObjectType(), new CreateDiagramLinkParameter(factorLinkRef, threatDiagramFactorRef, targetDiagramFactorRef));
 			diagramLinkIds.add(diagramLinkRef.getObjectId());
 			
