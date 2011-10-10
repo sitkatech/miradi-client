@@ -77,7 +77,7 @@ public class FactorLinkPool extends EAMNormalObjectPool
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo) throws Exception
 	{
 		BaseId realId = objectManager.getProject().obtainRealLinkageId(actualId);
-		FactorLink cmLinkage = new FactorLink(objectManager, realId, ORef.INVALID, ORef.INVALID);
+		FactorLink cmLinkage = new FactorLink(objectManager, realId);
 		return cmLinkage;
 	}
 	

@@ -29,7 +29,6 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.main.TestCaseWithProject;
-import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.Target;
@@ -93,9 +92,7 @@ public class TestProjectServer extends TestCaseWithProject
 	
 	public void testDeleteLinkage() throws Exception
 	{
-		ORef fromRef = new ORef(ObjectType.CAUSE, new FactorId(2));
-		ORef toRef = new ORef(ObjectType.CAUSE, new FactorId(3));
-		FactorLink original = new FactorLink(getObjectManager(), new BaseId(1), fromRef, toRef);
+		FactorLink original = new FactorLink(getObjectManager(), new BaseId(1));
 		storage.writeObject(original);
 		storage.deleteObject(original.getType(), original.getId());
 		assertEquals("didn't delete?", 0, storage.readObjectManifest(original.getType()).size());
