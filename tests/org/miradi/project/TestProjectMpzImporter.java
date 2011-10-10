@@ -133,6 +133,10 @@ public class TestProjectMpzImporter extends MiradiTestCase
 			project.setObjectData(factorLinkRef, FactorLink.TAG_TO_REF, targetRef.toString());
 			
 			ORef diagramLinkRef = project.createObject(DiagramLink.getObjectType(), new CreateDiagramLinkParameter(factorLinkRef, threatDiagramFactorRef, targetDiagramFactorRef));
+			project.setObjectData(diagramLinkRef, DiagramLink.TAG_WRAPPED_ID, factorLinkRef.getObjectId().toString());
+	    	project.setObjectData(diagramLinkRef, DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID, threatDiagramFactorRef.getObjectId().toString());
+	    	project.setObjectData(diagramLinkRef, DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID, targetDiagramFactorRef.getObjectId().toString());
+		
 			diagramLinkIds.add(diagramLinkRef.getObjectId());
 			
 			project.setObjectData(DiagramObject.find(project, diagramRef), DiagramObject.TAG_DIAGRAM_FACTOR_IDS, diagramFactorIds.toString());

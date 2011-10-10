@@ -685,6 +685,11 @@ abstract public class DiagramPaster
 			CreateDiagramLinkParameter extraInfo = createFactorLinkExtraInfo(fromDiagramFactor.getRef(), toDiagramFactor.getRef(), newFactorLinkRef);
 			int type = getTypeFromJson(diagramLinkJson);
 			DiagramLink newDiagramLink = (DiagramLink) createObject(type, extraInfo);
+			if (newFactorLinkRef != null)
+				getProject().setObjectData(newDiagramLink.getRef(), DiagramLink.TAG_WRAPPED_ID, newFactorLinkRef.getObjectId().toString());
+	    	
+			getProject().setObjectData(newDiagramLink.getRef(), DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID, fromDiagramFactor.getId().toString());
+	    	getProject().setObjectData(newDiagramLink.getRef(), DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID, toDiagramFactor.getId().toString());
 			
 			Command[]  commandsToLoadFromJson = newDiagramLink.createCommandsToLoadFromJson(diagramLinkJson);
 			getProject().executeCommandsAsTransaction(commandsToLoadFromJson);

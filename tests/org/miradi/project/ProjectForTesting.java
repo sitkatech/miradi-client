@@ -1857,7 +1857,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 		
 		CreateDiagramLinkParameter extraInfo = createDiagramLinkExtraInfo(from, to, baseId);
 
-		return createObject(ObjectType.DIAGRAM_LINK, extraInfo);
+		final ORef diagramLinkRef = createObject(ObjectType.DIAGRAM_LINK, extraInfo);
+		setObjectData(diagramLinkRef, DiagramLink.TAG_WRAPPED_ID, baseId.toString());
+		setObjectData(diagramLinkRef, DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID, from.getId().toString());
+		setObjectData(diagramLinkRef, DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID, to.getId().toString());
+		
+		return diagramLinkRef;
 	}
 
 	public ORef createFactorLink(ORef fromFactorRef, ORef toFactorRef) throws Exception
@@ -1879,7 +1884,11 @@ public class ProjectForTesting extends ProjectWithHelpers
 		CommandCreateObject createDiagramLink = new CommandCreateObject(DiagramLink.getObjectType(), extraInfo);
 		executeCommand(createDiagramLink);
 
-		return createDiagramLink.getObjectRef();
+		final ORef diagramLinkRef = createDiagramLink.getObjectRef();
+    	setObjectData(diagramLinkRef, DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID, from.getId().toString());
+    	setObjectData(diagramLinkRef, DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID, to.getId().toString());
+		
+		return diagramLinkRef;
 	}
 	
 	public ORef createFactorLinkWithCommand(ORef fromFactorRef, ORef toFactorRef) throws Exception

@@ -919,6 +919,9 @@ public class TestProject extends MiradiTestCase
 		
 		CreateDiagramLinkParameter extraInfo = new CreateDiagramLinkParameter(createdId, fromDiagramFactor.getDiagramFactorId(), toDiagramFactor.getDiagramFactorId());
 		ORef diagramLinkRef = project.createObject(DiagramLink.getObjectType(), extraInfo);
+		getProject().setObjectData(diagramLinkRef, DiagramLink.TAG_WRAPPED_ID, createdId.toString());
+    	getProject().setObjectData(diagramLinkRef, DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID, fromDiagramFactor.getId().toString());
+    	getProject().setObjectData(diagramLinkRef, DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID, toDiagramFactor.getId().toString());
 		
 		DiagramObject diagramObject = project.getTestingDiagramObject();
 		CommandSetObjectData addLink = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLinkRef.getObjectId());

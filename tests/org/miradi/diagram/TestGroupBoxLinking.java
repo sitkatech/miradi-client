@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.diagram;
 
 import org.miradi.main.TestCaseWithProject;
-import org.miradi.objecthelpers.CreateDiagramLinkParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Cause;
@@ -240,8 +239,7 @@ public class TestGroupBoxLinking extends TestCaseWithProject
 	private void createGroupBoxLinkWithChildren(DiagramFactor from, DiagramFactor to, ORef[] diagramLinkRefs) throws Exception
 	{
 		ORefList coveredLinkRefs = new ORefList(diagramLinkRefs);
-		CreateDiagramLinkParameter extraInfoWithNoFactorLink = new CreateDiagramLinkParameter(from.getRef(), to.getRef());
-		ORef newGroupBoxDiagramLinkRef = linkCreator.createDiagramLink(getProject().getTestingDiagramObject(), extraInfoWithNoFactorLink);
+		ORef newGroupBoxDiagramLinkRef = linkCreator.createDiagramLink(getProject().getTestingDiagramObject(), ORef.INVALID, from.getRef(), to.getRef());
 		
 		linkCreator.updateGroupBoxChildrenRefs(coveredLinkRefs, newGroupBoxDiagramLinkRef);		
 	}

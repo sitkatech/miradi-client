@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram;
 
-import java.text.ParseException;
 import java.util.HashSet;
 import java.util.Vector;
 
@@ -245,7 +244,7 @@ public class LinkCreator
 		if(factorLinkRef.isInvalid())
 			factorLinkRef = createFactorLink(fromDiagramFactor, toDiagramFactor);
 
-		ORef diagramLinkRef = createDiagramLink(diagramObject, createDiagramFactorLinkParameter(fromDiagramFactor.getRef(), toDiagramFactor.getRef(), factorLinkRef));
+		ORef diagramLinkRef = createDiagramLink(diagramObject, factorLinkRef, fromDiagramFactor.getRef(), toDiagramFactor.getRef());
 		ensureLinkGoesOurWay(DiagramLink.find(getProject(), diagramLinkRef), fromDiagramFactor);
 
 		return DiagramLink.find(getProject(), diagramLinkRef); 
@@ -288,8 +287,7 @@ public class LinkCreator
 	
 	private void createDiagramLinkWithChildren(DiagramObject diagramObject, ORefList allLinkRefs, ORef fromDiagramFactorRef, ORef toDiagramFactorRef) throws Exception
 	{
-		CreateDiagramLinkParameter extraInfoWithNoFactorLink = new CreateDiagramLinkParameter(fromDiagramFactorRef, toDiagramFactorRef);
-		ORef newGroupBoxDiagramLinkRef = createDiagramLink(diagramObject, extraInfoWithNoFactorLink);
+		ORef newGroupBoxDiagramLinkRef = createDiagramLink(diagramObject, ORef.INVALID, fromDiagramFactorRef, toDiagramFactorRef);
 	
 		updateGroupBoxChildrenRefs(allLinkRefs, newGroupBoxDiagramLinkRef);
 	}
@@ -300,31 +298,27 @@ public class LinkCreator
 		getProject().executeCommand(setChildrenRefs);
 	}
 	
-	public ORef createGroupDiagramLink(DiagramObject diagramObject, ORef fromDiagramFactorRef, ORef toDiagramFactorRef) throws CommandFailedException, ParseException
+	public ORef createGroupDiagramLink(DiagramObject diagramObject, ORef fromDiagramFactorRef, ORef toDiagramFactorRef) throws Exception
 	{
-		CreateDiagramLinkParameter extraInfo = createDiagramFactorLinkParameter(fromDiagramFactorRef, toDiagramFactorRef);
-		return createDiagramLink(diagramObject, extraInfo);
+		return createDiagramLink(diagramObject, ORef.INVALID, fromDiagramFactorRef, toDiagramFactorRef);
 	}
 	
-	public ORef createDiagramLink(DiagramObject diagramObject, CreateDiagramLinkParameter diagramLinkExtraInfo) throws CommandFailedException, ParseException
+	public ORef createDiagramLink(DiagramObject diagramObject, ORef factorLinkRef, ORef fromDiagramFactorRef, ORef toDiagramFactorRef) throws Exception
 	{
+		CreateDiagramLinkParameter diagramLinkExtraInfo = createDiagramFactorLinkParameter(fromDiagramFactorRef, toDiagramFactorRef, factorLinkRef);
 		CommandCreateObject createDiagramLinkCommand =  new CommandCreateObject(ObjectType.DIAGRAM_LINK, diagramLinkExtraInfo);
 		project.executeCommand(createDiagramLinkCommand);
     	
     	BaseId rawId = createDiagramLinkCommand.getCreatedId();
+		project.setObjectData(createDiagramLinkCommand.getObjectRef(), DiagramLink.TAG_WRAPPED_ID, factorLinkRef.getObjectId().toString());
+    	project.setObjectData(createDiagramLinkCommand.getObjectRef(), DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID, fromDiagramFactorRef.getObjectId().toString());
+    	project.setObjectData(createDiagramLinkCommand.getObjectRef(), DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID, toDiagramFactorRef.getObjectId().toString());
 		DiagramLinkId createdDiagramLinkId = new DiagramLinkId(rawId.asInt());
 		
 		CommandSetObjectData addDiagramLink = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, createdDiagramLinkId);
 		project.executeCommand(addDiagramLink);
 		
 		return createDiagramLinkCommand.getObjectRef();
-	}
-
-	private CreateDiagramLinkParameter createDiagramFactorLinkParameter(ORef fromDiagramFactorRef, ORef toDiagramFactorRef)
-	{
-		CreateDiagramLinkParameter diagramLinkExtraInfo = new CreateDiagramLinkParameter(fromDiagramFactorRef, toDiagramFactorRef);
-		
-		return diagramLinkExtraInfo;
 	}
 
 	private CreateDiagramLinkParameter createDiagramFactorLinkParameter(ORef fromDiagramFactorRef, ORef toDiagramFactorRef, ORef factorlLinkRef)

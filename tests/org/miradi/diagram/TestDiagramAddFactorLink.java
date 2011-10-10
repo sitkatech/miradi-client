@@ -64,6 +64,10 @@ public class TestDiagramAddFactorLink extends MiradiTestCase
     	project.executeCommand(createDiagramLinkCommand);
 		
 		ORef diagramLinkRef = createDiagramLinkCommand.getObjectRef();
+		project.setObjectData(diagramLinkRef, DiagramLink.TAG_WRAPPED_ID, modelLinkageId.toString());
+		project.setObjectData(diagramLinkRef, DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID, intervention.getDiagramFactorId().toString());
+		project.setObjectData(diagramLinkRef, DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID, factor.getDiagramFactorId().toString());
+
 		DiagramObject diagramObject = project.getTestingDiagramObject();
 		CommandSetObjectData addLink = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLinkRef.getObjectId());
 		project.executeCommand(addLink);
