@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-10 10:42-0500\n"
+"POT-Creation-Date: 2011-10-10 12:31-0500\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -2230,7 +2230,7 @@ msgstr "Während des Anordnens ist ein Fehler aufgetreten"
 msgid "An error has occured while writing assignment data."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/DiagramSplitPane.java:336
+#: Miradi/source/org/miradi/views/diagram/DiagramSplitPane.java:333
 #: Miradi/source/org/miradi/diagram/DiagramModel.java:789
 msgid ""
 "An error is preventing this diagram from displaying correctly. Most likely, "
@@ -5464,7 +5464,7 @@ msgstr "Noch nicht begonnen"
 msgid "Not all classification Codes could imported."
 msgstr "Nicht alle Klassifikationscodes konnten importiert werden. "
 
-#: Miradi/source/org/miradi/views/diagram/DiagramSplitPane.java:425
+#: Miradi/source/org/miradi/views/diagram/DiagramSplitPane.java:422
 msgid "Not all factors are being shown because %s tag(s) are checked"
 msgstr "Nicht alle Faktoren werden angezeigt, da %s Tag(s) aktiv ist/sind"
 
