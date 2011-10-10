@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-10 13:55-0500\n"
+"POT-Creation-Date: 2011-10-10 14:56-0500\n"
 "PO-Revision-Date: 2011-04-29 11:26+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -2193,7 +2193,7 @@ msgstr ""
 "Si è verificato un errore durante la scrittura dei dati di assegnazione"
 
 #: Miradi/source/org/miradi/views/diagram/DiagramSplitPane.java:333
-#: Miradi/source/org/miradi/diagram/DiagramModel.java:789
+#: Miradi/source/org/miradi/diagram/DiagramModel.java:787
 msgid ""
 "An error is preventing this diagram from displaying correctly. Most likely, "
 "the project has gotten corrupted. Please contact the Miradi team for help "
@@ -2721,16 +2721,16 @@ msgstr "Calendario"
 msgid "Calibri"
 msgstr "Calibri"
 
-#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:111
-#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:120
+#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:110
+#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:119
 msgid "Can't Create Link"
 msgstr "Non posso creare il link"
 
-#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:119
+#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:118
 msgid "Can't link a group to an item it contains"
 msgstr "Non posso linkare un gruppo ad un oggetto che lo contiene"
 
-#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:110
+#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:109
 msgid "Can't link an item to itself"
 msgstr "Non posso creare un link di un oggetto a se stesso"
 
@@ -4138,7 +4138,7 @@ msgstr "Nascondi le colonne trimestre"
 msgid "High"
 msgstr "Alto"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1385
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1390
 msgid "High/Very-High Threat Chains"
 msgstr "Alta/molto-alta Catene di PressionI"
 
@@ -4336,7 +4336,7 @@ msgstr ""
 "preciso, coerente e sensibile. In Miradi, un Indicatore è rappresentato da "
 "un triangolo viola."
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1285
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1290
 msgid "Indicator Holder"
 msgstr "Indicatore di possesso"
 
@@ -4820,7 +4820,7 @@ msgstr ""
 msgid "Low"
 msgstr "Basso"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1386
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1391
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr "Catene della Pressione Bassa/Media/Non Valutata"
 
@@ -5444,7 +5444,7 @@ msgstr ""
 "Pressione critica. In Miradi, un Obiettivo Gestionale è rappresentato da un "
 "piccolo rettangolo blu."
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1279
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1284
 msgid "Objective Holder"
 msgstr "Obiettivo Gestionale Holder"
 
@@ -5624,7 +5624,7 @@ msgstr "Rosa"
 msgid "Place scope on diagram"
 msgstr "Inserisci l'Ambito nel diagramma"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1275
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1280
 msgid "Placeholder - From ConPro"
 msgstr "Segnaposto - Da ConPro"
 

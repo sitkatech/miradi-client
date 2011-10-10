@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-10 13:55-0500\n"
+"POT-Creation-Date: 2011-10-10 14:56-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -2002,7 +2002,7 @@ msgid "An error has occured while writing assignment data."
 msgstr "编写分配数据时出现一个错误。 \t\t"
 
 #: Miradi/source/org/miradi/views/diagram/DiagramSplitPane.java:333
-#: Miradi/source/org/miradi/diagram/DiagramModel.java:789
+#: Miradi/source/org/miradi/diagram/DiagramModel.java:787
 msgid ""
 "An error is preventing this diagram from displaying correctly. Most likely, "
 "the project has gotten corrupted. Please contact the Miradi team for help "
@@ -2507,16 +2507,16 @@ msgstr "日历 \t\t"
 msgid "Calibri"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:111
-#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:120
+#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:110
+#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:119
 msgid "Can't Create Link"
 msgstr "不能创建链接 \t\t"
 
-#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:119
+#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:118
 msgid "Can't link a group to an item it contains"
 msgstr "不能将组链接到其所包含的条目 \t\t"
 
-#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:110
+#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:109
 msgid "Can't link an item to itself"
 msgstr "不能将条目链接到其本身 \t\t"
 
@@ -3882,7 +3882,7 @@ msgstr ""
 msgid "High"
 msgstr "高"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1385
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1390
 msgid "High/Very-High Threat Chains"
 msgstr ""
 
@@ -4074,7 +4074,7 @@ msgstr ""
 "或为达到某分目标而取得的进展等）。良好的指示物应满足的标准是：可测量性、精确"
 "性、一致性和敏感性。在Miradi中，指示物是以紫色三角形来代表的。"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1285
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1290
 msgid "Indicator Holder"
 msgstr ""
 
@@ -4552,7 +4552,7 @@ msgstr ""
 msgid "Low"
 msgstr "低"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1386
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1391
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr ""
 
@@ -5143,7 +5143,7 @@ msgstr ""
 "分目标——指的是一个正式的声明，它详细列出了项目所期望的结果，如某种临界威胁因"
 "子的减少。在Miradi中，分目标是以蓝色小长方形来代表的。 "
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1279
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1284
 msgid "Objective Holder"
 msgstr ""
 
@@ -5321,7 +5321,7 @@ msgstr "粉红色"
 msgid "Place scope on diagram"
 msgstr "在图表上设置范围 \t\t"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1275
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1280
 msgid "Placeholder - From ConPro"
 msgstr ""
 
