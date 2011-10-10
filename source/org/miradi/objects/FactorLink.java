@@ -31,7 +31,7 @@ import org.miradi.utils.EnhancedJsonObject;
 
 public class FactorLink extends BaseObject
 {
-	public FactorLink(ObjectManager objectManager, BaseId id, ORef fromFactorRef, ORef toFactorRef) throws Exception
+	public FactorLink(ObjectManager objectManager, BaseId id) throws Exception
 	{
 		super(objectManager, id);
 		clear();

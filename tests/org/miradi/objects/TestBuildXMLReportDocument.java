@@ -25,14 +25,11 @@ import java.util.Vector;
 
 import org.martus.util.DirectoryUtils;
 import org.miradi.ids.BaseId;
-import org.miradi.ids.FactorId;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.main.MiradiTestCase;
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.IdListData;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.Project;
 import org.miradi.utils.EAMFileSaveChooser;
 import org.miradi.utils.EAMXmlFileChooser;
@@ -76,9 +73,7 @@ public class TestBuildXMLReportDocument extends MiradiTestCase
 //			processObject(project, new Strategy(new FactorId(BASE_INT)));
 //*			processObject(project, new Target(new FactorId(BASE_INT)));
 //			processObject(project, new Cause(new FactorId(BASE_INT)));
-			ORef toRef = new ORef(ObjectType.CAUSE, new FactorId( BASE_INT));
-			ORef fromRef = new ORef(ObjectType.CAUSE, new FactorId( BASE_INT));
-			processObject(project, new FactorLink(project.getObjectManager(), new BaseId(BASE_INT), fromRef, toRef ));
+			processObject(project, new FactorLink(project.getObjectManager(), new BaseId(BASE_INT)));
 //			processObject(project, new FundingSource(BaseId.INVALID));
 //*			processObject(project, new Goal(BaseId.INVALID));
 //*			processObject(project, new Indicator(new IndicatorId(BASE_INT)));
