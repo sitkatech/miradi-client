@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-10 12:31-0500\n"
+"POT-Creation-Date: 2011-10-10 12:38-0500\n"
 "PO-Revision-Date: 2011-02-15 16:35-0600\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -2453,16 +2453,16 @@ msgstr ""
 msgid "Calibri"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:111
-#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:120
+#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:112
+#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:121
 msgid "Can't Create Link"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:119
+#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:120
 msgid "Can't link a group to an item it contains"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:110
+#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:111
 msgid "Can't link an item to itself"
 msgstr ""
 
@@ -3796,7 +3796,7 @@ msgstr ""
 msgid "High"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1385
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1387
 msgid "High/Very-High Threat Chains"
 msgstr ""
 
@@ -3985,7 +3985,7 @@ msgid ""
 "by a purple triangle."
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1285
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1287
 msgid "Indicator Holder"
 msgstr ""
 
@@ -4458,7 +4458,7 @@ msgstr ""
 msgid "Low"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1386
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1388
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr ""
 
@@ -5041,7 +5041,7 @@ msgid ""
 "by a small blue rectangle."
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1279
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1281
 msgid "Objective Holder"
 msgstr ""
 
@@ -5217,7 +5217,7 @@ msgstr ""
 msgid "Place scope on diagram"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1275
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1277
 msgid "Placeholder - From ConPro"
 msgstr ""
 
