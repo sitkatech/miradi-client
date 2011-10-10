@@ -28,7 +28,6 @@ import org.miradi.diagram.cells.DiagramCauseCell;
 import org.miradi.diagram.cells.DiagramTargetCell;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
-import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.DiagramLinkId;
@@ -145,7 +144,7 @@ public class TestDiagramLink extends ObjectTestCase
 		assertEquals("Didn't load to ref?", cause.getWrappedORef(), linkage.getToFactorRef());
 	}
 
-	private static ORef createDiagramFactorLink(ProjectForTesting projectForTesting, ORef strategyRef, ORef factorRef, BaseId modelLinkageId) throws CommandFailedException
+	private static ORef createDiagramFactorLink(ProjectForTesting projectForTesting, ORef strategyRef, ORef factorRef, BaseId modelLinkageId) throws Exception
 	{
 		DiagramModel diagramModel = projectForTesting.getTestingDiagramModel();
 		FactorCell factorCell = diagramModel.getFactorCellByWrappedRef(strategyRef);
@@ -156,7 +155,12 @@ public class TestDiagramLink extends ObjectTestCase
 		CommandCreateObject createDiagramLinkCommand =  new CommandCreateObject(ObjectType.DIAGRAM_LINK, diagramLinkExtraInfo);
 		projectForTesting.executeCommand(createDiagramLinkCommand);
     	
-    	return createDiagramLinkCommand.getObjectRef();
+    	final ORef diagramLinkRef = createDiagramLinkCommand.getObjectRef();
+		projectForTesting.setObjectData(createDiagramLinkCommand.getObjectRef(), DiagramLink.TAG_WRAPPED_ID, modelLinkageId.toString());
+    	projectForTesting.setObjectData(createDiagramLinkCommand.getObjectRef(), DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID, fromDiagramFactorId.toString());
+    	projectForTesting.setObjectData(createDiagramLinkCommand.getObjectRef(), DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID, toDiagramFactorId.toString());
+
+		return diagramLinkRef;
 	}
 	
 	public void testBendPointAlreadyExists() throws Exception

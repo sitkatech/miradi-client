@@ -304,6 +304,9 @@ public class TestCommands extends MiradiTestCase
     	project.executeCommand(createDiagramLinkCommand);
     	
     	BaseId createdId = createDiagramLinkCommand.getCreatedId();
+		project.setObjectData(createDiagramLinkCommand.getObjectRef(), DiagramLink.TAG_WRAPPED_ID, modelLinkageId.toString());
+    	project.setObjectData(createDiagramLinkCommand.getObjectRef(), DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID, fromDiagramFactorId.toString());
+    	project.setObjectData(createDiagramLinkCommand.getObjectRef(), DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID, toDiagramFactorId.toString());
 		DiagramLinkId diagramFactorLinkId = new DiagramLinkId(createdId.asInt()); 
 		DiagramObject diagramObject = project.getTestingDiagramObject();
 		CommandSetObjectData addLink = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramFactorLinkId);

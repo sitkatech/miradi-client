@@ -124,7 +124,10 @@ public class TestDiagramCorruptionDetector extends TestCaseWithProject
 			throws Exception
 	{
 		CreateDiagramLinkParameter diagramLinkExtraInfo = new CreateDiagramLinkParameter(targetDiagramFactorRef, groupBoxDiagramFactorRef);
+		
 		ORef diagramLinkRef = getProject().createObject(DiagramLink.getObjectType(), diagramLinkExtraInfo);
+		getProject().setObjectData(diagramLinkRef, DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID, targetDiagramFactorRef.getObjectId().toString());
+    	getProject().setObjectData(diagramLinkRef, DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID, groupBoxDiagramFactorRef.getObjectId().toString());
 		
 		IdList diagramLinkIds = new IdList(DiagramLink.getObjectType());
 		diagramLinkIds.addRef(diagramLinkRef);

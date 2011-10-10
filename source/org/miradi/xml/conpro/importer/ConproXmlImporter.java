@@ -1186,6 +1186,11 @@ public class ConproXmlImporter implements ConProMiradiXml
 			
 		CreateDiagramLinkParameter diagramLinkExtraInfo = new CreateDiagramLinkParameter(createdFactorLinkRef, fromDiagramFactorRef, toDiagramFactorRef);
 		ORef diagramLinkRef = getProject().createObject(DiagramLink.getObjectType(), diagramLinkExtraInfo);
+		
+		project.setObjectData(diagramLinkRef, DiagramLink.TAG_WRAPPED_ID, createdFactorLinkRef.getObjectId().toString());
+    	project.setObjectData(diagramLinkRef, DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID, fromDiagramFactorRef.getObjectId().toString());
+    	project.setObjectData(diagramLinkRef, DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID, toDiagramFactorRef.getObjectId().toString());
+	
 		wrappedToDiagramMap.put(createdFactorLinkRef, diagramLinkRef);
 		appendRefToDiagramObject(DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLinkRef);
 		

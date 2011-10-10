@@ -54,7 +54,6 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramLinkId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.CreateDiagramLinkParameter;
 import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -239,13 +238,12 @@ abstract public class DiagramModel extends DefaultGraphModel
 
     public DiagramLink addLinkToDiagram(DiagramLink diagramFactorLink) throws Exception
     {
-    	CreateDiagramLinkParameter extraInfo = (CreateDiagramLinkParameter) diagramFactorLink.getCreationExtraInfo();
-		FactorCell from = rawGetFactorCellByRef(extraInfo.getFromDiagramFactorRef());
+		FactorCell from = rawGetFactorCellByRef(diagramFactorLink.getFromDiagramFactorRef());
 		if(from == null)
-			EAM.logError("Missing from, DFL=" + diagramFactorLink.getId() + ", From=" + extraInfo.getFromDiagramFactorRef());
-		FactorCell to = rawGetFactorCellByRef(extraInfo.getToDiagramFactorRef());
+			EAM.logError("Missing from, DFL=" + diagramFactorLink.getId() + ", From=" + diagramFactorLink.getFromDiagramFactorRef());
+		FactorCell to = rawGetFactorCellByRef(diagramFactorLink.getToDiagramFactorRef());
 		if(to == null)
-			EAM.logError("Missing to, DFL=" + diagramFactorLink.getId() + ", To=" + extraInfo.getToDiagramFactorRef());
+			EAM.logError("Missing to, DFL=" + diagramFactorLink.getId() + ", To=" + diagramFactorLink.getToDiagramFactorRef());
 		
 		LinkCell cell = new LinkCell(diagramFactorLink, from, to);
 		
