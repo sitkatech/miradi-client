@@ -35,7 +35,6 @@ import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.CreateDiagramLinkParameter;
-import org.miradi.objecthelpers.CreateFactorLinkParameter;
 import org.miradi.objecthelpers.CreateThreatStressRatingParameter;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
@@ -1863,8 +1862,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 
 	public ORef createFactorLink(ORef fromFactorRef, ORef toFactorRef) throws Exception
 	{
-		CreateFactorLinkParameter parameter = createFactorLinkExtraInfo(fromFactorRef, toFactorRef);
-		final ORef factorLinkRef = createObject(ObjectType.FACTOR_LINK, parameter);
+		final ORef factorLinkRef = createObject(ObjectType.FACTOR_LINK);
 		setObjectData(factorLinkRef, FactorLink.TAG_FROM_REF, fromFactorRef.toString());
 		setObjectData(factorLinkRef, FactorLink.TAG_TO_REF, toFactorRef.toString());
 
@@ -1886,11 +1884,14 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public ORef createFactorLinkWithCommand(ORef fromFactorRef, ORef toFactorRef) throws Exception
 	{
-		CreateFactorLinkParameter parameter = createFactorLinkExtraInfo(fromFactorRef, toFactorRef);
-		CommandCreateObject createFactorLink = new CommandCreateObject(FactorLink.getObjectType(), parameter);
+		CommandCreateObject createFactorLink = new CommandCreateObject(FactorLink.getObjectType());
 		executeCommand(createFactorLink);
 		
-		return createFactorLink.getObjectRef();
+		final ORef objectRef = createFactorLink.getObjectRef();
+		setObjectData(objectRef, FactorLink.TAG_FROM_REF, fromFactorRef.toString());
+		setObjectData(objectRef, FactorLink.TAG_TO_REF, toFactorRef.toString());
+		
+		return objectRef;
 	}
 	
 	private boolean shouldCreateGroupBoxLink(DiagramFactor from, DiagramFactor to)
@@ -1903,11 +1904,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return new CreateDiagramLinkParameter(baseId, from.getDiagramFactorId(), to.getDiagramFactorId());
 	}
 	
-	private CreateFactorLinkParameter createFactorLinkExtraInfo(ORef fromFactorRef, ORef toFactorRef)
-	{
-		return new CreateFactorLinkParameter(fromFactorRef, toFactorRef);
-	}
-
 	public LinkCell createLinkCellWithBendPoints(PointList bendPoints) throws Exception
 	{
 		LinkCell linkCell = createLinkCell();
@@ -1932,9 +1928,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 		enableAsThreat(threat.getWrappedORef());
 		DiagramFactor target = createAndAddFactorToDiagram(ObjectType.TARGET, takeNextId(Target.getObjectType()));
 
-		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(threat.getWrappedORef(), target.getWrappedORef());
 		
-		final ORef factorLinkRef = createObject(ObjectType.FACTOR_LINK, parameter);
+		final ORef factorLinkRef = createObject(ObjectType.FACTOR_LINK);
 		setObjectData(factorLinkRef, FactorLink.TAG_FROM_REF, threat.getWrappedORef().toString());
 		setObjectData(factorLinkRef, FactorLink.TAG_TO_REF, target.getWrappedORef().toString());
 		

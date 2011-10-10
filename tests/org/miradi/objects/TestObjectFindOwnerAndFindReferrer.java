@@ -24,9 +24,8 @@ import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.DiagramLinkId;
 import org.miradi.ids.IdList;
 import org.miradi.main.MiradiTestCase;
-import org.miradi.objecthelpers.CreateDiagramLinkParameter;
 import org.miradi.objecthelpers.CreateDiagramFactorParameter;
-import org.miradi.objecthelpers.CreateFactorLinkParameter;
+import org.miradi.objecthelpers.CreateDiagramLinkParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -282,8 +281,7 @@ public class TestObjectFindOwnerAndFindReferrer extends MiradiTestCase
 	
 	private DiagramLink createDiagramFactorLink(DiagramFactor from, DiagramFactor to) throws Exception
 	{
-		CreateFactorLinkParameter linkExtraInfo = new CreateFactorLinkParameter(from.getWrappedORef(), to.getWrappedORef());
-		BaseId linkId = project.createObjectAndReturnId(FactorLink.getObjectType(), linkExtraInfo);
+		BaseId linkId = project.createObjectAndReturnId(FactorLink.getObjectType());
 		
 		ORef factorLinkRef = new ORef(FactorLink.getObjectType(), linkId);
 		project.setObjectData(factorLinkRef, FactorLink.TAG_FROM_REF, from.getWrappedORef().toString());

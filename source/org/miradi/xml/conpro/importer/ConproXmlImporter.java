@@ -50,7 +50,6 @@ import org.miradi.main.EAM;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.CreateDiagramFactorParameter;
 import org.miradi.objecthelpers.CreateDiagramLinkParameter;
-import org.miradi.objecthelpers.CreateFactorLinkParameter;
 import org.miradi.objecthelpers.CreateThreatStressRatingParameter;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
@@ -1178,8 +1177,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		if (!foundFactorLinkRef.isInvalid())
 			return foundFactorLinkRef;
 		
-		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(fromRef, toRef);
-		ORef createdFactorLinkRef = getProject().createObject(FactorLink.getObjectType(), extraInfo);
+		ORef createdFactorLinkRef = getProject().createObject(FactorLink.getObjectType());
 		project.setObjectData(createdFactorLinkRef, FactorLink.TAG_FROM_REF, fromRef.toString());
 		project.setObjectData(createdFactorLinkRef, FactorLink.TAG_TO_REF, toRef.toString());
 		
