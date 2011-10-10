@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-10 10:42-0500\n"
+"POT-Creation-Date: 2011-10-10 12:31-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -2156,7 +2156,7 @@ msgstr "Під час сортування сталася помилка."
 msgid "An error has occured while writing assignment data."
 msgstr "Сталася помилка при запису призначених даних"
 
-#: Miradi/source/org/miradi/views/diagram/DiagramSplitPane.java:336
+#: Miradi/source/org/miradi/views/diagram/DiagramSplitPane.java:333
 #: Miradi/source/org/miradi/diagram/DiagramModel.java:789
 msgid ""
 "An error is preventing this diagram from displaying correctly. Most likely, "
@@ -5321,7 +5321,7 @@ msgstr ""
 msgid "Not all classification Codes could imported."
 msgstr "Не всі класифікаційні коди можуть бути імпортовані"
 
-#: Miradi/source/org/miradi/views/diagram/DiagramSplitPane.java:425
+#: Miradi/source/org/miradi/views/diagram/DiagramSplitPane.java:422
 msgid "Not all factors are being shown because %s tag(s) are checked"
 msgstr ""
 
