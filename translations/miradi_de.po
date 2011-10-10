@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-10 12:38-0500\n"
+"POT-Creation-Date: 2011-10-10 13:55-0500\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -2746,13 +2746,13 @@ msgstr "Kalender"
 msgid "Calibri"
 msgstr "Calibri"
 
-#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:112
-#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:121
+#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:111
+#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:120
 msgid "Can't Create Link"
 msgstr "Link kann nicht erstellt werden"
 
 # sehr lang!!!
-#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:120
+#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:119
 #, fuzzy
 msgid "Can't link a group to an item it contains"
 msgstr ""
@@ -2760,7 +2760,7 @@ msgstr ""
 "Gruppe ist"
 
 # verbunden oder verlinkt ?? Diskussion !!! (Felix)
-#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:111
+#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:110
 msgid "Can't link an item to itself"
 msgstr "Element kann nicht mit sich selbst verbunden werden"
 
@@ -3845,7 +3845,7 @@ msgstr ""
 "Dateiname darf nur Buchstaben, Ziffern und/oder Unterstriche enthalten."
 
 #: Miradi/source/org/miradi/xml/AbstractXmlImporter.java:90
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:175
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:174
 msgid "File to import does not validate."
 msgstr ""
 
@@ -4194,7 +4194,7 @@ msgstr "Quartalsspalte(n) verbergen"
 msgid "High"
 msgstr "Hoch"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1387
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1385
 msgid "High/Very-High Threat Chains"
 msgstr ""
 
@@ -4403,7 +4403,7 @@ msgid ""
 "by a purple triangle."
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1287
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1285
 msgid "Indicator Holder"
 msgstr ""
 
@@ -4887,7 +4887,7 @@ msgstr ""
 msgid "Low"
 msgstr "Niedrig"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1388
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1386
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr ""
 
@@ -5460,7 +5460,7 @@ msgstr "nicht spezif."
 msgid "Not Started"
 msgstr "Noch nicht begonnen"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:649
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:648
 msgid "Not all classification Codes could imported."
 msgstr "Nicht alle Klassifikationscodes konnten importiert werden. "
 
@@ -5499,7 +5499,7 @@ msgid ""
 "by a small blue rectangle."
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1281
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1279
 msgid "Objective Holder"
 msgstr ""
 
@@ -5690,7 +5690,7 @@ msgstr "Rosa"
 msgid "Place scope on diagram"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1277
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1275
 msgid "Placeholder - From ConPro"
 msgstr ""
 

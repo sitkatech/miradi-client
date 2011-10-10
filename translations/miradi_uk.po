@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-10 12:38-0500\n"
+"POT-Creation-Date: 2011-10-10 13:55-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -2674,16 +2674,16 @@ msgstr "Календар"
 msgid "Calibri"
 msgstr "Calibri"
 
-#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:112
-#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:121
+#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:111
+#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:120
 msgid "Can't Create Link"
 msgstr "Не можна створити З'єднання"
 
-#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:120
+#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:119
 msgid "Can't link a group to an item it contains"
 msgstr "Не можна з'єднати групу з пунктом, який вона містить"
 
-#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:111
+#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:110
 msgid "Can't link an item to itself"
 msgstr "Не можна з'єднати пункт сам з собою"
 
@@ -3717,7 +3717,7 @@ msgid "File name must contain only alpha numeric and/or '_' characters."
 msgstr "Назва файла має містити тільки альфа цифрові і або  '_' символи."
 
 #: Miradi/source/org/miradi/xml/AbstractXmlImporter.java:90
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:175
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:174
 msgid "File to import does not validate."
 msgstr "Файл для імпорту відсутній"
 
@@ -4067,7 +4067,7 @@ msgstr ""
 msgid "High"
 msgstr "Високий"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1387
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1385
 msgid "High/Very-High Threat Chains"
 msgstr "Ланцюги високої або дуже високої загрози"
 
@@ -4264,7 +4264,7 @@ msgstr ""
 "несуперечливий і чутливий.У Міраді індикатор представляється фіолетовим "
 "трикутником."
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1287
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1285
 msgid "Indicator Holder"
 msgstr "Тримач Індикатора"
 
@@ -4744,7 +4744,7 @@ msgstr ""
 msgid "Low"
 msgstr "Низький"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1388
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1386
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr "Ланцюги низьких/середніх/неоцінених загроз"
 
@@ -5317,7 +5317,7 @@ msgstr "Не визначено"
 msgid "Not Started"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:649
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:648
 msgid "Not all classification Codes could imported."
 msgstr "Не всі класифікаційні коди можуть бути імпортовані"
 
@@ -5359,7 +5359,7 @@ msgstr ""
 "як зменшення критичної загрози. У Міраді завдання представляєтьсяється малим "
 "блакитним прямокутником. "
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1281
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1279
 msgid "Objective Holder"
 msgstr "Тримач Завдання"
 
@@ -5538,7 +5538,7 @@ msgstr "Рожевий"
 msgid "Place scope on diagram"
 msgstr "Встановити сферу дій на діаграмі"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1277
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1275
 msgid "Placeholder - From ConPro"
 msgstr "Заповнювач - від ConPro"
 
