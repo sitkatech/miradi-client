@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-10 12:31-0500\n"
+"POT-Creation-Date: 2011-10-10 12:38-0500\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -2666,16 +2666,16 @@ msgstr "Хуанли"
 msgid "Calibri"
 msgstr "Calibri"
 
-#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:111
-#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:120
+#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:112
+#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:121
 msgid "Can't Create Link"
 msgstr "Холбоос үүсэхгүй байна"
 
-#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:119
+#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:120
 msgid "Can't link a group to an item it contains"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:110
+#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:111
 msgid "Can't link an item to itself"
 msgstr "Нэг зүйлийг өөртэй нь холбож болохгүй байна"
 
@@ -4065,7 +4065,7 @@ msgstr "Баганы дөрөвний нэгийг нуух"
 msgid "High"
 msgstr "Өндөр"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1385
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1387
 msgid "High/Very-High Threat Chains"
 msgstr "Өндөр/Маш-Өндөр Аюул Заналын Гинжин Холбоо"
 
@@ -4262,7 +4262,7 @@ msgstr ""
 "хангасан байдаг : хэмжигдэхүйц, тодорхой, тогтвортой ба мэдрэмтгий.  Шалгуур "
 "үзүүлэлтийг Miradi-д нил ягаан гурвалжингаар төлөөлүүлсэн."
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1285
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1287
 msgid "Indicator Holder"
 msgstr "Indicator Holder"
 
@@ -4743,7 +4743,7 @@ msgstr ""
 msgid "Low"
 msgstr "Сул, бага, доогуур"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1386
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1388
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr "Сул/Дундаж/Үнэлэгдээгүй Аюулын Гинжин холбоос"
 
@@ -5355,7 +5355,7 @@ msgstr ""
 "албан ёсны мэдэгдэл. Зорилт нь Miradi-д жижиг цэнхэр тэгш өнцөгтөөр "
 "төлөөллөгдсөн."
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1279
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1281
 msgid "Objective Holder"
 msgstr "Зорилтуудын Хайрцаг"
 
@@ -5535,7 +5535,7 @@ msgstr "Ягаан"
 msgid "Place scope on diagram"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1275
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1277
 msgid "Placeholder - From ConPro"
 msgstr ""
 
