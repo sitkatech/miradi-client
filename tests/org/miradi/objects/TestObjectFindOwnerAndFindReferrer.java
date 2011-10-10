@@ -284,6 +284,11 @@ public class TestObjectFindOwnerAndFindReferrer extends MiradiTestCase
 	{
 		CreateFactorLinkParameter linkExtraInfo = new CreateFactorLinkParameter(from.getWrappedORef(), to.getWrappedORef());
 		BaseId linkId = project.createObjectAndReturnId(FactorLink.getObjectType(), linkExtraInfo);
+		
+		ORef factorLinkRef = new ORef(FactorLink.getObjectType(), linkId);
+		project.setObjectData(factorLinkRef, FactorLink.TAG_FROM_REF, from.getWrappedORef().toString());
+		project.setObjectData(factorLinkRef, FactorLink.TAG_TO_REF, to.getWrappedORef().toString());
+		
 		CreateDiagramLinkParameter diagramLinkExtraInfo = new CreateDiagramLinkParameter(linkId, from.getDiagramFactorId(), to.getDiagramFactorId());
 		DiagramLinkId diagramLinkId = (DiagramLinkId)project.createObjectAndReturnId(DiagramLink.getObjectType(), diagramLinkExtraInfo);
 		return (DiagramLink)project.findObject(DiagramLink.getObjectType(), diagramLinkId);

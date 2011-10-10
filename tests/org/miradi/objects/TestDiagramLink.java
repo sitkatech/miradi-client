@@ -129,6 +129,10 @@ public class TestDiagramLink extends ObjectTestCase
 		project.executeCommand(createModelLinkage);
 		BaseId modelLinkageId = createModelLinkage.getCreatedId();
 		
+		ORef factorLinkRef = createModelLinkage.getObjectRef();
+		project.setObjectData(factorLinkRef, FactorLink.TAG_FROM_REF, intervention.getWrappedORef().toString());
+		project.setObjectData(factorLinkRef, FactorLink.TAG_TO_REF, cause.getWrappedORef().toString());
+		
 		ORef diagramLinkRef = createDiagramFactorLink(project, intervention.getWrappedORef(), cause.getWrappedORef(), modelLinkageId);
 		DiagramObject diagramObject = project.getTestingDiagramObject();
 		CommandSetObjectData addLink = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLinkRef.getObjectId());

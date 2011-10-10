@@ -69,6 +69,9 @@ public class TestDiagramComponent extends TestCaseWithProject
 		BaseId id = getObjectManager().createObject(FactorLink.getObjectType(), new BaseId(100), extraInfo);
 		ORef linkRef = new ORef(FactorLink.getObjectType(), id);
 		FactorLink cmLinkage =	FactorLink.find(getProject(), linkRef);
+		ORef factorLinkRef = cmLinkage.getRef();
+		getProject().setObjectData(factorLinkRef, FactorLink.TAG_FROM_REF, hiddenRef.toString());
+		getProject().setObjectData(factorLinkRef, FactorLink.TAG_TO_REF, visibleRef.toString());
 		
 		LinkCreator linkCreator = new LinkCreator(getProject());
 		DiagramLink diagramLink = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(getProject().getTestingDiagramObject(), hiddenNode.getDiagramFactor(), visibleNode.getDiagramFactor());
