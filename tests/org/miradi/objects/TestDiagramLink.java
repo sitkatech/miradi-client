@@ -111,7 +111,7 @@ public class TestDiagramLink extends ObjectTestCase
 		assertEquals(id, linkage.getDiagramLinkId());
 		assertEquals(linkId, linkage.getWrappedId());
 		assertEquals(factor.getDiagramFactorRef(), linkage.getFromDiagramFactorRef());
-		assertEquals(diagramTarget.getDiagramFactorRef(), linkage.getFromDiagramFactorRef());
+		assertEquals(diagramTarget.getDiagramFactorRef(), linkage.getToDiagramFactorRef());
 	}
 	
 	public void testLinkNodes() throws Exception
