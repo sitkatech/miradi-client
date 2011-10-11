@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objects;
 
-import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 
@@ -37,7 +36,7 @@ public class TestDashboard extends ObjectTestCase
 	}
 
 	@Override
-	protected BaseObject createObject(int objectType, CreateObjectParameter extraInfo) throws Exception
+	protected BaseObject createObject(int objectType) throws Exception
 	{
 		if (Dashboard.is(objectType))
 		{
@@ -45,6 +44,6 @@ public class TestDashboard extends ObjectTestCase
 			return Dashboard.find(getProject(), dashboardRef);
 		}
 		
-		return super.createObject(objectType, extraInfo);
+		return super.createObject(objectType);
 	}	
 }
