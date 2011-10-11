@@ -377,7 +377,7 @@ abstract public class DiagramPaster
 	
 	private BaseObject createObject(int type) throws CommandFailedException
 	{
-		CommandCreateObject createObject = new CommandCreateObject(type, null);
+		CommandCreateObject createObject = new CommandCreateObject(type);
 		getProject().executeCommand(createObject);
 		
 		ORef newObjectRef = createObject.getObjectRef();
