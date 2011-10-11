@@ -73,7 +73,7 @@ public class CommandCreateObject extends Command
 	{
 		try
 		{
-			createdId = project.createObject(type, createdId, parameter);
+			createdId = project.createObjectAndReturnId(type, createdId);
 		}
 		catch (Exception e)
 		{
