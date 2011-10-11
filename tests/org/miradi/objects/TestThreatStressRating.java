@@ -19,9 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
-import org.miradi.ids.BaseId;
-import org.miradi.objecthelpers.CreateThreatStressRatingParameter;
-import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 
 public class TestThreatStressRating extends ObjectTestCase
@@ -33,9 +30,6 @@ public class TestThreatStressRating extends ObjectTestCase
 	
 	public void testFields() throws Exception
 	{
-		ORef stressRef = new ORef(33, new BaseId(30));
-		ORef threatRef = new ORef(20, new BaseId(200));
-		CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(stressRef, threatRef);
-		verifyFields(ObjectType.THREAT_STRESS_RATING, extraInfo);
+		verifyFields(ObjectType.THREAT_STRESS_RATING);
 	}
 }

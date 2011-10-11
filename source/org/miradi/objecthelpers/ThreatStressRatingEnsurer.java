@@ -84,8 +84,7 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 		{
 			ORef stressRef = threatStressPair.getStressRef();
 			ORef threatRef = threatStressPair.getThreatRef();
-			CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(stressRef, threatRef);
-			CommandCreateObject createThreatStressRatingCommand = new CommandCreateObject(ThreatStressRating.getObjectType(), extraInfo);
+			CommandCreateObject createThreatStressRatingCommand = new CommandCreateObject(ThreatStressRating.getObjectType());
 			getProject().executeAsSideEffect(createThreatStressRatingCommand);
 			getProject().setObjectData(createThreatStressRatingCommand.getObjectRef(), ThreatStressRating.TAG_STRESS_REF, stressRef.toString());
 			getProject().setObjectData(createThreatStressRatingCommand.getObjectRef(), ThreatStressRating.TAG_THREAT_REF, threatRef.toString());

@@ -22,13 +22,10 @@ package org.miradi.main;
 import java.io.IOException;
 import java.util.Vector;
 
-import org.miradi.objecthelpers.CreateObjectParameter;
-import org.miradi.objecthelpers.CreateThreatStressRatingParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Task;
-import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.Project;
 import org.miradi.utils.NullProgressMeter;
 import org.miradi.utils.Translation;
@@ -73,22 +70,9 @@ public class ListAllFields
 
 	private static BaseObject createObject(Project project, int type) throws Exception
 	{
-		CreateObjectParameter extraInfo = createExtraInfo(type);
-		ORef ref = new ORef(type, project.createObjectAndReturnId(type, extraInfo));
+		ORef ref = new ORef(type, project.createObjectAndReturnId(type));
 		BaseObject object = project.findObject(ref);
 		return object;
-	}
-	
-	
-
-	private static CreateObjectParameter createExtraInfo(int type)
-	{
-		if(type == ThreatStressRating.getObjectType())
-		{
-			return new CreateThreatStressRatingParameter(ORef.INVALID, ORef.INVALID);
-		}
-		
-		return null;
 	}
 
 	private static void showField(BaseObject object, String tag)
