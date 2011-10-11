@@ -71,7 +71,11 @@ public class TestFactorLink extends ObjectTestCase
 
 	private FactorLink createFactorLink() throws Exception
 	{
-		return new FactorLink(getObjectManager(), id);
+		final FactorLink factorLink = new FactorLink(getObjectManager(), id);
+		factorLink.setData(FactorLink.TAG_FROM_REF, nodeA.getWrappedORef().toString());
+		factorLink.setData(FactorLink.TAG_TO_REF, nodeB.getWrappedORef().toString());
+		
+		return factorLink;
 	}
 	
 	private static final BaseId id = new BaseId(1);
