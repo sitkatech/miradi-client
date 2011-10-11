@@ -444,6 +444,9 @@ abstract public class DiagramPaster
 		CommandCreateObject createDiagramFactor = new CommandCreateObject(DiagramFactor.getObjectType(), extraInfo);
 		getProject().executeCommand(createDiagramFactor);
 		
+		final CommandSetObjectData setWrappedRefCommand = new CommandSetObjectData(createDiagramFactor.getObjectRef(), DiagramFactor.TAG_WRAPPED_REF, newWrappedRef.toString());
+		getProject().executeCommand(setWrappedRefCommand);
+		
 		return createDiagramFactor.getObjectRef();
 	}
 

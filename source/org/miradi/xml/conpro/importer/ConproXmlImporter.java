@@ -1166,6 +1166,8 @@ public class ConproXmlImporter implements ConProMiradiXml
 	{
 		CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(factorRef);
 		ORef diagramFactorRef = getProject().createObject(DiagramFactor.getObjectType(), extraInfo);
+		getProject().setObjectData(diagramFactorRef, DiagramFactor.TAG_WRAPPED_REF, factorRef.toString());
+		
 		wrappedToDiagramMap.put(factorRef, diagramFactorRef);
 		appendRefToDiagramObject(DiagramObject.TAG_DIAGRAM_FACTOR_IDS, diagramFactorRef);
 	}
@@ -1309,6 +1311,9 @@ public class ConproXmlImporter implements ConProMiradiXml
 		CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(createIntermediateResults.getObjectRef());
 		CommandCreateObject createDiagramFactor = new CommandCreateObject(DiagramFactor.getObjectType(), extraInfo);
 		getProject().executeCommand(createDiagramFactor);
+		
+		final CommandSetObjectData setWrappedRefCommand = new CommandSetObjectData(createDiagramFactor.getObjectRef(), DiagramFactor.TAG_WRAPPED_REF, createIntermediateResults.getObjectRef().toString());
+		getProject().executeCommand(setWrappedRefCommand);
 		
 		CommandSetObjectData setLocation = new CommandSetObjectData(createDiagramFactor.getObjectRef(), DiagramFactor.TAG_LOCATION, EnhancedJsonObject.convertFromPoint(location));
 		getProject().executeCommand(setLocation);

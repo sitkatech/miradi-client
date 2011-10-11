@@ -621,6 +621,9 @@ public class TestProject extends MiradiTestCase
 		CommandCreateObject createDiagramFactorCommand = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraDiagramFactorInfo);
 		project.executeCommand(createDiagramFactorCommand);
 		
+		final CommandSetObjectData setWrappedRefCommand = new CommandSetObjectData(createDiagramFactorCommand.getObjectRef(), DiagramFactor.TAG_WRAPPED_REF, factorRef.toString());
+		project.executeCommand(setWrappedRefCommand);
+		
 		DiagramFactorId diagramFactorId = (DiagramFactorId) createDiagramFactorCommand.getCreatedId();
 		DiagramObject diagramObject = project.getTestingDiagramObject();
 		CommandSetObjectData addDiagramFactor = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, diagramFactorId);
@@ -640,51 +643,56 @@ public class TestProject extends MiradiTestCase
 		CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(targetRef);
 		CommandCreateObject createDiagramFactor = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraDiagramFactorInfo);
 		project.executeCommand(createDiagramFactor);
-		assertEquals(1 + existingCalls, database.callsToWriteObject);
+		final CommandSetObjectData setWrappedRefCommand = new CommandSetObjectData(createDiagramFactor.getObjectRef(), DiagramFactor.TAG_WRAPPED_REF, factorRef.toString());
+		project.executeCommand(setWrappedRefCommand);
+		assertEquals(2 + existingCalls, database.callsToWriteObject);
 		
 		DiagramFactorId diagramFactorId = (DiagramFactorId) createDiagramFactor.getCreatedId();
 		DiagramObject diagramObject = project.getTestingDiagramObject();
 		CommandSetObjectData addDiagramFactor = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, diagramFactorId);
 		project.executeCommand(addDiagramFactor);
-		assertEquals(2 + existingCalls, database.callsToWriteObject);
+		assertEquals(3 + existingCalls, database.callsToWriteObject);
 		
 		CreateDiagramFactorParameter extraDiagramFactorInfo2 = new CreateDiagramFactorParameter(factorRef);
 		CommandCreateObject createDiagramFactor2 = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraDiagramFactorInfo2);
 		project.executeCommand(createDiagramFactor2);
-		assertEquals(3 + existingCalls, database.callsToWriteObject);
+		final CommandSetObjectData setWrappedRefCommand2 = new CommandSetObjectData(createDiagramFactor2.getObjectRef(), DiagramFactor.TAG_WRAPPED_REF, factorRef.toString());
+		project.executeCommand(setWrappedRefCommand2);
+		assertEquals(4 + existingCalls, database.callsToWriteObject);
 		
 		DiagramFactorId diagramFactorId2 = (DiagramFactorId) createDiagramFactor2.getCreatedId();
 		CommandSetObjectData addDiagramFactor2 = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, diagramFactorId2);
 		project.executeCommand(addDiagramFactor2);
-		assertEquals(4 + existingCalls, database.callsToWriteObject);
+		assertEquals(5 + existingCalls, database.callsToWriteObject);
 		FactorCell factor = project.getTestingDiagramModel().getFactorCellByWrappedRef(factorRef);
 		
 		// undo the AddNode
 		project.undo();
-		assertEquals(5 + existingCalls, database.callsToWriteObject);
+		assertEquals(6 + existingCalls, database.callsToWriteObject);
 		
-		// undo the create diagram factor
+		// undo the create diagram factor and setting its wrapped ref
 		project.undo();
-		assertEquals(5 + existingCalls, database.callsToWriteObject);
+		project.undo();
+		assertEquals(7 + existingCalls, database.callsToWriteObject);
 		
 		// redo the created diagram factor
 		project.redo();
-		assertEquals(6 + existingCalls, database.callsToWriteObject);
+		assertEquals(8 + existingCalls, database.callsToWriteObject);
 		
 		// redo the add diagram factor
 		project.redo();
-		assertEquals(7 + existingCalls, database.callsToWriteObject);
+		assertEquals(9 + existingCalls, database.callsToWriteObject);
 
 		String previousLocation = EnhancedJsonObject.convertFromPoint(new Point(5, 5));
 		String newLocation = EnhancedJsonObject.convertFromPoint(new Point(9, 9));
 		CommandSetObjectData moveDiagramFactor = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, factor.getDiagramFactorId(), DiagramFactor.TAG_LOCATION, newLocation);
 		moveDiagramFactor.setPreviousDataValue(previousLocation);
 		project.executeCommand(moveDiagramFactor);
-		assertEquals(8 + existingCalls, database.callsToWriteObject);
+		assertEquals(10 + existingCalls, database.callsToWriteObject);
 		
 		String newDimension = EnhancedJsonObject.convertFromDimension(new Dimension(50, 75));
 		project.executeCommand(new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, factor.getDiagramFactorId(), DiagramFactor.TAG_SIZE, newDimension));
-		assertEquals(9 + existingCalls, database.callsToWriteObject);
+		assertEquals(11 + existingCalls, database.callsToWriteObject);
 	}	
 	
 	public void testLinkagePool() throws Exception

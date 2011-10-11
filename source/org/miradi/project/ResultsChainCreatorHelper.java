@@ -249,6 +249,9 @@ public class ResultsChainCreatorHelper
 		CommandCreateObject createDiagramFactor = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraDiagramFactorInfo);
 		getProject().executeCommand(createDiagramFactor);
 		
+		final CommandSetObjectData setWrappedRefCommand = new CommandSetObjectData(createDiagramFactor.getObjectRef(), DiagramFactor.TAG_WRAPPED_REF, factorRef.toString());
+		getProject().executeCommand(setWrappedRefCommand);
+		
 		DiagramFactorId newlyCreatedId = (DiagramFactorId) createDiagramFactor.getCreatedId();
 		Command[] commandsToClone = diagramFactorToBeCloned.createCommandsToMirror(newlyCreatedId);
 		getProject().executeCommands(commandsToClone);

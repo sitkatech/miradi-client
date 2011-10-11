@@ -72,6 +72,9 @@ public class FactorCommandHelper
 		CommandCreateObject createDiagramFactor = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraDiagramFactorInfo);
 		executeCommand(createDiagramFactor);
 		
+		final CommandSetObjectData setWrappedRefCommand = new CommandSetObjectData(createDiagramFactor.getObjectRef(), DiagramFactor.TAG_WRAPPED_REF, factorRef.toString());
+		executeCommand(setWrappedRefCommand);
+		
 		DiagramFactorId diagramFactorId = (DiagramFactorId) createDiagramFactor.getCreatedId();
 		CommandSetObjectData addDiagramFactor = CommandSetObjectData.createAppendIdCommand(diagramObjectToUse, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, diagramFactorId);
 		executeCommand(addDiagramFactor);

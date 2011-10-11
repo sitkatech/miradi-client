@@ -108,6 +108,7 @@ public class TestLayerManager extends MiradiTestCase
 		FactorId strategyFactorId = new FactorId(id);
 		CreateDiagramFactorParameter strategyExtraInfo = new CreateDiagramFactorParameter(new ORef(ObjectType.STRATEGY, strategyFactorId));
 		DiagramFactor strategyDiagramFactor = new DiagramFactor(project.getObjectManager(), diagramFactorId, strategyExtraInfo);
+		strategyDiagramFactor.setData(DiagramFactor.TAG_WRAPPED_REF, new ORef(Strategy.getObjectType(), strategyFactorId).toString());
 		
 		return strategyDiagramFactor;
 	}
