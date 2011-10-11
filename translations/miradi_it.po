@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-10 14:56-0500\n"
+"POT-Creation-Date: 2011-10-11 12:44-0500\n"
 "PO-Revision-Date: 2011-04-29 11:26+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -2721,16 +2721,16 @@ msgstr "Calendario"
 msgid "Calibri"
 msgstr "Calibri"
 
-#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:110
-#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:119
+#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:109
+#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:118
 msgid "Can't Create Link"
 msgstr "Non posso creare il link"
 
-#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:118
+#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:117
 msgid "Can't link a group to an item it contains"
 msgstr "Non posso linkare un gruppo ad un oggetto che lo contiene"
 
-#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:109
+#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:108
 msgid "Can't link an item to itself"
 msgstr "Non posso creare un link di un oggetto a se stesso"
 
@@ -3777,7 +3777,7 @@ msgstr ""
 "Il nome del file  deve contenere solo caratteri alpha numerici e/o '_' ."
 
 #: Miradi/source/org/miradi/xml/AbstractXmlImporter.java:90
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:174
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:173
 msgid "File to import does not validate."
 msgstr "Il file da importare non è valido."
 
@@ -4138,7 +4138,7 @@ msgstr "Nascondi le colonne trimestre"
 msgid "High"
 msgstr "Alto"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1390
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1388
 msgid "High/Very-High Threat Chains"
 msgstr "Alta/molto-alta Catene di PressionI"
 
@@ -4336,7 +4336,7 @@ msgstr ""
 "preciso, coerente e sensibile. In Miradi, un Indicatore è rappresentato da "
 "un triangolo viola."
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1290
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1288
 msgid "Indicator Holder"
 msgstr "Indicatore di possesso"
 
@@ -4820,7 +4820,7 @@ msgstr ""
 msgid "Low"
 msgstr "Basso"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1391
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1389
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr "Catene della Pressione Bassa/Media/Non Valutata"
 
@@ -5399,7 +5399,7 @@ msgstr "NOn specificato"
 msgid "Not Started"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:648
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:647
 msgid "Not all classification Codes could imported."
 msgstr "Non tutti i codici di classificazione possono essere importati."
 
@@ -5444,7 +5444,7 @@ msgstr ""
 "Pressione critica. In Miradi, un Obiettivo Gestionale è rappresentato da un "
 "piccolo rettangolo blu."
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1284
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1282
 msgid "Objective Holder"
 msgstr "Obiettivo Gestionale Holder"
 
@@ -5624,7 +5624,7 @@ msgstr "Rosa"
 msgid "Place scope on diagram"
 msgstr "Inserisci l'Ambito nel diagramma"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1280
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1278
 msgid "Placeholder - From ConPro"
 msgstr "Segnaposto - Da ConPro"
 
@@ -6040,7 +6040,7 @@ msgstr "Risorse"
 msgid "Resources:"
 msgstr "Risorse:"
 
-#: Miradi/source/org/miradi/project/ResultsChainCreatorHelper.java:195
+#: Miradi/source/org/miradi/project/ResultsChainCreatorHelper.java:194
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:70
 #: Miradi/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:35
 msgid "Results Chain"
@@ -8765,7 +8765,7 @@ msgstr "[Diagramma Principale]"
 msgid "[NOT SPECIFIED]"
 msgstr "[NON SPECIFICATO]"
 
-#: Miradi/source/org/miradi/project/ResultsChainCreatorHelper.java:173
+#: Miradi/source/org/miradi/project/ResultsChainCreatorHelper.java:172
 msgid "[New Results Chain]"
 msgstr "[Nuova catena dei risultati]"
 
