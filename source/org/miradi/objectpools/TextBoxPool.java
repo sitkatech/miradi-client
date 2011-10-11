@@ -22,7 +22,6 @@ package org.miradi.objectpools;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdAssigner;
-import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.TextBox;
@@ -46,7 +45,7 @@ public class TextBoxPool extends EAMNormalObjectPool
 	}
 
 	@Override
-	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)
+	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId)
 	{
 		return new TextBox(objectManager, new FactorId(actualId.asInt()));
 	}

@@ -25,7 +25,6 @@ import java.util.Vector;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdAssigner;
-import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
@@ -49,7 +48,7 @@ public class CausePool extends EAMNormalObjectPool
 	}
 	
 	@Override
-	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo) throws Exception
+	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId) throws Exception
 	{
 		return new Cause(objectManager ,new FactorId(actualId.asInt()));
 	}

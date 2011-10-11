@@ -21,7 +21,6 @@ package org.miradi.objectpools;
 
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdAssigner;
-import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.BaseObject;
@@ -45,7 +44,7 @@ public class AssignmentPool extends EAMNormalObjectPool
 	}
 	
 	@Override
-	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo) throws Exception
+	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId) throws Exception
 	{
 		return new ResourceAssignment(objectManager ,actualId);
 	}

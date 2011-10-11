@@ -21,7 +21,6 @@ package org.miradi.objectpools;
 
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdAssigner;
-import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.TncProjectData;
 import org.miradi.project.ObjectManager;
@@ -44,7 +43,7 @@ public class TncProjectDataPool extends EAMNormalObjectPool
 	}
 
 	@Override
-	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)
+	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId)
 	{
 		return new TncProjectData(objectManager, new BaseId(actualId.asInt()));
 	}
