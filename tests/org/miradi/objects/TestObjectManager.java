@@ -114,7 +114,7 @@ public class TestObjectManager extends MiradiTestCase
 
 	public void testObjectLifecycles() throws Exception
 	{
-		int[] types = new int[] {
+		int[] representativeSampleOfTypes = new int[] {
 			ObjectType.RATING_CRITERION, 
 			ObjectType.VALUE_OPTION,  
 			ObjectType.VIEW_DATA, 
@@ -125,9 +125,9 @@ public class TestObjectManager extends MiradiTestCase
 			ObjectType.PROJECT_METADATA,
 		};
 		
-		for(int i = 0; i < types.length; ++i)
+		for(int i = 0; i < representativeSampleOfTypes.length; ++i)
 		{
-			verifyObjectLifecycle(types[i]);
+			verifyObjectLifecycle(representativeSampleOfTypes[i]);
 		}
 		
 		verifyObjectLifecycle(ObjectType.CAUSE);
