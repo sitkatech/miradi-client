@@ -21,7 +21,6 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.project.ProjectForTesting;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class TestFactorLink extends ObjectTestCase
@@ -35,19 +34,11 @@ public class TestFactorLink extends ObjectTestCase
 	public void setUp() throws Exception
 	{
 		super.setUp();
-		project = new ProjectForTesting(getName());
-		nodeA = project.createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
-		nodeB = project.createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
+		
+		nodeA = getProject().createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
+		nodeB = getProject().createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
 	}
-
-	@Override
-	public void tearDown() throws Exception
-	{
-		project.close();
-		project = null;
-		super.tearDown();
-	}
-
+	
 	public void testBasics() throws Exception
 	{
 		FactorLink linkageData = createFactorLink();
@@ -63,7 +54,7 @@ public class TestFactorLink extends ObjectTestCase
 	{
 		FactorLink original = createFactorLink();
 		EnhancedJsonObject json = original.toJson();
-		FactorLink gotBack = (FactorLink)BaseObject.createFromJson(project.getObjectManager(), original.getType(), json);
+		FactorLink gotBack = (FactorLink)BaseObject.createFromJson(getProject().getObjectManager(), original.getType(), json);
 		assertEquals("wrong id?", original.getId(), gotBack.getId());
 		assertEquals("wrong from?", original.getFromFactorRef(), gotBack.getFromFactorRef());
 		assertEquals("wrong to?", original.getToFactorRef(), gotBack.getToFactorRef());
@@ -81,5 +72,4 @@ public class TestFactorLink extends ObjectTestCase
 	private static final BaseId id = new BaseId(1);
 	private DiagramFactor nodeA;
 	private DiagramFactor nodeB;
-	private ProjectForTesting project;
 }
