@@ -30,17 +30,6 @@ public class TestFactorLink extends ObjectTestCase
 	{
 		super(name);
 	}
-
-	public void testBasics() throws Exception
-	{
-		FactorLink linkageData = new FactorLink(getObjectManager(), id);
-		assertEquals("Id not the same?", id, linkageData.getId());
-	}
-
-	public void testFields() throws Exception
-	{
-		verifyFields(ObjectType.FACTOR_LINK);
-	}
 	
 	@Override
 	public void setUp() throws Exception
@@ -59,6 +48,17 @@ public class TestFactorLink extends ObjectTestCase
 		super.tearDown();
 	}
 
+	public void testBasics() throws Exception
+	{
+		FactorLink linkageData = new FactorLink(getObjectManager(), id);
+		assertEquals("Id not the same?", id, linkageData.getId());
+	}
+
+	public void testFields() throws Exception
+	{
+		verifyFields(ObjectType.FACTOR_LINK);
+	}
+	
 	public void testToJson() throws Exception
 	{
 		FactorLink original = new FactorLink(getObjectManager(), id);
