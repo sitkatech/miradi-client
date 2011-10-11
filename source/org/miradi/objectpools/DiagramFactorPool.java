@@ -22,7 +22,6 @@ package org.miradi.objectpools;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.IdAssigner;
-import org.miradi.objecthelpers.CreateDiagramFactorParameter;
 import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
@@ -51,7 +50,7 @@ public class DiagramFactorPool extends EAMNormalObjectPool
 	{
 		DiagramFactorId diagramFactorId = new DiagramFactorId(actualId.asInt());
 		
-		return new DiagramFactor(objectManager, diagramFactorId, (CreateDiagramFactorParameter)extraInfo);
+		return new DiagramFactor(objectManager, diagramFactorId);
 	}
 	
 	public DiagramFactorId[] getDiagramFactorIds()

@@ -46,7 +46,7 @@ import org.miradi.utils.EnhancedJsonObject;
 
 public class DiagramFactor extends BaseObject
 {
-	public DiagramFactor(ObjectManager objectManager, DiagramFactorId diagramFactorIdToUse, CreateDiagramFactorParameter extraInfo) throws Exception
+	public DiagramFactor(ObjectManager objectManager, DiagramFactorId diagramFactorIdToUse) throws Exception
 	{
 		super(objectManager, diagramFactorIdToUse);
 		
