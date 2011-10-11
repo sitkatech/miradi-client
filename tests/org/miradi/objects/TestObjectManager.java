@@ -78,7 +78,7 @@ public class TestObjectManager extends MiradiTestCase
 		ObjectManager localManager = localProject.getObjectManager();
 		try
 		{
-			BaseId createdId = localManager.createObject(ObjectType.ACCOUNTING_CODE, BaseId.INVALID, null);
+			BaseId createdId = localManager.createObject(ObjectType.ACCOUNTING_CODE, BaseId.INVALID);
 			ORef ref = new ORef(ObjectType.ACCOUNTING_CODE, createdId);
 			AccountingCode accountingCode = AccountingCode.find(localProject, ref);
 	
@@ -204,7 +204,7 @@ public class TestObjectManager extends MiradiTestCase
 	
 	private void verifyObjectLifecycle(int type) throws Exception
 	{
-		BaseId createdId = manager.createObject(type, BaseId.INVALID, null);
+		BaseId createdId = manager.createObject(type, BaseId.INVALID);
 		verifyBasicObjectLifecycle(type, createdId);
 		verifyObjectWriteAndRead(type);
 		verifyGetPool(type, createdId);
@@ -243,7 +243,7 @@ public class TestObjectManager extends MiradiTestCase
 		}
 		
 		BaseId desiredId = new BaseId(2323);
-		assertEquals(type + " didn't use requested id?", desiredId, manager.createObject(type, desiredId, null));
+		assertEquals(type + " didn't use requested id?", desiredId, manager.createObject(type, desiredId));
 	}
 
 	private void verifyObjectWriteAndRead(int type) throws IOException, Exception

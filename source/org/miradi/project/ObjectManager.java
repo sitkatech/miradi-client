@@ -31,7 +31,6 @@ import org.miradi.diagram.ChainWalker;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
@@ -343,7 +342,7 @@ public class ObjectManager
 		return (ObjectTreeTableConfigurationPool) getPool(ObjectTreeTableConfiguration.getObjectType());
 	}
 
-	public BaseId createObject(int objectType, BaseId objectId, CreateObjectParameter extraInfo) throws Exception
+	public BaseId createObject(int objectType, BaseId objectId) throws Exception
 	{
 		BaseId createdId = BaseId.INVALID;
 		EAMNormalObjectPool pool = (EAMNormalObjectPool)getPool(objectType);
