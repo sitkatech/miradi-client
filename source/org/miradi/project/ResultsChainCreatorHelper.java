@@ -35,9 +35,8 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.CreateDiagramLinkParameter;
 import org.miradi.objecthelpers.CreateDiagramFactorParameter;
-import org.miradi.objecthelpers.CreateObjectParameter;
+import org.miradi.objecthelpers.CreateDiagramLinkParameter;
 import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -538,20 +537,24 @@ public class ResultsChainCreatorHelper
 		DiagramFactor toDiagramFactor = diagramLink.getToDiagramFactor();
 		DiagramFactor toClonedDiagramFactor = (DiagramFactor) diagramFactors.get(toDiagramFactor);
 		
-		CreateObjectParameter extraInfo = createDiagramLinkExtraInfo(diagramLink, fromDiagramFactor, fromClonedDiagramFactor, toDiagramFactor, toClonedDiagramFactor);
-		CommandCreateObject createDiagramLink = new CommandCreateObject(ObjectType.DIAGRAM_LINK, extraInfo);
+		CreateDiagramLinkParameter extraInfo = createDiagramLinkExtraInfo(diagramLink, fromDiagramFactor, fromClonedDiagramFactor, toDiagramFactor, toClonedDiagramFactor);
+		CommandCreateObject createDiagramLink = new CommandCreateObject(ObjectType.DIAGRAM_LINK);
 		getProject().executeCommand(createDiagramLink);
 
 		DiagramLink newlyCreated = (DiagramLink) getProject().findObject(createDiagramLink.getObjectRef());
+		getProject().executeCommand(new CommandSetObjectData(newlyCreated, DiagramLink.TAG_WRAPPED_ID, extraInfo.getFactorLinkRef().getObjectId().toString()));
+		getProject().executeCommand(new CommandSetObjectData(newlyCreated, DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID, extraInfo.getFromDiagramFactorRef().getObjectId().toString()));
+		getProject().executeCommand(new CommandSetObjectData(newlyCreated, DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID, extraInfo.getToDiagramFactorRef().getObjectId().toString()));
+
 		PointList bendPoints = diagramLink.getBendPoints();
 		CommandSetObjectData setBendPoints = CommandSetObjectData.createNewPointList(newlyCreated, DiagramLink.TAG_BEND_POINTS, bendPoints);
 		getProject().executeCommand(setBendPoints);
-
+		
 		return newlyCreated;
 	}
 	
 	
-	private CreateObjectParameter createDiagramLinkExtraInfo(DiagramLink diagramLink, DiagramFactor from, DiagramFactor fromCloned, DiagramFactor to, DiagramFactor toCloned) throws Exception
+	private CreateDiagramLinkParameter createDiagramLinkExtraInfo(DiagramLink diagramLink, DiagramFactor from, DiagramFactor fromCloned, DiagramFactor to, DiagramFactor toCloned) throws Exception
 	{
 		if (areSharingTheSameFactor(from, fromCloned, to, toCloned))
 			return new CreateDiagramLinkParameter(diagramLink.getWrappedId(), fromCloned.getDiagramFactorId(), toCloned.getDiagramFactorId());
