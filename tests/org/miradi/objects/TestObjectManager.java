@@ -21,7 +21,6 @@ package org.miradi.objects;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.ParseException;
 
 import org.martus.util.DirectoryUtils;
 import org.miradi.database.ObjectManifest;
@@ -207,17 +206,12 @@ public class TestObjectManager extends MiradiTestCase
 	
 	private void verifyObjectLifecycle(int type) throws Exception
 	{
-		verifyBasicObjectLifecycle(type);
+		BaseId createdId = manager.createObject(type, BaseId.INVALID, null);
+		verifyBasicObjectLifecycle(type, createdId);
 		verifyObjectWriteAndRead(type);
 		verifyGetPool(type);
 	}
 	
-	private void verifyBasicObjectLifecycle(int type) throws Exception, IOException, ParseException
-	{
-		BaseId createdId = manager.createObject(type, BaseId.INVALID, null);
-		verifyBasicObjectLifecycle(type, createdId);
-	}
-
 	public void verifyBasicObjectLifecycle(int type, BaseId createdId) throws Exception
 	{
 		assertNotEquals(type + " Created with invalid id", BaseId.INVALID, createdId);
