@@ -23,7 +23,6 @@ import java.util.HashMap;
 
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.BaseId;
-import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
@@ -44,7 +43,6 @@ public class CommandDeleteObject extends Command
 	{
 		type = objectType;
 		id = objectId;
-		reverseExtraInfo = null;
 	}
 	
 	public int getObjectType()
@@ -74,7 +72,6 @@ public class CommandDeleteObject extends Command
 		try
 		{
 			BaseObject object = project.findObject(type, id);
-			reverseExtraInfo = object.getCreationExtraInfo();
 			project.deleteObject(object);
 		}
 		catch (Exception e)
@@ -86,7 +83,7 @@ public class CommandDeleteObject extends Command
 	@Override
 	public Command getReverseCommand() throws CommandFailedException
 	{
-		CommandCreateObject command = new CommandCreateObject(type, reverseExtraInfo);
+		CommandCreateObject command = new CommandCreateObject(type);
 		command.setCreatedId(id);
 		return command;
 	}
@@ -110,5 +107,5 @@ public class CommandDeleteObject extends Command
 
 	int type;
 	BaseId id;
-	CreateObjectParameter reverseExtraInfo;
+	
 }
