@@ -134,7 +134,7 @@ public class CommandExecutor
 		executeSingleCommand(new CommandBeginTransaction());
 	}
 	
-	public void executeCommandAsTransaction(Command command) throws CommandFailedException
+	public void executeCommand(Command command) throws CommandFailedException
 	{
 		CommandVector singleItemList = new CommandVector();
 		singleItemList.add(command);
