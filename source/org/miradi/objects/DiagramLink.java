@@ -49,7 +49,7 @@ import org.miradi.utils.PointList;
 
 public class DiagramLink extends BaseObject
 {
-	public DiagramLink(ObjectManager objectManager, BaseId idToUse, CreateDiagramLinkParameter extraInfo) throws Exception
+	public DiagramLink(ObjectManager objectManager, BaseId idToUse) throws Exception
 	{
 		super(objectManager, new DiagramLinkId(idToUse.asInt()));
 	}
