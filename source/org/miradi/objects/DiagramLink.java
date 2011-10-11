@@ -52,10 +52,6 @@ public class DiagramLink extends BaseObject
 	public DiagramLink(ObjectManager objectManager, BaseId idToUse, CreateDiagramLinkParameter extraInfo) throws Exception
 	{
 		super(objectManager, new DiagramLinkId(idToUse.asInt()));
-		
-		setData(TAG_WRAPPED_ID, extraInfo.getFactorLinkRef().getObjectId().toString());
-		setData(TAG_FROM_DIAGRAM_FACTOR_ID, extraInfo.getFromDiagramFactorRef().getObjectId().toString());
-		setData(TAG_TO_DIAGRAM_FACTOR_ID, extraInfo.getToDiagramFactorRef().getObjectId().toString());
 	}
 	
 	public DiagramLink(ObjectManager objectManager, int idToUse, EnhancedJsonObject json) throws Exception
