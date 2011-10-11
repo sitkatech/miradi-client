@@ -161,11 +161,23 @@ public class TestDiagramPaster extends TestCaseWithProject
 	{
 		public void commandExecuted(CommandExecutedEvent event)
 		{
-			if (event.isSetDataCommandWithThisTypeAndTag(ThreatStressRating.getObjectType(), ThreatStressRating.TAG_STRESS_REF))
+			if (hasRefChanged(event, ThreatStressRating.TAG_STRESS_REF))
 				fail("ThreatStressRating's stress ref should not be changed during paste");
 			
-			if (event.isSetDataCommandWithThisTypeAndTag(ThreatStressRating.getObjectType(), ThreatStressRating.TAG_THREAT_REF))
+			if (hasRefChanged(event, ThreatStressRating.TAG_THREAT_REF))
 				fail("ThreatStressRating's threat ref should not be changed during paste");
+		}
+
+		public boolean hasRefChanged(CommandExecutedEvent event, final String tag)
+		{
+			if (!event.isSetDataCommandWithThisType(ThreatStressRating.getObjectType()))
+				return false;
+			
+			CommandSetObjectData setCommand = event.getSetCommand();
+			if (!setCommand.getFieldTag().equals(tag))
+				return false;
+			
+			return !setCommand.getDataValue().equals(setCommand.getPreviousDataValue());
 		}
 	}
 	
