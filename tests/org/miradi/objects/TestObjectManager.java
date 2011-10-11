@@ -123,14 +123,13 @@ public class TestObjectManager extends MiradiTestCase
 			ObjectType.OBJECTIVE,
 			ObjectType.GOAL,
 			ObjectType.PROJECT_METADATA,
+			ObjectType.CAUSE,
 		};
 		
 		for(int i = 0; i < representativeSampleOfTypes.length; ++i)
 		{
 			verifyObjectLifecycle(representativeSampleOfTypes[i]);
 		}
-		
-		verifyObjectLifecycle(ObjectType.CAUSE);
 	}
 
 	public void testPseudoTagTargetViability() throws Exception
