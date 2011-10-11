@@ -30,15 +30,6 @@ public class TestFactorLink extends ObjectTestCase
 		super(name);
 	}
 	
-	@Override
-	public void setUp() throws Exception
-	{
-		super.setUp();
-		
-		nodeA = getProject().createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
-		nodeB = getProject().createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
-	}
-	
 	public void testBasics() throws Exception
 	{
 		FactorLink linkageData = createFactorLink();
@@ -62,6 +53,8 @@ public class TestFactorLink extends ObjectTestCase
 
 	private FactorLink createFactorLink() throws Exception
 	{
+		DiagramFactor nodeA = getProject().createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
+		DiagramFactor nodeB = getProject().createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
 		final FactorLink factorLink = new FactorLink(getObjectManager(), id);
 		factorLink.setData(FactorLink.TAG_FROM_REF, nodeA.getWrappedORef().toString());
 		factorLink.setData(FactorLink.TAG_TO_REF, nodeB.getWrappedORef().toString());
@@ -70,6 +63,4 @@ public class TestFactorLink extends ObjectTestCase
 	}
 	
 	private static final BaseId id = new BaseId(1);
-	private DiagramFactor nodeA;
-	private DiagramFactor nodeB;
 }
