@@ -698,7 +698,7 @@ public class TestProject extends MiradiTestCase
 		FactorCell nodeB = project.createFactorCell(ObjectType.TARGET);
 		ORef refA = nodeA.getWrappedFactorRef();
 		ORef refB = nodeB.getWrappedFactorRef();
-		BaseId createdId = project.createObject(ObjectType.FACTOR_LINK, idAssigner.takeNextId(), null);
+		BaseId createdId = project.createObjectAndReturnId(ObjectType.FACTOR_LINK, idAssigner.takeNextId());
 		final ORef factorLinkRef = new ORef(ObjectType.FACTOR_LINK, createdId);
 		project.setObjectData(factorLinkRef, FactorLink.TAG_FROM_REF, nodeA.getWrappedFactorRef().toString());
 		project.setObjectData(factorLinkRef, FactorLink.TAG_TO_REF, nodeB.getWrappedFactorRef().toString());
