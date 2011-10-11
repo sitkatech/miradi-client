@@ -143,10 +143,10 @@ public class CommandExecutor
 	
 	public void executeCommandsAsTransaction(CommandVector commands) throws CommandFailedException
 	{
-		executeCommandsAsTransaction(commands.toArray(new Command[0]));
+		executeCommands(commands.toArray(new Command[0]));
 	}
 	
-	public void executeCommandsAsTransaction(Command[] commands) throws CommandFailedException
+	public void executeCommands(Command[] commands) throws CommandFailedException
 	{
 		executeCommand(new CommandBeginTransaction());
 		try
