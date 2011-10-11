@@ -22,7 +22,6 @@ package org.miradi.utils;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.TestCaseWithProject;
-import org.miradi.objecthelpers.CreateDiagramLinkParameter;
 import org.miradi.objecthelpers.CreateDiagramFactorParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -123,9 +122,8 @@ public class TestDiagramCorruptionDetector extends TestCaseWithProject
 			ORef groupBoxDiagramFactorRef, ORef targetDiagramFactorRef)
 			throws Exception
 	{
-		CreateDiagramLinkParameter diagramLinkExtraInfo = new CreateDiagramLinkParameter(targetDiagramFactorRef, groupBoxDiagramFactorRef);
-		
-		ORef diagramLinkRef = getProject().createObject(DiagramLink.getObjectType(), diagramLinkExtraInfo);
+		ORef diagramLinkRef = getProject().createObject(DiagramLink.getObjectType());
+		//NOTE: we are not setting diagramLink's wrapped ref due to it being a Group box link
 		getProject().setObjectData(diagramLinkRef, DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID, targetDiagramFactorRef.getObjectId().toString());
     	getProject().setObjectData(diagramLinkRef, DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID, groupBoxDiagramFactorRef.getObjectId().toString());
 		

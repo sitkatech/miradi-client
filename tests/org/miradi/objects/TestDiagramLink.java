@@ -31,7 +31,6 @@ import org.miradi.diagram.cells.LinkCell;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.DiagramLinkId;
-import org.miradi.objecthelpers.CreateDiagramLinkParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.FactorCommandHelper;
@@ -76,9 +75,8 @@ public class TestDiagramLink extends ObjectTestCase
 		DiagramFactor diagramFactor2 = project.createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
 		BaseId factorLinkId = new BaseId(44);
 		createDiagramFactorLink(project, diagramFactor1.getWrappedORef(), diagramFactor2.getWrappedORef(), factorLinkId);
-		CreateDiagramLinkParameter extraInfo = new CreateDiagramLinkParameter(factorLinkId, diagramFactor1.getDiagramFactorId(), diagramFactor2.getDiagramFactorId());
-
-		verifyFields(ObjectType.DIAGRAM_LINK, extraInfo);
+		
+		verifyFields(ObjectType.DIAGRAM_LINK);
 	}
 
 	public void testBasics() throws Exception
@@ -106,18 +104,14 @@ public class TestDiagramLink extends ObjectTestCase
 		
 		BaseId linkId = new BaseId(5);
 		DiagramLinkId id = new DiagramLinkId(17);
-		CreateDiagramLinkParameter extraInfoForTestIds = new CreateDiagramLinkParameter(linkId, factor.getDiagramFactorId(), diagramTarget.getDiagramFactorId());
 		DiagramLink linkage = new DiagramLink(getObjectManager(), id);
 		linkage.setData(DiagramLink.TAG_WRAPPED_ID, linkId.toString());
 		linkage.setData(DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID, factor.getDiagramFactorId().toString());
 		linkage.setData(DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID, diagramTarget.getDiagramFactorId().toString());
 		assertEquals(id, linkage.getDiagramLinkId());
 		assertEquals(linkId, linkage.getWrappedId());
-		
-		CreateDiagramLinkParameter gotExtraInfo = (CreateDiagramLinkParameter)linkage.getCreationExtraInfo();
-		assertEquals(extraInfoForTestIds.getFactorLinkRef(), gotExtraInfo.getFactorLinkRef());
-		assertEquals(extraInfoForTestIds.getFromDiagramFactorRef(), gotExtraInfo.getFromDiagramFactorRef());
-		assertEquals(extraInfoForTestIds.getToDiagramFactorRef(), gotExtraInfo.getToDiagramFactorRef());
+		assertEquals(factor.getDiagramFactorRef(), linkage.getFromDiagramFactorRef());
+		assertEquals(diagramTarget.getDiagramFactorRef(), linkage.getFromDiagramFactorRef());
 	}
 	
 	public void testLinkNodes() throws Exception
@@ -152,9 +146,8 @@ public class TestDiagramLink extends ObjectTestCase
 		FactorCell factorCell = diagramModel.getFactorCellByWrappedRef(strategyRef);
 		DiagramFactorId fromDiagramFactorId = factorCell.getDiagramFactorId();
 		DiagramFactorId toDiagramFactorId = diagramModel.getFactorCellByWrappedRef(factorRef).getDiagramFactorId();
-		CreateDiagramLinkParameter diagramLinkExtraInfo = new CreateDiagramLinkParameter(modelLinkageId, fromDiagramFactorId, toDiagramFactorId);
 		
-		CommandCreateObject createDiagramLinkCommand =  new CommandCreateObject(ObjectType.DIAGRAM_LINK, diagramLinkExtraInfo);
+		CommandCreateObject createDiagramLinkCommand =  new CommandCreateObject(ObjectType.DIAGRAM_LINK);
 		projectForTesting.executeCommand(createDiagramLinkCommand);
     	
     	final ORef diagramLinkRef = createDiagramLinkCommand.getObjectRef();

@@ -39,7 +39,6 @@ import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.main.TransferableMiradiList;
-import org.miradi.objecthelpers.CreateDiagramLinkParameter;
 import org.miradi.objecthelpers.CreateDiagramFactorParameter;
 import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ORef;
@@ -682,9 +681,9 @@ abstract public class DiagramPaster
 			if(factorLink != null)
 				newFactorLinkRef = factorLink.getRef();
 			
-			CreateDiagramLinkParameter extraInfo = createFactorLinkExtraInfo(fromDiagramFactor.getRef(), toDiagramFactor.getRef(), newFactorLinkRef);
 			int type = getTypeFromJson(diagramLinkJson);
-			DiagramLink newDiagramLink = (DiagramLink) createObject(type, extraInfo);
+			DiagramLink newDiagramLink = (DiagramLink) createObject(type);
+			//NOTE: we are not always setting diagramLink's wrapped ref due to it sometimes being a Group box link
 			if (newFactorLinkRef != null)
 				getProject().setObjectData(newDiagramLink.getRef(), DiagramLink.TAG_WRAPPED_ID, newFactorLinkRef.getObjectId().toString());
 	    	
@@ -760,14 +759,6 @@ abstract public class DiagramPaster
 			return ORef.INVALID;
 		
 		return newDiagramFactor.getRef();
-	}
-
-	private CreateDiagramLinkParameter createFactorLinkExtraInfo(ORef fromDiagramFactorRef, ORef toDiagramFactorRef, ORef newFactorLinkRef)
-	{
-		if (newFactorLinkRef == null)
-			return new CreateDiagramLinkParameter(fromDiagramFactorRef, toDiagramFactorRef);
-		
-		return new CreateDiagramLinkParameter(newFactorLinkRef, fromDiagramFactorRef, toDiagramFactorRef);
 	}
 
 	private boolean isPastingIntoResultsChain()

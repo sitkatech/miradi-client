@@ -46,7 +46,6 @@ import org.miradi.main.MiradiTestCase;
 import org.miradi.main.TransferableMiradiList;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.CreateDiagramFactorParameter;
-import org.miradi.objecthelpers.CreateDiagramLinkParameter;
 import org.miradi.objecthelpers.DirectThreatSet;
 import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORef;
@@ -917,8 +916,7 @@ public class TestProject extends MiradiTestCase
 		getProject().setObjectData(factorLinkRef, FactorLink.TAG_TO_REF, toDiagramFactor.getWrappedORef().toString());
 
 		
-		CreateDiagramLinkParameter extraInfo = new CreateDiagramLinkParameter(createdId, fromDiagramFactor.getDiagramFactorId(), toDiagramFactor.getDiagramFactorId());
-		ORef diagramLinkRef = project.createObject(DiagramLink.getObjectType(), extraInfo);
+		ORef diagramLinkRef = project.createObject(DiagramLink.getObjectType());
 		getProject().setObjectData(diagramLinkRef, DiagramLink.TAG_WRAPPED_ID, createdId.toString());
     	getProject().setObjectData(diagramLinkRef, DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID, fromDiagramFactor.getId().toString());
     	getProject().setObjectData(diagramLinkRef, DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID, toDiagramFactor.getId().toString());

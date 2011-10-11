@@ -22,16 +22,13 @@ package org.miradi.main;
 import java.io.IOException;
 import java.util.Vector;
 
-import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.CreateDiagramFactorParameter;
-import org.miradi.objecthelpers.CreateDiagramLinkParameter;
 import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.CreateThreatStressRatingParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.DiagramLink;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.Project;
@@ -90,14 +87,6 @@ public class ListAllFields
 	{
 		if(type == DiagramFactor.getObjectType())
 			return new CreateDiagramFactorParameter(ORef.INVALID); 
-		
-		if(type == DiagramLink.getObjectType())
-		{
-			BaseId factorLinkId = BaseId.INVALID;
-			BaseId fromId = BaseId.INVALID;
-			BaseId toId = BaseId.INVALID;
-			return new CreateDiagramLinkParameter(factorLinkId, fromId, toId);
-		}
 		
 		if(type == ThreatStressRating.getObjectType())
 		{
