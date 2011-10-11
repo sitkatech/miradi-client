@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-10 14:56-0500\n"
+"POT-Creation-Date: 2011-10-11 12:44-0500\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -2746,13 +2746,13 @@ msgstr "Kalender"
 msgid "Calibri"
 msgstr "Calibri"
 
-#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:110
-#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:119
+#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:109
+#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:118
 msgid "Can't Create Link"
 msgstr "Link kann nicht erstellt werden"
 
 # sehr lang!!!
-#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:118
+#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:117
 #, fuzzy
 msgid "Can't link a group to an item it contains"
 msgstr ""
@@ -2760,7 +2760,7 @@ msgstr ""
 "Gruppe ist"
 
 # verbunden oder verlinkt ?? Diskussion !!! (Felix)
-#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:109
+#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:108
 msgid "Can't link an item to itself"
 msgstr "Element kann nicht mit sich selbst verbunden werden"
 
@@ -3845,7 +3845,7 @@ msgstr ""
 "Dateiname darf nur Buchstaben, Ziffern und/oder Unterstriche enthalten."
 
 #: Miradi/source/org/miradi/xml/AbstractXmlImporter.java:90
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:174
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:173
 msgid "File to import does not validate."
 msgstr ""
 
@@ -4194,7 +4194,7 @@ msgstr "Quartalsspalte(n) verbergen"
 msgid "High"
 msgstr "Hoch"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1390
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1388
 msgid "High/Very-High Threat Chains"
 msgstr ""
 
@@ -4403,7 +4403,7 @@ msgid ""
 "by a purple triangle."
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1290
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1288
 msgid "Indicator Holder"
 msgstr ""
 
@@ -4887,7 +4887,7 @@ msgstr ""
 msgid "Low"
 msgstr "Niedrig"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1391
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1389
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr ""
 
@@ -5460,7 +5460,7 @@ msgstr "nicht spezif."
 msgid "Not Started"
 msgstr "Noch nicht begonnen"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:648
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:647
 msgid "Not all classification Codes could imported."
 msgstr "Nicht alle Klassifikationscodes konnten importiert werden. "
 
@@ -5499,7 +5499,7 @@ msgid ""
 "by a small blue rectangle."
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1284
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1282
 msgid "Objective Holder"
 msgstr ""
 
@@ -5690,7 +5690,7 @@ msgstr "Rosa"
 msgid "Place scope on diagram"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1280
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1278
 msgid "Placeholder - From ConPro"
 msgstr ""
 
@@ -6112,7 +6112,7 @@ msgstr "Ressourcen"
 msgid "Resources:"
 msgstr "Ressourcen:"
 
-#: Miradi/source/org/miradi/project/ResultsChainCreatorHelper.java:195
+#: Miradi/source/org/miradi/project/ResultsChainCreatorHelper.java:194
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:70
 #: Miradi/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:35
 msgid "Results Chain"
@@ -8869,7 +8869,7 @@ msgstr "[Hauptdiagramm]"
 msgid "[NOT SPECIFIED]"
 msgstr "[NICHT GENAUER BESCHRIEBEN]"
 
-#: Miradi/source/org/miradi/project/ResultsChainCreatorHelper.java:173
+#: Miradi/source/org/miradi/project/ResultsChainCreatorHelper.java:172
 msgid "[New Results Chain]"
 msgstr "[Neue Ergebniswirkungskette]"
 
