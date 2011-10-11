@@ -39,7 +39,6 @@ import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.main.TransferableMiradiList;
-import org.miradi.objecthelpers.CreateDiagramFactorParameter;
 import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -440,8 +439,7 @@ abstract public class DiagramPaster
 
 	private ORef createDiagramFactor(ORef newWrappedRef) throws CommandFailedException
 	{
-		CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(newWrappedRef);
-		CommandCreateObject createDiagramFactor = new CommandCreateObject(DiagramFactor.getObjectType(), extraInfo);
+		CommandCreateObject createDiagramFactor = new CommandCreateObject(DiagramFactor.getObjectType());
 		getProject().executeCommand(createDiagramFactor);
 		
 		final CommandSetObjectData setWrappedRefCommand = new CommandSetObjectData(createDiagramFactor.getObjectRef(), DiagramFactor.TAG_WRAPPED_REF, newWrappedRef.toString());

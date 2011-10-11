@@ -22,13 +22,11 @@ package org.miradi.main;
 import java.io.IOException;
 import java.util.Vector;
 
-import org.miradi.objecthelpers.CreateDiagramFactorParameter;
 import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.CreateThreatStressRatingParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.Project;
@@ -85,9 +83,6 @@ public class ListAllFields
 
 	private static CreateObjectParameter createExtraInfo(int type)
 	{
-		if(type == DiagramFactor.getObjectType())
-			return new CreateDiagramFactorParameter(ORef.INVALID); 
-		
 		if(type == ThreatStressRating.getObjectType())
 		{
 			return new CreateThreatStressRatingParameter(ORef.INVALID, ORef.INVALID);

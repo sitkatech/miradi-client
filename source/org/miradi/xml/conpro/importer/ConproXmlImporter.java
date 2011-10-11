@@ -48,7 +48,6 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.BooleanData;
-import org.miradi.objecthelpers.CreateDiagramFactorParameter;
 import org.miradi.objecthelpers.CreateThreatStressRatingParameter;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
@@ -1164,8 +1163,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 	
 	private void createDiagramFactorAndAddToDiagram(ORef factorRef) throws Exception
 	{
-		CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(factorRef);
-		ORef diagramFactorRef = getProject().createObject(DiagramFactor.getObjectType(), extraInfo);
+		ORef diagramFactorRef = getProject().createObject(DiagramFactor.getObjectType());
 		getProject().setObjectData(diagramFactorRef, DiagramFactor.TAG_WRAPPED_REF, factorRef.toString());
 		
 		wrappedToDiagramMap.put(factorRef, diagramFactorRef);
@@ -1308,8 +1306,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		CommandSetObjectData setName = new CommandSetObjectData(createIntermediateResults.getObjectRef(), IntermediateResult.TAG_LABEL, label);
 		getProject().executeCommand(setName);
 			
-		CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(createIntermediateResults.getObjectRef());
-		CommandCreateObject createDiagramFactor = new CommandCreateObject(DiagramFactor.getObjectType(), extraInfo);
+		CommandCreateObject createDiagramFactor = new CommandCreateObject(DiagramFactor.getObjectType());
 		getProject().executeCommand(createDiagramFactor);
 		
 		final CommandSetObjectData setWrappedRefCommand = new CommandSetObjectData(createDiagramFactor.getObjectRef(), DiagramFactor.TAG_WRAPPED_REF, createIntermediateResults.getObjectRef().toString());

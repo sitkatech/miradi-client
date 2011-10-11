@@ -29,8 +29,6 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.FactorId;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.CreateDiagramFactorParameter;
-import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
@@ -329,12 +327,6 @@ public class DiagramFactor extends BaseObject
 	public static DiagramFactor find(Project project, ORef diagramFactorRef)
 	{
 		return find(project.getObjectManager(), diagramFactorRef);
-	}
-	
-	@Override
-	public CreateObjectParameter getCreationExtraInfo()
-	{
-		return new CreateDiagramFactorParameter(getWrappedORef());
 	}
 	
 	@Override

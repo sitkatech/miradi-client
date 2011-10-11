@@ -22,7 +22,6 @@ package org.miradi.objects;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.MiradiTestCase;
-import org.miradi.objecthelpers.CreateDiagramFactorParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -271,8 +270,7 @@ public class TestObjectFindOwnerAndFindReferrer extends MiradiTestCase
 	private DiagramFactor createFactorAndDiagramFactor(int type) throws Exception
 	{
 		ORef factorRef = project.createObject(type);
-		CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(factorRef);
-		ORef diagramFactorRef = project.createObject(DiagramFactor.getObjectType(), extraInfo);
+		ORef diagramFactorRef = project.createObject(DiagramFactor.getObjectType());
 		project.setObjectData(diagramFactorRef, DiagramFactor.TAG_WRAPPED_REF, factorRef.toString());
 		
 		return DiagramFactor.find(project, diagramFactorRef);
