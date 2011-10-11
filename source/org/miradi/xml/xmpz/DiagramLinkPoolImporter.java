@@ -24,8 +24,6 @@ import java.awt.Point;
 
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
-import org.miradi.objecthelpers.CreateDiagramLinkParameter;
-import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramFactor;
@@ -81,7 +79,7 @@ public class DiagramLinkPoolImporter extends AbstractBaseObjectPoolImporter
 	}
 	
 	@Override
-	protected CreateObjectParameter getExtraInfo(Node node) throws Exception
+	protected void postCreateFix(ORef ref, Node node) throws Exception
 	{
 		Node fromDiagramFactorIdNode = getImporter().getNode(node, getPoolName() + FROM_DIAGRAM_FACTOR_ID);
 		Node toDiagramFactorIdNode = getImporter().getNode(node, getPoolName() + TO_DIAGRAM_FACTOR_ID);
@@ -101,6 +99,8 @@ public class DiagramLinkPoolImporter extends AbstractBaseObjectPoolImporter
 			getProject().setObjectData(factorLinkRef, FactorLink.TAG_TO_REF, toDiagramFactor.getWrappedORef().toString());
 		}
 		
-		return new CreateDiagramLinkParameter(factorLinkRef, fromDiagramFactorRef, toDiagramFactorRef);
+		getProject().setObjectData(ref, DiagramLink.TAG_WRAPPED_ID, factorLinkRef.getObjectId().toString());
+		getProject().setObjectData(ref, DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID, fromId.toString());
+		getProject().setObjectData(ref, DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID, toId.toString());
 	}
 }

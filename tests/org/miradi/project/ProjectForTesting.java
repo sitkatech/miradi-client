@@ -1885,8 +1885,9 @@ public class ProjectForTesting extends ProjectWithHelpers
 		executeCommand(createDiagramLink);
 
 		final ORef diagramLinkRef = createDiagramLink.getObjectRef();
-    	setObjectData(diagramLinkRef, DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID, from.getId().toString());
-    	setObjectData(diagramLinkRef, DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID, to.getId().toString());
+		fillObjectUsingCommand(diagramLinkRef, DiagramLink.TAG_WRAPPED_ID, baseId.toString());
+		fillObjectUsingCommand(diagramLinkRef, DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID, from.getId().toString());
+		fillObjectUsingCommand(diagramLinkRef, DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID, to.getId().toString());
 		
 		return diagramLinkRef;
 	}
