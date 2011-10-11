@@ -34,7 +34,6 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.objectdata.BooleanData;
-import org.miradi.objecthelpers.CreateThreatStressRatingParameter;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -732,8 +731,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 
 	public ThreatStressRating createThreatStressRating(ORef stressRef, ORef threatRef) throws Exception
 	{
-		CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(stressRef, threatRef);
-		ORef threatStressRatingRef = createObject(ThreatStressRating.getObjectType(), extraInfo);
+		ORef threatStressRatingRef = createObject(ThreatStressRating.getObjectType());
 		setObjectData(threatStressRatingRef, ThreatStressRating.TAG_STRESS_REF, stressRef.toString());
 		setObjectData(threatStressRatingRef, ThreatStressRating.TAG_THREAT_REF, threatRef.toString());
 		setObjectData(threatStressRatingRef, ThreatStressRating.TAG_IS_ACTIVE, BooleanData.BOOLEAN_TRUE);

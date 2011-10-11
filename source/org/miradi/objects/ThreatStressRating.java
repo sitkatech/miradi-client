@@ -23,7 +23,6 @@ import org.miradi.ids.BaseId;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.ORefData;
-import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.CreateThreatStressRatingParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
@@ -50,12 +49,6 @@ public class ThreatStressRating extends BaseObject
 		super(objectManager, new BaseId(idAsInt), json);
 	}
 
-	@Override
-	public CreateObjectParameter getCreationExtraInfo()
-	{
-		return new CreateThreatStressRatingParameter(getStressRef(), getThreatRef());
-	}
-	
 	public boolean isActive()
 	{
 		return isActive.asBoolean();
