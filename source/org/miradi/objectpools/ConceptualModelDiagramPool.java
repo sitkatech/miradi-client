@@ -22,7 +22,6 @@ package org.miradi.objectpools;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramContentsId;
 import org.miradi.ids.IdAssigner;
-import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ConceptualModelDiagram;
@@ -46,7 +45,7 @@ public class ConceptualModelDiagramPool extends DiagramObjectPool
 	}
 	
 	@Override
-	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo) throws Exception
+	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId) throws Exception
 	{
 		return new ConceptualModelDiagram(objectManager ,new DiagramContentsId(actualId.asInt()));
 	}

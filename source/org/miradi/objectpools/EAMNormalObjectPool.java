@@ -35,10 +35,10 @@ abstract public class EAMNormalObjectPool extends PoolWithIdAssigner
 	public BaseObject createObject(ObjectManager objectManager, BaseId objectId, CreateObjectParameter extraInfo) throws Exception
 	{
 		BaseId actualId = idAssigner.obtainRealId(objectId);
-		BaseObject created = createRawObject(objectManager, actualId, extraInfo);
+		BaseObject created = createRawObject(objectManager, actualId);
 		put(created.getId(), created);
 		return created;
 	}
 	
-	abstract BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo) throws Exception;
+	abstract BaseObject createRawObject(ObjectManager objectManager, BaseId actualId) throws Exception;
 }
