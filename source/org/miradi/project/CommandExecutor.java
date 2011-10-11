@@ -80,7 +80,7 @@ public class CommandExecutor
 			throw new CommandFailedException("executeCommand bad transaction state: " + command.toString());
 		try
 		{
-			getNormalExecutor().executeCommand(command);
+			getNormalExecutor().executeSingleCommand(command);
 			if(!isInTransaction())
 				transactionOrSingleCommandHasEnded();
 		}
@@ -630,7 +630,7 @@ public class CommandExecutor
 	
 	protected class NormalExecutor extends Executor
 	{
-		public void executeCommand(Command command) throws UnexpectedNonSideEffectException, CommandFailedException, UnableToBeginTransactionException
+		public void executeSingleCommand(Command command) throws UnexpectedNonSideEffectException, CommandFailedException, UnableToBeginTransactionException
 		{
 			if (isDoNothingCommandEnabledOptimization() && isDoNothingCommand(command))
 			{

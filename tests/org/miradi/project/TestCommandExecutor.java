@@ -39,7 +39,7 @@ public class TestCommandExecutor extends TestCaseWithProject
 		try
 		{
 			new CommandHandler(getProject());
-			getProject().getCommandExecutor().getNormalExecutor().executeCommand(new CommandBeginTransaction());
+			getProject().getCommandExecutor().getNormalExecutor().executeSingleCommand(new CommandBeginTransaction());
 			fail("Should have thrown for exception during begin transaction");
 		}
 		catch (UnableToBeginTransactionException ignoreExpectedException)
