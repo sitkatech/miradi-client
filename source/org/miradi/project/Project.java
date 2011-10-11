@@ -824,6 +824,7 @@ public class Project
 		ORef textBoxRef = createObject(TextBox.getObjectType());
 		CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(textBoxRef);
 		ORef diagramFactorRef = createObject(DiagramFactor.getObjectType(), extraInfo);
+		setObjectData(diagramFactorRef, DiagramFactor.TAG_WRAPPED_REF, textBoxRef.toString());
 		
 		final int WIDTH = 300;
 		setObjectData(diagramFactorRef, DiagramFactor.TAG_SIZE, EnhancedJsonObject.convertFromDimension(new Dimension(WIDTH, height)));

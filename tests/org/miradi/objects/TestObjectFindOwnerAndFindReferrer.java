@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
-import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.IdList;
 import org.miradi.main.MiradiTestCase;
 import org.miradi.objecthelpers.CreateDiagramFactorParameter;
@@ -273,8 +272,10 @@ public class TestObjectFindOwnerAndFindReferrer extends MiradiTestCase
 	{
 		ORef factorRef = project.createObject(type);
 		CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(factorRef);
-		DiagramFactorId diagramFactorId = (DiagramFactorId)project.createObjectAndReturnId(DiagramFactor.getObjectType(), extraInfo);
-		return (DiagramFactor)project.findObject(DiagramFactor.getObjectType(), diagramFactorId);
+		ORef diagramFactorRef = project.createObject(DiagramFactor.getObjectType(), extraInfo);
+		project.setObjectData(diagramFactorRef, DiagramFactor.TAG_WRAPPED_REF, factorRef.toString());
+		
+		return DiagramFactor.find(project, diagramFactorRef);
 	}
 	
 	private DiagramLink createDiagramFactorLink(DiagramFactor from, DiagramFactor to) throws Exception

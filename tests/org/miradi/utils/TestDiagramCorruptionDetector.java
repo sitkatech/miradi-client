@@ -52,6 +52,7 @@ public class TestDiagramCorruptionDetector extends TestCaseWithProject
 		Task method = getProject().createTask(indicator);
 		CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(method.getRef());
 		ORef diagramFactorRef = getProject().createObject(DiagramFactor.getObjectType(), extraDiagramFactorInfo);
+		getProject().setObjectData(diagramFactorRef, DiagramFactor.TAG_WRAPPED_REF, method.getRef().toString());
 		IdList diagramFactorIds = new IdList(DiagramFactor.getObjectType());
 		diagramFactorIds.addRef(diagramFactorRef);
 		getProject().setObjectData(diagramObject.getRef(), DiagramObject.TAG_DIAGRAM_FACTOR_IDS, diagramFactorIds.toString());
@@ -140,6 +141,7 @@ public class TestDiagramCorruptionDetector extends TestCaseWithProject
 		ORef ref = getProject().createObject(type);
 		CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(ref);
 		ORef diagramFactorRef = getProject().createObject(DiagramFactor.getObjectType(), extraInfo);
+		getProject().setObjectData(diagramFactorRef, DiagramFactor.TAG_WRAPPED_REF, ref.toString());
 		
 		IdList diagramFactorIds = diagramObject.getAllDiagramFactorRefs().convertToIdList(DiagramFactor.getObjectType());
 		diagramFactorIds.addRef(diagramFactorRef);

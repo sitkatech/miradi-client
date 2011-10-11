@@ -436,12 +436,15 @@ public class TestCommands extends MiradiTestCase
 
 	private DiagramFactor insertNode(int type) throws Exception
 	{
-		FactorId factorId = project.createFactorAndReturnId(type);
-		CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(new ORef(type, factorId));
+		ORef factorRef = project.createFactorAndReturnRef(type);
+		CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(factorRef);
 		CommandCreateObject createDiagramFactorCommand = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraInfo);
 		project.executeCommand(createDiagramFactorCommand);
 		
 		DiagramFactorId diagramFactorId = (DiagramFactorId) createDiagramFactorCommand.getCreatedId();
+		final CommandSetObjectData setWrappedRefCommand = new CommandSetObjectData(createDiagramFactorCommand.getObjectRef(), DiagramFactor.TAG_WRAPPED_REF, factorRef.toString());
+		project.executeCommand(setWrappedRefCommand);
+		
 		DiagramObject diagramObject = project.getTestingDiagramObject();
 		CommandSetObjectData addDiagramFactor = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, diagramFactorId);
 		project.executeCommand(addDiagramFactor);
