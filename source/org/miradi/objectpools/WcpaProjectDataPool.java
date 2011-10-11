@@ -21,7 +21,6 @@ package org.miradi.objectpools;
 
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdAssigner;
-import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.WcpaProjectData;
@@ -45,7 +44,7 @@ public class WcpaProjectDataPool extends EAMNormalObjectPool
 	}
 
 	@Override
-	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)
+	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId)
 	{
 		return new WcpaProjectData(objectManager, new BaseId(actualId.asInt()));
 	}
