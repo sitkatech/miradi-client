@@ -110,7 +110,7 @@ public class ObjectTestCase extends TestCaseWithProject
 
 	protected BaseObject createObject(int objectType, CreateObjectParameter extraInfo) throws Exception
 	{
-		BaseId id = getProject().createObject(objectType, BaseId.INVALID, extraInfo);
+		BaseId id = getProject().createObjectAndReturnId(objectType, BaseId.INVALID);
 		
 		return getProject().findObject(objectType, id);
 	}
