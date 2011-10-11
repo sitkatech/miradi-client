@@ -53,11 +53,11 @@ public class TestFactorLink extends ObjectTestCase
 
 	private FactorLink createFactorLink() throws Exception
 	{
-		DiagramFactor nodeA = getProject().createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
-		DiagramFactor nodeB = getProject().createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
+		DiagramFactor cause1 = getProject().createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
+		DiagramFactor cause2 = getProject().createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
 		final FactorLink factorLink = new FactorLink(getObjectManager(), new BaseId(1));
-		factorLink.setData(FactorLink.TAG_FROM_REF, nodeA.getWrappedORef().toString());
-		factorLink.setData(FactorLink.TAG_TO_REF, nodeB.getWrappedORef().toString());
+		factorLink.setData(FactorLink.TAG_FROM_REF, cause1.getWrappedORef().toString());
+		factorLink.setData(FactorLink.TAG_TO_REF, cause2.getWrappedORef().toString());
 		
 		return factorLink;
 	}
