@@ -208,14 +208,14 @@ public class TestObjectManager extends MiradiTestCase
 	
 	private void verifyObjectLifecycle(int type) throws Exception
 	{
-		verifyBasicObjectLifecycle(type, null);
+		verifyBasicObjectLifecycle(type);
 		verifyObjectWriteAndRead(type, null);
 		verifyGetPool(type);
 	}
 	
-	private void verifyBasicObjectLifecycle(int type, CreateObjectParameter parameter) throws Exception, IOException, ParseException
+	private void verifyBasicObjectLifecycle(int type) throws Exception, IOException, ParseException
 	{
-		BaseId createdId = manager.createObject(type, BaseId.INVALID, parameter);
+		BaseId createdId = manager.createObject(type, BaseId.INVALID, null);
 		assertNotEquals(type + " Created with invalid id", BaseId.INVALID, createdId);
 		db.readObject(manager, type, createdId);
 		assertTrue(db.readObjectManifest(type).has(createdId));
@@ -247,7 +247,7 @@ public class TestObjectManager extends MiradiTestCase
 		}
 		
 		BaseId desiredId = new BaseId(2323);
-		assertEquals(type + " didn't use requested id?", desiredId, manager.createObject(type, desiredId, parameter));
+		assertEquals(type + " didn't use requested id?", desiredId, manager.createObject(type, desiredId, null));
 	}
 
 	private void verifyObjectWriteAndRead(int type, CreateObjectParameter parameter) throws IOException, Exception
