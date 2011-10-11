@@ -1122,7 +1122,7 @@ public class Project
 	
 	public void executeCommands(Command[] commands) throws CommandFailedException
 	{
-		getCommandExecutor().executeCommandsAsTransaction(commands);
+		getCommandExecutor().executeCommands(commands);
 	}
 	
 	public void undo() throws CommandFailedException, RuntimeException
