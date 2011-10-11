@@ -27,7 +27,6 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.main.MiradiTestCase;
-import org.miradi.objecthelpers.CreateDiagramFactorParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramFactor;
@@ -158,8 +157,7 @@ public class TestUndoRedo extends MiradiTestCase
 		p.executeCommand(createModelNodeCommand);
 		
 		ORef factorRef = createModelNodeCommand.getObjectRef();
-		CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(factorRef);
-		CommandCreateObject createDiagramFactorCommand = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraDiagramFactorInfo);
+		CommandCreateObject createDiagramFactorCommand = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR);
 		project.executeCommand(createDiagramFactorCommand);
 		
 		final CommandSetObjectData setWrappedRefCommand = new CommandSetObjectData(createDiagramFactorCommand.getObjectRef(), DiagramFactor.TAG_WRAPPED_REF, factorRef.toString());

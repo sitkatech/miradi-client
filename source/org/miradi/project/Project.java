@@ -47,7 +47,6 @@ import org.miradi.main.EAM;
 import org.miradi.main.ResourcesHandler;
 import org.miradi.main.VersionConstants;
 import org.miradi.objecthelpers.AbstractStringKeyMap;
-import org.miradi.objecthelpers.CreateDiagramFactorParameter;
 import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.DashboardStatusMapsCache;
 import org.miradi.objecthelpers.ORef;
@@ -822,8 +821,7 @@ public class Project
 		int height = labelLineCount * NUMBER_OF_PIXELS_PER_LINE; 
 		
 		ORef textBoxRef = createObject(TextBox.getObjectType());
-		CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(textBoxRef);
-		ORef diagramFactorRef = createObject(DiagramFactor.getObjectType(), extraInfo);
+		ORef diagramFactorRef = createObject(DiagramFactor.getObjectType());
 		setObjectData(diagramFactorRef, DiagramFactor.TAG_WRAPPED_REF, textBoxRef.toString());
 		
 		final int WIDTH = 300;

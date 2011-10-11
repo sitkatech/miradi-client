@@ -34,7 +34,6 @@ import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.main.MiradiTestCase;
 import org.miradi.objectdata.BooleanData;
-import org.miradi.objecthelpers.CreateDiagramFactorParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
@@ -120,12 +119,12 @@ public class TestProjectMpzImporter extends MiradiTestCase
 
 			ORef threatRef = project.createObject(Cause.getObjectType());
 			project.setObjectData(threatRef, Cause.TAG_IS_DIRECT_THREAT, BooleanData.BOOLEAN_TRUE);
-			ORef threatDiagramFactorRef = project.createObject(DiagramFactor.getObjectType(), new CreateDiagramFactorParameter(threatRef));
+			ORef threatDiagramFactorRef = project.createObject(DiagramFactor.getObjectType());
 			project.setObjectData(threatDiagramFactorRef, DiagramFactor.TAG_WRAPPED_REF, threatRef.toString());
 			diagramFactorIds.add(threatDiagramFactorRef.getObjectId());
 
 			ORef targetRef = project.createObject(Target.getObjectType());
-			ORef targetDiagramFactorRef = project.createObject(DiagramFactor.getObjectType(), new CreateDiagramFactorParameter(targetRef));
+			ORef targetDiagramFactorRef = project.createObject(DiagramFactor.getObjectType());
 			project.setObjectData(targetDiagramFactorRef, DiagramFactor.TAG_WRAPPED_REF, targetRef.toString());
 			diagramFactorIds.add(targetDiagramFactorRef.getObjectId());			
 

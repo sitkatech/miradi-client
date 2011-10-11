@@ -36,7 +36,6 @@ import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
 import org.miradi.main.MiradiTestCase;
-import org.miradi.objecthelpers.CreateDiagramFactorParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
@@ -437,8 +436,7 @@ public class TestCommands extends MiradiTestCase
 	private DiagramFactor insertNode(int type) throws Exception
 	{
 		ORef factorRef = project.createFactorAndReturnRef(type);
-		CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(factorRef);
-		CommandCreateObject createDiagramFactorCommand = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraInfo);
+		CommandCreateObject createDiagramFactorCommand = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR);
 		project.executeCommand(createDiagramFactorCommand);
 		
 		DiagramFactorId diagramFactorId = (DiagramFactorId) createDiagramFactorCommand.getCreatedId();

@@ -35,7 +35,6 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.CreateDiagramFactorParameter;
 import org.miradi.objecthelpers.CreateDiagramLinkParameter;
 import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORef;
@@ -245,8 +244,7 @@ public class ResultsChainCreatorHelper
 		
 		ORef factorRef = createOrReuseWrappedObject(diagramFactorToBeCloned);
 		
-		CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(factorRef);
-		CommandCreateObject createDiagramFactor = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraDiagramFactorInfo);
+		CommandCreateObject createDiagramFactor = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR);
 		getProject().executeCommand(createDiagramFactor);
 		
 		final CommandSetObjectData setWrappedRefCommand = new CommandSetObjectData(createDiagramFactor.getObjectRef(), DiagramFactor.TAG_WRAPPED_REF, factorRef.toString());

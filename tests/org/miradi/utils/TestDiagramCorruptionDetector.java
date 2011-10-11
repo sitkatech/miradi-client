@@ -22,7 +22,6 @@ package org.miradi.utils;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.TestCaseWithProject;
-import org.miradi.objecthelpers.CreateDiagramFactorParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramFactor;
@@ -50,8 +49,7 @@ public class TestDiagramCorruptionDetector extends TestCaseWithProject
 		
 		Indicator indicator = getProject().createIndicatorWithCauseParent();
 		Task method = getProject().createTask(indicator);
-		CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(method.getRef());
-		ORef diagramFactorRef = getProject().createObject(DiagramFactor.getObjectType(), extraDiagramFactorInfo);
+		ORef diagramFactorRef = getProject().createObject(DiagramFactor.getObjectType());
 		getProject().setObjectData(diagramFactorRef, DiagramFactor.TAG_WRAPPED_REF, method.getRef().toString());
 		IdList diagramFactorIds = new IdList(DiagramFactor.getObjectType());
 		diagramFactorIds.addRef(diagramFactorRef);
@@ -139,8 +137,7 @@ public class TestDiagramCorruptionDetector extends TestCaseWithProject
 	private ORef createDiagramFactorAndAddToDiagram(DiagramObject diagramObject, int type) throws Exception
 	{
 		ORef ref = getProject().createObject(type);
-		CreateDiagramFactorParameter extraInfo = new CreateDiagramFactorParameter(ref);
-		ORef diagramFactorRef = getProject().createObject(DiagramFactor.getObjectType(), extraInfo);
+		ORef diagramFactorRef = getProject().createObject(DiagramFactor.getObjectType());
 		getProject().setObjectData(diagramFactorRef, DiagramFactor.TAG_WRAPPED_REF, ref.toString());
 		
 		IdList diagramFactorIds = diagramObject.getAllDiagramFactorRefs().convertToIdList(DiagramFactor.getObjectType());

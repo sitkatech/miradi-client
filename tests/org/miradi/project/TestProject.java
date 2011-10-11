@@ -45,7 +45,6 @@ import org.miradi.ids.IndicatorId;
 import org.miradi.main.MiradiTestCase;
 import org.miradi.main.TransferableMiradiList;
 import org.miradi.objectdata.BooleanData;
-import org.miradi.objecthelpers.CreateDiagramFactorParameter;
 import org.miradi.objecthelpers.DirectThreatSet;
 import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORef;
@@ -618,8 +617,7 @@ public class TestProject extends MiradiTestCase
 	public void testExecuteCommandWritesDiagram() throws Exception
 	{
 		ORef factorRef = project.createFactorAndReturnRef(ObjectType.CAUSE);
-		CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(factorRef);
-		CommandCreateObject createDiagramFactorCommand = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraDiagramFactorInfo);
+		CommandCreateObject createDiagramFactorCommand = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR);
 		project.executeCommand(createDiagramFactorCommand);
 		
 		final CommandSetObjectData setWrappedRefCommand = new CommandSetObjectData(createDiagramFactorCommand.getObjectRef(), DiagramFactor.TAG_WRAPPED_REF, factorRef.toString());
@@ -641,10 +639,9 @@ public class TestProject extends MiradiTestCase
 		ORef factorRef = project.createFactorAndReturnRef(ObjectType.CAUSE);
 		int existingCalls = database.callsToWriteObject;
 		
-		CreateDiagramFactorParameter extraDiagramFactorInfo = new CreateDiagramFactorParameter(targetRef);
-		CommandCreateObject createDiagramFactor = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraDiagramFactorInfo);
+		CommandCreateObject createDiagramFactor = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR);
 		project.executeCommand(createDiagramFactor);
-		final CommandSetObjectData setWrappedRefCommand = new CommandSetObjectData(createDiagramFactor.getObjectRef(), DiagramFactor.TAG_WRAPPED_REF, factorRef.toString());
+		final CommandSetObjectData setWrappedRefCommand = new CommandSetObjectData(createDiagramFactor.getObjectRef(), DiagramFactor.TAG_WRAPPED_REF, targetRef.toString());
 		project.executeCommand(setWrappedRefCommand);
 		assertEquals(2 + existingCalls, database.callsToWriteObject);
 		
@@ -654,8 +651,7 @@ public class TestProject extends MiradiTestCase
 		project.executeCommand(addDiagramFactor);
 		assertEquals(3 + existingCalls, database.callsToWriteObject);
 		
-		CreateDiagramFactorParameter extraDiagramFactorInfo2 = new CreateDiagramFactorParameter(factorRef);
-		CommandCreateObject createDiagramFactor2 = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR, extraDiagramFactorInfo2);
+		CommandCreateObject createDiagramFactor2 = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR);
 		project.executeCommand(createDiagramFactor2);
 		final CommandSetObjectData setWrappedRefCommand2 = new CommandSetObjectData(createDiagramFactor2.getObjectRef(), DiagramFactor.TAG_WRAPPED_REF, factorRef.toString());
 		project.executeCommand(setWrappedRefCommand2);
