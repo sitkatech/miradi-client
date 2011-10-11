@@ -96,7 +96,7 @@ public abstract class CreateAnnotationDoer extends ObjectsDoer
 		if (objectToClone!=null)
 		{
 			CommandSetObjectData[]  commands = objectToClone.createCommandsToClone(create.getCreatedId());
-			getProject().executeCommandsAsTransaction(commands);
+			getProject().executeCommands(commands);
 		}
 		return create.getObjectRef();
 	}

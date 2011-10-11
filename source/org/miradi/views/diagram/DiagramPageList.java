@@ -171,7 +171,7 @@ abstract public class DiagramPageList extends ObjectPoolTable
 				return;
 			
 			commandsToExecute.addAll(createSwitchToDefaultModeCommand());
-			listenerProject.executeCommandsAsTransaction(commandsToExecute.toArray(new Command[0]));		
+			listenerProject.executeCommands(commandsToExecute.toArray(new Command[0]));		
 		}
 
 		private CommandVector createSwitchToDefaultModeCommand() throws Exception

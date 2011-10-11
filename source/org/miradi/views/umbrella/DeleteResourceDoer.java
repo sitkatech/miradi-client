@@ -77,7 +77,7 @@ public class DeleteResourceDoer extends ObjectsDoer
 			project.executeCommand(new CommandBeginTransaction());
 			try
 			{
-				project.executeCommandsAsTransaction(createCommandsToRemoveFromReferrers(allThatUseThisResource, resource.getRef()));
+				project.executeCommands(createCommandsToRemoveFromReferrers(allThatUseThisResource, resource.getRef()));
 				project.executeCommands(resource.createCommandsToDeleteChildrenAndObject());
 			}
 			finally
