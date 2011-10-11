@@ -47,7 +47,6 @@ import org.miradi.main.EAM;
 import org.miradi.main.ResourcesHandler;
 import org.miradi.main.VersionConstants;
 import org.miradi.objecthelpers.AbstractStringKeyMap;
-import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.DashboardStatusMapsCache;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -597,12 +596,7 @@ public class Project
 	
 	public BaseId createObjectAndReturnId(int objectType, BaseId objectId) throws Exception
 	{
-		return createObject(objectType, objectId, null);
-	}
-	
-	public BaseId createObject(int objectType, BaseId objectId, CreateObjectParameter extraInfo) throws Exception
-	{
-		BaseId createdId = objectManager.createObject(objectType, objectId, extraInfo);
+		BaseId createdId = objectManager.createObject(objectType, objectId, null);
 		saveProjectInfo();
 		return createdId;
 	}
