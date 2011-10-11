@@ -47,7 +47,6 @@ import org.miradi.objectdata.PointListData;
 import org.miradi.objectdata.RefListListData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objectdata.TagListData;
-import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -83,7 +82,7 @@ public class ObjectTestCase extends TestCaseWithProject
 	public void verifyFields(int objectType) throws Exception
 	{
 		verifyObjectCount(objectType);
-		BaseObject object = createObject(objectType, null);
+		BaseObject object = createObject(objectType);
 		verifyTypeName(object);
 		
 		Vector<String> fieldTags = object.getStoredFieldTags();
@@ -99,7 +98,7 @@ public class ObjectTestCase extends TestCaseWithProject
 			assertTrue("object is not empty?", object.isEmpty());
 		}
 		
-		verifyLoadPool(objectType, null);
+		verifyLoadPool(objectType);
 	}
 	
 	private void verifyObjectCount(int objectType)
@@ -108,7 +107,7 @@ public class ObjectTestCase extends TestCaseWithProject
 		assertTrue("object id not less than count", isLessThanObjectTypeCount);
 	}
 
-	protected BaseObject createObject(int objectType, CreateObjectParameter extraInfo) throws Exception
+	protected BaseObject createObject(int objectType) throws Exception
 	{
 		BaseId id = getProject().createObjectAndReturnId(objectType, BaseId.INVALID);
 		
@@ -151,10 +150,10 @@ public class ObjectTestCase extends TestCaseWithProject
 		return project;
 	}
 	 
-	private void verifyLoadPool(int objectType, CreateObjectParameter extraInfo) throws Exception
+	private void verifyLoadPool(int objectType) throws Exception
 	{
 		BaseId id = BaseId.INVALID;
-		id = getProject().createObject(objectType, BaseId.INVALID, extraInfo);
+		id = getProject().createObjectAndReturnId(objectType, BaseId.INVALID);
 		getProject().closeAndReopen();
 		BaseObject object = getProject().findObject(objectType, id);
 		assertNotNull("Didn't load pool?", object);
