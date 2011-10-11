@@ -349,7 +349,7 @@ public class ObjectManager
 		EAMNormalObjectPool pool = (EAMNormalObjectPool)getPool(objectType);
 		if(pool == null)
 			throw new RuntimeException("No pool for " + objectType);
-		BaseObject created = pool.createObject(this, objectId, extraInfo);
+		BaseObject created = pool.createObject(this, objectId);
 		getDatabase().writeObject(created);
 		getDatabase().writeObjectManifest(getFileName(), objectType, createManifest(pool));
 		createdId = created.getId();
