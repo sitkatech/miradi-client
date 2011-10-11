@@ -83,34 +83,29 @@ public class ObjectTestCase extends TestCaseWithProject
 	public void verifyFields(int objectType) throws Exception
 	{
 		verifyObjectCount(objectType);
-		verifyFields(objectType, null);
+		BaseObject object = createObject(objectType, null);
+		verifyTypeName(object);
+		
+		Vector<String> fieldTags = object.getStoredFieldTags();
+		for(int i = 0; i < fieldTags.size(); ++i)
+		{
+			verifyShortLabelField(object, fieldTags.get(i));
+			verifyFieldLifecycle(getProject(), object, fieldTags.get(i));
+		
+			if (!object.getNonClearedFieldTags().contains(fieldTags.get(i)))
+				assertFalse("object is empty?", object.isEmpty());
+		
+			object.clear();
+			assertTrue("object is not empty?", object.isEmpty());
+		}
+		
+		verifyLoadPool(objectType, null);
 	}
 	
 	private void verifyObjectCount(int objectType)
 	{
 		boolean isLessThanObjectTypeCount = objectType < ObjectType.OBJECT_TYPE_COUNT;
 		assertTrue("object id not less than count", isLessThanObjectTypeCount);
-	}
-
-	private void verifyFields(int objectType, CreateObjectParameter extraInfo) throws Exception
-	{
-		BaseObject object = createObject(objectType, extraInfo);
-		verifyTypeName(object);
-
-		Vector<String> fieldTags = object.getStoredFieldTags();
-		for(int i = 0; i < fieldTags.size(); ++i)
-		{
-			verifyShortLabelField(object, fieldTags.get(i));
-			verifyFieldLifecycle(getProject(), object, fieldTags.get(i));
-
-			if (!object.getNonClearedFieldTags().contains(fieldTags.get(i)))
-				assertFalse("object is empty?", object.isEmpty());
-
-			object.clear();
-			assertTrue("object is not empty?", object.isEmpty());
-		}
-
-		verifyLoadPool(objectType, extraInfo);
 	}
 
 	protected BaseObject createObject(int objectType, CreateObjectParameter extraInfo) throws Exception
