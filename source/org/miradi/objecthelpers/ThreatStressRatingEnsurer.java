@@ -22,7 +22,6 @@ package org.miradi.objecthelpers;
 import java.util.HashSet;
 
 import org.miradi.commands.CommandCreateObject;
-import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.ThreatTargetChainWalker;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
@@ -88,12 +87,8 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 			CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(stressRef, threatRef);
 			CommandCreateObject createThreatStressRatingCommand = new CommandCreateObject(ThreatStressRating.getObjectType(), extraInfo);
 			getProject().executeAsSideEffect(createThreatStressRatingCommand);
-			
-			final CommandSetObjectData setStressRefCommand = new CommandSetObjectData(createThreatStressRatingCommand.getObjectRef(), ThreatStressRating.TAG_STRESS_REF, stressRef.toString());
-			getProject().executeAsSideEffect(setStressRefCommand);
-			
-			final CommandSetObjectData setThreatRefCommand = new CommandSetObjectData(createThreatStressRatingCommand.getObjectRef(), ThreatStressRating.TAG_THREAT_REF, threatRef.toString());
-			getProject().executeAsSideEffect(setThreatRefCommand);
+			getProject().setObjectData(createThreatStressRatingCommand.getObjectRef(), ThreatStressRating.TAG_STRESS_REF, stressRef.toString());
+			getProject().setObjectData(createThreatStressRatingCommand.getObjectRef(), ThreatStressRating.TAG_THREAT_REF, threatRef.toString());
 		}
 	}
 	
