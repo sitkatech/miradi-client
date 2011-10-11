@@ -43,8 +43,6 @@ public class ThreatStressRating extends BaseObject
 		super(objectManager, idToUse);
 		
 		clear();
-		setData(TAG_STRESS_REF, extraInfo.getStressRef().toString());
-		setData(TAG_THREAT_REF, extraInfo.getThreatRef().toString());
 	}
 	
 	public ThreatStressRating(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
