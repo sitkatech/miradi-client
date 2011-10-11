@@ -34,7 +34,6 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.objectdata.BooleanData;
-import org.miradi.objecthelpers.CreateDiagramLinkParameter;
 import org.miradi.objecthelpers.CreateThreatStressRatingParameter;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
@@ -1855,9 +1854,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		if(!shouldCreateGroupBoxLink(from, to))
 			baseId = createFactorLink(from.getWrappedORef(), to.getWrappedORef()).getObjectId();
 		
-		CreateDiagramLinkParameter extraInfo = createDiagramLinkExtraInfo(from, to, baseId);
-
-		final ORef diagramLinkRef = createObject(ObjectType.DIAGRAM_LINK, extraInfo);
+		final ORef diagramLinkRef = createObject(ObjectType.DIAGRAM_LINK);
 		setObjectData(diagramLinkRef, DiagramLink.TAG_WRAPPED_ID, baseId.toString());
 		setObjectData(diagramLinkRef, DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID, from.getId().toString());
 		setObjectData(diagramLinkRef, DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID, to.getId().toString());
@@ -1880,8 +1877,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		if(!shouldCreateGroupBoxLink(from, to))
 			baseId = createFactorLinkWithCommand(from.getWrappedORef(), to.getWrappedORef()).getObjectId();
 		
-		CreateDiagramLinkParameter extraInfo = createDiagramLinkExtraInfo(from, to, baseId);
-		CommandCreateObject createDiagramLink = new CommandCreateObject(DiagramLink.getObjectType(), extraInfo);
+		CommandCreateObject createDiagramLink = new CommandCreateObject(DiagramLink.getObjectType());
 		executeCommand(createDiagramLink);
 
 		final ORef diagramLinkRef = createDiagramLink.getObjectRef();
@@ -1907,11 +1903,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 	private boolean shouldCreateGroupBoxLink(DiagramFactor from, DiagramFactor to)
 	{
 		return from.isGroupBoxFactor() || to.isGroupBoxFactor();
-	}
-	
-	private CreateDiagramLinkParameter createDiagramLinkExtraInfo(DiagramFactor from, DiagramFactor to, BaseId baseId)
-	{
-		return new CreateDiagramLinkParameter(baseId, from.getDiagramFactorId(), to.getDiagramFactorId());
 	}
 	
 	public LinkCell createLinkCellWithBendPoints(PointList bendPoints) throws Exception

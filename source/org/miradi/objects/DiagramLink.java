@@ -33,8 +33,6 @@ import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objectdata.PointListData;
-import org.miradi.objecthelpers.CreateDiagramLinkParameter;
-import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -326,15 +324,6 @@ public class DiagramLink extends BaseObject
 				           		   "<b>To : " + toFactor.getLabel() + "</b>";
 		
 		return toolTipText;
-	}
-	
-	@Override
-	public CreateObjectParameter getCreationExtraInfo()
-	{
-		return new CreateDiagramLinkParameter(
-				new BaseId(underlyingObjectId.getId().asInt()), 
-				new BaseId(fromId.getId().asInt()), 
-				new BaseId(toId.getId().asInt()));
 	}
 	
 	public PointList getBendPoints()

@@ -24,9 +24,7 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
 import org.miradi.ids.BaseId;
-import org.miradi.ids.DiagramFactorId;
 import org.miradi.main.MiradiTestCase;
-import org.miradi.objecthelpers.CreateDiagramLinkParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramLink;
@@ -56,11 +54,7 @@ public class TestDiagramAddFactorLink extends MiradiTestCase
 		project.setObjectData(factorLinkRef, FactorLink.TAG_FROM_REF, intervention.getWrappedFactorRef().toString());
 		project.setObjectData(factorLinkRef, FactorLink.TAG_TO_REF, factor.getWrappedFactorRef().toString());
 
-		DiagramFactorId fromDiagramFactorId = intervention.getDiagramFactorId();
-		DiagramFactorId toDiagramFactorId = factor.getDiagramFactorId();
-		CreateDiagramLinkParameter diagramLinkExtraInfo = new CreateDiagramLinkParameter(modelLinkageId, fromDiagramFactorId, toDiagramFactorId);
-		
-		CommandCreateObject createDiagramLinkCommand =  new CommandCreateObject(ObjectType.DIAGRAM_LINK, diagramLinkExtraInfo);
+		CommandCreateObject createDiagramLinkCommand =  new CommandCreateObject(ObjectType.DIAGRAM_LINK);
     	project.executeCommand(createDiagramLinkCommand);
 		
 		ORef diagramLinkRef = createDiagramLinkCommand.getObjectRef();
