@@ -51,7 +51,6 @@ public class DiagramFactor extends BaseObject
 		super(objectManager, diagramFactorIdToUse);
 		
 		clear();
-		setData(TAG_WRAPPED_REF, extraInfo.getFactorRef().toString());
 		setDimensionData(TAG_SIZE, getDefaultSize());
 	}
 	

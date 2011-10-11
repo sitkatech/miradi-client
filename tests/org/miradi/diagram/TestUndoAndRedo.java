@@ -108,6 +108,7 @@ public class TestUndoAndRedo extends MiradiTestCase
 		
 		// undo model node create
 		project.undo();
+		project.undo();
 		
 		verifyNodeNotPresent(toFactorRef);
 
@@ -118,6 +119,7 @@ public class TestUndoAndRedo extends MiradiTestCase
 		project.undo();
 		
 		// undo model node create
+		project.undo();
 		project.undo();
 		
 		verifyNodeNotPresent(fromFactorRef);

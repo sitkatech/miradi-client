@@ -23,7 +23,6 @@ package org.miradi.xml.xmpz;
 import java.awt.Point;
 
 import org.miradi.ids.BaseId;
-import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Desire;
@@ -60,7 +59,7 @@ abstract public class AbstractBaseObjectPoolImporter extends AbstractXmpzObjectI
 		{
 			Node node = nodes.item(index);
 			String intIdAsString = getImporter().getAttributeValue(node, XmpzXmlConstants.ID);
-			ORef ref = getProject().createObjectAndReturnRef(getObjectTypeToImport(), new BaseId(intIdAsString), getExtraInfo(node));
+			ORef ref = getProject().createObject(getObjectTypeToImport(), new BaseId(intIdAsString));
 			postCreateFix(ref, node);
 			
 			importFields(node, ref);
@@ -69,11 +68,6 @@ abstract public class AbstractBaseObjectPoolImporter extends AbstractXmpzObjectI
 	
 	protected void postCreateFix(ORef ref, Node node) throws Exception
 	{
-	}
-
-	protected CreateObjectParameter getExtraInfo(Node node) throws Exception
-	{
-		return null;
 	}
 
 	private int getObjectTypeToImport()
