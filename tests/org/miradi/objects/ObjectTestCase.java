@@ -92,7 +92,7 @@ public class ObjectTestCase extends TestCaseWithProject
 		assertTrue("object id not less than count", isLessThanObjectTypeCount);
 	}
 
-	public void verifyFields(int objectType, CreateObjectParameter extraInfo) throws Exception
+	private void verifyFields(int objectType, CreateObjectParameter extraInfo) throws Exception
 	{
 		BaseObject object = createObject(objectType, extraInfo);
 		verifyTypeName(object);
