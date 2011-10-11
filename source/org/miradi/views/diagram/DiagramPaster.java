@@ -39,7 +39,6 @@ import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.main.TransferableMiradiList;
-import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -378,12 +377,7 @@ abstract public class DiagramPaster
 	
 	private BaseObject createObject(int type) throws CommandFailedException
 	{
-		return createObject(type, null);
-	}
-	
-	private BaseObject createObject(int type, CreateObjectParameter extraInfo) throws CommandFailedException
-	{
-		CommandCreateObject createObject = new CommandCreateObject(type, extraInfo);
+		CommandCreateObject createObject = new CommandCreateObject(type, null);
 		getProject().executeCommand(createObject);
 		
 		ORef newObjectRef = createObject.getObjectRef();
@@ -391,7 +385,7 @@ abstract public class DiagramPaster
 		
 		return newObject;
 	}
-
+	
 	private boolean diagramAlreadyContainsAlias(ORef wrappedRef)
 	{
 		DiagramObject diagramObject = getDiagramObject();
