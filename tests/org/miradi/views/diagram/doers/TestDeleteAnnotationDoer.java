@@ -82,7 +82,7 @@ public class TestDeleteAnnotationDoer extends MiradiTestCase
 		assertTrue("is not method?", method.isMethod());
 		
 		Command[] commandsToRemoveIndicator1 = DeleteAnnotationDoer.buildCommandsToDeleteAnnotation(project, strategy, Strategy.TAG_INDICATOR_IDS, indicator1);
-		project.executeCommandsAsTransaction(commandsToRemoveIndicator1);
+		project.executeCommands(commandsToRemoveIndicator1);
 		
 		Task foundMethod = (Task) project.findObject(methodRef);
 		assertEquals("method was deleted?", method.getRef(), foundMethod.getRef());

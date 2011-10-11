@@ -95,7 +95,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 	private void deleteAnnotationViaCommands(Project project, BaseObject owner, BaseObject annotationToDelete, String annotationIdListTag) throws Exception
 	{
 		Command[] commands = buildCommandsToDeleteAnnotation(project, owner, annotationIdListTag, annotationToDelete);
-		getProject().executeCommandsAsTransaction(commands);
+		getProject().executeCommands(commands);
 	}
 	
 	public static Command[] buildCommandsToDeleteAnnotation(Project project, BaseObject owner, String annotationIdListTag, BaseObject annotationToDelete) throws CommandFailedException, ParseException, Exception

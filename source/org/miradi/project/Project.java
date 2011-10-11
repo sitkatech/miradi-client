@@ -1125,7 +1125,7 @@ public class Project
 		getCommandExecutor().executeCommandsAsTransaction(commands);
 	}
 	
-	public void executeCommandsAsTransaction(Command[] commands) throws CommandFailedException
+	public void executeCommands(Command[] commands) throws CommandFailedException
 	{
 		getCommandExecutor().executeCommandsAsTransaction(commands);
 	}
