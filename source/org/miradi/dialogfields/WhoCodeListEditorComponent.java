@@ -107,7 +107,7 @@ public class WhoCodeListEditorComponent extends AbstractQuestionBasedComponent
 			if (getResourceAssignmentRefs().size() > 1)
 			{
 				CommandVector deleteResourceAssignment = TreeNodeDeleteDoer.buildCommandsToDeleteAnnotation(getProject(), resourceAssignment, getResourceAssignmentTag());
-				getProject().executeCommandsAsTransaction(deleteResourceAssignment);
+				getProject().executeCommands(deleteResourceAssignment);
 			}
 		}
 	}

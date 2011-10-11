@@ -114,7 +114,7 @@ public class TreeNodeDeleteDoer extends AbstractDeleteDoer
 
 	private void deleteAnnotation(BaseObject selected, String annotationListTag) throws Exception
 	{
-		getProject().executeCommandsAsTransaction(buildCommandsToDeleteAnnotation(getProject(), selected, annotationListTag));
+		getProject().executeCommands(buildCommandsToDeleteAnnotation(getProject(), selected, annotationListTag));
 	}
 	
 	public static CommandVector buildCommandsToDeleteAnnotation(Project project, BaseObject objectToRemove, String annotationListTag) throws Exception

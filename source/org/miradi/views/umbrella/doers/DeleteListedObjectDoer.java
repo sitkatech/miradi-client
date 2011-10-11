@@ -70,7 +70,7 @@ public abstract class DeleteListedObjectDoer extends ObjectsDoer
 	private void removeBaseObject(Project project, BaseObject baseObjectToRemove) throws Exception
 	{
 		CommandVector commands = TreeNodeDeleteDoer.buildCommandsToDeleteAnnotation(project, baseObjectToRemove, getListTag());
-		project.executeCommandsAsTransaction(commands);
+		project.executeCommands(commands);
 	}
 
 	abstract protected String getListTag();

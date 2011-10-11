@@ -144,7 +144,7 @@ public class TestThreatStressRatingEnsurer extends TestCaseWithProject
 		CommandSetObjectData removeStressCommand = CommandSetObjectData.createRemoveORefCommand(target, Target.TAG_STRESS_REFS, stress.getRef());
 		getProject().executeCommand(removeStressCommand);
 		
-		getProject().executeCommandsAsTransaction(stress.createCommandsToDeleteChildrenAndObject());
+		getProject().executeCommands(stress.createCommandsToDeleteChildrenAndObject());
 	}
 	
 	private Cause threat;

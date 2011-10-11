@@ -44,7 +44,7 @@ abstract public class AbstractObjectWithBudgetDataToDeleteTestCase extends Objec
 		assertTrue("should have atleast one assignment?", assignmentRefs.size() > 0);
 
 		CommandVector commandToDeleteChildren = baseObject.createCommandsToDeleteChildren();
-		getProject().executeCommandsAsTransaction(commandToDeleteChildren);
+		getProject().executeCommands(commandToDeleteChildren);
 		assertEquals("should not have any children?", 0, baseObject.getRefList(tag).size());
 
 		verifyChildrenNoLongerExist(assignmentRefs);

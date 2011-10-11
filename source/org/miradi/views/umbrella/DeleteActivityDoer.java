@@ -110,12 +110,12 @@ public class DeleteActivityDoer extends ObjectsDoer
 			return;
 		
 		CommandVector commandsToDeletTask = selectedTask.createCommandsToDeleteChildrenAndObject();
-		project.executeCommandsAsTransaction(commandsToDeletTask);
+		project.executeCommands(commandsToDeletTask);
 	}
 	
 	private static void executeDeleteCommands(Project project, CommandVector commands) throws ParseException, CommandFailedException
 	{
-		project.executeCommandsAsTransaction(commands);
+		project.executeCommands(commands);
 	}
 
 	private static CommandVector createDeleteCommands(Project project, ORefList selectionHierachy, Task task) throws Exception

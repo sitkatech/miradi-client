@@ -68,7 +68,7 @@ public class DeletePlanningViewConfigurationDoer extends AbstractPlanningViewCon
 			
 			ObjectTreeTableConfiguration configuration = (ObjectTreeTableConfiguration) getProject().findObject(configurationRef);
 			CommandVector commandsToDeleteChildrenAndConfiguration = configuration.createCommandsToDeleteChildrenAndObject();
-			getProject().executeCommandsAsTransaction(commandsToDeleteChildrenAndConfiguration);
+			getProject().executeCommands(commandsToDeleteChildrenAndConfiguration);
 		}
 		catch(Exception e)
 		{

@@ -1120,7 +1120,7 @@ public class Project
 		getCommandExecutor().executeCommandAsTransaction(command);
 	}
 	
-	public void executeCommandsAsTransaction(CommandVector commands) throws CommandFailedException
+	public void executeCommands(CommandVector commands) throws CommandFailedException
 	{
 		getCommandExecutor().executeCommandsAsTransaction(commands);
 	}

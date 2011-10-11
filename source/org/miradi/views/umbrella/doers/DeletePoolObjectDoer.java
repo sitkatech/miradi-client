@@ -68,7 +68,7 @@ abstract public class DeletePoolObjectDoer extends ObjectsDoer
 				BaseObject objectToDelete = getObjects()[0];
 				doWork(objectToDelete);
 				CommandVector commandsToDeleteChildrenAndObject = objectToDelete.createCommandsToDeleteChildrenAndObject();
-				getProject().executeCommandsAsTransaction(commandsToDeleteChildrenAndObject);
+				getProject().executeCommands(commandsToDeleteChildrenAndObject);
 			}
 			finally
 			{

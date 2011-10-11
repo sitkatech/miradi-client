@@ -170,13 +170,13 @@ public class FactorDeleteHelper
 	
 	private void removeFromTaggedObjectSets(ORef refToUntag) throws Exception
 	{
-		getProject().executeCommandsAsTransaction(DeleteAnnotationDoer.buildCommandsToUntag(getProject(), refToUntag));
+		getProject().executeCommands(DeleteAnnotationDoer.buildCommandsToUntag(getProject(), refToUntag));
 	}
 
 	private void removeFromDiagramAndDelete(DiagramFactor diagramFactor) throws Exception
 	{
 		removeNodeFromDiagram(getDiagramObject(), diagramFactor.getDiagramFactorId());
-		getProject().executeCommandsAsTransaction(buildCommandsToDeleteDiagramFactor(diagramFactor));
+		getProject().executeCommands(buildCommandsToDeleteDiagramFactor(diagramFactor));
 	}
 
 	private void removeFromGroupBox(DiagramFactor diagramFactor) throws Exception
@@ -215,7 +215,7 @@ public class FactorDeleteHelper
 	
 	private void deleteUnderlyingNode(Factor factorToDelete) throws Exception
 	{
-		getProject().executeCommandsAsTransaction(factorToDelete.createCommandsToDeleteChildrenAndObject());
+		getProject().executeCommands(factorToDelete.createCommandsToDeleteChildrenAndObject());
 	}
 	
 	public void deleteAnnotations(Factor factorToDelete) throws Exception
