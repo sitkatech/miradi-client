@@ -29,7 +29,6 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.ids.KeyEcologicalAttributeId;
 import org.miradi.main.MiradiTestCase;
-import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
@@ -209,7 +208,7 @@ public class TestObjectManager extends MiradiTestCase
 	private void verifyObjectLifecycle(int type) throws Exception
 	{
 		verifyBasicObjectLifecycle(type);
-		verifyObjectWriteAndRead(type, null);
+		verifyObjectWriteAndRead(type);
 		verifyGetPool(type);
 	}
 	
@@ -250,7 +249,7 @@ public class TestObjectManager extends MiradiTestCase
 		assertEquals(type + " didn't use requested id?", desiredId, manager.createObject(type, desiredId, null));
 	}
 
-	private void verifyObjectWriteAndRead(int type, CreateObjectParameter parameter) throws IOException, Exception
+	private void verifyObjectWriteAndRead(int type) throws IOException, Exception
 	{
 		File tempDirectory = createTempDirectory();
 		String projectName = "verifyObjectReadAndWrite";
@@ -259,7 +258,7 @@ public class TestObjectManager extends MiradiTestCase
 			Project projectToWrite = new Project();
 			projectToWrite.setLocalDataLocation(tempDirectory);
 			projectToWrite.createOrOpenWithDefaultObjectsAndDiagramHelp(projectName, new NullProgressMeter());
-			BaseId idToReload = projectToWrite.createObject(type, BaseId.INVALID, parameter);
+			BaseId idToReload = projectToWrite.createObject(type, BaseId.INVALID, null);
 			projectToWrite.close();
 			
 			Project projectToRead = new Project();
