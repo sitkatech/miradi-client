@@ -209,7 +209,7 @@ public class TestObjectManager extends MiradiTestCase
 		BaseId createdId = manager.createObject(type, BaseId.INVALID, null);
 		verifyBasicObjectLifecycle(type, createdId);
 		verifyObjectWriteAndRead(type);
-		verifyGetPool(type);
+		verifyGetPool(type, createdId);
 	}
 	
 	public void verifyBasicObjectLifecycle(int type, BaseId createdId) throws Exception
@@ -279,9 +279,8 @@ public class TestObjectManager extends MiradiTestCase
 		}
 	}
 	
-	private void verifyGetPool(int type) throws Exception
+	private void verifyGetPool(int type, BaseId createdId) throws Exception
 	{
-		BaseId createdId = manager.createObject(type, BaseId.INVALID, null);
 		EAMObjectPool pool = manager.getPool(type);
 		assertNotNull("Missing pool type " + type, pool);
 		BaseObject created = (BaseObject)pool.getRawObject(createdId);
