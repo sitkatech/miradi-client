@@ -29,7 +29,6 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramLinkId;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.CreateDiagramLinkParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
@@ -305,8 +304,7 @@ public class LinkCreator
 	
 	public ORef createDiagramLink(DiagramObject diagramObject, ORef factorLinkRef, ORef fromDiagramFactorRef, ORef toDiagramFactorRef) throws Exception
 	{
-		CreateDiagramLinkParameter diagramLinkExtraInfo = createDiagramFactorLinkParameter(fromDiagramFactorRef, toDiagramFactorRef, factorLinkRef);
-		CommandCreateObject createDiagramLinkCommand =  new CommandCreateObject(ObjectType.DIAGRAM_LINK, diagramLinkExtraInfo);
+		CommandCreateObject createDiagramLinkCommand =  new CommandCreateObject(ObjectType.DIAGRAM_LINK);
 		project.executeCommand(createDiagramLinkCommand);
     	
     	BaseId rawId = createDiagramLinkCommand.getCreatedId();
@@ -321,13 +319,6 @@ public class LinkCreator
 		return createDiagramLinkCommand.getObjectRef();
 	}
 
-	private CreateDiagramLinkParameter createDiagramFactorLinkParameter(ORef fromDiagramFactorRef, ORef toDiagramFactorRef, ORef factorlLinkRef)
-	{
-		CreateDiagramLinkParameter diagramLinkExtraInfo = new CreateDiagramLinkParameter(factorlLinkRef, fromDiagramFactorRef, toDiagramFactorRef);
-		
-		return diagramLinkExtraInfo;
-	}
-	
 	public ORefList createGroupBoxChildrenDiagramLinks(DiagramObject diagramObject, DiagramFactor fromDiagramFactorToUse, DiagramFactor toDiagramFactorToUse) throws Exception
 	{
 		if (fromDiagramFactorToUse.isGroupBoxFactor() && toDiagramFactorToUse.isGroupBoxFactor())
