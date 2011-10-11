@@ -187,7 +187,7 @@ public class TestStrategy extends AbstractObjectWithBudgetDataToDeleteTestCase
 		assertEquals("Desire's activity relevancy list was not updated?", 1, relevantActivityRefs.size());
 		
 		CommandVector commandsToDelete = itemInRelevancyListToBeDeleted.createCommandsToDeleteChildrenAndObject();
-		getProject().executeCommandsAsTransaction(commandsToDelete);
+		getProject().executeCommands(commandsToDelete);
 		
 		ORefList relevantStrategyAndActivityRefsAfterDelete = new ORefList(desire.getAllStrategyAndActivityRefsFromRelevancyOverrides());
 		ORefList relevantActivityRefsAfterDelete = relevantStrategyAndActivityRefsAfterDelete.getFilteredBy(itemInRelevancyListToBeDeleted.getType());

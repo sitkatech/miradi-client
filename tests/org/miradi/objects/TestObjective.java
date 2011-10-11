@@ -85,7 +85,7 @@ public class TestObjective extends TestDesire
 		projectToUse.fillObjectUsingCommand(parent, annotationTag, singleAnnotationRefList);
 		
 		CommandVector commandsToDelete = parent.createCommandsToDeleteChildrenAndObject();
-		projectToUse.executeCommandsAsTransaction(commandsToDelete);
+		projectToUse.executeCommands(commandsToDelete);
 		
 		ORefList shouldBeEmptyRefList = projectToUse.getPool(annotationType).getRefList();
 		assertTrue("Annotation was not deleted?", shouldBeEmptyRefList.isEmpty());

@@ -89,7 +89,7 @@ public class DiagramAsSharedPaster extends DiagramPaster
 				if (allReferrers.isEmpty())
 				{
 					CommandVector commandsToDeleteOrphan = baseObject.createCommandsToDeleteChildrenAndObject();
-					getProject().executeCommandsAsTransaction(commandsToDeleteOrphan);
+					getProject().executeCommands(commandsToDeleteOrphan);
 				} 
 			}
 		}
@@ -162,7 +162,7 @@ public class DiagramAsSharedPaster extends DiagramPaster
 			commands.addAll(Arrays.asList(viewData.buildCommandsToAddNode(ref)));
 		}
 		
-		getProject().executeCommandsAsTransaction(commands);
+		getProject().executeCommands(commands);
 	}
 
 	private ORefList getPastedFactorRefs() throws ParseException, Exception

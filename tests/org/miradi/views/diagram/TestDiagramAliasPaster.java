@@ -109,7 +109,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 
 	private void deleteIndicatorBeforePasteAsShared(Indicator indicator) throws Exception
 	{
-		getProject().executeCommandsAsTransaction(indicator.createCommandsToDeleteChildrenAndObject());
+		getProject().executeCommands(indicator.createCommandsToDeleteChildrenAndObject());
 		getProject().fillObjectUsingCommand(threat, Cause.TAG_INDICATOR_IDS, new IdList(Indicator.getObjectType()));
 	}
 	

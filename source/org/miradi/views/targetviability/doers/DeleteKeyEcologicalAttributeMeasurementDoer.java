@@ -77,7 +77,7 @@ public class DeleteKeyEcologicalAttributeMeasurementDoer extends AbstractKeyEcol
 				return;
 			
 			CommandVector commandsToDeleteChildrenAndMeasurement = measurement.createCommandsToDeleteChildrenAndObject();
-			getProject().executeCommandsAsTransaction(commandsToDeleteChildrenAndMeasurement);
+			getProject().executeCommands(commandsToDeleteChildrenAndMeasurement);
 		}
 		catch(Exception e)
 		{

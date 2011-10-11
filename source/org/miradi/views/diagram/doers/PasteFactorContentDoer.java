@@ -78,11 +78,11 @@ public class PasteFactorContentDoer extends AbstractPasteDoer
 			FactorDeleteHelper factorDeleteHelper = FactorDeleteHelper.createFactorDeleteHelper(getDiagramPanel().getCurrentDiagramComponent());
 			factorDeleteHelper.deleteAnnotations(selectedFactorToPasteContentInto);
 			CommandVector commandsToClear = new CommandVector(selectedFactorToPasteContentInto.createCommandsToClear());
-			getProject().executeCommandsAsTransaction(commandsToClear);
+			getProject().executeCommands(commandsToClear);
 			
 			DiagramFactor newlyPastedDiagramFactor = getNewlyPastedFactor(paster);
 			CommandVector commands = buildCommandsToFill(selectedFactorRefToPasteContentInto, newlyPastedDiagramFactor.getWrappedFactor());
-			getProject().executeCommandsAsTransaction(commands);
+			getProject().executeCommands(commands);
 			
 			shallowDeleteDiagramFactorAndUnderlyingFactor(newlyPastedDiagramFactor);
 		}
@@ -154,8 +154,8 @@ public class PasteFactorContentDoer extends AbstractPasteDoer
 		CommandSetObjectData removeFromDiagram = CommandSetObjectData.createRemoveIdCommand(getDiagramModel().getDiagramObject(), DiagramObject.TAG_DIAGRAM_FACTOR_IDS, newlyPastedDiagramFactor.getId());
 		getProject().executeCommand(removeFromDiagram);
 		
-		getProject().executeCommandsAsTransaction(newlyPastedDiagramFactor.createCommandsToShallowDelete());
-		getProject().executeCommandsAsTransaction(factorToDelete.createCommandsToShallowDelete());		
+		getProject().executeCommands(newlyPastedDiagramFactor.createCommandsToShallowDelete());
+		getProject().executeCommands(factorToDelete.createCommandsToShallowDelete());		
 	}
 
 	private DiagramFactor getNewlyPastedFactor(DiagramCopyPaster paster)
