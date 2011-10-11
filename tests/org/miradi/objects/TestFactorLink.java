@@ -33,7 +33,7 @@ public class TestFactorLink extends ObjectTestCase
 	public void testBasics() throws Exception
 	{
 		FactorLink linkageData = createFactorLink();
-		assertEquals("Id not the same?", id, linkageData.getId());
+		assertEquals("Id not the same?", new BaseId(1), linkageData.getId());
 	}
 
 	public void testFields() throws Exception
@@ -55,12 +55,10 @@ public class TestFactorLink extends ObjectTestCase
 	{
 		DiagramFactor nodeA = getProject().createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
 		DiagramFactor nodeB = getProject().createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
-		final FactorLink factorLink = new FactorLink(getObjectManager(), id);
+		final FactorLink factorLink = new FactorLink(getObjectManager(), new BaseId(1));
 		factorLink.setData(FactorLink.TAG_FROM_REF, nodeA.getWrappedORef().toString());
 		factorLink.setData(FactorLink.TAG_TO_REF, nodeB.getWrappedORef().toString());
 		
 		return factorLink;
 	}
-	
-	private static final BaseId id = new BaseId(1);
 }
