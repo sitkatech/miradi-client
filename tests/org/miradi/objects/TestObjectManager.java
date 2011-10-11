@@ -131,7 +131,6 @@ public class TestObjectManager extends MiradiTestCase
 		}
 		
 		verifyObjectLifecycle(ObjectType.CAUSE);
-		verifyObjectLifecycle(ObjectType.FACTOR_LINK);
 	}
 
 	public void testPseudoTagTargetViability() throws Exception
