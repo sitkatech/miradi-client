@@ -24,7 +24,6 @@ import java.util.HashMap;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 
@@ -33,7 +32,6 @@ public class CommandCreateObject extends Command
 	public CommandCreateObject(int typeToCreate)
 	{
 		type = typeToCreate;
-		parameter = null;
 		createdId = BaseId.INVALID;
 	}
 	
@@ -50,11 +48,6 @@ public class CommandCreateObject extends Command
 	public int getObjectType()
 	{
 		return type;
-	}
-	
-	public CreateObjectParameter getParameter()
-	{
-		return parameter;
 	}
 	
 	public BaseId getCreatedId()
@@ -93,8 +86,7 @@ public class CommandCreateObject extends Command
 	{
 		HashMap<String, Comparable> dataPairs = new HashMap<String, Comparable>();
 		dataPairs.put("OBJECT_TYPE", new Integer(type));
-		if (parameter!=null)
-			dataPairs.put(parameter.getClass().getSimpleName(), parameter.getFormatedDataString());
+
 		return dataPairs;
 	}
 	
@@ -107,6 +99,5 @@ public class CommandCreateObject extends Command
 	public static final String COMMAND_NAME = "CreateObject";
 
 	private int type;
-	private CreateObjectParameter parameter;
 	private BaseId createdId;
 }
