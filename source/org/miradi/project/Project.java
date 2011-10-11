@@ -1097,7 +1097,7 @@ public class Project
 
 	public void executeCommand(Command command) throws UnexpectedNonSideEffectException, CommandFailedException
 	{
-		getCommandExecutor().executeCommand(command);
+		getCommandExecutor().executeSingleCommand(command);
 	}
 
 	public boolean isDoNothingCommand(Command command)	throws CommandFailedException

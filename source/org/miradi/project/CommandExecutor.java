@@ -74,7 +74,7 @@ public class CommandExecutor
 		undoRedoState = new UndoRedoState();
 	}
 	
-	public void executeCommand(Command command) throws UnexpectedNonSideEffectException, CommandFailedException
+	public void executeSingleCommand(Command command) throws UnexpectedNonSideEffectException, CommandFailedException
 	{
 		if(!isTransactionStateValidFor(command))
 			throw new CommandFailedException("executeCommand bad transaction state: " + command.toString());
@@ -126,12 +126,12 @@ public class CommandExecutor
 	
 	public void executeEndTransaction() throws CommandFailedException
 	{
-		executeCommand(new CommandEndTransaction());
+		executeSingleCommand(new CommandEndTransaction());
 	}
 	
 	public void executeBeginTransaction() throws CommandFailedException
 	{
-		executeCommand(new CommandBeginTransaction());
+		executeSingleCommand(new CommandBeginTransaction());
 	}
 	
 	public void executeCommandAsTransaction(Command command) throws CommandFailedException
@@ -148,17 +148,17 @@ public class CommandExecutor
 	
 	public void executeCommands(Command[] commands) throws CommandFailedException
 	{
-		executeCommand(new CommandBeginTransaction());
+		executeSingleCommand(new CommandBeginTransaction());
 		try
 		{
 			for(int i = 0; i < commands.length; ++i)
 			{
-				executeCommand(commands[i]);
+				executeSingleCommand(commands[i]);
 			}
 		}
 		finally
 		{
-			executeCommand(new CommandEndTransaction());
+			executeSingleCommand(new CommandEndTransaction());
 		}
 	}
 	
