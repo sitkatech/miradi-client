@@ -32,7 +32,9 @@ public class CommandCreateObject extends Command
 {
 	public CommandCreateObject(int typeToCreate)
 	{
-		this(typeToCreate, null);
+		type = typeToCreate;
+		parameter = null;
+		createdId = BaseId.INVALID;
 	}
 	
 	public CommandCreateObject(int typeToCreate, CreateObjectParameter parameterToUse)
