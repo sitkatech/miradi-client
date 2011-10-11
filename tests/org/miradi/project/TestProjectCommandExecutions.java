@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.project;
 
 import org.miradi.commands.CommandCreateObject;
+import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.BaseId;
 import org.miradi.main.CommandExecutedEvent;
@@ -97,7 +98,13 @@ public class TestProjectCommandExecutions extends TestCaseWithProject implements
 				ORef threatRef = new ORef(Cause.getObjectType(), new BaseId(400));
 				CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(stressRef, threatRef);
 				CommandCreateObject createThreatStressRating = new CommandCreateObject(ThreatStressRating.getObjectType(), extraInfo);
-				getProject().executeAsSideEffect(createThreatStressRating);	
+				getProject().executeAsSideEffect(createThreatStressRating);
+				
+				final CommandSetObjectData setStressRefCommand = new CommandSetObjectData(createThreatStressRating.getObjectRef(), ThreatStressRating.TAG_STRESS_REF, stressRef.toString());
+				getProject().executeAsSideEffect(setStressRefCommand);
+				
+				final CommandSetObjectData setThreatRefCommand = new CommandSetObjectData(createThreatStressRating.getObjectRef(), ThreatStressRating.TAG_THREAT_REF, threatRef.toString());
+				getProject().executeAsSideEffect(setThreatRefCommand);
 			}
 		}
 		catch (Exception e)

@@ -917,7 +917,9 @@ public class ConproXmlImporter implements ConProMiradiXml
 		for(ORef threatRef : upstreatThreatRefs)
 		{
 			CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(stressRef, threatRef);
-			getProject().createObject(ThreatStressRating.getObjectType(), extraInfo);
+			ORef threatStressRatingRef = getProject().createObject(ThreatStressRating.getObjectType(), extraInfo);
+			getProject().setObjectData(threatStressRatingRef, ThreatStressRating.TAG_STRESS_REF, stressRef.toString());
+			getProject().setObjectData(threatStressRatingRef, ThreatStressRating.TAG_THREAT_REF, threatRef.toString());
 		}
 	}
 
