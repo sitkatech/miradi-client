@@ -37,13 +37,6 @@ public class CommandCreateObject extends Command
 		createdId = BaseId.INVALID;
 	}
 	
-	public CommandCreateObject(int typeToCreate, CreateObjectParameter parameterToUse)
-	{
-		type = typeToCreate;
-		parameter = parameterToUse;
-		createdId = BaseId.INVALID;
-	}
-	
 	public void setCreatedId(BaseId id)
 	{
 		createdId = id;
