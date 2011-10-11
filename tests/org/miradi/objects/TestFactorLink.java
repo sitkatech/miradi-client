@@ -50,7 +50,7 @@ public class TestFactorLink extends ObjectTestCase
 
 	public void testBasics() throws Exception
 	{
-		FactorLink linkageData = new FactorLink(getObjectManager(), id);
+		FactorLink linkageData = createFactorLink();
 		assertEquals("Id not the same?", id, linkageData.getId());
 	}
 
@@ -61,16 +61,21 @@ public class TestFactorLink extends ObjectTestCase
 	
 	public void testToJson() throws Exception
 	{
-		FactorLink original = new FactorLink(getObjectManager(), id);
+		FactorLink original = createFactorLink();
 		EnhancedJsonObject json = original.toJson();
 		FactorLink gotBack = (FactorLink)BaseObject.createFromJson(project.getObjectManager(), original.getType(), json);
 		assertEquals("wrong id?", original.getId(), gotBack.getId());
 		assertEquals("wrong from?", original.getFromFactorRef(), gotBack.getFromFactorRef());
 		assertEquals("wrong to?", original.getToFactorRef(), gotBack.getToFactorRef());
 	}
+
+	private FactorLink createFactorLink() throws Exception
+	{
+		return new FactorLink(getObjectManager(), id);
+	}
 	
-	static final BaseId id = new BaseId(1);
-	DiagramFactor nodeA;
-	DiagramFactor nodeB;
-	ProjectForTesting project;
+	private static final BaseId id = new BaseId(1);
+	private DiagramFactor nodeA;
+	private DiagramFactor nodeB;
+	private ProjectForTesting project;
 }
