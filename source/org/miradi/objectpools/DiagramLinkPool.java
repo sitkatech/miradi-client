@@ -22,7 +22,6 @@ package org.miradi.objectpools;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramLinkId;
 import org.miradi.ids.IdAssigner;
-import org.miradi.objecthelpers.CreateDiagramLinkParameter;
 import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -47,7 +46,7 @@ public class DiagramLinkPool extends EAMNormalObjectPool
 	@Override
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo) throws Exception
 	{
-		return new DiagramLink(objectManager, actualId, (CreateDiagramLinkParameter)extraInfo);
+		return new DiagramLink(objectManager, actualId);
 	}
 	
 	public DiagramLinkId[] getallDiagramFactorLinkIds()
