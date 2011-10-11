@@ -255,7 +255,7 @@ public class TestObjectManager extends MiradiTestCase
 			Project projectToWrite = new Project();
 			projectToWrite.setLocalDataLocation(tempDirectory);
 			projectToWrite.createOrOpenWithDefaultObjectsAndDiagramHelp(projectName, new NullProgressMeter());
-			BaseId idToReload = projectToWrite.createObject(type, BaseId.INVALID, null);
+			BaseId idToReload = projectToWrite.createObjectAndReturnId(type, BaseId.INVALID);
 			projectToWrite.close();
 			
 			Project projectToRead = new Project();
