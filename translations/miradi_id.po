@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-11 12:44-0500\n"
+"POT-Creation-Date: 2011-10-11 16:37-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -82,7 +82,7 @@ msgstr ""
 msgid " 2) Connect threat to relevant targets"
 msgstr "2) Hubungkan ancaman dengan target relevan "
 
-#: Miradi/source/org/miradi/project/Project.java:186
+#: Miradi/source/org/miradi/project/Project.java:184
 msgid " A project by this name already exists: "
 msgstr "Sudah ada proyek lain yang memakai nama ini: "
 
@@ -324,7 +324,7 @@ msgstr "(Lihat tab Proyek) "
 msgid "(Translation: %code %date)"
 msgstr "(Penerjemahan: : %code %date) "
 
-#: Miradi/source/org/miradi/objects/DiagramFactor.java:233
+#: Miradi/source/org/miradi/objects/DiagramFactor.java:230
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectList.java:67
 msgid "(Unknown)"
 msgstr "(Tidak Dikenal) "
@@ -1068,7 +1068,7 @@ msgstr ""
 "mengganti cadangan yang ada dengan salinan baru. Hal ini mungkin aman untuk "
 "dilakukan, kecuali bila upaya pemindahan sebelumnya gagal. "
 
-#: Miradi/source/org/miradi/project/Project.java:192
+#: Miradi/source/org/miradi/project/Project.java:190
 msgid "A file or folder exist by the same name:"
 msgstr "File atau folder dengan nama yang sama sudah ada: "
 
@@ -2964,7 +2964,7 @@ msgstr "Buat… "
 msgid "Creating group boxes..."
 msgstr ""
 
-#: Miradi/source/org/miradi/project/Project.java:696
+#: Miradi/source/org/miradi/project/Project.java:669
 msgid "Creating..."
 msgstr ""
 
@@ -3655,7 +3655,7 @@ msgstr ""
 "Nama berkas harus mengandung huruf dan angka dan/atau karakter '_' saja. "
 
 #: Miradi/source/org/miradi/xml/AbstractXmlImporter.java:90
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:173
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:171
 msgid "File to import does not validate."
 msgstr "Berkas yang akan diimpor tidak bisa divalidasi. "
 
@@ -4015,7 +4015,7 @@ msgstr ""
 msgid "High"
 msgstr "Tinggi"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1388
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1390
 msgid "High/Very-High Threat Chains"
 msgstr "Rangkaian Ancaman Tinggi/Sangat Tinggi "
 
@@ -4694,7 +4694,7 @@ msgstr ""
 msgid "Low"
 msgstr "Rendah"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1389
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1391
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr "Rangkaian Ancaman Rendah/Sedang/Tak Terukur "
 
@@ -5270,7 +5270,7 @@ msgstr "Tidak Terspesifikasi "
 msgid "Not Started"
 msgstr "Tidak Dimulai"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:647
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:645
 msgid "Not all classification Codes could imported."
 msgstr "Tidak semua Kode klasifikasi dapat diimpor. "
 
@@ -5417,7 +5417,7 @@ msgstr ""
 msgid "OpenStandards"
 msgstr "Standar Terbuka"
 
-#: Miradi/source/org/miradi/project/Project.java:691
+#: Miradi/source/org/miradi/project/Project.java:664
 msgid "Opening..."
 msgstr ""
 
@@ -5904,7 +5904,7 @@ msgstr "Sumber Daya"
 msgid "Resources:"
 msgstr "Sumber daya: "
 
-#: Miradi/source/org/miradi/project/ResultsChainCreatorHelper.java:194
+#: Miradi/source/org/miradi/project/ResultsChainCreatorHelper.java:193
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:70
 #: Miradi/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:35
 msgid "Results Chain"
@@ -8610,11 +8610,11 @@ msgstr "[Diagram Utama] "
 msgid "[NOT SPECIFIED]"
 msgstr "[TIDAK TERSPESIFIKASI] "
 
-#: Miradi/source/org/miradi/project/ResultsChainCreatorHelper.java:172
+#: Miradi/source/org/miradi/project/ResultsChainCreatorHelper.java:171
 msgid "[New Results Chain]"
 msgstr "[Rangkaian Hasil Baru] "
 
-#: Miradi/source/org/miradi/project/Project.java:1004
+#: Miradi/source/org/miradi/project/Project.java:977
 msgid "[No Project]"
 msgstr "[Tidak Ada Proyek] "
 
