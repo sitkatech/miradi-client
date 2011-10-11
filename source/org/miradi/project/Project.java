@@ -1117,7 +1117,7 @@ public class Project
 	
 	public void executeCommands(CommandVector commands) throws CommandFailedException
 	{
-		getCommandExecutor().executeCommandsAsTransaction(commands);
+		getCommandExecutor().executeCommands(commands);
 	}
 	
 	public void executeCommands(Command[] commands) throws CommandFailedException

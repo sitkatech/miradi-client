@@ -138,10 +138,10 @@ public class CommandExecutor
 	{
 		CommandVector singleItemList = new CommandVector();
 		singleItemList.add(command);
-		executeCommandsAsTransaction(singleItemList);
+		executeCommands(singleItemList);
 	}
 	
-	public void executeCommandsAsTransaction(CommandVector commands) throws CommandFailedException
+	public void executeCommands(CommandVector commands) throws CommandFailedException
 	{
 		executeCommands(commands.toArray(new Command[0]));
 	}
