@@ -52,7 +52,6 @@ import org.miradi.objectdata.ObjectData;
 import org.miradi.objectdata.PointData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.BaseObjectByNameSorter;
-import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORef;
@@ -906,11 +905,6 @@ abstract public class BaseObject
 	{
 		ObjectData data = getFields().get(fieldTag);
 		return data;
-	}
-	
-	public CreateObjectParameter getCreationExtraInfo()
-	{
-		return null;
 	}
 	
 	public Vector<CommandSetObjectData> createCommandsToClear()
