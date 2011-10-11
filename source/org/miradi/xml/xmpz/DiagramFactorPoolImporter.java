@@ -25,8 +25,6 @@ import java.awt.Point;
 
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.CreateDiagramFactorParameter;
-import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Cause;
@@ -77,15 +75,14 @@ public class DiagramFactorPoolImporter extends AbstractBaseObjectPoolImporter
 		importCodeField(style, destinationRef, DiagramFactor.TAG_FOREGROUND_COLOR, new DiagramFactorFontColorQuestion());
 		importCodeField(style, destinationRef, DiagramFactor.TAG_BACKGROUND_COLOR, new DiagramFactorBackgroundQuestion());
 	}
-	
+
 	@Override
-	protected CreateObjectParameter getExtraInfo(Node parentNode) throws Exception
+	protected void postCreateFix(ORef ref, Node node) throws Exception
 	{
-		ORef wrappedRef = importWrappedRef(getImporter(), getPoolName(),  parentNode);
-		
-		return new CreateDiagramFactorParameter(wrappedRef);
+		ORef wrappedRef = importWrappedRef(getImporter(), getPoolName(),  node);
+		getProject().setObjectData(ref, DiagramFactor.TAG_WRAPPED_REF, wrappedRef.toString());
 	}
-	
+
 	private  static ORef importWrappedRef(XmpzXmlImporter importer, String poolName, Node parentNode) throws Exception
 	{
 		Node wrappedFactorIdNode = importer.getNode(parentNode, poolName + WRAPPED_FACTOR_ID_ELEMENT_NAME);
