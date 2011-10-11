@@ -218,8 +218,7 @@ public class TestObjectManager extends MiradiTestCase
 		verifyBasicObjectLifecycle(type, createdId);
 	}
 
-	public void verifyBasicObjectLifecycle(int type, BaseId createdId)
-			throws Exception
+	public void verifyBasicObjectLifecycle(int type, BaseId createdId) throws Exception
 	{
 		assertNotEquals(type + " Created with invalid id", BaseId.INVALID, createdId);
 		db.readObject(manager, type, createdId);
