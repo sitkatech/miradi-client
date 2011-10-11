@@ -64,7 +64,7 @@ public class TestDiagramComponent extends TestCaseWithProject
 		DiagramCauseCell visibleNode = (DiagramCauseCell) createNode(ObjectType.CAUSE);
 		ORef visibleRef = visibleNode.getWrappedFactorRef();
 		
-		BaseId id = getObjectManager().createObject(FactorLink.getObjectType(), new BaseId(100), null);
+		BaseId id = getObjectManager().createObject(FactorLink.getObjectType(), new BaseId(100));
 		ORef linkRef = new ORef(FactorLink.getObjectType(), id);
 		FactorLink cmLinkage =	FactorLink.find(getProject(), linkRef);
 		ORef factorLinkRef = cmLinkage.getRef();

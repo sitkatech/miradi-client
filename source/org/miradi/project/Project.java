@@ -596,7 +596,7 @@ public class Project
 	
 	public BaseId createObjectAndReturnId(int objectType, BaseId objectId) throws Exception
 	{
-		BaseId createdId = objectManager.createObject(objectType, objectId, null);
+		BaseId createdId = objectManager.createObject(objectType, objectId);
 		saveProjectInfo();
 		return createdId;
 	}
