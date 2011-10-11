@@ -25,7 +25,6 @@ import org.miradi.diagram.cells.FactorCell;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.FactorId;
 import org.miradi.main.MiradiTestCase;
-import org.miradi.objecthelpers.CreateDiagramFactorParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -106,8 +105,7 @@ public class TestLayerManager extends MiradiTestCase
 		final int SOME_RANDOM_NUMBER = 5;
 		DiagramFactorId diagramFactorId = new DiagramFactorId(id + SOME_RANDOM_NUMBER);
 		FactorId strategyFactorId = new FactorId(id);
-		CreateDiagramFactorParameter strategyExtraInfo = new CreateDiagramFactorParameter(new ORef(ObjectType.STRATEGY, strategyFactorId));
-		DiagramFactor strategyDiagramFactor = new DiagramFactor(project.getObjectManager(), diagramFactorId, strategyExtraInfo);
+		DiagramFactor strategyDiagramFactor = new DiagramFactor(project.getObjectManager(), diagramFactorId);
 		strategyDiagramFactor.setData(DiagramFactor.TAG_WRAPPED_REF, new ORef(Strategy.getObjectType(), strategyFactorId).toString());
 		
 		return strategyDiagramFactor;
