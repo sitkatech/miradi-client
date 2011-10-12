@@ -123,10 +123,10 @@ public class ThreatRatingBundle
 	}
 	
 	
-	private static final String TAG_THREAT_ID = "ThreatId";
-	private static final String TAG_TARGET_ID = "TargetId";
-	private static final String TAG_DEFAULT_VALUE_ID = "DefaultValueId";
-	private static final String TAG_VALUES = "Values";
+	public static final String TAG_THREAT_ID = "ThreatId";
+	public static final String TAG_TARGET_ID = "TargetId";
+	public static final String TAG_DEFAULT_VALUE_ID = "DefaultValueId";
+	public static final String TAG_VALUES = "Values";
 	
 	FactorId threatId;
 	FactorId targetId;
