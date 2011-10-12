@@ -108,13 +108,16 @@ public class ProjectSaver
 	{
 		writer.write(actionCode);
 		writer.write(TAB);
-		writer.write("Ref");
+		
+		writer.write(REF_TAG);
 		writer.write(EQUALS);
 		writer.write(ref.toString());
 		writer.write(TAB);
+		
 		writer.write(tag);
 		writer.write(EQUALS);
 		writer.write(value);
+		
 		writer.writeln();
 	}
 	
@@ -127,4 +130,5 @@ public class ProjectSaver
 	private static final String UPDATE_OBJECT_CODE = "UO";
 	
 	private static final String SIMPLE_THREAT_RATING_BUNDLE_NAME_TAG = "BundleName";
+	private static final String REF_TAG = "Ref";
 }
