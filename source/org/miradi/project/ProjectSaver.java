@@ -21,9 +21,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.project;
 
 import java.util.Collection;
+import java.util.Vector;
 
 import org.martus.util.UnicodeWriter;
 import org.miradi.database.ProjectServer;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objectpools.EAMObjectPool;
+import org.miradi.objects.BaseObject;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.utils.EnhancedJsonObject;
@@ -36,8 +42,43 @@ public class ProjectSaver
 		writeTagValue(writer, UPDATE_PROJECT_INFO_CODE, ProjectInfo.TAG_PROJECT_METADATA_ID, project.getProjectInfo().getMetadataId().toString());
 		writeTagValue(writer, UPDATE_PROJECT_VERSION_CODE, ProjectServer.TAG_VERSION, Integer.toString(ProjectServer.DATA_VERSION));
 		writeSimpleThreatRating(writer, project);
+		writeAllObjectTypes(writer, project);
 	}
 	
+	private static void writeAllObjectTypes(UnicodeWriter writer, Project project) throws Exception
+	{
+		for (int type = ObjectType.FIRST_OBJECT_TYPE; type < ObjectType.OBJECT_TYPE_COUNT; ++type)
+		{
+			EAMObjectPool pool = project.getPool(type);
+			if (pool != null)
+			{
+				ORefList sortedObjectRefs = pool.getSortedRefList();
+				writeObjects(writer, project, sortedObjectRefs);
+			}
+		}
+	}
+
+	private static void writeObjects(UnicodeWriter writer, Project project, ORefList sortedObjectRefs) throws Exception
+	{
+		for (int index = 0; index < sortedObjectRefs.size(); ++index)
+		{
+			final ORef ref = sortedObjectRefs.get(index);
+			writeObject(writer, project, ref);
+		}
+	}
+
+	private static void writeObject(UnicodeWriter writer, Project project, ORef ref) throws Exception
+	{
+		BaseObject baseObject = project.findObject(ref);
+		writeTagValue(writer, CREATE_OBJECT_CODE, "Ref", ref.toString());
+		Vector<String> fieldTags = baseObject.getStoredFieldTags();
+		for(int field = 0; field < fieldTags.size(); ++field)
+		{
+			String tag = fieldTags.get(field);
+			writeTagValue(writer, UPDATE_OBJECT_CODE, ref, tag, baseObject.getData(tag));
+		}
+	}
+
 	private static void writeSimpleThreatRating(UnicodeWriter writer, Project project) throws Exception
 	{
 		Collection<ThreatRatingBundle> allBundles = SimpleThreatRatingFramework.loadSimpleThreatRatingBundles(project.getDatabase());
@@ -63,11 +104,27 @@ public class ProjectSaver
 		writer.writeln();
 	}
 	
+	private static void writeTagValue(final UnicodeWriter writer, final String actionCode, ORef ref, final String tag, final String value) throws Exception
+	{
+		writer.write(actionCode);
+		writer.write(TAB);
+		writer.write("Ref");
+		writer.write(EQUALS);
+		writer.write(ref.toString());
+		writer.write(TAB);
+		writer.write(tag);
+		writer.write(EQUALS);
+		writer.write(value);
+		writer.writeln();
+	}
+	
 	private static final String TAB = "\t";
 	private static final String EQUALS = "=";
 	private static final String UPDATE_PROJECT_INFO_CODE = "UP";
 	private static final String UPDATE_PROJECT_VERSION_CODE = "UV";
 	private static final String UPDATE_SIMPLE_THREAT_RATING = "UT";
+	private static final String CREATE_OBJECT_CODE = "CO";
+	private static final String UPDATE_OBJECT_CODE = "UO";
 	
 	private static final String SIMPLE_THREAT_RATING_BUNDLE_NAME_TAG = "BundleName";
 }
