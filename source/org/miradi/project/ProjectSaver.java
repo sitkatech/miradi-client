@@ -41,6 +41,7 @@ public class ProjectSaver
 		writeTagValue(writer, UPDATE_PROJECT_INFO_CODE, ProjectInfo.TAG_HIGHEST_OBJECT_ID, Integer.toString(project.getProjectInfo().getNormalIdAssigner().getHighestAssignedId()));
 		writeTagValue(writer, UPDATE_PROJECT_INFO_CODE, ProjectInfo.TAG_PROJECT_METADATA_ID, project.getProjectInfo().getMetadataId().toString());
 		writeTagValue(writer, UPDATE_PROJECT_VERSION_CODE, ProjectServer.TAG_VERSION, Integer.toString(ProjectServer.DATA_VERSION));
+		writeTagValue(writer, UPDATE_LAST_MODIFIED_TIME_CODE, LAST_MODIFIED_TAG, project.getDatabase().getLastModifiedTime(null));
 		writeSimpleThreatRating(writer, project);
 		writeAllObjectTypes(writer, project);
 	}
@@ -129,10 +130,12 @@ public class ProjectSaver
 	private static final String EQUALS = "=";
 	private static final String UPDATE_PROJECT_INFO_CODE = "UP";
 	private static final String UPDATE_PROJECT_VERSION_CODE = "UV";
+	private static final String UPDATE_LAST_MODIFIED_TIME_CODE = "UL";
 	private static final String UPDATE_SIMPLE_THREAT_RATING = "UT";
 	private static final String CREATE_OBJECT_CODE = "CO";
 	private static final String UPDATE_OBJECT_CODE = "UO";
 	
 	private static final String SIMPLE_THREAT_RATING_BUNDLE_NAME_TAG = "BundleName";
 	private static final String REF_TAG = "Ref";
+	private static final String LAST_MODIFIED_TAG = "LastModified";
 }

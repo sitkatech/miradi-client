@@ -423,6 +423,11 @@ public class ProjectServer
 		return currentFileSystem.readFile(projectName, relativeQuarantineFile);
 	}
 
+	public String getLastModifiedTime(File projectDirectory) throws Exception
+	{
+		return readLocalLastModifiedProjectTime(projectDirectory);
+	}
+	
 	public static String readLocalLastModifiedProjectTime(File projectDirectory) throws Exception
 	{
 		File dataDirectory = projectDirectory.getParentFile();
@@ -449,7 +454,7 @@ public class ProjectServer
 		}
 	}
 	
-	private static String timestampToString(long lastModifiedMillis)
+	protected static String timestampToString(long lastModifiedMillis)
 	{
 		Date date = new Date(lastModifiedMillis);
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
