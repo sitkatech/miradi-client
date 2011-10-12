@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.project;
 
 import org.martus.util.UnicodeWriter;
+import org.miradi.database.ProjectServer;
 
 public class ProjectSaver
 {
@@ -28,6 +29,7 @@ public class ProjectSaver
 	{
 		writeTagValue(writer, UPDATE_PROJECT_INFO_CODE, ProjectInfo.TAG_HIGHEST_OBJECT_ID, Integer.toString(project.getProjectInfo().getNormalIdAssigner().getHighestAssignedId()));
 		writeTagValue(writer, UPDATE_PROJECT_INFO_CODE, ProjectInfo.TAG_PROJECT_METADATA_ID, project.getProjectInfo().getMetadataId().toString());
+		writeTagValue(writer, UPDATE_PROJECT_VERSION_CODE, ProjectServer.TAG_VERSION, Integer.toString(ProjectServer.DATA_VERSION));		
 	}
 	
 	private static void writeTagValue(final UnicodeWriter writer, final String actionCode, final String tag, final String value) throws Exception
@@ -43,4 +45,5 @@ public class ProjectSaver
 	private static final String TAB = "	";
 	private static final String EQUALS = "=";
 	private static final String UPDATE_PROJECT_INFO_CODE = "UP";
+	private static final String UPDATE_PROJECT_VERSION_CODE = "UV";
 }

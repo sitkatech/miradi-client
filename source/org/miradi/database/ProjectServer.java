@@ -500,7 +500,7 @@ public class ProjectServer
 	public static final int DATA_VERSION = 61;
 	public static final String LAST_MODIFIED_FILE_NAME = "LastModifiedProjectTime.txt";
 	public static final String QUARANTINE_FILE_NAME = "DeletedOrphans.txt";
-	private static final String TAG_VERSION = "Version";
+	public static final String TAG_VERSION = "Version";
 	public static final String JSON_DIRECTORY = "json";
 
 	public static String MANIFEST_FILE = "manifest";
