@@ -77,8 +77,8 @@ public class ProjectInfo
 		metadataId = new BaseId(copyFrom.optInt(TAG_PROJECT_METADATA_ID, -1));
 	}
 	
-	private static final String TAG_HIGHEST_OBJECT_ID = "HighestUsedNodeId";
-	private static final String TAG_PROJECT_METADATA_ID = "ProjectMetadataId";
+	public static final String TAG_HIGHEST_OBJECT_ID = "HighestUsedNodeId";
+	public static final String TAG_PROJECT_METADATA_ID = "ProjectMetadataId";
 	
 	private IdAssigner normalObjectIdAssigner;
 	private BaseId metadataId;

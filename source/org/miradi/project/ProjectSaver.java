@@ -26,10 +26,21 @@ public class ProjectSaver
 {
 	public static void saveProject(final Project project, UnicodeWriter writer) throws Exception
 	{
-		writer.write("UP");
+		writeTagValue(writer, UPDATE_PROJECT_INFO_CODE, ProjectInfo.TAG_HIGHEST_OBJECT_ID, Integer.toString(project.getProjectInfo().getNormalIdAssigner().getHighestAssignedId()));
+		writeTagValue(writer, UPDATE_PROJECT_INFO_CODE, ProjectInfo.TAG_PROJECT_METADATA_ID, project.getProjectInfo().getMetadataId().toString());
+	}
+	
+	private static void writeTagValue(final UnicodeWriter writer, final String actionCode, final String tag, final String value) throws Exception
+	{
+		writer.write(actionCode);
 		writer.write(TAB);
-		writer.write(Integer.toString(project.getProjectInfo().getNormalIdAssigner().getHighestAssignedId()));
+		writer.write(tag);
+		writer.write(EQUALS);
+		writer.write(value);
+		writer.writeln();
 	}
 	
 	private static final String TAB = "	";
+	private static final String EQUALS = "=";
+	private static final String UPDATE_PROJECT_INFO_CODE = "UP";
 }
