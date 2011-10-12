@@ -75,7 +75,11 @@ public class ProjectSaver
 		for(int field = 0; field < fieldTags.size(); ++field)
 		{
 			String tag = fieldTags.get(field);
-			writeTagValue(writer, UPDATE_OBJECT_CODE, ref, tag, baseObject.getData(tag));
+			final String data = baseObject.getData(tag);
+			if (data.length() > 0)
+			{
+				writeTagValue(writer, UPDATE_OBJECT_CODE, ref, tag, data);
+			}
 		}
 	}
 
