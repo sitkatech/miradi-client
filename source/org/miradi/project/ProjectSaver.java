@@ -130,9 +130,12 @@ public class ProjectSaver
 	private static void write(final UnicodeWriter writer, final String data) throws Exception
 	{
 		String xmlEncodedData = XmlUtilities.getXmlEncoded(data);
-		writer.write(xmlEncodedData);
+		String dataWithHtmlNewLines = xmlEncodedData.replaceAll(NEW_LINE, HTML_NEW_LINE);
+		writer.write(dataWithHtmlNewLines);
 	}
-	
+
+	private static final String NEW_LINE = "\n";
+	private static final String HTML_NEW_LINE = "<br/>";
 	private static final String TAB = "\t";
 	private static final String EQUALS = "=";
 	private static final String UPDATE_PROJECT_INFO_CODE = "UP";
