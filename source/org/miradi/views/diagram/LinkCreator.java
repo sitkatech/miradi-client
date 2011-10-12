@@ -308,9 +308,16 @@ public class LinkCreator
 		project.executeCommand(createDiagramLinkCommand);
     	
     	BaseId rawId = createDiagramLinkCommand.getCreatedId();
-		project.setObjectData(createDiagramLinkCommand.getObjectRef(), DiagramLink.TAG_WRAPPED_ID, factorLinkRef.getObjectId().toString());
-    	project.setObjectData(createDiagramLinkCommand.getObjectRef(), DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID, fromDiagramFactorRef.getObjectId().toString());
-    	project.setObjectData(createDiagramLinkCommand.getObjectRef(), DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID, toDiagramFactorRef.getObjectId().toString());
+    	
+    	CommandSetObjectData setWrappedId = new CommandSetObjectData(createDiagramLinkCommand.getObjectRef(), DiagramLink.TAG_WRAPPED_ID, factorLinkRef.getObjectId().toString());
+    	getProject().executeCommand(setWrappedId);
+    	
+    	CommandSetObjectData setFromDiagramFactorId = new CommandSetObjectData(createDiagramLinkCommand.getObjectRef(), DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID, fromDiagramFactorRef.getObjectId().toString());
+    	getProject().executeCommand(setFromDiagramFactorId);
+    	
+    	CommandSetObjectData setToDiagramFactorId = new CommandSetObjectData(createDiagramLinkCommand.getObjectRef(), DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID, toDiagramFactorRef.getObjectId().toString());
+    	getProject().executeCommand(setToDiagramFactorId);
+    	
 		DiagramLinkId createdDiagramLinkId = new DiagramLinkId(rawId.asInt());
 		
 		CommandSetObjectData addDiagramLink = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, createdDiagramLinkId);
