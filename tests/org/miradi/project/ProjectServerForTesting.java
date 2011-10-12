@@ -19,7 +19,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.project;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.Calendar;
 
 import org.miradi.database.ProjectServer;
 import org.miradi.ids.BaseId;
@@ -77,6 +79,12 @@ public class ProjectServerForTesting extends ProjectServer
 		super.deleteObject(type, id);
 		if(failDeletes)
 			throw new IOException("TestDatabase set to fail all deletes");
+	}
+
+	@Override
+	public String getLastModifiedTime(File projectDirectory) throws Exception
+	{
+		return timestampToString(Calendar.getInstance().getTimeInMillis());
 	}
 	
 	public int callsToWriteObject;
