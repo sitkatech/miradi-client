@@ -19,9 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objecthelpers;
 
-import org.miradi.ids.BaseId;
-import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.FactorLink;
 
 public class CreateDiagramLinkParameter
 {
@@ -30,11 +27,6 @@ public class CreateDiagramLinkParameter
 		factorLinkRef = factorLinkRefToUse;
 		fromRef = fromRefToUse;
 		toRef = toRefToUse;
-	}
-	
-	public CreateDiagramLinkParameter(BaseId factorLinkIdToUse, BaseId fromIdToUse, BaseId toIdToUse)
-	{
-		this(new ORef(FactorLink.getObjectType(), factorLinkIdToUse), new ORef(DiagramFactor.getObjectType(), fromIdToUse), new ORef(DiagramFactor.getObjectType(), toIdToUse));
 	}
 	
 	public ORef getFactorLinkRef()
