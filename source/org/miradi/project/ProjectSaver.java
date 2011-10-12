@@ -56,7 +56,7 @@ public class ProjectSaver
 		writer.writeln();
 	}
 	
-	private static final String TAB = "	";
+	private static final String TAB = "\t";
 	private static final String EQUALS = "=";
 	private static final String UPDATE_PROJECT_INFO_CODE = "UP";
 	private static final String UPDATE_PROJECT_VERSION_CODE = "UV";
