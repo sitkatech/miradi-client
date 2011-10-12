@@ -25,11 +25,6 @@ import org.miradi.objects.FactorLink;
 
 public class CreateDiagramLinkParameter
 {
-	public CreateDiagramLinkParameter(ORef fromRefToUse, ORef toRefToUse)
-	{
-		this(ORef.createInvalidWithType(FactorLink.getObjectType()), fromRefToUse, toRefToUse);
-	}
-		
 	public CreateDiagramLinkParameter(ORef factorLinkRefToUse, ORef fromRefToUse, ORef toRefToUse)
 	{
 		factorLinkRef = factorLinkRefToUse;
