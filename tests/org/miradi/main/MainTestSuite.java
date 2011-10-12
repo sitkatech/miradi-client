@@ -24,6 +24,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Locale;
 
+import junit.framework.TestResult;
+import junit.framework.TestSuite;
+
 import org.martus.util.TestMultiCalendar;
 import org.martus.util.xml.TestSimpleXmlParser;
 import org.miradi.commands.TestCommandBeginTransaction;
@@ -165,6 +168,7 @@ import org.miradi.project.TestProjectInfo;
 import org.miradi.project.TestProjectMpzImporter;
 import org.miradi.project.TestProjectMpzWriter;
 import org.miradi.project.TestProjectRepairer;
+import org.miradi.project.TestProjectSaver;
 import org.miradi.project.TestProjectTotalCalculator;
 import org.miradi.project.TestRealProject;
 import org.miradi.project.TestScopeBoxPool;
@@ -220,9 +224,6 @@ import org.miradi.xml.conpro.TestConProCodeMapHelper;
 import org.miradi.xml.conpro.exporter.TestConproXmlExporter;
 import org.miradi.xml.conpro.importer.TestConproXmlImporter;
 import org.miradi.xml.wcs.TestXmpzExporter;
-
-import junit.framework.TestResult;
-import junit.framework.TestSuite;
 
 public class MainTestSuite extends TestSuite
 {
@@ -285,6 +286,7 @@ public class MainTestSuite extends TestSuite
 		addTest(new TestSuite(TestGroupBoxPool.class));
 		addTest(new TestSuite(TestProjectTotalCalculator.class));
 		addTest(new TestSuite(TestCommandExecutor.class));
+		addTest(new TestSuite(TestProjectSaver.class));
 		
 		//questions package
 		addTest(new TestSuite(TestChoiceItem.class));
