@@ -20,9 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.project;
 
-import java.io.ByteArrayOutputStream;
-
-import org.martus.util.UnicodeWriter;
+import org.martus.util.UnicodeStringWriter;
 import org.miradi.main.TestCaseWithProject;
 
 public class TestProjectSaver extends TestCaseWithProject
@@ -36,31 +34,16 @@ public class TestProjectSaver extends TestCaseWithProject
 	{
 		getProject().populateEverything();
 		getProject().populateSimpleThreatRatingValues();
-		ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-		UnicodeWriter consoleWriter = new UnicodeWriter(System.out);
+		
+		UnicodeStringWriter consoleWriter = UnicodeStringWriter.create();
 		try
 		{
-			writeProject(bytes);
-			String output = new String(bytes.toByteArray(), "UTF-8");
-			consoleWriter.writeln(output);
+			ProjectSaver.saveProject(getProject(), consoleWriter);
+			System.out.println(consoleWriter.toString());
 		}
 		finally 
 		{
 			consoleWriter.close();
-			bytes.close();
-		}
-	}
-
-	public void writeProject(ByteArrayOutputStream bytes) throws Exception
-	{
-		UnicodeWriter writer = new UnicodeWriter(bytes);
-		try
-		{
-			ProjectSaver.saveProject(getProject(), writer);
-		}
-		finally 
-		{
-			writer.close();	
 		}
 	}
 }
