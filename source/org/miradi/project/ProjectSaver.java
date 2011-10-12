@@ -24,6 +24,7 @@ import java.util.Collection;
 import java.util.Vector;
 
 import org.martus.util.UnicodeWriter;
+import org.martus.util.xml.XmlUtilities;
 import org.miradi.database.ProjectServer;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -101,29 +102,35 @@ public class ProjectSaver
 
 	private static void writeTagValue(final UnicodeWriter writer, final String actionCode, final String tag, final String value) throws Exception
 	{
-		writer.write(actionCode);
-		writer.write(TAB);
-		writer.write(tag);
-		writer.write(EQUALS);
-		writer.write(value);
+		write(writer, actionCode);
+		write(writer, TAB);
+		write(writer, tag);
+		write(writer, EQUALS);
+		write(writer, value);
 		writer.writeln();
 	}
 	
 	private static void writeTagValue(final UnicodeWriter writer, final String actionCode, ORef ref, final String tag, final String value) throws Exception
 	{
-		writer.write(actionCode);
-		writer.write(TAB);
+		write(writer, actionCode);
+		write(writer, TAB);
 		
-		writer.write(REF_TAG);
-		writer.write(EQUALS);
-		writer.write(ref.toString());
-		writer.write(TAB);
+		write(writer, REF_TAG);
+		write(writer, EQUALS);
+		write(writer, ref.toString());
+		write(writer, TAB);
 		
-		writer.write(tag);
-		writer.write(EQUALS);
-		writer.write(value);
+		write(writer, tag);
+		write(writer, EQUALS);
+		write(writer, value);
 		
 		writer.writeln();
+	}
+	
+	private static void write(final UnicodeWriter writer, final String data) throws Exception
+	{
+		String xmlEncodedData = XmlUtilities.getXmlEncoded(data);
+		writer.write(xmlEncodedData);
 	}
 	
 	private static final String TAB = "\t";
