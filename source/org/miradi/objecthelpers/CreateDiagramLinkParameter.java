@@ -19,13 +19,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objecthelpers;
 
-import java.util.HashMap;
-
 import org.miradi.ids.BaseId;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.FactorLink;
 
-public class CreateDiagramLinkParameter extends CreateObjectParameter
+public class CreateDiagramLinkParameter
 {
 	public CreateDiagramLinkParameter(ORef fromRefToUse, ORef toRefToUse)
 	{
@@ -57,16 +55,6 @@ public class CreateDiagramLinkParameter extends CreateObjectParameter
 	public ORef getToDiagramFactorRef()
 	{
 		return toRef;
-	}
-	
-	@Override
-	public String getFormatedDataString()
-	{
-		HashMap<String, Comparable> dataPairs = new HashMap<String, Comparable>();
-		dataPairs.put("FactorLinkId", factorLinkRef.getObjectId());
-		dataPairs.put("FactorFromId", fromRef.getObjectId());
-		dataPairs.put("FactorToID", toRef.getObjectId());
-		return formatDataString(dataPairs);
 	}
 	
 	private ORef factorLinkRef;
