@@ -34,6 +34,8 @@ public class TestProjectSaver extends TestCaseWithProject
 	
 	public void testBasics() throws Exception
 	{
+		getProject().populateEverything();
+		getProject().populateSimpleThreatRatingValues();
 		ByteArrayOutputStream bytes = new ByteArrayOutputStream();
 		UnicodeWriter consoleWriter = new UnicodeWriter(System.out);
 		try

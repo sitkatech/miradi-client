@@ -29,9 +29,23 @@ public class ProjectSaver
 	{
 		writeTagValue(writer, UPDATE_PROJECT_INFO_CODE, ProjectInfo.TAG_HIGHEST_OBJECT_ID, Integer.toString(project.getProjectInfo().getNormalIdAssigner().getHighestAssignedId()));
 		writeTagValue(writer, UPDATE_PROJECT_INFO_CODE, ProjectInfo.TAG_PROJECT_METADATA_ID, project.getProjectInfo().getMetadataId().toString());
-		writeTagValue(writer, UPDATE_PROJECT_VERSION_CODE, ProjectServer.TAG_VERSION, Integer.toString(ProjectServer.DATA_VERSION));		
+		writeTagValue(writer, UPDATE_PROJECT_VERSION_CODE, ProjectServer.TAG_VERSION, Integer.toString(ProjectServer.DATA_VERSION));
+		writeSimpleThreatRating(writer, project);
 	}
 	
+	private static void writeSimpleThreatRating(UnicodeWriter writer, Project project) throws Exception
+	{
+//FIXME uncomment and make it work		
+//		Collection<ThreatRatingBundle> allBundles = SimpleThreatRatingFramework.loadSimpleThreatRatingBundles(project.getDatabase());
+//		for(ThreatRatingBundle bundle : allBundles)
+//		{
+//			String contents = bundle.toJson().toString();
+//			String bundleName = SimpleThreatRatingFramework.getBundleKey(bundle.getThreatId(), bundle.getTargetId());
+//			System.out.println("contents= "+ bundleName);
+//			System.out.println("contents= "+ contents);
+//		}
+	}
+
 	private static void writeTagValue(final UnicodeWriter writer, final String actionCode, final String tag, final String value) throws Exception
 	{
 		writer.write(actionCode);
