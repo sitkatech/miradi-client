@@ -70,7 +70,7 @@ public class ProjectSaver
 	private static void writeObject(UnicodeWriter writer, Project project, ORef ref) throws Exception
 	{
 		BaseObject baseObject = project.findObject(ref);
-		writeTagValue(writer, CREATE_OBJECT_CODE, "Ref", ref.toString());
+		writeTagValue(writer, CREATE_OBJECT_CODE, REF_TAG, ref.toString());
 		Vector<String> fieldTags = baseObject.getStoredFieldTags();
 		for(int field = 0; field < fieldTags.size(); ++field)
 		{
