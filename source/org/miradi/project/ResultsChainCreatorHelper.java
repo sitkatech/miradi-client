@@ -558,7 +558,7 @@ public class ResultsChainCreatorHelper
 	private CreateDiagramLinkParameter createDiagramLinkExtraInfo(DiagramLink diagramLink, DiagramFactor from, DiagramFactor fromCloned, DiagramFactor to, DiagramFactor toCloned) throws Exception
 	{
 		if (areSharingTheSameFactor(from, fromCloned, to, toCloned))
-			return new CreateDiagramLinkParameter(diagramLink.getWrappedId(), fromCloned.getDiagramFactorId(), toCloned.getDiagramFactorId());
+			return new CreateDiagramLinkParameter(diagramLink.getWrappedRef(), fromCloned.getRef(), toCloned.getRef());
 
 		ORef factorLinkRef = new ORef(FactorLink.getObjectType(), BaseId.INVALID);
 		if(!diagramLink.isGroupBoxLink())
