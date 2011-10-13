@@ -46,8 +46,8 @@ public class ProjectSaver
 		writeTagValue(writer, UPDATE_PROJECT_INFO_CODE, ProjectInfo.TAG_HIGHEST_OBJECT_ID, Integer.toString(project.getProjectInfo().getNormalIdAssigner().getHighestAssignedId()));
 		writeTagValue(writer, UPDATE_PROJECT_INFO_CODE, ProjectInfo.TAG_PROJECT_METADATA_ID, project.getProjectInfo().getMetadataId().toString());
 		writeTagValue(writer, UPDATE_LAST_MODIFIED_TIME_CODE, LAST_MODIFIED_TAG, project.getDatabase().getLastModifiedTime(null));
-		writeSimpleThreatRating(writer, project);
 		writeAllObjectTypes(writer, project);
+		writeSimpleThreatRating(writer, project);
 	}
 	
 	private static void writeAllObjectTypes(UnicodeWriter writer, Project project) throws Exception
