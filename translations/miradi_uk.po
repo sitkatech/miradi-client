@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-12 14:20-0500\n"
+"POT-Creation-Date: 2011-10-13 15:19-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -3033,7 +3033,7 @@ msgstr "Створити..."
 msgid "Creating group boxes..."
 msgstr ""
 
-#: Miradi/source/org/miradi/project/Project.java:669
+#: Miradi/source/org/miradi/project/Project.java:674
 msgid "Creating..."
 msgstr ""
 
@@ -5464,7 +5464,7 @@ msgstr ""
 msgid "OpenStandards"
 msgstr "Відкриті Стандарти"
 
-#: Miradi/source/org/miradi/project/Project.java:664
+#: Miradi/source/org/miradi/project/Project.java:669
 msgid "Opening..."
 msgstr ""
 
@@ -8635,7 +8635,7 @@ msgstr "[НЕ ВКАЗАНИЙ]"
 msgid "[New Results Chain]"
 msgstr "[Новий ланцюг результатів]"
 
-#: Miradi/source/org/miradi/project/Project.java:977
+#: Miradi/source/org/miradi/project/Project.java:982
 msgid "[No Project]"
 msgstr "[Проект не вибраний]"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-12 14:20-0500\n"
+"POT-Creation-Date: 2011-10-13 15:19-0500\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -3128,7 +3128,7 @@ msgstr "Erstellen..."
 msgid "Creating group boxes..."
 msgstr "Gruppenboxen erstellen..."
 
-#: Miradi/source/org/miradi/project/Project.java:669
+#: Miradi/source/org/miradi/project/Project.java:674
 msgid "Creating..."
 msgstr "Erstelle..."
 
@@ -5615,7 +5615,7 @@ msgstr ""
 msgid "OpenStandards"
 msgstr "OffeneStandards"
 
-#: Miradi/source/org/miradi/project/Project.java:664
+#: Miradi/source/org/miradi/project/Project.java:669
 msgid "Opening..."
 msgstr "Öffne..."
 
@@ -8873,7 +8873,7 @@ msgstr "[NICHT GENAUER BESCHRIEBEN]"
 msgid "[New Results Chain]"
 msgstr "[Neue Ergebniswirkungskette]"
 
-#: Miradi/source/org/miradi/project/Project.java:977
+#: Miradi/source/org/miradi/project/Project.java:982
 msgid "[No Project]"
 msgstr "[Kein Projekt]"
 

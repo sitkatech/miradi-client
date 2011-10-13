@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-12 14:20-0500\n"
+"POT-Creation-Date: 2011-10-13 15:19-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -2859,7 +2859,7 @@ msgstr "创建… \t\t"
 msgid "Creating group boxes..."
 msgstr ""
 
-#: Miradi/source/org/miradi/project/Project.java:669
+#: Miradi/source/org/miradi/project/Project.java:674
 msgid "Creating..."
 msgstr ""
 
@@ -5247,7 +5247,7 @@ msgstr ""
 msgid "OpenStandards"
 msgstr "开放标准"
 
-#: Miradi/source/org/miradi/project/Project.java:664
+#: Miradi/source/org/miradi/project/Project.java:669
 msgid "Opening..."
 msgstr ""
 
@@ -8337,7 +8337,7 @@ msgstr "[未指定的] \t\t"
 msgid "[New Results Chain]"
 msgstr "[新结果链] \t\t"
 
-#: Miradi/source/org/miradi/project/Project.java:977
+#: Miradi/source/org/miradi/project/Project.java:982
 msgid "[No Project]"
 msgstr "[无项目] \t\t"
 
