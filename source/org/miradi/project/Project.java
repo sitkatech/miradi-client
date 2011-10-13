@@ -193,6 +193,11 @@ public class Project
 	/////////////////////////////////////////////////////////////////////////////////
 	// simple getters
 	
+	public long getLastModifiedTime()
+	{
+		return System.currentTimeMillis();
+	}
+
 	public IdAssigner getNormalIdAssigner()
 	{
 		return projectInfo.getNormalIdAssigner();
@@ -1437,4 +1442,5 @@ public class Project
 	private String currentViewName;
 	
 	public CommandExecutor commandExecutor;
+
 }
