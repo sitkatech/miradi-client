@@ -72,7 +72,7 @@ public class ProjectSaver
 	private static void writeObject(UnicodeWriter writer, Project project, ORef ref) throws Exception
 	{
 		BaseObject baseObject = project.findObject(ref);
-		writeTagValue(writer, CREATE_OBJECT_CODE, REF_TAG, ref.toString());
+		writeValue(writer, CREATE_OBJECT_CODE, Integer.toString(ref.getObjectType())+ ":" + ref.getObjectId().toString());
 		Vector<String> fieldTags = baseObject.getStoredFieldTags();
 		for(int field = 0; field < fieldTags.size(); ++field)
 		{
@@ -100,6 +100,14 @@ public class ProjectSaver
 		}
 	}
 
+	private static void writeValue(final UnicodeWriter writer, final String actionCode, final String value) throws Exception
+	{
+		write(writer, actionCode);
+		write(writer, TAB);
+		write(writer, value);
+		writer.writeln();
+	}
+	
 	private static void writeTagValue(final UnicodeWriter writer, final String actionCode, final String tag, final String value) throws Exception
 	{
 		write(writer, actionCode);
@@ -115,9 +123,9 @@ public class ProjectSaver
 		write(writer, actionCode);
 		write(writer, TAB);
 		
-		write(writer, REF_TAG);
-		write(writer, EQUALS);
-		write(writer, ref.toString());
+		write(writer, Integer.toString(ref.getObjectType()));
+		write(writer, ":");
+		write(writer, ref.getObjectId().toString());
 		write(writer, TAB);
 		
 		write(writer, tag);
@@ -134,18 +142,17 @@ public class ProjectSaver
 		writer.write(dataWithHtmlNewLines);
 	}
 
-	private static final String NEW_LINE = "\n";
-	private static final String HTML_NEW_LINE = "<br/>";
-	private static final String TAB = "\t";
-	private static final String EQUALS = "=";
-	private static final String UPDATE_PROJECT_INFO_CODE = "UP";
-	private static final String UPDATE_PROJECT_VERSION_CODE = "UV";
-	private static final String UPDATE_LAST_MODIFIED_TIME_CODE = "UL";
-	private static final String UPDATE_SIMPLE_THREAT_RATING = "UT";
-	private static final String CREATE_OBJECT_CODE = "CO";
-	private static final String UPDATE_OBJECT_CODE = "UO";
+	public static final String NEW_LINE = "\n";
+	public static final String HTML_NEW_LINE = "<br/>";
+	public static final String TAB = "\t";
+	public static final String EQUALS = "=";
+	public static final String UPDATE_PROJECT_INFO_CODE = "UP";
+	public static final String UPDATE_PROJECT_VERSION_CODE = "UV";
+	public static final String UPDATE_LAST_MODIFIED_TIME_CODE = "UL";
+	public static final String UPDATE_SIMPLE_THREAT_RATING = "UT";
+	public static final String CREATE_OBJECT_CODE = "CO";
+	public static final String UPDATE_OBJECT_CODE = "UO";
 	
-	private static final String SIMPLE_THREAT_RATING_BUNDLE_NAME_TAG = "BundleName";
-	private static final String REF_TAG = "Ref";
-	private static final String LAST_MODIFIED_TAG = "LastModified";
+	public static final String SIMPLE_THREAT_RATING_BUNDLE_NAME_TAG = "BundleName";
+	public static final String LAST_MODIFIED_TAG = "LastModified";
 }
