@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-13 15:19-0500\n"
+"POT-Creation-Date: 2011-10-13 15:59-0500\n"
 "PO-Revision-Date: 2011-03-17 08:40-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -494,7 +494,7 @@ msgstr ""
 msgid "7C. Create a Learning Environment"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1240
+#: Miradi/source/org/miradi/main/MainWindow.java:1244
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -2472,7 +2472,7 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:554
+#: Miradi/source/org/miradi/main/MainWindow.java:557
 msgid "Cancelled"
 msgstr ""
 
@@ -2765,7 +2765,7 @@ msgstr ""
 msgid "Create Folder"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:608
+#: Miradi/source/org/miradi/main/MainWindow.java:611
 msgid "Create Project"
 msgstr ""
 
@@ -3363,7 +3363,7 @@ msgstr ""
 msgid "Euro"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:818
+#: Miradi/source/org/miradi/main/MainWindow.java:822
 msgid "Existing data for a different fiscal year is being excluded"
 msgstr ""
 
@@ -4849,7 +4849,7 @@ msgstr ""
 msgid "Miradi does not recognize %s as a project file"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:663
+#: Miradi/source/org/miradi/main/MainWindow.java:666
 msgid ""
 "Miradi has detected one or more problems with this project which could cause "
 "errors or further damage in the future. \n"
@@ -5126,7 +5126,7 @@ msgid "Open Anyway"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:142
-#: Miradi/source/org/miradi/main/MainWindow.java:610
+#: Miradi/source/org/miradi/main/MainWindow.java:613
 msgid "Open Project"
 msgstr ""
 
@@ -5409,7 +5409,7 @@ msgstr ""
 msgid "Project Advisor"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:661
+#: Miradi/source/org/miradi/main/MainWindow.java:664
 msgid "Project Corruption Detected"
 msgstr ""
 
@@ -5442,7 +5442,7 @@ msgstr ""
 msgid "Project Resource Filter Editor"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:816
+#: Miradi/source/org/miradi/main/MainWindow.java:820
 msgid "Project Resource Filter Is On"
 msgstr ""
 
@@ -5993,7 +5993,7 @@ msgstr ""
 msgid "Standard Reports"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:850
+#: Miradi/source/org/miradi/main/MainWindow.java:854
 msgid ""
 "Start date (currently %startDate) must be earlier than end date (currently %"
 "endDate)"
@@ -7170,18 +7170,18 @@ msgstr ""
 msgid "That language pack is already installed"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:578
+#: Miradi/source/org/miradi/main/MainWindow.java:581
 msgid ""
 "That project cannot be opened because it was created by a newer version of "
 "this application"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:582
+#: Miradi/source/org/miradi/main/MainWindow.java:585
 msgid ""
 "That project cannot be opened until it is migrated to the current data format"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:574
+#: Miradi/source/org/miradi/main/MainWindow.java:577
 msgid "That project is in use by another copy of this application"
 msgstr ""
 
@@ -7306,7 +7306,7 @@ msgid ""
 "is in a newer data format. Please upgrade to the latest version of Miradi."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:652
+#: Miradi/source/org/miradi/main/MainWindow.java:655
 msgid ""
 "This project has been optimized to remove data that is no longer needed.\n"
 msgstr ""
@@ -7708,7 +7708,7 @@ msgid ""
 "application:\n"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1224
+#: Miradi/source/org/miradi/main/MainWindow.java:1228
 msgid "Unable to launch external web browser"
 msgstr ""
 
@@ -7727,7 +7727,7 @@ msgid ""
 "application:\n"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1007
+#: Miradi/source/org/miradi/main/MainWindow.java:1011
 msgid "Unable to save preferences"
 msgstr ""
 
@@ -7785,7 +7785,7 @@ msgstr ""
 msgid "Unknown"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:569
+#: Miradi/source/org/miradi/main/MainWindow.java:572
 msgid ""
 "Unknown Command\n"
 "You are probably trying to load an old project that contains obsolete "
@@ -7800,7 +7800,7 @@ msgstr ""
 msgid "Unknown error displaying diagram"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:587
+#: Miradi/source/org/miradi/main/MainWindow.java:590
 msgid "Unknown error prevented opening that project"
 msgstr ""
 
