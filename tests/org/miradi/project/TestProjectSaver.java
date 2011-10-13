@@ -37,19 +37,19 @@ public class TestProjectSaver extends TestCaseWithProject
 		getProject().populateEverything();
 		getProject().populateSimpleThreatRatingValues();
 		
-		UnicodeStringWriter consoleWriter = UnicodeStringWriter.create();
+		UnicodeStringWriter writer = UnicodeStringWriter.create();
 		try
 		{
 			long before = Calendar.getInstance().getTimeInMillis();
-			ProjectSaver.saveProject(getProject(), consoleWriter);
+			ProjectSaver.saveProject(getProject(), writer);
 			long after = Calendar.getInstance().getTimeInMillis();
 			
-			System.out.println(consoleWriter.toString());
+			System.out.println(writer.toString());
 			System.out.println("Speed = " + (after - before));
 		}
 		finally 
 		{
-			consoleWriter.close();
+			writer.close();
 		}
 	}
 }
