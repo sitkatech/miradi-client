@@ -38,11 +38,8 @@ public class TestProjectSaver extends TestCaseWithProject
 		UnicodeStringWriter writer = UnicodeStringWriter.create();
 		try
 		{
-			long millis = ProjectSaver.saveProject(getProject(), writer);
+			ProjectSaver.saveProject(getProject(), writer);
 			writer.flush();
-			
-			System.out.println(writer.toString());
-			System.out.println("Speed = " + millis + "ms");
 		}
 		finally 
 		{
