@@ -82,11 +82,9 @@ public class Utility
 	{
 		byte[] buffer = new byte[1024];
 		int numRead;
-		long numWritten = 0;
 		while ((numRead = inputStream.read(buffer)) != -1) 
 		{
 			outputStream.write(buffer, 0, numRead);
-			numWritten += numRead;
 		}
 	}
 	
