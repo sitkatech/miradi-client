@@ -543,7 +543,8 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 			logExceptionsInsideProjectDir();
 			
 			repairProject();
-			projectSaver.startSaving(getDatabase(), projectName, project);
+			File newProjectFile = new File(getDatabase().getCurrentLocalProjectDirectory().getAbsolutePath() + ".Miradi");
+			projectSaver.startSaving(newProjectFile, project);
 			refreshWizard();
 
 			validate();
