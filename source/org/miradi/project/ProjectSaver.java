@@ -42,6 +42,7 @@ public class ProjectSaver
 	public static void saveProject(final Project project, UnicodeWriter writer) throws Exception
 	{
 		writeTagValue(writer, UPDATE_PROJECT_VERSION_CODE, ProjectServer.TAG_VERSION, Integer.toString(ProjectServer.DATA_VERSION));
+		writeTagValue(writer, UPDATE_PROJECT_VERSION_CODE, ProjectServer.TAG_VERSION, Integer.toString(ProjectServer.DATA_VERSION));
 		writeTagValue(writer, UPDATE_PROJECT_INFO_CODE, ProjectInfo.TAG_HIGHEST_OBJECT_ID, Integer.toString(project.getProjectInfo().getNormalIdAssigner().getHighestAssignedId()));
 		writeTagValue(writer, UPDATE_PROJECT_INFO_CODE, ProjectInfo.TAG_PROJECT_METADATA_ID, project.getProjectInfo().getMetadataId().toString());
 		writeTagValue(writer, UPDATE_LAST_MODIFIED_TIME_CODE, LAST_MODIFIED_TAG, project.getDatabase().getLastModifiedTime(null));
