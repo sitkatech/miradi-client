@@ -36,12 +36,12 @@ public class ProjectLoader
 			if(line.length() == 0)
 				continue;
 			
-			
-			if (line.startsWith(ProjectSaver.UPDATE_PROJECT_INFO_CODE))
-				readProjectInfoLine(project, line);
-			
+
 			if (line.startsWith(ProjectSaver.UPDATE_PROJECT_VERSION_CODE))
 				readProjectVersionLine(project, line);
+
+			if (line.startsWith(ProjectSaver.UPDATE_PROJECT_INFO_CODE))
+				readProjectInfoLine(project, line);
 			
 			if (line.startsWith(ProjectSaver.UPDATE_LAST_MODIFIED_TIME_CODE))
 				readLastModified(project, line);
