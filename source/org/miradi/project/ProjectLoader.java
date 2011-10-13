@@ -46,11 +46,11 @@ public class ProjectLoader
 			if (line.startsWith(ProjectSaver.UPDATE_LAST_MODIFIED_TIME_CODE))
 				readLastModified(project, line);
 			
-			if (line.startsWith(ProjectSaver.UPDATE_SIMPLE_THREAT_RATING))
-				readSimpleThreatRatingLine(project, line);
-			
 			if (line.startsWith(ProjectSaver.CREATE_OBJECT_CODE))
 				readCreateObjectLine(project, line);
+			
+			if (line.startsWith(ProjectSaver.UPDATE_SIMPLE_THREAT_RATING))
+				readSimpleThreatRatingLine(project, line);
 		}
 	}
 	
