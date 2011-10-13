@@ -24,18 +24,14 @@ import java.io.File;
 
 import org.martus.util.UnicodeStringWriter;
 import org.martus.util.UnicodeWriter;
-import org.miradi.database.ProjectServer;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectSaver;
 
 public class AutomaticProjectSaver implements CommandExecutedListener
 {
-	public void startSaving(ProjectServer databaseToUse, String projectName, Project projectToUse)
+	public void startSaving(File projectFileToUse, Project projectToUse)
 	{
-		if(!databaseToUse.isLocalProject())
-			throw new RuntimeException("Remote storage no longer supported");
-		
-		projectFile = new File(databaseToUse.getCurrentLocalProjectDirectory().getAbsolutePath()+".Miradi");
+		projectFile = projectFileToUse;
 		project = projectToUse;
 		project.addCommandExecutedListener(this);
 	}
