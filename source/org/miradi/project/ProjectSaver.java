@@ -48,6 +48,7 @@ public class ProjectSaver
 		writeTagValue(writer, UPDATE_LAST_MODIFIED_TIME_CODE, LAST_MODIFIED_TAG, project.getDatabase().getLastModifiedTime(null));
 		writeAllObjectTypes(writer, project);
 		writeSimpleThreatRating(writer, project);
+		write(writer, STOP_MARKER);
 	}
 	
 	private static void writeAllObjectTypes(UnicodeWriter writer, Project project) throws Exception
@@ -154,6 +155,7 @@ public class ProjectSaver
 	public static final String HTML_NEW_LINE = "<br/>";
 	public static final String TAB = "\t";
 	public static final String EQUALS = "=";
+	public static final String STOP_MARKER = "--";
 	public static final String UPDATE_PROJECT_INFO_CODE = "UP";
 	public static final String UPDATE_PROJECT_VERSION_CODE = "UV";
 	public static final String UPDATE_LAST_MODIFIED_TIME_CODE = "UL";
