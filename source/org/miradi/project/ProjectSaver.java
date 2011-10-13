@@ -51,6 +51,8 @@ public class ProjectSaver
 		writeSimpleThreatRating(writer, project);
 		writeQuarantinedData(writer, project);
 		writelnRaw(writer, STOP_MARKER);
+		
+		writer.flush();
 	}
 	
 	private static void writeQuarantinedData(UnicodeWriter writer, Project project) throws Exception
