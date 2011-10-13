@@ -20,7 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.project;
 
-import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.Vector;
 
 import org.martus.util.UnicodeWriter;
@@ -28,6 +29,7 @@ import org.martus.util.xml.XmlUtilities;
 import org.miradi.database.ProjectServer;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ObjectToStringSorter;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.EAMObjectPool;
 import org.miradi.objects.BaseObject;
@@ -87,8 +89,10 @@ public class ProjectSaver
 
 	private static void writeSimpleThreatRating(UnicodeWriter writer, Project project) throws Exception
 	{
-		Collection<ThreatRatingBundle> allBundles = SimpleThreatRatingFramework.loadSimpleThreatRatingBundles(project.getDatabase());
-		for(ThreatRatingBundle bundle : allBundles)
+		HashSet<ThreatRatingBundle> allBundles = SimpleThreatRatingFramework.loadSimpleThreatRatingBundles(project.getDatabase());
+		Vector<ThreatRatingBundle> sortedBundles = new Vector<ThreatRatingBundle>(allBundles);
+		Collections.sort(sortedBundles, new ObjectToStringSorter());
+		for(ThreatRatingBundle bundle : sortedBundles)
 		{
 			EnhancedJsonObject json = bundle.toJson();
 			String bundleName = SimpleThreatRatingFramework.getBundleKey(bundle.getThreatId(), bundle.getTargetId());

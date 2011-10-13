@@ -21,6 +21,7 @@ package org.miradi.project.threatrating;
 
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
+import org.miradi.main.EAM;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class ThreatRatingBundle
@@ -98,6 +99,20 @@ public class ThreatRatingBundle
 		json.put(TAG_VALUES, ratings.toJson());
 
 		return json;
+	}
+	
+	@Override
+	public String toString()
+	{
+		try
+		{
+			return toJson().toString();
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return "";
+		}
 	}
 	
 	@Override
