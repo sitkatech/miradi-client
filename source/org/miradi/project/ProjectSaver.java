@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.project;
 
+import java.io.IOException;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Vector;
@@ -48,9 +49,16 @@ public class ProjectSaver
 		writeTagValue(writer, UPDATE_LAST_MODIFIED_TIME_CODE, LAST_MODIFIED_TAG, project.getDatabase().getLastModifiedTime(null));
 		writeAllObjectTypes(writer, project);
 		writeSimpleThreatRating(writer, project);
-		write(writer, STOP_MARKER);
+		writeQuarantinedData(writer, project);
+		writelnRaw(writer, STOP_MARKER);
 	}
 	
+	private static void writeQuarantinedData(UnicodeWriter writer, Project project) throws Exception
+	{
+		String quarantineFileContents = project.getQuarantineFileContents();
+		write(writer, quarantineFileContents);
+	}
+
 	private static void writeAllObjectTypes(UnicodeWriter writer, Project project) throws Exception
 	{
 		for (int type = ObjectType.FIRST_OBJECT_TYPE; type < ObjectType.OBJECT_TYPE_COUNT; ++type)
@@ -143,7 +151,17 @@ public class ProjectSaver
 	{
 		String xmlEncodedData = XmlUtilities.getXmlEncoded(data);
 		String dataWithHtmlNewLines = xmlEncodedData.replaceAll(NEW_LINE, HTML_NEW_LINE);
-		writer.write(dataWithHtmlNewLines);
+		writeRaw(writer, dataWithHtmlNewLines);
+	}
+
+	public static void writeRaw(final UnicodeWriter writer,	String data) throws IOException
+	{
+		writer.write(data);
+	}
+	
+	public static void writelnRaw(final UnicodeWriter writer,	String data) throws IOException
+	{
+		writer.writeln(data);
 	}
 	
 	private static String createSimpleRefString(final ORef ref)

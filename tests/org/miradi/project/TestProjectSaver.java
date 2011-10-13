@@ -42,6 +42,7 @@ public class TestProjectSaver extends TestCaseWithProject
 		{
 			long before = Calendar.getInstance().getTimeInMillis();
 			ProjectSaver.saveProject(getProject(), writer);
+			writer.flush();
 			long after = Calendar.getInstance().getTimeInMillis();
 			
 			System.out.println(writer.toString());
