@@ -40,9 +40,8 @@ import org.miradi.utils.EnhancedJsonObject;
 
 public class ProjectSaver
 {
-	public static long saveProject(final Project project, UnicodeWriter writer) throws Exception
+	public static void saveProject(final Project project, UnicodeWriter writer) throws Exception
 	{
-		long started = System.currentTimeMillis();
 		writeTagValue(writer, UPDATE_PROJECT_VERSION_CODE, ProjectServer.TAG_VERSION, Integer.toString(ProjectServer.DATA_VERSION));
 		writeTagValue(writer, UPDATE_PROJECT_VERSION_CODE, ProjectServer.TAG_VERSION, Integer.toString(ProjectServer.DATA_VERSION));
 		writeTagValue(writer, UPDATE_PROJECT_INFO_CODE, ProjectInfo.TAG_HIGHEST_OBJECT_ID, Integer.toString(project.getProjectInfo().getNormalIdAssigner().getHighestAssignedId()));
@@ -52,7 +51,6 @@ public class ProjectSaver
 		writeSimpleThreatRating(writer, project);
 		writeQuarantinedData(writer, project);
 		writelnRaw(writer, STOP_MARKER);
-		return System.currentTimeMillis() - started;
 	}
 	
 	private static void writeQuarantinedData(UnicodeWriter writer, Project project) throws Exception
