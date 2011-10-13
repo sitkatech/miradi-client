@@ -39,7 +39,6 @@ public class TestProjectSaver extends TestCaseWithProject
 		try
 		{
 			ProjectSaver.saveProject(getProject(), writer);
-			writer.flush();
 		}
 		finally 
 		{
