@@ -75,7 +75,7 @@ public class ProjectSaver
 	private static void writeObject(UnicodeWriter writer, Project project, ORef ref) throws Exception
 	{
 		BaseObject baseObject = project.findObject(ref);
-		writeValue(writer, CREATE_OBJECT_CODE, Integer.toString(ref.getObjectType())+ ":" + ref.getObjectId().toString());
+		writeValue(writer, CREATE_OBJECT_CODE, createSimpleRefString(ref));
 		Vector<String> fieldTags = baseObject.getStoredFieldTags();
 		for(int field = 0; field < fieldTags.size(); ++field)
 		{
@@ -128,9 +128,7 @@ public class ProjectSaver
 		write(writer, actionCode);
 		write(writer, TAB);
 		
-		write(writer, Integer.toString(ref.getObjectType()));
-		write(writer, ":");
-		write(writer, ref.getObjectId().toString());
+		write(writer, createSimpleRefString(ref));
 		write(writer, TAB);
 		
 		write(writer, tag);
@@ -145,6 +143,11 @@ public class ProjectSaver
 		String xmlEncodedData = XmlUtilities.getXmlEncoded(data);
 		String dataWithHtmlNewLines = xmlEncodedData.replaceAll(NEW_LINE, HTML_NEW_LINE);
 		writer.write(dataWithHtmlNewLines);
+	}
+	
+	private static String createSimpleRefString(final ORef ref)
+	{
+		return Integer.toString(ref.getObjectType()) +  ":" + ref.getObjectId().toString();
 	}
 
 	public static final String NEW_LINE = "\n";
