@@ -93,6 +93,9 @@ public class TestUndoAndRedo extends MiradiTestCase
 		
 		// undo create model linkage
 		project.undo();
+		project.undo();
+		project.undo();
+		project.undo();
 		
 		ORef fromDiagramFactorRef = model.getDiagramFactor(fromFactorRef).getRef();
 		ORef toDiagramFactorRef = model.getDiagramFactor(toFactorRef).getRef();
