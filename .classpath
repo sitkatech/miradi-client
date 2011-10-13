@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="source"/>
+	<classpathentry kind="src" path="tests"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/miradi-thirdparty/BrowserLauncher2/BrowserLauncher2-all-10rc4.jar"/>
+	<classpathentry kind="lib" path="/miradi-thirdparty/jcalendar-1.3.2/jcalendar-1.3.2.jar" sourcepath="/miradi-thirdparty/jcalendar-1.3.2/jcalendar-1.3.2-src.zip"/>
+	<classpathentry kind="lib" path="/miradi-thirdparty/JUnit/bin/junit.jar"/>
+	<classpathentry kind="lib" path="/miradi-thirdparty/martus-utils/bin/martus-utils.jar" sourcepath="/miradi-thirdparty/martus-utils/source/martus-utils-src.jar"/>
+	<classpathentry kind="lib" path="/miradi-thirdparty/martus-swing/bin/martus-swing.jar" sourcepath="/miradi-thirdparty/martus-swing/source/martus-swing-src.jar"/>
+	<classpathentry kind="lib" path="/miradi-thirdparty/jing/bin/jing.jar" sourcepath="/miradi-thirdparty/jing/jing-src-20030619.zip"/>
+	<classpathentry kind="lib" path="/miradi-thirdparty/jgraph/miradi-jgraph-5.12.2.2b.jar" sourcepath="/miradi-thirdparty/jgraph/miradi-jgraph-5.12.2.2b-src.zip"/>
+	<classpathentry kind="lib" path="/miradi-thirdparty/swingx/0.9.7/swingx-0.9.7.jar" sourcepath="/miradi-thirdparty/swingx/0.9.7/swingx-0.9.7-src.zip"/>
+	<classpathentry kind="lib" path="/miradi-thirdparty/jortho/bin/jortho.jar" sourcepath="/miradi-thirdparty/jortho/lib/JOrtho_0.5.zip"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
