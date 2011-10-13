@@ -54,6 +54,10 @@ public class ProjectLoader
 		}
 	}
 	
+	private static void readProjectVersionLine(Project project, String line)
+	{
+	}
+	
 	private static void readProjectInfoLine(final Project project, final String line)
 	{
 		String[] splitLine = line.split(ProjectSaver.TAB);
@@ -67,10 +71,6 @@ public class ProjectLoader
 	{
 	}
 
-	private static void readProjectVersionLine(Project project, String line)
-	{
-	}
-	
 	private static void readSimpleThreatRatingLine(Project project, String line)
 	{
 	}
