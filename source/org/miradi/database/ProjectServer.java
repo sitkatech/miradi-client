@@ -454,7 +454,7 @@ public class ProjectServer
 		}
 	}
 	
-	protected static String timestampToString(long lastModifiedMillis)
+	public static String timestampToString(long lastModifiedMillis)
 	{
 		Date date = new Date(lastModifiedMillis);
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
