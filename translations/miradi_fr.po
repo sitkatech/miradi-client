@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-13 15:19-0500\n"
+"POT-Creation-Date: 2011-10-13 15:59-0500\n"
 "PO-Revision-Date: 2011-04-05 11:46+0100\n"
 "Last-Translator: Emanuela Leonardi <e.leonardi@gmail.com>\n"
 "Language-Team: none\n"
@@ -514,7 +514,7 @@ msgstr "7B. Partager les leçons apprises"
 msgid "7C. Create a Learning Environment"
 msgstr "7C. Créer un environnement d'apprentissage"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1240
+#: Miradi/source/org/miradi/main/MainWindow.java:1244
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -2729,7 +2729,7 @@ msgstr "Impossible de lier un élément à lui-même"
 msgid "Cancel"
 msgstr "Annuler"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:554
+#: Miradi/source/org/miradi/main/MainWindow.java:557
 msgid "Cancelled"
 msgstr ""
 
@@ -3045,7 +3045,7 @@ msgstr "Création échouée :"
 msgid "Create Folder"
 msgstr "Créer Dossier"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:608
+#: Miradi/source/org/miradi/main/MainWindow.java:611
 msgid "Create Project"
 msgstr ""
 
@@ -3675,7 +3675,7 @@ msgstr "Estimation des coûts pour les activité et le suivi"
 msgid "Euro"
 msgstr "Euros"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:818
+#: Miradi/source/org/miradi/main/MainWindow.java:822
 msgid "Existing data for a different fiscal year is being excluded"
 msgstr ""
 "Les données existants pour un exercice financier différent ont été exclues"
@@ -5236,7 +5236,7 @@ msgstr "Miradi n'a pas reconnu le fichier : %s importable."
 msgid "Miradi does not recognize %s as a project file"
 msgstr "Miradi ne reconnaît pas %s un fichier de projet"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:663
+#: Miradi/source/org/miradi/main/MainWindow.java:666
 msgid ""
 "Miradi has detected one or more problems with this project which could cause "
 "errors or further damage in the future. \n"
@@ -5545,7 +5545,7 @@ msgid "Open Anyway"
 msgstr "Ouvrir malgré tout"
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:142
-#: Miradi/source/org/miradi/main/MainWindow.java:610
+#: Miradi/source/org/miradi/main/MainWindow.java:613
 msgid "Open Project"
 msgstr "Ouvrir projet"
 
@@ -5845,7 +5845,7 @@ msgstr "Projet"
 msgid "Project Advisor"
 msgstr "Idéateur du projet"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:661
+#: Miradi/source/org/miradi/main/MainWindow.java:664
 msgid "Project Corruption Detected"
 msgstr "Corruption du projet détectée"
 
@@ -5878,7 +5878,7 @@ msgstr "Ressource projet"
 msgid "Project Resource Filter Editor"
 msgstr "Éditeur de filtre ressource du projet"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:816
+#: Miradi/source/org/miradi/main/MainWindow.java:820
 msgid "Project Resource Filter Is On"
 msgstr "Le filtre de la ressource du projet est actif"
 
@@ -6482,7 +6482,7 @@ msgstr "Partie prenante"
 msgid "Standard Reports"
 msgstr "Rapports standards"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:850
+#: Miradi/source/org/miradi/main/MainWindow.java:854
 msgid ""
 "Start date (currently %startDate) must be earlier than end date (currently %"
 "endDate)"
@@ -7722,7 +7722,7 @@ msgstr "Ce pack de langues existe déjà. Souhaitez-vous le remplacer?"
 msgid "That language pack is already installed"
 msgstr "Ce pack de langues est déjà installé"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:578
+#: Miradi/source/org/miradi/main/MainWindow.java:581
 msgid ""
 "That project cannot be opened because it was created by a newer version of "
 "this application"
@@ -7730,14 +7730,14 @@ msgstr ""
 "Ce projet ne peut pas être ouvert parce qu'il a été créé par une version "
 "plus récente de cette application"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:582
+#: Miradi/source/org/miradi/main/MainWindow.java:585
 msgid ""
 "That project cannot be opened until it is migrated to the current data format"
 msgstr ""
 "Le projet ne peut pas être ouvert jusqu'à sa migration au format de données "
 "actuel"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:574
+#: Miradi/source/org/miradi/main/MainWindow.java:577
 msgid "That project is in use by another copy of this application"
 msgstr "Ce projet est déjà utilisé par une autre copie de cette application"
 
@@ -7901,7 +7901,7 @@ msgstr ""
 "est dans un format de données plus récent. Veuillez mettre à jour vers la "
 "version plus récente de Miradi."
 
-#: Miradi/source/org/miradi/main/MainWindow.java:652
+#: Miradi/source/org/miradi/main/MainWindow.java:655
 msgid ""
 "This project has been optimized to remove data that is no longer needed.\n"
 msgstr ""
@@ -8324,7 +8324,7 @@ msgstr ""
 "Impossible de supprimer ce projet parce qu'il est utilisé par une autre "
 "copie de cette application : \n"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1224
+#: Miradi/source/org/miradi/main/MainWindow.java:1228
 msgid "Unable to launch external web browser"
 msgstr "Impossible de lancer un navigateur web externe"
 
@@ -8345,7 +8345,7 @@ msgstr ""
 "Impossible de changer de nom à ce projet parce qu'il est utilisé par une "
 "autre copie de cette application : \n"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1007
+#: Miradi/source/org/miradi/main/MainWindow.java:1011
 msgid "Unable to save preferences"
 msgstr "Impossible d'enregistrer les préférences"
 
@@ -8407,7 +8407,7 @@ msgstr "Université"
 msgid "Unknown"
 msgstr "Inconnu"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:569
+#: Miradi/source/org/miradi/main/MainWindow.java:572
 msgid ""
 "Unknown Command\n"
 "You are probably trying to load an old project that contains obsolete "
@@ -8425,7 +8425,7 @@ msgstr "Code inconnu :"
 msgid "Unknown error displaying diagram"
 msgstr "Erreur inconnue dans l'affichage du diagramme"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:587
+#: Miradi/source/org/miradi/main/MainWindow.java:590
 msgid "Unknown error prevented opening that project"
 msgstr "Une erreur inconnue a empêché l'ouverture de ce projet"
 
