@@ -20,8 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.project;
 
-import java.util.Calendar;
-
 import org.martus.util.UnicodeStringWriter;
 import org.miradi.main.TestCaseWithProject;
 
@@ -40,13 +38,11 @@ public class TestProjectSaver extends TestCaseWithProject
 		UnicodeStringWriter writer = UnicodeStringWriter.create();
 		try
 		{
-			long before = Calendar.getInstance().getTimeInMillis();
-			ProjectSaver.saveProject(getProject(), writer);
+			long millis = ProjectSaver.saveProject(getProject(), writer);
 			writer.flush();
-			long after = Calendar.getInstance().getTimeInMillis();
 			
 			System.out.println(writer.toString());
-			System.out.println("Speed = " + (after - before));
+			System.out.println("Speed = " + millis + "ms");
 		}
 		finally 
 		{
