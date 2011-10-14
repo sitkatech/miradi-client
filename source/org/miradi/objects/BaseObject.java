@@ -50,6 +50,7 @@ import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objectdata.PointData;
 import org.miradi.objectdata.StringData;
+import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.BaseObjectByNameSorter;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.FactorSet;
@@ -789,7 +790,7 @@ abstract public class BaseObject
 		presentationDataFields = new HashSet<String>();
 		nonClearedFieldTags = new Vector<String>();
 
-		addField(new StringData(TAG_LABEL));
+		addField(new UserTextData(TAG_LABEL));
 		addField(new IdListData(TAG_RESOURCE_ASSIGNMENT_IDS, ResourceAssignment.getObjectType()));
 		addField(new ORefListData(TAG_EXPENSE_ASSIGNMENT_REFS));
 		addField(new ORefListData(TAG_PROGRESS_REPORT_REFS));

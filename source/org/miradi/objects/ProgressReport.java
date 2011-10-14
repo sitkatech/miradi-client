@@ -23,6 +23,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.DateData;
 import org.miradi.objectdata.StringData;
+import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -137,7 +138,7 @@ public class ProgressReport extends BaseObject
 		
 		progressStatus = new ChoiceData(TAG_PROGRESS_STATUS, getQuestion(ProgressReportLongStatusQuestion.class));
 		progressDate = new DateData(TAG_PROGRESS_DATE);
-		details = new StringData(TAG_DETAILS);
+		details = new UserTextData(TAG_DETAILS);
 		
 		addField(TAG_PROGRESS_STATUS, progressStatus);
 		addField(TAG_PROGRESS_DATE, progressDate);

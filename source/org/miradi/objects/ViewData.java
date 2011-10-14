@@ -25,6 +25,7 @@ import org.miradi.commands.Command;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.ids.BaseId;
 import org.miradi.objectdata.ChoiceData;
+import org.miradi.objectdata.CodeData;
 import org.miradi.objectdata.CodeListData;
 import org.miradi.objectdata.IntegerData;
 import org.miradi.objectdata.ORefData;
@@ -186,16 +187,16 @@ public class ViewData extends BaseObject
 	{
 		super.clear();
 
-		currentMode = new StringData(TAG_CURRENT_MODE);
+		currentMode = new CodeData(TAG_CURRENT_MODE);
 		chainModeFactorRefs = new ORefListData(TAG_CHAIN_MODE_FACTOR_REFS);
 		currentTab = new IntegerData(TAG_CURRENT_TAB);
 		currentResultsChainRef = new ORefData(TAG_CURRENT_RESULTS_CHAIN_REF);
 		currentConceptualModelRef = new ORefData(TAG_CURRENT_CONCEPTUAL_MODEL_REF);
 		diagramHiddenTypes = new CodeListData(TAG_DIAGRAM_HIDDEN_TYPES, getQuestion(InternalQuestionWithoutValues.class));
 		budgetRollupReportLevelTypes = new CodeListData(TAG_BUDGET_ROLLUP_REPORT_TYPES, getQuestion(WorkPlanCategoryTypesQuestion.class));
-		planningSingleLevelChoice = new StringData(TAG_PLANNING_SINGLE_LEVEL_CHOICE);
+		planningSingleLevelChoice = new CodeData(TAG_PLANNING_SINGLE_LEVEL_CHOICE);
 		treeConfigurationRef = new ORefData(TAG_TREE_CONFIGURATION_REF);
-		currentWizardStep = new StringData(TAG_CURRENT_WIZARD_STEP);
+		currentWizardStep = new CodeData(TAG_CURRENT_WIZARD_STEP);
 		actionTreeConfigurationChoice = new ChoiceData(TAG_ACTION_TREE_CONFIGURATION_CHOICE, getQuestion(ActionTreeConfigurationQuestion.class));
 		monitoringTreeConfigurationChoice = new ChoiceData(TAG_MONITORING_TREE_CONFIGURATION_CHOICE, getQuestion(MonitoringTreeConfigurationQuestion.class));
 		

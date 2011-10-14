@@ -22,6 +22,7 @@ package org.miradi.objects;
 import org.miradi.ids.BaseId;
 import org.miradi.objectdata.CodeListData;
 import org.miradi.objectdata.StringData;
+import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
@@ -102,10 +103,10 @@ public class ReportTemplate extends BaseObject
 	{
 		super.clear();
 
-		shortLabel = new StringData(TAG_SHORT_LABEL);
+		shortLabel = new UserTextData(TAG_SHORT_LABEL);
 		ChoiceQuestion reportContentsQuestion = new ReportTemplateContentQuestion(getProject());
 		content = new CodeListData(TAG_INCLUDE_SECTION_CODES, reportContentsQuestion);
-		comments = new StringData(TAG_COMMENTS);
+		comments = new UserTextData(TAG_COMMENTS);
 
 		addField(TAG_SHORT_LABEL, shortLabel);
 		addField(TAG_INCLUDE_SECTION_CODES, content);

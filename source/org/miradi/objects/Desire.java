@@ -28,7 +28,7 @@ import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.ObjectData;
-import org.miradi.objectdata.StringData;
+import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.DirectThreatSet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -457,9 +457,9 @@ abstract public class Desire extends BaseObject
 	{
 		super.clear();
 
-		shortLabel = new StringData(TAG_SHORT_LABEL);
-		fullText = new StringData(TAG_FULL_TEXT);
-		comments = new StringData(TAG_COMMENTS);
+		shortLabel = new UserTextData(TAG_SHORT_LABEL);
+		fullText = new UserTextData(TAG_FULL_TEXT);
+		comments = new UserTextData(TAG_COMMENTS);
 		relevantIndicatorOverrides = new RelevancyOverrideSetData(TAG_RELEVANT_INDICATOR_SET);
 		relevantStrategyActivityOverrides = new RelevancyOverrideSetData(TAG_RELEVANT_STRATEGY_ACTIVITY_SET);
 		progressPercentRefs = new ORefListData(TAG_PROGRESS_PERCENT_REFS);

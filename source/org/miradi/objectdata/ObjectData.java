@@ -62,6 +62,11 @@ abstract public class ObjectData
 		return false;
 	}
 	
+	public boolean isUserText()
+	{
+		return false;
+	}
+	
 	public boolean isBaseIdData()
 	{
 		return false;

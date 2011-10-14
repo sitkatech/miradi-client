@@ -21,6 +21,7 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objectdata.StringData;
+import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -121,8 +122,8 @@ public class SubTarget extends BaseObject
 	{
 		super.clear();
 		
-		shortLabel = new StringData(TAG_SHORT_LABEL);
-		details = new StringData(TAG_DETAIL);
+		shortLabel = new UserTextData(TAG_SHORT_LABEL);
+		details = new UserTextData(TAG_DETAIL);
 		
 		addField(TAG_SHORT_LABEL, shortLabel);
 		addField(TAG_DETAIL, details);

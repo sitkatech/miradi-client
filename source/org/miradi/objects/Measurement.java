@@ -24,6 +24,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.DateData;
 import org.miradi.objectdata.StringData;
+import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
@@ -137,10 +138,10 @@ public class Measurement extends BaseObject
 		trend= new ChoiceData(TAG_TREND, getQuestion(TrendQuestion.class));
 		status= new ChoiceData(TAG_STATUS, getQuestion(StatusQuestion.class));
 		date= new DateData(TAG_DATE);
-		summary= new StringData(TAG_SUMMARY);
-		detail= new StringData(TAG_DETAIL);
+		summary= new UserTextData(TAG_SUMMARY);
+		detail= new UserTextData(TAG_DETAIL);
 		statusConfidence = new ChoiceData(TAG_STATUS_CONFIDENCE, getQuestion(StatusConfidenceQuestion.class));
-		comments = new StringData(TAG_COMMENTS);
+		comments = new UserTextData(TAG_COMMENTS);
 
 		addField(TAG_TREND, trend);
 		addField(TAG_STATUS, status);

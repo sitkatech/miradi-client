@@ -21,6 +21,7 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objectdata.StringData;
+import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
@@ -88,7 +89,7 @@ public class Xenodata extends BaseObject
 	{
 		super.clear();
 		
-		projectId = new StringData(TAG_PROJECT_ID);
+		projectId = new UserTextData(TAG_PROJECT_ID);
 		
 		addField(TAG_PROJECT_ID, projectId);
 	}

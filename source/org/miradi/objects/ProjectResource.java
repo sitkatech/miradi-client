@@ -31,6 +31,7 @@ import org.miradi.objectdata.CodeListData;
 import org.miradi.objectdata.DateData;
 import org.miradi.objectdata.NumberData;
 import org.miradi.objectdata.StringData;
+import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.BaseObjectByFullNameSorter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefSet;
@@ -245,23 +246,23 @@ public class ProjectResource extends BaseObject
 		super.clear();
 		
 		resourceType = new ChoiceData(TAG_RESOURCE_TYPE, getQuestion(ResourceTypeQuestion.class));
-		initials = new StringData(TAG_INITIALS);
-		givenName = new StringData(TAG_GIVEN_NAME);
-		surName = new StringData(TAG_SUR_NAME);
-		position = new StringData(TAG_POSITION);
-		phoneNumber = new StringData(TAG_PHONE_NUMBER);
-		email = new StringData(TAG_EMAIL);
+		initials = new UserTextData(TAG_INITIALS);
+		givenName = new UserTextData(TAG_GIVEN_NAME);
+		surName = new UserTextData(TAG_SUR_NAME);
+		position = new UserTextData(TAG_POSITION);
+		phoneNumber = new UserTextData(TAG_PHONE_NUMBER);
+		email = new UserTextData(TAG_EMAIL);
 		costPerUnit = new NumberData(TAG_COST_PER_UNIT);
-		organization = new StringData(TAG_ORGANIZATION);
+		organization = new UserTextData(TAG_ORGANIZATION);
 		roleCodes = new CodeListData(TAG_ROLE_CODES, getQuestion(ResourceRoleQuestion.class));
-		comments = new StringData(TAG_COMMENTS);
-		location = new StringData(TAG_LOCATION);
-		phoneNumberMobile = new StringData(TAG_PHONE_NUMBER_MOBILE);
-		phoneNumberHome = new StringData(TAG_PHONE_NUMBER_HOME);
-		phoneNumberOther = new StringData(TAG_PHONE_NUMBER_OTHER);
-		alternativeEmail = new StringData(TAG_ALTERNATIVE_EMAIL);
-		iMAddress = new StringData(TAG_IM_ADDRESS);
-		iMService = new StringData(TAG_IM_SERVICE);
+		comments = new UserTextData(TAG_COMMENTS);
+		location = new UserTextData(TAG_LOCATION);
+		phoneNumberMobile = new UserTextData(TAG_PHONE_NUMBER_MOBILE);
+		phoneNumberHome = new UserTextData(TAG_PHONE_NUMBER_HOME);
+		phoneNumberOther = new UserTextData(TAG_PHONE_NUMBER_OTHER);
+		alternativeEmail = new UserTextData(TAG_ALTERNATIVE_EMAIL);
+		iMAddress = new UserTextData(TAG_IM_ADDRESS);
+		iMService = new UserTextData(TAG_IM_SERVICE);
 		dateUpdated = new DateData(TAG_DATE_UPDATED);
 		isCcnCoach = new BooleanData(TAG_IS_CCN_COACH);
 
@@ -286,8 +287,8 @@ public class ProjectResource extends BaseObject
 		addField(TAG_DATE_UPDATED, dateUpdated);
 		addField(TAG_IS_CCN_COACH, isCcnCoach);
 		
-		customUserField1 = new StringData(TAG_CUSTOM_FIELD_1);
-		customUserField2 = new StringData(TAG_CUSTOM_FIELD_2);
+		customUserField1 = new UserTextData(TAG_CUSTOM_FIELD_1);
+		customUserField2 = new UserTextData(TAG_CUSTOM_FIELD_2);
 		addField(TAG_CUSTOM_FIELD_1, customUserField1);
 		addField(TAG_CUSTOM_FIELD_2, customUserField2);
 		

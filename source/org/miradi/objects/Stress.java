@@ -22,6 +22,7 @@ package org.miradi.objects;
 import org.miradi.ids.FactorId;
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.StringData;
+import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -191,8 +192,8 @@ public class Stress extends Factor
 	{
 		super.clear();
 		
-		shortLabel = new StringData(TAG_SHORT_LABEL);
-		detail = new StringData(TAG_DETAIL);
+		shortLabel = new UserTextData(TAG_SHORT_LABEL);
+		detail = new UserTextData(TAG_DETAIL);
 		scope = new ChoiceData(TAG_SCOPE, getQuestion(StressScopeChoiceQuestion.class));
 		severity = new ChoiceData(TAG_SEVERITY, getQuestion(StressSeverityChoiceQuestion.class));
 		pseudoStressRating = new PseudoQuestionData(PSEUDO_STRESS_RATING, new StressRatingChoiceQuestion());

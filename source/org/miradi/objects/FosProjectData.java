@@ -22,6 +22,7 @@ package org.miradi.objects;
 import org.miradi.ids.BaseId;
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.StringData;
+import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
@@ -91,9 +92,9 @@ public class FosProjectData extends BaseObject
 		super.clear();
 		
 		trainingType = new ChoiceData(TAG_TRAINING_TYPE, getQuestion(FosTrainingTypeQuestion.class));
-		trainingDates = new StringData(TAG_TRAINING_DATES);
-		trainers = new StringData(TAG_TRAINERS);
-		coaches = new StringData(TAG_COACHES);
+		trainingDates = new UserTextData(TAG_TRAINING_DATES);
+		trainers = new UserTextData(TAG_TRAINERS);
+		coaches = new UserTextData(TAG_COACHES);
 		
 		addField(TAG_TRAINING_TYPE, trainingType);
 		addField(TAG_TRAINING_DATES, trainingDates);

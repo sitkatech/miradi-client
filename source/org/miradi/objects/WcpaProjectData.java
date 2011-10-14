@@ -21,6 +21,7 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objectdata.StringData;
+import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
@@ -83,17 +84,17 @@ public class WcpaProjectData extends BaseObject
 	{
 		super.clear();
 		
-		legalStatus = new StringData(TAG_LEGAL_STATUS);
-		legislativeContext = new StringData(TAG_LEGISLATIVE);
-		physicalDescription = new StringData(TAG_PHYSICAL_DESCRIPTION);
-		biologicalDescription = new StringData(TAG_BIOLOGICAL_DESCRIPTION);
-		socioEconomicInformation = new StringData(TAG_SOCIO_ECONOMIC_INFORMATION);
-		historicalDescription = new StringData(TAG_HISTORICAL_DESCRIPTION);
-		culturalDescription = new StringData(TAG_CULTURAL_DESCRIPTION);
-		accessInformation = new StringData(TAG_ACCESS_INFORMATION);
-		visitationInformation = new StringData(TAG_VISITATION_INFORMATION);
-		currentLandUses = new StringData(TAG_CURRENT_LAND_USES);
-		managementResources = new StringData(TAG_MANAGEMENT_RESOURCES);
+		legalStatus = new UserTextData(TAG_LEGAL_STATUS);
+		legislativeContext = new UserTextData(TAG_LEGISLATIVE);
+		physicalDescription = new UserTextData(TAG_PHYSICAL_DESCRIPTION);
+		biologicalDescription = new UserTextData(TAG_BIOLOGICAL_DESCRIPTION);
+		socioEconomicInformation = new UserTextData(TAG_SOCIO_ECONOMIC_INFORMATION);
+		historicalDescription = new UserTextData(TAG_HISTORICAL_DESCRIPTION);
+		culturalDescription = new UserTextData(TAG_CULTURAL_DESCRIPTION);
+		accessInformation = new UserTextData(TAG_ACCESS_INFORMATION);
+		visitationInformation = new UserTextData(TAG_VISITATION_INFORMATION);
+		currentLandUses = new UserTextData(TAG_CURRENT_LAND_USES);
+		managementResources = new UserTextData(TAG_MANAGEMENT_RESOURCES);
 		
 		addField(TAG_LEGAL_STATUS, legalStatus);
 		addField(TAG_LEGISLATIVE, legislativeContext);
