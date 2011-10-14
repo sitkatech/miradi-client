@@ -97,7 +97,10 @@ public class ProjectSaver
 			{
 				ObjectData dataField = baseObject.getField(tag);
 				if(needsEncoding(dataField))
+				{
 					data = XmlUtilities.getXmlEncoded(data);
+					data = data.replaceAll("\\n", "<br/>");
+				}
 				writeTagValue(writer, UPDATE_OBJECT_CODE, ref, tag, data);
 			}
 		}
