@@ -444,8 +444,8 @@ abstract public class DiagramPaster
 
 	private void addToDiagramObject(DiagramObject diagramObjectToAddTo, ORef refToAppend, String tag) throws Exception
 	{
-		CommandSetObjectData addDiagramFactor = CommandSetObjectData.createAppendIdCommand(diagramObjectToAddTo, tag, refToAppend.getObjectId());
-		getProject().executeCommand(addDiagramFactor);
+		CommandSetObjectData appendId = CommandSetObjectData.createAppendIdCommand(diagramObjectToAddTo, tag, refToAppend.getObjectId());
+		getProject().executeCommand(appendId);
 	}
 	
 	private void addToCurrentDiagram(ORef refToAppend, String tag) throws Exception
