@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.project;
 
 import java.io.IOException;
+import java.io.Writer;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Vector;
@@ -28,6 +29,7 @@ import java.util.Vector;
 import org.martus.util.UnicodeWriter;
 import org.martus.util.xml.XmlUtilities;
 import org.miradi.database.ProjectServer;
+import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -90,12 +92,39 @@ public class ProjectSaver
 		for(int field = 0; field < fieldTags.size(); ++field)
 		{
 			String tag = fieldTags.get(field);
-			final String data = baseObject.getData(tag);
+			String data = baseObject.getData(tag);
 			if (data.length() > 0)
 			{
+				ObjectData dataField = baseObject.getField(tag);
+				if(needsEncoding(dataField))
+					data = XmlUtilities.getXmlEncoded(data);
 				writeTagValue(writer, UPDATE_OBJECT_CODE, ref, tag, data);
 			}
 		}
+	}
+
+	private static boolean needsEncoding(ObjectData dataField)
+	{
+		if(dataField.isBaseIdData())
+			return false;
+		if(dataField.isChoiceItemData())
+			return false;
+		if(dataField.isCodeListData())
+			return false;
+		if(dataField.isIdListData())
+			return false;
+		if(dataField.isRefData())
+			return false;
+		if(dataField.isRefListData())
+			return false;
+		if(dataField.isStringChoiceMapData())
+			return false;
+		if(dataField.isStringCodeListMapData())
+			return false;
+		if(dataField.isStringMapData())
+			return false;
+		
+		return true;
 	}
 
 	private static void writeSimpleThreatRating(UnicodeWriter writer, Project project) throws Exception
@@ -150,12 +179,10 @@ public class ProjectSaver
 	
 	private static void write(final UnicodeWriter writer, final String data) throws Exception
 	{
-		String xmlEncodedData = XmlUtilities.getXmlEncoded(data);
-		String dataWithHtmlNewLines = xmlEncodedData.replaceAll(NEW_LINE, HTML_NEW_LINE);
-		writeRaw(writer, dataWithHtmlNewLines);
+		writeRaw(writer, data);
 	}
-
-	public static void writeRaw(final UnicodeWriter writer,	String data) throws IOException
+	
+	public static void writeRaw(final Writer writer,	String data) throws IOException
 	{
 		writer.write(data);
 	}
