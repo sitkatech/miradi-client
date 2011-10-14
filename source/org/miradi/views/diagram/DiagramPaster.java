@@ -996,13 +996,13 @@ abstract public class DiagramPaster
 	public static Vector<String> getTags(BaseObject baseObject)
 	{
 		final Vector<String> storedFieldTags = baseObject.getStoredFieldTags();
-		final Vector<String> nonClearningTags = getNonClearningTags(baseObject.getType());
+		final Vector<String> nonClearningTags = getTagsToSkipWhenLoadingJsonData(baseObject.getType());
 		storedFieldTags.removeAll(nonClearningTags);
 		
 		return storedFieldTags;
 	}
 	
-	private static Vector<String> getNonClearningTags(final int objectType)
+	private static Vector<String> getTagsToSkipWhenLoadingJsonData(final int objectType)
 	{
 		Vector<String> tags = new Vector<String>();
 		if (DiagramFactor.is(objectType))
