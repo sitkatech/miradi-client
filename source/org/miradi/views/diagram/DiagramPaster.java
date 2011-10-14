@@ -983,12 +983,9 @@ abstract public class DiagramPaster
 	private static Command[] createCommandsToLoadFromJson(EnhancedJsonObject json, BaseObject baseObject) throws Exception
 	{
 		Vector<CommandSetObjectData> commands = new Vector<CommandSetObjectData>();
-		Vector<String> tags = new Vector<String>(Arrays.asList(baseObject.getFieldTags()));
+		Vector<String> tags = baseObject.getStoredFieldTags();
 		for (String tag : tags)
 		{
-			if (baseObject.getField(tag).isPseudoField())
-				continue;
-			
 			CommandSetObjectData setDataCommand = new CommandSetObjectData(baseObject.getRef(), tag, json.optString(tag));
 			commands.add(setDataCommand);
 		}
