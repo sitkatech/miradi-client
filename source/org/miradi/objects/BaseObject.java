@@ -22,6 +22,7 @@ package org.miradi.objects;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.text.ParseException;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
@@ -209,16 +210,16 @@ abstract public class BaseObject
 		return fields;
 	}
 	
-	public Command[] createCommandsToLoadFromJson(EnhancedJsonObject json) throws Exception
+	public static Command[] createCommandsToLoadFromJson(EnhancedJsonObject json, BaseObject baseObject) throws Exception
 	{
 		Vector<CommandSetObjectData> commands = new Vector<CommandSetObjectData>();
-		Set<String> tags = getTags();
+		Vector<String> tags = new Vector<String>(Arrays.asList(baseObject.getFieldTags()));
 		for (String tag : tags)
 		{
-			if (getField(tag).isPseudoField() || nonClearedFieldTags.contains(tag))
+			if (baseObject.getField(tag).isPseudoField() || baseObject.getNonClearedFieldTags().contains(tag))
 				continue;
 			
-			CommandSetObjectData setDataCommand = new CommandSetObjectData(getRef(), tag, json.optString(tag));
+			CommandSetObjectData setDataCommand = new CommandSetObjectData(baseObject.getRef(), tag, json.optString(tag));
 			commands.add(setDataCommand);
 		}
 		

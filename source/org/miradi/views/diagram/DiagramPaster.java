@@ -371,7 +371,7 @@ abstract public class DiagramPaster
 	
 	private void loadNewObjectFromOldJson(BaseObject newObject, EnhancedJsonObject json) throws Exception, CommandFailedException
 	{
-		Command[] commandsToLoadFromJson = newObject.createCommandsToLoadFromJson(json);
+		Command[] commandsToLoadFromJson = BaseObject.createCommandsToLoadFromJson(json, newObject);
 		getProject().executeCommands(commandsToLoadFromJson);
 	}
 	
@@ -463,7 +463,7 @@ abstract public class DiagramPaster
 			ThreatStressRating threatStressRating = findThreatStressRating(tsrJson);
 			if(threatStressRating != null)
 			{
-				Command[] commands = threatStressRating.createCommandsToLoadFromJson(tsrJson);
+				Command[] commands = BaseObject.createCommandsToLoadFromJson(tsrJson, threatStressRating);
 				getProject().executeCommands(commands);
 			}
 		}
@@ -692,7 +692,7 @@ abstract public class DiagramPaster
 			CommandSetObjectData setWrappedToId = new CommandSetObjectData(newDiagramLink.getRef(), DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID, toDiagramFactor.getId().toString());
 			getProject().executeCommand(setWrappedToId);
 
-			Command[]  commandsToLoadFromJson = newDiagramLink.createCommandsToLoadFromJson(diagramLinkJson);
+			Command[]  commandsToLoadFromJson = BaseObject.createCommandsToLoadFromJson(diagramLinkJson, newDiagramLink);
 			getProject().executeCommands(commandsToLoadFromJson);
 	
 			if(newDiagramLink.getWrappedFactorLink() == null && !newDiagramLink.isGroupBoxLink())
@@ -807,7 +807,7 @@ abstract public class DiagramPaster
 		ORef factorLinkRef = linkCreator.createFactorLink(newFromRef, newToRef);
 		FactorLink newFactorLink = (FactorLink) getProject().findObject(factorLinkRef);
 		
-		Command[]  commandsToLoadFromJson = newFactorLink.createCommandsToLoadFromJson(json);
+		Command[]  commandsToLoadFromJson = BaseObject.createCommandsToLoadFromJson(json, newFactorLink);
 		getProject().executeCommands(commandsToLoadFromJson);
 
 		BaseId oldFactorLinkId = json.getId(FactorLink.TAG_ID);
