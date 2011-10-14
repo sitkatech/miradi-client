@@ -983,7 +983,7 @@ abstract public class DiagramPaster
 	private static Command[] createCommandsToLoadFromJson(EnhancedJsonObject json, BaseObject baseObject) throws Exception
 	{
 		Vector<CommandSetObjectData> commands = new Vector<CommandSetObjectData>();
-		Vector<String> tags = baseObject.getStoredFieldTags();
+		Vector<String> tags = getTags(baseObject);
 		for (String tag : tags)
 		{
 			CommandSetObjectData setDataCommand = new CommandSetObjectData(baseObject.getRef(), tag, json.optString(tag));
@@ -991,6 +991,11 @@ abstract public class DiagramPaster
 		}
 		
 		return commands.toArray(new Command[0]);
+	}
+
+	public static Vector<String> getTags(BaseObject baseObject)
+	{
+		return baseObject.getStoredFieldTags();
 	}
 	
 	abstract public ORef getFactorLinkRef(ORef oldWrappedFactorLinkRef);	
