@@ -680,11 +680,18 @@ abstract public class DiagramPaster
 			DiagramLink newDiagramLink = (DiagramLink) createObject(type);
 			//NOTE: we are not always setting diagramLink's wrapped ref due to it sometimes being a Group box link
 			if (newFactorLinkRef != null)
-				getProject().setObjectData(newDiagramLink.getRef(), DiagramLink.TAG_WRAPPED_ID, newFactorLinkRef.getObjectId().toString());
+			{
+				CommandSetObjectData setWrappedId = new CommandSetObjectData(newDiagramLink.getRef(), DiagramLink.TAG_WRAPPED_ID, newFactorLinkRef.getObjectId().toString());
+				getProject().executeCommand(setWrappedId);
+			}
 	    	
-			getProject().setObjectData(newDiagramLink.getRef(), DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID, fromDiagramFactor.getId().toString());
-	    	getProject().setObjectData(newDiagramLink.getRef(), DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID, toDiagramFactor.getId().toString());
 			
+			CommandSetObjectData setWrappedFromId = new CommandSetObjectData(newDiagramLink.getRef(), DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID, fromDiagramFactor.getId().toString());
+			getProject().executeCommand(setWrappedFromId);
+			
+			CommandSetObjectData setWrappedToId = new CommandSetObjectData(newDiagramLink.getRef(), DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID, toDiagramFactor.getId().toString());
+			getProject().executeCommand(setWrappedToId);
+
 			Command[]  commandsToLoadFromJson = newDiagramLink.createCommandsToLoadFromJson(diagramLinkJson);
 			getProject().executeCommands(commandsToLoadFromJson);
 	
