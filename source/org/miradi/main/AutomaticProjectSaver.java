@@ -38,7 +38,8 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 	
 	public void stopSaving()
 	{
-		project.removeCommandExecutedListener(this);
+		if(project != null)
+			project.removeCommandExecutedListener(this);
 	}
 	
 	public void commandExecuted(CommandExecutedEvent event)
