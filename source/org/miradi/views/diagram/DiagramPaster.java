@@ -995,9 +995,40 @@ abstract public class DiagramPaster
 
 	public static Vector<String> getTags(BaseObject baseObject)
 	{
-		return baseObject.getStoredFieldTags();
+		final Vector<String> storedFieldTags = baseObject.getStoredFieldTags();
+		final Vector<String> nonClearningTags = getNonClearningTags(baseObject.getType());
+		storedFieldTags.removeAll(nonClearningTags);
+		
+		return storedFieldTags;
 	}
 	
+	private static Vector<String> getNonClearningTags(final int objectType)
+	{
+		Vector<String> tags = new Vector<String>();
+		if (DiagramFactor.is(objectType))
+		{
+			tags.add(DiagramFactor.TAG_WRAPPED_REF);
+		}
+		else if (FactorLink.is(objectType))
+		{
+			tags.add(FactorLink.TAG_FROM_REF);
+			tags.add(FactorLink.TAG_TO_REF);
+		}
+		else if (DiagramLink.is(objectType))
+		{
+			tags.add(DiagramLink.TAG_WRAPPED_ID);
+			tags.add(DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID);
+			tags.add(DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID);
+		}
+		else if (ThreatStressRating.is(objectType))
+		{
+			tags.add(ThreatStressRating.TAG_STRESS_REF);
+			tags.add(ThreatStressRating.TAG_THREAT_REF);
+		}
+		
+		return tags;
+	}
+
 	abstract public ORef getFactorLinkRef(ORef oldWrappedFactorLinkRef);	
 
 	abstract public void pasteFactors(Point startPoint) throws Exception;
