@@ -30,8 +30,8 @@ import org.martus.util.xml.XmlUtilities;
 import org.miradi.database.ProjectServer;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ObjectToStringSorter;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objecthelpers.ThreatRatingBundleSorter;
 import org.miradi.objectpools.EAMObjectPool;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
@@ -103,7 +103,7 @@ public class ProjectSaver
 	{
 		HashSet<ThreatRatingBundle> allBundles = SimpleThreatRatingFramework.loadSimpleThreatRatingBundles(project.getDatabase());
 		Vector<ThreatRatingBundle> sortedBundles = new Vector<ThreatRatingBundle>(allBundles);
-		Collections.sort(sortedBundles, new ObjectToStringSorter());
+		Collections.sort(sortedBundles, new ThreatRatingBundleSorter());
 		for(ThreatRatingBundle bundle : sortedBundles)
 		{
 			EnhancedJsonObject json = bundle.toJson();
