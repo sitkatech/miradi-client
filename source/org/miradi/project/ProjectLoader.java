@@ -61,8 +61,9 @@ public class ProjectLoader
 	private static void readProjectInfoLine(final Project project, final String line)
 	{
 		String[] splitLine = line.split(ProjectSaver.TAB);
-		String tag = splitLine[1];
-		String value = splitLine[2];
+		String[] tagValue = splitLine[1].split(ProjectSaver.EQUALS);
+		String tag = tagValue[0];
+		String value = tagValue[1];
 		if (tag.equals(ProjectInfo.TAG_PROJECT_METADATA_ID))
 			project.getProjectInfo().setMetadataId(new BaseId(value));
 	}
