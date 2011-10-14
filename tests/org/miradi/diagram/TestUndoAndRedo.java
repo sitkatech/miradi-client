@@ -92,10 +92,10 @@ public class TestUndoAndRedo extends MiradiTestCase
 		project.undo();
 		
 		// undo create model linkage
-		project.undo();
-		project.undo();
-		project.undo();
-		project.undo();
+		project.undo(); //NOTE: Undo Setting DL to
+		project.undo(); //NOTE: Undo Setting DL from 
+		project.undo(); //NOTE: Undo Setting DL wrapped id
+		project.undo(); //NOTE: Undo creating DL
 		
 		ORef fromDiagramFactorRef = model.getDiagramFactor(fromFactorRef).getRef();
 		ORef toDiagramFactorRef = model.getDiagramFactor(toFactorRef).getRef();
@@ -109,7 +109,7 @@ public class TestUndoAndRedo extends MiradiTestCase
 		project.undo();
 		
 		// undo model node create
-		project.undo();
+		project.undo(); //NOTE: Setting DF setting Wrapped ref
 		project.undo();
 		
 		verifyNodeNotPresent(toFactorRef);
@@ -121,7 +121,7 @@ public class TestUndoAndRedo extends MiradiTestCase
 		project.undo();
 		
 		// undo model node create
-		project.undo();
+		project.undo();//NOTE: Setting DF setting Wrapped ref
 		project.undo();
 		
 		verifyNodeNotPresent(fromFactorRef);
