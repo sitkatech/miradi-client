@@ -48,6 +48,8 @@ public class TestProjectSaver extends TestCaseWithProject
 	public void testSaveAndLoad() throws Exception
 	{
 		String contents = saveProjectToString();
+		assertContains("<br/>", contents);
+		assertContains("&quot;", contents);
 
 		Project project2 = new Project();
 		UnicodeStringReader reader = new UnicodeStringReader(contents);
