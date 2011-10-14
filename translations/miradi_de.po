@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-13 15:59-0500\n"
+"POT-Creation-Date: 2011-10-14 13:43-0500\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -3655,7 +3655,7 @@ msgstr ""
 "Ein Fehler ist aufgetreten, bitte versuchen Sie unter einem anderen Namen zu "
 "speichern. "
 
-#: Miradi/source/org/miradi/objects/Dashboard.java:301
+#: Miradi/source/org/miradi/objects/Dashboard.java:302
 msgid "Error Retrieving Data"
 msgstr "Fehler beim Wiederherstellen der Daten"
 
@@ -4607,7 +4607,7 @@ msgstr ""
 msgid "Label|(Undefined Funding Source)"
 msgstr ""
 
-#: Miradi/source/org/miradi/objects/ProjectResource.java:127
+#: Miradi/source/org/miradi/objects/ProjectResource.java:128
 msgid "Label|(Undefined Resource)"
 msgstr "(Undefinierte Ressource)"
 
@@ -7745,7 +7745,7 @@ msgstr ""
 "notwendig ist. Aufgaben können in Teilaufgaben untergliedert werden. In "
 "Miradi wird eine Aufgabe durch ein graues, abgeflachtes Oval dargestellt.  "
 
-#: Miradi/source/org/miradi/objects/Task.java:373
+#: Miradi/source/org/miradi/objects/Task.java:374
 msgid "Task does not have a parent"
 msgstr "Für diese Aufgabe ist noch niemand zuständig"
 
