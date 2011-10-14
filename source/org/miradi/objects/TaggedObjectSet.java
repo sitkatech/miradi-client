@@ -22,6 +22,7 @@ package org.miradi.objects;
 import org.miradi.ids.BaseId;
 import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.StringData;
+import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
@@ -121,9 +122,9 @@ public class TaggedObjectSet extends BaseObject
 	{
 		super.clear();
 
-		shortLabel = new StringData(TAG_SHORT_LABEL);
+		shortLabel = new UserTextData(TAG_SHORT_LABEL);
 		taggedObjectRefs = new ORefListData(TAG_TAGGED_OBJECT_REFS);
-		comments = new StringData(TAG_COMMENTS);
+		comments = new UserTextData(TAG_COMMENTS);
 
 		addField(TAG_SHORT_LABEL, shortLabel);
 		addField(TAG_TAGGED_OBJECT_REFS, taggedObjectRefs);

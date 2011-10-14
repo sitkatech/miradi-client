@@ -105,26 +105,7 @@ public class ProjectSaver
 
 	private static boolean needsEncoding(ObjectData dataField)
 	{
-		if(dataField.isBaseIdData())
-			return false;
-		if(dataField.isChoiceItemData())
-			return false;
-		if(dataField.isCodeListData())
-			return false;
-		if(dataField.isIdListData())
-			return false;
-		if(dataField.isRefData())
-			return false;
-		if(dataField.isRefListData())
-			return false;
-		if(dataField.isStringChoiceMapData())
-			return false;
-		if(dataField.isStringCodeListMapData())
-			return false;
-		if(dataField.isStringMapData())
-			return false;
-		
-		return true;
+		return dataField.isUserText();
 	}
 
 	private static void writeSimpleThreatRating(UnicodeWriter writer, Project project) throws Exception

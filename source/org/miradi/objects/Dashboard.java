@@ -30,6 +30,7 @@ import org.miradi.dialogs.dashboard.DashboardRowDefinitionManager;
 import org.miradi.dialogs.threatrating.upperPanel.TargetThreatLinkTableModel;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
+import org.miradi.objectdata.CodeData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -1216,7 +1217,7 @@ public class Dashboard extends BaseObject
 		progressChoiceMap = new StringChoiceMapData(TAG_PROGRESS_CHOICE_MAP);
 		commentsMap = new StringStringMapData(TAG_COMMENTS_MAP);
 		flagsMap = new StringCodeListMapData(TAG_FLAGS_MAP);
-		currentDashboardTab = new StringData(TAG_CURRENT_DASHBOARD_TAB);
+		currentDashboardTab = new CodeData(TAG_CURRENT_DASHBOARD_TAB);
 		
 		addPresentationDataField(PSEUDO_TEAM_MEMBER_COUNT, teamMemberCount);
 		addPresentationDataField(PSEUDO_PROJECT_SCOPE_WORD_COUNT, projectScopeWordCount);

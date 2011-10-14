@@ -30,6 +30,7 @@ import org.miradi.objectdata.IntegerData;
 import org.miradi.objectdata.RefListListData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objectdata.TagListData;
+import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -185,14 +186,14 @@ public class TableSettings extends BaseObject
 	{
 		super.clear();
 
-		tableIdentifier = new StringData(TAG_TABLE_IDENTIFIER);
+		tableIdentifier = new UserTextData(TAG_TABLE_IDENTIFIER);
 		columnSequenceCodes = new TagListData(TAG_COLUMN_SEQUENCE_CODES);
 		columnWidths = new StringStringMapData(TAG_COLUMN_WIDTHS);
 		rowHeight = new IntegerData(TAG_ROW_HEIGHT);
 		expandedNodesRefListList = new RefListListData(TAG_TREE_EXPANSION_LIST);
 		dateUnitListList = new DateUnitListData(TAG_DATE_UNIT_LIST_DATA);
 		tableSettingsMap = new StringStringMapData(TAG_TABLE_SETTINGS_MAP);
-		columnSortTag = new StringData(TAG_COLUMN_SORT_TAG);
+		columnSortTag = new UserTextData(TAG_COLUMN_SORT_TAG);
 		columnSortDirection = new ChoiceData(TAG_COLUMN_SORT_DIRECTION, getQuestion(SortDirectionQuestion.class));
 		workPlanVisibleNodesChoice = new ChoiceData(TAG_WORK_PLAN_VISIBLE_NODES_CODE, getQuestion(WorkPlanVisibleRowsQuestion.class));
 		

@@ -22,13 +22,14 @@ package org.miradi.objects;
 import org.miradi.ids.BaseId;
 import org.miradi.objectdata.CodeListData;
 import org.miradi.objectdata.StringData;
+import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.questions.ProjectSharingQuestion;
 import org.miradi.questions.TncOrganizationalPrioritiesQuestion;
 import org.miradi.questions.TncProjectPlaceTypeQuestion;
-import org.miradi.questions.ProjectSharingQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -103,14 +104,14 @@ public class TncProjectData extends BaseObject
 	{
 		super.clear();
 		
-		projectSharingCode = new StringData(TAG_PROJECT_SHARING_CODE);
+		projectSharingCode = new UserTextData(TAG_PROJECT_SHARING_CODE);
 		projectPlaceTypes = new CodeListData(TAG_PROJECT_PLACE_TYPES, getProject().getQuestion(TncProjectPlaceTypeQuestion.class));
 		organizationalPriorities = new CodeListData(TAG_ORGANIZATIONAL_PRIORITIES, getProject().getQuestion(TncOrganizationalPrioritiesQuestion.class));
-		parentChild = new StringData(TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT);
-		projectResourcesScorecard = new StringData(TAG_PROJECT_RESOURCES_SCORECARD);
-		projectLevelComments = new StringData(TAG_PROJECT_LEVEL_COMMENTS);
-		projectCitations = new StringData(TAG_PROJECT_CITATIONS);
-		capStandardsScorecard = new StringData(TAG_CAP_STANDARDS_SCORECARD);
+		parentChild = new UserTextData(TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT);
+		projectResourcesScorecard = new UserTextData(TAG_PROJECT_RESOURCES_SCORECARD);
+		projectLevelComments = new UserTextData(TAG_PROJECT_LEVEL_COMMENTS);
+		projectCitations = new UserTextData(TAG_PROJECT_CITATIONS);
+		capStandardsScorecard = new UserTextData(TAG_CAP_STANDARDS_SCORECARD);
 		
 		addField(projectSharingCode);
 		addField(projectPlaceTypes);

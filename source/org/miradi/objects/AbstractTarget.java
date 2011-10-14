@@ -31,6 +31,7 @@ import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.IdListData;
 import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.StringData;
+import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -345,7 +346,7 @@ abstract public class AbstractTarget extends Factor
 		super.clear();
 		targetStatus = new ChoiceData(TAG_TARGET_STATUS, getQuestion(StatusQuestion.class));
 		viabiltyMode = new ChoiceData(TAG_VIABILITY_MODE, getQuestion(ViabilityModeQuestion.class));
-		currentStatusJustification = new StringData(TAG_CURRENT_STATUS_JUSTIFICATION);
+		currentStatusJustification = new UserTextData(TAG_CURRENT_STATUS_JUSTIFICATION);
 		subTargetRefs = new ORefListData(TAG_SUB_TARGET_REFS);
 		goalIds = new IdListData(TAG_GOAL_IDS, Goal.getObjectType());
 		keyEcologicalAttributes = new IdListData(TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, KeyEcologicalAttribute.getObjectType());

@@ -25,6 +25,7 @@ import org.miradi.ids.KeyEcologicalAttributeId;
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.IdListData;
 import org.miradi.objectdata.StringData;
+import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -194,10 +195,10 @@ public class KeyEcologicalAttribute extends BaseObject
 	{
 		super.clear();
 		indicatorIds = new IdListData(TAG_INDICATOR_IDS, Indicator.getObjectType());
-		description = new StringData(TAG_DESCRIPTION);
-		details = new StringData(TAG_DETAILS);
+		description = new UserTextData(TAG_DESCRIPTION);
+		details = new UserTextData(TAG_DETAILS);
 		keyEcologicalAttributeType = new ChoiceData(TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE, getQuestion(KeyEcologicalAttributeTypeQuestion.class));
-		shortLabel = new StringData(TAG_SHORT_LABEL);
+		shortLabel = new UserTextData(TAG_SHORT_LABEL);
 		viabilityStatus = new PseudoStringData(PSEUDO_TAG_VIABILITY_STATUS);
 		
 		addField(TAG_INDICATOR_IDS, indicatorIds);

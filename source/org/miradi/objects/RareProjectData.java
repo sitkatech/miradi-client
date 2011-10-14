@@ -22,6 +22,7 @@ package org.miradi.objects;
 import org.miradi.ids.BaseId;
 import org.miradi.objectdata.IntegerData;
 import org.miradi.objectdata.StringData;
+import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
@@ -84,17 +85,17 @@ public class RareProjectData extends BaseObject
 	{
 		super.clear();
 		
-		speciesCommonName = new StringData(TAG_FLAGSHIP_SPECIES_COMMON_NAME);
-		speciesScientificName = new StringData(TAG_FLAGSHIP_SPECIES_SCIENTIFIC_NAME);
-		speciesDetail = new StringData(TAG_FLAGSHIP_SPECIES_DETAIL);
-		campaignSlogan = new StringData(TAG_CAMPAIGN_SLOGAN);
-		campaignTheoryOfChange = new StringData(TAG_CAMPAIGN_THEORY_OF_CHANGE);
-		summaryOfKeyMessages = new StringData(TAG_SUMMARY_OF_KEY_MESSAGES);
-		biodiversityHotspots = new StringData(TAG_BIODIVERSITY_HOTSPOTS);
-		cohort = new StringData(TAG_COHORT);
+		speciesCommonName = new UserTextData(TAG_FLAGSHIP_SPECIES_COMMON_NAME);
+		speciesScientificName = new UserTextData(TAG_FLAGSHIP_SPECIES_SCIENTIFIC_NAME);
+		speciesDetail = new UserTextData(TAG_FLAGSHIP_SPECIES_DETAIL);
+		campaignSlogan = new UserTextData(TAG_CAMPAIGN_SLOGAN);
+		campaignTheoryOfChange = new UserTextData(TAG_CAMPAIGN_THEORY_OF_CHANGE);
+		summaryOfKeyMessages = new UserTextData(TAG_SUMMARY_OF_KEY_MESSAGES);
+		biodiversityHotspots = new UserTextData(TAG_BIODIVERSITY_HOTSPOTS);
+		cohort = new UserTextData(TAG_COHORT);
 		numberOfCommunitiesInCampaignArea = new IntegerData(TAG_NUMBER_OF_COMMUNITIES_IN_CAMPAIGN_AREA);
-		legacyThreatsAddressedNotes = new StringData(LEGACY_TAG_THREATS_ADDRESSED_NOTES);
-		mainActivitiesNotes = new StringData(TAG_MAIN_ACTIVITIES_NOTES);
+		legacyThreatsAddressedNotes = new UserTextData(LEGACY_TAG_THREATS_ADDRESSED_NOTES);
+		mainActivitiesNotes = new UserTextData(TAG_MAIN_ACTIVITIES_NOTES);
 		
 		addField(TAG_FLAGSHIP_SPECIES_COMMON_NAME, speciesCommonName);
 		addField(TAG_FLAGSHIP_SPECIES_SCIENTIFIC_NAME, speciesScientificName);

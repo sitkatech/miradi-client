@@ -40,6 +40,7 @@ import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.IdListData;
 import org.miradi.objectdata.StringData;
+import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.DirectThreatSet;
 import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORef;
@@ -520,9 +521,9 @@ abstract public class Factor extends BaseObject
 	void clear()
 	{
 		super.clear();
-		comments = new StringData(TAG_COMMENTS);
-		text = new StringData(TAG_TEXT);
-		shortLabel = new StringData(TAG_SHORT_LABEL);
+		comments = new UserTextData(TAG_COMMENTS);
+		text = new UserTextData(TAG_TEXT);
+		shortLabel = new UserTextData(TAG_SHORT_LABEL);
 	    indicators = new IdListData(TAG_INDICATOR_IDS, Indicator.getObjectType());
 		objectives = new IdListData(TAG_OBJECTIVE_IDS, Objective.getObjectType());
 		multiLineObjectives = new PseudoStringData(PSEUDO_TAG_OBJECTIVES);

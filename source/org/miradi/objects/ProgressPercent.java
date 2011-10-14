@@ -23,6 +23,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.objectdata.DateData;
 import org.miradi.objectdata.PercentageData;
 import org.miradi.objectdata.StringData;
+import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
@@ -101,7 +102,7 @@ public class ProgressPercent extends BaseObject
 		
 		date = new DateData(TAG_DATE);
 		percentComplete = new PercentageData(TAG_PERCENT_COMPLETE);
-		percentCompleteNotes = new StringData(TAG_PERCENT_COMPLETE_NOTES);
+		percentCompleteNotes = new UserTextData(TAG_PERCENT_COMPLETE_NOTES);
 		
 		addField(TAG_DATE, date);
 		addField(TAG_PERCENT_COMPLETE, percentComplete);

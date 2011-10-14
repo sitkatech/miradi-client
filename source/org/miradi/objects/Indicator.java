@@ -29,6 +29,7 @@ import org.miradi.objectdata.DateData;
 import org.miradi.objectdata.IdListData;
 import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.StringData;
+import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.DirectThreatSet;
 import org.miradi.objecthelpers.NonDraftStrategySet;
 import org.miradi.objecthelpers.ORef;
@@ -399,22 +400,22 @@ public class Indicator extends BaseObject
 	{
 		super.clear();
 		
-		shortLabel = new StringData(TAG_SHORT_LABEL);
+		shortLabel = new UserTextData(TAG_SHORT_LABEL);
 		priority = new ChoiceData(TAG_PRIORITY, getQuestion(PriorityRatingQuestion.class));
 		methodIds = new IdListData(TAG_METHOD_IDS, Task.getObjectType());
 		indicatorThreshold = new StringStringMapData(TAG_INDICATOR_THRESHOLD);
 		ratingSource= new ChoiceData(TAG_RATING_SOURCE, getQuestion(RatingSourceQuestion.class));
 		measurementRefs = new ORefListData(TAG_MEASUREMENT_REFS);
-		detail = new StringData(TAG_DETAIL);
-		comments = new StringData(TAG_COMMENTS);
-		viabilityRatingsComments = new StringData(TAG_VIABILITY_RATINGS_COMMENTS);
+		detail = new UserTextData(TAG_DETAIL);
+		comments = new UserTextData(TAG_COMMENTS);
+		viabilityRatingsComments = new UserTextData(TAG_VIABILITY_RATINGS_COMMENTS);
 	    thresholdDetails = new StringStringMapData(TAG_THRESHOLD_DETAILS);
 
 		futureStatusRating = new ChoiceData(TAG_FUTURE_STATUS_RATING, getQuestion(StatusQuestion.class));
 		futureStatusDate = new DateData(TAG_FUTURE_STATUS_DATE);
-		futureStatusSummary = new StringData(TAG_FUTURE_STATUS_SUMMARY);
-		futureStatusDetail = new StringData(TAG_FUTURE_STATUS_DETAIL);
-		futureStatusComments = new StringData(TAG_FUTURE_STATUS_COMMENTS);
+		futureStatusSummary = new UserTextData(TAG_FUTURE_STATUS_SUMMARY);
+		futureStatusDetail = new UserTextData(TAG_FUTURE_STATUS_DETAIL);
+		futureStatusComments = new UserTextData(TAG_FUTURE_STATUS_COMMENTS);
 		
 		multiLineTargets = new PseudoStringData(PSEUDO_TAG_TARGETS);
 		multiLineDirectThreats = new PseudoStringData(PSEUDO_TAG_DIRECT_THREATS);

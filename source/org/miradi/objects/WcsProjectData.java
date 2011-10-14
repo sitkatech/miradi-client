@@ -22,6 +22,7 @@ package org.miradi.objects;
 import org.miradi.ids.BaseId;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objectdata.StringData;
+import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
@@ -84,12 +85,12 @@ public class WcsProjectData extends BaseObject
 	{
 		super.clear();
 		
-		organizationalFocus = new StringData(TAG_ORGANIZATIONAL_FOCUS);
-		organizationalLevel = new StringData(TAG_ORGANIZATIONAL_LEVEL);
+		organizationalFocus = new UserTextData(TAG_ORGANIZATIONAL_FOCUS);
+		organizationalLevel = new UserTextData(TAG_ORGANIZATIONAL_LEVEL);
 		SwotCompleted = new BooleanData(TAG_SWOT_COMPLETED);
-		SwotUrl = new StringData(TAG_SWOT_URL);
+		SwotUrl = new UserTextData(TAG_SWOT_URL);
 		StepCompleted = new BooleanData(TAG_STEP_COMPLETED);
-		StepUrl = new StringData(TAG_STEP_URL);
+		StepUrl = new UserTextData(TAG_STEP_URL);
 
 		addField(TAG_ORGANIZATIONAL_FOCUS, organizationalFocus);
 		addField(TAG_ORGANIZATIONAL_LEVEL, organizationalLevel);

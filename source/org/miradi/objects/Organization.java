@@ -21,6 +21,7 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objectdata.StringData;
+import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -111,13 +112,13 @@ public class Organization extends BaseObject
 	{
 		super.clear();
 		
-		shortLabel = new StringData(TAG_SHORT_LABEL);
-		rolesDescription = new StringData(TAG_ROLES_DESCRIPTION);
-		contactFirstName = new StringData(TAG_CONTACT_FIRST_NAME);
-		contactLastName = new StringData(TAG_CONTACT_LAST_NAME);
-		email = new StringData(TAG_EMAIL);
-		phoneNumber = new StringData(TAG_PHONE_NUMBER);
-		comments = new StringData(TAG_COMMENTS);
+		shortLabel = new UserTextData(TAG_SHORT_LABEL);
+		rolesDescription = new UserTextData(TAG_ROLES_DESCRIPTION);
+		contactFirstName = new UserTextData(TAG_CONTACT_FIRST_NAME);
+		contactLastName = new UserTextData(TAG_CONTACT_LAST_NAME);
+		email = new UserTextData(TAG_EMAIL);
+		phoneNumber = new UserTextData(TAG_PHONE_NUMBER);
+		comments = new UserTextData(TAG_COMMENTS);
 		
 		addField(TAG_SHORT_LABEL, shortLabel);
 		addField(TAG_ROLES_DESCRIPTION, rolesDescription);

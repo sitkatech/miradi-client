@@ -23,6 +23,7 @@ package org.miradi.objects;
 import org.miradi.ids.BaseId;
 import org.miradi.objectdata.IntegerData;
 import org.miradi.objectdata.StringData;
+import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
@@ -96,7 +97,7 @@ public class Audience extends BaseObject
 		super.clear();
 	
 		peopleCount = new IntegerData(TAG_PEOPLE_COUNT);
-		summary = new StringData(TAG_SUMMARY);
+		summary = new UserTextData(TAG_SUMMARY);
 		
 		addField(TAG_PEOPLE_COUNT, peopleCount);
 		addField(TAG_SUMMARY, summary);

@@ -1,5 +1,5 @@
 /* 
-Copyright 2005-2009, Foundations of Success, Bethesda, Maryland 
+Copyright 2005-2011, Foundations of Success, Bethesda, Maryland 
 (on behalf of the Conservation Measures Partnership, "CMP") and 
 Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 
@@ -17,44 +17,20 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
+
 package org.miradi.objectdata;
 
-abstract public class StringData extends ObjectData
+public class UserTextData extends StringData
 {
-	protected StringData(String tagToUse)
+	public UserTextData(String tagToUse)
 	{
 		super(tagToUse);
-		value = "";
 	}
 	
 	@Override
-	public void set(String newValue) throws Exception
+	public boolean isUserText()
 	{
-		value = newValue;
+		return true;
 	}
 
-	@Override
-	public String get()
-	{
-		return value;
-	}
-	
-	@Override
-	public boolean equals(Object rawOther)
-	{
-		if(!(rawOther instanceof StringData))
-			return false;
-		
-		StringData other = (StringData)rawOther;
-		return value.equals(other.value);
-	}
-
-	@Override
-	public int hashCode()
-	{
-		return value.hashCode();
-	}
-
-
-	private String value;
 }

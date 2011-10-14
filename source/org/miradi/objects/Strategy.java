@@ -27,8 +27,10 @@ import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.ChoiceData;
+import org.miradi.objectdata.CodeData;
 import org.miradi.objectdata.IdListData;
 import org.miradi.objectdata.StringData;
+import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
@@ -343,13 +345,13 @@ public class Strategy extends Factor
 	void clear()
 	{
 		super.clear();
-		status = new StringData(TAG_STATUS);
+		status = new CodeData(TAG_STATUS);
 		activityIds = new IdListData(TAG_ACTIVITY_IDS, Task.getObjectType());
 	
 		taxonomyCode = new ChoiceData(TAG_TAXONOMY_CODE, getQuestion(StrategyTaxonomyQuestion.class));
 		impactRating = new ChoiceData(TAG_IMPACT_RATING, getQuestion(StrategyImpactQuestion.class));
 		feasibilityRating = new ChoiceData(TAG_FEASIBILITY_RATING, getQuestion(StrategyFeasibilityQuestion.class));
-		legacyTncStrategyRanking = new StringData(TAG_LEGACY_TNC_STRATEGY_RANKING);
+		legacyTncStrategyRanking = new UserTextData(TAG_LEGACY_TNC_STRATEGY_RANKING);
 	
 		tagRatingSummary = new PseudoStringData(PSEUDO_TAG_RATING_SUMMARY);
 		impactRatingLabel = new PseudoQuestionData(PSEUDO_TAG_IMPACT_RATING_VALUE, new StrategyImpactQuestion());

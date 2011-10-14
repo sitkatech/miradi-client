@@ -34,6 +34,7 @@ import org.miradi.objectdata.IdListData;
 import org.miradi.objectdata.NumberData;
 import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.StringData;
+import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
@@ -559,8 +560,8 @@ abstract public class DiagramObject extends BaseObject
 		
 		allDiagramFactorIds = new IdListData(TAG_DIAGRAM_FACTOR_IDS, DiagramFactor.getObjectType());
 		allDiagramFactorLinkIds = new IdListData(TAG_DIAGRAM_FACTOR_LINK_IDS, DiagramLink.getObjectType());
-		shortLabel = new StringData(TAG_SHORT_LABEL);
-		details = new StringData(TAG_DETAIL);
+		shortLabel = new UserTextData(TAG_SHORT_LABEL);
+		details = new UserTextData(TAG_DETAIL);
 		hiddenTypes = new CodeListData(TAG_HIDDEN_TYPES, getQuestion(DiagramLegendQuestion.class));
 		selectedTaggedObjectSetRefs = new ORefListData(TAG_SELECTED_TAGGED_OBJECT_SET_REFS);
 		zoomScale = new NumberData(TAG_ZOOM_SCALE);

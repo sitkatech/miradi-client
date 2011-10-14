@@ -21,7 +21,7 @@ package org.miradi.objects;
 
 import org.miradi.diagram.factortypes.FactorTypeThreatReductionResult;
 import org.miradi.ids.FactorId;
-import org.miradi.objectdata.StringData;
+import org.miradi.objectdata.ORefData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -134,7 +134,7 @@ public class ThreatReductionResult extends Factor
 	{
 		super.clear();
 		
-		relatedDirectThreat = new StringData(TAG_RELATED_DIRECT_THREAT_REF);
+		relatedDirectThreat = new ORefData(TAG_RELATED_DIRECT_THREAT_REF);
 		
 		addField(TAG_RELATED_DIRECT_THREAT_REF, relatedDirectThreat);
 	}
@@ -142,5 +142,5 @@ public class ThreatReductionResult extends Factor
 	public static final String TAG_RELATED_DIRECT_THREAT_REF = "RelatedDirectThreatRef";
 	public static final String OBJECT_NAME = "ThreatReductionResult";
 	
-	StringData relatedDirectThreat;
+	ORefData relatedDirectThreat;
 }

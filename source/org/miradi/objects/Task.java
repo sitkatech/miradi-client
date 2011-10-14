@@ -27,6 +27,7 @@ import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.IdListData;
 import org.miradi.objectdata.StringData;
+import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
@@ -511,7 +512,7 @@ public class Task extends Factor
 	{
 		super.clear();
 		subtaskIds = new IdListData(TAG_SUBTASK_IDS, Task.getObjectType());
-		details = new StringData(TAG_DETAILS);
+		details = new UserTextData(TAG_DETAILS);
 		
 		strategyLabel = new PseudoStringData(PSEUDO_TAG_STRATEGY_LABEL);
 		indicatorLabel = new PseudoStringData(PSEUDO_TAG_INDICATOR_LABEL);

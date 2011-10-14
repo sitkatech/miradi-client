@@ -24,6 +24,7 @@ import org.miradi.ids.FactorId;
 import org.miradi.objectdata.CodeListData;
 import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.StringData;
+import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -165,7 +166,7 @@ public class Target extends AbstractTarget
 	{
 		super.clear();
 		stressRefs = new ORefListData(TAG_STRESS_REFS);
-		speciesLatinName = new StringData(TAG_SPECIES_LATIN_NAME);
+		speciesLatinName = new UserTextData(TAG_SPECIES_LATIN_NAME);
 		habitatAssociation = new CodeListData(TAG_HABITAT_ASSOCIATION, getHabitatAssociationQuestion());
 		
 		habitatAssociationLabel = new PseudoQuestionData(PSEUDO_TAG_HABITAT_ASSOCIATION_VALUE, getHabitatAssociationQuestion());
