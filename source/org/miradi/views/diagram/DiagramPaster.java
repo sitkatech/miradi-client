@@ -371,7 +371,7 @@ abstract public class DiagramPaster
 	
 	private void loadNewObjectFromOldJson(BaseObject newObject, EnhancedJsonObject json) throws Exception, CommandFailedException
 	{
-		Command[] commandsToLoadFromJson = BaseObject.createCommandsToLoadFromJson(json, newObject);
+		Command[] commandsToLoadFromJson = createCommandsToLoadFromJson(json, newObject);
 		getProject().executeCommands(commandsToLoadFromJson);
 	}
 	
@@ -463,7 +463,7 @@ abstract public class DiagramPaster
 			ThreatStressRating threatStressRating = findThreatStressRating(tsrJson);
 			if(threatStressRating != null)
 			{
-				Command[] commands = BaseObject.createCommandsToLoadFromJson(tsrJson, threatStressRating);
+				Command[] commands = createCommandsToLoadFromJson(tsrJson, threatStressRating);
 				getProject().executeCommands(commands);
 			}
 		}
@@ -692,7 +692,7 @@ abstract public class DiagramPaster
 			CommandSetObjectData setWrappedToId = new CommandSetObjectData(newDiagramLink.getRef(), DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID, toDiagramFactor.getId().toString());
 			getProject().executeCommand(setWrappedToId);
 
-			Command[]  commandsToLoadFromJson = BaseObject.createCommandsToLoadFromJson(diagramLinkJson, newDiagramLink);
+			Command[]  commandsToLoadFromJson = createCommandsToLoadFromJson(diagramLinkJson, newDiagramLink);
 			getProject().executeCommands(commandsToLoadFromJson);
 	
 			if(newDiagramLink.getWrappedFactorLink() == null && !newDiagramLink.isGroupBoxLink())
@@ -807,7 +807,7 @@ abstract public class DiagramPaster
 		ORef factorLinkRef = linkCreator.createFactorLink(newFromRef, newToRef);
 		FactorLink newFactorLink = (FactorLink) getProject().findObject(factorLinkRef);
 		
-		Command[]  commandsToLoadFromJson = BaseObject.createCommandsToLoadFromJson(json, newFactorLink);
+		Command[]  commandsToLoadFromJson = createCommandsToLoadFromJson(json, newFactorLink);
 		getProject().executeCommands(commandsToLoadFromJson);
 
 		BaseId oldFactorLinkId = json.getId(FactorLink.TAG_ID);
@@ -978,6 +978,22 @@ abstract public class DiagramPaster
 	{
 		ORefList referrerRefs = getDiagramObject().findReferrersOnSameDiagram(referredObjectRef, referrerType);
 		return referrerRefs.size() > 0;
+	}
+	
+	private static Command[] createCommandsToLoadFromJson(EnhancedJsonObject json, BaseObject baseObject) throws Exception
+	{
+		Vector<CommandSetObjectData> commands = new Vector<CommandSetObjectData>();
+		Vector<String> tags = new Vector<String>(Arrays.asList(baseObject.getFieldTags()));
+		for (String tag : tags)
+		{
+			if (baseObject.getField(tag).isPseudoField() || baseObject.getNonClearedFieldTags().contains(tag))
+				continue;
+			
+			CommandSetObjectData setDataCommand = new CommandSetObjectData(baseObject.getRef(), tag, json.optString(tag));
+			commands.add(setDataCommand);
+		}
+		
+		return commands.toArray(new Command[0]);
 	}
 	
 	abstract public ORef getFactorLinkRef(ORef oldWrappedFactorLinkRef);	
