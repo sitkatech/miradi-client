@@ -986,7 +986,7 @@ abstract public class DiagramPaster
 		Vector<String> tags = new Vector<String>(Arrays.asList(baseObject.getFieldTags()));
 		for (String tag : tags)
 		{
-			if (baseObject.getField(tag).isPseudoField() || baseObject.getNonClearedFieldTags().contains(tag))
+			if (baseObject.getField(tag).isPseudoField())
 				continue;
 			
 			CommandSetObjectData setDataCommand = new CommandSetObjectData(baseObject.getRef(), tag, json.optString(tag));
