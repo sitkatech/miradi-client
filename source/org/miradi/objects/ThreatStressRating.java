@@ -175,8 +175,8 @@ public class ThreatStressRating extends BaseObject
 		
 		addField(TAG_CONTRIBUTION, contribution);
 		addField(TAG_IRREVERSIBILITY, irreversibility);
-		addNoClearField(TAG_STRESS_REF, stressRef);
-		addNoClearField(TAG_THREAT_REF, threatRef);
+		addField(TAG_STRESS_REF, stressRef);
+		addField(TAG_THREAT_REF, threatRef);
 		addField(TAG_IS_ACTIVE, isActive);
 		addField(PSEUDO_TAG_THREAT_RATING, pseudoThreatRating);
 	}

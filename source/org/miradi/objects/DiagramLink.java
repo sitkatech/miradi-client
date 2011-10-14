@@ -409,9 +409,9 @@ public class DiagramLink extends BaseObject
 		color = new ChoiceData(TAG_COLOR, getQuestion(DiagramLinkColorQuestion.class));
 		isBidirectionalLink = new BooleanData(TAG_IS_BIDIRECTIONAL_LINK);
 		
-		addNoClearField(TAG_WRAPPED_ID, underlyingObjectId);
-		addNoClearField(TAG_FROM_DIAGRAM_FACTOR_ID, fromId);
-		addNoClearField(TAG_TO_DIAGRAM_FACTOR_ID, toId);
+		addField(TAG_WRAPPED_ID, underlyingObjectId);
+		addField(TAG_FROM_DIAGRAM_FACTOR_ID, fromId);
+		addField(TAG_TO_DIAGRAM_FACTOR_ID, toId);
 		addField(TAG_BEND_POINTS, bendPoints);
 		addField(TAG_GROUPED_DIAGRAM_LINK_REFS, groupedDiagramLinkRefs);
 		addField(TAG_COLOR, color);

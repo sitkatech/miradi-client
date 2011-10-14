@@ -107,8 +107,8 @@ public class FactorLink extends BaseObject
 		toRef = new ORefData(TAG_TO_REF);
 		bidirectionalLink = new BooleanData(TAG_BIDIRECTIONAL_LINK);
 		
-		addNoClearField(TAG_FROM_REF, fromRef);
-		addNoClearField(TAG_TO_REF, toRef);
+		addField(TAG_FROM_REF, fromRef);
+		addField(TAG_TO_REF, toRef);
 		addField(TAG_BIDIRECTIONAL_LINK, bidirectionalLink);
 	}
 	
