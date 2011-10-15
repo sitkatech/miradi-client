@@ -23,6 +23,12 @@ package org.miradi.project;
 import org.martus.util.UnicodeStringReader;
 import org.martus.util.UnicodeStringWriter;
 import org.miradi.main.TestCaseWithProject;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objectpools.EAMObjectPool;
+import org.miradi.objects.BaseObject;
+import org.miradi.utils.EnhancedJsonObject;
 
 public class TestProjectSaver extends TestCaseWithProject
 {
@@ -51,9 +57,38 @@ public class TestProjectSaver extends TestCaseWithProject
 		assertContains("<br/>", contents);
 		assertContains("&quot;", contents);
 
-		Project project2 = new Project();
+		Project project2 = new ProjectForTesting(getName());
+		project2.clear();
 		UnicodeStringReader reader = new UnicodeStringReader(contents);
 		ProjectLoader.loadProject(reader, project2);
+		
+		for (int type = ObjectType.FIRST_OBJECT_TYPE; type < ObjectType.OBJECT_TYPE_COUNT; ++type)
+		{
+			EAMObjectPool oldPool = getProject().getPool(type);
+			if (oldPool == null)
+				continue;
+			ORefList oldRefs = oldPool.getSortedRefList();
+
+			EAMObjectPool newPool = project2.getPool(type);
+			ORefList newRefs = newPool.getSortedRefList();
+			assertEquals(oldRefs, newRefs);
+			verifyIdenticalObjects(getProject(), project2, newRefs);
+		}
+	}
+
+	private void verifyIdenticalObjects(ProjectForTesting project, Project project2, ORefList refs)
+	{
+		for(int i = 0; i < refs.size(); ++i)
+		{
+			ORef ref = refs.get(i);
+			BaseObject oldObject = BaseObject.find(project, ref);
+			BaseObject newObject = BaseObject.find(project2, ref);
+			EnhancedJsonObject oldJson = oldObject.toJson();
+			oldJson.remove(BaseObject.TAG_TIME_STAMP_MODIFIED);
+			EnhancedJsonObject newJson = newObject.toJson();
+			newJson.remove(BaseObject.TAG_TIME_STAMP_MODIFIED);
+			assertEquals(oldJson, newJson);
+		}
 	}
 
 	private String saveProjectToString() throws Exception

@@ -20,8 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.project;
 
+import java.util.StringTokenizer;
+
 import org.martus.util.UnicodeStringReader;
 import org.miradi.ids.BaseId;
+import org.miradi.objecthelpers.ORef;
 
 public class ProjectLoader
 {
@@ -48,6 +51,9 @@ public class ProjectLoader
 			
 			if (line.startsWith(ProjectSaver.CREATE_OBJECT_CODE))
 				readCreateObjectLine(project, line);
+			
+			if (line.startsWith(ProjectSaver.UPDATE_OBJECT_CODE))
+				readUpdateObjectline(project, line);
 			
 			if (line.startsWith(ProjectSaver.UPDATE_SIMPLE_THREAT_RATING))
 				readSimpleThreatRatingLine(project, line);
@@ -76,7 +82,35 @@ public class ProjectLoader
 	{
 	}
 
-	private static void readCreateObjectLine(Project project, String line)
+	private static void readCreateObjectLine(Project project, String line) throws Exception
 	{
+		StringTokenizer tokenizer = new StringTokenizer(line);
+		/*String command =*/ tokenizer.nextToken();
+		String refString = tokenizer.nextToken();
+		String[] refParts = refString.split(":");
+		int objectType = Integer.parseInt(refParts[0]);
+		BaseId objectId = new BaseId(Integer.parseInt(refParts[1]));
+		project.createObject(objectType, objectId);
 	}
+
+	private static void readUpdateObjectline(Project project, String line) throws Exception
+	{
+		StringTokenizer tokenizer = new StringTokenizer(line);
+		/*String command =*/ tokenizer.nextToken();
+		String refString = tokenizer.nextToken();
+		String[] refParts = refString.split(":");
+		int objectType = Integer.parseInt(refParts[0]);
+		BaseId objectId = new BaseId(Integer.parseInt(refParts[1]));
+		ORef ref = new ORef(objectType, objectId);
+		String tag = tokenizer.nextToken(" \t=");
+		String value = tokenizer.nextToken("=\n");
+		value = value.replaceAll("<br/>", "\n");
+		value = value.replaceAll("&lt;", "<");
+		value = value.replaceAll("&gt;", ">");
+		value = value.replaceAll("&quot;", "\"");
+		value = value.replaceAll("&#39;", "'");
+		value = value.replaceAll("&amp;", "&");
+		project.setObjectData(ref, tag, value);
+	}
+
 }
