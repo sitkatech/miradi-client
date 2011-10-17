@@ -88,7 +88,7 @@ public class ProjectLoader
 		String tag = tagValue[0];
 		String value = tagValue[1];
 		if (tag.equals(ProjectInfo.TAG_PROJECT_METADATA_ID))
-			project.getProjectInfo().setMetadataId(new BaseId(value));
+			getProject().getProjectInfo().setMetadataId(new BaseId(value));
 	}
 
 	private void readLastModified(String line)
@@ -124,7 +124,7 @@ public class ProjectLoader
 		String[] refParts = refString.split(":");
 		int objectType = Integer.parseInt(refParts[0]);
 		BaseId objectId = new BaseId(Integer.parseInt(refParts[1]));
-		project.createObject(objectType, objectId);
+		getProject().createObject(objectType, objectId);
 	}
 
 	private void readUpdateObjectline(String line) throws Exception
@@ -144,7 +144,12 @@ public class ProjectLoader
 		value = value.replaceAll("&quot;", "\"");
 		value = value.replaceAll("&#39;", "'");
 		value = value.replaceAll("&amp;", "&");
-		project.setObjectData(ref, tag, value);
+		getProject().setObjectData(ref, tag, value);
+	}
+	
+	private Project getProject()
+	{
+		return project;
 	}
 
 	private static HashMap<String, ThreatRatingBundle> bundleNameToBundleMap;
