@@ -147,10 +147,11 @@ public class ProjectSaver
 	
 	private static void writeTagValue(final UnicodeWriter writer, final String actionCode, ORef ref, final String tag, final String value) throws Exception
 	{
+		final String lineKey = createSimpleRefString(ref);
 		write(writer, actionCode);
 		write(writer, TAB);
 		
-		write(writer, createSimpleRefString(ref));
+		write(writer, lineKey);
 		write(writer, TAB);
 		
 		write(writer, tag);
