@@ -35,6 +35,8 @@ public class ProjectLoader
 	{
 		reader = readerToUse;
 		project = projectToUse;
+		
+		bundleNameToBundleMap = new HashMap<String, ThreatRatingBundle>();
 	}
 	
 	public static void loadProject(final UnicodeStringReader reader, Project project) throws Exception
@@ -152,7 +154,7 @@ public class ProjectLoader
 		return project;
 	}
 
-	private static HashMap<String, ThreatRatingBundle> bundleNameToBundleMap;
+	private HashMap<String, ThreatRatingBundle> bundleNameToBundleMap;
 	private UnicodeStringReader reader;
 	private Project project;
 }
