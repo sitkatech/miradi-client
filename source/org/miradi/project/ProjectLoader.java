@@ -31,6 +31,22 @@ import org.miradi.project.threatrating.ThreatRatingBundle;
 
 public class ProjectLoader
 {
+	private ProjectLoader(final UnicodeStringReader readerToUse, Project projectToUse) throws Exception
+	{
+		reader = readerToUse;
+		project = projectToUse;
+	}
+	
+	public static void loadProjectNew(final UnicodeStringReader reader, Project project) throws Exception
+	{
+		new ProjectLoader(reader, project).load();
+	}
+
+	private void load()
+	{
+		
+	}
+
 	public static void loadProject(final UnicodeStringReader reader, Project project) throws Exception
 	{
 		while(true)
@@ -137,4 +153,6 @@ public class ProjectLoader
 	}
 
 	private static HashMap<String, ThreatRatingBundle> bundleNameToBundleMap;
+	private UnicodeStringReader reader;
+	private Project project;
 }
