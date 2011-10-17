@@ -21,13 +21,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.project;
 
 import java.io.IOException;
-import java.io.Writer;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Vector;
 
 import org.martus.util.UnicodeStringWriter;
-import org.martus.util.UnicodeWriter;
 import org.martus.util.xml.XmlUtilities;
 import org.miradi.database.ProjectServer;
 import org.miradi.objectdata.ObjectData;
@@ -56,25 +54,25 @@ public class ProjectSaver
 	
 	private void saveProject() throws Exception
 	{
-		writeTagValue(writer, UPDATE_PROJECT_VERSION_CODE, ProjectServer.TAG_VERSION, Integer.toString(ProjectServer.DATA_VERSION));
-		writeTagValue(writer, UPDATE_PROJECT_VERSION_CODE, ProjectServer.TAG_VERSION, Integer.toString(ProjectServer.DATA_VERSION));
-		writeTagValue(writer, UPDATE_PROJECT_INFO_CODE, ProjectInfo.TAG_HIGHEST_OBJECT_ID, Integer.toString(project.getProjectInfo().getNormalIdAssigner().getHighestAssignedId()));
-		writeTagValue(writer, UPDATE_PROJECT_INFO_CODE, ProjectInfo.TAG_PROJECT_METADATA_ID, project.getProjectInfo().getMetadataId().toString());
-		writeTagValue(writer, UPDATE_LAST_MODIFIED_TIME_CODE, LAST_MODIFIED_TAG, ProjectServer.timestampToString(project.getLastModifiedTime()));
-		writeAllObjectTypes(writer, project);
-		writeSimpleThreatRating(writer, project);
-		writeQuarantinedData(writer, project);
-		writelnRaw(writer, STOP_MARKER);
+		writeTagValue(UPDATE_PROJECT_VERSION_CODE, ProjectServer.TAG_VERSION, Integer.toString(ProjectServer.DATA_VERSION));
+		writeTagValue(UPDATE_PROJECT_VERSION_CODE, ProjectServer.TAG_VERSION, Integer.toString(ProjectServer.DATA_VERSION));
+		writeTagValue(UPDATE_PROJECT_INFO_CODE, ProjectInfo.TAG_HIGHEST_OBJECT_ID, Integer.toString(project.getProjectInfo().getNormalIdAssigner().getHighestAssignedId()));
+		writeTagValue(UPDATE_PROJECT_INFO_CODE, ProjectInfo.TAG_PROJECT_METADATA_ID, project.getProjectInfo().getMetadataId().toString());
+		writeTagValue(UPDATE_LAST_MODIFIED_TIME_CODE, LAST_MODIFIED_TAG, ProjectServer.timestampToString(project.getLastModifiedTime()));
+		writeAllObjectTypes();
+		writeSimpleThreatRating();
+		writeQuarantinedData();
+		writelnRaw(STOP_MARKER);
 		writer.flush();
 	}
 	
-	private void writeQuarantinedData(UnicodeWriter writer, Project project) throws Exception
+	private void writeQuarantinedData() throws Exception
 	{
 		String quarantineFileContents = project.getQuarantineFileContents();
-		write(writer, quarantineFileContents);
+		write(quarantineFileContents);
 	}
 
-	private void writeAllObjectTypes(UnicodeWriter writer, Project project) throws Exception
+	private void writeAllObjectTypes() throws Exception
 	{
 		for (int type = ObjectType.FIRST_OBJECT_TYPE; type < ObjectType.OBJECT_TYPE_COUNT; ++type)
 		{
@@ -82,24 +80,24 @@ public class ProjectSaver
 			if (pool != null)
 			{
 				ORefList sortedObjectRefs = pool.getSortedRefList();
-				writeObjects(writer, project, sortedObjectRefs);
+				writeObjects(sortedObjectRefs);
 			}
 		}
 	}
 
-	private void writeObjects(UnicodeWriter writer, Project project, ORefList sortedObjectRefs) throws Exception
+	private void writeObjects(ORefList sortedObjectRefs) throws Exception
 	{
 		for (int index = 0; index < sortedObjectRefs.size(); ++index)
 		{
 			final ORef ref = sortedObjectRefs.get(index);
-			writeObject(writer, project, ref);
+			writeObject(ref);
 		}
 	}
 
-	private void writeObject(UnicodeWriter writer, Project project, ORef ref) throws Exception
+	private void writeObject(ORef ref) throws Exception
 	{
 		BaseObject baseObject = project.findObject(ref);
-		writeValue(writer, CREATE_OBJECT_CODE, createSimpleRefString(ref));
+		writeValue(CREATE_OBJECT_CODE, createSimpleRefString(ref));
 		Vector<String> fieldTags = baseObject.getStoredFieldTags();
 		for(int field = 0; field < fieldTags.size(); ++field)
 		{
@@ -113,7 +111,7 @@ public class ProjectSaver
 					data = XmlUtilities.getXmlEncoded(data);
 					data = data.replaceAll("\\n", "<br/>");
 				}
-				writeTagValue(writer, UPDATE_OBJECT_CODE, ref, tag, data);
+				writeTagValue(UPDATE_OBJECT_CODE, ref, tag, data);
 			}
 		}
 	}
@@ -123,7 +121,7 @@ public class ProjectSaver
 		return dataField.isUserText();
 	}
 
-	private void writeSimpleThreatRating(UnicodeWriter writer, Project project) throws Exception
+	private void writeSimpleThreatRating() throws Exception
 	{
 		Collection<ThreatRatingBundle> allBundles = project.getSimpleThreatRatingFramework().getAllBundles();
 		Vector<ThreatRatingBundle> sortedBundles = new Vector<ThreatRatingBundle>(allBundles);
@@ -132,61 +130,61 @@ public class ProjectSaver
 		{
 			EnhancedJsonObject json = bundle.toJson();
 			String bundleName = SimpleThreatRatingFramework.getBundleKey(bundle.getThreatId(), bundle.getTargetId());
-			writeValue(writer, CREATE_SIMPLE_THREAT_RATING_BUNDLE_CODE, bundleName);
-			writeTagValue(writer, UPDATE_SIMPLE_THREAT_RATING_BUNDLE_CODE, bundleName, ThreatRatingBundle.TAG_VALUES, json.getString(ThreatRatingBundle.TAG_VALUES));
-			writeTagValue(writer, UPDATE_SIMPLE_THREAT_RATING_BUNDLE_CODE, bundleName, ThreatRatingBundle.TAG_DEFAULT_VALUE_ID, json.getString(ThreatRatingBundle.TAG_DEFAULT_VALUE_ID));
+			writeValue(CREATE_SIMPLE_THREAT_RATING_BUNDLE_CODE, bundleName);
+			writeTagValue(UPDATE_SIMPLE_THREAT_RATING_BUNDLE_CODE, bundleName, ThreatRatingBundle.TAG_VALUES, json.getString(ThreatRatingBundle.TAG_VALUES));
+			writeTagValue(UPDATE_SIMPLE_THREAT_RATING_BUNDLE_CODE, bundleName, ThreatRatingBundle.TAG_DEFAULT_VALUE_ID, json.getString(ThreatRatingBundle.TAG_DEFAULT_VALUE_ID));
 		}
 	}
 
-	private void writeValue(final UnicodeWriter writer, final String actionCode, final String value) throws Exception
+	private void writeValue(final String actionCode, final String value) throws Exception
 	{
-		write(writer, actionCode);
-		write(writer, TAB);
-		write(writer, value);
+		write(actionCode);
+		write(TAB);
+		write(value);
 		writer.writeln();
 	}
 	
-	private void writeTagValue(final UnicodeWriter writer, final String actionCode, final String tag, final String value) throws Exception
+	private void writeTagValue(final String actionCode, final String tag, final String value) throws Exception
 	{
-		write(writer, actionCode);
-		write(writer, TAB);
-		write(writer, tag);
-		write(writer, EQUALS);
-		write(writer, value);
+		write(actionCode);
+		write(TAB);
+		write(tag);
+		write(EQUALS);
+		write(value);
 		writer.writeln();
 	}
 	
-	private void writeTagValue(final UnicodeWriter writer, final String actionCode, ORef ref, final String tag, final String value) throws Exception
+	private void writeTagValue(final String actionCode, ORef ref, final String tag, final String value) throws Exception
 	{
-		writeTagValue(writer, actionCode, createSimpleRefString(ref), tag, value);
+		writeTagValue(actionCode, createSimpleRefString(ref), tag, value);
 	}
 
-	public void writeTagValue(final UnicodeWriter writer, final String actionCode, final String lineKey, final String tag, final String value) throws Exception, IOException
+	public void writeTagValue(final String actionCode, final String lineKey, final String tag, final String value) throws Exception, IOException
 	{
-		write(writer, actionCode);
-		write(writer, TAB);
+		write(actionCode);
+		write(TAB);
 		
-		write(writer, lineKey);
-		write(writer, TAB);
+		write(lineKey);
+		write(TAB);
 		
-		write(writer, tag);
-		write(writer, EQUALS);
-		write(writer, value);
+		write(tag);
+		write(EQUALS);
+		write(value);
 		
 		writer.writeln();
 	}
 	
-	private void write(final UnicodeWriter writer, final String data) throws Exception
+	private void write(final String data) throws Exception
 	{
-		writeRaw(writer, data);
+		writeRaw(data);
 	}
 	
-	public void writeRaw(final Writer writer,	String data) throws IOException
+	public void writeRaw(String data) throws IOException
 	{
 		writer.write(data);
 	}
 	
-	public void writelnRaw(final UnicodeWriter writer,	String data) throws IOException
+	public void writelnRaw(String data) throws IOException
 	{
 		writer.writeln(data);
 	}
