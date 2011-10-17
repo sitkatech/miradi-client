@@ -573,9 +573,6 @@ abstract public class BaseObject
 		for (int index = 0; index < fieldTags.size(); ++index)
 		{
 			String tag = fieldTags.get(index);
-			if (getNonClearedFieldTags().contains(tag))
-				continue;
-			
 			if (!getField(tag).isEmpty())
 				return false;
 		}

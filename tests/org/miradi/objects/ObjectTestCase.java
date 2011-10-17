@@ -89,11 +89,7 @@ public class ObjectTestCase extends TestCaseWithProject
 		for(int i = 0; i < fieldTags.size(); ++i)
 		{
 			verifyShortLabelField(object, fieldTags.get(i));
-			verifyFieldLifecycle(getProject(), object, fieldTags.get(i));
-		
-			if (!object.getNonClearedFieldTags().contains(fieldTags.get(i)))
-				assertFalse("object is empty?", object.isEmpty());
-		
+			verifyFieldLifecycle(getProject(), object, fieldTags.get(i));		
 			object.clear();
 			assertTrue("object is not empty?", object.isEmpty());
 		}
@@ -164,9 +160,6 @@ public class ObjectTestCase extends TestCaseWithProject
 		if(tag.equals(BaseObject.TAG_ID))
 			return;
 		
-		if (object.getNonClearedFieldTags().contains(tag))
-			return;
-				
 		if (object.isPseudoField(tag))
 			return;
 		
