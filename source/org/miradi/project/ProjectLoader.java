@@ -77,11 +77,11 @@ public class ProjectLoader
 		}
 	}
 	
-	private static void readProjectVersionLine(Project project, String line)
+	private void readProjectVersionLine(Project project, String line)
 	{
 	}
 	
-	private static void readProjectInfoLine(final Project project, final String line)
+	private void readProjectInfoLine(final Project project, final String line)
 	{
 		String[] splitLine = line.split(ProjectSaver.TAB);
 		String[] tagValue = splitLine[1].split(ProjectSaver.EQUALS);
@@ -91,11 +91,11 @@ public class ProjectLoader
 			project.getProjectInfo().setMetadataId(new BaseId(value));
 	}
 
-	private static void readLastModified(Project project, String line)
+	private void readLastModified(Project project, String line)
 	{
 	}
 	
-	private static void readCreateSimpleThreatRatingLine(Project project, String line)
+	private void readCreateSimpleThreatRatingLine(Project project, String line)
 	{
 		StringTokenizer tokenizer = new StringTokenizer(line);
 		/*String command =*/ tokenizer.nextToken();
@@ -107,7 +107,7 @@ public class ProjectLoader
 		bundleNameToBundleMap.put(threatIdTargetIdString, bundle);
 	}
 
-	private static void readUpdateSimpleThreatRatingLine(Project project, String line)
+	private void readUpdateSimpleThreatRatingLine(Project project, String line)
 	{
 		StringTokenizer tokenizer = new StringTokenizer(line);
 		/*String command =*/ tokenizer.nextToken();
@@ -116,7 +116,7 @@ public class ProjectLoader
 		//FIXME get and update bundle.  
 	}
 
-	private static void readCreateObjectLine(Project project, String line) throws Exception
+	private void readCreateObjectLine(Project project, String line) throws Exception
 	{
 		StringTokenizer tokenizer = new StringTokenizer(line);
 		/*String command =*/ tokenizer.nextToken();
@@ -127,7 +127,7 @@ public class ProjectLoader
 		project.createObject(objectType, objectId);
 	}
 
-	private static void readUpdateObjectline(Project project, String line) throws Exception
+	private void readUpdateObjectline(Project project, String line) throws Exception
 	{
 		StringTokenizer tokenizer = new StringTokenizer(line);
 		/*String command =*/ tokenizer.nextToken();
