@@ -90,6 +90,16 @@ public class ThreatRatingBundle
 		ratings.setValueId(criterionId, valueId);
 	}
 	
+	public void setRating(RatingValueSet ratingsToUse)
+	{
+		ratings = ratingsToUse;
+	}
+	
+	public void setDefaultValueId(BaseId defaultValueItToUse)
+	{
+		defaultValueId = defaultValueItToUse;
+	}
+	
 	public EnhancedJsonObject toJson() throws Exception
 	{
 		EnhancedJsonObject json = new EnhancedJsonObject();
