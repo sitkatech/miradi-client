@@ -685,7 +685,8 @@ abstract public class DiagramPaster
 				getProject().executeCommand(setWrappedId);
 			}
 	    	
-			
+			// TODO: Switch this to match the DF pattern of:
+			// create, load (everything), fixup (everything)
 			CommandSetObjectData setWrappedFromId = new CommandSetObjectData(newDiagramLink.getRef(), DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID, fromDiagramFactor.getId().toString());
 			getProject().executeCommand(setWrappedFromId);
 			
@@ -797,6 +798,8 @@ abstract public class DiagramPaster
 		if (cannotCreateNewFactorLinkFromAnotherProject(json))
 			return null;
 		
+		// TODO: Switch this to match the DF pattern of:
+		// create, load (everything), fixup (everything)
 		ORef newFromRef = getFixedupRef(getOldToNewObjectRefMap(), json, FactorLink.TAG_FROM_REF);
 		ORef newToRef = getFixedupRef(getOldToNewObjectRefMap(), json, FactorLink.TAG_TO_REF);	
 		
@@ -1004,6 +1007,9 @@ abstract public class DiagramPaster
 	
 	private static Vector<String> getTagsToSkipWhenLoadingJsonData(final int objectType)
 	{
+		// NOTE: DF has already been switched to the new pattern.
+		// When these other classes are switched to match it,
+		// this whole method will go away.
 		Vector<String> tags = new Vector<String>();
 		if (FactorLink.is(objectType))
 		{
