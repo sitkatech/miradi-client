@@ -80,13 +80,12 @@ public class TestProjectSaver extends TestCaseWithProject
 	{
 		String contents = saveProjectToString();
 
-		Project project2 = new ProjectForTesting(getName());
+		ProjectForTesting project2 = new ProjectForTesting(getName());
 		project2.clear();
 		UnicodeStringReader reader = new UnicodeStringReader(contents);
 		ProjectLoader.loadProject(reader, project2);
-		//FIME finish loader and test
-		
-		
+		String afterLoading = saveProjectToString(project2);
+		assertEquals(contents, afterLoading);
 	}
 
 	private void verifyIdenticalObjects(ProjectForTesting project, Project project2, ORefList refs)
@@ -106,8 +105,13 @@ public class TestProjectSaver extends TestCaseWithProject
 
 	private String saveProjectToString() throws Exception
 	{
+		return saveProjectToString(getProject());
+	}
+
+	private String saveProjectToString(final ProjectForTesting project) throws Exception
+	{
 		UnicodeStringWriter writer = UnicodeStringWriter.create();
-		ProjectSaver.saveProjectNew(getProject(), writer);
+		ProjectSaver.saveProjectNew(project, writer);
 		writer.close();
 		String result = writer.toString();
 		return result;

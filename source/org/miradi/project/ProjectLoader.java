@@ -27,6 +27,7 @@ import org.martus.util.UnicodeStringReader;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.project.threatrating.RatingValueSet;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 
 public class ProjectLoader
@@ -97,7 +98,7 @@ public class ProjectLoader
 	{
 	}
 	
-	private void readCreateSimpleThreatRatingLine(String line)
+	private void readCreateSimpleThreatRatingLine(String line) throws Exception
 	{
 		StringTokenizer tokenizer = new StringTokenizer(line);
 		/*String command =*/ tokenizer.nextToken();
@@ -107,15 +108,28 @@ public class ProjectLoader
 		FactorId targetId = new FactorId(Integer.parseInt(threatIdTargetIdParts[1]));
 		ThreatRatingBundle bundle = new ThreatRatingBundle(threatId, targetId, BaseId.INVALID);
 		bundleNameToBundleMap.put(threatIdTargetIdString, bundle);
+		getProject().getSimpleThreatRatingFramework().saveBundle(bundle);
+		getProject().getSimpleThreatRatingFramework().saveFramework();
 	}
 
-	private void readUpdateSimpleThreatRatingLine(String line)
+	private void readUpdateSimpleThreatRatingLine(String line) throws Exception
 	{
 		StringTokenizer tokenizer = new StringTokenizer(line);
 		/*String command =*/ tokenizer.nextToken();
 		String threatIdTargetIdString = tokenizer.nextToken();
-		bundleNameToBundleMap.get(threatIdTargetIdString);
-		//FIXME get and update bundle.  
+		ThreatRatingBundle bundleToUpdate = bundleNameToBundleMap.get(threatIdTargetIdString);
+		String tag = tokenizer.nextToken(" \t=");
+		String value = tokenizer.nextToken("=\n");
+		if (tag.equals(ThreatRatingBundle.TAG_VALUES))
+		{
+			RatingValueSet ratings = new RatingValueSet();
+			ratings.fillFrom(value);
+			bundleToUpdate.setRating(ratings);
+		}
+		if (tag.equals(ThreatRatingBundle.TAG_DEFAULT_VALUE_ID))
+		{
+			bundleToUpdate.setDefaultValueId(new BaseId(Integer.parseInt(value)));
+		}
 	}
 
 	private void readCreateObjectLine(String line) throws Exception
