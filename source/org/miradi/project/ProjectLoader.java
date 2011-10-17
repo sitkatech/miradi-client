@@ -37,17 +37,12 @@ public class ProjectLoader
 		project = projectToUse;
 	}
 	
-	public static void loadProjectNew(final UnicodeStringReader reader, Project project) throws Exception
+	public static void loadProject(final UnicodeStringReader reader, Project project) throws Exception
 	{
 		new ProjectLoader(reader, project).load();
 	}
 
-	private void load()
-	{
-		
-	}
-
-	public static void loadProject(final UnicodeStringReader reader, Project project) throws Exception
+	private void load() throws Exception
 	{
 		while(true)
 		{
