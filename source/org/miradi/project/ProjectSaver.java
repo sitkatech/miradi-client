@@ -63,7 +63,7 @@ public class ProjectSaver
 		writeSimpleThreatRating();
 		writeQuarantinedData();
 		writelnRaw(STOP_MARKER);
-		writer.flush();
+		getWriter().flush();
 	}
 	
 	private void writeQuarantinedData() throws Exception
@@ -141,7 +141,7 @@ public class ProjectSaver
 		write(actionCode);
 		write(TAB);
 		write(value);
-		writer.writeln();
+		getWriter().writeln();
 	}
 	
 	private void writeTagValue(final String actionCode, final String tag, final String value) throws Exception
@@ -151,9 +151,9 @@ public class ProjectSaver
 		write(tag);
 		write(EQUALS);
 		write(value);
-		writer.writeln();
+		getWriter().writeln();
 	}
-	
+
 	private void writeTagValue(final String actionCode, ORef ref, final String tag, final String value) throws Exception
 	{
 		writeTagValue(actionCode, createSimpleRefString(ref), tag, value);
@@ -171,7 +171,7 @@ public class ProjectSaver
 		write(EQUALS);
 		write(value);
 		
-		writer.writeln();
+		getWriter().writeln();
 	}
 	
 	private void write(final String data) throws Exception
@@ -181,12 +181,12 @@ public class ProjectSaver
 	
 	public void writeRaw(String data) throws IOException
 	{
-		writer.write(data);
+		getWriter().write(data);
 	}
 	
 	public void writelnRaw(String data) throws IOException
 	{
-		writer.writeln(data);
+		getWriter().writeln(data);
 	}
 	
 	private String createSimpleRefString(final ORef ref)
