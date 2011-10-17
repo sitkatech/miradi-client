@@ -433,13 +433,7 @@ abstract public class DiagramPaster
 
 	private ORef createDiagramFactor(ORef newWrappedRef) throws CommandFailedException
 	{
-		CommandCreateObject createDiagramFactor = new CommandCreateObject(DiagramFactor.getObjectType());
-		getProject().executeCommand(createDiagramFactor);
-		
-		final CommandSetObjectData setWrappedRefCommand = new CommandSetObjectData(createDiagramFactor.getObjectRef(), DiagramFactor.TAG_WRAPPED_REF, newWrappedRef.toString());
-		getProject().executeCommand(setWrappedRefCommand);
-		
-		return createDiagramFactor.getObjectRef();
+		return createObject(DiagramFactor.getObjectType()).getRef();
 	}
 
 	private void addToDiagramObject(DiagramObject diagramObjectToAddTo, ORef refToAppend, String tag) throws Exception
