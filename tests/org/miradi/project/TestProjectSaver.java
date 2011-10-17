@@ -75,6 +75,19 @@ public class TestProjectSaver extends TestCaseWithProject
 			verifyIdenticalObjects(getProject(), project2, newRefs);
 		}
 	}
+	
+	public void testSaveAndLoadSimpleThreatRating() throws Exception
+	{
+		String contents = saveProjectToString();
+
+		Project project2 = new ProjectForTesting(getName());
+		project2.clear();
+		UnicodeStringReader reader = new UnicodeStringReader(contents);
+		ProjectLoader.loadProject(reader, project2);
+		//FIME finish loader and test
+		
+		
+	}
 
 	private void verifyIdenticalObjects(ProjectForTesting project, Project project2, ORefList refs)
 	{
