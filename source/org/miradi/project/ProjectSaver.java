@@ -123,8 +123,6 @@ public class ProjectSaver
 			writeTagValue(writer, UPDATE_SIMPLE_THREAT_RATING, SIMPLE_THREAT_RATING_BUNDLE_NAME_TAG, bundleName);
 			writeTagValue(writer, UPDATE_SIMPLE_THREAT_RATING, ThreatRatingBundle.TAG_VALUES, json.getString(ThreatRatingBundle.TAG_VALUES));
 			writeTagValue(writer, UPDATE_SIMPLE_THREAT_RATING, ThreatRatingBundle.TAG_DEFAULT_VALUE_ID, json.getString(ThreatRatingBundle.TAG_DEFAULT_VALUE_ID));
-			writeTagValue(writer, UPDATE_SIMPLE_THREAT_RATING, ThreatRatingBundle.TAG_THREAT_ID, json.getString(ThreatRatingBundle.TAG_THREAT_ID));
-			writeTagValue(writer, UPDATE_SIMPLE_THREAT_RATING, ThreatRatingBundle.TAG_TARGET_ID, json.getString(ThreatRatingBundle.TAG_TARGET_ID));
 		}
 	}
 
