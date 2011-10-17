@@ -134,7 +134,7 @@ public class ProjectLoader
 
 	public String TAB_TOKEN()
 	{
-		return " \t=";
+		return TAB_TOKEN;
 	}
 
 	private void readCreateObjectLine(String line) throws Exception
@@ -176,4 +176,6 @@ public class ProjectLoader
 	private HashMap<String, ThreatRatingBundle> bundleNameToBundleMap;
 	private UnicodeStringReader reader;
 	private Project project;
+	
+	private static final String TAB_TOKEN = " \t=";
 }
