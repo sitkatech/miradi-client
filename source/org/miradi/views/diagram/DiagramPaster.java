@@ -609,7 +609,7 @@ abstract public class DiagramPaster
 		json.put(DiagramFactor.TAG_LOCATION, newLocationAsJsonString);
 		
 		ORef newDiagramFactorRef = createDiagramFactor(newWrappedRef);
-		DiagramFactor newDiagramFactor = (DiagramFactor) getProject().findObject(newDiagramFactorRef);
+		DiagramFactor newDiagramFactor = DiagramFactor.find(getProject(), newDiagramFactorRef);
 		loadNewObjectFromOldJson(newDiagramFactor, json);
 
 		BaseId oldDiagramFactorId = json.getId(DiagramFactor.TAG_ID);
