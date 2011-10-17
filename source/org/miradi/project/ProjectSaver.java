@@ -51,10 +51,10 @@ public class ProjectSaver
 	
 	public static void saveProjectNew(final Project projectToUse, final UnicodeStringWriter writerToUse) throws Exception
 	{
-		new ProjectSaver(projectToUse, writerToUse);
+		new ProjectSaver(projectToUse, writerToUse).saveProject();
 	}
 	
-	public static void saveProject(final Project project, UnicodeWriter writer) throws Exception
+	private void saveProject() throws Exception
 	{
 		writeTagValue(writer, UPDATE_PROJECT_VERSION_CODE, ProjectServer.TAG_VERSION, Integer.toString(ProjectServer.DATA_VERSION));
 		writeTagValue(writer, UPDATE_PROJECT_VERSION_CODE, ProjectServer.TAG_VERSION, Integer.toString(ProjectServer.DATA_VERSION));
@@ -68,13 +68,13 @@ public class ProjectSaver
 		writer.flush();
 	}
 	
-	private static void writeQuarantinedData(UnicodeWriter writer, Project project) throws Exception
+	private void writeQuarantinedData(UnicodeWriter writer, Project project) throws Exception
 	{
 		String quarantineFileContents = project.getQuarantineFileContents();
 		write(writer, quarantineFileContents);
 	}
 
-	private static void writeAllObjectTypes(UnicodeWriter writer, Project project) throws Exception
+	private void writeAllObjectTypes(UnicodeWriter writer, Project project) throws Exception
 	{
 		for (int type = ObjectType.FIRST_OBJECT_TYPE; type < ObjectType.OBJECT_TYPE_COUNT; ++type)
 		{
@@ -87,7 +87,7 @@ public class ProjectSaver
 		}
 	}
 
-	private static void writeObjects(UnicodeWriter writer, Project project, ORefList sortedObjectRefs) throws Exception
+	private void writeObjects(UnicodeWriter writer, Project project, ORefList sortedObjectRefs) throws Exception
 	{
 		for (int index = 0; index < sortedObjectRefs.size(); ++index)
 		{
@@ -96,7 +96,7 @@ public class ProjectSaver
 		}
 	}
 
-	private static void writeObject(UnicodeWriter writer, Project project, ORef ref) throws Exception
+	private void writeObject(UnicodeWriter writer, Project project, ORef ref) throws Exception
 	{
 		BaseObject baseObject = project.findObject(ref);
 		writeValue(writer, CREATE_OBJECT_CODE, createSimpleRefString(ref));
@@ -118,12 +118,12 @@ public class ProjectSaver
 		}
 	}
 
-	private static boolean needsEncoding(ObjectData dataField)
+	private boolean needsEncoding(ObjectData dataField)
 	{
 		return dataField.isUserText();
 	}
 
-	private static void writeSimpleThreatRating(UnicodeWriter writer, Project project) throws Exception
+	private void writeSimpleThreatRating(UnicodeWriter writer, Project project) throws Exception
 	{
 		Collection<ThreatRatingBundle> allBundles = project.getSimpleThreatRatingFramework().getAllBundles();
 		Vector<ThreatRatingBundle> sortedBundles = new Vector<ThreatRatingBundle>(allBundles);
@@ -138,7 +138,7 @@ public class ProjectSaver
 		}
 	}
 
-	private static void writeValue(final UnicodeWriter writer, final String actionCode, final String value) throws Exception
+	private void writeValue(final UnicodeWriter writer, final String actionCode, final String value) throws Exception
 	{
 		write(writer, actionCode);
 		write(writer, TAB);
@@ -146,7 +146,7 @@ public class ProjectSaver
 		writer.writeln();
 	}
 	
-	private static void writeTagValue(final UnicodeWriter writer, final String actionCode, final String tag, final String value) throws Exception
+	private void writeTagValue(final UnicodeWriter writer, final String actionCode, final String tag, final String value) throws Exception
 	{
 		write(writer, actionCode);
 		write(writer, TAB);
@@ -156,12 +156,12 @@ public class ProjectSaver
 		writer.writeln();
 	}
 	
-	private static void writeTagValue(final UnicodeWriter writer, final String actionCode, ORef ref, final String tag, final String value) throws Exception
+	private void writeTagValue(final UnicodeWriter writer, final String actionCode, ORef ref, final String tag, final String value) throws Exception
 	{
 		writeTagValue(writer, actionCode, createSimpleRefString(ref), tag, value);
 	}
 
-	public static void writeTagValue(final UnicodeWriter writer, final String actionCode, final String lineKey, final String tag, final String value) throws Exception, IOException
+	public void writeTagValue(final UnicodeWriter writer, final String actionCode, final String lineKey, final String tag, final String value) throws Exception, IOException
 	{
 		write(writer, actionCode);
 		write(writer, TAB);
@@ -176,22 +176,22 @@ public class ProjectSaver
 		writer.writeln();
 	}
 	
-	private static void write(final UnicodeWriter writer, final String data) throws Exception
+	private void write(final UnicodeWriter writer, final String data) throws Exception
 	{
 		writeRaw(writer, data);
 	}
 	
-	public static void writeRaw(final Writer writer,	String data) throws IOException
+	public void writeRaw(final Writer writer,	String data) throws IOException
 	{
 		writer.write(data);
 	}
 	
-	public static void writelnRaw(final UnicodeWriter writer,	String data) throws IOException
+	public void writelnRaw(final UnicodeWriter writer,	String data) throws IOException
 	{
 		writer.writeln(data);
 	}
 	
-	private static String createSimpleRefString(final ORef ref)
+	private String createSimpleRefString(final ORef ref)
 	{
 		return Integer.toString(ref.getObjectType()) +  ":" + ref.getObjectId().toString();
 	}

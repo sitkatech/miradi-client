@@ -51,7 +51,7 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 		{
 			long startedAt = System.currentTimeMillis();
 			UnicodeStringWriter stringWriter = UnicodeStringWriter.create();
-			ProjectSaver.saveProject(project, stringWriter);
+			ProjectSaver.saveProjectNew(project, stringWriter);
 			
 			// TODO: Need safe writing here
 			UnicodeWriter fileWriter = new UnicodeWriter(projectFile);
