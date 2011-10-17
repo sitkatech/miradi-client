@@ -119,7 +119,7 @@ public class ProjectLoader
 		String threatIdTargetIdString = tokenizer.nextToken();
 		ThreatRatingBundle bundleToUpdate = bundleNameToBundleMap.get(threatIdTargetIdString);
 		String tag = tokenizer.nextToken(TAB_TOKEN);
-		String value = tokenizer.nextToken(NEWLINE_TOKEN());
+		String value = tokenizer.nextToken(NEWLINE_TOKEN);
 		if (tag.equals(ThreatRatingBundle.TAG_VALUES))
 		{
 			RatingValueSet ratings = new RatingValueSet();
@@ -153,7 +153,7 @@ public class ProjectLoader
 		BaseId objectId = new BaseId(Integer.parseInt(refParts[1]));
 		ORef ref = new ORef(objectType, objectId);
 		String tag = tokenizer.nextToken(TAB_TOKEN);
-		String value = tokenizer.nextToken(NEWLINE_TOKEN());
+		String value = tokenizer.nextToken(NEWLINE_TOKEN);
 		value = value.replaceAll("<br/>", "\n");
 		value = value.replaceAll("&lt;", "<");
 		value = value.replaceAll("&gt;", ">");
@@ -163,11 +163,6 @@ public class ProjectLoader
 		getProject().setObjectData(ref, tag, value);
 	}
 
-	public String NEWLINE_TOKEN()
-	{
-		return "=\n";
-	}
-	
 	private Project getProject()
 	{
 		return project;
@@ -178,4 +173,5 @@ public class ProjectLoader
 	private Project project;
 	
 	private static final String TAB_TOKEN = " \t=";
+	private static final String NEWLINE_TOKEN = "=\n";
 }
