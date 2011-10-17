@@ -22,8 +22,8 @@ package org.miradi.project;
 
 import java.io.IOException;
 import java.io.Writer;
+import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.Vector;
 
 import org.martus.util.UnicodeWriter;
@@ -113,7 +113,7 @@ public class ProjectSaver
 
 	private static void writeSimpleThreatRating(UnicodeWriter writer, Project project) throws Exception
 	{
-		HashSet<ThreatRatingBundle> allBundles = SimpleThreatRatingFramework.loadSimpleThreatRatingBundles(project.getDatabase());
+		Collection<ThreatRatingBundle> allBundles = project.getSimpleThreatRatingFramework().getAllBundles();
 		Vector<ThreatRatingBundle> sortedBundles = new Vector<ThreatRatingBundle>(allBundles);
 		Collections.sort(sortedBundles, new ThreatRatingBundleSorter());
 		for(ThreatRatingBundle bundle : sortedBundles)
