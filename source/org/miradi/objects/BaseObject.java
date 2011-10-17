@@ -856,12 +856,6 @@ abstract public class BaseObject
 		presentationDataFields.add(tag);
 	}
 	
-	protected void addNoClearField(String tag, ObjectData data)
-	{
-		nonClearedFieldTags.add(tag);
-		getFields().put(tag, data);
-	}
-	
 	public boolean isPresentationDataField(String tag)
 	{
 		return presentationDataFields.contains(tag);
