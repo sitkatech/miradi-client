@@ -118,7 +118,7 @@ public class ProjectLoader
 		/*String command =*/ tokenizer.nextToken();
 		String threatIdTargetIdString = tokenizer.nextToken();
 		ThreatRatingBundle bundleToUpdate = bundleNameToBundleMap.get(threatIdTargetIdString);
-		String tag = tokenizer.nextToken(TAB_TOKEN());
+		String tag = tokenizer.nextToken(TAB_TOKEN);
 		String value = tokenizer.nextToken("=\n");
 		if (tag.equals(ThreatRatingBundle.TAG_VALUES))
 		{
@@ -130,11 +130,6 @@ public class ProjectLoader
 		{
 			bundleToUpdate.setDefaultValueId(new BaseId(Integer.parseInt(value)));
 		}
-	}
-
-	public String TAB_TOKEN()
-	{
-		return TAB_TOKEN;
 	}
 
 	private void readCreateObjectLine(String line) throws Exception
@@ -157,7 +152,7 @@ public class ProjectLoader
 		int objectType = Integer.parseInt(refParts[0]);
 		BaseId objectId = new BaseId(Integer.parseInt(refParts[1]));
 		ORef ref = new ORef(objectType, objectId);
-		String tag = tokenizer.nextToken(TAB_TOKEN());
+		String tag = tokenizer.nextToken(TAB_TOKEN);
 		String value = tokenizer.nextToken("=\n");
 		value = value.replaceAll("<br/>", "\n");
 		value = value.replaceAll("&lt;", "<");
