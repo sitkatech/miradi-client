@@ -56,9 +56,9 @@ public class ProjectSaver
 	{
 		writeTagValue(UPDATE_PROJECT_VERSION_CODE, ProjectServer.TAG_VERSION, Integer.toString(ProjectServer.DATA_VERSION));
 		writeTagValue(UPDATE_PROJECT_VERSION_CODE, ProjectServer.TAG_VERSION, Integer.toString(ProjectServer.DATA_VERSION));
-		writeTagValue(UPDATE_PROJECT_INFO_CODE, ProjectInfo.TAG_HIGHEST_OBJECT_ID, Integer.toString(project.getProjectInfo().getNormalIdAssigner().getHighestAssignedId()));
-		writeTagValue(UPDATE_PROJECT_INFO_CODE, ProjectInfo.TAG_PROJECT_METADATA_ID, project.getProjectInfo().getMetadataId().toString());
-		writeTagValue(UPDATE_LAST_MODIFIED_TIME_CODE, LAST_MODIFIED_TAG, ProjectServer.timestampToString(project.getLastModifiedTime()));
+		writeTagValue(UPDATE_PROJECT_INFO_CODE, ProjectInfo.TAG_HIGHEST_OBJECT_ID, Integer.toString(getProject().getProjectInfo().getNormalIdAssigner().getHighestAssignedId()));
+		writeTagValue(UPDATE_PROJECT_INFO_CODE, ProjectInfo.TAG_PROJECT_METADATA_ID, getProject().getProjectInfo().getMetadataId().toString());
+		writeTagValue(UPDATE_LAST_MODIFIED_TIME_CODE, LAST_MODIFIED_TAG, ProjectServer.timestampToString(getProject().getLastModifiedTime()));
 		writeAllObjectTypes();
 		writeSimpleThreatRating();
 		writeQuarantinedData();
@@ -68,7 +68,7 @@ public class ProjectSaver
 	
 	private void writeQuarantinedData() throws Exception
 	{
-		String quarantineFileContents = project.getQuarantineFileContents();
+		String quarantineFileContents = getProject().getQuarantineFileContents();
 		write(quarantineFileContents);
 	}
 
@@ -76,7 +76,7 @@ public class ProjectSaver
 	{
 		for (int type = ObjectType.FIRST_OBJECT_TYPE; type < ObjectType.OBJECT_TYPE_COUNT; ++type)
 		{
-			EAMObjectPool pool = project.getPool(type);
+			EAMObjectPool pool = getProject().getPool(type);
 			if (pool != null)
 			{
 				ORefList sortedObjectRefs = pool.getSortedRefList();
@@ -96,7 +96,7 @@ public class ProjectSaver
 
 	private void writeObject(ORef ref) throws Exception
 	{
-		BaseObject baseObject = project.findObject(ref);
+		BaseObject baseObject = getProject().findObject(ref);
 		writeValue(CREATE_OBJECT_CODE, createSimpleRefString(ref));
 		Vector<String> fieldTags = baseObject.getStoredFieldTags();
 		for(int field = 0; field < fieldTags.size(); ++field)
@@ -123,7 +123,7 @@ public class ProjectSaver
 
 	private void writeSimpleThreatRating() throws Exception
 	{
-		Collection<ThreatRatingBundle> allBundles = project.getSimpleThreatRatingFramework().getAllBundles();
+		Collection<ThreatRatingBundle> allBundles = getProject().getSimpleThreatRatingFramework().getAllBundles();
 		Vector<ThreatRatingBundle> sortedBundles = new Vector<ThreatRatingBundle>(allBundles);
 		Collections.sort(sortedBundles, new ThreatRatingBundleSorter());
 		for(ThreatRatingBundle bundle : sortedBundles)
