@@ -55,33 +55,33 @@ public class ProjectLoader
 			
 
 			if (line.startsWith(ProjectSaver.UPDATE_PROJECT_VERSION_CODE))
-				readProjectVersionLine(project, line);
+				readProjectVersionLine(line);
 
 			if (line.startsWith(ProjectSaver.UPDATE_PROJECT_INFO_CODE))
-				readProjectInfoLine(project, line);
+				readProjectInfoLine(line);
 			
 			if (line.startsWith(ProjectSaver.UPDATE_LAST_MODIFIED_TIME_CODE))
-				readLastModified(project, line);
+				readLastModified(line);
 			
 			if (line.startsWith(ProjectSaver.CREATE_OBJECT_CODE))
-				readCreateObjectLine(project, line);
+				readCreateObjectLine(line);
 			
 			if (line.startsWith(ProjectSaver.UPDATE_OBJECT_CODE))
-				readUpdateObjectline(project, line);
+				readUpdateObjectline(line);
 			
 			if (line.startsWith(ProjectSaver.CREATE_SIMPLE_THREAT_RATING_BUNDLE_CODE))
-				readCreateSimpleThreatRatingLine(project, line);
+				readCreateSimpleThreatRatingLine(line);
 			
 			if (line.startsWith(ProjectSaver.UPDATE_SIMPLE_THREAT_RATING_BUNDLE_CODE))
-				readUpdateSimpleThreatRatingLine(project, line);
+				readUpdateSimpleThreatRatingLine(line);
 		}
 	}
 	
-	private void readProjectVersionLine(Project project, String line)
+	private void readProjectVersionLine(String line)
 	{
 	}
 	
-	private void readProjectInfoLine(final Project project, final String line)
+	private void readProjectInfoLine(final String line)
 	{
 		String[] splitLine = line.split(ProjectSaver.TAB);
 		String[] tagValue = splitLine[1].split(ProjectSaver.EQUALS);
@@ -91,11 +91,11 @@ public class ProjectLoader
 			project.getProjectInfo().setMetadataId(new BaseId(value));
 	}
 
-	private void readLastModified(Project project, String line)
+	private void readLastModified(String line)
 	{
 	}
 	
-	private void readCreateSimpleThreatRatingLine(Project project, String line)
+	private void readCreateSimpleThreatRatingLine(String line)
 	{
 		StringTokenizer tokenizer = new StringTokenizer(line);
 		/*String command =*/ tokenizer.nextToken();
@@ -107,7 +107,7 @@ public class ProjectLoader
 		bundleNameToBundleMap.put(threatIdTargetIdString, bundle);
 	}
 
-	private void readUpdateSimpleThreatRatingLine(Project project, String line)
+	private void readUpdateSimpleThreatRatingLine(String line)
 	{
 		StringTokenizer tokenizer = new StringTokenizer(line);
 		/*String command =*/ tokenizer.nextToken();
@@ -116,7 +116,7 @@ public class ProjectLoader
 		//FIXME get and update bundle.  
 	}
 
-	private void readCreateObjectLine(Project project, String line) throws Exception
+	private void readCreateObjectLine(String line) throws Exception
 	{
 		StringTokenizer tokenizer = new StringTokenizer(line);
 		/*String command =*/ tokenizer.nextToken();
@@ -127,7 +127,7 @@ public class ProjectLoader
 		project.createObject(objectType, objectId);
 	}
 
-	private void readUpdateObjectline(Project project, String line) throws Exception
+	private void readUpdateObjectline(String line) throws Exception
 	{
 		StringTokenizer tokenizer = new StringTokenizer(line);
 		/*String command =*/ tokenizer.nextToken();
