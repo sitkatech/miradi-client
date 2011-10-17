@@ -26,6 +26,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Vector;
 
+import org.martus.util.UnicodeStringWriter;
 import org.martus.util.UnicodeWriter;
 import org.martus.util.xml.XmlUtilities;
 import org.miradi.database.ProjectServer;
@@ -42,6 +43,17 @@ import org.miradi.utils.EnhancedJsonObject;
 
 public class ProjectSaver
 {
+	private ProjectSaver(final Project projectToUse, final UnicodeStringWriter writerToUse) throws Exception
+	{
+		project = projectToUse;
+		writer = writerToUse;
+	}
+	
+	public static void saveProjectNew(final Project projectToUse, final UnicodeStringWriter writerToUse) throws Exception
+	{
+		new ProjectSaver(projectToUse, writerToUse);
+	}
+	
 	public static void saveProject(final Project project, UnicodeWriter writer) throws Exception
 	{
 		writeTagValue(writer, UPDATE_PROJECT_VERSION_CODE, ProjectServer.TAG_VERSION, Integer.toString(ProjectServer.DATA_VERSION));
@@ -183,6 +195,19 @@ public class ProjectSaver
 	{
 		return Integer.toString(ref.getObjectType()) +  ":" + ref.getObjectId().toString();
 	}
+	
+	private Project getProject()
+	{
+		return project;
+	}
+	
+	private UnicodeStringWriter getWriter()
+	{
+		return writer;
+	}
+	
+	private Project project;
+	private UnicodeStringWriter writer;
 
 	public static final String NEW_LINE = "\n";
 	public static final String HTML_NEW_LINE = "<br/>";
