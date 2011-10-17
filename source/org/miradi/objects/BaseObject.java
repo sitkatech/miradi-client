@@ -1018,11 +1018,6 @@ abstract public class BaseObject
 		return result.toString();
 	}
 
-	public Vector<String> getNonClearedFieldTags()
-	{
-		return nonClearedFieldTags;
-	}
-
 	public Factor[] getUpstreamDownstreamFactors()
 	{
 		Factor owner = getDirectOrIndirectOwningFactor();
