@@ -20,11 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.project;
 
+import java.util.HashMap;
 import java.util.StringTokenizer;
 
 import org.martus.util.UnicodeStringReader;
 import org.miradi.ids.BaseId;
+import org.miradi.ids.FactorId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.project.threatrating.ThreatRatingBundle;
 
 public class ProjectLoader
 {
@@ -83,12 +86,23 @@ public class ProjectLoader
 	
 	private static void readCreateSimpleThreatRatingLine(Project project, String line)
 	{
-		
+		StringTokenizer tokenizer = new StringTokenizer(line);
+		/*String command =*/ tokenizer.nextToken();
+		String threatIdTargetIdString = tokenizer.nextToken();
+		String[] threatIdTargetIdParts = threatIdTargetIdString.split("-");
+		FactorId threatId = new FactorId(Integer.parseInt(threatIdTargetIdParts[0]));
+		FactorId targetId = new FactorId(Integer.parseInt(threatIdTargetIdParts[1]));
+		ThreatRatingBundle bundle = new ThreatRatingBundle(threatId, targetId, BaseId.INVALID);
+		bundleNameToBundleMap.put(threatIdTargetIdString, bundle);
 	}
 
 	private static void readUpdateSimpleThreatRatingLine(Project project, String line)
 	{
-		
+		StringTokenizer tokenizer = new StringTokenizer(line);
+		/*String command =*/ tokenizer.nextToken();
+		String threatIdTargetIdString = tokenizer.nextToken();
+		bundleNameToBundleMap.get(threatIdTargetIdString);
+		//FIXME get and update bundle.  
 	}
 
 	private static void readCreateObjectLine(Project project, String line) throws Exception
@@ -122,4 +136,5 @@ public class ProjectLoader
 		project.setObjectData(ref, tag, value);
 	}
 
+	private static HashMap<String, ThreatRatingBundle> bundleNameToBundleMap;
 }
