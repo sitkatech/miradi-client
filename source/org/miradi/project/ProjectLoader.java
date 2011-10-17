@@ -55,8 +55,11 @@ public class ProjectLoader
 			if (line.startsWith(ProjectSaver.UPDATE_OBJECT_CODE))
 				readUpdateObjectline(project, line);
 			
-			if (line.startsWith(ProjectSaver.UPDATE_SIMPLE_THREAT_RATING))
-				readSimpleThreatRatingLine(project, line);
+			if (line.startsWith(ProjectSaver.CREATE_SIMPLE_THREAT_RATING_BUNDLE_CODE))
+				readCreateSimpleThreatRatingLine(project, line);
+			
+			if (line.startsWith(ProjectSaver.UPDATE_SIMPLE_THREAT_RATING_BUNDLE_CODE))
+				readUpdateSimpleThreatRatingLine(project, line);
 		}
 	}
 	
@@ -77,9 +80,15 @@ public class ProjectLoader
 	private static void readLastModified(Project project, String line)
 	{
 	}
-
-	private static void readSimpleThreatRatingLine(Project project, String line)
+	
+	private static void readCreateSimpleThreatRatingLine(Project project, String line)
 	{
+		
+	}
+
+	private static void readUpdateSimpleThreatRatingLine(Project project, String line)
+	{
+		
 	}
 
 	private static void readCreateObjectLine(Project project, String line) throws Exception

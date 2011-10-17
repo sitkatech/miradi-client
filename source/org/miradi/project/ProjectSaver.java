@@ -120,9 +120,10 @@ public class ProjectSaver
 		{
 			EnhancedJsonObject json = bundle.toJson();
 			String bundleName = SimpleThreatRatingFramework.getBundleKey(bundle.getThreatId(), bundle.getTargetId());
-			writeTagValue(writer, UPDATE_SIMPLE_THREAT_RATING, SIMPLE_THREAT_RATING_BUNDLE_NAME_TAG, bundleName);
-			writeTagValue(writer, UPDATE_SIMPLE_THREAT_RATING, ThreatRatingBundle.TAG_VALUES, json.getString(ThreatRatingBundle.TAG_VALUES));
-			writeTagValue(writer, UPDATE_SIMPLE_THREAT_RATING, ThreatRatingBundle.TAG_DEFAULT_VALUE_ID, json.getString(ThreatRatingBundle.TAG_DEFAULT_VALUE_ID));
+			writeTagValue(writer, UPDATE_SIMPLE_THREAT_RATING_BUNDLE_CODE, SIMPLE_THREAT_RATING_BUNDLE_NAME_TAG, bundleName);
+			writeTagValue(writer, CREATE_SIMPLE_THREAT_RATING_BUNDLE_CODE, SIMPLE_THREAT_RATING_BUNDLE_NAME_TAG, bundleName);
+			writeTagValue(writer, UPDATE_SIMPLE_THREAT_RATING_BUNDLE_CODE, ThreatRatingBundle.TAG_VALUES, json.getString(ThreatRatingBundle.TAG_VALUES));
+			writeTagValue(writer, UPDATE_SIMPLE_THREAT_RATING_BUNDLE_CODE, ThreatRatingBundle.TAG_DEFAULT_VALUE_ID, json.getString(ThreatRatingBundle.TAG_DEFAULT_VALUE_ID));
 		}
 	}
 
@@ -187,10 +188,11 @@ public class ProjectSaver
 	public static final String UPDATE_PROJECT_INFO_CODE = "UP";
 	public static final String UPDATE_PROJECT_VERSION_CODE = "UV";
 	public static final String UPDATE_LAST_MODIFIED_TIME_CODE = "UL";
-	public static final String UPDATE_SIMPLE_THREAT_RATING = "UT";
+	public static final String CREATE_SIMPLE_THREAT_RATING_BUNDLE_CODE = "CT";
+	public static final String UPDATE_SIMPLE_THREAT_RATING_BUNDLE_CODE = "UT";
 	public static final String CREATE_OBJECT_CODE = "CO";
 	public static final String UPDATE_OBJECT_CODE = "UO";
 	
-	public static final String SIMPLE_THREAT_RATING_BUNDLE_NAME_TAG = "BundleName";
+	public static final String SIMPLE_THREAT_RATING_BUNDLE_NAME_TAG = "ThreatTargetBundle";
 	public static final String LAST_MODIFIED_TAG = "LastModified";
 }
