@@ -785,7 +785,6 @@ abstract public class BaseObject
 	{
 		fields = new HashMap<String, ObjectData>();
 		presentationDataFields = new HashSet<String>();
-		nonClearedFieldTags = new Vector<String>();
 
 		addField(new UserTextData(TAG_LABEL));
 		addField(new IdListData(TAG_RESOURCE_ASSIGNMENT_IDS, ResourceAssignment.getObjectType()));
@@ -888,9 +887,6 @@ abstract public class BaseObject
 		Set<String> tags = getTags();
 		for (String tag : tags)
 		{
-			if (nonClearedFieldTags.contains(tag))
-				continue;
-			
 			if(isPseudoField(tag))
 				continue;
 		
@@ -972,8 +968,6 @@ abstract public class BaseObject
 		Set<String> tags = getTags();
 		for (String tag : tags)
 		{
-			if (nonClearedFieldTags.contains(tag))
-				continue;
 			if(isPseudoField(tag))
 				continue;
 			if(isIdListTag(tag))
@@ -1553,5 +1547,4 @@ abstract public class BaseObject
 	protected ObjectManager objectManager;
 	private HashMap<String, ObjectData> fields;
 	private HashSet<String> presentationDataFields; 
-	private Vector<String> nonClearedFieldTags;
 }
