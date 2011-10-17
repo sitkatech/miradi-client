@@ -1005,11 +1005,7 @@ abstract public class DiagramPaster
 	private static Vector<String> getTagsToSkipWhenLoadingJsonData(final int objectType)
 	{
 		Vector<String> tags = new Vector<String>();
-		if (DiagramFactor.is(objectType))
-		{
-			tags.add(DiagramFactor.TAG_WRAPPED_REF);
-		}
-		else if (FactorLink.is(objectType))
+		if (FactorLink.is(objectType))
 		{
 			tags.add(FactorLink.TAG_FROM_REF);
 			tags.add(FactorLink.TAG_TO_REF);
