@@ -431,7 +431,7 @@ abstract public class DiagramPaster
 	}
 
 
-	private ORef createDiagramFactor(ORef newWrappedRef) throws CommandFailedException
+	private ORef createDiagramFactor() throws CommandFailedException
 	{
 		return createObject(DiagramFactor.getObjectType()).getRef();
 	}
@@ -608,7 +608,7 @@ abstract public class DiagramPaster
 		String newLocationAsJsonString = offsetLocation(json, diagramFactorId);
 		json.put(DiagramFactor.TAG_LOCATION, newLocationAsJsonString);
 		
-		ORef newDiagramFactorRef = createDiagramFactor(newWrappedRef);
+		ORef newDiagramFactorRef = createDiagramFactor();
 		DiagramFactor newDiagramFactor = DiagramFactor.find(getProject(), newDiagramFactorRef);
 		loadNewObjectFromOldJson(newDiagramFactor, json);
 
