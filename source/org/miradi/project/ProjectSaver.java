@@ -47,7 +47,7 @@ public class ProjectSaver
 		writer = writerToUse;
 	}
 	
-	public static void saveProjectNew(final Project projectToUse, final UnicodeStringWriter writerToUse) throws Exception
+	public static void saveProject(final Project projectToUse, final UnicodeStringWriter writerToUse) throws Exception
 	{
 		new ProjectSaver(projectToUse, writerToUse).saveProject();
 	}
