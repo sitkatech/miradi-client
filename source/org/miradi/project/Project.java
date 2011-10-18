@@ -162,7 +162,7 @@ public class Project
 		clear();
 	}
 
-	protected void clear() throws Exception
+	public void clear() throws Exception
 	{
 		projectInfo = new ProjectInfo();
 		objectManager = new ObjectManager(this);
@@ -608,7 +608,8 @@ public class Project
 	public BaseId createObjectAndReturnId(int objectType, BaseId objectId) throws Exception
 	{
 		BaseId createdId = objectManager.createObject(objectType, objectId);
-		saveProjectInfo();
+		if(objectManager.writeToOldProjectDirectories)
+			saveProjectInfo();
 		return createdId;
 	}
 	
@@ -831,7 +832,8 @@ public class Project
 		setObjectData(getMetadata().getRef(), ProjectMetadata.TAG_DIAGRAM_FONT_FAMILY, FontFamiliyQuestion.ARIAL_CODE);
 		setObjectData(getMetadata().getRef(), ProjectMetadata.TAG_DIAGRAM_FONT_SIZE, FontSizeQuestion.getDefaultSizeCode());
 
-		getDatabase().writeProjectInfo(projectInfo);
+		if(objectManager.writeToOldProjectDirectories)
+			getDatabase().writeProjectInfo(projectInfo);
 	}
 	
 	private void createDefaultProjectDataObject(int objectType) throws Exception
@@ -880,16 +882,19 @@ public class Project
 			throw new OldVersionException();
 
 		getDatabase().openProject(projectName);
-		try
+		if(objectManager.writeToOldProjectDirectories)
 		{
-			loadProjectInfo();
-			objectManager.loadFromDatabase(progressMeter);
-			EAM.logVerbose("Highest BaseObject Id: " + getNormalIdAssigner().getHighestAssignedId());
-		}
-		catch(Exception e)
-		{
-			close();
-			throw e;
+			try
+			{
+				loadProjectInfo();
+				objectManager.loadFromDatabase(progressMeter);
+				EAM.logVerbose("Highest BaseObject Id: " + getNormalIdAssigner().getHighestAssignedId());
+			}
+			catch(Exception e)
+			{
+				close();
+				throw e;
+			}
 		}
 	}
 	
