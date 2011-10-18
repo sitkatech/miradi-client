@@ -55,16 +55,36 @@ public class ProjectSaver
 	
 	private void saveProject() throws Exception
 	{
-		writeTagValue(UPDATE_PROJECT_VERSION_CODE, ProjectServer.TAG_VERSION, Integer.toString(ProjectServer.DATA_VERSION));
-		writeTagValue(UPDATE_PROJECT_VERSION_CODE, ProjectServer.TAG_VERSION, Integer.toString(ProjectServer.DATA_VERSION));
-		writeTagValue(UPDATE_PROJECT_INFO_CODE, ProjectInfo.TAG_HIGHEST_OBJECT_ID, Integer.toString(getProject().getProjectInfo().getNormalIdAssigner().getHighestAssignedId()));
-		writeTagValue(UPDATE_PROJECT_INFO_CODE, ProjectInfo.TAG_PROJECT_METADATA_ID, getProject().getProjectInfo().getMetadataId().toString());
-		writeTagValue(UPDATE_LAST_MODIFIED_TIME_CODE, LAST_MODIFIED_TAG, ProjectServer.timestampToString(getProject().getLastModifiedTime()));
+		writeProjectVersion();
+		writeSchemaVersion();
+		writeProjectInfo();
+		writeLastModified();
 		writeAllObjectTypes();
 		writeSimpleThreatRating();
 		writeQuarantinedData();
 		writelnRaw(STOP_MARKER);
 		getWriter().flush();
+	}
+
+	private void writeLastModified() throws Exception
+	{
+		writeTagValue(UPDATE_LAST_MODIFIED_TIME_CODE, LAST_MODIFIED_TAG, ProjectServer.timestampToString(getProject().getLastModifiedTime()));
+	}
+
+	private void writeProjectInfo() throws Exception
+	{
+		writeTagValue(UPDATE_PROJECT_INFO_CODE, ProjectInfo.TAG_HIGHEST_OBJECT_ID, Integer.toString(getProject().getProjectInfo().getNormalIdAssigner().getHighestAssignedId()));
+		writeTagValue(UPDATE_PROJECT_INFO_CODE, ProjectInfo.TAG_PROJECT_METADATA_ID, getProject().getProjectInfo().getMetadataId().toString());
+	}
+
+	private void writeSchemaVersion() throws Exception
+	{
+		writeTagValue(UPDATE_PROJECT_VERSION_CODE, ProjectServer.TAG_VERSION, Integer.toString(ProjectServer.DATA_VERSION));
+	}
+
+	private void writeProjectVersion() throws Exception
+	{
+		writeTagValue(UPDATE_PROJECT_VERSION_CODE, ProjectServer.TAG_VERSION, Integer.toString(ProjectServer.DATA_VERSION));
 	}
 	
 	private void writeQuarantinedData() throws Exception
