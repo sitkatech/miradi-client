@@ -100,6 +100,8 @@ public class ProjectSaver
 	private void writeAllQuarantinedData() throws Exception
 	{
 		String quarantineFileContents = getProject().getQuarantineFileContents();
+		quarantineFileContents = XmlUtilities.getXmlEncoded(quarantineFileContents);
+		quarantineFileContents = quarantineFileContents.replaceAll("\\n", "<br/>");
 		write(quarantineFileContents);
 	}
 
