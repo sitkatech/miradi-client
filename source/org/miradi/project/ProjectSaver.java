@@ -61,7 +61,7 @@ public class ProjectSaver
 		writeLastModified();
 		writeAllObjectTypes();
 		writeAllSimpleThreatRatings();
-		writeQuarantinedData();
+		writeAllQuarantinedData();
 		writeStopMarker();
 		flushWriter();
 	}
@@ -97,7 +97,7 @@ public class ProjectSaver
 		writeTagValue(UPDATE_PROJECT_VERSION_CODE, ProjectServer.TAG_VERSION, Integer.toString(ProjectServer.DATA_VERSION));
 	}
 	
-	private void writeQuarantinedData() throws Exception
+	private void writeAllQuarantinedData() throws Exception
 	{
 		String quarantineFileContents = getProject().getQuarantineFileContents();
 		write(quarantineFileContents);
