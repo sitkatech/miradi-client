@@ -36,9 +36,11 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
+import org.miradi.objectpools.EAMObjectPool;
 import org.miradi.objectpools.RatingCriterionPool;
 import org.miradi.objectpools.ValueOptionPool;
 import org.miradi.objects.Cause;
@@ -66,8 +68,11 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 	public void clear()
 	{
 		bundles = new HashMap<String, ThreatRatingBundle>();
-		criteria = new RatingCriterion[0];
-		ratingValueOptions = new ValueOption[0];
+		if(getProject().getObjectManager().writeToOldProjectDirectories)
+		{
+			criteria = new RatingCriterion[0];
+			ratingValueOptions = new ValueOption[0];
+		}
 	}
 	
 	public SimpleThreatFormula getSimpleThreatFormula()
@@ -84,50 +89,53 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 	public IdList getValueOptionIds()
 	{
 		IdList ids = new IdList(ValueOption.getObjectType());
-		for(int i = 0; i < ratingValueOptions.length; ++i)
-			ids.add(ratingValueOptions[i].getId());
+		for(int i = 0; i < getValueOptions().length; ++i)
+			ids.add(getValueOptions()[i].getId());
 		return ids;
 	}
 	
 	public IdList getCriterionIds()
 	{
 		IdList ids = new IdList(RatingCriterion.getObjectType());
-		for(int i = 0; i < criteria.length; ++i)
-			ids.add(criteria[i].getId());
+		for(int i = 0; i < getCriteria().length; ++i)
+			ids.add(getCriteria()[i].getId());
 		return ids;
 	}
 	
 	public void createMissingBuiltInObjects() throws Exception
 	{
-		if(criteria.length == 0)
+		if(getProject().getObjectManager().writeToOldProjectDirectories)
 		{
-			IdList ids = new IdList(RatingCriterion.getObjectType());
-			ids.add(createDefaultCriterion("Scope")); 
-			ids.add(createDefaultCriterion("Severity"));
-			ids.add(createDefaultCriterion("Irreversibility"));
+			if(getCriteria().length == 0)
+			{
+				IdList ids = new IdList(RatingCriterion.getObjectType());
+				ids.add(createDefaultCriterion("Scope")); 
+				ids.add(createDefaultCriterion("Severity"));
+				ids.add(createDefaultCriterion("Irreversibility"));
+				
+				criteria = new RatingCriterion[ids.size()];
+				for(int i = 0; i < criteria.length; ++i)
+					criteria[i] = (RatingCriterion)getProject().findObject(ObjectType.RATING_CRITERION, ids.get(i));
+				
+				saveFramework();
+			}
 			
-			criteria = new RatingCriterion[ids.size()];
-			for(int i = 0; i < criteria.length; ++i)
-				criteria[i] = (RatingCriterion)getProject().findObject(ObjectType.RATING_CRITERION, ids.get(i));
-			
-			saveFramework();
-		}
-		
-		if(ratingValueOptions.length == 0)
-		{
-			IdList ids = new IdList(ValueOption.getObjectType());
-			ids.add(createDefaultValueOption("None", NONE_VALUE, Color.WHITE));
-			ids.add(createDefaultValueOption("Very High", VERY_HIGH_RATING_VALUE, Color.RED));
-			ids.add(createDefaultValueOption("High", HIGH_RATING_VALUE, Color.ORANGE));
-			ids.add(createDefaultValueOption("Medium", MEDIUM_RATING_VALUE, Color.YELLOW));
-			ids.add(createDefaultValueOption("Low", LOW_RATING_VALUE, Color.GREEN));
-			
-			ratingValueOptions = new ValueOption[ids.size()];
-			for(int i = 0; i < ratingValueOptions.length; ++i)
-				ratingValueOptions[i] = (ValueOption)getProject().findObject(ObjectType.VALUE_OPTION, ids.get(i));
-
-			Arrays.sort(ratingValueOptions, new OptionSorter());
-			saveFramework();
+			if(ratingValueOptions.length == 0)
+			{
+				IdList ids = new IdList(ValueOption.getObjectType());
+				ids.add(createDefaultValueOption("None", NONE_VALUE, Color.WHITE));
+				ids.add(createDefaultValueOption("Very High", VERY_HIGH_RATING_VALUE, Color.RED));
+				ids.add(createDefaultValueOption("High", HIGH_RATING_VALUE, Color.ORANGE));
+				ids.add(createDefaultValueOption("Medium", MEDIUM_RATING_VALUE, Color.YELLOW));
+				ids.add(createDefaultValueOption("Low", LOW_RATING_VALUE, Color.GREEN));
+				
+				ratingValueOptions = new ValueOption[ids.size()];
+				for(int i = 0; i < ratingValueOptions.length; ++i)
+					ratingValueOptions[i] = (ValueOption)getProject().findObject(ObjectType.VALUE_OPTION, ids.get(i));
+	
+				Arrays.sort(ratingValueOptions, new OptionSorter());
+				saveFramework();
+			}
 		}
 	}
 
@@ -161,7 +169,13 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 	
 	public ValueOption[] getValueOptions()
 	{
-		return ratingValueOptions;
+		EAMObjectPool pool = getProject().getPool(ValueOption.getObjectType());
+		ORefList refs = pool.getORefList();
+		ValueOption[] valueOptions = new ValueOption[refs.size()];
+		for(int i = 0; i < refs.size(); ++i)
+			valueOptions[i] = (ValueOption)ValueOption.find(getProject(), refs.get(i));
+		return valueOptions;
+//		return ratingValueOptions;
 	}
 	
 	class OptionSorter implements Comparator<ValueOption>
@@ -189,7 +203,13 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 	
 	public RatingCriterion[] getCriteria()
 	{
+		EAMObjectPool pool = getProject().getPool(RatingCriterion.getObjectType());
+		ORefList refs = pool.getORefList();
+		RatingCriterion[] criteria = new RatingCriterion[refs.size()];
+		for(int i = 0; i < refs.size(); ++i)
+			criteria[i] = (RatingCriterion)RatingCriterion.find(getProject(), refs.get(i));
 		return criteria;
+//		return criteria;
 	}
 	
 	public RatingCriterion getCriterion(BaseId id)
@@ -434,10 +454,17 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 
 	public RatingCriterion findCriterionByLabel(String label)
 	{
-		for(int i = 0; i < criteria.length; ++i)
+		RatingCriterion[] candidates = getCriteria();
+		return findCriterionByLabel(candidates, label);
+	}
+
+	private RatingCriterion findCriterionByLabel(RatingCriterion[] candidates, String label)
+	{
+		for(int i = 0; i < candidates.length; ++i)
 		{
-			if(criteria[i].getLabel().equals(label))
-				return criteria[i];
+			RatingCriterion criterion = candidates[i];
+			if(criterion.getLabel().equals(label))
+				return criterion;
 		}
 		
 		return null;
@@ -445,10 +472,11 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 	
 	public ValueOption findValueOptionByNumericValue(int value)
 	{
-		for(int i = 0; i < ratingValueOptions.length; ++i)
+		for(int i = 0; i < getValueOptions().length; ++i)
 		{
-			if(ratingValueOptions[i].getNumericValue() == value)
-				return ratingValueOptions[i];
+			ValueOption ratingValueOption = getValueOptions()[i];
+			if(ratingValueOption.getNumericValue() == value)
+				return ratingValueOption;
 		}
 		
 		return null;
@@ -469,7 +497,8 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 		BaseId defaultValueId = getDefaultValueId();
 		ThreatRatingBundle newBundle = new ThreatRatingBundle(threatId, targetId, defaultValueId);
 		saveBundle(newBundle);
-		saveFramework();
+		if(getProject().getObjectManager().writeToOldProjectDirectories)
+			saveFramework();
 		return newBundle;
 	}
 
@@ -485,7 +514,8 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 
 	public void saveBundle(ThreatRatingBundle newBundle) throws Exception
 	{
-		getDatabase().writeThreatRatingBundle(newBundle);
+		if(getProject().getObjectManager().writeToOldProjectDirectories)
+			getDatabase().writeThreatRatingBundle(newBundle);
 		memorize(newBundle);
 	}
 
@@ -538,20 +568,23 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 	public void load() throws Exception
 	{
 		clear();
-		ProjectServer db = getDatabase();
-		if(db.readRawThreatRatingFramework() != null)
-		{
-			HashSet<ThreatRatingBundle> loadedBundles = loadSimpleThreatRatingBundles(db);
-			for(ThreatRatingBundle bundle : loadedBundles)
-				memorize(bundle);
-
-			ratingValueOptions = findValueOptions(new IdList(ValueOption.getObjectType(), db.readRawThreatRatingFramework().optJson(TAG_VALUE_OPTION_IDS)));
-			Arrays.sort(ratingValueOptions, new OptionSorter());
-			criteria = findCriteria(new IdList(RatingCriterion.getObjectType(), db.readRawThreatRatingFramework().optJson(TAG_CRITERION_IDS)));
-			sortCriteria();
-		}
 		
-		createMissingBuiltInObjects();
+		if(getProject().getObjectManager().writeToOldProjectDirectories)
+		{
+			ProjectServer db = getDatabase();
+			if(db.readRawThreatRatingFramework() != null)
+			{
+				HashSet<ThreatRatingBundle> loadedBundles = loadSimpleThreatRatingBundles(db);
+				for(ThreatRatingBundle bundle : loadedBundles)
+					memorize(bundle);
+	
+				ratingValueOptions = findValueOptions(new IdList(ValueOption.getObjectType(), db.readRawThreatRatingFramework().optJson(TAG_VALUE_OPTION_IDS)));
+				Arrays.sort(ratingValueOptions, new OptionSorter());
+				criteria = findCriteria(new IdList(RatingCriterion.getObjectType(), db.readRawThreatRatingFramework().optJson(TAG_CRITERION_IDS)));
+			}
+			
+			createMissingBuiltInObjects();
+		}
 	}
 
 	public static HashSet<ThreatRatingBundle> loadSimpleThreatRatingBundles(ProjectServer db) throws Exception
@@ -583,15 +616,18 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 		return valueOptions;
 	}
 	
-	private void sortCriteria()
-	{
-		RatingCriterion[] sorted = new RatingCriterion[criteria.length];
-		sorted[0] = findCriterionByLabel(CRITERION_SCOPE);
-		sorted[1] = findCriterionByLabel(CRITERION_SEVERITY);
-		sorted[2] = findCriterionByLabel(CRITERION_IRREVERSIBILITY);
-		criteria = sorted;
-	}
-	
+//	private RatingCriterion[] sortCriteria(RatingCriterion[] candidates)
+//	{
+//		if(candidates.length == 0)
+//			return candidates;
+//		
+//		RatingCriterion[] sorted = new RatingCriterion[candidates.length];
+//		sorted[0] = findCriterionByLabel(candidates, CRITERION_SCOPE);
+//		sorted[1] = findCriterionByLabel(candidates, CRITERION_SEVERITY);
+//		sorted[2] = findCriterionByLabel(candidates, CRITERION_IRREVERSIBILITY);
+//		return sorted;
+//	}
+//	
 	private RatingCriterion[] findCriteria(IdList ids)
 	{
 		if(ids.contains(BaseId.INVALID))
