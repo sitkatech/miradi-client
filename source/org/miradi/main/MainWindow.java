@@ -167,6 +167,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		
 		if(commandLineArguments.contains("--newformat"))
 		{
+			EAM.logDebug("***USING NEW FILE FORMAT***");
 			ObjectManager.writeToOldProjectDirectories = false;
 		}
 		
@@ -551,12 +552,15 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 			if(ObjectManager.writeToOldProjectDirectories)
 				logExceptionsInsideProjectDir();
 
-			File newProjectFile = new File(getDatabase().getCurrentLocalProjectDirectory().getAbsolutePath() + ".Miradi");
-			String contents = UnicodeReader.getFileContents(newProjectFile);
 			
 			repairProject();
-			if(    !    ObjectManager.writeToOldProjectDirectories)
+
+			File newProjectFile = new File(getDatabase().getCurrentLocalProjectDirectory().getAbsolutePath() + ".Miradi");
+			if(    !    ObjectManager.writeToOldProjectDirectories && newProjectFile.exists())
+			{
+				String contents = UnicodeReader.getFileContents(newProjectFile);
 				ProjectLoader.loadProject(new UnicodeStringReader(contents), project);
+			}
 			
 			projectSaver.startSaving(newProjectFile, project);
 			refreshWizard();
