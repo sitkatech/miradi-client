@@ -60,7 +60,7 @@ public class ProjectSaver
 		writeProjectInfo();
 		writeLastModified();
 		writeAllObjectTypes();
-		writeSimpleThreatRating();
+		writeAllSimpleThreatRatings();
 		writeQuarantinedData();
 		writeStopMarker();
 		flushWriter();
@@ -152,7 +152,7 @@ public class ProjectSaver
 		return dataField.isUserText();
 	}
 
-	private void writeSimpleThreatRating() throws Exception
+	private void writeAllSimpleThreatRatings() throws Exception
 	{
 		Collection<ThreatRatingBundle> allBundles = getProject().getSimpleThreatRatingFramework().getAllBundles();
 		Vector<ThreatRatingBundle> sortedBundles = new Vector<ThreatRatingBundle>(allBundles);
