@@ -48,6 +48,7 @@ import org.martus.swing.HyperlinkHandler;
 import org.martus.util.DirectoryLock;
 import org.martus.util.MultiCalendar;
 import org.martus.util.UnicodeReader;
+import org.martus.util.UnicodeStringReader;
 import org.miradi.actions.Actions;
 import org.miradi.database.ProjectServer;
 import org.miradi.diagram.DiagramComponent;
@@ -72,7 +73,9 @@ import org.miradi.objects.Assignment;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.TableSettings;
+import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.project.ProjectLoader;
 import org.miradi.project.ProjectRepairer;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.FontFamiliyQuestion;
@@ -160,6 +163,11 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		else
 		{
 			setLocalDataLocation(EAM.getHomeDirectory());
+		}
+		
+		if(commandLineArguments.contains("--newformat"))
+		{
+			ObjectManager.writeToOldProjectDirectories = false;
 		}
 		
 		ensureFontSizeIsSet();
@@ -540,10 +548,16 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		try
 		{
 			createOrOpenProjectInBackground(projectName);
-			logExceptionsInsideProjectDir();
+			if(ObjectManager.writeToOldProjectDirectories)
+				logExceptionsInsideProjectDir();
+
+			File newProjectFile = new File(getDatabase().getCurrentLocalProjectDirectory().getAbsolutePath() + ".Miradi");
+			String contents = UnicodeReader.getFileContents(newProjectFile);
 			
 			repairProject();
-			File newProjectFile = new File(getDatabase().getCurrentLocalProjectDirectory().getAbsolutePath() + ".Miradi");
+			if(    !    ObjectManager.writeToOldProjectDirectories)
+				ProjectLoader.loadProject(new UnicodeStringReader(contents), project);
+			
 			projectSaver.startSaving(newProjectFile, project);
 			refreshWizard();
 
@@ -631,6 +645,8 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		protected void doRealWork() throws Exception
 		{
 			project.createOrOpenWithDefaultObjectsAndDiagramHelp(projectName, getProgressIndicator());
+			if(   !    ObjectManager.writeToOldProjectDirectories)
+				project.clear();
 			getProgressIndicator().finished();
 		}
 		
