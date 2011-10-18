@@ -109,7 +109,6 @@ public class ProjectLoader
 		ThreatRatingBundle bundle = new ThreatRatingBundle(threatId, targetId, BaseId.INVALID);
 		bundleNameToBundleMap.put(threatIdTargetIdString, bundle);
 		getProject().getSimpleThreatRatingFramework().saveBundle(bundle);
-		getProject().getSimpleThreatRatingFramework().saveFramework();
 	}
 
 	private void readUpdateSimpleThreatRatingLine(String line) throws Exception
