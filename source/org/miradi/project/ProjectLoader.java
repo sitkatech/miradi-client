@@ -59,33 +59,33 @@ public class ProjectLoader
 			
 
 			if (line.startsWith(ProjectSaver.UPDATE_PROJECT_VERSION_CODE))
-				readProjectVersionLine(line);
+				loadProjectVersionLine(line);
 
 			if (line.startsWith(ProjectSaver.UPDATE_PROJECT_INFO_CODE))
-				readProjectInfoLine(line);
+				loadProjectInfoLine(line);
 			
 			if (line.startsWith(ProjectSaver.UPDATE_LAST_MODIFIED_TIME_CODE))
-				readLastModified(line);
+				loadLastModified(line);
 			
 			if (line.startsWith(ProjectSaver.CREATE_OBJECT_CODE))
-				readCreateObjectLine(line);
+				loadCreateObjectLine(line);
 			
 			if (line.startsWith(ProjectSaver.UPDATE_OBJECT_CODE))
-				readUpdateObjectline(line);
+				loadUpdateObjectline(line);
 			
 			if (line.startsWith(ProjectSaver.CREATE_SIMPLE_THREAT_RATING_BUNDLE_CODE))
-				readCreateSimpleThreatRatingLine(line);
+				loadCreateSimpleThreatRatingLine(line);
 			
 			if (line.startsWith(ProjectSaver.UPDATE_SIMPLE_THREAT_RATING_BUNDLE_CODE))
-				readUpdateSimpleThreatRatingLine(line);
+				loadUpdateSimpleThreatRatingLine(line);
 		}
 	}
 	
-	private void readProjectVersionLine(String line)
+	private void loadProjectVersionLine(String line)
 	{
 	}
 	
-	private void readProjectInfoLine(final String line)
+	private void loadProjectInfoLine(final String line)
 	{
 		String[] splitLine = line.split(ProjectSaver.TAB);
 		String[] tagValue = splitLine[1].split(ProjectSaver.EQUALS);
@@ -95,11 +95,11 @@ public class ProjectLoader
 			getProject().getProjectInfo().setMetadataId(new BaseId(value));
 	}
 
-	private void readLastModified(String line)
+	private void loadLastModified(String line)
 	{
 	}
 	
-	private void readCreateSimpleThreatRatingLine(String line) throws Exception
+	private void loadCreateSimpleThreatRatingLine(String line) throws Exception
 	{
 		StringTokenizer tokenizer = new StringTokenizer(line);
 		/*String command =*/ tokenizer.nextToken();
@@ -112,7 +112,7 @@ public class ProjectLoader
 		getProject().getSimpleThreatRatingFramework().saveBundle(bundle);
 	}
 
-	private void readUpdateSimpleThreatRatingLine(String line) throws Exception
+	private void loadUpdateSimpleThreatRatingLine(String line) throws Exception
 	{
 		StringTokenizer tokenizer = new StringTokenizer(line);
 		/*String command =*/ tokenizer.nextToken();
@@ -132,7 +132,7 @@ public class ProjectLoader
 		}
 	}
 
-	private void readCreateObjectLine(String line) throws Exception
+	private void loadCreateObjectLine(String line) throws Exception
 	{
 		StringTokenizer tokenizer = new StringTokenizer(line);
 		/*String command =*/ tokenizer.nextToken();
@@ -143,7 +143,7 @@ public class ProjectLoader
 		getProject().createObject(objectType, objectId);
 	}
 
-	private void readUpdateObjectline(String line) throws Exception
+	private void loadUpdateObjectline(String line) throws Exception
 	{
 		StringTokenizer tokenizer = new StringTokenizer(line);
 		/*String command =*/ tokenizer.nextToken();
