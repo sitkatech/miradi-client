@@ -170,9 +170,14 @@ public class ProjectSaver
 			EnhancedJsonObject json = bundle.toJson();
 			String bundleName = SimpleThreatRatingFramework.getBundleKey(bundle.getThreatId(), bundle.getTargetId());
 			writeValue(CREATE_SIMPLE_THREAT_RATING_BUNDLE_CODE, bundleName);
-			writeTagValue(UPDATE_SIMPLE_THREAT_RATING_BUNDLE_CODE, bundleName, ThreatRatingBundle.TAG_VALUES, json.getString(ThreatRatingBundle.TAG_VALUES));
+			writeBundleTagValue(json, bundleName);
 			writeTagValue(UPDATE_SIMPLE_THREAT_RATING_BUNDLE_CODE, bundleName, ThreatRatingBundle.TAG_DEFAULT_VALUE_ID, json.getString(ThreatRatingBundle.TAG_DEFAULT_VALUE_ID));
 		}
+	}
+
+	private void writeBundleTagValue(EnhancedJsonObject json, String bundleName)	throws Exception
+	{
+		writeTagValue(UPDATE_SIMPLE_THREAT_RATING_BUNDLE_CODE, bundleName, ThreatRatingBundle.TAG_VALUES, json.getString(ThreatRatingBundle.TAG_VALUES));
 	}
 
 	private void writeValue(final String actionCode, final String value) throws Exception
