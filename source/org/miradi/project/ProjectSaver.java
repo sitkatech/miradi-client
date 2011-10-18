@@ -220,11 +220,6 @@ public class ProjectSaver
 	
 	private void write(final String data) throws Exception
 	{
-		writeRaw(data);
-	}
-	
-	public void writeRaw(String data) throws IOException
-	{
 		getWriter().write(data);
 	}
 	
