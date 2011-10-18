@@ -49,7 +49,8 @@ public class ProjectSaver
 	
 	public static void saveProject(final Project projectToUse, final UnicodeStringWriter writerToUse) throws Exception
 	{
-		new ProjectSaver(projectToUse, writerToUse).saveProject();
+		final ProjectSaver projectSaver = new ProjectSaver(projectToUse, writerToUse);
+		projectSaver.saveProject();
 	}
 	
 	private void saveProject() throws Exception
