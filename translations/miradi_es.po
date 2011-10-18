@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-14 13:43-0500\n"
+"POT-Creation-Date: 2011-10-18 10:14-0500\n"
 "PO-Revision-Date: 2011-03-28 15:06-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -7404,6 +7404,7 @@ msgid "Tab|Stresses"
 msgstr "Presiones"
 
 #: Miradi/source/org/miradi/dialogs/viability/TargetPropertiesKeaViabilityTreeManagementPanel.java:51
+#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityManagementPanelNew.java:66
 #: Miradi/source/org/miradi/dialogs/viability/ViabilityViewTreeManagementPanel.java:43
 #: Miradi/source/org/miradi/dialogs/indicator/SimpleViabilityManagementPanel.java:38
 msgid "Tab|Viability"
