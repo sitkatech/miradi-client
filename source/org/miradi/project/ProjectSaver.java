@@ -167,6 +167,10 @@ public class ProjectSaver
 		Collections.sort(sortedBundles, new ThreatRatingBundleSorter());
 		for(ThreatRatingBundle bundle : sortedBundles)
 		{
+			if(bundle.getThreatId().isInvalid())
+				continue;
+			if(bundle.getTargetId().isInvalid())
+				continue;
 			EnhancedJsonObject json = bundle.toJson();
 			String bundleName = SimpleThreatRatingFramework.getBundleKey(bundle.getThreatId(), bundle.getTargetId());
 			writeValue(CREATE_SIMPLE_THREAT_RATING_BUNDLE_CODE, bundleName);
