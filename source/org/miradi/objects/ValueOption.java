@@ -23,6 +23,7 @@ import java.awt.Color;
 
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
+import org.miradi.objectdata.IntegerData;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.questions.ChoiceQuestion;
@@ -138,6 +139,18 @@ public class ValueOption extends BaseObject
 		return json;
 	}
 	
+	@Override
+	void clear()
+	{
+		super.clear();
+		
+		numericValue = new IntegerData(TAG_NUMERIC);
+		rgbValue = new IntegerData(TAG_COLOR);
+		
+		addField(numericValue);
+		addField(rgbValue);
+	}
+	
 	final public static String TAG_NUMERIC = "Numeric";
 	final public static String TAG_COLOR = "Color";
 	final private static Color INVALID_GRAY = new Color(200,200,200);
@@ -146,4 +159,7 @@ public class ValueOption extends BaseObject
 
 	int numeric;
 	Color color;
+	
+	private IntegerData numericValue;
+	private IntegerData rgbValue;
 }
