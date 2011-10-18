@@ -34,6 +34,7 @@ import org.miradi.actions.ActionExpandToMeasurement;
 import org.miradi.actions.ActionExpandToMenu;
 import org.miradi.actions.ActionExpandToTarget;
 import org.miradi.dialogs.viability.TargetViabilityManagementPanel;
+import org.miradi.dialogs.viability.TargetViabilityManagementPanelNew;
 import org.miradi.dialogs.viability.ViabilityViewTreeManagementPanel;
 import org.miradi.main.MainWindow;
 import org.miradi.main.MiradiToolBar;
@@ -85,6 +86,10 @@ public class TargetViabilityView extends TabbedView
 	{
 		viabilityPanel = new ViabilityViewTreeManagementPanel(getMainWindow(), getMainWindow());
 		addNonScrollingTab(viabilityPanel);
+		
+		viabilityPanelNew = TargetViabilityManagementPanelNew.createManagementPanel(getMainWindow());
+		//FIXME urgent - Make new target viability tree table work
+		//addNonScrollingTab(viabilityPanelNew);
 	}
 
 	@Override
@@ -92,6 +97,9 @@ public class TargetViabilityView extends TabbedView
 	{
 		viabilityPanel.dispose();
 		viabilityPanel = null;
+		
+		viabilityPanelNew.dispose();
+		viabilityPanelNew = null;
 		
 		super.deleteTabs();
 	}
@@ -121,6 +129,9 @@ public class TargetViabilityView extends TabbedView
 		if (viabilityPanel != null)
 			return viabilityPanel.getObject();
 		
+		if (viabilityPanelNew != null)
+			viabilityPanelNew.getObject();
+		
 		return null;
 	}
 	
@@ -128,7 +139,7 @@ public class TargetViabilityView extends TabbedView
 	{
 		return view.cardName().equals(getViewName());
 	}
-
 	
 	private TargetViabilityManagementPanel viabilityPanel;
+	private TargetViabilityManagementPanelNew viabilityPanelNew;
 }
