@@ -79,7 +79,7 @@ public class ValueOption extends BaseObject
 	
 	public int getNumericValue()
 	{
-		return numericValue.asInt();
+		return getIntegerData(TAG_NUMERIC);
 	}
 	
 	// TODO: This is a hack that allows us to override any colors that might
@@ -107,25 +107,12 @@ public class ValueOption extends BaseObject
 	}
 
 	@Override
-	public EnhancedJsonObject toJson()
-	{
-		EnhancedJsonObject json = super.toJson();
-		json.put(TAG_NUMERIC, numericValue.toString());
-		json.put(TAG_COLOR, rgbValue.toString());
-		
-		return json;
-	}
-	
-	@Override
 	void clear()
 	{
 		super.clear();
 		
-		numericValue = new IntegerData(TAG_NUMERIC);
-		rgbValue = new IntegerData(TAG_COLOR);
-		
-		addField(numericValue);
-		addField(rgbValue);
+		addField(new IntegerData(TAG_NUMERIC));
+		addField(new IntegerData(TAG_COLOR));
 	}
 	
 	final public static String TAG_NUMERIC = "Numeric";
@@ -133,7 +120,4 @@ public class ValueOption extends BaseObject
 	final private static Color INVALID_GRAY = new Color(200,200,200);
 	
 	public static final String OBJECT_NAME = "ValueOption";
-
-	private IntegerData numericValue;
-	private IntegerData rgbValue;
 }

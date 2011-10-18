@@ -45,6 +45,7 @@ import org.miradi.objectdata.BaseIdData;
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.DimensionData;
 import org.miradi.objectdata.IdListData;
+import org.miradi.objectdata.IntegerData;
 import org.miradi.objectdata.ORefData;
 import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.ObjectData;
@@ -110,6 +111,12 @@ abstract public class BaseObject
 	{
 		StringData data = (StringData)getField(tag);
 		return data.get();
+	}
+	
+	public int getIntegerData(String tag)
+	{
+		IntegerData data = (IntegerData)getField(tag);
+		return data.asInt();
 	}
 	
 	public Dimension getDimensionData(String tag)
