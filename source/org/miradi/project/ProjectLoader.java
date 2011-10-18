@@ -148,10 +148,7 @@ public class ProjectLoader
 		StringTokenizer tokenizer = new StringTokenizer(line);
 		/*String command =*/ tokenizer.nextToken();
 		String refString = tokenizer.nextToken();
-		String[] refParts = refString.split(":");
-		int objectType = Integer.parseInt(refParts[0]);
-		BaseId objectId = new BaseId(Integer.parseInt(refParts[1]));
-		ORef ref = new ORef(objectType, objectId);
+		ORef ref = extractRef(refString);
 		String tag = tokenizer.nextToken(EQUALS_DELIMITER_TAB_PREFIXED);
 		String value = tokenizer.nextToken(EQUALS_DELIMITER_NEWLINE_POSTFIXED);
 		value = value.replaceAll("<br/>", "\n");
@@ -161,6 +158,15 @@ public class ProjectLoader
 		value = value.replaceAll("&#39;", "'");
 		value = value.replaceAll("&amp;", "&");
 		getProject().setObjectData(ref, tag, value);
+	}
+
+	public ORef extractRef(String refString)
+	{
+		String[] refParts = refString.split(":");
+		int objectType = Integer.parseInt(refParts[0]);
+		BaseId objectId = new BaseId(Integer.parseInt(refParts[1]));
+		
+		return new ORef(objectType, objectId);
 	}
 
 	private Project getProject()
