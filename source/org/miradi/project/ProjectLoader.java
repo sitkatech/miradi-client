@@ -117,8 +117,8 @@ public class ProjectLoader
 		/*String command =*/ tokenizer.nextToken();
 		String threatIdTargetIdString = tokenizer.nextToken();
 		ThreatRatingBundle bundleToUpdate = bundleNameToBundleMap.get(threatIdTargetIdString);
-		String tag = tokenizer.nextToken(TAB_TOKEN);
-		String value = tokenizer.nextToken(NEWLINE_TOKEN);
+		String tag = tokenizer.nextToken(EQUALS_DELIMITER_TAB_PREFIXED);
+		String value = tokenizer.nextToken(EQUALS_DELIMITER_NEWLINE_POSTFIXED);
 		if (tag.equals(ThreatRatingBundle.TAG_VALUES))
 		{
 			RatingValueSet ratings = new RatingValueSet();
@@ -151,8 +151,8 @@ public class ProjectLoader
 		int objectType = Integer.parseInt(refParts[0]);
 		BaseId objectId = new BaseId(Integer.parseInt(refParts[1]));
 		ORef ref = new ORef(objectType, objectId);
-		String tag = tokenizer.nextToken(TAB_TOKEN);
-		String value = tokenizer.nextToken(NEWLINE_TOKEN);
+		String tag = tokenizer.nextToken(EQUALS_DELIMITER_TAB_PREFIXED);
+		String value = tokenizer.nextToken(EQUALS_DELIMITER_NEWLINE_POSTFIXED);
 		value = value.replaceAll("<br/>", "\n");
 		value = value.replaceAll("&lt;", "<");
 		value = value.replaceAll("&gt;", ">");
@@ -171,6 +171,6 @@ public class ProjectLoader
 	private UnicodeStringReader reader;
 	private Project project;
 	
-	private static final String TAB_TOKEN = " \t=";
-	private static final String NEWLINE_TOKEN = "=\n";
+	private static final String EQUALS_DELIMITER_TAB_PREFIXED = " \t=";
+	private static final String EQUALS_DELIMITER_NEWLINE_POSTFIXED = "=\n";
 }
