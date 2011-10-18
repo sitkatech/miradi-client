@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-18 14:20-0500\n"
+"POT-Creation-Date: 2011-10-18 14:27-0500\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -503,7 +503,7 @@ msgstr "7B. Сурч мэдсэн зүйлээ хуваалцах "
 msgid "7C. Create a Learning Environment"
 msgstr "7C. Сурах орчинг бүрдүүлэх"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1244
+#: Miradi/source/org/miradi/main/MainWindow.java:1260
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -2685,7 +2685,7 @@ msgstr "Нэг зүйлийг өөртэй нь холбож болохгүй б
 msgid "Cancel"
 msgstr "Цуцлах"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:557
+#: Miradi/source/org/miradi/main/MainWindow.java:571
 msgid "Cancelled"
 msgstr ""
 
@@ -2999,7 +2999,7 @@ msgstr "Амжилтгүй болсныг үүсгэх:"
 msgid "Create Folder"
 msgstr "Фолдэр үүсгэх"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:611
+#: Miradi/source/org/miradi/main/MainWindow.java:625
 msgid "Create Project"
 msgstr ""
 
@@ -3027,7 +3027,7 @@ msgstr "Үүсгэх..."
 msgid "Creating group boxes..."
 msgstr "Бүлгийн хайрцгуудыг үүсгэх..."
 
-#: Miradi/source/org/miradi/project/Project.java:680
+#: Miradi/source/org/miradi/project/Project.java:681
 msgid "Creating..."
 msgstr ""
 
@@ -3616,7 +3616,7 @@ msgstr "Үйл ажиллагаа ба мониторингийн өртгийн
 msgid "Euro"
 msgstr "Евро"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:822
+#: Miradi/source/org/miradi/main/MainWindow.java:838
 msgid "Existing data for a different fiscal year is being excluded"
 msgstr "Өөр санхүүгийн жилийн одоогийн мэдээлэл хасагдаж байна."
 
@@ -5147,7 +5147,7 @@ msgstr "Оруулах боломжтой Файл: %s гэж  Miradi таниа
 msgid "Miradi does not recognize %s as a project file"
 msgstr "Файлыг Miradi төслийн файл гэж танихгүй байна"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:666
+#: Miradi/source/org/miradi/main/MainWindow.java:682
 msgid ""
 "Miradi has detected one or more problems with this project which could cause "
 "errors or further damage in the future. \n"
@@ -5444,7 +5444,7 @@ msgid "Open Anyway"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:142
-#: Miradi/source/org/miradi/main/MainWindow.java:613
+#: Miradi/source/org/miradi/main/MainWindow.java:627
 msgid "Open Project"
 msgstr "Төсөл нээх"
 
@@ -5461,7 +5461,7 @@ msgstr ""
 msgid "OpenStandards"
 msgstr "Стандартыг нээх"
 
-#: Miradi/source/org/miradi/project/Project.java:675
+#: Miradi/source/org/miradi/project/Project.java:676
 msgid "Opening..."
 msgstr ""
 
@@ -5739,7 +5739,7 @@ msgstr "Төсөл"
 msgid "Project Advisor"
 msgstr "Төслийн зөвлөх"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:664
+#: Miradi/source/org/miradi/main/MainWindow.java:680
 msgid "Project Corruption Detected"
 msgstr ""
 
@@ -5772,7 +5772,7 @@ msgstr "Төслийн нөөц"
 msgid "Project Resource Filter Editor"
 msgstr "Төслийн Нөөцийн Шүүлтүүрийн Хянан Засварлагч"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:820
+#: Miradi/source/org/miradi/main/MainWindow.java:836
 msgid "Project Resource Filter Is On"
 msgstr "Төслийн Нөөцийн Шүүлтүүр ажиллагаатай"
 
@@ -6369,7 +6369,7 @@ msgstr "Оролцогч тал"
 msgid "Standard Reports"
 msgstr "Стандарт тайлан"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:854
+#: Miradi/source/org/miradi/main/MainWindow.java:870
 msgid ""
 "Start date (currently %startDate) must be earlier than end date (currently %"
 "endDate)"
@@ -7600,7 +7600,7 @@ msgstr "Тэр хэлний багцыг хэдийнээ байна.  Түүн�
 msgid "That language pack is already installed"
 msgstr "Тэр хэлний багцыг хэдийнээ суулгасан байна."
 
-#: Miradi/source/org/miradi/main/MainWindow.java:581
+#: Miradi/source/org/miradi/main/MainWindow.java:595
 msgid ""
 "That project cannot be opened because it was created by a newer version of "
 "this application"
@@ -7608,12 +7608,12 @@ msgstr ""
 "Тэр төсөл нээгдэхгүй байна, яагаад гэвэл энэ программын шинэ хувилбараар "
 "үүсгэгдсэн байна."
 
-#: Miradi/source/org/miradi/main/MainWindow.java:585
+#: Miradi/source/org/miradi/main/MainWindow.java:599
 msgid ""
 "That project cannot be opened until it is migrated to the current data format"
 msgstr "Тэр төслийг мэдээллийн энэ форматад шилжүүлэхээс нааш нээх боломжгүй."
 
-#: Miradi/source/org/miradi/main/MainWindow.java:577
+#: Miradi/source/org/miradi/main/MainWindow.java:591
 msgid "That project is in use by another copy of this application"
 msgstr "Энэ программын өөр хуулбарт тэр төслийг хэрэглэж байна"
 
@@ -7764,7 +7764,7 @@ msgstr ""
 "мэдээллийн шинэ форматад байна. Miradi-ийг сүүлийн хувилбар хүртэл "
 "сайжруулна уу."
 
-#: Miradi/source/org/miradi/main/MainWindow.java:655
+#: Miradi/source/org/miradi/main/MainWindow.java:671
 msgid ""
 "This project has been optimized to remove data that is no longer needed.\n"
 msgstr ""
@@ -8184,7 +8184,7 @@ msgstr ""
 "Энэ программын өөр хуулбарт энэ төслийг ашиглаж байгаа учир энэ төслийг "
 "устгах боломжгүй байна:\n"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1228
+#: Miradi/source/org/miradi/main/MainWindow.java:1244
 msgid "Unable to launch external web browser"
 msgstr "Unable to launch external web browser"
 
@@ -8205,7 +8205,7 @@ msgstr ""
 "Энэ төслийг программын өөр хуулбарт хэрэглэж байгаа тул нэрийг нь өөрчлөх "
 "боломжгүй байна:\n"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1011
+#: Miradi/source/org/miradi/main/MainWindow.java:1027
 msgid "Unable to save preferences"
 msgstr "\"preference\"-ийг хадгалах боломжгүй байна"
 
@@ -8265,7 +8265,7 @@ msgstr "Их сургууль"
 msgid "Unknown"
 msgstr "Тодорхой бус"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:572
+#: Miradi/source/org/miradi/main/MainWindow.java:586
 msgid ""
 "Unknown Command\n"
 "You are probably trying to load an old project that contains obsolete "
@@ -8283,7 +8283,7 @@ msgstr "Тодорхой бус код: "
 msgid "Unknown error displaying diagram"
 msgstr "Тодорхой бус шалтгаанаар диаграмм ыг үзүүлэх боломжгүй"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:590
+#: Miradi/source/org/miradi/main/MainWindow.java:604
 msgid "Unknown error prevented opening that project"
 msgstr "Энэ төсөл тодорхой бус алдаанаас болж нээгдэхгүй байна."
 
@@ -8690,7 +8690,7 @@ msgstr "[ТОДОРХОЙ ЗААГДААГҮЙ]"
 msgid "[New Results Chain]"
 msgstr "[Шинэ Үр Дүнгийн Гинжих Холбоос]"
 
-#: Miradi/source/org/miradi/project/Project.java:988
+#: Miradi/source/org/miradi/project/Project.java:993
 msgid "[No Project]"
 msgstr "Төсөл байхгүй]"
 
