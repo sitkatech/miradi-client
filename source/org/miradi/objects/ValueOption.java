@@ -31,11 +31,12 @@ import org.miradi.utils.EnhancedJsonObject;
 
 public class ValueOption extends BaseObject
 {
-	public ValueOption(ObjectManager objectManager, BaseId idToUse)
+	public ValueOption(ObjectManager objectManager, BaseId idToUse) throws Exception
 	{
 		super(objectManager, idToUse);
 		
-		color = Color.BLACK;
+		clear();
+		setData(TAG_COLOR, Integer.toString(Color.BLACK.getRGB()));
 	}
 	
 	public ValueOption(ObjectManager objectManager, BaseId idToUse, String labelToUse, int numericToUse, Color colorToUse) throws Exception
@@ -43,16 +44,13 @@ public class ValueOption extends BaseObject
 		this(objectManager, idToUse);
 
 		setData(TAG_LABEL, labelToUse);
-		numeric = numericToUse;
-		color = colorToUse;
+		setData(TAG_NUMERIC, Integer.toString(numericToUse));
+		setData(TAG_COLOR, Integer.toString(colorToUse.getRGB()));
 	}
 	
 	public ValueOption(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
 	{
 		super(objectManager, new BaseId(idAsInt), json);
-		
-		numeric = json.getInt(TAG_NUMERIC);
-		color = new Color(json.getInt(TAG_COLOR));
 	}
 	
 	@Override
@@ -81,7 +79,7 @@ public class ValueOption extends BaseObject
 	
 	public int getNumericValue()
 	{
-		return numeric;
+		return numericValue.asInt();
 	}
 	
 	// TODO: This is a hack that allows us to override any colors that might
@@ -107,35 +105,13 @@ public class ValueOption extends BaseObject
 	{
 		return getLabel();
 	}
-	
-	@Override
-	public void setData(String fieldTag, String dataValue) throws Exception
-	{
-		if(TAG_NUMERIC.equals(fieldTag))
-			numeric = Integer.parseInt(dataValue);
-		else if(TAG_COLOR.equals(fieldTag))
-			color = new Color(Integer.parseInt(dataValue));
-		else
-			super.setData(fieldTag, dataValue);
-	}
-	
-	@Override
-	public String getData(String fieldTag)
-	{
-		if(TAG_NUMERIC.equals(fieldTag))
-			return Integer.toString(getNumericValue());
-		else if(TAG_COLOR.equals(fieldTag))
-			return Integer.toString(getColor().getRGB());
 
-		return super.getData(fieldTag);
-	}
-	
 	@Override
 	public EnhancedJsonObject toJson()
 	{
 		EnhancedJsonObject json = super.toJson();
-		json.put(TAG_NUMERIC, numeric);
-		json.put(TAG_COLOR, color.getRGB());
+		json.put(TAG_NUMERIC, numericValue.toString());
+		json.put(TAG_COLOR, rgbValue.toString());
 		
 		return json;
 	}
@@ -158,9 +134,6 @@ public class ValueOption extends BaseObject
 	
 	public static final String OBJECT_NAME = "ValueOption";
 
-	int numeric;
-	Color color;
-	
 	private IntegerData numericValue;
 	private IntegerData rgbValue;
 }

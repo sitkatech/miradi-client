@@ -34,7 +34,7 @@ public class ValueOptionPool extends EAMNormalObjectPool
 	}
 
 	@Override
-	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId)
+	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId) throws Exception
 	{
 		return new ValueOption(objectManager, actualId);
 	}
