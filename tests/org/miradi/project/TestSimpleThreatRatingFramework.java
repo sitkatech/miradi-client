@@ -89,11 +89,12 @@ public class TestSimpleThreatRatingFramework extends MiradiTestCase
 			
 			FactorId threatId = new FactorId(283);
 			FactorId targetId = new FactorId(983);
-			ThreatRatingBundle bundle = realProject.getSimpleThreatRatingFramework().getBundle(threatId, targetId);
+			SimpleThreatRatingFramework realFramework = realProject.getSimpleThreatRatingFramework();
+			ThreatRatingBundle bundle = realFramework.getBundle(threatId, targetId);
 			bundle.setValueId(createdId, new BaseId(838));
-			IdList realOptionIds = realProject.getSimpleThreatRatingFramework().getValueOptionIds();
-			realProject.getSimpleThreatRatingFramework().saveBundle(bundle);
-			realProject.getDatabase().writeThreatRatingFramework(realProject.getSimpleThreatRatingFramework());
+			IdList realOptionIds = realFramework.getValueOptionIds();
+			realFramework.saveBundle(bundle);
+			realProject.getDatabase().writeThreatRatingFramework(realFramework);
 			realProject.close();
 
 			Project loadedProject = new Project();
@@ -125,12 +126,25 @@ public class TestSimpleThreatRatingFramework extends MiradiTestCase
 	{
 		ValueOption[] options = framework.getValueOptions();
 		assertEquals("wrong number of default options?", 5, options.length);
-		// NOTE: options are: [0]:1/VH, [1]:2/H, [2]:3/M, [3]:4/L, [4]:0/NONE 
-		assertEquals("wrong order or label?", "Very High", options[0].getLabel());
-		assertEquals("wrong numeric value? ", 3, options[1].getNumericValue());
-		assertEquals("bad color?", ColorManager.LIGHT_GREEN, options[2].getColor());
+		// NOTE: options are: [0]:4/VH, [1]:3/H, [2]:2/M, [3]:1/L, [4]:0/NONE 
+		ValueOption veryHigh = findValueOptionByNumeric(options, 4);
+		ValueOption high = findValueOptionByNumeric(options, 3);
+		ValueOption medium = findValueOptionByNumeric(options, 2);
+		assertEquals("wrong order or label?", "Very High", veryHigh.getLabel());
+		assertEquals("wrong numeric value? ", 3, high.getNumericValue());
+		assertEquals("bad color?", ColorManager.LIGHT_GREEN, medium.getColor());
 	}
 	
+	private ValueOption findValueOptionByNumeric(ValueOption[] options, int lookFor)
+	{
+		for(ValueOption valueOption : options)
+		{
+			if(valueOption.getNumericValue() == lookFor)
+				return valueOption;
+		}
+		return null;
+	}
+
 	public void testFindValueOptionByNumericValue()
 	{
 		ValueOption optionNone = framework.findValueOptionByNumericValue(0);
