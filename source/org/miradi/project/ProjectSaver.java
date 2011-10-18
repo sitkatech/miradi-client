@@ -150,7 +150,7 @@ public class ProjectSaver
 				{
 					data = xmlNewLineEncode(data);
 				}
-				writeTagValue(UPDATE_OBJECT_CODE, ref, tag, data);
+				writeRefTagValue(UPDATE_OBJECT_CODE, ref, tag, data);
 			}
 		}
 	}
@@ -198,7 +198,7 @@ public class ProjectSaver
 		getWriter().writeln();
 	}
 
-	private void writeTagValue(final String actionCode, ORef ref, final String tag, final String value) throws Exception
+	private void writeRefTagValue(final String actionCode, ORef ref, final String tag, final String value) throws Exception
 	{
 		writeLabelTagValue(actionCode, createSimpleRefString(ref), tag, value);
 	}
