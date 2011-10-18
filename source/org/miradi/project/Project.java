@@ -588,6 +588,12 @@ public class Project
 		return new ORef(objectType, createdId);
 	}
 	
+	public ORef createObject(ORef ref) throws Exception
+	{
+		BaseId createdId = createObjectAndReturnId(ref.getObjectType(), ref.getObjectId());
+		return new ORef(ref.getObjectType(), createdId);
+	}
+	
 	public ORef createObject(int objectType, BaseId objectId) throws Exception
 	{
 		BaseId createdId = createObjectAndReturnId(objectType, objectId);
