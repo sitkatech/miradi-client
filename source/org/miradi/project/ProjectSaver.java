@@ -100,9 +100,16 @@ public class ProjectSaver
 	private void writeAllQuarantinedData() throws Exception
 	{
 		String quarantineFileContents = getProject().getQuarantineFileContents();
-		quarantineFileContents = XmlUtilities.getXmlEncoded(quarantineFileContents);
-		quarantineFileContents = quarantineFileContents.replaceAll("\\n", "<br/>");
+		quarantineFileContents = xmlNewLineEncode(quarantineFileContents);
 		write(quarantineFileContents);
+	}
+
+	public String xmlNewLineEncode(String data)
+	{
+		data = XmlUtilities.getXmlEncoded(data);
+		data = data.replaceAll("\\n", "<br/>");
+		
+		return data;
 	}
 
 	private void writeAllObjectTypes() throws Exception
@@ -141,8 +148,7 @@ public class ProjectSaver
 				ObjectData dataField = baseObject.getField(tag);
 				if(needsEncoding(dataField))
 				{
-					data = XmlUtilities.getXmlEncoded(data);
-					data = data.replaceAll("\\n", "<br/>");
+					data = xmlNewLineEncode(data);
 				}
 				writeTagValue(UPDATE_OBJECT_CODE, ref, tag, data);
 			}
