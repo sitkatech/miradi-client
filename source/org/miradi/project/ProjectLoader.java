@@ -137,10 +137,8 @@ public class ProjectLoader
 		StringTokenizer tokenizer = new StringTokenizer(line);
 		/*String command =*/ tokenizer.nextToken();
 		String refString = tokenizer.nextToken();
-		String[] refParts = refString.split(":");
-		int objectType = Integer.parseInt(refParts[0]);
-		BaseId objectId = new BaseId(Integer.parseInt(refParts[1]));
-		getProject().createObject(objectType, objectId);
+		ORef ref = extractRef(refString);
+		getProject().createObject(ref.getObjectType(), ref.getObjectId());
 	}
 
 	private void loadUpdateObjectline(String line) throws Exception
