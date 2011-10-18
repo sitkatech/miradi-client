@@ -42,7 +42,8 @@ public class ProjectLoader
 	
 	public static void loadProject(final UnicodeStringReader reader, Project project) throws Exception
 	{
-		new ProjectLoader(reader, project).load();
+		final ProjectLoader projectLoader = new ProjectLoader(reader, project);
+		projectLoader.load();
 	}
 
 	private void load() throws Exception
