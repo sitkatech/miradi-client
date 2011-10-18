@@ -62,8 +62,18 @@ public class ProjectSaver
 		writeAllObjectTypes();
 		writeSimpleThreatRating();
 		writeQuarantinedData();
-		writelnRaw(STOP_MARKER);
+		writeStopMarker();
+		flushWriter();
+	}
+
+	public void flushWriter() throws IOException
+	{
 		getWriter().flush();
+	}
+
+	public void writeStopMarker() throws IOException
+	{
+		writelnRaw(STOP_MARKER);
 	}
 
 	private void writeLastModified() throws Exception
