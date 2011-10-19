@@ -43,7 +43,6 @@ import org.miradi.diagram.factortypes.FactorTypeIntermediateResult;
 import org.miradi.diagram.factortypes.FactorTypeScopeBox;
 import org.miradi.diagram.factortypes.FactorTypeStrategy;
 import org.miradi.diagram.factortypes.FactorTypeStress;
-import org.miradi.diagram.factortypes.FactorTypeTarget;
 import org.miradi.diagram.factortypes.FactorTypeTextBox;
 import org.miradi.diagram.factortypes.FactorTypeThreatReductionResult;
 import org.miradi.ids.BaseId;
@@ -1177,7 +1176,7 @@ public class MigrationsOlderThanMiradiVersion2
 	private static int getFactorTypeFromString(String factorType) throws Exception
 	{
 		//Note : if you change this method you could effect the migration from 19 -> 20
-		if (factorType.equals(FactorTypeTarget.TARGET_TYPE))
+		if (factorType.equals("Target"))
 			return ObjectType.TARGET;
 		
 		else if (factorType.equals(FactorTypeCause.CAUSE_TYPE))
