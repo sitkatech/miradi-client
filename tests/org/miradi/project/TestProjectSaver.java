@@ -105,7 +105,7 @@ public class TestProjectSaver extends TestCaseWithProject
 			oldJson.remove(BaseObject.TAG_TIME_STAMP_MODIFIED);
 			EnhancedJsonObject newJson = newObject.toJson();
 			newJson.remove(BaseObject.TAG_TIME_STAMP_MODIFIED);
-			assertEquals(oldJson, newJson);
+			assertEquals(oldJson.toString(), newJson.toString());
 		}
 	}
 
