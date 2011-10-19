@@ -28,6 +28,7 @@ import java.util.zip.ZipInputStream;
 import org.martus.util.UnicodeStringWriter;
 import org.miradi.database.ProjectServer;
 import org.miradi.ids.BaseId;
+import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.utils.EnhancedJsonObject;
@@ -119,13 +120,13 @@ public class MpzToDotMiradiConverter extends ProjectSaver
 		String[] splittedPath = relativeFilePath.split("-");
 		String[] typeId = splittedPath[1].split("/");
 		ORef ref = new ORef(Integer.parseInt(typeId[0]), new BaseId(typeId[1]));
-		System.out.println(relativeFilePath +  " = "+ fileContent);
 		writeValue(CREATE_OBJECT_CODE, createSimpleRefString(ref));
 		writeUpdateObjectLines(fileContent, ref);
 	}
 
 	public void writeUpdateObjectLines(String fileContent, ORef ref) throws Exception
 	{
+		final Project tempProject = new Project();
 		EnhancedJsonObject json = new EnhancedJsonObject(fileContent);
 		Iterator iterator = json.keys();
 		while (iterator.hasNext())
@@ -133,7 +134,14 @@ public class MpzToDotMiradiConverter extends ProjectSaver
 			String tag = (String)iterator.next();
 			if (!tag.equals(BaseObject.TAG_TIME_STAMP_MODIFIED))
 			{
-				final String data = json.get(tag).toString();
+				String data = json.get(tag).toString();
+				BaseObject baseObject = BaseObject.createFromJson(tempProject.getObjectManager(), ref.getObjectType(), json);
+				ObjectData dataField = baseObject.getField(tag);
+				if (dataField != null && dataField.isUserText())
+				{
+					data = xmlNewLineEncode(data);
+				}
+
 				writeRefTagValue(UPDATE_OBJECT_CODE, ref, tag, data);
 			}
 		}
