@@ -333,15 +333,6 @@ abstract public class Factor extends BaseObject
 	}
 	
 	@Override
-	public EnhancedJsonObject toJson()
-	{
-		EnhancedJsonObject superJson = super.toJson();
-		superJson.put(TAG_NODE_TYPE , type.toString());
-		
-		return superJson;
-	}
-
-	@Override
 	public String toString()
 	{
 		return getLabel();
