@@ -45,6 +45,7 @@ import org.miradi.objects.Goal;
 import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.IntermediateResult;
+import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
@@ -161,6 +162,7 @@ abstract public class AbstractTreeRebuilder
 			Strategy.getObjectType(),
 			Target.getObjectType(),
 			HumanWelfareTarget.getObjectType(),
+			KeyEcologicalAttribute.getObjectType(),
 			Cause.getObjectType(),
 			IntermediateResult.getObjectType(),
 			ThreatReductionResult.getObjectType(),
