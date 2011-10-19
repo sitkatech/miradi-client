@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.project;
 
+import java.io.ByteArrayOutputStream;
 import java.util.Iterator;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
@@ -67,12 +68,8 @@ public class MpzToDotMiradiConverter extends ProjectSaver
 	
 	private void writeOneFile(ZipEntry entry) throws Exception
 	{
-		byte[] buffer = new byte[16384];
-		while(getInputStream().read(buffer) > 0)
-		{
-		}
-
-		final String fileContent = new String(buffer);
+		byte[] contents = convertToByteArray(entry);
+		final String fileContent = new String(contents, "UTF-8");
 		
 		String relativeFilePath = entry.getName();
 		int slashAt = findSlash(relativeFilePath);
@@ -99,6 +96,21 @@ public class MpzToDotMiradiConverter extends ProjectSaver
 		{
 			writeObject(relativeFilePath, fileContent);
 		}
+	}
+	
+	
+	private byte[] convertToByteArray(ZipEntry entry) throws Exception
+	{
+		ByteArrayOutputStream out = new ByteArrayOutputStream();
+		byte[] buffer = new byte[1024];
+		int got = -1;
+		while( (got = getInputStream().read(buffer)) > 0)
+		{
+			out.write(buffer, 0, got);
+		}
+		out.close();
+
+		return out.toByteArray();
 	}
 	
 	private void writeObject(String relativeFilePath, String fileContent) throws Exception
