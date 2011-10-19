@@ -58,13 +58,11 @@ abstract public class Factor extends BaseObject
 	protected Factor(ObjectManager objectManager, BaseId idToUse, FactorType nodeType)
 	{
 		super(objectManager, idToUse);
-		type = nodeType;
 	}
 	
 	protected Factor(ObjectManager objectManager, FactorId idToUse, FactorType nodeType, EnhancedJsonObject json) throws Exception
 	{
 		super(objectManager, idToUse, json);
-		type = nodeType;
 	}
 	
 	public FactorId getFactorId()
@@ -99,13 +97,6 @@ abstract public class Factor extends BaseObject
 	public IdList getDirectOrIndirectIndicators()
 	{
 		return getOnlyDirectIndicatorIds();
-	}
-	
-	public FactorType getNodeType()
-	{
-		if(isDirectThreat() || isContributingFactor())
-			return new FactorTypeCause();
-		return type;
 	}
 	
 	public String getComment()
@@ -566,7 +557,6 @@ abstract public class Factor extends BaseObject
 	public static final String PSEUDO_TAG_TAXONOMY_CODE_VALUE = "TaxonomyCodeValue";
 	public static final String PSEUDO_TAG_INDICATORS = "PseudoTagIndicators";
 	
-	private FactorType type;
 	private StringData comments;
 	private StringData text;
 	private StringData shortLabel;
