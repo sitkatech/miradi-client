@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.project;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.io.File;
@@ -101,6 +102,7 @@ import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.RareProjectData;
+import org.miradi.objects.RatingCriterion;
 import org.miradi.objects.ScopeBox;
 import org.miradi.objects.TableSettings;
 import org.miradi.objects.TaggedObjectSet;
@@ -108,6 +110,7 @@ import org.miradi.objects.TextBox;
 import org.miradi.objects.ThreatRatingCommentsData;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.TncProjectData;
+import org.miradi.objects.ValueOption;
 import org.miradi.objects.ViewData;
 import org.miradi.objects.WcpaProjectData;
 import org.miradi.objects.WcsProjectData;
@@ -959,6 +962,9 @@ public class Project
 		if(getMetadataId().isInvalid())
 			createProjectMetadata();
 		
+		createMissingSimpleThreatRatingCriteria();
+		createMissingSimpleThreatRatingValueOptions();
+
 		createDefaultProjectDataObject(WwfProjectData.getObjectType());
 		createDefaultProjectDataObject(RareProjectData.getObjectType());
 		createDefaultProjectDataObject(WcsProjectData.getObjectType());
@@ -967,6 +973,46 @@ public class Project
 		createDefaultProjectDataObject(WcpaProjectData.getObjectType());
 		createDefaultProjectDataObject(ThreatRatingCommentsData.getObjectType());
 		createDefaultProjectDataObject(Dashboard.getObjectType());
+	}
+
+	private void createMissingSimpleThreatRatingCriteria() throws Exception
+	{
+		if(getPool(RatingCriterion.getObjectType()).size() > 0)
+			return;
+		
+		createDefaultRatingCriterion("Scope"); 
+		createDefaultRatingCriterion("Severity");
+		createDefaultRatingCriterion("Irreversibility");
+	}
+
+	private void createDefaultRatingCriterion(String label) throws Exception
+	{
+		ORef createdRef = createObject(RatingCriterion.getObjectType());
+		CommandSetObjectData setLabel = new CommandSetObjectData(createdRef, RatingCriterion.TAG_LABEL, label);
+		executeWithoutRecording(setLabel);		
+	}
+
+	private void createMissingSimpleThreatRatingValueOptions() throws Exception
+	{
+		if(getPool(ValueOption.getObjectType()).size() > 0)
+			return;
+		
+		createDefaultValueOption("None", SimpleThreatRatingFramework.NONE_VALUE, Color.WHITE);
+		createDefaultValueOption("Very High", SimpleThreatRatingFramework.VERY_HIGH_RATING_VALUE, Color.RED);
+		createDefaultValueOption("High", SimpleThreatRatingFramework.HIGH_RATING_VALUE, Color.ORANGE);
+		createDefaultValueOption("Medium", SimpleThreatRatingFramework.MEDIUM_RATING_VALUE, Color.YELLOW);
+		createDefaultValueOption("Low", SimpleThreatRatingFramework.LOW_RATING_VALUE, Color.GREEN);
+	}
+
+	private void createDefaultValueOption(String label, int numericValue, Color color) throws Exception
+	{
+		ORef createdRef = createObject(ValueOption.getObjectType());
+		CommandSetObjectData setLabel = new CommandSetObjectData(createdRef, ValueOption.TAG_LABEL, label);
+		executeWithoutRecording(setLabel);
+		CommandSetObjectData setNumeric = new CommandSetObjectData(createdRef, ValueOption.TAG_NUMERIC, Integer.toString(numericValue));
+		executeWithoutRecording(setNumeric);
+		CommandSetObjectData setColor= new CommandSetObjectData(createdRef, ValueOption.TAG_COLOR, Integer.toString(color.getRGB()));
+		executeWithoutRecording(setColor);
 	}
 
 	private void setDefaultDiagramPage(int objectType) throws Exception

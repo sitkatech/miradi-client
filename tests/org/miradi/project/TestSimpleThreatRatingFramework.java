@@ -218,8 +218,6 @@ public class TestSimpleThreatRatingFramework extends MiradiTestCase
 	
 	public void testGetThreatRatingSummary() throws Exception
 	{
-		framework.createMissingBuiltInObjects();
-		
 		DiagramFactor threat1 = createThreat(project);
 		DiagramFactor threat2 = createThreat(project);
 		DiagramFactor target1 = createTarget(project);
