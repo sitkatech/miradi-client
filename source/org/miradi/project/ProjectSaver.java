@@ -41,6 +41,11 @@ import org.miradi.utils.EnhancedJsonObject;
 
 public class ProjectSaver
 {
+	protected ProjectSaver(final UnicodeStringWriter writerToUse) throws Exception
+	{
+		writer = writerToUse;
+	}
+	
 	private ProjectSaver(final Project projectToUse, final UnicodeStringWriter writerToUse) throws Exception
 	{
 		project = projectToUse;
@@ -184,7 +189,7 @@ public class ProjectSaver
 		writeLabelTagValue(UPDATE_SIMPLE_THREAT_RATING_BUNDLE_CODE, bundleName, ThreatRatingBundle.TAG_VALUES, json.getString(ThreatRatingBundle.TAG_VALUES));
 	}
 
-	private void writeValue(final String actionCode, final String value) throws Exception
+	protected void writeValue(final String actionCode, final String value) throws Exception
 	{
 		write(actionCode);
 		write(TAB);
@@ -202,7 +207,7 @@ public class ProjectSaver
 		getWriter().writeln();
 	}
 
-	private void writeRefTagValue(final String actionCode, ORef ref, final String tag, final String value) throws Exception
+	protected void writeRefTagValue(final String actionCode, ORef ref, final String tag, final String value) throws Exception
 	{
 		writeLabelTagValue(actionCode, createSimpleRefString(ref), tag, value);
 	}
@@ -232,7 +237,7 @@ public class ProjectSaver
 		getWriter().writeln(data);
 	}
 	
-	private String createSimpleRefString(final ORef ref)
+	protected String createSimpleRefString(final ORef ref)
 	{
 		return Integer.toString(ref.getObjectType()) +  ":" + ref.getObjectId().toString();
 	}
