@@ -19,20 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.diagram.factortypes;
 
-import javax.swing.Icon;
-
-import org.miradi.icons.ActivityIcon;
-import org.miradi.icons.ContributingFactorIcon;
-import org.miradi.icons.DirectThreatIcon;
-import org.miradi.icons.GroupBoxIcon;
-import org.miradi.icons.HumanWelfareTargetIcon;
-import org.miradi.icons.IconManager;
-import org.miradi.icons.IntermediateResultIcon;
-import org.miradi.icons.ScopeBoxIcon;
-import org.miradi.icons.StressIcon;
-import org.miradi.icons.TargetIcon;
-import org.miradi.icons.TextBoxIcon;
-import org.miradi.icons.ThreatReductionResultIcon;
 import org.miradi.main.EAM;
 import org.miradi.objects.Factor;
 
@@ -110,47 +96,6 @@ public abstract class FactorType
 	public static String getFactorTypeLabel(Factor factor)
 	{
 		return EAM.fieldLabel(factor.getType(), factor.getTypeName());
-	}
-	
-	public static Icon getFactorIcon(Factor factor) throws Exception
-	{
-		if (factor.isDirectThreat())
-			return new DirectThreatIcon();
-		
-		if (factor.isContributingFactor())
-			return new ContributingFactorIcon();
-		
-		if (factor.isStrategy())
-			return IconManager.getStrategyIcon();
-		
-		if (factor.isTarget())
-			return new TargetIcon();
-		
-		if (factor.isHumanWelfareTarget())
-			return new HumanWelfareTargetIcon();
-		
-		if (factor.isStress())
-			return new StressIcon();
-		
-		if (factor.isActivity())
-			return new ActivityIcon();
-		
-		if (factor.isIntermediateResult())
-			return new IntermediateResultIcon();
-		
-		if (factor.isThreatReductionResult())
-			return new ThreatReductionResultIcon();
-		
-		if (factor.isTextBox())
-			return new TextBoxIcon();
-		
-		if (factor.isScopeBox())
-			return new ScopeBoxIcon();
-		
-		if (factor.isGroupBox())
-			return new GroupBoxIcon();
-		
-		throw new RuntimeException("Unknown factor type: " + factor.getRef());
 	}
 	
 	@Override
