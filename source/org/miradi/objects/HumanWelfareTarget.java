@@ -31,7 +31,7 @@ public class HumanWelfareTarget extends AbstractTarget
 {
 	public HumanWelfareTarget(ObjectManager objectManager, FactorId idToUse)
 	{
-		super(objectManager, idToUse, Factor.TYPE_HUMAN_WELFARE_TARGET);
+		super(objectManager, idToUse);
 		clear();
 	}
 	

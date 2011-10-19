@@ -48,7 +48,7 @@ import org.miradi.utils.EnhancedJsonObject;
 
 abstract public class AbstractTarget extends Factor
 {
-	public AbstractTarget(ObjectManager objectManager, FactorId idToUse, FactorType factorType)
+	public AbstractTarget(ObjectManager objectManager, FactorId idToUse)
 	{
 		super(objectManager, idToUse);
 	}
