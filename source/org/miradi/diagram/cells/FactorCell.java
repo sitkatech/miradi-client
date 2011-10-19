@@ -32,7 +32,6 @@ import org.jgraph.graph.DefaultPort;
 import org.jgraph.graph.GraphConstants;
 import org.jgraph.graph.GraphLayoutCache;
 import org.jgraph.graph.PortView;
-import org.miradi.diagram.factortypes.FactorType;
 import org.miradi.diagram.renderers.MultilineCellRenderer;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.FactorId;
@@ -208,11 +207,6 @@ abstract public class FactorCell extends EAMGraphCell
 	public String getLabel()
 	{
 		return getWrappedFactor().getLabel();
-	}
-	
-	public void setNodeType(FactorType typeToUse)
-	{
-		setColors();
 	}
 	
 	public boolean isStatusDraft()
