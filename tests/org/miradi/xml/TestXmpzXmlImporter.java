@@ -391,7 +391,8 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 		
 		ProjectForTesting projectToImportInto = ProjectForTesting.createProjectWithoutDefaultObjects("ProjectToImportInto");
 		XmpzXmlImporter xmlImporter = new XmpzXmlImporter(projectToImportInto, new NullProgressMeter());
-		StringInputStreamWithSeek stringInputputStream = new StringInputStreamWithSeek(firstWriter.toString());
+		String exportedProjectXml = firstWriter.toString();
+		StringInputStreamWithSeek stringInputputStream = new StringInputStreamWithSeek(exportedProjectXml);
 		try
 		{
 			xmlImporter.importProject(stringInputputStream);
@@ -402,7 +403,7 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 		}
 		
 		UnicodeStringWriter secondWriter = createWriter(projectToImportInto);
-		assertEquals("Exports from projects do not match?", firstWriter.toString(), secondWriter.toString());
+		assertEquals("Exports from projects do not match?", exportedProjectXml, secondWriter.toString());
 		
 		return projectToImportInto;
 	}
