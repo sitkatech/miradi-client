@@ -34,9 +34,6 @@ import org.martus.util.xml.XmlUtilities;
 import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.ChainWalker;
-import org.miradi.diagram.factortypes.FactorTypeCause;
-import org.miradi.diagram.factortypes.FactorTypeStrategy;
-import org.miradi.diagram.factortypes.FactorTypeTarget;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
@@ -326,10 +323,13 @@ abstract public class BaseObject
 				return new IntermediateResult(objectManager, new FactorId(idAsInt), json);
 
 			case ObjectType.CAUSE:
+				return new Cause(objectManager, new FactorId(idAsInt), json);
+				
 			case ObjectType.STRATEGY:
+				return new Strategy(objectManager, new FactorId(idAsInt), json);
+				
 			case ObjectType.TARGET:
-			case ObjectType.FACTOR:
-				return createFactorFromJson(objectManager, json, idAsInt);
+				return new Target(objectManager, new FactorId(idAsInt), json);
 
 			case ObjectType.VIEW_DATA:
 				return new ViewData(objectManager, idAsInt, json);
@@ -465,23 +465,6 @@ abstract public class BaseObject
 		}
 	}
 
-	private static Factor createFactorFromJson(ObjectManager objectManager, EnhancedJsonObject json, int idAsInt) throws Exception
-	{
-		String typeString = json.optString(Factor.TAG_NODE_TYPE);
-
-		if(typeString.equals(FactorTypeStrategy.STRATEGY_TYPE))
-			return new Strategy(objectManager, new FactorId(idAsInt), json);
-		
-		if(typeString.equals(FactorTypeCause.CAUSE_TYPE))
-			return new Cause(objectManager, new FactorId(idAsInt), json);
-		
-		if(typeString.equals(FactorTypeTarget.TARGET_TYPE))
-			return new Target(objectManager, new FactorId(idAsInt), json);
-
-		
-		throw new RuntimeException("Read unknown node type: " + typeString);
-	}
-	
 	abstract public int getType();
 	abstract public String getTypeName();
 	
