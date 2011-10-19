@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-19 12:58-0500\n"
+"POT-Creation-Date: 2011-10-19 16:10-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -7846,14 +7846,6 @@ msgstr ""
 #: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:88
 msgid "Total Monitoring Budget %1 %2"
 msgstr ""
-
-#: Miradi/source/org/miradi/diagram/factortypes/FactorTypeContributingFactor.java:38
-msgid "Type|Contributing Factor"
-msgstr "影响因素 \t\t"
-
-#: Miradi/source/org/miradi/diagram/factortypes/FactorTypeDirectThreat.java:37
-msgid "Type|Direct Threat"
-msgstr "直接威胁因子 \t\t"
 
 #: Miradi/source/org/miradi/views/noproject/CopyProject.java:46
 msgid ""
@@ -29006,6 +28998,12 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid "Type|Contributing Factor"
+#~ msgstr "影响因素 \t\t"
+
+#~ msgid "Type|Direct Threat"
+#~ msgstr "直接威胁因子 \t\t"
 
 #~ msgid ""
 #~ "html|/resources/help/AdaptiveManagement.html|  <!DOCTYPE HTML PUBLIC \"-//"
