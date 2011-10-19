@@ -128,14 +128,14 @@ public class MpzToDotMiradiConverter extends ProjectSaver
 	{
 		final Project tempProject = new Project();
 		EnhancedJsonObject json = new EnhancedJsonObject(fileContent);
+		BaseObject baseObject = BaseObject.createFromJson(tempProject.getObjectManager(), ref.getObjectType(), json);
 		Iterator iterator = json.keys();
 		while (iterator.hasNext())
 		{
 			String tag = (String)iterator.next();
 			if (!tag.equals(BaseObject.TAG_TIME_STAMP_MODIFIED))
 			{
-				String data = json.get(tag).toString();
-				BaseObject baseObject = BaseObject.createFromJson(tempProject.getObjectManager(), ref.getObjectType(), json);
+				String data = json.get(tag).toString();	
 				ObjectData dataField = baseObject.getField(tag);
 				if (dataField != null && dataField.isUserText())
 				{
