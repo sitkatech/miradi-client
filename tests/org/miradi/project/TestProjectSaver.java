@@ -66,7 +66,7 @@ public class TestProjectSaver extends TestCaseWithProject
 		compareProjects(project, project2);
 	}
 
-	public void compareProjects(final ProjectForTesting project1, final Project project2)
+	public static void compareProjects(final ProjectForTesting project1, final Project project2)
 	{
 		for (int type = ObjectType.FIRST_OBJECT_TYPE; type < ObjectType.OBJECT_TYPE_COUNT; ++type)
 		{
@@ -94,7 +94,7 @@ public class TestProjectSaver extends TestCaseWithProject
 		assertEquals(contents, afterLoading);
 	}
 
-	private void verifyIdenticalObjects(ProjectForTesting project, Project project2, ORefList refs)
+	private static void verifyIdenticalObjects(ProjectForTesting project, Project project2, ORefList refs)
 	{
 		for(int i = 0; i < refs.size(); ++i)
 		{
