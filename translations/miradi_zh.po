@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-19 16:10-0500\n"
+"POT-Creation-Date: 2011-10-19 16:23-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -507,7 +507,7 @@ msgstr ""
 "在下一个版本的Miradi中应当能够被实现。<BR>如果您有问题，请联系support@miradi."
 "org。</HTML> \t\t"
 
-#: Miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:107
+#: Miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:97
 msgid ""
 "<HTML>The TNC Operating Unit field has been changed from a text field to a "
 "picklist. <BR>Miradi has attemped to migrate existing data, but it may not "
@@ -518,7 +518,7 @@ msgstr ""
 "的数据，但可能仍未成功。<BR>请到概要视图，TNC标签并确认操作单元针对本项目设置"
 "正确。</HTML> \t\t"
 
-#: Miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:97
+#: Miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:87
 msgid ""
 "<HTML>The TNC ecoregion field has been changed from a single text field to "
 "three picklists. <BR>Miradi has attempted to migrate the ecoregion data, but "
@@ -879,7 +879,7 @@ msgid ""
 "reversed and the target affected by the threat restored. "
 msgstr ""
 
-#: Miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:133
+#: Miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:123
 msgid ""
 "<html>Miradi now allows you to specify what currency is being used for "
 "budgeting, <br>and to specify Fiscal Years that are different from Calendar "
@@ -953,7 +953,7 @@ msgid ""
 "Team for further assistance.  </html>"
 msgstr ""
 
-#: Miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:816
+#: Miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:806
 msgid ""
 "<html>This version of Miradi has changed the Strategy rating options.<br>The "
 "Duration and Cost fields have been removed, and the <br>Impact and "
@@ -3104,7 +3104,7 @@ msgstr "详尽的方法、任务及职责 \t\t"
 msgid "Details"
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:113
+#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:112
 msgid "Details:"
 msgstr "详情： \t\t"
 
@@ -3799,7 +3799,7 @@ msgstr "总目标组 \t\t"
 msgid "Goals Only"
 msgstr "仅限于总目标 \t\t"
 
-#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:101
+#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:100
 msgid "Goals:"
 msgstr "总目标组: \t\t"
 
@@ -4099,7 +4099,7 @@ msgstr "仅限于指示物 \t\t"
 msgid "Indicators no longer referrer to same Resource Assignment"
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:95
+#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:94
 msgid "Indicators:"
 msgstr "指示物: \t\t"
 
@@ -5167,7 +5167,7 @@ msgstr "仅限于分目标组 \t\t"
 msgid "Objectives contain Strategies"
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:107
+#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:106
 msgid "Objectives:"
 msgstr "分目标组： \t\t"
 
@@ -5195,7 +5195,7 @@ msgstr ""
 msgid "On-Track - Ongoing, generally on track"
 msgstr "正轨上——正在进行、步入正轨"
 
-#: Miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:1218
+#: Miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:1208
 msgid ""
 "One or more Goals that were associated with KEA Indicators have been "
 "deleted. Please create new Goals as needed, or use the new Future Status "
