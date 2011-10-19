@@ -25,6 +25,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
+import org.martus.util.UnicodeStringReader;
 import org.martus.util.UnicodeStringWriter;
 import org.miradi.main.TestCaseWithProject;
 
@@ -40,8 +41,6 @@ public class TestMpzToMiradiConverter extends TestCaseWithProject
 		getProject().populateEverything();
 		getProject().populateSimpleThreatRatingValues();
 		
-		String projectAsStringFromSaver = TestProjectSaver.saveProjectToString(getProject());
-		
 		ByteArrayOutputStream out = addProjectAsMpzToZip(getProject());
 		byte[] byteArray = out.toByteArray();
 		ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(byteArray);
@@ -51,7 +50,13 @@ public class TestMpzToMiradiConverter extends TestCaseWithProject
 		writer.close();
 		String projectAsStringFromConverter = writer.toString();
 		
-		assertEquals(projectAsStringFromSaver, projectAsStringFromConverter);
+		ProjectForTesting project2 = new ProjectForTesting(getName());
+		project2.clear();
+		UnicodeStringReader reader = new UnicodeStringReader(projectAsStringFromConverter);
+		
+		ProjectLoader.loadProject(reader, project2);
+		
+		TestProjectSaver.compareProjects(getProject(), project2);
 	}
 	
 	private ByteArrayOutputStream addProjectAsMpzToZip(ProjectForTesting projectForTesting) throws Exception

@@ -29,6 +29,7 @@ import org.martus.util.UnicodeStringWriter;
 import org.miradi.database.ProjectServer;
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.BaseObject;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class MpzToDotMiradiConverter extends ProjectSaver
@@ -125,23 +126,17 @@ public class MpzToDotMiradiConverter extends ProjectSaver
 
 	public void writeUpdateObjectLines(String fileContent, ORef ref) throws Exception
 	{
-		try
+		EnhancedJsonObject json = new EnhancedJsonObject(fileContent);
+		Iterator iterator = json.keys();
+		while (iterator.hasNext())
 		{
-			EnhancedJsonObject json = new EnhancedJsonObject(fileContent);
-			Iterator iterator = json.keys();
-			while (iterator.hasNext())
+			String tag = (String)iterator.next();
+			if (!tag.equals(BaseObject.TAG_TIME_STAMP_MODIFIED))
 			{
-				String tag = (String)iterator.next();
 				final String data = json.get(tag).toString();
 				writeRefTagValue(UPDATE_OBJECT_CODE, ref, tag, data);
 			}
-
 		}
-		catch (Exception e)
-		{
-			System.out.println("-------------------"+fileContent);
-		}
-
 	}
 
 	private static int findSlash(String name)
