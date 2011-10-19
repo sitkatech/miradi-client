@@ -152,6 +152,7 @@ public class WelcomeCreateStep extends NoProjectWizardStep
 		}
 		catch (Exception e)
 		{
+			EAM.logException(e);
 			EAM.notifyDialog(EAM.text("Create Failed:") +e.getMessage());
 		}
 	}
