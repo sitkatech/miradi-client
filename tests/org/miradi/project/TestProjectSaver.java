@@ -63,9 +63,14 @@ public class TestProjectSaver extends TestCaseWithProject
 		ProjectLoader.loadProject(reader, project2);
 		
 		final ProjectForTesting project = getProject();
+		compareProjects(project, project2);
+	}
+
+	public void compareProjects(final ProjectForTesting project1, final Project project2)
+	{
 		for (int type = ObjectType.FIRST_OBJECT_TYPE; type < ObjectType.OBJECT_TYPE_COUNT; ++type)
 		{
-			EAMObjectPool oldPool = project.getPool(type);
+			EAMObjectPool oldPool = project1.getPool(type);
 			if (oldPool == null)
 				continue;
 			ORefList oldRefs = oldPool.getSortedRefList();
@@ -73,7 +78,7 @@ public class TestProjectSaver extends TestCaseWithProject
 			EAMObjectPool newPool = project2.getPool(type);
 			ORefList newRefs = newPool.getSortedRefList();
 			assertEquals(oldRefs, newRefs);
-			verifyIdenticalObjects(project, project2, newRefs);
+			verifyIdenticalObjects(project1, project2, newRefs);
 		}
 	}
 	
