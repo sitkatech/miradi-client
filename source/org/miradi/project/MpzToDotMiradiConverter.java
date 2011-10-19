@@ -70,7 +70,7 @@ public class MpzToDotMiradiConverter extends ProjectSaver
 	
 	private void extractOneFile(ZipEntry entry) throws Exception
 	{
-		byte[] contents = convertToByteArray(entry);
+		byte[] contents = readIntoByteArray(entry);
 		final String fileContent = new String(contents, "UTF-8");
 		
 		String relativeFilePath = entry.getName();
@@ -101,7 +101,7 @@ public class MpzToDotMiradiConverter extends ProjectSaver
 	}
 	
 	
-	private byte[] convertToByteArray(ZipEntry entry) throws Exception
+	private byte[] readIntoByteArray(ZipEntry entry) throws Exception
 	{
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
 		byte[] buffer = new byte[1024];
