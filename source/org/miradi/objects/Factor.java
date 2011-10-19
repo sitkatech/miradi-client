@@ -60,7 +60,7 @@ abstract public class Factor extends BaseObject
 		super(objectManager, idToUse);
 	}
 	
-	protected Factor(ObjectManager objectManager, FactorId idToUse, FactorType nodeType, EnhancedJsonObject json) throws Exception
+	protected Factor(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception
 	{
 		super(objectManager, idToUse, json);
 	}

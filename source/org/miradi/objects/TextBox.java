@@ -37,7 +37,7 @@ public class TextBox extends Factor
 	
 	public TextBox(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception
 	{
-		super(objectManager, idToUse, Factor.TYPE_TEXT_BOX, json);
+		super(objectManager, idToUse, json);
 	}
 	
 	@Override
