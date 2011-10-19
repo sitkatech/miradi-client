@@ -272,7 +272,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public void setFiscalYearStartMonth(int startMonth) throws Exception
 	{
-		getMetadata().setData(ProjectMetadata.TAG_FISCAL_YEAR_START, Integer.toString(startMonth));
+		setObjectData(getMetadata(), ProjectMetadata.TAG_FISCAL_YEAR_START, Integer.toString(startMonth));
 	}
 
 	public void setSingleYearProjectDate(int singleYear) throws Exception
@@ -879,12 +879,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public void tagDiagramFactor(ORef refToTag) throws Exception
 	{
 		TaggedObjectSet taggedObjectSet = createTaggedObjectSet();
-		taggedObjectSet.setData(TaggedObjectSet.TAG_LABEL, "SomeTag");
+		setObjectData(taggedObjectSet, TaggedObjectSet.TAG_LABEL, "SomeTag");
 		ORefList taggedFactorRefs = new ORefList(refToTag);
-		taggedObjectSet.setData(TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, taggedFactorRefs.toString());
+		setObjectData(taggedObjectSet, TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, taggedFactorRefs.toString());
 		
 		ORefList taggedObjectSetRefs = new ORefList(taggedObjectSet.getRef());
-		getTestingDiagramObject().setData(DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, taggedObjectSetRefs.toString());
+		setObjectData(getTestingDiagramObject(), DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, taggedObjectSetRefs.toString());
 	}
 	
 	public void addAccountingCode(ResourceAssignment resourceAssignment) throws Exception
@@ -2013,11 +2013,11 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		ORef expenseRef = createObject(ExpenseAssignment.getObjectType());
 		ExpenseAssignment assignment = ExpenseAssignment.find(this, expenseRef);
-		assignment.setData(ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());
+		setObjectData(assignment, ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());
 		
 		ORefList currentAssignmentRefList = baseObject.getRefListData(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS);
 		currentAssignmentRefList.add(assignment.getRef());
-		baseObject.setData(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS, currentAssignmentRefList.toString());
+		setObjectData(baseObject,BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS, currentAssignmentRefList.toString());
 		
 		return assignment;
 	}
@@ -2087,10 +2087,10 @@ public class ProjectForTesting extends ProjectWithHelpers
 
 	private ResourceAssignment addResourceAssignment(BaseObject parentObject, ResourceAssignment assignment, DateUnitEffortList dateUnitEffortList) throws Exception
 	{
-		assignment.setData(ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());
+		setObjectData(assignment, ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());
 		IdList currentAssignmentIdList = parentObject.getIdListData(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS);
 		currentAssignmentIdList.add(assignment.getId());
-		parentObject.setData(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, currentAssignmentIdList.toString());
+		setObjectData(parentObject, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, currentAssignmentIdList.toString());
 		
 		return assignment;
 	}
