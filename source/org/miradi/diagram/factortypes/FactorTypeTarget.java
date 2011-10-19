@@ -31,9 +31,7 @@ public class FactorTypeTarget extends FactorType
 	@Override
 	public String toString()
 	{
-		return TARGET_TYPE;
+		return "Target";
 	}
-
-	public static final String TARGET_TYPE = "Target";
 
 }
