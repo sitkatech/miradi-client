@@ -148,14 +148,18 @@ public class ProjectLoader
 		String refString = tokenizer.nextToken();
 		ORef ref = extractRef(refString);
 		String tag = tokenizer.nextToken(EQUALS_DELIMITER_TAB_PREFIXED);
-		String value = tokenizer.nextToken(EQUALS_DELIMITER_NEWLINE_POSTFIXED);
-		value = value.replaceAll("<br/>", "\n");
-		value = value.replaceAll("&lt;", "<");
-		value = value.replaceAll("&gt;", ">");
-		value = value.replaceAll("&quot;", "\"");
-		value = value.replaceAll("&#39;", "'");
-		value = value.replaceAll("&amp;", "&");
-		getProject().setObjectData(ref, tag, value);
+		final boolean hasData = tokenizer.hasMoreTokens();
+		if (hasData)
+		{
+			String value = tokenizer.nextToken(EQUALS_DELIMITER_NEWLINE_POSTFIXED);
+			value = value.replaceAll("<br/>", "\n");
+			value = value.replaceAll("&lt;", "<");
+			value = value.replaceAll("&gt;", ">");
+			value = value.replaceAll("&quot;", "\"");
+			value = value.replaceAll("&#39;", "'");
+			value = value.replaceAll("&amp;", "&");
+			getProject().setObjectData(ref, tag, value);
+		}
 	}
 
 	public ORef extractRef(String refString)
