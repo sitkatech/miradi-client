@@ -60,7 +60,7 @@ public class MpzToDotMiradiConverter extends ProjectSaver
 					break;
 				
 				if (!entry.isDirectory())
-					writeOneFile(entry);
+					extractOneFile(entry);
 			}
 		}
 		finally
@@ -68,7 +68,7 @@ public class MpzToDotMiradiConverter extends ProjectSaver
 		}
 	}
 	
-	private void writeOneFile(ZipEntry entry) throws Exception
+	private void extractOneFile(ZipEntry entry) throws Exception
 	{
 		byte[] contents = convertToByteArray(entry);
 		final String fileContent = new String(contents, "UTF-8");
