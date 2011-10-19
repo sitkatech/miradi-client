@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
-import org.miradi.diagram.factortypes.FactorTypeIntermediateResult;
 import org.miradi.ids.FactorId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -32,7 +31,7 @@ public class IntermediateResult extends Factor
 {
 	public IntermediateResult(ObjectManager objectManager, FactorId idToUse)
 	{
-		super(objectManager, idToUse, new FactorTypeIntermediateResult());
+		super(objectManager, idToUse);
 		clear();
 	}
 	

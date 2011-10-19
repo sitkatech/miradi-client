@@ -55,7 +55,7 @@ import org.miradi.utils.EnhancedJsonObject;
 
 abstract public class Factor extends BaseObject
 {
-	protected Factor(ObjectManager objectManager, BaseId idToUse, FactorType nodeType)
+	protected Factor(ObjectManager objectManager, BaseId idToUse)
 	{
 		super(objectManager, idToUse);
 	}

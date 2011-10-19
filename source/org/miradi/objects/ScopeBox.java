@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
-import org.miradi.diagram.factortypes.FactorTypeScopeBox;
 import org.miradi.ids.FactorId;
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objecthelpers.ORef;
@@ -34,7 +33,7 @@ public class ScopeBox extends Factor
 {
 	public ScopeBox(ObjectManager objectManager, FactorId idToUse)
 	{
-		super(objectManager, idToUse, new FactorTypeScopeBox());
+		super(objectManager, idToUse);
 		clear();
 	}
 	

@@ -52,7 +52,7 @@ public class Strategy extends Factor
 {
 	public Strategy(ObjectManager objectManager, FactorId idToUse)
 	{
-		super(objectManager, idToUse, Factor.TYPE_STRATEGY);
+		super(objectManager, idToUse);
 		clear();
 	}
 	

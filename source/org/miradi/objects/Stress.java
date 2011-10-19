@@ -39,7 +39,7 @@ public class Stress extends Factor
 {
 	public Stress(ObjectManager objectManager, FactorId idToUse)
 	{
-		super(objectManager, idToUse, Factor.TYPE_STRESS);
+		super(objectManager, idToUse);
 		clear();
 	}
 	

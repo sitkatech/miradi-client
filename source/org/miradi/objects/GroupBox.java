@@ -31,7 +31,7 @@ public class GroupBox extends Factor
 {
 	public GroupBox(ObjectManager objectManager, FactorId idToUse)
 	{
-		super(objectManager, idToUse, Factor.TYPE_GROUP_BOX);
+		super(objectManager, idToUse);
 		clear();
 	}
 		

@@ -44,7 +44,7 @@ public class Task extends Factor
 {
 	public Task(ObjectManager objectManager, FactorId idToUse)
 	{
-		super(objectManager, idToUse, Factor.TYPE_ACTIVITY);
+		super(objectManager, idToUse);
 		clear();
 	}
 	

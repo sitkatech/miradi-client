@@ -50,7 +50,7 @@ abstract public class AbstractTarget extends Factor
 {
 	public AbstractTarget(ObjectManager objectManager, FactorId idToUse, FactorType factorType)
 	{
-		super(objectManager, idToUse, factorType);
+		super(objectManager, idToUse);
 	}
 	
 	public AbstractTarget(ObjectManager objectManager, FactorId idToUse, FactorType factorType, EnhancedJsonObject json) throws Exception
