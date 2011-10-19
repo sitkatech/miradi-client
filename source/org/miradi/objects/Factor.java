@@ -22,18 +22,6 @@ package org.miradi.objects;
 import java.text.ParseException;
 
 import org.miradi.diagram.ChainWalker;
-import org.miradi.diagram.factortypes.FactorType;
-import org.miradi.diagram.factortypes.FactorTypeActivity;
-import org.miradi.diagram.factortypes.FactorTypeCause;
-import org.miradi.diagram.factortypes.FactorTypeGroupBox;
-import org.miradi.diagram.factortypes.FactorTypeHumanWelfareTarget;
-import org.miradi.diagram.factortypes.FactorTypeIntermediateResult;
-import org.miradi.diagram.factortypes.FactorTypeScopeBox;
-import org.miradi.diagram.factortypes.FactorTypeStrategy;
-import org.miradi.diagram.factortypes.FactorTypeStress;
-import org.miradi.diagram.factortypes.FactorTypeTarget;
-import org.miradi.diagram.factortypes.FactorTypeTextBox;
-import org.miradi.diagram.factortypes.FactorTypeThreatReductionResult;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
@@ -530,18 +518,6 @@ abstract public class Factor extends BaseObject
 		addField(PSEUDO_TAG_REFERRING_TAG_REFS, pseudoTagReferringTagRefs);
 	}
 
-	public static final FactorType TYPE_ACTIVITY = new FactorTypeActivity();
-	public static final FactorType TYPE_STRESS = new FactorTypeStress();
-	public static final FactorType TYPE_GROUP_BOX = new FactorTypeGroupBox();
-	public static final FactorType TYPE_TEXT_BOX = new FactorTypeTextBox();
-	public static final FactorType TYPE_SCOPE_BOX = new FactorTypeScopeBox();
-	public static final FactorType TYPE_THREAT_REDUCTION_RESULT = new FactorTypeThreatReductionResult();
-	public static final FactorType TYPE_INTERMEDIATE_RESULT = new FactorTypeIntermediateResult();
-	public static final FactorType TYPE_TARGET = new FactorTypeTarget();
-	public static final FactorType TYPE_CAUSE = new FactorTypeCause();
-	public static final FactorType TYPE_STRATEGY = new FactorTypeStrategy();
-	public static final FactorType TYPE_HUMAN_WELFARE_TARGET = new FactorTypeHumanWelfareTarget();
-	
 	public static final String TAG_COMMENTS = "Comments";
 	public static final String TAG_TEXT = "Text";
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
