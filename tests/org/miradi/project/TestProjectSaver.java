@@ -62,9 +62,10 @@ public class TestProjectSaver extends TestCaseWithProject
 		UnicodeStringReader reader = new UnicodeStringReader(contents);
 		ProjectLoader.loadProject(reader, project2);
 		
+		final ProjectForTesting project = getProject();
 		for (int type = ObjectType.FIRST_OBJECT_TYPE; type < ObjectType.OBJECT_TYPE_COUNT; ++type)
 		{
-			EAMObjectPool oldPool = getProject().getPool(type);
+			EAMObjectPool oldPool = project.getPool(type);
 			if (oldPool == null)
 				continue;
 			ORefList oldRefs = oldPool.getSortedRefList();
@@ -72,7 +73,7 @@ public class TestProjectSaver extends TestCaseWithProject
 			EAMObjectPool newPool = project2.getPool(type);
 			ORefList newRefs = newPool.getSortedRefList();
 			assertEquals(oldRefs, newRefs);
-			verifyIdenticalObjects(getProject(), project2, newRefs);
+			verifyIdenticalObjects(project, project2, newRefs);
 		}
 	}
 	
