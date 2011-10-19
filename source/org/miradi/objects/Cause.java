@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
-import org.miradi.diagram.factortypes.FactorTypeCause;
 import org.miradi.ids.FactorId;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objectdata.ChoiceData;
@@ -35,7 +34,7 @@ public class Cause extends Factor
 {
 	public Cause(ObjectManager objectManager, FactorId idToUse)
 	{
-		super(objectManager, idToUse, new FactorTypeCause());
+		super(objectManager, idToUse);
 		clear();
 	}
 	

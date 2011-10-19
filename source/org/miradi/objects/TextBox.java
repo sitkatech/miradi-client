@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
-import org.miradi.diagram.factortypes.FactorTypeTextBox;
 import org.miradi.ids.FactorId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -32,7 +31,7 @@ public class TextBox extends Factor
 {
 	public TextBox(ObjectManager objectManager, FactorId idToUse)
 	{
-		super(objectManager, idToUse, new FactorTypeTextBox());
+		super(objectManager, idToUse);
 		clear();
 	}
 	
