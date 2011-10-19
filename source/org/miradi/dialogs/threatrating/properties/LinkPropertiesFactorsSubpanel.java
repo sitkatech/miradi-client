@@ -25,6 +25,7 @@ import org.miradi.diagram.factortypes.FactorType;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.icons.IconManager;
 import org.miradi.layout.OneRowGridLayout;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
@@ -97,12 +98,12 @@ public class LinkPropertiesFactorsSubpanel extends ObjectDataInputPanel
 		{
 			Factor threat = Factor.findFactor(getProject(), threatRef);
 			threatLabel.setText(FactorType.getFactorTypeLabel(threat));
-			threatLabel.setIcon(FactorType.getFactorIcon(threat));
+			threatLabel.setIcon(IconManager.getImage(threat));
 			threatNameField.setObjectRef(threat.getRef());
 
 			Factor target = Factor.findFactor(getProject(), targetRef);
 			targetLabel.setText(FactorType.getFactorTypeLabel(target));
-			targetLabel.setIcon(FactorType.getFactorIcon(target));
+			targetLabel.setIcon(IconManager.getImage(target));
 			targetNameField.setObjectRef(target.getRef());
 		}
 		catch(Exception e)

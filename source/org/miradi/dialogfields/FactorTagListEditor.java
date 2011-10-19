@@ -28,8 +28,8 @@ import javax.swing.JToggleButton;
 import javax.swing.event.ListSelectionListener;
 
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.diagram.factortypes.FactorType;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.icons.IconManager;
 import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
@@ -101,7 +101,7 @@ public class FactorTagListEditor extends AbstractQuestionEditorComponent impleme
 		addEmptySpace(labelPanelWithIcon);
 		try
 		{
-			Icon factorIcon = FactorType.getFactorIcon(selectedFactor);
+			Icon factorIcon = IconManager.getImage(selectedFactor);
 			labelPanelWithIcon.add(new PanelTitleLabel(selectedFactor.toString(), factorIcon));
 		}
 		catch(Exception e)

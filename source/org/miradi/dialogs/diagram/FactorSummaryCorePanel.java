@@ -26,6 +26,7 @@ import org.miradi.actions.Actions;
 import org.miradi.diagram.factortypes.FactorType;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
@@ -58,7 +59,7 @@ public class FactorSummaryCorePanel extends ObjectDataInputPanel
 		labelField = createExpandableField(Factor.TAG_LABEL);
 		
 		addFieldsOnOneLine(FactorType.getFactorTypeLabel(factorToEdit), 
-				FactorType.getFactorIcon(factorToEdit), 
+				IconManager.getImage(factorToEdit), 
 				new ObjectDataInputField[]{shortLabelField, labelField});
 		addField(createMultilineField(Factor.TAG_TEXT));
 

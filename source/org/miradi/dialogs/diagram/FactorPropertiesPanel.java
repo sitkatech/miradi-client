@@ -53,6 +53,7 @@ import org.miradi.dialogs.subTarget.SubTargetManagementPanel;
 import org.miradi.dialogs.viability.FactorPropertiesViabilityTreeManagementPanel;
 import org.miradi.dialogs.viability.TargetPropertiesKeaViabilityTreeManagementPanel;
 import org.miradi.dialogs.viability.TargetViabilityManagementPanel;
+import org.miradi.icons.IconManager;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
@@ -467,7 +468,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 	
 	private UiLabel createFactorTypeLabel(Factor factor) throws Exception
 	{
-		Icon factorIcon = FactorType.getFactorIcon(factor);
+		Icon factorIcon = IconManager.getImage(factor);
 		String factorLabel = FactorType.getFactorTypeLabel(factor);
 		return new PanelTitleLabel(factorLabel, factorIcon, UiLabel.LEADING);
 	}
