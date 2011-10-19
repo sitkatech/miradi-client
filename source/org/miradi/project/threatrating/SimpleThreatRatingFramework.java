@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.project.threatrating;
 
-import java.awt.Color;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -68,11 +66,6 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 	public void clear()
 	{
 		bundles = new HashMap<String, ThreatRatingBundle>();
-		if(getProject().getObjectManager().writeToOldProjectDirectories)
-		{
-			criteria = new RatingCriterion[0];
-			ratingValueOptions = new ValueOption[0];
-		}
 	}
 	
 	public SimpleThreatFormula getSimpleThreatFormula()
@@ -100,61 +93,6 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 		for(int i = 0; i < getCriteria().length; ++i)
 			ids.add(getCriteria()[i].getId());
 		return ids;
-	}
-	
-	public void createMissingBuiltInObjects() throws Exception
-	{
-		if(getProject().getObjectManager().writeToOldProjectDirectories)
-		{
-			if(getCriteria().length == 0)
-			{
-				IdList ids = new IdList(RatingCriterion.getObjectType());
-				ids.add(createDefaultCriterion("Scope")); 
-				ids.add(createDefaultCriterion("Severity"));
-				ids.add(createDefaultCriterion("Irreversibility"));
-				
-				criteria = new RatingCriterion[ids.size()];
-				for(int i = 0; i < criteria.length; ++i)
-					criteria[i] = (RatingCriterion)getProject().findObject(ObjectType.RATING_CRITERION, ids.get(i));
-				
-				saveFramework();
-			}
-			
-			if(ratingValueOptions.length == 0)
-			{
-				IdList ids = new IdList(ValueOption.getObjectType());
-				ids.add(createDefaultValueOption("None", NONE_VALUE, Color.WHITE));
-				ids.add(createDefaultValueOption("Very High", VERY_HIGH_RATING_VALUE, Color.RED));
-				ids.add(createDefaultValueOption("High", HIGH_RATING_VALUE, Color.ORANGE));
-				ids.add(createDefaultValueOption("Medium", MEDIUM_RATING_VALUE, Color.YELLOW));
-				ids.add(createDefaultValueOption("Low", LOW_RATING_VALUE, Color.GREEN));
-				
-				ratingValueOptions = new ValueOption[ids.size()];
-				for(int i = 0; i < ratingValueOptions.length; ++i)
-					ratingValueOptions[i] = (ValueOption)getProject().findObject(ObjectType.VALUE_OPTION, ids.get(i));
-	
-				Arrays.sort(ratingValueOptions, new OptionSorter());
-				saveFramework();
-			}
-		}
-	}
-
-	private BaseId createDefaultValueOption(String label, int numericValue, Color color) throws Exception
-	{
-		int type = ObjectType.VALUE_OPTION;
-		BaseId createdId = getProject().createObjectAndReturnId(type);
-		getProject().setObjectData(type, createdId, ValueOption.TAG_LABEL, label);
-		getProject().setObjectData(type, createdId, ValueOption.TAG_NUMERIC, Integer.toString(numericValue));
-		getProject().setObjectData(type, createdId, ValueOption.TAG_COLOR, Integer.toString(color.getRGB()));
-		return createdId;
-	}
-
-	private BaseId createDefaultCriterion(String label) throws Exception
-	{
-		int type = ObjectType.RATING_CRITERION;
-		BaseId createdId = getProject().createObjectAndReturnId(type);
-		getProject().setObjectData(type, createdId, RatingCriterion.TAG_LABEL, label);
-		return createdId;
 	}
 	
 	public int getBundleCount()
@@ -578,12 +516,7 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 				for(ThreatRatingBundle bundle : loadedBundles)
 					memorize(bundle);
 	
-				ratingValueOptions = findValueOptions(new IdList(ValueOption.getObjectType(), db.readRawThreatRatingFramework().optJson(TAG_VALUE_OPTION_IDS)));
-				Arrays.sort(ratingValueOptions, new OptionSorter());
-				criteria = findCriteria(new IdList(RatingCriterion.getObjectType(), db.readRawThreatRatingFramework().optJson(TAG_CRITERION_IDS)));
 			}
-			
-			createMissingBuiltInObjects();
 		}
 	}
 
@@ -604,17 +537,17 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 		return loadedBundles;
 	}
 
-	private ValueOption[] findValueOptions(IdList ids)
-	{
-		ValueOption[] valueOptions = new ValueOption[ids.size()];
-		for(int i = 0; i < valueOptions.length; ++i)
-		{
-			int type = ObjectType.VALUE_OPTION;
-			valueOptions[i] = (ValueOption)getProject().findObject(type, ids.get(i));
-		}
-		
-		return valueOptions;
-	}
+//	private ValueOption[] findValueOptions(IdList ids)
+//	{
+//		ValueOption[] valueOptions = new ValueOption[ids.size()];
+//		for(int i = 0; i < valueOptions.length; ++i)
+//		{
+//			int type = ObjectType.VALUE_OPTION;
+//			valueOptions[i] = (ValueOption)getProject().findObject(type, ids.get(i));
+//		}
+//		
+//		return valueOptions;
+//	}
 	
 //	private RatingCriterion[] sortCriteria(RatingCriterion[] candidates)
 //	{
@@ -628,19 +561,19 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 //		return sorted;
 //	}
 //	
-	private RatingCriterion[] findCriteria(IdList ids)
-	{
-		if(ids.contains(BaseId.INVALID))
-			ids.removeId(BaseId.INVALID);
-		RatingCriterion[] ratingCriteria = new RatingCriterion[ids.size()];
-		for(int i = 0; i < ratingCriteria.length; ++i)
-		{
-			int type = ObjectType.RATING_CRITERION;
-			ratingCriteria[i] = (RatingCriterion)getProject().findObject(type, ids.get(i));
-		}
-		
-		return ratingCriteria;
-	}
+//	private RatingCriterion[] findCriteria(IdList ids)
+//	{
+//		if(ids.contains(BaseId.INVALID))
+//			ids.removeId(BaseId.INVALID);
+//		RatingCriterion[] ratingCriteria = new RatingCriterion[ids.size()];
+//		for(int i = 0; i < ratingCriteria.length; ++i)
+//		{
+//			int type = ObjectType.RATING_CRITERION;
+//			ratingCriteria[i] = (RatingCriterion)getProject().findObject(type, ids.get(i));
+//		}
+//		
+//		return ratingCriteria;
+//	}
 	
 	private ProjectServer getDatabase()
 	{
@@ -669,7 +602,5 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 	public static final int VERY_HIGH_RATING_VALUE = 4;
 
 	private HashMap<String, ThreatRatingBundle> bundles;
-	private ValueOption[] ratingValueOptions;
-	private RatingCriterion[] criteria;
 	private ThreatTargetChainWalker threatTargetChainObject;
 }
