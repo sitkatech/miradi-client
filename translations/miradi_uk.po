@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-19 16:10-0500\n"
+"POT-Creation-Date: 2011-10-19 16:23-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -524,7 +524,7 @@ msgstr ""
 "зараз випробовується і має бути у наступній версії Міраді. <BR>Якщо маєте "
 "питання, контактуйте support@miradi.org.</HTML>"
 
-#: Miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:107
+#: Miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:97
 msgid ""
 "<HTML>The TNC Operating Unit field has been changed from a text field to a "
 "picklist. <BR>Miradi has attemped to migrate existing data, but it may not "
@@ -537,7 +537,7 @@ msgstr ""
 "табулятора і підтвердіть, що Операційна одиниця встановлена правильно для "
 "цього проекту.</HTML>"
 
-#: Miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:97
+#: Miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:87
 msgid ""
 "<HTML>The TNC ecoregion field has been changed from a single text field to "
 "three picklists. <BR>Miradi has attempted to migrate the ecoregion data, but "
@@ -986,7 +986,7 @@ msgid ""
 "reversed and the target affected by the threat restored. "
 msgstr ""
 
-#: Miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:133
+#: Miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:123
 msgid ""
 "<html>Miradi now allows you to specify what currency is being used for "
 "budgeting, <br>and to specify Fiscal Years that are different from Calendar "
@@ -1091,7 +1091,7 @@ msgstr ""
 "ця проблема <BR> не буде вирішена.  Будь ласка, контактуйте з командою "
 "Міраді для допомоги.  </html>"
 
-#: Miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:816
+#: Miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:806
 msgid ""
 "<html>This version of Miradi has changed the Strategy rating options.<br>The "
 "Duration and Cost fields have been removed, and the <br>Impact and "
@@ -3283,7 +3283,7 @@ msgstr "Деталізувати методи, задачі і відповід�
 msgid "Details"
 msgstr "Деталі"
 
-#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:113
+#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:112
 msgid "Details:"
 msgstr "Деталі:"
 
@@ -3984,7 +3984,7 @@ msgstr "Мета"
 msgid "Goals Only"
 msgstr "Тільки цілі (як мета)"
 
-#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:101
+#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:100
 msgid "Goals:"
 msgstr "Цілі:"
 
@@ -4289,7 +4289,7 @@ msgstr "Тільки індикатори"
 msgid "Indicators no longer referrer to same Resource Assignment"
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:95
+#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:94
 msgid "Indicators:"
 msgstr "Індикатори:"
 
@@ -5383,7 +5383,7 @@ msgstr "Тільки завдання"
 msgid "Objectives contain Strategies"
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:107
+#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:106
 msgid "Objectives:"
 msgstr "Завдання:"
 
@@ -5411,7 +5411,7 @@ msgstr "По слідах"
 msgid "On-Track - Ongoing, generally on track"
 msgstr "Під контролем - Діючий, як правило під наглядом"
 
-#: Miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:1218
+#: Miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:1208
 msgid ""
 "One or more Goals that were associated with KEA Indicators have been "
 "deleted. Please create new Goals as needed, or use the new Future Status "
