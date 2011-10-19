@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-18 15:24-0500\n"
+"POT-Creation-Date: 2011-10-19 11:01-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -2823,7 +2823,7 @@ msgstr ""
 msgid "Create"
 msgstr "创建 \t\t"
 
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:155
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:156
 msgid "Create Failed:"
 msgstr "创建失败： \t\t"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-18 15:24-0500\n"
+"POT-Creation-Date: 2011-10-19 11:01-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -2997,7 +2997,7 @@ msgstr ""
 msgid "Create"
 msgstr "Створити"
 
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:155
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:156
 msgid "Create Failed:"
 msgstr "Створити не вдалося:"
 

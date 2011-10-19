@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-18 15:24-0500\n"
+"POT-Creation-Date: 2011-10-19 11:01-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -2928,7 +2928,7 @@ msgstr ""
 msgid "Create"
 msgstr "Buat "
 
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:155
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:156
 msgid "Create Failed:"
 msgstr "Pembuatan gagal: "
 

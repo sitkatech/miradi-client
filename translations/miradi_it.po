@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-18 15:24-0500\n"
+"POT-Creation-Date: 2011-10-19 11:01-0500\n"
 "PO-Revision-Date: 2011-04-29 11:26+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -3048,7 +3048,7 @@ msgstr ""
 msgid "Create"
 msgstr "Crea"
 
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:155
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:156
 msgid "Create Failed:"
 msgstr "Fallita creazione:"
 
