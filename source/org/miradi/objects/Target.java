@@ -41,7 +41,7 @@ public class Target extends AbstractTarget
 {
 	public Target(ObjectManager objectManager, FactorId idToUse)
 	{
-		super(objectManager, idToUse, Factor.TYPE_TARGET);
+		super(objectManager, idToUse);
 		clear();
 	}
 	
