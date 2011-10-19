@@ -66,6 +66,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.ProgressReportLongStatusQuestion;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.DateRange;
@@ -796,7 +797,7 @@ abstract public class BaseObject
 	
 	protected ChoiceQuestion getQuestion(Class questionClass)
 	{
-		return getProject().getQuestion(questionClass);
+		return StaticQuestionManager.getQuestion(questionClass);
 	}
 	
 	protected void createChoiceField(String tag,	Class questionClass)
