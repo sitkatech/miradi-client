@@ -36,15 +36,6 @@ import org.miradi.database.DataUpgraderDiagramObjectLinkAdder;
 import org.miradi.database.JSONFile;
 import org.miradi.database.ObjectManifest;
 import org.miradi.diagram.DiagramModel;
-import org.miradi.diagram.factortypes.FactorTypeActivity;
-import org.miradi.diagram.factortypes.FactorTypeCause;
-import org.miradi.diagram.factortypes.FactorTypeGroupBox;
-import org.miradi.diagram.factortypes.FactorTypeIntermediateResult;
-import org.miradi.diagram.factortypes.FactorTypeScopeBox;
-import org.miradi.diagram.factortypes.FactorTypeStrategy;
-import org.miradi.diagram.factortypes.FactorTypeStress;
-import org.miradi.diagram.factortypes.FactorTypeTextBox;
-import org.miradi.diagram.factortypes.FactorTypeThreatReductionResult;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
@@ -1179,31 +1170,31 @@ public class MigrationsOlderThanMiradiVersion2
 		if (factorType.equals("Target"))
 			return ObjectType.TARGET;
 		
-		else if (factorType.equals(FactorTypeCause.CAUSE_TYPE))
+		else if (factorType.equals("Factor"))
 			return ObjectType.CAUSE;
 		
-		else if (factorType.equals(FactorTypeStrategy.STRATEGY_TYPE))
+		else if (factorType.equals("Intervention"))
 			return ObjectType.STRATEGY;
 		
-		else if (factorType.equals(FactorTypeIntermediateResult.INTERMEDIATE_RESULT))
+		else if (factorType.equals("Intermediate Result"))
 			return ObjectType.INTERMEDIATE_RESULT;
 		
-		else if (factorType.equals(FactorTypeThreatReductionResult.THREAT_REDUCTION_RESULT))
+		else if (factorType.equals("Threat Reduction Result"))
 			return ObjectType.THREAT_REDUCTION_RESULT;
 		
-		else if (factorType.equals(FactorTypeTextBox.TEXT_BOX_TYPE))
+		else if (factorType.equals("TextBox"))
 			return ObjectType.TEXT_BOX;
 		
-		else if (factorType.equals(FactorTypeScopeBox.SCOPE_BOX_TYPE))
+		else if (factorType.equals("ScopeBox"))
 			return ObjectType.SCOPE_BOX;
 		
-		else if (factorType.equals(FactorTypeGroupBox.GROUP_BOX_TYPE))
+		else if (factorType.equals("GroupBox"))
 			return ObjectType.GROUP_BOX;
 		
-		else if (factorType.equals(FactorTypeStress.STRESS_TYPE))
+		else if (factorType.equals("Stress"))
 			return ObjectType.STRESS;
 		
-		else if (factorType.equals(FactorTypeActivity.ACTIVITY_TYPE))
+		else if (factorType.equals("Activity"))
 			return ObjectType.TASK;
 		
 		throw new RuntimeException("Unknown factor type: " + factorType);
