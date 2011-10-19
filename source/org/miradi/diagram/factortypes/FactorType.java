@@ -26,61 +26,6 @@ import org.miradi.objects.Factor;
 
 public abstract class FactorType
 {
-	public boolean isThreatReductionResult()
-	{
-		return false;
-	}
-	
-	public boolean isIntermediateResult()
-	{
-		return false;
-	}
-	
-	public boolean isStrategy()
-	{
-		return false;
-	}
-	
-	public boolean isCause()
-	{
-		return isContributingFactor() || isDirectThreat();
-	}
-	
-	public boolean isTarget()
-	{
-		return false;
-	}
-	
-	public boolean isContributingFactor()
-	{
-		return false;
-	}
-	
-	public boolean isDirectThreat()
-	{
-		return false;
-	}
-	
-	public boolean isTextBox()
-	{
-		return false;
-	}
-	
-	public boolean isScopeBox()
-	{
-		return false;
-	}
-	
-	public boolean isStress()
-	{
-		return false;
-	}
-	
-	public boolean isActivity()
-	{
-		return false;
-	}
-	
 	@Override
 	public boolean equals(Object other)
 	{
