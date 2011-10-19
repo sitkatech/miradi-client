@@ -37,7 +37,7 @@ public class HumanWelfareTarget extends AbstractTarget
 	
 	public HumanWelfareTarget(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception
 	{
-		super(objectManager, idToUse, Factor.TYPE_HUMAN_WELFARE_TARGET, json);
+		super(objectManager, idToUse, json);
 	}
 	
 	@Override

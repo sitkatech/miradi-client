@@ -22,7 +22,6 @@ package org.miradi.objects;
 
 import java.util.Vector;
 
-import org.miradi.diagram.factortypes.FactorType;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
@@ -53,7 +52,7 @@ abstract public class AbstractTarget extends Factor
 		super(objectManager, idToUse);
 	}
 	
-	public AbstractTarget(ObjectManager objectManager, FactorId idToUse, FactorType factorType, EnhancedJsonObject json) throws Exception
+	public AbstractTarget(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception
 	{
 		super(objectManager, idToUse, json);
 	}
