@@ -47,7 +47,7 @@ public class Target extends AbstractTarget
 	
 	public Target(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception
 	{
-		super(objectManager, idToUse, Factor.TYPE_TARGET, json);
+		super(objectManager, idToUse, json);
 	}
 	
 	@Override
