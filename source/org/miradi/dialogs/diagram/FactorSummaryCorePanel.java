@@ -23,7 +23,6 @@ import org.miradi.actions.ActionEditStrategyGoalRelevancyList;
 import org.miradi.actions.ActionEditStrategyObjectiveRelevancyList;
 import org.miradi.actions.ActionManageFactorTags;
 import org.miradi.actions.Actions;
-import org.miradi.diagram.factortypes.FactorType;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.icons.IconManager;
@@ -58,7 +57,7 @@ public class FactorSummaryCorePanel extends ObjectDataInputPanel
 		ObjectDataInputField shortLabelField = createShortStringField(Factor.TAG_SHORT_LABEL);
 		labelField = createExpandableField(Factor.TAG_LABEL);
 		
-		addFieldsOnOneLine(FactorType.getFactorTypeLabel(factorToEdit), 
+		addFieldsOnOneLine(EAM.fieldLabel(factorToEdit.getType(), factorToEdit.getTypeName()), 
 				IconManager.getImage(factorToEdit), 
 				new ObjectDataInputField[]{shortLabelField, labelField});
 		addField(createMultilineField(Factor.TAG_TEXT));
