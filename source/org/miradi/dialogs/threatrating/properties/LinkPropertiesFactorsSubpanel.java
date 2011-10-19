@@ -21,7 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.threatrating.properties;
 
 import org.miradi.actions.Actions;
-import org.miradi.diagram.factortypes.FactorType;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
@@ -97,12 +96,12 @@ public class LinkPropertiesFactorsSubpanel extends ObjectDataInputPanel
 		try
 		{
 			Factor threat = Factor.findFactor(getProject(), threatRef);
-			threatLabel.setText(FactorType.getFactorTypeLabel(threat));
+			threatLabel.setText(EAM.fieldLabel(threat.getType(), threat.getTypeName()));
 			threatLabel.setIcon(IconManager.getImage(threat));
 			threatNameField.setObjectRef(threat.getRef());
 
 			Factor target = Factor.findFactor(getProject(), targetRef);
-			targetLabel.setText(FactorType.getFactorTypeLabel(target));
+			targetLabel.setText(EAM.fieldLabel(target.getType(), target.getTypeName()));
 			targetLabel.setIcon(IconManager.getImage(target));
 			targetNameField.setObjectRef(target.getRef());
 		}

@@ -34,7 +34,6 @@ import org.martus.swing.UiLabel;
 import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.FactorCell;
-import org.miradi.diagram.factortypes.FactorType;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.activity.ActivityListManagementPanel;
 import org.miradi.dialogs.base.DisposablePanelWithDescription;
@@ -469,7 +468,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 	private UiLabel createFactorTypeLabel(Factor factor) throws Exception
 	{
 		Icon factorIcon = IconManager.getImage(factor);
-		String factorLabel = FactorType.getFactorTypeLabel(factor);
+		String factorLabel = EAM.fieldLabel(factor.getType(), factor.getTypeName());
 		return new PanelTitleLabel(factorLabel, factorIcon, UiLabel.LEADING);
 	}
 	

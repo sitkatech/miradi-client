@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.diagram.factortypes;
 
-import org.miradi.main.EAM;
-import org.miradi.objects.Factor;
 
 
 
@@ -36,11 +34,6 @@ public abstract class FactorType
 	public int hashCode()
 	{
 		return getClass().getName().hashCode();
-	}
-	
-	public static String getFactorTypeLabel(Factor factor)
-	{
-		return EAM.fieldLabel(factor.getType(), factor.getTypeName());
 	}
 	
 	@Override
