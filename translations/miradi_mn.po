@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-19 12:58-0500\n"
+"POT-Creation-Date: 2011-10-19 16:10-0500\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -8159,14 +8159,6 @@ msgstr ""
 #: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:88
 msgid "Total Monitoring Budget %1 %2"
 msgstr ""
-
-#: Miradi/source/org/miradi/diagram/factortypes/FactorTypeContributingFactor.java:38
-msgid "Type|Contributing Factor"
-msgstr "Гарчиг|Үйлчлэл үзүүлэгч Хүчин Зүйл"
-
-#: Miradi/source/org/miradi/diagram/factortypes/FactorTypeDirectThreat.java:37
-msgid "Type|Direct Threat"
-msgstr "Төрөл|Шууд Аюул Занал"
 
 #: Miradi/source/org/miradi/views/noproject/CopyProject.java:46
 msgid ""
@@ -31715,6 +31707,12 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid "Type|Contributing Factor"
+#~ msgstr "Гарчиг|Үйлчлэл үзүүлэгч Хүчин Зүйл"
+
+#~ msgid "Type|Direct Threat"
+#~ msgstr "Төрөл|Шууд Аюул Занал"
 
 #~ msgid ""
 #~ "html|/resources/help/AdaptiveManagement.html|  <!DOCTYPE HTML PUBLIC \"-//"
