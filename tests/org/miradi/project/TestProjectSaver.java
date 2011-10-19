@@ -108,7 +108,7 @@ public class TestProjectSaver extends TestCaseWithProject
 		return saveProjectToString(getProject());
 	}
 
-	private String saveProjectToString(final ProjectForTesting project) throws Exception
+	public static String saveProjectToString(final ProjectForTesting project) throws Exception
 	{
 		UnicodeStringWriter writer = UnicodeStringWriter.create();
 		ProjectSaver.saveProject(project, writer);
