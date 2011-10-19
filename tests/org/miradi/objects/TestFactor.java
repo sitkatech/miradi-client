@@ -84,7 +84,7 @@ public class TestFactor extends TestCaseWithProject
 		getProject().createObjective(factor);
 
 		Factor got = (Factor)Factor.createFromJson(getObjectManager(), factor.getType(), factor.toJson());
-		assertEquals("wrong type?", factor.getNodeType(), got.getNodeType());
+		assertEquals("wrong type?", factor.getType(), got.getType());
 		assertEquals("wrong id?", factor.getId(), got.getId());
 		assertEquals("wrong name?", factor.getLabel(), got.getLabel());
 		assertEquals("wrong comment?", factor.getComment(), got.getComment());
@@ -106,7 +106,7 @@ public class TestFactor extends TestCaseWithProject
 		factor.setComment("This is a great comment");
 		factor.setGoals(goals);
 		Target got = (Target)Factor.createFromJson(getObjectManager(), factor.getType(), factor.toJson());
-		assertEquals("wrong type?", factor.getNodeType(), got.getNodeType());
+		assertEquals("wrong type?", factor.getObjectType(), got.getObjectType());
 		assertEquals("wrong id?", factor.getId(), got.getId());
 		assertEquals("wrong name?", factor.getLabel(), got.getLabel());
 		assertEquals("wrong goals count?", factor.getGoalRefs().size(), got.getGoalRefs().size());
