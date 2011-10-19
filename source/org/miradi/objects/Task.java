@@ -50,7 +50,7 @@ public class Task extends Factor
 	
 	public Task(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception
 	{
-		super(objectManager, idToUse, Factor.TYPE_ACTIVITY, json);
+		super(objectManager, idToUse, json);
 	}
 		
 	public CommandVector getDeleteSelfAndSubtasksCommands(Project project) throws Exception

@@ -37,7 +37,7 @@ public class GroupBox extends Factor
 		
 	public GroupBox(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception
 	{
-		super(objectManager, idToUse, Factor.TYPE_GROUP_BOX, json);
+		super(objectManager, idToUse, json);
 	}
 	
 	@Override

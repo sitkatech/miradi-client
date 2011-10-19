@@ -37,7 +37,7 @@ public class IntermediateResult extends Factor
 	
 	public IntermediateResult(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception
 	{
-		super(objectManager, idToUse, Factor.TYPE_INTERMEDIATE_RESULT, json);
+		super(objectManager, idToUse, json);
 	}
 	
 	@Override

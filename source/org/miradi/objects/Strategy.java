@@ -58,7 +58,7 @@ public class Strategy extends Factor
 	
 	public Strategy(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception
 	{
-		super(objectManager, idToUse, Factor.TYPE_STRATEGY, json);
+		super(objectManager, idToUse, json);
 	}
 
 	

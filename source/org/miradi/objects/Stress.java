@@ -45,7 +45,7 @@ public class Stress extends Factor
 	
 	public Stress(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception
 	{
-		super(objectManager, idToUse, Factor.TYPE_STRESS, json);
+		super(objectManager, idToUse, json);
 	}
 	
 	@Override

@@ -55,7 +55,7 @@ abstract public class AbstractTarget extends Factor
 	
 	public AbstractTarget(ObjectManager objectManager, FactorId idToUse, FactorType factorType, EnhancedJsonObject json) throws Exception
 	{
-		super(objectManager, idToUse, factorType, json);
+		super(objectManager, idToUse, json);
 	}
 
 	@Override

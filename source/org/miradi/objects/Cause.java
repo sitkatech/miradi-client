@@ -40,7 +40,7 @@ public class Cause extends Factor
 	
 	public Cause(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception
 	{
-		super(objectManager, idToUse, Factor.TYPE_CAUSE, json);
+		super(objectManager, idToUse, json);
 	}
 	
 	@Override
