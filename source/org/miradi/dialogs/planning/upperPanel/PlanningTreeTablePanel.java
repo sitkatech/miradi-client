@@ -38,6 +38,7 @@ import org.miradi.dialogs.planning.propertiesPanel.AbstractFixedHeightDirectlyAb
 import org.miradi.dialogs.planning.propertiesPanel.AbstractWorkUnitsTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.AccountingCodeExpenseTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.FundingSourceExpenseTableModel;
+import org.miradi.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTableSyncedTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewMainModelExporter;
 import org.miradi.dialogs.planning.propertiesPanel.ProjectResourceWorkUnitsTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.WorkPlanBudgetDetailsTableModel;
@@ -116,7 +117,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 
 	private void createModels() throws Exception
 	{
-		mainModel = new PlanningViewMainTableModel(getProject(), getTree(), rowColumnProvider);
+		mainModel = createMainTableModel(rowColumnProvider);
 		multiModel = new PlanningTreeMultiTableModel(getTree().getUniqueTableIdentifier());
 		measurementModel = new PlanningViewMeasurementTableModel(getProject(), getTree());
 		futureStatusModel = new PlanningViewFutureStatusTableModel(getProject(), getTree());
@@ -138,6 +139,11 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		budgetCategoryTwoWorkUnitsModel = new BudgetCategoryTwoWorkUnitsTableModel(getProject(), getRowColumnProvider(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
 		budgetCategoryTwoExpenseModel = new BudgetCategoryTwoExpenseTableModel(getProject(), getRowColumnProvider(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
 		budgetCategoryTwoBudgetDetailsModel = new BudgetCategoryOneBudgetDetailsTableModel(getProject(), getRowColumnProvider(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
+	}
+
+	protected PlanningViewMainTableModel createMainTableModel(final PlanningTreeRowColumnProvider rowColumnProviderToUse) throws Exception
+	{
+		return new PlanningViewMainTableModel(getProject(), getTree(), rowColumnProviderToUse);
 	}
 
 	protected boolean wasTypeCreatedOrDeleted(CommandExecutedEvent event, int objectType)
@@ -476,7 +482,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 	}
 	
 	private PlanningTreeRowColumnProvider rowColumnProvider;
-	private PlanningViewMainTableModel mainModel;
+	private PlanningViewAbstractTreeTableSyncedTableModel mainModel;
 	private PlanningTreeMultiTableModel multiModel;
 	private PlanningUpperMultiTable mainTable;
 
