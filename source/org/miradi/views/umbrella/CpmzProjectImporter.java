@@ -42,7 +42,7 @@ import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.TncProjectData;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
-import org.miradi.project.ProjectMpzImporter;
+import org.miradi.project.ProjectSaver;
 import org.miradi.utils.ConceptualModelByTargetSplitter;
 import org.miradi.utils.CpmzFileFilterForChooserDialog;
 import org.miradi.utils.GroupBoxHelper;
@@ -69,20 +69,23 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 		if(!Project.isValidProjectFilename(newProjectFilename))
 			throw new Exception("Illegal project name: " + newProjectFilename);
 			
-		File newProjectDir = new File(EAM.getHomeDirectory(), newProjectFilename);
-		importProject(importFile, newProjectDir, progressIndicator);
+		File newProjectFile = new File(EAM.getHomeDirectory(), newProjectFilename);
+		Project project = importProject(importFile, progressIndicator);
+		ProjectSaver.saveProject(project, newProjectFile);
 	}
 
-	private void importProject(File zipFileToImport, File newProjectDir, ProgressInterface progressIndicator) throws ZipException, IOException, Exception, ValidationException
+	private Project importProject(File zipFileToImport, ProgressInterface progressIndicator) throws ZipException, IOException, Exception, ValidationException
 	{
 		progressIndicator.setStatusMessage(EAM.text("Importing..."), 15);
 		ZipFile zipFile = new ZipFile(zipFileToImport);
 		try
 		{
 			if (zipContainsMpzProject(zipFile))
-				importProjectFromMpzEntry(zipFile, newProjectDir, progressIndicator);
-			else
-				importProjectFromXmlEntry(zipFile, newProjectDir, progressIndicator);
+			{
+				return importProjectFromMpzEntry(zipFile, progressIndicator);
+			}
+
+			return importProjectFromXmlEntry(zipFile, progressIndicator);
 		}
 		finally
 		{
@@ -90,21 +93,22 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 		}
 	}
 
-	private void importProjectFromMpzEntry(ZipFile zipFile, File newProjectDir, ProgressInterface progressIndicator) throws Exception
+	private Project importProjectFromMpzEntry(ZipFile zipFile, ProgressInterface progressIndicator) throws Exception
 	{
 		ZipEntry mpzEntry = zipFile.getEntry(ExportCpmzDoer.PROJECT_ZIP_FILE_NAME);
 		InputStream inputStream = zipFile.getInputStream(mpzEntry);
 		try
 		{
-			ProjectMpzImporter.unzipToProjectDirectory(newProjectDir.getParentFile(), newProjectDir.getName(), inputStream);
-			progressIndicator.incrementProgress();
+			throw new RuntimeException("CPMZ import is not supported yet");
+//			ProjectMpzImporter.unzipToProjectDirectory(newProjectDir.getParentFile(), newProjectDir.getName(), inputStream);
+//			progressIndicator.incrementProgress();
 		}
 		finally
 		{
 			inputStream.close();
 		}
 		
-		importConproProjectNumbers(zipFile, newProjectDir, progressIndicator);
+//		importConproProjectNumbers(zipFile, newProjectDir, progressIndicator);
 	}
 
 	private void importConproProjectNumbers(ZipFile zipFile, File newProjectDir, ProgressInterface progressIndicator) throws Exception

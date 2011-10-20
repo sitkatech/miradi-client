@@ -36,29 +36,25 @@ abstract public class AbstractZippedXmlImporter extends AbstractProjectImporter
 		super(mainWindowToUse);
 	}
 	
-	protected void importProjectFromXmlEntry(ZipFile zipFile, File newProjectDir, ProgressInterface progressIndicator) throws Exception
+	protected Project importProjectFromXmlEntry(ZipFile zipFile, ProgressInterface progressIndicator) throws Exception
 	{
 		Project projectToFill = new Project();
-		createOrOpenProject(projectToFill, newProjectDir);
+		projectToFill.finishOpeningAfterLoad("[Imported]");
+
+		InputStreamWithSeek projectAsInputStream = getProjectAsInputStream(zipFile);
+		if (projectAsInputStream.available() == 0)
+			throw new Exception(ExportCpmzDoer.PROJECT_XML_FILE_NAME + EAM.text(" was empty"));
+
 		try
 		{
-			InputStreamWithSeek projectAsInputStream = getProjectAsInputStream(zipFile);
-			if (projectAsInputStream.available() == 0)
-				throw new Exception(ExportCpmzDoer.PROJECT_XML_FILE_NAME + EAM.text(" was empty"));
-
-			try
-			{
-				importProjectXml(projectToFill, zipFile, projectAsInputStream, progressIndicator);
-			}
-			finally
-			{
-				projectAsInputStream.close();
-			}
+			importProjectXml(projectToFill, zipFile, projectAsInputStream, progressIndicator);
 		}
 		finally
 		{
-			projectToFill.close();
+			projectAsInputStream.close();
 		}
+		
+		return projectToFill;
 	}
 	
 	abstract protected void createOrOpenProject(Project projectToFill, File projectFile) throws Exception;
