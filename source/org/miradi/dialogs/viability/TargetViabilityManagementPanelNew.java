@@ -20,25 +20,33 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.viability;
 
+import java.awt.image.BufferedImage;
+
 import javax.swing.Icon;
+import javax.swing.JComponent;
 
 import org.miradi.dialogs.base.ObjectListManagementPanel;
 import org.miradi.dialogs.planning.AbstractPlanningTreeRowColumnProvider;
 import org.miradi.dialogs.planning.treenodes.PlanningTreeRootNode;
+import org.miradi.dialogs.planning.upperPanel.ExportablePlanningTreeTablePanel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
 import org.miradi.dialogs.planning.upperPanel.TargetViabilityTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.TreeTableModelWithRebuilder;
-import org.miradi.dialogs.treetables.TreeTablePanel;
 import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.objects.PlanningTreeRowColumnProvider;
+import org.miradi.utils.BufferedImageFactory;
+import org.miradi.utils.TableExporter;
 
 //FIXME urgent - Make new target viability tree table work
 public class TargetViabilityManagementPanelNew extends ObjectListManagementPanel
 {
-	private TargetViabilityManagementPanelNew(MainWindow mainWindowToUse, TreeTablePanel tablePanelToUse, TargetViabilityMultiPropertiesPanel propertiesPanel) throws Exception
+	private TargetViabilityManagementPanelNew(MainWindow mainWindowToUse, PlanningTreeTablePanel tablePanelToUse, TargetViabilityMultiPropertiesPanel propertiesPanel) throws Exception
 	{
 		super(mainWindowToUse, tablePanelToUse, propertiesPanel);
+		
+		setTreeTablePanel(tablePanelToUse);
 	}
 	
 	public static TargetViabilityManagementPanelNew createManagementPanel(MainWindow mainWindowToUse) throws Exception
@@ -52,7 +60,69 @@ public class TargetViabilityManagementPanelNew extends ObjectListManagementPanel
 		
 		return new TargetViabilityManagementPanelNew(mainWindowToUse, treeTablePanel, propertiesPanel);
 	}
+	
+	@Override
+	public boolean isImageAvailable()
+	{
+		return true;
+	}
+	
+	@Override
+	public BufferedImage getImage(int scale) throws Exception
+	{
+		JComponent panel = getPrintableComponent();
+		BufferedImage image = BufferedImageFactory.createImageFromComponent(panel);
+		return image;
+	}
 
+	@Override
+	public boolean isExportableTableAvailable()
+	{
+		return true;
+	}
+	
+	@Override
+	public TableExporter getTableExporter() throws Exception
+	{
+		PlanningTreeTablePanel panel = createPlanningTreeTablePanelForExport();
+		TableExporter table = panel.getTableForExporting();
+		panel.dispose();
+		
+		return table;
+	}
+
+	protected PlanningTreeTablePanel createPlanningTreeTablePanel(String uniqueTreeTableModelIdentifier, PlanningTreeRowColumnProvider rowColumnProvider) throws Exception
+	{
+		return ExportablePlanningTreeTablePanel.createPlanningTreeTablePanelWithoutButtons(getMainWindow(), rowColumnProvider, uniqueTreeTableModelIdentifier);
+	}
+
+	@Override
+	public JComponent getPrintableComponent() throws Exception
+	{
+		PlanningTreeTablePanel panel = createPlanningTreeTablePanelForExport();
+		
+		return PlanningTreeTablePanel.createReformattedPrintablePlanningTreeTablePanel(panel);
+	}
+	
+	private PlanningTreeTablePanel createPlanningTreeTablePanelForExport() throws Exception
+	{
+		String uniqueTreeTableModelIdentifier = getPlanningTreeTablePanel().getTree().getTreeTableModel().getUniqueTreeTableModelIdentifier();
+		PlanningTreeRowColumnProvider rowColumnProvider = getPlanningTreeTablePanel().getRowColumnProvider();
+		PlanningTreeTablePanel panel = createPlanningTreeTablePanel(uniqueTreeTableModelIdentifier,	rowColumnProvider);
+		panel.becomeActive();
+		
+		return panel;
+	}
+	
+	private void setTreeTablePanel(PlanningTreeTablePanel planningTreeTablePanelToUse)
+	{
+		planningTreeTablePanel = planningTreeTablePanelToUse;
+	}
+
+	public PlanningTreeTablePanel getPlanningTreeTablePanel()
+	{
+		return planningTreeTablePanel;
+	}
 
 	@Override
 	public Icon getIcon()
@@ -73,4 +143,6 @@ public class TargetViabilityManagementPanelNew extends ObjectListManagementPanel
 	}
 
 	private static String PANEL_DESCRIPTION_VIABILITY = EAM.text("Tab|Viability");
+	
+	private PlanningTreeTablePanel planningTreeTablePanel;
 }
