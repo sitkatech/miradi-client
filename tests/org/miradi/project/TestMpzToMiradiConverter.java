@@ -20,8 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.project;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.util.zip.ZipFile;
 import java.util.zip.ZipOutputStream;
 
 import org.martus.util.UnicodeStringReader;
@@ -60,7 +62,13 @@ public class TestMpzToMiradiConverter extends TestCaseWithProject
 		UnicodeStringWriter writer = UnicodeStringWriter.create();
 		try
 		{
-			MpzToDotMiradiConverter.convert(new ByteArrayInputStream(byteArray), writer);
+			File tempMpzFile = File.createTempFile("$$$TestMpzToMiradiConverter.mpz", null);
+			FileOutputStream fileOut = new FileOutputStream(tempMpzFile);
+			fileOut.write(byteArray);
+			fileOut.flush();
+			fileOut.close();
+			MpzToDotMiradiConverter.convert(new ZipFile(tempMpzFile), writer);
+			
 			return writer.toString();
 		}
 		finally
