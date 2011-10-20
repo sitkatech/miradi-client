@@ -20,7 +20,87 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.project;
 
+import java.io.IOException;
+
+import org.martus.util.UnicodeStringWriter;
+import org.martus.util.xml.XmlUtilities;
+import org.miradi.objecthelpers.ORef;
+
 abstract public class AbstractMiradiProjectSaver
 {
+	public AbstractMiradiProjectSaver(UnicodeStringWriter writerToUse)
+	{
+		writer = writerToUse;
+	}
 
+	protected UnicodeStringWriter getWriter()
+	{
+		return writer;
+	}
+	
+	protected static String xmlNewLineEncode(String data)
+	{
+		data = XmlUtilities.getXmlEncoded(data);
+		data = data.replaceAll("\\n", "<br/>");
+		
+		return data;
+	}
+
+	protected String createSimpleRefString(final ORef ref)
+	{
+		return Integer.toString(ref.getObjectType()) +  ":" + ref.getObjectId().toString();
+	}
+	
+	protected void writeRefTagValue(final String actionCode, ORef ref, final String tag, final String value) throws Exception
+	{
+		writeLabelTagValue(actionCode, createSimpleRefString(ref), tag, value);
+	}
+
+	protected void writeLabelTagValue(final String actionCode, final String lineKey, final String tag, final String value) throws Exception, IOException
+	{
+		write(actionCode);
+		write(TAB);
+		
+		write(lineKey);
+		write(TAB);
+		
+		write(tag);
+		write(EQUALS);
+		write(value);
+		
+		getWriter().writeln();
+	}
+	
+	protected void writeTagValue(final String actionCode, final String tag, final String value) throws Exception
+	{
+		write(actionCode);
+		write(TAB);
+		write(tag);
+		write(EQUALS);
+		write(value);
+		getWriter().writeln();
+	}
+
+	protected void writeValue(final String actionCode, final String value) throws Exception
+	{
+		write(actionCode);
+		write(TAB);
+		write(value);
+		getWriter().writeln();
+	}
+	
+	protected void write(final String data) throws Exception
+	{
+		getWriter().write(data);
+	}
+	
+	public static final String TAB = "\t";
+	public static final String EQUALS = "=";
+
+	public static final String UPDATE_PROJECT_INFO_CODE = "UP";
+	public static final String UPDATE_PROJECT_VERSION_CODE = "UV";
+	public static final String CREATE_OBJECT_CODE = "CO";
+	public static final String UPDATE_OBJECT_CODE = "UO";
+
+	private UnicodeStringWriter writer;
 }

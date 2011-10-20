@@ -26,7 +26,6 @@ import java.util.Collections;
 import java.util.Vector;
 
 import org.martus.util.UnicodeStringWriter;
-import org.martus.util.xml.XmlUtilities;
 import org.miradi.database.ProjectServer;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.ORef;
@@ -43,13 +42,13 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 {
 	protected ProjectSaver(final UnicodeStringWriter writerToUse) throws Exception
 	{
-		writer = writerToUse;
+		super(writerToUse);
 	}
 	
 	private ProjectSaver(final Project projectToUse, final UnicodeStringWriter writerToUse) throws Exception
 	{
+		super(writerToUse);
 		project = projectToUse;
-		writer = writerToUse;
 	}
 	
 	public static void saveProject(final Project projectToUse, final UnicodeStringWriter writerToUse) throws Exception
@@ -107,14 +106,6 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 		String quarantineFileContents = getProject().getQuarantineFileContents();
 		quarantineFileContents = xmlNewLineEncode(quarantineFileContents);
 		write(quarantineFileContents);
-	}
-
-	public String xmlNewLineEncode(String data)
-	{
-		data = XmlUtilities.getXmlEncoded(data);
-		data = data.replaceAll("\\n", "<br/>");
-		
-		return data;
 	}
 
 	private void writeAllObjectTypes() throws Exception
@@ -189,57 +180,9 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 		writeLabelTagValue(UPDATE_SIMPLE_THREAT_RATING_BUNDLE_CODE, bundleName, ThreatRatingBundle.TAG_VALUES, json.getString(ThreatRatingBundle.TAG_VALUES));
 	}
 
-	protected void writeValue(final String actionCode, final String value) throws Exception
-	{
-		write(actionCode);
-		write(TAB);
-		write(value);
-		getWriter().writeln();
-	}
-	
-	private void writeTagValue(final String actionCode, final String tag, final String value) throws Exception
-	{
-		write(actionCode);
-		write(TAB);
-		write(tag);
-		write(EQUALS);
-		write(value);
-		getWriter().writeln();
-	}
-
-	protected void writeRefTagValue(final String actionCode, ORef ref, final String tag, final String value) throws Exception
-	{
-		writeLabelTagValue(actionCode, createSimpleRefString(ref), tag, value);
-	}
-
-	public void writeLabelTagValue(final String actionCode, final String lineKey, final String tag, final String value) throws Exception, IOException
-	{
-		write(actionCode);
-		write(TAB);
-		
-		write(lineKey);
-		write(TAB);
-		
-		write(tag);
-		write(EQUALS);
-		write(value);
-		
-		getWriter().writeln();
-	}
-	
-	private void write(final String data) throws Exception
-	{
-		getWriter().write(data);
-	}
-	
 	public void writelnRaw(String data) throws IOException
 	{
 		getWriter().writeln(data);
-	}
-	
-	protected String createSimpleRefString(final ORef ref)
-	{
-		return Integer.toString(ref.getObjectType()) +  ":" + ref.getObjectId().toString();
 	}
 	
 	private Project getProject()
@@ -247,26 +190,14 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 		return project;
 	}
 	
-	private UnicodeStringWriter getWriter()
-	{
-		return writer;
-	}
-	
 	private Project project;
-	private UnicodeStringWriter writer;
 
 	public static final String NEW_LINE = "\n";
 	public static final String HTML_NEW_LINE = "<br/>";
-	public static final String TAB = "\t";
-	public static final String EQUALS = "=";
 	public static final String STOP_MARKER = "--";
-	public static final String UPDATE_PROJECT_INFO_CODE = "UP";
-	public static final String UPDATE_PROJECT_VERSION_CODE = "UV";
 	public static final String UPDATE_LAST_MODIFIED_TIME_CODE = "UL";
 	public static final String CREATE_SIMPLE_THREAT_RATING_BUNDLE_CODE = "CT";
 	public static final String UPDATE_SIMPLE_THREAT_RATING_BUNDLE_CODE = "UT";
-	public static final String CREATE_OBJECT_CODE = "CO";
-	public static final String UPDATE_OBJECT_CODE = "UO";
 	
 	public static final String LAST_MODIFIED_TAG = "LastModified";
 }
