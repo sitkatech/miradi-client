@@ -41,12 +41,8 @@ public class TestMpzToMiradiConverter extends TestCaseWithProject
 		getProject().populateEverything();
 		getProject().populateSimpleThreatRatingValues();
 		
-		byte[] byteArray = createMpzBytesFromProject();
-		
-		String projectAsStringFromConverter = convertMpzToDotMiradi(byteArray);
-		
+		String projectAsStringFromConverter = convertMpzToDotMiradi(createMpzBytesFromProject());
 		ProjectForTesting project2 = createProjectFromDotMiradi(projectAsStringFromConverter);
-		
 		TestProjectSaver.compareProjects(getProject(), project2);
 	}
 
