@@ -253,6 +253,9 @@ public class MpzToDotMiradiConverter extends AbstractMiradiProjectSaver
 			int defaultValueId = jsonBundle.optInt("DefaultValueId", -1);
 			EnhancedJsonObject jsonRatings = jsonBundle.optJson("Values");
 			String ratings = jsonRatings.toString();
+			if(defaultValueId == -1 && ratings.equals("{}"))
+				continue;
+			
 			writeSimpleThreatRatingBundle(threatId, targetId, defaultValueId, ratings);
 		}
 	}
