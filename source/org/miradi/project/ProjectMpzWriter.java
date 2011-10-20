@@ -87,8 +87,11 @@ public class ProjectMpzWriter
 		String exceptions = database.readFileContents(new File(EAM.EXCEPTIONS_LOG_FILE_NAME));
 		writeZipEntry(out, projectFilename + "/" + EAM.EXCEPTIONS_LOG_FILE_NAME, exceptions);
 		
-		String lastModified = database.readLocalLastModifiedProjectTime(database.getCurrentLocalProjectDirectory());
-		writeZipEntry(out, projectFilename + "/" + ProjectServer.LAST_MODIFIED_FILE_NAME, lastModified);
+		if(database.isLocalProject())
+		{
+			String lastModified = database.readLocalLastModifiedProjectTime(database.getCurrentLocalProjectDirectory());
+			writeZipEntry(out, projectFilename + "/" + ProjectServer.LAST_MODIFIED_FILE_NAME, lastModified);
+		}
 		
 		String quarantine = database.getQuarantineFileContents();
 		writeZipEntry(out, projectFilename + "/" + ProjectServer.QUARANTINE_FILE_NAME, quarantine);
