@@ -32,6 +32,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
+import org.miradi.utils.EnhancedJsonArray;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class MpzToDotMiradiConverter extends AbstractMiradiProjectSaver
@@ -93,6 +94,10 @@ public class MpzToDotMiradiConverter extends AbstractMiradiProjectSaver
 		{
 			writeObject(relativeFilePath, fileContent);
 		}
+		if (relativeFilePath.equals("json/threatframework"))
+		{
+			writeSimpleThreatFramework(fileContent);
+		}
 	}
 	
 	
@@ -139,6 +144,37 @@ public class MpzToDotMiradiConverter extends AbstractMiradiProjectSaver
 
 				writeRefTagValue(UPDATE_OBJECT_CODE, ref, tag, data);
 			}
+		}
+	}
+
+	private void writeSimpleThreatFramework(String jsonContent) throws Exception
+	{
+		EnhancedJsonObject json = new EnhancedJsonObject(jsonContent);
+		Iterator iterator = json.keys();
+		while (iterator.hasNext())
+		{
+			String tag = (String)iterator.next();
+			if(tag.equals("BundleKeys"))
+			{
+				writeSimpleThreatRatingBundles(json.getJsonArray(tag));
+			}
+		}
+	}
+
+	private void writeSimpleThreatRatingBundles(EnhancedJsonArray jsonForAllBundles) throws Exception
+	{
+		for(int i = 0; i < jsonForAllBundles.length(); ++i)
+		{
+			EnhancedJsonObject jsonBundle = jsonForAllBundles.getJson(i);
+			int threatId = jsonBundle.getInt("BundleThreatId");
+			int targetId = jsonBundle.getInt("BundleTargetId");
+			if(threatId < 0 || targetId < 0)
+				continue;
+			
+			int defaultValueId = jsonBundle.optInt("DefaultValueId", -1);
+			EnhancedJsonObject jsonRatings = jsonBundle.optJson("Values");
+			String ratings = jsonRatings.toString();
+			writeSimpleThreatRatingBundle(threatId, targetId, defaultValueId, ratings);
 		}
 	}
 

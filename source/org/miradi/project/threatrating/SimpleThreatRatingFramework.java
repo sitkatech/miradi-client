@@ -465,7 +465,14 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 
 	public static String getBundleKey(BaseId threatId, BaseId targetId)
 	{
-		String key = threatId.toString() + "-" + targetId.toString();
+		int intThreatId = threatId.asInt();
+		int intTargetId = targetId.asInt();
+		return getBundleKey(intThreatId, intTargetId);
+	}
+
+	public static String getBundleKey(int intThreatId, int intTargetId)
+	{
+		String key = intThreatId + "-" + intTargetId;
 		return key;
 	}
 	
