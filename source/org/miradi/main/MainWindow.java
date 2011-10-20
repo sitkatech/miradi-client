@@ -133,7 +133,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		setLanguage(null);
 
 		database = getProject().getDatabase();
-		projectSaver = new AutomaticProjectSaver();
+		projectSaver = new AutomaticProjectSaver(project);
 	}
 	
 	public void start(String[] args) throws Exception
@@ -542,7 +542,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		try
 		{
 			createOrOpenProjectInBackground(projectFile);
-			projectSaver.startSaving(projectFile, project);
+			projectSaver.startSaving(projectFile);
 			
 			repairProject();
 
@@ -718,8 +718,8 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 	public void closeProject() throws Exception
 	{
 		projectSaver.stopSaving();
-		EAM.logDebug(getMemoryStatistics());
 		project.close();
+		EAM.logDebug(getMemoryStatistics());
 		getWizardManager().setOverViewStep(NoProjectView.getViewName());
 
 		updateTitle();

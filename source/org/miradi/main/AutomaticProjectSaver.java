@@ -29,21 +29,27 @@ import org.miradi.project.ProjectSaver;
 
 public class AutomaticProjectSaver implements CommandExecutedListener
 {
-	public void startSaving(File projectFileToUse, Project projectToUse)
+	public AutomaticProjectSaver(Project projectToTrack)
+	{
+		project = projectToTrack;
+		project.addCommandExecutedListener(this);
+	}
+	
+	public void startSaving(File projectFileToUse)
 	{
 		projectFile = projectFileToUse;
-		project = projectToUse;
-		project.addCommandExecutedListener(this);
 	}
 	
 	public void stopSaving()
 	{
-		if(project != null)
-			project.removeCommandExecutedListener(this);
+		projectFile = null;
 	}
 	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
+		if(projectFile == null)
+			return;
+		
 		if(project.isInTransaction())
 			return;
 		
