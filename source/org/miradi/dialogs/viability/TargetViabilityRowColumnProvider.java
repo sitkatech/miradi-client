@@ -21,6 +21,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.viability;
 
 import org.miradi.dialogs.planning.AbstractPlanningTreeRowColumnProvider;
+import org.miradi.dialogs.viability.nodes.ViabilityMeasurementNode;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
@@ -51,7 +53,15 @@ public class TargetViabilityRowColumnProvider extends AbstractPlanningTreeRowCol
 	public CodeList getColumnCodesToShow() throws Exception
 	{
 		return new CodeList(new String[] {
-				Indicator.TAG_LABEL,
+				 Target.TAG_VIABILITY_MODE,
+				 ViabilityTreeModel.VIRTUAL_TAG_STATUS,
+				 KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE,
+				 ViabilityMeasurementNode.POOR,
+				 ViabilityMeasurementNode.FAIR,
+				 ViabilityMeasurementNode.GOOD,
+				 ViabilityMeasurementNode.VERY_GOOD,
+				 Measurement.TAG_STATUS_CONFIDENCE,
+				 BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
 		});
 	}
 
