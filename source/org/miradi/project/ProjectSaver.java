@@ -34,7 +34,6 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.ThreatRatingBundleSorter;
 import org.miradi.objectpools.EAMObjectPool;
 import org.miradi.objects.BaseObject;
-import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -168,16 +167,13 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 			if(bundle.getTargetId().isInvalid())
 				continue;
 			EnhancedJsonObject json = bundle.toJson();
-			String bundleName = SimpleThreatRatingFramework.getBundleKey(bundle.getThreatId(), bundle.getTargetId());
-			writeValue(CREATE_SIMPLE_THREAT_RATING_BUNDLE_CODE, bundleName);
-			writeLabelTagValue(UPDATE_SIMPLE_THREAT_RATING_BUNDLE_CODE, bundleName, ThreatRatingBundle.TAG_DEFAULT_VALUE_ID, json.getString(ThreatRatingBundle.TAG_DEFAULT_VALUE_ID));
-			writeBundleTagValue(json, bundleName);
-		}
-	}
+			int threatId = bundle.getThreatId().asInt();
+			int targetId = bundle.getTargetId().asInt();
+			int defaultValueId = json.getInt(ThreatRatingBundle.TAG_DEFAULT_VALUE_ID);
+			String ratings = json.getString(ThreatRatingBundle.TAG_VALUES);
 
-	private void writeBundleTagValue(EnhancedJsonObject json, String bundleName)	throws Exception
-	{
-		writeLabelTagValue(UPDATE_SIMPLE_THREAT_RATING_BUNDLE_CODE, bundleName, ThreatRatingBundle.TAG_VALUES, json.getString(ThreatRatingBundle.TAG_VALUES));
+			writeSimpleThreatRatingBundle(threatId, targetId, defaultValueId, ratings);
+		}
 	}
 
 	public void writelnRaw(String data) throws IOException
@@ -196,8 +192,6 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 	public static final String HTML_NEW_LINE = "<br/>";
 	public static final String STOP_MARKER = "--";
 	public static final String UPDATE_LAST_MODIFIED_TIME_CODE = "UL";
-	public static final String CREATE_SIMPLE_THREAT_RATING_BUNDLE_CODE = "CT";
-	public static final String UPDATE_SIMPLE_THREAT_RATING_BUNDLE_CODE = "UT";
 	
 	public static final String LAST_MODIFIED_TAG = "LastModified";
 }

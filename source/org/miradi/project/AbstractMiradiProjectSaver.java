@@ -25,6 +25,8 @@ import java.io.IOException;
 import org.martus.util.UnicodeStringWriter;
 import org.martus.util.xml.XmlUtilities;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.project.threatrating.SimpleThreatRatingFramework;
+import org.miradi.project.threatrating.ThreatRatingBundle;
 
 abstract public class AbstractMiradiProjectSaver
 {
@@ -89,6 +91,15 @@ abstract public class AbstractMiradiProjectSaver
 		getWriter().writeln();
 	}
 	
+	protected void writeSimpleThreatRatingBundle(int threatId, int targetId, int defaultValueId, String ratings) throws Exception, IOException
+	{
+		String defaultValueIdString = Integer.toString(defaultValueId);
+		String bundleName = SimpleThreatRatingFramework.getBundleKey(threatId, targetId);
+		writeValue(CREATE_SIMPLE_THREAT_RATING_BUNDLE_CODE, bundleName);
+		writeLabelTagValue(UPDATE_SIMPLE_THREAT_RATING_BUNDLE_CODE, bundleName, ThreatRatingBundle.TAG_DEFAULT_VALUE_ID, defaultValueIdString);
+		writeLabelTagValue(UPDATE_SIMPLE_THREAT_RATING_BUNDLE_CODE, bundleName, ThreatRatingBundle.TAG_VALUES, ratings);
+	}
+
 	protected void write(final String data) throws Exception
 	{
 		getWriter().write(data);
@@ -101,6 +112,8 @@ abstract public class AbstractMiradiProjectSaver
 	public static final String UPDATE_PROJECT_VERSION_CODE = "UV";
 	public static final String CREATE_OBJECT_CODE = "CO";
 	public static final String UPDATE_OBJECT_CODE = "UO";
+	public static final String CREATE_SIMPLE_THREAT_RATING_BUNDLE_CODE = "CT";
+	public static final String UPDATE_SIMPLE_THREAT_RATING_BUNDLE_CODE = "UT";
 
 	private UnicodeStringWriter writer;
 }

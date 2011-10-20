@@ -20,14 +20,20 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.project;
 
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Vector;
+
 import org.martus.util.UnicodeStringReader;
 import org.martus.util.UnicodeStringWriter;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objecthelpers.ThreatRatingBundleSorter;
 import org.miradi.objectpools.EAMObjectPool;
 import org.miradi.objects.BaseObject;
+import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class TestProjectSaver extends TestCaseWithProject
@@ -69,6 +75,7 @@ public class TestProjectSaver extends TestCaseWithProject
 	public static void verifyProjectsAreTheSame(final ProjectForTesting project1, final Project project2)
 	{
 		verifyNormalObjectsAreTheSame(project1, project2);
+		verifySimpleThreatRatingsAreTheSame(project1, project2);
 	}
 
 	private static void verifyNormalObjectsAreTheSame(
@@ -88,6 +95,21 @@ public class TestProjectSaver extends TestCaseWithProject
 		}
 	}
 	
+	private static void verifySimpleThreatRatingsAreTheSame(ProjectForTesting project1, Project project2)
+	{
+		Vector<ThreatRatingBundle> bundles1 = getAllBundlesSorted(project1);
+		Vector<ThreatRatingBundle> bundles2 = getAllBundlesSorted(project2);
+		assertEquals(bundles1, bundles2);
+	}
+
+	private static Vector<ThreatRatingBundle> getAllBundlesSorted(Project project)
+	{
+		Collection<ThreatRatingBundle> rawBundles = project.getSimpleThreatRatingFramework().getAllBundles();
+		Vector<ThreatRatingBundle> bundles = new Vector<ThreatRatingBundle>(rawBundles);
+		Collections.sort(bundles, new ThreatRatingBundleSorter());
+		return bundles;
+	}
+
 	public void testSaveAndLoadSimpleThreatRating() throws Exception
 	{
 		String contents = saveProjectToString();
