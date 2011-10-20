@@ -39,7 +39,7 @@ import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.utils.EnhancedJsonObject;
 
-public class ProjectSaver
+public class ProjectSaver extends AbstractMiradiProjectSaver
 {
 	protected ProjectSaver(final UnicodeStringWriter writerToUse) throws Exception
 	{
