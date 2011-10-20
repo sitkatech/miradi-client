@@ -98,8 +98,7 @@ abstract public class AbstractExportProjectXmlZipDoer extends XmlExporterDoer
 	
 	private void addExceptionLogFile(ZipOutputStream zipOut) throws Exception
 	{
-		File relativeExceptionLogFile = new File(EAM.EXCEPTIONS_LOG_FILE_NAME);
-		String contents = getProject().getDatabase().readFileContents(relativeExceptionLogFile);
+		String contents = getProject().getExceptionLog();
 		if(contents.length() > 0)
 		{
 			byte[] byteContents = contents.getBytes("UTF-8");

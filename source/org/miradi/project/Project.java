@@ -176,6 +176,7 @@ public class Project
 		
 		projectCalendar.clearDateRanges();
 		quarantine = new StringBuilder();
+		exceptionLog = new StringBuilder();
 	}
 	
 	static public void validateNewProject(String newName) throws Exception
@@ -568,6 +569,16 @@ public class Project
 	public String getQuarantineFileContents() throws Exception
 	{
 		return quarantine.toString();
+	}
+
+	public void appendToExceptionLog(String textToAppend) throws Exception
+	{
+		exceptionLog.append(textToAppend);
+	}
+	
+	public String getExceptionLog() throws Exception
+	{
+		return exceptionLog.toString();
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////
@@ -1398,6 +1409,7 @@ public class Project
 	private StressBasedThreatRatingFramework stressBasedThreatFramework;
 	
 	private StringBuilder quarantine;
+	private StringBuilder exceptionLog;
 	
 	private ProjectServer database;
 	private DiagramClipboard diagramClipboard;
