@@ -72,8 +72,6 @@ public class TestMpzToMiradiConverter extends TestCaseWithProject
 			byteOut.flush();
 			byteOut.close();
 		}
-		ByteArrayOutputStream out = byteOut;
-		byte[] byteArray = out.toByteArray();
-		return byteArray;
+		return byteOut.toByteArray();
 	}
 }
