@@ -68,6 +68,12 @@ public class TestProjectSaver extends TestCaseWithProject
 
 	public static void verifyProjectsAreTheSame(final ProjectForTesting project1, final Project project2)
 	{
+		verifyNormalObjectsAreTheSame(project1, project2);
+	}
+
+	private static void verifyNormalObjectsAreTheSame(
+			final ProjectForTesting project1, final Project project2)
+	{
 		for (int type = ObjectType.FIRST_OBJECT_TYPE; type < ObjectType.OBJECT_TYPE_COUNT; ++type)
 		{
 			EAMObjectPool oldPool = project1.getPool(type);
