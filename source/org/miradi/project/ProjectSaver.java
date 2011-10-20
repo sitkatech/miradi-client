@@ -57,7 +57,8 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 		UnicodeStringWriter stringWriter = UnicodeStringWriter.create();
 		saveProject(projectToSave, stringWriter);
 		UnicodeWriter fileWriter = new UnicodeWriter(fileToSaveTo);
-		fileWriter.write(stringWriter.toString());
+		String contents = stringWriter.toString();
+		fileWriter.write(contents);
 		fileWriter.close();
 	}
 
