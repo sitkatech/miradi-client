@@ -389,6 +389,7 @@ abstract public class AbstractTreeRebuilder
 		return new int[] {
 			Target.getObjectType(),
 			HumanWelfareTarget.getObjectType(),
+			KeyEcologicalAttribute.getObjectType(),
 			ResultsChainDiagram.getObjectType(),
 			ConceptualModelDiagram.getObjectType(),
 			Goal.getObjectType(),
