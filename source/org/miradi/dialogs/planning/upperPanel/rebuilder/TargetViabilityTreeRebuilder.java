@@ -20,6 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.upperPanel.rebuilder;
 
+import java.text.Collator;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Vector;
+
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -77,13 +82,40 @@ public class TargetViabilityTreeRebuilder extends AbstractTreeRebuilder
 		return childRefs;
 	}
 
-	private ORefList getChildrenOfAbstractTargetNode(ORef parentRef)
+	private ORefList getChildrenOfAbstractTargetNode(ORef parentRef) throws Exception
 	{
-		ORefList childRefs = new ORefList();
 		AbstractTarget abtractTarget = AbstractTarget.findTarget(getProject(), parentRef);
-		childRefs.addAll(abtractTarget.getKeyEcologicalAttributeRefs());
+		if (abtractTarget.isViabilityModeTNC())
+			return getSortedKeaRefs(abtractTarget);
 		
-		return childRefs;
+		return abtractTarget.getOnlyDirectIndicatorRefs();
+	}
+	
+	private ORefList getSortedKeaRefs(AbstractTarget target) throws Exception
+	{
+		Project project = target.getProject();
+		ORefList keaRefs = target.getKeyEcologicalAttributeRefs();
+		Vector<KeyEcologicalAttribute> keyEcologicalAttributesVector = new Vector<KeyEcologicalAttribute>();
+		for(int index = 0; index < keaRefs.size(); ++index)
+		{
+			KeyEcologicalAttribute kea = (KeyEcologicalAttribute)project.findObject(keaRefs.get(index));
+			keyEcologicalAttributesVector.add(kea);
+		}
+		
+		Collections.sort(keyEcologicalAttributesVector, new KeaComparator());
+		
+		return convertToRefList(keyEcologicalAttributesVector);
+	}
+	
+	private ORefList convertToRefList(Vector<KeyEcologicalAttribute> list)
+	{
+		ORefList refs = new ORefList();
+		for(KeyEcologicalAttribute keyEcologicalAttribute : list)
+		{
+			refs.add(keyEcologicalAttribute);
+		}
+		
+		return refs;
 	}
 
 	private ORefList getChildrenOfProjectNode(ORef parentRef) throws Exception
@@ -95,4 +127,16 @@ public class TargetViabilityTreeRebuilder extends AbstractTreeRebuilder
 
 		return childRefs;
 	}
+	
+	private class KeaComparator implements Comparator<KeyEcologicalAttribute>
+	{
+		public int compare(KeyEcologicalAttribute kea1, KeyEcologicalAttribute kea2)
+		{
+			String type1 =kea1.getKeyEcologicalAttributeType();
+			String type2 =kea2.getKeyEcologicalAttributeType();
+			Collator myCollator = Collator.getInstance();
+
+			return myCollator.compare(type1, type2);
+		}
+	} 
 }
