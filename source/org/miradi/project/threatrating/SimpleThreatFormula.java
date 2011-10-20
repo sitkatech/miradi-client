@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.project.threatrating;
 
 import org.miradi.ids.BaseId;
+import org.miradi.main.EAM;
 import org.miradi.objects.RatingCriterion;
 import org.miradi.objects.ValueOption;
 
@@ -105,6 +106,8 @@ public class SimpleThreatFormula extends ThreatFormula
 		BaseId criterionId = criterion.getId();
 		BaseId valueId = bundle.getValueId(criterionId);
 		ValueOption valueOption = framework.getValueOption(valueId);
+		if(valueOption == null)
+			EAM.logError("Unable to find value option id=" + valueId + " for " + bundle.getThreatId() + "-" + bundle.getTargetId());
 		return valueOption.getNumericValue();
 	}
 	
