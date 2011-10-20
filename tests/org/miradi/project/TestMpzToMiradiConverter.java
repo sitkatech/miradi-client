@@ -59,27 +59,21 @@ public class TestMpzToMiradiConverter extends TestCaseWithProject
 
 	private byte[] createMpzBytesFromProject() throws Exception
 	{
-		ByteArrayOutputStream out = addProjectAsMpzToZip(getProject());
-		byte[] byteArray = out.toByteArray();
-		return byteArray;
-	}
-
-	private ByteArrayOutputStream addProjectAsMpzToZip(ProjectForTesting projectForTesting) throws Exception
-	{
 		ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
-		ZipOutputStream out = new ZipOutputStream(byteOut);
+		ZipOutputStream out1 = new ZipOutputStream(byteOut);
 		try
 		{
-			ProjectMpzWriter.writeProjectZip(out, projectForTesting);
+			ProjectMpzWriter.writeProjectZip(out1, getProject());
 		}
 		finally
 		{
-			out.flush();
-			out.close();
+			out1.flush();
+			out1.close();
 			byteOut.flush();
 			byteOut.close();
 		}
-		
-		return byteOut;
+		ByteArrayOutputStream out = byteOut;
+		byte[] byteArray = out.toByteArray();
+		return byteArray;
 	}
 }
