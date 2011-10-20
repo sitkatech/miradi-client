@@ -113,7 +113,7 @@ public class MpzToDotMiradiConverter extends AbstractMiradiProjectSaver
 	
 	private void convert() throws Exception
 	{
-		Enumeration<ZipEntry> zipEntries = (Enumeration<ZipEntry>) getZipFile().entries();
+		Enumeration<? extends ZipEntry> zipEntries = getZipFile().entries();
 		while(zipEntries.hasMoreElements())
 		{
 			ZipEntry entry = zipEntries.nextElement();
