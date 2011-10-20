@@ -40,8 +40,8 @@ public class TestMpzToMiradiConverter extends TestCaseWithProject
 	{
 		getProject().populateEverything();
 		getProject().populateSimpleThreatRatingValues();
-		
-		byte[] byteArray = createMpzBytesFromProject();
+		ByteArrayOutputStream out = addProjectAsMpzToZip(getProject());
+		byte[] byteArray = out.toByteArray();
 		ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(byteArray);
 		ZipInputStream zipInputStream = new ZipInputStream(byteArrayInputStream);
 		UnicodeStringWriter writer = UnicodeStringWriter.create();
@@ -58,13 +58,6 @@ public class TestMpzToMiradiConverter extends TestCaseWithProject
 		TestProjectSaver.compareProjects(getProject(), project2);
 	}
 
-	private byte[] createMpzBytesFromProject() throws Exception
-	{
-		ByteArrayOutputStream out = addProjectAsMpzToZip(getProject());
-		byte[] byteArray = out.toByteArray();
-		return byteArray;
-	}
-	
 	private ByteArrayOutputStream addProjectAsMpzToZip(ProjectForTesting projectForTesting) throws Exception
 	{
 		ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
