@@ -159,6 +159,8 @@ public abstract class AbstractProjectImporter
 
 	private void showImportFailedErrorDialog(String message)
 	{
+		if(message == null)
+			message = EAM.text("Unexpected error");
 		String safeMessage = EAM.substitute(EAM.text("<html>Import failed: <br><p> %s </p></html>"), message);
 		EAM.errorDialog(safeMessage);
 	}
