@@ -62,6 +62,8 @@ public class MpzToDotMiradiConverter extends AbstractMiradiProjectSaver
 				extractOneFile(entry);
 		}
 		getWriter().flush();
+		if(convertedProjectVersion != REQUIRED_VERSION)
+			throw new RuntimeException("Cannot convert MPZ without a version");
 	}
 	
 	private void extractOneFile(ZipEntry entry) throws Exception
@@ -73,12 +75,14 @@ public class MpzToDotMiradiConverter extends AbstractMiradiProjectSaver
 		int slashAt = findSlash(relativeFilePath);
 		relativeFilePath = relativeFilePath.substring(slashAt + 1);
 		
-		
 		if (relativeFilePath.equals("json/version"))
 		{
+			if(convertedProjectVersion != 0)
+				throw new RuntimeException("Cannot convert MPZ with two versions");
 			EnhancedJsonObject json = new EnhancedJsonObject(fileContent);
-			writeTagValue(UPDATE_PROJECT_VERSION_CODE, ProjectServer.TAG_VERSION, json.optString(ProjectServer.TAG_VERSION));
-			writeTagValue(UPDATE_PROJECT_VERSION_CODE, ProjectServer.TAG_VERSION, json.optString(ProjectServer.TAG_VERSION));
+			convertedProjectVersion = json.getInt(ProjectServer.TAG_VERSION);
+			if(convertedProjectVersion != REQUIRED_VERSION)
+				throw new RuntimeException("Cannot convert MPZ version " + convertedProjectVersion);
 		}
 		if (relativeFilePath.equals("json/project"))
 		{
@@ -187,6 +191,8 @@ public class MpzToDotMiradiConverter extends AbstractMiradiProjectSaver
 	{
 		return zipInputStream;
 	}
-	
+
+	private static int REQUIRED_VERSION = 61;
 	private ZipInputStream zipInputStream;
+	private int convertedProjectVersion;
 }
