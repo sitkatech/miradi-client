@@ -34,14 +34,13 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.utils.EnhancedJsonObject;
 
-public class MpzToDotMiradiConverter extends ProjectSaver
+public class MpzToDotMiradiConverter extends AbstractMiradiProjectSaver
 {
 	public MpzToDotMiradiConverter(InputStream inputStream, UnicodeStringWriter writerToUse) throws Exception
 	{
 		super(writerToUse);
 		
 		zipInputStream = new ZipInputStream(inputStream);
-		writer = writerToUse;
 	}
 	
 	public static final void convert(InputStream inputStream, UnicodeStringWriter writer) throws Exception
@@ -153,26 +152,5 @@ public class MpzToDotMiradiConverter extends ProjectSaver
 		return zipInputStream;
 	}
 	
-	private UnicodeStringWriter getWriter()
-	{
-		return writer;
-	}
-	
-	private void writeTagValue(final String actionCode, final String tag, final String value) throws Exception
-	{
-		write(actionCode);
-		write(ProjectSaver.TAB);
-		write(tag);
-		write(ProjectSaver.EQUALS);
-		write(value);
-		getWriter().writeln();
-	}
-
-	private void write(final String data) throws Exception
-	{
-		getWriter().write(data);
-	}
-	
 	private ZipInputStream zipInputStream;
-	private UnicodeStringWriter writer;
 }
