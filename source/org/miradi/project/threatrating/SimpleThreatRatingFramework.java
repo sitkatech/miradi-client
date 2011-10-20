@@ -435,8 +435,6 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 		BaseId defaultValueId = getDefaultValueId();
 		ThreatRatingBundle newBundle = new ThreatRatingBundle(threatId, targetId, defaultValueId);
 		saveBundle(newBundle);
-		if(getProject().getObjectManager().writeToOldProjectDirectories)
-			saveFramework();
 		return newBundle;
 	}
 
@@ -452,8 +450,6 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 
 	public void saveBundle(ThreatRatingBundle newBundle) throws Exception
 	{
-		if(getProject().getObjectManager().writeToOldProjectDirectories)
-			getDatabase().writeThreatRatingBundle(newBundle);
 		memorize(newBundle);
 	}
 
@@ -510,23 +506,6 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 		return json;
 	}
 	
-	public void load() throws Exception
-	{
-		clear();
-		
-		if(getProject().getObjectManager().writeToOldProjectDirectories)
-		{
-			ProjectServer db = getDatabase();
-			if(db.readRawThreatRatingFramework() != null)
-			{
-				HashSet<ThreatRatingBundle> loadedBundles = loadSimpleThreatRatingBundles(db);
-				for(ThreatRatingBundle bundle : loadedBundles)
-					memorize(bundle);
-	
-			}
-		}
-	}
-
 	public static HashSet<ThreatRatingBundle> loadSimpleThreatRatingBundles(ProjectServer db) throws Exception
 	{
 		EnhancedJsonArray bundleKeys = db.readRawThreatRatingFramework().optJsonArray(TAG_BUNDLE_KEYS);

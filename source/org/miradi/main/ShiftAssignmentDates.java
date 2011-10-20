@@ -23,7 +23,6 @@ package org.miradi.main;
 import java.io.File;
 import java.util.Vector;
 
-import org.miradi.database.ProjectServer;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objectpools.EAMObjectPool;
 import org.miradi.objects.Assignment;
@@ -46,20 +45,17 @@ public class ShiftAssignmentDates
 			System.out.println("Must specify path to project");
 			System.exit(1);
 		}
-		File projectDirectory = new File(args[0]);
-		if(!ProjectServer.isExistingLocalProject(projectDirectory))
+		File projectFile = new File(args[0]);
+		if(!projectFile.getName().endsWith(".Miradi"))
 		{
-			System.out.println("Project not found at: " + projectDirectory.getAbsolutePath());
+			System.out.println("Project not found at: " + projectFile.getAbsolutePath());
 			System.exit(1);
 		}
 		
-		ProjectServer database = new ProjectServer();
-		database.setLocalDataLocation(projectDirectory.getParentFile());
-
 		Miradi.addThirdPartyJarsToClasspath();
 		Translation.initialize();
-		Project project = new Project(database);
-		project.createOrOpenWithDefaultObjects(projectDirectory.getName(), new NullProgressMeter());
+		Project project = new Project();
+		project.createOrOpenWithDefaultObjects(projectFile, new NullProgressMeter());
 		showAllAssignmentDates(project, ResourceAssignment.getObjectType());
 		showAllAssignmentDates(project, ExpenseAssignment.getObjectType());
 		

@@ -32,7 +32,6 @@ import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
-import org.miradi.utils.NullProgressMeter;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.utils.XmpzFileFilter;
 import org.miradi.xml.xmpz.XmpzXmlImporter;
@@ -75,9 +74,9 @@ public class XmpzProjectImporter extends AbstractZippedXmlImporter
 	}
 
 	@Override
-	protected void createOrOpenProject(Project projectToFill, String projectName) throws Exception
+	protected void createOrOpenProject(Project projectToFill, File projectFile) throws Exception
 	{
-		projectToFill.rawCreateorOpen(projectName, new NullProgressMeter());
+		projectToFill.rawCreateorOpen();
 	}
 		
 	@Override

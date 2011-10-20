@@ -136,7 +136,6 @@ import org.miradi.utils.DateRange;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.EnhancedJsonObject;
-import org.miradi.utils.NullProgressMeter;
 import org.miradi.utils.OptionalDouble;
 import org.miradi.utils.PointList;
 import org.miradi.utils.ThreatStressRatingHelper;
@@ -164,7 +163,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		loadDiagramModelForTesting();
 	}
 	
-	public ProjectForTesting(String testName, ProjectServer server) throws Exception
+	private ProjectForTesting(String testName, ProjectServer server) throws Exception
 	{
 		super(server);
 		
@@ -173,7 +172,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		getDatabase().setMemoryDataLocation("Memory");
 		getDatabase().createProject(testName);
 
-		finishOpening(new NullProgressMeter());
+		finishOpeningAfterLoad(testName);
 	}
 	
 	public DiagramObject getMainDiagramObject()

@@ -85,12 +85,12 @@ abstract class ProjectListAction extends AbstractAction
 
 	private boolean isAvailable() throws Exception
 	{
-		return isProjectDirectory();
+		return isProjectSelected();
 	}
 
-	protected boolean isProjectDirectory() throws Exception
+	protected boolean isProjectSelected() throws Exception
 	{
-		return ProjectListTreeTable.isProjectDirectory(getSelectedFile());
+		return ProjectListTreeTable.isProject(getSelectedFile());
 	}
 	
 	protected boolean isDirectorySelected()

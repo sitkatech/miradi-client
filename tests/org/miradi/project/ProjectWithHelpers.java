@@ -35,7 +35,6 @@ import org.miradi.objectpools.ConceptualModelDiagramPool;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramObject;
 import org.miradi.utils.CommandVector;
-import org.miradi.utils.NullProgressMeter;
 import org.miradi.views.diagram.DiagramModelUpdater;
 
 public class ProjectWithHelpers extends Project implements CommandExecutedListener
@@ -65,19 +64,6 @@ public class ProjectWithHelpers extends Project implements CommandExecutedListen
 		super.close();
 		
 		diagramModel = null;
-	}
-
-	public void closeAndReopen() throws Exception
-	{
-		String projectName = getDatabase().getCurrentProjectName();
-		closeWithoutDeleting();
-		createOrOpenWithDefaultObjectsAndDiagramHelp(projectName, new NullProgressMeter());
-	}
-
-	private void closeWithoutDeleting() throws Exception
-	{
-		getTestDatabase().closeAndDontDelete();
-		disableListeners();
 	}
 
 	protected Command getLastCommand()

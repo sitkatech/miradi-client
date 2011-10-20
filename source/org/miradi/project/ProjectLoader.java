@@ -20,9 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.project;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.StringTokenizer;
 
+import org.martus.util.UnicodeReader;
 import org.martus.util.UnicodeStringReader;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
@@ -40,6 +42,12 @@ public class ProjectLoader
 		bundleNameToBundleMap = new HashMap<String, ThreatRatingBundle>();
 	}
 	
+	public static void loadProject(File projectFile, Project projectToLoad) throws Exception
+	{
+		String contents = UnicodeReader.getFileContents(projectFile);
+		loadProject(new UnicodeStringReader(contents), projectToLoad);
+	}
+
 	public static void loadProject(final UnicodeStringReader reader, Project project) throws Exception
 	{
 		final ProjectLoader projectLoader = new ProjectLoader(reader, project);
@@ -48,6 +56,7 @@ public class ProjectLoader
 
 	private void load() throws Exception
 	{
+		project.clear();
 		while(true)
 		{
 			String line = reader.readLine();
@@ -93,6 +102,8 @@ public class ProjectLoader
 		String value = tagValue[1];
 		if (tag.equals(ProjectInfo.TAG_PROJECT_METADATA_ID))
 			getProject().getProjectInfo().setMetadataId(new BaseId(value));
+		if (tag.equals(ProjectInfo.TAG_HIGHEST_OBJECT_ID))
+			getProject().getProjectInfo().getNormalIdAssigner().idTaken(new BaseId(value));
 	}
 
 	private void loadLastModified(String line)

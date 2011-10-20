@@ -21,6 +21,7 @@ package org.miradi.wizard.noproject;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.io.File;
 
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
@@ -147,8 +148,8 @@ public class WelcomeCreateStep extends NoProjectWizardStep
 		try 
 		{
 			Project.validateNewProject(newName);
-			getMainWindow().setLocalDataLocation(EAM.getHomeDirectory());
-			getMainWindow().createOrOpenProject(newName);
+			File projectFile = new File(EAM.getHomeDirectory(), newName + ".Miradi");
+			getMainWindow().createOrOpenProject(projectFile);
 		}
 		catch (Exception e)
 		{

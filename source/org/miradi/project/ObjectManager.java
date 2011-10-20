@@ -349,18 +349,8 @@ public class ObjectManager
 		if(pool == null)
 			throw new RuntimeException("No pool for " + objectType);
 		BaseObject created = pool.createObject(this, objectId);
-		if(writeToOldProjectDirectories)
-		{
-			getDatabase().writeObject(created);
-			getDatabase().writeObjectManifest(getFileName(), objectType, createManifest(pool));
-		}
 		createdId = created.getId();
 		return createdId;
-	}
-
-	private ObjectManifest createManifest(EAMObjectPool pool)
-	{
-		return new ObjectManifest(pool);
 	}
 
 	public void deleteObject(BaseObject object) throws Exception
@@ -373,19 +363,12 @@ public class ObjectManager
 		if(pool.findObject(objectId) == null)
 			throw new RuntimeException("Attempted to delete missing object: " + objectType + ":" + objectId);
 		pool.remove(objectId);
-		if(writeToOldProjectDirectories)
-		{
-			getDatabase().writeObjectManifest(getFileName(), objectType, createManifest(pool));
-			getDatabase().deleteObject(objectType, objectId);
-		}
 	}
 	
 	public void setObjectData(ORef objectRef, String fieldTag, String dataValue) throws Exception
 	{
 		BaseObject object = findObject(objectRef);
 		object.setData(fieldTag, dataValue);
-		if(writeToOldProjectDirectories)
-			getDatabase().writeObject(object);
 	}
 	
 	public BaseObject findObject(ORef ref)
@@ -624,6 +607,4 @@ public class ObjectManager
 	private ChainWalker diagramChainWalker;
 	private HashMap<Integer, BaseObjectInformation> pools;
 	private HashMap<ORef, ORefSet> referrerCache;
-	
-	public static boolean writeToOldProjectDirectories = true;
 }

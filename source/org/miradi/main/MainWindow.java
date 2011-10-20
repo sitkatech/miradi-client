@@ -73,7 +73,6 @@ import org.miradi.objects.Assignment;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.TableSettings;
-import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectLoader;
 import org.miradi.project.ProjectRepairer;
@@ -163,12 +162,6 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		else
 		{
 			setLocalDataLocation(EAM.getHomeDirectory());
-		}
-		
-		if(commandLineArguments.contains("--newformat"))
-		{
-			EAM.logDebug("***USING NEW FILE FORMAT***");
-			ObjectManager.writeToOldProjectDirectories = false;
 		}
 		
 		ensureFontSizeIsSet();
@@ -542,27 +535,17 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 	{
 	}
 
-	public void createOrOpenProject(String projectName)
+	public void createOrOpenProject(File projectFile)
 	{
 		preventActionUpdates();
 		project.beginCommandSideEffectMode();
 		try
 		{
-			createOrOpenProjectInBackground(projectName);
-			if(ObjectManager.writeToOldProjectDirectories)
-				logExceptionsInsideProjectDir();
-
+			createOrOpenProjectInBackground(projectFile);
+			projectSaver.startSaving(projectFile, project);
 			
 			repairProject();
 
-			File newProjectFile = new File(getDatabase().getCurrentLocalProjectDirectory().getAbsolutePath() + ".Miradi");
-			if(    !    ObjectManager.writeToOldProjectDirectories && newProjectFile.exists())
-			{
-				String contents = UnicodeReader.getFileContents(newProjectFile);
-				ProjectLoader.loadProject(new UnicodeStringReader(contents), project);
-			}
-			
-			projectSaver.startSaving(newProjectFile, project);
 			refreshWizard();
 
 			validate();
@@ -624,38 +607,46 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		}
 	}
 
-	private void createOrOpenProjectInBackground(String projectName) throws Exception
+	private void createOrOpenProjectInBackground(File projectFile) throws Exception
 	{
 		String title = EAM.text("Create Project");
-		if(getDatabase().isExistingProject(projectName))
+		if(projectFile.exists())
 			title = EAM.text("Open Project");
 		ProgressDialog progressDialog = new ProgressDialog(this, title);
-		ProjectOpenWorker worker = new ProjectOpenWorker(progressDialog, project, projectName);
+		ProjectOpenWorker worker = new ProjectOpenWorker(progressDialog, project, projectFile);
 		progressDialog.doWorkInBackgroundWhileShowingProgress(worker);
 
 	}
 
 	private static class ProjectOpenWorker extends MiradiBackgroundWorkerThread
 	{
-		public ProjectOpenWorker(ProgressInterface progressInterfaceToUse, Project projectToUse, String projectNameToUse)
+		public ProjectOpenWorker(ProgressInterface progressInterfaceToUse, Project projectToUse, File projectFileToUse)
 		{
 			super(progressInterfaceToUse);
 			
 			project = projectToUse;
-			projectName = projectNameToUse;
+			projectFile = projectFileToUse;
 		}
 		
 		@Override
 		protected void doRealWork() throws Exception
 		{
-			project.createOrOpenWithDefaultObjectsAndDiagramHelp(projectName, getProgressIndicator());
-			if(   !    ObjectManager.writeToOldProjectDirectories)
-				project.clear();
+			if(projectFile.exists())
+			{
+				String contents = UnicodeReader.getFileContents(projectFile);
+				ProjectLoader.loadProject(new UnicodeStringReader(contents), project);
+				project.finishOpeningAfterLoad(projectFile);
+			}
+			else
+			{
+				project.createOrOpenWithDefaultObjectsAndDiagramHelp(projectFile, getProgressIndicator());
+			}
+			
 			getProgressIndicator().finished();
 		}
 		
 		private Project project;
-		private String projectName;
+		private File projectFile;
 	}
 
 	private void repairProject() throws Exception
@@ -706,8 +697,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 
 	private void logExceptionsInsideProjectDir()
 	{
-		File projectDir = getDatabase().getCurrentLocalProjectDirectory();
-		EAM.setExceptionLoggingDestination(new File(projectDir, EAM.EXCEPTIONS_LOG_FILE_NAME));
+//		EAM.setExceptionLoggingDestination(new File(projectDir, EAM.EXCEPTIONS_LOG_FILE_NAME));
 	}
 	
 	public DiagramView getDiagramView()

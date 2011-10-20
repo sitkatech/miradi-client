@@ -27,7 +27,6 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
-import org.miradi.utils.NullProgressMeter;
 import org.miradi.utils.Translation;
 
 public class ListAllFields
@@ -38,9 +37,6 @@ public class ListAllFields
 		Translation.initialize();
 		
 		Project project = new Project();
-		project.getDatabase().setMemoryDataLocation("Memory");
-
-		project.createOrOpenWithDefaultObjectsAndDiagramHelp("ListAllFields", new NullProgressMeter());
 		listFieldsToConsole(project);
 		project.close();
 	}

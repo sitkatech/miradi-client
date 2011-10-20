@@ -23,7 +23,6 @@ import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -226,13 +225,6 @@ public class ProjectServer
 		if(!currentFileSystem.doesFileExist(getCurrentProjectName(), threatBundleFile))
 			return null;
 		return new ThreatRatingBundle(readRelativeJsonFile(getCurrentProjectName(), threatBundleFile));
-	}
-
-	public void updateLastModifiedTime() throws Exception
-	{
-		String currentTime = timestampToString(Calendar.getInstance().getTimeInMillis());
-		File lastModifiedTimeFile = getRelativeLastModifiedTimeFile();
-		currentFileSystem.writeFile(getCurrentProjectName(), lastModifiedTimeFile, currentTime);
 	}
 
 	public void writeObject(BaseObject object) throws Exception

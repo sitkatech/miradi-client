@@ -79,12 +79,11 @@ public class TestSimpleThreatRatingFramework extends MiradiTestCase
 	public void testWriteAndRead() throws Exception
 	{
 		File tempDir = createTempDirectory();
-		String projectName = "testWriteAndRead";
+		File projectFile = new File(tempDir, getName());
 		try
 		{
 			Project realProject = new Project();
-			realProject.setLocalDataLocation(tempDir);
-			realProject.createOrOpenWithDefaultObjectsAndDiagramHelp(projectName, new NullProgressMeter());
+			realProject.createOrOpenWithDefaultObjectsAndDiagramHelp(projectFile, new NullProgressMeter());
 			BaseId createdId = realProject.createObjectAndReturnId(ObjectType.RATING_CRITERION);
 			
 			FactorId threatId = new FactorId(283);
@@ -94,12 +93,11 @@ public class TestSimpleThreatRatingFramework extends MiradiTestCase
 			bundle.setValueId(createdId, new BaseId(838));
 			IdList realOptionIds = realFramework.getValueOptionIds();
 			realFramework.saveBundle(bundle);
-			realProject.getDatabase().writeThreatRatingFramework(realFramework);
+			ProjectSaver.saveProject(realProject, projectFile);
 			realProject.close();
 
 			Project loadedProject = new Project();
-			loadedProject.setLocalDataLocation(tempDir);
-			loadedProject.createOrOpenWithDefaultObjectsAndDiagramHelp(projectName, new NullProgressMeter());
+			ProjectLoader.loadProject(projectFile, loadedProject);
 			IdList loadedOptionIds = loadedProject.getSimpleThreatRatingFramework().getValueOptionIds();
 			SimpleThreatRatingFramework loadedFramework = loadedProject.getSimpleThreatRatingFramework();
 			assertEquals("didn't reload framework?", createdId, loadedFramework.getCriterion(createdId).getId());
@@ -207,13 +205,10 @@ public class TestSimpleThreatRatingFramework extends MiradiTestCase
 		BaseId valueId = new BaseId(639);
 		
 		ThreatRatingBundle bundle = framework.getBundle(threatId, targetId);
-		assertNotNull("Didn't write bundle?", project.getDatabase().readThreatRatingBundle(threatId, targetId));
-		
 		
 		bundle.setValueId(criterionId, valueId);
 		ThreatRatingBundle reGot = framework.getBundle(threatId, targetId);
 		assertEquals("did't get same bundle?", bundle.getValueId(criterionId), reGot.getValueId(criterionId));
-		
 	}
 	
 	public void testGetThreatRatingSummary() throws Exception

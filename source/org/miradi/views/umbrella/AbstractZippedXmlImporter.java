@@ -39,8 +39,7 @@ abstract public class AbstractZippedXmlImporter extends AbstractProjectImporter
 	protected void importProjectFromXmlEntry(ZipFile zipFile, File newProjectDir, ProgressInterface progressIndicator) throws Exception
 	{
 		Project projectToFill = new Project();
-		projectToFill.setLocalDataLocation(newProjectDir.getParentFile());
-		createOrOpenProject(projectToFill, newProjectDir.getName());
+		createOrOpenProject(projectToFill, newProjectDir);
 		try
 		{
 			InputStreamWithSeek projectAsInputStream = getProjectAsInputStream(zipFile);
@@ -65,7 +64,7 @@ abstract public class AbstractZippedXmlImporter extends AbstractProjectImporter
 		}
 	}
 	
-	abstract protected void createOrOpenProject(Project projectToFill, String projectName) throws Exception;
+	abstract protected void createOrOpenProject(Project projectToFill, File projectFile) throws Exception;
 
 	abstract protected void importProjectXml(Project projectToFill, ZipFile zipFile, InputStreamWithSeek projectAsInputStream, ProgressInterface progressIndicator) throws Exception;
 

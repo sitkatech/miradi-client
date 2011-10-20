@@ -109,36 +109,37 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 
 	private void importConproProjectNumbers(ZipFile zipFile, File newProjectDir, ProgressInterface progressIndicator) throws Exception
 	{
-		Project projectToFill = new Project();
-		projectToFill.setLocalDataLocation(newProjectDir.getParentFile());
-		
-		ProgressInterface nonImportProgressMeter = new NullProgressMeter();
-		projectToFill.openProject(newProjectDir.getName(), nonImportProgressMeter);
-		try
-		{
-			InputStreamWithSeek projectAsInputStream = getProjectAsInputStream(zipFile);
-			try
-			{
-				new ConproXmlImporter(projectToFill, progressIndicator).importConProProjectNumbers(projectAsInputStream);
-			}
-			finally
-			{
-				projectAsInputStream.close();
-			}
-
-			projectToFill.close();
-		}
-		catch(Exception e)
-		{
-			projectToFill.closeAndDeleteProject();
-			throw e;
-		}
+		throw new RuntimeException("Cpmz Import not fully supported yet");
+//		Project projectToFill = new Project();
+//		projectToFill.setLocalDataLocation(newProjectDir.getParentFile());
+//		
+//		ProgressInterface nonImportProgressMeter = new NullProgressMeter();
+//		projectToFill.openProject(newProjectDir.getName(), nonImportProgressMeter);
+//		try
+//		{
+//			InputStreamWithSeek projectAsInputStream = getProjectAsInputStream(zipFile);
+//			try
+//			{
+//				new ConproXmlImporter(projectToFill, progressIndicator).importConProProjectNumbers(projectAsInputStream);
+//			}
+//			finally
+//			{
+//				projectAsInputStream.close();
+//			}
+//
+//			projectToFill.close();
+//		}
+//		catch(Exception e)
+//		{
+//			projectToFill.closeAndDeleteProject();
+//			throw e;
+//		}
 	}
 
 	@Override
-	protected void createOrOpenProject(Project projectToFill, String projectName)	throws Exception
+	protected void createOrOpenProject(Project projectToFill, File projectFile)	throws Exception
 	{
-		projectToFill.createOrOpenWithDefaultObjects(projectName, new NullProgressMeter());
+		projectToFill.createOrOpenWithDefaultObjects(projectFile, new NullProgressMeter());
 	}
 
 	@Override

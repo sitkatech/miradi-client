@@ -25,7 +25,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.HashSet;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
@@ -35,55 +34,6 @@ import org.miradi.main.EAM;
 
 public class ProjectMpzImporter
 {
-	public static boolean isZipFileImportable(File zipFile) throws IOException
-	{
-		ZipInputStream zipIn = new ZipInputStream(new FileInputStream(zipFile));
-		return isZipFileImportable(zipIn);
-	}
-	
-	public static boolean isZipFileImportable(ZipInputStream zipInput) throws IOException
-	{
-		HashSet<String> topLevelDirectories = new HashSet<String>();
-
-		try
-		{
-			while(true)
-			{
-				ZipEntry entry = zipInput.getNextEntry();
-				if(entry == null)
-					break;
-				String name = entry.getName();
-				if(isTopLevelFile(name))
-				{
-					EAM.logDebug("ProjectUnzipper found file at top level");
-					return false;
-				}
-				if(hasLeadingSlash(name))
-				{
-					EAM.logDebug("ProjectUnzipper found leading slash");
-					return false;
-				}
-				
-				String topLevelDirectory = name.substring(0, findSlash(name));
-				topLevelDirectories.add(topLevelDirectory);
-
-			}
-			
-			if(topLevelDirectories.size() != 1)
-			{
-				EAM.logDebug("ProjectUnzipper didn't find exactly one top-level folder");
-				return false;
-			}
-			
-			return true;
-		}
-		finally
-		{
-			zipInput.close();
-		}
-	}
-	
-
 	public static void unzipToProjectDirectory(File zipFile, File homeDirectory, String newProjectFilename) throws Exception
 	{
 		if(!Project.isValidProjectFilename(newProjectFilename))
@@ -188,16 +138,6 @@ public class ProjectMpzImporter
 	private static int findSlash(String name)
 	{
 		return name.indexOf('/');
-	}
-
-	private static boolean isTopLevelFile(String name)
-	{
-		return findSlash(name) < 0;
-	}
-
-	private static boolean hasLeadingSlash(String name)
-	{
-		return findSlash(name) == 0;
 	}
 	
 }

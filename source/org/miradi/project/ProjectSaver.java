@@ -20,12 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.project;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Vector;
 
 import org.martus.util.UnicodeStringWriter;
+import org.martus.util.UnicodeWriter;
 import org.miradi.database.ProjectServer;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.ORef;
@@ -50,6 +52,15 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 		project = projectToUse;
 	}
 	
+	public static void saveProject(Project projectToSave, File fileToSaveTo) throws Exception
+	{
+		UnicodeStringWriter stringWriter = UnicodeStringWriter.create();
+		saveProject(projectToSave, stringWriter);
+		UnicodeWriter fileWriter = new UnicodeWriter(fileToSaveTo);
+		fileWriter.write(stringWriter.toString());
+		fileWriter.close();
+	}
+
 	public static void saveProject(final Project projectToUse, final UnicodeStringWriter writerToUse) throws Exception
 	{
 		final ProjectSaver projectSaver = new ProjectSaver(projectToUse, writerToUse);

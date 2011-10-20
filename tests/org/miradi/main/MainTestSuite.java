@@ -166,8 +166,6 @@ import org.miradi.project.TestProject;
 import org.miradi.project.TestProjectCalendar;
 import org.miradi.project.TestProjectCommandExecutions;
 import org.miradi.project.TestProjectInfo;
-import org.miradi.project.TestProjectMpzImporter;
-import org.miradi.project.TestProjectMpzWriter;
 import org.miradi.project.TestProjectRepairer;
 import org.miradi.project.TestProjectSaver;
 import org.miradi.project.TestProjectTotalCalculator;
@@ -279,8 +277,6 @@ public class MainTestSuite extends TestSuite
 		addTest(new TestSuite(TestSimpleThreatRatingFramework.class));
 		addTest(new TestSuite(TestSimpleThreatFormula.class));
 		addTest(new TestSuite(TestTNCViabilityFormula.class));
-		addTest(new TestSuite(TestProjectMpzWriter.class));
-		addTest(new TestSuite(TestProjectMpzImporter.class));
 		addTest(new TestSuite(TestFactorDeleteHelper.class));
 		addTest(new TestSuite(TestStressBasedThreatFormula.class));
 		addTest(new TestSuite(TestStressBasedThreatRatingFramework.class));

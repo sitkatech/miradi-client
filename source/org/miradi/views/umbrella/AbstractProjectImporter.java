@@ -142,8 +142,9 @@ public abstract class AbstractProjectImporter
 		boolean shouldOpenProjectAfterImport = EAM.confirmOpenDialog(EAM.text("Open Project"), openProjectMessage);
 		if (shouldOpenProjectAfterImport)
 		{
-			getMainWindow().setLocalDataLocation(EAM.getHomeDirectory());
-			getMainWindow().createOrOpenProject(projectName);
+			throw new RuntimeException("Open after import not supported yet");
+//			getMainWindow().setLocalDataLocation(EAM.getHomeDirectory());
+//			getMainWindow().createOrOpenProject(projectName);
 		}
 	}
 

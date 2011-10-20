@@ -23,6 +23,8 @@ import java.awt.Point;
 import java.util.Vector;
 
 import org.martus.util.MultiCalendar;
+import org.martus.util.UnicodeStringReader;
+import org.martus.util.UnicodeStringWriter;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
@@ -61,6 +63,8 @@ import org.miradi.objects.BaseObject.PseudoQuestionData;
 import org.miradi.objects.BaseObject.PseudoStringData;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
+import org.miradi.project.ProjectLoader;
+import org.miradi.project.ProjectSaver;
 import org.miradi.project.TestDateUnit;
 import org.miradi.questions.InternalQuestionWithoutValues;
 import org.miradi.questions.StaticQuestionManager;
@@ -150,7 +154,10 @@ public class ObjectTestCase extends TestCaseWithProject
 	{
 		BaseId id = BaseId.INVALID;
 		id = getProject().createObjectAndReturnId(objectType, BaseId.INVALID);
-		getProject().closeAndReopen();
+		UnicodeStringWriter writer = UnicodeStringWriter.create();
+		ProjectSaver.saveProject(getProject(), writer);
+		getProject().clear();
+		ProjectLoader.loadProject(new UnicodeStringReader(writer.toString()), getProject());
 		BaseObject object = getProject().findObject(objectType, id);
 		assertNotNull("Didn't load pool?", object);
 	}
