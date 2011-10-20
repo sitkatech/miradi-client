@@ -54,13 +54,10 @@ abstract public class AbstractZippedXmlImporter extends AbstractProjectImporter
 			{
 				projectAsInputStream.close();
 			}
-
-			projectToFill.close();
 		}
-		catch(Exception e)
+		finally
 		{
-			projectToFill.closeAndDeleteProject();
-			throw e;
+			projectToFill.close();
 		}
 	}
 	
