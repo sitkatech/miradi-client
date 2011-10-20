@@ -104,20 +104,9 @@ public class TargetViabilityTreeRebuilder extends AbstractTreeRebuilder
 		
 		Collections.sort(keyEcologicalAttributesVector, new KeaComparator());
 		
-		return convertToRefList(keyEcologicalAttributesVector);
+		return new ORefList(keyEcologicalAttributesVector);
 	}
 	
-	private ORefList convertToRefList(Vector<KeyEcologicalAttribute> list)
-	{
-		ORefList refs = new ORefList();
-		for(KeyEcologicalAttribute keyEcologicalAttribute : list)
-		{
-			refs.add(keyEcologicalAttribute);
-		}
-		
-		return refs;
-	}
-
 	private ORefList getChildrenOfProjectNode(ORef parentRef) throws Exception
 	{
 		ORefList childRefs = new ORefList();

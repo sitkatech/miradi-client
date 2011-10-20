@@ -75,7 +75,7 @@ public class ORefList
 			add(orefs[i]);
 	}
 	
-	public ORefList(Vector<BaseObject> baseObjects)
+	public ORefList(Vector<? extends BaseObject> baseObjects)
 	{
 		this(baseObjects.toArray(new BaseObject[0]));
 	}
