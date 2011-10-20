@@ -20,6 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.viability;
 
+import org.miradi.actions.ActionCreateKeyEcologicalAttribute;
+import org.miradi.actions.ActionCreateKeyEcologicalAttributeIndicator;
+import org.miradi.actions.ActionCreateKeyEcologicalAttributeMeasurement;
+import org.miradi.actions.ActionDeleteKeyEcologicalAttribute;
+import org.miradi.actions.ActionDeleteKeyEcologicalAttributeIndicator;
+import org.miradi.actions.ActionDeleteKeyEcologicalAttributeMeasurement;
+import org.miradi.actions.ActionExpandToMenu;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTable;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
@@ -47,6 +54,14 @@ public class TargetViabilityTreeTablePanel extends PlanningTreeTablePanel
 	private static Class[] getButtonActions()
 	{
 		return new Class[] {
+				ActionCreateKeyEcologicalAttribute.class, 
+				ActionCreateKeyEcologicalAttributeIndicator.class,
+				ActionCreateKeyEcologicalAttributeMeasurement.class,
+				ActionExpandToMenu.class,
+				
+				ActionDeleteKeyEcologicalAttribute.class,
+				ActionDeleteKeyEcologicalAttributeIndicator.class,
+				ActionDeleteKeyEcologicalAttributeMeasurement.class,
 		};
 	}
 }
