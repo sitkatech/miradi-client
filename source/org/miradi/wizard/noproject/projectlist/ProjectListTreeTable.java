@@ -37,7 +37,6 @@ import javax.swing.text.Position;
 import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreePath;
 
-import org.miradi.database.ProjectServer;
 import org.miradi.dialogs.tablerenderers.BorderlessTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.DefaultTableCellRendererWithPreferredHeightFactory;
 import org.miradi.dialogs.treetables.TreeTableWithColumnWidthSaving;
@@ -109,26 +108,26 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving impleme
 		return file;
 	}
 	
-	public static boolean isProjectDirectory(File file) throws Exception
-	{
-		return ProjectServer.isExistingLocalProject(file);
-	}
-
-	public static void doProjectOpen(MainWindow mainWindow, File file) throws Exception
+	public static boolean isProject(File file) throws Exception
 	{
 		if(file == null)
+			return false;
+		return file.getName().endsWith(".Miradi");
+	}
+
+	public static void doProjectOpen(MainWindow mainWindow, File projectFile) throws Exception
+	{
+		if(projectFile == null)
 			return;
 		
-		String relativeProjectPath = file.getName();
-		mainWindow.getDatabase().setLocalDataLocation(file.getParentFile());
-		if(!mainWindow.getDatabase().isExistingProject(relativeProjectPath))
+		if(!isProject(projectFile))
 			return;
 		
 		Cursor cursor = mainWindow.getCursor();
 		mainWindow.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 		try
 		{
-			mainWindow.createOrOpenProject(relativeProjectPath);
+			mainWindow.createOrOpenProject(projectFile);
 		}
 		catch(Exception e)
 		{

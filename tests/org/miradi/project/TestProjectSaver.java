@@ -115,9 +115,9 @@ public class TestProjectSaver extends TestCaseWithProject
 		String contents = saveProjectToString();
 
 		ProjectForTesting project2 = new ProjectForTesting(getName());
-		project2.clear();
 		UnicodeStringReader reader = new UnicodeStringReader(contents);
 		ProjectLoader.loadProject(reader, project2);
+		project2.finishOpeningAfterLoad(getName() + "2");
 		String afterLoading = saveProjectToString(project2);
 		assertEquals(contents, afterLoading);
 	}

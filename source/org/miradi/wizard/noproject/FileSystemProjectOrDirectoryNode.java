@@ -43,6 +43,9 @@ public class FileSystemProjectOrDirectoryNode extends FileSystemTreeNode
 	{
 		try
 		{
+			if(file.getName().endsWith(".Miradi"))
+				return true;
+			
 			if (!file.isDirectory())
 				return false;
 

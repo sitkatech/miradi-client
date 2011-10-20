@@ -104,6 +104,7 @@ public class CommandExecutor
 		return true;
 	}
 
+	// FIXME: Probably still need this in some form
 	private boolean shouldUpdateLastModfiedTime(Command command)
 	{
 		if (command.getCommandName().equals(CommandDeleteObject.COMMAND_NAME))
@@ -502,7 +503,6 @@ public class CommandExecutor
 	{
 		try
 		{
-			getProject().getDatabase().beginTransaction();
 			++transactionLevel;
 		}
 		catch(Exception e)
@@ -517,16 +517,6 @@ public class CommandExecutor
 		if(transactionLevel < 1)
 			throw new CommandFailedException("Attempted to end transaction with no transaction open");
 		--transactionLevel;
-		
-		try
-		{
-			getProject().getDatabase().endTransaction();
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			throw new CommandFailedException("Unable to complete transaction");
-		}
 	}
 	
 	public boolean isInTransaction()
@@ -603,9 +593,6 @@ public class CommandExecutor
 			enableIsExecuting();
 			try
 			{
-				if (shouldUpdateLastModfiedTime(command))
-					getProject().getDatabase().updateLastModifiedTime();
-				
 				executeWithoutRecording(command);
 				doPostExecutionProcessing(command);
 				fireCommandExecuted(command);

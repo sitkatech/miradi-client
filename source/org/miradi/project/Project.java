@@ -23,19 +23,15 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.io.File;
-import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Vector;
 
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.database.DataUpgrader;
 import org.miradi.database.ProjectServer;
 import org.miradi.diagram.cells.DiagramGroupBoxCell;
 import org.miradi.dialogs.planning.upperPanel.WorkPlanTreeTablePanel;
 import org.miradi.exceptions.CommandFailedException;
-import org.miradi.exceptions.FutureVersionException;
-import org.miradi.exceptions.OldVersionException;
 import org.miradi.exceptions.UnexpectedNonSideEffectException;
 import org.miradi.exceptions.UnexpectedSideEffectException;
 import org.miradi.ids.BaseId;
@@ -137,7 +133,6 @@ import org.miradi.views.diagram.DiagramPageList;
 import org.miradi.views.diagram.DiagramView;
 import org.miradi.views.planning.PlanningView;
 import org.miradi.views.planning.doers.CreatePlanningViewEmptyConfigurationDoer;
-import org.miradi.views.summary.SummaryView;
 import org.miradi.views.umbrella.CreateProjectDialog;
 import org.miradi.views.workplan.WorkPlanView;
 
@@ -167,6 +162,7 @@ public class Project
 
 	public void clear() throws Exception
 	{
+		isOpen = false;
 		projectInfo = new ProjectInfo();
 		objectManager = new ObjectManager(this);
 		commandExecutor.clear();
@@ -175,9 +171,11 @@ public class Project
 		simpleThreatFramework = new SimpleThreatRatingFramework(this);
 		stressBasedThreatFramework = new StressBasedThreatRatingFramework(this);
 		
-		currentViewName = SummaryView.getViewName();
+		currentViewName = NO_PROJECT_VIEW_NAME;
+
 		
 		projectCalendar.clearDateRanges();
+		quarantine = new StringBuilder();
 	}
 	
 	static public void validateNewProject(String newName) throws Exception
@@ -564,12 +562,12 @@ public class Project
 
 	public void appendToQuarantineFile(String textToAppend) throws Exception
 	{
-		getDatabase().appendToQuarantineFile(textToAppend);
+		quarantine.append(textToAppend);
 	}
 	
 	public String getQuarantineFileContents() throws Exception
 	{
-		return getDatabase().getQuarantineFileContents();
+		return quarantine.toString();
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////
@@ -611,8 +609,6 @@ public class Project
 	public BaseId createObjectAndReturnId(int objectType, BaseId objectId) throws Exception
 	{
 		BaseId createdId = objectManager.createObject(objectType, objectId);
-		if(objectManager.writeToOldProjectDirectories)
-			saveProjectInfo();
 		return createdId;
 	}
 	
@@ -649,56 +645,40 @@ public class Project
 	/////////////////////////////////////////////////////////////////////////////////
 	// database
 	
-	public void createOrOpenWithDefaultObjectsAndDiagramHelp(String projectName, ProgressInterface progressMeter) throws Exception
+	public void createOrOpenWithDefaultObjectsAndDiagramHelp(File projectFile, ProgressInterface progressMeter) throws Exception
 	{
-		boolean didProjectAlreadyExist = getDatabase().isExistingProject(projectName);
-		createOrOpenWithDefaultObjects(projectName, progressMeter);
+		boolean didProjectAlreadyExist = projectFile.exists();
+		createOrOpenWithDefaultObjects(projectFile, progressMeter);
 		
 		if (!didProjectAlreadyExist)
 			createDefaultHelpTextBoxDiagramFactor();
 	}
 
-	public void createOrOpenWithDefaultObjects(String projectName, ProgressInterface progressMeter) throws Exception
+	public void createOrOpenWithDefaultObjects(File projectFile, ProgressInterface progressMeter) throws Exception
 	{
-		rawCreateorOpen(projectName, progressMeter);
+		rawCreateorOpen();
 		createMissingDefaultObjects();
 		applyDefaultBehavior();
+		finishOpeningAfterLoad(projectFile);
 	}
 
-	public void rawCreateorOpen(String projectName, ProgressInterface progressMeter) throws Exception
+	public void finishOpeningAfterLoad(File projectFile) throws Exception
 	{
-		clear();
-
-		final int FINISH_OPENING_STEP_COUNT = 2;
-		
-		boolean didProjectAlreadyExist = getDatabase().isExistingProject(projectName);
-		if(didProjectAlreadyExist)
-		{
-			final int READ_MANIFESTS = 1;
-			int stepCount = READ_MANIFESTS + ObjectManager.getAllObjectTypes().length + FINISH_OPENING_STEP_COUNT;
-			progressMeter.setStatusMessage(EAM.text("Opening..."), stepCount);
-			openProject(projectName, progressMeter);
-		}
-		else
-		{
-			progressMeter.setStatusMessage(EAM.text("Creating..."), 1 + FINISH_OPENING_STEP_COUNT);
-			createProject(projectName);
-			progressMeter.incrementProgress();
-		}
-		
-		writeStartingLogEntry();
+		String openedProjectName = projectFile.getName().replaceAll(".Miradi$", "");
+		finishOpeningAfterLoad(openedProjectName);
+	}
 	
-		finishOpening(progressMeter);
+	public void finishOpeningAfterLoad(String openedProjectName) throws Exception
+	{
+		createMissingBuiltInObjects();
+		projectName = openedProjectName;
+		isOpen = true;
 	}
 
-	public void setLocalDataLocation(File dataDirectory) throws Exception
+	public void rawCreateorOpen() throws Exception
 	{
-		getDatabase().setLocalDataLocation(dataDirectory);
-	}
-
-	public void setRemoteDataLocation(String remoteLocation) throws Exception
-	{
-		getDatabase().setRemoteDataLocation(remoteLocation);
+		currentViewName = SUMMARY_VIEW_NAME;
+		writeStartingLogEntry();
 	}
 
 	private void writeStartingLogEntry() throws Exception
@@ -834,9 +814,6 @@ public class Project
 		setObjectData(getMetadata().getRef(), ProjectMetadata.TAG_WORKPLAN_TIME_UNIT, BudgetTimePeriodQuestion.BUDGET_BY_YEAR_CODE);
 		setObjectData(getMetadata().getRef(), ProjectMetadata.TAG_DIAGRAM_FONT_FAMILY, FontFamiliyQuestion.ARIAL_CODE);
 		setObjectData(getMetadata().getRef(), ProjectMetadata.TAG_DIAGRAM_FONT_SIZE, FontSizeQuestion.getDefaultSizeCode());
-
-		if(objectManager.writeToOldProjectDirectories)
-			getDatabase().writeProjectInfo(projectInfo);
 	}
 	
 	private void createDefaultProjectDataObject(int objectType) throws Exception
@@ -871,65 +848,6 @@ public class Project
 		return ConceptualModelDiagram.DEFAULT_MAIN_NAME;
 	}
 	
-	public void openProject(String projectName, ProgressInterface progressMeter) throws Exception
-	{
-		int existingVersion = getDatabase().readProjectDataVersion(projectName); 
-		if(existingVersion > ProjectServer.DATA_VERSION)
-			throw new FutureVersionException();
-
-		if(existingVersion < ProjectServer.DATA_VERSION)
-			DataUpgrader.attemptUpgrade(new File(getDatabase().getDataLocation(), projectName), existingVersion);
-		
-		int updatedVersion = getDatabase().readProjectDataVersion(projectName); 
-		if(updatedVersion < ProjectServer.DATA_VERSION)
-			throw new OldVersionException();
-
-		getDatabase().openProject(projectName);
-		if(objectManager.writeToOldProjectDirectories)
-		{
-			try
-			{
-				loadProjectInfo();
-				objectManager.loadFromDatabase(progressMeter);
-				EAM.logVerbose("Highest BaseObject Id: " + getNormalIdAssigner().getHighestAssignedId());
-			}
-			catch(Exception e)
-			{
-				close();
-				throw e;
-			}
-		}
-	}
-	
-	private void createProject(String projectName) throws Exception
-	{
-		getDatabase().createProject(projectName);
-		
-	}
-	
-	private void loadProjectInfo() throws Exception
-	{
-		getDatabase().readProjectInfo(projectInfo);
-	}
-	
-	private void saveProjectInfo() throws Exception
-	{
-		getDatabase().writeProjectInfo(projectInfo);
-	}
-
-	private void loadThreatRatingFramework() throws Exception
-	{
-		getSimpleThreatRatingFramework().load();
-	}
-	
-	protected void finishOpening(ProgressInterface progressMeter) throws Exception
-	{
-		createMissingBuiltInObjects();
-		progressMeter.incrementProgress();
-		loadThreatRatingFramework();		
-		progressMeter.incrementProgress();
-	}
-
 	protected void enableListeners()
 	{
 		getProjectCalendar().enable();
@@ -1035,30 +953,18 @@ public class Project
 	public String getFilename()
 	{
 		if(isOpen())
-			return getDatabase().getCurrentProjectName();
+			return projectName;
 		return EAM.text("[No Project]");
 	}
 
 	public boolean isOpen()
 	{
-		return getDatabase().isOpen();
+		return isOpen;
 	}
 	
 	public void close() throws Exception
 	{
-		if(!isOpen())
-			return;
-		
-		try
-		{
-			getDatabase().close();
-			clear();
-			EAM.setExceptionLoggingDestination();
-		}
-		catch (IOException e)
-		{
-			EAM.logException(e);
-		}
+		clear();
 	}
 	
 	public void dispose()
@@ -1078,9 +984,7 @@ public class Project
 
 	public void closeAndDeleteProject() throws Exception
 	{
-		String projectName = getDatabase().getCurrentProjectName();
-		close();
-		getDatabase().deleteProject(projectName);
+		throw new RuntimeException("closeAndDeleteProject not supported");
 	}
 	
 	public void disableThreatStressRatingEnsurer()
@@ -1460,6 +1364,11 @@ public class Project
 
 	}
 
+	public void setLocalDataLocation(File parentFile)
+	{
+		throw new RuntimeException("setLocalDataLocation not yet supported!");
+	}
+
 	public static final String LIBRARY_VIEW_NAME = "Library";
 	public static final String SCHEDULE_VIEW_NAME = "Schedule";
 	public static final String MAP_VIEW_NAME = "Map";
@@ -1480,11 +1389,15 @@ public class Project
 
 	public static final int MAX_PROJECT_FILENAME_LENGTH = 32;
 	
+	private boolean isOpen;
+	private String projectName;
 	private ProjectInfo projectInfo;
 	private ObjectManager objectManager;
 
 	private SimpleThreatRatingFramework simpleThreatFramework;
 	private StressBasedThreatRatingFramework stressBasedThreatFramework;
+	
+	private StringBuilder quarantine;
 	
 	private ProjectServer database;
 	private DiagramClipboard diagramClipboard;

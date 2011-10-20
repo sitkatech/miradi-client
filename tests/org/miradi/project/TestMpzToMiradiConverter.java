@@ -23,11 +23,13 @@ package org.miradi.project;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.zip.ZipFile;
-import java.util.zip.ZipOutputStream;
 
 import org.martus.util.UnicodeStringReader;
 import org.martus.util.UnicodeStringWriter;
+import org.miradi.main.ResourcesHandler;
 import org.miradi.main.TestCaseWithProject;
 
 public class TestMpzToMiradiConverter extends TestCaseWithProject
@@ -39,13 +41,40 @@ public class TestMpzToMiradiConverter extends TestCaseWithProject
 	
 	public void testConvertMpzToDotMiradi() throws Exception
 	{
-		getProject().populateEverything();
-		getProject().populateSimpleThreatRatingValues();
-		
-		byte[] mpzBytes = createMpzBytesFromProject();
+		byte[] mpzBytes = readSampleMpz();
 		String projectAsStringFromConverter = convertMpzToDotMiradi(mpzBytes);
 		ProjectForTesting project2 = createProjectFromDotMiradi(projectAsStringFromConverter);
-		TestProjectSaver.verifyProjectsAreTheSame(getProject(), project2);
+		assertEquals(935, project2.getNormalIdAssigner().getHighestAssignedId());
+		//FIXME: Need to spot-check various other items
+		// text field with newlines
+		// numeric field
+		// date field
+		// choice field
+		// reflist
+		// simple threat rating bundle values
+		// ...
+	}
+
+	private byte[] readSampleMpz() throws Exception
+	{
+		ByteArrayOutputStream out = new ByteArrayOutputStream();
+		URL url = ResourcesHandler.getResourceURL("/Sample-v61.mpz");
+		InputStream in = url.openStream();
+		try
+		{
+			byte[] buffer = new byte[1024];
+			int got = -1;
+			while( (got = in.read(buffer)) > 0)
+			{
+				out.write(buffer, 0, got);
+			}
+			out.close();
+		}
+		finally
+		{
+			in.close();
+		}
+		return out.toByteArray();
 	}
 
 	private ProjectForTesting createProjectFromDotMiradi(String projectAsStringFromConverter) throws Exception
@@ -78,21 +107,4 @@ public class TestMpzToMiradiConverter extends TestCaseWithProject
 		}
 	}
 
-	private byte[] createMpzBytesFromProject() throws Exception
-	{
-		ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
-		ZipOutputStream zipOut = new ZipOutputStream(byteOut);
-		try
-		{
-			ProjectMpzWriter.writeProjectZip(zipOut, getProject());
-		}
-		finally
-		{
-			zipOut.flush();
-			zipOut.close();
-			byteOut.flush();
-			byteOut.close();
-		}
-		return byteOut.toByteArray();
-	}
 }

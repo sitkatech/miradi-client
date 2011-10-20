@@ -37,7 +37,7 @@ public class TestRealProject extends MiradiTestCase
 	{
 		super.setUp();
 		tempDirectory = createTempDirectory();
-		projectName = "TestRealProject";
+		projectFile = new File(tempDirectory, "TestRealProject");
 	}
 	
 	@Override
@@ -51,13 +51,12 @@ public class TestRealProject extends MiradiTestCase
 	{
 		Project project = new Project();
 		assertFalse("already open?", project.isOpen());
-		project.setLocalDataLocation(tempDirectory);
-		project.createOrOpenWithDefaultObjectsAndDiagramHelp(projectName, new NullProgressMeter());
+		project.createOrOpenWithDefaultObjectsAndDiagramHelp(projectFile, new NullProgressMeter());
 		assertTrue("not open?", project.isOpen());
 		project.close();
 		assertFalse("still open?", project.isOpen());
 	}
 	
 	private File tempDirectory;
-	private String projectName;
+	private File projectFile;
 }

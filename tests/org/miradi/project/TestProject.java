@@ -25,6 +25,8 @@ import java.io.File;
 import java.util.HashSet;
 
 import org.martus.util.DirectoryUtils;
+import org.martus.util.UnicodeStringReader;
+import org.martus.util.UnicodeStringWriter;
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandEndTransaction;
@@ -606,6 +608,8 @@ public class TestProject extends MiradiTestCase
 
 	public void testCloseClearsCurrentView() throws Exception
 	{
+		assertEquals("not starting on NoProject view?", Project.NO_PROJECT_VIEW_NAME, project.getCurrentView());
+		project.createOrOpenWithDefaultObjects(new File(getName()), null);
 		assertEquals("not starting on summary view?", Project.SUMMARY_VIEW_NAME, project.getCurrentView());
 		String sampleViewName = Project.MAP_VIEW_NAME;
 		project.switchToView(sampleViewName);
@@ -613,84 +617,6 @@ public class TestProject extends MiradiTestCase
 		project.close();
 		assertEquals("didn't reset view?", Project.NO_PROJECT_VIEW_NAME, project.getCurrentView());
 	}
-	
-	public void testExecuteCommandWritesDiagram() throws Exception
-	{
-		ORef factorRef = project.createFactorAndReturnRef(ObjectType.CAUSE);
-		CommandCreateObject createDiagramFactorCommand = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR);
-		project.executeCommand(createDiagramFactorCommand);
-		
-		final CommandSetObjectData setWrappedRefCommand = new CommandSetObjectData(createDiagramFactorCommand.getObjectRef(), DiagramFactor.TAG_WRAPPED_REF, factorRef.toString());
-		project.executeCommand(setWrappedRefCommand);
-		
-		DiagramFactorId diagramFactorId = (DiagramFactorId) createDiagramFactorCommand.getCreatedId();
-		DiagramObject diagramObject = project.getTestingDiagramObject();
-		CommandSetObjectData addDiagramFactor = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, diagramFactorId);
-		project.executeCommand(addDiagramFactor);
-		project.closeAndReopen();
-		assertEquals("didn't read back our one node?", 1, project.getAllDiagramFactorIds().length);
-	}
-	
-	public void testNodesDoNotGetWritten() throws Exception
-	{
-		ProjectServerForTesting database = project.getTestDatabase();
-		
-		ORef targetRef = project.createFactorAndReturnRef(ObjectType.TARGET);
-		ORef factorRef = project.createFactorAndReturnRef(ObjectType.CAUSE);
-		int existingCalls = database.callsToWriteObject;
-		
-		CommandCreateObject createDiagramFactor = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR);
-		project.executeCommand(createDiagramFactor);
-		final CommandSetObjectData setWrappedRefCommand = new CommandSetObjectData(createDiagramFactor.getObjectRef(), DiagramFactor.TAG_WRAPPED_REF, targetRef.toString());
-		project.executeCommand(setWrappedRefCommand);
-		assertEquals(2 + existingCalls, database.callsToWriteObject);
-		
-		DiagramFactorId diagramFactorId = (DiagramFactorId) createDiagramFactor.getCreatedId();
-		DiagramObject diagramObject = project.getTestingDiagramObject();
-		CommandSetObjectData addDiagramFactor = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, diagramFactorId);
-		project.executeCommand(addDiagramFactor);
-		assertEquals(3 + existingCalls, database.callsToWriteObject);
-		
-		CommandCreateObject createDiagramFactor2 = new CommandCreateObject(ObjectType.DIAGRAM_FACTOR);
-		project.executeCommand(createDiagramFactor2);
-		final CommandSetObjectData setWrappedRefCommand2 = new CommandSetObjectData(createDiagramFactor2.getObjectRef(), DiagramFactor.TAG_WRAPPED_REF, factorRef.toString());
-		project.executeCommand(setWrappedRefCommand2);
-		assertEquals(5 + existingCalls, database.callsToWriteObject);
-		
-		DiagramFactorId diagramFactorId2 = (DiagramFactorId) createDiagramFactor2.getCreatedId();
-		CommandSetObjectData addDiagramFactor2 = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, diagramFactorId2);
-		project.executeCommand(addDiagramFactor2);
-		assertEquals(6 + existingCalls, database.callsToWriteObject);
-		FactorCell factor = project.getTestingDiagramModel().getFactorCellByWrappedRef(factorRef);
-		
-		// undo the AddNode
-		project.undo();
-		assertEquals(7 + existingCalls, database.callsToWriteObject);
-		
-		// undo the create diagram factor and setting its wrapped ref
-		project.undo();
-		project.undo();
-		assertEquals(8 + existingCalls, database.callsToWriteObject);
-		
-		// redo the created diagram factor
-		project.redo();
-		assertEquals(9 + existingCalls, database.callsToWriteObject);
-		
-		// redo the add diagram factor
-		project.redo();
-		assertEquals(10 + existingCalls, database.callsToWriteObject);
-
-		String previousLocation = EnhancedJsonObject.convertFromPoint(new Point(5, 5));
-		String newLocation = EnhancedJsonObject.convertFromPoint(new Point(9, 9));
-		CommandSetObjectData moveDiagramFactor = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, factor.getDiagramFactorId(), DiagramFactor.TAG_LOCATION, newLocation);
-		moveDiagramFactor.setPreviousDataValue(previousLocation);
-		project.executeCommand(moveDiagramFactor);
-		assertEquals(11 + existingCalls, database.callsToWriteObject);
-		
-		String newDimension = EnhancedJsonObject.convertFromDimension(new Dimension(50, 75));
-		project.executeCommand(new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, factor.getDiagramFactorId(), DiagramFactor.TAG_SIZE, newDimension));
-		assertEquals(12 + existingCalls, database.callsToWriteObject);
-	}	
 	
 	public void testLinkagePool() throws Exception
 	{
@@ -819,10 +745,11 @@ public class TestProject extends MiradiTestCase
 		
 		ORef factorRef;
 		File tempDir = createTempDirectory();
-		String projectName = "testOpenProject";
+		File projectFile = new File(tempDir, getName());
 		Project diskProject = new Project();
-		diskProject.setLocalDataLocation(tempDir);
-		diskProject.createOrOpenWithDefaultObjectsAndDiagramHelp(projectName, new NullProgressMeter());
+		String savedProject = "";
+
+		diskProject.createOrOpenWithDefaultObjectsAndDiagramHelp(projectFile, new NullProgressMeter());
 		
 		ORef conceptualModelRef = diskProject.getConceptualModelDiagramPool().getORefList().getRefForType(ConceptualModelDiagram.getObjectType());
 		ConceptualModelDiagram conceptualModel = ConceptualModelDiagram.find(diskProject, conceptualModelRef);
@@ -844,15 +771,19 @@ public class TestProject extends MiradiTestCase
 			deleteNodeAndRemoveFromDiagram(conceptualModel, diagramFactor);
 			
 			memorizedHighestId = diskProject.getNormalIdAssigner().getHighestAssignedId();
+
+			UnicodeStringWriter writer = UnicodeStringWriter.create();
+			ProjectSaver.saveProject(diskProject, writer);
+			savedProject = writer.toString();
 		}
 		finally
 		{
 			diskProject.close();
 		}
 		
+		UnicodeStringReader reader = new UnicodeStringReader(savedProject);
 		Project loadedProject = new Project();
-		loadedProject.setLocalDataLocation(tempDir);
-		loadedProject.createOrOpenWithDefaultObjectsAndDiagramHelp(projectName, new NullProgressMeter());
+		ProjectLoader.loadProject(reader, loadedProject);
 		try
 		{
 			assertEquals("didn't read cause pool?", 1, loadedProject.getCausePool().size());
@@ -893,10 +824,9 @@ public class TestProject extends MiradiTestCase
 	public void testCreateNewProject() throws Exception
 	{
 		File tempDir = createTempDirectory();
-		String projectName = "testCreateNewProject";
+		File projectFile = new File(tempDir, getName());
 		Project newProject = new Project();
-		newProject.setLocalDataLocation(tempDir);
-		newProject.createOrOpenWithDefaultObjectsAndDiagramHelp(projectName, new NullProgressMeter());
+		newProject.createOrOpenWithDefaultObjectsAndDiagramHelp(projectFile, new NullProgressMeter());
 		
 		try
 		{

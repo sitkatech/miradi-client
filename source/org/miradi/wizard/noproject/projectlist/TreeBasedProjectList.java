@@ -114,8 +114,8 @@ public class TreeBasedProjectList extends JPanel
 			System.out.println("Link clicked: " + linkDescription);
 			if(linkDescription.startsWith(NoProjectWizardStep.OPEN_PREFIX))
 			{
-				String projectName = linkDescription.substring(NoProjectWizardStep.OPEN_PREFIX.length());
-				getMainWindow().createOrOpenProject(projectName);
+				throw new RuntimeException("Opening old projects not supported");
+//				getMainWindow().createOrOpenProject(projectName);
 			}
 			super.linkClicked(linkDescription);
 		}

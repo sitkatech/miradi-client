@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.diagram;
 
 
+import java.io.File;
+
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
@@ -175,6 +177,7 @@ public class TestUndoAndRedo extends MiradiTestCase
 	public void testGetIndexToUndoAndRedo() throws Exception
 	{
 		Project p = new ProjectForTesting(getName());
+		p.createOrOpenWithDefaultObjects(new File(getName()), null);
 		
 		assertFalse("already an undoable?", p.canUndo());
 		assertFalse("already a redoable?", p.canRedo());
