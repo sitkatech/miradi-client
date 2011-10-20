@@ -102,7 +102,10 @@ abstract public class BaseObject
 		if(!doesFieldExist(fieldTag))
 			throw new RuntimeException("Attempted to get data for bad field: " + fieldTag + " in object type: " + getClass().getSimpleName());
 
-		return getField(fieldTag).get();
+		String data = getField(fieldTag).get();
+		if(data == null)
+			throw new RuntimeException("BaseObject " + getRef() + " tag " + fieldTag + " was null");
+		return data;
 	}
 	
 	public String getStringData(String tag)
@@ -869,6 +872,8 @@ abstract public class BaseObject
 	public ObjectData getField(String fieldTag)
 	{
 		ObjectData data = getFields().get(fieldTag);
+		if(data == null)
+			EAM.logWarning("getField called for unknown tag " + fieldTag + " in " + getRef());
 		return data;
 	}
 	
