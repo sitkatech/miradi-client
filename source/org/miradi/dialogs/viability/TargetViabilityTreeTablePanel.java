@@ -30,6 +30,8 @@ import org.miradi.actions.ActionExpandToMenu;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTable;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
+import org.miradi.dialogs.planning.upperPanel.PlanningViewMainTableModel;
+import org.miradi.dialogs.planning.upperPanel.ViabilityViewMainTableModel;
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
@@ -50,7 +52,13 @@ public class TargetViabilityTreeTablePanel extends PlanningTreeTablePanel
 
 		return new TargetViabilityTreeTablePanel(mainWindowToUse, treeTable, model, getButtonActions(), rowColumnProvider);
 	}
-		
+	
+	@Override
+	protected PlanningViewMainTableModel createMainTableModel(final PlanningTreeRowColumnProvider rowColumnProviderToUse) throws Exception
+	{
+		return new ViabilityViewMainTableModel(getProject(), getTree(), rowColumnProviderToUse);
+	}
+
 	private static Class[] getButtonActions()
 	{
 		return new Class[] {
