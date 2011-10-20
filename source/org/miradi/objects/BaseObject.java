@@ -873,7 +873,7 @@ abstract public class BaseObject
 	{
 		ObjectData data = getFields().get(fieldTag);
 		if(data == null)
-			EAM.logWarning("getField called for unknown tag " + fieldTag + " in " + getRef());
+			EAM.logWarning("BaseObject.getField called for unknown tag " + fieldTag + " in " + getRef());
 		return data;
 	}
 	
@@ -1527,8 +1527,6 @@ abstract public class BaseObject
 	protected static final int[] NO_OWNERS = new int[] {};
 	
 	public static final String DEFAULT_LABEL = "";
-	
-	public static final String TAG_BUDGET_COST_MODE = "BudgetCostMode";
 	
 	public final static String PSEUDO_TAG_WHEN_TOTAL = "EffortDatesTotal";
 	
