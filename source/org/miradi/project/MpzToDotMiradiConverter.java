@@ -116,7 +116,7 @@ public class MpzToDotMiradiConverter extends AbstractMiradiProjectSaver
 	{
 		while(true)
 		{
-			ZipEntry entry = getInputStream().getNextEntry();
+			ZipEntry entry = getZipInputStream().getNextEntry();
 			if(entry == null)
 				break;
 			
@@ -172,7 +172,7 @@ public class MpzToDotMiradiConverter extends AbstractMiradiProjectSaver
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
 		byte[] buffer = new byte[1024];
 		int got = -1;
-		while( (got = getInputStream().read(buffer)) > 0)
+		while( (got = getZipInputStream().read(buffer)) > 0)
 		{
 			out.write(buffer, 0, got);
 		}
@@ -265,7 +265,7 @@ public class MpzToDotMiradiConverter extends AbstractMiradiProjectSaver
 		return name.indexOf('/');
 	}
 
-	private ZipInputStream getInputStream()
+	private ZipInputStream getZipInputStream()
 	{
 		return zipInputStream;
 	}
