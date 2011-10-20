@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.viability;
 
+import javax.swing.Icon;
+
 import org.miradi.dialogs.base.ObjectListManagementPanel;
 import org.miradi.dialogs.planning.AbstractPlanningTreeRowColumnProvider;
 import org.miradi.dialogs.planning.treenodes.PlanningTreeRootNode;
@@ -27,6 +29,7 @@ import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
 import org.miradi.dialogs.planning.upperPanel.TargetViabilityTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.TreeTableModelWithRebuilder;
 import org.miradi.dialogs.treetables.TreeTablePanel;
+import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
@@ -52,9 +55,15 @@ public class TargetViabilityManagementPanelNew extends ObjectListManagementPanel
 
 
 	@Override
+	public Icon getIcon()
+	{
+		return IconManager.getKeyEcologicalAttributeIcon();
+	}
+	
+	@Override
 	public String getPanelDescription()
 	{
-		return "TargetViabilityMangementPanelNew";
+		return PANEL_DESCRIPTION_VIABILITY;
 	}
 	
 	@Override
