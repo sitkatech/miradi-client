@@ -22,7 +22,6 @@ package org.miradi.project;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
 import org.martus.util.UnicodeStringReader;
@@ -41,7 +40,8 @@ public class TestMpzToMiradiConverter extends TestCaseWithProject
 		getProject().populateEverything();
 		getProject().populateSimpleThreatRatingValues();
 		
-		String projectAsStringFromConverter = convertMpzToDotMiradi(createMpzBytesFromProject());
+		byte[] mpzBytes = createMpzBytesFromProject();
+		String projectAsStringFromConverter = convertMpzToDotMiradi(mpzBytes);
 		ProjectForTesting project2 = createProjectFromDotMiradi(projectAsStringFromConverter);
 		TestProjectSaver.verifyProjectsAreTheSame(getProject(), project2);
 	}
@@ -57,13 +57,16 @@ public class TestMpzToMiradiConverter extends TestCaseWithProject
 
 	private String convertMpzToDotMiradi(byte[] byteArray) throws Exception
 	{
-		ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(byteArray);
-		ZipInputStream zipInputStream = new ZipInputStream(byteArrayInputStream);
 		UnicodeStringWriter writer = UnicodeStringWriter.create();
-		MpzToDotMiradiConverter.convert(zipInputStream, writer);
-		writer.close();
-		String projectAsStringFromConverter = writer.toString();
-		return projectAsStringFromConverter;
+		try
+		{
+			MpzToDotMiradiConverter.convert(new ByteArrayInputStream(byteArray), writer);
+			return writer.toString();
+		}
+		finally
+		{
+			writer.close();
+		}
 	}
 
 	private byte[] createMpzBytesFromProject() throws Exception

@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.project;
 
 import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 import java.util.Iterator;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
@@ -35,37 +36,32 @@ import org.miradi.utils.EnhancedJsonObject;
 
 public class MpzToDotMiradiConverter extends ProjectSaver
 {
-	public MpzToDotMiradiConverter(ZipInputStream zipInputStream, UnicodeStringWriter writerToUse) throws Exception
+	public MpzToDotMiradiConverter(InputStream inputStream, UnicodeStringWriter writerToUse) throws Exception
 	{
 		super(writerToUse);
 		
-		inputStream = zipInputStream;
+		zipInputStream = new ZipInputStream(inputStream);
 		writer = writerToUse;
 	}
 	
-	public static final void convert(ZipInputStream zipInputStream, UnicodeStringWriter writer) throws Exception
+	public static final void convert(InputStream inputStream, UnicodeStringWriter writer) throws Exception
 	{
-		MpzToDotMiradiConverter conveter = new MpzToDotMiradiConverter(zipInputStream, writer);
+		MpzToDotMiradiConverter conveter = new MpzToDotMiradiConverter(inputStream, writer);
 		conveter.convert();
 	}
 	
 	private void convert() throws Exception
 	{
-		try
+		while(true)
 		{
-			while(true)
-			{
-				ZipEntry entry = getInputStream().getNextEntry();
-				if(entry == null)
-					break;
-				
-				if (!entry.isDirectory())
-					extractOneFile(entry);
-			}
+			ZipEntry entry = getInputStream().getNextEntry();
+			if(entry == null)
+				break;
+			
+			if (!entry.isDirectory())
+				extractOneFile(entry);
 		}
-		finally
-		{
-		}
+		getWriter().flush();
 	}
 	
 	private void extractOneFile(ZipEntry entry) throws Exception
@@ -154,7 +150,7 @@ public class MpzToDotMiradiConverter extends ProjectSaver
 
 	private ZipInputStream getInputStream()
 	{
-		return inputStream;
+		return zipInputStream;
 	}
 	
 	private UnicodeStringWriter getWriter()
@@ -177,6 +173,6 @@ public class MpzToDotMiradiConverter extends ProjectSaver
 		getWriter().write(data);
 	}
 	
-	private ZipInputStream inputStream;
+	private ZipInputStream zipInputStream;
 	private UnicodeStringWriter writer;
 }
