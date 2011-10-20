@@ -60,9 +60,9 @@ public class TestMpzToMiradiConverter extends TestCaseWithProject
 	private String convertMpzToDotMiradi(byte[] byteArray) throws Exception
 	{
 		UnicodeStringWriter writer = UnicodeStringWriter.create();
+		File tempMpzFile = File.createTempFile("$$$TestMpzToMiradiConverter.mpz", null);
 		try
 		{
-			File tempMpzFile = File.createTempFile("$$$TestMpzToMiradiConverter.mpz", null);
 			FileOutputStream fileOut = new FileOutputStream(tempMpzFile);
 			fileOut.write(byteArray);
 			fileOut.flush();
@@ -74,6 +74,7 @@ public class TestMpzToMiradiConverter extends TestCaseWithProject
 		finally
 		{
 			writer.close();
+			tempMpzFile.delete();
 		}
 	}
 
