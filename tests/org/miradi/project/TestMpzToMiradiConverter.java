@@ -22,7 +22,6 @@ package org.miradi.project;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
@@ -46,13 +45,18 @@ public class TestMpzToMiradiConverter extends TestCaseWithProject
 		
 		String projectAsStringFromConverter = convertMpzToDotMiradi(byteArray);
 		
+		ProjectForTesting project2 = createProjectFromDotMiradi(projectAsStringFromConverter);
+		
+		TestProjectSaver.compareProjects(getProject(), project2);
+	}
+
+	private ProjectForTesting createProjectFromDotMiradi(String projectAsStringFromConverter) throws Exception
+	{
 		ProjectForTesting project2 = new ProjectForTesting(getName());
 		project2.clear();
 		UnicodeStringReader reader = new UnicodeStringReader(projectAsStringFromConverter);
-		
 		ProjectLoader.loadProject(reader, project2);
-		
-		TestProjectSaver.compareProjects(getProject(), project2);
+		return project2;
 	}
 
 	private String convertMpzToDotMiradi(byte[] byteArray) throws Exception
