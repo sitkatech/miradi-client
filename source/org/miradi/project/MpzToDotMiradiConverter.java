@@ -23,12 +23,12 @@ package org.miradi.project;
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
+import java.util.zip.ZipFile;
 
 import org.martus.util.UnicodeStringWriter;
 import org.martus.util.UnicodeWriter;
@@ -84,39 +84,39 @@ public class MpzToDotMiradiConverter extends AbstractMiradiProjectSaver
 		if(destination.exists())
 			throw new RuntimeException(".Miradi file already exists: " + destination.getAbsolutePath());
 		
-		InputStream mpzInput = new FileInputStream(mpzFile);
-		String converted = convert(mpzInput);
+		String converted = convert(new ZipFile(mpzFile));
 		UnicodeWriter writer = new UnicodeWriter(destination);
 		writer.write(converted);
 		writer.close();
 		System.out.println("Converted");
 	}
 	
-	public MpzToDotMiradiConverter(InputStream inputStream, UnicodeStringWriter writerToUse) throws Exception
+	public MpzToDotMiradiConverter(ZipFile mpzFileToUse, UnicodeStringWriter writerToUse) throws Exception
 	{
 		super(writerToUse);
 		
-		zipInputStream = new ZipInputStream(inputStream);
+		zipFile = mpzFileToUse;
 	}
 	
-	public static final String convert(InputStream mpzInputStream) throws Exception
+	public static final String convert(ZipFile zipFileToUse) throws Exception
 	{
 		UnicodeStringWriter writer = UnicodeStringWriter.create();
-		convert(mpzInputStream, writer);
+		convert(zipFileToUse, writer);
 		return writer.toString();
 	}
 	
-	public static final void convert(InputStream inputStream, UnicodeStringWriter writer) throws Exception
+	public static final void convert(ZipFile zipFileToUse, UnicodeStringWriter writer) throws Exception
 	{
-		MpzToDotMiradiConverter conveter = new MpzToDotMiradiConverter(inputStream, writer);
+		MpzToDotMiradiConverter conveter = new MpzToDotMiradiConverter(zipFileToUse, writer);
 		conveter.convert();
 	}
 	
 	private void convert() throws Exception
 	{
-		while(true)
+		Enumeration<ZipEntry> zipEntries = (Enumeration<ZipEntry>) getZipFile().entries();
+		while(zipEntries.hasMoreElements())
 		{
-			ZipEntry entry = getZipInputStream().getNextEntry();
+			ZipEntry entry = zipEntries.nextElement();
 			if(entry == null)
 				break;
 			
@@ -166,13 +166,13 @@ public class MpzToDotMiradiConverter extends AbstractMiradiProjectSaver
 		}
 	}
 	
-	
 	private byte[] readIntoByteArray(ZipEntry entry) throws Exception
 	{
+		InputStream inputStream = getZipFile().getInputStream(entry);
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
 		byte[] buffer = new byte[1024];
 		int got = -1;
-		while( (got = getZipInputStream().read(buffer)) > 0)
+		while( (got = inputStream.read(buffer)) > 0)
 		{
 			out.write(buffer, 0, got);
 		}
@@ -265,12 +265,12 @@ public class MpzToDotMiradiConverter extends AbstractMiradiProjectSaver
 		return name.indexOf('/');
 	}
 
-	private ZipInputStream getZipInputStream()
+	private ZipFile getZipFile()
 	{
-		return zipInputStream;
+		return zipFile;
 	}
 
 	private static int REQUIRED_VERSION = 61;
-	private ZipInputStream zipInputStream;
+	private ZipFile zipFile;
 	private int convertedProjectVersion;
 }
