@@ -24,6 +24,7 @@ import javax.swing.Icon;
 
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.EAM;
+import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
@@ -165,7 +166,29 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		return KeyEcologicalAttribute.getObjectType();
 	}
 	
-	public boolean isChoiceItemColumn(String columnTag)
+	@Override
+	public boolean isChoiceItemColumn(int column)
+	{
+		String columnTag = getColumnTag(column);
+		if(columnTag.equals(Measurement.TAG_STATUS_CONFIDENCE))
+			return true;
+		
+		if(columnTag.equals(Indicator.TAG_RATING_SOURCE))
+			return true;
+		
+		if(columnTag.equals(Measurement.TAG_STATUS))
+			return true;
+
+		if(columnTag.equals(AbstractTarget.TAG_VIABILITY_MODE))
+			return true;
+
+		if (isChoiceItemColumn(columnTag))
+			return true;
+		
+		return super.isChoiceItemColumn(column);
+	}
+	
+	private boolean isChoiceItemColumn(String columnTag)
 	{
 		ChoiceItem choiceItem = new StatusQuestion().findChoiceByCode(columnTag);
 		return (choiceItem != null);
