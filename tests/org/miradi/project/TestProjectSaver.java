@@ -63,10 +63,10 @@ public class TestProjectSaver extends TestCaseWithProject
 		ProjectLoader.loadProject(reader, project2);
 		
 		final ProjectForTesting project = getProject();
-		compareProjects(project, project2);
+		verifyProjectsAreTheSame(project, project2);
 	}
 
-	public static void compareProjects(final ProjectForTesting project1, final Project project2)
+	public static void verifyProjectsAreTheSame(final ProjectForTesting project1, final Project project2)
 	{
 		for (int type = ObjectType.FIRST_OBJECT_TYPE; type < ObjectType.OBJECT_TYPE_COUNT; ++type)
 		{

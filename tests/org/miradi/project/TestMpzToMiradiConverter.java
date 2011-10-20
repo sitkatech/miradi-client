@@ -43,7 +43,7 @@ public class TestMpzToMiradiConverter extends TestCaseWithProject
 		
 		String projectAsStringFromConverter = convertMpzToDotMiradi(createMpzBytesFromProject());
 		ProjectForTesting project2 = createProjectFromDotMiradi(projectAsStringFromConverter);
-		TestProjectSaver.compareProjects(getProject(), project2);
+		TestProjectSaver.verifyProjectsAreTheSame(getProject(), project2);
 	}
 
 	private ProjectForTesting createProjectFromDotMiradi(String projectAsStringFromConverter) throws Exception
