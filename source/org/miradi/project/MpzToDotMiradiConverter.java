@@ -38,7 +38,6 @@ import org.miradi.main.EAM;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.Factor;
 import org.miradi.utils.EnhancedJsonArray;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.Translation;
@@ -190,40 +189,20 @@ public class MpzToDotMiradiConverter extends AbstractMiradiProjectSaver
 		final Project tempProject = new Project();
 		EnhancedJsonObject json = new EnhancedJsonObject(fileContent);
 		BaseObject baseObject = BaseObject.createFromJson(tempProject.getObjectManager(), ref.getObjectType(), json);
-		Iterator iterator = json.keys();
-		while (iterator.hasNext())
+		String[] legalTags = baseObject.getFieldTags();
+		for(int i = 0; i < legalTags.length; ++i)
 		{
-			String tag = (String)iterator.next();
-			if (!shouldSkipTag(ref, tag))
-			{
-				String data = json.get(tag).toString();	
-				ObjectData dataField = baseObject.getField(tag);
-				if (dataField != null && dataField.isUserText())
-					data = xmlNewLineEncode(data);
-		
-				if(data.length() > 0)
-					writeRefTagValue(UPDATE_OBJECT_CODE, ref, tag, data);
-			}
+			String tag = legalTags[i];
+			String data = json.optString(tag);
+			if(data.length() == 0)
+				continue;
+
+			ObjectData dataField = baseObject.getField(tag);
+			if (dataField.isUserText())
+				data = xmlNewLineEncode(data);
+
+			writeRefTagValue(UPDATE_OBJECT_CODE, ref, tag, data);
 		}
-	}
-
-	private boolean shouldSkipTag(ORef ref, String tag)
-	{
-		if(tag.equals(BaseObject.TAG_TIME_STAMP_MODIFIED))
-			return true;
-		if(tag.equals("BudgetCostOverride"))
-			return true;
-		if(tag.equals("WhoOverrideRefs"))
-			return true;
-		if(tag.equals("WhenOverride"))
-			return true;
-		if(tag.equals("CostUnit"))
-			return true;
-		
-		if(Factor.isFactor(ref) && tag.equals("Type"))
-			return true;
-
-		return false;
 	}
 
 	private void writeSimpleThreatFramework(String jsonContent) throws Exception
