@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-21 14:48-0500\n"
+"POT-Creation-Date: 2011-10-21 15:05-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -7336,7 +7336,7 @@ msgid "Tab|Stresses"
 msgstr "Tekanan"
 
 #: Miradi/source/org/miradi/dialogs/viability/TargetPropertiesKeaViabilityTreeManagementPanel.java:51
-#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityManagementPanelNew.java:145
+#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityManagementPanelNew.java:148
 #: Miradi/source/org/miradi/dialogs/viability/ViabilityViewTreeManagementPanel.java:43
 #: Miradi/source/org/miradi/dialogs/indicator/SimpleViabilityManagementPanel.java:38
 msgid "Tab|Viability"
