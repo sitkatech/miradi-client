@@ -45,7 +45,6 @@ import javax.swing.SwingUtilities;
 import javax.swing.ToolTipManager;
 
 import org.martus.swing.HyperlinkHandler;
-import org.martus.util.DirectoryLock;
 import org.martus.util.MultiCalendar;
 import org.martus.util.UnicodeReader;
 import org.martus.util.UnicodeStringReader;
@@ -79,6 +78,7 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.FontFamiliyQuestion;
 import org.miradi.questions.TableRowHeightModeQuestion;
 import org.miradi.utils.DefaultHyperlinkHandler;
+import org.miradi.utils.FileLocker;
 import org.miradi.utils.HtmlViewPanel;
 import org.miradi.utils.HtmlViewPanelWithMargins;
 import org.miradi.utils.MiradiBackgroundWorkerThread;
@@ -542,7 +542,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 			EAM.errorDialog(EAM.text("Unknown Command\nYou are probably trying to load an old project " +
 					"that contains obsolete commands that are no longer supported"));
 		}
-		catch(DirectoryLock.AlreadyLockedException e)
+		catch(FileLocker.AlreadyLockedException e)
 		{
 			EAM.errorDialog(EAM.text("That project is in use by another copy of this application"));
 		}
