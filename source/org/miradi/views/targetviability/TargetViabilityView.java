@@ -33,9 +33,7 @@ import org.miradi.actions.ActionExpandToKeyEcologicalAttribute;
 import org.miradi.actions.ActionExpandToMeasurement;
 import org.miradi.actions.ActionExpandToMenu;
 import org.miradi.actions.ActionExpandToTarget;
-import org.miradi.dialogs.viability.TargetViabilityManagementPanel;
 import org.miradi.dialogs.viability.TargetViabilityManagementPanelNew;
-import org.miradi.dialogs.viability.ViabilityViewTreeManagementPanel;
 import org.miradi.main.MainWindow;
 import org.miradi.main.MiradiToolBar;
 import org.miradi.objects.BaseObject;
@@ -84,20 +82,14 @@ public class TargetViabilityView extends TabbedView
 	@Override
 	public void createTabs() throws Exception
 	{
-		viabilityPanel = new ViabilityViewTreeManagementPanel(getMainWindow(), getMainWindow());
-		addNonScrollingTab(viabilityPanel);
-		
 		viabilityPanelNew = TargetViabilityManagementPanelNew.createManagementPanel(getMainWindow());
 		//FIXME urgent - Make new target viability tree table work
-		//addNonScrollingTab(viabilityPanelNew);
+		addNonScrollingTab(viabilityPanelNew);
 	}
 
 	@Override
 	public void deleteTabs() throws Exception
 	{
-		viabilityPanel.dispose();
-		viabilityPanel = null;
-		
 		viabilityPanelNew.dispose();
 		viabilityPanelNew = null;
 		
@@ -126,9 +118,6 @@ public class TargetViabilityView extends TabbedView
 	@Override
 	public BaseObject getSelectedObject()
 	{
-		if (viabilityPanel != null)
-			return viabilityPanel.getObject();
-		
 		if (viabilityPanelNew != null)
 			viabilityPanelNew.getObject();
 		
@@ -140,6 +129,5 @@ public class TargetViabilityView extends TabbedView
 		return view.cardName().equals(getViewName());
 	}
 	
-	private TargetViabilityManagementPanel viabilityPanel;
 	private TargetViabilityManagementPanelNew viabilityPanelNew;
 }
