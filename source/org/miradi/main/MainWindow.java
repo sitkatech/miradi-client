@@ -151,18 +151,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		File appPreferencesFile = getPreferencesFile();
 		preferences.load(appPreferencesFile);
 
-		if(commandLineArguments.contains("--remote"))
-		{
-			// NOTE: This is code for testing the fat client
-			// The server must be running on fxa.org, and 
-			// /var/local/MiradiServer/project/Test
-			// must be a valid Miradi project directory
-			setRemoteDataLocation("http://fxa.org:7000/MiradiServer/");
-		}
-		else
-		{
-			setLocalDataLocation(EAM.getHomeDirectory());
-		}
+		setLocalDataLocation(EAM.getHomeDirectory());
 		
 		ensureFontSizeIsSet();
 		
@@ -519,11 +508,6 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 	public void setLocalDataLocation(File dataDirectory) throws Exception
 	{
 		database.setLocalDataLocation(dataDirectory);
-	}
-	
-	public void setRemoteDataLocation(String remoteLocation) throws Exception
-	{
-		database.setRemoteDataLocation(remoteLocation);
 	}
 	
 	static class AlreadyHandledException extends Exception
