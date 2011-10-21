@@ -982,11 +982,6 @@ public class Project
 		timePeriodCostsMapsCache.disable();
 	}
 
-	public void closeAndDeleteProject() throws Exception
-	{
-		throw new RuntimeException("closeAndDeleteProject not supported");
-	}
-	
 	public void disableThreatStressRatingEnsurer()
 	{
 		threatStressRatingEnsurer.disable();
