@@ -21,7 +21,6 @@ package org.miradi.wizard.noproject.projectlist;
 
 import java.io.File;
 
-import org.miradi.database.ProjectServer;
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.FileSystemProjectSorter;
@@ -31,7 +30,7 @@ import org.miradi.wizard.noproject.FileSystemTreeNode;
 
 public class ProjectListTreeTableModel extends GenericTreeTableModel
 {
-	public static ProjectListTreeTableModel createDirectoryListTreeTableModel(ProjectServer databaseToUse, File homeDirectory) throws Exception
+	public static ProjectListTreeTableModel createDirectoryListTreeTableModel(File homeDirectory) throws Exception
 	{
 		FileSystemProjectSorter nodeSorter = new FileSystemProjectSorter();
 		FileSystemDirectoryNode rootNode = new FileSystemDirectoryNode(homeDirectory, nodeSorter);
