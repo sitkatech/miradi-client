@@ -63,46 +63,6 @@ public class TestObjectManager extends MiradiTestCase
 		project = null;
 	}
 
-// FIXME: Not sure this test is relevant with the new file format
-//	public void testDeleteErrorHandling() throws Exception
-//	{
-//		String testName = getName() + "-local";
-//		ProjectForTesting localProject = new ProjectForTesting(testName);
-//		localProject.close();
-//		
-//		File tempDirectory = createTempDirectory();
-//		File projectFile = new File(tempDirectory, getName() + "2");
-//		localProject.createOrOpenWithDefaultObjects(projectFile, new NullProgressMeter());
-//		ProjectServerForTesting localDatabase = localProject.getTestDatabase();
-//		ObjectManager localManager = localProject.getObjectManager();
-//		try
-//		{
-//			BaseId createdId = localManager.createObject(ObjectType.ACCOUNTING_CODE, BaseId.INVALID);
-//			ORef ref = new ORef(ObjectType.ACCOUNTING_CODE, createdId);
-//			AccountingCode accountingCode = AccountingCode.find(localProject, ref);
-//	
-//			localDatabase.setFailAllDeletes(true);
-//			try
-//			{
-//				localManager.deleteObject(accountingCode);
-//				fail("Should have thrown an exception");
-//			}
-//			catch(IOException e)
-//			{
-//				ObjectManifest manifest = localDatabase.readObjectManifest(ref.getObjectType());
-//				assertFalse("Wasn't removed from manifest before deleting json?", manifest.has(ref.getObjectId()));
-//			}
-//			finally
-//			{
-//				localDatabase.setFailAllDeletes(false);
-//			}
-//		}
-//		finally
-//		{
-//			DirectoryUtils.deleteEntireDirectoryTree(tempDirectory);
-//		}
-//	}
-	
 	public void testCachingInvalidRefs() throws Exception
 	{
 		assertEquals("Already have invalid refs?", 0, manager.getReferringObjects(ORef.INVALID).size());
