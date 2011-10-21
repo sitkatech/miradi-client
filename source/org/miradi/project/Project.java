@@ -141,11 +141,6 @@ public class Project
 {
 	public Project() throws Exception
 	{
-		this(new ProjectServer());
-	}
-	
-	public Project(ProjectServer databaseToUse) throws Exception
-	{
 		commandExecutor = new CommandExecutor(this);
 		projectCalendar = new ProjectCalendar(this);
 		projectTotalCalculator = new ProjectTotalCalculator(this);

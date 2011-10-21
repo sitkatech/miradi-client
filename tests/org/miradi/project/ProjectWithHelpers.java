@@ -41,8 +41,6 @@ public class ProjectWithHelpers extends Project implements CommandExecutedListen
 {
 	protected ProjectWithHelpers(ProjectServer server) throws Exception
 	{
-		super(server);
-
 		addCommandExecutedListener(this);
 		diagramModel = new PersistentDiagramModel(this);
 		commandStack = new CommandVector();
