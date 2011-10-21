@@ -76,8 +76,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 	
 	private ChoiceItem getValueForFutureResultAsGoal(BaseObject baseObject, int row, int column)
 	{
-		String tag = COLUMN_TAGS[column];
-		
+		String tag = COLUMN_TAGS_FOR_FUTURE_RESULTS[column];
 		ORefList objectHiearchy = getRowColumnObjectProvider().getObjectHiearchy(row, column);
 		ORef indicatorRef = objectHiearchy.getRefForType(Indicator.getObjectType());
 		Indicator indicatorAsParent = Indicator.find(getProject(), indicatorRef);
@@ -306,7 +305,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 												Measurement.TAG_STATUS_CONFIDENCE,
 												Measurement.TAG_EMPTY,};
 	
-	public static final String[] COLUMN_TAGS = {
+	public static final String[] COLUMN_TAGS_FOR_FUTURE_RESULTS = {
 		Goal.TAG_EMPTY,
 		Goal.TAG_EMPTY,
 		Goal.TAG_EMPTY,
