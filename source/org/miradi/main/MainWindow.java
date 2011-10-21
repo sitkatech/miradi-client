@@ -132,7 +132,6 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		hyperlinkHandler = new DefaultHyperlinkHandler(this);
 		setLanguage(null);
 
-		database = getProject().getDatabase();
 		projectSaver = new AutomaticProjectSaver(project);
 	}
 	
@@ -151,8 +150,6 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		File appPreferencesFile = getPreferencesFile();
 		preferences.load(appPreferencesFile);
 
-		setLocalDataLocation(EAM.getHomeDirectory());
-		
 		ensureFontSizeIsSet();
 		
 		humanWelfareModeHandler = new HumanWelfareTargetModeChangeHandler();
@@ -503,11 +500,6 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 	public Actions getActions()
 	{
 		return actions;
-	}
-	
-	public void setLocalDataLocation(File dataDirectory) throws Exception
-	{
-		database.setLocalDataLocation(dataDirectory);
 	}
 	
 	static class AlreadyHandledException extends Exception
@@ -1232,7 +1224,6 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 	
 	public static final String DISABLED_CONPRO_IMPORT_EXPORT_MESSAGE = EAM.text("<HTML>Data exchange between Miradi and ConPro is not available in this version of Miradi. <BR> It is currently being tested, and should be available in the next version of Miradi. <BR>If you have questions, contact support@miradi.org.</HTML>");
 
-	private ProjectServer database;
 	private Actions actions;
 	private AppPreferences preferences;
 	private Project project;
