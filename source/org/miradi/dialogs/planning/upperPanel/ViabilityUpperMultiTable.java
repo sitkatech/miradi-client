@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.upperPanel;
 
-import org.miradi.dialogs.planning.TableHeaderWithExpandCollapseIcons;
+import org.miradi.dialogs.planning.ViabilityTableHeader;
 import org.miradi.main.MainWindow;
 
 public class ViabilityUpperMultiTable extends PlanningUpperMultiTable
@@ -33,6 +33,6 @@ public class ViabilityUpperMultiTable extends PlanningUpperMultiTable
 	@Override
 	protected void setTableHeaderRenderer()
 	{
-		setTableHeader(new TableHeaderWithExpandCollapseIcons(this));
+		setTableHeader(new ViabilityTableHeader(this));
 	}
 }
