@@ -20,12 +20,19 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.upperPanel.rebuilder;
 
+import java.text.Collator;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Vector;
+
 import org.miradi.diagram.ChainWalker;
+import org.miradi.dialogs.planning.treenodes.UnspecifiedBaseObject;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.AbstractTarget;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Desire;
 import org.miradi.objects.DiagramFactor;
@@ -35,6 +42,7 @@ import org.miradi.objects.Factor;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.IntermediateResult;
+import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.objects.ProjectMetadata;
@@ -44,6 +52,7 @@ import org.miradi.objects.SubTarget;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
+import org.miradi.utils.BaseObjectDateDescendingAndIdComparator;
 
 public class NormalTreeRebuilder extends AbstractTreeRebuilder
 {
@@ -77,11 +86,14 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		if(IntermediateResult.is(parentRef))
 			return getChildrenOfBasicFactor(parentRef, diagram);
 		
-		if(Desire.isDesire(parentRef))
+		if(Desire.isDesire(parentRef) && parentRef.isValid())
 			return getChildrenOfDesire(parentRef, diagram);
 		
 		if(Indicator.is(parentRef))
 			return getChildrenOfIndicator(parentRef, diagram);
+		
+		if(KeyEcologicalAttribute.is(parentRef))
+			return getChildrenOfKea(parentRef);
 		
 		if(Task.is(parentRef))
 			return getChildrenOfTask(parentRef, diagram);
@@ -123,6 +135,20 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		}
 		return childRefs;
 	}
+	
+	public ORefList getSortedByDateMeasurementRefs(Indicator indicator)
+	{
+		final ORefList measurementRefs = indicator.getMeasurementRefs();
+		Vector<Measurement> measurements = new Vector<Measurement>();
+		for(int index = 0; index < measurementRefs.size(); ++index)
+		{
+			measurements.add(Measurement.find(getProject(), measurementRefs.get(index)));
+		}
+		
+		Collections.sort(measurements, new MeasurementDateComparator());
+		
+		return new ORefList(measurements);
+	}
 
 	private ORefList getChildrenOfDiagramNode(ORef diagramRef) throws Exception
 	{
@@ -153,7 +179,26 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		childRefs.addAll(target.getOwnedObjects(Goal.getObjectType()));
 		childRefs.addAll(new ORefList(Indicator.getObjectType(), target.getDirectOrIndirectIndicators()));
 		childRefs.addAll(getDirectlyLinkedNonDraftStrategies(target, diagram));
+		if (target.isViabilityModeTNC()) 
+			childRefs.addAll(getSortedKeaRefs(target));
+		
 		return childRefs;
+	}
+	
+	private ORefList getSortedKeaRefs(AbstractTarget target) throws Exception
+	{
+		Project project = target.getProject();
+		ORefList keaRefs = target.getKeyEcologicalAttributeRefs();
+		Vector<KeyEcologicalAttribute> keyEcologicalAttributesVector = new Vector<KeyEcologicalAttribute>();
+		for(int index = 0; index < keaRefs.size(); ++index)
+		{
+			KeyEcologicalAttribute kea = (KeyEcologicalAttribute)project.findObject(keaRefs.get(index));
+			keyEcologicalAttributesVector.add(kea);
+		}
+		
+		Collections.sort(keyEcologicalAttributesVector, new KeaComparator());
+		
+		return new ORefList(keyEcologicalAttributesVector);
 	}
 	
 	private ORefList getDirectlyLinkedNonDraftStrategies(AbstractTarget target, DiagramObject diagram)
@@ -195,6 +240,15 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		return childRefs;
 	}
 	
+	private ORefList getChildrenOfKea(ORef parentRef)
+	{
+		ORefList childRefs = new ORefList();
+		KeyEcologicalAttribute kea = KeyEcologicalAttribute.find(getProject(), parentRef);
+		childRefs.addAll(kea.getIndicatorRefs());
+		
+		return childRefs;
+	}
+
 	private ORefList getChildrenOfDesire(ORef parentRef, DiagramObject diagram) throws Exception
 	{
 		ORefList childRefs = new ORefList();
@@ -212,6 +266,9 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		Indicator indicator = Indicator.find(getProject(), parentRef);
 		childRefs.addAll(indicator.getMeasurementRefs());
 		childRefs.addAll(indicator.getMethodRefs());
+		childRefs.addAll(getSortedByDateMeasurementRefs(indicator));
+		childRefs.add(new UnspecifiedBaseObject(getProject().getObjectManager(), Goal.getObjectType(), Goal.OBJECT_NAME));
+		
 		return childRefs;
 	}
 
@@ -263,5 +320,24 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		
 		return false;
 	}
+	
+	private class KeaComparator implements Comparator<KeyEcologicalAttribute>
+	{
+		public int compare(KeyEcologicalAttribute kea1, KeyEcologicalAttribute kea2)
+		{
+			String type1 =kea1.getKeyEcologicalAttributeType();
+			String type2 =kea2.getKeyEcologicalAttributeType();
+			Collator myCollator = Collator.getInstance();
 
+			return myCollator.compare(type1, type2);
+		}
+	}
+
+	private class MeasurementDateComparator implements Comparator<BaseObject>
+	{
+		public int compare(BaseObject baseObject1, BaseObject baseObject2)
+		{
+			return BaseObjectDateDescendingAndIdComparator.compare(baseObject1, baseObject2, Measurement.TAG_DATE);
+		}	
+	}
 }
