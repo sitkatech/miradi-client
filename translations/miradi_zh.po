@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-20 18:47-0500\n"
+"POT-Creation-Date: 2011-10-21 10:42-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -590,7 +590,7 @@ msgid ""
 "click <strong>import</strong>."
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/TreeBasedProjectList.java:66
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/TreeBasedProjectList.java:65
 msgid ""
 "<div class='WizardText'>To <strong>continue work</strong> on an existing "
 "project, or <strong>browse an example</strong>, choose a project below:"
@@ -3013,7 +3013,7 @@ msgstr "规定项目范围 \t\t"
 #: Miradi/source/org/miradi/views/noproject/DeleteProject.java:45
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:61
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:54
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:68
 #: Miradi/source/org/miradi/main/EAM.java:489
 #: Miradi/source/org/miradi/main/EAM.java:490
 msgid "Delete"
@@ -3367,11 +3367,11 @@ msgstr ""
 msgid "Error copying project: "
 msgstr "复制项目出错： \t\t"
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListCreateDirectoryAction.java:65
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListCreateDirectoryAction.java:70
 msgid "Error creating folder: "
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:49
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:63
 msgid "Error deleting project: "
 msgstr "删除项目出错： \t\t"
 
@@ -3383,11 +3383,11 @@ msgstr "撤销时出错 \t\t"
 msgid "Error during undo"
 msgstr "撤销时出错 \t\t"
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListExportAction.java:49
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListExportAction.java:45
 msgid "Error exporting project: "
 msgstr "导出项目出错： \t\t"
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListMoveToDirectoryAction.java:62
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListMoveToDirectoryAction.java:73
 msgid "Error moving project: "
 msgstr ""
 
@@ -3424,7 +3424,7 @@ msgstr ""
 msgid "Error reading %s. Perhaps it is not a valid zip file."
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListRenameAction.java:48
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListRenameAction.java:62
 msgid "Error renaming project: "
 msgstr "项目重命名出错： \t\t"
 
@@ -3472,7 +3472,7 @@ msgstr "导出到Miradi压缩… \t\t"
 #: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:163
 #: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:64
 #: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:90
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListExportAction.java:78
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListExportAction.java:81
 msgid "Export..."
 msgstr "导出… \t\t"
 
@@ -5564,7 +5564,7 @@ msgstr ""
 msgid "Project Summary"
 msgstr "项目概要"
 
-#: Miradi/source/org/miradi/views/noproject/CopyProject.java:38
+#: Miradi/source/org/miradi/views/noproject/CopyProject.java:36
 msgid "Project does not exist: "
 msgstr "项目不存在： \t\t"
 
@@ -5673,7 +5673,7 @@ msgstr "去除团队成员 \t\t"
 msgid "Rename Failed"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListRenameAction.java:53
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListRenameAction.java:67
 #: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:94
 msgid "Rename..."
 msgstr "重命名… \t\t"
@@ -5807,7 +5807,7 @@ msgstr "稀树草原-湿润稀树草原"
 msgid "Save %s"
 msgstr "保存 %s  \t\t"
 
-#: Miradi/source/org/miradi/views/noproject/CopyProject.java:52
+#: Miradi/source/org/miradi/views/noproject/CopyProject.java:42
 #: Miradi/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:48
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListSaveAsAction.java:47
 msgid "Save As..."
@@ -7340,7 +7340,6 @@ msgstr ""
 "准和工具，如Miradi。在此可获得详情www.ConservationMeasures.org "
 
 #: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:57
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListExportAction.java:61
 msgid ""
 "The MPZ file cannot be saved to a folder within the project being exported"
 msgstr ""
@@ -7838,14 +7837,6 @@ msgstr ""
 #: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:88
 msgid "Total Monitoring Budget %1 %2"
 msgstr ""
-
-#: Miradi/source/org/miradi/views/noproject/CopyProject.java:46
-msgid ""
-"Unable to copy this project because it is in use by another copy of this "
-"application:\n"
-msgstr ""
-"无法复制该项目，因为它正被该应用程序的另一拷贝所使用:\n"
-" \t\t"
 
 #: Miradi/source/org/miradi/views/noproject/DeleteProject.java:37
 msgid ""
@@ -28994,6 +28985,13 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid ""
+#~ "Unable to copy this project because it is in use by another copy of this "
+#~ "application:\n"
+#~ msgstr ""
+#~ "无法复制该项目，因为它正被该应用程序的另一拷贝所使用:\n"
+#~ " \t\t"
 
 #~ msgid "Type|Contributing Factor"
 #~ msgstr "影响因素 \t\t"

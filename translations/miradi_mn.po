@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-20 18:47-0500\n"
+"POT-Creation-Date: 2011-10-21 10:42-0500\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -619,7 +619,7 @@ msgstr ""
 "файлийн товчлуурыг дар, ил гарч ирэх цонхноос файлыг сонго дараа нь "
 "товчлуурыг дар<strong>импортt</strong>.\" "
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/TreeBasedProjectList.java:66
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/TreeBasedProjectList.java:65
 msgid ""
 "<div class='WizardText'>To <strong>continue work</strong> on an existing "
 "project, or <strong>browse an example</strong>, choose a project below:"
@@ -3180,7 +3180,7 @@ msgstr "Төслийн цар хүрээг тодорхойлох"
 #: Miradi/source/org/miradi/views/noproject/DeleteProject.java:45
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:61
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:54
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:68
 #: Miradi/source/org/miradi/main/EAM.java:489
 #: Miradi/source/org/miradi/main/EAM.java:490
 msgid "Delete"
@@ -3543,11 +3543,11 @@ msgstr ""
 msgid "Error copying project: "
 msgstr "Төслийг хуулахад алдаа: "
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListCreateDirectoryAction.java:65
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListCreateDirectoryAction.java:70
 msgid "Error creating folder: "
 msgstr "Фолдэр үүсгэхэд алдаа : "
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:49
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:63
 msgid "Error deleting project: "
 msgstr "Төсөл арилгахад алдаа: "
 
@@ -3559,11 +3559,11 @@ msgstr "Redo алдаа"
 msgid "Error during undo"
 msgstr "undo алдаа"
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListExportAction.java:49
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListExportAction.java:45
 msgid "Error exporting project: "
 msgstr "Төсөл оруулахад алдаа: "
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListMoveToDirectoryAction.java:62
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListMoveToDirectoryAction.java:73
 msgid "Error moving project: "
 msgstr "Төслийн шилжүүлэхэд алдаа: "
 
@@ -3596,7 +3596,7 @@ msgstr "Алдаа төсөл нээхэд: "
 msgid "Error reading %s. Perhaps it is not a valid zip file."
 msgstr "Алдаа унших %s. Zip file хүчингүй байж болзошгүй."
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListRenameAction.java:48
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListRenameAction.java:62
 msgid "Error renaming project: "
 msgstr "Төслийн нэрийг солиход алдаа: "
 
@@ -3644,7 +3644,7 @@ msgstr "Miradi Zip...рүү оруулах"
 #: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:163
 #: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:64
 #: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:90
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListExportAction.java:78
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListExportAction.java:81
 msgid "Export..."
 msgstr "Оруулахt..."
 
@@ -5788,7 +5788,7 @@ msgstr "Төслийн нөхцөл байдал"
 msgid "Project Summary"
 msgstr "Төслийн Дүгнэлт"
 
-#: Miradi/source/org/miradi/views/noproject/CopyProject.java:38
+#: Miradi/source/org/miradi/views/noproject/CopyProject.java:36
 msgid "Project does not exist: "
 msgstr "Төсөл байхгүй: "
 
@@ -5898,7 +5898,7 @@ msgstr "Багийн гишүүнийг хасах"
 msgid "Rename Failed"
 msgstr "Нэр солих амжилтгүй болсон"
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListRenameAction.java:53
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListRenameAction.java:67
 #: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:94
 msgid "Rename..."
 msgstr "Нэр солих..."
@@ -6033,7 +6033,7 @@ msgstr "Саванн- Чийглэн Саванн"
 msgid "Save %s"
 msgstr "Хадгалах %s"
 
-#: Miradi/source/org/miradi/views/noproject/CopyProject.java:52
+#: Miradi/source/org/miradi/views/noproject/CopyProject.java:42
 #: Miradi/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:48
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListSaveAsAction.java:47
 msgid "Save As..."
@@ -7634,7 +7634,6 @@ msgstr ""
 "боломжтой "
 
 #: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:57
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListExportAction.java:61
 msgid ""
 "The MPZ file cannot be saved to a folder within the project being exported"
 msgstr "Төслийг гаргаж байхад MPZ файлыг хадгалах боломжгүй"
@@ -8151,14 +8150,6 @@ msgstr ""
 #: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:88
 msgid "Total Monitoring Budget %1 %2"
 msgstr ""
-
-#: Miradi/source/org/miradi/views/noproject/CopyProject.java:46
-msgid ""
-"Unable to copy this project because it is in use by another copy of this "
-"application:\n"
-msgstr ""
-"Энэ программын өөр хуулбарт энэ төслийг ашиглаж байгаа учир төслийн хуулбар "
-"хийх боломжгүй байна:\n"
 
 #: Miradi/source/org/miradi/views/noproject/DeleteProject.java:37
 msgid ""
@@ -31703,6 +31694,13 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid ""
+#~ "Unable to copy this project because it is in use by another copy of this "
+#~ "application:\n"
+#~ msgstr ""
+#~ "Энэ программын өөр хуулбарт энэ төслийг ашиглаж байгаа учир төслийн "
+#~ "хуулбар хийх боломжгүй байна:\n"
 
 #~ msgid "Type|Contributing Factor"
 #~ msgstr "Гарчиг|Үйлчлэл үзүүлэгч Хүчин Зүйл"
