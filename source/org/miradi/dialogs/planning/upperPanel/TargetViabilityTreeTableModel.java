@@ -40,7 +40,6 @@ public class TargetViabilityTreeTableModel extends TreeTableModelWithRebuilder
 		return new TargetViabilityTreeRebuilder(getProject(), getRowColumnProvider());
 	}
 
-
 	@Override
 	public String getUniqueTreeTableModelIdentifier()
 	{
