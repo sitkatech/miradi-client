@@ -36,6 +36,7 @@ import org.miradi.exceptions.UserCanceledException;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.project.Project;
 import org.miradi.utils.EAMFileSaveChooser;
 import org.miradi.utils.MiradiBackgroundWorkerThread;
 import org.miradi.utils.ProgressInterface;
@@ -112,39 +113,47 @@ public abstract class AbstractProjectImporter
 		
 		refreshNoProjectPanel();
 		currentDirectory = fileToImport.getParent();
-		userConfirmOpenImportedProject(projectName);
+		userConfirmOpenImportedProject(worker.getImportedFile());
 	}
 	
 	private class Worker extends MiradiBackgroundWorkerThread
 	{
-		public Worker(ProgressInterface progressInterfaceToUse, File fileToImportToUse, String projectNameToUse)
+		public Worker(ProgressInterface progressInterfaceToUse, File fileToImportToUse, String projectNameToUse) throws Exception
 		{
 			super(progressInterfaceToUse);
 			
 			fileToImport = fileToImportToUse;
 			projectName = projectNameToUse;
+			newProjectFile = new File(EAM.getHomeDirectory(), projectName + ".Miradi");
+
+			if(!Project.isValidProjectFilename(projectName))
+				throw new Exception("Illegal project name: " + projectName);
 		}
 		
+		public File getImportedFile()
+		{
+			return newProjectFile;
+		}
+
 		@Override
 		protected void doRealWork() throws Exception
 		{
-			createProject(fileToImport, EAM.getHomeDirectory(), projectName, getProgressIndicator());
+			createProject(fileToImport, EAM.getHomeDirectory(), newProjectFile, getProgressIndicator());
 			getProgressIndicator().finished();
 		}
 		
 		private File fileToImport;
 		private String projectName;
+		private File newProjectFile;
 	}
 
-	protected void userConfirmOpenImportedProject(String projectName) throws Exception
+	protected void userConfirmOpenImportedProject(File projectFile) throws Exception
 	{
-		String openProjectMessage = EAM.substitute(EAM.text("Import Completed.  Would you like to open %s?"), projectName);
+		String openProjectMessage = EAM.substitute(EAM.text("Import Completed.  Would you like to open %s?"), projectFile.getName());
 		boolean shouldOpenProjectAfterImport = EAM.confirmOpenDialog(EAM.text("Open Project"), openProjectMessage);
 		if (shouldOpenProjectAfterImport)
 		{
-			throw new RuntimeException("Open after import not supported yet");
-//			getMainWindow().setLocalDataLocation(EAM.getHomeDirectory());
-//			getMainWindow().createOrOpenProject(projectName);
+			getMainWindow().createOrOpenProject(projectFile);
 		}
 	}
 
@@ -197,7 +206,7 @@ public abstract class AbstractProjectImporter
 			  "running the latest Miradi, either wait for a newer version that supports this format, <br>" +
 			  "or re-export the project to an older (supported) format.");
 	
-	protected abstract void createProject(File importFile, File homeDirectory, String newProjectFilename, ProgressInterface progressIndicator)  throws Exception;
+	protected abstract void createProject(File importFile, File homeDirectory, File newProjectFile, ProgressInterface progressIndicator)  throws Exception;
 	
 	protected abstract FileFilter[] getFileFilters();
 	

@@ -64,12 +64,9 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 	}
 	
 	@Override
-	public void createProject(File importFile, File homeDirectory, String newProjectFilename, ProgressInterface progressIndicator) throws Exception
+	public void createProject(File importFile, File homeDirectory, File newProjectFile, ProgressInterface progressIndicator) throws Exception
 	{
-		if(!Project.isValidProjectFilename(newProjectFilename))
-			throw new Exception("Illegal project name: " + newProjectFilename);
 			
-		File newProjectFile = new File(EAM.getHomeDirectory(), newProjectFilename);
 		Project project = importProject(importFile, progressIndicator);
 		ProjectSaver.saveProject(project, newProjectFile);
 	}
