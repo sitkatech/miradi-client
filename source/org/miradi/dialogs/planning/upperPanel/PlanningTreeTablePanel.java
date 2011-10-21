@@ -81,7 +81,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		treeTableScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		
 		createModels();
-		mainTable = new PlanningUpperMultiTable(getMainWindow(), treeToUse, multiModel);
+		mainTable = createUpperMultiTable(treeToUse, multiModel);
 		mainTableScrollPane = integrateTable(getTreeTableScrollPane().getVerticalScrollBar(), mainTable);
 		mainTableScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 
@@ -92,6 +92,11 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		treeTableRowSelectionListener = new TreeTableRowSelectionHandler();
 		
 		enableSelectionListeners();
+	}
+
+	protected PlanningUpperMultiTable createUpperMultiTable(PlanningTreeTable treeToUse, PlanningTreeMultiTableModel multiModelToUse)
+	{
+		return new PlanningUpperMultiTable(getMainWindow(), treeToUse, multiModelToUse);
 	}
 
 	@Override

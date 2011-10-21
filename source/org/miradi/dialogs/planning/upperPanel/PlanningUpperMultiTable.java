@@ -69,7 +69,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		setAutoResizeMode(AUTO_RESIZE_OFF);
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		setCellSelectionEnabled(true);
-		setTableHeader(new TableHeaderWithExpandCollapseIcons(this));
+		setTableHeaderRenderer();
 
 		masterTree = masterTreeToUse;
 		FontForObjectProvider fontProvider = new PlanningViewFontProvider(getMainWindow());
@@ -83,6 +83,11 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		doubleClickAutoSelectCellEditor = new DoubleClickAutoSelectCellEditor(new PanelTextField());
 		
 		addMouseListener(new PlanningRightClickHandler(getMainWindow(), this, this));
+	}
+
+	protected void setTableHeaderRenderer()
+	{
+		setTableHeader(new TableHeaderWithExpandCollapseIcons(this));
 	}
 	
 	@Override
