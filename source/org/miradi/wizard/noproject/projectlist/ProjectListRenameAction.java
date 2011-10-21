@@ -22,6 +22,7 @@ package org.miradi.wizard.noproject.projectlist;
 
 import org.miradi.main.EAM;
 import org.miradi.views.noproject.RenameOldProjectDoer;
+import org.miradi.views.noproject.RenameProjectDoer;
 
 class ProjectListRenameAction extends ProjectListAction
 {
@@ -35,7 +36,7 @@ class ProjectListRenameAction extends ProjectListAction
 	{
 		try
 		{
-			boolean enable = isProjectSelected() || isDirectorySelected(); 
+			boolean enable = isProjectSelected() || isOldProjectSelected() || isDirectorySelected(); 
 			if(EAM.getHomeDirectory().equals(getSelectedFile()))
 				enable = false;
 			setEnabled(enable);
@@ -50,10 +51,10 @@ class ProjectListRenameAction extends ProjectListAction
 	@Override
 	protected void doWork() throws Exception
 	{
-		if(isOldProjectSelected() || isDirectorySelected())
+		if(isProjectSelected())
+			RenameProjectDoer.doIt(EAM.getMainWindow(), getSelectedFile());
+		else if(isOldProjectSelected() || isDirectorySelected())
 			RenameOldProjectDoer.doIt(EAM.getMainWindow(), getSelectedFile());
-		else
-			EAM.notifyDialog("Renaming projects is not supported yet");
 	}
 	
 	@Override

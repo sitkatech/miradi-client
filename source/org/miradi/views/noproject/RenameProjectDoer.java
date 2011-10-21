@@ -22,7 +22,6 @@ package org.miradi.views.noproject;
 import java.io.File;
 import java.io.IOException;
 
-import org.martus.util.DirectoryLock;
 import org.miradi.database.ProjectServer;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -31,43 +30,30 @@ import org.miradi.utils.ModalRenameDialog;
 import org.miradi.utils.Utility;
 import org.miradi.wizard.noproject.WelcomeCreateStep;
 
-public class RenameOldProjectDoer
+public class RenameProjectDoer
 {
-	static public void doIt(MainWindow mainWindow, File directoryToRename) throws Exception 
+	static public void doIt(MainWindow mainWindow, File projectFileToRename) throws Exception 
 	{
-		DirectoryLock directoryLock = new DirectoryLock();
-		if (!directoryLock.getDirectoryLock(directoryToRename))
-		{
-			EAM.notifyDialog(EAM.text("Unable to rename this project because it is in use by another copy of this application:\n") +  directoryToRename.getName());
-			return;
-		}
-
 		try
 		{
-			String newDirectoryName = getLegalProjectNameFromUser(mainWindow, directoryToRename.getName());
+			String newDirectoryName = getLegalProjectNameFromUser(mainWindow, projectFileToRename.getName());
 			if (newDirectoryName == null)
 				return;
 
-			directoryLock.close();
-			
-			File newFile = new File(directoryToRename.getParentFile(), newDirectoryName);
+			File newFile = new File(projectFileToRename.getParentFile(), newDirectoryName);
 			if(projectExists(newFile))
 			{
 				EAM.errorDialog(EAM.text("A project or file by this name already exists: ") + newFile.getAbsolutePath());
 				return;
 			}
 				
-			boolean wasRenamed = directoryToRename.renameTo(newFile);
+			boolean wasRenamed = projectFileToRename.renameTo(newFile);
 			if (!wasRenamed)
 				throw new IOException();
 		}
 		catch (Exception e)
 		{
 			EAM.notifyDialog(EAM.text("Rename Failed"));
-		}
-		finally
-		{
-			directoryLock.close();
 		}
 	}
 	
@@ -118,7 +104,7 @@ public class RenameOldProjectDoer
 	private static String askUserForProjectName(MainWindow mainWindow, String projectName) throws Exception
 	{
 		String legalProjectName = Project.makeProjectFilenameLegal(projectName);
-		return ModalRenameDialog.showDialog(mainWindow, RenameOldProjectDoer.RENAME_TEXT, legalProjectName);
+		return ModalRenameDialog.showDialog(mainWindow, RenameProjectDoer.RENAME_TEXT, legalProjectName);
 	}
 
 	public static final String RENAME_TEXT = "<html>" + EAM.text("Enter New Name") + 
