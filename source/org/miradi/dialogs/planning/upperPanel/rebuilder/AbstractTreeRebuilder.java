@@ -185,7 +185,7 @@ abstract public class AbstractTreeRebuilder
 				return new PlanningTaskNode(getProject(), parentNode.getContextRef(), parentNode, refToAdd);
 			
 			if(refToAdd.isInvalid() && Goal.is(refToAdd))
-				return new ViabilityFutureStatusNode(getProject(), parentNode, refToAdd.getObjectType(), Goal.OBJECT_NAME);
+				return new ViabilityFutureStatusNode(getProject(), parentNode);
 			
 			int type = refToAdd.getObjectType();
 			for(int i = 0; i < supportedTypes.length; ++i)

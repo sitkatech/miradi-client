@@ -22,14 +22,15 @@ package org.miradi.dialogs.planning.treenodes;
 
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.EAM;
+import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.project.Project;
 
 public class ViabilityFutureStatusNode extends UnspecifiedBaseObjectNode
 {
-	public ViabilityFutureStatusNode(Project projectToUse, TreeTableNode parentNodeToUse, int objectTypeToUse, String objectTypeNameToUse)
+	public ViabilityFutureStatusNode(Project projectToUse, TreeTableNode parentNodeToUse)
 	{
-		super(projectToUse, parentNodeToUse, objectTypeToUse, objectTypeNameToUse);
+		super(projectToUse, parentNodeToUse, Goal.getObjectType(), Goal.OBJECT_NAME);
 	}
 	
 	@Override
