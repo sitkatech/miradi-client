@@ -91,7 +91,7 @@ public class TargetViabilityManagementPanelNew extends ObjectListManagementPanel
 		return table;
 	}
 
-	protected PlanningTreeTablePanel createPlanningTreeTablePanel(String uniqueTreeTableModelIdentifier, PlanningTreeRowColumnProvider rowColumnProvider) throws Exception
+	private PlanningTreeTablePanel createPlanningTreeTablePanel(String uniqueTreeTableModelIdentifier, PlanningTreeRowColumnProvider rowColumnProvider) throws Exception
 	{
 		return ExportablePlanningTreeTablePanel.createPlanningTreeTablePanelWithoutButtons(getMainWindow(), rowColumnProvider, uniqueTreeTableModelIdentifier);
 	}
@@ -119,7 +119,7 @@ public class TargetViabilityManagementPanelNew extends ObjectListManagementPanel
 		planningTreeTablePanel = planningTreeTablePanelToUse;
 	}
 
-	public PlanningTreeTablePanel getPlanningTreeTablePanel()
+	private PlanningTreeTablePanel getPlanningTreeTablePanel()
 	{
 		return planningTreeTablePanel;
 	}
