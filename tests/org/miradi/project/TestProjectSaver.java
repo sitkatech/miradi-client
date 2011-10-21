@@ -51,6 +51,7 @@ public class TestProjectSaver extends TestCaseWithProject
 		getProject().populateEverything();
 		getProject().populateSimpleThreatRatingValues();
 		getProject().appendToQuarantineFile("Stuff in quarantine\nMore <<stuff>>");
+		getProject().appendToExceptionLog("Some exceptions & more stuff\n\n");
 	}
 	
 	public void testBasics() throws Exception

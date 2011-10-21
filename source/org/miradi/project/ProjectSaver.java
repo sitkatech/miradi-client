@@ -70,6 +70,8 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 	
 	private void saveProject() throws Exception
 	{
+		getWriter().writeBOM();
+		
 		writeProjectVersion();
 		writeSchemaVersion();
 		writeProjectInfo();
@@ -77,6 +79,7 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 		writeAllObjectTypes();
 		writeAllSimpleThreatRatings();
 		writeAllQuarantinedData();
+		writeExceptionsLog();
 		writeStopMarker();
 		flushWriter();
 	}
@@ -117,6 +120,13 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 		String quarantineFileContents = getProject().getQuarantineFileContents();
 		quarantineFileContents = xmlNewLineEncode(quarantineFileContents);
 		writeTagValue(UPDATE_QUARANTINE_CODE, QUARANTINE_DATA_TAG, quarantineFileContents);
+	}
+
+	private void writeExceptionsLog() throws Exception
+	{
+		String exceptions = getProject().getExceptionLog();
+		exceptions = xmlNewLineEncode(exceptions);
+		writeTagValue(UPDATE_EXCEPTIONS_CODE, EXCEPTIONS_DATA_TAG, exceptions);
 	}
 
 	private void writeAllObjectTypes() throws Exception
