@@ -20,16 +20,16 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.upperPanel;
 
-import org.miradi.dialogs.planning.AbstractPlanningTreeRowColumnProvider;
 import org.miradi.dialogs.planning.upperPanel.rebuilder.AbstractTreeRebuilder;
 import org.miradi.dialogs.planning.upperPanel.rebuilder.NormalTreeRebuilder;
 import org.miradi.dialogs.treetables.TreeTableNode;
+import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.project.Project;
 
 //FIXME urgent - Make new target viability tree table work
 public class TargetViabilityTreeTableModel extends TreeTableModelWithRebuilder
 {
-	public TargetViabilityTreeTableModel(Project project, TreeTableNode rootNodeToUse, AbstractPlanningTreeRowColumnProvider rowColumnProviderToUse) throws Exception
+	public TargetViabilityTreeTableModel(Project project, TreeTableNode rootNodeToUse, PlanningTreeRowColumnProvider rowColumnProviderToUse) throws Exception
 	{
 		super(project, rootNodeToUse, rowColumnProviderToUse, UNIQUE_TREE_TABLE_IDENTIFIER);
 	}
