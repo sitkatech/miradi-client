@@ -29,12 +29,15 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.AbstractTarget;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
+import org.miradi.objects.Measurement;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
+import org.miradi.utils.BaseObjectDateDescendingAndIdComparator;
 
 //FIXME urgent - Make new target viability tree table work
 public class TargetViabilityTreeRebuilder extends AbstractTreeRebuilder
@@ -76,10 +79,24 @@ public class TargetViabilityTreeRebuilder extends AbstractTreeRebuilder
 	{
 		ORefList childRefs = new ORefList();
 		Indicator indicator = Indicator.find(getProject(), parentRef);
-		childRefs.addAll(indicator.getMeasurementRefs());
+		childRefs.addAll(getSortedByDateMeasurementRefs(indicator));
 		//FIXME urgent - must add goal node here (Future status)
 		
 		return childRefs;
+	}
+
+	public ORefList getSortedByDateMeasurementRefs(Indicator indicator)
+	{
+		final ORefList measurementRefs = indicator.getMeasurementRefs();
+		Vector<Measurement> measurements = new Vector<Measurement>();
+		for(int index = 0; index < measurementRefs.size(); ++index)
+		{
+			measurementRefs.add(Measurement.find(getProject(), measurementRefs.get(index)));
+		}
+		
+		Collections.sort(measurements, new MeasurementDateComparator());
+		
+		return new ORefList(measurements);
 	}
 
 	private ORefList getChildrenOfAbstractTargetNode(ORef parentRef) throws Exception
@@ -127,5 +144,13 @@ public class TargetViabilityTreeRebuilder extends AbstractTreeRebuilder
 
 			return myCollator.compare(type1, type2);
 		}
-	} 
+	}
+
+	private class MeasurementDateComparator implements Comparator<BaseObject>
+	{
+		public int compare(BaseObject baseObject1, BaseObject baseObject2)
+		{
+			return BaseObjectDateDescendingAndIdComparator.compare(baseObject1, baseObject2, Measurement.TAG_DATE);
+		}	
+	}
 }
