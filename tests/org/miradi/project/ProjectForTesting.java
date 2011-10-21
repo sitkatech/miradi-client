@@ -165,8 +165,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	private ProjectForTesting(String testName, ProjectServer server) throws Exception
 	{
-		super(server);
-		
 		Translation.initialize();
 		
 		finishOpeningAfterLoad(testName);

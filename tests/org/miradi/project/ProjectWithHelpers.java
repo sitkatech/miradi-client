@@ -21,7 +21,6 @@ package org.miradi.project;
 
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.database.ProjectServer;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.PersistentDiagramModel;
 import org.miradi.ids.BaseId;
@@ -39,7 +38,7 @@ import org.miradi.views.diagram.DiagramModelUpdater;
 
 public class ProjectWithHelpers extends Project implements CommandExecutedListener
 {
-	protected ProjectWithHelpers(ProjectServer server) throws Exception
+	protected ProjectWithHelpers() throws Exception
 	{
 		addCommandExecutedListener(this);
 		diagramModel = new PersistentDiagramModel(this);
