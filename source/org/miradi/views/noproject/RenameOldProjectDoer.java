@@ -31,7 +31,7 @@ import org.miradi.utils.ModalRenameDialog;
 import org.miradi.utils.Utility;
 import org.miradi.wizard.noproject.WelcomeCreateStep;
 
-public class RenameProjectDoer
+public class RenameOldProjectDoer
 {
 	static public void doIt(MainWindow mainWindow, File directoryToRename) throws Exception 
 	{
@@ -112,7 +112,7 @@ public class RenameProjectDoer
 	private static String askUserForProjectName(MainWindow mainWindow, String projectName) throws Exception
 	{
 		String legalProjectName = Project.makeProjectFilenameLegal(projectName);
-		return ModalRenameDialog.showDialog(mainWindow, RenameProjectDoer.RENAME_TEXT, legalProjectName);
+		return ModalRenameDialog.showDialog(mainWindow, RenameOldProjectDoer.RENAME_TEXT, legalProjectName);
 	}
 
 	public static final String RENAME_TEXT = "<html>" + EAM.text("Enter New Name") + 
