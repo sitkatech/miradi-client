@@ -25,7 +25,7 @@ import java.io.RandomAccessFile;
 import java.nio.channels.FileChannel;
 import java.nio.channels.FileLock;
 
-public class FileLocker
+public class FileLockerUtility
 {
 	public static void main(String[] args) throws Exception
 	{
