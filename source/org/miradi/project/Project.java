@@ -146,7 +146,6 @@ public class Project
 	
 	public Project(ProjectServer databaseToUse) throws Exception
 	{
-		database = databaseToUse;
 		commandExecutor = new CommandExecutor(this);
 		projectCalendar = new ProjectCalendar(this);
 		projectTotalCalculator = new ProjectTotalCalculator(this);
@@ -203,11 +202,6 @@ public class Project
 	public IdAssigner getNormalIdAssigner()
 	{
 		return projectInfo.getNormalIdAssigner();
-	}
-	
-	public ProjectServer getDatabase()
-	{
-		return database;
 	}
 	
 	public ObjectManager getObjectManager()
@@ -1411,7 +1405,6 @@ public class Project
 	private StringBuilder quarantine;
 	private StringBuilder exceptionLog;
 	
-	private ProjectServer database;
 	private DiagramClipboard diagramClipboard;
 	private ProjectCalendar projectCalendar;
 	private ThreatStressRatingEnsurer threatStressRatingEnsurer;
