@@ -69,7 +69,6 @@ public class TargetViabilityTreeTablePanel extends PlanningTreeTablePanel
 		return new ViabilityUpperMultiTable(getMainWindow(), treeToUse, multiModelToUse);
 	}
 
-
 	private static Class[] getButtonActions()
 	{
 		return new Class[] {
