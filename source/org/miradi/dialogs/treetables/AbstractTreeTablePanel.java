@@ -34,6 +34,7 @@ import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Factor;
+import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.ObjectTreeTableConfiguration;
@@ -195,6 +196,9 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 		if(wereProgressReportsAddedOrRemoved(event))
 			return true;
 		
+		if(wereKeasAddedOrRemoved(event))
+			return true;
+		
 		if(didAffectTaskInTree(event))
 			return true;
 		
@@ -239,6 +243,14 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 	private boolean wereProgressReportsAddedOrRemoved(CommandExecutedEvent event)
 	{
 		return event.isSetDataCommandWithThisTag(BaseObject.TAG_PROGRESS_REPORT_REFS);
+	}
+	
+	private boolean wereKeasAddedOrRemoved(CommandExecutedEvent event)
+	{
+		if (event.isSetDataCommandWithThisTypeAndTag(HumanWelfareTarget.getObjectType(), HumanWelfareTarget.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS))
+			return true;
+		
+		return event.isSetDataCommandWithThisTypeAndTag(Target.getObjectType(), Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
 	}
 	
 	//TODO this should use that getTasksTag (or something like that) method
