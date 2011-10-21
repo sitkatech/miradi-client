@@ -21,12 +21,8 @@ package org.miradi.views.umbrella.doers;
 
 import java.io.File;
 
-import org.martus.util.DirectoryUtils;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
-import org.miradi.project.ProjectMpzImporter;
-import org.miradi.project.ProjectMpzWriter;
-import org.miradi.utils.ZIPFileFilter;
 import org.miradi.views.MainWindowDoer;
 import org.miradi.views.umbrella.CreateProjectDialog;
 import org.miradi.wizard.noproject.projectlist.ProjectListTreeTable;
@@ -36,7 +32,7 @@ public class SaveProjectAsDoer extends MainWindowDoer
 	@Override
 	public boolean isAvailable()
 	{
-		return (getProject().isOpen() && getProject().getDatabase().isLocalProject());
+		return (getProject().isOpen());
 	}
 
 	@Override
@@ -65,32 +61,7 @@ public class SaveProjectAsDoer extends MainWindowDoer
 
 	private File saveAs(File chosenFile) throws Exception
 	{
-		String newProjectName = getTrimmedFileName(chosenFile);
-		File projectDirToCopy = new File(getProject().getDatabase().getDataLocation());
-		File newProjectDir = new File(projectDirToCopy, newProjectName);
-		File tempZipFile = createTempProjectZip(newProjectName);
-		try
-		{			
-			ProjectMpzImporter.unzipToProjectDirectory(tempZipFile, projectDirToCopy, newProjectName);
-			return newProjectDir;
-		}
-		catch (Exception e)
-		{
-			DirectoryUtils.deleteEntireDirectoryTree(newProjectDir);
-			throw e;
-		}
-		finally
-		{
-			tempZipFile.delete();
-		}
-	}
-
-	private File createTempProjectZip(String newProjectName) throws Exception
-	{
-		File tempZipFile = File.createTempFile("$$$" + newProjectName, ZIPFileFilter.EXTENSION);
-		ProjectMpzWriter.writeProjectZip(getProject().getDatabase(), tempZipFile);
-		
-		return tempZipFile;
+		throw new RuntimeException("Save As is not supported yet");
 	}
 
 	private String getTrimmedFileName(File chosenFile)
