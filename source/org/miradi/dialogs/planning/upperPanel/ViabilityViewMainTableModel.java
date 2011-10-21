@@ -309,7 +309,6 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		Goal.TAG_EMPTY,
 		Goal.TAG_EMPTY,
 		Goal.TAG_EMPTY,
-		Goal.TAG_EMPTY,
 		
 		StatusQuestion.POOR,
 		StatusQuestion.FAIR,
