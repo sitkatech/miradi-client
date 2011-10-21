@@ -28,6 +28,7 @@ import org.miradi.dialogs.planning.treenodes.AbstractPlanningTreeNode;
 import org.miradi.dialogs.planning.treenodes.PlanningTaskNode;
 import org.miradi.dialogs.planning.treenodes.PlanningTreeBaseObjectNode;
 import org.miradi.dialogs.planning.treenodes.PlanningTreeErrorNode;
+import org.miradi.dialogs.planning.treenodes.UnspecifiedBaseObjectNode;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
@@ -182,6 +183,9 @@ abstract public class AbstractTreeRebuilder
 		{
 			if(Task.is(refToAdd))
 				return new PlanningTaskNode(getProject(), parentNode.getContextRef(), parentNode, refToAdd);
+			
+			if(refToAdd.isInvalid() && Goal.is(refToAdd))
+				return new UnspecifiedBaseObjectNode(getProject(), parentNode, refToAdd.getObjectType(), Goal.OBJECT_NAME);
 			
 			int type = refToAdd.getObjectType();
 			for(int i = 0; i < supportedTypes.length; ++i)

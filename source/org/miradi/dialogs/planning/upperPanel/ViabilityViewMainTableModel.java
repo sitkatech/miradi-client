@@ -23,9 +23,13 @@ package org.miradi.dialogs.planning.upperPanel;
 import javax.swing.Icon;
 
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
+import org.miradi.icons.GoalIcon;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
@@ -64,9 +68,37 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		if (Measurement.is(baseObject))
 			return valueForMeasurement(baseObject, row, column);
 		
+		if (Goal.is(baseObject))
+			return getValueForFutureResultAsGoal(baseObject, row, column);
+		
 		return super.getChoiceItemAt(row, column);
 	}
 	
+	private ChoiceItem getValueForFutureResultAsGoal(BaseObject baseObject, int row, int column)
+	{
+		String tag = COLUMN_TAGS[column];
+		
+		ORefList objectHiearchy = getRowColumnObjectProvider().getObjectHiearchy(row, column);
+		ORef indicatorRef = objectHiearchy.getRefForType(Indicator.getObjectType());
+		Indicator indicatorAsParent = Indicator.find(getProject(), indicatorRef);
+		String summaryData = indicatorAsParent.getData(Indicator.TAG_FUTURE_STATUS_SUMMARY);
+		String statusData = indicatorAsParent.getData(Indicator.TAG_FUTURE_STATUS_RATING);
+		TextAndIconChoiceItem textAndIconChoiceItem = new TextAndIconChoiceItem(summaryData, new GoalIcon());		
+		if (tag.equals(StatusQuestion.POOR) && StatusQuestion.POOR.equals(statusData))
+			return textAndIconChoiceItem;
+
+		if (tag.equals(StatusQuestion.FAIR) && StatusQuestion.FAIR.equals(statusData))
+			return textAndIconChoiceItem;
+
+		if (tag.equals(StatusQuestion.GOOD) && StatusQuestion.GOOD.equals(statusData))
+			return textAndIconChoiceItem;
+
+		if (tag.equals(StatusQuestion.VERY_GOOD) && StatusQuestion.VERY_GOOD.equals(statusData))
+			return textAndIconChoiceItem;
+		
+		return new EmptyChoiceItem();
+	}
+
 	private ChoiceItem getValueForIndicator(BaseObject baseObject, int row,	int column)
 	{
 		String tag = COLUMN_TAGS_FOR_INDICATORS[column];
@@ -273,5 +305,19 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 												VERY_GOOD,
 												Measurement.TAG_STATUS_CONFIDENCE,
 												Measurement.TAG_EMPTY,};
+	
+	public static final String[] COLUMN_TAGS = {
+		Goal.TAG_EMPTY,
+		Goal.TAG_EMPTY,
+		Goal.TAG_EMPTY,
+		Goal.TAG_EMPTY,
+		
+		StatusQuestion.POOR,
+		StatusQuestion.FAIR,
+		StatusQuestion.GOOD,
+	    StatusQuestion.VERY_GOOD,
 
+		Goal.TAG_EMPTY,
+		Goal.TAG_EMPTY,
+	};
 }
