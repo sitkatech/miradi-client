@@ -89,7 +89,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		assertEquals("Incorrect indicator pool count?", 2, getProject().getIndicatorPool().size());
 		
 		File beforeXmlOutFile = createTempFileFromName("$$$exportOnlyActiveIndictorsTest.xml");
-		ProjectForTesting projectToFill = new ProjectForTesting("ProjectToFill");
+		ProjectForTesting projectToFill = ProjectForTesting.createProjectWithDefaultObjects("ProjectToFill");
 		try
 		{
 			exportProject(beforeXmlOutFile, getProject());
@@ -205,7 +205,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 
 	private ProjectForTesting createProjectWithNoXenodata(String projectNameTag) throws Exception
 	{
-		ProjectForTesting emptyProject = new ProjectForTesting(getName() + projectNameTag);
+		ProjectForTesting emptyProject = ProjectForTesting.createProjectWithDefaultObjects(getName() + projectNameTag);
 		verifyProjectHasNoXenodata(emptyProject);
 		
 		return emptyProject;
@@ -222,7 +222,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		getProject().createActivity();
 		Task method = getProject().createMethod();
 		
-		ProjectForTesting firstTry = new ProjectForTesting(getName());
+		ProjectForTesting firstTry = ProjectForTesting.createProjectWithDefaultObjects(getName());
 		String xml = exportImportInto(firstTry);
 
 		ORefList taskRefs = firstTry.getPool(Task.getObjectType()).getORefList();
@@ -234,7 +234,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		String newMethodId = "<method id=\"" + conflictingRef.getObjectId() + "\"";
 		xml = xml.replace(oldMethodId, newMethodId);
 		
-		ProjectForTesting secondTry = new ProjectForTesting(getName());
+		ProjectForTesting secondTry = ProjectForTesting.createProjectWithDefaultObjects(getName());
 		importXmlStringIntoProject(xml, secondTry);
 	}
 
@@ -289,7 +289,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		File beforeXmlOutFile = createTempFileFromName("conproVersion2BeforeImport.xml");
 		
 		File afterXmlOutFile = createTempFileFromName("conproVersion2AfterFirstImport.xml");
-		ProjectForTesting projectToFill1 = new ProjectForTesting("ProjectToFill1");
+		ProjectForTesting projectToFill1 = ProjectForTesting.createProjectWithDefaultObjects("ProjectToFill1");
 		try
 		{
 			exportProject(beforeXmlOutFile, getProject());
@@ -477,7 +477,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 	public void testProjectWithSharedIndicator() throws Exception
 	{
 		File xmlFile = createTempFileFromName("$$$$conproVersion2BeforeImport.xml");
-		ProjectForTesting projectToFill = new ProjectForTesting("ProjectToFill");
+		ProjectForTesting projectToFill = ProjectForTesting.createProjectWithDefaultObjects("ProjectToFill");
 		
 		DiagramFactor diagramFactorThreat = projectToFill.createDiagramFactorAndAddToDiagram(Cause.getObjectType());
 		Cause threat = (Cause) diagramFactorThreat.getWrappedFactor();
@@ -498,7 +498,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		try
 		{
 			exportProject(xmlFile, projectToFill);
-			importProject(xmlFile, new ProjectForTesting("ImportedProject"));
+			importProject(xmlFile, ProjectForTesting.createProjectWithDefaultObjects("ImportedProject"));
 			fail("Project import should have failed since the indicator is shared between the cause and kea");
 		}
 		catch (Exception ignoreExpectedException)
@@ -514,7 +514,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 	public void testEmptyProject() throws Exception
 	{
 		File beforeXmlOutFile = createTempFileFromName("conproVersion2BeforeImport.xml");
-		ProjectForTesting projectToFill = new ProjectForTesting("ProjectToFill");
+		ProjectForTesting projectToFill = ProjectForTesting.createProjectWithDefaultObjects("ProjectToFill");
 		try
 		{
 			verifyEmpyProject(beforeXmlOutFile);
@@ -561,7 +561,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		assertEquals("wrong project resource count?", 1, getProject().getResourcePool().getRefSet().size());
 		
 		File beforeXmlOutFile = createTempFileFromName("conproVersion2BeforeImport.xml");
-		ProjectForTesting projectToFill = new ProjectForTesting("ProjectToFill");
+		ProjectForTesting projectToFill = ProjectForTesting.createProjectWithDefaultObjects("ProjectToFill");
 		try
 		{
 			verifyEmpyProject(beforeXmlOutFile);
@@ -592,7 +592,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		getProject().fillObjectUsingCommand(indicator, Indicator.TAG_MEASUREMENT_REFS, new ORefList(measurement));
 		
 		File beforeXmlOutFile = createTempFileFromName("conproVersion2BeforeImport.xml");
-		ProjectForTesting projectToFill = new ProjectForTesting("ProjectToFill");
+		ProjectForTesting projectToFill = ProjectForTesting.createProjectWithDefaultObjects("ProjectToFill");
 		try
 		{
 			exportProject(beforeXmlOutFile, getProject());
@@ -619,7 +619,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		getProject().fillObjectUsingCommand(target, Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, new IdList(kea));
 		
 		File beforeXmlOutFile = createTempFileFromName("conproVersion2BeforeImport.xml");
-		ProjectForTesting projectToFill = new ProjectForTesting("ProjectToFill");
+		ProjectForTesting projectToFill = ProjectForTesting.createProjectWithDefaultObjects("ProjectToFill");
 		try
 		{
 			exportProject(beforeXmlOutFile, getProject());
@@ -647,7 +647,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		getProject().fillObjectUsingCommand(strategy, Strategy.TAG_TEXT, "SomeDetailsText");
 		
 		File beforeXmlOutFile = createTempFileFromName("conproVersion2BeforeImport.xml");
-		ProjectForTesting projectToFill = new ProjectForTesting("ProjectToFill");
+		ProjectForTesting projectToFill = ProjectForTesting.createProjectWithDefaultObjects("ProjectToFill");
 		try
 		{
 			exportProject(beforeXmlOutFile, getProject());

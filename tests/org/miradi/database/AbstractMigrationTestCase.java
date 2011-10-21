@@ -44,7 +44,7 @@ abstract public class AbstractMigrationTestCase extends MiradiTestCase
 	{
 		super.setUp();
 		tempDirectory = createTempDirectory();
-		project = new ProjectForTesting(getName());
+		project = ProjectForTesting.createProjectWithDefaultObjects(getName());
 	}
 
 	@Override

@@ -36,7 +36,7 @@ public class TestFactorPool extends TestCaseEnhanced
 	{
 		super.setUp();
 		idAssigner = new IdAssigner();
-		project = new ProjectForTesting(getName());
+		project = ProjectForTesting.createProjectWithDefaultObjects(getName());
 		
 		for (int i = 0; i < FACTOR_COUNT; ++i)
 		{

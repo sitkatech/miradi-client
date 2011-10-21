@@ -152,7 +152,7 @@ public class TestIdList extends MiradiTestCase
 	
 	public void testIdListWithType() throws Exception
 	{
-		Project project = new ProjectForTesting(getName());
+		Project project = ProjectForTesting.createProjectWithDefaultObjects(getName());
 		IdList idListWithStrategyType = new IdList(Strategy.getObjectType());
 		Strategy strategy = new Strategy(project.getObjectManager(), new FactorId(1));	
 		Cause cause = new Cause(project.getObjectManager(), new FactorId(2));

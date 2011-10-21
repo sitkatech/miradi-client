@@ -60,7 +60,7 @@ public class TestCommands extends MiradiTestCase
 	@Override
 	public void setUp() throws Exception
 	{
-		project = new ProjectForTesting(getName());
+		project = ProjectForTesting.createProjectWithDefaultObjects(getName());
 		consumeNodeIdZero();
 		super.setUp();
 	}
@@ -350,7 +350,7 @@ public class TestCommands extends MiradiTestCase
 
 	public void testUndoWhenNothingToUndo() throws Exception
 	{
-		Project emptyProject = new ProjectForTesting(getName());
+		Project emptyProject = ProjectForTesting.createProjectWithDefaultObjects(getName());
 		try
 		{
 			EAM.setLogToString();
@@ -377,7 +377,7 @@ public class TestCommands extends MiradiTestCase
 	
 	public void testRedoWhenNothingToRedo() throws Exception
 	{
-		Project emptyProject = new ProjectForTesting(getName());
+		Project emptyProject = ProjectForTesting.createProjectWithDefaultObjects(getName());
 		try
 		{
 			EAM.setLogToString();

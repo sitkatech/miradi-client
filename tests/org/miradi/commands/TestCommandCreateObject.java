@@ -49,7 +49,7 @@ public class TestCommandCreateObject extends MiradiTestCase
 	
 	public void testRedo() throws Exception
 	{
-		Project project = new ProjectForTesting(getName());
+		Project project = ProjectForTesting.createProjectWithDefaultObjects(getName());
 		
 		try
 		{

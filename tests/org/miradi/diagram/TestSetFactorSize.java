@@ -39,7 +39,7 @@ public class TestSetFactorSize extends TestCaseEnhanced
 
 	public void testSetNodeSize() throws Exception
 	{
-		ProjectForTesting project = new ProjectForTesting(getName());
+		ProjectForTesting project = ProjectForTesting.createProjectWithDefaultObjects(getName());
 
 		FactorCell found = project.createFactorCell(ObjectType.TARGET);
 		String newSize = EnhancedJsonObject.convertFromDimension(new Dimension(200,300));

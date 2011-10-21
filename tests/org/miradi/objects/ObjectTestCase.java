@@ -146,7 +146,7 @@ public class ObjectTestCase extends TestCaseWithProject
 
 	public ProjectForTesting createAndOpenProject() throws Exception
 	{
-		ProjectForTesting project = new ProjectForTesting(getName());
+		ProjectForTesting project = ProjectForTesting.createProjectWithDefaultObjects(getName());
 		return project;
 	}
 	 

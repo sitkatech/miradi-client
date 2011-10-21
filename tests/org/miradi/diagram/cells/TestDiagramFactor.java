@@ -48,7 +48,7 @@ public class TestDiagramFactor extends MiradiTestCase
 	public void setUp() throws Exception
 	{
 		super.setUp();
-		project = new ProjectForTesting(getName());
+		project = ProjectForTesting.createProjectWithDefaultObjects(getName());
 		idAssigner = new IdAssigner();
 
 		ORef rawTargetRef = project.createObject(ObjectType.TARGET);

@@ -154,7 +154,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return projectForTesting;
 	}
 	
-	public ProjectForTesting(String testName) throws Exception
+	public static ProjectForTesting createProjectWithDefaultObjects(String testName) throws Exception
+	{
+		return new ProjectForTesting(testName);
+	}
+
+	private ProjectForTesting(String testName) throws Exception
 	{
 		this(testName, new ProjectServerForTesting());
 

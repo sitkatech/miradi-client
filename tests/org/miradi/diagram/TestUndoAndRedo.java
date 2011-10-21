@@ -49,7 +49,7 @@ public class TestUndoAndRedo extends MiradiTestCase
 	public void setUp() throws Exception
 	{
 		super.setUp();
-		project = new ProjectForTesting(getName());
+		project = ProjectForTesting.createProjectWithDefaultObjects(getName());
 
 		DiagramFactor fromDiagramFactor = createModelAndDiagramNodeWithCommands(ObjectType.CAUSE); 
 		fromFactorRef = fromDiagramFactor.getWrappedORef();
@@ -176,7 +176,7 @@ public class TestUndoAndRedo extends MiradiTestCase
 	
 	public void testGetIndexToUndoAndRedo() throws Exception
 	{
-		Project p = new ProjectForTesting(getName());
+		Project p = ProjectForTesting.createProjectWithDefaultObjects(getName());
 		p.createOrOpenWithDefaultObjects(new File(getName()), null);
 		
 		assertFalse("already an undoable?", p.canUndo());

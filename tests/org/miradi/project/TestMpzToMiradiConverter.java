@@ -79,7 +79,7 @@ public class TestMpzToMiradiConverter extends TestCaseWithProject
 
 	private ProjectForTesting createProjectFromDotMiradi(String projectAsStringFromConverter) throws Exception
 	{
-		ProjectForTesting project2 = new ProjectForTesting(getName());
+		ProjectForTesting project2 = ProjectForTesting.createProjectWithDefaultObjects(getName());
 		project2.clear();
 		UnicodeStringReader reader = new UnicodeStringReader(projectAsStringFromConverter);
 		ProjectLoader.loadProject(reader, project2);

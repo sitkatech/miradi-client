@@ -52,7 +52,7 @@ public class TestCommandExecutedEvents extends MiradiTestCase
 			public int timesExecuted;
 		}
 		
-		Project project = new ProjectForTesting(getName());
+		Project project = ProjectForTesting.createProjectWithDefaultObjects(getName());
 		TestListener listener = new TestListener();
 		project.addCommandExecutedListener(listener);
 		assertEquals("executed not zero to start?", 0, listener.timesExecuted);

@@ -198,7 +198,7 @@ public class TestDiagramPaster extends TestCaseWithProject
 
 	private ProjectForTesting createNewProject() throws Exception
 	{
-		return new ProjectForTesting("ProjectToPasteInto");
+		return ProjectForTesting.createProjectWithDefaultObjects("ProjectToPasteInto");
 	}
 
 	public void testFixupAllIndicatorRefs() throws Exception

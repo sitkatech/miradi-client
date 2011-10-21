@@ -83,7 +83,7 @@ public class TestProject extends MiradiTestCase
 	@Override
 	public void setUp() throws Exception
 	{
-		project = new ProjectForTesting(getName());
+		project = ProjectForTesting.createProjectWithDefaultObjects(getName());
 		idAssigner = project.getNormalIdAssigner();
 		super.setUp();
 	}
