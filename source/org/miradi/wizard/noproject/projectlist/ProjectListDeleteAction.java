@@ -34,13 +34,27 @@ class ProjectListDeleteAction extends ProjectListAction
 	@Override
 	protected void updateEnabledState()
 	{
-		setEnabled(isDirectorySelected());
+		try
+		{
+			boolean enable = isProjectSelected() || isEmptyDirectorySelected(); 
+			if(EAM.getHomeDirectory().equals(getSelectedFile()))
+				enable = false;
+			setEnabled(enable);
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			setEnabled(false);
+		}
 	}
 
 	@Override
 	protected void doWork() throws Exception
 	{
-		DeleteProject.doIt(EAM.getMainWindow(), getSelectedFile());
+		if(isProjectSelected())
+			EAM.notifyDialog("Deleting project is not supported yet");
+		else if(isOldProjectSelected() || isDirectorySelected())
+			DeleteProject.doIt(EAM.getMainWindow(), getSelectedFile());
 	}
 	
 	@Override

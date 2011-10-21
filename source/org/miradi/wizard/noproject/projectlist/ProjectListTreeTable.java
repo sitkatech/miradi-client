@@ -37,6 +37,7 @@ import javax.swing.text.Position;
 import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreePath;
 
+import org.miradi.database.ProjectServer;
 import org.miradi.dialogs.tablerenderers.BorderlessTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.DefaultTableCellRendererWithPreferredHeightFactory;
 import org.miradi.dialogs.treetables.TreeTableWithColumnWidthSaving;
@@ -114,6 +115,11 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving impleme
 		if(file == null)
 			return false;
 		return file.getName().endsWith(".Miradi");
+	}
+
+	public static boolean isOldProject(File selectedFile) throws Exception
+	{
+		return ProjectServer.isExistingLocalProject(selectedFile);
 	}
 
 	public static void doProjectOpen(MainWindow mainWindow, File projectFile) throws Exception

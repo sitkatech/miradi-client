@@ -93,6 +93,11 @@ abstract class ProjectListAction extends AbstractAction
 		return ProjectListTreeTable.isProject(getSelectedFile());
 	}
 	
+	protected boolean isOldProjectSelected() throws Exception
+	{
+		return ProjectListTreeTable.isOldProject(getSelectedFile());
+	}
+
 	protected boolean isDirectorySelected()
 	{
 		File fileToValidate = getSelectedFile();
@@ -100,6 +105,15 @@ abstract class ProjectListAction extends AbstractAction
 			return false;
 		
 		return fileToValidate.isDirectory();
+	}
+	
+	protected boolean isEmptyDirectorySelected()
+	{
+		if(!isDirectorySelected())
+			return false;
+		
+		File[] files = getSelectedFile().listFiles();
+		return (files == null || files.length == 0);
 	}
 	
 	protected void refresh()

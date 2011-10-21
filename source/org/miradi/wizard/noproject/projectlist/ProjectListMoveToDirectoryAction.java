@@ -36,7 +36,18 @@ public class ProjectListMoveToDirectoryAction extends ProjectListAction
 	@Override
 	protected void updateEnabledState()
 	{
-		setEnabled(isDirectorySelected());
+		try
+		{
+			boolean enable = isProjectSelected() || isDirectorySelected(); 
+			if(EAM.getHomeDirectory().equals(getSelectedFile()))
+				enable = false;
+			setEnabled(enable);
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			setEnabled(false);
+		}
 	}
 	
 	@Override
