@@ -24,9 +24,7 @@ import java.io.File;
 
 import javax.swing.filechooser.FileFilter;
 
-import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.project.ProjectMpzImporter;
 import org.miradi.utils.MpzFileFilterForChooserDialog;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.utils.ZIPFileFilter;
@@ -44,11 +42,12 @@ public class ZippedProjectImporter extends AbstractProjectImporter
 	}
 	
 	@Override
-	protected void createProject(File importFile, File homeDirectory, String newProjectFilename, ProgressInterface progressIndicator) throws Exception
+	protected void createProject(File importFile, File homeDirectory, File newProjectFile, ProgressInterface progressIndicator) throws Exception
 	{
-		progressIndicator.setStatusMessage(EAM.text("Importing..."), 2);
-		ProjectMpzImporter.unzipToProjectDirectory(importFile, homeDirectory, newProjectFilename);
-		progressIndicator.incrementProgress();
+		throw new RuntimeException("Import MPZ files not supported");
+//		progressIndicator.setStatusMessage(EAM.text("Importing..."), 2);
+//		ProjectMpzImporter.unzipToProjectDirectory(importFile, homeDirectory, newProjectFile);
+//		progressIndicator.incrementProgress();
 	}
 
 	@Override
