@@ -27,7 +27,7 @@ import org.miradi.database.ProjectServer;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class DeleteProject
+public class DeleteOldProject
 {
 	static public void doIt(MainWindow mainWindow, File directoryToDelete) throws Exception 
 	{
@@ -56,7 +56,7 @@ public class DeleteProject
 	private static String getDeleteMessage(File projectToDelete) throws Exception
 	{
 		if (ProjectServer.isExistingLocalProject(projectToDelete))
-			return EAM.text("Are you sure you want to delete this project? ");
+			return EAM.text("Are you sure you want to delete this old-format Miradi project? ");
 		
 		return EAM.text("Are you sure you want to delete this folder and its contents, including all subfolders?");
 	}
