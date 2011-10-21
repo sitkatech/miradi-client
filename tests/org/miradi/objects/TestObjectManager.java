@@ -37,7 +37,6 @@ import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.project.ProjectLoader;
 import org.miradi.project.ProjectSaver;
-import org.miradi.project.ProjectServerForTesting;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.utils.NullProgressMeter;
@@ -55,7 +54,6 @@ public class TestObjectManager extends MiradiTestCase
 	{
 		project = new ProjectForTesting(getName());
 		manager = project.getObjectManager();		
-		db = project.getTestDatabase();
 	}
 	
 	@Override
@@ -278,5 +276,4 @@ public class TestObjectManager extends MiradiTestCase
 	
 	ProjectForTesting project;
 	ObjectManager manager;
-	ProjectServerForTesting db;
 }
