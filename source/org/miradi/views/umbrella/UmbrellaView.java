@@ -70,7 +70,6 @@ import org.miradi.actions.ActionExportProjectXml;
 import org.miradi.actions.ActionExportRtf;
 import org.miradi.actions.ActionExportTable;
 import org.miradi.actions.ActionExportWcsProjectZip;
-import org.miradi.actions.ActionExportZippedProjectFile;
 import org.miradi.actions.ActionHelpAdaptiveManagement;
 import org.miradi.actions.ActionHelpAgileSoftware;
 import org.miradi.actions.ActionHelpButtonExamples;
@@ -392,7 +391,6 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addDoerToMap(ActionRedo.class, new RedoDoer());
 		addDoerToMap(ActionPreferences.class, new PreferencesPopupDoer());
 		addDoerToMap(ActionToggleSpellChecker.class, new ToggleSpellCheckerDoer());
-		addDoerToMap(ActionExportZippedProjectFile.class, new ExportMpzFileDoer());
 		addDoerToMap(ActionImportZippedProjectFile.class, new ImportZippedProjectFileDoer());
 		addDoerToMap(ActionImportZippedConproProject.class, new ImportCpmzDoer());
 		addDoerToMap(ActionImportXmpz.class, new ImportXmpzDoer());

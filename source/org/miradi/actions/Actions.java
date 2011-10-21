@@ -180,7 +180,6 @@ public class Actions
 		registerAction(new ActionInsertContributingFactor(mainWindow));
 		registerAction(new ActionSaveProjectAs(mainWindow));
 		registerAction(new ActionHowToSave(mainWindow));
-		registerAction(new ActionExportZippedProjectFile(mainWindow));
 		registerAction(new ActionExportProjectXml(mainWindow));
 		registerAction(new ActionExportWcsProjectZip(mainWindow));
 		registerAction(new ActionImportXmpz(mainWindow));
