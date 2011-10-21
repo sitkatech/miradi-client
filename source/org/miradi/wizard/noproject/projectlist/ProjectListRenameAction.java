@@ -33,13 +33,27 @@ class ProjectListRenameAction extends ProjectListAction
 	@Override
 	protected void updateEnabledState()
 	{
-		setEnabled(isDirectorySelected());
+		try
+		{
+			boolean enable = isProjectSelected() || isDirectorySelected(); 
+			if(EAM.getHomeDirectory().equals(getSelectedFile()))
+				enable = false;
+			setEnabled(enable);
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			setEnabled(false);
+		}
 	}
-
+	
 	@Override
 	protected void doWork() throws Exception
 	{
-		RenameProjectDoer.doIt(EAM.getMainWindow(), getSelectedFile());
+		if(isOldProjectSelected() || isDirectorySelected())
+			RenameProjectDoer.doIt(EAM.getMainWindow(), getSelectedFile());
+		else
+			EAM.notifyDialog("Renaming projects is not supported yet");
 	}
 	
 	@Override

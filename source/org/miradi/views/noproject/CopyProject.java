@@ -21,32 +21,22 @@ package org.miradi.views.noproject;
 
 import java.io.File;
 
-import org.martus.util.DirectoryLock;
-import org.martus.util.DirectoryUtils;
-import org.miradi.database.ProjectServer;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.utils.Utility;
 import org.miradi.views.umbrella.CreateProjectDialog;
+import org.miradi.wizard.noproject.FileSystemTreeNode;
 
 public class CopyProject
 {
 	static public void doIt(MainWindow mainWindow, File projectToCopy) throws Exception 
 	{
-		
-		if(!ProjectServer.isExistingLocalProject(projectToCopy))
+		if(!FileSystemTreeNode.isProjectFile(projectToCopy))
 		{
 			EAM.notifyDialog(EAM.text("Project does not exist: ") + projectToCopy.getName());
 			return;
 		}
 		
-		DirectoryLock directoryLock = new DirectoryLock();
-
-		if (!directoryLock.getDirectoryLock(projectToCopy))
-		{
-			EAM.notifyDialog(EAM.text("Unable to copy this project because it is in use by another copy of this application:\n") +  projectToCopy.getName());
-			return;
-		}
-
 		try
 		{
 			CreateProjectDialog dlg = new CreateProjectDialog(mainWindow, EAM.text("Save As..."), projectToCopy.getName());
@@ -56,18 +46,13 @@ public class CopyProject
 			File chosen = dlg.getSelectedFile();
 			String newName = chosen.getName();
 			
-			directoryLock.close();
 			File newFile = new File(projectToCopy.getParentFile(),newName);
-			DirectoryUtils.copyDirectoryTree(projectToCopy, newFile);
+			Utility.copyFile(projectToCopy, newFile);
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
 			EAM.notifyDialog("Save Failed with unexpected error: " +e.getMessage());
-		}
-		finally
-		{
-			directoryLock.close();
 		}
 	}
 

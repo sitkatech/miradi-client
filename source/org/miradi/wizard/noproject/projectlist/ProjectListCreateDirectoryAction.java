@@ -37,7 +37,12 @@ public class ProjectListCreateDirectoryAction extends ProjectListAction
 	{
 		try
 		{
-			boolean newState = !isProjectSelected();
+			boolean newState = true;
+			if(isProjectSelected())
+				newState = false;
+			if(isOldProjectSelected())
+				newState = false;
+			
 			setEnabled(newState);
 			if (getSelectedFile() == null)
 				setEnabled(false);

@@ -153,7 +153,12 @@ abstract public class FileSystemTreeNode extends TreeTableNode
 	
 	public boolean isProject() throws Exception
 	{
-		return (thisFile.getName().endsWith(".Miradi"));
+		return isProjectFile(thisFile);
+	}
+	
+	public static boolean isProjectFile(File file) throws Exception
+	{
+		return (file.getName().endsWith(".Miradi"));
 	}
 	
 	public boolean isProjectDirectory() throws Exception
