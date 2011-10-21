@@ -27,10 +27,13 @@ import org.miradi.actions.ActionDeleteKeyEcologicalAttribute;
 import org.miradi.actions.ActionDeleteKeyEcologicalAttributeIndicator;
 import org.miradi.actions.ActionDeleteKeyEcologicalAttributeMeasurement;
 import org.miradi.actions.ActionExpandToMenu;
+import org.miradi.dialogs.planning.upperPanel.PlanningTreeMultiTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTable;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
+import org.miradi.dialogs.planning.upperPanel.PlanningUpperMultiTable;
 import org.miradi.dialogs.planning.upperPanel.PlanningViewMainTableModel;
+import org.miradi.dialogs.planning.upperPanel.ViabilityUpperMultiTable;
 import org.miradi.dialogs.planning.upperPanel.ViabilityViewMainTableModel;
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.main.MainWindow;
@@ -58,6 +61,13 @@ public class TargetViabilityTreeTablePanel extends PlanningTreeTablePanel
 	{
 		return new ViabilityViewMainTableModel(getProject(), getTree(), rowColumnProviderToUse);
 	}
+
+	@Override
+	protected PlanningUpperMultiTable createUpperMultiTable(PlanningTreeTable treeToUse, PlanningTreeMultiTableModel multiModelToUse)
+	{
+		return new ViabilityUpperMultiTable(getMainWindow(), treeToUse, multiModelToUse);
+	}
+
 
 	private static Class[] getButtonActions()
 	{
