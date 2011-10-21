@@ -23,6 +23,7 @@ import java.io.File;
 
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
+import org.miradi.project.ProjectSaver;
 import org.miradi.views.MainWindowDoer;
 import org.miradi.views.umbrella.CreateProjectDialog;
 import org.miradi.wizard.noproject.projectlist.ProjectListTreeTable;
@@ -48,9 +49,9 @@ public class SaveProjectAsDoer extends MainWindowDoer
 		File chosenFile = saveDialog.getSelectedFile();
 		try
 		{
-			File newProjectDir = saveAs(chosenFile);
+			saveAs(chosenFile);
 			getMainWindow().closeProject();
-			ProjectListTreeTable.doProjectOpen(getMainWindow(), newProjectDir);
+			ProjectListTreeTable.doProjectOpen(getMainWindow(), chosenFile);
 		}
 		catch(Exception e)
 		{
@@ -59,13 +60,8 @@ public class SaveProjectAsDoer extends MainWindowDoer
 		}
 	}
 
-	private File saveAs(File chosenFile) throws Exception
+	private void saveAs(File chosenFile) throws Exception
 	{
-		throw new RuntimeException("Save As is not supported yet");
-	}
-
-	private String getTrimmedFileName(File chosenFile)
-	{
-		return chosenFile.getName().trim();
+		ProjectSaver.saveProject(getProject(), chosenFile);
 	}
 }

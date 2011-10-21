@@ -56,6 +56,7 @@ import org.miradi.project.Project;
 import org.miradi.utils.IgnoreCaseStringComparator;
 import org.miradi.utils.MiradiScrollPane;
 import org.miradi.utils.ProjectNameRestrictedTextField;
+import org.miradi.wizard.noproject.FileSystemTreeNode;
 
 import com.jhlabs.awt.GridLayoutPlus;
 
@@ -124,7 +125,10 @@ public class CreateProjectDialog extends DialogWithButtonBar implements ActionLi
 
 	public File getSelectedFile()
 	{
-		return new File(EAM.getHomeDirectory(), projectFilenameField.getText());
+		String filename = projectFilenameField.getText();
+		if(!filename.endsWith(".Miradi"))
+			filename += ".Miradi";
+		return new File(EAM.getHomeDirectory(), filename);
 	}
 
 	String getSelectedFilename()
@@ -135,7 +139,7 @@ public class CreateProjectDialog extends DialogWithButtonBar implements ActionLi
 	private UiList createExistingProjectList()
 	{
 		File home = EAM.getHomeDirectory();
-		final String[] fileList = home.list(new DirectoryFilter());
+		final String[] fileList = home.list(new ProjectFilter());
 		Arrays.sort(fileList, new IgnoreCaseStringComparator());
 		UiList list = new UiList(fileList);
 		list.addListSelectionListener(this);
@@ -162,18 +166,17 @@ public class CreateProjectDialog extends DialogWithButtonBar implements ActionLi
 		CreateProjectDialog dialog;
 	}
 
-	public static class DirectoryFilter implements FilenameFilter
+	public static class ProjectFilter implements FilenameFilter
 	{
-		public boolean accept(File eamDataDirectory, String projectDirectoryName)
+		public boolean accept(File directory, String projectName)
 		{
-			if(projectDirectoryName.startsWith("."))
+			if(projectName.startsWith("."))
 				return false;
 
-			File projectDirectory = new File(eamDataDirectory,
-					projectDirectoryName);
+			File projectFile = new File(directory, projectName);
 			try
 			{
-				return ProjectServer.isExistingLocalProject(projectDirectory);
+				return FileSystemTreeNode.isProjectFile(projectFile);
 			}
 			catch(Exception e)
 			{
