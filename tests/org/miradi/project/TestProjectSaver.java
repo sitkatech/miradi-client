@@ -50,6 +50,7 @@ public class TestProjectSaver extends TestCaseWithProject
 
 		getProject().populateEverything();
 		getProject().populateSimpleThreatRatingValues();
+		getProject().appendToQuarantineFile("Stuff in quarantine\nMore <<stuff>>");
 	}
 	
 	public void testBasics() throws Exception
@@ -72,10 +73,11 @@ public class TestProjectSaver extends TestCaseWithProject
 		verifyProjectsAreTheSame(project, project2);
 	}
 
-	public static void verifyProjectsAreTheSame(final ProjectForTesting project1, final Project project2)
+	public static void verifyProjectsAreTheSame(final ProjectForTesting project1, final Project project2) throws Exception
 	{
 		verifyNormalObjectsAreTheSame(project1, project2);
 		verifySimpleThreatRatingsAreTheSame(project1, project2);
+		assertEquals(project1.getQuarantineFileContents(), project2.getQuarantineFileContents());
 	}
 
 	private static void verifyNormalObjectsAreTheSame(

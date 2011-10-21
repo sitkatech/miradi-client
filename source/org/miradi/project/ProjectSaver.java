@@ -116,7 +116,7 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 	{
 		String quarantineFileContents = getProject().getQuarantineFileContents();
 		quarantineFileContents = xmlNewLineEncode(quarantineFileContents);
-		write(quarantineFileContents);
+		writeTagValue(UPDATE_QUARANTINE_CODE, QUARANTINE_DATA_TAG, quarantineFileContents);
 	}
 
 	private void writeAllObjectTypes() throws Exception
