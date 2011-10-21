@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.database;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import org.martus.util.DirectoryLock;
@@ -30,7 +31,6 @@ import org.miradi.database.migrations.MigrationsOlderThanMiradiVersion2;
 import org.miradi.dialogs.base.ProgressDialog;
 import org.miradi.exceptions.UserCanceledException;
 import org.miradi.main.EAM;
-import org.miradi.project.ProjectMpzWriter;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.MiradiBackgroundWorkerThread;
 import org.miradi.utils.ProgressInterface;
@@ -69,7 +69,7 @@ public class DataUpgrader
 		int versionAfterUpgrading = -1;
 		try
 		{
-			ProjectMpzWriter.createProjectZipFile(projectDirectory, zipFile);
+			createProjectZipFile(projectDirectory, zipFile);
 			
 			initializeStaticDirectory(projectDirectory);
 			ProgressDialog progressDialog = new ProgressDialog(EAM.getMainWindow(), EAM.text("Migrating Project Data"));
@@ -510,6 +510,12 @@ public class DataUpgrader
 	public static File getTopDirectory()
 	{
 		return topDirectory;
+	}
+
+	private static void createProjectZipFile(File projectDirectory, File destinationZip) throws FileNotFoundException, Exception, IOException
+	{
+		// FIXME: This should just do a raw recursive zip of the directory
+		throw new RuntimeException("Writing MPZ files is not supported");
 	}
 
 	private static File topDirectory;
