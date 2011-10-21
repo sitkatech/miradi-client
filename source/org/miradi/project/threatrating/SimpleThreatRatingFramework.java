@@ -28,7 +28,6 @@ import java.util.Vector;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.miradi.database.ProjectServer;
 import org.miradi.diagram.ThreatTargetChainWalker;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
@@ -48,7 +47,6 @@ import org.miradi.objects.Target;
 import org.miradi.objects.ValueOption;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
-import org.miradi.utils.EnhancedJsonArray;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.Utility;
 
@@ -500,61 +498,6 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 		json.put(TAG_CRITERION_IDS, getCriterionIds().toJson());
 		return json;
 	}
-	
-	public static HashSet<ThreatRatingBundle> loadSimpleThreatRatingBundles(ProjectServer db) throws Exception
-	{
-		EnhancedJsonArray bundleKeys = db.readRawThreatRatingFramework().optJsonArray(TAG_BUNDLE_KEYS);
-		if(bundleKeys == null)
-			bundleKeys = new EnhancedJsonArray();
-		HashSet<ThreatRatingBundle> loadedBundles = new HashSet<ThreatRatingBundle>();
-		for(int i = 0; i < bundleKeys.length(); ++i)
-		{
-			JSONObject pair = bundleKeys.getJson(i);
-			BaseId threatId = new BaseId(pair.getInt(TAG_BUNDLE_THREAT_ID));
-			BaseId targetId = new BaseId(pair.getInt(TAG_BUNDLE_TARGET_ID));
-			ThreatRatingBundle bundle = db.readThreatRatingBundle(threatId, targetId);
-			loadedBundles.add(bundle);
-		}
-		return loadedBundles;
-	}
-
-//	private ValueOption[] findValueOptions(IdList ids)
-//	{
-//		ValueOption[] valueOptions = new ValueOption[ids.size()];
-//		for(int i = 0; i < valueOptions.length; ++i)
-//		{
-//			int type = ObjectType.VALUE_OPTION;
-//			valueOptions[i] = (ValueOption)getProject().findObject(type, ids.get(i));
-//		}
-//		
-//		return valueOptions;
-//	}
-	
-//	private RatingCriterion[] sortCriteria(RatingCriterion[] candidates)
-//	{
-//		if(candidates.length == 0)
-//			return candidates;
-//		
-//		RatingCriterion[] sorted = new RatingCriterion[candidates.length];
-//		sorted[0] = findCriterionByLabel(candidates, CRITERION_SCOPE);
-//		sorted[1] = findCriterionByLabel(candidates, CRITERION_SEVERITY);
-//		sorted[2] = findCriterionByLabel(candidates, CRITERION_IRREVERSIBILITY);
-//		return sorted;
-//	}
-//	
-//	private RatingCriterion[] findCriteria(IdList ids)
-//	{
-//		if(ids.contains(BaseId.INVALID))
-//			ids.removeId(BaseId.INVALID);
-//		RatingCriterion[] ratingCriteria = new RatingCriterion[ids.size()];
-//		for(int i = 0; i < ratingCriteria.length; ++i)
-//		{
-//			int type = ObjectType.RATING_CRITERION;
-//			ratingCriteria[i] = (RatingCriterion)getProject().findObject(type, ids.get(i));
-//		}
-//		
-//		return ratingCriteria;
-//	}
 	
 	private ThreatTargetChainWalker getThreatTargetChainObject()
 	{
