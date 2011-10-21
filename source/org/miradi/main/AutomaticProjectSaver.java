@@ -27,6 +27,7 @@ import org.martus.util.UnicodeStringWriter;
 import org.martus.util.UnicodeWriter;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectSaver;
+import org.miradi.utils.FileLocker;
 
 public class AutomaticProjectSaver implements CommandExecutedListener
 {
@@ -34,16 +35,19 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 	{
 		project = projectToTrack;
 		project.addCommandExecutedListener(this);
+		locker = new FileLocker();
 	}
 	
-	public void startSaving(File projectFileToUse)
+	public void startSaving(File projectFileToUse) throws Exception
 	{
+		locker.lock(projectFileToUse);
 		projectFile = projectFileToUse;
 	}
 	
-	public void stopSaving()
+	public void stopSaving() throws Exception
 	{
 		projectFile = null;
+		locker.close();
 	}
 	
 	public void commandExecuted(CommandExecutedEvent event)
@@ -98,4 +102,5 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 	
 	private File projectFile;
 	private Project project;
+	private FileLocker locker;
 }
