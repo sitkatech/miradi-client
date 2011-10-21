@@ -25,6 +25,8 @@ import java.awt.Rectangle;
 import java.awt.font.TextLayout;
 import java.awt.geom.Point2D;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Vector;
@@ -108,5 +110,17 @@ public class Utility
 		}
 		
 		return convertedValuesList;
+	}
+	
+	public static void copyFile(File copyFrom, File copyTo) throws Exception
+	{
+		FileInputStream inputStream = new FileInputStream(copyFrom);
+		FileOutputStream outputStream = new FileOutputStream(copyTo);
+		int chararcterToCopy;
+		// FIXME: Should use buffering for speed
+		while((chararcterToCopy = inputStream.read()) >= 0)
+			outputStream.write(chararcterToCopy);
+		inputStream.close();
+		outputStream.close();
 	}
 }
