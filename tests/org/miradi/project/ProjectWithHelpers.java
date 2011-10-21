@@ -71,11 +71,6 @@ public class ProjectWithHelpers extends Project implements CommandExecutedListen
 		return commandStack.remove(commandStack.size()-1);
 	}
 
-	public ProjectServerForTesting getTestDatabase()
-	{
-		return (ProjectServerForTesting)getDatabase();
-	}
-
 	public void loadDiagramModelForTesting() throws Exception
 	{
 		ConceptualModelDiagramPool diagramContentsPool = (ConceptualModelDiagramPool) getPool(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
