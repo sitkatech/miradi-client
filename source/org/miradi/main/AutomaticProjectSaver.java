@@ -56,7 +56,7 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 		
 		try
 		{
-			save();
+			safeSave(projectFile);
 		}
 		catch(Exception e)
 		{
@@ -64,14 +64,32 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 		}
 	}
 
-	private void save() throws IOException, Exception
+	private void safeSave(File currentFile) throws IOException, Exception
+	{
+		File oldFile = new File(currentFile.getAbsolutePath() + ".old");
+		File newFile = new File(currentFile.getAbsolutePath() + ".new");
+
+		newFile.delete();
+		save(newFile);
+
+		oldFile.delete();
+		currentFile.renameTo(oldFile);
+
+		newFile.renameTo(currentFile);
+		
+		// NOTE: recovery steps:
+		// 1. if valid new file exists, use it, else
+		// 2. if valid current file exists, use it, else
+		// 3. if valid old file exists, use it
+	}
+	
+	private void save(File file) throws Exception
 	{
 		long startedAt = System.currentTimeMillis();
 		UnicodeStringWriter stringWriter = UnicodeStringWriter.create();
 		ProjectSaver.saveProject(project, stringWriter);
 		
-		// TODO: Need safe writing here
-		UnicodeWriter fileWriter = new UnicodeWriter(projectFile);
+		UnicodeWriter fileWriter = new UnicodeWriter(file);
 		fileWriter.write(stringWriter.toString());
 		fileWriter.close();
 		long endedAt = System.currentTimeMillis();
