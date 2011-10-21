@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-21 15:05-0500\n"
+"POT-Creation-Date: 2011-10-21 17:08-0500\n"
 "PO-Revision-Date: 2011-04-29 11:26+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -559,7 +559,7 @@ msgstr ""
 "<HTML>Quando incolli tra progetti non si può fare da CM a RC o vice versa</"
 "HTML>"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:50
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:49
 msgid ""
 "<HTML>Your project is missing some data that is required for upload to "
 "ConPro.<br>Please correct the problems listed below then attempt to export "
@@ -5643,7 +5643,7 @@ msgid "PlanningSubViewName|Custom"
 msgstr "Personalizzato"
 
 #: Miradi/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:79
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:95
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:94
 msgid ""
 "Please choose a specific IUCN classification (Not a category). Fix needed "
 "for Strategy named:\n"
@@ -8764,7 +8764,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:90
 #: Miradi/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:54
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:73
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:72
 msgid "save..."
 msgstr ""
 

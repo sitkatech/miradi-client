@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-21 15:05-0500\n"
+"POT-Creation-Date: 2011-10-21 17:08-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -535,7 +535,7 @@ msgid ""
 "versa</HTML>"
 msgstr "<HTML>当在项目之间粘贴时，不能从CM粘贴到RC中，反之亦然</HTML> \t\t"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:50
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:49
 msgid ""
 "<HTML>Your project is missing some data that is required for upload to "
 "ConPro.<br>Please correct the problems listed below then attempt to export "
@@ -5342,7 +5342,7 @@ msgid "PlanningSubViewName|Custom"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:79
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:95
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:94
 msgid ""
 "Please choose a specific IUCN classification (Not a category). Fix needed "
 "for Strategy named:\n"
@@ -8334,7 +8334,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:90
 #: Miradi/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:54
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:73
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:72
 msgid "save..."
 msgstr ""
 
