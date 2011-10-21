@@ -491,11 +491,6 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		return project;
 	}
 	
-	public ProjectServer getDatabase()
-	{
-		return database;
-	}
-	
 	public WizardManager getWizardManager()
 	{
 		return wizardManager;
