@@ -23,6 +23,7 @@ package org.miradi.dialogs.viability;
 import org.miradi.dialogs.planning.AbstractPlanningTreeRowColumnProvider;
 import org.miradi.dialogs.viability.nodes.ViabilityMeasurementNode;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
@@ -47,6 +48,7 @@ public class TargetViabilityRowColumnProvider extends AbstractPlanningTreeRowCol
 				KeyEcologicalAttribute.OBJECT_NAME,
 				Indicator.OBJECT_NAME,
 				Measurement.OBJECT_NAME,
+				Goal.OBJECT_NAME,
 		});
 	}
 
