@@ -119,14 +119,6 @@ public class TestProjectServer extends TestCaseWithProject
 		assertNull("didn't return null for non-existent bundle?", storage.readThreatRatingBundle(new BaseId(282), new BaseId(2995)));
 	}
 	
-	public void testReadAndWriteThreatRatingFramework() throws Exception
-	{
-		ProjectServer db = getProject().getDatabase();
-		db.writeThreatRatingFramework(getProject().getSimpleThreatRatingFramework());
-		JSONObject got = db.readRawThreatRatingFramework();
-		assertEquals(got.toString(), getProject().getSimpleThreatRatingFramework().toJson().toString());
-	}
-	
 	public void testCreateInNonEmptyDirectory() throws Exception
 	{
 		File tempDirectory = createTempDirectory();
