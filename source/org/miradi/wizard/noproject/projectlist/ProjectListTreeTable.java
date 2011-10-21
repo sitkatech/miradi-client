@@ -43,6 +43,7 @@ import org.miradi.dialogs.treetables.TreeTableWithColumnWidthSaving;
 import org.miradi.dialogs.treetables.TreeTableWithRowHeightSaver;
 import org.miradi.dialogs.treetables.VariableHeightTreeCellRenderer;
 import org.miradi.icons.FolderIcon;
+import org.miradi.icons.IconManager;
 import org.miradi.icons.MiradiApplicationIcon;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
@@ -278,31 +279,52 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving impleme
 			projectRenderer.setClosedIcon(new MiradiApplicationIcon());
 			projectRenderer.setOpenIcon(new MiradiApplicationIcon());
 			projectRenderer.setLeafIcon(new MiradiApplicationIcon());
+
+			oldProjectRenderer = new ProjectListItemRenderer(treeTable);
+			oldProjectRenderer.setClosedIcon(IconManager.getDocumentIcon());
+			oldProjectRenderer.setOpenIcon(IconManager.getDocumentIcon());
+			oldProjectRenderer.setLeafIcon(IconManager.getDocumentIcon());
+
+			unusableRenderer = new ProjectListItemRenderer(treeTable);
+			unusableRenderer.setClosedIcon(IconManager.getCancelIcon());
+			unusableRenderer.setOpenIcon(IconManager.getCancelIcon());
+			unusableRenderer.setLeafIcon(IconManager.getCancelIcon());
 		}
 
 		@Override
 		public Component getTreeCellRendererComponent(JTree tree, Object value, boolean sel, boolean expanded, boolean leaf, int row, boolean hasFocusToUse)
 		{
-			VariableHeightTreeCellRenderer renderer = projectRenderer;
 			
 			FileSystemTreeNode node = (FileSystemTreeNode) value;
 			try
 			{
-				if(!node.isProjectDirectory())
-					renderer = folderRenderer;
+				VariableHeightTreeCellRenderer renderer = getRenderer(node);
+				JComponent configuredRenderer = (JComponent)renderer.getTreeCellRendererComponent(tree, value, sel, expanded, leaf, row, hasFocusToUse);
+				return configuredRenderer;
 			}
 			catch(Exception e)
 			{
 				EAM.logException(e);
+				return unusableRenderer;
 			}
+		}
+		
+		private VariableHeightTreeCellRenderer getRenderer(FileSystemTreeNode node) throws Exception
+		{
+			if(node.isProject())
+				return projectRenderer;
 			
-			JComponent configuredRenderer = (JComponent)renderer.getTreeCellRendererComponent(tree, value, sel, expanded, leaf, row, hasFocusToUse);
-			return configuredRenderer;
+			if(node.isProjectDirectory())
+				return oldProjectRenderer;
+			
+			return folderRenderer;
 		}
 		
 
 		private	VariableHeightTreeCellRenderer folderRenderer;
 		private VariableHeightTreeCellRenderer projectRenderer;
+		private	VariableHeightTreeCellRenderer oldProjectRenderer;
+		private	VariableHeightTreeCellRenderer unusableRenderer;
 	}
 
 	DefaultTableCellRendererWithPreferredHeightFactory dateRenderer;

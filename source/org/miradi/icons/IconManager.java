@@ -102,6 +102,7 @@ public class IconManager
 		addResourceImageIcon(COLLAPSE_ALL_ICON_FILE_NAME);
 		addResourceImageIcon(EXPAND_ALL_ICON_FILE_NAME);
 		addResourceImageIcon(NEEDS_ATTENTION_ICON_FILE_NAME);
+		addResourceImageIcon(DOCUMENT_ICON_FILE_NAME);
 	}
 	
 	private static void addIcon(Icon icon)
@@ -506,6 +507,11 @@ public class IconManager
 	{
 		return new SubTargetIcon();
 	}
+	
+	public static Icon getDocumentIcon()
+	{
+		return getIcon(DOCUMENT_ICON_FILE_NAME);
+	}
 
 	private static HashMap<String, Icon> iconMap;
 	private static final String EXPAND_ICON_FILE_NAME = "icons/expand.png";
@@ -515,4 +521,5 @@ public class IconManager
 	private static final String COLLAPSE_ALL_ICON_FILE_NAME = "icons/collapseAll.png";
 	private static final String EXPAND_ALL_ICON_FILE_NAME = "icons/expandAll.png";
 	private static final String NEEDS_ATTENTION_ICON_FILE_NAME = "icons/needsAttentionIcon.png";
+	private static final String DOCUMENT_ICON_FILE_NAME = "icons/document16.png";
 }

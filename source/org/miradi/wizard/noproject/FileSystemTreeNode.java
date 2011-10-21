@@ -151,6 +151,11 @@ abstract public class FileSystemTreeNode extends TreeTableNode
 		return file.getName().equals(EAM.EXTERNAL_RESOURCE_DIRECTORY_NAME);
 	}
 	
+	public boolean isProject() throws Exception
+	{
+		return (thisFile.getName().endsWith(".Miradi"));
+	}
+	
 	public boolean isProjectDirectory() throws Exception
 	{
 		return ProjectServer.isExistingLocalProject(thisFile);
