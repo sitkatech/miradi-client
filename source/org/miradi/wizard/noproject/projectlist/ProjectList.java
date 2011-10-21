@@ -77,7 +77,7 @@ public class ProjectList extends JPanel
 	{
 		File home = EAM.getHomeDirectory();
 		home.mkdirs();
-		return home.listFiles(new CreateProjectDialog.DirectoryFilter());
+		return home.listFiles(new CreateProjectDialog.ProjectFilter());
 
 	}
 	
