@@ -28,7 +28,6 @@ import javax.swing.JComponent;
 import org.miradi.dialogs.base.ObjectListManagementPanel;
 import org.miradi.dialogs.planning.AbstractPlanningTreeRowColumnProvider;
 import org.miradi.dialogs.planning.treenodes.PlanningTreeRootNode;
-import org.miradi.dialogs.planning.upperPanel.ExportablePlanningTreeTablePanel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
 import org.miradi.dialogs.planning.upperPanel.TargetViabilityTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.TreeTableModelWithRebuilder;
@@ -93,7 +92,11 @@ public class TargetViabilityManagementPanelNew extends ObjectListManagementPanel
 
 	private PlanningTreeTablePanel createPlanningTreeTablePanel(String uniqueTreeTableModelIdentifier, PlanningTreeRowColumnProvider rowColumnProvider) throws Exception
 	{
-		return ExportablePlanningTreeTablePanel.createPlanningTreeTablePanelWithoutButtons(getMainWindow(), rowColumnProvider, uniqueTreeTableModelIdentifier);
+		PlanningTreeRootNode rootNode = new PlanningTreeRootNode(getMainWindow().getProject());
+		TreeTableModelWithRebuilder model = new TargetViabilityTreeTableModel(getMainWindow().getProject(), rootNode, rowColumnProvider);
+		PlanningTreeTablePanel treeTablePanel = TargetViabilityTreeTablePanel.createTreeTablePanel(getMainWindow(), model, rowColumnProvider);
+		
+		return treeTablePanel;
 	}
 
 	@Override
