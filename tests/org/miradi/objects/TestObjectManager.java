@@ -223,7 +223,6 @@ public class TestObjectManager extends MiradiTestCase
 		assertEquals(type + " can't get data from project?", "data", manager.getObjectData(type, createdId, tag));
 		
 		manager.deleteObject(withData);
-		assertFalse(db.readObjectManifest(withData.getType()).has(withData.getId()));
 		try
 		{
 			manager.getObjectData(type, createdId, tag);

@@ -169,9 +169,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 		
 		Translation.initialize();
 		
-		getDatabase().setMemoryDataLocation("Memory");
-		getDatabase().createProject(testName);
-
 		finishOpeningAfterLoad(testName);
 	}
 	
