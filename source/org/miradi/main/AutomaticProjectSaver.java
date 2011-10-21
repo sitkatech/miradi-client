@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.main;
 
 import java.io.File;
+import java.io.IOException;
 
 import org.martus.util.UnicodeStringWriter;
 import org.martus.util.UnicodeWriter;
@@ -55,21 +56,26 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 		
 		try
 		{
-			long startedAt = System.currentTimeMillis();
-			UnicodeStringWriter stringWriter = UnicodeStringWriter.create();
-			ProjectSaver.saveProject(project, stringWriter);
-			
-			// TODO: Need safe writing here
-			UnicodeWriter fileWriter = new UnicodeWriter(projectFile);
-			fileWriter.write(stringWriter.toString());
-			fileWriter.close();
-			long endedAt = System.currentTimeMillis();
-			EAM.logDebug("Saved project: " + (endedAt - startedAt) + "ms");
+			save();
 		}
 		catch(Exception e)
 		{
 			throw new RuntimeException(e);
 		}
+	}
+
+	private void save() throws IOException, Exception
+	{
+		long startedAt = System.currentTimeMillis();
+		UnicodeStringWriter stringWriter = UnicodeStringWriter.create();
+		ProjectSaver.saveProject(project, stringWriter);
+		
+		// TODO: Need safe writing here
+		UnicodeWriter fileWriter = new UnicodeWriter(projectFile);
+		fileWriter.write(stringWriter.toString());
+		fileWriter.close();
+		long endedAt = System.currentTimeMillis();
+		EAM.logDebug("Saved project: " + (endedAt - startedAt) + "ms");
 	}
 	
 	private File projectFile;
