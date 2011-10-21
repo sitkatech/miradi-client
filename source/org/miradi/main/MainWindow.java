@@ -50,7 +50,6 @@ import org.martus.util.MultiCalendar;
 import org.martus.util.UnicodeReader;
 import org.martus.util.UnicodeStringReader;
 import org.miradi.actions.Actions;
-import org.miradi.database.ProjectServer;
 import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.dialogfields.AbstractWorkPlanStringMapEditorDoer;
@@ -114,13 +113,12 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 {
 	public static MainWindow create() throws Exception
 	{
-		ProjectServer projectServer = new ProjectServer();
-		return new MainWindow(projectServer);
+		return new MainWindow();
 	}
 	
-	public MainWindow(ProjectServer projectServerToUse) throws Exception
+	public MainWindow() throws Exception
 	{
-		this(new Project(projectServerToUse));
+		this(new Project());
 	}
 
 	public MainWindow(Project projectToUse) throws Exception
