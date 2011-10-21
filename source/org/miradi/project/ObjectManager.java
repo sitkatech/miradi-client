@@ -19,14 +19,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.project;
 
-import java.io.IOException;
-import java.text.ParseException;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Vector;
 
-import org.miradi.database.ObjectManifest;
-import org.miradi.database.ProjectServer;
 import org.miradi.diagram.ChainWalker;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdAssigner;
@@ -147,8 +142,6 @@ import org.miradi.objects.WcpaProjectData;
 import org.miradi.objects.WcsProjectData;
 import org.miradi.objects.WwfProjectData;
 import org.miradi.objects.Xenodata;
-import org.miradi.utils.EnhancedJsonObject;
-import org.miradi.utils.ProgressInterface;
 
 public class ObjectManager
 {
@@ -397,20 +390,6 @@ public class ObjectManager
 		return object.getData(fieldTag);
 	}
 
-	public void loadFromDatabase(ProgressInterface progressMeter) throws Exception
-	{
-		Map<Integer, String> manifests = getDatabase().readAllManifestFiles();
-		progressMeter.incrementProgress();
-		
-		//NOTE: Pools must be loaded in a specific sequence
-		int[] types = getAllObjectTypes();
-		for(int type : types)
-		{
-			loadPool(type, extractManifest(manifests, type));
-			progressMeter.incrementProgress();
-		}
-	}
-
 	public static int[] getAllObjectTypes()
 	{
 		//NOTE: Pools must be loaded in a specific sequence
@@ -473,38 +452,9 @@ public class ObjectManager
 		return types;
 	}
 
-	private ObjectManifest extractManifest(Map<Integer, String> manifests, int type) throws Exception
-	{
-		String manifestString = manifests.get(type);
-		if(manifestString == null)
-			return new ObjectManifest();
-		
-		return new ObjectManifest(new EnhancedJsonObject(manifestString));
-	}
-
-	private void loadPool(int type, ObjectManifest manifest) throws IOException, ParseException, Exception
-	{
-		BaseId[] ids = manifest.getAllKeys();
-		HashMap<Integer, BaseObject> map = getDatabase().readObjects(this, type, ids);
-		for(int id : map.keySet())
-		{
-			if(id == BaseId.INVALID.asInt())
-			{
-				EAM.logWarning("loadPool skipping invalid id in " + type);
-				continue;
-			}
-			getPool(type).put(map.get(id));
-		}
-	}
-
 	public Project getProject()
 	{
 		return project;
-	}
-
-	private ProjectServer getDatabase()
-	{
-		return getProject().getDatabase();
 	}
 
 	//TODO: there should be a better way to get to the project file name then having to expose it here
