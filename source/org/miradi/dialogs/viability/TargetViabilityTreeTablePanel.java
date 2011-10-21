@@ -33,6 +33,7 @@ import org.miradi.dialogs.planning.upperPanel.PlanningTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
 import org.miradi.dialogs.planning.upperPanel.PlanningUpperMultiTable;
 import org.miradi.dialogs.planning.upperPanel.PlanningViewMainTableModel;
+import org.miradi.dialogs.planning.upperPanel.ViabilityTreeTable;
 import org.miradi.dialogs.planning.upperPanel.ViabilityUpperMultiTable;
 import org.miradi.dialogs.planning.upperPanel.ViabilityViewMainTableModel;
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
@@ -51,7 +52,7 @@ public class TargetViabilityTreeTablePanel extends PlanningTreeTablePanel
 	
 	public static PlanningTreeTablePanel createTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTableModel model, PlanningTreeRowColumnProvider rowColumnProvider) throws Exception
 	{
-		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse, model);
+		ViabilityTreeTable treeTable = new ViabilityTreeTable(mainWindowToUse, model);
 
 		return new TargetViabilityTreeTablePanel(mainWindowToUse, treeTable, model, getButtonActions(), rowColumnProvider);
 	}
