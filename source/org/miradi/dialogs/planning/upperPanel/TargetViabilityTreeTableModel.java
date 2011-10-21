@@ -22,7 +22,7 @@ package org.miradi.dialogs.planning.upperPanel;
 
 import org.miradi.dialogs.planning.AbstractPlanningTreeRowColumnProvider;
 import org.miradi.dialogs.planning.upperPanel.rebuilder.AbstractTreeRebuilder;
-import org.miradi.dialogs.planning.upperPanel.rebuilder.TargetViabilityTreeRebuilder;
+import org.miradi.dialogs.planning.upperPanel.rebuilder.NormalTreeRebuilder;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.project.Project;
 
@@ -37,7 +37,7 @@ public class TargetViabilityTreeTableModel extends TreeTableModelWithRebuilder
 	@Override
 	protected AbstractTreeRebuilder createTreeRebuilder()
 	{
-		return new TargetViabilityTreeRebuilder(getProject(), getRowColumnProvider());
+		return new NormalTreeRebuilder(getProject(), getRowColumnProvider());
 	}
 
 	@Override
