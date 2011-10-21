@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-21 12:09-0500\n"
+"POT-Creation-Date: 2011-10-21 14:48-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -559,7 +559,7 @@ msgid ""
 msgstr ""
 "<div class='DataPanel'><p>为何我对每种类型因素的选择被限定为一种颜色族?</p> "
 
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:80
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:79
 msgid ""
 "<div class='WizardText'><p><table><tr><td><input type='submit' name='Back' "
 "value='&lt; Previous'></input></td><td><input type='submit' name='Import "
@@ -578,7 +578,7 @@ msgstr ""
 "value='&lt; Previous'></input></td><td><input type='submit' name='Next' "
 "value='Next &gt;'></input></td></tr> \t\t"
 
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:71
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:70
 msgid ""
 "<div class='WizardText'>Miradi is able to import two different kinds of "
 "project files.<BR>MPZ files are <a href='Definition:ImportZip' "
@@ -590,7 +590,7 @@ msgid ""
 "click <strong>import</strong>."
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/TreeBasedProjectList.java:65
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/TreeBasedProjectList.java:64
 msgid ""
 "<div class='WizardText'>To <strong>continue work</strong> on an existing "
 "project, or <strong>browse an example</strong>, choose a project below:"
@@ -869,7 +869,7 @@ msgid ""
 "select its replacement on the TNC Tab of the Summary Page.</html>"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:164
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:173
 msgid "<html>Import failed: <br><p> %s </p></html>"
 msgstr "<html>导入失败：<br><p> %s </p></html> \t\t"
 
@@ -998,10 +998,13 @@ msgstr ""
 "可能是安全的，除非早先的移动尝试失败。 \t\t"
 
 #: Miradi/source/org/miradi/project/Project.java:186
-msgid "A file or folder exist by the same name:"
+msgid "A file or folder with this name already exists:"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:86
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:46
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:79
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:56
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:93
 msgid "A project or file by this name already exists: "
 msgstr "使用该名称的项目或文件已存在: \t\t"
 
@@ -1606,10 +1609,6 @@ msgstr "去除资源 \t\t"
 msgid "Action|Maps"
 msgstr "地图 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionImportZippedProjectFile.java:34
-msgid "Action|Miradi Project Zip (MPZ) File"
-msgstr "Miradi项目Zip（MPZ）文件"
-
 #: Miradi/source/org/miradi/actions/views/ActionViewMonitoring.java:35
 msgid "Action|Monitoring Plan"
 msgstr "监控计划 \t\t"
@@ -2076,6 +2075,10 @@ msgstr "您是否确定要删除此指示物？"
 msgid "Are you sure you want to delete this Key Ecological Attribute?"
 msgstr "您是否确定要删除此关键生态学属性？"
 
+#: Miradi/source/org/miradi/views/noproject/DeleteProject.java:41
+msgid "Are you sure you want to delete this Miradi project?"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/diagram/DeleteSubTargetDoer.java:50
 msgid "Are you sure you want to delete this Nested Target?"
 msgstr "您是否确定要删除该嵌套对象？ \t\t"
@@ -2097,15 +2100,15 @@ msgstr "您是否确定要删除该进展报告? \t\t"
 msgid "Are you sure you want to delete this Stress?"
 msgstr "您是否确定要删除该压力？"
 
-#: Miradi/source/org/miradi/views/noproject/DeleteProject.java:61
+#: Miradi/source/org/miradi/views/noproject/DeleteOldProject.java:61
 msgid ""
 "Are you sure you want to delete this folder and its contents, including all "
 "subfolders?"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/noproject/DeleteProject.java:59
-msgid "Are you sure you want to delete this project? "
-msgstr "您是否确定要删除本项目： \t\t"
+#: Miradi/source/org/miradi/views/noproject/DeleteOldProject.java:59
+msgid "Are you sure you want to delete this old-format Miradi project? "
+msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:46
 msgid "Are you sure?"
@@ -2386,7 +2389,7 @@ msgstr "规则集"
 #: Miradi/source/org/miradi/database/DataUpgrader.java:64
 #: Miradi/source/org/miradi/views/diagram/doers/AbstractPasteDoer.java:83
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:52
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:225
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:228
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/DirectoryChooserDialog.java:76
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:127
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:166
@@ -2474,7 +2477,7 @@ msgstr "按钮|替换备份 \t\t"
 msgid "Button|Retain"
 msgstr "保留 \t\t"
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:114
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:115
 msgid "Button|Save"
 msgstr ""
 
@@ -2547,11 +2550,11 @@ msgid ""
 "exists in the folder."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:286
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:289
 msgid "Cannot overwrite an open project"
 msgstr "不能重写打开的项目 \t\t"
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:270
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:273
 msgid "Cannot save a project back to its existing name"
 msgstr ""
 
@@ -2887,7 +2890,7 @@ msgstr ""
 msgid "Current page was exported as RTF."
 msgstr "导出当前页面为RTF。"
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:89
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:90
 msgid "Current project name:"
 msgstr ""
 
@@ -3008,11 +3011,13 @@ msgstr "定义指示物 \t\t"
 msgid "Define project scope"
 msgstr "规定项目范围 \t\t"
 
-#: Miradi/source/org/miradi/views/noproject/DeleteProject.java:44
-#: Miradi/source/org/miradi/views/noproject/DeleteProject.java:45
+#: Miradi/source/org/miradi/views/noproject/DeleteProject.java:32
+#: Miradi/source/org/miradi/views/noproject/DeleteProject.java:33
+#: Miradi/source/org/miradi/views/noproject/DeleteOldProject.java:44
+#: Miradi/source/org/miradi/views/noproject/DeleteOldProject.java:45
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:61
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:68
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:75
 #: Miradi/source/org/miradi/main/EAM.java:489
 #: Miradi/source/org/miradi/main/EAM.java:490
 msgid "Delete"
@@ -3317,7 +3322,8 @@ msgstr ""
 msgid "Enter As: "
 msgstr ""
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:118
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:110
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:124
 msgid "Enter New Name"
 msgstr ""
 
@@ -3366,7 +3372,7 @@ msgstr "复制项目出错： \t\t"
 msgid "Error creating folder: "
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:63
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:70
 msgid "Error deleting project: "
 msgstr "删除项目出错： \t\t"
 
@@ -3377,10 +3383,6 @@ msgstr "撤销时出错 \t\t"
 #: Miradi/source/org/miradi/views/umbrella/UndoDoer.java:58
 msgid "Error during undo"
 msgstr "撤销时出错 \t\t"
-
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListExportAction.java:45
-msgid "Error exporting project: "
-msgstr "导出项目出错： \t\t"
 
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListMoveToDirectoryAction.java:73
 msgid "Error moving project: "
@@ -3419,7 +3421,7 @@ msgstr ""
 msgid "Error reading %s. Perhaps it is not a valid zip file."
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListRenameAction.java:62
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListRenameAction.java:63
 msgid "Error renaming project: "
 msgstr "项目重命名出错： \t\t"
 
@@ -3465,7 +3467,6 @@ msgid "Export to Miradi Zip..."
 msgstr "导出到Miradi压缩… \t\t"
 
 #: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:163
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListExportAction.java:81
 msgid "Export..."
 msgstr "导出… \t\t"
 
@@ -3516,7 +3517,7 @@ msgid ""
 "File could not be created, this can be due to bad characters in file name."
 msgstr "文件无法创建，这可能由文件名中的坏字符导致的。 \t\t"
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:293
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:296
 msgid "File exists: Cannot overwrite a non project folder"
 msgstr ""
 
@@ -3992,11 +3993,11 @@ msgstr "导入会计编码 \t\t"
 msgid "Import Completed"
 msgstr "导入完成 \t\t"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:141
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:152
 msgid "Import Completed.  Would you like to open %s?"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:57
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:58
 msgid "Import Project"
 msgstr "导入项目 \t\t"
 
@@ -4004,7 +4005,7 @@ msgstr "导入项目 \t\t"
 msgid "Import a Miradi Project Zipfile (.mpz)"
 msgstr "导入Miradi项目压缩文件（.mpz） \t\t"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:72
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:73
 msgid "Import was canceled!"
 msgstr ""
 
@@ -4016,9 +4017,8 @@ msgstr "导入... \t\t"
 msgid "ImportZip"
 msgstr "导入Zip"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:109
-#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:79
-#: Miradi/source/org/miradi/views/umbrella/ZippedProjectImporter.java:49
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:110
+#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:76
 #: Miradi/source/org/miradi/xml/xmpz/XmpzXmlImporter.java:105
 msgid "Importing..."
 msgstr ""
@@ -4176,7 +4176,8 @@ msgstr "引入的植被"
 msgid "Introduction"
 msgstr "绪论 \t\t"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:92
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:85
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:99
 msgid "Invalid project name:"
 msgstr "无效的项目名称： \t\t"
 
@@ -4245,7 +4246,8 @@ msgstr "景观文脉 "
 msgid "KEA Type|Size"
 msgstr "大小 "
 
-#: Miradi/source/org/miradi/views/noproject/DeleteProject.java:44
+#: Miradi/source/org/miradi/views/noproject/DeleteProject.java:32
+#: Miradi/source/org/miradi/views/noproject/DeleteOldProject.java:44
 msgid "Keep"
 msgstr "保留 \t\t"
 
@@ -4303,7 +4305,7 @@ msgstr ""
 msgid "Label|Currency"
 msgstr "货币 \t\t"
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:101
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:102
 msgid "Label|Existing Projects:"
 msgstr "退出项目： \t\t"
 
@@ -4786,11 +4788,11 @@ msgstr "中"
 msgid "Medium (Default)"
 msgstr "中等（默认）"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:240
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:239
 msgid "MenuBar|Actions"
 msgstr "动作 \t\t"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:170
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:169
 msgid "MenuBar|Edit"
 msgstr "编辑 \t\t"
 
@@ -4798,15 +4800,15 @@ msgstr "编辑 \t\t"
 msgid "MenuBar|File"
 msgstr "文件 \t\t"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:572
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:571
 msgid "MenuBar|Help"
 msgstr "帮助 \t\t"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:503
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:502
 msgid "MenuBar|Step-by-Step"
 msgstr "一步一步 \t\t"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:432
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:431
 msgid "MenuBar|View"
 msgstr "视图 \t\t"
 
@@ -4843,7 +4845,7 @@ msgid "Menu|Export Current Project as..."
 msgstr "导出当前项目为... "
 
 #: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:282
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:420
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:419
 msgid "Menu|Group Box"
 msgstr "组合框 \t\t"
 
@@ -4923,7 +4925,7 @@ msgid ""
 "If that does not work, contact Miradi support."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:98
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:99
 msgid "Miradi data directory:"
 msgstr ""
 
@@ -5044,7 +5046,7 @@ msgstr "嵌套对象"
 msgid "New Project Filename:"
 msgstr "新的项目文件名： \t\t"
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:92
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:93
 msgid "New project name: "
 msgstr ""
 
@@ -5218,7 +5220,7 @@ msgstr "打开 \t\t"
 msgid "Open Anyway"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:142
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:153
 #: Miradi/source/org/miradi/main/MainWindow.java:583
 msgid "Open Project"
 msgstr ""
@@ -5561,7 +5563,7 @@ msgstr "项目概要"
 msgid "Project does not exist: "
 msgstr "项目不存在： \t\t"
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:311
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:314
 msgid ""
 "Project filenames cannot contain punctuation other than dots, dashes, and "
 "spaces; and they cannot be longer than 32 characters. "
@@ -5662,11 +5664,12 @@ msgstr "相关策略和活动"
 msgid "Remove Team Member"
 msgstr "去除团队成员 \t\t"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:60
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:56
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:66
 msgid "Rename Failed"
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListRenameAction.java:67
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListRenameAction.java:68
 #: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:94
 msgid "Rename..."
 msgstr "重命名… \t\t"
@@ -5801,7 +5804,7 @@ msgid "Save %s"
 msgstr "保存 %s  \t\t"
 
 #: Miradi/source/org/miradi/views/noproject/CopyProject.java:42
-#: Miradi/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:44
+#: Miradi/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:45
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListSaveAsAction.java:47
 msgid "Save As..."
 msgstr ""
@@ -6803,10 +6806,6 @@ msgstr "如何在Miradi中保存文件 \t\t"
 msgid "TT|Import a .cpmz file that was exported from ConPro"
 msgstr "导入一个从ConPro导出的.cpmz文件 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionImportZippedProjectFile.java:40
-msgid "TT|Import a .mpz file that was exported from Miradi"
-msgstr "导入一个从Miradi导出的.mpz文件 \t\t"
-
 #: Miradi/source/org/miradi/actions/ActionImportAccountingCodes.java:40
 msgid "TT|Import accounting codes"
 msgstr "导入会计编码 \t\t"
@@ -7406,7 +7405,7 @@ msgid ""
 "the data in different formats."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:195
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:204
 msgid ""
 "This file cannot be imported because it is a newer format than this version "
 "of Miradi supports. <br>Please make sure you are running the latest version "
@@ -7427,7 +7426,7 @@ msgid ""
 "This model is not for a single assignment and has no assignment information"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:82
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:83
 msgid ""
 "This project cannot be imported by this version of Miradi because it \n"
 "is in a newer data format. Please upgrade to the latest version of Miradi."
@@ -7466,7 +7465,7 @@ msgstr ""
 "这将会用之前被剪切/复制的因素内容来替换所选定因素内容。您确定要做这一步？ \t"
 "\t"
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:299
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:302
 #: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:118
 msgid "This will replace the existing file."
 msgstr "这将会替换现有的文件。 \t\t"
@@ -7700,7 +7699,7 @@ msgstr ""
 msgid "Title|Other Orgs"
 msgstr "其它组织 \t\t"
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:298
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:301
 #: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:113
 msgid "Title|Overwrite existing file?"
 msgstr "重写存在的文件？ \t\t"
@@ -7822,7 +7821,7 @@ msgstr ""
 msgid "Total Monitoring Budget %1 %2"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/noproject/DeleteProject.java:37
+#: Miradi/source/org/miradi/views/noproject/DeleteOldProject.java:37
 msgid ""
 "Unable to delete this project because it is in use by another copy of this "
 "application:\n"
@@ -7839,11 +7838,11 @@ msgid "Unable to process file: verify file format"
 msgstr "无法处理文件：确认文件格式 \t\t"
 
 #: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:139
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:130
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:128
 msgid "Unable to process request: "
 msgstr "无法处理请求： \t\t"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:41
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:41
 msgid ""
 "Unable to rename this project because it is in use by another copy of this "
 "application:\n"
@@ -7889,7 +7888,7 @@ msgstr ""
 msgid "Unexpected call to setText"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:163
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:172
 msgid "Unexpected error"
 msgstr ""
 
@@ -28973,6 +28972,18 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid "Action|Miradi Project Zip (MPZ) File"
+#~ msgstr "Miradi项目Zip（MPZ）文件"
+
+#~ msgid "Are you sure you want to delete this project? "
+#~ msgstr "您是否确定要删除本项目： \t\t"
+
+#~ msgid "Error exporting project: "
+#~ msgstr "导出项目出错： \t\t"
+
+#~ msgid "TT|Import a .mpz file that was exported from Miradi"
+#~ msgstr "导入一个从Miradi导出的.mpz文件 \t\t"
 
 #~ msgid "Error Export To Miradi Zip: Possible Write Protected: "
 #~ msgstr "导出到Miradi Zip时出错：可能有写保护： \t\t"

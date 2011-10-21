@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-21 12:09-0500\n"
+"POT-Creation-Date: 2011-10-21 14:48-0500\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -616,7 +616,7 @@ msgstr ""
 "<div class='DataPanel'><p>Warum ist meine Auswahl auf eine Farbengruppe "
 "limitiert?</p>"
 
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:80
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:79
 msgid ""
 "<div class='WizardText'><p><table><tr><td><input type='submit' name='Back' "
 "value='&lt; Previous'></input></td><td><input type='submit' name='Import "
@@ -641,7 +641,7 @@ msgstr ""
 "value='Weiter &gt;'></input></td></tr>"
 
 # NUR FELIX!!!
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:71
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:70
 msgid ""
 "<div class='WizardText'>Miradi is able to import two different kinds of "
 "project files.<BR>MPZ files are <a href='Definition:ImportZip' "
@@ -662,7 +662,7 @@ msgstr ""
 "Datei aus dem Dialogfensters welches sich öffnen wird und bestätigen sie mit "
 "<strong>Importieren</strong>."
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/TreeBasedProjectList.java:65
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/TreeBasedProjectList.java:64
 msgid ""
 "<div class='WizardText'>To <strong>continue work</strong> on an existing "
 "project, or <strong>browse an example</strong>, choose a project below:"
@@ -1061,7 +1061,7 @@ msgid ""
 "select its replacement on the TNC Tab of the Summary Page.</html>"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:164
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:173
 msgid "<html>Import failed: <br><p> %s </p></html>"
 msgstr "<html>Importieren fehlgeschlagen: <br><p> %s </p></html>"
 
@@ -1197,10 +1197,13 @@ msgid ""
 msgstr "Eine "
 
 #: Miradi/source/org/miradi/project/Project.java:186
-msgid "A file or folder exist by the same name:"
-msgstr "Eine Datei oder ein Ordner mit diesem Namen exisiterit bereits:"
+msgid "A file or folder with this name already exists:"
+msgstr ""
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:86
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:46
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:79
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:56
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:93
 msgid "A project or file by this name already exists: "
 msgstr "Ein Projekt oder eine Projektdatei existiert schon unter diesem Namen:"
 
@@ -1815,10 +1818,6 @@ msgstr "Ressource entfernen"
 msgid "Action|Maps"
 msgstr "Karten"
 
-#: Miradi/source/org/miradi/actions/ActionImportZippedProjectFile.java:34
-msgid "Action|Miradi Project Zip (MPZ) File"
-msgstr "Miradi Projekt Zip (MPZ) Datei"
-
 #: Miradi/source/org/miradi/actions/views/ActionViewMonitoring.java:35
 msgid "Action|Monitoring Plan"
 msgstr "Monitoringplan"
@@ -2306,6 +2305,10 @@ msgstr "Diesen Indikator wirklich löschen?"
 msgid "Are you sure you want to delete this Key Ecological Attribute?"
 msgstr "Ökologisches Schlüsselattribut wirklich löschen?"
 
+#: Miradi/source/org/miradi/views/noproject/DeleteProject.java:41
+msgid "Are you sure you want to delete this Miradi project?"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/diagram/DeleteSubTargetDoer.java:50
 msgid "Are you sure you want to delete this Nested Target?"
 msgstr "Eingebettetes Schutzobjekt wirklich löschen?"
@@ -2329,16 +2332,15 @@ msgstr "Fortschrittsbericht wirklich löschen?"
 msgid "Are you sure you want to delete this Stress?"
 msgstr "Stress wirklich löschen?"
 
-#: Miradi/source/org/miradi/views/noproject/DeleteProject.java:61
+#: Miradi/source/org/miradi/views/noproject/DeleteOldProject.java:61
 msgid ""
 "Are you sure you want to delete this folder and its contents, including all "
 "subfolders?"
 msgstr "Diesen Ordner und alle darin enthaltenen Daten wirklich löschen?"
 
-# So oder lieber "Sind Sie sicher Sie wollen... das Projekt wirklich löschen?"
-#: Miradi/source/org/miradi/views/noproject/DeleteProject.java:59
-msgid "Are you sure you want to delete this project? "
-msgstr "Projekt wirklich löschen?"
+#: Miradi/source/org/miradi/views/noproject/DeleteOldProject.java:59
+msgid "Are you sure you want to delete this old-format Miradi project? "
+msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:46
 msgid "Are you sure?"
@@ -2621,7 +2623,7 @@ msgstr ""
 #: Miradi/source/org/miradi/database/DataUpgrader.java:64
 #: Miradi/source/org/miradi/views/diagram/doers/AbstractPasteDoer.java:83
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:52
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:225
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:228
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/DirectoryChooserDialog.java:76
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:127
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:166
@@ -2711,7 +2713,7 @@ msgstr ""
 msgid "Button|Retain"
 msgstr "Behalten"
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:114
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:115
 msgid "Button|Save"
 msgstr "Speichern"
 
@@ -2795,11 +2797,11 @@ msgstr ""
 "Projekt kann nicht in diesen Ordner verschoben werden, da dort bereits ein "
 "Projekt mit diesem Namen besteht. "
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:286
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:289
 msgid "Cannot overwrite an open project"
 msgstr "Ein offenes Projekt kann nicht überschrieben werden"
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:270
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:273
 #, fuzzy
 msgid "Cannot save a project back to its existing name"
 msgstr "Projekt kann nicht wieder auf bestehenden Namen gespeichert werden"
@@ -3154,7 +3156,7 @@ msgstr ""
 msgid "Current page was exported as RTF."
 msgstr "Aktuelle Seite wurde als RTF exportiert."
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:89
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:90
 msgid "Current project name:"
 msgstr "Aktueller Projekt Name:"
 
@@ -3281,11 +3283,13 @@ msgstr "Indikatoren definieren"
 msgid "Define project scope"
 msgstr "Planungsraum definieren"
 
-#: Miradi/source/org/miradi/views/noproject/DeleteProject.java:44
-#: Miradi/source/org/miradi/views/noproject/DeleteProject.java:45
+#: Miradi/source/org/miradi/views/noproject/DeleteProject.java:32
+#: Miradi/source/org/miradi/views/noproject/DeleteProject.java:33
+#: Miradi/source/org/miradi/views/noproject/DeleteOldProject.java:44
+#: Miradi/source/org/miradi/views/noproject/DeleteOldProject.java:45
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:61
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:68
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:75
 #: Miradi/source/org/miradi/main/EAM.java:489
 #: Miradi/source/org/miradi/main/EAM.java:490
 msgid "Delete"
@@ -3607,7 +3611,8 @@ msgstr "Ende:"
 msgid "Enter As: "
 msgstr "Eingeben als:"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:118
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:110
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:124
 msgid "Enter New Name"
 msgstr "Neuen Namen eingeben"
 
@@ -3658,7 +3663,7 @@ msgstr "Fehler - Projekt kopieren:"
 msgid "Error creating folder: "
 msgstr "Fehler - Ordner erstellen:"
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:63
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:70
 msgid "Error deleting project: "
 msgstr "Fehler - Projekt löschen:"
 
@@ -3669,10 +3674,6 @@ msgstr "Fehler während \"Wiederholen\""
 #: Miradi/source/org/miradi/views/umbrella/UndoDoer.java:58
 msgid "Error during undo"
 msgstr "Fehler während \"Rückgängig\""
-
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListExportAction.java:45
-msgid "Error exporting project: "
-msgstr "Fehler - Projekt exportieren:"
 
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListMoveToDirectoryAction.java:73
 msgid "Error moving project: "
@@ -3711,7 +3712,7 @@ msgstr "Fehler beim Öffnen des Projekts:"
 msgid "Error reading %s. Perhaps it is not a valid zip file."
 msgstr "Lesefehler %s. Eventuell ist die Datei keine zulässige Zip-Datei."
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListRenameAction.java:62
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListRenameAction.java:63
 msgid "Error renaming project: "
 msgstr "Fehler beim Umbenennen des Projekts:"
 
@@ -3758,7 +3759,6 @@ msgid "Export to Miradi Zip..."
 msgstr "Exportieren als Miradi Zip..."
 
 #: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:163
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListExportAction.java:81
 msgid "Export..."
 msgstr "Exportieren..."
 
@@ -3821,7 +3821,7 @@ msgstr ""
 
 # besser "Datei besteht bereits: " ???
 # -Felix
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:293
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:296
 #, fuzzy
 msgid "File exists: Cannot overwrite a non project folder"
 msgstr ""
@@ -4317,11 +4317,11 @@ msgstr ""
 msgid "Import Completed"
 msgstr "Importieren abgeschlossen"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:141
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:152
 msgid "Import Completed.  Would you like to open %s?"
 msgstr "Importieren abgeschlossen. Soll %s geöffnet werden?"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:57
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:58
 msgid "Import Project"
 msgstr "Projekt importieren"
 
@@ -4329,7 +4329,7 @@ msgstr "Projekt importieren"
 msgid "Import a Miradi Project Zipfile (.mpz)"
 msgstr "Eine Miradi Zip Datei importieren"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:72
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:73
 msgid "Import was canceled!"
 msgstr "Importieren wurde abgebrochen!"
 
@@ -4341,9 +4341,8 @@ msgstr "Importieren..."
 msgid "ImportZip"
 msgstr "ZipImportieren"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:109
-#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:79
-#: Miradi/source/org/miradi/views/umbrella/ZippedProjectImporter.java:49
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:110
+#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:76
 #: Miradi/source/org/miradi/xml/xmpz/XmpzXmlImporter.java:105
 msgid "Importing..."
 msgstr "Importiere..."
@@ -4508,7 +4507,8 @@ msgstr "Eingeschleppte Vegetation"
 msgid "Introduction"
 msgstr "Einführung"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:92
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:85
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:99
 msgid "Invalid project name:"
 msgstr "Ungültiger Projektname:"
 
@@ -4576,7 +4576,8 @@ msgid "KEA Type|Size"
 msgstr "Größe"
 
 # ??
-#: Miradi/source/org/miradi/views/noproject/DeleteProject.java:44
+#: Miradi/source/org/miradi/views/noproject/DeleteProject.java:32
+#: Miradi/source/org/miradi/views/noproject/DeleteOldProject.java:44
 msgid "Keep"
 msgstr "Behalten"
 
@@ -4634,7 +4635,7 @@ msgstr "Kommentare"
 msgid "Label|Currency"
 msgstr "Währung"
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:101
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:102
 msgid "Label|Existing Projects:"
 msgstr "Existierende Projekte:"
 
@@ -5127,11 +5128,11 @@ msgid "Medium (Default)"
 msgstr "Mittel (Standard)"
 
 # Aktionen oder Bearbeiten?
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:240
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:239
 msgid "MenuBar|Actions"
 msgstr "Aktionen"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:170
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:169
 msgid "MenuBar|Edit"
 msgstr "Bearbeiten"
 
@@ -5139,16 +5140,16 @@ msgstr "Bearbeiten"
 msgid "MenuBar|File"
 msgstr "Datei"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:572
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:571
 msgid "MenuBar|Help"
 msgstr "Hilfe"
 
 # mit den Trennstrichen oder ohne?
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:503
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:502
 msgid "MenuBar|Step-by-Step"
 msgstr "Schritt-für-Schritt"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:432
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:431
 msgid "MenuBar|View"
 msgstr "Ansicht"
 
@@ -5189,7 +5190,7 @@ msgid "Menu|Export Current Project as..."
 msgstr "Aktuelles Projekt exportieren als..."
 
 #: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:282
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:420
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:419
 msgid "Menu|Group Box"
 msgstr "Gruppenbox"
 
@@ -5268,7 +5269,7 @@ msgid ""
 "If that does not work, contact Miradi support."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:98
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:99
 msgid "Miradi data directory:"
 msgstr "Miradi Datenverzeichnis"
 
@@ -5399,7 +5400,7 @@ msgstr "EingebettetesSchutzobjekt"
 msgid "New Project Filename:"
 msgstr "Neuer Projektdateiname"
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:92
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:93
 msgid "New project name: "
 msgstr "Neuer Projektname:"
 
@@ -5580,7 +5581,7 @@ msgstr "Öffnen"
 msgid "Open Anyway"
 msgstr "Trotzdem Öffnen"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:142
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:153
 #: Miradi/source/org/miradi/main/MainWindow.java:583
 msgid "Open Project"
 msgstr "Projekt Öffnen"
@@ -5945,7 +5946,7 @@ msgstr "Projektzusammenfassung"
 msgid "Project does not exist: "
 msgstr "Projekt existiert nicht:"
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:311
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:314
 msgid ""
 "Project filenames cannot contain punctuation other than dots, dashes, and "
 "spaces; and they cannot be longer than 32 characters. "
@@ -6046,11 +6047,12 @@ msgstr "Relevante Strategien und Aktivitäten"
 msgid "Remove Team Member"
 msgstr "Teammitglied entfernen"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:60
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:56
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:66
 msgid "Rename Failed"
 msgstr "Umbenennen fehlgeschlagen"
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListRenameAction.java:67
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListRenameAction.java:68
 #: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:94
 msgid "Rename..."
 msgstr "Umbenennen..."
@@ -6191,7 +6193,7 @@ msgid "Save %s"
 msgstr "Speichere %s"
 
 #: Miradi/source/org/miradi/views/noproject/CopyProject.java:42
-#: Miradi/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:44
+#: Miradi/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:45
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListSaveAsAction.java:47
 msgid "Save As..."
 msgstr "Speichern als..."
@@ -7262,10 +7264,6 @@ msgstr "Wie man Dateien mit Miradi speichert"
 msgid "TT|Import a .cpmz file that was exported from ConPro"
 msgstr "Eine von ConPro exportierte .cpmz Datei importieren"
 
-#: Miradi/source/org/miradi/actions/ActionImportZippedProjectFile.java:40
-msgid "TT|Import a .mpz file that was exported from Miradi"
-msgstr "Eine von Miradi exportierte .mpz Datei importieren"
-
 #: Miradi/source/org/miradi/actions/ActionImportAccountingCodes.java:40
 msgid "TT|Import accounting codes"
 msgstr ""
@@ -7933,7 +7931,7 @@ msgstr ""
 "Zukünftige Versionen von Miradi werden die Daten in verschiedenen Formaten "
 "exportieren können."
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:195
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:204
 msgid ""
 "This file cannot be imported because it is a newer format than this version "
 "of Miradi supports. <br>Please make sure you are running the latest version "
@@ -7951,7 +7949,7 @@ msgid ""
 "This model is not for a single assignment and has no assignment information"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:82
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:83
 msgid ""
 "This project cannot be imported by this version of Miradi because it \n"
 "is in a newer data format. Please upgrade to the latest version of Miradi."
@@ -7992,7 +7990,7 @@ msgid ""
 "the factor that was cut/copied earlier. Are you sure you want to do this?"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:299
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:302
 #: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:118
 msgid "This will replace the existing file."
 msgstr "Dies ersetzt die bereits bestehende Datei. "
@@ -8229,7 +8227,7 @@ msgstr "Andere schützenswerten Arten"
 msgid "Title|Other Orgs"
 msgstr "Andere Organisationen"
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:298
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:301
 #: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:113
 msgid "Title|Overwrite existing file?"
 msgstr "Möchten Sie die bestehende Datei ersetzen?"
@@ -8355,7 +8353,7 @@ msgstr "Summe Budget für Finanzierung: %1 %2"
 msgid "Total Monitoring Budget %1 %2"
 msgstr "Summe Monitoringbudget %1 %2"
 
-#: Miradi/source/org/miradi/views/noproject/DeleteProject.java:37
+#: Miradi/source/org/miradi/views/noproject/DeleteOldProject.java:37
 msgid ""
 "Unable to delete this project because it is in use by another copy of this "
 "application:\n"
@@ -8372,11 +8370,11 @@ msgid "Unable to process file: verify file format"
 msgstr ""
 
 #: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:139
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:130
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:128
 msgid "Unable to process request: "
 msgstr ""
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:41
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:41
 #, fuzzy
 msgid ""
 "Unable to rename this project because it is in use by another copy of this "
@@ -8421,7 +8419,7 @@ msgstr ""
 msgid "Unexpected call to setText"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:163
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:172
 msgid "Unexpected error"
 msgstr ""
 
@@ -29911,6 +29909,22 @@ msgid ""
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
 "Marine___Western Tropical Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid "A file or folder exist by the same name:"
+#~ msgstr "Eine Datei oder ein Ordner mit diesem Namen exisiterit bereits:"
+
+#~ msgid "Action|Miradi Project Zip (MPZ) File"
+#~ msgstr "Miradi Projekt Zip (MPZ) Datei"
+
+# So oder lieber "Sind Sie sicher Sie wollen... das Projekt wirklich löschen?"
+#~ msgid "Are you sure you want to delete this project? "
+#~ msgstr "Projekt wirklich löschen?"
+
+#~ msgid "Error exporting project: "
+#~ msgstr "Fehler - Projekt exportieren:"
+
+#~ msgid "TT|Import a .mpz file that was exported from Miradi"
+#~ msgstr "Eine von Miradi exportierte .mpz Datei importieren"
 
 #~ msgid "Error Export To Miradi Zip: Possible Write Protected: "
 #~ msgstr ""
