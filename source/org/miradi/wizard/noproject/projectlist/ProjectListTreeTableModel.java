@@ -39,10 +39,9 @@ public class ProjectListTreeTableModel extends GenericTreeTableModel
 		return new ProjectListTreeTableModel(rootNode, nodeSorter);
 	}
 	
-	public static ProjectListTreeTableModel createProjectListTreeTableModel(ProjectServer database) throws Exception
+	public static ProjectListTreeTableModel createProjectListTreeTableModel(File dataDirectory) throws Exception
 	{
 		FileSystemProjectSorter nodeSorter = new FileSystemProjectSorter();
-		File dataDirectory = new File(database.getDataLocation());
 		FileSystemProjectOrDirectoryNode rootNode = new FileSystemProjectOrDirectoryNode(dataDirectory, nodeSorter);
 			
 		return new ProjectListTreeTableModel(rootNode, nodeSorter);
