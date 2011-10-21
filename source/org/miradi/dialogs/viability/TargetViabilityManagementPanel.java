@@ -47,12 +47,6 @@ abstract public class TargetViabilityManagementPanel extends ObjectListManagemen
 				new TargetViabilityMultiPropertiesPanel(mainWindow));
 	}
 	
-	protected TargetViabilityManagementPanel(MainWindow mainWindow, SplitterPositionSaverAndGetter splitPositionSaverToUse) throws Exception
-	{
-		this(mainWindow, TargetViabililtyTreePanel.createTargetViabilityPoolPanel(mainWindow),
-				new TargetViabilityMultiPropertiesPanel(mainWindow));
-	}
-	
 	protected TargetViabilityManagementPanel(MainWindow mainWindowToUse, ORef factorRef) throws Exception
 	{
 		this(mainWindowToUse, TargetViabililtyTreePanel.createFactorIndicatorPanel(mainWindowToUse, factorRef, mainWindowToUse.getProject()),
