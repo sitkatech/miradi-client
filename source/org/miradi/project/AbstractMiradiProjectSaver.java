@@ -114,6 +114,8 @@ abstract public class AbstractMiradiProjectSaver
 	public static final String UPDATE_OBJECT_CODE = "UO";
 	public static final String CREATE_SIMPLE_THREAT_RATING_BUNDLE_CODE = "CT";
 	public static final String UPDATE_SIMPLE_THREAT_RATING_BUNDLE_CODE = "UT";
+	public static final String UPDATE_QUARANTINE_CODE = "UQ";
+	public static final String QUARANTINE_DATA_TAG = "Data";
 
 	private UnicodeStringWriter writer;
 }

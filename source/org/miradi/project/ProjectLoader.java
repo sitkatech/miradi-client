@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.project;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.StringTokenizer;
 
@@ -57,39 +58,68 @@ public class ProjectLoader
 	private void load() throws Exception
 	{
 		project.clear();
+		
+		boolean foundEnd = false;
 		while(true)
 		{
 			String line = reader.readLine();
 			if(line == null)
 				break;
 			
-			if(line.length() == 0)
+			if (line.equals("--"))
+			{
+				foundEnd = true;
 				continue;
-			
+			}
+			else if(foundEnd)
+			{
+				throw new IOException("Project file is corrupted (data after end marker)");
+			}
 
+			
 			if (line.startsWith(ProjectSaver.UPDATE_PROJECT_VERSION_CODE))
 				loadProjectVersionLine(line);
 
-			if (line.startsWith(ProjectSaver.UPDATE_PROJECT_INFO_CODE))
+			else if (line.startsWith(ProjectSaver.UPDATE_PROJECT_INFO_CODE))
 				loadProjectInfoLine(line);
 			
-			if (line.startsWith(ProjectSaver.UPDATE_LAST_MODIFIED_TIME_CODE))
+			else if (line.startsWith(ProjectSaver.UPDATE_LAST_MODIFIED_TIME_CODE))
 				loadLastModified(line);
 			
-			if (line.startsWith(ProjectSaver.CREATE_OBJECT_CODE))
+			else if (line.startsWith(ProjectSaver.CREATE_OBJECT_CODE))
 				loadCreateObjectLine(line);
 			
-			if (line.startsWith(ProjectSaver.UPDATE_OBJECT_CODE))
+			else if (line.startsWith(ProjectSaver.UPDATE_OBJECT_CODE))
 				loadUpdateObjectline(line);
 			
-			if (line.startsWith(ProjectSaver.CREATE_SIMPLE_THREAT_RATING_BUNDLE_CODE))
+			else if (line.startsWith(ProjectSaver.CREATE_SIMPLE_THREAT_RATING_BUNDLE_CODE))
 				loadCreateSimpleThreatRatingLine(line);
 			
-			if (line.startsWith(ProjectSaver.UPDATE_SIMPLE_THREAT_RATING_BUNDLE_CODE))
+			else if (line.startsWith(ProjectSaver.UPDATE_SIMPLE_THREAT_RATING_BUNDLE_CODE))
 				loadUpdateSimpleThreatRatingLine(line);
+			
+			else if (line.startsWith(ProjectSaver.UPDATE_QUARANTINE_CODE))
+				loadQuarantine(line);
+			
+			else
+				throw new IOException("Unexpected action: " + line);
 		}
+		
+		if(!foundEnd)
+			throw new IOException("Project file is corrupted (no end marker found)");
 	}
 	
+	private void loadQuarantine(String line) throws Exception
+	{
+		String[] splitLine = line.split(ProjectSaver.TAB);
+		String[] tagValue = splitLine[1].split(ProjectSaver.EQUALS);
+		String tag = tagValue[0];
+		if(!tag.equals(ProjectSaver.QUARANTINE_DATA_TAG))
+			throw new Exception("Unknown Quarantine field: " + tag);
+		String value = tagValue[1];
+		getProject().appendToQuarantineFile(getXmlDecoded(value));
+	}
+
 	private void loadProjectVersionLine(String line)
 	{
 	}
@@ -163,14 +193,20 @@ public class ProjectLoader
 		if (hasData)
 		{
 			String value = tokenizer.nextToken(EQUALS_DELIMITER_NEWLINE_POSTFIXED);
-			value = value.replaceAll("<br/>", "\n");
-			value = value.replaceAll("&lt;", "<");
-			value = value.replaceAll("&gt;", ">");
-			value = value.replaceAll("&quot;", "\"");
-			value = value.replaceAll("&#39;", "'");
-			value = value.replaceAll("&amp;", "&");
+			value = getXmlDecoded(value);
 			getProject().setObjectData(ref, tag, value);
 		}
+	}
+
+	private String getXmlDecoded(String value)
+	{
+		value = value.replaceAll("<br/>", "\n");
+		value = value.replaceAll("&lt;", "<");
+		value = value.replaceAll("&gt;", ">");
+		value = value.replaceAll("&quot;", "\"");
+		value = value.replaceAll("&#39;", "'");
+		value = value.replaceAll("&amp;", "&");
+		return value;
 	}
 
 	public ORef extractRef(String refString)
