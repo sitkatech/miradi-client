@@ -23,7 +23,7 @@ import java.io.File;
 import java.io.IOException;
 
 import org.miradi.main.EAM;
-import org.miradi.views.noproject.RenameProjectDoer;
+import org.miradi.views.noproject.RenameOldProjectDoer;
 
 public class ProjectListCreateDirectoryAction extends ProjectListAction
 {
@@ -61,7 +61,7 @@ public class ProjectListCreateDirectoryAction extends ProjectListAction
 		if (!newDirToCreate.mkdirs())
 			throw new IOException();
 			
-		RenameProjectDoer.doIt(EAM.getMainWindow(), newDirToCreate);
+		RenameOldProjectDoer.doIt(EAM.getMainWindow(), newDirToCreate);
 	}
 
 	@Override

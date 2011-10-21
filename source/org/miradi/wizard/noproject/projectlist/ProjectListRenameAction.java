@@ -21,7 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.wizard.noproject.projectlist;
 
 import org.miradi.main.EAM;
-import org.miradi.views.noproject.RenameProjectDoer;
+import org.miradi.views.noproject.RenameOldProjectDoer;
 
 class ProjectListRenameAction extends ProjectListAction
 {
@@ -51,7 +51,7 @@ class ProjectListRenameAction extends ProjectListAction
 	protected void doWork() throws Exception
 	{
 		if(isOldProjectSelected() || isDirectorySelected())
-			RenameProjectDoer.doIt(EAM.getMainWindow(), getSelectedFile());
+			RenameOldProjectDoer.doIt(EAM.getMainWindow(), getSelectedFile());
 		else
 			EAM.notifyDialog("Renaming projects is not supported yet");
 	}

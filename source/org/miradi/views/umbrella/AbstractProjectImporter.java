@@ -41,7 +41,7 @@ import org.miradi.utils.EAMFileSaveChooser;
 import org.miradi.utils.MiradiBackgroundWorkerThread;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.views.noproject.NoProjectView;
-import org.miradi.views.noproject.RenameProjectDoer;
+import org.miradi.views.noproject.RenameOldProjectDoer;
 
 public abstract class AbstractProjectImporter
 {	
@@ -103,7 +103,7 @@ public abstract class AbstractProjectImporter
 
 	public void importProject(File fileToImport) throws Exception
 	{
-		String projectName = RenameProjectDoer.getValidatedUserProjectName(getMainWindow(), fileToImport);
+		String projectName = RenameOldProjectDoer.getValidatedUserProjectName(getMainWindow(), fileToImport);
 		if (projectName == null)
 			return;
 		
