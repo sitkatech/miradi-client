@@ -116,10 +116,7 @@ public class Utility
 	{
 		FileInputStream inputStream = new FileInputStream(copyFrom);
 		FileOutputStream outputStream = new FileOutputStream(copyTo);
-		int chararcterToCopy;
-		// FIXME: Should use buffering for speed
-		while((chararcterToCopy = inputStream.read()) >= 0)
-			outputStream.write(chararcterToCopy);
+		copy(inputStream, outputStream);
 		inputStream.close();
 		outputStream.close();
 	}
