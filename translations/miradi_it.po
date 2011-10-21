@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-21 11:19-0500\n"
+"POT-Creation-Date: 2011-10-21 12:09-0500\n"
 "PO-Revision-Date: 2011-04-29 11:26+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -83,7 +83,7 @@ msgstr ""
 msgid " 2) Connect threat to relevant targets"
 msgstr " 2) Collega la Pressione ai pertinenti Valori di Conservazione "
 
-#: Miradi/source/org/miradi/project/Project.java:186
+#: Miradi/source/org/miradi/project/Project.java:180
 msgid " A project by this name already exists: "
 msgstr "Esiste già un progetto con lo stesso nome:"
 
@@ -516,7 +516,7 @@ msgstr "7B. Condividi la Lezione Appresa"
 msgid "7C. Create a Learning Environment"
 msgstr "7C. Crea un Ambiente di Apprendimento"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1254
+#: Miradi/source/org/miradi/main/MainWindow.java:1223
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -559,7 +559,7 @@ msgstr ""
 "<HTML>Quando incolli tra progetti non si può fare da CM a RC o vice versa</"
 "HTML>"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:59
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:50
 msgid ""
 "<HTML>Your project is missing some data that is required for upload to "
 "ConPro.<br>Please correct the problems listed below then attempt to export "
@@ -1172,7 +1172,7 @@ msgstr ""
 "continuare It is probably safe to do this, a meno che un precedente "
 "tentativo di migrazione non sia riuscito."
 
-#: Miradi/source/org/miradi/project/Project.java:192
+#: Miradi/source/org/miradi/project/Project.java:186
 msgid "A file or folder exist by the same name:"
 msgstr "Esiste già un file o una cartella con lo stesso nome:"
 
@@ -1788,7 +1788,6 @@ msgstr "Rimuovi la Risorsa"
 msgid "Action|Maps"
 msgstr "Mappe"
 
-#: Miradi/source/org/miradi/actions/ActionExportZippedProjectFile.java:34
 #: Miradi/source/org/miradi/actions/ActionImportZippedProjectFile.java:34
 msgid "Action|Miradi Project Zip (MPZ) File"
 msgstr "File di progetto Miradi (MPZ)"
@@ -2740,7 +2739,7 @@ msgstr "Non posso creare un link di un oggetto a se stesso"
 msgid "Cancel"
 msgstr "Annulla"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:558
+#: Miradi/source/org/miradi/main/MainWindow.java:527
 msgid "Cancelled"
 msgstr ""
 
@@ -3039,7 +3038,7 @@ msgstr "non trovo tableColumn in map. tableColumn = "
 msgid "Country"
 msgstr "Paese"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:173
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:164
 msgid ""
 "Country - Located in Summary View, Location Tab. Select at least one Country"
 msgstr ""
@@ -3056,7 +3055,7 @@ msgstr "Fallita creazione:"
 msgid "Create Folder"
 msgstr "crea cartella"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:612
+#: Miradi/source/org/miradi/main/MainWindow.java:581
 msgid "Create Project"
 msgstr ""
 
@@ -3583,12 +3582,6 @@ msgstr "Errore"
 msgid "Error Creating: %s"
 msgstr "Errore nella creazione: %s"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:79
-msgid "Error Export To Miradi Zip: Possible Write Protected: "
-msgstr ""
-"Errore nell'esportazione dello Zip di Miradi: possibile protezione in "
-"scrittura:"
-
 #: Miradi/source/org/miradi/utils/MultiTableRowSortController.java:173
 msgid "Error Occurred During Sorting"
 msgstr "E' occorso un errore durante l'ordinamento"
@@ -3678,7 +3671,7 @@ msgstr "Stima i costi per le attività e il monitoraggio"
 msgid "Euro"
 msgstr "Euro"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:832
+#: Miradi/source/org/miradi/main/MainWindow.java:801
 msgid "Existing data for a different fiscal year is being excluded"
 msgstr "I dati esistenti per un anno fiscale differente sono esclusi"
 
@@ -3708,8 +3701,6 @@ msgid "Export to Miradi Zip..."
 msgstr "Esporta su Miradi Zip..."
 
 #: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:163
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:64
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:90
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListExportAction.java:81
 msgid "Export..."
 msgstr "Esporta..."
@@ -4722,7 +4713,7 @@ msgstr "Grande"
 msgid "Largest"
 msgstr "La più estesa"
 
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:104
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:102
 msgid "Last Modified"
 msgstr "L'ultimo modificato"
 
@@ -5073,11 +5064,11 @@ msgstr "Medio"
 msgid "Medium (Default)"
 msgstr "Medio(predefinito)"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:241
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:240
 msgid "MenuBar|Actions"
 msgstr "Azioni"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:171
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:170
 msgid "MenuBar|Edit"
 msgstr "Modifica"
 
@@ -5085,15 +5076,15 @@ msgstr "Modifica"
 msgid "MenuBar|File"
 msgstr "File"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:573
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:572
 msgid "MenuBar|Help"
 msgstr "Aiuto"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:504
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:503
 msgid "MenuBar|Step-by-Step"
 msgstr "Passo passo"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:433
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:432
 msgid "MenuBar|View"
 msgstr "Visualizza"
 
@@ -5121,7 +5112,7 @@ msgstr "5. Impara la lezione e condividi"
 msgid "Menu|Add Tag to %n Selected Item(s)"
 msgstr "Aggiungi Etichetta alla selezione"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:140
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:139
 msgid "Menu|Export Current Page as..."
 msgstr "Esporta la pagina corrente come..."
 
@@ -5130,11 +5121,11 @@ msgid "Menu|Export Current Project as..."
 msgstr "Esporta il progetto come...."
 
 #: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:282
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:421
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:420
 msgid "Menu|Group Box"
 msgstr "Blocco gruppo"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:153
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:152
 msgid "Menu|Import"
 msgstr "Importa"
 
@@ -5230,7 +5221,7 @@ msgstr "Miradi non riconosce il file %s come importabile"
 msgid "Miradi does not recognize %s as a project file"
 msgstr "Miradi non riconosce il file %s come file di progetto"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:677
+#: Miradi/source/org/miradi/main/MainWindow.java:646
 msgid ""
 "Miradi has detected one or more problems with this project which could cause "
 "errors or further damage in the future. \n"
@@ -5529,7 +5520,7 @@ msgid "Open Anyway"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:142
-#: Miradi/source/org/miradi/main/MainWindow.java:614
+#: Miradi/source/org/miradi/main/MainWindow.java:583
 msgid "Open Project"
 msgstr "Apri progetto"
 
@@ -5650,7 +5641,7 @@ msgid "PlanningSubViewName|Custom"
 msgstr "Personalizzato"
 
 #: Miradi/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:79
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:104
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:95
 msgid ""
 "Please choose a specific IUCN classification (Not a category). Fix needed "
 "for Strategy named:\n"
@@ -5811,7 +5802,7 @@ msgstr "Resoconti di Avanzamento(Progress)"
 
 #: Miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:96
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:240
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:104
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:102
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:68
 msgid "Project"
 msgstr "Progetto"
@@ -5820,7 +5811,7 @@ msgstr "Progetto"
 msgid "Project Advisor"
 msgstr "Consulente di progetto"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:675
+#: Miradi/source/org/miradi/main/MainWindow.java:644
 msgid "Project Corruption Detected"
 msgstr ""
 
@@ -5832,7 +5823,7 @@ msgstr "Descrizione del Progetto:"
 msgid "Project Migration Required"
 msgstr "E' richiesta la migrazione del Progetto"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:162
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:153
 msgid "Project Name - Located in Summary View, Project Tab, Project Name field"
 msgstr ""
 
@@ -5853,7 +5844,7 @@ msgstr "Risorsa del progetto"
 msgid "Project Resource Filter Editor"
 msgstr "Editor del filtro della risorsa del progetto"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:830
+#: Miradi/source/org/miradi/main/MainWindow.java:799
 msgid "Project Resource Filter Is On"
 msgstr "Il filtro delle risorse di progetto è attivo"
 
@@ -6124,7 +6115,7 @@ msgid "Save %s"
 msgstr "Salva %s"
 
 #: Miradi/source/org/miradi/views/noproject/CopyProject.java:42
-#: Miradi/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:48
+#: Miradi/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:44
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListSaveAsAction.java:47
 msgid "Save As..."
 msgstr "Salva come..."
@@ -6453,7 +6444,7 @@ msgstr "Portatore di interesse"
 msgid "Standard Reports"
 msgstr "Report Standard"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:864
+#: Miradi/source/org/miradi/main/MainWindow.java:833
 msgid ""
 "Start date (currently %startDate) must be earlier than end date (currently %"
 "endDate)"
@@ -6653,7 +6644,7 @@ msgstr "Per l'intero sistema"
 msgid "TNC"
 msgstr "TNC"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:176
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:167
 msgid ""
 "TNC Operating Unit - At least one TNC Operating Unit must be selected, "
 "<br>located in Summary View, TNC tab. Organizations other than TNC should "
@@ -7139,10 +7130,6 @@ msgstr "Esporta il progetto come file XML"
 #: Miradi/source/org/miradi/actions/ActionExportBudgetTableTree.java:40
 msgid "TT|Export finance tree"
 msgstr "Esporta l'impianto finanziario"
-
-#: Miradi/source/org/miradi/actions/ActionExportZippedProjectFile.java:40
-msgid "TT|Export project as a Miradi Project Zip (MPZ) file"
-msgstr "Esporta il progetto come file Zip di Progetto Miradi(MPZ)"
 
 #: Miradi/source/org/miradi/actions/ActionExportTable.java:40
 msgid "TT|Export this view's table to a tab delimited file"
@@ -7645,13 +7632,13 @@ msgstr "Team"
 msgid "Team Contact"
 msgstr "Contatto del Team"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:165
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:156
 msgid ""
 "Team Contact - At least one project Team Member must be specified as Team "
 "Contact, <br>located in Summary View, Team Tab, Roles field"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:169
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:160
 msgid ""
 "Team Contact Email - The Team Contact must have an email address, "
 "<br>located in Summary View, Team Tab, ensure Team Contact has email "
@@ -7690,21 +7677,21 @@ msgstr "Il pacchetto lingue esiste. Sostituirlo?"
 msgid "That language pack is already installed"
 msgstr "Il pacchetto lingua è già istallato"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:582
+#: Miradi/source/org/miradi/main/MainWindow.java:551
 msgid ""
 "That project cannot be opened because it was created by a newer version of "
 "this application"
 msgstr ""
 "Il progetto non può essere aperto perchè creato con una versione più nuova"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:586
+#: Miradi/source/org/miradi/main/MainWindow.java:555
 msgid ""
 "That project cannot be opened until it is migrated to the current data format"
 msgstr ""
 "Il progetto no può essere aperto se non viene migrato al formato dei dati "
 "attuale"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:578
+#: Miradi/source/org/miradi/main/MainWindow.java:547
 msgid "That project is in use by another copy of this application"
 msgstr "Il progetto è in uso da un'altra copia dell'applicazione"
 
@@ -7730,13 +7717,6 @@ msgstr ""
 "membri del CMP lavorano insieme per sviluppare standard comuni e  strumenti "
 "come Miradi. Ulteriori informazioni sono disponibili presso www."
 "ConservationMeasures.org"
-
-#: Miradi/source/org/miradi/views/umbrella/ExportMpzFileDoer.java:57
-msgid ""
-"The MPZ file cannot be saved to a folder within the project being exported"
-msgstr ""
-"Il file MPZ non può essere salvato in una cartella all'interno del progetto "
-"da esportare"
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:71
 msgid ""
@@ -7853,7 +7833,7 @@ msgstr ""
 "Questo progetto non può essere importato in questa versione di Miradi \n"
 "perchè è in un formato più nuovo. Aggiorna Miradi all'ultima versione."
 
-#: Miradi/source/org/miradi/main/MainWindow.java:666
+#: Miradi/source/org/miradi/main/MainWindow.java:635
 msgid ""
 "This project has been optimized to remove data that is no longer needed.\n"
 msgstr ""
@@ -8256,7 +8236,7 @@ msgid ""
 "application:\n"
 msgstr "Impossibile cancellare questo progetto perchè è in uso:\n"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1238
+#: Miradi/source/org/miradi/main/MainWindow.java:1207
 msgid "Unable to launch external web browser"
 msgstr "Impossibile lanciare il browser web esterno"
 
@@ -8275,7 +8255,7 @@ msgid ""
 "application:\n"
 msgstr "Impossibile rinominare questo progetto perchè è in uso: \n"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1021
+#: Miradi/source/org/miradi/main/MainWindow.java:990
 msgid "Unable to save preferences"
 msgstr "Impossibile salvare le preferenze"
 
@@ -8341,7 +8321,7 @@ msgstr "Università"
 msgid "Unknown"
 msgstr "Sconosciuto"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:573
+#: Miradi/source/org/miradi/main/MainWindow.java:542
 msgid ""
 "Unknown Command\n"
 "You are probably trying to load an old project that contains obsolete "
@@ -8359,7 +8339,7 @@ msgstr "Codice sconosciuto:"
 msgid "Unknown error displaying diagram"
 msgstr "Errore sconosciuto nel mostrare il Diagramma"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:591
+#: Miradi/source/org/miradi/main/MainWindow.java:560
 msgid "Unknown error prevented opening that project"
 msgstr "Un errore sconosciuto ha impedito l'apertura del progetto"
 
@@ -8751,7 +8731,7 @@ msgstr "[NON SPECIFICATO]"
 msgid "[New Results Chain]"
 msgstr "[Nuova catena dei risultati]"
 
-#: Miradi/source/org/miradi/project/Project.java:968
+#: Miradi/source/org/miradi/project/Project.java:957
 msgid "[No Project]"
 msgstr "[Nessun Progetto]"
 
@@ -8785,7 +8765,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:90
 #: Miradi/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:54
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:82
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:73
 msgid "save..."
 msgstr ""
 
@@ -30311,6 +30291,20 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
+
+#~ msgid "Error Export To Miradi Zip: Possible Write Protected: "
+#~ msgstr ""
+#~ "Errore nell'esportazione dello Zip di Miradi: possibile protezione in "
+#~ "scrittura:"
+
+#~ msgid "TT|Export project as a Miradi Project Zip (MPZ) file"
+#~ msgstr "Esporta il progetto come file Zip di Progetto Miradi(MPZ)"
+
+#~ msgid ""
+#~ "The MPZ file cannot be saved to a folder within the project being exported"
+#~ msgstr ""
+#~ "Il file MPZ non può essere salvato in una cartella all'interno del "
+#~ "progetto da esportare"
 
 #~ msgid ""
 #~ "Unable to copy this project because it is in use by another copy of this "
