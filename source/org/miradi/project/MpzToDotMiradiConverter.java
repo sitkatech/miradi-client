@@ -112,6 +112,9 @@ public class MpzToDotMiradiConverter extends AbstractMiradiProjectSaver
 	
 	private void convert() throws Exception
 	{
+		EAM.logWarning("MPZ converter is not yet handling quarantine or exceptions");
+		
+		getWriter().writeBOM();
 		Enumeration<? extends ZipEntry> zipEntries = getZipFile().entries();
 		while(zipEntries.hasMoreElements())
 		{
@@ -122,6 +125,7 @@ public class MpzToDotMiradiConverter extends AbstractMiradiProjectSaver
 			if (!entry.isDirectory())
 				extractOneFile(entry);
 		}
+		getWriter().write(ProjectSaver.STOP_MARKER);
 		getWriter().flush();
 		if(convertedProjectVersion != REQUIRED_VERSION)
 			throw new RuntimeException("Cannot convert MPZ without a version");
@@ -153,7 +157,8 @@ public class MpzToDotMiradiConverter extends AbstractMiradiProjectSaver
 		}
 		if (relativeFilePath.equals(ProjectServer.LAST_MODIFIED_FILE_NAME))
 		{
-			writeTagValue(ProjectSaver.UPDATE_LAST_MODIFIED_TIME_CODE, ProjectSaver.LAST_MODIFIED_TAG, fileContent);
+			String trimmed = fileContent.trim();
+			writeTagValue(ProjectSaver.UPDATE_LAST_MODIFIED_TIME_CODE, ProjectSaver.LAST_MODIFIED_TAG, trimmed);
 		}
 		if (relativeFilePath.startsWith("json/objects") && !relativeFilePath.endsWith("manifest"))
 		{

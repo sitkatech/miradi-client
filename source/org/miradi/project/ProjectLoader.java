@@ -27,6 +27,7 @@ import java.util.StringTokenizer;
 
 import org.martus.util.UnicodeReader;
 import org.martus.util.UnicodeStringReader;
+import org.martus.util.UnicodeWriter;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.objecthelpers.ORef;
@@ -60,6 +61,12 @@ public class ProjectLoader
 		project.clear();
 		
 		boolean foundEnd = false;
+		String firstLine = reader.readLine();
+		if(firstLine.charAt(0) != UnicodeWriter.BOM_UTF8)
+			throw new IOException("Invalid project file (missing BOM)");
+		firstLine = firstLine.substring(1);
+		processLine(firstLine);
+		
 		while(true)
 		{
 			String line = reader.readLine();
@@ -76,48 +83,81 @@ public class ProjectLoader
 				throw new IOException("Project file is corrupted (data after end marker)");
 			}
 
-			
-			if (line.startsWith(ProjectSaver.UPDATE_PROJECT_VERSION_CODE))
-				loadProjectVersionLine(line);
-
-			else if (line.startsWith(ProjectSaver.UPDATE_PROJECT_INFO_CODE))
-				loadProjectInfoLine(line);
-			
-			else if (line.startsWith(ProjectSaver.UPDATE_LAST_MODIFIED_TIME_CODE))
-				loadLastModified(line);
-			
-			else if (line.startsWith(ProjectSaver.CREATE_OBJECT_CODE))
-				loadCreateObjectLine(line);
-			
-			else if (line.startsWith(ProjectSaver.UPDATE_OBJECT_CODE))
-				loadUpdateObjectline(line);
-			
-			else if (line.startsWith(ProjectSaver.CREATE_SIMPLE_THREAT_RATING_BUNDLE_CODE))
-				loadCreateSimpleThreatRatingLine(line);
-			
-			else if (line.startsWith(ProjectSaver.UPDATE_SIMPLE_THREAT_RATING_BUNDLE_CODE))
-				loadUpdateSimpleThreatRatingLine(line);
-			
-			else if (line.startsWith(ProjectSaver.UPDATE_QUARANTINE_CODE))
-				loadQuarantine(line);
-			
-			else
-				throw new IOException("Unexpected action: " + line);
+			processLine(line);
 		}
 		
 		if(!foundEnd)
 			throw new IOException("Project file is corrupted (no end marker found)");
 	}
+
+	private void processLine(String line) throws Exception
+	{
+		if (line.startsWith(ProjectSaver.UPDATE_PROJECT_VERSION_CODE))
+			loadProjectVersionLine(line);
+
+		else if (line.startsWith(ProjectSaver.UPDATE_PROJECT_INFO_CODE))
+			loadProjectInfoLine(line);
+		
+		else if (line.startsWith(ProjectSaver.UPDATE_LAST_MODIFIED_TIME_CODE))
+			loadLastModified(line);
+		
+		else if (line.startsWith(ProjectSaver.CREATE_OBJECT_CODE))
+			loadCreateObjectLine(line);
+		
+		else if (line.startsWith(ProjectSaver.UPDATE_OBJECT_CODE))
+			loadUpdateObjectline(line);
+		
+		else if (line.startsWith(ProjectSaver.CREATE_SIMPLE_THREAT_RATING_BUNDLE_CODE))
+			loadCreateSimpleThreatRatingLine(line);
+		
+		else if (line.startsWith(ProjectSaver.UPDATE_SIMPLE_THREAT_RATING_BUNDLE_CODE))
+			loadUpdateSimpleThreatRatingLine(line);
+		
+		else if (line.startsWith(ProjectSaver.UPDATE_QUARANTINE_CODE))
+			loadQuarantine(line);
+		
+		else if(line.startsWith(ProjectSaver.UPDATE_EXCEPTIONS_CODE))
+			loadExceptions(line);
+		
+		else
+			throw new IOException("Unexpected action: " + line);
+	}
+	
+	private void loadExceptions(String line) throws Exception
+	{
+		String[] tagValue = parseTagValueLine(line);
+		String tag = tagValue[0];
+		String value = tagValue[1];
+		if(!tag.equals(ProjectSaver.EXCEPTIONS_DATA_TAG))
+			throw new Exception("Unknown Exceptions field: " + tag);
+
+		value = getXmlDecoded(value);
+		getProject().appendToExceptionLog(getXmlDecoded(value));
+	}
 	
 	private void loadQuarantine(String line) throws Exception
 	{
-		String[] splitLine = line.split(ProjectSaver.TAB);
-		String[] tagValue = splitLine[1].split(ProjectSaver.EQUALS);
+		String[] tagValue = parseTagValueLine(line);
 		String tag = tagValue[0];
+		String value = tagValue[1];
 		if(!tag.equals(ProjectSaver.QUARANTINE_DATA_TAG))
 			throw new Exception("Unknown Quarantine field: " + tag);
-		String value = tagValue[1];
+
+		value = getXmlDecoded(value);
 		getProject().appendToQuarantineFile(getXmlDecoded(value));
+	}
+
+	private String[] parseTagValueLine(String line) throws Exception
+	{
+		StringTokenizer tokenizer = new StringTokenizer(line);
+		/*String command =*/ tokenizer.nextToken();
+		String tag = tokenizer.nextToken(EQUALS_DELIMITER_TAB_PREFIXED);
+		String value = "";
+		final boolean hasData = tokenizer.hasMoreTokens();
+		if (hasData)
+			value = tokenizer.nextToken(EQUALS_DELIMITER_NEWLINE_POSTFIXED);
+		
+		return new String[] {tag, value};
 	}
 
 	private void loadProjectVersionLine(String line)
