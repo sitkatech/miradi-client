@@ -22,7 +22,6 @@ package org.miradi.database;
 import java.io.File;
 import java.io.IOException;
 
-import org.json.JSONObject;
 import org.martus.util.DirectoryUtils;
 import org.martus.util.UnicodeWriter;
 import org.miradi.ids.BaseId;
