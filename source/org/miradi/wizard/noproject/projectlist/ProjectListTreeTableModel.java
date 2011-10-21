@@ -34,7 +34,7 @@ public class ProjectListTreeTableModel extends GenericTreeTableModel
 	public static ProjectListTreeTableModel createDirectoryListTreeTableModel(ProjectServer databaseToUse, File homeDirectory) throws Exception
 	{
 		FileSystemProjectSorter nodeSorter = new FileSystemProjectSorter();
-		FileSystemDirectoryNode rootNode = new FileSystemDirectoryNode(databaseToUse, homeDirectory, nodeSorter);
+		FileSystemDirectoryNode rootNode = new FileSystemDirectoryNode(homeDirectory, nodeSorter);
 			
 		return new ProjectListTreeTableModel(rootNode, nodeSorter);
 	}
@@ -43,7 +43,7 @@ public class ProjectListTreeTableModel extends GenericTreeTableModel
 	{
 		FileSystemProjectSorter nodeSorter = new FileSystemProjectSorter();
 		File dataDirectory = new File(database.getDataLocation());
-		FileSystemProjectOrDirectoryNode rootNode = new FileSystemProjectOrDirectoryNode(database, dataDirectory, nodeSorter);
+		FileSystemProjectOrDirectoryNode rootNode = new FileSystemProjectOrDirectoryNode(dataDirectory, nodeSorter);
 			
 		return new ProjectListTreeTableModel(rootNode, nodeSorter);
 	}

@@ -27,15 +27,15 @@ import org.miradi.objecthelpers.FileSystemProjectSorter;
 
 public class FileSystemProjectOrDirectoryNode extends FileSystemTreeNode
 {
-	public FileSystemProjectOrDirectoryNode(ProjectServer databaseToUse, File file, 	FileSystemProjectSorter sorterToUse) throws Exception
+	public FileSystemProjectOrDirectoryNode(File file, FileSystemProjectSorter sorterToUse) throws Exception
 	{
-		super(databaseToUse, file, sorterToUse);
+		super(file, sorterToUse);
 	}
 
 	@Override
-	protected FileSystemTreeNode createNode(ProjectServer databaseToUse, File file, FileSystemProjectSorter sorterToUse) throws Exception
+	protected FileSystemTreeNode createNode(File file, FileSystemProjectSorter sorterToUse) throws Exception
 	{
-		return new FileSystemProjectOrDirectoryNode(databaseToUse, file, sorterToUse);
+		return new FileSystemProjectOrDirectoryNode(file, sorterToUse);
 	}
 	
 	@Override
