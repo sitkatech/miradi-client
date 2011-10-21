@@ -31,7 +31,6 @@ import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
-import org.miradi.project.ProjectMpzWriter;
 import org.miradi.utils.CpmzFileChooser;
 import org.miradi.utils.MpzFileFilterForChooserDialog;
 import org.miradi.utils.ProgressInterface;
@@ -118,7 +117,8 @@ public class ExportCpmzDoer extends XmlExporterDoer
 		ZipOutputStream out = new ZipOutputStream(byteOut);
 		try
 		{
-			ProjectMpzWriter.writeProjectZip(out, getProject());
+			EAM.notifyDialog("CPMZ export not supported yet");
+//			ProjectMpzWriter.writeProjectZip(out, getProject());
 		}
 		finally
 		{
