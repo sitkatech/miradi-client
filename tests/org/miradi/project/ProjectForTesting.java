@@ -25,7 +25,6 @@ import java.awt.Point;
 import org.martus.util.MultiCalendar;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.database.ProjectServer;
 import org.miradi.diagram.PersistentDiagramModel;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
@@ -149,26 +148,21 @@ public class ProjectForTesting extends ProjectWithHelpers
 {
 	public static ProjectForTesting createProjectWithoutDefaultObjects(String testName) throws Exception
 	{
-		ProjectForTesting projectForTesting = new ProjectForTesting(testName, new ProjectServerForTesting());
+		ProjectForTesting projectForTesting = new ProjectForTesting(testName);
 		
 		return projectForTesting;
 	}
 	
 	public static ProjectForTesting createProjectWithDefaultObjects(String testName) throws Exception
 	{
-		return new ProjectForTesting(testName);
+		ProjectForTesting projectForTesting = createProjectWithoutDefaultObjects(testName);
+		projectForTesting.createMissingDefaultObjects();
+		projectForTesting.applyDefaultBehavior();
+		projectForTesting.loadDiagramModelForTesting();
+		return projectForTesting;
 	}
 
 	private ProjectForTesting(String testName) throws Exception
-	{
-		this(testName, new ProjectServerForTesting());
-
-		createMissingDefaultObjects();
-		applyDefaultBehavior();
-		loadDiagramModelForTesting();
-	}
-	
-	private ProjectForTesting(String testName, ProjectServer server) throws Exception
 	{
 		Translation.initialize();
 		
