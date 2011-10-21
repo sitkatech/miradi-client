@@ -20,8 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.wizard.noproject.projectlist;
 
+import java.io.File;
+
 import org.miradi.icons.DeleteIcon;
 import org.miradi.main.EAM;
+import org.miradi.views.noproject.DeleteOldProject;
 import org.miradi.views.noproject.DeleteProject;
 
 class ProjectListDeleteAction extends ProjectListAction
@@ -36,7 +39,7 @@ class ProjectListDeleteAction extends ProjectListAction
 	{
 		try
 		{
-			boolean enable = isProjectSelected() || isEmptyDirectorySelected(); 
+			boolean enable = isProjectSelected() || isEmptyDirectorySelected() || isOldProjectSelected(); 
 			if(EAM.getHomeDirectory().equals(getSelectedFile()))
 				enable = false;
 			setEnabled(enable);
@@ -51,10 +54,14 @@ class ProjectListDeleteAction extends ProjectListAction
 	@Override
 	protected void doWork() throws Exception
 	{
-		if(isProjectSelected())
-			EAM.notifyDialog("Deleting project is not supported yet");
-		else if(isOldProjectSelected() || isDirectorySelected())
-			DeleteProject.doIt(EAM.getMainWindow(), getSelectedFile());
+		File fileOrDirectoryToDelete = getSelectedFile();
+		
+		if(isEmptyDirectorySelected())
+			fileOrDirectoryToDelete.delete();
+		else if(isProjectSelected())
+			DeleteProject.doIt(getMainWindow(), fileOrDirectoryToDelete);
+		else if(isOldProjectSelected())
+			DeleteOldProject.doIt(EAM.getMainWindow(), fileOrDirectoryToDelete);
 	}
 	
 	@Override
