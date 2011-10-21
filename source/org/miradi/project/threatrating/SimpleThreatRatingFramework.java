@@ -443,11 +443,6 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 		return findValueOptionByNumericValue(0).getId();
 	}
 	
-	public void saveFramework() throws Exception
-	{
-		getDatabase().writeThreatRatingFramework(this);
-	}
-
 	public void saveBundle(ThreatRatingBundle newBundle) throws Exception
 	{
 		memorize(newBundle);
@@ -560,11 +555,6 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 //		
 //		return ratingCriteria;
 //	}
-	
-	private ProjectServer getDatabase()
-	{
-		return getProject().getDatabase();
-	}
 	
 	private ThreatTargetChainWalker getThreatTargetChainObject()
 	{
