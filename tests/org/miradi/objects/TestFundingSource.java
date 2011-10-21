@@ -35,7 +35,7 @@ public class TestFundingSource extends ObjectTestCase
 	public void setUp() throws Exception
 	{
 		super.setUp();
-		project = new ProjectForTesting(getName());
+		project = ProjectForTesting.createProjectWithDefaultObjects(getName());
 	}
 
 	@Override

@@ -57,7 +57,7 @@ public class TestSimpleThreatRatingFramework extends MiradiTestCase
 	public void setUp() throws Exception
 	{
 		super.setUp();
-		project = new ProjectForTesting(getName());
+		project = ProjectForTesting.createProjectWithDefaultObjects(getName());
 		framework = project.getSimpleThreatRatingFramework();
 	}
 	
@@ -401,7 +401,7 @@ public class TestSimpleThreatRatingFramework extends MiradiTestCase
 	
 	private SimpleThreatRatingFramework createFramework(int[][] bundleValues) throws Exception
 	{
-		ProjectForTesting tempProject = new ProjectForTesting(getName());
+		ProjectForTesting tempProject = ProjectForTesting.createProjectWithDefaultObjects(getName());
 		
 		return fillFrameWork(tempProject, bundleValues);
 	}

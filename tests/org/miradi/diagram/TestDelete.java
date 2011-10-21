@@ -37,7 +37,7 @@ public class TestDelete extends MiradiTestCase
 	
 	public void testBasics() throws Exception
 	{
-		ProjectForTesting project = new ProjectForTesting(getName());
+		ProjectForTesting project = ProjectForTesting.createProjectWithDefaultObjects(getName());
 		DiagramModel model = project.getTestingDiagramModel();
 		
 		DiagramFactor intervention = project.createAndAddFactorToDiagram(ObjectType.STRATEGY);

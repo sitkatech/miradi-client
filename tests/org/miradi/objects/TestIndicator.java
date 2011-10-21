@@ -46,7 +46,7 @@ public class TestIndicator extends AbstractObjectWithBudgetDataToDeleteTestCase
 	public void setUp() throws Exception
 	{
 		super.setUp();
-		project = new ProjectForTesting(getName());
+		project = ProjectForTesting.createProjectWithDefaultObjects(getName());
 	}
 
 	@Override

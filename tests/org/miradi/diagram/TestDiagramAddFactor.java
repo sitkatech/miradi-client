@@ -40,7 +40,7 @@ public class TestDiagramAddFactor extends MiradiTestCase
 	@Override
 	public void setUp() throws Exception
 	{
-		project = new ProjectForTesting(getName());
+		project = ProjectForTesting.createProjectWithDefaultObjects(getName());
 	}
 	
 	@Override

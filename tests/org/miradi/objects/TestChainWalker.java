@@ -36,7 +36,7 @@ public class TestChainWalker extends MiradiTestCase
 	@Override
 	public void setUp() throws Exception
 	{
-		project = new ProjectForTesting(getName());
+		project = ProjectForTesting.createProjectWithDefaultObjects(getName());
 		walker = project.getObjectManager().getDiagramChainWalker();
 		super.setUp();
 	}

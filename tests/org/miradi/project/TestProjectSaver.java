@@ -63,7 +63,7 @@ public class TestProjectSaver extends TestCaseWithProject
 		assertContains("<br/>", contents);
 		assertContains("&quot;", contents);
 
-		Project project2 = new ProjectForTesting(getName());
+		Project project2 = ProjectForTesting.createProjectWithDefaultObjects(getName());
 		project2.clear();
 		UnicodeStringReader reader = new UnicodeStringReader(contents);
 		ProjectLoader.loadProject(reader, project2);
@@ -114,7 +114,7 @@ public class TestProjectSaver extends TestCaseWithProject
 	{
 		String contents = saveProjectToString();
 
-		ProjectForTesting project2 = new ProjectForTesting(getName());
+		ProjectForTesting project2 = ProjectForTesting.createProjectWithDefaultObjects(getName());
 		UnicodeStringReader reader = new UnicodeStringReader(contents);
 		ProjectLoader.loadProject(reader, project2);
 		project2.finishOpeningAfterLoad(getName() + "2");

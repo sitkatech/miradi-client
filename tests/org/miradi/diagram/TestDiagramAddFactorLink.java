@@ -41,7 +41,7 @@ public class TestDiagramAddFactorLink extends MiradiTestCase
 
 	public void testLinkNodes() throws Exception
 	{
-		ProjectForTesting project = new ProjectForTesting(getName());
+		ProjectForTesting project = ProjectForTesting.createProjectWithDefaultObjects(getName());
 		DiagramModel model = project.getTestingDiagramModel();
 
 		FactorCell intervention = project.createFactorCell(ObjectType.STRATEGY);

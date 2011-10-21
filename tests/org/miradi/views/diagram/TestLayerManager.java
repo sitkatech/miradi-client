@@ -48,7 +48,7 @@ public class TestLayerManager extends MiradiTestCase
 	{
 		super.setUp();
 		
-		project = new ProjectForTesting(getName());
+		project = ProjectForTesting.createProjectWithDefaultObjects(getName());
 		ORef targetRef = project.createObject(Target.getObjectType());
 		cmTarget = (Target) Factor.findFactor(project, targetRef);
 		cmTarget.setData(BaseObject.TAG_LABEL, "Target");

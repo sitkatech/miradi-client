@@ -39,7 +39,7 @@ public class TestSimpleThreatFormula extends MiradiTestCase
 	{
 		super.setUp();
 		
-		project = new ProjectForTesting(getName());
+		project = ProjectForTesting.createProjectWithDefaultObjects(getName());
 		framework = project.getSimpleThreatRatingFramework();
 		
 		formula = new SimpleThreatFormula(framework);

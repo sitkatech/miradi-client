@@ -50,7 +50,7 @@ public class TestDiagramLink extends ObjectTestCase
 	public void setUp() throws Exception
 	{
 		super.setUp();
-		project = new ProjectForTesting(getName());
+		project = ProjectForTesting.createProjectWithDefaultObjects(getName());
 		model = project.getTestingDiagramModel();
 
 		ORef strategyRef = project.createObject(ObjectType.STRATEGY);
