@@ -28,7 +28,6 @@ import javax.swing.JPanel;
 
 import org.martus.swing.HyperlinkHandler;
 import org.miradi.actions.ActionImportZippedConproProject;
-import org.miradi.actions.ActionImportZippedProjectFile;
 import org.miradi.actions.MiradiAction;
 import org.miradi.layout.OneColumnPanel;
 import org.miradi.main.AppPreferences;
@@ -111,8 +110,7 @@ public class WelcomeImportStep extends NoProjectWizardStep
 		{
 			if(buttonName.equals(CONTROL_IMPORT_MIRADI))
 			{
-				MiradiAction action = getMainWindow().getActions().get(ActionImportZippedProjectFile.class);
-				action.doAction();
+				EAM.notifyDialog("Import MPZ is not supported");
 			}
 			if (buttonName.equals(CONTROL_IMPORT_CONPRO))
 			{

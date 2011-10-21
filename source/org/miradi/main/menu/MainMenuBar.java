@@ -34,9 +34,9 @@ import org.martus.swing.UiMenu;
 import org.miradi.actions.*;
 import org.miradi.actions.jump.ActionJumpCloseTheLoop;
 import org.miradi.main.EAM;
-import org.miradi.main.MiradiMenuItem;
 import org.miradi.main.MainWindow;
 import org.miradi.main.Miradi;
+import org.miradi.main.MiradiMenuItem;
 import org.miradi.main.ViewSwitcher;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceItemWithChildren;
@@ -152,7 +152,6 @@ public class MainMenuBar extends JMenuBar
 		JMenu menu = new JMenu(EAM.text("Menu|Import"));
 		menu.setMnemonic(KeyEvent.VK_I);
 		
-		addMenuItem(actions, menu, ActionImportZippedProjectFile.class, KeyEvent.VK_M);
 		addMenuItem(actions, menu, ActionImportZippedConproProject.class, KeyEvent.VK_C);
 		addMenuItem(actions, menu, ActionImportXmpz.class, KeyEvent.VK_X);
 		
