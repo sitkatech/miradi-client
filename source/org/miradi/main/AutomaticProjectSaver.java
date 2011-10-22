@@ -68,20 +68,18 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 		}
 	}
 
-	private void safeSave(File currentFile) throws IOException, Exception
+	public void safeSave(File currentFile) throws IOException, Exception
 	{
 		File oldFile = getOldFile(currentFile);
 		File newFile = getNewFile(currentFile);
 
-		newFile.delete();
+		safeDelete(newFile);
 		save(newFile);
 
-		oldFile.delete();
-		if(!currentFile.renameTo(oldFile))
-			throw new IOException("Rename current to old failed");
+		safeDelete(oldFile);
+		safeRename(currentFile, oldFile);
 
-		if(!newFile.renameTo(currentFile))
-			throw new IOException("Rename new to current failed");
+		safeRename(newFile, currentFile);
 		
 		// NOTE: recovery steps:
 		// 1. if valid new file exists, use it, else
@@ -89,22 +87,40 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 		// 3. if valid old file exists, use it
 	}
 
-	private File getOldFile(File currentFile)
+	private void safeDelete(File file) throws IOException
+	{
+		if(!file.exists())
+			return;
+		
+		if(!file.delete())
+			throw new IOException("Delete failed: " + file.getAbsolutePath());
+	}
+
+	private void safeRename(File fromFile, File toFile) throws IOException
+	{
+		if(!fromFile.exists())
+			return;
+		
+		if(!fromFile.renameTo(toFile))
+			throw new IOException("Rename failed: " + fromFile.getAbsolutePath() + "->" + toFile.getAbsolutePath());
+	}
+
+	public static File getOldFile(File currentFile)
 	{
 		return getFileWithSuffix(currentFile, ".old");
 	}
 
-	private File getNewFile(File currentFile)
+	public static File getNewFile(File currentFile)
 	{
 		return getFileWithSuffix(currentFile, ".new");
 	}
 
-	private File getLockFile(File currentFile)
+	public static File getLockFile(File currentFile)
 	{
 		return getFileWithSuffix(currentFile, ".lock");
 	}
 
-	private File getFileWithSuffix(File currentFile, String suffix)
+	private static File getFileWithSuffix(File currentFile, String suffix)
 	{
 		return new File(currentFile.getAbsolutePath() + suffix);
 	}

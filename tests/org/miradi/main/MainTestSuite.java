@@ -251,6 +251,7 @@ public class MainTestSuite extends TestSuite
 		addTest(new TestSuite(TestFormRow.class));
 		
 		// main package
+		addTest(new TestSuite(TestAutomaticProjectSaver.class));
 		addTest(new TestSuite(TestCommandExecutedEvents.class));
 		addTest(new TestSuite(TestMainMenu.class));
 		addTest(new TestSuite(TestTransferableMiradiList.class));
