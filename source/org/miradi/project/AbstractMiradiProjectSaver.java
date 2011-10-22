@@ -47,6 +47,7 @@ abstract public class AbstractMiradiProjectSaver
 	{
 		data = XmlUtilities.getXmlEncoded(data);
 		data = data.replaceAll("\\n", "<br/>");
+		data = data.replaceAll("\\r", "<br/>");
 		
 		return data;
 	}
