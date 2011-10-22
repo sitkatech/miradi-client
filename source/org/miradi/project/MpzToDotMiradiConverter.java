@@ -115,7 +115,7 @@ public class MpzToDotMiradiConverter extends AbstractMiradiProjectSaver
 	
 	private void convert() throws Exception
 	{
-		EAM.logWarning("MPZ converter is not yet handling quarantine or exceptions");
+		EAM.logWarning("MPZ converter is not yet handling quarantine");
 		
 		writeFileHeader();
 		
@@ -181,8 +181,23 @@ public class MpzToDotMiradiConverter extends AbstractMiradiProjectSaver
 		{
 			writeSimpleThreatFramework(fileContent);
 		}
+		if (relativeFilePath.startsWith(EAM.EXCEPTIONS_LOG_FILE_NAME))
+		{
+			final String xmlNewLineEncode = xmlNewLineEncode(fileContent);
+			final String truncatedExceptions = truncate(xmlNewLineEncode);
+			writeTagValue(UPDATE_EXCEPTIONS_CODE, EXCEPTIONS_DATA_TAG, truncatedExceptions);
+		}
 	}
 	
+	private String truncate(String fileContent)
+	{
+		final int LIMIT_UTF8_ONE_CHAR_PER_BYTE = 20000;
+		if (fileContent.length() < LIMIT_UTF8_ONE_CHAR_PER_BYTE)
+			return fileContent;
+		
+		return fileContent.substring(fileContent.length() - LIMIT_UTF8_ONE_CHAR_PER_BYTE, fileContent.length());
+	}
+
 	private byte[] readIntoByteArray(ZipEntry entry) throws Exception
 	{
 		InputStream inputStream = getZipFile().getInputStream(entry);
