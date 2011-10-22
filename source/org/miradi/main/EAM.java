@@ -194,7 +194,7 @@ public class EAM
 		setExceptionLoggingDestination(getDefaultExceptionsLogFile());
 	}
 
-	public static void setExceptionLoggingDestination(File destination)
+	private static void setExceptionLoggingDestination(File destination)
 	{
 		try
 		{
