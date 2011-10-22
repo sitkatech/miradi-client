@@ -108,13 +108,16 @@ abstract public class AbstractMiradiProjectSaver
 	
 	protected void writeFileHeader() throws Exception
 	{
-		getWriter().writeln(FILE_HEADER);
+		getWriter().writeln(BASIC_FILE_HEADER + " " + VERSION_LOW + " " + VERSION_HIGH);
 	}
-
+	
 	public static final String TAB = "\t";
 	public static final String EQUALS = "=";
 
-	public static final String FILE_HEADER = UnicodeWriter.BOM_UTF8 + "MiradiProjectFile";
+	public static final String BASIC_FILE_HEADER = UnicodeWriter.BOM_UTF8 + "MiradiProjectFile";
+	public static final int VERSION_LOW = 1;
+	public static final int VERSION_HIGH = 1;
+	
 	public static final String UPDATE_LAST_MODIFIED_TIME_CODE = "UL";
 	public static final String UPDATE_PROJECT_INFO_CODE = "UP";
 	public static final String UPDATE_PROJECT_VERSION_CODE = "UV";

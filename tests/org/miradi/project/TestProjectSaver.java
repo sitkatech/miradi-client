@@ -58,6 +58,33 @@ public class TestProjectSaver extends TestCaseWithProject
 	{
 		saveProjectToString();
 	}
+	
+	public void testLoadTooOld() throws Exception
+	{
+		String tooOld = AbstractMiradiProjectSaver.BASIC_FILE_HEADER + " " + 0 + " " + 0 + "\n";
+		try
+		{
+			ProjectLoader.loadProject(new UnicodeStringReader(tooOld), getProject());
+			fail("Should have thrown for project too old");
+		}
+		catch(ProjectLoader.ProjectFileTooOldException ignoreExpected)
+		{
+		}
+	}
+
+	public void testLoadTooNew() throws Exception
+	{
+		final int NEWER_VERSION = AbstractMiradiProjectSaver.VERSION_HIGH + 1; 
+		String tooNew = AbstractMiradiProjectSaver.BASIC_FILE_HEADER + " " + NEWER_VERSION + " " + NEWER_VERSION + "\n";
+		try
+		{
+			ProjectLoader.loadProject(new UnicodeStringReader(tooNew), getProject());
+			fail("Should have thrown for project too new");
+		}
+		catch(ProjectLoader.ProjectFileTooNewException ignoreExpected)
+		{
+		}
+	}
 
 	public void testSaveAndLoad() throws Exception
 	{

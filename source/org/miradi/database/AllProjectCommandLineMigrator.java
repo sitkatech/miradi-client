@@ -22,8 +22,8 @@ package org.miradi.database;
 
 import java.io.File;
 
-import org.miradi.exceptions.FutureVersionException;
-import org.miradi.exceptions.OldVersionException;
+import org.miradi.exceptions.FutureSchemaVersionException;
+import org.miradi.exceptions.OldSchemaVersionException;
 import org.miradi.main.EAM;
 import org.miradi.utils.NullProgressMeter;
 import org.miradi.views.umbrella.CreateProjectDialog;
@@ -60,14 +60,14 @@ public class AllProjectCommandLineMigrator
 	{
 		int existingVersion = database.readProjectDataVersion(projectName); 
 		if(existingVersion > ProjectServer.DATA_VERSION)
-			throw new FutureVersionException();
+			throw new FutureSchemaVersionException();
 
 		if(existingVersion < ProjectServer.DATA_VERSION)
 			upgrade(database, projectName);
 		
 		int updatedVersion = database.readProjectDataVersion(projectName); 
 		if(updatedVersion < ProjectServer.DATA_VERSION)
-			throw new OldVersionException();
+			throw new OldSchemaVersionException();
 	}
 
 	private static void upgrade(ProjectServer database, String projectName) throws Exception
