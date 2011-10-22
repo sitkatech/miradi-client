@@ -23,12 +23,15 @@ import java.io.File;
 import java.util.Collections;
 import java.util.Vector;
 
+import org.martus.util.UnicodeReader;
+import org.martus.util.UnicodeStringReader;
 import org.miradi.database.ProjectServer;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.FileSystemProjectSorter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
+import org.miradi.project.ProjectLoader;
 
 abstract public class FileSystemTreeNode extends TreeTableNode
 {
@@ -76,8 +79,13 @@ abstract public class FileSystemTreeNode extends TreeTableNode
 			}
 			if(column == 1)
 			{
-				if(isProjectDirectory())
-					return getLastModifiedDate();
+				if(isProject())
+				{
+					String contents = UnicodeReader.getFileContents(thisFile);
+					final long loadLastModifiedTime = ProjectLoader.loadLastModifiedTime(new UnicodeStringReader(contents));
+					if (loadLastModifiedTime > 0)
+						return ProjectServer.timestampToString(loadLastModifiedTime);
+				}
 				
 				return null;
 			}
