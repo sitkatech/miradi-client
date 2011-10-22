@@ -209,11 +209,4 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 	}
 	
 	private Project project;
-
-	public static final String NEW_LINE = "\n";
-	public static final String HTML_NEW_LINE = "<br/>";
-	public static final String STOP_MARKER = "--";
-	public static final String UPDATE_LAST_MODIFIED_TIME_CODE = "UL";
-	
-	public static final String LAST_MODIFIED_TAG = "LastModified";
 }

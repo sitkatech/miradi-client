@@ -98,7 +98,7 @@ public class ProjectLoader
 		else if (line.startsWith(ProjectSaver.UPDATE_PROJECT_INFO_CODE))
 			loadProjectInfoLine(line);
 		
-		else if (line.startsWith(ProjectSaver.UPDATE_LAST_MODIFIED_TIME_CODE))
+		else if (line.startsWith(AbstractMiradiProjectSaver.UPDATE_LAST_MODIFIED_TIME_CODE))
 			loadLastModified(line);
 		
 		else if (line.startsWith(ProjectSaver.CREATE_OBJECT_CODE))

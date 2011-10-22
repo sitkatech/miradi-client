@@ -108,6 +108,7 @@ abstract public class AbstractMiradiProjectSaver
 	public static final String TAB = "\t";
 	public static final String EQUALS = "=";
 
+	public static final String UPDATE_LAST_MODIFIED_TIME_CODE = "UL";
 	public static final String UPDATE_PROJECT_INFO_CODE = "UP";
 	public static final String UPDATE_PROJECT_VERSION_CODE = "UV";
 	public static final String CREATE_OBJECT_CODE = "CO";
@@ -115,9 +116,13 @@ abstract public class AbstractMiradiProjectSaver
 	public static final String CREATE_SIMPLE_THREAT_RATING_BUNDLE_CODE = "CT";
 	public static final String UPDATE_SIMPLE_THREAT_RATING_BUNDLE_CODE = "UT";
 	public static final String UPDATE_QUARANTINE_CODE = "UQ";
-	public static final String QUARANTINE_DATA_TAG = "Data";
 	public static final String UPDATE_EXCEPTIONS_CODE = "UE";
+	
+	public static final String LAST_MODIFIED_TAG = "LastModified";
+	public static final String QUARANTINE_DATA_TAG = "Data";
 	public static final String EXCEPTIONS_DATA_TAG = "Data";
+
+	public static final String STOP_MARKER = "--";
 
 	private UnicodeStringWriter writer;
 }
