@@ -22,6 +22,7 @@ package org.miradi.main;
 
 import java.io.File;
 
+import org.martus.util.DirectoryUtils;
 import org.martus.util.TestCaseEnhanced;
 import org.miradi.project.Project;
 
@@ -38,23 +39,30 @@ public class TestAutomaticProjectSaver extends TestCaseEnhanced
 		AutomaticProjectSaver saver = new AutomaticProjectSaver(project);
 
 		File tempDirectory = createTempDirectory();
-		File projectFile = new File(tempDirectory, getName() + ".Miradi");
-		File oldFile = saver.getOldFile(projectFile);
-		File newFile = saver.getNewFile(projectFile);
-
-		saver.safeSave(projectFile);
-		assertTrue(projectFile.exists());
-		assertFalse(oldFile.exists());
-		assertFalse(newFile.exists());
-		
-		saver.safeSave(projectFile);
-		assertTrue(projectFile.exists());
-		assertTrue(oldFile.exists());
-		assertFalse(newFile.exists());
-		
-		saver.safeSave(projectFile);
-		assertTrue(projectFile.exists());
-		assertTrue(oldFile.exists());
-		assertFalse(newFile.exists());
+		try
+		{
+			File projectFile = new File(tempDirectory, getName() + ".Miradi");
+			File oldFile = saver.getOldFile(projectFile);
+			File newFile = saver.getNewFile(projectFile);
+	
+			saver.safeSave(projectFile);
+			assertTrue(projectFile.exists());
+			assertFalse(oldFile.exists());
+			assertFalse(newFile.exists());
+			
+			saver.safeSave(projectFile);
+			assertTrue(projectFile.exists());
+			assertTrue(oldFile.exists());
+			assertFalse(newFile.exists());
+			
+			saver.safeSave(projectFile);
+			assertTrue(projectFile.exists());
+			assertTrue(oldFile.exists());
+			assertFalse(newFile.exists());
+		}
+		finally
+		{
+			DirectoryUtils.deleteEntireDirectoryTree(tempDirectory);
+		}
 	}
 }
