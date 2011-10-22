@@ -96,6 +96,18 @@ public class TestProject extends MiradiTestCase
 		project = null;
 	}
 	
+	public void testLastModified() throws Exception
+	{
+		Project newProject = new Project();
+		long originalLastModifiedMillis = newProject.getLastModifiedTime();
+		assertNotEquals("New project doesn't default to now?", 0, originalLastModifiedMillis);
+
+		newProject.finishOpeningAfterLoad(getName());
+		CommandSetObjectData command = new CommandSetObjectData(newProject.getMetadata(), ProjectMetadata.TAG_PROJECT_NAME, "Whatever");
+		newProject.executeCommand(command);
+		assertNotEquals("Last modified not updated?", originalLastModifiedMillis, newProject.getLastModifiedTime());
+	}
+	
 	public void testForOnlyOneAnnotationIdAssigner() throws Exception
 	{
 		IdAssigner original = project.getNormalIdAssigner();
