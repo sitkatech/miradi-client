@@ -171,6 +171,7 @@ public class Project
 		projectCalendar.clearDateRanges();
 		quarantine = new StringBuilder();
 		exceptionLog = new StringBuilder();
+		lastModifiedMillis = System.currentTimeMillis();
 	}
 	
 	static public void validateNewProject(String newName) throws Exception
