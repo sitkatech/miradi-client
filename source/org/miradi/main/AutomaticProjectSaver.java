@@ -78,7 +78,7 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 
 		oldFile.delete();
 		if(!currentFile.renameTo(oldFile))
-			throw new IOException("Rename current to oldfailed");
+			throw new IOException("Rename current to old failed");
 
 		if(!newFile.renameTo(currentFile))
 			throw new IOException("Rename new to current failed");
