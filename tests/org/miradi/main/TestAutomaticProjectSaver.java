@@ -32,37 +32,51 @@ public class TestAutomaticProjectSaver extends TestCaseEnhanced
 	{
 		super(name);
 	}
+	
+	@Override
+	protected void setUp() throws Exception
+	{
+		super.setUp();
+		
+		project = new Project();
+		saver = new AutomaticProjectSaver(project);
 
+		tempDirectory = createTempDirectory();
+		projectFile = new File(tempDirectory, getName() + ".Miradi");
+	}
+	
+	@Override
+	protected void tearDown() throws Exception
+	{
+		DirectoryUtils.deleteEntireDirectoryTree(tempDirectory);
+		
+		super.tearDown();
+	}
+	
 	public void testSafeSave() throws Exception
 	{
-		Project project = new Project();
-		AutomaticProjectSaver saver = new AutomaticProjectSaver(project);
+		File oldFile = saver.getOldFile(projectFile);
+		File newFile = saver.getNewFile(projectFile);
 
-		File tempDirectory = createTempDirectory();
-		try
-		{
-			File projectFile = new File(tempDirectory, getName() + ".Miradi");
-			File oldFile = saver.getOldFile(projectFile);
-			File newFile = saver.getNewFile(projectFile);
-	
-			saver.safeSave(projectFile);
-			assertTrue(projectFile.exists());
-			assertFalse(oldFile.exists());
-			assertFalse(newFile.exists());
-			
-			saver.safeSave(projectFile);
-			assertTrue(projectFile.exists());
-			assertTrue(oldFile.exists());
-			assertFalse(newFile.exists());
-			
-			saver.safeSave(projectFile);
-			assertTrue(projectFile.exists());
-			assertTrue(oldFile.exists());
-			assertFalse(newFile.exists());
-		}
-		finally
-		{
-			DirectoryUtils.deleteEntireDirectoryTree(tempDirectory);
-		}
+		saver.safeSave(projectFile);
+		assertTrue(projectFile.exists());
+		assertFalse(oldFile.exists());
+		assertFalse(newFile.exists());
+
+		saver.safeSave(projectFile);
+		assertTrue(projectFile.exists());
+		assertTrue(oldFile.exists());
+		assertFalse(newFile.exists());
+
+		saver.safeSave(projectFile);
+		assertTrue(projectFile.exists());
+		assertTrue(oldFile.exists());
+		assertFalse(newFile.exists());
 	}
+	
+	private Project project;
+	private AutomaticProjectSaver saver;
+	private File tempDirectory;
+	private File projectFile;
+
 }
