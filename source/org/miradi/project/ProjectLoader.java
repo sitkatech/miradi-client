@@ -60,9 +60,9 @@ public class ProjectLoader
 		project.clear();
 		
 		boolean foundEnd = false;
+		
 		String fileHeaderLine = reader.readLine();
 		validateHeaderLine(fileHeaderLine);
-		
 		
 		while(true)
 		{
@@ -70,9 +70,11 @@ public class ProjectLoader
 			if(line == null)
 				break;
 			
-			if (line.equals("--"))
+			if (line.startsWith(AbstractMiradiProjectSaver.STOP_MARKER))
 			{
 				foundEnd = true;
+				long lastModified = processStopLine(line);
+				getProject().setLastModified(lastModified);
 				continue;
 			}
 			else if(foundEnd)
@@ -89,11 +91,12 @@ public class ProjectLoader
 
 	private void validateHeaderLine(String fileHeaderLine) throws Exception
 	{
-		if(!fileHeaderLine.startsWith(AbstractMiradiProjectSaver.BASIC_FILE_HEADER))
-			throw new IOException("Not a Miradi Project File");
+		if(fileHeaderLine == null || !fileHeaderLine.startsWith(AbstractMiradiProjectSaver.getBasicFileHeader()))
+			throw new NotMiradiProjectFileException();
 		
 		final String WHITESPACE_REGEXP = "\\s+";
 		String[] parts = fileHeaderLine.split(WHITESPACE_REGEXP);
+		/*String baseFileHeader = parts[0];*/
 		int lowVersion = Integer.parseInt(parts[1]);
 		if(lowVersion > AbstractMiradiProjectSaver.VERSION_HIGH)
 			throw new ProjectFileTooNewException(lowVersion, AbstractMiradiProjectSaver.VERSION_HIGH);
@@ -135,6 +138,15 @@ public class ProjectLoader
 			throw new IOException("Unexpected action: " + line);
 	}
 	
+	private long processStopLine(String stopLine) throws Exception
+	{
+		final String WHITESPACE_REGEXP = "\\s+";
+		String[] parts = stopLine.split(WHITESPACE_REGEXP);
+		/*String stopMarker = parts[0];*/
+		String forComputers = parts[1];
+		return Long.parseLong(forComputers);
+	}
+
 	private void loadExceptions(String line) throws Exception
 	{
 		String[] tagValue = parseTagValueLine(line);
@@ -273,6 +285,10 @@ public class ProjectLoader
 	private Project getProject()
 	{
 		return project;
+	}
+	
+	public static class NotMiradiProjectFileException extends Exception
+	{
 	}
 	
 	public static class ProjectFileTooNewException extends Exception

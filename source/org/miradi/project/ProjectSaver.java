@@ -71,7 +71,6 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 	private void saveProject() throws Exception
 	{
 		writeFileHeader();
-		writeProjectVersion();
 		writeSchemaVersion();
 		writeProjectInfo();
 		writeLastModified();
@@ -79,18 +78,13 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 		writeAllSimpleThreatRatings();
 		writeAllQuarantinedData();
 		writeExceptionsLog();
-		writeStopMarker();
+		writeStopMarker(getProject().getLastModifiedTime());
 		flushWriter();
 	}
 
 	public void flushWriter() throws IOException
 	{
 		getWriter().flush();
-	}
-
-	public void writeStopMarker() throws IOException
-	{
-		writelnRaw(STOP_MARKER);
 	}
 
 	private void writeLastModified() throws Exception
@@ -109,11 +103,6 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 		writeTagValue(UPDATE_PROJECT_VERSION_CODE, ProjectServer.TAG_VERSION, Integer.toString(ProjectServer.DATA_VERSION));
 	}
 
-	private void writeProjectVersion() throws Exception
-	{
-		writeTagValue(UPDATE_PROJECT_VERSION_CODE, ProjectServer.TAG_VERSION, Integer.toString(ProjectServer.DATA_VERSION));
-	}
-	
 	private void writeAllQuarantinedData() throws Exception
 	{
 		String quarantineFileContents = getProject().getQuarantineFileContents();
