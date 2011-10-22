@@ -61,8 +61,8 @@ public class ProjectLoader
 		
 		boolean foundEnd = false;
 		String fileHeaderLine = reader.readLine();
-		if(!fileHeaderLine.equals(AbstractMiradiProjectSaver.FILE_HEADER))
-			throw new IOException("Not a Miradi Project File");
+		validateHeaderLine(fileHeaderLine);
+		
 		
 		while(true)
 		{
@@ -85,6 +85,21 @@ public class ProjectLoader
 		
 		if(!foundEnd)
 			throw new IOException("Project file is corrupted (no end marker found)");
+	}
+
+	private void validateHeaderLine(String fileHeaderLine) throws Exception
+	{
+		if(!fileHeaderLine.startsWith(AbstractMiradiProjectSaver.BASIC_FILE_HEADER))
+			throw new IOException("Not a Miradi Project File");
+		
+		final String WHITESPACE_REGEXP = "\\s+";
+		String[] parts = fileHeaderLine.split(WHITESPACE_REGEXP);
+		int lowVersion = Integer.parseInt(parts[1]);
+		if(lowVersion > AbstractMiradiProjectSaver.VERSION_HIGH)
+			throw new ProjectFileTooNewException(lowVersion, AbstractMiradiProjectSaver.VERSION_HIGH);
+		int highVersion = Integer.parseInt(parts[1]);
+		if(highVersion < AbstractMiradiProjectSaver.VERSION_LOW)
+			throw new ProjectFileTooOldException(highVersion, AbstractMiradiProjectSaver.VERSION_LOW);
 	}
 
 	private void processLine(String line) throws Exception
@@ -258,6 +273,50 @@ public class ProjectLoader
 	private Project getProject()
 	{
 		return project;
+	}
+	
+	public static class ProjectFileTooNewException extends Exception
+	{
+		public ProjectFileTooNewException(int thisVersionToUse, int highestAllowedVersionToUse)
+		{
+			thisVersion = thisVersionToUse;
+			highestAllowedVersion = highestAllowedVersionToUse;
+		}
+		
+		public int getThisVersion()
+		{
+			return thisVersion;
+		}
+		
+		public int highestMaxAllowedVersion()
+		{
+			return highestAllowedVersion;
+		}
+
+		private int thisVersion;
+		private int highestAllowedVersion;
+	}
+	
+	public static class ProjectFileTooOldException extends Exception
+	{
+		public ProjectFileTooOldException(int thisVersionToUse, int lowestAllowedVersionToUse)
+		{
+			thisVersion = thisVersionToUse;
+			lowestAllowedVersion = lowestAllowedVersionToUse;
+		}
+		
+		public int getThisVersion()
+		{
+			return thisVersion;
+		}
+		
+		public int getLowestAllowedVersion()
+		{
+			return lowestAllowedVersion;
+		}
+
+		private int thisVersion;
+		private int lowestAllowedVersion;
 	}
 
 	private HashMap<String, ThreatRatingBundle> bundleNameToBundleMap;

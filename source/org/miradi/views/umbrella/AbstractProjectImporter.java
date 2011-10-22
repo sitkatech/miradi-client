@@ -30,7 +30,7 @@ import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.martus.util.inputstreamwithseek.ZipEntryInputStreamWithSeek;
 import org.miradi.dialogs.base.ProgressDialog;
 import org.miradi.exceptions.CpmzVersionTooOldException;
-import org.miradi.exceptions.FutureVersionException;
+import org.miradi.exceptions.FutureSchemaVersionException;
 import org.miradi.exceptions.UnsupportedNewVersionSchemaException;
 import org.miradi.exceptions.UserCanceledException;
 import org.miradi.exceptions.ValidationException;
@@ -88,7 +88,7 @@ public abstract class AbstractProjectImporter
 			EAM.logException(e);
 			showImportFailedErrorDialog(e.getMessage());
 		}
-		catch (FutureVersionException e)
+		catch (FutureSchemaVersionException e)
 		{
 			EAM.logException(e);
 			showImportFailedErrorDialog("This project cannot be imported by this version of Miradi because it <BR>" +

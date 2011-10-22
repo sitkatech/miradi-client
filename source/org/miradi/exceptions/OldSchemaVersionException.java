@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.exceptions;
 
-public class OldVersionException extends Exception
+public class OldSchemaVersionException extends Exception
 {
 
 }

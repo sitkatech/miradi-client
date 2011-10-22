@@ -55,8 +55,8 @@ import org.miradi.dialogfields.AbstractWorkPlanStringMapEditorDoer;
 import org.miradi.dialogfields.FieldSaver;
 import org.miradi.dialogs.ProjectCorruptionDialog;
 import org.miradi.dialogs.base.ProgressDialog;
-import org.miradi.exceptions.FutureVersionException;
-import org.miradi.exceptions.OldVersionException;
+import org.miradi.exceptions.FutureSchemaVersionException;
+import org.miradi.exceptions.OldSchemaVersionException;
 import org.miradi.exceptions.UnknownCommandException;
 import org.miradi.exceptions.UserCanceledException;
 import org.miradi.main.menu.MainMenuBar;
@@ -546,11 +546,19 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		{
 			EAM.errorDialog(EAM.text("That project is in use by another copy of this application"));
 		}
-		catch(FutureVersionException e)
+		catch(ProjectLoader.ProjectFileTooOldException e)
 		{
-			EAM.errorDialog(EAM.text("That project cannot be opened because it was created by a newer version of this application"));
+			EAM.errorDialog(EAM.text("That project is too old to be opened with this version of Miradi"));
 		}
-		catch(OldVersionException e)
+		catch(ProjectLoader.ProjectFileTooNewException e)
+		{
+			EAM.errorDialog(EAM.text("That project cannot be opened because it was created by a newer version of Miradi"));
+		}
+		catch(FutureSchemaVersionException e)
+		{
+			EAM.errorDialog(EAM.text("That project cannot be opened because it was created by a newer version of Miradi"));
+		}
+		catch(OldSchemaVersionException e)
 		{
 			EAM.errorDialog(EAM.text("That project cannot be opened until it is migrated to the current data format"));
 		}
