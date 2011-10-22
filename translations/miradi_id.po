@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-21 17:25-0500\n"
+"POT-Creation-Date: 2011-10-21 23:42-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -514,7 +514,7 @@ msgstr "7B. Bagikan Apa yang Anda Pelajari "
 msgid "7C. Create a Learning Environment"
 msgstr "7C. Ciptakan Lingkungan Belajar "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1223
+#: Miradi/source/org/miradi/main/MainWindow.java:1235
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -2938,7 +2938,7 @@ msgstr "Pembuatan gagal: "
 msgid "Create Folder"
 msgstr "Buat Folder "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:581
+#: Miradi/source/org/miradi/main/MainWindow.java:593
 msgid "Create Project"
 msgstr ""
 
@@ -3553,7 +3553,7 @@ msgstr "Perkirakan biaya kegiatan dan pemantauan "
 msgid "Euro"
 msgstr "Euro"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:801
+#: Miradi/source/org/miradi/main/MainWindow.java:813
 msgid "Existing data for a different fiscal year is being excluded"
 msgstr ""
 
@@ -5098,7 +5098,7 @@ msgstr ""
 msgid "Miradi does not recognize %s as a project file"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:646
+#: Miradi/source/org/miradi/main/MainWindow.java:658
 msgid ""
 "Miradi has detected one or more problems with this project which could cause "
 "errors or further damage in the future. \n"
@@ -5391,7 +5391,7 @@ msgid "Open Anyway"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:153
-#: Miradi/source/org/miradi/main/MainWindow.java:583
+#: Miradi/source/org/miradi/main/MainWindow.java:595
 msgid "Open Project"
 msgstr ""
 
@@ -5679,7 +5679,7 @@ msgstr "Proyek "
 msgid "Project Advisor"
 msgstr "Penasihat Proyek"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:644
+#: Miradi/source/org/miradi/main/MainWindow.java:656
 msgid "Project Corruption Detected"
 msgstr ""
 
@@ -5712,7 +5712,7 @@ msgstr "Sumber Daya Proyek "
 msgid "Project Resource Filter Editor"
 msgstr "Editor Filter Sumber Daya Proyek "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:799
+#: Miradi/source/org/miradi/main/MainWindow.java:811
 msgid "Project Resource Filter Is On"
 msgstr "Filter Sumber Daya Proyek Adalah Aktif "
 
@@ -6301,7 +6301,7 @@ msgstr "Pemilik Kepentingan"
 msgid "Standard Reports"
 msgstr "Laporan Standar "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:833
+#: Miradi/source/org/miradi/main/MainWindow.java:845
 msgid ""
 "Start date (currently %startDate) must be earlier than end date (currently %"
 "endDate)"
@@ -7508,6 +7508,10 @@ msgstr "Tanggal harus dalam format YYYY-MM-DD  "
 msgid "Text|Unknown error prevented saving this data"
 msgstr "Kesalahan tak dikenal mencegah penyimpanan data ini "
 
+#: Miradi/source/org/miradi/main/MainWindow.java:551
+msgid "That file is not a valid Miradi project"
+msgstr ""
+
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:167
 msgid "That language pack already exists. Replace it?"
 msgstr "Paket bahasa ini sudah ada. Ganti? "
@@ -7516,15 +7520,14 @@ msgstr "Paket bahasa ini sudah ada. Ganti? "
 msgid "That language pack is already installed"
 msgstr "Paket bahasa ini sudah diinstal"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:551
+#: Miradi/source/org/miradi/main/MainWindow.java:559
+#: Miradi/source/org/miradi/main/MainWindow.java:563
 msgid ""
 "That project cannot be opened because it was created by a newer version of "
-"this application"
+"Miradi"
 msgstr ""
-"Proyek tersebut tidak bisa dibuka karena dibuat oleh versi baru dari "
-"aplikasi ini "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:555
+#: Miradi/source/org/miradi/main/MainWindow.java:567
 msgid ""
 "That project cannot be opened until it is migrated to the current data format"
 msgstr ""
@@ -7544,6 +7547,10 @@ msgstr ""
 "Proyek terlalu tua untuk dipindahkan oleh Miradi versi ini. Anda bisa "
 "menggunakan Miradi 1.0 untuk memindahkannya ke format data modern, dan "
 "sesudahnya bisa dibuka dan dipindahkan dengan versi ini. "
+
+#: Miradi/source/org/miradi/main/MainWindow.java:555
+msgid "That project is too old to be opened with this version of Miradi"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:256
 msgid ""
@@ -7668,7 +7675,7 @@ msgid ""
 "is in a newer data format. Please upgrade to the latest version of Miradi."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:635
+#: Miradi/source/org/miradi/main/MainWindow.java:647
 msgid ""
 "This project has been optimized to remove data that is no longer needed.\n"
 msgstr ""
@@ -8073,7 +8080,7 @@ msgstr ""
 "aplikasi ini:\n"
 " "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1207
+#: Miradi/source/org/miradi/main/MainWindow.java:1219
 msgid "Unable to launch external web browser"
 msgstr "Tidak bisa meluncurkan perambah web eksternal "
 
@@ -8095,7 +8102,7 @@ msgstr ""
 "dari aplikasi ini:\n"
 " "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:990
+#: Miradi/source/org/miradi/main/MainWindow.java:1002
 msgid "Unable to save preferences"
 msgstr "Tidak bisa menyimpan preferensi "
 
@@ -8177,7 +8184,7 @@ msgstr "Kode tak dikenal: "
 msgid "Unknown error displaying diagram"
 msgstr "Kesalahan tak dikenal saat menampilkan diagram "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:560
+#: Miradi/source/org/miradi/main/MainWindow.java:572
 msgid "Unknown error prevented opening that project"
 msgstr "Kesalahan tak dikenal mencegah dibukanya proyek "
 
@@ -8574,7 +8581,7 @@ msgstr "[TIDAK TERSPESIFIKASI] "
 msgid "[New Results Chain]"
 msgstr "[Rangkaian Hasil Baru] "
 
-#: Miradi/source/org/miradi/project/Project.java:957
+#: Miradi/source/org/miradi/project/Project.java:962
 msgid "[No Project]"
 msgstr "[Tidak Ada Proyek] "
 
@@ -32211,6 +32218,13 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid ""
+#~ "That project cannot be opened because it was created by a newer version "
+#~ "of this application"
+#~ msgstr ""
+#~ "Proyek tersebut tidak bisa dibuka karena dibuat oleh versi baru dari "
+#~ "aplikasi ini "
 
 #~ msgid "A file or folder exist by the same name:"
 #~ msgstr "File atau folder dengan nama yang sama sudah ada: "
