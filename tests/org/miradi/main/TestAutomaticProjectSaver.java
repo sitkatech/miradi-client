@@ -1,0 +1,60 @@
+/* 
+Copyright 2005-2011, Foundations of Success, Bethesda, Maryland 
+(on behalf of the Conservation Measures Partnership, "CMP") and 
+Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
+
+This file is part of Miradi
+
+Miradi is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License version 3, 
+as published by the Free Software Foundation.
+
+Miradi is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
+*/ 
+
+package org.miradi.main;
+
+import java.io.File;
+
+import org.martus.util.TestCaseEnhanced;
+import org.miradi.project.Project;
+
+public class TestAutomaticProjectSaver extends TestCaseEnhanced
+{
+	public TestAutomaticProjectSaver(String name)
+	{
+		super(name);
+	}
+
+	public void testSafeSave() throws Exception
+	{
+		Project project = new Project();
+		AutomaticProjectSaver saver = new AutomaticProjectSaver(project);
+
+		File tempDirectory = createTempDirectory();
+		File projectFile = new File(tempDirectory, getName() + ".Miradi");
+		File oldFile = saver.getOldFile(projectFile);
+		File newFile = saver.getNewFile(projectFile);
+
+		saver.safeSave(projectFile);
+		assertTrue(projectFile.exists());
+		assertFalse(oldFile.exists());
+		assertFalse(newFile.exists());
+		
+		saver.safeSave(projectFile);
+		assertTrue(projectFile.exists());
+		assertTrue(oldFile.exists());
+		assertFalse(newFile.exists());
+		
+		saver.safeSave(projectFile);
+		assertTrue(projectFile.exists());
+		assertTrue(oldFile.exists());
+		assertFalse(newFile.exists());
+	}
+}
