@@ -42,8 +42,17 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 	{
 		locker.lock(getLockFile(projectFileToUse));
 		projectFile = projectFileToUse;
+		ensureNewlyCreatedProjectFileExists();
 	}
 	
+	private void ensureNewlyCreatedProjectFileExists() throws Exception
+	{
+		if (projectFile.exists())
+			return;
+
+		safeSave(projectFile);
+	}
+
 	public void stopSaving() throws Exception
 	{
 		projectFile = null;

@@ -53,6 +53,12 @@ public class TestAutomaticProjectSaver extends TestCaseEnhanced
 		super.tearDown();
 	}
 	
+	public void testStartSavingCreatesNewlyCreatedProject() throws Exception
+	{
+		saver.startSaving(projectFile);
+		assertTrue("project file was not created for the first time?", projectFile.exists());
+	}
+	
 	public void testSafeSave() throws Exception
 	{
 		File oldFile = saver.getOldFile(projectFile);
