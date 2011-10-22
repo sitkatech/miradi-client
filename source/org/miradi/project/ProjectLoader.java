@@ -54,6 +54,12 @@ public class ProjectLoader
 		final ProjectLoader projectLoader = new ProjectLoader(reader, project);
 		projectLoader.load();
 	}
+	
+	public static long loadLastModifiedTime(final UnicodeStringReader reader) throws Exception
+	{
+		final ProjectLoader loader = new ProjectLoader(reader, null);
+		return loader.getLastModified();
+	}
 
 	private void load() throws Exception
 	{
@@ -87,6 +93,24 @@ public class ProjectLoader
 		
 		if(!foundEnd)
 			throw new IOException("Project file is corrupted (no end marker found)");
+	}
+	
+	public long getLastModified() throws Exception
+	{
+		while(true)
+		{
+			String line = reader.readLine();
+			if(line == null)
+				break;
+
+			if (line.startsWith(AbstractMiradiProjectSaver.STOP_MARKER))
+			{
+				long lastModified = processStopLine(line);
+				return lastModified;
+			}
+		}
+
+		return 0;
 	}
 
 	private void validateHeaderLine(String fileHeaderLine) throws Exception
