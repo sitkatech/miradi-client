@@ -70,8 +70,7 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 	
 	private void saveProject() throws Exception
 	{
-		getWriter().writeBOM();
-		
+		writeFileHeader();
 		writeProjectVersion();
 		writeSchemaVersion();
 		writeProjectInfo();
