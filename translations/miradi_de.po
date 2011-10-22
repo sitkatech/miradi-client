@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-21 23:42-0500\n"
+"POT-Creation-Date: 2011-10-22 08:55-0500\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -7568,7 +7568,7 @@ msgid "Tab|Goals"
 msgstr "Schutzziele"
 
 #: Miradi/source/org/miradi/dialogs/viability/FactorPropertiesViabilityTreeManagementPanel.java:51
-#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityManagementPanel.java:148
+#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityManagementPanel.java:142
 msgid "Tab|Indicators"
 msgstr "Indikatoren"
 

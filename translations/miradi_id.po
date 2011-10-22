@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-21 23:42-0500\n"
+"POT-Creation-Date: 2011-10-22 08:55-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -7307,7 +7307,7 @@ msgid "Tab|Goals"
 msgstr "Sasaran-sasaran "
 
 #: Miradi/source/org/miradi/dialogs/viability/FactorPropertiesViabilityTreeManagementPanel.java:51
-#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityManagementPanel.java:148
+#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityManagementPanel.java:142
 msgid "Tab|Indicators"
 msgstr "Indikator "
 

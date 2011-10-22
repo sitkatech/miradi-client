@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-21 23:42-0500\n"
+"POT-Creation-Date: 2011-10-22 08:55-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -7091,7 +7091,7 @@ msgid "Tab|Goals"
 msgstr "总目标组"
 
 #: Miradi/source/org/miradi/dialogs/viability/FactorPropertiesViabilityTreeManagementPanel.java:51
-#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityManagementPanel.java:148
+#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityManagementPanel.java:142
 msgid "Tab|Indicators"
 msgstr "指示物 \t\t"
 
