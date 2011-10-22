@@ -23,6 +23,7 @@ package org.miradi.project;
 import java.io.IOException;
 
 import org.martus.util.UnicodeStringWriter;
+import org.martus.util.UnicodeWriter;
 import org.martus.util.xml.XmlUtilities;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
@@ -105,9 +106,15 @@ abstract public class AbstractMiradiProjectSaver
 		getWriter().write(data);
 	}
 	
+	protected void writeFileHeader() throws Exception
+	{
+		getWriter().writeln(FILE_HEADER);
+	}
+
 	public static final String TAB = "\t";
 	public static final String EQUALS = "=";
 
+	public static final String FILE_HEADER = UnicodeWriter.BOM_UTF8 + "MiradiProjectFile";
 	public static final String UPDATE_LAST_MODIFIED_TIME_CODE = "UL";
 	public static final String UPDATE_PROJECT_INFO_CODE = "UP";
 	public static final String UPDATE_PROJECT_VERSION_CODE = "UV";

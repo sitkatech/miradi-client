@@ -114,7 +114,8 @@ public class MpzToDotMiradiConverter extends AbstractMiradiProjectSaver
 	{
 		EAM.logWarning("MPZ converter is not yet handling quarantine or exceptions");
 		
-		getWriter().writeBOM();
+		writeFileHeader();
+		
 		Enumeration<? extends ZipEntry> zipEntries = getZipFile().entries();
 		while(zipEntries.hasMoreElements())
 		{

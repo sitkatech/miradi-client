@@ -27,7 +27,6 @@ import java.util.StringTokenizer;
 
 import org.martus.util.UnicodeReader;
 import org.martus.util.UnicodeStringReader;
-import org.martus.util.UnicodeWriter;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.objecthelpers.ORef;
@@ -61,11 +60,9 @@ public class ProjectLoader
 		project.clear();
 		
 		boolean foundEnd = false;
-		String firstLine = reader.readLine();
-		if(firstLine.charAt(0) != UnicodeWriter.BOM_UTF8)
-			throw new IOException("Invalid project file (missing BOM)");
-		firstLine = firstLine.substring(1);
-		processLine(firstLine);
+		String fileHeaderLine = reader.readLine();
+		if(!fileHeaderLine.equals(AbstractMiradiProjectSaver.FILE_HEADER))
+			throw new IOException("Not a Miradi Project File");
 		
 		while(true)
 		{
@@ -92,31 +89,31 @@ public class ProjectLoader
 
 	private void processLine(String line) throws Exception
 	{
-		if (line.startsWith(ProjectSaver.UPDATE_PROJECT_VERSION_CODE))
+		if (line.startsWith(AbstractMiradiProjectSaver.UPDATE_PROJECT_VERSION_CODE))
 			loadProjectVersionLine(line);
 
-		else if (line.startsWith(ProjectSaver.UPDATE_PROJECT_INFO_CODE))
+		else if (line.startsWith(AbstractMiradiProjectSaver.UPDATE_PROJECT_INFO_CODE))
 			loadProjectInfoLine(line);
 		
 		else if (line.startsWith(AbstractMiradiProjectSaver.UPDATE_LAST_MODIFIED_TIME_CODE))
 			loadLastModified(line);
 		
-		else if (line.startsWith(ProjectSaver.CREATE_OBJECT_CODE))
+		else if (line.startsWith(AbstractMiradiProjectSaver.CREATE_OBJECT_CODE))
 			loadCreateObjectLine(line);
 		
-		else if (line.startsWith(ProjectSaver.UPDATE_OBJECT_CODE))
+		else if (line.startsWith(AbstractMiradiProjectSaver.UPDATE_OBJECT_CODE))
 			loadUpdateObjectline(line);
 		
-		else if (line.startsWith(ProjectSaver.CREATE_SIMPLE_THREAT_RATING_BUNDLE_CODE))
+		else if (line.startsWith(AbstractMiradiProjectSaver.CREATE_SIMPLE_THREAT_RATING_BUNDLE_CODE))
 			loadCreateSimpleThreatRatingLine(line);
 		
-		else if (line.startsWith(ProjectSaver.UPDATE_SIMPLE_THREAT_RATING_BUNDLE_CODE))
+		else if (line.startsWith(AbstractMiradiProjectSaver.UPDATE_SIMPLE_THREAT_RATING_BUNDLE_CODE))
 			loadUpdateSimpleThreatRatingLine(line);
 		
-		else if (line.startsWith(ProjectSaver.UPDATE_QUARANTINE_CODE))
+		else if (line.startsWith(AbstractMiradiProjectSaver.UPDATE_QUARANTINE_CODE))
 			loadQuarantine(line);
 		
-		else if(line.startsWith(ProjectSaver.UPDATE_EXCEPTIONS_CODE))
+		else if(line.startsWith(AbstractMiradiProjectSaver.UPDATE_EXCEPTIONS_CODE))
 			loadExceptions(line);
 		
 		else
@@ -128,7 +125,7 @@ public class ProjectLoader
 		String[] tagValue = parseTagValueLine(line);
 		String tag = tagValue[0];
 		String value = tagValue[1];
-		if(!tag.equals(ProjectSaver.EXCEPTIONS_DATA_TAG))
+		if(!tag.equals(AbstractMiradiProjectSaver.EXCEPTIONS_DATA_TAG))
 			throw new Exception("Unknown Exceptions field: " + tag);
 
 		value = getXmlDecoded(value);
@@ -140,7 +137,7 @@ public class ProjectLoader
 		String[] tagValue = parseTagValueLine(line);
 		String tag = tagValue[0];
 		String value = tagValue[1];
-		if(!tag.equals(ProjectSaver.QUARANTINE_DATA_TAG))
+		if(!tag.equals(AbstractMiradiProjectSaver.QUARANTINE_DATA_TAG))
 			throw new Exception("Unknown Quarantine field: " + tag);
 
 		value = getXmlDecoded(value);
@@ -166,8 +163,8 @@ public class ProjectLoader
 	
 	private void loadProjectInfoLine(final String line)
 	{
-		String[] splitLine = line.split(ProjectSaver.TAB);
-		String[] tagValue = splitLine[1].split(ProjectSaver.EQUALS);
+		String[] splitLine = line.split(AbstractMiradiProjectSaver.TAB);
+		String[] tagValue = splitLine[1].split(AbstractMiradiProjectSaver.EQUALS);
 		String tag = tagValue[0];
 		String value = tagValue[1];
 		if (tag.equals(ProjectInfo.TAG_PROJECT_METADATA_ID))
