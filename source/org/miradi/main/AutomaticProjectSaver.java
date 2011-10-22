@@ -40,7 +40,7 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 	
 	public void startSaving(File projectFileToUse) throws Exception
 	{
-		locker.lock(projectFileToUse);
+		locker.lock(getLockFile(projectFileToUse));
 		projectFile = projectFileToUse;
 	}
 	
@@ -70,21 +70,43 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 
 	private void safeSave(File currentFile) throws IOException, Exception
 	{
-		File oldFile = new File(currentFile.getAbsolutePath() + ".old");
-		File newFile = new File(currentFile.getAbsolutePath() + ".new");
+		File oldFile = getOldFile(currentFile);
+		File newFile = getNewFile(currentFile);
 
 		newFile.delete();
 		save(newFile);
 
 		oldFile.delete();
-		currentFile.renameTo(oldFile);
+		if(!currentFile.renameTo(oldFile))
+			throw new IOException("Rename current to oldfailed");
 
-		newFile.renameTo(currentFile);
+		if(!newFile.renameTo(currentFile))
+			throw new IOException("Rename new to current failed");
 		
 		// NOTE: recovery steps:
 		// 1. if valid new file exists, use it, else
 		// 2. if valid current file exists, use it, else
 		// 3. if valid old file exists, use it
+	}
+
+	private File getOldFile(File currentFile)
+	{
+		return getFileWithSuffix(currentFile, ".old");
+	}
+
+	private File getNewFile(File currentFile)
+	{
+		return getFileWithSuffix(currentFile, ".new");
+	}
+
+	private File getLockFile(File currentFile)
+	{
+		return getFileWithSuffix(currentFile, ".lock");
+	}
+
+	private File getFileWithSuffix(File currentFile, String suffix)
+	{
+		return new File(currentFile.getAbsolutePath() + suffix);
 	}
 	
 	private void save(File file) throws Exception
