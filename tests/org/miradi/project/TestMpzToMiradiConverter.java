@@ -53,6 +53,10 @@ public class TestMpzToMiradiConverter extends TestCaseWithProject
 		// reflist
 		// simple threat rating bundle values
 		// ...
+		
+		final int expectedSizeAfterTruncationOfSampleException = 4731;
+		final String exceptionLog = project2.getExceptionLog();
+		assertTrue("Exception log did not get truncated?", exceptionLog.length() < expectedSizeAfterTruncationOfSampleException);
 	}
 
 	private byte[] readSampleMpz() throws Exception
