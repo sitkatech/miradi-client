@@ -73,13 +73,13 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 		File oldFile = getOldFile(currentFile);
 		File newFile = getNewFile(currentFile);
 
-		safeDelete(newFile);
+		deleteIfExists(newFile);
 		save(newFile);
 
-		safeDelete(oldFile);
-		safeRename(currentFile, oldFile);
+		deleteIfExists(oldFile);
+		renameIfExists(currentFile, oldFile);
 
-		safeRename(newFile, currentFile);
+		rename(newFile, currentFile);
 		
 		// NOTE: recovery steps:
 		// 1. if valid new file exists, use it, else
@@ -87,7 +87,7 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 		// 3. if valid old file exists, use it
 	}
 
-	private void safeDelete(File file) throws IOException
+	private void deleteIfExists(File file) throws IOException
 	{
 		if(!file.exists())
 			return;
@@ -96,11 +96,16 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 			throw new IOException("Delete failed: " + file.getAbsolutePath());
 	}
 
-	private void safeRename(File fromFile, File toFile) throws IOException
+	private void renameIfExists(File fromFile, File toFile) throws IOException
 	{
 		if(!fromFile.exists())
 			return;
 		
+		rename(fromFile, toFile);
+	}
+
+	private void rename(File fromFile, File toFile) throws IOException
+	{
 		if(!fromFile.renameTo(toFile))
 			throw new IOException("Rename failed: " + fromFile.getAbsolutePath() + "->" + toFile.getAbsolutePath());
 	}
