@@ -63,9 +63,25 @@ public class ProjectWithHelpers extends Project implements CommandExecutedListen
 		diagramModel = null;
 	}
 
-	protected Command getLastCommand()
+	protected Command popLastCommand()
 	{
+		if(commandStack.size() == 0)
+			return null;
 		return commandStack.remove(commandStack.size()-1);
+	}
+
+	protected Command popToLastNonTransactionCommand()
+	{
+		while(true)
+		{
+			Command last = popLastCommand();
+			if(last == null)
+				return last;
+			
+			boolean isTransactionCommand = last.isBeginTransaction() || last.isEndTransaction();
+			if(!isTransactionCommand )
+				return last;
+		}
 	}
 
 	public void loadDiagramModelForTesting() throws Exception
