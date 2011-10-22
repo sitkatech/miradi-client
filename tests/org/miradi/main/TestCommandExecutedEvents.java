@@ -46,7 +46,8 @@ public class TestCommandExecutedEvents extends MiradiTestCase
 		{
 			public void commandExecuted(CommandExecutedEvent event)
 			{
-				++timesExecuted;
+				if(event.isCreateObjectCommand() || event.isDeleteObjectCommand())
+					++timesExecuted;
 			}
 			
 			public int timesExecuted;

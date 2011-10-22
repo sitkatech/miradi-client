@@ -347,10 +347,8 @@ public class TestProject extends MiradiTestCase
 		FactorCell node1 = project.createFactorCell(ObjectType.TARGET);
 		
 		// reset command stack to empty
-		assertNotNull(project.getLastCommand());
-		assertNotNull(project.getLastCommand());
-		assertNotNull(project.getLastCommand());
-		assertNotNull(project.getLastCommand());
+		while(project.popLastCommand() != null)
+			;
 		
 		node1.setPreviousLocation(new Point(0,0));
 		node1.setLocation(new Point(0,0));
@@ -359,25 +357,9 @@ public class TestProject extends MiradiTestCase
 		ORefList noNodesMoved = new ORefList();
 		noNodesMoved.add(node1.getDiagramFactorRef());
 	
-		project.executeCommand(new CommandBeginTransaction());
 		new FactorMoveHandler(project, project.getTestingDiagramModel()).factorsWereMovedOrResized(noNodesMoved);
-		project.executeCommand(new CommandEndTransaction());
 		
-		//begin transaction
-		project.getLastCommand();
-		
-		//end trasaction
-		project.getLastCommand();
-		
-		
-		try
-		{
-			project.getLastCommand();
-			fail("Should have thrown a null pointer since command should not have been recorded for a node which wasn't moved");
-		}
-		catch(Exception expected)
-		{
-		}
+		assertNull("Move executed a real command?", project.popToLastNonTransactionCommand());
 		
 		Point deltaLocation = new Point(55, 88);
 		node1.setLocation(deltaLocation);
@@ -395,19 +377,17 @@ public class TestProject extends MiradiTestCase
 		new FactorMoveHandler(project, project.getTestingDiagramModel()).factorsWereMovedOrResized(diagramFactorRefs);
 		project.executeCommand(new CommandEndTransaction());
 		
-		project.getLastCommand(); //End Transaction
-		
-		CommandSetObjectData commandDiagramMove1 = (CommandSetObjectData)project.getLastCommand();
+		CommandSetObjectData commandDiagramMove1 = (CommandSetObjectData)project.popToLastNonTransactionCommand();
 		assertEquals(node2.getDiagramFactorId(), commandDiagramMove1.getObjectId());
 		Point point1 = EnhancedJsonObject.convertToPoint(commandDiagramMove1.getDataValue());
 		assertEquals(point1, project.getSnapped(node2Location));
 		
-		CommandSetObjectData commandDiagramMove2 = (CommandSetObjectData)project.getLastCommand();
+		CommandSetObjectData commandDiagramMove2 = (CommandSetObjectData)project.popToLastNonTransactionCommand();
 		assertEquals(node1.getDiagramFactorId(), commandDiagramMove2.getObjectId());
 		Point point2 = EnhancedJsonObject.convertToPoint(commandDiagramMove2.getDataValue());
 		assertEquals(point2, project.getSnapped(deltaLocation));
 		
-		project.getLastCommand(); //begin Transaction
+		project.popLastCommand(); //begin Transaction
 	}
 	
 	public void testResizeNodesOnly() throws Exception
@@ -435,13 +415,11 @@ public class TestProject extends MiradiTestCase
 		diagramFactorRefs.add(node1.getDiagramFactorRef());
 		diagramFactorRefs.add(node2.getDiagramFactorRef());
 		
-		project.executeCommand(new CommandBeginTransaction());
 		new FactorMoveHandler(project, project.getTestingDiagramModel()).factorsWereMovedOrResized(diagramFactorRefs);
-		project.executeCommand(new CommandEndTransaction());
 		
-		project.getLastCommand(); //End Transaction
+		project.popLastCommand(); //End Transaction
 		
-		CommandSetObjectData commandSetNodeSize2 = (CommandSetObjectData)project.getLastCommand();
+		CommandSetObjectData commandSetNodeSize2 = (CommandSetObjectData)project.popLastCommand();
 		DiagramFactor diagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, node2.getDiagramFactorId()));
 		String foundSize =  EnhancedJsonObject.convertFromDimension(diagramFactor.getSize());
 		assertEquals(foundSize, commandSetNodeSize2.getDataValue());
@@ -449,13 +427,13 @@ public class TestProject extends MiradiTestCase
 		String node2PreviousSize = EnhancedJsonObject.convertFromDimension(node2.getPreviousSize());
 		assertEquals(node2PreviousSize, commandSetNodeSize2.getPreviousDataValue());
 		
-		CommandSetObjectData commandSetNodeSize1 = (CommandSetObjectData)project.getLastCommand();
+		CommandSetObjectData commandSetNodeSize1 = (CommandSetObjectData)project.popToLastNonTransactionCommand();
 		String size = EnhancedJsonObject.convertFromDimension(node1.getSize());
 		assertEquals(size, commandSetNodeSize1.getDataValue());
 		String previousSize = EnhancedJsonObject.convertFromDimension(node1.getPreviousSize());
 		assertEquals(previousSize, commandSetNodeSize1.getPreviousDataValue());
 		
-		project.getLastCommand(); //begin Transaction
+		project.popLastCommand(); //begin Transaction
 	}
 
 	public void testResizeAndMoveNodes() throws Exception
@@ -512,13 +490,9 @@ public class TestProject extends MiradiTestCase
 		diagramFactorRefs.add(nodeResizedOnly.getDiagramFactorRef());
 		diagramFactorRefs.add(nodeNotMovedOrResized.getDiagramFactorRef());
 
-		project.executeCommand(new CommandBeginTransaction());
 		new FactorMoveHandler(project, project.getTestingDiagramModel()).factorsWereMovedOrResized(diagramFactorRefs);
-		project.executeCommand(new CommandEndTransaction());
 		
-		project.getLastCommand(); //End Transaction
-		
-		CommandSetObjectData commandNodeResizedOnly = (CommandSetObjectData)project.getLastCommand();
+		CommandSetObjectData commandNodeResizedOnly = (CommandSetObjectData)project.popToLastNonTransactionCommand();
 		String nodeResizeOnlySize = EnhancedJsonObject.convertFromDimension(nodeResizedOnly.getSize());
 		assertEquals(nodeResizeOnlySize, commandNodeResizedOnly.getDataValue());
 		
@@ -526,19 +500,17 @@ public class TestProject extends MiradiTestCase
 		assertEquals(nodeResizeOnlyPreviousSize, commandNodeResizedOnly.getPreviousDataValue());
 		
 		
-		CommandSetObjectData commandDiagramMoveRecorded = (CommandSetObjectData)project.getLastCommand();
+		CommandSetObjectData commandDiagramMoveRecorded = (CommandSetObjectData)project.popToLastNonTransactionCommand();
 		Point deltaPoint = EnhancedJsonObject.convertToPoint(commandDiagramMoveRecorded.getDataValue());
 		assertEquals(diagramFactorMovedOnly.getLocation(), deltaPoint);
 		assertEquals(diagramFactorMovedOnly.getDiagramFactorId(), commandDiagramMoveRecorded.getObjectId());
 		
-		CommandSetObjectData commandNodeResizedAndMovedRecorded = (CommandSetObjectData)project.getLastCommand();
+		CommandSetObjectData commandNodeResizedAndMovedRecorded = (CommandSetObjectData)project.popToLastNonTransactionCommand();
 		String nodeResizedAndMovedSize = EnhancedJsonObject.convertFromDimension(nodeResizedAndMoved.getSize());
 		assertEquals(nodeResizedAndMovedSize, commandNodeResizedAndMovedRecorded.getDataValue());
 		
 		String nodeResizedAndMovedPreviousSize = EnhancedJsonObject.convertFromDimension(nodeResizedAndMoved.getPreviousSize());
 		assertEquals(nodeResizedAndMovedPreviousSize, commandNodeResizedAndMovedRecorded.getPreviousDataValue());
-		
-		project.getLastCommand(); //begin Transaction
 	}
 
 	public void testPasteNodesOnlyIntoProject() throws Exception

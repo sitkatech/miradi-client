@@ -414,8 +414,9 @@ public class TestCommands extends MiradiTestCase
 		CommandCreateObject cmd = new CommandCreateObject(ObjectType.TASK);
 		project.executeCommand(cmd);
 		project.undo();
-		assertEquals("didn't undo one command?", 2, undoListener.undoneCommands.size());
-		assertEquals("didn't fire proper undo?", cmd.toString(), undoListener.undoneCommands.get(0).toString());
+		final int BEGIN_CREATE_END_BEGIN_DELETE_END = 6;
+		assertEquals("didn't undo one command?", BEGIN_CREATE_END_BEGIN_DELETE_END, undoListener.undoneCommands.size());
+		assertEquals("didn't fire proper undo?", cmd.toString(), undoListener.undoneCommands.get(1).toString());
 		project.removeCommandExecutedListener(undoListener);
 	}
 	
