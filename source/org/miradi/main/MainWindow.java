@@ -546,6 +546,10 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		{
 			EAM.errorDialog(EAM.text("That project is in use by another copy of this application"));
 		}
+		catch(ProjectLoader.NotMiradiProjectFileException e)
+		{
+			EAM.errorDialog(EAM.text("That file is not a valid Miradi project"));
+		}
 		catch(ProjectLoader.ProjectFileTooOldException e)
 		{
 			EAM.errorDialog(EAM.text("That project is too old to be opened with this version of Miradi"));

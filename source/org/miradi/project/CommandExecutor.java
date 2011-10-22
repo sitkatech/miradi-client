@@ -81,6 +81,9 @@ public class CommandExecutor
 		try
 		{
 			getNormalExecutor().executeSingleCommand(command);
+			if(shouldUpdateLastModfiedTime(command))
+				getProject().setLastModified(System.currentTimeMillis());
+			
 			if(!isInTransaction())
 				transactionOrSingleCommandHasEnded();
 		}

@@ -21,6 +21,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.project;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.util.Date;
 
 import org.martus.util.UnicodeStringWriter;
 import org.martus.util.UnicodeWriter;
@@ -108,13 +110,26 @@ abstract public class AbstractMiradiProjectSaver
 	
 	protected void writeFileHeader() throws Exception
 	{
-		getWriter().writeln(BASIC_FILE_HEADER + " " + VERSION_LOW + " " + VERSION_HIGH);
+		getWriter().writeln(getBasicFileHeader() + " " + VERSION_LOW + " " + VERSION_HIGH);
+	}
+	
+	public void writeStopMarker(long lastModifiedMillis) throws Exception
+	{
+		Date lastModified = new Date(lastModifiedMillis);
+		long lastModifiedForComputers = lastModified.getTime();
+		String lastModifiedForHumans = DateFormat.getDateTimeInstance().format(lastModified);
+		getWriter().writeln(STOP_MARKER + " " + lastModifiedForComputers + " " + lastModifiedForHumans);
+	}
+	
+	public static String getBasicFileHeader()
+	{
+		String BOM_STRING = new String(new char[] {UnicodeWriter.BOM_UTF8});
+		return BOM_STRING + "MiradiProjectFile";		
 	}
 	
 	public static final String TAB = "\t";
 	public static final String EQUALS = "=";
 
-	public static final String BASIC_FILE_HEADER = UnicodeWriter.BOM_UTF8 + "MiradiProjectFile";
 	public static final int VERSION_LOW = 1;
 	public static final int VERSION_HIGH = 1;
 	

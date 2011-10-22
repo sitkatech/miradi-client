@@ -191,7 +191,12 @@ public class Project
 	
 	public long getLastModifiedTime()
 	{
-		return System.currentTimeMillis();
+		return lastModifiedMillis;
+	}
+
+	public void setLastModified(long newlastModifiedMillis)
+	{
+		lastModifiedMillis = newlastModifiedMillis;
 	}
 
 	public IdAssigner getNormalIdAssigner()
@@ -1388,6 +1393,7 @@ public class Project
 	private String projectName;
 	private ProjectInfo projectInfo;
 	private ObjectManager objectManager;
+	private long lastModifiedMillis;
 
 	private SimpleThreatRatingFramework simpleThreatFramework;
 	private StressBasedThreatRatingFramework stressBasedThreatFramework;

@@ -25,6 +25,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.zip.ZipEntry;
@@ -126,7 +129,7 @@ public class MpzToDotMiradiConverter extends AbstractMiradiProjectSaver
 			if (!entry.isDirectory())
 				extractOneFile(entry);
 		}
-		getWriter().write(STOP_MARKER);
+		writeStopMarker(lastModifiedMillis);
 		getWriter().flush();
 		if(convertedProjectVersion != REQUIRED_VERSION)
 			throw new RuntimeException("Cannot convert MPZ without a version");
@@ -159,7 +162,16 @@ public class MpzToDotMiradiConverter extends AbstractMiradiProjectSaver
 		if (relativeFilePath.equals(ProjectServer.LAST_MODIFIED_FILE_NAME))
 		{
 			String trimmed = fileContent.trim();
-			writeTagValue(UPDATE_LAST_MODIFIED_TIME_CODE, LAST_MODIFIED_TAG, trimmed);
+			try
+			{
+				DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+				Date lastModified = dateFormat.parse(trimmed);
+				lastModifiedMillis = lastModified.getTime();
+			}
+			catch(Exception e)
+			{
+				lastModifiedMillis = System.currentTimeMillis();
+			}
 		}
 		if (relativeFilePath.startsWith("json/objects") && !relativeFilePath.endsWith("manifest"))
 		{
@@ -258,4 +270,5 @@ public class MpzToDotMiradiConverter extends AbstractMiradiProjectSaver
 	private static int REQUIRED_VERSION = 61;
 	private ZipFile zipFile;
 	private int convertedProjectVersion;
+	private long lastModifiedMillis;
 }
