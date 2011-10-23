@@ -32,9 +32,9 @@ import org.martus.util.UnicodeStringWriter;
 import org.miradi.main.ResourcesHandler;
 import org.miradi.main.TestCaseWithProject;
 
-public class TestMpzToMiradiConverter extends TestCaseWithProject
+public class TestMpzToMpfConverter extends TestCaseWithProject
 {
-	public TestMpzToMiradiConverter(String name)
+	public TestMpzToMpfConverter(String name)
 	{
 		super(name);
 	}
