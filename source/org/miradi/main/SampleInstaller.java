@@ -25,7 +25,7 @@ import java.util.Vector;
 import java.util.zip.ZipFile;
 
 import org.martus.util.UnicodeWriter;
-import org.miradi.project.MpzToDotMiradiConverter;
+import org.miradi.project.MpzToMpfConverter;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.MpfFileFilter;
@@ -73,7 +73,7 @@ public class SampleInstaller
 		UnicodeWriter writer = new UnicodeWriter(destination);
 		try
 		{
-			String converted = MpzToDotMiradiConverter.convert(new ZipFile(projectFileToImport));
+			String converted = MpzToMpfConverter.convert(new ZipFile(projectFileToImport));
 			writer.write(converted);
 		}
 		finally

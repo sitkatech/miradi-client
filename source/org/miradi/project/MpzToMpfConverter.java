@@ -45,7 +45,7 @@ import org.miradi.utils.EnhancedJsonArray;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.Translation;
 
-public class MpzToDotMiradiConverter extends AbstractMiradiProjectSaver
+public class MpzToMpfConverter extends AbstractMiradiProjectSaver
 {
 	public static void main(String[] args) throws Exception
 	{
@@ -93,7 +93,7 @@ public class MpzToDotMiradiConverter extends AbstractMiradiProjectSaver
 		System.out.println("Converted");
 	}
 	
-	public MpzToDotMiradiConverter(ZipFile mpzFileToUse, UnicodeStringWriter writerToUse) throws Exception
+	public MpzToMpfConverter(ZipFile mpzFileToUse, UnicodeStringWriter writerToUse) throws Exception
 	{
 		super(writerToUse);
 		
@@ -109,7 +109,7 @@ public class MpzToDotMiradiConverter extends AbstractMiradiProjectSaver
 	
 	public static final void convert(ZipFile zipFileToUse, UnicodeStringWriter writer) throws Exception
 	{
-		MpzToDotMiradiConverter conveter = new MpzToDotMiradiConverter(zipFileToUse, writer);
+		MpzToMpfConverter conveter = new MpzToMpfConverter(zipFileToUse, writer);
 		conveter.convert();
 	}
 	
