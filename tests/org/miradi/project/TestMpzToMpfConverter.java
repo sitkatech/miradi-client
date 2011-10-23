@@ -58,6 +58,16 @@ public class TestMpzToMpfConverter extends TestCaseWithProject
 		final String exceptionLog = project2.getExceptionLog();
 		assertTrue("Exception log did not get truncated?", exceptionLog.length() < expectedSizeAfterTruncationOfSampleException);
 	}
+	
+	public void testSafeConvertUtf8BytesToString() throws Exception
+	{
+		String test = new String(new char[] {0x20AC, 'T', 'e'});
+		byte[] bytes = test.getBytes("UTF-8");
+		byte[] withIncompleteAtStart = new byte[bytes.length - 1];
+		System.arraycopy(bytes, 1, withIncompleteAtStart, 0, withIncompleteAtStart.length);
+		String safe = MpzToMpfConverter.safeConvertUtf8BytesToString(withIncompleteAtStart);
+		assertEquals("Te", safe);
+	}
 
 	private byte[] readSampleMpz() throws Exception
 	{
