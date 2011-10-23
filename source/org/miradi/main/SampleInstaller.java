@@ -106,7 +106,7 @@ public class SampleInstaller
 			File mpzFile = allMpzFiles[index];
 			String validatedName = getValidatedProjectNameWithoutExtension(mpzFile);
 			File newProjectFile = new File(homeDir, validatedName + MpfFileFilter.EXTENSION);
-			if (FileSystemTreeNode.isProjectFile(newProjectFile))
+			if (FileSystemTreeNode.isProjectFile(newProjectFile) && !newProjectFile.exists())
 				installableSampleProjects.add(mpzFile);
 		}
 		
