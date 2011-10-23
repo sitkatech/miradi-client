@@ -79,7 +79,7 @@ abstract public class FileSystemTreeNode extends TreeTableNode
 			}
 			if(column == 1)
 			{
-				if(isProjectDirectory())
+				if(isLegacyProjectDirectory())
 				{
 					return getLastModifiedDate();
 				}
@@ -113,7 +113,7 @@ abstract public class FileSystemTreeNode extends TreeTableNode
 	public void rebuild() throws Exception
 	{
 		children.clear();
-		if(isProjectDirectory())
+		if(isLegacyProjectDirectory())
 			return;
 		
 		File[] files = thisFile.listFiles();
@@ -172,7 +172,7 @@ abstract public class FileSystemTreeNode extends TreeTableNode
 		return (file.getName().endsWith(".Miradi"));
 	}
 	
-	public boolean isProjectDirectory() throws Exception
+	public boolean isLegacyProjectDirectory() throws Exception
 	{
 		return ProjectServer.isExistingLocalProject(thisFile);
 	}

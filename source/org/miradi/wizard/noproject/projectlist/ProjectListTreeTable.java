@@ -319,7 +319,7 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving impleme
 			if(node.isProject())
 				return projectRenderer;
 			
-			if(node.isProjectDirectory())
+			if(node.isLegacyProjectDirectory())
 				return oldProjectRenderer;
 			
 			return folderRenderer;
