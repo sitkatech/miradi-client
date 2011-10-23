@@ -55,9 +55,10 @@ public class TestAutomaticProjectSaver extends TestCaseEnhanced
 	
 	public void testSessionFileCreated() throws Exception
 	{
-		saver.startSaving(projectFile);
 		final File sessionFile = new File(projectFile.getAbsolutePath() + AutomaticProjectSaver.SESSION_EXTENTION);
-		assertTrue("session file was not creatd?", sessionFile.exists());
+		assertFalse("There should not be a session file?", sessionFile.exists());
+		saver.startSaving(projectFile);
+		assertTrue("session file was not created?", sessionFile.exists());
 	}
 	
 	public void testStartSavingCreatesNewlyCreatedProject() throws Exception
