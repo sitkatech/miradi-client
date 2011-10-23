@@ -23,8 +23,10 @@ package org.miradi.project;
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -137,12 +139,18 @@ public class MpzToMpfConverter extends AbstractMiradiProjectSaver
 	
 	private void extractOneFile(ZipEntry entry) throws Exception
 	{
-		byte[] contents = readIntoByteArray(entry);
-		final String fileContent = new String(contents, "UTF-8");
-		
 		String relativeFilePath = entry.getName();
 		int slashAt = findSlash(relativeFilePath);
 		relativeFilePath = relativeFilePath.substring(slashAt + 1);
+
+		if (relativeFilePath.startsWith(EAM.EXCEPTIONS_LOG_FILE_NAME))
+		{
+			convertExceptionLog(entry);
+			return;
+		}
+
+		byte[] contents = readIntoByteArray(entry);
+		final String fileContent = new String(contents, "UTF-8");
 		
 		if (relativeFilePath.equals("json/version"))
 		{
@@ -181,12 +189,49 @@ public class MpzToMpfConverter extends AbstractMiradiProjectSaver
 		{
 			writeSimpleThreatFramework(fileContent);
 		}
-		if (relativeFilePath.startsWith(EAM.EXCEPTIONS_LOG_FILE_NAME))
+	}
+
+	private void convertExceptionLog(ZipEntry entry) throws Exception
+	{
+		long totalSize = entry.getSize();
+		final int MAX_EXCEPTION_LOG_SIZE = 20000;
+		long availableUpTo20k = Math.min(totalSize, MAX_EXCEPTION_LOG_SIZE);
+		byte[] exceptionLogBytes = new byte[(int)availableUpTo20k];
+
+		InputStream in = getZipFile().getInputStream(entry);
+		try
 		{
-			final String xmlNewLineEncode = xmlNewLineEncode(fileContent);
-			final String truncatedExceptions = truncate(xmlNewLineEncode);
-			writeTagValue(UPDATE_EXCEPTIONS_CODE, EXCEPTIONS_DATA_TAG, truncatedExceptions);
+			in.skip(totalSize - availableUpTo20k);
+			int got = in.read(exceptionLogBytes);
+			if(got != availableUpTo20k)
+				throw new IOException("convertExceptionLog Tried to read " + availableUpTo20k + " but got " + got);
 		}
+		finally
+		{
+			in.close();
+		}
+		
+		String exceptionLog = safeConvertUtf8BytesToString(exceptionLogBytes);
+		
+		final String xmlNewLineEncode = xmlNewLineEncode(exceptionLog);
+		final String truncatedExceptions = truncate(xmlNewLineEncode);
+		writeTagValue(UPDATE_EXCEPTIONS_CODE, EXCEPTIONS_DATA_TAG, truncatedExceptions);
+	}
+
+	public static String safeConvertUtf8BytesToString(byte[] exceptionLogBytes) throws UnsupportedEncodingException
+	{
+		int startOfUtf8Character = findStartOfFirstValueUtf8Character(exceptionLogBytes);
+		int length = exceptionLogBytes.length - startOfUtf8Character;
+		String exceptionLog = new String(exceptionLogBytes, startOfUtf8Character, length, "UTF-8");
+		return exceptionLog;
+	}
+
+	private static int findStartOfFirstValueUtf8Character(byte[] exceptionLogBytes)
+	{
+		int startOfUtf8Character = 0;
+		while(startOfUtf8Character < exceptionLogBytes.length && exceptionLogBytes[startOfUtf8Character] < 0)
+			++startOfUtf8Character;
+		return startOfUtf8Character;
 	}
 	
 	private String truncate(String fileContent)
