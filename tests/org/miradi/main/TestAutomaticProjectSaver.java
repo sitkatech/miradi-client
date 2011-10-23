@@ -59,6 +59,7 @@ public class TestAutomaticProjectSaver extends TestCaseEnhanced
 		assertFalse("There should not be a session file?", sessionFile.exists());
 		saver.startSaving(projectFile);
 		assertTrue("session file was not created?", sessionFile.exists());
+		assertTrue("session file is empty?", sessionFile.length() > 0);
 	}
 	
 	public void testStartSavingCreatesNewlyCreatedProject() throws Exception
