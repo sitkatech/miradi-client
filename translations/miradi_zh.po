@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-22 11:40-0500\n"
+"POT-Creation-Date: 2011-10-23 12:49-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -328,6 +328,7 @@ msgid "(see TNC tab for Ecoregions)"
 msgstr "（有关生态区参见TNC标签） \t\t"
 
 #: Miradi/source/org/miradi/utils/XmpzFileFilter.java:30
+#: Miradi/source/org/miradi/utils/MpfFileFilter.java:30
 msgid ")"
 msgstr ""
 
@@ -2441,7 +2442,7 @@ msgstr "迁移 \t\t"
 msgid "Button|Move"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/SampleInstaller.java:69
+#: Miradi/source/org/miradi/main/SampleInstaller.java:91
 msgid "Button|No"
 msgstr ""
 
@@ -2481,7 +2482,7 @@ msgstr "保留 \t\t"
 msgid "Button|Save"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/SampleInstaller.java:69
+#: Miradi/source/org/miradi/main/SampleInstaller.java:91
 msgid "Button|Yes"
 msgstr ""
 
@@ -3223,7 +3224,7 @@ msgstr ""
 msgid "Do you want to attempt to import %s into Miradi?"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/SampleInstaller.java:68
+#: Miradi/source/org/miradi/main/SampleInstaller.java:90
 msgid "Do you want to install the sample project?"
 msgstr ""
 
@@ -3541,6 +3542,10 @@ msgstr "JPEG (*.jpg) \t\t"
 #: Miradi/source/org/miradi/utils/TreeExportFileFilter.java:41
 msgid "FileFilter|MTE (*.mte)"
 msgstr "MTE (*.mte) \t\t"
+
+#: Miradi/source/org/miradi/utils/MpfFileFilter.java:30
+msgid "FileFilter|Miradi (*"
+msgstr ""
 
 #: Miradi/source/org/miradi/utils/LanguagePackFileFilter.java:56
 msgid "FileFilter|Miradi Language Pack (%s)"
@@ -4125,7 +4130,7 @@ msgstr ""
 msgid "Install Language Pack"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/SampleInstaller.java:71
+#: Miradi/source/org/miradi/main/SampleInstaller.java:93
 msgid "Install Sample Project"
 msgstr ""
 
@@ -5783,7 +5788,7 @@ msgstr "可持续科技教育计划（STEP） \t\t"
 msgid "SWOT"
 msgstr "态势（SWOT） \t\t"
 
-#: Miradi/source/org/miradi/main/SampleInstaller.java:48
+#: Miradi/source/org/miradi/main/SampleInstaller.java:51
 msgid "Sample Project Installed"
 msgstr ""
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-22 11:40-0500\n"
+"POT-Creation-Date: 2011-10-23 12:49-0500\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -376,6 +376,7 @@ msgid "(see TNC tab for Ecoregions)"
 msgstr "(Siehe TNC Tab für Ökoregionen)"
 
 #: Miradi/source/org/miradi/utils/XmpzFileFilter.java:30
+#: Miradi/source/org/miradi/utils/MpfFileFilter.java:30
 msgid ")"
 msgstr ")"
 
@@ -2677,7 +2678,7 @@ msgstr ""
 msgid "Button|Move"
 msgstr "Verschieben"
 
-#: Miradi/source/org/miradi/main/SampleInstaller.java:69
+#: Miradi/source/org/miradi/main/SampleInstaller.java:91
 msgid "Button|No"
 msgstr "Nein"
 
@@ -2717,7 +2718,7 @@ msgstr "Behalten"
 msgid "Button|Save"
 msgstr "Speichern"
 
-#: Miradi/source/org/miradi/main/SampleInstaller.java:69
+#: Miradi/source/org/miradi/main/SampleInstaller.java:91
 msgid "Button|Yes"
 msgstr "Ja"
 
@@ -3511,7 +3512,7 @@ msgstr ""
 msgid "Do you want to attempt to import %s into Miradi?"
 msgstr "Wollen Sie versuchen %s in Miradi zu importieren?"
 
-#: Miradi/source/org/miradi/main/SampleInstaller.java:68
+#: Miradi/source/org/miradi/main/SampleInstaller.java:90
 msgid "Do you want to install the sample project?"
 msgstr "Wollen Sie das Beispielprojekt installieren?"
 
@@ -3849,6 +3850,10 @@ msgstr "JPEG (*.jpg)"
 #: Miradi/source/org/miradi/utils/TreeExportFileFilter.java:41
 msgid "FileFilter|MTE (*.mte)"
 msgstr "MTE (*.mte)"
+
+#: Miradi/source/org/miradi/utils/MpfFileFilter.java:30
+msgid "FileFilter|Miradi (*"
+msgstr ""
 
 #: Miradi/source/org/miradi/utils/LanguagePackFileFilter.java:56
 msgid "FileFilter|Miradi Language Pack (%s)"
@@ -4455,7 +4460,7 @@ msgstr "Installieren"
 msgid "Install Language Pack"
 msgstr "Sprachpaket installieren"
 
-#: Miradi/source/org/miradi/main/SampleInstaller.java:71
+#: Miradi/source/org/miradi/main/SampleInstaller.java:93
 msgid "Install Sample Project"
 msgstr "Beispielprojekt installieren"
 
@@ -6171,7 +6176,7 @@ msgstr "STEP"
 msgid "SWOT"
 msgstr "SWOT"
 
-#: Miradi/source/org/miradi/main/SampleInstaller.java:48
+#: Miradi/source/org/miradi/main/SampleInstaller.java:51
 msgid "Sample Project Installed"
 msgstr "Beispielprojekt installiert"
 
