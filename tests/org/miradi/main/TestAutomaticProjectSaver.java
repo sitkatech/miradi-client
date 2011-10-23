@@ -53,6 +53,13 @@ public class TestAutomaticProjectSaver extends TestCaseEnhanced
 		super.tearDown();
 	}
 	
+	public void testSessionFileCreated() throws Exception
+	{
+		saver.startSaving(projectFile);
+		final File sessionFile = new File(projectFile.getAbsolutePath() + AutomaticProjectSaver.SESSION_EXTENTION);
+		assertTrue("session file was not creatd?", sessionFile.exists());
+	}
+	
 	public void testStartSavingCreatesNewlyCreatedProject() throws Exception
 	{
 		saver.startSaving(projectFile);
