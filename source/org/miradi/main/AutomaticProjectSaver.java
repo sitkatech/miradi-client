@@ -39,6 +39,11 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 		locker = new FileLocker();
 	}
 	
+	public void dispose()
+	{
+		project.removeCommandExecutedListener(this);
+	}
+	
 	public void startSaving(File projectFileToUse) throws Exception
 	{
 		locker.lock(getLockFile(projectFileToUse));
