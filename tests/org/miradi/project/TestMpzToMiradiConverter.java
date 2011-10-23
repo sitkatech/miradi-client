@@ -100,7 +100,7 @@ public class TestMpzToMiradiConverter extends TestCaseWithProject
 			fileOut.write(byteArray);
 			fileOut.flush();
 			fileOut.close();
-			MpzToDotMiradiConverter.convert(new ZipFile(tempMpzFile), writer);
+			MpzToMpfConverter.convert(new ZipFile(tempMpzFile), writer);
 			
 			return writer.toString();
 		}
