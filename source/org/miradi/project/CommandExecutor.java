@@ -80,11 +80,7 @@ public class CommandExecutor
 			throw new CommandFailedException("executeCommand bad transaction state: " + command.toString());
 		try
 		{
-			if (isInCommandSideEffectMode())
-				executeAsSideEffect(command);
-			else
-				getNormalExecutor().executeSingleCommand(command);
-			
+			getNormalExecutor().executeSingleCommand(command);			
 			if(shouldUpdateLastModfiedTime(command))
 				getProject().setLastModified(System.currentTimeMillis());
 			
