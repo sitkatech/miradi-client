@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-23 14:09-0500\n"
+"POT-Creation-Date: 2011-10-23 17:27-0500\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -554,7 +554,7 @@ msgstr "7B. Teilen Sie Ihre Erfahrungen"
 msgid "7C. Create a Learning Environment"
 msgstr "7C. Schaffen Sie eine Lernumgebung"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1254
+#: Miradi/source/org/miradi/main/MainWindow.java:1255
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -3729,7 +3729,7 @@ msgstr "Geschätze Kosten für Aktivitäten und Monitoring"
 msgid "Euro"
 msgstr "Euro"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:832
+#: Miradi/source/org/miradi/main/MainWindow.java:833
 msgid "Existing data for a different fiscal year is being excluded"
 msgstr ""
 "Bereits vorhandene Daten eines anderen Haushaltsjahres werden ausgeschlossen"
@@ -5925,7 +5925,7 @@ msgstr "Projektressource"
 msgid "Project Resource Filter Editor"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:830
+#: Miradi/source/org/miradi/main/MainWindow.java:831
 msgid "Project Resource Filter Is On"
 msgstr ""
 
@@ -6552,7 +6552,7 @@ msgstr ""
 msgid "Standard Reports"
 msgstr "Standard Berichte"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:864
+#: Miradi/source/org/miradi/main/MainWindow.java:865
 msgid ""
 "Start date (currently %startDate) must be earlier than end date (currently %"
 "endDate)"
@@ -8375,7 +8375,7 @@ msgstr ""
 "Löschen nicht möglich, da das Projekt von einer anderen Kopie dieser "
 "Anwendung benutzt wird:\n"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1238
+#: Miradi/source/org/miradi/main/MainWindow.java:1239
 msgid "Unable to launch external web browser"
 msgstr ""
 
@@ -8397,7 +8397,7 @@ msgstr ""
 "Projekt konnte nicht umbenannt werden, da dieses noch in Miradi geöffnet "
 "ist:\n"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1021
+#: Miradi/source/org/miradi/main/MainWindow.java:1022
 msgid "Unable to save preferences"
 msgstr "Einstellung konnten nicht gespeichert werden"
 

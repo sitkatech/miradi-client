@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-23 14:09-0500\n"
+"POT-Creation-Date: 2011-10-23 17:27-0500\n"
 "PO-Revision-Date: 2011-04-29 11:26+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -517,7 +517,7 @@ msgstr "7B. Condividi la Lezione Appresa"
 msgid "7C. Create a Learning Environment"
 msgstr "7C. Crea un Ambiente di Apprendimento"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1254
+#: Miradi/source/org/miradi/main/MainWindow.java:1255
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -3674,7 +3674,7 @@ msgstr "Stima i costi per le attività e il monitoraggio"
 msgid "Euro"
 msgstr "Euro"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:832
+#: Miradi/source/org/miradi/main/MainWindow.java:833
 msgid "Existing data for a different fiscal year is being excluded"
 msgstr "I dati esistenti per un anno fiscale differente sono esclusi"
 
@@ -5855,7 +5855,7 @@ msgstr "Risorsa del progetto"
 msgid "Project Resource Filter Editor"
 msgstr "Editor del filtro della risorsa del progetto"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:830
+#: Miradi/source/org/miradi/main/MainWindow.java:831
 msgid "Project Resource Filter Is On"
 msgstr "Il filtro delle risorse di progetto è attivo"
 
@@ -6456,7 +6456,7 @@ msgstr "Portatore di interesse"
 msgid "Standard Reports"
 msgstr "Report Standard"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:864
+#: Miradi/source/org/miradi/main/MainWindow.java:865
 msgid ""
 "Start date (currently %startDate) must be earlier than end date (currently %"
 "endDate)"
@@ -8251,7 +8251,7 @@ msgid ""
 "application:\n"
 msgstr "Impossibile cancellare questo progetto perchè è in uso:\n"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1238
+#: Miradi/source/org/miradi/main/MainWindow.java:1239
 msgid "Unable to launch external web browser"
 msgstr "Impossibile lanciare il browser web esterno"
 
@@ -8270,7 +8270,7 @@ msgid ""
 "application:\n"
 msgstr "Impossibile rinominare questo progetto perchè è in uso: \n"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1021
+#: Miradi/source/org/miradi/main/MainWindow.java:1022
 msgid "Unable to save preferences"
 msgstr "Impossibile salvare le preferenze"
 

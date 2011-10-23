@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-23 14:09-0500\n"
+"POT-Creation-Date: 2011-10-23 17:27-0500\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -504,7 +504,7 @@ msgstr "7B. Сурч мэдсэн зүйлээ хуваалцах "
 msgid "7C. Create a Learning Environment"
 msgstr "7C. Сурах орчинг бүрдүүлэх"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1254
+#: Miradi/source/org/miradi/main/MainWindow.java:1255
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -3609,7 +3609,7 @@ msgstr "Үйл ажиллагаа ба мониторингийн өртгийн
 msgid "Euro"
 msgstr "Евро"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:832
+#: Miradi/source/org/miradi/main/MainWindow.java:833
 msgid "Existing data for a different fiscal year is being excluded"
 msgstr "Өөр санхүүгийн жилийн одоогийн мэдээлэл хасагдаж байна."
 
@@ -5767,7 +5767,7 @@ msgstr "Төслийн нөөц"
 msgid "Project Resource Filter Editor"
 msgstr "Төслийн Нөөцийн Шүүлтүүрийн Хянан Засварлагч"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:830
+#: Miradi/source/org/miradi/main/MainWindow.java:831
 msgid "Project Resource Filter Is On"
 msgstr "Төслийн Нөөцийн Шүүлтүүр ажиллагаатай"
 
@@ -6365,7 +6365,7 @@ msgstr "Оролцогч тал"
 msgid "Standard Reports"
 msgstr "Стандарт тайлан"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:864
+#: Miradi/source/org/miradi/main/MainWindow.java:865
 msgid ""
 "Start date (currently %startDate) must be earlier than end date (currently %"
 "endDate)"
@@ -8156,7 +8156,7 @@ msgstr ""
 "Энэ программын өөр хуулбарт энэ төслийг ашиглаж байгаа учир энэ төслийг "
 "устгах боломжгүй байна:\n"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1238
+#: Miradi/source/org/miradi/main/MainWindow.java:1239
 msgid "Unable to launch external web browser"
 msgstr "Unable to launch external web browser"
 
@@ -8177,7 +8177,7 @@ msgstr ""
 "Энэ төслийг программын өөр хуулбарт хэрэглэж байгаа тул нэрийг нь өөрчлөх "
 "боломжгүй байна:\n"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1021
+#: Miradi/source/org/miradi/main/MainWindow.java:1022
 msgid "Unable to save preferences"
 msgstr "\"preference\"-ийг хадгалах боломжгүй байна"
 

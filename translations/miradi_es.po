@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-23 14:09-0500\n"
+"POT-Creation-Date: 2011-10-23 17:27-0500\n"
 "PO-Revision-Date: 2011-03-28 15:06-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -515,7 +515,7 @@ msgstr "7B. Compartir lo que aprende"
 msgid "7C. Create a Learning Environment"
 msgstr "7C. Crear un entorno de aprendizaje"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1254
+#: Miradi/source/org/miradi/main/MainWindow.java:1255
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -3570,7 +3570,7 @@ msgstr "Estimar costos para actividades y monitoreo"
 msgid "Euro"
 msgstr "Euro "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:832
+#: Miradi/source/org/miradi/main/MainWindow.java:833
 msgid "Existing data for a different fiscal year is being excluded"
 msgstr ""
 
@@ -5759,7 +5759,7 @@ msgstr "Recurso del proyecto"
 msgid "Project Resource Filter Editor"
 msgstr "Editor del filtro de recursos del proyecto"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:830
+#: Miradi/source/org/miradi/main/MainWindow.java:831
 msgid "Project Resource Filter Is On"
 msgstr "El filtro de recursos del proyecto está activado."
 
@@ -6352,7 +6352,7 @@ msgstr "Parte interesada "
 msgid "Standard Reports"
 msgstr "Informes estándar"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:864
+#: Miradi/source/org/miradi/main/MainWindow.java:865
 msgid ""
 "Start date (currently %startDate) must be earlier than end date (currently %"
 "endDate)"
@@ -8132,7 +8132,7 @@ msgstr ""
 "No se puede eliminar el nombre de este proyecto porque otra copia de esta "
 "aplicación lo está usando:\n"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1238
+#: Miradi/source/org/miradi/main/MainWindow.java:1239
 msgid "Unable to launch external web browser"
 msgstr "No se pudo iniciar el navegador web externo."
 
@@ -8153,7 +8153,7 @@ msgstr ""
 "No se puede cambiar el nombre de este proyecto porque otra copia de esta "
 "aplicación lo está usando:\n"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1021
+#: Miradi/source/org/miradi/main/MainWindow.java:1022
 msgid "Unable to save preferences"
 msgstr "No se pudieron grabar las preferencias."
 
