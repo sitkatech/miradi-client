@@ -161,7 +161,7 @@ import org.miradi.project.TestGroupBoxPool;
 import org.miradi.project.TestHumanWelfareTargetPool;
 import org.miradi.project.TestIdAssigner;
 import org.miradi.project.TestIntermediateResultPool;
-import org.miradi.project.TestMpzToMiradiConverter;
+import org.miradi.project.TestMpzToMpfConverter;
 import org.miradi.project.TestProject;
 import org.miradi.project.TestProjectCalendar;
 import org.miradi.project.TestProjectCommandExecutions;
@@ -285,7 +285,7 @@ public class MainTestSuite extends TestSuite
 		addTest(new TestSuite(TestProjectTotalCalculator.class));
 		addTest(new TestSuite(TestCommandExecutor.class));
 		addTest(new TestSuite(TestProjectSaver.class));
-		addTest(new TestSuite(TestMpzToMiradiConverter.class));
+		addTest(new TestSuite(TestMpzToMpfConverter.class));
 		
 		//questions package
 		addTest(new TestSuite(TestChoiceItem.class));
