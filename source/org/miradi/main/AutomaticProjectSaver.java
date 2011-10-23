@@ -165,5 +165,5 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 	private Project project;
 	private FileLocker locker;
 	
-	private final static String SESSION_EXTENTION = ".session";
+	public final static String SESSION_EXTENTION = ".session";
 }
