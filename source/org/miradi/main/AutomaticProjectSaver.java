@@ -43,8 +43,17 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 		locker.lock(getLockFile(projectFileToUse));
 		projectFile = projectFileToUse;
 		ensureNewlyCreatedProjectFileExists();
+		ensureSingleSessionProjectFile();
 	}
 	
+	private void ensureSingleSessionProjectFile() throws Exception
+	{
+		File sessionFile = new File(projectFile.getAbsolutePath() + SESSION_EXTENTION);
+		deleteIfExists(sessionFile);
+		if (!sessionFile.createNewFile())
+			EAM.logWarning("Failed to create session file");
+	}
+
 	private void ensureNewlyCreatedProjectFileExists() throws Exception
 	{
 		if (projectFile.exists())
@@ -155,4 +164,6 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 	private File projectFile;
 	private Project project;
 	private FileLocker locker;
+	
+	private final static String SESSION_EXTENTION = ".session";
 }
