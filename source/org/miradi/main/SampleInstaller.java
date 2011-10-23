@@ -62,7 +62,7 @@ public class SampleInstaller
 			
 			File destination = new File(homeDir, validatedName + MpfFileFilter.EXTENSION);
 			if(destination.exists())
-				throw new RuntimeException(".Miradi file already exists: " + destination.getAbsolutePath());
+				return;
 		
 			convertToMpf(projectFileToImport, destination);
 		}
