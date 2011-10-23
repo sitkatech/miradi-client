@@ -79,6 +79,10 @@ abstract public class FileSystemTreeNode extends TreeTableNode
 			}
 			if(column == 1)
 			{
+				if(isProjectDirectory())
+				{
+					return getLastModifiedDate();
+				}
 				if(isProject())
 				{
 					String contents = UnicodeReader.getFileContents(thisFile);
