@@ -152,7 +152,7 @@ public class CommandExecutor
 	
 	public void executeCommands(Command[] commands) throws CommandFailedException
 	{
-		executeSingleCommand(new CommandBeginTransaction());
+		executeInCorrectMode(new CommandBeginTransaction());
 		try
 		{
 			for(int i = 0; i < commands.length; ++i)
@@ -162,8 +162,16 @@ public class CommandExecutor
 		}
 		finally
 		{
-			executeSingleCommand(new CommandEndTransaction());
+			executeInCorrectMode(new CommandEndTransaction());
 		}
+	}
+
+	public void executeInCorrectMode(final Command command) throws CommandFailedException
+	{
+		if (isInCommandSideEffectMode())
+			executeAsSideEffect(command);
+		else
+			executeSingleCommand(command);
 	}
 	
 	public void undo() throws CommandFailedException, RuntimeException
