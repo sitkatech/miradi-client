@@ -28,6 +28,7 @@ import org.martus.util.UnicodeWriter;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectSaver;
 import org.miradi.utils.FileLocker;
+import org.miradi.utils.Utility;
 
 public class AutomaticProjectSaver implements CommandExecutedListener
 {
@@ -50,8 +51,7 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 	{
 		File sessionFile = new File(projectFile.getAbsolutePath() + SESSION_EXTENTION);
 		deleteIfExists(sessionFile);
-		if (!sessionFile.createNewFile())
-			EAM.logWarning("Failed to create session file");
+		Utility.copyFile(projectFile, sessionFile);
 	}
 
 	private void ensureNewlyCreatedProjectFileExists() throws Exception
