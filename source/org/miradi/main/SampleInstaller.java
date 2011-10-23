@@ -22,12 +22,15 @@ package org.miradi.main;
 import java.io.File;
 import java.net.URISyntaxException;
 import java.util.Vector;
+import java.util.zip.ZipFile;
 
-import org.miradi.database.ProjectServer;
+import org.martus.util.UnicodeWriter;
+import org.miradi.project.MpzToDotMiradiConverter;
 import org.miradi.project.Project;
-import org.miradi.project.ProjectMpzImporter;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.MpfFileFilter;
 import org.miradi.utils.MpzFileFilter;
+import org.miradi.wizard.noproject.FileSystemTreeNode;
 
 public class SampleInstaller
 {
@@ -56,7 +59,26 @@ public class SampleInstaller
 		{
 			File projectFileToImport = installableSampleProjects.get(index);
 			String validatedName = getValidatedProjectNameWithoutExtension(projectFileToImport);
-			ProjectMpzImporter.unzipToProjectDirectory(projectFileToImport, homeDir, validatedName);
+			
+			File destination = new File(homeDir, validatedName + MpfFileFilter.EXTENSION);
+			if(destination.exists())
+				throw new RuntimeException(".Miradi file already exists: " + destination.getAbsolutePath());
+		
+			convertToMpf(projectFileToImport, destination);
+		}
+	}
+
+	public void convertToMpf(File projectFileToImport, File destination) throws Exception
+	{
+		UnicodeWriter writer = new UnicodeWriter(destination);
+		try
+		{
+			String converted = MpzToDotMiradiConverter.convert(new ZipFile(projectFileToImport));
+			writer.write(converted);
+		}
+		finally
+		{
+			writer.close();
 		}
 	}
 
@@ -83,8 +105,8 @@ public class SampleInstaller
 		{
 			File mpzFile = allMpzFiles[index];
 			String validatedName = getValidatedProjectNameWithoutExtension(mpzFile);
-			File newProjectDir = new File(homeDir, validatedName);
-			if (!ProjectServer.isExistingLocalProject(newProjectDir))
+			File newProjectFile = new File(homeDir, validatedName + MpfFileFilter.EXTENSION);
+			if (FileSystemTreeNode.isProjectFile(newProjectFile))
 				installableSampleProjects.add(mpzFile);
 		}
 		

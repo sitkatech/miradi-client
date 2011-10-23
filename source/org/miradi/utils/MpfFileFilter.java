@@ -35,5 +35,5 @@ public class MpfFileFilter extends GenericMiradiFileFilter
 		return EXTENSION;
 	}
 
-	private static final String EXTENSION = ".Miradi";
+	public static final String EXTENSION = ".Miradi";
 }
