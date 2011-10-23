@@ -39,7 +39,7 @@ public class TestMpzToMiradiConverter extends TestCaseWithProject
 		super(name);
 	}
 	
-	public void testConvertMpzToDotMiradi() throws Exception
+	public void testConvertMpzToMpf() throws Exception
 	{
 		byte[] mpzBytes = readSampleMpz();
 		String projectAsStringFromConverter = convertMpzToDotMiradi(mpzBytes);
