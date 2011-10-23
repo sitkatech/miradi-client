@@ -130,12 +130,12 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 
 	public static File getOldFile(File currentFile)
 	{
-		return getFileWithSuffix(currentFile, ".old");
+		return getFileWithSuffix(currentFile, OLD_EXTENSION);
 	}
 
 	public static File getNewFile(File currentFile)
 	{
-		return getFileWithSuffix(currentFile, ".new");
+		return getFileWithSuffix(currentFile, NEW_EXTENSION);
 	}
 
 	public static File getLockFile(File currentFile)
@@ -166,4 +166,6 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 	private FileLocker locker;
 	
 	public final static String SESSION_EXTENTION = ".session";
+	public final static String OLD_EXTENSION = ".old";
+	public final static String NEW_EXTENSION = ".new";
 }
