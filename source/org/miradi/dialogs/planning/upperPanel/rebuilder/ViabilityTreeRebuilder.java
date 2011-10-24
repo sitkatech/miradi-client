@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.upperPanel.rebuilder;
 
+import java.util.Vector;
+
 import org.miradi.dialogs.planning.treenodes.AbstractPlanningTreeNode;
 import org.miradi.objects.Goal;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
@@ -31,6 +33,11 @@ public class ViabilityTreeRebuilder extends NormalTreeRebuilder
 	public ViabilityTreeRebuilder(Project projectToUse,	PlanningTreeRowColumnProvider rowColumnProviderToUse)
 	{
 		super(projectToUse, rowColumnProviderToUse);
+	}
+
+	@Override
+	protected void addChildrenOfNodeToList(Vector<AbstractPlanningTreeNode> destination, AbstractPlanningTreeNode otherNode)
+	{
 	}
 	
 	@Override
