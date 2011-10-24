@@ -36,6 +36,7 @@ import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileSystemView;
 
 import org.martus.swing.UiNotifyDlg;
+import org.miradi.project.Project;
 import org.miradi.utils.HtmlViewPanel;
 import org.miradi.utils.HtmlViewPanelWithMargins;
 import org.miradi.utils.MiradiLogger;
@@ -260,6 +261,23 @@ public class EAM
 			Toolkit.getDefaultToolkit().beep();
 		
 		logger.logException(e);
+		appendToProjectExceptionLog(e);
+	}
+
+	private static void appendToProjectExceptionLog(Exception exceptionToAppend)
+	{
+		Project project = getMainWindow().getProject();
+		if (project == null)
+			return;
+		
+		try
+		{	
+			project.appendToExceptionLog(convertExceptionToString(exceptionToAppend));
+		}
+		catch (Exception e)
+		{
+			logger.logException(e);
+		}
 	}
 	
 	public static void logError(String text)
