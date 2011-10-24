@@ -114,6 +114,7 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 	{
 		String exceptions = getProject().getExceptionLog();
 		exceptions = xmlNewLineEncode(exceptions);
+		exceptions = truncate(exceptions);
 		writeTagValue(UPDATE_EXCEPTIONS_CODE, EXCEPTIONS_DATA_TAG, exceptions);
 	}
 
