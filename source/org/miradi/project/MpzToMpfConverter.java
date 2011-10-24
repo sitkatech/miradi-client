@@ -234,15 +234,6 @@ public class MpzToMpfConverter extends AbstractMiradiProjectSaver
 		return startOfUtf8Character;
 	}
 	
-	private String truncate(String fileContent)
-	{
-		final int LIMIT_UTF8_ONE_CHAR_PER_BYTE = 20000;
-		if (fileContent.length() < LIMIT_UTF8_ONE_CHAR_PER_BYTE)
-			return fileContent;
-		
-		return fileContent.substring(fileContent.length() - LIMIT_UTF8_ONE_CHAR_PER_BYTE, fileContent.length());
-	}
-
 	private byte[] readIntoByteArray(ZipEntry entry) throws Exception
 	{
 		InputStream inputStream = getZipFile().getInputStream(entry);

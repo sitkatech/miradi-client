@@ -122,6 +122,15 @@ abstract public class AbstractMiradiProjectSaver
 		getWriter().writeln(STOP_MARKER + " " + lastModifiedForComputers + " " + lastModifiedForHumans);
 	}
 	
+	protected String truncate(String fileContent)
+	{
+		final int LIMIT_UTF8_ONE_CHAR_PER_BYTE = 20000;
+		if (fileContent.length() < LIMIT_UTF8_ONE_CHAR_PER_BYTE)
+			return fileContent;
+		
+		return fileContent.substring(fileContent.length() - LIMIT_UTF8_ONE_CHAR_PER_BYTE, fileContent.length());
+	}
+
 	public static String getBasicFileHeader()
 	{
 		String BOM_STRING = new String(new char[] {UnicodeWriter.BOM_UTF8});
