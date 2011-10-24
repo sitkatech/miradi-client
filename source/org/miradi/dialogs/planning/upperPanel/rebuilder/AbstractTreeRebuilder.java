@@ -311,7 +311,7 @@ abstract public class AbstractTreeRebuilder
 		return null;
 	}
 	
-	private void addChildrenOfNodeToList(Vector<AbstractPlanningTreeNode> destination, AbstractPlanningTreeNode otherNode)
+	protected void addChildrenOfNodeToList(Vector<AbstractPlanningTreeNode> destination, AbstractPlanningTreeNode otherNode)
 	{
 		for(AbstractPlanningTreeNode newChild : otherNode.getRawChildrenByReference())
 		{
