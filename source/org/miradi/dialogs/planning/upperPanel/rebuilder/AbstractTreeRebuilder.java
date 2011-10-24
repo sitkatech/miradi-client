@@ -242,8 +242,7 @@ abstract public class AbstractTreeRebuilder
 			AbstractPlanningTreeNode child = (AbstractPlanningTreeNode) node.getChild(i);
 			removeUnwantedLayersAndPromoteChildren(child, objectTypesToShow);
 			
-			boolean isChildVisible = objectTypesToShow.contains(child.getObjectTypeName());
-			if(isChildVisible)
+			if(isVisible(objectTypesToShow, child))
 			{
 				mergeChildIntoList(newChildren, child);
 			}
@@ -256,6 +255,11 @@ abstract public class AbstractTreeRebuilder
 		sortChildren(node, newChildren);
 		
 		node.setRawChildren(newChildren);
+	}
+
+	protected boolean isVisible(CodeList objectTypesToShow, AbstractPlanningTreeNode child)
+	{
+		return objectTypesToShow.contains(child.getObjectTypeName());
 	}
 	
 	private void mergeChildIntoList(Vector<AbstractPlanningTreeNode> destination, AbstractPlanningTreeNode newChild)

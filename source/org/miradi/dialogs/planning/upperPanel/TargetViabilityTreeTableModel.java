@@ -21,7 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel;
 
 import org.miradi.dialogs.planning.upperPanel.rebuilder.AbstractTreeRebuilder;
-import org.miradi.dialogs.planning.upperPanel.rebuilder.NormalTreeRebuilder;
+import org.miradi.dialogs.planning.upperPanel.rebuilder.ViabilityTreeRebuilder;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.project.Project;
@@ -37,7 +37,7 @@ public class TargetViabilityTreeTableModel extends TreeTableModelWithRebuilder
 	@Override
 	protected AbstractTreeRebuilder createTreeRebuilder()
 	{
-		return new NormalTreeRebuilder(getProject(), getRowColumnProvider());
+		return new ViabilityTreeRebuilder(getProject(), getRowColumnProvider());
 	}
 
 	@Override
