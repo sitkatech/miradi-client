@@ -39,6 +39,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.EmptyChoiceItem;
+import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 import org.miradi.questions.ProgressReportShortStatusQuestion;
 import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.StatusConfidenceQuestion;
@@ -62,6 +63,9 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		if (Target.is(baseObject))
 			return getValueForTarget(baseObject, row, column);
 		
+		if (KeyEcologicalAttribute.is(baseObject))
+			return getValueForKea((KeyEcologicalAttribute) baseObject, row, column);
+		
 		if (Indicator.is(baseObject))
 			return getValueForIndicator(baseObject, row, column);
 		
@@ -74,6 +78,22 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		return super.getChoiceItemAt(row, column);
 	}
 	
+	private ChoiceItem getValueForKea(KeyEcologicalAttribute kea, int row, int column)
+	{
+		String tag = COLUMN_TAGS_KEAS[column];
+		String rawValue = kea.getData(tag);
+		if (tag.equals(KeyEcologicalAttribute.PSEUDO_TAG_VIABILITY_STATUS))
+			return new StatusQuestion().findChoiceByCode(rawValue);
+		
+		if (tag.equals(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE))
+			return new KeyEcologicalAttributeTypeQuestion().findChoiceByCode(rawValue);
+		
+		if(tag.equals(KeyEcologicalAttribute.TAG_EMPTY))
+			return new EmptyChoiceItem();
+		
+		return new TaglessChoiceItem(kea.getData(tag));
+	}
+
 	private ChoiceItem getValueForFutureResultAsGoal(BaseObject baseObject, int row, int column)
 	{
 		String tag = COLUMN_TAGS_FOR_FUTURE_RESULTS[column];
@@ -279,7 +299,6 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		Indicator.TAG_RATING_SOURCE,
 		BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
 	};
-
 	
 	public static final String[] COLUMN_TAGS_FOR_TARGETS = {
 		Target.TAG_VIABILITY_MODE, 
@@ -293,6 +312,17 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		Target.TAG_EMPTY,
 		};
 	
+	public static final String[] COLUMN_TAGS_KEAS = {
+		KeyEcologicalAttribute.TAG_EMPTY,
+		KeyEcologicalAttribute.PSEUDO_TAG_VIABILITY_STATUS, 
+		KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE,
+		KeyEcologicalAttribute.TAG_EMPTY,
+		KeyEcologicalAttribute.TAG_EMPTY,
+		KeyEcologicalAttribute.TAG_EMPTY,
+		KeyEcologicalAttribute.TAG_EMPTY,
+		KeyEcologicalAttribute.TAG_EMPTY,
+		KeyEcologicalAttribute.TAG_EMPTY,
+		};
 	
 	public static final String[] COLUMN_TAGS_FOR_MEASUREMENTS = { 
 												Measurement.TAG_EMPTY,
