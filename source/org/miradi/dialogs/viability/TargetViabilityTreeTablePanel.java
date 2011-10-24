@@ -41,7 +41,6 @@ import org.miradi.main.MainWindow;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
 
 
-//FIXME urgent - Make new target viability tree table work
 public class TargetViabilityTreeTablePanel extends PlanningTreeTablePanel
 {
 	protected TargetViabilityTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTable treeToUse, GenericTreeTableModel modelToUse,

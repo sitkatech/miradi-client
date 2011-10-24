@@ -26,7 +26,6 @@ import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.project.Project;
 
-//FIXME urgent - Make new target viability tree table work
 public class TargetViabilityTreeTableModel extends TreeTableModelWithRebuilder
 {
 	public TargetViabilityTreeTableModel(Project project, TreeTableNode rootNodeToUse, PlanningTreeRowColumnProvider rowColumnProviderToUse) throws Exception
