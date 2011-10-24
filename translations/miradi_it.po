@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-24 11:13-0500\n"
+"POT-Creation-Date: 2011-10-24 16:16-0500\n"
 "PO-Revision-Date: 2011-04-29 11:26+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Poedit-Language: Italian\n"
 "X-Poedit-Country: ITALY\n"
 
-#: Miradi/source/org/miradi/main/EAM.java:389
+#: Miradi/source/org/miradi/main/EAM.java:407
 msgid ""
 "\n"
 "\n"
@@ -27,7 +27,7 @@ msgstr ""
 "\n"
 "Miradi ha tentato di salvare le tue modifiche e adesso si chiuderà."
 
-#: Miradi/source/org/miradi/main/EAM.java:386
+#: Miradi/source/org/miradi/main/EAM.java:404
 msgid ""
 "\n"
 "\n"
@@ -2209,7 +2209,7 @@ msgstr ""
 msgid "An internal error prevented this operation"
 msgstr "Un errore interno ha impedito questa operazione"
 
-#: Miradi/source/org/miradi/main/EAM.java:432
+#: Miradi/source/org/miradi/main/EAM.java:450
 msgid "An unexpected error has occurred"
 msgstr "Si è verificato un errore inaspettato"
 
@@ -2217,7 +2217,7 @@ msgstr "Si è verificato un errore inaspettato"
 msgid "An unexpected error has occurred."
 msgstr "Si è verificato un errore inaspettato."
 
-#: Miradi/source/org/miradi/main/EAM.java:385
+#: Miradi/source/org/miradi/main/EAM.java:403
 msgid "An unexpected error occurred: "
 msgstr "Si è verificato un errore inaspettato:"
 
@@ -3245,8 +3245,8 @@ msgstr "Definisci l'Ambito del progetto di conservazione"
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:61
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:75
-#: Miradi/source/org/miradi/main/EAM.java:489
-#: Miradi/source/org/miradi/main/EAM.java:490
+#: Miradi/source/org/miradi/main/EAM.java:507
+#: Miradi/source/org/miradi/main/EAM.java:508
 msgid "Delete"
 msgstr "Cancella"
 
@@ -3573,7 +3573,7 @@ msgid "Entire Project Duration"
 msgstr "Durata totale del progetto"
 
 #: Miradi/source/org/miradi/objecthelpers/ThreatTargetVirtualLinkHelper.java:102
-#: Miradi/source/org/miradi/main/EAM.java:398
+#: Miradi/source/org/miradi/main/EAM.java:416
 #: Miradi/source/org/miradi/dialogfields/ReadOnlyCodeListField.java:87
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:80
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetThreatLinkTableModel.java:76
@@ -6055,7 +6055,7 @@ msgid "Results Monitoring Plan"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:61
-#: Miradi/source/org/miradi/main/EAM.java:489
+#: Miradi/source/org/miradi/main/EAM.java:507
 msgid "Retain"
 msgstr "Mantieni"
 
@@ -8029,7 +8029,7 @@ msgstr "Proprietà Diagramma"
 msgid "Title|Direct Threat Properties"
 msgstr "Proprietà della Pressione Diretta"
 
-#: Miradi/source/org/miradi/main/EAM.java:437
+#: Miradi/source/org/miradi/main/EAM.java:455
 msgid "Title|Error"
 msgstr "Errore"
 
@@ -8485,7 +8485,7 @@ msgstr "WCS"
 msgid "WWF"
 msgstr "WWF"
 
-#: Miradi/source/org/miradi/main/EAM.java:139
+#: Miradi/source/org/miradi/main/EAM.java:140
 msgid "Warning"
 msgstr "Avvertimento"
 
@@ -8619,7 +8619,7 @@ msgstr "Il Chi ignorato è:"
 msgid "Who Override was: %s"
 msgstr "Il Chi ignorato è: %s"
 
-#: Miradi/source/org/miradi/main/EAM.java:645
+#: Miradi/source/org/miradi/main/EAM.java:663
 msgid "Wintitle|Information"
 msgstr "Informazione"
 
