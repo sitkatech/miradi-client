@@ -32,7 +32,6 @@ import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 
-//FIXME urgent - Make new target viability tree table work
 public class TargetViabilityRowColumnProvider extends AbstractPlanningTreeRowColumnProvider
 {
 	public TargetViabilityRowColumnProvider(Project projectToUse)

@@ -38,7 +38,6 @@ import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.utils.BufferedImageFactory;
 import org.miradi.utils.TableExporter;
 
-//FIXME urgent - Make new target viability tree table work
 public class TargetViabilityManagementPanelNew extends ObjectListManagementPanel
 {
 	private TargetViabilityManagementPanelNew(MainWindow mainWindowToUse, PlanningTreeTablePanel tablePanelToUse, TargetViabilityMultiPropertiesPanel propertiesPanel) throws Exception
