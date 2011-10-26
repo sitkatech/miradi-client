@@ -510,7 +510,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		project.beginCommandSideEffectMode();
 		try
 		{
-			if (!canCreateNewProject(projectFile))
+			if (!canCreateOrOpenProject(projectFile))
 			{
 				EAM.errorDialog(EAM.text("Internal project file with this name exist, please try another name"));
 				return;
@@ -594,7 +594,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		}
 	}
 
-	private boolean canCreateNewProject(File projectFile)
+	private boolean canCreateOrOpenProject(File projectFile)
 	{
 		if (projectFile.exists())
 			return true;
