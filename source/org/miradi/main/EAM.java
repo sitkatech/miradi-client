@@ -266,6 +266,9 @@ public class EAM
 
 	private static void appendToProjectExceptionLog(Exception exceptionToAppend)
 	{
+		if (getMainWindow() == null)
+			return;
+		
 		Project project = getMainWindow().getProject();
 		if (project == null)
 			return;
