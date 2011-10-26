@@ -29,7 +29,7 @@ import org.miradi.actions.ActionTreeNodeUp;
 import org.miradi.actions.ActionWorkPlanBudgetCustomizeTableEditor;
 import org.miradi.dialogs.planning.WorkPlanRowColumnProvider;
 import org.miradi.dialogs.planning.propertiesPanel.AbstractFixedHeightDirectlyAboveTreeTablePanel;
-import org.miradi.dialogs.planning.treenodes.PlanningTreeRootNode;
+import org.miradi.dialogs.planning.treenodes.PlanningTreeRootNodeAlwaysExpanded;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
@@ -53,7 +53,7 @@ public class WorkPlanTreeTablePanel extends PlanningTreeTablePanel
 	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse) throws Exception
 	{
 		WorkPlanRowColumnProvider rowColumnProvider = new WorkPlanRowColumnProvider(mainWindowToUse.getProject());
-		PlanningTreeRootNode rootNode = new PlanningTreeRootNode(mainWindowToUse.getProject());
+		PlanningTreeRootNodeAlwaysExpanded rootNode = new PlanningTreeRootNodeAlwaysExpanded(mainWindowToUse.getProject());
 		PlanningTreeTableModel model = new WorkPlanTreeTableModel(mainWindowToUse.getProject(), rootNode, rowColumnProvider);
 		PlanningTreeTable treeTable = new PlanningTreeTableWithVisibleRootNode(mainWindowToUse, model);
 		AbstractFixedHeightDirectlyAboveTreeTablePanel filterStatusPanel = new AbstractFixedHeightDirectlyAboveTreeTablePanel();
