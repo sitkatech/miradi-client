@@ -25,7 +25,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 
-public class PlanningTreeRootNodeAlwaysExpanded extends AbstractPlanningTreeNode
+public class PlanningTreeRootNodeAlwaysExpanded extends AbstractTreeRootNode
 {
 	public PlanningTreeRootNodeAlwaysExpanded(Project projectToUse)
 	{
