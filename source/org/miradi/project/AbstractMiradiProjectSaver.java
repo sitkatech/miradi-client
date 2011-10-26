@@ -124,11 +124,11 @@ abstract public class AbstractMiradiProjectSaver
 	
 	protected String truncate(String fileContent)
 	{
-		final int LIMIT_UTF8_ONE_CHAR_PER_BYTE = 20000;
-		if (fileContent.length() < LIMIT_UTF8_ONE_CHAR_PER_BYTE)
+		final int LIMIT_20K_CHARACTERS = 20000;
+		if (fileContent.length() < LIMIT_20K_CHARACTERS)
 			return fileContent;
 		
-		return fileContent.substring(fileContent.length() - LIMIT_UTF8_ONE_CHAR_PER_BYTE, fileContent.length());
+		return fileContent.substring(fileContent.length() - LIMIT_20K_CHARACTERS, fileContent.length());
 	}
 
 	public static String getBasicFileHeader()
