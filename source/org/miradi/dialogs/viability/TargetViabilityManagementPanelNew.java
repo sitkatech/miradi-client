@@ -27,7 +27,7 @@ import javax.swing.JComponent;
 
 import org.miradi.dialogs.base.ObjectListManagementPanel;
 import org.miradi.dialogs.planning.AbstractPlanningTreeRowColumnProvider;
-import org.miradi.dialogs.planning.treenodes.PlanningTreeRootNode;
+import org.miradi.dialogs.planning.treenodes.PlanningTreeRootNodeAlwaysExpanded;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
 import org.miradi.dialogs.planning.upperPanel.TargetViabilityTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.TreeTableModelWithRebuilder;
@@ -49,7 +49,7 @@ public class TargetViabilityManagementPanelNew extends ObjectListManagementPanel
 	
 	public static TargetViabilityManagementPanelNew createManagementPanel(MainWindow mainWindowToUse) throws Exception
 	{
-		PlanningTreeRootNode rootNode = new PlanningTreeRootNode(mainWindowToUse.getProject());
+		PlanningTreeRootNodeAlwaysExpanded rootNode = new PlanningTreeRootNodeAlwaysExpanded(mainWindowToUse.getProject());
 		AbstractPlanningTreeRowColumnProvider rowColumnProvider = new TargetViabilityRowColumnProvider(mainWindowToUse.getProject());
 		
 		TreeTableModelWithRebuilder model = new TargetViabilityTreeTableModel(mainWindowToUse.getProject(), rootNode, rowColumnProvider);
@@ -91,7 +91,7 @@ public class TargetViabilityManagementPanelNew extends ObjectListManagementPanel
 
 	private PlanningTreeTablePanel createPlanningTreeTablePanel(String uniqueTreeTableModelIdentifier, PlanningTreeRowColumnProvider rowColumnProvider) throws Exception
 	{
-		PlanningTreeRootNode rootNode = new PlanningTreeRootNode(getMainWindow().getProject());
+		PlanningTreeRootNodeAlwaysExpanded rootNode = new PlanningTreeRootNodeAlwaysExpanded(getMainWindow().getProject());
 		TreeTableModelWithRebuilder model = new TargetViabilityTreeTableModel(getMainWindow().getProject(), rootNode, rowColumnProvider);
 		PlanningTreeTablePanel treeTablePanel = TargetViabilityTreeTablePanel.createTreeTablePanel(getMainWindow(), model, rowColumnProvider);
 		
