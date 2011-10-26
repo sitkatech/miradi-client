@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-24 16:16-0500\n"
+"POT-Creation-Date: 2011-10-26 15:48-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: Miradi/source/org/miradi/main/EAM.java:407
+#: Miradi/source/org/miradi/main/EAM.java:410
 msgid ""
 "\n"
 "\n"
@@ -25,7 +25,7 @@ msgstr ""
 "\n"
 "Міраді спробувала зберегти ваші останні зміни і зараз закриється"
 
-#: Miradi/source/org/miradi/main/EAM.java:404
+#: Miradi/source/org/miradi/main/EAM.java:407
 msgid ""
 "\n"
 "\n"
@@ -2172,7 +2172,7 @@ msgstr ""
 msgid "An internal error prevented this operation"
 msgstr "Внутрішня помилка перешкодила цій операції"
 
-#: Miradi/source/org/miradi/main/EAM.java:450
+#: Miradi/source/org/miradi/main/EAM.java:453
 msgid "An unexpected error has occurred"
 msgstr "Сталася нечекана помилка"
 
@@ -2180,7 +2180,7 @@ msgstr "Сталася нечекана помилка"
 msgid "An unexpected error has occurred."
 msgstr "Сталася нечекана помилка"
 
-#: Miradi/source/org/miradi/main/EAM.java:403
+#: Miradi/source/org/miradi/main/EAM.java:406
 msgid "An unexpected error occurred: "
 msgstr "Сталася нечекана помилка:"
 
@@ -3195,8 +3195,8 @@ msgstr "Визначити сферу дій проекту"
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:61
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:75
-#: Miradi/source/org/miradi/main/EAM.java:507
-#: Miradi/source/org/miradi/main/EAM.java:508
+#: Miradi/source/org/miradi/main/EAM.java:510
+#: Miradi/source/org/miradi/main/EAM.java:511
 msgid "Delete"
 msgstr "Видалити"
 
@@ -3521,7 +3521,7 @@ msgid "Entire Project Duration"
 msgstr ""
 
 #: Miradi/source/org/miradi/objecthelpers/ThreatTargetVirtualLinkHelper.java:102
-#: Miradi/source/org/miradi/main/EAM.java:416
+#: Miradi/source/org/miradi/main/EAM.java:419
 #: Miradi/source/org/miradi/dialogfields/ReadOnlyCodeListField.java:87
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:80
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetThreatLinkTableModel.java:76
@@ -5970,7 +5970,7 @@ msgid "Results Monitoring Plan"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:61
-#: Miradi/source/org/miradi/main/EAM.java:507
+#: Miradi/source/org/miradi/main/EAM.java:510
 msgid "Retain"
 msgstr "Утримувати"
 
@@ -7908,7 +7908,7 @@ msgstr "Title|Складові Діаграми"
 msgid "Title|Direct Threat Properties"
 msgstr "Title|Складові Прямої загрози"
 
-#: Miradi/source/org/miradi/main/EAM.java:455
+#: Miradi/source/org/miradi/main/EAM.java:458
 msgid "Title|Error"
 msgstr "Title|Помилка"
 
@@ -8489,7 +8489,7 @@ msgstr ""
 msgid "Who Override was: %s"
 msgstr "Ким було перевищено: %s"
 
-#: Miradi/source/org/miradi/main/EAM.java:663
+#: Miradi/source/org/miradi/main/EAM.java:666
 msgid "Wintitle|Information"
 msgstr "Wintitle|Інформація"
 
