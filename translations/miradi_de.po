@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-24 16:16-0500\n"
+"POT-Creation-Date: 2011-10-26 15:48-0500\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Virtaal 0.7.0\n"
 
-#: Miradi/source/org/miradi/main/EAM.java:407
+#: Miradi/source/org/miradi/main/EAM.java:410
 msgid ""
 "\n"
 "\n"
@@ -29,7 +29,7 @@ msgstr ""
 "Miradi hat versucht Ihre letzten Änderungen zu speichern und wird jetzt "
 "beendet."
 
-#: Miradi/source/org/miradi/main/EAM.java:404
+#: Miradi/source/org/miradi/main/EAM.java:407
 msgid ""
 "\n"
 "\n"
@@ -2242,7 +2242,7 @@ msgstr ""
 msgid "An internal error prevented this operation"
 msgstr "ein interner Fehler hat diesen Befehl verhindert"
 
-#: Miradi/source/org/miradi/main/EAM.java:450
+#: Miradi/source/org/miradi/main/EAM.java:453
 msgid "An unexpected error has occurred"
 msgstr "Ein unerwarteter Fehler ist aufgetreten"
 
@@ -2250,7 +2250,7 @@ msgstr "Ein unerwarteter Fehler ist aufgetreten"
 msgid "An unexpected error has occurred."
 msgstr "Ein unerwarteter Fehler ist aufgetreten."
 
-#: Miradi/source/org/miradi/main/EAM.java:403
+#: Miradi/source/org/miradi/main/EAM.java:406
 msgid "An unexpected error occurred: "
 msgstr "Ein unerwarteter Fehler ist aufgetreten:"
 
@@ -3291,8 +3291,8 @@ msgstr "Planungsraum definieren"
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:61
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:75
-#: Miradi/source/org/miradi/main/EAM.java:507
-#: Miradi/source/org/miradi/main/EAM.java:508
+#: Miradi/source/org/miradi/main/EAM.java:510
+#: Miradi/source/org/miradi/main/EAM.java:511
 msgid "Delete"
 msgstr "Löschen"
 
@@ -3626,7 +3626,7 @@ msgid "Entire Project Duration"
 msgstr "Gesamtlaufzeit des Projekts"
 
 #: Miradi/source/org/miradi/objecthelpers/ThreatTargetVirtualLinkHelper.java:102
-#: Miradi/source/org/miradi/main/EAM.java:416
+#: Miradi/source/org/miradi/main/EAM.java:419
 #: Miradi/source/org/miradi/dialogfields/ReadOnlyCodeListField.java:87
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:80
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetThreatLinkTableModel.java:76
@@ -6128,7 +6128,7 @@ msgid "Results Monitoring Plan"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:61
-#: Miradi/source/org/miradi/main/EAM.java:507
+#: Miradi/source/org/miradi/main/EAM.java:510
 msgid "Retain"
 msgstr "Behalten"
 
@@ -8147,7 +8147,7 @@ msgstr "Eigenschaften - Diagramm"
 msgid "Title|Direct Threat Properties"
 msgstr "Direkte Bedrohungen Eigenschaften"
 
-#: Miradi/source/org/miradi/main/EAM.java:455
+#: Miradi/source/org/miradi/main/EAM.java:458
 msgid "Title|Error"
 msgstr "Fehler"
 
@@ -8727,7 +8727,7 @@ msgstr ""
 msgid "Who Override was: %s"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAM.java:663
+#: Miradi/source/org/miradi/main/EAM.java:666
 msgid "Wintitle|Information"
 msgstr "Information"
 
