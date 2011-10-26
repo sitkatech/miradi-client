@@ -43,12 +43,22 @@ public class ViabilityTreeRebuilder extends NormalTreeRebuilder
 	@Override
 	protected boolean isVisible(CodeList objectTypesToShow, AbstractPlanningTreeNode child)
 	{
-		if (child.getObjectReference().isInvalid() && Goal.is(child.getType()))
+		if (isFutureStatusNode(child))
 			return true;
 		
-		if (Goal.is(child.getObject()))
+		if (isNonFutureStatusGoal(child))
 			return false;
 		
 		return objectTypesToShow.contains(child.getObjectTypeName());
+	}
+
+	public boolean isNonFutureStatusGoal(AbstractPlanningTreeNode child)
+	{
+		return Goal.is(child.getObject());
+	}
+
+	public boolean isFutureStatusNode(AbstractPlanningTreeNode child)
+	{
+		return child.getObjectReference().isInvalid() && Goal.is(child.getType());
 	}
 }
