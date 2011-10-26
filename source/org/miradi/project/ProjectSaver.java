@@ -196,10 +196,11 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 	{
 		final int LIMIT_20K_CHARACTERS = 20000;
 		final int fileContentLength = fileContent.length();
-		if (fileContentLength < LIMIT_20K_CHARACTERS)
+		final int startOfPortionToKeep = fileContentLength - LIMIT_20K_CHARACTERS;
+		if (startOfPortionToKeep <= 0)
 			return fileContent;
 		
-		return fileContent.substring(fileContentLength - LIMIT_20K_CHARACTERS, fileContentLength);
+		return fileContent.substring(startOfPortionToKeep, fileContentLength);
 	}
 	
 	private Project getProject()
