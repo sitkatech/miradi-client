@@ -214,8 +214,7 @@ public class MpzToMpfConverter extends AbstractMiradiProjectSaver
 		String exceptionLog = safeConvertUtf8BytesToString(exceptionLogBytes);
 		
 		final String xmlNewLineEncode = xmlNewLineEncode(exceptionLog);
-		final String truncatedExceptions = truncate(xmlNewLineEncode);
-		writeTagValue(UPDATE_EXCEPTIONS_CODE, EXCEPTIONS_DATA_TAG, truncatedExceptions);
+		writeTagValue(UPDATE_EXCEPTIONS_CODE, EXCEPTIONS_DATA_TAG, xmlNewLineEncode);
 	}
 
 	public static String safeConvertUtf8BytesToString(byte[] exceptionLogBytes) throws UnsupportedEncodingException
