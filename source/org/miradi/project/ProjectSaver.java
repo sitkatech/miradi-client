@@ -195,10 +195,11 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 	private String truncate(String fileContent)
 	{
 		final int LIMIT_20K_CHARACTERS = 20000;
-		if (fileContent.length() < LIMIT_20K_CHARACTERS)
+		final int fileContentLength = fileContent.length();
+		if (fileContentLength < LIMIT_20K_CHARACTERS)
 			return fileContent;
 		
-		return fileContent.substring(fileContent.length() - LIMIT_20K_CHARACTERS, fileContent.length());
+		return fileContent.substring(fileContentLength - LIMIT_20K_CHARACTERS, fileContentLength);
 	}
 	
 	private Project getProject()
