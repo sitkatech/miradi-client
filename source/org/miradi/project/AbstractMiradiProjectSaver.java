@@ -122,15 +122,6 @@ abstract public class AbstractMiradiProjectSaver
 		getWriter().writeln(STOP_MARKER + " " + lastModifiedForComputers + " " + lastModifiedForHumans);
 	}
 	
-	protected String truncate(String fileContent)
-	{
-		final int LIMIT_20K_CHARACTERS = 20000;
-		if (fileContent.length() < LIMIT_20K_CHARACTERS)
-			return fileContent;
-		
-		return fileContent.substring(fileContent.length() - LIMIT_20K_CHARACTERS, fileContent.length());
-	}
-
 	public static String getBasicFileHeader()
 	{
 		String BOM_STRING = new String(new char[] {UnicodeWriter.BOM_UTF8});
