@@ -20,36 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.treenodes;
 
-import org.miradi.icons.MiradiApplicationIcon;
-import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
-import org.miradi.questions.ChoiceItem;
 
 public class PlanningTreeRootNode extends AbstractTreeRootNode
 {
 	public PlanningTreeRootNode(Project projectToUse)
 	{
 		super(projectToUse, null);
-	}
-
-	@Override
-	public BaseObject getObject()
-	{
-		return project.getMetadata();
-	}
-
-	@Override
-	public Object getValueAt(int column)
-	{
-		if (column == 0)
-			return getObject().toString();
-		
-		return new ChoiceItem("", "", new MiradiApplicationIcon());
-	}
-
-	@Override
-	public String toRawString()
-	{
-		return getProject().getFilename();
 	}
 }
