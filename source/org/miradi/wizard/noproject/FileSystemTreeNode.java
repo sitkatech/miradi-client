@@ -87,8 +87,9 @@ abstract public class FileSystemTreeNode extends TreeTableNode
 				{
 					String contents = UnicodeReader.getFileContents(thisFile);
 					final long loadLastModifiedTime = ProjectLoader.loadLastModifiedTime(new UnicodeStringReader(contents));
-					if (loadLastModifiedTime > 0)
-						return ProjectServer.timestampToString(loadLastModifiedTime);
+					if (loadLastModifiedTime == 0)
+						return EAM.text("Unknown");
+					return ProjectServer.timestampToString(loadLastModifiedTime);
 				}
 				
 				return null;
@@ -99,7 +100,7 @@ abstract public class FileSystemTreeNode extends TreeTableNode
 			EAM.logException(e);
 		}
 		
-		EAM.logError("FileSystemTreeNode has no value for column: " + column);
+		EAM.logError("FileSystemTreeNode has no value for column: " + column + " for file " + thisFile.getAbsolutePath());
 		
 		return "";
 	}

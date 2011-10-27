@@ -166,6 +166,9 @@ public class ProjectLoader
 	{
 		final String WHITESPACE_REGEXP = "\\s+";
 		String[] parts = stopLine.split(WHITESPACE_REGEXP);
+		if(parts.length < 2)
+			return 0;
+		
 		/*String stopMarker = parts[0];*/
 		String forComputers = parts[1];
 		return Long.parseLong(forComputers);
