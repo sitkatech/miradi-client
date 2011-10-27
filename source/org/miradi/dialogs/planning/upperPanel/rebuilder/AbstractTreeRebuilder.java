@@ -400,6 +400,7 @@ abstract public class AbstractTreeRebuilder
 			KeyEcologicalAttribute.getObjectType(),
 			ResultsChainDiagram.getObjectType(),
 			ConceptualModelDiagram.getObjectType(),
+			Measurement.getObjectType(),
 			Goal.getObjectType(),
 			SubTarget.getObjectType(),
 			Cause.getObjectType(),
@@ -414,7 +415,6 @@ abstract public class AbstractTreeRebuilder
 			BudgetCategoryOne.getObjectType(),
 			BudgetCategoryTwo.getObjectType(),
 			Task.getObjectType(),
-			Measurement.getObjectType(),
 			ResourceAssignment.getObjectType(),
 			ExpenseAssignment.getObjectType(),
 		};
