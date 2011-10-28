@@ -117,6 +117,7 @@ public class ResourcesHandler
 		}
 		catch (Exception e)
 		{
+			EAM.logWarning("Exception getting URL for: " + resourceFileName);
 			EAM.logException(e);
 			return null;
 		}
