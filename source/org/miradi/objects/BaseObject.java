@@ -855,6 +855,11 @@ abstract public class BaseObject
 		addField(new DimensionData(tag));
 	}
 	
+	protected void createPseudoStringField(String tag)
+	{
+		addField(new PseudoStringData(this, tag));
+	}
+	
 	protected void addField(ObjectData data)
 	{
 		addField(data.getTag(), data);
