@@ -517,8 +517,8 @@ public class Task extends Factor
 		
 		strategyLabel = new PseudoStringData(this, PSEUDO_TAG_STRATEGY_LABEL);
 		indicatorLabel = new PseudoStringData(this, PSEUDO_TAG_INDICATOR_LABEL);
-		relevantObjectiveRefs = new PseudoORefListData(this, PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS);
-		relevantGoalRefs = new PseudoORefListData(this, PSEUDO_TAG_RELEVANT_GOAL_REFS);
+		relevantObjectiveRefs = new PseudoRefListData(this, PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS);
+		relevantGoalRefs = new PseudoRefListData(this, PSEUDO_TAG_RELEVANT_GOAL_REFS);
 		
 		addField(TAG_SUBTASK_IDS, subtaskIds);
 		addField(TAG_DETAILS, details);
@@ -548,6 +548,6 @@ public class Task extends Factor
 	
 	private PseudoStringData strategyLabel;
 	private PseudoStringData indicatorLabel;
-	private PseudoORefListData relevantObjectiveRefs;
-	private PseudoORefListData relevantGoalRefs;
+	private PseudoRefListData relevantObjectiveRefs;
+	private PseudoRefListData relevantGoalRefs;
 }

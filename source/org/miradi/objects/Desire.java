@@ -468,9 +468,9 @@ abstract public class Desire extends BaseObject
 		multiLineTargets = new PseudoStringData(this, PSEUDO_TAG_TARGETS);
 		multiLineDirectThreats = new PseudoStringData(this, PSEUDO_TAG_DIRECT_THREATS);
 		multiLineFactor = new PseudoStringData(this, PSEUDO_TAG_FACTOR);
-		relevantIndicatorRefs = new PseudoORefListData(this, PSEUDO_TAG_RELEVANT_INDICATOR_REFS);
-		relevantStrategyRefs = new PseudoORefListData(this, PSEUDO_TAG_RELEVANT_STRATEGY_ACTIVITY_REFS);
-		relevantActivityRefs = new PseudoORefListData(this, PSEUDO_TAG_RELEVANT_ACTIVITY_REFS);
+		relevantIndicatorRefs = new PseudoRefListData(this, PSEUDO_TAG_RELEVANT_INDICATOR_REFS);
+		relevantStrategyRefs = new PseudoRefListData(this, PSEUDO_TAG_RELEVANT_STRATEGY_ACTIVITY_REFS);
+		relevantActivityRefs = new PseudoRefListData(this, PSEUDO_TAG_RELEVANT_ACTIVITY_REFS);
 		latestProgressPercentComplete = new PseudoStringData(this, PSEUDO_TAG_LATEST_PROGRESS_PERCENT_COMPLETE);
 		latestProgressPercentDetails = new PseudoStringData(this, PSEUDO_TAG_LATEST_PROGRESS_PERCENT_DETAILS);
 		
