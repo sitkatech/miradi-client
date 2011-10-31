@@ -20,14 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.FactorId;
-import org.miradi.objectdata.BooleanData;
-import org.miradi.objectdata.ChoiceData;
-import org.miradi.objectdata.PseudoQuestionData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ThreatClassificationQuestion;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -73,7 +71,7 @@ public class Cause extends Factor
 	@Override
 	public boolean isDirectThreat()
 	{
-		return isDirectThreat.asBoolean();
+		return getBooleanData(TAG_IS_DIRECT_THREAT);
 	}
 
 	@Override
@@ -107,7 +105,12 @@ public class Cause extends Factor
 	public String getPseudoData(String fieldTag)
 	{
 		if (fieldTag.equals(PSEUDO_TAG_TAXONOMY_CODE_VALUE))
-			return new ThreatClassificationQuestion().findChoiceByCode(taxonomyCode.get()).getLabel();
+		{
+			String code = getData(fieldTag);
+			ThreatClassificationQuestion question = new ThreatClassificationQuestion();
+			ChoiceItem choice = question.findChoiceByCode(code);
+			return choice.getLabel();
+		}
 		
 		return super.getPseudoData(fieldTag);
 	}
@@ -156,23 +159,15 @@ public class Cause extends Factor
 	{
 		super.clear();
 		
-		taxonomyCode = new ChoiceData(TAG_TAXONOMY_CODE, new ThreatClassificationQuestion());
-		isDirectThreat = new BooleanData(TAG_IS_DIRECT_THREAT);
-		taxonomyCodeLabel = new PseudoQuestionData(this, PSEUDO_TAG_TAXONOMY_CODE_VALUE);
-		
-		addField(TAG_TAXONOMY_CODE, taxonomyCode);
-		addField(TAG_IS_DIRECT_THREAT, isDirectThreat);
-		addField(PSEUDO_TAG_TAXONOMY_CODE_VALUE, taxonomyCodeLabel);
+		createChoiceField(TAG_TAXONOMY_CODE, new ThreatClassificationQuestion());
+		createBooleanField(TAG_IS_DIRECT_THREAT);
+		createPseudoQuestionField(PSEUDO_TAG_TAXONOMY_CODE_VALUE);
 	}	
 	
 	public static final String TAG_TAXONOMY_CODE = "TaxonomyCode";
 	public static final String TAG_IS_DIRECT_THREAT = "IsDirectThreat";
 	
 	public static final String OBJECT_NAME = "Cause";
-	
-	private ChoiceData taxonomyCode;
-	private BooleanData isDirectThreat;
-	private PseudoQuestionData taxonomyCodeLabel;
 	
 	public static final String OBJECT_NAME_THREAT = "DirectThreat";
 	public static final String OBJECT_NAME_CONTRIBUTING_FACTOR = "ContributingFactor";
