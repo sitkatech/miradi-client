@@ -1375,7 +1375,7 @@ abstract public class BaseObject
 	//FIXME medium: move these classes into their own class in order to avoid dup code and inner classes
 	public class PseudoQuestionData  extends ObjectData
 	{
-		public PseudoQuestionData(String tagToUse, ChoiceQuestion questionToUse)
+		public PseudoQuestionData(String tagToUse, BaseObject owningObject, ChoiceQuestion questionToUse)
 		{
 			super(tagToUse);
 

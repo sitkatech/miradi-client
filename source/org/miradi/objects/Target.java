@@ -169,7 +169,7 @@ public class Target extends AbstractTarget
 		speciesLatinName = new UserTextData(TAG_SPECIES_LATIN_NAME);
 		habitatAssociation = new CodeListData(TAG_HABITAT_ASSOCIATION, getHabitatAssociationQuestion());
 		
-		habitatAssociationLabel = new PseudoQuestionData(PSEUDO_TAG_HABITAT_ASSOCIATION_VALUE, getHabitatAssociationQuestion());
+		habitatAssociationLabel = new PseudoQuestionData(PSEUDO_TAG_HABITAT_ASSOCIATION_VALUE, this, getHabitatAssociationQuestion());
 
 		addField(TAG_STRESS_REFS, stressRefs);
 		addField(TAG_HABITAT_ASSOCIATION, habitatAssociation);

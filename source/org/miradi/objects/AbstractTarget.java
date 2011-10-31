@@ -334,8 +334,8 @@ abstract public class AbstractTarget extends Factor
 	{
 		super.clear();
 			
-		targetStatusLabel = new PseudoQuestionData(PSEUDO_TAG_TARGET_STATUS_VALUE, new StatusQuestion());
-		viabiltyModeLabel = new PseudoQuestionData(PSEUDO_TAG_VIABILITY_MODE_VALUE, new ViabilityModeQuestion());
+		targetStatusLabel = new PseudoQuestionData(PSEUDO_TAG_TARGET_STATUS_VALUE, this, new StatusQuestion());
+		viabiltyModeLabel = new PseudoQuestionData(PSEUDO_TAG_VIABILITY_MODE_VALUE, this, new ViabilityModeQuestion());
 
 		createChoiceField(TAG_TARGET_STATUS, StatusQuestion.class);
 		createChoiceField(TAG_VIABILITY_MODE, ViabilityModeQuestion.class);

@@ -196,7 +196,7 @@ public class Stress extends Factor
 		detail = new UserTextData(TAG_DETAIL);
 		scope = new ChoiceData(TAG_SCOPE, getQuestion(StressScopeChoiceQuestion.class));
 		severity = new ChoiceData(TAG_SEVERITY, getQuestion(StressSeverityChoiceQuestion.class));
-		pseudoStressRating = new PseudoQuestionData(PSEUDO_STRESS_RATING, new StressRatingChoiceQuestion());
+		pseudoStressRating = new PseudoQuestionData(PSEUDO_STRESS_RATING, this, new StressRatingChoiceQuestion());
 		
 		addField(TAG_SHORT_LABEL, shortLabel);
 		addField(TAG_DETAIL, detail);

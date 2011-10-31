@@ -424,12 +424,12 @@ public class Indicator extends BaseObject
 		multiLineFactor = new PseudoStringData(this, PSEUDO_TAG_FACTOR);
 		multiLineMethods = new PseudoStringData(this, PSEUDO_TAG_METHODS);
 		indicatorThresholdLabel = new PseudoStringData(this, PSEUDO_TAG_INDICATOR_THRESHOLD_VALUE);
-		priorityLabel = new PseudoQuestionData(PSEUDO_TAG_PRIORITY_VALUE, new PriorityRatingQuestion());
-		statusLabel = new PseudoQuestionData(PSEUDO_TAG_STATUS_VALUE, new StatusQuestion());
-		ratingSourceLabel = new PseudoQuestionData(PSEUDO_TAG_RATING_SOURCE_VALUE, new RatingSourceQuestion());
-		latestMeasurement = new PseudoQuestionData(PSEUDO_TAG_LATEST_MEASUREMENT_REF, new StatusQuestion());
+		priorityLabel = new PseudoQuestionData(PSEUDO_TAG_PRIORITY_VALUE, this, new PriorityRatingQuestion());
+		statusLabel = new PseudoQuestionData(PSEUDO_TAG_STATUS_VALUE, this, new StatusQuestion());
+		ratingSourceLabel = new PseudoQuestionData(PSEUDO_TAG_RATING_SOURCE_VALUE, this, new RatingSourceQuestion());
+		latestMeasurement = new PseudoQuestionData(PSEUDO_TAG_LATEST_MEASUREMENT_REF, this, new StatusQuestion());
 		
-		futureStatusRatingLabel = new PseudoQuestionData(PSEUDO_TAG_FUTURE_STATUS_RATING_VALUE, new StatusQuestion());
+		futureStatusRatingLabel = new PseudoQuestionData(PSEUDO_TAG_FUTURE_STATUS_RATING_VALUE, this, new StatusQuestion());
 		
 		
 		addField(TAG_SHORT_LABEL, shortLabel);
