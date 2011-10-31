@@ -28,6 +28,7 @@ import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.DateData;
 import org.miradi.objectdata.IdListData;
 import org.miradi.objectdata.ORefListData;
+import org.miradi.objectdata.PseudoStringData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.DirectThreatSet;

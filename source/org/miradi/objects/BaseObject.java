@@ -48,6 +48,7 @@ import org.miradi.objectdata.ORefData;
 import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objectdata.PointData;
+import org.miradi.objectdata.PseudoStringData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.BaseObjectByNameSorter;
@@ -1425,52 +1426,6 @@ abstract public class BaseObject
 		private ChoiceQuestion question;
 	}
 	
-	public static class PseudoStringData  extends StringData
-	{
-		public PseudoStringData(BaseObject owningObject, String tag)
-		{
-			super(tag);
-			object = owningObject;
-		}
-
-		@Override
-		public boolean isPseudoField()
-		{
-			return true;
-		}
-		
-		@Override
-		public void set(String newValue) throws Exception
-		{
-			if (newValue.length()!=0)
-				throw new RuntimeException("Set not allowed in a pseuod field");
-		}
-
-		@Override
-		public String get()
-		{
-			return object.getPseudoData(getTag());
-		}
-		
-		@Override
-		public boolean equals(Object rawOther)
-		{
-			if(!(rawOther instanceof StringData))
-				return false;
-			
-			StringData other = (StringData)rawOther;
-			return get().equals(other.get());
-		}
-
-		@Override
-		public int hashCode()
-		{
-			return get().hashCode();
-		}
-		
-		private BaseObject object;
-	}
-
 	public class PseudoORefListData extends ORefListData
 	{
 		public PseudoORefListData(String tag)

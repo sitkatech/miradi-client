@@ -33,6 +33,7 @@ import org.miradi.objectdata.CodeListData;
 import org.miradi.objectdata.IdListData;
 import org.miradi.objectdata.NumberData;
 import org.miradi.objectdata.ORefListData;
+import org.miradi.objectdata.PseudoStringData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.ORef;

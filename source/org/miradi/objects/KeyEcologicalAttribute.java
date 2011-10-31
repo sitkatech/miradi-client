@@ -24,6 +24,7 @@ import org.miradi.ids.IdList;
 import org.miradi.ids.KeyEcologicalAttributeId;
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.IdListData;
+import org.miradi.objectdata.PseudoStringData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.ORef;
