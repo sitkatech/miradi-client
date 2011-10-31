@@ -21,9 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
-import org.miradi.objectdata.IntegerData;
-import org.miradi.objectdata.StringData;
-import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
@@ -96,18 +93,12 @@ public class Audience extends BaseObject
 	{
 		super.clear();
 	
-		peopleCount = new IntegerData(TAG_PEOPLE_COUNT);
-		summary = new UserTextData(TAG_SUMMARY);
-		
-		addField(TAG_PEOPLE_COUNT, peopleCount);
-		addField(TAG_SUMMARY, summary);
+		createIntegerField(TAG_PEOPLE_COUNT);
+		createUserTextField(TAG_SUMMARY);
 	}
 	
 	public static final String OBJECT_NAME = "Audience";
 	
 	public static final String TAG_PEOPLE_COUNT = "PeopleCount";
 	public static final String TAG_SUMMARY = "Summary";
-	
-	private IntegerData peopleCount;
-	private StringData summary;
 }
