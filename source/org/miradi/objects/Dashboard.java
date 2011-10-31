@@ -1140,6 +1140,11 @@ public class Dashboard extends BaseObject
 	{
 		super.clear();
 		
+		createStringChoiceMapField(TAG_PROGRESS_CHOICE_MAP);
+		createStringStringMapField(TAG_COMMENTS_MAP);
+		createStringCodeListMapField(TAG_FLAGS_MAP);
+		createCodeData(TAG_CURRENT_DASHBOARD_TAB);
+
 		createPseudoStringField(PSEUDO_TEAM_MEMBER_COUNT);
 		createPseudoStringField(PSEUDO_PROJECT_SCOPE_WORD_COUNT);
 		createPseudoStringField(PSEUDO_TARGET_COUNT);
@@ -1208,11 +1213,6 @@ public class Dashboard extends BaseObject
 		createPseudoStringField(PSEUDO_TOTAL_ACTION_BUDGET);
 		createPseudoStringField(PSEUDO_TOTAL_MONITORING_BUDGET);
 		createPseudoStringField(PSEUDO_TOTAL_FACTOR_COUNT);
-		
-		createStringChoiceMapField(TAG_PROGRESS_CHOICE_MAP);
-		createStringStringMapField(TAG_COMMENTS_MAP);
-		createStringCodeListMapField(TAG_FLAGS_MAP);
-		createCodeData(TAG_CURRENT_DASHBOARD_TAB);
 	}
 	
 	public static final String OBJECT_NAME = "Dashboard";
