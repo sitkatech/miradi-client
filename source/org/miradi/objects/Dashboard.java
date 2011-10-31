@@ -30,9 +30,7 @@ import org.miradi.dialogs.dashboard.DashboardRowDefinitionManager;
 import org.miradi.dialogs.threatrating.upperPanel.TargetThreatLinkTableModel;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
-import org.miradi.objectdata.CodeData;
 import org.miradi.objectdata.PseudoStringData;
-import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
@@ -48,9 +46,6 @@ import org.miradi.questions.StrategyRatingSummaryQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.OptionalDouble;
-import org.miradi.utils.StringChoiceMapData;
-import org.miradi.utils.StringCodeListMapData;
-import org.miradi.utils.StringStringMapData;
 
 public class Dashboard extends BaseObject
 {
@@ -1103,17 +1098,17 @@ public class Dashboard extends BaseObject
 	
 	public StringStringMap getCommentsMap()
 	{
-		return commentsMap.getStringMap();
+		return getStringStringMapData(TAG_COMMENTS_MAP);
 	}
-	
+
 	public StringChoiceMap getProgressChoiceMap()
 	{
-		return progressChoiceMap.getStringChoiceMap();
+		return getStringChoiceMapData(TAG_PROGRESS_CHOICE_MAP);
 	}
-	
+
 	public StringCodeListMap getFlagsMap()
 	{
-		return flagsMap.getStringCodeListMap();
+		return getStringCodeListMapData(TAG_FLAGS_MAP);
 	}
 
 	public static boolean is(BaseObject object)
@@ -1215,10 +1210,10 @@ public class Dashboard extends BaseObject
 		totalMonitoringBudget = new PseudoStringData(this, PSEUDO_TOTAL_MONITORING_BUDGET);
 		totalFactorCount = new PseudoStringData(this, PSEUDO_TOTAL_FACTOR_COUNT);
 		
-		progressChoiceMap = new StringChoiceMapData(TAG_PROGRESS_CHOICE_MAP);
-		commentsMap = new StringStringMapData(TAG_COMMENTS_MAP);
-		flagsMap = new StringCodeListMapData(TAG_FLAGS_MAP);
-		currentDashboardTab = new CodeData(TAG_CURRENT_DASHBOARD_TAB);
+		createStringChoiceMapField(TAG_PROGRESS_CHOICE_MAP);
+		createStringStringMapField(TAG_COMMENTS_MAP);
+		createStringCodeListMapField(TAG_FLAGS_MAP);
+		createCodeData(TAG_CURRENT_DASHBOARD_TAB);
 		
 		addPresentationDataField(PSEUDO_TEAM_MEMBER_COUNT, teamMemberCount);
 		addPresentationDataField(PSEUDO_PROJECT_SCOPE_WORD_COUNT, projectScopeWordCount);
@@ -1288,11 +1283,6 @@ public class Dashboard extends BaseObject
 		addPresentationDataField(PSEUDO_TOTAL_ACTION_BUDGET, totalActionBudget);
 		addPresentationDataField(PSEUDO_TOTAL_MONITORING_BUDGET, totalMonitoringBudget);
 		addPresentationDataField(PSEUDO_TOTAL_FACTOR_COUNT, totalFactorCount);
-		
-		addPresentationDataField(TAG_PROGRESS_CHOICE_MAP, progressChoiceMap);
-		addPresentationDataField(TAG_COMMENTS_MAP, commentsMap);
-		addPresentationDataField(TAG_FLAGS_MAP, flagsMap);
-		addPresentationDataField(TAG_CURRENT_DASHBOARD_TAB, currentDashboardTab);
 	}
 	
 	public static final String OBJECT_NAME = "Dashboard";
@@ -1447,9 +1437,4 @@ public class Dashboard extends BaseObject
 	private PseudoStringData totalActionBudget;
 	private PseudoStringData totalMonitoringBudget;
 	private PseudoStringData totalFactorCount;
-	
-	private StringChoiceMapData progressChoiceMap;
-	private StringStringMapData commentsMap;
-	private StringCodeListMapData flagsMap;
-	private StringData currentDashboardTab;
 }

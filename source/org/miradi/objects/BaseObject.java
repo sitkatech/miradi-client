@@ -64,6 +64,9 @@ import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
+import org.miradi.objecthelpers.StringChoiceMap;
+import org.miradi.objecthelpers.StringCodeListMap;
+import org.miradi.objecthelpers.StringStringMap;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.project.CurrencyFormat;
@@ -77,6 +80,9 @@ import org.miradi.utils.DateRange;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.InvalidNumberException;
 import org.miradi.utils.OptionalDouble;
+import org.miradi.utils.StringChoiceMapData;
+import org.miradi.utils.StringCodeListMapData;
+import org.miradi.utils.StringStringMapData;
 
 abstract public class BaseObject
 {
@@ -203,6 +209,21 @@ abstract public class BaseObject
 			((BaseIdData)field).setRef(ref);
 		else
 			throw new RuntimeException("Attempted to set Ref data on non-Ref field " + fieldTag);
+	}
+
+	protected StringStringMap getStringStringMapData(String tag)
+	{
+		return ((StringStringMapData)getField(tag)).getStringMap();
+	}
+	
+	protected StringChoiceMap getStringChoiceMapData(String tag)
+	{
+		return ((StringChoiceMapData)getField(tag)).getStringChoiceMap();
+	}
+	
+	protected StringCodeListMap getStringCodeListMapData(String tag)
+	{
+		return ((StringCodeListMapData)getField(tag)).getStringCodeListMap();
 	}
 
 	public void loadFromJson(EnhancedJsonObject json) throws Exception
@@ -879,9 +900,29 @@ abstract public class BaseObject
 		addField(new DimensionData(tag));
 	}
 	
+	protected void createCodeData(String tag)
+	{
+		addField(new CodeData(tag));
+	}
+	
 	protected void createDateUnitEffortListField(String tag)
 	{
 		addField(new DateUnitEffortListData(tag));
+	}
+	
+	protected void createStringChoiceMapField(String tag)
+	{
+		addField(new StringChoiceMapData(tag));
+	}
+	
+	protected void createStringStringMapField(String tag)
+	{
+		addField(new StringStringMapData(tag));
+	}
+	
+	protected void createStringCodeListMapField(String tag)
+	{
+		addField(new StringCodeListMapData(tag));
 	}
 	
 	protected void createPseudoStringField(String tag)
