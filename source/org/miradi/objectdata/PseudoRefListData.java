@@ -50,21 +50,5 @@ public class PseudoRefListData extends ORefListData
 		return object.getPseudoData(getTag());
 	}
 	
-	@Override
-	public boolean equals(Object rawOther)
-	{
-		if(!(rawOther instanceof StringData))
-			return false;
-
-		StringData other = (StringData)rawOther;
-		return get().equals(other.get());
-	}
-
-	@Override
-	public int hashCode()
-	{
-		return get().hashCode();
-	}
-	
 	private BaseObject object;
 }
