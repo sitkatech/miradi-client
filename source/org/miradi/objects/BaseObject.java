@@ -844,6 +844,11 @@ abstract public class BaseObject
 	{
 		addField(new ORefData(tag));
 	}
+	
+	protected void createIntegerField(String tag)
+	{
+		addField(new IntegerData(tag));
+	}
 
 	protected void createPointField(String tag)
 	{
