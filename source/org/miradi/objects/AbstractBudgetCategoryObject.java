@@ -21,8 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
-import org.miradi.objectdata.CodeData;
-import org.miradi.objectdata.UserTextData;
 import org.miradi.project.ObjectManager;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -49,8 +47,8 @@ abstract public class AbstractBudgetCategoryObject extends BaseObject
 	{
 		super.clear();
 		
-		addField(new CodeData(TAG_CODE));
-		addField(new UserTextData(TAG_COMMENTS));
+		createCodeField(TAG_CODE);
+		createUserTextField(TAG_COMMENTS);
 	}
 	
 	public static final String TAG_CODE = "Code";
