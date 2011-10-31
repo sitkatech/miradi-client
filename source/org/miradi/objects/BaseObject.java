@@ -1371,53 +1371,6 @@ abstract public class BaseObject
 		return result.toString();
 	}
 
-	public static class PseudoRefListData extends ORefListData
-	{
-		public PseudoRefListData(BaseObject owningObject, String tag)
-		{
-			super(tag);
-			
-			object = owningObject;
-		}
-
-		@Override
-		public boolean isPseudoField()
-		{
-			return true;
-		}
-
-		@Override
-		public void set(String newValue) throws Exception
-		{
-			if (newValue.length()!=0)
-				throw new RuntimeException("Set not allowed in a pseuod field");
-		}
-
-		@Override
-		public String get()
-		{
-			return object.getPseudoData(getTag());
-		}
-		
-		@Override
-		public boolean equals(Object rawOther)
-		{
-			if(!(rawOther instanceof StringData))
-				return false;
-
-			StringData other = (StringData)rawOther;
-			return get().equals(other.get());
-		}
-
-		@Override
-		public int hashCode()
-		{
-			return get().hashCode();
-		}
-		
-		private BaseObject object;
-	}
-
 	public static final String TAG_TIME_STAMP_MODIFIED = "TimeStampModified";
 	public static final String TAG_ID = "Id";
 	public static final String TAG_LABEL = "Label";

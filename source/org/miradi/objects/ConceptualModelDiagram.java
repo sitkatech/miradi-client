@@ -24,6 +24,7 @@ import java.util.Vector;
 
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
+import org.miradi.objectdata.PseudoRefListData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
