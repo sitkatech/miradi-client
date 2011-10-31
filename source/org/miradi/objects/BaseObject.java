@@ -39,6 +39,7 @@ import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.BaseIdData;
+import org.miradi.objectdata.BooleanData;
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.CodeData;
 import org.miradi.objectdata.DateUnitEffortListData;
@@ -119,6 +120,12 @@ abstract public class BaseObject
 	{
 		IntegerData data = (IntegerData)getField(tag);
 		return data.asInt();
+	}
+	
+	public boolean getBooleanData(String tag)
+	{
+		BooleanData data = (BooleanData)getField(tag);
+		return data.asBoolean();
 	}
 	
 	public Dimension getDimensionData(String tag)
@@ -822,7 +829,18 @@ abstract public class BaseObject
 	
 	protected void createChoiceField(String tag, Class questionClass)
 	{
-		addField(new ChoiceData(tag, getQuestion(questionClass)));
+		ChoiceQuestion question = getQuestion(questionClass);
+		createChoiceField(tag, question);
+	}
+
+	protected void createChoiceField(String tag, ChoiceQuestion question)
+	{
+		addField(new ChoiceData(tag, question));
+	}
+	
+	protected void createBooleanField(String tag)
+	{
+		addField(new BooleanData(tag));
 	}
 	
 	protected void createCodeField(String tag)
