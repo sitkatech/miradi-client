@@ -1371,11 +1371,13 @@ abstract public class BaseObject
 		return result.toString();
 	}
 
-	public class PseudoRefListData extends ORefListData
+	public static class PseudoRefListData extends ORefListData
 	{
 		public PseudoRefListData(BaseObject owningObject, String tag)
 		{
 			super(tag);
+			
+			object = owningObject;
 		}
 
 		@Override
@@ -1394,7 +1396,7 @@ abstract public class BaseObject
 		@Override
 		public String get()
 		{
-			return getPseudoData(getTag());
+			return object.getPseudoData(getTag());
 		}
 		
 		@Override
@@ -1412,6 +1414,8 @@ abstract public class BaseObject
 		{
 			return get().hashCode();
 		}
+		
+		private BaseObject object;
 	}
 
 	public static final String TAG_TIME_STAMP_MODIFIED = "TimeStampModified";
