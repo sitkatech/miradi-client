@@ -208,8 +208,8 @@ public class ResourceAssignment extends Assignment
 		addField(new BaseIdData(TAG_RESOURCE_ID, ProjectResource.getObjectType()));
 		addField(new BaseIdData(TAG_ACCOUNTING_CODE_ID, AccountingCode.getObjectType()));
 		addField(new BaseIdData(TAG_FUNDING_SOURCE_ID, FundingSource.getObjectType()));
-		addField(new PseudoStringData(PSEUDO_TAG_PROJECT_RESOURCE_LABEL));
-		addField(new PseudoStringData(PSEUDO_TAG_OWNING_FACTOR_NAME));
+		addField(new PseudoStringData(this, PSEUDO_TAG_PROJECT_RESOURCE_LABEL));
+		addField(new PseudoStringData(this, PSEUDO_TAG_OWNING_FACTOR_NAME));
 	}
 	
 	public static final String TAG_RESOURCE_ID = "ResourceId";

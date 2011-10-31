@@ -464,14 +464,14 @@ abstract public class Desire extends BaseObject
 		relevantStrategyActivityOverrides = new RelevancyOverrideSetData(TAG_RELEVANT_STRATEGY_ACTIVITY_SET);
 		progressPercentRefs = new ORefListData(TAG_PROGRESS_PERCENT_REFS);
 		
-		multiLineTargets = new PseudoStringData(PSEUDO_TAG_TARGETS);
-		multiLineDirectThreats = new PseudoStringData(PSEUDO_TAG_DIRECT_THREATS);
-		multiLineFactor = new PseudoStringData(PSEUDO_TAG_FACTOR);
+		multiLineTargets = new PseudoStringData(this, PSEUDO_TAG_TARGETS);
+		multiLineDirectThreats = new PseudoStringData(this, PSEUDO_TAG_DIRECT_THREATS);
+		multiLineFactor = new PseudoStringData(this, PSEUDO_TAG_FACTOR);
 		relevantIndicatorRefs = new PseudoORefListData(PSEUDO_TAG_RELEVANT_INDICATOR_REFS);
 		relevantStrategyRefs = new PseudoORefListData(PSEUDO_TAG_RELEVANT_STRATEGY_ACTIVITY_REFS);
 		relevantActivityRefs = new PseudoORefListData(PSEUDO_TAG_RELEVANT_ACTIVITY_REFS);
-		latestProgressPercentComplete = new PseudoStringData(PSEUDO_TAG_LATEST_PROGRESS_PERCENT_COMPLETE);
-		latestProgressPercentDetails = new PseudoStringData(PSEUDO_TAG_LATEST_PROGRESS_PERCENT_DETAILS);
+		latestProgressPercentComplete = new PseudoStringData(this, PSEUDO_TAG_LATEST_PROGRESS_PERCENT_COMPLETE);
+		latestProgressPercentDetails = new PseudoStringData(this, PSEUDO_TAG_LATEST_PROGRESS_PERCENT_DETAILS);
 		
 		
 		addField(TAG_SHORT_LABEL, shortLabel);

@@ -417,12 +417,12 @@ public class Indicator extends BaseObject
 		futureStatusDetail = new UserTextData(TAG_FUTURE_STATUS_DETAIL);
 		futureStatusComments = new UserTextData(TAG_FUTURE_STATUS_COMMENTS);
 		
-		multiLineTargets = new PseudoStringData(PSEUDO_TAG_TARGETS);
-		multiLineDirectThreats = new PseudoStringData(PSEUDO_TAG_DIRECT_THREATS);
-		multiLineStrategies = new PseudoStringData(PSEUDO_TAG_STRATEGIES);
-		multiLineFactor = new PseudoStringData(PSEUDO_TAG_FACTOR);
-		multiLineMethods = new PseudoStringData(PSEUDO_TAG_METHODS);
-		indicatorThresholdLabel = new PseudoStringData(PSEUDO_TAG_INDICATOR_THRESHOLD_VALUE);
+		multiLineTargets = new PseudoStringData(this, PSEUDO_TAG_TARGETS);
+		multiLineDirectThreats = new PseudoStringData(this, PSEUDO_TAG_DIRECT_THREATS);
+		multiLineStrategies = new PseudoStringData(this, PSEUDO_TAG_STRATEGIES);
+		multiLineFactor = new PseudoStringData(this, PSEUDO_TAG_FACTOR);
+		multiLineMethods = new PseudoStringData(this, PSEUDO_TAG_METHODS);
+		indicatorThresholdLabel = new PseudoStringData(this, PSEUDO_TAG_INDICATOR_THRESHOLD_VALUE);
 		priorityLabel = new PseudoQuestionData(PSEUDO_TAG_PRIORITY_VALUE, new PriorityRatingQuestion());
 		statusLabel = new PseudoQuestionData(PSEUDO_TAG_STATUS_VALUE, new StatusQuestion());
 		ratingSourceLabel = new PseudoQuestionData(PSEUDO_TAG_RATING_SOURCE_VALUE, new RatingSourceQuestion());
