@@ -22,7 +22,7 @@ package org.miradi.objectdata;
 
 import org.miradi.objects.BaseObject;
 
-public class PseudoRefListData extends ORefListData
+public class PseudoRefListData extends RefListData
 {
 	public PseudoRefListData(BaseObject owningObject, String tag)
 	{

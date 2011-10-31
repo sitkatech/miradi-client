@@ -27,7 +27,7 @@ import org.miradi.ids.IndicatorId;
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.DateData;
 import org.miradi.objectdata.IdListData;
-import org.miradi.objectdata.ORefListData;
+import org.miradi.objectdata.RefListData;
 import org.miradi.objectdata.PseudoQuestionData;
 import org.miradi.objectdata.PseudoStringData;
 import org.miradi.objectdata.StringData;
@@ -407,7 +407,7 @@ public class Indicator extends BaseObject
 		methodIds = new IdListData(TAG_METHOD_IDS, Task.getObjectType());
 		indicatorThreshold = new StringStringMapData(TAG_INDICATOR_THRESHOLD);
 		ratingSource= new ChoiceData(TAG_RATING_SOURCE, getQuestion(RatingSourceQuestion.class));
-		measurementRefs = new ORefListData(TAG_MEASUREMENT_REFS);
+		measurementRefs = new RefListData(TAG_MEASUREMENT_REFS);
 		detail = new UserTextData(TAG_DETAIL);
 		comments = new UserTextData(TAG_COMMENTS);
 		viabilityRatingsComments = new UserTextData(TAG_VIABILITY_RATINGS_COMMENTS);
@@ -506,7 +506,7 @@ public class Indicator extends BaseObject
 	private IdListData methodIds;
 	private StringStringMapData indicatorThreshold;
 	private ChoiceData ratingSource;
-	private ORefListData measurementRefs;
+	private RefListData measurementRefs;
 	private StringData detail;
 	private StringData comments;
 	private StringData viabilityRatingsComments;

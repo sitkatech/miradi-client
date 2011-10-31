@@ -32,7 +32,7 @@ import org.miradi.main.EAM;
 import org.miradi.objectdata.CodeListData;
 import org.miradi.objectdata.IdListData;
 import org.miradi.objectdata.NumberData;
-import org.miradi.objectdata.ORefListData;
+import org.miradi.objectdata.RefListData;
 import org.miradi.objectdata.PseudoStringData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objectdata.UserTextData;
@@ -564,7 +564,7 @@ abstract public class DiagramObject extends BaseObject
 		shortLabel = new UserTextData(TAG_SHORT_LABEL);
 		details = new UserTextData(TAG_DETAIL);
 		hiddenTypes = new CodeListData(TAG_HIDDEN_TYPES, getQuestion(DiagramLegendQuestion.class));
-		selectedTaggedObjectSetRefs = new ORefListData(TAG_SELECTED_TAGGED_OBJECT_SET_REFS);
+		selectedTaggedObjectSetRefs = new RefListData(TAG_SELECTED_TAGGED_OBJECT_SET_REFS);
 		zoomScale = new NumberData(TAG_ZOOM_SCALE);
 		
 		combinedLabel = new PseudoStringData(this, PSEUDO_COMBINED_LABEL);
@@ -595,7 +595,7 @@ abstract public class DiagramObject extends BaseObject
 	private StringData shortLabel;
 	private StringData details;
 	private CodeListData hiddenTypes;
-	private ORefListData selectedTaggedObjectSetRefs;
+	private RefListData selectedTaggedObjectSetRefs;
 	private NumberData zoomScale;
 	
 	private PseudoStringData combinedLabel;

@@ -26,7 +26,7 @@ import org.miradi.diagram.ChainWalker;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
-import org.miradi.objectdata.ORefListData;
+import org.miradi.objectdata.RefListData;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objectdata.PseudoRefListData;
 import org.miradi.objectdata.PseudoStringData;
@@ -464,7 +464,7 @@ abstract public class Desire extends BaseObject
 		comments = new UserTextData(TAG_COMMENTS);
 		relevantIndicatorOverrides = new RelevancyOverrideSetData(TAG_RELEVANT_INDICATOR_SET);
 		relevantStrategyActivityOverrides = new RelevancyOverrideSetData(TAG_RELEVANT_STRATEGY_ACTIVITY_SET);
-		progressPercentRefs = new ORefListData(TAG_PROGRESS_PERCENT_REFS);
+		progressPercentRefs = new RefListData(TAG_PROGRESS_PERCENT_REFS);
 		
 		multiLineTargets = new PseudoStringData(this, PSEUDO_TAG_TARGETS);
 		multiLineDirectThreats = new PseudoStringData(this, PSEUDO_TAG_DIRECT_THREATS);

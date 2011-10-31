@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
-import org.miradi.objectdata.ORefListData;
+import org.miradi.objectdata.RefListData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.ORef;
@@ -123,7 +123,7 @@ public class TaggedObjectSet extends BaseObject
 		super.clear();
 
 		shortLabel = new UserTextData(TAG_SHORT_LABEL);
-		taggedObjectRefs = new ORefListData(TAG_TAGGED_OBJECT_REFS);
+		taggedObjectRefs = new RefListData(TAG_TAGGED_OBJECT_REFS);
 		comments = new UserTextData(TAG_COMMENTS);
 
 		addField(TAG_SHORT_LABEL, shortLabel);
@@ -136,7 +136,7 @@ public class TaggedObjectSet extends BaseObject
 	public static final String TAG_COMMENTS = "Comments";
 	
 	private StringData shortLabel;
-	private ORefListData taggedObjectRefs;
+	private RefListData taggedObjectRefs;
 	private StringData comments;
 	
 	public static final String OBJECT_NAME = "TaggedObjectSet";

@@ -29,7 +29,7 @@ import org.miradi.objectdata.CodeData;
 import org.miradi.objectdata.CodeListData;
 import org.miradi.objectdata.IntegerData;
 import org.miradi.objectdata.ORefData;
-import org.miradi.objectdata.ORefListData;
+import org.miradi.objectdata.RefListData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -188,7 +188,7 @@ public class ViewData extends BaseObject
 		super.clear();
 
 		currentMode = new CodeData(TAG_CURRENT_MODE);
-		chainModeFactorRefs = new ORefListData(TAG_CHAIN_MODE_FACTOR_REFS);
+		chainModeFactorRefs = new RefListData(TAG_CHAIN_MODE_FACTOR_REFS);
 		currentTab = new IntegerData(TAG_CURRENT_TAB);
 		currentResultsChainRef = new ORefData(TAG_CURRENT_RESULTS_CHAIN_REF);
 		currentConceptualModelRef = new ORefData(TAG_CURRENT_CONCEPTUAL_MODEL_REF);
@@ -236,7 +236,7 @@ public class ViewData extends BaseObject
 	
 	private IntegerData currentTab;
 	private StringData currentMode;
-	private ORefListData chainModeFactorRefs;
+	private RefListData chainModeFactorRefs;
 	private ORefData currentResultsChainRef;
 	private ORefData currentConceptualModelRef;
 	private CodeListData diagramHiddenTypes;
