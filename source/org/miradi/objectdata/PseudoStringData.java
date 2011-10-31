@@ -40,29 +40,13 @@ public class PseudoStringData  extends StringData
 	public void set(String newValue) throws Exception
 	{
 		if (newValue.length()!=0)
-			throw new RuntimeException("Set not allowed in a pseuod field");
+			throw new RuntimeException("Set not allowed in a pseudo field");
 	}
 
 	@Override
 	public String get()
 	{
 		return object.getPseudoData(getTag());
-	}
-	
-	@Override
-	public boolean equals(Object rawOther)
-	{
-		if(!(rawOther instanceof StringData))
-			return false;
-		
-		StringData other = (StringData)rawOther;
-		return get().equals(other.get());
-	}
-
-	@Override
-	public int hashCode()
-	{
-		return get().hashCode();
 	}
 	
 	private BaseObject object;
