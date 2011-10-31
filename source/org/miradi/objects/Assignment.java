@@ -21,7 +21,6 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objectdata.DateUnitEffortListData;
-import org.miradi.objectdata.ORefData;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.TimePeriodCosts;
@@ -257,8 +256,8 @@ abstract public class Assignment extends BaseObject
 		super.clear();
 		
 		addField(new DateUnitEffortListData(TAG_DATEUNIT_EFFORTS));
-		addField(new ORefData(TAG_CATEGORY_ONE_REF));
-		addField(new ORefData(TAG_CATEGORY_TWO_REF));
+		createRefField(TAG_CATEGORY_ONE_REF);
+		createRefField(TAG_CATEGORY_TWO_REF);
 	}
 	
 	abstract protected TimePeriodCosts createTimePeriodCosts(OptionalDouble quantity);
