@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
-import org.miradi.objectdata.DateUnitEffortListData;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.TimePeriodCosts;
@@ -255,7 +254,7 @@ abstract public class Assignment extends BaseObject
 	{
 		super.clear();
 		
-		addField(new DateUnitEffortListData(TAG_DATEUNIT_EFFORTS));
+		createDateUnitEffortListField(TAG_DATEUNIT_EFFORTS);
 		createRefField(TAG_CATEGORY_ONE_REF);
 		createRefField(TAG_CATEGORY_TWO_REF);
 	}
