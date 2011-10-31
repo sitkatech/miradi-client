@@ -20,9 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
-import org.miradi.objectdata.IntegerData;
-import org.miradi.objectdata.ORefData;
-import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.utils.EnhancedJsonObject;
@@ -73,13 +70,9 @@ public class CostAllocationRule extends BaseObject
 	{
 		super.clear();
 		
-		parentRef = new ORefData(TAG_PARENT_REF);
-		childRef = new ORefData(TAG_CHILD_REF);
-		costPercentage = new IntegerData(TAG_COST_PERCENTAGE);
-		
-		addField(TAG_PARENT_REF, parentRef);
-		addField(TAG_CHILD_REF, childRef);
-		addField(TAG_COST_PERCENTAGE, costPercentage);
+		createRefField(TAG_PARENT_REF);
+		createRefField(TAG_CHILD_REF);
+		createIntegerField(TAG_COST_PERCENTAGE);
 	}
 	
 	public static final String TAG_PARENT_REF = "ParentRef";
@@ -87,8 +80,4 @@ public class CostAllocationRule extends BaseObject
 	public static final String TAG_COST_PERCENTAGE = "CostPercentage"; 
 	
 	public static final String OBJECT_NAME = "CostAllocationRule";
-	
-	private ObjectData parentRef;
-	private ObjectData childRef;
-	private ObjectData costPercentage;
 }
