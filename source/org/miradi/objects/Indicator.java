@@ -28,6 +28,7 @@ import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.DateData;
 import org.miradi.objectdata.IdListData;
 import org.miradi.objectdata.ORefListData;
+import org.miradi.objectdata.PseudoQuestionData;
 import org.miradi.objectdata.PseudoStringData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objectdata.UserTextData;
@@ -424,12 +425,12 @@ public class Indicator extends BaseObject
 		multiLineFactor = new PseudoStringData(this, PSEUDO_TAG_FACTOR);
 		multiLineMethods = new PseudoStringData(this, PSEUDO_TAG_METHODS);
 		indicatorThresholdLabel = new PseudoStringData(this, PSEUDO_TAG_INDICATOR_THRESHOLD_VALUE);
-		priorityLabel = new PseudoQuestionData(PSEUDO_TAG_PRIORITY_VALUE, this, new PriorityRatingQuestion());
-		statusLabel = new PseudoQuestionData(PSEUDO_TAG_STATUS_VALUE, this, new StatusQuestion());
-		ratingSourceLabel = new PseudoQuestionData(PSEUDO_TAG_RATING_SOURCE_VALUE, this, new RatingSourceQuestion());
-		latestMeasurement = new PseudoQuestionData(PSEUDO_TAG_LATEST_MEASUREMENT_REF, this, new StatusQuestion());
+		priorityLabel = new PseudoQuestionData(this, PSEUDO_TAG_PRIORITY_VALUE);
+		statusLabel = new PseudoQuestionData(this, PSEUDO_TAG_STATUS_VALUE);
+		ratingSourceLabel = new PseudoQuestionData(this, PSEUDO_TAG_RATING_SOURCE_VALUE);
+		latestMeasurement = new PseudoQuestionData(this, PSEUDO_TAG_LATEST_MEASUREMENT_REF);
 		
-		futureStatusRatingLabel = new PseudoQuestionData(PSEUDO_TAG_FUTURE_STATUS_RATING_VALUE, this, new StatusQuestion());
+		futureStatusRatingLabel = new PseudoQuestionData(this, PSEUDO_TAG_FUTURE_STATUS_RATING_VALUE);
 		
 		
 		addField(TAG_SHORT_LABEL, shortLabel);

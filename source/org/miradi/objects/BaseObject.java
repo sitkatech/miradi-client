@@ -48,6 +48,7 @@ import org.miradi.objectdata.ORefData;
 import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objectdata.PointData;
+import org.miradi.objectdata.PseudoQuestionData;
 import org.miradi.objectdata.PseudoStringData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objectdata.UserTextData;
@@ -65,9 +66,7 @@ import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.project.CurrencyFormat;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.ProgressReportLongStatusQuestion;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
@@ -798,7 +797,7 @@ abstract public class BaseObject
 		addField(new ORefListData(TAG_PROGRESS_REPORT_REFS));
 		
 		addField(new PseudoStringData(this, PSEUDO_TAG_WHEN_TOTAL));
-		addField(new PseudoQuestionData(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, createSet(TAG_PROGRESS_REPORT_REFS), new ProgressReportLongStatusQuestion()));
+		addField(new PseudoQuestionData(this, PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, createSet(TAG_PROGRESS_REPORT_REFS)));
 		addField(new PseudoStringData(this, PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS));
 	}
 	
@@ -1372,65 +1371,6 @@ abstract public class BaseObject
 		return result.toString();
 	}
 
-	//FIXME medium: move these classes into their own class in order to avoid dup code and inner classes
-	public class PseudoQuestionData  extends ObjectData
-	{
-		public PseudoQuestionData(String tagToUse, BaseObject owningObject, ChoiceQuestion questionToUse)
-		{
-			super(tagToUse);
-
-			question = questionToUse;
-		}
-		
-		public PseudoQuestionData(String tagToUse, HashSet<String> dependencyTagsToUse, ChoiceQuestion questionToUse)
-		{
-			super(tagToUse, dependencyTagsToUse);
-			
-			question = questionToUse;
-		}
-		
-		@Override
-		public boolean isPseudoField()
-		{
-			return true;
-		}
-		
-		@Override
-		public void set(String newValue) throws Exception
-		{
-		}
-
-		@Override
-		public String get()
-		{
-			return getPseudoData(getTag());
-		}
-		
-		//NOTE: as of 2009-06-03 this is never called
-		public ChoiceItem getChoiceItem()
-		{
-			return question.findChoiceByCode(getPseudoData(getTag()));
-		}
-
-		@Override
-		public boolean equals(Object rawOther)
-		{
-			if(!(rawOther instanceof PseudoQuestionData))
-				return false;
-			
-			PseudoQuestionData other = (PseudoQuestionData)rawOther;
-			return get().equals(other.get());
-		}
-
-		@Override
-		public int hashCode()
-		{
-			return get().hashCode();
-		}
-
-		private ChoiceQuestion question;
-	}
-	
 	public class PseudoORefListData extends ORefListData
 	{
 		public PseudoORefListData(String tag)

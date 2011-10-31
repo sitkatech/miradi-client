@@ -23,6 +23,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.ORefData;
+import org.miradi.objectdata.PseudoQuestionData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
@@ -31,7 +32,6 @@ import org.miradi.project.threatrating.StressBasedThreatFormula;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.StressContributionQuestion;
 import org.miradi.questions.StressIrreversibilityQuestion;
-import org.miradi.questions.ThreatStressRatingChoiceQuestion;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class ThreatStressRating extends BaseObject
@@ -171,7 +171,7 @@ public class ThreatStressRating extends BaseObject
 		stressRef = new ORefData(TAG_STRESS_REF);
 		threatRef = new ORefData(TAG_THREAT_REF);
 		isActive = new BooleanData(TAG_IS_ACTIVE);
-		pseudoThreatRating = new PseudoQuestionData(PSEUDO_TAG_THREAT_RATING, this, new ThreatStressRatingChoiceQuestion());
+		pseudoThreatRating = new PseudoQuestionData(this, PSEUDO_TAG_THREAT_RATING);
 		
 		addField(TAG_CONTRIBUTION, contribution);
 		addField(TAG_IRREVERSIBILITY, irreversibility);

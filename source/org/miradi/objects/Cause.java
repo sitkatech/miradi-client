@@ -22,6 +22,7 @@ package org.miradi.objects;
 import org.miradi.ids.FactorId;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objectdata.ChoiceData;
+import org.miradi.objectdata.PseudoQuestionData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -157,7 +158,7 @@ public class Cause extends Factor
 		
 		taxonomyCode = new ChoiceData(TAG_TAXONOMY_CODE, new ThreatClassificationQuestion());
 		isDirectThreat = new BooleanData(TAG_IS_DIRECT_THREAT);
-		taxonomyCodeLabel = new PseudoQuestionData(PSEUDO_TAG_TAXONOMY_CODE_VALUE, this, new ThreatClassificationQuestion());
+		taxonomyCodeLabel = new PseudoQuestionData(this, PSEUDO_TAG_TAXONOMY_CODE_VALUE);
 		
 		addField(TAG_TAXONOMY_CODE, taxonomyCode);
 		addField(TAG_IS_DIRECT_THREAT, isDirectThreat);
