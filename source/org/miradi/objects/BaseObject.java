@@ -1424,42 +1424,6 @@ abstract public class BaseObject
 		private ChoiceQuestion question;
 	}
 	
-	public class PseudoStringChoiceMapData extends StringChoiceMapData
-	{
-		public PseudoStringChoiceMapData(String tagToUse)
-		{
-			super(tagToUse);
-		}
-		
-		@Override
-		public boolean isPseudoField()
-		{
-			return true;
-		}
-		
-		@Override
-		public String get()
-		{
-			return getPseudoData(getTag());
-		}
-		
-		@Override
-		public boolean equals(Object rawOther)
-		{
-			if(!(rawOther instanceof StringChoiceMapData))
-				return false;
-			
-			StringChoiceMapData other = (StringChoiceMapData)rawOther;
-			return get().equals(other.get());
-		}
-
-		@Override
-		public int hashCode()
-		{
-			return get().hashCode();
-		}
-	}
-	
 	public class PseudoStringData  extends StringData
 	{
 
