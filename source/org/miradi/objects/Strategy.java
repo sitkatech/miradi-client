@@ -29,6 +29,7 @@ import org.miradi.main.EAM;
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.CodeData;
 import org.miradi.objectdata.IdListData;
+import org.miradi.objectdata.PseudoQuestionData;
 import org.miradi.objectdata.PseudoStringData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objectdata.UserTextData;
@@ -355,10 +356,10 @@ public class Strategy extends Factor
 		legacyTncStrategyRanking = new UserTextData(TAG_LEGACY_TNC_STRATEGY_RANKING);
 	
 		tagRatingSummary = new PseudoStringData(this, PSEUDO_TAG_RATING_SUMMARY);
-		impactRatingLabel = new PseudoQuestionData(PSEUDO_TAG_IMPACT_RATING_VALUE, this, new StrategyImpactQuestion());
-		feasibilityRatingLabel = new PseudoQuestionData(PSEUDO_TAG_FEASIBILITY_RATING_VALUE, this, new StrategyFeasibilityQuestion());
-		tagRatingSummaryLabel = new PseudoQuestionData(PSEUDO_TAG_RATING_SUMMARY_VALUE, this, new StrategyRatingSummaryQuestion());
-		taxonomyCodeLabel = new PseudoQuestionData(PSEUDO_TAG_TAXONOMY_CODE_VALUE, this, new StrategyClassificationQuestion());
+		impactRatingLabel = new PseudoQuestionData(this, PSEUDO_TAG_IMPACT_RATING_VALUE);
+		feasibilityRatingLabel = new PseudoQuestionData(this, PSEUDO_TAG_FEASIBILITY_RATING_VALUE);
+		tagRatingSummaryLabel = new PseudoQuestionData(this, PSEUDO_TAG_RATING_SUMMARY_VALUE);
+		taxonomyCodeLabel = new PseudoQuestionData(this, PSEUDO_TAG_TAXONOMY_CODE_VALUE);
 		multiLineActivities = new PseudoStringData(this, PSEUDO_TAG_ACTIVITIES);
 		relevantGoalRefs = new PseudoORefListData(PSEUDO_TAG_RELEVANT_GOAL_REFS);
 		relevantObjectiveRefs = new PseudoORefListData(PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS);

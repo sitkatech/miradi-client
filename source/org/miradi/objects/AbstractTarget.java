@@ -26,6 +26,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
+import org.miradi.objectdata.PseudoQuestionData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -334,8 +335,8 @@ abstract public class AbstractTarget extends Factor
 	{
 		super.clear();
 			
-		targetStatusLabel = new PseudoQuestionData(PSEUDO_TAG_TARGET_STATUS_VALUE, this, new StatusQuestion());
-		viabiltyModeLabel = new PseudoQuestionData(PSEUDO_TAG_VIABILITY_MODE_VALUE, this, new ViabilityModeQuestion());
+		targetStatusLabel = new PseudoQuestionData(this, PSEUDO_TAG_TARGET_STATUS_VALUE);
+		viabiltyModeLabel = new PseudoQuestionData(this, PSEUDO_TAG_VIABILITY_MODE_VALUE);
 
 		createChoiceField(TAG_TARGET_STATUS, StatusQuestion.class);
 		createChoiceField(TAG_VIABILITY_MODE, ViabilityModeQuestion.class);

@@ -21,6 +21,7 @@ package org.miradi.objects;
 
 import org.miradi.ids.FactorId;
 import org.miradi.objectdata.ChoiceData;
+import org.miradi.objectdata.PseudoQuestionData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.ORef;
@@ -30,7 +31,6 @@ import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.project.threatrating.StressBasedThreatFormula;
 import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.StressRatingChoiceQuestion;
 import org.miradi.questions.StressScopeChoiceQuestion;
 import org.miradi.questions.StressSeverityChoiceQuestion;
 import org.miradi.utils.EnhancedJsonObject;
@@ -196,7 +196,7 @@ public class Stress extends Factor
 		detail = new UserTextData(TAG_DETAIL);
 		scope = new ChoiceData(TAG_SCOPE, getQuestion(StressScopeChoiceQuestion.class));
 		severity = new ChoiceData(TAG_SEVERITY, getQuestion(StressSeverityChoiceQuestion.class));
-		pseudoStressRating = new PseudoQuestionData(PSEUDO_STRESS_RATING, this, new StressRatingChoiceQuestion());
+		pseudoStressRating = new PseudoQuestionData(this, PSEUDO_STRESS_RATING);
 		
 		addField(TAG_SHORT_LABEL, shortLabel);
 		addField(TAG_DETAIL, detail);
