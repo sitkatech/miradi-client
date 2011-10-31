@@ -104,7 +104,7 @@ public class TestFactor extends TestCaseWithProject
 		Target factor = new Target(getObjectManager(), factorId);
 		factor.setData(BaseObject.TAG_LABEL, "JustAName");
 		factor.setComment("This is a great comment");
-		factor.setGoals(goals);
+		factor.setData(factor.TAG_GOAL_IDS, goals.toString());
 		Target got = (Target)Factor.createFromJson(getObjectManager(), factor.getType(), factor.toJson());
 		assertEquals("wrong type?", factor.getObjectType(), got.getObjectType());
 		assertEquals("wrong id?", factor.getId(), got.getId());
