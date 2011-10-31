@@ -514,8 +514,8 @@ public class Task extends Factor
 		subtaskIds = new IdListData(TAG_SUBTASK_IDS, Task.getObjectType());
 		details = new UserTextData(TAG_DETAILS);
 		
-		strategyLabel = new PseudoStringData(PSEUDO_TAG_STRATEGY_LABEL);
-		indicatorLabel = new PseudoStringData(PSEUDO_TAG_INDICATOR_LABEL);
+		strategyLabel = new PseudoStringData(this, PSEUDO_TAG_STRATEGY_LABEL);
+		indicatorLabel = new PseudoStringData(this, PSEUDO_TAG_INDICATOR_LABEL);
 		relevantObjectiveRefs = new PseudoORefListData(PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS);
 		relevantGoalRefs = new PseudoORefListData(PSEUDO_TAG_RELEVANT_GOAL_REFS);
 		

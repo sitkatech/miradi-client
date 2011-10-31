@@ -353,12 +353,12 @@ public class Strategy extends Factor
 		feasibilityRating = new ChoiceData(TAG_FEASIBILITY_RATING, getQuestion(StrategyFeasibilityQuestion.class));
 		legacyTncStrategyRanking = new UserTextData(TAG_LEGACY_TNC_STRATEGY_RANKING);
 	
-		tagRatingSummary = new PseudoStringData(PSEUDO_TAG_RATING_SUMMARY);
+		tagRatingSummary = new PseudoStringData(this, PSEUDO_TAG_RATING_SUMMARY);
 		impactRatingLabel = new PseudoQuestionData(PSEUDO_TAG_IMPACT_RATING_VALUE, new StrategyImpactQuestion());
 		feasibilityRatingLabel = new PseudoQuestionData(PSEUDO_TAG_FEASIBILITY_RATING_VALUE, new StrategyFeasibilityQuestion());
 		tagRatingSummaryLabel = new PseudoQuestionData(PSEUDO_TAG_RATING_SUMMARY_VALUE, new StrategyRatingSummaryQuestion());
 		taxonomyCodeLabel = new PseudoQuestionData(PSEUDO_TAG_TAXONOMY_CODE_VALUE, new StrategyClassificationQuestion());
-		multiLineActivities = new PseudoStringData(PSEUDO_TAG_ACTIVITIES);
+		multiLineActivities = new PseudoStringData(this, PSEUDO_TAG_ACTIVITIES);
 		relevantGoalRefs = new PseudoORefListData(PSEUDO_TAG_RELEVANT_GOAL_REFS);
 		relevantObjectiveRefs = new PseudoORefListData(PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS);
 		

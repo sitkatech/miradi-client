@@ -74,7 +74,6 @@ import org.miradi.utils.DateRange;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.InvalidNumberException;
 import org.miradi.utils.OptionalDouble;
-import org.miradi.utils.StringChoiceMapData;
 
 abstract public class BaseObject
 {
@@ -797,9 +796,9 @@ abstract public class BaseObject
 		addField(new ORefListData(TAG_EXPENSE_ASSIGNMENT_REFS));
 		addField(new ORefListData(TAG_PROGRESS_REPORT_REFS));
 		
-		addField(new PseudoStringData(PSEUDO_TAG_WHEN_TOTAL));
+		addField(new PseudoStringData(this, PSEUDO_TAG_WHEN_TOTAL));
 		addField(new PseudoQuestionData(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, createSet(TAG_PROGRESS_REPORT_REFS), new ProgressReportLongStatusQuestion()));
-		addField(new PseudoStringData(PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS));
+		addField(new PseudoStringData(this, PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS));
 	}
 	
 	public static HashSet<String> createSet(String parentTagToUse)
@@ -1372,7 +1371,9 @@ abstract public class BaseObject
 	{
 		public PseudoQuestionData(String tagToUse, ChoiceQuestion questionToUse)
 		{
-			this(tagToUse, new HashSet<String>(), questionToUse);
+			super(tagToUse);
+
+			question = questionToUse;
 		}
 		
 		public PseudoQuestionData(String tagToUse, HashSet<String> dependencyTagsToUse, ChoiceQuestion questionToUse)
@@ -1424,12 +1425,12 @@ abstract public class BaseObject
 		private ChoiceQuestion question;
 	}
 	
-	public class PseudoStringData  extends StringData
+	public static class PseudoStringData  extends StringData
 	{
-
-		public PseudoStringData(String tag)
+		public PseudoStringData(BaseObject owningObject, String tag)
 		{
 			super(tag);
+			object = owningObject;
 		}
 
 		@Override
@@ -1448,7 +1449,7 @@ abstract public class BaseObject
 		@Override
 		public String get()
 		{
-			return getPseudoData(getTag());
+			return object.getPseudoData(getTag());
 		}
 		
 		@Override
@@ -1466,6 +1467,8 @@ abstract public class BaseObject
 		{
 			return get().hashCode();
 		}
+		
+		private BaseObject object;
 	}
 
 	public class PseudoORefListData extends ORefListData

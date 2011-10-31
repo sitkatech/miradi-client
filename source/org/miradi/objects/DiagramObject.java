@@ -566,7 +566,7 @@ abstract public class DiagramObject extends BaseObject
 		selectedTaggedObjectSetRefs = new ORefListData(TAG_SELECTED_TAGGED_OBJECT_SET_REFS);
 		zoomScale = new NumberData(TAG_ZOOM_SCALE);
 		
-		combinedLabel = new PseudoStringData(PSEUDO_COMBINED_LABEL);
+		combinedLabel = new PseudoStringData(this, PSEUDO_COMBINED_LABEL);
 		
 		addField(TAG_DIAGRAM_FACTOR_IDS, allDiagramFactorIds);
 		addField(TAG_DIAGRAM_FACTOR_LINK_IDS, allDiagramFactorLinkIds);

@@ -496,10 +496,10 @@ abstract public class Factor extends BaseObject
 		shortLabel = new UserTextData(TAG_SHORT_LABEL);
 	    indicators = new IdListData(TAG_INDICATOR_IDS, Indicator.getObjectType());
 		objectives = new IdListData(TAG_OBJECTIVE_IDS, Objective.getObjectType());
-		multiLineObjectives = new PseudoStringData(PSEUDO_TAG_OBJECTIVES);
-		multiLineDeirectThreats = new PseudoStringData(PSEUDO_TAG_DIRECT_THREATS);
-		multiLineTargets = new PseudoStringData(PSEUDO_TAG_TARGETS);
-		multiLineIndicators = new PseudoStringData(PSEUDO_TAG_INDICATORS);
+		multiLineObjectives = new PseudoStringData(this, PSEUDO_TAG_OBJECTIVES);
+		multiLineDeirectThreats = new PseudoStringData(this, PSEUDO_TAG_DIRECT_THREATS);
+		multiLineTargets = new PseudoStringData(this, PSEUDO_TAG_TARGETS);
+		multiLineIndicators = new PseudoStringData(this, PSEUDO_TAG_INDICATORS);
 		pseudoDiagramRefs = new PseudoORefListData(PSEUDO_TAG_CONCEPTUAL_DIAGRAM_REFS);
 		pseudoResultsChainRefs = new PseudoORefListData(PSEUDO_TAG_RESULTS_CHAIN_REFS);
 		pseudoTagReferringTagRefs = new PseudoORefListData(PSEUDO_TAG_REFERRING_TAG_REFS);

@@ -334,7 +334,7 @@ abstract public class AbstractTarget extends Factor
 	{
 		super.clear();
 			
-		targetViability = new PseudoStringData(PSEUDO_TAG_TARGET_VIABILITY);
+		targetViability = new PseudoStringData(this, PSEUDO_TAG_TARGET_VIABILITY);
 		targetStatusLabel = new PseudoQuestionData(PSEUDO_TAG_TARGET_STATUS_VALUE, new StatusQuestion());
 		viabiltyModeLabel = new PseudoQuestionData(PSEUDO_TAG_VIABILITY_MODE_VALUE, new ViabilityModeQuestion());
 

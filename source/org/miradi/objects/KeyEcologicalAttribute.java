@@ -199,7 +199,7 @@ public class KeyEcologicalAttribute extends BaseObject
 		details = new UserTextData(TAG_DETAILS);
 		keyEcologicalAttributeType = new ChoiceData(TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE, getQuestion(KeyEcologicalAttributeTypeQuestion.class));
 		shortLabel = new UserTextData(TAG_SHORT_LABEL);
-		viabilityStatus = new PseudoStringData(PSEUDO_TAG_VIABILITY_STATUS);
+		viabilityStatus = new PseudoStringData(this, PSEUDO_TAG_VIABILITY_STATUS);
 		
 		addField(TAG_INDICATOR_IDS, indicatorIds);
 		addField(TAG_DESCRIPTION, description);

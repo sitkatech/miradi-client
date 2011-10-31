@@ -518,8 +518,8 @@ public class ProjectMetadata extends BaseObject
 		addField(TAG_HUMAN_WELFARE_TARGET_MODE, targetMode);
 		addField(TAG_WORK_PLAN_DIAGRAM_DATA_INCLUSION, workPlanDiagramDataInclusionCode);
 		
-		projectFileName = new PseudoStringData(PSEUDO_TAG_PROJECT_FILENAME);
-		allThreatClassifications = new PseudoStringData(PSEUDO_TAG_ALL_THREAT_CLASSIFICATIONS);
+		projectFileName = new PseudoStringData(this, PSEUDO_TAG_PROJECT_FILENAME);
+		allThreatClassifications = new PseudoStringData(this, PSEUDO_TAG_ALL_THREAT_CLASSIFICATIONS);
 		
 		addField(PSEUDO_TAG_PROJECT_FILENAME, projectFileName);
 		addField(PSEUDO_TAG_ALL_THREAT_CLASSIFICATIONS, allThreatClassifications);
