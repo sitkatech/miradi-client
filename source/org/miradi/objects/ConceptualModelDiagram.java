@@ -24,7 +24,6 @@ import java.util.Vector;
 
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
-import org.miradi.objectdata.PseudoRefListData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -121,9 +120,7 @@ public class ConceptualModelDiagram extends DiagramObject
 	{
 		super.clear();
 		
-		draftStrategies = new PseudoRefListData(this, PSEUDO_DRAFT_STRATEGY_REFS);
-		
-		addField(PSEUDO_DRAFT_STRATEGY_REFS, draftStrategies);
+		createPseudoRefListField(PSEUDO_DRAFT_STRATEGY_REFS);
 	}
 
 	public static final String PSEUDO_DRAFT_STRATEGY_REFS = "PseudoDraftStrategies";
@@ -131,6 +128,4 @@ public class ConceptualModelDiagram extends DiagramObject
 	public static final String OBJECT_NAME = "ConceptualModelDiagram";
 	public static final String DEFAULT_MAIN_NAME = EAM.text("[Main Diagram]");
 	public static final String DEFAULT_BLANK_NAME = EAM.text("[Not Named]");
-	
-	private PseudoRefListData draftStrategies;
 }
