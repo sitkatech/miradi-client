@@ -33,6 +33,8 @@ public class PseudoQuestionData  extends ObjectData
 		object = owningObject;
 	}
 	
+	// TODO: Do we really need this dependencyTags, and if so can it be simplified?
+	// It seems like the only user passes a single tag
 	public PseudoQuestionData(BaseObject owningObject, String tagToUse, HashSet<String> dependencyTagsToUse)
 	{
 		super(tagToUse, dependencyTagsToUse);
