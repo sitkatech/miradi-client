@@ -46,13 +46,13 @@ abstract public class StringData extends ObjectData
 			return false;
 		
 		StringData other = (StringData)rawOther;
-		return value.equals(other.value);
+		return get().equals(other.get());
 	}
 
 	@Override
 	public int hashCode()
 	{
-		return value.hashCode();
+		return get().hashCode();
 	}
 
 
