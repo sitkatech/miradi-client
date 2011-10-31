@@ -41,6 +41,7 @@ import org.miradi.main.EAM;
 import org.miradi.objectdata.BaseIdData;
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.CodeData;
+import org.miradi.objectdata.DateUnitEffortListData;
 import org.miradi.objectdata.DimensionData;
 import org.miradi.objectdata.IdListData;
 import org.miradi.objectdata.IntegerData;
@@ -852,6 +853,11 @@ abstract public class BaseObject
 	protected void createDimensionField(String tag)
 	{
 		addField(new DimensionData(tag));
+	}
+	
+	protected void createDateUnitEffortListField(String tag)
+	{
+		addField(new DateUnitEffortListData(tag));
 	}
 	
 	protected void createPseudoStringField(String tag)
