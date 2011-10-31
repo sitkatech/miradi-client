@@ -1371,9 +1371,9 @@ abstract public class BaseObject
 		return result.toString();
 	}
 
-	public class PseudoORefListData extends ORefListData
+	public class PseudoRefListData extends ORefListData
 	{
-		public PseudoORefListData(BaseObject owningObject, String tag)
+		public PseudoRefListData(BaseObject owningObject, String tag)
 		{
 			super(tag);
 		}

@@ -120,7 +120,7 @@ public class ConceptualModelDiagram extends DiagramObject
 	{
 		super.clear();
 		
-		draftStrategies = new PseudoORefListData(this, PSEUDO_DRAFT_STRATEGY_REFS);
+		draftStrategies = new PseudoRefListData(this, PSEUDO_DRAFT_STRATEGY_REFS);
 		
 		addField(PSEUDO_DRAFT_STRATEGY_REFS, draftStrategies);
 	}
@@ -131,5 +131,5 @@ public class ConceptualModelDiagram extends DiagramObject
 	public static final String DEFAULT_MAIN_NAME = EAM.text("[Main Diagram]");
 	public static final String DEFAULT_BLANK_NAME = EAM.text("[Not Named]");
 	
-	private PseudoORefListData draftStrategies;
+	private PseudoRefListData draftStrategies;
 }
