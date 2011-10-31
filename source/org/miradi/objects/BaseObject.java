@@ -50,6 +50,7 @@ import org.miradi.objectdata.ORefData;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objectdata.PointData;
 import org.miradi.objectdata.PseudoQuestionData;
+import org.miradi.objectdata.PseudoRefListData;
 import org.miradi.objectdata.PseudoStringData;
 import org.miradi.objectdata.RefListData;
 import org.miradi.objectdata.StringData;
@@ -891,6 +892,11 @@ abstract public class BaseObject
 	protected void createPseudoQuestionField(String tag)
 	{
 		addField(new PseudoQuestionData(this, tag));
+	}
+	
+	protected void createPseudoRefListField(String tag)
+	{
+		addField(new PseudoRefListData(this, tag));
 	}
 	
 	protected void addField(ObjectData data)
