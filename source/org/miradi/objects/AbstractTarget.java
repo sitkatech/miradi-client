@@ -26,11 +26,6 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
-import org.miradi.objectdata.ChoiceData;
-import org.miradi.objectdata.IdListData;
-import org.miradi.objectdata.ORefListData;
-import org.miradi.objectdata.StringData;
-import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -91,7 +86,7 @@ abstract public class AbstractTarget extends Factor
 
 	public ORefList getSubTargetRefs()
 	{
-		return subTargetRefs.getRefList();
+		return getRefListData(TAG_SUB_TARGET_REFS);
 	}
 
 	public ORefList getKeyEcologicalAttributeRefs()
@@ -101,7 +96,7 @@ abstract public class AbstractTarget extends Factor
 
 	public IdList getKeyEcologicalAttributes()
 	{
-		return keyEcologicalAttributes.getIdList();
+		return getIdListData(TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
 	}
 
 	@Override
@@ -198,7 +193,7 @@ abstract public class AbstractTarget extends Factor
 
 	private String getBasicTargetStatus()
 	{
-		return targetStatus.get();
+		return getData(TAG_TARGET_STATUS);
 	}
 
 	public boolean isViabilityModeTNC()
@@ -208,7 +203,7 @@ abstract public class AbstractTarget extends Factor
 
 	public String getViabilityMode()
 	{
-		return viabiltyMode.get();
+		return getData(TAG_VIABILITY_MODE);
 	}
 
 	public ChoiceItem[] getKeyEcologicalAttributesTypes()
@@ -331,35 +326,24 @@ abstract public class AbstractTarget extends Factor
 	@Override
 	public ORefList getGoalRefs()
 	{
-		return goalIds.getRefList();
-	}
-	
-	public void setGoals(IdList goalsToUse)
-	{
-		goalIds.set(goalsToUse);
+		return getRefListData(TAG_GOAL_IDS);
 	}
 	
 	@Override
 	protected void clear()
 	{
 		super.clear();
-		targetStatus = new ChoiceData(TAG_TARGET_STATUS, getQuestion(StatusQuestion.class));
-		viabiltyMode = new ChoiceData(TAG_VIABILITY_MODE, getQuestion(ViabilityModeQuestion.class));
-		currentStatusJustification = new UserTextData(TAG_CURRENT_STATUS_JUSTIFICATION);
-		subTargetRefs = new ORefListData(TAG_SUB_TARGET_REFS);
-		goalIds = new IdListData(TAG_GOAL_IDS, Goal.getObjectType());
-		keyEcologicalAttributes = new IdListData(TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, KeyEcologicalAttribute.getObjectType());
 			
 		targetViability = new PseudoStringData(PSEUDO_TAG_TARGET_VIABILITY);
 		targetStatusLabel = new PseudoQuestionData(PSEUDO_TAG_TARGET_STATUS_VALUE, new StatusQuestion());
 		viabiltyModeLabel = new PseudoQuestionData(PSEUDO_TAG_VIABILITY_MODE_VALUE, new ViabilityModeQuestion());
-		
-		addField(TAG_TARGET_STATUS, targetStatus);
-		addField(TAG_VIABILITY_MODE, viabiltyMode);
-		addField(TAG_CURRENT_STATUS_JUSTIFICATION, currentStatusJustification);
-		addField(TAG_SUB_TARGET_REFS, subTargetRefs);
-		addField(TAG_GOAL_IDS, goalIds);
-		addField(TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, keyEcologicalAttributes);
+
+		createChoiceField(TAG_TARGET_STATUS, StatusQuestion.class);
+		createChoiceField(TAG_VIABILITY_MODE, ViabilityModeQuestion.class);
+		createUserTextField(TAG_CURRENT_STATUS_JUSTIFICATION);
+		createRefListField(TAG_SUB_TARGET_REFS);
+		createIdListField(TAG_GOAL_IDS, Goal.getObjectType());
+		createIdListField(TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, KeyEcologicalAttribute.getObjectType());
 
 		addField(PSEUDO_TAG_TARGET_VIABILITY, targetViability);
 		addField(PSEUDO_TAG_TARGET_STATUS_VALUE, targetStatusLabel);
@@ -377,13 +361,6 @@ abstract public class AbstractTarget extends Factor
 	public static final String PSEUDO_TAG_TARGET_STATUS_VALUE = "TargetStatusValue";
 	public static final String PSEUDO_TAG_VIABILITY_MODE_VALUE = "ViabilityModeValue";
 	
-	private ChoiceData targetStatus;
-	private ChoiceData viabiltyMode;
-	private StringData currentStatusJustification;
-	private ORefListData subTargetRefs;
-	private IdListData goalIds;
-	private IdListData keyEcologicalAttributes;
-
 	private PseudoStringData targetViability;
 	private PseudoQuestionData targetStatusLabel;
 	private PseudoQuestionData viabiltyModeLabel;

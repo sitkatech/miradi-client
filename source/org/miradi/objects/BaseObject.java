@@ -40,6 +40,7 @@ import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.BaseIdData;
 import org.miradi.objectdata.ChoiceData;
+import org.miradi.objectdata.CodeData;
 import org.miradi.objectdata.DimensionData;
 import org.miradi.objectdata.IdListData;
 import org.miradi.objectdata.IntegerData;
@@ -157,8 +158,19 @@ abstract public class BaseObject
 	{
 		ObjectData field = getField(fieldTag);
 		if(field.isRefListData())
-			return new ORefList(((ORefListData)field).getRefList());
+		{
+			ORefListData refListField = (ORefListData)field;
+			ORefList refList = refListField.getRefList();
+			return new ORefList(refList);
+		}
 		
+		if(field.isIdListData())
+		{
+			IdList isList = getIdListData(fieldTag);
+			ORefList refList = new ORefList(isList);
+			return new ORefList(refList);
+		}
+			
 		throw new RuntimeException("Attempted to get RefList data from non-RefList field " + fieldTag);
 	}
 	
@@ -803,9 +815,24 @@ abstract public class BaseObject
 		return StaticQuestionManager.getQuestion(questionClass);
 	}
 	
-	protected void createChoiceField(String tag,	Class questionClass)
+	protected void createUserTextField(String tag)
+	{
+		addField(new UserTextData(tag));
+	}
+	
+	protected void createChoiceField(String tag, Class questionClass)
 	{
 		addField(new ChoiceData(tag, getQuestion(questionClass)));
+	}
+	
+	protected void createCodeField(String tag)
+	{
+		addField(new CodeData(tag));
+	}
+	
+	protected void createIdListField(String tag, int type)
+	{
+		addField(new IdListData(tag, type));
 	}
 
 	protected void createRefListField(String tag)
