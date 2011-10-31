@@ -361,8 +361,8 @@ public class Strategy extends Factor
 		tagRatingSummaryLabel = new PseudoQuestionData(this, PSEUDO_TAG_RATING_SUMMARY_VALUE);
 		taxonomyCodeLabel = new PseudoQuestionData(this, PSEUDO_TAG_TAXONOMY_CODE_VALUE);
 		multiLineActivities = new PseudoStringData(this, PSEUDO_TAG_ACTIVITIES);
-		relevantGoalRefs = new PseudoORefListData(PSEUDO_TAG_RELEVANT_GOAL_REFS);
-		relevantObjectiveRefs = new PseudoORefListData(PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS);
+		relevantGoalRefs = new PseudoORefListData(this, PSEUDO_TAG_RELEVANT_GOAL_REFS);
+		relevantObjectiveRefs = new PseudoORefListData(this, PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS);
 		
 		addField(TAG_STATUS, status);
 		addField(TAG_ACTIVITY_IDS, activityIds);

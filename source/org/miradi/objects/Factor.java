@@ -501,9 +501,9 @@ abstract public class Factor extends BaseObject
 		multiLineDeirectThreats = new PseudoStringData(this, PSEUDO_TAG_DIRECT_THREATS);
 		multiLineTargets = new PseudoStringData(this, PSEUDO_TAG_TARGETS);
 		multiLineIndicators = new PseudoStringData(this, PSEUDO_TAG_INDICATORS);
-		pseudoDiagramRefs = new PseudoORefListData(PSEUDO_TAG_CONCEPTUAL_DIAGRAM_REFS);
-		pseudoResultsChainRefs = new PseudoORefListData(PSEUDO_TAG_RESULTS_CHAIN_REFS);
-		pseudoTagReferringTagRefs = new PseudoORefListData(PSEUDO_TAG_REFERRING_TAG_REFS);
+		pseudoDiagramRefs = new PseudoORefListData(this, PSEUDO_TAG_CONCEPTUAL_DIAGRAM_REFS);
+		pseudoResultsChainRefs = new PseudoORefListData(this, PSEUDO_TAG_RESULTS_CHAIN_REFS);
+		pseudoTagReferringTagRefs = new PseudoORefListData(this, PSEUDO_TAG_REFERRING_TAG_REFS);
 		
 		addField(TAG_COMMENTS, comments);
 		addField(TAG_TEXT, text);

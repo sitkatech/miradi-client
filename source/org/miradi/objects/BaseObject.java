@@ -1373,7 +1373,7 @@ abstract public class BaseObject
 
 	public class PseudoORefListData extends ORefListData
 	{
-		public PseudoORefListData(String tag)
+		public PseudoORefListData(BaseObject owningObject, String tag)
 		{
 			super(tag);
 		}

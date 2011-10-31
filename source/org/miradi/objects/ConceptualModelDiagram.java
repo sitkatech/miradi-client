@@ -120,7 +120,7 @@ public class ConceptualModelDiagram extends DiagramObject
 	{
 		super.clear();
 		
-		draftStrategies = new PseudoORefListData(PSEUDO_DRAFT_STRATEGY_REFS);
+		draftStrategies = new PseudoORefListData(this, PSEUDO_DRAFT_STRATEGY_REFS);
 		
 		addField(PSEUDO_DRAFT_STRATEGY_REFS, draftStrategies);
 	}
