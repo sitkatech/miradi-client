@@ -30,7 +30,7 @@ import org.miradi.ids.DiagramLinkId;
 import org.miradi.objectdata.BaseIdData;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objectdata.ChoiceData;
-import org.miradi.objectdata.ORefListData;
+import org.miradi.objectdata.RefListData;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objectdata.PointListData;
 import org.miradi.objecthelpers.ORef;
@@ -405,7 +405,7 @@ public class DiagramLink extends BaseObject
 		fromId = new BaseIdData(TAG_FROM_DIAGRAM_FACTOR_ID, DiagramFactor.getObjectType());
 		toId = new BaseIdData(TAG_TO_DIAGRAM_FACTOR_ID, DiagramFactor.getObjectType());
 		bendPoints = new PointListData(TAG_BEND_POINTS);
-		groupedDiagramLinkRefs = new ORefListData(TAG_GROUPED_DIAGRAM_LINK_REFS);
+		groupedDiagramLinkRefs = new RefListData(TAG_GROUPED_DIAGRAM_LINK_REFS);
 		color = new ChoiceData(TAG_COLOR, getQuestion(DiagramLinkColorQuestion.class));
 		isBidirectionalLink = new BooleanData(TAG_IS_BIDIRECTIONAL_LINK);
 		
@@ -436,7 +436,7 @@ public class DiagramLink extends BaseObject
 	private BaseIdData fromId;
 	private BaseIdData toId;
 	private PointListData bendPoints;
-	private ORefListData groupedDiagramLinkRefs;
+	private RefListData groupedDiagramLinkRefs;
 	private ChoiceData color;
 	private ObjectData isBidirectionalLink;
 }

@@ -43,7 +43,7 @@ import org.miradi.objectdata.IdListData;
 import org.miradi.objectdata.IntegerData;
 import org.miradi.objectdata.NumberData;
 import org.miradi.objectdata.ORefData;
-import org.miradi.objectdata.ORefListData;
+import org.miradi.objectdata.RefListData;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objectdata.PointListData;
 import org.miradi.objectdata.PseudoQuestionData;
@@ -290,11 +290,11 @@ public class ObjectTestCase extends TestCaseWithProject
 		{
 			return new ORef(ObjectType.TASK, new TaskId(283)).toString();
 		}
-		else if(field instanceof ORefListData)
+		else if(field instanceof RefListData)
 		{
 			ORef test = new ORef(ObjectType.TASK, new TaskId(283));
 			ORefList list = new ORefList(new ORef[] {test});
-			ORefListData listData = new ORefListData("tag");
+			RefListData listData = new RefListData("tag");
 			listData.set(list.toString());
 			return listData.toString();
 		}

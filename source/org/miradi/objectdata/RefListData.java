@@ -21,9 +21,9 @@ package org.miradi.objectdata;
 
 import org.miradi.objecthelpers.ORefList;
 
-public class ORefListData extends ObjectData
+public class RefListData extends ObjectData
 {
-	public ORefListData(String tagToUse)
+	public RefListData(String tagToUse)
 	{
 		super(tagToUse);
 		objectReferenceList = new ORefList();
@@ -32,7 +32,7 @@ public class ORefListData extends ObjectData
 	@Override
 	public boolean equals(Object rawOther)
 	{
-		if (! (rawOther instanceof ORefListData))
+		if (! (rawOther instanceof RefListData))
 			return false;
 		
 		return rawOther.toString().equals(toString());

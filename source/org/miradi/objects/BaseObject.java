@@ -45,7 +45,7 @@ import org.miradi.objectdata.DimensionData;
 import org.miradi.objectdata.IdListData;
 import org.miradi.objectdata.IntegerData;
 import org.miradi.objectdata.ORefData;
-import org.miradi.objectdata.ORefListData;
+import org.miradi.objectdata.RefListData;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objectdata.PointData;
 import org.miradi.objectdata.PseudoQuestionData;
@@ -158,7 +158,7 @@ abstract public class BaseObject
 		ObjectData field = getField(fieldTag);
 		if(field.isRefListData())
 		{
-			ORefListData refListField = (ORefListData)field;
+			RefListData refListField = (RefListData)field;
 			ORefList refList = refListField.getRefList();
 			return new ORefList(refList);
 		}
@@ -793,8 +793,8 @@ abstract public class BaseObject
 
 		addField(new UserTextData(TAG_LABEL));
 		addField(new IdListData(TAG_RESOURCE_ASSIGNMENT_IDS, ResourceAssignment.getObjectType()));
-		addField(new ORefListData(TAG_EXPENSE_ASSIGNMENT_REFS));
-		addField(new ORefListData(TAG_PROGRESS_REPORT_REFS));
+		addField(new RefListData(TAG_EXPENSE_ASSIGNMENT_REFS));
+		addField(new RefListData(TAG_PROGRESS_REPORT_REFS));
 		
 		addField(new PseudoStringData(this, PSEUDO_TAG_WHEN_TOTAL));
 		addField(new PseudoQuestionData(this, PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, createSet(TAG_PROGRESS_REPORT_REFS)));
@@ -836,7 +836,7 @@ abstract public class BaseObject
 
 	protected void createRefListField(String tag)
 	{
-		addField(new ORefListData(tag));
+		addField(new RefListData(tag));
 	}
 
 	protected void createRefField(String tag)
