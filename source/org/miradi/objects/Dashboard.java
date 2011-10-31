@@ -31,6 +31,7 @@ import org.miradi.dialogs.threatrating.upperPanel.TargetThreatLinkTableModel;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.CodeData;
+import org.miradi.objectdata.PseudoStringData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;

@@ -22,6 +22,7 @@ package org.miradi.objects;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.ResourceAssignmentId;
 import org.miradi.objectdata.BaseIdData;
+import org.miradi.objectdata.PseudoStringData;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;

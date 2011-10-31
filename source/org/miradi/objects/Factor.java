@@ -27,6 +27,7 @@ import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.IdListData;
+import org.miradi.objectdata.PseudoStringData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.DirectThreatSet;

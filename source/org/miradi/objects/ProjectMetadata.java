@@ -32,6 +32,7 @@ import org.miradi.objectdata.FloatData;
 import org.miradi.objectdata.IntegerData;
 import org.miradi.objectdata.NumberData;
 import org.miradi.objectdata.PercentageData;
+import org.miradi.objectdata.PseudoStringData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.ORef;

@@ -29,6 +29,7 @@ import org.miradi.main.EAM;
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.CodeData;
 import org.miradi.objectdata.IdListData;
+import org.miradi.objectdata.PseudoStringData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.ORef;
