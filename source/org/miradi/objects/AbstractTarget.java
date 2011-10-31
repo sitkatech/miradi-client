@@ -26,7 +26,6 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
-import org.miradi.objectdata.PseudoStringData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -335,7 +334,6 @@ abstract public class AbstractTarget extends Factor
 	{
 		super.clear();
 			
-		targetViability = new PseudoStringData(this, PSEUDO_TAG_TARGET_VIABILITY);
 		targetStatusLabel = new PseudoQuestionData(PSEUDO_TAG_TARGET_STATUS_VALUE, new StatusQuestion());
 		viabiltyModeLabel = new PseudoQuestionData(PSEUDO_TAG_VIABILITY_MODE_VALUE, new ViabilityModeQuestion());
 
@@ -346,7 +344,8 @@ abstract public class AbstractTarget extends Factor
 		createIdListField(TAG_GOAL_IDS, Goal.getObjectType());
 		createIdListField(TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, KeyEcologicalAttribute.getObjectType());
 
-		addField(PSEUDO_TAG_TARGET_VIABILITY, targetViability);
+		createPseudoStringField(PSEUDO_TAG_TARGET_VIABILITY);
+		
 		addField(PSEUDO_TAG_TARGET_STATUS_VALUE, targetStatusLabel);
 		addField(PSEUDO_TAG_VIABILITY_MODE_VALUE, viabiltyModeLabel);
 	}
@@ -362,7 +361,6 @@ abstract public class AbstractTarget extends Factor
 	public static final String PSEUDO_TAG_TARGET_STATUS_VALUE = "TargetStatusValue";
 	public static final String PSEUDO_TAG_VIABILITY_MODE_VALUE = "ViabilityModeValue";
 	
-	private PseudoStringData targetViability;
 	private PseudoQuestionData targetStatusLabel;
 	private PseudoQuestionData viabiltyModeLabel;
 }
