@@ -49,6 +49,7 @@ import org.miradi.objectdata.IntegerData;
 import org.miradi.objectdata.ORefData;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objectdata.PointData;
+import org.miradi.objectdata.PointListData;
 import org.miradi.objectdata.PseudoQuestionData;
 import org.miradi.objectdata.PseudoRefListData;
 import org.miradi.objectdata.PseudoStringData;
@@ -73,6 +74,7 @@ import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.project.CurrencyFormat;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.utils.CodeList;
@@ -81,6 +83,7 @@ import org.miradi.utils.DateRange;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.InvalidNumberException;
 import org.miradi.utils.OptionalDouble;
+import org.miradi.utils.PointList;
 import org.miradi.utils.StringChoiceMapData;
 import org.miradi.utils.StringCodeListMapData;
 import org.miradi.utils.StringStringMapData;
@@ -124,6 +127,19 @@ abstract public class BaseObject
 		return data.get();
 	}
 	
+	public ChoiceItem getChoiceItemData(String tag)
+	{
+		ChoiceData data = (ChoiceData)getField(tag);
+		ChoiceQuestion question = data.getChoiceQuestion();
+		String code = data.get();
+		return question.findChoiceByCode(code);
+	}
+
+	public BaseId getBaseIdData(String tag)
+	{
+		return ((BaseIdData)getField(tag)).getId();
+	}
+	
 	public int getIntegerData(String tag)
 	{
 		IntegerData data = (IntegerData)getField(tag);
@@ -152,6 +168,12 @@ abstract public class BaseObject
 	{
 		PointData data = (PointData)getField(tag);
 		return data.getPoint();
+	}
+	
+	public PointList getPointListData(String tag)
+	{
+		PointListData data = (PointListData)getField(tag);
+		return data.getPointList();
 	}
 	
 	public void setPointData(String tag, Point point)
@@ -885,6 +907,11 @@ abstract public class BaseObject
 	{
 		addField(new RefListData(tag));
 	}
+	
+	protected void createBaseIdField(String tag, int storedType)
+	{
+		addField(new BaseIdData(tag, storedType));
+	}
 
 	protected void createRefField(String tag)
 	{
@@ -899,6 +926,11 @@ abstract public class BaseObject
 	protected void createPointField(String tag)
 	{
 		addField(new PointData(tag));
+	}
+	
+	protected void createPointListField(String tag)
+	{
+		addField(new PointListData(tag));
 	}
 
 	protected void createDimensionField(String tag)

@@ -27,19 +27,13 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.DiagramLinkId;
-import org.miradi.objectdata.BaseIdData;
 import org.miradi.objectdata.BooleanData;
-import org.miradi.objectdata.ChoiceData;
-import org.miradi.objectdata.RefListData;
-import org.miradi.objectdata.ObjectData;
-import org.miradi.objectdata.PointListData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.DiagramLinkColorQuestion;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
@@ -56,18 +50,18 @@ public class DiagramLink extends BaseObject
 	{
 		super(objectManager, new DiagramLinkId(idToUse), json);
 		
-		underlyingObjectId.set(json.getId(TAG_WRAPPED_ID).toString());
-		fromId.set(json.getId(TAG_FROM_DIAGRAM_FACTOR_ID).toString());
-		toId.set(json.getId(TAG_TO_DIAGRAM_FACTOR_ID).toString());
+		setData(TAG_WRAPPED_ID, json.getId(TAG_WRAPPED_ID).toString());
+		setData(TAG_FROM_DIAGRAM_FACTOR_ID, json.getId(TAG_FROM_DIAGRAM_FACTOR_ID).toString());
+		setData(TAG_TO_DIAGRAM_FACTOR_ID, json.getId(TAG_TO_DIAGRAM_FACTOR_ID).toString());
 	}
 	
 	@Override
 	public EnhancedJsonObject toJson()
 	{
 		EnhancedJsonObject json = super.toJson();
-		json.putId(TAG_WRAPPED_ID, underlyingObjectId.getId());
-		json.putId(TAG_FROM_DIAGRAM_FACTOR_ID, fromId.getId());
-		json.putId(TAG_TO_DIAGRAM_FACTOR_ID, toId.getId());
+		json.putId(TAG_WRAPPED_ID, getBaseIdData(TAG_WRAPPED_ID));
+		json.putId(TAG_FROM_DIAGRAM_FACTOR_ID, getBaseIdData(TAG_FROM_DIAGRAM_FACTOR_ID));
+		json.putId(TAG_TO_DIAGRAM_FACTOR_ID, getBaseIdData(TAG_TO_DIAGRAM_FACTOR_ID));
 		
 		return json;
 	}
@@ -178,12 +172,12 @@ public class DiagramLink extends BaseObject
 	
 	public DiagramFactorId getFromDiagramFactorId()
 	{
-		return new DiagramFactorId(fromId.getId().asInt());
+		return new DiagramFactorId(getBaseIdData(TAG_FROM_DIAGRAM_FACTOR_ID).asInt());
 	}
 	
 	public DiagramFactorId getToDiagramFactorId()
 	{
-		return new DiagramFactorId(toId.getId().asInt());
+		return new DiagramFactorId(getBaseIdData(TAG_TO_DIAGRAM_FACTOR_ID).asInt());
 	}
 
 	public DiagramLinkId getDiagramLinkId()
@@ -193,17 +187,17 @@ public class DiagramLink extends BaseObject
 	
 	public ORefList getGroupedDiagramLinkRefs()
 	{
-		return groupedDiagramLinkRefs.getRefList();
+		return getRefListData(TAG_GROUPED_DIAGRAM_LINK_REFS);
 	}
 	
 	public ORef getWrappedRef()
 	{
-		return new ORef(FactorLink.getObjectType(), underlyingObjectId.getId());
+		return getRefData(TAG_WRAPPED_ID);
 	}
 	
 	public BaseId getWrappedId()
 	{
-		return underlyingObjectId.getId();
+		return getBaseIdData(TAG_WRAPPED_ID);
 	}
 	
 	public DiagramObject getDiagramObject()
@@ -266,7 +260,7 @@ public class DiagramLink extends BaseObject
 	
 	public boolean isBidirectional()
 	{
-		return isBidirectionalLink.get().equals(BIDIRECTIONAL_LINK);
+		return getBooleanData(TAG_IS_BIDIRECTIONAL_LINK);
 	}
 	
 	public FactorLink getWrappedFactorLink()
@@ -274,19 +268,6 @@ public class DiagramLink extends BaseObject
 		return FactorLink.find(getProject(), getWrappedRef());
 	}
 	
-	@Override
-	public String getData(String fieldTag)
-	{
-		if(fieldTag.equals(TAG_WRAPPED_ID))
-			return underlyingObjectId.get();
-		if(fieldTag.equals(TAG_FROM_DIAGRAM_FACTOR_ID))
-			return fromId.get();
-		if(fieldTag.equals(TAG_TO_DIAGRAM_FACTOR_ID))
-			return toId.get();
-		
-		return super.getData(fieldTag);
-	}
-
 	public boolean bendPointAlreadyExists(Point location)
 	{
 		if (location == null)
@@ -328,7 +309,7 @@ public class DiagramLink extends BaseObject
 	
 	public PointList getBendPoints()
 	{
-		return bendPoints.getPointList();
+		return getPointListData(TAG_BEND_POINTS);
 	}
 	
 	public Rectangle getBendPointBounds()
@@ -343,8 +324,7 @@ public class DiagramLink extends BaseObject
 
 	public ChoiceItem getColorChoiceItem()
 	{
-		ChoiceQuestion question = getProject().getQuestion(DiagramLinkColorQuestion.class);
-		return question.findChoiceByCode(color.get());
+		return getChoiceItemData(TAG_COLOR);
 	}
 	
 	public boolean isCoveredByGroupBoxLink()
@@ -401,21 +381,13 @@ public class DiagramLink extends BaseObject
 	{
 		super.clear();
 
-		underlyingObjectId = new BaseIdData(TAG_WRAPPED_ID, FactorLink.getObjectType());
-		fromId = new BaseIdData(TAG_FROM_DIAGRAM_FACTOR_ID, DiagramFactor.getObjectType());
-		toId = new BaseIdData(TAG_TO_DIAGRAM_FACTOR_ID, DiagramFactor.getObjectType());
-		bendPoints = new PointListData(TAG_BEND_POINTS);
-		groupedDiagramLinkRefs = new RefListData(TAG_GROUPED_DIAGRAM_LINK_REFS);
-		color = new ChoiceData(TAG_COLOR, getQuestion(DiagramLinkColorQuestion.class));
-		isBidirectionalLink = new BooleanData(TAG_IS_BIDIRECTIONAL_LINK);
-		
-		addField(TAG_WRAPPED_ID, underlyingObjectId);
-		addField(TAG_FROM_DIAGRAM_FACTOR_ID, fromId);
-		addField(TAG_TO_DIAGRAM_FACTOR_ID, toId);
-		addField(TAG_BEND_POINTS, bendPoints);
-		addField(TAG_GROUPED_DIAGRAM_LINK_REFS, groupedDiagramLinkRefs);
-		addField(TAG_COLOR, color);
-		addField(TAG_IS_BIDIRECTIONAL_LINK, isBidirectionalLink);
+		createBaseIdField(TAG_WRAPPED_ID, FactorLink.getObjectType());
+		createBaseIdField(TAG_FROM_DIAGRAM_FACTOR_ID, DiagramFactor.getObjectType());
+		createBaseIdField(TAG_TO_DIAGRAM_FACTOR_ID, DiagramFactor.getObjectType());
+		createPointListField(TAG_BEND_POINTS);
+		createRefListField(TAG_GROUPED_DIAGRAM_LINK_REFS);
+		createChoiceField(TAG_COLOR, DiagramLinkColorQuestion.class);
+		createBooleanField(TAG_IS_BIDIRECTIONAL_LINK);
 	}
 	
 	public static final String TAG_WRAPPED_ID = "WrappedLinkId";
@@ -431,12 +403,4 @@ public class DiagramLink extends BaseObject
 	public static final String BIDIRECTIONAL_LINK = BooleanData.BOOLEAN_TRUE;
 	
 	public static final String OBJECT_NAME = "DiagramLink";
-	
-	private BaseIdData underlyingObjectId;
-	private BaseIdData fromId;
-	private BaseIdData toId;
-	private PointListData bendPoints;
-	private RefListData groupedDiagramLinkRefs;
-	private ChoiceData color;
-	private ObjectData isBidirectionalLink;
 }
