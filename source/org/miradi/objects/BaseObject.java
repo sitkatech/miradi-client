@@ -74,6 +74,8 @@ import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.RelevancyOverrideSetData;
 import org.miradi.objecthelpers.StringChoiceMap;
 import org.miradi.objecthelpers.StringCodeListMap;
+import org.miradi.objecthelpers.StringRefMap;
+import org.miradi.objecthelpers.StringRefMapData;
 import org.miradi.objecthelpers.StringStringMap;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
@@ -277,6 +279,12 @@ abstract public class BaseObject
 	protected StringCodeListMap getStringCodeListMapData(String tag)
 	{
 		return ((StringCodeListMapData)getField(tag)).getStringCodeListMap();
+	}
+	
+	protected StringRefMap getStringRefMapData(String tag)
+	{
+		StringRefMapData data = (StringRefMapData)getField(tag);
+		return data.getStringRefMap();
 	}
 	
 	protected RelevancyOverrideSet getRawRelevancyOverrideData(String tag)
@@ -1024,6 +1032,11 @@ abstract public class BaseObject
 		addField(new StringCodeListMapData(tag));
 	}
 	
+	protected void createStringRefMapField(String tag)
+	{
+		addField(new StringRefMapData(tag));
+	}
+	
 	protected void createPseudoStringField(String tag)
 	{
 		addField(new PseudoStringData(this, tag));
@@ -1049,6 +1062,11 @@ abstract public class BaseObject
 		if(!data.getTag().equals(tag))
 			throw new RuntimeException("Wrong tag: " + tag + " in " + data.getTag() + " for " + getRef());
 		getFields().put(tag, data);
+	}
+	
+	protected void addPresentationDataField(ObjectData data)
+	{
+		addPresentationDataField(data.getTag(), data);
 	}
 	
 	protected void addPresentationDataField(String tag, ObjectData data)
