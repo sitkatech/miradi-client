@@ -24,14 +24,6 @@ import java.util.Vector;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.ids.IndicatorId;
-import org.miradi.objectdata.ChoiceData;
-import org.miradi.objectdata.DateData;
-import org.miradi.objectdata.IdListData;
-import org.miradi.objectdata.RefListData;
-import org.miradi.objectdata.PseudoQuestionData;
-import org.miradi.objectdata.PseudoStringData;
-import org.miradi.objectdata.StringData;
-import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.DirectThreatSet;
 import org.miradi.objecthelpers.NonDraftStrategySet;
 import org.miradi.objecthelpers.ORef;
@@ -65,7 +57,7 @@ public class Indicator extends BaseObject
 	
 	public IdList getMethodIds()
 	{
-		return methodIds.getIdList().createClone();
+		return getIdListData(TAG_METHOD_IDS);
 	}
 	
 	public ORefList getTaskRefs()
@@ -75,12 +67,12 @@ public class Indicator extends BaseObject
 	
 	public StringStringMapData getThreshold()
 	{
-		return indicatorThreshold;
+		return (StringStringMapData)getField(TAG_INDICATOR_THRESHOLD);
 	}
 	
 	public StringStringMap getThresholdDetails()
 	{
-		return thresholdDetails.getStringMap();
+		return getStringStringMapData(TAG_THRESHOLD_DETAILS);
 	}
 	
 	@Override
@@ -140,7 +132,7 @@ public class Indicator extends BaseObject
 	public String getPseudoData(String fieldTag)
 	{
 		if(fieldTag.equals(PSEUDO_TAG_INDICATOR_THRESHOLD_VALUE))
-			return new StatusQuestion().findChoiceByCode(indicatorThreshold.get()).getLabel();
+			return getChoiceItemData(TAG_INDICATOR_THRESHOLD).getLabel();
 			
 		if(fieldTag.equals(PSEUDO_TAG_TARGETS))
 			return getRelatedLabelsAsMultiLine(new TargetSet());
@@ -244,7 +236,7 @@ public class Indicator extends BaseObject
 	
 	public ORefList getMeasurementRefs()
 	{
-		return measurementRefs.getRefList();
+		return getRefListData(TAG_MEASUREMENT_REFS);
 	}
 	
 	@Override
@@ -311,12 +303,12 @@ public class Indicator extends BaseObject
 	
 	public String getFutureStatusRating()
 	{
-		return futureStatusRating.get();
+		return getData(TAG_FUTURE_STATUS_RATING);
 	}
 	
 	public String getFutureStatusSummary()
 	{
-		return futureStatusSummary.get();
+		return getStringData(TAG_FUTURE_STATUS_SUMMARY);
 	}
 		
 	public ORefList getRelevantDesireRefs() throws Exception
@@ -361,7 +353,7 @@ public class Indicator extends BaseObject
 	{
 		if(getId().isInvalid())
 			return "(None)";
-		return combineShortLabelAndLabel(shortLabel.toString(), getLabel());
+		return combineShortLabelAndLabel(getShortLabel(), getLabel());
 	}
 	
 	public boolean isViabilityIndicator()
@@ -402,66 +394,35 @@ public class Indicator extends BaseObject
 	{
 		super.clear();
 		
-		shortLabel = new UserTextData(TAG_SHORT_LABEL);
-		priority = new ChoiceData(TAG_PRIORITY, getQuestion(PriorityRatingQuestion.class));
-		methodIds = new IdListData(TAG_METHOD_IDS, Task.getObjectType());
-		indicatorThreshold = new StringStringMapData(TAG_INDICATOR_THRESHOLD);
-		ratingSource= new ChoiceData(TAG_RATING_SOURCE, getQuestion(RatingSourceQuestion.class));
-		measurementRefs = new RefListData(TAG_MEASUREMENT_REFS);
-		detail = new UserTextData(TAG_DETAIL);
-		comments = new UserTextData(TAG_COMMENTS);
-		viabilityRatingsComments = new UserTextData(TAG_VIABILITY_RATINGS_COMMENTS);
-	    thresholdDetails = new StringStringMapData(TAG_THRESHOLD_DETAILS);
+		createUserTextField(TAG_SHORT_LABEL);
+		createChoiceField(TAG_PRIORITY, PriorityRatingQuestion.class);
+		createIdListField(TAG_METHOD_IDS, Task.getObjectType());
+		createStringStringMapField(TAG_INDICATOR_THRESHOLD);
+		createChoiceField(TAG_RATING_SOURCE, RatingSourceQuestion.class);
+		createRefListField(TAG_MEASUREMENT_REFS);
+		createUserTextField(TAG_DETAIL);
+		createUserTextField(TAG_COMMENTS);
+		createUserTextField(TAG_VIABILITY_RATINGS_COMMENTS);
+		createStringStringMapField(TAG_THRESHOLD_DETAILS);
 
-		futureStatusRating = new ChoiceData(TAG_FUTURE_STATUS_RATING, getQuestion(StatusQuestion.class));
-		futureStatusDate = new DateData(TAG_FUTURE_STATUS_DATE);
-		futureStatusSummary = new UserTextData(TAG_FUTURE_STATUS_SUMMARY);
-		futureStatusDetail = new UserTextData(TAG_FUTURE_STATUS_DETAIL);
-		futureStatusComments = new UserTextData(TAG_FUTURE_STATUS_COMMENTS);
+		createChoiceField(TAG_FUTURE_STATUS_RATING, StatusQuestion.class);
+		createDateField(TAG_FUTURE_STATUS_DATE);
+		createUserTextField(TAG_FUTURE_STATUS_SUMMARY);
+		createUserTextField(TAG_FUTURE_STATUS_DETAIL);
+		createUserTextField(TAG_FUTURE_STATUS_COMMENTS);
 		
-		multiLineTargets = new PseudoStringData(this, PSEUDO_TAG_TARGETS);
-		multiLineDirectThreats = new PseudoStringData(this, PSEUDO_TAG_DIRECT_THREATS);
-		multiLineStrategies = new PseudoStringData(this, PSEUDO_TAG_STRATEGIES);
-		multiLineFactor = new PseudoStringData(this, PSEUDO_TAG_FACTOR);
-		multiLineMethods = new PseudoStringData(this, PSEUDO_TAG_METHODS);
-		indicatorThresholdLabel = new PseudoStringData(this, PSEUDO_TAG_INDICATOR_THRESHOLD_VALUE);
-		priorityLabel = new PseudoQuestionData(this, PSEUDO_TAG_PRIORITY_VALUE);
-		statusLabel = new PseudoQuestionData(this, PSEUDO_TAG_STATUS_VALUE);
-		ratingSourceLabel = new PseudoQuestionData(this, PSEUDO_TAG_RATING_SOURCE_VALUE);
-		latestMeasurement = new PseudoQuestionData(this, PSEUDO_TAG_LATEST_MEASUREMENT_REF);
+		createPseudoStringField(PSEUDO_TAG_TARGETS);
+		createPseudoStringField(PSEUDO_TAG_DIRECT_THREATS);
+		createPseudoStringField(PSEUDO_TAG_STRATEGIES);
+		createPseudoStringField(PSEUDO_TAG_FACTOR);
+		createPseudoStringField(PSEUDO_TAG_METHODS);
+		createPseudoStringField(PSEUDO_TAG_INDICATOR_THRESHOLD_VALUE);
+		createPseudoQuestionField(PSEUDO_TAG_PRIORITY_VALUE);
+		createPseudoQuestionField(PSEUDO_TAG_STATUS_VALUE);
+		createPseudoQuestionField(PSEUDO_TAG_RATING_SOURCE_VALUE);
+		createPseudoQuestionField(PSEUDO_TAG_LATEST_MEASUREMENT_REF);
 		
-		futureStatusRatingLabel = new PseudoQuestionData(this, PSEUDO_TAG_FUTURE_STATUS_RATING_VALUE);
-		
-		
-		addField(TAG_SHORT_LABEL, shortLabel);
-		addField(TAG_PRIORITY, priority);
-		addField(TAG_METHOD_IDS, methodIds);
-		addField(TAG_INDICATOR_THRESHOLD, indicatorThreshold);
-		addField(TAG_RATING_SOURCE, ratingSource);
-		addField(TAG_MEASUREMENT_REFS, measurementRefs);
-		addField(TAG_DETAIL, detail);
-		addField(TAG_COMMENTS, comments);
-		addField(TAG_VIABILITY_RATINGS_COMMENTS, viabilityRatingsComments);
-		addField(TAG_THRESHOLD_DETAILS, thresholdDetails); 
-		
-		addField(TAG_FUTURE_STATUS_RATING, futureStatusRating);
-		addField(TAG_FUTURE_STATUS_DATE, futureStatusDate);
-		addField(TAG_FUTURE_STATUS_SUMMARY, futureStatusSummary);
-		addField(TAG_FUTURE_STATUS_DETAIL, futureStatusDetail);
-		addField(TAG_FUTURE_STATUS_COMMENTS, futureStatusComments);
-		
-		addField(PSEUDO_TAG_INDICATOR_THRESHOLD_VALUE, indicatorThresholdLabel);
-		addField(PSEUDO_TAG_TARGETS, multiLineTargets);
-		addField(PSEUDO_TAG_DIRECT_THREATS, multiLineDirectThreats);
-		addField(PSEUDO_TAG_STRATEGIES, multiLineStrategies);
-		addField(PSEUDO_TAG_FACTOR, multiLineFactor);
-		addField(PSEUDO_TAG_METHODS, multiLineMethods);
-		addField(PSEUDO_TAG_PRIORITY_VALUE, priorityLabel);
-		addField(PSEUDO_TAG_STATUS_VALUE, statusLabel);
-		addField(PSEUDO_TAG_RATING_SOURCE_VALUE, ratingSourceLabel);
-		
-		addField(PSEUDO_TAG_FUTURE_STATUS_RATING_VALUE, futureStatusRatingLabel);
-		addField(PSEUDO_TAG_LATEST_MEASUREMENT_REF, latestMeasurement);
+		createPseudoQuestionField(PSEUDO_TAG_FUTURE_STATUS_RATING_VALUE);
 	}
 
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
@@ -500,35 +461,4 @@ public class Indicator extends BaseObject
 
 	public static final String META_COLUMN_TAG = "IndicatorMetaColumnTag"; 
 	public static final String OBJECT_NAME = "Indicator";
-
-	private StringData shortLabel;
-	private ChoiceData priority;
-	private IdListData methodIds;
-	private StringStringMapData indicatorThreshold;
-	private ChoiceData ratingSource;
-	private RefListData measurementRefs;
-	private StringData detail;
-	private StringData comments;
-	private StringData viabilityRatingsComments;
-	private StringStringMapData thresholdDetails;
-
-	private ChoiceData futureStatusRating;
-	private DateData futureStatusDate;
-	private StringData futureStatusSummary;
-	private StringData futureStatusDetail;
-	private StringData futureStatusComments;
-	
-	private PseudoStringData multiLineTargets;
-	private PseudoStringData multiLineDirectThreats;
-	private PseudoStringData multiLineStrategies;
-	private PseudoStringData multiLineFactor;
-	private PseudoStringData multiLineMethods;
-	private PseudoStringData indicatorThresholdLabel;
-	
-	private PseudoQuestionData priorityLabel;
-	private PseudoQuestionData statusLabel;
-	private PseudoQuestionData ratingSourceLabel;
-	
-	private PseudoQuestionData futureStatusRatingLabel;
-	private PseudoQuestionData latestMeasurement;
 }

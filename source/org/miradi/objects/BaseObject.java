@@ -43,6 +43,7 @@ import org.miradi.objectdata.BooleanData;
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.CodeData;
 import org.miradi.objectdata.CodeListData;
+import org.miradi.objectdata.DateData;
 import org.miradi.objectdata.DateUnitEffortListData;
 import org.miradi.objectdata.DimensionData;
 import org.miradi.objectdata.IdListData;
@@ -939,6 +940,11 @@ abstract public class BaseObject
 	protected void createNumberField(String tag)
 	{
 		addField(new NumberData(tag));
+	}
+	
+	protected void createDateField(String tag)
+	{
+		addField(new DateData(tag));
 	}
 
 	protected void createPointField(String tag)
