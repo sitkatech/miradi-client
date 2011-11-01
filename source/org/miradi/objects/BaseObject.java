@@ -47,6 +47,7 @@ import org.miradi.objectdata.CodeListData;
 import org.miradi.objectdata.DateData;
 import org.miradi.objectdata.DateUnitEffortListData;
 import org.miradi.objectdata.DimensionData;
+import org.miradi.objectdata.FloatData;
 import org.miradi.objectdata.IdListData;
 import org.miradi.objectdata.IntegerData;
 import org.miradi.objectdata.NumberData;
@@ -155,6 +156,12 @@ abstract public class BaseObject
 	{
 		NumberData data = (NumberData)getField(tag);
 		return data.getSafeValue();
+	}
+	
+	public double getFloatData(String tag)
+	{
+		FloatData data = (FloatData)getField(tag);
+		return data.asFloat();
 	}
 	
 	public boolean getBooleanData(String tag)
@@ -960,6 +967,11 @@ abstract public class BaseObject
 	protected void createNumberField(String tag)
 	{
 		addField(new NumberData(tag));
+	}
+	
+	protected void createFloatField(String tag)
+	{
+		addField(new FloatData(tag));
 	}
 	
 	protected void createPercentageField(String tag)
