@@ -24,21 +24,11 @@ import java.util.Vector;
 import org.martus.util.MultiCalendar;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
-import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.CodeData;
-import org.miradi.objectdata.CodeListData;
-import org.miradi.objectdata.DateData;
-import org.miradi.objectdata.IntegerData;
-import org.miradi.objectdata.NumberData;
-import org.miradi.objectdata.PercentageData;
-import org.miradi.objectdata.PseudoStringData;
-import org.miradi.objectdata.StringData;
-import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.StringRefMap;
-import org.miradi.objecthelpers.StringRefMapData;
 import org.miradi.project.ObjectManager;
 import org.miradi.questions.BudgetTimePeriodQuestion;
 import org.miradi.questions.CountriesQuestion;
@@ -131,74 +121,74 @@ public class ProjectMetadata extends BaseObject
 
 	public String getCurrentWizardScreenName()
 	{
-		return currentWizardScreenName.get();
+		return getData(TAG_CURRENT_WIZARD_SCREEN_NAME);
 	}
 	
 	public String getProjectName()
 	{
-		return projectName.get();
+		return getData(TAG_PROJECT_NAME);
 	}
 	
 	public String getProjectScope()
 	{
-		return projectScope.get();
+		return getData(TAG_PROJECT_SCOPE);
 	}
 	
 	public String getProjectDescription()
 	{
-		return projectDescription.get();
+		return getData(TAG_PROJECT_DESCRIPTION);
 	}
 	
 	public String getShortProjectScope()
 	{
-		return shortProjectScope.get();
+		return getData(TAG_SHORT_PROJECT_SCOPE);
 	}
 	
 	public String getProjectVision()
 	{
-		return projectVision.get();
+		return getData(TAG_PROJECT_VISION);
 	}
 	
 	public MultiCalendar getWorkPlanStartDate()
 	{
-		return workPlanStartDate.getDate();
+		return getDateData(TAG_WORKPLAN_START_DATE);
 	}
 	
 	public String getWorkPlanStartDateAsString()
 	{
-		return workPlanStartDate.get();
+		return getData(TAG_WORKPLAN_START_DATE);
 	}
 	
 	public String getWorkPlanEndDate()
 	{
-		return workPlanEndDate.get();
+		return getData(TAG_WORKPLAN_END_DATE);
 	}
 	
 	public MultiCalendar getProjectStartDate()
 	{
-		return startDate.getDate();
+		return getDateData(TAG_START_DATE);
 	}
 	
 	public String getStartDate()
 	{
-		return startDate.get();
+		return getData(TAG_START_DATE);
 	}
 	
 	public String getExpectedEndDate()
 	{
-		return expectedEndDate.get();
+		return getData(TAG_EXPECTED_END_DATE);
 	}
 	
 	public String getEffectiveDate()
 	{
-		return effectiveDate.get();
+		return getData(TAG_DATA_EFFECTIVE_DATE);
 	}
 	
 	public OptionalDouble getSizeInHectares()
 	{
 		try
 		{
-			String size = projectArea.get();
+			String size = getData(TAG_PROJECT_AREA);
 			if (size.length() == 0)
 				return new OptionalDouble();
 			
@@ -211,29 +201,27 @@ public class ProjectMetadata extends BaseObject
 		}
 	}
 	
-	public String getProjectNumber()
-	{
-		return otherOrgProjectNumber.get();
-	}
-	
 	public StringRefMap getXenodataStringRefMap()
 	{
-		return xenodataRefs.getStringRefMap();
+		return getStringRefMapData(TAG_XENODATA_STRING_REF_MAP);
 	}
 	
 	public boolean shouldIncludeResultsChain()
 	{
-		return DiagramObjectDataInclusionQuestion.shouldIncludeResultsChain(workPlanDiagramDataInclusionCode.get());
+		String diagramInclusionCode = getData(TAG_WORK_PLAN_DIAGRAM_DATA_INCLUSION);;
+		return DiagramObjectDataInclusionQuestion.shouldIncludeResultsChain(diagramInclusionCode);
 	}
 
 	public boolean shouldIncludeConceptualModelPage()
 	{
-		return DiagramObjectDataInclusionQuestion.shouldIncludeConceptualModelPage(workPlanDiagramDataInclusionCode.get());
+		String diagramInclusionCode = getData(TAG_WORK_PLAN_DIAGRAM_DATA_INCLUSION);;
+		return DiagramObjectDataInclusionQuestion.shouldIncludeConceptualModelPage(diagramInclusionCode);
 	}
 	
 	public boolean shouldPutTargetsAtTopLevelOfTree()
 	{
-		return PlanningTreeTargetPositionQuestion.shouldPutTargetsAtTopLevelOfTree(planningTreeTargetPosition.get());
+		String code = getData(TAG_PLANNING_TREE_TARGET_NODE_POSITION);
+		return PlanningTreeTargetPositionQuestion.shouldPutTargetsAtTopLevelOfTree(code);
 	}
 	
 	public double getLongitudeAsFloat()
@@ -258,12 +246,12 @@ public class ProjectMetadata extends BaseObject
 	
 	public int getCurrencyDecimalPlaces()
 	{
-		return currencyDecimalPlaces.asInt();
+		return getIntegerData(TAG_CURRENCY_DECIMAL_PLACES);
 	}
 
 	public int getDiagramFontSize()
 	{
-		String sizeAsString = diagramFontSize.get();
+		String sizeAsString = getData(TAG_DIAGRAM_FONT_SIZE);
 		if(sizeAsString.length() == 0)
 			return 0;
 		return Integer.parseInt(sizeAsString);
@@ -271,22 +259,22 @@ public class ProjectMetadata extends BaseObject
 	
 	public String getDiagramFontFamily()
 	{
-		return diagramFontFamily.get();
+		return getData(TAG_DIAGRAM_FONT_FAMILY);
 	}
 	
-	public CodeList getTncTerrestrialEcoRegion()
+	public CodeList getTncTerrestrialEcoRegion() throws Exception
 	{
-		return tncTerrestrialEcoRegion.getCodeList();
+		return getCodeList(TAG_TNC_TERRESTRIAL_ECO_REGION);
 	}
 	
-	public CodeList getTncFreshwaterEcoRegion()
+	public CodeList getTncFreshwaterEcoRegion() throws Exception
 	{
-		return tncFreshwaterEcoRegion.getCodeList();
+		return getCodeList(TAG_TNC_FRESHWATER_ECO_REGION);
 	}
 
-	public CodeList getTncMarineEcoRegion()
+	public CodeList getTncMarineEcoRegion() throws Exception
 	{
-		return tncMarineEcoRegion.getCodeList();
+		return getCodeList(TAG_TNC_MARINE_ECO_REGION);
 	}
 	
 	public boolean isStressBasedThreatRatingMode()
@@ -299,18 +287,19 @@ public class ProjectMetadata extends BaseObject
 	
 	public boolean isHumanWelfareTargetMode()
 	{
-		return targetMode.get().equals(TargetModeQuestion.HUMAN_WELFARE_TARGET_CODE);
+		String code = getData(TAG_HUMAN_WELFARE_TARGET_MODE);
+		return code.equals(TargetModeQuestion.HUMAN_WELFARE_TARGET_CODE);
 	}
 		
 	public String getThreatRatingMode()
 	{
-		return threatRatingMode.get();
+		return getData(TAG_THREAT_RATING_MODE);
 	}
 
 	public String getFullTimeEmployeeDaysPerYear()
 	{
 		final String DEFAULT_FULL_TIME_EMPLOYEE_DAYS_PER_YEAR = "240";
-		String fullTimeEmployeeDaysPerYearAsString = fullTimeEmployeeDaysPerYear.get();
+		String fullTimeEmployeeDaysPerYearAsString = getData(TAG_FULL_TIME_EMPLOYEE_DAYS_PER_YEAR);
 		if (fullTimeEmployeeDaysPerYearAsString.length() == 0)
 			return DEFAULT_FULL_TIME_EMPLOYEE_DAYS_PER_YEAR;
 		
@@ -347,7 +336,7 @@ public class ProjectMetadata extends BaseObject
 	
 	public CodeList getCountryCodes()
 	{
-		return countries.getCodeList();
+		return getCodeListData(TAG_COUNTRIES);
 	}
 	
 	public static boolean is(BaseObject baseObject)
@@ -378,149 +367,86 @@ public class ProjectMetadata extends BaseObject
 	{
 		super.clear();
 		
-		projectName = new UserTextData(TAG_PROJECT_NAME);
-		projectLanguage = new ChoiceData(TAG_PROJECT_LANGUAGE, new LanguageQuestion());
-		projectDescription = new UserTextData(TAG_PROJECT_DESCRIPTION);
-		projectURL = new UserTextData(TAG_PROJECT_URL);
-		projectScope = new UserTextData(TAG_PROJECT_SCOPE);
-		shortProjectScope = new UserTextData(TAG_SHORT_PROJECT_SCOPE);
-		scopeComments = new UserTextData(TAG_SCOPE_COMMENTS);
-		projectVision = new UserTextData(TAG_PROJECT_VISION);
+		createUserTextField(TAG_PROJECT_NAME);
+		createChoiceField(TAG_PROJECT_LANGUAGE, new LanguageQuestion());
+		createUserTextField(TAG_PROJECT_DESCRIPTION);
+		createUserTextField(TAG_PROJECT_URL);
+		createUserTextField(TAG_PROJECT_SCOPE);
+		createUserTextField(TAG_SHORT_PROJECT_SCOPE);
+		createUserTextField(TAG_SCOPE_COMMENTS);
+		createUserTextField(TAG_PROJECT_VISION);
 		
-		startDate = new DateData(TAG_START_DATE);
-		expectedEndDate = new DateData(TAG_EXPECTED_END_DATE);
-		effectiveDate = new DateData(TAG_DATA_EFFECTIVE_DATE);
+		createDateField(TAG_START_DATE);
+		createDateField(TAG_EXPECTED_END_DATE);
+		createDateField(TAG_DATA_EFFECTIVE_DATE);
 		
-		currencyDecimalPlaces = new IntegerData(TAG_CURRENCY_DECIMAL_PLACES);
-		currencyType = new ChoiceData(TAG_CURRENCY_TYPE, getQuestion(CurrencyTypeQuestion.class));
-		currencySymbol = new UserTextData(TAG_CURRENCY_SYMBOL);
-		totalBudgetForFunding = new NumberData(TAG_TOTAL_BUDGET_FOR_FUNDING);
-		budgetSecuredPercent = new PercentageData(TAG_BUDGET_SECURED_PERCENT);
-		fiscalYearStart = new ChoiceData(TAG_FISCAL_YEAR_START, getQuestion(FiscalYearStartQuestion.class));
-		fullTimeEmployeeDaysPerYear = new NumberData(TAG_FULL_TIME_EMPLOYEE_DAYS_PER_YEAR);
-		quarterColumnsVisibility = new ChoiceData(TAG_QUARTER_COLUMNS_VISIBILITY, getQuestion(QuarterColumnsVisibilityQuestion.class));
-		planningTreeTargetPosition = new ChoiceData(TAG_PLANNING_TREE_TARGET_NODE_POSITION, getQuestion(PlanningTreeTargetPositionQuestion.class));
+		createIntegerField(TAG_CURRENCY_DECIMAL_PLACES);
+		createChoiceField(TAG_CURRENCY_TYPE, getQuestion(CurrencyTypeQuestion.class));
+		createUserTextField(TAG_CURRENCY_SYMBOL);
+		createNumberField(TAG_TOTAL_BUDGET_FOR_FUNDING);
+		createPercentageField(TAG_BUDGET_SECURED_PERCENT);
+		createChoiceField(TAG_FISCAL_YEAR_START, getQuestion(FiscalYearStartQuestion.class));
+		createNumberField(TAG_FULL_TIME_EMPLOYEE_DAYS_PER_YEAR);
+		createChoiceField(TAG_QUARTER_COLUMNS_VISIBILITY, getQuestion(QuarterColumnsVisibilityQuestion.class));
+		createChoiceField(TAG_PLANNING_TREE_TARGET_NODE_POSITION, getQuestion(PlanningTreeTargetPositionQuestion.class));
 		
 		createFloatField(TAG_PROJECT_LATITUDE);
 		createFloatField(TAG_PROJECT_LONGITUDE);
-		projectArea = new UserTextData(TAG_PROJECT_AREA);
-		projectAreaNotes = new UserTextData(TAG_PROJECT_AREA_NOTES);
+		createUserTextField(TAG_PROJECT_AREA);
+		createUserTextField(TAG_PROJECT_AREA_NOTES);
 
-		countries = new CodeListData(TAG_COUNTRIES, getQuestion(CountriesQuestion.class));
-		statesAndProvinces = new UserTextData(TAG_STATE_AND_PROVINCES);
-		municipalities = new UserTextData(TAG_MUNICIPALITIES);
-		legislativeDistricts = new UserTextData(TAG_LEGISLATIVE_DISTRICTS);
-		locationDetail = new UserTextData(TAG_LOCATION_DETAIL);
-		locationComments = new UserTextData(TAG_LOCATION_COMMENTS);
+		createCodeListField(TAG_COUNTRIES, getQuestion(CountriesQuestion.class));
+		createUserTextField(TAG_STATE_AND_PROVINCES);
+		createUserTextField(TAG_MUNICIPALITIES);
+		createUserTextField(TAG_LEGISLATIVE_DISTRICTS);
+		createUserTextField(TAG_LOCATION_DETAIL);
+		createUserTextField(TAG_LOCATION_COMMENTS);
 
-		keyFundingSources = new UserTextData(TAG_KEY_FUNDING_SOURCES);
-		financialComments = new UserTextData(TAG_FINANCIAL_COMMENTS);
-		workPlanStartDate = new DateData(TAG_WORKPLAN_START_DATE);
-		workPlanEndDate = new DateData(TAG_WORKPLAN_END_DATE);
-		workPlanTimeUnit = new ChoiceData(TAG_WORKPLAN_TIME_UNIT, getQuestion(BudgetTimePeriodQuestion.class));
-		planningComments = new UserTextData(TAG_PLANNING_COMMENTS);
+		createUserTextField(TAG_KEY_FUNDING_SOURCES);
+		createUserTextField(TAG_FINANCIAL_COMMENTS);
+		createDateField(TAG_WORKPLAN_START_DATE);
+		createDateField(TAG_WORKPLAN_END_DATE);
+		createChoiceField(TAG_WORKPLAN_TIME_UNIT, getQuestion(BudgetTimePeriodQuestion.class));
+		createUserTextField(TAG_PLANNING_COMMENTS);
 		
-		humanPopulation = new IntegerData(TAG_HUMAN_POPULATION);
-		humanPopulationNotes = new UserTextData(TAG_HUMAN_POPULATION_NOTES);
-		socialContext = new UserTextData(TAG_SOCIAL_CONTEXT);
-		siteMapReference = new UserTextData(TAG_SITE_MAP_REFERENCE);
+		createIntegerField(TAG_HUMAN_POPULATION);
+		createUserTextField(TAG_HUMAN_POPULATION_NOTES);
+		createUserTextField(TAG_SOCIAL_CONTEXT);
+		createUserTextField(TAG_SITE_MAP_REFERENCE);
 
-		protectedAreaCategories = new CodeListData(TAG_PROTECTED_AREA_CATEGORIES, getQuestion(ProtectedAreaCategoryQuestion.class));
-		protectedAreaCategoryNotes = new UserTextData(TAG_PROTECTED_AREA_CATEGORY_NOTES);
+		createCodeListField(TAG_PROTECTED_AREA_CATEGORIES, getQuestion(ProtectedAreaCategoryQuestion.class));
+		createUserTextField(TAG_PROTECTED_AREA_CATEGORY_NOTES);
 
-		projectStatus = new UserTextData(TAG_PROJECT_STATUS);
-		nextSteps = new UserTextData(TAG_NEXT_STEPS);
+		createUserTextField(TAG_PROJECT_STATUS);
+		createUserTextField(TAG_NEXT_STEPS);
 
-		currentWizardScreenName = new CodeData(TAG_CURRENT_WIZARD_SCREEN_NAME);
+		createCodeField(TAG_CURRENT_WIZARD_SCREEN_NAME);
 
-		addPresentationDataField(TAG_CURRENT_WIZARD_SCREEN_NAME, currentWizardScreenName);
-		addField(TAG_PROJECT_NAME, projectName);
-		addField(TAG_PROJECT_LANGUAGE, projectLanguage);
-		addField(TAG_PROJECT_SCOPE, projectScope);
-		addField(TAG_SHORT_PROJECT_SCOPE, shortProjectScope);
-		addField(TAG_PROJECT_VISION, projectVision);
-		addField(TAG_START_DATE, startDate);
-		addField(TAG_EXPECTED_END_DATE, expectedEndDate);
-		addField(TAG_DATA_EFFECTIVE_DATE, effectiveDate);
-		addField(TAG_CURRENCY_DECIMAL_PLACES, currencyDecimalPlaces);
-		addField(TAG_TOTAL_BUDGET_FOR_FUNDING, totalBudgetForFunding);
-		addField(TAG_BUDGET_SECURED_PERCENT, budgetSecuredPercent);
-		addField(TAG_CURRENCY_TYPE, currencyType);
-		addField(TAG_CURRENCY_SYMBOL, currencySymbol);
-		addField(TAG_FISCAL_YEAR_START, fiscalYearStart);
-		addField(TAG_FULL_TIME_EMPLOYEE_DAYS_PER_YEAR, fullTimeEmployeeDaysPerYear);
-		addField(TAG_QUARTER_COLUMNS_VISIBILITY, quarterColumnsVisibility);
-		addField(TAG_PLANNING_TREE_TARGET_NODE_POSITION, planningTreeTargetPosition);
-		addField(TAG_PROJECT_DESCRIPTION, projectDescription);
-		addField(TAG_PROJECT_URL, projectURL);
-		addField(TAG_PROJECT_AREA, projectArea);
-		addField(TAG_PROJECT_AREA_NOTES, projectAreaNotes);
-		addField(TAG_SCOPE_COMMENTS, scopeComments);
-		addField(TAG_COUNTRIES, countries);
-		addField(TAG_STATE_AND_PROVINCES, statesAndProvinces);
-		addField(TAG_MUNICIPALITIES, municipalities);
-		addField(TAG_LEGISLATIVE_DISTRICTS, legislativeDistricts);
-		addField(TAG_LOCATION_DETAIL, locationDetail);
-		addField(TAG_LOCATION_COMMENTS, locationComments);
-		addField(TAG_KEY_FUNDING_SOURCES, keyFundingSources);
-		addField(TAG_FINANCIAL_COMMENTS, financialComments);
-		addField(TAG_WORKPLAN_START_DATE, workPlanStartDate);
-		addField(TAG_WORKPLAN_END_DATE, workPlanEndDate);
-		addField(TAG_WORKPLAN_TIME_UNIT, workPlanTimeUnit);
-		addField(TAG_PLANNING_COMMENTS, planningComments);
-		addField(TAG_HUMAN_POPULATION, humanPopulation);
-		addField(TAG_HUMAN_POPULATION_NOTES, humanPopulationNotes);
-		addField(TAG_SOCIAL_CONTEXT, socialContext);
-		addField(TAG_SITE_MAP_REFERENCE, siteMapReference);
-		addField(TAG_PROTECTED_AREA_CATEGORIES, protectedAreaCategories);
-		addField(TAG_PROTECTED_AREA_CATEGORY_NOTES, protectedAreaCategoryNotes);
-		addField(TAG_PROJECT_STATUS, projectStatus);
-		addField(TAG_NEXT_STEPS, nextSteps);
+		addPresentationDataField(new CodeData(TAG_CURRENT_WIZARD_SCREEN_NAME));
 
-		tncLessonsLearned = new UserTextData(TAG_TNC_LESSONS_LEARNED);
-		tncWorkbookVersionNumber = new UserTextData(TAG_TNC_WORKBOOK_VERSION_NUMBER);
-		tncWorkbookVersionDate = new DateData(TAG_TNC_WORKBOOK_VERSION_DATE);
-		tncDatabaseDownloadDate = new DateData(TAG_TNC_DATABASE_DOWNLOAD_DATE);
-		tncPlanningTeamComments = new UserTextData(TAG_TNC_PLANNING_TEAM_COMMENTS);
-		tncOperatingUnits = new CodeListData(TAG_TNC_OPERATING_UNITS, getQuestion(TncOperatingUnitsQuestion.class));
-		tncTerrestrialEcoRegion = new CodeListData(TAG_TNC_TERRESTRIAL_ECO_REGION, getQuestion(TncTerrestrialEcoRegionQuestion.class));
-		tncMarineEcoRegion = new CodeListData(TAG_TNC_MARINE_ECO_REGION, getQuestion(TncMarineEcoRegionQuestion.class));
-		tncFreshwaterEcoRegion = new CodeListData(TAG_TNC_FRESHWATER_ECO_REGION, getQuestion(TncFreshwaterEcoRegionQuestion.class));
 
-		addField(TAG_TNC_LESSONS_LEARNED, tncLessonsLearned);
-		addField(TAG_TNC_WORKBOOK_VERSION_NUMBER, tncWorkbookVersionNumber);
-		addField(TAG_TNC_WORKBOOK_VERSION_DATE, tncWorkbookVersionDate);
-		addField(TAG_TNC_DATABASE_DOWNLOAD_DATE, tncDatabaseDownloadDate);
-		addField(TAG_TNC_PLANNING_TEAM_COMMENTS, tncPlanningTeamComments);
-		addField(TAG_TNC_OPERATING_UNITS, tncOperatingUnits);
-		addField(TAG_TNC_TERRESTRIAL_ECO_REGION, tncTerrestrialEcoRegion);
-		addField(TAG_TNC_MARINE_ECO_REGION, tncMarineEcoRegion);
-		addField(TAG_TNC_FRESHWATER_ECO_REGION, tncFreshwaterEcoRegion);
+		createUserTextField(TAG_TNC_LESSONS_LEARNED);
+		createUserTextField(TAG_TNC_WORKBOOK_VERSION_NUMBER);
+		createDateField(TAG_TNC_WORKBOOK_VERSION_DATE);
+		createDateField(TAG_TNC_DATABASE_DOWNLOAD_DATE);
+		createUserTextField(TAG_TNC_PLANNING_TEAM_COMMENTS);
+		createCodeListField(TAG_TNC_OPERATING_UNITS, getQuestion(TncOperatingUnitsQuestion.class));
+		createCodeListField(TAG_TNC_TERRESTRIAL_ECO_REGION, getQuestion(TncTerrestrialEcoRegionQuestion.class));
+		createCodeListField(TAG_TNC_MARINE_ECO_REGION, getQuestion(TncMarineEcoRegionQuestion.class));
+		createCodeListField(TAG_TNC_FRESHWATER_ECO_REGION, getQuestion(TncFreshwaterEcoRegionQuestion.class));
 		
-		otherOrgProjectNumber = new UserTextData(TAG_OTHER_ORG_PROJECT_NUMBER);
-		otherOrgRelatedProjects = new UserTextData(TAG_OTHER_ORG_RELATED_PROJECTS);
-		addField(TAG_OTHER_ORG_PROJECT_NUMBER, otherOrgProjectNumber);
-		addField(TAG_OTHER_ORG_RELATED_PROJECTS, otherOrgRelatedProjects);
+		createUserTextField(TAG_OTHER_ORG_PROJECT_NUMBER);
+		createUserTextField(TAG_OTHER_ORG_RELATED_PROJECTS);
 		
-		diagramFontSize = new ChoiceData(TAG_DIAGRAM_FONT_SIZE, getQuestion(FontSizeQuestion.class));
-		diagramFontFamily = new ChoiceData(TAG_DIAGRAM_FONT_FAMILY, getQuestion(FontFamiliyQuestion.class));
-		threatRatingMode = new ChoiceData(TAG_THREAT_RATING_MODE, getQuestion(ThreatRatingModeChoiceQuestion.class));
-		xenodataRefs = new StringRefMapData(TAG_XENODATA_STRING_REF_MAP);
-		targetMode = new ChoiceData(TAG_HUMAN_WELFARE_TARGET_MODE, getQuestion(TargetModeQuestion.class));
-		workPlanDiagramDataInclusionCode = new ChoiceData(TAG_WORK_PLAN_DIAGRAM_DATA_INCLUSION, getQuestion(DiagramObjectDataInclusionQuestion.class));
+		createChoiceField(TAG_DIAGRAM_FONT_SIZE, getQuestion(FontSizeQuestion.class));
+		createChoiceField(TAG_DIAGRAM_FONT_FAMILY, getQuestion(FontFamiliyQuestion.class));
+		createChoiceField(TAG_THREAT_RATING_MODE, getQuestion(ThreatRatingModeChoiceQuestion.class));
+		createStringRefMapField(TAG_XENODATA_STRING_REF_MAP);
+		createChoiceField(TAG_HUMAN_WELFARE_TARGET_MODE, getQuestion(TargetModeQuestion.class));
+		createChoiceField(TAG_WORK_PLAN_DIAGRAM_DATA_INCLUSION, getQuestion(DiagramObjectDataInclusionQuestion.class));
 		
-		addField(TAG_DIAGRAM_FONT_SIZE, diagramFontSize);
-		addField(TAG_DIAGRAM_FONT_FAMILY, diagramFontFamily);
-		addField(TAG_THREAT_RATING_MODE, threatRatingMode);
-		addField(TAG_XENODATA_STRING_REF_MAP, xenodataRefs);
-		addField(TAG_HUMAN_WELFARE_TARGET_MODE, targetMode);
-		addField(TAG_WORK_PLAN_DIAGRAM_DATA_INCLUSION, workPlanDiagramDataInclusionCode);
-		
-		projectFileName = new PseudoStringData(this, PSEUDO_TAG_PROJECT_FILENAME);
-		allThreatClassifications = new PseudoStringData(this, PSEUDO_TAG_ALL_THREAT_CLASSIFICATIONS);
-		
-		addField(PSEUDO_TAG_PROJECT_FILENAME, projectFileName);
-		addField(PSEUDO_TAG_ALL_THREAT_CLASSIFICATIONS, allThreatClassifications);
+		createPseudoStringField(PSEUDO_TAG_PROJECT_FILENAME);
+		createPseudoStringField(PSEUDO_TAG_ALL_THREAT_CLASSIFICATIONS);
 	}
 
 	public static final String TAG_CURRENT_WIZARD_SCREEN_NAME = "CurrentWizardScreenName";
@@ -594,72 +520,4 @@ public class ProjectMetadata extends BaseObject
 	public static final String TAG_HUMAN_WELFARE_TARGET_MODE = "TargetMode";
 	
 	public static final String OBJECT_NAME = "ProjectMetadata";
-
-	private StringData currentWizardScreenName;
-
-	private StringData projectName;
-	private ChoiceData projectLanguage;
-	private StringData projectScope;
-	private StringData shortProjectScope;
-	private StringData projectVision;
-	private DateData startDate;
-	private DateData expectedEndDate;
-	private DateData effectiveDate;
-	private IntegerData currencyDecimalPlaces;
-	private NumberData totalBudgetForFunding;
-	private PercentageData budgetSecuredPercent;
-	private ChoiceData currencyType;
-	private StringData currencySymbol;
-	private ChoiceData fiscalYearStart;
-	private NumberData fullTimeEmployeeDaysPerYear;
-	private ChoiceData quarterColumnsVisibility;
-	private ChoiceData planningTreeTargetPosition;
-	private StringData projectDescription;
-	private StringData projectURL;
-	private StringData projectArea;
-	private StringData projectAreaNotes;
-	private StringData scopeComments;
-	private CodeListData countries;
-	private StringData statesAndProvinces;
-	private StringData municipalities;
-	private StringData legislativeDistricts;
-	private StringData locationDetail;
-	private StringData locationComments;
-	private StringData keyFundingSources;
-	private StringData financialComments;
-	private DateData workPlanStartDate;
-	private DateData workPlanEndDate;
-	private ChoiceData workPlanTimeUnit;
-	private StringData planningComments;
-	private IntegerData humanPopulation;
-	private StringData humanPopulationNotes;
-	private StringData socialContext;
-	private StringData siteMapReference;
-	private CodeListData protectedAreaCategories;
-	private StringData protectedAreaCategoryNotes;
-	private StringData projectStatus;
-	private StringData nextSteps;
-
-	private StringData tncLessonsLearned;
-	private StringData tncWorkbookVersionNumber;
-	private DateData tncWorkbookVersionDate;
-	private DateData tncDatabaseDownloadDate;
-	private StringData tncPlanningTeamComments;
-	private CodeListData tncOperatingUnits;
-	private CodeListData tncTerrestrialEcoRegion;
-	private CodeListData tncMarineEcoRegion;
-	private CodeListData tncFreshwaterEcoRegion;
-	
-	private StringData otherOrgProjectNumber;
-	private StringData otherOrgRelatedProjects;
-	
-	private ChoiceData diagramFontFamily;
-	private ChoiceData diagramFontSize;
-	private ChoiceData threatRatingMode;
-	private ChoiceData targetMode;
-	private ChoiceData workPlanDiagramDataInclusionCode;
-	
-	private StringRefMapData xenodataRefs;
-	private PseudoStringData projectFileName;
-	private PseudoStringData allThreatClassifications;
 }
