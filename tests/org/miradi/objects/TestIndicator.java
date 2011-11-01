@@ -29,8 +29,10 @@ import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
+import org.miradi.objecthelpers.RelevancyOverrideSetData;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.utils.CommandVector;
 
@@ -154,12 +156,17 @@ public class TestIndicator extends AbstractObjectWithBudgetDataToDeleteTestCase
 		RelevancyOverrideSet relevantIndicators = new RelevancyOverrideSet();
 		relevantIndicators.add(new RelevancyOverride(indicator.getRef(), true));
 		getProject().fillObjectUsingCommand(objective, Objective.TAG_RELEVANT_INDICATOR_SET, relevantIndicators.toString());
-		assertEquals("Object's indicator relevancy list was not updated?", 1, objective.getAllIndicatorRefsFromRelevancyOverrides().size());
+		assertEquals("Object's indicator relevancy list was not updated?", 1, getAllIndicatorRefsFromRelevancyOverrides(objective).size());
 		
 		CommandVector commandsToDeleteIndicator = indicator.createCommandsToDeleteChildrenAndObject();
 		getProject().executeCommands(commandsToDeleteIndicator);
 		
-		assertEquals("Indicator was not removed from objective relevancy list?", 0, objective.getAllIndicatorRefsFromRelevancyOverrides().size());
+		assertEquals("Indicator was not removed from objective relevancy list?", 0, getAllIndicatorRefsFromRelevancyOverrides(objective).size());
+	}
+	
+	public ORefSet getAllIndicatorRefsFromRelevancyOverrides(Desire desire) throws Exception
+	{
+		return ((RelevancyOverrideSetData)desire.getField(desire.TAG_RELEVANT_INDICATOR_SET)).extractRelevantRefs();
 	}
 	
 	public void testCreateCommandsToClone() throws Exception

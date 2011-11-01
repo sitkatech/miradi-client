@@ -24,9 +24,11 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
+import org.miradi.objecthelpers.RelevancyOverrideSetData;
 import org.miradi.utils.CommandVector;
 
 public class TestStrategy extends AbstractObjectWithBudgetDataToDeleteTestCase
@@ -182,17 +184,22 @@ public class TestStrategy extends AbstractObjectWithBudgetDataToDeleteTestCase
 		relevantActivities.add(new RelevancyOverride(itemInRelevancyListToBeDeleted.getRef(), true));
 		getProject().fillObjectUsingCommand(desire, Desire.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevantActivities.toString());
 
-		ORefList relevantStrategyAndActivityRefs = new ORefList(desire.getAllStrategyAndActivityRefsFromRelevancyOverrides());
+		ORefList relevantStrategyAndActivityRefs = new ORefList(getAllStrategyAndActivityRefsFromRelevancyOverrides(desire));
 		ORefList relevantActivityRefs = relevantStrategyAndActivityRefs.getFilteredBy(itemInRelevancyListToBeDeleted.getType());
 		assertEquals("Desire's activity relevancy list was not updated?", 1, relevantActivityRefs.size());
 		
 		CommandVector commandsToDelete = itemInRelevancyListToBeDeleted.createCommandsToDeleteChildrenAndObject();
 		getProject().executeCommands(commandsToDelete);
 		
-		ORefList relevantStrategyAndActivityRefsAfterDelete = new ORefList(desire.getAllStrategyAndActivityRefsFromRelevancyOverrides());
+		ORefList relevantStrategyAndActivityRefsAfterDelete = new ORefList(getAllStrategyAndActivityRefsFromRelevancyOverrides(desire));
 		ORefList relevantActivityRefsAfterDelete = relevantStrategyAndActivityRefsAfterDelete.getFilteredBy(itemInRelevancyListToBeDeleted.getType());
 		
 		assertEquals("Activity was not removed from Desire relevancy list?", 0, relevantActivityRefsAfterDelete.size());
+	}
+
+	public ORefSet getAllStrategyAndActivityRefsFromRelevancyOverrides(Desire desire) throws Exception
+	{
+		return ((RelevancyOverrideSetData)desire.getField(desire.TAG_RELEVANT_STRATEGY_ACTIVITY_SET)).extractRelevantRefs();
 	}
 
 	

@@ -26,18 +26,12 @@ import org.miradi.diagram.ChainWalker;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
-import org.miradi.objectdata.RefListData;
-import org.miradi.objectdata.ObjectData;
-import org.miradi.objectdata.PseudoRefListData;
-import org.miradi.objectdata.PseudoStringData;
-import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.DirectThreatSet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
-import org.miradi.objecthelpers.RelevancyOverrideSetData;
 import org.miradi.objecthelpers.TargetSet;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
@@ -95,7 +89,7 @@ abstract public class Desire extends BaseObject
 
 	public ORefList getProgressPercentRefs()
 	{
-		return progressPercentRefs.getRefList();
+		return getRefListData(TAG_PROGRESS_PERCENT_REFS);
 	}
 	
 	@Override
@@ -104,12 +98,12 @@ abstract public class Desire extends BaseObject
 	@Override
 	public String getShortLabel()
 	{
-		return shortLabel.get();
+		return getData(TAG_SHORT_LABEL);
 	}
 	
 	public String getFullText()
 	{
-		return fullText.get();
+		return getData(TAG_FULL_TEXT);
 	}
 
 	@Override
@@ -117,7 +111,7 @@ abstract public class Desire extends BaseObject
 	{
 		if(getId().isInvalid())
 			return "(None)";
-		return combineShortLabelAndLabel(shortLabel.toString(), getLabel());
+		return combineShortLabelAndLabel(getShortLabel(), getLabel());
 	}
 
 	@Override
@@ -318,22 +312,17 @@ abstract public class Desire extends BaseObject
 		return getDirectlyUpstreamNonDraftStrategies();
 	}
 	
+	public RelevancyOverrideSet getStrategyActivityRelevancyOverrideSet()
+	{
+		return getRawRelevancyOverrideData(TAG_RELEVANT_STRATEGY_ACTIVITY_SET);
+	}
+	
 	public ORefList getRelevantIndicatorRefList() throws Exception
 	{
 		ORefSet relevantRefList = indicatorsOnSameFactorAsRefSet();
-		RelevancyOverrideSet relevantOverrides = relevantIndicatorOverrides.getRawRelevancyOverrideSet();
+		RelevancyOverrideSet relevantOverrides = getRawRelevancyOverrideData(TAG_RELEVANT_INDICATOR_SET);
 	
 		return calculateRelevantRefList(relevantRefList, relevantOverrides);
-	}
-
-	public ORefSet getAllIndicatorRefsFromRelevancyOverrides() throws Exception
-	{
-		return relevantIndicatorOverrides.extractRelevantRefs();
-	}
-	
-	public ORefSet getAllStrategyAndActivityRefsFromRelevancyOverrides() throws Exception
-	{
-		return relevantStrategyActivityOverrides.extractRelevantRefs();
 	}
 
 	public ORefList getRelevantStrategyAndActivityRefs() throws Exception
@@ -357,11 +346,6 @@ abstract public class Desire extends BaseObject
 		return calculateRelevantRefList(relevantRefList, relevantOverrides).getFilteredBy(Task.getObjectType());
 	}
 
-	public RelevancyOverrideSet getStrategyActivityRelevancyOverrideSet()
-	{
-		return relevantStrategyActivityOverrides.getRawRelevancyOverrideSet();
-	}
-	
 	public static CommandVector buildRemoveObjectFromRelevancyListCommands(Project project, int typeWithRelevacnyOverrideSetList, String relevancyTag, ORef relevantObjectRefToRemove) throws Exception
 	{
 		CommandVector removeFromRelevancyListCommands = new CommandVector();
@@ -459,38 +443,21 @@ abstract public class Desire extends BaseObject
 	{
 		super.clear();
 
-		shortLabel = new UserTextData(TAG_SHORT_LABEL);
-		fullText = new UserTextData(TAG_FULL_TEXT);
-		comments = new UserTextData(TAG_COMMENTS);
-		relevantIndicatorOverrides = new RelevancyOverrideSetData(TAG_RELEVANT_INDICATOR_SET);
-		relevantStrategyActivityOverrides = new RelevancyOverrideSetData(TAG_RELEVANT_STRATEGY_ACTIVITY_SET);
-		progressPercentRefs = new RefListData(TAG_PROGRESS_PERCENT_REFS);
+		createUserTextField(TAG_SHORT_LABEL);
+		createUserTextField(TAG_FULL_TEXT);
+		createUserTextField(TAG_COMMENTS);
+		createRelevancyOverrideSetField(TAG_RELEVANT_INDICATOR_SET);
+		createRelevancyOverrideSetField(TAG_RELEVANT_STRATEGY_ACTIVITY_SET);
+		createRefListField(TAG_PROGRESS_PERCENT_REFS);
 		
-		multiLineTargets = new PseudoStringData(this, PSEUDO_TAG_TARGETS);
-		multiLineDirectThreats = new PseudoStringData(this, PSEUDO_TAG_DIRECT_THREATS);
-		multiLineFactor = new PseudoStringData(this, PSEUDO_TAG_FACTOR);
-		relevantIndicatorRefs = new PseudoRefListData(this, PSEUDO_TAG_RELEVANT_INDICATOR_REFS);
-		relevantStrategyRefs = new PseudoRefListData(this, PSEUDO_TAG_RELEVANT_STRATEGY_ACTIVITY_REFS);
-		relevantActivityRefs = new PseudoRefListData(this, PSEUDO_TAG_RELEVANT_ACTIVITY_REFS);
-		latestProgressPercentComplete = new PseudoStringData(this, PSEUDO_TAG_LATEST_PROGRESS_PERCENT_COMPLETE);
-		latestProgressPercentDetails = new PseudoStringData(this, PSEUDO_TAG_LATEST_PROGRESS_PERCENT_DETAILS);
-		
-		
-		addField(TAG_SHORT_LABEL, shortLabel);
-		addField(TAG_FULL_TEXT, fullText);
-		addField(TAG_COMMENTS, comments);
-		addField(TAG_RELEVANT_INDICATOR_SET, relevantIndicatorOverrides);
-		addField(TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevantStrategyActivityOverrides);
-		addField(TAG_PROGRESS_PERCENT_REFS, progressPercentRefs);
-	
-		addField(PSEUDO_TAG_TARGETS, multiLineTargets);
-		addField(PSEUDO_TAG_DIRECT_THREATS, multiLineDirectThreats);
-		addField(PSEUDO_TAG_FACTOR, multiLineFactor);
-		addField(PSEUDO_TAG_RELEVANT_INDICATOR_REFS, relevantIndicatorRefs);
-		addField(PSEUDO_TAG_RELEVANT_STRATEGY_ACTIVITY_REFS, relevantStrategyRefs);
-		addField(PSEUDO_TAG_RELEVANT_ACTIVITY_REFS, relevantActivityRefs);
-		addField(PSEUDO_TAG_LATEST_PROGRESS_PERCENT_COMPLETE, latestProgressPercentComplete);
-		addField(PSEUDO_TAG_LATEST_PROGRESS_PERCENT_DETAILS, latestProgressPercentDetails);
+		createPseudoStringField(PSEUDO_TAG_TARGETS);
+		createPseudoStringField(PSEUDO_TAG_DIRECT_THREATS);
+		createPseudoStringField(PSEUDO_TAG_FACTOR);
+		createPseudoRefListField(PSEUDO_TAG_RELEVANT_INDICATOR_REFS);
+		createPseudoRefListField(PSEUDO_TAG_RELEVANT_STRATEGY_ACTIVITY_REFS);
+		createPseudoRefListField(PSEUDO_TAG_RELEVANT_ACTIVITY_REFS);
+		createPseudoStringField(PSEUDO_TAG_LATEST_PROGRESS_PERCENT_COMPLETE);
+		createPseudoStringField(PSEUDO_TAG_LATEST_PROGRESS_PERCENT_DETAILS);
 	}
 		
 	public final static String TAG_SHORT_LABEL = "ShortLabel";
@@ -507,19 +474,4 @@ abstract public class Desire extends BaseObject
 	public final static String PSEUDO_TAG_TARGETS = "PseudoTagTargets";
 	public final static String PSEUDO_TAG_DIRECT_THREATS = "PseudoTagDirectThreats";
 	public final static String PSEUDO_TAG_FACTOR = "PseudoTagFactor";
-
-	private ObjectData shortLabel;
-	private ObjectData fullText;
-	private ObjectData comments;
-	private RelevancyOverrideSetData relevantStrategyActivityOverrides;
-	private RelevancyOverrideSetData relevantIndicatorOverrides;
-	private ObjectData progressPercentRefs;
-	private ObjectData multiLineTargets;
-	private ObjectData multiLineDirectThreats;
-	private ObjectData multiLineFactor;
-	private ObjectData relevantIndicatorRefs;
-	private ObjectData relevantStrategyRefs;
-	private ObjectData relevantActivityRefs;
-	private ObjectData latestProgressPercentComplete;
-	private ObjectData latestProgressPercentDetails;
 }
