@@ -20,10 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
-import org.miradi.objectdata.ChoiceData;
-import org.miradi.objectdata.DateData;
-import org.miradi.objectdata.StringData;
-import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -80,7 +76,7 @@ public class ProgressReport extends BaseObject
 
 	public String getDateAsString()
 	{
-		return progressDate.get();
+		return getData(TAG_PROGRESS_DATE);
 	}
 	
 	@Override
@@ -103,12 +99,12 @@ public class ProgressReport extends BaseObject
 	
 	public ChoiceItem getProgressStatusChoice()
 	{
-		return new ProgressReportLongStatusQuestion().findChoiceByCode(progressStatus.get());
+		return getChoiceItemData(TAG_PROGRESS_STATUS);
 	}
 	
 	public String getDetails()
 	{
-		return details.get();
+		return getStringData(TAG_DETAILS);
 	}
 	
 	public static boolean is(ORef ref)
@@ -136,13 +132,9 @@ public class ProgressReport extends BaseObject
 	{
 		super.clear();
 		
-		progressStatus = new ChoiceData(TAG_PROGRESS_STATUS, getQuestion(ProgressReportLongStatusQuestion.class));
-		progressDate = new DateData(TAG_PROGRESS_DATE);
-		details = new UserTextData(TAG_DETAILS);
-		
-		addField(TAG_PROGRESS_STATUS, progressStatus);
-		addField(TAG_PROGRESS_DATE, progressDate);
-		addField(TAG_DETAILS, details);
+		createChoiceField(TAG_PROGRESS_STATUS, getQuestion(ProgressReportLongStatusQuestion.class));
+		createDateField(TAG_PROGRESS_DATE);
+		createUserTextField(TAG_DETAILS);
 	}
 	
 	public static final String OBJECT_NAME = "ProgressReport";
@@ -150,8 +142,4 @@ public class ProgressReport extends BaseObject
 	public static final String TAG_PROGRESS_STATUS = "ProgressStatus";
 	public static final String TAG_PROGRESS_DATE = "ProgressDate";
 	public static final String TAG_DETAILS = "Details";
-	
-	private ChoiceData progressStatus;
-	private DateData progressDate;
-	private StringData details;
 }
