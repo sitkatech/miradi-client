@@ -21,7 +21,7 @@ package org.miradi.objectdata;
 
 import org.miradi.utils.DoubleUtilities;
 
-
+// FIXME Low: Can we get rid of this and just use NumberData instead?
 public class FloatData extends ObjectData
 {
 	public FloatData(String tagToUse)
