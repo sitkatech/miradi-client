@@ -28,7 +28,6 @@ import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.CodeData;
 import org.miradi.objectdata.CodeListData;
 import org.miradi.objectdata.DateData;
-import org.miradi.objectdata.FloatData;
 import org.miradi.objectdata.IntegerData;
 import org.miradi.objectdata.NumberData;
 import org.miradi.objectdata.PercentageData;
@@ -239,22 +238,22 @@ public class ProjectMetadata extends BaseObject
 	
 	public double getLongitudeAsFloat()
 	{
-		return longitude.asFloat();
+		return getFloatData(TAG_PROJECT_LONGITUDE);
 	}
 	
 	public double getLatitudeAsFloat()
 	{
-		return latitude.asFloat();
+		return getFloatData(TAG_PROJECT_LATITUDE);
 	}
 	
 	public String getLongitude()
 	{
-		return longitude.get();
+		return getData(TAG_PROJECT_LONGITUDE);
 	}
 	
 	public String getLatitude()
 	{
-		return latitude.get();
+		return getData(TAG_PROJECT_LATITUDE);
 	}
 	
 	public int getCurrencyDecimalPlaces()
@@ -402,8 +401,8 @@ public class ProjectMetadata extends BaseObject
 		quarterColumnsVisibility = new ChoiceData(TAG_QUARTER_COLUMNS_VISIBILITY, getQuestion(QuarterColumnsVisibilityQuestion.class));
 		planningTreeTargetPosition = new ChoiceData(TAG_PLANNING_TREE_TARGET_NODE_POSITION, getQuestion(PlanningTreeTargetPositionQuestion.class));
 		
-		latitude = new FloatData(TAG_PROJECT_LATITUDE);
-		longitude = new FloatData(TAG_PROJECT_LONGITUDE);
+		createFloatField(TAG_PROJECT_LATITUDE);
+		createFloatField(TAG_PROJECT_LONGITUDE);
 		projectArea = new UserTextData(TAG_PROJECT_AREA);
 		projectAreaNotes = new UserTextData(TAG_PROJECT_AREA_NOTES);
 
@@ -444,8 +443,6 @@ public class ProjectMetadata extends BaseObject
 		addField(TAG_EXPECTED_END_DATE, expectedEndDate);
 		addField(TAG_DATA_EFFECTIVE_DATE, effectiveDate);
 		addField(TAG_CURRENCY_DECIMAL_PLACES, currencyDecimalPlaces);
-		addField(TAG_PROJECT_LATITUDE, latitude);
-		addField(TAG_PROJECT_LONGITUDE, longitude);
 		addField(TAG_TOTAL_BUDGET_FOR_FUNDING, totalBudgetForFunding);
 		addField(TAG_BUDGET_SECURED_PERCENT, budgetSecuredPercent);
 		addField(TAG_CURRENCY_TYPE, currencyType);
@@ -609,8 +606,6 @@ public class ProjectMetadata extends BaseObject
 	private DateData expectedEndDate;
 	private DateData effectiveDate;
 	private IntegerData currencyDecimalPlaces;
-	private FloatData latitude;
-	private FloatData longitude;
 	private NumberData totalBudgetForFunding;
 	private PercentageData budgetSecuredPercent;
 	private ChoiceData currencyType;
