@@ -41,7 +41,7 @@ public class LayerManager
 		mode = ViewData.MODE_DEFAULT;
 	}
 	
-	public boolean isVisible(DiagramObject diagramObjectToUse, FactorCell node)
+	public boolean isVisible(DiagramObject diagramObjectToUse, FactorCell node) throws Exception
 	{
 		if(hiddenORefs.contains(node.getWrappedFactorRef()))
 			return false;
@@ -61,7 +61,7 @@ public class LayerManager
 		return isTypeVisible(node.getWrappedFactor().getTypeName());
 	}
 
-	private boolean isHiddenInDiagramObject(DiagramObject diagramObjectToUse, String objectTypeName)
+	private boolean isHiddenInDiagramObject(DiagramObject diagramObjectToUse, String objectTypeName) throws Exception
 	{
 		if (isSafeDiagramObject(diagramObjectToUse))
 			return diagramObjectToUse.getHiddenTypes().contains(objectTypeName);
@@ -82,7 +82,7 @@ public class LayerManager
 		return false;
 	}
 
-	public boolean areAllNodesVisible()
+	public boolean areAllNodesVisible() throws Exception
 	{
 		return getDiagramObject().getHiddenTypes().isEmpty() && hiddenORefs.isEmpty();
 	}
@@ -97,27 +97,27 @@ public class LayerManager
 		mode = newMode;
 	}
 	
-	public boolean areGoalsVisible()
+	public boolean areGoalsVisible() throws Exception
 	{
 		return isTypeVisible(Goal.OBJECT_NAME);
 	}
 	
-	public boolean areObjectivesVisible()
+	public boolean areObjectivesVisible() throws Exception
 	{
 		return isTypeVisible(Objective.OBJECT_NAME);
 	}
 	
-	public void setGoalsVisible(boolean newSetting)
+	public void setGoalsVisible(boolean newSetting) throws Exception
 	{
 		setVisibility(Goal.OBJECT_NAME, newSetting);
 	}
 	
-	public void setObjectivesVisible(boolean newSetting)
+	public void setObjectivesVisible(boolean newSetting) throws Exception
 	{
 		setVisibility(Objective.OBJECT_NAME, newSetting);
 	}
 
-	public void setVisibility(String typeName, boolean isVisible)
+	public void setVisibility(String typeName, boolean isVisible) throws Exception
 	{
 		CodeList hiddenTypes = getDiagramObject().getHiddenTypes();		
 		if (isVisible && hiddenTypes.contains(typeName))
@@ -141,7 +141,7 @@ public class LayerManager
 		}
 	}
 
-	private boolean areDraftsVisible(FactorCell node)
+	private boolean areDraftsVisible(FactorCell node) throws Exception
 	{
 		if (!node.isStrategy())
 			throw new RuntimeException("Unexpected non strategy draft");
@@ -149,17 +149,17 @@ public class LayerManager
 		return isTypeVisible(Strategy.OBJECT_NAME_DRAFT);
 	}
 
-	public boolean areIndicatorsVisible()
+	public boolean areIndicatorsVisible() throws Exception
 	{
 		return isTypeVisible(Indicator.OBJECT_NAME);
 	}
 	
-	public void setIndicatorsVisible(boolean newSetting)
+	public void setIndicatorsVisible(boolean newSetting) throws Exception
 	{
 		setVisibility(Indicator.OBJECT_NAME, newSetting);
 	}
 
-	public boolean isTypeVisible(String objectTypeName)
+	public boolean isTypeVisible(String objectTypeName) throws Exception
 	{
 		return !isHiddenInDiagramObject(getDiagramObject(), objectTypeName);
 	}

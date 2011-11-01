@@ -42,10 +42,12 @@ import org.miradi.objectdata.BaseIdData;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.CodeData;
+import org.miradi.objectdata.CodeListData;
 import org.miradi.objectdata.DateUnitEffortListData;
 import org.miradi.objectdata.DimensionData;
 import org.miradi.objectdata.IdListData;
 import org.miradi.objectdata.IntegerData;
+import org.miradi.objectdata.NumberData;
 import org.miradi.objectdata.ORefData;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objectdata.PointData;
@@ -144,6 +146,12 @@ abstract public class BaseObject
 	{
 		IntegerData data = (IntegerData)getField(tag);
 		return data.asInt();
+	}
+	
+	public double getSafeNumberData(String tag)
+	{
+		NumberData data = (NumberData)getField(tag);
+		return data.getSafeValue();
 	}
 	
 	public boolean getBooleanData(String tag)
@@ -898,6 +906,11 @@ abstract public class BaseObject
 		addField(new CodeData(tag));
 	}
 	
+	protected void createCodeListField(String tag, Class questionClass)
+	{
+		addField(new CodeListData(tag, getQuestion(questionClass)));
+	}
+	
 	protected void createIdListField(String tag, int type)
 	{
 		addField(new IdListData(tag, type));
@@ -922,6 +935,11 @@ abstract public class BaseObject
 	{
 		addField(new IntegerData(tag));
 	}
+	
+	protected void createNumberField(String tag)
+	{
+		addField(new NumberData(tag));
+	}
 
 	protected void createPointField(String tag)
 	{
@@ -936,11 +954,6 @@ abstract public class BaseObject
 	protected void createDimensionField(String tag)
 	{
 		addField(new DimensionData(tag));
-	}
-	
-	protected void createCodeData(String tag)
-	{
-		addField(new CodeData(tag));
 	}
 	
 	protected void createDateUnitEffortListField(String tag)

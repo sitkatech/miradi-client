@@ -39,7 +39,7 @@ public class InsertHumanWelfareTargetDoer extends InsertFactorDoer
 	}
 
 	@Override
-	public void forceVisibleInLayerManager()
+	public void forceVisibleInLayerManager() throws Exception
 	{
 		getCurrentLayerManager().setVisibility(HumanWelfareTarget.OBJECT_NAME, true);
 	}

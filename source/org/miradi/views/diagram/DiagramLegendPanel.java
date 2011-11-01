@@ -85,7 +85,7 @@ import org.miradi.views.umbrella.doers.AbstractPopUpEditDoer;
 
 abstract public class DiagramLegendPanel extends LegendPanel implements CommandExecutedListener
 {
-	public DiagramLegendPanel(MainWindow mainWindowToUse)
+	public DiagramLegendPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		super(mainWindowToUse.getProject());
 		
@@ -109,7 +109,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		super.dispose();
 	}
 	
-	private void addAllComponents()
+	private void addAllComponents() throws Exception
 	{
 		setBorder(new EmptyBorder(5,5,5,5));
 		
@@ -201,7 +201,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 	{
 	}
 
-	private void updateCheckBoxes()
+	private void updateCheckBoxes() throws Exception
 	{
 		if (isInvalidLayerManager(getLayerManager()))
 			return;
@@ -251,7 +251,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		}
 	}
 	
-	public void resetCheckBoxes()
+	public void resetCheckBoxes() throws Exception
 	{
 		removeAll();
 		addAllComponents();
@@ -259,7 +259,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		validate();
 	}
 	
-	private void updateCheckBox(LayerManager manager, String property)
+	private void updateCheckBox(LayerManager manager, String property) throws Exception
 	{
 		JCheckBox checkBox = findCheckBox(property);
 		checkBox.setSelected(manager.isTypeVisible(property));
@@ -321,8 +321,15 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 
 	public void commandExecuted(CommandExecutedEvent event)
 	{
-		if (shouldResetCheckBoxes(event))
-			resetCheckBoxes();
+		try
+		{
+			if (shouldResetCheckBoxes(event))
+				resetCheckBoxes();
+		}
+		catch (Exception e)
+		{
+			throw new RuntimeException(e);
+		}
 	}
 
 	private boolean shouldResetCheckBoxes(CommandExecutedEvent event)

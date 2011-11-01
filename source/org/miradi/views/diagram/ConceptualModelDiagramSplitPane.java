@@ -34,7 +34,7 @@ public class ConceptualModelDiagramSplitPane extends DiagramSplitPane
 	}
 
 	@Override
-	public DiagramLegendPanel createLegendPanel(MainWindow mainWindow)
+	public DiagramLegendPanel createLegendPanel(MainWindow mainWindow) throws Exception
 	{
 		return new ConceptualModelDiagramLegendPanel(mainWindow);
 	}

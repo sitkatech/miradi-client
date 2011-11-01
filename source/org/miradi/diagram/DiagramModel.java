@@ -472,7 +472,7 @@ abstract public class DiagramModel extends DefaultGraphModel
 		}
 	}
 
-	private boolean shouldFactorCellBeVisible(FactorCell factorCell)
+	private boolean shouldFactorCellBeVisible(FactorCell factorCell) throws Exception
 	{
 		boolean isLayerVisible = getLayerManager().isVisible(getDiagramObject(), factorCell);
 		ORefList selectedTaggedRefs = getDiagramObject().getSelectedTaggedObjectSetRefs();

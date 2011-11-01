@@ -33,7 +33,7 @@ import org.miradi.objects.Stress;
 
 public class ConceptualModelDiagramLegendPanel extends DiagramLegendPanel
 {
-	public ConceptualModelDiagramLegendPanel(MainWindow mainWindowToUse)
+	public ConceptualModelDiagramLegendPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		super(mainWindowToUse);
 	}

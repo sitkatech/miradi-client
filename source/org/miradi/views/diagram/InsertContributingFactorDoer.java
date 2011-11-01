@@ -47,7 +47,7 @@ public class InsertContributingFactorDoer extends InsertFactorDoer
 	}
 
 	@Override
-	public void forceVisibleInLayerManager()
+	public void forceVisibleInLayerManager() throws Exception
 	{
 		getCurrentLayerManager().setVisibility(Cause.OBJECT_NAME_CONTRIBUTING_FACTOR, true);
 		getCurrentLayerManager().setVisibility(Cause.OBJECT_NAME_THREAT, true);

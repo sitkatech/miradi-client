@@ -47,7 +47,7 @@ public class InsertThreatReductionResultDoer extends InsertFactorDoer
 	}
 
 	@Override
-	public void forceVisibleInLayerManager()
+	public void forceVisibleInLayerManager() throws Exception
 	{
 		getCurrentLayerManager().setVisibility(ThreatReductionResult.OBJECT_NAME, true);
 	}

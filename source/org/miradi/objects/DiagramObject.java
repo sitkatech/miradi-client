@@ -29,13 +29,6 @@ import org.miradi.ids.DiagramContentsId;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
-import org.miradi.objectdata.CodeListData;
-import org.miradi.objectdata.IdListData;
-import org.miradi.objectdata.NumberData;
-import org.miradi.objectdata.RefListData;
-import org.miradi.objectdata.PseudoStringData;
-import org.miradi.objectdata.StringData;
-import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
@@ -136,7 +129,7 @@ abstract public class DiagramObject extends BaseObject
 	
 	public ORefList getSelectedTaggedObjectSetRefs()
 	{
-		return selectedTaggedObjectSetRefs.getRefList();
+		return getRefListData(TAG_SELECTED_TAGGED_OBJECT_SET_REFS);
 	}
 	
 	// TODO: This really should have a test
@@ -301,7 +294,7 @@ abstract public class DiagramObject extends BaseObject
 	
 	public IdList getAllDiagramFactorIds()
 	{
-		return allDiagramFactorIds.getIdList();
+		return getIdListData(TAG_DIAGRAM_FACTOR_IDS);
 	}
 	
 	public ORefList getAllDiagramFactorRefs()
@@ -330,12 +323,12 @@ abstract public class DiagramObject extends BaseObject
 	
 	public IdList getAllDiagramFactorLinkIds()
 	{
-		return allDiagramFactorLinkIds.getIdList();
+		return getIdListData(TAG_DIAGRAM_FACTOR_LINK_IDS);
 	}
 	
-	public CodeList getHiddenTypes()
+	public CodeList getHiddenTypes() throws Exception
 	{
-		return hiddenTypes.getCodeList();
+		return getCodeList(TAG_HIDDEN_TYPES);
 	}
 	
 	public Factor[] getAllWrappedFactors()
@@ -402,7 +395,8 @@ abstract public class DiagramObject extends BaseObject
 	//TODO write test for this method
 	public boolean containsDiagramFactor(DiagramFactorId diagramFactorId)
 	{
-		return allDiagramFactorIds.getIdList().contains(diagramFactorId);
+		IdList ids = getAllDiagramFactorIds();
+		return ids.contains(diagramFactorId);
 	}
 	
 	@Override
@@ -484,7 +478,7 @@ abstract public class DiagramObject extends BaseObject
 	
 	public double getZoomScale()
 	{
-		double scale = zoomScale.getSafeValue();
+		double scale = getSafeNumberData(TAG_ZOOM_SCALE);
 		if (scale <  .0001 || scale > 1000000)
 			return 1.0;
 		
@@ -503,7 +497,7 @@ abstract public class DiagramObject extends BaseObject
 	@Override
 	public String getShortLabel()
 	{
-		return shortLabel.get();
+		return getStringData(TAG_SHORT_LABEL);
 	}
 	
 	@Override
@@ -559,25 +553,15 @@ abstract public class DiagramObject extends BaseObject
 	{
 		super.clear();
 		
-		allDiagramFactorIds = new IdListData(TAG_DIAGRAM_FACTOR_IDS, DiagramFactor.getObjectType());
-		allDiagramFactorLinkIds = new IdListData(TAG_DIAGRAM_FACTOR_LINK_IDS, DiagramLink.getObjectType());
-		shortLabel = new UserTextData(TAG_SHORT_LABEL);
-		details = new UserTextData(TAG_DETAIL);
-		hiddenTypes = new CodeListData(TAG_HIDDEN_TYPES, getQuestion(DiagramLegendQuestion.class));
-		selectedTaggedObjectSetRefs = new RefListData(TAG_SELECTED_TAGGED_OBJECT_SET_REFS);
-		zoomScale = new NumberData(TAG_ZOOM_SCALE);
+		createIdListField(TAG_DIAGRAM_FACTOR_IDS, DiagramFactor.getObjectType());
+		createIdListField(TAG_DIAGRAM_FACTOR_LINK_IDS, DiagramLink.getObjectType());
+		createUserTextField(TAG_SHORT_LABEL);
+		createUserTextField(TAG_DETAIL);
+		createCodeListField(TAG_HIDDEN_TYPES, DiagramLegendQuestion.class);
+		createRefListField(TAG_SELECTED_TAGGED_OBJECT_SET_REFS);
+		createNumberField(TAG_ZOOM_SCALE);
 		
-		combinedLabel = new PseudoStringData(this, PSEUDO_COMBINED_LABEL);
-		
-		addField(TAG_DIAGRAM_FACTOR_IDS, allDiagramFactorIds);
-		addField(TAG_DIAGRAM_FACTOR_LINK_IDS, allDiagramFactorLinkIds);
-		addField(TAG_SHORT_LABEL, shortLabel);
-		addField(TAG_DETAIL, details);
-		addPresentationDataField(TAG_HIDDEN_TYPES, hiddenTypes);
-		addPresentationDataField(TAG_SELECTED_TAGGED_OBJECT_SET_REFS, selectedTaggedObjectSetRefs);
-		addPresentationDataField(TAG_ZOOM_SCALE, zoomScale);
-		
-		addField(PSEUDO_COMBINED_LABEL, combinedLabel);
+		createPseudoStringField(PSEUDO_COMBINED_LABEL);
 	}
 	
 	public static final String TAG_DIAGRAM_FACTOR_IDS = "DiagramFactorIds";
@@ -589,15 +573,4 @@ abstract public class DiagramObject extends BaseObject
 	public static final String TAG_ZOOM_SCALE = "ZoomScale";
 	
 	public static final String PSEUDO_COMBINED_LABEL = "PseudoCombinedLabel";
- 	
-	private IdListData allDiagramFactorIds;
-	private IdListData allDiagramFactorLinkIds;
-	private StringData shortLabel;
-	private StringData details;
-	private CodeListData hiddenTypes;
-	private RefListData selectedTaggedObjectSetRefs;
-	private NumberData zoomScale;
-	
-	private PseudoStringData combinedLabel;
-
 }

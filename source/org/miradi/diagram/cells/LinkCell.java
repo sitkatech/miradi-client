@@ -134,7 +134,7 @@ public class LinkCell extends EAMGraphCell implements Edge
 		GraphConstants.setPoints(getAttributes(), newList);
 	}
 	
-	public void update(DiagramComponent diagram)
+	public void update(DiagramComponent diagram) throws Exception
 	{
 		int arrowTailStyle = getArrowTailStyle();
 		if(!isThisLinkBodyVisible(diagram))
@@ -152,7 +152,7 @@ public class LinkCell extends EAMGraphCell implements Edge
 		return GraphConstants.ARROW_NONE;
 	}
 
-	public boolean isThisLinkBodyVisible(DiagramComponent diagram)
+	public boolean isThisLinkBodyVisible(DiagramComponent diagram) throws Exception
 	{
 		if (diagram == null)
 		{
