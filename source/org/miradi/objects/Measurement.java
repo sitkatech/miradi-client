@@ -21,10 +21,6 @@ package org.miradi.objects;
 
 import org.martus.util.MultiCalendar;
 import org.miradi.ids.BaseId;
-import org.miradi.objectdata.ChoiceData;
-import org.miradi.objectdata.DateData;
-import org.miradi.objectdata.StringData;
-import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
@@ -78,29 +74,29 @@ public class Measurement extends BaseObject
 	
 	public MultiCalendar getDate()
 	{
-		return date.getDate();
+		return getDateData(TAG_DATE);
 	}
 	
 	public String getStatus()
 	{
-		return status.get();
+		return getData(TAG_STATUS);
 	}
 	
 	public String getSummary()
 	{
-		return summary.get();
+		return getStringData(TAG_SUMMARY);
 	}
 	
 	@Override
 	public String toString()
 	{
-		return date.toString();
+		return getDate().toString();
 	}
 	
 	@Override
 	public String getFullName()
 	{
-		return date.toString() + ": " + getSummary();
+		return getDate().toString() + ": " + getSummary();
 	}
 	
 	public static boolean is(BaseObject object)
@@ -135,21 +131,13 @@ public class Measurement extends BaseObject
 	{
 		super.clear();
 		
-		trend= new ChoiceData(TAG_TREND, getQuestion(TrendQuestion.class));
-		status= new ChoiceData(TAG_STATUS, getQuestion(StatusQuestion.class));
-		date= new DateData(TAG_DATE);
-		summary= new UserTextData(TAG_SUMMARY);
-		detail= new UserTextData(TAG_DETAIL);
-		statusConfidence = new ChoiceData(TAG_STATUS_CONFIDENCE, getQuestion(StatusConfidenceQuestion.class));
-		comments = new UserTextData(TAG_COMMENTS);
-
-		addField(TAG_TREND, trend);
-		addField(TAG_STATUS, status);
-		addField(TAG_DATE, date);
-		addField(TAG_SUMMARY, summary);
-		addField(TAG_DETAIL, detail);
-		addField(TAG_STATUS_CONFIDENCE, statusConfidence);
-		addField(TAG_COMMENTS, comments);
+		createChoiceField(TAG_TREND, TrendQuestion.class);
+		createChoiceField(TAG_STATUS, StatusQuestion.class);
+		createDateField(TAG_DATE);
+		createUserTextField(TAG_SUMMARY);
+		createUserTextField(TAG_DETAIL);
+		createChoiceField(TAG_STATUS_CONFIDENCE, StatusConfidenceQuestion.class);
+		createUserTextField(TAG_COMMENTS);
 	}
 	
 	public static final String OBJECT_NAME = "Measurement";
@@ -163,12 +151,4 @@ public class Measurement extends BaseObject
 	public static final String TAG_COMMENTS = "Comments";
 
 	public static final String META_COLUMN_TAG = "MeasurementMetaColumnTag";
-
-	private ChoiceData trend;
-	private ChoiceData status;
-	private DateData date;
-	private StringData summary;
-	private StringData detail;
-	private ChoiceData statusConfidence;
-	private StringData comments;
 }

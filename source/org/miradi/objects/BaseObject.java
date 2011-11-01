@@ -30,6 +30,7 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.Vector;
 
+import org.martus.util.MultiCalendar;
 import org.martus.util.xml.XmlUtilities;
 import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandSetObjectData;
@@ -159,6 +160,12 @@ abstract public class BaseObject
 	{
 		BooleanData data = (BooleanData)getField(tag);
 		return data.asBoolean();
+	}
+	
+	public MultiCalendar getDateData(String tag)
+	{
+		DateData data = (DateData)getField(tag);
+		return data.getDate();
 	}
 	
 	public Dimension getDimensionData(String tag)
