@@ -22,11 +22,6 @@ package org.miradi.objects;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.ids.KeyEcologicalAttributeId;
-import org.miradi.objectdata.ChoiceData;
-import org.miradi.objectdata.IdListData;
-import org.miradi.objectdata.PseudoStringData;
-import org.miradi.objectdata.StringData;
-import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -110,17 +105,17 @@ public class KeyEcologicalAttribute extends BaseObject
 	
 	public ORefList getIndicatorRefs()
 	{
-		return new ORefList(Indicator.getObjectType(), getIndicatorIds());
+		return getRefListData(TAG_INDICATOR_IDS);
 	}
 	
 	public IdList getIndicatorIds()
 	{
-		return indicatorIds.getIdList();
+		return getIdListData(TAG_INDICATOR_IDS);
 	}
 	
 	public String getKeyEcologicalAttributeType()
 	{
-		return keyEcologicalAttributeType.toString();
+		return getData(TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE);
 	}
 	
 	@Override
@@ -134,6 +129,7 @@ public class KeyEcologicalAttribute extends BaseObject
 	public String computeTNCViability()
 	{
 		CodeList statuses = new CodeList();
+		IdList indicatorIds = getIndicatorIds();
 		for(int i = 0; i < indicatorIds.size(); ++i)
 		{
 			Indicator indicator = (Indicator) objectManager.findObject(new ORef(Indicator.getObjectType(), indicatorIds.get(i)));
@@ -157,7 +153,7 @@ public class KeyEcologicalAttribute extends BaseObject
 	@Override
 	public String getShortLabel()
 	{
-		return shortLabel.get();
+		return getStringData(TAG_SHORT_LABEL);
 	}
 	
 	@Override
@@ -195,19 +191,12 @@ public class KeyEcologicalAttribute extends BaseObject
 	void clear()
 	{
 		super.clear();
-		indicatorIds = new IdListData(TAG_INDICATOR_IDS, Indicator.getObjectType());
-		description = new UserTextData(TAG_DESCRIPTION);
-		details = new UserTextData(TAG_DETAILS);
-		keyEcologicalAttributeType = new ChoiceData(TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE, getQuestion(KeyEcologicalAttributeTypeQuestion.class));
-		shortLabel = new UserTextData(TAG_SHORT_LABEL);
-		viabilityStatus = new PseudoStringData(this, PSEUDO_TAG_VIABILITY_STATUS);
-		
-		addField(TAG_INDICATOR_IDS, indicatorIds);
-		addField(TAG_DESCRIPTION, description);
-		addField(TAG_DETAILS, details);
-		addField(TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE, keyEcologicalAttributeType);
-		addField(TAG_SHORT_LABEL, shortLabel);
-		addField(PSEUDO_TAG_VIABILITY_STATUS, viabilityStatus);
+		createIdListField(TAG_INDICATOR_IDS, Indicator.getObjectType());
+		createUserTextField(TAG_DESCRIPTION);
+		createUserTextField(TAG_DETAILS);
+		createChoiceField(TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE, KeyEcologicalAttributeTypeQuestion.class);
+		createUserTextField(TAG_SHORT_LABEL);
+		createPseudoStringField(PSEUDO_TAG_VIABILITY_STATUS);
 	}
 		
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
@@ -218,11 +207,4 @@ public class KeyEcologicalAttribute extends BaseObject
 	public static final String PSEUDO_TAG_VIABILITY_STATUS = "ViabilityStatus";
 
 	public static final String OBJECT_NAME = "KeyEcologicalAttribute";
-	
-	private IdListData indicatorIds;
-	private StringData description;
-	private StringData details;
-	private ChoiceData keyEcologicalAttributeType;
-	private StringData shortLabel;
-	private PseudoStringData viabilityStatus;
 }
