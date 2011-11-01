@@ -20,9 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
-import org.miradi.objectdata.ChoiceData;
-import org.miradi.objectdata.StringData;
-import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
@@ -91,15 +88,10 @@ public class FosProjectData extends BaseObject
 	{
 		super.clear();
 		
-		trainingType = new ChoiceData(TAG_TRAINING_TYPE, getQuestion(FosTrainingTypeQuestion.class));
-		trainingDates = new UserTextData(TAG_TRAINING_DATES);
-		trainers = new UserTextData(TAG_TRAINERS);
-		coaches = new UserTextData(TAG_COACHES);
-		
-		addField(TAG_TRAINING_TYPE, trainingType);
-		addField(TAG_TRAINING_DATES, trainingDates);
-		addField(TAG_TRAINERS, trainers);
-		addField(TAG_COACHES, coaches);
+		createChoiceField(TAG_TRAINING_TYPE, FosTrainingTypeQuestion.class);
+		createUserTextField(TAG_TRAINING_DATES);
+		createUserTextField(TAG_TRAINERS);
+		createUserTextField(TAG_COACHES);
 	}
 	
 	public static final String OBJECT_NAME = "FosProjectData";
@@ -108,9 +100,4 @@ public class FosProjectData extends BaseObject
 	public static final String TAG_TRAINING_DATES = "TrainingDates";
 	public static final String TAG_TRAINERS = "Trainers";
 	public static final String TAG_COACHES = "Coaches";
-	
-	private ChoiceData trainingType;
-	private StringData trainingDates;
-	private StringData trainers;
-	private StringData coaches;
 }
