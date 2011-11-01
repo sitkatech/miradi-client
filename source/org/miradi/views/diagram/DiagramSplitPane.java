@@ -541,7 +541,7 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 	
 	abstract public DiagramPageList createPageList(MainWindow mainWindowToUse);
 	
-	abstract public DiagramLegendPanel createLegendPanel(MainWindow mainWindowToUse);
+	abstract public DiagramLegendPanel createLegendPanel(MainWindow mainWindowToUse) throws Exception;
 	
 	protected DiagramLegendPanel legendPanel;
 	private DiagramPageList selectionPanel;

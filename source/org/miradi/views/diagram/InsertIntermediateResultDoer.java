@@ -36,7 +36,7 @@ public class InsertIntermediateResultDoer extends InsertFactorDoer
 	}
 	
 	@Override
-	public void forceVisibleInLayerManager()
+	public void forceVisibleInLayerManager() throws Exception
 	{
 		getCurrentLayerManager().setVisibility(IntermediateResult.OBJECT_NAME, true);
 	}

@@ -38,7 +38,7 @@ public class InsertTextBoxDoer extends InsertFactorDoer
 	}
 	
 	@Override
-	public void forceVisibleInLayerManager()
+	public void forceVisibleInLayerManager() throws Exception
 	{
 		getCurrentLayerManager().setVisibility(TextBox.OBJECT_NAME, true);
 	}

@@ -224,17 +224,17 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		diagramContextMenuHandler.showContextMenu(e);
 	}
 	
-	public boolean areGoalsVisible()
+	public boolean areGoalsVisible() throws Exception
 	{
 		return getLayerManager().areGoalsVisible();
 	}
 	
-	public boolean areObjectivesVisible()
+	public boolean areObjectivesVisible() throws Exception
 	{
 		return getLayerManager().areObjectivesVisible();
 	}
 	
-	public boolean areIndicatorsVisible()
+	public boolean areIndicatorsVisible() throws Exception
 	{
 		return getLayerManager().areIndicatorsVisible();
 	}
@@ -652,7 +652,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		}
 	}
 
-	private void repaintLinks(List edges)
+	private void repaintLinks(List edges) throws Exception
 	{
 		GraphLayoutCache glc = getGraphLayoutCache();
 		Iterator iter = edges.iterator();

@@ -71,7 +71,7 @@ public class InsertDraftStrategyDoer extends InsertFactorDoer
 	}
 
 	@Override
-	public void forceVisibleInLayerManager()
+	public void forceVisibleInLayerManager() throws Exception
 	{
 		getCurrentLayerManager().setVisibility(Strategy.OBJECT_NAME_DRAFT, true);
 	}

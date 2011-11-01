@@ -34,7 +34,7 @@ import org.miradi.objects.ThreatReductionResult;
 
 public class ResultsChainDiagramLegendPanel extends DiagramLegendPanel
 {
-	public ResultsChainDiagramLegendPanel(MainWindow mainWindowToUse)
+	public ResultsChainDiagramLegendPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		super(mainWindowToUse);
 	}

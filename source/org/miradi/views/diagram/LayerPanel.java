@@ -27,7 +27,7 @@ import org.miradi.views.umbrella.LegendPanel;
 
 public class LayerPanel extends ModelessDialogPanel
 {
-	public LayerPanel(MainWindow mainWindowToUse)
+	public LayerPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		legendPanel = createLegendPanel(mainWindowToUse);
 		add(legendPanel);
@@ -45,7 +45,7 @@ public class LayerPanel extends ModelessDialogPanel
 		super.dispose();
 	}
 	
-	private LegendPanel createLegendPanel(MainWindow mainWindowToUse)
+	private LegendPanel createLegendPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		if (mainWindowToUse.getDiagramView().isResultsChainTab())
 			return new ResultsChainDiagramLegendPanel(mainWindowToUse);

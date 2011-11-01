@@ -30,7 +30,7 @@ import org.miradi.views.diagram.InsertFactorDoer;
 public class InsertScopeBoxDoer extends InsertFactorDoer
 {
 	@Override
-	public void forceVisibleInLayerManager()
+	public void forceVisibleInLayerManager() throws Exception
 	{
 		getCurrentLayerManager().setVisibility(ScopeBox.OBJECT_NAME, true);
 	}

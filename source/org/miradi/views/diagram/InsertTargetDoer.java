@@ -38,7 +38,7 @@ public class InsertTargetDoer extends InsertFactorDoer
 	}
 
 	@Override
-	public void forceVisibleInLayerManager()
+	public void forceVisibleInLayerManager() throws Exception
 	{
 		getCurrentLayerManager().setVisibility(Target.OBJECT_NAME, true);
 	}

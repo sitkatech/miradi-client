@@ -560,7 +560,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		return 0;
 	}
 	
-	private void updateLegendPanelCheckBoxes()
+	private void updateLegendPanelCheckBoxes() throws Exception
 	{
 		getMainWindow().preventActionUpdates();
 		try

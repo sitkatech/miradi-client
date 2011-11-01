@@ -133,7 +133,7 @@ public class InsertGroupBoxDoer extends InsertFactorDoer
 	}
 	
 	@Override
-	public void forceVisibleInLayerManager()
+	public void forceVisibleInLayerManager() throws Exception
 	{
 		getMainWindow().getCurrentDiagramComponent().getLayerManager().setVisibility(GroupBox.OBJECT_NAME, true);
 	}

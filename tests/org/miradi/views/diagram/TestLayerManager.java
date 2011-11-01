@@ -159,13 +159,13 @@ public class TestLayerManager extends MiradiTestCase
 		assertTrue("Didn't set visible?", manager.areIndicatorsVisible());
 	}
 
-	private void verifyVisibility(String text, boolean expected, FactorCell node, LayerManager manager)
+	private void verifyVisibility(String text, boolean expected, FactorCell node, LayerManager manager) throws Exception
 	{
 		assertEquals("type: " + text + " (" + node + ") ",expected, manager.isTypeVisible(node.getWrappedFactor().getTypeName()));
 		verifyNodeVisibility(text, expected, node, manager);
 	}
 
-	private void verifyNodeVisibility(String text, boolean expected, FactorCell node, LayerManager manager)
+	private void verifyNodeVisibility(String text, boolean expected, FactorCell node, LayerManager manager) throws Exception
 	{
 		assertEquals("node: " + text + " (" + node.getLabel() + ") ",expected, manager.isVisible(project.getTestingDiagramObject(), node));
 	}

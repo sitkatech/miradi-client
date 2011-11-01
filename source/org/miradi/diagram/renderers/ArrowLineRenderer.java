@@ -110,11 +110,18 @@ public class ArrowLineRenderer extends EdgeRenderer
 	@Override
 	protected Shape createShape()
 	{
-		Shape shape = createShapeWithRoundedCorners();
-		if(isArrowBodyVisible())
-			return shape;
-		
-		return createStubLineShape(shape);
+		try
+		{
+			Shape shape = createShapeWithRoundedCorners();
+			if(isArrowBodyVisible())
+				return shape;
+			
+			return createStubLineShape(shape);
+		}
+		catch(Exception e)
+		{
+			throw new RuntimeException(e);
+		}
 	}
 
 	/**
@@ -279,7 +286,7 @@ public class ArrowLineRenderer extends EdgeRenderer
 		return pathShape;
 	}
 
-	private boolean isArrowBodyVisible()
+	private boolean isArrowBodyVisible() throws Exception
 	{
 		return getLinkCell().isThisLinkBodyVisible(getDiagram());
 	}

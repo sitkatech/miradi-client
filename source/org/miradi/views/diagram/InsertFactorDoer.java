@@ -53,7 +53,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 {
 	abstract public int getTypeToInsert();
 	abstract public String getInitialText();
-	abstract public void forceVisibleInLayerManager();
+	abstract public void forceVisibleInLayerManager() throws Exception;
 
 	@Override
 	public boolean isAvailable()
