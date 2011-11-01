@@ -26,11 +26,6 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
-import org.miradi.objectdata.IdListData;
-import org.miradi.objectdata.PseudoRefListData;
-import org.miradi.objectdata.PseudoStringData;
-import org.miradi.objectdata.StringData;
-import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.DirectThreatSet;
 import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORef;
@@ -91,17 +86,17 @@ abstract public class Factor extends BaseObject
 	
 	public String getComment()
 	{
-		return comments.get();
+		return getStringData(TAG_COMMENTS);
 	}
 	
 	public void setComment(String newComments) throws Exception
 	{
-		comments.set(newComments);
+		setData(TAG_COMMENTS, newComments);
 	}
 	
 	public String getDetails()
 	{
-		return text.get();
+		return getStringData(TAG_TEXT);
 	}
 	
 	public boolean isStatusDraft()
@@ -111,7 +106,7 @@ abstract public class Factor extends BaseObject
 
 	public IdList getOnlyDirectIndicatorIds()
 	{
-		IdList rawDirectIndicatorIds = indicators.getIdList();
+		IdList rawDirectIndicatorIds = getIdListData(TAG_INDICATOR_IDS);
 		ORefList activeIndicatorRefs = new ORefList();
 		for(int index = 0; index < rawDirectIndicatorIds.size(); ++index)
 		{
@@ -123,9 +118,9 @@ abstract public class Factor extends BaseObject
 		return activeIndicatorRefs.convertToIdList(Indicator.getObjectType());
 	}
 	
-	public ORefList getActiveAndInactiveDirectIndicatorRefs()
+	public ORefList getActiveAndInactiveDirectIndicatorRefs() throws Exception
 	{
-		return indicators.getRefList();
+		return getRefList(TAG_INDICATOR_IDS);
 	}
 	
 	public ORefList getOnlyDirectIndicatorRefs()
@@ -133,11 +128,6 @@ abstract public class Factor extends BaseObject
 		return new ORefList(Indicator.getObjectType(), getOnlyDirectIndicatorIds());
 	}
 	
-	public void setIndicators(IdList indicatorsToUse)
-	{
-		indicators.set(indicatorsToUse);
-	}
-
 	public ORefList getObjectiveRefs()
 	{
 		return new ORefList(Objective.getObjectType(), getObjectiveIds());
@@ -145,18 +135,13 @@ abstract public class Factor extends BaseObject
 	
 	public IdList getObjectiveIds()
 	{
-		return objectives.getIdList();
+		return getIdListData(TAG_OBJECTIVE_IDS);
 	}
 
 	@Override
 	public String getShortLabel()
 	{
-		return shortLabel.toString();
-	}
-	
-	public void setObjectives(IdList objectivesToUse)
-	{
-		objectives.set(objectivesToUse);
+		return getStringData(TAG_SHORT_LABEL);
 	}
 	
 	public ORefList getGoalRefs()
@@ -493,31 +478,18 @@ abstract public class Factor extends BaseObject
 	void clear()
 	{
 		super.clear();
-		comments = new UserTextData(TAG_COMMENTS);
-		text = new UserTextData(TAG_TEXT);
-		shortLabel = new UserTextData(TAG_SHORT_LABEL);
-	    indicators = new IdListData(TAG_INDICATOR_IDS, Indicator.getObjectType());
-		objectives = new IdListData(TAG_OBJECTIVE_IDS, Objective.getObjectType());
-		multiLineObjectives = new PseudoStringData(this, PSEUDO_TAG_OBJECTIVES);
-		multiLineDeirectThreats = new PseudoStringData(this, PSEUDO_TAG_DIRECT_THREATS);
-		multiLineTargets = new PseudoStringData(this, PSEUDO_TAG_TARGETS);
-		multiLineIndicators = new PseudoStringData(this, PSEUDO_TAG_INDICATORS);
-		pseudoDiagramRefs = new PseudoRefListData(this, PSEUDO_TAG_CONCEPTUAL_DIAGRAM_REFS);
-		pseudoResultsChainRefs = new PseudoRefListData(this, PSEUDO_TAG_RESULTS_CHAIN_REFS);
-		pseudoTagReferringTagRefs = new PseudoRefListData(this, PSEUDO_TAG_REFERRING_TAG_REFS);
-		
-		addField(TAG_COMMENTS, comments);
-		addField(TAG_TEXT, text);
-		addField(TAG_SHORT_LABEL, shortLabel);
-		addField(TAG_INDICATOR_IDS, indicators);
-		addField(TAG_OBJECTIVE_IDS, objectives);
-		addField(PSEUDO_TAG_OBJECTIVES, multiLineObjectives);
-		addField(PSEUDO_TAG_DIRECT_THREATS, multiLineDeirectThreats);
-		addField(PSEUDO_TAG_TARGETS, multiLineTargets);
-		addField(PSEUDO_TAG_INDICATORS, multiLineIndicators);
-		addField(PSEUDO_TAG_CONCEPTUAL_DIAGRAM_REFS, pseudoDiagramRefs);
-		addField(PSEUDO_TAG_RESULTS_CHAIN_REFS, pseudoResultsChainRefs);
-		addField(PSEUDO_TAG_REFERRING_TAG_REFS, pseudoTagReferringTagRefs);
+		createUserTextField(TAG_COMMENTS);
+		createUserTextField(TAG_TEXT);
+		createUserTextField(TAG_SHORT_LABEL);
+	    createIdListField(TAG_INDICATOR_IDS, Indicator.getObjectType());
+		createIdListField(TAG_OBJECTIVE_IDS, Objective.getObjectType());
+		createPseudoStringField(PSEUDO_TAG_OBJECTIVES);
+		createPseudoStringField(PSEUDO_TAG_DIRECT_THREATS);
+		createPseudoStringField(PSEUDO_TAG_TARGETS);
+		createPseudoStringField(PSEUDO_TAG_INDICATORS);
+		createPseudoRefListField(PSEUDO_TAG_CONCEPTUAL_DIAGRAM_REFS);
+		createPseudoRefListField(PSEUDO_TAG_RESULTS_CHAIN_REFS);
+		createPseudoRefListField(PSEUDO_TAG_REFERRING_TAG_REFS);
 	}
 
 	public static final String TAG_COMMENTS = "Comments";
@@ -533,19 +505,4 @@ abstract public class Factor extends BaseObject
 	public static final String PSEUDO_TAG_REFERRING_TAG_REFS = "PseudoTagReferringTagRefs";
 	public static final String PSEUDO_TAG_TAXONOMY_CODE_VALUE = "TaxonomyCodeValue";
 	public static final String PSEUDO_TAG_INDICATORS = "PseudoTagIndicators";
-	
-	private StringData comments;
-	private StringData text;
-	private StringData shortLabel;
-
-	private IdListData indicators;
-	private IdListData objectives;
-	
-	PseudoStringData multiLineObjectives;
-	PseudoStringData multiLineDeirectThreats;
-	PseudoStringData multiLineTargets;
-	private PseudoStringData multiLineIndicators;
-	private PseudoRefListData pseudoDiagramRefs;
-	private PseudoRefListData pseudoResultsChainRefs;
-	private PseudoRefListData pseudoTagReferringTagRefs;
 }
