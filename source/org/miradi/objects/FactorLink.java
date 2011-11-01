@@ -20,9 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
-import org.miradi.ids.FactorId;
-import org.miradi.objectdata.BooleanData;
-import org.miradi.objectdata.ORefData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
@@ -70,14 +67,12 @@ public class FactorLink extends BaseObject
 	
 	public ORef getFromFactorRef()
 	{
-		ORef rawRef = fromRef.getRef();
-		return new ORef(rawRef.getObjectType(), new FactorId(rawRef.getObjectId().asInt()));
+		return getRefData(TAG_FROM_REF);
 	}
 	
 	public ORef getToFactorRef()
 	{
-		ORef rawRef = toRef.getRef();
-		return new ORef(rawRef.getObjectType(), new FactorId(rawRef.getObjectId().asInt()));
+		return getRefData(TAG_TO_REF);
 	}
 	
 	public ORef getFactorRef(int direction)
@@ -103,13 +98,9 @@ public class FactorLink extends BaseObject
 	void clear()
 	{
 		super.clear();
-		fromRef = new ORefData(TAG_FROM_REF);
-		toRef = new ORefData(TAG_TO_REF);
-		bidirectionalLink = new BooleanData(TAG_BIDIRECTIONAL_LINK);
-		
-		addField(TAG_FROM_REF, fromRef);
-		addField(TAG_TO_REF, toRef);
-		addField(TAG_BIDIRECTIONAL_LINK, bidirectionalLink);
+		createRefField(TAG_FROM_REF);
+		createRefField(TAG_TO_REF);
+		createBooleanField(TAG_BIDIRECTIONAL_LINK);
 	}
 	
 	public static final String TAG_FROM_REF = "FromRef";
@@ -117,8 +108,4 @@ public class FactorLink extends BaseObject
 	private static final String TAG_BIDIRECTIONAL_LINK = "BidirectionalLink";
 	
 	public static final String OBJECT_NAME = "Link";
-	
-	private ORefData fromRef;
-	private ORefData toRef;
-	private BooleanData bidirectionalLink;
 }
