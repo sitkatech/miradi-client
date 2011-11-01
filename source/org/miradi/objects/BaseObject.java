@@ -64,6 +64,7 @@ import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
+import org.miradi.objecthelpers.RelevancyOverrideSetData;
 import org.miradi.objecthelpers.StringChoiceMap;
 import org.miradi.objecthelpers.StringCodeListMap;
 import org.miradi.objecthelpers.StringStringMap;
@@ -224,6 +225,11 @@ abstract public class BaseObject
 	protected StringCodeListMap getStringCodeListMapData(String tag)
 	{
 		return ((StringCodeListMapData)getField(tag)).getStringCodeListMap();
+	}
+	
+	protected RelevancyOverrideSet getRawRelevancyOverrideData(String tag)
+	{
+		return ((RelevancyOverrideSetData)getField(tag)).getRawRelevancyOverrideSet();
 	}
 
 	public void loadFromJson(EnhancedJsonObject json) throws Exception
@@ -908,6 +914,11 @@ abstract public class BaseObject
 	protected void createDateUnitEffortListField(String tag)
 	{
 		addField(new DateUnitEffortListData(tag));
+	}
+
+	protected void createRelevancyOverrideSetField(String tag)
+	{
+		addField(new RelevancyOverrideSetData(tag));
 	}
 	
 	protected void createStringChoiceMapField(String tag)
