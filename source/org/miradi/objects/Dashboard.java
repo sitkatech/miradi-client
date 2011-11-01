@@ -1143,7 +1143,7 @@ public class Dashboard extends BaseObject
 		createStringChoiceMapField(TAG_PROGRESS_CHOICE_MAP);
 		createStringStringMapField(TAG_COMMENTS_MAP);
 		createStringCodeListMapField(TAG_FLAGS_MAP);
-		createCodeData(TAG_CURRENT_DASHBOARD_TAB);
+		createCodeField(TAG_CURRENT_DASHBOARD_TAB);
 
 		createPseudoStringField(PSEUDO_TEAM_MEMBER_COUNT);
 		createPseudoStringField(PSEUDO_PROJECT_SCOPE_WORD_COUNT);
