@@ -52,6 +52,7 @@ import org.miradi.objectdata.IntegerData;
 import org.miradi.objectdata.NumberData;
 import org.miradi.objectdata.ORefData;
 import org.miradi.objectdata.ObjectData;
+import org.miradi.objectdata.PercentageData;
 import org.miradi.objectdata.PointData;
 import org.miradi.objectdata.PointListData;
 import org.miradi.objectdata.PseudoQuestionData;
@@ -959,6 +960,11 @@ abstract public class BaseObject
 	protected void createNumberField(String tag)
 	{
 		addField(new NumberData(tag));
+	}
+	
+	protected void createPercentageField(String tag)
+	{
+		addField(new PercentageData(tag));
 	}
 	
 	protected void createDateField(String tag)

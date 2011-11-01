@@ -20,10 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
-import org.miradi.objectdata.DateData;
-import org.miradi.objectdata.PercentageData;
-import org.miradi.objectdata.StringData;
-import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
@@ -100,22 +96,14 @@ public class ProgressPercent extends BaseObject
 	{
 		super.clear();
 		
-		date = new DateData(TAG_DATE);
-		percentComplete = new PercentageData(TAG_PERCENT_COMPLETE);
-		percentCompleteNotes = new UserTextData(TAG_PERCENT_COMPLETE_NOTES);
-		
-		addField(TAG_DATE, date);
-		addField(TAG_PERCENT_COMPLETE, percentComplete);
-		addField(TAG_PERCENT_COMPLETE_NOTES, percentCompleteNotes);
+		createDateField(TAG_DATE);
+		createPercentageField(TAG_PERCENT_COMPLETE);
+		createUserTextField(TAG_PERCENT_COMPLETE_NOTES);
 	}
 	
 	public static final String TAG_DATE = "PercentDate";
 	public static final String TAG_PERCENT_COMPLETE = "PercentComplete";
 	public static final String TAG_PERCENT_COMPLETE_NOTES = "PercentCompleteNotes";
 	
-	private DateData date;
-	private PercentageData percentComplete;
-	private StringData percentCompleteNotes;
-
 	public static final String OBJECT_NAME = "ProgressPercent";
 }
