@@ -20,8 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
-import org.miradi.objectdata.ChoiceData;
-import org.miradi.objectdata.CodeListData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
@@ -51,12 +49,12 @@ public class ObjectTreeTableConfiguration extends BaseObject implements Planning
 	
 	public CodeList getRowCodesToShow() throws Exception
 	{
-		return rowConfigurationList.getCodeList();
+		return getCodeListData(TAG_ROW_CONFIGURATION);
 	}
 	
 	public CodeList getColumnCodesToShow() throws Exception
 	{
-		return colConfigurationList.getCodeList();
+		return getCodeListData(TAG_COL_CONFIGURATION);
 	}
 	
 	@Override
@@ -84,7 +82,8 @@ public class ObjectTreeTableConfiguration extends BaseObject implements Planning
 	
 	public boolean shouldPutTargetsAtTopLevelOfTree() throws Exception
 	{
-		return PlanningTreeTargetPositionQuestion.shouldPutTargetsAtTopLevelOfTree(targetPosition.get());
+		String code = getData(TAG_TARGET_NODE_POSITION);
+		return PlanningTreeTargetPositionQuestion.shouldPutTargetsAtTopLevelOfTree(code);
 	}
 	
 	public boolean shouldIncludeResultsChain()
@@ -99,12 +98,13 @@ public class ObjectTreeTableConfiguration extends BaseObject implements Planning
 	
 	private String getDiagramInclusionCode()
 	{
-		return diagramDataInclusionChoice.get();
+		return getData(TAG_DIAGRAM_DATA_INCLUSION);
 	}
 	
 	public boolean doObjectivesContainStrategies() throws Exception
 	{
-		return strategyObjectiveOrder.get().equals(StrategyObjectiveTreeOrderQuestion.OBJECTIVE_CONTAINS_STRATEGY_CODE);
+		String order = getData(TAG_STRATEGY_OBJECTIVE_ORDER);
+		return order.equals(StrategyObjectiveTreeOrderQuestion.OBJECTIVE_CONTAINS_STRATEGY_CODE);
 	}
 	
 	public String getWorkPlanBudgetMode() throws Exception
@@ -142,17 +142,11 @@ public class ObjectTreeTableConfiguration extends BaseObject implements Planning
 	void clear()
 	{
 		super.clear();
-		rowConfigurationList = new CodeListData(TAG_ROW_CONFIGURATION, new CustomPlanningRowsQuestion(getProject()));
-		colConfigurationList = new CodeListData(TAG_COL_CONFIGURATION, getQuestion(CustomPlanningColumnsQuestion.class));
-		diagramDataInclusionChoice = new ChoiceData(TAG_DIAGRAM_DATA_INCLUSION, getQuestion(DiagramObjectDataInclusionQuestion.class));
-		strategyObjectiveOrder = new ChoiceData(TAG_STRATEGY_OBJECTIVE_ORDER, getQuestion(StrategyObjectiveTreeOrderQuestion.class));
-		targetPosition = new ChoiceData(TAG_TARGET_NODE_POSITION, getQuestion(PlanningTreeTargetPositionQuestion.class));
-		
-		addField(TAG_ROW_CONFIGURATION, rowConfigurationList);
-		addField(TAG_COL_CONFIGURATION, colConfigurationList);
-		addField(TAG_DIAGRAM_DATA_INCLUSION, diagramDataInclusionChoice);
-		addField(TAG_STRATEGY_OBJECTIVE_ORDER, strategyObjectiveOrder);
-		addField(TAG_TARGET_NODE_POSITION, targetPosition);
+		createCodeListField(TAG_ROW_CONFIGURATION, new CustomPlanningRowsQuestion(getProject()));
+		createCodeListField(TAG_COL_CONFIGURATION, CustomPlanningColumnsQuestion.class);
+		createChoiceField(TAG_DIAGRAM_DATA_INCLUSION, DiagramObjectDataInclusionQuestion.class);
+		createChoiceField(TAG_STRATEGY_OBJECTIVE_ORDER, StrategyObjectiveTreeOrderQuestion.class);
+		createChoiceField(TAG_TARGET_NODE_POSITION, PlanningTreeTargetPositionQuestion.class);
 	}
 
 	public static final String TAG_ROW_CONFIGURATION = "TagRowConfiguration";
@@ -162,10 +156,4 @@ public class ObjectTreeTableConfiguration extends BaseObject implements Planning
 	public static final String TAG_TARGET_NODE_POSITION = "TargetNodePosition";
 	
 	public static final String OBJECT_NAME = "PlanningViewConfiguration";
-	
-	private CodeListData rowConfigurationList;
-	private CodeListData colConfigurationList;
-	private ChoiceData diagramDataInclusionChoice;
-	private ChoiceData strategyObjectiveOrder;
-	private ChoiceData targetPosition;
 }

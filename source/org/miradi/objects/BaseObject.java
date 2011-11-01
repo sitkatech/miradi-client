@@ -198,6 +198,12 @@ abstract public class BaseObject
 		data.setPoint(point);
 	}
 	
+	public CodeList getCodeListData(String tag)
+	{
+		CodeListData data = (CodeListData)getField(tag);
+		return data.getCodeList();
+	}
+	
 	public IdList getIdListData(String fieldTag)
 	{
 		ObjectData field = getField(fieldTag);
@@ -916,7 +922,13 @@ abstract public class BaseObject
 	
 	protected void createCodeListField(String tag, Class questionClass)
 	{
-		addField(new CodeListData(tag, getQuestion(questionClass)));
+		ChoiceQuestion question = getQuestion(questionClass);
+		createCodeListField(tag, question);
+	}
+
+	protected void createCodeListField(String tag, ChoiceQuestion question)
+	{
+		addField(new CodeListData(tag, question));
 	}
 	
 	protected void createIdListField(String tag, int type)
