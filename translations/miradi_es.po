@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-27 11:19-0500\n"
+"POT-Creation-Date: 2011-11-01 21:04-0500\n"
 "PO-Revision-Date: 2011-03-28 15:06-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -3490,7 +3490,7 @@ msgstr ""
 msgid "Error Occurred please try saving under different name."
 msgstr "Se produjo un error. Intente grabar con un nombre diferente."
 
-#: Miradi/source/org/miradi/objects/Dashboard.java:302
+#: Miradi/source/org/miradi/objects/Dashboard.java:297
 msgid "Error Retrieving Data"
 msgstr ""
 
@@ -4731,7 +4731,7 @@ msgstr ""
 msgid "Manage Stresses for "
 msgstr "Manejar presiones para"
 
-#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:399
+#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:406
 msgid "Manage Tagged Object Sets"
 msgstr "Administrar conjuntos de objetos etiquetados"
 
@@ -7509,7 +7509,7 @@ msgstr ""
 "necesario, las tareas en sí mismas pueden dividirse en subtareas. En Miradi, "
 "una tarea está representada por un óvalo plano gris."
 
-#: Miradi/source/org/miradi/objects/Task.java:374
+#: Miradi/source/org/miradi/objects/Task.java:376
 msgid "Task does not have a parent"
 msgstr ""
 
@@ -8617,7 +8617,7 @@ msgstr ""
 msgid "[Error]"
 msgstr "[Error]"
 
-#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:131
+#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:129
 msgid "[Main Diagram]"
 msgstr "[Diagrama principal]"
 
@@ -8633,7 +8633,7 @@ msgstr "[Nueva cadena de resultados]"
 msgid "[No Project]"
 msgstr "[Sin proyecto]"
 
-#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:132
+#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:130
 msgid "[Not Named]"
 msgstr "[Sin nombre]"
 
