@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-27 11:19-0500\n"
+"POT-Creation-Date: 2011-11-01 21:04-0500\n"
 "PO-Revision-Date: 2011-04-29 11:26+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -3597,7 +3597,7 @@ msgstr "E' occorso un errore durante l'ordinamento"
 msgid "Error Occurred please try saving under different name."
 msgstr "Errore nel salvataggio, prova salvando con un nome diverso."
 
-#: Miradi/source/org/miradi/objects/Dashboard.java:302
+#: Miradi/source/org/miradi/objects/Dashboard.java:297
 msgid "Error Retrieving Data"
 msgstr ""
 
@@ -4836,7 +4836,7 @@ msgstr ""
 msgid "Manage Stresses for "
 msgstr "Gestisci le pressioni(Stress) per "
 
-#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:399
+#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:406
 msgid "Manage Tagged Object Sets"
 msgstr "Gestisci l'insieme di oggetti marcati con tag"
 
@@ -7623,7 +7623,7 @@ msgstr ""
 "stessi possono essere suddivisi in sotto-attività, se necessario. In Miradi, "
 "un Task è rappresentato da un ovale grigio appiattita."
 
-#: Miradi/source/org/miradi/objects/Task.java:374
+#: Miradi/source/org/miradi/objects/Task.java:376
 msgid "Task does not have a parent"
 msgstr "Il Task non ha genitore"
 
@@ -8735,7 +8735,7 @@ msgstr ""
 msgid "[Error]"
 msgstr "[Errore]"
 
-#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:131
+#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:129
 msgid "[Main Diagram]"
 msgstr "[Diagramma Principale]"
 
@@ -8751,7 +8751,7 @@ msgstr "[Nuova catena dei risultati]"
 msgid "[No Project]"
 msgstr "[Nessun Progetto]"
 
-#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:132
+#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:130
 msgid "[Not Named]"
 msgstr "[Non Nominato]"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-27 11:19-0500\n"
+"POT-Creation-Date: 2011-11-01 21:04-0500\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -3536,7 +3536,7 @@ msgstr "Ангилахад алдаа"
 msgid "Error Occurred please try saving under different name."
 msgstr "Алдаа гарсан тул өөр нэр өгч хадгалах."
 
-#: Miradi/source/org/miradi/objects/Dashboard.java:302
+#: Miradi/source/org/miradi/objects/Dashboard.java:297
 msgid "Error Retrieving Data"
 msgstr ""
 
@@ -4758,7 +4758,7 @@ msgstr "Гол асуудлууд - Анхаарал хандуулах ёсто
 msgid "Manage Stresses for "
 msgstr ".....ны Дарамтыг Удирдах "
 
-#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:399
+#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:406
 msgid "Manage Tagged Object Sets"
 msgstr "Тэмдэглэгдсэн Багц Зорилтыг Удирдах"
 
@@ -7526,7 +7526,7 @@ msgstr ""
 "хуваагдаж болно. Даалгаварыг Miradi-д хавтгай саарал зууван дүрсээр "
 "төлөөлүүлсэн."
 
-#: Miradi/source/org/miradi/objects/Task.java:374
+#: Miradi/source/org/miradi/objects/Task.java:376
 msgid "Task does not have a parent"
 msgstr "Даалгавар гарал үүсэлгүй байна."
 
@@ -8655,7 +8655,7 @@ msgstr ""
 msgid "[Error]"
 msgstr "[Алдаа]"
 
-#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:131
+#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:129
 msgid "[Main Diagram]"
 msgstr "Үндсэн Диаграмм]"
 
@@ -8671,7 +8671,7 @@ msgstr "[Шинэ Үр Дүнгийн Гинжих Холбоос]"
 msgid "[No Project]"
 msgstr "Төсөл байхгүй]"
 
-#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:132
+#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:130
 msgid "[Not Named]"
 msgstr "[Нэрлээгүй"
 

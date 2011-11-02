@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-27 11:19-0500\n"
+"POT-Creation-Date: 2011-11-01 21:04-0500\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -3652,7 +3652,7 @@ msgstr ""
 "Ein Fehler ist aufgetreten, bitte versuchen Sie unter einem anderen Namen zu "
 "speichern. "
 
-#: Miradi/source/org/miradi/objects/Dashboard.java:302
+#: Miradi/source/org/miradi/objects/Dashboard.java:297
 msgid "Error Retrieving Data"
 msgstr "Fehler beim Wiederherstellen der Daten"
 
@@ -4902,7 +4902,7 @@ msgstr "Große Probleme - Fortlaufend, große Probleme die Zuwendung benötigen"
 msgid "Manage Stresses for "
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:399
+#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:406
 msgid "Manage Tagged Object Sets"
 msgstr ""
 
@@ -7733,7 +7733,7 @@ msgstr ""
 "notwendig ist. Aufgaben können in Teilaufgaben untergliedert werden. In "
 "Miradi wird eine Aufgabe durch ein graues, abgeflachtes Oval dargestellt.  "
 
-#: Miradi/source/org/miradi/objects/Task.java:374
+#: Miradi/source/org/miradi/objects/Task.java:376
 msgid "Task does not have a parent"
 msgstr "Für diese Aufgabe ist noch niemand zuständig"
 
@@ -8836,7 +8836,7 @@ msgstr ""
 msgid "[Error]"
 msgstr "[Fehler]"
 
-#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:131
+#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:129
 msgid "[Main Diagram]"
 msgstr "[Hauptdiagramm]"
 
@@ -8852,7 +8852,7 @@ msgstr "[Neue Ergebniswirkungskette]"
 msgid "[No Project]"
 msgstr "[Kein Projekt]"
 
-#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:132
+#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:130
 msgid "[Not Named]"
 msgstr "[Unbenannt]"
 

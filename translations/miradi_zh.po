@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-27 11:19-0500\n"
+"POT-Creation-Date: 2011-11-01 21:04-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -3361,7 +3361,7 @@ msgstr ""
 msgid "Error Occurred please try saving under different name."
 msgstr "出错，请尝试用不同的文件名保存。 \t\t"
 
-#: Miradi/source/org/miradi/objects/Dashboard.java:302
+#: Miradi/source/org/miradi/objects/Dashboard.java:297
 msgid "Error Retrieving Data"
 msgstr ""
 
@@ -4568,7 +4568,7 @@ msgstr "主要问题——正在进行中、需要注意到的主要问题"
 msgid "Manage Stresses for "
 msgstr "管理压力对象 \t\t"
 
-#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:399
+#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:406
 msgid "Manage Tagged Object Sets"
 msgstr "管理加标签的分目标集"
 
@@ -7240,7 +7240,7 @@ msgstr ""
 "任务——指为展开某个活动或实施某个方法所需的专门行动。如果有必要，任务本身可以"
 "分解成亚任务。在Miradi中，任务是以灰色扁椭圆形来代表的。"
 
-#: Miradi/source/org/miradi/objects/Task.java:374
+#: Miradi/source/org/miradi/objects/Task.java:376
 msgid "Task does not have a parent"
 msgstr ""
 
@@ -8306,7 +8306,7 @@ msgstr ""
 msgid "[Error]"
 msgstr ""
 
-#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:131
+#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:129
 msgid "[Main Diagram]"
 msgstr "[主要图表] \t\t"
 
@@ -8322,7 +8322,7 @@ msgstr "[新结果链] \t\t"
 msgid "[No Project]"
 msgstr "[无项目] \t\t"
 
-#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:132
+#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:130
 msgid "[Not Named]"
 msgstr "[未命名] \t\t"
 

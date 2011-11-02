@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-27 11:19-0500\n"
+"POT-Creation-Date: 2011-11-01 21:04-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -3545,7 +3545,7 @@ msgstr "Під час сортування сталася помилка"
 msgid "Error Occurred please try saving under different name."
 msgstr "Сталася помилка. Спробуйте зберегти під іншою назвою."
 
-#: Miradi/source/org/miradi/objects/Dashboard.java:302
+#: Miradi/source/org/miradi/objects/Dashboard.java:297
 msgid "Error Retrieving Data"
 msgstr ""
 
@@ -4760,7 +4760,7 @@ msgstr "Важлива справа - Діюча важлива справа, щ
 msgid "Manage Stresses for "
 msgstr "Управляти стресом для"
 
-#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:399
+#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:406
 msgid "Manage Tagged Object Sets"
 msgstr "Управляти міченими наборами завдань"
 
@@ -7508,7 +7508,7 @@ msgstr ""
 "задача при потребі може бути розбита на підзадачі. У Міраді задача "
 "показується сірим сплющеним овалом."
 
-#: Miradi/source/org/miradi/objects/Task.java:374
+#: Miradi/source/org/miradi/objects/Task.java:376
 msgid "Task does not have a parent"
 msgstr "Задача не має автора"
 
@@ -8602,7 +8602,7 @@ msgstr ""
 msgid "[Error]"
 msgstr "[Помилка]"
 
-#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:131
+#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:129
 msgid "[Main Diagram]"
 msgstr "[Головна Діаграма]"
 
@@ -8618,7 +8618,7 @@ msgstr "[Новий ланцюг результатів]"
 msgid "[No Project]"
 msgstr "[Проект не вибраний]"
 
-#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:132
+#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:130
 msgid "[Not Named]"
 msgstr "[Не названо]"
 
