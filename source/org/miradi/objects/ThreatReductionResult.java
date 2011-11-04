@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.FactorId;
-import org.miradi.objectdata.ORefData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -92,15 +91,15 @@ public class ThreatReductionResult extends Factor
 	
 	public String getRelatedDirectThreatRefAsString()
 	{
-		return relatedDirectThreat.get();
+		return getData(TAG_RELATED_DIRECT_THREAT_REF);
 	}
 	
 	public ORef getRelatedThreatRef()
 	{
-		if (relatedDirectThreat.get().length() == 0)
+		if (getRelatedDirectThreatRefAsString().length() == 0)
 			return ORef.INVALID;
 		
-		return ORef.createFromString(relatedDirectThreat.get());
+		return ORef.createFromString(getRelatedDirectThreatRefAsString());
 	}
 	
 	public static boolean is(BaseObject baseObject)
@@ -133,13 +132,9 @@ public class ThreatReductionResult extends Factor
 	{
 		super.clear();
 		
-		relatedDirectThreat = new ORefData(TAG_RELATED_DIRECT_THREAT_REF);
-		
-		addField(TAG_RELATED_DIRECT_THREAT_REF, relatedDirectThreat);
+		createRefField(TAG_RELATED_DIRECT_THREAT_REF);
 	}
 
 	public static final String TAG_RELATED_DIRECT_THREAT_REF = "RelatedDirectThreatRef";
 	public static final String OBJECT_NAME = "ThreatReductionResult";
-	
-	ORefData relatedDirectThreat;
 }

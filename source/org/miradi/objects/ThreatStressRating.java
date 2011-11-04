@@ -20,10 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
-import org.miradi.objectdata.BooleanData;
-import org.miradi.objectdata.ChoiceData;
-import org.miradi.objectdata.ORefData;
-import org.miradi.objectdata.PseudoQuestionData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
@@ -50,7 +46,7 @@ public class ThreatStressRating extends BaseObject
 
 	public boolean isActive()
 	{
-		return isActive.asBoolean();
+		return getBooleanData(TAG_IS_ACTIVE);
 	}
 	
 	@Override
@@ -107,27 +103,22 @@ public class ThreatStressRating extends BaseObject
 	
 	public ORef getStressRef()
 	{
-		return stressRef.getRef();
+		return getRefData(TAG_STRESS_REF);
 	}
 	
 	public ORef getThreatRef()
 	{
-		return threatRef.getRef();
+		return getRefData(TAG_THREAT_REF);
 	}
 	
 	public ChoiceItem getContribution()
 	{
-		return new StressContributionQuestion().findChoiceByCode(contribution.toString());
+		return getChoiceItemData(TAG_CONTRIBUTION);
 	}
 	 
-	public String getIrreversibilityCode()
-	{
-		return irreversibility.get();
-	}
-	
 	public ChoiceItem getIrreversibility()
 	{
-		return new StressIrreversibilityQuestion().findChoiceByCode(irreversibility.toString());
+		return getChoiceItemData(TAG_IRREVERSIBILITY);
 	}
 	
 	@Override
@@ -166,19 +157,12 @@ public class ThreatStressRating extends BaseObject
 	public void clear()
 	{
 		super.clear();
-		contribution = new ChoiceData(TAG_CONTRIBUTION, getQuestion(StressContributionQuestion.class));
-		irreversibility = new ChoiceData(TAG_IRREVERSIBILITY, getQuestion(StressIrreversibilityQuestion.class));
-		stressRef = new ORefData(TAG_STRESS_REF);
-		threatRef = new ORefData(TAG_THREAT_REF);
-		isActive = new BooleanData(TAG_IS_ACTIVE);
-		pseudoThreatRating = new PseudoQuestionData(this, PSEUDO_TAG_THREAT_RATING);
-		
-		addField(TAG_CONTRIBUTION, contribution);
-		addField(TAG_IRREVERSIBILITY, irreversibility);
-		addField(TAG_STRESS_REF, stressRef);
-		addField(TAG_THREAT_REF, threatRef);
-		addField(TAG_IS_ACTIVE, isActive);
-		addField(PSEUDO_TAG_THREAT_RATING, pseudoThreatRating);
+		createChoiceField(TAG_CONTRIBUTION, getQuestion(StressContributionQuestion.class));
+		createChoiceField(TAG_IRREVERSIBILITY, getQuestion(StressIrreversibilityQuestion.class));
+		createRefField(TAG_STRESS_REF);
+		createRefField(TAG_THREAT_REF);
+		createBooleanField(TAG_IS_ACTIVE);
+		createPseudoQuestionField(PSEUDO_TAG_THREAT_RATING);
 	}
 	
 	public static final String OBJECT_NAME = "ThreatStressRating";
@@ -189,12 +173,4 @@ public class ThreatStressRating extends BaseObject
 	public static final String TAG_THREAT_REF = "ThreatRef";
 	public static final String TAG_IS_ACTIVE = "IsActive";
 	public static final String PSEUDO_TAG_THREAT_RATING = "PseudoThreatRating";
-		
-	private ChoiceData contribution;
-	private ChoiceData irreversibility;
-	private ORefData stressRef;
-	private ORefData threatRef;
-	private BooleanData isActive;
-	private PseudoQuestionData pseudoThreatRating;
-	
 }
