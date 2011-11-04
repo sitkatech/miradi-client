@@ -24,13 +24,6 @@ import java.text.ParseException;
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.ids.BaseId;
-import org.miradi.objectdata.ChoiceData;
-import org.miradi.objectdata.CodeData;
-import org.miradi.objectdata.CodeListData;
-import org.miradi.objectdata.IntegerData;
-import org.miradi.objectdata.ORefData;
-import org.miradi.objectdata.RefListData;
-import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -90,27 +83,27 @@ public class ViewData extends BaseObject
 	
 	public String getTreeConfigurationChoice()
 	{
-		return actionTreeConfigurationChoice.get();
+		return getData(TAG_TREE_CONFIGURATION_REF);
 	}
 	
 	public CodeList getBudgetRollupReportLevelTypes()
 	{
-		return budgetRollupReportLevelTypes.getCodeList();
+		return getCodeListData(TAG_BUDGET_ROLLUP_REPORT_TYPES);
 	}
 	
 	public ORef getCurrentConceptualModelRef()
 	{
-		return currentConceptualModelRef.getRef();
+		return getRefData(TAG_CURRENT_CONCEPTUAL_MODEL_REF);
 	}
 	
 	public ORef getCurrentResultsChainRef()
 	{
-		return currentResultsChainRef.getRef();
+		return getRefData(TAG_CURRENT_RESULTS_CHAIN_REF);
 	}
 	
 	public ORef getTreeConfigurationRef()
 	{
-		return treeConfigurationRef.getRef();
+		return getRefData(TAG_TREE_CONFIGURATION_REF);
 	}
 	
 	private PlanningTreeRowColumnProvider getTreeConfiguration()
@@ -128,19 +121,14 @@ public class ViewData extends BaseObject
 		return getTreeConfiguration().shouldIncludeConceptualModelPage();
 	}
 	
-	public void setCurrentTab(int newTab) throws Exception
-	{
-		currentTab.set(Integer.toString(newTab));
-	}
-	
 	public int getCurrentTab()
 	{
-		return currentTab.asInt();
+		return getIntegerData(TAG_CURRENT_TAB);
 	}
 
 	public String getCurrentMode()
 	{
-		return currentMode.get();
+		return getData(TAG_CURRENT_MODE);
 	}
 
 	@Override
@@ -187,32 +175,18 @@ public class ViewData extends BaseObject
 	{
 		super.clear();
 
-		currentMode = new CodeData(TAG_CURRENT_MODE);
-		chainModeFactorRefs = new RefListData(TAG_CHAIN_MODE_FACTOR_REFS);
-		currentTab = new IntegerData(TAG_CURRENT_TAB);
-		currentResultsChainRef = new ORefData(TAG_CURRENT_RESULTS_CHAIN_REF);
-		currentConceptualModelRef = new ORefData(TAG_CURRENT_CONCEPTUAL_MODEL_REF);
-		diagramHiddenTypes = new CodeListData(TAG_DIAGRAM_HIDDEN_TYPES, getQuestion(InternalQuestionWithoutValues.class));
-		budgetRollupReportLevelTypes = new CodeListData(TAG_BUDGET_ROLLUP_REPORT_TYPES, getQuestion(WorkPlanCategoryTypesQuestion.class));
-		planningSingleLevelChoice = new CodeData(TAG_PLANNING_SINGLE_LEVEL_CHOICE);
-		treeConfigurationRef = new ORefData(TAG_TREE_CONFIGURATION_REF);
-		currentWizardStep = new CodeData(TAG_CURRENT_WIZARD_STEP);
-		actionTreeConfigurationChoice = new ChoiceData(TAG_ACTION_TREE_CONFIGURATION_CHOICE, getQuestion(ActionTreeConfigurationQuestion.class));
-		monitoringTreeConfigurationChoice = new ChoiceData(TAG_MONITORING_TREE_CONFIGURATION_CHOICE, getQuestion(MonitoringTreeConfigurationQuestion.class));
-		
-		addPresentationDataField(TAG_CURRENT_CONCEPTUAL_MODEL_REF, currentConceptualModelRef);
-		addPresentationDataField(TAG_CURRENT_RESULTS_CHAIN_REF, currentResultsChainRef);
-		addPresentationDataField(TAG_CURRENT_MODE, currentMode);
-		addPresentationDataField(TAG_CHAIN_MODE_FACTOR_REFS, chainModeFactorRefs);
-		addPresentationDataField(TAG_CURRENT_TAB, currentTab);
-		addPresentationDataField(TAG_DIAGRAM_HIDDEN_TYPES, diagramHiddenTypes);
-		addField(TAG_BUDGET_ROLLUP_REPORT_TYPES, budgetRollupReportLevelTypes);
-		
-		addPresentationDataField(TAG_PLANNING_SINGLE_LEVEL_CHOICE, planningSingleLevelChoice);
-		addPresentationDataField(TAG_TREE_CONFIGURATION_REF, treeConfigurationRef);
-		addPresentationDataField(TAG_CURRENT_WIZARD_STEP, currentWizardStep);
-		addPresentationDataField(TAG_ACTION_TREE_CONFIGURATION_CHOICE, actionTreeConfigurationChoice);
-		addPresentationDataField(TAG_MONITORING_TREE_CONFIGURATION_CHOICE, monitoringTreeConfigurationChoice);
+		createCodeField(TAG_CURRENT_MODE);
+		createRefListField(TAG_CHAIN_MODE_FACTOR_REFS);
+		createIntegerField(TAG_CURRENT_TAB);
+		createRefField(TAG_CURRENT_RESULTS_CHAIN_REF);
+		createRefField(TAG_CURRENT_CONCEPTUAL_MODEL_REF);
+		createCodeListField(TAG_DIAGRAM_HIDDEN_TYPES, getQuestion(InternalQuestionWithoutValues.class));
+		createCodeListField(TAG_BUDGET_ROLLUP_REPORT_TYPES, getQuestion(WorkPlanCategoryTypesQuestion.class));
+		createCodeField(TAG_PLANNING_SINGLE_LEVEL_CHOICE);
+		createRefField(TAG_TREE_CONFIGURATION_REF);
+		createCodeField(TAG_CURRENT_WIZARD_STEP);
+		createChoiceField(TAG_ACTION_TREE_CONFIGURATION_CHOICE, getQuestion(ActionTreeConfigurationQuestion.class));
+		createChoiceField(TAG_MONITORING_TREE_CONFIGURATION_CHOICE, getQuestion(MonitoringTreeConfigurationQuestion.class));
 	}
 
 	public static final String TAG_CURRENT_CONCEPTUAL_MODEL_REF = "CurrentConceptualModelRef";
@@ -233,17 +207,4 @@ public class ViewData extends BaseObject
 	public static final String MODE_STRATEGY_BRAINSTORM = "StrategyBrainstorm";
 
 	public static final String OBJECT_NAME = "ViewData";
-	
-	private IntegerData currentTab;
-	private StringData currentMode;
-	private RefListData chainModeFactorRefs;
-	private ORefData currentResultsChainRef;
-	private ORefData currentConceptualModelRef;
-	private CodeListData diagramHiddenTypes;
-	private CodeListData budgetRollupReportLevelTypes;
-	private StringData planningSingleLevelChoice;
-	private ORefData treeConfigurationRef;
-	private StringData currentWizardStep;
-	private ChoiceData actionTreeConfigurationChoice;
-	private ChoiceData monitoringTreeConfigurationChoice;
 }
