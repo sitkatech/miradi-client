@@ -20,8 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
-import org.miradi.objectdata.StringData;
-import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
@@ -89,14 +87,10 @@ public class Xenodata extends BaseObject
 	{
 		super.clear();
 		
-		projectId = new UserTextData(TAG_PROJECT_ID);
-		
-		addField(TAG_PROJECT_ID, projectId);
+		createUserTextField(TAG_PROJECT_ID);
 	}
 	
 	public static final String TAG_PROJECT_ID = "ProjectId";
-	
-	private StringData projectId;
 	
 	public static final String OBJECT_NAME = "Xenodata";
 }
