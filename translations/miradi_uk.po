@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-01 21:04-0500\n"
+"POT-Creation-Date: 2011-11-04 00:29-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -4468,7 +4468,7 @@ msgstr "Label|(Невизначений код облікового запису
 msgid "Label|(Undefined Funding Source)"
 msgstr "Label|(Невизначене джерело фінансування)"
 
-#: Miradi/source/org/miradi/objects/ProjectResource.java:128
+#: Miradi/source/org/miradi/objects/ProjectResource.java:121
 msgid "Label|(Undefined Resource)"
 msgstr "Label|(Невизначений ресурс)"
 
@@ -7508,7 +7508,7 @@ msgstr ""
 "задача при потребі може бути розбита на підзадачі. У Міраді задача "
 "показується сірим сплющеним овалом."
 
-#: Miradi/source/org/miradi/objects/Task.java:376
+#: Miradi/source/org/miradi/objects/Task.java:366
 msgid "Task does not have a parent"
 msgstr "Задача не має автора"
 
