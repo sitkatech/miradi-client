@@ -20,8 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
-import org.miradi.objectdata.StringData;
-import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -122,18 +120,12 @@ public class SubTarget extends BaseObject
 	{
 		super.clear();
 		
-		shortLabel = new UserTextData(TAG_SHORT_LABEL);
-		details = new UserTextData(TAG_DETAIL);
-		
-		addField(TAG_SHORT_LABEL, shortLabel);
-		addField(TAG_DETAIL, details);
+		createUserTextField(TAG_SHORT_LABEL);
+		createUserTextField(TAG_DETAIL);
 	}
 	
 	public static final String OBJECT_NAME = "SubTarget";
 	
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
 	public static final String TAG_DETAIL = "Detail";
-	
-	private StringData shortLabel;
-	private StringData details;
 }

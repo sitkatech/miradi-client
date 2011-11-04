@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.FactorId;
-import org.miradi.objectdata.ChoiceData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -85,7 +84,7 @@ public class ScopeBox extends Factor
 	
 	public String getScopeBoxTypeCode()
 	{
-		return scopeBoxTypeCode.get();
+		return getData(TAG_SCOPE_BOX_TYPE_CODE);
 	}
 	
 	public static boolean is(ORef ref)
@@ -113,14 +112,10 @@ public class ScopeBox extends Factor
 	{
 		super.clear();
 		
-		scopeBoxTypeCode = new ChoiceData(TAG_SCOPE_BOX_TYPE_CODE, ScopeBoxTypeQuestion.createScopeBoxTypeQuestion());
-		
-		addPresentationDataField(TAG_SCOPE_BOX_TYPE_CODE, scopeBoxTypeCode);
+		createChoiceField(TAG_SCOPE_BOX_TYPE_CODE, ScopeBoxTypeQuestion.createScopeBoxTypeQuestion());
 	}
 	
 	public static final String OBJECT_NAME = "ScopeBox";
 	
 	public static final String TAG_SCOPE_BOX_TYPE_CODE = "ScopeBoxColorCode";
-	
-	private ChoiceData scopeBoxTypeCode;
 }

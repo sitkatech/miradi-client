@@ -20,10 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.FactorId;
-import org.miradi.objectdata.ChoiceData;
-import org.miradi.objectdata.PseudoQuestionData;
-import org.miradi.objectdata.StringData;
-import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -136,11 +132,11 @@ public class Stress extends Factor
 	
 	public int calculateStressRating()
 	{
-		ChoiceItem scopeChoice = new StressScopeChoiceQuestion().findChoiceByCode(scope.get());
+		ChoiceItem scopeChoice = getChoiceItemData(TAG_SCOPE);
 		if (scopeChoice.getCode().length() == 0)
 			return 0;
 
-		ChoiceItem severityChoice = new StressSeverityChoiceQuestion().findChoiceByCode(severity.get());
+		ChoiceItem severityChoice = getChoiceItemData(TAG_SEVERITY);
 		if (severityChoice.getCode().length() == 0)
 			return 0;
 		
@@ -153,7 +149,7 @@ public class Stress extends Factor
 	@Override
 	public String getShortLabel()
 	{
-		return shortLabel.get();
+		return getData(TAG_SHORT_LABEL);
 	}
 	
 	public static Stress find(ObjectManager objectManager, ORef stressRef)
@@ -192,17 +188,11 @@ public class Stress extends Factor
 	{
 		super.clear();
 		
-		shortLabel = new UserTextData(TAG_SHORT_LABEL);
-		detail = new UserTextData(TAG_DETAIL);
-		scope = new ChoiceData(TAG_SCOPE, getQuestion(StressScopeChoiceQuestion.class));
-		severity = new ChoiceData(TAG_SEVERITY, getQuestion(StressSeverityChoiceQuestion.class));
-		pseudoStressRating = new PseudoQuestionData(this, PSEUDO_STRESS_RATING);
-		
-		addField(TAG_SHORT_LABEL, shortLabel);
-		addField(TAG_DETAIL, detail);
-		addField(TAG_SCOPE, scope);
-		addField(TAG_SEVERITY, severity);
-		addField(PSEUDO_STRESS_RATING, pseudoStressRating);
+		createUserTextField(TAG_SHORT_LABEL);
+		createUserTextField(TAG_DETAIL);
+		createChoiceField(TAG_SCOPE, getQuestion(StressScopeChoiceQuestion.class));
+		createChoiceField(TAG_SEVERITY, getQuestion(StressSeverityChoiceQuestion.class));
+		createPseudoQuestionField(PSEUDO_STRESS_RATING);
 	}
 	
 	public static final String TAG_DETAIL = "Detail";
@@ -210,11 +200,5 @@ public class Stress extends Factor
 	public static final String TAG_SEVERITY = "Severity";
 	public static final String PSEUDO_STRESS_RATING = "PseudoStressRating";
 	
-	private StringData shortLabel;
-	private StringData detail;
-	private ChoiceData scope;
-	private ChoiceData severity;
-	
-	private PseudoQuestionData pseudoStressRating;
 	public static final String OBJECT_NAME = "Stress";
 }

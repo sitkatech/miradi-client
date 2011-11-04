@@ -55,30 +55,19 @@ public class TestStrategy extends AbstractObjectWithBudgetDataToDeleteTestCase
 		verifyFields(getType());
 	}
 	
-	public void testBasics()
+	public void testBasics() throws Exception
 	{
 		FactorId interventionId = new FactorId(17);
 		Strategy intervention = new Strategy(getObjectManager(), interventionId);
 		assertEquals("already has activities?", 0, intervention.getActivityIds().size());
 		
-		BaseId activityId1 = new BaseId(77);
-		intervention.insertActivityId(activityId1, 0);
 		IdList afterAdd1 = intervention.getActivityIds();
-		assertEquals("didn't add?", 1, afterAdd1.size());
-		assertEquals("wrong task id?", activityId1, afterAdd1.get(0));
+		afterAdd1.add(new BaseId(838));
+		intervention.setData(Strategy.TAG_ACTIVITY_IDS, afterAdd1.toString());
+		assertEquals("didn't add?", afterAdd1.toString(), intervention.getData(Strategy.TAG_ACTIVITY_IDS));
 		
-		BaseId activityId2 = new BaseId(92);
-		intervention.insertActivityId(activityId2, 0);
-		IdList afterAdd2 = intervention.getActivityIds();
-		assertEquals("didn't add 2?", 2, afterAdd2.size());
-		assertEquals("didn't insert at front?", activityId2, afterAdd2.get(0));
-		assertEquals("original id lost?", activityId1, afterAdd2.get(1));
-		
-		intervention.removeActivityId(activityId2);
-		IdList afterRemove = intervention.getActivityIds();
-		assertEquals("didn't remove?", 1, afterRemove.size());
-		assertEquals("removed wrong id?", activityId1, afterRemove.get(0));
-		
+		intervention.setData(Strategy.TAG_ACTIVITY_IDS, "");
+		assertEquals("didn't remove?", "", intervention.getData(Strategy.TAG_ACTIVITY_IDS));
 	}
 	
 	public void testActivityIds() throws Exception
@@ -121,8 +110,10 @@ public class TestStrategy extends AbstractObjectWithBudgetDataToDeleteTestCase
 		FactorId interventionId = new FactorId(17);
 		Strategy intervention = new Strategy(getObjectManager(), interventionId);
 		intervention.setData(Strategy.TAG_STATUS, Strategy.STATUS_DRAFT);
-		intervention.insertActivityId(new BaseId(23), 0);
-		intervention.insertActivityId(new BaseId(37), 1);
+		IdList activityIds = new IdList(Task.getObjectType());
+		activityIds.add(new BaseId(23));
+		activityIds.add(new BaseId(37));
+		intervention.setData(Strategy.TAG_ACTIVITY_IDS, activityIds.toString());
 		
 		Strategy got = (Strategy)BaseObject.createFromJson(getProject().getObjectManager(), intervention.getType(), intervention.toJson());
 		assertTrue("Didn't restore status?", got.isStatusDraft());

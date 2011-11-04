@@ -69,7 +69,7 @@ public class TestObjectDeepCopier extends MiradiTestCase
 		Strategy strategy = (Strategy) project.findObject(strategyRef);
 		assertEquals("wrong initial number of objects to deep copy?", 0, strategy.getAllObjectsToDeepCopy(new ORefList()).size());
 		
-		strategy.addActivity(activityRef);
+		strategy.setData(Strategy.TAG_ACTIVITY_IDS, activityIds.toString());
 		assertEquals("wrong number of objects to deep copy?", 1, strategy.getAllObjectsToDeepCopy(new ORefList()).size());
 		ObjectDeepCopier deepCopier = new ObjectDeepCopier(project);
 		Vector deepCopiedNull = deepCopier.createDeepCopy(null);
