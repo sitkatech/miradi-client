@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.martus.util.MultiCalendar;
+import org.miradi.commands.TestCommandSetObjectData;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdAssigner;
@@ -149,9 +150,9 @@ public class TestTask extends AbstractObjectWithBudgetDataToDeleteTestCase
 		Task child2 = new Task(getObjectManager(), new FactorId(idAssigner.takeNextId().asInt()));
 		Task grandchild21 = new Task(getObjectManager(), new FactorId(idAssigner.takeNextId().asInt()));
 		
-		top.addSubtaskId(child1.getId());
-		top.addSubtaskId(child2.getId());
-		child2.addSubtaskId(grandchild21.getId());
+		TestCommandSetObjectData.addSubtaskId(top, child1.getId());
+		TestCommandSetObjectData.addSubtaskId(top, child2.getId());
+		TestCommandSetObjectData.addSubtaskId(child2, grandchild21.getId());
 		
 		assertEquals("wrong subtask count?", 2, top.getSubtaskCount());
 		assertEquals("not zero subtasks?", 0, child1.getSubtaskCount());
@@ -194,8 +195,8 @@ public class TestTask extends AbstractObjectWithBudgetDataToDeleteTestCase
 		Task parent = new Task(getObjectManager(), new FactorId(1));
 		Task child1 = new Task(getObjectManager(), new FactorId(2));
 		Task child2 = new Task(getObjectManager(), new FactorId(3));
-		parent.addSubtaskId(child1.getId());
-		parent.addSubtaskId(child2.getId());
+		TestCommandSetObjectData.addSubtaskId(parent, child1.getId());
+		TestCommandSetObjectData.addSubtaskId(parent, child2.getId());
 		return parent;
 	}
 	

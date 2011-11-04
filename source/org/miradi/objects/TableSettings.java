@@ -24,13 +24,6 @@ import java.util.Vector;
 
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.ids.BaseId;
-import org.miradi.objectdata.ChoiceData;
-import org.miradi.objectdata.DateUnitListData;
-import org.miradi.objectdata.IntegerData;
-import org.miradi.objectdata.RefListListData;
-import org.miradi.objectdata.StringData;
-import org.miradi.objectdata.TagListData;
-import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -42,7 +35,6 @@ import org.miradi.questions.SortDirectionQuestion;
 import org.miradi.questions.WorkPlanVisibleRowsQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
-import org.miradi.utils.StringStringMapData;
 
 public class TableSettings extends BaseObject
 {
@@ -77,37 +69,37 @@ public class TableSettings extends BaseObject
 	
 	public StringStringMap getColumnWidthMap()
 	{
-		return columnWidths.getStringMap();
+		return getStringStringMapData(TAG_COLUMN_WIDTHS);
 	}
 	
 	public int getRowHeight()
 	{
-		return rowHeight.asInt();
+		return getIntegerData(TAG_ROW_HEIGHT);
 	}
 	
 	public CodeList getColumnSequenceCodes()
 	{
-		return columnSequenceCodes.getCodeList();
+		return getCodeListData(TAG_COLUMN_SEQUENCE_CODES);
 	}
 	
 	public Vector<DateUnit> getDateUnitList()
 	{
-		return dateUnitListList.getDateUnits();
+		return getDateUnitListData(TAG_DATE_UNIT_LIST_DATA);
 	}
 	
 	public Vector<ORefList> getExpandedRefListList() throws Exception
 	{
-		return expandedNodesRefListList.convertToRefListVector();
+		return getRefListListData(TAG_TREE_EXPANSION_LIST);
 	}
 	
 	public StringStringMap getTableSettingsMap()
 	{
-		return new StringStringMap(tableSettingsMap.getStringMap()); 
+		return getStringStringMapData(TAG_TABLE_SETTINGS_MAP);
 	}
 	
 	public CodeList getCodeListFromTableSettingsMap(String codeListKey) throws Exception
 	{
-		HashMap<String, String> settingsMap = tableSettingsMap.getStringMap().toHashMap();
+		HashMap<String, String> settingsMap = getTableSettingsMap().toHashMap();
 		if (settingsMap.containsKey(codeListKey))
 			return new CodeList(settingsMap.get(codeListKey));
 
@@ -126,7 +118,7 @@ public class TableSettings extends BaseObject
 	
 	public String getUniqueIdentifier()
 	{
-		return tableIdentifier.get();
+		return getData(TAG_TABLE_IDENTIFIER);
 	}
 	
 	public static boolean exists(Project projectToUse, String uniqueTableIdentifier)
@@ -186,27 +178,16 @@ public class TableSettings extends BaseObject
 	{
 		super.clear();
 
-		tableIdentifier = new UserTextData(TAG_TABLE_IDENTIFIER);
-		columnSequenceCodes = new TagListData(TAG_COLUMN_SEQUENCE_CODES);
-		columnWidths = new StringStringMapData(TAG_COLUMN_WIDTHS);
-		rowHeight = new IntegerData(TAG_ROW_HEIGHT);
-		expandedNodesRefListList = new RefListListData(TAG_TREE_EXPANSION_LIST);
-		dateUnitListList = new DateUnitListData(TAG_DATE_UNIT_LIST_DATA);
-		tableSettingsMap = new StringStringMapData(TAG_TABLE_SETTINGS_MAP);
-		columnSortTag = new UserTextData(TAG_COLUMN_SORT_TAG);
-		columnSortDirection = new ChoiceData(TAG_COLUMN_SORT_DIRECTION, getQuestion(SortDirectionQuestion.class));
-		workPlanVisibleNodesChoice = new ChoiceData(TAG_WORK_PLAN_VISIBLE_NODES_CODE, getQuestion(WorkPlanVisibleRowsQuestion.class));
-		
-		addPresentationDataField(TAG_TABLE_IDENTIFIER, tableIdentifier);
-		addPresentationDataField(TAG_COLUMN_SEQUENCE_CODES, columnSequenceCodes);
-		addPresentationDataField(TAG_COLUMN_WIDTHS, columnWidths);
-		addPresentationDataField(TAG_ROW_HEIGHT, rowHeight);
-		addPresentationDataField(TAG_TREE_EXPANSION_LIST, expandedNodesRefListList);
-		addPresentationDataField(TAG_DATE_UNIT_LIST_DATA, dateUnitListList);
-		addPresentationDataField(TAG_TABLE_SETTINGS_MAP, tableSettingsMap);
-		addPresentationDataField(TAG_COLUMN_SORT_TAG, columnSortTag);
-		addPresentationDataField(TAG_COLUMN_SORT_DIRECTION, columnSortDirection);
-		addPresentationDataField(TAG_WORK_PLAN_VISIBLE_NODES_CODE, workPlanVisibleNodesChoice);
+		createUserTextField(TAG_TABLE_IDENTIFIER);
+		createTagListField(TAG_COLUMN_SEQUENCE_CODES);
+		createStringStringMapField(TAG_COLUMN_WIDTHS);
+		createIntegerField(TAG_ROW_HEIGHT);
+		createRefListListField(TAG_TREE_EXPANSION_LIST);
+		createDateUnitListField(TAG_DATE_UNIT_LIST_DATA);
+		createStringStringMapField(TAG_TABLE_SETTINGS_MAP);
+		createUserTextField(TAG_COLUMN_SORT_TAG);
+		createChoiceField(TAG_COLUMN_SORT_DIRECTION, getQuestion(SortDirectionQuestion.class));
+		createChoiceField(TAG_WORK_PLAN_VISIBLE_NODES_CODE, getQuestion(WorkPlanVisibleRowsQuestion.class));
 	}
 	
 	public static final String OBJECT_NAME = "TableSettings";
@@ -224,15 +205,4 @@ public class TableSettings extends BaseObject
 	public static final String TAG_COLUMN_SORT_TAG = "ColumnSortTag";
 	public static final String TAG_COLUMN_SORT_DIRECTION = "ColumnSortDirection";
 	public static final String TAG_WORK_PLAN_VISIBLE_NODES_CODE = "WorkPlanVisibleNodesCode";
-	
-	private StringData tableIdentifier;
-	private TagListData columnSequenceCodes;
-	private StringStringMapData columnWidths;
-	private IntegerData rowHeight;
-	private RefListListData expandedNodesRefListList;
-	private DateUnitListData dateUnitListList;
-	private StringStringMapData tableSettingsMap;
-	private StringData columnSortTag;
-	private ChoiceData columnSortDirection;
-	private ChoiceData workPlanVisibleNodesChoice;
 }

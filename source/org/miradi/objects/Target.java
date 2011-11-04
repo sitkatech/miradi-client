@@ -21,11 +21,6 @@ package org.miradi.objects;
 
 
 import org.miradi.ids.FactorId;
-import org.miradi.objectdata.CodeListData;
-import org.miradi.objectdata.RefListData;
-import org.miradi.objectdata.PseudoQuestionData;
-import org.miradi.objectdata.StringData;
-import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -70,7 +65,7 @@ public class Target extends AbstractTarget
 	{
 		StringBuffer appendedChoiceValues = new StringBuffer();
 		ChoiceQuestion question = getHabitatAssociationQuestion();
-		CodeList habitatCodes = habitatAssociation.getCodeList();
+		CodeList habitatCodes = getCodeListData(TAG_HABITAT_ASSOCIATION);
 		for(int index = 0; index < habitatCodes.size(); ++index)
 		{
 			if (index > 0)
@@ -85,7 +80,7 @@ public class Target extends AbstractTarget
 	
 	public ORefList getStressRefs()
 	{
-		return stressRefs.getRefList();
+		return getRefListData(TAG_STRESS_REFS);
 	}
 	
 	@Override
@@ -166,17 +161,11 @@ public class Target extends AbstractTarget
 	protected void clear()
 	{
 		super.clear();
-		stressRefs = new RefListData(TAG_STRESS_REFS);
-		speciesLatinName = new UserTextData(TAG_SPECIES_LATIN_NAME);
-		habitatAssociation = new CodeListData(TAG_HABITAT_ASSOCIATION, getHabitatAssociationQuestion());
+		createRefListField(TAG_STRESS_REFS);
+		createUserTextField(TAG_SPECIES_LATIN_NAME);
+		createCodeListField(TAG_HABITAT_ASSOCIATION, getHabitatAssociationQuestion());
 		
-		habitatAssociationLabel = new PseudoQuestionData(this, PSEUDO_TAG_HABITAT_ASSOCIATION_VALUE);
-
-		addField(TAG_STRESS_REFS, stressRefs);
-		addField(TAG_HABITAT_ASSOCIATION, habitatAssociation);
-		addField(TAG_SPECIES_LATIN_NAME, speciesLatinName);
-		
-		addField(PSEUDO_TAG_HABITAT_ASSOCIATION_VALUE, habitatAssociationLabel);
+		createPseudoQuestionField(PSEUDO_TAG_HABITAT_ASSOCIATION_VALUE);
 	}
 
 	public static final String OBJECT_NAME = "Target";
@@ -186,10 +175,4 @@ public class Target extends AbstractTarget
 	public static final String TAG_SPECIES_LATIN_NAME = "SpeciesLatinName";
 	
 	public static final String PSEUDO_TAG_HABITAT_ASSOCIATION_VALUE = "HabitatAssociationValue";
-	
-	private RefListData stressRefs;
-	private StringData speciesLatinName;
-	private CodeListData habitatAssociation;
-	
-	private PseudoQuestionData habitatAssociationLabel;
 }

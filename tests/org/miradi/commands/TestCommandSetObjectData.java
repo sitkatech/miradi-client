@@ -57,7 +57,7 @@ public class TestCommandSetObjectData extends TestCaseWithProject
 		IdList expected = new IdList(Task.getObjectType());
 		expected.add(id1);
 		assertEquals("wrong data value?", expected.toString(), fromEmpty.getDataValue());
-		task.addSubtaskId(id1);
+		addSubtaskId(task, id1);
 		
 		BaseId id2 = new BaseId(101);
 		CommandSetObjectData insertAnother = CommandSetObjectData.createInsertIdCommand(task, Task.TAG_SUBTASK_IDS, id2, 0);
@@ -68,10 +68,10 @@ public class TestCommandSetObjectData extends TestCaseWithProject
 	public void testListRemove() throws Exception
 	{
 		Task task = new Task(getObjectManager(), new FactorId(47));
-		task.addSubtaskId(new BaseId(12));
+		addSubtaskId(task, new BaseId(12));
 		BaseId id2 = new BaseId(99);
-		task.addSubtaskId(id2);
-		task.addSubtaskId(new BaseId(747));
+		addSubtaskId(task, id2);
+		addSubtaskId(task, new BaseId(747));
 		CommandSetObjectData removeMiddle = CommandSetObjectData.createRemoveIdCommand(task, Task.TAG_SUBTASK_IDS, id2);
 		assertEquals("wrong type?", task.getType(), removeMiddle.getObjectType());
 		assertEquals("wrong id?", task.getId(), removeMiddle.getObjectId());
@@ -79,5 +79,12 @@ public class TestCommandSetObjectData extends TestCaseWithProject
 		IdList expected = task.getSubtaskIdList();
 		expected.removeId(id2);
 		assertEquals("didn't remove correctly?", expected.toString(), removeMiddle.getDataValue());
+	}
+
+	public static void addSubtaskId(Task task, BaseId baseId) throws Exception
+	{
+		IdList ids = task.getSubtaskIdList();
+		ids.add(baseId);
+		task.setData(Task.TAG_SUBTASK_IDS, ids.toString());
 	}
 }

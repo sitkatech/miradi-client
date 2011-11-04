@@ -46,6 +46,7 @@ import org.miradi.objectdata.CodeData;
 import org.miradi.objectdata.CodeListData;
 import org.miradi.objectdata.DateData;
 import org.miradi.objectdata.DateUnitEffortListData;
+import org.miradi.objectdata.DateUnitListData;
 import org.miradi.objectdata.DimensionData;
 import org.miradi.objectdata.FloatData;
 import org.miradi.objectdata.IdListData;
@@ -60,7 +61,9 @@ import org.miradi.objectdata.PseudoQuestionData;
 import org.miradi.objectdata.PseudoRefListData;
 import org.miradi.objectdata.PseudoStringData;
 import org.miradi.objectdata.RefListData;
+import org.miradi.objectdata.RefListListData;
 import org.miradi.objectdata.StringData;
+import org.miradi.objectdata.TagListData;
 import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.BaseObjectByNameSorter;
 import org.miradi.objecthelpers.DateUnit;
@@ -285,6 +288,18 @@ abstract public class BaseObject
 	{
 		StringRefMapData data = (StringRefMapData)getField(tag);
 		return data.getStringRefMap();
+	}
+	
+	protected Vector<DateUnit> getDateUnitListData(String tag)
+	{
+		DateUnitListData data = (DateUnitListData)getField(tag);
+		return data.getDateUnits();
+	}
+	
+	protected Vector<ORefList> getRefListListData(String tag) throws Exception
+	{
+		RefListListData data = (RefListListData)getField(tag);
+		return data.convertToRefListVector();
 	}
 	
 	protected RelevancyOverrideSet getRawRelevancyOverrideData(String tag)
@@ -1035,6 +1050,21 @@ abstract public class BaseObject
 	protected void createStringRefMapField(String tag)
 	{
 		addField(new StringRefMapData(tag));
+	}
+	
+	protected void createTagListField(String tag)
+	{
+		addField(new TagListData(tag));
+	}
+	
+	protected void createRefListListField(String tag)
+	{
+		addField(new RefListListData(tag));
+	}
+	
+	protected void createDateUnitListField(String tag)
+	{
+		addField(new DateUnitListData(tag));
 	}
 	
 	protected void createPseudoStringField(String tag)
