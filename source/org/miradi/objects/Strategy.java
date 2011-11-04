@@ -22,18 +22,9 @@ package org.miradi.objects;
 import java.util.Vector;
 
 import org.miradi.dialogs.planning.upperPanel.rebuilder.AbstractTreeRebuilder;
-import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
-import org.miradi.objectdata.ChoiceData;
-import org.miradi.objectdata.CodeData;
-import org.miradi.objectdata.IdListData;
-import org.miradi.objectdata.PseudoQuestionData;
-import org.miradi.objectdata.PseudoRefListData;
-import org.miradi.objectdata.PseudoStringData;
-import org.miradi.objectdata.StringData;
-import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
@@ -107,27 +98,12 @@ public class Strategy extends Factor
 	@Override
 	public boolean isStatusDraft()
 	{
-		return STATUS_DRAFT.equals(status.get());
-	}
-	
-	public void addActivity(ORef activityRef)
-	{
-		activityIds.add(activityRef.getObjectId());
-	}
-	
-	public void insertActivityId(BaseId activityId, int insertAt)
-	{
-		activityIds.insertAt(activityId, insertAt);
-	}
-	
-	public void removeActivityId(BaseId activityId)
-	{
-		activityIds.removeId(activityId);
+		return STATUS_DRAFT.equals(getData(TAG_STATUS));
 	}
 	
 	public IdList getActivityIds()
 	{
-		return activityIds.getIdList();
+		return getIdListData(TAG_ACTIVITY_IDS);
 	}
 	
 	public ORefList getActivityRefs()
@@ -212,7 +188,7 @@ public class Strategy extends Factor
 	
 	public String getTaxonomyCode()
 	{
-		return taxonomyCode.get();
+		return getData(TAG_TAXONOMY_CODE);
 	}
 	
 	public String getStrategyRatingSummary()
@@ -223,12 +199,10 @@ public class Strategy extends Factor
 	
 	public ChoiceItem getStrategyRating()
 	{
+		ChoiceItem impact = getChoiceItemData(TAG_IMPACT_RATING);
+		ChoiceItem feasibility = getChoiceItemData(TAG_FEASIBILITY_RATING);
+
 		StrategyRatingSummaryQuestion summary = new StrategyRatingSummaryQuestion();
-		StrategyImpactQuestion impactQuestion = new StrategyImpactQuestion();
-		StrategyFeasibilityQuestion feasibilityQuestion = new StrategyFeasibilityQuestion();
-		
-		ChoiceItem impact = impactQuestion.findChoiceByCode(impactRating.get());
-		ChoiceItem feasibility = feasibilityQuestion.findChoiceByCode(feasibilityRating.get());
 		ChoiceItem result = summary.getResult(impact, feasibility);
 
 		return result;
@@ -348,39 +322,22 @@ public class Strategy extends Factor
 	void clear()
 	{
 		super.clear();
-		status = new CodeData(TAG_STATUS);
-		activityIds = new IdListData(TAG_ACTIVITY_IDS, Task.getObjectType());
+		createCodeField(TAG_STATUS);
+		createIdListField(TAG_ACTIVITY_IDS, Task.getObjectType());
 	
-		taxonomyCode = new ChoiceData(TAG_TAXONOMY_CODE, getQuestion(StrategyTaxonomyQuestion.class));
-		impactRating = new ChoiceData(TAG_IMPACT_RATING, getQuestion(StrategyImpactQuestion.class));
-		feasibilityRating = new ChoiceData(TAG_FEASIBILITY_RATING, getQuestion(StrategyFeasibilityQuestion.class));
-		legacyTncStrategyRanking = new UserTextData(TAG_LEGACY_TNC_STRATEGY_RANKING);
+		createChoiceField(TAG_TAXONOMY_CODE, getQuestion(StrategyTaxonomyQuestion.class));
+		createChoiceField(TAG_IMPACT_RATING, getQuestion(StrategyImpactQuestion.class));
+		createChoiceField(TAG_FEASIBILITY_RATING, getQuestion(StrategyFeasibilityQuestion.class));
+		createUserTextField(TAG_LEGACY_TNC_STRATEGY_RANKING);
 	
-		tagRatingSummary = new PseudoStringData(this, PSEUDO_TAG_RATING_SUMMARY);
-		impactRatingLabel = new PseudoQuestionData(this, PSEUDO_TAG_IMPACT_RATING_VALUE);
-		feasibilityRatingLabel = new PseudoQuestionData(this, PSEUDO_TAG_FEASIBILITY_RATING_VALUE);
-		tagRatingSummaryLabel = new PseudoQuestionData(this, PSEUDO_TAG_RATING_SUMMARY_VALUE);
-		taxonomyCodeLabel = new PseudoQuestionData(this, PSEUDO_TAG_TAXONOMY_CODE_VALUE);
-		multiLineActivities = new PseudoStringData(this, PSEUDO_TAG_ACTIVITIES);
-		relevantGoalRefs = new PseudoRefListData(this, PSEUDO_TAG_RELEVANT_GOAL_REFS);
-		relevantObjectiveRefs = new PseudoRefListData(this, PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS);
-		
-		addField(TAG_STATUS, status);
-		addField(TAG_ACTIVITY_IDS, activityIds);
-		
-		addField(TAG_TAXONOMY_CODE, taxonomyCode);
-		addField(TAG_IMPACT_RATING, impactRating);
-		addField(TAG_FEASIBILITY_RATING, feasibilityRating);
-		addField(TAG_LEGACY_TNC_STRATEGY_RANKING, legacyTncStrategyRanking);
-		
-		addField(PSEUDO_TAG_RATING_SUMMARY, tagRatingSummary);
-		addField(PSEUDO_TAG_IMPACT_RATING_VALUE, impactRatingLabel);
-		addField(PSEUDO_TAG_FEASIBILITY_RATING_VALUE, feasibilityRatingLabel);
-		addField(PSEUDO_TAG_RATING_SUMMARY_VALUE, tagRatingSummaryLabel);
-		addField(PSEUDO_TAG_TAXONOMY_CODE_VALUE, taxonomyCodeLabel);
-		addField(PSEUDO_TAG_ACTIVITIES, multiLineActivities);
-		addField(PSEUDO_TAG_RELEVANT_GOAL_REFS, relevantGoalRefs);
-		addField(PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS, relevantObjectiveRefs);
+		createPseudoStringField(PSEUDO_TAG_RATING_SUMMARY);
+		createPseudoQuestionField(PSEUDO_TAG_IMPACT_RATING_VALUE);
+		createPseudoQuestionField(PSEUDO_TAG_FEASIBILITY_RATING_VALUE);
+		createPseudoQuestionField(PSEUDO_TAG_RATING_SUMMARY_VALUE);
+		createPseudoQuestionField(PSEUDO_TAG_TAXONOMY_CODE_VALUE);
+		createPseudoStringField(PSEUDO_TAG_ACTIVITIES);
+		createPseudoRefListField(PSEUDO_TAG_RELEVANT_GOAL_REFS);
+		createPseudoRefListField(PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS);
 	}
 
 	public static final String TAG_ACTIVITY_IDS = "ActivityIds";
@@ -404,21 +361,4 @@ public class Strategy extends Factor
 	public static final String OBJECT_NAME = "Strategy";
 	public static final String OBJECT_NAME_DRAFT = "Draft" + Strategy.OBJECT_NAME;
 	
-	private StringData status;
-	private IdListData activityIds;
-	
-	private ChoiceData taxonomyCode;
-	private ChoiceData impactRating;
-	private ChoiceData feasibilityRating;
-	private StringData legacyTncStrategyRanking;
-	
-	private PseudoStringData tagRatingSummary;
-	private PseudoQuestionData impactRatingLabel;
-	private PseudoQuestionData feasibilityRatingLabel;
-	private PseudoQuestionData tagRatingSummaryLabel;
-	private PseudoQuestionData taxonomyCodeLabel;
-	private PseudoStringData multiLineActivities;
-	private PseudoRefListData relevantGoalRefs;
-	private PseudoRefListData relevantObjectiveRefs;
-
 }
