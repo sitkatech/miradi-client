@@ -20,9 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
-import org.miradi.objectdata.CodeListData;
-import org.miradi.objectdata.StringData;
-import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
@@ -48,12 +45,12 @@ public class TncProjectData extends BaseObject
 	
 	public CodeList getOrganizationalPriorityCodes()
 	{
-		return organizationalPriorities.getCodeList();
+		return getCodeListData(TAG_ORGANIZATIONAL_PRIORITIES);
 	}
 	
 	public CodeList getProjectPlaceTypeCodes()
 	{
-		return projectPlaceTypes.getCodeList();
+		return getCodeListData(TAG_PROJECT_PLACE_TYPES);
 	}
 	
 	@Override
@@ -81,7 +78,7 @@ public class TncProjectData extends BaseObject
 	
 	public boolean canShareOutsideOfTnc()
 	{
-		return projectSharingCode.get().equals(ProjectSharingQuestion.SHARE_WITH_ANYONE);
+		return getData(TAG_PROJECT_SHARING_CODE).equals(ProjectSharingQuestion.SHARE_WITH_ANYONE);
 	}
 	
 	public static boolean canReferToThisType(int type)
@@ -104,23 +101,14 @@ public class TncProjectData extends BaseObject
 	{
 		super.clear();
 		
-		projectSharingCode = new UserTextData(TAG_PROJECT_SHARING_CODE);
-		projectPlaceTypes = new CodeListData(TAG_PROJECT_PLACE_TYPES, getProject().getQuestion(TncProjectPlaceTypeQuestion.class));
-		organizationalPriorities = new CodeListData(TAG_ORGANIZATIONAL_PRIORITIES, getProject().getQuestion(TncOrganizationalPrioritiesQuestion.class));
-		parentChild = new UserTextData(TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT);
-		projectResourcesScorecard = new UserTextData(TAG_PROJECT_RESOURCES_SCORECARD);
-		projectLevelComments = new UserTextData(TAG_PROJECT_LEVEL_COMMENTS);
-		projectCitations = new UserTextData(TAG_PROJECT_CITATIONS);
-		capStandardsScorecard = new UserTextData(TAG_CAP_STANDARDS_SCORECARD);
-		
-		addField(projectSharingCode);
-		addField(projectPlaceTypes);
-		addField(organizationalPriorities);
-		addField(parentChild);
-		addField(projectResourcesScorecard);
-		addField(projectLevelComments);
-		addField(projectCitations);
-		addField(capStandardsScorecard);
+		createCodeField(TAG_PROJECT_SHARING_CODE);
+		createCodeListField(TAG_PROJECT_PLACE_TYPES, getProject().getQuestion(TncProjectPlaceTypeQuestion.class));
+		createCodeListField(TAG_ORGANIZATIONAL_PRIORITIES, getProject().getQuestion(TncOrganizationalPrioritiesQuestion.class));
+		createUserTextField(TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT);
+		createUserTextField(TAG_PROJECT_RESOURCES_SCORECARD);
+		createUserTextField(TAG_PROJECT_LEVEL_COMMENTS);
+		createUserTextField(TAG_PROJECT_CITATIONS);
+		createUserTextField(TAG_CAP_STANDARDS_SCORECARD);
 	}
 	
 	public static final String OBJECT_NAME = "TncProjectData";
@@ -133,13 +121,4 @@ public class TncProjectData extends BaseObject
 	public final static String TAG_PROJECT_LEVEL_COMMENTS = "ProjectLevelComments";
 	public final static String TAG_PROJECT_CITATIONS = "ProjectCitations";
 	public final static String TAG_CAP_STANDARDS_SCORECARD = "CapStandardsScorecard";
-	
-	public StringData projectSharingCode;
-	public CodeListData projectPlaceTypes;
-	public CodeListData organizationalPriorities;
-	public StringData parentChild;
-	public StringData projectResourcesScorecard;
-	public StringData projectLevelComments;
-	public StringData projectCitations;
-	public StringData capStandardsScorecard;
 }
