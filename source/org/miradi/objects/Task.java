@@ -25,11 +25,6 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
-import org.miradi.objectdata.IdListData;
-import org.miradi.objectdata.PseudoRefListData;
-import org.miradi.objectdata.PseudoStringData;
-import org.miradi.objectdata.StringData;
-import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
@@ -138,7 +133,7 @@ public class Task extends Factor
 	@Override
 	public String getDetails()
 	{
-		return details.get();
+		return getData(TAG_DETAILS);
 	}
 	
 	public static int getObjectType()
@@ -240,24 +235,19 @@ public class Task extends Factor
 		return getTotalShareCount() > 1;
 	}
 
-	public void addSubtaskId(BaseId subtaskId)
-	{
-		subtaskIds.add(subtaskId);
-	}
-	
 	public int getSubtaskCount()
 	{
-		return subtaskIds.size();
+		return getSubtaskIdList().size();
 	}
 	
 	public BaseId getSubtaskId(int index)
 	{
-		return subtaskIds.get(index);
+		return getSubtaskIdList().get(index);
 	}
 	
 	public IdList getSubtaskIdList()
 	{
-		return subtaskIds.getIdList().createClone();
+		return getIdListData(TAG_SUBTASK_IDS);
 	}
 	
 	@Override
@@ -513,21 +503,13 @@ public class Task extends Factor
 	public void clear()
 	{
 		super.clear();
-		subtaskIds = new IdListData(TAG_SUBTASK_IDS, Task.getObjectType());
-		details = new UserTextData(TAG_DETAILS);
+		createIdListField(TAG_SUBTASK_IDS, Task.getObjectType());
+		createUserTextField(TAG_DETAILS);
 		
-		strategyLabel = new PseudoStringData(this, PSEUDO_TAG_STRATEGY_LABEL);
-		indicatorLabel = new PseudoStringData(this, PSEUDO_TAG_INDICATOR_LABEL);
-		relevantObjectiveRefs = new PseudoRefListData(this, PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS);
-		relevantGoalRefs = new PseudoRefListData(this, PSEUDO_TAG_RELEVANT_GOAL_REFS);
-		
-		addField(TAG_SUBTASK_IDS, subtaskIds);
-		addField(TAG_DETAILS, details);
-		
-		addField(PSEUDO_TAG_STRATEGY_LABEL, strategyLabel);
-		addField(PSEUDO_TAG_INDICATOR_LABEL, indicatorLabel);
-		addField(PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS, relevantObjectiveRefs);
-		addField(PSEUDO_TAG_RELEVANT_GOAL_REFS, relevantGoalRefs);
+		createPseudoStringField(PSEUDO_TAG_STRATEGY_LABEL);
+		createPseudoStringField(PSEUDO_TAG_INDICATOR_LABEL);
+		createPseudoRefListField(PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS);
+		createPseudoRefListField(PSEUDO_TAG_RELEVANT_GOAL_REFS);
 	}
 	
 	public final static String TAG_SUBTASK_IDS = "SubtaskIds";
@@ -543,12 +525,4 @@ public class Task extends Factor
 	public static final String ACTIVITY_NAME = "Activity";
 	
 	private String cachedObjectTypeName;
-	
-	private IdListData subtaskIds;
-	private StringData details;
-	
-	private PseudoStringData strategyLabel;
-	private PseudoStringData indicatorLabel;
-	private PseudoRefListData relevantObjectiveRefs;
-	private PseudoRefListData relevantGoalRefs;
 }

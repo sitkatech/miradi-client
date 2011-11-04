@@ -21,6 +21,7 @@ package org.miradi.objecthelpers;
 
 import java.util.Vector;
 
+import org.miradi.commands.TestCommandSetObjectData;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.MiradiTestCase;
@@ -63,7 +64,7 @@ public class TestObjectDeepCopier extends MiradiTestCase
 		activityIds.add(activityRef.getObjectId());
 	
 		BaseId taskId = project.createObjectAndReturnId(Task.getObjectType());
-		activity.addSubtaskId(taskId);
+		TestCommandSetObjectData.addSubtaskId(activity, taskId);
 		
 		ORef strategyRef = project.createObject(ObjectType.STRATEGY);
 		Strategy strategy = (Strategy) project.findObject(strategyRef);
