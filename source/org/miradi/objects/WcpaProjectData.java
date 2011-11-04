@@ -20,8 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
-import org.miradi.objectdata.StringData;
-import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
@@ -84,29 +82,17 @@ public class WcpaProjectData extends BaseObject
 	{
 		super.clear();
 		
-		legalStatus = new UserTextData(TAG_LEGAL_STATUS);
-		legislativeContext = new UserTextData(TAG_LEGISLATIVE);
-		physicalDescription = new UserTextData(TAG_PHYSICAL_DESCRIPTION);
-		biologicalDescription = new UserTextData(TAG_BIOLOGICAL_DESCRIPTION);
-		socioEconomicInformation = new UserTextData(TAG_SOCIO_ECONOMIC_INFORMATION);
-		historicalDescription = new UserTextData(TAG_HISTORICAL_DESCRIPTION);
-		culturalDescription = new UserTextData(TAG_CULTURAL_DESCRIPTION);
-		accessInformation = new UserTextData(TAG_ACCESS_INFORMATION);
-		visitationInformation = new UserTextData(TAG_VISITATION_INFORMATION);
-		currentLandUses = new UserTextData(TAG_CURRENT_LAND_USES);
-		managementResources = new UserTextData(TAG_MANAGEMENT_RESOURCES);
-		
-		addField(TAG_LEGAL_STATUS, legalStatus);
-		addField(TAG_LEGISLATIVE, legislativeContext);
-		addField(TAG_PHYSICAL_DESCRIPTION, physicalDescription);
-		addField(TAG_BIOLOGICAL_DESCRIPTION, biologicalDescription);
-		addField(TAG_SOCIO_ECONOMIC_INFORMATION, socioEconomicInformation);
-		addField(TAG_HISTORICAL_DESCRIPTION, historicalDescription);
-		addField(TAG_CULTURAL_DESCRIPTION, culturalDescription);
-		addField(TAG_ACCESS_INFORMATION, accessInformation);
-		addField(TAG_VISITATION_INFORMATION, visitationInformation);
-		addField(TAG_CURRENT_LAND_USES, currentLandUses);
-		addField(TAG_MANAGEMENT_RESOURCES, managementResources);
+		createUserTextField(TAG_LEGAL_STATUS);
+		createUserTextField(TAG_LEGISLATIVE);
+		createUserTextField(TAG_PHYSICAL_DESCRIPTION);
+		createUserTextField(TAG_BIOLOGICAL_DESCRIPTION);
+		createUserTextField(TAG_SOCIO_ECONOMIC_INFORMATION);
+		createUserTextField(TAG_HISTORICAL_DESCRIPTION);
+		createUserTextField(TAG_CULTURAL_DESCRIPTION);
+		createUserTextField(TAG_ACCESS_INFORMATION);
+		createUserTextField(TAG_VISITATION_INFORMATION);
+		createUserTextField(TAG_CURRENT_LAND_USES);
+		createUserTextField(TAG_MANAGEMENT_RESOURCES);
 	}
 
 	public final static String TAG_LEGAL_STATUS = "LegalStatus";
@@ -121,17 +107,5 @@ public class WcpaProjectData extends BaseObject
 	public final static String TAG_CURRENT_LAND_USES = "CurrentLandUses";
 	public final static String TAG_MANAGEMENT_RESOURCES = "ManagementResources";
 		
-	private StringData legalStatus;
-	private StringData legislativeContext;
-	private StringData physicalDescription;
-	private StringData biologicalDescription;
-	private StringData socioEconomicInformation;
-	private StringData historicalDescription;
-	private StringData culturalDescription;
-	private StringData accessInformation;
-	private StringData visitationInformation;
-	private StringData currentLandUses;
-	private StringData managementResources;
-	
 	public static final String OBJECT_NAME = "WCPAProjectData";
 }

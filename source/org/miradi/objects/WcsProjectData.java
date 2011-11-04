@@ -20,9 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
-import org.miradi.objectdata.BooleanData;
-import org.miradi.objectdata.StringData;
-import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
@@ -85,19 +82,12 @@ public class WcsProjectData extends BaseObject
 	{
 		super.clear();
 		
-		organizationalFocus = new UserTextData(TAG_ORGANIZATIONAL_FOCUS);
-		organizationalLevel = new UserTextData(TAG_ORGANIZATIONAL_LEVEL);
-		SwotCompleted = new BooleanData(TAG_SWOT_COMPLETED);
-		SwotUrl = new UserTextData(TAG_SWOT_URL);
-		StepCompleted = new BooleanData(TAG_STEP_COMPLETED);
-		StepUrl = new UserTextData(TAG_STEP_URL);
-
-		addField(TAG_ORGANIZATIONAL_FOCUS, organizationalFocus);
-		addField(TAG_ORGANIZATIONAL_LEVEL, organizationalLevel);
-		addField(TAG_SWOT_COMPLETED, SwotCompleted);
-		addField(TAG_SWOT_URL, SwotUrl);
-		addField(TAG_STEP_COMPLETED, StepCompleted);
-		addField(TAG_STEP_URL, StepUrl);
+		createUserTextField(TAG_ORGANIZATIONAL_FOCUS);
+		createUserTextField(TAG_ORGANIZATIONAL_LEVEL);
+		createBooleanField(TAG_SWOT_COMPLETED);
+		createUserTextField(TAG_SWOT_URL);
+		createBooleanField(TAG_STEP_COMPLETED);
+		createUserTextField(TAG_STEP_URL);
 	}
 	
 	public static final String OBJECT_NAME = "WcsProjectData";
@@ -108,11 +98,4 @@ public class WcsProjectData extends BaseObject
 	public static final String TAG_SWOT_URL = "SwotUrl";
 	public static final String TAG_STEP_COMPLETED = "StepCompleted";
 	public static final String TAG_STEP_URL = "StepUrl";
-	
-	private StringData organizationalFocus;
-	private StringData organizationalLevel;
-	private BooleanData SwotCompleted;
-	private StringData SwotUrl;
-	private BooleanData StepCompleted;
-	private StringData StepUrl;
 }

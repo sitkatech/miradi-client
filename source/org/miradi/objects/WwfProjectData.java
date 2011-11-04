@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
-import org.miradi.objectdata.CodeListData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
@@ -87,15 +86,10 @@ public class WwfProjectData extends BaseObject
 	{
 		super.clear();
 		
-		managingOffices = new CodeListData(TAG_MANAGING_OFFICES, getQuestion(WwfManagingOfficesQuestion.class));
-		regions = new CodeListData(TAG_REGIONS, getQuestion(WwfRegionsQuestion.class));
-		countries = new CodeListData(TAG_COUNTRIES, getQuestion(CountriesQuestion.class));
-		ecoRegions = new CodeListData(TAG_ECOREGIONS, getQuestion(WwfEcoRegionsQuestion.class));
-		
-		addField(TAG_MANAGING_OFFICES, managingOffices);
-		addField(TAG_REGIONS, regions);
-		addField(TAG_COUNTRIES, countries);
-		addField(TAG_ECOREGIONS, ecoRegions);
+		createCodeListField(TAG_MANAGING_OFFICES, getQuestion(WwfManagingOfficesQuestion.class));
+		createCodeListField(TAG_REGIONS, getQuestion(WwfRegionsQuestion.class));
+		createCodeListField(TAG_COUNTRIES, getQuestion(CountriesQuestion.class));
+		createCodeListField(TAG_ECOREGIONS, getQuestion(WwfEcoRegionsQuestion.class));
 	}
 
 	public static final String TAG_MANAGING_OFFICES = "ManagingOffices";
@@ -104,11 +98,4 @@ public class WwfProjectData extends BaseObject
 	public static final String TAG_ECOREGIONS = "EcoRegions";
 	
 	public static final String OBJECT_NAME = "WwfProjectData";
-	
-	
-	
-	private CodeListData managingOffices;
-	private CodeListData regions;
-	private CodeListData countries;
-	private CodeListData ecoRegions;
 }
