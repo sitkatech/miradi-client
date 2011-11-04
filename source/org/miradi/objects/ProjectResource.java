@@ -25,13 +25,6 @@ import java.util.Vector;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.ProjectResourceId;
 import org.miradi.main.EAM;
-import org.miradi.objectdata.BooleanData;
-import org.miradi.objectdata.ChoiceData;
-import org.miradi.objectdata.CodeListData;
-import org.miradi.objectdata.DateData;
-import org.miradi.objectdata.NumberData;
-import org.miradi.objectdata.StringData;
-import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.BaseObjectByFullNameSorter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefSet;
@@ -92,7 +85,7 @@ public class ProjectResource extends BaseObject
 
 	public CodeList getRoleCodes()
 	{
-		return roleCodes.getCodeList();
+		return getCodeListData(TAG_ROLE_CODES);
 	}
 	
 	@Override
@@ -117,7 +110,7 @@ public class ProjectResource extends BaseObject
 		if(result.length() > 0)
 			return result;
 		
-		result = position.get();
+		result = getData(TAG_POSITION);
 		if(result.length() > 0)
 			return result;
 		
@@ -130,7 +123,7 @@ public class ProjectResource extends BaseObject
 
 	public String getInitials()
 	{
-		return initials.get();
+		return getData(TAG_INITIALS);
 	}
 
 	@Override
@@ -139,24 +132,24 @@ public class ProjectResource extends BaseObject
 		String result = "";
 		if(getInitials().length() > 0)
 			result += getInitials() + ": ";
-		result += (givenName.get() + " " + surName.get()).trim();
+		result += (getGivenName() + " " + getSurName()).trim();
 		
 		return result;
 	}
 	
 	public String getGivenName()
 	{
-		return givenName.get();
+		return getData(TAG_GIVEN_NAME);
 	}
 	
 	public String getSurName()
 	{
-		return surName.get();
+		return getData(TAG_SUR_NAME);
 	}
 	
 	public String getEmail()
 	{
-		return email.get();
+		return getData(TAG_EMAIL);
 	}
 
 	public boolean isPerson()
@@ -179,17 +172,13 @@ public class ProjectResource extends BaseObject
 		return getRoleCodes().contains(code);
 	}
 	
-	public String getProjectTypeCode()
-	{
-		return resourceType.get();
-	}
-	
 	public double getCostPerUnit() throws Exception
 	{
-		if (costPerUnit.toString().length() == 0)
+		String costAsString = getData(TAG_COST_PER_UNIT);
+		if (costAsString.length() == 0)
 			return 0;
 		
-		return DoubleUtilities.toDoubleFromDataFormat(costPerUnit.toString());
+		return DoubleUtilities.toDoubleFromDataFormat(costAsString);
 	}
 	
 	public static CodeList getSortedProjectResourceCodes(Project project, ORefSet resourceRefs)
@@ -245,52 +234,28 @@ public class ProjectResource extends BaseObject
 	{
 		super.clear();
 		
-		resourceType = new ChoiceData(TAG_RESOURCE_TYPE, getQuestion(ResourceTypeQuestion.class));
-		initials = new UserTextData(TAG_INITIALS);
-		givenName = new UserTextData(TAG_GIVEN_NAME);
-		surName = new UserTextData(TAG_SUR_NAME);
-		position = new UserTextData(TAG_POSITION);
-		phoneNumber = new UserTextData(TAG_PHONE_NUMBER);
-		email = new UserTextData(TAG_EMAIL);
-		costPerUnit = new NumberData(TAG_COST_PER_UNIT);
-		organization = new UserTextData(TAG_ORGANIZATION);
-		roleCodes = new CodeListData(TAG_ROLE_CODES, getQuestion(ResourceRoleQuestion.class));
-		comments = new UserTextData(TAG_COMMENTS);
-		location = new UserTextData(TAG_LOCATION);
-		phoneNumberMobile = new UserTextData(TAG_PHONE_NUMBER_MOBILE);
-		phoneNumberHome = new UserTextData(TAG_PHONE_NUMBER_HOME);
-		phoneNumberOther = new UserTextData(TAG_PHONE_NUMBER_OTHER);
-		alternativeEmail = new UserTextData(TAG_ALTERNATIVE_EMAIL);
-		iMAddress = new UserTextData(TAG_IM_ADDRESS);
-		iMService = new UserTextData(TAG_IM_SERVICE);
-		dateUpdated = new DateData(TAG_DATE_UPDATED);
-		isCcnCoach = new BooleanData(TAG_IS_CCN_COACH);
-
-		addField(TAG_RESOURCE_TYPE, resourceType);
-		addField(TAG_INITIALS, initials);
-		addField(TAG_GIVEN_NAME, givenName);
-		addField(TAG_SUR_NAME, surName);
-		addField(TAG_ORGANIZATION, organization);
-		addField(TAG_POSITION, position);
-		addField(TAG_PHONE_NUMBER, phoneNumber);
-		addField(TAG_EMAIL, email);
-		addField(TAG_COST_PER_UNIT, costPerUnit);
-		addField(TAG_ROLE_CODES, roleCodes);
-		addField(TAG_COMMENTS, comments);
-		addField(TAG_LOCATION, location);
-		addField(TAG_PHONE_NUMBER_MOBILE, phoneNumberMobile);
-		addField(TAG_PHONE_NUMBER_HOME, phoneNumberHome);
-		addField(TAG_PHONE_NUMBER_OTHER, phoneNumberOther);
-		addField(TAG_ALTERNATIVE_EMAIL, alternativeEmail);
-		addField(TAG_IM_ADDRESS, iMAddress);
-		addField(TAG_IM_SERVICE, iMService);
-		addField(TAG_DATE_UPDATED, dateUpdated);
-		addField(TAG_IS_CCN_COACH, isCcnCoach);
-		
-		customUserField1 = new UserTextData(TAG_CUSTOM_FIELD_1);
-		customUserField2 = new UserTextData(TAG_CUSTOM_FIELD_2);
-		addField(TAG_CUSTOM_FIELD_1, customUserField1);
-		addField(TAG_CUSTOM_FIELD_2, customUserField2);
+		createChoiceField(TAG_RESOURCE_TYPE, getQuestion(ResourceTypeQuestion.class));
+		createUserTextField(TAG_INITIALS);
+		createUserTextField(TAG_GIVEN_NAME);
+		createUserTextField(TAG_SUR_NAME);
+		createUserTextField(TAG_POSITION);
+		createUserTextField(TAG_PHONE_NUMBER);
+		createUserTextField(TAG_EMAIL);
+		createNumberField(TAG_COST_PER_UNIT);
+		createUserTextField(TAG_ORGANIZATION);
+		createCodeListField(TAG_ROLE_CODES, getQuestion(ResourceRoleQuestion.class));
+		createUserTextField(TAG_COMMENTS);
+		createUserTextField(TAG_LOCATION);
+		createUserTextField(TAG_PHONE_NUMBER_MOBILE);
+		createUserTextField(TAG_PHONE_NUMBER_HOME);
+		createUserTextField(TAG_PHONE_NUMBER_OTHER);
+		createUserTextField(TAG_ALTERNATIVE_EMAIL);
+		createUserTextField(TAG_IM_ADDRESS);
+		createUserTextField(TAG_IM_SERVICE);
+		createDateField(TAG_DATE_UPDATED);
+		createBooleanField(TAG_IS_CCN_COACH);
+		createUserTextField(TAG_CUSTOM_FIELD_1);
+		createUserTextField(TAG_CUSTOM_FIELD_2);
 		
 	}
 	
@@ -320,28 +285,4 @@ public class ProjectResource extends BaseObject
 	public static final String TAG_CUSTOM_FIELD_2 = "Custom.Custom2";
 
 	public static final String OBJECT_NAME = "ProjectResource";
-
-	private ChoiceData resourceType;
-	private StringData initials;
-	private StringData givenName;
-	private StringData surName;
-	private StringData position;
-	private StringData phoneNumber;
-	private StringData email;
-	private NumberData costPerUnit;
-	private StringData organization;
-	private CodeListData roleCodes;
-	private StringData comments;
-	private StringData location;
-	private StringData phoneNumberMobile;
-	private StringData phoneNumberHome;
-	private StringData phoneNumberOther;
-	private StringData alternativeEmail;
-	private StringData iMAddress;
-	private StringData iMService;
-	private DateData dateUpdated;
-	private BooleanData isCcnCoach;
-	
-	private StringData customUserField1;
-	private StringData customUserField2;
 }
