@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-01 21:04-0500\n"
+"POT-Creation-Date: 2011-11-04 00:29-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -4276,7 +4276,7 @@ msgstr "（未定义的会计代码） \t\t"
 msgid "Label|(Undefined Funding Source)"
 msgstr ""
 
-#: Miradi/source/org/miradi/objects/ProjectResource.java:128
+#: Miradi/source/org/miradi/objects/ProjectResource.java:121
 msgid "Label|(Undefined Resource)"
 msgstr "（未定义的资源） \t\t"
 
@@ -7240,7 +7240,7 @@ msgstr ""
 "任务——指为展开某个活动或实施某个方法所需的专门行动。如果有必要，任务本身可以"
 "分解成亚任务。在Miradi中，任务是以灰色扁椭圆形来代表的。"
 
-#: Miradi/source/org/miradi/objects/Task.java:376
+#: Miradi/source/org/miradi/objects/Task.java:366
 msgid "Task does not have a parent"
 msgstr ""
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-01 21:04-0500\n"
+"POT-Creation-Date: 2011-11-04 00:29-0500\n"
 "PO-Revision-Date: 2011-04-29 11:26+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -4542,7 +4542,7 @@ msgstr "(Codice di contabilità non definito)"
 msgid "Label|(Undefined Funding Source)"
 msgstr "(Fonte di finanziamento non definita)"
 
-#: Miradi/source/org/miradi/objects/ProjectResource.java:128
+#: Miradi/source/org/miradi/objects/ProjectResource.java:121
 msgid "Label|(Undefined Resource)"
 msgstr "(Risorsa non definita)"
 
@@ -7623,7 +7623,7 @@ msgstr ""
 "stessi possono essere suddivisi in sotto-attività, se necessario. In Miradi, "
 "un Task è rappresentato da un ovale grigio appiattita."
 
-#: Miradi/source/org/miradi/objects/Task.java:376
+#: Miradi/source/org/miradi/objects/Task.java:366
 msgid "Task does not have a parent"
 msgstr "Il Task non ha genitore"
 
