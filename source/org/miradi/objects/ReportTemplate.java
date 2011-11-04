@@ -20,9 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
-import org.miradi.objectdata.CodeListData;
-import org.miradi.objectdata.StringData;
-import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
@@ -70,7 +67,7 @@ public class ReportTemplate extends BaseObject
 	@Override
 	public String getShortLabel()
 	{
-		return shortLabel.get();
+		return getData(TAG_SHORT_LABEL);
 	}
 	
 	public static boolean is(BaseObject object)
@@ -103,24 +100,15 @@ public class ReportTemplate extends BaseObject
 	{
 		super.clear();
 
-		shortLabel = new UserTextData(TAG_SHORT_LABEL);
+		createUserTextField(TAG_SHORT_LABEL);
 		ChoiceQuestion reportContentsQuestion = new ReportTemplateContentQuestion(getProject());
-		content = new CodeListData(TAG_INCLUDE_SECTION_CODES, reportContentsQuestion);
-		comments = new UserTextData(TAG_COMMENTS);
-
-		addField(TAG_SHORT_LABEL, shortLabel);
-		addField(TAG_INCLUDE_SECTION_CODES, content);
-		addField(TAG_COMMENTS, comments);
+		createCodeListField(TAG_INCLUDE_SECTION_CODES, reportContentsQuestion);
+		createUserTextField(TAG_COMMENTS);
 	}
 
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
 	public static final String TAG_INCLUDE_SECTION_CODES = "IncludeSectionCodes";
 	public static final String TAG_COMMENTS = "Comments";
 	
-	private StringData shortLabel;
-	private CodeListData content;
-	private StringData comments;
-	
 	public static final String OBJECT_NAME = "ReportTemplate";
-
 }

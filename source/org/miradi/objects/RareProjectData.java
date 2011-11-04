@@ -20,9 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
-import org.miradi.objectdata.IntegerData;
-import org.miradi.objectdata.StringData;
-import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
@@ -85,29 +82,17 @@ public class RareProjectData extends BaseObject
 	{
 		super.clear();
 		
-		speciesCommonName = new UserTextData(TAG_FLAGSHIP_SPECIES_COMMON_NAME);
-		speciesScientificName = new UserTextData(TAG_FLAGSHIP_SPECIES_SCIENTIFIC_NAME);
-		speciesDetail = new UserTextData(TAG_FLAGSHIP_SPECIES_DETAIL);
-		campaignSlogan = new UserTextData(TAG_CAMPAIGN_SLOGAN);
-		campaignTheoryOfChange = new UserTextData(TAG_CAMPAIGN_THEORY_OF_CHANGE);
-		summaryOfKeyMessages = new UserTextData(TAG_SUMMARY_OF_KEY_MESSAGES);
-		biodiversityHotspots = new UserTextData(TAG_BIODIVERSITY_HOTSPOTS);
-		cohort = new UserTextData(TAG_COHORT);
-		numberOfCommunitiesInCampaignArea = new IntegerData(TAG_NUMBER_OF_COMMUNITIES_IN_CAMPAIGN_AREA);
-		legacyThreatsAddressedNotes = new UserTextData(LEGACY_TAG_THREATS_ADDRESSED_NOTES);
-		mainActivitiesNotes = new UserTextData(TAG_MAIN_ACTIVITIES_NOTES);
-		
-		addField(TAG_FLAGSHIP_SPECIES_COMMON_NAME, speciesCommonName);
-		addField(TAG_FLAGSHIP_SPECIES_SCIENTIFIC_NAME, speciesScientificName);
-		addField(TAG_FLAGSHIP_SPECIES_DETAIL, speciesDetail);
-		addField(TAG_CAMPAIGN_SLOGAN, campaignSlogan);
-		addField(TAG_CAMPAIGN_THEORY_OF_CHANGE, campaignTheoryOfChange);
-		addField(TAG_SUMMARY_OF_KEY_MESSAGES, summaryOfKeyMessages);
-		addField(TAG_BIODIVERSITY_HOTSPOTS, biodiversityHotspots);
-		addField(TAG_COHORT, cohort);
-		addField(TAG_NUMBER_OF_COMMUNITIES_IN_CAMPAIGN_AREA, numberOfCommunitiesInCampaignArea);
-		addField(legacyThreatsAddressedNotes);
-		addField(mainActivitiesNotes);
+		createUserTextField(TAG_FLAGSHIP_SPECIES_COMMON_NAME);
+		createUserTextField(TAG_FLAGSHIP_SPECIES_SCIENTIFIC_NAME);
+		createUserTextField(TAG_FLAGSHIP_SPECIES_DETAIL);
+		createUserTextField(TAG_CAMPAIGN_SLOGAN);
+		createUserTextField(TAG_CAMPAIGN_THEORY_OF_CHANGE);
+		createUserTextField(TAG_SUMMARY_OF_KEY_MESSAGES);
+		createUserTextField(TAG_BIODIVERSITY_HOTSPOTS);
+		createUserTextField(TAG_COHORT);
+		createIntegerField(TAG_NUMBER_OF_COMMUNITIES_IN_CAMPAIGN_AREA);
+		createUserTextField(LEGACY_TAG_THREATS_ADDRESSED_NOTES);
+		createUserTextField(TAG_MAIN_ACTIVITIES_NOTES);
 	}
 
 	public static final String OBJECT_NAME = "RareProjectData";
@@ -123,16 +108,4 @@ public class RareProjectData extends BaseObject
 	public static final String TAG_NUMBER_OF_COMMUNITIES_IN_CAMPAIGN_AREA = "NumberOfCommunitiesInCampaignArea";
 	public static final String LEGACY_TAG_THREATS_ADDRESSED_NOTES = "ThreatsAddressedNotes";
 	public static final String TAG_MAIN_ACTIVITIES_NOTES = "MainActivitiesNotes";
-	
-	private StringData speciesCommonName;
-	private StringData speciesScientificName;
-	private StringData speciesDetail;
-	private StringData campaignSlogan;
-	private StringData campaignTheoryOfChange;
-	private StringData summaryOfKeyMessages;
-	private StringData biodiversityHotspots;
-	private StringData cohort;
-	private IntegerData numberOfCommunitiesInCampaignArea;
-	private StringData legacyThreatsAddressedNotes;
-	private StringData mainActivitiesNotes;
 }
