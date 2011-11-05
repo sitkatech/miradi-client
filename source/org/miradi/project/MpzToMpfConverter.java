@@ -45,6 +45,8 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.utils.EnhancedJsonArray;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.utils.NullProgressMeter;
+import org.miradi.utils.ProgressInterface;
 import org.miradi.utils.Translation;
 
 public class MpzToMpfConverter extends AbstractMiradiProjectSaver
@@ -88,7 +90,7 @@ public class MpzToMpfConverter extends AbstractMiradiProjectSaver
 		if(destination.exists())
 			throw new RuntimeException(".Miradi file already exists: " + destination.getAbsolutePath());
 		
-		String converted = convert(new ZipFile(mpzFile));
+		String converted = convert(new ZipFile(mpzFile), new NullProgressMeter());
 		UnicodeWriter writer = new UnicodeWriter(destination);
 		writer.write(converted);
 		writer.close();
@@ -102,7 +104,7 @@ public class MpzToMpfConverter extends AbstractMiradiProjectSaver
 		zipFile = mpzFileToUse;
 	}
 	
-	public static final String convert(ZipFile zipFileToUse) throws Exception
+	public static final String convert(ZipFile zipFileToUse, ProgressInterface progressIndicator) throws Exception
 	{
 		UnicodeStringWriter writer = UnicodeStringWriter.create();
 		convert(zipFileToUse, writer);
