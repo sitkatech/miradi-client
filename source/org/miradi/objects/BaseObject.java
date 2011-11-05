@@ -902,14 +902,14 @@ abstract public class BaseObject
 		fields = new HashMap<String, ObjectData>();
 		nonUserFields = new HashSet<String>();
 
-		addField(new UserTextData(TAG_LABEL));
-		addField(new IdListData(TAG_RESOURCE_ASSIGNMENT_IDS, ResourceAssignment.getObjectType()));
-		addField(new RefListData(TAG_EXPENSE_ASSIGNMENT_REFS));
-		addField(new RefListData(TAG_PROGRESS_REPORT_REFS));
+		createUserTextField(TAG_LABEL);
+		createIdListField(TAG_RESOURCE_ASSIGNMENT_IDS, ResourceAssignment.getObjectType());
+		createRefListField(TAG_EXPENSE_ASSIGNMENT_REFS);
+		createRefListField(TAG_PROGRESS_REPORT_REFS);
 		
-		addField(new PseudoStringData(this, PSEUDO_TAG_WHEN_TOTAL));
-		addField(new PseudoQuestionData(this, PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, createSet(TAG_PROGRESS_REPORT_REFS)));
-		addField(new PseudoStringData(this, PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS));
+		createPseudoStringField(PSEUDO_TAG_WHEN_TOTAL);
+		createPseudoQuestionField(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, createSet(TAG_PROGRESS_REPORT_REFS));
+		createPseudoStringField(PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS);
 	}
 	
 	public static HashSet<String> createSet(String parentTagToUse)
@@ -1077,6 +1077,11 @@ abstract public class BaseObject
 		addField(new PseudoQuestionData(this, tag));
 	}
 	
+	private void createPseudoQuestionField(String tag, HashSet<String> set)
+	{
+		addField(new PseudoQuestionData(this, tag, set));
+	}
+
 	protected void createPseudoRefListField(String tag)
 	{
 		addField(new PseudoRefListData(this, tag));
