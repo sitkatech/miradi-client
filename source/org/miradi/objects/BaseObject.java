@@ -217,6 +217,12 @@ abstract public class BaseObject
 		return data.getCodeList();
 	}
 	
+	public CodeList getTagListData(String tag)
+	{
+		TagListData data = (TagListData)getField(tag);
+		return data.getCodeList();
+	}
+	
 	public IdList getIdListData(String fieldTag)
 	{
 		ObjectData field = getField(fieldTag);
