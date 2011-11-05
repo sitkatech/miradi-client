@@ -31,6 +31,7 @@ import org.martus.util.UnicodeStringReader;
 import org.martus.util.UnicodeStringWriter;
 import org.miradi.main.ResourcesHandler;
 import org.miradi.main.TestCaseWithProject;
+import org.miradi.utils.NullProgressMeter;
 
 public class TestMpzToMpfConverter extends TestCaseWithProject
 {
@@ -110,7 +111,7 @@ public class TestMpzToMpfConverter extends TestCaseWithProject
 			fileOut.write(byteArray);
 			fileOut.flush();
 			fileOut.close();
-			MpzToMpfConverter.convert(new ZipFile(tempMpzFile), writer);
+			MpzToMpfConverter.convert(new ZipFile(tempMpzFile), writer, new NullProgressMeter());
 			
 			return writer.toString();
 		}
