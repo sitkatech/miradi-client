@@ -57,67 +57,67 @@ public class TestStrategy extends AbstractObjectWithBudgetDataToDeleteTestCase
 	
 	public void testBasics() throws Exception
 	{
-		FactorId interventionId = new FactorId(17);
-		Strategy intervention = new Strategy(getObjectManager(), interventionId);
-		assertEquals("already has activities?", 0, intervention.getActivityIds().size());
+		FactorId strategyId = new FactorId(17);
+		Strategy strategy = new Strategy(getObjectManager(), strategyId);
+		assertEquals("already has activities?", 0, strategy.getActivityIds().size());
 		
-		IdList afterAdd1 = intervention.getActivityIds();
+		IdList afterAdd1 = strategy.getActivityIds();
 		afterAdd1.add(new BaseId(838));
-		intervention.setData(Strategy.TAG_ACTIVITY_IDS, afterAdd1.toString());
-		assertEquals("didn't add?", afterAdd1.toString(), intervention.getData(Strategy.TAG_ACTIVITY_IDS));
+		strategy.setData(Strategy.TAG_ACTIVITY_IDS, afterAdd1.toString());
+		assertEquals("didn't add?", afterAdd1.toString(), strategy.getData(Strategy.TAG_ACTIVITY_IDS));
 		
-		intervention.setData(Strategy.TAG_ACTIVITY_IDS, "");
-		assertEquals("didn't remove?", "", intervention.getData(Strategy.TAG_ACTIVITY_IDS));
+		strategy.setData(Strategy.TAG_ACTIVITY_IDS, "");
+		assertEquals("didn't remove?", "", strategy.getData(Strategy.TAG_ACTIVITY_IDS));
 	}
 	
 	public void testActivityIds() throws Exception
 	{
-		FactorId interventionId = new FactorId(66);
-		Strategy intervention = new Strategy(getObjectManager(), interventionId);
-		IdList empty = new IdList(Task.getObjectType(), intervention.getData(Strategy.TAG_ACTIVITY_IDS));
+		FactorId strategyId = new FactorId(66);
+		Strategy strategy = new Strategy(getObjectManager(), strategyId);
+		IdList empty = new IdList(Task.getObjectType(), strategy.getData(Strategy.TAG_ACTIVITY_IDS));
 		assertEquals("not empty to start?", 0, empty.size());
 		
 		BaseId activityId = new BaseId(828);
 		IdList oneItem = new IdList(Task.getObjectType());
 		oneItem.add(activityId);
-		intervention.setData(Strategy.TAG_ACTIVITY_IDS, oneItem.toString());
+		strategy.setData(Strategy.TAG_ACTIVITY_IDS, oneItem.toString());
 		
-		IdList got = new IdList(Task.getObjectType(), intervention.getData(Strategy.TAG_ACTIVITY_IDS));
+		IdList got = new IdList(Task.getObjectType(), strategy.getData(Strategy.TAG_ACTIVITY_IDS));
 		assertEquals("round trip failed?", oneItem, got);
 	}
 	
 	public void testStatus() throws Exception
 	{
-		FactorId interventionId = new FactorId(91);
-		Strategy intervention = new Strategy(getObjectManager(), interventionId);
-		assertTrue("didn't default to real status?", intervention.isStatusReal());
-		assertFalse("defaulted to draft status?", intervention.isStatusDraft());
-		intervention.setData(Strategy.TAG_STATUS, Strategy.STATUS_DRAFT);
-		assertEquals("set/get didn't work?", Strategy.STATUS_DRAFT, intervention.getData(Strategy.TAG_STATUS));
-		assertFalse("didn't unset real status?", intervention.isStatusReal());
-		assertTrue("didn't set to draft status?", intervention.isStatusDraft());
-		intervention.setData(Strategy.TAG_STATUS, Strategy.STATUS_REAL);
-		assertTrue("didn't restore to real status?", intervention.isStatusReal());
-		assertFalse("didn't unset draft status?", intervention.isStatusDraft());
-		intervention.setData(Strategy.TAG_STATUS, "OIJFW*FJJF");
-		assertTrue("didn't treat unknown as real?", intervention.isStatusReal());
-		assertFalse("treated unknown as draft?", intervention.isStatusDraft());
+		FactorId strategyId = new FactorId(91);
+		Strategy strategy = new Strategy(getObjectManager(), strategyId);
+		assertTrue("didn't default to real status?", strategy.isStatusReal());
+		assertFalse("defaulted to draft status?", strategy.isStatusDraft());
+		strategy.setData(Strategy.TAG_STATUS, Strategy.STATUS_DRAFT);
+		assertEquals("set/get didn't work?", Strategy.STATUS_DRAFT, strategy.getData(Strategy.TAG_STATUS));
+		assertFalse("didn't unset real status?", strategy.isStatusReal());
+		assertTrue("didn't set to draft status?", strategy.isStatusDraft());
+		strategy.setData(Strategy.TAG_STATUS, Strategy.STATUS_REAL);
+		assertTrue("didn't restore to real status?", strategy.isStatusReal());
+		assertFalse("didn't unset draft status?", strategy.isStatusDraft());
+		strategy.setData(Strategy.TAG_STATUS, "OIJFW*FJJF");
+		assertTrue("didn't treat unknown as real?", strategy.isStatusReal());
+		assertFalse("treated unknown as draft?", strategy.isStatusDraft());
 		
 	}
 	
 	public void testJson() throws Exception
 	{
-		FactorId interventionId = new FactorId(17);
-		Strategy intervention = new Strategy(getObjectManager(), interventionId);
-		intervention.setData(Strategy.TAG_STATUS, Strategy.STATUS_DRAFT);
+		FactorId strategyId = new FactorId(17);
+		Strategy strategy = new Strategy(getObjectManager(), strategyId);
+		strategy.setData(Strategy.TAG_STATUS, Strategy.STATUS_DRAFT);
 		IdList activityIds = new IdList(Task.getObjectType());
 		activityIds.add(new BaseId(23));
 		activityIds.add(new BaseId(37));
-		intervention.setData(Strategy.TAG_ACTIVITY_IDS, activityIds.toString());
+		strategy.setData(Strategy.TAG_ACTIVITY_IDS, activityIds.toString());
 		
-		Strategy got = (Strategy)BaseObject.createFromJson(getProject().getObjectManager(), intervention.getType(), intervention.toJson());
+		Strategy got = (Strategy)BaseObject.createFromJson(getProject().getObjectManager(), strategy.getType(), strategy.toJson());
 		assertTrue("Didn't restore status?", got.isStatusDraft());
-		assertEquals("Didn't read activities?", intervention.getActivityIds(), got.getActivityIds());
+		assertEquals("Didn't read activities?", strategy.getActivityIds(), got.getActivityIds());
 	}
 	
 	public void testGetWorkUnits() throws Exception
