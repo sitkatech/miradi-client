@@ -22,9 +22,9 @@ package org.miradi.actions;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class ActionImportZippedConproProject extends MainWindowAction
+public class ActionImportCpmzFile extends MainWindowAction
 {
-	public ActionImportZippedConproProject(MainWindow mainWindowToUse)
+	public ActionImportCpmzFile(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
