@@ -79,7 +79,7 @@ public class TableSettings extends BaseObject
 	
 	public CodeList getColumnSequenceCodes()
 	{
-		return getCodeListData(TAG_COLUMN_SEQUENCE_CODES);
+		return getTagListData(TAG_COLUMN_SEQUENCE_CODES);
 	}
 	
 	public Vector<DateUnit> getDateUnitList()
