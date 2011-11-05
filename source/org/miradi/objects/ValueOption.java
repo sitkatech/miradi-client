@@ -23,7 +23,6 @@ import java.awt.Color;
 
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
-import org.miradi.objectdata.IntegerData;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.questions.ChoiceQuestion;
@@ -111,8 +110,8 @@ public class ValueOption extends BaseObject
 	{
 		super.clear();
 		
-		addField(new IntegerData(TAG_NUMERIC));
-		addField(new IntegerData(TAG_COLOR));
+		createIntegerField(TAG_NUMERIC);
+		createIntegerField(TAG_COLOR);
 	}
 	
 	final public static String TAG_NUMERIC = "Numeric";
