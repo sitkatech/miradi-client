@@ -1094,6 +1094,11 @@ abstract public class BaseObject
 		getFields().put(tag, data);
 	}
 	
+	protected void setNonUserField(String tag)
+	{
+		presentationDataFields.add(tag);
+	}
+	
 	protected void addPresentationDataField(ObjectData data)
 	{
 		addPresentationDataField(data.getTag(), data);

@@ -177,16 +177,21 @@ public class ViewData extends BaseObject
 
 		createCodeField(TAG_CURRENT_MODE);
 		createRefListField(TAG_CHAIN_MODE_FACTOR_REFS);
-		createIntegerField(TAG_CURRENT_TAB);
-		createRefField(TAG_CURRENT_RESULTS_CHAIN_REF);
-		createRefField(TAG_CURRENT_CONCEPTUAL_MODEL_REF);
 		createCodeListField(TAG_DIAGRAM_HIDDEN_TYPES, getQuestion(InternalQuestionWithoutValues.class));
 		createCodeListField(TAG_BUDGET_ROLLUP_REPORT_TYPES, getQuestion(WorkPlanCategoryTypesQuestion.class));
 		createCodeField(TAG_PLANNING_SINGLE_LEVEL_CHOICE);
 		createRefField(TAG_TREE_CONFIGURATION_REF);
-		createCodeField(TAG_CURRENT_WIZARD_STEP);
 		createChoiceField(TAG_ACTION_TREE_CONFIGURATION_CHOICE, getQuestion(ActionTreeConfigurationQuestion.class));
 		createChoiceField(TAG_MONITORING_TREE_CONFIGURATION_CHOICE, getQuestion(MonitoringTreeConfigurationQuestion.class));
+
+		createCodeField(TAG_CURRENT_WIZARD_STEP);
+		setNonUserField(TAG_CURRENT_WIZARD_STEP);
+		createIntegerField(TAG_CURRENT_TAB);
+		setNonUserField(TAG_CURRENT_TAB);
+		createRefField(TAG_CURRENT_CONCEPTUAL_MODEL_REF);
+		setNonUserField(TAG_CURRENT_CONCEPTUAL_MODEL_REF);
+		createRefField(TAG_CURRENT_RESULTS_CHAIN_REF);
+		setNonUserField(TAG_CURRENT_RESULTS_CHAIN_REF);
 	}
 
 	public static final String TAG_CURRENT_CONCEPTUAL_MODEL_REF = "CurrentConceptualModelRef";
