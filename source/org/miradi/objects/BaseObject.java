@@ -1099,17 +1099,6 @@ abstract public class BaseObject
 		presentationDataFields.add(tag);
 	}
 	
-	protected void addPresentationDataField(ObjectData data)
-	{
-		addPresentationDataField(data.getTag(), data);
-	}
-	
-	protected void addPresentationDataField(String tag, ObjectData data)
-	{
-		addField(tag, data);
-		presentationDataFields.add(tag);
-	}
-	
 	public boolean isPresentationDataField(String tag)
 	{
 		return presentationDataFields.contains(tag);

@@ -22,7 +22,6 @@ package org.miradi.objects;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.TestCaseWithProject;
-import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -94,10 +93,9 @@ public class TestBaseObject extends TestCaseWithProject
 	
 	public void testIsPresentationDataField() throws Exception
 	{
-		String someNonUserDefinedTag = "SomeTag";
 		Cause cause = getProject().createCause();
-		cause.addPresentationDataField(someNonUserDefinedTag, new UserTextData(someNonUserDefinedTag));
-		assertTrue("is user tag?" , cause.isPresentationDataField(someNonUserDefinedTag));
+		cause.setNonUserField(Cause.TAG_TAXONOMY_CODE);
+		assertTrue("is user tag?" , cause.isPresentationDataField(Cause.TAG_TAXONOMY_CODE));
 		assertFalse("is non user tag?", cause.isPresentationDataField(Cause.TAG_LABEL));
 	}
 	
