@@ -24,7 +24,6 @@ import java.util.Vector;
 import org.martus.util.MultiCalendar;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
-import org.miradi.objectdata.CodeData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -421,8 +420,7 @@ public class ProjectMetadata extends BaseObject
 		createUserTextField(TAG_NEXT_STEPS);
 
 		createCodeField(TAG_CURRENT_WIZARD_SCREEN_NAME);
-
-		addPresentationDataField(new CodeData(TAG_CURRENT_WIZARD_SCREEN_NAME));
+		setNonUserField(TAG_CURRENT_WIZARD_SCREEN_NAME);
 
 
 		createUserTextField(TAG_TNC_LESSONS_LEARNED);

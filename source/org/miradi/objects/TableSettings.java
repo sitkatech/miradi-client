@@ -179,15 +179,22 @@ public class TableSettings extends BaseObject
 		super.clear();
 
 		createUserTextField(TAG_TABLE_IDENTIFIER);
-		createTagListField(TAG_COLUMN_SEQUENCE_CODES);
-		createStringStringMapField(TAG_COLUMN_WIDTHS);
 		createIntegerField(TAG_ROW_HEIGHT);
-		createRefListListField(TAG_TREE_EXPANSION_LIST);
 		createDateUnitListField(TAG_DATE_UNIT_LIST_DATA);
 		createStringStringMapField(TAG_TABLE_SETTINGS_MAP);
-		createUserTextField(TAG_COLUMN_SORT_TAG);
-		createChoiceField(TAG_COLUMN_SORT_DIRECTION, getQuestion(SortDirectionQuestion.class));
 		createChoiceField(TAG_WORK_PLAN_VISIBLE_NODES_CODE, getQuestion(WorkPlanVisibleRowsQuestion.class));
+		
+		createRefListListField(TAG_TREE_EXPANSION_LIST);
+		setNonUserField(TAG_TREE_EXPANSION_LIST);
+		createTagListField(TAG_COLUMN_SEQUENCE_CODES);
+		setNonUserField(TAG_COLUMN_SEQUENCE_CODES);
+		createStringStringMapField(TAG_COLUMN_WIDTHS);
+		setNonUserField(TAG_COLUMN_WIDTHS);
+		createUserTextField(TAG_COLUMN_SORT_TAG);
+		setNonUserField(TAG_COLUMN_SORT_TAG);
+		createChoiceField(TAG_COLUMN_SORT_DIRECTION, getQuestion(SortDirectionQuestion.class));
+		setNonUserField(TAG_COLUMN_SORT_DIRECTION);
+		
 	}
 	
 	public static final String OBJECT_NAME = "TableSettings";
