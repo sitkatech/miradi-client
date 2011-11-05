@@ -97,7 +97,7 @@ public class WelcomeImportStep extends NoProjectWizardStep
 	@Override
 	public Class getControl(String controlName)
 	{
-		if(controlName.equals(CONTROL_IMPORT_MIRADI))
+		if(controlName.equals(CONTROL_IMPORT_MPZ))
 			return getClass();
 		
 		return super.getControl(controlName);
@@ -108,7 +108,7 @@ public class WelcomeImportStep extends NoProjectWizardStep
 	{
 		try
 		{
-			if(buttonName.equals(CONTROL_IMPORT_MIRADI))
+			if(buttonName.equals(CONTROL_IMPORT_MPZ))
 			{
 				EAM.notifyDialog("Import MPZ is not supported");
 			}
@@ -130,5 +130,5 @@ public class WelcomeImportStep extends NoProjectWizardStep
 	}
 
 	public static final String CONTROL_IMPORT_CONPRO = "Import ConPro Project";
-	public static final String CONTROL_IMPORT_MIRADI = "Import Miradi Project";
+	public static final String CONTROL_IMPORT_MPZ = "Import MPZ Project";
 }
