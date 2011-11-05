@@ -38,6 +38,7 @@ import java.util.zip.ZipFile;
 import org.martus.util.UnicodeStringWriter;
 import org.martus.util.UnicodeWriter;
 import org.miradi.database.ProjectServer;
+import org.miradi.exceptions.UserCanceledException;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.ObjectData;
@@ -114,18 +115,26 @@ public class MpzToMpfConverter extends AbstractMiradiProjectSaver
 	public static final void convert(ZipFile zipFileToUse, UnicodeStringWriter writer, ProgressInterface progressIndicator) throws Exception
 	{
 		MpzToMpfConverter conveter = new MpzToMpfConverter(zipFileToUse, writer);
-		conveter.convert();
+		conveter.convert(progressIndicator);
 	}
 	
-	private void convert() throws Exception
+	private void convert(ProgressInterface progressIndicator) throws Exception
 	{
 		EAM.logWarning("MPZ converter is not yet handling quarantine");
 		
 		writeFileHeader();
 		
+		progressIndicator.setStatusMessage(EAM.text("Scanning..."), 1);
+		int zipEntryCount = getZipEntryCount(getZipFile());
+		progressIndicator.setStatusMessage(EAM.text("Reading..."), zipEntryCount);
+
 		Enumeration<? extends ZipEntry> zipEntries = getZipFile().entries();
 		while(zipEntries.hasMoreElements())
 		{
+			progressIndicator.incrementProgress();
+			if(progressIndicator.shouldExit())
+				throw new UserCanceledException();
+			
 			ZipEntry entry = zipEntries.nextElement();
 			if(entry == null)
 				break;
@@ -139,6 +148,20 @@ public class MpzToMpfConverter extends AbstractMiradiProjectSaver
 			throw new RuntimeException("Cannot convert MPZ without a version");
 	}
 	
+	private int getZipEntryCount(ZipFile zipFile2)
+	{
+		int count = 0;
+		
+		Enumeration<? extends ZipEntry> zipEntries = getZipFile().entries();
+		while(zipEntries.hasMoreElements())
+		{
+			zipEntries.nextElement();
+			++count;
+		}
+		
+		return count;
+	}
+
 	private void extractOneFile(ZipEntry entry) throws Exception
 	{
 		String relativeFilePath = entry.getName();

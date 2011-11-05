@@ -27,6 +27,7 @@ import javax.swing.filechooser.FileFilter;
 
 import org.martus.util.UnicodeWriter;
 import org.miradi.dialogs.base.ProgressDialog;
+import org.miradi.exceptions.UserCanceledException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.MpzToMpfConverter;
@@ -49,6 +50,7 @@ public class MpzProjectImporter extends AbstractProjectImporter
 		ProgressDialog dialog = new ProgressDialog(getMainWindow(), EAM.text("Importing MPZ"));
 		MiradiBackgroundWorkerThread worker = new ImportMpzWorker(importFile, newProjectFile, dialog);
 		dialog.doWorkInBackgroundWhileShowingProgress(worker);
+		worker.cleanup();
 	}
 	
 	static class ImportMpzWorker extends MiradiBackgroundWorkerThread
@@ -65,9 +67,14 @@ public class MpzProjectImporter extends AbstractProjectImporter
 		protected void doRealWork() throws Exception
 		{
 			String contents = convertMpzToMpfString(mpzFile);
+			if(getProgressIndicator().shouldExit())
+				throw new UserCanceledException();
+
+			getProgressIndicator().setStatusMessage(EAM.text("Writing..."), 1);
 			UnicodeWriter writer = new UnicodeWriter(mpfFile);
 			writer.write(contents);
 			writer.close();
+			getProgressIndicator().finished();
 		}
 		
 		private String convertMpzToMpfString(File importFile) throws Exception
