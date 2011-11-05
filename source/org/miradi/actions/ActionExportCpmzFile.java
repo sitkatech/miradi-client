@@ -22,9 +22,9 @@ package org.miradi.actions;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class ActionExportConProXml extends MainWindowAction
+public class ActionExportCpmzFile extends MainWindowAction
 {
-	public ActionExportConProXml(MainWindow mainWindowToUse)
+	public ActionExportCpmzFile(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
