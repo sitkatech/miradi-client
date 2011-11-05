@@ -17,26 +17,16 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.actions;
+package org.miradi.views.umbrella.doers;
 
-import org.miradi.main.EAM;
-import org.miradi.main.MainWindow;
+import org.miradi.utils.EAMFileSaveChooser;
+import org.miradi.utils.XmpzFileChooser;
 
-public class ActionExportProjectXml extends MainWindowAction
+public class ExportXmpzDoer extends AbstractExportProjectXmlZipDoer
 {
-	public ActionExportProjectXml(MainWindow mainWindowToUse)
-	{
-		super(mainWindowToUse, getLabel());
-	}
-
-	public static String getLabel()
-	{
-		return EAM.text("Action|XML Miradi Project ZIP (BETA) ");
-	}
-
 	@Override
-	public String getToolTipText()
+	protected EAMFileSaveChooser createFileChooser()
 	{
-		return EAM.text("TT|Export entire project as an XML file");
+		return new XmpzFileChooser(getMainWindow());
 	}
 }
