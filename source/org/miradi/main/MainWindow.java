@@ -83,6 +83,7 @@ import org.miradi.utils.HtmlViewPanel;
 import org.miradi.utils.HtmlViewPanelWithMargins;
 import org.miradi.utils.MiradiBackgroundWorkerThread;
 import org.miradi.utils.MiradiResourceImageIcon;
+import org.miradi.utils.NullProgressMeter;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.utils.SplitterPositionSaverAndGetter;
 import org.miradi.views.diagram.DiagramView;
@@ -181,7 +182,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 			getAppPreferences().setLanguageCode(languageCode);
 		}
 
-		new SampleInstaller(getAppPreferences()).installSampleProjects();
+		new SampleInstaller(getAppPreferences()).installSampleProjects(new NullProgressMeter());
 
 		setIconImage(new MiradiResourceImageIcon("images/appIcon.png").getImage());
 		EAM.logDebug("\n\n\n");

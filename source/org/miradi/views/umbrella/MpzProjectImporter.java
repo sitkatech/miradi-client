@@ -26,8 +26,11 @@ import java.util.zip.ZipFile;
 import javax.swing.filechooser.FileFilter;
 
 import org.martus.util.UnicodeWriter;
+import org.miradi.dialogs.base.ProgressDialog;
+import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.MpzToMpfConverter;
+import org.miradi.utils.MiradiBackgroundWorkerThread;
 import org.miradi.utils.MpzFileFilterForChooserDialog;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.utils.ZipFileFilterForChooserDialog;
@@ -43,24 +46,51 @@ public class MpzProjectImporter extends AbstractProjectImporter
 	protected void createProject(File importFile, File homeDirectory,
 			File newProjectFile, ProgressInterface progressIndicator) throws Exception
 	{
-		ZipFile zip = new ZipFile(importFile);
-		try
+		ProgressDialog dialog = new ProgressDialog(getMainWindow(), EAM.text("Importing MPZ"));
+		MiradiBackgroundWorkerThread worker = new ImportMpzWorker(importFile, newProjectFile, dialog);
+		dialog.doWorkInBackgroundWhileShowingProgress(worker);
+	}
+	
+	static class ImportMpzWorker extends MiradiBackgroundWorkerThread
+	{
+		protected ImportMpzWorker(File importFrom, File saveTo, ProgressInterface progressToNotify)
 		{
-			String contents = MpzToMpfConverter.convert(zip);
-			UnicodeWriter writer = new UnicodeWriter(newProjectFile);
+			super(progressToNotify);
+			
+			mpzFile = importFrom;
+			mpfFile = saveTo;
+		}
+
+		@Override
+		protected void doRealWork() throws Exception
+		{
+			String contents = convertMpzToMpfString(mpzFile);
+			UnicodeWriter writer = new UnicodeWriter(mpfFile);
 			writer.write(contents);
 			writer.close();
 		}
-		finally
+		
+		private String convertMpzToMpfString(File importFile) throws Exception
 		{
-			zip.close();
+			ZipFile zip = new ZipFile(importFile);
+			try
+			{
+				return MpzToMpfConverter.convert(zip, getProgressIndicator());
+			}
+			finally
+			{
+				zip.close();
+			}
 		}
+
+		File mpzFile;
+		File mpfFile;
 	}
 
 	@Override
 	protected FileFilter[] getFileFilters()
 	{
-		return new FileFilter[] {new MpzFileFilterForChooserDialog(), new ZipFileFilterForChooserDialog()};
+		return new FileFilter[] {new ZipFileFilterForChooserDialog(), new MpzFileFilterForChooserDialog()};
 	}
 
 }

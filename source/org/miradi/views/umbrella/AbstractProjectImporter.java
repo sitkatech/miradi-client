@@ -195,7 +195,7 @@ public abstract class AbstractProjectImporter
 		return new ZipEntryInputStreamWithSeek(zipFile, zipFile.getEntry(ExportCpmzDoer.PROJECT_XML_FILE_NAME));
 	}
 
-	private MainWindow getMainWindow()
+	protected MainWindow getMainWindow()
 	{
 		return mainWindow;
 	}

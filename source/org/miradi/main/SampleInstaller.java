@@ -30,6 +30,7 @@ import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.MpfFileFilter;
 import org.miradi.utils.MpzFileFilter;
+import org.miradi.utils.ProgressInterface;
 import org.miradi.wizard.noproject.FileSystemTreeNode;
 
 public class SampleInstaller
@@ -40,19 +41,19 @@ public class SampleInstaller
 		installedSampleProjectCodes = appPreferences.getInstalledSampleVersions();
 	}
 	
-	public void installSampleProjects() throws Exception
+	public void installSampleProjects(ProgressInterface progressIndicator) throws Exception
 	{
 		File[] allMpzFiles = getMpzFilesUnderAppDir();
 		Vector<File> installableSampleProjects = getInstallableSampleProjects(allMpzFiles);
 		if (userConfirmsSampleProjectsInstall(installableSampleProjects))
 		{
-			installSampleProjects(installableSampleProjects);
+			installSampleProjects(installableSampleProjects, progressIndicator);
 			getAppPreferences().setInstalledSampleVersion(installedSampleProjectCodes);
 			EAM.notifyDialog(EAM.text("Sample Project Installed"));
 		}
 	}
 
-	private void installSampleProjects(Vector<File> installableSampleProjects) throws Exception
+	private void installSampleProjects(Vector<File> installableSampleProjects, ProgressInterface progressIndicator) throws Exception
 	{
 		File homeDir = EAM.getHomeDirectory();
 		for (int index = 0; index < installableSampleProjects.size(); ++index)
@@ -64,16 +65,16 @@ public class SampleInstaller
 			if(destination.exists())
 				return;
 		
-			convertToMpf(projectFileToImport, destination);
+			convertToMpf(projectFileToImport, destination, progressIndicator);
 		}
 	}
 
-	public void convertToMpf(File projectFileToImport, File destination) throws Exception
+	public void convertToMpf(File projectFileToImport, File destination, ProgressInterface progressIndicator) throws Exception
 	{
 		UnicodeWriter writer = new UnicodeWriter(destination);
 		try
 		{
-			String converted = MpzToMpfConverter.convert(new ZipFile(projectFileToImport));
+			String converted = MpzToMpfConverter.convert(new ZipFile(projectFileToImport), progressIndicator);
 			writer.write(converted);
 		}
 		finally
