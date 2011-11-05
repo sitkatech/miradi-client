@@ -120,7 +120,7 @@ public class MainMenuBar extends JMenuBar
 		menu.setMnemonic(KeyEvent.VK_R);
 		
 		addMenuItem(actions, menu, ActionExportCpmz.class, KeyEvent.VK_C);
-		addMenuItem(actions, menu, ActionExportProjectXml.class, KeyEvent.VK_X);
+		addMenuItem(actions, menu, ActionExportXmpz.class, KeyEvent.VK_X);
 		addMenuItem(actions, menu, ActionExportWcsProjectZip.class);
 		
 		if(Miradi.isDemoMode())

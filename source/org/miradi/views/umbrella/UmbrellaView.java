@@ -66,7 +66,7 @@ import org.miradi.actions.ActionEditStrategyObjectiveRelevancyList;
 import org.miradi.actions.ActionExit;
 import org.miradi.actions.ActionExpandAllRows;
 import org.miradi.actions.ActionExportCpmz;
-import org.miradi.actions.ActionExportProjectXml;
+import org.miradi.actions.ActionExportXmpz;
 import org.miradi.actions.ActionExportRtf;
 import org.miradi.actions.ActionExportTable;
 import org.miradi.actions.ActionExportWcsProjectZip;
@@ -223,7 +223,7 @@ import org.miradi.views.umbrella.doers.EditObjectiveStrategyActivityRelevacyList
 import org.miradi.views.umbrella.doers.EditStrategyGoalRelevancyListDoer;
 import org.miradi.views.umbrella.doers.EditStrategyObjectiveRelevancyListDoer;
 import org.miradi.views.umbrella.doers.ExpandAllRowsDoer;
-import org.miradi.views.umbrella.doers.ExportProjectXmlDoer;
+import org.miradi.views.umbrella.doers.ExportXmpzDoer;
 import org.miradi.views.umbrella.doers.ExportRtfDoer;
 import org.miradi.views.umbrella.doers.HowToSaveDoer;
 import org.miradi.views.umbrella.doers.ImportCpmzDoer;
@@ -392,7 +392,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addDoerToMap(ActionToggleSpellChecker.class, new ToggleSpellCheckerDoer());
 		addDoerToMap(ActionImportCpmz.class, new ImportCpmzDoer());
 		addDoerToMap(ActionImportXmpz.class, new ImportXmpzDoer());
-		addDoerToMap(ActionExportProjectXml.class, new ExportProjectXmlDoer());
+		addDoerToMap(ActionExportXmpz.class, new ExportXmpzDoer());
 		addDoerToMap(ActionExportWcsProjectZip.class, new WcsXmlExportDoer());
 		addDoerToMap(ActionExportCpmz.class, new ExportCpmzDoer());
 		addDoerToMap(ActionExportRtf.class, new ExportRtfDoer());
