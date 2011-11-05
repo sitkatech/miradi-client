@@ -109,6 +109,12 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		
 		if(SubTarget.is(parentRef))
 			return noChildren;
+
+		if(Goal.is(parentRef))
+			return noChildren;
+		
+		if(parentRef.isInvalid())
+			throw new RuntimeException("Attempted to getChildRefs for null parent");
 		
 		EAM.logDebug("Don't know how to get children of " + parentRef);
 		return new ORefList();
