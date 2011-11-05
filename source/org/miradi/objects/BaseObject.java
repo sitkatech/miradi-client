@@ -1087,12 +1087,12 @@ abstract public class BaseObject
 		addField(new PseudoRefListData(this, tag));
 	}
 	
-	protected void addField(ObjectData data)
+	private void addField(ObjectData data)
 	{
 		addField(data.getTag(), data);
 	}
 
-	protected void addField(String tag, ObjectData data)
+	private void addField(String tag, ObjectData data)
 	{
 		if(!data.getTag().equals(tag))
 			throw new RuntimeException("Wrong tag: " + tag + " in " + data.getTag() + " for " + getRef());
