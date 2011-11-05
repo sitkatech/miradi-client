@@ -119,7 +119,7 @@ public class MainMenuBar extends JMenuBar
 		JMenu menu = new JMenu(EAM.text("Menu|Export Current Project as..."));
 		menu.setMnemonic(KeyEvent.VK_R);
 		
-		addMenuItem(actions, menu, ActionExportCpmzFile.class, KeyEvent.VK_C);
+		addMenuItem(actions, menu, ActionExportCpmz.class, KeyEvent.VK_C);
 		addMenuItem(actions, menu, ActionExportProjectXml.class, KeyEvent.VK_X);
 		addMenuItem(actions, menu, ActionExportWcsProjectZip.class);
 		
@@ -152,7 +152,7 @@ public class MainMenuBar extends JMenuBar
 		JMenu menu = new JMenu(EAM.text("Menu|Import"));
 		menu.setMnemonic(KeyEvent.VK_I);
 		
-		addMenuItem(actions, menu, ActionImportCpmzFile.class, KeyEvent.VK_C);
+		addMenuItem(actions, menu, ActionImportCpmz.class, KeyEvent.VK_C);
 		addMenuItem(actions, menu, ActionImportXmpz.class, KeyEvent.VK_X);
 		
 		if(Miradi.isDemoMode())

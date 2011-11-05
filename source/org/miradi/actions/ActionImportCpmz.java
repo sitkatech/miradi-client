@@ -22,21 +22,21 @@ package org.miradi.actions;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class ActionExportCpmzFile extends MainWindowAction
+public class ActionImportCpmz extends MainWindowAction
 {
-	public ActionExportCpmzFile(MainWindow mainWindowToUse)
+	public ActionImportCpmz(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
 
 	public static String getLabel()
 	{
-		return EAM.text("Action|Export|ConPro (CPMZ) File");
+		return EAM.text("Action|ConPro (CPMZ) File");
 	}
 
 	@Override
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Export a file that can be imported by ConPro");
+		return EAM.text("TT|Import a .cpmz file that was exported from ConPro");
 	}
 }

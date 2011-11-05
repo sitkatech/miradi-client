@@ -27,7 +27,7 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import org.martus.swing.HyperlinkHandler;
-import org.miradi.actions.ActionImportCpmzFile;
+import org.miradi.actions.ActionImportCpmz;
 import org.miradi.actions.MiradiAction;
 import org.miradi.layout.OneColumnPanel;
 import org.miradi.main.AppPreferences;
@@ -114,7 +114,7 @@ public class WelcomeImportStep extends NoProjectWizardStep
 			}
 			if (buttonName.equals(CONTROL_IMPORT_CONPRO))
 			{
-				MiradiAction action = getMainWindow().getActions().get(ActionImportCpmzFile.class);
+				MiradiAction action = getMainWindow().getActions().get(ActionImportCpmz.class);
 				action.doAction();
 			}
 			else 
