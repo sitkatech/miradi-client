@@ -119,7 +119,7 @@ public class MainMenuBar extends JMenuBar
 		JMenu menu = new JMenu(EAM.text("Menu|Export Current Project as..."));
 		menu.setMnemonic(KeyEvent.VK_R);
 		
-		addMenuItem(actions, menu, ActionExportConProXml.class, KeyEvent.VK_C);
+		addMenuItem(actions, menu, ActionExportCpmzFile.class, KeyEvent.VK_C);
 		addMenuItem(actions, menu, ActionExportProjectXml.class, KeyEvent.VK_X);
 		addMenuItem(actions, menu, ActionExportWcsProjectZip.class);
 		
