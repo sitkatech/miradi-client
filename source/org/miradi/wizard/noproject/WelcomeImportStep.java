@@ -112,7 +112,7 @@ public class WelcomeImportStep extends NoProjectWizardStep
 			{
 				EAM.notifyDialog("Import MPZ is not supported");
 			}
-			if (buttonName.equals(CONTROL_IMPORT_CONPRO))
+			if (buttonName.equals(CONTROL_IMPORT_CPMZ))
 			{
 				MiradiAction action = getMainWindow().getActions().get(ActionImportCpmz.class);
 				action.doAction();
@@ -129,6 +129,6 @@ public class WelcomeImportStep extends NoProjectWizardStep
 		}
 	}
 
-	public static final String CONTROL_IMPORT_CONPRO = "Import ConPro Project";
+	public static final String CONTROL_IMPORT_CPMZ = "Import ConPro (CPMZ) Project";
 	public static final String CONTROL_IMPORT_MPZ = "Import MPZ Project";
 }
