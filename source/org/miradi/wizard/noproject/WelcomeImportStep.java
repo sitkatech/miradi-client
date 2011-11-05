@@ -28,6 +28,7 @@ import javax.swing.JPanel;
 
 import org.martus.swing.HyperlinkHandler;
 import org.miradi.actions.ActionImportCpmz;
+import org.miradi.actions.ActionImportMpz;
 import org.miradi.actions.MiradiAction;
 import org.miradi.layout.OneColumnPanel;
 import org.miradi.main.AppPreferences;
@@ -80,12 +81,12 @@ public class WelcomeImportStep extends NoProjectWizardStep
 					"<p><table>" + 
 					"<tr>" +
 					"<td><input type='submit' name='Back' value='&lt; Previous'></input></td>" +
-					"<td><input type='submit' name='Import Miradi Project' value='Miradi Project (.mpz)'></input></td>" +
+					"<td><input type='submit' name='ImportMpz' value='Old Miradi Project (.mpz)'></input></td>" +
 					"</tr>" +
 					
 					"<tr>" +
 					"<td></td>" + 
-					"<td><input type='submit' name='Import ConPro Project' value='ConPro/Miradi Exchange File (.cpmz)'></input></td>" +
+					"<td><input type='submit' name='ImportCpmz' value='ConPro/Miradi Exchange File (.cpmz)'></input></td>" +
 					"</tr>" +
 					"</table></p><br>") ; 
 
@@ -110,7 +111,8 @@ public class WelcomeImportStep extends NoProjectWizardStep
 		{
 			if(buttonName.equals(CONTROL_IMPORT_MPZ))
 			{
-				EAM.notifyDialog("Import MPZ is not supported");
+				MiradiAction action = getMainWindow().getActions().get(ActionImportMpz.class);
+				action.doAction();
 			}
 			if (buttonName.equals(CONTROL_IMPORT_CPMZ))
 			{
@@ -129,6 +131,6 @@ public class WelcomeImportStep extends NoProjectWizardStep
 		}
 	}
 
-	public static final String CONTROL_IMPORT_CPMZ = "Import ConPro (CPMZ) Project";
-	public static final String CONTROL_IMPORT_MPZ = "Import MPZ Project";
+	public static final String CONTROL_IMPORT_CPMZ = "ImportCpmz";
+	public static final String CONTROL_IMPORT_MPZ = "ImportMpz";
 }

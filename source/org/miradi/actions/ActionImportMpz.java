@@ -1,5 +1,5 @@
 /* 
-Copyright 2005-2009, Foundations of Success, Bethesda, Maryland 
+Copyright 2005-2011, Foundations of Success, Bethesda, Maryland 
 (on behalf of the Conservation Measures Partnership, "CMP") and 
 Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 
@@ -17,40 +17,28 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.utils;
 
-import java.io.File;
-
-import javax.swing.filechooser.FileFilter;
+package org.miradi.actions;
 
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 
-public class ZIPFileFilter extends FileFilter implements MiradiFileFilter
+public class ActionImportMpz extends MainWindowAction
 {
-
-	@Override
-	public boolean accept(File pathname)
+	public ActionImportMpz(MainWindow mainWindowToUse)
 	{
-		if (pathname.isDirectory())
-			return true;
-		return (pathname.getName().toLowerCase().endsWith(EXTENSION));
+		super(mainWindowToUse, getLabel());
+	}
+
+	public static String getLabel()
+	{
+		return EAM.text("Action|Old Miradi (MPZ) Project File");
 	}
 
 	@Override
-	public String getDescription()
+	public String getToolTipText()
 	{
-		return getStaticDescription();
+		return EAM.text("TT|Import a .mpz file that was exported by an earlier version of Miradi");
 	}
 
-	public static String getStaticDescription()
-	{
-		return EAM.text("FileFilter|ZIP (*.zip)");
-	}
-	
-	public String getFileExtension()
-	{
-		return EXTENSION;
-	}
-
-	public static final String EXTENSION = ".zip";
 }
