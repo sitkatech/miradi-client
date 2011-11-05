@@ -152,6 +152,7 @@ public class MainMenuBar extends JMenuBar
 		JMenu menu = new JMenu(EAM.text("Menu|Import"));
 		menu.setMnemonic(KeyEvent.VK_I);
 		
+		addMenuItem(actions, menu, ActionImportMpz.class, KeyEvent.VK_M);
 		addMenuItem(actions, menu, ActionImportCpmz.class, KeyEvent.VK_C);
 		addMenuItem(actions, menu, ActionImportXmpz.class, KeyEvent.VK_X);
 		
