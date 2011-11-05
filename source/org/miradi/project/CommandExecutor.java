@@ -125,7 +125,7 @@ public class CommandExecutor
 		CommandSetObjectData setCommand = ((CommandSetObjectData) command);
 		BaseObject baseObject = BaseObject.find(getProject(), setCommand.getObjectORef());
 		
-		return !baseObject.isPresentationDataField(setCommand.getFieldTag());
+		return !baseObject.isNonUserField(setCommand.getFieldTag());
 	}
 	
 	public void executeEndTransaction() throws CommandFailedException

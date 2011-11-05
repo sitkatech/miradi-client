@@ -900,7 +900,7 @@ abstract public class BaseObject
 	void clear()
 	{
 		fields = new HashMap<String, ObjectData>();
-		presentationDataFields = new HashSet<String>();
+		nonUserFields = new HashSet<String>();
 
 		addField(new UserTextData(TAG_LABEL));
 		addField(new IdListData(TAG_RESOURCE_ASSIGNMENT_IDS, ResourceAssignment.getObjectType()));
@@ -1096,12 +1096,12 @@ abstract public class BaseObject
 	
 	protected void setNonUserField(String tag)
 	{
-		presentationDataFields.add(tag);
+		nonUserFields.add(tag);
 	}
 	
-	public boolean isPresentationDataField(String tag)
+	public boolean isNonUserField(String tag)
 	{
-		return presentationDataFields.contains(tag);
+		return nonUserFields.contains(tag);
 	}
 	
 	public String[] getFieldTags()
@@ -1613,5 +1613,5 @@ abstract public class BaseObject
 
 	protected ObjectManager objectManager;
 	private HashMap<String, ObjectData> fields;
-	private HashSet<String> presentationDataFields; 
+	private HashSet<String> nonUserFields; 
 }
