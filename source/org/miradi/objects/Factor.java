@@ -483,6 +483,7 @@ abstract public class Factor extends BaseObject
 		createUserTextField(TAG_SHORT_LABEL);
 	    createIdListField(TAG_INDICATOR_IDS, Indicator.getObjectType());
 		createIdListField(TAG_OBJECTIVE_IDS, Objective.getObjectType());
+		
 		createPseudoStringField(PSEUDO_TAG_OBJECTIVES);
 		createPseudoStringField(PSEUDO_TAG_DIRECT_THREATS);
 		createPseudoStringField(PSEUDO_TAG_TARGETS);
