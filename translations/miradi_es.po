@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-04 00:29-0500\n"
+"POT-Creation-Date: 2011-11-05 22:32-0500\n"
 "PO-Revision-Date: 2011-03-28 15:06-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -515,7 +515,7 @@ msgstr "7B. Compartir lo que aprende"
 msgid "7C. Create a Learning Environment"
 msgstr "7C. Crear un entorno de aprendizaje"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1255
+#: Miradi/source/org/miradi/main/MainWindow.java:1256
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -588,20 +588,14 @@ msgstr ""
 "<div class='DataPanel'><p>¿Por qué mis elecciones se limitan a una familia "
 "de color para cada tipo de factor?</p>"
 
-# should "Import Miradi Project", "Miradi Project", "Import ConPro Project", and "ConPro/Miradi Exchange File" be translated (even though they are inside <...>)?
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:79
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:80
 msgid ""
 "<div class='WizardText'><p><table><tr><td><input type='submit' name='Back' "
-"value='&lt; Previous'></input></td><td><input type='submit' name='Import "
-"Miradi Project' value='Miradi Project (.mpz)'></input></td></tr><tr><td></"
-"td><td><input type='submit' name='Import ConPro Project' value='ConPro/"
-"Miradi Exchange File (.cpmz)'></input></td></tr></table></p><br>"
+"value='&lt; Previous'></input></td><td><input type='submit' name='ImportMpz' "
+"value='Old Miradi Project (.mpz)'></input></td></tr><tr><td></td><td><input "
+"type='submit' name='ImportCpmz' value='ConPro/Miradi Exchange File (."
+"cpmz)'></input></td></tr></table></p><br>"
 msgstr ""
-"<div class='WizardText'><p><table><tr><td><input type='submit' name='Back' "
-"value='&lt; Previous'></input></td><td><input type='submit' name='Import "
-"Miradi Project' value='Miradi Project (.mpz)'></input></td></tr><tr><td></"
-"td><td><input type='submit' name='Import ConPro Project' value='ConPro/"
-"Miradi Exchange File (.cpmz)(BETA)'></input></td></tr></table></p><br>"
 
 # should "Back", "Previous", and "Next" be translated (even though they are inside <...>)?
 #: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:76
@@ -614,7 +608,7 @@ msgstr ""
 "value='&lt; Previous'></input></td><td><input type='submit' name='Next' "
 "value='Next &gt;'></input></td></tr> "
 
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:70
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:71
 msgid ""
 "<div class='WizardText'>Miradi is able to import two different kinds of "
 "project files.<BR>MPZ files are <a href='Definition:ImportZip' "
@@ -1235,7 +1229,7 @@ msgstr "Contraer todas las filas"
 msgid "Action|Coming Attractions"
 msgstr "Próximas atracciones"
 
-#: Miradi/source/org/miradi/actions/ActionImportZippedConproProject.java:34
+#: Miradi/source/org/miradi/actions/ActionImportCpmz.java:34
 msgid "Action|ConPro (CPMZ) File"
 msgstr "Archivo ConPro (CPMZ)"
 
@@ -1412,7 +1406,7 @@ msgstr "Expandir todas las filas"
 msgid "Action|Export finance tree"
 msgstr "Exportar árbol financiero"
 
-#: Miradi/source/org/miradi/actions/ActionExportConProXml.java:34
+#: Miradi/source/org/miradi/actions/ActionExportCpmz.java:34
 msgid "Action|Export|ConPro (CPMZ) File"
 msgstr "Archivo ConPro (CPMZ)"
 
@@ -1723,6 +1717,10 @@ msgstr "Desplazar elemento hacia la derecha"
 msgid "Action|Nudge Item Up"
 msgstr "Desplazar elemento hacia arriba"
 
+#: Miradi/source/org/miradi/actions/ActionImportMpz.java:35
+msgid "Action|Old Miradi (MPZ) Project File"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/ActionProperties.java:34
 msgid "Action|Open..."
 msgstr "Abrir…"
@@ -1983,7 +1981,7 @@ msgstr "Taller"
 msgid "Action|XML Miradi Project ZIP (BETA)"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionExportProjectXml.java:34
+#: Miradi/source/org/miradi/actions/ActionExportXmpz.java:34
 msgid "Action|XML Miradi Project ZIP (BETA) "
 msgstr ""
 
@@ -2551,7 +2549,7 @@ msgstr "Migrar"
 msgid "Button|Move"
 msgstr "Mover"
 
-#: Miradi/source/org/miradi/main/SampleInstaller.java:91
+#: Miradi/source/org/miradi/main/SampleInstaller.java:92
 msgid "Button|No"
 msgstr "No"
 
@@ -2591,7 +2589,7 @@ msgstr "Retener"
 msgid "Button|Save"
 msgstr "Guardar"
 
-#: Miradi/source/org/miradi/main/SampleInstaller.java:91
+#: Miradi/source/org/miradi/main/SampleInstaller.java:92
 msgid "Button|Yes"
 msgstr "Sí"
 
@@ -2638,7 +2636,7 @@ msgstr "No se puede enlazar un elemento con sí mismo."
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:533
+#: Miradi/source/org/miradi/main/MainWindow.java:534
 msgid "Cancelled"
 msgstr ""
 
@@ -2953,7 +2951,7 @@ msgstr "Falló la creación"
 msgid "Create Folder"
 msgstr "Crear carpeta"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:612
+#: Miradi/source/org/miradi/main/MainWindow.java:613
 msgid "Create Project"
 msgstr ""
 
@@ -3349,7 +3347,7 @@ msgstr ""
 msgid "Do you want to attempt to import %s into Miradi?"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/SampleInstaller.java:90
+#: Miradi/source/org/miradi/main/SampleInstaller.java:91
 msgid "Do you want to install the sample project?"
 msgstr "¿Desea instalar el proyecto de muestra? "
 
@@ -3570,7 +3568,7 @@ msgstr "Estimar costos para actividades y monitoreo"
 msgid "Euro"
 msgstr "Euro "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:833
+#: Miradi/source/org/miradi/main/MainWindow.java:834
 msgid "Existing data for a different fiscal year is being excluded"
 msgstr ""
 
@@ -3720,7 +3718,7 @@ msgstr "XML (*.xml)"
 msgid "FileFilter|XMPZ (*"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/ZIPFileFilter.java:42
+#: Miradi/source/org/miradi/utils/ZIPFileFilter.java:47
 msgid "FileFilter|ZIP (*.zip)"
 msgstr "ZIP (*.zip)"
 
@@ -4177,6 +4175,10 @@ msgstr "Importar…"
 msgid "ImportZip"
 msgstr "Importar zip "
 
+#: Miradi/source/org/miradi/views/umbrella/MpzProjectImporter.java:50
+msgid "Importing MPZ"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:110
 #: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:76
 #: Miradi/source/org/miradi/xml/xmpz/XmpzXmlImporter.java:105
@@ -4288,7 +4290,7 @@ msgstr "Instalar"
 msgid "Install Language Pack"
 msgstr "Instalar Paquete de idiomas"
 
-#: Miradi/source/org/miradi/main/SampleInstaller.java:93
+#: Miradi/source/org/miradi/main/SampleInstaller.java:94
 msgid "Install Sample Project"
 msgstr "Instalar proyecto de muestra"
 
@@ -4329,7 +4331,7 @@ msgstr ""
 msgid "IntermediateResult"
 msgstr "Resultado intermedio "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:515
+#: Miradi/source/org/miradi/main/MainWindow.java:516
 msgid "Internal project file with this name exist, please try another name"
 msgstr ""
 
@@ -4992,11 +4994,11 @@ msgstr "Medio "
 msgid "Medium (Default)"
 msgstr "Medio (Predeterminado) "
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:239
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:240
 msgid "MenuBar|Actions"
 msgstr "Acciones"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:169
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:170
 msgid "MenuBar|Edit"
 msgstr "Editar"
 
@@ -5004,15 +5006,15 @@ msgstr "Editar"
 msgid "MenuBar|File"
 msgstr "Archivo"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:571
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:572
 msgid "MenuBar|Help"
 msgstr "Ayuda"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:502
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:503
 msgid "MenuBar|Step-by-Step"
 msgstr "Paso a paso"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:431
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:432
 msgid "MenuBar|View"
 msgstr "Ver"
 
@@ -5049,7 +5051,7 @@ msgid "Menu|Export Current Project as..."
 msgstr "Exportar proyecto actual como..."
 
 #: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:282
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:419
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:420
 msgid "Menu|Group Box"
 msgstr "Cuadro de grupo"
 
@@ -5142,7 +5144,7 @@ msgstr ""
 msgid "Miradi does not recognize %s as a project file"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:677
+#: Miradi/source/org/miradi/main/MainWindow.java:678
 msgid ""
 "Miradi has detected one or more problems with this project which could cause "
 "errors or further damage in the future. \n"
@@ -5436,7 +5438,7 @@ msgid "Open Anyway"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:153
-#: Miradi/source/org/miradi/main/MainWindow.java:614
+#: Miradi/source/org/miradi/main/MainWindow.java:615
 msgid "Open Project"
 msgstr ""
 
@@ -5726,7 +5728,7 @@ msgstr "Proyecto"
 msgid "Project Advisor"
 msgstr "Asesor del proyecto "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:675
+#: Miradi/source/org/miradi/main/MainWindow.java:676
 msgid "Project Corruption Detected"
 msgstr ""
 
@@ -5759,7 +5761,7 @@ msgstr "Recurso del proyecto"
 msgid "Project Resource Filter Editor"
 msgstr "Editor del filtro de recursos del proyecto"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:831
+#: Miradi/source/org/miradi/main/MainWindow.java:832
 msgid "Project Resource Filter Is On"
 msgstr "El filtro de recursos del proyecto está activado."
 
@@ -5870,6 +5872,10 @@ msgstr "Evaluación rápida "
 #: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:67
 msgid "Ratings"
 msgstr "Calificaciones"
+
+#: Miradi/source/org/miradi/project/MpzToMpfConverter.java:129
+msgid "Reading..."
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/DiagramLinkColorQuestion.java:38
 msgid "Red"
@@ -6012,7 +6018,7 @@ msgstr "STEP"
 msgid "SWOT"
 msgstr "SWOT"
 
-#: Miradi/source/org/miradi/main/SampleInstaller.java:51
+#: Miradi/source/org/miradi/main/SampleInstaller.java:52
 msgid "Sample Project Installed"
 msgstr "Proyectos de muestra instalados"
 
@@ -6040,6 +6046,10 @@ msgstr "Guardar como... "
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:101
 msgid "Save..."
+msgstr ""
+
+#: Miradi/source/org/miradi/project/MpzToMpfConverter.java:127
+msgid "Scanning..."
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:60
@@ -6352,7 +6362,7 @@ msgstr "Parte interesada "
 msgid "Standard Reports"
 msgstr "Informes estándar"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:865
+#: Miradi/source/org/miradi/main/MainWindow.java:866
 msgid ""
 "Start date (currently %startDate) must be earlier than end date (currently %"
 "endDate)"
@@ -7011,7 +7021,7 @@ msgstr ""
 msgid "TT|Expand To Type"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionExportConProXml.java:40
+#: Miradi/source/org/miradi/actions/ActionExportCpmz.java:40
 msgid "TT|Export a file that can be imported by ConPro"
 msgstr "Exportar un archivo que se pueda importar mediante ConPro"
 
@@ -7023,7 +7033,7 @@ msgstr "TT|Exportar la página actual como un archivo RTF"
 msgid "TT|Export entire project as a WCS Miradi Project ZIP file"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionExportProjectXml.java:40
+#: Miradi/source/org/miradi/actions/ActionExportXmpz.java:40
 msgid "TT|Export entire project as an XML file"
 msgstr "TT|Exportar todo el proyecto como un archivo XML"
 
@@ -7068,9 +7078,13 @@ msgstr ""
 msgid "TT|How to save files in Miradi"
 msgstr "Cómo grabar archivos en Miradi"
 
-#: Miradi/source/org/miradi/actions/ActionImportZippedConproProject.java:40
+#: Miradi/source/org/miradi/actions/ActionImportCpmz.java:40
 msgid "TT|Import a .cpmz file that was exported from ConPro"
 msgstr "Importar un archivo .cpmz que se exportó de ConPro"
+
+#: Miradi/source/org/miradi/actions/ActionImportMpz.java:41
+msgid "TT|Import a .mpz file that was exported by an earlier version of Miradi"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionImportAccountingCodes.java:40
 msgid "TT|Import accounting codes"
@@ -7562,7 +7576,7 @@ msgstr "Las fechas deben tener el formato AAAA-MM-DD"
 msgid "Text|Unknown error prevented saving this data"
 msgstr "Un error desconocido impidió que se grabaran estos datos."
 
-#: Miradi/source/org/miradi/main/MainWindow.java:557
+#: Miradi/source/org/miradi/main/MainWindow.java:558
 msgid "That file is not a valid Miradi project"
 msgstr ""
 
@@ -7574,20 +7588,20 @@ msgstr "Dicho paquete de idiomas ya existe. ¿Desea reemplazarlo? "
 msgid "That language pack is already installed"
 msgstr "Dicho paquete de idiomas ya se encuentra instalado."
 
-#: Miradi/source/org/miradi/main/MainWindow.java:565
-#: Miradi/source/org/miradi/main/MainWindow.java:569
+#: Miradi/source/org/miradi/main/MainWindow.java:566
+#: Miradi/source/org/miradi/main/MainWindow.java:570
 msgid ""
 "That project cannot be opened because it was created by a newer version of "
 "Miradi"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:573
+#: Miradi/source/org/miradi/main/MainWindow.java:574
 msgid ""
 "That project cannot be opened until it is migrated to the current data format"
 msgstr ""
 "Ese proyecto no puede abrirse hasta que se migre al formato de datos actual."
 
-#: Miradi/source/org/miradi/main/MainWindow.java:553
+#: Miradi/source/org/miradi/main/MainWindow.java:554
 msgid "That project is in use by another copy of this application"
 msgstr "Otra copia de esta aplicación está usando ese proyecto."
 
@@ -7601,7 +7615,7 @@ msgstr ""
 "Miradi. Puede usar Miradi 1.0 para migrarlo a un formato de datos moderno y "
 "luego abrirlo y migrarlo con esta versión."
 
-#: Miradi/source/org/miradi/main/MainWindow.java:561
+#: Miradi/source/org/miradi/main/MainWindow.java:562
 msgid "That project is too old to be opened with this version of Miradi"
 msgstr ""
 
@@ -7727,7 +7741,7 @@ msgid ""
 "is in a newer data format. Please upgrade to the latest version of Miradi."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:666
+#: Miradi/source/org/miradi/main/MainWindow.java:667
 msgid ""
 "This project has been optimized to remove data that is no longer needed.\n"
 msgstr ""
@@ -8132,7 +8146,7 @@ msgstr ""
 "No se puede eliminar el nombre de este proyecto porque otra copia de esta "
 "aplicación lo está usando:\n"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1239
+#: Miradi/source/org/miradi/main/MainWindow.java:1240
 msgid "Unable to launch external web browser"
 msgstr "No se pudo iniciar el navegador web externo."
 
@@ -8141,7 +8155,7 @@ msgid "Unable to process file: verify file format"
 msgstr "No se pudo procesar el archivo: verifique el formato del archivo."
 
 #: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:139
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:128
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:130
 msgid "Unable to process request: "
 msgstr "No se pudo procesar la solicitud:"
 
@@ -8153,7 +8167,7 @@ msgstr ""
 "No se puede cambiar el nombre de este proyecto porque otra copia de esta "
 "aplicación lo está usando:\n"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1022
+#: Miradi/source/org/miradi/main/MainWindow.java:1023
 msgid "Unable to save preferences"
 msgstr "No se pudieron grabar las preferencias."
 
@@ -8219,7 +8233,7 @@ msgstr "Universidad "
 msgid "Unknown"
 msgstr "Desconocido "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:548
+#: Miradi/source/org/miradi/main/MainWindow.java:549
 msgid ""
 "Unknown Command\n"
 "You are probably trying to load an old project that contains obsolete "
@@ -8237,7 +8251,7 @@ msgstr "Código desconocido:"
 msgid "Unknown error displaying diagram"
 msgstr "Error desconocido al mostrar el diagrama"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:578
+#: Miradi/source/org/miradi/main/MainWindow.java:579
 msgid "Unknown error prevented opening that project"
 msgstr "Un error desconocido impidió que se abriera ese proyecto."
 
@@ -8564,6 +8578,10 @@ msgstr "Taller "
 msgid ""
 "Would your project team be able to implement the strategy within likely "
 "time, financial, staffing, ethical, and other constraints?"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/MpzProjectImporter.java:73
+msgid "Writing..."
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/editors/CalendarYearDateUnitStartAndEndCard.java:37
@@ -32491,6 +32509,22 @@ msgid ""
 msgstr ""
 "Marina___Atlántico tropical occidental___Marina de la plataforma norte de "
 "Brasil___Brasil "
+
+# should "Import Miradi Project", "Miradi Project", "Import ConPro Project", and "ConPro/Miradi Exchange File" be translated (even though they are inside <...>)?
+#~ msgid ""
+#~ "<div class='WizardText'><p><table><tr><td><input type='submit' "
+#~ "name='Back' value='&lt; Previous'></input></td><td><input type='submit' "
+#~ "name='Import Miradi Project' value='Miradi Project (.mpz)'></input></td></"
+#~ "tr><tr><td></td><td><input type='submit' name='Import ConPro Project' "
+#~ "value='ConPro/Miradi Exchange File (.cpmz)'></input></td></tr></table></"
+#~ "p><br>"
+#~ msgstr ""
+#~ "<div class='WizardText'><p><table><tr><td><input type='submit' "
+#~ "name='Back' value='&lt; Previous'></input></td><td><input type='submit' "
+#~ "name='Import Miradi Project' value='Miradi Project (.mpz)'></input></td></"
+#~ "tr><tr><td></td><td><input type='submit' name='Import ConPro Project' "
+#~ "value='ConPro/Miradi Exchange File (.cpmz)(BETA)'></input></td></tr></"
+#~ "table></p><br>"
 
 #~ msgid ""
 #~ "That project cannot be opened because it was created by a newer version "

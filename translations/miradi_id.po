@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-04 00:29-0500\n"
+"POT-Creation-Date: 2011-11-05 22:32-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -515,7 +515,7 @@ msgstr "7B. Bagikan Apa yang Anda Pelajari "
 msgid "7C. Create a Learning Environment"
 msgstr "7C. Ciptakan Lingkungan Belajar "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1255
+#: Miradi/source/org/miradi/main/MainWindow.java:1256
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -588,19 +588,14 @@ msgstr ""
 "<div class='DataPanel'><p>Kenapa pilihan saya hanya terbatas pada satu "
 "kelompok warna untuk setiap jenis faktor?</p>"
 
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:79
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:80
 msgid ""
 "<div class='WizardText'><p><table><tr><td><input type='submit' name='Back' "
-"value='&lt; Previous'></input></td><td><input type='submit' name='Import "
-"Miradi Project' value='Miradi Project (.mpz)'></input></td></tr><tr><td></"
-"td><td><input type='submit' name='Import ConPro Project' value='ConPro/"
-"Miradi Exchange File (.cpmz)'></input></td></tr></table></p><br>"
+"value='&lt; Previous'></input></td><td><input type='submit' name='ImportMpz' "
+"value='Old Miradi Project (.mpz)'></input></td></tr><tr><td></td><td><input "
+"type='submit' name='ImportCpmz' value='ConPro/Miradi Exchange File (."
+"cpmz)'></input></td></tr></table></p><br>"
 msgstr ""
-"<div class='WizardText'><p><table><tr><td><input type='submit' name='Back' "
-"value='&lt; Previous'></input></td><td><input type='submit' name='Import "
-"Miradi Project' value='Miradi Project (.mpz)'></input></td></tr><tr><td></"
-"td><td><input type='submit' name='Import ConPro Project' value='ConPro/"
-"Miradi Exchange File (.cpmz)'></input></td></tr></table></p><br> "
 
 #: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:76
 msgid ""
@@ -612,7 +607,7 @@ msgstr ""
 "value='&lt; Previous'></input></td><td><input type='submit' name='Next' "
 "value='Next &gt;'></input></td></tr> "
 
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:70
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:71
 msgid ""
 "<div class='WizardText'>Miradi is able to import two different kinds of "
 "project files.<BR>MPZ files are <a href='Definition:ImportZip' "
@@ -1229,7 +1224,7 @@ msgstr "Lipat Semua Baris "
 msgid "Action|Coming Attractions"
 msgstr "Atraksi Mendatang "
 
-#: Miradi/source/org/miradi/actions/ActionImportZippedConproProject.java:34
+#: Miradi/source/org/miradi/actions/ActionImportCpmz.java:34
 msgid "Action|ConPro (CPMZ) File"
 msgstr "File ConPro (CPMZ) "
 
@@ -1406,7 +1401,7 @@ msgstr "Perluas Semua Baris "
 msgid "Action|Export finance tree"
 msgstr "Ekspor diagram keuangan "
 
-#: Miradi/source/org/miradi/actions/ActionExportConProXml.java:34
+#: Miradi/source/org/miradi/actions/ActionExportCpmz.java:34
 msgid "Action|Export|ConPro (CPMZ) File"
 msgstr "File ConPro (CPMZ) "
 
@@ -1717,6 +1712,10 @@ msgstr "Geser Butir ke Kanan "
 msgid "Action|Nudge Item Up"
 msgstr "Dorong Butir ke Atas "
 
+#: Miradi/source/org/miradi/actions/ActionImportMpz.java:35
+msgid "Action|Old Miradi (MPZ) Project File"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/ActionProperties.java:34
 msgid "Action|Open..."
 msgstr "Buka… "
@@ -1977,7 +1976,7 @@ msgstr "Lokakarya "
 msgid "Action|XML Miradi Project ZIP (BETA)"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionExportProjectXml.java:34
+#: Miradi/source/org/miradi/actions/ActionExportXmpz.java:34
 msgid "Action|XML Miradi Project ZIP (BETA) "
 msgstr ""
 
@@ -2541,7 +2540,7 @@ msgstr "Pindahkan "
 msgid "Button|Move"
 msgstr "Pindahkan "
 
-#: Miradi/source/org/miradi/main/SampleInstaller.java:91
+#: Miradi/source/org/miradi/main/SampleInstaller.java:92
 msgid "Button|No"
 msgstr "Tidak "
 
@@ -2581,7 +2580,7 @@ msgstr "Pertahankan "
 msgid "Button|Save"
 msgstr "Simpan "
 
-#: Miradi/source/org/miradi/main/SampleInstaller.java:91
+#: Miradi/source/org/miradi/main/SampleInstaller.java:92
 msgid "Button|Yes"
 msgstr "Ya "
 
@@ -2628,7 +2627,7 @@ msgstr "Tidak bisa menautkan butir dengan butir itu sendiri "
 msgid "Cancel"
 msgstr "Batalkan "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:533
+#: Miradi/source/org/miradi/main/MainWindow.java:534
 msgid "Cancelled"
 msgstr ""
 
@@ -2939,7 +2938,7 @@ msgstr "Pembuatan gagal: "
 msgid "Create Folder"
 msgstr "Buat Folder "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:612
+#: Miradi/source/org/miradi/main/MainWindow.java:613
 msgid "Create Project"
 msgstr ""
 
@@ -3335,7 +3334,7 @@ msgstr ""
 msgid "Do you want to attempt to import %s into Miradi?"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/SampleInstaller.java:90
+#: Miradi/source/org/miradi/main/SampleInstaller.java:91
 msgid "Do you want to install the sample project?"
 msgstr "Apakah Anda ingin menginstal proyek contoh? "
 
@@ -3554,7 +3553,7 @@ msgstr "Perkirakan biaya kegiatan dan pemantauan "
 msgid "Euro"
 msgstr "Euro"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:833
+#: Miradi/source/org/miradi/main/MainWindow.java:834
 msgid "Existing data for a different fiscal year is being excluded"
 msgstr ""
 
@@ -3704,7 +3703,7 @@ msgstr "XML (*.xml) "
 msgid "FileFilter|XMPZ (*"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/ZIPFileFilter.java:42
+#: Miradi/source/org/miradi/utils/ZIPFileFilter.java:47
 msgid "FileFilter|ZIP (*.zip)"
 msgstr "ZIP (*.zip) "
 
@@ -4158,6 +4157,10 @@ msgstr "Impor… "
 msgid "ImportZip"
 msgstr "Impor Zip"
 
+#: Miradi/source/org/miradi/views/umbrella/MpzProjectImporter.java:50
+msgid "Importing MPZ"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:110
 #: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:76
 #: Miradi/source/org/miradi/xml/xmpz/XmpzXmlImporter.java:105
@@ -4269,7 +4272,7 @@ msgstr "Instal "
 msgid "Install Language Pack"
 msgstr "Instal Paket Bahasa "
 
-#: Miradi/source/org/miradi/main/SampleInstaller.java:93
+#: Miradi/source/org/miradi/main/SampleInstaller.java:94
 msgid "Install Sample Project"
 msgstr "Instal Proyek Contoh "
 
@@ -4309,7 +4312,7 @@ msgstr ""
 msgid "IntermediateResult"
 msgstr "Hasil Antara"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:515
+#: Miradi/source/org/miradi/main/MainWindow.java:516
 msgid "Internal project file with this name exist, please try another name"
 msgstr ""
 
@@ -4954,11 +4957,11 @@ msgstr "Sedang"
 msgid "Medium (Default)"
 msgstr "Sedang (Standar)"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:239
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:240
 msgid "MenuBar|Actions"
 msgstr "Tindakan "
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:169
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:170
 msgid "MenuBar|Edit"
 msgstr "Edit "
 
@@ -4966,15 +4969,15 @@ msgstr "Edit "
 msgid "MenuBar|File"
 msgstr "Berkas "
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:571
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:572
 msgid "MenuBar|Help"
 msgstr "Bantuan "
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:502
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:503
 msgid "MenuBar|Step-by-Step"
 msgstr "Langkah demi Langkah "
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:431
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:432
 msgid "MenuBar|View"
 msgstr "Tampilan "
 
@@ -5011,7 +5014,7 @@ msgid "Menu|Export Current Project as..."
 msgstr "Ekspor Proyek Saat Ini sebagai…"
 
 #: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:282
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:419
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:420
 msgid "Menu|Group Box"
 msgstr "Kotak Grup"
 
@@ -5107,7 +5110,7 @@ msgstr ""
 msgid "Miradi does not recognize %s as a project file"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:677
+#: Miradi/source/org/miradi/main/MainWindow.java:678
 msgid ""
 "Miradi has detected one or more problems with this project which could cause "
 "errors or further damage in the future. \n"
@@ -5400,7 +5403,7 @@ msgid "Open Anyway"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:153
-#: Miradi/source/org/miradi/main/MainWindow.java:614
+#: Miradi/source/org/miradi/main/MainWindow.java:615
 msgid "Open Project"
 msgstr ""
 
@@ -5688,7 +5691,7 @@ msgstr "Proyek "
 msgid "Project Advisor"
 msgstr "Penasihat Proyek"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:675
+#: Miradi/source/org/miradi/main/MainWindow.java:676
 msgid "Project Corruption Detected"
 msgstr ""
 
@@ -5721,7 +5724,7 @@ msgstr "Sumber Daya Proyek "
 msgid "Project Resource Filter Editor"
 msgstr "Editor Filter Sumber Daya Proyek "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:831
+#: Miradi/source/org/miradi/main/MainWindow.java:832
 msgid "Project Resource Filter Is On"
 msgstr "Filter Sumber Daya Proyek Adalah Aktif "
 
@@ -5831,6 +5834,10 @@ msgstr "Penilaian Cepat"
 #: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:67
 msgid "Ratings"
 msgstr "Peringkat "
+
+#: Miradi/source/org/miradi/project/MpzToMpfConverter.java:129
+msgid "Reading..."
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/DiagramLinkColorQuestion.java:38
 msgid "Red"
@@ -5972,7 +5979,7 @@ msgstr "STEP "
 msgid "SWOT"
 msgstr "SWOT "
 
-#: Miradi/source/org/miradi/main/SampleInstaller.java:51
+#: Miradi/source/org/miradi/main/SampleInstaller.java:52
 msgid "Sample Project Installed"
 msgstr "Proyek Contoh yang Terinstal "
 
@@ -6000,6 +6007,10 @@ msgstr "Simpan Sebagai... "
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:101
 msgid "Save..."
+msgstr ""
+
+#: Miradi/source/org/miradi/project/MpzToMpfConverter.java:127
+msgid "Scanning..."
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:60
@@ -6310,7 +6321,7 @@ msgstr "Pemilik Kepentingan"
 msgid "Standard Reports"
 msgstr "Laporan Standar "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:865
+#: Miradi/source/org/miradi/main/MainWindow.java:866
 msgid ""
 "Start date (currently %startDate) must be earlier than end date (currently %"
 "endDate)"
@@ -6969,7 +6980,7 @@ msgstr ""
 msgid "TT|Expand To Type"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionExportConProXml.java:40
+#: Miradi/source/org/miradi/actions/ActionExportCpmz.java:40
 msgid "TT|Export a file that can be imported by ConPro"
 msgstr "Ekspor berkas yang bisa diimpor ConPro "
 
@@ -6981,7 +6992,7 @@ msgstr "Ekspor halaman yang tampak saat ini sebagai berkas RTF"
 msgid "TT|Export entire project as a WCS Miradi Project ZIP file"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionExportProjectXml.java:40
+#: Miradi/source/org/miradi/actions/ActionExportXmpz.java:40
 msgid "TT|Export entire project as an XML file"
 msgstr "Ekspor keseluruhan proyek sebagai berkas XML"
 
@@ -7024,9 +7035,13 @@ msgstr ""
 msgid "TT|How to save files in Miradi"
 msgstr "Cara menyimpan berkas di Miradi "
 
-#: Miradi/source/org/miradi/actions/ActionImportZippedConproProject.java:40
+#: Miradi/source/org/miradi/actions/ActionImportCpmz.java:40
 msgid "TT|Import a .cpmz file that was exported from ConPro"
 msgstr "Impor berkas .cpmz yang diekspor dari ConPro "
+
+#: Miradi/source/org/miradi/actions/ActionImportMpz.java:41
+msgid "TT|Import a .mpz file that was exported by an earlier version of Miradi"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionImportAccountingCodes.java:40
 msgid "TT|Import accounting codes"
@@ -7517,7 +7532,7 @@ msgstr "Tanggal harus dalam format YYYY-MM-DD  "
 msgid "Text|Unknown error prevented saving this data"
 msgstr "Kesalahan tak dikenal mencegah penyimpanan data ini "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:557
+#: Miradi/source/org/miradi/main/MainWindow.java:558
 msgid "That file is not a valid Miradi project"
 msgstr ""
 
@@ -7529,21 +7544,21 @@ msgstr "Paket bahasa ini sudah ada. Ganti? "
 msgid "That language pack is already installed"
 msgstr "Paket bahasa ini sudah diinstal"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:565
-#: Miradi/source/org/miradi/main/MainWindow.java:569
+#: Miradi/source/org/miradi/main/MainWindow.java:566
+#: Miradi/source/org/miradi/main/MainWindow.java:570
 msgid ""
 "That project cannot be opened because it was created by a newer version of "
 "Miradi"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:573
+#: Miradi/source/org/miradi/main/MainWindow.java:574
 msgid ""
 "That project cannot be opened until it is migrated to the current data format"
 msgstr ""
 "Proyek tersebut tidak bisa dibuka sebelum dipindahkan ke format data saat "
 "ini "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:553
+#: Miradi/source/org/miradi/main/MainWindow.java:554
 msgid "That project is in use by another copy of this application"
 msgstr "Proyek tersebut sedang digunakan oleh salinan lain dari aplikasi ini "
 
@@ -7557,7 +7572,7 @@ msgstr ""
 "menggunakan Miradi 1.0 untuk memindahkannya ke format data modern, dan "
 "sesudahnya bisa dibuka dan dipindahkan dengan versi ini. "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:561
+#: Miradi/source/org/miradi/main/MainWindow.java:562
 msgid "That project is too old to be opened with this version of Miradi"
 msgstr ""
 
@@ -7684,7 +7699,7 @@ msgid ""
 "is in a newer data format. Please upgrade to the latest version of Miradi."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:666
+#: Miradi/source/org/miradi/main/MainWindow.java:667
 msgid ""
 "This project has been optimized to remove data that is no longer needed.\n"
 msgstr ""
@@ -8089,7 +8104,7 @@ msgstr ""
 "aplikasi ini:\n"
 " "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1239
+#: Miradi/source/org/miradi/main/MainWindow.java:1240
 msgid "Unable to launch external web browser"
 msgstr "Tidak bisa meluncurkan perambah web eksternal "
 
@@ -8098,7 +8113,7 @@ msgid "Unable to process file: verify file format"
 msgstr "Tidak bisa mengolah berkas: verifikasi format berkas "
 
 #: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:139
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:128
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:130
 msgid "Unable to process request: "
 msgstr "Tidak bisa memproses permintaan: "
 
@@ -8111,7 +8126,7 @@ msgstr ""
 "dari aplikasi ini:\n"
 " "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1022
+#: Miradi/source/org/miradi/main/MainWindow.java:1023
 msgid "Unable to save preferences"
 msgstr "Tidak bisa menyimpan preferensi "
 
@@ -8176,7 +8191,7 @@ msgstr "Universitas"
 msgid "Unknown"
 msgstr "Tidak Dikenal"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:548
+#: Miradi/source/org/miradi/main/MainWindow.java:549
 msgid ""
 "Unknown Command\n"
 "You are probably trying to load an old project that contains obsolete "
@@ -8194,7 +8209,7 @@ msgstr "Kode tak dikenal: "
 msgid "Unknown error displaying diagram"
 msgstr "Kesalahan tak dikenal saat menampilkan diagram "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:578
+#: Miradi/source/org/miradi/main/MainWindow.java:579
 msgid "Unknown error prevented opening that project"
 msgstr "Kesalahan tak dikenal mencegah dibukanya proyek "
 
@@ -8525,6 +8540,10 @@ msgstr "Lokakarya"
 msgid ""
 "Would your project team be able to implement the strategy within likely "
 "time, financial, staffing, ethical, and other constraints?"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/MpzProjectImporter.java:73
+msgid "Writing..."
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/editors/CalendarYearDateUnitStartAndEndCard.java:37
@@ -32228,6 +32247,21 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid ""
+#~ "<div class='WizardText'><p><table><tr><td><input type='submit' "
+#~ "name='Back' value='&lt; Previous'></input></td><td><input type='submit' "
+#~ "name='Import Miradi Project' value='Miradi Project (.mpz)'></input></td></"
+#~ "tr><tr><td></td><td><input type='submit' name='Import ConPro Project' "
+#~ "value='ConPro/Miradi Exchange File (.cpmz)'></input></td></tr></table></"
+#~ "p><br>"
+#~ msgstr ""
+#~ "<div class='WizardText'><p><table><tr><td><input type='submit' "
+#~ "name='Back' value='&lt; Previous'></input></td><td><input type='submit' "
+#~ "name='Import Miradi Project' value='Miradi Project (.mpz)'></input></td></"
+#~ "tr><tr><td></td><td><input type='submit' name='Import ConPro Project' "
+#~ "value='ConPro/Miradi Exchange File (.cpmz)'></input></td></tr></table></"
+#~ "p><br> "
 
 #~ msgid ""
 #~ "That project cannot be opened because it was created by a newer version "
