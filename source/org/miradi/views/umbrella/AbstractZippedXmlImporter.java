@@ -38,8 +38,7 @@ abstract public class AbstractZippedXmlImporter extends AbstractProjectImporter
 	
 	protected Project importProjectFromXmlEntry(ZipFile zipFile, ProgressInterface progressIndicator) throws Exception
 	{
-		Project projectToFill = new Project();
-		projectToFill.finishOpeningAfterLoad("[Imported]");
+		Project projectToFill = createProjectToFill();
 
 		InputStreamWithSeek projectAsInputStream = getProjectAsInputStream(zipFile);
 		if (projectAsInputStream.available() == 0)
@@ -54,6 +53,13 @@ abstract public class AbstractZippedXmlImporter extends AbstractProjectImporter
 			projectAsInputStream.close();
 		}
 		
+		return projectToFill;
+	}
+
+	protected Project createProjectToFill() throws Exception
+	{
+		Project projectToFill = new Project();
+		projectToFill.finishOpeningAfterLoad("[Imported]");
 		return projectToFill;
 	}
 	

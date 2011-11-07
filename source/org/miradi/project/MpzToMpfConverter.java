@@ -23,9 +23,11 @@ package org.miradi.project;
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -103,6 +105,47 @@ public class MpzToMpfConverter extends AbstractMiradiProjectSaver
 		super(writerToUse);
 		
 		zipFile = mpzFileToUse;
+	}
+	
+	public static String convert(InputStream mpzInputStream, ProgressInterface progressIndicator) throws Exception
+	{
+		File temporaryMpz = File.createTempFile("$$$MpzToMpfConverter", null);
+		try
+		{
+			extractFile(mpzInputStream, temporaryMpz);
+			String contents = convert(temporaryMpz, progressIndicator);
+			return contents;
+		}
+		finally
+		{
+			temporaryMpz.delete();
+		}
+	}
+
+	private static void extractFile(InputStream mpzInputStream, File temporaryMpz) throws Exception
+	{
+		FileOutputStream out = new FileOutputStream(temporaryMpz);
+		try
+		{
+			copyStream(mpzInputStream, out);
+		}
+		finally
+		{
+			out.close();
+		}
+	}
+
+	public static final String convert(File zipFile, ProgressInterface progressIndicator) throws Exception
+	{
+		ZipFile zip = new ZipFile(zipFile);
+		try
+		{
+			return convert(zip, progressIndicator);
+		}
+		finally
+		{
+			zip.close();
+		}
 	}
 	
 	public static final String convert(ZipFile zipFileToUse, ProgressInterface progressIndicator) throws Exception
@@ -262,6 +305,13 @@ public class MpzToMpfConverter extends AbstractMiradiProjectSaver
 	{
 		InputStream inputStream = getZipFile().getInputStream(entry);
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
+		copyStream(inputStream, out);
+
+		return out.toByteArray();
+	}
+
+	private static void copyStream(InputStream inputStream, OutputStream out) throws IOException
+	{
 		byte[] buffer = new byte[1024];
 		int got = -1;
 		while( (got = inputStream.read(buffer)) > 0)
@@ -269,8 +319,6 @@ public class MpzToMpfConverter extends AbstractMiradiProjectSaver
 			out.write(buffer, 0, got);
 		}
 		out.close();
-
-		return out.toByteArray();
 	}
 	
 	private void writeObject(String relativeFilePath, String fileContent) throws Exception

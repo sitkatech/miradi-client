@@ -30,6 +30,7 @@ import java.util.zip.ZipFile;
 import javax.swing.filechooser.FileFilter;
 
 import org.martus.util.UnicodeReader;
+import org.martus.util.UnicodeStringReader;
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.arranger.MeglerArranger;
@@ -41,7 +42,9 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.TncProjectData;
 import org.miradi.objects.ViewData;
+import org.miradi.project.MpzToMpfConverter;
 import org.miradi.project.Project;
+import org.miradi.project.ProjectLoader;
 import org.miradi.project.ProjectSaver;
 import org.miradi.utils.ConceptualModelByTargetSplitter;
 import org.miradi.utils.CpmzFileFilterForChooserDialog;
@@ -96,45 +99,36 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 		InputStream inputStream = zipFile.getInputStream(mpzEntry);
 		try
 		{
-			throw new RuntimeException("CPMZ import is not supported yet");
-//			ProjectMpzImporter.unzipToProjectDirectory(newProjectDir.getParentFile(), newProjectDir.getName(), inputStream);
-//			progressIndicator.incrementProgress();
+			String contents = MpzToMpfConverter.convert(inputStream, progressIndicator);
+			UnicodeStringReader reader = new UnicodeStringReader(contents);
+			Project project = new Project();
+			ProjectLoader.loadProject(reader, project);
+			reader.close();
+			
+			progressIndicator.setStatusMessage(EAM.text("Updating ConPro Project Number..."), 1);
+			importConproProjectNumbers(zipFile, project, progressIndicator);
+			progressIndicator.incrementProgress();
+			
+			return project;
 		}
 		finally
 		{
 			inputStream.close();
 		}
 		
-//		importConproProjectNumbers(zipFile, newProjectDir, progressIndicator);
 	}
 
-	private void importConproProjectNumbers(ZipFile zipFile, File newProjectDir, ProgressInterface progressIndicator) throws Exception
+	private void importConproProjectNumbers(ZipFile zipFile, Project projectToFill, ProgressInterface progressIndicator) throws Exception
 	{
-		throw new RuntimeException("Cpmz Import not fully supported yet");
-//		Project projectToFill = new Project();
-//		projectToFill.setLocalDataLocation(newProjectDir.getParentFile());
-//		
-//		ProgressInterface nonImportProgressMeter = new NullProgressMeter();
-//		projectToFill.openProject(newProjectDir.getName(), nonImportProgressMeter);
-//		try
-//		{
-//			InputStreamWithSeek projectAsInputStream = getProjectAsInputStream(zipFile);
-//			try
-//			{
-//				new ConproXmlImporter(projectToFill, progressIndicator).importConProProjectNumbers(projectAsInputStream);
-//			}
-//			finally
-//			{
-//				projectAsInputStream.close();
-//			}
-//
-//			projectToFill.close();
-//		}
-//		catch(Exception e)
-//		{
-//			projectToFill.closeAndDeleteProject();
-//			throw e;
-//		}
+		InputStreamWithSeek projectAsInputStream = getProjectAsInputStream(zipFile);
+		try
+		{
+			new ConproXmlImporter(projectToFill, progressIndicator).importConProProjectNumbers(projectAsInputStream);
+		}
+		finally
+		{
+			projectAsInputStream.close();
+		}
 	}
 
 	@Override
@@ -154,6 +148,14 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 		
 		importAdditionalFieldsFromTextFiles(projectToFill, zipFile);
 		progressIndicator.incrementProgress();
+	}
+	
+	@Override
+	protected Project createProjectToFill() throws Exception
+	{
+		Project project = new Project();
+		project.createOrOpenWithDefaultObjects(new File("[Imported]"), new NullProgressMeter());
+		return project;
 	}
 	
 	private void importAdditionalFieldsFromTextFiles(Project projectToFill, ZipFile zipFile) throws Exception
