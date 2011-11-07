@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-05 22:32-0500\n"
+"POT-Creation-Date: 2011-11-07 03:56-0600\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -72,7 +72,7 @@ msgstr "Аюул заналыг хамаарал бүхий хамгаалах �
 msgid " A project by this name already exists: "
 msgstr "Ийм нэр бүхий төсөл хэдийнээ байгаа:"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractZippedXmlImporter.java:46
+#: Miradi/source/org/miradi/views/umbrella/AbstractZippedXmlImporter.java:45
 msgid " was empty"
 msgstr "хоосон байсан"
 
@@ -4211,7 +4211,7 @@ msgid "Importing MPZ"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:110
-#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:76
+#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:79
 #: Miradi/source/org/miradi/xml/xmpz/XmpzXmlImporter.java:105
 msgid "Importing..."
 msgstr ""
@@ -5880,7 +5880,7 @@ msgstr "Шуурхай Үнэлгээ"
 msgid "Ratings"
 msgstr "Үнэлгээ"
 
-#: Miradi/source/org/miradi/project/MpzToMpfConverter.java:129
+#: Miradi/source/org/miradi/project/MpzToMpfConverter.java:172
 msgid "Reading..."
 msgstr ""
 
@@ -6054,7 +6054,7 @@ msgstr "Нэр, төрөл, байрлал...сольж хадгалах"
 msgid "Save..."
 msgstr ""
 
-#: Miradi/source/org/miradi/project/MpzToMpfConverter.java:127
+#: Miradi/source/org/miradi/project/MpzToMpfConverter.java:170
 msgid "Scanning..."
 msgstr ""
 
@@ -8288,6 +8288,10 @@ msgstr "Цагийн хуваарьгүй"
 #: Miradi/source/org/miradi/questions/LanguageQuestion.java:56
 msgid "Unspecified"
 msgstr "Тодруулан заагаагүй"
+
+#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:108
+msgid "Updating ConPro Project Number..."
+msgstr ""
 
 #: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:387
 msgid "Updating locations..."
