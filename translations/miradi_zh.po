@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-05 22:32-0500\n"
+"POT-Creation-Date: 2011-11-07 03:56-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -68,7 +68,7 @@ msgstr "2)将威胁因子链接到相关的对象 \t\t"
 msgid " A project by this name already exists: "
 msgstr "已存在使用相同名称的项目: \t\t"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractZippedXmlImporter.java:46
+#: Miradi/source/org/miradi/views/umbrella/AbstractZippedXmlImporter.java:45
 msgid " was empty"
 msgstr ""
 
@@ -4031,7 +4031,7 @@ msgid "Importing MPZ"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:110
-#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:76
+#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:79
 #: Miradi/source/org/miradi/xml/xmpz/XmpzXmlImporter.java:105
 msgid "Importing..."
 msgstr ""
@@ -5661,7 +5661,7 @@ msgstr "快速评估"
 msgid "Ratings"
 msgstr "分级 "
 
-#: Miradi/source/org/miradi/project/MpzToMpfConverter.java:129
+#: Miradi/source/org/miradi/project/MpzToMpfConverter.java:172
 msgid "Reading..."
 msgstr ""
 
@@ -5834,7 +5834,7 @@ msgstr ""
 msgid "Save..."
 msgstr ""
 
-#: Miradi/source/org/miradi/project/MpzToMpfConverter.java:127
+#: Miradi/source/org/miradi/project/MpzToMpfConverter.java:170
 msgid "Scanning..."
 msgstr ""
 
@@ -7981,6 +7981,10 @@ msgstr ""
 #: Miradi/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:46
 #: Miradi/source/org/miradi/questions/LanguageQuestion.java:56
 msgid "Unspecified"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:108
+msgid "Updating ConPro Project Number..."
 msgstr ""
 
 #: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:387
