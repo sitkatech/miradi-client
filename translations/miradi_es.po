@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-11 02:20-0600\n"
+"POT-Creation-Date: 2011-11-11 03:20-0600\n"
 "PO-Revision-Date: 2011-03-28 15:06-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -5873,7 +5873,7 @@ msgstr "Evaluación rápida "
 msgid "Ratings"
 msgstr "Calificaciones"
 
-#: Miradi/source/org/miradi/project/MpzToMpfConverter.java:175
+#: Miradi/source/org/miradi/project/MpzToMpfConverter.java:160
 msgid "Reading..."
 msgstr ""
 
@@ -6048,7 +6048,7 @@ msgstr "Guardar como... "
 msgid "Save..."
 msgstr ""
 
-#: Miradi/source/org/miradi/project/MpzToMpfConverter.java:174
+#: Miradi/source/org/miradi/project/MpzToMpfConverter.java:159
 msgid "Scanning..."
 msgstr ""
 
@@ -8265,7 +8265,7 @@ msgstr ""
 msgid "Unspecified"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:108
+#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:104
 msgid "Updating ConPro Project Number..."
 msgstr ""
 
