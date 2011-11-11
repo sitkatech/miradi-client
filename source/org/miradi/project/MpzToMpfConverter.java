@@ -30,6 +30,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Enumeration;
@@ -219,15 +220,13 @@ public class MpzToMpfConverter extends AbstractMiradiProjectSaver
 			return;
 		}
 
-		byte[] contents = readIntoByteArray(entry);
-		final String fileContent = new String(contents, "UTF-8");
+		final String fileContent = readIntoString(entry);
 		
 		if (relativeFilePath.equals("json/version"))
 		{
 			if(convertedProjectVersion != 0)
 				throw new RuntimeException("Cannot convert MPZ with two versions");
-			EnhancedJsonObject json = new EnhancedJsonObject(fileContent);
-			int version = json.getInt(ProjectServer.TAG_VERSION);
+			int version = extractVersion(fileContent);
 			convertedProjectVersion = version;
 			if(convertedProjectVersion != REQUIRED_VERSION)
 				throw new RuntimeException("Cannot convert MPZ version " + convertedProjectVersion);
@@ -260,6 +259,21 @@ public class MpzToMpfConverter extends AbstractMiradiProjectSaver
 		{
 			writeSimpleThreatFramework(fileContent);
 		}
+	}
+
+	private String readIntoString(ZipEntry entry) throws Exception,
+			UnsupportedEncodingException
+	{
+		byte[] contents = readIntoByteArray(entry);
+		final String fileContent = new String(contents, "UTF-8");
+		return fileContent;
+	}
+
+	private int extractVersion(final String fileContent) throws ParseException
+	{
+		EnhancedJsonObject json = new EnhancedJsonObject(fileContent);
+		int version = json.getInt(ProjectServer.TAG_VERSION);
+		return version;
 	}
 
 	private void convertExceptionLog(ZipEntry entry) throws Exception
