@@ -99,7 +99,7 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 		InputStream inputStream = zipFile.getInputStream(mpzEntry);
 		try
 		{
-			String contents = MpzToMpfConverter.convert(inputStream, progressIndicator);
+			String contents = CpmzProjectImporter.convert(inputStream, progressIndicator);
 			UnicodeStringReader reader = new UnicodeStringReader(contents);
 			Project project = new Project();
 			ProjectLoader.loadProject(reader, project);
@@ -236,5 +236,20 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 	public FileFilter[] getFileFilters()
 	{
 		return new FileFilter[] {new CpmzFileFilterForChooserDialog()};
+	}
+
+	public static String convert(InputStream mpzInputStream, ProgressInterface progressIndicator) throws Exception
+	{
+		File temporaryMpz = File.createTempFile("$$$MpzToMpfConverter", null);
+		try
+		{
+			MpzToMpfConverter.extractFile(mpzInputStream, temporaryMpz);
+			String contents = MpzToMpfConverter.convert(temporaryMpz, progressIndicator);
+			return contents;
+		}
+		finally
+		{
+			temporaryMpz.delete();
+		}
 	}
 }
