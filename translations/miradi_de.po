@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-07 03:56-0600\n"
+"POT-Creation-Date: 2011-11-11 02:20-0600\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -6039,7 +6039,7 @@ msgstr "Oberflächliche Erfassung"
 msgid "Ratings"
 msgstr "Bewertungen"
 
-#: Miradi/source/org/miradi/project/MpzToMpfConverter.java:172
+#: Miradi/source/org/miradi/project/MpzToMpfConverter.java:175
 msgid "Reading..."
 msgstr ""
 
@@ -6218,7 +6218,7 @@ msgstr "Speichern als..."
 msgid "Save..."
 msgstr "Speichern..."
 
-#: Miradi/source/org/miradi/project/MpzToMpfConverter.java:170
+#: Miradi/source/org/miradi/project/MpzToMpfConverter.java:174
 msgid "Scanning..."
 msgstr ""
 
