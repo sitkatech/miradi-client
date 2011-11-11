@@ -34,6 +34,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Enumeration;
 import java.util.Iterator;
+import java.util.Vector;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
@@ -123,6 +124,12 @@ public class MpzToMpfConverter extends AbstractMiradiProjectSaver
 		return writer.toString();
 	}
 	
+	public static int extractVersion(ZipFile zipFileToUse) throws Exception
+	{
+		// FIXME: Need to implement this method
+		return 0;
+	}
+	
 	private MpzToMpfConverter(ZipFile mpzFileToUse, UnicodeStringWriter writerToUse) throws Exception
 	{
 		super(writerToUse);
@@ -163,41 +170,41 @@ public class MpzToMpfConverter extends AbstractMiradiProjectSaver
 		writeFileHeader();
 		
 		progressIndicator.setStatusMessage(EAM.text("Scanning..."), 1);
-		int zipEntryCount = getZipEntryCount(getZipFile());
-		progressIndicator.setStatusMessage(EAM.text("Reading..."), zipEntryCount);
+		Vector<ZipEntry> entries = getZipEntries();
+		progressIndicator.setStatusMessage(EAM.text("Reading..."), entries.size());
 
-		Enumeration<? extends ZipEntry> zipEntries = getZipFile().entries();
-		while(zipEntries.hasMoreElements())
+		for(int i = 0; i < entries.size(); ++i)
 		{
-			progressIndicator.incrementProgress();
-			if(progressIndicator.shouldExit())
-				throw new UserCanceledException();
-			
-			ZipEntry entry = zipEntries.nextElement();
+			ZipEntry entry = entries.get(i);
 			if(entry == null)
 				break;
 			
 			if (!entry.isDirectory())
 				extractOneFile(entry);
+
+			progressIndicator.incrementProgress();
+			if(progressIndicator.shouldExit())
+				throw new UserCanceledException();
 		}
+
 		writeStopMarker(lastModifiedMillis);
 		getWriter().flush();
 		if(convertedProjectVersion != REQUIRED_VERSION)
 			throw new RuntimeException("Cannot convert MPZ without a version");
 	}
 	
-	private int getZipEntryCount(ZipFile zipFile2)
+	private Vector<ZipEntry> getZipEntries()
 	{
-		int count = 0;
+		Vector<ZipEntry> entries = new Vector<ZipEntry>();
 		
 		Enumeration<? extends ZipEntry> zipEntries = getZipFile().entries();
 		while(zipEntries.hasMoreElements())
 		{
-			zipEntries.nextElement();
-			++count;
+			ZipEntry entry = zipEntries.nextElement();
+			entries.add(entry);
 		}
 		
-		return count;
+		return entries;
 	}
 
 	private void extractOneFile(ZipEntry entry) throws Exception
