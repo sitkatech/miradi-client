@@ -28,7 +28,6 @@ import java.net.URL;
 import java.util.zip.ZipFile;
 
 import org.martus.util.UnicodeStringReader;
-import org.martus.util.UnicodeStringWriter;
 import org.miradi.main.ResourcesHandler;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.utils.NullProgressMeter;
@@ -103,7 +102,6 @@ public class TestMpzToMpfConverter extends TestCaseWithProject
 
 	private String convertMpzToDotMiradi(byte[] byteArray) throws Exception
 	{
-		UnicodeStringWriter writer = UnicodeStringWriter.create();
 		File tempMpzFile = File.createTempFile("$$$TestMpzToMiradiConverter.mpz", null);
 		try
 		{
@@ -111,13 +109,10 @@ public class TestMpzToMpfConverter extends TestCaseWithProject
 			fileOut.write(byteArray);
 			fileOut.flush();
 			fileOut.close();
-			MpzToMpfConverter.convert(new ZipFile(tempMpzFile), writer, new NullProgressMeter());
-			
-			return writer.toString();
+			return MpzToMpfConverter.convert(new ZipFile(tempMpzFile), new NullProgressMeter());
 		}
 		finally
 		{
-			writer.close();
 			tempMpzFile.delete();
 		}
 	}
