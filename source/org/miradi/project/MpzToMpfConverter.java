@@ -135,7 +135,7 @@ public class MpzToMpfConverter extends AbstractMiradiProjectSaver
 		}
 	}
 
-	public static final String convert(File zipFile, ProgressInterface progressIndicator) throws Exception
+	private static final String convert(File zipFile, ProgressInterface progressIndicator) throws Exception
 	{
 		ZipFile zip = new ZipFile(zipFile);
 		try
@@ -155,7 +155,7 @@ public class MpzToMpfConverter extends AbstractMiradiProjectSaver
 		return writer.toString();
 	}
 	
-	public static final void convert(ZipFile zipFileToUse, UnicodeStringWriter writer, ProgressInterface progressIndicator) throws Exception
+	private static final void convert(ZipFile zipFileToUse, UnicodeStringWriter writer, ProgressInterface progressIndicator) throws Exception
 	{
 		MpzToMpfConverter conveter = new MpzToMpfConverter(zipFileToUse, writer);
 		conveter.convert(progressIndicator);
