@@ -151,14 +151,9 @@ public class MpzToMpfConverter extends AbstractMiradiProjectSaver
 	public static final String convert(ZipFile zipFileToUse, ProgressInterface progressIndicator) throws Exception
 	{
 		UnicodeStringWriter writer = UnicodeStringWriter.create();
-		convert(zipFileToUse, writer, progressIndicator);
-		return writer.toString();
-	}
-	
-	private static final void convert(ZipFile zipFileToUse, UnicodeStringWriter writer, ProgressInterface progressIndicator) throws Exception
-	{
 		MpzToMpfConverter conveter = new MpzToMpfConverter(zipFileToUse, writer);
 		conveter.convert(progressIndicator);
+		return writer.toString();
 	}
 	
 	private void convert(ProgressInterface progressIndicator) throws Exception
