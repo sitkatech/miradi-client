@@ -23,6 +23,7 @@ package org.miradi.project;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.zip.ZipFile;
@@ -39,24 +40,59 @@ public class TestMpzToMpfConverter extends TestCaseWithProject
 		super(name);
 	}
 	
+	public void testExtractVersion() throws Exception
+	{
+		verifyExtractVersion(6);
+		verifyExtractVersion(61);
+		verifyExtractVersion(62);
+	}
+
+	private void verifyExtractVersion(int expectedVersion) throws Exception
+	{
+		String sampleMpzResourcePath = "/Sample-v" + expectedVersion + ".mpz";
+		byte[] mpzBytes = readSampleMpz(sampleMpzResourcePath);
+		File mpz = writeToTemporaryFile(mpzBytes);
+		try
+		{
+			ZipFile zipFile = new ZipFile(mpz);
+			int version = MpzToMpfConverter.extractVersion(zipFile);
+			assertEquals(expectedVersion, version);
+		}
+		finally
+		{
+			mpz.delete();
+		}
+	}
+	
 	public void testConvertMpzToMpf() throws Exception
 	{
-		byte[] mpzBytes = readSampleMpz();
-		String projectAsStringFromConverter = convertMpzToDotMiradi(mpzBytes);
-		ProjectForTesting project2 = createProjectFromDotMiradi(projectAsStringFromConverter);
-		assertEquals(935, project2.getNormalIdAssigner().getHighestAssignedId());
-		//FIXME: Need to spot-check various other items
-		// text field with newlines
-		// numeric field
-		// date field
-		// choice field
-		// reflist
-		// simple threat rating bundle values
-		// ...
-		
-		final int expectedSizeAfterTruncationOfSampleException = 4731;
-		final String exceptionLog = project2.getExceptionLog();
-		assertTrue("Exception log did not get truncated?", exceptionLog.length() < expectedSizeAfterTruncationOfSampleException);
+		byte[] mpzBytes = readSampleMpz("/Sample-v61.mpz");
+		File mpz = writeToTemporaryFile(mpzBytes);
+		try
+		{
+			NullProgressMeter progressIndicator = new NullProgressMeter();
+			ZipFile zipFile = new ZipFile(mpz);
+			String convertedProjectString = MpzToMpfConverter.convert(zipFile, progressIndicator);
+			
+			ProjectForTesting project2 = createProjectFromDotMiradi(convertedProjectString);
+			assertEquals(935, project2.getNormalIdAssigner().getHighestAssignedId());
+			//FIXME: Need to spot-check various other items
+			// text field with newlines
+			// numeric field
+			// date field
+			// choice field
+			// reflist
+			// simple threat rating bundle values
+			// ...
+			
+			final int expectedSizeAfterTruncationOfSampleException = 4731;
+			final String exceptionLog = project2.getExceptionLog();
+			assertTrue("Exception log did not get truncated?", exceptionLog.length() < expectedSizeAfterTruncationOfSampleException);
+		}
+		finally
+		{
+			mpz.delete();
+		}
 	}
 	
 	public void testSafeConvertUtf8BytesToString() throws Exception
@@ -69,10 +105,10 @@ public class TestMpzToMpfConverter extends TestCaseWithProject
 		assertEquals("Te", safe);
 	}
 
-	private byte[] readSampleMpz() throws Exception
+	private byte[] readSampleMpz(String mpzResourcePath) throws IOException
 	{
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
-		URL url = ResourcesHandler.getResourceURL("/Sample-v61.mpz");
+		URL url = ResourcesHandler.getResourceURL(mpzResourcePath);
 		InputStream in = url.openStream();
 		try
 		{
@@ -100,20 +136,22 @@ public class TestMpzToMpfConverter extends TestCaseWithProject
 		return project2;
 	}
 
-	private String convertMpzToDotMiradi(byte[] byteArray) throws Exception
+	private File writeToTemporaryFile(byte[] byteArray) throws Exception
 	{
 		File tempMpzFile = File.createTempFile("$$$TestMpzToMiradiConverter.mpz", null);
+		tempMpzFile.deleteOnExit();
 		try
 		{
 			FileOutputStream fileOut = new FileOutputStream(tempMpzFile);
 			fileOut.write(byteArray);
 			fileOut.flush();
 			fileOut.close();
-			return MpzToMpfConverter.convert(new ZipFile(tempMpzFile), new NullProgressMeter());
+			return tempMpzFile;
 		}
-		finally
+		catch(Exception e)
 		{
 			tempMpzFile.delete();
+			throw(e);
 		}
 	}
 
