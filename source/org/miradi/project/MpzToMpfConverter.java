@@ -227,7 +227,8 @@ public class MpzToMpfConverter extends AbstractMiradiProjectSaver
 			if(convertedProjectVersion != 0)
 				throw new RuntimeException("Cannot convert MPZ with two versions");
 			EnhancedJsonObject json = new EnhancedJsonObject(fileContent);
-			convertedProjectVersion = json.getInt(ProjectServer.TAG_VERSION);
+			int version = json.getInt(ProjectServer.TAG_VERSION);
+			convertedProjectVersion = version;
 			if(convertedProjectVersion != REQUIRED_VERSION)
 				throw new RuntimeException("Cannot convert MPZ version " + convertedProjectVersion);
 		}
