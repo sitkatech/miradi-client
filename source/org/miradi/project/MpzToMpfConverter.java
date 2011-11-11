@@ -136,6 +136,7 @@ public class MpzToMpfConverter extends AbstractMiradiProjectSaver
 		super(writerToUse);
 		
 		zipFile = mpzFileToUse;
+		entries = extractZipEntries();
 	}
 	
 	private static void extractFile(InputStream mpzInputStream, File temporaryMpz) throws Exception
@@ -171,7 +172,6 @@ public class MpzToMpfConverter extends AbstractMiradiProjectSaver
 		writeFileHeader();
 		
 		progressIndicator.setStatusMessage(EAM.text("Scanning..."), 1);
-		Vector<ZipEntry> entries = getZipEntries();
 		progressIndicator.setStatusMessage(EAM.text("Reading..."), entries.size());
 
 		for(int i = 0; i < entries.size(); ++i)
@@ -194,18 +194,18 @@ public class MpzToMpfConverter extends AbstractMiradiProjectSaver
 			throw new RuntimeException("Cannot convert MPZ without a version");
 	}
 	
-	private Vector<ZipEntry> getZipEntries()
+	private Vector<ZipEntry> extractZipEntries()
 	{
-		Vector<ZipEntry> entries = new Vector<ZipEntry>();
+		Vector<ZipEntry> zipEntries = new Vector<ZipEntry>();
 		
-		Enumeration<? extends ZipEntry> zipEntries = getZipFile().entries();
-		while(zipEntries.hasMoreElements())
+		Enumeration<? extends ZipEntry> enumeration = getZipFile().entries();
+		while(enumeration.hasMoreElements())
 		{
-			ZipEntry entry = zipEntries.nextElement();
-			entries.add(entry);
+			ZipEntry entry = enumeration.nextElement();
+			zipEntries.add(entry);
 		}
 		
-		return entries;
+		return zipEntries;
 	}
 
 	private void extractOneFile(ZipEntry entry) throws Exception
@@ -409,6 +409,7 @@ public class MpzToMpfConverter extends AbstractMiradiProjectSaver
 
 	private static int REQUIRED_VERSION = 61;
 	private ZipFile zipFile;
+	private Vector<ZipEntry> entries;
 	private int convertedProjectVersion;
 	private long lastModifiedMillis;
 }
