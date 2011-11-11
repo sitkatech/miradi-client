@@ -99,11 +99,7 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 		InputStream inputStream = zipFile.getInputStream(mpzEntry);
 		try
 		{
-			String contents = CpmzProjectImporter.convert(inputStream, progressIndicator);
-			UnicodeStringReader reader = new UnicodeStringReader(contents);
-			Project project = new Project();
-			ProjectLoader.loadProject(reader, project);
-			reader.close();
+			Project project = importProjectFromMpzStream(inputStream, progressIndicator);
 			
 			progressIndicator.setStatusMessage(EAM.text("Updating ConPro Project Number..."), 1);
 			importConproProjectNumbers(zipFile, project, progressIndicator);
@@ -116,6 +112,24 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 			inputStream.close();
 		}
 		
+	}
+
+	private Project importProjectFromMpzStream(InputStream inputStream, ProgressInterface progressIndicator) throws Exception
+	{
+		File mpzFile = extractStreamToFile(inputStream, progressIndicator);
+		try
+		{
+			String contents = MpzToMpfConverter.convert(mpzFile, progressIndicator);
+			UnicodeStringReader reader = new UnicodeStringReader(contents);
+			Project project = new Project();
+			ProjectLoader.loadProject(reader, project);
+			reader.close();
+			return project;
+		}
+		finally
+		{
+			mpzFile.delete();
+		}
 	}
 
 	private void importConproProjectNumbers(ZipFile zipFile, Project projectToFill, ProgressInterface progressIndicator) throws Exception
@@ -238,18 +252,11 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 		return new FileFilter[] {new CpmzFileFilterForChooserDialog()};
 	}
 
-	public static String convert(InputStream mpzInputStream, ProgressInterface progressIndicator) throws Exception
+	public static File extractStreamToFile(InputStream mpzInputStream, ProgressInterface progressIndicator) throws Exception
 	{
-		File temporaryMpz = File.createTempFile("$$$MpzToMpfConverter", null);
-		try
-		{
-			MpzToMpfConverter.extractFile(mpzInputStream, temporaryMpz);
-			String contents = MpzToMpfConverter.convert(temporaryMpz, progressIndicator);
-			return contents;
-		}
-		finally
-		{
-			temporaryMpz.delete();
-		}
+		File temporaryFile = File.createTempFile("$$$MpzToMpfConverter", null);
+		temporaryFile.deleteOnExit();
+		MpzToMpfConverter.extractFile(mpzInputStream, temporaryFile);
+		return temporaryFile;
 	}
 }
