@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-07 03:56-0600\n"
+"POT-Creation-Date: 2011-11-11 02:20-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -5661,7 +5661,7 @@ msgstr "快速评估"
 msgid "Ratings"
 msgstr "分级 "
 
-#: Miradi/source/org/miradi/project/MpzToMpfConverter.java:172
+#: Miradi/source/org/miradi/project/MpzToMpfConverter.java:175
 msgid "Reading..."
 msgstr ""
 
@@ -5834,7 +5834,7 @@ msgstr ""
 msgid "Save..."
 msgstr ""
 
-#: Miradi/source/org/miradi/project/MpzToMpfConverter.java:170
+#: Miradi/source/org/miradi/project/MpzToMpfConverter.java:174
 msgid "Scanning..."
 msgstr ""
 
