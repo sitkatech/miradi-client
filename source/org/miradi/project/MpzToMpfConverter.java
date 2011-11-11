@@ -125,10 +125,10 @@ public class MpzToMpfConverter extends AbstractMiradiProjectSaver
 		return writer.toString();
 	}
 	
-	public static int extractVersion(ZipFile zipFileToUse) throws Exception
+	public static int extractVersion(ZipFile mpzFileToUse) throws Exception
 	{
-		// FIXME: Need to implement this method
-		return 0;
+		MpzToMpfConverter converter = new MpzToMpfConverter(mpzFileToUse, UnicodeStringWriter.create());
+		return converter.extractVersion();
 	}
 	
 	private MpzToMpfConverter(ZipFile mpzFileToUse, UnicodeStringWriter writerToUse) throws Exception
@@ -395,6 +395,24 @@ public class MpzToMpfConverter extends AbstractMiradiProjectSaver
 			
 			writeSimpleThreatRatingBundle(threatId, targetId, defaultValueId, ratings);
 		}
+	}
+	
+	private int extractVersion() throws Exception
+	{
+		String versionEntryPath = getJsonPrefix() + "version";
+		ZipEntry versionEntry = getZipFile().getEntry(versionEntryPath);
+		String versionAsString = readIntoString(versionEntry);
+		return extractVersion(versionAsString);
+	}
+	
+	private String getProjectPrefix()
+	{
+		return entries.get(0).getName();
+	}
+	
+	private String getJsonPrefix()
+	{
+		return getProjectPrefix() + "json/";
 	}
 
 	private static int findSlash(String name)
