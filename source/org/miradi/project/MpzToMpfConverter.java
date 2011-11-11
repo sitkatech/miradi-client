@@ -100,7 +100,7 @@ public class MpzToMpfConverter extends AbstractMiradiProjectSaver
 		System.out.println("Converted");
 	}
 	
-	public MpzToMpfConverter(ZipFile mpzFileToUse, UnicodeStringWriter writerToUse) throws Exception
+	private MpzToMpfConverter(ZipFile mpzFileToUse, UnicodeStringWriter writerToUse) throws Exception
 	{
 		super(writerToUse);
 		
