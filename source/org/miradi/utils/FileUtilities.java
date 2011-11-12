@@ -37,10 +37,9 @@ public class FileUtilities
 		{
 			out.write(buffer, 0, got);
 		}
-		out.close();
 	}
 
-	public static void copyStreamToFile(InputStream inputStream, File destinationFile) throws Exception
+	public static void copyStreamToFile(InputStream inputStream, File destinationFile) throws IOException
 	{
 		FileOutputStream out = new FileOutputStream(destinationFile);
 		try
@@ -51,6 +50,15 @@ public class FileUtilities
 		{
 			out.close();
 		}
+	}
+
+	public static File createTempDirectory(String nameHint) throws IOException
+	{
+		File tempDirectory = File.createTempFile("$$$" + nameHint, null);
+		tempDirectory.deleteOnExit();
+		tempDirectory.delete();
+		tempDirectory.mkdir();
+		return tempDirectory;
 	}
 
 }

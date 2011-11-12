@@ -33,17 +33,20 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Enumeration;
 import java.util.Iterator;
-import java.util.Vector;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
+import org.martus.util.DirectoryUtils;
 import org.martus.util.UnicodeStringWriter;
 import org.martus.util.UnicodeWriter;
+import org.miradi.database.DataUpgrader;
+import org.miradi.database.Manifest;
 import org.miradi.database.ProjectServer;
 import org.miradi.exceptions.UserCanceledException;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Target;
@@ -56,6 +59,7 @@ import org.miradi.utils.FileUtilities;
 import org.miradi.utils.NullProgressMeter;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.utils.Translation;
+import org.miradi.utils.ZipUtilities;
 
 public class MpzToMpfConverter
 {
@@ -107,21 +111,85 @@ public class MpzToMpfConverter
 	
 	public static final String convert(File mpzFile, ProgressInterface progressIndicator) throws Exception
 	{
-		ZipFile zip = new ZipFile(mpzFile);
+		File migratedFile = null;
+		ZipFile originalZipFile = new ZipFile(mpzFile);
+		try
+		{
+			if(extractVersion(originalZipFile) != REQUIRED_VERSION)
+				migratedFile = migrate(mpzFile, progressIndicator);
+		}
+		finally
+		{
+			originalZipFile.close();
+		}
+
+		File mpzToUse = mpzFile;
+		if(migratedFile != null)
+			mpzToUse = migratedFile;
+		
+		ZipFile zip = new ZipFile(mpzToUse);
 		try
 		{
 			MpzToMpfConverter converter = new MpzToMpfConverter(zip);
 			Project project = converter.convert(progressIndicator);
 			UnicodeStringWriter writer = UnicodeStringWriter.create();
 			ProjectSaver.saveProject(project, writer);
+
+			if(migratedFile != null)
+				migratedFile.delete();
+
 			return writer.toString();
 		}
 		finally
 		{
 			zip.close();
 		}
+		
 	}
+
+	public static File migrate(File mpzFile, ProgressInterface progressIndicator) throws Exception
+	{
+		ZipFile zipFile = new ZipFile(mpzFile);
+		try
+		{
+			File tempDirectory = FileUtilities.createTempDirectory("MigrateMPZ");
+			ZipUtilities.extractAll(zipFile, tempDirectory);
+
+			File projectDirectory = getTheOneChildDirectory(tempDirectory);
+			DataUpgrader.initializeStaticDirectory(projectDirectory);
+			DataUpgrader.upgrade(progressIndicator);
+			int versionAfterUpgrading = DataUpgrader.readDataVersion(projectDirectory);
+			if(versionAfterUpgrading != REQUIRED_VERSION)
+				throw new RuntimeException("Migration failed");
 	
+			File newMpzFile = ZipUtilities.createZipFromDirectory(tempDirectory);
+			newMpzFile.deleteOnExit();
+			DirectoryUtils.deleteEntireDirectoryTree(tempDirectory);
+			return newMpzFile;
+		}
+		finally
+		{
+			zipFile.close();
+		}
+	}
+
+	private static File getTheOneChildDirectory(File directory)
+	{
+		File[] children = directory.listFiles();
+		File result = null;
+		for(File file : children)
+		{
+			if(file.getName().startsWith("__MACOSX"))
+				continue;
+			
+			if(result != null)
+				throw new RuntimeException("Two children: " + result.getName() + " and " + file.getName());
+			result = file;
+		}
+		
+		return result;
+	}
+
 	public static int extractVersion(ZipFile mpzFileToUse) throws Exception
 	{
 		MpzToMpfConverter converter = new MpzToMpfConverter(mpzFileToUse);
@@ -131,90 +199,75 @@ public class MpzToMpfConverter
 	private MpzToMpfConverter(ZipFile mpzFileToUse) throws Exception
 	{
 		zipFile = mpzFileToUse;
-		entries = extractZipEntries();
+		projectPrefix = extractProjectPrefix();
 		
 		project = new Project();
 	}
 	
 	private Project convert(ProgressInterface progressIndicator) throws Exception
 	{
-		EAM.logWarning("MPZ converter is not yet handling quarantine");
-		
 		project.clear();
 		
-		progressIndicator.setStatusMessage(EAM.text("Scanning..."), 1);
-		progressIndicator.setStatusMessage(EAM.text("Reading..."), entries.size());
+		int steps = ObjectType.OBJECT_TYPE_COUNT + 6;
+		progressIndicator.setStatusMessage(EAM.text("Reading..."), steps);
 
-		for(int i = 0; i < entries.size(); ++i)
-		{
-			ZipEntry entry = entries.get(i);
-			if(entry == null)
-				break;
-			
-			if (!entry.isDirectory())
-				extractOneFile(entry);
+		confirmVersion();
+		progressIndicator.incrementProgress();
+		
+		convertProjectInfo();
+		progressIndicator.incrementProgress();
+		
+		convertLastModified();
+		progressIndicator.incrementProgress();
+		
+		convertBaseObjects(progressIndicator);
 
-			progressIndicator.incrementProgress();
-			if(progressIndicator.shouldExit())
-				throw new UserCanceledException();
-		}
+		convertSimpleThreatRatings();
+		progressIndicator.incrementProgress();
 
-		if(convertedProjectVersion != REQUIRED_VERSION)
-			throw new RuntimeException("Cannot convert MPZ without a version");
+		convertExceptionLog();
+		progressIndicator.incrementProgress();
+		
+		convertQuarantine();
+		progressIndicator.incrementProgress();
 		
 		return project;
 	}
-	
-	private Vector<ZipEntry> extractZipEntries()
+
+	private void confirmVersion() throws Exception
 	{
-		Vector<ZipEntry> zipEntries = new Vector<ZipEntry>();
-		
-		Enumeration<? extends ZipEntry> enumeration = getZipFile().entries();
-		while(enumeration.hasMoreElements())
-		{
-			ZipEntry entry = enumeration.nextElement();
-			zipEntries.add(entry);
-		}
-		
-		return zipEntries;
+		ZipEntry versionEntry = zipFile.getEntry(getVersionEntryPath());
+		if(versionEntry == null)
+			throw new Exception("Missing version file");
+
+		EnhancedJsonObject json = readJson(versionEntry);
+		int version = json.getInt(ProjectServer.TAG_VERSION);
+		convertedProjectVersion = version;
+		if(convertedProjectVersion != REQUIRED_VERSION)
+			throw new Exception("Cannot convert MPZ version " + convertedProjectVersion);
 	}
 
-	private void extractOneFile(ZipEntry entry) throws Exception
+	private void convertProjectInfo() throws Exception
 	{
-		String relativeFilePath = entry.getName();
-		int slashAt = findSlash(relativeFilePath);
-		relativeFilePath = relativeFilePath.substring(slashAt + 1);
+		ZipEntry projectInfoEntry = zipFile.getEntry(getProjectInfoEntryPath());
+		if(projectInfoEntry == null)
+			throw new Exception("Missing project info file");
 
-		if (relativeFilePath.startsWith(EAM.EXCEPTIONS_LOG_FILE_NAME))
-		{
-			convertExceptionLog(entry);
-			return;
-		}
+		EnhancedJsonObject json = readJson(projectInfoEntry);
+		BaseId metadataId = new BaseId(json.optString(ProjectInfo.TAG_PROJECT_METADATA_ID));
+		project.getProjectInfo().setMetadataId(metadataId);
+		BaseId highestId = new BaseId(json.optString(ProjectInfo.TAG_HIGHEST_OBJECT_ID));
+		project.getProjectInfo().getNormalIdAssigner().idTaken(highestId);
+	}
 
-		final String fileContent = readIntoString(entry);
-		
-		if (relativeFilePath.equals("json/version"))
-		{
-			if(convertedProjectVersion != 0)
-				throw new RuntimeException("Cannot convert MPZ with two versions");
-			int version = extractVersion(fileContent);
-			convertedProjectVersion = version;
-			if(convertedProjectVersion != REQUIRED_VERSION)
-				throw new RuntimeException("Cannot convert MPZ version " + convertedProjectVersion);
-		}
-		if (relativeFilePath.equals("json/project"))
-		{
-			EnhancedJsonObject json = new EnhancedJsonObject(fileContent);
-			BaseId metadataId = new BaseId(json.optString(ProjectInfo.TAG_PROJECT_METADATA_ID));
-			project.getProjectInfo().setMetadataId(metadataId);
-			BaseId highestId = new BaseId(json.optString(ProjectInfo.TAG_HIGHEST_OBJECT_ID));
-			project.getProjectInfo().getNormalIdAssigner().idTaken(highestId);
-		}
-		if (relativeFilePath.equals(ProjectServer.LAST_MODIFIED_FILE_NAME))
-		{
-			long lastModifiedMillis = System.currentTimeMillis();
+	private void convertLastModified() throws Exception
+	{
+		long lastModifiedMillis = System.currentTimeMillis();
 
-			String trimmed = fileContent.trim();
+		ZipEntry lastModifiedEntry = zipFile.getEntry(getLastModifiedEntryPath());
+		if(lastModifiedEntry != null)
+		{
+			String trimmed = readIntoString(lastModifiedEntry).trim();
 			try
 			{
 				DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");
@@ -225,17 +278,92 @@ public class MpzToMpfConverter
 			{
 				EAM.logException(e);
 			}
+		}
+		
+		project.setLastModified(lastModifiedMillis);
+		
+	}
+
+	private void convertBaseObjects(ProgressInterface progressIndicator)
+			throws Exception, UserCanceledException
+	{
+		for(int i = 0; i < ObjectType.OBJECT_TYPE_COUNT; ++i)
+		{
+			convertObjectsOfType(i);
 			
-			project.setLastModified(lastModifiedMillis);
+			progressIndicator.incrementProgress();
+			if(progressIndicator.shouldExit())
+				throw new UserCanceledException();
 		}
-		if (relativeFilePath.startsWith("json/objects") && !relativeFilePath.endsWith("manifest"))
+	}
+	
+	private void convertSimpleThreatRatings() throws Exception
+	{
+		// FIXME: This is only converting the threat framework json file, 
+		// and not all the actual ratings in the threatratings/ directory
+		EAM.logWarning("MPZ converter is not yet handling simple threat ratings");
+		
+		ZipEntry frameworkEntry = zipFile.getEntry(getThreatFrameworkEntryPath());
+		if(frameworkEntry != null)
 		{
-			writeObject(relativeFilePath, fileContent);
+			EnhancedJsonObject json = readJson(frameworkEntry);
+			writeSimpleThreatFramework(json);
 		}
-		if (relativeFilePath.equals("json/threatframework"))
-		{
-			writeSimpleThreatFramework(fileContent);
-		}
+	}
+
+	private void convertExceptionLog() throws Exception
+	{
+		String ExceptionsLogEntryName = getProjectPrefix() + EAM.EXCEPTIONS_LOG_FILE_NAME;
+		ZipEntry exceptionsEntry = zipFile.getEntry(ExceptionsLogEntryName);
+		if(exceptionsEntry == null)
+			return;
+		
+		convertExceptionLog(exceptionsEntry);
+	}
+
+	private void convertQuarantine()
+	{
+		// FIXME: Mpz convertQuarantine not implemented yet
+		EAM.logWarning("MPZ converter is not yet handling quarantine");
+	}
+
+	private void convertObjectsOfType(int type) throws Exception
+	{
+		ZipEntry manifestEntry = getManifestEntryIfAny(type);
+		if(manifestEntry == null)
+			return;
+		
+		EnhancedJsonObject json = readJson(manifestEntry);
+		Manifest manifest = new Manifest(json);
+		BaseId[] ids = manifest.getAllKeys();
+		for(int i = 0; i < ids.length; ++i)
+			convertObject(new ORef(type, ids[i]));
+	}
+
+	private void convertObject(ORef ref) throws Exception
+	{
+		String objectEntryPath = getObjectEntryPath(ref);
+		ZipEntry entry = zipFile.getEntry(objectEntryPath);
+		EnhancedJsonObject json = readJson(entry);
+		project.createObject(ref);
+		BaseObject object = BaseObject.find(project, ref);
+		object.loadFromJson(json);
+	}
+
+	private String extractProjectPrefix()
+	{
+		Enumeration<? extends ZipEntry> enumeration = getZipFile().entries();
+		if(!enumeration.hasMoreElements())
+			throw new RuntimeException("MPZ file was empty");
+		
+		ZipEntry entry = enumeration.nextElement();
+		File file = new File(entry.getName());
+		while(file.getParentFile() != null && !file.getParentFile().getName().equals(""))
+			file = file.getParentFile();
+		String path = file.getPath();
+		if(!path.endsWith("/"))
+			path = path + "/";
+		return path;
 	}
 
 	private String readIntoString(ZipEntry entry) throws Exception,
@@ -303,28 +431,8 @@ public class MpzToMpfConverter
 		return out.toByteArray();
 	}
 
-	private void writeObject(String relativeFilePath, String fileContent) throws Exception
+	private void writeSimpleThreatFramework(EnhancedJsonObject json) throws Exception
 	{
-		String[] splittedPath = relativeFilePath.split("-");
-		String[] typeId = splittedPath[1].split("/");
-		ORef ref = new ORef(Integer.parseInt(typeId[0]), new BaseId(typeId[1]));
-		EnhancedJsonObject json = new EnhancedJsonObject(fileContent);
-		BaseObject baseObject = BaseObject.createFromJson(project.getObjectManager(), ref.getObjectType(), json);
-		String[] legalTags = baseObject.getFieldTags();
-		for(int i = 0; i < legalTags.length; ++i)
-		{
-			String tag = legalTags[i];
-			String data = json.optString(tag);
-			if(data.length() == 0)
-				continue;
-
-			baseObject.setData(tag, data);
-		}
-	}
-
-	private void writeSimpleThreatFramework(String jsonContent) throws Exception
-	{
-		EnhancedJsonObject json = new EnhancedJsonObject(jsonContent);
 		Iterator iterator = json.keys();
 		while (iterator.hasNext())
 		{
@@ -349,6 +457,9 @@ public class MpzToMpfConverter
 				continue;
 			
 			int defaultValueId = jsonBundle.optInt("DefaultValueId", -1);
+			
+			// FIXME: I believe none of the following will be used, because
+			// the threatframework file doesn't actually contain any ratings
 			EnhancedJsonObject jsonRatings = jsonBundle.optJson("Values");
 			String ratings = jsonRatings.toString();
 			if(defaultValueId == -1 && ratings.equals("{}"))
@@ -364,15 +475,42 @@ public class MpzToMpfConverter
 	
 	private int extractVersion() throws Exception
 	{
-		String versionEntryPath = getJsonPrefix() + "version";
+		String versionEntryPath = getVersionEntryPath();
 		ZipEntry versionEntry = getZipFile().getEntry(versionEntryPath);
+		if(versionEntry == null)
+			throw new RuntimeException("Version not found: " + versionEntryPath);
 		String versionAsString = readIntoString(versionEntry);
 		return extractVersion(versionAsString);
+	}
+
+	private String getVersionEntryPath()
+	{
+		return getJsonPrefix() + "version";
+	}
+	
+	private String getProjectInfoEntryPath()
+	{
+		return getJsonPrefix() + "project";
+	}
+	
+	private String getLastModifiedEntryPath()
+	{
+		return getProjectPrefix() + ProjectServer.LAST_MODIFIED_FILE_NAME;
+	}
+	
+	private String getThreatFrameworkEntryPath()
+	{
+		return getJsonPrefix() + "threatframework";
+	}
+	
+	private String getThreatRatingsDirectoryEntryPath()
+	{
+		return getJsonPrefix() + "threatratings/";
 	}
 	
 	private String getProjectPrefix()
 	{
-		return entries.get(0).getName();
+		return projectPrefix;
 	}
 	
 	private String getJsonPrefix()
@@ -380,19 +518,39 @@ public class MpzToMpfConverter
 		return getProjectPrefix() + "json/";
 	}
 
-	private static int findSlash(String name)
+	private String getObjectEntryPath(ORef ref)
 	{
-		return name.indexOf('/');
+		return getObjectsDirectoryPrefix(ref.getObjectType()) + ref.getObjectId().asInt();
+	}
+
+	private EnhancedJsonObject readJson(ZipEntry entry) throws Exception,
+			UnsupportedEncodingException, ParseException
+	{
+		final String fileContent = readIntoString(entry);
+		return new EnhancedJsonObject(fileContent);
+	}
+
+	private ZipEntry getManifestEntryIfAny(int i)
+	{
+		String manifestEntryName = getObjectsDirectoryPrefix(i) + "manifest";
+		return zipFile.getEntry(manifestEntryName);
+	}
+	
+	private String getObjectsDirectoryPrefix(int objectType)
+	{
+		return getJsonPrefix() + "objects-" + objectType + "/";
 	}
 
 	private ZipFile getZipFile()
 	{
 		return zipFile;
 	}
+	
+	public static final String MAC_SPECIAL_DIRECTORY_NAME = "__MACOSX";
 
 	private static int REQUIRED_VERSION = 61;
 	private ZipFile zipFile;
-	private Vector<ZipEntry> entries;
+	private String projectPrefix;
 	private Project project;
 	private int convertedProjectVersion;
 }

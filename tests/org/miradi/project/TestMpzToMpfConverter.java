@@ -64,6 +64,26 @@ public class TestMpzToMpfConverter extends TestCaseWithProject
 		}
 	}
 	
+	public void testMigrateMpz() throws Exception
+	{
+		byte[] mpzBytes = readSampleMpz("/MarineExample-2.1.0-v35.mpz");
+		File mpz = writeToTemporaryFile(mpzBytes);
+		try
+		{
+			File migratedFile = MpzToMpfConverter.migrate(mpz, new NullProgressMeter());
+			ZipFile migratedZipFile = new ZipFile(migratedFile);
+			int endingVersion = MpzToMpfConverter.extractVersion(migratedZipFile);
+			assertEquals(61, endingVersion);
+			migratedZipFile.close();
+			migratedFile.delete();
+		}
+		finally
+		{
+			mpz.delete();
+		}
+		
+	}
+	
 	public void testConvertMpzToMpf() throws Exception
 	{
 		byte[] mpzBytes = readSampleMpz("/Sample-v61.mpz");
