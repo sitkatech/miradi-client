@@ -119,7 +119,7 @@ public class MpzToMpfConverter
 		}
 	}
 	
-	public static final String convert(ZipFile zipFileToUse, ProgressInterface progressIndicator) throws Exception
+	private static final String convert(ZipFile zipFileToUse, ProgressInterface progressIndicator) throws Exception
 	{
 		MpzToMpfConverter converter = new MpzToMpfConverter(zipFileToUse);
 		Project project = converter.convert(progressIndicator);

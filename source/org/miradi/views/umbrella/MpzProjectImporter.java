@@ -21,7 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.umbrella;
 
 import java.io.File;
-import java.util.zip.ZipFile;
 
 import javax.swing.filechooser.FileFilter;
 
@@ -77,17 +76,9 @@ public class MpzProjectImporter extends AbstractProjectImporter
 			getProgressIndicator().finished();
 		}
 		
-		private String convertMpzToMpfString(File importFile) throws Exception
+		private String convertMpzToMpfString(File mpzFileToImport) throws Exception
 		{
-			ZipFile zip = new ZipFile(importFile);
-			try
-			{
-				return MpzToMpfConverter.convert(zip, getProgressIndicator());
-			}
-			finally
-			{
-				zip.close();
-			}
+			return MpzToMpfConverter.convert(mpzFileToImport, getProgressIndicator());
 		}
 
 		File mpzFile;
