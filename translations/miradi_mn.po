@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-11 03:20-0600\n"
+"POT-Creation-Date: 2011-11-12 07:33-0600\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -516,31 +516,6 @@ msgstr ""
 "дараагийн хувилбарт боломжтой байх болно. <BR>Хэрэв танд асуулт байгаа бол, "
 "дараах хаягаар холбоо барина уу support@miradi.org.</HTML>"
 
-#: Miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:97
-msgid ""
-"<HTML>The TNC Operating Unit field has been changed from a text field to a "
-"picklist. <BR>Miradi has attemped to migrate existing data, but it may not "
-"have been successful. <BR>Please go to the Summary View, TNC tab and confirm "
-"that the Operating Unit is set correctly for this project.</HTML>"
-msgstr ""
-"<HTML>The TNC Operating Unit field has been changed from a text field to a "
-"picklist. <BR>Miradi has attemped to migrate existing data, but it may not "
-"have been successful. <BR>Please go to the Summary View, TNC tab and confirm "
-"that the Operating Unit is set correctly for this project.</HTML>"
-
-#: Miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:87
-msgid ""
-"<HTML>The TNC ecoregion field has been changed from a single text field to "
-"three picklists. <BR>Miradi has attempted to migrate the ecoregion data, but "
-"may not have been successful. <BR>Please go to the Summary View, TNC tab, "
-"and verify that the ecoregion(s) are correct for this project.</HTML>"
-msgstr ""
-"<HTML>TNC-ийн эко бүсийн тэмдэглэлтэй хэсэг бичгээр бичих ганц талбайн "
-"нүднээс сонголт хийх гурван хуудас жагсаалт болж өөрчлөгдсөн. <BR>Miradi эко "
-"бүсийн мэдээллийг шилжүүлэх оролдлого хийсэн, гэхдээ амжилтгүй болсон байж "
-"магадгүй.  <BR>Харагдацын хураангуй, TNC tab уу орно уу, улмаар энэ төслийн "
-"эко бүс зөв сонгогдсон эсэхийг шалгах. </HTML>"
-
 #: Miradi/source/org/miradi/views/diagram/PasteDoer.java:56
 msgid ""
 "<HTML>When pasting between projects, can't paste from CM to RC or vice "
@@ -962,14 +937,6 @@ msgstr ""
 "харьцаагаар хэмжигддэг. Төрөл зүйлийн хувьд бол хамгаалах объектын тоо "
 "толгойн харьцаагаар хэмжигдэнэ. </html>"
 
-#: Miradi/source/org/miradi/database/migrations/MigrationsForMiradi3.java:156
-msgid ""
-"<html>An Operating Unit for this project has been <br>superseded. Please "
-"select its replacement on the TNC Tab of the Summary Page.</html>"
-msgstr ""
-"<html>Энэ төслийн операторын баг <br>солигдсон. Дүгнэлтийн хуудсан дахь TNC-"
-"ийн Tab-аас орлуулагчийг сонгон уу.</html>"
-
 #: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:173
 msgid "<html>Import failed: <br><p> %s </p></html>"
 msgstr "<html>Import амжилтгүй болсон: <br><p> %s </p></html>"
@@ -981,40 +948,6 @@ msgid ""
 msgstr ""
 "<html>Хуучин байдалдаа эргэж ордоггүй чанар - Аюулын нөлөөг буцааж аюулд "
 "өртсөн хамгаалах объектын сэргэх түвшин. "
-
-#: Miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:123
-msgid ""
-"<html>Miradi now allows you to specify what currency is being used for "
-"budgeting, <br>and to specify Fiscal Years that are different from Calendar "
-"Years.<br>Both of these options can be changed in the Summary View, on the "
-"Planning Settings tab.<br><br>The default currency is United States dollars; "
-"the default calendar is <br>to have fiscal years equal to calendar "
-"years<br><br>If your fiscal year does not run January-December, and if you "
-"have entered <br>budget data into Miradi treating calendar years as fiscal "
-"years, your data may appear <br>off by one or more quarters. If you have a "
-"lot of budget data like this, please contact <br>the Miradi team to learn "
-"about options for realigning it to match your <br>fiscal year."
-msgstr ""
-"<html>Төсөвийг мөнгөний ямар нэгжээр тооцож зохиосныг  <br>түүнчлэн хуанлийн "
-"жилээс ялгаатай санхүүгийн жилийг Miradi танд одоо тодруулж өгнө. <br>Энэ "
-"боломжуудыг хоюуланг төлөвлөлтийн Settings tab-ын Summary View-руу орж "
-"өөрчилж болно.<br><br>Сонгосон тооцооны нэгж бол АНУ-ын доллар; сонгосон "
-"хуанли нь <br>хуанлийн жилтэй адил санхүүгийн жилтэй<br><br>Хэрэв таны "
-"санхүүгийн жил нэгээс арван хоёрдугаар сар хүртэл үргэлжилдэггүй бол, мөн "
-"хэрэв та  and if you have entered <br>Miradi-д хэрэглэдэг хуанлийн жилийг "
-"санхүүгийн жилээ болгон төсвийн мэдээллийг оруулсан бол, таны мэдээлэл "
-"<br>нэг буюу түүнээс дээш улиралд ороогүй мэт харагдах магдлалтай. Хэрэв "
-"танд төсвийн иймэрхүү мэдээлэл олон байгаа бол,<br>Miradi-ийн багтай холбоо "
-"барьж to learn about options for realigning it to match your <br>fiscal year."
-
-#: Miradi/source/org/miradi/database/migrations/MigrationsForMiradi3.java:116
-msgid ""
-"<html>One or more Overrides (High Level Estimates) have been migrated. "
-"<br><br>Any Budget overrides have been converted to Expenses, <br>and any "
-"\"Who\" overrides have been converted to Resource Assignments. <br><br>The "
-"original overrides have been inserted as text into the Details fields,<br>in "
-"case you want to refer to them. You can delete them at any time."
-msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:240
 msgid ""
@@ -1071,30 +1004,6 @@ msgid ""
 "<html>Specifying when this work item will take place using this dialog "
 "<br>will enter zeros in the appropriate time period column(s)."
 msgstr ""
-
-#: Miradi/source/org/miradi/database/migrations/MigrationsForMiradi3.java:184
-msgid ""
-"<html>This project has more than one TNC ConPro project ID. It is safe to "
-"view and make <BR>changes to this project, but the ConPro ID will not be "
-"displayed until this problem <BR>is resolved.  Please contact the Miradi "
-"Team for further assistance.  </html>"
-msgstr ""
-"<html>Энэ төсөл нь нэгээс дээш TNC ConPro төслийн ID-тэй байна. Үзэж <BR>энэ "
-"төсөлд өөрчлөлт хийх нь найдвартай, гэхдээ энэ асуудал шийдэгдтэл ConPro ID -"
-"ий дэлгэцэнд харагдахгүй <BR>.  Цаашид зааварчлага авахад Miradi-ийн багтай "
-"холбоо барин уу.  </html>"
-
-#: Miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:806
-msgid ""
-"<html>This version of Miradi has changed the Strategy rating options.<br>The "
-"Duration and Cost fields have been removed, and the <br>Impact and "
-"Feasibility fields now encompass those attribues.<br><br>Please review your "
-"Strategy ratings to ensure they are appropriate."
-msgstr ""
-"<html> Miradi-ийн энэ хувилбар нь стратегийг үнэлэх боломжуудад өөрчлөлт "
-"оруулсан.<br>Хугацаа болон Өртгийн хэсгүүд хасагдсан, буюу<br>Нөлөөлөл ба "
-"Хэрэгжих магадлалын хэсгүүд эдгээр шинжүүдийг агуулдаг болсон."
-"<br><br>Стратегийг хянан үзэж, тохирч байгаа эсэхийг баталгаажуулна уу."
 
 #: Miradi/source/org/miradi/questions/SeverityStressBasedThreatRatingQuestion.java:58
 msgid ""
@@ -2600,7 +2509,7 @@ msgstr "Товчлуур|Шилжих"
 msgid "Button|Move"
 msgstr "Товчлуур|Байрлал өөрчлөх"
 
-#: Miradi/source/org/miradi/main/SampleInstaller.java:92
+#: Miradi/source/org/miradi/main/SampleInstaller.java:91
 msgid "Button|No"
 msgstr "Товчлуур|Үгүй"
 
@@ -2640,7 +2549,7 @@ msgstr "Товчлуур|Хэвээр нь үлдээх"
 msgid "Button|Save"
 msgstr "Товчлуур|Хадгалах"
 
-#: Miradi/source/org/miradi/main/SampleInstaller.java:92
+#: Miradi/source/org/miradi/main/SampleInstaller.java:91
 msgid "Button|Yes"
 msgstr "Товчлуур|Тийм"
 
@@ -3394,7 +3303,7 @@ msgstr ""
 msgid "Do you want to attempt to import %s into Miradi?"
 msgstr "Miradi -д оруулах (Import) оролдлого хийх үү?"
 
-#: Miradi/source/org/miradi/main/SampleInstaller.java:91
+#: Miradi/source/org/miradi/main/SampleInstaller.java:90
 msgid "Do you want to install the sample project?"
 msgstr "Жишээ төслийг суулгах уу?"
 
@@ -4206,12 +4115,12 @@ msgstr "Оруулах..."
 msgid "ImportZip"
 msgstr "Zip-ийг оруулах"
 
-#: Miradi/source/org/miradi/views/umbrella/MpzProjectImporter.java:50
+#: Miradi/source/org/miradi/views/umbrella/MpzProjectImporter.java:49
 msgid "Importing MPZ"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:110
-#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:79
+#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:80
 #: Miradi/source/org/miradi/xml/xmpz/XmpzXmlImporter.java:105
 msgid "Importing..."
 msgstr ""
@@ -4279,10 +4188,6 @@ msgstr "Шалгуур үзүүлэлтүүд"
 msgid "Indicators Only"
 msgstr "Зөвхөн шалгуур үзүүлэлтүүд"
 
-#: Miradi/source/org/miradi/database/migrations/MigrationsForMiradi3.java:246
-msgid "Indicators no longer referrer to same Resource Assignment"
-msgstr ""
-
 #: Miradi/source/org/miradi/diagram/cells/FactorCell.java:94
 msgid "Indicators:"
 msgstr "Шалгуур үзүүлэлтүүд:"
@@ -4320,7 +4225,7 @@ msgstr "Суулгах"
 msgid "Install Language Pack"
 msgstr "Хэлний багц суулгах"
 
-#: Miradi/source/org/miradi/main/SampleInstaller.java:94
+#: Miradi/source/org/miradi/main/SampleInstaller.java:93
 msgid "Install Sample Project"
 msgstr "Загвар төслийг суулгах"
 
@@ -5159,10 +5064,6 @@ msgid ""
 "so they can safely repair this project."
 msgstr ""
 
-#: Miradi/source/org/miradi/database/migrations/MigrationsForMiradi3.java:237
-msgid "Missing Resource Assignment Id(s) were removed from Indicator(s)."
-msgstr ""
-
 #: Miradi/source/org/miradi/actions/jump/ActionJumpMonitoringPlanOverviewStep.java:35
 msgid "Monitoring Overview"
 msgstr "Хяналтын тойм үнэлгээ"
@@ -5408,17 +5309,6 @@ msgstr ""
 #: Miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:42
 msgid "On-Track - Ongoing, generally on track"
 msgstr ""
-
-#: Miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:1208
-msgid ""
-"One or more Goals that were associated with KEA Indicators have been "
-"deleted. Please create new Goals as needed, or use the new Future Status "
-"section of the Target Viability to store the same data."
-msgstr ""
-"ЭЧХЗ-ийн шалгуур үзүүлэлтүүдтэй төстэй нэг буюу илүү олон Зорилгууд "
-"устгагдсан. Адил мэдээллийг хадгалах үүднээс хэрэгцээтэй шинэ зорилгуудыг "
-"үүсгэх буюу Хамгаалах Объектын Амьдрах Чадварын Ирээдүйн Шинэ Статус Бүлгийг "
-"ашиглана уу."
 
 #: Miradi/source/org/miradi/questions/FosTrainingTypeQuestion.java:38
 msgid "Online"
@@ -5880,7 +5770,7 @@ msgstr "Шуурхай Үнэлгээ"
 msgid "Ratings"
 msgstr "Үнэлгээ"
 
-#: Miradi/source/org/miradi/project/MpzToMpfConverter.java:160
+#: Miradi/source/org/miradi/project/MpzToMpfConverter.java:212
 msgid "Reading..."
 msgstr ""
 
@@ -6024,7 +5914,7 @@ msgstr "Үе Шат"
 msgid "SWOT"
 msgstr "SWOT"
 
-#: Miradi/source/org/miradi/main/SampleInstaller.java:52
+#: Miradi/source/org/miradi/main/SampleInstaller.java:51
 msgid "Sample Project Installed"
 msgstr "Загвар Төслийг Суулгасан"
 
@@ -6052,10 +5942,6 @@ msgstr "Нэр, төрөл, байрлал...сольж хадгалах"
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:101
 msgid "Save..."
-msgstr ""
-
-#: Miradi/source/org/miradi/project/MpzToMpfConverter.java:159
-msgid "Scanning..."
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:60
@@ -8289,7 +8175,7 @@ msgstr "Цагийн хуваарьгүй"
 msgid "Unspecified"
 msgstr "Тодруулан заагаагүй"
 
-#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:104
+#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:105
 msgid "Updating ConPro Project Number..."
 msgstr ""
 
@@ -8623,7 +8509,7 @@ msgid ""
 "time, financial, staffing, ethical, and other constraints?"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/MpzProjectImporter.java:73
+#: Miradi/source/org/miradi/views/umbrella/MpzProjectImporter.java:72
 msgid "Writing..."
 msgstr ""
 
@@ -31719,6 +31605,95 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid ""
+#~ "<HTML>The TNC Operating Unit field has been changed from a text field to "
+#~ "a picklist. <BR>Miradi has attemped to migrate existing data, but it may "
+#~ "not have been successful. <BR>Please go to the Summary View, TNC tab and "
+#~ "confirm that the Operating Unit is set correctly for this project.</HTML>"
+#~ msgstr ""
+#~ "<HTML>The TNC Operating Unit field has been changed from a text field to "
+#~ "a picklist. <BR>Miradi has attemped to migrate existing data, but it may "
+#~ "not have been successful. <BR>Please go to the Summary View, TNC tab and "
+#~ "confirm that the Operating Unit is set correctly for this project.</HTML>"
+
+#~ msgid ""
+#~ "<HTML>The TNC ecoregion field has been changed from a single text field "
+#~ "to three picklists. <BR>Miradi has attempted to migrate the ecoregion "
+#~ "data, but may not have been successful. <BR>Please go to the Summary "
+#~ "View, TNC tab, and verify that the ecoregion(s) are correct for this "
+#~ "project.</HTML>"
+#~ msgstr ""
+#~ "<HTML>TNC-ийн эко бүсийн тэмдэглэлтэй хэсэг бичгээр бичих ганц талбайн "
+#~ "нүднээс сонголт хийх гурван хуудас жагсаалт болж өөрчлөгдсөн. <BR>Miradi "
+#~ "эко бүсийн мэдээллийг шилжүүлэх оролдлого хийсэн, гэхдээ амжилтгүй болсон "
+#~ "байж магадгүй.  <BR>Харагдацын хураангуй, TNC tab уу орно уу, улмаар энэ "
+#~ "төслийн эко бүс зөв сонгогдсон эсэхийг шалгах. </HTML>"
+
+#~ msgid ""
+#~ "<html>An Operating Unit for this project has been <br>superseded. Please "
+#~ "select its replacement on the TNC Tab of the Summary Page.</html>"
+#~ msgstr ""
+#~ "<html>Энэ төслийн операторын баг <br>солигдсон. Дүгнэлтийн хуудсан дахь "
+#~ "TNC-ийн Tab-аас орлуулагчийг сонгон уу.</html>"
+
+#~ msgid ""
+#~ "<html>Miradi now allows you to specify what currency is being used for "
+#~ "budgeting, <br>and to specify Fiscal Years that are different from "
+#~ "Calendar Years.<br>Both of these options can be changed in the Summary "
+#~ "View, on the Planning Settings tab.<br><br>The default currency is United "
+#~ "States dollars; the default calendar is <br>to have fiscal years equal to "
+#~ "calendar years<br><br>If your fiscal year does not run January-December, "
+#~ "and if you have entered <br>budget data into Miradi treating calendar "
+#~ "years as fiscal years, your data may appear <br>off by one or more "
+#~ "quarters. If you have a lot of budget data like this, please contact "
+#~ "<br>the Miradi team to learn about options for realigning it to match "
+#~ "your <br>fiscal year."
+#~ msgstr ""
+#~ "<html>Төсөвийг мөнгөний ямар нэгжээр тооцож зохиосныг  <br>түүнчлэн "
+#~ "хуанлийн жилээс ялгаатай санхүүгийн жилийг Miradi танд одоо тодруулж "
+#~ "өгнө. <br>Энэ боломжуудыг хоюуланг төлөвлөлтийн Settings tab-ын Summary "
+#~ "View-руу орж өөрчилж болно.<br><br>Сонгосон тооцооны нэгж бол АНУ-ын "
+#~ "доллар; сонгосон хуанли нь <br>хуанлийн жилтэй адил санхүүгийн "
+#~ "жилтэй<br><br>Хэрэв таны санхүүгийн жил нэгээс арван хоёрдугаар сар "
+#~ "хүртэл үргэлжилдэггүй бол, мөн хэрэв та  and if you have entered "
+#~ "<br>Miradi-д хэрэглэдэг хуанлийн жилийг санхүүгийн жилээ болгон төсвийн "
+#~ "мэдээллийг оруулсан бол, таны мэдээлэл <br>нэг буюу түүнээс дээш улиралд "
+#~ "ороогүй мэт харагдах магдлалтай. Хэрэв танд төсвийн иймэрхүү мэдээлэл "
+#~ "олон байгаа бол,<br>Miradi-ийн багтай холбоо барьж to learn about options "
+#~ "for realigning it to match your <br>fiscal year."
+
+#~ msgid ""
+#~ "<html>This project has more than one TNC ConPro project ID. It is safe to "
+#~ "view and make <BR>changes to this project, but the ConPro ID will not be "
+#~ "displayed until this problem <BR>is resolved.  Please contact the Miradi "
+#~ "Team for further assistance.  </html>"
+#~ msgstr ""
+#~ "<html>Энэ төсөл нь нэгээс дээш TNC ConPro төслийн ID-тэй байна. Үзэж "
+#~ "<BR>энэ төсөлд өөрчлөлт хийх нь найдвартай, гэхдээ энэ асуудал шийдэгдтэл "
+#~ "ConPro ID -ий дэлгэцэнд харагдахгүй <BR>.  Цаашид зааварчлага авахад "
+#~ "Miradi-ийн багтай холбоо барин уу.  </html>"
+
+#~ msgid ""
+#~ "<html>This version of Miradi has changed the Strategy rating options."
+#~ "<br>The Duration and Cost fields have been removed, and the <br>Impact "
+#~ "and Feasibility fields now encompass those attribues.<br><br>Please "
+#~ "review your Strategy ratings to ensure they are appropriate."
+#~ msgstr ""
+#~ "<html> Miradi-ийн энэ хувилбар нь стратегийг үнэлэх боломжуудад өөрчлөлт "
+#~ "оруулсан.<br>Хугацаа болон Өртгийн хэсгүүд хасагдсан, буюу<br>Нөлөөлөл ба "
+#~ "Хэрэгжих магадлалын хэсгүүд эдгээр шинжүүдийг агуулдаг болсон."
+#~ "<br><br>Стратегийг хянан үзэж, тохирч байгаа эсэхийг баталгаажуулна уу."
+
+#~ msgid ""
+#~ "One or more Goals that were associated with KEA Indicators have been "
+#~ "deleted. Please create new Goals as needed, or use the new Future Status "
+#~ "section of the Target Viability to store the same data."
+#~ msgstr ""
+#~ "ЭЧХЗ-ийн шалгуур үзүүлэлтүүдтэй төстэй нэг буюу илүү олон Зорилгууд "
+#~ "устгагдсан. Адил мэдээллийг хадгалах үүднээс хэрэгцээтэй шинэ зорилгуудыг "
+#~ "үүсгэх буюу Хамгаалах Объектын Амьдрах Чадварын Ирээдүйн Шинэ Статус "
+#~ "Бүлгийг ашиглана уу."
 
 #~ msgid ""
 #~ "<div class='WizardText'><p><table><tr><td><input type='submit' "
