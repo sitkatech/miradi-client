@@ -111,21 +111,16 @@ public class MpzToMpfConverter
 		ZipFile zip = new ZipFile(zipFile);
 		try
 		{
-			return convert(zip, progressIndicator);
+			MpzToMpfConverter converter = new MpzToMpfConverter(zip);
+			Project project = converter.convert(progressIndicator);
+			UnicodeStringWriter writer = UnicodeStringWriter.create();
+			ProjectSaver.saveProject(project, writer);
+			return writer.toString();
 		}
 		finally
 		{
 			zip.close();
 		}
-	}
-	
-	private static final String convert(ZipFile zipFileToUse, ProgressInterface progressIndicator) throws Exception
-	{
-		MpzToMpfConverter converter = new MpzToMpfConverter(zipFileToUse);
-		Project project = converter.convert(progressIndicator);
-		UnicodeStringWriter writer = UnicodeStringWriter.create();
-		ProjectSaver.saveProject(project, writer);
-		return writer.toString();
 	}
 	
 	public static int extractVersion(ZipFile mpzFileToUse) throws Exception
