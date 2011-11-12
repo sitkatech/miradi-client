@@ -20,17 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.database.migrations;
 
 import java.io.File;
-import java.util.Vector;
 
 import org.miradi.database.DataUpgrader;
 import org.miradi.database.JSONFile;
 import org.miradi.database.ObjectManifest;
 import org.miradi.ids.BaseId;
-import org.miradi.ids.IdList;
-import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefSet;
-import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class MigrationsForMiradi3
@@ -111,16 +106,18 @@ public class MigrationsForMiradi3
 	
 	public static void upgradeToVersion43() throws Exception
 	{
-		int convertedHightLevelEstimateCount = ConvertHighLevelEstimatesIntoAssignments.convertToAssignments();
-		if (convertedHightLevelEstimateCount > 0)
-			EAM.notifyDialog(EAM.text("<html>" +
-					"One or more Overrides (High Level Estimates) have been migrated. <br>" +
-					"<br>" +
-					"Any Budget overrides have been converted to Expenses, <br>" +
-					"and any \"Who\" overrides have been converted to Resource Assignments. <br>" +
-					"<br>" +
-					"The original overrides have been inserted as text into the Details fields,<br>" +
-					"in case you want to refer to them. You can delete them at any time."));
+		// NOTE: We can no longer pop up dialogs during migrations
+//		int convertedHightLevelEstimateCount = 
+		ConvertHighLevelEstimatesIntoAssignments.convertToAssignments();
+//		if (convertedHightLevelEstimateCount > 0)
+//			EAM.notifyDialog(EAM.text("<html>" +
+//					"One or more Overrides (High Level Estimates) have been migrated. <br>" +
+//					"<br>" +
+//					"Any Budget overrides have been converted to Expenses, <br>" +
+//					"and any \"Who\" overrides have been converted to Resource Assignments. <br>" +
+//					"<br>" +
+//					"The original overrides have been inserted as text into the Details fields,<br>" +
+//					"in case you want to refer to them. You can delete them at any time."));
 		
 		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 43);
 	}
@@ -151,10 +148,12 @@ public class MigrationsForMiradi3
 	
 	public static void upgradeToVersion48() throws Exception
 	{
-		CodeList operatingUnitCodesRemoved = UpdateTncOpertingUnitMigration.updateTncOperatingUnitsList();
-		if (operatingUnitCodesRemoved.size() > 0)
-			EAM.notifyDialog(EAM.text("<html>An Operating Unit for this project has been <br>" +
-									  "superseded. Please select its replacement on the TNC Tab of the Summary Page.</html>"));
+		// NOTE: We can no longer pop up dialogs during migrations
+//		CodeList operatingUnitCodesRemoved = 
+		UpdateTncOpertingUnitMigration.updateTncOperatingUnitsList();
+//		if (operatingUnitCodesRemoved.size() > 0)
+//			EAM.notifyDialog(EAM.text("<html>An Operating Unit for this project has been <br>" +
+//									  "superseded. Please select its replacement on the TNC Tab of the Summary Page.</html>"));
 	
 		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 48);
 	}
@@ -179,11 +178,13 @@ public class MigrationsForMiradi3
 	
 	public static void upgradeToVersion52() throws Exception
 	{
-		Vector<EnhancedJsonObject> duplicates = EnsureNoMoreThanOneXenodataMigration.enureNoMoreThanOneXenodata();
-		if (duplicates.size() > 1)
-			EAM.notifyDialog(EAM.text("<html>This project has more than one TNC ConPro project ID. It is safe to view and make <BR>" +
-									  "changes to this project, but the ConPro ID will not be displayed until this problem <BR>" +
-									  "is resolved.  Please contact the Miradi Team for further assistance.  </html>"));
+		// NOTE: We can no longer pop up dialogs during migrations
+//		Vector<EnhancedJsonObject> duplicates = 
+		EnsureNoMoreThanOneXenodataMigration.enureNoMoreThanOneXenodata();
+//		if (duplicates.size() > 1)
+//			EAM.notifyDialog(EAM.text("<html>This project has more than one TNC ConPro project ID. It is safe to view and make <BR>" +
+//									  "changes to this project, but the ConPro ID will not be displayed until this problem <BR>" +
+//									  "is resolved.  Please contact the Miradi Team for further assistance.  </html>"));
 		
 		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 52);
 	}
@@ -232,18 +233,22 @@ public class MigrationsForMiradi3
 	
 	public static void upgradeToVersion60() throws Exception
 	{
-		IdList updatedIndicatorIds = RemoveMissingResourceAssignmentIdsFromIndicatorsMigration.removeMissingResourceAssignmentId();
-		if ( updatedIndicatorIds.size() > 0)
-			EAM.notifyDialog(EAM.text("Missing Resource Assignment Id(s) were removed from Indicator(s)."));
+		// NOTE: We can no longer pop up dialogs during migrations
+//		IdList updatedIndicatorIds = 
+		RemoveMissingResourceAssignmentIdsFromIndicatorsMigration.removeMissingResourceAssignmentId();
+//		if ( updatedIndicatorIds.size() > 0)
+//			EAM.notifyDialog(EAM.text("Missing Resource Assignment Id(s) were removed from Indicator(s)."));
 		
 		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 60);
 	}
 	
 	public static void upgradeToVersion61() throws Exception
 	{
-		ORefSet updatedIndicatorIds = CloneIndicatorSharedResouceAssignmentsMigration.cloneSharedResourceAssignment();
-		if (updatedIndicatorIds.size() > 0)
-			EAM.notifyDialog(EAM.text("Indicators no longer referrer to same Resource Assignment"));
+		// NOTE: We can no longer pop up dialogs during migrations
+//		ORefSet updatedIndicatorIds = 
+		CloneIndicatorSharedResouceAssignmentsMigration.cloneSharedResourceAssignment();
+//		if (updatedIndicatorIds.size() > 0)
+//			EAM.notifyDialog(EAM.text("Indicators no longer referrer to same Resource Assignment"));
 		
 		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 61);
 	}
