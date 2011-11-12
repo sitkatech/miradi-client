@@ -99,7 +99,7 @@ public class MpzToMpfConverter
 		if(destination.exists())
 			throw new RuntimeException(".Miradi file already exists: " + destination.getAbsolutePath());
 		
-		String converted = convert(new ZipFile(mpzFile), new NullProgressMeter());
+		String converted = convert(mpzFile, new NullProgressMeter());
 		UnicodeWriter writer = new UnicodeWriter(destination);
 		writer.write(converted);
 		writer.close();
