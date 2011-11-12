@@ -106,6 +106,19 @@ public class MpzToMpfConverter
 		System.out.println("Converted");
 	}
 	
+	public static final String convert(File zipFile, ProgressInterface progressIndicator) throws Exception
+	{
+		ZipFile zip = new ZipFile(zipFile);
+		try
+		{
+			return convert(zip, progressIndicator);
+		}
+		finally
+		{
+			zip.close();
+		}
+	}
+	
 	public static final String convert(ZipFile zipFileToUse, ProgressInterface progressIndicator) throws Exception
 	{
 		MpzToMpfConverter converter = new MpzToMpfConverter(zipFileToUse);
@@ -142,19 +155,6 @@ public class MpzToMpfConverter
 		}
 	}
 
-	public static final String convert(File zipFile, ProgressInterface progressIndicator) throws Exception
-	{
-		ZipFile zip = new ZipFile(zipFile);
-		try
-		{
-			return convert(zip, progressIndicator);
-		}
-		finally
-		{
-			zip.close();
-		}
-	}
-	
 	private Project convert(ProgressInterface progressIndicator) throws Exception
 	{
 		EAM.logWarning("MPZ converter is not yet handling quarantine");
