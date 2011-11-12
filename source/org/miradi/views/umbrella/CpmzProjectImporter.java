@@ -48,6 +48,7 @@ import org.miradi.project.ProjectLoader;
 import org.miradi.project.ProjectSaver;
 import org.miradi.utils.ConceptualModelByTargetSplitter;
 import org.miradi.utils.CpmzFileFilterForChooserDialog;
+import org.miradi.utils.FileUtilities;
 import org.miradi.utils.GroupBoxHelper;
 import org.miradi.utils.NullProgressMeter;
 import org.miradi.utils.ProgressInterface;
@@ -256,7 +257,7 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 	{
 		File temporaryFile = File.createTempFile("$$$MpzToMpfConverter", null);
 		temporaryFile.deleteOnExit();
-		MpzToMpfConverter.extractFile(mpzInputStream, temporaryFile);
+		FileUtilities.copyStreamToFile(mpzInputStream, temporaryFile);
 		return temporaryFile;
 	}
 }
