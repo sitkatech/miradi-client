@@ -71,8 +71,7 @@ public class TestMpzToMpfConverter extends TestCaseWithProject
 		try
 		{
 			NullProgressMeter progressIndicator = new NullProgressMeter();
-			ZipFile zipFile = new ZipFile(mpz);
-			String convertedProjectString = MpzToMpfConverter.convert(zipFile, progressIndicator);
+			String convertedProjectString = MpzToMpfConverter.convert(mpz, progressIndicator);
 			
 			ProjectForTesting project2 = createProjectFromDotMiradi(convertedProjectString);
 			assertEquals(935, project2.getNormalIdAssigner().getHighestAssignedId());

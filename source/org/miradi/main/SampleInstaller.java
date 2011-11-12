@@ -22,7 +22,6 @@ package org.miradi.main;
 import java.io.File;
 import java.net.URISyntaxException;
 import java.util.Vector;
-import java.util.zip.ZipFile;
 
 import org.martus.util.UnicodeWriter;
 import org.miradi.project.MpzToMpfConverter;
@@ -74,7 +73,7 @@ public class SampleInstaller
 		UnicodeWriter writer = new UnicodeWriter(destination);
 		try
 		{
-			String converted = MpzToMpfConverter.convert(new ZipFile(projectFileToImport), progressIndicator);
+			String converted = MpzToMpfConverter.convert(projectFileToImport, progressIndicator);
 			writer.write(converted);
 		}
 		finally
