@@ -23,11 +23,9 @@ package org.miradi.project;
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -54,6 +52,7 @@ import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.utils.EnhancedJsonArray;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.utils.FileUtilities;
 import org.miradi.utils.NullProgressMeter;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.utils.Translation;
@@ -137,19 +136,6 @@ public class MpzToMpfConverter
 		project = new Project();
 	}
 	
-	public static void extractFile(InputStream mpzInputStream, File temporaryMpz) throws Exception
-	{
-		FileOutputStream out = new FileOutputStream(temporaryMpz);
-		try
-		{
-			copyStream(mpzInputStream, out);
-		}
-		finally
-		{
-			out.close();
-		}
-	}
-
 	private Project convert(ProgressInterface progressIndicator) throws Exception
 	{
 		EAM.logWarning("MPZ converter is not yet handling quarantine");
@@ -312,22 +298,11 @@ public class MpzToMpfConverter
 	{
 		InputStream inputStream = getZipFile().getInputStream(entry);
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
-		copyStream(inputStream, out);
+		FileUtilities.copyStream(inputStream, out);
 
 		return out.toByteArray();
 	}
 
-	private static void copyStream(InputStream inputStream, OutputStream out) throws IOException
-	{
-		byte[] buffer = new byte[1024];
-		int got = -1;
-		while( (got = inputStream.read(buffer)) > 0)
-		{
-			out.write(buffer, 0, got);
-		}
-		out.close();
-	}
-	
 	private void writeObject(String relativeFilePath, String fileContent) throws Exception
 	{
 		String[] splittedPath = relativeFilePath.split("-");
