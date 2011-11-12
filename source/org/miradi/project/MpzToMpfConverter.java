@@ -106,9 +106,9 @@ public class MpzToMpfConverter
 		System.out.println("Converted");
 	}
 	
-	public static final String convert(File zipFile, ProgressInterface progressIndicator) throws Exception
+	public static final String convert(File mpzFile, ProgressInterface progressIndicator) throws Exception
 	{
-		ZipFile zip = new ZipFile(zipFile);
+		ZipFile zip = new ZipFile(mpzFile);
 		try
 		{
 			MpzToMpfConverter converter = new MpzToMpfConverter(zip);
