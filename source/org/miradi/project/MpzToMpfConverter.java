@@ -45,16 +45,20 @@ import org.miradi.database.ProjectServer;
 import org.miradi.exceptions.UserCanceledException;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
-import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.Cause;
+import org.miradi.objects.Target;
+import org.miradi.project.threatrating.RatingValueSet;
+import org.miradi.project.threatrating.SimpleThreatRatingFramework;
+import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.utils.EnhancedJsonArray;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.NullProgressMeter;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.utils.Translation;
 
-public class MpzToMpfConverter extends AbstractMiradiProjectSaver
+public class MpzToMpfConverter
 {
 	public static void main(String[] args) throws Exception
 	{
@@ -104,24 +108,25 @@ public class MpzToMpfConverter extends AbstractMiradiProjectSaver
 	
 	public static final String convert(ZipFile zipFileToUse, ProgressInterface progressIndicator) throws Exception
 	{
+		MpzToMpfConverter converter = new MpzToMpfConverter(zipFileToUse);
+		Project project = converter.convert(progressIndicator);
 		UnicodeStringWriter writer = UnicodeStringWriter.create();
-		MpzToMpfConverter converter = new MpzToMpfConverter(zipFileToUse, writer);
-		converter.convert(progressIndicator);
+		ProjectSaver.saveProject(project, writer);
 		return writer.toString();
 	}
 	
 	public static int extractVersion(ZipFile mpzFileToUse) throws Exception
 	{
-		MpzToMpfConverter converter = new MpzToMpfConverter(mpzFileToUse, UnicodeStringWriter.create());
+		MpzToMpfConverter converter = new MpzToMpfConverter(mpzFileToUse);
 		return converter.extractVersion();
 	}
 	
-	private MpzToMpfConverter(ZipFile mpzFileToUse, UnicodeStringWriter writerToUse) throws Exception
+	private MpzToMpfConverter(ZipFile mpzFileToUse) throws Exception
 	{
-		super(writerToUse);
-		
 		zipFile = mpzFileToUse;
 		entries = extractZipEntries();
+		
+		project = new Project();
 	}
 	
 	public static void extractFile(InputStream mpzInputStream, File temporaryMpz) throws Exception
@@ -150,11 +155,11 @@ public class MpzToMpfConverter extends AbstractMiradiProjectSaver
 		}
 	}
 	
-	private void convert(ProgressInterface progressIndicator) throws Exception
+	private Project convert(ProgressInterface progressIndicator) throws Exception
 	{
 		EAM.logWarning("MPZ converter is not yet handling quarantine");
 		
-		writeFileHeader();
+		project.clear();
 		
 		progressIndicator.setStatusMessage(EAM.text("Scanning..."), 1);
 		progressIndicator.setStatusMessage(EAM.text("Reading..."), entries.size());
@@ -173,10 +178,10 @@ public class MpzToMpfConverter extends AbstractMiradiProjectSaver
 				throw new UserCanceledException();
 		}
 
-		writeStopMarker(lastModifiedMillis);
-		getWriter().flush();
 		if(convertedProjectVersion != REQUIRED_VERSION)
 			throw new RuntimeException("Cannot convert MPZ without a version");
+		
+		return project;
 	}
 	
 	private Vector<ZipEntry> extractZipEntries()
@@ -219,11 +224,15 @@ public class MpzToMpfConverter extends AbstractMiradiProjectSaver
 		if (relativeFilePath.equals("json/project"))
 		{
 			EnhancedJsonObject json = new EnhancedJsonObject(fileContent);
-			writeTagValue(UPDATE_PROJECT_INFO_CODE, ProjectInfo.TAG_HIGHEST_OBJECT_ID, json.optString(ProjectInfo.TAG_HIGHEST_OBJECT_ID));
-			writeTagValue(UPDATE_PROJECT_INFO_CODE, ProjectInfo.TAG_PROJECT_METADATA_ID, json.optString(ProjectInfo.TAG_PROJECT_METADATA_ID));
+			BaseId metadataId = new BaseId(json.optString(ProjectInfo.TAG_PROJECT_METADATA_ID));
+			project.getProjectInfo().setMetadataId(metadataId);
+			BaseId highestId = new BaseId(json.optString(ProjectInfo.TAG_HIGHEST_OBJECT_ID));
+			project.getProjectInfo().getNormalIdAssigner().idTaken(highestId);
 		}
 		if (relativeFilePath.equals(ProjectServer.LAST_MODIFIED_FILE_NAME))
 		{
+			long lastModifiedMillis = System.currentTimeMillis();
+
 			String trimmed = fileContent.trim();
 			try
 			{
@@ -233,8 +242,10 @@ public class MpzToMpfConverter extends AbstractMiradiProjectSaver
 			}
 			catch(Exception e)
 			{
-				lastModifiedMillis = System.currentTimeMillis();
+				EAM.logException(e);
 			}
+			
+			project.setLastModified(lastModifiedMillis);
 		}
 		if (relativeFilePath.startsWith("json/objects") && !relativeFilePath.endsWith("manifest"))
 		{
@@ -283,8 +294,7 @@ public class MpzToMpfConverter extends AbstractMiradiProjectSaver
 		
 		String exceptionLog = safeConvertUtf8BytesToString(exceptionLogBytes);
 		
-		final String xmlNewLineEncode = xmlNewLineEncode(exceptionLog);
-		writeTagValue(UPDATE_EXCEPTIONS_CODE, EXCEPTIONS_DATA_TAG, xmlNewLineEncode);
+		project.appendToExceptionLog(exceptionLog);
 	}
 
 	public static String safeConvertUtf8BytesToString(byte[] exceptionLogBytes) throws UnsupportedEncodingException
@@ -328,10 +338,8 @@ public class MpzToMpfConverter extends AbstractMiradiProjectSaver
 		String[] splittedPath = relativeFilePath.split("-");
 		String[] typeId = splittedPath[1].split("/");
 		ORef ref = new ORef(Integer.parseInt(typeId[0]), new BaseId(typeId[1]));
-		writeValue(CREATE_OBJECT_CODE, createSimpleRefString(ref));
-		final Project tempProject = new Project();
 		EnhancedJsonObject json = new EnhancedJsonObject(fileContent);
-		BaseObject baseObject = BaseObject.createFromJson(tempProject.getObjectManager(), ref.getObjectType(), json);
+		BaseObject baseObject = BaseObject.createFromJson(project.getObjectManager(), ref.getObjectType(), json);
 		String[] legalTags = baseObject.getFieldTags();
 		for(int i = 0; i < legalTags.length; ++i)
 		{
@@ -340,11 +348,7 @@ public class MpzToMpfConverter extends AbstractMiradiProjectSaver
 			if(data.length() == 0)
 				continue;
 
-			ObjectData dataField = baseObject.getField(tag);
-			if (dataField.isUserText())
-				data = xmlNewLineEncode(data);
-
-			writeRefTagValue(UPDATE_OBJECT_CODE, ref, tag, data);
+			baseObject.setData(tag, data);
 		}
 	}
 
@@ -364,6 +368,8 @@ public class MpzToMpfConverter extends AbstractMiradiProjectSaver
 
 	private void writeSimpleThreatRatingBundles(EnhancedJsonArray jsonForAllBundles) throws Exception
 	{
+		SimpleThreatRatingFramework framework = project.getSimpleThreatRatingFramework();
+		
 		for(int i = 0; i < jsonForAllBundles.length(); ++i)
 		{
 			EnhancedJsonObject jsonBundle = jsonForAllBundles.getJson(i);
@@ -378,7 +384,11 @@ public class MpzToMpfConverter extends AbstractMiradiProjectSaver
 			if(defaultValueId == -1 && ratings.equals("{}"))
 				continue;
 			
-			writeSimpleThreatRatingBundle(threatId, targetId, defaultValueId, ratings);
+			ORef threatRef = new ORef(Cause.getObjectType(), new BaseId(threatId));
+			ORef targetRef = new ORef(Target.getObjectType(), new BaseId(targetId));
+			ThreatRatingBundle bundle = framework.getBundle(threatRef, targetRef);
+			bundle.setDefaultValueId(new BaseId(defaultValueId));
+			bundle.setRating(new RatingValueSet(jsonRatings));
 		}
 	}
 	
@@ -413,6 +423,6 @@ public class MpzToMpfConverter extends AbstractMiradiProjectSaver
 	private static int REQUIRED_VERSION = 61;
 	private ZipFile zipFile;
 	private Vector<ZipEntry> entries;
+	private Project project;
 	private int convertedProjectVersion;
-	private long lastModifiedMillis;
 }
