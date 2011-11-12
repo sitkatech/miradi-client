@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-11 03:20-0600\n"
+"POT-Creation-Date: 2011-11-12 07:33-0600\n"
 "PO-Revision-Date: 2011-03-17 08:35-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -503,22 +503,6 @@ msgid ""
 "support@miradi.org.</HTML>"
 msgstr ""
 
-#: Miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:97
-msgid ""
-"<HTML>The TNC Operating Unit field has been changed from a text field to a "
-"picklist. <BR>Miradi has attemped to migrate existing data, but it may not "
-"have been successful. <BR>Please go to the Summary View, TNC tab and confirm "
-"that the Operating Unit is set correctly for this project.</HTML>"
-msgstr ""
-
-#: Miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:87
-msgid ""
-"<HTML>The TNC ecoregion field has been changed from a single text field to "
-"three picklists. <BR>Miradi has attempted to migrate the ecoregion data, but "
-"may not have been successful. <BR>Please go to the Summary View, TNC tab, "
-"and verify that the ecoregion(s) are correct for this project.</HTML>"
-msgstr ""
-
 #: Miradi/source/org/miradi/views/diagram/PasteDoer.java:56
 msgid ""
 "<HTML>When pasting between projects, can't paste from CM to RC or vice "
@@ -839,12 +823,6 @@ msgid ""
 "proportion of the target's population.</html>"
 msgstr ""
 
-#: Miradi/source/org/miradi/database/migrations/MigrationsForMiradi3.java:156
-msgid ""
-"<html>An Operating Unit for this project has been <br>superseded. Please "
-"select its replacement on the TNC Tab of the Summary Page.</html>"
-msgstr ""
-
 #: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:173
 msgid "<html>Import failed: <br><p> %s </p></html>"
 msgstr ""
@@ -853,29 +831,6 @@ msgstr ""
 msgid ""
 "<html>Irreversibility - The degree to which the effects of a threat can be "
 "reversed and the target affected by the threat restored. "
-msgstr ""
-
-#: Miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:123
-msgid ""
-"<html>Miradi now allows you to specify what currency is being used for "
-"budgeting, <br>and to specify Fiscal Years that are different from Calendar "
-"Years.<br>Both of these options can be changed in the Summary View, on the "
-"Planning Settings tab.<br><br>The default currency is United States dollars; "
-"the default calendar is <br>to have fiscal years equal to calendar "
-"years<br><br>If your fiscal year does not run January-December, and if you "
-"have entered <br>budget data into Miradi treating calendar years as fiscal "
-"years, your data may appear <br>off by one or more quarters. If you have a "
-"lot of budget data like this, please contact <br>the Miradi team to learn "
-"about options for realigning it to match your <br>fiscal year."
-msgstr ""
-
-#: Miradi/source/org/miradi/database/migrations/MigrationsForMiradi3.java:116
-msgid ""
-"<html>One or more Overrides (High Level Estimates) have been migrated. "
-"<br><br>Any Budget overrides have been converted to Expenses, <br>and any "
-"\"Who\" overrides have been converted to Resource Assignments. <br><br>The "
-"original overrides have been inserted as text into the Details fields,<br>in "
-"case you want to refer to them. You can delete them at any time."
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:240
@@ -912,22 +867,6 @@ msgstr ""
 msgid ""
 "<html>Specifying when this work item will take place using this dialog "
 "<br>will enter zeros in the appropriate time period column(s)."
-msgstr ""
-
-#: Miradi/source/org/miradi/database/migrations/MigrationsForMiradi3.java:184
-msgid ""
-"<html>This project has more than one TNC ConPro project ID. It is safe to "
-"view and make <BR>changes to this project, but the ConPro ID will not be "
-"displayed until this problem <BR>is resolved.  Please contact the Miradi "
-"Team for further assistance.  </html>"
-msgstr ""
-
-#: Miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:806
-msgid ""
-"<html>This version of Miradi has changed the Strategy rating options.<br>The "
-"Duration and Cost fields have been removed, and the <br>Impact and "
-"Feasibility fields now encompass those attribues.<br><br>Please review your "
-"Strategy ratings to ensure they are appropriate."
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/SeverityStressBasedThreatRatingQuestion.java:58
@@ -2392,7 +2331,7 @@ msgstr ""
 msgid "Button|Move"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/SampleInstaller.java:92
+#: Miradi/source/org/miradi/main/SampleInstaller.java:91
 msgid "Button|No"
 msgstr ""
 
@@ -2432,7 +2371,7 @@ msgstr ""
 msgid "Button|Save"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/SampleInstaller.java:92
+#: Miradi/source/org/miradi/main/SampleInstaller.java:91
 msgid "Button|Yes"
 msgstr ""
 
@@ -3154,7 +3093,7 @@ msgstr ""
 msgid "Do you want to attempt to import %s into Miradi?"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/SampleInstaller.java:91
+#: Miradi/source/org/miradi/main/SampleInstaller.java:90
 msgid "Do you want to install the sample project?"
 msgstr ""
 
@@ -3940,12 +3879,12 @@ msgstr ""
 msgid "ImportZip"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/MpzProjectImporter.java:50
+#: Miradi/source/org/miradi/views/umbrella/MpzProjectImporter.java:49
 msgid "Importing MPZ"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:110
-#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:79
+#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:80
 #: Miradi/source/org/miradi/xml/xmpz/XmpzXmlImporter.java:105
 msgid "Importing..."
 msgstr ""
@@ -4008,10 +3947,6 @@ msgstr ""
 msgid "Indicators Only"
 msgstr ""
 
-#: Miradi/source/org/miradi/database/migrations/MigrationsForMiradi3.java:246
-msgid "Indicators no longer referrer to same Resource Assignment"
-msgstr ""
-
 #: Miradi/source/org/miradi/diagram/cells/FactorCell.java:94
 msgid "Indicators:"
 msgstr ""
@@ -4049,7 +3984,7 @@ msgstr ""
 msgid "Install Language Pack"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/SampleInstaller.java:94
+#: Miradi/source/org/miradi/main/SampleInstaller.java:93
 msgid "Install Sample Project"
 msgstr ""
 
@@ -4867,10 +4802,6 @@ msgid ""
 "so they can safely repair this project."
 msgstr ""
 
-#: Miradi/source/org/miradi/database/migrations/MigrationsForMiradi3.java:237
-msgid "Missing Resource Assignment Id(s) were removed from Indicator(s)."
-msgstr ""
-
 #: Miradi/source/org/miradi/actions/jump/ActionJumpMonitoringPlanOverviewStep.java:35
 msgid "Monitoring Overview"
 msgstr ""
@@ -5099,13 +5030,6 @@ msgstr ""
 
 #: Miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:42
 msgid "On-Track - Ongoing, generally on track"
-msgstr ""
-
-#: Miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:1208
-msgid ""
-"One or more Goals that were associated with KEA Indicators have been "
-"deleted. Please create new Goals as needed, or use the new Future Status "
-"section of the Target Viability to store the same data."
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/FosTrainingTypeQuestion.java:38
@@ -5551,7 +5475,7 @@ msgstr ""
 msgid "Ratings"
 msgstr ""
 
-#: Miradi/source/org/miradi/project/MpzToMpfConverter.java:160
+#: Miradi/source/org/miradi/project/MpzToMpfConverter.java:212
 msgid "Reading..."
 msgstr ""
 
@@ -5692,7 +5616,7 @@ msgstr ""
 msgid "SWOT"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/SampleInstaller.java:52
+#: Miradi/source/org/miradi/main/SampleInstaller.java:51
 msgid "Sample Project Installed"
 msgstr ""
 
@@ -5720,10 +5644,6 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:101
 msgid "Save..."
-msgstr ""
-
-#: Miradi/source/org/miradi/project/MpzToMpfConverter.java:159
-msgid "Scanning..."
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:60
@@ -7817,7 +7737,7 @@ msgstr ""
 msgid "Unspecified"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:104
+#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:105
 msgid "Updating ConPro Project Number..."
 msgstr ""
 
@@ -8106,7 +8026,7 @@ msgid ""
 "time, financial, staffing, ethical, and other constraints?"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/MpzProjectImporter.java:73
+#: Miradi/source/org/miradi/views/umbrella/MpzProjectImporter.java:72
 msgid "Writing..."
 msgstr ""
 
