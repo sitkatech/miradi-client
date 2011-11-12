@@ -82,21 +82,25 @@ public class MigrationsOlderThanMiradiVersion2
 
 	public static void upgradeToVersion33() throws Exception
 	{
-		boolean isNonBlankEcoRegions = copyTncEcoRegionFieldOverToDividedTerrestrailMarineFreshwaterEcoRegions(); 
-		if (isNonBlankEcoRegions)
-			EAM.notifyDialog(EAM.text("<HTML>The TNC ecoregion field has been changed from a single text field to three picklists. <BR>" +
-									  "Miradi has attempted to migrate the ecoregion data, but may not have been successful. <BR>" +
-									  "Please go to the Summary View, TNC tab, and verify that the ecoregion(s) are correct for this project.</HTML>"));
+		// NOTE: We can no longer pop up dialogs during migrations
+//		boolean isNonBlankEcoRegions = 
+		copyTncEcoRegionFieldOverToDividedTerrestrailMarineFreshwaterEcoRegions(); 
+//		if (isNonBlankEcoRegions)
+//			EAM.notifyDialog(EAM.text("<HTML>The TNC ecoregion field has been changed from a single text field to three picklists. <BR>" +
+//									  "Miradi has attempted to migrate the ecoregion data, but may not have been successful. <BR>" +
+//									  "Please go to the Summary View, TNC tab, and verify that the ecoregion(s) are correct for this project.</HTML>"));
 		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 33);
 	}
 
 	public static void upgradeToVersion32() throws Exception
 	{
-		boolean isNonBlankOperatingUnit = copyTncOperatingUnitsFieldDataOverToNewPickListField();
-		if (isNonBlankOperatingUnit)
-			EAM.notifyDialog(EAM.text("<HTML>The TNC Operating Unit field has been changed from a text field to a picklist. <BR>" +
-									  "Miradi has attemped to migrate existing data, but it may not have been successful. <BR>" +
-									  "Please go to the Summary View, TNC tab and confirm that the Operating Unit is set correctly for this project.</HTML>"));
+		// NOTE: We can no longer pop up dialogs during migrations
+//		boolean isNonBlankOperatingUnit = 
+		copyTncOperatingUnitsFieldDataOverToNewPickListField();
+//		if (isNonBlankOperatingUnit)
+//			EAM.notifyDialog(EAM.text("<HTML>The TNC Operating Unit field has been changed from a text field to a picklist. <BR>" +
+//									  "Miradi has attemped to migrate existing data, but it may not have been successful. <BR>" +
+//									  "Please go to the Summary View, TNC tab and confirm that the Operating Unit is set correctly for this project.</HTML>"));
 		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 32);
 	}
 
@@ -120,21 +124,22 @@ public class MigrationsOlderThanMiradiVersion2
 
 	public static void upgradeToVersion28() throws Exception
 	{
-		EAM.notifyDialog(EAM.text("<html>" +
-				"Miradi now allows you to specify what currency is being used for budgeting, " +
-				"<br>and to specify Fiscal Years that are different from Calendar Years." +
-				"<br>Both of these options can be changed in the Summary View, on the Planning Settings tab." +
-				"<br>" +
-				"<br>The default currency is United States dollars; the default calendar is " +
-				"<br>to have fiscal years equal to calendar years" +
-				"<br>" +
-				"<br>If your fiscal year does not run January-December, and if you have entered " +
-				"<br>budget data into Miradi treating calendar years as fiscal years, your data may appear " +
-				"<br>off by one or more quarters. If you have a lot of budget data like this, please contact " +
-				"<br>the Miradi team to learn about options for realigning it to match your " +
-				"<br>fiscal year." +
-				""
-				));
+		// NOTE: We can no longer pop up dialogs during migrations
+//		EAM.notifyDialog(EAM.text("<html>" +
+//				"Miradi now allows you to specify what currency is being used for budgeting, " +
+//				"<br>and to specify Fiscal Years that are different from Calendar Years." +
+//				"<br>Both of these options can be changed in the Summary View, on the Planning Settings tab." +
+//				"<br>" +
+//				"<br>The default currency is United States dollars; the default calendar is " +
+//				"<br>to have fiscal years equal to calendar years" +
+//				"<br>" +
+//				"<br>If your fiscal year does not run January-December, and if you have entered " +
+//				"<br>budget data into Miradi treating calendar years as fiscal years, your data may appear " +
+//				"<br>off by one or more quarters. If you have a lot of budget data like this, please contact " +
+//				"<br>the Miradi team to learn about options for realigning it to match your " +
+//				"<br>fiscal year." +
+//				""
+//				));
 		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 28);
 	}
 
@@ -688,7 +693,8 @@ public class MigrationsOlderThanMiradiVersion2
 		if (isTncCountryCodeBlank())
 			return;
 			
-		EAM.notifyDialog("<HTML>The Country field on the TNC tab has been replaced by a Countries <BR>field on the Location tab. Please ensure that the new Countries field is correct for this project.</HTML>");
+		// NOTE: We can no longer pop up dialogs during migrations
+//		EAM.notifyDialog("<HTML>The Country field on the TNC tab has been replaced by a Countries <BR>field on the Location tab. Please ensure that the new Countries field is correct for this project.</HTML>");
 	}
 
 	public static boolean isTncCountryCodeBlank() throws Exception
@@ -803,12 +809,13 @@ public class MigrationsOlderThanMiradiVersion2
 
 	public static void notifyUserOfDeletedDuratingAndCostFields()
 	{
-		EAM.notifyDialog(EAM.text("<html>" +
-				"This version of Miradi has changed the Strategy rating options.<br>" +
-				"The Duration and Cost fields have been removed, and the <br>" +
-				"Impact and Feasibility fields now encompass those attribues.<br>" +
-				"<br>" +
-				"Please review your Strategy ratings to ensure they are appropriate."));
+		// NOTE: We can no longer pop up dialogs during migrations
+//		EAM.notifyDialog(EAM.text("<html>" +
+//				"This version of Miradi has changed the Strategy rating options.<br>" +
+//				"The Duration and Cost fields have been removed, and the <br>" +
+//				"Impact and Feasibility fields now encompass those attribues.<br>" +
+//				"<br>" +
+//				"Please review your Strategy ratings to ensure they are appropriate."));
 	}
 
 	public static void createThreatStressRatingsForTargetThreatLinks() throws Exception
@@ -1202,13 +1209,15 @@ public class MigrationsOlderThanMiradiVersion2
 
 	private static void possiblyNotifyUserAfterUpgradingToVersion19() throws Exception
 	{
-		BaseId[] newGoalIds = removeGoalsFromIndicators(); 
-		if (newGoalIds.length > 0)
-		{
-			EAM.notifyDialog(EAM.text("One or more Goals that were associated with KEA Indicators have been deleted. " +
-									"Please create new Goals as needed, or use the new Future Status section " +
-									"of the Target Viability to store the same data."));
-		}
+		// NOTE: We can no longer pop up dialogs during migrations
+//		BaseId[] newGoalIds = 
+		removeGoalsFromIndicators(); 
+//		if (newGoalIds.length > 0)
+//		{
+//			EAM.notifyDialog(EAM.text("One or more Goals that were associated with KEA Indicators have been deleted. " +
+//									"Please create new Goals as needed, or use the new Future Status section " +
+//									"of the Target Viability to store the same data."));
+//		}
 	}
 
 	public static BaseId[] removeGoalsFromIndicators() throws Exception
