@@ -26,11 +26,16 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.Collection;
 import java.util.zip.ZipFile;
 
 import org.martus.util.UnicodeStringReader;
+import org.miradi.ids.BaseId;
+import org.miradi.ids.FactorId;
 import org.miradi.main.ResourcesHandler;
 import org.miradi.main.TestCaseWithProject;
+import org.miradi.project.threatrating.SimpleThreatRatingFramework;
+import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.utils.NullProgressMeter;
 
 public class TestMpzToMpfConverter extends TestCaseWithProject
@@ -95,13 +100,19 @@ public class TestMpzToMpfConverter extends TestCaseWithProject
 			
 			ProjectForTesting project2 = createProjectFromDotMiradi(convertedProjectString);
 			assertEquals(935, project2.getNormalIdAssigner().getHighestAssignedId());
+			
+			SimpleThreatRatingFramework simpleThreatRatingFramework = project2.getSimpleThreatRatingFramework();
+			Collection<ThreatRatingBundle> bundles = simpleThreatRatingFramework.getAllBundles();
+			assertEquals("Didn't convert simple threat ratings?", 31, bundles.size());
+			ThreatRatingBundle bundle = simpleThreatRatingFramework.getBundle(new FactorId(41), new FactorId(39));
+			assertEquals("Didn't convert actual threat ratings?", new BaseId(6), bundle.getValueId(new BaseId(3)));
+
 			//FIXME: Need to spot-check various other items
 			// text field with newlines
 			// numeric field
 			// date field
 			// choice field
 			// reflist
-			// simple threat rating bundle values
 			// ...
 			
 			final int expectedSizeAfterTruncationOfSampleException = 4731;

@@ -32,7 +32,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Enumeration;
-import java.util.Iterator;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
@@ -299,10 +298,6 @@ public class MpzToMpfConverter
 	
 	private void convertSimpleThreatRatings() throws Exception
 	{
-		// FIXME: This is only converting the threat framework json file, 
-		// and not all the actual ratings in the threatratings/ directory
-		EAM.logWarning("MPZ converter is not yet handling simple threat ratings");
-		
 		ZipEntry frameworkEntry = zipFile.getEntry(getThreatFrameworkEntryPath());
 		if(frameworkEntry != null)
 		{
@@ -433,44 +428,38 @@ public class MpzToMpfConverter
 
 	private void writeSimpleThreatFramework(EnhancedJsonObject json) throws Exception
 	{
-		Iterator iterator = json.keys();
-		while (iterator.hasNext())
+		EnhancedJsonArray bundleKeysArray = json.getJsonArray("BundleKeys");
+		for(int i = 0; i < bundleKeysArray.length(); ++i)
 		{
-			String tag = (String)iterator.next();
-			if(tag.equals("BundleKeys"))
-			{
-				writeSimpleThreatRatingBundles(json.getJsonArray(tag));
-			}
-		}
-	}
-
-	private void writeSimpleThreatRatingBundles(EnhancedJsonArray jsonForAllBundles) throws Exception
-	{
-		SimpleThreatRatingFramework framework = project.getSimpleThreatRatingFramework();
-		
-		for(int i = 0; i < jsonForAllBundles.length(); ++i)
-		{
-			EnhancedJsonObject jsonBundle = jsonForAllBundles.getJson(i);
-			int threatId = jsonBundle.getInt("BundleThreatId");
-			int targetId = jsonBundle.getInt("BundleTargetId");
+			EnhancedJsonObject jsonKeyBundle = bundleKeysArray.getJson(i);
+			
+			int threatId = jsonKeyBundle.getInt("BundleThreatId");
+			int targetId = jsonKeyBundle.getInt("BundleTargetId");
 			if(threatId < 0 || targetId < 0)
 				continue;
 			
-			int defaultValueId = jsonBundle.optInt("DefaultValueId", -1);
-			
-			// FIXME: I believe none of the following will be used, because
-			// the threatframework file doesn't actually contain any ratings
-			EnhancedJsonObject jsonRatings = jsonBundle.optJson("Values");
-			String ratings = jsonRatings.toString();
-			if(defaultValueId == -1 && ratings.equals("{}"))
-				continue;
-			
-			ORef threatRef = new ORef(Cause.getObjectType(), new BaseId(threatId));
-			ORef targetRef = new ORef(Target.getObjectType(), new BaseId(targetId));
-			ThreatRatingBundle bundle = framework.getBundle(threatRef, targetRef);
-			bundle.setDefaultValueId(new BaseId(defaultValueId));
-			bundle.setRating(new RatingValueSet(jsonRatings));
+			writeSimpleThreatRatingBundle(threatId, targetId);
 		}
+	}
+
+	private void writeSimpleThreatRatingBundle(int threatId, int targetId) throws Exception
+	{
+		SimpleThreatRatingFramework framework = project.getSimpleThreatRatingFramework();
+		
+		String bundleEntryPath = getBundleEntryPath(threatId, targetId);
+		ZipEntry entry = zipFile.getEntry(bundleEntryPath);
+		if(entry == null)
+			throw new Exception("Missing simple threat rating bundle: " + bundleEntryPath);
+		
+		EnhancedJsonObject jsonBundle = readJson(entry);
+		int defaultValueId = jsonBundle.getInt("DefaultValueId");
+		EnhancedJsonObject jsonRatings = jsonBundle.getJson("Values");
+		
+		ORef threatRef = new ORef(Cause.getObjectType(), new BaseId(threatId));
+		ORef targetRef = new ORef(Target.getObjectType(), new BaseId(targetId));
+		ThreatRatingBundle bundle = framework.getBundle(threatRef, targetRef);
+		bundle.setDefaultValueId(new BaseId(defaultValueId));
+		bundle.setRating(new RatingValueSet(jsonRatings));
 	}
 	
 	private int extractVersion() throws Exception
@@ -501,6 +490,11 @@ public class MpzToMpfConverter
 	private String getThreatFrameworkEntryPath()
 	{
 		return getJsonPrefix() + "threatframework";
+	}
+	
+	private String getBundleEntryPath(int threatId, int targetId)
+	{
+		return getThreatRatingsDirectoryEntryPath() + threatId + "-" + targetId;
 	}
 	
 	private String getThreatRatingsDirectoryEntryPath()
