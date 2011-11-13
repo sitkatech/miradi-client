@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-12 07:33-0600\n"
+"POT-Creation-Date: 2011-11-12 22:48-0600\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -5770,7 +5770,7 @@ msgstr "Шуурхай Үнэлгээ"
 msgid "Ratings"
 msgstr "Үнэлгээ"
 
-#: Miradi/source/org/miradi/project/MpzToMpfConverter.java:212
+#: Miradi/source/org/miradi/project/MpzToMpfConverter.java:211
 msgid "Reading..."
 msgstr ""
 

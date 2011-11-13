@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-12 07:33-0600\n"
+"POT-Creation-Date: 2011-11-12 22:48-0600\n"
 "PO-Revision-Date: 2011-04-05 11:46+0100\n"
 "Last-Translator: Emanuela Leonardi <e.leonardi@gmail.com>\n"
 "Language-Team: none\n"
@@ -5867,7 +5867,7 @@ msgstr "Évaluation rapide"
 msgid "Ratings"
 msgstr "Classements"
 
-#: Miradi/source/org/miradi/project/MpzToMpfConverter.java:212
+#: Miradi/source/org/miradi/project/MpzToMpfConverter.java:211
 msgid "Reading..."
 msgstr ""
 
