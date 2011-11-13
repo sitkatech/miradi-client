@@ -316,10 +316,15 @@ public class MpzToMpfConverter
 		convertExceptionLog(exceptionsEntry);
 	}
 
-	private void convertQuarantine()
+	private void convertQuarantine() throws Exception
 	{
-		// FIXME: Mpz convertQuarantine not implemented yet
-		EAM.logWarning("MPZ converter is not yet handling quarantine");
+		String quarantineEntryPath = getProjectPrefix() + "DeletedOrphans.txt";
+		ZipEntry quarantineEntry = zipFile.getEntry(quarantineEntryPath);
+		if(quarantineEntry == null)
+			return;
+		
+		String contents = readIntoString(quarantineEntry);
+		project.appendToQuarantineFile(contents);
 	}
 
 	private void convertObjectsOfType(int type) throws Exception
