@@ -546,8 +546,6 @@ public class MpzToMpfConverter
 		return zipFile;
 	}
 	
-	public static final String MAC_SPECIAL_DIRECTORY_NAME = "__MACOSX";
-
 	private static int REQUIRED_VERSION = 61;
 	private ZipFile zipFile;
 	private String projectPrefix;
