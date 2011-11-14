@@ -22,10 +22,7 @@ package org.miradi.database;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 import org.martus.util.UnicodeReader;
 import org.martus.util.UnicodeWriter;
@@ -33,15 +30,6 @@ import org.miradi.main.EAM;
 
 public class ProjectServer
 {
-	public Set<String> getListOfProjectsIn(String directory) throws Exception
-	{
-		File directoryFile = new File(directory);
-		String[] projectNames = directoryFile.list();
-		if(projectNames == null)
-			projectNames = new String[0];
-		return new HashSet<String>(Arrays.asList(projectNames));
-	}
-
 	private static boolean isExistingProject(File projectDirectory) throws Exception
 	{
 		if(projectDirectory == null)

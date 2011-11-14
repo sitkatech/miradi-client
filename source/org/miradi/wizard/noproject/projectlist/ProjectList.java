@@ -20,7 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.wizard.noproject.projectlist;
 
 import java.io.File;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Vector;
 
 import javax.swing.BorderFactory;
@@ -41,7 +44,6 @@ public class ProjectList extends JPanel
 {
 	public ProjectList(ProjectServer databaseToUse, HyperlinkHandler handlerToUse) throws Exception
 	{
-		database = databaseToUse;
 		handler = handlerToUse;
 
 		int COL_GUTTER = 5;
@@ -60,7 +62,7 @@ public class ProjectList extends JPanel
 		add(new TableHeadingText("Project Filename"));
 		add(new TableHeadingText("Last Modified"));
 		
-		Vector<String> projectNames = new Vector<String>(database.getListOfProjectsIn(""));
+		Vector<String> projectNames = new Vector<String>(ProjectList.getListOfProjectsIn(""));
 		Collections.sort(projectNames);
 		for(String name : projectNames)
 		{
@@ -81,6 +83,15 @@ public class ProjectList extends JPanel
 
 	}
 	
+	public static Set<String> getListOfProjectsIn(String directory) throws Exception
+	{
+		File directoryFile = new File(directory);
+		String[] projectNames = directoryFile.list();
+		if(projectNames == null)
+			projectNames = new String[0];
+		return new HashSet<String>(Arrays.asList(projectNames));
+	}
+
 	class HtmlLabel extends PanelTitleLabel
 	{
 		public HtmlLabel(String text)
@@ -98,6 +109,5 @@ public class ProjectList extends JPanel
 		
 	}
 
-	private ProjectServer database;
 	private HyperlinkHandler handler;
 }
