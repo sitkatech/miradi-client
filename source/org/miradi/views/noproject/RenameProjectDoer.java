@@ -22,7 +22,7 @@ package org.miradi.views.noproject;
 import java.io.File;
 import java.io.IOException;
 
-import org.miradi.database.ProjectServer;
+import org.miradi.database.LegacyProjectUtilities;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
@@ -92,7 +92,7 @@ public class RenameProjectDoer
 	
 	private static boolean projectExists(File file) throws Exception
 	{
-		if(ProjectServer.isExistingLocalProject(file))
+		if(LegacyProjectUtilities.isExistingLocalProject(file))
 			return true;
 		
 		if(file.exists())

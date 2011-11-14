@@ -28,7 +28,7 @@ import org.martus.util.UnicodeReader;
 import org.martus.util.UnicodeWriter;
 import org.miradi.main.EAM;
 
-public class ProjectServer
+public class LegacyProjectUtilities
 {
 	public static boolean isExistingLocalProject(File projectDirectory) throws Exception
 	{
@@ -59,7 +59,7 @@ public class ProjectServer
 				return readFile(projectDirectory, lastModifiedTimeFile);
 			
 			long lastModifiedMillisFromOperatingSystem = projectDirectory.lastModified();
-			String lastModifiedTimeFromOperatingSystem = ProjectServer.timestampToString(lastModifiedMillisFromOperatingSystem);
+			String lastModifiedTimeFromOperatingSystem = LegacyProjectUtilities.timestampToString(lastModifiedMillisFromOperatingSystem);
 			writeFile(projectDirectory, lastModifiedTimeFile, lastModifiedTimeFromOperatingSystem);
 			return lastModifiedTimeFromOperatingSystem;
 		}

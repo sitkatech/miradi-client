@@ -28,7 +28,7 @@ import java.util.Vector;
 
 import org.martus.util.UnicodeStringWriter;
 import org.martus.util.UnicodeWriter;
-import org.miradi.database.ProjectServer;
+import org.miradi.database.LegacyProjectUtilities;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -89,7 +89,7 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 
 	private void writeLastModified() throws Exception
 	{
-		writeTagValue(UPDATE_LAST_MODIFIED_TIME_CODE, LAST_MODIFIED_TAG, ProjectServer.timestampToString(getProject().getLastModifiedTime()));
+		writeTagValue(UPDATE_LAST_MODIFIED_TIME_CODE, LAST_MODIFIED_TAG, LegacyProjectUtilities.timestampToString(getProject().getLastModifiedTime()));
 	}
 
 	private void writeProjectInfo() throws Exception
@@ -100,7 +100,7 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 
 	private void writeSchemaVersion() throws Exception
 	{
-		writeTagValue(UPDATE_PROJECT_VERSION_CODE, "Version", Integer.toString(ProjectServer.DATA_VERSION));
+		writeTagValue(UPDATE_PROJECT_VERSION_CODE, "Version", Integer.toString(LegacyProjectUtilities.DATA_VERSION));
 	}
 
 	private void writeAllQuarantinedData() throws Exception

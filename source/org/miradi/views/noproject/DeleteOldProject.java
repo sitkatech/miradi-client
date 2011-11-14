@@ -23,7 +23,7 @@ import java.io.File;
 
 import org.martus.util.DirectoryLock;
 import org.martus.util.DirectoryUtils;
-import org.miradi.database.ProjectServer;
+import org.miradi.database.LegacyProjectUtilities;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
@@ -55,7 +55,7 @@ public class DeleteOldProject
 
 	private static String getDeleteMessage(File projectToDelete) throws Exception
 	{
-		if (ProjectServer.isExistingLocalProject(projectToDelete))
+		if (LegacyProjectUtilities.isExistingLocalProject(projectToDelete))
 			return EAM.text("Are you sure you want to delete this old-format Miradi project? ");
 		
 		return EAM.text("Are you sure you want to delete this folder and its contents, including all subfolders?");

@@ -44,7 +44,7 @@ import org.martus.swing.UiList;
 import org.martus.swing.UiScrollPane;
 import org.martus.swing.UiTextField;
 import org.martus.util.DirectoryUtils;
-import org.miradi.database.ProjectServer;
+import org.miradi.database.LegacyProjectUtilities;
 import org.miradi.dialogs.base.DialogWithButtonBar;
 import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.fieldComponents.PanelButton;
@@ -291,7 +291,7 @@ public class CreateProjectDialog extends DialogWithButtonBar implements ActionLi
 				return;
 			}
 
-			if (!ProjectServer.isExistingLocalProject(getSelectedFile())) 
+			if (!LegacyProjectUtilities.isExistingLocalProject(getSelectedFile())) 
 			{
 				String body = EAM.text("File exists: Cannot overwrite a non project folder");
 				EAM.errorDialog(body);

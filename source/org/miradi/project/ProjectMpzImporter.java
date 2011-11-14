@@ -29,7 +29,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 import org.martus.util.DirectoryUtils;
-import org.miradi.database.ProjectServer;
+import org.miradi.database.LegacyProjectUtilities;
 import org.miradi.main.EAM;
 
 public class ProjectMpzImporter
@@ -67,7 +67,7 @@ public class ProjectMpzImporter
 	private static void validateAndCopyProject(File homeDirectory, String newProjectFilename, File tempProjectDirectory) throws Exception
 	{
 		// TODO: Find a better test for whether or not the import failed? 
-		if (ProjectServer.isExistingLocalProject(tempProjectDirectory))
+		if (LegacyProjectUtilities.isExistingLocalProject(tempProjectDirectory))
 		{
 			File destinationProjectDirectory = new File(homeDirectory,newProjectFilename);
 			DirectoryUtils.copyDirectoryTree(tempProjectDirectory, destinationProjectDirectory);

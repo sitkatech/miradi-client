@@ -21,7 +21,7 @@ package org.miradi.wizard.noproject;
 
 import java.io.File;
 
-import org.miradi.database.ProjectServer;
+import org.miradi.database.LegacyProjectUtilities;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.FileSystemProjectSorter;
 
@@ -43,7 +43,7 @@ public class FileSystemDirectoryNode extends FileSystemTreeNode
 	{
 		try
 		{
-			if (ProjectServer.isExistingLocalProject(file))
+			if (LegacyProjectUtilities.isExistingLocalProject(file))
 				return false;
 			
 			if (isExternalReportsDirectory(file))

@@ -103,7 +103,7 @@ public class DataUpgrader
 			EAM.logException(e);
 		}
 		
-		if(versionAfterUpgrading == ProjectServer.DATA_VERSION)
+		if(versionAfterUpgrading == LegacyProjectUtilities.DATA_VERSION)
 			EAM.notifyDialog(EAM.text("Project was migrated to the current data format"));
 		else
 			EAM.errorDialog(EAM.text("Attempt to migrate project to the current data format FAILED\n" +
@@ -139,7 +139,7 @@ public class DataUpgrader
 		if(DataUpgrader.readDataVersion(getTopDirectory()) < 15)
 			throw new MigrationTooOldException();
 
-		int numberOfMigrations = ProjectServer.DATA_VERSION - initialVersion;
+		int numberOfMigrations = LegacyProjectUtilities.DATA_VERSION - initialVersion;
 		progressIndicator.setStatusMessage(EAM.text("Migrating..."), numberOfMigrations);
 
 		DirectoryLock migrationLock = new DirectoryLock();
@@ -522,8 +522,8 @@ public class DataUpgrader
 
 	private  static int readLocalDataVersion(File projectDirectory) throws Exception
 	{
-		File versionFile = ProjectServer.getRelativeVersionFile();
-		if(!ProjectServer.doesFileExist(projectDirectory, versionFile))
+		File versionFile = LegacyProjectUtilities.getRelativeVersionFile();
+		if(!LegacyProjectUtilities.doesFileExist(projectDirectory, versionFile))
 			throw new RuntimeException("No version file: " + versionFile);
 		JSONObject version = DataUpgrader.readRelativeJsonFile(projectDirectory, versionFile);
 		int dataVersion = version.getInt(DataUpgrader.TAG_VERSION);
@@ -533,12 +533,12 @@ public class DataUpgrader
 	private  static void writeLocalDataVersion(File projectDirectory, int versionToWrite) throws Exception
 	{
 		EnhancedJsonObject version = DataUpgrader.createVersionJson(versionToWrite);
-		DataUpgrader.writeRelativeJsonFile(projectDirectory, ProjectServer.getRelativeVersionFile(), version);
+		DataUpgrader.writeRelativeJsonFile(projectDirectory, LegacyProjectUtilities.getRelativeVersionFile(), version);
 	}
 
 	private static void writeRelativeJsonFile(File projectDirectory, File relativePath, EnhancedJsonObject json) throws Exception
 	{
-		ProjectServer.writeFile(projectDirectory, relativePath, json.toString());
+		LegacyProjectUtilities.writeFile(projectDirectory, relativePath, json.toString());
 	}
 
 	private static EnhancedJsonObject createVersionJson(int versionToWrite)
@@ -550,7 +550,7 @@ public class DataUpgrader
 
 	private static EnhancedJsonObject readRelativeJsonFile(File projectDirectory, File relativeFile) throws Exception, ParseException
 	{
-		String contents = ProjectServer.readFile(projectDirectory, relativeFile);
+		String contents = LegacyProjectUtilities.readFile(projectDirectory, relativeFile);
 		return new EnhancedJsonObject(contents);
 	}
 
