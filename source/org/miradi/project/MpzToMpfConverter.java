@@ -41,6 +41,7 @@ import org.martus.util.UnicodeWriter;
 import org.miradi.database.DataUpgrader;
 import org.miradi.database.Manifest;
 import org.miradi.database.ProjectServer;
+import org.miradi.exceptions.FutureSchemaVersionException;
 import org.miradi.exceptions.UserCanceledException;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
@@ -114,7 +115,11 @@ public class MpzToMpfConverter
 		ZipFile originalZipFile = new ZipFile(mpzFile);
 		try
 		{
-			if(extractVersion(originalZipFile) != REQUIRED_VERSION)
+			int version = extractVersion(originalZipFile);
+			if(version > REQUIRED_VERSION)
+				throw new FutureSchemaVersionException();
+			
+			if(version < REQUIRED_VERSION)
 				migratedFile = migrate(mpzFile, progressIndicator);
 		}
 		finally
