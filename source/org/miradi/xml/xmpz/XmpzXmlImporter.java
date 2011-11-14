@@ -102,7 +102,7 @@ public class XmpzXmlImporter extends AbstractXmlImporter implements XmpzXmlConst
 		final int DELETE_ORPHANS_PROGRESS_TASK = 1;
 		final int IMPORT_THREAT_STRESS_RATING_PROGERESS_TASK = 1;
 		final int TOTAL_CUSTOM_TASK_COUNT = DELETE_ORPHANS_PROGRESS_TASK + IMPORT_THREAT_STRESS_RATING_PROGERESS_TASK;
-		progressIndicator.setStatusMessage(EAM.text("Importing..."), importers.size() + TOTAL_CUSTOM_TASK_COUNT);
+		progressIndicator.setStatusMessage(EAM.text("Importing XML..."), importers.size() + TOTAL_CUSTOM_TASK_COUNT);
 		for (AbstractXmpzObjectImporter importer : importers)
 		{
 			importer.importElement();
