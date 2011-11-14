@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-14 05:12-0600\n"
+"POT-Creation-Date: 2011-11-14 05:56-0600\n"
 "PO-Revision-Date: 2011-03-17 08:35-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -50,7 +50,7 @@ msgid ""
 "Are you sure you want to delete this resource?"
 msgstr ""
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:108
+#: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:110
 msgid ""
 "\n"
 "WARNING: Attempting to open this project again before repairing the problem "
@@ -62,7 +62,7 @@ msgstr ""
 msgid " 2) Connect threat to relevant targets"
 msgstr ""
 
-#: Miradi/source/org/miradi/project/Project.java:181
+#: Miradi/source/org/miradi/project/Project.java:182
 msgid " A project by this name already exists: "
 msgstr ""
 
@@ -305,7 +305,7 @@ msgid "(Translation: %code %date)"
 msgstr ""
 
 #: Miradi/source/org/miradi/objects/DiagramFactor.java:230
-#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectList.java:67
+#: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectList.java:70
 msgid "(Unknown)"
 msgstr ""
 
@@ -893,21 +893,21 @@ msgstr ""
 msgid "<strong>Version: %s</strong>"
 msgstr ""
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:60
+#: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:62
 msgid ""
 "A backup archive for this project already exists.Continuing with this "
 "migration will replace the existing backup with a new copy.It is probably "
 "safe to do this, unless an earlier migration attempt failed."
 msgstr ""
 
-#: Miradi/source/org/miradi/project/Project.java:187
+#: Miradi/source/org/miradi/project/Project.java:188
 msgid "A file or folder with this name already exists:"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:46
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:79
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:56
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:93
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:47
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:80
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:57
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:94
 msgid "A project or file by this name already exists: "
 msgstr ""
 
@@ -1994,13 +1994,13 @@ msgstr ""
 msgid "Are you sure you want to delete this Stress?"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/noproject/DeleteOldProject.java:61
+#: Miradi/source/org/miradi/views/noproject/DeleteOldProject.java:62
 msgid ""
 "Are you sure you want to delete this folder and its contents, including all "
 "subfolders?"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/noproject/DeleteOldProject.java:59
+#: Miradi/source/org/miradi/views/noproject/DeleteOldProject.java:60
 msgid "Are you sure you want to delete this old-format Miradi project? "
 msgstr ""
 
@@ -2169,7 +2169,7 @@ msgid ""
 " tried  "
 msgstr ""
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:107
+#: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:109
 msgid ""
 "Attempt to migrate project to the current data format FAILED\n"
 "The pre-migration project was archived in: "
@@ -2263,11 +2263,11 @@ msgstr ""
 msgid "Budget Category Two"
 msgstr ""
 
-#: Miradi/source/org/miradi/database/migrations/RemoveBlankBudgetPlaceHoldersFromDetailsFieldMigration.java:79
+#: Miradi/source/org/miradi/legacyprojects/migrations/RemoveBlankBudgetPlaceHoldersFromDetailsFieldMigration.java:80
 msgid "Budget Override was: "
 msgstr ""
 
-#: Miradi/source/org/miradi/database/migrations/ConvertHighLevelEstimatesIntoAssignments.java:134
+#: Miradi/source/org/miradi/legacyprojects/migrations/ConvertHighLevelEstimatesIntoAssignments.java:135
 msgid "Budget Override was: %s"
 msgstr ""
 
@@ -2275,14 +2275,14 @@ msgstr ""
 msgid "Bundle Rules"
 msgstr ""
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:52
-#: Miradi/source/org/miradi/database/DataUpgrader.java:64
 #: Miradi/source/org/miradi/views/diagram/doers/AbstractPasteDoer.java:83
 #: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:52
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:228
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:229
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/DirectoryChooserDialog.java:76
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:127
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:166
+#: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:54
+#: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:66
 #: Miradi/source/org/miradi/dialogs/confirm/ConfirmDialogTemplate.java:51
 #: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:241
 #: Miradi/source/org/miradi/dialogs/ImageExportScaleDialog.java:80
@@ -2303,11 +2303,11 @@ msgstr ""
 msgid "Button|Delete"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:133
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:132
 msgid "Button|Don't Import"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:134
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:133
 msgid "Button|Exit"
 msgstr ""
 
@@ -2315,7 +2315,7 @@ msgstr ""
 msgid "Button|Export..."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:132
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:131
 msgid "Button|Import"
 msgstr ""
 
@@ -2323,7 +2323,7 @@ msgstr ""
 msgid "Button|Install..."
 msgstr ""
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:52
+#: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:54
 msgid "Button|Migrate"
 msgstr ""
 
@@ -2359,7 +2359,7 @@ msgstr ""
 msgid "Button|Replace"
 msgstr ""
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:64
+#: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:66
 msgid "Button|Replace Backup"
 msgstr ""
 
@@ -2367,7 +2367,7 @@ msgstr ""
 msgid "Button|Retain"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:115
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:116
 msgid "Button|Save"
 msgstr ""
 
@@ -2426,11 +2426,11 @@ msgstr ""
 msgid "Cannot add a vector to itself."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:101
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:100
 msgid "Cannot import project file %s because it does not exist"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:108
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:107
 msgid "Cannot import project file %s because it is a directory, not a file"
 msgstr ""
 
@@ -2440,11 +2440,11 @@ msgid ""
 "exists in the folder."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:289
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:290
 msgid "Cannot overwrite an open project"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:273
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:274
 msgid "Cannot save a project back to its existing name"
 msgstr ""
 
@@ -2766,7 +2766,7 @@ msgstr ""
 msgid "Current page was exported as RTF."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:90
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:91
 msgid "Current project name:"
 msgstr ""
 
@@ -2776,7 +2776,7 @@ msgid ""
 "normal mode, press this button: "
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:70
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:69
 msgid "Currently, Miradi can only import one project file at a time"
 msgstr ""
 
@@ -2888,8 +2888,8 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/noproject/DeleteProject.java:32
 #: Miradi/source/org/miradi/views/noproject/DeleteProject.java:33
-#: Miradi/source/org/miradi/views/noproject/DeleteOldProject.java:44
 #: Miradi/source/org/miradi/views/noproject/DeleteOldProject.java:45
+#: Miradi/source/org/miradi/views/noproject/DeleteOldProject.java:46
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:61
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:75
@@ -3089,7 +3089,7 @@ msgid ""
 "conservationmeasures.org."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:118
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:117
 msgid "Do you want to attempt to import %s into Miradi?"
 msgstr ""
 
@@ -3189,8 +3189,8 @@ msgstr ""
 msgid "Enter As: "
 msgstr ""
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:110
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:124
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:111
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:125
 msgid "Enter New Name"
 msgstr ""
 
@@ -3280,7 +3280,7 @@ msgstr ""
 msgid "Error opening project: "
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:152
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:151
 msgid "Error reading %s. Perhaps it is not a valid zip file."
 msgstr ""
 
@@ -3380,7 +3380,7 @@ msgid ""
 "File could not be created, this can be due to bad characters in file name."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:296
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:297
 msgid "File exists: Cannot overwrite a non project folder"
 msgstr ""
 
@@ -3842,8 +3842,8 @@ msgstr ""
 msgid "Implement work plan"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:70
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:119
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:69
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:118
 msgid "Import"
 msgstr ""
 
@@ -4047,8 +4047,8 @@ msgstr ""
 msgid "Introduction"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:85
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:99
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:86
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:100
 msgid "Invalid project name:"
 msgstr ""
 
@@ -4115,7 +4115,7 @@ msgid "KEA Type|Size"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/noproject/DeleteProject.java:32
-#: Miradi/source/org/miradi/views/noproject/DeleteOldProject.java:44
+#: Miradi/source/org/miradi/views/noproject/DeleteOldProject.java:45
 msgid "Keep"
 msgstr ""
 
@@ -4173,7 +4173,7 @@ msgstr ""
 msgid "Label|Currency"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:102
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:103
 msgid "Label|Existing Projects:"
 msgstr ""
 
@@ -4749,20 +4749,20 @@ msgstr ""
 msgid "Methods Only"
 msgstr ""
 
-#: Miradi/source/org/miradi/database/migrations/RemoveBlankBudgetPlaceHoldersFromDetailsFieldMigration.java:76
-#: Miradi/source/org/miradi/database/migrations/ConvertHighLevelEstimatesIntoAssignments.java:131
+#: Miradi/source/org/miradi/legacyprojects/migrations/RemoveBlankBudgetPlaceHoldersFromDetailsFieldMigration.java:77
+#: Miradi/source/org/miradi/legacyprojects/migrations/ConvertHighLevelEstimatesIntoAssignments.java:132
 msgid "Migrated High Level Estimate:"
 msgstr ""
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:75
+#: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:77
 msgid "Migrating Project Data"
 msgstr ""
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:141
+#: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:143
 msgid "Migrating..."
 msgstr ""
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:84
+#: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:86
 msgid "Migration was canceled!"
 msgstr ""
 
@@ -4790,15 +4790,15 @@ msgid ""
 "If that does not work, contact Miradi support."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:99
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:100
 msgid "Miradi data directory:"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:155
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:154
 msgid "Miradi did not recognize the file: %s as importable."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:75
+#: Miradi/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:74
 msgid "Miradi does not recognize %s as a project file"
 msgstr ""
 
@@ -4904,7 +4904,7 @@ msgstr ""
 msgid "New Project Filename:"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:93
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:94
 msgid "New project name: "
 msgstr ""
 
@@ -5355,7 +5355,7 @@ msgstr ""
 msgid "Project Description:"
 msgstr ""
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:53
+#: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:55
 msgid "Project Migration Required"
 msgstr ""
 
@@ -5390,8 +5390,8 @@ msgstr ""
 msgid "Project Resources"
 msgstr ""
 
-#: Miradi/source/org/miradi/database/migrations/CreateScopeBoxesSuroundingTargetsMigration.java:311
 #: Miradi/source/org/miradi/views/diagram/doers/InsertScopeBoxDoer.java:72
+#: Miradi/source/org/miradi/legacyprojects/migrations/CreateScopeBoxesSuroundingTargetsMigration.java:312
 msgid "Project Scope"
 msgstr ""
 
@@ -5408,21 +5408,21 @@ msgstr ""
 msgid "Project does not exist: "
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:314
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:315
 msgid ""
 "Project filenames cannot contain punctuation other than dots, dashes, and "
 "spaces; and they cannot be longer than 32 characters. "
 msgstr ""
 
-#: Miradi/source/org/miradi/database/migrations/ShareSameLabeledScopeBoxesMigration.java:52
+#: Miradi/source/org/miradi/legacyprojects/migrations/ShareSameLabeledScopeBoxesMigration.java:53
 msgid "Project is missing Conceptual Model Diagram Directory."
 msgstr ""
 
-#: Miradi/source/org/miradi/database/migrations/ShareSameLabeledScopeBoxesMigration.java:55
+#: Miradi/source/org/miradi/legacyprojects/migrations/ShareSameLabeledScopeBoxesMigration.java:56
 msgid "Project is missing Conceptual Model Manifest File"
 msgstr ""
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:105
+#: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:107
 msgid "Project was migrated to the current data format"
 msgstr ""
 
@@ -5509,8 +5509,8 @@ msgstr ""
 msgid "Remove Team Member"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:56
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:66
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:57
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:67
 msgid "Rename Failed"
 msgstr ""
 
@@ -7129,7 +7129,7 @@ msgstr ""
 msgid "That project is in use by another copy of this application"
 msgstr ""
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:89
+#: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:91
 msgid ""
 "That project is too old to be migrated by this version of Miradi. You can "
 "use Miradi 1.0 to migrate it to a modern data format, and after that it can "
@@ -7258,7 +7258,7 @@ msgid ""
 "This project resource is being used in the Work Plan and Financial Budget."
 msgstr ""
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:47
+#: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:49
 msgid ""
 "This project was created with an older version of Miradi, so it needs to be "
 "migrated to the current data format before it can be opened. A backup will "
@@ -7277,7 +7277,7 @@ msgid ""
 "the factor that was cut/copied earlier. Are you sure you want to do this?"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:302
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:303
 #: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:118
 msgid "This will replace the existing file."
 msgstr ""
@@ -7508,7 +7508,7 @@ msgstr ""
 msgid "Title|Other Orgs"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:301
+#: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:302
 #: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:113
 msgid "Title|Overwrite existing file?"
 msgstr ""
@@ -7630,7 +7630,7 @@ msgstr ""
 msgid "Total Monitoring Budget %1 %2"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/noproject/DeleteOldProject.java:37
+#: Miradi/source/org/miradi/views/noproject/DeleteOldProject.java:38
 msgid ""
 "Unable to delete this project because it is in use by another copy of this "
 "application:\n"
@@ -7649,7 +7649,7 @@ msgstr ""
 msgid "Unable to process request: "
 msgstr ""
 
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:41
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:42
 msgid ""
 "Unable to rename this project because it is in use by another copy of this "
 "application:\n"
@@ -7711,10 +7711,10 @@ msgstr ""
 msgid "University"
 msgstr ""
 
-#: Miradi/source/org/miradi/database/ProjectServer.java:126
-#: Miradi/source/org/miradi/wizard/noproject/FileSystemTreeNode.java:91
+#: Miradi/source/org/miradi/wizard/noproject/FileSystemTreeNode.java:92
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:161
 #: Miradi/source/org/miradi/questions/StrategyRatingSummaryQuestion.java:37
+#: Miradi/source/org/miradi/legacyprojects/LegacyProjectUtilities.java:69
 msgid "Unknown"
 msgstr ""
 
@@ -7848,7 +7848,7 @@ msgid ""
 "project area that a project is working to achieve."
 msgstr ""
 
-#: Miradi/source/org/miradi/database/DataUpgrader.java:65
+#: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:67
 msgid "WARNING"
 msgstr ""
 
@@ -7956,11 +7956,11 @@ msgstr ""
 msgid "When - %s"
 msgstr ""
 
-#: Miradi/source/org/miradi/database/migrations/RemoveBlankBudgetPlaceHoldersFromDetailsFieldMigration.java:81
+#: Miradi/source/org/miradi/legacyprojects/migrations/RemoveBlankBudgetPlaceHoldersFromDetailsFieldMigration.java:82
 msgid "When Override was: "
 msgstr ""
 
-#: Miradi/source/org/miradi/database/migrations/ConvertHighLevelEstimatesIntoAssignments.java:136
+#: Miradi/source/org/miradi/legacyprojects/migrations/ConvertHighLevelEstimatesIntoAssignments.java:137
 msgid "When Override was: %s"
 msgstr ""
 
@@ -7970,11 +7970,11 @@ msgstr ""
 msgid "White"
 msgstr ""
 
-#: Miradi/source/org/miradi/database/migrations/RemoveBlankBudgetPlaceHoldersFromDetailsFieldMigration.java:83
+#: Miradi/source/org/miradi/legacyprojects/migrations/RemoveBlankBudgetPlaceHoldersFromDetailsFieldMigration.java:84
 msgid "Who Override was: "
 msgstr ""
 
-#: Miradi/source/org/miradi/database/migrations/ConvertHighLevelEstimatesIntoAssignments.java:138
+#: Miradi/source/org/miradi/legacyprojects/migrations/ConvertHighLevelEstimatesIntoAssignments.java:139
 msgid "Who Override was: %s"
 msgstr ""
 
@@ -8095,7 +8095,7 @@ msgstr ""
 msgid "[New Results Chain]"
 msgstr ""
 
-#: Miradi/source/org/miradi/project/Project.java:963
+#: Miradi/source/org/miradi/project/Project.java:964
 msgid "[No Project]"
 msgstr ""
 
