@@ -100,7 +100,7 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 
 	private void writeSchemaVersion() throws Exception
 	{
-		writeTagValue(UPDATE_PROJECT_VERSION_CODE, ProjectServer.TAG_VERSION, Integer.toString(ProjectServer.DATA_VERSION));
+		writeTagValue(UPDATE_PROJECT_VERSION_CODE, "Version", Integer.toString(ProjectServer.DATA_VERSION));
 	}
 
 	private void writeAllQuarantinedData() throws Exception

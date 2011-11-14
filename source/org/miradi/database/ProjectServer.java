@@ -142,10 +142,8 @@ public class ProjectServer
 	}
 
 	public static final int DATA_VERSION = 61;
-	public static final String LAST_MODIFIED_FILE_NAME = "LastModifiedProjectTime.txt";
-	public static final String TAG_VERSION = "Version";
+	private static final String LAST_MODIFIED_FILE_NAME = "LastModifiedProjectTime.txt";
 	private static final String JSON_DIRECTORY = "json";
 
-	public static String PROJECTINFO_FILE = "project";
 	private static String VERSION_FILE = "version";
 }

@@ -27,7 +27,6 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
 
-import org.miradi.database.ProjectServer;
 import org.miradi.exceptions.UnrecognizedFileToImportException;
 import org.miradi.views.umbrella.AbstractProjectImporter;
 import org.miradi.views.umbrella.CpmzProjectImporter;
@@ -164,7 +163,7 @@ public class CommandLineProjectFileImporterHelper
 			if (entry.isDirectory())
 				continue;
 			
-			if (entry.getName().toLowerCase().endsWith(ProjectServer.PROJECTINFO_FILE))
+			if (entry.getName().toLowerCase().endsWith(CommandLineProjectFileImporterHelper.PROJECTINFO_FILE))
 				return true;
 		}
 		
@@ -177,6 +176,7 @@ public class CommandLineProjectFileImporterHelper
 	}
 	
 	private MainWindow mainWindow;
+	public static String PROJECTINFO_FILE = "project";
 	private static final String TAG_END_DELIMITER = "=";
 	public static final String COMMANDLINE_TAG_IMPORT_MPZ = "--importmpz" + TAG_END_DELIMITER;
 	public static final String COMMANDLINE_TAG_IMPORT_CPMZ = "--importcpmz" + TAG_END_DELIMITER;
