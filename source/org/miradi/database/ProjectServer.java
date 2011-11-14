@@ -21,7 +21,6 @@ package org.miradi.database;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
@@ -31,7 +30,6 @@ import java.util.Set;
 import org.martus.util.UnicodeReader;
 import org.martus.util.UnicodeWriter;
 import org.miradi.main.EAM;
-import org.miradi.utils.EnhancedJsonObject;
 
 public class ProjectServer
 {
@@ -42,25 +40,6 @@ public class ProjectServer
 		if(projectNames == null)
 			projectNames = new String[0];
 		return new HashSet<String>(Arrays.asList(projectNames));
-	}
-
-	static void writeRelativeJsonFile(File projectDirectory, File relativePath, EnhancedJsonObject json) throws Exception
-	{
-		writeFile(projectDirectory, relativePath, json.toString());
-	}
-
-	static EnhancedJsonObject createVersionJson(int versionToWrite)
-	{
-		EnhancedJsonObject version = new EnhancedJsonObject();
-		version.put(TAG_VERSION, versionToWrite);
-		return version;
-	}
-	
-	static EnhancedJsonObject readRelativeJsonFile(File projectDirectory, File relativeFile)
-	throws Exception, ParseException
-	{
-		String contents = readFile(projectDirectory, relativeFile);
-		return new EnhancedJsonObject(contents);
 	}
 
 	private static boolean isExistingProject(File projectDirectory) throws Exception
@@ -110,7 +89,7 @@ public class ProjectServer
 		}
 	}
 	
-	private static String readFile(File projectDirectory, File relativePath) throws Exception
+	static String readFile(File projectDirectory, File relativePath) throws Exception
 	{
 		File path = new File(projectDirectory, relativePath.getPath());
 		UnicodeReader reader = new UnicodeReader(path);
@@ -119,7 +98,7 @@ public class ProjectServer
 		return contents;
 	}
 
-	private static void writeFile(File projectDirectory,File relativePath, String contents) throws Exception
+	static void writeFile(File projectDirectory,File relativePath, String contents) throws Exception
 	{
 		if(!doesProjectDirectoryExist(projectDirectory))
 			throw new FileNotFoundException("No project directory: " + projectDirectory);
@@ -153,7 +132,7 @@ public class ProjectServer
 		return true;
 	}
 
-	static boolean doesFileExist(File projectDirectory, File relativePath)
+	protected static boolean doesFileExist(File projectDirectory, File relativePath)
 	{
 		File file = new File(projectDirectory, relativePath.getPath());
 		return file.exists();
@@ -176,7 +155,7 @@ public class ProjectServer
 		return new File(JSON_DIRECTORY);
 	}
 
-	static File getRelativeVersionFile()
+	protected static File getRelativeVersionFile()
 	{
 		return new File(getRelativeJsonDirectory(), VERSION_FILE);
 	}
