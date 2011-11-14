@@ -85,7 +85,7 @@ public class TestConproXmlExporter extends TestCaseWithProject
 
 	private void verifyLanguageIsInEnglish()
 	{
-		assertTrue("is not in eglish?", Translation.isDefaultLocalization());
+		assertTrue("is not in english?", Translation.isDefaultLocalization());
 	}
 
 	public void testValidatedExportInStressMode() throws Exception
