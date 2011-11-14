@@ -21,7 +21,6 @@ package org.miradi.database;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -37,10 +36,6 @@ import org.miradi.utils.EnhancedJsonObject;
 
 public class ProjectServer
 {
-	protected ProjectServer() throws IOException
-	{
-	}
-
 	public Set<String> getListOfProjectsIn(String directory) throws Exception
 	{
 		File directoryFile = new File(directory);
@@ -65,7 +60,7 @@ public class ProjectServer
 		return dataVersion;
 	}
 
-	protected static void writeLocalDataVersion(File projectDirectory, int versionToWrite) throws Exception
+	protected void writeLocalDataVersion(File projectDirectory, int versionToWrite) throws Exception
 	{
 		EnhancedJsonObject version = createVersionJson(versionToWrite);
 		writeRelativeJsonFile(projectDirectory, getRelativeVersionFile(), version);
