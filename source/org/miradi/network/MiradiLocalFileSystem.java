@@ -21,17 +21,10 @@ package org.miradi.network;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.nio.channels.OverlappingFileLockException;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
-import java.util.Vector;
 
-import org.martus.util.DirectoryLock;
-import org.martus.util.DirectoryLock.AlreadyLockedException;
-import org.martus.util.DirectoryUtils;
 import org.martus.util.UnicodeReader;
 import org.martus.util.UnicodeWriter;
 import org.miradi.main.EAM;
@@ -40,7 +33,6 @@ public class MiradiLocalFileSystem extends AbstractNonRemoteMiradiFileSystem
 {
 	public MiradiLocalFileSystem()
 	{
-		locks = new HashMap<String, DirectoryLock>();
 	}
 	
 	public void setDataLocation(String dataLocation) throws Exception
@@ -48,16 +40,6 @@ public class MiradiLocalFileSystem extends AbstractNonRemoteMiradiFileSystem
 		dataDirectory = new File(dataLocation);
 	}
 
-	public String getDataLocation()
-	{
-		return dataDirectory.getAbsolutePath();
-	}
-
-	public boolean isLocalFileSystem()
-	{
-		return true;
-	}
-	
 	public Set<String> getListOfProjectsIn(String directory)
 	{
 		File directoryFile = new File(dataDirectory, directory);
@@ -65,45 +47,6 @@ public class MiradiLocalFileSystem extends AbstractNonRemoteMiradiFileSystem
 		if(projectNames == null)
 			projectNames = new String[0];
 		return new HashSet<String>(Arrays.asList(projectNames));
-	}
-
-	public void createProject(String projectName) throws Exception
-	{
-		projectPath(projectName).mkdir();
-	}
-
-	public void deleteProject(String projectName) throws Exception
-	{
-		File path = projectPath(projectName);
-		if(!path.exists())
-			throw new FileNotFoundException();
-		
-		DirectoryUtils.deleteEntireDirectoryTree(path);
-	}
-
-	public void lockProject(String projectName) throws Exception
-	{
-		File path = projectPath(projectName);
-		DirectoryLock lock = new DirectoryLock();
-		try
-		{
-			lock.lock(path);
-		}
-		catch(OverlappingFileLockException e)
-		{
-			throw new AlreadyLockedException();
-		}
-		locks.put(projectName, lock);
-	}
-
-	public void unlockProject(String projectName) throws Exception
-	{
-		DirectoryLock lock = locks.get(projectName);
-		if(lock == null)
-			return;
-		
-		lock.close();
-		locks.remove(projectName);
 	}
 
 	public boolean doesFileExist(String projectName, File file)
@@ -129,64 +72,6 @@ public class MiradiLocalFileSystem extends AbstractNonRemoteMiradiFileSystem
 		String contents = reader.readAll();
 		reader.close();
 		return contents;
-	}
-
-	public Map<Integer, String> readAllManifestFiles(String projectName) throws Exception
-	{
-		HashMap<Integer, String> map = new HashMap<Integer, String>();
-		
-		File jsonPath = new File(projectPath(projectName), "json");
-		File[] filesInJson = jsonPath.listFiles();
-		if(filesInJson == null)
-			return map;
-		
-		for(File file : filesInJson)
-		{
-			if(!file.isDirectory())
-				continue;
-			String name = file.getName();
-			File relativeObjectsDir = new File("json", name);
-			File relativeManifestFile = new File(relativeObjectsDir, "manifest");
-			File absoluteManifestFile = filePath(projectName, relativeManifestFile);
-			if(!absoluteManifestFile.exists())
-				continue;
-			
-			if(!isObjectDirectory(file))
-				continue;
-			String contents = readFile(projectName, relativeManifestFile);
-			map.put(getTypeOfObjectDirectory(file), contents);
-		}
-		
-		return map;
-	}
-
-	public Map<File, String> readMultipleFiles(String projectName, Vector<File> filePathSet) throws Exception
-	{
-		HashMap<File, String> map = new HashMap<File, String>();
-		for(File filePath : filePathSet)
-		{
-			String contents = readFile(projectName, filePath);
-			map.put(filePath, contents);
-		}
-		return map;
-	}
-	
-	public void appendToFile(String projectName, File relativeFile, String textToAppend) throws Exception
-	{
-		if(!doesProjectDirectoryExist(projectName))
-			throw new FileNotFoundException("No project directory: " + projectPath(projectName));
-		
-		File path = filePath(projectName, relativeFile);
-		path.getParentFile().mkdirs();
-		UnicodeWriter writer = new UnicodeWriter(path, UnicodeWriter.APPEND);
-		try
-		{
-			writer.write(textToAppend);
-		}
-		finally
-		{
-			writer.close();
-		}
 	}
 
 	public void writeFile(String projectName, File file, String contents)
@@ -218,33 +103,6 @@ public class MiradiLocalFileSystem extends AbstractNonRemoteMiradiFileSystem
 		}
 	}
 	
-	public void writeMultipleFiles(String projectName, HashMap<File, String> fileContentsMap) throws Exception
-	{
-		for(File file : fileContentsMap.keySet())
-		{
-			writeFile(projectName, file, fileContentsMap.get(file));
-		}
-	}
-
-	public void deleteFile(String projectName, File file) throws Exception
-	{
-		if(wasDeleteHandledByTransaction(projectName, file))
-			return;
-		
-		File path = filePath(projectName, file);
-		if(!path.exists())
-			throw new FileNotFoundException();
-		path.delete();
-	}
-
-	public void deleteMultipleFiles(String projectName, HashSet<File> pendingDeletes) throws Exception
-	{
-		for(File file : pendingDeletes)
-		{
-			deleteFile(projectName, file);
-		}
-	}
-
 	private File projectPath(String projectName)
 	{
 		return new File(dataDirectory, projectName);
@@ -256,5 +114,4 @@ public class MiradiLocalFileSystem extends AbstractNonRemoteMiradiFileSystem
 	}
 	
 	private File dataDirectory;
-	private HashMap<String, DirectoryLock> locks;
 }
