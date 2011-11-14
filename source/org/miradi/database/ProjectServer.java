@@ -30,14 +30,14 @@ import org.miradi.main.EAM;
 
 public class ProjectServer
 {
-	private static boolean isExistingProject(File projectDirectory) throws Exception
+	public static boolean isExistingLocalProject(File projectDirectory) throws Exception
 	{
 		if(projectDirectory == null)
 			return false;
 		
 		if(!projectDirectory.exists())
 			return false;
-
+		
 		try
 		{
 			File versionFile = new File(projectDirectory, getRelativeVersionFile().getPath());
@@ -48,13 +48,6 @@ public class ProjectServer
 			EAM.logException(e);
 			return false;
 		}
-	}
-
-	public static boolean isExistingLocalProject(File projectDirectory) throws Exception
-	{
-		if(projectDirectory == null)
-			return false;
-		return isExistingProject(projectDirectory);
 	}
 
 	public static String readLocalLastModifiedProjectTime(File projectDirectory) throws Exception
