@@ -28,7 +28,6 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.json.JSONObject;
 import org.martus.util.UnicodeReader;
 import org.martus.util.UnicodeWriter;
 import org.miradi.main.EAM;
@@ -45,35 +44,19 @@ public class ProjectServer
 		return new HashSet<String>(Arrays.asList(projectNames));
 	}
 
-	protected int readLocalDataVersion(File projectDirectory) throws Exception
-	{
-		File versionFile = getRelativeVersionFile();
-		if(!doesFileExist(projectDirectory, versionFile))
-			throw new RuntimeException("No version file: " + versionFile);
-		JSONObject version = readRelativeJsonFile(projectDirectory, versionFile);
-		int dataVersion = version.getInt(TAG_VERSION);
-		return dataVersion;
-	}
-
-	protected void writeLocalDataVersion(File projectDirectory, int versionToWrite) throws Exception
-	{
-		EnhancedJsonObject version = createVersionJson(versionToWrite);
-		writeRelativeJsonFile(projectDirectory, getRelativeVersionFile(), version);
-	}
-	
-	private static void writeRelativeJsonFile(File projectDirectory, File relativePath, EnhancedJsonObject json) throws Exception
+	static void writeRelativeJsonFile(File projectDirectory, File relativePath, EnhancedJsonObject json) throws Exception
 	{
 		writeFile(projectDirectory, relativePath, json.toString());
 	}
 
-	private static EnhancedJsonObject createVersionJson(int versionToWrite)
+	static EnhancedJsonObject createVersionJson(int versionToWrite)
 	{
 		EnhancedJsonObject version = new EnhancedJsonObject();
 		version.put(TAG_VERSION, versionToWrite);
 		return version;
 	}
 	
-	private static EnhancedJsonObject readRelativeJsonFile(File projectDirectory, File relativeFile)
+	static EnhancedJsonObject readRelativeJsonFile(File projectDirectory, File relativeFile)
 	throws Exception, ParseException
 	{
 		String contents = readFile(projectDirectory, relativeFile);
@@ -170,7 +153,7 @@ public class ProjectServer
 		return true;
 	}
 
-	private static boolean doesFileExist(File projectDirectory, File relativePath)
+	static boolean doesFileExist(File projectDirectory, File relativePath)
 	{
 		File file = new File(projectDirectory, relativePath.getPath());
 		return file.exists();
@@ -193,7 +176,7 @@ public class ProjectServer
 		return new File(JSON_DIRECTORY);
 	}
 
-	private static File getRelativeVersionFile()
+	static File getRelativeVersionFile()
 	{
 		return new File(getRelativeJsonDirectory(), VERSION_FILE);
 	}

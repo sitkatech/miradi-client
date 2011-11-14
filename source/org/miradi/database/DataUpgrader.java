@@ -23,6 +23,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import org.json.JSONObject;
 import org.martus.util.DirectoryLock;
 import org.martus.util.DirectoryLock.AlreadyLockedException;
 import org.martus.util.UnicodeWriter;
@@ -428,12 +429,12 @@ public class DataUpgrader
 	
 	public static int readDataVersion(File projectDirectory) throws Exception
 	{
-		return new ProjectServer().readLocalDataVersion(projectDirectory);
+		return DataUpgrader.readLocalDataVersion(projectDirectory);
 	}
 	
 	public static void writeLocalVersion(File projectDirectory, int versionToWrite) throws Exception
 	{
-		new ProjectServer().writeLocalDataVersion(projectDirectory, versionToWrite);
+		DataUpgrader.writeLocalDataVersion(projectDirectory, versionToWrite);
 	}
 
 	public static int readHighestIdInProjectFile(File dirToUse) throws Exception
@@ -516,6 +517,22 @@ public class DataUpgrader
 	{
 		// FIXME: This should just do a raw recursive zip of the directory
 		throw new RuntimeException("Writing MPZ files is not supported");
+	}
+
+	protected static int readLocalDataVersion(File projectDirectory) throws Exception
+	{
+		File versionFile = ProjectServer.getRelativeVersionFile();
+		if(!ProjectServer.doesFileExist(projectDirectory, versionFile))
+			throw new RuntimeException("No version file: " + versionFile);
+		JSONObject version = ProjectServer.readRelativeJsonFile(projectDirectory, versionFile);
+		int dataVersion = version.getInt(ProjectServer.TAG_VERSION);
+		return dataVersion;
+	}
+
+	protected static void writeLocalDataVersion(File projectDirectory, int versionToWrite) throws Exception
+	{
+		EnhancedJsonObject version = ProjectServer.createVersionJson(versionToWrite);
+		ProjectServer.writeRelativeJsonFile(projectDirectory, ProjectServer.getRelativeVersionFile(), version);
 	}
 
 	private static File topDirectory;
