@@ -22,6 +22,7 @@ package org.miradi.database;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.ParseException;
 
 import org.json.JSONObject;
 import org.martus.util.DirectoryLock;
@@ -519,20 +520,38 @@ public class DataUpgrader
 		throw new RuntimeException("Writing MPZ files is not supported");
 	}
 
-	protected static int readLocalDataVersion(File projectDirectory) throws Exception
+	private  static int readLocalDataVersion(File projectDirectory) throws Exception
 	{
 		File versionFile = ProjectServer.getRelativeVersionFile();
 		if(!ProjectServer.doesFileExist(projectDirectory, versionFile))
 			throw new RuntimeException("No version file: " + versionFile);
-		JSONObject version = ProjectServer.readRelativeJsonFile(projectDirectory, versionFile);
+		JSONObject version = DataUpgrader.readRelativeJsonFile(projectDirectory, versionFile);
 		int dataVersion = version.getInt(ProjectServer.TAG_VERSION);
 		return dataVersion;
 	}
 
-	protected static void writeLocalDataVersion(File projectDirectory, int versionToWrite) throws Exception
+	private  static void writeLocalDataVersion(File projectDirectory, int versionToWrite) throws Exception
 	{
-		EnhancedJsonObject version = ProjectServer.createVersionJson(versionToWrite);
-		ProjectServer.writeRelativeJsonFile(projectDirectory, ProjectServer.getRelativeVersionFile(), version);
+		EnhancedJsonObject version = DataUpgrader.createVersionJson(versionToWrite);
+		DataUpgrader.writeRelativeJsonFile(projectDirectory, ProjectServer.getRelativeVersionFile(), version);
+	}
+
+	private static void writeRelativeJsonFile(File projectDirectory, File relativePath, EnhancedJsonObject json) throws Exception
+	{
+		ProjectServer.writeFile(projectDirectory, relativePath, json.toString());
+	}
+
+	private static EnhancedJsonObject createVersionJson(int versionToWrite)
+	{
+		EnhancedJsonObject version = new EnhancedJsonObject();
+		version.put(ProjectServer.TAG_VERSION, versionToWrite);
+		return version;
+	}
+
+	private static EnhancedJsonObject readRelativeJsonFile(File projectDirectory, File relativeFile) throws Exception, ParseException
+	{
+		String contents = ProjectServer.readFile(projectDirectory, relativeFile);
+		return new EnhancedJsonObject(contents);
 	}
 
 	private static File topDirectory;
