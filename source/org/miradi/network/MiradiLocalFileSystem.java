@@ -29,7 +29,7 @@ import org.martus.util.UnicodeReader;
 import org.martus.util.UnicodeWriter;
 import org.miradi.main.EAM;
 
-public class MiradiLocalFileSystem extends AbstractNonRemoteMiradiFileSystem
+public class MiradiLocalFileSystem
 {
 	public MiradiLocalFileSystem()
 	{
@@ -113,5 +113,11 @@ public class MiradiLocalFileSystem extends AbstractNonRemoteMiradiFileSystem
 		return new File(projectPath(projectName), file.toString());
 	}
 	
+	protected boolean wasWriteHandledByTransaction(String projectName, File file,
+			String contents)
+	{
+		return false;
+	}
+
 	private File dataDirectory;
 }
