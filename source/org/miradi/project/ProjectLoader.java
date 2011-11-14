@@ -22,6 +22,7 @@ package org.miradi.project;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.StringTokenizer;
 
@@ -35,7 +36,7 @@ import org.miradi.project.threatrating.ThreatRatingBundle;
 
 public class ProjectLoader
 {
-	private ProjectLoader(final UnicodeStringReader readerToUse, Project projectToUse) throws Exception
+	private ProjectLoader(final UnicodeReader readerToUse, Project projectToUse) throws Exception
 	{
 		reader = readerToUse;
 		project = projectToUse;
@@ -49,7 +50,20 @@ public class ProjectLoader
 		loadProject(new UnicodeStringReader(contents), projectToLoad);
 	}
 
-	public static void loadProject(final UnicodeStringReader reader, Project project) throws Exception
+	public static void loadProject(InputStream inputStream, Project project) throws Exception
+	{
+		UnicodeReader reader = new UnicodeReader(inputStream);
+		try
+		{
+			loadProject(reader, project);
+		}
+		finally
+		{
+			reader.close();
+		}
+	}
+
+	public static void loadProject(final UnicodeReader reader, Project project) throws Exception
 	{
 		final ProjectLoader projectLoader = new ProjectLoader(reader, project);
 		projectLoader.load();
@@ -363,7 +377,7 @@ public class ProjectLoader
 	}
 
 	private HashMap<String, ThreatRatingBundle> bundleNameToBundleMap;
-	private UnicodeStringReader reader;
+	private UnicodeReader reader;
 	private Project project;
 	
 	private static final String EQUALS_DELIMITER_TAB_PREFIXED = " \t=";
