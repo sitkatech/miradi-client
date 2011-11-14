@@ -40,7 +40,6 @@ import org.martus.util.UnicodeStringWriter;
 import org.martus.util.UnicodeWriter;
 import org.miradi.database.DataUpgrader;
 import org.miradi.database.Manifest;
-import org.miradi.database.ProjectServer;
 import org.miradi.exceptions.FutureSchemaVersionException;
 import org.miradi.exceptions.UserCanceledException;
 import org.miradi.ids.BaseId;
@@ -244,8 +243,8 @@ public class MpzToMpfConverter
 		if(versionEntry == null)
 			throw new Exception("Missing version file");
 
-		EnhancedJsonObject json = readJson(versionEntry);
-		int version = json.getInt(ProjectServer.TAG_VERSION);
+		
+		int version = extractVersion();
 		convertedProjectVersion = version;
 		if(convertedProjectVersion != REQUIRED_VERSION)
 			throw new Exception("Cannot convert MPZ version " + convertedProjectVersion);
@@ -382,7 +381,7 @@ public class MpzToMpfConverter
 	private int extractVersion(final String fileContent) throws ParseException
 	{
 		EnhancedJsonObject json = new EnhancedJsonObject(fileContent);
-		int version = json.getInt(ProjectServer.TAG_VERSION);
+		int version = json.getInt("Version");
 		return version;
 	}
 
@@ -494,7 +493,7 @@ public class MpzToMpfConverter
 	
 	private String getLastModifiedEntryPath()
 	{
-		return getProjectPrefix() + ProjectServer.LAST_MODIFIED_FILE_NAME;
+		return getProjectPrefix() + "LastModifiedProjectTime.txt";
 	}
 	
 	private String getThreatFrameworkEntryPath()

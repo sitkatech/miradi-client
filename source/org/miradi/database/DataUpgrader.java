@@ -526,7 +526,7 @@ public class DataUpgrader
 		if(!ProjectServer.doesFileExist(projectDirectory, versionFile))
 			throw new RuntimeException("No version file: " + versionFile);
 		JSONObject version = DataUpgrader.readRelativeJsonFile(projectDirectory, versionFile);
-		int dataVersion = version.getInt(ProjectServer.TAG_VERSION);
+		int dataVersion = version.getInt(DataUpgrader.TAG_VERSION);
 		return dataVersion;
 	}
 
@@ -544,7 +544,7 @@ public class DataUpgrader
 	private static EnhancedJsonObject createVersionJson(int versionToWrite)
 	{
 		EnhancedJsonObject version = new EnhancedJsonObject();
-		version.put(ProjectServer.TAG_VERSION, versionToWrite);
+		version.put(DataUpgrader.TAG_VERSION, versionToWrite);
 		return version;
 	}
 
@@ -555,4 +555,5 @@ public class DataUpgrader
 	}
 
 	private static File topDirectory;
+	public static final String TAG_VERSION = "Version";
 }
