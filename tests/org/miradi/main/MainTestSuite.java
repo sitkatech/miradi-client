@@ -40,7 +40,6 @@ import org.miradi.commands.TestCommandSetThreatRating;
 import org.miradi.commands.TestCommands;
 import org.miradi.database.TestDataUpgrader;
 import org.miradi.database.TestDataUpgraderForMiradi3;
-import org.miradi.database.TestProjectServer;
 import org.miradi.diagram.TestBendPointSelectionHelper;
 import org.miradi.diagram.TestDelete;
 import org.miradi.diagram.TestDiagramAddFactor;
@@ -239,7 +238,6 @@ public class MainTestSuite extends TestSuite
 	{
 		// database package
 		addTest(new TestSuite(TestDataUpgrader.class));
-		addTest(new TestSuite(TestProjectServer.class));
 		addTest(new TestSuite(TestDataUpgraderForMiradi3.class));
 		
 		// forms package

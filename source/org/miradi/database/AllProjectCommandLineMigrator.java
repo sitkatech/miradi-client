@@ -20,22 +20,18 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.database;
 
-import java.io.File;
-
-import org.miradi.exceptions.FutureSchemaVersionException;
-import org.miradi.exceptions.OldSchemaVersionException;
-import org.miradi.main.EAM;
-import org.miradi.utils.NullProgressMeter;
-import org.miradi.views.umbrella.CreateProjectDialog;
 
 public class AllProjectCommandLineMigrator
 {
 	public static void main(String[] args)
 	{
+		// Disabling this class for now; can re-write for the new file format if/when needed
+		System.out.println("This utility needs to be rewritten to handle the new file format");
+		System.exit(1);
 		try
 		{
-			migrateAllProjects();
-			System.out.println("All Projects Migrated");
+//			migrateAllProjects();
+//			System.out.println("All Projects Migrated");
 		}
 		catch(Exception e)
 		{
@@ -43,43 +39,43 @@ public class AllProjectCommandLineMigrator
 		}
 	}
 	
-	private static void migrateAllProjects() throws Exception
-	{
-		File[] projectDirectories = getProjectDirectories();
-		for(int index = 0; index < projectDirectories.length; ++index)
-		{
-			File projectFile = projectDirectories[index];
-			String projectName = projectFile.getName();
-			ProjectServer database = new ProjectServer();
-			database.setLocalDataLocation(EAM.getHomeDirectory());		
-			migrateProject(database, projectName);
-		}
-	}
-	
-	private static void migrateProject(ProjectServer database, String projectName) throws Exception
-	{
-		int existingVersion = database.readProjectDataVersion(projectName); 
-		if(existingVersion > ProjectServer.DATA_VERSION)
-			throw new FutureSchemaVersionException();
-
-		if(existingVersion < ProjectServer.DATA_VERSION)
-			upgrade(database, projectName);
-		
-		int updatedVersion = database.readProjectDataVersion(projectName); 
-		if(updatedVersion < ProjectServer.DATA_VERSION)
-			throw new OldSchemaVersionException();
-	}
-
-	private static void upgrade(ProjectServer database, String projectName) throws Exception
-	{
-		DataUpgrader.initializeStaticDirectory(new File(database.getDataLocation(), projectName));
-		DataUpgrader.upgrade(new NullProgressMeter());
-	}
-
-	private static File[] getProjectDirectories()
-	{
-		File home = EAM.getHomeDirectory();
-		home.mkdirs();
-		return home.listFiles(new CreateProjectDialog.ProjectFilter());
-	}
+//	private static void migrateAllProjects() throws Exception
+//	{
+//		File[] projectDirectories = getProjectDirectories();
+//		for(int index = 0; index < projectDirectories.length; ++index)
+//		{
+//			File projectFile = projectDirectories[index];
+//			String projectName = projectFile.getName();
+//			ProjectServer database = new ProjectServer();
+//			database.setLocalDataLocation(EAM.getHomeDirectory());		
+//			migrateProject(database, projectName);
+//		}
+//	}
+//	
+//	private static void migrateProject(ProjectServer database, String projectName) throws Exception
+//	{
+//		int existingVersion = database.readProjectDataVersion(projectName); 
+//		if(existingVersion > ProjectServer.DATA_VERSION)
+//			throw new FutureSchemaVersionException();
+//
+//		if(existingVersion < ProjectServer.DATA_VERSION)
+//			upgrade(database, projectName);
+//		
+//		int updatedVersion = database.readProjectDataVersion(projectName); 
+//		if(updatedVersion < ProjectServer.DATA_VERSION)
+//			throw new OldSchemaVersionException();
+//	}
+//
+//	private static void upgrade(ProjectServer database, String projectName) throws Exception
+//	{
+//		DataUpgrader.initializeStaticDirectory(new File(database.getDataLocation(), projectName));
+//		DataUpgrader.upgrade(new NullProgressMeter());
+//	}
+//
+//	private static File[] getProjectDirectories()
+//	{
+//		File home = EAM.getHomeDirectory();
+//		home.mkdirs();
+//		return home.listFiles(new CreateProjectDialog.ProjectFilter());
+//	}
 }
