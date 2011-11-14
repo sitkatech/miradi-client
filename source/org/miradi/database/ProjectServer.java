@@ -28,7 +28,6 @@ import java.util.Set;
 
 import org.json.JSONObject;
 import org.miradi.main.EAM;
-import org.miradi.network.MiradiFileSystem;
 import org.miradi.network.MiradiLocalFileSystem;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -82,21 +81,21 @@ public class ProjectServer
 		return version;
 	}
 	
-	private static EnhancedJsonObject readRelativeJsonFile(MiradiFileSystem fileSystem, String projectName, File relativeFile)
+	private static EnhancedJsonObject readRelativeJsonFile(MiradiLocalFileSystem fileSystem, String projectName, File relativeFile)
 	throws Exception, ParseException
 	{
 		String contents = fileSystem.readFile(projectName, relativeFile);
 		return new EnhancedJsonObject(contents);
 	}
 
-	private static void writeRelativeJsonFile(MiradiFileSystem fileSystem, String projectName, File relativeObjectFile,
+	private static void writeRelativeJsonFile(MiradiLocalFileSystem fileSystem, String projectName, File relativeObjectFile,
 			EnhancedJsonObject json) throws Exception
 	{
 		String contents = json.toString();
 		fileSystem.writeFile(projectName, relativeObjectFile, contents);
 	}
 	
-	private static boolean isExistingProject(MiradiFileSystem fileSystem, String projectName) throws Exception
+	private static boolean isExistingProject(MiradiLocalFileSystem fileSystem, String projectName) throws Exception
 	{
 		if(projectName == null)
 			return false;
@@ -180,5 +179,5 @@ public class ProjectServer
 	public static String PROJECTINFO_FILE = "project";
 	private static String VERSION_FILE = "version";
 
-	private MiradiFileSystem currentFileSystem;
+	private MiradiLocalFileSystem currentFileSystem;
 }
