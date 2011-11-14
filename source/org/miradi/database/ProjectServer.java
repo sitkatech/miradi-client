@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.database;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -27,6 +28,8 @@ import java.util.Date;
 import java.util.Set;
 
 import org.json.JSONObject;
+import org.martus.util.UnicodeReader;
+import org.martus.util.UnicodeWriter;
 import org.miradi.main.EAM;
 import org.miradi.network.MiradiLocalFileSystem;
 import org.miradi.utils.EnhancedJsonObject;
@@ -124,21 +127,15 @@ public class ProjectServer
 
 	public static String readLocalLastModifiedProjectTime(File projectDirectory) throws Exception
 	{
-		File dataDirectory = projectDirectory.getParentFile();
-		String projectName = projectDirectory.getName();
-		
-		MiradiLocalFileSystem fileSystem = new MiradiLocalFileSystem();
-		fileSystem.setDataLocation(dataDirectory.getAbsolutePath());
-		
 		try
 		{
 			File lastModifiedTimeFile = getRelativeLastModifiedTimeFile();
-			if (fileSystem.doesFileExist(projectName, lastModifiedTimeFile))
-				return fileSystem.readFile(projectName, lastModifiedTimeFile);
+			if (doesFileExist(projectDirectory, lastModifiedTimeFile))
+				return readFile(projectDirectory, lastModifiedTimeFile);
 			
 			long lastModifiedMillisFromOperatingSystem = projectDirectory.lastModified();
 			String lastModifiedTimeFromOperatingSystem = ProjectServer.timestampToString(lastModifiedMillisFromOperatingSystem);
-			fileSystem.writeFile(projectName, lastModifiedTimeFile, lastModifiedTimeFromOperatingSystem);
+			writeFile(projectDirectory, lastModifiedTimeFile, lastModifiedTimeFromOperatingSystem);
 			return lastModifiedTimeFromOperatingSystem;
 		}
 		catch (Exception e)
@@ -146,6 +143,55 @@ public class ProjectServer
 			EAM.logException(e);
 			return EAM.text("Unknown");
 		}
+	}
+	
+	private static String readFile(File projectDirectory, File relativePath) throws Exception
+	{
+		File path = new File(projectDirectory, relativePath.getPath());
+		UnicodeReader reader = new UnicodeReader(path);
+		String contents = reader.readAll();
+		reader.close();
+		return contents;
+	}
+
+	private static void writeFile(File projectDirectory,File relativePath, String contents) throws Exception
+	{
+		if(!doesProjectDirectoryExist(projectDirectory))
+			throw new FileNotFoundException("No project directory: " + projectDirectory);
+		
+		File path = new File(projectDirectory, relativePath.getPath());
+		path.getParentFile().mkdirs();
+		try
+		{
+			UnicodeWriter writer = new UnicodeWriter(path);
+			try
+			{
+				writer.write(contents);
+			}
+			finally
+			{
+				writer.close();
+			}
+		}
+		catch (Exception e)
+		{
+			EAM.handleWriteFailure(path, e);
+		}
+	}
+
+	private static boolean doesProjectDirectoryExist(File projectDirectory) throws Exception
+	{
+		if(!projectDirectory.exists())
+			return false;
+		if(!projectDirectory.isDirectory())
+			return false;
+		return true;
+	}
+
+	private static boolean doesFileExist(File projectDirectory, File relativePath)
+	{
+		File file = new File(projectDirectory, relativePath.getPath());
+		return file.exists();
 	}
 	
 	public static String timestampToString(long lastModifiedMillis)
