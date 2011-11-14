@@ -20,14 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.network;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
 import org.martus.util.UnicodeReader;
-import org.martus.util.UnicodeWriter;
-import org.miradi.main.EAM;
 
 public class MiradiLocalFileSystem
 {
@@ -51,16 +48,6 @@ public class MiradiLocalFileSystem
 		return filePath(projectName, file).exists();
 	}
 
-	private boolean doesProjectDirectoryExist(String projectName) throws Exception
-	{
-		File path = projectPath(projectName);
-		if(!path.exists())
-			return false;
-		if(!path.isDirectory())
-			return false;
-		return true;
-	}
-
 	public String readFile(String projectName, File file) throws Exception
 	{
 		File path = filePath(projectName, file);
@@ -70,35 +57,6 @@ public class MiradiLocalFileSystem
 		return contents;
 	}
 
-	public void writeFile(String projectName, File file, String contents)
-			throws Exception
-	{
-		if(wasWriteHandledByTransaction(projectName, file, contents))
-			return;
-		
-		if(!doesProjectDirectoryExist(projectName))
-			throw new FileNotFoundException("No project directory: " + projectPath(projectName));
-		
-		File path = filePath(projectName, file);
-		path.getParentFile().mkdirs();
-		try
-		{
-			UnicodeWriter writer = new UnicodeWriter(path);
-			try
-			{
-				writer.write(contents);
-			}
-			finally
-			{
-				writer.close();
-			}
-		}
-		catch (Exception e)
-		{
-			EAM.handleWriteFailure(path, e);
-		}
-	}
-	
 	private File projectPath(String projectName)
 	{
 		return new File(dataDirectory, projectName);
@@ -109,11 +67,5 @@ public class MiradiLocalFileSystem
 		return new File(projectPath(projectName), file.toString());
 	}
 	
-	private boolean wasWriteHandledByTransaction(String projectName, File file,
-			String contents)
-	{
-		return false;
-	}
-
 	private File dataDirectory;
 }
