@@ -47,11 +47,6 @@ public class ProjectServer
 
 	protected int readLocalDataVersion(File projectDirectory) throws Exception
 	{
-		return readProjectDataVersion(projectDirectory);
-	}
-
-	private int readProjectDataVersion(File projectDirectory) throws Exception, ParseException
-	{
 		File versionFile = getRelativeVersionFile();
 		if(!doesFileExist(projectDirectory, versionFile))
 			throw new RuntimeException("No version file: " + versionFile);
