@@ -95,17 +95,18 @@ public class ProjectServer
 		fileSystem.writeFile(projectName, relativeObjectFile, contents);
 	}
 	
-	private static boolean isExistingProject(MiradiLocalFileSystem fileSystem, String projectName) throws Exception
+	private static boolean isExistingProject(File projectDirectory) throws Exception
 	{
-		if(projectName == null)
+		if(projectDirectory == null)
 			return false;
 		
-		if(!fileSystem.doesProjectDirectoryExist(projectName))
+		if(!projectDirectory.exists())
 			return false;
 
 		try
 		{
-			return fileSystem.doesFileExist(projectName, getRelativeVersionFile());
+			File versionFile = new File(projectDirectory, getRelativeVersionFile().getPath());
+			return versionFile.exists();
 		}
 		catch(Exception e)
 		{
@@ -118,9 +119,7 @@ public class ProjectServer
 	{
 		if(projectDirectory == null)
 			return false;
-		MiradiLocalFileSystem fileSystem = new MiradiLocalFileSystem();
-		fileSystem.setDataLocation(projectDirectory.getParent());
-		return isExistingProject(fileSystem, projectDirectory.getName());
+		return isExistingProject(projectDirectory);
 	}
 
 	public static String readLocalLastModifiedProjectTime(File projectDirectory) throws Exception
