@@ -67,16 +67,15 @@ public class ProjectServer
 
 	protected static void writeLocalDataVersion(File projectDirectory, int versionToWrite) throws Exception
 	{
-		File dataDirectory = projectDirectory.getParentFile();
-		String projectName = projectDirectory.getName();
-		
-		MiradiLocalFileSystem fileSystem = new MiradiLocalFileSystem();
-		fileSystem.setDataLocation(dataDirectory.getAbsolutePath());
-		
 		EnhancedJsonObject version = createVersionJson(versionToWrite);
-		writeRelativeJsonFile(fileSystem, projectName, getRelativeVersionFile(), version);
+		writeRelativeJsonFile(projectDirectory, getRelativeVersionFile(), version);
 	}
 	
+	private static void writeRelativeJsonFile(File projectDirectory, File relativePath, EnhancedJsonObject json) throws Exception
+	{
+		writeFile(projectDirectory, relativePath, json.toString());
+	}
+
 	private static EnhancedJsonObject createVersionJson(int versionToWrite)
 	{
 		EnhancedJsonObject version = new EnhancedJsonObject();
@@ -91,13 +90,6 @@ public class ProjectServer
 		return new EnhancedJsonObject(contents);
 	}
 
-	private static void writeRelativeJsonFile(MiradiLocalFileSystem fileSystem, String projectName, File relativeObjectFile,
-			EnhancedJsonObject json) throws Exception
-	{
-		String contents = json.toString();
-		fileSystem.writeFile(projectName, relativeObjectFile, contents);
-	}
-	
 	private static boolean isExistingProject(File projectDirectory) throws Exception
 	{
 		if(projectDirectory == null)
