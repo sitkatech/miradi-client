@@ -22,7 +22,7 @@ package org.miradi.network;
 import java.io.File;
 
 
-abstract public class AbstractNonRemoteMiradiFileSystem implements MiradiFileSystem
+abstract public class AbstractNonRemoteMiradiFileSystem 
 {
 	public void beginTransaction(String projectName) throws Exception
 	{
