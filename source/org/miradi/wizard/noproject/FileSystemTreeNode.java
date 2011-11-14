@@ -25,7 +25,7 @@ import java.util.Vector;
 
 import org.martus.util.UnicodeReader;
 import org.martus.util.UnicodeStringReader;
-import org.miradi.database.ProjectServer;
+import org.miradi.database.LegacyProjectUtilities;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.FileSystemProjectSorter;
@@ -89,7 +89,7 @@ abstract public class FileSystemTreeNode extends TreeTableNode
 					final long loadLastModifiedTime = ProjectLoader.loadLastModifiedTime(new UnicodeStringReader(contents));
 					if (loadLastModifiedTime == 0)
 						return EAM.text("Unknown");
-					return ProjectServer.timestampToString(loadLastModifiedTime);
+					return LegacyProjectUtilities.timestampToString(loadLastModifiedTime);
 				}
 				
 				return null;
@@ -107,7 +107,7 @@ abstract public class FileSystemTreeNode extends TreeTableNode
 
 	public String getLastModifiedDate() throws Exception
 	{
-		return ProjectServer.readLocalLastModifiedProjectTime(thisFile);
+		return LegacyProjectUtilities.readLocalLastModifiedProjectTime(thisFile);
 	}
 
 	@Override
@@ -175,7 +175,7 @@ abstract public class FileSystemTreeNode extends TreeTableNode
 	
 	public boolean isLegacyProjectDirectory() throws Exception
 	{
-		return ProjectServer.isExistingLocalProject(thisFile);
+		return LegacyProjectUtilities.isExistingLocalProject(thisFile);
 	}
 
 	@Override

@@ -28,7 +28,7 @@ import java.util.Vector;
 
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.database.ProjectServer;
+import org.miradi.database.LegacyProjectUtilities;
 import org.miradi.diagram.cells.DiagramGroupBoxCell;
 import org.miradi.dialogs.planning.upperPanel.WorkPlanTreeTablePanel;
 import org.miradi.exceptions.CommandFailedException;
@@ -177,7 +177,7 @@ public class Project
 	static public void validateNewProject(String newName) throws Exception
 	{
 		File newFile = new File(EAM.getHomeDirectory(),newName);
-		if(ProjectServer.isExistingLocalProject(newFile))
+		if(LegacyProjectUtilities.isExistingLocalProject(newFile))
 			throw new Exception(EAM.text(" A project by this name already exists: ") + newName);
 		
 		if (!EAM.getMainWindow().getProject().isValidProjectFilename(newName))

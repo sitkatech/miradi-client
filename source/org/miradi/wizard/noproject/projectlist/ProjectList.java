@@ -30,7 +30,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 import org.martus.swing.HyperlinkHandler;
-import org.miradi.database.ProjectServer;
+import org.miradi.database.LegacyProjectUtilities;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
@@ -42,7 +42,7 @@ import com.jhlabs.awt.GridLayoutPlus;
 
 public class ProjectList extends JPanel
 {
-	public ProjectList(ProjectServer databaseToUse, HyperlinkHandler handlerToUse) throws Exception
+	public ProjectList(LegacyProjectUtilities databaseToUse, HyperlinkHandler handlerToUse) throws Exception
 	{
 		handler = handlerToUse;
 
