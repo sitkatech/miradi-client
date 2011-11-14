@@ -24,14 +24,15 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 import org.json.JSONObject;
 import org.martus.util.UnicodeReader;
 import org.martus.util.UnicodeWriter;
 import org.miradi.main.EAM;
-import org.miradi.network.MiradiLocalFileSystem;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class ProjectServer
@@ -42,25 +43,24 @@ public class ProjectServer
 
 	public Set<String> getListOfProjectsIn(String directory) throws Exception
 	{
-		return currentFileSystem.getListOfProjectsIn(directory);
+		File directoryFile = new File(directory);
+		String[] projectNames = directoryFile.list();
+		if(projectNames == null)
+			projectNames = new String[0];
+		return new HashSet<String>(Arrays.asList(projectNames));
 	}
 
 	protected int readLocalDataVersion(File projectDirectory) throws Exception
 	{
-		File dataDirectory = projectDirectory.getParentFile();
-		String projectName = projectDirectory.getName();
-
-		currentFileSystem = new MiradiLocalFileSystem();
-		currentFileSystem.setDataLocation(dataDirectory.getAbsolutePath());
-		return readProjectDataVersion(projectName);
+		return readProjectDataVersion(projectDirectory);
 	}
 
-	private int readProjectDataVersion(String projectName) throws Exception, ParseException
+	private int readProjectDataVersion(File projectDirectory) throws Exception, ParseException
 	{
 		File versionFile = getRelativeVersionFile();
-		if(!currentFileSystem.doesFileExist(projectName, versionFile))
+		if(!doesFileExist(projectDirectory, versionFile))
 			throw new RuntimeException("No version file: " + versionFile);
-		JSONObject version = readRelativeJsonFile(currentFileSystem, projectName, versionFile);
+		JSONObject version = readRelativeJsonFile(projectDirectory, versionFile);
 		int dataVersion = version.getInt(TAG_VERSION);
 		return dataVersion;
 	}
@@ -83,10 +83,10 @@ public class ProjectServer
 		return version;
 	}
 	
-	private static EnhancedJsonObject readRelativeJsonFile(MiradiLocalFileSystem fileSystem, String projectName, File relativeFile)
+	private static EnhancedJsonObject readRelativeJsonFile(File projectDirectory, File relativeFile)
 	throws Exception, ParseException
 	{
-		String contents = fileSystem.readFile(projectName, relativeFile);
+		String contents = readFile(projectDirectory, relativeFile);
 		return new EnhancedJsonObject(contents);
 	}
 
@@ -215,6 +215,4 @@ public class ProjectServer
 
 	public static String PROJECTINFO_FILE = "project";
 	private static String VERSION_FILE = "version";
-
-	private MiradiLocalFileSystem currentFileSystem;
 }
