@@ -22,7 +22,8 @@ package org.miradi.views.noproject;
 import java.io.File;
 import java.io.IOException;
 
-import org.miradi.database.LegacyProjectUtilities;
+
+import org.miradi.legacyprojects.LegacyProjectUtilities;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;

@@ -26,9 +26,9 @@ import java.io.File;
 import java.io.PrintStream;
 import java.util.Vector;
 
+
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.database.LegacyProjectUtilities;
 import org.miradi.diagram.cells.DiagramGroupBoxCell;
 import org.miradi.dialogs.planning.upperPanel.WorkPlanTreeTablePanel;
 import org.miradi.exceptions.CommandFailedException;
@@ -39,6 +39,7 @@ import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.DiagramLinkId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.ids.IdList;
+import org.miradi.legacyprojects.LegacyProjectUtilities;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
 import org.miradi.main.ResourcesHandler;

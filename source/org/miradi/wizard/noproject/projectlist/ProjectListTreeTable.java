@@ -37,7 +37,7 @@ import javax.swing.text.Position;
 import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreePath;
 
-import org.miradi.database.LegacyProjectUtilities;
+
 import org.miradi.dialogs.tablerenderers.BorderlessTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.DefaultTableCellRendererWithPreferredHeightFactory;
 import org.miradi.dialogs.treetables.TreeTableWithColumnWidthSaving;
@@ -46,6 +46,7 @@ import org.miradi.dialogs.treetables.VariableHeightTreeCellRenderer;
 import org.miradi.icons.FolderIcon;
 import org.miradi.icons.IconManager;
 import org.miradi.icons.MiradiApplicationIcon;
+import org.miradi.legacyprojects.LegacyProjectUtilities;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;

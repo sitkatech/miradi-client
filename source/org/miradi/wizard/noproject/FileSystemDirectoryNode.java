@@ -21,7 +21,8 @@ package org.miradi.wizard.noproject;
 
 import java.io.File;
 
-import org.miradi.database.LegacyProjectUtilities;
+
+import org.miradi.legacyprojects.LegacyProjectUtilities;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.FileSystemProjectSorter;
 

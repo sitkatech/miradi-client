@@ -35,14 +35,15 @@ import java.util.Enumeration;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
+
 import org.martus.util.DirectoryUtils;
 import org.martus.util.UnicodeStringWriter;
 import org.martus.util.UnicodeWriter;
-import org.miradi.database.DataUpgrader;
-import org.miradi.database.Manifest;
 import org.miradi.exceptions.FutureSchemaVersionException;
 import org.miradi.exceptions.UserCanceledException;
 import org.miradi.ids.BaseId;
+import org.miradi.legacyprojects.DataUpgrader;
+import org.miradi.legacyprojects.Manifest;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;

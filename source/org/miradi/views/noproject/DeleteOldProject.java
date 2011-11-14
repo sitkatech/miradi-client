@@ -21,9 +21,10 @@ package org.miradi.views.noproject;
 
 import java.io.File;
 
+
 import org.martus.util.DirectoryLock;
 import org.martus.util.DirectoryUtils;
-import org.miradi.database.LegacyProjectUtilities;
+import org.miradi.legacyprojects.LegacyProjectUtilities;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
