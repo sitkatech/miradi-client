@@ -31,10 +31,6 @@ import org.miradi.main.EAM;
 
 public class MiradiLocalFileSystem
 {
-	public MiradiLocalFileSystem()
-	{
-	}
-	
 	public void setDataLocation(String dataLocation) throws Exception
 	{
 		dataDirectory = new File(dataLocation);
@@ -55,7 +51,7 @@ public class MiradiLocalFileSystem
 		return filePath(projectName, file).exists();
 	}
 
-	public boolean doesProjectDirectoryExist(String projectName) throws Exception
+	private boolean doesProjectDirectoryExist(String projectName) throws Exception
 	{
 		File path = projectPath(projectName);
 		if(!path.exists())
@@ -113,7 +109,7 @@ public class MiradiLocalFileSystem
 		return new File(projectPath(projectName), file.toString());
 	}
 	
-	protected boolean wasWriteHandledByTransaction(String projectName, File file,
+	private boolean wasWriteHandledByTransaction(String projectName, File file,
 			String contents)
 	{
 		return false;
