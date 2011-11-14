@@ -77,21 +77,49 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 
 	private Project importProject(File zipFileToImport, ProgressInterface progressIndicator) throws ZipException, IOException, Exception, ValidationException
 	{
-		progressIndicator.setStatusMessage(EAM.text("Importing..."), 15);
 		ZipFile zipFile = new ZipFile(zipFileToImport);
 		try
 		{
-			if (zipContainsMpzProject(zipFile))
+			if (zipContainsMpfProject(zipFile))
+			{
+				return importProjectFromMpfEntry(zipFile, progressIndicator);
+			}
+			else if(zipContainsMpzProject(zipFile))
 			{
 				return importProjectFromMpzEntry(zipFile, progressIndicator);
 			}
-
-			return importProjectFromXmlEntry(zipFile, progressIndicator);
+			else
+			{
+				return importProjectFromXmlEntry(zipFile, progressIndicator);
+			}
 		}
 		finally
 		{
 			zipFile.close();
 		}
+	}
+
+	private Project importProjectFromMpfEntry(ZipFile zipFile, ProgressInterface progressIndicator) throws Exception
+	{
+		ZipEntry mpfEntry = zipFile.getEntry(ExportCpmzDoer.PROJECT_MPF_NAME);
+		InputStream inputStream = zipFile.getInputStream(mpfEntry);
+		try
+		{
+			Project project = new Project();
+			progressIndicator.setStatusMessage(EAM.text("Importing Miradi Data..."), 1);
+			ProjectLoader.loadProject(inputStream, project);
+			progressIndicator.incrementProgress();
+			
+			progressIndicator.setStatusMessage(EAM.text("Updating ConPro Project Number..."), 1);
+			importConproProjectNumbers(zipFile, project, progressIndicator);
+			
+			return project;
+		}
+		finally
+		{
+			inputStream.close();
+		}
+		
 	}
 
 	private Project importProjectFromMpzEntry(ZipFile zipFile, ProgressInterface progressIndicator) throws Exception
@@ -104,7 +132,6 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 			
 			progressIndicator.setStatusMessage(EAM.text("Updating ConPro Project Number..."), 1);
 			importConproProjectNumbers(zipFile, project, progressIndicator);
-			progressIndicator.incrementProgress();
 			
 			return project;
 		}
@@ -155,6 +182,7 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 	@Override
 	protected void importProjectXml(Project projectToFill, ZipFile zipFile, InputStreamWithSeek projectAsInputStream, ProgressInterface progressIndicator) throws Exception
 	{
+		progressIndicator.setStatusMessage(EAM.text("Importing ConPro Data..."), 16);
 		ConproXmlImporter conProXmlImporter = new ConproXmlImporter(projectToFill, progressIndicator);
 		conProXmlImporter.importConProProject(projectAsInputStream);
 		ORef highOrAboveRankedThreatsTag = conProXmlImporter.getHighOrAboveRankedThreatsTag();
@@ -236,6 +264,11 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 	public static boolean zipContainsMpzProject(ZipFile zipFile)
 	{
 		return containsEntry(zipFile, ExportCpmzDoer.PROJECT_ZIP_FILE_NAME);
+	}
+
+	public static boolean zipContainsMpfProject(ZipFile zipFile)
+	{
+		return containsEntry(zipFile, ExportCpmzDoer.PROJECT_MPF_NAME);
 	}
 
 	public static boolean containsEntry(ZipFile zipFile, final String entry)

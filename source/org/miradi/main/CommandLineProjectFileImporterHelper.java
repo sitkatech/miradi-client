@@ -141,7 +141,7 @@ public class CommandLineProjectFileImporterHelper
 		try
 		{
 			ZipFile zipFile = new ZipFile(projectFile);
-			if (CpmzProjectImporter.zipContainsMpzProject(zipFile) || CpmzProjectImporter.containsEntry(zipFile, ExportCpmzDoer.PROJECT_XML_FILE_NAME))
+			if (CpmzProjectImporter.zipContainsMpfProject(zipFile) || CpmzProjectImporter.containsEntry(zipFile, ExportCpmzDoer.PROJECT_XML_FILE_NAME))
 				return new CpmzProjectImporter(getMainWindow());
 			
 			if (isMpz(zipFile))
