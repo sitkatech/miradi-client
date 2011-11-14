@@ -102,7 +102,7 @@ abstract public class AbstractExportProjectXmlZipDoer extends XmlExporterDoer
 		if(contents.length() > 0)
 		{
 			byte[] byteContents = contents.getBytes("UTF-8");
-			writeContent(zipOut, EAM.EXCEPTIONS_LOG_FILE_NAME, byteContents);
+			createZipEntry(zipOut, EAM.EXCEPTIONS_LOG_FILE_NAME, byteContents);
 		}
 	}
 
@@ -112,7 +112,7 @@ abstract public class AbstractExportProjectXmlZipDoer extends XmlExporterDoer
 		if(resourceURL == null)
 			throw new Exception("Schema not found: " + WcsMiradiXmlValidator.WCS_MIRADI_SCHEMA_FILE_RELATIVE_PATH);
 
-		writeContent(zipOut, "schema.rnc", readAll(resourceURL));
+		createZipEntry(zipOut, "schema.rnc", readAll(resourceURL));
 	}
 	
 	private byte[] readAll(URL resourceURL) throws IOException

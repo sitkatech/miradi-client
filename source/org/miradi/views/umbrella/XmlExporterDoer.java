@@ -87,7 +87,7 @@ abstract public class XmlExporterDoer extends AbstractFileSaverDoer
 				throw new ValidationException(EAM.text("Exported file does not validate."));
 			}
 	
-			writeContent(zipOut, PROJECT_XML_FILE_NAME, projectXmlInBytes);
+			createZipEntry(zipOut, PROJECT_XML_FILE_NAME, projectXmlInBytes);
 		}
 		finally
 		{
@@ -141,7 +141,7 @@ abstract public class XmlExporterDoer extends AbstractFileSaverDoer
 		try
 		{
 			new SaveImagePngDoer().saveImage(byteOut, BufferedImageFactory.createImageFromDiagram(getMainWindow(), diagramObject));
-			writeContent(zipOut, IMAGES_DIR_NAME_IN_ZIP + imageName, byteOut.toByteArray());
+			createZipEntry(zipOut, IMAGES_DIR_NAME_IN_ZIP + imageName, byteOut.toByteArray());
 		}
 		finally
 		{
@@ -149,12 +149,19 @@ abstract public class XmlExporterDoer extends AbstractFileSaverDoer
 		}
 	}
 	
-	protected void writeContent(ZipOutputStream out, String projectXmlName, byte[] bytes) throws FileNotFoundException, IOException
+	protected void createZipEntry(ZipOutputStream out, String entryName, String contents) throws Exception
 	{
-		ZipEntry entry = new ZipEntry(projectXmlName);
+		createZipEntry(out, entryName, contents.getBytes("UTF-8"));
+
+	}
+	
+	protected void createZipEntry(ZipOutputStream zipOut, String entryName, byte[] bytes) throws FileNotFoundException, IOException
+	{
+		ZipEntry entry = new ZipEntry(entryName);
 		entry.setSize(bytes.length);
-		out.putNextEntry(entry);	
-		out.write(bytes);
+		zipOut.putNextEntry(entry);	
+		zipOut.write(bytes);
+		zipOut.closeEntry();
 	}
 	
 	@Override

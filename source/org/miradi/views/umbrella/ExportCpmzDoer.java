@@ -26,12 +26,15 @@ import java.io.FileOutputStream;
 import java.util.Vector;
 import java.util.zip.ZipOutputStream;
 
+import org.martus.util.UnicodeStringWriter;
 import org.miradi.exceptions.InvalidICUNSelectionException;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
+import org.miradi.project.ProjectSaver;
 import org.miradi.utils.CpmzFileChooser;
+import org.miradi.utils.MpfFileFilter;
 import org.miradi.utils.MpzFileFilterForChooserDialog;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.xml.XmlExporter;
@@ -69,14 +72,17 @@ public class ExportCpmzDoer extends XmlExporterDoer
 
 	private boolean exportCpmzFile(File chosen, ProgressInterface progressInterface) throws Exception
 	{
-		progressInterface.setStatusMessage(EAM.text("save..."), 3);
+		progressInterface.setStatusMessage(EAM.text("save..."), 4);
 		ZipOutputStream zipOut = new ZipOutputStream(new FileOutputStream(chosen));
 		try
 		{
 			addProjectAsXmlToZip(zipOut);
 			progressInterface.incrementProgress();
 			
-			addProjectAsMpzToZip(zipOut);
+			addProjectAsMpfToZip(zipOut);
+			progressInterface.incrementProgress();
+			
+			addUnreadableMpzToZip(zipOut);
 			progressInterface.incrementProgress();
 			
 			addDiagramImagesToZip(zipOut);
@@ -111,21 +117,27 @@ public class ExportCpmzDoer extends XmlExporterDoer
 		return false;
 	}
 
-	private void addProjectAsMpzToZip(ZipOutputStream zipOut) throws Exception
+	private void addProjectAsMpfToZip(ZipOutputStream zipOut) throws Exception
+	{
+		UnicodeStringWriter writer = UnicodeStringWriter.create();
+		ProjectSaver.saveProject(getProject(), writer);
+		createZipEntry(zipOut, PROJECT_MPF_NAME, writer.toString());
+	}
+	
+	private void addUnreadableMpzToZip(ZipOutputStream zipOut) throws Exception
 	{
 		ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
-		ZipOutputStream out = new ZipOutputStream(byteOut);
+		ZipOutputStream mpzZipOut = new ZipOutputStream(byteOut);
 		try
 		{
-			EAM.notifyDialog("CPMZ export not supported yet");
-//			ProjectMpzWriter.writeProjectZip(out, getProject());
+			createZipEntry(mpzZipOut, VERSION_ENTRY_PATH, FUTURE_VERSION);
 		}
 		finally
 		{
-			out.close();
+			mpzZipOut.close();
 		}
 		
-		writeContent(zipOut, PROJECT_ZIP_FILE_NAME, byteOut.toByteArray());
+		createZipEntry(zipOut, PROJECT_ZIP_FILE_NAME, byteOut.toByteArray());
 	}
 
 	@Override
@@ -202,4 +214,8 @@ public class ExportCpmzDoer extends XmlExporterDoer
 	}
 
 	public static final String PROJECT_ZIP_FILE_NAME = "project" + MpzFileFilterForChooserDialog.EXTENSION;
+	public static final String PROJECT_MPF_NAME = "project" + MpfFileFilter.EXTENSION;
+	
+	private static final String VERSION_ENTRY_PATH = "/project/json/version";
+	private static final String FUTURE_VERSION = "{\"Version\":99999}";
 }
