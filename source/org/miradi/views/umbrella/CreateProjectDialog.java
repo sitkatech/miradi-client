@@ -39,17 +39,18 @@ import javax.swing.event.DocumentListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+
 import org.martus.swing.UiButton;
 import org.martus.swing.UiList;
 import org.martus.swing.UiScrollPane;
 import org.martus.swing.UiTextField;
 import org.martus.util.DirectoryUtils;
-import org.miradi.database.LegacyProjectUtilities;
 import org.miradi.dialogs.base.DialogWithButtonBar;
 import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.dialogs.fieldComponents.PanelTextFieldWithSelectAllOnFocusGained;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.legacyprojects.LegacyProjectUtilities;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;

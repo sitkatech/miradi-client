@@ -23,10 +23,11 @@ import java.io.File;
 import java.util.Collections;
 import java.util.Vector;
 
+
 import org.martus.util.UnicodeReader;
 import org.martus.util.UnicodeStringReader;
-import org.miradi.database.LegacyProjectUtilities;
 import org.miradi.dialogs.treetables.TreeTableNode;
+import org.miradi.legacyprojects.LegacyProjectUtilities;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.FileSystemProjectSorter;
 import org.miradi.objecthelpers.ORef;

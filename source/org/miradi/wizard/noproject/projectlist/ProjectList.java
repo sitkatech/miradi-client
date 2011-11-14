@@ -29,9 +29,10 @@ import java.util.Vector;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
+
 import org.martus.swing.HyperlinkHandler;
-import org.miradi.database.LegacyProjectUtilities;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.legacyprojects.LegacyProjectUtilities;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.utils.HyperlinkLabel;

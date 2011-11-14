@@ -27,8 +27,9 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 
-import org.miradi.database.JSONFile;
+
 import org.miradi.diagram.DiagramConstants;
+import org.miradi.legacyprojects.JSONFile;
 import org.miradi.objectdata.DimensionData;
 import org.miradi.objectdata.PointData;
 import org.miradi.objecthelpers.DateUnit;

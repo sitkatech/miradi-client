@@ -26,9 +26,10 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Vector;
 
+
 import org.martus.util.UnicodeStringWriter;
 import org.martus.util.UnicodeWriter;
-import org.miradi.database.LegacyProjectUtilities;
+import org.miradi.legacyprojects.LegacyProjectUtilities;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
