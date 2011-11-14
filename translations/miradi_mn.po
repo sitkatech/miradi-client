@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-14 01:51-0600\n"
+"POT-Creation-Date: 2011-11-14 03:31-0600\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -8146,7 +8146,7 @@ msgstr "Онцгой ГоримlЯлганТанигч="
 msgid "University"
 msgstr "Их сургууль"
 
-#: Miradi/source/org/miradi/database/ProjectServer.java:445
+#: Miradi/source/org/miradi/database/ProjectServer.java:149
 #: Miradi/source/org/miradi/wizard/noproject/FileSystemTreeNode.java:91
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:161
 #: Miradi/source/org/miradi/questions/StrategyRatingSummaryQuestion.java:37
