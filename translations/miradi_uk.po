@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-12 22:48-0600\n"
+"POT-Creation-Date: 2011-11-14 01:51-0600\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -533,7 +533,7 @@ msgstr ""
 "<HTML>Коли проводиться вставляння між проектами, не можна вставляти з CM у "
 "RC або навпаки</HTML>"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:49
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:52
 msgid ""
 "<HTML>Your project is missing some data that is required for upload to "
 "ConPro.<br>Please correct the problems listed below then attempt to export "
@@ -2893,7 +2893,7 @@ msgstr "Неможливо знайти колонку таблиці ="
 msgid "Country"
 msgstr "Країна"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:164
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:176
 msgid ""
 "Country - Located in Summary View, Location Tab. Select at least one Country"
 msgstr ""
@@ -3549,7 +3549,7 @@ msgstr "Експорт завершено"
 msgid "Export to Miradi Zip..."
 msgstr "Експортувати до Miradi Zip..."
 
-#: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:163
+#: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:170
 msgid "Export..."
 msgstr "Експортувати..."
 
@@ -4112,13 +4112,23 @@ msgstr "Імпортувати..."
 msgid "ImportZip"
 msgstr "Імпортувати Zip"
 
+#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:185
+msgid "Importing ConPro Data..."
+msgstr ""
+
 #: Miradi/source/org/miradi/views/umbrella/MpzProjectImporter.java:49
 msgid "Importing MPZ"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:110
-#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:80
+#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:109
+msgid "Importing Miradi Data..."
+msgstr ""
+
 #: Miradi/source/org/miradi/xml/xmpz/XmpzXmlImporter.java:105
+msgid "Importing XML..."
+msgstr ""
+
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:110
 msgid "Importing..."
 msgstr ""
 
@@ -5456,7 +5466,7 @@ msgid "PlanningSubViewName|Custom"
 msgstr " PlanningSubViewName|Податок"
 
 #: Miradi/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:79
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:94
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:100
 msgid ""
 "Please choose a specific IUCN classification (Not a category). Fix needed "
 "for Strategy named:\n"
@@ -5639,7 +5649,7 @@ msgstr "Опис проекту:"
 msgid "Project Migration Required"
 msgstr "Необхідне переформатування проекту"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:153
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:165
 msgid "Project Name - Located in Summary View, Project Tab, Project Name field"
 msgstr ""
 
@@ -5770,7 +5780,7 @@ msgstr "Швидка оцінка"
 msgid "Ratings"
 msgstr "Оцінки"
 
-#: Miradi/source/org/miradi/project/MpzToMpfConverter.java:211
+#: Miradi/source/org/miradi/project/MpzToMpfConverter.java:216
 msgid "Reading..."
 msgstr ""
 
@@ -6443,7 +6453,7 @@ msgstr "Всесистемний"
 msgid "TNC"
 msgstr "TNC"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:167
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:179
 msgid ""
 "TNC Operating Unit - At least one TNC Operating Unit must be selected, "
 "<br>located in Summary View, TNC tab. Organizations other than TNC should "
@@ -7420,13 +7430,13 @@ msgstr "Виконавці"
 msgid "Team Contact"
 msgstr "Контактна особа"
 
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:156
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:168
 msgid ""
 "Team Contact - At least one project Team Member must be specified as Team "
 "Contact, <br>located in Summary View, Team Tab, Roles field"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:160
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:172
 msgid ""
 "Team Contact Email - The Team Contact must have an email address, "
 "<br>located in Summary View, Team Tab, ensure Team Contact has email "
@@ -8145,7 +8155,8 @@ msgstr ""
 msgid "Unspecified"
 msgstr "Невизначений"
 
-#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:105
+#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:113
+#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:133
 msgid "Updating ConPro Project Number..."
 msgstr ""
 
@@ -8552,7 +8563,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:90
 #: Miradi/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:54
-#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:72
+#: Miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:75
 msgid "save..."
 msgstr ""
 
