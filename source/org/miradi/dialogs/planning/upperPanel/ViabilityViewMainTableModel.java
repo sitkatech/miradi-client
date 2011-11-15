@@ -166,11 +166,6 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 
 	}
 
-	private ChoiceQuestion getStatusQuestion()
-	{
-		return StaticQuestionManager.getQuestion(StatusQuestion.class);
-	}
-
 	private ChoiceItem  valueForMeasurement(BaseObject baseObject, int row, int column)
 	{
 		String tag = COLUMN_TAGS_FOR_MEASUREMENTS[column];
@@ -285,6 +280,11 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 	private boolean isViabilityIndicator(Indicator indicator)
 	{
 		return indicator.isViabilityIndicator();
+	}
+	
+	private ChoiceQuestion getStatusQuestion()
+	{
+		return StaticQuestionManager.getQuestion(StatusQuestion.class);
 	}
 	
 	public static final String POOR = StatusQuestion.POOR;
