@@ -89,7 +89,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		if (tag.equals(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE))
 			return new KeyEcologicalAttributeTypeQuestion().findChoiceByCode(rawValue);
 		
-		if(tag.equals(KeyEcologicalAttribute.TAG_EMPTY))
+		if(tag.equals(BaseObject.TAG_EMPTY))
 			return new EmptyChoiceItem();
 		
 		return new TaglessChoiceItem(kea.getData(tag));
@@ -104,7 +104,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		if (tag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
 			return new ProgressReportShortStatusQuestion().findChoiceByCode(baseObject.getPseudoData(tag));
 		
-		if(tag.equals(Indicator.TAG_EMPTY))
+		if(tag.equals(BaseObject.TAG_EMPTY))
 			return new EmptyChoiceItem();
 		
 		String data = baseObject.getData(tag);
@@ -135,11 +135,10 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		if (tag.equals(Target.PSEUDO_TAG_TARGET_VIABILITY))
 			return getStatusQuestion().findChoiceByCode(rawValue);
 		
-		if(tag.equals(Target.TAG_EMPTY))
+		if(tag.equals(BaseObject.TAG_EMPTY))
 			return new EmptyChoiceItem();
 		
 		return new EmptyChoiceItem();
-
 	}
 
 	private ChoiceItem  valueForMeasurement(BaseObject baseObject, int row, int column)
@@ -151,7 +150,6 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 			return createStatusConfidenceChoiceItem(baseObject, tag);
 
 		return getStatusColumnChoiceItem(tag, statusData, summaryData, getTrendIcon(baseObject));
-
 	}
 
 	private ChoiceItem getValueForFutureResultAsGoal(BaseObject baseObject, int row, int column)
@@ -286,9 +284,9 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 	private static final String VERY_GOOD = StatusQuestion.VERY_GOOD;
 	
 	private static final String[] COLUMN_TAGS_FOR_INDICATORS = {
-		Indicator.TAG_EMPTY,
+		BaseObject.TAG_EMPTY,
 		Indicator.PSEUDO_TAG_STATUS_VALUE,
-		Indicator.TAG_EMPTY,
+		BaseObject.TAG_EMPTY,
 		
 		Indicator.TAG_INDICATOR_THRESHOLD,
 		Indicator.TAG_INDICATOR_THRESHOLD,
@@ -302,49 +300,49 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 	private static final String[] COLUMN_TAGS_FOR_TARGETS = {
 		Target.TAG_VIABILITY_MODE, 
 		Target.PSEUDO_TAG_TARGET_VIABILITY,
-		Target.TAG_EMPTY,
-		Target.TAG_EMPTY,
-		Target.TAG_EMPTY,
-		Target.TAG_EMPTY,
-		Target.TAG_EMPTY,
-		Target.TAG_EMPTY,
-		Target.TAG_EMPTY,
+		BaseObject.TAG_EMPTY,
+		BaseObject.TAG_EMPTY,
+		BaseObject.TAG_EMPTY,
+		BaseObject.TAG_EMPTY,
+		BaseObject.TAG_EMPTY,
+		BaseObject.TAG_EMPTY,
+		BaseObject.TAG_EMPTY,
 		};
 	
 	private static final String[] COLUMN_TAGS_KEAS = {
-		KeyEcologicalAttribute.TAG_EMPTY,
+		BaseObject.TAG_EMPTY,
 		KeyEcologicalAttribute.PSEUDO_TAG_VIABILITY_STATUS, 
 		KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE,
-		KeyEcologicalAttribute.TAG_EMPTY,
-		KeyEcologicalAttribute.TAG_EMPTY,
-		KeyEcologicalAttribute.TAG_EMPTY,
-		KeyEcologicalAttribute.TAG_EMPTY,
-		KeyEcologicalAttribute.TAG_EMPTY,
-		KeyEcologicalAttribute.TAG_EMPTY,
+		BaseObject.TAG_EMPTY,
+		BaseObject.TAG_EMPTY,
+		BaseObject.TAG_EMPTY,
+		BaseObject.TAG_EMPTY,
+		BaseObject.TAG_EMPTY,
+		BaseObject.TAG_EMPTY,
 		};
 	
 	private static final String[] COLUMN_TAGS_FOR_MEASUREMENTS = { 
-												Measurement.TAG_EMPTY,
-												Measurement.TAG_EMPTY,
-												Measurement.TAG_EMPTY,
-												POOR,
-												FAIR,
-												GOOD,
-												VERY_GOOD,
-												Measurement.TAG_STATUS_CONFIDENCE,
-												Measurement.TAG_EMPTY,};
+		BaseObject.TAG_EMPTY,
+		BaseObject.TAG_EMPTY,
+		BaseObject.TAG_EMPTY,
+		POOR,
+		FAIR,
+		GOOD,
+		VERY_GOOD,
+		Measurement.TAG_STATUS_CONFIDENCE,
+		BaseObject.TAG_EMPTY,};
 	
 	private static final String[] COLUMN_TAGS_FOR_FUTURE_RESULTS = {
-		Goal.TAG_EMPTY,
-		Goal.TAG_EMPTY,
-		Goal.TAG_EMPTY,
+		BaseObject.TAG_EMPTY,
+		BaseObject.TAG_EMPTY,
+		BaseObject.TAG_EMPTY,
 		
 		StatusQuestion.POOR,
 		StatusQuestion.FAIR,
 		StatusQuestion.GOOD,
 	    StatusQuestion.VERY_GOOD,
 
-		Goal.TAG_EMPTY,
-		Goal.TAG_EMPTY,
+	    BaseObject.TAG_EMPTY,
+	    BaseObject.TAG_EMPTY,
 	};
 }
