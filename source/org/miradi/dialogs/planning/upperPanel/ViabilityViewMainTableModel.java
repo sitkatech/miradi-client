@@ -149,26 +149,12 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		String summaryData = baseObject.getData(Measurement.TAG_SUMMARY);
 		if (tag.equals(Measurement.TAG_STATUS_CONFIDENCE))
 			return createStatusConfidenceChoiceItem(baseObject, tag);
-		
 
 		final Icon trendIcon = getTrendIcon(baseObject);
-		TextAndIconChoiceItem textAndIconChoiceItem = new TextAndIconChoiceItem(summaryData, trendIcon);		
-		if (tag.equals(POOR) && StatusQuestion.POOR.equals(statusData))
-			return textAndIconChoiceItem;
-
-		if (tag.equals(FAIR) && StatusQuestion.FAIR.equals(statusData))
-			return textAndIconChoiceItem;
-
-		if (tag.equals(GOOD) && StatusQuestion.GOOD.equals(statusData))
-			return textAndIconChoiceItem;
-
-		if (tag.equals(VERY_GOOD) && StatusQuestion.VERY_GOOD.equals(statusData))
-			return textAndIconChoiceItem;
-		
-		return new EmptyChoiceItem();
+		return getStatusColumnChoiceItem(tag, statusData, summaryData, trendIcon);
 
 	}
-	
+
 	private ChoiceItem getValueForFutureResultAsGoal(BaseObject baseObject, int row, int column)
 	{
 		String tag = COLUMN_TAGS_FOR_FUTURE_RESULTS[column];
@@ -178,6 +164,11 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		String summaryData = indicatorAsParent.getData(Indicator.TAG_FUTURE_STATUS_SUMMARY);
 		String statusData = indicatorAsParent.getData(Indicator.TAG_FUTURE_STATUS_RATING);
 		final Icon icon = new GoalIcon();
+		return getStatusColumnChoiceItem(tag, statusData, summaryData, icon);
+	}
+	
+	public ChoiceItem getStatusColumnChoiceItem(String tag, String statusData, String summaryData, final Icon icon)
+	{
 		TextAndIconChoiceItem textAndIconChoiceItem = new TextAndIconChoiceItem(summaryData, icon);		
 		if (tag.equals(POOR) && StatusQuestion.POOR.equals(statusData))
 			return textAndIconChoiceItem;
