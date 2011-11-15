@@ -143,10 +143,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		if (tag.equals(Measurement.TAG_STATUS_CONFIDENCE))
 			return createStatusConfidenceChoiceItem(baseObject, tag);
 
-		String summaryData = baseObject.getData(Measurement.TAG_SUMMARY);
-		String statusData = baseObject.getData(Measurement.TAG_STATUS);
-
-		return getStatusColumnChoiceItem(tag, statusData, summaryData, getTrendIcon(baseObject));
+		return getStatusColumnChoiceItem(tag, baseObject, Measurement.TAG_SUMMARY, Measurement.TAG_STATUS, getTrendIcon(baseObject));
 	}
 
 	private ChoiceItem getValueForFutureResultAsGoal(BaseObject baseObject, int row, int column)
@@ -155,10 +152,28 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		ORefList objectHiearchy = getRowColumnObjectProvider().getObjectHiearchy(row, column);
 		ORef indicatorRef = objectHiearchy.getRefForType(Indicator.getObjectType());
 		Indicator indicatorAsParent = Indicator.find(getProject(), indicatorRef);
-		String summaryData = indicatorAsParent.getData(Indicator.TAG_FUTURE_STATUS_SUMMARY);
-		String statusData = indicatorAsParent.getData(Indicator.TAG_FUTURE_STATUS_RATING);
 		
-		return getStatusColumnChoiceItem(tag, statusData, summaryData, IconManager.getGoalIcon());
+		return getStatusColumnChoiceItem(tag, indicatorAsParent, Indicator.TAG_FUTURE_STATUS_SUMMARY, Indicator.TAG_FUTURE_STATUS_RATING, IconManager.getGoalIcon());
+	}
+
+	private ChoiceItem getStatusColumnChoiceItem(String tag, BaseObject indicatorAsParent, final String summaryTag, final String statusTag, final Icon icon)
+	{
+		String summaryData = indicatorAsParent.getData(summaryTag);
+		String statusData = indicatorAsParent.getData(statusTag);
+		TextAndIconChoiceItem textAndIconChoiceItem = new TextAndIconChoiceItem(summaryData, icon);		
+		if (isStatusColumn(tag, statusData, POOR))
+			return textAndIconChoiceItem;
+		
+		if (isStatusColumn(tag, statusData, FAIR))
+			return textAndIconChoiceItem;
+		
+		if (isStatusColumn(tag, statusData, GOOD))
+			return textAndIconChoiceItem;
+		
+		if (isStatusColumn(tag, statusData, VERY_GOOD))
+			return textAndIconChoiceItem;
+		
+		return new EmptyChoiceItem();
 	}
 	
 	public ChoiceItem getStatusColumnChoiceItem(String tag, String statusData, String summaryData, final Icon icon)
