@@ -163,19 +163,24 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 	public ChoiceItem getStatusColumnChoiceItem(String tag, String statusData, String summaryData, final Icon icon)
 	{
 		TextAndIconChoiceItem textAndIconChoiceItem = new TextAndIconChoiceItem(summaryData, icon);		
-		if (tag.equals(POOR) && POOR.equals(statusData))
+		if (isStatusColumn(tag, statusData, POOR))
 			return textAndIconChoiceItem;
 
-		if (tag.equals(FAIR) && FAIR.equals(statusData))
+		if (isStatusColumn(tag, statusData, FAIR))
 			return textAndIconChoiceItem;
 
-		if (tag.equals(GOOD) && GOOD.equals(statusData))
+		if (isStatusColumn(tag, statusData, GOOD))
 			return textAndIconChoiceItem;
 
-		if (tag.equals(VERY_GOOD) && VERY_GOOD.equals(statusData))
+		if (isStatusColumn(tag, statusData, VERY_GOOD))
 			return textAndIconChoiceItem;
 		
 		return new EmptyChoiceItem();
+	}
+
+	private boolean isStatusColumn(String tag, String statusData, final String statusCode)
+	{
+		return tag.equals(statusCode) && statusCode.equals(statusData);
 	}
 
 	@Override
