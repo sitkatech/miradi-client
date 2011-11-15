@@ -42,6 +42,7 @@ import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 import org.miradi.questions.ProgressReportShortStatusQuestion;
 import org.miradi.questions.RatingSourceQuestion;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.TaglessChoiceItem;
@@ -167,7 +168,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 
 	private ChoiceQuestion getStatusQuestion()
 	{
-		return new StatusQuestion();
+		return StaticQuestionManager.getQuestion(StatusQuestion.class);
 	}
 
 	private ChoiceItem  valueForMeasurement(BaseObject baseObject, int row, int column)
