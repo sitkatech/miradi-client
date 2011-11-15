@@ -332,12 +332,10 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		BaseObject.TAG_EMPTY,
 		BaseObject.TAG_EMPTY,
 		BaseObject.TAG_EMPTY,
-		
-		StatusQuestion.POOR,
-		StatusQuestion.FAIR,
-		StatusQuestion.GOOD,
-	    StatusQuestion.VERY_GOOD,
-
+		POOR,
+		FAIR,
+		GOOD,
+	    VERY_GOOD,
 	    BaseObject.TAG_EMPTY,
 	    BaseObject.TAG_EMPTY,
 	};
