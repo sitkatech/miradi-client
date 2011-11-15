@@ -147,7 +147,8 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		String tag = COLUMN_TAGS_FOR_MEASUREMENTS[column];
 		String statusData = baseObject.getData(Measurement.TAG_STATUS);
 		String summaryData = baseObject.getData(Measurement.TAG_SUMMARY);
-		TextAndIconChoiceItem textAndIconChoiceItem = new TextAndIconChoiceItem(summaryData, getTrendIcon(baseObject));		
+		final Icon trendIcon = getTrendIcon(baseObject);
+		TextAndIconChoiceItem textAndIconChoiceItem = new TextAndIconChoiceItem(summaryData, trendIcon);		
 		if (tag.equals(POOR) && StatusQuestion.POOR.equals(statusData))
 			return textAndIconChoiceItem;
 
@@ -175,7 +176,8 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		Indicator indicatorAsParent = Indicator.find(getProject(), indicatorRef);
 		String summaryData = indicatorAsParent.getData(Indicator.TAG_FUTURE_STATUS_SUMMARY);
 		String statusData = indicatorAsParent.getData(Indicator.TAG_FUTURE_STATUS_RATING);
-		TextAndIconChoiceItem textAndIconChoiceItem = new TextAndIconChoiceItem(summaryData, new GoalIcon());		
+		final Icon icon = new GoalIcon();
+		TextAndIconChoiceItem textAndIconChoiceItem = new TextAndIconChoiceItem(summaryData, icon);		
 		if (tag.equals(POOR) && StatusQuestion.POOR.equals(statusData))
 			return textAndIconChoiceItem;
 
