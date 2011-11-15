@@ -143,8 +143,8 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		if (tag.equals(Measurement.TAG_STATUS_CONFIDENCE))
 			return createStatusConfidenceChoiceItem(baseObject, tag);
 
-		String statusData = baseObject.getData(Measurement.TAG_STATUS);
 		String summaryData = baseObject.getData(Measurement.TAG_SUMMARY);
+		String statusData = baseObject.getData(Measurement.TAG_STATUS);
 
 		return getStatusColumnChoiceItem(tag, statusData, summaryData, getTrendIcon(baseObject));
 	}
