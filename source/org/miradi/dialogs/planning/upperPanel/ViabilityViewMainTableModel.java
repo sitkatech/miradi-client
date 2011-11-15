@@ -140,10 +140,11 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 	private ChoiceItem  valueForMeasurement(BaseObject baseObject, int row, int column)
 	{
 		String tag = COLUMN_TAGS_FOR_MEASUREMENTS[column];
-		String statusData = baseObject.getData(Measurement.TAG_STATUS);
-		String summaryData = baseObject.getData(Measurement.TAG_SUMMARY);
 		if (tag.equals(Measurement.TAG_STATUS_CONFIDENCE))
 			return createStatusConfidenceChoiceItem(baseObject, tag);
+
+		String statusData = baseObject.getData(Measurement.TAG_STATUS);
+		String summaryData = baseObject.getData(Measurement.TAG_SUMMARY);
 
 		return getStatusColumnChoiceItem(tag, statusData, summaryData, getTrendIcon(baseObject));
 	}
