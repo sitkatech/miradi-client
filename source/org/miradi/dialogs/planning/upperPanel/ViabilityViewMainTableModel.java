@@ -165,7 +165,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 
 	}
 
-	private StatusQuestion getStatusQuestion()
+	private ChoiceQuestion getStatusQuestion()
 	{
 		return new StatusQuestion();
 	}
