@@ -163,16 +163,16 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 	public ChoiceItem getStatusColumnChoiceItem(String tag, String statusData, String summaryData, final Icon icon)
 	{
 		TextAndIconChoiceItem textAndIconChoiceItem = new TextAndIconChoiceItem(summaryData, icon);		
-		if (tag.equals(POOR) && StatusQuestion.POOR.equals(statusData))
+		if (tag.equals(POOR) && POOR.equals(statusData))
 			return textAndIconChoiceItem;
 
-		if (tag.equals(FAIR) && StatusQuestion.FAIR.equals(statusData))
+		if (tag.equals(FAIR) && FAIR.equals(statusData))
 			return textAndIconChoiceItem;
 
-		if (tag.equals(GOOD) && StatusQuestion.GOOD.equals(statusData))
+		if (tag.equals(GOOD) && GOOD.equals(statusData))
 			return textAndIconChoiceItem;
 
-		if (tag.equals(VERY_GOOD) && StatusQuestion.VERY_GOOD.equals(statusData))
+		if (tag.equals(VERY_GOOD) && VERY_GOOD.equals(statusData))
 			return textAndIconChoiceItem;
 		
 		return new EmptyChoiceItem();
@@ -283,12 +283,10 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		BaseObject.TAG_EMPTY,
 		Indicator.PSEUDO_TAG_STATUS_VALUE,
 		BaseObject.TAG_EMPTY,
-		
 		Indicator.TAG_INDICATOR_THRESHOLD,
 		Indicator.TAG_INDICATOR_THRESHOLD,
 		Indicator.TAG_INDICATOR_THRESHOLD,
 		Indicator.TAG_INDICATOR_THRESHOLD,
-		
 		Indicator.TAG_RATING_SOURCE,
 		BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
 	};
