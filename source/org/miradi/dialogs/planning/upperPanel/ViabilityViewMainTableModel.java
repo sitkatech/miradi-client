@@ -95,30 +95,6 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		return new TaglessChoiceItem(kea.getData(tag));
 	}
 
-	private ChoiceItem getValueForFutureResultAsGoal(BaseObject baseObject, int row, int column)
-	{
-		String tag = COLUMN_TAGS_FOR_FUTURE_RESULTS[column];
-		ORefList objectHiearchy = getRowColumnObjectProvider().getObjectHiearchy(row, column);
-		ORef indicatorRef = objectHiearchy.getRefForType(Indicator.getObjectType());
-		Indicator indicatorAsParent = Indicator.find(getProject(), indicatorRef);
-		String summaryData = indicatorAsParent.getData(Indicator.TAG_FUTURE_STATUS_SUMMARY);
-		String statusData = indicatorAsParent.getData(Indicator.TAG_FUTURE_STATUS_RATING);
-		TextAndIconChoiceItem textAndIconChoiceItem = new TextAndIconChoiceItem(summaryData, new GoalIcon());		
-		if (tag.equals(StatusQuestion.POOR) && StatusQuestion.POOR.equals(statusData))
-			return textAndIconChoiceItem;
-
-		if (tag.equals(StatusQuestion.FAIR) && StatusQuestion.FAIR.equals(statusData))
-			return textAndIconChoiceItem;
-
-		if (tag.equals(StatusQuestion.GOOD) && StatusQuestion.GOOD.equals(statusData))
-			return textAndIconChoiceItem;
-
-		if (tag.equals(StatusQuestion.VERY_GOOD) && StatusQuestion.VERY_GOOD.equals(statusData))
-			return textAndIconChoiceItem;
-		
-		return new EmptyChoiceItem();
-	}
-
 	private ChoiceItem getValueForIndicator(BaseObject baseObject, int row,	int column)
 	{
 		String tag = COLUMN_TAGS_FOR_INDICATORS[column];
@@ -189,6 +165,30 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		
 		return new EmptyChoiceItem();
 
+	}
+	
+	private ChoiceItem getValueForFutureResultAsGoal(BaseObject baseObject, int row, int column)
+	{
+		String tag = COLUMN_TAGS_FOR_FUTURE_RESULTS[column];
+		ORefList objectHiearchy = getRowColumnObjectProvider().getObjectHiearchy(row, column);
+		ORef indicatorRef = objectHiearchy.getRefForType(Indicator.getObjectType());
+		Indicator indicatorAsParent = Indicator.find(getProject(), indicatorRef);
+		String summaryData = indicatorAsParent.getData(Indicator.TAG_FUTURE_STATUS_SUMMARY);
+		String statusData = indicatorAsParent.getData(Indicator.TAG_FUTURE_STATUS_RATING);
+		TextAndIconChoiceItem textAndIconChoiceItem = new TextAndIconChoiceItem(summaryData, new GoalIcon());		
+		if (tag.equals(StatusQuestion.POOR) && StatusQuestion.POOR.equals(statusData))
+			return textAndIconChoiceItem;
+
+		if (tag.equals(StatusQuestion.FAIR) && StatusQuestion.FAIR.equals(statusData))
+			return textAndIconChoiceItem;
+
+		if (tag.equals(StatusQuestion.GOOD) && StatusQuestion.GOOD.equals(statusData))
+			return textAndIconChoiceItem;
+
+		if (tag.equals(StatusQuestion.VERY_GOOD) && StatusQuestion.VERY_GOOD.equals(statusData))
+			return textAndIconChoiceItem;
+		
+		return new EmptyChoiceItem();
 	}
 
 	@Override
