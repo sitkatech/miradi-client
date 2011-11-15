@@ -147,6 +147,10 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		String tag = COLUMN_TAGS_FOR_MEASUREMENTS[column];
 		String statusData = baseObject.getData(Measurement.TAG_STATUS);
 		String summaryData = baseObject.getData(Measurement.TAG_SUMMARY);
+		if (tag.equals(Measurement.TAG_STATUS_CONFIDENCE))
+			return createStatusConfidenceChoiceItem(baseObject, tag);
+		
+
 		final Icon trendIcon = getTrendIcon(baseObject);
 		TextAndIconChoiceItem textAndIconChoiceItem = new TextAndIconChoiceItem(summaryData, trendIcon);		
 		if (tag.equals(POOR) && StatusQuestion.POOR.equals(statusData))
@@ -160,9 +164,6 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 
 		if (tag.equals(VERY_GOOD) && StatusQuestion.VERY_GOOD.equals(statusData))
 			return textAndIconChoiceItem;
-		
-		if (tag.equals(Measurement.TAG_STATUS_CONFIDENCE))
-			return createStatusConfidenceChoiceItem(baseObject, tag);
 		
 		return new EmptyChoiceItem();
 
