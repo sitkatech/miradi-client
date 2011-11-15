@@ -150,8 +150,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		if (tag.equals(Measurement.TAG_STATUS_CONFIDENCE))
 			return createStatusConfidenceChoiceItem(baseObject, tag);
 
-		final Icon trendIcon = getTrendIcon(baseObject);
-		return getStatusColumnChoiceItem(tag, statusData, summaryData, trendIcon);
+		return getStatusColumnChoiceItem(tag, statusData, summaryData, getTrendIcon(baseObject));
 
 	}
 
@@ -163,8 +162,8 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		Indicator indicatorAsParent = Indicator.find(getProject(), indicatorRef);
 		String summaryData = indicatorAsParent.getData(Indicator.TAG_FUTURE_STATUS_SUMMARY);
 		String statusData = indicatorAsParent.getData(Indicator.TAG_FUTURE_STATUS_RATING);
-		final Icon icon = new GoalIcon();
-		return getStatusColumnChoiceItem(tag, statusData, summaryData, icon);
+		
+		return getStatusColumnChoiceItem(tag, statusData, summaryData, new GoalIcon());
 	}
 	
 	public ChoiceItem getStatusColumnChoiceItem(String tag, String statusData, String summaryData, final Icon icon)
