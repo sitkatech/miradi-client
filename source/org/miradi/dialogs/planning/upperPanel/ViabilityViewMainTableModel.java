@@ -23,7 +23,7 @@ package org.miradi.dialogs.planning.upperPanel;
 import javax.swing.Icon;
 
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
-import org.miradi.icons.GoalIcon;
+import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -87,7 +87,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 			return getStatusQuestion().findChoiceByCode(rawValue);
 		
 		if (tag.equals(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE))
-			return new KeyEcologicalAttributeTypeQuestion().findChoiceByCode(rawValue);
+			return StaticQuestionManager.getQuestion(KeyEcologicalAttributeTypeQuestion.class).findChoiceByCode(rawValue);
 		
 		if(tag.equals(BaseObject.TAG_EMPTY))
 			return new EmptyChoiceItem();
@@ -102,7 +102,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 			return getStatusQuestion().findChoiceByCode(baseObject.getPseudoData(tag));
 		
 		if (tag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
-			return new ProgressReportShortStatusQuestion().findChoiceByCode(baseObject.getPseudoData(tag));
+			return StaticQuestionManager.getQuestion(ProgressReportShortStatusQuestion.class).findChoiceByCode(baseObject.getPseudoData(tag));
 		
 		if(tag.equals(BaseObject.TAG_EMPTY))
 			return new EmptyChoiceItem();
@@ -110,7 +110,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		String data = baseObject.getData(tag);
 		
 		if(tag.equals(Indicator.TAG_RATING_SOURCE) && isViabilityIndicator((Indicator) baseObject))
-			return new RatingSourceQuestion().findChoiceByCode(data);
+			return StaticQuestionManager.getQuestion(RatingSourceQuestion.class).findChoiceByCode(data);
 		
 		if (tag.equals(Indicator.TAG_INDICATOR_THRESHOLD))
 		{
@@ -121,7 +121,6 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		}
 		
 		return new TaglessChoiceItem(data);
-
 	}
 
 	private ChoiceItem getValueForTarget(BaseObject baseObject, int row, int column)
@@ -130,7 +129,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		String rawValue = baseObject.getData(tag);
 
 		if(tag.equals(Target.TAG_VIABILITY_MODE))
-			return new ViabilityModeQuestion().findChoiceByCode(rawValue);
+			return StaticQuestionManager.getQuestion(ViabilityModeQuestion.class).findChoiceByCode(rawValue);
 		
 		if (tag.equals(Target.PSEUDO_TAG_TARGET_VIABILITY))
 			return getStatusQuestion().findChoiceByCode(rawValue);
@@ -158,7 +157,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		String summaryData = indicatorAsParent.getData(Indicator.TAG_FUTURE_STATUS_SUMMARY);
 		String statusData = indicatorAsParent.getData(Indicator.TAG_FUTURE_STATUS_RATING);
 		
-		return getStatusColumnChoiceItem(tag, statusData, summaryData, new GoalIcon());
+		return getStatusColumnChoiceItem(tag, statusData, summaryData, IconManager.getGoalIcon());
 	}
 	
 	public ChoiceItem getStatusColumnChoiceItem(String tag, String statusData, String summaryData, final Icon icon)
