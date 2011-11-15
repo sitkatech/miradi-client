@@ -176,16 +176,16 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		String summaryData = indicatorAsParent.getData(Indicator.TAG_FUTURE_STATUS_SUMMARY);
 		String statusData = indicatorAsParent.getData(Indicator.TAG_FUTURE_STATUS_RATING);
 		TextAndIconChoiceItem textAndIconChoiceItem = new TextAndIconChoiceItem(summaryData, new GoalIcon());		
-		if (tag.equals(StatusQuestion.POOR) && StatusQuestion.POOR.equals(statusData))
+		if (tag.equals(POOR) && StatusQuestion.POOR.equals(statusData))
 			return textAndIconChoiceItem;
 
-		if (tag.equals(StatusQuestion.FAIR) && StatusQuestion.FAIR.equals(statusData))
+		if (tag.equals(FAIR) && StatusQuestion.FAIR.equals(statusData))
 			return textAndIconChoiceItem;
 
-		if (tag.equals(StatusQuestion.GOOD) && StatusQuestion.GOOD.equals(statusData))
+		if (tag.equals(GOOD) && StatusQuestion.GOOD.equals(statusData))
 			return textAndIconChoiceItem;
 
-		if (tag.equals(StatusQuestion.VERY_GOOD) && StatusQuestion.VERY_GOOD.equals(statusData))
+		if (tag.equals(VERY_GOOD) && StatusQuestion.VERY_GOOD.equals(statusData))
 			return textAndIconChoiceItem;
 		
 		return new EmptyChoiceItem();
