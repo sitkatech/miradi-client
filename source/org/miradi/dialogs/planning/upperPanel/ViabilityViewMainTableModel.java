@@ -135,9 +135,6 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		if (tag.equals(Target.PSEUDO_TAG_TARGET_VIABILITY))
 			return getStatusQuestion().findChoiceByCode(rawValue);
 		
-		if(tag.equals(BaseObject.TAG_EMPTY))
-			return new EmptyChoiceItem();
-		
 		return new EmptyChoiceItem();
 	}
 
