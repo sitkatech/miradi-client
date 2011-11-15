@@ -83,7 +83,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		String tag = COLUMN_TAGS_KEAS[column];
 		String rawValue = kea.getData(tag);
 		if (tag.equals(KeyEcologicalAttribute.PSEUDO_TAG_VIABILITY_STATUS))
-			return new StatusQuestion().findChoiceByCode(rawValue);
+			return getStatusQuestion().findChoiceByCode(rawValue);
 		
 		if (tag.equals(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE))
 			return new KeyEcologicalAttributeTypeQuestion().findChoiceByCode(rawValue);
@@ -122,7 +122,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 	{
 		String tag = COLUMN_TAGS_FOR_INDICATORS[column];
 		if (tag.equals(Indicator.PSEUDO_TAG_STATUS_VALUE) && isViabilityIndicator((Indicator) baseObject))
-			return new StatusQuestion().findChoiceByCode(baseObject.getPseudoData(tag));
+			return getStatusQuestion().findChoiceByCode(baseObject.getPseudoData(tag));
 		
 		if (tag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
 			return new ProgressReportShortStatusQuestion().findChoiceByCode(baseObject.getPseudoData(tag));
@@ -156,13 +156,18 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 			return new ViabilityModeQuestion().findChoiceByCode(rawValue);
 		
 		if (tag.equals(Target.PSEUDO_TAG_TARGET_VIABILITY))
-			return new StatusQuestion().findChoiceByCode(rawValue);
+			return getStatusQuestion().findChoiceByCode(rawValue);
 		
 		if(tag.equals(Target.TAG_EMPTY))
 			return new EmptyChoiceItem();
 		
 		return new EmptyChoiceItem();
 
+	}
+
+	private StatusQuestion getStatusQuestion()
+	{
+		return new StatusQuestion();
 	}
 
 	private ChoiceItem  valueForMeasurement(BaseObject baseObject, int row, int column)
@@ -241,13 +246,13 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 	
 	private boolean isChoiceItemColumn(String columnTag)
 	{
-		ChoiceItem choiceItem = new StatusQuestion().findChoiceByCode(columnTag);
+		ChoiceItem choiceItem = getStatusQuestion().findChoiceByCode(columnTag);
 		return (choiceItem != null);
 	}
 
 	private ChoiceItem getColumnChoiceItem(String columnTag)
 	{
-		return new StatusQuestion().findChoiceByCode(columnTag);	
+		return getStatusQuestion().findChoiceByCode(columnTag);	
 	}
 	
 	private ChoiceItem createStatusConfidenceChoiceItem(BaseObject baseObject, String tag)
