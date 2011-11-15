@@ -287,12 +287,12 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		return StaticQuestionManager.getQuestion(StatusQuestion.class);
 	}
 	
-	public static final String POOR = StatusQuestion.POOR;
-	public static final String FAIR = StatusQuestion.FAIR;
-	public static final String GOOD = StatusQuestion.GOOD;
-	public static final String VERY_GOOD = StatusQuestion.VERY_GOOD;
+	private static final String POOR = StatusQuestion.POOR;
+	private static final String FAIR = StatusQuestion.FAIR;
+	private static final String GOOD = StatusQuestion.GOOD;
+	private static final String VERY_GOOD = StatusQuestion.VERY_GOOD;
 	
-	public static final String[] COLUMN_TAGS_FOR_INDICATORS = {
+	private static final String[] COLUMN_TAGS_FOR_INDICATORS = {
 		Indicator.TAG_EMPTY,
 		Indicator.PSEUDO_TAG_STATUS_VALUE,
 		Indicator.TAG_EMPTY,
@@ -306,7 +306,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
 	};
 	
-	public static final String[] COLUMN_TAGS_FOR_TARGETS = {
+	private static final String[] COLUMN_TAGS_FOR_TARGETS = {
 		Target.TAG_VIABILITY_MODE, 
 		Target.PSEUDO_TAG_TARGET_VIABILITY,
 		Target.TAG_EMPTY,
@@ -318,7 +318,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		Target.TAG_EMPTY,
 		};
 	
-	public static final String[] COLUMN_TAGS_KEAS = {
+	private static final String[] COLUMN_TAGS_KEAS = {
 		KeyEcologicalAttribute.TAG_EMPTY,
 		KeyEcologicalAttribute.PSEUDO_TAG_VIABILITY_STATUS, 
 		KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE,
@@ -330,7 +330,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		KeyEcologicalAttribute.TAG_EMPTY,
 		};
 	
-	public static final String[] COLUMN_TAGS_FOR_MEASUREMENTS = { 
+	private static final String[] COLUMN_TAGS_FOR_MEASUREMENTS = { 
 												Measurement.TAG_EMPTY,
 												Measurement.TAG_EMPTY,
 												Measurement.TAG_EMPTY,
@@ -341,7 +341,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 												Measurement.TAG_STATUS_CONFIDENCE,
 												Measurement.TAG_EMPTY,};
 	
-	public static final String[] COLUMN_TAGS_FOR_FUTURE_RESULTS = {
+	private static final String[] COLUMN_TAGS_FOR_FUTURE_RESULTS = {
 		Goal.TAG_EMPTY,
 		Goal.TAG_EMPTY,
 		Goal.TAG_EMPTY,
