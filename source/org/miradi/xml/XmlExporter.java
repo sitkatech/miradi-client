@@ -134,12 +134,17 @@ public abstract class XmlExporter
 	
 	protected void writeOptionalElement(UnicodeWriter out, String elementName, BaseObject object, String fieldTag) throws Exception
 	{
-		writeOptionalElement(out, elementName, object.getData(fieldTag));
+		writeOptionalElement(out, elementName, getFieldDataForXmlExport(object, fieldTag));
 	}
 	
 	protected void writeElement(UnicodeWriter out, String elementName, BaseObject object, String fieldTag) throws Exception
 	{
-		writeElement(out, elementName, object.getData(fieldTag));
+		writeElement(out, elementName, getFieldDataForXmlExport(object, fieldTag));
+	}
+
+	private String getFieldDataForXmlExport(BaseObject object, String fieldTag)
+	{
+		return object.getData(fieldTag);
 	}
 	
 	protected void writeCodeListElements(UnicodeWriter out, String parentElementName, String elementName, CodeList codeList) throws Exception
