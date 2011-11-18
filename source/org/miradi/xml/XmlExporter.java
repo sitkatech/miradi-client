@@ -137,9 +137,9 @@ public abstract class XmlExporter
 		writeOptionalElement(out, elementName, object.getData(fieldTag));
 	}
 	
-	protected void writeElement(UnicodeWriter out, String elementName, BaseObject object, String tag) throws Exception
+	protected void writeElement(UnicodeWriter out, String elementName, BaseObject object, String fieldTag) throws Exception
 	{
-		writeElement(out, elementName, object.getData(tag));
+		writeElement(out, elementName, object.getData(fieldTag));
 	}
 	
 	protected void writeCodeListElements(UnicodeWriter out, String parentElementName, String elementName, CodeList codeList) throws Exception
