@@ -81,7 +81,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		treeTableScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		
 		createModels();
-		mainTable = createUpperMultiTable(treeToUse, multiModel);
+		mainTable = createUpperMultiTable(treeToUse, multiTableModel);
 		mainTableScrollPane = integrateTable(getTreeTableScrollPane().getVerticalScrollBar(), mainTable);
 		mainTableScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 
@@ -123,7 +123,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 	private void createModels() throws Exception
 	{
 		mainModel = createMainTableModel(rowColumnProvider);
-		multiModel = new PlanningTreeMultiTableModel(getTree().getUniqueTableIdentifier());
+		multiTableModel = new PlanningTreeMultiTableModel(getTree().getUniqueTableIdentifier());
 		measurementModel = new PlanningViewMeasurementTableModel(getProject(), getTree());
 		futureStatusModel = new PlanningViewFutureStatusTableModel(getProject(), getTree());
 		workUnitsTableModel = new WorkPlanWorkUnitsTableModel(getProject(), getRowColumnProvider(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
@@ -187,7 +187,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		tree.rebuildTableCompletely();
 
 		updateResourceFilter();
-		multiModel.updateColumnsToShow();
+		multiTableModel.updateColumnsToShow();
 		
 		// NOTE: The following rebuild the tree but don't touch the columns
 		getTreeTableModel().rebuildEntireTree();
@@ -217,72 +217,72 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 
 	private void updateRightSideTablePanels() throws Exception
 	{
-		multiModel.removeAllModels();
-		multiModel.addModel(mainModel);
+		multiTableModel.removeAllModels();
+		multiTableModel.addModel(mainModel);
 
 		mainTableScrollPane.showVerticalScrollBar();
 
 		CodeList columnsToShow = getRowColumnProvider().getColumnCodesToShow();
 		
 		if (columnsToShow.contains(Measurement.META_COLUMN_TAG))
-			multiModel.addModel(measurementModel);
+			multiTableModel.addModel(measurementModel);
 
 		if (columnsToShow.contains(Indicator.META_COLUMN_TAG))
-			multiModel.addModel(futureStatusModel);
+			multiTableModel.addModel(futureStatusModel);
 		
 		if (columnsToShow.contains(WorkPlanColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE))
-			multiModel.addModel(workUnitsTableModel);
+			multiTableModel.addModel(workUnitsTableModel);
 		
 		if (columnsToShow.contains(WorkPlanColumnConfigurationQuestion.META_PROJECT_RESOURCE_WORK_UNITS_COLUMN_CODE))
-			multiModel.addModel(resourceWorkUnitsTableModel);
+			multiTableModel.addModel(resourceWorkUnitsTableModel);
 		
 		if (columnsToShow.contains(WorkPlanColumnConfigurationQuestion.META_PROJECT_RESOURCE_BUDGET_DETAILS_COLUMN_CODE))
-			multiModel.addModel(resourceBudgetDetailsTableModel);
+			multiTableModel.addModel(resourceBudgetDetailsTableModel);
 		
 		if (columnsToShow.contains(WorkPlanColumnConfigurationQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE))
-			multiModel.addModel(expenseAmountsTableModel);
+			multiTableModel.addModel(expenseAmountsTableModel);
 		
 		if (columnsToShow.contains(WorkPlanColumnConfigurationQuestion.META_FUNDING_SOURCE_EXPENSE_COLUMN_CODE))
-			multiModel.addModel(fundingSourceExpenseTableModel);
+			multiTableModel.addModel(fundingSourceExpenseTableModel);
 		
 		if (columnsToShow.contains(WorkPlanColumnConfigurationQuestion.META_ACCOUNTING_CODE_EXPENSE_COLUMN_CODE))
-			multiModel.addModel(accountingCodeExpenseTableModel);
+			multiTableModel.addModel(accountingCodeExpenseTableModel);
 		
 		if (columnsToShow.contains(WorkPlanColumnConfigurationQuestion.META_FUNDING_SOURCE_BUDGET_DETAILS_COLUMN_CODE))
-			multiModel.addModel(fundingSourceBudgetDetailsTableModel);
+			multiTableModel.addModel(fundingSourceBudgetDetailsTableModel);
 		
 		if (columnsToShow.contains(WorkPlanColumnConfigurationQuestion.META_ACCOUNTING_CODE_BUDGET_DETAILS_COLUMN_CODE))
-			multiModel.addModel(accoundingCodeBudgetDetailsTableModel);
+			multiTableModel.addModel(accoundingCodeBudgetDetailsTableModel);
 		
 		if (columnsToShow.contains(WorkPlanColumnConfigurationQuestion.META_BUDGET_DETAIL_COLUMN_CODE))
-			multiModel.addModel(budgetDetailsTableModel);
+			multiTableModel.addModel(budgetDetailsTableModel);
 		
 		if (columnsToShow.contains(WorkPlanColumnConfigurationQuestion.META_ANALYSIS_WORK_UNITS_COLUMN_CODE))
-			multiModel.addModel(rollupReportsWorkUnitsModel);
+			multiTableModel.addModel(rollupReportsWorkUnitsModel);
 		
 		if (columnsToShow.contains(WorkPlanColumnConfigurationQuestion.META_ANALYSIS_EXPENSES_CODE))
-			multiModel.addModel(rollupReportsExpenseModel);
+			multiTableModel.addModel(rollupReportsExpenseModel);
 		
 		if (columnsToShow.contains(WorkPlanColumnConfigurationQuestion.META_ANALYSIS_BUDGET_DETAILS_COLUMN_CODE))
-			multiModel.addModel(rollupReportsBudgetDetailsModel);
+			multiTableModel.addModel(rollupReportsBudgetDetailsModel);
 		
 		if (columnsToShow.contains(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_ONE_WORK_UNITS_COLUMN_CODE))
-			multiModel.addModel(budgetCategoryOneWorkUnitsModel);
+			multiTableModel.addModel(budgetCategoryOneWorkUnitsModel);
 		
 		if (columnsToShow.contains(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_ONE_EXPENSE_COLUMN_CODE))
-			multiModel.addModel(budgetCategoryOneExpenseModel);
+			multiTableModel.addModel(budgetCategoryOneExpenseModel);
 		
 		if (columnsToShow.contains(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_ONE_BUDGET_DETAILS_COLUMN_CODE))
-			multiModel.addModel(budgetCategoryOneBudgetDetailsModel);
+			multiTableModel.addModel(budgetCategoryOneBudgetDetailsModel);
 		
 		if (columnsToShow.contains(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_TWO_WORK_UNITS_COLUMN_CODE))
-			multiModel.addModel(budgetCategoryTwoWorkUnitsModel);
+			multiTableModel.addModel(budgetCategoryTwoWorkUnitsModel);
 		
 		if (columnsToShow.contains(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_TWO_EXPENSE_COLUMN_CODE))
-			multiModel.addModel(budgetCategoryTwoExpenseModel);
+			multiTableModel.addModel(budgetCategoryTwoExpenseModel);
 		
 		if (columnsToShow.contains(WorkPlanColumnConfigurationQuestion.META_BUDGET_CATEGORY_TWO_BUDGET_DETAILS_COLUMN_CODE))
-			multiModel.addModel(budgetCategoryTwoBudgetDetailsModel);
+			multiTableModel.addModel(budgetCategoryTwoBudgetDetailsModel);
 		
 		mainTable.updateToReflectNewColumns();
 		validate();
@@ -293,7 +293,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 	{
 		MultiTableCombinedAsOneExporter multiTableExporter = new MultiTableCombinedAsOneExporter(getProject());
 		multiTableExporter.addAsMasterTable(new TreeTableExporter(getTree()));
-		multiTableExporter.addExportable(new PlanningViewMainModelExporter(getProject(), multiModel, getTree(), multiModel.getUniqueTableModelIdentifier()));
+		multiTableExporter.addExportable(new PlanningViewMainModelExporter(getProject(), multiTableModel, getTree(), multiTableModel.getUniqueTableModelIdentifier()));
 		
 		return multiTableExporter;
 	}
@@ -419,7 +419,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 				return "";
 			
 			int modelColumn = mainTable.convertColumnIndexToModel(selectedColumn);
-			return multiModel.getTagForCell(getSafeTypeForSelectedRow(), modelColumn);
+			return multiTableModel.getTagForCell(getSafeTypeForSelectedRow(), modelColumn);
 		}		
 	}
 	
@@ -488,7 +488,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 	
 	private PlanningTreeRowColumnProvider rowColumnProvider;
 	private PlanningViewAbstractTreeTableSyncedTableModel mainModel;
-	private PlanningTreeMultiTableModel multiModel;
+	private PlanningTreeMultiTableModel multiTableModel;
 	private PlanningUpperMultiTable mainTable;
 
 	private PlanningViewMeasurementTableModel measurementModel;
