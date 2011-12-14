@@ -398,12 +398,12 @@ public class Indicator extends BaseObject
 		createChoiceField(TAG_PRIORITY, PriorityRatingQuestion.class);
 		createIdListField(TAG_METHOD_IDS, Task.getObjectType());
 		createStringStringMapField(TAG_INDICATOR_THRESHOLD);
+		createStringStringMapField(TAG_THRESHOLD_DETAILS);
 		createChoiceField(TAG_RATING_SOURCE, RatingSourceQuestion.class);
 		createRefListField(TAG_MEASUREMENT_REFS);
 		createUserTextField(TAG_DETAIL);
 		createUserTextField(TAG_COMMENTS);
 		createUserTextField(TAG_VIABILITY_RATINGS_COMMENTS);
-		createStringStringMapField(TAG_THRESHOLD_DETAILS);
 
 		createChoiceField(TAG_FUTURE_STATUS_RATING, StatusQuestion.class);
 		createDateField(TAG_FUTURE_STATUS_DATE);
@@ -430,12 +430,12 @@ public class Indicator extends BaseObject
 	
 	public final static String TAG_METHOD_IDS = "TaskIds";
 	public static final String TAG_INDICATOR_THRESHOLD = "IndicatorThresholds";
+	public static final String TAG_THRESHOLD_DETAILS = "ThresholdDetails";
 	public static final String TAG_RATING_SOURCE = "RatingSource";
 	public static final String TAG_MEASUREMENT_REFS = "MeasurementRefs";
 	public static final String TAG_DETAIL = "Detail";
 	public static final String TAG_COMMENTS = "Comments";
 	public static final String TAG_VIABILITY_RATINGS_COMMENTS = "ViabilityRatingsComment";
-	public static final String TAG_THRESHOLD_DETAILS = "ThresholdDetails"; 
 
 	public static final String TAG_FUTURE_STATUS_RATING  = "FutureStatusRating";
 	public static final String TAG_FUTURE_STATUS_DATE = "FutureStatusDate";
