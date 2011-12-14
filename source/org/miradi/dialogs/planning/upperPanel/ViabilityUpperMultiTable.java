@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.upperPanel;
 
+import javax.swing.table.TableCellEditor;
+
 import org.miradi.dialogs.planning.ViabilityTableHeader;
 import org.miradi.main.MainWindow;
 
@@ -34,5 +36,16 @@ public class ViabilityUpperMultiTable extends PlanningUpperMultiTable
 	protected void setTableHeaderRenderer()
 	{
 		setTableHeader(new ViabilityTableHeader(this));
+	}
+	
+	@Override
+	public TableCellEditor getCellEditor(int row, int tableColumn)
+	{
+		int modelColumn = convertColumnIndexToModel(tableColumn);
+		ViabilityViewMainTableModel model = (ViabilityViewMainTableModel) getCastedModel().getCastedModel(modelColumn);
+		if (model.isCellEditable(row, modelColumn))
+			return doubleClickAutoSelectCellEditor;
+		
+		return super.getCellEditor(row, tableColumn);
 	}
 }
