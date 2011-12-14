@@ -245,5 +245,5 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 	private BasicTableCellEditorOrRendererFactory doubleRendererFactory;
 	private WhoColumnTableCellEditorFactory whoColumnTableCellEditorFactory;
 	private WhenTableCellPopupEditorOrRendererFactory whenColumnTableCellEditorFactory;
-	private DoubleClickAutoSelectCellEditor doubleClickAutoSelectCellEditor;
+	protected DoubleClickAutoSelectCellEditor doubleClickAutoSelectCellEditor;
 }

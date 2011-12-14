@@ -27,6 +27,7 @@ import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.StringStringMap;
 import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Goal;
@@ -55,6 +56,48 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 	public ViabilityViewMainTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, PlanningTreeRowColumnProvider rowColumnProviderToUse) throws Exception
 	{
 		super(projectToUse, providerToUse, rowColumnProviderToUse);
+	}
+	
+	@Override
+	public boolean isCellEditable(int row, int modelColumn)
+	{
+		BaseObject baseObject = getBaseObjectForRow(row);
+		if (Indicator.is(baseObject) && isThresholdColumn(modelColumn))
+			return true;
+		
+		return false;
+	}
+
+	public boolean isThresholdColumn(int modelColumn)
+	{
+		if (getColumnTag(modelColumn).equals(POOR))
+			return true;
+		
+		if (getColumnTag(modelColumn).equals(FAIR))
+			return true;
+		
+		if (getColumnTag(modelColumn).equals(GOOD))
+			return true;
+		
+		if (getColumnTag(modelColumn).equals(VERY_GOOD))
+			return true;
+		
+		return false;
+	}
+	
+	@Override
+	public void setValueAt(Object value, int row, int column)
+	{
+		BaseObject baseObject = getBaseObjectForRow(row);
+		if (Indicator.is(baseObject) && isThresholdColumn(column))
+		{
+			int threasholdColumn = (column + 1) - getFirstIndexOfThreshold();
+			final StringStringMap stringMap = ((Indicator)baseObject).getThreshold().getStringMap();
+			stringMap.put(Integer.toString(threasholdColumn), value.toString());
+			setValueUsingCommand(baseObject.getRef(), Indicator.TAG_INDICATOR_THRESHOLD, stringMap.toString());
+		}
+			
+		super.setValueAt(value, row, column);
 	}
 	
 	@Override
