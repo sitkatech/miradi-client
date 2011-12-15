@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.objects;
 
-import org.martus.util.MultiCalendar;
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
@@ -72,11 +71,6 @@ public class Measurement extends BaseObject
 		return false;
 	}
 	
-	public MultiCalendar getDate()
-	{
-		return getDateData(TAG_DATE);
-	}
-	
 	public String getStatus()
 	{
 		return getData(TAG_STATUS);
@@ -90,13 +84,13 @@ public class Measurement extends BaseObject
 	@Override
 	public String toString()
 	{
-		return getDate().toString();
+		return getFullName();
 	}
 	
 	@Override
 	public String getFullName()
 	{
-		return getDate().toString() + ": " + getSummary();
+		return getData(TAG_DATE) + ": " + getSummary();
 	}
 	
 	public static boolean is(BaseObject object)

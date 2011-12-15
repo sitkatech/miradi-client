@@ -98,7 +98,7 @@ public class TestIndicator extends AbstractObjectWithBudgetDataToDeleteTestCase
 		assertEquals("found latest measurement?", measurementRef2, latestMeasurementRef2);
 		
 		Measurement latestMeasurement = (Measurement) project.findObject(latestMeasurementRef2);
-		MultiCalendar foundAfter = latestMeasurement.getDate();
+		MultiCalendar foundAfter = latestMeasurement.getDateData(Measurement.TAG_DATE);
 		assertEquals("Found latest date?", expectedAfter, foundAfter);
 	}
 	
