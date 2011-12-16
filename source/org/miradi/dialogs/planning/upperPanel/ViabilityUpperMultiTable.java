@@ -44,7 +44,7 @@ public class ViabilityUpperMultiTable extends PlanningUpperMultiTable
 		int modelColumn = convertColumnIndexToModel(tableColumn);
 		ViabilityViewMainTableModel model = (ViabilityViewMainTableModel) getCastedModel().getCastedModel(modelColumn);
 		if (model.isCellEditable(row, modelColumn))
-			return doubleClickAutoSelectCellEditor;
+			return getDoubleClickAutoSelectCellEditor();
 		
 		return super.getCellEditor(row, tableColumn);
 	}
