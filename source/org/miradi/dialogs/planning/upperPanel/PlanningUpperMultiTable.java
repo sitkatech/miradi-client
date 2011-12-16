@@ -101,6 +101,11 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		if (getCastedModel().isWhenColumn(modelColumn))
 			return new WhenTableCellPopupEditorOrRendererFactory(this, new PlanningViewFontProvider(getMainWindow()));
 		
+		return getDoubleClickAutoSelectCellEditor();
+	}
+
+	protected DoubleClickAutoSelectCellEditor getDoubleClickAutoSelectCellEditor()
+	{
 		return doubleClickAutoSelectCellEditor;
 	}
 
@@ -245,5 +250,5 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 	private BasicTableCellEditorOrRendererFactory doubleRendererFactory;
 	private WhoColumnTableCellEditorFactory whoColumnTableCellEditorFactory;
 	private WhenTableCellPopupEditorOrRendererFactory whenColumnTableCellEditorFactory;
-	protected DoubleClickAutoSelectCellEditor doubleClickAutoSelectCellEditor;
+	private DoubleClickAutoSelectCellEditor doubleClickAutoSelectCellEditor;
 }
