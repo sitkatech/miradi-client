@@ -62,7 +62,9 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 	public boolean isCellEditable(int row, int modelColumn)
 	{
 		BaseObject baseObject = getBaseObjectForRow(row);
-		
+		if (isAbstractTargetViabilityModeCell(row, modelColumn))
+			return true;
+
 		if (isKeaAttributeTypeCell(row, modelColumn))
 			return true;
 		
@@ -74,6 +76,16 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		
 		if (Goal.is(baseObject))
 			return isFutureStatusCellEditable(row, modelColumn);
+		
+		return false;
+	}
+
+	public boolean isAbstractTargetViabilityModeCell(int row, int column)
+	{
+		String tag = COLUMN_TAGS_FOR_TARGETS[column];
+		BaseObject baseObject = getBaseObjectForRow(row);
+		if (AbstractTarget.isAbstractTarget(baseObject) && tag.equals(AbstractTarget.TAG_VIABILITY_MODE))
+			return true;
 		
 		return false;
 	}
@@ -169,6 +181,11 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 	public void setValueAt(Object value, int row, int column)
 	{
 		BaseObject baseObject = getBaseObjectForRow(row);
+		if (isAbstractTargetViabilityModeCell(row, column))
+		{
+			ChoiceItem choiceItem = (ChoiceItem) value;
+			setValueUsingCommand(baseObject.getRef(), AbstractTarget.TAG_VIABILITY_MODE, choiceItem.getCode());
+		}
 		if (isKeaAttributeTypeCell(row, column))
 		{
 			ChoiceItem choiceItem = (ChoiceItem) value;
