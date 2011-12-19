@@ -20,10 +20,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.upperPanel;
 
+import javax.swing.DefaultCellEditor;
 import javax.swing.table.TableCellEditor;
 
+import org.miradi.dialogs.fieldComponents.ChoiceItemComboBox;
 import org.miradi.dialogs.planning.ViabilityTableHeader;
 import org.miradi.main.MainWindow;
+import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.RatingSourceQuestion;
+import org.miradi.questions.StaticQuestionManager;
 
 public class ViabilityUpperMultiTable extends PlanningUpperMultiTable
 {
@@ -43,6 +48,13 @@ public class ViabilityUpperMultiTable extends PlanningUpperMultiTable
 	{
 		int modelColumn = convertColumnIndexToModel(tableColumn);
 		ViabilityViewMainTableModel model = (ViabilityViewMainTableModel) getCastedModel().getCastedModel(modelColumn);
+		if (model.isRatingSourceColumn(row, modelColumn))
+		{
+			ChoiceItem[] choices = StaticQuestionManager.getQuestion(RatingSourceQuestion.class).getChoices();
+			ChoiceItemComboBox comboBox = new ChoiceItemComboBox(choices);
+			return new DefaultCellEditor(comboBox);
+		}
+
 		if (model.isCellEditable(row, modelColumn))
 			return getDoubleClickAutoSelectCellEditor();
 		

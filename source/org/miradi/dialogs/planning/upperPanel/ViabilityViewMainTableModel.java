@@ -65,7 +65,18 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		if (Indicator.is(baseObject) && isThresholdColumn(modelColumn))
 			return true;
 		
+		if (isRatingSourceColumn(row, modelColumn))
+			return true;
+		
 		return false;
+	}
+	
+	public boolean isRatingSourceColumn(int row, int modelColumn)
+	{
+		BaseObject baseObject = getBaseObjectForRow(row);
+		String columnTag = COLUMN_TAGS_FOR_INDICATORS[modelColumn];
+		
+		return Indicator.is(baseObject) && columnTag.equals(Indicator.TAG_RATING_SOURCE);
 	}
 
 	public boolean isThresholdColumn(int modelColumn)
@@ -95,6 +106,11 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 			final StringStringMap stringMap = ((Indicator)baseObject).getThreshold().getStringMap();
 			stringMap.put(Integer.toString(threasholdColumn), value.toString());
 			setValueUsingCommand(baseObject.getRef(), Indicator.TAG_INDICATOR_THRESHOLD, stringMap.toString());
+		}
+		if (isRatingSourceColumn(row, column))
+		{
+			ChoiceItem choiceItem = (ChoiceItem) value;
+			setValueUsingCommand(baseObject.getRef(), Indicator.TAG_RATING_SOURCE, choiceItem.getCode());
 		}
 			
 		super.setValueAt(value, row, column);
