@@ -22,7 +22,9 @@ package org.miradi.dialogs.planning.upperPanel;
 
 import javax.swing.DefaultCellEditor;
 import javax.swing.table.TableCellEditor;
+import javax.swing.table.TableCellRenderer;
 
+import org.miradi.diagram.renderers.ComboBoxRenderer;
 import org.miradi.dialogs.fieldComponents.ChoiceItemComboBox;
 import org.miradi.dialogs.planning.ViabilityTableHeader;
 import org.miradi.main.MainWindow;
@@ -42,6 +44,26 @@ public class ViabilityUpperMultiTable extends PlanningUpperMultiTable
 	protected void setTableHeaderRenderer()
 	{
 		setTableHeader(new ViabilityTableHeader(this));
+	}
+	
+	@Override
+	public TableCellRenderer getCellRenderer(int row, int tableColumn)
+	{
+		int modelColumn = convertColumnIndexToModel(tableColumn);
+		ViabilityViewMainTableModel model = (ViabilityViewMainTableModel) getCastedModel().getCastedModel(modelColumn);
+		if (model.isIndicatorRatingSourceColumn(row, modelColumn))
+		{
+			ChoiceItem[] choices = StaticQuestionManager.getQuestion(RatingSourceQuestion.class).getChoices();
+			return new ComboBoxRenderer(choices);
+		}
+		
+		if (model.isMeasurementStatusConfidenceColumn(row, modelColumn))
+		{
+			ChoiceItem[] choices = StaticQuestionManager.getQuestion(StatusConfidenceQuestion.class).getChoices();
+			return new ComboBoxRenderer(choices);
+		}
+
+		return super.getCellRenderer(row, tableColumn);
 	}
 	
 	@Override

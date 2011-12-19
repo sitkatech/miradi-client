@@ -35,6 +35,7 @@ import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
+import org.miradi.diagram.renderers.ComboBoxRenderer;
 import org.miradi.dialogs.fieldComponents.ChoiceItemComboBox;
 import org.miradi.dialogs.fieldComponents.PanelComboBox;
 import org.miradi.dialogs.tablerenderers.BasicTableCellEditorOrRendererFactory;
@@ -325,35 +326,7 @@ abstract public class EditableObjectTable extends SortableRowTable  implements O
 			return o1.toString().compareToIgnoreCase(o2.toString());
 		}	
 	}
-	
-	protected class ComboBoxRenderer extends PanelComboBox implements TableCellRenderer, TableCellPreferredHeightProvider
-	{
-	    public ComboBoxRenderer(Object[] items) 
-	    {
-	        super(items);
-	    }
-
-	    public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int col) 
-	    {
-	        if (!isSelected)  
-	        	setColors(table.getBackground(), table.getForeground());
-
-	        setSelectedItem(value);
-	        return this;
-	    }
-	    
-	    private void setColors(Color background, Color foreground)
-	    {
-	    	setBackground(background);
-	        setForeground(foreground);
-	    }
-
-		public int getPreferredHeight(JTable table, int row, int column, Object value)
-		{
-			return getPreferredSize().height;
-		}
-	}
-	
+		
 	protected class ChoiceItemComboBoxRenderer extends ChoiceItemComboBox implements TableCellRenderer, TableCellPreferredHeightProvider
 	{
 	    public ChoiceItemComboBoxRenderer(ChoiceItem[] items) 
