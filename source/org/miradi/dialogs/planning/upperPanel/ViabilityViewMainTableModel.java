@@ -142,7 +142,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 	{
 		if (isThresholdColumn(column))
 		{
-			int threasholdColumn = (column + 1) - getFirstIndexOfThreshold();
+			int threasholdColumn = calculateThresholdColumnIndex(column);
 			final StringStringMap stringMap = ((Indicator)baseObject).getThreshold().getStringMap();
 			stringMap.put(Integer.toString(threasholdColumn), value.toString());
 			setValueUsingCommand(baseObject.getRef(), Indicator.TAG_INDICATOR_THRESHOLD, stringMap.toString());
@@ -211,7 +211,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		
 		if (tag.equals(Indicator.TAG_INDICATOR_THRESHOLD))
 		{
-			int threasholdColumn = (column + 1) - getFirstIndexOfThreshold();
+			int threasholdColumn = calculateThresholdColumnIndex(column);
 			String threashold = ((Indicator)baseObject).getThreshold().getStringMap().get(Integer.toString(threasholdColumn));
 			
 			return new TaglessChoiceItem(threashold);
@@ -369,6 +369,12 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		ChoiceItem findChoiceByCode = trendQuestion.findChoiceByCode(trendData);
 		
 		return findChoiceByCode.getIcon();
+	}
+	
+	private int calculateThresholdColumnIndex(int column)
+	{
+		int threasholdColumn = (column + 1) - getFirstIndexOfThreshold();
+		return threasholdColumn;
 	}
 	
 	private int getFirstIndexOfThreshold()
