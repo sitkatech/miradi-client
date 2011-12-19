@@ -253,10 +253,10 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		return getStatusColumnChoiceItem(tag, indicatorAsParent, Indicator.TAG_FUTURE_STATUS_SUMMARY, Indicator.TAG_FUTURE_STATUS_RATING, IconManager.getGoalIcon());
 	}
 
-	private ChoiceItem getStatusColumnChoiceItem(String tag, BaseObject indicatorAsParent, final String summaryTag, final String statusTag, final Icon icon)
+	private ChoiceItem getStatusColumnChoiceItem(String tag, BaseObject baseObject, final String summaryTag, final String statusTag, final Icon icon)
 	{
-		String summaryData = indicatorAsParent.getData(summaryTag);
-		String statusData = indicatorAsParent.getData(statusTag);
+		String summaryData = baseObject.getData(summaryTag);
+		String statusData = baseObject.getData(statusTag);
 		TextAndIconChoiceItem textAndIconChoiceItem = new TextAndIconChoiceItem(summaryData, icon);		
 		if (isStatusColumn(tag, statusData, POOR))
 			return textAndIconChoiceItem;
