@@ -59,23 +59,23 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 	}
 	
 	@Override
-	public boolean isCellEditable(int row, int modelColumn)
+	public boolean isCellEditable(int row, int column)
 	{
 		BaseObject baseObject = getBaseObjectForRow(row);
-		if (isAbstractTargetViabilityModeCell(row, modelColumn))
+		if (isAbstractTargetViabilityModeCell(row, column))
 			return true;
 
-		if (isKeaAttributeTypeCell(row, modelColumn))
+		if (isKeaAttributeTypeCell(row, column))
 			return true;
 		
 		if (Indicator.is(baseObject))
-			return isIndicatorRowEditable(row, modelColumn);
+			return isIndicatorRowEditable(row, column);
 		
 		if (Measurement.is(baseObject))
-			return isMeasurementCellEditable(row, modelColumn);
+			return isMeasurementCellEditable(row, column);
 		
 		if (Goal.is(baseObject))
-			return isFutureStatusCellEditable(row, modelColumn);
+			return isFutureStatusCellEditable(row, column);
 		
 		return false;
 	}
