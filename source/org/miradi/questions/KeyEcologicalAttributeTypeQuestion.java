@@ -35,7 +35,7 @@ public class KeyEcologicalAttributeTypeQuestion extends StaticChoiceQuestion
 			new ChoiceItem("", EAM.text("Not Specified")),
 			new ChoiceItem(SIZE, EAM.text("KEA Type|Size")),
 			new ChoiceItem(CONDITION, EAM.text("KEA Type|Condition")),
-			new ChoiceItem(LANDSCAPE, EAM.text("KEA Type|LandScape Context")),
+			new ChoiceItem(LANDSCAPE, EAM.text("KEA Type|Landscape Context")),
 		};
 	}
 
