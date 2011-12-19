@@ -29,6 +29,7 @@ import org.miradi.dialogs.fieldComponents.ChoiceItemComboBox;
 import org.miradi.dialogs.planning.ViabilityTableHeader;
 import org.miradi.main.MainWindow;
 import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.StatusConfidenceQuestion;
@@ -51,6 +52,11 @@ public class ViabilityUpperMultiTable extends PlanningUpperMultiTable
 	{
 		int modelColumn = convertColumnIndexToModel(tableColumn);
 		ViabilityViewMainTableModel model = (ViabilityViewMainTableModel) getCastedModel().getCastedModel(modelColumn);
+		if (model.isKeaAttributeTypeCell(row, modelColumn))
+		{
+			ChoiceItem[] choices = StaticQuestionManager.getQuestion(KeyEcologicalAttributeTypeQuestion.class).getChoices();
+			return new ComboBoxRenderer(choices);
+		}
 		if (model.isIndicatorRatingSourceColumn(row, modelColumn))
 		{
 			ChoiceItem[] choices = StaticQuestionManager.getQuestion(RatingSourceQuestion.class).getChoices();
@@ -71,6 +77,12 @@ public class ViabilityUpperMultiTable extends PlanningUpperMultiTable
 	{
 		int modelColumn = convertColumnIndexToModel(tableColumn);
 		ViabilityViewMainTableModel model = (ViabilityViewMainTableModel) getCastedModel().getCastedModel(modelColumn);
+		if (model.isKeaAttributeTypeCell(row, modelColumn))
+		{
+			ChoiceItem[] choices = StaticQuestionManager.getQuestion(KeyEcologicalAttributeTypeQuestion.class).getChoices();
+			ChoiceItemComboBox comboBox = new ChoiceItemComboBox(choices);
+			return new DefaultCellEditor(comboBox);
+		}
 		if (model.isIndicatorRatingSourceColumn(row, modelColumn))
 		{
 			ChoiceItem[] choices = StaticQuestionManager.getQuestion(RatingSourceQuestion.class).getChoices();
