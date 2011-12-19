@@ -29,6 +29,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.StaticQuestionManager;
+import org.miradi.questions.StatusConfidenceQuestion;
 
 public class ViabilityUpperMultiTable extends PlanningUpperMultiTable
 {
@@ -48,9 +49,16 @@ public class ViabilityUpperMultiTable extends PlanningUpperMultiTable
 	{
 		int modelColumn = convertColumnIndexToModel(tableColumn);
 		ViabilityViewMainTableModel model = (ViabilityViewMainTableModel) getCastedModel().getCastedModel(modelColumn);
-		if (model.isRatingSourceColumn(row, modelColumn))
+		if (model.isIndicatorRatingSourceColumn(row, modelColumn))
 		{
 			ChoiceItem[] choices = StaticQuestionManager.getQuestion(RatingSourceQuestion.class).getChoices();
+			ChoiceItemComboBox comboBox = new ChoiceItemComboBox(choices);
+			return new DefaultCellEditor(comboBox);
+		}
+		
+		if (model.isMeasurementStatusConfidenceColumn(row, modelColumn))
+		{
+			ChoiceItem[] choices = StaticQuestionManager.getQuestion(StatusConfidenceQuestion.class).getChoices();
 			ChoiceItemComboBox comboBox = new ChoiceItemComboBox(choices);
 			return new DefaultCellEditor(comboBox);
 		}

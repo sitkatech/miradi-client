@@ -62,37 +62,38 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 	public boolean isCellEditable(int row, int modelColumn)
 	{
 		BaseObject baseObject = getBaseObjectForRow(row);
-		if (Indicator.is(baseObject) && isThresholdColumn(modelColumn))
-			return true;
+		if (Indicator.is(baseObject))
+			return isIndicatorRowEditable(row, modelColumn);
 		
-		if (isRatingSourceColumn(row, modelColumn))
+		if (isMeasurementStatusConfidenceColumn(row, modelColumn))
 			return true;
 		
 		return false;
 	}
 	
-	public boolean isRatingSourceColumn(int row, int modelColumn)
+	private boolean isIndicatorRowEditable(int row, int modelColumn)
 	{
-		if (isMeasurementRatingSourceColumn(row, modelColumn))
+		if (isThresholdColumn(modelColumn))
 			return true;
 		
-		return isIndicatorRatingSourceColumn(row, modelColumn);
-	}
-
-	private boolean isMeasurementRatingSourceColumn(int row, int column)
-	{
-		BaseObject baseObject = getBaseObjectForRow(row);
-		String columnTag = COLUMN_TAGS_FOR_MEASUREMENTS[column];
+		if (isIndicatorRatingSourceColumn(row, modelColumn))
+			return true;
 		
-		return Measurement.is(baseObject) && columnTag.equals(Measurement.TAG_STATUS_CONFIDENCE);
+		return false;
 	}
 
-	private boolean isIndicatorRatingSourceColumn(int row, int modelColumn)
+	public boolean isIndicatorRatingSourceColumn(int row, int modelColumn)
 	{
-		BaseObject baseObject = getBaseObjectForRow(row);
 		String columnTag = COLUMN_TAGS_FOR_INDICATORS[modelColumn];
 		
-		return Indicator.is(baseObject) && columnTag.equals(Indicator.TAG_RATING_SOURCE);
+		return Indicator.is(getBaseObjectForRow(row)) && columnTag.equals(Indicator.TAG_RATING_SOURCE);
+	}
+
+	public boolean isMeasurementStatusConfidenceColumn(int row, int modelColumn)
+	{
+		String columnTag = COLUMN_TAGS_FOR_MEASUREMENTS[modelColumn];
+		
+		return Measurement.is(getBaseObjectForRow(row)) && columnTag.equals(Measurement.TAG_STATUS_CONFIDENCE);
 	}
 
 	public boolean isThresholdColumn(int modelColumn)
@@ -116,7 +117,30 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 	public void setValueAt(Object value, int row, int column)
 	{
 		BaseObject baseObject = getBaseObjectForRow(row);
-		if (Indicator.is(baseObject) && isThresholdColumn(column))
+		if (Indicator.is(baseObject))
+		{
+			setIndicatorValue(baseObject, value, row, column);
+		}
+		if (Measurement.is(baseObject))
+		{
+			setMeasurementValue(baseObject, value, row, column);
+		}
+			
+		super.setValueAt(value, row, column);
+	}
+
+	protected void setMeasurementValue(BaseObject baseObject, Object value, int row, int column)
+	{
+		if (isMeasurementStatusConfidenceColumn(row, column))
+		{
+			ChoiceItem choiceItem = (ChoiceItem) value;
+			setValueUsingCommand(baseObject.getRef(), Measurement.TAG_STATUS_CONFIDENCE, choiceItem.getCode());
+		}
+	}
+	
+	private void setIndicatorValue(BaseObject baseObject, Object value, int row, int column)
+	{
+		if (isThresholdColumn(column))
 		{
 			int threasholdColumn = (column + 1) - getFirstIndexOfThreshold();
 			final StringStringMap stringMap = ((Indicator)baseObject).getThreshold().getStringMap();
@@ -128,15 +152,8 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 			ChoiceItem choiceItem = (ChoiceItem) value;
 			setValueUsingCommand(baseObject.getRef(), Indicator.TAG_RATING_SOURCE, choiceItem.getCode());
 		}
-		if (isMeasurementRatingSourceColumn(row, column))
-		{
-			ChoiceItem choiceItem = (ChoiceItem) value;
-			setValueUsingCommand(baseObject.getRef(), Measurement.TAG_STATUS_CONFIDENCE, choiceItem.getCode());
-		}
-			
-		super.setValueAt(value, row, column);
 	}
-	
+
 	@Override
 	public ChoiceItem getChoiceItemAt(int row, int column)
 	{
