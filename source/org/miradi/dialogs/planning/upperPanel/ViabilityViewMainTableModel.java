@@ -68,7 +68,23 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		if (Measurement.is(baseObject))
 			return isMeasurementCellEditable(row, modelColumn);
 		
+		if (Goal.is(baseObject))
+			return isFutureStatusCellEditable(row, modelColumn);
+		
 		return false;
+	}
+
+	private boolean isFutureStatusCellEditable(int row, int column)
+	{
+		if (isFutureStatusThresholdCell(row, column))
+			return true;
+		
+		return false;
+	}
+
+	public boolean isFutureStatusThresholdCell(int row, int column)
+	{
+		return Goal.is(getBaseObjectForRow(row)) && isThresholdColumn(column);
 	}
 
 	public boolean isMeasurementCellEditable(int row, int column)
@@ -141,6 +157,10 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		{
 			setMeasurementValue(baseObject, value, row, column);
 		}
+		if (Goal.is(baseObject))
+		{
+			setFutureStatusValue(baseObject, value, row, column);
+		}
 			
 		super.setValueAt(value, row, column);
 	}
@@ -158,6 +178,18 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 			setValueUsingCommand(baseObject.getRef(), Measurement.TAG_SUMMARY, value.toString());
 			final String columnTag = COLUMN_TAGS_FOR_MEASUREMENTS[column];
 			setValueUsingCommand(baseObject.getRef(), Measurement.TAG_STATUS, columnTag);
+		}
+	}
+	
+	private void setFutureStatusValue(BaseObject baseObject, Object value, int row, int column)
+	{
+		if (isThresholdColumn(column))
+		{
+			ORefList objectHiearchy = getRowColumnObjectProvider().getObjectHiearchy(row, column);
+			ORef indicatorRef = objectHiearchy.getRefForType(Indicator.getObjectType());
+			setValueUsingCommand(indicatorRef, Indicator.TAG_FUTURE_STATUS_SUMMARY, value.toString());
+			final String columnTag = COLUMN_TAGS_FOR_FUTURE_RESULTS[column];
+			setValueUsingCommand(indicatorRef, Indicator.TAG_FUTURE_STATUS_RATING, columnTag);
 		}
 	}
 	
