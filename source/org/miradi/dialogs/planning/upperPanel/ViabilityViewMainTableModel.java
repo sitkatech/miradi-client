@@ -62,6 +62,10 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 	public boolean isCellEditable(int row, int modelColumn)
 	{
 		BaseObject baseObject = getBaseObjectForRow(row);
+		
+		if (isKeaAttributeTypeCell(row, modelColumn))
+			return true;
+		
 		if (Indicator.is(baseObject))
 			return isIndicatorRowEditable(row, modelColumn);
 		
@@ -70,6 +74,16 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		
 		if (Goal.is(baseObject))
 			return isFutureStatusCellEditable(row, modelColumn);
+		
+		return false;
+	}
+
+	public boolean isKeaAttributeTypeCell(int row, int column)
+	{
+		String tag = COLUMN_TAGS_KEAS[column];
+		BaseObject baseObject = getBaseObjectForRow(row);
+		if (KeyEcologicalAttribute.is(baseObject) && tag.equals(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE))
+			return true;
 		
 		return false;
 	}
@@ -155,6 +169,11 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 	public void setValueAt(Object value, int row, int column)
 	{
 		BaseObject baseObject = getBaseObjectForRow(row);
+		if (isKeaAttributeTypeCell(row, column))
+		{
+			ChoiceItem choiceItem = (ChoiceItem) value;
+			setValueUsingCommand(baseObject.getRef(), KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE, choiceItem.getCode());
+		}
 		if (Indicator.is(baseObject))
 		{
 			setIndicatorValue(baseObject, value, row, column);
