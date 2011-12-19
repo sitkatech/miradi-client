@@ -73,6 +73,22 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 	
 	public boolean isRatingSourceColumn(int row, int modelColumn)
 	{
+		if (isMeasurementRatingSourceColumn(row, modelColumn))
+			return true;
+		
+		return isIndicatorRatingSourceColumn(row, modelColumn);
+	}
+
+	private boolean isMeasurementRatingSourceColumn(int row, int column)
+	{
+		BaseObject baseObject = getBaseObjectForRow(row);
+		String columnTag = COLUMN_TAGS_FOR_MEASUREMENTS[column];
+		
+		return Measurement.is(baseObject) && columnTag.equals(Measurement.TAG_STATUS_CONFIDENCE);
+	}
+
+	private boolean isIndicatorRatingSourceColumn(int row, int modelColumn)
+	{
 		BaseObject baseObject = getBaseObjectForRow(row);
 		String columnTag = COLUMN_TAGS_FOR_INDICATORS[modelColumn];
 		
@@ -107,10 +123,15 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 			stringMap.put(Integer.toString(threasholdColumn), value.toString());
 			setValueUsingCommand(baseObject.getRef(), Indicator.TAG_INDICATOR_THRESHOLD, stringMap.toString());
 		}
-		if (isRatingSourceColumn(row, column))
+		if (isIndicatorRatingSourceColumn(row, column))
 		{
 			ChoiceItem choiceItem = (ChoiceItem) value;
 			setValueUsingCommand(baseObject.getRef(), Indicator.TAG_RATING_SOURCE, choiceItem.getCode());
+		}
+		if (isMeasurementRatingSourceColumn(row, column))
+		{
+			ChoiceItem choiceItem = (ChoiceItem) value;
+			setValueUsingCommand(baseObject.getRef(), Measurement.TAG_STATUS_CONFIDENCE, choiceItem.getCode());
 		}
 			
 		super.setValueAt(value, row, column);
