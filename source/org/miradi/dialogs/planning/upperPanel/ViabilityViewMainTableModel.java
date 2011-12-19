@@ -116,9 +116,15 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 
 	public boolean isIndicatorRatingSourceColumn(int row, int modelColumn)
 	{
-		String columnTag = COLUMN_TAGS_FOR_INDICATORS[modelColumn];
+		final BaseObject baseObject = getBaseObjectForRow(row);
+		if (!Indicator.is(baseObject))
+			return false;
 		
-		return Indicator.is(getBaseObjectForRow(row)) && columnTag.equals(Indicator.TAG_RATING_SOURCE);
+		String columnTag = COLUMN_TAGS_FOR_INDICATORS[modelColumn];
+		if (!isViabilityIndicator((Indicator) baseObject))
+			return false;
+		
+		return columnTag.equals(Indicator.TAG_RATING_SOURCE);
 	}
 
 	public boolean isMeasurementStatusConfidenceColumn(int row, int modelColumn)
