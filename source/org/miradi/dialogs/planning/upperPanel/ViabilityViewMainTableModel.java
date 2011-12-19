@@ -65,12 +65,28 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		if (Indicator.is(baseObject))
 			return isIndicatorRowEditable(row, modelColumn);
 		
-		if (isMeasurementStatusConfidenceColumn(row, modelColumn))
+		if (Measurement.is(baseObject))
+			return isMeasurementCellEditable(row, modelColumn);
+		
+		return false;
+	}
+
+	public boolean isMeasurementCellEditable(int row, int column)
+	{
+		if (isMeasurementStatusConfidenceColumn(row, column))
+			return true;
+		
+		if (isMeasurementThresholdCell(row, column))
 			return true;
 		
 		return false;
 	}
-	
+
+	public boolean isMeasurementThresholdCell(int row, int column)
+	{
+		return Measurement.is(getBaseObjectForRow(row)) && isThresholdColumn(column);
+	}
+
 	private boolean isIndicatorRowEditable(int row, int modelColumn)
 	{
 		if (isThresholdColumn(modelColumn))
@@ -135,6 +151,13 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		{
 			ChoiceItem choiceItem = (ChoiceItem) value;
 			setValueUsingCommand(baseObject.getRef(), Measurement.TAG_STATUS_CONFIDENCE, choiceItem.getCode());
+		}
+		
+		if (isThresholdColumn(column))
+		{
+			setValueUsingCommand(baseObject.getRef(), Measurement.TAG_SUMMARY, value.toString());
+			final String columnTag = COLUMN_TAGS_FOR_MEASUREMENTS[column];
+			setValueUsingCommand(baseObject.getRef(), Measurement.TAG_STATUS, columnTag);
 		}
 	}
 	

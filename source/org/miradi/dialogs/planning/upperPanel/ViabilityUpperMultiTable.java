@@ -62,9 +62,16 @@ public class ViabilityUpperMultiTable extends PlanningUpperMultiTable
 			ChoiceItemComboBox comboBox = new ChoiceItemComboBox(choices);
 			return new DefaultCellEditor(comboBox);
 		}
+		
+		if (model.isMeasurementThresholdCell(row, modelColumn))
+		{
+			return getDoubleClickAutoSelectCellEditor();
+		}
 
 		if (model.isCellEditable(row, modelColumn))
+		{
 			return getDoubleClickAutoSelectCellEditor();
+		}
 		
 		return super.getCellEditor(row, tableColumn);
 	}
