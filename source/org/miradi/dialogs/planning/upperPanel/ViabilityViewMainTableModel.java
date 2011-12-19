@@ -168,7 +168,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 			return getValueForIndicator(baseObject, row, column);
 		
 		if (Measurement.is(baseObject))
-			return valueForMeasurement(baseObject, row, column);
+			return getValueForMeasurement(baseObject, row, column);
 		
 		if (Goal.is(baseObject))
 			return getValueForFutureResultAsGoal(baseObject, row, column);
@@ -234,7 +234,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		return new EmptyChoiceItem();
 	}
 
-	private ChoiceItem  valueForMeasurement(BaseObject baseObject, int row, int column)
+	private ChoiceItem getValueForMeasurement(BaseObject baseObject, int row, int column)
 	{
 		String tag = COLUMN_TAGS_FOR_MEASUREMENTS[column];
 		if (tag.equals(Measurement.TAG_STATUS_CONFIDENCE))
