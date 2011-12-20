@@ -64,6 +64,9 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		BaseObject baseObject = getBaseObjectForRow(row);
 		if (isAbstractTargetViabilityModeCell(row, column))
 			return true;
+		
+		if (isAbstractTargetSimpleViabilityRatingCell(row, column))
+			return true;
 
 		if (isKeaAttributeTypeCell(row, column))
 			return true;
@@ -78,6 +81,20 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 			return isFutureStatusCellEditable(row, column);
 		
 		return false;
+	}
+
+	public boolean isAbstractTargetSimpleViabilityRatingCell(int row, int column)
+	{
+		String tag = COLUMN_TAGS_FOR_TARGETS[column];
+		if (!tag.equals(AbstractTarget.TAG_TARGET_STATUS))
+			return false;
+		
+		BaseObject baseObject = getBaseObjectForRow(row);
+		if (!AbstractTarget.isAbstractTarget(baseObject))
+			return false;
+		
+		AbstractTarget abstractTarget = (AbstractTarget) baseObject;
+		return abstractTarget.isSimpleMode();
 	}
 
 	public boolean isAbstractTargetViabilityModeCell(int row, int column)
@@ -189,6 +206,11 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		{
 			ChoiceItem choiceItem = (ChoiceItem) value;
 			setValueUsingCommand(baseObject.getRef(), AbstractTarget.TAG_VIABILITY_MODE, choiceItem.getCode());
+		}
+		if (isAbstractTargetSimpleViabilityRatingCell(row, column))
+		{
+			ChoiceItem choiceItem = (ChoiceItem) value;
+			setValueUsingCommand(baseObject.getRef(), AbstractTarget.TAG_TARGET_STATUS, choiceItem.getCode());
 		}
 		if (isKeaAttributeTypeCell(row, column))
 		{
@@ -328,7 +350,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		if(tag.equals(Target.TAG_VIABILITY_MODE))
 			return StaticQuestionManager.getQuestion(ViabilityModeQuestion.class).findChoiceByCode(rawValue);
 		
-		if (tag.equals(Target.PSEUDO_TAG_TARGET_VIABILITY))
+		if (tag.equals(AbstractTarget.TAG_TARGET_STATUS))
 			return getStatusQuestion().findChoiceByCode(rawValue);
 		
 		return new EmptyChoiceItem();
@@ -529,7 +551,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 	
 	private static final String[] COLUMN_TAGS_FOR_TARGETS = {
 		Target.TAG_VIABILITY_MODE, 
-		Target.PSEUDO_TAG_TARGET_VIABILITY,
+		AbstractTarget.TAG_TARGET_STATUS,
 		BaseObject.TAG_EMPTY,
 		BaseObject.TAG_EMPTY,
 		BaseObject.TAG_EMPTY,
