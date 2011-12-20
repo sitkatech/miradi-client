@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-14 05:56-0600\n"
+"POT-Creation-Date: 2011-12-19 18:09-0600\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -4310,8 +4310,8 @@ msgid "KEA Type|Condition"
 msgstr "Kondisi"
 
 #: Miradi/source/org/miradi/questions/KeyEcologicalAttributeTypeQuestion.java:38
-msgid "KEA Type|LandScape Context"
-msgstr "Konteks Bentang Alam"
+msgid "KEA Type|Landscape Context"
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/KeyEcologicalAttributeTypeQuestion.java:36
 msgid "KEA Type|Size"
@@ -32151,6 +32151,9 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "KEA Type|LandScape Context"
+#~ msgstr "Konteks Bentang Alam"
 
 #~ msgid ""
 #~ "<HTML>The TNC Operating Unit field has been changed from a text field to "
