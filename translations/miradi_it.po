@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-14 05:56-0600\n"
+"POT-Creation-Date: 2011-12-19 18:09-0600\n"
 "PO-Revision-Date: 2011-04-29 11:26+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -4426,8 +4426,8 @@ msgid "KEA Type|Condition"
 msgstr "Condizione"
 
 #: Miradi/source/org/miradi/questions/KeyEcologicalAttributeTypeQuestion.java:38
-msgid "KEA Type|LandScape Context"
-msgstr "Contesto paesaggistico"
+msgid "KEA Type|Landscape Context"
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/KeyEcologicalAttributeTypeQuestion.java:36
 msgid "KEA Type|Size"
@@ -30221,6 +30221,9 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
+
+#~ msgid "KEA Type|LandScape Context"
+#~ msgstr "Contesto paesaggistico"
 
 #~ msgid ""
 #~ "<HTML>The TNC Operating Unit field has been changed from a text field to "
