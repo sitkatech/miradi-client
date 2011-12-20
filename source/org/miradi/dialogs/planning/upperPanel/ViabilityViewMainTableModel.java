@@ -227,7 +227,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 	{
 		if (isThresholdColumn(column))
 		{
-			ORef indicatorRef = getFutureStatusIndicatorParent(row, column);
+			ORef indicatorRef = getFutureStatusIndicatorRefAsParent(row, column);
 			setValueUsingCommand(indicatorRef, Indicator.TAG_FUTURE_STATUS_SUMMARY, value.toString());
 			final String columnTag = COLUMN_TAGS_FOR_FUTURE_RESULTS[column];
 			setValueUsingCommand(indicatorRef, Indicator.TAG_FUTURE_STATUS_RATING, columnTag);
@@ -349,12 +349,12 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 
 	protected Indicator getFutureStatusIndicator(int row, int column)
 	{
-		ORef indicatorRef = getFutureStatusIndicatorParent(row, column);
+		ORef indicatorRef = getFutureStatusIndicatorRefAsParent(row, column);
 		Indicator indicatorAsParent = Indicator.find(getProject(), indicatorRef);
 		return indicatorAsParent;
 	}
 
-	protected ORef getFutureStatusIndicatorParent(int row, int column)
+	protected ORef getFutureStatusIndicatorRefAsParent(int row, int column)
 	{
 		ORefList objectHiearchy = getRowColumnObjectProvider().getObjectHiearchy(row, column);
 		
