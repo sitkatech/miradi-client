@@ -29,6 +29,7 @@ import org.miradi.dialogs.fieldComponents.ChoiceItemComboBox;
 import org.miradi.dialogs.planning.ViabilityTableHeader;
 import org.miradi.main.MainWindow;
 import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.StaticQuestionManager;
@@ -92,8 +93,8 @@ public class ViabilityUpperMultiTable extends PlanningUpperMultiTable
 		Class questionClassName = model.getCellQuestion(row, modelColumn);
 		if (questionClassName != null)
 		{
-			ChoiceItem[] choices = StaticQuestionManager.getQuestion(questionClassName).getChoices();
-			ChoiceItemComboBox comboBox = new ChoiceItemComboBox(choices);
+			ChoiceQuestion question = StaticQuestionManager.getQuestion(questionClassName);
+			ChoiceItemComboBox comboBox = new ChoiceItemComboBox(question);
 			return new DefaultCellEditor(comboBox);
 		}
 		
