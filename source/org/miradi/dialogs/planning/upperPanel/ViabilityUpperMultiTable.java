@@ -89,34 +89,10 @@ public class ViabilityUpperMultiTable extends PlanningUpperMultiTable
 	{
 		int modelColumn = convertColumnIndexToModel(tableColumn);
 		ViabilityViewMainTableModel model = (ViabilityViewMainTableModel) getCastedModel().getCastedModel(modelColumn);
-		if (model.isAbstractTargetViabilityModeCell(row, modelColumn))
+		Class questionClassName = model.getCellQuestion(row, modelColumn);
+		if (questionClassName != null)
 		{
-			ChoiceItem[] choices = StaticQuestionManager.getQuestion(ViabilityModeQuestion.class).getChoices();
-			ChoiceItemComboBox comboBox = new ChoiceItemComboBox(choices);
-			return new DefaultCellEditor(comboBox);
-		}
-		if (model.isAbstractTargetSimpleViabilityRatingCell(row, modelColumn))
-		{
-			ChoiceItem[] choices = StaticQuestionManager.getQuestion(StatusQuestion.class).getChoices();
-			ChoiceItemComboBox comboBox = new ChoiceItemComboBox(choices);
-			return new DefaultCellEditor(comboBox);
-		}
-		if (model.isKeaAttributeTypeCell(row, modelColumn))
-		{
-			ChoiceItem[] choices = StaticQuestionManager.getQuestion(KeyEcologicalAttributeTypeQuestion.class).getChoices();
-			ChoiceItemComboBox comboBox = new ChoiceItemComboBox(choices);
-			return new DefaultCellEditor(comboBox);
-		}
-		if (model.isIndicatorRatingSourceColumn(row, modelColumn))
-		{
-			ChoiceItem[] choices = StaticQuestionManager.getQuestion(RatingSourceQuestion.class).getChoices();
-			ChoiceItemComboBox comboBox = new ChoiceItemComboBox(choices);
-			return new DefaultCellEditor(comboBox);
-		}
-		
-		if (model.isMeasurementStatusConfidenceColumn(row, modelColumn))
-		{
-			ChoiceItem[] choices = StaticQuestionManager.getQuestion(StatusConfidenceQuestion.class).getChoices();
+			ChoiceItem[] choices = StaticQuestionManager.getQuestion(questionClassName).getChoices();
 			ChoiceItemComboBox comboBox = new ChoiceItemComboBox(choices);
 			return new DefaultCellEditor(comboBox);
 		}
