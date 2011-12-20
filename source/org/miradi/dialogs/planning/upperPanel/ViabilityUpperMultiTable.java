@@ -24,7 +24,7 @@ import javax.swing.DefaultCellEditor;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 
-import org.miradi.diagram.renderers.ComboBoxRenderer;
+import org.miradi.diagram.renderers.ChoiceItemComboBoxRenderer;
 import org.miradi.dialogs.fieldComponents.ChoiceItemComboBox;
 import org.miradi.dialogs.planning.ViabilityTableHeader;
 import org.miradi.main.MainWindow;
@@ -57,28 +57,28 @@ public class ViabilityUpperMultiTable extends PlanningUpperMultiTable
 		if (model.isAbstractTargetSimpleViabilityRatingCell(row, modelColumn))
 		{
 			ChoiceItem[] choices = StaticQuestionManager.getQuestion(StatusQuestion.class).getChoices();
-			return new ComboBoxRenderer(choices);	
+			return new ChoiceItemComboBoxRenderer(choices);	
 		}
 		if (model.isAbstractTargetViabilityModeCell(row, modelColumn))
 		{
 			ChoiceItem[] choices = StaticQuestionManager.getQuestion(ViabilityModeQuestion.class).getChoices();
-			return new ComboBoxRenderer(choices);
+			return new ChoiceItemComboBoxRenderer(choices);
 		}
 		if (model.isKeaAttributeTypeCell(row, modelColumn))
 		{
 			ChoiceItem[] choices = StaticQuestionManager.getQuestion(KeyEcologicalAttributeTypeQuestion.class).getChoices();
-			return new ComboBoxRenderer(choices);
+			return new ChoiceItemComboBoxRenderer(choices);
 		}
 		if (model.isIndicatorRatingSourceColumn(row, modelColumn))
 		{
 			ChoiceItem[] choices = StaticQuestionManager.getQuestion(RatingSourceQuestion.class).getChoices();
-			return new ComboBoxRenderer(choices);
+			return new ChoiceItemComboBoxRenderer(choices);
 		}
 		
 		if (model.isMeasurementStatusConfidenceColumn(row, modelColumn))
 		{
 			ChoiceItem[] choices = StaticQuestionManager.getQuestion(StatusConfidenceQuestion.class).getChoices();
-			return new ComboBoxRenderer(choices);
+			return new ChoiceItemComboBoxRenderer(choices);
 		}
 
 		return super.getCellRenderer(row, tableColumn);
