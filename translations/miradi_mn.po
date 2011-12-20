@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-14 05:56-0600\n"
+"POT-Creation-Date: 2011-12-19 18:09-0600\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -4356,8 +4356,8 @@ msgid "KEA Type|Condition"
 msgstr "ЭЧХЗ-ийн Төрөл|Төлөв байдал"
 
 #: Miradi/source/org/miradi/questions/KeyEcologicalAttributeTypeQuestion.java:38
-msgid "KEA Type|LandScape Context"
-msgstr "ЭЧХЗ-ийн Төрөл|Газар нутгийн байдалтай холбож үзэх"
+msgid "KEA Type|Landscape Context"
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/KeyEcologicalAttributeTypeQuestion.java:36
 msgid "KEA Type|Size"
@@ -31616,6 +31616,9 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid "KEA Type|LandScape Context"
+#~ msgstr "ЭЧХЗ-ийн Төрөл|Газар нутгийн байдалтай холбож үзэх"
 
 #~ msgid ""
 #~ "<HTML>The TNC Operating Unit field has been changed from a text field to "
