@@ -63,6 +63,12 @@ abstract public class EditableObjectTableModel extends AbstractObjectTableModel
 		setValueUsingCommand(refToUse, fieldTag, choiceToSave.getCode());
 	}
 	
+	public void setChoiceValueUsingCommand(BaseObject baseObject, final String tag, Object rawValue)
+	{
+		ChoiceItem choiceItem = (ChoiceItem) rawValue;
+		setValueUsingCommand(baseObject.getRef(), tag, choiceItem.getCode());
+	}
+	
 	public void setValueUsingCommand(ORef  refToUse, String fieldTag, String valueToSave)
 	{
 		try
