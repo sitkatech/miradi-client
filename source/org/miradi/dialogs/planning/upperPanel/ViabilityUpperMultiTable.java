@@ -88,9 +88,9 @@ public class ViabilityUpperMultiTable extends PlanningUpperMultiTable
 	@Override
 	public TableCellEditor getCellEditor(int row, int tableColumn)
 	{
-		int modelColumn = convertColumnIndexToModel(tableColumn);
-		ViabilityViewMainTableModel model = (ViabilityViewMainTableModel) getCastedModel().getCastedModel(modelColumn);
-		Class questionClassName = model.getCellQuestion(row, modelColumn);
+		final int modelColumn = convertColumnIndexToModel(tableColumn);
+		final ViabilityViewMainTableModel model = (ViabilityViewMainTableModel) getCastedModel().getCastedModel(modelColumn);
+		final Class questionClassName = model.getCellQuestion(row, modelColumn);
 		if (questionClassName != null)
 		{
 			ChoiceQuestion question = StaticQuestionManager.getQuestion(questionClassName);
