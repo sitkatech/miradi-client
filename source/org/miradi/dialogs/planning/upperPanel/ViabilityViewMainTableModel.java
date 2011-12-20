@@ -110,6 +110,10 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 
 	public boolean isFutureStatusThresholdCell(int row, int column)
 	{
+		Indicator indicator = getFutureStatusIndicatorAsParent(row, column);
+		if (!indicator.isViabilityIndicator())
+			return false;
+		
 		return Goal.is(getBaseObjectForRow(row)) && isThresholdColumn(column);
 	}
 
