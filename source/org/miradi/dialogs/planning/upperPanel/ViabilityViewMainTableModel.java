@@ -82,6 +82,26 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		
 		return false;
 	}
+	
+	public Class getCellQuestion(int row, int modelColumn)
+	{
+		if (isAbstractTargetViabilityModeCell(row, modelColumn))
+			return ViabilityModeQuestion.class;
+
+		if (isAbstractTargetSimpleViabilityRatingCell(row, modelColumn))
+			return StatusQuestion.class;
+
+		if (isKeaAttributeTypeCell(row, modelColumn))
+			return KeyEcologicalAttributeTypeQuestion.class;
+
+		if (isIndicatorRatingSourceColumn(row, modelColumn))
+			return RatingSourceQuestion.class;
+		
+		if (isMeasurementStatusConfidenceColumn(row, modelColumn))
+			return StatusConfidenceQuestion.class;
+		
+		return null;
+	}
 
 	public boolean isAbstractTargetSimpleViabilityRatingCell(int row, int column)
 	{
