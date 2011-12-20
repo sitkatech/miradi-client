@@ -29,9 +29,15 @@ import javax.swing.table.TableCellRenderer;
 import org.miradi.dialogs.fieldComponents.ChoiceItemComboBox;
 import org.miradi.dialogs.tablerenderers.TableCellPreferredHeightProvider;
 import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ChoiceQuestion;
 
 public class ChoiceItemComboBoxRenderer extends ChoiceItemComboBox implements TableCellRenderer, TableCellPreferredHeightProvider
 {
+	public ChoiceItemComboBoxRenderer(ChoiceQuestion question) 
+	{
+		this(question.getChoices());
+	}
+
 	public ChoiceItemComboBoxRenderer(ChoiceItem[] items) 
 	{
 		super(items);

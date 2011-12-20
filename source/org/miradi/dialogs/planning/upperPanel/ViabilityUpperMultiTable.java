@@ -28,14 +28,8 @@ import org.miradi.diagram.renderers.ChoiceItemComboBoxRenderer;
 import org.miradi.dialogs.fieldComponents.ChoiceItemComboBox;
 import org.miradi.dialogs.planning.ViabilityTableHeader;
 import org.miradi.main.MainWindow;
-import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
-import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.StaticQuestionManager;
-import org.miradi.questions.StatusConfidenceQuestion;
-import org.miradi.questions.StatusQuestion;
-import org.miradi.questions.ViabilityModeQuestion;
 
 public class ViabilityUpperMultiTable extends PlanningUpperMultiTable
 {
@@ -53,33 +47,13 @@ public class ViabilityUpperMultiTable extends PlanningUpperMultiTable
 	@Override
 	public TableCellRenderer getCellRenderer(int row, int tableColumn)
 	{
-		int modelColumn = convertColumnIndexToModel(tableColumn);
-		ViabilityViewMainTableModel model = (ViabilityViewMainTableModel) getCastedModel().getCastedModel(modelColumn);
-		if (model.isAbstractTargetSimpleViabilityRatingCell(row, modelColumn))
+		final int modelColumn = convertColumnIndexToModel(tableColumn);
+		final ViabilityViewMainTableModel model = (ViabilityViewMainTableModel) getCastedModel().getCastedModel(modelColumn);
+		final Class questionClassName = model.getCellQuestion(row, modelColumn);
+		if (questionClassName != null)
 		{
-			ChoiceItem[] choices = StaticQuestionManager.getQuestion(StatusQuestion.class).getChoices();
-			return new ChoiceItemComboBoxRenderer(choices);	
-		}
-		if (model.isAbstractTargetViabilityModeCell(row, modelColumn))
-		{
-			ChoiceItem[] choices = StaticQuestionManager.getQuestion(ViabilityModeQuestion.class).getChoices();
-			return new ChoiceItemComboBoxRenderer(choices);
-		}
-		if (model.isKeaAttributeTypeCell(row, modelColumn))
-		{
-			ChoiceItem[] choices = StaticQuestionManager.getQuestion(KeyEcologicalAttributeTypeQuestion.class).getChoices();
-			return new ChoiceItemComboBoxRenderer(choices);
-		}
-		if (model.isIndicatorRatingSourceColumn(row, modelColumn))
-		{
-			ChoiceItem[] choices = StaticQuestionManager.getQuestion(RatingSourceQuestion.class).getChoices();
-			return new ChoiceItemComboBoxRenderer(choices);
-		}
-		
-		if (model.isMeasurementStatusConfidenceColumn(row, modelColumn))
-		{
-			ChoiceItem[] choices = StaticQuestionManager.getQuestion(StatusConfidenceQuestion.class).getChoices();
-			return new ChoiceItemComboBoxRenderer(choices);
+			ChoiceQuestion question = StaticQuestionManager.getQuestion(questionClassName);
+			return new ChoiceItemComboBoxRenderer(question);
 		}
 
 		return super.getCellRenderer(row, tableColumn);
