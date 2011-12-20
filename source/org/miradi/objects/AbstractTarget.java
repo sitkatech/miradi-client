@@ -200,6 +200,11 @@ abstract public class AbstractTarget extends Factor
 	{
 		return getViabilityMode().equals(ViabilityModeQuestion.TNC_STYLE_CODE);
 	}
+	
+	public boolean isSimpleMode()
+	{
+		return !isViabilityModeTNC();
+	}
 
 	public String getViabilityMode()
 	{
