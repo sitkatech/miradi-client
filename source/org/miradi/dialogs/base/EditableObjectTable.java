@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.base;
 
-import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -35,6 +33,7 @@ import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
+import org.miradi.diagram.renderers.ChoiceItemComboBoxRenderer;
 import org.miradi.diagram.renderers.ComboBoxRenderer;
 import org.miradi.dialogs.fieldComponents.ChoiceItemComboBox;
 import org.miradi.dialogs.fieldComponents.PanelComboBox;
@@ -46,7 +45,6 @@ import org.miradi.dialogs.tablerenderers.FloatingPointRestrictedTableCellRendere
 import org.miradi.dialogs.tablerenderers.MultiLineEditableObjectTableCellEditorOrRendererFactory;
 import org.miradi.dialogs.tablerenderers.NonNegativeIntegerRestrictedTableCellRendererEditorFactory;
 import org.miradi.dialogs.tablerenderers.StressBasedThreatRatingQuestionPopupCellEditorOrRendererFactory;
-import org.miradi.dialogs.tablerenderers.TableCellPreferredHeightProvider;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
@@ -326,37 +324,7 @@ abstract public class EditableObjectTable extends SortableRowTable  implements O
 			return o1.toString().compareToIgnoreCase(o2.toString());
 		}	
 	}
-		
-	protected class ChoiceItemComboBoxRenderer extends ChoiceItemComboBox implements TableCellRenderer, TableCellPreferredHeightProvider
-	{
-	    public ChoiceItemComboBoxRenderer(ChoiceItem[] items) 
-	    {
-	        super(items);
-	    }
-
-	    public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int col) 
-	    {
-	        if (isSelected) 
-	        	setColors(table.getSelectionBackground(), Color.BLACK);
-	        else 
-	        	setColors(table.getBackground(), table.getForeground());
-
-	        setSelectedItem(value);
-	        return this;
-	    }
-	    
-	    private void setColors(Color background, Color foreground)
-	    {
-	        setForeground(foreground);
-	        setBackground(background);
-	    }
-
-		public int getPreferredHeight(JTable table, int row, int column, Object value)
-		{
-			return getPreferredSize().height;
-		}
-	}
-	
+			
 	private Vector<ListSelectionListener> selectionListeners;
 	private EditableObjectTableModel model;
 	private boolean isActive;
