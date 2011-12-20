@@ -347,14 +347,14 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		return getStatusColumnChoiceItem(tag, indicatorAsParent, Indicator.TAG_FUTURE_STATUS_SUMMARY, Indicator.TAG_FUTURE_STATUS_RATING, IconManager.getGoalIcon());
 	}
 
-	protected Indicator getFutureStatusIndicatorAsParent(int row, int column)
+	private Indicator getFutureStatusIndicatorAsParent(int row, int column)
 	{
 		ORef indicatorRef = getFutureStatusIndicatorRefAsParent(row, column);
 		Indicator indicatorAsParent = Indicator.find(getProject(), indicatorRef);
 		return indicatorAsParent;
 	}
 
-	protected ORef getFutureStatusIndicatorRefAsParent(int row, int column)
+	private ORef getFutureStatusIndicatorRefAsParent(int row, int column)
 	{
 		ORefList objectHiearchy = getRowColumnObjectProvider().getObjectHiearchy(row, column);
 		
