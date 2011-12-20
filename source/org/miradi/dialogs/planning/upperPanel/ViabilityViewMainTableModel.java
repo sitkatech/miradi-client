@@ -224,18 +224,15 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		BaseObject baseObject = getBaseObjectForRow(row);
 		if (isAbstractTargetViabilityModeCell(row, column))
 		{
-			ChoiceItem choiceItem = (ChoiceItem) value;
-			setValueUsingCommand(baseObject.getRef(), AbstractTarget.TAG_VIABILITY_MODE, choiceItem.getCode());
+			setChoiceValueUsingCommand(baseObject, AbstractTarget.TAG_VIABILITY_MODE, value);
 		}
 		if (isAbstractTargetSimpleViabilityRatingCell(row, column))
 		{
-			ChoiceItem choiceItem = (ChoiceItem) value;
-			setValueUsingCommand(baseObject.getRef(), AbstractTarget.TAG_TARGET_STATUS, choiceItem.getCode());
+			setChoiceValueUsingCommand(baseObject, AbstractTarget.TAG_TARGET_STATUS, value);
 		}
 		if (isKeaAttributeTypeCell(row, column))
 		{
-			ChoiceItem choiceItem = (ChoiceItem) value;
-			setValueUsingCommand(baseObject.getRef(), KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE, choiceItem.getCode());
+			setChoiceValueUsingCommand(baseObject, KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE, value);
 		}
 		if (Indicator.is(baseObject))
 		{
@@ -257,8 +254,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 	{
 		if (isMeasurementStatusConfidenceColumn(row, column))
 		{
-			ChoiceItem choiceItem = (ChoiceItem) value;
-			setValueUsingCommand(baseObject.getRef(), Measurement.TAG_STATUS_CONFIDENCE, choiceItem.getCode());
+			setChoiceValueUsingCommand(baseObject, Measurement.TAG_STATUS_CONFIDENCE, value);
 		}
 		
 		if (isThresholdColumn(column))
@@ -291,8 +287,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		}
 		if (isIndicatorRatingSourceColumn(row, column))
 		{
-			ChoiceItem choiceItem = (ChoiceItem) value;
-			setValueUsingCommand(baseObject.getRef(), Indicator.TAG_RATING_SOURCE, choiceItem.getCode());
+			setChoiceValueUsingCommand(baseObject, Indicator.TAG_RATING_SOURCE, value);
 		}
 	}
 
