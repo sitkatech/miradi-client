@@ -523,11 +523,11 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 	private int calculateRatingCodeFromColumn(int column)
 	{
 		final int TREE_COLUMN_COUNT = 1;
-		int threasholdColumn = (TREE_COLUMN_COUNT + column) - getFirstIndexOfThreshold();
+		int threasholdColumn = (TREE_COLUMN_COUNT + column) - getFirstColumnIndexOfThreshold();
 		return threasholdColumn;
 	}
 	
-	private int getFirstIndexOfThreshold()
+	private int getFirstColumnIndexOfThreshold()
 	{
 		for (int columnIndex = 0; columnIndex < COLUMN_TAGS_FOR_INDICATORS.length; ++columnIndex)
 		{
