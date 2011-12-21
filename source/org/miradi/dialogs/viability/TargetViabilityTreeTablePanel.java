@@ -67,6 +67,12 @@ public class TargetViabilityTreeTablePanel extends PlanningTreeTablePanel
 	{
 		return new ViabilityUpperMultiTable(getMainWindow(), treeToUse, multiModelToUse);
 	}
+	
+	@Override
+	protected boolean shouldSetFocusOnFirstField()
+	{
+		return false;
+	}
 
 	private static Class[] getButtonActions()
 	{

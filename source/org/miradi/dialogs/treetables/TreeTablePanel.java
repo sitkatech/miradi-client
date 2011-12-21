@@ -187,9 +187,15 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		
 		getPropertiesPanel().setObjectRefs(objects.toArray(new ORef[0]));
 		mainWindow.updateActionStates();
-		getPropertiesPanel().setFocusOnFirstField();
+		if (shouldSetFocusOnFirstField())
+			getPropertiesPanel().setFocusOnFirstField();
 	}
 	
+	protected boolean shouldSetFocusOnFirstField()
+	{
+		return true;
+	}
+
 	//TODO:Is this needed? Is it the right place/mechanism? 
 	public void setSelectedObject(ORef ref)
 	{
