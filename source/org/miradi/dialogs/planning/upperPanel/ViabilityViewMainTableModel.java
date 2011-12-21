@@ -103,7 +103,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		return null;
 	}
 
-	public boolean isAbstractTargetSimpleViabilityRatingCell(int row, int column)
+	private boolean isAbstractTargetSimpleViabilityRatingCell(int row, int column)
 	{
 		String tag = COLUMN_TAGS_FOR_TARGETS[column];
 		if (!tag.equals(AbstractTarget.PSEUDO_TAG_TARGET_VIABILITY))
@@ -117,7 +117,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		return abstractTarget.isSimpleMode();
 	}
 
-	public boolean isAbstractTargetViabilityModeCell(int row, int column)
+	private boolean isAbstractTargetViabilityModeCell(int row, int column)
 	{
 		String tag = COLUMN_TAGS_FOR_TARGETS[column];
 		BaseObject baseObject = getBaseObjectForRow(row);
@@ -127,7 +127,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		return false;
 	}
 
-	public boolean isKeaAttributeTypeCell(int row, int column)
+	private boolean isKeaAttributeTypeCell(int row, int column)
 	{
 		String tag = COLUMN_TAGS_KEAS[column];
 		BaseObject baseObject = getBaseObjectForRow(row);
@@ -154,7 +154,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		return Goal.is(getBaseObjectForRow(row)) && isThresholdColumn(column);
 	}
 
-	public boolean isMeasurementCellEditable(int row, int column)
+	private boolean isMeasurementCellEditable(int row, int column)
 	{
 		if (isMeasurementStatusConfidenceColumn(row, column))
 			return true;
@@ -181,7 +181,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		return false;
 	}
 
-	public boolean isIndicatorRatingSourceColumn(int row, int modelColumn)
+	private boolean isIndicatorRatingSourceColumn(int row, int modelColumn)
 	{
 		final BaseObject baseObject = getBaseObjectForRow(row);
 		if (!Indicator.is(baseObject))
@@ -194,14 +194,14 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		return columnTag.equals(Indicator.TAG_RATING_SOURCE);
 	}
 
-	public boolean isMeasurementStatusConfidenceColumn(int row, int modelColumn)
+	private boolean isMeasurementStatusConfidenceColumn(int row, int modelColumn)
 	{
 		String columnTag = COLUMN_TAGS_FOR_MEASUREMENTS[modelColumn];
 		
 		return Measurement.is(getBaseObjectForRow(row)) && columnTag.equals(Measurement.TAG_STATUS_CONFIDENCE);
 	}
 
-	public boolean isThresholdColumn(int modelColumn)
+	private boolean isThresholdColumn(int modelColumn)
 	{
 		if (getColumnTag(modelColumn).equals(POOR))
 			return true;
@@ -250,7 +250,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		super.setValueAt(value, row, column);
 	}
 
-	protected void setMeasurementValue(BaseObject baseObject, Object value, int row, int column)
+	private void setMeasurementValue(BaseObject baseObject, Object value, int row, int column)
 	{
 		if (isMeasurementStatusConfidenceColumn(row, column))
 		{
