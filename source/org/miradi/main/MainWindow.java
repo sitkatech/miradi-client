@@ -513,7 +513,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		{
 			if (!canCreateOrOpenProject(projectFile))
 			{
-				EAM.errorDialog(EAM.text("Internal project file with this name exist, please try another name"));
+				EAM.errorDialog(EAM.text("A project with this name already exists."));
 				return;
 			}
 
