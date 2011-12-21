@@ -36,6 +36,7 @@ import org.miradi.main.EAM;
 import org.miradi.project.Project;
 import org.miradi.utils.FlexibleWidthHtmlViewer;
 import org.miradi.utils.ProjectNameRestrictedTextField;
+import org.miradi.views.umbrella.CreateProjectDialog;
 import org.miradi.wizard.MiradiHtmlViewer;
 import org.miradi.wizard.WizardManager;
 import org.miradi.wizard.WizardPanel;
@@ -147,8 +148,21 @@ public class WelcomeCreateStep extends NoProjectWizardStep
 			return;
 		try 
 		{
-			Project.validateNewProject(newName);
-			File projectFile = new File(EAM.getHomeDirectory(), newName + ".Miradi");
+			if(!newName.endsWith(".Miradi"))
+				newName = newName + ".Miradi";
+			File projectFile = new File(EAM.getHomeDirectory(), newName);
+			if(projectFile.exists())
+			{
+				EAM.notifyDialog(EAM.text("A file or folder with that name already exists"));
+				return;
+			}
+
+			if (!Project.isValidProjectFilename(newName))
+			{
+				EAM.notifyDialog(CreateProjectDialog.getInvalidProjectNameMessage());
+				return;
+			}
+
 			getMainWindow().createOrOpenProject(projectFile);
 		}
 		catch (Exception e)
