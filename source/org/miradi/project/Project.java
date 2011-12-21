@@ -26,7 +26,6 @@ import java.io.File;
 import java.io.PrintStream;
 import java.util.Vector;
 
-
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.cells.DiagramGroupBoxCell;
@@ -39,7 +38,6 @@ import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.DiagramLinkId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.ids.IdList;
-import org.miradi.legacyprojects.LegacyProjectUtilities;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
 import org.miradi.main.ResourcesHandler;
@@ -134,7 +132,6 @@ import org.miradi.views.diagram.DiagramPageList;
 import org.miradi.views.diagram.DiagramView;
 import org.miradi.views.planning.PlanningView;
 import org.miradi.views.planning.doers.CreatePlanningViewEmptyConfigurationDoer;
-import org.miradi.views.umbrella.CreateProjectDialog;
 import org.miradi.views.workplan.WorkPlanView;
 
 
@@ -175,22 +172,8 @@ public class Project
 		lastModifiedMillis = System.currentTimeMillis();
 	}
 	
-	static public void validateNewProject(String newName) throws Exception
-	{
-		File newFile = new File(EAM.getHomeDirectory(),newName);
-		if(LegacyProjectUtilities.isExistingLocalProject(newFile))
-			throw new Exception(EAM.text(" A project by this name already exists: ") + newName);
-		
-		if (!EAM.getMainWindow().getProject().isValidProjectFilename(newName))
-			throw new Exception(CreateProjectDialog.getInvalidProjectNameMessage());
-		
-		if(newFile.exists())
-			throw new Exception(EAM.text("A file or folder with this name already exists:") + newName);
-		
-	}
 	/////////////////////////////////////////////////////////////////////////////////
 	// simple getters
-	
 	public long getLastModifiedTime()
 	{
 		return lastModifiedMillis;
