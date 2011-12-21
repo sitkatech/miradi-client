@@ -529,10 +529,10 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 	
 	private int getFirstIndexOfThreshold()
 	{
-		for (int i = 0; i < COLUMN_TAGS_FOR_INDICATORS.length; ++i)
+		for (int columnIndex = 0; columnIndex < COLUMN_TAGS_FOR_INDICATORS.length; ++columnIndex)
 		{
-			if (COLUMN_TAGS_FOR_INDICATORS[i].equals(Indicator.TAG_INDICATOR_THRESHOLD))
-				return i;
+			if (COLUMN_TAGS_FOR_INDICATORS[columnIndex].equals(Indicator.TAG_INDICATOR_THRESHOLD))
+				return columnIndex;
 		}
 		
 		throw new RuntimeException("Could not find Threshold in array.");
