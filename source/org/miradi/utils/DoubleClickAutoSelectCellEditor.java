@@ -27,7 +27,8 @@ public class DoubleClickAutoSelectCellEditor extends DefaultCellEditor
 	public DoubleClickAutoSelectCellEditor(final JTextField textField) 
 	{
 		super(textField);
-		setClickCountToStart(2);
+		
+		setClickCountToStart(1);
 		delegate = new EditorDeletegate();
 	}
 	
