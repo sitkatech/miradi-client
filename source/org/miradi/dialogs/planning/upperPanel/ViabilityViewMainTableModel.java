@@ -147,7 +147,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 
 	public boolean isFutureStatusThresholdCell(int row, int column)
 	{
-		Indicator indicator = getFutureStatusIndicatorAsParent(row, column);
+		Indicator indicator = getIndicatorInSelectionHierarchy(row, column);
 		if (!indicator.isViabilityIndicator())
 			return false;
 		
@@ -269,7 +269,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 	{
 		if (isThresholdColumn(column))
 		{
-			ORef indicatorRef = getFutureStatusIndicatorRefAsParent(row, column);
+			ORef indicatorRef = getIndicatorRefInSelectionHierarchy(row, column);
 			setValueUsingCommand(indicatorRef, Indicator.TAG_FUTURE_STATUS_SUMMARY, value.toString());
 			final String columnTag = COLUMN_TAGS_FOR_FUTURE_RESULTS[column];
 			setValueUsingCommand(indicatorRef, Indicator.TAG_FUTURE_STATUS_RATING, columnTag);
@@ -383,19 +383,19 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 	private ChoiceItem getValueForFutureResultAsGoal(BaseObject baseObject, int row, int column)
 	{
 		String tag = COLUMN_TAGS_FOR_FUTURE_RESULTS[column];
-		Indicator indicatorAsParent = getFutureStatusIndicatorAsParent(row, column);
+		Indicator indicatorAsParent = getIndicatorInSelectionHierarchy(row, column);
 		
 		return getStatusColumnChoiceItem(tag, indicatorAsParent, Indicator.TAG_FUTURE_STATUS_SUMMARY, Indicator.TAG_FUTURE_STATUS_RATING, IconManager.getGoalIcon());
 	}
 
-	private Indicator getFutureStatusIndicatorAsParent(int row, int column)
+	private Indicator getIndicatorInSelectionHierarchy(int row, int column)
 	{
-		ORef indicatorRef = getFutureStatusIndicatorRefAsParent(row, column);
+		ORef indicatorRef = getIndicatorRefInSelectionHierarchy(row, column);
 		Indicator indicatorAsParent = Indicator.find(getProject(), indicatorRef);
 		return indicatorAsParent;
 	}
 
-	private ORef getFutureStatusIndicatorRefAsParent(int row, int column)
+	private ORef getIndicatorRefInSelectionHierarchy(int row, int column)
 	{
 		ORefList objectHiearchy = getRowColumnObjectProvider().getObjectHiearchy(row, column);
 		
