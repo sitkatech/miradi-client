@@ -224,15 +224,15 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		BaseObject baseObject = getBaseObjectForRow(row);
 		if (isAbstractTargetViabilityModeCell(row, column))
 		{
-			setChoiceValueUsingCommand(baseObject, AbstractTarget.TAG_VIABILITY_MODE, value);
+			setChoiceValueUsingCommand(baseObject, AbstractTarget.TAG_VIABILITY_MODE, (ChoiceItem) value);
 		}
 		if (isAbstractTargetSimpleViabilityRatingCell(row, column))
 		{
-			setChoiceValueUsingCommand(baseObject, AbstractTarget.TAG_TARGET_STATUS, value);
+			setChoiceValueUsingCommand(baseObject, AbstractTarget.TAG_TARGET_STATUS, (ChoiceItem) value);
 		}
 		if (isKeaAttributeTypeCell(row, column))
 		{
-			setChoiceValueUsingCommand(baseObject, KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE, value);
+			setChoiceValueUsingCommand(baseObject, KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE, (ChoiceItem) value);
 		}
 		if (Indicator.is(baseObject))
 		{
@@ -254,7 +254,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 	{
 		if (isMeasurementStatusConfidenceColumn(row, column))
 		{
-			setChoiceValueUsingCommand(baseObject, Measurement.TAG_STATUS_CONFIDENCE, value);
+			setChoiceValueUsingCommand(baseObject, Measurement.TAG_STATUS_CONFIDENCE, (ChoiceItem) value);
 		}
 		
 		if (isThresholdColumn(column))
@@ -287,7 +287,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		}
 		if (isIndicatorRatingSourceColumn(row, column))
 		{
-			setChoiceValueUsingCommand(baseObject, Indicator.TAG_RATING_SOURCE, value);
+			setChoiceValueUsingCommand(baseObject, Indicator.TAG_RATING_SOURCE, (ChoiceItem) value);
 		}
 	}
 
