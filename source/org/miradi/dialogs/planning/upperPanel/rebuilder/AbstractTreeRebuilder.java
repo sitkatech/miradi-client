@@ -34,6 +34,7 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.AccountingCode;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.BudgetCategoryOne;
 import org.miradi.objects.BudgetCategoryTwo;
 import org.miradi.objects.Cause;
@@ -59,6 +60,7 @@ import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
+import org.miradi.utils.BaseObjectDateDescendingAndIdComparator;
 import org.miradi.utils.CodeList;
 
 abstract public class AbstractTreeRebuilder
@@ -431,6 +433,14 @@ abstract public class AbstractTreeRebuilder
 	}
 	
 	abstract protected ORefList getChildRefs(ORef parentRef, DiagramObject diagram) throws Exception;
+	
+	protected class MeasurementDateComparator implements Comparator<BaseObject>
+	{
+		public int compare(BaseObject baseObject1, BaseObject baseObject2)
+		{
+			return BaseObjectDateDescendingAndIdComparator.compare(baseObject1, baseObject2, Measurement.TAG_DATE);
+		}	
+	}
 
 	private Project project;
 	private PlanningTreeRowColumnProvider rowColumnProvider;
