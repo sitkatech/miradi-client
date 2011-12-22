@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.upperPanel.rebuilder;
 
-import java.text.Collator;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Vector;
@@ -42,7 +41,6 @@ import org.miradi.objects.Factor;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.IntermediateResult;
-import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.objects.ProjectMetadata;
@@ -92,9 +90,6 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		if(Indicator.is(parentRef))
 			return getChildrenOfIndicator(parentRef, diagram);
 		
-		if(KeyEcologicalAttribute.is(parentRef))
-			return getChildrenOfKea(parentRef);
-		
 		if(Task.is(parentRef))
 			return getChildrenOfTask(parentRef, diagram);
 		
@@ -110,12 +105,6 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		if(SubTarget.is(parentRef))
 			return noChildren;
 
-		if(Goal.is(parentRef))
-			return noChildren;
-		
-		if(parentRef.isInvalid())
-			throw new RuntimeException("Attempted to getChildRefs for null parent");
-		
 		EAM.logDebug("Don't know how to get children of " + parentRef);
 		return new ORefList();
 	}
@@ -185,26 +174,8 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		childRefs.addAll(target.getOwnedObjects(Goal.getObjectType()));
 		childRefs.addAll(new ORefList(Indicator.getObjectType(), target.getDirectOrIndirectIndicators()));
 		childRefs.addAll(getDirectlyLinkedNonDraftStrategies(target, diagram));
-		if (target.isViabilityModeTNC()) 
-			childRefs.addAll(getSortedKeaRefs(target));
 		
 		return childRefs;
-	}
-	
-	private ORefList getSortedKeaRefs(AbstractTarget target) throws Exception
-	{
-		Project project = target.getProject();
-		ORefList keaRefs = target.getKeyEcologicalAttributeRefs();
-		Vector<KeyEcologicalAttribute> keyEcologicalAttributesVector = new Vector<KeyEcologicalAttribute>();
-		for(int index = 0; index < keaRefs.size(); ++index)
-		{
-			KeyEcologicalAttribute kea = (KeyEcologicalAttribute)project.findObject(keaRefs.get(index));
-			keyEcologicalAttributesVector.add(kea);
-		}
-		
-		Collections.sort(keyEcologicalAttributesVector, new KeaComparator());
-		
-		return new ORefList(keyEcologicalAttributesVector);
 	}
 	
 	private ORefList getDirectlyLinkedNonDraftStrategies(AbstractTarget target, DiagramObject diagram)
@@ -246,15 +217,6 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		return childRefs;
 	}
 	
-	private ORefList getChildrenOfKea(ORef parentRef)
-	{
-		ORefList childRefs = new ORefList();
-		KeyEcologicalAttribute kea = KeyEcologicalAttribute.find(getProject(), parentRef);
-		childRefs.addAll(kea.getIndicatorRefs());
-		
-		return childRefs;
-	}
-
 	private ORefList getChildrenOfDesire(ORef parentRef, DiagramObject diagram) throws Exception
 	{
 		ORefList childRefs = new ORefList();
@@ -326,18 +288,6 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		return false;
 	}
 	
-	private class KeaComparator implements Comparator<KeyEcologicalAttribute>
-	{
-		public int compare(KeyEcologicalAttribute kea1, KeyEcologicalAttribute kea2)
-		{
-			String type1 =kea1.getKeyEcologicalAttributeType();
-			String type2 =kea2.getKeyEcologicalAttributeType();
-			Collator myCollator = Collator.getInstance();
-
-			return myCollator.compare(type1, type2);
-		}
-	}
-
 	private class MeasurementDateComparator implements Comparator<BaseObject>
 	{
 		public int compare(BaseObject baseObject1, BaseObject baseObject2)
