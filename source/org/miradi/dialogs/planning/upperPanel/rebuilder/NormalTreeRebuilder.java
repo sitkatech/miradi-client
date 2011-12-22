@@ -20,9 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.upperPanel.rebuilder;
 
-import java.util.Collections;
-import java.util.Vector;
-
 import org.miradi.diagram.ChainWalker;
 import org.miradi.dialogs.planning.treenodes.UnspecifiedBaseObject;
 import org.miradi.main.EAM;
@@ -128,20 +125,6 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		return childRefs;
 	}
 	
-	public ORefList getSortedByDateMeasurementRefs(Indicator indicator)
-	{
-		final ORefList measurementRefs = indicator.getMeasurementRefs();
-		Vector<Measurement> measurements = new Vector<Measurement>();
-		for(int index = 0; index < measurementRefs.size(); ++index)
-		{
-			measurements.add(Measurement.find(getProject(), measurementRefs.get(index)));
-		}
-		
-		Collections.sort(measurements, new MeasurementDateComparator());
-		
-		return new ORefList(measurements);
-	}
-
 	private ORefList getChildrenOfDiagramNode(ORef diagramRef) throws Exception
 	{
 		ORefList childRefs = new ORefList();

@@ -432,6 +432,20 @@ abstract public class AbstractTreeRebuilder
 		return project;
 	}
 	
+	public ORefList getSortedByDateMeasurementRefs(Indicator indicator)
+	{
+		final ORefList measurementRefs = indicator.getMeasurementRefs();
+		Vector<Measurement> measurements = new Vector<Measurement>();
+		for(int index = 0; index < measurementRefs.size(); ++index)
+		{
+			measurements.add(Measurement.find(getProject(), measurementRefs.get(index)));
+		}
+		
+		Collections.sort(measurements, new MeasurementDateComparator());
+		
+		return new ORefList(measurements);
+	}
+	
 	abstract protected ORefList getChildRefs(ORef parentRef, DiagramObject diagram) throws Exception;
 	
 	protected class MeasurementDateComparator implements Comparator<BaseObject>

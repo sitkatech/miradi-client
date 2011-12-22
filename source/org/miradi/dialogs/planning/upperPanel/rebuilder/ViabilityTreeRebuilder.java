@@ -96,20 +96,6 @@ public class ViabilityTreeRebuilder extends AbstractTreeRebuilder
 		return childRefs;
 	}
 	
-	public ORefList getSortedByDateMeasurementRefs(Indicator indicator)
-	{
-		final ORefList measurementRefs = indicator.getMeasurementRefs();
-		Vector<Measurement> measurements = new Vector<Measurement>();
-		for(int index = 0; index < measurementRefs.size(); ++index)
-		{
-			measurements.add(Measurement.find(getProject(), measurementRefs.get(index)));
-		}
-		
-		Collections.sort(measurements, new MeasurementDateComparator());
-		
-		return new ORefList(measurements);
-	}
-	
 	private ORefList getChildrenOfAbstractTarget(ORef targetRef, DiagramObject diagram) throws Exception
 	{
 		ORefList childRefs = new ORefList();
