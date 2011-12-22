@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-19 18:09-0600\n"
+"POT-Creation-Date: 2011-12-22 15:35-0600\n"
 "PO-Revision-Date: 2011-03-28 15:06-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -81,10 +81,6 @@ msgstr ""
 #: Miradi/source/org/miradi/wizard/diagram/DiagramWizardLinkDirectThreatsToTargetsStep.java:51
 msgid " 2) Connect threat to relevant targets"
 msgstr "2) Conectar amenaza a objetos relevantes"
-
-#: Miradi/source/org/miradi/project/Project.java:182
-msgid " A project by this name already exists: "
-msgstr "Ya existe un proyecto con este nombre:"
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractZippedXmlImporter.java:45
 msgid " was empty"
@@ -613,7 +609,7 @@ msgstr ""
 "proyecto existente o <strong>buscar un ejemplo</strong>, seleccione un "
 "proyecto a continuación."
 
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:74
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:75
 msgid ""
 "<div class='WizardText'>To <strong>create a new project</strong>, enter the "
 "filename in the input field below, and press the <code "
@@ -982,8 +978,8 @@ msgstr ""
 "con una copia nueva. Probablemente sea más seguro hacer esto, a menos que un "
 "intento de migración anterior haya fallado."
 
-#: Miradi/source/org/miradi/project/Project.java:188
-msgid "A file or folder with this name already exists:"
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:156
+msgid "A file or folder with that name already exists"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:47
@@ -992,6 +988,10 @@ msgstr ""
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:94
 msgid "A project or file by this name already exists: "
 msgstr "Ya existe un proyecto o archivo con este nombre:"
+
+#: Miradi/source/org/miradi/main/MainWindow.java:516
+msgid "A project with this name already exists."
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:30
 msgid "Abandoned"
@@ -2855,7 +2855,7 @@ msgstr ""
 msgid "Create"
 msgstr "Crear"
 
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:157
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:171
 msgid "Create Failed:"
 msgstr "Falló la creación"
 
@@ -4249,10 +4249,6 @@ msgstr ""
 msgid "IntermediateResult"
 msgstr "Resultado intermedio "
 
-#: Miradi/source/org/miradi/main/MainWindow.java:516
-msgid "Internal project file with this name exist, please try another name"
-msgstr ""
-
 #: Miradi/source/org/miradi/wizard/WizardTitlePanel.java:69
 msgid "Intro to View"
 msgstr "Introducción a Vista"
@@ -5119,7 +5115,7 @@ msgid ""
 "performance, <br>select Manual Row Height Mode."
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:110
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:111
 msgid ""
 "NOTE: Project filenames can contain letters, numbers, spaces, periods, "
 "dashes, and underlines."
@@ -5169,7 +5165,7 @@ msgstr ""
 msgid "NestedTarget"
 msgstr "Objeto relacionado "
 
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:93
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:94
 msgid "New Project Filename:"
 msgstr "Nombre de archivo del nuevo proyecto:"
 
@@ -8054,7 +8050,7 @@ msgstr "No se pudo iniciar el navegador web externo."
 msgid "Unable to process file: verify file format"
 msgstr "No se pudo procesar el archivo: verifique el formato del archivo."
 
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:139
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:140
 #: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:130
 msgid "Unable to process request: "
 msgstr "No se pudo procesar la solicitud:"
@@ -8552,7 +8548,7 @@ msgstr "[NO ESPECIFICADO]"
 msgid "[New Results Chain]"
 msgstr "[Nueva cadena de resultados]"
 
-#: Miradi/source/org/miradi/project/Project.java:964
+#: Miradi/source/org/miradi/project/Project.java:947
 msgid "[No Project]"
 msgstr "[Sin proyecto]"
 
@@ -32414,6 +32410,9 @@ msgid ""
 msgstr ""
 "Marina___Atlántico tropical occidental___Marina de la plataforma norte de "
 "Brasil___Brasil "
+
+#~ msgid " A project by this name already exists: "
+#~ msgstr "Ya existe un proyecto con este nombre:"
 
 #~ msgid "KEA Type|LandScape Context"
 #~ msgstr "Contexto del paísaje"
