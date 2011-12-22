@@ -21,7 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel.rebuilder;
 
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Vector;
 
 import org.miradi.diagram.ChainWalker;
@@ -31,7 +30,6 @@ import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.AbstractTarget;
-import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Desire;
 import org.miradi.objects.DiagramFactor;
@@ -50,7 +48,6 @@ import org.miradi.objects.SubTarget;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
-import org.miradi.utils.BaseObjectDateDescendingAndIdComparator;
 
 public class NormalTreeRebuilder extends AbstractTreeRebuilder
 {
@@ -286,13 +283,5 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 			return true;
 		
 		return false;
-	}
-	
-	private class MeasurementDateComparator implements Comparator<BaseObject>
-	{
-		public int compare(BaseObject baseObject1, BaseObject baseObject2)
-		{
-			return BaseObjectDateDescendingAndIdComparator.compare(baseObject1, baseObject2, Measurement.TAG_DATE);
-		}	
 	}
 }
