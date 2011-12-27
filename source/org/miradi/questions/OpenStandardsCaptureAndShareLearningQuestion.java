@@ -60,7 +60,7 @@ public class OpenStandardsCaptureAndShareLearningQuestion extends DynamicChoiceW
 
 	public static String getProcessStep5aLabel()
 	{
-		return "ProcessStep|5A. Document Learning";
+		return EAM.text("ProcessStep|5A. Document Learning");
 	}
 	
 	public static String getProcessStep5bLabel()
