@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-19 18:09-0600\n"
+"POT-Creation-Date: 2011-12-27 15:02-0600\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -67,10 +67,6 @@ msgstr ""
 #: Miradi/source/org/miradi/wizard/diagram/DiagramWizardLinkDirectThreatsToTargetsStep.java:51
 msgid " 2) Connect threat to relevant targets"
 msgstr "Аюул заналыг хамаарал бүхий хамгаалах объекттэй холбож өгөх."
-
-#: Miradi/source/org/miradi/project/Project.java:182
-msgid " A project by this name already exists: "
-msgstr "Ийм нэр бүхий төсөл хэдийнээ байгаа:"
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractZippedXmlImporter.java:45
 msgid " was empty"
@@ -599,7 +595,7 @@ msgstr ""
 "төсөл дээр, эсвэл <strong>жишээ татаж гаргах </strong>, доорхи төслийг "
 "сонгох:"
 
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:74
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:75
 msgid ""
 "<div class='WizardText'>To <strong>create a new project</strong>, enter the "
 "filename in the input field below, and press the <code "
@@ -1039,8 +1035,8 @@ msgstr ""
 "backup шинэ хуулбараар солигдоно. Өмнөх шилжилт амжилтгүй болсон бол үүнийг "
 "хийх нь найдвартай байх."
 
-#: Miradi/source/org/miradi/project/Project.java:188
-msgid "A file or folder with this name already exists:"
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:156
+msgid "A file or folder with that name already exists"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:47
@@ -1049,6 +1045,10 @@ msgstr ""
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:94
 msgid "A project or file by this name already exists: "
 msgstr "Ийм нэр бүхий төсөл эсвэл файл байна:"
+
+#: Miradi/source/org/miradi/main/MainWindow.java:516
+msgid "A project with this name already exists."
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:30
 msgid "Abandoned"
@@ -2902,7 +2902,7 @@ msgstr ""
 msgid "Create"
 msgstr "Үүсгэх"
 
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:157
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:171
 msgid "Create Failed:"
 msgstr "Амжилтгүй болсныг үүсгэх:"
 
@@ -4275,10 +4275,6 @@ msgstr ""
 msgid "IntermediateResult"
 msgstr "Завсрын үр дүн"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:516
-msgid "Internal project file with this name exist, please try another name"
-msgstr ""
-
 #: Miradi/source/org/miradi/wizard/WizardTitlePanel.java:69
 msgid "Intro to View"
 msgstr "Харагдацын Танилцуулга\" "
@@ -5122,7 +5118,7 @@ msgid ""
 "performance, <br>select Manual Row Height Mode."
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:110
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:111
 msgid ""
 "NOTE: Project filenames can contain letters, numbers, spaces, periods, "
 "dashes, and underlines."
@@ -5175,7 +5171,7 @@ msgstr ""
 msgid "NestedTarget"
 msgstr "Давхар хамгаалагдах объект"
 
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:93
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:94
 msgid "New Project Filename:"
 msgstr "Шинэ төслийн файлын нэр:"
 
@@ -8075,7 +8071,7 @@ msgstr "Unable to launch external web browser"
 msgid "Unable to process file: verify file format"
 msgstr "Файлыг боловсруулж чадахгүй байна: файлын форматыг шалгах"
 
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:139
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:140
 #: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:130
 msgid "Unable to process request: "
 msgstr "Хүсэлтийг боловсруулж чадахгүй байна:"
@@ -8587,7 +8583,7 @@ msgstr "[ТОДОРХОЙ ЗААГДААГҮЙ]"
 msgid "[New Results Chain]"
 msgstr "[Шинэ Үр Дүнгийн Гинжих Холбоос]"
 
-#: Miradi/source/org/miradi/project/Project.java:964
+#: Miradi/source/org/miradi/project/Project.java:947
 msgid "[No Project]"
 msgstr "Төсөл байхгүй]"
 
@@ -31616,6 +31612,9 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid " A project by this name already exists: "
+#~ msgstr "Ийм нэр бүхий төсөл хэдийнээ байгаа:"
 
 #~ msgid "KEA Type|LandScape Context"
 #~ msgstr "ЭЧХЗ-ийн Төрөл|Газар нутгийн байдалтай холбож үзэх"
