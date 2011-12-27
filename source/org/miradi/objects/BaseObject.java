@@ -659,6 +659,26 @@ abstract public class BaseObject
 		return defaultValue;
 	}
 	
+	public void setHtmlDataFromNonHtml(final String fieldTag, String nonHtmlDataValue) throws Exception
+	{
+		nonHtmlDataValue = XmlUtilities.getXmlEncoded(nonHtmlDataValue);
+		nonHtmlDataValue = nonHtmlDataValue.replaceAll("\n", "<br/>");
+		setData(fieldTag, nonHtmlDataValue);
+	}
+	
+	public String getDataAsNonHtml(String fieldTag)
+	{
+		String htmlDataValue = getData(fieldTag);
+		htmlDataValue = htmlDataValue.replaceAll("<br/>", "\n");
+		htmlDataValue = htmlDataValue.replaceAll("&lt;", "<");
+		htmlDataValue = htmlDataValue.replaceAll("&gt;", ">");
+		htmlDataValue = htmlDataValue.replaceAll("&quot;", "\"");
+		htmlDataValue = htmlDataValue.replaceAll("&#39;", "'");
+		htmlDataValue = htmlDataValue.replaceAll("&amp;", "&");
+		
+		return htmlDataValue;
+	}
+	
 	public void setData(String fieldTag, String dataValue) throws Exception
 	{
 		if(TAG_ID.equals(fieldTag))

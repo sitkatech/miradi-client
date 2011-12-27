@@ -33,6 +33,19 @@ public class TestBaseObject extends TestCaseWithProject
 		super(name);
 	}
 	
+	public void testSetHtmlDataFromNonHtml() throws Exception
+	{
+		ORef causeRef = getProject().createObject(ObjectType.CAUSE);
+		BaseObject cause = Cause.find(getProject(), causeRef);
+		String[] allPossibleValuesToConvertToHtml = new String[]{"\n", "&", "<", ">", "\\", "\""};
+		for (int index = 0; index < allPossibleValuesToConvertToHtml.length; ++index)
+		{
+			cause.setHtmlDataFromNonHtml(Cause.TAG_COMMENTS, allPossibleValuesToConvertToHtml[index]);
+			String data = cause.getDataAsNonHtml(Cause.TAG_COMMENTS);
+			assertEquals("data was not converted?", allPossibleValuesToConvertToHtml[index], data);
+		}
+	}
+	
 	public void testGetBaseObjectLabelsOnASingleLine() throws Exception
 	{
 		final String FIRST_STRING = "first";
