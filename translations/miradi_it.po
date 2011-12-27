@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-27 15:02-0600\n"
+"POT-Creation-Date: 2011-12-27 15:43-0600\n"
 "PO-Revision-Date: 2011-04-29 11:26+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -5679,6 +5679,10 @@ msgstr "4B. Analizza i  Risultati"
 #: Miradi/source/org/miradi/questions/OpenStandardsAnalyzeUseAndAdaptQuestion.java:68
 msgid "ProcessStep|4C. Adapt Project Plan"
 msgstr "4C. Adatta il piano del Progetto"
+
+#: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:63
+msgid "ProcessStep|5A. Document Learning"
+msgstr "5A. Documenta la lezione appresa"
 
 #: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:68
 msgid "ProcessStep|5B. Share Learning"
@@ -30906,9 +30910,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Proprietà di configurazione delle etichette della visualizzazione di "
 #~ "pianificazione"
-
-#~ msgid "ProcessStep|5A. Document Learning"
-#~ msgstr "5A. Documenta la lezione appresa"
 
 #~ msgid "Project Resource Work Units Table is not editbale."
 #~ msgstr ""

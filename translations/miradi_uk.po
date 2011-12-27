@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-27 15:02-0600\n"
+"POT-Creation-Date: 2011-12-27 15:43-0600\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -5597,6 +5597,10 @@ msgstr "ProcessStep|4B. Аналіз результатів"
 #: Miradi/source/org/miradi/questions/OpenStandardsAnalyzeUseAndAdaptQuestion.java:68
 msgid "ProcessStep|4C. Adapt Project Plan"
 msgstr "ProcessStep|4C. Допрацювати план проекту"
+
+#: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:63
+msgid "ProcessStep|5A. Document Learning"
+msgstr "ProcessStep|5A. Вивчення документів"
 
 #: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:68
 msgid "ProcessStep|5B. Share Learning"
@@ -34307,9 +34311,6 @@ msgstr ""
 #~ "data"
 #~ msgstr ""
 #~ "Розробити системи запису, зберігання, обробки і поновлення даних проекту"
-
-#~ msgid "ProcessStep|5A. Document Learning"
-#~ msgstr "ProcessStep|5A. Вивчення документів"
 
 #~ msgid ""
 #~ "Conduct evaluations and/or audits at appropriate times during the project "

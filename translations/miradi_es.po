@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-22 15:35-0600\n"
+"POT-Creation-Date: 2011-12-27 15:43-0600\n"
 "PO-Revision-Date: 2011-03-28 15:06-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -5592,6 +5592,10 @@ msgstr "4B. Analizar resultados"
 #: Miradi/source/org/miradi/questions/OpenStandardsAnalyzeUseAndAdaptQuestion.java:68
 msgid "ProcessStep|4C. Adapt Project Plan"
 msgstr "4C. Adaptar plan del proyecto"
+
+#: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:63
+msgid "ProcessStep|5A. Document Learning"
+msgstr "5A. Documentar el aprendizaje"
 
 #: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:68
 msgid "ProcessStep|5B. Share Learning"
@@ -33051,9 +33055,6 @@ msgstr ""
 #~ msgid "Planning View Configuration Label Properties"
 #~ msgstr ""
 #~ "Propiedades de la etiqueta de configuración de la vista Planificación"
-
-#~ msgid "ProcessStep|5A. Document Learning"
-#~ msgstr "5A. Documentar el aprendizaje"
 
 #~ msgid "Project Totals"
 #~ msgstr "Totales del proyecto"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-27 15:02-0600\n"
+"POT-Creation-Date: 2011-12-27 15:43-0600\n"
 "PO-Revision-Date: 2011-04-05 11:46+0100\n"
 "Last-Translator: Emanuela Leonardi <e.leonardi@gmail.com>\n"
 "Language-Team: none\n"
@@ -5692,6 +5692,10 @@ msgstr "4B. Analyser les résultats"
 #: Miradi/source/org/miradi/questions/OpenStandardsAnalyzeUseAndAdaptQuestion.java:68
 msgid "ProcessStep|4C. Adapt Project Plan"
 msgstr "4C. Adapter le plan du projet"
+
+#: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:63
+msgid "ProcessStep|5A. Document Learning"
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:68
 msgid "ProcessStep|5B. Share Learning"

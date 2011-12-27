@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-27 15:02-0600\n"
+"POT-Creation-Date: 2011-12-27 15:43-0600\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -5597,6 +5597,10 @@ msgstr "Үйл явцын үе шат|4B. Үр дүнд дүн шинжилгэ�
 #: Miradi/source/org/miradi/questions/OpenStandardsAnalyzeUseAndAdaptQuestion.java:68
 msgid "ProcessStep|4C. Adapt Project Plan"
 msgstr "Үйл явцын үе шат|4C. Төслийн төлөвлөгөөг тохируулах"
+
+#: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:63
+msgid "ProcessStep|5A. Document Learning"
+msgstr "Үйл явцын үе шат|5A. Сургамжыг баримтжуулах"
 
 #: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:68
 msgid "ProcessStep|5B. Share Learning"
@@ -32112,9 +32116,6 @@ msgstr ""
 
 #~ msgid "Paste As..."
 #~ msgstr "...-аас наах"
-
-#~ msgid "ProcessStep|5A. Document Learning"
-#~ msgstr "Үйл явцын үе шат|5A. Сургамжыг баримтжуулах"
 
 #~ msgid "Project Resource Work Units Table is not editbale."
 #~ msgstr "Төслийн Нөөцийн Ажлын Нэгжийн Хүснэгтийг засварлах боломжгүй байна."
