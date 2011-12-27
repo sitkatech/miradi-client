@@ -744,8 +744,10 @@
 		<arg value="--message"/>
 		<arg value="Updated PO files: ${version.timestamp}"/>
 	</exec>
-	<echo message="hg push as user ${hguser} with password ${hgpassword}"/>
 	<exec executable="hg" failonerror="true" dir="${miradi.root.dir}">
+		<arg value="auth.google.prefix=https://miradi-client.googlecode.com"/>
+		<arg value="auth.google.username=${hguser}"/>
+		<arg value="auth.google.password=${hgpassword}"/>
 		<arg value="push"/>
 		<arg value="-r"/>
 		<arg value="."/>
