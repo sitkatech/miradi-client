@@ -29864,9 +29864,6 @@ msgid ""
 msgstr ""
 "Marine___Western Tropical Atlantic___Northeast Brazil Shelf Marine___Brazil"
 
-#~ msgid " A project by this name already exists: "
-#~ msgstr "Ein Projekt mit dieser Bezeichnung existiert bereits:"
-
 #~ msgid "KEA Type|LandScape Context"
 #~ msgstr "Landschaftskontext"
 

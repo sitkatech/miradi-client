@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-22 15:35-0600\n"
+"POT-Creation-Date: 2011-12-19 18:09-0600\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -81,6 +81,10 @@ msgstr ""
 #: Miradi/source/org/miradi/wizard/diagram/DiagramWizardLinkDirectThreatsToTargetsStep.java:51
 msgid " 2) Connect threat to relevant targets"
 msgstr "2) Hubungkan ancaman dengan target relevan "
+
+#: Miradi/source/org/miradi/project/Project.java:182
+msgid " A project by this name already exists: "
+msgstr "Sudah ada proyek lain yang memakai nama ini: "
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractZippedXmlImporter.java:45
 msgid " was empty"
@@ -606,7 +610,7 @@ msgstr ""
 "proyek yang ada, atau <strong>menjelajah suatu contoh</strong>, pilih satu "
 "proyek di bawah ini: "
 
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:75
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:74
 msgid ""
 "<div class='WizardText'>To <strong>create a new project</strong>, enter the "
 "filename in the input field below, and press the <code "
@@ -971,8 +975,8 @@ msgstr ""
 "mengganti cadangan yang ada dengan salinan baru. Hal ini mungkin aman untuk "
 "dilakukan, kecuali bila upaya pemindahan sebelumnya gagal. "
 
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:156
-msgid "A file or folder with that name already exists"
+#: Miradi/source/org/miradi/project/Project.java:188
+msgid "A file or folder with this name already exists:"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:47
@@ -981,10 +985,6 @@ msgstr ""
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:94
 msgid "A project or file by this name already exists: "
 msgstr "Sudah ada proyek atau berkas lain yang memakai nama ini: "
-
-#: Miradi/source/org/miradi/main/MainWindow.java:516
-msgid "A project with this name already exists."
-msgstr ""
 
 #: Miradi/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:30
 msgid "Abandoned"
@@ -2841,7 +2841,7 @@ msgstr ""
 msgid "Create"
 msgstr "Buat "
 
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:171
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:157
 msgid "Create Failed:"
 msgstr "Pembuatan gagal: "
 
@@ -4229,6 +4229,10 @@ msgstr ""
 msgid "IntermediateResult"
 msgstr "Hasil Antara"
 
+#: Miradi/source/org/miradi/main/MainWindow.java:516
+msgid "Internal project file with this name exist, please try another name"
+msgstr ""
+
 #: Miradi/source/org/miradi/wizard/WizardTitlePanel.java:69
 msgid "Intro to View"
 msgstr "Pendahuluan mengenai Tampilan "
@@ -5081,7 +5085,7 @@ msgid ""
 "performance, <br>select Manual Row Height Mode."
 msgstr ""
 
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:111
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:110
 msgid ""
 "NOTE: Project filenames can contain letters, numbers, spaces, periods, "
 "dashes, and underlines."
@@ -5131,7 +5135,7 @@ msgstr ""
 msgid "NestedTarget"
 msgstr "Target Bersarang"
 
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:94
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:93
 msgid "New Project Filename:"
 msgstr "Nama Berkas Proyek Baru: "
 
@@ -8007,7 +8011,7 @@ msgstr "Tidak bisa meluncurkan perambah web eksternal "
 msgid "Unable to process file: verify file format"
 msgstr "Tidak bisa mengolah berkas: verifikasi format berkas "
 
-#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:140
+#: Miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:139
 #: Miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:130
 msgid "Unable to process request: "
 msgstr "Tidak bisa memproses permintaan: "
@@ -8510,7 +8514,7 @@ msgstr "[TIDAK TERSPESIFIKASI] "
 msgid "[New Results Chain]"
 msgstr "[Rangkaian Hasil Baru] "
 
-#: Miradi/source/org/miradi/project/Project.java:947
+#: Miradi/source/org/miradi/project/Project.java:964
 msgid "[No Project]"
 msgstr "[Tidak Ada Proyek] "
 
@@ -32147,9 +32151,6 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
-
-#~ msgid " A project by this name already exists: "
-#~ msgstr "Sudah ada proyek lain yang memakai nama ini: "
 
 #~ msgid "KEA Type|LandScape Context"
 #~ msgstr "Konteks Bentang Alam"
