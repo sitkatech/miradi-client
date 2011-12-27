@@ -744,6 +744,7 @@
 		<arg value="--message"/>
 		<arg value="Updated PO files: ${version.timestamp}"/>
 	</exec>
+	<echo message="hg push as user ${hguser} with password ${hgpassword}"/>
 	<exec executable="hg" failonerror="true" dir="${miradi.root.dir}">
 		<arg value="push"/>
 		<arg value="-r"/>
