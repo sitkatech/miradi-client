@@ -35,7 +35,6 @@ import java.util.Enumeration;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
-
 import org.martus.util.DirectoryUtils;
 import org.martus.util.UnicodeStringWriter;
 import org.martus.util.UnicodeWriter;
@@ -329,6 +328,7 @@ public class MpzToMpfConverter
 			return;
 		
 		String contents = readIntoString(quarantineEntry);
+		contents = BaseObject.convertToHtmlText(contents);
 		project.appendToQuarantineFile(contents);
 	}
 
@@ -352,7 +352,7 @@ public class MpzToMpfConverter
 		EnhancedJsonObject json = readJson(entry);
 		project.createObject(ref);
 		BaseObject object = BaseObject.find(project, ref);
-		object.loadFromJson(json);
+		object.loadFromJson2(json);
 	}
 
 	private String extractProjectPrefix()
@@ -407,7 +407,7 @@ public class MpzToMpfConverter
 		}
 		
 		String exceptionLog = safeConvertUtf8BytesToString(exceptionLogBytes);
-		
+		exceptionLog = BaseObject.convertToHtmlText(exceptionLog);
 		project.appendToExceptionLog(exceptionLog);
 	}
 

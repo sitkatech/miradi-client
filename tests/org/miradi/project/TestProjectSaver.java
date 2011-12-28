@@ -33,6 +33,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.ThreatRatingBundleSorter;
 import org.miradi.objectpools.EAMObjectPool;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.Target;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -50,13 +51,22 @@ public class TestProjectSaver extends TestCaseWithProject
 
 		getProject().populateEverything();
 		getProject().populateSimpleThreatRatingValues();
-		getProject().appendToQuarantineFile("Stuff in quarantine\nMore <<stuff>>");
-		getProject().appendToExceptionLog("Some exceptions & more stuff\n\n");
+		getProject().appendToQuarantineFile("Stuff in quarantine<br>More <<stuff>>");
+		getProject().appendToExceptionLog("Some exceptions & more stuff<br><br>");
 	}
 	
 	public void testBasics() throws Exception
 	{
 		saveProjectToString();
+	}
+	
+	public void testLoadWithNewLines() throws Exception
+	{
+		Target target = getProject().createTarget();
+		getProject().fillObjectUsingCommand(target, Target.TAG_COMMENTS, "has comments with <br> new line");
+		String contents = saveProjectToString();
+		UnicodeStringReader reader = new UnicodeStringReader(contents);
+		ProjectLoader.loadProject(reader, getProject());
 	}
 	
 	public void testLoadTooOld() throws Exception
@@ -90,7 +100,6 @@ public class TestProjectSaver extends TestCaseWithProject
 	{
 		String contents = saveProjectToString();
 		assertContains("<br/>", contents);
-		assertContains("&quot;", contents);
 
 		Project project2 = ProjectForTesting.createProjectWithDefaultObjects(getName());
 		project2.clear();

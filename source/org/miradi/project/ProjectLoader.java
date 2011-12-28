@@ -305,12 +305,6 @@ public class ProjectLoader
 
 	private String getXmlDecoded(String value)
 	{
-		value = value.replaceAll("<br/>", "\n");
-		value = value.replaceAll("&lt;", "<");
-		value = value.replaceAll("&gt;", ">");
-		value = value.replaceAll("&quot;", "\"");
-		value = value.replaceAll("&#39;", "'");
-		value = value.replaceAll("&amp;", "&");
 		return value;
 	}
 

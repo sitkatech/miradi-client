@@ -26,7 +26,6 @@ import java.util.Date;
 
 import org.martus.util.UnicodeStringWriter;
 import org.martus.util.UnicodeWriter;
-import org.martus.util.xml.XmlUtilities;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
@@ -45,10 +44,9 @@ abstract public class AbstractMiradiProjectSaver
 	
 	protected static String xmlNewLineEncode(String data)
 	{
-		data = XmlUtilities.getXmlEncoded(data);
-		data = data.replaceAll("\\n", "<br/>");
-		data = data.replaceAll("\\r", "<br/>");
-		
+		if (data.contains("\n"))
+			throw new RuntimeException("Non html new lines found in data");
+
 		return data;
 	}
 

@@ -117,7 +117,7 @@ public class TestMpzToMpfConverter extends TestCaseWithProject
 			
 			assertContains("non-realistic example", project2.getQuarantineFileContents());
 			
-			final int expectedSizeAfterTruncationOfSampleException = 4731;
+			final int expectedSizeAfterTruncationOfSampleException = 4983;
 			final String exceptionLog = project2.getExceptionLog();
 			assertTrue("Exception log did not get truncated?", exceptionLog.length() < expectedSizeAfterTruncationOfSampleException);
 		}
