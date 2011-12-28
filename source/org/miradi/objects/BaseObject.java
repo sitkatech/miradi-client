@@ -705,7 +705,7 @@ abstract public class BaseObject
 		return  convertToNonHtml(getData(fieldTag));
 	}
 
-	public String convertToNonHtml(String htmlDataValue)
+	public static String convertToNonHtml(String htmlDataValue)
 	{
 		htmlDataValue = htmlDataValue.replaceAll("<br/>", "\n");
 		htmlDataValue = htmlDataValue.replaceAll("<br>", "\n");
