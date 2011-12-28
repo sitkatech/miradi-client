@@ -25,6 +25,7 @@ import java.io.InputStream;
 import java.net.URL;
 
 import org.martus.util.UnicodeReader;
+import org.miradi.objects.BaseObject;
 
 public class ResourcesHandler
 {
@@ -97,6 +98,7 @@ public class ResourcesHandler
 		try
 		{
 			String result = reader.readAll();
+			result = BaseObject.convertToHtmlText(result);
 			return result;
 		}
 		finally

@@ -312,7 +312,33 @@ abstract public class BaseObject
 	{
 		return ((RelevancyOverrideSetData)getField(tag)).getRawRelevancyOverrideSet();
 	}
+	
+	public void loadFromJson2(EnhancedJsonObject json) throws Exception
+	{
+		Set<String> tags = getTags();
+		for (String tag : tags)
+		{
+			if (!getField(tag).isPseudoField())
+			{
+				String value = json.optString(tag);
+				try
+				{
+					if (getField(tag).isUserText())
+						setHtmlDataFromNonHtml(tag, value);
+					else
+						setData(tag, value);
+				}
+				catch(InvalidNumberException e)
+				{
+					String newValue = value.replaceAll("[^0-9\\-\\.,]", "");
+					EAM.logWarning("Fixing bad numeric data in " + tag + " from " + value + " to " + newValue);
+					setData(tag, newValue);
+				}
+			}
+		}
+	}
 
+	//FIXME This method will be removed during json legacy code cleanup
 	public void loadFromJson(EnhancedJsonObject json) throws Exception
 	{
 		Set<String> tags = getTags();
@@ -661,15 +687,28 @@ abstract public class BaseObject
 	
 	public void setHtmlDataFromNonHtml(final String fieldTag, String nonHtmlDataValue) throws Exception
 	{
-		nonHtmlDataValue = XmlUtilities.getXmlEncoded(nonHtmlDataValue);
-		nonHtmlDataValue = nonHtmlDataValue.replaceAll("\n", "<br/>");
+		nonHtmlDataValue = convertToHtmlText(nonHtmlDataValue);
 		setData(fieldTag, nonHtmlDataValue);
+	}
+
+	public static String convertToHtmlText(String nonHtmlText)
+	{
+		nonHtmlText = XmlUtilities.getXmlEncoded(nonHtmlText);
+		nonHtmlText = nonHtmlText.replaceAll("\n", "<br/>");
+		nonHtmlText = nonHtmlText.replaceAll("\r", "<br/>");
+		
+		return nonHtmlText;
 	}
 	
 	public String getDataAsNonHtml(String fieldTag)
 	{
-		String htmlDataValue = getData(fieldTag);
+		return  convertToNonHtml(getData(fieldTag));
+	}
+
+	public String convertToNonHtml(String htmlDataValue)
+	{
 		htmlDataValue = htmlDataValue.replaceAll("<br/>", "\n");
+		htmlDataValue = htmlDataValue.replaceAll("<br>", "\n");
 		htmlDataValue = htmlDataValue.replaceAll("&lt;", "<");
 		htmlDataValue = htmlDataValue.replaceAll("&gt;", ">");
 		htmlDataValue = htmlDataValue.replaceAll("&quot;", "\"");

@@ -25,6 +25,7 @@ import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.utils.EnhancedJsonObject;
 
 public class TestBaseObject extends TestCaseWithProject
 {
@@ -44,6 +45,17 @@ public class TestBaseObject extends TestCaseWithProject
 			String data = cause.getDataAsNonHtml(Cause.TAG_COMMENTS);
 			assertEquals("data was not converted?", allPossibleValuesToConvertToHtml[index], data);
 		}
+	}
+	
+	public void testLoadFromJson() throws Exception
+	{
+		final String sampleCommentJson = "{\"" + Cause.TAG_COMMENTS + "\":\"A sample comment with \\n a new line.\"}";
+		ORef causeRef = getProject().createObject(ObjectType.CAUSE);
+		BaseObject cause = Cause.find(getProject(), causeRef);
+		cause.loadFromJson2(new EnhancedJsonObject(sampleCommentJson));
+		String comments = cause.getData(Cause.TAG_COMMENTS);
+		assertTrue("does not contain <br>?", comments.contains("<br/>"));
+		assertFalse("should not contain non html new line?", comments.contains("\n"));
 	}
 	
 	public void testGetBaseObjectLabelsOnASingleLine() throws Exception
