@@ -31,6 +31,7 @@ import org.miradi.actions.Actions;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.objects.BaseObject;
 
 import com.inet.jortho.SpellChecker;
 
@@ -65,12 +66,15 @@ public class ObjectTextInputField extends ObjectDataInputField
 	@Override
 	public String getText()
 	{
-		return field.getText();
+		String text = field.getText();
+		text = BaseObject.convertToHtmlText(text);
+		return text;
 	}
 
 	@Override
 	public void setText(String newValue)
 	{
+		newValue = BaseObject.convertToNonHtml(newValue);
 		setTextWithoutScrollingToMakeFieldVisible(newValue);
 		clearNeedsSave();
 	}
