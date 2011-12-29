@@ -26,6 +26,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.utils.HtmlUtilities;
 
 public class TestBaseObject extends TestCaseWithProject
 {
@@ -54,7 +55,7 @@ public class TestBaseObject extends TestCaseWithProject
 		BaseObject cause = Cause.find(getProject(), causeRef);
 		cause.loadFromJson2(new EnhancedJsonObject(sampleCommentJson));
 		String comments = cause.getData(Cause.TAG_COMMENTS);
-		assertTrue("does not contain <br>?", comments.contains("<br/>"));
+		assertTrue("does not contain <br>?", comments.contains(HtmlUtilities.BR_TAG));
 		assertFalse("should not contain non html new line?", comments.contains("\n"));
 	}
 	

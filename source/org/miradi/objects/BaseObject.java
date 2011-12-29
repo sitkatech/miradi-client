@@ -92,6 +92,7 @@ import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.InvalidNumberException;
 import org.miradi.utils.OptionalDouble;
 import org.miradi.utils.PointList;
@@ -694,8 +695,8 @@ abstract public class BaseObject
 	public static String convertToHtmlText(String nonHtmlText)
 	{
 		nonHtmlText = XmlUtilities.getXmlEncoded(nonHtmlText);
-		nonHtmlText = nonHtmlText.replaceAll("\n", "<br/>");
-		nonHtmlText = nonHtmlText.replaceAll("\r", "<br/>");
+		nonHtmlText = nonHtmlText.replaceAll("\n", HtmlUtilities.BR_TAG);
+		nonHtmlText = nonHtmlText.replaceAll("\r", HtmlUtilities.BR_TAG);
 		
 		return nonHtmlText;
 	}
@@ -707,7 +708,7 @@ abstract public class BaseObject
 
 	public static String convertToNonHtml(String htmlDataValue)
 	{
-		htmlDataValue = htmlDataValue.replaceAll("<br/>", "\n");
+		htmlDataValue = htmlDataValue.replaceAll(HtmlUtilities.BR_TAG, "\n");
 		htmlDataValue = htmlDataValue.replaceAll("<br>", "\n");
 		htmlDataValue = htmlDataValue.replaceAll("&lt;", "<");
 		htmlDataValue = htmlDataValue.replaceAll("&gt;", ">");

@@ -36,6 +36,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Target;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.utils.HtmlUtilities;
 
 public class TestProjectSaver extends TestCaseWithProject
 {
@@ -99,7 +100,7 @@ public class TestProjectSaver extends TestCaseWithProject
 	public void testSaveAndLoad() throws Exception
 	{
 		String contents = saveProjectToString();
-		assertContains("<br/>", contents);
+		assertContains(HtmlUtilities.BR_TAG, contents);
 
 		Project project2 = ProjectForTesting.createProjectWithDefaultObjects(getName());
 		project2.clear();

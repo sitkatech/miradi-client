@@ -32,4 +32,6 @@ public class HtmlUtilities
 		String formattedFactorName = formatted.replace("\n", "<br>");
 		return formattedFactorName;
 	}
+	
+	public static final String BR_TAG = "<br/>";
 }

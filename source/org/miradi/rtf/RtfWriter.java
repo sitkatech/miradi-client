@@ -32,6 +32,7 @@ import org.martus.util.UnicodeWriter;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.utils.BufferedImageFactory;
 import org.miradi.utils.ColorManager;
+import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.TableExporter;
 import org.miradi.views.umbrella.SaveImageJPEGDoer;
 
@@ -292,9 +293,9 @@ public class RtfWriter
 		String encodedString = stringToEncode.replaceAll("\\\\", "\\\\\\\\");
 		encodedString = encodedString.replaceAll("\\}", "\\\\}");
 		encodedString = encodedString.replaceAll("\\{", "\\\\{");
-		encodedString = encodedString.replaceAll("<br/>", "\\\\line ");
+		encodedString = encodedString.replaceAll(HtmlUtilities.BR_TAG, "\\\\line ");
 		
-		String NEW_LINE_TO_SEPERATE_FROM_NEXT_CHAR = "\\~<br/>";
+		String NEW_LINE_TO_SEPERATE_FROM_NEXT_CHAR = "\\~" + HtmlUtilities.BR_TAG;
 		StringBuffer buffer = new StringBuffer(encodedString);
 		for(int i = 0; i < buffer.length(); ++i)
 		{
