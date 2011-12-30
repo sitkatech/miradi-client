@@ -709,7 +709,7 @@ abstract public class BaseObject
 	public static String convertToNonHtml(String htmlDataValue)
 	{
 		htmlDataValue = htmlDataValue.replaceAll(HtmlUtilities.BR_TAG, "\n");
-		htmlDataValue = htmlDataValue.replaceAll("<br>", "\n");
+		htmlDataValue = htmlDataValue.replaceAll(HtmlUtilities.BR_TAG_UNCLOSED, "\n");
 		htmlDataValue = htmlDataValue.replaceAll("&lt;", "<");
 		htmlDataValue = htmlDataValue.replaceAll("&gt;", ">");
 		htmlDataValue = htmlDataValue.replaceAll("&quot;", "\"");

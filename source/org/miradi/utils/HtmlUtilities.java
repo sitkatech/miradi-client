@@ -34,4 +34,5 @@ public class HtmlUtilities
 	}
 	
 	public static final String BR_TAG = "<br/>";
+	public static final String BR_TAG_UNCLOSED = "<br>";
 }
