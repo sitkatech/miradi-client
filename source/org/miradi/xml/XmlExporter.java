@@ -35,6 +35,7 @@ import org.miradi.objects.WcsProjectData;
 import org.miradi.objects.WwfProjectData;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.HtmlUtilities;
 
 public abstract class XmlExporter
 {
@@ -129,7 +130,10 @@ public abstract class XmlExporter
 	
 	public void writeXmlEncodedData(UnicodeWriter out, String data) throws IOException
 	{
-		out.write(XmlUtilities.getXmlEncoded(data));
+		data = data.replaceAll(HtmlUtilities.BR_TAG, "\n");
+		data = data.replaceAll(HtmlUtilities.BR_TAG_UNCLOSED, "\n");
+		data = XmlUtilities.getXmlEncoded(data);
+		out.write(data);
 	}
 	
 	protected void writeOptionalElement(UnicodeWriter out, String elementName, BaseObject object, String fieldTag) throws Exception
