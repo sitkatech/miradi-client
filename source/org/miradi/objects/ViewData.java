@@ -33,6 +33,7 @@ import org.miradi.questions.ActionTreeConfigurationQuestion;
 import org.miradi.questions.DiagramModeQuestion;
 import org.miradi.questions.InternalQuestionWithoutValues;
 import org.miradi.questions.MonitoringTreeConfigurationQuestion;
+import org.miradi.questions.PlanningViewSingleLevelQuestion;
 import org.miradi.questions.WorkPlanCategoryTypesQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
@@ -180,7 +181,7 @@ public class ViewData extends BaseObject
 		createRefListField(TAG_CHAIN_MODE_FACTOR_REFS);
 		createCodeListField(TAG_DIAGRAM_HIDDEN_TYPES, getQuestion(InternalQuestionWithoutValues.class));
 		createCodeListField(TAG_BUDGET_ROLLUP_REPORT_TYPES, getQuestion(WorkPlanCategoryTypesQuestion.class));
-		createCodeField(TAG_PLANNING_SINGLE_LEVEL_CHOICE);
+		createChoiceField(TAG_PLANNING_SINGLE_LEVEL_CHOICE, new PlanningViewSingleLevelQuestion(getProject()));
 		createRefField(TAG_TREE_CONFIGURATION_REF);
 		createChoiceField(TAG_ACTION_TREE_CONFIGURATION_CHOICE, getQuestion(ActionTreeConfigurationQuestion.class));
 		createChoiceField(TAG_MONITORING_TREE_CONFIGURATION_CHOICE, getQuestion(MonitoringTreeConfigurationQuestion.class));
