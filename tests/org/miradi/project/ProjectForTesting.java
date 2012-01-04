@@ -511,7 +511,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		ORef indicatorRef = indicatorRefs.getRefForType(Indicator.getObjectType());
 		Indicator indicator = Indicator.find(this, indicatorRef);
 		
-		final String STRING_TO_TRIM = "<br>\t  \t";
+		final String STRING_TO_TRIM = "<br/>\t  \t";
 		fillObjectUsingCommand(indicator, Indicator.TAG_RATING_SOURCE, STRING_TO_TRIM + RatingSourceQuestion.ONSITE_RESEARCH_CODE + STRING_TO_TRIM);
 		
 		return indicator;
