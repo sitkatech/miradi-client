@@ -176,7 +176,7 @@ public class ViewData extends BaseObject
 	{
 		super.clear();
 
-		createCodeField(TAG_CURRENT_MODE);
+		createChoiceField(TAG_CURRENT_MODE, DiagramModeQuestion.class);
 		createRefListField(TAG_CHAIN_MODE_FACTOR_REFS);
 		createCodeListField(TAG_DIAGRAM_HIDDEN_TYPES, getQuestion(InternalQuestionWithoutValues.class));
 		createCodeListField(TAG_BUDGET_ROLLUP_REPORT_TYPES, getQuestion(WorkPlanCategoryTypesQuestion.class));
