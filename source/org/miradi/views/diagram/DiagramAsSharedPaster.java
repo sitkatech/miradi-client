@@ -47,6 +47,7 @@ import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.objects.ViewData;
+import org.miradi.questions.DiagramModeQuestion;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -148,7 +149,7 @@ public class DiagramAsSharedPaster extends DiagramPaster
 		ORefList pastedFactorRefs = getPastedFactorRefs();
 		
 		String mode = getProject().getDiagramViewData().getData(ViewData.TAG_CURRENT_MODE);
-		if(mode.equals(ViewData.MODE_STRATEGY_BRAINSTORM))
+		if(mode.equals(DiagramModeQuestion.MODE_STRATEGY_BRAINSTORM))
 			ensureVisible(pastedFactorRefs);
 	}
 	

@@ -28,7 +28,7 @@ import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Objective;
 import org.miradi.objects.Strategy;
-import org.miradi.objects.ViewData;
+import org.miradi.questions.DiagramModeQuestion;
 import org.miradi.utils.CodeList;
 
 public class LayerManager
@@ -38,7 +38,7 @@ public class LayerManager
 		diagramObject = diagramObjectToUse;
 	
 		hiddenORefs = new ORefList();
-		mode = ViewData.MODE_DEFAULT;
+		mode = DiagramModeQuestion.MODE_DEFAULT;
 	}
 	
 	public boolean isVisible(DiagramObject diagramObjectToUse, FactorCell node) throws Exception
@@ -52,7 +52,7 @@ public class LayerManager
 			if (isResultsChain(diagramObjectToUse))
 				return false;
 
-			if(mode.equals(ViewData.MODE_STRATEGY_BRAINSTORM))
+			if(mode.equals(DiagramModeQuestion.MODE_STRATEGY_BRAINSTORM))
 				return areDraftsVisible(node);
 			
 			return false;
