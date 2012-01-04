@@ -323,7 +323,7 @@ public class Strategy extends Factor
 	void clear()
 	{
 		super.clear();
-		createCodeField(TAG_STATUS);
+		createChoiceField(TAG_STATUS, StrategyStatusQuestion.class);
 		createIdListField(TAG_ACTIVITY_IDS, Task.getObjectType());
 	
 		createChoiceField(TAG_TAXONOMY_CODE, getQuestion(StrategyTaxonomyQuestion.class));
