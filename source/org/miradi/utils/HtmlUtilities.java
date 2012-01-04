@@ -33,6 +33,13 @@ public class HtmlUtilities
 		return formattedFactorName;
 	}
 	
+	public static String removeNonHtmlNewLines(String htmlText)
+	{
+		htmlText = htmlText.replaceAll("\n", "");
+		
+		return htmlText;
+	}
+	
 	public static final String BR_TAG = "<br/>";
 	public static final String BR_TAG_UNCLOSED = "<br>";
 }
