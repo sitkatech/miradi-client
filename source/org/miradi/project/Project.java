@@ -125,6 +125,7 @@ import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.utils.Translation;
 import org.miradi.views.diagram.DiagramClipboard;
@@ -773,7 +774,7 @@ public class Project
 		if (diagramFactorRefs.size() != 0)
 			return;
 		
-		final String diagramInitialHelpTextFileName = "DiagramInitialHelpText.txt";
+		final String diagramInitialHelpTextFileName = "DiagramInitialHelpText.html";
 		String helpText = ResourcesHandler.loadResourceFile(diagramInitialHelpTextFileName);
 		int labelLineCount = DiagramGroupBoxCell.getLabelLineCount(helpText);
 		final int NUMBER_OF_PIXELS_PER_LINE = 20;
@@ -789,7 +790,9 @@ public class Project
 		final int X_LOCATION = 105;
 		final int Y_LOCATION = 105;
 		setObjectData(diagramFactorRef, DiagramFactor.TAG_LOCATION, EnhancedJsonObject.convertFromPoint(new Point(X_LOCATION, Y_LOCATION)));
-		setObjectData(textBoxRef, TextBox.TAG_LABEL, Translation.getHtmlContent(diagramInitialHelpTextFileName));
+		String htmlContent = Translation.getHtmlContent(diagramInitialHelpTextFileName);
+		htmlContent = HtmlUtilities.removeNonHtmlNewLines(htmlContent);
+		setObjectData(textBoxRef, TextBox.TAG_LABEL, htmlContent);
 		
 		IdList diagramFactorIdList = new IdList(DiagramFactor.getObjectType());
 		diagramFactorIdList.add(diagramFactorRef.getObjectId());
