@@ -26,6 +26,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.ViewData;
+import org.miradi.questions.DiagramModeQuestion;
 import org.miradi.questions.StrategyStatusQuestion;
 
 public class InsertDraftStrategyDoer extends InsertFactorDoer
@@ -41,7 +42,7 @@ public class InsertDraftStrategyDoer extends InsertFactorDoer
 			ViewData viewData = getProject().getCurrentViewData();
 			String currentViewMode = viewData.getData(ViewData.TAG_CURRENT_MODE);
 		
-			if(ViewData.MODE_STRATEGY_BRAINSTORM.equals(currentViewMode))
+			if(DiagramModeQuestion.MODE_STRATEGY_BRAINSTORM.equals(currentViewMode))
 				return true;
 		}
 		catch (Exception e)

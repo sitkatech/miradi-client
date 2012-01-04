@@ -117,6 +117,7 @@ import org.miradi.project.threatrating.StressBasedThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingFramework;
 import org.miradi.questions.BudgetTimePeriodQuestion;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.DiagramModeQuestion;
 import org.miradi.questions.FontFamiliyQuestion;
 import org.miradi.questions.FontSizeQuestion;
 import org.miradi.questions.StaticQuestionManager;
@@ -433,7 +434,7 @@ public class Project
 		try
 		{
 			String mode = getCurrentViewData().getData(ViewData.TAG_CURRENT_MODE);
-			return (mode.equals(ViewData.MODE_STRATEGY_BRAINSTORM));
+			return (mode.equals(DiagramModeQuestion.MODE_STRATEGY_BRAINSTORM));
 		}
 		catch (Exception e)
 		{

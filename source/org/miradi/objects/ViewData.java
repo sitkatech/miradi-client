@@ -30,6 +30,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.ActionTreeConfigurationQuestion;
+import org.miradi.questions.DiagramModeQuestion;
 import org.miradi.questions.InternalQuestionWithoutValues;
 import org.miradi.questions.MonitoringTreeConfigurationQuestion;
 import org.miradi.questions.WorkPlanCategoryTypesQuestion;
@@ -52,7 +53,7 @@ public class ViewData extends BaseObject
 
 	public Command[] buildCommandsToAddNode(ORef oRefToAdd) throws ParseException
 	{
-		if(getCurrentMode().equals(MODE_DEFAULT))
+		if(getCurrentMode().equals(DiagramModeQuestion.MODE_DEFAULT))
 			return new Command[0];
 		
 		CommandSetObjectData cmd = CommandSetObjectData.createAppendORefCommand(this, TAG_CHAIN_MODE_FACTOR_REFS, oRefToAdd);
@@ -61,7 +62,7 @@ public class ViewData extends BaseObject
 
 	public Command[] buildCommandsToRemoveNode(ORef oRefToRemove) throws ParseException
 	{
-		if(getCurrentMode().equals(MODE_DEFAULT))
+		if(getCurrentMode().equals(DiagramModeQuestion.MODE_DEFAULT))
 			return new Command[0];
 		
 		ORefList currentORefs = new ORefList(getData(TAG_CHAIN_MODE_FACTOR_REFS));
@@ -208,8 +209,5 @@ public class ViewData extends BaseObject
 	public static final String TAG_ACTION_TREE_CONFIGURATION_CHOICE = "ActionTreeConfigurationChoice";
 	public static final String TAG_MONITORING_TREE_CONFIGURATION_CHOICE = "MonitoringTreeConfigurationChoice";
 	
-	public static final String MODE_DEFAULT = "";
-	public static final String MODE_STRATEGY_BRAINSTORM = "StrategyBrainstorm";
-
 	public static final String OBJECT_NAME = "ViewData";
 }

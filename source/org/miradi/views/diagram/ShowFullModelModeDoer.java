@@ -34,6 +34,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
+import org.miradi.questions.DiagramModeQuestion;
 import org.miradi.utils.CommandVector;
 import org.miradi.views.ViewDoer;
 
@@ -48,7 +49,7 @@ public class ShowFullModelModeDoer extends ViewDoer
 				return false;
 			ViewData viewData = getProject().getViewData(getView().cardName());
 			String currentViewMode = viewData.getData(ViewData.TAG_CURRENT_MODE);
-			if(ViewData.MODE_DEFAULT.equals(currentViewMode))
+			if(DiagramModeQuestion.MODE_DEFAULT.equals(currentViewMode))
 				return false;
 		}
 		catch (Exception e)
@@ -100,7 +101,7 @@ public class ShowFullModelModeDoer extends ViewDoer
 	public static CommandVector createCommandsToSwithToDefaultMode(ORef viewDataRef)
 	{
 		CommandVector commandsToSwitch = new CommandVector();
-		CommandSetObjectData changeToDefaultMode = new CommandSetObjectData(viewDataRef, ViewData.TAG_CURRENT_MODE, ViewData.MODE_DEFAULT);
+		CommandSetObjectData changeToDefaultMode = new CommandSetObjectData(viewDataRef, ViewData.TAG_CURRENT_MODE, DiagramModeQuestion.MODE_DEFAULT);
 		commandsToSwitch.add(changeToDefaultMode);
 		
 		CommandSetObjectData clearBrainsStormNodeList = new CommandSetObjectData(viewDataRef, ViewData.TAG_CHAIN_MODE_FACTOR_REFS, "");
