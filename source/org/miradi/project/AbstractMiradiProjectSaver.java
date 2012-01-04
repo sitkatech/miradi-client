@@ -45,7 +45,7 @@ abstract public class AbstractMiradiProjectSaver
 	protected static String xmlNewLineEncode(String data)
 	{
 		if (data.contains("\n"))
-			throw new RuntimeException("Non html new lines found in data");
+			throw new RuntimeException("Non html new lines found in data: " + data);
 
 		return data;
 	}
