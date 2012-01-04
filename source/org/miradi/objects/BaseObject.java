@@ -99,6 +99,7 @@ import org.miradi.utils.PointList;
 import org.miradi.utils.StringChoiceMapData;
 import org.miradi.utils.StringCodeListMapData;
 import org.miradi.utils.StringStringMapData;
+import org.miradi.utils.XmlUtilities2;
 
 abstract public class BaseObject
 {
@@ -713,11 +714,7 @@ abstract public class BaseObject
 	{
 		htmlDataValue = htmlDataValue.replaceAll(HtmlUtilities.BR_TAG, "\n");
 		htmlDataValue = htmlDataValue.replaceAll(HtmlUtilities.BR_TAG_UNCLOSED, "\n");
-		htmlDataValue = htmlDataValue.replaceAll("&lt;", "<");
-		htmlDataValue = htmlDataValue.replaceAll("&gt;", ">");
-		htmlDataValue = htmlDataValue.replaceAll("&quot;", "\"");
-		htmlDataValue = htmlDataValue.replaceAll("&#39;", "'");
-		htmlDataValue = htmlDataValue.replaceAll("&amp;", "&");
+		htmlDataValue = XmlUtilities2.getXmlDecoded(htmlDataValue);
 		
 		return htmlDataValue;
 	}
