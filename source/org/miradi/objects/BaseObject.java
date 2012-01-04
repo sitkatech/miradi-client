@@ -688,6 +688,9 @@ abstract public class BaseObject
 	
 	public void setHtmlDataFromNonHtml(final String fieldTag, String nonHtmlDataValue) throws Exception
 	{
+		if (isNonUserField(fieldTag))
+			throw new RuntimeException("Cannot convert non user data to html and set. Tag = " + fieldTag);
+		
 		nonHtmlDataValue = convertToHtmlText(nonHtmlDataValue);
 		setData(fieldTag, nonHtmlDataValue);
 	}
