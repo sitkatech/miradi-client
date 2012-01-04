@@ -101,6 +101,7 @@ public class TestProjectSaver extends TestCaseWithProject
 	{
 		String contents = saveProjectToString();
 		assertContains(HtmlUtilities.BR_TAG, contents);
+		assertContains("\"", contents);
 
 		Project project2 = ProjectForTesting.createProjectWithDefaultObjects(getName());
 		project2.clear();
