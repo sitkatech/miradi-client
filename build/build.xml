@@ -49,6 +49,8 @@
 	<property name="martus-utils.jar" value="${dist.temp.jars}/martus-utils/bin/martus-utils.jar" />
 	<property name="swingx.jar" value="${dist.temp.jars}/swingx/0.9.7/swingx-0.9.7.jar" />
 	<property name="jortho.jar" value="${dist.temp.jars}/jortho/jortho/0.5/jortho.jar" />
+	<property name="shef.jar" value="${dist.temp.jars}/shef/0.5/shef.jar" />
+	<property name="sam.jar" value="${dist.temp.jars}/shef/0.5/sam.jar" />
     
 	<property name="junit.jar" value="${dist.temp.jars}/junit/3.8.1/bin/junit-3.8.1.jar" />
 
@@ -67,6 +69,8 @@
     	<pathelement path="${cleansheets.jar}"/>
     	<pathelement path="${antlr.jar}"/>
     	<pathelement path="${jortho.jar}"/>
+    	<pathelement path="${shef.jar}"/>
+    	<pathelement path="${sam.jar}"/>
      </path>
     
     <!-- defined values -->
@@ -444,6 +448,33 @@
 			<include name="**/*.ortho"/>
 		</patternset>
 	</unzip>
+
+	<antcall target='download'>
+		<param name='directory' value='shef/0.5' />
+		<param name='filename' value='shef.jar' />
+	</antcall>
+	<antcall target='download'>
+		<param name='directory' value='shef/0.5' />
+		<param name='filename' value='LICENSE-shef.txt' />
+	</antcall>
+	<antcall target='download'>
+		<param name='directory' value='shef/0.5' />
+		<param name='filename' value='shef-src.zip' />
+	</antcall>
+	<antcall target='download'>
+		<param name='directory' value='shef/0.5' />
+		<param name='filename' value='sam.jar' />
+	</antcall>
+	<antcall target='download'>
+		<param name='directory' value='shef/0.5' />
+		<param name='filename' value='LICENSE-sam.txt' />
+	</antcall>
+	<antcall target='download'>
+		<param name='directory' value='shef/0.5' />
+		<param name='filename' value='sam-src.jar' />
+	</antcall>
+	
+
 </target>
 
 <!-- ================================================================== -->
@@ -477,6 +508,10 @@
     	<zipfileset dir="${dist.temp.jars}/swingx/0.9.7/" prefix='${JarFolder}' includes="swingx-license.txt" />
     	<zipfileset dir="${dist.temp.jars}/jortho/jortho/0.5/" prefix='${JarFolder}' includes="*.jar"/>
     	<zipfileset dir="${dist.temp.jars}/jortho/jortho/0.5/" prefix='${JarFolder}' includes="jortho-license.txt"/>
+    	<zipfileset dir="${dist.temp.jars}/shef/0.5/" prefix="${JarFolder}" includes="shef.jar" />
+    	<zipfileset dir="${dist.temp.jars}/shef/0.5/" prefix="${JarFolder}" includes="LICENSE-shef.txt" />
+    	<zipfileset dir="${dist.temp.jars}/shef/0.5/" prefix="${JarFolder}" includes="sam.jar" />
+       	<zipfileset dir="${dist.temp.jars}/shef/0.5/" prefix="${JarFolder}" includes="LICENSE-sam.jar" />
     </zip>
 	
 	<!-- Third-party source code -->
@@ -490,6 +525,8 @@
     	<zipfileset dir="${dist.temp.jars}/swingx/0.9.7" prefix="source" includes="swingx-0.9.7-src.zip" />
 		<zipfileset dir="${dist.temp.jars}/jortho/" prefix="source" includes="**/JOrtho*.zip" />
 		<zipfileset dir="${dist.temp.jars}/jortho/" prefix="source" includes="**/dictionary*.zip" />
+    	<zipfileset dir="${dist.temp.jars}/shef/0.5/" prefix="source" includes="shef-src.jar" />
+    	<zipfileset dir="${dist.temp.jars}/shef/0.5/" prefix="source" includes="sam-src.jar" />
 	</zip>
 	
 	<copy file="${installer.buildfiles.dir}/${samples.marine.mpz}" todir="${dist.dir}" />
