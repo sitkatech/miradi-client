@@ -37,6 +37,7 @@ import org.miradi.questions.StrategyClassificationQuestion;
 import org.miradi.questions.StrategyFeasibilityQuestion;
 import org.miradi.questions.StrategyImpactQuestion;
 import org.miradi.questions.StrategyRatingSummaryQuestion;
+import org.miradi.questions.StrategyStatusQuestion;
 import org.miradi.questions.StrategyTaxonomyQuestion;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
@@ -98,7 +99,7 @@ public class Strategy extends Factor
 	@Override
 	public boolean isStatusDraft()
 	{
-		return STATUS_DRAFT.equals(getData(TAG_STATUS));
+		return getData(TAG_STATUS).equals(StrategyStatusQuestion.STATUS_DRAFT_CODE);
 	}
 	
 	public IdList getActivityIds()
@@ -342,8 +343,6 @@ public class Strategy extends Factor
 
 	public static final String TAG_ACTIVITY_IDS = "ActivityIds";
 	public static final String TAG_STATUS = "Status";
-	public static final String STATUS_DRAFT = "Draft";
-	public static final String STATUS_REAL = "Real";
 	
 	public static final String TAG_TAXONOMY_CODE = "TaxonomyCode";
 	public static final String TAG_IMPACT_RATING = "ImpactRating";
