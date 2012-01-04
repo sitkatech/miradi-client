@@ -43,6 +43,7 @@ import org.miradi.questions.StrategyClassificationQuestion;
 import org.miradi.questions.StrategyFeasibilityQuestion;
 import org.miradi.questions.StrategyImpactQuestion;
 import org.miradi.questions.StrategyRatingSummaryQuestion;
+import org.miradi.questions.StrategyStatusQuestion;
 import org.miradi.questions.ThreatClassificationQuestion;
 import org.miradi.utils.ObjectsActionButton;
 
@@ -115,7 +116,7 @@ public class FactorSummaryCorePanel extends ObjectDataInputPanel
 		if (!getProject().isChainMode())
 			return;
 		
-		ObjectDataInputField field = createCheckBoxField(tag, Strategy.STATUS_DRAFT, Strategy.STATUS_REAL);
+		ObjectDataInputField field = createCheckBoxField(tag, StrategyStatusQuestion.STATUS_DRAFT_CODE, StrategyStatusQuestion.STATUS_REAL_CODE);
 		addField(field);
 	}
 

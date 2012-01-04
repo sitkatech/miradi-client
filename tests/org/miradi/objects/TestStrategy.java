@@ -29,6 +29,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.RelevancyOverrideSetData;
+import org.miradi.questions.StrategyStatusQuestion;
 import org.miradi.utils.CommandVector;
 
 public class TestStrategy extends AbstractObjectWithBudgetDataToDeleteTestCase
@@ -92,11 +93,11 @@ public class TestStrategy extends AbstractObjectWithBudgetDataToDeleteTestCase
 		Strategy strategy = new Strategy(getObjectManager(), strategyId);
 		assertTrue("didn't default to real status?", strategy.isStatusReal());
 		assertFalse("defaulted to draft status?", strategy.isStatusDraft());
-		strategy.setData(Strategy.TAG_STATUS, Strategy.STATUS_DRAFT);
-		assertEquals("set/get didn't work?", Strategy.STATUS_DRAFT, strategy.getData(Strategy.TAG_STATUS));
+		strategy.setData(Strategy.TAG_STATUS, StrategyStatusQuestion.STATUS_DRAFT_CODE);
+		assertEquals("set/get didn't work?", StrategyStatusQuestion.STATUS_DRAFT_CODE, strategy.getData(Strategy.TAG_STATUS));
 		assertFalse("didn't unset real status?", strategy.isStatusReal());
 		assertTrue("didn't set to draft status?", strategy.isStatusDraft());
-		strategy.setData(Strategy.TAG_STATUS, Strategy.STATUS_REAL);
+		strategy.setData(Strategy.TAG_STATUS, StrategyStatusQuestion.STATUS_REAL_CODE);
 		assertTrue("didn't restore to real status?", strategy.isStatusReal());
 		assertFalse("didn't unset draft status?", strategy.isStatusDraft());
 		strategy.setData(Strategy.TAG_STATUS, "OIJFW*FJJF");
@@ -109,7 +110,7 @@ public class TestStrategy extends AbstractObjectWithBudgetDataToDeleteTestCase
 	{
 		FactorId strategyId = new FactorId(17);
 		Strategy strategy = new Strategy(getObjectManager(), strategyId);
-		strategy.setData(Strategy.TAG_STATUS, Strategy.STATUS_DRAFT);
+		strategy.setData(Strategy.TAG_STATUS, StrategyStatusQuestion.STATUS_DRAFT_CODE);
 		IdList activityIds = new IdList(Task.getObjectType());
 		activityIds.add(new BaseId(23));
 		activityIds.add(new BaseId(37));
