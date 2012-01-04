@@ -190,7 +190,7 @@ public class TableSettings extends BaseObject
 		setNonUserField(TAG_COLUMN_SEQUENCE_CODES);
 		createStringStringMapField(TAG_COLUMN_WIDTHS);
 		setNonUserField(TAG_COLUMN_WIDTHS);
-		createUserTextField(TAG_COLUMN_SORT_TAG);
+		createCodeField(TAG_COLUMN_SORT_TAG);
 		setNonUserField(TAG_COLUMN_SORT_TAG);
 		createChoiceField(TAG_COLUMN_SORT_DIRECTION, getQuestion(SortDirectionQuestion.class));
 		setNonUserField(TAG_COLUMN_SORT_DIRECTION);
