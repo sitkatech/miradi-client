@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-29 16:09-0600\n"
+"POT-Creation-Date: 2012-01-04 10:48-0600\n"
 "PO-Revision-Date: 2011-04-29 11:26+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -8661,7 +8661,7 @@ msgstr "[NON SPECIFICATO]"
 msgid "[New Results Chain]"
 msgstr "[Nuova catena dei risultati]"
 
-#: Miradi/source/org/miradi/project/Project.java:947
+#: Miradi/source/org/miradi/project/Project.java:950
 msgid "[No Project]"
 msgstr "[Nessun Progetto]"
 
@@ -18153,6 +18153,14 @@ msgid ""
 "directory with another application. <br><br>It could also be caused by "
 "hardware problems, such as a failing disk drive or communications problems "
 "with a network drive.<br><br><b>Miradi will now exit.</b><br><br>"
+msgstr ""
+
+msgid ""
+"html|/resources/DiagramInitialHelpText.html|Welcome to the Diagram View!<br/"
+"><br/>This view enables you to develop a<br/>Conceptual Model of your "
+"project.<br/><br/>To get started, click the <Insert Target><br/>button in "
+"the Control Bar to the left.<br/><br/>To delete this box, click on it and<br/"
+">press <delete>."
 msgstr ""
 
 msgid ""
