@@ -3,11 +3,13 @@
 # This file is distributed under the GPL 3.0
 # Automatically generated, 2010.
 #
+#: Miradi/source/org/miradi/questions/DiagramModeQuestion.java:31
+#: Miradi/source/org/miradi/questions/DiagramModeQuestion.java:32
 msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-04 10:48-0600\n"
+"POT-Creation-Date: 2012-01-04 21:34-0600\n"
 "PO-Revision-Date: 2011-04-29 11:26+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -3386,6 +3388,10 @@ msgstr "Dollar (United States)"
 msgid "Don't show this dialog again"
 msgstr ""
 
+#: Miradi/source/org/miradi/questions/StrategyStatusQuestion.java:36
+msgid "Draft"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:82
 msgid "Ecological Processes"
 msgstr "Processi Ecologici"
@@ -3668,7 +3674,7 @@ msgstr ""
 "Il nome del file  deve contenere solo caratteri alpha numerici e/o '_' ."
 
 #: Miradi/source/org/miradi/xml/AbstractXmlImporter.java:90
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:171
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:172
 msgid "File to import does not validate."
 msgstr "Il file da importare non è valido."
 
@@ -3785,7 +3791,7 @@ msgid "Folder Chooser"
 msgstr "Selettore cartella"
 
 #: Miradi/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:51
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:68
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:69
 msgid "Font"
 msgstr "Font"
 
@@ -3839,7 +3845,7 @@ msgstr "Foresta - Subtropicale/Palude Tropicale"
 msgid "Forest - Temperate"
 msgstr "Foresta - Temperata"
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:484
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:485
 msgid "Found Corrupted Data:"
 msgstr "Trovati dati corrotti:"
 
@@ -3940,7 +3946,7 @@ msgstr ""
 #: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:169
 #: Miradi/source/org/miradi/dialogs/task/ActivityDetailsPanelWithRelevancyOverrideFields.java:45
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:59
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:90
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:91
 msgid "Goals"
 msgstr "Scopi"
 
@@ -4033,7 +4039,7 @@ msgstr "Nascondi le colonne trimestre"
 msgid "High"
 msgstr "Alto"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1390
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1391
 msgid "High/Very-High Threat Chains"
 msgstr "Alta/molto-alta Catene di PressionI"
 
@@ -4244,7 +4250,7 @@ msgstr ""
 "preciso, coerente e sensibile. In Miradi, un Indicatore è rappresentato da "
 "un triangolo viola."
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1288
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1289
 msgid "Indicator Holder"
 msgstr "Indicatore di possesso"
 
@@ -4515,7 +4521,7 @@ msgstr "Iniziali"
 msgid "Label|Methods"
 msgstr "Metodi"
 
-#: Miradi/source/org/miradi/views/diagram/InsertDraftStrategyDoer.java:63
+#: Miradi/source/org/miradi/views/diagram/InsertDraftStrategyDoer.java:65
 msgid "Label|New Draft Strategy"
 msgstr "Nuova Bozza di Strategia"
 
@@ -4645,7 +4651,7 @@ msgid "Leader/Manager"
 msgstr "Leader/Manager"
 
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:56
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:88
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:89
 msgid "Legacy TNC Ratings"
 msgstr "Valutazione del Retaggio TNC"
 
@@ -4726,7 +4732,7 @@ msgstr ""
 msgid "Low"
 msgstr "Basso"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1391
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1392
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr "Catene della Pressione Bassa/Media/Non Valutata"
 
@@ -5301,7 +5307,7 @@ msgstr "NOn specificato"
 msgid "Not Started"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:645
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:646
 msgid "Not all classification Codes could imported."
 msgstr "Non tutti i codici di classificazione possono essere importati."
 
@@ -5346,7 +5352,7 @@ msgstr ""
 "Pressione critica. In Miradi, un Obiettivo Gestionale è rappresentato da un "
 "piccolo rettangolo blu."
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1282
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1283
 msgid "Objective Holder"
 msgstr "Obiettivo Gestionale Holder"
 
@@ -5356,7 +5362,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/task/ActivityDetailsPanelWithRelevancyOverrideFields.java:42
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:58
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:89
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:90
 #: Miradi/source/org/miradi/dialogs/diagram/RelatedItemsSubpanel.java:43
 msgid "Objectives"
 msgstr ""
@@ -5511,7 +5517,7 @@ msgstr "Rosa"
 msgid "Place scope on diagram"
 msgstr "Inserisci l'Ambito nel diagramma"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1278
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1279
 msgid "Placeholder - From ConPro"
 msgstr "Segnaposto - Da ConPro"
 
@@ -5598,7 +5604,7 @@ msgstr "Preparazione Gruppi..."
 
 #: Miradi/source/org/miradi/forms/objects/StrategyCoreSubForm.java:36
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:54
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:87
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:88
 msgid "Priority"
 msgstr "Priorità"
 
@@ -5865,6 +5871,10 @@ msgstr "Valutazioni"
 
 #: Miradi/source/org/miradi/project/MpzToMpfConverter.java:215
 msgid "Reading..."
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/StrategyStatusQuestion.java:35
+msgid "Real"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/DiagramLinkColorQuestion.java:38
@@ -6532,7 +6542,7 @@ msgstr "Le sotto classi necessitano di non tener conto di questo metodo"
 #: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:112
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:132
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:65
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:131
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:132
 msgid "Summary"
 msgstr "Sintesi"
 
@@ -7426,7 +7436,7 @@ msgstr "Etichetta"
 msgid "Tagged Items"
 msgstr "Elementi Etichettati"
 
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:110
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:111
 msgid "Tags"
 msgstr "Etichette"
 
@@ -7942,7 +7952,7 @@ msgstr "Errore"
 msgid "Title|Export Image Scale"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:973
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:974
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:57
 msgid "Title|Factor Properties"
 msgstr "Proprietà del Fattore"
@@ -8256,7 +8266,7 @@ msgstr ""
 msgid "Unknown code: "
 msgstr "Codice sconosciuto:"
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:411
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:412
 msgid "Unknown error displaying diagram"
 msgstr "Errore sconosciuto nel mostrare il Diagramma"
 
@@ -8661,7 +8671,7 @@ msgstr "[NON SPECIFICATO]"
 msgid "[New Results Chain]"
 msgstr "[Nuova catena dei risultati]"
 
-#: Miradi/source/org/miradi/project/Project.java:950
+#: Miradi/source/org/miradi/project/Project.java:951
 msgid "[No Project]"
 msgstr "[Nessun Progetto]"
 

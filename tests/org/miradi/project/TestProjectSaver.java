@@ -52,8 +52,8 @@ public class TestProjectSaver extends TestCaseWithProject
 
 		getProject().populateEverything();
 		getProject().populateSimpleThreatRatingValues();
-		getProject().appendToQuarantineFile("Stuff in quarantine<br>More <<stuff>>");
-		getProject().appendToExceptionLog("Some exceptions & more stuff<br><br>");
+		getProject().appendToQuarantineFile("Stuff in quarantine<br/>More <<stuff>>");
+		getProject().appendToExceptionLog("Some exceptions & more stuff<br/><br/>");
 	}
 	
 	public void testBasics() throws Exception
@@ -64,7 +64,7 @@ public class TestProjectSaver extends TestCaseWithProject
 	public void testLoadWithNewLines() throws Exception
 	{
 		Target target = getProject().createTarget();
-		getProject().fillObjectUsingCommand(target, Target.TAG_COMMENTS, "has comments with <br> new line");
+		getProject().fillObjectUsingCommand(target, Target.TAG_COMMENTS, "has comments with <br/> new line");
 		String contents = saveProjectToString();
 		UnicodeStringReader reader = new UnicodeStringReader(contents);
 		ProjectLoader.loadProject(reader, getProject());
@@ -101,6 +101,7 @@ public class TestProjectSaver extends TestCaseWithProject
 	{
 		String contents = saveProjectToString();
 		assertContains(HtmlUtilities.BR_TAG, contents);
+		assertContains("\"", contents);
 
 		Project project2 = ProjectForTesting.createProjectWithDefaultObjects(getName());
 		project2.clear();

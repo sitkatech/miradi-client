@@ -47,7 +47,7 @@ abstract public class AbstractBudgetCategoryObject extends BaseObject
 	{
 		super.clear();
 		
-		createCodeField(TAG_CODE);
+		createUserTextField(TAG_CODE);
 		createUserTextField(TAG_COMMENTS);
 	}
 	

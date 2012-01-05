@@ -101,7 +101,7 @@ public class TncProjectData extends BaseObject
 	{
 		super.clear();
 		
-		createCodeField(TAG_PROJECT_SHARING_CODE);
+		createChoiceField(TAG_PROJECT_SHARING_CODE, ProjectSharingQuestion.class);
 		createCodeListField(TAG_PROJECT_PLACE_TYPES, getProject().getQuestion(TncProjectPlaceTypeQuestion.class));
 		createCodeListField(TAG_ORGANIZATIONAL_PRIORITIES, getProject().getQuestion(TncOrganizationalPrioritiesQuestion.class));
 		createUserTextField(TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT);
