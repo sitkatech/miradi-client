@@ -3,11 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Kevin Smith <info@miradi.org>, 2008.
 #
+#: Miradi/source/org/miradi/questions/DiagramModeQuestion.java:31
+#: Miradi/source/org/miradi/questions/DiagramModeQuestion.java:32
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-04 10:48-0600\n"
+"POT-Creation-Date: 2012-01-04 21:34-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -3179,6 +3181,10 @@ msgstr "美元（美国）"
 msgid "Don't show this dialog again"
 msgstr ""
 
+#: Miradi/source/org/miradi/questions/StrategyStatusQuestion.java:36
+msgid "Draft"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:82
 msgid "Ecological Processes"
 msgstr "生态过程"
@@ -3454,7 +3460,7 @@ msgid "File name must contain only alpha numeric and/or '_' characters."
 msgstr "文件名只能包含文字数字和/或'_'字符。 \t\t"
 
 #: Miradi/source/org/miradi/xml/AbstractXmlImporter.java:90
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:171
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:172
 msgid "File to import does not validate."
 msgstr "要导入的文件不正确 \t\t"
 
@@ -3568,7 +3574,7 @@ msgid "Folder Chooser"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:51
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:68
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:69
 msgid "Font"
 msgstr "字体 \t\t"
 
@@ -3620,7 +3626,7 @@ msgstr "森林-亚热带/热带沼泽"
 msgid "Forest - Temperate"
 msgstr "森林-温带森林"
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:484
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:485
 msgid "Found Corrupted Data:"
 msgstr "发现损坏的数据： \t\t"
 
@@ -3713,7 +3719,7 @@ msgstr ""
 #: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:169
 #: Miradi/source/org/miradi/dialogs/task/ActivityDetailsPanelWithRelevancyOverrideFields.java:45
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:59
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:90
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:91
 msgid "Goals"
 msgstr "总目标组 \t\t"
 
@@ -3804,7 +3810,7 @@ msgstr ""
 msgid "High"
 msgstr "高"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1390
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1391
 msgid "High/Very-High Threat Chains"
 msgstr ""
 
@@ -4009,7 +4015,7 @@ msgstr ""
 "或为达到某分目标而取得的进展等）。良好的指示物应满足的标准是：可测量性、精确"
 "性、一致性和敏感性。在Miradi中，指示物是以紫色三角形来代表的。"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1288
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1289
 msgid "Indicator Holder"
 msgstr ""
 
@@ -4274,7 +4280,7 @@ msgstr "缩写名 \t\t"
 msgid "Label|Methods"
 msgstr "方法 \t\t"
 
-#: Miradi/source/org/miradi/views/diagram/InsertDraftStrategyDoer.java:63
+#: Miradi/source/org/miradi/views/diagram/InsertDraftStrategyDoer.java:65
 msgid "Label|New Draft Strategy"
 msgstr "新策略草案 \t\t"
 
@@ -4404,7 +4410,7 @@ msgid "Leader/Manager"
 msgstr "领导/管理人"
 
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:56
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:88
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:89
 msgid "Legacy TNC Ratings"
 msgstr "传承TNC分级 \t\t"
 
@@ -4485,7 +4491,7 @@ msgstr ""
 msgid "Low"
 msgstr "低"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1391
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1392
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr ""
 
@@ -5031,7 +5037,7 @@ msgstr "未指定 \t\t"
 msgid "Not Started"
 msgstr "未开始"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:645
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:646
 msgid "Not all classification Codes could imported."
 msgstr ""
 
@@ -5072,7 +5078,7 @@ msgstr ""
 "分目标——指的是一个正式的声明，它详细列出了项目所期望的结果，如某种临界威胁因"
 "子的减少。在Miradi中，分目标是以蓝色小长方形来代表的。 "
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1282
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1283
 msgid "Objective Holder"
 msgstr ""
 
@@ -5082,7 +5088,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/task/ActivityDetailsPanelWithRelevancyOverrideFields.java:42
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:58
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:89
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:90
 #: Miradi/source/org/miradi/dialogs/diagram/RelatedItemsSubpanel.java:43
 msgid "Objectives"
 msgstr ""
@@ -5237,7 +5243,7 @@ msgstr "粉红色"
 msgid "Place scope on diagram"
 msgstr "在图表上设置范围 \t\t"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1278
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1279
 msgid "Placeholder - From ConPro"
 msgstr ""
 
@@ -5316,7 +5322,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/forms/objects/StrategyCoreSubForm.java:36
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:54
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:87
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:88
 msgid "Priority"
 msgstr "优先 \t\t"
 
@@ -5579,6 +5585,10 @@ msgstr "分级 "
 
 #: Miradi/source/org/miradi/project/MpzToMpfConverter.java:215
 msgid "Reading..."
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/StrategyStatusQuestion.java:35
+msgid "Real"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/DiagramLinkColorQuestion.java:38
@@ -6200,7 +6210,7 @@ msgstr ""
 #: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:112
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:132
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:65
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:131
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:132
 msgid "Summary"
 msgstr "摘要 \t\t"
 
@@ -7080,7 +7090,7 @@ msgstr "标签"
 msgid "Tagged Items"
 msgstr "加标签的条目"
 
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:110
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:111
 msgid "Tags"
 msgstr ""
 
@@ -7562,7 +7572,7 @@ msgstr "错误 "
 msgid "Title|Export Image Scale"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:973
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:974
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:57
 msgid "Title|Factor Properties"
 msgstr "因素属性 \t\t"
@@ -7877,7 +7887,7 @@ msgstr ""
 msgid "Unknown code: "
 msgstr "未知代码： \t\t"
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:411
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:412
 msgid "Unknown error displaying diagram"
 msgstr "显示图表时出现未知错误 \t\t"
 
@@ -8259,7 +8269,7 @@ msgstr "[未指定的] \t\t"
 msgid "[New Results Chain]"
 msgstr "[新结果链] \t\t"
 
-#: Miradi/source/org/miradi/project/Project.java:950
+#: Miradi/source/org/miradi/project/Project.java:951
 msgid "[No Project]"
 msgstr "[无项目] \t\t"
 

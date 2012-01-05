@@ -3,11 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Kevin Smith <info@miradi.org>, 2008.
 #
+#: Miradi/source/org/miradi/questions/DiagramModeQuestion.java:31
+#: Miradi/source/org/miradi/questions/DiagramModeQuestion.java:32
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-04 10:48-0600\n"
+"POT-Creation-Date: 2012-01-04 21:34-0600\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -3273,6 +3275,10 @@ msgstr "Dolar (Amerika Serikat)"
 msgid "Don't show this dialog again"
 msgstr ""
 
+#: Miradi/source/org/miradi/questions/StrategyStatusQuestion.java:36
+msgid "Draft"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:82
 msgid "Ecological Processes"
 msgstr "Proses Ekologi"
@@ -3556,7 +3562,7 @@ msgstr ""
 "Nama berkas harus mengandung huruf dan angka dan/atau karakter '_' saja. "
 
 #: Miradi/source/org/miradi/xml/AbstractXmlImporter.java:90
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:171
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:172
 msgid "File to import does not validate."
 msgstr "Berkas yang akan diimpor tidak bisa divalidasi. "
 
@@ -3676,7 +3682,7 @@ msgid "Folder Chooser"
 msgstr "Pemilih Folder "
 
 #: Miradi/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:51
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:68
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:69
 msgid "Font"
 msgstr "Fon"
 
@@ -3729,7 +3735,7 @@ msgstr "Hutan – Rawa-rawa Tropis/Subtropis"
 msgid "Forest - Temperate"
 msgstr "Hutan - Temperat"
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:484
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:485
 msgid "Found Corrupted Data:"
 msgstr "Data yang Rusak Ditemukan: "
 
@@ -3829,7 +3835,7 @@ msgstr ""
 #: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:169
 #: Miradi/source/org/miradi/dialogs/task/ActivityDetailsPanelWithRelevancyOverrideFields.java:45
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:59
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:90
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:91
 msgid "Goals"
 msgstr "Sasaran "
 
@@ -3920,7 +3926,7 @@ msgstr ""
 msgid "High"
 msgstr "Tinggi"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1390
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1391
 msgid "High/Very-High Threat Chains"
 msgstr "Rangkaian Ancaman Tinggi/Sangat Tinggi "
 
@@ -4131,7 +4137,7 @@ msgstr ""
 "konsisten, dan sensitif. Dalam Miradi, indikator diwakili oleh bentuk "
 "segitiga warna ungu."
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1288
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1289
 msgid "Indicator Holder"
 msgstr "Pemilik Indikator "
 
@@ -4399,7 +4405,7 @@ msgstr "Inisial "
 msgid "Label|Methods"
 msgstr "Metode "
 
-#: Miradi/source/org/miradi/views/diagram/InsertDraftStrategyDoer.java:63
+#: Miradi/source/org/miradi/views/diagram/InsertDraftStrategyDoer.java:65
 msgid "Label|New Draft Strategy"
 msgstr "Rancangan Strategi Baru "
 
@@ -4529,7 +4535,7 @@ msgid "Leader/Manager"
 msgstr "Pemimpin/Manajer"
 
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:56
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:88
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:89
 msgid "Legacy TNC Ratings"
 msgstr "Peringkat TNC versi sebelumnya "
 
@@ -4610,7 +4616,7 @@ msgstr ""
 msgid "Low"
 msgstr "Rendah"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1391
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1392
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr "Rangkaian Ancaman Rendah/Sedang/Tak Terukur "
 
@@ -5182,7 +5188,7 @@ msgstr "Tidak Terspesifikasi "
 msgid "Not Started"
 msgstr "Tidak Dimulai"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:645
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:646
 msgid "Not all classification Codes could imported."
 msgstr "Tidak semua Kode klasifikasi dapat diimpor. "
 
@@ -5224,7 +5230,7 @@ msgstr ""
 "diinginkan dari suatu proyek, seperti mengurangi ancaman kritis. Dalam "
 "Miradi, sasaran diwakili oleh persegi empat kecil warna biru."
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1282
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1283
 msgid "Objective Holder"
 msgstr "Pemilik Tujuan "
 
@@ -5234,7 +5240,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/task/ActivityDetailsPanelWithRelevancyOverrideFields.java:42
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:58
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:89
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:90
 #: Miradi/source/org/miradi/dialogs/diagram/RelatedItemsSubpanel.java:43
 msgid "Objectives"
 msgstr ""
@@ -5389,7 +5395,7 @@ msgstr "Merah Muda"
 msgid "Place scope on diagram"
 msgstr "Tempatkan cakupan pada diagram "
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1278
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1279
 msgid "Placeholder - From ConPro"
 msgstr "Placeholder - Dari ConPro "
 
@@ -5473,7 +5479,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/forms/objects/StrategyCoreSubForm.java:36
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:54
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:87
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:88
 msgid "Priority"
 msgstr "Prioritas "
 
@@ -5740,6 +5746,10 @@ msgstr "Peringkat "
 
 #: Miradi/source/org/miradi/project/MpzToMpfConverter.java:215
 msgid "Reading..."
+msgstr ""
+
+#: Miradi/source/org/miradi/questions/StrategyStatusQuestion.java:35
+msgid "Real"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/DiagramLinkColorQuestion.java:38
@@ -6392,7 +6402,7 @@ msgstr "Subkelas harus menggantikan metode ini. "
 #: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:112
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:132
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:65
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:131
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:132
 msgid "Summary"
 msgstr "Ringkasan "
 
@@ -7278,7 +7288,7 @@ msgstr "Tag"
 msgid "Tagged Items"
 msgstr "Butir yang Ditandai"
 
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:110
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:111
 msgid "Tags"
 msgstr "Tag "
 
@@ -7786,7 +7796,7 @@ msgstr "Kesalahan"
 msgid "Title|Export Image Scale"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:973
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:974
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:57
 msgid "Title|Factor Properties"
 msgstr "Sifat-sifat Faktor "
@@ -8104,7 +8114,7 @@ msgstr ""
 msgid "Unknown code: "
 msgstr "Kode tak dikenal: "
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:411
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:412
 msgid "Unknown error displaying diagram"
 msgstr "Kesalahan tak dikenal saat menampilkan diagram "
 
@@ -8514,7 +8524,7 @@ msgstr "[TIDAK TERSPESIFIKASI] "
 msgid "[New Results Chain]"
 msgstr "[Rangkaian Hasil Baru] "
 
-#: Miradi/source/org/miradi/project/Project.java:950
+#: Miradi/source/org/miradi/project/Project.java:951
 msgid "[No Project]"
 msgstr "[Tidak Ada Proyek] "
 
