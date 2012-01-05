@@ -259,42 +259,21 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		
 		if (isThresholdColumn(column))
 		{
-			final String columnTag = COLUMN_TAGS_FOR_MEASUREMENTS[column];
-			if (ignoreSaving(baseObject, value, columnTag, Measurement.TAG_STATUS, Measurement.TAG_SUMMARY))
-				return;
-					
-			setValueUsingCommand(baseObject.getRef(), Measurement.TAG_STATUS, columnTag);
 			setValueUsingCommand(baseObject.getRef(), Measurement.TAG_SUMMARY, value.toString());
+			final String columnTag = COLUMN_TAGS_FOR_MEASUREMENTS[column];
+			setValueUsingCommand(baseObject.getRef(), Measurement.TAG_STATUS, columnTag);
 		}
 	}
-
+	
 	private void setFutureStatusValue(BaseObject baseObject, Object value, int row, int column)
 	{
 		if (isThresholdColumn(column))
 		{
 			ORef indicatorRef = getIndicatorRefInSelectionHierarchy(row, column);
-			Indicator indicator = Indicator.find(getProject(), indicatorRef);
-			final String columnTag = COLUMN_TAGS_FOR_FUTURE_RESULTS[column];
-			if (ignoreSaving(indicator, value, columnTag, Indicator.TAG_FUTURE_STATUS_RATING, Indicator.TAG_FUTURE_STATUS_SUMMARY))
-				return;
-			
-			setValueUsingCommand(indicatorRef, Indicator.TAG_FUTURE_STATUS_RATING, columnTag);
 			setValueUsingCommand(indicatorRef, Indicator.TAG_FUTURE_STATUS_SUMMARY, value.toString());
+			final String columnTag = COLUMN_TAGS_FOR_FUTURE_RESULTS[column];
+			setValueUsingCommand(indicatorRef, Indicator.TAG_FUTURE_STATUS_RATING, columnTag);
 		}
-	}
-	
-	private boolean ignoreSaving(BaseObject baseObject, Object value,	final String columnTag, String statusTag, String summaryTag)
-	{
-		final boolean sameStatusColumn = columnTag.equals(baseObject.getData(statusTag));
-		final boolean hasNoValue = value.toString().length() == 0;
-		final boolean sameValue = value.toString().equals(baseObject.getData(summaryTag));
-		if (sameStatusColumn && sameValue)
-			return true;
-		
-		if (!sameStatusColumn && hasNoValue)
-			return true;
-		
-		return false;
 	}
 	
 	private void setIndicatorValue(BaseObject baseObject, Object value, int row, int column)
