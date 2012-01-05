@@ -221,6 +221,9 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 	@Override
 	public void setValueAt(Object value, int row, int column)
 	{
+		if (ignoreSettingSameValue(value, row, column))
+			return;
+
 		BaseObject baseObject = getBaseObjectForRow(row);
 		if (isAbstractTargetViabilityModeCell(row, column))
 		{
@@ -248,6 +251,11 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		}
 			
 		super.setValueAt(value, row, column);
+	}
+	
+	private boolean ignoreSettingSameValue(Object value, int row, int column)
+	{
+		return getValueAt(row, column).toString().equals(value.toString());
 	}
 
 	private void setMeasurementValue(BaseObject baseObject, Object value, int row, int column)
