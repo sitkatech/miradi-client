@@ -94,6 +94,7 @@ import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.StatusQuestion;
+import org.miradi.questions.StrategyStatusQuestion;
 import org.miradi.questions.ThreatRatingQuestion;
 import org.miradi.questions.TncFreshwaterEcoRegionQuestion;
 import org.miradi.questions.TncMarineEcoRegionQuestion;
@@ -245,9 +246,9 @@ public class ConproXmlImporter implements ConProMiradiXml
 	private void importStrategyStatus(Node strategyNode, ORef strategyRef) throws Exception
 	{
 		String data = getNodeContent(strategyNode, SELECTED);
-		String draftStatusValue = Strategy.STATUS_REAL;
+		String draftStatusValue = StrategyStatusQuestion.STATUS_REAL_CODE;
 		if (isDraft(data))
-			draftStatusValue = Strategy.STATUS_DRAFT;
+			draftStatusValue = StrategyStatusQuestion.STATUS_DRAFT_CODE;
 		
 		setData(strategyRef, Strategy.TAG_STATUS, draftStatusValue);
 	}

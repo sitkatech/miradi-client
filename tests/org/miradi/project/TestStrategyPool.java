@@ -24,6 +24,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.StrategyPool;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Strategy;
+import org.miradi.questions.StrategyStatusQuestion;
 
 
 public class TestStrategyPool extends TestFactorPool
@@ -59,7 +60,7 @@ public class TestStrategyPool extends TestFactorPool
 		FactorId nonDraftId = addNewlyCreatedNodeToPool(ObjectType.STRATEGY);
 		Strategy draft = pool.find(draftId);
 		Strategy nonDraft = pool.find(nonDraftId);
-		draft.setData(Strategy.TAG_STATUS, Strategy.STATUS_DRAFT);
+		draft.setData(Strategy.TAG_STATUS, StrategyStatusQuestion.STATUS_DRAFT_CODE);
 		
 		Factor[] all = pool.getDraftAndNonDraftStrategies();
 		assertEquals("Wrong all count?", 5, all.length);

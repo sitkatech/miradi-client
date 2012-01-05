@@ -102,6 +102,8 @@ public class StaticQuestionManager
 		addQuestion(new ActionTreeConfigurationQuestion());
 		addQuestion(new WorkPlanAnalysisConfigurationQuestion());
 		addQuestion(new OpenStandardsProgressStatusQuestion());
+		addQuestion(new StrategyStatusQuestion());
+		addQuestion(new DiagramModeQuestion());
 	}
 	
 	private static void addQuestion(ChoiceQuestion question)

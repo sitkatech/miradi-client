@@ -26,6 +26,7 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ViewData;
+import org.miradi.questions.DiagramModeQuestion;
 import org.miradi.questions.FontFamiliyQuestion;
 import org.miradi.questions.FontSizeQuestion;
 
@@ -58,7 +59,7 @@ public class DiagramProjectPreferencesPanel extends ObjectDataInputPanel
 				return;
 			
 			CommandSetObjectData command = (CommandSetObjectData)event.getCommand();
-			CommandSetObjectData changeToDefaultMode = new CommandSetObjectData(getProject().getCurrentViewData().getRef(), ViewData.TAG_CURRENT_MODE, ViewData.MODE_DEFAULT);
+			CommandSetObjectData changeToDefaultMode = new CommandSetObjectData(getProject().getCurrentViewData().getRef(), ViewData.TAG_CURRENT_MODE, DiagramModeQuestion.MODE_DEFAULT);
 			getProject().executeAsSideEffect(changeToDefaultMode);
 			
 			if (isOneOfOurFields(command.getFieldTag()))

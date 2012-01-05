@@ -196,8 +196,7 @@ public class ProjectLoader
 		if(!tag.equals(AbstractMiradiProjectSaver.EXCEPTIONS_DATA_TAG))
 			throw new Exception("Unknown Exceptions field: " + tag);
 
-		value = getXmlDecoded(value);
-		getProject().appendToExceptionLog(getXmlDecoded(value));
+		getProject().appendToExceptionLog(value);
 	}
 	
 	private void loadQuarantine(String line) throws Exception
@@ -208,8 +207,7 @@ public class ProjectLoader
 		if(!tag.equals(AbstractMiradiProjectSaver.QUARANTINE_DATA_TAG))
 			throw new Exception("Unknown Quarantine field: " + tag);
 
-		value = getXmlDecoded(value);
-		getProject().appendToQuarantineFile(getXmlDecoded(value));
+		getProject().appendToQuarantineFile(value);
 	}
 
 	private String[] parseTagValueLine(String line) throws Exception
@@ -298,14 +296,8 @@ public class ProjectLoader
 		if (hasData)
 		{
 			String value = tokenizer.nextToken(EQUALS_DELIMITER_NEWLINE_POSTFIXED);
-			value = getXmlDecoded(value);
 			getProject().setObjectData(ref, tag, value);
 		}
-	}
-
-	private String getXmlDecoded(String value)
-	{
-		return value;
 	}
 
 	public ORef extractRef(String refString)

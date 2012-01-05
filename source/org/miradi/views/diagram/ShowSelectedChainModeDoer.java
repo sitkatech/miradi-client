@@ -41,6 +41,7 @@ import org.miradi.objects.Factor;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
+import org.miradi.questions.DiagramModeQuestion;
 import org.miradi.views.ViewDoer;
 import org.miradi.views.diagram.doers.SelectChainDoer;
 
@@ -116,7 +117,7 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 					ViewData.TAG_CHAIN_MODE_FACTOR_REFS, nodeORefsToProcess.toString()));
 			
 			project.executeCommand(new CommandSetObjectData(ObjectType.VIEW_DATA, viewId, 
-					ViewData.TAG_CURRENT_MODE, ViewData.MODE_STRATEGY_BRAINSTORM));
+					ViewData.TAG_CURRENT_MODE, DiagramModeQuestion.MODE_STRATEGY_BRAINSTORM));
 		}
 		finally
 		{
@@ -201,7 +202,7 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 		{
 			ViewData viewData = getProject().getViewData(getView().cardName());
 			String currentViewMode = viewData.getData(ViewData.TAG_CURRENT_MODE);
-			if(ViewData.MODE_STRATEGY_BRAINSTORM.equals(currentViewMode))
+			if(DiagramModeQuestion.MODE_STRATEGY_BRAINSTORM.equals(currentViewMode))
 				return false;
 		}
 		catch (Exception e)

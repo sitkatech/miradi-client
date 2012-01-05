@@ -206,6 +206,7 @@ import org.miradi.utils.TestStringMap;
 import org.miradi.utils.TestTaxonomyFileLoader;
 import org.miradi.utils.TestThreatStressRatingHelper;
 import org.miradi.utils.TestTranslations;
+import org.miradi.utils.TestXmlUtilities2;
 import org.miradi.views.budget.ImportAccountingCodesDoerTest;
 import org.miradi.views.diagram.TestDiagramAliasPaster;
 import org.miradi.views.diagram.TestLinkBendPointsMoveHandler;
@@ -429,6 +430,7 @@ public class MainTestSuite extends TestSuite
 		addTest(new TestSuite(TestCategoryOne.class));
 		addTest(new TestSuite(TestCategoryTwo.class));
 		addTest(new TestSuite(TestDashboard.class));
+		addTest(new TestSuite(TestXmlUtilities2.class));
 			
 		// commands package
 		addTest(new TestSuite(TestCommands.class));

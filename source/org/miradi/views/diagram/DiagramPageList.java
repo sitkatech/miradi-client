@@ -42,6 +42,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
+import org.miradi.questions.DiagramModeQuestion;
 import org.miradi.utils.CommandVector;
 
 abstract public class DiagramPageList extends ObjectPoolTable
@@ -177,7 +178,7 @@ abstract public class DiagramPageList extends ObjectPoolTable
 		private CommandVector createSwitchToDefaultModeCommand() throws Exception
 		{
 			ViewData viewData = listenerProject.getCurrentViewData();
-			if (viewData.getData(ViewData.TAG_CURRENT_MODE).equals(ViewData.MODE_DEFAULT))
+			if (viewData.getData(ViewData.TAG_CURRENT_MODE).equals(DiagramModeQuestion.MODE_DEFAULT))
 				return new CommandVector();
 			
 			return ShowFullModelModeDoer.createCommandsToSwithToDefaultMode(viewData.getRef());

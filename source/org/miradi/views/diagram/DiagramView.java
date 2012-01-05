@@ -88,10 +88,10 @@ import org.miradi.actions.ActionHideStressBubble;
 import org.miradi.actions.ActionInsertContributingFactor;
 import org.miradi.actions.ActionInsertDirectThreat;
 import org.miradi.actions.ActionInsertDraftStrategy;
-import org.miradi.actions.ActionInsertLink;
 import org.miradi.actions.ActionInsertGroupBox;
 import org.miradi.actions.ActionInsertHumanWelfareTarget;
 import org.miradi.actions.ActionInsertIntermediateResult;
+import org.miradi.actions.ActionInsertLink;
 import org.miradi.actions.ActionInsertScopeBox;
 import org.miradi.actions.ActionInsertStrategy;
 import org.miradi.actions.ActionInsertTarget;
@@ -162,6 +162,7 @@ import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
+import org.miradi.questions.DiagramModeQuestion;
 import org.miradi.utils.DiagramCorruptionDetector;
 import org.miradi.utils.PointList;
 import org.miradi.views.TabbedView;
@@ -216,7 +217,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	public DiagramView(MainWindow mainWindowToUse) throws Exception
 	{
 		super(mainWindowToUse);
-		mode = ViewData.MODE_DEFAULT;
+		mode = DiagramModeQuestion.MODE_DEFAULT;
 		
 		addDiagramViewDoersToMap();
 	}
@@ -632,7 +633,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		diagramComponent.getDiagramModel().updateGroupBoxCells();
 		ORefList hiddenORefs = new ORefList();
 		diagramComponent.setToDefaultBackgroundColor();
-		if (newMode.equals(ViewData.MODE_STRATEGY_BRAINSTORM))
+		if (newMode.equals(DiagramModeQuestion.MODE_STRATEGY_BRAINSTORM))
 		{
 			hiddenORefs = getORefsToHide(diagramComponent.getDiagramModel());
 			diagramComponent.setBackground(Color.LIGHT_GRAY);
@@ -1061,7 +1062,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 
 	public boolean isStategyBrainstormMode()
 	{
-		return getCurrentMode().equals(ViewData.MODE_STRATEGY_BRAINSTORM);
+		return getCurrentMode().equals(DiagramModeQuestion.MODE_STRATEGY_BRAINSTORM);
 	}
 	
 	public static boolean is(UmbrellaView view)

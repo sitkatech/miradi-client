@@ -30,8 +30,10 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.ActionTreeConfigurationQuestion;
+import org.miradi.questions.DiagramModeQuestion;
 import org.miradi.questions.InternalQuestionWithoutValues;
 import org.miradi.questions.MonitoringTreeConfigurationQuestion;
+import org.miradi.questions.PlanningViewSingleLevelQuestion;
 import org.miradi.questions.WorkPlanCategoryTypesQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
@@ -52,7 +54,7 @@ public class ViewData extends BaseObject
 
 	public Command[] buildCommandsToAddNode(ORef oRefToAdd) throws ParseException
 	{
-		if(getCurrentMode().equals(MODE_DEFAULT))
+		if(getCurrentMode().equals(DiagramModeQuestion.MODE_DEFAULT))
 			return new Command[0];
 		
 		CommandSetObjectData cmd = CommandSetObjectData.createAppendORefCommand(this, TAG_CHAIN_MODE_FACTOR_REFS, oRefToAdd);
@@ -61,7 +63,7 @@ public class ViewData extends BaseObject
 
 	public Command[] buildCommandsToRemoveNode(ORef oRefToRemove) throws ParseException
 	{
-		if(getCurrentMode().equals(MODE_DEFAULT))
+		if(getCurrentMode().equals(DiagramModeQuestion.MODE_DEFAULT))
 			return new Command[0];
 		
 		ORefList currentORefs = new ORefList(getData(TAG_CHAIN_MODE_FACTOR_REFS));
@@ -175,11 +177,11 @@ public class ViewData extends BaseObject
 	{
 		super.clear();
 
-		createCodeField(TAG_CURRENT_MODE);
+		createChoiceField(TAG_CURRENT_MODE, DiagramModeQuestion.class);
 		createRefListField(TAG_CHAIN_MODE_FACTOR_REFS);
 		createCodeListField(TAG_DIAGRAM_HIDDEN_TYPES, getQuestion(InternalQuestionWithoutValues.class));
 		createCodeListField(TAG_BUDGET_ROLLUP_REPORT_TYPES, getQuestion(WorkPlanCategoryTypesQuestion.class));
-		createCodeField(TAG_PLANNING_SINGLE_LEVEL_CHOICE);
+		createChoiceField(TAG_PLANNING_SINGLE_LEVEL_CHOICE, new PlanningViewSingleLevelQuestion(getProject()));
 		createRefField(TAG_TREE_CONFIGURATION_REF);
 		createChoiceField(TAG_ACTION_TREE_CONFIGURATION_CHOICE, getQuestion(ActionTreeConfigurationQuestion.class));
 		createChoiceField(TAG_MONITORING_TREE_CONFIGURATION_CHOICE, getQuestion(MonitoringTreeConfigurationQuestion.class));
@@ -208,8 +210,5 @@ public class ViewData extends BaseObject
 	public static final String TAG_ACTION_TREE_CONFIGURATION_CHOICE = "ActionTreeConfigurationChoice";
 	public static final String TAG_MONITORING_TREE_CONFIGURATION_CHOICE = "MonitoringTreeConfigurationChoice";
 	
-	public static final String MODE_DEFAULT = "";
-	public static final String MODE_STRATEGY_BRAINSTORM = "StrategyBrainstorm";
-
 	public static final String OBJECT_NAME = "ViewData";
 }

@@ -116,6 +116,7 @@ import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.StrategyFeasibilityQuestion;
 import org.miradi.questions.StrategyImpactQuestion;
+import org.miradi.questions.StrategyStatusQuestion;
 import org.miradi.questions.StrategyTaxonomyQuestion;
 import org.miradi.questions.StressContributionQuestion;
 import org.miradi.questions.StressIrreversibilityQuestion;
@@ -511,7 +512,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		ORef indicatorRef = indicatorRefs.getRefForType(Indicator.getObjectType());
 		Indicator indicator = Indicator.find(this, indicatorRef);
 		
-		final String STRING_TO_TRIM = "<br>\t  \t";
+		final String STRING_TO_TRIM = "<br/>\t  \t";
 		fillObjectUsingCommand(indicator, Indicator.TAG_RATING_SOURCE, STRING_TO_TRIM + RatingSourceQuestion.ONSITE_RESEARCH_CODE + STRING_TO_TRIM);
 		
 		return indicator;
@@ -527,7 +528,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 
 	public void turnOnDraft(Strategy strategy) throws Exception
 	{
-		fillObjectUsingCommand(strategy, Strategy.TAG_STATUS, Strategy.STATUS_DRAFT);
+		fillObjectUsingCommand(strategy, Strategy.TAG_STATUS, StrategyStatusQuestion.STATUS_DRAFT_CODE);
 	}
 	
 	public ProgressReport createAndPopulateProgressReport() throws Exception

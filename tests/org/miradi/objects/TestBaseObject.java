@@ -55,8 +55,8 @@ public class TestBaseObject extends TestCaseWithProject
 		BaseObject cause = Cause.find(getProject(), causeRef);
 		cause.loadFromJson2(new EnhancedJsonObject(sampleCommentJson));
 		String comments = cause.getData(Cause.TAG_COMMENTS);
-		assertTrue("does not contain <br>?", comments.contains(HtmlUtilities.BR_TAG));
-		assertFalse("should not contain non html new line?", comments.contains("\n"));
+		assertContains("does not contain <br>?", HtmlUtilities.BR_TAG, comments);
+		assertNotContains("should not contain non html new line?", "\n", comments);
 	}
 	
 	public void testGetBaseObjectLabelsOnASingleLine() throws Exception

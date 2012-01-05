@@ -27,8 +27,7 @@ import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.ViewData;
+import org.miradi.questions.DiagramModeQuestion;
 
 public class TestViewData extends TestCaseWithProject
 {
@@ -95,7 +94,7 @@ public class TestViewData extends TestCaseWithProject
 		Command[] inNormalMode = vd.buildCommandsToAddNode(oRefToAdd);
 		assertEquals("added when not in brainstorm mode?", 0, inNormalMode.length);
 		
-		vd.setData(ViewData.TAG_CURRENT_MODE, ViewData.MODE_STRATEGY_BRAINSTORM);
+		vd.setData(ViewData.TAG_CURRENT_MODE, DiagramModeQuestion.MODE_STRATEGY_BRAINSTORM);
 		Command[] inBrainstormMode = vd.buildCommandsToAddNode(oRefToAdd);
 		assertEquals("didn't add when in brainstorm mode?", 1, inBrainstormMode.length);
 		CommandSetObjectData cmd = (CommandSetObjectData)inBrainstormMode[0];
@@ -116,7 +115,7 @@ public class TestViewData extends TestCaseWithProject
 		Command[] inNormalMode = vd.buildCommandsToRemoveNode(oRefToRemove);
 		assertEquals("removed when not in brainstorm mode?", 0, inNormalMode.length);
 		
-		vd.setData(ViewData.TAG_CURRENT_MODE, ViewData.MODE_STRATEGY_BRAINSTORM);
+		vd.setData(ViewData.TAG_CURRENT_MODE, DiagramModeQuestion.MODE_STRATEGY_BRAINSTORM);
 		Command[] inBrainstormMode = vd.buildCommandsToRemoveNode(oRefToRemove);
 		assertEquals("didn't remove when in brainstorm mode?", 1, inBrainstormMode.length);
 		CommandSetObjectData cmd = (CommandSetObjectData)inBrainstormMode[0];
