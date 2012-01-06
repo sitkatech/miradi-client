@@ -31,7 +31,6 @@ import org.miradi.actions.Actions;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.objects.BaseObject;
 
 import com.inet.jortho.SpellChecker;
 
@@ -51,10 +50,15 @@ public class ObjectTextInputField extends ObjectDataInputField
 		addFocusListener();
 		setEditable(true);
 		field.getDocument().addDocumentListener(new DocumentEventHandler());
-		new TextAreaRightClickMouseHandler(getActions(), field);
+		createRightClickMouseHandler();
 		field.addKeyListener(new UndoRedoKeyHandler(getActions()));
 		
 		setDefaultFieldBorder();
+	}
+
+	protected void createRightClickMouseHandler()
+	{
+		new TextAreaRightClickMouseHandler(getActions(), field);
 	}	
 
 	@Override
@@ -66,15 +70,12 @@ public class ObjectTextInputField extends ObjectDataInputField
 	@Override
 	public String getText()
 	{
-		String text = field.getText();
-		text = BaseObject.convertToHtmlText(text);
-		return text;
+		return field.getText();
 	}
 
 	@Override
 	public void setText(String newValue)
 	{
-		newValue = BaseObject.convertToNonHtml(newValue);
 		setTextWithoutScrollingToMakeFieldVisible(newValue);
 		clearNeedsSave();
 	}
@@ -108,7 +109,7 @@ public class ObjectTextInputField extends ObjectDataInputField
 			SpellChecker.unregister(field);
 	}
 
-	private Actions getActions()
+	protected Actions getActions()
 	{
 		return EAM.getMainWindow().getActions();
 	}

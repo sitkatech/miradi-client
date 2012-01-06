@@ -25,7 +25,8 @@ import javax.swing.text.JTextComponent;
 import org.miradi.ids.BaseId;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.utils.MiradiTextPane;
+import org.miradi.utils.EditableHtmlPane;
+import org.miradi.utils.HtmlTextEditingHandler;
 
 public abstract class ObjectMultilineInputField extends ObjectTextInputField
 {
@@ -43,8 +44,14 @@ public abstract class ObjectMultilineInputField extends ObjectTextInputField
 
 	private static JTextComponent createTextComponent(MainWindow mainWindow, int initialVisibleRows, int columnsToUse) throws Exception
 	{
-		return new MiradiTextPane(mainWindow, columnsToUse, initialVisibleRows);
+		return new EditableHtmlPane(mainWindow, columnsToUse, initialVisibleRows);
 	}
+
+	@Override
+	protected void createRightClickMouseHandler()
+	{
+		new HtmlTextEditingHandler(getActions(), getTextField());
+	}	
 	
 	protected MainWindow getMainWindow()
 	{

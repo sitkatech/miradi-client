@@ -175,6 +175,11 @@ class TextAreaContextMenuListener extends MiradiCheckerListener
 		return textField;
 	}
 	
+	protected JPopupMenu getMenu()
+	{
+		return menu;
+	}
+	
 	private JPopupMenu menu;
 	private JTextComponent textField;
 	private Actions actions;

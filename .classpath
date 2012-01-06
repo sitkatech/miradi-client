@@ -13,6 +13,7 @@
 	<classpathentry kind="lib" path="/miradi-thirdparty/swingx/0.9.7/swingx-0.9.7.jar" sourcepath="/miradi-thirdparty/swingx/0.9.7/swingx-0.9.7-src.zip"/>
 	<classpathentry kind="lib" path="/miradi-thirdparty/jortho/bin/jortho.jar" sourcepath="/miradi-thirdparty/jortho/lib/JOrtho_0.5.zip"/>
 	<classpathentry kind="lib" path="/miradi-thirdparty/shef/0.5/sam.jar"/>
-	<classpathentry kind="lib" path="/miradi-thirdparty/shef/0.5/shef.jar"/>
+	<classpathentry kind="lib" path="/miradi-thirdparty/shef/0.5/shef.jar" sourcepath="/miradi-thirdparty/shef/0.5/shef-src.zip"/>
+	<classpathentry kind="lib" path="/miradi-thirdparty/shef/0.5/jtidy-8.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

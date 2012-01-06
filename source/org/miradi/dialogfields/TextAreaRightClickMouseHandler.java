@@ -59,15 +59,25 @@ public class TextAreaRightClickMouseHandler extends MouseAdapter
 	public JPopupMenu getRightClickMenu()
 	{
 		JPopupMenu menu = new JPopupMenu();
-		TextAreaContextMenuListener listener = new TextAreaContextMenuListener(menu, textField, actions);
+		TextAreaContextMenuListener listener = createTextAreaContextMenuListener(menu);
 		menu.addPopupMenuListener(listener);
 		
 		return menu;
 	}
+
+	protected TextAreaContextMenuListener createTextAreaContextMenuListener(JPopupMenu menu)
+	{
+		return new TextAreaContextMenuListener(menu, textField, actions);
+	}
 	
-	private JTextComponent getTextField()
+	protected JTextComponent getTextField()
 	{
 		return textField;
+	}
+	
+	protected Actions getActions()
+	{
+		return actions;
 	}
 	
 	private JTextComponent textField;
