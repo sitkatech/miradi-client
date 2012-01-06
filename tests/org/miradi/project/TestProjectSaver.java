@@ -61,6 +61,22 @@ public class TestProjectSaver extends TestCaseWithProject
 		saveProjectToString();
 	}
 	
+	public void testLoadWithUserEnteredTokensInText() throws Exception
+	{
+		Target target = getProject().createTarget();
+		final String sampleDataContainingSameTokenUsedByLoader = "Target name = Mangroves";
+		getProject().fillObjectUsingCommand(target, Target.TAG_COMMENTS, sampleDataContainingSameTokenUsedByLoader);
+		String contents = saveProjectToString();
+
+		Project project2 = ProjectForTesting.createProjectWithDefaultObjects(getName());
+		project2.clear();
+		UnicodeStringReader reader = new UnicodeStringReader(contents);
+		ProjectLoader.loadProject(reader, project2);
+		
+		final ProjectForTesting project = getProject();
+		verifyProjectsAreTheSame(project, project2);
+	}
+	
 	public void testLoadWithNewLines() throws Exception
 	{
 		Target target = getProject().createTarget();

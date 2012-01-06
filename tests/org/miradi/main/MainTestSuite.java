@@ -203,6 +203,7 @@ import org.miradi.utils.TestRtfWriter;
 import org.miradi.utils.TestStringChoiceMap;
 import org.miradi.utils.TestStringCodeListMap;
 import org.miradi.utils.TestStringMap;
+import org.miradi.utils.TestStringUtilities;
 import org.miradi.utils.TestTaxonomyFileLoader;
 import org.miradi.utils.TestThreatStressRatingHelper;
 import org.miradi.utils.TestTranslations;
@@ -306,7 +307,9 @@ public class MainTestSuite extends TestSuite
 		addTest(new TestSuite(TestOptionalDouble.class));
 		addTest(new TestSuite(TestAbstractTableExporter.class));
 		addTest(new TestSuite(TestFloatingPointFormatter.class));
-		addTest(new TestSuite(TestDoubleUtilities.class));		
+		addTest(new TestSuite(TestDoubleUtilities.class));	
+		addTest(new TestSuite(TestStringUtilities.class));
+		
 		// diagram package
 		addTest(new TestSuite(TestDiagramModel.class));
 		addTest(new TestSuite(TestDiagramView.class));
