@@ -29,17 +29,28 @@ public class HtmlUtilities
 			return "";
 		
 		String formatted =  XmlUtilities.getXmlEncoded(plainString);
-		String formattedFactorName = formatted.replace("\n", "<br>");
+		String formattedFactorName = replaceNonHtmlNewlines(formatted);
 		return formattedFactorName;
+	}
+
+	public static String replaceNonHtmlNewlines(String formatted)
+	{
+		return formatted.replace(NEW_LINE, BR_TAG);
+	}
+	
+	public static String replaceHtmlNewlines(String formatted)
+	{
+		return formatted.replace(BR_TAG, NEW_LINE);
 	}
 	
 	public static String removeNonHtmlNewLines(String htmlText)
 	{
-		htmlText = htmlText.replaceAll("\n", "");
+		htmlText = htmlText.replaceAll(NEW_LINE, "");
 		
 		return htmlText;
 	}
-	
+
 	public static final String BR_TAG = "<br/>";
 	public static final String BR_TAG_UNCLOSED = "<br>";
+	public static final String NEW_LINE = "\n";
 }
