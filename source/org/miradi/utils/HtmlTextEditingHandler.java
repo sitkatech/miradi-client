@@ -31,6 +31,7 @@ import javax.swing.text.JTextComponent;
 
 import net.atlanticbb.tantlinger.ui.text.CompoundUndoManager;
 import net.atlanticbb.tantlinger.ui.text.actions.HTMLEditorActionFactory;
+import net.atlanticbb.tantlinger.ui.text.actions.HTMLInlineAction;
 import net.atlanticbb.tantlinger.ui.text.actions.HTMLTextEditAction;
 
 import org.bushe.swing.action.ActionList;
@@ -52,8 +53,13 @@ public class HtmlTextEditingHandler extends TextAreaRightClickMouseHandler
 	
 	private void createEditorActions()
 	{        
-		actionList = new ActionList("editor-actions");
-		actionList.addAll(HTMLEditorActionFactory.createFontSizeActionList());        
+		actionList = new ActionList("style");
+		actionList.add(new HTMLInlineAction(HTMLInlineAction.BOLD));
+		actionList.add(new HTMLInlineAction(HTMLInlineAction.ITALIC));
+		actionList.add(new HTMLInlineAction(HTMLInlineAction.UNDERLINE));
+		actionList.add(new HTMLInlineAction(HTMLInlineAction.STRIKE));
+		actionList.add(null);
+		actionList.addAll(HTMLEditorActionFactory.createListElementActionList());
 	}
 	
 	@Override

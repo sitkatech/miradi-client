@@ -44,11 +44,18 @@ public class TextAreaHtmlContextMenuListener extends TextAreaContextMenuListener
 		super.popupMenuWillBecomeVisible(ev);
 		
 		getMenu().addSeparator();
-		
 		for (int index = 0; index < actionList.size(); ++index)
 		{
-			AbstractAction action = (AbstractAction) actionList.get(index);
-			getMenu().add(new JMenuItem(action));
+			final Object rawObject = actionList.get(index);
+			if (rawObject == null)
+			{
+				getMenu().addSeparator();
+			}
+			else
+			{
+				AbstractAction action = (AbstractAction) rawObject;
+				getMenu().add(new JMenuItem(action));
+			}
 		}
 	}
 	
