@@ -33,6 +33,7 @@ import org.miradi.ids.FactorId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.threatrating.RatingValueSet;
 import org.miradi.project.threatrating.ThreatRatingBundle;
+import org.miradi.utils.StringUtilities;
 
 public class ProjectLoader
 {
@@ -295,7 +296,7 @@ public class ProjectLoader
 		final boolean hasData = tokenizer.hasMoreTokens();
 		if (hasData)
 		{
-			String value = tokenizer.nextToken(EQUALS_DELIMITER_NEWLINE_POSTFIXED);
+			String value = StringUtilities.substringAfter(line, EQUALS_DELIMITER);
 			getProject().setObjectData(ref, tag, value);
 		}
 	}
@@ -368,4 +369,5 @@ public class ProjectLoader
 	
 	private static final String EQUALS_DELIMITER_TAB_PREFIXED = " \t=";
 	private static final String EQUALS_DELIMITER_NEWLINE_POSTFIXED = "=\n";
+	private static final String EQUALS_DELIMITER = "=";
 }
