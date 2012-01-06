@@ -63,7 +63,6 @@ public class EditableHtmlPane extends MiradiTextPane
 	@Override
 	public void setText(String text)
 	{
-		text = HtmlUtilities.removeNonHtmlNewLines(text);
 		String topText = removeInvalidTags(text);
 		super.setText("");
 		insertHtml(topText, 0);            
