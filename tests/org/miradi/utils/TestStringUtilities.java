@@ -33,6 +33,7 @@ public class TestStringUtilities extends MiradiTestCase
 	{
 		assertEquals("did not split correctly?", "", StringUtilities.substringAfter("something", "="));
 		assertEquals("did not split correctly?", "something", StringUtilities.substringAfter("=something", "="));
+		assertEquals("did not split correctly?", "", StringUtilities.substringAfter("something=", "="));
 		assertEquals("did not split correctly?", "something", StringUtilities.substringAfter("tag=something", "="));
 		assertEquals("did not split correctly?", "something=somethingelse", StringUtilities.substringAfter("tag=something=somethingelse", "="));
 	}
