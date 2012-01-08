@@ -23,7 +23,7 @@ package org.miradi.dialogfields;
 import org.miradi.dialogs.base.ModalDialogWithClose;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.EditableHtmlPane;
-import org.miradi.utils.HtmlTextEditingHandler;
+import org.miradi.utils.HtmlEditorRightClickMouseHandler;
 import org.miradi.utils.MiradiScrollPane;
 import org.miradi.utils.MiradiTextPane;
 import org.miradi.utils.TextPaneUndoRedoHandler;
@@ -37,7 +37,7 @@ public class PopupTextEditorDialog extends ModalDialogWithClose
 		super(mainWindow, title);
 		
 		popupTextField = new EditableHtmlPane(getMainWindow(), COLUMN_COUNT, ROW_COUNT);
-		new HtmlTextEditingHandler(getMainWindow().getActions(), popupTextField);
+		new HtmlEditorRightClickMouseHandler(getMainWindow().getActions(), popupTextField);
 		popupTextField.setText(initialText);
 		add(new MiradiScrollPane(popupTextField));
 		new TextPaneUndoRedoHandler(popupTextField).applyUndoRedoActions();

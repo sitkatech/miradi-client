@@ -39,9 +39,9 @@ import org.miradi.actions.Actions;
 import org.miradi.dialogfields.TextAreaHtmlContextMenuListener;
 import org.miradi.dialogfields.TextAreaRightClickMouseHandler;
 
-public class HtmlTextEditingHandler extends TextAreaRightClickMouseHandler
+public class HtmlEditorRightClickMouseHandler extends TextAreaRightClickMouseHandler
 {
-	public HtmlTextEditingHandler(Actions actionsToUse, JTextComponent editPaneToUse)
+	public HtmlEditorRightClickMouseHandler(Actions actionsToUse, JTextComponent editPaneToUse)
 	{
 		super(actionsToUse, editPaneToUse);
 		

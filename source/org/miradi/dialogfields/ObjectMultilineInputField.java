@@ -26,7 +26,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.utils.EditableHtmlPane;
-import org.miradi.utils.HtmlTextEditingHandler;
+import org.miradi.utils.HtmlEditorRightClickMouseHandler;
 
 public abstract class ObjectMultilineInputField extends ObjectTextInputField
 {
@@ -50,7 +50,7 @@ public abstract class ObjectMultilineInputField extends ObjectTextInputField
 	@Override
 	protected void createRightClickMouseHandler()
 	{
-		new HtmlTextEditingHandler(getActions(), getTextField());
+		new HtmlEditorRightClickMouseHandler(getActions(), getTextField());
 	}	
 	
 	protected MainWindow getMainWindow()
