@@ -36,7 +36,7 @@ import net.atlanticbb.tantlinger.ui.text.actions.HTMLTextEditAction;
 
 import org.bushe.swing.action.ActionList;
 import org.miradi.actions.Actions;
-import org.miradi.dialogfields.TextAreaHtmlContextMenuListener;
+import org.miradi.dialogfields.HtmlEditorContextMenuListener;
 import org.miradi.dialogfields.TextAreaRightClickMouseHandler;
 
 public class HtmlEditorRightClickMouseHandler extends TextAreaRightClickMouseHandler
@@ -63,9 +63,9 @@ public class HtmlEditorRightClickMouseHandler extends TextAreaRightClickMouseHan
 	}
 	
 	@Override
-	protected TextAreaHtmlContextMenuListener createTextAreaContextMenuListener(JPopupMenu menu)
+	protected HtmlEditorContextMenuListener createTextAreaContextMenuListener(JPopupMenu menu)
 	{
-		return new TextAreaHtmlContextMenuListener(menu, getTextField(), getActions(), actionList);
+		return new HtmlEditorContextMenuListener(menu, getTextField(), getActions(), actionList);
 	}
 	
 	private void updateState()
