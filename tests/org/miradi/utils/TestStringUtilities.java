@@ -31,10 +31,15 @@ public class TestStringUtilities extends MiradiTestCase
 	
 	public void testSubStringAfter()
 	{
-		assertEquals("did not split correctly?", "", StringUtilities.substringAfter("something", "="));
-		assertEquals("did not split correctly?", "something", StringUtilities.substringAfter("=something", "="));
-		assertEquals("did not split correctly?", "", StringUtilities.substringAfter("something=", "="));
-		assertEquals("did not split correctly?", "something", StringUtilities.substringAfter("tag=something", "="));
-		assertEquals("did not split correctly?", "something=somethingelse", StringUtilities.substringAfter("tag=something=somethingelse", "="));
+		verifySubstringAfter("", "something");
+		verifySubstringAfter("something", "=something");
+		verifySubstringAfter("", "something=");
+		verifySubstringAfter("something", "tag=something");
+		verifySubstringAfter("something=somethingelse", "tag=something=somethingelse");
+	}
+	
+	private void verifySubstringAfter(final String expectedValue, final String testString)
+	{
+		assertEquals("did not split correctly?", expectedValue, StringUtilities.substringAfter(testString, "="));
 	}
 }
