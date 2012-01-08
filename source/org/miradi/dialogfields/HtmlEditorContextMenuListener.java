@@ -29,9 +29,9 @@ import javax.swing.text.JTextComponent;
 import org.bushe.swing.action.ActionList;
 import org.miradi.actions.Actions;
 
-public class TextAreaHtmlContextMenuListener extends TextAreaContextMenuListener
+public class HtmlEditorContextMenuListener extends TextAreaContextMenuListener
 {
-	public TextAreaHtmlContextMenuListener(JPopupMenu menuToUse, JTextComponent textFieldToUse, Actions actionsToUse, ActionList actionListToUse)
+	public HtmlEditorContextMenuListener(JPopupMenu menuToUse, JTextComponent textFieldToUse, Actions actionsToUse, ActionList actionListToUse)
 	{
 		super(menuToUse, textFieldToUse, actionsToUse);
 		
