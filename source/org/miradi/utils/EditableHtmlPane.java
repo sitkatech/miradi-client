@@ -72,12 +72,14 @@ public class EditableHtmlPane extends MiradiTextPane
 	@Override
 	public String getText()
 	{
-		return removeInvalidTags(super.getText());          
+		final String text = super.getText();
+		String removeInvalidTags = removeInvalidTags(text);
+		return HtmlUtilities.replaceNonHtmlNewlines(removeInvalidTags);
 	}
 
 	private String removeInvalidTags(String html)
 	{
-		final String INVALID_TAGS[] = {"html", "head", "body", "title"};
+		final String INVALID_TAGS[] = {"html", "head", "body", "title", "div"};
 		for(int i = 0; i < INVALID_TAGS.length; i++)
 		{
 			html = deleteOccurance(html, '<' + INVALID_TAGS[i] + '>');
