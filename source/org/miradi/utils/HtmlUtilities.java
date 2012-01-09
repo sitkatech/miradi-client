@@ -57,7 +57,7 @@ public class HtmlUtilities
 	
 	public static String stripAllHtmlTags(String text)
 	{
-		return  text.replaceAll("\\<.*?>","");
+		return stripHtmlTag(text, "");
 	}
 
 	public static final String BR_TAG = "<br/>";
