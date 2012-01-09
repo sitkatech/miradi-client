@@ -196,6 +196,7 @@ import org.miradi.utils.TestDiagramCorruptionDetector;
 import org.miradi.utils.TestDoubleUtilities;
 import org.miradi.utils.TestEnhancedJsonObject;
 import org.miradi.utils.TestFloatingPointFormatter;
+import org.miradi.utils.TestHtmlUtilities;
 import org.miradi.utils.TestLogging;
 import org.miradi.utils.TestOptionalDouble;
 import org.miradi.utils.TestPointList;
@@ -309,7 +310,7 @@ public class MainTestSuite extends TestSuite
 		addTest(new TestSuite(TestFloatingPointFormatter.class));
 		addTest(new TestSuite(TestDoubleUtilities.class));	
 		addTest(new TestSuite(TestStringUtilities.class));
-		
+		addTest(new TestSuite(TestHtmlUtilities.class));
 		// diagram package
 		addTest(new TestSuite(TestDiagramModel.class));
 		addTest(new TestSuite(TestDiagramView.class));
