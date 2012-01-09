@@ -29,6 +29,13 @@ public class TestHtmlUtilities extends MiradiTestCase
 		super(name);
 	}
 	
+	public void testReplaceHtmlTags()
+	{
+		verifyReplacingTags("sometext<br />", "br", "", "sometext");
+		verifyReplacingTags("sometext<br/>", "br", "", "sometext");
+		verifyReplacingTags("sometext<br>", "br", "", "sometext");
+	}
+	
 	public void testStripHtmlTags()
 	{
 		final String[] htmlTagsToStrip = new String[]{"html", "body", };
@@ -59,5 +66,10 @@ public class TestHtmlUtilities extends MiradiTestCase
 	private void verifyStringHtmlTag(String textWithHtmlTags, String htmlTag, String expectedValue)
 	{
 		assertEquals("html tag was nore stripped correctly", expectedValue, HtmlUtilities.stripHtmlTag(textWithHtmlTags, htmlTag));
+	}
+	
+	private void verifyReplacingTags(final String htmlText, final String tagToReplace, final String replacement, final String expectedValue)
+	{
+		assertEquals("html tag was not replaced?", expectedValue, HtmlUtilities.replaceHtmlTags(htmlText, tagToReplace, replacement));
 	}
 }
