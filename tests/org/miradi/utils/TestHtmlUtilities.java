@@ -29,7 +29,7 @@ public class TestHtmlUtilities extends MiradiTestCase
 		super(name);
 	}
 	
-	public void testStripHtmlTags()
+	public void testStripAllHtmlTags()
 	{
 		verifyStringHtmlTags("", "");
 		verifyStringHtmlTags("<html>", "");
