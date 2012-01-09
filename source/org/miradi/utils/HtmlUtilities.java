@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.utils;
 
+import java.util.regex.Pattern;
+
 import org.martus.util.xml.XmlUtilities;
 
 public class HtmlUtilities
@@ -72,7 +74,8 @@ public class HtmlUtilities
 	
 	public static String replaceHtmlTags(String text, String tagToReplace, final String replacement)
 	{
-		return text.replaceAll("\\<" + tagToReplace + ".*?>", replacement);
+		final Pattern compiledRegex = Pattern.compile("\\</?" + tagToReplace + ".*?>", Pattern.CASE_INSENSITIVE);
+		return compiledRegex.matcher(text).replaceAll(replacement).trim();
 	}
 
 	public static final String BR_TAG = "<br/>";
