@@ -40,7 +40,7 @@ public class HtmlUtilities
 	
 	public static String replaceHtmlNewlines(String formatted)
 	{
-		return formatted.replace(BR_TAG, NEW_LINE);
+		return replaceHtmlTags(formatted, "br", NEW_LINE);
 	}
 	
 	public static String removeNonHtmlNewLines(String htmlText)
@@ -60,14 +60,19 @@ public class HtmlUtilities
 		return text;
 	}
 	
-	public static String stripHtmlTag(String text,  String htmlTag)
-	{
-		return  text.replaceAll("\\<" + htmlTag + ".*?>","");
-	}
-	
 	public static String stripAllHtmlTags(String text)
 	{
 		return stripHtmlTag(text, "");
+	}
+	
+	public static String stripHtmlTag(String text,  String htmlTag)
+	{
+		return  replaceHtmlTags(text, htmlTag, "");
+	}
+	
+	public static String replaceHtmlTags(String text, String tagToReplace, final String replacement)
+	{
+		return text.replaceAll("\\<" + tagToReplace + ".*?>", replacement);
 	}
 
 	public static final String BR_TAG = "<br/>";
