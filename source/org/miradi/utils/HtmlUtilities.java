@@ -50,6 +50,16 @@ public class HtmlUtilities
 		return htmlText;
 	}
 	
+	public static String stripHtmlTags(String text,  final String[] htmlTags)
+	{
+		for (int index = 0; index < htmlTags.length; ++index)
+		{
+			text = stripHtmlTag(text, htmlTags[index]);
+		}
+		
+		return text;
+	}
+	
 	public static String stripHtmlTag(String text,  String htmlTag)
 	{
 		return  text.replaceAll("\\<" + htmlTag + ".*?>","");

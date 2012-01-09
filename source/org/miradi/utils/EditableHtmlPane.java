@@ -80,24 +80,6 @@ public class EditableHtmlPane extends MiradiTextPane
 	private String removeInvalidTags(String html)
 	{
 		final String INVALID_TAGS[] = {"html", "head", "body", "title", "div"};
-		for(int i = 0; i < INVALID_TAGS.length; i++)
-		{
-			html = deleteOccurance(html, '<' + INVALID_TAGS[i] + '>');
-			html = deleteOccurance(html, "</" + INVALID_TAGS[i] + '>');
-		}
-
-		return html.trim();
-	}
-
-	private String deleteOccurance(String text, String word)
-	{
-		StringBuffer stringBuffer = new StringBuffer(text);       
-		int index;
-		while((index = stringBuffer.toString().toLowerCase().indexOf(word.toLowerCase())) != -1)
-		{           
-			stringBuffer.delete(index, index + word.length());            
-		}
-		
-		return stringBuffer.toString();
+		return HtmlUtilities.stripHtmlTags(html, INVALID_TAGS);
 	}
 }
