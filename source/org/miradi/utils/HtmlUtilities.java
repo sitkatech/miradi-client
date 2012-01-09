@@ -49,6 +49,11 @@ public class HtmlUtilities
 		
 		return htmlText;
 	}
+	
+	public static String stripAllHtmlTags(String text)
+	{
+		return  text.replaceAll("\\<.*?>","");
+	}
 
 	public static final String BR_TAG = "<br/>";
 	public static final String BR_TAG_UNCLOSED = "<br>";
