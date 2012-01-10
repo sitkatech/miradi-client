@@ -24,6 +24,7 @@ import java.util.Vector;
 
 import javax.xml.namespace.NamespaceContext;
 
+import org.martus.util.xml.XmlUtilities;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ThreatStressRatingEnsurer;
 import org.miradi.project.Project;
@@ -124,7 +125,9 @@ public class XmpzXmlImporter extends AbstractXmlImporter implements XmpzXmlConst
 	private void importDeletedOrphanText() throws Exception
 	{
 		Node node = getNode(getRootNode(), XmpzXmlConstants.DELETED_ORPHANS_ELEMENT_NAME);
-		getProject().appendToQuarantineFile(getSafeNodeContent(node));
+		String nodeContent = getSafeNodeContent(node);
+		nodeContent = XmlUtilities.getXmlEncoded(nodeContent);
+		getProject().appendToQuarantineFile(nodeContent);
 	}
 
 	private void importThreatStressRatings() throws Exception

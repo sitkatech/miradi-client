@@ -31,6 +31,7 @@ import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
+import org.martus.util.xml.XmlUtilities;
 import org.miradi.exceptions.CpmzVersionTooOldException;
 import org.miradi.exceptions.UnsupportedNewVersionSchemaException;
 import org.miradi.exceptions.ValidationException;
@@ -133,6 +134,7 @@ abstract public class AbstractXmlImporter
 	private void importField(Node node, String[] elements, ORef ref, String destinationTag) throws Exception 
 	{
 		String data = getPathData(node, elements);
+		data = XmlUtilities.getXmlEncoded(data);
 		importField(ref, destinationTag, data);
 	}
 	

@@ -26,6 +26,7 @@ import java.awt.Point;
 import org.martus.util.MultiCalendar;
 import org.martus.util.UnicodeStringWriter;
 import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
+import org.martus.util.xml.XmlUtilities;
 import org.miradi.ids.IdList;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.DateUnit;
@@ -312,7 +313,9 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 		for(int i = 0; i < 32; ++i)
 			allAscii[i] = '-';
 		allAscii[127] = '-';
-		getProject().getMetadata().setData(ProjectMetadata.TAG_PROJECT_NAME, new String(allAscii));
+		String dataValue = new String(allAscii);
+		dataValue = XmlUtilities.getXmlEncoded(dataValue);
+		getProject().getMetadata().setData(ProjectMetadata.TAG_PROJECT_NAME, dataValue);
 		validateUsingStringWriter();
 	}
 
@@ -351,6 +354,7 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 		validateUsingStringWriter();
 		
 		String fakeOrphanText = "blah blah<>{}\\/[]\"!";
+		fakeOrphanText = XmlUtilities.getXmlEncoded(fakeOrphanText);
 		getProject().appendToQuarantineFile(fakeOrphanText);
 		Project imported = validateUsingStringWriter();
 		assertContains(fakeOrphanText, imported.getQuarantineFileContents());

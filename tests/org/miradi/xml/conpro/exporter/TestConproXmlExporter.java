@@ -39,6 +39,7 @@ import org.miradi.objects.ProgressPercent;
 import org.miradi.objects.ProgressReport;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.Strategy;
+import org.miradi.objects.Target;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.StrategyClassificationQuestion;
@@ -61,6 +62,13 @@ public class TestConproXmlExporter extends TestCaseWithProject
 		super.setUp();
 		getProject().populateEverything();
 		getProject().createIndicatorContainingWhiteSpacePaddedCode();
+	}
+	
+	public void testExportingWhenDataContainsHtmlTags() throws Exception
+	{
+		Target target = getProject().createTarget();
+		getProject().fillObjectUsingCommand(target, Target.TAG_LABEL, "<b>Target</b> with <br/>2 lines of text");
+		verifyExport();
 	}
 	
 	public void testValidatedExport() throws Exception
