@@ -37,7 +37,7 @@ public class HtmlUtilities
 
 	public static String replaceNonHtmlNewlines(String formatted)
 	{
-		return formatted.replace(NEW_LINE, BR_TAG);
+		return formatted.replaceAll(NEW_LINE, BR_TAG);
 	}
 	
 	public static String replaceHtmlNewlines(String formatted)
@@ -76,6 +76,11 @@ public class HtmlUtilities
 	{
 		final Pattern compiledRegex = Pattern.compile("\\</?" + tagToReplace + ".*?>", Pattern.CASE_INSENSITIVE);
 		return compiledRegex.matcher(text).replaceAll(replacement).trim();
+	}
+	
+	public static String fixHtmlNewLineSingleTags(String text)
+	{
+		return text.replaceAll(BR_TAG_UNCLOSED, BR_TAG);
 	}
 
 	public static final String BR_TAG = "<br/>";
