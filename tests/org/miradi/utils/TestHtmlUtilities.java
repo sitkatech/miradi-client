@@ -45,7 +45,6 @@ public class TestHtmlUtilities extends MiradiTestCase
 	public void testStripHtmlTag()
 	{
 		verifyStringHtmlTag("<html>someText</html>", "html", "someText");
-		verifyStringHtmlTag("<html>someText</html>", "html", "someText");
 		verifyStringHtmlTag("<HTML>someText</HTML>", "html", "someText");
 		verifyStringHtmlTag("<html>someText</html>", "body", "<html>someText</html>");
 		verifyStringHtmlTag("<html><body>someText<body/></html>", "body", "<html>someText</html>");
