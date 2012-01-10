@@ -23,7 +23,6 @@ import java.io.File;
 import java.io.IOException;
 
 import org.martus.util.UnicodeWriter;
-import org.martus.util.xml.XmlUtilities;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
@@ -132,7 +131,7 @@ public abstract class XmlExporter
 	{
 		data = data.replaceAll(HtmlUtilities.BR_TAG, "\n");
 		data = data.replaceAll(HtmlUtilities.BR_TAG_UNCLOSED, "\n");
-		data = XmlUtilities.getXmlEncoded(data);
+		data = HtmlUtilities.stripAllHtmlTags(data);
 		out.write(data);
 	}
 	

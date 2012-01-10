@@ -71,6 +71,29 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		super(name);
 	}
 	
+	public void testDataWithHtmlTags() throws Exception
+	{
+		Target target = getProject().createTarget();
+		getProject().fillObjectUsingCommand(target, Target.TAG_LABEL, "<b>Target</b> with <br/>2 lines of text");
+		
+		File beforeXmlOutFile = createTempFileFromName("$$$exportOnlyActiveIndictorsTest.xml");
+		ProjectForTesting projectToFill = ProjectForTesting.createProjectWithDefaultObjects("ProjectToFill");
+		try
+		{
+			exportProject(beforeXmlOutFile, getProject());
+			importProject(beforeXmlOutFile, projectToFill);
+			
+			ORefList targetRefs = projectToFill.getTargetPool().getRefList();
+			Target importedTarget = Target.find(projectToFill, targetRefs.getFirstElement());
+			assertEquals("html tags not stripped?", "Target with <br/>2 lines of text", importedTarget.getLabel());
+		}
+		finally
+		{
+			beforeXmlOutFile.delete();
+			projectToFill.close();
+		}
+	}
+	
 	public void testOnlyIndicatorsForCurrentTargetMode() throws Exception
 	{
 		Target target = getProject().createTarget();
@@ -372,19 +395,20 @@ public class TestConproXmlImporter extends TestCaseWithProject
 	{
 		ProjectMetadata projectMetadata = projectToFill1.getMetadata();
 		String projectScope = projectMetadata.getProjectScope();
-		String expectedProjectScopeValue = "Project Description:\nSome project description\n\nSite/Scope Description:\nSome project scope";
+		String expectedProjectScopeValue = "Project Description:<br/>Some project description<br/><br/>Site/Scope Description:<br/>Some project scope";
 		assertEquals("wrong project scope?", expectedProjectScopeValue, projectScope);
 		
-		String projectDescription = expectedProjectScopeValue.replaceAll("Project Description:\n", "");
-		final String scopeLabel = "Site/Scope Description:";
-		int scopeLabelIndex = expectedProjectScopeValue.indexOf(scopeLabel);
-		projectDescription = projectDescription.substring(0, scopeLabelIndex - scopeLabel.length());
+		String projectDescription = expectedProjectScopeValue.replaceAll("Project Description:<br/>", "");
+		final String scopeLabel = "Site/Scope Description:<br/>";
+		int scopeLabelIndex = projectDescription.indexOf(scopeLabel);
+		projectDescription = projectDescription.substring(0, scopeLabelIndex);
+		projectDescription = projectDescription.replaceAll("<br/>", "");
 		projectToFill1.setObjectData(projectMetadata, ProjectMetadata.TAG_PROJECT_DESCRIPTION, projectDescription);
 		
 		int lastScopeLabelIndex = projectScope.lastIndexOf(scopeLabel);
 		projectScope = projectScope.substring(lastScopeLabelIndex, projectScope.length());
 		projectScope = projectScope.replaceAll(scopeLabel, "");
-		projectScope = projectScope.replaceAll("\n", "");
+		projectScope = projectScope.replaceAll("<br/>", "");
 		projectToFill1.setObjectData(projectMetadata, ProjectMetadata.TAG_PROJECT_SCOPE, projectScope);
 	}
 	

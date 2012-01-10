@@ -23,6 +23,7 @@ import java.awt.Dimension;
 import java.awt.Point;
 
 import org.martus.util.MultiCalendar;
+import org.martus.util.xml.XmlUtilities;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.PersistentDiagramModel;
@@ -189,8 +190,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_PROJECT_LATITUDE, "40");
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_PROJECT_SCOPE, "Some project scope");
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_PROJECT_DESCRIPTION, "Some project description");
-		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_PROJECT_VISION, "Some project \"vision\"" + HtmlUtilities.BR_TAG + HtmlUtilities.BR_TAG + "With multiple lines!");
-		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENTS, "TNC planning team comment, mentioning that x > 2 && x < 4");
+		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_PROJECT_VISION, encodeXml("Some project \"vision\"" + HtmlUtilities.BR_TAG + HtmlUtilities.BR_TAG + "With multiple lines!"));
+		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENTS, encodeXml("TNC planning team comment, mentioning that x > 2 && x < 4"));
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_TNC_LESSONS_LEARNED, "TNC lessons learned");
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS, "Other Related Projects");
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_COUNTRIES, createSampleCountriesCodeList().toString());
@@ -218,6 +219,11 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_PROJECT_SHARING_CODE, ProjectSharingQuestion.SHARE_WITH_ANYONE);
 	}
 	
+	private String encodeXml(String data)
+	{
+		return XmlUtilities.getXmlEncoded(data);
+	}
+
 	private void fillWwfProjectData() throws Exception
 	{
 		ORef wwfProjectDataRef = getSingletonObjectRef(WwfProjectData.getObjectType());

@@ -36,6 +36,7 @@ import javax.xml.xpath.XPathFactory;
 
 import org.martus.util.MultiCalendar;
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
+import org.martus.util.xml.XmlUtilities;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.ChainWalker;
@@ -106,6 +107,7 @@ import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.DoubleUtilities;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.xml.conpro.ConProMiradiCodeMapHelper;
 import org.miradi.xml.conpro.ConProMiradiXml;
@@ -985,6 +987,8 @@ public class ConproXmlImporter implements ConProMiradiXml
 	private void importField(Node node, String[] elements, ORef ref, String tag) throws Exception 
 	{
 		String data = getPathData(node, elements);
+		data = XmlUtilities.getXmlEncoded(data);
+		data = HtmlUtilities.replaceNonHtmlNewlines(data);
 		importField(ref, tag, data);
 	}
 
