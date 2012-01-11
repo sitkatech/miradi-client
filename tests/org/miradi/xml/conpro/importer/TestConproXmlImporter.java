@@ -400,8 +400,8 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		
 		String projectDescription = expectedProjectScopeValue.replaceAll("Project Description:<br/>", "");
 		final String scopeLabel = "Site/Scope Description:<br/>";
-		int scopeLabelIndex = projectDescription.indexOf(scopeLabel);
-		projectDescription = projectDescription.substring(0, scopeLabelIndex);
+		final int scopeLabelStartIndex = projectDescription.indexOf(scopeLabel);
+		projectDescription = projectDescription.substring(0, scopeLabelStartIndex);
 		projectDescription = projectDescription.replaceAll("<br/>", "");
 		projectToFill1.setObjectData(projectMetadata, ProjectMetadata.TAG_PROJECT_DESCRIPTION, projectDescription);
 		
