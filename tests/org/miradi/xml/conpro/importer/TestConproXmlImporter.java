@@ -77,7 +77,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		getProject().fillObjectUsingCommand(target, Target.TAG_LABEL, "<b>Target</b> with <br/>2 lines of text");
 		
 		File beforeXmlOutFile = createTempFile();
-		ProjectForTesting projectToFill = ProjectForTesting.createProjectWithDefaultObjects("ProjectToFill");
+		ProjectForTesting projectToFill = ProjectForTesting.createProjectWithDefaultObjects(getName());
 		try
 		{
 			exportProject(beforeXmlOutFile, getProject());
