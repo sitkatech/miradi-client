@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-11 15:18-0600\n"
+"POT-Creation-Date: 2012-01-11 16:31-0600\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -5647,7 +5647,7 @@ msgstr "Консультант проекту"
 msgid "Project Corruption Detected"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:919
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:923
 msgid "Project Description:"
 msgstr "Опис проекту:"
 
@@ -6210,7 +6210,7 @@ msgstr "Опція Проста оцінка загроз"
 msgid "Simple viability"
 msgstr "Проста життєздатність"
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:924
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:928
 msgid "Site/Scope Description:"
 msgstr "Опис Ділянки або Зони діяльності:"
 
