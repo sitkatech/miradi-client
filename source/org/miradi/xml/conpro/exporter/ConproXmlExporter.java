@@ -903,12 +903,12 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	private String getConcatenatedProjectDescriptionAndScope()
 	{
 		String concatenatedDescriptionAndScope = "";
-		String projectDescriptionToConcatenate = concatenate(getProjectDescriptionLabel(), getProjectMetadata().getProjectDescription());
+		String projectDescriptionToConcatenate = createProjectDescription(getProjectMetadata().getProjectDescription());
 		concatenatedDescriptionAndScope += projectDescriptionToConcatenate;
 		if (concatenatedDescriptionAndScope.length() > 0)
 			concatenatedDescriptionAndScope += "\n\n";
 		
-		String projectScopeToConcatenate = concatenate(getSiteScopeLabel(), getProjectMetadata().getProjectScope());
+		String projectScopeToConcatenate = createSiteScopeDescription(getProjectMetadata().getProjectScope());
 		concatenatedDescriptionAndScope +=projectScopeToConcatenate;
 		
 		return concatenatedDescriptionAndScope;
@@ -923,8 +923,18 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	{
 		return EAM.text("Site/Scope Description:");
 	}
+	
+	public static String createProjectDescription(final String description)
+	{
+		return ConproXmlExporter.concatenate(getProjectDescriptionLabel(), description);
+	}
+	
+	public static String createSiteScopeDescription(final String description)
+	{
+		return ConproXmlExporter.concatenate(ConproXmlExporter.getSiteScopeLabel(), description);
+	}
 
-	public static String concatenate(final String fieldLabel, String description)
+	private static String concatenate(final String fieldLabel, String description)
 	{
 		String concatenated = "";
 		if (description.length() > 0)
