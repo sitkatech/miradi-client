@@ -401,11 +401,11 @@ public class TestConproXmlImporter extends TestCaseWithProject
 	
 	private void verifyConcatenatedProjectScopeAndDescription(ProjectForTesting projectToFill1) throws Exception
 	{
-		ProjectMetadata projectMetadata = projectToFill1.getMetadata();
-		String projectScope = projectMetadata.getProjectScope();
-		String expectedProjectDescription = HtmlUtilities.replaceNonHtmlNewlines(ConproXmlExporter.createProjectDescription("Some project description"));
-		String expectedSiteScopeDescription = HtmlUtilities.replaceNonHtmlNewlines(ConproXmlExporter.createSiteScopeDescription("Some project scope"));
-		String expectedProjectScopeValue = HtmlUtilities.replaceNonHtmlNewlines(ConproXmlExporter.getConcatenatedWithNewlines(expectedProjectDescription, expectedSiteScopeDescription));
+		final ProjectMetadata projectMetadata = projectToFill1.getMetadata();
+		final String projectScope = projectMetadata.getProjectScope();
+		final String expectedProjectDescription = HtmlUtilities.replaceNonHtmlNewlines(ConproXmlExporter.createProjectDescription("Some project description"));
+		final String expectedSiteScopeDescription = HtmlUtilities.replaceNonHtmlNewlines(ConproXmlExporter.createSiteScopeDescription("Some project scope"));
+		final String expectedProjectScopeValue = HtmlUtilities.replaceNonHtmlNewlines(ConproXmlExporter.getConcatenatedWithNewlines(expectedProjectDescription, expectedSiteScopeDescription));
 		
 		assertEquals("wrong project scope?", expectedProjectScopeValue, projectScope);
 	}
