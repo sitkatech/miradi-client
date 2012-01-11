@@ -43,9 +43,14 @@ public class TestHtmlUtilities extends MiradiTestCase
 	
 	public void testReplaceHtmlTags()
 	{
-		verifyReplacingTags("sometext<br />", "br", "", "sometext");
-		verifyReplacingTags("sometext<br/>", "br", "", "sometext");
 		verifyReplacingTags("sometext<br>", "br", "", "sometext");
+		verifyReplacingTags("sometext<br >", "br", "", "sometext");
+		verifyReplacingTags("<br>sometext</br>", "br", "", "sometext");
+		verifyReplacingTags("<br>sometext</br >", "br", "", "sometext");
+		verifyReplacingTags("sometext<br/>", "br", "", "sometext");
+		verifyReplacingTags("sometext<br />", "br", "", "sometext");
+		verifyReplacingTags("sometext<font size=\"4\">", "font", "", "sometext");
+		verifyReplacingTags("sometext<font size=\"4\" >", "font", "", "sometext");
 	}
 	
 	public void testStripHtmlTags()
