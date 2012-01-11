@@ -905,9 +905,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		final String projectDescriptionToConcatenate = createProjectDescription(getProjectMetadata().getProjectDescription());
 		final String projectScopeToConcatenate = createSiteScopeDescription(getProjectMetadata().getProjectScope());
 		
-		String concatenatedDescriptionAndScope = getConcatenatedWithNewlines(projectDescriptionToConcatenate, projectScopeToConcatenate);
-		
-		return concatenatedDescriptionAndScope;
+		return getConcatenatedWithNewlines(projectDescriptionToConcatenate, projectScopeToConcatenate);
 	}
 
 	protected String getConcatenatedWithNewlines(final String projectDescriptionToConcatenate, final String projectScopeToConcatenate)
