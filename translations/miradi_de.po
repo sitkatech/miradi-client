@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-10 13:16-0600\n"
+"POT-Creation-Date: 2012-01-11 15:18-0600\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -5826,7 +5826,7 @@ msgstr "ProjektberaterIn"
 msgid "Project Corruption Detected"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:906
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:919
 msgid "Project Description:"
 msgstr "Projektbeschreibung:"
 
@@ -6425,7 +6425,7 @@ msgstr "Einfache Bedrohungsbewertung"
 msgid "Simple viability"
 msgstr "Einfache Lebensfähigkeit"
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:911
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:924
 msgid "Site/Scope Description:"
 msgstr "Gebiets-/Planungsraumbeschreibung"
 
