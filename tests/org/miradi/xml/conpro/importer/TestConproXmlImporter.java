@@ -401,8 +401,8 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		String expectedProjectScopeValue = expectedProjectDescription + "<br/><br/>" + expectedSiteScopeDescription;
 		assertEquals("wrong project scope?", expectedProjectScopeValue, projectScope);
 		
-		final String projectDescription = extractProjectDescription(expectedProjectScopeValue);
-		projectToFill1.setObjectData(projectMetadata, ProjectMetadata.TAG_PROJECT_DESCRIPTION, projectDescription);
+		final String extractedProjectDescription = extractProjectDescription(expectedProjectScopeValue);
+		projectToFill1.setObjectData(projectMetadata, ProjectMetadata.TAG_PROJECT_DESCRIPTION, extractedProjectDescription);
 		
 		final String extractedProjectScope = extractProjectScope(projectScope);
 		projectToFill1.setObjectData(projectMetadata, ProjectMetadata.TAG_PROJECT_SCOPE, extractedProjectScope);
