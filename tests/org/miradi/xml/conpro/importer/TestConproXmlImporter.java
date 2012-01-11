@@ -324,6 +324,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 			verifyObjectiveLabelsAndUnsplitLabel(projectToFill1);
 			unsplitStrategyLabels(projectToFill1);
 			verifyConcatenatedProjectScopeAndDescription(projectToFill1);
+			setValuesAgainThatWereLostDuringImport(projectToFill1);
 			stripDelimiterTagFromObjectiveNames(projectToFill1);
 	
 			workAroundCpmzMissingEndDateField(projectToFill1);
@@ -338,6 +339,12 @@ public class TestConproXmlImporter extends TestCaseWithProject
 			afterXmlOutFile.delete();
 			projectToFill1.close();
 		}
+	}
+
+	private void setValuesAgainThatWereLostDuringImport(ProjectForTesting projectToFill1) throws Exception
+	{
+		projectToFill1.fillObjectUsingCommand(projectToFill1.getMetadata(), ProjectMetadata.TAG_PROJECT_SCOPE, "Some project scope");
+		projectToFill1.fillObjectUsingCommand(projectToFill1.getMetadata(), ProjectMetadata.TAG_PROJECT_DESCRIPTION, "Some project description");
 	}
 
 	private void workAroundCpmzMissingEndDateField(ProjectForTesting projectToFill1) throws Exception
@@ -400,38 +407,8 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		String expectedSiteScopeDescription = HtmlUtilities.replaceNonHtmlNewlines(ConproXmlExporter.createSiteScopeDescription("Some project scope"));
 		String expectedProjectScopeValue = expectedProjectDescription + "<br/><br/>" + expectedSiteScopeDescription;
 		assertEquals("wrong project scope?", expectedProjectScopeValue, projectScope);
-		
-		final String extractedProjectDescription = extractProjectDescription(expectedProjectScopeValue);
-		projectToFill1.setObjectData(projectMetadata, ProjectMetadata.TAG_PROJECT_DESCRIPTION, extractedProjectDescription);
-		
-		final String extractedProjectScope = extractProjectScope(projectScope);
-		projectToFill1.setObjectData(projectMetadata, ProjectMetadata.TAG_PROJECT_SCOPE, extractedProjectScope);
 	}
 
-	private String extractProjectScope(String projectScope)
-	{
-		int lastScopeLabelIndex = projectScope.lastIndexOf(getSiteScopeLabel());
-		projectScope = projectScope.substring(lastScopeLabelIndex, projectScope.length());
-		projectScope = projectScope.replaceAll(getSiteScopeLabel(), "");
-		projectScope = projectScope.replaceAll("<br/>", "");
-		
-		return projectScope;
-	}
-
-	private String extractProjectDescription(String expectedProjectScopeValue)
-	{
-		String projectDescription = expectedProjectScopeValue.replaceAll("Project Description:<br/>", "");
-		final int scopeLabelStartIndex = projectDescription.indexOf(getSiteScopeLabel());
-		projectDescription = projectDescription.substring(0, scopeLabelStartIndex);
-		projectDescription = projectDescription.replaceAll("<br/>", "");
-		return projectDescription;
-	}
-	
-	private String getSiteScopeLabel()
-	{
-		return ConproXmlExporter.getSiteScopeLabel() + "<br/>";
-	}
-	
 	private void stripDelimiterTagFromObjectiveNames(ProjectForTesting projectToFill1) throws Exception
 	{
 		ORefList objectiveRefs = projectToFill1.getObjectivePool().getORefList();
