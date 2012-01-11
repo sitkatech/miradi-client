@@ -29,6 +29,18 @@ public class TestHtmlUtilities extends MiradiTestCase
 		super(name);
 	}
 	
+	public void testAppendNewlineToEndDivTags()
+	{
+		verifyDivWasAppendedWithNewline("sometext</div>\n", "sometext</div>");
+		verifyDivWasAppendedWithNewline("sometext<div/>\n", "sometext<div/>");
+		
+	}
+
+	protected void verifyDivWasAppendedWithNewline(final String expectedValue,	final String htmlText)
+	{
+		assertEquals("div was not appended with newline?", expectedValue, HtmlUtilities.appendNewlineToEndDivTags(htmlText));
+	}
+	
 	public void testReplaceHtmlTags()
 	{
 		verifyReplacingTags("sometext<br />", "br", "", "sometext");

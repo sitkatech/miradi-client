@@ -90,9 +90,12 @@ public class HtmlUtilities
 		return compiledRegex.matcher(text).replaceAll(replacement).trim();
 	}
 	
-	public static String fixHtmlNewLineSingleTags(String text)
+	public static String appendNewlineToEndDivTags(String text)
 	{
-		return text.replaceAll(BR_TAG_UNCLOSED, BR_TAG);
+		String replaced = text.replaceAll("</div>", "</div>" + HtmlUtilities.NEW_LINE);
+		replaced = replaced.replaceAll("<div/>", "<div/>" + HtmlUtilities.NEW_LINE);
+		
+		return replaced;
 	}
 
 	public static final String BR_TAG = "<br/>";
