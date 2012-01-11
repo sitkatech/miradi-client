@@ -75,22 +75,16 @@ public class EditableHtmlPane extends MiradiTextPane
 		String text = super.getText();
 		
 		text = HtmlUtilities.removeNonHtmlNewLines(text);
-		text = correctDivBeingUsedAsNewline(text);
+		text = HtmlUtilities.appendNewlineToEndDivTags(text);
 		text = removeInvalidTags(text);
-		text = HtmlUtilities.fixHtmlNewLineSingleTags(text);
+		text = HtmlUtilities.replaceNonHtmlNewlines(text);
 		
 		return text;
 	}
 	
-	private String correctDivBeingUsedAsNewline(String text)
-	{
-		String replaced = text.replaceAll("<div>", "");
-		return replaced.replaceAll("</div>", HtmlUtilities.BR_TAG);
-	}
-
 	private String removeInvalidTags(String html)
 	{
-		final String INVALID_TAGS[] = {"html", "head", "body", "title", "p"};
+		final String INVALID_TAGS[] = {"html", "head", "body", "title", "p", "div"};
 		return HtmlUtilities.stripHtmlTags(html, INVALID_TAGS);
 	}
 }
