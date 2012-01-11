@@ -84,7 +84,11 @@ public class EditableHtmlPane extends MiradiTextPane
 	
 	private String removeInvalidTags(String html)
 	{
-		final String INVALID_TAGS[] = {"html", "head", "body", "title", "p", "div"};
-		return HtmlUtilities.stripHtmlTags(html, INVALID_TAGS);
+		return HtmlUtilities.stripHtmlTags(html, getTegsToRemove());
+	}
+
+	private String[] getTegsToRemove()
+	{
+		return new String[] {"html", "head", "body", "title", "p", "div"};
 	}
 }
