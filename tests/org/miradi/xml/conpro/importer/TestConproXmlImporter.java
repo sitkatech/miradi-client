@@ -396,8 +396,8 @@ public class TestConproXmlImporter extends TestCaseWithProject
 	{
 		ProjectMetadata projectMetadata = projectToFill1.getMetadata();
 		String projectScope = projectMetadata.getProjectScope();
-		String expectedProjectDescription = HtmlUtilities.replaceNonHtmlNewlines(ConproXmlExporter.concatenate(ConproXmlExporter.getProjectDescriptionLabel(), "Some project description"));
-		String expectedSiteScopeDescription = HtmlUtilities.replaceNonHtmlNewlines(ConproXmlExporter.concatenate(ConproXmlExporter.getSiteScopeLabel(), "Some project scope"));
+		String expectedProjectDescription = HtmlUtilities.replaceNonHtmlNewlines(ConproXmlExporter.createProjectDescription("Some project description"));
+		String expectedSiteScopeDescription = HtmlUtilities.replaceNonHtmlNewlines(ConproXmlExporter.createSiteScopeDescription("Some project scope"));
 		String expectedProjectScopeValue = expectedProjectDescription + "<br/><br/>" + expectedSiteScopeDescription;
 		assertEquals("wrong project scope?", expectedProjectScopeValue, projectScope);
 		
