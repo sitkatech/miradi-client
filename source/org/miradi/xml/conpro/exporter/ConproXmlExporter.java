@@ -924,7 +924,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		return EAM.text("Site/Scope Description:");
 	}
 
-	private String concatenate(final String fieldLabel, String description)
+	public static String concatenate(final String fieldLabel, String description)
 	{
 		String concatenated = "";
 		if (description.length() > 0)

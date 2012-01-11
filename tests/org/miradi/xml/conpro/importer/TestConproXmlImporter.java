@@ -55,11 +55,12 @@ import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.TncProjectData;
 import org.miradi.objects.Xenodata;
 import org.miradi.project.ProjectForTesting;
-import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.ProjectSharingQuestion;
+import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.TrendQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.NullProgressMeter;
 import org.miradi.xml.conpro.ConProMiradiXml;
 import org.miradi.xml.conpro.exporter.ConproXmlExporter;
@@ -395,7 +396,9 @@ public class TestConproXmlImporter extends TestCaseWithProject
 	{
 		ProjectMetadata projectMetadata = projectToFill1.getMetadata();
 		String projectScope = projectMetadata.getProjectScope();
-		String expectedProjectScopeValue = ConproXmlExporter.getProjectDescriptionLabel() + "<br/>Some project description<br/><br/>" + ConproXmlExporter.getSiteScopeLabel() + "<br/>Some project scope";
+		String expectedProjectDescription = HtmlUtilities.replaceNonHtmlNewlines(ConproXmlExporter.concatenate(ConproXmlExporter.getProjectDescriptionLabel(), "Some project description"));
+		String expectedSiteScopeDescription = HtmlUtilities.replaceNonHtmlNewlines(ConproXmlExporter.concatenate(ConproXmlExporter.getSiteScopeLabel(), "Some project scope"));
+		String expectedProjectScopeValue = expectedProjectDescription + "<br/><br/>" + expectedSiteScopeDescription;
 		assertEquals("wrong project scope?", expectedProjectScopeValue, projectScope);
 		
 		final String scopeLabel = ConproXmlExporter.getSiteScopeLabel() + "<br/>";
