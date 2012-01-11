@@ -64,9 +64,10 @@ public class HtmlUtilities
 	
 	public static String stripAllHtmlTags(String text)
 	{
-		return stripHtmlTag(text, "");
+		final String ANY = "<.*?>";
+		return replaceAll(ANY, text, "");
 	}
-	
+
 	public static String stripHtmlTag(String text,  String htmlTag)
 	{
 		return  replaceHtmlTags(text, htmlTag, "");
@@ -74,7 +75,18 @@ public class HtmlUtilities
 	
 	public static String replaceHtmlTags(String text, String tagToReplace, final String replacement)
 	{
-		final Pattern compiledRegex = Pattern.compile("\\</?" + tagToReplace + ".*?>", Pattern.CASE_INSENSITIVE);
+		final String START = "<" + tagToReplace + "\\s*>";
+		final String START_WITH_ATRIBUTE = "<" + tagToReplace + "\\s+.*?>";
+		final String END = "<\\/" + tagToReplace + "\\s*>";
+		final String EMPTY = "<" + tagToReplace + "\\s*/\\s*>";
+		final String regex = START + "|" + EMPTY + "|" + END + "|" + START_WITH_ATRIBUTE; 
+		return replaceAll(regex, text, replacement);
+	}
+	
+	private static String replaceAll(final String regex, String text, final String replacement)
+	{
+		final Pattern compiledRegex = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
+		
 		return compiledRegex.matcher(text).replaceAll(replacement).trim();
 	}
 	

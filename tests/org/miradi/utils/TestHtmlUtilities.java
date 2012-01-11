@@ -39,7 +39,7 @@ public class TestHtmlUtilities extends MiradiTestCase
 	public void testStripHtmlTags()
 	{
 		final String[] htmlTagsToStrip = new String[]{"html", "body", };
-		assertEquals("html tags were not stripped?", "someText", HtmlUtilities.stripHtmlTags("<html><body>someText<body/></html>", htmlTagsToStrip));
+		assertEquals("html tags were not stripped?", "someText", HtmlUtilities.stripHtmlTags("<html><body>someText</body></html>", htmlTagsToStrip));
 	}
 	
 	public void testStripHtmlTag()
@@ -47,8 +47,9 @@ public class TestHtmlUtilities extends MiradiTestCase
 		verifyStringHtmlTag("<html>someText</html>", "html", "someText");
 		verifyStringHtmlTag("<HTML>someText</HTML>", "html", "someText");
 		verifyStringHtmlTag("<html>someText</html>", "body", "<html>someText</html>");
-		verifyStringHtmlTag("<html><body>someText<body/></html>", "body", "<html>someText</html>");
+		verifyStringHtmlTag("<html><body>someText</body></html>", "body", "<html>someText</html>");
 		verifyStringHtmlTag("<html><body><h1><font size=\"5\">someText</body></html>", "font", "<html><body><h1>someText</body></html>");
+		verifyStringHtmlTag("<ul><u>someText</u></ul>", "u", "<ul>someText</ul>");
 	}
 	
 	public void testStripAllHtmlTags()
