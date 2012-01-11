@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-10 13:16-0600\n"
+"POT-Creation-Date: 2012-01-11 15:18-0600\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -5647,7 +5647,7 @@ msgstr "Төслийн зөвлөх"
 msgid "Project Corruption Detected"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:906
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:919
 msgid "Project Description:"
 msgstr "Project Description:"
 
@@ -6215,7 +6215,7 @@ msgstr "Аюулын Хялбар Үнэлгээний Горим"
 msgid "Simple viability"
 msgstr "Ердийн амьдрах чадвар"
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:911
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:924
 msgid "Site/Scope Description:"
 msgstr "ГазарНутаг/Цар Хүрээ Тодорхойлолт:"
 

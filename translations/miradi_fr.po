@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-10 13:16-0600\n"
+"POT-Creation-Date: 2012-01-11 15:18-0600\n"
 "PO-Revision-Date: 2011-04-05 11:46+0100\n"
 "Last-Translator: Emanuela Leonardi <e.leonardi@gmail.com>\n"
 "Language-Team: none\n"
@@ -5742,7 +5742,7 @@ msgstr "Idéateur du projet"
 msgid "Project Corruption Detected"
 msgstr "Corruption du projet détectée"
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:906
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:919
 msgid "Project Description:"
 msgstr "Description du projet :"
 
@@ -6314,7 +6314,7 @@ msgstr "Mode simple évaluation menace"
 msgid "Simple viability"
 msgstr "Viabilité simple"
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:911
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:924
 msgid "Site/Scope Description:"
 msgstr "Description du site/de la portée :"
 
