@@ -395,10 +395,10 @@ public class TestConproXmlImporter extends TestCaseWithProject
 	{
 		ProjectMetadata projectMetadata = projectToFill1.getMetadata();
 		String projectScope = projectMetadata.getProjectScope();
-		String expectedProjectScopeValue = "Project Description:<br/>Some project description<br/><br/>Site/Scope Description:<br/>Some project scope";
+		String expectedProjectScopeValue = ConproXmlExporter.getProjectDescriptionLabel() + "<br/>Some project description<br/><br/>" + ConproXmlExporter.getSiteScopeLabel() + "<br/>Some project scope";
 		assertEquals("wrong project scope?", expectedProjectScopeValue, projectScope);
 		
-		final String scopeLabel = "Site/Scope Description:<br/>";
+		final String scopeLabel = ConproXmlExporter.getSiteScopeLabel() + "<br/>";
 		
 		final String projectDescription = extractProjectDescription(expectedProjectScopeValue, scopeLabel);
 		projectToFill1.setObjectData(projectMetadata, ProjectMetadata.TAG_PROJECT_DESCRIPTION, projectDescription);
