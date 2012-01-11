@@ -401,32 +401,35 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		String expectedProjectScopeValue = expectedProjectDescription + "<br/><br/>" + expectedSiteScopeDescription;
 		assertEquals("wrong project scope?", expectedProjectScopeValue, projectScope);
 		
-		final String scopeLabel = ConproXmlExporter.getSiteScopeLabel() + "<br/>";
-		
-		final String projectDescription = extractProjectDescription(expectedProjectScopeValue, scopeLabel);
+		final String projectDescription = extractProjectDescription(expectedProjectScopeValue);
 		projectToFill1.setObjectData(projectMetadata, ProjectMetadata.TAG_PROJECT_DESCRIPTION, projectDescription);
 		
-		final String extractedProjectScope = extractProjectScope(projectScope, scopeLabel);
+		final String extractedProjectScope = extractProjectScope(projectScope);
 		projectToFill1.setObjectData(projectMetadata, ProjectMetadata.TAG_PROJECT_SCOPE, extractedProjectScope);
 	}
 
-	private String extractProjectScope(String projectScope, final String scopeLabel)
+	private String extractProjectScope(String projectScope)
 	{
-		int lastScopeLabelIndex = projectScope.lastIndexOf(scopeLabel);
+		int lastScopeLabelIndex = projectScope.lastIndexOf(getSiteScopeLabel());
 		projectScope = projectScope.substring(lastScopeLabelIndex, projectScope.length());
-		projectScope = projectScope.replaceAll(scopeLabel, "");
+		projectScope = projectScope.replaceAll(getSiteScopeLabel(), "");
 		projectScope = projectScope.replaceAll("<br/>", "");
 		
 		return projectScope;
 	}
 
-	private String extractProjectDescription(String expectedProjectScopeValue, final String scopeLabel)
+	private String extractProjectDescription(String expectedProjectScopeValue)
 	{
 		String projectDescription = expectedProjectScopeValue.replaceAll("Project Description:<br/>", "");
-		final int scopeLabelStartIndex = projectDescription.indexOf(scopeLabel);
+		final int scopeLabelStartIndex = projectDescription.indexOf(getSiteScopeLabel());
 		projectDescription = projectDescription.substring(0, scopeLabelStartIndex);
 		projectDescription = projectDescription.replaceAll("<br/>", "");
 		return projectDescription;
+	}
+	
+	private String getSiteScopeLabel()
+	{
+		return ConproXmlExporter.getSiteScopeLabel() + "<br/>";
 	}
 	
 	private void stripDelimiterTagFromObjectiveNames(ProjectForTesting projectToFill1) throws Exception
