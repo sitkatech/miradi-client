@@ -398,18 +398,32 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		String expectedProjectScopeValue = "Project Description:<br/>Some project description<br/><br/>Site/Scope Description:<br/>Some project scope";
 		assertEquals("wrong project scope?", expectedProjectScopeValue, projectScope);
 		
-		String projectDescription = expectedProjectScopeValue.replaceAll("Project Description:<br/>", "");
 		final String scopeLabel = "Site/Scope Description:<br/>";
-		final int scopeLabelStartIndex = projectDescription.indexOf(scopeLabel);
-		projectDescription = projectDescription.substring(0, scopeLabelStartIndex);
-		projectDescription = projectDescription.replaceAll("<br/>", "");
+		
+		final String projectDescription = extractProjectDescription(expectedProjectScopeValue, scopeLabel);
 		projectToFill1.setObjectData(projectMetadata, ProjectMetadata.TAG_PROJECT_DESCRIPTION, projectDescription);
 		
+		final String extractedProjectScope = extractProjectScope(projectScope, scopeLabel);
+		projectToFill1.setObjectData(projectMetadata, ProjectMetadata.TAG_PROJECT_SCOPE, extractedProjectScope);
+	}
+
+	private String extractProjectScope(String projectScope, final String scopeLabel)
+	{
 		int lastScopeLabelIndex = projectScope.lastIndexOf(scopeLabel);
 		projectScope = projectScope.substring(lastScopeLabelIndex, projectScope.length());
 		projectScope = projectScope.replaceAll(scopeLabel, "");
 		projectScope = projectScope.replaceAll("<br/>", "");
-		projectToFill1.setObjectData(projectMetadata, ProjectMetadata.TAG_PROJECT_SCOPE, projectScope);
+		
+		return projectScope;
+	}
+
+	private String extractProjectDescription(String expectedProjectScopeValue, final String scopeLabel)
+	{
+		String projectDescription = expectedProjectScopeValue.replaceAll("Project Description:<br/>", "");
+		final int scopeLabelStartIndex = projectDescription.indexOf(scopeLabel);
+		projectDescription = projectDescription.substring(0, scopeLabelStartIndex);
+		projectDescription = projectDescription.replaceAll("<br/>", "");
+		return projectDescription;
 	}
 	
 	private void stripDelimiterTagFromObjectiveNames(ProjectForTesting projectToFill1) throws Exception
