@@ -908,7 +908,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		return getConcatenatedWithNewlines(projectDescriptionToConcatenate, projectScopeToConcatenate);
 	}
 
-	protected String getConcatenatedWithNewlines(final String projectDescriptionToConcatenate, final String projectScopeToConcatenate)
+	public static String getConcatenatedWithNewlines(final String projectDescriptionToConcatenate, final String projectScopeToConcatenate)
 	{
 		String concatenatedDescriptionAndScope = projectDescriptionToConcatenate;
 		if (concatenatedDescriptionAndScope.length() > 0)
