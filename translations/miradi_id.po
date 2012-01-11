@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-11 15:18-0600\n"
+"POT-Creation-Date: 2012-01-11 16:31-0600\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -5604,7 +5604,7 @@ msgstr "Penasihat Proyek"
 msgid "Project Corruption Detected"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:919
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:923
 msgid "Project Description:"
 msgstr "Keterangan Proyek: "
 
@@ -6170,7 +6170,7 @@ msgstr "Mode Peringkat Ancaman Sederhana"
 msgid "Simple viability"
 msgstr "Kelangsungan sederhana "
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:924
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:928
 msgid "Site/Scope Description:"
 msgstr "Keterangan Lokasi/Cakupan: "
 

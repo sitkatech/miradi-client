@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-11 15:18-0600\n"
+"POT-Creation-Date: 2012-01-11 16:31-0600\n"
 "PO-Revision-Date: 2011-04-29 11:26+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -5729,7 +5729,7 @@ msgstr "Consulente di progetto"
 msgid "Project Corruption Detected"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:919
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:923
 msgid "Project Description:"
 msgstr "Descrizione del Progetto:"
 
@@ -6300,7 +6300,7 @@ msgstr "Modalità di Valutazione semplice della Pressione"
 msgid "Simple viability"
 msgstr "Vitalità semplificata"
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:924
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:928
 msgid "Site/Scope Description:"
 msgstr "Descrizione del Sito/Ambito:"
 
