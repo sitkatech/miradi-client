@@ -343,8 +343,13 @@ public class TestConproXmlImporter extends TestCaseWithProject
 
 	private void setValuesAgainThatWereLostDuringImport(ProjectForTesting projectToFill1) throws Exception
 	{
-		projectToFill1.fillObjectUsingCommand(projectToFill1.getMetadata(), ProjectMetadata.TAG_PROJECT_SCOPE, "Some project scope");
-		projectToFill1.fillObjectUsingCommand(projectToFill1.getMetadata(), ProjectMetadata.TAG_PROJECT_DESCRIPTION, "Some project description");
+		fillMetadataObject(projectToFill1, ProjectMetadata.TAG_PROJECT_SCOPE);
+		fillMetadataObject(projectToFill1, ProjectMetadata.TAG_PROJECT_DESCRIPTION);
+	}
+
+	protected void fillMetadataObject(ProjectForTesting projectToFill1,	final String tag) throws Exception
+	{
+		projectToFill1.fillObjectUsingCommand(projectToFill1.getMetadata(), tag, getProject().getMetadata().getData(tag));
 	}
 
 	private void workAroundCpmzMissingEndDateField(ProjectForTesting projectToFill1) throws Exception
