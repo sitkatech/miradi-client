@@ -347,9 +347,9 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		fillMetadataObject(projectAfterImport, ProjectMetadata.TAG_PROJECT_DESCRIPTION);
 	}
 
-	protected void fillMetadataObject(ProjectForTesting projectAfterImport,	final String tag) throws Exception
+	protected void fillMetadataObject(ProjectForTesting projectToFill,	final String tag) throws Exception
 	{
-		projectAfterImport.fillObjectUsingCommand(projectAfterImport.getMetadata(), tag, getProject().getMetadata().getData(tag));
+		projectToFill.fillObjectUsingCommand(projectToFill.getMetadata(), tag, getProject().getMetadata().getData(tag));
 	}
 
 	private void workAroundCpmzMissingEndDateField(ProjectForTesting projectAfterImport) throws Exception
