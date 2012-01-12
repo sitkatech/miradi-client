@@ -313,23 +313,23 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		File beforeXmlOutFile = createTempFileFromName("conproVersion2BeforeImport.xml");
 		
 		File afterXmlOutFile = createTempFileFromName("conproVersion2AfterFirstImport.xml");
-		ProjectForTesting projectToFill1 = ProjectForTesting.createProjectWithDefaultObjects("ProjectToFill1");
+		ProjectForTesting projectToFill = ProjectForTesting.createProjectWithDefaultObjects("ProjectToFill1");
 		try
 		{
 			exportProject(beforeXmlOutFile, getProject());
 			String firstExport = convertFileContentToString(beforeXmlOutFile);
 			
-			importProject(beforeXmlOutFile, projectToFill1);
-			verifyThreatStressRatingPoolContents(getProject(), projectToFill1);
-			verifyObjectiveLabelsAndUnsplitLabel(projectToFill1);
-			unsplitStrategyLabels(projectToFill1);
-			verifyConcatenatedProjectScopeAndDescription(projectToFill1);
-			setValuesAgainThatWereLostDuringImport(projectToFill1);
-			stripDelimiterTagFromObjectiveNames(projectToFill1);
+			importProject(beforeXmlOutFile, projectToFill);
+			verifyThreatStressRatingPoolContents(getProject(), projectToFill);
+			verifyObjectiveLabelsAndUnsplitLabel(projectToFill);
+			unsplitStrategyLabels(projectToFill);
+			verifyConcatenatedProjectScopeAndDescription(projectToFill);
+			setValuesAgainThatWereLostDuringImport(projectToFill);
+			stripDelimiterTagFromObjectiveNames(projectToFill);
 	
-			workAroundCpmzMissingEndDateField(projectToFill1);
+			workAroundCpmzMissingEndDateField(projectToFill);
 			
-			exportProject(afterXmlOutFile, projectToFill1);
+			exportProject(afterXmlOutFile, projectToFill);
 			String secondExport = convertFileContentToString(afterXmlOutFile);
 			assertEquals("incorrect project values after first import?", firstExport, secondExport);
 		}
@@ -337,7 +337,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		{
 			beforeXmlOutFile.delete();
 			afterXmlOutFile.delete();
-			projectToFill1.close();
+			projectToFill.close();
 		}
 	}
 
