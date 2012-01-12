@@ -77,12 +77,12 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		Target target = getProject().createTarget();
 		getProject().fillObjectUsingCommand(target, Target.TAG_LABEL, "<b>Target</b> with <br/>2 lines of text");
 		
-		File beforeXmlOutFile = createTempFile();
+		File firstExportedXmlFile = createTempFile();
 		ProjectForTesting projectAfterImport = ProjectForTesting.createProjectWithDefaultObjects(getName());
 		try
 		{
-			exportProject(beforeXmlOutFile, getProject());
-			importProject(beforeXmlOutFile, projectAfterImport);
+			exportProject(firstExportedXmlFile, getProject());
+			importProject(firstExportedXmlFile, projectAfterImport);
 			
 			ORefList targetRefs = projectAfterImport.getTargetPool().getRefList();
 			Target importedTarget = Target.find(projectAfterImport, targetRefs.getFirstElement());
@@ -90,7 +90,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		}
 		finally
 		{
-			beforeXmlOutFile.delete();
+			firstExportedXmlFile.delete();
 			projectAfterImport.close();
 		}
 	}
@@ -112,12 +112,12 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		getProject().fillObjectUsingCommand(target, Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, keaIds.toString());
 		assertEquals("Incorrect indicator pool count?", 2, getProject().getIndicatorPool().size());
 		
-		File beforeXmlOutFile = createTempFileFromName("$$$exportOnlyActiveIndictorsTest.xml");
+		File firstExportedXmlFile = createTempFileFromName("$$$exportOnlyActiveIndictorsTest.xml");
 		ProjectForTesting projectAfterImport = ProjectForTesting.createProjectWithDefaultObjects("ProjectToFill");
 		try
 		{
-			exportProject(beforeXmlOutFile, getProject());
-			importProject(beforeXmlOutFile, projectAfterImport);
+			exportProject(firstExportedXmlFile, getProject());
+			importProject(firstExportedXmlFile, projectAfterImport);
 			
 			ORefList indicatorRefs = projectAfterImport.getIndicatorPool().getRefList();
 			assertEquals("Incorrect indictor pool count?", 1, indicatorRefs.size());
@@ -125,7 +125,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		}
 		finally
 		{
-			beforeXmlOutFile.delete();
+			firstExportedXmlFile.delete();
 			projectAfterImport.close();
 		}
 	}
@@ -310,16 +310,16 @@ public class TestConproXmlImporter extends TestCaseWithProject
 
 	private void verifyImport() throws IOException, Exception
 	{
-		File beforeXmlOutFile = createTempFileFromName("conproVersion2BeforeImport.xml");
+		File firstExportedXmlFile = createTempFileFromName("conproVersion2BeforeImport.xml");
 		
 		File afterXmlOutFile = createTempFileFromName("conproVersion2AfterFirstImport.xml");
 		ProjectForTesting projectAfterImport = ProjectForTesting.createProjectWithDefaultObjects("ProjectToFill");
 		try
 		{
-			exportProject(beforeXmlOutFile, getProject());
-			String firstExport = convertFileContentToString(beforeXmlOutFile);
+			exportProject(firstExportedXmlFile, getProject());
+			String firstExport = convertFileContentToString(firstExportedXmlFile);
 			
-			importProject(beforeXmlOutFile, projectAfterImport);
+			importProject(firstExportedXmlFile, projectAfterImport);
 			verifyThreatStressRatingPoolContents(getProject(), projectAfterImport);
 			verifyObjectiveLabelsAndUnsplitLabel(projectAfterImport);
 			unsplitStrategyLabels(projectAfterImport);
@@ -335,7 +335,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		}
 		finally
 		{
-			beforeXmlOutFile.delete();
+			firstExportedXmlFile.delete();
 			afterXmlOutFile.delete();
 			projectAfterImport.close();
 		}
@@ -434,10 +434,10 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		assertEquals("not same Threat stress rating object count?", originalProjectObjectCount, filledProjectObjectCount);
 	}
 
-	private void importProject(File beforeXmlOutFile, ProjectForTesting projectAfterImport) throws Exception
+	private void importProject(File firstExportedXmlFile, ProjectForTesting projectAfterImport) throws Exception
 	{		
 		ConproXmlImporter conProXmlImporter = new ConproXmlImporter(projectAfterImport, new NullProgressMeter());
-		FileInputStreamWithSeek fileInputStream = new FileInputStreamWithSeek(beforeXmlOutFile); 
+		FileInputStreamWithSeek fileInputStream = new FileInputStreamWithSeek(firstExportedXmlFile); 
 		try
 		{
 			//FIXME urgent: this is a temp method to output the xml into a file. remove when class is done
@@ -540,25 +540,25 @@ public class TestConproXmlImporter extends TestCaseWithProject
 	
 	public void testEmptyProject() throws Exception
 	{
-		File beforeXmlOutFile = createTempFileFromName("conproVersion2BeforeImport.xml");
+		File firstExportedXmlFile = createTempFileFromName("conproVersion2BeforeImport.xml");
 		ProjectForTesting projectAfterImport = ProjectForTesting.createProjectWithDefaultObjects("ProjectToFill");
 		try
 		{
-			verifyEmpyProject(beforeXmlOutFile);
-			verifyImportEmptyProject(beforeXmlOutFile, projectAfterImport);
+			verifyEmpyProject(firstExportedXmlFile);
+			verifyImportEmptyProject(firstExportedXmlFile, projectAfterImport);
 		}
 		finally
 		{
-			beforeXmlOutFile.delete();
+			firstExportedXmlFile.delete();
 			projectAfterImport.close();
 		}
 	}
 
-	private void verifyImportEmptyProject(File beforeXmlOutFile, ProjectForTesting projectAfterImport)
+	private void verifyImportEmptyProject(File firstExportedXmlFile, ProjectForTesting projectAfterImport)
 	{
 		try
 		{
-			importProject(beforeXmlOutFile, projectAfterImport);
+			importProject(firstExportedXmlFile, projectAfterImport);
 		}
 		catch (Exception e)
 		{
@@ -567,11 +567,11 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		}
 	}
 
-	private void verifyEmpyProject(File beforeXmlOutFile)
+	private void verifyEmpyProject(File firstExportedXmlFile)
 	{
 		try
 		{
-			new ConproXmlExporter(getProject()).export(beforeXmlOutFile);
+			new ConproXmlExporter(getProject()).export(firstExportedXmlFile);
 		}
 		catch (Exception e)
 		{
@@ -587,12 +587,12 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		getProject().fillObjectUsingCommand(teamMember, ProjectResource.TAG_ROLE_CODES, roleCodes.toString());
 		assertEquals("wrong project resource count?", 1, getProject().getResourcePool().getRefSet().size());
 		
-		File beforeXmlOutFile = createTempFileFromName("conproVersion2BeforeImport.xml");
+		File firstExportedXmlFile = createTempFileFromName("conproVersion2BeforeImport.xml");
 		ProjectForTesting projectAfterImport = ProjectForTesting.createProjectWithDefaultObjects("ProjectToFill");
 		try
 		{
-			verifyEmpyProject(beforeXmlOutFile);
-			importProject(beforeXmlOutFile, projectAfterImport);
+			verifyEmpyProject(firstExportedXmlFile);
+			importProject(firstExportedXmlFile, projectAfterImport);
 			ORefSet resourceRefs = projectAfterImport.getResourcePool().getRefSet();
 			assertEquals("wrong project resource count?", 1, resourceRefs.size());
 			for(ORef resourceRef : resourceRefs)
@@ -605,7 +605,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		}
 		finally
 		{
-			beforeXmlOutFile.delete();
+			firstExportedXmlFile.delete();
 			projectAfterImport.close();
 		}
 	}
@@ -618,12 +618,12 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		Indicator indicator = getProject().createIndicatorWithCauseParent();
 		getProject().fillObjectUsingCommand(indicator, Indicator.TAG_MEASUREMENT_REFS, new ORefList(measurement));
 		
-		File beforeXmlOutFile = createTempFileFromName("conproVersion2BeforeImport.xml");
+		File firstExportedXmlFile = createTempFileFromName("conproVersion2BeforeImport.xml");
 		ProjectForTesting projectAfterImport = ProjectForTesting.createProjectWithDefaultObjects("ProjectToFill");
 		try
 		{
-			exportProject(beforeXmlOutFile, getProject());
-			importProject(beforeXmlOutFile, projectAfterImport);
+			exportProject(firstExportedXmlFile, getProject());
+			importProject(firstExportedXmlFile, projectAfterImport);
 			
 			ORefList measurementRefs = projectAfterImport.getPool(Measurement.getObjectType()).getORefList();
 			assertEquals("incorrect measurement count?", 1, measurementRefs.size());
@@ -633,7 +633,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		}
 		finally
 		{
-			beforeXmlOutFile.delete();
+			firstExportedXmlFile.delete();
 			projectAfterImport.close();
 		}
 	}
@@ -645,12 +645,12 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		KeyEcologicalAttribute kea = getProject().createKea();
 		getProject().fillObjectUsingCommand(target, Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, new IdList(kea));
 		
-		File beforeXmlOutFile = createTempFileFromName("conproVersion2BeforeImport.xml");
+		File firstExportedXmlFile = createTempFileFromName("conproVersion2BeforeImport.xml");
 		ProjectForTesting projectAfterImport = ProjectForTesting.createProjectWithDefaultObjects("ProjectToFill");
 		try
 		{
-			exportProject(beforeXmlOutFile, getProject());
-			importProject(beforeXmlOutFile, projectAfterImport);
+			exportProject(firstExportedXmlFile, getProject());
+			importProject(firstExportedXmlFile, projectAfterImport);
 			
 			ORefList targetRefs = projectAfterImport.getTargetPool().getORefList();
 			assertEquals("Incorrect target count?", 1, targetRefs.size());
@@ -661,7 +661,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		}
 		finally
 		{
-			beforeXmlOutFile.delete();
+			firstExportedXmlFile.delete();
 			projectAfterImport.close();
 		}
 	}
@@ -673,12 +673,12 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		getProject().fillObjectUsingCommand(strategy, Strategy.TAG_LABEL, "SomeLabel");
 		getProject().fillObjectUsingCommand(strategy, Strategy.TAG_TEXT, "SomeDetailsText");
 		
-		File beforeXmlOutFile = createTempFileFromName("conproVersion2BeforeImport.xml");
+		File firstExportedXmlFile = createTempFileFromName("conproVersion2BeforeImport.xml");
 		ProjectForTesting projectAfterImport = ProjectForTesting.createProjectWithDefaultObjects("ProjectToFill");
 		try
 		{
-			exportProject(beforeXmlOutFile, getProject());
-			importProject(beforeXmlOutFile, projectAfterImport);
+			exportProject(firstExportedXmlFile, getProject());
+			importProject(firstExportedXmlFile, projectAfterImport);
 			
 			ORefList strategyRefs = projectAfterImport.getStrategyPool().getORefList();
 			assertEquals("Incorrect strategy count?", 1, strategyRefs.size());
@@ -689,7 +689,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		}
 		finally
 		{
-			beforeXmlOutFile.delete();
+			firstExportedXmlFile.delete();
 			projectAfterImport.close();
 		}
 	}
