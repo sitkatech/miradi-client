@@ -26,10 +26,8 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogfields.FieldSaver;
 import org.miradi.dialogfields.ObjectScrollingMultilineInputField;
 import org.miradi.dialogfields.SavableField;
-import org.miradi.dialogfields.TextAreaRightClickMouseHandler;
 import org.miradi.dialogfields.UndoRedoKeyHandler;
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
-import org.miradi.dialogs.fieldComponents.PanelTextArea;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -38,24 +36,24 @@ import org.miradi.objects.Cause;
 import org.miradi.objects.Target;
 import org.miradi.objects.ThreatRatingCommentsData;
 import org.miradi.project.Project;
+import org.miradi.utils.EditableHtmlPane;
+import org.miradi.utils.HtmlEditorRightClickMouseHandler;
 import org.miradi.utils.MiradiScrollPane;
 
 public class ThreatRatingCommentsEditorComponent extends SavableField
 {
-	public ThreatRatingCommentsEditorComponent(Project projectToUse, Actions actions)
+	public ThreatRatingCommentsEditorComponent(Project projectToUse, Actions actions) throws Exception
 	{
 		super();
 		
 		project = projectToUse;		
 		selectedHeirearchy = new ORefList();
-		panelTextArea = new PanelTextArea(ObjectScrollingMultilineInputField.INITIAL_MULTI_LINE_TEXT_AREA_ROW_COUNT, AbstractObjectDataInputPanel.DEFAULT_TEXT_COLUM_COUNT);
-		panelTextArea.setLineWrap(true);
-		panelTextArea.setWrapStyleWord(true);
+		panelTextArea = new EditableHtmlPane(EAM.getMainWindow(), AbstractObjectDataInputPanel.DEFAULT_TEXT_COLUM_COUNT, ObjectScrollingMultilineInputField.INITIAL_MULTI_LINE_TEXT_AREA_ROW_COUNT);
 		
 		panelTextArea.setForeground(EAM.EDITABLE_FOREGROUND_COLOR);
 		panelTextArea.setBackground(EAM.EDITABLE_BACKGROUND_COLOR);
 		
-		new TextAreaRightClickMouseHandler(actions, panelTextArea);
+		new HtmlEditorRightClickMouseHandler(actions, panelTextArea);
 		panelTextArea.addKeyListener(new UndoRedoKeyHandler(actions));
 		panelTextArea.addFocusListener(this);
 	}
@@ -106,7 +104,7 @@ public class ThreatRatingCommentsEditorComponent extends SavableField
 		return selectedHeirearchy;
 	}
 	
-	private PanelTextArea getTextArea()
+	private EditableHtmlPane getTextArea()
 	{
 		return panelTextArea;
 	}
@@ -136,6 +134,6 @@ public class ThreatRatingCommentsEditorComponent extends SavableField
 	
 	private Project project;
 	private MiradiScrollPane scrollPane;
-	private PanelTextArea panelTextArea;
+	private EditableHtmlPane panelTextArea;
 	private ORefList selectedHeirearchy;
 }
