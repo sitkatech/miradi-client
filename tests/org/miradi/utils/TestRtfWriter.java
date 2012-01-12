@@ -30,6 +30,11 @@ public class TestRtfWriter extends MiradiTestCase
 		super(name);
 	}
 	
+	public void testStrippingHtmlTags()
+	{
+		assertEquals("Html tags were not removed?", "BoldText", RtfWriter.encode("<body><b>BoldText</b></body>"));
+	}
+	
 	public void testToHex()
 	{
 		verifyHex("00", (byte) 0x00);
