@@ -87,7 +87,7 @@ public class HtmlUtilities
 	{
 		final Pattern compiledRegex = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
 		
-		return compiledRegex.matcher(text).replaceAll(replacement).trim();
+		return compiledRegex.matcher(text).replaceAll(replacement);
 	}
 	
 	public static String appendNewlineToEndDivTags(String text)
