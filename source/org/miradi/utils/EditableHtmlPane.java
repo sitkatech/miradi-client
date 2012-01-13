@@ -63,7 +63,7 @@ public class EditableHtmlPane extends MiradiTextPane
 	@Override
 	public void setText(String text)
 	{
-		String topText = HtmlUtilities.stripHtmlTags(text, getTagsToRemove());
+		String topText = HtmlUtilities.removeAllExcept(text, getTagsToRemove());
 		super.setText("");
 		insertHtml(topText, 0);            
 		CompoundUndoManager.discardAllEdits(getDocument());
