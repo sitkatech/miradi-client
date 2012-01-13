@@ -86,17 +86,6 @@ public class TestHtmlUtilities extends MiradiTestCase
 		verifyReplacingTags("sometext<font size=\"4\" >", "font", "", "sometext");
 	}
 	
-	public void testStripHtmlTag()
-	{
-		verifyStringHtmlTag("someText<br/>", "br", "someText");
-		verifyStringHtmlTag("<html>someText</html>", "html", "someText");
-		verifyStringHtmlTag("<HTML>someText</HTML>", "html", "someText");
-		verifyStringHtmlTag("<html>someText</html>", "body", "<html>someText</html>");
-		verifyStringHtmlTag("<html><body>someText</body></html>", "body", "<html>someText</html>");
-		verifyStringHtmlTag("<html><body><h1><font size=\"5\">someText</body></html>", "font", "<html><body><h1>someText</body></html>");
-		verifyStringHtmlTag("<ul><u>someText</u></ul>", "u", "<ul>someText</ul>");
-	}
-	
 	public void testStripAllHtmlTags()
 	{
 		verifyStringHtmlTags("", "");
@@ -108,11 +97,6 @@ public class TestHtmlUtilities extends MiradiTestCase
 	private void verifyStringHtmlTags(String textWithHtmlTags, String expectedValue)
 	{
 		assertEquals("html tags were not stripped correctly?", expectedValue, HtmlUtilities.stripAllHtmlTags(textWithHtmlTags));
-	}
-	
-	private void verifyStringHtmlTag(String textWithHtmlTags, String htmlTag, String expectedValue)
-	{
-		assertEquals("html tag was nore stripped correctly", expectedValue, HtmlUtilities.stripHtmlTag(textWithHtmlTags, htmlTag));
 	}
 	
 	private void verifyReplacingTags(final String htmlText, final String tagToReplace, final String replacement, final String expectedValue)
