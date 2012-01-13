@@ -40,11 +40,6 @@ public class HtmlUtilities
 		return formatted.replaceAll(NEW_LINE, BR_TAG);
 	}
 	
-	public static String replaceHtmlNewlines(String formatted)
-	{
-		return replaceHtmlTags(formatted, "br", NEW_LINE);
-	}
-	
 	public static String removeNonHtmlNewLines(String htmlText)
 	{
 		htmlText = htmlText.replaceAll(NEW_LINE, "");
