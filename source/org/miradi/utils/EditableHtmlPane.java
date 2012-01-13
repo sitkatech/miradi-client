@@ -63,7 +63,7 @@ public class EditableHtmlPane extends MiradiTextPane
 	@Override
 	public void setText(String text)
 	{
-		String topText = HtmlUtilities.removeAllExcept(text, getTagsToRemove());
+		String topText = HtmlUtilities.removeAllExcept(text, getTagsToKeep());
 		super.setText("");
 		insertHtml(topText, 0);            
 		CompoundUndoManager.discardAllEdits(getDocument());
@@ -76,13 +76,13 @@ public class EditableHtmlPane extends MiradiTextPane
 		
 		text = HtmlUtilities.removeNonHtmlNewLines(text);
 		text = HtmlUtilities.appendNewlineToEndDivTags(text);
-		text = HtmlUtilities.removeAllExcept(text, getTagsToRemove());
+		text = HtmlUtilities.removeAllExcept(text, getTagsToKeep());
 		text = HtmlUtilities.replaceNonHtmlNewlines(text);
 		
 		return text;
 	}
 	
-	private String[] getTagsToRemove()
+	private String[] getTagsToKeep()
 	{
 		return new String[] {"br", "b", "i", "ul", "ol", "li", "u", "", "strike", };
 	}
