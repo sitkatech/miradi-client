@@ -70,10 +70,7 @@ public class HtmlUtilities
 	
 	public static String appendNewlineToEndDivTags(String text)
 	{
-		String replaced = text.replaceAll("</div>", "</div>" + HtmlUtilities.NEW_LINE);
-		replaced = replaced.replaceAll("<div/>", "<div/>" + HtmlUtilities.NEW_LINE);
-		
-		return replaced;
+		return replaceHtmlTags(text, "div", "</div>" + HtmlUtilities.NEW_LINE);
 	}
 	
 	public static String removeAllExcept(String text, String[] tagsToKeep)
