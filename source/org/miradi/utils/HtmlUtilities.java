@@ -100,6 +100,16 @@ public class HtmlUtilities
 	
 	public static String removeAllExcept(String text, String[] tagsToKeep)
 	{
+		String tagsSeperatedByOr = concatenateWithOr(tagsToKeep);
+		
+		String regex = "<\\/*?(?![^>]*?\\b(?:" + tagsSeperatedByOr + ")\\b)[^>]*?>";;
+		final Pattern compiledRegex = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
+		
+		return compiledRegex.matcher(text).replaceAll("");
+	}
+
+	private static String concatenateWithOr(String[] tagsToKeep)
+	{
 		String tagsSeperatedByOr = "";
 		for (int index = 0; index < tagsToKeep.length; ++index)
 		{
@@ -109,10 +119,7 @@ public class HtmlUtilities
 			tagsSeperatedByOr += tagsToKeep[index];
 		}
 		
-		String regex = "<\\/*?(?![^>]*?\\b(?:" + tagsSeperatedByOr + ")\\b)[^>]*?>";;
-		final Pattern compiledRegex = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
-		
-		return compiledRegex.matcher(text).replaceAll("");
+		return tagsSeperatedByOr;
 	}
 
 	public static final String BR_TAG = "<br/>";
