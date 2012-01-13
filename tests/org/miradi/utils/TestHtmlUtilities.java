@@ -86,12 +86,6 @@ public class TestHtmlUtilities extends MiradiTestCase
 		verifyReplacingTags("sometext<font size=\"4\" >", "font", "", "sometext");
 	}
 	
-	public void testStripHtmlTags()
-	{
-		final String[] htmlTagsToStrip = new String[]{"html", "body", };
-		assertEquals("html tags were not stripped?", "someText", HtmlUtilities.stripHtmlTags("<html><body>someText</body></html>", htmlTagsToStrip));
-	}
-	
 	public void testStripHtmlTag()
 	{
 		verifyStringHtmlTag("someText<br/>", "br", "someText");
