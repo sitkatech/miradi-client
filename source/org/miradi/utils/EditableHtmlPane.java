@@ -76,7 +76,7 @@ public class EditableHtmlPane extends MiradiTextPane
 		
 		text = HtmlUtilities.removeNonHtmlNewLines(text);
 		text = HtmlUtilities.appendNewlineToEndDivTags(text);
-		text = HtmlUtilities.stripHtmlTags(text, getTagsToRemove());
+		text = HtmlUtilities.removeAllExcept(text, getTagsToRemove());
 		text = HtmlUtilities.replaceNonHtmlNewlines(text);
 		
 		return text;
@@ -84,6 +84,6 @@ public class EditableHtmlPane extends MiradiTextPane
 	
 	private String[] getTagsToRemove()
 	{
-		return new String[] {"html", "head", "body", "title", "p", "div"};
+		return new String[] {"br", "b", "i", "ul", "ol", "li", "u", "", "strike", };
 	}
 }
