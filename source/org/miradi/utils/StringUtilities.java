@@ -30,4 +30,18 @@ public class StringUtilities
 		
 		return "";
 	}
+	
+	public static String concatenateWithOr(String[] tagsToKeep)
+	{
+		String tagsSeperatedByOr = "";
+		for (int index = 0; index < tagsToKeep.length; ++index)
+		{
+			if (index != 0)
+				tagsSeperatedByOr += "|";
+			
+			tagsSeperatedByOr += tagsToKeep[index];
+		}
+		
+		return tagsSeperatedByOr;
+	}
 }
