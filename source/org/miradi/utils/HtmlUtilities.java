@@ -58,11 +58,6 @@ public class HtmlUtilities
 		return replaceAll(ANY, text, "");
 	}
 
-	public static String stripHtmlTag(String text,  String htmlTag)
-	{
-		return  replaceHtmlTags(text, htmlTag, "");
-	}
-	
 	public static String replaceHtmlTags(String text, String tagToReplace, final String replacement)
 	{
 		final String START = "<" + tagToReplace + "\\s*>";
