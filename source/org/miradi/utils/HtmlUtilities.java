@@ -42,9 +42,7 @@ public class HtmlUtilities
 	
 	public static String removeNonHtmlNewLines(String htmlText)
 	{
-		htmlText = htmlText.replaceAll(NEW_LINE, "");
-		
-		return htmlText;
+		return htmlText.replaceAll(NEW_LINE, "");
 	}
 	
 	public static String stripAllHtmlTags(String text)
