@@ -97,6 +97,23 @@ public class HtmlUtilities
 		
 		return replaced;
 	}
+	
+	public static String removeAllExcept(String text, String[] tagsToKeep)
+	{
+		String tagsSeperatedByOr = "";
+		for (int index = 0; index < tagsToKeep.length; ++index)
+		{
+			if (index != 0)
+				tagsSeperatedByOr += "|";
+			
+			tagsSeperatedByOr += tagsToKeep[index];
+		}
+		
+		String regex = "<\\/*?(?![^>]*?\\b(?:" + tagsSeperatedByOr + ")\\b)[^>]*?>";;
+		final Pattern compiledRegex = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
+		
+		return compiledRegex.matcher(text).replaceAll("");
+	}
 
 	public static final String BR_TAG = "<br/>";
 	public static final String BR_TAG_UNCLOSED = "<br>";
