@@ -29,11 +29,44 @@ public class TestHtmlUtilities extends MiradiTestCase
 		super(name);
 	}
 	
+	public void testRemoveAllExcept()
+	{
+		verifyNothingStripped("text");
+		verifyRemoveAllExcept("text<br/>", "<font>text<br/>");
+		verifyRemoveAllExcept("text<br/ >", "<font>text<br/ >");
+		verifyRemoveAllExcept("text<br />", "<font>text<br />");
+		verifyRemoveAllExcept("text< br/>", "<font>text< br/>");
+		verifyNothingStripped("<b>text");
+		verifyNothingStripped("<b>text</b>");
+		verifyNothingStripped("<b>text</b >");
+		verifyNothingStripped("<b>text< /b>");
+		verifyNothingStripped("<b>text</ b>");
+		verifyRemoveAllExcept("<b>text", "<body><b>text");
+		verifyRemoveAllExcept("<b>text</b>", "<body><b>text</b></body>");
+		verifyRemoveAllExcept("<b>text</b>", "<html><body><b>text</b></htm></body>");
+		verifyRemoveAllExcept("<b>text", "<font size=\"5\"><b>text</font>");
+		verifyRemoveAllExcept("<b someAttribute=\"x\">text", "<b someAttribute=\"x\">text</font>");
+	}
+	
+	private void verifyNothingStripped(String text)
+	{
+		assertEquals("tags were removed?", text, HtmlUtilities.removeAllExcept(text, getTagsToKeep()));
+	}
+
+	private void verifyRemoveAllExcept(String expected, String htmlText)
+	{
+		assertEquals("tags were removed?", expected, HtmlUtilities.removeAllExcept(htmlText, getTagsToKeep()));
+	}
+	
+	private String[] getTagsToKeep()
+	{
+		return new String[]{"b", "br", };
+	}
+	
 	public void testAppendNewlineToEndDivTags()
 	{
 		verifyDivWasAppendedWithNewline("sometext</div>\n", "sometext</div>");
 		verifyDivWasAppendedWithNewline("sometext<div/>\n", "sometext<div/>");
-		
 	}
 
 	protected void verifyDivWasAppendedWithNewline(final String expectedValue,	final String htmlText)
