@@ -31,8 +31,8 @@ public class HtmlUtilities
 			return "";
 		
 		String formatted =  XmlUtilities.getXmlEncoded(plainString);
-		String formattedFactorName = replaceNonHtmlNewlines(formatted);
-		return formattedFactorName;
+		
+		return replaceNonHtmlNewlines(formatted);
 	}
 
 	public static String replaceNonHtmlNewlines(String formatted)
