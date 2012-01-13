@@ -129,8 +129,7 @@ public abstract class XmlExporter
 	
 	public void writeXmlEncodedData(UnicodeWriter out, String data) throws IOException
 	{
-		data = data.replaceAll(HtmlUtilities.BR_TAG, "\n");
-		data = data.replaceAll(HtmlUtilities.BR_TAG_UNCLOSED, "\n");
+		data = HtmlUtilities.replaceHtmlNewlinews(data);
 		data = HtmlUtilities.stripAllHtmlTags(data);
 		out.write(data);
 	}

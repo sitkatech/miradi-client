@@ -712,8 +712,7 @@ abstract public class BaseObject
 
 	public static String convertToNonHtml(String htmlDataValue)
 	{
-		htmlDataValue = htmlDataValue.replaceAll(HtmlUtilities.BR_TAG, "\n");
-		htmlDataValue = htmlDataValue.replaceAll(HtmlUtilities.BR_TAG_UNCLOSED, "\n");
+		htmlDataValue = HtmlUtilities.replaceHtmlNewlinews(htmlDataValue);
 		htmlDataValue = XmlUtilities2.getXmlDecoded(htmlDataValue);
 		
 		return htmlDataValue;
