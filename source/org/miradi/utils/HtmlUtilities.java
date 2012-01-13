@@ -34,6 +34,11 @@ public class HtmlUtilities
 		
 		return replaceNonHtmlNewlines(formatted);
 	}
+	
+	public static String replaceHtmlNewlinews(String text)
+	{
+		return HtmlUtilities.replaceHtmlTags(text, "br", "\n");
+	}
 
 	public static String replaceNonHtmlNewlines(String formatted)
 	{
