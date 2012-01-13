@@ -28,7 +28,7 @@ public class HtmlUtilities
 	public static String plainStringWithNewlinesToHtml(String plainString)
 	{
 		if(plainString == null)
-			return "";
+			return EMPTY_STRING;
 		
 		String formatted =  XmlUtilities.getXmlEncoded(plainString);
 		
@@ -47,13 +47,13 @@ public class HtmlUtilities
 	
 	public static String removeNonHtmlNewLines(String htmlText)
 	{
-		return htmlText.replaceAll(NEW_LINE, "");
+		return htmlText.replaceAll(NEW_LINE, EMPTY_STRING);
 	}
-	
+
 	public static String stripAllHtmlTags(String text)
 	{
 		final String ANY = "<.*?>";
-		return replaceAll(ANY, text, "");
+		return replaceAll(ANY, text, EMPTY_STRING);
 	}
 
 	public static String replaceHtmlTags(String text, String tagToReplace, final String replacement)
@@ -85,10 +85,11 @@ public class HtmlUtilities
 		String regex = "<\\/*?(?![^>]*?\\b(?:" + tagsSeperatedByOr + ")\\b)[^>]*?>";;
 		final Pattern compiledRegex = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
 		
-		return compiledRegex.matcher(text).replaceAll("");
+		return compiledRegex.matcher(text).replaceAll(EMPTY_STRING);
 	}
 
 	//TODO Should not be using <br> tags,  check references and see if br can be used when replacing
 	public static final String BR_TAG = "<br/>";
 	public static final String NEW_LINE = "\n";
+	public static final String EMPTY_STRING = "";
 }
