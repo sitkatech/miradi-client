@@ -29,6 +29,18 @@ public class TestStringUtilities extends MiradiTestCase
 		super(name);
 	}
 	
+	public void testConcatenateWithOr()
+	{
+		verifyConcatenate("", new String[]{""});
+		verifyConcatenate("first", new String[]{"first"});
+		verifyConcatenate("first|second", new String[]{"first", "second"});
+	}
+	
+	private void verifyConcatenate(final String expected, final String[] strings)
+	{
+		assertEquals("did not contcatenate correctly?", expected, StringUtilities.concatenateWithOr(strings));
+	}
+
 	public void testSubStringAfter()
 	{
 		verifySubstringAfter("", "something");

@@ -78,26 +78,12 @@ public class HtmlUtilities
 	
 	public static String removeAllExcept(String text, String[] tagsToKeep)
 	{
-		String tagsSeperatedByOr = concatenateWithOr(tagsToKeep);
+		String tagsSeperatedByOr = StringUtilities.concatenateWithOr(tagsToKeep);
 		
 		String regex = "<\\/*?(?![^>]*?\\b(?:" + tagsSeperatedByOr + ")\\b)[^>]*?>";;
 		final Pattern compiledRegex = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
 		
 		return compiledRegex.matcher(text).replaceAll("");
-	}
-
-	private static String concatenateWithOr(String[] tagsToKeep)
-	{
-		String tagsSeperatedByOr = "";
-		for (int index = 0; index < tagsToKeep.length; ++index)
-		{
-			if (index != 0)
-				tagsSeperatedByOr += "|";
-			
-			tagsSeperatedByOr += tagsToKeep[index];
-		}
-		
-		return tagsSeperatedByOr;
 	}
 
 	public static final String BR_TAG = "<br/>";
