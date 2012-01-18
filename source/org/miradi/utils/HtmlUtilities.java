@@ -35,14 +35,22 @@ public class HtmlUtilities
 		return replaceNonHtmlNewlines(formatted);
 	}
 	
-	public static String prepareForSaving(String text, String[] htmlTagsToKeep)
+	public static String prepareForSaving(final String text, String[] htmlTagsToKeep)
 	{
-		text = removeNonHtmlNewLines(text);
-		text = appendNewlineToEndDivTags(text);
-		text = removeAllExcept(text, htmlTagsToKeep);
-		text = replaceNonHtmlNewlines(text);
+		String trimmedText = "";
+		final String[] lines = text.split("\\r?\\n");
+		for (int index = 0; index < lines.length; ++index)
+		{
+			trimmedText += lines[index].trim();
+		}
 		
-		return text;
+		trimmedText = removeNonHtmlNewLines(trimmedText);
+		trimmedText = appendNewlineToEndDivTags(trimmedText);
+		trimmedText = removeAllExcept(trimmedText, htmlTagsToKeep);
+		trimmedText = trimmedText.trim();
+		trimmedText = replaceNonHtmlNewlines(trimmedText);
+		
+		return trimmedText;
 	}
 	
 	public static String replaceHtmlNewlinews(String text)
