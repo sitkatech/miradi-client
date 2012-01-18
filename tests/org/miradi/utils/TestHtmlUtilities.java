@@ -29,6 +29,25 @@ public class TestHtmlUtilities extends MiradiTestCase
 		super(name);
 	}
 	
+	public void testCustomEdit()
+	{
+		String htmlText = 
+		  "<html>\n" +
+		  "<head>\n" +
+		  "	</head>\n" +
+		  "	  <body>\n" +
+		  "		<div>\n" +
+		  "	 	 text on line 1\n" +
+		  "     </div>\n" +
+		  "     <div>\n" +
+		  "      text on line 2\n" +
+		  "		</div>\n" +
+		  "	  </body>\n" +
+		  "	</html>\n";
+
+		assertEquals("wrong new lines inserted?", "text on line 1<br/><br/>text on line 2", HtmlUtilities.prepareForSaving(htmlText, getTagsToKeep()));
+	}
+	
 	public void testRemoveAllExcept()
 	{
 		verifyNothingStripped("text");
@@ -46,6 +65,7 @@ public class TestHtmlUtilities extends MiradiTestCase
 		verifyRemoveAllExcept("<b>text</b>", "<html><body><b>text</b></htm></body>");
 		verifyRemoveAllExcept("<b>text", "<font size=\"5\"><b>text</font>");
 		verifyRemoveAllExcept("<b someAttribute=\"x\">text", "<b someAttribute=\"x\">text</font>");
+		verifyRemoveAllExcept("text", "<html><head></head><body><p style=\"margin-top: 0\">text</p></body></html>");
 	}
 	
 	private void verifyNothingStripped(String text)
@@ -60,7 +80,7 @@ public class TestHtmlUtilities extends MiradiTestCase
 	
 	private String[] getTagsToKeep()
 	{
-		return new String[]{"b", "br", };
+		return new String[] {"br", "b", "i", "ul", "ol", "li", "u", "strike", };
 	}
 	
 	public void testAppendNewlineToEndDivTags()
