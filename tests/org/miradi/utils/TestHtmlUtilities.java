@@ -45,7 +45,7 @@ public class TestHtmlUtilities extends MiradiTestCase
 		  "	  </body>\n" +
 		  "	</html>\n";
 
-		assertEquals("wrong new lines inserted?", "text on line 1<br/><br/>text on line 2", HtmlUtilities.prepareForSaving(htmlText, getTagsToKeep()));
+		assertEquals("wrong new lines inserted?", "text on line 1<br/>text on line 2", HtmlUtilities.prepareForSaving(htmlText, getTagsToKeep()));
 	}
 	
 	public void testRemoveAllExcept()
@@ -89,9 +89,10 @@ public class TestHtmlUtilities extends MiradiTestCase
 		verifyDivWasAppendedWithNewline("sometext</div>\n", "sometext<div/>");
 	}
 
-	protected void verifyDivWasAppendedWithNewline(final String expectedValue,	final String htmlText)
+	protected void verifyDivWasAppendedWithNewline( String expectedValue, String htmlText)
 	{
-		assertEquals("div was not appended with newline?", expectedValue, HtmlUtilities.appendNewlineToEndDivTags(htmlText));
+		final String actualValue = HtmlUtilities.appendNewlineToEndDivTags(htmlText);
+		assertEquals("div tag was not found and appended with newline, new line missing?", expectedValue, actualValue);
 	}
 	
 	public void testReplaceHtmlTags()
