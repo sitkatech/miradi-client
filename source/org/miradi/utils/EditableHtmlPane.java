@@ -85,6 +85,6 @@ public class EditableHtmlPane extends MiradiTextPane
 	
 	private String[] getTagsToKeep()
 	{
-		return new String[] {"br", "b", "i", "ul", "ol", "li", "u", "", "strike", };
+		return new String[] {"br", "b", "i", "ul", "ol", "li", "u", "strike", };
 	}
 }
