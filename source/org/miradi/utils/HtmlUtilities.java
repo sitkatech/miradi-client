@@ -35,6 +35,15 @@ public class HtmlUtilities
 		return replaceNonHtmlNewlines(formatted);
 	}
 	
+	public static String convertToHtmlText(String nonHtmlText)
+	{
+		nonHtmlText = XmlUtilities.getXmlEncoded(nonHtmlText);
+		nonHtmlText = nonHtmlText.replaceAll("\n", HtmlUtilities.BR_TAG);
+		nonHtmlText = nonHtmlText.replaceAll("\r", HtmlUtilities.BR_TAG);
+		
+		return nonHtmlText;
+	}
+
 	public static String prepareForSaving(final String text, String[] htmlTagsToKeep)
 	{
 		String trimmedText = "";
