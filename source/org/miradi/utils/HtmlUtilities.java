@@ -46,7 +46,7 @@ public class HtmlUtilities
 	
 	public static String convertToNonHtml(String htmlDataValue)
 	{
-		htmlDataValue = HtmlUtilities.replaceHtmlNewlinews(htmlDataValue);
+		htmlDataValue = replaceHtmlNewlinews(htmlDataValue);
 		htmlDataValue = XmlUtilities2.getXmlDecoded(htmlDataValue);
 		
 		return htmlDataValue;
