@@ -46,7 +46,7 @@ public class HtmlUtilities
 	
 	public static String convertToNonHtml(String htmlDataValue)
 	{
-		htmlDataValue = replaceHtmlNewlinews(htmlDataValue);
+		htmlDataValue = replaceHtmlBrsWithNewlines(htmlDataValue);
 		htmlDataValue = XmlUtilities2.getXmlDecoded(htmlDataValue);
 		
 		return htmlDataValue;
@@ -70,7 +70,7 @@ public class HtmlUtilities
 		return trimmedText;
 	}
 	
-	public static String replaceHtmlNewlinews(String text)
+	public static String replaceHtmlBrsWithNewlines(String text)
 	{
 		return HtmlUtilities.replaceHtmlTags(text, "br", NEW_LINE);
 	}
