@@ -34,6 +34,11 @@ public class StringUtilities
 	public static String joinWithOr(String[] tagsToKeep)
 	{
 		final String string = "|";
+		return join(tagsToKeep, string);
+	}
+
+	private static String join(String[] tagsToKeep, final String string)
+	{
 		String tagsSeperatedByOr = "";
 		for (int index = 0; index < tagsToKeep.length; ++index)
 		{
