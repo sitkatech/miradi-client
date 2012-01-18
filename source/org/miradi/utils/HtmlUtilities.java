@@ -78,10 +78,20 @@ public class HtmlUtilities
 	{
 		final String START = "<" + tagToReplace + "\\s*>";
 		final String START_WITH_ATRIBUTE = "<" + tagToReplace + "\\s+.*?>";
-		final String END = "<\\/" + tagToReplace + "\\s*>";
-		final String EMPTY = "<" + tagToReplace + "\\s*/\\s*>";
+		final String END = createEndTagRegex(tagToReplace);
+		final String EMPTY = createEmptyTagRegex(tagToReplace);
 		final String regex = START + "|" + EMPTY + "|" + END + "|" + START_WITH_ATRIBUTE; 
 		return replaceAll(regex, text, replacement);
+	}
+
+	private static String createEmptyTagRegex(String tagToReplace)
+	{
+		return "<" + tagToReplace + "\\s*/\\s*>";
+	}
+
+	private static String createEndTagRegex(String tag)
+	{
+		return "<\\/\\s*" + tag + "\\s*>";
 	}
 	
 	private static String replaceAll(final String regex, String text, final String replacement)
@@ -93,7 +103,11 @@ public class HtmlUtilities
 	
 	public static String appendNewlineToEndDivTags(String text)
 	{
-		return replaceHtmlTags(text, "div", "</div>" + HtmlUtilities.NEW_LINE);
+		final String END = createEndTagRegex(DIV_TAG_NAME);
+		final String EMPTY = createEmptyTagRegex(DIV_TAG_NAME);
+		final String regex = EMPTY + "|" + END;
+		
+		return replaceAll(regex, text, DIV_CLOSING_TAG + HtmlUtilities.NEW_LINE);
 	}
 	
 	public static String removeAllExcept(String text, String[] tagsToKeep)
@@ -110,4 +124,6 @@ public class HtmlUtilities
 	public static final String BR_TAG = "<br/>";
 	public static final String NEW_LINE = "\n";
 	public static final String EMPTY_STRING = "";
+	private static final String DIV_TAG_NAME = "div";
+	private static final String DIV_CLOSING_TAG = "</div>";
 }
