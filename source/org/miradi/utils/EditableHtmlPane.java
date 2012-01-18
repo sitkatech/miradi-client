@@ -75,6 +75,11 @@ public class EditableHtmlPane extends MiradiTextPane
 	{
 		String text = super.getText();
 		
+		return prepareForSaving(text);
+	}
+
+	public String prepareForSaving(String text)
+	{
 		text = HtmlUtilities.removeNonHtmlNewLines(text);
 		text = HtmlUtilities.appendNewlineToEndDivTags(text);
 		text = HtmlUtilities.removeAllExcept(text, getTagsToKeep());
