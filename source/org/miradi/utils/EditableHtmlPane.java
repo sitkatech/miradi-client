@@ -69,7 +69,6 @@ public class EditableHtmlPane extends MiradiTextPane
 		CompoundUndoManager.discardAllEdits(getDocument());
 	}
 
-	//FIXME urgent - need to strip white space when tags are removed.
 	@Override
 	public String getText()
 	{
