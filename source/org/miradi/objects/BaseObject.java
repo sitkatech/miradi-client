@@ -692,17 +692,8 @@ abstract public class BaseObject
 		if (isNonUserField(fieldTag))
 			throw new RuntimeException("Cannot convert non user data to html and set. Tag = " + fieldTag);
 		
-		nonHtmlDataValue = convertToHtmlText(nonHtmlDataValue);
+		nonHtmlDataValue = HtmlUtilities.convertToHtmlText(nonHtmlDataValue);
 		setData(fieldTag, nonHtmlDataValue);
-	}
-
-	public static String convertToHtmlText(String nonHtmlText)
-	{
-		nonHtmlText = XmlUtilities.getXmlEncoded(nonHtmlText);
-		nonHtmlText = nonHtmlText.replaceAll("\n", HtmlUtilities.BR_TAG);
-		nonHtmlText = nonHtmlText.replaceAll("\r", HtmlUtilities.BR_TAG);
-		
-		return nonHtmlText;
 	}
 	
 	public String getDataAsNonHtml(String fieldTag)

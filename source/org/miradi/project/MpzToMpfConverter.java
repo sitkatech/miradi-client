@@ -55,6 +55,7 @@ import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.utils.EnhancedJsonArray;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.FileUtilities;
+import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.NullProgressMeter;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.utils.Translation;
@@ -328,7 +329,7 @@ public class MpzToMpfConverter
 			return;
 		
 		String contents = readIntoString(quarantineEntry);
-		contents = BaseObject.convertToHtmlText(contents);
+		contents = HtmlUtilities.convertToHtmlText(contents);
 		project.appendToQuarantineFile(contents);
 	}
 
@@ -407,7 +408,7 @@ public class MpzToMpfConverter
 		}
 		
 		String exceptionLog = safeConvertUtf8BytesToString(exceptionLogBytes);
-		exceptionLog = BaseObject.convertToHtmlText(exceptionLog);
+		exceptionLog = HtmlUtilities.convertToHtmlText(exceptionLog);
 		project.appendToExceptionLog(exceptionLog);
 	}
 
