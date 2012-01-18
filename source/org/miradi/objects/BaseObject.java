@@ -99,7 +99,6 @@ import org.miradi.utils.PointList;
 import org.miradi.utils.StringChoiceMapData;
 import org.miradi.utils.StringCodeListMapData;
 import org.miradi.utils.StringStringMapData;
-import org.miradi.utils.XmlUtilities2;
 
 abstract public class BaseObject
 {
@@ -698,17 +697,9 @@ abstract public class BaseObject
 	
 	public String getDataAsNonHtml(String fieldTag)
 	{
-		return  convertToNonHtml(getData(fieldTag));
+		return  HtmlUtilities.convertToNonHtml(getData(fieldTag));
 	}
 
-	public static String convertToNonHtml(String htmlDataValue)
-	{
-		htmlDataValue = HtmlUtilities.replaceHtmlNewlinews(htmlDataValue);
-		htmlDataValue = XmlUtilities2.getXmlDecoded(htmlDataValue);
-		
-		return htmlDataValue;
-	}
-	
 	public void setData(String fieldTag, String dataValue) throws Exception
 	{
 		if(TAG_ID.equals(fieldTag))

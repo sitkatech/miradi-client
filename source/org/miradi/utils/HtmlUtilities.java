@@ -43,6 +43,14 @@ public class HtmlUtilities
 		
 		return nonHtmlText;
 	}
+	
+	public static String convertToNonHtml(String htmlDataValue)
+	{
+		htmlDataValue = HtmlUtilities.replaceHtmlNewlinews(htmlDataValue);
+		htmlDataValue = XmlUtilities2.getXmlDecoded(htmlDataValue);
+		
+		return htmlDataValue;
+	}
 
 	public static String prepareForSaving(final String text, String[] htmlTagsToKeep)
 	{
