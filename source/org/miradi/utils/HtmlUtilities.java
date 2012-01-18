@@ -129,7 +129,7 @@ public class HtmlUtilities
 	
 	public static String removeAllExcept(String text, String[] tagsToKeep)
 	{
-		String tagsSeperatedByOr = StringUtilities.concatenateWithOr(tagsToKeep);
+		String tagsSeperatedByOr = StringUtilities.joinWithOr(tagsToKeep);
 		
 		String regex = "<\\/*?(?![^>]*?\\b(?:" + tagsSeperatedByOr + ")\\b)[^>]*?>";;
 		final Pattern compiledRegex = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);

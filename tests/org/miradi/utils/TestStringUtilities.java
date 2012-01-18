@@ -38,7 +38,7 @@ public class TestStringUtilities extends MiradiTestCase
 	
 	private void verifyConcatenate(final String expected, final String[] strings)
 	{
-		assertEquals("did not contcatenate correctly?", expected, StringUtilities.concatenateWithOr(strings));
+		assertEquals("did not contcatenate correctly?", expected, StringUtilities.joinWithOr(strings));
 	}
 
 	public void testSubStringAfter()

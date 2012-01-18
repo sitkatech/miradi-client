@@ -31,7 +31,7 @@ public class StringUtilities
 		return "";
 	}
 	
-	public static String concatenateWithOr(String[] tagsToKeep)
+	public static String joinWithOr(String[] tagsToKeep)
 	{
 		String tagsSeperatedByOr = "";
 		for (int index = 0; index < tagsToKeep.length; ++index)
