@@ -35,6 +35,16 @@ public class HtmlUtilities
 		return replaceNonHtmlNewlines(formatted);
 	}
 	
+	public static String prepareForSaving(String text, String[] htmlTagsToKeep)
+	{
+		text = removeNonHtmlNewLines(text);
+		text = appendNewlineToEndDivTags(text);
+		text = removeAllExcept(text, htmlTagsToKeep);
+		text = replaceNonHtmlNewlines(text);
+		
+		return text;
+	}
+	
 	public static String replaceHtmlNewlinews(String text)
 	{
 		return HtmlUtilities.replaceHtmlTags(text, "br", NEW_LINE);
