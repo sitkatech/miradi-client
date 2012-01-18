@@ -137,7 +137,6 @@ public class HtmlUtilities
 		return compiledRegex.matcher(text).replaceAll(EMPTY_STRING);
 	}
 
-	//FIXME urgent - Should not be using <br> tags,  check references and see if br can be used when replacing
 	public static final String BR_TAG = "<br/>";
 	public static final String NEW_LINE = "\n";
 	public static final String EMPTY_STRING = "";
