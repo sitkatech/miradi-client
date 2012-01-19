@@ -28,10 +28,10 @@ import org.miradi.main.EAM;
 
 public class HtmlUtilities
 {
-	public static void addRuleFontSize(StyleSheet style, final int size, final int fontSize)
+	public static void addRuleFontSize(StyleSheet style, final int defaultFontSize, final int fontSize)
 	{
 		if (fontSize == 0)
-			style.addRule(HtmlUtilities.makeSureRuleHasRightPrefix("body {font-size:"+size+"pt;}"));
+			style.addRule(HtmlUtilities.makeSureRuleHasRightPrefix("body {font-size:"+defaultFontSize+"pt;}"));
 		else
 			style.addRule(HtmlUtilities.makeSureRuleHasRightPrefix("body {font-size:"+fontSize+"pt;}"));
 	}
