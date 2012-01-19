@@ -22,9 +22,34 @@ package org.miradi.utils;
 import java.util.regex.Pattern;
 
 import org.martus.util.xml.XmlUtilities;
+import org.miradi.main.EAM;
 
 public class HtmlUtilities
 {
+	public static String makeSureRuleHasRightPrefix(String rule)
+	{
+		if (cssDotPrefixWorksCorrectly())
+			return rule;
+
+		return replaceDotWithPoundSign(rule);
+	}
+	
+	public static boolean cssDotPrefixWorksCorrectly()
+	{
+		String javaVersion = EAM.getJavaVersion();
+		if (javaVersion.startsWith("1.4"))
+			return false;
+		return true;
+	}
+	
+	private static String replaceDotWithPoundSign(String rule)
+	{
+		if (rule.trim().startsWith("."))
+			return rule.trim().replaceFirst(".", "#");
+
+		return rule;
+	}
+
 	public static String plainStringWithNewlinesToHtml(String plainString)
 	{
 		if(plainString == null)

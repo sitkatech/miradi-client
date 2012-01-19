@@ -26,6 +26,7 @@ import org.martus.swing.HyperlinkHandler;
 import org.miradi.dialogs.fieldComponents.HtmlFormViewer;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.MainWindow;
+import org.miradi.utils.HtmlUtilities;
 
 public class MiradiHtmlViewer extends HtmlFormViewer
 {
@@ -40,7 +41,7 @@ public class MiradiHtmlViewer extends HtmlFormViewer
 	{
 		super.customizeStyleSheet(style);
 		for(int i = 0; i < rules.length; ++i)			
-			style.addRule(makeSureRuleHasRightPrefix(rules[i]));
+			style.addRule(HtmlUtilities.makeSureRuleHasRightPrefix(rules[i]));
 	}
 
 	/*

@@ -66,6 +66,7 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.FontFamiliyQuestion;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.utils.HtmlFormEventHandler;
+import org.miradi.utils.HtmlUtilities;
 
 
 public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, MouseListener
@@ -161,42 +162,17 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 	public void addRuleFontSize(StyleSheet style)
 	{
 		if (getFontSize() == 0)
-			style.addRule(makeSureRuleHasRightPrefix("body {font-size:"+getFont().getSize()+"pt;}"));			
+			style.addRule(HtmlUtilities.makeSureRuleHasRightPrefix("body {font-size:"+getFont().getSize()+"pt;}"));			
 		else
-			style.addRule(makeSureRuleHasRightPrefix("body {font-size:"+getFontSize()+"pt;}"));		
+			style.addRule(HtmlUtilities.makeSureRuleHasRightPrefix("body {font-size:"+getFontSize()+"pt;}"));		
 	}
 	
 	public void addRuleFontFamily(StyleSheet style)
 	{
 		FontFamiliyQuestion question = (FontFamiliyQuestion)StaticQuestionManager.getQuestion(FontFamiliyQuestion.class);
 		ChoiceItem selectedFontFamily = question.findChoiceByCode(getFontFamilyCode());
-		style.addRule(makeSureRuleHasRightPrefix("body {font-family:" + question.getFontsString(selectedFontFamily) + ";}"));
+		style.addRule(HtmlUtilities.makeSureRuleHasRightPrefix("body {font-family:" + question.getFontsString(selectedFontFamily) + ";}"));
 	}
-	
-	public String makeSureRuleHasRightPrefix(String rule)
-	{
-		if (cssDotPrefixWorksCorrectly())
-			return rule;
-
-		return replaceDotWithPoundSign(rule);
-	}
-	
-	public boolean cssDotPrefixWorksCorrectly()
-	{
-		String javaVersion = EAM.getJavaVersion();
-		if (javaVersion.startsWith("1.4"))
-			return false;
-		return true;
-	}
-	
-	private String replaceDotWithPoundSign(String rule)
-	{
-		if (rule.trim().startsWith("."))
-			return rule.trim().replaceFirst(".", "#");
-
-		return rule;
-	}
-
 	
 	public void hyperlinkUpdate(HyperlinkEvent e)
 	{
