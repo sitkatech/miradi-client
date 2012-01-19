@@ -21,11 +21,21 @@ package org.miradi.utils;
 
 import java.util.regex.Pattern;
 
+import javax.swing.text.html.StyleSheet;
+
 import org.martus.util.xml.XmlUtilities;
 import org.miradi.main.EAM;
 
 public class HtmlUtilities
 {
+	public static void addRuleFontSize(StyleSheet style, final int size, final int fontSize)
+	{
+		if (fontSize == 0)
+			style.addRule(HtmlUtilities.makeSureRuleHasRightPrefix("body {font-size:"+size+"pt;}"));
+		else
+			style.addRule(HtmlUtilities.makeSureRuleHasRightPrefix("body {font-size:"+fontSize+"pt;}"));
+	}
+	
 	public static String makeSureRuleHasRightPrefix(String rule)
 	{
 		if (cssDotPrefixWorksCorrectly())
