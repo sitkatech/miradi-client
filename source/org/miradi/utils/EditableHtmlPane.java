@@ -24,6 +24,7 @@ import java.io.StringReader;
 
 import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
+import javax.swing.text.html.StyleSheet;
 
 import net.atlanticbb.tantlinger.ui.text.CompoundUndoManager;
 import net.atlanticbb.tantlinger.ui.text.HTMLUtils;
@@ -63,6 +64,7 @@ public class EditableHtmlPane extends MiradiTextPane
 	@Override
 	public void setText(String text)
 	{
+		updateStyleSheet();
 		String topText = HtmlUtilities.removeAllExcept(text, getTagsToKeep());
 		super.setText("");
 		insertHtml(topText, 0);            
@@ -80,5 +82,19 @@ public class EditableHtmlPane extends MiradiTextPane
 	private String[] getTagsToKeep()
 	{
 		return new String[] {"br", "b", "i", "ul", "ol", "li", "u", "strike", };
+	}
+	
+	private void updateStyleSheet()
+	{
+		HTMLEditorKit htmlKit = (HTMLEditorKit)getEditorKit();
+		StyleSheet style = htmlKit.getStyleSheet();
+		customizeStyleSheet(style);
+		htmlKit.setStyleSheet(style);
+	}
+
+	private void customizeStyleSheet(StyleSheet style)
+	{
+		final int fontSize = getMainWindow().getWizardFontSize();
+		HtmlUtilities.addRuleFontSize(style, getFont().getSize(), fontSize);
 	}
 }
