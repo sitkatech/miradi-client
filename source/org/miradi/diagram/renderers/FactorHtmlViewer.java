@@ -119,9 +119,9 @@ public class FactorHtmlViewer extends HtmlFormViewer
 		return red.substring(red.length() - 2);
 	}
 	
-	EAMGraphCell graphCell;
+	private EAMGraphCell graphCell;
 
-	final static String[] rules = {
+	private final static String[] rules = {
 		"body {text-align:center;}",
 	};
 
