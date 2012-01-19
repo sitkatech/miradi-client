@@ -33,8 +33,9 @@ import org.miradi.main.MainWindow;
 
 public class MiradiTextPane extends JTextPane
 {
-	public MiradiTextPane(MainWindow mainWindow, int fixedApproximateColumnCount, int initialApproximateRowCount) throws Exception
+	public MiradiTextPane(MainWindow mainWindowToUse, int fixedApproximateColumnCount, int initialApproximateRowCount) throws Exception
 	{
+		mainWindow = mainWindowToUse;
 		setFont(mainWindow.getUserDataPanelFont());
 		int fontWidth = getFontMetrics(getFont()).stringWidth("W");
 		int fontHeight = getFontMetrics(getFont()).getHeight();
@@ -90,4 +91,11 @@ public class MiradiTextPane extends JTextPane
 		set.add(KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_TAB, shiftMask));
 		return set;
 	}
+	
+	protected MainWindow getMainWindow()
+	{
+		return mainWindow;
+	}
+	
+	private MainWindow mainWindow;
 }
