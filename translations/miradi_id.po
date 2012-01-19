@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-18 10:45-0600\n"
+"POT-Creation-Date: 2012-01-19 16:17-0600\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -3811,7 +3811,7 @@ msgstr ""
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:31
 #: Miradi/source/org/miradi/forms/objects/GoalPropertiesForm.java:31
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:77
-#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:167
+#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:165
 #: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:41
 #: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:44
 msgid "Goal"
@@ -3832,7 +3832,7 @@ msgstr ""
 msgid "Goal Relevancy Panel"
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:169
+#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:167
 #: Miradi/source/org/miradi/dialogs/task/ActivityDetailsPanelWithRelevancyOverrideFields.java:45
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:59
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:91
@@ -5208,7 +5208,7 @@ msgstr ""
 msgid "Nov"
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:154
+#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:152
 msgid "Obj"
 msgstr "Tujuan Instruksional "
 
@@ -5258,7 +5258,7 @@ msgstr ""
 msgid "Objectives:"
 msgstr "Tujuan Instruksional: "
 
-#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:156
+#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:154
 msgid "Objs"
 msgstr "Tujuan Instruksional "
 
