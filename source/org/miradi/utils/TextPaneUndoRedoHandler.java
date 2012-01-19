@@ -24,7 +24,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.AbstractAction;
-import javax.swing.JTextPane;
+import javax.swing.JEditorPane;
 import javax.swing.KeyStroke;
 import javax.swing.event.UndoableEditEvent;
 import javax.swing.event.UndoableEditListener;
@@ -36,7 +36,7 @@ import org.miradi.main.EAM;
 
 public class TextPaneUndoRedoHandler
 {
-	public TextPaneUndoRedoHandler(JTextPane textFieldToUse)
+	public TextPaneUndoRedoHandler(JEditorPane textFieldToUse)
 	{
 		textField = textFieldToUse;
 		undo = new UndoManager();
@@ -54,7 +54,7 @@ public class TextPaneUndoRedoHandler
 		getTextField().getInputMap().put(KeyStroke.getKeyStroke("control Y"), REDO_TEXT);
 	}
 
-	private JTextPane getTextField()
+	private JEditorPane getTextField()
 	{
 		return textField;
 	}
@@ -118,6 +118,6 @@ public class TextPaneUndoRedoHandler
 	private static final String UNDO_TEXT = "Undo";
 	private static final String REDO_TEXT = "Redo";
 	
-	private JTextPane textField;
+	private JEditorPane textField;
 	private UndoManager undo;
 }
