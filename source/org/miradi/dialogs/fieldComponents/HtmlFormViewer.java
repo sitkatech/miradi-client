@@ -163,10 +163,15 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 	{
 		final int size = getFont().getSize();
 		final int fontSize = getFontSize();
+		addRuleFontSize(style, size, fontSize);		
+	}
+
+	protected void addRuleFontSize(StyleSheet style, final int size, final int fontSize)
+	{
 		if (fontSize == 0)
 			style.addRule(HtmlUtilities.makeSureRuleHasRightPrefix("body {font-size:"+size+"pt;}"));
 		else
-			style.addRule(HtmlUtilities.makeSureRuleHasRightPrefix("body {font-size:"+fontSize+"pt;}"));		
+			style.addRule(HtmlUtilities.makeSureRuleHasRightPrefix("body {font-size:"+fontSize+"pt;}"));
 	}
 	
 	public void addRuleFontFamily(StyleSheet style)
