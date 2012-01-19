@@ -148,9 +148,14 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 	
 	protected void customizeStyleSheet(StyleSheet style)
 	{
-		style.addRule("body {background: #ffffff;}");
+		addRuleBackground(style);
 		addRuleFontFamily(style);
 		addRuleFontSize(style);
+	}
+
+	protected void addRuleBackground(StyleSheet style)
+	{
+		style.addRule("body {background: #ffffff;}");
 	}
 
 	public void addRuleFontSize(StyleSheet style)
