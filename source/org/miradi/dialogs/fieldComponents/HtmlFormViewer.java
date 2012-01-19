@@ -161,17 +161,9 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 
 	public void addRuleFontSize(StyleSheet style)
 	{
-		addRuleFontSize(style, getFont().getSize(), getFontSize());		
+		HtmlUtilities.addRuleFontSize(style, getFont().getSize(), getFontSize());		
 	}
 
-	protected void addRuleFontSize(StyleSheet style, final int size, final int fontSize)
-	{
-		if (fontSize == 0)
-			style.addRule(HtmlUtilities.makeSureRuleHasRightPrefix("body {font-size:"+size+"pt;}"));
-		else
-			style.addRule(HtmlUtilities.makeSureRuleHasRightPrefix("body {font-size:"+fontSize+"pt;}"));
-	}
-	
 	public void addRuleFontFamily(StyleSheet style)
 	{
 		FontFamiliyQuestion question = (FontFamiliyQuestion)StaticQuestionManager.getQuestion(FontFamiliyQuestion.class);
