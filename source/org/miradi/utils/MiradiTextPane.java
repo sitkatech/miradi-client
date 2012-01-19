@@ -26,29 +26,20 @@ import java.awt.KeyboardFocusManager;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.swing.JTextPane;
 import javax.swing.KeyStroke;
-import javax.swing.text.html.StyleSheet;
 
-import org.miradi.dialogs.fieldComponents.HtmlFormViewer;
 import org.miradi.main.MainWindow;
 
-public class MiradiTextPane extends HtmlFormViewer
+public class MiradiTextPane extends JTextPane
 {
 	public MiradiTextPane(MainWindow mainWindow, int fixedApproximateColumnCount, int initialApproximateRowCount) throws Exception
 	{
-		super(mainWindow, "", null);
-		
-		setEditable(true);
 		setFont(mainWindow.getUserDataPanelFont());
 		int fontWidth = getFontMetrics(getFont()).stringWidth("W");
 		int fontHeight = getFontMetrics(getFont()).getHeight();
 		setMinimumSize(new Dimension(fixedApproximateColumnCount*fontWidth, initialApproximateRowCount*fontHeight));
 		setMaximumSize(new Dimension(fixedApproximateColumnCount*fontWidth, Integer.MAX_VALUE));
-	}
-	
-	@Override
-	protected void addRuleBackground(StyleSheet style)
-	{
 	}
 	
 	@Override
