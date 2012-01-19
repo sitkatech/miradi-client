@@ -29,6 +29,7 @@ import org.miradi.dialogs.fieldComponents.HtmlFormViewer;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
+import org.miradi.utils.HtmlUtilities;
 
 public class FactorHtmlViewer extends HtmlFormViewer
 {
@@ -45,7 +46,7 @@ public class FactorHtmlViewer extends HtmlFormViewer
 		
 		super.customizeStyleSheet(style);
 		for(int i = 0; i < rules.length; ++i)			
-			style.addRule(makeSureRuleHasRightPrefix(rules[i]));
+			style.addRule(HtmlUtilities.makeSureRuleHasRightPrefix(rules[i]));
 		
 		addRuleBackgroundColor(style);
 	}
@@ -58,7 +59,7 @@ public class FactorHtmlViewer extends HtmlFormViewer
 	public void addRuleBackgroundColor(StyleSheet style)
 	{
 		Color color = graphCell.getColor();
-		style.addRule(makeSureRuleHasRightPrefix("body {background-color:"+convertColorToHTMLColor(color)+";}"));
+		style.addRule(HtmlUtilities.makeSureRuleHasRightPrefix("body {background-color:"+convertColorToHTMLColor(color)+";}"));
 	}
 
 	@Override

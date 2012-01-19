@@ -25,6 +25,7 @@ import javax.swing.text.html.StyleSheet;
 import org.martus.swing.HyperlinkHandler;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.MainWindow;
+import org.miradi.utils.HtmlUtilities;
 
 public class WizardHtmlViewer extends MiradiHtmlViewer
 {
@@ -39,7 +40,7 @@ public class WizardHtmlViewer extends MiradiHtmlViewer
 	{
 		super.customizeStyleSheet(style);
 		for(int i = 0; i < rules.length; ++i)			
-			style.addRule(makeSureRuleHasRightPrefix(rules[i]));
+			style.addRule(HtmlUtilities.makeSureRuleHasRightPrefix(rules[i]));
 	}
 
 	/*
