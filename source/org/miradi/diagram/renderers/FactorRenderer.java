@@ -89,7 +89,6 @@ import org.miradi.objects.Task;
 import org.miradi.project.threatrating.ThreatRatingFramework;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.StatusQuestion;
-import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.Utility;
 
 
@@ -131,8 +130,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 			isOwnedByGroup = node.getDiagramFactor().isCoveredByGroupBox();
 			
 			EAMGraphCell cell = (EAMGraphCell)view.getCell();
-			String formattedLabel =  HtmlUtilities.plainStringWithNewlinesToHtml(cell.toString());
-			setHtmlFormViewerText(getAdditionalHtmlFontTags() + formattedLabel);
+			setHtmlFormViewerText(getAdditionalHtmlFontTags() + cell.toString());
 			
 			indicatorText = null;
 			if(diagram.areIndicatorsVisible())

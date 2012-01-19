@@ -46,7 +46,6 @@ import org.jgraph.graph.CellView;
 import org.jgraph.graph.CellViewRenderer;
 import org.jgraph.graph.GraphConstants;
 import org.jgraph.graph.VertexView;
-import org.martus.util.xml.XmlUtilities;
 import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.main.MainWindow;
@@ -65,9 +64,8 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 		EAMGraphCell cell = (EAMGraphCell)view.getCell();
 		String text = cell.toString();
 		
-		String formattedLabel =  XmlUtilities.getXmlEncoded(text);
 		htmlFormViewer.setFactorCell(cell);
-		setHtmlFormViewerText(formattedLabel);
+		setHtmlFormViewerText(text);
 		
 		graph = graphToUse;
 		selected = sel;
