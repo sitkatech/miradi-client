@@ -30,10 +30,11 @@ public class HtmlUtilities
 {
 	public static void addRuleFontSize(StyleSheet style, final int defaultFontSize, final int fontSize)
 	{
+		int size = fontSize;
 		if (fontSize == 0)
-			style.addRule(HtmlUtilities.makeSureRuleHasRightPrefix("body {font-size:"+defaultFontSize+"pt;}"));
-		else
-			style.addRule(HtmlUtilities.makeSureRuleHasRightPrefix("body {font-size:"+fontSize+"pt;}"));
+			size = defaultFontSize;
+		
+		style.addRule(HtmlUtilities.makeSureRuleHasRightPrefix("body {font-size:"+size+"pt;}"));
 	}
 	
 	public static String makeSureRuleHasRightPrefix(String rule)
