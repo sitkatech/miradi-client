@@ -91,7 +91,7 @@ public class HtmlUtilities
 	public static String prepareForSaving(final String text, String[] htmlTagsToKeep)
 	{
 		String trimmedText = "";
-		final String[] lines = text.split("\\r?\\n");
+		final String[] lines = text.split(getNewlineRegex());
 		for (int index = 0; index < lines.length; ++index)
 		{
 			trimmedText += lines[index].trim();
@@ -104,6 +104,11 @@ public class HtmlUtilities
 		trimmedText = replaceNonHtmlNewlines(trimmedText);
 		
 		return trimmedText;
+	}
+
+	private static String getNewlineRegex()
+	{
+		return "\\r?\\n";
 	}
 	
 	public static String replaceHtmlBrsWithNewlines(String text)
@@ -118,7 +123,7 @@ public class HtmlUtilities
 	
 	public static String removeNonHtmlNewLines(String htmlText)
 	{
-		return htmlText.replaceAll(NEW_LINE, EMPTY_STRING);
+		return htmlText.replaceAll(getNewlineRegex(), EMPTY_STRING);
 	}
 
 	public static String stripAllHtmlTags(String text)
