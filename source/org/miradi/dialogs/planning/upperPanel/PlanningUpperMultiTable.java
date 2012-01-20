@@ -73,7 +73,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 
 		masterTree = masterTreeToUse;
 		FontForObjectProvider fontProvider = new PlanningViewFontProvider(getMainWindow());
-		defaultRendererFactory = new MultiLineObjectTableCellRendererOnlyFactory(this, fontProvider);
+		defaultRendererFactory = new MultiLineObjectTableCellRendererOnlyFactory(mainWindowToUse, this, fontProvider);
 		currencyRendererFactory = new BudgetCostTreeTableCellRendererFactory(this, fontProvider);
 		choiceRendererFactory = new ChoiceItemTableCellRendererFactory(this, fontProvider);
 		progressRendererFactory = new ProgressTableCellRendererFactory(this, fontProvider);

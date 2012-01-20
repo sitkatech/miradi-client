@@ -44,7 +44,7 @@ public class ThreatNameColumnTable extends TableWhoseScrollPaneAlwaysExactlyFits
 		getColumnModel().getColumn(ThreatNameColumnTableModel.THREAT_ICON_COLUMN_INDEX).setCellRenderer(iconCellRendererFactory);
 		setColumnWidth(ThreatNameColumnTableModel.THREAT_ICON_COLUMN_INDEX, new DirectThreatIcon().getIconWidth() * 2);
 		
-		textCellRendererFactory = new BorderlessMultilineCellRendererFactory(tableModel, new DefaultFontProvider(getMainWindow()));
+		textCellRendererFactory = new BorderlessMultilineCellRendererFactory(mainWindowToUse, tableModel, new DefaultFontProvider(getMainWindow()));
 		getColumnModel().getColumn(ThreatNameColumnTableModel.THREAT_NAME_COLUMN_INDEX).setCellRenderer(textCellRendererFactory);
 		
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -85,10 +85,11 @@ class BorderlessChoiceItemCellRendererFactory extends ChoiceItemTableCellRendere
 class BorderlessMultilineCellRendererFactory extends MultiLineObjectTableCellRendererOnlyFactory
 {
 	public BorderlessMultilineCellRendererFactory(
+			MainWindow mainWindowToUse, 
 			RowColumnBaseObjectProvider providerToUse,
 			FontForObjectProvider fontProviderToUse)
 	{
-		super(providerToUse, fontProviderToUse);
+		super(mainWindowToUse, providerToUse, fontProviderToUse);
 	}
 	
 	@Override

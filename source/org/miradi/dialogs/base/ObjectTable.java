@@ -57,8 +57,8 @@ abstract public class ObjectTable extends SortableRowTable implements ObjectPick
 		
 		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
 		statusQuestionRenderer = new ChoiceItemTableCellRendererFactory(this, fontProvider);
-		otherRenderer = new MultiLineObjectTableCellRendererOnlyFactory(this, fontProvider);
-		codeListRenderer = new CodeListRendererFactory(this, fontProvider);
+		otherRenderer = new MultiLineObjectTableCellRendererOnlyFactory(mainWindowToUse, this, fontProvider);
+		codeListRenderer = new CodeListRendererFactory(mainWindowToUse, this, fontProvider);
 	}
 	
 	@Override
