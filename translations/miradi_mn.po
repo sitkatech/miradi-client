@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-20 10:24-0600\n"
+"POT-Creation-Date: 2012-01-20 11:58-0600\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -3379,7 +3379,7 @@ msgstr "Шалгуур үзүүлэлтүүдийг хянан засварла�
 msgid "Edit Methods"
 msgstr "Арга зүйг хянан засварлах"
 
-#: Miradi/source/org/miradi/utils/TextFieldPopupEditorComponent.java:43
+#: Miradi/source/org/miradi/utils/TextFieldPopupEditorComponent.java:42
 msgid "Edit Text"
 msgstr "Текст хянан засварлах"
 
@@ -8441,7 +8441,7 @@ msgstr ""
 "Нуур, намгархаг газар нутаг - Тундрын Нуур, Намгархаг Газар Нутаг [цөөрөм "
 "болон хайлсан цасны түр зуурын усыг хамруулан оруулна]"
 
-#: Miradi/source/org/miradi/dialogfields/editors/WhenPopupEditorComponent.java:48
+#: Miradi/source/org/miradi/dialogfields/editors/WhenPopupEditorComponent.java:47
 msgid "When - %s"
 msgstr "Хэзээ - %s"
 

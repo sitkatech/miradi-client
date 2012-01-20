@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-20 10:24-0600\n"
+"POT-Creation-Date: 2012-01-20 11:58-0600\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -3516,7 +3516,7 @@ msgstr "Indikatoren bearbeiten"
 msgid "Edit Methods"
 msgstr "Methoden bearbeiten"
 
-#: Miradi/source/org/miradi/utils/TextFieldPopupEditorComponent.java:43
+#: Miradi/source/org/miradi/utils/TextFieldPopupEditorComponent.java:42
 msgid "Edit Text"
 msgstr "Text bearbeiten"
 
@@ -8651,7 +8651,7 @@ msgstr ""
 "Wetlands - Tundra Wetlands [includes pools and temporary waters from "
 "snowmelt]"
 
-#: Miradi/source/org/miradi/dialogfields/editors/WhenPopupEditorComponent.java:48
+#: Miradi/source/org/miradi/dialogfields/editors/WhenPopupEditorComponent.java:47
 msgid "When - %s"
 msgstr "Wann - %s"
 

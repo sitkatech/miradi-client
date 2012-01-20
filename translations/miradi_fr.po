@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-20 10:24-0600\n"
+"POT-Creation-Date: 2012-01-20 11:58-0600\n"
 "PO-Revision-Date: 2011-04-05 11:46+0100\n"
 "Last-Translator: Emanuela Leonardi <e.leonardi@gmail.com>\n"
 "Language-Team: none\n"
@@ -3419,7 +3419,7 @@ msgstr "Modifier Indicateurs"
 msgid "Edit Methods"
 msgstr "Modifier Méthodes"
 
-#: Miradi/source/org/miradi/utils/TextFieldPopupEditorComponent.java:43
+#: Miradi/source/org/miradi/utils/TextFieldPopupEditorComponent.java:42
 msgid "Edit Text"
 msgstr "Modifier Texte"
 
@@ -8564,7 +8564,7 @@ msgstr ""
 "Zones humides - Zones humides de la Toundra [comprend les profonds et les "
 "plans d'eau temporaires dérivant de la fonte des neiges]"
 
-#: Miradi/source/org/miradi/dialogfields/editors/WhenPopupEditorComponent.java:48
+#: Miradi/source/org/miradi/dialogfields/editors/WhenPopupEditorComponent.java:47
 msgid "When - %s"
 msgstr "Quand - %s"
 

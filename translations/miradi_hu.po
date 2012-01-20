@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-20 10:24-0600\n"
+"POT-Creation-Date: 2012-01-20 11:58-0600\n"
 "PO-Revision-Date: 2011-02-15 16:35-0600\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -3162,7 +3162,7 @@ msgstr ""
 msgid "Edit Methods"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/TextFieldPopupEditorComponent.java:43
+#: Miradi/source/org/miradi/utils/TextFieldPopupEditorComponent.java:42
 msgid "Edit Text"
 msgstr ""
 
@@ -7962,7 +7962,7 @@ msgid ""
 "snowmelt]"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/editors/WhenPopupEditorComponent.java:48
+#: Miradi/source/org/miradi/dialogfields/editors/WhenPopupEditorComponent.java:47
 msgid "When - %s"
 msgstr ""
 
