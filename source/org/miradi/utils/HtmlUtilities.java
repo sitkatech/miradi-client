@@ -160,11 +160,11 @@ public class HtmlUtilities
 	
 	public static String appendNewlineToEndDivTags(String text)
 	{
-		final String END = createEndTagRegex(DIV_TAG_NAME);
-		final String EMPTY = createEmptyTagRegex(DIV_TAG_NAME);
-		final String regex = EMPTY + "|" + END;
-		
-		return replaceAll(regex, text, DIV_CLOSING_TAG + HtmlUtilities.NEW_LINE);
+		final String END_DIV_REGEX = createEndTagRegex(DIV_TAG_NAME);
+		text = replaceAll(END_DIV_REGEX, text, DIV_CLOSING_TAG + HtmlUtilities.NEW_LINE);
+		final String EMPTY_DIV_REGEX = createEmptyTagRegex(DIV_TAG_NAME);
+		text = replaceAll(EMPTY_DIV_REGEX, text, DIV_EMPTY_TAG + HtmlUtilities.NEW_LINE);
+		return text;
 	}
 	
 	public static String removeAllExcept(String text, String[] tagsToKeep)
@@ -182,4 +182,5 @@ public class HtmlUtilities
 	public static final String EMPTY_STRING = "";
 	private static final String DIV_TAG_NAME = "div";
 	private static final String DIV_CLOSING_TAG = "</div>";
+	private static final String DIV_EMPTY_TAG = "<div/>";
 }
