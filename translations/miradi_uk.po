@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-20 10:24-0600\n"
+"POT-Creation-Date: 2012-01-20 11:58-0600\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -3382,7 +3382,7 @@ msgstr "Редагувати індикатори"
 msgid "Edit Methods"
 msgstr "Редагувати методи"
 
-#: Miradi/source/org/miradi/utils/TextFieldPopupEditorComponent.java:43
+#: Miradi/source/org/miradi/utils/TextFieldPopupEditorComponent.java:42
 msgid "Edit Text"
 msgstr ""
 
@@ -8385,7 +8385,7 @@ msgid ""
 msgstr ""
 "Ветленди - Тундрові  [включаючи ставки і тимчасові водойми від танення снігу]"
 
-#: Miradi/source/org/miradi/dialogfields/editors/WhenPopupEditorComponent.java:48
+#: Miradi/source/org/miradi/dialogfields/editors/WhenPopupEditorComponent.java:47
 msgid "When - %s"
 msgstr ""
 
