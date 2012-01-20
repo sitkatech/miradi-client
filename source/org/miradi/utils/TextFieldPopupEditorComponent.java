@@ -39,10 +39,9 @@ public class TextFieldPopupEditorComponent extends AbstractPopupEditorComponent
 	@Override
 	protected void invokePopupEditor() throws Exception
 	{
-		MainWindow mainWindow = EAM.getMainWindow();
 		String title = EAM.text("Edit Text");
 		String initialText = getText();
-		PopupTextEditorDialog dialog = new PopupTextEditorDialog(mainWindow, title, initialText);
+		PopupTextEditorDialog dialog = new PopupTextEditorDialog(getMainWindow(), title, initialText);
 		Utilities.centerFrame(dialog);
 		dialog.setVisible(true);
 		setText(dialog.getText());

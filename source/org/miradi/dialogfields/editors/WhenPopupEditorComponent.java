@@ -44,10 +44,9 @@ public class WhenPopupEditorComponent extends AbstractPopupEditorComponent
 	{
 		try
 		{
-			MainWindow mainWindow = EAM.getMainWindow();
 			String title = EAM.substitute(EAM.text("When - %s"), getBaseObjectForRowLabel());
-			ModalDialogWithClose dialog = new ModalDialogWithClose(mainWindow, title);
-			whenEditorPanel = new WhenEditorComponent(mainWindow.getProject().getProjectCalendar(), baseObjectForRow);
+			ModalDialogWithClose dialog = new ModalDialogWithClose(getMainWindow(), title);
+			whenEditorPanel = new WhenEditorComponent(getMainWindow().getProject().getProjectCalendar(), baseObjectForRow);
 			dialog.setMainPanel(whenEditorPanel);
 			dialog.pack();
 			Utilities.centerFrame(dialog);
