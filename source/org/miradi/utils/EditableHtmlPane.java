@@ -30,11 +30,18 @@ import net.atlanticbb.tantlinger.ui.text.CompoundUndoManager;
 import net.atlanticbb.tantlinger.ui.text.HTMLUtils;
 import net.atlanticbb.tantlinger.ui.text.WysiwygHTMLEditorKit;
 
+import org.miradi.dialogfields.ObjectScrollingMultilineInputField;
+import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
 public class EditableHtmlPane extends MiradiTextPane
 {
+	public EditableHtmlPane(MainWindow mainWindow) throws Exception
+	{
+		this(mainWindow, AbstractObjectDataInputPanel.DEFAULT_TEXT_COLUM_COUNT, ObjectScrollingMultilineInputField.INITIAL_MULTI_LINE_TEXT_AREA_ROW_COUNT);
+	}
+	
 	public EditableHtmlPane(MainWindow mainWindow, int fixedApproximateColumnCount, int initialApproximateRowCount) throws Exception
 	{
 		super(mainWindow, fixedApproximateColumnCount, initialApproximateRowCount);
