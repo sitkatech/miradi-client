@@ -74,8 +74,7 @@ public class HtmlUtilities
 	public static String convertToHtmlText(String nonHtmlText)
 	{
 		nonHtmlText = XmlUtilities.getXmlEncoded(nonHtmlText);
-		nonHtmlText = nonHtmlText.replaceAll("\n", HtmlUtilities.BR_TAG);
-		nonHtmlText = nonHtmlText.replaceAll("\r", HtmlUtilities.BR_TAG);
+		nonHtmlText = nonHtmlText.replaceAll(getNewlineRegex(), HtmlUtilities.BR_TAG);
 		
 		return nonHtmlText;
 	}
