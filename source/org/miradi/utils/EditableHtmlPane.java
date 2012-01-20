@@ -37,7 +37,7 @@ import org.miradi.main.MainWindow;
 
 public class EditableHtmlPane extends MiradiTextPane
 {
-	public EditableHtmlPane(MainWindow mainWindow) throws Exception
+	public EditableHtmlPane(MainWindow mainWindow)
 	{
 		this(mainWindow, AbstractObjectDataInputPanel.DEFAULT_TEXT_COLUM_COUNT, ObjectScrollingMultilineInputField.INITIAL_MULTI_LINE_TEXT_AREA_ROW_COUNT);
 	}
