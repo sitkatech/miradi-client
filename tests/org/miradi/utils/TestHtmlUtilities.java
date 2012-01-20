@@ -85,9 +85,9 @@ public class TestHtmlUtilities extends MiradiTestCase
 	
 	public void testAppendNewlineToEndDivTags()
 	{
-		verifyDivWasAppendedWithNewline("sometext</div>\n", "sometext</div>");
-		verifyDivWasAppendedWithNewline("sometext</div>\n", "sometext<div/>");
-		verifyDivWasAppendedWithNewline("<div>sometext</div>\n", "<div>sometext<div/>");
+		verifyDivWasAppendedWithNewline("<div>sometext</div>\n", "<div>sometext</div>");
+		verifyDivWasAppendedWithNewline("sometext<div/>\nmore", "sometext<div/>more");
+		verifyDivWasAppendedWithNewline("<div>sometext</div>\n", "<div>sometext</div>");
 	}
 
 	protected void verifyDivWasAppendedWithNewline( String expectedValue, String htmlText)
