@@ -71,7 +71,7 @@ public class TargetViabilityTreeTable extends TreeTableWithStateSaving implement
 		getTree().setCellRenderer(new ViabilityTreeCellRenderer(this));
 		setColumnHeaderRenderers();
 		statusQuestionRenderer = new ChoiceItemTableCellRendererFactory(this, fontProvider);
-		multiLineRenderer = new MultiLineObjectTableCellRendererOnlyFactory(this, fontProvider);
+		multiLineRenderer = new MultiLineObjectTableCellRendererOnlyFactory(mainWindowToUse, this, fontProvider);
 		rebuildTableCompletely();
 	}
 	

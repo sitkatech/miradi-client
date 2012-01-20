@@ -25,16 +25,18 @@ import java.awt.Font;
 
 import javax.swing.JComponent;
 import javax.swing.JTable;
-import javax.swing.JTextArea;
+
+import org.miradi.main.MainWindow;
+import org.miradi.utils.EditableHtmlPane;
 
 
 public class MultiLineObjectTableCellRendererOnlyFactory extends ObjectTableCellEditorOrRendererFactory
 {
-	public MultiLineObjectTableCellRendererOnlyFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectProvider fontProviderToUse)
+	public MultiLineObjectTableCellRendererOnlyFactory(MainWindow mainWindowToUse, RowColumnBaseObjectProvider providerToUse, FontForObjectProvider fontProviderToUse)
 	{
 		super(providerToUse, fontProviderToUse);
 		
-		rendererComponent = new TableCellHtmlRendererComponent();
+		rendererComponent = new TableCellHtmlRendererComponent(mainWindowToUse);
 	}
 	
 	@Override
@@ -77,12 +79,11 @@ public class MultiLineObjectTableCellRendererOnlyFactory extends ObjectTableCell
 		return viewer.getPreferredHeight(table, row, column, value);
 	}
 	
-	public static class TableCellHtmlRendererComponent extends JTextArea implements TableCellPreferredHeightProvider
+	public static class TableCellHtmlRendererComponent extends EditableHtmlPane implements TableCellPreferredHeightProvider
 	{
-		public TableCellHtmlRendererComponent()
+		public TableCellHtmlRendererComponent(MainWindow mainWindow)
 		{
-			setLineWrap(true);
-			setWrapStyleWord(true);
+			super(mainWindow);
 		}
 		
 		public int getPreferredHeight(JTable table, int row, int column, Object value)
