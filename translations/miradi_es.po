@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-19 16:17-0600\n"
+"POT-Creation-Date: 2012-01-20 10:24-0600\n"
 "PO-Revision-Date: 2011-03-28 15:06-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -3335,7 +3335,7 @@ msgstr "Editar indicadores"
 msgid "Edit Methods"
 msgstr "Editar métodos"
 
-#: Miradi/source/org/miradi/utils/TextFieldPopupEditorComponent.java:38
+#: Miradi/source/org/miradi/utils/TextFieldPopupEditorComponent.java:43
 msgid "Edit Text"
 msgstr ""
 
@@ -8405,7 +8405,7 @@ msgstr ""
 "Humedales - Humedales de Tundra [incluyen charcos y aguas temporales de "
 "deshielo]"
 
-#: Miradi/source/org/miradi/dialogfields/editors/WhenPopupEditorComponent.java:43
+#: Miradi/source/org/miradi/dialogfields/editors/WhenPopupEditorComponent.java:48
 msgid "When - %s"
 msgstr ""
 

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-19 16:17-0600\n"
+"POT-Creation-Date: 2012-01-20 10:24-0600\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -3321,7 +3321,7 @@ msgstr "Edit Indikator "
 msgid "Edit Methods"
 msgstr "Edit Metode "
 
-#: Miradi/source/org/miradi/utils/TextFieldPopupEditorComponent.java:38
+#: Miradi/source/org/miradi/utils/TextFieldPopupEditorComponent.java:43
 msgid "Edit Text"
 msgstr ""
 
@@ -8367,7 +8367,7 @@ msgstr ""
 "Lahan Basah – Lahan Basah Tundra [termasuk kolam dan air temporer dari "
 "lelehan salju]"
 
-#: Miradi/source/org/miradi/dialogfields/editors/WhenPopupEditorComponent.java:43
+#: Miradi/source/org/miradi/dialogfields/editors/WhenPopupEditorComponent.java:48
 msgid "When - %s"
 msgstr ""
 
