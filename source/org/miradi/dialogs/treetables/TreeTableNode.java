@@ -26,7 +26,6 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.utils.CodeList;
-import org.miradi.utils.HtmlUtilities;
 
 public abstract class TreeTableNode implements Comparable<TreeTableNode>
 {
@@ -47,9 +46,7 @@ public abstract class TreeTableNode implements Comparable<TreeTableNode>
 	@Override
 	public String toString()
 	{
-		String value = toRawString();
-		value = "<html>" + HtmlUtilities.plainStringWithNewlinesToHtml(value);
-		return value;
+		return "<html>" + toRawString();
 	}
 
 	public String toRawString()
