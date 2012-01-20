@@ -75,18 +75,10 @@ abstract public class AbstractPopupEditorComponent extends PopupEditorComponent
 	
 	private void createComponents()
 	{
-		try
-		{
-			currentSelectionText = new EditableHtmlPane(getMainWindow());
-			currentSelectionText.setEditable(false);
+		currentSelectionText = new EditableHtmlPane(getMainWindow());
+		currentSelectionText.setEditable(false);
 
-			popupInvokeButton = new PopupEditorButton();
-		}
-		catch (Exception e)
-		{
-			EAM.unexpectedErrorDialog(e);
-			EAM.logException(e);
-		}
+		popupInvokeButton = new PopupEditorButton();
 	}
 	
 	public void dispose()
