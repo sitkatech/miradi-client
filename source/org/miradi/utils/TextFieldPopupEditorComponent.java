@@ -31,6 +31,11 @@ import org.miradi.main.MainWindow;
  */
 public class TextFieldPopupEditorComponent extends AbstractPopupEditorComponent
 {
+	public TextFieldPopupEditorComponent(MainWindow mainWindow)
+	{
+		super(mainWindow);
+	}
+	
 	@Override
 	protected void invokePopupEditor() throws Exception
 	{

@@ -28,15 +28,16 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import org.miradi.dialogs.fieldComponents.PanelButton;
-import org.miradi.dialogs.fieldComponents.PanelTextArea;
 import org.miradi.dialogs.tablerenderers.MultiLineEditableObjectTableCellEditorOrRendererFactory;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 
 abstract public class AbstractPopupEditorComponent extends PopupEditorComponent
 {
-	public AbstractPopupEditorComponent()
+	public AbstractPopupEditorComponent(MainWindow mainWindowToUse)
 	{
+		mainWindow = mainWindowToUse;
 		setBackground(AppPreferences.getDataPanelBackgroundColor());
 		
 		createComponents();
@@ -74,12 +75,18 @@ abstract public class AbstractPopupEditorComponent extends PopupEditorComponent
 	
 	private void createComponents()
 	{
-		currentSelectionText = new PanelTextArea();
-		currentSelectionText.setEditable(false);
-		currentSelectionText.setLineWrap(true);
-		currentSelectionText.setWrapStyleWord(true);
+		try
+		{
+			currentSelectionText = new EditableHtmlPane(getMainWindow());
+			currentSelectionText.setEditable(false);
 
-		popupInvokeButton = new PopupEditorButton();
+			popupInvokeButton = new PopupEditorButton();
+		}
+		catch (Exception e)
+		{
+			EAM.unexpectedErrorDialog(e);
+			EAM.logException(e);
+		}
 	}
 	
 	public void dispose()
@@ -101,6 +108,11 @@ abstract public class AbstractPopupEditorComponent extends PopupEditorComponent
 	public void setInvokeButtonEnabled(boolean isEnabled)
 	{
 		popupInvokeButton.setEnabled(isEnabled);
+	}
+	
+	protected MainWindow getMainWindow()
+	{
+		return mainWindow;
 	}
 	
 	private class PopUpEditorHandler extends MouseAdapter implements ActionListener 
@@ -135,8 +147,9 @@ abstract public class AbstractPopupEditorComponent extends PopupEditorComponent
 	
 	abstract protected void invokePopupEditor() throws Exception;
 
+	private MainWindow mainWindow;
 	private PanelButton popupInvokeButton;
 	private PopUpEditorHandler popupEditHandler;
-	private PanelTextArea currentSelectionText;
+	private EditableHtmlPane currentSelectionText;
 	protected MultiLineEditableObjectTableCellEditorOrRendererFactory stopEditingListener;
 }

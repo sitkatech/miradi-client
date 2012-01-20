@@ -25,16 +25,17 @@ import java.awt.Dimension;
 import javax.swing.JComponent;
 import javax.swing.JTable;
 
+import org.miradi.main.MainWindow;
 import org.miradi.utils.TableWithRowHeightSaver;
 import org.miradi.utils.TextFieldPopupEditorComponent;
 
 public class MultiLineEditableObjectTableCellEditorOrRendererFactory extends ObjectTableCellEditorOrRendererFactory
 {
-	public MultiLineEditableObjectTableCellEditorOrRendererFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectProvider fontProviderToUse)
+	public MultiLineEditableObjectTableCellEditorOrRendererFactory(MainWindow mainWindowToUse, RowColumnBaseObjectProvider providerToUse, FontForObjectProvider fontProviderToUse)
 	{
 		super(providerToUse, fontProviderToUse);
 		
-		rendererComponent = new TextFieldPopupEditorComponent();
+		rendererComponent = new TextFieldPopupEditorComponent(mainWindowToUse);
 		rendererComponent.setStopEditingListener(this);
 	}
 	

@@ -138,8 +138,8 @@ abstract public class EditableObjectTable extends SortableRowTable  implements O
 	protected void createWrappableTextFieldColumn(int tableColumn)
 	{
 		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
-		MultiLineEditableObjectTableCellEditorOrRendererFactory rendererFactory = new MultiLineEditableObjectTableCellEditorOrRendererFactory(model, fontProvider);
-		MultiLineEditableObjectTableCellEditorOrRendererFactory editorFactory = new MultiLineEditableObjectTableCellEditorOrRendererFactory(model, fontProvider);
+		MultiLineEditableObjectTableCellEditorOrRendererFactory rendererFactory = new MultiLineEditableObjectTableCellEditorOrRendererFactory(getMainWindow(), model, fontProvider);
+		MultiLineEditableObjectTableCellEditorOrRendererFactory editorFactory = new MultiLineEditableObjectTableCellEditorOrRendererFactory(getMainWindow(), model, fontProvider);
 		setDisposableRendererAndEditorFactories(tableColumn, rendererFactory, editorFactory);
 	}
 	

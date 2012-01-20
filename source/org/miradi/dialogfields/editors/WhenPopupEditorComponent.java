@@ -34,6 +34,11 @@ import org.miradi.utils.CodeList;
  */
 public class WhenPopupEditorComponent extends AbstractPopupEditorComponent
 {
+	public WhenPopupEditorComponent(MainWindow mainWindowToUse)
+	{
+		super(mainWindowToUse);
+	}
+
 	@Override
 	protected void invokePopupEditor()
 	{
