@@ -79,7 +79,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		progressRendererFactory = new ProgressTableCellRendererFactory(this, fontProvider);
 		doubleRendererFactory = new NumericTableCellRendererFactory(this, fontProvider);
 		whoColumnTableCellEditorFactory = new WhoColumnTableCellEditorFactory(getMainWindow(), this);
-		whenColumnTableCellEditorFactory = new WhenTableCellPopupEditorOrRendererFactory(this, fontProvider);
+		whenColumnTableCellEditorFactory = new WhenTableCellPopupEditorOrRendererFactory(mainWindowToUse, this, fontProvider);
 		doubleClickAutoSelectCellEditor = new DoubleClickAutoSelectCellEditor(new PanelTextField());
 		
 		addMouseListener(new PlanningRightClickHandler(getMainWindow(), this, this));
@@ -99,7 +99,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 			return whoColumnTableCellEditorFactory;
 		
 		if (getCastedModel().isWhenColumn(modelColumn))
-			return new WhenTableCellPopupEditorOrRendererFactory(this, new PlanningViewFontProvider(getMainWindow()));
+			return new WhenTableCellPopupEditorOrRendererFactory(getMainWindow(), this, new PlanningViewFontProvider(getMainWindow()));
 		
 		return getDoubleClickAutoSelectCellEditor();
 	}
