@@ -43,7 +43,7 @@ abstract public class AbstractMiradiProjectSaver
 		return writer;
 	}
 	
-	protected static void ensureNonHtmlNewlines(String data)
+	protected void ensureNonHtmlNewlines(String data)
 	{
 		if (data.contains("\n"))
 		{
