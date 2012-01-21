@@ -108,7 +108,7 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 	private void writeAllQuarantinedData() throws Exception
 	{
 		String quarantineFileContents = getProject().getQuarantineFileContents();
-		quarantineFileContents = ensureNonHtmlNewlines(quarantineFileContents);
+		ensureNonHtmlNewlines(quarantineFileContents);
 		writeTagValue(UPDATE_QUARANTINE_CODE, QUARANTINE_DATA_TAG, quarantineFileContents);
 	}
 
@@ -116,7 +116,7 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 	{
 		String exceptions = getProject().getExceptionLog();
 		exceptions = HtmlUtilities.convertToHtmlText(exceptions);
-		exceptions = ensureNonHtmlNewlines(exceptions);
+		ensureNonHtmlNewlines(exceptions);
 		exceptions = truncate(exceptions);
 		writeTagValue(UPDATE_EXCEPTIONS_CODE, EXCEPTIONS_DATA_TAG, exceptions);
 	}
@@ -157,7 +157,7 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 				ObjectData dataField = baseObject.getField(tag);
 				if(needsEncoding(dataField))
 				{
-					data = ensureNonHtmlNewlines(data);
+					ensureNonHtmlNewlines(data);
 				}
 				writeRefTagValue(UPDATE_OBJECT_CODE, ref, tag, data);
 			}
