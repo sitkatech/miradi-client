@@ -49,7 +49,6 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.Objective;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
-import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.Utility;
 
 abstract public class FactorCell extends EAMGraphCell
@@ -110,7 +109,7 @@ abstract public class FactorCell extends EAMGraphCell
 		else if(factor.getDetails().length() > 0)
 		{
 			tip += "<BR>" + EAM.text("Details:");
-			tip += "<BR>" + HtmlUtilities.plainStringWithNewlinesToHtml(factor.getDetails());
+			tip += "<BR>" + factor.getDetails();
 		}
 		
 		if(bullets.size() == 0)
