@@ -84,7 +84,7 @@ abstract public class FactorCell extends EAMGraphCell
 
 		tip += "<TABLE width='400'><TR><TD>";
 		
-		tip += "<B>" + HtmlUtilities.plainStringWithNewlinesToHtml(factor.getLabel()) + "</B><BR>";
+		tip += "<B>" + factor.getLabel() + "</B><BR>";
 		
 		String header = "";
 		String detailsTag = "";
@@ -146,10 +146,10 @@ abstract public class FactorCell extends EAMGraphCell
 
 	private String getObjectText(BaseObject object, String details)
 	{
-		String text = "<LI>" + HtmlUtilities.plainStringWithNewlinesToHtml(object.combineShortLabelAndLabel()) + "";
+		String text = "<LI>" + object.combineShortLabelAndLabel() + "";
 		
 		if (details.length() > 0)
-			text += "<BR><I>" +	HtmlUtilities.plainStringWithNewlinesToHtml(details) + "</I>";	
+			text += "<BR><I>" +	details + "</I>";	
 		
 		text += "</LI>";
 		return text;
