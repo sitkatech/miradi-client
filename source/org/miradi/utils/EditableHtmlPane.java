@@ -47,8 +47,8 @@ public class EditableHtmlPane extends MiradiTextPane
 		super(mainWindow, fixedApproximateColumnCount, initialApproximateRowCount);
 		
 		final WysiwygHTMLEditorKit htmlEditorKit = new WysiwygHTMLEditorKit();
-		setEditorKitForContentType("text/html", htmlEditorKit);
-		setContentType("text/html"); 
+		setEditorKitForContentType(htmlEditorKit.getContentType(), htmlEditorKit);
+		setContentType(htmlEditorKit.getContentType()); 
 		insertHtml("", 0);        
 	}
 
