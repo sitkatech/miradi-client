@@ -117,7 +117,7 @@ public class HtmlUtilities
 
 	public static String replaceNonHtmlNewlines(String formatted)
 	{
-		return formatted.replaceAll(NEW_LINE, BR_TAG);
+		return formatted.replaceAll(getNewlineRegex(), BR_TAG);
 	}
 	
 	public static String removeNonHtmlNewLines(String htmlText)
