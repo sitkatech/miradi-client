@@ -115,7 +115,7 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 	private void writeExceptionsLog() throws Exception
 	{
 		String exceptions = getProject().getExceptionLog();
-		exceptions = HtmlUtilities.convertToHtmlText(exceptions);
+		exceptions = HtmlUtilities.replaceNonHtmlNewlines(exceptions);
 		ensureNonHtmlNewlines(exceptions);
 		exceptions = truncate(exceptions);
 		writeTagValue(UPDATE_EXCEPTIONS_CODE, EXCEPTIONS_DATA_TAG, exceptions);
