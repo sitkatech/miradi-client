@@ -43,15 +43,13 @@ abstract public class AbstractMiradiProjectSaver
 		return writer;
 	}
 	
-	protected static String ensureNonHtmlNewlines(String data)
+	protected static void ensureNonHtmlNewlines(String data)
 	{
 		if (data.contains("\n"))
 		{
 			EAM.logError("Non html new lines found in data =" + data);
 			throw new RuntimeException("Non html new lines found in data");
 		}
-
-		return data;
 	}
 
 	protected String createSimpleRefString(final ORef ref)
