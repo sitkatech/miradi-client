@@ -64,7 +64,7 @@ public class HtmlUtilities
 	public static String convertToHtmlText(String nonHtmlText)
 	{
 		nonHtmlText = XmlUtilities.getXmlEncoded(nonHtmlText);
-		nonHtmlText = nonHtmlText.replaceAll(getNewlineRegex(), HtmlUtilities.BR_TAG);
+		nonHtmlText = replaceNonHtmlNewlines(nonHtmlText);
 		
 		return nonHtmlText;
 	}
