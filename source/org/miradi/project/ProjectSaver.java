@@ -39,6 +39,7 @@ import org.miradi.objectpools.EAMObjectPool;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.utils.HtmlUtilities;
 
 public class ProjectSaver extends AbstractMiradiProjectSaver
 {
@@ -114,6 +115,7 @@ public class ProjectSaver extends AbstractMiradiProjectSaver
 	private void writeExceptionsLog() throws Exception
 	{
 		String exceptions = getProject().getExceptionLog();
+		exceptions = HtmlUtilities.convertToHtmlText(exceptions);
 		exceptions = xmlNewLineEncode(exceptions);
 		exceptions = truncate(exceptions);
 		writeTagValue(UPDATE_EXCEPTIONS_CODE, EXCEPTIONS_DATA_TAG, exceptions);
