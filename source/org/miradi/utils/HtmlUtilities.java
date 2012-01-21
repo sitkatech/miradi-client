@@ -112,7 +112,7 @@ public class HtmlUtilities
 	
 	public static String replaceHtmlBrsWithNewlines(String text)
 	{
-		return HtmlUtilities.replaceHtmlTags(text, "br", NEW_LINE);
+		return replaceHtmlTags(text, "br", NEW_LINE);
 	}
 
 	public static String replaceNonHtmlNewlines(String formatted)
