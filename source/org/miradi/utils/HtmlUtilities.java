@@ -61,16 +61,6 @@ public class HtmlUtilities
 		return rule;
 	}
 
-	public static String plainStringWithNewlinesToHtml(String plainString)
-	{
-		if(plainString == null)
-			return EMPTY_STRING;
-		
-		String formatted =  XmlUtilities.getXmlEncoded(plainString);
-		
-		return replaceNonHtmlNewlines(formatted);
-	}
-	
 	public static String convertToHtmlText(String nonHtmlText)
 	{
 		nonHtmlText = XmlUtilities.getXmlEncoded(nonHtmlText);
