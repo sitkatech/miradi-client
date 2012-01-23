@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-20 11:58-0600\n"
+"POT-Creation-Date: 2012-01-22 18:34-0600\n"
 "PO-Revision-Date: 2011-04-05 11:46+0100\n"
 "Last-Translator: Emanuela Leonardi <e.leonardi@gmail.com>\n"
 "Language-Team: none\n"
@@ -3223,7 +3223,7 @@ msgstr "Détail des méthodes, des tâches et des responsabilités"
 msgid "Details"
 msgstr "Détails"
 
-#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:112
+#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:111
 msgid "Details:"
 msgstr "Détails :"
 
@@ -3947,7 +3947,7 @@ msgstr "Buts"
 msgid "Goals Only"
 msgstr "Seulement buts"
 
-#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:100
+#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:99
 msgid "Goals:"
 msgstr "Buts :"
 
@@ -4262,7 +4262,7 @@ msgstr "Indicateurs"
 msgid "Indicators Only"
 msgstr "Seulement indicateurs"
 
-#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:94
+#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:93
 msgid "Indicators:"
 msgstr "Indicateurs :"
 
@@ -5384,7 +5384,7 @@ msgstr "Uniquement objectifs"
 msgid "Objectives contain Strategies"
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:106
+#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:105
 msgid "Objectives:"
 msgstr "Objectifs :"
 

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-20 11:58-0600\n"
+"POT-Creation-Date: 2012-01-22 18:34-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -3034,7 +3034,7 @@ msgstr "详尽的方法、任务及职责 \t\t"
 msgid "Details"
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:112
+#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:111
 msgid "Details:"
 msgstr "详情： \t\t"
 
@@ -3727,7 +3727,7 @@ msgstr "总目标组 \t\t"
 msgid "Goals Only"
 msgstr "仅限于总目标 \t\t"
 
-#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:100
+#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:99
 msgid "Goals:"
 msgstr "总目标组: \t\t"
 
@@ -4036,7 +4036,7 @@ msgstr "指示物 \t\t"
 msgid "Indicators Only"
 msgstr "仅限于指示物 \t\t"
 
-#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:94
+#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:93
 msgid "Indicators:"
 msgstr "指示物: \t\t"
 
@@ -5102,7 +5102,7 @@ msgstr "仅限于分目标组 \t\t"
 msgid "Objectives contain Strategies"
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:106
+#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:105
 msgid "Objectives:"
 msgstr "分目标组： \t\t"
 
