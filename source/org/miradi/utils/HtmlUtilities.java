@@ -82,28 +82,6 @@ public class HtmlUtilities
 		return htmlDataValue;
 	}
 
-	public static String prepareForSaving(final String text, String[] htmlTagsToKeep)
-	{
-		String trimmedText = "";
-		final String[] lines = text.split(getNewlineRegex());
-		for (int index = 0; index < lines.length; ++index)
-		{
-			trimmedText += lines[index].trim();
-		}
-		
-		trimmedText = removeNonHtmlNewLines(trimmedText);
-		trimmedText = appendNewlineToEndDivTags(trimmedText);
-		trimmedText = removeAllExcept(trimmedText, htmlTagsToKeep);
-		trimmedText = trimmedText.trim();
-		trimmedText = replaceNonHtmlNewlines(trimmedText);
-		//NOTE: Third party library  uses <br> instead of <br/>.  If we don't replace <br> then 
-		//save method thinks there was a change and attempts to save.
-		trimmedText = replaceNonEmptyBrTags(trimmedText);
-		validateHtmlText(trimmedText);
-		
-		return trimmedText;
-	}
-
 	public static void validateHtmlText(String text)
 	{
 		if (text.contains("</br>"))
@@ -115,7 +93,7 @@ public class HtmlUtilities
 		return replaceHtmlTags(text, "br", BR_TAG);
 	}
 
-	private static String getNewlineRegex()
+	public static String getNewlineRegex()
 	{
 		return "\\r?\\n";
 	}

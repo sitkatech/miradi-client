@@ -89,10 +89,32 @@ public class EditableHtmlPane extends MiradiTextPane
 	{
 		String text = super.getText();
 		
-		return HtmlUtilities.prepareForSaving(text, getTagsToKeep());
+		return prepareForSaving(text, getTagsToKeep());
 	}
 	
-	private String[] getTagsToKeep()
+	public static String prepareForSaving(final String text, String[] htmlTagsToKeep)
+	{
+		String trimmedText = "";
+		final String[] lines = text.split(HtmlUtilities.getNewlineRegex());
+		for (int index = 0; index < lines.length; ++index)
+		{
+			trimmedText += lines[index].trim();
+		}
+		
+		trimmedText = HtmlUtilities.removeNonHtmlNewLines(trimmedText);
+		trimmedText = HtmlUtilities.appendNewlineToEndDivTags(trimmedText);
+		trimmedText = HtmlUtilities.removeAllExcept(trimmedText, htmlTagsToKeep);
+		trimmedText = trimmedText.trim();
+		trimmedText = HtmlUtilities.replaceNonHtmlNewlines(trimmedText);
+		//NOTE: Third party library  uses <br> instead of <br/>.  If we don't replace <br> then 
+		//save method thinks there was a change and attempts to save.
+		trimmedText = HtmlUtilities.replaceNonEmptyBrTags(trimmedText);
+		HtmlUtilities.validateHtmlText(trimmedText);
+		
+		return trimmedText;
+	}
+	
+	public static String[] getTagsToKeep()
 	{
 		return new String[] {"br", "b", "i", "ul", "ol", "li", "u", "strike", };
 	}
