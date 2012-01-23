@@ -29,6 +29,31 @@ public class TestHtmlUtilities extends MiradiTestCase
 		super(name);
 	}
 	
+	public void testReplaceNonEmptyBrTags()
+	{
+		verifyReplaceInvalidBrTags("line1", "line1");
+		verifyReplaceInvalidBrTags("line1<br/>line2", "line1<br>line2");
+		
+		testValidateHtmlText();
+	}
+
+	public void testValidateHtmlText()
+	{
+		try
+		{
+			HtmlUtilities.validateHtmlText("line1</br>line2");
+			fail("method did not fail due to invalid br tag?");
+		}
+		catch (Exception expectedExceptionToIgnore)
+		{
+		}
+	}
+	
+	private void verifyReplaceInvalidBrTags(final String expectedValue, String testValue)
+	{
+		assertEquals("didnt replace invalid tag?", expectedValue, HtmlUtilities.replaceNonEmptyBrTags(testValue));
+	}
+	
 	public void testWrapInHtmlTags()
 	{
 		assertEquals("didnt wrap with html tags?", "<html></html>", HtmlUtilities.wrapInHtmlTags(""));

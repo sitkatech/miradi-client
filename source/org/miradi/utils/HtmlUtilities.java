@@ -98,9 +98,21 @@ public class HtmlUtilities
 		trimmedText = replaceNonHtmlNewlines(trimmedText);
 		//NOTE: Third party library  uses <br> instead of <br/>.  If we don't replace <br> then 
 		//save method thinks there was a change and attempts to save.
-		trimmedText = replaceHtmlTags(trimmedText, "br", BR_TAG);
+		trimmedText = replaceNonEmptyBrTags(trimmedText);
+		validateHtmlText(trimmedText);
 		
 		return trimmedText;
+	}
+
+	public static void validateHtmlText(String text)
+	{
+		if (text.contains("</br>"))
+			throw new RuntimeException("Text contains </br> tag(s)");		
+	}
+
+	public static String replaceNonEmptyBrTags(String text)
+	{
+		return replaceHtmlTags(text, "br", BR_TAG);
 	}
 
 	private static String getNewlineRegex()
