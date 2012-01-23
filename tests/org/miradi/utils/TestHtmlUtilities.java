@@ -33,15 +33,13 @@ public class TestHtmlUtilities extends MiradiTestCase
 	{
 		verifyReplaceInvalidBrTags("line1", "line1");
 		verifyReplaceInvalidBrTags("line1<br/>line2", "line1<br>line2");
-		
-		testValidateHtmlText();
 	}
 
-	public void testValidateHtmlText()
+	public void testEnsureNoCloseBrTags()
 	{
 		try
 		{
-			HtmlUtilities.validateHtmlText("line1</br>line2");
+			HtmlUtilities.ensureNoCloseBrTags("line1</br>line2");
 			fail("method did not fail due to invalid br tag?");
 		}
 		catch (Exception expectedExceptionToIgnore)

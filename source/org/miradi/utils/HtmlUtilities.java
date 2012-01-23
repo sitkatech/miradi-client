@@ -82,7 +82,7 @@ public class HtmlUtilities
 		return htmlDataValue;
 	}
 
-	public static void validateHtmlText(String text)
+	public static void ensureNoCloseBrTags(String text)
 	{
 		if (text.contains("</br>"))
 			throw new RuntimeException("Text contains </br> tag(s)");		
