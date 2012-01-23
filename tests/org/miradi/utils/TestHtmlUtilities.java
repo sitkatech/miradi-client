@@ -29,6 +29,11 @@ public class TestHtmlUtilities extends MiradiTestCase
 		super(name);
 	}
 	
+	public void testWrapInHtmlTags()
+	{
+		assertEquals("didnt wrap with html tags?", "<html>someValue</html>", HtmlUtilities.wrapInHtmlTags("someValue"));
+	}
+	
 	public void testCustomEdit()
 	{
 		String htmlText = 

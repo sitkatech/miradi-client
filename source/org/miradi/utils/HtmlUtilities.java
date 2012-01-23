@@ -28,6 +28,11 @@ import org.miradi.main.EAM;
 
 public class HtmlUtilities
 {
+	public static String wrapInHtmlTags(String value)
+	{
+		return "<html>" + value + "</html>";
+	}
+	
 	public static void addRuleFontSize(StyleSheet style, final int defaultFontSize, final int fontSize)
 	{
 		int size = fontSize;
