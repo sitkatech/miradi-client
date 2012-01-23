@@ -96,6 +96,8 @@ public class HtmlUtilities
 		trimmedText = removeAllExcept(trimmedText, htmlTagsToKeep);
 		trimmedText = trimmedText.trim();
 		trimmedText = replaceNonHtmlNewlines(trimmedText);
+		//NOTE: Thirdparty lib uses <br> instead of <br/>
+		trimmedText = replaceHtmlTags(trimmedText, "br", BR_TAG);
 		
 		return trimmedText;
 	}
