@@ -31,8 +31,8 @@ public class TestHtmlUtilities extends MiradiTestCase
 	
 	public void testReplaceNonEmptyBrTags()
 	{
-		verifyReplaceInvalidBrTags("line1", "line1");
-		verifyReplaceInvalidBrTags("line1<br/>line2", "line1<br>line2");
+		verifyStartBrTagsReplacedWithEmptyBrTags("line1", "line1");
+		verifyStartBrTagsReplacedWithEmptyBrTags("line1<br/>line2", "line1<br>line2");
 	}
 
 	public void testEnsureNoCloseBrTags()
@@ -47,9 +47,9 @@ public class TestHtmlUtilities extends MiradiTestCase
 		}
 	}
 	
-	private void verifyReplaceInvalidBrTags(final String expectedValue, String testValue)
+	private void verifyStartBrTagsReplacedWithEmptyBrTags(final String expectedValue, String testValue)
 	{
-		assertEquals("didnt replace invalid tag?", expectedValue, HtmlUtilities.replaceNonEmptyBrTags(testValue));
+		assertEquals("didnt replace invalid tag?", expectedValue, HtmlUtilities.replaceStartBrTagsWithEmptyBrTags(testValue));
 	}
 	
 	public void testWrapInHtmlTags()
