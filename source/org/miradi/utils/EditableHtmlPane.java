@@ -109,7 +109,7 @@ public class EditableHtmlPane extends MiradiTextPane
 		trimmedText = HtmlUtilities.replaceNonHtmlNewlines(trimmedText);
 		//NOTE: Third party library  uses <br> instead of <br/>.  If we don't replace <br> then 
 		//save method thinks there was a change and attempts to save.
-		trimmedText = HtmlUtilities.replaceNonEmptyBrTags(trimmedText);
+		trimmedText = HtmlUtilities.replaceStartBrTagsWithEmptyBrTags(trimmedText);
 		HtmlUtilities.ensureNoCloseBrTags(trimmedText);
 		
 		return trimmedText;

@@ -88,7 +88,7 @@ public class HtmlUtilities
 			throw new RuntimeException("Text contains </br> tag(s)");		
 	}
 
-	public static String replaceNonEmptyBrTags(String text)
+	public static String replaceStartBrTagsWithEmptyBrTags(String text)
 	{
 		return replaceHtmlTags(text, "br", BR_TAG);
 	}
