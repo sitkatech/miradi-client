@@ -98,6 +98,7 @@ public class EditableHtmlPane extends MiradiTextPane
 		final String[] lines = text.split(HtmlUtilities.getNewlineRegex());
 		for (int index = 0; index < lines.length; ++index)
 		{
+			//NOTE: Shef editor never splits text between lines, so we can safely ignore the text\ntext case
 			trimmedText += lines[index].trim();
 		}
 		
