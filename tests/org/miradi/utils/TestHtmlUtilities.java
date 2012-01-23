@@ -60,26 +60,7 @@ public class TestHtmlUtilities extends MiradiTestCase
 		assertEquals("didnt wrap with html tags?", "<html>someValue</html>", HtmlUtilities.wrapInHtmlTags("someValue"));
 		assertEquals("didnt wrap with html tags?", "<html><html>someValue</html></html>", HtmlUtilities.wrapInHtmlTags("<html>someValue</html>"));
 	}
-	
-	public void testCustomEdit()
-	{
-		String htmlText = 
-		  "<html>\n" +
-		  "<head>\n" +
-		  "	</head>\n" +
-		  "	  <body>\n" +
-		  "		<div>\n" +
-		  "	 	 text on line 1\n" +
-		  "     </div>\n" +
-		  "     <div>\n" +
-		  "      text on line 2\n" +
-		  "		</div>\n" +
-		  "	  </body>\n" +
-		  "	</html>\n";
-
-		assertEquals("wrong new lines inserted?", "text on line 1<br/>text on line 2", HtmlUtilities.prepareForSaving(htmlText, getTagsToKeep()));
-	}
-	
+		
 	public void testRemoveAllExcept()
 	{
 		verifyNothingStripped("text");
