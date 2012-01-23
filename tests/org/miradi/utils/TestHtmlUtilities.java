@@ -31,7 +31,9 @@ public class TestHtmlUtilities extends MiradiTestCase
 	
 	public void testWrapInHtmlTags()
 	{
+		assertEquals("didnt wrap with html tags?", "<html></html>", HtmlUtilities.wrapInHtmlTags(""));
 		assertEquals("didnt wrap with html tags?", "<html>someValue</html>", HtmlUtilities.wrapInHtmlTags("someValue"));
+		assertEquals("didnt wrap with html tags?", "<html><html>someValue</html></html>", HtmlUtilities.wrapInHtmlTags("<html>someValue</html>"));
 	}
 	
 	public void testCustomEdit()
