@@ -29,7 +29,7 @@ public class TestEditableHtmlPane extends MiradiTestCase
 		super(name);
 	}
 	
-	public void testCustomEdit()
+	public void testPrepareForSaving()
 	{
 		String htmlText = 
 		  "<html>\n" +
