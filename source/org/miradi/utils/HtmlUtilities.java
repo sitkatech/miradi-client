@@ -96,7 +96,8 @@ public class HtmlUtilities
 		trimmedText = removeAllExcept(trimmedText, htmlTagsToKeep);
 		trimmedText = trimmedText.trim();
 		trimmedText = replaceNonHtmlNewlines(trimmedText);
-		//NOTE: Thirdparty lib uses <br> instead of <br/>
+		//NOTE: Third party library  uses <br> instead of <br/>.  If we don't replace <br> then 
+		//save method thinks there was a change and attempts to save.
 		trimmedText = replaceHtmlTags(trimmedText, "br", BR_TAG);
 		
 		return trimmedText;
