@@ -132,5 +132,6 @@ public class EditableHtmlPane extends MiradiTextPane
 	{
 		final int fontSize = getMainWindow().getWizardFontSize();
 		HtmlUtilities.addRuleFontSize(style, getFont().getSize(), fontSize);
+		HtmlUtilities.addRuleFontFamily(style, getMainWindow().getDataPanelFontFamily());
 	}
 }

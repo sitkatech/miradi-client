@@ -42,6 +42,11 @@ public class HtmlUtilities
 		style.addRule(HtmlUtilities.makeSureRuleHasRightPrefix("body {font-size:"+size+"pt;}"));
 	}
 	
+	public static void addRuleFontFamily(StyleSheet style, final String fontFamily)
+	{
+		style.addRule(HtmlUtilities.makeSureRuleHasRightPrefix("body {font-family:" + fontFamily + ";}"));
+	}
+	
 	public static String makeSureRuleHasRightPrefix(String rule)
 	{
 		if (cssDotPrefixWorksCorrectly())

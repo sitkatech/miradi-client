@@ -168,7 +168,7 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 	{
 		FontFamiliyQuestion question = (FontFamiliyQuestion)StaticQuestionManager.getQuestion(FontFamiliyQuestion.class);
 		ChoiceItem selectedFontFamily = question.findChoiceByCode(getFontFamilyCode());
-		style.addRule(HtmlUtilities.makeSureRuleHasRightPrefix("body {font-family:" + question.getFontsString(selectedFontFamily) + ";}"));
+		HtmlUtilities.addRuleFontFamily(style, question.getFontsString(selectedFontFamily));
 	}
 	
 	public void hyperlinkUpdate(HyperlinkEvent e)
