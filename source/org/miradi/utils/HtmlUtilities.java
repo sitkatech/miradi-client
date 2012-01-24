@@ -19,11 +19,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.utils;
 
+import java.awt.Color;
 import java.util.regex.Pattern;
 
 import javax.swing.text.html.StyleSheet;
 
 import org.martus.util.xml.XmlUtilities;
+import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 
 public class HtmlUtilities
@@ -45,6 +47,11 @@ public class HtmlUtilities
 	public static void addRuleFontFamily(StyleSheet style, final String fontFamily)
 	{
 		style.addRule(HtmlUtilities.makeSureRuleHasRightPrefix("body {font-family:" + fontFamily + ";}"));
+	}
+	
+	public static void addFontColor(StyleSheet style, Color color)
+	{
+		style.addRule(HtmlUtilities.makeSureRuleHasRightPrefix("body {color:" + AppPreferences.convertToHexString(color) + ";}"));
 	}
 	
 	public static String makeSureRuleHasRightPrefix(String rule)
