@@ -35,6 +35,9 @@ public class XmlUtilities2
 		value = value.replaceAll("&#x22;", "\"");
 		value = value.replaceAll("&#x27;", "'");
 		value = value.replaceAll("&#x26;", "&");
+		
+		value = value.replaceAll("&#x3c;", "<");
+		value = value.replaceAll("&#x3e;", ">");
 
 		value = value.replaceAll("&#39;", "'");
 		value = value.replaceAll("&#34;", "\"");
