@@ -30,11 +30,11 @@ public class XmlUtilities2
 		value = value.replaceAll("&apos;", "'");
 		value = value.replaceAll("&amp;", "&");
 		
-		value = value.replaceAll("&#3Cx;", "<");
-		value = value.replaceAll("&#3Ex;", ">");
-		value = value.replaceAll("&#22x;", "\"");
-		value = value.replaceAll("&#27x;", "'");
-		value = value.replaceAll("&#26x;", "&");
+		value = value.replaceAll("&#x3C;", "<");
+		value = value.replaceAll("&#x3E;", ">");
+		value = value.replaceAll("&#x22;", "\"");
+		value = value.replaceAll("&#x27;", "'");
+		value = value.replaceAll("&#x26;", "&");
 
 		value = value.replaceAll("&#39;", "'");
 		value = value.replaceAll("&#34;", "\"");
