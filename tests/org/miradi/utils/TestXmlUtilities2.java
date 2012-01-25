@@ -31,10 +31,41 @@ public class TestXmlUtilities2 extends MiradiTestCase
 
 	public void testGetXmlDecoded()
 	{
-		assertEquals("did not decode?", "<", XmlUtilities2.getXmlDecoded("&lt;"));
-		assertEquals("did not decode?", ">", XmlUtilities2.getXmlDecoded("&gt;"));
-		assertEquals("did not decode?", "\"", XmlUtilities2.getXmlDecoded("&quot;"));
-		assertEquals("did not decode?", "'", XmlUtilities2.getXmlDecoded("&#39;"));
-		assertEquals("did not decode?", "&", XmlUtilities2.getXmlDecoded("&amp;"));
+		verifyDecoding("<", "&lt;");
+		verifyDecoding(">", "&gt;");
+		verifyDecoding("\"", "&quot;");
+		verifyDecoding("'", "&apos;");
+		verifyDecoding("&", "&amp;");
+		
+		verifyDecoding("<", "&#3Cx;");
+		verifyDecoding(">", "&#3Ex;");
+		verifyDecoding("\"", "&#22x;");
+		verifyDecoding("'", "&#27x;");
+		verifyDecoding("&", "&#26x;");
+
+		verifyDecoding("'", "&#39;");
+		verifyDecoding("\"", "&#34;");
+		verifyDecoding("&", "&#38;");
+		verifyDecoding("<", "&#60;");
+		verifyDecoding(">", "&#62;");
+	}
+	
+	public void testGetXmlEncoded()
+	{
+		verifyEncoding("&lt;", "<");
+		verifyEncoding("&gt;", ">");
+		verifyEncoding("&quot;", "\"");
+		verifyEncoding("&apos;", "'");
+		verifyEncoding("&amp;", "&");
+	}
+
+	private void verifyDecoding(String expectedValue, String sampleValue)
+	{
+		assertEquals("did not decode?", expectedValue, XmlUtilities2.getXmlDecoded(sampleValue));
+	}
+	
+	private void verifyEncoding(String expectedValue, String sampleValue)
+	{
+		assertEquals("did not encode?", expectedValue, XmlUtilities2.getXmlEncoded(sampleValue));
 	}
 }

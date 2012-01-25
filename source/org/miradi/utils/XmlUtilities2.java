@@ -27,8 +27,31 @@ public class XmlUtilities2
 		value = value.replaceAll("&lt;", "<");
 		value = value.replaceAll("&gt;", ">");
 		value = value.replaceAll("&quot;", "\"");
-		value = value.replaceAll("&#39;", "'");
+		value = value.replaceAll("&apos;", "'");
 		value = value.replaceAll("&amp;", "&");
+		
+		value = value.replaceAll("&#3Cx;", "<");
+		value = value.replaceAll("&#3Ex;", ">");
+		value = value.replaceAll("&#22x;", "\"");
+		value = value.replaceAll("&#27x;", "'");
+		value = value.replaceAll("&#26x;", "&");
+
+		value = value.replaceAll("&#39;", "'");
+		value = value.replaceAll("&#34;", "\"");
+		value = value.replaceAll("&#38;", "&");
+		value = value.replaceAll("&#60;", "<");
+		value = value.replaceAll("&#62;", ">");
+		
+		return value;
+	}
+
+	public static String getXmlEncoded(String value)
+	{
+		value = value.replaceAll("&", "&amp;");
+		value = value.replaceAll("<", "&lt;");
+		value = value.replaceAll(">", "&gt;");
+		value = value.replaceAll("\"", "&quot;");
+		value = value.replaceAll("'", "&apos;");
 		
 		return value;
 	}
