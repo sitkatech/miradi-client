@@ -61,6 +61,10 @@ public class EditableHtmlPane extends MiradiTextPane
 	{       
 		try 
 		{
+			// NOTE: The Java HTML parser compresses all whitespace to a single space
+			// (http://java.sun.com/products/jfc/tsc/articles/bookmarks/)
+			html = html.replaceAll(StringUtilities.EMPTY_SPACE, getEscapedWhiteSpace());
+			html = html.replaceAll(StringUtilities.EMPTY_SPACE, "&#160;");
 			HTMLEditorKit htmlEditorKit = (HTMLEditorKit) getEditorKit();
 			Document document = getDocument();
 			final String jEditorPaneizeHtml = HTMLUtils.jEditorPaneizeHTML(html);
@@ -72,6 +76,11 @@ public class EditableHtmlPane extends MiradiTextPane
 			EAM.unexpectedErrorDialog(e);
 			EAM.logException(e);
 		}
+	}
+
+	public static String getEscapedWhiteSpace()
+	{
+		return "&nbsp;";
 	}
 
 	@Override
@@ -99,9 +108,15 @@ public class EditableHtmlPane extends MiradiTextPane
 		for (int index = 0; index < lines.length; ++index)
 		{
 			//NOTE: Shef editor never splits text between lines, so we can safely ignore the text\ntext case
-			trimmedText += lines[index].trim();
+			String line = lines[index];
+			String leadingSpacesRemoved = line.replaceAll("^[ \t]+", "");
+			trimmedText += leadingSpacesRemoved;
 		}
 		
+		// NOTE: The Java HTML parser compresses all whitespace to a single space
+		// (http://java.sun.com/products/jfc/tsc/articles/bookmarks/)
+		trimmedText = trimmedText.replaceAll(getEscapedWhiteSpace(), StringUtilities.EMPTY_SPACE);
+		trimmedText = trimmedText.replaceAll("&#160;", StringUtilities.EMPTY_SPACE);
 		trimmedText = HtmlUtilities.removeNonHtmlNewLines(trimmedText);
 		trimmedText = HtmlUtilities.appendNewlineToEndDivTags(trimmedText);
 		trimmedText = HtmlUtilities.removeAllExcept(trimmedText, htmlTagsToKeep);
