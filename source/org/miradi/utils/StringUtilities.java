@@ -22,6 +22,51 @@ package org.miradi.utils;
 
 public class StringUtilities
 {
+	public static String getToken(String text, int caretPosition)
+	{
+		if (caretPosition < 0)
+			return "";
+
+		if (!text.contains(EMPTY_SPACE))
+			return text;
+		
+		int wordStartIndex = getStartIndexOfToken(text, caretPosition);
+		int wordEndIndex = getEndIndex(text, caretPosition);
+		
+		if (wordStartIndex > wordEndIndex)
+			return "";
+		
+		final String substring = text.substring(wordStartIndex, wordEndIndex);
+		
+		return substring;
+	}
+	
+	private static int getStartIndexOfToken(final String text, final int caretPosition)
+	{
+		for (int index = caretPosition; index >= 0; --index)
+		{
+			final char charAt = text.charAt(index);
+			String stringAt = Character.toString(charAt);
+			if (stringAt.equals(EMPTY_SPACE))
+				return index + 1;
+		}
+		
+		return 0;
+	}
+	
+	private static int getEndIndex(final String text, final int caretPosition)
+	{
+		for (int index = caretPosition; index < text.length(); ++index)
+		{
+			final char charAt = text.charAt(index);
+			String stringAt = Character.toString(charAt);
+			if (stringAt.equals(EMPTY_SPACE))
+				return index;
+		}
+		
+		return text.length();
+	}
+
 	public static String substringAfter(String value, String token)
 	{
 		final int firstIndexOf = value.indexOf(token);
@@ -49,4 +94,6 @@ public class StringUtilities
 		
 		return tagsSeperatedByOr;
 	}
+	
+	public static final String EMPTY_SPACE= " ";
 }

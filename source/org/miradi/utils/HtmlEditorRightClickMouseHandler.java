@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
+import java.awt.event.ActionEvent;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
@@ -38,6 +39,7 @@ import org.bushe.swing.action.ActionList;
 import org.miradi.actions.Actions;
 import org.miradi.dialogfields.HtmlEditorContextMenuListener;
 import org.miradi.dialogfields.TextAreaRightClickMouseHandler;
+import org.miradi.main.EAM;
 
 public class HtmlEditorRightClickMouseHandler extends TextAreaRightClickMouseHandler
 {
@@ -60,6 +62,8 @@ public class HtmlEditorRightClickMouseHandler extends TextAreaRightClickMouseHan
 		actionList.add(new HTMLInlineAction(HTMLInlineAction.STRIKE));
 		actionList.add(null);
 		actionList.addAll(HTMLEditorActionFactory.createListElementActionList());
+		actionList.add(null);
+		actionList.add(new HyperlinkOpenInBrowserAction());
 	}
 	
 	@Override
@@ -93,6 +97,27 @@ public class HtmlEditorRightClickMouseHandler extends TextAreaRightClickMouseHan
 		}
 
 		public void focusLost(FocusEvent e)
+		{
+		}
+	}
+	
+	private class HyperlinkOpenInBrowserAction extends HTMLTextEditAction
+	{
+		public HyperlinkOpenInBrowserAction()
+		{
+			super(EAM.text("Open hyperlink"));
+		}
+
+		@Override
+		protected void wysiwygEditPerformed(ActionEvent e, JEditorPane editor)
+		{
+			final int caretPosition = editor.getCaretPosition();
+			final String hyperlink = StringUtilities.getToken(editor.getText(), caretPosition);
+			EAM.getMainWindow().mainLinkFunction(hyperlink);
+		}
+
+		@Override
+		protected void sourceEditPerformed(ActionEvent e, JEditorPane editor)
 		{
 		}
 	}
