@@ -45,8 +45,6 @@ public class XmlUtilities2
 		value = value.replaceAll("&#39;", "'");
 		value = value.replaceAll("&#38;", "&");
 		
-		
-		
 		return value;
 	}
 
