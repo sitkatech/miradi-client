@@ -71,7 +71,7 @@ public class EditableHtmlPane extends MiradiTextPane
 		{
 			// NOTE: The Java HTML parser compresses all whitespace to a single space
 			// (http://java.sun.com/products/jfc/tsc/articles/bookmarks/)
-			html = html.replaceAll(StringUtilities.EMPTY_SPACE, getEscapedWhiteSpace());
+			html = html.replaceAll(StringUtilities.EMPTY_SPACE, getNonBreakingSpace());
 			HTMLEditorKit htmlEditorKit = (HTMLEditorKit) getEditorKit();
 			Document document = getDocument();
 			final String jEditorPaneizeHtml = HTMLUtils.jEditorPaneizeHTML(html);
@@ -85,7 +85,7 @@ public class EditableHtmlPane extends MiradiTextPane
 		}
 	}
 
-	public static String getEscapedWhiteSpace()
+	public static String getNonBreakingSpace()
 	{
 		return "&nbsp;";
 	}
@@ -122,7 +122,7 @@ public class EditableHtmlPane extends MiradiTextPane
 		
 		// NOTE: The Java HTML parser compresses all whitespace to a single space
 		// (http://java.sun.com/products/jfc/tsc/articles/bookmarks/)
-		trimmedText = trimmedText.replaceAll(getEscapedWhiteSpace(), StringUtilities.EMPTY_SPACE);
+		trimmedText = trimmedText.replaceAll(getNonBreakingSpace(), StringUtilities.EMPTY_SPACE);
 		trimmedText = trimmedText.replaceAll("&#160;", StringUtilities.EMPTY_SPACE);
 		trimmedText = HtmlUtilities.removeNonHtmlNewLines(trimmedText);
 		trimmedText = HtmlUtilities.appendNewlineToEndDivTags(trimmedText);
