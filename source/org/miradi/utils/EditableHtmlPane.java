@@ -177,36 +177,39 @@ public class EditableHtmlPane extends MiradiTextPane
 	         MouseMotionListener[] oldMouseMotionListeners = editorPane.getMouseMotionListeners();
 			 
 	         super.install(editorPane);
-			 
-			 removeSuperLinkHandler(editorPane, oldMouseListeners,	oldMouseMotionListeners);
+	         removeMouseAndMotionListeners(editorPane);
+			 restoreMouseAndMotionListeners(editorPane, oldMouseListeners,	oldMouseMotionListeners);
 
 			 HyperlinkHandler handler = new HyperlinkHandler();
 			 editorPane.addMouseListener(handler);
 			 editorPane.addMouseMotionListener(handler);
 		 }
 
-		private void removeSuperLinkHandler(JEditorPane editorPane, MouseListener[] oldMouseListeners, MouseMotionListener[] oldMouseMotionListeners)
-		{
-			for (MouseListener l: editorPane.getMouseListeners()) 
-			{
-				editorPane.removeMouseListener(l);
-			}
-			
-			for (MouseListener l: oldMouseListeners) 
-			{
-				editorPane.addMouseListener(l);
-			}
+		 private void removeMouseAndMotionListeners(JEditorPane editorPane)
+		 {
+			 for (MouseListener l: editorPane.getMouseListeners()) 
+			 {
+				 editorPane.removeMouseListener(l);
+			 }
 
-			for (MouseMotionListener l: editorPane.getMouseMotionListeners()) 
-			{
-				editorPane.removeMouseMotionListener(l);
-			}
-			
-			for (MouseMotionListener l: oldMouseMotionListeners) 
-			{
-				editorPane.addMouseMotionListener(l);
-			}
-		}
+			 for (MouseMotionListener l: editorPane.getMouseMotionListeners()) 
+			 {
+				 editorPane.removeMouseMotionListener(l);
+			 }
+		 }
+
+		 private void restoreMouseAndMotionListeners(JEditorPane editorPane, MouseListener[] oldMouseListeners, MouseMotionListener[] oldMouseMotionListeners)
+		 {
+			 for (MouseListener l: oldMouseListeners) 
+			 {
+				 editorPane.addMouseListener(l);
+			 }
+
+			 for (MouseMotionListener l: oldMouseMotionListeners) 
+			 {
+				 editorPane.addMouseMotionListener(l);
+			 }
+		 }
 
 		 public class HyperlinkHandler extends LinkController 
 		 {
