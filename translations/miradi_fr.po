@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-26 10:53-0600\n"
+"POT-Creation-Date: 2012-01-26 16:52-0600\n"
 "PO-Revision-Date: 2011-04-05 11:46+0100\n"
 "Last-Translator: Emanuela Leonardi <e.leonardi@gmail.com>\n"
 "Language-Team: none\n"
@@ -5455,6 +5455,10 @@ msgstr ""
 "projets de protection de la nature. La base pour Miradi. Vous pouvez "
 "décharger une copie de Normes ouvertes du site <a href='http://www."
 "ConservationMeasures.org'>www.ConservationMeasures.org<a>"
+
+#: Miradi/source/org/miradi/utils/HtmlEditorRightClickMouseHandler.java:110
+msgid "Open hyperlink"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:263
 msgid "OpenStandards"
