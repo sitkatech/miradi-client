@@ -24,7 +24,6 @@ import java.util.regex.Pattern;
 
 import javax.swing.text.html.StyleSheet;
 
-import org.martus.util.xml.XmlUtilities;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 
@@ -80,7 +79,7 @@ public class HtmlUtilities
 
 	public static String convertToHtmlText(String nonHtmlText)
 	{
-		nonHtmlText = XmlUtilities.getXmlEncoded(nonHtmlText);
+		nonHtmlText = XmlUtilities2.getXmlEncoded(nonHtmlText);
 		nonHtmlText = replaceNonHtmlNewlines(nonHtmlText);
 		
 		return nonHtmlText;

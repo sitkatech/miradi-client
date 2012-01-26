@@ -23,7 +23,6 @@ import java.awt.Dimension;
 import java.awt.Point;
 
 import org.martus.util.MultiCalendar;
-import org.martus.util.xml.XmlUtilities;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.PersistentDiagramModel;
@@ -142,6 +141,7 @@ import org.miradi.utils.OptionalDouble;
 import org.miradi.utils.PointList;
 import org.miradi.utils.ThreatStressRatingHelper;
 import org.miradi.utils.Translation;
+import org.miradi.utils.XmlUtilities2;
 import org.miradi.views.diagram.LinkCreator;
 import org.miradi.xml.conpro.ConProMiradiXml;
 
@@ -221,7 +221,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	private String encodeXml(String data)
 	{
-		return XmlUtilities.getXmlEncoded(data);
+		return XmlUtilities2.getXmlEncoded(data);
 	}
 
 	private void fillWwfProjectData() throws Exception

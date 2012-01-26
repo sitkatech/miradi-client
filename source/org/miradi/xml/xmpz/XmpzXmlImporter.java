@@ -24,11 +24,11 @@ import java.util.Vector;
 
 import javax.xml.namespace.NamespaceContext;
 
-import org.martus.util.xml.XmlUtilities;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ThreatStressRatingEnsurer;
 import org.miradi.project.Project;
 import org.miradi.utils.ProgressInterface;
+import org.miradi.utils.XmlUtilities2;
 import org.miradi.xml.AbstractXmlImporter;
 import org.miradi.xml.AbstractXmpzObjectImporter;
 import org.miradi.xml.wcs.XmpzXmlConstants;
@@ -126,7 +126,7 @@ public class XmpzXmlImporter extends AbstractXmlImporter implements XmpzXmlConst
 	{
 		Node node = getNode(getRootNode(), XmpzXmlConstants.DELETED_ORPHANS_ELEMENT_NAME);
 		String nodeContent = getSafeNodeContent(node);
-		nodeContent = XmlUtilities.getXmlEncoded(nodeContent);
+		nodeContent = XmlUtilities2.getXmlEncoded(nodeContent);
 		getProject().appendToQuarantineFile(nodeContent);
 	}
 

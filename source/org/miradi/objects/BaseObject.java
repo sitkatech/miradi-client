@@ -31,7 +31,6 @@ import java.util.Set;
 import java.util.Vector;
 
 import org.martus.util.MultiCalendar;
-import org.martus.util.xml.XmlUtilities;
 import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.ChainWalker;
@@ -99,6 +98,7 @@ import org.miradi.utils.PointList;
 import org.miradi.utils.StringChoiceMapData;
 import org.miradi.utils.StringCodeListMapData;
 import org.miradi.utils.StringStringMapData;
+import org.miradi.utils.XmlUtilities2;
 
 abstract public class BaseObject
 {
@@ -1311,7 +1311,7 @@ abstract public class BaseObject
 		{
 			if(i > 0)
 				result.append("; ");
-			result.append(XmlUtilities.getXmlEncoded(resources[i].toString()));
+			result.append(XmlUtilities2.getXmlEncoded(resources[i].toString()));
 		}
 		result.append("</html>");
 		
