@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogfields;
 
+import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -35,6 +36,7 @@ public class TextAreaRightClickMouseHandler extends MouseAdapter
 		textFieldToUse.addMouseListener(this);
 		actions = actionsToUse;
 		textField = textFieldToUse;
+		invocationLocation = new Point(0, 0);
 	}
 	
 	@Override
@@ -53,6 +55,7 @@ public class TextAreaRightClickMouseHandler extends MouseAdapter
 	
 	private void fireRightClick(MouseEvent e)
 	{
+		setInvocationLocation(e.getPoint());
 		getRightClickMenu().show(getTextField(), e.getX(), e.getY());
 	}
 	
@@ -63,6 +66,16 @@ public class TextAreaRightClickMouseHandler extends MouseAdapter
 		menu.addPopupMenuListener(listener);
 		
 		return menu;
+	}
+	
+	protected void setInvocationLocation(Point clickLocation)
+	{
+		invocationLocation = clickLocation;
+	}
+	
+	protected Point getInvocationLocation()
+	{
+		return invocationLocation;
 	}
 
 	protected TextAreaContextMenuListener createTextAreaContextMenuListener(JPopupMenu menu)
@@ -82,4 +95,5 @@ public class TextAreaRightClickMouseHandler extends MouseAdapter
 	
 	private JTextComponent textField;
 	private Actions actions;
+	private Point invocationLocation;
 }
