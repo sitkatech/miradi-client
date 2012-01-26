@@ -39,11 +39,13 @@ public class XmlUtilities2
 		value = value.replaceAll("&#x3c;", "<");
 		value = value.replaceAll("&#x3e;", ">");
 
-		value = value.replaceAll("&#39;", "'");
-		value = value.replaceAll("&#34;", "\"");
-		value = value.replaceAll("&#38;", "&");
 		value = value.replaceAll("&#60;", "<");
 		value = value.replaceAll("&#62;", ">");
+		value = value.replaceAll("&#34;", "\"");
+		value = value.replaceAll("&#39;", "'");
+		value = value.replaceAll("&#38;", "&");
+		
+		
 		
 		return value;
 	}

@@ -46,11 +46,11 @@ public class TestXmlUtilities2 extends MiradiTestCase
 		verifyDecoding("<", "&#x3c;");
 		verifyDecoding(">", "&#x3e;");
 
-		verifyDecoding("'", "&#39;");
-		verifyDecoding("\"", "&#34;");
-		verifyDecoding("&", "&#38;");
 		verifyDecoding("<", "&#60;");
 		verifyDecoding(">", "&#62;");
+		verifyDecoding("\"", "&#34;");
+		verifyDecoding("'", "&#39;");
+		verifyDecoding("&", "&#38;");
 	}
 	
 	public void testGetXmlEncoded()
