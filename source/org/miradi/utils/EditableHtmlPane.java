@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
-import java.awt.event.MouseEvent;
+import java.awt.Point;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.io.StringReader;
@@ -52,6 +52,7 @@ public class EditableHtmlPane extends MiradiTextPane
 	{
 		super(mainWindow, fixedApproximateColumnCount, initialApproximateRowCount);
 		
+		handler = new HyperlinkHandler();
 		final HTMLEditorKitWithCustomLinkController htmlEditorKit = new HTMLEditorKitWithCustomLinkController();
 		setEditorKitForContentType(htmlEditorKit.getContentType(), htmlEditorKit);
 		setContentType(htmlEditorKit.getContentType()); 
@@ -157,6 +158,11 @@ public class EditableHtmlPane extends MiradiTextPane
 		HtmlUtilities.addRuleFontFamily(style, getMainWindow().getDataPanelFontFamily());
 	}
 	
+	public void handleOpenLink(Point mousePosition)
+	{
+		handler.activateHyperlink(this, mousePosition);
+	}
+	
 	 private class HyperlinkOpenHandler implements HyperlinkListener 
 	 {
 		 public void hyperlinkUpdate(HyperlinkEvent e) 
@@ -180,7 +186,6 @@ public class EditableHtmlPane extends MiradiTextPane
 	         removeMouseAndMotionListeners(editorPane);
 			 restoreMouseAndMotionListeners(editorPane, oldMouseListeners,	oldMouseMotionListeners);
 
-			 HyperlinkHandler handler = new HyperlinkHandler();
 			 editorPane.addMouseListener(handler);
 			 editorPane.addMouseMotionListener(handler);
 		 }
@@ -210,32 +215,7 @@ public class EditableHtmlPane extends MiradiTextPane
 				 editorPane.addMouseMotionListener(l);
 			 }
 		 }
-
-		 public class HyperlinkHandler extends LinkController 
-		 {
-			 @Override
-			 public void mouseClicked(MouseEvent e) 
-			 {
-				 JEditorPane editor = (JEditorPane) e.getSource();
-				 if (e.isControlDown() || (e.getClickCount() == 2))
-				 {
-					 editor.setEditable(false);
-					 super.mouseClicked(e);
-					 editor.setEditable(true);
-				 }
-			 }
-
-			 @Override
-			 public void mouseMoved(MouseEvent e) 
-			 {
-				 JEditorPane editor = (JEditorPane) e.getSource();
-				 if (editor.isEditable()) 
-				 {
-					 editor.setEditable(false);
-					 super.mouseMoved(e);
-					 editor.setEditable(true);
-				 }
-			 }
-		 }
 	 }
+	 
+	 private HyperlinkHandler handler;
 }

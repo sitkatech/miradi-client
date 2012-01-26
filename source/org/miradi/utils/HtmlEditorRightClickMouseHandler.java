@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
+import java.awt.event.ActionEvent;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
@@ -39,6 +40,7 @@ import org.bushe.swing.action.ActionList;
 import org.miradi.actions.Actions;
 import org.miradi.dialogfields.HtmlEditorContextMenuListener;
 import org.miradi.dialogfields.TextAreaRightClickMouseHandler;
+import org.miradi.main.EAM;
 
 public class HtmlEditorRightClickMouseHandler extends TextAreaRightClickMouseHandler
 {
@@ -63,6 +65,7 @@ public class HtmlEditorRightClickMouseHandler extends TextAreaRightClickMouseHan
 		actionList.addAll(HTMLEditorActionFactory.createListElementActionList());
 		actionList.add(null);
 		actionList.add(new HTMLLinkAction());
+		actionList.add(new HyperlinkOpenInBrowserAction());
 	}
 	
 	@Override
@@ -99,6 +102,26 @@ public class HtmlEditorRightClickMouseHandler extends TextAreaRightClickMouseHan
 		{
 		}
 	}
-		
+	
+	private class HyperlinkOpenInBrowserAction extends HTMLTextEditAction
+	{
+		public HyperlinkOpenInBrowserAction()
+		{
+			super(EAM.text("Open hyperlink"));
+		}
+
+		@Override
+		protected void wysiwygEditPerformed(ActionEvent e, JEditorPane editor)
+		{
+			EditableHtmlPane pane = (EditableHtmlPane) editor;
+			pane.handleOpenLink(getInvocationLocation());
+		}
+
+		@Override
+		protected void sourceEditPerformed(ActionEvent e, JEditorPane editor)
+		{
+		}
+	}
+
 	private ActionList actionList;
 }
