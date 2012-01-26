@@ -71,7 +71,7 @@ public class EditableHtmlPane extends MiradiTextPane
 		{
 			// NOTE: The Java HTML parser compresses all whitespace to a single space
 			// (http://java.sun.com/products/jfc/tsc/articles/bookmarks/)
-			html = html.replaceAll(StringUtilities.EMPTY_SPACE, getNonBreakingSpace());
+			html = html.replaceAll(StringUtilities.EMPTY_SPACE, NON_BREAKING_SPACE_NAME);
 			HTMLEditorKit htmlEditorKit = (HTMLEditorKit) getEditorKit();
 			Document document = getDocument();
 			final String jEditorPaneizeHtml = HTMLUtils.jEditorPaneizeHTML(html);
@@ -83,11 +83,6 @@ public class EditableHtmlPane extends MiradiTextPane
 			EAM.unexpectedErrorDialog(e);
 			EAM.logException(e);
 		}
-	}
-
-	public static String getNonBreakingSpace()
-	{
-		return "&nbsp;";
 	}
 
 	@Override
@@ -122,8 +117,8 @@ public class EditableHtmlPane extends MiradiTextPane
 		
 		// NOTE: The Java HTML parser compresses all whitespace to a single space
 		// (http://java.sun.com/products/jfc/tsc/articles/bookmarks/)
-		trimmedText = trimmedText.replaceAll(getNonBreakingSpace(), StringUtilities.EMPTY_SPACE);
-		trimmedText = trimmedText.replaceAll("&#160;", StringUtilities.EMPTY_SPACE);
+		trimmedText = trimmedText.replaceAll(NON_BREAKING_SPACE_NAME, StringUtilities.EMPTY_SPACE);
+		trimmedText = trimmedText.replaceAll(NON_BREAKING_SPACE_CODE, StringUtilities.EMPTY_SPACE);
 		trimmedText = HtmlUtilities.removeNonHtmlNewLines(trimmedText);
 		trimmedText = HtmlUtilities.appendNewlineToEndDivTags(trimmedText);
 		trimmedText = HtmlUtilities.removeAllExcept(trimmedText, htmlTagsToKeep);
@@ -217,4 +212,6 @@ public class EditableHtmlPane extends MiradiTextPane
 	 }
 	 
 	 private HyperlinkHandler handler;
+	 private static final String NON_BREAKING_SPACE_NAME = "&nbsp;";
+	 private static final String NON_BREAKING_SPACE_CODE = "&#160;";
 }
