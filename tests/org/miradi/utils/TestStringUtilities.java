@@ -33,32 +33,7 @@ public class TestStringUtilities extends MiradiTestCase
 	{
 		assertEquals("Blank space should never change?", " ", StringUtilities.EMPTY_SPACE);
 	}
-	
-	public void testGetWord()
-	{
-		verifyGetToken("", "", -1);
-		verifyGetToken("", "", 0);
-		verifyGetToken("", "this", -1);
-		verifyGetToken("this", "this is sample", 0);
-		verifyGetToken("this", "this is sample", 1);
-		verifyGetToken("this", "this is sample", 2);
-		verifyGetToken("this", "this is sample", 3);
-		verifyGetToken("", "this is sample", 4);
-		verifyGetToken("is", "this is sample", 5);
-		verifyGetToken("is", "this is sample", 6);
-		verifyGetToken("", "this is sample", 7);
-		verifyGetToken("sample", "this is sample", 8);
-		verifyGetToken("sample", "this is sample", 9);
-		verifyGetToken("sample", "this is sample", 10);
-		verifyGetToken("sample", "this is sample", 11);
-	}
-	
-	private void verifyGetToken(String expected, String text, int caretPosition)
-	{
-		final String actual = StringUtilities.getToken(text, caretPosition);
-		assertEquals("incorrect word found?", expected, actual);
-	}
-
+		
 	public void testConcatenateWithOr()
 	{
 		verifyConcatenate("", new String[]{""});
