@@ -20,8 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.io.StringReader;
 
+import javax.swing.JEditorPane;
+import javax.swing.event.HyperlinkEvent;
+import javax.swing.event.HyperlinkListener;
 import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
@@ -46,10 +52,11 @@ public class EditableHtmlPane extends MiradiTextPane
 	{
 		super(mainWindow, fixedApproximateColumnCount, initialApproximateRowCount);
 		
-		final WysiwygHTMLEditorKit htmlEditorKit = new WysiwygHTMLEditorKit();
+		final HTMLEditorKitWithCustomLinkController htmlEditorKit = new HTMLEditorKitWithCustomLinkController();
 		setEditorKitForContentType(htmlEditorKit.getContentType(), htmlEditorKit);
 		setContentType(htmlEditorKit.getContentType()); 
 		initializeEditorComponent();
+		addHyperlinkListener(new HyperlinkOpenHandler());
 	}
 
 	protected void initializeEditorComponent()
@@ -132,7 +139,7 @@ public class EditableHtmlPane extends MiradiTextPane
 	
 	public static String[] getTagsToKeep()
 	{
-		return new String[] {"br", "b", "i", "ul", "ol", "li", "u", "strike", };
+		return new String[] {"br", "b", "i", "ul", "ol", "li", "u", "strike", "a", };
 	}
 	
 	private void updateStyleSheet()
@@ -149,4 +156,83 @@ public class EditableHtmlPane extends MiradiTextPane
 		HtmlUtilities.addRuleFontSize(style, getFont().getSize(), fontSize);
 		HtmlUtilities.addRuleFontFamily(style, getMainWindow().getDataPanelFontFamily());
 	}
+	
+	 private class HyperlinkOpenHandler implements HyperlinkListener 
+	 {
+		 public void hyperlinkUpdate(HyperlinkEvent e) 
+		 {
+			 if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) 
+			 {
+				 getMainWindow().mainLinkFunction(e.getURL().toString());
+			 }
+		 }
+	 }
+	 
+	 public class HTMLEditorKitWithCustomLinkController extends WysiwygHTMLEditorKit 
+	 {
+		 @Override
+		 public void install(JEditorPane editorPane) 
+		 {
+			 MouseListener[] oldMouseListeners = editorPane.getMouseListeners();
+	         MouseMotionListener[] oldMouseMotionListeners = editorPane.getMouseMotionListeners();
+			 
+	         super.install(editorPane);
+			 
+			 removeSuperLinkHandler(editorPane, oldMouseListeners,	oldMouseMotionListeners);
+
+			 HyperlinkHandler handler = new HyperlinkHandler();
+			 editorPane.addMouseListener(handler);
+			 editorPane.addMouseMotionListener(handler);
+		 }
+
+		private void removeSuperLinkHandler(JEditorPane editorPane, MouseListener[] oldMouseListeners, MouseMotionListener[] oldMouseMotionListeners)
+		{
+			for (MouseListener l: editorPane.getMouseListeners()) 
+			{
+				editorPane.removeMouseListener(l);
+			}
+			
+			for (MouseListener l: oldMouseListeners) 
+			{
+				editorPane.addMouseListener(l);
+			}
+
+			for (MouseMotionListener l: editorPane.getMouseMotionListeners()) 
+			{
+				editorPane.removeMouseMotionListener(l);
+			}
+			
+			for (MouseMotionListener l: oldMouseMotionListeners) 
+			{
+				editorPane.addMouseMotionListener(l);
+			}
+		}
+
+		 public class HyperlinkHandler extends LinkController 
+		 {
+			 @Override
+			 public void mouseClicked(MouseEvent e) 
+			 {
+				 JEditorPane editor = (JEditorPane) e.getSource();
+				 if (e.isControlDown() || (e.getClickCount() == 2))
+				 {
+					 editor.setEditable(false);
+					 super.mouseClicked(e);
+					 editor.setEditable(true);
+				 }
+			 }
+
+			 @Override
+			 public void mouseMoved(MouseEvent e) 
+			 {
+				 JEditorPane editor = (JEditorPane) e.getSource();
+				 if (editor.isEditable()) 
+				 {
+					 editor.setEditable(false);
+					 super.mouseMoved(e);
+					 editor.setEditable(true);
+				 }
+			 }
+		 }
+	 }
 }

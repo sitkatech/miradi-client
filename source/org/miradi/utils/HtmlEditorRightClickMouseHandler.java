@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
-import java.awt.event.ActionEvent;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
@@ -33,13 +32,13 @@ import javax.swing.text.JTextComponent;
 import net.atlanticbb.tantlinger.ui.text.CompoundUndoManager;
 import net.atlanticbb.tantlinger.ui.text.actions.HTMLEditorActionFactory;
 import net.atlanticbb.tantlinger.ui.text.actions.HTMLInlineAction;
+import net.atlanticbb.tantlinger.ui.text.actions.HTMLLinkAction;
 import net.atlanticbb.tantlinger.ui.text.actions.HTMLTextEditAction;
 
 import org.bushe.swing.action.ActionList;
 import org.miradi.actions.Actions;
 import org.miradi.dialogfields.HtmlEditorContextMenuListener;
 import org.miradi.dialogfields.TextAreaRightClickMouseHandler;
-import org.miradi.main.EAM;
 
 public class HtmlEditorRightClickMouseHandler extends TextAreaRightClickMouseHandler
 {
@@ -63,7 +62,7 @@ public class HtmlEditorRightClickMouseHandler extends TextAreaRightClickMouseHan
 		actionList.add(null);
 		actionList.addAll(HTMLEditorActionFactory.createListElementActionList());
 		actionList.add(null);
-		actionList.add(new HyperlinkOpenInBrowserAction());
+		actionList.add(new HTMLLinkAction());
 	}
 	
 	@Override
@@ -100,27 +99,6 @@ public class HtmlEditorRightClickMouseHandler extends TextAreaRightClickMouseHan
 		{
 		}
 	}
-	
-	private class HyperlinkOpenInBrowserAction extends HTMLTextEditAction
-	{
-		public HyperlinkOpenInBrowserAction()
-		{
-			super(EAM.text("Open hyperlink"));
-		}
-
-		@Override
-		protected void wysiwygEditPerformed(ActionEvent e, JEditorPane editor)
-		{
-			final int caretPosition = editor.getCaretPosition();
-			final String hyperlink = StringUtilities.getToken(editor.getText(), caretPosition);
-			EAM.getMainWindow().mainLinkFunction(hyperlink);
-		}
-
-		@Override
-		protected void sourceEditPerformed(ActionEvent e, JEditorPane editor)
-		{
-		}
-	}
-	
+		
 	private ActionList actionList;
 }
