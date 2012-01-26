@@ -24,11 +24,11 @@ import java.util.Set;
 
 import javax.swing.JToggleButton;
 
-import org.martus.util.xml.XmlUtilities;
 import org.miradi.main.EAM;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.XmlUtilities2;
 
 abstract public class AbstractQuestionBasedComponent extends AbstractDataValueListComponent
 {
@@ -89,7 +89,7 @@ abstract public class AbstractQuestionBasedComponent extends AbstractDataValueLi
 			JToggleButton toggleButton = choiceItemToToggleButtonMap.get(choiceItem);
 			if (toggleButton.isSelected() )
 			{
-				partialToolTip += XmlUtilities.getXmlEncoded(choiceItem.getLabel()) + "<BR>";
+				partialToolTip += XmlUtilities2.getXmlEncoded(choiceItem.getLabel()) + "<BR>";
 				++selectionCount;
 			}
 		}

@@ -30,7 +30,7 @@ import javax.swing.border.Border;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 
-import org.martus.util.xml.XmlUtilities;
+import org.miradi.utils.XmlUtilities2;
 
 abstract public class BasicTableCellEditorOrRendererFactory extends AbstractCellEditor implements TableCellRenderer, TableCellPreferredHeightProvider, TableCellEditor 
 {
@@ -116,7 +116,7 @@ abstract public class BasicTableCellEditorOrRendererFactory extends AbstractCell
 		if(value == null)
 			return "";
 		String plainText = value.toString();
-		return "<html>" + initialHtml + XmlUtilities.getXmlEncoded(plainText);
+		return "<html>" + initialHtml + XmlUtilities2.getXmlEncoded(plainText);
 	}
 	
 	public Border getCellBorder()

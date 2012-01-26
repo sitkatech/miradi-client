@@ -19,11 +19,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.objects;
 
-import org.martus.util.xml.XmlUtilities;
 import org.miradi.ids.BaseId;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.XmlUtilities2;
 
 public class TestProjectResource extends TestCaseWithProject
 {
@@ -46,7 +46,7 @@ public class TestProjectResource extends TestCaseWithProject
 			if (i == 0 )
 			{
 				projectResources[i].setData(ProjectResource.TAG_GIVEN_NAME, lessThan+i);
-				expected = expected + XmlUtilities.getXmlEncoded(lessThan)+i;
+				expected = expected + XmlUtilities2.getXmlEncoded(lessThan)+i;
 			}
 			else
 			{

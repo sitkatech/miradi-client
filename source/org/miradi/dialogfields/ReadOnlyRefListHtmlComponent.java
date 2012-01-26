@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogfields;
 
-import org.martus.util.xml.XmlUtilities;
 import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
@@ -27,6 +26,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
+import org.miradi.utils.XmlUtilities2;
 import org.miradi.wizard.MiradiHtmlViewer;
 
 import com.jhlabs.awt.BasicGridLayout;
@@ -64,7 +64,7 @@ public class ReadOnlyRefListHtmlComponent extends MiradiPanel
 				}
 				else
 				{
-					htmlTable += "<TR><TD>" + XmlUtilities.getXmlEncoded(object.getFullName())  + "</TD></TR>";
+					htmlTable += "<TR><TD>" + XmlUtilities2.getXmlEncoded(object.getFullName())  + "</TD></TR>";
 				}
 			}		
 			

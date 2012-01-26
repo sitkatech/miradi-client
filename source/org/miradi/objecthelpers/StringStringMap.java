@@ -24,8 +24,8 @@ import java.text.ParseException;
 import java.util.Set;
 
 import org.martus.util.UnicodeWriter;
-import org.martus.util.xml.XmlUtilities;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.utils.XmlUtilities2;
 
 public class StringStringMap extends AbstractStringKeyMap
 {
@@ -61,11 +61,11 @@ public class StringStringMap extends AbstractStringKeyMap
 		Set<String> keys = data.keySet();
 		for(Object object : keys)
 		{
-			out.write("<Item code='" + XmlUtilities.getXmlEncoded(object.toString()) + "'>");
+			out.write("<Item code='" + XmlUtilities2.getXmlEncoded(object.toString()) + "'>");
 			out.write("<Value>");
 			
 			String rawValue = data.get(object.toString()).toString();
-			out.write(XmlUtilities.getXmlEncoded(rawValue));
+			out.write(XmlUtilities2.getXmlEncoded(rawValue));
 			
 			out.write("</Value>");
 			out.writeln("</Item>");

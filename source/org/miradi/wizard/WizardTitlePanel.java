@@ -27,11 +27,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import org.martus.swing.UiLabel;
-import org.martus.util.xml.XmlUtilities;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.MiradiResourceImageIcon;
+import org.miradi.utils.XmlUtilities2;
 
 import com.jhlabs.awt.BasicGridLayout;
 
@@ -68,13 +68,13 @@ public class WizardTitlePanel extends JPanel
 	{
 		String title = EAM.text("Intro to View");
 		if(text.length() > 0)
-			title = EAM.text("Step ") + XmlUtilities.getXmlEncoded(text);
+			title = EAM.text("Step ") + XmlUtilities2.getXmlEncoded(text);
 		stepTitle.setText("<div class='processsteptitle'>" + title + "</div>");
 	}
 	
 	public void setScreenTitle(String text)
 	{
-		screenTitle.setText("<div class='wizardscreentitle'>" + XmlUtilities.getXmlEncoded(text) + "</div>");
+		screenTitle.setText("<div class='wizardscreentitle'>" + XmlUtilities2.getXmlEncoded(text) + "</div>");
 	}
 	
 	WizardTitleHtmlViewer stepTitle;

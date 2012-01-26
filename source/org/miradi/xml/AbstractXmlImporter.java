@@ -31,7 +31,6 @@ import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
-import org.martus.util.xml.XmlUtilities;
 import org.miradi.exceptions.CpmzVersionTooOldException;
 import org.miradi.exceptions.UnsupportedNewVersionSchemaException;
 import org.miradi.exceptions.ValidationException;
@@ -44,6 +43,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.utils.XmlUtilities2;
 import org.miradi.xml.wcs.WcsMiradiXmlValidator;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
@@ -134,7 +134,7 @@ abstract public class AbstractXmlImporter
 	private void importField(Node node, String[] elements, ORef ref, String destinationTag) throws Exception 
 	{
 		String data = getPathData(node, elements);
-		data = XmlUtilities.getXmlEncoded(data);
+		data = XmlUtilities2.getXmlEncoded(data);
 		importField(ref, destinationTag, data);
 	}
 	
