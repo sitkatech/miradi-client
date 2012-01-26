@@ -24,6 +24,7 @@ import java.awt.Point;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.io.StringReader;
+import java.net.URL;
 
 import javax.swing.JEditorPane;
 import javax.swing.event.HyperlinkEvent;
@@ -163,7 +164,11 @@ public class EditableHtmlPane extends MiradiTextPane
 		 {
 			 if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) 
 			 {
-				 getMainWindow().mainLinkFunction(e.getURL().toString());
+				 final URL url = e.getURL();
+				 if (url != null)
+				 {
+					 getMainWindow().mainLinkFunction(url.toString());
+				 }
 			 }
 		 }
 	 }
