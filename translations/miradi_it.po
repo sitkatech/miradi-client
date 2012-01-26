@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-25 11:08-0600\n"
+"POT-Creation-Date: 2012-01-26 10:53-0600\n"
 "PO-Revision-Date: 2011-04-29 11:26+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -5441,10 +5441,6 @@ msgid ""
 "projects. The basis for Miradi. You can download a copy of the Open "
 "Standards at <a href='http://www.ConservationMeasures.org'>www."
 "ConservationMeasures.org<a>"
-msgstr ""
-
-#: Miradi/source/org/miradi/utils/HtmlEditorRightClickMouseHandler.java:108
-msgid "Open hyperlink"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:263
