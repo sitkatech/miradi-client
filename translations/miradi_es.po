@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-27 12:30-0600\n"
+"POT-Creation-Date: 2012-01-27 13:05-0600\n"
 "PO-Revision-Date: 2011-03-28 15:06-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -4206,6 +4206,10 @@ msgstr "Insertar fracción FTE"
 msgid "Insert Factor Link dialog|No Label Specified"
 msgstr ""
 
+#: Miradi/source/org/miradi/utils/HtmlEditorRightClickMouseHandler.java:69
+msgid "Insert Hyperlink"
+msgstr ""
+
 #: Miradi/source/org/miradi/utils/LanguagePackFileChooser.java:43
 msgid "Install"
 msgstr "Instalar"
@@ -5357,7 +5361,7 @@ msgid ""
 "ConservationMeasures.org<a>"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/HtmlEditorRightClickMouseHandler.java:110
+#: Miradi/source/org/miradi/utils/HtmlEditorRightClickMouseHandler.java:113
 msgid "Open hyperlink"
 msgstr ""
 

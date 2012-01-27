@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-27 12:30-0600\n"
+"POT-Creation-Date: 2012-01-27 13:05-0600\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -4400,6 +4400,10 @@ msgstr ""
 msgid "Insert Factor Link dialog|No Label Specified"
 msgstr ""
 
+#: Miradi/source/org/miradi/utils/HtmlEditorRightClickMouseHandler.java:69
+msgid "Insert Hyperlink"
+msgstr ""
+
 #: Miradi/source/org/miradi/utils/LanguagePackFileChooser.java:43
 msgid "Install"
 msgstr "Installieren"
@@ -5538,7 +5542,7 @@ msgstr ""
 "Offenen Standards für die Naturschutzpraxis herunterladen: <a href='http://"
 "www.ConservationMeasures.org'>www.ConservationMeasures.org<a>"
 
-#: Miradi/source/org/miradi/utils/HtmlEditorRightClickMouseHandler.java:110
+#: Miradi/source/org/miradi/utils/HtmlEditorRightClickMouseHandler.java:113
 msgid "Open hyperlink"
 msgstr ""
 
