@@ -64,7 +64,10 @@ public class HtmlEditorRightClickMouseHandler extends TextAreaRightClickMouseHan
 		actionList.add(null);
 		actionList.addAll(HTMLEditorActionFactory.createListElementActionList());
 		actionList.add(null);
-		actionList.add(new HTMLLinkAction());
+		
+		final HTMLLinkAction insertHpyerlinkAction = new HTMLLinkAction();
+		insertHpyerlinkAction.setActionName(EAM.text("Insert Hyperlink"));
+		actionList.add(insertHpyerlinkAction);
 		actionList.add(new HyperlinkOpenInBrowserAction());
 	}
 	
