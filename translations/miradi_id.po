@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-27 12:30-0600\n"
+"POT-Creation-Date: 2012-01-27 13:05-0600\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -4187,6 +4187,10 @@ msgstr "Sisipkan Pecahan FTE "
 msgid "Insert Factor Link dialog|No Label Specified"
 msgstr ""
 
+#: Miradi/source/org/miradi/utils/HtmlEditorRightClickMouseHandler.java:69
+msgid "Insert Hyperlink"
+msgstr ""
+
 #: Miradi/source/org/miradi/utils/LanguagePackFileChooser.java:43
 msgid "Install"
 msgstr "Instal "
@@ -5321,7 +5325,7 @@ msgid ""
 "ConservationMeasures.org<a>"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/HtmlEditorRightClickMouseHandler.java:110
+#: Miradi/source/org/miradi/utils/HtmlEditorRightClickMouseHandler.java:113
 msgid "Open hyperlink"
 msgstr ""
 

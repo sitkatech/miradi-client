@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-27 12:30-0600\n"
+"POT-Creation-Date: 2012-01-27 13:05-0600\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -4233,6 +4233,10 @@ msgstr "FTE хэсгийг оруулах"
 msgid "Insert Factor Link dialog|No Label Specified"
 msgstr "Insert Factor Link dialog|No Label Specified"
 
+#: Miradi/source/org/miradi/utils/HtmlEditorRightClickMouseHandler.java:69
+msgid "Insert Hyperlink"
+msgstr ""
+
 #: Miradi/source/org/miradi/utils/LanguagePackFileChooser.java:43
 msgid "Install"
 msgstr "Суулгах"
@@ -5361,7 +5365,7 @@ msgid ""
 "ConservationMeasures.org<a>"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/HtmlEditorRightClickMouseHandler.java:110
+#: Miradi/source/org/miradi/utils/HtmlEditorRightClickMouseHandler.java:113
 msgid "Open hyperlink"
 msgstr ""
 
