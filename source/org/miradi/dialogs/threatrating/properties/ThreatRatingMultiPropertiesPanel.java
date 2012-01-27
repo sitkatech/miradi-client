@@ -60,9 +60,9 @@ public class ThreatRatingMultiPropertiesPanel extends OverlaidObjectDataInputPan
 
 	private void addPropertiesPanels()
 	{
+		addPanel(blankPropertiesPanel);
 		addPanel(simplePropertiesPanel);
 		addPanel(stressBasedPropertiesPanel);
-		addPanel(blankPropertiesPanel);
 	}
 	
 	@Override
