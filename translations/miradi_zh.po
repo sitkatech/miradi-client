@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-26 16:52-0600\n"
+"POT-Creation-Date: 2012-01-27 12:20-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -2835,7 +2835,7 @@ msgstr ""
 msgid "Currently, Miradi can only import one project file at a time"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/reports/ReportsView.java:94
+#: Miradi/source/org/miradi/views/reports/ReportsView.java:95
 msgid "Custom Reports"
 msgstr "定制报告 \t\t"
 
@@ -5720,6 +5720,10 @@ msgstr "大致猜测"
 msgid "Ruble (Russia)"
 msgstr "卢布（俄罗斯）"
 
+#: Miradi/source/org/miradi/dialogs/reportTemplate/XsltReportPanel.java:41
+msgid "Run"
+msgstr ""
+
 #: Miradi/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:122
 msgid "Run..."
 msgstr "运行... "
@@ -6047,7 +6051,7 @@ msgstr ""
 msgid "Stakeholder"
 msgstr "利益相关者"
 
-#: Miradi/source/org/miradi/views/reports/ReportsView.java:93
+#: Miradi/source/org/miradi/views/reports/ReportsView.java:94
 msgid "Standard Reports"
 msgstr "标准报告 \t\t"
 
@@ -8211,6 +8215,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/MpzProjectImporter.java:72
 msgid "Writing..."
+msgstr ""
+
+#: Miradi/source/org/miradi/views/reports/ReportsView.java:96
+msgid "XSLT"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/editors/CalendarYearDateUnitStartAndEndCard.java:37

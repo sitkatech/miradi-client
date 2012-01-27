@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-26 16:52-0600\n"
+"POT-Creation-Date: 2012-01-27 12:20-0600\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -3110,7 +3110,7 @@ msgstr ""
 "Derzeit kann Miradi nur jeweils eine Projektdatei zur gleichen Zeit "
 "importieren"
 
-#: Miradi/source/org/miradi/views/reports/ReportsView.java:94
+#: Miradi/source/org/miradi/views/reports/ReportsView.java:95
 msgid "Custom Reports"
 msgstr "Benutzerdefinierter Bericht "
 
@@ -6109,6 +6109,10 @@ msgstr "Grobe Schätzung"
 msgid "Ruble (Russia)"
 msgstr "Rubel (Russland)"
 
+#: Miradi/source/org/miradi/dialogs/reportTemplate/XsltReportPanel.java:41
+msgid "Run"
+msgstr ""
+
 #: Miradi/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:122
 msgid "Run..."
 msgstr "Ausführen..."
@@ -6492,7 +6496,7 @@ msgstr ""
 msgid "Stakeholder"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/reports/ReportsView.java:93
+#: Miradi/source/org/miradi/views/reports/ReportsView.java:94
 msgid "Standard Reports"
 msgstr "Standard Berichte"
 
@@ -8749,6 +8753,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/MpzProjectImporter.java:72
 msgid "Writing..."
+msgstr ""
+
+#: Miradi/source/org/miradi/views/reports/ReportsView.java:96
+msgid "XSLT"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/editors/CalendarYearDateUnitStartAndEndCard.java:37

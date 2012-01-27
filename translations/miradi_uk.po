@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-26 16:52-0600\n"
+"POT-Creation-Date: 2012-01-27 12:20-0600\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -2986,7 +2986,7 @@ msgid "Currently, Miradi can only import one project file at a time"
 msgstr ""
 "В даний момент Міраді може імпортувати тільки один файл проекту за один раз"
 
-#: Miradi/source/org/miradi/views/reports/ReportsView.java:94
+#: Miradi/source/org/miradi/views/reports/ReportsView.java:95
 msgid "Custom Reports"
 msgstr "Звичайні звіти"
 
@@ -5923,6 +5923,10 @@ msgstr "Грубе припущення"
 msgid "Ruble (Russia)"
 msgstr "Рубль (Росія)"
 
+#: Miradi/source/org/miradi/dialogs/reportTemplate/XsltReportPanel.java:41
+msgid "Run"
+msgstr ""
+
 #: Miradi/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:122
 msgid "Run..."
 msgstr "Запустити..."
@@ -6270,7 +6274,7 @@ msgstr ""
 msgid "Stakeholder"
 msgstr "Зацікавлена сторона"
 
-#: Miradi/source/org/miradi/views/reports/ReportsView.java:93
+#: Miradi/source/org/miradi/views/reports/ReportsView.java:94
 msgid "Standard Reports"
 msgstr "Стандартні звіти"
 
@@ -8478,6 +8482,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/MpzProjectImporter.java:72
 msgid "Writing..."
+msgstr ""
+
+#: Miradi/source/org/miradi/views/reports/ReportsView.java:96
+msgid "XSLT"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/editors/CalendarYearDateUnitStartAndEndCard.java:37
