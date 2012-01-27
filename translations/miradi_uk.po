@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-27 13:05-0600\n"
+"POT-Creation-Date: 2012-01-27 13:50-0600\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -2412,6 +2412,7 @@ msgid "Black (Default)"
 msgstr "Чорний (по замовчуванню)"
 
 #: Miradi/source/org/miradi/questions/DiagramFactorFontStyleQuestion.java:36
+#: Miradi/source/org/miradi/utils/HtmlEditorRightClickMouseHandler.java:60
 msgid "Bold"
 msgstr "Жирний"
 
@@ -4230,7 +4231,7 @@ msgstr "Вставити фрагмент FTE"
 msgid "Insert Factor Link dialog|No Label Specified"
 msgstr "Insert Factor Link dialog|Не визначений ярлик"
 
-#: Miradi/source/org/miradi/utils/HtmlEditorRightClickMouseHandler.java:69
+#: Miradi/source/org/miradi/utils/HtmlEditorRightClickMouseHandler.java:70
 msgid "Insert Hyperlink"
 msgstr ""
 
@@ -4311,6 +4312,10 @@ msgstr "Є важливим"
 #: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetEditableTableModel.java:90
 msgid "Is Tagged"
 msgstr "Помічений"
+
+#: Miradi/source/org/miradi/utils/HtmlEditorRightClickMouseHandler.java:61
+msgid "Italic"
+msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/treeRelevancy/StrategyActivityRelevancyTreeTableModel.java:56
 msgid "Item"
@@ -5364,7 +5369,7 @@ msgid ""
 "ConservationMeasures.org<a>"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/HtmlEditorRightClickMouseHandler.java:113
+#: Miradi/source/org/miradi/utils/HtmlEditorRightClickMouseHandler.java:130
 msgid "Open hyperlink"
 msgstr ""
 
@@ -5379,6 +5384,10 @@ msgstr ""
 #: Miradi/source/org/miradi/questions/DiagramLinkColorQuestion.java:48
 msgid "Orange"
 msgstr "Оранжевий"
+
+#: Miradi/source/org/miradi/utils/HtmlEditorRightClickMouseHandler.java:66
+msgid "Ordered List"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/summary/doers/DeleteOranizationDoer.java:32
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:234
@@ -6426,6 +6435,10 @@ msgstr "Стрес: %s"
 #: Miradi/source/org/miradi/dialogs/stress/StressFactorVisibilityControlPanel.java:45
 msgid ""
 "Stresses can only be shown on Conceptual Model pages, not Results Chains"
+msgstr ""
+
+#: Miradi/source/org/miradi/utils/HtmlEditorRightClickMouseHandler.java:63
+msgid "Strike"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/DiagramFactorFontStyleQuestion.java:38
@@ -8097,6 +8110,7 @@ msgid "Undefined"
 msgstr "Невизначене"
 
 #: Miradi/source/org/miradi/questions/DiagramFactorFontStyleQuestion.java:37
+#: Miradi/source/org/miradi/utils/HtmlEditorRightClickMouseHandler.java:62
 msgid "Underline"
 msgstr "Підкреслений"
 
@@ -8166,6 +8180,10 @@ msgstr "Невідома помилка у показі діаграми"
 #: Miradi/source/org/miradi/main/MainWindow.java:579
 msgid "Unknown error prevented opening that project"
 msgstr "Невідома помилка, що перешкодила відкрити цей проект"
+
+#: Miradi/source/org/miradi/utils/HtmlEditorRightClickMouseHandler.java:65
+msgid "Unordered List"
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/DateUnitTypeQuestion.java:45
 msgid "Unscheduled"
