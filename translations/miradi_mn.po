@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-27 13:05-0600\n"
+"POT-Creation-Date: 2012-01-27 13:50-0600\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -2410,6 +2410,7 @@ msgid "Black (Default)"
 msgstr "Хар (Default)"
 
 #: Miradi/source/org/miradi/questions/DiagramFactorFontStyleQuestion.java:36
+#: Miradi/source/org/miradi/utils/HtmlEditorRightClickMouseHandler.java:60
 msgid "Bold"
 msgstr "Тод"
 
@@ -4233,7 +4234,7 @@ msgstr "FTE хэсгийг оруулах"
 msgid "Insert Factor Link dialog|No Label Specified"
 msgstr "Insert Factor Link dialog|No Label Specified"
 
-#: Miradi/source/org/miradi/utils/HtmlEditorRightClickMouseHandler.java:69
+#: Miradi/source/org/miradi/utils/HtmlEditorRightClickMouseHandler.java:70
 msgid "Insert Hyperlink"
 msgstr ""
 
@@ -4314,6 +4315,10 @@ msgstr "Хамаатай байна"
 #: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetEditableTableModel.java:90
 msgid "Is Tagged"
 msgstr "Тэмдэглэгдсэн"
+
+#: Miradi/source/org/miradi/utils/HtmlEditorRightClickMouseHandler.java:61
+msgid "Italic"
+msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/treeRelevancy/StrategyActivityRelevancyTreeTableModel.java:56
 msgid "Item"
@@ -5365,7 +5370,7 @@ msgid ""
 "ConservationMeasures.org<a>"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/HtmlEditorRightClickMouseHandler.java:113
+#: Miradi/source/org/miradi/utils/HtmlEditorRightClickMouseHandler.java:130
 msgid "Open hyperlink"
 msgstr ""
 
@@ -5380,6 +5385,10 @@ msgstr ""
 #: Miradi/source/org/miradi/questions/DiagramLinkColorQuestion.java:48
 msgid "Orange"
 msgstr "Улбар шар"
+
+#: Miradi/source/org/miradi/utils/HtmlEditorRightClickMouseHandler.java:66
+msgid "Ordered List"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/summary/doers/DeleteOranizationDoer.java:32
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:234
@@ -6445,6 +6454,10 @@ msgid ""
 msgstr ""
 "Дарамтуудыг Үр Дүнгийн гинжин холбооноос бус зөвхөн концепцийн Загвар "
 "хуудаснаас харж  болно."
+
+#: Miradi/source/org/miradi/utils/HtmlEditorRightClickMouseHandler.java:63
+msgid "Strike"
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/DiagramFactorFontStyleQuestion.java:38
 msgid "Strike through"
@@ -8127,6 +8140,7 @@ msgid "Undefined"
 msgstr "Тогтоогдоогүй"
 
 #: Miradi/source/org/miradi/questions/DiagramFactorFontStyleQuestion.java:37
+#: Miradi/source/org/miradi/utils/HtmlEditorRightClickMouseHandler.java:62
 msgid "Underline"
 msgstr "Үгийн доогуур зурах"
 
@@ -8196,6 +8210,10 @@ msgstr "Тодорхой бус шалтгаанаар диаграмм ыг ү�
 #: Miradi/source/org/miradi/main/MainWindow.java:579
 msgid "Unknown error prevented opening that project"
 msgstr "Энэ төсөл тодорхой бус алдаанаас болж нээгдэхгүй байна."
+
+#: Miradi/source/org/miradi/utils/HtmlEditorRightClickMouseHandler.java:65
+msgid "Unordered List"
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/DateUnitTypeQuestion.java:45
 msgid "Unscheduled"
