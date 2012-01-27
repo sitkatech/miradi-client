@@ -48,7 +48,7 @@ public class XmlUtilities2
 		return value;
 	}
 
-	protected static String getXmlDecodedApostrophes(String value)
+	public static String getXmlDecodedApostrophes(String value)
 	{
 		value = value.replaceAll("&#39;", "'");
 		value = value.replaceAll("&#x27;", "'");
@@ -62,8 +62,13 @@ public class XmlUtilities2
 		value = value.replaceAll("<", "&lt;");
 		value = value.replaceAll(">", "&gt;");
 		value = value.replaceAll("\"", "&quot;");
-		value = value.replaceAll("'", "&apos;");
+		value = getXmlEncodedApostrophes(value);
 		
 		return value;
+	}
+
+	public static String getXmlEncodedApostrophes(String value)
+	{
+		return value.replaceAll("'", "&apos;");
 	}
 }
