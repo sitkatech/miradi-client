@@ -71,4 +71,7 @@ public class XmlUtilities2
 		
 		return value;
 	}
+
+	public static final String NON_BREAKING_SPACE_NAME = "&nbsp;";
+	public static final String NON_BREAKING_SPACE_CODE = "&#160;";
 }
