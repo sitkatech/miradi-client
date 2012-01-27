@@ -91,6 +91,7 @@ public class EditableHtmlPane extends MiradiTextPane
 	{
 		updateStyleSheet();
 		String topText = HtmlUtilities.removeAllExcept(text, getTagsToKeep());
+		// NOTE: Shef does not encode/decode apostrophes as we need for proper XML
 		topText = XmlUtilities2.getXmlDecodedApostrophes(topText);
 		super.setText("");
 		insertHtml(topText, 0);            
@@ -129,6 +130,7 @@ public class EditableHtmlPane extends MiradiTextPane
 		//NOTE: Third party library  uses <br> instead of <br/>.  If we don't replace <br> then 
 		//save method thinks there was a change and attempts to save.
 		trimmedText = HtmlUtilities.replaceStartBrTagsWithEmptyBrTags(trimmedText);
+		// NOTE: Shef does not encode/decode apostrophes as we need for proper XML
 		trimmedText = XmlUtilities2.getXmlEncodedApostrophes(trimmedText);
 		HtmlUtilities.ensureNoCloseBrTags(trimmedText);
 		
