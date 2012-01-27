@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-27 13:50-0600\n"
+"POT-Creation-Date: 2012-01-27 15:52-0600\n"
 "PO-Revision-Date: 2011-04-05 11:46+0100\n"
 "Last-Translator: Emanuela Leonardi <e.leonardi@gmail.com>\n"
 "Language-Team: none\n"
@@ -1065,7 +1065,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:47
 #: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:80
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:57
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:58
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:94
 msgid "A project or file by this name already exists: "
 msgstr "Un projet ou un fichier avec ce nom existe déjà :"
@@ -3454,7 +3454,7 @@ msgid "Enter As: "
 msgstr "Entrer sous :"
 
 #: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:111
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:125
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:131
 msgid "Enter New Name"
 msgstr "Entrer Nouveau nom"
 
@@ -5929,7 +5929,7 @@ msgid "Remove Team Member"
 msgstr "Supprimer Membre de l'équipe"
 
 #: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:57
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:67
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:68
 msgid "Rename Failed"
 msgstr "Changement de nom échoué"
 
@@ -8244,7 +8244,7 @@ msgstr "Impossible de traiter le fichier : vérifiez le format du fichier"
 msgid "Unable to process request: "
 msgstr "Impossible de traiter la requête :"
 
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:42
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:43
 msgid ""
 "Unable to rename this project because it is in use by another copy of this "
 "application:\n"
