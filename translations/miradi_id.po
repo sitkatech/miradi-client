@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-27 13:50-0600\n"
+"POT-Creation-Date: 2012-01-27 15:52-0600\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -979,7 +979,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:47
 #: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:80
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:57
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:58
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:94
 msgid "A project or file by this name already exists: "
 msgstr "Sudah ada proyek atau berkas lain yang memakai nama ini: "
@@ -3356,7 +3356,7 @@ msgid "Enter As: "
 msgstr ""
 
 #: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:111
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:125
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:131
 msgid "Enter New Name"
 msgstr "Masukkan Nama Baru "
 
@@ -5790,7 +5790,7 @@ msgid "Remove Team Member"
 msgstr "Menghilangkan Anggota Tim "
 
 #: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:57
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:67
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:68
 msgid "Rename Failed"
 msgstr "Mengganti Nama Tidak Berhasil "
 
@@ -8051,7 +8051,7 @@ msgstr "Tidak bisa mengolah berkas: verifikasi format berkas "
 msgid "Unable to process request: "
 msgstr "Tidak bisa memproses permintaan: "
 
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:42
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:43
 msgid ""
 "Unable to rename this project because it is in use by another copy of this "
 "application:\n"
