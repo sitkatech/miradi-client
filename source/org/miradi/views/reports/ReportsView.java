@@ -106,7 +106,7 @@ public class ReportsView extends TabbedView
 		
 		standardReportPanel = null;
 		
-		standardReportPanel = null;
+		xsltReportPanel = null;
 		
 		super.deleteTabs();
 	}
