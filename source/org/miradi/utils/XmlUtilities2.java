@@ -42,11 +42,17 @@ public class XmlUtilities2
 		value = value.replaceAll("&#38;", "&");
 		value = value.replaceAll("&amp;", "&");
 		
+		value = getXmlDecodedApostrophes(value);
+		
+		
+		return value;
+	}
+
+	protected static String getXmlDecodedApostrophes(String value)
+	{
 		value = value.replaceAll("&#39;", "'");
 		value = value.replaceAll("&#x27;", "'");
 		value = value.replaceAll("&apos;", "'");
-		
-		
 		return value;
 	}
 
