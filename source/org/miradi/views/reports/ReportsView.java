@@ -21,12 +21,12 @@ package org.miradi.views.reports;
 
 import java.awt.BorderLayout;
 
-
 import org.miradi.actions.ActionCreateReportTemplate;
 import org.miradi.actions.ActionDeleteReportTemplate;
 import org.miradi.actions.ActionRunReportTemplate;
 import org.miradi.dialogs.reportTemplate.ReportTemplateManagementPanel;
 import org.miradi.dialogs.reportTemplate.StandardReportPanel;
+import org.miradi.dialogs.reportTemplate.XsltReportPanel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.main.MiradiToolBar;
@@ -89,9 +89,11 @@ public class ReportsView extends TabbedView
 	{
 		reportTemplateManagementPanel = new ReportTemplateManagementPanel(getMainWindow());
 		standardReportPanel = new StandardReportPanel(getMainWindow());
+		xsltReportPanel = new XsltReportPanel();
 
 		addTab(EAM.text("Standard Reports"), new MiradiScrollPane(standardReportPanel));
 		addTab(EAM.text("Custom Reports"), reportTemplateManagementPanel);
+		addTab(EAM.text("XSLT"), xsltReportPanel);
 
 	}
 	
@@ -108,4 +110,5 @@ public class ReportsView extends TabbedView
 
 	private ReportTemplateManagementPanel reportTemplateManagementPanel;
 	private StandardReportPanel standardReportPanel;
+	private XsltReportPanel xsltReportPanel;
 }
