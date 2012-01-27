@@ -31,7 +31,7 @@ import javax.swing.event.CaretListener;
 import javax.swing.text.JTextComponent;
 
 import net.atlanticbb.tantlinger.ui.text.CompoundUndoManager;
-import net.atlanticbb.tantlinger.ui.text.actions.HTMLEditorActionFactory;
+import net.atlanticbb.tantlinger.ui.text.actions.HTMLBlockAction;
 import net.atlanticbb.tantlinger.ui.text.actions.HTMLInlineAction;
 import net.atlanticbb.tantlinger.ui.text.actions.HTMLLinkAction;
 import net.atlanticbb.tantlinger.ui.text.actions.HTMLTextEditAction;
@@ -57,18 +57,35 @@ public class HtmlEditorRightClickMouseHandler extends TextAreaRightClickMouseHan
 	private void createEditorActions()
 	{        
 		actionList = new ActionList("style");
-		actionList.add(new HTMLInlineAction(HTMLInlineAction.BOLD));
-		actionList.add(new HTMLInlineAction(HTMLInlineAction.ITALIC));
-		actionList.add(new HTMLInlineAction(HTMLInlineAction.UNDERLINE));
-		actionList.add(new HTMLInlineAction(HTMLInlineAction.STRIKE));
+		actionList.add(createAction(HTMLInlineAction.BOLD, EAM.text("Bold")));
+		actionList.add(createAction(HTMLInlineAction.ITALIC, EAM.text("Italic")));
+		actionList.add(createAction(HTMLInlineAction.UNDERLINE, EAM.text("Underline")));
+		actionList.add(createAction(HTMLInlineAction.STRIKE, EAM.text("Strike")));
 		actionList.add(null);
-		actionList.addAll(HTMLEditorActionFactory.createListElementActionList());
+        actionList.add(createBlockAction(HTMLBlockAction.UL, EAM.text("Unordered List")));
+        actionList.add(createBlockAction(HTMLBlockAction.OL, EAM.text("Ordered List")));
 		actionList.add(null);
 		
-		final HTMLLinkAction insertHpyerlinkAction = new HTMLLinkAction();
-		insertHpyerlinkAction.setActionName(EAM.text("Insert Hyperlink"));
-		actionList.add(insertHpyerlinkAction);
+		final HTMLLinkAction insertHyperlinkAction = new HTMLLinkAction();
+		insertHyperlinkAction.setActionName(EAM.text("Insert Hyperlink"));
+		actionList.add(insertHyperlinkAction);
 		actionList.add(new HyperlinkOpenInBrowserAction());
+	}
+
+	private HTMLBlockAction createBlockAction(final int ol, String name)
+	{
+		final HTMLBlockAction action = new HTMLBlockAction(ol);
+		action.setActionName(name);
+		
+		return action;
+	}
+
+	private HTMLInlineAction createAction(final int bold, String name)
+	{
+		final HTMLInlineAction action = new HTMLInlineAction(bold);
+		action.setActionName(name);
+		
+		return action;
 	}
 	
 	@Override
