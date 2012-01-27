@@ -24,26 +24,28 @@ public class XmlUtilities2
 {
 	public static String getXmlDecoded(String value)
 	{
+		value = value.replaceAll("&#60;", "<");
+		value = value.replaceAll("&#x3c;", "<");
+		value = value.replaceAll("&#x3C;", "<");
 		value = value.replaceAll("&lt;", "<");
+
 		value = value.replaceAll("&gt;", ">");
+		value = value.replaceAll("&#x3E;", ">");
+		value = value.replaceAll("&#x3e;", ">");
+		value = value.replaceAll("&#62;", ">");
+
 		value = value.replaceAll("&quot;", "\"");
-		value = value.replaceAll("&apos;", "'");
+		value = value.replaceAll("&#x22;", "\"");
+		value = value.replaceAll("&#34;", "\"");
+		
+		value = value.replaceAll("&#x26;", "&");
+		value = value.replaceAll("&#38;", "&");
 		value = value.replaceAll("&amp;", "&");
 		
-		value = value.replaceAll("&#x3C;", "<");
-		value = value.replaceAll("&#x3E;", ">");
-		value = value.replaceAll("&#x22;", "\"");
-		value = value.replaceAll("&#x27;", "'");
-		value = value.replaceAll("&#x26;", "&");
-		
-		value = value.replaceAll("&#x3c;", "<");
-		value = value.replaceAll("&#x3e;", ">");
-
-		value = value.replaceAll("&#60;", "<");
-		value = value.replaceAll("&#62;", ">");
-		value = value.replaceAll("&#34;", "\"");
 		value = value.replaceAll("&#39;", "'");
-		value = value.replaceAll("&#38;", "&");
+		value = value.replaceAll("&#x27;", "'");
+		value = value.replaceAll("&apos;", "'");
+		
 		
 		return value;
 	}
