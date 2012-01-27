@@ -93,7 +93,8 @@ public class ReportsView extends TabbedView
 
 		addTab(EAM.text("Standard Reports"), new MiradiScrollPane(standardReportPanel));
 		addTab(EAM.text("Custom Reports"), reportTemplateManagementPanel);
-		addTab(EAM.text("XSLT"), xsltReportPanel);
+		//FIXME urgent - uncomment tab and finish feature
+		//addTab(EAM.text("XSLT"), xsltReportPanel);
 
 	}
 	
