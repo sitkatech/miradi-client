@@ -89,12 +89,11 @@ public class ReportsView extends TabbedView
 	{
 		reportTemplateManagementPanel = new ReportTemplateManagementPanel(getMainWindow());
 		standardReportPanel = new StandardReportPanel(getMainWindow());
-		xsltReportPanel = new XsltReportPanel();
+		xsltReportPanel = new XsltReportPanel(getMainWindow());
 
 		addTab(EAM.text("Standard Reports"), new MiradiScrollPane(standardReportPanel));
 		addTab(EAM.text("Custom Reports"), reportTemplateManagementPanel);
-		//FIXME urgent - uncomment tab and finish feature
-		//addTab(EAM.text("XSLT"), xsltReportPanel);
+		addTab(EAM.text("XSLT"), xsltReportPanel);
 
 	}
 	
