@@ -15,5 +15,9 @@
 	<classpathentry kind="lib" path="/miradi-thirdparty/shef/0.5/sam.jar" sourcepath="/miradi-thirdparty/shef/0.5/sam-src.jar"/>
 	<classpathentry kind="lib" path="/miradi-thirdparty/shef/0.5/shef.jar" sourcepath="/miradi-thirdparty/shef/0.5/shef-src.zip"/>
 	<classpathentry kind="lib" path="/miradi-thirdparty/shef/0.5/jtidy-8.0.jar"/>
+	<classpathentry kind="lib" path="/miradi-thirdparty/xalan/2.7.1/bin/xalan.jar"/>
+	<classpathentry kind="lib" path="/miradi-thirdparty/xalan/2.7.1/bin/xercesImpl.jar"/>
+	<classpathentry kind="lib" path="/miradi-thirdparty/xalan/2.7.1/bin/serializer.jar"/>
+	<classpathentry kind="lib" path="/miradi-thirdparty/xalan/2.7.1/bin/xml-apis.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
