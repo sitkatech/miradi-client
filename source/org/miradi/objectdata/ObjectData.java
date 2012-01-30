@@ -107,7 +107,7 @@ abstract public class ObjectData
 		return false;
 	}
 	
-	public boolean isStringCodeListMapData()
+	public boolean isCodeCodeListMapData()
 	{
 		return false;
 	}
