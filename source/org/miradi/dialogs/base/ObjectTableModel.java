@@ -19,6 +19,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.base;
 
+import org.miradi.commands.Command;
+import org.miradi.commands.CommandSetObjectData;
+import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
@@ -36,6 +39,26 @@ abstract public class ObjectTableModel extends AbstractObjectTableModel
 		
 		columnTags = tableColumnTags;
 		rowObjectType = listedItemType;
+	}
+	
+	@Override
+	public boolean isCellEditable(int row, int column)
+	{
+		if (isChoiceItemColumn(column))
+			return false;
+		
+		if (isCodeListColumn(column))
+			return false;
+		
+		if (isPseudoFieldColumn(column))
+			return false;
+		
+		return true;
+	}
+	
+	public boolean isPseudoFieldColumn(int column)
+	{
+		return false;
 	}
 	
 	public int getRowCount()
@@ -101,7 +124,30 @@ abstract public class ObjectTableModel extends AbstractObjectTableModel
 		catch(Exception e)
 		{
 			EAM.logException(e);
-			return "(Error)";
+			return EAM.text("(Error)");
+		}
+	}
+	
+	@Override
+	public void setValueAt(Object value, int row, int column)
+	{
+		super.setValueAt(value, row, column);
+		
+		ORef rowObjectRef = getRowObjectRefs().get(row);
+		String columnTag = getColumnTag(column);
+		setValueUsingCommand(rowObjectRef, columnTag, value.toString());
+	}
+	
+	public void setValueUsingCommand(ORef  refToUse, String fieldTag, String valueToSave)
+	{
+		try
+		{
+			Command command = new CommandSetObjectData(refToUse, fieldTag, valueToSave);
+			getProject().executeCommand(command);
+		}
+		catch(CommandFailedException e)
+		{
+			EAM.logException(e);
 		}
 	}
 

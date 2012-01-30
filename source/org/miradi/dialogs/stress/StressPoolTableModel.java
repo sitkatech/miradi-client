@@ -33,6 +33,16 @@ public class StressPoolTableModel extends ObjectPoolTableModel
 	{
 		super(projectToUse, Stress.getObjectType(), getStressColumnTags(projectToUse));
 	}
+	
+	@Override
+	public boolean isPseudoFieldColumn(int column)
+	{
+		String columnTag = getColumnTag(column);
+		if (columnTag.equals(Stress.PSEUDO_STRESS_RATING))
+			return true;
+		
+		return false;
+	}
 
 	@Override
 	public ChoiceQuestion getColumnQuestion(int column)

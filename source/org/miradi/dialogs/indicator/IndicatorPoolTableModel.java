@@ -35,6 +35,28 @@ public class IndicatorPoolTableModel extends ObjectPoolTableModel
 	{
 		super(projectToUse, ObjectType.INDICATOR, COLUMN_TAGS);
 	}
+	
+	@Override
+	public boolean isPseudoFieldColumn(int column)
+	{
+		String columnTag = getColumnTag(column);
+		if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
+			return true;
+		
+		if (columnTag.equals(Indicator.PSEUDO_TAG_FACTOR))
+			return true;
+		
+		if (columnTag.equals(Indicator.PSEUDO_TAG_METHODS))
+			return true;
+		
+		if (columnTag.equals(Indicator.PSEUDO_TAG_TARGETS))
+			return true;
+		
+		if (columnTag.equals(Indicator.PSEUDO_TAG_DIRECT_THREATS))
+			return true;
+		
+		return false;
+	}
 		
 	@Override
 	public ChoiceQuestion getColumnQuestion(int column)

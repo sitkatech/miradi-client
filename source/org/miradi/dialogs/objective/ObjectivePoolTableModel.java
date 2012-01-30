@@ -33,6 +33,16 @@ public class ObjectivePoolTableModel extends ObjectPoolTableModel
 	}
 	
 	@Override
+	public boolean isPseudoFieldColumn(int column)
+	{
+		String columnTag = getColumnTag(column);
+		if (columnTag.equals(Objective.PSEUDO_TAG_FACTOR))
+			return true;
+		
+		return false;
+	}
+	
+	@Override
 	public String getUniqueTableModelIdentifier()
 	{
 		return UNIQUE_MODEL_IDENTIFIER;
