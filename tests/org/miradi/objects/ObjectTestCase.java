@@ -74,7 +74,7 @@ import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.StringChoiceMapData;
 import org.miradi.utils.StringCodeListMapData;
-import org.miradi.utils.StringStringMapData;
+import org.miradi.utils.CodeStringMapData;
 
 public class ObjectTestCase extends TestCaseWithProject
 {
@@ -233,7 +233,7 @@ public class ObjectTestCase extends TestCaseWithProject
 			list.add(new BaseId(7));
 			return list.toString();
 		}
-		else if(field instanceof StringStringMapData)
+		else if(field instanceof CodeStringMapData)
 		{
 			CodeStringMap list = new CodeStringMap();
 			list.put("A","RolaA");

@@ -39,7 +39,7 @@ import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
-import org.miradi.utils.StringStringMapData;
+import org.miradi.utils.CodeStringMapData;
 
 public class Indicator extends BaseObject
 {
@@ -65,9 +65,9 @@ public class Indicator extends BaseObject
 		return new ORefList(Task.getObjectType(), getMethodIds());
 	}
 	
-	public StringStringMapData getThreshold()
+	public CodeStringMapData getThreshold()
 	{
-		return (StringStringMapData)getField(TAG_INDICATOR_THRESHOLD);
+		return (CodeStringMapData)getField(TAG_INDICATOR_THRESHOLD);
 	}
 	
 	public CodeStringMap getThresholdDetails()
