@@ -113,12 +113,6 @@ abstract public class EditableObjectTable extends SortableRowTable  implements O
 		return getColumnHeaderWidth(column);
 	}
 	
-	protected String getColumnTag(int tableColumn)
-	{
-		int modelColumn = convertColumnIndexToModel(tableColumn);
-		return model.getColumnTag(modelColumn);
-	}
-	
 	protected void createFloatingPointRestrictedColumn(int tableColumn)
 	{
 		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
