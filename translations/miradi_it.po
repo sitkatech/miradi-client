@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-27 15:52-0600\n"
+"POT-Creation-Date: 2012-01-30 12:36-0600\n"
 "PO-Revision-Date: 2011-04-29 11:26+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -1073,9 +1073,9 @@ msgstr ""
 msgid "A file or folder with that name already exists"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:47
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:80
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:58
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:45
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:72
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:57
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:94
 msgid "A project or file by this name already exists: "
 msgstr "Esiste un progetto o un file con lo stesso nome:"
@@ -3468,8 +3468,8 @@ msgstr "Fine:"
 msgid "Enter As: "
 msgstr "Inserisci come:"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:111
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:131
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:103
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:125
 msgid "Enter New Name"
 msgstr "Inserisci nuovo nome"
 
@@ -4368,7 +4368,7 @@ msgstr "Vegetazione introdotta"
 msgid "Introduction"
 msgstr "Introduzione"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:86
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:78
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:100
 msgid "Invalid project name:"
 msgstr "Nome di progetto invalido:"
@@ -4721,6 +4721,10 @@ msgstr "proprietà del collegamento"
 #: Miradi/source/org/miradi/views/planning/ObjectsOnlyManagementPanel.java:48
 msgid "Lists"
 msgstr "Liste"
+
+#: Miradi/source/org/miradi/dialogs/reportTemplate/XsltReportPanel.java:132
+msgid "Load XSL"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/summary/SummaryLocationPanel.java:64
 msgid "Location"
@@ -5914,8 +5918,8 @@ msgstr "Strategie e attività rilevanti"
 msgid "Remove Team Member"
 msgstr "Rimuovi un membro dal team"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:57
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:68
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:55
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:67
 msgid "Rename Failed"
 msgstr "Rinomina fallita"
 
@@ -6020,7 +6024,7 @@ msgstr "Congettura grezza"
 msgid "Ruble (Russia)"
 msgstr "Rublo(Russia)"
 
-#: Miradi/source/org/miradi/dialogs/reportTemplate/XsltReportPanel.java:41
+#: Miradi/source/org/miradi/dialogs/reportTemplate/XsltReportPanel.java:59
 msgid "Run"
 msgstr ""
 
@@ -6053,6 +6057,10 @@ msgstr "Savana - Savana secca"
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:46
 msgid "Savanna - Moist Savana"
 msgstr "Savana - Savana umida"
+
+#: Miradi/source/org/miradi/dialogs/reportTemplate/XsltReportPanel.java:77
+msgid "Save"
+msgstr ""
 
 #: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:108
 msgid "Save %s"
@@ -6134,6 +6142,14 @@ msgstr "Seleziona il pacchetto di lingua da installare"
 #: Miradi/source/org/miradi/dialogs/base/DataLocationChooserPanel.java:55
 msgid "Select Location..."
 msgstr "Seleziona luogo..."
+
+#: Miradi/source/org/miradi/dialogs/reportTemplate/XsltReportPanel.java:77
+msgid "Select Output File"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/reportTemplate/XsltReportPanel.java:132
+msgid "Select XSL File"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/jump/ActionJumpSelectAppropriateMethods.java:35
 msgid "Select appropriate methods"
@@ -8185,6 +8201,10 @@ msgstr ""
 msgid "Total Monitoring Budget %1 %2"
 msgstr ""
 
+#: Miradi/source/org/miradi/dialogs/reportTemplate/XsltReportPanel.java:81
+msgid "Transformation Completed!"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/noproject/DeleteOldProject.java:38
 msgid ""
 "Unable to delete this project because it is in use by another copy of this "
@@ -8204,7 +8224,7 @@ msgstr "Impossibile processare il file: verifica il formato"
 msgid "Unable to process request: "
 msgstr "Impossibile evadere la richiesta"
 
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:43
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:42
 msgid ""
 "Unable to rename this project because it is in use by another copy of this "
 "application:\n"
@@ -8636,6 +8656,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/MpzProjectImporter.java:72
 msgid "Writing..."
+msgstr ""
+
+#: Miradi/source/org/miradi/views/reports/ReportsView.java:96
+msgid "XSLT"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/editors/CalendarYearDateUnitStartAndEndCard.java:37

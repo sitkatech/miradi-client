@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-27 15:52-0600\n"
+"POT-Creation-Date: 2012-01-30 12:36-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -923,9 +923,9 @@ msgstr ""
 msgid "A file or folder with that name already exists"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:47
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:80
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:58
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:45
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:72
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:57
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:94
 msgid "A project or file by this name already exists: "
 msgstr "使用该名称的项目或文件已存在: \t\t"
@@ -3257,8 +3257,8 @@ msgstr ""
 msgid "Enter As: "
 msgstr ""
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:111
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:131
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:103
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:125
 msgid "Enter New Name"
 msgstr ""
 
@@ -4129,7 +4129,7 @@ msgstr "引入的植被"
 msgid "Introduction"
 msgstr "绪论 \t\t"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:86
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:78
 #: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:100
 msgid "Invalid project name:"
 msgstr "无效的项目名称： \t\t"
@@ -4479,6 +4479,10 @@ msgstr "链接属性 \t\t"
 
 #: Miradi/source/org/miradi/views/planning/ObjectsOnlyManagementPanel.java:48
 msgid "Lists"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/reportTemplate/XsltReportPanel.java:132
+msgid "Load XSL"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/summary/SummaryLocationPanel.java:64
@@ -5628,8 +5632,8 @@ msgstr "相关策略和活动"
 msgid "Remove Team Member"
 msgstr "去除团队成员 \t\t"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:57
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:68
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:55
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:67
 msgid "Rename Failed"
 msgstr ""
 
@@ -5733,7 +5737,7 @@ msgstr "大致猜测"
 msgid "Ruble (Russia)"
 msgstr "卢布（俄罗斯）"
 
-#: Miradi/source/org/miradi/dialogs/reportTemplate/XsltReportPanel.java:41
+#: Miradi/source/org/miradi/dialogs/reportTemplate/XsltReportPanel.java:59
 msgid "Run"
 msgstr ""
 
@@ -5766,6 +5770,10 @@ msgstr "稀树草原-干旱稀树草原"
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:46
 msgid "Savanna - Moist Savana"
 msgstr "稀树草原-湿润稀树草原"
+
+#: Miradi/source/org/miradi/dialogs/reportTemplate/XsltReportPanel.java:77
+msgid "Save"
+msgstr "保存 \t\t"
 
 #: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:108
 msgid "Save %s"
@@ -5839,6 +5847,14 @@ msgstr ""
 #: Miradi/source/org/miradi/dialogs/base/DataLocationChooserPanel.java:55
 msgid "Select Location..."
 msgstr "选择位置... \t\t"
+
+#: Miradi/source/org/miradi/dialogs/reportTemplate/XsltReportPanel.java:77
+msgid "Select Output File"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/reportTemplate/XsltReportPanel.java:132
+msgid "Select XSL File"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/jump/ActionJumpSelectAppropriateMethods.java:35
 msgid "Select appropriate methods"
@@ -7805,6 +7821,10 @@ msgstr ""
 msgid "Total Monitoring Budget %1 %2"
 msgstr ""
 
+#: Miradi/source/org/miradi/dialogs/reportTemplate/XsltReportPanel.java:81
+msgid "Transformation Completed!"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/noproject/DeleteOldProject.java:38
 msgid ""
 "Unable to delete this project because it is in use by another copy of this "
@@ -7826,7 +7846,7 @@ msgstr "无法处理文件：确认文件格式 \t\t"
 msgid "Unable to process request: "
 msgstr "无法处理请求： \t\t"
 
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:43
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:42
 msgid ""
 "Unable to rename this project because it is in use by another copy of this "
 "application:\n"
@@ -8237,6 +8257,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/MpzProjectImporter.java:72
 msgid "Writing..."
+msgstr ""
+
+#: Miradi/source/org/miradi/views/reports/ReportsView.java:96
+msgid "XSLT"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/editors/CalendarYearDateUnitStartAndEndCard.java:37
@@ -37037,9 +37061,6 @@ msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
 
 #~ msgid "Choose Custom Report"
 #~ msgstr "选择定制报告 \t\t"
-
-#~ msgid "Save"
-#~ msgstr "保存 \t\t"
 
 #~ msgid "Error while generating a report"
 #~ msgstr "生成报告时出错 \t\t"
