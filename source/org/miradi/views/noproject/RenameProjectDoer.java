@@ -34,7 +34,7 @@ import org.miradi.wizard.noproject.WelcomeCreateStep;
 
 public class RenameProjectDoer
 {
-	static public void doIt(MainWindow mainWindow, File projectFileToRename) throws Exception 
+	public static void doIt(MainWindow mainWindow, File projectFileToRename) throws Exception 
 	{
 		try
 		{
