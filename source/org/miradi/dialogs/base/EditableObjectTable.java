@@ -179,7 +179,7 @@ abstract public class EditableObjectTable extends SortableRowTable  implements O
 		setPlainRendererAndEditorFactories(tableColumn, rendererFactory, null);
 	}
 	
-	protected BaseObject[] addEmptySpaceAtStart(BaseObject[] content, BaseObject invalidObject)
+	private BaseObject[] addEmptySpaceAtStart(BaseObject[] content, BaseObject invalidObject)
 	{
 		final int EMPTY_SPACE = 0;
 		BaseObject[]  comboContent = new BaseObject[content.length + 1];
