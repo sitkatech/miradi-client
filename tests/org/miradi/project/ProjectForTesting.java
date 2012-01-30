@@ -39,7 +39,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
-import org.miradi.objecthelpers.StringChoiceMap;
+import org.miradi.objecthelpers.CodeChoiceMap;
 import org.miradi.objecthelpers.StringCodeListMap;
 import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.objecthelpers.CodeStringMap;
@@ -1455,7 +1455,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	private void populateDashboard() throws Exception
 	{
 		ORef dashboardRef = getSingletonObjectRef(Dashboard.getObjectType());
-		StringChoiceMap progressChoiceMap = new StringChoiceMap();
+		CodeChoiceMap progressChoiceMap = new CodeChoiceMap();
 		progressChoiceMap.put(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE, OpenStandardsProgressStatusQuestion.IN_PROGRESS_CODE);
 		fillObjectUsingCommand(dashboardRef, Dashboard.TAG_PROGRESS_CHOICE_MAP, progressChoiceMap.toString());
 		

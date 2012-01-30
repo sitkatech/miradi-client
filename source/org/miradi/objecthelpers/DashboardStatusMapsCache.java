@@ -68,7 +68,7 @@ public class DashboardStatusMapsCache implements CommandExecutedListener
 		cachedCalculatedStatusMap = null;
 	}
 
-	public StringChoiceMap getEffectiveMap() throws Exception
+	public CodeChoiceMap getEffectiveMap() throws Exception
 	{
 		if (cachedEffectiveStatusMap == null)
 			rebuildCachedMaps();
@@ -76,7 +76,7 @@ public class DashboardStatusMapsCache implements CommandExecutedListener
 		return cachedEffectiveStatusMap;
 	}
 	
-	public StringChoiceMap getCalculatedStatusMap() throws Exception
+	public CodeChoiceMap getCalculatedStatusMap() throws Exception
 	{
 		if (cachedCalculatedStatusMap == null)
 			rebuildCachedMaps();
@@ -86,8 +86,8 @@ public class DashboardStatusMapsCache implements CommandExecutedListener
 	
 	private void rebuildCachedMaps() throws Exception
 	{
-		cachedEffectiveStatusMap = new StringChoiceMap();
-		cachedCalculatedStatusMap = new StringChoiceMap();
+		cachedEffectiveStatusMap = new CodeChoiceMap();
+		cachedCalculatedStatusMap = new CodeChoiceMap();
 		CodeList allThirdLevelCodes = getDashboardRowDefinitionManager().getThirdLevelCodes();
 		for (int index = 0; index < allThirdLevelCodes.size(); ++index)
 		{
@@ -155,6 +155,6 @@ public class DashboardStatusMapsCache implements CommandExecutedListener
 	}
 	
 	private Project project;
-	private StringChoiceMap cachedEffectiveStatusMap;
-	private StringChoiceMap cachedCalculatedStatusMap;
+	private CodeChoiceMap cachedEffectiveStatusMap;
+	private CodeChoiceMap cachedCalculatedStatusMap;
 }

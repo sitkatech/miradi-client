@@ -21,7 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.utils;
 
 import org.miradi.objecthelpers.AbstractStringKeyMap;
-import org.miradi.objecthelpers.StringChoiceMap;
+import org.miradi.objecthelpers.CodeChoiceMap;
 
 public class TestStringChoiceMap extends TestAbstractStringMap
 {
@@ -33,18 +33,18 @@ public class TestStringChoiceMap extends TestAbstractStringMap
 	@Override
 	protected AbstractStringKeyMap createAbstractMap()
 	{
-		return new StringChoiceMap();
+		return new CodeChoiceMap();
 	}
 
 	@Override
 	protected AbstractStringKeyMap createAbstractMap(EnhancedJsonObject json)
 	{
-		return new StringChoiceMap(json);
+		return new CodeChoiceMap(json);
 	}
 	
 	public void testToString() throws Exception
 	{
-		StringChoiceMap list = (StringChoiceMap) createMapWithSampleData();
-		assertEquals("Can't rount trip?", list, new StringChoiceMap(list));
+		CodeChoiceMap list = (CodeChoiceMap) createMapWithSampleData();
+		assertEquals("Can't rount trip?", list, new CodeChoiceMap(list));
 	}
 }
