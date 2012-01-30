@@ -73,7 +73,7 @@ import org.miradi.utils.DateRange;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.CodeChoiceMapData;
-import org.miradi.utils.StringCodeListMapData;
+import org.miradi.utils.CodeCodeListMapData;
 import org.miradi.utils.CodeStringMapData;
 
 public class ObjectTestCase extends TestCaseWithProject
@@ -245,7 +245,7 @@ public class ObjectTestCase extends TestCaseWithProject
 			map.put("a", "code");
 			return map.toString();
 		}
-		else if (field instanceof StringCodeListMapData)
+		else if (field instanceof CodeCodeListMapData)
 		{
 			CodeCodeListMap map = new CodeCodeListMap();
 			CodeList randomCodes = new CodeList();
