@@ -55,7 +55,7 @@ import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.StringRefMap;
-import org.miradi.objecthelpers.StringStringMap;
+import org.miradi.objecthelpers.CodeStringMap;
 import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
@@ -538,7 +538,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 
 	private void importIndicatorThresholds(Node viabilityAssessmentNode, ORef indicatorRef) throws Exception
 	{
-		StringStringMap thresholds = new StringStringMap();
+		CodeStringMap thresholds = new CodeStringMap();
 		String poorThreshold = getNodeContent(viabilityAssessmentNode, INDICATOR_DESCRIPTION_POOR);
 		String fairThreshold = getNodeContent(viabilityAssessmentNode, INDICATOR_DESCRIPTION_FAIR);
 		String goodThreshold = getNodeContent(viabilityAssessmentNode, INDICATOR_DESCRIPTION_GOOD);
@@ -973,7 +973,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 	{
 		String threatRatingComments = getPathData(node, new String[]{path,});
 		
-		StringStringMap threatRatingCommentsMap = threatRatingCommentsData.getThreatRatingCommentsMap();
+		CodeStringMap threatRatingCommentsMap = threatRatingCommentsData.getThreatRatingCommentsMap();
 		threatRatingCommentsMap.put(threatTargetKey, threatRatingComments);
 		String threatRatingCommentsTag = threatRatingCommentsData.getThreatRatingCommentsMapTag();
 		importField(threatRatingCommentsData.getRef(), threatRatingCommentsTag, threatRatingCommentsMap.toString());

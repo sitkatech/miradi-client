@@ -25,7 +25,7 @@ import java.text.ParseException;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.StringStringMap;
+import org.miradi.objecthelpers.CodeStringMap;
 import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
@@ -54,7 +54,7 @@ public class StringMapProjectResourceFilterEditorField extends RefListEditorFiel
 
 	private String getStringMapAsString() throws Exception
 	{
-		StringStringMap existingMap = new StringStringMap(getProject().getObjectData(getORef(), getTag()));
+		CodeStringMap existingMap = new CodeStringMap(getProject().getObjectData(getORef(), getTag()));
 		existingMap.put(TableSettings.WORK_PLAN_PROJECT_RESOURCE_FILTER_CODELIST_KEY, getComponentText());
 		
 		return existingMap.toString();
@@ -71,7 +71,7 @@ public class StringMapProjectResourceFilterEditorField extends RefListEditorFiel
 	{
 		try
 		{
-			StringStringMap stringMap = new StringStringMap(StringMapAsString);
+			CodeStringMap stringMap = new CodeStringMap(StringMapAsString);
 			String codeListAsString = stringMap.get(TableSettings.WORK_PLAN_PROJECT_RESOURCE_FILTER_CODELIST_KEY);
 			
 			return new ORefList(codeListAsString);

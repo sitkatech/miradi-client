@@ -25,7 +25,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.StringStringMap;
+import org.miradi.objecthelpers.CodeStringMap;
 
 public class ObjectStringMapInputField extends ObjectStringInputField
 {
@@ -50,7 +50,7 @@ public class ObjectStringMapInputField extends ObjectStringInputField
 		try
 		{
 			String data = getProject().getObjectData(getORef(), getTag());
-			StringStringMap stringMap = new StringStringMap(data);
+			CodeStringMap stringMap = new CodeStringMap(data);
 			stringMap.put(code, super.getText());
 			
 			return stringMap.toString();
@@ -68,7 +68,7 @@ public class ObjectStringMapInputField extends ObjectStringInputField
 	{
 		try
 		{
-			StringStringMap stringMap = new StringStringMap(newValue);
+			CodeStringMap stringMap = new CodeStringMap(newValue);
 			String value = stringMap.get(code);
 			super.setText(value);
 		}

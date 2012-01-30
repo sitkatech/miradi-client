@@ -22,7 +22,7 @@ package org.miradi.objects;
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objecthelpers.StringStringMap;
+import org.miradi.objecthelpers.CodeStringMap;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.utils.EnhancedJsonObject;
@@ -77,7 +77,7 @@ public class ThreatRatingCommentsData extends BaseObject
 		return threatRef.toString() + targetRef.toString();
 	}
 	
-	public StringStringMap getThreatRatingCommentsMap()
+	public CodeStringMap getThreatRatingCommentsMap()
 	{
 		if (getProject().isSimpleThreatRatingMode())
 			return getSimpleThreatRatingCommentsMap();
@@ -93,7 +93,7 @@ public class ThreatRatingCommentsData extends BaseObject
 		return TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAP;
 	}
 	
-	public StringStringMap getThreatRatingCommentsMap(String tag)
+	public CodeStringMap getThreatRatingCommentsMap(String tag)
 	{
 		if (tag.equals(TAG_SIMPLE_THREAT_RATING_COMMENTS_MAP))
 			return getSimpleThreatRatingCommentsMap();
@@ -104,12 +104,12 @@ public class ThreatRatingCommentsData extends BaseObject
 		throw new RuntimeException("Trying to get threat rating comments map with unknown tag:" + tag);
 	}
 
-	public StringStringMap getStressBasedThreatRatingCommentsMap()
+	public CodeStringMap getStressBasedThreatRatingCommentsMap()
 	{
 		return getStringStringMapData(TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAP);
 	}
 
-	public StringStringMap getSimpleThreatRatingCommentsMap()
+	public CodeStringMap getSimpleThreatRatingCommentsMap()
 	{
 		return getStringStringMapData(TAG_SIMPLE_THREAT_RATING_COMMENTS_MAP);
 	}

@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.utils;
 
 import org.miradi.objecthelpers.AbstractStringKeyMap;
-import org.miradi.objecthelpers.StringStringMap;
+import org.miradi.objecthelpers.CodeStringMap;
 
 public class TestStringMap  extends TestAbstractStringMap
 {
@@ -32,19 +32,19 @@ public class TestStringMap  extends TestAbstractStringMap
 	@Override
 	protected AbstractStringKeyMap createAbstractMap()
 	{
-		return new StringStringMap();
+		return new CodeStringMap();
 	}
 	
 	@Override
 	protected AbstractStringKeyMap createAbstractMap(EnhancedJsonObject json)
 	{
-		return new StringStringMap(json);
+		return new CodeStringMap(json);
 	}
 	
 	public void testToString() throws Exception
 	{
-		StringStringMap list = (StringStringMap) createMapWithSampleData();
-		assertEquals("Can't rount trip?", list, new StringStringMap(list));
+		CodeStringMap list = (CodeStringMap) createMapWithSampleData();
+		assertEquals("Can't rount trip?", list, new CodeStringMap(list));
 	}
 }
 

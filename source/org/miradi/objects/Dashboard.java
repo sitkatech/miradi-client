@@ -36,7 +36,7 @@ import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.StringChoiceMap;
 import org.miradi.objecthelpers.StringCodeListMap;
-import org.miradi.objecthelpers.StringStringMap;
+import org.miradi.objecthelpers.CodeStringMap;
 import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.project.ObjectManager;
@@ -1095,7 +1095,7 @@ public class Dashboard extends BaseObject
 		return Integer.toString(wordCount);
 	}
 	
-	public StringStringMap getCommentsMap()
+	public CodeStringMap getCommentsMap()
 	{
 		return getStringStringMapData(TAG_COMMENTS_MAP);
 	}
