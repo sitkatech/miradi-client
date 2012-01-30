@@ -97,7 +97,7 @@ import org.miradi.utils.OptionalDouble;
 import org.miradi.utils.PointList;
 import org.miradi.utils.StringChoiceMapData;
 import org.miradi.utils.StringCodeListMapData;
-import org.miradi.utils.StringStringMapData;
+import org.miradi.utils.CodeStringMapData;
 import org.miradi.utils.XmlUtilities2;
 
 abstract public class BaseObject
@@ -278,7 +278,7 @@ abstract public class BaseObject
 
 	protected CodeStringMap getStringStringMapData(String tag)
 	{
-		return ((StringStringMapData)getField(tag)).getStringMap();
+		return ((CodeStringMapData)getField(tag)).getStringMap();
 	}
 	
 	protected StringChoiceMap getStringChoiceMapData(String tag)
@@ -1086,7 +1086,7 @@ abstract public class BaseObject
 	
 	protected void createStringStringMapField(String tag)
 	{
-		addField(new StringStringMapData(tag));
+		addField(new CodeStringMapData(tag));
 	}
 	
 	protected void createStringCodeListMapField(String tag)
