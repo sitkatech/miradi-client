@@ -23,9 +23,9 @@ package org.miradi.utils;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.CodeChoiceMap;
 
-public class StringChoiceMapData extends ObjectData
+public class CodeChoiceMapData extends ObjectData
 {
-	public StringChoiceMapData(String tagToUse)
+	public CodeChoiceMapData(String tagToUse)
 	{
 		super(tagToUse);
 		
@@ -52,10 +52,10 @@ public class StringChoiceMapData extends ObjectData
 	@Override
 	public boolean equals(Object rawOther)
 	{
-		if(!(rawOther instanceof StringChoiceMapData))
+		if(!(rawOther instanceof CodeChoiceMapData))
 			return false;
 
-		StringChoiceMapData other = (StringChoiceMapData) rawOther;
+		CodeChoiceMapData other = (CodeChoiceMapData) rawOther;
 		return other.data.equals(data);
 	}
 
