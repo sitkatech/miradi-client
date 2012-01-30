@@ -24,7 +24,7 @@ import org.martus.util.UnicodeWriter;
 import org.miradi.dialogs.dashboard.DashboardRowDefinitionManager;
 import org.miradi.objecthelpers.StringChoiceMap;
 import org.miradi.objecthelpers.StringCodeListMap;
-import org.miradi.objecthelpers.StringStringMap;
+import org.miradi.objecthelpers.CodeStringMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Dashboard;
 import org.miradi.utils.CodeList;
@@ -42,7 +42,7 @@ public class DashboardPoolExporter extends BaseObjectPoolExporter
 		super.exportFields(writer, baseObject);
 		
 		Dashboard dashboard = (Dashboard) baseObject;
-		StringStringMap commentsMap = dashboard.getCommentsMap();
+		CodeStringMap commentsMap = dashboard.getCommentsMap();
 		StringChoiceMap progressMap = dashboard.getProgressChoiceMap();
 		StringCodeListMap flagsMap = dashboard.getFlagsMap();
 		

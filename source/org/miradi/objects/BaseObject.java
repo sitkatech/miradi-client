@@ -78,7 +78,7 @@ import org.miradi.objecthelpers.StringChoiceMap;
 import org.miradi.objecthelpers.StringCodeListMap;
 import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.objecthelpers.StringRefMapData;
-import org.miradi.objecthelpers.StringStringMap;
+import org.miradi.objecthelpers.CodeStringMap;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.project.CurrencyFormat;
@@ -276,7 +276,7 @@ abstract public class BaseObject
 			throw new RuntimeException("Attempted to set Ref data on non-Ref field " + fieldTag);
 	}
 
-	protected StringStringMap getStringStringMapData(String tag)
+	protected CodeStringMap getStringStringMapData(String tag)
 	{
 		return ((StringStringMapData)getField(tag)).getStringMap();
 	}

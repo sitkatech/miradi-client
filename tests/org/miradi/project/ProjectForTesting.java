@@ -42,7 +42,7 @@ import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.StringChoiceMap;
 import org.miradi.objecthelpers.StringCodeListMap;
 import org.miradi.objecthelpers.StringRefMap;
-import org.miradi.objecthelpers.StringStringMap;
+import org.miradi.objecthelpers.CodeStringMap;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objects.AbstractBudgetCategoryObject;
 import org.miradi.objects.AccountingCode;
@@ -1090,14 +1090,14 @@ public class ProjectForTesting extends ProjectWithHelpers
 		
 		addProgressReport(indicator);
 		
-		StringStringMap threshold = new StringStringMap();
+		CodeStringMap threshold = new CodeStringMap();
 		threshold.put(StatusQuestion.POOR, "poor text");
 		threshold.put(StatusQuestion.FAIR, "fair text");
 		threshold.put(StatusQuestion.GOOD, "good text");
 		threshold.put(StatusQuestion.VERY_GOOD, "very good text");
 		fillObjectUsingCommand(indicator, Indicator.TAG_INDICATOR_THRESHOLD, threshold.toString());
 		
-		StringStringMap thresholdDetails = new StringStringMap();
+		CodeStringMap thresholdDetails = new CodeStringMap();
 		thresholdDetails.put(StatusQuestion.POOR, "poor details");
 		thresholdDetails.put(StatusQuestion.FAIR, "fair details");
 		thresholdDetails.put(StatusQuestion.GOOD, "good details");
@@ -1287,7 +1287,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		FactorLink factorLink = diagramLink.getWrappedFactorLink();
 		String commentsKey = ThreatRatingCommentsData.createKey(factorLink.getFromFactorRef(), factorLink.getToFactorRef());
 		String comment = "Some Comment for Threat and Target";
-		StringStringMap map = new StringStringMap();
+		CodeStringMap map = new CodeStringMap();
 		map.put(commentsKey, comment);
 		
 		fillObjectUsingCommand(threatRatingCommentsData, tagStressBasedThreatRatingCommentsMap, map.toString());
@@ -1335,11 +1335,11 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		String threatTargetKey = ThreatRatingCommentsData.createKey(threatRef, targetRef);
 				
-		StringStringMap simpleThreatRatingCommentsMap = threatRatingCommentsData.getSimpleThreatRatingCommentsMap();
+		CodeStringMap simpleThreatRatingCommentsMap = threatRatingCommentsData.getSimpleThreatRatingCommentsMap();
 		simpleThreatRatingCommentsMap.put(threatTargetKey, SIMPLE_THREAT_RATING_COMMENT);
 		fillObjectUsingCommand(threatRatingCommentsData, ThreatRatingCommentsData.TAG_SIMPLE_THREAT_RATING_COMMENTS_MAP, simpleThreatRatingCommentsMap.toString());
 	
-		StringStringMap stressBasedThreatRatingCommentsMap = threatRatingCommentsData.getStressBasedThreatRatingCommentsMap();
+		CodeStringMap stressBasedThreatRatingCommentsMap = threatRatingCommentsData.getStressBasedThreatRatingCommentsMap();
 		stressBasedThreatRatingCommentsMap.put(threatTargetKey, STRESS_BASED_THREAT_RATING_COMMENT);
 		fillObjectUsingCommand(threatRatingCommentsData, ThreatRatingCommentsData.TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAP, stressBasedThreatRatingCommentsMap.toString());
 	}
@@ -1459,7 +1459,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		progressChoiceMap.put(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE, OpenStandardsProgressStatusQuestion.IN_PROGRESS_CODE);
 		fillObjectUsingCommand(dashboardRef, Dashboard.TAG_PROGRESS_CHOICE_MAP, progressChoiceMap.toString());
 		
-		StringStringMap commentsMap = new StringStringMap();
+		CodeStringMap commentsMap = new CodeStringMap();
 		commentsMap.put(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE, "Some randome user comment");
 		fillObjectUsingCommand(dashboardRef, Dashboard.TAG_COMMENTS_MAP, commentsMap.toString());
 

@@ -39,10 +39,13 @@ import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objecthelpers.CodeStringMap;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.ExpenseAssignment;
+import org.miradi.objects.Indicator;
+import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResourceAssignment;
@@ -51,6 +54,7 @@ import org.miradi.objects.Target;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.project.TestSimpleThreatRatingFramework;
 import org.miradi.project.TestStressBasedThreatRatingFramework;
+import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.questions.TncOperatingUnitsQuestion;
 import org.miradi.utils.CodeList;
@@ -72,6 +76,17 @@ public class TestXmpzExporter extends TestCaseWithProject
 	
 	public void testValidateEmptyProject() throws Exception
 	{
+		validateProject();
+	}
+	
+	public void testNonEncodedThresholdValue() throws Exception
+	{
+		KeyEcologicalAttribute kea = getProject().createKea();
+		Indicator indicator = getProject().createIndicator(kea);
+		
+		CodeStringMap threshold = new CodeStringMap();
+		threshold.put(StatusQuestion.POOR, "<>'\"&");
+		getProject().fillObjectUsingCommand(indicator, Indicator.TAG_INDICATOR_THRESHOLD, threshold.toString());
 		validateProject();
 	}
 	

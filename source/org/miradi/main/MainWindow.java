@@ -65,7 +65,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objecthelpers.StringStringMap;
+import org.miradi.objecthelpers.CodeStringMap;
 import org.miradi.objecthelpers.TwoLevelEntry;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.ExpenseAssignment;
@@ -847,7 +847,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 	private boolean areAnyProjectResourceFiltersOn() throws Exception
 	{
 		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), AbstractWorkPlanStringMapEditorDoer.getTabSpecificModelIdentifier());
-		StringStringMap tableSettingsMap = tableSettings.getTableSettingsMap();
+		CodeStringMap tableSettingsMap = tableSettings.getTableSettingsMap();
 		String refs = tableSettingsMap.get(TableSettings.WORK_PLAN_PROJECT_RESOURCE_FILTER_CODELIST_KEY);
 
 		return new ORefList(refs).size() > 0;
