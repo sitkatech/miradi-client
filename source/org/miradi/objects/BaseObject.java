@@ -75,7 +75,7 @@ import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.RelevancyOverrideSetData;
 import org.miradi.objecthelpers.CodeChoiceMap;
-import org.miradi.objecthelpers.StringCodeListMap;
+import org.miradi.objecthelpers.CodeCodeListMap;
 import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.objecthelpers.StringRefMapData;
 import org.miradi.objecthelpers.CodeStringMap;
@@ -286,7 +286,7 @@ abstract public class BaseObject
 		return ((CodeChoiceMapData)getField(tag)).getStringChoiceMap();
 	}
 	
-	protected StringCodeListMap getStringCodeListMapData(String tag)
+	protected CodeCodeListMap getStringCodeListMapData(String tag)
 	{
 		return ((StringCodeListMapData)getField(tag)).getStringCodeListMap();
 	}

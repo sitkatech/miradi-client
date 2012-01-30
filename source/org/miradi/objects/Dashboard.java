@@ -35,7 +35,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.CodeChoiceMap;
-import org.miradi.objecthelpers.StringCodeListMap;
+import org.miradi.objecthelpers.CodeCodeListMap;
 import org.miradi.objecthelpers.CodeStringMap;
 import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
 import org.miradi.objecthelpers.TimePeriodCosts;
@@ -1105,7 +1105,7 @@ public class Dashboard extends BaseObject
 		return getStringChoiceMapData(TAG_PROGRESS_CHOICE_MAP);
 	}
 
-	public StringCodeListMap getFlagsMap()
+	public CodeCodeListMap getFlagsMap()
 	{
 		return getStringCodeListMapData(TAG_FLAGS_MAP);
 	}

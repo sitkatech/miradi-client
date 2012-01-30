@@ -59,7 +59,7 @@ import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.RelevancyOverrideSetData;
 import org.miradi.objecthelpers.CodeChoiceMap;
-import org.miradi.objecthelpers.StringCodeListMap;
+import org.miradi.objecthelpers.CodeCodeListMap;
 import org.miradi.objecthelpers.CodeStringMap;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
@@ -247,7 +247,7 @@ public class ObjectTestCase extends TestCaseWithProject
 		}
 		else if (field instanceof StringCodeListMapData)
 		{
-			StringCodeListMap map = new StringCodeListMap();
+			CodeCodeListMap map = new CodeCodeListMap();
 			CodeList randomCodes = new CodeList();
 			randomCodes.add("SomeCodeA");
 			randomCodes.add("SomeCodeB");
