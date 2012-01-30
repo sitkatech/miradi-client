@@ -102,7 +102,7 @@ abstract public class ObjectData
 		return false;
 	}
 	
-	public boolean isStringChoiceMapData()
+	public boolean isCodeChoiceMapData()
 	{
 		return false;
 	}
