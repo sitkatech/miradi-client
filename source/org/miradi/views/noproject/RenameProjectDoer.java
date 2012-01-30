@@ -22,11 +22,13 @@ package org.miradi.views.noproject;
 import java.io.File;
 import java.io.IOException;
 
+
 import org.miradi.legacyprojects.LegacyProjectUtilities;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
 import org.miradi.utils.ModalRenameDialog;
+import org.miradi.utils.Utility;
 import org.miradi.wizard.noproject.WelcomeCreateStep;
 
 public class RenameProjectDoer
@@ -56,7 +58,13 @@ public class RenameProjectDoer
 		}
 	}
 	
-	private static String getLegalProjectNameFromUser(MainWindow mainWindow, String projectName) throws Exception
+	public static String getValidatedUserProjectName(MainWindow mainWindow, File fileToImport) throws Exception
+	{
+		String projectName = Utility.getFileNameWithoutExtension(fileToImport.getName());
+		return getLegalProjectNameFromUser(mainWindow, projectName);
+	}
+
+	public static String getLegalProjectNameFromUser(MainWindow mainWindow, String projectName) throws Exception
 	{
 		while (true)
 		{
