@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-30 12:36-0600\n"
+"POT-Creation-Date: 2012-01-30 13:19-0600\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -1044,10 +1044,10 @@ msgstr ""
 msgid "A file or folder with that name already exists"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:45
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:72
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:57
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:94
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:48
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:81
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:55
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:86
 msgid "A project or file by this name already exists: "
 msgstr "Проект або файл під цим іменем уже існує:"
 
@@ -3416,8 +3416,8 @@ msgstr ""
 msgid "Enter As: "
 msgstr ""
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:103
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:125
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:112
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:117
 msgid "Enter New Name"
 msgstr "Уведіть нову назву"
 
@@ -4295,8 +4295,8 @@ msgstr "Інтродукована рослинність"
 msgid "Introduction"
 msgstr "Вступ"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:78
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:100
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:87
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:92
 msgid "Invalid project name:"
 msgstr "Не дійсна назва проекту:"
 
@@ -5835,8 +5835,8 @@ msgstr "Відповідні Стратегії та Дії"
 msgid "Remove Team Member"
 msgstr "Видалити виконавця"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:55
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:67
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:58
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:65
 msgid "Rename Failed"
 msgstr "Не вдалося перейменувати "
 
@@ -8105,7 +8105,7 @@ msgstr "Неможливо опрацювати файл: перевірте ф�
 msgid "Unable to process request: "
 msgstr "Неможливо виконати вимогу:"
 
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:42
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:40
 msgid ""
 "Unable to rename this project because it is in use by another copy of this "
 "application:\n"
