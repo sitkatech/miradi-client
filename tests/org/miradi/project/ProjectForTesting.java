@@ -40,7 +40,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.CodeChoiceMap;
-import org.miradi.objecthelpers.StringCodeListMap;
+import org.miradi.objecthelpers.CodeCodeListMap;
 import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.objecthelpers.CodeStringMap;
 import org.miradi.objecthelpers.TimePeriodCosts;
@@ -1463,7 +1463,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		commentsMap.put(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE, "Some randome user comment");
 		fillObjectUsingCommand(dashboardRef, Dashboard.TAG_COMMENTS_MAP, commentsMap.toString());
 
-		StringCodeListMap flagsMap = new StringCodeListMap();
+		CodeCodeListMap flagsMap = new CodeCodeListMap();
 		CodeList flags = new CodeList();
 		flags.add(DashboardFlagsQuestion.NEEDS_ATTENTION_CODE);
 		flagsMap.put(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE, flags.toString());
