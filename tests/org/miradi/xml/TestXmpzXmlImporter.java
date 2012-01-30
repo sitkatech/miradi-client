@@ -33,7 +33,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
-import org.miradi.objecthelpers.StringChoiceMap;
+import org.miradi.objecthelpers.CodeChoiceMap;
 import org.miradi.objects.BudgetCategoryOne;
 import org.miradi.objects.BudgetCategoryTwo;
 import org.miradi.objects.Cause;
@@ -136,7 +136,7 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 	{
 		getProject().createTarget();
 		final String codeToSetToManual = OpenStandardsConceptualizeQuestion.SELECT_CONSERVATION_TARGETS_CODE;
-		StringChoiceMap choiceMap = new StringChoiceMap();
+		CodeChoiceMap choiceMap = new CodeChoiceMap();
 		choiceMap.put(codeToSetToManual, OpenStandardsProgressStatusQuestion.IN_PROGRESS_CODE);
 		getProject().fillObjectUsingCommand(getDashboard(), Dashboard.TAG_PROGRESS_CHOICE_MAP, choiceMap.toString());
 
@@ -150,7 +150,7 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 		CodeList allCodes = question.getAllCodes();
 		for (int index = 0; index < allCodes.size(); ++index)
 		{
-			StringChoiceMap choiceMap = new StringChoiceMap();
+			CodeChoiceMap choiceMap = new CodeChoiceMap();
 			choiceMap.put(thirdLevelCode, allCodes.get(index));
 			getProject().fillObjectUsingCommand(dashboard, Dashboard.TAG_PROGRESS_CHOICE_MAP, choiceMap.toString());
 			validateUsingStringWriter();

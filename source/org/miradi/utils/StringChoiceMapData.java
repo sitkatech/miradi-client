@@ -21,7 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.utils;
 
 import org.miradi.objectdata.ObjectData;
-import org.miradi.objecthelpers.StringChoiceMap;
+import org.miradi.objecthelpers.CodeChoiceMap;
 
 public class StringChoiceMapData extends ObjectData
 {
@@ -29,7 +29,7 @@ public class StringChoiceMapData extends ObjectData
 	{
 		super(tagToUse);
 		
-		data = new StringChoiceMap();
+		data = new CodeChoiceMap();
 	}
 
 	@Override
@@ -38,7 +38,7 @@ public class StringChoiceMapData extends ObjectData
 		return getStringChoiceMap().toString();
 	}
 	
-	public StringChoiceMap getStringChoiceMap()
+	public CodeChoiceMap getStringChoiceMap()
 	{
 		return data;
 	}
@@ -46,7 +46,7 @@ public class StringChoiceMapData extends ObjectData
 	@Override
 	public void set(String newValue) throws Exception
 	{
-		data = new StringChoiceMap(newValue);
+		data = new CodeChoiceMap(newValue);
 	}
 
 	@Override
@@ -71,5 +71,5 @@ public class StringChoiceMapData extends ObjectData
 		return true;
 	}
 	
-	private StringChoiceMap data;
+	private CodeChoiceMap data;
 }

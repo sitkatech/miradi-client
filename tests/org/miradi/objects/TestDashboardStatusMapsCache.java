@@ -24,7 +24,7 @@ import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.AbstractStringKeyMap;
 import org.miradi.objecthelpers.DashboardStatusMapsCache;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.StringChoiceMap;
+import org.miradi.objecthelpers.CodeChoiceMap;
 import org.miradi.questions.OpenStandardsConceptualizeQuestion;
 import org.miradi.questions.OpenStandardsProgressStatusQuestion;
 import org.miradi.questions.OpenStandardsImplementActionsAndMonitoringQuestion;
@@ -39,9 +39,9 @@ public class TestDashboardStatusMapsCache extends TestCaseWithProject
 	
 	public void testValidCalculatedStatusCacheWithNoData() throws Exception
 	{
-		StringChoiceMap createEmptyStringChoiceMap = createStringChoiceMapForEmptyProject();
+		CodeChoiceMap createEmptyStringChoiceMap = createStringChoiceMapForEmptyProject();
 		getDashboardStatusMapsCache().invalidateAllCachedMaps();
-		StringChoiceMap calculatedStatusMap = getDashboardStatusMapsCache().getCalculatedStatusMap();
+		CodeChoiceMap calculatedStatusMap = getDashboardStatusMapsCache().getCalculatedStatusMap();
 		
 		assertEquals("empty dashboard should not have status?",createEmptyStringChoiceMap , calculatedStatusMap);		
 	}
@@ -67,8 +67,8 @@ public class TestDashboardStatusMapsCache extends TestCaseWithProject
 
 	public void testGetEffectiveStatusMapWithNoData() throws Exception
 	{
-		StringChoiceMap createEmptyStringChoiceMap = createStringChoiceMapForEmptyProject();
-		StringChoiceMap effectiveStatusMap = getEffectiveStatusMap();
+		CodeChoiceMap createEmptyStringChoiceMap = createStringChoiceMapForEmptyProject();
+		CodeChoiceMap effectiveStatusMap = getEffectiveStatusMap();
 		
 		assertEquals("empty dashboard should not have status?",createEmptyStringChoiceMap , effectiveStatusMap);
 	}
@@ -103,35 +103,35 @@ public class TestDashboardStatusMapsCache extends TestCaseWithProject
 
 	private void verifyEffectiveStatus(final String thirdLevelRowCode, String expectedCode) throws Exception
 	{
-		StringChoiceMap mapAsString = getEffectiveStatusMap();
+		CodeChoiceMap mapAsString = getEffectiveStatusMap();
 		verifyCodeInMap(mapAsString, thirdLevelRowCode, expectedCode);
 	}
 	
 	private void verifyCalculatedStatusCode(final String thirdLevelRowCode, String expectedProgressCode) throws Exception
 	{
-		StringChoiceMap mapAsString = getDashboardStatusMapsCache().getCalculatedStatusMap();
+		CodeChoiceMap mapAsString = getDashboardStatusMapsCache().getCalculatedStatusMap();
 		verifyCodeInMap(mapAsString, thirdLevelRowCode, expectedProgressCode);
 	}
 
-	private void verifyCodeInMap(StringChoiceMap mapAsString, final String thirdLevelRowCode, String expectedProgressCode)
+	private void verifyCodeInMap(CodeChoiceMap mapAsString, final String thirdLevelRowCode, String expectedProgressCode)
 	{
-		StringChoiceMap map = new StringChoiceMap(mapAsString);
+		CodeChoiceMap map = new CodeChoiceMap(mapAsString);
 		String calculatedStatusCode = map.get(thirdLevelRowCode);
 
 		assertEquals("Incorrect status code?", expectedProgressCode, calculatedStatusCode);
 	}
 	
-	private StringChoiceMap getEffectiveStatusMap() throws Exception
+	private CodeChoiceMap getEffectiveStatusMap() throws Exception
 	{
 		getDashboardStatusMapsCache().invalidateAllCachedMaps();
 
 		return getDashboardStatusMapsCache().getEffectiveMap();
 	}
 	
-	private StringChoiceMap createStringChoiceMapForEmptyProject()
+	private CodeChoiceMap createStringChoiceMapForEmptyProject()
 	{
 		CodeList allThirdLEvelCodes = getDashboard().getDashboardRowDefinitionManager().getThirdLevelCodes();
-		StringChoiceMap emptyMap = new StringChoiceMap();
+		CodeChoiceMap emptyMap = new CodeChoiceMap();
 		for (int index = 0; index < allThirdLEvelCodes.size(); ++index)
 		{
 			String thirdLevelCode = allThirdLEvelCodes.get(index);
@@ -162,7 +162,7 @@ public class TestDashboardStatusMapsCache extends TestCaseWithProject
 	
 	private void putUserChoice(final String thirdLevelCode, final String progressCode) throws Exception
 	{
-		StringChoiceMap userMap = new StringChoiceMap();
+		CodeChoiceMap userMap = new CodeChoiceMap();
 		userMap.put(thirdLevelCode, progressCode);
 		getDashboard().setData(Dashboard.TAG_PROGRESS_CHOICE_MAP, userMap.toString());
 	}

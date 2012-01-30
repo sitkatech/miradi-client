@@ -24,24 +24,24 @@ import java.text.ParseException;
 
 import org.miradi.utils.EnhancedJsonObject;
 
-public class StringChoiceMap extends AbstractStringKeyMap
+public class CodeChoiceMap extends AbstractStringKeyMap
 {
-	public StringChoiceMap()
+	public CodeChoiceMap()
 	{
 		super();
 	}
 	
-	public StringChoiceMap(StringChoiceMap copyFrom)
+	public CodeChoiceMap(CodeChoiceMap copyFrom)
 	{
 		super(copyFrom);
 	}
 
-	public StringChoiceMap(EnhancedJsonObject json)
+	public CodeChoiceMap(EnhancedJsonObject json)
 	{
 		super(json);
 	}
 	
-	public StringChoiceMap(String mapAsJsonString) throws ParseException
+	public CodeChoiceMap(String mapAsJsonString) throws ParseException
 	{
 		super(mapAsJsonString);
 	}
@@ -55,10 +55,10 @@ public class StringChoiceMap extends AbstractStringKeyMap
 	@Override
 	public boolean equals(Object rawOther)
 	{
-		if(!(rawOther instanceof StringChoiceMap))
+		if(!(rawOther instanceof CodeChoiceMap))
 			return false;
 
-		StringChoiceMap other = (StringChoiceMap) rawOther;
+		CodeChoiceMap other = (CodeChoiceMap) rawOther;
 		return data.equals(other.data);
 	}
 	
