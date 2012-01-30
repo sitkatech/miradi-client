@@ -28,6 +28,7 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
 import org.miradi.utils.ModalRenameDialog;
+import org.miradi.utils.MpfFileFilter;
 import org.miradi.utils.Utility;
 import org.miradi.wizard.noproject.WelcomeCreateStep;
 
@@ -74,7 +75,7 @@ public class RenameProjectDoer
 				return null;
 			}
 			
-			File newFile = new File(EAM.getHomeDirectory(), projectName);
+			File newFile = new File(EAM.getHomeDirectory(), projectName + MpfFileFilter.EXTENSION);
 			if (projectExists(newFile))
 			{
 				EAM.errorDialog(EAM.text("A project or file by this name already exists: ") + projectName);
