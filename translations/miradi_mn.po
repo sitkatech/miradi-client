@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-30 12:36-0600\n"
+"POT-Creation-Date: 2012-01-30 13:19-0600\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -1041,10 +1041,10 @@ msgstr ""
 msgid "A file or folder with that name already exists"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:45
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:72
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:57
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:94
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:48
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:81
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:55
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:86
 msgid "A project or file by this name already exists: "
 msgstr "Ийм нэр бүхий төсөл эсвэл файл байна:"
 
@@ -3413,8 +3413,8 @@ msgstr "Дуусгах:"
 msgid "Enter As: "
 msgstr "-ээр орох: "
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:103
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:125
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:112
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:117
 msgid "Enter New Name"
 msgstr "Шинэ нэр өгөх"
 
@@ -4298,8 +4298,8 @@ msgstr "Introduced Vegetation"
 msgid "Introduction"
 msgstr "Товч танилцуулга"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:78
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:100
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:87
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:92
 msgid "Invalid project name:"
 msgstr "Төслийн нэр танигдахгүй:"
 
@@ -5835,8 +5835,8 @@ msgstr "Холбогдох стратеги ба үйл ажиллагаа"
 msgid "Remove Team Member"
 msgstr "Багийн гишүүнийг хасах"
 
-#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:55
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:67
+#: Miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:58
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:65
 msgid "Rename Failed"
 msgstr "Нэр солих амжилтгүй болсон"
 
@@ -8135,7 +8135,7 @@ msgstr "Файлыг боловсруулж чадахгүй байна: фай�
 msgid "Unable to process request: "
 msgstr "Хүсэлтийг боловсруулж чадахгүй байна:"
 
-#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:42
+#: Miradi/source/org/miradi/views/noproject/RenameOldProjectDoer.java:40
 msgid ""
 "Unable to rename this project because it is in use by another copy of this "
 "application:\n"
