@@ -228,7 +228,7 @@ public class RtfFormExporter
 		if (rawObjectData.isChoiceItemData())
 			return createFromChoiceData(rawObjectData);
 		
-		if (rawObjectData.isStringMapData())
+		if (rawObjectData.isCodeStringMapData())
 			return createFromStringMapData((CodeStringMapData) rawObjectData, formRow);
 	
 		return rawObjectData.get();
