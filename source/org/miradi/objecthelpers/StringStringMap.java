@@ -19,13 +19,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objecthelpers;
 
-import java.io.IOException;
 import java.text.ParseException;
-import java.util.Set;
 
-import org.martus.util.UnicodeWriter;
 import org.miradi.utils.EnhancedJsonObject;
-import org.miradi.utils.XmlUtilities2;
 
 public class StringStringMap extends AbstractStringKeyMap
 {
@@ -53,24 +49,6 @@ public class StringStringMap extends AbstractStringKeyMap
 	protected String getMapTag()
 	{
 		return TAG_STRING_MAP;
-	}
-
-	public void toXml(UnicodeWriter out) throws IOException
-	{
-		out.writeln("<StringMap>");
-		Set<String> keys = data.keySet();
-		for(Object object : keys)
-		{
-			out.write("<Item code='" + XmlUtilities2.getXmlEncoded(object.toString()) + "'>");
-			out.write("<Value>");
-			
-			String rawValue = data.get(object.toString()).toString();
-			out.write(XmlUtilities2.getXmlEncoded(rawValue));
-			
-			out.write("</Value>");
-			out.writeln("</Item>");
-		}
-		out.writeln("</StringMap>");
 	}
 
 	@Override
