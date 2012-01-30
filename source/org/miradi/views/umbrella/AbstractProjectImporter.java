@@ -124,7 +124,7 @@ public abstract class AbstractProjectImporter
 			
 			fileToImport = fileToImportToUse;
 			projectName = projectNameToUse;
-			newProjectFile = new File(EAM.getHomeDirectory(), projectName + ".Miradi");
+			newProjectFile = new File(EAM.getHomeDirectory(), projectName);
 
 			if(!Project.isValidProjectFilename(projectName))
 				throw new Exception("Illegal project name: " + projectName);
