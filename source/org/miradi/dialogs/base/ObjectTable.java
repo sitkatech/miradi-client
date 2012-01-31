@@ -40,10 +40,9 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
-import org.miradi.utils.SortableRowTable;
 import org.miradi.views.umbrella.ObjectPicker;
 
-abstract public class ObjectTable extends SortableRowTable implements ObjectPicker, RowColumnBaseObjectProvider
+abstract public class ObjectTable extends EditableObjectTable implements ObjectPicker, RowColumnBaseObjectProvider
 {
 	public ObjectTable(MainWindow mainWindowToUse, ObjectTableModel modelToUse)
 	{
@@ -105,11 +104,13 @@ abstract public class ObjectTable extends SortableRowTable implements ObjectPick
 		return (ObjectTableModel)getModel();
 	}
 	
+	@Override
 	public TreeTableNode[] getSelectedTreeNodes()
 	{
 		return null;
 	}
 	
+	@Override
 	public BaseObject[] getSelectedObjects()
 	{
 		ORefList[] selectedHierarchies = getSelectedHierarchies();
@@ -127,6 +128,7 @@ abstract public class ObjectTable extends SortableRowTable implements ObjectPick
 		return selectedObjects.toArray(new BaseObject[0]);
 	}
 	
+	@Override
 	public ORefList getSelectionHierarchy()
 	{
 		ORefList[] selectedHierarchies = getSelectedHierarchies();
@@ -135,6 +137,7 @@ abstract public class ObjectTable extends SortableRowTable implements ObjectPick
 		return selectedHierarchies[0];
 	}
 	
+	@Override
 	public ORefList[] getSelectedHierarchies()
 	{
 		int[] rows = getSelectedRows();
@@ -162,43 +165,52 @@ abstract public class ObjectTable extends SortableRowTable implements ObjectPick
 		throw new RuntimeException("areBudgetValuesAllocated has not been implemented by ObjectTableModel");
 	}
 
+	@Override
 	public void ensureOneCopyOfObjectSelectedAndVisible(ORef ref)
 	{
 		setSelectedRow(ref);
 	}
 
+	@Override
 	public void addSelectionChangeListener(ListSelectionListener listener)
 	{
 		selectionListeners.add(listener);
 	}
 
+	@Override
 	public void removeSelectionChangeListener(ListSelectionListener listener)
 	{
 		selectionListeners.remove(listener);
 	}
 	
+	@Override
 	public void expandTo(int typeToExpandTo) throws Exception
 	{
 	}
 	
+	@Override
 	public void expandAll() throws Exception
 	{
 	}
 	
+	@Override
 	public void collapseAll() throws Exception
 	{	
 	}
 
+	@Override
 	public boolean isActive()
 	{
 		return isActive;
 	}
 	
+	@Override
 	public void becomeActive()
 	{
 		isActive = true;
 	}
 
+	@Override
 	public void becomeInactive()
 	{
 		isActive = false;
