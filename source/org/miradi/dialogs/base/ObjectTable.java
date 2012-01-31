@@ -33,7 +33,6 @@ import org.miradi.dialogs.tablerenderers.CodeListRendererFactory;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
 import org.miradi.dialogs.tablerenderers.MultiLineObjectTableCellRendererOnlyFactory;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
-import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.ids.BaseId;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
@@ -100,12 +99,6 @@ abstract public class ObjectTable extends EditableObjectTable implements ObjectP
 	public ObjectTableModel getObjectTableModel()
 	{
 		return (ObjectTableModel)getModel();
-	}
-	
-	@Override
-	public TreeTableNode[] getSelectedTreeNodes()
-	{
-		return null;
 	}
 	
 	@Override
