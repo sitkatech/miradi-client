@@ -59,7 +59,6 @@ public class TeamPoolTable extends ObjectPoolTable
 		CodeList codesToDisable = new CodeList(new String[] {ResourceRoleQuestion.TEAM_MEMBER_ROLE_CODE});
 		QuestionPopupEditorTableCellEditorFactory editorFactory = new QuestionPopupEditorTableCellEditorFactory(getMainWindow(), this, ProjectResource.TAG_ROLE_CODES, question, codesToDisable);
 		TableColumn column = getColumnModel().getColumn(tableColumn);
-		column.setCellRenderer(codeListRenderer);
 		column.setCellEditor(editorFactory);
 	}
 }

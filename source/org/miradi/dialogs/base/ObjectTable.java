@@ -220,5 +220,5 @@ abstract public class ObjectTable extends EditableObjectTable implements ObjectP
 	
 	private ChoiceItemTableCellRendererFactory statusQuestionRenderer;
 	private BasicTableCellEditorOrRendererFactory otherRenderer;
-	protected CodeListRendererFactory codeListRenderer;
+	private CodeListRendererFactory codeListRenderer;
 }
