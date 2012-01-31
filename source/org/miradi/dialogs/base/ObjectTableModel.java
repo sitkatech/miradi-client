@@ -31,7 +31,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.utils.CodeList;
 
-abstract public class ObjectTableModel extends AbstractObjectTableModel
+abstract public class ObjectTableModel extends EditableObjectTableModel
 {
 	public ObjectTableModel(Project projectToUse, int listedItemType, String[] tableColumnTags)
 	{
@@ -138,6 +138,7 @@ abstract public class ObjectTableModel extends AbstractObjectTableModel
 		setValueUsingCommand(rowObjectRef, columnTag, value.toString());
 	}
 	
+	@Override
 	public void setValueUsingCommand(ORef  refToUse, String fieldTag, String valueToSave)
 	{
 		try
@@ -228,6 +229,12 @@ abstract public class ObjectTableModel extends AbstractObjectTableModel
 	public BaseObject getBaseObjectForRowColumn(int row, int column)
 	{
 		return getObjectFromRow(row);
+	}
+	
+	@Override
+	public void setObjectRefs(ORefList hierarchyToSelectedRef)
+	{
+		throw new RuntimeException("Method should not be called!");
 	}
 	
 	abstract public ORefList getLatestRefListFromProject();
