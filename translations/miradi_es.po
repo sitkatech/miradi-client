@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-31 10:01-0600\n"
+"POT-Creation-Date: 2012-01-31 11:58-0600\n"
 "PO-Revision-Date: 2011-03-28 15:06-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -299,7 +299,7 @@ msgid "(Definition Not Available)"
 msgstr "(Definición no disponible)"
 
 #: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:118
-#: Miradi/source/org/miradi/dialogs/base/ObjectTableModel.java:124
+#: Miradi/source/org/miradi/dialogs/base/ObjectTableModel.java:118
 msgid "(Error)"
 msgstr "(Error)"
 
@@ -5685,7 +5685,7 @@ msgid "Project Plan For "
 msgstr "Plan de proyecto para "
 
 #: Miradi/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:47
-#: Miradi/source/org/miradi/dialogs/tablerenderers/WhoColumnTableCellEditorFactory.java:47
+#: Miradi/source/org/miradi/dialogs/tablerenderers/WhoColumnTableCellEditorFactory.java:46
 msgid "Project Resource"
 msgstr "Recurso del proyecto"
 
@@ -7510,6 +7510,10 @@ msgstr "Miembro del equipo "
 
 #: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:195
 msgid "Team Members: %1"
+msgstr ""
+
+#: Miradi/source/org/miradi/dialogs/tablerenderers/QuestionPopupEditorTableCellEditorFactory.java:51
+msgid "Team Roles"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:81
