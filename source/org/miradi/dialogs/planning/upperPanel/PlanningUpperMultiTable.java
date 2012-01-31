@@ -50,7 +50,7 @@ import org.miradi.dialogs.tablerenderers.MultiLineObjectTableCellRendererOnlyFac
 import org.miradi.dialogs.tablerenderers.NumericTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.PlanningViewFontProvider;
 import org.miradi.dialogs.tablerenderers.ProgressTableCellRendererFactory;
-import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
+import org.miradi.dialogs.tablerenderers.RowColumnSelectionProvider;
 import org.miradi.dialogs.tablerenderers.WhenTableCellPopupEditorOrRendererFactory;
 import org.miradi.dialogs.tablerenderers.WhoColumnTableCellEditorFactory;
 import org.miradi.main.MainWindow;
@@ -60,7 +60,7 @@ import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.DoubleClickAutoSelectCellEditor;
 import org.miradi.utils.TableWithColumnWidthAndSequenceSaver;
 
-public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSaver implements RowColumnBaseObjectProvider, RightClickActionProvider, TableWithExpandableColumnsInterface
+public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSaver implements RowColumnSelectionProvider, RightClickActionProvider, TableWithExpandableColumnsInterface
 {
 	public PlanningUpperMultiTable(MainWindow mainWindowToUse, PlanningTreeTable masterTreeToUse, PlanningTreeMultiTableModel model)
 	{
