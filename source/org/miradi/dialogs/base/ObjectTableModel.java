@@ -129,15 +129,14 @@ abstract public class ObjectTableModel extends EditableObjectTableModel
 		
 		final ORef rowObjectRef = getRowObjectRefs().get(row);
 		final String columnTag = getColumnTag(column);
+		String valueToSave = value.toString();
 		if (isChoiceItemColumn(column))
 		{
 			final ChoiceItem choiceItem = (ChoiceItem) value;
-			setValueUsingCommand(rowObjectRef, columnTag, choiceItem.getCode().toString());
+			valueToSave = choiceItem.getCode().toString();
 		}
-		else
-		{
-			setValueUsingCommand(rowObjectRef, columnTag, value.toString());
-		}
+		
+		setValueUsingCommand(rowObjectRef, columnTag, valueToSave);
 	}
 	
 	public String getValueToDisplay(ORef rowObjectRef, String tag)
