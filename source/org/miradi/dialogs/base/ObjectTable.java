@@ -166,7 +166,7 @@ abstract public class ObjectTable extends EditableObjectTable implements ObjectP
 		return getObjectTableModel().getObjectFromRow(row);
 	}
 	
-	int findRowObject(BaseId id)
+	private int findRowObject(BaseId id)
 	{
 		return getObjectTableModel().findRowObject(id);
 	}
