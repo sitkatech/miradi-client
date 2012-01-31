@@ -41,9 +41,6 @@ abstract public class ObjectTableModel extends EditableObjectTableModel
 	@Override
 	public boolean isCellEditable(int row, int column)
 	{
-		if (isCodeListColumn(column))
-			return false;
-		
 		if (isPseudoFieldColumn(column))
 			return false;
 		
@@ -129,6 +126,9 @@ abstract public class ObjectTableModel extends EditableObjectTableModel
 		
 		final ORef rowObjectRef = getRowObjectRefs().get(row);
 		final String columnTag = getColumnTag(column);
+		if (value == null)
+			return;
+		
 		String valueToSave = value.toString();
 		if (isChoiceItemColumn(column))
 		{

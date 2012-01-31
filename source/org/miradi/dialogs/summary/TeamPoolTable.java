@@ -19,14 +19,47 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.summary;
 
+import javax.swing.table.TableColumn;
+
 import org.miradi.dialogs.base.ObjectPoolTable;
 import org.miradi.dialogs.base.ObjectPoolTableModel;
+import org.miradi.dialogs.base.ObjectTableModel;
+import org.miradi.dialogs.tablerenderers.QuestionPopupEditorTableCellEditorFactory;
 import org.miradi.main.MainWindow;
+import org.miradi.objects.ProjectResource;
+import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.ResourceRoleQuestion;
+import org.miradi.questions.StaticQuestionManager;
+import org.miradi.utils.CodeList;
 
 public class TeamPoolTable extends ObjectPoolTable
 {
 	public TeamPoolTable(MainWindow mainWindowToUse, ObjectPoolTableModel modelToUse)
 	{
 		super(mainWindowToUse, modelToUse);
+	}
+	
+	@Override
+	public void rebuildColumnEditorsAndRenderers()
+	{
+		super.rebuildColumnEditorsAndRenderers();
+		
+		ObjectTableModel model = getObjectTableModel();
+		for (int tableColumn = 0; tableColumn < model.getColumnCount(); ++tableColumn)
+		{
+			int modelColumn = convertColumnIndexToModel(tableColumn);
+			if (model.isCodeListColumn(modelColumn))
+				createCodeListColumn(model.getColumnQuestion(modelColumn), tableColumn);
+		}
+	}
+	
+	private void createCodeListColumn(ChoiceQuestion columnQuestion, int tableColumn)
+	{
+		ChoiceQuestion question = StaticQuestionManager.getQuestion(ResourceRoleQuestion.class);
+		CodeList codesToDisable = new CodeList(new String[] {ResourceRoleQuestion.TEAM_MEMBER_ROLE_CODE});
+		QuestionPopupEditorTableCellEditorFactory editorFactory = new QuestionPopupEditorTableCellEditorFactory(getMainWindow(), this, ProjectResource.TAG_ROLE_CODES, question, codesToDisable);
+		TableColumn column = getColumnModel().getColumn(tableColumn);
+		column.setCellRenderer(codeListRenderer);
+		column.setCellEditor(editorFactory);
 	}
 }

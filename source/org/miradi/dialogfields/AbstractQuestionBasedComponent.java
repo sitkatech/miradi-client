@@ -121,7 +121,7 @@ abstract public class AbstractQuestionBasedComponent extends AbstractDataValueLi
 		button.setEnabled(shouldBeEnabled);
 	}
 
-	private void disableCheckBoxes()
+	protected void disableCheckBoxes()
 	{
 		Set<ChoiceItem> choices = choiceItemToToggleButtonMap.keySet();
 		for(ChoiceItem choiceItem : choices)

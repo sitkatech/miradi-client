@@ -22,7 +22,6 @@ package org.miradi.dialogs.tablerenderers;
 
 import org.miradi.dialogfields.WhoCodeListEditorComponent;
 import org.miradi.dialogs.base.DisposablePanel;
-import org.miradi.dialogs.planning.upperPanel.PlanningUpperMultiTable;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
@@ -30,7 +29,7 @@ import org.miradi.questions.ProjectResourceQuestion;
 
 public class WhoColumnTableCellEditorFactory extends AbstractPopupTableCellEditorFactory
 {
-	public WhoColumnTableCellEditorFactory(MainWindow mainWindowToUse, PlanningUpperMultiTable tableToUse)
+	public WhoColumnTableCellEditorFactory(MainWindow mainWindowToUse, RowColumnSelectionProvider tableToUse)
 	{
 		super(mainWindowToUse, tableToUse);
 	}	
