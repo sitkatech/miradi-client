@@ -23,7 +23,6 @@ import java.awt.Rectangle;
 import java.util.Vector;
 
 import javax.swing.ListSelectionModel;
-import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.TableCellRenderer;
 
@@ -48,7 +47,6 @@ abstract public class ObjectTable extends EditableObjectTable implements ObjectP
 	{
 		super(mainWindowToUse, modelToUse, modelToUse.getUniqueTableModelIdentifier());
 		
-		selectionListeners = new Vector<ListSelectionListener>();
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
 		resizeTable(4);
@@ -172,18 +170,6 @@ abstract public class ObjectTable extends EditableObjectTable implements ObjectP
 	}
 
 	@Override
-	public void addSelectionChangeListener(ListSelectionListener listener)
-	{
-		selectionListeners.add(listener);
-	}
-
-	@Override
-	public void removeSelectionChangeListener(ListSelectionListener listener)
-	{
-		selectionListeners.remove(listener);
-	}
-	
-	@Override
 	public void expandTo(int typeToExpandTo) throws Exception
 	{
 	}
@@ -238,26 +224,11 @@ abstract public class ObjectTable extends EditableObjectTable implements ObjectP
 		
 	}
 	
-	@Override
-	public void valueChanged(ListSelectionEvent e)
-	{
-		super.valueChanged(e);
-		if(selectionListeners == null)
-			return;
-		
-		for(int i = 0; i < selectionListeners.size(); ++i)
-		{
-			ListSelectionListener listener = selectionListeners.get(i);
-			listener.valueChanged(null);
-		}
-	}
-	
 	public ORefList getObjectHiearchy(int row, int column)
 	{
 		throw new RuntimeException("Method is currently unused and has no implementation");
 	}
 	
-	private Vector<ListSelectionListener> selectionListeners;
 	private ChoiceItemTableCellRendererFactory statusQuestionRenderer;
 	private BasicTableCellEditorOrRendererFactory otherRenderer;
 	private CodeListRendererFactory codeListRenderer;
