@@ -49,7 +49,6 @@ abstract public class ObjectTable extends EditableObjectTable implements ObjectP
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
 		resizeTable(4);
-		setAutoResizeMode(AUTO_RESIZE_OFF);
 		
 		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
 		statusQuestionRenderer = new ChoiceItemTableCellRendererFactory(this, fontProvider);
