@@ -41,9 +41,6 @@ abstract public class ObjectTableModel extends EditableObjectTableModel
 	@Override
 	public boolean isCellEditable(int row, int column)
 	{
-		if (isChoiceItemColumn(column))
-			return false;
-		
 		if (isCodeListColumn(column))
 			return false;
 		
@@ -130,9 +127,17 @@ abstract public class ObjectTableModel extends EditableObjectTableModel
 	{
 		super.setValueAt(value, row, column);
 		
-		ORef rowObjectRef = getRowObjectRefs().get(row);
-		String columnTag = getColumnTag(column);
-		setValueUsingCommand(rowObjectRef, columnTag, value.toString());
+		final ORef rowObjectRef = getRowObjectRefs().get(row);
+		final String columnTag = getColumnTag(column);
+		if (isChoiceItemColumn(column))
+		{
+			final ChoiceItem choiceItem = (ChoiceItem) value;
+			setValueUsingCommand(rowObjectRef, columnTag, choiceItem.getCode().toString());
+		}
+		else
+		{
+			setValueUsingCommand(rowObjectRef, columnTag, value.toString());
+		}
 	}
 	
 	public String getValueToDisplay(ORef rowObjectRef, String tag)

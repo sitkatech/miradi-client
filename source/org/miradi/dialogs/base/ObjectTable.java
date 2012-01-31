@@ -57,6 +57,18 @@ abstract public class ObjectTable extends EditableObjectTable implements ObjectP
 	}
 	
 	@Override
+	public void rebuildColumnEditorsAndRenderers()
+	{
+		ObjectTableModel model = getObjectTableModel();
+		for (int tableColumn = 0; tableColumn < model.getColumnCount(); ++tableColumn)
+		{
+			int modelColumn = convertColumnIndexToModel(tableColumn);
+			if (model.isChoiceItemColumn(modelColumn))
+				createComboQuestionColumn(model.getColumnQuestion(modelColumn), tableColumn);
+		}
+	}
+
+	@Override
 	public TableCellRenderer getCellRenderer(int row, int tableColumn)
 	{
 		int modelColumn = convertColumnIndexToModel(tableColumn);
