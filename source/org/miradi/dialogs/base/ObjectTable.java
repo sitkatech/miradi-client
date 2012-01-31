@@ -181,7 +181,7 @@ abstract public class ObjectTable extends EditableObjectTable implements ObjectP
 		updateIfRowObjectWasModified(cmd.getObjectType(), cmd.getObjectId());
 	}
 	
-	void updateIfRowObjectWasModified(int type, BaseId id)
+	private void updateIfRowObjectWasModified(int type, BaseId id)
 	{
 		if(type != getObjectTableModel().getRowObjectType())
 			return;
