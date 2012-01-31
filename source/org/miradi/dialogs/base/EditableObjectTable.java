@@ -53,7 +53,6 @@ import org.miradi.objects.BaseObject;
 import org.miradi.project.ObjectManager;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.StaticChoiceQuestion;
 import org.miradi.utils.SortableRowTable;
 import org.miradi.views.umbrella.ObjectPicker;
 
@@ -283,7 +282,7 @@ abstract public class EditableObjectTable extends SortableRowTable  implements O
 		}
 	}
 	
-	protected void createComboQuestionColumn(StaticChoiceQuestion question, int tableColumn)
+	protected void createComboQuestionColumn(ChoiceQuestion question, int tableColumn)
 	{
 		createComboColumn(question.getChoices(), tableColumn);
 	}
