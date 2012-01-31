@@ -19,9 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.base;
 
-import org.miradi.commands.Command;
-import org.miradi.commands.CommandSetObjectData;
-import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
@@ -138,20 +135,6 @@ abstract public class ObjectTableModel extends EditableObjectTableModel
 		setValueUsingCommand(rowObjectRef, columnTag, value.toString());
 	}
 	
-	@Override
-	public void setValueUsingCommand(ORef  refToUse, String fieldTag, String valueToSave)
-	{
-		try
-		{
-			Command command = new CommandSetObjectData(refToUse, fieldTag, valueToSave);
-			getProject().executeCommand(command);
-		}
-		catch(CommandFailedException e)
-		{
-			EAM.logException(e);
-		}
-	}
-
 	public String getValueToDisplay(ORef rowObjectRef, String tag)
 	{
 		return getProject().getObjectData(rowObjectRef, tag);
