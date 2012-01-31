@@ -198,24 +198,6 @@ abstract public class ObjectTable extends EditableObjectTable implements ObjectP
 	{	
 	}
 
-	@Override
-	public boolean isActive()
-	{
-		return isActive;
-	}
-	
-	@Override
-	public void becomeActive()
-	{
-		isActive = true;
-	}
-
-	@Override
-	public void becomeInactive()
-	{
-		isActive = false;
-	}
-
 	private BaseObject getObjectFromRow(int row)
 	{
 		return getObjectTableModel().getObjectFromRow(row);
@@ -279,5 +261,4 @@ abstract public class ObjectTable extends EditableObjectTable implements ObjectP
 	private ChoiceItemTableCellRendererFactory statusQuestionRenderer;
 	private BasicTableCellEditorOrRendererFactory otherRenderer;
 	private CodeListRendererFactory codeListRenderer;
-	private boolean isActive;
 }
