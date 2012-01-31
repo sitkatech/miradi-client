@@ -33,7 +33,6 @@ import javax.swing.table.TableCellEditor;
 import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.base.ModelessDialogWithClose;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
-import org.miradi.dialogs.planning.upperPanel.PlanningUpperMultiTable;
 import org.miradi.dialogs.treetables.ObjectTreeTable;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.MainWindow;
@@ -42,7 +41,7 @@ import org.miradi.project.Project;
 
 abstract public class AbstractPopupTableCellEditorFactory extends AbstractCellEditor implements TableCellEditor
 {
-	public AbstractPopupTableCellEditorFactory(MainWindow mainWindowToUse, PlanningUpperMultiTable tableToUse)
+	public AbstractPopupTableCellEditorFactory(MainWindow mainWindowToUse, RowColumnSelectionProvider tableToUse)
 	{
 		mainWindow = mainWindowToUse;
 		table = tableToUse;
@@ -96,7 +95,7 @@ abstract public class AbstractPopupTableCellEditorFactory extends AbstractCellEd
 		}
 	}
 	
-	private PlanningUpperMultiTable table;
+	private RowColumnSelectionProvider table;
 	private MainWindow mainWindow;
 	private MultiLineObjectTableCellRendererOnlyFactory rendererFactory;
 }
