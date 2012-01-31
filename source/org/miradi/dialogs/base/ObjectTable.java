@@ -32,7 +32,7 @@ import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.CodeListRendererFactory;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
 import org.miradi.dialogs.tablerenderers.MultiLineObjectTableCellRendererOnlyFactory;
-import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
+import org.miradi.dialogs.tablerenderers.RowColumnSelectionProvider;
 import org.miradi.ids.BaseId;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
@@ -40,7 +40,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.views.umbrella.ObjectPicker;
 
-abstract public class ObjectTable extends EditableObjectTable implements ObjectPicker, RowColumnBaseObjectProvider
+abstract public class ObjectTable extends EditableObjectTable implements ObjectPicker, RowColumnSelectionProvider
 {
 	public ObjectTable(MainWindow mainWindowToUse, ObjectTableModel modelToUse)
 	{
@@ -220,5 +220,5 @@ abstract public class ObjectTable extends EditableObjectTable implements ObjectP
 	
 	private ChoiceItemTableCellRendererFactory statusQuestionRenderer;
 	private BasicTableCellEditorOrRendererFactory otherRenderer;
-	private CodeListRendererFactory codeListRenderer;
+	protected CodeListRendererFactory codeListRenderer;
 }
