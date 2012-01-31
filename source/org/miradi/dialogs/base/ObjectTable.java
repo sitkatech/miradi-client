@@ -169,21 +169,6 @@ abstract public class ObjectTable extends EditableObjectTable implements ObjectP
 		setSelectedRow(ref);
 	}
 
-	@Override
-	public void expandTo(int typeToExpandTo) throws Exception
-	{
-	}
-	
-	@Override
-	public void expandAll() throws Exception
-	{
-	}
-	
-	@Override
-	public void collapseAll() throws Exception
-	{	
-	}
-
 	private BaseObject getObjectFromRow(int row)
 	{
 		return getObjectTableModel().getObjectFromRow(row);
