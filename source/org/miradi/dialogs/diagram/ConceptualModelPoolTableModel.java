@@ -28,7 +28,7 @@ public class ConceptualModelPoolTableModel extends DiagramObjectPoolTableModel
 {
 	public ConceptualModelPoolTableModel(Project projectToUse, int listedItemType)
 	{
-		super(projectToUse, listedItemType, getTags());
+		super(projectToUse, listedItemType);
 	}
 
 	@Override
@@ -50,11 +50,6 @@ public class ConceptualModelPoolTableModel extends DiagramObjectPoolTableModel
 	public String getUniqueTableModelIdentifier()
 	{
 		return UNIQUE_MODEL_IDENTIFIER;
-	}
-	
-	private static String[] getTags()
-	{
-		return new String[] {ConceptualModelDiagram.PSEUDO_COMBINED_LABEL};
 	}
 	
 	private static final String UNIQUE_MODEL_IDENTIFIER = "ConceptualModelPoolTableModel";

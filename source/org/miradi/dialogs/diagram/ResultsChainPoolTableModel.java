@@ -27,12 +27,7 @@ public class ResultsChainPoolTableModel extends DiagramObjectPoolTableModel
 {
 	public ResultsChainPoolTableModel(Project project)
 	{
-		super(project, ResultsChainDiagram.getObjectType(), getTags());
-	}
-	
-	private static String[] getTags()
-	{
-		return new String[] {ResultsChainDiagram.PSEUDO_COMBINED_LABEL};
+		super(project, ResultsChainDiagram.getObjectType());
 	}
 	
 	@Override

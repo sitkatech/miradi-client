@@ -26,9 +26,9 @@ import org.miradi.project.Project;
 
 abstract public class DiagramObjectPoolTableModel extends ObjectPoolTableModel
 {
-	public DiagramObjectPoolTableModel(Project projectToUse, int listedItemType, String[] columnTagsToUse)
+	public DiagramObjectPoolTableModel(Project projectToUse, int listedItemType)
 	{
-		super(projectToUse, listedItemType, columnTagsToUse);
+		super(projectToUse, listedItemType, getTags());
 	}
 	
 	@Override
@@ -39,5 +39,10 @@ abstract public class DiagramObjectPoolTableModel extends ObjectPoolTableModel
 			return true;
 
 		return super.isPseudoFieldColumn(column);
+	}
+	
+	private static String[] getTags()
+	{
+		return new String[] {ConceptualModelDiagram.PSEUDO_COMBINED_LABEL};
 	}
 }
