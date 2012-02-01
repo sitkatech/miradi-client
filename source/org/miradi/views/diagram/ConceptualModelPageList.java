@@ -22,21 +22,15 @@ package org.miradi.views.diagram;
 import org.miradi.dialogs.diagram.ConceptualModelPoolTableModel;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.ConceptualModelDiagram;
 
 
 public class ConceptualModelPageList extends DiagramPageList
 {
 	public ConceptualModelPageList(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, new ConceptualModelPoolTableModel(mainWindowToUse.getProject(), ObjectType.CONCEPTUAL_MODEL_DIAGRAM, getTags()));
+		super(mainWindowToUse, new ConceptualModelPoolTableModel(mainWindowToUse.getProject(), ObjectType.CONCEPTUAL_MODEL_DIAGRAM));
 	}
 
-	private static String[] getTags()
-	{
-		return new String[] {ConceptualModelDiagram.PSEUDO_COMBINED_LABEL};
-	}
-	
 	@Override
 	public boolean isConceptualModelPageList()
 	{

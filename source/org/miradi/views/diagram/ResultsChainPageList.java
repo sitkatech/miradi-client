@@ -22,20 +22,14 @@ package org.miradi.views.diagram;
 import org.miradi.dialogs.diagram.ResultsChainPoolTableModel;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.ResultsChainDiagram;
 
 public class ResultsChainPageList extends DiagramPageList
 {
 	public ResultsChainPageList(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, new ResultsChainPoolTableModel(mainWindowToUse.getProject(), getTags()));
+		super(mainWindowToUse, new ResultsChainPoolTableModel(mainWindowToUse.getProject()));
 	}
 	
-	private static String[] getTags()
-	{
-		return new String[] {ResultsChainDiagram.PSEUDO_COMBINED_LABEL};
-	}
-
 	@Override
 	public boolean isConceptualModelPageList()
 	{
