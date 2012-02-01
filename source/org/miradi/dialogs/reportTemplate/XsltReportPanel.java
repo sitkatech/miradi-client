@@ -22,7 +22,6 @@ package org.miradi.dialogs.reportTemplate;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 
@@ -34,6 +33,7 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
+import org.martus.util.UnicodeStringReader;
 import org.martus.util.UnicodeStringWriter;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.layout.TwoColumnPanel;
@@ -96,7 +96,9 @@ public class XsltReportPanel extends TwoColumnPanel
 			new XmpzXmlExporter(getProject()).exportProject(projectWriter);
 			projectWriter.flush();
 			final String projectXmlAsString = projectWriter.toString();
-			return new InputSource(new ByteArrayInputStream(projectXmlAsString.getBytes("utf-8")));
+			UnicodeStringReader reader = new UnicodeStringReader(projectXmlAsString);
+			
+			return new InputSource(reader);
 		}
 		finally
 		{
