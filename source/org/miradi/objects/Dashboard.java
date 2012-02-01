@@ -1102,12 +1102,12 @@ public class Dashboard extends BaseObject
 
 	public CodeChoiceMap getProgressChoiceMap()
 	{
-		return getStringChoiceMapData(TAG_PROGRESS_CHOICE_MAP);
+		return getCodeChoiceMapData(TAG_PROGRESS_CHOICE_MAP);
 	}
 
 	public CodeCodeListMap getFlagsMap()
 	{
-		return getStringCodeListMapData(TAG_FLAGS_MAP);
+		return getCodeCodeListMapData(TAG_FLAGS_MAP);
 	}
 
 	public static boolean is(BaseObject object)
