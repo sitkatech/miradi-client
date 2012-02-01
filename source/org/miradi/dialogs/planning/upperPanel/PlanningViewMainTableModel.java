@@ -123,7 +123,21 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		if (isWhenColumn(columnTag))
 			return isWhenCellEditable(row, modelColumn);
 		
-		return super.isCellEditable(row, modelColumn);
+		if (isChoiceItemColumn(modelColumn))
+			return false;
+		
+		if (isCodeListColumn(modelColumn))
+			return false;
+		
+		BaseObject baseObject = getBaseObjectForRow(row);
+		String tagForCell = getTagForCell(baseObject.getType(), modelColumn);
+		if (!baseObject.doesFieldExist(tagForCell))
+			return false;
+		
+		if (baseObject.isPseudoField(tagForCell))
+			return false;
+		
+		return true;
 	}
 
 	private boolean isWhoColumn(String columnTag)
@@ -226,8 +240,21 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	{
 		try
 		{
-			if (isWhenColumn(column) && value != null)
-				setWhenValue(getBaseObjectForRow(row), createCodeList(value));
+			final BaseObject baseObjectForRow = getBaseObjectForRow(row);
+			if (baseObjectForRow == null || baseObjectForRow.getRef().isInvalid())
+				return;
+			
+			if (value == null)
+				return;
+			
+			if (isWhenColumn(column))
+			{
+				setWhenValue(baseObjectForRow, createCodeList(value));
+			}
+			else
+			{
+				setValueUsingCommand(baseObjectForRow.getRef(), getTagForCell(baseObjectForRow.getType(), column), value.toString());
+			}
 		}
 		catch (Exception e)
 		{
@@ -383,6 +410,9 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			return true;
 		
 		if(columnTag.equals(CustomPlanningColumnsQuestion.META_CURRENT_RATING))
+			return true;
+		
+		if(columnTag.equals(ProjectResource.TAG_RESOURCE_TYPE))
 			return true;
 		
 		return false;
