@@ -72,7 +72,7 @@ public class Indicator extends BaseObject
 	
 	public CodeStringMap getThresholdDetails()
 	{
-		return getStringStringMapData(TAG_THRESHOLD_DETAILS);
+		return getCodeStringMapData(TAG_THRESHOLD_DETAILS);
 	}
 	
 	@Override
