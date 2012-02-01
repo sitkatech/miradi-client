@@ -281,12 +281,12 @@ abstract public class BaseObject
 		return ((CodeStringMapData)getField(tag)).getStringMap();
 	}
 	
-	protected CodeChoiceMap getStringChoiceMapData(String tag)
+	protected CodeChoiceMap getCodeChoiceMapData(String tag)
 	{
 		return ((CodeChoiceMapData)getField(tag)).getStringChoiceMap();
 	}
 	
-	protected CodeCodeListMap getStringCodeListMapData(String tag)
+	protected CodeCodeListMap getCodeCodeListMapData(String tag)
 	{
 		return ((CodeCodeListMapData)getField(tag)).getStringCodeListMap();
 	}
