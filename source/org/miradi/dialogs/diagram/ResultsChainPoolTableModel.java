@@ -20,11 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.diagram;
 
-import org.miradi.dialogs.base.ObjectPoolTableModel;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.project.Project;
 
-public class ResultsChainPoolTableModel extends ObjectPoolTableModel
+public class ResultsChainPoolTableModel extends DiagramObjectPoolTableModel
 {
 	public ResultsChainPoolTableModel(Project project)
 	{

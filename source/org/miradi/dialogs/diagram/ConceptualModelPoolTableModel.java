@@ -19,13 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.diagram;
 
-import org.miradi.dialogs.base.ObjectPoolTableModel;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.project.Project;
 
-public class ConceptualModelPoolTableModel extends ObjectPoolTableModel
+public class ConceptualModelPoolTableModel extends DiagramObjectPoolTableModel
 {
 	public ConceptualModelPoolTableModel(Project projectToUse, int listedItemType)
 	{
