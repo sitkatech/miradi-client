@@ -27,9 +27,9 @@ import org.miradi.project.Project;
 
 public class ConceptualModelPoolTableModel extends ObjectPoolTableModel
 {
-	public ConceptualModelPoolTableModel(Project projectToUse, int listedItemType, String[] columnTagsToUse)
+	public ConceptualModelPoolTableModel(Project projectToUse, int listedItemType)
 	{
-		super(projectToUse, listedItemType, columnTagsToUse);
+		super(projectToUse, listedItemType, getTags());
 	}
 
 	@Override
@@ -47,11 +47,25 @@ public class ConceptualModelPoolTableModel extends ObjectPoolTableModel
 		return ConceptualModelDiagram.DEFAULT_BLANK_NAME;
 	}
 	
+	@Override
+	public boolean isPseudoFieldColumn(int column)
+	{
+		String columnTag = getColumnTag(column);
+		if (columnTag.equals(ConceptualModelDiagram.PSEUDO_COMBINED_LABEL))
+			return true;
+
+		return super.isPseudoFieldColumn(column);
+	}
 	
 	@Override
 	public String getUniqueTableModelIdentifier()
 	{
 		return UNIQUE_MODEL_IDENTIFIER;
+	}
+	
+	private static String[] getTags()
+	{
+		return new String[] {ConceptualModelDiagram.PSEUDO_COMBINED_LABEL};
 	}
 	
 	private static final String UNIQUE_MODEL_IDENTIFIER = "ConceptualModelPoolTableModel";
