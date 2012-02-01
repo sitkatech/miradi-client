@@ -23,9 +23,9 @@ package org.miradi.utils;
 import org.miradi.objecthelpers.AbstractStringKeyMap;
 import org.miradi.objecthelpers.CodeChoiceMap;
 
-public class TestStringChoiceMap extends TestAbstractStringMap
+public class TestCodeChoiceMap extends TestAbstractStringMap
 {
-	public TestStringChoiceMap(String name)
+	public TestCodeChoiceMap(String name)
 	{
 		super(name);
 	}
