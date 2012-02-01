@@ -30,16 +30,6 @@ public class ResultsChainPoolTableModel extends DiagramObjectPoolTableModel
 		super(project, ResultsChainDiagram.getObjectType(), getTags());
 	}
 	
-	@Override
-	public boolean isPseudoFieldColumn(int column)
-	{
-		String columnTag = getColumnTag(column);
-		if (columnTag.equals(ResultsChainDiagram.PSEUDO_COMBINED_LABEL))
-			return true;
-
-		return super.isPseudoFieldColumn(column);
-	}
-	
 	private static String[] getTags()
 	{
 		return new String[] {ResultsChainDiagram.PSEUDO_COMBINED_LABEL};

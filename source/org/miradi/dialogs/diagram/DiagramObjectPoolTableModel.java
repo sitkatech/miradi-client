@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.diagram;
 
 import org.miradi.dialogs.base.ObjectPoolTableModel;
+import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.project.Project;
 
 abstract public class DiagramObjectPoolTableModel extends ObjectPoolTableModel
@@ -28,5 +29,15 @@ abstract public class DiagramObjectPoolTableModel extends ObjectPoolTableModel
 	public DiagramObjectPoolTableModel(Project projectToUse, int listedItemType, String[] columnTagsToUse)
 	{
 		super(projectToUse, listedItemType, columnTagsToUse);
+	}
+	
+	@Override
+	public boolean isPseudoFieldColumn(int column)
+	{
+		String columnTag = getColumnTag(column);
+		if (columnTag.equals(ConceptualModelDiagram.PSEUDO_COMBINED_LABEL))
+			return true;
+
+		return super.isPseudoFieldColumn(column);
 	}
 }

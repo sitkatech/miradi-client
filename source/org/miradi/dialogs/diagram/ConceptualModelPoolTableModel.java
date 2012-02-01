@@ -47,16 +47,6 @@ public class ConceptualModelPoolTableModel extends DiagramObjectPoolTableModel
 	}
 	
 	@Override
-	public boolean isPseudoFieldColumn(int column)
-	{
-		String columnTag = getColumnTag(column);
-		if (columnTag.equals(ConceptualModelDiagram.PSEUDO_COMBINED_LABEL))
-			return true;
-
-		return super.isPseudoFieldColumn(column);
-	}
-	
-	@Override
 	public String getUniqueTableModelIdentifier()
 	{
 		return UNIQUE_MODEL_IDENTIFIER;
