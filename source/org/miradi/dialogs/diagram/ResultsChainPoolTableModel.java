@@ -26,9 +26,24 @@ import org.miradi.project.Project;
 
 public class ResultsChainPoolTableModel extends ObjectPoolTableModel
 {
-	public ResultsChainPoolTableModel(Project project, String[] tags)
+	public ResultsChainPoolTableModel(Project project)
 	{
-		super(project, ResultsChainDiagram.getObjectType(), tags);
+		super(project, ResultsChainDiagram.getObjectType(), getTags());
+	}
+	
+	@Override
+	public boolean isPseudoFieldColumn(int column)
+	{
+		String columnTag = getColumnTag(column);
+		if (columnTag.equals(ResultsChainDiagram.PSEUDO_COMBINED_LABEL))
+			return true;
+
+		return super.isPseudoFieldColumn(column);
+	}
+	
+	private static String[] getTags()
+	{
+		return new String[] {ResultsChainDiagram.PSEUDO_COMBINED_LABEL};
 	}
 	
 	@Override
