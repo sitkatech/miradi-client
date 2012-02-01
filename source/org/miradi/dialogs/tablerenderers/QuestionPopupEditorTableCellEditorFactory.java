@@ -22,7 +22,6 @@ package org.miradi.dialogs.tablerenderers;
 
 import org.miradi.dialogfields.BaseObjectQuestionEditorComponent;
 import org.miradi.dialogs.base.DisposablePanel;
-import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
 import org.miradi.questions.ChoiceQuestion;
@@ -30,13 +29,14 @@ import org.miradi.utils.CodeList;
 
 public class QuestionPopupEditorTableCellEditorFactory extends AbstractPopupTableCellEditorFactory
 {
-	public QuestionPopupEditorTableCellEditorFactory(MainWindow mainWindowToUse, RowColumnSelectionProvider tableToUse, String tagToUse, ChoiceQuestion questionToUse, CodeList codesToDisableToUse)
+	public QuestionPopupEditorTableCellEditorFactory(MainWindow mainWindowToUse, RowColumnSelectionProvider tableToUse, String tagToUse, ChoiceQuestion questionToUse, CodeList codesToDisableToUse, String dialogTitleToUse)
 	{
 		super(mainWindowToUse, tableToUse);
 		
 		tag = tagToUse;
 		question = questionToUse;
 		codesToDisable = codesToDisableToUse;
+		dialogTitle = dialogTitleToUse;
 	}
 
 	@Override
@@ -48,10 +48,11 @@ public class QuestionPopupEditorTableCellEditorFactory extends AbstractPopupTabl
 	@Override
 	protected String getDialogTitle()
 	{
-		return EAM.text("Team Roles");
+		return dialogTitle;
 	}
 	
 	private String tag;
 	private ChoiceQuestion question;
 	private CodeList codesToDisable;
+	private String dialogTitle;
 }
