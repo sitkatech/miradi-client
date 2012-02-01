@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-01 13:18-0600\n"
+"POT-Creation-Date: 2012-02-01 13:56-0600\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -4607,7 +4607,7 @@ msgstr "Sifat-sifat Tautan "
 msgid "Lists"
 msgstr "Daftar "
 
-#: Miradi/source/org/miradi/dialogs/reportTemplate/XsltReportPanel.java:132
+#: Miradi/source/org/miradi/dialogs/reportTemplate/XsltReportPanel.java:134
 msgid "Load XSL"
 msgstr ""
 
@@ -6019,7 +6019,7 @@ msgstr "Pilih Lokasi… "
 msgid "Select Output File"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/reportTemplate/XsltReportPanel.java:132
+#: Miradi/source/org/miradi/dialogs/reportTemplate/XsltReportPanel.java:134
 msgid "Select XSL File"
 msgstr ""
 
@@ -7467,7 +7467,7 @@ msgstr "Anggota Tim"
 msgid "Team Members: %1"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/tablerenderers/QuestionPopupEditorTableCellEditorFactory.java:51
+#: Miradi/source/org/miradi/questions/ResourceRoleQuestion.java:32
 msgid "Team Roles"
 msgstr ""
 

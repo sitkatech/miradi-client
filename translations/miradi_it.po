@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-01 13:18-0600\n"
+"POT-Creation-Date: 2012-02-01 13:56-0600\n"
 "PO-Revision-Date: 2011-04-29 11:26+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -4723,7 +4723,7 @@ msgstr "proprietà del collegamento"
 msgid "Lists"
 msgstr "Liste"
 
-#: Miradi/source/org/miradi/dialogs/reportTemplate/XsltReportPanel.java:132
+#: Miradi/source/org/miradi/dialogs/reportTemplate/XsltReportPanel.java:134
 msgid "Load XSL"
 msgstr ""
 
@@ -6148,7 +6148,7 @@ msgstr "Seleziona luogo..."
 msgid "Select Output File"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/reportTemplate/XsltReportPanel.java:132
+#: Miradi/source/org/miradi/dialogs/reportTemplate/XsltReportPanel.java:134
 msgid "Select XSL File"
 msgstr ""
 
@@ -7617,7 +7617,7 @@ msgstr "Membro del Team"
 msgid "Team Members: %1"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/tablerenderers/QuestionPopupEditorTableCellEditorFactory.java:51
+#: Miradi/source/org/miradi/questions/ResourceRoleQuestion.java:32
 msgid "Team Roles"
 msgstr ""
 
