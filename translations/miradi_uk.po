@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-31 11:58-0600\n"
+"POT-Creation-Date: 2012-02-01 13:18-0600\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -8582,7 +8582,7 @@ msgstr ""
 "команди експорту та  імпорту. Міраді також створить зіп-файли для дублікатів "
 "проекту, що були створені протягом форматувальних переходів."
 
-#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:512
+#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:566
 msgid "[Error]"
 msgstr "[Помилка]"
 
