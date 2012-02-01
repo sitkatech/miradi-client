@@ -20,14 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields;
 
-import org.miradi.dialogs.base.AbstractStringCodeListMapEditorField;
+import org.miradi.dialogs.base.AbstractCodeCodeListMapEditorField;
 import org.miradi.objecthelpers.AbstractStringKeyMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.CodeStringMap;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 
-public class StringStringMapEditorField extends AbstractStringCodeListMapEditorField
+public class StringStringMapEditorField extends AbstractCodeCodeListMapEditorField
 {
 	public StringStringMapEditorField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse, String mapCodeToUse)
 	{
