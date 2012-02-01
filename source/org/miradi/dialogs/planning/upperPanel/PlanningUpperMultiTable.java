@@ -24,6 +24,7 @@ import java.awt.Color;
 import java.util.Vector;
 
 import javax.swing.Action;
+import javax.swing.DefaultCellEditor;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
@@ -32,6 +33,7 @@ import org.miradi.actions.ActionCollapseAllRows;
 import org.miradi.actions.ActionDeletePlanningViewTreeNode;
 import org.miradi.actions.ActionExpandAllRows;
 import org.miradi.actions.Actions;
+import org.miradi.dialogs.fieldComponents.ChoiceItemComboBox;
 import org.miradi.dialogs.fieldComponents.PanelTextField;
 import org.miradi.dialogs.planning.FullTimeEmployeeDaysPerYearAction;
 import org.miradi.dialogs.planning.MultiTableCollapseColumnAction;
@@ -56,7 +58,9 @@ import org.miradi.dialogs.tablerenderers.WhoColumnTableCellEditorFactory;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
+import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.utils.DoubleClickAutoSelectCellEditor;
 import org.miradi.utils.TableWithColumnWidthAndSequenceSaver;
 
@@ -100,6 +104,14 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		
 		if (getCastedModel().isWhenColumn(modelColumn))
 			return new WhenTableCellPopupEditorOrRendererFactory(getMainWindow(), this, new PlanningViewFontProvider(getMainWindow()));
+		
+		Class cellQuestionClass = getCastedModel().getCellQuestion(modelColumn);
+		if (cellQuestionClass !=  null)
+		{
+			ChoiceQuestion question = StaticQuestionManager.getQuestion(cellQuestionClass);
+			ChoiceItemComboBox comboBox = new ChoiceItemComboBox(question);
+			return new DefaultCellEditor(comboBox);
+		}
 		
 		return getDoubleClickAutoSelectCellEditor();
 	}
