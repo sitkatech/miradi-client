@@ -133,7 +133,7 @@ abstract public class ObjectTableModel extends EditableObjectTableModel
 		if (isChoiceItemColumn(column))
 		{
 			final ChoiceItem choiceItem = (ChoiceItem) value;
-			valueToSave = choiceItem.getCode().toString();
+			valueToSave = choiceItem.getCode();
 		}
 		
 		setValueUsingCommand(rowObjectRef, columnTag, valueToSave);
