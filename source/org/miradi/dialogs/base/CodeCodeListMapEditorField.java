@@ -26,9 +26,9 @@ import org.miradi.objecthelpers.CodeCodeListMap;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
    
-public class StringCodeListMapEditorField extends AbstractStringCodeListMapEditorField
+public class CodeCodeListMapEditorField extends AbstractStringCodeListMapEditorField
 {
-	public StringCodeListMapEditorField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse, String mapKeyCodeToUse)
+	public CodeCodeListMapEditorField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse, String mapKeyCodeToUse)
 	{
 		super(projectToUse, refToUse, tagToUse, questionToUse, mapKeyCodeToUse);
 	}
