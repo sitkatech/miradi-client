@@ -43,10 +43,14 @@ abstract public class AbstractPopupTableCellEditorFactory extends AbstractCellEd
 {
 	public AbstractPopupTableCellEditorFactory(MainWindow mainWindowToUse, RowColumnSelectionProvider tableToUse)
 	{
+		this(mainWindowToUse, tableToUse, new MultiLineObjectTableCellRendererOnlyFactory(mainWindowToUse, tableToUse, new DefaultFontProvider(mainWindowToUse)));
+	}
+	
+	public AbstractPopupTableCellEditorFactory(MainWindow mainWindowToUse, RowColumnSelectionProvider tableToUse, MultiLineObjectTableCellRendererOnlyFactory rendererFactoryToUse)
+	{
 		mainWindow = mainWindowToUse;
 		table = tableToUse;
-
-		rendererFactory = new MultiLineObjectTableCellRendererOnlyFactory(mainWindowToUse, tableToUse, new DefaultFontProvider(mainWindowToUse));
+		rendererFactory = rendererFactoryToUse;
 		rendererFactory.setCellBackgroundColor(AppPreferences.RESOURCE_TABLE_BACKGROUND);
 		
 		JComponent rendererComponent = rendererFactory.getRendererComponent();

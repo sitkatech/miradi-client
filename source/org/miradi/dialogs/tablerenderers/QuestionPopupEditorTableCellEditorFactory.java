@@ -31,7 +31,7 @@ public class QuestionPopupEditorTableCellEditorFactory extends AbstractPopupTabl
 {
 	public QuestionPopupEditorTableCellEditorFactory(MainWindow mainWindowToUse, RowColumnSelectionProvider tableToUse, String tagToUse, ChoiceQuestion questionToUse, CodeList codesToDisableToUse)
 	{
-		super(mainWindowToUse, tableToUse);
+		super(mainWindowToUse, tableToUse, new CodeListRendererFactory(mainWindowToUse, tableToUse, new DefaultFontProvider(mainWindowToUse)));
 		
 		tag = tagToUse;
 		question = questionToUse;
