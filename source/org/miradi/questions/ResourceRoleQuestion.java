@@ -29,7 +29,7 @@ public class ResourceRoleQuestion extends StaticChoiceQuestion
 {
 	public ResourceRoleQuestion()
 	{
-		super(getRoleChoices());
+		super(getRoleChoices(), EAM.text("Team Roles"));
 	}
 
 	private static Vector<ChoiceItem> getRoleChoices()

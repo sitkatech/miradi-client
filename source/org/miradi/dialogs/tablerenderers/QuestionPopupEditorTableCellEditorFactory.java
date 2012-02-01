@@ -29,14 +29,13 @@ import org.miradi.utils.CodeList;
 
 public class QuestionPopupEditorTableCellEditorFactory extends AbstractPopupTableCellEditorFactory
 {
-	public QuestionPopupEditorTableCellEditorFactory(MainWindow mainWindowToUse, RowColumnSelectionProvider tableToUse, String tagToUse, ChoiceQuestion questionToUse, CodeList codesToDisableToUse, String dialogTitleToUse)
+	public QuestionPopupEditorTableCellEditorFactory(MainWindow mainWindowToUse, RowColumnSelectionProvider tableToUse, String tagToUse, ChoiceQuestion questionToUse, CodeList codesToDisableToUse)
 	{
 		super(mainWindowToUse, tableToUse);
 		
 		tag = tagToUse;
 		question = questionToUse;
 		codesToDisable = codesToDisableToUse;
-		dialogTitle = dialogTitleToUse;
 	}
 
 	@Override
@@ -48,11 +47,10 @@ public class QuestionPopupEditorTableCellEditorFactory extends AbstractPopupTabl
 	@Override
 	protected String getDialogTitle()
 	{
-		return dialogTitle;
+		return question.getQuestionDescription();
 	}
 	
 	private String tag;
 	private ChoiceQuestion question;
 	private CodeList codesToDisable;
-	private String dialogTitle;
 }

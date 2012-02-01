@@ -47,6 +47,11 @@ public class StaticChoiceQuestion extends ChoiceQuestion
 		choices = choicesToUse;
 	}
 	
+	public StaticChoiceQuestion(Vector<ChoiceItem> choicesToUse, String questionDescription)
+	{
+		this(choicesToUse.toArray(new ChoiceItem[0]), questionDescription);
+	}
+	
 	public StaticChoiceQuestion(Vector<ChoiceItem> choicesToUse)
 	{
 		this(choicesToUse.toArray(new ChoiceItem[0]));
