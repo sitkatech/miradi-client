@@ -25,6 +25,7 @@ import org.miradi.dialogs.base.ObjectPoolTable;
 import org.miradi.dialogs.base.ObjectPoolTableModel;
 import org.miradi.dialogs.base.ObjectTableModel;
 import org.miradi.dialogs.tablerenderers.QuestionPopupEditorTableCellEditorFactory;
+import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.ProjectResource;
 import org.miradi.questions.ChoiceQuestion;
@@ -57,7 +58,8 @@ public class TeamPoolTable extends ObjectPoolTable
 	{
 		ChoiceQuestion question = StaticQuestionManager.getQuestion(ResourceRoleQuestion.class);
 		CodeList codesToDisable = new CodeList(new String[] {ResourceRoleQuestion.TEAM_MEMBER_ROLE_CODE});
-		QuestionPopupEditorTableCellEditorFactory editorFactory = new QuestionPopupEditorTableCellEditorFactory(getMainWindow(), this, ProjectResource.TAG_ROLE_CODES, question, codesToDisable);
+		final String diaglogTitle = EAM.text("Team Roles");
+		QuestionPopupEditorTableCellEditorFactory editorFactory = new QuestionPopupEditorTableCellEditorFactory(getMainWindow(), this, ProjectResource.TAG_ROLE_CODES, question, codesToDisable, diaglogTitle);
 		TableColumn column = getColumnModel().getColumn(tableColumn);
 		column.setCellEditor(editorFactory);
 	}
