@@ -276,7 +276,7 @@ abstract public class BaseObject
 			throw new RuntimeException("Attempted to set Ref data on non-Ref field " + fieldTag);
 	}
 
-	protected CodeStringMap getStringStringMapData(String tag)
+	protected CodeStringMap getCodeStringMapData(String tag)
 	{
 		return ((CodeStringMapData)getField(tag)).getStringMap();
 	}

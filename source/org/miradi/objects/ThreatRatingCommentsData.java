@@ -106,12 +106,12 @@ public class ThreatRatingCommentsData extends BaseObject
 
 	public CodeStringMap getStressBasedThreatRatingCommentsMap()
 	{
-		return getStringStringMapData(TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAP);
+		return getCodeStringMapData(TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAP);
 	}
 
 	public CodeStringMap getSimpleThreatRatingCommentsMap()
 	{
-		return getStringStringMapData(TAG_SIMPLE_THREAT_RATING_COMMENTS_MAP);
+		return getCodeStringMapData(TAG_SIMPLE_THREAT_RATING_COMMENTS_MAP);
 	}
 	
 	public static ThreatRatingCommentsData find(ObjectManager objectManager, ORef threatRatingCommentsDataRef)

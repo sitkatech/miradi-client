@@ -1097,7 +1097,7 @@ public class Dashboard extends BaseObject
 	
 	public CodeStringMap getCommentsMap()
 	{
-		return getStringStringMapData(TAG_COMMENTS_MAP);
+		return getCodeStringMapData(TAG_COMMENTS_MAP);
 	}
 
 	public CodeChoiceMap getProgressChoiceMap()
