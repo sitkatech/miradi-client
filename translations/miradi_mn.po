@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-01 13:18-0600\n"
+"POT-Creation-Date: 2012-02-01 13:56-0600\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -4653,7 +4653,7 @@ msgstr "Properties холбоос"
 msgid "Lists"
 msgstr "Жагсаалтууд"
 
-#: Miradi/source/org/miradi/dialogs/reportTemplate/XsltReportPanel.java:132
+#: Miradi/source/org/miradi/dialogs/reportTemplate/XsltReportPanel.java:134
 msgid "Load XSL"
 msgstr ""
 
@@ -6063,7 +6063,7 @@ msgstr "Байршилыг...сонгох"
 msgid "Select Output File"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/reportTemplate/XsltReportPanel.java:132
+#: Miradi/source/org/miradi/dialogs/reportTemplate/XsltReportPanel.java:134
 msgid "Select XSL File"
 msgstr ""
 
@@ -7526,7 +7526,7 @@ msgstr "Багийн гишүүн"
 msgid "Team Members: %1"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/tablerenderers/QuestionPopupEditorTableCellEditorFactory.java:51
+#: Miradi/source/org/miradi/questions/ResourceRoleQuestion.java:32
 msgid "Team Roles"
 msgstr ""
 
