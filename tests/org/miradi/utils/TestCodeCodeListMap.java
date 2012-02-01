@@ -23,9 +23,9 @@ package org.miradi.utils;
 import org.miradi.objecthelpers.AbstractStringKeyMap;
 import org.miradi.objecthelpers.CodeCodeListMap;
 
-public class TestStringCodeListMap extends TestAbstractStringMap
+public class TestCodeCodeListMap extends TestAbstractStringMap
 {
-	public TestStringCodeListMap(String name)
+	public TestCodeCodeListMap(String name)
 	{
 		super(name);
 	}

@@ -203,7 +203,7 @@ import org.miradi.utils.TestOptionalDouble;
 import org.miradi.utils.TestPointList;
 import org.miradi.utils.TestRtfWriter;
 import org.miradi.utils.TestCodeChoiceMap;
-import org.miradi.utils.TestStringCodeListMap;
+import org.miradi.utils.TestCodeCodeListMap;
 import org.miradi.utils.TestStringMap;
 import org.miradi.utils.TestStringUtilities;
 import org.miradi.utils.TestTaxonomyFileLoader;
@@ -377,7 +377,7 @@ public class MainTestSuite extends TestSuite
 		addTest(new TestSuite(TestCodeList.class));
 		addTest(new TestSuite(TestStringMap.class));
 		addTest(new TestSuite(TestCodeChoiceMap.class));
-		addTest(new TestSuite(TestStringCodeListMap.class));
+		addTest(new TestSuite(TestCodeCodeListMap.class));
 		addTest(new TestSuite(TestIndicator.class));
 		addTest(new TestSuite(TestKeyEcologicalAttribute.class));
 		addTest(new TestSuite(TestObjective.class));
