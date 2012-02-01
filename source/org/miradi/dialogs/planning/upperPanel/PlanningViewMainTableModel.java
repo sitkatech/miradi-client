@@ -123,9 +123,6 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		if (isWhenColumn(columnTag))
 			return isWhenCellEditable(row, modelColumn);
 		
-		if (isChoiceItemColumn(modelColumn))
-			return false;
-		
 		if (isCodeListColumn(modelColumn))
 			return false;
 		
@@ -250,6 +247,11 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			if (isWhenColumn(column))
 			{
 				setWhenValue(baseObjectForRow, createCodeList(value));
+			}
+			if (isChoiceItemColumn(column))
+			{
+				ChoiceItem choiceItem = (ChoiceItem) value;
+				setValueUsingCommand(baseObjectForRow.getRef(), getTagForCell(baseObjectForRow.getType(), column), choiceItem.getCode());
 			}
 			else
 			{
@@ -403,19 +405,41 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	}
 	
 	@Override
+	public Class getCellQuestion(int modelColumn)
+	{
+		if (isProjectResourceTypeColumn(modelColumn))
+			return ResourceTypeQuestion.class;
+		
+		if (isPriortyColumn(modelColumn))
+			return PriorityRatingQuestion.class;
+		
+		return null;
+	}
+	
+	@Override
 	public boolean isChoiceItemColumn(int column)
 	{
 		String columnTag = getColumnTag(column);
-		if(columnTag.equals(Indicator.TAG_PRIORITY))
+		if(isPriortyColumn(column))
 			return true;
 		
 		if(columnTag.equals(CustomPlanningColumnsQuestion.META_CURRENT_RATING))
 			return true;
 		
-		if(columnTag.equals(ProjectResource.TAG_RESOURCE_TYPE))
+		if(isProjectResourceTypeColumn(column))
 			return true;
 		
 		return false;
+	}
+	
+	private boolean isProjectResourceTypeColumn(int column)
+	{
+		return getColumnTag(column).equals(ProjectResource.TAG_RESOURCE_TYPE);
+	}
+	
+	private boolean isPriortyColumn(int column)
+	{
+		return getColumnTag(column).equals(Indicator.TAG_PRIORITY);
 	}
 	
 	@Override
