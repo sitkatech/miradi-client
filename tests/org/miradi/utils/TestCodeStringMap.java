@@ -22,9 +22,9 @@ package org.miradi.utils;
 import org.miradi.objecthelpers.AbstractStringKeyMap;
 import org.miradi.objecthelpers.CodeStringMap;
 
-public class TestStringMap  extends TestAbstractStringMap
+public class TestCodeStringMap  extends TestAbstractStringMap
 {
-	public TestStringMap(String name)
+	public TestCodeStringMap(String name)
 	{
 		super(name);
 	}
