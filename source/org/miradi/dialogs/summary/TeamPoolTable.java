@@ -25,12 +25,10 @@ import org.miradi.dialogs.base.ObjectPoolTable;
 import org.miradi.dialogs.base.ObjectPoolTableModel;
 import org.miradi.dialogs.base.ObjectTableModel;
 import org.miradi.dialogs.tablerenderers.QuestionPopupEditorTableCellEditorFactory;
-import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.ProjectResource;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
-import org.miradi.questions.StaticQuestionManager;
 import org.miradi.utils.CodeList;
 
 public class TeamPoolTable extends ObjectPoolTable
@@ -50,17 +48,16 @@ public class TeamPoolTable extends ObjectPoolTable
 		{
 			int modelColumn = convertColumnIndexToModel(tableColumn);
 			if (model.isCodeListColumn(modelColumn))
-				createCodeListColumn(model.getColumnQuestion(modelColumn), tableColumn);
+				createCodeListColumn(model.getColumnQuestion(modelColumn), modelColumn);
 		}
 	}
 	
-	private void createCodeListColumn(ChoiceQuestion columnQuestion, int tableColumn)
+	private void createCodeListColumn(ChoiceQuestion columnQuestion, int modelColumn)
 	{
-		ChoiceQuestion question = StaticQuestionManager.getQuestion(ResourceRoleQuestion.class);
+		final ChoiceQuestion question = getObjectTableModel().getColumnQuestion(modelColumn);
 		CodeList codesToDisable = new CodeList(new String[] {ResourceRoleQuestion.TEAM_MEMBER_ROLE_CODE});
-		final String diaglogTitle = EAM.text("Team Roles");
-		QuestionPopupEditorTableCellEditorFactory editorFactory = new QuestionPopupEditorTableCellEditorFactory(getMainWindow(), this, ProjectResource.TAG_ROLE_CODES, question, codesToDisable, diaglogTitle);
-		TableColumn column = getColumnModel().getColumn(tableColumn);
+		QuestionPopupEditorTableCellEditorFactory editorFactory = new QuestionPopupEditorTableCellEditorFactory(getMainWindow(), this, ProjectResource.TAG_ROLE_CODES, question, codesToDisable);
+		TableColumn column = getColumnModel().getColumn(modelColumn);
 		column.setCellEditor(editorFactory);
 	}
 }
