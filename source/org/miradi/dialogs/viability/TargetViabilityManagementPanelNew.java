@@ -25,6 +25,7 @@ import java.awt.image.BufferedImage;
 import javax.swing.Icon;
 import javax.swing.JComponent;
 
+import org.miradi.actions.jump.ActionJumpTargetViabilityMethodChoiceStep;
 import org.miradi.dialogs.base.ObjectListManagementPanel;
 import org.miradi.dialogs.planning.AbstractPlanningTreeRowColumnProvider;
 import org.miradi.dialogs.planning.treenodes.PlanningTreeBaseObjectNode;
@@ -156,6 +157,12 @@ public class TargetViabilityManagementPanelNew extends ObjectListManagementPanel
 	public String getSplitterDescription()
 	{
 		return PANEL_DESCRIPTION_VIABILITY + SPLITTER_TAG;
+	}
+	
+	@Override
+	public Class getJumpActionClass()
+	{
+		return ActionJumpTargetViabilityMethodChoiceStep.class;
 	}
 
 	private static String PANEL_DESCRIPTION_VIABILITY = EAM.text("Tab|Viability");
