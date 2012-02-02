@@ -36,27 +36,19 @@ public class TargetViabililtyTreePanel extends TargetViabililtyTreeTablePanel
 	public static TargetViabililtyTreePanel createTargetViabilityPanel(MainWindow mainWindowToUse, Project projectToUse, ORef targetRef) throws Exception
 	{
 		TargetViabilityTreeModel model = new TargetViabilityTreeModel(new TargetViabilityRoot(projectToUse, targetRef));
-		return createTargetViabililtyTreePanel(mainWindowToUse, projectToUse, model);
+		TargetViabilityTreeTable tree = new TargetViabilityTreeTable(mainWindowToUse, model);
+		
+		return new TargetViabililtyTreePanel(mainWindowToUse, projectToUse, tree, model);
 	}
 
 	public static TargetViabililtyTreePanel createFactorIndicatorPanel(MainWindow mainWindowToUse, ORef factorRef, Project projectToUse) throws Exception
 	{
 		IndicatorTreeModel model = new IndicatorTreeModel(new FactorTreeTableNode(projectToUse, factorRef));
-		return createTargetViabililtyTreePanel(mainWindowToUse, projectToUse, model, buttonActions);
+		TargetViabilityTreeTable tree = new TargetViabilityTreeTable(mainWindowToUse, model);
+		
+		return new TargetViabililtyTreePanel(mainWindowToUse, tree, model, buttonActions);
 	}
 	
-	private static TargetViabililtyTreePanel createTargetViabililtyTreePanel(MainWindow mainWindowToUse, Project projectToUse, GenericViabilityTreeModel model) throws Exception
-	{
-		TargetViabilityTreeTable tree = new TargetViabilityTreeTable(mainWindowToUse, model);
-		return new TargetViabililtyTreePanel(mainWindowToUse, projectToUse, tree, model);
-	}
-	
-	private static TargetViabililtyTreePanel createTargetViabililtyTreePanel(MainWindow mainWindowToUse, Project projectToUse, GenericViabilityTreeModel model, Class[] buttonActionsToUse) throws Exception
-	{
-		TargetViabilityTreeTable tree = new TargetViabilityTreeTable(mainWindowToUse, model);
-		return new TargetViabililtyTreePanel(mainWindowToUse, tree, model, buttonActionsToUse);
-	}
-
 	private TargetViabililtyTreePanel(MainWindow mainWindowToUse, Project projectToUse, TargetViabilityTreeTable treeToUse, GenericTreeTableModel modelToUse) throws Exception
 	{
 		super(mainWindowToUse, projectToUse, treeToUse);
