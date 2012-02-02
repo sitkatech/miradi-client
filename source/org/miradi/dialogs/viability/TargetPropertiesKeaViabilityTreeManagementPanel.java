@@ -20,20 +20,31 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.viability;
 
 import org.miradi.actions.jump.ActionJumpTargetViability3Step;
-import org.miradi.icons.KeyEcologicalAttributeIcon;
+import org.miradi.dialogs.planning.treenodes.PlanningTreeBaseObjectNode;
+import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
+import org.miradi.dialogs.planning.upperPanel.TargetViabilityTreeTableModel;
+import org.miradi.dialogs.planning.upperPanel.TreeTableModelWithRebuilder;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.utils.SplitterPositionSaverAndGetter;
 
-public class TargetPropertiesKeaViabilityTreeManagementPanel extends TargetViabilityManagementPanel
+public class TargetPropertiesKeaViabilityTreeManagementPanel extends TargetViabilityManagementPanelNew
 {
-	public TargetPropertiesKeaViabilityTreeManagementPanel(MainWindow mainWindow, SplitterPositionSaverAndGetter splitPositionSaverToUse, ORef factorRef) throws Exception
+	private TargetPropertiesKeaViabilityTreeManagementPanel(MainWindow mainWindowToUse, PlanningTreeTablePanel tablePanelToUse, TargetViabilityMultiPropertiesPanel propertiesPanel) throws Exception
 	{
-		super(mainWindow, splitPositionSaverToUse, factorRef);
+		super(mainWindowToUse, tablePanelToUse, propertiesPanel);
+	}
+	
+	public static TargetViabilityManagementPanelNew createKeaViabilityManagementPanel(MainWindow mainWindowToUse, ORef parentRefToUse) throws Exception
+	{
+		PlanningTreeBaseObjectNode rootNode = new PlanningTreeBaseObjectNode(mainWindowToUse.getProject(), null, parentRefToUse);
+		KeaViabilityRowColumnProvider rowColumnProvider = new KeaViabilityRowColumnProvider(mainWindowToUse.getProject());
 		
-		panelDescription = PANEL_DESCRIPTION_VIABILITY;
-		icon = new KeyEcologicalAttributeIcon();
+		TreeTableModelWithRebuilder model = new TargetViabilityTreeTableModel(mainWindowToUse.getProject(), rootNode, rowColumnProvider);
+		PlanningTreeTablePanel treeTablePanel = TargetViabilityTreeTablePanel.createTreeTablePanel(mainWindowToUse, model, rowColumnProvider);
+		TargetViabilityMultiPropertiesPanel propertiesPanel = new TargetViabilityMultiPropertiesPanel(mainWindowToUse);
+		
+		return new TargetPropertiesKeaViabilityTreeManagementPanel(mainWindowToUse, treeTablePanel, propertiesPanel);
 	}
 	
 	@Override

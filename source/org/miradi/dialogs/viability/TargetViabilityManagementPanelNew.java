@@ -43,7 +43,7 @@ import org.miradi.utils.TableExporter;
 
 public class TargetViabilityManagementPanelNew extends ObjectListManagementPanel
 {
-	private TargetViabilityManagementPanelNew(MainWindow mainWindowToUse, PlanningTreeTablePanel tablePanelToUse, TargetViabilityMultiPropertiesPanel propertiesPanel) throws Exception
+	protected TargetViabilityManagementPanelNew(MainWindow mainWindowToUse, PlanningTreeTablePanel tablePanelToUse, TargetViabilityMultiPropertiesPanel propertiesPanel) throws Exception
 	{
 		super(mainWindowToUse, tablePanelToUse, propertiesPanel);
 		
