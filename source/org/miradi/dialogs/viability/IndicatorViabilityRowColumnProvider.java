@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.viability;
 
-import org.miradi.dialogs.planning.AbstractPlanningTreeRowColumnProvider;
 import org.miradi.dialogs.viability.nodes.ViabilityMeasurementNode;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Goal;
@@ -31,7 +30,7 @@ import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 
-public class IndicatorViabilityRowColumnProvider extends AbstractPlanningTreeRowColumnProvider
+public class IndicatorViabilityRowColumnProvider extends AbstractViabilityRowColumnProvider
 {
 	public IndicatorViabilityRowColumnProvider(Project projectToUse)
 	{
