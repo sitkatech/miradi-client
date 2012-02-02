@@ -20,9 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.viability;
 
-import org.miradi.dialogs.planning.AbstractPlanningTreeRowColumnProvider;
-import org.miradi.dialogs.viability.nodes.ViabilityMeasurementNode;
-import org.miradi.objects.BaseObject;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
@@ -32,7 +29,7 @@ import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 
-public class TargetViabilityRowColumnProvider extends AbstractPlanningTreeRowColumnProvider
+public class TargetViabilityRowColumnProvider extends AbstractViabilityRowColumnProvider
 {
 	public TargetViabilityRowColumnProvider(Project projectToUse)
 	{
@@ -49,36 +46,5 @@ public class TargetViabilityRowColumnProvider extends AbstractPlanningTreeRowCol
 				Measurement.OBJECT_NAME,
 				Goal.OBJECT_NAME,
 		});
-	}
-
-	public CodeList getColumnCodesToShow() throws Exception
-	{
-		return new CodeList(new String[] {
-				 Target.TAG_VIABILITY_MODE,
-				 ViabilityTreeModel.VIRTUAL_TAG_STATUS,
-				 KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE,
-				 ViabilityMeasurementNode.POOR,
-				 ViabilityMeasurementNode.FAIR,
-				 ViabilityMeasurementNode.GOOD,
-				 ViabilityMeasurementNode.VERY_GOOD,
-				 Measurement.TAG_STATUS_CONFIDENCE,
-				 BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
-		});
-	}
-
-	public boolean shouldIncludeResultsChain() throws Exception
-	{
-		return true;
-	}
-
-	public boolean shouldIncludeConceptualModelPage() throws Exception
-	{
-		return true;
-	}
-
-	@Override
-	public boolean shouldPutTargetsAtTopLevelOfTree() throws Exception
-	{
-		return true;
 	}
 }
