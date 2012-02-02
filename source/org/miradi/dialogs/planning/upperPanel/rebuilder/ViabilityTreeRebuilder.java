@@ -31,7 +31,6 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.AbstractTarget;
-import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Goal;
@@ -40,7 +39,6 @@ import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.objects.ProjectMetadata;
-import org.miradi.objects.Strategy;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 
@@ -58,11 +56,11 @@ public class ViabilityTreeRebuilder extends AbstractTreeRebuilder
 		if(ProjectMetadata.is(parentRef))
 			return getChildrenOfProjectNode(parentRef);
 		
-		if (Cause.is(parentRef) || Strategy.is(parentRef))
-			return getIndicatorChildren(parentRef);
-		
 		if(AbstractTarget.isAbstractTarget(parentRef))
 			return getChildrenOfAbstractTarget(parentRef, diagram);
+		
+		if (Factor.isFactor(parentRef))
+			return getIndicatorChildren(parentRef);
 		
 		if(Indicator.is(parentRef))
 			return getChildrenOfIndicator(parentRef, diagram);
