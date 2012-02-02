@@ -31,13 +31,16 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.AbstractTarget;
+import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramObject;
+import org.miradi.objects.Factor;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.Strategy;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 
@@ -54,6 +57,9 @@ public class ViabilityTreeRebuilder extends AbstractTreeRebuilder
 		final ORefList noChildren = new ORefList();
 		if(ProjectMetadata.is(parentRef))
 			return getChildrenOfProjectNode(parentRef);
+		
+		if (Cause.is(parentRef) || Strategy.is(parentRef))
+			return getIndicatorChildren(parentRef);
 		
 		if(AbstractTarget.isAbstractTarget(parentRef))
 			return getChildrenOfAbstractTarget(parentRef, diagram);
@@ -77,6 +83,13 @@ public class ViabilityTreeRebuilder extends AbstractTreeRebuilder
 		return new ORefList();
 	}
 	
+	private ORefList getIndicatorChildren(ORef parentRef)
+	{
+		Factor factor = Factor.findFactor(getProject(), parentRef);
+
+		return factor.getDirectOrIndirectIndicatorRefs();
+	}
+
 	private ORefList getChildrenOfKea(ORef parentRef)
 	{
 		ORefList childRefs = new ORefList();

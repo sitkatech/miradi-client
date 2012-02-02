@@ -49,9 +49,8 @@ import org.miradi.dialogs.objective.ObjectiveListManagementPanel;
 import org.miradi.dialogs.objective.ObjectiveListTablePanel;
 import org.miradi.dialogs.stress.StressListManagementPanel;
 import org.miradi.dialogs.subTarget.SubTargetManagementPanel;
-import org.miradi.dialogs.viability.FactorPropertiesViabilityTreeManagementPanel;
+import org.miradi.dialogs.viability.IndicatorViabilityTreeManagementPanel;
 import org.miradi.dialogs.viability.TargetPropertiesKeaViabilityTreeManagementPanel;
-import org.miradi.dialogs.viability.TargetViabilityManagementPanel;
 import org.miradi.dialogs.viability.TargetViabilityManagementPanelNew;
 import org.miradi.icons.IconManager;
 import org.miradi.main.AppPreferences;
@@ -253,7 +252,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 
 		if (factor.canHaveIndicators() && !isKeaViabilityMode && !AbstractTarget.isAbstractTarget(factor))
 		{
-			indicatorsTab = new FactorPropertiesViabilityTreeManagementPanel(mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
+			indicatorsTab = IndicatorViabilityTreeManagementPanel.createIndicatorViabilityManagementPanel(mainWindow, getCurrentDiagramFactor().getWrappedORef());
 			addTab(indicatorsTab);
 		}
 		
@@ -619,7 +618,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 	private boolean ignoreTabChanges;
 	private FactorSummaryScrollablePanel detailsTab;
 	private ObjectiveListManagementPanel objectivesTab;
-	private TargetViabilityManagementPanel indicatorsTab;
+	private TargetViabilityManagementPanelNew indicatorsTab;
 	private GoalListManagementPanel goalsTab;
 	private TargetViabilityManagementPanelNew viabilityTab;
 	private SimpleViabilityPanel simpleViabilityTab;
