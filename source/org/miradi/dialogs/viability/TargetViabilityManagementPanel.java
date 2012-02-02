@@ -54,7 +54,7 @@ abstract public class TargetViabilityManagementPanel extends ObjectListManagemen
 	}  
 	
 	//TODO should use this contructor instead of the constructor that creates DirectIndicatorPropertiesPanel, would be better to have a PlanningTreePropertiesPanel
-	public TargetViabilityManagementPanel(MainWindow mainWindowToUse, ObjectCollectionPanel treePanel, AbstractObjectDataInputPanel propertiesPanel) throws Exception
+	private TargetViabilityManagementPanel(MainWindow mainWindowToUse, ObjectCollectionPanel treePanel, AbstractObjectDataInputPanel propertiesPanel) throws Exception
 	{
 		super(mainWindowToUse, treePanel, propertiesPanel);
 		panelDescription = PANEL_DESCRIPTION_INDICATORS;
