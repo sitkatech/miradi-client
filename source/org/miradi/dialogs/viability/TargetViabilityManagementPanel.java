@@ -41,16 +41,16 @@ import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.utils.BufferedImageFactory;
 import org.miradi.utils.TableExporter;
 
-public class TargetViabilityManagementPanelNew extends ObjectListManagementPanel
+public class TargetViabilityManagementPanel extends ObjectListManagementPanel
 {
-	protected TargetViabilityManagementPanelNew(MainWindow mainWindowToUse, PlanningTreeTablePanel tablePanelToUse, TargetViabilityMultiPropertiesPanel propertiesPanel) throws Exception
+	protected TargetViabilityManagementPanel(MainWindow mainWindowToUse, PlanningTreeTablePanel tablePanelToUse, TargetViabilityMultiPropertiesPanel propertiesPanel) throws Exception
 	{
 		super(mainWindowToUse, tablePanelToUse, propertiesPanel);
 		
 		setTreeTablePanel(tablePanelToUse);
 	}
 	
-	public static TargetViabilityManagementPanelNew createIndicatorViabilityManagementPanel(MainWindow mainWindowToUse, ORef parentRefToUse) throws Exception
+	public static TargetViabilityManagementPanel createIndicatorViabilityManagementPanel(MainWindow mainWindowToUse, ORef parentRefToUse) throws Exception
 	{
 		PlanningTreeBaseObjectNode rootNode = new PlanningTreeBaseObjectNode(mainWindowToUse.getProject(), null, parentRefToUse);
 		IndicatorViabilityRowColumnProvider rowColumnProvider = new IndicatorViabilityRowColumnProvider(mainWindowToUse.getProject());
@@ -59,10 +59,10 @@ public class TargetViabilityManagementPanelNew extends ObjectListManagementPanel
 		PlanningTreeTablePanel treeTablePanel = TargetViabilityTreeTablePanel.createTreeTablePanel(mainWindowToUse, model, rowColumnProvider);
 		TargetViabilityMultiPropertiesPanel propertiesPanel = new TargetViabilityMultiPropertiesPanel(mainWindowToUse);
 		
-		return new TargetViabilityManagementPanelNew(mainWindowToUse, treeTablePanel, propertiesPanel);
+		return new TargetViabilityManagementPanel(mainWindowToUse, treeTablePanel, propertiesPanel);
 	}
 	
-	public static TargetViabilityManagementPanelNew createManagementPanel(MainWindow mainWindowToUse) throws Exception
+	public static TargetViabilityManagementPanel createManagementPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		PlanningTreeRootNodeAlwaysExpanded rootNode = new PlanningTreeRootNodeAlwaysExpanded(mainWindowToUse.getProject());
 		AbstractPlanningTreeRowColumnProvider rowColumnProvider = new TargetViabilityRowColumnProvider(mainWindowToUse.getProject());
@@ -71,7 +71,7 @@ public class TargetViabilityManagementPanelNew extends ObjectListManagementPanel
 		PlanningTreeTablePanel treeTablePanel = TargetViabilityTreeTablePanel.createTreeTablePanel(mainWindowToUse, model, rowColumnProvider);
 		TargetViabilityMultiPropertiesPanel propertiesPanel = new TargetViabilityMultiPropertiesPanel(mainWindowToUse);
 		
-		return new TargetViabilityManagementPanelNew(mainWindowToUse, treeTablePanel, propertiesPanel);
+		return new TargetViabilityManagementPanel(mainWindowToUse, treeTablePanel, propertiesPanel);
 	}
 	
 	@Override

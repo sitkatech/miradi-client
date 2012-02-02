@@ -28,14 +28,14 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 
-public class TargetPropertiesKeaViabilityTreeManagementPanel extends TargetViabilityManagementPanelNew
+public class TargetPropertiesKeaViabilityTreeManagementPanel extends TargetViabilityManagementPanel
 {
 	private TargetPropertiesKeaViabilityTreeManagementPanel(MainWindow mainWindowToUse, PlanningTreeTablePanel tablePanelToUse, TargetViabilityMultiPropertiesPanel propertiesPanel) throws Exception
 	{
 		super(mainWindowToUse, tablePanelToUse, propertiesPanel);
 	}
 	
-	public static TargetViabilityManagementPanelNew createKeaViabilityManagementPanel(MainWindow mainWindowToUse, ORef parentRefToUse) throws Exception
+	public static TargetViabilityManagementPanel createKeaViabilityManagementPanel(MainWindow mainWindowToUse, ORef parentRefToUse) throws Exception
 	{
 		PlanningTreeBaseObjectNode rootNode = new PlanningTreeBaseObjectNode(mainWindowToUse.getProject(), null, parentRefToUse);
 		KeaViabilityRowColumnProvider rowColumnProvider = new KeaViabilityRowColumnProvider(mainWindowToUse.getProject());

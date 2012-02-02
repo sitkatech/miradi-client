@@ -36,14 +36,14 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 
-public class IndicatorViabilityTreeManagementPanel extends TargetViabilityManagementPanelNew
+public class IndicatorViabilityTreeManagementPanel extends TargetViabilityManagementPanel
 {
 	private IndicatorViabilityTreeManagementPanel(MainWindow mainWindowToUse, PlanningTreeTablePanel tablePanelToUse, TargetViabilityMultiPropertiesPanel propertiesPanel) throws Exception
 	{
 		super(mainWindowToUse, tablePanelToUse, propertiesPanel);
 	}
 	
-	public static TargetViabilityManagementPanelNew createIndicatorViabilityManagementPanel(MainWindow mainWindowToUse, ORef parentRefToUse) throws Exception
+	public static TargetViabilityManagementPanel createIndicatorViabilityManagementPanel(MainWindow mainWindowToUse, ORef parentRefToUse) throws Exception
 	{
 		PlanningTreeBaseObjectNode rootNode = new PlanningTreeBaseObjectNode(mainWindowToUse.getProject(), null, parentRefToUse);
 		IndicatorViabilityRowColumnProvider rowColumnProvider = new IndicatorViabilityRowColumnProvider(mainWindowToUse.getProject());
