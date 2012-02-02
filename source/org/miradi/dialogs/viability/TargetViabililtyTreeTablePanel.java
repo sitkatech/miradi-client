@@ -46,13 +46,12 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Target;
-import org.miradi.project.Project;
 
 import com.jhlabs.awt.GridLayoutPlus;
 
 public class TargetViabililtyTreeTablePanel extends TreeTablePanel
 {
-	public TargetViabililtyTreeTablePanel(MainWindow mainWindowToUse, Project projectToUse, TreeTableWithStateSaving treeToUse) throws Exception
+	public TargetViabililtyTreeTablePanel(MainWindow mainWindowToUse, TreeTableWithStateSaving treeToUse) throws Exception
 	{
 		this( mainWindowToUse, treeToUse, buttonActions);
 	}
