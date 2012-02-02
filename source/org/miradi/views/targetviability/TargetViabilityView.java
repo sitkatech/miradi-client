@@ -33,7 +33,7 @@ import org.miradi.actions.ActionExpandToKeyEcologicalAttribute;
 import org.miradi.actions.ActionExpandToMeasurement;
 import org.miradi.actions.ActionExpandToMenu;
 import org.miradi.actions.ActionExpandToTarget;
-import org.miradi.dialogs.viability.TargetViabilityManagementPanelNew;
+import org.miradi.dialogs.viability.TargetViabilityManagementPanel;
 import org.miradi.main.MainWindow;
 import org.miradi.main.MiradiToolBar;
 import org.miradi.objects.BaseObject;
@@ -82,7 +82,7 @@ public class TargetViabilityView extends TabbedView
 	@Override
 	public void createTabs() throws Exception
 	{
-		viabilityPanelNew = TargetViabilityManagementPanelNew.createManagementPanel(getMainWindow());
+		viabilityPanelNew = TargetViabilityManagementPanel.createManagementPanel(getMainWindow());
 		addNonScrollingTab(viabilityPanelNew);
 	}
 
@@ -128,5 +128,5 @@ public class TargetViabilityView extends TabbedView
 		return view.cardName().equals(getViewName());
 	}
 	
-	private TargetViabilityManagementPanelNew viabilityPanelNew;
+	private TargetViabilityManagementPanel viabilityPanelNew;
 }
