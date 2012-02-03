@@ -22,8 +22,6 @@ package org.miradi.dialogs.diagram;
 import java.awt.Dimension;
 import java.awt.Rectangle;
 
-import javax.swing.JComponent;
-
 import org.martus.swing.Utilities;
 import org.miradi.dialogs.base.ModelessDialogPanel;
 import org.miradi.dialogs.base.ModelessDialogWithDirections;
@@ -36,11 +34,6 @@ public class FactorPropertiesDialog extends ModelessDialogWithDirections
 		super(parent, panel, headingText);
 		
 		factorPanel = panel;
-	}
-	
-	protected JComponent createMainPanel()
-	{
-		return getWrappedPanel();
 	}
 	
 	public void updatePreferredSize()
