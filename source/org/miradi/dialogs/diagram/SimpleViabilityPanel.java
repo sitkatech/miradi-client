@@ -37,7 +37,7 @@ public class SimpleViabilityPanel extends ModelessDialogPanel
 {
 	public SimpleViabilityPanel(MainWindow mainWindow, ORef factorRef) throws Exception
 	{
-		simpleViabilityManagementPanel = IndicatorViabilityTreeManagementPanel.createIndicatorViabilityManagementPanel(mainWindow, factorRef);
+		simpleViabilityManagementPanel = IndicatorViabilityTreeManagementPanel.createManagementPanel(mainWindow, factorRef);
 		
 		simpleViabilityPropertiesPanel = new SimpleViabilityFieldsPanel(mainWindow.getProject(), factorRef);
 		Border border = BorderFactory.createTitledBorder(simpleViabilityPropertiesPanel.getPanelDescription());
