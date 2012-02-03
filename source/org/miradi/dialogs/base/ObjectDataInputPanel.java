@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.base;
 
-import java.awt.Component;
 import java.util.Vector;
 
 import javax.swing.Box;
@@ -74,12 +73,6 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanelW
 		GridLayoutPlus layout = new GridLayoutPlus(0, 2, HGAP, VGAP);
 		layout.setColAlignment(0, Alignment.NORTHEAST);
 		setLayout(layout);
-	}
-	
-	public void addLine(Component field1, Component field2)
-	{
-		add(field1);
-		add(field2);
 	}
 	
 	public void addBlankHorizontalLine()
