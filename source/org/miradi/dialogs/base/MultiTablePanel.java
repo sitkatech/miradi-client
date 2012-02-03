@@ -167,9 +167,7 @@ abstract public class MultiTablePanel extends DisposablePanel implements ObjectP
 	}
 	
 	public final static int ABOUT_ONE_LINE = 20;
-	public final static int ROW_HEIGHT = 2 * ABOUT_ONE_LINE;
-
-
+	
 	private MainWindow mainWindow;
 	protected MultiTableSelectionController selectionController;
 	protected MultiTableVerticalScrollController verticalController;
