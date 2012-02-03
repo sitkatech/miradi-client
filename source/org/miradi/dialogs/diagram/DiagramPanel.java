@@ -163,11 +163,6 @@ abstract public class DiagramPanel extends DisposablePanelWithDescription implem
 		return EAM.text("Title|Diagram Panel");
 	}
 
-	public void addFieldComponent(Component component)
-	{
-		throw new RuntimeException("Not yet implemented");
-	}
-
 	public DiagramSplitPane getDiagramSplitPane()
 	{
 		return diagramSplitter;
