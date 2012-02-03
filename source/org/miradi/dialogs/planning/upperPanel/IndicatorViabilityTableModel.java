@@ -46,9 +46,18 @@ public class IndicatorViabilityTableModel extends PlanningViewAbstractTreeTableS
 	}
 	
 	@Override
-	public boolean isCellEditable(int rowIndex, int columnIndex)
+	public boolean isCellEditable(int row, int column)
 	{
-		return true;
+		if (Measurement.is(getBaseObjectForRow(row)))
+		{
+			if (isStatusConfidenceColumn(column))
+				return true;
+
+			if (getColumnTag(column).equals(Measurement.TAG_SUMMARY))
+				return true;
+		}
+		
+		return false;
 	}
 	
 	@Override
