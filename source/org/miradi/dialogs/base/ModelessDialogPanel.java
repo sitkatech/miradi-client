@@ -22,8 +22,6 @@ package org.miradi.dialogs.base;
 import java.awt.BorderLayout;
 import java.awt.LayoutManager2;
 
-import org.miradi.ids.BaseId;
-import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
 
 abstract public class ModelessDialogPanel extends DisposablePanelWithDescription
@@ -36,16 +34,6 @@ abstract public class ModelessDialogPanel extends DisposablePanelWithDescription
 	public ModelessDialogPanel(LayoutManager2 layoutToUse)
 	{
 		super(layoutToUse);
-	}
-	
-	public void objectWasSelected(BaseId selectedId)
-	{
-		
-	}
-	
-	public void selectObject(BaseObject objectToSelect)
-	{
-		EAM.logWarning("selectObject not handled by " + getClass().getName());
 	}
 	
 	@Override
