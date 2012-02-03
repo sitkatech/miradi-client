@@ -114,10 +114,13 @@ public class IndicatorViabilityTableModel extends PlanningViewAbstractTreeTableS
 	public void setValueAt(Object value, int row, int column)
 	{
 		BaseObject baseObject = getBaseObjectForRow(row);
-		if (isChoiceItemColumn(column))
-			setChoiceValueUsingCommand(baseObject, getColumnTag(column), (ChoiceItem) value);
-		else
-			setValueUsingCommand(baseObject.getRef(), getColumnTag(column), value.toString());
+		if (Measurement.is(baseObject))
+		{
+			if (isChoiceItemColumn(column))
+				setChoiceValueUsingCommand(baseObject, getColumnTag(column), (ChoiceItem) value);
+			else
+				setValueUsingCommand(baseObject.getRef(), getColumnTag(column), value.toString());
+		}
 	}
 
 	@Override
