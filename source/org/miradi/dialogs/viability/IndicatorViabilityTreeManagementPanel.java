@@ -43,7 +43,7 @@ public class IndicatorViabilityTreeManagementPanel extends AbstractViabilityMana
 		super(mainWindowToUse, tablePanelToUse, propertiesPanel);
 	}
 	
-	public static AbstractViabilityManagementPanel createIndicatorViabilityManagementPanel(MainWindow mainWindowToUse, ORef parentRefToUse) throws Exception
+	public static AbstractViabilityManagementPanel createManagementPanel(MainWindow mainWindowToUse, ORef parentRefToUse) throws Exception
 	{
 		PlanningTreeBaseObjectNode rootNode = new PlanningTreeBaseObjectNode(mainWindowToUse.getProject(), null, parentRefToUse);
 		IndicatorViabilityRowColumnProvider rowColumnProvider = new IndicatorViabilityRowColumnProvider(mainWindowToUse.getProject());
