@@ -19,23 +19,26 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.viability;
 
+import javax.swing.Icon;
+
 import org.miradi.actions.jump.ActionJumpTargetViability3Step;
 import org.miradi.dialogs.planning.treenodes.PlanningTreeBaseObjectNode;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
-import org.miradi.dialogs.planning.upperPanel.ViabilityTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.TreeTableModelWithRebuilder;
+import org.miradi.dialogs.planning.upperPanel.ViabilityTreeTableModel;
+import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 
-public class TargetKeaViabilityTreeManagementPanel extends TargetViabilityManagementPanel
+public class TargetKeaViabilityTreeManagementPanel extends AbstractViabilityManagementPanel
 {
 	private TargetKeaViabilityTreeManagementPanel(MainWindow mainWindowToUse, PlanningTreeTablePanel tablePanelToUse, TargetViabilityMultiPropertiesPanel propertiesPanel) throws Exception
 	{
 		super(mainWindowToUse, tablePanelToUse, propertiesPanel);
 	}
 	
-	public static TargetViabilityManagementPanel createKeaViabilityManagementPanel(MainWindow mainWindowToUse, ORef parentRefToUse) throws Exception
+	public static AbstractViabilityManagementPanel createKeaViabilityManagementPanel(MainWindow mainWindowToUse, ORef parentRefToUse) throws Exception
 	{
 		PlanningTreeBaseObjectNode rootNode = new PlanningTreeBaseObjectNode(mainWindowToUse.getProject(), null, parentRefToUse);
 		KeaViabilityRowColumnProvider rowColumnProvider = new KeaViabilityRowColumnProvider(mainWindowToUse.getProject());
@@ -45,6 +48,12 @@ public class TargetKeaViabilityTreeManagementPanel extends TargetViabilityManage
 		TargetViabilityMultiPropertiesPanel propertiesPanel = new TargetViabilityMultiPropertiesPanel(mainWindowToUse);
 		
 		return new TargetKeaViabilityTreeManagementPanel(mainWindowToUse, treeTablePanel, propertiesPanel);
+	}
+	
+	@Override
+	public Icon getIcon()
+	{
+		return IconManager.getKeyEcologicalAttributeIcon();
 	}
 	
 	@Override
@@ -59,5 +68,11 @@ public class TargetKeaViabilityTreeManagementPanel extends TargetViabilityManage
 		return ActionJumpTargetViability3Step.class;
 	}
 	
-	private static String PANEL_DESCRIPTION_VIABILITY = EAM.text("Tab|Viability"); 
+	@Override
+	public String getPanelDescription()
+	{
+		return PANEL_DESCRIPTION_VIABILITY;
+	} 
+	
+	private static String PANEL_DESCRIPTION_VIABILITY = EAM.text("Tab|Viability");
 }
