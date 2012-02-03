@@ -250,8 +250,6 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		{
 			setFutureStatusValue(baseObject, value, row, column);
 		}
-			
-		super.setValueAt(value, row, column);
 	}
 	
 	private boolean ignoreSettingSameValue(Object value, int row, int column)
