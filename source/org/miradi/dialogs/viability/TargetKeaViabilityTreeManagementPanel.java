@@ -38,7 +38,7 @@ public class TargetKeaViabilityTreeManagementPanel extends AbstractViabilityMana
 		super(mainWindowToUse, tablePanelToUse, propertiesPanel);
 	}
 	
-	public static AbstractViabilityManagementPanel createKeaViabilityManagementPanel(MainWindow mainWindowToUse, ORef parentRefToUse) throws Exception
+	public static AbstractViabilityManagementPanel createManagementPanel(MainWindow mainWindowToUse, ORef parentRefToUse) throws Exception
 	{
 		PlanningTreeBaseObjectNode rootNode = new PlanningTreeBaseObjectNode(mainWindowToUse.getProject(), null, parentRefToUse);
 		KeaViabilityRowColumnProvider rowColumnProvider = new KeaViabilityRowColumnProvider(mainWindowToUse.getProject());
