@@ -405,7 +405,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	}
 	
 	@Override
-	public Class getCellQuestion(int modelColumn)
+	public Class getCellQuestion(int row, int modelColumn)
 	{
 		if (isProjectResourceTypeColumn(modelColumn))
 			return ResourceTypeQuestion.class;

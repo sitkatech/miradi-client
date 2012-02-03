@@ -83,6 +83,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		return false;
 	}
 	
+	@Override
 	public Class getCellQuestion(int row, int modelColumn)
 	{
 		if (isAbstractTargetViabilityModeCell(row, modelColumn))

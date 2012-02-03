@@ -109,7 +109,7 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 		return getColumnGroupCode(modelColumn);
 	}
 	
-	public Class getCellQuestion(int modelColumn)
+	public Class getCellQuestion(int row, int modelColumn)
 	{
 		return null;
 	}
