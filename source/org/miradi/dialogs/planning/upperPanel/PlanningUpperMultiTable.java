@@ -105,7 +105,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		if (getCastedModel().isWhenColumn(modelColumn))
 			return new WhenTableCellPopupEditorOrRendererFactory(getMainWindow(), this, new PlanningViewFontProvider(getMainWindow()));
 		
-		Class cellQuestionClass = getCastedModel().getCellQuestion(modelColumn);
+		Class cellQuestionClass = getCastedModel().getCellQuestion(row, modelColumn);
 		if (cellQuestionClass !=  null)
 		{
 			ChoiceQuestion question = StaticQuestionManager.getQuestion(cellQuestionClass);
