@@ -105,11 +105,6 @@ import org.miradi.views.umbrella.ObjectPicker;
 
 abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel implements CommandExecutedListener, MiradiTabContentsPanelInterface
 {
-	public AbstractObjectDataInputPanel(Project projectToUse, int objectType, BaseId idToUse)
-	{
-		this(projectToUse,new ORef(objectType, idToUse));
-	}
-	
 	public AbstractObjectDataInputPanel(Project projectToUse, ORef orefToUse)
 	{
 		this(projectToUse, new ORef[] {orefToUse});
