@@ -49,7 +49,7 @@ public class IndicatorViabilityTreeManagementPanel extends TargetViabilityManage
 		IndicatorViabilityRowColumnProvider rowColumnProvider = new IndicatorViabilityRowColumnProvider(mainWindowToUse.getProject());
 		
 		TreeTableModelWithRebuilder model = new TargetViabilityTreeTableModel(mainWindowToUse.getProject(), rootNode, rowColumnProvider);
-		PlanningTreeTablePanel treeTablePanel = TargetViabilityTreeTablePanel.createTreeTablePanel(mainWindowToUse, model, buttonActions, rowColumnProvider);
+		PlanningTreeTablePanel treeTablePanel = IndicatorViabilityTreeTablePanel.createTreeTablePanel(mainWindowToUse, model, buttonActions, rowColumnProvider);
 		TargetViabilityMultiPropertiesPanel propertiesPanel = new TargetViabilityMultiPropertiesPanel(mainWindowToUse);
 		
 		return new IndicatorViabilityTreeManagementPanel(mainWindowToUse, treeTablePanel, propertiesPanel);

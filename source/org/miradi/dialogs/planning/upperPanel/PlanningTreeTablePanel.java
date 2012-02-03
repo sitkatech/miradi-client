@@ -146,7 +146,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		budgetCategoryTwoBudgetDetailsModel = new BudgetCategoryOneBudgetDetailsTableModel(getProject(), getRowColumnProvider(), getTree(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
 	}
 
-	protected PlanningViewMainTableModel createMainTableModel(final PlanningTreeRowColumnProvider rowColumnProviderToUse) throws Exception
+	protected PlanningViewAbstractTreeTableSyncedTableModel createMainTableModel(final PlanningTreeRowColumnProvider rowColumnProviderToUse) throws Exception
 	{
 		return new PlanningViewMainTableModel(getProject(), getTree(), rowColumnProviderToUse);
 	}

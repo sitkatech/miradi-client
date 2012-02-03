@@ -41,4 +41,13 @@ public class IndicatorViabilityRowColumnProvider extends AbstractViabilityRowCol
 				Goal.OBJECT_NAME,
 		});
 	}
+
+	@Override
+	public CodeList getColumnCodesToShow() throws Exception
+	{
+		return new CodeList(new String[] {
+				 Measurement.TAG_SUMMARY,
+				 Measurement.TAG_STATUS_CONFIDENCE,
+		});
+	}
 }
