@@ -96,7 +96,7 @@ public class IndicatorViabilityTableModel extends PlanningViewAbstractTreeTableS
 	@Override
 	public String getColumnName(int column)
 	{
-		return getColumnTag(column);
+		return EAM.fieldLabel(Measurement.getObjectType(), getColumnTag(column));
 	}
 	
 	public Object getValueAt(int row, int column)
