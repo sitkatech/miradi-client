@@ -57,15 +57,15 @@ public class TargetKeaViabilityTreeManagementPanel extends AbstractViabilityMana
 	}
 	
 	@Override
-	public String getSplitterDescription()
-	{
-		return PANEL_DESCRIPTION_VIABILITY + SPLITTER_TAG;
-	}
-
-	@Override
 	public Class getJumpActionClass()
 	{
 		return ActionJumpTargetViability3Step.class;
+	}
+	
+	@Override
+	public String getSplitterDescription()
+	{
+		return PANEL_DESCRIPTION_VIABILITY + SPLITTER_TAG;
 	}
 	
 	@Override

@@ -56,18 +56,6 @@ public class IndicatorViabilityTreeManagementPanel extends AbstractViabilityMana
 	}
 	
 	@Override
-	public String getSplitterDescription()
-	{
-		return PANEL_DESCRIPTION + SPLITTER_TAG;
-	}
-	
-	@Override
-	public String getPanelDescription()
-	{
-		return PANEL_DESCRIPTION;
-	}
-	
-	@Override
 	public Icon getIcon()
 	{
 		return IconManager.getIndicatorIcon();
@@ -77,6 +65,18 @@ public class IndicatorViabilityTreeManagementPanel extends AbstractViabilityMana
 	public Class getJumpActionClass()
 	{
 		return ActionJumpMonitoringWizardDefineIndicatorsStep.class;
+	}
+	
+	@Override
+	public String getSplitterDescription()
+	{
+		return PANEL_DESCRIPTION + SPLITTER_TAG;
+	}
+	
+	@Override
+	public String getPanelDescription()
+	{
+		return PANEL_DESCRIPTION;
 	}
 	
 	private static final Class[] buttonActions = new Class[] {
