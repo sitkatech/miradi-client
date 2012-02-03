@@ -26,12 +26,11 @@ import javax.swing.Icon;
 import javax.swing.JComponent;
 
 import org.miradi.actions.jump.ActionJumpTargetViabilityMethodChoiceStep;
-import org.miradi.dialogs.base.ObjectListManagementPanel;
 import org.miradi.dialogs.planning.AbstractPlanningTreeRowColumnProvider;
 import org.miradi.dialogs.planning.treenodes.PlanningTreeRootNodeAlwaysExpanded;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
-import org.miradi.dialogs.planning.upperPanel.ViabilityTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.TreeTableModelWithRebuilder;
+import org.miradi.dialogs.planning.upperPanel.ViabilityTreeTableModel;
 import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -39,7 +38,7 @@ import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.utils.BufferedImageFactory;
 import org.miradi.utils.TableExporter;
 
-public class TargetViabilityManagementPanel extends ObjectListManagementPanel
+public class TargetViabilityManagementPanel extends AbstractViabilityManagementPanel
 {
 	protected TargetViabilityManagementPanel(MainWindow mainWindowToUse, PlanningTreeTablePanel tablePanelToUse, TargetViabilityMultiPropertiesPanel propertiesPanel) throws Exception
 	{
