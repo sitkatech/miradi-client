@@ -49,6 +49,7 @@ import org.miradi.dialogs.objective.ObjectiveListManagementPanel;
 import org.miradi.dialogs.objective.ObjectiveListTablePanel;
 import org.miradi.dialogs.stress.StressListManagementPanel;
 import org.miradi.dialogs.subTarget.SubTargetManagementPanel;
+import org.miradi.dialogs.viability.AbstractViabilityManagementPanel;
 import org.miradi.dialogs.viability.IndicatorViabilityTreeManagementPanel;
 import org.miradi.dialogs.viability.TargetKeaViabilityTreeManagementPanel;
 import org.miradi.dialogs.viability.TargetViabilityManagementPanel;
@@ -618,7 +619,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 	private boolean ignoreTabChanges;
 	private FactorSummaryScrollablePanel detailsTab;
 	private ObjectiveListManagementPanel objectivesTab;
-	private TargetViabilityManagementPanel indicatorsTab;
+	private AbstractViabilityManagementPanel indicatorsTab;
 	private GoalListManagementPanel goalsTab;
 	private TargetViabilityManagementPanel viabilityTab;
 	private SimpleViabilityPanel simpleViabilityTab;

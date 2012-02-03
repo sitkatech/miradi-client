@@ -27,8 +27,8 @@ import javax.swing.border.Border;
 
 import org.miradi.dialogs.base.ModelessDialogPanel;
 import org.miradi.dialogs.indicator.SimpleViabilityFieldsPanel;
+import org.miradi.dialogs.viability.AbstractViabilityManagementPanel;
 import org.miradi.dialogs.viability.IndicatorViabilityTreeManagementPanel;
-import org.miradi.dialogs.viability.TargetViabilityManagementPanel;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
@@ -93,6 +93,6 @@ public class SimpleViabilityPanel extends ModelessDialogPanel
 		simpleViabilityManagementPanel.updateSplitterLocation();
 	}
 		
-	private TargetViabilityManagementPanel simpleViabilityManagementPanel;
+	private AbstractViabilityManagementPanel simpleViabilityManagementPanel;
 	private SimpleViabilityFieldsPanel simpleViabilityPropertiesPanel;
 }
