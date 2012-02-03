@@ -943,13 +943,6 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		addTopAlignedLabel(label);
 	}
 
-	public void addLabel(int objectType, String fieldTag, Icon icon)
-	{
-		UiLabel label = new PanelFieldLabel(objectType, fieldTag);
-		label.setIcon(icon);
-		addTopAlignedLabel(label);
-	}
-
 	public void addTopAlignedLabel(UiLabel label)
 	{
 		label.setVerticalAlignment(SwingConstants.TOP);
