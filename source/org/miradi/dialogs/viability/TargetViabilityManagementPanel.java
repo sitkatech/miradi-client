@@ -17,7 +17,6 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-
 package org.miradi.dialogs.viability;
 
 import javax.swing.Icon;
@@ -58,11 +57,11 @@ public class TargetViabilityManagementPanel extends AbstractViabilityManagementP
 	}
 	
 	@Override
-	public String getPanelDescription()
+	public Class getJumpActionClass()
 	{
-		return PANEL_DESCRIPTION_VIABILITY;
+		return ActionJumpTargetViabilityMethodChoiceStep.class;
 	}
-	
+
 	@Override
 	public String getSplitterDescription()
 	{
@@ -70,9 +69,9 @@ public class TargetViabilityManagementPanel extends AbstractViabilityManagementP
 	}
 	
 	@Override
-	public Class getJumpActionClass()
+	public String getPanelDescription()
 	{
-		return ActionJumpTargetViabilityMethodChoiceStep.class;
+		return PANEL_DESCRIPTION_VIABILITY;
 	}
 
 	private static String PANEL_DESCRIPTION_VIABILITY = EAM.text("Tab|Viability");
