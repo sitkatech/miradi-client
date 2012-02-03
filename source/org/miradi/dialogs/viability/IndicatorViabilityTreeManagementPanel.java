@@ -58,13 +58,13 @@ public class IndicatorViabilityTreeManagementPanel extends AbstractViabilityMana
 	@Override
 	public String getSplitterDescription()
 	{
-		return PANEL_DESCRIPTION_INDICATORS + SPLITTER_TAG;
+		return PANEL_DESCRIPTION + SPLITTER_TAG;
 	}
 	
 	@Override
 	public String getPanelDescription()
 	{
-		return PANEL_DESCRIPTION_INDICATORS;
+		return PANEL_DESCRIPTION;
 	}
 	
 	@Override
@@ -87,5 +87,5 @@ public class IndicatorViabilityTreeManagementPanel extends AbstractViabilityMana
 		ActionDeleteIndicatorMeasurement.class, 
 	};
 
-	private static String PANEL_DESCRIPTION_INDICATORS = EAM.text("Tab|Indicators"); 
+	private static String PANEL_DESCRIPTION = EAM.text("Tab|Viability"); 
 }
