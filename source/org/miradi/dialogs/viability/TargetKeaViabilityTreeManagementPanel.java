@@ -28,9 +28,9 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 
-public class TargetPropertiesKeaViabilityTreeManagementPanel extends TargetViabilityManagementPanel
+public class TargetKeaViabilityTreeManagementPanel extends TargetViabilityManagementPanel
 {
-	private TargetPropertiesKeaViabilityTreeManagementPanel(MainWindow mainWindowToUse, PlanningTreeTablePanel tablePanelToUse, TargetViabilityMultiPropertiesPanel propertiesPanel) throws Exception
+	private TargetKeaViabilityTreeManagementPanel(MainWindow mainWindowToUse, PlanningTreeTablePanel tablePanelToUse, TargetViabilityMultiPropertiesPanel propertiesPanel) throws Exception
 	{
 		super(mainWindowToUse, tablePanelToUse, propertiesPanel);
 	}
@@ -44,7 +44,7 @@ public class TargetPropertiesKeaViabilityTreeManagementPanel extends TargetViabi
 		PlanningTreeTablePanel treeTablePanel = TargetViabilityTreeTablePanel.createTreeTablePanel(mainWindowToUse, model, rowColumnProvider);
 		TargetViabilityMultiPropertiesPanel propertiesPanel = new TargetViabilityMultiPropertiesPanel(mainWindowToUse);
 		
-		return new TargetPropertiesKeaViabilityTreeManagementPanel(mainWindowToUse, treeTablePanel, propertiesPanel);
+		return new TargetKeaViabilityTreeManagementPanel(mainWindowToUse, treeTablePanel, propertiesPanel);
 	}
 	
 	@Override
