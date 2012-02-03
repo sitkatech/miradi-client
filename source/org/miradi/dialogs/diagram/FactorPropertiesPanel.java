@@ -357,33 +357,6 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		}
 	}
 
-	public void updateAllSplitterLocations()
-	{
-		if (indicatorsTab != null)
-			indicatorsTab.updateSplitterLocation();
-		
-		if (objectivesTab != null)
-			objectivesTab.updateSplitterLocation();
-		
-		if (goalsTab != null)
-			goalsTab.updateSplitterLocation();
-		
-		if (activitiesTab != null)
-			activitiesTab.updateSplitterLocation();
-		
-		if (viabilityTab != null)
-			viabilityTab.updateSplitterLocation();
-		
-		if (stressTab != null)
-			stressTab.updateSplitterLocation();
-		
-		if (subTargetTab != null)
-			subTargetTab.updateSplitterLocation();
-		
-		if (simpleViabilityTab != null)
-			simpleViabilityTab.updateSplitterLocation();
-	}
-	
 	public void setCurrentDiagramFactor(DiagramFactor diagramFactor)
 	{
 		rebuildPanelForDiagramFactor(diagramFactor);
