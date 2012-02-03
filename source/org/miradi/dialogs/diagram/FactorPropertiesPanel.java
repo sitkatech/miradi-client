@@ -50,7 +50,7 @@ import org.miradi.dialogs.objective.ObjectiveListTablePanel;
 import org.miradi.dialogs.stress.StressListManagementPanel;
 import org.miradi.dialogs.subTarget.SubTargetManagementPanel;
 import org.miradi.dialogs.viability.IndicatorViabilityTreeManagementPanel;
-import org.miradi.dialogs.viability.TargetPropertiesKeaViabilityTreeManagementPanel;
+import org.miradi.dialogs.viability.TargetKeaViabilityTreeManagementPanel;
 import org.miradi.dialogs.viability.TargetViabilityManagementPanel;
 import org.miradi.icons.IconManager;
 import org.miradi.main.AppPreferences;
@@ -264,7 +264,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		
 		if(isKeaViabilityMode)
 		{
-			viabilityTab = TargetPropertiesKeaViabilityTreeManagementPanel.createKeaViabilityManagementPanel(mainWindow, getCurrentDiagramFactor().getWrappedORef());
+			viabilityTab = TargetKeaViabilityTreeManagementPanel.createKeaViabilityManagementPanel(mainWindow, getCurrentDiagramFactor().getWrappedORef());
 			addTab(viabilityTab);
 		}
 
