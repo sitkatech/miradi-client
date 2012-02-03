@@ -36,9 +36,9 @@ import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.utils.CodeList;
 
 
-public class TargetViabilityTableModel extends PlanningViewAbstractTreeTableSyncedTableModel
+public class IndicatorViabilityTableModel extends PlanningViewAbstractTreeTableSyncedTableModel
 {
-	public TargetViabilityTableModel(Project projectToUse, RowColumnBaseObjectProvider adapterToUse, RowColumnProvider rowColumnProviderToUse) throws Exception
+	public IndicatorViabilityTableModel(Project projectToUse, RowColumnBaseObjectProvider adapterToUse, RowColumnProvider rowColumnProviderToUse) throws Exception
 	{
 		super(projectToUse, adapterToUse);
 		
