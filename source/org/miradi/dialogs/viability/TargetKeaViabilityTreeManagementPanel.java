@@ -22,7 +22,7 @@ package org.miradi.dialogs.viability;
 import org.miradi.actions.jump.ActionJumpTargetViability3Step;
 import org.miradi.dialogs.planning.treenodes.PlanningTreeBaseObjectNode;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
-import org.miradi.dialogs.planning.upperPanel.TargetViabilityTreeTableModel;
+import org.miradi.dialogs.planning.upperPanel.ViabilityTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.TreeTableModelWithRebuilder;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -40,7 +40,7 @@ public class TargetKeaViabilityTreeManagementPanel extends TargetViabilityManage
 		PlanningTreeBaseObjectNode rootNode = new PlanningTreeBaseObjectNode(mainWindowToUse.getProject(), null, parentRefToUse);
 		KeaViabilityRowColumnProvider rowColumnProvider = new KeaViabilityRowColumnProvider(mainWindowToUse.getProject());
 		
-		TreeTableModelWithRebuilder model = new TargetViabilityTreeTableModel(mainWindowToUse.getProject(), rootNode, rowColumnProvider);
+		TreeTableModelWithRebuilder model = new ViabilityTreeTableModel(mainWindowToUse.getProject(), rootNode, rowColumnProvider);
 		PlanningTreeTablePanel treeTablePanel = TargetViabilityTreeTablePanel.createTreeTablePanel(mainWindowToUse, model, rowColumnProvider);
 		TargetViabilityMultiPropertiesPanel propertiesPanel = new TargetViabilityMultiPropertiesPanel(mainWindowToUse);
 		

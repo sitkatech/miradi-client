@@ -29,7 +29,7 @@ import org.miradi.actions.ActionDeleteIndicatorMeasurement;
 import org.miradi.actions.jump.ActionJumpMonitoringWizardDefineIndicatorsStep;
 import org.miradi.dialogs.planning.treenodes.PlanningTreeBaseObjectNode;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
-import org.miradi.dialogs.planning.upperPanel.TargetViabilityTreeTableModel;
+import org.miradi.dialogs.planning.upperPanel.ViabilityTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.TreeTableModelWithRebuilder;
 import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
@@ -48,7 +48,7 @@ public class IndicatorViabilityTreeManagementPanel extends TargetViabilityManage
 		PlanningTreeBaseObjectNode rootNode = new PlanningTreeBaseObjectNode(mainWindowToUse.getProject(), null, parentRefToUse);
 		IndicatorViabilityRowColumnProvider rowColumnProvider = new IndicatorViabilityRowColumnProvider(mainWindowToUse.getProject());
 		
-		TreeTableModelWithRebuilder model = new TargetViabilityTreeTableModel(mainWindowToUse.getProject(), rootNode, rowColumnProvider);
+		TreeTableModelWithRebuilder model = new ViabilityTreeTableModel(mainWindowToUse.getProject(), rootNode, rowColumnProvider);
 		PlanningTreeTablePanel treeTablePanel = IndicatorViabilityTreeTablePanel.createTreeTablePanel(mainWindowToUse, model, buttonActions, rowColumnProvider);
 		TargetViabilityMultiPropertiesPanel propertiesPanel = new TargetViabilityMultiPropertiesPanel(mainWindowToUse);
 		

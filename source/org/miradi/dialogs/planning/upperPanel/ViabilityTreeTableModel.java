@@ -26,9 +26,9 @@ import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.project.Project;
 
-public class TargetViabilityTreeTableModel extends TreeTableModelWithRebuilder
+public class ViabilityTreeTableModel extends TreeTableModelWithRebuilder
 {
-	public TargetViabilityTreeTableModel(Project project, TreeTableNode rootNodeToUse, PlanningTreeRowColumnProvider rowColumnProviderToUse) throws Exception
+	public ViabilityTreeTableModel(Project project, TreeTableNode rootNodeToUse, PlanningTreeRowColumnProvider rowColumnProviderToUse) throws Exception
 	{
 		super(project, rootNodeToUse, rowColumnProviderToUse, UNIQUE_TREE_TABLE_IDENTIFIER);
 	}
