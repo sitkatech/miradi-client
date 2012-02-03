@@ -26,7 +26,7 @@ import org.miradi.dialogs.planning.upperPanel.PlanningTreeTable;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
 import org.miradi.dialogs.planning.upperPanel.PlanningUpperMultiTable;
-import org.miradi.dialogs.planning.upperPanel.TargetViabilityTableModel;
+import org.miradi.dialogs.planning.upperPanel.IndicatorViabilityTableModel;
 import org.miradi.dialogs.planning.upperPanel.ViabilityTreeTable;
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.main.MainWindow;
@@ -50,7 +50,7 @@ public class IndicatorViabilityTreeTablePanel extends PlanningTreeTablePanel
 	@Override
 	protected PlanningViewAbstractTreeTableSyncedTableModel createMainTableModel(final PlanningTreeRowColumnProvider rowColumnProviderToUse) throws Exception
 	{
-		return new TargetViabilityTableModel(getProject(), getTree(), rowColumnProviderToUse);
+		return new IndicatorViabilityTableModel(getProject(), getTree(), rowColumnProviderToUse);
 	}
 
 	@Override
