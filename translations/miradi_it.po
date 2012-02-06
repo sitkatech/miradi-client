@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-01 13:56-0600\n"
+"POT-Creation-Date: 2012-02-06 12:56-0600\n"
 "PO-Revision-Date: 2011-04-29 11:26+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -3488,7 +3488,6 @@ msgstr "Durata totale del progetto"
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:80
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetThreatLinkTableModel.java:76
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetSummaryRowTableModel.java:66
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorTreeModel.java:73
 #: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:112
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:103
 #: Miradi/source/org/miradi/dialogs/progressPercent/ProgressPercentTableModel.java:98
@@ -3647,7 +3646,7 @@ msgstr "FOS Training Type|Altro"
 msgid "FTE Days Per Year:"
 msgstr "FTE Giorni per Anno:"
 
-#: Miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:519
+#: Miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:492
 msgid "Factor Properties"
 msgstr "Proprietà del fattore"
 
@@ -5564,10 +5563,6 @@ msgstr "Pianificazione"
 msgid "Planning Parameters"
 msgstr "Parametri di pianificazione"
 
-#: Miradi/source/org/miradi/dialogs/indicator/SimpleViabilityMultiPropertiesPanel.java:62
-msgid "Planning Properties Panel"
-msgstr ""
-
 #: Miradi/source/org/miradi/views/planning/doers/AbstractCreatePlanningViewConfigurationDoer.java:101
 msgid "PlanningSubViewName|Custom"
 msgstr "Personalizzato"
@@ -7429,11 +7424,6 @@ msgstr "Abitudine"
 msgid "Tab|Goals"
 msgstr "Obiettivi di Conservazione"
 
-#: Miradi/source/org/miradi/dialogs/viability/FactorPropertiesViabilityTreeManagementPanel.java:51
-#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityManagementPanel.java:142
-msgid "Tab|Indicators"
-msgstr "Indicatori"
-
 #: Miradi/source/org/miradi/dialogs/activity/MethodListManagementPanel.java:70
 msgid "Tab|Methods"
 msgstr "Metodi"
@@ -7458,9 +7448,9 @@ msgstr "Modelli di Report"
 msgid "Tab|Stresses"
 msgstr "Pressioni(Stress)"
 
-#: Miradi/source/org/miradi/dialogs/viability/TargetPropertiesKeaViabilityTreeManagementPanel.java:51
-#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityManagementPanelNew.java:147
-#: Miradi/source/org/miradi/dialogs/indicator/SimpleViabilityManagementPanel.java:38
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityTreeManagementPanel.java:90
+#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityManagementPanel.java:77
+#: Miradi/source/org/miradi/dialogs/viability/TargetKeaViabilityTreeManagementPanel.java:77
 msgid "Tab|Viability"
 msgstr "Vitalità(Viability)"
 
@@ -8392,7 +8382,7 @@ msgstr "Molto Grande"
 msgid "Very Small"
 msgstr "Molto Piccolo"
 
-#: Miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:454
+#: Miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:427
 msgid "Viability Analysis Mode"
 msgstr "Modalità Analisi Vitalità"
 
@@ -30298,6 +30288,9 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
+
+#~ msgid "Tab|Indicators"
+#~ msgstr "Indicatori"
 
 #~ msgid " A project by this name already exists: "
 #~ msgstr "Esiste già un progetto con lo stesso nome:"
