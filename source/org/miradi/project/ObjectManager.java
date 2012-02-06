@@ -87,6 +87,7 @@ import org.miradi.objectpools.WcpaProjectDataPool;
 import org.miradi.objectpools.WcsProjectDataPool;
 import org.miradi.objectpools.WwfProjectDataPool;
 import org.miradi.objectpools.XenodataPool;
+import org.miradi.objectpools.XslTemplatePool;
 import org.miradi.objects.AccountingCode;
 import org.miradi.objects.Audience;
 import org.miradi.objects.BaseObject;
@@ -142,6 +143,7 @@ import org.miradi.objects.WcpaProjectData;
 import org.miradi.objects.WcsProjectData;
 import org.miradi.objects.WwfProjectData;
 import org.miradi.objects.Xenodata;
+import org.miradi.objects.XslTemplate;
 
 public class ObjectManager
 {
@@ -207,6 +209,7 @@ public class ObjectManager
 		addNormalPool(new BudgetCategoryOnePool(ida), BudgetCategoryOne.OBJECT_NAME);
 		addNormalPool(new BudgetCategoryTwoPool(ida), BudgetCategoryTwo.OBJECT_NAME);
 		addNormalPool(new DashboardPool(ida), Dashboard.OBJECT_NAME);
+		addNormalPool(new XslTemplatePool(ida), XslTemplate.OBJECT_NAME);
 	}
 	
 	public ChainWalker getDiagramChainWalker()

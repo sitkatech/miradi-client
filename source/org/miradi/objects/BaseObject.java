@@ -618,6 +618,9 @@ abstract public class BaseObject
 			
 			case ObjectType.DASHBOARD:
 				return new Dashboard(objectManager, idAsInt, json);
+			
+			case ObjectType.XSL_TEMPLATE:
+				return new XslTemplate(objectManager, idAsInt, json);
 				
 			default:
 				throw new RuntimeException("Attempted to create unknown EAMObject type " + type);

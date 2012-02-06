@@ -53,6 +53,7 @@ import org.miradi.objects.ViewData;
 import org.miradi.objects.WcpaProjectData;
 import org.miradi.objects.WcsProjectData;
 import org.miradi.objects.WwfProjectData;
+import org.miradi.objects.XslTemplate;
 import org.miradi.project.Project;
 
 public class ObjectType
@@ -118,12 +119,13 @@ public class ObjectType
 	public static final int BUDGET_CATEGORY_ONE = 56;
 	public static final int BUDGET_CATEGORY_TWO = 57;
 	public static final int DASHBOARD = 58;
+	public static final int XSL_TEMPLATE = 59;
 	// When you add a new type, be sure to:
 	// - increment OBJECT_TYPE_COUNT
 	// - IF it is a user-visible object, add a case to getUserFriendlyObjectTypeName below
 	// - IF it is a top-level object, add it to getTopLevelObjectTypes below
 	
-	public static final int OBJECT_TYPE_COUNT = 59;
+	public static final int OBJECT_TYPE_COUNT = 60;
 
 	public static String getUserFriendlyObjectTypeName(Project project, int objectType)
 	{
@@ -163,6 +165,7 @@ public class ObjectType
 			BudgetCategoryOne.getObjectType(),
 			BudgetCategoryTwo.getObjectType(),
 			Dashboard.getObjectType(),
+			XslTemplate.getObjectType(),
 		};
 		
 		return new HashSet<Integer>(Arrays.asList(types));

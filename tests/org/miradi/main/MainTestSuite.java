@@ -151,6 +151,7 @@ import org.miradi.objects.TestWcpaProjectData;
 import org.miradi.objects.TestWcsProjectData;
 import org.miradi.objects.TestWwfProjectData;
 import org.miradi.objects.TestXenodata;
+import org.miradi.objects.TestXslTemplate;
 import org.miradi.project.TestCausePool;
 import org.miradi.project.TestCommandExecutor;
 import org.miradi.project.TestDateUnit;
@@ -187,7 +188,10 @@ import org.miradi.ratings.TestStrategyRatingSummary;
 import org.miradi.utils.TestAbstractTableExporter;
 import org.miradi.utils.TestBaseObjectDateAndIdComparator;
 import org.miradi.utils.TestBendPointList;
+import org.miradi.utils.TestCodeChoiceMap;
+import org.miradi.utils.TestCodeCodeListMap;
 import org.miradi.utils.TestCodeList;
+import org.miradi.utils.TestCodeStringMap;
 import org.miradi.utils.TestColumnSequenceSaver;
 import org.miradi.utils.TestConproMiradiHabitatCodeMap;
 import org.miradi.utils.TestDateRange;
@@ -202,9 +206,6 @@ import org.miradi.utils.TestLogging;
 import org.miradi.utils.TestOptionalDouble;
 import org.miradi.utils.TestPointList;
 import org.miradi.utils.TestRtfWriter;
-import org.miradi.utils.TestCodeChoiceMap;
-import org.miradi.utils.TestCodeCodeListMap;
-import org.miradi.utils.TestCodeStringMap;
 import org.miradi.utils.TestStringUtilities;
 import org.miradi.utils.TestTaxonomyFileLoader;
 import org.miradi.utils.TestThreatStressRatingHelper;
@@ -438,6 +439,7 @@ public class MainTestSuite extends TestSuite
 		addTest(new TestSuite(TestCategoryTwo.class));
 		addTest(new TestSuite(TestDashboard.class));
 		addTest(new TestSuite(TestXmlUtilities2.class));
+		addTest(new TestSuite(TestXslTemplate.class));
 			
 		// commands package
 		addTest(new TestSuite(TestCommands.class));
