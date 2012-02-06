@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-01 13:56-0600\n"
+"POT-Creation-Date: 2012-02-06 12:56-0600\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -3375,7 +3375,6 @@ msgstr ""
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:80
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetThreatLinkTableModel.java:76
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetSummaryRowTableModel.java:66
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorTreeModel.java:73
 #: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:112
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:103
 #: Miradi/source/org/miradi/dialogs/progressPercent/ProgressPercentTableModel.java:98
@@ -3535,7 +3534,7 @@ msgstr "Lainnya"
 msgid "FTE Days Per Year:"
 msgstr "Sisipkan Pecahan FTE "
 
-#: Miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:519
+#: Miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:492
 msgid "Factor Properties"
 msgstr "Sifat-sifat Faktor "
 
@@ -5442,10 +5441,6 @@ msgstr "Perencanaan "
 msgid "Planning Parameters"
 msgstr "Rangkuman Proyek"
 
-#: Miradi/source/org/miradi/dialogs/indicator/SimpleViabilityMultiPropertiesPanel.java:62
-msgid "Planning Properties Panel"
-msgstr ""
-
 #: Miradi/source/org/miradi/views/planning/doers/AbstractCreatePlanningViewConfigurationDoer.java:101
 msgid "PlanningSubViewName|Custom"
 msgstr "Khusus "
@@ -7281,11 +7276,6 @@ msgstr "Khusus "
 msgid "Tab|Goals"
 msgstr "Sasaran-sasaran "
 
-#: Miradi/source/org/miradi/dialogs/viability/FactorPropertiesViabilityTreeManagementPanel.java:51
-#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityManagementPanel.java:142
-msgid "Tab|Indicators"
-msgstr "Indikator "
-
 #: Miradi/source/org/miradi/dialogs/activity/MethodListManagementPanel.java:70
 msgid "Tab|Methods"
 msgstr "Metode "
@@ -7310,9 +7300,9 @@ msgstr "Templat-templat Laporan"
 msgid "Tab|Stresses"
 msgstr "Tekanan"
 
-#: Miradi/source/org/miradi/dialogs/viability/TargetPropertiesKeaViabilityTreeManagementPanel.java:51
-#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityManagementPanelNew.java:147
-#: Miradi/source/org/miradi/dialogs/indicator/SimpleViabilityManagementPanel.java:38
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityTreeManagementPanel.java:90
+#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityManagementPanel.java:77
+#: Miradi/source/org/miradi/dialogs/viability/TargetKeaViabilityTreeManagementPanel.java:77
 msgid "Tab|Viability"
 msgstr "Kelangsungan "
 
@@ -8241,7 +8231,7 @@ msgstr "Sangat Besar"
 msgid "Very Small"
 msgstr "Sangat Kecil"
 
-#: Miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:454
+#: Miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:427
 msgid "Viability Analysis Mode"
 msgstr "Mode Analisis Kelangsungan "
 
@@ -32228,6 +32218,9 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "Tab|Indicators"
+#~ msgstr "Indikator "
 
 #~ msgid " A project by this name already exists: "
 #~ msgstr "Sudah ada proyek lain yang memakai nama ini: "
