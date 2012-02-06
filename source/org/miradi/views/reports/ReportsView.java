@@ -24,9 +24,11 @@ import java.awt.BorderLayout;
 import org.miradi.actions.ActionCreateReportTemplate;
 import org.miradi.actions.ActionDeleteReportTemplate;
 import org.miradi.actions.ActionRunReportTemplate;
+import org.miradi.dialogs.base.ObjectPoolManagementPanel;
 import org.miradi.dialogs.reportTemplate.ReportTemplateManagementPanel;
 import org.miradi.dialogs.reportTemplate.StandardReportPanel;
 import org.miradi.dialogs.reportTemplate.XsltReportPanel;
+import org.miradi.dialogs.xslTemplate.XslTemplateManagmentPanel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.main.MiradiToolBar;
@@ -90,11 +92,12 @@ public class ReportsView extends TabbedView
 		reportTemplateManagementPanel = new ReportTemplateManagementPanel(getMainWindow());
 		standardReportPanel = new StandardReportPanel(getMainWindow());
 		xsltReportPanel = new XsltReportPanel(getMainWindow());
+		xslTemplateManagmentPanel = new XslTemplateManagmentPanel(getMainWindow()); 
 
 		addTab(EAM.text("Standard Reports"), new MiradiScrollPane(standardReportPanel));
 		addTab(EAM.text("Custom Reports"), reportTemplateManagementPanel);
 		addTab(EAM.text("XSLT"), xsltReportPanel);
-
+		addTab(xslTemplateManagmentPanel.getPanelDescription(), xslTemplateManagmentPanel); 
 	}
 	
 	@Override
@@ -107,10 +110,14 @@ public class ReportsView extends TabbedView
 		
 		xsltReportPanel = null;
 		
+		xslTemplateManagmentPanel.dispose();
+		xslTemplateManagmentPanel= null;
+		
 		super.deleteTabs();
 	}
 
 	private ReportTemplateManagementPanel reportTemplateManagementPanel;
 	private StandardReportPanel standardReportPanel;
 	private XsltReportPanel xsltReportPanel;
+	private ObjectPoolManagementPanel xslTemplateManagmentPanel;
 }
