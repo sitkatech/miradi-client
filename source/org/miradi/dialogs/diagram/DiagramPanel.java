@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.diagram;
 
-import java.awt.Component;
 import java.awt.image.BufferedImage;
 import java.util.HashSet;
 
