@@ -27,19 +27,12 @@ import org.miradi.forms.FormItem;
 import org.miradi.forms.FormRow;
 import org.miradi.forms.PropertiesPanelSpec;
 import org.miradi.forms.objects.BudgetCategoryPropertiesForm;
-import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 
 abstract public class AbstractObjectDataInputPanelWithCreationFromForms extends
 		AbstractObjectDataInputPanelWithActivation
 {
-	public AbstractObjectDataInputPanelWithCreationFromForms(
-			Project projectToUse, int objectType, BaseId idToUse)
-	{
-		super(projectToUse, objectType, idToUse);
-	}
-
 	public AbstractObjectDataInputPanelWithCreationFromForms(
 			Project projectToUse, ORef[] orefsToUse)
 	{
