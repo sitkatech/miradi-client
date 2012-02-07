@@ -66,6 +66,7 @@ abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowH
 		}
 	}
 	
+	//FIXME medium - inspect overriding methods and pull up duplication
 	protected void rebuildColumnEditorsAndRenderers() throws Exception
 	{
 	}
