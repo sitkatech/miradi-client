@@ -23,7 +23,12 @@ import java.awt.BorderLayout;
 
 import org.miradi.actions.ActionCreateReportTemplate;
 import org.miradi.actions.ActionDeleteReportTemplate;
+import org.miradi.actions.ActionDeleteXslTemplate;
+import org.miradi.actions.ActionEditXslTemplate;
+import org.miradi.actions.ActionExportXslTemplate;
+import org.miradi.actions.ActionImportXslTemplate;
 import org.miradi.actions.ActionRunReportTemplate;
+import org.miradi.actions.ActionRunXslTemplate;
 import org.miradi.dialogs.base.ObjectPoolManagementPanel;
 import org.miradi.dialogs.reportTemplate.ReportTemplateManagementPanel;
 import org.miradi.dialogs.reportTemplate.StandardReportPanel;
@@ -67,6 +72,12 @@ public class ReportsView extends TabbedView
 		addDoerToMap(ActionCreateReportTemplate.class, new CreateReportTemplateDoer());
 		addDoerToMap(ActionDeleteReportTemplate.class, new DeleteReportTemplateDoer());
 		addDoerToMap(ActionRunReportTemplate.class, new RunReportTemplateDoer());
+		
+		addDoerToMap(ActionImportXslTemplate.class, new ImportXslTemplateDoer());
+		addDoerToMap(ActionRunXslTemplate.class, new RunXlsTemplateDoer());
+		addDoerToMap(ActionEditXslTemplate.class, new EditXsTemplatelDoer());
+		addDoerToMap(ActionDeleteXslTemplate.class, new DeleteXlsTemplateDoer());
+		addDoerToMap(ActionExportXslTemplate.class, new ExportXslTemplateDoer());
 	}
 
 	@Override

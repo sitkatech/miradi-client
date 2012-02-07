@@ -20,6 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.xslTemplate;
 
+import org.miradi.actions.ActionDeleteXslTemplate;
+import org.miradi.actions.ActionEditXslTemplate;
+import org.miradi.actions.ActionExportXslTemplate;
+import org.miradi.actions.ActionImportXslTemplate;
+import org.miradi.actions.ActionRunXslTemplate;
 import org.miradi.dialogs.base.ObjectPoolTablePanel;
 import org.miradi.main.MainWindow;
 
@@ -27,6 +32,12 @@ public class XslTemplatePoolTablePanel extends ObjectPoolTablePanel
 {
 	public XslTemplatePoolTablePanel(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, new XslTemplatePoolTable(mainWindowToUse, new XslTemplatePoolTableModel(mainWindowToUse.getProject())));		
+		super(mainWindowToUse, new XslTemplatePoolTable(mainWindowToUse, new XslTemplatePoolTableModel(mainWindowToUse.getProject())));
+		
+		addUnknownTypeOfButton(ActionImportXslTemplate.class);
+		addUnknownTypeOfButton(ActionRunXslTemplate.class);
+		addUnknownTypeOfButton(ActionEditXslTemplate.class);
+		addUnknownTypeOfButton(ActionDeleteXslTemplate.class);
+		addUnknownTypeOfButton(ActionExportXslTemplate.class);
 	}
 }

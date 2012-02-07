@@ -320,6 +320,11 @@ public class Actions
 		
 		registerAction(new ActionExportRtf(mainWindow));
 		
+		registerAction(new ActionImportXslTemplate(mainWindow));
+		registerAction(new ActionRunXslTemplate(mainWindow));
+		registerAction(new ActionEditXslTemplate(mainWindow));
+		registerAction(new ActionDeleteXslTemplate(mainWindow));
+		registerAction(new ActionExportXslTemplate(mainWindow));
 		registerAction(new ActionCreateReportTemplate(mainWindow));
 		registerAction(new ActionDeleteReportTemplate(mainWindow));
 		registerAction(new ActionRunReportTemplate(mainWindow));
