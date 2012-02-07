@@ -27,11 +27,6 @@ abstract public class ObjectPoolTableModel extends ObjectTableModel
 {
 	public ObjectPoolTableModel(Project projectToUse, int listedItemType, String[] columnTagsToUse)
 	{
-		this(projectToUse, listedItemType, new IdList(listedItemType), columnTagsToUse);
-	}
-	
-	public ObjectPoolTableModel(Project projectToUse, int listedItemType, IdList listToUse, String[] columnTagsToUse)
-	{
 		super(projectToUse, listedItemType, columnTagsToUse);
 	}
 	
