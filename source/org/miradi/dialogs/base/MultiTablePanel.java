@@ -62,6 +62,7 @@ abstract public class MultiTablePanel extends DisposablePanel implements ObjectP
 		super.dispose();
 		
 		rowSortController.dispose();
+		rowSortController = null;
 	}
 	
 	public MainWindow getMainWindow()

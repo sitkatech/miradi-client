@@ -41,6 +41,7 @@ public class DayPanel extends TwoColumnPanel
 	public void dispose()
 	{
 		dateEditor.dispose();
+		dateEditor = null;
 		
 		super.dispose();
 	}
