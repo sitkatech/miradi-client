@@ -110,6 +110,7 @@ public class WhenEditorComponent extends DisposablePanel
 	public void dispose()
 	{
 		disposePanel(lowerPanel);
+		lowerPanel = null;
 
 		super.dispose();
 	}
