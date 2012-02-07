@@ -21,7 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.xslTemplate;
 
 import org.miradi.dialogs.base.ObjectPoolTableModel;
-import org.miradi.objects.ReportTemplate;
 import org.miradi.objects.XslTemplate;
 import org.miradi.project.Project;
 
@@ -41,6 +40,6 @@ public class XslTemplatePoolTableModel extends ObjectPoolTableModel
 	private static final String UNIQUE_MODEL_IDENTIFIER = "XslTemplatePoolTableModel";
 
 	public static final String[] COLUMN_TAGS = new String[] {
-		ReportTemplate.TAG_LABEL,
+		XslTemplate.TAG_LABEL,
 	};
 }
