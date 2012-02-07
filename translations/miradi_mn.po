@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-06 12:56-0600\n"
+"POT-Creation-Date: 2012-02-07 11:00-0600\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -2985,7 +2985,7 @@ msgstr ""
 msgid "Currently, Miradi can only import one project file at a time"
 msgstr "Одоогоор, Miradi нэг удаа нэг л төслийн файлыг оруулна"
 
-#: Miradi/source/org/miradi/views/reports/ReportsView.java:95
+#: Miradi/source/org/miradi/views/reports/ReportsView.java:98
 msgid "Custom Reports"
 msgstr "Үйлчлүүлэгчийн тайлангууд"
 
@@ -6311,7 +6311,7 @@ msgstr ""
 msgid "Stakeholder"
 msgstr "Оролцогч тал"
 
-#: Miradi/source/org/miradi/views/reports/ReportsView.java:94
+#: Miradi/source/org/miradi/views/reports/ReportsView.java:97
 msgid "Standard Reports"
 msgstr "Стандарт тайлан"
 
@@ -7369,6 +7369,10 @@ msgstr "Tab|Амьдрах чадвар"
 msgid "Tab|Work Plan"
 msgstr "Tab|Ажлын төлөвлөгөө"
 
+#: Miradi/source/org/miradi/dialogs/xslTemplate/XslTemplateManagmentPanel.java:49
+msgid "Tab|Xsl Templates"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/diagram/doers/DeleteTaggedObjectSetDoer.java:37
 #: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:40
 msgid "Tag"
@@ -7876,7 +7880,7 @@ msgstr ""
 msgid "Title|Delete"
 msgstr "Гарчиг|Устгах"
 
-#: Miradi/source/org/miradi/dialogs/diagram/DiagramPanel.java:163
+#: Miradi/source/org/miradi/dialogs/diagram/DiagramPanel.java:162
 msgid "Title|Diagram Panel"
 msgstr "Гарчиг|Диаграммын жагсаалт"
 
@@ -8000,6 +8004,7 @@ msgstr "Гарчиг|Явцын Тайлан"
 msgid "Title|Project Filename"
 msgstr "Гарчиг|Төслийн Файлын Нэр"
 
+#: Miradi/source/org/miradi/dialogs/xslTemplate/XslTemplatePropertiesPanel.java:43
 #: Miradi/source/org/miradi/dialogs/reportTemplate/ReportTemplatePropertiesPanel.java:51
 msgid "Title|Report Template Properties"
 msgstr "Гарчиг|Тайлангийн Загварын Properties"
@@ -8579,7 +8584,7 @@ msgstr ""
 msgid "Writing..."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/reports/ReportsView.java:96
+#: Miradi/source/org/miradi/views/reports/ReportsView.java:99
 msgid "XSLT"
 msgstr ""
 
