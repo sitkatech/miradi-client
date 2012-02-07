@@ -56,10 +56,19 @@ public class DashboardMainPanel extends DisposablePanel
 		super.dispose();
 		
 		disposeTab(conceptualizeDashboardTab);
+		conceptualizeDashboardTab  = null;
+		
 		disposeTab(planActionsAndMonitoringTab);
+		planActionsAndMonitoringTab = null;
+		
 		disposeTab(implementActionsAndMonitoringTab);
+		implementActionsAndMonitoringTab = null;
+		
 		disposeTab(analyzeAdaptAndUseTab);
+		analyzeAdaptAndUseTab = null;
+		
 		disposeTab(captureAndShareLearningTab);
+		captureAndShareLearningTab = null;
 	}
 	
 	@Override
@@ -89,7 +98,6 @@ public class DashboardMainPanel extends DisposablePanel
 		if (tab != null)
 		{
 			tab.dispose();
-			tab = null;
 		}
 	}
 
