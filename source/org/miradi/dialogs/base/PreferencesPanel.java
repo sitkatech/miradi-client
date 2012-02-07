@@ -81,10 +81,19 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	public void dispose()
 	{
 		disposePanel(diagramProjectPreferencesPanel);
+		diagramProjectPreferencesPanel = null;
+		
 		disposePanel(summaryPlanningPanel);
+		summaryPlanningPanel = null;
+		
 		disposePanel(projectSettingsPanel);
+		projectSettingsPanel = null;
+		
 		disposePanel(threatRatingPreferencesPanel);
+		threatRatingPreferencesPanel = null;
+		
 		disposePanel(neverShowAgainPanel);
+		neverShowAgainPanel = null;
 		
 		super.dispose();
 	}
