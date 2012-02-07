@@ -105,7 +105,6 @@ public class DisposablePanel extends JPanel
 		if (disposablePanel != null)
 		{
 			disposablePanel.dispose();
-			disposablePanel = null;
 		}
 	}
 	
