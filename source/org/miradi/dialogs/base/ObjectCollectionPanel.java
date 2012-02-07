@@ -98,7 +98,9 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements C
 		ORefList selectionHierarchy = component.getSelectionHierarchy();
 		if(selectionHierarchy == null)
 			selectionHierarchy = new ORefList();
-		propertiesPanel.setObjectRefs(selectionHierarchy.toArray());
+			
+		if (propertiesPanel != null)
+			propertiesPanel.setObjectRefs(selectionHierarchy.toArray());
 	}
 
 	public AbstractObjectDataInputPanel getPropertiesPanel()
