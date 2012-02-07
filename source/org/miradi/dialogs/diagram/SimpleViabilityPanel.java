@@ -67,8 +67,11 @@ public class SimpleViabilityPanel extends ModelessDialogPanel
 	public void dispose()
 	{
 		super.dispose();
-		simpleViabilityManagementPanel.dispose();
-		simpleViabilityPropertiesPanel.dispose();
+		disposePanel(simpleViabilityManagementPanel);
+		simpleViabilityManagementPanel = null;
+		
+		disposePanel(simpleViabilityPropertiesPanel);
+		simpleViabilityPropertiesPanel = null;
 	}
 	
 	@Override
