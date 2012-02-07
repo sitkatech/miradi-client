@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-06 12:56-0600\n"
+"POT-Creation-Date: 2012-02-07 11:00-0600\n"
 "PO-Revision-Date: 2011-03-28 15:06-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -2940,7 +2940,7 @@ msgstr ""
 msgid "Currently, Miradi can only import one project file at a time"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/reports/ReportsView.java:95
+#: Miradi/source/org/miradi/views/reports/ReportsView.java:98
 msgid "Custom Reports"
 msgstr "Informes personalizados"
 
@@ -6301,7 +6301,7 @@ msgstr ""
 msgid "Stakeholder"
 msgstr "Parte interesada "
 
-#: Miradi/source/org/miradi/views/reports/ReportsView.java:94
+#: Miradi/source/org/miradi/views/reports/ReportsView.java:97
 msgid "Standard Reports"
 msgstr "Informes estándar"
 
@@ -7356,6 +7356,10 @@ msgstr "Viabilidad"
 msgid "Tab|Work Plan"
 msgstr "Plan de trabajo"
 
+#: Miradi/source/org/miradi/dialogs/xslTemplate/XslTemplateManagmentPanel.java:49
+msgid "Tab|Xsl Templates"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/diagram/doers/DeleteTaggedObjectSetDoer.java:37
 #: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:40
 msgid "Tag"
@@ -7855,7 +7859,7 @@ msgstr ""
 msgid "Title|Delete"
 msgstr "Eliminar"
 
-#: Miradi/source/org/miradi/dialogs/diagram/DiagramPanel.java:163
+#: Miradi/source/org/miradi/dialogs/diagram/DiagramPanel.java:162
 msgid "Title|Diagram Panel"
 msgstr "Panel del diagrama"
 
@@ -7979,6 +7983,7 @@ msgstr ""
 msgid "Title|Project Filename"
 msgstr "Nombre de archivo del proyecto"
 
+#: Miradi/source/org/miradi/dialogs/xslTemplate/XslTemplatePropertiesPanel.java:43
 #: Miradi/source/org/miradi/dialogs/reportTemplate/ReportTemplatePropertiesPanel.java:51
 msgid "Title|Report Template Properties"
 msgstr "Propiedades de la plantilla de informes "
@@ -8544,7 +8549,7 @@ msgstr ""
 msgid "Writing..."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/reports/ReportsView.java:96
+#: Miradi/source/org/miradi/views/reports/ReportsView.java:99
 msgid "XSLT"
 msgstr ""
 

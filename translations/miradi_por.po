@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-06 12:56-0600\n"
+"POT-Creation-Date: 2012-02-07 11:00-0600\n"
 "PO-Revision-Date: 2011-12-14 10:20-0600\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -2784,7 +2784,7 @@ msgstr ""
 msgid "Currently, Miradi can only import one project file at a time"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/reports/ReportsView.java:95
+#: Miradi/source/org/miradi/views/reports/ReportsView.java:98
 msgid "Custom Reports"
 msgstr ""
 
@@ -5975,7 +5975,7 @@ msgstr ""
 msgid "Stakeholder"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/reports/ReportsView.java:94
+#: Miradi/source/org/miradi/views/reports/ReportsView.java:97
 msgid "Standard Reports"
 msgstr ""
 
@@ -6996,6 +6996,10 @@ msgstr ""
 msgid "Tab|Work Plan"
 msgstr ""
 
+#: Miradi/source/org/miradi/dialogs/xslTemplate/XslTemplateManagmentPanel.java:49
+msgid "Tab|Xsl Templates"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/diagram/doers/DeleteTaggedObjectSetDoer.java:37
 #: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:40
 msgid "Tag"
@@ -7448,7 +7452,7 @@ msgstr ""
 msgid "Title|Delete"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/DiagramPanel.java:163
+#: Miradi/source/org/miradi/dialogs/diagram/DiagramPanel.java:162
 msgid "Title|Diagram Panel"
 msgstr ""
 
@@ -7571,6 +7575,7 @@ msgstr ""
 msgid "Title|Project Filename"
 msgstr ""
 
+#: Miradi/source/org/miradi/dialogs/xslTemplate/XslTemplatePropertiesPanel.java:43
 #: Miradi/source/org/miradi/dialogs/reportTemplate/ReportTemplatePropertiesPanel.java:51
 msgid "Title|Report Template Properties"
 msgstr ""
@@ -8096,7 +8101,7 @@ msgstr ""
 msgid "Writing..."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/reports/ReportsView.java:96
+#: Miradi/source/org/miradi/views/reports/ReportsView.java:99
 msgid "XSLT"
 msgstr ""
 
