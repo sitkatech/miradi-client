@@ -104,56 +104,35 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 
 	private void disposeTabs()
 	{
-		if(detailsTab != null)
-		{
-			detailsTab.dispose();
-			detailsTab = null;
-		}
-		if(indicatorsTab != null)
-		{
-			indicatorsTab.dispose();
-			indicatorsTab = null;
-		}
-		if(goalsTab != null)
-		{
-			goalsTab.dispose();
-			goalsTab = null;
-		}
-		if(objectivesTab != null)
-		{
-			objectivesTab.dispose();
-			objectivesTab = null;
-		}
-		if(activitiesTab != null)
-		{
-			activitiesTab.dispose();
-			activitiesTab = null;
-		}
-		if(viabilityTab != null)
-		{
-			viabilityTab.dispose();
-			viabilityTab = null;
-		}
-		if (simpleViabilityTab != null)
-		{
-			simpleViabilityTab.dispose();
-			simpleViabilityTab = null;
-		}
-		if (stressTab != null)
-		{
-			stressTab.dispose();
-			stressTab = null;
-		}
-		if (subTargetTab != null)
-		{
-			subTargetTab.dispose();
-			subTargetTab = null;
-		}
-		if(grid != null)
-		{
-			grid.dispose();
-			grid = null;
-		}
+		disposePanel(detailsTab);
+		detailsTab = null;
+
+		disposePanel(indicatorsTab);
+		indicatorsTab = null;
+
+		disposePanel(goalsTab);
+		goalsTab = null;
+
+		disposePanel(objectivesTab);
+		objectivesTab = null;
+
+		disposePanel(activitiesTab);
+		activitiesTab = null;
+
+		disposePanel(viabilityTab);
+		viabilityTab = null;
+
+		disposePanel(simpleViabilityTab);
+		simpleViabilityTab = null;
+
+		disposePanel(stressTab);
+		stressTab = null;
+
+		disposePanel(subTargetTab);
+		subTargetTab = null;
+
+		disposePanel(grid);
+		grid = null;
 	}
 	
 	@Override
