@@ -36,11 +36,8 @@ public class LayerPanel extends ModelessDialogPanel
 	@Override
 	public void dispose()
 	{
-		if (legendPanel != null)
-		{
-			legendPanel.dispose();
-			legendPanel = null;
-		}
+		disposePanel(legendPanel);
+		legendPanel = null;
 		
 		super.dispose();
 	}
