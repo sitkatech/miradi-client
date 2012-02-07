@@ -58,10 +58,13 @@ abstract public class LegendPanel extends DisposablePanel implements ActionListe
 	public void dispose()
 	{
 		super.dispose();
+		
 		for(ObjectsActionButton button : buttonsToDispose)
 		{
 			button.dispose();
 		}
+		
+		buttonsToDispose.clear();
 	}
 	
 	protected Project getProject()
