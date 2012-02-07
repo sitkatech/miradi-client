@@ -41,6 +41,13 @@ abstract public class AbstractObjectTableModel extends SortableTableModel
 		return null;
 	}
 	
+	//FIXME urgent - this method needs to be overriden and used correctly
+	//(following other isXXX pattern and usage)
+	public boolean isSingleLineTextColumn(int column)
+	{
+		return false;
+	}
+	
 	public boolean isChoiceItemColumn(int column)
 	{
 		return getColumnQuestion(column) != null;
