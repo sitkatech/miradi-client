@@ -54,6 +54,7 @@ public class WhenEditorLowerPanel extends DisposablePanel
 	public void dispose()
 	{
 		disposePanel(dayCard);
+		dayCard = null;
 		
 		super.dispose();
 	}
