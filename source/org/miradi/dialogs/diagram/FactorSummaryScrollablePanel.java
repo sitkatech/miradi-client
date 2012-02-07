@@ -58,7 +58,9 @@ public class FactorSummaryScrollablePanel extends ModelessDialogPanel
 	public void dispose()
 	{
 		super.dispose();
-		summaryPanel.dispose();
+		
+		disposePanel(summaryPanel);
+		summaryPanel = null;
 	}
 	
 	@Override
