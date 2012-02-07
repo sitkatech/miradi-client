@@ -55,7 +55,9 @@ public class MemberOrgTabPanel extends DisposablePanelWithDescription implements
 	public void dispose()
 	{
 		super.dispose();
-		dataPanel.dispose();
+		
+		disposePanel(dataPanel);
+		dataPanel = null;
 	}
 	
 	public DisposablePanelWithDescription getTabContentsComponent()
