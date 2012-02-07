@@ -62,7 +62,8 @@ abstract public class SplitterPanelWithRightSideTextPanel extends DisposablePane
 	@Override
 	public void dispose()
 	{
-		leftPanel.dispose();
+		disposePanel(leftPanel);
+		leftPanel = null;
 		
 		super.dispose();
 	}

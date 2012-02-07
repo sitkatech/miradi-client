@@ -43,7 +43,10 @@ public class DayDateUnitStartAndEndCard extends DateUnitStartAndEndCard
 	public void dispose()
 	{
 		startDayPanel.dispose();
+		startDayPanel = null;
+		
 		endDayPanel.dispose();
+		endDayPanel = null;
 		
 		super.dispose();
 	}

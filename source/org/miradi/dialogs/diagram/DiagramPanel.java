@@ -58,7 +58,9 @@ abstract public class DiagramPanel extends DisposablePanelWithDescription implem
 	public void dispose()
 	{
 		super.dispose();
+		
 		diagramSplitter.dispose();
+		diagramSplitter = null;
 	}
 	
 	public void restoreSavedLocation()
