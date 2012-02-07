@@ -125,12 +125,16 @@ public class SummaryView extends TabbedView
 	public void deleteTabs() throws Exception
 	{
 		teamManagementPanel.dispose();
+		teamManagementPanel = null;
+		
 		organizationManagementPanel.dispose();
+		organizationManagementPanel = null;
 		
 		for(DisposablePanel panel : tabPanels)
 		{
 			panel.dispose();
 		}
+		
 		tabPanels.clear();
 		
 		super.deleteTabs();
