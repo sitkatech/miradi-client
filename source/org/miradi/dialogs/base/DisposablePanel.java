@@ -58,6 +58,8 @@ public class DisposablePanel extends JPanel
 		{
 			objectsActionButtonsToDispose.get(i).dispose();
 		}
+		
+		objectsActionButtonsToDispose.removeAllElements();
 	}
 	
 	public void becomeActive()
@@ -107,5 +109,5 @@ public class DisposablePanel extends JPanel
 		}
 	}
 	
-	Vector<ObjectsActionButton> objectsActionButtonsToDispose;
+	private Vector<ObjectsActionButton> objectsActionButtonsToDispose;
 }
