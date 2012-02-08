@@ -23,7 +23,7 @@ import java.text.ParseException;
 
 import org.miradi.utils.EnhancedJsonObject;
 
-public class CodeToUserStringMap extends AbstractStringToStringMap
+public class CodeToUserStringMap extends AbstractCodeToStringMap
 {
 	public CodeToUserStringMap()
 	{
@@ -45,21 +45,4 @@ public class CodeToUserStringMap extends AbstractStringToStringMap
 		super(mapAsJsonString);
 	}
 	
-	@Override
-	protected String getMapTag()
-	{
-		return TAG_STRING_MAP;
-	}
-
-	@Override
-	public boolean equals(Object rawOther)
-	{
-		if(!(rawOther instanceof CodeToUserStringMap))
-			return false;
-
-		CodeToUserStringMap other = (CodeToUserStringMap) rawOther;
-		return data.equals(other.data);
-	}
-
-	private static final String TAG_STRING_MAP = "StringMap";
 }
