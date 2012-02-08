@@ -35,6 +35,9 @@ import org.miradi.objectdata.BaseIdData;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.CodeListData;
+import org.miradi.objectdata.CodeToChoiceMapData;
+import org.miradi.objectdata.CodeToCodeListMapData;
+import org.miradi.objectdata.CodeToStringMapData;
 import org.miradi.objectdata.DateData;
 import org.miradi.objectdata.DateRangeData;
 import org.miradi.objectdata.DateUnitEffortListData;
@@ -60,7 +63,7 @@ import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.RelevancyOverrideSetData;
 import org.miradi.objecthelpers.CodeToChoiceMap;
 import org.miradi.objecthelpers.CodeToCodeListMap;
-import org.miradi.objecthelpers.CodeToStringMap;
+import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.project.ProjectLoader;
@@ -72,9 +75,6 @@ import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
-import org.miradi.utils.CodeToChoiceMapData;
-import org.miradi.utils.CodeToCodeListMapData;
-import org.miradi.utils.CodeToStringMapData;
 
 public class ObjectTestCase extends TestCaseWithProject
 {
@@ -235,7 +235,7 @@ public class ObjectTestCase extends TestCaseWithProject
 		}
 		else if(field instanceof CodeToStringMapData)
 		{
-			CodeToStringMap list = new CodeToStringMap();
+			CodeToUserStringMap list = new CodeToUserStringMap();
 			list.put("A","RolaA");
 			return list.toString();
 		}

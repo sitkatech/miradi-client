@@ -1,5 +1,5 @@
 /* 
-Copyright 2005-2009, Foundations of Success, Bethesda, Maryland 
+Copyright 2005-2011, Foundations of Success, Bethesda, Maryland 
 (on behalf of the Conservation Measures Partnership, "CMP") and 
 Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 
@@ -16,19 +16,19 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
-*/
-package org.miradi.utils;
+*/ 
 
-import org.miradi.objectdata.ObjectData;
-import org.miradi.objecthelpers.CodeToStringMap;
+package org.miradi.objectdata;
 
-public class CodeToStringMapData extends ObjectData
+import org.miradi.objecthelpers.CodeToCodeMap;
+
+public class CodeToCodeMapData extends AbstractCodeToStringMapData
 {
-	public CodeToStringMapData(String tagToUse)
+	public CodeToCodeMapData(String tagToUse)
 	{
 		super(tagToUse);
 		
-		data = new CodeToStringMap();
+		data = new CodeToCodeMap();
 	}
 
 	@Override
@@ -37,7 +37,7 @@ public class CodeToStringMapData extends ObjectData
 		return getStringMap().toString();
 	}
 	
-	public CodeToStringMap getStringMap()
+	public CodeToCodeMap getStringMap()
 	{
 		return data;
 	}
@@ -45,16 +45,16 @@ public class CodeToStringMapData extends ObjectData
 	@Override
 	public void set(String newValue) throws Exception
 	{
-		data = new CodeToStringMap(newValue);
+		data = new CodeToCodeMap(newValue);
 	}
 
 	@Override
 	public boolean equals(Object rawOther)
 	{
-		if(!(rawOther instanceof CodeToStringMapData))
+		if(!(rawOther instanceof CodeToCodeMapData))
 			return false;
 
-		CodeToStringMapData other = (CodeToStringMapData) rawOther;
+		CodeToCodeMapData other = (CodeToCodeMapData) rawOther;
 		return other.data.equals(data);
 	}
 
@@ -65,10 +65,10 @@ public class CodeToStringMapData extends ObjectData
 	}
 	
 	@Override
-	public boolean isCodeStringMapData()
+	public boolean isCodeToCodeMapData()
 	{
 		return true;
 	}
 	
-	private CodeToStringMap data;
+	private CodeToCodeMap data;
 }

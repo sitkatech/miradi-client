@@ -24,13 +24,14 @@ import java.util.Vector;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.ids.IndicatorId;
+import org.miradi.objectdata.CodeToStringMapData;
 import org.miradi.objecthelpers.DirectThreatSet;
 import org.miradi.objecthelpers.NonDraftStrategySet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objecthelpers.CodeToStringMap;
+import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objecthelpers.TargetSet;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
@@ -39,7 +40,6 @@ import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
-import org.miradi.utils.CodeToStringMapData;
 
 public class Indicator extends BaseObject
 {
@@ -70,7 +70,7 @@ public class Indicator extends BaseObject
 		return (CodeToStringMapData)getField(TAG_INDICATOR_THRESHOLD);
 	}
 	
-	public CodeToStringMap getThresholdDetails()
+	public CodeToUserStringMap getThresholdDetails()
 	{
 		return getCodeStringMapData(TAG_THRESHOLD_DETAILS);
 	}

@@ -22,7 +22,7 @@ package org.miradi.xml.xmpz;
 
 import org.miradi.objecthelpers.CodeToChoiceMap;
 import org.miradi.objecthelpers.CodeToCodeListMap;
-import org.miradi.objecthelpers.CodeToStringMap;
+import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objects.Dashboard;
 import org.miradi.utils.CodeList;
 import org.miradi.xml.AbstractXmpzObjectImporter;
@@ -46,7 +46,7 @@ public class DashboardPoolImporter extends AbstractXmpzObjectImporter
 		
 		CodeToChoiceMap userProgressMap = new CodeToChoiceMap();
 		CodeToCodeListMap userFlagsMap = new CodeToCodeListMap();
-		CodeToStringMap userCommentsMap = new CodeToStringMap();
+		CodeToUserStringMap userCommentsMap = new CodeToUserStringMap();
 		for (int index = 0; index < statusNodes.getLength(); ++index)
 		{
 			Node statusNode = statusNodes.item(index);
