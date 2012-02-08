@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-08 15:07-0600\n"
+"POT-Creation-Date: 2012-02-08 16:31-0600\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -5975,7 +5975,7 @@ msgstr "Саванна - суха саванна"
 msgid "Savanna - Moist Savana"
 msgstr "Саванна - волога саванна"
 
-#: Miradi/source/org/miradi/views/reports/RunXlsTemplateDoer.java:80
+#: Miradi/source/org/miradi/views/reports/RunXlsTemplateDoer.java:86
 msgid "Save"
 msgstr ""
 
@@ -6061,7 +6061,7 @@ msgstr "Вибрати мовний пакет для інсталяції"
 msgid "Select Location..."
 msgstr "Вибрати Розміщення..."
 
-#: Miradi/source/org/miradi/views/reports/RunXlsTemplateDoer.java:80
+#: Miradi/source/org/miradi/views/reports/RunXlsTemplateDoer.java:86
 msgid "Select Output File"
 msgstr ""
 
@@ -7996,7 +7996,6 @@ msgstr "Title|Проміжний звіт"
 msgid "Title|Project Filename"
 msgstr "Title|Назва файлу проекту"
 
-#: Miradi/source/org/miradi/dialogs/xslTemplate/XslTemplatePropertiesPanel.java:44
 #: Miradi/source/org/miradi/dialogs/reportTemplate/ReportTemplatePropertiesPanel.java:51
 msgid "Title|Report Template Properties"
 msgstr "Title|Складові шаблонів звітів"
@@ -8085,6 +8084,10 @@ msgstr "Title|Шари видів"
 msgid "Title|View..."
 msgstr "Title|Вид..."
 
+#: Miradi/source/org/miradi/dialogs/xslTemplate/XslTemplatePropertiesPanel.java:44
+msgid "Title|XSL Template Properties"
+msgstr ""
+
 #: Miradi/source/org/miradi/project/ProjectCalendar.java:63
 #: Miradi/source/org/miradi/project/ProjectCalendar.java:202
 msgid "Total"
@@ -8102,7 +8105,7 @@ msgstr ""
 msgid "Total Monitoring Budget %1 %2"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/reports/RunXlsTemplateDoer.java:84
+#: Miradi/source/org/miradi/views/reports/RunXlsTemplateDoer.java:90
 msgid "Transformation Completed!"
 msgstr ""
 
@@ -10274,6 +10277,9 @@ msgid "FieldLabel|59.Label|Name"
 msgstr ""
 
 msgid "FieldLabel|59.xslTemplate|XSL Template"
+msgstr ""
+
+msgid "FieldLabel|59.FileExtension|Report File Extension"
 msgstr ""
 
 msgid ""

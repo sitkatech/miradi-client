@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-08 15:07-0600\n"
+"POT-Creation-Date: 2012-02-08 16:31-0600\n"
 "PO-Revision-Date: 2011-03-28 15:06-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -5974,7 +5974,7 @@ msgstr "Sabana – Sabana seca"
 msgid "Savanna - Moist Savana"
 msgstr "Sabana - Húmeda"
 
-#: Miradi/source/org/miradi/views/reports/RunXlsTemplateDoer.java:80
+#: Miradi/source/org/miradi/views/reports/RunXlsTemplateDoer.java:86
 msgid "Save"
 msgstr "Grabar"
 
@@ -6062,7 +6062,7 @@ msgstr "Seleccione el paquete de idiomas que desea instalar."
 msgid "Select Location..."
 msgstr "Seleccione Localización…"
 
-#: Miradi/source/org/miradi/views/reports/RunXlsTemplateDoer.java:80
+#: Miradi/source/org/miradi/views/reports/RunXlsTemplateDoer.java:86
 msgid "Select Output File"
 msgstr ""
 
@@ -8004,7 +8004,6 @@ msgstr ""
 msgid "Title|Project Filename"
 msgstr "Nombre de archivo del proyecto"
 
-#: Miradi/source/org/miradi/dialogs/xslTemplate/XslTemplatePropertiesPanel.java:44
 #: Miradi/source/org/miradi/dialogs/reportTemplate/ReportTemplatePropertiesPanel.java:51
 msgid "Title|Report Template Properties"
 msgstr "Propiedades de la plantilla de informes "
@@ -8093,6 +8092,10 @@ msgstr "Ver capas"
 msgid "Title|View..."
 msgstr "Ver…"
 
+#: Miradi/source/org/miradi/dialogs/xslTemplate/XslTemplatePropertiesPanel.java:44
+msgid "Title|XSL Template Properties"
+msgstr ""
+
 #: Miradi/source/org/miradi/project/ProjectCalendar.java:63
 #: Miradi/source/org/miradi/project/ProjectCalendar.java:202
 msgid "Total"
@@ -8110,7 +8113,7 @@ msgstr ""
 msgid "Total Monitoring Budget %1 %2"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/reports/RunXlsTemplateDoer.java:84
+#: Miradi/source/org/miradi/views/reports/RunXlsTemplateDoer.java:90
 msgid "Transformation Completed!"
 msgstr ""
 
@@ -10280,6 +10283,9 @@ msgid "FieldLabel|59.Label|Name"
 msgstr ""
 
 msgid "FieldLabel|59.xslTemplate|XSL Template"
+msgstr ""
+
+msgid "FieldLabel|59.FileExtension|Report File Extension"
 msgstr ""
 
 msgid ""
