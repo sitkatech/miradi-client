@@ -45,4 +45,14 @@ public class CodeToUserStringMap extends AbstractCodeToStringMap
 		super(mapAsJsonString);
 	}
 	
+	@Override
+	public boolean equals(Object rawOther)
+	{
+		if(!(rawOther instanceof CodeToUserStringMap))
+			return false;
+
+		CodeToUserStringMap other = (CodeToUserStringMap) rawOther;
+		return data.equals(other.data);
+	}
+
 }

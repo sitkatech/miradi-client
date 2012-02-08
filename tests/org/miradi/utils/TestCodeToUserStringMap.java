@@ -22,9 +22,9 @@ package org.miradi.utils;
 import org.miradi.objecthelpers.AbstractStringToStringMap;
 import org.miradi.objecthelpers.CodeToUserStringMap;
 
-public class TestCodeToStringMap  extends TestAbstractStringMap
+public class TestCodeToUserStringMap  extends TestAbstractStringMap
 {
-	public TestCodeToStringMap(String name)
+	public TestCodeToUserStringMap(String name)
 	{
 		super(name);
 	}
