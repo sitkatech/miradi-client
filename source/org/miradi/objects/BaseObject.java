@@ -1099,7 +1099,7 @@ abstract public class BaseObject
 		addField(new CodeToUserStringMapData(tag));
 	}
 	
-	protected void createStringCodeListMapField(String tag)
+	protected void createCodeToCodeListMapField(String tag)
 	{
 		addField(new CodeToCodeListMapData(tag));
 	}

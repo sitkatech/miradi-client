@@ -1142,7 +1142,7 @@ public class Dashboard extends BaseObject
 		
 		createCodeToChoiceMapField(TAG_PROGRESS_CHOICE_MAP);
 		createCodeToUserStringMapField(TAG_COMMENTS_MAP);
-		createStringCodeListMapField(TAG_FLAGS_MAP);
+		createCodeToCodeListMapField(TAG_FLAGS_MAP);
 		createCodeField(TAG_CURRENT_DASHBOARD_TAB);
 		setNonUserField(TAG_CURRENT_DASHBOARD_TAB);
 
