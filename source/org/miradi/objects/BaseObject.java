@@ -1089,7 +1089,7 @@ abstract public class BaseObject
 		addField(new RelevancyOverrideSetData(tag));
 	}
 	
-	protected void createStringChoiceMapField(String tag)
+	protected void createCodeToChoiceMapField(String tag)
 	{
 		addField(new CodeToChoiceMapData(tag));
 	}

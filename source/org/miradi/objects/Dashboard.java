@@ -1140,7 +1140,7 @@ public class Dashboard extends BaseObject
 	{
 		super.clear();
 		
-		createStringChoiceMapField(TAG_PROGRESS_CHOICE_MAP);
+		createCodeToChoiceMapField(TAG_PROGRESS_CHOICE_MAP);
 		createStringStringMapField(TAG_COMMENTS_MAP);
 		createStringCodeListMapField(TAG_FLAGS_MAP);
 		createCodeField(TAG_CURRENT_DASHBOARD_TAB);
