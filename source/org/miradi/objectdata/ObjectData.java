@@ -102,17 +102,17 @@ abstract public class ObjectData
 		return false;
 	}
 	
-	public boolean isCodeStringMapData()
+	public boolean isCodeToStringMapData()
 	{
 		return false;
 	}
 	
-	public boolean isCodeChoiceMapData()
+	public boolean isCodeToChoiceMapData()
 	{
 		return false;
 	}
 	
-	public boolean isCodeCodeListMapData()
+	public boolean isCodeToCodeListMapData()
 	{
 		return false;
 	}

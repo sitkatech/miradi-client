@@ -66,7 +66,7 @@ public class CodeToChoiceMapData extends ObjectData
 	}
 	
 	@Override
-	public boolean isCodeChoiceMapData()
+	public boolean isCodeToChoiceMapData()
 	{
 		return true;
 	}

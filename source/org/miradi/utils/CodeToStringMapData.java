@@ -65,7 +65,7 @@ public class CodeToStringMapData extends ObjectData
 	}
 	
 	@Override
-	public boolean isCodeStringMapData()
+	public boolean isCodeToStringMapData()
 	{
 		return true;
 	}
