@@ -96,7 +96,7 @@ import org.miradi.utils.InvalidNumberException;
 import org.miradi.utils.OptionalDouble;
 import org.miradi.utils.PointList;
 import org.miradi.utils.CodeToChoiceMapData;
-import org.miradi.utils.CodeCodeListMapData;
+import org.miradi.utils.CodeToCodeListMapData;
 import org.miradi.utils.CodeStringMapData;
 import org.miradi.utils.XmlUtilities2;
 
@@ -288,7 +288,7 @@ abstract public class BaseObject
 	
 	protected CodeToCodeListMap getCodeCodeListMapData(String tag)
 	{
-		return ((CodeCodeListMapData)getField(tag)).getStringCodeListMap();
+		return ((CodeToCodeListMapData)getField(tag)).getStringCodeListMap();
 	}
 	
 	protected StringRefMap getStringRefMapData(String tag)
@@ -1094,7 +1094,7 @@ abstract public class BaseObject
 	
 	protected void createStringCodeListMapField(String tag)
 	{
-		addField(new CodeCodeListMapData(tag));
+		addField(new CodeToCodeListMapData(tag));
 	}
 	
 	protected void createStringRefMapField(String tag)
