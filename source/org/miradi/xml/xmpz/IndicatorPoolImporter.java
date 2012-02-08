@@ -21,7 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz;
 
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.CodeToStringMap;
+import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Task;
@@ -66,8 +66,8 @@ public class IndicatorPoolImporter extends AbstractBaseObjectPoolImporter
 	private void importThresholds(Node indicatorNode, ORef destinationRef) throws Exception
 	{
 		NodeList thresholdNodes = getImporter().getNodes(indicatorNode, new String[]{getPoolName() + THRESHOLDS, THRESHOLD});
-		CodeToStringMap thresholdValues = new CodeToStringMap();
-		CodeToStringMap thresholdDetails = new CodeToStringMap();
+		CodeToUserStringMap thresholdValues = new CodeToUserStringMap();
+		CodeToUserStringMap thresholdDetails = new CodeToUserStringMap();
 		for (int index = 0; index < thresholdNodes.getLength(); ++index)
 		{
 			Node thrsholdNode = thresholdNodes.item(index);

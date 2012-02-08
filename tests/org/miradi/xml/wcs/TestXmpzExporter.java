@@ -39,7 +39,7 @@ import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objecthelpers.CodeToStringMap;
+import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
@@ -84,7 +84,7 @@ public class TestXmpzExporter extends TestCaseWithProject
 		KeyEcologicalAttribute kea = getProject().createKea();
 		Indicator indicator = getProject().createIndicator(kea);
 		
-		CodeToStringMap threshold = new CodeToStringMap();
+		CodeToUserStringMap threshold = new CodeToUserStringMap();
 		threshold.put(StatusQuestion.POOR, "<>'\"&");
 		getProject().fillObjectUsingCommand(indicator, Indicator.TAG_INDICATOR_THRESHOLD, threshold.toString());
 		validateProject();

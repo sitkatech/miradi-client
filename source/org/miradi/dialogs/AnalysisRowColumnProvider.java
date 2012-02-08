@@ -24,7 +24,7 @@ import org.miradi.dialogs.planning.AbstractBudgetCategoryRowColumnProvider;
 import org.miradi.dialogs.planning.WorkPlanCategoryTreeRowColumnProvider;
 import org.miradi.dialogs.planning.upperPanel.WorkPlanTreeTablePanel;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.CodeToStringMap;
+import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objects.AccountingCode;
 import org.miradi.objects.BudgetCategoryOne;
 import org.miradi.objects.BudgetCategoryTwo;
@@ -65,7 +65,7 @@ public class AnalysisRowColumnProvider extends AbstractBudgetCategoryRowColumnPr
 		try
 		{
 			TableSettings tableSettings = getWorkPlanTableSettings();
-			CodeToStringMap tableSettingsMap = tableSettings.getTableSettingsMap();
+			CodeToUserStringMap tableSettingsMap = tableSettings.getTableSettingsMap();
 			String codeListAsString = tableSettingsMap.get(TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
 
 			return new CodeList(codeListAsString);
