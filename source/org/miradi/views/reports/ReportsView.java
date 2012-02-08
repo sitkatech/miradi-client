@@ -99,6 +99,7 @@ public class ReportsView extends TabbedView
 		reportTemplateManagementPanel.dispose();
 		reportTemplateManagementPanel = null;
 		
+		standardReportPanel.dispose();
 		standardReportPanel = null;
 		
 		xslTemplateManagmentPanel.dispose();
