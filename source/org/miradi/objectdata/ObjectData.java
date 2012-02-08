@@ -97,6 +97,11 @@ abstract public class ObjectData
 		return false;
 	}
 	
+	public boolean isCodeToCodeMapData()
+	{
+		return false;
+	}
+	
 	public boolean isCodeStringMapData()
 	{
 		return false;
