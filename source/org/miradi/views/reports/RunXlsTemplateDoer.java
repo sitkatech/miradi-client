@@ -22,14 +22,11 @@ package org.miradi.views.reports;
 
 import org.miradi.views.ObjectsDoer;
 
+//FIXME urgent - add run functionality to this doer and make it available
 public class RunXlsTemplateDoer extends ObjectsDoer
 {
-
 	@Override
 	protected void doIt() throws Exception
 	{
-		// TODO Auto-generated method stub
-
 	}
-
 }
