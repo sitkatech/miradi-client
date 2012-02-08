@@ -276,9 +276,9 @@ abstract public class BaseObject
 			throw new RuntimeException("Attempted to set Ref data on non-Ref field " + fieldTag);
 	}
 
-	protected CodeToUserStringMap getCodeToStringMapData(String tag)
+	protected CodeToUserStringMap getCodeToUserStringMapData(String tag)
 	{
-		return ((CodeToUserStringMapData)getField(tag)).getCodeToStringMap();
+		return ((CodeToUserStringMapData)getField(tag)).getCodeToUserStringMap();
 	}
 	
 	protected CodeToChoiceMap getCodeToChoiceMapData(String tag)
