@@ -18,9 +18,8 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.utils;
+package org.miradi.objectdata;
 
-import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.CodeToCodeMap;
 
 public class CodeToCodeMapData extends ObjectData

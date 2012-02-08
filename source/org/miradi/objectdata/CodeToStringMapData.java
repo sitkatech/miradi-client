@@ -1,5 +1,5 @@
 /* 
-Copyright 2005-2010, Foundations of Success, Bethesda, Maryland 
+Copyright 2005-2009, Foundations of Success, Bethesda, Maryland 
 (on behalf of the Conservation Measures Partnership, "CMP") and 
 Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 
@@ -16,29 +16,27 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
-*/ 
+*/
+package org.miradi.objectdata;
 
-package org.miradi.utils;
+import org.miradi.objecthelpers.CodeToUserStringMap;
 
-import org.miradi.objectdata.ObjectData;
-import org.miradi.objecthelpers.CodeToChoiceMap;
-
-public class CodeToChoiceMapData extends ObjectData
+public class CodeToStringMapData extends ObjectData
 {
-	public CodeToChoiceMapData(String tagToUse)
+	public CodeToStringMapData(String tagToUse)
 	{
 		super(tagToUse);
 		
-		data = new CodeToChoiceMap();
+		data = new CodeToUserStringMap();
 	}
 
 	@Override
 	public String get()
 	{
-		return getStringChoiceMap().toString();
+		return getStringMap().toString();
 	}
 	
-	public CodeToChoiceMap getStringChoiceMap()
+	public CodeToUserStringMap getStringMap()
 	{
 		return data;
 	}
@@ -46,16 +44,16 @@ public class CodeToChoiceMapData extends ObjectData
 	@Override
 	public void set(String newValue) throws Exception
 	{
-		data = new CodeToChoiceMap(newValue);
+		data = new CodeToUserStringMap(newValue);
 	}
 
 	@Override
 	public boolean equals(Object rawOther)
 	{
-		if(!(rawOther instanceof CodeToChoiceMapData))
+		if(!(rawOther instanceof CodeToStringMapData))
 			return false;
 
-		CodeToChoiceMapData other = (CodeToChoiceMapData) rawOther;
+		CodeToStringMapData other = (CodeToStringMapData) rawOther;
 		return other.data.equals(data);
 	}
 
@@ -66,10 +64,10 @@ public class CodeToChoiceMapData extends ObjectData
 	}
 	
 	@Override
-	public boolean isCodeToChoiceMapData()
+	public boolean isCodeToStringMapData()
 	{
 		return true;
 	}
 	
-	private CodeToChoiceMap data;
+	private CodeToUserStringMap data;
 }

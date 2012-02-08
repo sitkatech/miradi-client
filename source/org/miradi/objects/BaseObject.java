@@ -43,6 +43,9 @@ import org.miradi.objectdata.BooleanData;
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.CodeData;
 import org.miradi.objectdata.CodeListData;
+import org.miradi.objectdata.CodeToChoiceMapData;
+import org.miradi.objectdata.CodeToCodeListMapData;
+import org.miradi.objectdata.CodeToStringMapData;
 import org.miradi.objectdata.DateData;
 import org.miradi.objectdata.DateUnitEffortListData;
 import org.miradi.objectdata.DateUnitListData;
@@ -95,9 +98,6 @@ import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.InvalidNumberException;
 import org.miradi.utils.OptionalDouble;
 import org.miradi.utils.PointList;
-import org.miradi.utils.CodeToChoiceMapData;
-import org.miradi.utils.CodeToCodeListMapData;
-import org.miradi.utils.CodeToStringMapData;
 import org.miradi.utils.XmlUtilities2;
 
 abstract public class BaseObject
