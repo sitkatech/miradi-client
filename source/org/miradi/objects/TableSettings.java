@@ -24,11 +24,12 @@ import java.util.Vector;
 
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.ids.BaseId;
+import org.miradi.objecthelpers.CodeToCodeListMap;
+import org.miradi.objecthelpers.CodeToCodeMap;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.SortDirectionQuestion;
@@ -67,9 +68,9 @@ public class TableSettings extends BaseObject
 		return NO_OWNERS;
 	}
 	
-	public CodeToUserStringMap getColumnWidthMap()
+	public CodeToCodeMap getColumnWidthMap()
 	{
-		return getCodeToUserStringMapData(TAG_COLUMN_WIDTHS);
+		return getCodeToCodeMapData(TAG_COLUMN_WIDTHS);
 	}
 	
 	public int getRowHeight()
@@ -92,9 +93,9 @@ public class TableSettings extends BaseObject
 		return getRefListListData(TAG_TREE_EXPANSION_LIST);
 	}
 	
-	public CodeToUserStringMap getTableSettingsMap()
+	public CodeToCodeListMap getTableSettingsMap()
 	{
-		return getCodeToUserStringMapData(TAG_TABLE_SETTINGS_MAP);
+		return getCodeToCodeListMapData(TAG_TABLE_SETTINGS_MAP);
 	}
 	
 	public CodeList getCodeListFromTableSettingsMap(String codeListKey) throws Exception

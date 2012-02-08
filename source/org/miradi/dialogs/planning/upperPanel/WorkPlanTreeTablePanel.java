@@ -65,8 +65,7 @@ public class WorkPlanTreeTablePanel extends PlanningTreeTablePanel
 	protected void updateResourceFilter() throws Exception
 	{
 		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), getTabSpecificModelIdentifier());
-		String projectResourceFilterRefsAsString = tableSettings.getTableSettingsMap().get(TableSettings.WORK_PLAN_PROJECT_RESOURCE_FILTER_CODELIST_KEY);
-		ORefList projectResourceFilterRefs = new ORefList(projectResourceFilterRefsAsString);
+		ORefList projectResourceFilterRefs = tableSettings.getTableSettingsMap().getRefList(TableSettings.WORK_PLAN_PROJECT_RESOURCE_FILTER_CODELIST_KEY);
 		ORefSet projectResourceRefsToRetain = new ORefSet(projectResourceFilterRefs);
 		
 		getWorkUnitsTableModel().setResourcesFilter(projectResourceRefsToRetain);
