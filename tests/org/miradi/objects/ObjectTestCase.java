@@ -37,7 +37,7 @@ import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.CodeListData;
 import org.miradi.objectdata.CodeToChoiceMapData;
 import org.miradi.objectdata.CodeToCodeListMapData;
-import org.miradi.objectdata.CodeToStringMapData;
+import org.miradi.objectdata.CodeToUserStringMapData;
 import org.miradi.objectdata.DateData;
 import org.miradi.objectdata.DateRangeData;
 import org.miradi.objectdata.DateUnitEffortListData;
@@ -233,7 +233,7 @@ public class ObjectTestCase extends TestCaseWithProject
 			list.add(new BaseId(7));
 			return list.toString();
 		}
-		else if(field instanceof CodeToStringMapData)
+		else if(field instanceof CodeToUserStringMapData)
 		{
 			CodeToUserStringMap list = new CodeToUserStringMap();
 			list.put("A","RolaA");
