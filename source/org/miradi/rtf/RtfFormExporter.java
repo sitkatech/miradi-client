@@ -255,7 +255,7 @@ public class RtfFormExporter
 		ChoiceQuestion question = getProject().getQuestion(StatusQuestion.class);
 		ChoiceItem choiceItem = question.findChoiceByLabel(formConstant.getConstant());
 		
-		return stringMapData.getStringMap().get(choiceItem.getCode());
+		return stringMapData.getCodeToStringMap().get(choiceItem.getCode());
 	}
 
 	private String getFieldLabel(FormFieldLabel formFieldLabel)

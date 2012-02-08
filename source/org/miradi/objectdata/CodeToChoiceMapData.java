@@ -34,10 +34,10 @@ public class CodeToChoiceMapData extends ObjectData
 	@Override
 	public String get()
 	{
-		return getStringChoiceMap().toString();
+		return getStringToChoiceMap().toString();
 	}
 	
-	public CodeToChoiceMap getStringChoiceMap()
+	public CodeToChoiceMap getStringToChoiceMap()
 	{
 		return data;
 	}
