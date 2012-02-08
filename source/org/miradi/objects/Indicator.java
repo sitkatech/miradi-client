@@ -397,8 +397,8 @@ public class Indicator extends BaseObject
 		createUserTextField(TAG_SHORT_LABEL);
 		createChoiceField(TAG_PRIORITY, PriorityRatingQuestion.class);
 		createIdListField(TAG_METHOD_IDS, Task.getObjectType());
-		createStringStringMapField(TAG_INDICATOR_THRESHOLD);
-		createStringStringMapField(TAG_THRESHOLD_DETAILS);
+		createCodeToUserStringMapField(TAG_INDICATOR_THRESHOLD);
+		createCodeToUserStringMapField(TAG_THRESHOLD_DETAILS);
 		createChoiceField(TAG_RATING_SOURCE, RatingSourceQuestion.class);
 		createRefListField(TAG_MEASUREMENT_REFS);
 		createUserTextField(TAG_DETAIL);
