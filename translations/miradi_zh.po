@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-08 10:48-0600\n"
+"POT-Creation-Date: 2012-02-08 15:07-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -1173,6 +1173,7 @@ msgstr "数据库—演示 \t\t"
 #: Miradi/source/org/miradi/actions/ActionDeleteLegacyTncStrategyRanking.java:35
 #: Miradi/source/org/miradi/actions/ActionDelete.java:35
 #: Miradi/source/org/miradi/actions/ActionDeleteTaggedObjectSet.java:35
+#: Miradi/source/org/miradi/actions/ActionDeleteXslTemplate.java:36
 #: Miradi/source/org/miradi/actions/ActionDeleteReportTemplate.java:35
 msgid "Action|Delete"
 msgstr "删除 \t\t"
@@ -1217,10 +1218,6 @@ msgstr "删除压力 \t\t"
 msgid "Action|Delete Table"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionDeleteXslTemplate.java:35
-msgid "Action|Delete Xsl"
-msgstr ""
-
 #: Miradi/source/org/miradi/actions/views/ActionViewDiagram.java:36
 msgid "Action|Diagram"
 msgstr "图表 \t\t"
@@ -1236,10 +1233,6 @@ msgstr "编辑估计的资源… \t\t"
 #: Miradi/source/org/miradi/actions/ActionEditMethods.java:34
 msgid "Action|Edit Methods..."
 msgstr "编辑方法… \t\t"
-
-#: Miradi/source/org/miradi/actions/ActionEditXslTemplate.java:36
-msgid "Action|Edit Xsl"
-msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionEditTaggedObjectSet.java:34
 msgid "Action|Edit..."
@@ -1259,7 +1252,7 @@ msgid "Action|Expand All Rows"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionExportXslTemplate.java:36
-msgid "Action|Export Xsl"
+msgid "Action|Export XSL Template"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionExportBudgetTableTree.java:34
@@ -1299,7 +1292,7 @@ msgid "Action|Import Accounting Codes"
 msgstr "导入会计编码 \t\t"
 
 #: Miradi/source/org/miradi/actions/ActionImportXslTemplate.java:35
-msgid "Action|Import Xsl"
+msgid "Action|Import XSL Template"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionGroupBoxAddFactor.java:35
@@ -1649,13 +1642,13 @@ msgstr "报告 \t\t"
 msgid "Action|Reports - demo"
 msgstr "报告—演示 \t\t"
 
+#: Miradi/source/org/miradi/actions/ActionRunXslTemplate.java:36
+msgid "Action|Run Report"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/ActionRunReportTemplate.java:34
 msgid "Action|Run Selected..."
 msgstr "运行选项... "
-
-#: Miradi/source/org/miradi/actions/ActionRunXslTemplate.java:36
-msgid "Action|Run Xsl"
-msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionSaveProjectAs.java:34
 msgid "Action|Save As..."
@@ -4497,8 +4490,8 @@ msgstr "链接属性 \t\t"
 msgid "Lists"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/reportTemplate/XsltReportPanel.java:134
-msgid "Load XSL"
+#: Miradi/source/org/miradi/views/reports/ImportXslTemplateDoer.java:49
+msgid "Load Xsl"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/summary/SummaryLocationPanel.java:64
@@ -5749,10 +5742,6 @@ msgstr "大致猜测"
 msgid "Ruble (Russia)"
 msgstr "卢布（俄罗斯）"
 
-#: Miradi/source/org/miradi/dialogs/reportTemplate/XsltReportPanel.java:59
-msgid "Run"
-msgstr ""
-
 #: Miradi/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:122
 msgid "Run..."
 msgstr "运行... "
@@ -5783,7 +5772,7 @@ msgstr "稀树草原-干旱稀树草原"
 msgid "Savanna - Moist Savana"
 msgstr "稀树草原-湿润稀树草原"
 
-#: Miradi/source/org/miradi/dialogs/reportTemplate/XsltReportPanel.java:77
+#: Miradi/source/org/miradi/views/reports/RunXlsTemplateDoer.java:80
 msgid "Save"
 msgstr "保存 \t\t"
 
@@ -5795,6 +5784,10 @@ msgstr "保存 %s  \t\t"
 #: Miradi/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:45
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListSaveAsAction.java:47
 msgid "Save As..."
+msgstr ""
+
+#: Miradi/source/org/miradi/views/reports/ExportXslTemplateDoer.java:48
+msgid "Save Xsl"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:101
@@ -5860,12 +5853,8 @@ msgstr ""
 msgid "Select Location..."
 msgstr "选择位置... \t\t"
 
-#: Miradi/source/org/miradi/dialogs/reportTemplate/XsltReportPanel.java:77
+#: Miradi/source/org/miradi/views/reports/RunXlsTemplateDoer.java:80
 msgid "Select Output File"
-msgstr ""
-
-#: Miradi/source/org/miradi/dialogs/reportTemplate/XsltReportPanel.java:134
-msgid "Select XSL File"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/jump/ActionJumpSelectAppropriateMethods.java:35
@@ -6092,7 +6081,7 @@ msgstr ""
 msgid "Stakeholder"
 msgstr "利益相关者"
 
-#: Miradi/source/org/miradi/views/reports/ReportsView.java:95
+#: Miradi/source/org/miradi/views/reports/ReportsView.java:91
 msgid "Standard Reports"
 msgstr "标准报告 \t\t"
 
@@ -6612,10 +6601,6 @@ msgstr "删除进展百分比 \t\t"
 msgid "TT|Delete Progress Report"
 msgstr "删除进展报告 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionDeleteXslTemplate.java:41
-msgid "TT|Delete Xsl"
-msgstr ""
-
 #: Miradi/source/org/miradi/actions/ActionDeleteBendPoint.java:40
 msgid "TT|Delete a Bend Point"
 msgstr "删除一个曲点 \t\t"
@@ -6700,6 +6685,10 @@ msgstr "删除选定的资源（个人、团队等） \t\t"
 msgid "TT|Delete the selected Stress"
 msgstr "删除选定的压力 \t\t"
 
+#: Miradi/source/org/miradi/actions/ActionDeleteXslTemplate.java:42
+msgid "TT|Delete the selected XSL Template"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/ActionDeleteWorkPlanNode.java:40
 #: Miradi/source/org/miradi/actions/ActionDeletePlanningViewTreeNode.java:41
 msgid "TT|Delete the selected item"
@@ -6711,10 +6700,6 @@ msgstr "删除选定的 \t\t"
 
 #: Miradi/source/org/miradi/actions/views/ActionViewWorkPlan.java:42
 msgid "TT|Develop a work plan and budget"
-msgstr ""
-
-#: Miradi/source/org/miradi/actions/ActionEditXslTemplate.java:42
-msgid "TT|Edit Xsl"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionEditEstimatedResource.java:40
@@ -6757,10 +6742,6 @@ msgstr ""
 msgid "TT|Expand To Type"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionExportXslTemplate.java:42
-msgid "TT|Export Xsl"
-msgstr ""
-
 #: Miradi/source/org/miradi/actions/ActionExportCpmz.java:40
 msgid "TT|Export a file that can be imported by ConPro"
 msgstr "导出一个能够被导入到ConPro的文件 \t\t"
@@ -6780,6 +6761,10 @@ msgstr "将整个项目导出为XML文件"
 #: Miradi/source/org/miradi/actions/ActionExportBudgetTableTree.java:40
 msgid "TT|Export finance tree"
 msgstr "导出金融树 \t\t"
+
+#: Miradi/source/org/miradi/actions/ActionExportXslTemplate.java:42
+msgid "TT|Export the selected XSL Template to a disk file"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionExportTable.java:40
 msgid "TT|Export this view's table to a tab delimited file"
@@ -6814,10 +6799,6 @@ msgstr "隐藏该压力使之不再出现于本概念模型页面 \t\t"
 msgid "TT|How to save files in Miradi"
 msgstr "如何在Miradi中保存文件 \t\t"
 
-#: Miradi/source/org/miradi/actions/ActionImportXslTemplate.java:41
-msgid "TT|Import Xsl"
-msgstr ""
-
 #: Miradi/source/org/miradi/actions/ActionImportCpmz.java:40
 msgid "TT|Import a .cpmz file that was exported from ConPro"
 msgstr "导入一个从ConPro导出的.cpmz文件 \t\t"
@@ -6829,6 +6810,10 @@ msgstr ""
 #: Miradi/source/org/miradi/actions/ActionImportAccountingCodes.java:40
 msgid "TT|Import accounting codes"
 msgstr "导入会计编码 \t\t"
+
+#: Miradi/source/org/miradi/actions/ActionImportXslTemplate.java:41
+msgid "TT|Import an XSL Template"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionImportXmpz.java:41
 msgid "TT|Import entire project from a XML file"
@@ -6948,7 +6933,7 @@ msgid "TT|Rename this Results Chain"
 msgstr "重命名该结果链 \t\t"
 
 #: Miradi/source/org/miradi/actions/ActionRunXslTemplate.java:42
-msgid "TT|Run Xsl"
+msgid "TT|Run a report using the selected XSL Template"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionRunReportTemplate.java:40
@@ -7751,7 +7736,7 @@ msgstr ""
 msgid "Title|Project Filename"
 msgstr "项目文件名 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/xslTemplate/XslTemplatePropertiesPanel.java:43
+#: Miradi/source/org/miradi/dialogs/xslTemplate/XslTemplatePropertiesPanel.java:44
 #: Miradi/source/org/miradi/dialogs/reportTemplate/ReportTemplatePropertiesPanel.java:51
 msgid "Title|Report Template Properties"
 msgstr "标题|报告模板属性"
@@ -7857,7 +7842,7 @@ msgstr ""
 msgid "Total Monitoring Budget %1 %2"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/reportTemplate/XsltReportPanel.java:81
+#: Miradi/source/org/miradi/views/reports/RunXlsTemplateDoer.java:84
 msgid "Transformation Completed!"
 msgstr ""
 
@@ -8295,12 +8280,8 @@ msgstr ""
 msgid "Writing..."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/reports/ReportsView.java:97
-msgid "XSLT"
-msgstr ""
-
 #: Miradi/source/org/miradi/views/reports/DeleteXlsTemplateDoer.java:39
-msgid "Xsl Template"
+msgid "XSL Template"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/editors/CalendarYearDateUnitStartAndEndCard.java:37
@@ -10002,6 +9983,9 @@ msgid "FieldLabel|58.FlagsMap|Flags"
 msgstr ""
 
 msgid "FieldLabel|59.Label|Name"
+msgstr ""
+
+msgid "FieldLabel|59.xslTemplate|XSL Template"
 msgstr ""
 
 msgid ""
