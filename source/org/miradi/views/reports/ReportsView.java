@@ -31,7 +31,6 @@ import org.miradi.actions.ActionRunXslTemplate;
 import org.miradi.dialogs.base.ObjectPoolManagementPanel;
 import org.miradi.dialogs.reportTemplate.ReportTemplateManagementPanel;
 import org.miradi.dialogs.reportTemplate.StandardReportPanel;
-import org.miradi.dialogs.reportTemplate.XsltReportPanel;
 import org.miradi.dialogs.xslTemplate.XslTemplateManagmentPanel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -87,12 +86,10 @@ public class ReportsView extends TabbedView
 	{
 		reportTemplateManagementPanel = new ReportTemplateManagementPanel(getMainWindow());
 		standardReportPanel = new StandardReportPanel(getMainWindow());
-		xsltReportPanel = new XsltReportPanel(getMainWindow());
 		xslTemplateManagmentPanel = new XslTemplateManagmentPanel(getMainWindow()); 
 
 		addTab(EAM.text("Standard Reports"), new MiradiScrollPane(standardReportPanel));
 		addNonScrollingTab(reportTemplateManagementPanel);
-		addTab(EAM.text("XSLT"), xsltReportPanel);
 		addNonScrollingTab(xslTemplateManagmentPanel); 
 	}
 	
@@ -104,8 +101,6 @@ public class ReportsView extends TabbedView
 		
 		standardReportPanel = null;
 		
-		xsltReportPanel = null;
-		
 		xslTemplateManagmentPanel.dispose();
 		xslTemplateManagmentPanel= null;
 		
@@ -114,6 +109,5 @@ public class ReportsView extends TabbedView
 
 	private ReportTemplateManagementPanel reportTemplateManagementPanel;
 	private StandardReportPanel standardReportPanel;
-	private XsltReportPanel xsltReportPanel;
 	private ObjectPoolManagementPanel xslTemplateManagmentPanel;
 }
