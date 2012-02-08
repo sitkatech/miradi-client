@@ -24,6 +24,7 @@ import java.util.Vector;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.ids.IndicatorId;
+import org.miradi.objectdata.CodeToStringMapData;
 import org.miradi.objecthelpers.DirectThreatSet;
 import org.miradi.objecthelpers.NonDraftStrategySet;
 import org.miradi.objecthelpers.ORef;
@@ -39,7 +40,6 @@ import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
-import org.miradi.utils.CodeToStringMapData;
 
 public class Indicator extends BaseObject
 {

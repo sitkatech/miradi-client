@@ -34,6 +34,7 @@ import org.miradi.forms.FormRow;
 import org.miradi.forms.PropertiesPanelSpec;
 import org.miradi.forms.objects.FormFieldCodeListData;
 import org.miradi.main.EAM;
+import org.miradi.objectdata.CodeToStringMapData;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -45,7 +46,6 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DoubleUtilities;
-import org.miradi.utils.CodeToStringMapData;
 
 public class RtfFormExporter
 {

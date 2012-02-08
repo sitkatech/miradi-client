@@ -18,27 +18,26 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.utils;
+package org.miradi.objectdata;
 
-import org.miradi.objectdata.ObjectData;
-import org.miradi.objecthelpers.CodeToCodeListMap;
+import org.miradi.objecthelpers.CodeToChoiceMap;
 
-public class CodeToCodeListMapData extends ObjectData
+public class CodeToChoiceMapData extends ObjectData
 {
-	public CodeToCodeListMapData(String tagToUse)
+	public CodeToChoiceMapData(String tagToUse)
 	{
 		super(tagToUse);
 		
-		data = new CodeToCodeListMap();
+		data = new CodeToChoiceMap();
 	}
 
 	@Override
 	public String get()
 	{
-		return getStringCodeListMap().toString();
+		return getStringChoiceMap().toString();
 	}
 	
-	public CodeToCodeListMap getStringCodeListMap()
+	public CodeToChoiceMap getStringChoiceMap()
 	{
 		return data;
 	}
@@ -46,16 +45,16 @@ public class CodeToCodeListMapData extends ObjectData
 	@Override
 	public void set(String newValue) throws Exception
 	{
-		data = new CodeToCodeListMap(newValue);
+		data = new CodeToChoiceMap(newValue);
 	}
 
 	@Override
 	public boolean equals(Object rawOther)
 	{
-		if(!(rawOther instanceof CodeToCodeListMapData))
+		if(!(rawOther instanceof CodeToChoiceMapData))
 			return false;
 
-		CodeToCodeListMapData other = (CodeToCodeListMapData) rawOther;
+		CodeToChoiceMapData other = (CodeToChoiceMapData) rawOther;
 		return other.data.equals(data);
 	}
 
@@ -66,10 +65,10 @@ public class CodeToCodeListMapData extends ObjectData
 	}
 	
 	@Override
-	public boolean isCodeToCodeListMapData()
+	public boolean isCodeToChoiceMapData()
 	{
 		return true;
 	}
 	
-	private CodeToCodeListMap data;
+	private CodeToChoiceMap data;
 }

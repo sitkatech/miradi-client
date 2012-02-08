@@ -1,5 +1,5 @@
 /* 
-Copyright 2005-2009, Foundations of Success, Bethesda, Maryland 
+Copyright 2005-2010, Foundations of Success, Bethesda, Maryland 
 (on behalf of the Conservation Measures Partnership, "CMP") and 
 Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 
@@ -16,28 +16,28 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
-*/
-package org.miradi.utils;
+*/ 
 
-import org.miradi.objectdata.ObjectData;
-import org.miradi.objecthelpers.CodeToUserStringMap;
+package org.miradi.objectdata;
 
-public class CodeToStringMapData extends ObjectData
+import org.miradi.objecthelpers.CodeToCodeListMap;
+
+public class CodeToCodeListMapData extends ObjectData
 {
-	public CodeToStringMapData(String tagToUse)
+	public CodeToCodeListMapData(String tagToUse)
 	{
 		super(tagToUse);
 		
-		data = new CodeToUserStringMap();
+		data = new CodeToCodeListMap();
 	}
 
 	@Override
 	public String get()
 	{
-		return getStringMap().toString();
+		return getStringCodeListMap().toString();
 	}
 	
-	public CodeToUserStringMap getStringMap()
+	public CodeToCodeListMap getStringCodeListMap()
 	{
 		return data;
 	}
@@ -45,16 +45,16 @@ public class CodeToStringMapData extends ObjectData
 	@Override
 	public void set(String newValue) throws Exception
 	{
-		data = new CodeToUserStringMap(newValue);
+		data = new CodeToCodeListMap(newValue);
 	}
 
 	@Override
 	public boolean equals(Object rawOther)
 	{
-		if(!(rawOther instanceof CodeToStringMapData))
+		if(!(rawOther instanceof CodeToCodeListMapData))
 			return false;
 
-		CodeToStringMapData other = (CodeToStringMapData) rawOther;
+		CodeToCodeListMapData other = (CodeToCodeListMapData) rawOther;
 		return other.data.equals(data);
 	}
 
@@ -65,10 +65,10 @@ public class CodeToStringMapData extends ObjectData
 	}
 	
 	@Override
-	public boolean isCodeToStringMapData()
+	public boolean isCodeToCodeListMapData()
 	{
 		return true;
 	}
 	
-	private CodeToUserStringMap data;
+	private CodeToCodeListMap data;
 }
