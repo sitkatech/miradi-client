@@ -37,7 +37,9 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.XslTemplate;
+import org.miradi.utils.GenericMiradiFileFilter;
 import org.miradi.utils.XmlUtilities2;
+import org.miradi.utils.XslOutputFileFilter;
 import org.miradi.views.ObjectsDoer;
 import org.miradi.xml.wcs.XmpzXmlExporter;
 import org.w3c.dom.Document;
@@ -63,10 +65,14 @@ public class RunXlsTemplateDoer extends ObjectsDoer
 		BaseObject selectedObject = getSingleSelectedObject();
 		String xlsTemplate = selectedObject.getData(XslTemplate.TAG_XSL_TEMPLATE);
 		xlsTemplate = XmlUtilities2.getXmlDecoded(xlsTemplate);
-		transform(xlsTemplate);
+		
+		final String fileExtensionAsString = selectedObject.getData(XslTemplate.TAG_FILE_EXTENSION);
+		XslOutputFileFilter fileFilter = new XslOutputFileFilter(fileExtensionAsString);
+		
+		transform(xlsTemplate, fileFilter);
 	}
 	
-	private void transform(final String xslTemplate) throws Exception 
+	private void transform(final String xslTemplate, GenericMiradiFileFilter fileFilter) throws Exception 
 	{
 		final InputSource projectXmlInputSource = getExportedProjectXmlAsString(); 
 
@@ -77,7 +83,7 @@ public class RunXlsTemplateDoer extends ObjectsDoer
 		final StreamSource xslStreamSource = new StreamSource(new UnicodeStringReader(xslTemplate));
 		Transformer transformer = transformerFactory.newTransformer(xslStreamSource);
 
-		final File outputFile = getUserChosenFile(getMainWindow(), EAM.text("Select Output File"), EAM.text("Save"));
+		final File outputFile = getUserChosenFile(getMainWindow(), EAM.text("Select Output File"), EAM.text("Save"), fileFilter);
 		if (outputFile != null)
 		{				
 			transformer.transform(new DOMSource(doc), new StreamResult(new FileOutputStream(outputFile)));
@@ -105,7 +111,15 @@ public class RunXlsTemplateDoer extends ObjectsDoer
 
 	public static File getUserChosenFile(final MainWindow mainWindowToUse, final String diaglogTitle, final String buttonText)
 	{
+		return getUserChosenFile(mainWindowToUse, diaglogTitle, buttonText, null);
+	}
+	
+	public static File getUserChosenFile(final MainWindow mainWindowToUse, final String diaglogTitle, final String buttonText, final GenericMiradiFileFilter fileFilter)
+	{
 		JFileChooser fileChooser = new JFileChooser();
+		if (fileFilter != null)
+			fileChooser.setFileFilter(fileFilter);
+		
 		fileChooser.setDialogTitle(diaglogTitle);
 		fileChooser.setDialogType(JFileChooser.CUSTOM_DIALOG);
 		if (fileChooser.showDialog(mainWindowToUse, buttonText) != JFileChooser.APPROVE_OPTION)

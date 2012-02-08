@@ -18,29 +18,25 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.dialogs.xslTemplate;
+package org.miradi.utils;
 
-import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.main.EAM;
-import org.miradi.objects.XslTemplate;
-import org.miradi.project.Project;
-
-public class XslTemplatePropertiesPanel extends ObjectDataInputPanel
+public class XslOutputFileFilter extends GenericMiradiFileFilter
 {
-	public XslTemplatePropertiesPanel(Project projectToUse) throws Exception
+	public XslOutputFileFilter(final String extensionToUse)
 	{
-		super(projectToUse, XslTemplate.getObjectType());
-			
-		addField(createExpandableField(XslTemplate.TAG_LABEL));
-		addField(createShortStringField(XslTemplate.TAG_FILE_EXTENSION));
-		addField(createMultilineField(XslTemplate.TAG_XSL_TEMPLATE));
-		
-		updateFieldsFromProject();
+		extension = extensionToUse;
 	}
 	
-	@Override
-	public String getPanelDescription()
+	public String getFileExtension()
 	{
-		return EAM.text("Title|XSL Template Properties");
+		return extension;
 	}
+
+	@Override
+	public String getDescription()
+	{
+		return extension;
+	}
+	
+	private String extension;
 }
