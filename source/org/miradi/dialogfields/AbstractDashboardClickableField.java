@@ -31,7 +31,7 @@ import org.miradi.dialogs.base.ModalDialogWithClose;
 import org.miradi.dialogs.dashboard.DashboardProgressPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.AbstractStringKeyMap;
+import org.miradi.objecthelpers.AbstractStringToStringMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
@@ -95,7 +95,7 @@ abstract public class AbstractDashboardClickableField extends ObjectDataField
 
 	protected String getMapValue(Dashboard dashboard, String stringMapCodeToUse) throws Exception
 	{
-		AbstractStringKeyMap map = createStringKeyMap(dashboard);
+		AbstractStringToStringMap map = createStringKeyMap(dashboard);
 		return map.get(stringMapCodeToUse);
 	}
 	
@@ -123,7 +123,7 @@ abstract public class AbstractDashboardClickableField extends ObjectDataField
 		}
 	}
 	
-	abstract protected AbstractStringKeyMap createStringKeyMap(Dashboard dashboard) throws Exception;
+	abstract protected AbstractStringToStringMap createStringKeyMap(Dashboard dashboard) throws Exception;
 	
 	abstract protected void updateLabelComponent(PanelTitleLabel labelComponentToUse, String mapValue) throws Exception;
 

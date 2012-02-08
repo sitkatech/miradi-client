@@ -22,7 +22,7 @@ package org.miradi.dialogfields;
 
 
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
-import org.miradi.objecthelpers.AbstractStringKeyMap;
+import org.miradi.objecthelpers.AbstractStringToStringMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
@@ -49,7 +49,7 @@ abstract public class AsbtractDashboardClickableQuestionField extends AbstractDa
 	}
 	
 	@Override
-	protected AbstractStringKeyMap createStringKeyMap(Dashboard dashboard) throws Exception
+	protected AbstractStringToStringMap createStringKeyMap(Dashboard dashboard) throws Exception
 	{
 		return getProject().getCachedDashboardEffectiveMap();
 	}

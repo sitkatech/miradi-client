@@ -24,7 +24,7 @@ import java.text.ParseException;
 
 import org.miradi.utils.EnhancedJsonObject;
 
-public class CodeToChoiceMap extends AbstractStringKeyMap
+public class CodeToChoiceMap extends AbstractStringToStringMap
 {
 	public CodeToChoiceMap()
 	{

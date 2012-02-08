@@ -21,7 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.main.TestCaseWithProject;
-import org.miradi.objecthelpers.AbstractStringKeyMap;
+import org.miradi.objecthelpers.AbstractStringToStringMap;
 import org.miradi.objecthelpers.DashboardStatusMapsCache;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.CodeToChoiceMap;
@@ -58,10 +58,10 @@ public class TestDashboardStatusMapsCache extends TestCaseWithProject
 	{
 		initializeCache();
 		getProject().createAndAddFactorToDiagram(Cause.getObjectType());
-		AbstractStringKeyMap cachedMap = getProject().getCachedDashboardEffectiveMap();
+		AbstractStringToStringMap cachedMap = getProject().getCachedDashboardEffectiveMap();
 		
 		getDashboardStatusMapsCache().invalidateAllCachedMaps();
-		AbstractStringKeyMap nonCachedMap = getDashboardStatusMapsCache().getEffectiveMap();
+		AbstractStringToStringMap nonCachedMap = getDashboardStatusMapsCache().getEffectiveMap();
 		assertEquals("Cached map is not in sync with dashbard's effective status map?", nonCachedMap, cachedMap);
 	}
 

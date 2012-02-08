@@ -23,7 +23,7 @@ package org.miradi.utils;
 import java.util.Iterator;
 
 import org.miradi.main.MiradiTestCase;
-import org.miradi.objecthelpers.AbstractStringKeyMap;
+import org.miradi.objecthelpers.AbstractStringToStringMap;
 
 abstract public class TestAbstractStringMap extends MiradiTestCase
 {
@@ -34,7 +34,7 @@ abstract public class TestAbstractStringMap extends MiradiTestCase
 	
 	public void testBasics()
 	{
-		AbstractStringKeyMap list = createAbstractMap();
+		AbstractStringToStringMap list = createAbstractMap();
 		assertEquals("wrong initial size?", 0, list.size());
 		String key1 = new String("A");
 		String value1 = new String("RoleA");
@@ -49,12 +49,12 @@ abstract public class TestAbstractStringMap extends MiradiTestCase
 	
 	public void testEquals()
 	{
-		AbstractStringKeyMap list = createMapWithSampleData();
-		AbstractStringKeyMap identical = createMapWithSampleData();
+		AbstractStringToStringMap list = createMapWithSampleData();
+		AbstractStringToStringMap identical = createMapWithSampleData();
 		assertEquals(list, identical);
 		assertEquals(list.hashCode(), identical.hashCode());
 		
-		AbstractStringKeyMap different = createAbstractMap();
+		AbstractStringToStringMap different = createAbstractMap();
 		different.put("A", list.get("A"));
 		different.put("C", list.get("C"));
 		different.put("B", list.get("B"));
@@ -66,9 +66,9 @@ abstract public class TestAbstractStringMap extends MiradiTestCase
 		assertEquals(false, list.equals(different));
 	}
 	
-	protected AbstractStringKeyMap createMapWithSampleData()
+	protected AbstractStringToStringMap createMapWithSampleData()
 	{
-		AbstractStringKeyMap list = createAbstractMap();
+		AbstractStringToStringMap list = createAbstractMap();
 		list.put("A", "RoleA");
 		list.put("B", "RoleB");
 		list.put("C", "RoleC");
@@ -77,7 +77,7 @@ abstract public class TestAbstractStringMap extends MiradiTestCase
 	
 	public void testRemove()
 	{
-		AbstractStringKeyMap list = createMapWithSampleData();
+		AbstractStringToStringMap list = createMapWithSampleData();
 		list.removeCode("A");
 		assertEquals(2, list.size());
 		assertEquals("RoleC", list.get("C"));
@@ -96,7 +96,7 @@ abstract public class TestAbstractStringMap extends MiradiTestCase
 	{
 		String[] values = new String[] { new String("Role1"), new String("Role19"), new String("Role3"), };
 		String[] keys = new String[] { new String("1"), new String("19"), new String("3"), };
-		AbstractStringKeyMap list = createAbstractMap();
+		AbstractStringToStringMap list = createAbstractMap();
 		for(int i = 0; i < values.length; ++i)
 			list.put(keys[i], values[i]);
 		for(int i = 0; i < values.length; ++i)
@@ -106,10 +106,10 @@ abstract public class TestAbstractStringMap extends MiradiTestCase
 	
 	public void testJson()
 	{
-		AbstractStringKeyMap list = createMapWithSampleData();
+		AbstractStringToStringMap list = createMapWithSampleData();
 		EnhancedJsonObject json = list.toJson();
 		
-		AbstractStringKeyMap loaded = createAbstractMap(json);
+		AbstractStringToStringMap loaded = createAbstractMap(json);
 		assertEquals("wrong size?", list.size(), loaded.size());
 		Iterator iterator = list.toHashMap().keySet().iterator();
 		while (iterator.hasNext())
@@ -119,7 +119,7 @@ abstract public class TestAbstractStringMap extends MiradiTestCase
 		}
 	}
 
-	abstract protected AbstractStringKeyMap createAbstractMap(EnhancedJsonObject json);
+	abstract protected AbstractStringToStringMap createAbstractMap(EnhancedJsonObject json);
 	
-	abstract protected AbstractStringKeyMap createAbstractMap();
+	abstract protected AbstractStringToStringMap createAbstractMap();
 }

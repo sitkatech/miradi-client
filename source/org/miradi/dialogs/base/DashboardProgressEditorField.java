@@ -28,7 +28,7 @@ import org.miradi.dialogfields.QuestionBasedEditorComponent;
 import org.miradi.dialogfields.RadioButtonEditorComponent;
 import org.miradi.dialogs.dashboard.DashboardRowDefinition;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.AbstractStringKeyMap;
+import org.miradi.objecthelpers.AbstractStringToStringMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.CodeToChoiceMap;
 import org.miradi.objects.Dashboard;
@@ -111,7 +111,7 @@ public class DashboardProgressEditorField extends AbstractStringStringMapEditorF
 	{
 		try
 		{
-			AbstractStringKeyMap existingMap = new CodeToChoiceMap(getProject().getObjectData(getORef(), getTag()));
+			AbstractStringToStringMap existingMap = new CodeToChoiceMap(getProject().getObjectData(getORef(), getTag()));
 			CodeList codes = new CodeList(super.getText());
 			if (!codes.isEmpty())
 				existingMap.put(getMapCode(), codes.firstElement());
@@ -132,7 +132,7 @@ public class DashboardProgressEditorField extends AbstractStringStringMapEditorF
 	{
 		try
 		{
-			AbstractStringKeyMap stringChoiceMap = new CodeToChoiceMap(stringMapAsString);
+			AbstractStringToStringMap stringChoiceMap = new CodeToChoiceMap(stringMapAsString);
 			String code = stringChoiceMap.get(getMapCode());
 			super.setText(code);
 		}

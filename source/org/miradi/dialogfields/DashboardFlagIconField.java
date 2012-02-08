@@ -24,7 +24,7 @@ package org.miradi.dialogfields;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.icons.EmptyIcon;
 import org.miradi.icons.IconManager;
-import org.miradi.objecthelpers.AbstractStringKeyMap;
+import org.miradi.objecthelpers.AbstractStringToStringMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
@@ -50,7 +50,7 @@ public class DashboardFlagIconField extends	AbstractDashboardClickableField
 	}
 	
 	@Override
-	protected AbstractStringKeyMap createStringKeyMap(Dashboard dashboard) throws Exception
+	protected AbstractStringToStringMap createStringKeyMap(Dashboard dashboard) throws Exception
 	{
 		return dashboard.getFlagsMap();
 	}

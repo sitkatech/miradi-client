@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.base;
 
-import org.miradi.objecthelpers.AbstractStringKeyMap;
+import org.miradi.objecthelpers.AbstractStringToStringMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.CodeToCodeListMap;
 import org.miradi.project.Project;
@@ -34,13 +34,13 @@ public class CodeCodeListMapEditorField extends AbstractCodeCodeListMapEditorFie
 	}
 
 	@Override
-	protected AbstractStringKeyMap createCurrentStringKeyMap() throws Exception
+	protected AbstractStringToStringMap createCurrentStringKeyMap() throws Exception
 	{
 		return new CodeToCodeListMap(getProject().getObjectData(getORef(), getTag()));
 	}
 
 	@Override
-	protected AbstractStringKeyMap createStringKeyMap(String StringMapAsString) throws Exception
+	protected AbstractStringToStringMap createStringKeyMap(String StringMapAsString) throws Exception
 	{
 		return new CodeToCodeListMap(StringMapAsString);
 	}

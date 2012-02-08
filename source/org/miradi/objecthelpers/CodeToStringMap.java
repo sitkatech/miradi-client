@@ -23,7 +23,7 @@ import java.text.ParseException;
 
 import org.miradi.utils.EnhancedJsonObject;
 
-public class CodeToStringMap extends AbstractStringKeyMap
+public class CodeToStringMap extends AbstractStringToStringMap
 {
 	public CodeToStringMap()
 	{

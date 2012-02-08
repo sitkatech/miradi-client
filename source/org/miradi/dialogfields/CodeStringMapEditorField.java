@@ -21,7 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogfields;
 
 import org.miradi.dialogs.base.AbstractCodeCodeListMapEditorField;
-import org.miradi.objecthelpers.AbstractStringKeyMap;
+import org.miradi.objecthelpers.AbstractStringToStringMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.CodeToStringMap;
 import org.miradi.project.Project;
@@ -35,13 +35,13 @@ public class CodeStringMapEditorField extends AbstractCodeCodeListMapEditorField
 	}
 
 	@Override
-	protected AbstractStringKeyMap createCurrentStringKeyMap() throws Exception
+	protected AbstractStringToStringMap createCurrentStringKeyMap() throws Exception
 	{
 		return new CodeToStringMap(getProject().getObjectData(getORef(), getTag()));
 	}
 
 	@Override
-	protected AbstractStringKeyMap createStringKeyMap(String StringMapAsString) throws Exception
+	protected AbstractStringToStringMap createStringKeyMap(String StringMapAsString) throws Exception
 	{
 		return new CodeToStringMap(StringMapAsString);
 	}
