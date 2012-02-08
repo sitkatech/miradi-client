@@ -1094,7 +1094,7 @@ abstract public class BaseObject
 		addField(new CodeToChoiceMapData(tag));
 	}
 	
-	protected void createStringStringMapField(String tag)
+	protected void createCodeToUserStringMapField(String tag)
 	{
 		addField(new CodeToUserStringMapData(tag));
 	}

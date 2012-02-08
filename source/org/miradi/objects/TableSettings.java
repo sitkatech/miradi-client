@@ -182,14 +182,14 @@ public class TableSettings extends BaseObject
 		createUserTextField(TAG_TABLE_IDENTIFIER);
 		createIntegerField(TAG_ROW_HEIGHT);
 		createDateUnitListField(TAG_DATE_UNIT_LIST_DATA);
-		createStringStringMapField(TAG_TABLE_SETTINGS_MAP);
+		createCodeToUserStringMapField(TAG_TABLE_SETTINGS_MAP);
 		createChoiceField(TAG_WORK_PLAN_VISIBLE_NODES_CODE, getQuestion(WorkPlanVisibleRowsQuestion.class));
 		
 		createRefListListField(TAG_TREE_EXPANSION_LIST);
 		setNonUserField(TAG_TREE_EXPANSION_LIST);
 		createTagListField(TAG_COLUMN_SEQUENCE_CODES);
 		setNonUserField(TAG_COLUMN_SEQUENCE_CODES);
-		createStringStringMapField(TAG_COLUMN_WIDTHS);
+		createCodeToUserStringMapField(TAG_COLUMN_WIDTHS);
 		setNonUserField(TAG_COLUMN_WIDTHS);
 		createCodeField(TAG_COLUMN_SORT_TAG);
 		setNonUserField(TAG_COLUMN_SORT_TAG);

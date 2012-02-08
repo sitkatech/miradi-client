@@ -129,8 +129,8 @@ public class ThreatRatingCommentsData extends BaseObject
 	{
 		super.clear();
 		
-		createStringStringMapField(TAG_SIMPLE_THREAT_RATING_COMMENTS_MAP);
-		createStringStringMapField(TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAP);
+		createCodeToUserStringMapField(TAG_SIMPLE_THREAT_RATING_COMMENTS_MAP);
+		createCodeToUserStringMapField(TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAP);
 	}
 
 	public static final String OBJECT_NAME = "ThreatRatingCommentsData";
