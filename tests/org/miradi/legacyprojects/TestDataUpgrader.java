@@ -40,7 +40,7 @@ import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objecthelpers.CodeStringMap;
+import org.miradi.objecthelpers.CodeToStringMap;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramLink;
@@ -376,12 +376,12 @@ public class TestDataUpgrader extends AbstractMigrationTestCase
 		ORef targetRef = new ORef(Target.getObjectType(), new BaseId(targetIds[0]));
 		String key = threatRef.toString() + targetRef.toString();
 		
-		CodeStringMap simpleThreatRatingCommentsMap2 = new CodeStringMap(threatRatingCommentsDataJson.optString("SimpleThreatRatingCommentsMap"));
+		CodeToStringMap simpleThreatRatingCommentsMap2 = new CodeToStringMap(threatRatingCommentsDataJson.optString("SimpleThreatRatingCommentsMap"));
 		assertEquals("simple threat rating comments map should not be empty?", 1, simpleThreatRatingCommentsMap2.size());
 		String simpleBasedComment = simpleThreatRatingCommentsMap2.get(key);
 		assertEquals("wrong comment for key", "simple based comment in link", simpleBasedComment);
 		
-		CodeStringMap stressThreatRatingCommentsMap2 = new CodeStringMap(threatRatingCommentsDataJson.optString("StressBasedThreatRatingCommentsMap"));
+		CodeToStringMap stressThreatRatingCommentsMap2 = new CodeToStringMap(threatRatingCommentsDataJson.optString("StressBasedThreatRatingCommentsMap"));
 		assertEquals("stress threat rating comments map should not be empty?", 1, stressThreatRatingCommentsMap2.size());
 		String stressBasedComment = stressThreatRatingCommentsMap2.get(key);
 		assertEquals("wrong comment for key", "stress based comment in link", stressBasedComment);
