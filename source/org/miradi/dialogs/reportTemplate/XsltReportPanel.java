@@ -25,7 +25,6 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileOutputStream;
 
-import javax.swing.JFileChooser;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
@@ -41,6 +40,7 @@ import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
+import org.miradi.views.reports.RunXlsTemplateDoer;
 import org.miradi.xml.wcs.XmpzXmlExporter;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
@@ -74,7 +74,7 @@ public class XsltReportPanel extends TwoColumnPanel
 			final StreamSource xslStreamSource = new StreamSource(selectedXslFile);
 			Transformer transformer = transformerFactory.newTransformer(xslStreamSource);
 			
-			final File outputFile = getUserChosenFile(getMainWindow(), EAM.text("Select Output File"), EAM.text("Save"));
+			final File outputFile = RunXlsTemplateDoer.getUserChosenFile(getMainWindow(), EAM.text("Select Output File"), EAM.text("Save"));
 			if (outputFile != null)
 			{				
 				transformer.transform(new DOMSource(doc), new StreamResult(new FileOutputStream(outputFile)));
@@ -106,17 +106,6 @@ public class XsltReportPanel extends TwoColumnPanel
 		}
 	}
 
-	public static File getUserChosenFile(final MainWindow mainWindowToUse, final String diaglogTitle, final String buttonText)
-	{
-		JFileChooser fileChooser = new JFileChooser();
-		fileChooser.setDialogTitle(diaglogTitle);
-		fileChooser.setDialogType(JFileChooser.CUSTOM_DIALOG);
-		if (fileChooser.showDialog(mainWindowToUse, buttonText) != JFileChooser.APPROVE_OPTION)
-			return null;
-
-		return fileChooser.getSelectedFile();
-	}
-
 	private MainWindow getMainWindow()
 	{
 		return mainWindow;
@@ -131,7 +120,7 @@ public class XsltReportPanel extends TwoColumnPanel
 	{
 		public void actionPerformed(ActionEvent event)
 		{
-			final File selectedFile = getUserChosenFile(getMainWindow(), EAM.text("Select XSL File"), EAM.text("Load XSL"));
+			final File selectedFile = RunXlsTemplateDoer.getUserChosenFile(getMainWindow(), EAM.text("Select XSL File"), EAM.text("Load XSL"));
 			if (selectedFile != null)
 				transform(selectedFile);
 		}

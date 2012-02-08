@@ -25,7 +25,6 @@ import java.io.File;
 import org.martus.util.UnicodeReader;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.dialogs.reportTemplate.XsltReportPanel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.objects.XslTemplate;
@@ -47,7 +46,7 @@ public class ImportXslTemplateDoer extends ObjectsDoer
 		if (!isAvailable())
 			return;
 		
-		File userChosenFile = XsltReportPanel.getUserChosenFile(getMainWindow(), EAM.text("Load Xsl"), EAM.text("Load Xsl"));
+		File userChosenFile = RunXlsTemplateDoer.getUserChosenFile(getMainWindow(), EAM.text("Load Xsl"), EAM.text("Load Xsl"));
 		if (userChosenFile == null)
 			return;
 		
