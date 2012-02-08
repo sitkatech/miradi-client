@@ -77,7 +77,7 @@ public class RunXlsTemplateDoer extends ObjectsDoer
 		final StreamSource xslStreamSource = new StreamSource(new UnicodeStringReader(xslTemplate));
 		Transformer transformer = transformerFactory.newTransformer(xslStreamSource);
 
-		final File outputFile = RunXlsTemplateDoer.getUserChosenFile(getMainWindow(), EAM.text("Select Output File"), EAM.text("Save"));
+		final File outputFile = getUserChosenFile(getMainWindow(), EAM.text("Select Output File"), EAM.text("Save"));
 		if (outputFile != null)
 		{				
 			transformer.transform(new DOMSource(doc), new StreamResult(new FileOutputStream(outputFile)));
