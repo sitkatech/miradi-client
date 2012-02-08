@@ -23,6 +23,7 @@ package org.miradi.views.reports;
 import java.io.File;
 import java.io.FileOutputStream;
 
+import javax.swing.JFileChooser;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
@@ -32,8 +33,8 @@ import javax.xml.transform.stream.StreamSource;
 
 import org.martus.util.UnicodeStringReader;
 import org.martus.util.UnicodeStringWriter;
-import org.miradi.dialogs.reportTemplate.XsltReportPanel;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.XslTemplate;
 import org.miradi.utils.XmlUtilities2;
@@ -76,7 +77,7 @@ public class RunXlsTemplateDoer extends ObjectsDoer
 		final StreamSource xslStreamSource = new StreamSource(new UnicodeStringReader(xslTemplate));
 		Transformer transformer = transformerFactory.newTransformer(xslStreamSource);
 
-		final File outputFile = XsltReportPanel.getUserChosenFile(getMainWindow(), EAM.text("Select Output File"), EAM.text("Save"));
+		final File outputFile = RunXlsTemplateDoer.getUserChosenFile(getMainWindow(), EAM.text("Select Output File"), EAM.text("Save"));
 		if (outputFile != null)
 		{				
 			transformer.transform(new DOMSource(doc), new StreamResult(new FileOutputStream(outputFile)));
@@ -100,5 +101,16 @@ public class RunXlsTemplateDoer extends ObjectsDoer
 		{
 			projectWriter.close();
 		}
+	}
+
+	public static File getUserChosenFile(final MainWindow mainWindowToUse, final String diaglogTitle, final String buttonText)
+	{
+		JFileChooser fileChooser = new JFileChooser();
+		fileChooser.setDialogTitle(diaglogTitle);
+		fileChooser.setDialogType(JFileChooser.CUSTOM_DIALOG);
+		if (fileChooser.showDialog(mainWindowToUse, buttonText) != JFileChooser.APPROVE_OPTION)
+			return null;
+	
+		return fileChooser.getSelectedFile();
 	}
 }

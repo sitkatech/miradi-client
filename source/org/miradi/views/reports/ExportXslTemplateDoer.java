@@ -23,7 +23,6 @@ package org.miradi.views.reports;
 import java.io.File;
 
 import org.martus.util.UnicodeWriter;
-import org.miradi.dialogs.reportTemplate.XsltReportPanel;
 import org.miradi.main.EAM;
 import org.miradi.objects.XslTemplate;
 import org.miradi.utils.XmlUtilities2;
@@ -46,7 +45,7 @@ public class ExportXslTemplateDoer extends ObjectsDoer
 		if (!isAvailable())
 			return;
 		
-		File userChosenFile = XsltReportPanel.getUserChosenFile(getMainWindow(), EAM.text("Save Xsl"), EAM.text("Save Xsl"));
+		File userChosenFile = RunXlsTemplateDoer.getUserChosenFile(getMainWindow(), EAM.text("Save Xsl"), EAM.text("Save Xsl"));
 		if (userChosenFile == null)
 			return;
 		
