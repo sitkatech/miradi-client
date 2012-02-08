@@ -94,10 +94,11 @@ public class XslTemplate extends BaseObject
 		super.clear();
 		
 		createUserTextField(TAG_XSL_TEMPLATE);
-		
+		createUserTextField(TAG_FILE_EXTENSION);
 	}
 
 	public static final String TAG_XSL_TEMPLATE = "xslTemplate";
+	public static final String TAG_FILE_EXTENSION = "FileExtension";
 	
 	public static final String OBJECT_NAME = "XslTemplate";
 }
