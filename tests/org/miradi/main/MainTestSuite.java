@@ -189,7 +189,7 @@ import org.miradi.utils.TestAbstractTableExporter;
 import org.miradi.utils.TestBaseObjectDateAndIdComparator;
 import org.miradi.utils.TestBendPointList;
 import org.miradi.utils.TestCodeToChoiceMap;
-import org.miradi.utils.TestCodeCodeListMap;
+import org.miradi.utils.TestCodeToCodeListMap;
 import org.miradi.utils.TestCodeList;
 import org.miradi.utils.TestCodeToStringMap;
 import org.miradi.utils.TestColumnSequenceSaver;
@@ -378,7 +378,7 @@ public class MainTestSuite extends TestSuite
 		addTest(new TestSuite(TestCodeList.class));
 		addTest(new TestSuite(TestCodeToStringMap.class));
 		addTest(new TestSuite(TestCodeToChoiceMap.class));
-		addTest(new TestSuite(TestCodeCodeListMap.class));
+		addTest(new TestSuite(TestCodeToCodeListMap.class));
 		addTest(new TestSuite(TestIndicator.class));
 		addTest(new TestSuite(TestKeyEcologicalAttribute.class));
 		addTest(new TestSuite(TestObjective.class));
