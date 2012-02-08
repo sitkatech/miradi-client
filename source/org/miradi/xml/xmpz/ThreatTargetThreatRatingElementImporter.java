@@ -22,7 +22,7 @@ package org.miradi.xml.xmpz;
 
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.CodeToStringMap;
+import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Stress;
@@ -75,7 +75,7 @@ public class ThreatTargetThreatRatingElementImporter extends AbstractXmpzObjectI
 		if (commentsNode != null)
 		{
 			String comments = commentsNode.getTextContent();
-			CodeToStringMap commentsMap = getThreatRatingCommentsMap(threatRatingNode, threatRatingCommentsData);
+			CodeToUserStringMap commentsMap = getThreatRatingCommentsMap(threatRatingNode, threatRatingCommentsData);
 			String threatTargetKey = ThreatRatingCommentsData.createKey(threatRef, targetRef);
 			
 			commentsMap.put(threatTargetKey, comments);
@@ -98,7 +98,7 @@ public class ThreatTargetThreatRatingElementImporter extends AbstractXmpzObjectI
 		return targetRef;
 	}
 
-	private CodeToStringMap getThreatRatingCommentsMap(Node threatRatingNode, ThreatRatingCommentsData threatRatingCommentsData) throws Exception
+	private CodeToUserStringMap getThreatRatingCommentsMap(Node threatRatingNode, ThreatRatingCommentsData threatRatingCommentsData) throws Exception
 	{
 		if (isSimpleThreatRatingNode(threatRatingNode))
 			return threatRatingCommentsData.getSimpleThreatRatingCommentsMap();
