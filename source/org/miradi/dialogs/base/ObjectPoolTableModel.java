@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.base;
 
-import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.project.Project;
 
@@ -33,13 +32,14 @@ abstract public class ObjectPoolTableModel extends ObjectTableModel
 	@Override
 	public ORefList getLatestRefListFromProject()
 	{
-		return new ORefList(getRowObjectType(), getLatestIdListFromProject());
+		return getLatestIdListFromProject();
 	}
 	
-	private IdList getLatestIdListFromProject()
+	private ORefList getLatestIdListFromProject()
 	{
-		IdList idList = getProject().getPool(getRowObjectType()).getIdList();
-		idList.sort();
-		return idList;
+		ORefList refList = getProject().getPool(getRowObjectType()).getRefList();
+		refList.sort();
+		
+		return refList;
 	}
 }
