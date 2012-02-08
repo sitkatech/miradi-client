@@ -16,7 +16,7 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
- */
+*/ 
 
 package org.miradi.objecthelpers;
 
@@ -24,33 +24,37 @@ import java.text.ParseException;
 
 import org.miradi.utils.EnhancedJsonObject;
 
-abstract public class AbstractCodeToStringMap extends AbstractStringToStringMap
+public class CodeToCodeMap extends AbstractCodeToStringMap
 {
-	public AbstractCodeToStringMap()
+	public CodeToCodeMap()
 	{
 		super();
 	}
 
-	public AbstractCodeToStringMap(AbstractCodeToStringMap copyFrom)
+	public CodeToCodeMap(CodeToCodeMap copyFrom)
 	{
 		super(copyFrom);
 	}
 
-	public AbstractCodeToStringMap(EnhancedJsonObject json)
+	public CodeToCodeMap(EnhancedJsonObject json)
 	{
 		super(json);
 	}
-
-	public AbstractCodeToStringMap(String mapAsJsonString) throws ParseException
+	
+	public CodeToCodeMap(String mapAsJsonString) throws ParseException
 	{
 		super(mapAsJsonString);
 	}
-
+	
 	@Override
-	protected String getMapTag()
+	public boolean equals(Object rawOther)
 	{
-		return TAG_STRING_MAP;
+		if(!(rawOther instanceof CodeToCodeMap))
+			return false;
+
+		CodeToCodeMap other = (CodeToCodeMap) rawOther;
+		return data.equals(other.data);
 	}
 
-	private static final String TAG_STRING_MAP = "StringMap";
+
 }
