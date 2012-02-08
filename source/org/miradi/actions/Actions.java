@@ -322,7 +322,6 @@ public class Actions
 		
 		registerAction(new ActionImportXslTemplate(mainWindow));
 		registerAction(new ActionRunXslTemplate(mainWindow));
-		registerAction(new ActionEditXslTemplate(mainWindow));
 		registerAction(new ActionDeleteXslTemplate(mainWindow));
 		registerAction(new ActionExportXslTemplate(mainWindow));
 		registerAction(new ActionCreateReportTemplate(mainWindow));

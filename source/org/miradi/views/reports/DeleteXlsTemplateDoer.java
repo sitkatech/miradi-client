@@ -36,6 +36,6 @@ public class DeleteXlsTemplateDoer extends DeletePoolObjectDoer
 	@Override
 	protected String getCustomText()
 	{
-		return EAM.text("Xsl Template");
+		return EAM.text("XSL Template");
 	}
 }

@@ -87,6 +87,17 @@ public class XslTemplate extends BaseObject
 	{
 		return find(project.getObjectManager(), xslTemplateRef);
 	}
+	
+	@Override
+	void clear()
+	{
+		super.clear();
+		
+		createUserTextField(TAG_XSL_TEMPLATE);
+		
+	}
 
+	public static final String TAG_XSL_TEMPLATE = "xslTemplate";
+	
 	public static final String OBJECT_NAME = "XslTemplate";
 }

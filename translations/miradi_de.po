@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-08 10:48-0600\n"
+"POT-Creation-Date: 2012-02-08 15:07-0600\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -1378,6 +1378,7 @@ msgstr "Datenbank - demo"
 #: Miradi/source/org/miradi/actions/ActionDeleteLegacyTncStrategyRanking.java:35
 #: Miradi/source/org/miradi/actions/ActionDelete.java:35
 #: Miradi/source/org/miradi/actions/ActionDeleteTaggedObjectSet.java:35
+#: Miradi/source/org/miradi/actions/ActionDeleteXslTemplate.java:36
 #: Miradi/source/org/miradi/actions/ActionDeleteReportTemplate.java:35
 msgid "Action|Delete"
 msgstr "Löschen"
@@ -1422,10 +1423,6 @@ msgstr "Stress löschen"
 msgid "Action|Delete Table"
 msgstr "Tabelle löschen"
 
-#: Miradi/source/org/miradi/actions/ActionDeleteXslTemplate.java:35
-msgid "Action|Delete Xsl"
-msgstr ""
-
 # STIMMT! Überprüft!
 # - nur felix!!!
 #: Miradi/source/org/miradi/actions/views/ActionViewDiagram.java:36
@@ -1443,10 +1440,6 @@ msgstr "Geschätze Ressourcen bearbeiten..."
 #: Miradi/source/org/miradi/actions/ActionEditMethods.java:34
 msgid "Action|Edit Methods..."
 msgstr "Methoden bearbeiten..."
-
-#: Miradi/source/org/miradi/actions/ActionEditXslTemplate.java:36
-msgid "Action|Edit Xsl"
-msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionEditTaggedObjectSet.java:34
 msgid "Action|Edit..."
@@ -1467,7 +1460,7 @@ msgid "Action|Expand All Rows"
 msgstr "Alle Zeilen anzeigen "
 
 #: Miradi/source/org/miradi/actions/ActionExportXslTemplate.java:36
-msgid "Action|Export Xsl"
+msgid "Action|Export XSL Template"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionExportBudgetTableTree.java:34
@@ -1507,7 +1500,7 @@ msgid "Action|Import Accounting Codes"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionImportXslTemplate.java:35
-msgid "Action|Import Xsl"
+msgid "Action|Import XSL Template"
 msgstr ""
 
 # group box steht noch zur diskussion, ggf anpassen
@@ -1868,13 +1861,13 @@ msgstr "Berichte"
 msgid "Action|Reports - demo"
 msgstr "Berichte - Beispiel"
 
+#: Miradi/source/org/miradi/actions/ActionRunXslTemplate.java:36
+msgid "Action|Run Report"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/ActionRunReportTemplate.java:34
 msgid "Action|Run Selected..."
 msgstr "Auswahl ausführen"
-
-#: Miradi/source/org/miradi/actions/ActionRunXslTemplate.java:36
-msgid "Action|Run Xsl"
-msgstr ""
 
 # speichern unter...?
 #: Miradi/source/org/miradi/actions/ActionSaveProjectAs.java:34
@@ -4836,8 +4829,8 @@ msgstr "Eigenschaften - Verbindung"
 msgid "Lists"
 msgstr "Listen"
 
-#: Miradi/source/org/miradi/dialogs/reportTemplate/XsltReportPanel.java:134
-msgid "Load XSL"
+#: Miradi/source/org/miradi/views/reports/ImportXslTemplateDoer.java:49
+msgid "Load Xsl"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/summary/SummaryLocationPanel.java:64
@@ -6138,10 +6131,6 @@ msgstr "Grobe Schätzung"
 msgid "Ruble (Russia)"
 msgstr "Rubel (Russland)"
 
-#: Miradi/source/org/miradi/dialogs/reportTemplate/XsltReportPanel.java:59
-msgid "Run"
-msgstr ""
-
 #: Miradi/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:122
 msgid "Run..."
 msgstr "Ausführen..."
@@ -6173,7 +6162,7 @@ msgstr "Savanna - Dry Savanna"
 msgid "Savanna - Moist Savana"
 msgstr "Savanna - Moist Savana"
 
-#: Miradi/source/org/miradi/dialogs/reportTemplate/XsltReportPanel.java:77
+#: Miradi/source/org/miradi/views/reports/RunXlsTemplateDoer.java:80
 msgid "Save"
 msgstr ""
 
@@ -6187,6 +6176,10 @@ msgstr "Speichere %s"
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListSaveAsAction.java:47
 msgid "Save As..."
 msgstr "Speichern als..."
+
+#: Miradi/source/org/miradi/views/reports/ExportXslTemplateDoer.java:48
+msgid "Save Xsl"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:101
 msgid "Save..."
@@ -6265,12 +6258,8 @@ msgstr "Zu installierendes Sprachpaket wählen"
 msgid "Select Location..."
 msgstr "Ort wählen..."
 
-#: Miradi/source/org/miradi/dialogs/reportTemplate/XsltReportPanel.java:77
+#: Miradi/source/org/miradi/views/reports/RunXlsTemplateDoer.java:80
 msgid "Select Output File"
-msgstr ""
-
-#: Miradi/source/org/miradi/dialogs/reportTemplate/XsltReportPanel.java:134
-msgid "Select XSL File"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/jump/ActionJumpSelectAppropriateMethods.java:35
@@ -6537,7 +6526,7 @@ msgstr ""
 msgid "Stakeholder"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/reports/ReportsView.java:95
+#: Miradi/source/org/miradi/views/reports/ReportsView.java:91
 msgid "Standard Reports"
 msgstr "Standard Berichte"
 
@@ -7061,10 +7050,6 @@ msgstr "Fortschrittsanzeige löschen"
 msgid "TT|Delete Progress Report"
 msgstr "Fortschrittsbericht löschen"
 
-#: Miradi/source/org/miradi/actions/ActionDeleteXslTemplate.java:41
-msgid "TT|Delete Xsl"
-msgstr ""
-
 #: Miradi/source/org/miradi/actions/ActionDeleteBendPoint.java:40
 msgid "TT|Delete a Bend Point"
 msgstr ""
@@ -7152,6 +7137,10 @@ msgstr "Ausgewählte Ressource (Team, Mitglied, etc) löschen"
 msgid "TT|Delete the selected Stress"
 msgstr "Ausgewähltesn Stress löschen"
 
+#: Miradi/source/org/miradi/actions/ActionDeleteXslTemplate.java:42
+msgid "TT|Delete the selected XSL Template"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/ActionDeleteWorkPlanNode.java:40
 #: Miradi/source/org/miradi/actions/ActionDeletePlanningViewTreeNode.java:41
 msgid "TT|Delete the selected item"
@@ -7164,10 +7153,6 @@ msgstr "Auswahl löschen"
 #: Miradi/source/org/miradi/actions/views/ActionViewWorkPlan.java:42
 msgid "TT|Develop a work plan and budget"
 msgstr "Arbeitsplan und Budget erstellen"
-
-#: Miradi/source/org/miradi/actions/ActionEditXslTemplate.java:42
-msgid "TT|Edit Xsl"
-msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionEditEstimatedResource.java:40
 msgid "TT|Edit the list of estimated resources."
@@ -7211,10 +7196,6 @@ msgstr "Anzeigen bis Schutzobjekt"
 msgid "TT|Expand To Type"
 msgstr ""
 
-#: Miradi/source/org/miradi/actions/ActionExportXslTemplate.java:42
-msgid "TT|Export Xsl"
-msgstr ""
-
 #: Miradi/source/org/miradi/actions/ActionExportCpmz.java:40
 msgid "TT|Export a file that can be imported by ConPro"
 msgstr "Eine Datei exportieren die von ConPro importiert werden kann"
@@ -7233,6 +7214,10 @@ msgstr "Gesamtes Projekt als XML Datei exportieren"
 
 #: Miradi/source/org/miradi/actions/ActionExportBudgetTableTree.java:40
 msgid "TT|Export finance tree"
+msgstr ""
+
+#: Miradi/source/org/miradi/actions/ActionExportXslTemplate.java:42
+msgid "TT|Export the selected XSL Template to a disk file"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionExportTable.java:40
@@ -7274,10 +7259,6 @@ msgstr ""
 msgid "TT|How to save files in Miradi"
 msgstr "Wie man Dateien mit Miradi speichert"
 
-#: Miradi/source/org/miradi/actions/ActionImportXslTemplate.java:41
-msgid "TT|Import Xsl"
-msgstr ""
-
 #: Miradi/source/org/miradi/actions/ActionImportCpmz.java:40
 msgid "TT|Import a .cpmz file that was exported from ConPro"
 msgstr "Eine von ConPro exportierte .cpmz Datei importieren"
@@ -7288,6 +7269,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionImportAccountingCodes.java:40
 msgid "TT|Import accounting codes"
+msgstr ""
+
+#: Miradi/source/org/miradi/actions/ActionImportXslTemplate.java:41
+msgid "TT|Import an XSL Template"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionImportXmpz.java:41
@@ -7416,7 +7401,7 @@ msgid "TT|Rename this Results Chain"
 msgstr "Ergebniswirkungskette umbenennen"
 
 #: Miradi/source/org/miradi/actions/ActionRunXslTemplate.java:42
-msgid "TT|Run Xsl"
+msgid "TT|Run a report using the selected XSL Template"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionRunReportTemplate.java:40
@@ -8278,7 +8263,7 @@ msgstr "Fortschrittsbericht"
 msgid "Title|Project Filename"
 msgstr "Projektdateiname"
 
-#: Miradi/source/org/miradi/dialogs/xslTemplate/XslTemplatePropertiesPanel.java:43
+#: Miradi/source/org/miradi/dialogs/xslTemplate/XslTemplatePropertiesPanel.java:44
 #: Miradi/source/org/miradi/dialogs/reportTemplate/ReportTemplatePropertiesPanel.java:51
 msgid "Title|Report Template Properties"
 msgstr ""
@@ -8388,7 +8373,7 @@ msgstr "Summe Budget für Finanzierung: %1 %2"
 msgid "Total Monitoring Budget %1 %2"
 msgstr "Summe Monitoringbudget %1 %2"
 
-#: Miradi/source/org/miradi/dialogs/reportTemplate/XsltReportPanel.java:81
+#: Miradi/source/org/miradi/views/reports/RunXlsTemplateDoer.java:84
 msgid "Transformation Completed!"
 msgstr ""
 
@@ -8833,12 +8818,8 @@ msgstr ""
 msgid "Writing..."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/reports/ReportsView.java:97
-msgid "XSLT"
-msgstr ""
-
 #: Miradi/source/org/miradi/views/reports/DeleteXlsTemplateDoer.java:39
-msgid "Xsl Template"
+msgid "XSL Template"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/editors/CalendarYearDateUnitStartAndEndCard.java:37
@@ -10569,6 +10550,9 @@ msgid "FieldLabel|58.FlagsMap|Flags"
 msgstr ""
 
 msgid "FieldLabel|59.Label|Name"
+msgstr ""
+
+msgid "FieldLabel|59.xslTemplate|XSL Template"
 msgstr ""
 
 msgid ""

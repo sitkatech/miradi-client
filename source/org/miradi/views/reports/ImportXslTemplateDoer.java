@@ -20,14 +20,62 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.reports;
 
-import org.miradi.objects.XslTemplate;
-import org.miradi.views.planning.doers.CreatePoolObjectDoer;
+import java.io.File;
 
-public class ImportXslTemplateDoer extends CreatePoolObjectDoer
+import org.martus.util.UnicodeReader;
+import org.miradi.commands.CommandCreateObject;
+import org.miradi.commands.CommandSetObjectData;
+import org.miradi.exceptions.CommandFailedException;
+import org.miradi.main.EAM;
+import org.miradi.objects.XslTemplate;
+import org.miradi.utils.HtmlUtilities;
+import org.miradi.utils.XmlUtilities2;
+import org.miradi.views.ObjectsDoer;
+
+public class ImportXslTemplateDoer extends ObjectsDoer
 {
 	@Override
-	protected int getTypeToCreate()
+	public boolean isAvailable()
 	{
-		return XslTemplate.getObjectType();
+		return true;
+	}
+	
+	@Override
+	protected void doIt() throws Exception
+	{
+		if (!isAvailable())
+			return;
+		
+		File userChosenFile = RunXlsTemplateDoer.getUserChosenFile(getMainWindow(), EAM.text("Load Xsl"), EAM.text("Load Xsl"));
+		if (userChosenFile == null)
+			return;
+		
+		String xslFileContent = UnicodeReader.getFileContents(userChosenFile);
+		xslFileContent = XmlUtilities2.getXmlEncoded(xslFileContent);
+		xslFileContent = HtmlUtilities.removeNonHtmlNewLines(xslFileContent);
+
+		getProject().executeBeginTransaction();
+		try
+		{
+			CommandCreateObject createCommand = new CommandCreateObject(XslTemplate.getObjectType());
+			getProject().executeCommand(createCommand);
+			
+			CommandSetObjectData setXslField = new CommandSetObjectData(createCommand.getObjectRef(), XslTemplate.TAG_XSL_TEMPLATE, xslFileContent);
+			getProject().executeCommand(setXslField);
+			
+			CommandSetObjectData setXslLabel = new CommandSetObjectData(createCommand.getObjectRef(), XslTemplate.TAG_LABEL, userChosenFile.getName());
+			getProject().executeCommand(setXslLabel);
+			
+			if(getPicker() != null)
+				getPicker().ensureOneCopyOfObjectSelectedAndVisible(createCommand.getObjectRef());
+		}
+		catch (Exception e)
+		{
+			throw new CommandFailedException(e);
+		}
+		finally
+		{
+			getProject().executeEndTransaction();
+		}
 	}
 }
