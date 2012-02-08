@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-08 15:07-0600\n"
+"POT-Creation-Date: 2012-02-08 16:31-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -5772,7 +5772,7 @@ msgstr "稀树草原-干旱稀树草原"
 msgid "Savanna - Moist Savana"
 msgstr "稀树草原-湿润稀树草原"
 
-#: Miradi/source/org/miradi/views/reports/RunXlsTemplateDoer.java:80
+#: Miradi/source/org/miradi/views/reports/RunXlsTemplateDoer.java:86
 msgid "Save"
 msgstr "保存 \t\t"
 
@@ -5853,7 +5853,7 @@ msgstr ""
 msgid "Select Location..."
 msgstr "选择位置... \t\t"
 
-#: Miradi/source/org/miradi/views/reports/RunXlsTemplateDoer.java:80
+#: Miradi/source/org/miradi/views/reports/RunXlsTemplateDoer.java:86
 msgid "Select Output File"
 msgstr ""
 
@@ -7736,7 +7736,6 @@ msgstr ""
 msgid "Title|Project Filename"
 msgstr "项目文件名 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/xslTemplate/XslTemplatePropertiesPanel.java:44
 #: Miradi/source/org/miradi/dialogs/reportTemplate/ReportTemplatePropertiesPanel.java:51
 msgid "Title|Report Template Properties"
 msgstr "标题|报告模板属性"
@@ -7825,6 +7824,10 @@ msgstr "视图层 \t\t"
 msgid "Title|View..."
 msgstr "视图… \t\t"
 
+#: Miradi/source/org/miradi/dialogs/xslTemplate/XslTemplatePropertiesPanel.java:44
+msgid "Title|XSL Template Properties"
+msgstr ""
+
 #: Miradi/source/org/miradi/project/ProjectCalendar.java:63
 #: Miradi/source/org/miradi/project/ProjectCalendar.java:202
 msgid "Total"
@@ -7842,7 +7845,7 @@ msgstr ""
 msgid "Total Monitoring Budget %1 %2"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/reports/RunXlsTemplateDoer.java:84
+#: Miradi/source/org/miradi/views/reports/RunXlsTemplateDoer.java:90
 msgid "Transformation Completed!"
 msgstr ""
 
@@ -9986,6 +9989,9 @@ msgid "FieldLabel|59.Label|Name"
 msgstr ""
 
 msgid "FieldLabel|59.xslTemplate|XSL Template"
+msgstr ""
+
+msgid "FieldLabel|59.FileExtension|Report File Extension"
 msgstr ""
 
 msgid ""
