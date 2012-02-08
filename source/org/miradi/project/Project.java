@@ -48,7 +48,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.PlanningPreferencesChangeHandler;
-import org.miradi.objecthelpers.CodeStringMap;
+import org.miradi.objecthelpers.CodeToStringMap;
 import org.miradi.objecthelpers.ThreatStressRatingEnsurer;
 import org.miradi.objecthelpers.TimePeriodCostsMapsCache;
 import org.miradi.objectpools.AssignmentPool;
@@ -689,7 +689,7 @@ public class Project
 		budgetColumnCodes.add(WorkPlanColumnConfigurationQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE);
 		budgetColumnCodes.add(WorkPlanColumnConfigurationQuestion.META_BUDGET_DETAIL_COLUMN_CODE);
 		
-		CodeStringMap newTableSettingsMap = new CodeStringMap();
+		CodeToStringMap newTableSettingsMap = new CodeToStringMap();
 		newTableSettingsMap.put(TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY, budgetColumnCodes.toString());
 		
 		CommandSetObjectData setColumnCodes = new CommandSetObjectData(newTableSettings, TableSettings.TAG_TABLE_SETTINGS_MAP, newTableSettingsMap.toString());

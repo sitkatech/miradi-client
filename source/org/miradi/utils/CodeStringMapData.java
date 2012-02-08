@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.utils;
 
 import org.miradi.objectdata.ObjectData;
-import org.miradi.objecthelpers.CodeStringMap;
+import org.miradi.objecthelpers.CodeToStringMap;
 
 public class CodeStringMapData extends ObjectData
 {
@@ -28,7 +28,7 @@ public class CodeStringMapData extends ObjectData
 	{
 		super(tagToUse);
 		
-		data = new CodeStringMap();
+		data = new CodeToStringMap();
 	}
 
 	@Override
@@ -37,7 +37,7 @@ public class CodeStringMapData extends ObjectData
 		return getStringMap().toString();
 	}
 	
-	public CodeStringMap getStringMap()
+	public CodeToStringMap getStringMap()
 	{
 		return data;
 	}
@@ -45,7 +45,7 @@ public class CodeStringMapData extends ObjectData
 	@Override
 	public void set(String newValue) throws Exception
 	{
-		data = new CodeStringMap(newValue);
+		data = new CodeToStringMap(newValue);
 	}
 
 	@Override
@@ -70,5 +70,5 @@ public class CodeStringMapData extends ObjectData
 		return true;
 	}
 	
-	private CodeStringMap data;
+	private CodeToStringMap data;
 }

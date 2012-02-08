@@ -28,7 +28,7 @@ import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objecthelpers.CodeStringMap;
+import org.miradi.objecthelpers.CodeToStringMap;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.SortDirectionQuestion;
@@ -67,7 +67,7 @@ public class TableSettings extends BaseObject
 		return NO_OWNERS;
 	}
 	
-	public CodeStringMap getColumnWidthMap()
+	public CodeToStringMap getColumnWidthMap()
 	{
 		return getCodeStringMapData(TAG_COLUMN_WIDTHS);
 	}
@@ -92,7 +92,7 @@ public class TableSettings extends BaseObject
 		return getRefListListData(TAG_TREE_EXPANSION_LIST);
 	}
 	
-	public CodeStringMap getTableSettingsMap()
+	public CodeToStringMap getTableSettingsMap()
 	{
 		return getCodeStringMapData(TAG_TABLE_SETTINGS_MAP);
 	}
