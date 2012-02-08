@@ -32,11 +32,6 @@ abstract public class ObjectPoolTableModel extends ObjectTableModel
 	@Override
 	public ORefList getLatestRefListFromProject()
 	{
-		return getLatestIdListFromProject();
-	}
-	
-	private ORefList getLatestIdListFromProject()
-	{
 		ORefList refList = getProject().getPool(getRowObjectType()).getRefList();
 		refList.sort();
 		
