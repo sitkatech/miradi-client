@@ -23,7 +23,7 @@ package org.miradi.xml.wcs;
 import org.martus.util.UnicodeWriter;
 import org.miradi.dialogs.dashboard.DashboardRowDefinitionManager;
 import org.miradi.objecthelpers.CodeToChoiceMap;
-import org.miradi.objecthelpers.CodeCodeListMap;
+import org.miradi.objecthelpers.CodeToCodeListMap;
 import org.miradi.objecthelpers.CodeToStringMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Dashboard;
@@ -44,7 +44,7 @@ public class DashboardPoolExporter extends BaseObjectPoolExporter
 		Dashboard dashboard = (Dashboard) baseObject;
 		CodeToStringMap commentsMap = dashboard.getCommentsMap();
 		CodeToChoiceMap progressMap = dashboard.getProgressChoiceMap();
-		CodeCodeListMap flagsMap = dashboard.getFlagsMap();
+		CodeToCodeListMap flagsMap = dashboard.getFlagsMap();
 		
 		DashboardRowDefinitionManager manager = new DashboardRowDefinitionManager();
 		CodeList allThirdLevelRowCodes = manager.getThirdLevelCodes();
