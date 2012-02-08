@@ -45,7 +45,7 @@ import org.miradi.objectdata.CodeData;
 import org.miradi.objectdata.CodeListData;
 import org.miradi.objectdata.CodeToChoiceMapData;
 import org.miradi.objectdata.CodeToCodeListMapData;
-import org.miradi.objectdata.CodeToStringMapData;
+import org.miradi.objectdata.CodeToUserStringMapData;
 import org.miradi.objectdata.DateData;
 import org.miradi.objectdata.DateUnitEffortListData;
 import org.miradi.objectdata.DateUnitListData;
@@ -278,7 +278,7 @@ abstract public class BaseObject
 
 	protected CodeToUserStringMap getCodeStringMapData(String tag)
 	{
-		return ((CodeToStringMapData)getField(tag)).getStringMap();
+		return ((CodeToUserStringMapData)getField(tag)).getStringMap();
 	}
 	
 	protected CodeToChoiceMap getCodeChoiceMapData(String tag)
@@ -1089,7 +1089,7 @@ abstract public class BaseObject
 	
 	protected void createStringStringMapField(String tag)
 	{
-		addField(new CodeToStringMapData(tag));
+		addField(new CodeToUserStringMapData(tag));
 	}
 	
 	protected void createStringCodeListMapField(String tag)

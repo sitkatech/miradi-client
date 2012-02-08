@@ -34,7 +34,7 @@ import org.miradi.forms.FormRow;
 import org.miradi.forms.PropertiesPanelSpec;
 import org.miradi.forms.objects.FormFieldCodeListData;
 import org.miradi.main.EAM;
-import org.miradi.objectdata.CodeToStringMapData;
+import org.miradi.objectdata.CodeToUserStringMapData;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -229,7 +229,7 @@ public class RtfFormExporter
 			return createFromChoiceData(rawObjectData);
 		
 		if (rawObjectData.isCodeToStringMapData())
-			return createFromStringMapData((CodeToStringMapData) rawObjectData, formRow);
+			return createFromStringMapData((CodeToUserStringMapData) rawObjectData, formRow);
 	
 		return rawObjectData.get();
 	}
@@ -242,7 +242,7 @@ public class RtfFormExporter
 		return choiceItem.getLabel();
 	}
 	
-	private String createFromStringMapData(CodeToStringMapData stringMapData, FormRow formRow)
+	private String createFromStringMapData(CodeToUserStringMapData stringMapData, FormRow formRow)
 	{
 		if (formRow.getLeftFormItemsCount() == 0)
 			return "";

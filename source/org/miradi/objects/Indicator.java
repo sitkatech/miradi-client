@@ -24,7 +24,7 @@ import java.util.Vector;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.ids.IndicatorId;
-import org.miradi.objectdata.CodeToStringMapData;
+import org.miradi.objectdata.CodeToUserStringMapData;
 import org.miradi.objecthelpers.DirectThreatSet;
 import org.miradi.objecthelpers.NonDraftStrategySet;
 import org.miradi.objecthelpers.ORef;
@@ -65,9 +65,9 @@ public class Indicator extends BaseObject
 		return new ORefList(Task.getObjectType(), getMethodIds());
 	}
 	
-	public CodeToStringMapData getThreshold()
+	public CodeToUserStringMapData getThreshold()
 	{
-		return (CodeToStringMapData)getField(TAG_INDICATOR_THRESHOLD);
+		return (CodeToUserStringMapData)getField(TAG_INDICATOR_THRESHOLD);
 	}
 	
 	public CodeToUserStringMap getThresholdDetails()
