@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-07 12:48-0600\n"
+"POT-Creation-Date: 2012-02-08 10:48-0600\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -1341,6 +1341,10 @@ msgstr "Action|Видалити стрес"
 msgid "Action|Delete Table"
 msgstr ""
 
+#: Miradi/source/org/miradi/actions/ActionDeleteXslTemplate.java:35
+msgid "Action|Delete Xsl"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/views/ActionViewDiagram.java:36
 msgid "Action|Diagram"
 msgstr "Action|Діаграма"
@@ -1356,6 +1360,10 @@ msgstr "Action|Редагувати Оцінені ресурси..."
 #: Miradi/source/org/miradi/actions/ActionEditMethods.java:34
 msgid "Action|Edit Methods..."
 msgstr "Action|Редагувати методи..."
+
+#: Miradi/source/org/miradi/actions/ActionEditXslTemplate.java:36
+msgid "Action|Edit Xsl"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionEditTaggedObjectSet.java:34
 msgid "Action|Edit..."
@@ -1373,6 +1381,10 @@ msgstr "Action|Вихід"
 #: Miradi/source/org/miradi/actions/ActionExpandAllRows.java:35
 msgid "Action|Expand All Rows"
 msgstr "Action|Розгорнути всі рядки"
+
+#: Miradi/source/org/miradi/actions/ActionExportXslTemplate.java:36
+msgid "Action|Export Xsl"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionExportBudgetTableTree.java:34
 msgid "Action|Export finance tree"
@@ -1409,6 +1421,10 @@ msgstr "Action|Як зберегти"
 #: Miradi/source/org/miradi/actions/ActionImportAccountingCodes.java:34
 msgid "Action|Import Accounting Codes"
 msgstr "Action|Імпортувати бухгалтерські коди"
+
+#: Miradi/source/org/miradi/actions/ActionImportXslTemplate.java:35
+msgid "Action|Import Xsl"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionGroupBoxAddFactor.java:35
 msgid "Action|Insert|Add Factor(s) to Group Box"
@@ -1760,6 +1776,10 @@ msgstr "Action|Демонстраційний звіт"
 #: Miradi/source/org/miradi/actions/ActionRunReportTemplate.java:34
 msgid "Action|Run Selected..."
 msgstr "Action|Запустити вибраний..."
+
+#: Miradi/source/org/miradi/actions/ActionRunXslTemplate.java:36
+msgid "Action|Run Xsl"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionSaveProjectAs.java:34
 msgid "Action|Save As..."
@@ -2987,10 +3007,6 @@ msgstr ""
 msgid "Currently, Miradi can only import one project file at a time"
 msgstr ""
 "В даний момент Міраді може імпортувати тільки один файл проекту за один раз"
-
-#: Miradi/source/org/miradi/views/reports/ReportsView.java:98
-msgid "Custom Reports"
-msgstr "Звичайні звіти"
 
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:131
 msgid "Custom Table: %s"
@@ -6299,7 +6315,7 @@ msgstr ""
 msgid "Stakeholder"
 msgstr "Зацікавлена сторона"
 
-#: Miradi/source/org/miradi/views/reports/ReportsView.java:97
+#: Miradi/source/org/miradi/views/reports/ReportsView.java:95
 msgid "Standard Reports"
 msgstr "Стандартні звіти"
 
@@ -6825,6 +6841,10 @@ msgstr "TT|Видалити відсоток прогресу"
 msgid "TT|Delete Progress Report"
 msgstr "TT|Видалити проміжний звіт"
 
+#: Miradi/source/org/miradi/actions/ActionDeleteXslTemplate.java:41
+msgid "TT|Delete Xsl"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/ActionDeleteBendPoint.java:40
 msgid "TT|Delete a Bend Point"
 msgstr "TT|Видалити точку згину"
@@ -6922,6 +6942,10 @@ msgstr "TT|Видалити вибір"
 msgid "TT|Develop a work plan and budget"
 msgstr "TT|Розробити робочий план і бюджет"
 
+#: Miradi/source/org/miradi/actions/ActionEditXslTemplate.java:42
+msgid "TT|Edit Xsl"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/ActionEditEstimatedResource.java:40
 msgid "TT|Edit the list of estimated resources."
 msgstr "TT|Редагувати перелік оцінених ресурсів."
@@ -6961,6 +6985,10 @@ msgstr "TT|Розтягнути до цілі"
 #: Miradi/source/org/miradi/actions/ActionExpandToMenu.java:41
 msgid "TT|Expand To Type"
 msgstr "TT|Розтягнути до типу"
+
+#: Miradi/source/org/miradi/actions/ActionExportXslTemplate.java:42
+msgid "TT|Export Xsl"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionExportCpmz.java:40
 msgid "TT|Export a file that can be imported by ConPro"
@@ -7018,6 +7046,10 @@ msgstr ""
 #: Miradi/source/org/miradi/actions/ActionHowToSave.java:40
 msgid "TT|How to save files in Miradi"
 msgstr "TT|Як зберегти файли в Міраді"
+
+#: Miradi/source/org/miradi/actions/ActionImportXslTemplate.java:41
+msgid "TT|Import Xsl"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionImportCpmz.java:40
 msgid "TT|Import a .cpmz file that was exported from ConPro"
@@ -7147,6 +7179,10 @@ msgstr "TT|Перейменувати цю сторінку концептуал
 #: Miradi/source/org/miradi/actions/ActionRenameResultsChain.java:40
 msgid "TT|Rename this Results Chain"
 msgstr "TT|Перейменувати цей Ланцюг результатів"
+
+#: Miradi/source/org/miradi/actions/ActionRunXslTemplate.java:42
+msgid "TT|Run Xsl"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionRunReportTemplate.java:40
 msgid "TT|Run the Selected Report Template"
@@ -8526,8 +8562,12 @@ msgstr ""
 msgid "Writing..."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/reports/ReportsView.java:99
+#: Miradi/source/org/miradi/views/reports/ReportsView.java:97
 msgid "XSLT"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/reports/DeleteXlsTemplateDoer.java:39
+msgid "Xsl Template"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/editors/CalendarYearDateUnitStartAndEndCard.java:37
@@ -10247,6 +10287,9 @@ msgid "FieldLabel|58.CommentsMap|Comments"
 msgstr ""
 
 msgid "FieldLabel|58.FlagsMap|Flags"
+msgstr ""
+
+msgid "FieldLabel|59.Label|Name"
 msgstr ""
 
 msgid ""
@@ -33888,6 +33931,9 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid "Custom Reports"
+#~ msgstr "Звичайні звіти"
 
 #~ msgid "Tab|Indicators"
 #~ msgstr "Tab|Індикатори"
