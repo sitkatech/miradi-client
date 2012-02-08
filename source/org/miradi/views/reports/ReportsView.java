@@ -49,22 +49,9 @@ public class ReportsView extends TabbedView
 	public ReportsView(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse);
+		
 		addDoersToMap();
 		add(createScreenShotLabel(), BorderLayout.BEFORE_FIRST_LINE);
-	}
-	
-	@Override
-	public void becomeActive() throws Exception
-	{
-		super.becomeActive();
-		reportTemplateManagementPanel.becomeActive();
-	}
-	
-	@Override
-	public void becomeInactive() throws Exception
-	{
-		reportTemplateManagementPanel.becomeInactive();
-		super.becomeInactive();
 	}
 	
 	private void addDoersToMap()
@@ -106,9 +93,9 @@ public class ReportsView extends TabbedView
 		xslTemplateManagmentPanel = new XslTemplateManagmentPanel(getMainWindow()); 
 
 		addTab(EAM.text("Standard Reports"), new MiradiScrollPane(standardReportPanel));
-		addTab(EAM.text("Custom Reports"), reportTemplateManagementPanel);
+		addNonScrollingTab(reportTemplateManagementPanel);
 		addTab(EAM.text("XSLT"), xsltReportPanel);
-		addTab(xslTemplateManagmentPanel.getPanelDescription(), xslTemplateManagmentPanel); 
+		addNonScrollingTab(xslTemplateManagmentPanel); 
 	}
 	
 	@Override
