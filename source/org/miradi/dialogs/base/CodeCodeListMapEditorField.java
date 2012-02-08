@@ -22,7 +22,7 @@ package org.miradi.dialogs.base;
 
 import org.miradi.objecthelpers.AbstractStringKeyMap;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.CodeCodeListMap;
+import org.miradi.objecthelpers.CodeToCodeListMap;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
    
@@ -36,12 +36,12 @@ public class CodeCodeListMapEditorField extends AbstractCodeCodeListMapEditorFie
 	@Override
 	protected AbstractStringKeyMap createCurrentStringKeyMap() throws Exception
 	{
-		return new CodeCodeListMap(getProject().getObjectData(getORef(), getTag()));
+		return new CodeToCodeListMap(getProject().getObjectData(getORef(), getTag()));
 	}
 
 	@Override
 	protected AbstractStringKeyMap createStringKeyMap(String StringMapAsString) throws Exception
 	{
-		return new CodeCodeListMap(StringMapAsString);
+		return new CodeToCodeListMap(StringMapAsString);
 	}
 }
