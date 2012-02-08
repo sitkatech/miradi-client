@@ -39,6 +39,7 @@ public class ExportXslTemplateDoer extends ObjectsDoer
 		
 		return getPicker().getSelectedHierarchies().length > 0;
 	}
+	
 	@Override
 	protected void doIt() throws Exception
 	{
