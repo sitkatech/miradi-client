@@ -191,7 +191,7 @@ import org.miradi.utils.TestBendPointList;
 import org.miradi.utils.TestCodeToChoiceMap;
 import org.miradi.utils.TestCodeCodeListMap;
 import org.miradi.utils.TestCodeList;
-import org.miradi.utils.TestCodeStringMap;
+import org.miradi.utils.TestCodeToStringMap;
 import org.miradi.utils.TestColumnSequenceSaver;
 import org.miradi.utils.TestConproMiradiHabitatCodeMap;
 import org.miradi.utils.TestDateRange;
@@ -376,7 +376,7 @@ public class MainTestSuite extends TestSuite
 		addTest(new TestSuite(TestIdList.class));
 		addTest(new TestSuite(TestBaseId.class));
 		addTest(new TestSuite(TestCodeList.class));
-		addTest(new TestSuite(TestCodeStringMap.class));
+		addTest(new TestSuite(TestCodeToStringMap.class));
 		addTest(new TestSuite(TestCodeToChoiceMap.class));
 		addTest(new TestSuite(TestCodeCodeListMap.class));
 		addTest(new TestSuite(TestIndicator.class));
