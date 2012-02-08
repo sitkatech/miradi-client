@@ -74,7 +74,7 @@ public class XsltReportPanel extends TwoColumnPanel
 			final StreamSource xslStreamSource = new StreamSource(selectedXslFile);
 			Transformer transformer = transformerFactory.newTransformer(xslStreamSource);
 			
-			final File outputFile = getUserChosenFile(EAM.text("Select Output File"), EAM.text("Save"));
+			final File outputFile = getUserChosenFile(getMainWindow(), EAM.text("Select Output File"), EAM.text("Save"));
 			if (outputFile != null)
 			{				
 				transformer.transform(new DOMSource(doc), new StreamResult(new FileOutputStream(outputFile)));
@@ -106,12 +106,12 @@ public class XsltReportPanel extends TwoColumnPanel
 		}
 	}
 
-	private File getUserChosenFile(final String diaglogTitle, final String buttonText)
+	public static File getUserChosenFile(final MainWindow mainWindowToUse, final String diaglogTitle, final String buttonText)
 	{
 		JFileChooser fileChooser = new JFileChooser();
 		fileChooser.setDialogTitle(diaglogTitle);
 		fileChooser.setDialogType(JFileChooser.CUSTOM_DIALOG);
-		if (fileChooser.showDialog(getMainWindow(), buttonText) != JFileChooser.APPROVE_OPTION)
+		if (fileChooser.showDialog(mainWindowToUse, buttonText) != JFileChooser.APPROVE_OPTION)
 			return null;
 
 		return fileChooser.getSelectedFile();
@@ -131,7 +131,7 @@ public class XsltReportPanel extends TwoColumnPanel
 	{
 		public void actionPerformed(ActionEvent event)
 		{
-			final File selectedFile = getUserChosenFile(EAM.text("Select XSL File"), EAM.text("Load XSL"));
+			final File selectedFile = getUserChosenFile(getMainWindow(), EAM.text("Select XSL File"), EAM.text("Load XSL"));
 			if (selectedFile != null)
 				transform(selectedFile);
 		}

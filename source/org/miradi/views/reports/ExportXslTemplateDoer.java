@@ -20,16 +20,43 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.reports;
 
+import java.io.File;
+
+import org.martus.util.UnicodeWriter;
+import org.miradi.dialogs.reportTemplate.XsltReportPanel;
+import org.miradi.main.EAM;
+import org.miradi.objects.XslTemplate;
+import org.miradi.utils.XmlUtilities2;
 import org.miradi.views.ObjectsDoer;
 
 public class ExportXslTemplateDoer extends ObjectsDoer
 {
-
+	@Override
+	public boolean isAvailable()
+	{
+		return getPicker().getSelectedHierarchies().length > 0;
+	}
 	@Override
 	protected void doIt() throws Exception
 	{
-		// TODO Auto-generated method stub
-
+		if (!isAvailable())
+			return;
+		
+		File userChosenFile = XsltReportPanel.getUserChosenFile(getMainWindow(), EAM.text("Save Xsl"), EAM.text("Save Xsl"));
+		if (userChosenFile == null)
+			return;
+		
+		String xsl = getProject().getObjectData(getSelectedRef(), XslTemplate.TAG_XSL_TEMPLATE);
+		UnicodeWriter writer = new UnicodeWriter(userChosenFile);
+		try
+		{
+			xsl = XmlUtilities2.getXmlDecoded(xsl);
+			writer.write(xsl);
+		}
+		finally
+		{
+			writer.flush();
+			writer.close();
+		}
 	}
-
 }

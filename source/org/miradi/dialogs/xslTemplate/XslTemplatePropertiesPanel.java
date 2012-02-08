@@ -33,6 +33,7 @@ public class XslTemplatePropertiesPanel extends ObjectDataInputPanel
 		super(projectToUse, XslTemplate.getObjectType());
 			
 		addField(createExpandableField(ReportTemplate.TAG_LABEL));
+		addField(createMultilineField(XslTemplate.TAG_XSL_TEMPLATE));
 		
 		updateFieldsFromProject();
 	}
