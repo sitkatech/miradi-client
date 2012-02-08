@@ -24,7 +24,6 @@ import java.awt.BorderLayout;
 import org.miradi.actions.ActionCreateReportTemplate;
 import org.miradi.actions.ActionDeleteReportTemplate;
 import org.miradi.actions.ActionDeleteXslTemplate;
-import org.miradi.actions.ActionEditXslTemplate;
 import org.miradi.actions.ActionExportXslTemplate;
 import org.miradi.actions.ActionImportXslTemplate;
 import org.miradi.actions.ActionRunReportTemplate;
@@ -32,7 +31,6 @@ import org.miradi.actions.ActionRunXslTemplate;
 import org.miradi.dialogs.base.ObjectPoolManagementPanel;
 import org.miradi.dialogs.reportTemplate.ReportTemplateManagementPanel;
 import org.miradi.dialogs.reportTemplate.StandardReportPanel;
-import org.miradi.dialogs.reportTemplate.XsltReportPanel;
 import org.miradi.dialogs.xslTemplate.XslTemplateManagmentPanel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -62,7 +60,6 @@ public class ReportsView extends TabbedView
 		
 		addDoerToMap(ActionImportXslTemplate.class, new ImportXslTemplateDoer());
 		addDoerToMap(ActionRunXslTemplate.class, new RunXlsTemplateDoer());
-		addDoerToMap(ActionEditXslTemplate.class, new EditXsTemplatelDoer());
 		addDoerToMap(ActionDeleteXslTemplate.class, new DeleteXlsTemplateDoer());
 		addDoerToMap(ActionExportXslTemplate.class, new ExportXslTemplateDoer());
 	}
@@ -89,12 +86,10 @@ public class ReportsView extends TabbedView
 	{
 		reportTemplateManagementPanel = new ReportTemplateManagementPanel(getMainWindow());
 		standardReportPanel = new StandardReportPanel(getMainWindow());
-		xsltReportPanel = new XsltReportPanel(getMainWindow());
 		xslTemplateManagmentPanel = new XslTemplateManagmentPanel(getMainWindow()); 
 
 		addTab(EAM.text("Standard Reports"), new MiradiScrollPane(standardReportPanel));
 		addNonScrollingTab(reportTemplateManagementPanel);
-		addTab(EAM.text("XSLT"), xsltReportPanel);
 		addNonScrollingTab(xslTemplateManagmentPanel); 
 	}
 	
@@ -104,9 +99,8 @@ public class ReportsView extends TabbedView
 		reportTemplateManagementPanel.dispose();
 		reportTemplateManagementPanel = null;
 		
+		standardReportPanel.dispose();
 		standardReportPanel = null;
-		
-		xsltReportPanel = null;
 		
 		xslTemplateManagmentPanel.dispose();
 		xslTemplateManagmentPanel= null;
@@ -116,6 +110,5 @@ public class ReportsView extends TabbedView
 
 	private ReportTemplateManagementPanel reportTemplateManagementPanel;
 	private StandardReportPanel standardReportPanel;
-	private XsltReportPanel xsltReportPanel;
 	private ObjectPoolManagementPanel xslTemplateManagmentPanel;
 }

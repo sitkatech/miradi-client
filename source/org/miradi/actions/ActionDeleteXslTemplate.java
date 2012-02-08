@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.actions;
 
+import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
@@ -27,17 +28,17 @@ public class ActionDeleteXslTemplate extends ObjectsAction
 {
 	public ActionDeleteXslTemplate(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel());
+		super(mainWindowToUse, getLabel(), IconManager.getDeleteIcon());
 	}
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Delete Xsl");
+		return EAM.text("Action|Delete");
 	}
 
 	@Override
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Delete Xsl");
+		return EAM.text("TT|Delete the selected XSL Template");
 	}
 }

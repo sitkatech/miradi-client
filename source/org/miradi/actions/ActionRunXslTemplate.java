@@ -33,12 +33,12 @@ public class ActionRunXslTemplate extends ObjectsAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Run Xsl");
+		return EAM.text("Action|Run Report");
 	}
 
 	@Override
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Run Xsl");
+		return EAM.text("TT|Run a report using the selected XSL Template");
 	}
 }
