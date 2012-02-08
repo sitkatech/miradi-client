@@ -1097,17 +1097,17 @@ public class Dashboard extends BaseObject
 	
 	public CodeToUserStringMap getCommentsMap()
 	{
-		return getCodeStringMapData(TAG_COMMENTS_MAP);
+		return getCodeToStringMapData(TAG_COMMENTS_MAP);
 	}
 
 	public CodeToChoiceMap getProgressChoiceMap()
 	{
-		return getCodeChoiceMapData(TAG_PROGRESS_CHOICE_MAP);
+		return getCodeToChoiceMapData(TAG_PROGRESS_CHOICE_MAP);
 	}
 
 	public CodeToCodeListMap getFlagsMap()
 	{
-		return getCodeCodeListMapData(TAG_FLAGS_MAP);
+		return getCodeToCodeListMapData(TAG_FLAGS_MAP);
 	}
 
 	public static boolean is(BaseObject object)

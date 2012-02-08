@@ -69,7 +69,7 @@ public class TableSettings extends BaseObject
 	
 	public CodeToUserStringMap getColumnWidthMap()
 	{
-		return getCodeStringMapData(TAG_COLUMN_WIDTHS);
+		return getCodeToStringMapData(TAG_COLUMN_WIDTHS);
 	}
 	
 	public int getRowHeight()
@@ -94,7 +94,7 @@ public class TableSettings extends BaseObject
 	
 	public CodeToUserStringMap getTableSettingsMap()
 	{
-		return getCodeStringMapData(TAG_TABLE_SETTINGS_MAP);
+		return getCodeToStringMapData(TAG_TABLE_SETTINGS_MAP);
 	}
 	
 	public CodeList getCodeListFromTableSettingsMap(String codeListKey) throws Exception
