@@ -22,6 +22,7 @@ package org.miradi.objecthelpers;
 
 import java.text.ParseException;
 
+import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class CodeToCodeListMap extends AbstractStringToStringMap
@@ -46,6 +47,16 @@ public class CodeToCodeListMap extends AbstractStringToStringMap
 		super(mapAsJsonString);
 	}
 	
+	public CodeList getCodeList(String key) throws ParseException
+	{
+		return new CodeList(get(key));
+	}
+
+	public ORefList getRefList(String key) throws ParseException
+	{
+		return new ORefList(get(key));
+	}
+
 	@Override
 	protected String getMapTag()
 	{
@@ -63,4 +74,5 @@ public class CodeToCodeListMap extends AbstractStringToStringMap
 	}
 	
 	private static final String TAG_STRING_CODELIST_MAP = "StringCodeListMap";
+
 }

@@ -45,6 +45,7 @@ import org.miradi.objectdata.CodeData;
 import org.miradi.objectdata.CodeListData;
 import org.miradi.objectdata.CodeToChoiceMapData;
 import org.miradi.objectdata.CodeToCodeListMapData;
+import org.miradi.objectdata.CodeToCodeMapData;
 import org.miradi.objectdata.CodeToUserStringMapData;
 import org.miradi.objectdata.DateData;
 import org.miradi.objectdata.DateUnitEffortListData;
@@ -68,6 +69,10 @@ import org.miradi.objectdata.StringData;
 import org.miradi.objectdata.TagListData;
 import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.BaseObjectByNameSorter;
+import org.miradi.objecthelpers.CodeToChoiceMap;
+import org.miradi.objecthelpers.CodeToCodeListMap;
+import org.miradi.objecthelpers.CodeToCodeMap;
+import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORef;
@@ -77,11 +82,8 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.RelevancyOverrideSetData;
-import org.miradi.objecthelpers.CodeToChoiceMap;
-import org.miradi.objecthelpers.CodeToCodeListMap;
 import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.objecthelpers.StringRefMapData;
-import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.project.CurrencyFormat;
@@ -276,6 +278,11 @@ abstract public class BaseObject
 			throw new RuntimeException("Attempted to set Ref data on non-Ref field " + fieldTag);
 	}
 
+	protected CodeToCodeMap getCodeToCodeMapData(String tag)
+	{
+		return ((CodeToCodeMapData)getField(tag)).getCodeToCodeMap();
+	}
+	
 	protected CodeToUserStringMap getCodeToUserStringMapData(String tag)
 	{
 		return ((CodeToUserStringMapData)getField(tag)).getCodeToUserStringMap();

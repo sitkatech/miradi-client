@@ -60,12 +60,12 @@ import org.miradi.exceptions.OldSchemaVersionException;
 import org.miradi.exceptions.UnknownCommandException;
 import org.miradi.exceptions.UserCanceledException;
 import org.miradi.main.menu.MainMenuBar;
+import org.miradi.objecthelpers.CodeToCodeListMap;
 import org.miradi.objecthelpers.ColorsFileLoader;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objecthelpers.TwoLevelEntry;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.ExpenseAssignment;
@@ -847,10 +847,10 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 	private boolean areAnyProjectResourceFiltersOn() throws Exception
 	{
 		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), AbstractWorkPlanStringMapEditorDoer.getTabSpecificModelIdentifier());
-		CodeToUserStringMap tableSettingsMap = tableSettings.getTableSettingsMap();
-		String refs = tableSettingsMap.get(TableSettings.WORK_PLAN_PROJECT_RESOURCE_FILTER_CODELIST_KEY);
+		CodeToCodeListMap tableSettingsMap = tableSettings.getTableSettingsMap();
+		ORefList refs = tableSettingsMap.getRefList(TableSettings.WORK_PLAN_PROJECT_RESOURCE_FILTER_CODELIST_KEY);
 
-		return new ORefList(refs).size() > 0;
+		return refs.size() > 0;
 	}
 	
 	private boolean areStartEndDateFlipped()

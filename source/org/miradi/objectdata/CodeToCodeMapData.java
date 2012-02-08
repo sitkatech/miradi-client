@@ -34,10 +34,10 @@ public class CodeToCodeMapData extends AbstractCodeToStringMapData
 	@Override
 	public String get()
 	{
-		return getStringMap().toString();
+		return getCodeToCodeMap().toString();
 	}
 	
-	public CodeToCodeMap getStringMap()
+	public CodeToCodeMap getCodeToCodeMap()
 	{
 		return data;
 	}
