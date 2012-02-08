@@ -22,9 +22,9 @@ package org.miradi.utils;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.CodeToStringMap;
 
-public class CodeStringMapData extends ObjectData
+public class CodeToStringMapData extends ObjectData
 {
-	public CodeStringMapData(String tagToUse)
+	public CodeToStringMapData(String tagToUse)
 	{
 		super(tagToUse);
 		
@@ -51,10 +51,10 @@ public class CodeStringMapData extends ObjectData
 	@Override
 	public boolean equals(Object rawOther)
 	{
-		if(!(rawOther instanceof CodeStringMapData))
+		if(!(rawOther instanceof CodeToStringMapData))
 			return false;
 
-		CodeStringMapData other = (CodeStringMapData) rawOther;
+		CodeToStringMapData other = (CodeToStringMapData) rawOther;
 		return other.data.equals(data);
 	}
 
