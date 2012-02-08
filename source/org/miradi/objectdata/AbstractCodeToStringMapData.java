@@ -20,55 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objectdata;
 
-import org.miradi.objecthelpers.CodeToCodeMap;
 
-public class CodeToCodeMapData extends AbstractCodeToStringMapData
+abstract public class AbstractCodeToStringMapData extends ObjectData
 {
-	public CodeToCodeMapData(String tagToUse)
+	public AbstractCodeToStringMapData(String tagToUse)
 	{
 		super(tagToUse);
-		
-		data = new CodeToCodeMap();
 	}
 
-	@Override
-	public String get()
-	{
-		return getStringMap().toString();
-	}
-	
-	public CodeToCodeMap getStringMap()
-	{
-		return data;
-	}
-
-	@Override
-	public void set(String newValue) throws Exception
-	{
-		data = new CodeToCodeMap(newValue);
-	}
-
-	@Override
-	public boolean equals(Object rawOther)
-	{
-		if(!(rawOther instanceof CodeToCodeMapData))
-			return false;
-
-		CodeToCodeMapData other = (CodeToCodeMapData) rawOther;
-		return other.data.equals(data);
-	}
-
-	@Override
-	public int hashCode()
-	{
-		return toString().hashCode();
-	}
-	
-	@Override
-	public boolean isCodeToCodeMapData()
-	{
-		return true;
-	}
-	
-	private CodeToCodeMap data;
 }

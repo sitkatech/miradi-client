@@ -21,7 +21,7 @@ package org.miradi.objectdata;
 
 import org.miradi.objecthelpers.CodeToUserStringMap;
 
-public class CodeToStringMapData extends ObjectData
+public class CodeToStringMapData extends AbstractCodeToStringMapData
 {
 	public CodeToStringMapData(String tagToUse)
 	{
