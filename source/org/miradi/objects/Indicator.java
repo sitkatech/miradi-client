@@ -30,7 +30,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objecthelpers.CodeToStringMap;
+import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objecthelpers.TargetSet;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
@@ -70,7 +70,7 @@ public class Indicator extends BaseObject
 		return (CodeToStringMapData)getField(TAG_INDICATOR_THRESHOLD);
 	}
 	
-	public CodeToStringMap getThresholdDetails()
+	public CodeToUserStringMap getThresholdDetails()
 	{
 		return getCodeStringMapData(TAG_THRESHOLD_DETAILS);
 	}

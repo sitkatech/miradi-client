@@ -27,7 +27,7 @@ import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.CodeToStringMap;
+import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Goal;
@@ -288,7 +288,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		if (isThresholdColumn(column))
 		{
 			int thresholdColumn = calculateRatingCodeFromColumn(column);
-			final CodeToStringMap stringMap = ((Indicator)baseObject).getThreshold().getStringMap();
+			final CodeToUserStringMap stringMap = ((Indicator)baseObject).getThreshold().getStringMap();
 			stringMap.put(Integer.toString(thresholdColumn), value.toString());
 			setValueUsingCommand(baseObject.getRef(), Indicator.TAG_INDICATOR_THRESHOLD, stringMap.toString());
 		}
