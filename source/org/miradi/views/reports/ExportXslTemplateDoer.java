@@ -34,6 +34,9 @@ public class ExportXslTemplateDoer extends ObjectsDoer
 	@Override
 	public boolean isAvailable()
 	{
+		if(!super.isAvailable())
+			return false;
+		
 		return getPicker().getSelectedHierarchies().length > 0;
 	}
 	@Override
