@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz;
 
-import org.miradi.objecthelpers.CodeChoiceMap;
+import org.miradi.objecthelpers.CodeToChoiceMap;
 import org.miradi.objecthelpers.CodeCodeListMap;
 import org.miradi.objecthelpers.CodeToStringMap;
 import org.miradi.objects.Dashboard;
@@ -44,7 +44,7 @@ public class DashboardPoolImporter extends AbstractXmpzObjectImporter
 		Node statusesNode = getImporter().getNode(dashboardNode,  getPoolName() + DASHBOARD_STATUS_ENTRIES);
 		NodeList statusNodes = getImporter().getNodes(statusesNode, new String[]{DASHBOARD_STATUS_ENTRY});
 		
-		CodeChoiceMap userProgressMap = new CodeChoiceMap();
+		CodeToChoiceMap userProgressMap = new CodeToChoiceMap();
 		CodeCodeListMap userFlagsMap = new CodeCodeListMap();
 		CodeToStringMap userCommentsMap = new CodeToStringMap();
 		for (int index = 0; index < statusNodes.getLength(); ++index)

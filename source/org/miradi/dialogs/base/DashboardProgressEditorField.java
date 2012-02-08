@@ -30,7 +30,7 @@ import org.miradi.dialogs.dashboard.DashboardRowDefinition;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.AbstractStringKeyMap;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.CodeChoiceMap;
+import org.miradi.objecthelpers.CodeToChoiceMap;
 import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
@@ -111,7 +111,7 @@ public class DashboardProgressEditorField extends AbstractStringStringMapEditorF
 	{
 		try
 		{
-			AbstractStringKeyMap existingMap = new CodeChoiceMap(getProject().getObjectData(getORef(), getTag()));
+			AbstractStringKeyMap existingMap = new CodeToChoiceMap(getProject().getObjectData(getORef(), getTag()));
 			CodeList codes = new CodeList(super.getText());
 			if (!codes.isEmpty())
 				existingMap.put(getMapCode(), codes.firstElement());
@@ -132,7 +132,7 @@ public class DashboardProgressEditorField extends AbstractStringStringMapEditorF
 	{
 		try
 		{
-			AbstractStringKeyMap stringChoiceMap = new CodeChoiceMap(stringMapAsString);
+			AbstractStringKeyMap stringChoiceMap = new CodeToChoiceMap(stringMapAsString);
 			String code = stringChoiceMap.get(getMapCode());
 			super.setText(code);
 		}
