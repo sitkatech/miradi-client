@@ -33,13 +33,12 @@ public class ActionExportXslTemplate extends ObjectsAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Export Xsl");
+		return EAM.text("Action|Export XSL Template");
 	}
 
 	@Override
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Export Xsl");
+		return EAM.text("TT|Export the selected XSL Template to a disk file");
 	}
-
 }

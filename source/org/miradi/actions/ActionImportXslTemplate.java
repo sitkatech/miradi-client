@@ -32,12 +32,12 @@ public class ActionImportXslTemplate extends ObjectsAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Import Xsl");
+		return EAM.text("Action|Import XSL Template");
 	}
 
 	@Override
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Import Xsl");
+		return EAM.text("TT|Import an XSL Template");
 	}
 }
