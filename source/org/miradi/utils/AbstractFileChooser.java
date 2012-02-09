@@ -58,9 +58,9 @@ abstract public class AbstractFileChooser
 	private void addFileFilters(JFileChooser dialog)
 	{
 		FileFilter[] filters = getFileFilter();
-		for (int i=0; i<filters.length; ++i)
+		for (int index = 0; index < filters.length; ++index)
 		{
-			dialog.addChoosableFileFilter(filters[i]);
+			dialog.addChoosableFileFilter(filters[index]);
 		}
 	}
 	
