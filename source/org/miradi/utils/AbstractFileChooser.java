@@ -46,9 +46,14 @@ abstract public class AbstractFileChooser
 		if (selectedFile == null)
 			return null;
 
-		currentDirectory = selectedFile.getParent();
+		storeCurrentDirectoryForNextTime(selectedFile);
 
 		return selectedFile;
+	}
+
+	private void storeCurrentDirectoryForNextTime(File selectedFile)
+	{
+		currentDirectory = selectedFile.getParent();
 	}
 
 	private JFileChooser createFileChooserDialog()
@@ -58,6 +63,7 @@ abstract public class AbstractFileChooser
 		addFileFilters(dialog);
 		dialog.setDialogType(getDialogType());
 		dialog.setApproveButtonToolTipText(getApproveButtonToolTipText());
+		
 		return dialog;
 	}
 
