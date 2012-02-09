@@ -36,11 +36,7 @@ abstract public class AbstractFileChooser
 	
 	public File displayChooser()
 	{
-		JFileChooser dialog = new JFileChooser(currentDirectory);
-		dialog.setDialogTitle(getDialogTitleText());
-		addFileFilters(dialog);
-		dialog.setDialogType(getDialogType());
-		dialog.setApproveButtonToolTipText(getApproveButtonToolTipText());
+		JFileChooser dialog = createFileChooserDialog();
 		if (dialog.showDialog(getMainWindow(), getApproveButtonText()) != JFileChooser.APPROVE_OPTION)
 			return null;
 
@@ -53,6 +49,16 @@ abstract public class AbstractFileChooser
 		currentDirectory = selectedFile.getParent();
 
 		return selectedFile;
+	}
+
+	private JFileChooser createFileChooserDialog()
+	{
+		JFileChooser dialog = new JFileChooser(currentDirectory);
+		dialog.setDialogTitle(getDialogTitleText());
+		addFileFilters(dialog);
+		dialog.setDialogType(getDialogType());
+		dialog.setApproveButtonToolTipText(getApproveButtonToolTipText());
+		return dialog;
 	}
 
 	private void addFileFilters(JFileChooser dialog)
