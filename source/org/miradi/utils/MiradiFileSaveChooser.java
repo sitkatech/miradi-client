@@ -29,7 +29,7 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
 
-abstract public class MiradiFileSaveChooser
+abstract public class MiradiFileSaveChooser extends AbstractFileChooser
 {
 	public MiradiFileSaveChooser(MainWindow mainWindowToUse)
 	{

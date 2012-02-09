@@ -27,7 +27,7 @@ import javax.swing.filechooser.FileFilter;
 
 import org.miradi.main.MainWindow;
 
-abstract public class MiradiFileOpenChooser
+abstract public class MiradiFileOpenChooser extends AbstractFileChooser
 {
 	MiradiFileOpenChooser(MainWindow mainWindow)
 	{
