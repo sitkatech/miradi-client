@@ -1,5 +1,5 @@
 /* 
-Copyright 2005-2010, Foundations of Success, Bethesda, Maryland 
+Copyright 2005-2009, Foundations of Success, Bethesda, Maryland 
 (on behalf of the Conservation Measures Partnership, "CMP") and 
 Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 
@@ -17,15 +17,16 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-
-package org.miradi.utils;
+package org.miradi.objecthelpers;
 
 import org.miradi.objecthelpers.AbstractStringToStringMap;
-import org.miradi.objecthelpers.CodeToCodeListMap;
+import org.miradi.objecthelpers.CodeToUserStringMap;
+import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.utils.TestAbstractStringMap;
 
-public class TestCodeToCodeListMap extends TestAbstractStringMap
+public class TestCodeToUserStringMap  extends TestAbstractStringMap
 {
-	public TestCodeToCodeListMap(String name)
+	public TestCodeToUserStringMap(String name)
 	{
 		super(name);
 	}
@@ -33,18 +34,19 @@ public class TestCodeToCodeListMap extends TestAbstractStringMap
 	@Override
 	protected AbstractStringToStringMap createAbstractMap()
 	{
-		return new CodeToCodeListMap();
+		return new CodeToUserStringMap();
 	}
-
+	
 	@Override
 	protected AbstractStringToStringMap createAbstractMap(EnhancedJsonObject json)
 	{
-		return new CodeToCodeListMap(json);
+		return new CodeToUserStringMap(json);
 	}
 	
 	public void testToString() throws Exception
 	{
-		CodeToCodeListMap list = (CodeToCodeListMap) createMapWithSampleData();
-		assertEquals("Can't rount trip?", list, new CodeToCodeListMap(list));
+		CodeToUserStringMap list = (CodeToUserStringMap) createMapWithSampleData();
+		assertEquals("Can't rount trip?", list, new CodeToUserStringMap(list));
 	}
 }
+

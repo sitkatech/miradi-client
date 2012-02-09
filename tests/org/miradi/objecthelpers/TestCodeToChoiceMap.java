@@ -18,10 +18,12 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
  */
 
-package org.miradi.utils;
+package org.miradi.objecthelpers;
 
 import org.miradi.objecthelpers.AbstractStringToStringMap;
 import org.miradi.objecthelpers.CodeToChoiceMap;
+import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.utils.TestAbstractStringMap;
 
 public class TestCodeToChoiceMap extends TestAbstractStringMap
 {
