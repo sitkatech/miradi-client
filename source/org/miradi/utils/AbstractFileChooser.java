@@ -34,6 +34,34 @@ abstract public class AbstractFileChooser
 		mainWindow = mainWindowToUse;
 	}
 	
+	public File displayChooser()
+	{
+		
+		JFileChooser dlg = new JFileChooser(currentDirectory);
+
+		dlg.setDialogTitle(getDialogTitleText());
+		FileFilter[] filters = getFileFilter();
+		for (int i=0; i<filters.length; ++i)
+		{
+			dlg.addChoosableFileFilter(filters[i]);
+		}
+		
+		dlg.setDialogType(getDialogType());
+		dlg.setApproveButtonToolTipText(getApproveButtonToolTipText());
+		if (dlg.showDialog(getMainWindow(), getApproveButtonText()) != JFileChooser.APPROVE_OPTION)
+			return null;
+
+		File chosen = dlg.getSelectedFile();
+		chosen = getFileWithExtension(dlg, chosen);
+		chosen = doCustomWork(chosen);
+		if (chosen == null)
+			return null;
+
+		currentDirectory = chosen.getParent();
+		return chosen;
+
+	}
+	
 	public static File getFileWithExtension(JFileChooser fileChooser, File chosen)
 	{
 		FileFilter rawFileFilter = fileChooser.getFileFilter();

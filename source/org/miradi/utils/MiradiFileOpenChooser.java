@@ -20,10 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
-import java.io.File;
-
 import javax.swing.JFileChooser;
-import javax.swing.filechooser.FileFilter;
 
 import org.miradi.main.MainWindow;
 
@@ -32,34 +29,6 @@ abstract public class MiradiFileOpenChooser extends AbstractFileChooser
 	MiradiFileOpenChooser(MainWindow mainWindow)
 	{
 		super(mainWindow);
-	}
-
-	public File displayChooser()
-	{
-		
-		JFileChooser dlg = new JFileChooser(currentDirectory);
-
-		dlg.setDialogTitle(getDialogTitleText());
-		FileFilter[] filters = getFileFilter();
-		for (int i=0; i<filters.length; ++i)
-		{
-			dlg.addChoosableFileFilter(filters[i]);
-		}
-		
-		dlg.setDialogType(getDialogType());
-		dlg.setApproveButtonToolTipText(getApproveButtonToolTipText());
-		if (dlg.showDialog(getMainWindow(), getApproveButtonText()) != JFileChooser.APPROVE_OPTION)
-			return null;
-
-		File chosen = dlg.getSelectedFile();
-		chosen = getFileWithExtension(dlg, chosen);
-		chosen = doCustomWork(chosen);
-		if (chosen == null)
-			return null;
-
-		currentDirectory = chosen.getParent();
-		return chosen;
-
 	}
 
 	@Override
