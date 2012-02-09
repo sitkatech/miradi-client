@@ -577,7 +577,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 
 	private void writeThreshold(UnicodeWriter out, String elementName, Indicator indicator, String threshold) throws Exception
 	{
-		HashMap<String, String> stringMap = indicator.getThresholdMap().getCodeToUserStringMap().toHashMap();
+		HashMap<String, String> stringMap = indicator.getThresholdsMap().getCodeToUserStringMap().toHashMap();
 		String value = stringMap.get(threshold);
 		writeOptionalElement(out, elementName, value);
 	}
