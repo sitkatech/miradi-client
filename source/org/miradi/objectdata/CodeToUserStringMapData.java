@@ -64,7 +64,7 @@ public class CodeToUserStringMapData extends AbstractCodeToStringMapData
 	}
 	
 	@Override
-	public boolean isCodeToStringMapData()
+	public boolean isCodeToUserStringMapData()
 	{
 		return true;
 	}
