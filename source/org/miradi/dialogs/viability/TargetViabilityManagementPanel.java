@@ -44,7 +44,7 @@ public class TargetViabilityManagementPanel extends AbstractViabilityManagementP
 		AbstractPlanningTreeRowColumnProvider rowColumnProvider = new TargetViabilityRowColumnProvider(mainWindowToUse.getProject());
 		
 		TreeTableModelWithRebuilder model = new ViabilityTreeTableModel(mainWindowToUse.getProject(), rootNode, rowColumnProvider);
-		PlanningTreeTablePanel treeTablePanel = TargetViabilityTreeTablePanel.createTreeTablePanel(mainWindowToUse, model, rowColumnProvider);
+		PlanningTreeTablePanel treeTablePanel = TargetViabilityTreeTablePanel.createTreeTableWithVisibleRootPanel(mainWindowToUse, model, rowColumnProvider);
 		TargetViabilityMultiPropertiesPanel propertiesPanel = new TargetViabilityMultiPropertiesPanel(mainWindowToUse);
 		
 		return new TargetViabilityManagementPanel(mainWindowToUse, treeTablePanel, propertiesPanel);

@@ -41,12 +41,6 @@ public class ViabilityTreeTable extends PlanningTreeTable
 	}
 
 	@Override
-	protected boolean isRootVisible()
-	{
-		return true;
-	}
-	
-	@Override
 	protected Set<Class> getRelevantActions()
 	{
 		HashSet<Class> relevantActions = new HashSet<Class>();
