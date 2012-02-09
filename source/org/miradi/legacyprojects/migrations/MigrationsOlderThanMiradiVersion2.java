@@ -29,7 +29,6 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Vector;
 
-
 import org.json.JSONObject;
 import org.martus.util.DirectoryUtils;
 import org.miradi.diagram.DiagramModel;
@@ -41,10 +40,10 @@ import org.miradi.legacyprojects.JSONFile;
 import org.miradi.legacyprojects.ObjectManifest;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.BooleanData;
+import org.miradi.objecthelpers.CodeToCodeMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Stress;
@@ -282,8 +281,10 @@ public class MigrationsOlderThanMiradiVersion2
 		if (! threatRatingCommentsDataManifestFile.exists())
 			throw new RuntimeException("no ThreatRatingCommentsData manifest exist");
 		
-		CodeToUserStringMap simpleThreatRatingCommentsMap = new CodeToUserStringMap();
-		CodeToUserStringMap stressThreatRatingCommentsMap = new CodeToUserStringMap();
+		// NOTE: Using CodeToCodeMap here because we do not want the new HTML encoding
+		// from CodeToUserStringMap
+		CodeToCodeMap simpleThreatRatingCommentsMap = new CodeToCodeMap();
+		CodeToCodeMap stressThreatRatingCommentsMap = new CodeToCodeMap();
 		ObjectManifest factorLinkManifestObject = new ObjectManifest(JSONFile.read(factorLinkManifestFile));
 		BaseId[] factorLinkIds = factorLinkManifestObject.getAllKeys();
 		for (int i = 0; i < factorLinkIds.length; ++i)
