@@ -67,7 +67,7 @@ public class IndicatorPoolExporter extends BaseObjectPoolExporter
 	private void writeOptionalThreshold(Indicator indicator) throws Exception
 	{
 		CodeToUserStringMap thresholdValues = indicator.getThresholdMap().getCodeToUserStringMap();
-		CodeToUserStringMap thresholdDetails = indicator.getThresholdDetails();
+		CodeToUserStringMap thresholdDetails = indicator.getThresholdDetailsMap();
 		if (thresholdValues.size() == 0 && thresholdDetails.size() == 0)
 			return;
 		
