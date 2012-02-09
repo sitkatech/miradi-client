@@ -59,7 +59,5 @@ abstract public class MiradiFileOpenChooser extends AbstractFileChooser
 
 	}
 	
-	abstract protected String getDialogTitleText();
-
 	private static String currentDirectory;
 }
