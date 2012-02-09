@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-09 10:31-0600\n"
+"POT-Creation-Date: 2012-02-09 11:39-0600\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -4829,10 +4829,6 @@ msgstr "Eigenschaften - Verbindung"
 msgid "Lists"
 msgstr "Listen"
 
-#: Miradi/source/org/miradi/views/reports/ImportXslTemplateDoer.java:49
-msgid "Load Xsl"
-msgstr ""
-
 #: Miradi/source/org/miradi/views/summary/SummaryLocationPanel.java:64
 msgid "Location"
 msgstr "Ort"
@@ -5533,6 +5529,8 @@ msgstr "Vor Ort Recherche/Erhebung"
 
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListOpenAction.java:46
 #: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:92
+#: Miradi/source/org/miradi/utils/GenericFileOpenChooser.java:44
+#: Miradi/source/org/miradi/utils/GenericFileOpenChooser.java:56
 msgid "Open"
 msgstr "Öffnen"
 
@@ -5544,6 +5542,10 @@ msgstr "Trotzdem Öffnen"
 #: Miradi/source/org/miradi/main/MainWindow.java:615
 msgid "Open Project"
 msgstr "Projekt Öffnen"
+
+#: Miradi/source/org/miradi/utils/GenericFileOpenChooser.java:50
+msgid "Open Selected File"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:263
 msgid ""
@@ -6162,10 +6164,6 @@ msgstr "Savanna - Dry Savanna"
 msgid "Savanna - Moist Savana"
 msgstr "Savanna - Moist Savana"
 
-#: Miradi/source/org/miradi/views/reports/RunXlsTemplateDoer.java:86
-msgid "Save"
-msgstr ""
-
 # wahrscheinlich hier "Speichere" und nicht "Speichern" da Code danach anzeigt, dass wahrscheinlich automatisch ein variabler Wert eingefügt wird
 #: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:74
 msgid "Save %s"
@@ -6176,10 +6174,6 @@ msgstr "Speichere %s"
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListSaveAsAction.java:47
 msgid "Save As..."
 msgstr "Speichern als..."
-
-#: Miradi/source/org/miradi/views/reports/ExportXslTemplateDoer.java:48
-msgid "Save Xsl"
-msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:101
 msgid "Save..."
@@ -6257,10 +6251,6 @@ msgstr "Zu installierendes Sprachpaket wählen"
 #: Miradi/source/org/miradi/dialogs/base/DataLocationChooserPanel.java:55
 msgid "Select Location..."
 msgstr "Ort wählen..."
-
-#: Miradi/source/org/miradi/views/reports/RunXlsTemplateDoer.java:86
-msgid "Select Output File"
-msgstr ""
 
 #: Miradi/source/org/miradi/actions/jump/ActionJumpSelectAppropriateMethods.java:35
 msgid "Select appropriate methods"
@@ -8376,7 +8366,7 @@ msgstr "Summe Budget für Finanzierung: %1 %2"
 msgid "Total Monitoring Budget %1 %2"
 msgstr "Summe Monitoringbudget %1 %2"
 
-#: Miradi/source/org/miradi/views/reports/RunXlsTemplateDoer.java:90
+#: Miradi/source/org/miradi/views/reports/RunXlsTemplateDoer.java:87
 msgid "Transformation Completed!"
 msgstr ""
 
@@ -8520,6 +8510,10 @@ msgstr "Aktualisiere Orte..."
 #: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:43
 msgid "Use other's communication products"
 msgstr "Kommunikationsprodukte anderer nutzen"
+
+#: Miradi/source/org/miradi/utils/UserDefinedFileFilter.java:49
+msgid "User Defined Extension"
+msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:54
 #: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:48

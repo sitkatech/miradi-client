@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-09 10:31-0600\n"
+"POT-Creation-Date: 2012-02-09 11:39-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -4490,10 +4490,6 @@ msgstr "链接属性 \t\t"
 msgid "Lists"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/reports/ImportXslTemplateDoer.java:49
-msgid "Load Xsl"
-msgstr ""
-
 #: Miradi/source/org/miradi/views/summary/SummaryLocationPanel.java:64
 msgid "Location"
 msgstr "地点 \t\t"
@@ -5170,6 +5166,8 @@ msgstr "实地研究"
 
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListOpenAction.java:46
 #: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:92
+#: Miradi/source/org/miradi/utils/GenericFileOpenChooser.java:44
+#: Miradi/source/org/miradi/utils/GenericFileOpenChooser.java:56
 msgid "Open"
 msgstr "打开 \t\t"
 
@@ -5180,6 +5178,10 @@ msgstr ""
 #: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:153
 #: Miradi/source/org/miradi/main/MainWindow.java:615
 msgid "Open Project"
+msgstr ""
+
+#: Miradi/source/org/miradi/utils/GenericFileOpenChooser.java:50
+msgid "Open Selected File"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:263
@@ -5772,10 +5774,6 @@ msgstr "稀树草原-干旱稀树草原"
 msgid "Savanna - Moist Savana"
 msgstr "稀树草原-湿润稀树草原"
 
-#: Miradi/source/org/miradi/views/reports/RunXlsTemplateDoer.java:86
-msgid "Save"
-msgstr "保存 \t\t"
-
 #: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:74
 msgid "Save %s"
 msgstr "保存 %s  \t\t"
@@ -5784,10 +5782,6 @@ msgstr "保存 %s  \t\t"
 #: Miradi/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:45
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListSaveAsAction.java:47
 msgid "Save As..."
-msgstr ""
-
-#: Miradi/source/org/miradi/views/reports/ExportXslTemplateDoer.java:48
-msgid "Save Xsl"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:101
@@ -5852,10 +5846,6 @@ msgstr ""
 #: Miradi/source/org/miradi/dialogs/base/DataLocationChooserPanel.java:55
 msgid "Select Location..."
 msgstr "选择位置... \t\t"
-
-#: Miradi/source/org/miradi/views/reports/RunXlsTemplateDoer.java:86
-msgid "Select Output File"
-msgstr ""
 
 #: Miradi/source/org/miradi/actions/jump/ActionJumpSelectAppropriateMethods.java:35
 msgid "Select appropriate methods"
@@ -7845,7 +7835,7 @@ msgstr ""
 msgid "Total Monitoring Budget %1 %2"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/reports/RunXlsTemplateDoer.java:90
+#: Miradi/source/org/miradi/views/reports/RunXlsTemplateDoer.java:87
 msgid "Transformation Completed!"
 msgstr ""
 
@@ -7991,6 +7981,10 @@ msgstr ""
 #: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:43
 msgid "Use other's communication products"
 msgstr "使用其它通信产品 \t\t"
+
+#: Miradi/source/org/miradi/utils/UserDefinedFileFilter.java:49
+msgid "User Defined Extension"
+msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:54
 #: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:48
@@ -29036,6 +29030,9 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid "Save"
+#~ msgstr "保存 \t\t"
 
 #~ msgid "Custom Reports"
 #~ msgstr "定制报告 \t\t"
