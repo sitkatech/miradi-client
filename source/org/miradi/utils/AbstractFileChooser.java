@@ -38,12 +38,7 @@ abstract public class AbstractFileChooser
 	{
 		JFileChooser dialog = new JFileChooser(currentDirectory);
 		dialog.setDialogTitle(getDialogTitleText());
-		FileFilter[] filters = getFileFilter();
-		for (int i=0; i<filters.length; ++i)
-		{
-			dialog.addChoosableFileFilter(filters[i]);
-		}
-		
+		addFileFilters(dialog);
 		dialog.setDialogType(getDialogType());
 		dialog.setApproveButtonToolTipText(getApproveButtonToolTipText());
 		if (dialog.showDialog(getMainWindow(), getApproveButtonText()) != JFileChooser.APPROVE_OPTION)
@@ -58,6 +53,15 @@ abstract public class AbstractFileChooser
 		currentDirectory = chosen.getParent();
 
 		return chosen;
+	}
+
+	private void addFileFilters(JFileChooser dialog)
+	{
+		FileFilter[] filters = getFileFilter();
+		for (int i=0; i<filters.length; ++i)
+		{
+			dialog.addChoosableFileFilter(filters[i]);
+		}
 	}
 	
 	public static File getFileWithExtension(JFileChooser fileChooser, File chosen)
