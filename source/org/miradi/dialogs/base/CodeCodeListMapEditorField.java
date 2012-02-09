@@ -20,11 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.base;
 
+import java.text.ParseException;
+
 import org.miradi.objecthelpers.AbstractStringToStringMap;
-import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.CodeToCodeListMap;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.utils.CodeList;
    
 public class CodeCodeListMapEditorField extends AbstractCodeCodeListMapEditorField
 {
@@ -46,8 +49,10 @@ public class CodeCodeListMapEditorField extends AbstractCodeCodeListMapEditorFie
 	}
 	
 	@Override
-	protected void put(AbstractStringToStringMap existingMap, String key, String value)
+	protected void put(AbstractStringToStringMap existingMap, String key, String value) throws ParseException
 	{
-		existingMap.put(key, value);
+		CodeToCodeListMap map = (CodeToCodeListMap) existingMap;
+		CodeList codeList = new CodeList(value);
+		map.putCodeList(key, codeList);
 	}
 }
