@@ -62,6 +62,8 @@ abstract public class AbstractFileChooser
 	abstract protected FileFilter[] getFileFilter();
 	
 	abstract protected String getApproveButtonText();
+	
+	abstract protected String getApproveButtonToolTipText();
 
 	private MainWindow mainWindow;
 }

@@ -57,10 +57,8 @@ abstract public class MiradiFileOpenChooser extends AbstractFileChooser
 		currentDirectory = chosen.getParent();
 		return chosen;
 
-	}	
-
-	abstract protected String getApproveButtonToolTipText();
-
+	}
+	
 	abstract protected String getDialogTitleText();
 
 	private static String currentDirectory;
