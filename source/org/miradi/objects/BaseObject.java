@@ -326,22 +326,22 @@ abstract public class BaseObject
 		Set<String> tags = getTags();
 		for (String tag : tags)
 		{
-			if (!getField(tag).isPseudoField())
+			if (getField(tag).isPseudoField())
+				continue;
+			
+			String value = json.optString(tag);
+			try
 			{
-				String value = json.optString(tag);
-				try
-				{
-					if (getField(tag).isUserText())
-						setHtmlDataFromNonHtml(tag, value);
-					else
-						setData(tag, value);
-				}
-				catch(InvalidNumberException e)
-				{
-					String newValue = value.replaceAll("[^0-9\\-\\.,]", "");
-					EAM.logWarning("Fixing bad numeric data in " + tag + " from " + value + " to " + newValue);
-					setData(tag, newValue);
-				}
+				if (getField(tag).isUserText())
+					setHtmlDataFromNonHtml(tag, value);
+				else
+					setData(tag, value);
+			}
+			catch(InvalidNumberException e)
+			{
+				String newValue = value.replaceAll("[^0-9\\-\\.,]", "");
+				EAM.logWarning("Fixing bad numeric data in " + tag + " from " + value + " to " + newValue);
+				setData(tag, newValue);
 			}
 		}
 	}
