@@ -109,11 +109,6 @@ public class RunXlsTemplateDoer extends ObjectsDoer
 		}
 	}
 
-	public static File getUserChosenFile(final MainWindow mainWindowToUse, final String diaglogTitle, final String buttonText)
-	{
-		return getUserChosenFile(mainWindowToUse, diaglogTitle, buttonText, null);
-	}
-	
 	private static File getUserChosenFile(final MainWindow mainWindowToUse, final String diaglogTitle, final String buttonText, final GenericMiradiFileFilter fileFilter)
 	{
 		JFileChooser fileChooser = new JFileChooser();
