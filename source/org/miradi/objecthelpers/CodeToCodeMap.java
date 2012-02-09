@@ -56,5 +56,8 @@ public class CodeToCodeMap extends AbstractCodeToStringMap
 		return data.equals(other.data);
 	}
 
-
+	public void putInteger(String code, int value)
+	{
+		put(code, Integer.toString(value));
+	}
 }

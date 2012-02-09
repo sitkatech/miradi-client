@@ -45,6 +45,11 @@ public class CodeToUserStringMap extends AbstractCodeToStringMap
 		super(mapAsJsonString);
 	}
 	
+	public void putUserString(String code, String newValue)
+	{
+		put(code, newValue);
+	}
+
 	@Override
 	public boolean equals(Object rawOther)
 	{
