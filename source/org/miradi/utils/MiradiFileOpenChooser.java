@@ -31,7 +31,7 @@ abstract public class MiradiFileOpenChooser extends AbstractFileChooser
 {
 	MiradiFileOpenChooser(MainWindow mainWindow)
 	{
-		this.mainWindow = mainWindow;
+		super(mainWindow);
 	}
 
 	public File displayChooser()
@@ -48,7 +48,7 @@ abstract public class MiradiFileOpenChooser extends AbstractFileChooser
 		
 		dlg.setDialogType(JFileChooser.OPEN_DIALOG);
 		dlg.setApproveButtonToolTipText(getApproveButtonToolTipText());
-		if (dlg.showDialog(mainWindow, getApproveButtonText()) != JFileChooser.APPROVE_OPTION)
+		if (dlg.showDialog(getMainWindow(), getApproveButtonText()) != JFileChooser.APPROVE_OPTION)
 			return null;
 
 		File chosen = dlg.getSelectedFile();
@@ -84,6 +84,5 @@ abstract public class MiradiFileOpenChooser extends AbstractFileChooser
 	abstract protected FileFilter[] getFileFilter();
 	abstract protected String getDialogTitleText();
 
-	private MainWindow mainWindow;
 	private static String currentDirectory;
 }

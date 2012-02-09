@@ -20,7 +20,19 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
+import org.miradi.main.MainWindow;
+
 public class AbstractFileChooser
 {
+	public AbstractFileChooser(MainWindow mainWindowToUse)
+	{
+		mainWindow = mainWindowToUse;
+	}
+	
+	protected MainWindow getMainWindow()
+	{
+		return mainWindow;
+	}
 
+	private MainWindow mainWindow;
 }

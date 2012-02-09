@@ -33,7 +33,7 @@ abstract public class MiradiFileSaveChooser extends AbstractFileChooser
 {
 	public MiradiFileSaveChooser(MainWindow mainWindowToUse)
 	{
-		mainWindow = mainWindowToUse;
+		super(mainWindowToUse);
 	}
 
 	public File displayChooser() throws CommandFailedException
@@ -50,7 +50,7 @@ abstract public class MiradiFileSaveChooser extends AbstractFileChooser
 		
 		dlg.setDialogType(JFileChooser.CUSTOM_DIALOG);
 		dlg.setApproveButtonToolTipText(getApproveButtonToolTipText());
-		if (dlg.showDialog(mainWindow, getDialogApprovelButtonText()) != JFileChooser.APPROVE_OPTION)
+		if (dlg.showDialog(getMainWindow(), getDialogApprovelButtonText()) != JFileChooser.APPROVE_OPTION)
 			return null;
 
 		File chosen = dlg.getSelectedFile();
@@ -119,7 +119,6 @@ abstract public class MiradiFileSaveChooser extends AbstractFileChooser
 	
 	public abstract String getUiExtensionTag();
 	
-	private MainWindow mainWindow;
 	private static String currentDirectory;
 	
 	public static final String INVALID_PROJECT_FILE_NAME_MESSAGE = EAM.text("File name must contain only alpha numeric and/or '_' characters.");
