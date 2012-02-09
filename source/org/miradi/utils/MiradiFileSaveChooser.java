@@ -56,18 +56,25 @@ abstract public class MiradiFileSaveChooser extends AbstractFileChooser
 		File chosen = dlg.getSelectedFile();
 		chosen = getFileWithExtension(dlg, chosen);
 
+		chosen = doCustomWork(chosen);
+		currentDirectory = chosen.getParent();
+		return chosen;
+
+	}
+
+	private File doCustomWork(final File chosen)
+	{
 		if (chosen.exists())
 		{
 			String title = getDialogOverwriteTitleText();
 			String[] body = { getDialogOverwriteBodyText() };
 			if (!EAM.confirmOverwriteDialog(title, body))
 				return null;
+		
 			chosen.delete();
 		}
-
-		currentDirectory = chosen.getParent();
+		
 		return chosen;
-
 	}
 
 	@Override
