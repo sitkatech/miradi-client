@@ -20,15 +20,18 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.base;
 
+import java.text.ParseException;
+
 import org.miradi.objecthelpers.AbstractStringToStringMap;
-import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.CodeToCodeListMap;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.utils.CodeList;
    
-public class CodeCodeListMapEditorField extends AbstractCodeCodeListMapEditorField
+public class CodeToCodeListMapEditorField extends AbstractCodeToCodeListMapEditorField
 {
-	public CodeCodeListMapEditorField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse, String mapKeyCodeToUse)
+	public CodeToCodeListMapEditorField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse, String mapKeyCodeToUse)
 	{
 		super(projectToUse, refToUse, tagToUse, questionToUse, mapKeyCodeToUse);
 	}
@@ -36,12 +39,21 @@ public class CodeCodeListMapEditorField extends AbstractCodeCodeListMapEditorFie
 	@Override
 	protected AbstractStringToStringMap createCurrentStringKeyMap() throws Exception
 	{
-		return new CodeToCodeListMap(getProject().getObjectData(getORef(), getTag()));
+		String mapAsString = getProject().getObjectData(getORef(), getTag());
+		return new CodeToCodeListMap(mapAsString);
 	}
 
 	@Override
 	protected AbstractStringToStringMap createStringKeyMap(String StringMapAsString) throws Exception
 	{
 		return new CodeToCodeListMap(StringMapAsString);
+	}
+	
+	@Override
+	protected void put(AbstractStringToStringMap existingMap, String key, String value) throws ParseException
+	{
+		CodeToCodeListMap map = (CodeToCodeListMap) existingMap;
+		CodeList codeList = new CodeList(value);
+		map.putCodeList(key, codeList);
 	}
 }
