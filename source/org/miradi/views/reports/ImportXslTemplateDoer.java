@@ -26,8 +26,8 @@ import org.martus.util.UnicodeReader;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
-import org.miradi.main.EAM;
 import org.miradi.objects.XslTemplate;
+import org.miradi.utils.GenericFileOpenChooser;
 import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.XmlUtilities2;
 import org.miradi.views.ObjectsDoer;
@@ -46,7 +46,8 @@ public class ImportXslTemplateDoer extends ObjectsDoer
 		if (!isAvailable())
 			return;
 		
-		File userChosenFile = RunXlsTemplateDoer.getUserChosenFile(getMainWindow(), EAM.text("Load Xsl"), EAM.text("Load Xsl"));
+		final GenericFileOpenChooser fileChooser = new GenericFileOpenChooser(getMainWindow());
+		final File userChosenFile = fileChooser.displayChooser();
 		if (userChosenFile == null)
 			return;
 		
