@@ -1466,7 +1466,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		CodeToCodeListMap flagsMap = new CodeToCodeListMap();
 		CodeList flags = new CodeList();
 		flags.add(DashboardFlagsQuestion.NEEDS_ATTENTION_CODE);
-		flagsMap.put(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE, flags.toString());
+		flagsMap.putCodeList(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE, flags);
 		fillObjectUsingCommand(dashboardRef, Dashboard.TAG_FLAGS_MAP, flagsMap.toString());
 	}
 
