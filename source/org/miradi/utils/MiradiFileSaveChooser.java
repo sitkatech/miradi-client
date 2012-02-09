@@ -29,12 +29,12 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
 
-public abstract class EAMFileSaveChooser
+public abstract class MiradiFileSaveChooser
 {
 
 	MainWindow mainWindow;
 
-	EAMFileSaveChooser(MainWindow mainWindow)
+	MiradiFileSaveChooser(MainWindow mainWindow)
 	{
 		this.mainWindow = mainWindow;
 	}

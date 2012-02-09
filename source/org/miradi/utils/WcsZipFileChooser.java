@@ -24,7 +24,7 @@ import javax.swing.filechooser.FileFilter;
 
 import org.miradi.main.MainWindow;
 
-public class WcsZipFileChooser extends EAMFileSaveChooser
+public class WcsZipFileChooser extends MiradiFileSaveChooser
 {
 	public WcsZipFileChooser(MainWindow mainWindow)
 	{

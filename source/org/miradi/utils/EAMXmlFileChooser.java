@@ -23,7 +23,7 @@ import javax.swing.filechooser.FileFilter;
 
 import org.miradi.main.MainWindow;
 
-public class EAMXmlFileChooser extends EAMFileSaveChooser
+public class EAMXmlFileChooser extends MiradiFileSaveChooser
 {
 	public EAMXmlFileChooser(MainWindow mainWindow)
 	{

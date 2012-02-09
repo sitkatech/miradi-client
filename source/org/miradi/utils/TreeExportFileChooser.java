@@ -23,7 +23,7 @@ import javax.swing.filechooser.FileFilter;
 
 import org.miradi.main.MainWindow;
 
-public class TreeExportFileChooser extends EAMFileSaveChooser
+public class TreeExportFileChooser extends MiradiFileSaveChooser
 {
 	public TreeExportFileChooser(MainWindow mainWindow)
 	{

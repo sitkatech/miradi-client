@@ -23,7 +23,7 @@ import javax.swing.filechooser.FileFilter;
 
 import org.miradi.main.MainWindow;
 
-public class CpmzFileChooser extends EAMFileSaveChooser
+public class CpmzFileChooser extends MiradiFileSaveChooser
 {
 	public CpmzFileChooser(MainWindow mainWindow)
 	{

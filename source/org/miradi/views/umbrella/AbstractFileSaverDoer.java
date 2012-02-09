@@ -27,7 +27,7 @@ import org.miradi.dialogs.base.ProgressDialog;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.exceptions.UserCanceledException;
 import org.miradi.main.EAM;
-import org.miradi.utils.EAMFileSaveChooser;
+import org.miradi.utils.MiradiFileSaveChooser;
 import org.miradi.utils.ImageTooLargeException;
 import org.miradi.utils.MiradiBackgroundWorkerThread;
 import org.miradi.utils.ProgressInterface;
@@ -53,7 +53,7 @@ abstract public class AbstractFileSaverDoer extends ViewDoer
 			if (!doesConfirmBetaExport() ||  !doesUserConfirm())
 				return;
 			
-			EAMFileSaveChooser eamFileChooser = createFileChooser();
+			MiradiFileSaveChooser eamFileChooser = createFileChooser();
 			File chosen = eamFileChooser.displayChooser();
 			if (chosen==null) 
 				return;
@@ -133,7 +133,7 @@ abstract public class AbstractFileSaverDoer extends ViewDoer
 		private File destinationFile;
 	}
 	
-	abstract protected EAMFileSaveChooser createFileChooser();
+	abstract protected MiradiFileSaveChooser createFileChooser();
 	
 	abstract protected boolean doWork(File destinationFile, ProgressInterface progressInterface) throws Exception;
 	

@@ -24,7 +24,7 @@ import javax.swing.filechooser.FileFilter;
 
 import org.miradi.main.MainWindow;
 
-public class MpzFileChooser extends EAMFileSaveChooser
+public class MpzFileChooser extends MiradiFileSaveChooser
 {
 	public MpzFileChooser(MainWindow mainWindow)
 	{

@@ -23,7 +23,7 @@ import javax.swing.filechooser.FileFilter;
 
 import org.miradi.main.MainWindow;
 
-public class MiradiTabDelimitedFileChooser extends EAMFileSaveChooser
+public class MiradiTabDelimitedFileChooser extends MiradiFileSaveChooser
 {
 	public MiradiTabDelimitedFileChooser(MainWindow mainWindow)
 	{

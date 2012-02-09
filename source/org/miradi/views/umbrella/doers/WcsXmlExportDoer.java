@@ -20,13 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.umbrella.doers;
 
-import org.miradi.utils.EAMFileSaveChooser;
+import org.miradi.utils.MiradiFileSaveChooser;
 import org.miradi.utils.WcsZipFileChooser;
 
 public class WcsXmlExportDoer extends AbstractExportProjectXmlZipDoer
 {
 	@Override
-	protected EAMFileSaveChooser createFileChooser()
+	protected MiradiFileSaveChooser createFileChooser()
 	{
 		return new WcsZipFileChooser(getMainWindow());
 	}

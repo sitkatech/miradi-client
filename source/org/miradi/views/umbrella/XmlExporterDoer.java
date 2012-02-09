@@ -37,7 +37,7 @@ import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramObject;
 import org.miradi.utils.BufferedImageFactory;
 import org.miradi.utils.ConstantButtonNames;
-import org.miradi.utils.EAMFileSaveChooser;
+import org.miradi.utils.MiradiFileSaveChooser;
 import org.miradi.utils.PNGFileFilter;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.xml.XmlExporter;
@@ -175,7 +175,7 @@ abstract public class XmlExporterDoer extends AbstractFileSaverDoer
 	abstract protected boolean isValidXml(ByteArrayInputStream inputStream) throws Exception;
 
 	@Override
-	abstract protected EAMFileSaveChooser createFileChooser();
+	abstract protected MiradiFileSaveChooser createFileChooser();
 	
 	abstract protected boolean export(File chosen, ProgressInterface progressInterface) throws Exception;
 	

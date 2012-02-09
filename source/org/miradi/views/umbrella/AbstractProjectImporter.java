@@ -37,7 +37,7 @@ import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
-import org.miradi.utils.EAMFileSaveChooser;
+import org.miradi.utils.MiradiFileSaveChooser;
 import org.miradi.utils.MiradiBackgroundWorkerThread;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.views.noproject.NoProjectView;
@@ -64,7 +64,7 @@ public abstract class AbstractProjectImporter
 				return;
 			
 			File fileToImport = fileChooser.getSelectedFile();
-			fileToImport = EAMFileSaveChooser.getFileWithExtension(fileChooser, fileToImport);
+			fileToImport = MiradiFileSaveChooser.getFileWithExtension(fileChooser, fileToImport);
 			
 			importProject(fileToImport);
 		}

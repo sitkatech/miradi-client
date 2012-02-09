@@ -19,13 +19,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella.doers;
 
-import org.miradi.utils.EAMFileSaveChooser;
+import org.miradi.utils.MiradiFileSaveChooser;
 import org.miradi.utils.XmpzFileChooser;
 
 public class ExportXmpzDoer extends AbstractExportProjectXmlZipDoer
 {
 	@Override
-	protected EAMFileSaveChooser createFileChooser()
+	protected MiradiFileSaveChooser createFileChooser()
 	{
 		return new XmpzFileChooser(getMainWindow());
 	}
