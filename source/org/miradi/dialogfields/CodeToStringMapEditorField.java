@@ -46,4 +46,10 @@ public class CodeToStringMapEditorField extends AbstractCodeCodeListMapEditorFie
 	{
 		return new CodeToUserStringMap(StringMapAsString);
 	}
+
+	@Override
+	protected void put(AbstractStringToStringMap existingMap, String key, String value)
+	{
+		existingMap.put(key, value);
+	}
 }
