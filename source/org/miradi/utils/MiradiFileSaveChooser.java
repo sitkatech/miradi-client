@@ -80,6 +80,7 @@ abstract public class MiradiFileSaveChooser extends AbstractFileChooser
 		return EAM.substitute(EAM.text("TT|Save %s File"), getUiExtensionTag());
 	}
 
+	@Override
 	public String getApproveButtonText()
 	{
 		return EAM.substitute(EAM.text("Save %s"), getUiExtensionTag());
