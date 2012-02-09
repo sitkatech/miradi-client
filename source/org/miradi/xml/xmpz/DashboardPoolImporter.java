@@ -55,7 +55,7 @@ public class DashboardPoolImporter extends AbstractXmpzObjectImporter
 			if (progressCodeNode != null)
 			{
 				String statusCode = progressCodeNode.getTextContent();
-				userProgressMap.put(thirdLevelCode, statusCode);
+				userProgressMap.putChoiceCode(thirdLevelCode, statusCode);
 			}
 			
 			CodeList flagCodes = getFlagsCodeList(statusNode);
@@ -65,7 +65,7 @@ public class DashboardPoolImporter extends AbstractXmpzObjectImporter
 			if (commentsNode != null)
 			{
 				String userComments = commentsNode.getTextContent();
-				userCommentsMap.put(thirdLevelCode, userComments);
+				userCommentsMap.putUserString(thirdLevelCode, userComments);
 			}
 		}
 		

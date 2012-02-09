@@ -51,7 +51,7 @@ public class ObjectStringMapInputField extends ObjectStringInputField
 		{
 			String mapAsString = getProject().getObjectData(getORef(), getTag());
 			CodeToUserStringMap stringMap = new CodeToUserStringMap(mapAsString);
-			stringMap.put(code, super.getText());
+			stringMap.putUserString(code, super.getText());
 			
 			return stringMap.toString();
 		}

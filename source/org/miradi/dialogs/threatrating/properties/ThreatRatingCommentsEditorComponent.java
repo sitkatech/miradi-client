@@ -122,7 +122,7 @@ public class ThreatRatingCommentsEditorComponent extends SavableField
 			ThreatRatingCommentsData threatRatingCommentsData = getThreatRatingCommentsData();
 			CodeToUserStringMap commentsMap = threatRatingCommentsData.getThreatRatingCommentsMap();
 			String threatTargetKey = ThreatRatingCommentsData.createKey(getThreatRef(), getTargetRef());
-			commentsMap.put(threatTargetKey, getTextArea().getText());
+			commentsMap.putUserString(threatTargetKey, getTextArea().getText());
 			CommandSetObjectData setComment = new CommandSetObjectData(threatRatingCommentsData.getRef(), threatRatingCommentsData.getThreatRatingCommentsMapTag(), commentsMap.toString());
 			getProject().executeCommand(setComment);
 		}
