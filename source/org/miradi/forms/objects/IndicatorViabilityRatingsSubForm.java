@@ -41,6 +41,6 @@ public class IndicatorViabilityRatingsSubForm extends FieldPanelSpec
 	
 	private void createThreshholdField(ChoiceItem choiceItem)
 	{
-		addLabelAndFieldsWithLabels(choiceItem.getLabel(), Indicator.getObjectType(), new String[]{Indicator.TAG_INDICATOR_THRESHOLDS_MAP, Indicator.TAG_THRESHOLD_DETAILS});
+		addLabelAndFieldsWithLabels(choiceItem.getLabel(), Indicator.getObjectType(), new String[]{Indicator.TAG_THRESHOLDS_MAP, Indicator.TAG_THRESHOLD_DETAILS_MAP});
 	}
 }
