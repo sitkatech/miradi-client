@@ -22,9 +22,7 @@ package org.miradi.utils;
 import java.io.File;
 
 import javax.swing.JFileChooser;
-import javax.swing.filechooser.FileFilter;
 
-import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
@@ -34,34 +32,6 @@ abstract public class MiradiFileSaveChooser extends AbstractFileChooser
 	public MiradiFileSaveChooser(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse);
-	}
-
-	public File displayChooser() throws CommandFailedException
-	{
-		
-		JFileChooser dlg = new JFileChooser(currentDirectory);
-
-		dlg.setDialogTitle(getDialogTitleText());
-		FileFilter[] filters = getFileFilter();
-		for (int i=0; i<filters.length; ++i)
-		{
-			dlg.addChoosableFileFilter(filters[i]);
-		}
-		
-		dlg.setDialogType(getDialogType());
-		dlg.setApproveButtonToolTipText(getApproveButtonToolTipText());
-		if (dlg.showDialog(getMainWindow(), getApproveButtonText()) != JFileChooser.APPROVE_OPTION)
-			return null;
-
-		File chosen = dlg.getSelectedFile();
-		chosen = getFileWithExtension(dlg, chosen);
-		chosen = doCustomWork(chosen);
-		if (chosen == null)
-			return null;
-	
-		currentDirectory = chosen.getParent();
-		return chosen;
-
 	}
 
 	@Override
