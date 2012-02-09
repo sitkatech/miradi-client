@@ -50,7 +50,7 @@ abstract public class MiradiFileSaveChooser extends AbstractFileChooser
 		
 		dlg.setDialogType(JFileChooser.CUSTOM_DIALOG);
 		dlg.setApproveButtonToolTipText(getApproveButtonToolTipText());
-		if (dlg.showDialog(getMainWindow(), getDialogApprovelButtonText()) != JFileChooser.APPROVE_OPTION)
+		if (dlg.showDialog(getMainWindow(), getApproveButtonText()) != JFileChooser.APPROVE_OPTION)
 			return null;
 
 		File chosen = dlg.getSelectedFile();
@@ -80,7 +80,7 @@ abstract public class MiradiFileSaveChooser extends AbstractFileChooser
 		return EAM.substitute(EAM.text("TT|Save %s File"), getUiExtensionTag());
 	}
 
-	public String getDialogApprovelButtonText()
+	public String getApproveButtonText()
 	{
 		return EAM.substitute(EAM.text("Save %s"), getUiExtensionTag());
 	}
