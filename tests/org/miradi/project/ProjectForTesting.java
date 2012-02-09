@@ -1065,7 +1065,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		indicatorIds.add(createAndPopulateIndicator(kea).getId());
 		indicatorIds.add(createAndPopulateIndicator(kea).getId());
 		Indicator indicatorWithoutThreshold = createAndPopulateIndicator(kea);
-		fillObjectUsingCommand(indicatorWithoutThreshold, Indicator.TAG_INDICATOR_THRESHOLD, "");
+		fillObjectUsingCommand(indicatorWithoutThreshold, Indicator.TAG_INDICATOR_THRESHOLDS_MAP, "");
 		indicatorIds.add(indicatorWithoutThreshold.getId());
 		
 		fillObjectUsingCommand(kea, KeyEcologicalAttribute.TAG_INDICATOR_IDS, indicatorIds);
@@ -1095,7 +1095,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		threshold.put(StatusQuestion.FAIR, "fair text");
 		threshold.put(StatusQuestion.GOOD, "good text");
 		threshold.put(StatusQuestion.VERY_GOOD, "very good text");
-		fillObjectUsingCommand(indicator, Indicator.TAG_INDICATOR_THRESHOLD, threshold.toString());
+		fillObjectUsingCommand(indicator, Indicator.TAG_INDICATOR_THRESHOLDS_MAP, threshold.toString());
 		
 		CodeToUserStringMap thresholdDetails = new CodeToUserStringMap();
 		thresholdDetails.put(StatusQuestion.POOR, "poor details");

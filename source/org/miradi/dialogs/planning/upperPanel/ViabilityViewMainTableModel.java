@@ -291,7 +291,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 			Indicator indicator = (Indicator)baseObject;
 			final CodeToUserStringMap stringMap = indicator.getThresholdsMap().getCodeToUserStringMap();
 			stringMap.put(Integer.toString(thresholdColumn), value.toString());
-			setValueUsingCommand(baseObject.getRef(), Indicator.TAG_INDICATOR_THRESHOLD, stringMap.toString());
+			setValueUsingCommand(baseObject.getRef(), Indicator.TAG_INDICATOR_THRESHOLDS_MAP, stringMap.toString());
 		}
 		if (isIndicatorRatingSourceColumn(row, column))
 		{
@@ -354,7 +354,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		if(tag.equals(Indicator.TAG_RATING_SOURCE) && isViabilityIndicator((Indicator) baseObject))
 			return StaticQuestionManager.getQuestion(RatingSourceQuestion.class).findChoiceByCode(data);
 		
-		if (tag.equals(Indicator.TAG_INDICATOR_THRESHOLD))
+		if (tag.equals(Indicator.TAG_INDICATOR_THRESHOLDS_MAP))
 		{
 			int threasholdColumn = calculateRatingCodeFromColumn(column);
 			String threashold = ((Indicator)baseObject).getThresholdsMap().getCodeToUserStringMap().get(Integer.toString(threasholdColumn));
@@ -538,7 +538,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 	{
 		for (int columnIndex = 0; columnIndex < COLUMN_TAGS_FOR_INDICATORS.length; ++columnIndex)
 		{
-			if (COLUMN_TAGS_FOR_INDICATORS[columnIndex].equals(Indicator.TAG_INDICATOR_THRESHOLD))
+			if (COLUMN_TAGS_FOR_INDICATORS[columnIndex].equals(Indicator.TAG_INDICATOR_THRESHOLDS_MAP))
 				return columnIndex;
 		}
 		
@@ -564,10 +564,10 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		BaseObject.TAG_EMPTY,
 		Indicator.PSEUDO_TAG_STATUS_VALUE,
 		BaseObject.TAG_EMPTY,
-		Indicator.TAG_INDICATOR_THRESHOLD,
-		Indicator.TAG_INDICATOR_THRESHOLD,
-		Indicator.TAG_INDICATOR_THRESHOLD,
-		Indicator.TAG_INDICATOR_THRESHOLD,
+		Indicator.TAG_INDICATOR_THRESHOLDS_MAP,
+		Indicator.TAG_INDICATOR_THRESHOLDS_MAP,
+		Indicator.TAG_INDICATOR_THRESHOLDS_MAP,
+		Indicator.TAG_INDICATOR_THRESHOLDS_MAP,
 		Indicator.TAG_RATING_SOURCE,
 		BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
 	};
