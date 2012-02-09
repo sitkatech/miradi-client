@@ -357,9 +357,9 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		if (tag.equals(Indicator.TAG_THRESHOLDS_MAP))
 		{
 			int threasholdColumn = calculateRatingCodeFromColumn(column);
-			String threashold = ((Indicator)baseObject).getThresholdsMap().getCodeToUserStringMap().get(Integer.toString(threasholdColumn));
+			String threshold = ((Indicator)baseObject).getThresholdsMap().getCodeToUserStringMap().get(Integer.toString(threasholdColumn));
 			
-			return new TaglessChoiceItem(threashold);
+			return new TaglessChoiceItem(threshold);
 		}
 		
 		return new TaglessChoiceItem(data);
