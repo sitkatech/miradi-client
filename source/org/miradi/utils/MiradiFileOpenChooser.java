@@ -53,6 +53,9 @@ abstract public class MiradiFileOpenChooser extends AbstractFileChooser
 
 		File chosen = dlg.getSelectedFile();
 		chosen = getFileWithExtension(dlg, chosen);
+		chosen = doCustomWork(chosen);
+		if (chosen == null)
+			return null;
 
 		currentDirectory = chosen.getParent();
 		return chosen;

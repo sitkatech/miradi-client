@@ -58,13 +58,14 @@ abstract public class MiradiFileSaveChooser extends AbstractFileChooser
 		chosen = doCustomWork(chosen);
 		if (chosen == null)
 			return null;
-		
+	
 		currentDirectory = chosen.getParent();
 		return chosen;
 
 	}
 
-	private File doCustomWork(final File chosen)
+	@Override
+	protected File doCustomWork(final File chosen)
 	{
 		if (chosen.exists())
 		{
