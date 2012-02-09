@@ -65,7 +65,7 @@ public class Indicator extends BaseObject
 		return new ORefList(Task.getObjectType(), getMethodIds());
 	}
 	
-	public CodeToUserStringMapData getThresholdMap()
+	public CodeToUserStringMapData getThresholdsMap()
 	{
 		return (CodeToUserStringMapData)getField(TAG_INDICATOR_THRESHOLD);
 	}
