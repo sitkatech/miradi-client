@@ -68,4 +68,6 @@ abstract public class AbstractFileChooser
 	abstract protected String getDialogTitleText();
 
 	private MainWindow mainWindow;
+	
+	protected static String currentDirectory;
 }
