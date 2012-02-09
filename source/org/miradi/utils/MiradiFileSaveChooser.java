@@ -29,14 +29,11 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
 
-public abstract class MiradiFileSaveChooser
+abstract public class MiradiFileSaveChooser
 {
-
-	MainWindow mainWindow;
-
-	MiradiFileSaveChooser(MainWindow mainWindow)
+	public MiradiFileSaveChooser(MainWindow mainWindowToUse)
 	{
-		this.mainWindow = mainWindow;
+		mainWindow = mainWindowToUse;
 	}
 
 	public File displayChooser() throws CommandFailedException
@@ -122,6 +119,7 @@ public abstract class MiradiFileSaveChooser
 	
 	public abstract String getUiExtensionTag();
 	
+	private MainWindow mainWindow;
 	private static String currentDirectory;
 	
 	public static final String INVALID_PROJECT_FILE_NAME_MESSAGE = EAM.text("File name must contain only alpha numeric and/or '_' characters.");
