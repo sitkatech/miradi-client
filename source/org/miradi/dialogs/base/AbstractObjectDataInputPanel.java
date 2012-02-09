@@ -43,6 +43,7 @@ import org.martus.swing.UiLabel;
 import org.miradi.commands.CommandDeleteObject;
 import org.miradi.dialogfields.AnalysisLevelsChooserField;
 import org.miradi.dialogfields.CodeListPopupWithDescriptionPanelField;
+import org.miradi.dialogfields.CodeToUserStringMapMultiLineEditor;
 import org.miradi.dialogfields.EditableCodeListField;
 import org.miradi.dialogfields.IndicatorRelevancyOverrideListField;
 import org.miradi.dialogfields.ObjectCheckBoxField;
@@ -73,9 +74,7 @@ import org.miradi.dialogfields.ReadOnlyCodeListField;
 import org.miradi.dialogfields.SingleCodeEditableField;
 import org.miradi.dialogfields.StrategyGoalOverrideListField;
 import org.miradi.dialogfields.StrategyObjectiveOverrideListField;
-import org.miradi.dialogfields.CodeToUserStringMapMultiLineEditor;
 import org.miradi.dialogfields.StringMapProjectResourceFilterEditorField;
-import org.miradi.dialogfields.CodeToStringMapEditorField;
 import org.miradi.dialogs.fieldComponents.PanelFieldLabel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.fieldComponents.PanelTitledBorder;
@@ -452,7 +451,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ObjectDataInputField createStringCodeListField(ORef refToUse, String tagToUse, String mapKeyCodeToUse, ChoiceQuestion choiceQuestionToUse) throws Exception
 	{
-		return new CodeCodeListMapEditorField(getProject(), refToUse, tagToUse, choiceQuestionToUse, mapKeyCodeToUse);
+		return new CodeToCodeListMapEditorField(getProject(), refToUse, tagToUse, choiceQuestionToUse, mapKeyCodeToUse);
 	}
 	
 	public ObjectDataInputField createDateChooserField(String tag)
@@ -595,9 +594,9 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return new AnalysisLevelsChooserField(getProject(), refToUse, tagToUse, question);
 	}
 	
-	public ObjectDataInputField createStringMapWorkPlanBudgetColumnCodeListEditor(int objectType, String tagToUse, ChoiceQuestion question)
+	public ObjectDataInputField createWorkPlanBudgetColumnCodeListEditor(int objectType, String tagToUse, ChoiceQuestion question)
 	{
-		return new CodeToStringMapEditorField(getProject(), getRefForType(objectType), tagToUse, question, TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
+		return new CodeToCodeListMapEditorField(getProject(), getRefForType(objectType), tagToUse, question, TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
 	}
 	
 	public ObjectDataInputField createStringMapProjectResourceFilterCodeListEditor(int objectType, String tagToUse, ChoiceQuestion question)
