@@ -44,7 +44,7 @@ public class StringMapMultiLineEditor extends ObjectScrollingMultilineInputField
 			
 		try
 		{
-			return getUpdateObjectStringMap(super.getText());
+			return getUpdatedObjectStringMap(super.getText());
 		}
 		catch(ParseException e)
 		{
@@ -54,7 +54,7 @@ public class StringMapMultiLineEditor extends ObjectScrollingMultilineInputField
 		}
 	}
 
-	private String getUpdateObjectStringMap(String newValue) throws ParseException
+	private String getUpdatedObjectStringMap(String newValue) throws ParseException
 	{
 		String mapAsString = getProject().getObjectData(getORef(), getTag());
 		CodeToUserStringMap stringMap = new CodeToUserStringMap(mapAsString);
@@ -84,7 +84,7 @@ public class StringMapMultiLineEditor extends ObjectScrollingMultilineInputField
 	{
 		try
 		{
-			setText(getUpdateObjectStringMap(textFronPopupEditor));
+			setText(getUpdatedObjectStringMap(textFronPopupEditor));
 		}
 		catch (Exception e)
 		{
