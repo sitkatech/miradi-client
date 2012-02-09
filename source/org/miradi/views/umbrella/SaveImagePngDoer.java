@@ -26,14 +26,14 @@ import java.io.OutputStream;
 import javax.imageio.ImageIO;
 
 import org.miradi.utils.MiradiFileSaveChooser;
-import org.miradi.utils.EAMPNGFileChooser;
+import org.miradi.utils.PngFileChooser;
 
 public class SaveImagePngDoer extends AbstractImageSaverDoer
 {
 	@Override
 	protected MiradiFileSaveChooser createFileChooser()
 	{
-		return new EAMPNGFileChooser(getMainWindow());
+		return new PngFileChooser(getMainWindow());
 	}
 	
 	@Override
