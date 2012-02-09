@@ -23,7 +23,6 @@ package org.miradi.views.reports;
 import java.io.File;
 import java.io.FileOutputStream;
 
-import javax.swing.JFileChooser;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
@@ -34,12 +33,10 @@ import javax.xml.transform.stream.StreamSource;
 import org.martus.util.UnicodeStringReader;
 import org.martus.util.UnicodeStringWriter;
 import org.miradi.main.EAM;
-import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.XslTemplate;
-import org.miradi.utils.GenericMiradiFileFilter;
+import org.miradi.utils.FileSaveChooserWithUserDefinedFileFilter;
 import org.miradi.utils.XmlUtilities2;
-import org.miradi.utils.XslOutputFileFilter;
 import org.miradi.views.ObjectsDoer;
 import org.miradi.xml.wcs.XmpzXmlExporter;
 import org.w3c.dom.Document;
@@ -66,13 +63,12 @@ public class RunXlsTemplateDoer extends ObjectsDoer
 		String xlsTemplate = selectedObject.getData(XslTemplate.TAG_XSL_TEMPLATE);
 		xlsTemplate = XmlUtilities2.getXmlDecoded(xlsTemplate);
 		
-		final String fileExtensionAsString = selectedObject.getData(XslTemplate.TAG_FILE_EXTENSION);
-		XslOutputFileFilter fileFilter = new XslOutputFileFilter(fileExtensionAsString);
+		final String extension = selectedObject.getData(XslTemplate.TAG_FILE_EXTENSION);
 		
-		transform(xlsTemplate, fileFilter);
+		transform(xlsTemplate, extension);
 	}
 	
-	private void transform(final String xslTemplate, GenericMiradiFileFilter fileFilter) throws Exception 
+	private void transform(final String xslTemplate, final String extensionToUse) throws Exception 
 	{
 		final InputSource projectXmlInputSource = getExportedProjectXmlAsString(); 
 
@@ -82,8 +78,9 @@ public class RunXlsTemplateDoer extends ObjectsDoer
 		TransformerFactory transformerFactory = TransformerFactory.newInstance();
 		final StreamSource xslStreamSource = new StreamSource(new UnicodeStringReader(xslTemplate));
 		Transformer transformer = transformerFactory.newTransformer(xslStreamSource);
-
-		final File outputFile = getUserChosenFile(getMainWindow(), EAM.text("Select Output File"), EAM.text("Save"), fileFilter);
+		
+		FileSaveChooserWithUserDefinedFileFilter fileChooser = new FileSaveChooserWithUserDefinedFileFilter(getMainWindow(), extensionToUse);
+		final File outputFile = fileChooser.displayChooser();
 		if (outputFile != null)
 		{				
 			transformer.transform(new DOMSource(doc), new StreamResult(new FileOutputStream(outputFile)));
@@ -107,19 +104,5 @@ public class RunXlsTemplateDoer extends ObjectsDoer
 		{
 			projectWriter.close();
 		}
-	}
-
-	private static File getUserChosenFile(final MainWindow mainWindowToUse, final String diaglogTitle, final String buttonText, final GenericMiradiFileFilter fileFilter)
-	{
-		JFileChooser fileChooser = new JFileChooser();
-		if (fileFilter != null)
-			fileChooser.setFileFilter(fileFilter);
-		
-		fileChooser.setDialogTitle(diaglogTitle);
-		fileChooser.setDialogType(JFileChooser.CUSTOM_DIALOG);
-		if (fileChooser.showDialog(mainWindowToUse, buttonText) != JFileChooser.APPROVE_OPTION)
-			return null;
-	
-		return fileChooser.getSelectedFile();
 	}
 }
