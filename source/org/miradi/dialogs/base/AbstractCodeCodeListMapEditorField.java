@@ -82,5 +82,5 @@ abstract public class AbstractCodeCodeListMapEditorField extends AbstractStringS
 	
 	abstract protected AbstractStringToStringMap createCurrentStringKeyMap() throws Exception;
 	abstract protected AbstractStringToStringMap createStringKeyMap(String StringMapAsString) throws Exception;
-	abstract protected void put(AbstractStringToStringMap existingMap, String key, String value);
+	abstract protected void put(AbstractStringToStringMap existingMap, String key, String value) throws Exception;
 }
