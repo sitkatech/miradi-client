@@ -24,7 +24,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 import org.miradi.utils.MiradiFileSaveChooser;
-import org.miradi.utils.EAMJPGFileChooser;
+import org.miradi.utils.JpgFileChooser;
 
 import com.sun.image.codec.jpeg.JPEGCodec;
 import com.sun.image.codec.jpeg.JPEGEncodeParam;
@@ -35,7 +35,7 @@ public class SaveImageJPEGDoer extends AbstractImageSaverDoer
 	@Override
 	protected MiradiFileSaveChooser createFileChooser()
 	{
-		return new EAMJPGFileChooser(getMainWindow());
+		return new JpgFileChooser(getMainWindow());
 	}
 	
 	@Override

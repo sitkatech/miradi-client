@@ -23,9 +23,9 @@ import javax.swing.filechooser.FileFilter;
 
 import org.miradi.main.MainWindow;
 
-public class EAMJPGFileChooser extends MiradiFileSaveChooser
+public class JpgFileChooser extends MiradiFileSaveChooser
 {
-	public EAMJPGFileChooser(MainWindow mainWindow)
+	public JpgFileChooser(MainWindow mainWindow)
 	{
 		super(mainWindow);
 	}
