@@ -100,8 +100,6 @@ abstract public class MiradiFileSaveChooser extends AbstractFileChooser
 	
 	public abstract String getUiExtensionTag();
 	
-	private static String currentDirectory;
-	
 	public static final String INVALID_PROJECT_FILE_NAME_MESSAGE = EAM.text("File name must contain only alpha numeric and/or '_' characters.");
 	public static final String PROJECT_FILE_NOT_FOUND = EAM.text("File could not be created, this can be due to bad characters in file name.");
 }
