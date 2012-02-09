@@ -102,7 +102,7 @@ abstract public class ObjectData
 		return false;
 	}
 	
-	public boolean isCodeToStringMapData()
+	public boolean isCodeToUserStringMapData()
 	{
 		return false;
 	}
