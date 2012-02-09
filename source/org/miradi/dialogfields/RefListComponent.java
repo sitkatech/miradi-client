@@ -39,6 +39,13 @@ public class RefListComponent extends AbstractDataValueListComponent
 	@Override
 	public String getText()
 	{
+		ORefList refList = getRefList();
+		
+		return refList.toString();
+	}
+
+	private ORefList getRefList()
+	{
 		ORefList refList = new ORefList();
 		Set<ChoiceItem> choices = choiceItemToToggleButtonMap.keySet();
 		for(ChoiceItem choiceItem : choices)
@@ -49,8 +56,7 @@ public class RefListComponent extends AbstractDataValueListComponent
 				refList.add(ORef.createFromString(choiceItem.getCode()));
 			}
 		}
-		
-		return refList.toString();
+		return refList;
 	}
 	
 	@Override
