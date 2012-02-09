@@ -40,8 +40,8 @@ abstract public class TestAbstractStringMap extends MiradiTestCase
 		String value1 = new String("RoleA");
 		String key2 = new String("B");
 		String value2 = new String("RoleB");
-		list.put(key1, value1);
-		list.put(key2, value2);
+		list.rawPut(key1, value1);
+		list.rawPut(key2, value2);
 		assertEquals("wrong size?", 2, list.size());
 		assertEquals("bad get 1?", value1, list.get(key1));
 		assertEquals("bad get 2?", value2, list.get(key2));
@@ -55,9 +55,9 @@ abstract public class TestAbstractStringMap extends MiradiTestCase
 		assertEquals(list.hashCode(), identical.hashCode());
 		
 		AbstractStringToStringMap different = createAbstractMap();
-		different.put("A", list.get("A"));
-		different.put("C", list.get("C"));
-		different.put("B", list.get("B"));
+		different.rawPut("A", list.get("A"));
+		different.rawPut("C", list.get("C"));
+		different.rawPut("B", list.get("B"));
 		assertEquals(true, list.equals(different));
 		assertEquals(list.hashCode(), different.hashCode());
 		assertNotEquals("didn't check type?", list, new Object());
@@ -69,9 +69,9 @@ abstract public class TestAbstractStringMap extends MiradiTestCase
 	protected AbstractStringToStringMap createMapWithSampleData()
 	{
 		AbstractStringToStringMap list = createAbstractMap();
-		list.put("A", "RoleA");
-		list.put("B", "RoleB");
-		list.put("C", "RoleC");
+		list.rawPut("A", "RoleA");
+		list.rawPut("B", "RoleB");
+		list.rawPut("C", "RoleC");
 		return list;
 	}
 	
@@ -98,7 +98,7 @@ abstract public class TestAbstractStringMap extends MiradiTestCase
 		String[] keys = new String[] { new String("1"), new String("19"), new String("3"), };
 		AbstractStringToStringMap list = createAbstractMap();
 		for(int i = 0; i < values.length; ++i)
-			list.put(keys[i], values[i]);
+			list.rawPut(keys[i], values[i]);
 		for(int i = 0; i < values.length; ++i)
 			assertEquals("Couldn't find " + i + "?", values[i], list.get(keys[i]));
 		assertEquals("Found non-existant?", null, list.find(new String("Role27")));

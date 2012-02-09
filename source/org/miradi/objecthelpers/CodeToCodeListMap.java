@@ -59,12 +59,12 @@ public class CodeToCodeListMap extends AbstractStringToStringMap
 
 	public void putCodeList(String key, CodeList codes)
 	{
-		put(key, codes.toString());
+		rawPut(key, codes.toString());
 	}
 
 	public void putRefList(String key, ORefList refs)
 	{
-		put(key, refs.toString());
+		rawPut(key, refs.toString());
 	}
 
 	@Override

@@ -65,7 +65,7 @@ abstract public class AbstractStringToStringMap
 		while (iterator.hasNext())
 		{
 			String key = (String)iterator.next();
-			put(key, (String)array.get(key));
+			rawPut(key, (String)array.get(key));
 		}
 	}
 	
@@ -103,11 +103,6 @@ abstract public class AbstractStringToStringMap
 		data.put(code, object);
 	}
 	
-	public void put(String code, String object)
-	{
-		rawPut(code, object);
-	}
-
 	@Override
 	public int hashCode()
 	{

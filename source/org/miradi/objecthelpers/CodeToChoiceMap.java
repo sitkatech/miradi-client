@@ -48,7 +48,7 @@ public class CodeToChoiceMap extends AbstractStringToStringMap
 	
 	public void putChoiceCode(String code, String choiceCode)
 	{
-		put(code, choiceCode);
+		rawPut(code, choiceCode);
 	}
 
 	@Override

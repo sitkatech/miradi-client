@@ -47,7 +47,7 @@ public class CodeToUserStringMap extends AbstractCodeToStringMap
 	
 	public void putUserString(String code, String newValue)
 	{
-		put(code, newValue);
+		rawPut(code, newValue);
 	}
 
 	@Override
