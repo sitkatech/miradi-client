@@ -46,6 +46,11 @@ public class CodeToChoiceMap extends AbstractStringToStringMap
 		super(mapAsJsonString);
 	}
 	
+	public void putChoiceCode(String code, String choiceCode)
+	{
+		put(code, choiceCode);
+	}
+
 	@Override
 	protected String getMapTag()
 	{
