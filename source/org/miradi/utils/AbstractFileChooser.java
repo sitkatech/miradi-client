@@ -54,6 +54,11 @@ abstract public class AbstractFileChooser
 		return chosen;
 	}
 	
+	protected File doCustomWork(final File chosen)
+	{
+		return chosen;
+	}
+	
 	protected MainWindow getMainWindow()
 	{
 		return mainWindow;
