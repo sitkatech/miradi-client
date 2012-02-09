@@ -42,7 +42,7 @@ public class WorkPlanColumnConfigurationEditorPanel extends ObjectDataInputPanel
 		
 		PanelTitleLabel label = new PanelTitleLabel(EAM.text("Column groups"));
 		ChoiceQuestion columnConfigurationQuestion = getProject().getQuestion(WorkPlanColumnConfigurationQuestion.class);
-		addFieldWithCustomLabel(createStringMapWorkPlanBudgetColumnCodeListEditor(orefToUse.getObjectType(), TableSettings.TAG_TABLE_SETTINGS_MAP, columnConfigurationQuestion), label);
+		addFieldWithCustomLabel(createWorkPlanBudgetColumnCodeListEditor(orefToUse.getObjectType(), TableSettings.TAG_TABLE_SETTINGS_MAP, columnConfigurationQuestion), label);
 		
 		updateFieldsFromProject();
 	}

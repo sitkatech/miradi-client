@@ -595,7 +595,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return new AnalysisLevelsChooserField(getProject(), refToUse, tagToUse, question);
 	}
 	
-	public ObjectDataInputField createStringMapWorkPlanBudgetColumnCodeListEditor(int objectType, String tagToUse, ChoiceQuestion question)
+	public ObjectDataInputField createWorkPlanBudgetColumnCodeListEditor(int objectType, String tagToUse, ChoiceQuestion question)
 	{
 		return new CodeToStringMapEditorField(getProject(), getRefForType(objectType), tagToUse, question, TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
 	}
