@@ -298,11 +298,11 @@ public class MigrationsOlderThanMiradiVersion2
 				String threatRatingCommentsKey = createThreatRatingCommentsKey(factorLinkJson);
 				
 				String simpleThreatRatingComment = factorLinkJson.optString("SimpleThreatRatingComment");
-				simpleThreatRatingCommentsMap.rawPutForLegacyMigrations(threatRatingCommentsKey, simpleThreatRatingComment);
+				simpleThreatRatingCommentsMap.rawPutForLegacyMigrationsAndTestCases(threatRatingCommentsKey, simpleThreatRatingComment);
 				removeCommentsField(factorLinkJsonFile, factorLinkJson, "SimpleThreatRatingComment");
 				
 				String stressThreatRatingComment = factorLinkJson.optString("Comment");
-				stressThreatRatingCommentsMap.rawPutForLegacyMigrations(threatRatingCommentsKey, stressThreatRatingComment);
+				stressThreatRatingCommentsMap.rawPutForLegacyMigrationsAndTestCases(threatRatingCommentsKey, stressThreatRatingComment);
 				removeCommentsField(factorLinkJsonFile, factorLinkJson, "Comment");
 				
 				writeJsonFile(factorLinkJsonFile, factorLinkJson);
