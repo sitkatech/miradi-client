@@ -36,6 +36,7 @@ import org.miradi.forms.objects.FormFieldCodeListData;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.CodeToUserStringMapData;
 import org.miradi.objectdata.ObjectData;
+import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
@@ -255,7 +256,9 @@ public class RtfFormExporter
 		ChoiceQuestion question = getProject().getQuestion(StatusQuestion.class);
 		ChoiceItem choiceItem = question.findChoiceByLabel(formConstant.getConstant());
 		
-		return stringMapData.getCodeToUserStringMap().get(choiceItem.getCode());
+		CodeToUserStringMap map = stringMapData.getCodeToUserStringMap();
+		String key = choiceItem.getCode();
+		return map.get(key);
 	}
 
 	private String getFieldLabel(FormFieldLabel formFieldLabel)
