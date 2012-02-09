@@ -100,12 +100,12 @@ abstract public class AbstractStringToStringMap
 
 	public void rawPutForLegacyMigrationsAndTestCases(String code, String object)
 	{
-		put(code, object);
+		data.put(code, object);
 	}
 	
 	public void put(String code, String object)
 	{
-		data.put(code, object);
+		rawPutForLegacyMigrationsAndTestCases(code, object);
 	}
 
 	@Override
