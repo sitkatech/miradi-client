@@ -1099,6 +1099,11 @@ abstract public class BaseObject
 		addField(new CodeToUserStringMapData(tag));
 	}
 	
+	protected void createCodeToCodeMapField(String tag)
+	{
+		addField(new CodeToCodeMapData(tag));
+	}
+	
 	protected void createCodeToCodeListMapField(String tag)
 	{
 		addField(new CodeToCodeListMapData(tag));

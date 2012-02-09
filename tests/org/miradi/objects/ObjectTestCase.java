@@ -37,6 +37,7 @@ import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.CodeListData;
 import org.miradi.objectdata.CodeToChoiceMapData;
 import org.miradi.objectdata.CodeToCodeListMapData;
+import org.miradi.objectdata.CodeToCodeMapData;
 import org.miradi.objectdata.CodeToUserStringMapData;
 import org.miradi.objectdata.DateData;
 import org.miradi.objectdata.DateRangeData;
@@ -46,14 +47,18 @@ import org.miradi.objectdata.IdListData;
 import org.miradi.objectdata.IntegerData;
 import org.miradi.objectdata.NumberData;
 import org.miradi.objectdata.ORefData;
-import org.miradi.objectdata.RefListData;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objectdata.PointListData;
 import org.miradi.objectdata.PseudoQuestionData;
 import org.miradi.objectdata.PseudoStringData;
+import org.miradi.objectdata.RefListData;
 import org.miradi.objectdata.RefListListData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objectdata.TagListData;
+import org.miradi.objecthelpers.CodeToChoiceMap;
+import org.miradi.objecthelpers.CodeToCodeListMap;
+import org.miradi.objecthelpers.CodeToCodeMap;
+import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -61,9 +66,6 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.RelevancyOverrideSetData;
-import org.miradi.objecthelpers.CodeToChoiceMap;
-import org.miradi.objecthelpers.CodeToCodeListMap;
-import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.project.ProjectLoader;
@@ -252,6 +254,14 @@ public class ObjectTestCase extends TestCaseWithProject
 			randomCodes.add("SomeCodeA");
 			randomCodes.add("SomeCodeB");
 			map.put("SomeKey", randomCodes.toString());
+			
+			return map.toString();
+		}
+		else if (field instanceof CodeToCodeMapData)
+		{
+			CodeToCodeMap map = new CodeToCodeMap();
+			map.put("SomeKey", "SomeCode");
+			map.put("AnotherKey", "AnotherCode");
 			
 			return map.toString();
 		}
