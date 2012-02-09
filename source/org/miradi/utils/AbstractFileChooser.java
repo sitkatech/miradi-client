@@ -27,7 +27,7 @@ import javax.swing.filechooser.FileFilter;
 
 import org.miradi.main.MainWindow;
 
-public class AbstractFileChooser
+abstract public class AbstractFileChooser
 {
 	public AbstractFileChooser(MainWindow mainWindowToUse)
 	{
@@ -58,6 +58,8 @@ public class AbstractFileChooser
 	{
 		return mainWindow;
 	}
+	
+	abstract protected FileFilter[] getFileFilter();
 
 	private MainWindow mainWindow;
 }

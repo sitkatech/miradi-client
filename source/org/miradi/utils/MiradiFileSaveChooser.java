@@ -95,8 +95,6 @@ abstract public class MiradiFileSaveChooser extends AbstractFileChooser
 		return EAM.text("This will replace the existing file.");
 	}
 	
-	public abstract FileFilter[] getFileFilter();
-	
 	public abstract String getUiExtensionTag();
 	
 	private static String currentDirectory;
