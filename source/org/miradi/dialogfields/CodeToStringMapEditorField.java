@@ -37,7 +37,8 @@ public class CodeToStringMapEditorField extends AbstractCodeCodeListMapEditorFie
 	@Override
 	protected AbstractStringToStringMap createCurrentStringKeyMap() throws Exception
 	{
-		return new CodeToUserStringMap(getProject().getObjectData(getORef(), getTag()));
+		String mapAsString = getProject().getObjectData(getORef(), getTag());
+		return new CodeToUserStringMap(mapAsString);
 	}
 
 	@Override
