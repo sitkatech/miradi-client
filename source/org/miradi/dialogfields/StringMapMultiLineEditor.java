@@ -82,11 +82,11 @@ public class StringMapMultiLineEditor extends ObjectScrollingMultilineInputField
 	}
 
 	@Override
-	protected void setTextFromPopup(String textFronPopupEditor)
+	protected void setTextFromPopup(String textFromPopupEditor)
 	{
 		try
 		{
-			setText(getUpdatedObjectStringMap(textFronPopupEditor));
+			setText(getUpdatedObjectStringMap(textFromPopupEditor));
 		}
 		catch (Exception e)
 		{
