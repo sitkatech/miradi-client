@@ -36,9 +36,7 @@ abstract public class AbstractFileChooser
 	
 	public File displayChooser()
 	{
-		
 		JFileChooser dlg = new JFileChooser(currentDirectory);
-
 		dlg.setDialogTitle(getDialogTitleText());
 		FileFilter[] filters = getFileFilter();
 		for (int i=0; i<filters.length; ++i)
@@ -58,8 +56,8 @@ abstract public class AbstractFileChooser
 			return null;
 
 		currentDirectory = chosen.getParent();
-		return chosen;
 
+		return chosen;
 	}
 	
 	public static File getFileWithExtension(JFileChooser fileChooser, File chosen)
