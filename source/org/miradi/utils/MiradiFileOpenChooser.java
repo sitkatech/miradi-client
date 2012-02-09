@@ -57,28 +57,8 @@ abstract public class MiradiFileOpenChooser extends AbstractFileChooser
 		currentDirectory = chosen.getParent();
 		return chosen;
 
-	}
+	}	
 
-	public static File getFileWithExtension(JFileChooser fileChooser, File chosen)
-	{
-		FileFilter rawFileFilter = fileChooser.getFileFilter();
-		if (!fileChooser.getAcceptAllFileFilter().equals(rawFileFilter))
-		{
-			MiradiFileFilter fileFilter = (MiradiFileFilter)rawFileFilter;
-			chosen = getFileNameWithExtension(chosen, fileFilter.getFileExtension());
-		}
-		
-		return chosen;
-	}
-
-	public static File getFileNameWithExtension(File chosen, String fileExtension)
-	{
-		if (!chosen.getName().toLowerCase().endsWith(fileExtension.toLowerCase()))
-			chosen = new File(chosen.getAbsolutePath() + fileExtension);
-		
-		return chosen;
-	}
-	
 	abstract protected String getApproveButtonText();
 	abstract protected String getApproveButtonToolTipText();
 	abstract protected FileFilter[] getFileFilter();
