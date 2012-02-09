@@ -44,7 +44,8 @@ public class StringMapMultiLineEditor extends ObjectScrollingMultilineInputField
 			
 		try
 		{
-			return getUpdatedObjectStringMap(super.getText());
+			String newValue = super.getText();
+			return getUpdatedObjectStringMap(newValue);
 		}
 		catch(ParseException e)
 		{
