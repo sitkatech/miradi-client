@@ -44,15 +44,15 @@ abstract public class AbstractFileChooser
 		if (dialog.showDialog(getMainWindow(), getApproveButtonText()) != JFileChooser.APPROVE_OPTION)
 			return null;
 
-		File chosen = dialog.getSelectedFile();
-		chosen = getFileWithExtension(dialog, chosen);
-		chosen = doCustomWork(chosen);
-		if (chosen == null)
+		File selectedFile = dialog.getSelectedFile();
+		selectedFile = getFileWithExtension(dialog, selectedFile);
+		selectedFile = doCustomWork(selectedFile);
+		if (selectedFile == null)
 			return null;
 
-		currentDirectory = chosen.getParent();
+		currentDirectory = selectedFile.getParent();
 
-		return chosen;
+		return selectedFile;
 	}
 
 	private void addFileFilters(JFileChooser dialog)
