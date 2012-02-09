@@ -73,7 +73,7 @@ import org.miradi.dialogfields.ReadOnlyCodeListField;
 import org.miradi.dialogfields.SingleCodeEditableField;
 import org.miradi.dialogfields.StrategyGoalOverrideListField;
 import org.miradi.dialogfields.StrategyObjectiveOverrideListField;
-import org.miradi.dialogfields.StringMapMultiLineEditor;
+import org.miradi.dialogfields.CodeToUserStringMapMultiLineEditor;
 import org.miradi.dialogfields.StringMapProjectResourceFilterEditorField;
 import org.miradi.dialogfields.CodeToStringMapEditorField;
 import org.miradi.dialogs.fieldComponents.PanelFieldLabel;
@@ -447,7 +447,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ObjectDataInputField createStringMapField(ORef refToUse, String tag, String code) throws Exception
 	{
-		return new StringMapMultiLineEditor(getMainWindow(), refToUse, tag, code);
+		return new CodeToUserStringMapMultiLineEditor(getMainWindow(), refToUse, tag, code);
 	}
 	
 	public ObjectDataInputField createStringCodeListField(ORef refToUse, String tagToUse, String mapKeyCodeToUse, ChoiceQuestion choiceQuestionToUse) throws Exception
