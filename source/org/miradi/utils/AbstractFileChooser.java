@@ -20,6 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
+import java.io.File;
+
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileFilter;
+
 import org.miradi.main.MainWindow;
 
 public class AbstractFileChooser
@@ -27,6 +32,26 @@ public class AbstractFileChooser
 	public AbstractFileChooser(MainWindow mainWindowToUse)
 	{
 		mainWindow = mainWindowToUse;
+	}
+	
+	public static File getFileWithExtension(JFileChooser fileChooser, File chosen)
+	{
+		FileFilter rawFileFilter = fileChooser.getFileFilter();
+		if (!fileChooser.getAcceptAllFileFilter().equals(rawFileFilter))
+		{
+			MiradiFileFilter fileFilter = (MiradiFileFilter)rawFileFilter;
+			chosen = getFileNameWithExtension(chosen, fileFilter.getFileExtension());
+		}
+		
+		return chosen;
+	}
+	
+	public static File getFileNameWithExtension(File chosen, String fileExtension)
+	{
+		if (!chosen.getName().toLowerCase().endsWith(fileExtension.toLowerCase()))
+			chosen = new File(chosen.getAbsolutePath() + fileExtension);
+		
+		return chosen;
 	}
 	
 	protected MainWindow getMainWindow()
