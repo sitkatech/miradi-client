@@ -61,7 +61,7 @@ abstract public class MiradiFileOpenChooser extends AbstractFileChooser
 
 	abstract protected String getApproveButtonText();
 	abstract protected String getApproveButtonToolTipText();
-	abstract protected FileFilter[] getFileFilter();
+
 	abstract protected String getDialogTitleText();
 
 	private static String currentDirectory;
