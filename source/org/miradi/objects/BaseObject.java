@@ -326,13 +326,14 @@ abstract public class BaseObject
 		Set<String> tags = getTags();
 		for (String tag : tags)
 		{
-			if (getField(tag).isPseudoField())
+			ObjectData field = getField(tag);
+			if (field.isPseudoField())
 				continue;
 			
 			String value = json.optString(tag);
 			try
 			{
-				if (getField(tag).isUserText())
+				if (field.isUserText())
 					setHtmlDataFromNonHtml(tag, value);
 				else
 					setData(tag, value);
