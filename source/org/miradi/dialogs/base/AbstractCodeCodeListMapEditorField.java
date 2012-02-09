@@ -79,13 +79,8 @@ abstract public class AbstractCodeCodeListMapEditorField extends AbstractStringS
 		}
 	}
 
-	private void put(AbstractStringToStringMap existingMap, String key,
-			String value)
-	{
-		existingMap.put(key, value);
-	}
 	
 	abstract protected AbstractStringToStringMap createCurrentStringKeyMap() throws Exception;
-	
 	abstract protected AbstractStringToStringMap createStringKeyMap(String StringMapAsString) throws Exception;
+	abstract protected void put(AbstractStringToStringMap existingMap, String key, String value);
 }
