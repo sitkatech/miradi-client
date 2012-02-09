@@ -56,8 +56,8 @@ public class StringMapMultiLineEditor extends ObjectScrollingMultilineInputField
 
 	private String getUpdateObjectStringMap(String newValue) throws ParseException
 	{
-		String data = getProject().getObjectData(getORef(), getTag());
-		CodeToUserStringMap stringMap = new CodeToUserStringMap(data);
+		String mapAsString = getProject().getObjectData(getORef(), getTag());
+		CodeToUserStringMap stringMap = new CodeToUserStringMap(mapAsString);
 		stringMap.put(code, newValue);
 
 		return stringMap.toString();
