@@ -55,7 +55,7 @@ public class StringMapProjectResourceFilterEditorField extends RefListEditorFiel
 	private String getStringMapAsString() throws Exception
 	{
 		CodeToCodeListMap existingMap = new CodeToCodeListMap(getProject().getObjectData(getORef(), getTag()));
-		existingMap.put(TableSettings.WORK_PLAN_PROJECT_RESOURCE_FILTER_CODELIST_KEY, getComponentText());
+		existingMap.putRefList(TableSettings.WORK_PLAN_PROJECT_RESOURCE_FILTER_CODELIST_KEY, getComponentRefList());
 		
 		return existingMap.toString();
 	}

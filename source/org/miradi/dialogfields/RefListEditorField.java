@@ -25,6 +25,7 @@ import javax.swing.event.ListSelectionListener;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.MiradiScrollPane;
@@ -68,6 +69,11 @@ public class RefListEditorField extends ObjectDataInputField implements ListSele
 	protected String getComponentText()
 	{
 		return refListEditor.getText();
+	}
+	
+	protected ORefList getComponentRefList()
+	{
+		return refListEditor.getRefList();
 	}
 
 	@Override
