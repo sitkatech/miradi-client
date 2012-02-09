@@ -145,13 +145,13 @@ abstract public class AbstractStringToStringMap
 		return data.containsKey(code);
 	}
 	
-	public String find(String object)
+	public String find(String keyToFind)
 	{
 		Iterator<String> iterator = data.keySet().iterator();
 		while (iterator.hasNext())
 		{
 			String key = iterator.next();
-			if (object.equals(data.get(key)))
+			if (keyToFind.equals(data.get(key)))
 				return key;
 		}
 		return null;
