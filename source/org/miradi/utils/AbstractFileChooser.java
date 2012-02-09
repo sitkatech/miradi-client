@@ -36,21 +36,21 @@ abstract public class AbstractFileChooser
 	
 	public File displayChooser()
 	{
-		JFileChooser dlg = new JFileChooser(currentDirectory);
-		dlg.setDialogTitle(getDialogTitleText());
+		JFileChooser dialog = new JFileChooser(currentDirectory);
+		dialog.setDialogTitle(getDialogTitleText());
 		FileFilter[] filters = getFileFilter();
 		for (int i=0; i<filters.length; ++i)
 		{
-			dlg.addChoosableFileFilter(filters[i]);
+			dialog.addChoosableFileFilter(filters[i]);
 		}
 		
-		dlg.setDialogType(getDialogType());
-		dlg.setApproveButtonToolTipText(getApproveButtonToolTipText());
-		if (dlg.showDialog(getMainWindow(), getApproveButtonText()) != JFileChooser.APPROVE_OPTION)
+		dialog.setDialogType(getDialogType());
+		dialog.setApproveButtonToolTipText(getApproveButtonToolTipText());
+		if (dialog.showDialog(getMainWindow(), getApproveButtonText()) != JFileChooser.APPROVE_OPTION)
 			return null;
 
-		File chosen = dlg.getSelectedFile();
-		chosen = getFileWithExtension(dlg, chosen);
+		File chosen = dialog.getSelectedFile();
+		chosen = getFileWithExtension(dialog, chosen);
 		chosen = doCustomWork(chosen);
 		if (chosen == null)
 			return null;
