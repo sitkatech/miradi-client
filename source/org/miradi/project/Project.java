@@ -690,7 +690,7 @@ public class Project
 		budgetColumnCodes.add(WorkPlanColumnConfigurationQuestion.META_BUDGET_DETAIL_COLUMN_CODE);
 		
 		CodeToCodeListMap newTableSettingsMap = new CodeToCodeListMap();
-		newTableSettingsMap.put(TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY, budgetColumnCodes.toString());
+		newTableSettingsMap.putCodeList(TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY, budgetColumnCodes);
 		
 		CommandSetObjectData setColumnCodes = new CommandSetObjectData(newTableSettings, TableSettings.TAG_TABLE_SETTINGS_MAP, newTableSettingsMap.toString());
 		executeWithoutRecording(setColumnCodes);
