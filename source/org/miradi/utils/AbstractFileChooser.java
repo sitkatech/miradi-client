@@ -89,7 +89,7 @@ abstract public class AbstractFileChooser
 		return file;
 	}
 	
-	protected MainWindow getMainWindow()
+	private MainWindow getMainWindow()
 	{
 		return mainWindow;
 	}
