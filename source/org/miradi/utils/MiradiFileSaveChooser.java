@@ -35,19 +35,19 @@ abstract public class MiradiFileSaveChooser extends AbstractFileChooser
 	}
 
 	@Override
-	protected File doCustomWork(final File chosen)
+	protected File doCustomWork(final File file)
 	{
-		if (chosen.exists())
+		if (file.exists())
 		{
 			String title = getDialogOverwriteTitleText();
 			String[] body = { getDialogOverwriteBodyText() };
 			if (!EAM.confirmOverwriteDialog(title, body))
 				return null;
 		
-			chosen.delete();
+			file.delete();
 		}
 		
-		return chosen;
+		return file;
 	}
 
 	@Override
