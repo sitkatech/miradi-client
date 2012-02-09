@@ -39,7 +39,8 @@ public class CodeToCodeListMapEditorField extends AbstractCodeToCodeListMapEdito
 	@Override
 	protected AbstractStringToStringMap createCurrentStringKeyMap() throws Exception
 	{
-		return new CodeToCodeListMap(getProject().getObjectData(getORef(), getTag()));
+		String mapAsString = getProject().getObjectData(getORef(), getTag());
+		return new CodeToCodeListMap(mapAsString);
 	}
 
 	@Override
