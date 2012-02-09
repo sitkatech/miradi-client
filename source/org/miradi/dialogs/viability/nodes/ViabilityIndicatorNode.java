@@ -112,7 +112,7 @@ public class ViabilityIndicatorNode extends TreeTableNode
 		if(tag.equals(Indicator.TAG_RATING_SOURCE) && isViabilityIndicator())
 			return new RatingSourceQuestion().findChoiceByCode(data);
 		
-		if (tag.equals(Indicator.TAG_INDICATOR_THRESHOLD))
+		if (tag.equals(Indicator.TAG_INDICATOR_THRESHOLDS_MAP))
 		{
 			int threasholdColumn = (column + 1) - getFirstIndexOfThreshold();
 			String threashold = indicator.getThresholdsMap().getCodeToUserStringMap().get(Integer.toString(threasholdColumn));
@@ -132,7 +132,7 @@ public class ViabilityIndicatorNode extends TreeTableNode
 	{
 		for (int i = 0; i < COLUMN_TAGS.length; ++i)
 		{
-			if (COLUMN_TAGS[i].equals(Indicator.TAG_INDICATOR_THRESHOLD))
+			if (COLUMN_TAGS[i].equals(Indicator.TAG_INDICATOR_THRESHOLDS_MAP))
 				return i;
 		}
 		
@@ -169,10 +169,10 @@ public class ViabilityIndicatorNode extends TreeTableNode
 		Indicator.PSEUDO_TAG_STATUS_VALUE,
 		Indicator.TAG_EMPTY,
 		
-		Indicator.TAG_INDICATOR_THRESHOLD,
-		Indicator.TAG_INDICATOR_THRESHOLD,
-		Indicator.TAG_INDICATOR_THRESHOLD,
-		Indicator.TAG_INDICATOR_THRESHOLD,
+		Indicator.TAG_INDICATOR_THRESHOLDS_MAP,
+		Indicator.TAG_INDICATOR_THRESHOLDS_MAP,
+		Indicator.TAG_INDICATOR_THRESHOLDS_MAP,
+		Indicator.TAG_INDICATOR_THRESHOLDS_MAP,
 		
 		Indicator.TAG_RATING_SOURCE,
 		BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
