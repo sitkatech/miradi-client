@@ -64,16 +64,16 @@ abstract public class AbstractFileChooser
 		}
 	}
 	
-	public static File getFileWithExtension(JFileChooser fileChooser, File chosen)
+	public static File getFileWithExtension(JFileChooser fileChooser, File file)
 	{
 		FileFilter rawFileFilter = fileChooser.getFileFilter();
 		if (!fileChooser.getAcceptAllFileFilter().equals(rawFileFilter))
 		{
 			MiradiFileFilter fileFilter = (MiradiFileFilter)rawFileFilter;
-			chosen = getFileNameWithExtension(chosen, fileFilter.getFileExtension());
+			file = getFileNameWithExtension(file, fileFilter.getFileExtension());
 		}
 		
-		return chosen;
+		return file;
 	}
 	
 	private static File getFileNameWithExtension(File chosen, String fileExtension)
