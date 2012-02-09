@@ -46,7 +46,7 @@ public class AbstractFileChooser
 		return chosen;
 	}
 	
-	public static File getFileNameWithExtension(File chosen, String fileExtension)
+	private static File getFileNameWithExtension(File chosen, String fileExtension)
 	{
 		if (!chosen.getName().toLowerCase().endsWith(fileExtension.toLowerCase()))
 			chosen = new File(chosen.getAbsolutePath() + fileExtension);
