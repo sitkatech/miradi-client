@@ -58,11 +58,11 @@ public class CodeToCodeMap extends AbstractCodeToStringMap
 
 	public void putInteger(String code, int value)
 	{
-		put(code, Integer.toString(value));
+		rawPut(code, Integer.toString(value));
 	}
 
 	public void putCode(String keyCode, String valueCode)
 	{
-		put(keyCode, valueCode);
+		rawPut(keyCode, valueCode);
 	}
 }
