@@ -59,7 +59,7 @@ public class DashboardPoolImporter extends AbstractXmpzObjectImporter
 			}
 			
 			CodeList flagCodes = getFlagsCodeList(statusNode);
-			userFlagsMap.put(thirdLevelCode, flagCodes.toString());
+			userFlagsMap.putCodeList(thirdLevelCode, flagCodes);
 			
 			Node commentsNode = getImporter().getNode(statusNode, DASHBOARD_COMMENTS);
 			if (commentsNode != null)
