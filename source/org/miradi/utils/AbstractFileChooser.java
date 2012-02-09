@@ -64,6 +64,8 @@ abstract public class AbstractFileChooser
 	abstract protected String getApproveButtonText();
 	
 	abstract protected String getApproveButtonToolTipText();
+	
+	abstract protected String getDialogTitleText();
 
 	private MainWindow mainWindow;
 }

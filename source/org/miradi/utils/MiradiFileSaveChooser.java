@@ -70,6 +70,7 @@ abstract public class MiradiFileSaveChooser extends AbstractFileChooser
 
 	}
 
+	@Override
 	public String getDialogTitleText()
 	{
 		return EAM.substitute(EAM.text("Title|Save %s File"), getUiExtensionTag());
