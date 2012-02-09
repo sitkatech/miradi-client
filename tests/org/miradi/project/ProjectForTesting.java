@@ -1065,7 +1065,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		indicatorIds.add(createAndPopulateIndicator(kea).getId());
 		indicatorIds.add(createAndPopulateIndicator(kea).getId());
 		Indicator indicatorWithoutThreshold = createAndPopulateIndicator(kea);
-		fillObjectUsingCommand(indicatorWithoutThreshold, Indicator.TAG_INDICATOR_THRESHOLDS_MAP, "");
+		fillObjectUsingCommand(indicatorWithoutThreshold, Indicator.TAG_THRESHOLDS_MAP, "");
 		indicatorIds.add(indicatorWithoutThreshold.getId());
 		
 		fillObjectUsingCommand(kea, KeyEcologicalAttribute.TAG_INDICATOR_IDS, indicatorIds);
@@ -1095,14 +1095,14 @@ public class ProjectForTesting extends ProjectWithHelpers
 		threshold.put(StatusQuestion.FAIR, "fair text");
 		threshold.put(StatusQuestion.GOOD, "good text");
 		threshold.put(StatusQuestion.VERY_GOOD, "very good text");
-		fillObjectUsingCommand(indicator, Indicator.TAG_INDICATOR_THRESHOLDS_MAP, threshold.toString());
+		fillObjectUsingCommand(indicator, Indicator.TAG_THRESHOLDS_MAP, threshold.toString());
 		
 		CodeToUserStringMap thresholdDetails = new CodeToUserStringMap();
 		thresholdDetails.put(StatusQuestion.POOR, "poor details");
 		thresholdDetails.put(StatusQuestion.FAIR, "fair details");
 		thresholdDetails.put(StatusQuestion.GOOD, "good details");
 		thresholdDetails.put(StatusQuestion.VERY_GOOD, "very good details");
-		fillObjectUsingCommand(indicator, Indicator.TAG_THRESHOLD_DETAILS, thresholdDetails.toString());
+		fillObjectUsingCommand(indicator, Indicator.TAG_THRESHOLD_DETAILS_MAP, thresholdDetails.toString());
 		
 		fillObjectUsingCommand(indicator, Indicator.TAG_FUTURE_STATUS_RATING, StatusQuestion.GOOD);
 		fillObjectUsingCommand(indicator, Indicator.TAG_FUTURE_STATUS_DATE, "2020-01-23");

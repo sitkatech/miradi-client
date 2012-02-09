@@ -61,8 +61,8 @@ public class IndicatorViabilityRatingsSubPanel extends ObjectDataInputPanel
 		label.setOpaque(true);
 		label.setBackground(choiceItem.getColor());
 		
-		ObjectDataInputField mapField = createStringMapField(Indicator.getObjectType(), Indicator.TAG_INDICATOR_THRESHOLDS_MAP, choiceItem.getCode(), 10);
-		ObjectDataInputField detailsField = createStringMapField(Indicator.getObjectType(), Indicator.TAG_THRESHOLD_DETAILS, choiceItem.getCode(), 30);
+		ObjectDataInputField mapField = createStringMapField(Indicator.getObjectType(), Indicator.TAG_THRESHOLDS_MAP, choiceItem.getCode(), 10);
+		ObjectDataInputField detailsField = createStringMapField(Indicator.getObjectType(), Indicator.TAG_THRESHOLD_DETAILS_MAP, choiceItem.getCode(), 30);
 		addFieldsOnOneLine(label, new ObjectDataInputField[]{mapField, detailsField});
 	}
 

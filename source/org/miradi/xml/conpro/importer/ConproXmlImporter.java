@@ -547,7 +547,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		thresholds.put(StatusQuestion.FAIR, fairThreshold);
 		thresholds.put(StatusQuestion.GOOD, goodThreshold);
 		thresholds.put(StatusQuestion.VERY_GOOD, veryGoodThreshold);
-		setData(indicatorRef, Indicator.TAG_INDICATOR_THRESHOLDS_MAP, thresholds.toString());
+		setData(indicatorRef, Indicator.TAG_THRESHOLDS_MAP, thresholds.toString());
 	}
 
 	private void importKeyEcologicalAttributes(Node targetNode, ORef targetRef) throws Exception

@@ -67,12 +67,12 @@ public class Indicator extends BaseObject
 	
 	public CodeToUserStringMapData getThresholdsMap()
 	{
-		return (CodeToUserStringMapData)getField(TAG_INDICATOR_THRESHOLDS_MAP);
+		return (CodeToUserStringMapData)getField(TAG_THRESHOLDS_MAP);
 	}
 	
 	public CodeToUserStringMap getThresholdDetailsMap()
 	{
-		return getCodeToUserStringMapData(TAG_THRESHOLD_DETAILS);
+		return getCodeToUserStringMapData(TAG_THRESHOLD_DETAILS_MAP);
 	}
 	
 	@Override
@@ -132,7 +132,7 @@ public class Indicator extends BaseObject
 	public String getPseudoData(String fieldTag)
 	{
 		if(fieldTag.equals(PSEUDO_TAG_INDICATOR_THRESHOLD_VALUE))
-			return getChoiceItemData(TAG_INDICATOR_THRESHOLDS_MAP).getLabel();
+			return getChoiceItemData(TAG_THRESHOLDS_MAP).getLabel();
 			
 		if(fieldTag.equals(PSEUDO_TAG_TARGETS))
 			return getRelatedLabelsAsMultiLine(new TargetSet());
@@ -397,8 +397,8 @@ public class Indicator extends BaseObject
 		createUserTextField(TAG_SHORT_LABEL);
 		createChoiceField(TAG_PRIORITY, PriorityRatingQuestion.class);
 		createIdListField(TAG_METHOD_IDS, Task.getObjectType());
-		createCodeToUserStringMapField(TAG_INDICATOR_THRESHOLDS_MAP);
-		createCodeToUserStringMapField(TAG_THRESHOLD_DETAILS);
+		createCodeToUserStringMapField(TAG_THRESHOLDS_MAP);
+		createCodeToUserStringMapField(TAG_THRESHOLD_DETAILS_MAP);
 		createChoiceField(TAG_RATING_SOURCE, RatingSourceQuestion.class);
 		createRefListField(TAG_MEASUREMENT_REFS);
 		createUserTextField(TAG_DETAIL);
@@ -429,8 +429,8 @@ public class Indicator extends BaseObject
 	public static final String TAG_PRIORITY = "Priority";
 	
 	public final static String TAG_METHOD_IDS = "TaskIds";
-	public static final String TAG_INDICATOR_THRESHOLDS_MAP = "IndicatorThresholds";
-	public static final String TAG_THRESHOLD_DETAILS = "ThresholdDetails";
+	public static final String TAG_THRESHOLDS_MAP = "IndicatorThresholds";
+	public static final String TAG_THRESHOLD_DETAILS_MAP = "ThresholdDetails";
 	public static final String TAG_RATING_SOURCE = "RatingSource";
 	public static final String TAG_MEASUREMENT_REFS = "MeasurementRefs";
 	public static final String TAG_DETAIL = "Detail";
