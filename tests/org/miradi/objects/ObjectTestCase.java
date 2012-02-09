@@ -238,13 +238,13 @@ public class ObjectTestCase extends TestCaseWithProject
 		else if(field instanceof CodeToUserStringMapData)
 		{
 			CodeToUserStringMap list = new CodeToUserStringMap();
-			list.put("A","RolaA");
+			list.putUserString("A","RolaA");
 			return list.toString();
 		}
 		else if (field instanceof CodeToChoiceMapData)
 		{
 			CodeToChoiceMap map = new CodeToChoiceMap();
-			map.put("a", "code");
+			map.putChoiceCode("a", "code");
 			return map.toString();
 		}
 		else if (field instanceof CodeToCodeListMapData)
@@ -253,15 +253,15 @@ public class ObjectTestCase extends TestCaseWithProject
 			CodeList randomCodes = new CodeList();
 			randomCodes.add("SomeCodeA");
 			randomCodes.add("SomeCodeB");
-			map.put("SomeKey", randomCodes.toString());
+			map.putCodeList("SomeKey", randomCodes);
 			
 			return map.toString();
 		}
 		else if (field instanceof CodeToCodeMapData)
 		{
 			CodeToCodeMap map = new CodeToCodeMap();
-			map.put("SomeKey", "SomeCode");
-			map.put("AnotherKey", "AnotherCode");
+			map.putCode("SomeKey", "SomeCode");
+			map.putCode("AnotherKey", "AnotherCode");
 			
 			return map.toString();
 		}

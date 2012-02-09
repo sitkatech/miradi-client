@@ -137,7 +137,7 @@ public class TestDashboardStatusMapsCache extends TestCaseWithProject
 			String thirdLevelCode = allThirdLEvelCodes.get(index);
 			String progressCode = getProgressCodeWithSpecialCases(thirdLevelCode);
 			
-			emptyMap.put(thirdLevelCode, progressCode);
+			emptyMap.putChoiceCode(thirdLevelCode, progressCode);
 		}
 		
 		return emptyMap;
@@ -163,7 +163,7 @@ public class TestDashboardStatusMapsCache extends TestCaseWithProject
 	private void putUserChoice(final String thirdLevelCode, final String progressCode) throws Exception
 	{
 		CodeToChoiceMap userMap = new CodeToChoiceMap();
-		userMap.put(thirdLevelCode, progressCode);
+		userMap.putChoiceCode(thirdLevelCode, progressCode);
 		getDashboard().setData(Dashboard.TAG_PROGRESS_CHOICE_MAP, userMap.toString());
 	}
 	
