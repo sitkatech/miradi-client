@@ -289,9 +289,9 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		{
 			int thresholdColumn = calculateRatingCodeFromColumn(column);
 			Indicator indicator = (Indicator)baseObject;
-			final CodeToUserStringMap stringMap = indicator.getThresholdsMap().getCodeToUserStringMap();
-			stringMap.put(Integer.toString(thresholdColumn), value.toString());
-			setValueUsingCommand(baseObject.getRef(), Indicator.TAG_THRESHOLDS_MAP, stringMap.toString());
+			final CodeToUserStringMap map = indicator.getThresholdsMap().getCodeToUserStringMap();
+			map.put(Integer.toString(thresholdColumn), value.toString());
+			setValueUsingCommand(baseObject.getRef(), Indicator.TAG_THRESHOLDS_MAP, map.toString());
 		}
 		if (isIndicatorRatingSourceColumn(row, column))
 		{
