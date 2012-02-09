@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-09 09:10-0600\n"
+"POT-Creation-Date: 2012-02-09 10:31-0600\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -3608,7 +3608,7 @@ msgstr "Үзэсгэлэн худалдаа"
 msgid "Feb"
 msgstr "2 дугаар сар"
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:126
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:90
 msgid ""
 "File could not be created, this can be due to bad characters in file name."
 msgstr ""
@@ -3619,7 +3619,7 @@ msgstr ""
 msgid "File exists: Cannot overwrite a non project folder"
 msgstr "Файл бий: Төслийн бус фолдэрийг шинэчлэн бичиж болохгүй байна."
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:125
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:89
 msgid "File name must contain only alpha numeric and/or '_' characters."
 msgstr "Файлын нэр зөвхөн альфа тоо ба/ '_'тэмдэгтүүдийг агуулах ёстой."
 
@@ -5980,7 +5980,7 @@ msgstr "Саванн- Чийглэн Саванн"
 msgid "Save"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:105
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:74
 msgid "Save %s"
 msgstr "Хадгалах %s"
 
@@ -7196,7 +7196,7 @@ msgstr ""
 msgid "TT|Run the Selected Report Template"
 msgstr "TT|Тайлангийн сонгосон загварыг гаргах"
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:100
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:68
 msgid "TT|Save %s File"
 msgstr "TT|Файлыг %s хадгалах"
 
@@ -7772,7 +7772,7 @@ msgstr ""
 "зүйлийн агуулгаар солих болно. Үүнийг солих уу?"
 
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:303
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:115
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:84
 msgid "This will replace the existing file."
 msgstr "Энэ нь байгаа файлыг солих болно."
 
@@ -8009,7 +8009,7 @@ msgid "Title|Other Orgs"
 msgstr "Гарчиг|Бусад Байгууллагууд"
 
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:302
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:110
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:79
 msgid "Title|Overwrite existing file?"
 msgstr "Гарчиг|Одоогийн байгаа файлыг өөрчлөх үү?"
 
@@ -8037,7 +8037,7 @@ msgstr "Гарчиг|Нөөцийн Properties"
 msgid "Title|Results Chain Properties"
 msgstr "Гарчиг|Үр Дүнгийн Гинжин Холбооны Properties"
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:95
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:62
 msgid "Title|Save %s File"
 msgstr "Гарчиг|Файлыг %s Хадгалах"
 

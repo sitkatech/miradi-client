@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-09 09:10-0600\n"
+"POT-Creation-Date: 2012-02-09 10:31-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -3456,7 +3456,7 @@ msgstr "一般"
 msgid "Feb"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:126
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:90
 msgid ""
 "File could not be created, this can be due to bad characters in file name."
 msgstr "文件无法创建，这可能由文件名中的坏字符导致的。 \t\t"
@@ -3465,7 +3465,7 @@ msgstr "文件无法创建，这可能由文件名中的坏字符导致的。 \t
 msgid "File exists: Cannot overwrite a non project folder"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:125
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:89
 msgid "File name must contain only alpha numeric and/or '_' characters."
 msgstr "文件名只能包含文字数字和/或'_'字符。 \t\t"
 
@@ -5776,7 +5776,7 @@ msgstr "稀树草原-湿润稀树草原"
 msgid "Save"
 msgstr "保存 \t\t"
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:105
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:74
 msgid "Save %s"
 msgstr "保存 %s  \t\t"
 
@@ -6940,7 +6940,7 @@ msgstr ""
 msgid "TT|Run the Selected Report Template"
 msgstr "运行选定的报告模板"
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:100
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:68
 msgid "TT|Save %s File"
 msgstr "保存 %s 文件  \t\t"
 
@@ -7486,7 +7486,7 @@ msgstr ""
 "\t"
 
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:303
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:115
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:84
 msgid "This will replace the existing file."
 msgstr "这将会替换现有的文件。 \t\t"
 
@@ -7720,7 +7720,7 @@ msgid "Title|Other Orgs"
 msgstr "其它组织 \t\t"
 
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:302
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:110
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:79
 msgid "Title|Overwrite existing file?"
 msgstr "重写存在的文件？ \t\t"
 
@@ -7748,7 +7748,7 @@ msgstr "资源特性"
 msgid "Title|Results Chain Properties"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:95
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:62
 msgid "Title|Save %s File"
 msgstr "保存 %s 文件  \t\t"
 

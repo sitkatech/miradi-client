@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-09 09:10-0600\n"
+"POT-Creation-Date: 2012-02-09 10:31-0600\n"
 "PO-Revision-Date: 2011-04-05 11:46+0100\n"
 "Last-Translator: Emanuela Leonardi <e.leonardi@gmail.com>\n"
 "Language-Team: none\n"
@@ -3661,7 +3661,7 @@ msgstr "Équitable"
 msgid "Feb"
 msgstr "Fev"
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:126
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:90
 msgid ""
 "File could not be created, this can be due to bad characters in file name."
 msgstr ""
@@ -3672,7 +3672,7 @@ msgstr ""
 msgid "File exists: Cannot overwrite a non project folder"
 msgstr "Le fichier existe : impossible de remplacer un dossier hors projet"
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:125
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:89
 msgid "File name must contain only alpha numeric and/or '_' characters."
 msgstr ""
 "Le nom du fichier ne doit contenir que des caractères alphanumériques et/ou "
@@ -6077,7 +6077,7 @@ msgstr "Savane - Savane humide"
 msgid "Save"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:105
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:74
 msgid "Save %s"
 msgstr "Enregistrer %s"
 
@@ -7300,7 +7300,7 @@ msgstr ""
 msgid "TT|Run the Selected Report Template"
 msgstr "Exécuter le modèle de rapport sélectionné"
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:100
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:68
 msgid "TT|Save %s File"
 msgstr "Enregistrer fichier %s"
 
@@ -7902,7 +7902,7 @@ msgstr ""
 "contenus du facteur qui a été coupé/copié avant."
 
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:303
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:115
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:84
 msgid "This will replace the existing file."
 msgstr "Ceci va remplacer le fichier existant"
 
@@ -8138,7 +8138,7 @@ msgid "Title|Other Orgs"
 msgstr "Autres org."
 
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:302
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:110
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:79
 msgid "Title|Overwrite existing file?"
 msgstr "Remplacer le fichier existant?"
 
@@ -8166,7 +8166,7 @@ msgstr "Propriétés de la ressource"
 msgid "Title|Results Chain Properties"
 msgstr "Propriétés de la chaîne de résultats"
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:95
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:62
 msgid "Title|Save %s File"
 msgstr "Enregistrer %s fichier"
 
