@@ -27,9 +27,9 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.CodeToUserStringMap;
 
-public class StringMapMultiLineEditor extends ObjectScrollingMultilineInputField
+public class CodeToUserStringMapMultiLineEditor extends ObjectScrollingMultilineInputField
 {
-	public StringMapMultiLineEditor(MainWindow mainWindow, ORef refToUse, String tagToUse, String codeToUse) throws Exception
+	public CodeToUserStringMapMultiLineEditor(MainWindow mainWindow, ORef refToUse, String tagToUse, String codeToUse) throws Exception
 	{
 		super(mainWindow, refToUse, tagToUse, 50);
 		
