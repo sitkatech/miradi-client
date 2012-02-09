@@ -109,7 +109,7 @@ public class ColumnWidthSaver extends MouseAdapter
 		for (int tableColumn = 0; tableColumn < table.getColumnCount(); ++tableColumn)
 		{		
 			TableColumn column = table.getColumnModel().getColumn(tableColumn);
-			columnWidthMap.put(getColumnUniqueCode(tableColumn), Integer.toString(column.getWidth()));
+			columnWidthMap.putInteger(getColumnUniqueCode(tableColumn), column.getWidth());
 		}
 		
 		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), getUniqueTableIdentifier());

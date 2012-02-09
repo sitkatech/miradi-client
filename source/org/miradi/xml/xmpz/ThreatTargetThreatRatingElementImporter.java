@@ -78,7 +78,7 @@ public class ThreatTargetThreatRatingElementImporter extends AbstractXmpzObjectI
 			CodeToUserStringMap commentsMap = getThreatRatingCommentsMap(threatRatingNode, threatRatingCommentsData);
 			String threatTargetKey = ThreatRatingCommentsData.createKey(threatRef, targetRef);
 			
-			commentsMap.put(threatTargetKey, comments);
+			commentsMap.putUserString(threatTargetKey, comments);
 			String commentsMapTag = getCommentsMapTag(threatRatingNode);
 			getImporter().setData(threatRatingCommentsData, commentsMapTag, commentsMap.toString());
 		}

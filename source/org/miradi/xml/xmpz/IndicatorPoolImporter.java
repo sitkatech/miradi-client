@@ -76,10 +76,10 @@ public class IndicatorPoolImporter extends AbstractBaseObjectPoolImporter
 			{
 				String statusCode = statusCodeNode.getTextContent();
 				Node thresholdValueNode = getImporter().getNode(thrsholdNode, THRESHOLD_VALUE);
-				thresholdValues.put(statusCode, getImporter().getSafeNodeContent(thresholdValueNode));
+				thresholdValues.putUserString(statusCode, getImporter().getSafeNodeContent(thresholdValueNode));
 				
 				Node thresholdDetailsNode = getImporter().getNode(thrsholdNode, THRESHOLD_DETAILS);
-				thresholdDetails.put(statusCode, getImporter().getSafeNodeContent(thresholdDetailsNode));
+				thresholdDetails.putUserString(statusCode, getImporter().getSafeNodeContent(thresholdDetailsNode));
 			}			
 		}
 		
