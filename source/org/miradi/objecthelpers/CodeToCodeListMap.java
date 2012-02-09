@@ -62,6 +62,11 @@ public class CodeToCodeListMap extends AbstractStringToStringMap
 		put(key, codes.toString());
 	}
 
+	public void putRefList(String key, ORefList refs)
+	{
+		put(key, refs.toString());
+	}
+
 	@Override
 	protected String getMapTag()
 	{
