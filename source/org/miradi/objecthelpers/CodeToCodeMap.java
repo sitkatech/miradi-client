@@ -60,4 +60,9 @@ public class CodeToCodeMap extends AbstractCodeToStringMap
 	{
 		put(code, Integer.toString(value));
 	}
+
+	public void putCode(String keyCode, String valueCode)
+	{
+		put(keyCode, valueCode);
+	}
 }
