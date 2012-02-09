@@ -67,7 +67,7 @@ abstract public class AbstractCodeCodeListMapEditorField extends AbstractStringS
 			AbstractStringToStringMap existingMap = createCurrentStringKeyMap();
 			String key = getMapCode();
 			String value = super.getText();
-			existingMap.put(key, value);
+			put(existingMap, key, value);
 			
 			return existingMap.toString();
 		}
@@ -77,6 +77,12 @@ abstract public class AbstractCodeCodeListMapEditorField extends AbstractStringS
 			EAM.logException(e);
 			return "";
 		}
+	}
+
+	private void put(AbstractStringToStringMap existingMap, String key,
+			String value)
+	{
+		existingMap.put(key, value);
 	}
 	
 	abstract protected AbstractStringToStringMap createCurrentStringKeyMap() throws Exception;
