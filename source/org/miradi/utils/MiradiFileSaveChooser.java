@@ -41,7 +41,7 @@ abstract public class MiradiFileSaveChooser extends AbstractFileChooser
 		
 		JFileChooser dlg = new JFileChooser(currentDirectory);
 
-		dlg.setDialogTitle(getDialogApproveTitleText());
+		dlg.setDialogTitle(getDialogTitleText());
 		FileFilter[] filters = getFileFilter();
 		for (int i=0; i<filters.length; ++i)
 		{
@@ -70,7 +70,7 @@ abstract public class MiradiFileSaveChooser extends AbstractFileChooser
 
 	}
 
-	public String getDialogApproveTitleText()
+	public String getDialogTitleText()
 	{
 		return EAM.substitute(EAM.text("Title|Save %s File"), getUiExtensionTag());
 	}
