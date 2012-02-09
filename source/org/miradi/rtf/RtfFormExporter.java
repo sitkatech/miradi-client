@@ -229,7 +229,7 @@ public class RtfFormExporter
 			return createFromChoiceData(rawObjectData);
 		
 		if (rawObjectData.isCodeToUserStringMapData())
-			return createFromStringMapData((CodeToUserStringMapData) rawObjectData, formRow);
+			return createFromCodeToUserStringMapData((CodeToUserStringMapData) rawObjectData, formRow);
 	
 		return rawObjectData.get();
 	}
@@ -242,7 +242,7 @@ public class RtfFormExporter
 		return choiceItem.getLabel();
 	}
 	
-	private String createFromStringMapData(CodeToUserStringMapData stringMapData, FormRow formRow)
+	private String createFromCodeToUserStringMapData(CodeToUserStringMapData stringMapData, FormRow formRow)
 	{
 		if (formRow.getLeftFormItemsCount() == 0)
 			return "";
