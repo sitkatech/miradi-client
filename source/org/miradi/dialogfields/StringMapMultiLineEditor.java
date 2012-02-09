@@ -65,11 +65,11 @@ public class StringMapMultiLineEditor extends ObjectScrollingMultilineInputField
 	}
 	
 	@Override
-	public void setText(String newValue)
+	public void setText(String newMapAsString)
 	{
 		try
 		{
-			CodeToUserStringMap stringMap = new CodeToUserStringMap(newValue);
+			CodeToUserStringMap stringMap = new CodeToUserStringMap(newMapAsString);
 
 			super.setText(stringMap.get(code));
 		}
