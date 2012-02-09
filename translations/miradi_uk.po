@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-09 09:10-0600\n"
+"POT-Creation-Date: 2012-02-09 10:31-0600\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -3611,7 +3611,7 @@ msgstr "Задовільний"
 msgid "Feb"
 msgstr "Лютий"
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:126
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:90
 msgid ""
 "File could not be created, this can be due to bad characters in file name."
 msgstr ""
@@ -3621,7 +3621,7 @@ msgstr ""
 msgid "File exists: Cannot overwrite a non project folder"
 msgstr "Файли існують: Не можна перезаписати не проектну папку"
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:125
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:89
 msgid "File name must contain only alpha numeric and/or '_' characters."
 msgstr "Назва файла має містити тільки альфа цифрові і або  '_' символи."
 
@@ -5979,7 +5979,7 @@ msgstr "Саванна - волога саванна"
 msgid "Save"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:105
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:74
 msgid "Save %s"
 msgstr "Зберегти %s"
 
@@ -7173,7 +7173,7 @@ msgstr ""
 msgid "TT|Run the Selected Report Template"
 msgstr "TT|Запустити вибраний шаблон звіту"
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:100
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:68
 msgid "TT|Save %s File"
 msgstr "TT|Зберегти %s файл"
 
@@ -7745,7 +7745,7 @@ msgstr ""
 "вирізані або копійовані раніше. Ви впевнені, що хочете зробити це?"
 
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:303
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:115
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:84
 msgid "This will replace the existing file."
 msgstr "Це замінить існуючий файл."
 
@@ -7980,7 +7980,7 @@ msgid "Title|Other Orgs"
 msgstr "Title|Інші організації"
 
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:302
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:110
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:79
 msgid "Title|Overwrite existing file?"
 msgstr "Title|Перезаписати існуючий файл?"
 
@@ -8008,7 +8008,7 @@ msgstr "Title|Складові Ресурсу"
 msgid "Title|Results Chain Properties"
 msgstr "Title|Складові ланцюга результатів"
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:95
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:62
 msgid "Title|Save %s File"
 msgstr "Title|Зберегти %s файл"
 

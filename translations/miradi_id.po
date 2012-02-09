@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-09 09:10-0600\n"
+"POT-Creation-Date: 2012-02-09 10:31-0600\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -3555,7 +3555,7 @@ msgstr "Wajar"
 msgid "Feb"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:126
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:90
 msgid ""
 "File could not be created, this can be due to bad characters in file name."
 msgstr ""
@@ -3566,7 +3566,7 @@ msgstr ""
 msgid "File exists: Cannot overwrite a non project folder"
 msgstr "File yang ada: Tidak dapat menimpa folder nonproyek "
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:125
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:89
 msgid "File name must contain only alpha numeric and/or '_' characters."
 msgstr ""
 "Nama berkas harus mengandung huruf dan angka dan/atau karakter '_' saja. "
@@ -5938,7 +5938,7 @@ msgstr "Savana – Savana Basah"
 msgid "Save"
 msgstr ""
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:105
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:74
 msgid "Save %s"
 msgstr "Simpan %s "
 
@@ -7136,7 +7136,7 @@ msgstr ""
 msgid "TT|Run the Selected Report Template"
 msgstr "Jalankan Templat Laporan yang Terpilih"
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:100
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:68
 msgid "TT|Save %s File"
 msgstr "Simpan %s Berkas "
 
@@ -7709,7 +7709,7 @@ msgstr ""
 "disalin sebelumnya. Anda yakin ingin melakukan ini?: "
 
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:303
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:115
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:84
 msgid "This will replace the existing file."
 msgstr "Ini akan mengganti berkas yang ada. "
 
@@ -7944,7 +7944,7 @@ msgid "Title|Other Orgs"
 msgstr "Organisasi Lain "
 
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:302
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:110
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:79
 msgid "Title|Overwrite existing file?"
 msgstr "Tulis tindih berkas yang ada? "
 
@@ -7972,7 +7972,7 @@ msgstr "Sifat-sifat Sumber Daya "
 msgid "Title|Results Chain Properties"
 msgstr "Properti Rangkaian Hasil "
 
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:95
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:62
 msgid "Title|Save %s File"
 msgstr "Simpan %s Berkas "
 
