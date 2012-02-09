@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-08 16:31-0600\n"
+"POT-Creation-Date: 2012-02-09 09:10-0600\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -3760,7 +3760,7 @@ msgstr "Ausreichend"
 msgid "Feb"
 msgstr "Feb"
 
-#: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:128
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:126
 #, fuzzy
 msgid ""
 "File could not be created, this can be due to bad characters in file name."
@@ -3777,7 +3777,7 @@ msgstr ""
 "Datei besteht: Unmöglich einen Ordner zu überschreiben der kein "
 "Projektordner ist"
 
-#: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:127
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:125
 msgid "File name must contain only alpha numeric and/or '_' characters."
 msgstr ""
 "Dateiname darf nur Buchstaben, Ziffern und/oder Unterstriche enthalten."
@@ -6167,7 +6167,7 @@ msgid "Save"
 msgstr ""
 
 # wahrscheinlich hier "Speichere" und nicht "Speichern" da Code danach anzeigt, dass wahrscheinlich automatisch ein variabler Wert eingefügt wird
-#: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:108
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:105
 msgid "Save %s"
 msgstr "Speichere %s"
 
@@ -7412,7 +7412,7 @@ msgstr ""
 # "%s Datei speichern" -> wird zu -> "ProjektXYZ Datei speichern"
 # (je nach dem wie der Befehl im Prog umgesetzt wird)
 # -Felix
-#: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:103
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:100
 msgid "TT|Save %s File"
 msgstr "Speichere %s Datei"
 
@@ -8010,7 +8010,7 @@ msgid ""
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:303
-#: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:118
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:115
 msgid "This will replace the existing file."
 msgstr "Dies ersetzt die bereits bestehende Datei. "
 
@@ -8247,7 +8247,7 @@ msgid "Title|Other Orgs"
 msgstr "Andere Organisationen"
 
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:302
-#: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:113
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:110
 msgid "Title|Overwrite existing file?"
 msgstr "Möchten Sie die bestehende Datei ersetzen?"
 
@@ -8275,7 +8275,7 @@ msgstr "Eigenschaften - Ressource"
 msgid "Title|Results Chain Properties"
 msgstr "Eigenschaften - Ergebniswirkungskette "
 
-#: Miradi/source/org/miradi/utils/EAMFileSaveChooser.java:98
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:95
 msgid "Title|Save %s File"
 msgstr "Speichere %s Datei(en)"
 
