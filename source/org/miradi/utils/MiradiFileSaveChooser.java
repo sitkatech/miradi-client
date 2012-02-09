@@ -48,7 +48,7 @@ abstract public class MiradiFileSaveChooser extends AbstractFileChooser
 			dlg.addChoosableFileFilter(filters[i]);
 		}
 		
-		dlg.setDialogType(JFileChooser.CUSTOM_DIALOG);
+		dlg.setDialogType(getDialogType());
 		dlg.setApproveButtonToolTipText(getApproveButtonToolTipText());
 		if (dlg.showDialog(getMainWindow(), getApproveButtonText()) != JFileChooser.APPROVE_OPTION)
 			return null;
@@ -68,6 +68,12 @@ abstract public class MiradiFileSaveChooser extends AbstractFileChooser
 		currentDirectory = chosen.getParent();
 		return chosen;
 
+	}
+
+	@Override
+	protected int getDialogType()
+	{
+		return JFileChooser.CUSTOM_DIALOG;
 	}
 
 	@Override
