@@ -85,7 +85,7 @@ public class TestXmpzExporter extends TestCaseWithProject
 		Indicator indicator = getProject().createIndicator(kea);
 		
 		CodeToUserStringMap threshold = new CodeToUserStringMap();
-		threshold.put(StatusQuestion.POOR, "<>'\"&");
+		threshold.putUserString(StatusQuestion.POOR, "<>'\"&");
 		getProject().fillObjectUsingCommand(indicator, Indicator.TAG_THRESHOLDS_MAP, threshold.toString());
 		validateProject();
 	}
