@@ -340,7 +340,8 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 	private ChoiceItem getValueForIndicator(BaseObject baseObject, int row,	int column)
 	{
 		String tag = COLUMN_TAGS_FOR_INDICATORS[column];
-		if (tag.equals(Indicator.PSEUDO_TAG_STATUS_VALUE) && isViabilityIndicator((Indicator) baseObject))
+		Indicator indicator = (Indicator)baseObject;
+		if (tag.equals(Indicator.PSEUDO_TAG_STATUS_VALUE) && isViabilityIndicator(indicator))
 			return getStatusQuestion().findChoiceByCode(baseObject.getPseudoData(tag));
 		
 		if (tag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
@@ -351,15 +352,17 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		
 		String data = baseObject.getData(tag);
 		
-		if(tag.equals(Indicator.TAG_RATING_SOURCE) && isViabilityIndicator((Indicator) baseObject))
+		if(tag.equals(Indicator.TAG_RATING_SOURCE) && isViabilityIndicator(indicator))
 			return StaticQuestionManager.getQuestion(RatingSourceQuestion.class).findChoiceByCode(data);
 		
 		if (tag.equals(Indicator.TAG_THRESHOLDS_MAP))
 		{
 			int thresholdColumn = calculateRatingCodeFromColumn(column);
-			String threshold = ((Indicator)baseObject).getThresholdsMap().getCodeToUserStringMap().get(Integer.toString(thresholdColumn));
+			String key = Integer.toString(thresholdColumn);
+			CodeToUserStringMap map = indicator.getThresholdsMap().getCodeToUserStringMap();
+			String thresholdValue = map.get(key);
 			
-			return new TaglessChoiceItem(threshold);
+			return new TaglessChoiceItem(thresholdValue);
 		}
 		
 		return new TaglessChoiceItem(data);
