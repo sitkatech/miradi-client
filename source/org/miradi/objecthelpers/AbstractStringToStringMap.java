@@ -98,7 +98,7 @@ abstract public class AbstractStringToStringMap
 		return data.size();
 	}
 
-	public void add(String code, String object)
+	public void rawPutForLegacyMigrations(String code, String object)
 	{
 		put(code, object);
 	}
