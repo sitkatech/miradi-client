@@ -98,14 +98,14 @@ abstract public class AbstractStringToStringMap
 		return data.size();
 	}
 
-	public void rawPutForLegacyMigrationsAndTestCases(String code, String object)
+	public void rawPut(String code, String object)
 	{
 		data.put(code, object);
 	}
 	
 	public void put(String code, String object)
 	{
-		rawPutForLegacyMigrationsAndTestCases(code, object);
+		rawPut(code, object);
 	}
 
 	@Override
