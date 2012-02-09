@@ -71,7 +71,8 @@ public class StringMapMultiLineEditor extends ObjectScrollingMultilineInputField
 		{
 			CodeToUserStringMap stringMap = new CodeToUserStringMap(newMapAsString);
 
-			super.setText(stringMap.get(code));
+			String newValue = stringMap.get(code);
+			super.setText(newValue);
 		}
 		catch (Exception e)
 		{
