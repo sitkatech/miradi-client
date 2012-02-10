@@ -547,7 +547,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		thresholds.putUserString(StatusQuestion.FAIR, fairThreshold);
 		thresholds.putUserString(StatusQuestion.GOOD, goodThreshold);
 		thresholds.putUserString(StatusQuestion.VERY_GOOD, veryGoodThreshold);
-		setData(indicatorRef, Indicator.TAG_THRESHOLDS_MAP, thresholds.toString());
+		setData(indicatorRef, Indicator.TAG_THRESHOLDS_MAP, thresholds.toJsonString());
 	}
 
 	private void importKeyEcologicalAttributes(Node targetNode, ORef targetRef) throws Exception
@@ -738,7 +738,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 			stringRefMap.add(contextAttributeValue, xenodataRef);
 		}
 		
-		getProject().setObjectData(metadataRef, ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, stringRefMap.toString());
+		getProject().setObjectData(metadataRef, ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, stringRefMap.toJsonString());
 	}
 
 	private ORef findOrCreateXenodataObject() throws Exception
@@ -976,7 +976,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		CodeToUserStringMap threatRatingCommentsMap = threatRatingCommentsData.getThreatRatingCommentsMap();
 		threatRatingCommentsMap.putUserString(threatTargetKey, threatRatingComments);
 		String threatRatingCommentsTag = threatRatingCommentsData.getThreatRatingCommentsMapTag();
-		importField(threatRatingCommentsData.getRef(), threatRatingCommentsTag, threatRatingCommentsMap.toString());
+		importField(threatRatingCommentsData.getRef(), threatRatingCommentsTag, threatRatingCommentsMap.toJsonString());
 	}
 	
 	private void importField(Node node, String path, ORef ref, String tag) throws Exception

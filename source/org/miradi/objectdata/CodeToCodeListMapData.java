@@ -34,7 +34,7 @@ public class CodeToCodeListMapData extends ObjectData
 	@Override
 	public String get()
 	{
-		return getStringToCodeListMap().toString();
+		return getStringToCodeListMap().toJsonString();
 	}
 	
 	public CodeToCodeListMap getStringToCodeListMap()

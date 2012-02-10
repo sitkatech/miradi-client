@@ -98,7 +98,7 @@ public class ProjectSummaryImporter extends AbstractXmpzObjectImporter
 			stringRefMap.add(externalAppThatAssignedId, xenodataRef);
 		}
 		
-		getImporter().setData(getMetadataRef(), ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, stringRefMap.toString());
+		getImporter().setData(getMetadataRef(), ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, stringRefMap.toJsonString());
 	}
 }
 

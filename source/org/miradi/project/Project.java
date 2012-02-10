@@ -692,7 +692,7 @@ public class Project
 		CodeToCodeListMap newTableSettingsMap = new CodeToCodeListMap();
 		newTableSettingsMap.putCodeList(TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY, budgetColumnCodes);
 		
-		CommandSetObjectData setColumnCodes = new CommandSetObjectData(newTableSettings, TableSettings.TAG_TABLE_SETTINGS_MAP, newTableSettingsMap.toString());
+		CommandSetObjectData setColumnCodes = new CommandSetObjectData(newTableSettings, TableSettings.TAG_TABLE_SETTINGS_MAP, newTableSettingsMap.toJsonString());
 		executeWithoutRecording(setColumnCodes);
 	}
 

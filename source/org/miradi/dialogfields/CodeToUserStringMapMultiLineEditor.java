@@ -61,7 +61,7 @@ public class CodeToUserStringMapMultiLineEditor extends ObjectScrollingMultiline
 		CodeToUserStringMap stringMap = new CodeToUserStringMap(mapAsString);
 		stringMap.putUserString(code, newValue);
 
-		return stringMap.toString();
+		return stringMap.toJsonString();
 	}
 	
 	@Override

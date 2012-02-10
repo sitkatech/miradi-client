@@ -169,8 +169,7 @@ public class StringRefMap
 		return data.hashCode();
 	}
 	
-	@Override
-	public String toString()
+	public String toJsonString()
 	{
 		if(size() == 0)
 			return "";
@@ -178,7 +177,14 @@ public class StringRefMap
 		return toJson().toString();
 	}
 
+	@Override
+	public String toString()
+	{
+		throw new RuntimeException("toString should not be called for this class");
+	}
+
 	private static final String TAG_STRING_REF_MAP = "StringRefMap";
 
 	private HashMap<String, ORef> data;
+
 }

@@ -86,7 +86,7 @@ public class TestXmpzExporter extends TestCaseWithProject
 		
 		CodeToUserStringMap threshold = new CodeToUserStringMap();
 		threshold.putUserString(StatusQuestion.POOR, "<>'\"&");
-		getProject().fillObjectUsingCommand(indicator, Indicator.TAG_THRESHOLDS_MAP, threshold.toString());
+		getProject().fillObjectUsingCommand(indicator, Indicator.TAG_THRESHOLDS_MAP, threshold.toJsonString());
 		validateProject();
 	}
 	

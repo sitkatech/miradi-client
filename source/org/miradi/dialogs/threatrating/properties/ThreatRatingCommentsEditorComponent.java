@@ -123,7 +123,7 @@ public class ThreatRatingCommentsEditorComponent extends SavableField
 			CodeToUserStringMap commentsMap = threatRatingCommentsData.getThreatRatingCommentsMap();
 			String threatTargetKey = ThreatRatingCommentsData.createKey(getThreatRef(), getTargetRef());
 			commentsMap.putUserString(threatTargetKey, getTextArea().getText());
-			CommandSetObjectData setComment = new CommandSetObjectData(threatRatingCommentsData.getRef(), threatRatingCommentsData.getThreatRatingCommentsMapTag(), commentsMap.toString());
+			CommandSetObjectData setComment = new CommandSetObjectData(threatRatingCommentsData.getRef(), threatRatingCommentsData.getThreatRatingCommentsMapTag(), commentsMap.toJsonString());
 			getProject().executeCommand(setComment);
 		}
 		catch (Exception  e)

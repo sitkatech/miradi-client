@@ -53,7 +53,7 @@ public class ObjectStringMapInputField extends ObjectStringInputField
 			CodeToUserStringMap stringMap = new CodeToUserStringMap(mapAsString);
 			stringMap.putUserString(code, super.getText());
 			
-			return stringMap.toString();
+			return stringMap.toJsonString();
 		}
 		catch(ParseException e)
 		{

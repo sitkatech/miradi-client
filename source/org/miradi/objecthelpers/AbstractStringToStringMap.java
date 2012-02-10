@@ -109,30 +109,22 @@ abstract public class AbstractStringToStringMap
 		return data.hashCode();
 	}
 	
-	@Override
-	public String toString()
-	{
-		if(size() == 0)
-			return "";
-
-		return toJson().toString();
-	}
-	
 	public HashMap<String, String> toHashMap()
 	{
 		return data;
 	}
 	
-	public String get()
+	@Override
+	public String toString()
+	{
+		throw new RuntimeException("toString should not be called on this class");
+	}
+	
+	public String toJsonString()
 	{
 		if(size() == 0)
 			return "";
 		return toJson().toString();
-	}
-
-	public void set(String newValue) throws Exception
-	{
-		copyFromJson(new EnhancedJsonObject(newValue));
 	}
 
 	public boolean contains(String code)

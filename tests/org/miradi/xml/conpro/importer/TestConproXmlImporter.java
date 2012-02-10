@@ -182,7 +182,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		StringRefMap refMap = new StringRefMap();
 		ORef nonExistingXenodataObjectRef = new ORef(Xenodata.getObjectType(), new BaseId(999999));
 		refMap.add(ConProMiradiXml.CONPRO_CONTEXT, nonExistingXenodataObjectRef);
-		projectToExport.fillObjectUsingCommand(projectToExport.getMetadata().getRef(), ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, refMap.toString());
+		projectToExport.fillObjectUsingCommand(projectToExport.getMetadata().getRef(), ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, refMap.toJsonString());
 		try
 		{
 			ProjectForTesting projectToImportInto = createProjectWithNoXenodata(PROJECT_FOR_IMPORTING_NAME_TAG);

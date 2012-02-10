@@ -70,7 +70,7 @@ public class EnsureProjectMetadataRefersToCorrectXenodataObject
 		
 		StringRefMap stringRefMap = new StringRefMap();
 		stringRefMap.add(CONPRO_PROJECT_ID_XENODATA_KEY, new ORef(XENODATA_TYPE, xenodataIds.get(0)));
-		projectMetadataJson.put(XENODATA_STRING_REF_MAP_TAG, stringRefMap.toString());
+		projectMetadataJson.put(XENODATA_STRING_REF_MAP_TAG, stringRefMap.toJsonString());
 		DataUpgrader.writeJson(projectMetadataJsonFile, projectMetadataJson);
 	}
 

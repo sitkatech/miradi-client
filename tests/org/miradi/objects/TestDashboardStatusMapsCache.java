@@ -164,7 +164,7 @@ public class TestDashboardStatusMapsCache extends TestCaseWithProject
 	{
 		CodeToChoiceMap userMap = new CodeToChoiceMap();
 		userMap.putChoiceCode(thirdLevelCode, progressCode);
-		getDashboard().setData(Dashboard.TAG_PROGRESS_CHOICE_MAP, userMap.toString());
+		getDashboard().setData(Dashboard.TAG_PROGRESS_CHOICE_MAP, userMap.toJsonString());
 	}
 	
 	private Dashboard getDashboard()

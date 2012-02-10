@@ -116,7 +116,7 @@ public class DashboardProgressEditorField extends AbstractStringStringMapEditorF
 			if (!codes.isEmpty())
 				existingMap.putChoiceCode(getMapCode(), codes.firstElement());
 			
-			return existingMap.toString();
+			return existingMap.toJsonString();
 		}
 		catch(ParseException e)
 		{
