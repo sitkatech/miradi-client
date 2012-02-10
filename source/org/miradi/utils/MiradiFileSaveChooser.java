@@ -57,34 +57,34 @@ abstract public class MiradiFileSaveChooser extends AbstractFileChooser
 	}
 
 	@Override
-	public String getDialogTitleText()
+	protected String getDialogTitleText()
 	{
 		return EAM.substitute(EAM.text("Title|Save %s File"), getUiExtensionTag());
 	}
 
 	@Override
-	public String getApproveButtonToolTipText()
+	protected String getApproveButtonToolTipText()
 	{
 		return EAM.substitute(EAM.text("TT|Save %s File"), getUiExtensionTag());
 	}
 
 	@Override
-	public String getApproveButtonText()
+	protected String getApproveButtonText()
 	{
 		return EAM.substitute(EAM.text("Button|Save %s"), getUiExtensionTag());
 	}
 
-	public String getDialogOverwriteTitleText()
+	private String getDialogOverwriteTitleText()
 	{
 		return EAM.text("Title|Overwrite existing file?");
 	}
 
-	public String getDialogOverwriteBodyText()
+	private String getDialogOverwriteBodyText()
 	{
 		return EAM.text("This will replace the existing file.");
 	}
 	
-	public abstract String getUiExtensionTag();
+	protected abstract String getUiExtensionTag();
 	
 	public static final String INVALID_PROJECT_FILE_NAME_MESSAGE = EAM.text("File name must contain only alpha numeric and/or '_' characters.");
 	public static final String PROJECT_FILE_NOT_FOUND = EAM.text("File could not be created, this can be due to bad characters in file name.");

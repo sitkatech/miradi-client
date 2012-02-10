@@ -38,7 +38,7 @@ public class XmpzFileChooser extends MiradiFileSaveChooser
 	}
 	
 	@Override
-	public String getUiExtensionTag()
+	protected String getUiExtensionTag()
 	{
 		return XMPZ_UI_EXTENSION_TAG;
 	}

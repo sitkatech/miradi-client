@@ -37,7 +37,7 @@ public class RtfFileChooser extends MiradiFileSaveChooser
 	}
 	
 	@Override
-	public String getUiExtensionTag()
+	protected String getUiExtensionTag()
 	{
 		return RTF_UI_EXTENSION_TAG;
 	}

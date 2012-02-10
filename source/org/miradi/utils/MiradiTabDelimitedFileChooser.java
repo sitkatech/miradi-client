@@ -37,7 +37,7 @@ public class MiradiTabDelimitedFileChooser extends MiradiFileSaveChooser
 	}
 	
 	@Override
-	public String getUiExtensionTag()
+	protected String getUiExtensionTag()
 	{
 		return TAB_DELIMITED_UI_EXTENSION_TAG;
 	}

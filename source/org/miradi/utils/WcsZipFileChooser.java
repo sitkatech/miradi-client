@@ -38,7 +38,7 @@ public class WcsZipFileChooser extends MiradiFileSaveChooser
 	}
 	
 	@Override
-	public String getUiExtensionTag()
+	protected String getUiExtensionTag()
 	{
 		return ZIP_UI_EXTENSION_TAG;
 	}
