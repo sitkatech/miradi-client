@@ -88,6 +88,7 @@ public class ObjectStringInputField extends ObjectTextInputField
 	public void setText(String newValue)
 	{
 		newValue.replaceAll("\n", " ");
+		
 		super.setText(newValue);
 	}
 
@@ -95,9 +96,9 @@ public class ObjectStringInputField extends ObjectTextInputField
 	public void focusGained(FocusEvent e)
 	{
 		super.focusGained(e);
+		
 		field.setSelectionStart(0);
 		field.setSelectionEnd(field.getSize().width);
 	}
-	
 }
 
