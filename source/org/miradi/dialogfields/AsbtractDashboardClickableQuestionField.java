@@ -43,7 +43,7 @@ abstract public class AsbtractDashboardClickableQuestionField extends AbstractDa
 	protected void updateLabelComponent(PanelTitleLabel labelComponentToUse, Dashboard dashboard) throws Exception
 	{
 		CodeToChoiceMap map = getProject().getCachedDashboardEffectiveMap();
-		String mapValue = map.get(stringMapCode);
+		String mapValue = map.getChoiceCode(stringMapCode);
 		ChoiceItem progressChoiceItem = question.findChoiceByCode(mapValue);
 		if(progressChoiceItem == null)
 			throw new RuntimeException("Couldn't find choice " + mapValue + " in question " + question.getClass().getSimpleName());

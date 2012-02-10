@@ -41,10 +41,9 @@ public class DashboardFlagIconField extends	AbstractDashboardClickableField
 	@Override
 	protected void updateLabelComponent(PanelTitleLabel labelComponentToUse, Dashboard dashboard) throws Exception
 	{
-		CodeToCodeListMap map = dashboard.getFlagsMap();
-		String mapValue = map.get(stringMapCode);
 		labelComponentToUse.setIcon(new EmptyIcon());
-		CodeList codeList = new CodeList(mapValue);
+		CodeToCodeListMap map = dashboard.getFlagsMap();
+		CodeList codeList = map.getCodeList(stringMapCode);
 		if (codeList.contains(DashboardFlagsQuestion.NEEDS_ATTENTION_CODE))
 		{
 			labelComponentToUse.setIcon(IconManager.getNeedsAttentionIcon());

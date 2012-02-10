@@ -38,7 +38,7 @@ public class DashboardCommentsField extends AbstractDashboardClickableField
 	protected void updateLabelComponent(PanelTitleLabel labelComponentToUse, Dashboard dashboard) throws Exception
 	{
 		CodeToUserStringMap map = dashboard.getCommentsMap();
-		String mapValue = map.get(stringMapCode);
+		String mapValue = map.getUserString(stringMapCode);
 		String firstLine = mapValue;
 		int newlineAt = mapValue.indexOf("\n");
 		if (newlineAt >= 0)
@@ -52,7 +52,7 @@ public class DashboardCommentsField extends AbstractDashboardClickableField
 		ORef dashboardRef = getProject().getSingletonObjectRef(Dashboard.getObjectType());
 		Dashboard dashboard = Dashboard.find(getProject(), dashboardRef);
 		CodeToUserStringMap commentsMap = dashboard.getCommentsMap();
-		String comment = commentsMap.get(stringMapCode);
+		String comment = commentsMap.getUserString(stringMapCode);
 		return comment.length() > 0;
 	}
 }
