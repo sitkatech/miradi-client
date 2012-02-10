@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-10 08:19-0600\n"
+"POT-Creation-Date: 2012-02-10 10:04-0600\n"
 "PO-Revision-Date: 2011-03-28 15:06-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -2490,6 +2490,10 @@ msgstr "OK"
 msgid "Button|Ok"
 msgstr "Ok"
 
+#: Miradi/source/org/miradi/utils/GenericFileOpenChooser.java:44
+msgid "Button|Open"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/diagram/PasteDoer.java:176
 msgid "Button|Paste As Copies"
 msgstr ""
@@ -2517,6 +2521,10 @@ msgstr "Retener"
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:116
 msgid "Button|Save"
 msgstr "Guardar"
+
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:74
+msgid "Button|Save %s"
+msgstr ""
 
 #: Miradi/source/org/miradi/main/SampleInstaller.java:91
 msgid "Button|Yes"
@@ -5354,8 +5362,6 @@ msgstr "Investigación en el sitio"
 
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListOpenAction.java:46
 #: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:92
-#: Miradi/source/org/miradi/utils/GenericFileOpenChooser.java:44
-#: Miradi/source/org/miradi/utils/GenericFileOpenChooser.java:56
 msgid "Open"
 msgstr "Abrir"
 
@@ -5366,10 +5372,6 @@ msgstr ""
 #: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:153
 #: Miradi/source/org/miradi/main/MainWindow.java:615
 msgid "Open Project"
-msgstr ""
-
-#: Miradi/source/org/miradi/utils/GenericFileOpenChooser.java:50
-msgid "Open Selected File"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:263
@@ -5853,6 +5855,10 @@ msgstr "Cambiar nombre…"
 msgid "Replace Language Pack"
 msgstr "Reemplazar Paquete de idiomas"
 
+#: Miradi/source/org/miradi/views/reports/RunXlsTemplateDoer.java:87
+msgid "Report Completed"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/reports/doers/DeleteReportTemplateDoer.java:32
 #: Miradi/source/org/miradi/dialogs/reportTemplate/ReportTemplatePropertiesPanel.java:40
 msgid "Report Template"
@@ -5975,10 +5981,6 @@ msgstr "Sabana – Sabana seca"
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:46
 msgid "Savanna - Moist Savana"
 msgstr "Sabana - Húmeda"
-
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:74
-msgid "Save %s"
-msgstr "Grabar %s"
 
 #: Miradi/source/org/miradi/views/noproject/CopyProject.java:42
 #: Miradi/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:45
@@ -7122,6 +7124,10 @@ msgstr "Mover el elemento seleccionado hacia abajo"
 msgid "TT|Move the selected item up"
 msgstr "Mover el elemento seleccionado hacia arriba"
 
+#: Miradi/source/org/miradi/utils/GenericFileOpenChooser.java:50
+msgid "TT|Open Selected File"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/ActionPasteFactorContent.java:48
 msgid "TT|Paste the Single Factor's content from the clipboard"
 msgstr "Pegar el contenido del factor individual del portapapeles"
@@ -7961,6 +7967,10 @@ msgstr "Propiedades del objeto anidado"
 msgid "Title|Objective Properties"
 msgstr "Propiedades del Meta"
 
+#: Miradi/source/org/miradi/utils/GenericFileOpenChooser.java:56
+msgid "Title|Open"
+msgstr ""
+
 #: Miradi/source/org/miradi/dialogfields/AbstractDashboardClickableField.java:112
 msgid "Title|Open Standards Status"
 msgstr ""
@@ -8101,10 +8111,6 @@ msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:88
 msgid "Total Monitoring Budget %1 %2"
-msgstr ""
-
-#: Miradi/source/org/miradi/views/reports/RunXlsTemplateDoer.java:87
-msgid "Transformation Completed!"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/noproject/DeleteOldProject.java:38
@@ -10282,7 +10288,7 @@ msgstr ""
 msgid "FieldLabel|59.FileExtension|Report File Extension"
 msgstr ""
 
-msgid "FieldLabel|59.xslTemplate|XSL Template"
+msgid "FieldLabel|59.TemplateContents|Template Contents"
 msgstr ""
 
 msgid ""
@@ -32516,6 +32522,9 @@ msgid ""
 msgstr ""
 "Marina___Atlántico tropical occidental___Marina de la plataforma norte de "
 "Brasil___Brasil "
+
+#~ msgid "Save %s"
+#~ msgstr "Grabar %s"
 
 #~ msgid "Save"
 #~ msgstr "Grabar"

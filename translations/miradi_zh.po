@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-10 08:19-0600\n"
+"POT-Creation-Date: 2012-02-10 10:04-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -2398,6 +2398,10 @@ msgstr "确定 \t\t"
 msgid "Button|Ok"
 msgstr "确定 \t\t"
 
+#: Miradi/source/org/miradi/utils/GenericFileOpenChooser.java:44
+msgid "Button|Open"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/diagram/PasteDoer.java:176
 msgid "Button|Paste As Copies"
 msgstr ""
@@ -2424,6 +2428,10 @@ msgstr "保留 \t\t"
 
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:116
 msgid "Button|Save"
+msgstr ""
+
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:74
+msgid "Button|Save %s"
 msgstr ""
 
 #: Miradi/source/org/miradi/main/SampleInstaller.java:91
@@ -5166,8 +5174,6 @@ msgstr "实地研究"
 
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListOpenAction.java:46
 #: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:92
-#: Miradi/source/org/miradi/utils/GenericFileOpenChooser.java:44
-#: Miradi/source/org/miradi/utils/GenericFileOpenChooser.java:56
 msgid "Open"
 msgstr "打开 \t\t"
 
@@ -5178,10 +5184,6 @@ msgstr ""
 #: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:153
 #: Miradi/source/org/miradi/main/MainWindow.java:615
 msgid "Open Project"
-msgstr ""
-
-#: Miradi/source/org/miradi/utils/GenericFileOpenChooser.java:50
-msgid "Open Selected File"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:263
@@ -5653,6 +5655,10 @@ msgstr "重命名… \t\t"
 msgid "Replace Language Pack"
 msgstr ""
 
+#: Miradi/source/org/miradi/views/reports/RunXlsTemplateDoer.java:87
+msgid "Report Completed"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/reports/doers/DeleteReportTemplateDoer.java:32
 #: Miradi/source/org/miradi/dialogs/reportTemplate/ReportTemplatePropertiesPanel.java:40
 msgid "Report Template"
@@ -5773,10 +5779,6 @@ msgstr "稀树草原-干旱稀树草原"
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:46
 msgid "Savanna - Moist Savana"
 msgstr "稀树草原-湿润稀树草原"
-
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:74
-msgid "Save %s"
-msgstr "保存 %s  \t\t"
 
 #: Miradi/source/org/miradi/views/noproject/CopyProject.java:42
 #: Miradi/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:45
@@ -6881,6 +6883,10 @@ msgstr "下移选定的条目 \t\t"
 msgid "TT|Move the selected item up"
 msgstr "上移选定的条目 \t\t"
 
+#: Miradi/source/org/miradi/utils/GenericFileOpenChooser.java:50
+msgid "TT|Open Selected File"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/ActionPasteFactorContent.java:48
 msgid "TT|Paste the Single Factor's content from the clipboard"
 msgstr "从剪贴板中粘贴单一因素的内容 \t\t"
@@ -7693,6 +7699,10 @@ msgstr "嵌套对象属性 \t\t"
 msgid "Title|Objective Properties"
 msgstr "分目标属性 \t\t"
 
+#: Miradi/source/org/miradi/utils/GenericFileOpenChooser.java:56
+msgid "Title|Open"
+msgstr ""
+
 #: Miradi/source/org/miradi/dialogfields/AbstractDashboardClickableField.java:112
 msgid "Title|Open Standards Status"
 msgstr ""
@@ -7833,10 +7843,6 @@ msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:88
 msgid "Total Monitoring Budget %1 %2"
-msgstr ""
-
-#: Miradi/source/org/miradi/views/reports/RunXlsTemplateDoer.java:87
-msgid "Transformation Completed!"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/noproject/DeleteOldProject.java:38
@@ -9988,7 +9994,7 @@ msgstr ""
 msgid "FieldLabel|59.FileExtension|Report File Extension"
 msgstr ""
 
-msgid "FieldLabel|59.xslTemplate|XSL Template"
+msgid "FieldLabel|59.TemplateContents|Template Contents"
 msgstr ""
 
 msgid ""
@@ -29033,6 +29039,9 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid "Save %s"
+#~ msgstr "保存 %s  \t\t"
 
 #~ msgid "Save"
 #~ msgstr "保存 \t\t"

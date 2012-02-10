@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-10 08:19-0600\n"
+"POT-Creation-Date: 2012-02-10 10:04-0600\n"
 "PO-Revision-Date: 2011-04-29 11:26+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -2587,6 +2587,10 @@ msgstr "OK"
 msgid "Button|Ok"
 msgstr "Ok"
 
+#: Miradi/source/org/miradi/utils/GenericFileOpenChooser.java:44
+msgid "Button|Open"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/diagram/PasteDoer.java:176
 msgid "Button|Paste As Copies"
 msgstr ""
@@ -2614,6 +2618,10 @@ msgstr "Mantieni"
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:116
 msgid "Button|Save"
 msgstr "Salva"
+
+#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:74
+msgid "Button|Save %s"
+msgstr ""
 
 #: Miradi/source/org/miradi/main/SampleInstaller.java:91
 msgid "Button|Yes"
@@ -5440,8 +5448,6 @@ msgstr "Ricerca insitu"
 
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListOpenAction.java:46
 #: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:92
-#: Miradi/source/org/miradi/utils/GenericFileOpenChooser.java:44
-#: Miradi/source/org/miradi/utils/GenericFileOpenChooser.java:56
 msgid "Open"
 msgstr "Apri"
 
@@ -5453,10 +5459,6 @@ msgstr ""
 #: Miradi/source/org/miradi/main/MainWindow.java:615
 msgid "Open Project"
 msgstr "Apri progetto"
-
-#: Miradi/source/org/miradi/utils/GenericFileOpenChooser.java:50
-msgid "Open Selected File"
-msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:263
 msgid ""
@@ -5939,6 +5941,10 @@ msgstr "Rinomina..."
 msgid "Replace Language Pack"
 msgstr "Sostituisci il pacchetto di lingua"
 
+#: Miradi/source/org/miradi/views/reports/RunXlsTemplateDoer.java:87
+msgid "Report Completed"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/reports/doers/DeleteReportTemplateDoer.java:32
 #: Miradi/source/org/miradi/dialogs/reportTemplate/ReportTemplatePropertiesPanel.java:40
 msgid "Report Template"
@@ -6060,10 +6066,6 @@ msgstr "Savana - Savana secca"
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:46
 msgid "Savanna - Moist Savana"
 msgstr "Savana - Savana umida"
-
-#: Miradi/source/org/miradi/utils/MiradiFileSaveChooser.java:74
-msgid "Save %s"
-msgstr "Salva %s"
 
 #: Miradi/source/org/miradi/views/noproject/CopyProject.java:42
 #: Miradi/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:45
@@ -7225,6 +7227,10 @@ msgstr "Muovi l'oggetto selezionato in basso"
 msgid "TT|Move the selected item up"
 msgstr "Muovi l'oggetto selezionato in alto"
 
+#: Miradi/source/org/miradi/utils/GenericFileOpenChooser.java:50
+msgid "TT|Open Selected File"
+msgstr ""
+
 #: Miradi/source/org/miradi/actions/ActionPasteFactorContent.java:48
 msgid "TT|Paste the Single Factor's content from the clipboard"
 msgstr "Incolla il contenuto del Fattore Singolo dagli appunti"
@@ -8073,6 +8079,10 @@ msgstr "Proprietà del Valore di Conservazione Annidato"
 msgid "Title|Objective Properties"
 msgstr "Proprietà dell'Obiettivo"
 
+#: Miradi/source/org/miradi/utils/GenericFileOpenChooser.java:56
+msgid "Title|Open"
+msgstr ""
+
 #: Miradi/source/org/miradi/dialogfields/AbstractDashboardClickableField.java:112
 msgid "Title|Open Standards Status"
 msgstr ""
@@ -8213,10 +8223,6 @@ msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:88
 msgid "Total Monitoring Budget %1 %2"
-msgstr ""
-
-#: Miradi/source/org/miradi/views/reports/RunXlsTemplateDoer.java:87
-msgid "Transformation Completed!"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/noproject/DeleteOldProject.java:38
@@ -10391,7 +10397,7 @@ msgstr ""
 msgid "FieldLabel|59.FileExtension|Report File Extension"
 msgstr ""
 
-msgid "FieldLabel|59.xslTemplate|XSL Template"
+msgid "FieldLabel|59.TemplateContents|Template Contents"
 msgstr ""
 
 msgid ""
@@ -30323,6 +30329,9 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
+
+#~ msgid "Save %s"
+#~ msgstr "Salva %s"
 
 #~ msgid "Custom Reports"
 #~ msgstr "Report personalizzati"
