@@ -37,7 +37,7 @@ public class JpgFileChooser extends MiradiFileSaveChooser
 	}
 	
 	@Override
-	public String getUiExtensionTag()
+	protected String getUiExtensionTag()
 	{
 		return JPEG_UI_EXTENSION_TAG;
 	}

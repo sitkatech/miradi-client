@@ -34,7 +34,7 @@ public class FileSaveChooserWithUserDefinedFileFilter extends MiradiFileSaveChoo
 	}
 
 	@Override
-	public String getUiExtensionTag()
+	protected String getUiExtensionTag()
 	{
 		return extension;
 	}

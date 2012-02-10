@@ -37,7 +37,7 @@ public class CpmzFileChooser extends MiradiFileSaveChooser
 	}
 
 	@Override
-	public String getUiExtensionTag()
+	protected String getUiExtensionTag()
 	{
 		return CPMZ_UI_EXTENSION_TAG;
 	}
