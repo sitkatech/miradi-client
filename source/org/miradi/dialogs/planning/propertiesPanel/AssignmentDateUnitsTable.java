@@ -57,7 +57,7 @@ abstract public class AssignmentDateUnitsTable extends AbstractComponentTable im
 		super(mainWindowToUse, modelToUse, UNIQUE_IDENTIFIER);
 		
 		setBackground(getColumnBackGroundColor(0));	
-		setAllColumnsToUseDoubleClickEditors();
+		setAllColumnsToUseSingleLineEditors();
 		setColumnSelectionAllowed(true);
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		FontForObjectProvider fontProvider = new PlanningViewFontProvider(getMainWindow());
@@ -102,7 +102,7 @@ abstract public class AssignmentDateUnitsTable extends AbstractComponentTable im
 		return getWorkUnitsTableModel().getCellBackgroundColor(modelColumn);
 	}
 
-	private void setAllColumnsToUseDoubleClickEditors()
+	private void setAllColumnsToUseSingleLineEditors()
 	{
 		int colCount = getColumnCount();
 		for (int i = 0; i < colCount; i++)
