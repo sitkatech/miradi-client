@@ -113,10 +113,10 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 			return new DefaultCellEditor(comboBox);
 		}
 		
-		return getDoubleClickAutoSelectCellEditor();
+		return getSingleLineTextCellEditorFactory();
 	}
 
-	protected SingleLineInTableCellEditorFactory getDoubleClickAutoSelectCellEditor()
+	protected SingleLineInTableCellEditorFactory getSingleLineTextCellEditorFactory()
 	{
 		return singleLineTextCellEditorFactory;
 	}
