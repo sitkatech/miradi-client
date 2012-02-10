@@ -71,7 +71,7 @@ abstract public class MiradiFileSaveChooser extends AbstractFileChooser
 	@Override
 	public String getApproveButtonText()
 	{
-		return EAM.substitute(EAM.text("Save %s"), getUiExtensionTag());
+		return EAM.substitute(EAM.text("Button|Save %s"), getUiExtensionTag());
 	}
 
 	public String getDialogOverwriteTitleText()
