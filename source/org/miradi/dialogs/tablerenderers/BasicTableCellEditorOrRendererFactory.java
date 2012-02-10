@@ -30,8 +30,6 @@ import javax.swing.border.Border;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 
-import org.miradi.utils.XmlUtilities2;
-
 abstract public class BasicTableCellEditorOrRendererFactory extends AbstractCellEditor implements TableCellRenderer, TableCellPreferredHeightProvider, TableCellEditor 
 {
 	public BasicTableCellEditorOrRendererFactory()
@@ -106,19 +104,6 @@ abstract public class BasicTableCellEditorOrRendererFactory extends AbstractCell
 		renderer.setBackground(bg);
 	}
 
-	protected String getAsHtmlText(Object value)
-	{
-		return getAsHtmlText(value, "");
-	}
-	
-	protected String getAsHtmlText(Object value, String initialHtml)
-	{
-		if(value == null)
-			return "";
-		String plainText = value.toString();
-		return "<html>" + initialHtml + XmlUtilities2.getXmlEncoded(plainText);
-	}
-	
 	public Border getCellBorder()
 	{
 		Border line = BorderFactory.createMatteBorder(1, 1, 0, 0, Color.black);
