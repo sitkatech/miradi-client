@@ -22,7 +22,7 @@ package org.miradi.dialogfields;
 
 
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
-import org.miradi.objecthelpers.AbstractStringToStringMap;
+import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
@@ -34,15 +34,10 @@ public class DashboardCommentsField extends AbstractDashboardClickableField
 		super(projectToUse, refToUse, stringMapCodeToUse);
 	}
 
-	private AbstractStringToStringMap createStringKeyMap(Dashboard dashboard) throws Exception
-	{
-		return dashboard.getCommentsMap();
-	}
-
 	@Override
 	protected void updateLabelComponent(PanelTitleLabel labelComponentToUse, Dashboard dashboard) throws Exception
 	{
-		AbstractStringToStringMap map = createStringKeyMap(dashboard);
+		CodeToUserStringMap map = dashboard.getCommentsMap();
 		String mapValue = map.get(stringMapCode);
 		String firstLine = mapValue;
 		int newlineAt = mapValue.indexOf("\n");
@@ -56,7 +51,7 @@ public class DashboardCommentsField extends AbstractDashboardClickableField
 	{
 		ORef dashboardRef = getProject().getSingletonObjectRef(Dashboard.getObjectType());
 		Dashboard dashboard = Dashboard.find(getProject(), dashboardRef);
-		AbstractStringToStringMap commentsMap = createStringKeyMap(dashboard);
+		CodeToUserStringMap commentsMap = dashboard.getCommentsMap();
 		String comment = commentsMap.get(stringMapCode);
 		return comment.length() > 0;
 	}
