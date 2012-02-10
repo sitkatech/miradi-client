@@ -60,7 +60,7 @@ public class ObjectStringInputField extends ObjectTextInputField
 		((UiTextArea)getComponent()).setLineWrap(true);		
 	}
 
-	class DocumentEventHandler implements  UndoableEditListener
+	private class DocumentEventHandler implements UndoableEditListener
 	{
 		public void undoableEditHappened(UndoableEditEvent e)
 		{
