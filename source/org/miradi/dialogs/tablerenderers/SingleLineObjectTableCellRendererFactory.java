@@ -27,13 +27,17 @@ import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 
+import org.miradi.dialogs.fieldComponents.PanelTextArea;
+import org.miradi.utils.HtmlUtilities;
+
 public class SingleLineObjectTableCellRendererFactory extends ObjectTableCellEditorOrRendererFactory
 {
 	public SingleLineObjectTableCellRendererFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectProvider fontProviderToUse)
 	{
 		super(providerToUse, fontProviderToUse);
 		
-		rendererComponent = new DefaultTableCellRenderer();
+		rendererComponent = new HtmlEncodedCellRenderer();
+		editorComponent = new HtmlEncodedTextArea();
 	}
 	
 	@Override
@@ -49,7 +53,53 @@ public class SingleLineObjectTableCellRendererFactory extends ObjectTableCellEdi
 		Component component = rendererComponent.getTableCellRendererComponent(table, value, false, false, row, column);
 		return component.getPreferredSize().height;
 	}
+	
+	@Override
+	public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int tableColumn)
+	{
+		updateBorderAndColors(editorComponent, table, row, tableColumn, isSelected);
+		editorComponent.setFont(getCellFont(row, tableColumn));
+		editorComponent.setText(value.toString());
+		
+		return editorComponent;
+	}
+	
+	@Override
+	public Object getCellEditorValue()
+	{
+		return editorComponent.getText();
+	}
+	
+	private class HtmlEncodedTextArea extends PanelTextArea
+	{
+		@Override
+		public void setText(String text)
+		{
+			text = HtmlUtilities.convertToNonHtml(text);
+			
+			super.setText(text);
+		}
+		
+		@Override
+		public String getText()
+		{
+			String text = super.getText();
+			text = HtmlUtilities.convertToHtmlText(text);
+			
+			return text;
+		}
+	}
+	
+	private class HtmlEncodedCellRenderer extends DefaultTableCellRenderer
+	{
+		@Override
+		public void setText(String text)
+		{
+			text = HtmlUtilities.convertToNonHtml(text);
+			super.setText(text);
+		}
+	}
 
 	private DefaultTableCellRenderer rendererComponent;
-
+	private HtmlEncodedTextArea editorComponent;
 }
