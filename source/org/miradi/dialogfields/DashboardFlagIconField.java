@@ -24,7 +24,7 @@ package org.miradi.dialogfields;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.icons.EmptyIcon;
 import org.miradi.icons.IconManager;
-import org.miradi.objecthelpers.AbstractStringToStringMap;
+import org.miradi.objecthelpers.CodeToCodeListMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
@@ -41,7 +41,7 @@ public class DashboardFlagIconField extends	AbstractDashboardClickableField
 	@Override
 	protected void updateLabelComponent(PanelTitleLabel labelComponentToUse, Dashboard dashboard) throws Exception
 	{
-		AbstractStringToStringMap map = createStringKeyMap(dashboard);
+		CodeToCodeListMap map = dashboard.getFlagsMap();
 		String mapValue = map.get(stringMapCode);
 		labelComponentToUse.setIcon(new EmptyIcon());
 		CodeList codeList = new CodeList(mapValue);
@@ -49,10 +49,5 @@ public class DashboardFlagIconField extends	AbstractDashboardClickableField
 		{
 			labelComponentToUse.setIcon(IconManager.getNeedsAttentionIcon());
 		}
-	}
-	
-	private AbstractStringToStringMap createStringKeyMap(Dashboard dashboard) throws Exception
-	{
-		return dashboard.getFlagsMap();
 	}
 }
