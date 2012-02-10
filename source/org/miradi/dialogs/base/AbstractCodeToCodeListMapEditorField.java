@@ -23,6 +23,7 @@ package org.miradi.dialogs.base;
 import org.miradi.dialogfields.AbstractStringStringMapEditorField;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.AbstractStringToStringMap;
+import org.miradi.objecthelpers.CodeToCodeListMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
@@ -64,7 +65,7 @@ abstract public class AbstractCodeToCodeListMapEditorField extends AbstractStrin
 	{
 		try
 		{
-			AbstractStringToStringMap existingMap = createCurrentStringKeyMap();
+			CodeToCodeListMap existingMap = createCurrentStringKeyMap();
 			String key = getMapCode();
 			String value = super.getText();
 			put(existingMap, key, value);
@@ -80,7 +81,7 @@ abstract public class AbstractCodeToCodeListMapEditorField extends AbstractStrin
 	}
 
 	
-	abstract protected AbstractStringToStringMap createCurrentStringKeyMap() throws Exception;
-	abstract protected AbstractStringToStringMap createStringKeyMap(String StringMapAsString) throws Exception;
-	abstract protected void put(AbstractStringToStringMap existingMap, String key, String value) throws Exception;
+	abstract protected CodeToCodeListMap createCurrentStringKeyMap() throws Exception;
+	abstract protected CodeToCodeListMap createStringKeyMap(String StringMapAsString) throws Exception;
+	abstract protected void put(CodeToCodeListMap existingMap, String key, String value) throws Exception;
 }

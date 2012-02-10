@@ -22,7 +22,6 @@ package org.miradi.dialogs.base;
 
 import java.text.ParseException;
 
-import org.miradi.objecthelpers.AbstractStringToStringMap;
 import org.miradi.objecthelpers.CodeToCodeListMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
@@ -37,22 +36,22 @@ public class CodeToCodeListMapEditorField extends AbstractCodeToCodeListMapEdito
 	}
 
 	@Override
-	protected AbstractStringToStringMap createCurrentStringKeyMap() throws Exception
+	protected CodeToCodeListMap createCurrentStringKeyMap() throws Exception
 	{
 		String mapAsString = getProject().getObjectData(getORef(), getTag());
 		return new CodeToCodeListMap(mapAsString);
 	}
 
 	@Override
-	protected AbstractStringToStringMap createStringKeyMap(String StringMapAsString) throws Exception
+	protected CodeToCodeListMap createStringKeyMap(String StringMapAsString) throws Exception
 	{
 		return new CodeToCodeListMap(StringMapAsString);
 	}
 	
 	@Override
-	protected void put(AbstractStringToStringMap existingMap, String key, String value) throws ParseException
+	protected void put(CodeToCodeListMap existingMap, String key, String value) throws ParseException
 	{
-		CodeToCodeListMap map = (CodeToCodeListMap) existingMap;
+		CodeToCodeListMap map = existingMap;
 		CodeList codeList = new CodeList(value);
 		map.putCodeList(key, codeList);
 	}
