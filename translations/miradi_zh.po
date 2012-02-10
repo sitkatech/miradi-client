@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-10 10:04-0600\n"
+"POT-Creation-Date: 2012-02-10 13:43-0600\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -7703,7 +7703,7 @@ msgstr "分目标属性 \t\t"
 msgid "Title|Open"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/AbstractDashboardClickableField.java:112
+#: Miradi/source/org/miradi/dialogfields/AbstractDashboardClickableField.java:104
 msgid "Title|Open Standards Status"
 msgstr ""
 

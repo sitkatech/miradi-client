@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-10 10:04-0600\n"
+"POT-Creation-Date: 2012-02-10 13:43-0600\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -7963,7 +7963,7 @@ msgstr "Title|Складові завдань"
 msgid "Title|Open"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/AbstractDashboardClickableField.java:112
+#: Miradi/source/org/miradi/dialogfields/AbstractDashboardClickableField.java:104
 msgid "Title|Open Standards Status"
 msgstr ""
 
