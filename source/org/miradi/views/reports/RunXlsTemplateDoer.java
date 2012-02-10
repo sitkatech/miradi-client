@@ -84,7 +84,7 @@ public class RunXlsTemplateDoer extends ObjectsDoer
 		if (outputFile != null)
 		{				
 			transformer.transform(new DOMSource(doc), new StreamResult(new FileOutputStream(outputFile)));
-			EAM.notifyDialog(EAM.text("Transformation Completed!"));
+			EAM.notifyDialog(EAM.text("Report Completed"));
 		}
 	}
 	
