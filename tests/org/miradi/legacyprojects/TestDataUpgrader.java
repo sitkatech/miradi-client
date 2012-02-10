@@ -378,12 +378,12 @@ public class TestDataUpgrader extends AbstractMigrationTestCase
 		
 		CodeToUserStringMap simpleThreatRatingCommentsMap2 = new CodeToUserStringMap(threatRatingCommentsDataJson.optString("SimpleThreatRatingCommentsMap"));
 		assertEquals("simple threat rating comments map should not be empty?", 1, simpleThreatRatingCommentsMap2.size());
-		String simpleBasedComment = simpleThreatRatingCommentsMap2.get(key);
+		String simpleBasedComment = simpleThreatRatingCommentsMap2.getUserString(key);
 		assertEquals("wrong comment for key", "simple based comment in link", simpleBasedComment);
 		
 		CodeToUserStringMap stressThreatRatingCommentsMap2 = new CodeToUserStringMap(threatRatingCommentsDataJson.optString("StressBasedThreatRatingCommentsMap"));
 		assertEquals("stress threat rating comments map should not be empty?", 1, stressThreatRatingCommentsMap2.size());
-		String stressBasedComment = stressThreatRatingCommentsMap2.get(key);
+		String stressBasedComment = stressThreatRatingCommentsMap2.getUserString(key);
 		assertEquals("wrong comment for key", "stress based comment in link", stressBasedComment);
 		
 		File factorLinkDir = DataUpgrader.getObjectsDir(jsonDir, FACTOR_LINK_TYPE);

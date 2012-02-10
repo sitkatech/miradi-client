@@ -258,7 +258,7 @@ public class RtfFormExporter
 		
 		CodeToUserStringMap map = stringMapData.getCodeToUserStringMap();
 		String key = choiceItem.getCode();
-		return map.get(key);
+		return map.getUserString(key);
 	}
 
 	private String getFieldLabel(FormFieldLabel formFieldLabel)

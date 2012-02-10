@@ -82,8 +82,8 @@ public class IndicatorPoolExporter extends BaseObjectPoolExporter
 			
 			getWcsXmlExporter().writeStartElement(getWriter(), THRESHOLD);
 			getWcsXmlExporter().writeOptionalElement(getWriter(), STATUS_CODE, code);
-			getWcsXmlExporter().writeOptionalElement(getWriter(), THRESHOLD_VALUE, thresholdValues.get(code));
-			getWcsXmlExporter().writeOptionalElement(getWriter(), THRESHOLD_DETAILS, thresholdDetails.get(code));
+			getWcsXmlExporter().writeOptionalElement(getWriter(), THRESHOLD_VALUE, thresholdValues.getUserString(code));
+			getWcsXmlExporter().writeOptionalElement(getWriter(), THRESHOLD_DETAILS, thresholdDetails.getUserString(code));
 			getWcsXmlExporter().writeEndElement(getWriter(), THRESHOLD);			
 		}
 		

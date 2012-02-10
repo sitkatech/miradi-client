@@ -69,7 +69,7 @@ public class ObjectStringMapInputField extends ObjectStringInputField
 		try
 		{
 			CodeToUserStringMap stringMap = new CodeToUserStringMap(newValue);
-			String value = stringMap.get(code);
+			String value = stringMap.getUserString(code);
 			super.setText(value);
 		}
 		catch (Exception e)

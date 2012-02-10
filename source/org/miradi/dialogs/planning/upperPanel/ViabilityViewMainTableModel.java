@@ -360,7 +360,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 			int thresholdColumn = calculateRatingCodeFromColumn(column);
 			String key = Integer.toString(thresholdColumn);
 			CodeToUserStringMap map = indicator.getThresholdsMap().getCodeToUserStringMap();
-			String thresholdValue = map.get(key);
+			String thresholdValue = map.getUserString(key);
 			
 			return new TaglessChoiceItem(thresholdValue);
 		}

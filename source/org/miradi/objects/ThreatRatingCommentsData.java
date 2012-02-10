@@ -67,9 +67,9 @@ public class ThreatRatingCommentsData extends BaseObject
 	{
 		String threatTargetRefsAsKey = createKey(threatRef, targetRef);
 		if (getProject().isSimpleThreatRatingMode())
-			return getSimpleThreatRatingCommentsMap().get(threatTargetRefsAsKey);
+			return getSimpleThreatRatingCommentsMap().getUserString(threatTargetRefsAsKey);
 		
-		return getStressBasedThreatRatingCommentsMap().get(threatTargetRefsAsKey);
+		return getStressBasedThreatRatingCommentsMap().getUserString(threatTargetRefsAsKey);
 	}
 	
 	public static String createKey(ORef threatRef, ORef targetRef)

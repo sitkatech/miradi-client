@@ -51,6 +51,11 @@ public class CodeToChoiceMap extends AbstractStringToStringMap
 		rawPut(code, choiceCode);
 	}
 
+	public String getChoiceCode(String mapCode)
+	{
+		return get(mapCode);
+	}
+
 	@Override
 	protected String getMapTag()
 	{
