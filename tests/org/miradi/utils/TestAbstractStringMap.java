@@ -43,8 +43,8 @@ abstract public class TestAbstractStringMap extends MiradiTestCase
 		list.rawPut(key1, value1);
 		list.rawPut(key2, value2);
 		assertEquals("wrong size?", 2, list.size());
-		assertEquals("bad get 1?", value1, list.get(key1));
-		assertEquals("bad get 2?", value2, list.get(key2));
+		assertEquals("bad get 1?", value1, list.rawGet(key1));
+		assertEquals("bad get 2?", value2, list.rawGet(key2));
 	}
 	
 	public void testEquals()
@@ -55,9 +55,9 @@ abstract public class TestAbstractStringMap extends MiradiTestCase
 		assertEquals(list.hashCode(), identical.hashCode());
 		
 		AbstractStringToStringMap different = createAbstractMap();
-		different.rawPut("A", list.get("A"));
-		different.rawPut("C", list.get("C"));
-		different.rawPut("B", list.get("B"));
+		different.rawPut("A", list.rawGet("A"));
+		different.rawPut("C", list.rawGet("C"));
+		different.rawPut("B", list.rawGet("B"));
 		assertEquals(true, list.equals(different));
 		assertEquals(list.hashCode(), different.hashCode());
 		assertNotEquals("didn't check type?", list, new Object());
@@ -80,7 +80,7 @@ abstract public class TestAbstractStringMap extends MiradiTestCase
 		AbstractStringToStringMap list = createMapWithSampleData();
 		list.removeCode("A");
 		assertEquals(2, list.size());
-		assertEquals("RoleC", list.get("C"));
+		assertEquals("RoleC", list.rawGet("C"));
 		
 		try
 		{
@@ -100,7 +100,7 @@ abstract public class TestAbstractStringMap extends MiradiTestCase
 		for(int i = 0; i < values.length; ++i)
 			list.rawPut(keys[i], values[i]);
 		for(int i = 0; i < values.length; ++i)
-			assertEquals("Couldn't find " + i + "?", values[i], list.get(keys[i]));
+			assertEquals("Couldn't find " + i + "?", values[i], list.rawGet(keys[i]));
 		assertEquals("Found non-existant?", null, list.find(new String("Role27")));
 	}
 	
@@ -115,7 +115,7 @@ abstract public class TestAbstractStringMap extends MiradiTestCase
 		while (iterator.hasNext())
 		{
 			String key = (String)iterator.next();
-			assertEquals("wrong member?", list.get(key), loaded.get(key));
+			assertEquals("wrong member?", list.rawGet(key), loaded.rawGet(key));
 		}
 	}
 

@@ -78,13 +78,13 @@ abstract public class AbstractStringToStringMap
 		while (iterator.hasNext())
 		{
 			String key = iterator.next();
-			array.put(key, get(key));
+			array.put(key, rawGet(key));
 		}
 		json.put(getMapTag(), array);
 		return json;
 	}
 	
-	public String get(String code)
+	public String rawGet(String code)
 	{
 		String value = data.get(code);
 		if (value==null)

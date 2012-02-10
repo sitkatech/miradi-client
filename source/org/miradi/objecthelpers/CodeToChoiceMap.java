@@ -53,7 +53,7 @@ public class CodeToChoiceMap extends AbstractStringToStringMap
 
 	public String getChoiceCode(String mapCode)
 	{
-		return get(mapCode);
+		return rawGet(mapCode);
 	}
 
 	@Override
