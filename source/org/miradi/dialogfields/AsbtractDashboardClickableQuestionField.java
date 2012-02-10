@@ -42,7 +42,7 @@ abstract public class AsbtractDashboardClickableQuestionField extends AbstractDa
 	@Override
 	protected void updateLabelComponent(PanelTitleLabel labelComponentToUse, Dashboard dashboard) throws Exception
 	{
-		CodeToChoiceMap map = createStringKeyMap(dashboard);
+		CodeToChoiceMap map = getProject().getCachedDashboardEffectiveMap();
 		String mapValue = map.get(stringMapCode);
 		ChoiceItem progressChoiceItem = question.findChoiceByCode(mapValue);
 		if(progressChoiceItem == null)
@@ -50,11 +50,6 @@ abstract public class AsbtractDashboardClickableQuestionField extends AbstractDa
 		updateLabel(labelComponentToUse, progressChoiceItem);
 	}
 	
-	private CodeToChoiceMap createStringKeyMap(Dashboard dashboard) throws Exception
-	{
-		return getProject().getCachedDashboardEffectiveMap();
-	}
-
 	abstract protected void updateLabel(PanelTitleLabel componentToUpdate, ChoiceItem progressChoiceItem);
 
 	private ChoiceQuestion question;
