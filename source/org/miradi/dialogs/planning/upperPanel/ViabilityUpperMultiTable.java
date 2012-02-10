@@ -62,6 +62,7 @@ public class ViabilityUpperMultiTable extends PlanningUpperMultiTable
 	@Override
 	public TableCellEditor getCellEditor(int row, int tableColumn)
 	{
+		//FIXME medium this is duplicate code which is also in parent class. Remove the duplications here.
 		final int modelColumn = convertColumnIndexToModel(tableColumn);
 		final ViabilityViewMainTableModel model = (ViabilityViewMainTableModel) getCastedModel().getCastedModel(modelColumn);
 		final Class questionClassName = model.getCellQuestion(row, modelColumn);
