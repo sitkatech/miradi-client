@@ -61,7 +61,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.questions.StaticQuestionManager;
-import org.miradi.utils.DoubleClickAutoSelectCellEditor;
+import org.miradi.utils.SingleLineInTableCellEditor;
 import org.miradi.utils.TableWithColumnWidthAndSequenceSaver;
 
 public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSaver implements RowColumnSelectionProvider, RightClickActionProvider, TableWithExpandableColumnsInterface
@@ -84,7 +84,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		doubleRendererFactory = new NumericTableCellRendererFactory(this, fontProvider);
 		whoColumnTableCellEditorFactory = new WhoColumnTableCellEditorFactory(getMainWindow(), this);
 		whenColumnTableCellEditorFactory = new WhenTableCellPopupEditorOrRendererFactory(mainWindowToUse, this, fontProvider);
-		doubleClickAutoSelectCellEditor = new DoubleClickAutoSelectCellEditor(new PanelTextField());
+		doubleClickAutoSelectCellEditor = new SingleLineInTableCellEditor(new PanelTextField());
 		
 		addMouseListener(new PlanningRightClickHandler(getMainWindow(), this, this));
 	}
@@ -116,7 +116,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		return getDoubleClickAutoSelectCellEditor();
 	}
 
-	protected DoubleClickAutoSelectCellEditor getDoubleClickAutoSelectCellEditor()
+	protected SingleLineInTableCellEditor getDoubleClickAutoSelectCellEditor()
 	{
 		return doubleClickAutoSelectCellEditor;
 	}
@@ -262,5 +262,5 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 	private BasicTableCellEditorOrRendererFactory doubleRendererFactory;
 	private WhoColumnTableCellEditorFactory whoColumnTableCellEditorFactory;
 	private WhenTableCellPopupEditorOrRendererFactory whenColumnTableCellEditorFactory;
-	private DoubleClickAutoSelectCellEditor doubleClickAutoSelectCellEditor;
+	private SingleLineInTableCellEditor doubleClickAutoSelectCellEditor;
 }
