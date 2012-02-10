@@ -74,17 +74,17 @@ public class ViabilityUpperMultiTable extends PlanningUpperMultiTable
 		
 		if (model.isMeasurementThresholdCell(row, modelColumn))
 		{
-			return getDoubleClickAutoSelectCellEditor();
+			return getSingleLineTextCellEditorFactory();
 		}
 
 		if (model.isFutureStatusThresholdCell(row, modelColumn))
 		{
-			return getDoubleClickAutoSelectCellEditor();
+			return getSingleLineTextCellEditorFactory();
 		}
 		
 		if (model.isCellEditable(row, modelColumn))
 		{
-			return getDoubleClickAutoSelectCellEditor();
+			return getSingleLineTextCellEditorFactory();
 		}
 		
 		return super.getCellEditor(row, tableColumn);
