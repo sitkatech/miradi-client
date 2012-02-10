@@ -29,10 +29,10 @@ public class DoubleClickAutoSelectCellEditor extends DefaultCellEditor
 		super(textField);
 		
 		setClickCountToStart(1);
-		delegate = new EditorDeletegate();
+		delegate = new OurEditorDelegate();
 	}
 	
-	final class EditorDeletegate extends EditorDelegate
+	final class OurEditorDelegate extends EditorDelegate
 	{
 		@Override
 		public void setValue(Object value) 
