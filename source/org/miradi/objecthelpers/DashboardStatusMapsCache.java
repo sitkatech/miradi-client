@@ -94,7 +94,7 @@ public class DashboardStatusMapsCache implements CommandExecutedListener
 			String thirdLevelCode = allThirdLevelCodes.get(index);
 			Vector<DashboardRowDefinition> rowDefinitions = getDashboardRowDefinitionManager().getRowDefinitions(thirdLevelCode);
 			
-			String effectiveCode = getDashboardSingletonObject().getProgressChoiceMap().get(thirdLevelCode);
+			String effectiveCode = getDashboardSingletonObject().getProgressChoiceMap().getChoiceCode(thirdLevelCode);
 			String calculatedCode = computeStatusCodeFromStatistics(rowDefinitions);
 			if (effectiveCode.equals(OpenStandardsProgressStatusQuestion.NOT_SPECIFIED_CODE))
 				effectiveCode = calculatedCode;

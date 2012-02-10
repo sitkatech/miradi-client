@@ -65,4 +65,9 @@ public class CodeToCodeMap extends AbstractCodeToStringMap
 	{
 		rawPut(keyCode, valueCode);
 	}
+
+	public String getCode(String key)
+	{
+		return get(key);
+	}
 }

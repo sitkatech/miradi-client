@@ -116,7 +116,7 @@ public class TestDashboardStatusMapsCache extends TestCaseWithProject
 	private void verifyCodeInMap(CodeToChoiceMap mapAsString, final String thirdLevelRowCode, String expectedProgressCode)
 	{
 		CodeToChoiceMap map = new CodeToChoiceMap(mapAsString);
-		String calculatedStatusCode = map.get(thirdLevelRowCode);
+		String calculatedStatusCode = map.getChoiceCode(thirdLevelRowCode);
 
 		assertEquals("Incorrect status code?", expectedProgressCode, calculatedStatusCode);
 	}

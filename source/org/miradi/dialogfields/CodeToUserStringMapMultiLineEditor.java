@@ -71,7 +71,7 @@ public class CodeToUserStringMapMultiLineEditor extends ObjectScrollingMultiline
 		{
 			CodeToUserStringMap stringMap = new CodeToUserStringMap(newMapAsString);
 
-			String newValue = stringMap.get(code);
+			String newValue = stringMap.getUserString(code);
 			super.setText(newValue);
 		}
 		catch (Exception e)

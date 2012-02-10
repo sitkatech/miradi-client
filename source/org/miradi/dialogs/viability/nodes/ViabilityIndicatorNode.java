@@ -115,7 +115,7 @@ public class ViabilityIndicatorNode extends TreeTableNode
 		if (tag.equals(Indicator.TAG_THRESHOLDS_MAP))
 		{
 			int threasholdColumn = (column + 1) - getFirstIndexOfThreshold();
-			String threashold = indicator.getThresholdsMap().getCodeToUserStringMap().get(Integer.toString(threasholdColumn));
+			String threashold = indicator.getThresholdsMap().getCodeToUserStringMap().getUserString(Integer.toString(threasholdColumn));
 			
 			return new TaglessChoiceItem(threashold);
 		}

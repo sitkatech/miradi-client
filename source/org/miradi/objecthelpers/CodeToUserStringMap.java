@@ -50,6 +50,11 @@ public class CodeToUserStringMap extends AbstractCodeToStringMap
 		rawPut(code, newValue);
 	}
 
+	public String getUserString(String key)
+	{
+		return get(key);
+	}
+
 	@Override
 	public boolean equals(Object rawOther)
 	{

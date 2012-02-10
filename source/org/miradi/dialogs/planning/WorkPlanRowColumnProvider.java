@@ -70,9 +70,7 @@ public class WorkPlanRowColumnProvider extends AbstractPlanningTreeRowColumnProv
 		{
 			TableSettings tableSettings = getWorkPlanTableSettings();
 			CodeToCodeListMap tableSettingsMap = tableSettings.getTableSettingsMap();
-			String codeListAsString = tableSettingsMap.get(TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
-
-			return new CodeList(codeListAsString);
+			return tableSettingsMap.getCodeList(TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
 		}
 		catch (Exception e)
 		{

@@ -69,7 +69,7 @@ public class ColumnWidthSaver extends MouseAdapter
 		if (tableSettings != null)
 		{
 			CodeToCodeMap columnWidthMap = tableSettings.getColumnWidthMap();
-			columnWidthAsString = columnWidthMap.get(columnKey);
+			columnWidthAsString = columnWidthMap.getCode(columnKey);
 		}
 		
 		return getColumnWidth(tableColumn, columnKey, columnWidthAsString);
