@@ -34,7 +34,6 @@ import org.miradi.actions.ActionDeletePlanningViewTreeNode;
 import org.miradi.actions.ActionExpandAllRows;
 import org.miradi.actions.Actions;
 import org.miradi.dialogs.fieldComponents.ChoiceItemComboBox;
-import org.miradi.dialogs.fieldComponents.PanelTextField;
 import org.miradi.dialogs.planning.FullTimeEmployeeDaysPerYearAction;
 import org.miradi.dialogs.planning.MultiTableCollapseColumnAction;
 import org.miradi.dialogs.planning.RightClickActionProvider;
@@ -53,6 +52,7 @@ import org.miradi.dialogs.tablerenderers.NumericTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.PlanningViewFontProvider;
 import org.miradi.dialogs.tablerenderers.ProgressTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.RowColumnSelectionProvider;
+import org.miradi.dialogs.tablerenderers.SingleLineObjectTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.WhenTableCellPopupEditorOrRendererFactory;
 import org.miradi.dialogs.tablerenderers.WhoColumnTableCellEditorFactory;
 import org.miradi.main.MainWindow;
@@ -61,7 +61,6 @@ import org.miradi.objects.BaseObject;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.questions.StaticQuestionManager;
-import org.miradi.utils.SingleLineTextCellEditorFactory;
 import org.miradi.utils.TableWithColumnWidthAndSequenceSaver;
 
 public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSaver implements RowColumnSelectionProvider, RightClickActionProvider, TableWithExpandableColumnsInterface
@@ -84,7 +83,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		doubleRendererFactory = new NumericTableCellRendererFactory(this, fontProvider);
 		whoColumnTableCellEditorFactory = new WhoColumnTableCellEditorFactory(getMainWindow(), this);
 		whenColumnTableCellEditorFactory = new WhenTableCellPopupEditorOrRendererFactory(mainWindowToUse, this, fontProvider);
-		singleLineTextCellEditorFactory = new SingleLineTextCellEditorFactory(new PanelTextField());
+		singleLineTextCellEditorFactory = new SingleLineObjectTableCellRendererFactory(this, fontProvider);
 		
 		addMouseListener(new PlanningRightClickHandler(getMainWindow(), this, this));
 	}
@@ -116,7 +115,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		return getSingleLineTextCellEditorFactory();
 	}
 
-	protected SingleLineTextCellEditorFactory getSingleLineTextCellEditorFactory()
+	protected SingleLineObjectTableCellRendererFactory getSingleLineTextCellEditorFactory()
 	{
 		return singleLineTextCellEditorFactory;
 	}
@@ -262,5 +261,5 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 	private BasicTableCellEditorOrRendererFactory doubleRendererFactory;
 	private WhoColumnTableCellEditorFactory whoColumnTableCellEditorFactory;
 	private WhenTableCellPopupEditorOrRendererFactory whenColumnTableCellEditorFactory;
-	private SingleLineTextCellEditorFactory singleLineTextCellEditorFactory;
+	private SingleLineObjectTableCellRendererFactory singleLineTextCellEditorFactory;
 }
