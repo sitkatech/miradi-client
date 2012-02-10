@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-09 17:06-0600\n"
+"POT-Creation-Date: 2012-02-09 18:24-0600\n"
 "PO-Revision-Date: 2011-03-17 08:40-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -6997,9 +6997,9 @@ msgstr ""
 msgid "Tab|Stresses"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityTreeManagementPanel.java:90
-#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityManagementPanel.java:77
-#: Miradi/source/org/miradi/dialogs/viability/TargetKeaViabilityTreeManagementPanel.java:77
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityTreeManagementPanel.java:91
+#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityManagementPanel.java:78
+#: Miradi/source/org/miradi/dialogs/viability/TargetKeaViabilityTreeManagementPanel.java:78
 msgid "Tab|Viability"
 msgstr ""
 
@@ -9821,6 +9821,9 @@ msgid "FieldLabel|59.Label|Name"
 msgstr ""
 
 msgid "FieldLabel|59.FileExtension|Report File Extension"
+msgstr ""
+
+msgid "FieldLabel|59.xslTemplate|XSL Template"
 msgstr ""
 
 msgid ""
@@ -14769,7 +14772,7 @@ msgid ""
 "><br/>This view enables you to develop a<br/>Conceptual Model of your "
 "project.<br/><br/>To get started, click the <Insert Target><br/>button in "
 "the Control Bar to the left.<br/><br/>To delete this box, click on it and<br/"
-">press <delete>."
+">press &lt;delete&gt;."
 msgstr ""
 
 msgid ""
