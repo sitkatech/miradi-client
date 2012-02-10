@@ -22,9 +22,9 @@ package org.miradi.utils;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JTextField;
 
-public class SingleLineInTableCellEditorFactory extends DefaultCellEditor 
+public class SingleLineTextCellEditorFactory extends DefaultCellEditor 
 {
-	public SingleLineInTableCellEditorFactory(final JTextField textField) 
+	public SingleLineTextCellEditorFactory(final JTextField textField) 
 	{
 		super(textField);
 		

@@ -48,7 +48,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
-import org.miradi.utils.SingleLineInTableCellEditorFactory;
+import org.miradi.utils.SingleLineTextCellEditorFactory;
 
 abstract public class AssignmentDateUnitsTable extends AbstractComponentTable implements RightClickActionProvider, TableWithExpandableColumnsInterface, RowColumnBaseObjectProvider
 {
@@ -109,7 +109,7 @@ abstract public class AssignmentDateUnitsTable extends AbstractComponentTable im
 		{
 			int modelColumn = convertColumnIndexToModel(i);
 			TableColumn column = getColumnModel().getColumn(modelColumn);
-			column.setCellEditor(new SingleLineInTableCellEditorFactory(new PanelTextField()));
+			column.setCellEditor(new SingleLineTextCellEditorFactory(new PanelTextField()));
 		}
 	}
 	
