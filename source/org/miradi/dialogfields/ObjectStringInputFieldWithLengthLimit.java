@@ -37,7 +37,8 @@ public class ObjectStringInputFieldWithLengthLimit extends ObjectStringInputFiel
 		columns = columnsToUse;
 	}
 
-
+	//FIXME medium - this handler is here to remove characters exceeding column count
+	// this mechanism should be replaced with a Document with a defined length
 	class DocumentEventHandler implements  UndoableEditListener
 	{
 		public void undoableEditHappened(UndoableEditEvent e)
