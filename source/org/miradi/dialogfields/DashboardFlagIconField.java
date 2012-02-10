@@ -39,8 +39,10 @@ public class DashboardFlagIconField extends	AbstractDashboardClickableField
 	}
 	
 	@Override
-	protected void updateLabelComponent(PanelTitleLabel labelComponentToUse, String mapValue) throws Exception
+	protected void updateLabelComponent(PanelTitleLabel labelComponentToUse, Dashboard dashboard) throws Exception
 	{
+		AbstractStringToStringMap map = createStringKeyMap(dashboard);
+		String mapValue = map.get(stringMapCode);
 		labelComponentToUse.setIcon(new EmptyIcon());
 		CodeList codeList = new CodeList(mapValue);
 		if (codeList.contains(DashboardFlagsQuestion.NEEDS_ATTENTION_CODE))
@@ -49,8 +51,7 @@ public class DashboardFlagIconField extends	AbstractDashboardClickableField
 		}
 	}
 	
-	@Override
-	protected AbstractStringToStringMap createStringKeyMap(Dashboard dashboard) throws Exception
+	private AbstractStringToStringMap createStringKeyMap(Dashboard dashboard) throws Exception
 	{
 		return dashboard.getFlagsMap();
 	}
