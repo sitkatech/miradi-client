@@ -84,7 +84,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		doubleRendererFactory = new NumericTableCellRendererFactory(this, fontProvider);
 		whoColumnTableCellEditorFactory = new WhoColumnTableCellEditorFactory(getMainWindow(), this);
 		whenColumnTableCellEditorFactory = new WhenTableCellPopupEditorOrRendererFactory(mainWindowToUse, this, fontProvider);
-		doubleClickAutoSelectCellEditor = new SingleLineInTableCellEditor(new PanelTextField());
+		singleLineTextCellEditorFactory = new SingleLineInTableCellEditor(new PanelTextField());
 		
 		addMouseListener(new PlanningRightClickHandler(getMainWindow(), this, this));
 	}
@@ -118,7 +118,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 
 	protected SingleLineInTableCellEditor getDoubleClickAutoSelectCellEditor()
 	{
-		return doubleClickAutoSelectCellEditor;
+		return singleLineTextCellEditorFactory;
 	}
 
 	@Override
@@ -262,5 +262,5 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 	private BasicTableCellEditorOrRendererFactory doubleRendererFactory;
 	private WhoColumnTableCellEditorFactory whoColumnTableCellEditorFactory;
 	private WhenTableCellPopupEditorOrRendererFactory whenColumnTableCellEditorFactory;
-	private SingleLineInTableCellEditor doubleClickAutoSelectCellEditor;
+	private SingleLineInTableCellEditor singleLineTextCellEditorFactory;
 }
