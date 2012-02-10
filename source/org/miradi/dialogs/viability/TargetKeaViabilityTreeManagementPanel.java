@@ -65,7 +65,7 @@ public class TargetKeaViabilityTreeManagementPanel extends AbstractViabilityMana
 	@Override
 	public String getSplitterDescription()
 	{
-		return PANEL_DESCRIPTION + SPLITTER_TAG;
+		return PANEL_DESCRIPTION + VIABILITY_SPLITTER_TAG + SPLITTER_TAG;
 	}
 	
 	@Override
@@ -73,6 +73,7 @@ public class TargetKeaViabilityTreeManagementPanel extends AbstractViabilityMana
 	{
 		return PANEL_DESCRIPTION;
 	} 
-	
+
+	private static String VIABILITY_SPLITTER_TAG = "KEA";
 	private static String PANEL_DESCRIPTION = EAM.text("Tab|Viability");
 }
