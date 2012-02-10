@@ -37,7 +37,8 @@ abstract public class AbstractFileChooser
 	public File displayChooser()
 	{
 		JFileChooser dialog = createFileChooserDialog();
-		if (dialog.showDialog(getMainWindow(), getApproveButtonText()) != JFileChooser.APPROVE_OPTION)
+		final int result = dialog.showDialog(getMainWindow(), getApproveButtonText());
+		if (result != JFileChooser.APPROVE_OPTION)
 			return null;
 
 		File selectedFile = dialog.getSelectedFile();
