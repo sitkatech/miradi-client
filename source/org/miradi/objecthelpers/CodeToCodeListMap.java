@@ -49,12 +49,12 @@ public class CodeToCodeListMap extends AbstractStringToStringMap
 	
 	public CodeList getCodeList(String key) throws ParseException
 	{
-		return new CodeList(get(key));
+		return new CodeList(rawGet(key));
 	}
 
 	public ORefList getRefList(String key) throws ParseException
 	{
-		return new ORefList(get(key));
+		return new ORefList(rawGet(key));
 	}
 
 	public void putCodeList(String key, CodeList codes)

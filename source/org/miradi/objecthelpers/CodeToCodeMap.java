@@ -68,6 +68,6 @@ public class CodeToCodeMap extends AbstractCodeToStringMap
 
 	public String getCode(String key)
 	{
-		return get(key);
+		return rawGet(key);
 	}
 }

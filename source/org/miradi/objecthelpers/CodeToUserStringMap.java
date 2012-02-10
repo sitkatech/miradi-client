@@ -52,7 +52,7 @@ public class CodeToUserStringMap extends AbstractCodeToStringMap
 
 	public String getUserString(String key)
 	{
-		return get(key);
+		return rawGet(key);
 	}
 
 	@Override
