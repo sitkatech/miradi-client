@@ -32,7 +32,7 @@ public class GenericFileSaveChooser extends MiradiFileSaveChooser
 	}
 
 	@Override
-	protected String getUiExtensionTag()
+	protected String getFileExtensionLabel()
 	{
 		return "";
 	}
