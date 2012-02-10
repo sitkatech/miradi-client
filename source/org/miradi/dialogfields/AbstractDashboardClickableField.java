@@ -71,7 +71,8 @@ abstract public class AbstractDashboardClickableField extends ObjectDataField
 		{
 			ORef dashboardRef = getProject().getSingletonObjectRef(Dashboard.getObjectType());
 			Dashboard dashboard = Dashboard.find(getProject(), dashboardRef);
-			String mapValue = getMapValue(dashboard, stringMapCode);
+			AbstractStringToStringMap map = createStringKeyMap(dashboard);
+			String mapValue = map.get(stringMapCode);
 			updateLabelComponent(labelComponent, mapValue);
 		}
 		catch (Exception e)
@@ -93,12 +94,6 @@ abstract public class AbstractDashboardClickableField extends ObjectDataField
 		throw new RuntimeException("This is a readonly field and has no getTag() implementation. Class = " + getClass().getName());
 	}
 
-	protected String getMapValue(Dashboard dashboard, String stringMapCodeToUse) throws Exception
-	{
-		AbstractStringToStringMap map = createStringKeyMap(dashboard);
-		return map.get(stringMapCodeToUse);
-	}
-	
 	protected class ClickHandler extends MouseAdapter
 	{
 		@Override
