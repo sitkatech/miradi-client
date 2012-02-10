@@ -60,6 +60,23 @@ public class ObjectStringInputField extends ObjectTextInputField
 		((UiTextArea)getComponent()).setLineWrap(true);		
 	}
 
+	@Override
+	public void setText(String newValue)
+	{
+		newValue.replaceAll("\n", " ");
+		
+		super.setText(newValue);
+	}
+
+	@Override
+	public void focusGained(FocusEvent e)
+	{
+		super.focusGained(e);
+		
+		field.setSelectionStart(0);
+		field.setSelectionEnd(field.getSize().width);
+	}
+	
 	//FIXME medium - this handler is here to remove new lines entered by the user.
 	// this mechanism should be replaced with a Document that does not allow new lines.
 	private class DocumentEventHandler implements UndoableEditListener
@@ -84,23 +101,6 @@ public class ObjectStringInputField extends ObjectTextInputField
 				EAM.logException(e1);
 			}
 		}
-	}
-
-	@Override
-	public void setText(String newValue)
-	{
-		newValue.replaceAll("\n", " ");
-		
-		super.setText(newValue);
-	}
-
-	@Override
-	public void focusGained(FocusEvent e)
-	{
-		super.focusGained(e);
-		
-		field.setSelectionStart(0);
-		field.setSelectionEnd(field.getSize().width);
 	}
 }
 
