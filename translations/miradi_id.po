@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-09 18:24-0600\n"
+"POT-Creation-Date: 2012-02-10 08:19-0600\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -8038,7 +8038,7 @@ msgstr "Lihat Lapisan "
 msgid "Title|View..."
 msgstr "Tampilan… "
 
-#: Miradi/source/org/miradi/dialogs/xslTemplate/XslTemplatePropertiesPanel.java:44
+#: Miradi/source/org/miradi/dialogs/xslTemplate/XslTemplatePropertiesPanel.java:46
 msgid "Title|XSL Template Properties"
 msgstr ""
 

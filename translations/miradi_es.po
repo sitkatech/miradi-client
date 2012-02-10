@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-09 18:24-0600\n"
+"POT-Creation-Date: 2012-02-10 08:19-0600\n"
 "PO-Revision-Date: 2011-03-28 15:06-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -8082,7 +8082,7 @@ msgstr "Ver capas"
 msgid "Title|View..."
 msgstr "Ver…"
 
-#: Miradi/source/org/miradi/dialogs/xslTemplate/XslTemplatePropertiesPanel.java:44
+#: Miradi/source/org/miradi/dialogs/xslTemplate/XslTemplatePropertiesPanel.java:46
 msgid "Title|XSL Template Properties"
 msgstr ""
 
