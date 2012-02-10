@@ -32,6 +32,7 @@ import org.miradi.dialogs.fieldComponents.PanelTextArea;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.utils.HtmlUtilities;
 
 public class ObjectStringInputField extends ObjectTextInputField
 {
@@ -64,8 +65,18 @@ public class ObjectStringInputField extends ObjectTextInputField
 	public void setText(String newValue)
 	{
 		newValue.replaceAll("\n", " ");
+		newValue = HtmlUtilities.convertToNonHtml(newValue);
 		
 		super.setText(newValue);
+	}
+	
+	@Override
+	public String getText()
+	{
+		String text = super.getText();
+		text = HtmlUtilities.convertToHtmlText(text);
+		
+		return text;
 	}
 
 	@Override
