@@ -69,7 +69,7 @@ abstract public class AbstractCodeToCodeListMapEditorField extends AbstractStrin
 			String value = super.getText();
 			put(existingMap, key, value);
 			
-			return existingMap.toString();
+			return existingMap.toJsonString();
 		}
 		catch (Exception e)
 		{

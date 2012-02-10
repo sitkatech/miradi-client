@@ -32,7 +32,7 @@ public class StringRefMapData extends ObjectData
 	@Override
 	public String get()
 	{
-		return getStringRefMap().toString();
+		return getStringRefMap().toJsonString();
 	}
 	
 	public StringRefMap getStringRefMap()

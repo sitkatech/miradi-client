@@ -316,8 +316,8 @@ public class MigrationsOlderThanMiradiVersion2
 			
 		File threatRatingCommentsDataFile = new File(threatRatingCommentsDataDir, Integer.toString(threatRatingCommentsDataIds[0].asInt()));
 		EnhancedJsonObject threatRatingCommentsDataJson = DataUpgrader.readFile(threatRatingCommentsDataFile);
-		threatRatingCommentsDataJson.put("SimpleThreatRatingCommentsMap", simpleThreatRatingCommentsMap.toString());
-		threatRatingCommentsDataJson.put("StressBasedThreatRatingCommentsMap", stressThreatRatingCommentsMap.toString());
+		threatRatingCommentsDataJson.put("SimpleThreatRatingCommentsMap", simpleThreatRatingCommentsMap.toJsonString());
+		threatRatingCommentsDataJson.put("StressBasedThreatRatingCommentsMap", stressThreatRatingCommentsMap.toJsonString());
 		writeJsonFile(threatRatingCommentsDataFile, threatRatingCommentsDataJson);
 	}
 

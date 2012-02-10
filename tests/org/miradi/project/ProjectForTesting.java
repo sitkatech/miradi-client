@@ -336,7 +336,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		refMap.add(ConProMiradiXml.CONPRO_CONTEXT, xenodataRef1);
 		refMap.add("RandomKey", xenodataRef2);
 		
-		return refMap.toString();
+		return refMap.toJsonString();
 	}
 	
 	public void createConproXenodataReferredToByMetadata(final String conproProjectId) throws Exception
@@ -347,7 +347,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		Xenodata xenodata = createAndPopulateXenodata(conproProjectId);
 		StringRefMap refMap = new StringRefMap();
 		refMap.add(ConProMiradiXml.CONPRO_CONTEXT, xenodata.getRef());
-		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, refMap.toString());
+		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, refMap.toJsonString());
 	}
 
 	public ProjectResource createAndPopulateProjectResource() throws Exception
@@ -1095,14 +1095,14 @@ public class ProjectForTesting extends ProjectWithHelpers
 		threshold.putUserString(StatusQuestion.FAIR, "fair text");
 		threshold.putUserString(StatusQuestion.GOOD, "good text");
 		threshold.putUserString(StatusQuestion.VERY_GOOD, "very good text");
-		fillObjectUsingCommand(indicator, Indicator.TAG_THRESHOLDS_MAP, threshold.toString());
+		fillObjectUsingCommand(indicator, Indicator.TAG_THRESHOLDS_MAP, threshold.toJsonString());
 		
 		CodeToUserStringMap thresholdDetails = new CodeToUserStringMap();
 		thresholdDetails.putUserString(StatusQuestion.POOR, "poor details");
 		thresholdDetails.putUserString(StatusQuestion.FAIR, "fair details");
 		thresholdDetails.putUserString(StatusQuestion.GOOD, "good details");
 		thresholdDetails.putUserString(StatusQuestion.VERY_GOOD, "very good details");
-		fillObjectUsingCommand(indicator, Indicator.TAG_THRESHOLD_DETAILS_MAP, thresholdDetails.toString());
+		fillObjectUsingCommand(indicator, Indicator.TAG_THRESHOLD_DETAILS_MAP, thresholdDetails.toJsonString());
 		
 		fillObjectUsingCommand(indicator, Indicator.TAG_FUTURE_STATUS_RATING, StatusQuestion.GOOD);
 		fillObjectUsingCommand(indicator, Indicator.TAG_FUTURE_STATUS_DATE, "2020-01-23");
@@ -1290,7 +1290,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		CodeToUserStringMap map = new CodeToUserStringMap();
 		map.putUserString(commentsKey, comment);
 		
-		fillObjectUsingCommand(threatRatingCommentsData, tagStressBasedThreatRatingCommentsMap, map.toString());
+		fillObjectUsingCommand(threatRatingCommentsData, tagStressBasedThreatRatingCommentsMap, map.toJsonString());
 	}
 
 	public void addProgressReport(BaseObject baseObject) throws Exception
@@ -1337,11 +1337,11 @@ public class ProjectForTesting extends ProjectWithHelpers
 				
 		CodeToUserStringMap simpleThreatRatingCommentsMap = threatRatingCommentsData.getSimpleThreatRatingCommentsMap();
 		simpleThreatRatingCommentsMap.putUserString(threatTargetKey, SIMPLE_THREAT_RATING_COMMENT);
-		fillObjectUsingCommand(threatRatingCommentsData, ThreatRatingCommentsData.TAG_SIMPLE_THREAT_RATING_COMMENTS_MAP, simpleThreatRatingCommentsMap.toString());
+		fillObjectUsingCommand(threatRatingCommentsData, ThreatRatingCommentsData.TAG_SIMPLE_THREAT_RATING_COMMENTS_MAP, simpleThreatRatingCommentsMap.toJsonString());
 	
 		CodeToUserStringMap stressBasedThreatRatingCommentsMap = threatRatingCommentsData.getStressBasedThreatRatingCommentsMap();
 		stressBasedThreatRatingCommentsMap.putUserString(threatTargetKey, STRESS_BASED_THREAT_RATING_COMMENT);
-		fillObjectUsingCommand(threatRatingCommentsData, ThreatRatingCommentsData.TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAP, stressBasedThreatRatingCommentsMap.toString());
+		fillObjectUsingCommand(threatRatingCommentsData, ThreatRatingCommentsData.TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAP, stressBasedThreatRatingCommentsMap.toJsonString());
 	}
 	
 	public void populateOrganization(Organization organization) throws Exception
@@ -1457,17 +1457,17 @@ public class ProjectForTesting extends ProjectWithHelpers
 		ORef dashboardRef = getSingletonObjectRef(Dashboard.getObjectType());
 		CodeToChoiceMap progressChoiceMap = new CodeToChoiceMap();
 		progressChoiceMap.putChoiceCode(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE, OpenStandardsProgressStatusQuestion.IN_PROGRESS_CODE);
-		fillObjectUsingCommand(dashboardRef, Dashboard.TAG_PROGRESS_CHOICE_MAP, progressChoiceMap.toString());
+		fillObjectUsingCommand(dashboardRef, Dashboard.TAG_PROGRESS_CHOICE_MAP, progressChoiceMap.toJsonString());
 		
 		CodeToUserStringMap commentsMap = new CodeToUserStringMap();
 		commentsMap.putUserString(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE, "Some randome user comment");
-		fillObjectUsingCommand(dashboardRef, Dashboard.TAG_COMMENTS_MAP, commentsMap.toString());
+		fillObjectUsingCommand(dashboardRef, Dashboard.TAG_COMMENTS_MAP, commentsMap.toJsonString());
 
 		CodeToCodeListMap flagsMap = new CodeToCodeListMap();
 		CodeList flags = new CodeList();
 		flags.add(DashboardFlagsQuestion.NEEDS_ATTENTION_CODE);
 		flagsMap.putCodeList(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE, flags);
-		fillObjectUsingCommand(dashboardRef, Dashboard.TAG_FLAGS_MAP, flagsMap.toString());
+		fillObjectUsingCommand(dashboardRef, Dashboard.TAG_FLAGS_MAP, flagsMap.toJsonString());
 	}
 
 	public void validateObjectOwners(int type)

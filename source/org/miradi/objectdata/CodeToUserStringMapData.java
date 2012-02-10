@@ -33,7 +33,7 @@ public class CodeToUserStringMapData extends AbstractCodeToStringMapData
 	@Override
 	public String get()
 	{
-		return getCodeToUserStringMap().toString();
+		return getCodeToUserStringMap().toJsonString();
 	}
 	
 	public CodeToUserStringMap getCodeToUserStringMap()

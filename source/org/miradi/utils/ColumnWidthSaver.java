@@ -113,7 +113,7 @@ public class ColumnWidthSaver extends MouseAdapter
 		}
 		
 		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), getUniqueTableIdentifier());
-		CommandSetObjectData setColumnWidths = new CommandSetObjectData(tableSettings.getRef(), TableSettings.TAG_COLUMN_WIDTHS, columnWidthMap.toString());
+		CommandSetObjectData setColumnWidths = new CommandSetObjectData(tableSettings.getRef(), TableSettings.TAG_COLUMN_WIDTHS, columnWidthMap.toJsonString());
 		getProject().executeCommand(setColumnWidths);
 	}
 	

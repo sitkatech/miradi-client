@@ -291,7 +291,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 			Indicator indicator = (Indicator)baseObject;
 			final CodeToUserStringMap map = indicator.getThresholdsMap().getCodeToUserStringMap();
 			map.putUserString(Integer.toString(thresholdColumn), value.toString());
-			setValueUsingCommand(baseObject.getRef(), Indicator.TAG_THRESHOLDS_MAP, map.toString());
+			setValueUsingCommand(baseObject.getRef(), Indicator.TAG_THRESHOLDS_MAP, map.toJsonString());
 		}
 		if (isIndicatorRatingSourceColumn(row, column))
 		{
