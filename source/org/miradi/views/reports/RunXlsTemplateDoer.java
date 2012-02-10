@@ -60,7 +60,7 @@ public class RunXlsTemplateDoer extends ObjectsDoer
 			return;
 		
 		BaseObject selectedObject = getSingleSelectedObject();
-		String xlsTemplate = selectedObject.getData(XslTemplate.TAG_XSL_TEMPLATE);
+		String xlsTemplate = selectedObject.getData(XslTemplate.TAG_TEMPLATE_CONTENTS);
 		xlsTemplate = XmlUtilities2.getXmlDecoded(xlsTemplate);
 		
 		final String extension = selectedObject.getData(XslTemplate.TAG_FILE_EXTENSION);
