@@ -79,13 +79,13 @@ public class TestXmpzExporter extends TestCaseWithProject
 		validateProject();
 	}
 	
-	public void testNonEncodedThresholdValue() throws Exception
+	public void testEncodedThresholdValue() throws Exception
 	{
 		KeyEcologicalAttribute kea = getProject().createKea();
 		Indicator indicator = getProject().createIndicator(kea);
 		
 		CodeToUserStringMap threshold = new CodeToUserStringMap();
-		threshold.putUserString(StatusQuestion.POOR, "<>'\"&");
+		threshold.putUserString(StatusQuestion.POOR, "&amp;&lt;&gt;&apos;&quot;");
 		getProject().fillObjectUsingCommand(indicator, Indicator.TAG_THRESHOLDS_MAP, threshold.toJsonString());
 		validateProject();
 	}
