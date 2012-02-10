@@ -25,6 +25,7 @@ import java.io.File;
 import org.martus.util.UnicodeWriter;
 import org.miradi.objects.XslTemplate;
 import org.miradi.utils.GenericFileSaveChooser;
+import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.XmlUtilities2;
 import org.miradi.views.ObjectsDoer;
 
@@ -55,6 +56,7 @@ public class ExportXslTemplateDoer extends ObjectsDoer
 		try
 		{
 			xsl = XmlUtilities2.getXmlDecoded(xsl);
+			xsl = HtmlUtilities.convertToNonHtml(xsl);
 			writer.write(xsl);
 		}
 		finally
