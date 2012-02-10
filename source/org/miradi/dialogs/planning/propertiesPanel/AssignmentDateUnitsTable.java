@@ -48,7 +48,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
-import org.miradi.utils.DoubleClickAutoSelectCellEditor;
+import org.miradi.utils.SingleLineInTableCellEditorFactory;
 
 abstract public class AssignmentDateUnitsTable extends AbstractComponentTable implements RightClickActionProvider, TableWithExpandableColumnsInterface, RowColumnBaseObjectProvider
 {
@@ -57,7 +57,7 @@ abstract public class AssignmentDateUnitsTable extends AbstractComponentTable im
 		super(mainWindowToUse, modelToUse, UNIQUE_IDENTIFIER);
 		
 		setBackground(getColumnBackGroundColor(0));	
-		setAllColumnsToUseDoubleClickEditors();
+		setAllColumnsToUseSingleLineEditors();
 		setColumnSelectionAllowed(true);
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		FontForObjectProvider fontProvider = new PlanningViewFontProvider(getMainWindow());
@@ -102,14 +102,14 @@ abstract public class AssignmentDateUnitsTable extends AbstractComponentTable im
 		return getWorkUnitsTableModel().getCellBackgroundColor(modelColumn);
 	}
 
-	private void setAllColumnsToUseDoubleClickEditors()
+	private void setAllColumnsToUseSingleLineEditors()
 	{
 		int colCount = getColumnCount();
 		for (int i = 0; i < colCount; i++)
 		{
 			int modelColumn = convertColumnIndexToModel(i);
 			TableColumn column = getColumnModel().getColumn(modelColumn);
-			column.setCellEditor(new DoubleClickAutoSelectCellEditor(new PanelTextField()));
+			column.setCellEditor(new SingleLineInTableCellEditorFactory(new PanelTextField()));
 		}
 	}
 	

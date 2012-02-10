@@ -22,17 +22,17 @@ package org.miradi.utils;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JTextField;
 
-public class DoubleClickAutoSelectCellEditor extends DefaultCellEditor 
+public class SingleLineInTableCellEditorFactory extends DefaultCellEditor 
 {
-	public DoubleClickAutoSelectCellEditor(final JTextField textField) 
+	public SingleLineInTableCellEditorFactory(final JTextField textField) 
 	{
 		super(textField);
 		
 		setClickCountToStart(1);
-		delegate = new EditorDeletegate();
+		delegate = new OurEditorDelegate();
 	}
 	
-	final class EditorDeletegate extends EditorDelegate
+	final class OurEditorDelegate extends EditorDelegate
 	{
 		@Override
 		public void setValue(Object value) 
