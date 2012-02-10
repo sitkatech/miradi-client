@@ -22,6 +22,7 @@ package org.miradi.dialogs.xslTemplate;
 
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.main.EAM;
+import org.miradi.main.Miradi;
 import org.miradi.objects.XslTemplate;
 import org.miradi.project.Project;
 
@@ -33,7 +34,8 @@ public class XslTemplatePropertiesPanel extends ObjectDataInputPanel
 			
 		addField(createExpandableField(XslTemplate.TAG_LABEL));
 		addField(createShortStringField(XslTemplate.TAG_FILE_EXTENSION));
-		addField(createMultilineField(XslTemplate.TAG_XSL_TEMPLATE));
+		if (Miradi.isAlphaTesterMode())
+			addField(createMultilineField(XslTemplate.TAG_XSL_TEMPLATE));
 		
 		updateFieldsFromProject();
 	}
