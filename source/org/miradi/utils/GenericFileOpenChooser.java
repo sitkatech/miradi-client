@@ -41,18 +41,18 @@ public class GenericFileOpenChooser extends MiradiFileOpenChooser
 	@Override
 	protected String getApproveButtonText()
 	{
-		return EAM.text("Open");
+		return EAM.text("Button|Open");
 	}
 
 	@Override
 	protected String getApproveButtonToolTipText()
 	{
-		return EAM.text("Open Selected File");
+		return EAM.text("TT|Open Selected File");
 	}
 
 	@Override
 	protected String getDialogTitleText()
 	{
-		return EAM.text("Open");
+		return EAM.text("Title|Open");
 	}
 }
