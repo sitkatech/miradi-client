@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-09 17:06-0600\n"
+"POT-Creation-Date: 2012-02-09 18:24-0600\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -7311,9 +7311,9 @@ msgstr "Templat-templat Laporan"
 msgid "Tab|Stresses"
 msgstr "Tekanan"
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityTreeManagementPanel.java:90
-#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityManagementPanel.java:77
-#: Miradi/source/org/miradi/dialogs/viability/TargetKeaViabilityTreeManagementPanel.java:77
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityTreeManagementPanel.java:91
+#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityManagementPanel.java:78
+#: Miradi/source/org/miradi/dialogs/viability/TargetKeaViabilityTreeManagementPanel.java:78
 msgid "Tab|Viability"
 msgstr "Kelangsungan "
 
@@ -10240,6 +10240,9 @@ msgid "FieldLabel|59.Label|Name"
 msgstr ""
 
 msgid "FieldLabel|59.FileExtension|Report File Extension"
+msgstr ""
+
+msgid "FieldLabel|59.xslTemplate|XSL Template"
 msgstr ""
 
 msgid ""
@@ -17777,7 +17780,7 @@ msgid ""
 "><br/>This view enables you to develop a<br/>Conceptual Model of your "
 "project.<br/><br/>To get started, click the <Insert Target><br/>button in "
 "the Control Bar to the left.<br/><br/>To delete this box, click on it and<br/"
-">press <delete>."
+">press &lt;delete&gt;."
 msgstr ""
 
 msgid ""
