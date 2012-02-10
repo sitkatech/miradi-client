@@ -34,15 +34,16 @@ public class DashboardCommentsField extends AbstractDashboardClickableField
 		super(projectToUse, refToUse, stringMapCodeToUse);
 	}
 
-	@Override
-	protected AbstractStringToStringMap createStringKeyMap(Dashboard dashboard) throws Exception
+	private AbstractStringToStringMap createStringKeyMap(Dashboard dashboard) throws Exception
 	{
 		return dashboard.getCommentsMap();
 	}
 
 	@Override
-	protected void updateLabelComponent(PanelTitleLabel labelComponentToUse, String mapValue) throws Exception
+	protected void updateLabelComponent(PanelTitleLabel labelComponentToUse, Dashboard dashboard) throws Exception
 	{
+		AbstractStringToStringMap map = createStringKeyMap(dashboard);
+		String mapValue = map.get(stringMapCode);
 		String firstLine = mapValue;
 		int newlineAt = mapValue.indexOf("\n");
 		if (newlineAt >= 0)
