@@ -64,7 +64,7 @@ public class DashboardProgressEditorField extends AbstractStringStringMapEditorF
 			if(rows.size() > 0)
 				canBeCalculatedFromUserData = true;
 			
-			String calculatedState = getProject().getDashboardStatusMapsCache().getCalculatedStatusMap().get(getMapCode());
+			String calculatedState = getProject().getDashboardStatusMapsCache().getCalculatedStatusMap().getChoiceCode(getMapCode());
 
 			setRadioButtonEnabled(OpenStandardsProgressStatusQuestion.NOT_APPLICABLE_CODE, true);
 

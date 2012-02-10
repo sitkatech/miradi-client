@@ -22,7 +22,6 @@ package org.miradi.dialogs.base;
 
 import org.miradi.dialogfields.AbstractStringStringMapEditorField;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.AbstractStringToStringMap;
 import org.miradi.objecthelpers.CodeToCodeListMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
@@ -47,10 +46,8 @@ abstract public class AbstractCodeToCodeListMapEditorField extends AbstractStrin
 	{
 		try
 		{
-			AbstractStringToStringMap stringMap = createStringKeyMap(StringMapAsString);
-			String codeListAsString = stringMap.get(getMapCode());
-			
-			return new CodeList(codeListAsString);
+			CodeToCodeListMap stringMap = createStringKeyMap(StringMapAsString);
+			return stringMap.getCodeList(getMapCode());
 		}
 		catch(Exception e)
 		{
