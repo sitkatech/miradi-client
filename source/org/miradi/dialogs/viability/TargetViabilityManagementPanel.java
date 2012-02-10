@@ -65,7 +65,7 @@ public class TargetViabilityManagementPanel extends AbstractViabilityManagementP
 	@Override
 	public String getSplitterDescription()
 	{
-		return PANEL_DESCRIPTION + SPLITTER_TAG;
+		return PANEL_DESCRIPTION + VIABILITY_SPLITTER_TAG + SPLITTER_TAG;
 	}
 	
 	@Override
@@ -74,5 +74,6 @@ public class TargetViabilityManagementPanel extends AbstractViabilityManagementP
 		return PANEL_DESCRIPTION;
 	}
 
+	private static String VIABILITY_SPLITTER_TAG = "Target";
 	private static String PANEL_DESCRIPTION = EAM.text("Tab|Viability");
 }
