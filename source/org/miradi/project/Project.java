@@ -42,7 +42,7 @@ import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
 import org.miradi.main.ResourcesHandler;
 import org.miradi.main.VersionConstants;
-import org.miradi.objecthelpers.AbstractStringToStringMap;
+import org.miradi.objecthelpers.CodeToChoiceMap;
 import org.miradi.objecthelpers.CodeToCodeListMap;
 import org.miradi.objecthelpers.DashboardStatusMapsCache;
 import org.miradi.objecthelpers.ORef;
@@ -497,7 +497,7 @@ public class Project
 		return projectTotalCalculator;
 	}
 	
-	public AbstractStringToStringMap getCachedDashboardEffectiveMap() throws Exception
+	public CodeToChoiceMap getCachedDashboardEffectiveMap() throws Exception
 	{
 		return getDashboardStatusMapsCache().getEffectiveMap();
 	}

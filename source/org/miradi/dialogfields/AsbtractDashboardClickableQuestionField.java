@@ -22,7 +22,7 @@ package org.miradi.dialogfields;
 
 
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
-import org.miradi.objecthelpers.AbstractStringToStringMap;
+import org.miradi.objecthelpers.CodeToChoiceMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
@@ -42,7 +42,7 @@ abstract public class AsbtractDashboardClickableQuestionField extends AbstractDa
 	@Override
 	protected void updateLabelComponent(PanelTitleLabel labelComponentToUse, Dashboard dashboard) throws Exception
 	{
-		AbstractStringToStringMap map = createStringKeyMap(dashboard);
+		CodeToChoiceMap map = createStringKeyMap(dashboard);
 		String mapValue = map.get(stringMapCode);
 		ChoiceItem progressChoiceItem = question.findChoiceByCode(mapValue);
 		if(progressChoiceItem == null)
@@ -50,7 +50,7 @@ abstract public class AsbtractDashboardClickableQuestionField extends AbstractDa
 		updateLabel(labelComponentToUse, progressChoiceItem);
 	}
 	
-	private AbstractStringToStringMap createStringKeyMap(Dashboard dashboard) throws Exception
+	private CodeToChoiceMap createStringKeyMap(Dashboard dashboard) throws Exception
 	{
 		return getProject().getCachedDashboardEffectiveMap();
 	}
