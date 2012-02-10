@@ -278,45 +278,45 @@ abstract public class BaseObject
 			throw new RuntimeException("Attempted to set Ref data on non-Ref field " + fieldTag);
 	}
 
-	protected CodeToCodeMap getCodeToCodeMapData(String tag)
+	public CodeToCodeMap getCodeToCodeMapData(String tag)
 	{
 		return ((CodeToCodeMapData)getField(tag)).getCodeToCodeMap();
 	}
 	
-	protected CodeToUserStringMap getCodeToUserStringMapData(String tag)
+	public CodeToUserStringMap getCodeToUserStringMapData(String tag)
 	{
 		return ((CodeToUserStringMapData)getField(tag)).getCodeToUserStringMap();
 	}
 	
-	protected CodeToChoiceMap getCodeToChoiceMapData(String tag)
+	public CodeToChoiceMap getCodeToChoiceMapData(String tag)
 	{
 		return ((CodeToChoiceMapData)getField(tag)).getStringToChoiceMap();
 	}
 	
-	protected CodeToCodeListMap getCodeToCodeListMapData(String tag)
+	public CodeToCodeListMap getCodeToCodeListMapData(String tag)
 	{
 		return ((CodeToCodeListMapData)getField(tag)).getStringToCodeListMap();
 	}
 	
-	protected StringRefMap getStringRefMapData(String tag)
+	public StringRefMap getStringRefMapData(String tag)
 	{
 		StringRefMapData data = (StringRefMapData)getField(tag);
 		return data.getStringRefMap();
 	}
 	
-	protected Vector<DateUnit> getDateUnitListData(String tag)
+	public Vector<DateUnit> getDateUnitListData(String tag)
 	{
 		DateUnitListData data = (DateUnitListData)getField(tag);
 		return data.getDateUnits();
 	}
 	
-	protected Vector<ORefList> getRefListListData(String tag) throws Exception
+	public Vector<ORefList> getRefListListData(String tag) throws Exception
 	{
 		RefListListData data = (RefListListData)getField(tag);
 		return data.convertToRefListVector();
 	}
 	
-	protected RelevancyOverrideSet getRawRelevancyOverrideData(String tag)
+	public RelevancyOverrideSet getRawRelevancyOverrideData(String tag)
 	{
 		return ((RelevancyOverrideSetData)getField(tag)).getRawRelevancyOverrideSet();
 	}
@@ -335,6 +335,8 @@ abstract public class BaseObject
 			{
 				if (field.isUserText())
 					setHtmlDataFromNonHtml(tag, value);
+				else if(field.isCodeToUserStringMapData())
+					setData(tag, encodeIndividualMapValues(value));
 				else
 					setData(tag, value);
 			}
@@ -345,6 +347,24 @@ abstract public class BaseObject
 				setData(tag, newValue);
 			}
 		}
+	}
+
+	private String encodeIndividualMapValues(String mapAsString) throws ParseException
+	{
+		CodeToUserStringMap map = new CodeToUserStringMap();
+
+		EnhancedJsonObject json = new EnhancedJsonObject(mapAsString);
+		EnhancedJsonObject innerJson = json.optJson("StringMap");
+		Iterator it = innerJson.keys();
+		while(it.hasNext())
+		{
+			String key = (String)it.next();
+			String value = innerJson.getString(key);
+			String encoded = XmlUtilities2.getXmlEncoded(value);
+			map.putUserString(key, encoded);
+		}
+		
+		return map.toJsonString();
 	}
 
 	//FIXME This method will be removed during json legacy code cleanup
