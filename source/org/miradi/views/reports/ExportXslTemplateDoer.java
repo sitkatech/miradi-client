@@ -51,7 +51,7 @@ public class ExportXslTemplateDoer extends ObjectsDoer
 		if (userChosenFile == null)
 			return;
 		
-		String xsl = getProject().getObjectData(getSelectedRef(), XslTemplate.TAG_XSL_TEMPLATE);
+		String xsl = getProject().getObjectData(getSelectedRef(), XslTemplate.TAG_TEMPLATE_CONTENTS);
 		UnicodeWriter writer = new UnicodeWriter(userChosenFile);
 		try
 		{

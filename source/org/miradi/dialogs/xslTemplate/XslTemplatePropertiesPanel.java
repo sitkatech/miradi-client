@@ -35,7 +35,7 @@ public class XslTemplatePropertiesPanel extends ObjectDataInputPanel
 		addField(createExpandableField(XslTemplate.TAG_LABEL));
 		addField(createShortStringField(XslTemplate.TAG_FILE_EXTENSION));
 		if (Miradi.isAlphaTesterMode())
-			addField(createMultilineField(XslTemplate.TAG_XSL_TEMPLATE));
+			addField(createMultilineField(XslTemplate.TAG_TEMPLATE_CONTENTS));
 		
 		updateFieldsFromProject();
 	}

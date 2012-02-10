@@ -61,7 +61,7 @@ public class ImportXslTemplateDoer extends ObjectsDoer
 			CommandCreateObject createCommand = new CommandCreateObject(XslTemplate.getObjectType());
 			getProject().executeCommand(createCommand);
 			
-			CommandSetObjectData setXslField = new CommandSetObjectData(createCommand.getObjectRef(), XslTemplate.TAG_XSL_TEMPLATE, xslFileContent);
+			CommandSetObjectData setXslField = new CommandSetObjectData(createCommand.getObjectRef(), XslTemplate.TAG_TEMPLATE_CONTENTS, xslFileContent);
 			getProject().executeCommand(setXslField);
 			
 			final String name = XmlUtilities2.getXmlEncoded(userChosenFile.getName());
