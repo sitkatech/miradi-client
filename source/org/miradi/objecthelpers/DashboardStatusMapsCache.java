@@ -99,8 +99,8 @@ public class DashboardStatusMapsCache implements CommandExecutedListener
 			if (effectiveCode.equals(OpenStandardsProgressStatusQuestion.NOT_SPECIFIED_CODE))
 				effectiveCode = calculatedCode;
 			
-			cachedEffectiveStatusMap.rawPut(thirdLevelCode, effectiveCode);
-			cachedCalculatedStatusMap.rawPut(thirdLevelCode, calculatedCode);
+			cachedEffectiveStatusMap.putChoiceCode(thirdLevelCode, effectiveCode);
+			cachedCalculatedStatusMap.putChoiceCode(thirdLevelCode, calculatedCode);
 		}
 	}
 	
