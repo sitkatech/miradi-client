@@ -30,9 +30,9 @@ import javax.swing.table.DefaultTableCellRenderer;
 import org.miradi.dialogs.fieldComponents.PanelTextArea;
 import org.miradi.utils.HtmlUtilities;
 
-public class SingleLineObjectTableCellRendererFactory extends ObjectTableCellEditorOrRendererFactory
+public class SingleLineObjectTableCellEditorOrRendererFactory extends ObjectTableCellEditorOrRendererFactory
 {
-	public SingleLineObjectTableCellRendererFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectProvider fontProviderToUse)
+	public SingleLineObjectTableCellEditorOrRendererFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectProvider fontProviderToUse)
 	{
 		super(providerToUse, fontProviderToUse);
 		

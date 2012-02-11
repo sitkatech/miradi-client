@@ -52,7 +52,7 @@ import org.miradi.dialogs.tablerenderers.NumericTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.PlanningViewFontProvider;
 import org.miradi.dialogs.tablerenderers.ProgressTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.RowColumnSelectionProvider;
-import org.miradi.dialogs.tablerenderers.SingleLineObjectTableCellRendererFactory;
+import org.miradi.dialogs.tablerenderers.SingleLineObjectTableCellEditorOrRendererFactory;
 import org.miradi.dialogs.tablerenderers.WhenTableCellPopupEditorOrRendererFactory;
 import org.miradi.dialogs.tablerenderers.WhoColumnTableCellEditorFactory;
 import org.miradi.main.MainWindow;
@@ -83,7 +83,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		doubleRendererFactory = new NumericTableCellRendererFactory(this, fontProvider);
 		whoColumnTableCellEditorFactory = new WhoColumnTableCellEditorFactory(getMainWindow(), this);
 		whenColumnTableCellEditorFactory = new WhenTableCellPopupEditorOrRendererFactory(mainWindowToUse, this, fontProvider);
-		singleLineTextCellEditorFactory = new SingleLineObjectTableCellRendererFactory(this, fontProvider);
+		singleLineTextCellEditorFactory = new SingleLineObjectTableCellEditorOrRendererFactory(this, fontProvider);
 		
 		addMouseListener(new PlanningRightClickHandler(getMainWindow(), this, this));
 	}
@@ -115,7 +115,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		return getSingleLineTextCellEditorFactory();
 	}
 
-	protected SingleLineObjectTableCellRendererFactory getSingleLineTextCellEditorFactory()
+	protected SingleLineObjectTableCellEditorOrRendererFactory getSingleLineTextCellEditorFactory()
 	{
 		return singleLineTextCellEditorFactory;
 	}
@@ -261,5 +261,5 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 	private BasicTableCellEditorOrRendererFactory doubleRendererFactory;
 	private WhoColumnTableCellEditorFactory whoColumnTableCellEditorFactory;
 	private WhenTableCellPopupEditorOrRendererFactory whenColumnTableCellEditorFactory;
-	private SingleLineObjectTableCellRendererFactory singleLineTextCellEditorFactory;
+	private SingleLineObjectTableCellEditorOrRendererFactory singleLineTextCellEditorFactory;
 }
