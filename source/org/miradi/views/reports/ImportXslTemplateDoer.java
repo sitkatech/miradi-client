@@ -52,8 +52,7 @@ public class ImportXslTemplateDoer extends ObjectsDoer
 			return;
 		
 		String xslFileContent = UnicodeReader.getFileContents(userChosenFile);
-		xslFileContent = XmlUtilities2.getXmlEncoded(xslFileContent);
-		xslFileContent = HtmlUtilities.removeNonHtmlNewLines(xslFileContent);
+		xslFileContent = HtmlUtilities.convertToHtmlText(xslFileContent);
 
 		getProject().executeBeginTransaction();
 		try
