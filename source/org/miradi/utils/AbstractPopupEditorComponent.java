@@ -28,7 +28,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import org.miradi.dialogs.fieldComponents.PanelButton;
-import org.miradi.dialogs.tablerenderers.MultiLineEditableObjectTableCellEditorOrRendererFactory;
+import org.miradi.dialogs.tablerenderers.ExpandingReadonlyTableCellEditorOrRendererFactory;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -46,7 +46,7 @@ abstract public class AbstractPopupEditorComponent extends PopupEditorComponent
 		addListeners();
 	}
 	
-	public void setStopEditingListener(MultiLineEditableObjectTableCellEditorOrRendererFactory listener)
+	public void setStopEditingListener(ExpandingReadonlyTableCellEditorOrRendererFactory listener)
 	{
 		stopEditingListener = listener;
 	}
@@ -143,5 +143,5 @@ abstract public class AbstractPopupEditorComponent extends PopupEditorComponent
 	private PanelButton popupInvokeButton;
 	private PopUpEditorHandler popupEditHandler;
 	private EditableHtmlPane currentSelectionText;
-	protected MultiLineEditableObjectTableCellEditorOrRendererFactory stopEditingListener;
+	protected ExpandingReadonlyTableCellEditorOrRendererFactory stopEditingListener;
 }
