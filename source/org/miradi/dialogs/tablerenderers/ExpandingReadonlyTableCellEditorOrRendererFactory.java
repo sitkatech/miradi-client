@@ -29,9 +29,9 @@ import org.miradi.main.MainWindow;
 import org.miradi.utils.TableWithRowHeightSaver;
 import org.miradi.utils.TextFieldPopupEditorComponent;
 
-public class MultiLineEditableObjectTableCellEditorOrRendererFactory extends ObjectTableCellEditorOrRendererFactory
+public class ExpandingReadonlyTableCellEditorOrRendererFactory extends ObjectTableCellEditorOrRendererFactory
 {
-	public MultiLineEditableObjectTableCellEditorOrRendererFactory(MainWindow mainWindowToUse, RowColumnBaseObjectProvider providerToUse, FontForObjectProvider fontProviderToUse)
+	public ExpandingReadonlyTableCellEditorOrRendererFactory(MainWindow mainWindowToUse, RowColumnBaseObjectProvider providerToUse, FontForObjectProvider fontProviderToUse)
 	{
 		super(providerToUse, fontProviderToUse);
 		
