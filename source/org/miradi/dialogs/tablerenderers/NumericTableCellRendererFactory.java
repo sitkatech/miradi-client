@@ -33,7 +33,7 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objects.BaseObject;
 
-public class NumericTableCellRendererFactory extends SingleLineObjectTableCellRendererFactory
+public class NumericTableCellRendererFactory extends SingleLineObjectTableCellEditorOrRendererFactory
 {
 	public NumericTableCellRendererFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectProvider fontProviderToUse)
 	{

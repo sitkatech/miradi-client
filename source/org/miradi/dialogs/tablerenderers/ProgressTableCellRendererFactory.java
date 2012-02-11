@@ -36,7 +36,7 @@ public class ProgressTableCellRendererFactory extends ObjectTableCellEditorOrRen
 		super(providerToUse, fontProviderToUse);
 		
 		choiceItemRendererFactory = new ChoiceItemTableCellRendererFactory(providerToUse, fontProviderToUse);
-		singleLineRendererFactory = new SingleLineObjectTableCellRendererFactory(providerToUse, fontProviderToUse);		
+		singleLineRendererFactory = new SingleLineObjectTableCellEditorOrRendererFactory(providerToUse, fontProviderToUse);		
 	}
 
 	@Override
@@ -80,5 +80,5 @@ public class ProgressTableCellRendererFactory extends ObjectTableCellEditorOrRen
 	}
 	
 	private ChoiceItemTableCellRendererFactory choiceItemRendererFactory;
-	private SingleLineObjectTableCellRendererFactory singleLineRendererFactory;
+	private SingleLineObjectTableCellEditorOrRendererFactory singleLineRendererFactory;
 }
