@@ -28,12 +28,13 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.dialogs.tablerenderers.BasicTableCellEditorOrRendererFactory;
 import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.CodeListRendererFactory;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
+import org.miradi.dialogs.tablerenderers.MultiLineObjectTableCellRendererOnlyFactory;
 import org.miradi.dialogs.tablerenderers.QuestionPopupEditorTableCellEditorFactory;
 import org.miradi.dialogs.tablerenderers.RowColumnSelectionProvider;
-import org.miradi.dialogs.tablerenderers.SingleLineObjectTableCellRendererFactory;
 import org.miradi.ids.BaseId;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
@@ -56,7 +57,7 @@ abstract public class ObjectTable extends EditableObjectTable implements ObjectP
 		
 		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
 		statusQuestionRenderer = new ChoiceItemTableCellRendererFactory(this, fontProvider);
-		otherRenderer = new SingleLineObjectTableCellRendererFactory(this, fontProvider);
+		otherRenderer = new MultiLineObjectTableCellRendererOnlyFactory(mainWindowToUse, this, fontProvider);
 		codeListRenderer = new CodeListRendererFactory(mainWindowToUse, this, fontProvider);
 	}
 	
@@ -239,6 +240,6 @@ abstract public class ObjectTable extends EditableObjectTable implements ObjectP
 	}
 	
 	private ChoiceItemTableCellRendererFactory statusQuestionRenderer;
-	private SingleLineObjectTableCellRendererFactory otherRenderer;
+	private BasicTableCellEditorOrRendererFactory otherRenderer;
 	private CodeListRendererFactory codeListRenderer;
 }
