@@ -57,7 +57,7 @@ abstract public class ObjectTable extends EditableObjectTable implements ObjectP
 		
 		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
 		statusQuestionRenderer = new ChoiceItemTableCellRendererFactory(this, fontProvider);
-		otherRenderer = new MultiLineObjectTableCellRendererOnlyFactory(mainWindowToUse, this, fontProvider);
+		multiLineRenderer = new MultiLineObjectTableCellRendererOnlyFactory(mainWindowToUse, this, fontProvider);
 		codeListRenderer = new CodeListRendererFactory(mainWindowToUse, this, fontProvider);
 	}
 	
@@ -104,7 +104,7 @@ abstract public class ObjectTable extends EditableObjectTable implements ObjectP
 			return statusQuestionRenderer;
 		}
 	
-		return otherRenderer;
+		return multiLineRenderer;
 	}
 	
 	public BaseObject getBaseObjectForRowColumn(int row, int column)
@@ -240,6 +240,6 @@ abstract public class ObjectTable extends EditableObjectTable implements ObjectP
 	}
 	
 	private ChoiceItemTableCellRendererFactory statusQuestionRenderer;
-	private BasicTableCellEditorOrRendererFactory otherRenderer;
+	private BasicTableCellEditorOrRendererFactory multiLineRenderer;
 	private CodeListRendererFactory codeListRenderer;
 }
