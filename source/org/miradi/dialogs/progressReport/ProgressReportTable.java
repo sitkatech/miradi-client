@@ -21,11 +21,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.progressReport;
 
 import org.miradi.dialogs.base.EditableObjectTableModel;
-import org.miradi.dialogs.base.EditableRefsTable;
+import org.miradi.dialogs.base.DynamicWidthEditableObjectTable;
 import org.miradi.main.MainWindow;
 import org.miradi.questions.ProgressReportLongStatusQuestion;
 
-public class ProgressReportTable extends EditableRefsTable
+public class ProgressReportTable extends DynamicWidthEditableObjectTable
 {
 	public ProgressReportTable(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse) throws Exception
 	{

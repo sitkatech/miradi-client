@@ -24,9 +24,9 @@ import javax.swing.JTable;
 
 import org.miradi.main.MainWindow;
 
-abstract public class EditableRefsTable extends EditableObjectTable
+abstract public class DynamicWidthEditableObjectTable extends EditableObjectTable
 {
-	public EditableRefsTable(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse) throws Exception
+	public DynamicWidthEditableObjectTable(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse) throws Exception
 	{
 		super(mainWindowToUse, modelToUse, modelToUse.getUniqueTableModelIdentifier());
 		

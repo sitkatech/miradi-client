@@ -21,10 +21,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.progressPercent;
 
 import org.miradi.dialogs.base.EditableObjectTableModel;
-import org.miradi.dialogs.base.EditableRefsTable;
+import org.miradi.dialogs.base.DynamicWidthEditableObjectTable;
 import org.miradi.main.MainWindow;
 
-public class ProgressPercentTable extends EditableRefsTable
+public class ProgressPercentTable extends DynamicWidthEditableObjectTable
 {
 	public ProgressPercentTable(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse) throws Exception
 	{
