@@ -26,7 +26,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 
-abstract public class ObjectListTableModel extends ObjectTableModel
+abstract public class ObjectListTableModel extends UpperPanelBaseObjectTableModel
 {
 	public ObjectListTableModel(Project projectToUse, ORef containingRefToUse, String listFieldTag, int listedItemType, String[] columnTags)
 	{

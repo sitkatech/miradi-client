@@ -28,9 +28,9 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.utils.CodeList;
 
-abstract public class ObjectTableModel extends EditableObjectTableModel
+abstract public class UpperPanelBaseObjectTableModel extends EditableObjectTableModel
 {
-	public ObjectTableModel(Project projectToUse, int listedItemType, String[] tableColumnTags)
+	public UpperPanelBaseObjectTableModel(Project projectToUse, int listedItemType, String[] tableColumnTags)
 	{
 		super(projectToUse);
 		

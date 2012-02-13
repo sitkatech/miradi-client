@@ -24,12 +24,12 @@ import org.miradi.views.umbrella.ObjectPicker;
 
 abstract public class ObjectListTablePanel extends ObjectTablePanel
 {
-	public ObjectListTablePanel(MainWindow mainWindowToUse, ObjectTableModel model, ObjectPicker parentPickerToUse)
+	public ObjectListTablePanel(MainWindow mainWindowToUse, UpperPanelBaseObjectTableModel model, ObjectPicker parentPickerToUse)
 	{
 		this(mainWindowToUse, new ObjectListTable(mainWindowToUse, model), parentPickerToUse);
 	}
 	
-	public ObjectListTablePanel(MainWindow mainWindowToUse, ObjectTableModel model, ObjectPicker parentPickerToUse, int sortColumn)
+	public ObjectListTablePanel(MainWindow mainWindowToUse, UpperPanelBaseObjectTableModel model, ObjectPicker parentPickerToUse, int sortColumn)
 	{
 		this(mainWindowToUse, new ObjectListTable(mainWindowToUse, model, sortColumn), parentPickerToUse);
 	}

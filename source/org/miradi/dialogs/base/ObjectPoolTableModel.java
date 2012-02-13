@@ -22,7 +22,7 @@ package org.miradi.dialogs.base;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.project.Project;
 
-abstract public class ObjectPoolTableModel extends ObjectTableModel
+abstract public class ObjectPoolTableModel extends UpperPanelBaseObjectTableModel
 {
 	public ObjectPoolTableModel(Project projectToUse, int listedItemType, String[] columnTagsToUse)
 	{

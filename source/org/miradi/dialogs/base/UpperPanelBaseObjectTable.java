@@ -46,7 +46,7 @@ import org.miradi.utils.CodeList;
 
 abstract public class UpperPanelBaseObjectTable extends EditableBaseObjectTable implements RowColumnSelectionProvider
 {
-	public UpperPanelBaseObjectTable(MainWindow mainWindowToUse, ObjectTableModel modelToUse)
+	public UpperPanelBaseObjectTable(MainWindow mainWindowToUse, UpperPanelBaseObjectTableModel modelToUse)
 	{
 		super(mainWindowToUse, modelToUse, modelToUse.getUniqueTableModelIdentifier());
 		
@@ -63,7 +63,7 @@ abstract public class UpperPanelBaseObjectTable extends EditableBaseObjectTable 
 	@Override
 	public void rebuildColumnEditorsAndRenderers()
 	{
-		ObjectTableModel model = getObjectTableModel();
+		UpperPanelBaseObjectTableModel model = getObjectTableModel();
 		for (int tableColumn = 0; tableColumn < model.getColumnCount(); ++tableColumn)
 		{
 			int modelColumn = convertColumnIndexToModel(tableColumn);
@@ -127,9 +127,9 @@ abstract public class UpperPanelBaseObjectTable extends EditableBaseObjectTable 
 		scrollToAndSelectRow(rowToSelect);
 	}
 	
-	public ObjectTableModel getObjectTableModel()
+	public UpperPanelBaseObjectTableModel getObjectTableModel()
 	{
-		return (ObjectTableModel)getModel();
+		return (UpperPanelBaseObjectTableModel)getModel();
 	}
 	
 	@Override
