@@ -21,11 +21,11 @@ package org.miradi.dialogs.treeRelevancy;
 
 import java.awt.Dimension;
 
-import org.miradi.dialogs.base.EditableObjectTable;
+import org.miradi.dialogs.base.EditableBaseObjectTable;
 import org.miradi.dialogs.base.EditableObjectTableModel;
 import org.miradi.main.MainWindow;
 
-public class StrategyActivityRelevancyTable extends EditableObjectTable
+public class StrategyActivityRelevancyTable extends EditableBaseObjectTable
 {
 	public StrategyActivityRelevancyTable(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse)
 	{

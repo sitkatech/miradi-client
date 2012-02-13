@@ -24,7 +24,7 @@ import javax.swing.JTable;
 
 import org.miradi.main.MainWindow;
 
-abstract public class DynamicWidthEditableObjectTable extends EditableObjectTable
+abstract public class DynamicWidthEditableObjectTable extends EditableBaseObjectTable
 {
 	public DynamicWidthEditableObjectTable(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse) throws Exception
 	{

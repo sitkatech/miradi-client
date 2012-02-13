@@ -56,9 +56,9 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.SortableRowTable;
 import org.miradi.views.umbrella.ObjectPicker;
 
-abstract public class EditableObjectTable extends SortableRowTable  implements ObjectPicker
+abstract public class EditableBaseObjectTable extends SortableRowTable  implements ObjectPicker
 {
-	public EditableObjectTable(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse, String uniqueTableIdentifierToUse)
+	public EditableBaseObjectTable(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse, String uniqueTableIdentifierToUse)
 	{
 		super(mainWindowToUse, modelToUse, uniqueTableIdentifierToUse);
 		
