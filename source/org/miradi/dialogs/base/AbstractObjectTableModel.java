@@ -23,8 +23,10 @@ package org.miradi.dialogs.base;
 import java.util.Comparator;
 
 import org.miradi.dialogs.threatrating.upperPanel.TableModelChoiceItemComparator;
+import org.miradi.main.MiradiUiSchema;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.SortableTableModel;
@@ -56,6 +58,27 @@ abstract public class AbstractObjectTableModel extends SortableTableModel
 	public boolean isCodeListColumn(int column)
 	{
 		return false;
+	}
+	
+	public boolean isSingleLineTextCell(int row, int column)
+	{
+		ORef ref = getObjectRef(row);
+		BaseObject object = BaseObject.find(getProject(), ref);
+		String tag = getColumnTag(column);
+		return MiradiUiSchema.isSingleLineTextCell(object, tag);
+	}
+
+	public boolean isMultiLineTextCell(int row, int column)
+	{
+		ORef ref = getObjectRef(row);
+		BaseObject object = BaseObject.find(getProject(), ref);
+		String tag = getColumnTag(column);
+		return MiradiUiSchema.isMultiLineTextCell(object, tag);
+	}
+
+	protected ORef getObjectRef(int row)
+	{
+		return getRowObjectRefs().get(row);
 	}
 	
 	public Project getProject()

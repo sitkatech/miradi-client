@@ -87,6 +87,18 @@ abstract public class UpperPanelBaseObjectTable extends EditableBaseObjectTable 
 	{
 		return new CodeList();
 	}
+	
+	@Override
+	public boolean isCellEditable(int row, int tableColumn)
+	{
+		int modelColumn = convertColumnIndexToModel(tableColumn);
+		if (getObjectTableModel().isCodeListColumn(modelColumn))
+			return false;
+		if(getObjectTableModel().isMultiLineTextCell(row, tableColumn))
+			return false;
+		
+		return super.isCellEditable(row, tableColumn);
+	}
 
 	@Override
 	public TableCellRenderer getCellRenderer(int row, int tableColumn)
@@ -110,18 +122,17 @@ abstract public class UpperPanelBaseObjectTable extends EditableBaseObjectTable 
 	public TableCellEditor getCellEditor(int row, int tableColumn)
 	{
 		int modelColumn = convertColumnIndexToModel(tableColumn);
-		if (getObjectTableModel().isCodeListColumn(modelColumn))
-		{
-			codeListRenderer.setQuestion(getObjectTableModel().getColumnQuestion(modelColumn));
-			return codeListRenderer;
-		}
-		
 		if (getObjectTableModel().isChoiceItemColumn(modelColumn))
 		{
 			return statusQuestionRenderer;
 		}
 		
-		return singleLineRendererOrEditorFactory;
+		if (getObjectTableModel().isSingleLineTextCell(row, modelColumn))
+		{
+			return singleLineRendererOrEditorFactory;
+		}
+		
+		throw new RuntimeException("This cell is not yet editable");
 	}
 	
 	public BaseObject getBaseObjectForRowColumn(int row, int column)
