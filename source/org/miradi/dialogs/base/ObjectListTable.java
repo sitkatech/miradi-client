@@ -32,7 +32,7 @@ import org.miradi.objects.BaseObject;
 
 public class ObjectListTable extends UpperPanelBaseObjectTable
 {
-	public ObjectListTable(MainWindow mainWindowToUse, ObjectTableModel modelToUse)
+	public ObjectListTable(MainWindow mainWindowToUse, UpperPanelBaseObjectTableModel modelToUse)
 	{
 		super(mainWindowToUse, modelToUse);
 		
@@ -40,7 +40,7 @@ public class ObjectListTable extends UpperPanelBaseObjectTable
 		resizeTable(4);
 	}
 	
-	public ObjectListTable(MainWindow mainWindowToUse, ObjectTableModel modelToUse, int sortColumn)
+	public ObjectListTable(MainWindow mainWindowToUse, UpperPanelBaseObjectTableModel modelToUse, int sortColumn)
 	{
 		this(mainWindowToUse, modelToUse);
 	}
