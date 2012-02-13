@@ -31,7 +31,7 @@ import org.miradi.objects.BudgetCategoryOne;
 import org.miradi.objects.BudgetCategoryTwo;
 import org.miradi.objects.FundingSource;
 
-public class AbstractAssignmentDetailsMainTable extends AbstractComponentTable
+public class AbstractAssignmentDetailsMainTable extends AbstractAssignmentDetailsTable
 {
 	public AbstractAssignmentDetailsMainTable(MainWindow mainWindowToUse, AbstractSummaryTableModel modelToUse, String uniqueIdentifier) throws Exception
 	{

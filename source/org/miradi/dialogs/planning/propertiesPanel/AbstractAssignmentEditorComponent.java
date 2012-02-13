@@ -157,7 +157,7 @@ abstract public class AbstractAssignmentEditorComponent extends MultiTablePanel 
 		add(createButtonBar(), BorderLayout.BEFORE_FIRST_LINE);
 	}
 	
-	private UiScrollPane addTableToPanel(JPanel tables, AbstractComponentTable table)
+	private UiScrollPane addTableToPanel(JPanel tables, AbstractAssignmentDetailsTable table)
 	{
 		addRowHeightControlledTable(table);
 		ComponentTableScrollPane scroller = new ComponentTableScrollPane(table);

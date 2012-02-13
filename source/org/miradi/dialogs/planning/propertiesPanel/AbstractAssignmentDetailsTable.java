@@ -26,9 +26,9 @@ import org.miradi.dialogs.base.EditableObjectTable;
 import org.miradi.dialogs.base.EditableObjectTableModel;
 import org.miradi.main.MainWindow;
 
-abstract public class AbstractComponentTable extends EditableObjectTable
+abstract public class AbstractAssignmentDetailsTable extends EditableObjectTable
 {
-	public AbstractComponentTable(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse, String uniqueTableIdentifierToUse)
+	public AbstractAssignmentDetailsTable(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse, String uniqueTableIdentifierToUse)
 	{
 		super(mainWindowToUse, modelToUse, uniqueTableIdentifierToUse);
 	}
