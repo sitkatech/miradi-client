@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-10 13:43-0600\n"
+"POT-Creation-Date: 2012-02-13 13:25-0600\n"
 "PO-Revision-Date: 2011-04-29 11:26+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -301,7 +301,7 @@ msgid "(Definition Not Available)"
 msgstr "(Definizione Non Disponibile)"
 
 #: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:118
-#: Miradi/source/org/miradi/dialogs/base/ObjectTableModel.java:118
+#: Miradi/source/org/miradi/dialogs/base/UpperPanelBaseObjectTableModel.java:118
 msgid "(Error)"
 msgstr "(Errore)"
 
