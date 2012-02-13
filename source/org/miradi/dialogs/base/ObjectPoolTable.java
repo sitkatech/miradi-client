@@ -24,7 +24,7 @@ import javax.swing.ListSelectionModel;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 
-public class ObjectPoolTable extends ObjectTable
+public class ObjectPoolTable extends UpperPanelBaseObjectTable
 {
 	public ObjectPoolTable(MainWindow mainWindowToUse, ObjectPoolTableModel modelToUse)
 	{
