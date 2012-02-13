@@ -22,7 +22,7 @@ package org.miradi.dialogs.base;
 
 import org.miradi.main.MainWindow;
 
-abstract public class EditableRefsTableWithTenRowsBeforeScrolling extends EditableRefsTable
+abstract public class EditableRefsTableWithTenRowsBeforeScrolling extends DynamicWidthEditableObjectTable
 {
 	public EditableRefsTableWithTenRowsBeforeScrolling(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse) throws Exception
 	{

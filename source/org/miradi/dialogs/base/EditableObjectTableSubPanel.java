@@ -144,5 +144,5 @@ abstract public class EditableObjectTableSubPanel extends ObjectDataInputPanel
 	
 	private PanelTitleLabel rowCountLanel;
 	protected EditableObjectRefsTableModel objectTableModel;
-	protected EditableRefsTable objectTable;
+	protected DynamicWidthEditableObjectTable objectTable;
 }
