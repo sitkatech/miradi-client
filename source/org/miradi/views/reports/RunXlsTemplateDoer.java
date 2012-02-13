@@ -36,7 +36,7 @@ import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.XslTemplate;
 import org.miradi.utils.FileSaveChooserWithUserDefinedFileFilter;
-import org.miradi.utils.XmlUtilities2;
+import org.miradi.utils.HtmlUtilities;
 import org.miradi.views.ObjectsDoer;
 import org.miradi.xml.wcs.XmpzXmlExporter;
 import org.w3c.dom.Document;
@@ -61,7 +61,7 @@ public class RunXlsTemplateDoer extends ObjectsDoer
 		
 		BaseObject selectedObject = getSingleSelectedObject();
 		String xlsTemplate = selectedObject.getData(XslTemplate.TAG_TEMPLATE_CONTENTS);
-		xlsTemplate = XmlUtilities2.getXmlDecoded(xlsTemplate);
+		xlsTemplate = HtmlUtilities.convertToNonHtml(xlsTemplate);
 		
 		final String extension = selectedObject.getData(XslTemplate.TAG_FILE_EXTENSION);
 		
