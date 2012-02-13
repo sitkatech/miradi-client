@@ -44,9 +44,9 @@ import org.miradi.objects.ProjectResource;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
 
-abstract public class ObjectTable extends EditableBaseObjectTable implements RowColumnSelectionProvider
+abstract public class UpperPanelBaseObjectTable extends EditableBaseObjectTable implements RowColumnSelectionProvider
 {
-	public ObjectTable(MainWindow mainWindowToUse, ObjectTableModel modelToUse)
+	public UpperPanelBaseObjectTable(MainWindow mainWindowToUse, ObjectTableModel modelToUse)
 	{
 		super(mainWindowToUse, modelToUse, modelToUse.getUniqueTableModelIdentifier());
 		

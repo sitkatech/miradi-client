@@ -30,7 +30,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 
-public class ObjectListTable extends ObjectTable
+public class ObjectListTable extends UpperPanelBaseObjectTable
 {
 	public ObjectListTable(MainWindow mainWindowToUse, ObjectTableModel modelToUse)
 	{

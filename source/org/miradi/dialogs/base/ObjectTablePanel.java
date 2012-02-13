@@ -34,7 +34,7 @@ import org.miradi.objects.BaseObject;
 
 public class ObjectTablePanel extends ObjectCollectionPanel implements ListSelectionListener
 {
-	public ObjectTablePanel(MainWindow mainWindowToUse, ObjectTable tableToUse)
+	public ObjectTablePanel(MainWindow mainWindowToUse, UpperPanelBaseObjectTable tableToUse)
 	{
 		super(mainWindowToUse, tableToUse);
 		table = tableToUse;
@@ -126,10 +126,10 @@ public class ObjectTablePanel extends ObjectCollectionPanel implements ListSelec
 		}
 	}
 
-	public ObjectTable getTable()
+	public UpperPanelBaseObjectTable getTable()
 	{
 		return table;
 	}
 	
-	ObjectTable table;
+	UpperPanelBaseObjectTable table;
 }
