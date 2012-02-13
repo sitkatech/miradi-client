@@ -21,13 +21,14 @@ package org.miradi.dialogs.tablerenderers;
 
 import java.awt.Component;
 
+import javax.swing.DefaultCellEditor;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 
-import org.miradi.dialogs.fieldComponents.PanelTextArea;
 import org.miradi.utils.HtmlUtilities;
 
 public class SingleLineObjectTableCellEditorOrRendererFactory extends ObjectTableCellEditorOrRendererFactory
@@ -37,7 +38,7 @@ public class SingleLineObjectTableCellEditorOrRendererFactory extends ObjectTabl
 		super(providerToUse, fontProviderToUse);
 		
 		rendererComponent = new HtmlEncodedCellRenderer();
-		editorComponent = new HtmlEncodedTextArea();
+		editorComponent = new HtmlEncodedCellEditor();
 	}
 	
 	@Override
@@ -57,11 +58,11 @@ public class SingleLineObjectTableCellEditorOrRendererFactory extends ObjectTabl
 	@Override
 	public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int tableColumn)
 	{
-		updateBorderAndColors(editorComponent, table, row, tableColumn, isSelected);
-		editorComponent.setFont(getCellFont(row, tableColumn));
+		updateBorderAndColors(editorComponent.getJComponent(), table, row, tableColumn, isSelected);
+		editorComponent.getComponent().setFont(getCellFont(row, tableColumn));
 		editorComponent.setText(value.toString());
 		
-		return editorComponent;
+		return editorComponent.getComponent();
 	}
 	
 	@Override
@@ -70,20 +71,34 @@ public class SingleLineObjectTableCellEditorOrRendererFactory extends ObjectTabl
 		return editorComponent.getText();
 	}
 	
-	private class HtmlEncodedTextArea extends PanelTextArea
+	private class HtmlEncodedCellEditor extends DefaultCellEditor
 	{
-		@Override
+		public HtmlEncodedCellEditor()
+		{
+			super(new JTextField());
+			setClickCountToStart(1);
+		}
+
+		public JComponent getJComponent()
+		{
+			return getTextEditorComponent();
+		}
+
+		private JTextField getTextEditorComponent()
+		{
+			return (JTextField)getComponent();
+		}
+
 		public void setText(String text)
 		{
 			text = HtmlUtilities.convertToNonHtml(text);
 			
-			super.setText(text);
+			getTextEditorComponent().setText(text);
 		}
 		
-		@Override
 		public String getText()
 		{
-			String text = super.getText();
+			String text = getTextEditorComponent().getText();
 			text = HtmlUtilities.convertToHtmlText(text);
 			
 			return text;
@@ -101,5 +116,5 @@ public class SingleLineObjectTableCellEditorOrRendererFactory extends ObjectTabl
 	}
 
 	private DefaultTableCellRenderer rendererComponent;
-	private HtmlEncodedTextArea editorComponent;
+	private HtmlEncodedCellEditor editorComponent;
 }
