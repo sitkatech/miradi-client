@@ -24,17 +24,17 @@ import java.util.Vector;
 
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.dialogs.tablerenderers.BasicTableCellEditorOrRendererFactory;
 import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.CodeListRendererFactory;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
-import org.miradi.dialogs.tablerenderers.MultiLineObjectTableCellRendererOnlyFactory;
 import org.miradi.dialogs.tablerenderers.QuestionPopupEditorTableCellEditorFactory;
 import org.miradi.dialogs.tablerenderers.RowColumnSelectionProvider;
+import org.miradi.dialogs.tablerenderers.SingleLineObjectTableCellEditorOrRendererFactory;
 import org.miradi.ids.BaseId;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
@@ -56,8 +56,8 @@ abstract public class UpperPanelBaseObjectTable extends EditableBaseObjectTable 
 		
 		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
 		statusQuestionRenderer = new ChoiceItemTableCellRendererFactory(this, fontProvider);
-		multiLineRenderer = new MultiLineObjectTableCellRendererOnlyFactory(mainWindowToUse, this, fontProvider);
 		codeListRenderer = new CodeListRendererFactory(mainWindowToUse, this, fontProvider);
+		singleLineRendererOrEditorFactory = new SingleLineObjectTableCellEditorOrRendererFactory(this, fontProvider);
 	}
 	
 	@Override
@@ -102,8 +102,26 @@ abstract public class UpperPanelBaseObjectTable extends EditableBaseObjectTable 
 		{
 			return statusQuestionRenderer;
 		}
+		
+		return singleLineRendererOrEditorFactory;
+	}
 	
-		return multiLineRenderer;
+	@Override
+	public TableCellEditor getCellEditor(int row, int tableColumn)
+	{
+		int modelColumn = convertColumnIndexToModel(tableColumn);
+		if (getObjectTableModel().isCodeListColumn(modelColumn))
+		{
+			codeListRenderer.setQuestion(getObjectTableModel().getColumnQuestion(modelColumn));
+			return codeListRenderer;
+		}
+		
+		if (getObjectTableModel().isChoiceItemColumn(modelColumn))
+		{
+			return statusQuestionRenderer;
+		}
+		
+		return singleLineRendererOrEditorFactory;
 	}
 	
 	public BaseObject getBaseObjectForRowColumn(int row, int column)
@@ -238,7 +256,7 @@ abstract public class UpperPanelBaseObjectTable extends EditableBaseObjectTable 
 		throw new RuntimeException("Method is currently unused and has no implementation");
 	}
 	
+	private SingleLineObjectTableCellEditorOrRendererFactory singleLineRendererOrEditorFactory;
 	private ChoiceItemTableCellRendererFactory statusQuestionRenderer;
-	private BasicTableCellEditorOrRendererFactory multiLineRenderer;
 	private CodeListRendererFactory codeListRenderer;
 }
