@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.taggedObjectSet;
 
-import org.miradi.dialogs.base.EditableObjectTable;
+import org.miradi.dialogs.base.EditableBaseObjectTable;
 import org.miradi.dialogs.base.SingleBooleanColumnEditableModel;
 import org.miradi.dialogs.treeRelevancy.AbstractEditableTreeTablePanel;
 import org.miradi.dialogs.treetables.TreeTableWithStateSaving;
@@ -49,7 +49,7 @@ public class TaggedObjectSetTreeTablePanel extends AbstractEditableTreeTablePane
 	}
 	
 	@Override
-	protected EditableObjectTable createEditableTable()
+	protected EditableBaseObjectTable createEditableTable()
 	{
 		return new TaggedObjectSetEditableTable(getMainWindow(), getEditableSingleBooleanColumnTableModel());
 	}	

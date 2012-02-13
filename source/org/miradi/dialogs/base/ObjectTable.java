@@ -45,7 +45,7 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.views.umbrella.ObjectPicker;
 
-abstract public class ObjectTable extends EditableObjectTable implements ObjectPicker, RowColumnSelectionProvider
+abstract public class ObjectTable extends EditableBaseObjectTable implements ObjectPicker, RowColumnSelectionProvider
 {
 	public ObjectTable(MainWindow mainWindowToUse, ObjectTableModel modelToUse)
 	{

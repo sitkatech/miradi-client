@@ -21,7 +21,7 @@ package org.miradi.dialogs.treeRelevancy;
 
 import javax.swing.JScrollBar;
 
-import org.miradi.dialogs.base.EditableObjectTable;
+import org.miradi.dialogs.base.EditableBaseObjectTable;
 import org.miradi.dialogs.base.EditableObjectTableModel;
 import org.miradi.dialogs.base.SingleBooleanColumnEditableModel;
 import org.miradi.dialogs.treetables.AbstractTreeTablePanel;
@@ -118,9 +118,9 @@ abstract public class AbstractEditableTreeTablePanel extends AbstractTreeTablePa
 	
 	abstract protected SingleBooleanColumnEditableModel createEditableTableModel();
 	
-	abstract protected EditableObjectTable createEditableTable();
+	abstract protected EditableBaseObjectTable createEditableTable();
 	
 	private SingleBooleanColumnEditableModel editableTableModel;
-	private EditableObjectTable editableTable;
+	private EditableBaseObjectTable editableTable;
 	private BaseObject baseObjectForPanel;
 }

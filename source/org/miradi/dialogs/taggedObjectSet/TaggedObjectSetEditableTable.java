@@ -23,12 +23,12 @@ import java.awt.Dimension;
 
 import javax.swing.table.TableCellRenderer;
 
-import org.miradi.dialogs.base.EditableObjectTable;
+import org.miradi.dialogs.base.EditableBaseObjectTable;
 import org.miradi.dialogs.base.EditableObjectTableModel;
 import org.miradi.dialogs.tablerenderers.AlwaysEmptyCellRendererFactory;
 import org.miradi.main.MainWindow;
 
-public class TaggedObjectSetEditableTable extends EditableObjectTable
+public class TaggedObjectSetEditableTable extends EditableBaseObjectTable
 {
 	public TaggedObjectSetEditableTable(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse)
 	{

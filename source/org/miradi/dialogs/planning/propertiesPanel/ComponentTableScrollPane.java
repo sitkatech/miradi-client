@@ -22,12 +22,12 @@ package org.miradi.dialogs.planning.propertiesPanel;
 
 import java.awt.Dimension;
 
-import org.miradi.dialogs.base.EditableObjectTable;
+import org.miradi.dialogs.base.EditableBaseObjectTable;
 import org.miradi.dialogs.treetables.MultiTreeTablePanel.ScrollPaneWithHideableScrollBar;
 
 public class ComponentTableScrollPane extends ScrollPaneWithHideableScrollBar
 {
-	public ComponentTableScrollPane(EditableObjectTable contents)
+	public ComponentTableScrollPane(EditableBaseObjectTable contents)
 	{
 		super(contents);
 		setHorizontalScrollBarPolicy(HORIZONTAL_SCROLLBAR_ALWAYS);

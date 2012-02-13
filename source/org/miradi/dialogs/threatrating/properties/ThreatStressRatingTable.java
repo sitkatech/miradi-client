@@ -22,13 +22,13 @@ package org.miradi.dialogs.threatrating.properties;
 import javax.swing.JTable;
 
 import org.miradi.dialogs.base.ColumnMarginResizeListenerValidator;
-import org.miradi.dialogs.base.EditableObjectTable;
+import org.miradi.dialogs.base.EditableBaseObjectTable;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.StressBasedThreatRatingQuestionPopupEditorComponent;
 
-public class ThreatStressRatingTable extends EditableObjectTable
+public class ThreatStressRatingTable extends EditableBaseObjectTable
 {
 	public ThreatStressRatingTable(MainWindow mainWindowToUse, ThreatStressRatingTableModel threatStressRatingTableModel) throws Exception
 	{
