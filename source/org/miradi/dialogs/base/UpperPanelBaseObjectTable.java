@@ -26,13 +26,11 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
-import javax.swing.table.TableColumn;
 
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.CodeListRendererFactory;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
-import org.miradi.dialogs.tablerenderers.QuestionPopupEditorTableCellEditorFactory;
 import org.miradi.dialogs.tablerenderers.RowColumnSelectionProvider;
 import org.miradi.dialogs.tablerenderers.SingleLineObjectTableCellEditorOrRendererFactory;
 import org.miradi.ids.BaseId;
@@ -40,8 +38,6 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.ProjectResource;
-import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
 
 abstract public class UpperPanelBaseObjectTable extends EditableBaseObjectTable implements RowColumnSelectionProvider
@@ -60,29 +56,31 @@ abstract public class UpperPanelBaseObjectTable extends EditableBaseObjectTable 
 		singleLineRendererOrEditorFactory = new SingleLineObjectTableCellEditorOrRendererFactory(this, fontProvider);
 	}
 	
-	@Override
-	public void rebuildColumnEditorsAndRenderers()
-	{
-		UpperPanelBaseObjectTableModel model = getObjectTableModel();
-		for (int tableColumn = 0; tableColumn < model.getColumnCount(); ++tableColumn)
-		{
-			int modelColumn = convertColumnIndexToModel(tableColumn);
-			if (model.isChoiceItemColumn(modelColumn))
-				createComboQuestionColumn(model.getColumnQuestion(modelColumn), tableColumn);
-			
-			if (model.isCodeListColumn(modelColumn))
-				createCodeListColumn(model.getColumnQuestion(modelColumn), modelColumn);
-		}
-	}
-	
-	protected void createCodeListColumn(ChoiceQuestion columnQuestion, int modelColumn)
-	{
-		final ChoiceQuestion question = getObjectTableModel().getColumnQuestion(modelColumn);
-		QuestionPopupEditorTableCellEditorFactory editorFactory = new QuestionPopupEditorTableCellEditorFactory(getMainWindow(), this, ProjectResource.TAG_ROLE_CODES, question, getCodesToDisable());
-		TableColumn column = getColumnModel().getColumn(modelColumn);
-		column.setCellEditor(editorFactory);
-	}
-
+	// FIXME:urgent: This code no longer has any effect, so any useful bits
+	// need to be moved into getCellEditor/Renderer
+//	@Override
+//	public void rebuildColumnEditorsAndRenderers()
+//	{
+//		UpperPanelBaseObjectTableModel model = getObjectTableModel();
+//		for (int tableColumn = 0; tableColumn < model.getColumnCount(); ++tableColumn)
+//		{
+//			int modelColumn = convertColumnIndexToModel(tableColumn);
+//			if (model.isChoiceItemColumn(modelColumn))
+//				createComboQuestionColumn(model.getColumnQuestion(modelColumn), tableColumn);
+//			
+//			if (model.isCodeListColumn(modelColumn))
+//				createCodeListColumn(model.getColumnQuestion(modelColumn), modelColumn);
+//		}
+//	}
+//	
+//	protected void createCodeListColumn(ChoiceQuestion columnQuestion, int modelColumn)
+//	{
+//		final ChoiceQuestion question = getObjectTableModel().getColumnQuestion(modelColumn);
+//		QuestionPopupEditorTableCellEditorFactory editorFactory = new QuestionPopupEditorTableCellEditorFactory(getMainWindow(), this, ProjectResource.TAG_ROLE_CODES, question, getCodesToDisable());
+//		TableColumn column = getColumnModel().getColumn(modelColumn);
+//		column.setCellEditor(editorFactory);
+//	}
+//
 	protected CodeList getCodesToDisable()
 	{
 		return new CodeList();
