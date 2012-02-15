@@ -285,18 +285,26 @@ public class EAM
 	
 	public static void logError(String text)
 	{
-		if (Miradi.isAlphaTesterMode())
-			errorDialog("<HTML>There is a console error: <BR>" + text);
-			
 		logger.logError(text);
+
+		if (Miradi.isAlphaTesterMode())
+		{
+			if(text.length() > 200)
+				text = text.substring(0, 200);
+			errorDialog("<HTML>There is a console error: <BR>" + text);
+		}
 	}
 	
 	public static void logWarning(String text)
 	{
-		if (Miradi.isAlphaTesterMode())
-			errorDialog("<HTML>There is a console warning: <BR>" + text);
-		
 		logger.logWarning(text);
+
+		if (Miradi.isAlphaTesterMode())
+		{
+			if(text.length() > 200)
+				text = text.substring(0, 200);
+			errorDialog("<HTML>There is a console warning: <BR>" + text);
+		}
 	}
 	
 	public static void logDebug(String text)
