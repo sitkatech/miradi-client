@@ -1,0 +1,216 @@
+/* 
+Copyright 2005-2009, Foundations of Success, Bethesda, Maryland 
+(on behalf of the Conservation Measures Partnership, "CMP") and 
+Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
+
+This file is part of Miradi
+
+Miradi is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License version 3, 
+as published by the Free Software Foundation.
+
+Miradi is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
+*/ 
+package org.miradi.utils;
+
+import java.awt.Color;
+import java.util.regex.Pattern;
+
+import javax.swing.text.html.StyleSheet;
+
+import org.miradi.main.AppPreferences;
+import org.miradi.main.EAM;
+
+public class HtmlUtilities
+{
+	public static String wrapInHtmlTags(String value)
+	{
+		return "<html>" + value + "</html>";
+	}
+	
+	public static void addRuleFontSize(StyleSheet style, final int defaultFontSize, final int fontSize)
+	{
+		int size = fontSize;
+		if (fontSize == 0)
+			size = defaultFontSize;
+		
+		style.addRule(HtmlUtilities.makeSureRuleHasRightPrefix("body {font-size:"+size+"pt;}"));
+	}
+	
+	public static void addRuleFontFamily(StyleSheet style, final String fontFamily)
+	{
+		style.addRule(HtmlUtilities.makeSureRuleHasRightPrefix("body {font-family:" + fontFamily + ";}"));
+	}
+	
+	public static void addFontColor(StyleSheet style, Color color)
+	{
+		style.addRule(HtmlUtilities.makeSureRuleHasRightPrefix("body {color:" + AppPreferences.convertToHexString(color) + ";}"));
+	}
+	
+	public static String makeSureRuleHasRightPrefix(String rule)
+	{
+		if (cssDotPrefixWorksCorrectly())
+			return rule;
+
+		return replaceDotWithPoundSign(rule);
+	}
+	
+	public static boolean cssDotPrefixWorksCorrectly()
+	{
+		String javaVersion = EAM.getJavaVersion();
+		if (javaVersion.startsWith("1.4"))
+			return false;
+		return true;
+	}
+	
+	private static String replaceDotWithPoundSign(String rule)
+	{
+		if (rule.trim().startsWith("."))
+			return rule.trim().replaceFirst(".", "#");
+
+		return rule;
+	}
+
+	public static String convertToHtmlText(String nonHtmlText)
+	{
+		nonHtmlText = XmlUtilities2.getXmlEncoded(nonHtmlText);
+		nonHtmlText = replaceNonHtmlNewlines(nonHtmlText);
+		
+		return nonHtmlText;
+	}
+	
+	public static String convertToNonHtml(String htmlDataValue)
+	{
+		htmlDataValue = replaceHtmlBrsWithNewlines(htmlDataValue);
+		htmlDataValue = XmlUtilities2.getXmlDecoded(htmlDataValue);
+		
+		return htmlDataValue;
+	}
+
+	public static void ensureNoCloseBrTags(String text)
+	{
+		if (text.contains("</br>"))
+			throw new RuntimeException("Text contains </br> tag(s)");		
+	}
+
+	public static String replaceStartBrTagsWithEmptyBrTags(String text)
+	{
+		return replaceHtmlTags(text, "br", BR_TAG);
+	}
+
+	public static String getNewlineRegex()
+	{
+		return "\\r?\\n";
+	}
+	
+	public static String replaceHtmlBrsWithNewlines(String text)
+	{
+		return replaceHtmlTags(text, "br", NEW_LINE);
+	}
+
+	public static String replaceNonHtmlNewlines(String formatted)
+	{
+		return formatted.replaceAll(getNewlineRegex(), BR_TAG);
+	}
+	
+	public static String removeNonHtmlNewLines(String htmlText)
+	{
+		return htmlText.replaceAll(getNewlineRegex(), EMPTY_STRING);
+	}
+
+	public static String stripAllHtmlTags(String text)
+	{
+		final String ANY = "<.*?>";
+		return replaceAll(ANY, text, EMPTY_STRING);
+	}
+
+	public static String replaceHtmlTags(String text, String tagToReplace, final String replacement)
+	{
+		final String START = "<" + tagToReplace + "\\s*>";
+		final String START_WITH_ATRIBUTE = "<" + tagToReplace + "\\s+.*?>";
+		final String END = createEndTagRegex(tagToReplace);
+		final String EMPTY = createEmptyTagRegex(tagToReplace);
+		final String regex = START + "|" + EMPTY + "|" + END + "|" + START_WITH_ATRIBUTE; 
+		return replaceAll(regex, text, replacement);
+	}
+
+	private static String createEmptyTagRegex(String tagToReplace)
+	{
+		return "<" + tagToReplace + "\\s*/\\s*>";
+	}
+
+	private static String createEndTagRegex(String tag)
+	{
+		return "<\\/\\s*" + tag + "\\s*>";
+	}
+	
+	private static String replaceAll(final String regex, String text, final String replacement)
+	{
+		final Pattern compiledRegex = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
+		
+		return compiledRegex.matcher(text).replaceAll(replacement);
+	}
+	
+	public static String appendNewlineToEndDivTags(String text)
+	{
+		final String END_DIV_REGEX = createEndTagRegex(DIV_TAG_NAME);
+		text = replaceAll(END_DIV_REGEX, text, DIV_CLOSING_TAG + HtmlUtilities.NEW_LINE);
+		final String EMPTY_DIV_REGEX = createEmptyTagRegex(DIV_TAG_NAME);
+		text = replaceAll(EMPTY_DIV_REGEX, text, DIV_EMPTY_TAG + HtmlUtilities.NEW_LINE);
+		return text;
+	}
+	
+	public static String removeAllExcept(String text, String[] tagsToKeep)
+	{
+		String tagsSeperatedByOr = StringUtilities.joinWithOr(tagsToKeep);
+		
+		String regex = "<\\/*?(?![^>]*?\\b(?:" + tagsSeperatedByOr + ")\\b)[^>]*?>";;
+		final Pattern compiledRegex = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
+		
+		return compiledRegex.matcher(text).replaceAll(EMPTY_STRING);
+	}
+
+	public static String getNormalizedAndSanitizedHtmlText(final String text, String[] allowedHtmlTags)
+	{
+		String trimmedText = "";
+		final String[] lines = text.split(getNewlineRegex());
+		for (int index = 0; index < lines.length; ++index)
+		{
+			//NOTE: Shef editor never splits text between lines, so we can safely ignore the text\ntext case
+			String line = lines[index];
+			String leadingSpacesRemoved = line.replaceAll("^[ \t]+", "");
+			trimmedText += leadingSpacesRemoved;
+		}
+		
+		// NOTE: The Java HTML parser compresses all whitespace to a single space
+		// (http://java.sun.com/products/jfc/tsc/articles/bookmarks/)
+		trimmedText = trimmedText.replaceAll(XmlUtilities2.NON_BREAKING_SPACE_NAME, StringUtilities.EMPTY_SPACE);
+		trimmedText = trimmedText.replaceAll(XmlUtilities2.NON_BREAKING_SPACE_CODE, StringUtilities.EMPTY_SPACE);
+		trimmedText = removeNonHtmlNewLines(trimmedText);
+		trimmedText = appendNewlineToEndDivTags(trimmedText);
+		trimmedText = removeAllExcept(trimmedText, allowedHtmlTags);
+		trimmedText = trimmedText.trim();
+		trimmedText = replaceNonHtmlNewlines(trimmedText);
+		//NOTE: Third party library  uses <br> instead of <br/>.  If we don't replace <br> then 
+		//save method thinks there was a change and attempts to save.
+		trimmedText = replaceStartBrTagsWithEmptyBrTags(trimmedText);
+		// NOTE: Shef does not encode/decode apostrophes as we need for proper XML
+		trimmedText = XmlUtilities2.getXmlEncodedApostrophes(trimmedText);
+		ensureNoCloseBrTags(trimmedText);
+		
+		return trimmedText;
+	}
+
+	public static final String BR_TAG = "<br/>";
+	public static final String NEW_LINE = "\n";
+	public static final String EMPTY_STRING = "";
+	private static final String DIV_TAG_NAME = "div";
+	private static final String DIV_CLOSING_TAG = "</div>";
+	private static final String DIV_EMPTY_TAG = "<div/>";
+}
