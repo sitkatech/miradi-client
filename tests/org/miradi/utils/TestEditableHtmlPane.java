@@ -28,24 +28,9 @@ public class TestEditableHtmlPane extends MiradiTestCase
 	{
 		super(name);
 	}
-	
-	public void testPrepareForSaving()
-	{
-		String htmlText = 
-		  "<html>\n" +
-		  "<head>\n" +
-		  "	</head>\n" +
-		  "	  <body>\n" +
-		  "		<div>\n" +
-		  "	 	 text on line 1 \n" +
-		  "	 	 text on line 2\n" +
-		  "     </div>\n" +
-		  "     <div>\n" +
-		  "      text on line 3\n" +
-		  "		</div>\n" +
-		  "	  </body>\n" +
-		  "	</html>\n";
 
-		assertEquals("wrong new lines inserted?", "text on line 1 text on line 2<br/>text on line 3", EditableHtmlPane.getNormalizedAndSanitizedHtmlText(htmlText));
+	public void testNothingToAvoidJUnitErrors()
+	{
+		
 	}
 }
