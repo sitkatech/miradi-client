@@ -108,8 +108,7 @@ public class EditableHtmlPane extends MiradiTextPane
 	
 	public static String getNormalizedAndSanitizedHtmlText(final String text)
 	{
-		String[] allowedHtmlTags = getAllowedHtmlTags();
-		return getNormalizedAndSanitizedHtmlText(text, allowedHtmlTags);
+		return getNormalizedAndSanitizedHtmlText(text, getAllowedHtmlTags());
 	}
 
 	private static String getNormalizedAndSanitizedHtmlText(final String text,
