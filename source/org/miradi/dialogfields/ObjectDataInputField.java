@@ -98,7 +98,8 @@ abstract public class ObjectDataInputField extends ObjectDataField
 			return;
 		
 		boolean currentDataMatchesSaved = getProject().getObjectData(getORef(), getTag()).equals(getText());
-		needsSave = !currentDataMatchesSaved;
+		boolean hasDataChanged = !currentDataMatchesSaved;
+		needsSave = hasDataChanged;
 	}
 	
 	public void clearNeedsSave()
