@@ -46,6 +46,9 @@ public class FloatData extends ObjectData
 	@Override
 	public String get()
 	{
+		if(value == 0.0)
+			return "";
+		
 		return DoubleUtilities.toStringForData(value);
 	}
 	
