@@ -108,41 +108,9 @@ public class EditableHtmlPane extends MiradiTextPane
 	
 	public static String getNormalizedAndSanitizedHtmlText(final String text)
 	{
-		return getNormalizedAndSanitizedHtmlText(text, getAllowedHtmlTags());
+		return HtmlUtilities.getNormalizedAndSanitizedHtmlText(text, getAllowedHtmlTags());
 	}
 
-	private static String getNormalizedAndSanitizedHtmlText(final String text,
-			String[] allowedHtmlTags)
-	{
-		String trimmedText = "";
-		final String[] lines = text.split(HtmlUtilities.getNewlineRegex());
-		for (int index = 0; index < lines.length; ++index)
-		{
-			//NOTE: Shef editor never splits text between lines, so we can safely ignore the text\ntext case
-			String line = lines[index];
-			String leadingSpacesRemoved = line.replaceAll("^[ \t]+", "");
-			trimmedText += leadingSpacesRemoved;
-		}
-		
-		// NOTE: The Java HTML parser compresses all whitespace to a single space
-		// (http://java.sun.com/products/jfc/tsc/articles/bookmarks/)
-		trimmedText = trimmedText.replaceAll(XmlUtilities2.NON_BREAKING_SPACE_NAME, StringUtilities.EMPTY_SPACE);
-		trimmedText = trimmedText.replaceAll(XmlUtilities2.NON_BREAKING_SPACE_CODE, StringUtilities.EMPTY_SPACE);
-		trimmedText = HtmlUtilities.removeNonHtmlNewLines(trimmedText);
-		trimmedText = HtmlUtilities.appendNewlineToEndDivTags(trimmedText);
-		trimmedText = HtmlUtilities.removeAllExcept(trimmedText, allowedHtmlTags);
-		trimmedText = trimmedText.trim();
-		trimmedText = HtmlUtilities.replaceNonHtmlNewlines(trimmedText);
-		//NOTE: Third party library  uses <br> instead of <br/>.  If we don't replace <br> then 
-		//save method thinks there was a change and attempts to save.
-		trimmedText = HtmlUtilities.replaceStartBrTagsWithEmptyBrTags(trimmedText);
-		// NOTE: Shef does not encode/decode apostrophes as we need for proper XML
-		trimmedText = XmlUtilities2.getXmlEncodedApostrophes(trimmedText);
-		HtmlUtilities.ensureNoCloseBrTags(trimmedText);
-		
-		return trimmedText;
-	}
-	
 	public static String[] getAllowedHtmlTags()
 	{
 		return new String[] {"br", "b", "i", "ul", "ol", "li", "u", "strike", "a", };
