@@ -82,12 +82,12 @@ public class WcsProjectData extends BaseObject
 	{
 		super.clear();
 		
-		createUserTextField(TAG_ORGANIZATIONAL_FOCUS);
-		createUserTextField(TAG_ORGANIZATIONAL_LEVEL);
+		createSingleLineUserTextField(TAG_ORGANIZATIONAL_FOCUS);
+		createSingleLineUserTextField(TAG_ORGANIZATIONAL_LEVEL);
 		createBooleanField(TAG_SWOT_COMPLETED);
-		createUserTextField(TAG_SWOT_URL);
+		createSingleLineUserTextField(TAG_SWOT_URL);
 		createBooleanField(TAG_STEP_COMPLETED);
-		createUserTextField(TAG_STEP_URL);
+		createSingleLineUserTextField(TAG_STEP_URL);
 	}
 	
 	public static final String OBJECT_NAME = "WcsProjectData";

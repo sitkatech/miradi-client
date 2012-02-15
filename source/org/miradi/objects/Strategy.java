@@ -329,7 +329,7 @@ public class Strategy extends Factor
 		createChoiceField(TAG_TAXONOMY_CODE, getQuestion(StrategyTaxonomyQuestion.class));
 		createChoiceField(TAG_IMPACT_RATING, getQuestion(StrategyImpactQuestion.class));
 		createChoiceField(TAG_FEASIBILITY_RATING, getQuestion(StrategyFeasibilityQuestion.class));
-		createUserTextField(TAG_LEGACY_TNC_STRATEGY_RANKING);
+		createMultiLineUserTextField(TAG_LEGACY_TNC_STRATEGY_RANKING);
 	
 		createPseudoStringField(PSEUDO_TAG_RATING_SUMMARY);
 		createPseudoQuestionField(PSEUDO_TAG_IMPACT_RATING_VALUE);

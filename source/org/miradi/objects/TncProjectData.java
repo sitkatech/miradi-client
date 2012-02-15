@@ -104,11 +104,11 @@ public class TncProjectData extends BaseObject
 		createChoiceField(TAG_PROJECT_SHARING_CODE, ProjectSharingQuestion.class);
 		createCodeListField(TAG_PROJECT_PLACE_TYPES, getProject().getQuestion(TncProjectPlaceTypeQuestion.class));
 		createCodeListField(TAG_ORGANIZATIONAL_PRIORITIES, getProject().getQuestion(TncOrganizationalPrioritiesQuestion.class));
-		createUserTextField(TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT);
-		createUserTextField(TAG_PROJECT_RESOURCES_SCORECARD);
-		createUserTextField(TAG_PROJECT_LEVEL_COMMENTS);
-		createUserTextField(TAG_PROJECT_CITATIONS);
-		createUserTextField(TAG_CAP_STANDARDS_SCORECARD);
+		createMultiLineUserTextField(TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT);
+		createMultiLineUserTextField(TAG_PROJECT_RESOURCES_SCORECARD);
+		createMultiLineUserTextField(TAG_PROJECT_LEVEL_COMMENTS);
+		createMultiLineUserTextField(TAG_PROJECT_CITATIONS);
+		createMultiLineUserTextField(TAG_CAP_STANDARDS_SCORECARD);
 	}
 	
 	public static final String OBJECT_NAME = "TncProjectData";

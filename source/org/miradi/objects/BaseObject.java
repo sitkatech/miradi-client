@@ -51,9 +51,11 @@ import org.miradi.objectdata.DateData;
 import org.miradi.objectdata.DateUnitEffortListData;
 import org.miradi.objectdata.DateUnitListData;
 import org.miradi.objectdata.DimensionData;
+import org.miradi.objectdata.ExpandingUserTextData;
 import org.miradi.objectdata.FloatData;
 import org.miradi.objectdata.IdListData;
 import org.miradi.objectdata.IntegerData;
+import org.miradi.objectdata.MultiLineUserTextData;
 import org.miradi.objectdata.NumberData;
 import org.miradi.objectdata.ORefData;
 import org.miradi.objectdata.ObjectData;
@@ -65,9 +67,9 @@ import org.miradi.objectdata.PseudoRefListData;
 import org.miradi.objectdata.PseudoStringData;
 import org.miradi.objectdata.RefListData;
 import org.miradi.objectdata.RefListListData;
+import org.miradi.objectdata.SingleLineUserTextData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objectdata.TagListData;
-import org.miradi.objectdata.UserTextData;
 import org.miradi.objecthelpers.BaseObjectByNameSorter;
 import org.miradi.objecthelpers.CodeToChoiceMap;
 import org.miradi.objecthelpers.CodeToCodeListMap;
@@ -980,7 +982,7 @@ abstract public class BaseObject
 		fields = new HashMap<String, ObjectData>();
 		nonUserFields = new HashSet<String>();
 
-		createUserTextField(TAG_LABEL);
+		createExpandingUserTextField(TAG_LABEL);
 		createIdListField(TAG_RESOURCE_ASSIGNMENT_IDS, ResourceAssignment.getObjectType());
 		createRefListField(TAG_EXPENSE_ASSIGNMENT_REFS);
 		createRefListField(TAG_PROGRESS_REPORT_REFS);
@@ -1003,9 +1005,19 @@ abstract public class BaseObject
 		return StaticQuestionManager.getQuestion(questionClass);
 	}
 	
-	protected void createUserTextField(String tag)
+	protected void createSingleLineUserTextField(String tag)
 	{
-		addField(new UserTextData(tag));
+		addField(new SingleLineUserTextData(tag));
+	}
+	
+	protected void createExpandingUserTextField(String tag)
+	{
+		addField(new ExpandingUserTextData(tag));
+	}
+	
+	protected void createMultiLineUserTextField(String tag)
+	{
+		addField(new MultiLineUserTextData(tag));
 	}
 	
 	protected void createChoiceField(String tag, Class questionClass)

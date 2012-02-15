@@ -128,10 +128,10 @@ public class Measurement extends BaseObject
 		createChoiceField(TAG_TREND, TrendQuestion.class);
 		createChoiceField(TAG_STATUS, StatusQuestion.class);
 		createDateField(TAG_DATE);
-		createUserTextField(TAG_SUMMARY);
-		createUserTextField(TAG_DETAIL);
+		createSingleLineUserTextField(TAG_SUMMARY);
+		createMultiLineUserTextField(TAG_DETAIL);
 		createChoiceField(TAG_STATUS_CONFIDENCE, StatusConfidenceQuestion.class);
-		createUserTextField(TAG_COMMENTS);
+		createMultiLineUserTextField(TAG_COMMENTS);
 	}
 	
 	public static final String OBJECT_NAME = "Measurement";

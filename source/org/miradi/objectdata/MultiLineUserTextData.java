@@ -20,17 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objectdata;
 
-abstract public class UserTextData extends StringData
+public class MultiLineUserTextData extends UserTextData
 {
-	public UserTextData(String tagToUse)
+	public MultiLineUserTextData(String tagToUse)
 	{
 		super(tagToUse);
-	}
-	
-	@Override
-	public boolean isUserText()
-	{
-		return true;
 	}
 
 }

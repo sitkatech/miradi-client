@@ -93,8 +93,8 @@ public class XslTemplate extends BaseObject
 	{
 		super.clear();
 		
-		createUserTextField(TAG_TEMPLATE_CONTENTS);
-		createUserTextField(TAG_FILE_EXTENSION);
+		createMultiLineUserTextField(TAG_TEMPLATE_CONTENTS);
+		createSingleLineUserTextField(TAG_FILE_EXTENSION);
 	}
 
 	public static final String TAG_TEMPLATE_CONTENTS = "TemplateContents";

@@ -89,9 +89,9 @@ public class FosProjectData extends BaseObject
 		super.clear();
 		
 		createChoiceField(TAG_TRAINING_TYPE, FosTrainingTypeQuestion.class);
-		createUserTextField(TAG_TRAINING_DATES);
-		createUserTextField(TAG_TRAINERS);
-		createUserTextField(TAG_COACHES);
+		createSingleLineUserTextField(TAG_TRAINING_DATES);
+		createSingleLineUserTextField(TAG_TRAINERS);
+		createSingleLineUserTextField(TAG_COACHES);
 	}
 	
 	public static final String OBJECT_NAME = "FosProjectData";

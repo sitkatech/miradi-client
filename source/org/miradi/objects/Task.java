@@ -504,7 +504,7 @@ public class Task extends Factor
 	{
 		super.clear();
 		createIdListField(TAG_SUBTASK_IDS, Task.getObjectType());
-		createUserTextField(TAG_DETAILS);
+		createMultiLineUserTextField(TAG_DETAILS);
 		
 		createPseudoStringField(PSEUDO_TAG_STRATEGY_LABEL);
 		createPseudoStringField(PSEUDO_TAG_INDICATOR_LABEL);

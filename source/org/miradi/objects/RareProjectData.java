@@ -82,17 +82,17 @@ public class RareProjectData extends BaseObject
 	{
 		super.clear();
 		
-		createUserTextField(TAG_FLAGSHIP_SPECIES_COMMON_NAME);
-		createUserTextField(TAG_FLAGSHIP_SPECIES_SCIENTIFIC_NAME);
-		createUserTextField(TAG_FLAGSHIP_SPECIES_DETAIL);
-		createUserTextField(TAG_CAMPAIGN_SLOGAN);
-		createUserTextField(TAG_CAMPAIGN_THEORY_OF_CHANGE);
-		createUserTextField(TAG_SUMMARY_OF_KEY_MESSAGES);
-		createUserTextField(TAG_BIODIVERSITY_HOTSPOTS);
-		createUserTextField(TAG_COHORT);
+		createSingleLineUserTextField(TAG_FLAGSHIP_SPECIES_COMMON_NAME);
+		createSingleLineUserTextField(TAG_FLAGSHIP_SPECIES_SCIENTIFIC_NAME);
+		createMultiLineUserTextField(TAG_FLAGSHIP_SPECIES_DETAIL);
+		createMultiLineUserTextField(TAG_CAMPAIGN_SLOGAN);
+		createMultiLineUserTextField(TAG_CAMPAIGN_THEORY_OF_CHANGE);
+		createMultiLineUserTextField(TAG_SUMMARY_OF_KEY_MESSAGES);
+		createSingleLineUserTextField(TAG_BIODIVERSITY_HOTSPOTS);
+		createSingleLineUserTextField(TAG_COHORT);
 		createIntegerField(TAG_NUMBER_OF_COMMUNITIES_IN_CAMPAIGN_AREA);
-		createUserTextField(LEGACY_TAG_THREATS_ADDRESSED_NOTES);
-		createUserTextField(TAG_MAIN_ACTIVITIES_NOTES);
+		createMultiLineUserTextField(LEGACY_TAG_THREATS_ADDRESSED_NOTES);
+		createMultiLineUserTextField(TAG_MAIN_ACTIVITIES_NOTES);
 	}
 
 	public static final String OBJECT_NAME = "RareProjectData";
