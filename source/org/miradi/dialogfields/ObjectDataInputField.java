@@ -139,8 +139,7 @@ abstract public class ObjectDataInputField extends ObjectDataField
 
 	private String getOldValue()
 	{
-		String existingValue = getProject().getObjectData(getORef(), getTag());
-		return existingValue;
+		return getProject().getObjectData(getORef(), getTag());
 	}
 	
 	private void notifyUserOfFailure(CommandFailedException cfe)
