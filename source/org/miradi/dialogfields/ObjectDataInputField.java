@@ -26,7 +26,9 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
+import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.utils.InvalidDateException;
 import org.miradi.utils.InvalidNumberException;
@@ -102,9 +104,9 @@ abstract public class ObjectDataInputField extends ObjectDataField
 
 	private boolean hasDataChanged()
 	{
-		boolean currentDataMatchesSaved = getProject().getObjectData(getORef(), getTag()).equals(getText());
-		boolean hasDataChanged = !currentDataMatchesSaved;
-		return hasDataChanged;
+		BaseObject object = BaseObject.find(getProject(), getORef());
+		ObjectData field = object.getField(getTag());
+		return !field.isCurrentValue(getText());
 	}
 	
 	public void clearNeedsSave()

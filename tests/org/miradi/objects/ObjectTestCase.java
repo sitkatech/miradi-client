@@ -175,7 +175,8 @@ public class ObjectTestCase extends TestCaseWithProject
 		String sampleData = getSampleData(object, tag);
 		String emptyData = getEmptyData(object, tag);
 
-		assertTrue("field is empty?", object.getField(tag).isEmpty());
+		assertTrue("field didn't start out empty?", object.getField(tag).isEmpty());
+		assertTrue("current value is not empty?", object.getField(tag).isCurrentValue(""));
 		assertEquals("didn't default " + tag + " empty?", emptyData, object.getData(tag));
 		try
 		{
@@ -186,7 +187,8 @@ public class ObjectTestCase extends TestCaseWithProject
 			System.out.println("need sample data for " + object.getField(tag).getClass().getSimpleName());
 			throw e;
 		}
-		assertFalse("is not empty?", object.getField(tag).isEmpty());
+		assertFalse("claims to be empty?", object.getField(tag).isEmpty());
+		assertTrue("current contents mismatch?", object.getField(tag).isCurrentValue(sampleData));
 		
 		assertEquals("did't set " + tag + "?", sampleData, object.getData(tag));
 		BaseObject got = BaseObject.createFromJson(project.getObjectManager(), object.getType(), object.toJson());
