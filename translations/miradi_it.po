@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-13 13:25-0600\n"
+"POT-Creation-Date: 2012-02-15 11:05-0600\n"
 "PO-Revision-Date: 2011-04-29 11:26+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -3691,7 +3691,7 @@ msgid "File name must contain only alpha numeric and/or '_' characters."
 msgstr ""
 "Il nome del file  deve contenere solo caratteri alpha numerici e/o '_' ."
 
-#: Miradi/source/org/miradi/xml/AbstractXmlImporter.java:91
+#: Miradi/source/org/miradi/xml/AbstractXmlImporter.java:95
 #: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:174
 msgid "File to import does not validate."
 msgstr "Il file da importare non è valido."
