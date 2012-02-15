@@ -20,9 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objectdata;
 
-public class AbstractUserTextDataWithNewlines extends UserTextData
+public class AbstractUserTextDataWithHtmlFormatting extends UserTextData
 {
-	public AbstractUserTextDataWithNewlines(String tagToUse)
+	public AbstractUserTextDataWithHtmlFormatting(String tagToUse)
 	{
 		super(tagToUse);
 	}
