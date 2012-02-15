@@ -27,4 +27,9 @@ public class SingleLineUserTextData extends UserTextData
 		super(tagToUse);
 	}
 
+	@Override
+	public boolean isSingleLineUserText()
+	{
+		return true;
+	}
 }

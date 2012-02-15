@@ -27,4 +27,9 @@ public class AbstractUserTextDataWithNewlines extends UserTextData
 		super(tagToUse);
 	}
 
+	@Override
+	public boolean isUserTextWithNewlines()
+	{
+		return true;
+	}
 }

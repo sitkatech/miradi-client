@@ -67,6 +67,26 @@ abstract public class ObjectData
 		return false;
 	}
 	
+	public boolean isSingleLineUserText()
+	{
+		return false;
+	}
+	
+	public boolean isUserTextWithNewlines()
+	{
+		return false;
+	}
+	
+	public boolean isExpandingUserText()
+	{
+		return false;
+	}
+	
+	public boolean isMultiLineUserText()
+	{
+		return false;
+	}
+	
 	public boolean isBaseIdData()
 	{
 		return false;
