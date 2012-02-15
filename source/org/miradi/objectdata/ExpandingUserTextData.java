@@ -27,4 +27,9 @@ public class ExpandingUserTextData extends AbstractUserTextDataWithNewlines
 		super(tagToUse);
 	}
 
+	@Override
+	public boolean isExpandingUserText()
+	{
+		return true;
+	}
 }
