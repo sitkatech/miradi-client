@@ -28,7 +28,7 @@ public class AbstractUserTextDataWithHtmlFormatting extends UserTextData
 	}
 
 	@Override
-	public boolean isUserTextWithNewlines()
+	public boolean isUserTextWithHtmlFormatting()
 	{
 		return true;
 	}

@@ -72,7 +72,7 @@ abstract public class ObjectData
 		return false;
 	}
 	
-	public boolean isUserTextWithNewlines()
+	public boolean isUserTextWithHtmlFormatting()
 	{
 		return false;
 	}
