@@ -41,6 +41,7 @@ import org.miradi.dialogfields.ObjectScrollingMultilineInputField;
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.objectdata.AbstractUserTextDataWithHtmlFormatting;
 
 public class EditableHtmlPane extends MiradiTextPane
 {
@@ -90,7 +91,7 @@ public class EditableHtmlPane extends MiradiTextPane
 	public void setText(String text)
 	{
 		updateStyleSheet();
-		String topText = HtmlUtilities.removeAllExcept(text, getAllowedHtmlTags());
+		String topText = HtmlUtilities.removeAllExcept(text, AbstractUserTextDataWithHtmlFormatting.getAllowedHtmlTags());
 		// NOTE: Shef does not encode/decode apostrophes as we need for proper XML
 		topText = XmlUtilities2.getXmlDecodedApostrophes(topText);
 		super.setText("");
@@ -108,14 +109,9 @@ public class EditableHtmlPane extends MiradiTextPane
 	
 	public static String getNormalizedAndSanitizedHtmlText(final String text)
 	{
-		return HtmlUtilities.getNormalizedAndSanitizedHtmlText(text, getAllowedHtmlTags());
+		return HtmlUtilities.getNormalizedAndSanitizedHtmlText(text, AbstractUserTextDataWithHtmlFormatting.getAllowedHtmlTags());
 	}
 
-	public static String[] getAllowedHtmlTags()
-	{
-		return new String[] {"br", "b", "i", "ul", "ol", "li", "u", "strike", "a", };
-	}
-	
 	private void updateStyleSheet()
 	{
 		HTMLEditorKit htmlKit = (HTMLEditorKit)getEditorKit();
