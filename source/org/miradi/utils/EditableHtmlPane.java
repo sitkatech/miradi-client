@@ -90,7 +90,7 @@ public class EditableHtmlPane extends MiradiTextPane
 	public void setText(String text)
 	{
 		updateStyleSheet();
-		String topText = HtmlUtilities.removeAllExcept(text, getTagsToKeep());
+		String topText = HtmlUtilities.removeAllExcept(text, getAllowedHtmlTags());
 		// NOTE: Shef does not encode/decode apostrophes as we need for proper XML
 		topText = XmlUtilities2.getXmlDecodedApostrophes(topText);
 		super.setText("");
@@ -108,7 +108,7 @@ public class EditableHtmlPane extends MiradiTextPane
 	
 	public static String getNormalizedAndSanitizedHtmlText(final String text)
 	{
-		String[] allowedHtmlTags = getTagsToKeep();
+		String[] allowedHtmlTags = getAllowedHtmlTags();
 		return getNormalizedAndSanitizedHtmlText(text, allowedHtmlTags);
 	}
 
@@ -144,7 +144,7 @@ public class EditableHtmlPane extends MiradiTextPane
 		return trimmedText;
 	}
 	
-	public static String[] getTagsToKeep()
+	public static String[] getAllowedHtmlTags()
 	{
 		return new String[] {"br", "b", "i", "ul", "ol", "li", "u", "strike", "a", };
 	}
