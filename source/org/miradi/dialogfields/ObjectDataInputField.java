@@ -97,7 +97,7 @@ abstract public class ObjectDataInputField extends ObjectDataField
 		if(getORef().isInvalid())
 			return;
 		
-		boolean currentDataMatchesSaved = getOldValue().equals(getText());
+		boolean currentDataMatchesSaved = getProject().getObjectData(getORef(), getTag()).equals(getText());
 		needsSave = !currentDataMatchesSaved;
 	}
 	
@@ -118,7 +118,7 @@ abstract public class ObjectDataInputField extends ObjectDataField
 			return;
 		
 		String newValue = getText();
-		String existingValue = getOldValue();
+		String existingValue = getProject().getObjectData(getORef(), getTag());
 		if(existingValue.equals(newValue))
 			return;
 
@@ -137,11 +137,6 @@ abstract public class ObjectDataInputField extends ObjectDataField
 		}
 	}
 
-	private String getOldValue()
-	{
-		return getProject().getObjectData(getORef(), getTag());
-	}
-	
 	private void notifyUserOfFailure(CommandFailedException cfe)
 	{
 		try
