@@ -443,9 +443,9 @@ abstract public class Desire extends BaseObject
 	{
 		super.clear();
 
-		createUserTextField(TAG_SHORT_LABEL);
-		createUserTextField(TAG_FULL_TEXT);
-		createUserTextField(TAG_COMMENTS);
+		createSingleLineUserTextField(TAG_SHORT_LABEL);
+		createMultiLineUserTextField(TAG_FULL_TEXT);
+		createMultiLineUserTextField(TAG_COMMENTS);
 		createRelevancyOverrideSetField(TAG_RELEVANT_INDICATOR_SET);
 		createRelevancyOverrideSetField(TAG_RELEVANT_STRATEGY_ACTIVITY_SET);
 		createRefListField(TAG_PROGRESS_PERCENT_REFS);

@@ -192,10 +192,10 @@ public class KeyEcologicalAttribute extends BaseObject
 	{
 		super.clear();
 		createIdListField(TAG_INDICATOR_IDS, Indicator.getObjectType());
-		createUserTextField(TAG_DESCRIPTION);
-		createUserTextField(TAG_DETAILS);
+		createMultiLineUserTextField(TAG_DESCRIPTION);
+		createMultiLineUserTextField(TAG_DETAILS);
 		createChoiceField(TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE, KeyEcologicalAttributeTypeQuestion.class);
-		createUserTextField(TAG_SHORT_LABEL);
+		createSingleLineUserTextField(TAG_SHORT_LABEL);
 		
 		createPseudoStringField(PSEUDO_TAG_VIABILITY_STATUS);
 	}

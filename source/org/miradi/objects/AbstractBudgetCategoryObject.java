@@ -47,8 +47,8 @@ abstract public class AbstractBudgetCategoryObject extends BaseObject
 	{
 		super.clear();
 		
-		createUserTextField(TAG_CODE);
-		createUserTextField(TAG_COMMENTS);
+		createSingleLineUserTextField(TAG_CODE);
+		createMultiLineUserTextField(TAG_COMMENTS);
 	}
 	
 	public static final String TAG_CODE = "Code";

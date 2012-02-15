@@ -134,7 +134,7 @@ public class ProgressReport extends BaseObject
 		
 		createChoiceField(TAG_PROGRESS_STATUS, getQuestion(ProgressReportLongStatusQuestion.class));
 		createDateField(TAG_PROGRESS_DATE);
-		createUserTextField(TAG_DETAILS);
+		createMultiLineUserTextField(TAG_DETAILS);
 	}
 	
 	public static final String OBJECT_NAME = "ProgressReport";

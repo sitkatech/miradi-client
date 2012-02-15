@@ -98,7 +98,7 @@ public class ProgressPercent extends BaseObject
 		
 		createDateField(TAG_DATE);
 		createPercentageField(TAG_PERCENT_COMPLETE);
-		createUserTextField(TAG_PERCENT_COMPLETE_NOTES);
+		createMultiLineUserTextField(TAG_PERCENT_COMPLETE_NOTES);
 	}
 	
 	public static final String TAG_DATE = "PercentDate";

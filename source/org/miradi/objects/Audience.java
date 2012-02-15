@@ -94,7 +94,7 @@ public class Audience extends BaseObject
 		super.clear();
 	
 		createIntegerField(TAG_PEOPLE_COUNT);
-		createUserTextField(TAG_SUMMARY);
+		createMultiLineUserTextField(TAG_SUMMARY);
 	}
 	
 	public static final String OBJECT_NAME = "Audience";

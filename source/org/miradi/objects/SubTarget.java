@@ -120,8 +120,8 @@ public class SubTarget extends BaseObject
 	{
 		super.clear();
 		
-		createUserTextField(TAG_SHORT_LABEL);
-		createUserTextField(TAG_DETAIL);
+		createSingleLineUserTextField(TAG_SHORT_LABEL);
+		createMultiLineUserTextField(TAG_DETAIL);
 	}
 	
 	public static final String OBJECT_NAME = "SubTarget";

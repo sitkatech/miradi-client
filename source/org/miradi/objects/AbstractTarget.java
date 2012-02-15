@@ -341,7 +341,7 @@ abstract public class AbstractTarget extends Factor
 			
 		createChoiceField(TAG_TARGET_STATUS, StatusQuestion.class);
 		createChoiceField(TAG_VIABILITY_MODE, ViabilityModeQuestion.class);
-		createUserTextField(TAG_CURRENT_STATUS_JUSTIFICATION);
+		createMultiLineUserTextField(TAG_CURRENT_STATUS_JUSTIFICATION);
 		createRefListField(TAG_SUB_TARGET_REFS);
 		createIdListField(TAG_GOAL_IDS, Goal.getObjectType());
 		createIdListField(TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, KeyEcologicalAttribute.getObjectType());

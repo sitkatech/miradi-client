@@ -119,9 +119,9 @@ public class TaggedObjectSet extends BaseObject
 	{
 		super.clear();
 
-		createUserTextField(TAG_SHORT_LABEL);
+		createSingleLineUserTextField(TAG_SHORT_LABEL);
 		createRefListField(TAG_TAGGED_OBJECT_REFS);
-		createUserTextField(TAG_COMMENTS);
+		createMultiLineUserTextField(TAG_COMMENTS);
 	}
 
 	public static final String TAG_SHORT_LABEL = "ShortLabel";

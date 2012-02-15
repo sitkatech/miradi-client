@@ -87,7 +87,7 @@ public class Xenodata extends BaseObject
 	{
 		super.clear();
 		
-		createUserTextField(TAG_PROJECT_ID);
+		createSingleLineUserTextField(TAG_PROJECT_ID);
 	}
 	
 	public static final String TAG_PROJECT_ID = "ProjectId";

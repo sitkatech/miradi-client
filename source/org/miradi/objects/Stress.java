@@ -188,8 +188,8 @@ public class Stress extends Factor
 	{
 		super.clear();
 		
-		createUserTextField(TAG_SHORT_LABEL);
-		createUserTextField(TAG_DETAIL);
+		createSingleLineUserTextField(TAG_SHORT_LABEL);
+		createMultiLineUserTextField(TAG_DETAIL);
 		createChoiceField(TAG_SCOPE, getQuestion(StressScopeChoiceQuestion.class));
 		createChoiceField(TAG_SEVERITY, getQuestion(StressSeverityChoiceQuestion.class));
 		createPseudoQuestionField(PSEUDO_STRESS_RATING);

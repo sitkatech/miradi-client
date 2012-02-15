@@ -100,10 +100,10 @@ public class ReportTemplate extends BaseObject
 	{
 		super.clear();
 
-		createUserTextField(TAG_SHORT_LABEL);
+		createSingleLineUserTextField(TAG_SHORT_LABEL);
 		ChoiceQuestion reportContentsQuestion = new ReportTemplateContentQuestion(getProject());
 		createCodeListField(TAG_INCLUDE_SECTION_CODES, reportContentsQuestion);
-		createUserTextField(TAG_COMMENTS);
+		createMultiLineUserTextField(TAG_COMMENTS);
 	}
 
 	public static final String TAG_SHORT_LABEL = "ShortLabel";

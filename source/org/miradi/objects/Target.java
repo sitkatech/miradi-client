@@ -162,7 +162,7 @@ public class Target extends AbstractTarget
 	{
 		super.clear();
 		createRefListField(TAG_STRESS_REFS);
-		createUserTextField(TAG_SPECIES_LATIN_NAME);
+		createSingleLineUserTextField(TAG_SPECIES_LATIN_NAME);
 		createCodeListField(TAG_HABITAT_ASSOCIATION, getHabitatAssociationQuestion());
 		
 		createPseudoQuestionField(PSEUDO_TAG_HABITAT_ASSOCIATION_VALUE);

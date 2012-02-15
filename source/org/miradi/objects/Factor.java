@@ -479,9 +479,9 @@ abstract public class Factor extends BaseObject
 	void clear()
 	{
 		super.clear();
-		createUserTextField(TAG_COMMENTS);
-		createUserTextField(TAG_TEXT);
-		createUserTextField(TAG_SHORT_LABEL);
+		createMultiLineUserTextField(TAG_COMMENTS);
+		createMultiLineUserTextField(TAG_TEXT);
+		createSingleLineUserTextField(TAG_SHORT_LABEL);
 	    createIdListField(TAG_INDICATOR_IDS, Indicator.getObjectType());
 		createIdListField(TAG_OBJECTIVE_IDS, Objective.getObjectType());
 		

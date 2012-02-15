@@ -110,13 +110,13 @@ public class Organization extends BaseObject
 	{
 		super.clear();
 		
-		createUserTextField(TAG_SHORT_LABEL);
-		createUserTextField(TAG_ROLES_DESCRIPTION);
-		createUserTextField(TAG_CONTACT_FIRST_NAME);
-		createUserTextField(TAG_CONTACT_LAST_NAME);
-		createUserTextField(TAG_EMAIL);
-		createUserTextField(TAG_PHONE_NUMBER);
-		createUserTextField(TAG_COMMENTS);
+		createSingleLineUserTextField(TAG_SHORT_LABEL);
+		createSingleLineUserTextField(TAG_ROLES_DESCRIPTION);
+		createSingleLineUserTextField(TAG_CONTACT_FIRST_NAME);
+		createSingleLineUserTextField(TAG_CONTACT_LAST_NAME);
+		createSingleLineUserTextField(TAG_EMAIL);
+		createSingleLineUserTextField(TAG_PHONE_NUMBER);
+		createMultiLineUserTextField(TAG_COMMENTS);
 	}
 	
 	public static final String OBJECT_NAME = "Organization";

@@ -82,17 +82,17 @@ public class WcpaProjectData extends BaseObject
 	{
 		super.clear();
 		
-		createUserTextField(TAG_LEGAL_STATUS);
-		createUserTextField(TAG_LEGISLATIVE);
-		createUserTextField(TAG_PHYSICAL_DESCRIPTION);
-		createUserTextField(TAG_BIOLOGICAL_DESCRIPTION);
-		createUserTextField(TAG_SOCIO_ECONOMIC_INFORMATION);
-		createUserTextField(TAG_HISTORICAL_DESCRIPTION);
-		createUserTextField(TAG_CULTURAL_DESCRIPTION);
-		createUserTextField(TAG_ACCESS_INFORMATION);
-		createUserTextField(TAG_VISITATION_INFORMATION);
-		createUserTextField(TAG_CURRENT_LAND_USES);
-		createUserTextField(TAG_MANAGEMENT_RESOURCES);
+		createMultiLineUserTextField(TAG_LEGAL_STATUS);
+		createMultiLineUserTextField(TAG_LEGISLATIVE);
+		createMultiLineUserTextField(TAG_PHYSICAL_DESCRIPTION);
+		createMultiLineUserTextField(TAG_BIOLOGICAL_DESCRIPTION);
+		createMultiLineUserTextField(TAG_SOCIO_ECONOMIC_INFORMATION);
+		createMultiLineUserTextField(TAG_HISTORICAL_DESCRIPTION);
+		createMultiLineUserTextField(TAG_CULTURAL_DESCRIPTION);
+		createMultiLineUserTextField(TAG_ACCESS_INFORMATION);
+		createMultiLineUserTextField(TAG_VISITATION_INFORMATION);
+		createMultiLineUserTextField(TAG_CURRENT_LAND_USES);
+		createMultiLineUserTextField(TAG_MANAGEMENT_RESOURCES);
 	}
 
 	public final static String TAG_LEGAL_STATUS = "LegalStatus";

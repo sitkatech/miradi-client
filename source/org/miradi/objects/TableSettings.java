@@ -179,7 +179,7 @@ public class TableSettings extends BaseObject
 	{
 		super.clear();
 
-		createUserTextField(TAG_TABLE_IDENTIFIER);
+		createCodeField(TAG_TABLE_IDENTIFIER);
 		createIntegerField(TAG_ROW_HEIGHT);
 		createDateUnitListField(TAG_DATE_UNIT_LIST_DATA);
 		createCodeToCodeListMapField(TAG_TABLE_SETTINGS_MAP);

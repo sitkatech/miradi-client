@@ -555,8 +555,8 @@ abstract public class DiagramObject extends BaseObject
 		
 		createIdListField(TAG_DIAGRAM_FACTOR_IDS, DiagramFactor.getObjectType());
 		createIdListField(TAG_DIAGRAM_FACTOR_LINK_IDS, DiagramLink.getObjectType());
-		createUserTextField(TAG_SHORT_LABEL);
-		createUserTextField(TAG_DETAIL);
+		createSingleLineUserTextField(TAG_SHORT_LABEL);
+		createMultiLineUserTextField(TAG_DETAIL);
 		createCodeListField(TAG_HIDDEN_TYPES, DiagramLegendQuestion.class);
 		createRefListField(TAG_SELECTED_TAGGED_OBJECT_SET_REFS);
 		createNumberField(TAG_ZOOM_SCALE);
