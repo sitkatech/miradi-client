@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objectdata;
 
-public class MultiLineUserTextData extends AbstractUserTextDataWithNewlines
+public class MultiLineUserTextData extends AbstractUserTextDataWithHtmlFormatting
 {
 	public MultiLineUserTextData(String tagToUse)
 	{
