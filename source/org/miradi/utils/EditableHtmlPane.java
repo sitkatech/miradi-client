@@ -109,7 +109,12 @@ public class EditableHtmlPane extends MiradiTextPane
 	public static String getNormalizedAndSanitizedHtmlText(final String text)
 	{
 		String[] allowedHtmlTags = getTagsToKeep();
+		return getNormalizedAndSanitizedHtmlText(text, allowedHtmlTags);
+	}
 
+	private static String getNormalizedAndSanitizedHtmlText(final String text,
+			String[] allowedHtmlTags)
+	{
 		String trimmedText = "";
 		final String[] lines = text.split(HtmlUtilities.getNewlineRegex());
 		for (int index = 0; index < lines.length; ++index)
