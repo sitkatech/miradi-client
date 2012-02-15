@@ -46,6 +46,6 @@ public class TestEditableHtmlPane extends MiradiTestCase
 		  "	  </body>\n" +
 		  "	</html>\n";
 
-		assertEquals("wrong new lines inserted?", "text on line 1 text on line 2<br/>text on line 3", EditableHtmlPane.prepareForSaving(htmlText));
+		assertEquals("wrong new lines inserted?", "text on line 1 text on line 2<br/>text on line 3", EditableHtmlPane.getNormalizedAndSanitizedHtmlText(htmlText));
 	}
 }

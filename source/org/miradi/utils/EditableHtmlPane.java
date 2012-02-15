@@ -103,10 +103,10 @@ public class EditableHtmlPane extends MiradiTextPane
 	{
 		String text = super.getText();
 		
-		return prepareForSaving(text);
+		return getNormalizedAndSanitizedHtmlText(text);
 	}
 	
-	public static String prepareForSaving(final String text)
+	public static String getNormalizedAndSanitizedHtmlText(final String text)
 	{
 		String trimmedText = "";
 		final String[] lines = text.split(HtmlUtilities.getNewlineRegex());
