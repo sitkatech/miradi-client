@@ -30,6 +30,7 @@ import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
+import org.martus.util.UnicodeReader;
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.miradi.exceptions.CpmzVersionTooOldException;
 import org.miradi.exceptions.UnsupportedNewVersionSchemaException;
@@ -85,13 +86,25 @@ abstract public class AbstractXmlImporter
 			throw new CpmzVersionTooOldException();
 		}
 		
-		projectAsInputStream.seek(0);			
+		projectAsInputStream.seek(0);
+		EAM.logVerbose("XML being imported:");
+		EAM.logVerbose(getXmlTextForDebugging(projectAsInputStream));
+		
 		if (!new WcsMiradiXmlValidator().isValid(projectAsInputStream))
 		{
 			throw new ValidationException(EAM.text("File to import does not validate."));
 		}
 		
 		xPath = createXPath();
+	}
+
+	private String getXmlTextForDebugging(InputStreamWithSeek projectAsInputStream) throws Exception
+	{
+		UnicodeReader reader = new UnicodeReader(projectAsInputStream);
+		String xml = reader.readAll();
+		reader.close();
+		projectAsInputStream.seek(0);
+		return xml;
 	}
 
 	public boolean isTrue(String value)

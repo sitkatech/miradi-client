@@ -321,11 +321,16 @@ public class XmpzXmlExporter extends XmlExporter implements XmpzXmlConstants
 
 	private void createGeospatialLocationField() throws Exception
 	{
+		String latitude = getMetadata().getLatitude();
+		String longitude = getMetadata().getLongitude();
+		if(latitude.isEmpty() && longitude.isEmpty())
+			return;
+
 		writeStartElement(getWriter(), createParentAndChildElementName(PROJECT_SUMMARY_LOCATION, PROJECT_LOCATION));
 		
 		writeStartElement(getWriter(), GEOSPATIAL_LOCATION);
-		writeOptionalElement(getWriter(), LATITUDE, getMetadata().getLatitude());
-		writeOptionalElement(getWriter(), LONGITUDE, getMetadata().getLongitude());
+		writeOptionalElement(getWriter(), LATITUDE, latitude);
+		writeOptionalElement(getWriter(), LONGITUDE, longitude);
 		writeEndElement(getWriter(), GEOSPATIAL_LOCATION);
 		
 		writeEndElement(getWriter(), createParentAndChildElementName(PROJECT_SUMMARY_LOCATION, PROJECT_LOCATION));
