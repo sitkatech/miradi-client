@@ -97,8 +97,7 @@ abstract public class ObjectDataInputField extends ObjectDataField
 		if(getORef().isInvalid())
 			return;
 		
-		boolean hasDataChanged = hasDataChanged();
-		needsSave = hasDataChanged;
+		needsSave = hasDataChanged();
 	}
 
 	private boolean hasDataChanged()
