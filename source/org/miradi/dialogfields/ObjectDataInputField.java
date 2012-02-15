@@ -97,6 +97,11 @@ abstract public class ObjectDataInputField extends ObjectDataField
 		if(getORef().isInvalid())
 			return;
 		
+		hasDataChanged();
+	}
+
+	private void hasDataChanged()
+	{
 		boolean currentDataMatchesSaved = getProject().getObjectData(getORef(), getTag()).equals(getText());
 		needsSave = !currentDataMatchesSaved;
 	}
