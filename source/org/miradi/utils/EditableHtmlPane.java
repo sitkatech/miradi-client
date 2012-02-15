@@ -108,6 +108,8 @@ public class EditableHtmlPane extends MiradiTextPane
 	
 	public static String getNormalizedAndSanitizedHtmlText(final String text)
 	{
+		String[] allowedHtmlTags = getTagsToKeep();
+
 		String trimmedText = "";
 		final String[] lines = text.split(HtmlUtilities.getNewlineRegex());
 		for (int index = 0; index < lines.length; ++index)
@@ -124,7 +126,7 @@ public class EditableHtmlPane extends MiradiTextPane
 		trimmedText = trimmedText.replaceAll(XmlUtilities2.NON_BREAKING_SPACE_CODE, StringUtilities.EMPTY_SPACE);
 		trimmedText = HtmlUtilities.removeNonHtmlNewLines(trimmedText);
 		trimmedText = HtmlUtilities.appendNewlineToEndDivTags(trimmedText);
-		trimmedText = HtmlUtilities.removeAllExcept(trimmedText, getTagsToKeep());
+		trimmedText = HtmlUtilities.removeAllExcept(trimmedText, allowedHtmlTags);
 		trimmedText = trimmedText.trim();
 		trimmedText = HtmlUtilities.replaceNonHtmlNewlines(trimmedText);
 		//NOTE: Third party library  uses <br> instead of <br/>.  If we don't replace <br> then 
