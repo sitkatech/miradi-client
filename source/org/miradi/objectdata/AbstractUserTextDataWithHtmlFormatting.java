@@ -32,4 +32,9 @@ public class AbstractUserTextDataWithHtmlFormatting extends UserTextData
 	{
 		return true;
 	}
+
+	public static String[] getAllowedHtmlTags()
+	{
+		return new String[] {"br", "b", "i", "ul", "ol", "li", "u", "strike", "a", };
+	}
 }
