@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-15 11:05-0600\n"
+"POT-Creation-Date: 2012-02-16 10:58-0600\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Virtaal 0.7.0\n"
 
-#: Miradi/source/org/miradi/main/EAM.java:410
+#: Miradi/source/org/miradi/main/EAM.java:418
 msgid ""
 "\n"
 "\n"
@@ -31,7 +31,7 @@ msgstr ""
 "Miradi hat versucht Ihre letzten Änderungen zu speichern und wird jetzt "
 "beendet."
 
-#: Miradi/source/org/miradi/main/EAM.java:407
+#: Miradi/source/org/miradi/main/EAM.java:415
 msgid ""
 "\n"
 "\n"
@@ -326,7 +326,7 @@ msgid "(Definition Not Available)"
 msgstr "(Definition nicht verfügbar)"
 
 #: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:118
-#: Miradi/source/org/miradi/dialogs/base/UpperPanelBaseObjectTableModel.java:118
+#: Miradi/source/org/miradi/dialogs/base/UpperPanelBaseObjectTableModel.java:125
 msgid "(Error)"
 msgstr "(Fehler)"
 
@@ -2190,7 +2190,7 @@ msgstr ""
 msgid "An internal error prevented this operation"
 msgstr "ein interner Fehler hat diesen Befehl verhindert"
 
-#: Miradi/source/org/miradi/main/EAM.java:453
+#: Miradi/source/org/miradi/main/EAM.java:461
 msgid "An unexpected error has occurred"
 msgstr "Ein unerwarteter Fehler ist aufgetreten"
 
@@ -2198,7 +2198,7 @@ msgstr "Ein unerwarteter Fehler ist aufgetreten"
 msgid "An unexpected error has occurred."
 msgstr "Ein unerwarteter Fehler ist aufgetreten."
 
-#: Miradi/source/org/miradi/main/EAM.java:406
+#: Miradi/source/org/miradi/main/EAM.java:414
 msgid "An unexpected error occurred: "
 msgstr "Ein unerwarteter Fehler ist aufgetreten:"
 
@@ -3244,8 +3244,8 @@ msgstr "Planungsraum definieren"
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:61
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:75
-#: Miradi/source/org/miradi/main/EAM.java:510
-#: Miradi/source/org/miradi/main/EAM.java:511
+#: Miradi/source/org/miradi/main/EAM.java:518
+#: Miradi/source/org/miradi/main/EAM.java:519
 msgid "Delete"
 msgstr "Löschen"
 
@@ -3583,7 +3583,7 @@ msgid "Entire Project Duration"
 msgstr "Gesamtlaufzeit des Projekts"
 
 #: Miradi/source/org/miradi/objecthelpers/ThreatTargetVirtualLinkHelper.java:102
-#: Miradi/source/org/miradi/main/EAM.java:419
+#: Miradi/source/org/miradi/main/EAM.java:427
 #: Miradi/source/org/miradi/dialogfields/ReadOnlyCodeListField.java:87
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:80
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetThreatLinkTableModel.java:76
@@ -6102,7 +6102,7 @@ msgid "Results Monitoring Plan"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:61
-#: Miradi/source/org/miradi/main/EAM.java:510
+#: Miradi/source/org/miradi/main/EAM.java:518
 msgid "Retain"
 msgstr "Behalten"
 
@@ -7779,11 +7779,11 @@ msgid "Text Box Properties"
 msgstr "Eigenschaften - Textfeld"
 
 # ich glaube wir dürfen das Format nicht ändern (Felix)
-#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:154
+#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:157
 msgid "Text|Dates must be in YYYY-MM-DD format"
 msgstr "Datum muss in folgendem Format vorliegen: JJJJ-MM-TT"
 
-#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:166
+#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:169
 msgid "Text|Unknown error prevented saving this data"
 msgstr "Ein unbekannter Fehler verhinderte das Speichern der Daten. "
 
@@ -7990,7 +7990,7 @@ msgstr ""
 "werden. Es wird eine Sicherheitskopie gespeichert, um Datenverlust zu "
 "verhindern. Wollen Sie die automatische Umwandlung der Daten durchführen?"
 
-#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:172
+#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:175
 msgid ""
 "This value must be numeric<br><br>Currency symbols and percent signs are not "
 "allowed"
@@ -8147,7 +8147,7 @@ msgstr "Eigenschaften - Diagramm"
 msgid "Title|Direct Threat Properties"
 msgstr "Direkte Bedrohungen Eigenschaften"
 
-#: Miradi/source/org/miradi/main/EAM.java:458
+#: Miradi/source/org/miradi/main/EAM.java:466
 msgid "Title|Error"
 msgstr "Fehler"
 
@@ -8750,7 +8750,7 @@ msgstr ""
 msgid "Who Override was: %s"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAM.java:666
+#: Miradi/source/org/miradi/main/EAM.java:674
 msgid "Wintitle|Information"
 msgstr "Information"
 

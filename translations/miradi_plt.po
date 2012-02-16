@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-15 11:05-0600\n"
+"POT-Creation-Date: 2012-02-16 10:58-0600\n"
 "PO-Revision-Date: 2011-03-17 08:40-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -17,14 +17,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: Miradi/source/org/miradi/main/EAM.java:410
+#: Miradi/source/org/miradi/main/EAM.java:418
 msgid ""
 "\n"
 "\n"
 "Miradi has attempted to save your latest changes, and will now exit."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAM.java:407
+#: Miradi/source/org/miradi/main/EAM.java:415
 msgid ""
 "\n"
 "\n"
@@ -279,7 +279,7 @@ msgid "(Definition Not Available)"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:118
-#: Miradi/source/org/miradi/dialogs/base/UpperPanelBaseObjectTableModel.java:118
+#: Miradi/source/org/miradi/dialogs/base/UpperPanelBaseObjectTableModel.java:125
 msgid "(Error)"
 msgstr ""
 
@@ -1924,7 +1924,7 @@ msgstr ""
 msgid "An internal error prevented this operation"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAM.java:453
+#: Miradi/source/org/miradi/main/EAM.java:461
 msgid "An unexpected error has occurred"
 msgstr ""
 
@@ -1932,7 +1932,7 @@ msgstr ""
 msgid "An unexpected error has occurred."
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAM.java:406
+#: Miradi/source/org/miradi/main/EAM.java:414
 msgid "An unexpected error occurred: "
 msgstr ""
 
@@ -2914,8 +2914,8 @@ msgstr ""
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:61
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:75
-#: Miradi/source/org/miradi/main/EAM.java:510
-#: Miradi/source/org/miradi/main/EAM.java:511
+#: Miradi/source/org/miradi/main/EAM.java:518
+#: Miradi/source/org/miradi/main/EAM.java:519
 msgid "Delete"
 msgstr ""
 
@@ -3228,7 +3228,7 @@ msgid "Entire Project Duration"
 msgstr ""
 
 #: Miradi/source/org/miradi/objecthelpers/ThreatTargetVirtualLinkHelper.java:102
-#: Miradi/source/org/miradi/main/EAM.java:419
+#: Miradi/source/org/miradi/main/EAM.java:427
 #: Miradi/source/org/miradi/dialogfields/ReadOnlyCodeListField.java:87
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:80
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetThreatLinkTableModel.java:76
@@ -5619,7 +5619,7 @@ msgid "Results Monitoring Plan"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:61
-#: Miradi/source/org/miradi/main/EAM.java:510
+#: Miradi/source/org/miradi/main/EAM.java:518
 msgid "Retain"
 msgstr ""
 
@@ -7160,11 +7160,11 @@ msgstr ""
 msgid "Text Box Properties"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:154
+#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:157
 msgid "Text|Dates must be in YYYY-MM-DD format"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:166
+#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:169
 msgid "Text|Unknown error prevented saving this data"
 msgstr ""
 
@@ -7332,7 +7332,7 @@ msgid ""
 "be saved first in case anything goes wrong. Perform the automatic migration?"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:172
+#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:175
 msgid ""
 "This value must be numeric<br><br>Currency symbols and percent signs are not "
 "allowed"
@@ -7481,7 +7481,7 @@ msgstr ""
 msgid "Title|Direct Threat Properties"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAM.java:458
+#: Miradi/source/org/miradi/main/EAM.java:466
 msgid "Title|Error"
 msgstr ""
 
@@ -8062,7 +8062,7 @@ msgstr ""
 msgid "Who Override was: %s"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/EAM.java:666
+#: Miradi/source/org/miradi/main/EAM.java:674
 msgid "Wintitle|Information"
 msgstr ""
 
