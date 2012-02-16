@@ -31,9 +31,11 @@ import org.miradi.ids.IdList;
 import org.miradi.ids.TaskId;
 import org.miradi.main.EAM;
 import org.miradi.main.TestCaseWithProject;
+import org.miradi.objectdata.AbstractUserTextDataWithHtmlFormatting;
 import org.miradi.objectdata.BaseIdData;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objectdata.ChoiceData;
+import org.miradi.objectdata.CodeData;
 import org.miradi.objectdata.CodeListData;
 import org.miradi.objectdata.CodeToChoiceMapData;
 import org.miradi.objectdata.CodeToCodeListMapData;
@@ -53,7 +55,7 @@ import org.miradi.objectdata.PseudoQuestionData;
 import org.miradi.objectdata.PseudoStringData;
 import org.miradi.objectdata.RefListData;
 import org.miradi.objectdata.RefListListData;
-import org.miradi.objectdata.StringData;
+import org.miradi.objectdata.SingleLineUserTextData;
 import org.miradi.objectdata.TagListData;
 import org.miradi.objecthelpers.CodeToChoiceMap;
 import org.miradi.objecthelpers.CodeToCodeListMap;
@@ -175,7 +177,8 @@ public class ObjectTestCase extends TestCaseWithProject
 		String sampleData = getSampleData(object, tag);
 		String emptyData = getEmptyData(object, tag);
 
-		assertTrue("field is empty?", object.getField(tag).isEmpty());
+		assertTrue("field didn't start out empty?", object.getField(tag).isEmpty());
+		assertTrue("current value is not empty?", object.getField(tag).isCurrentValue(""));
 		assertEquals("didn't default " + tag + " empty?", emptyData, object.getData(tag));
 		try
 		{
@@ -186,7 +189,8 @@ public class ObjectTestCase extends TestCaseWithProject
 			System.out.println("need sample data for " + object.getField(tag).getClass().getSimpleName());
 			throw e;
 		}
-		assertFalse("is not empty?", object.getField(tag).isEmpty());
+		assertFalse("claims to be empty?", object.getField(tag).isEmpty());
+		assertTrue("current contents mismatch?", object.getField(tag).isCurrentValue(sampleData));
 		
 		assertEquals("did't set " + tag + "?", sampleData, object.getData(tag));
 		BaseObject got = BaseObject.createFromJson(project.getObjectManager(), object.getType(), object.toJson());
@@ -284,9 +288,21 @@ public class ObjectTestCase extends TestCaseWithProject
 			
 			return pointList.toString();
 		}
-		else if(field instanceof StringData)
+		else if(field instanceof ChoiceData)
 		{
 			return tag + tag;
+		}
+		else if(field instanceof CodeData)
+		{
+			return tag + tag;
+		}
+		else if(field instanceof SingleLineUserTextData)
+		{
+			return tag + tag;
+		}
+		else if(field instanceof AbstractUserTextDataWithHtmlFormatting)
+		{
+			return "<b>Testing HTML</b>";
 		}
 		else if(field instanceof PseudoQuestionData)
 		{

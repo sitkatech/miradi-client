@@ -323,7 +323,7 @@ public class XmpzXmlExporter extends XmlExporter implements XmpzXmlConstants
 	{
 		String latitude = getMetadata().getLatitude();
 		String longitude = getMetadata().getLongitude();
-		if(latitude.isEmpty() && longitude.isEmpty())
+		if(latitude.length()==0 && longitude.length()==0)
 			return;
 
 		writeStartElement(getWriter(), createParentAndChildElementName(PROJECT_SUMMARY_LOCATION, PROJECT_LOCATION));

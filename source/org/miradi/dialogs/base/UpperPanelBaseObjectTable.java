@@ -34,6 +34,7 @@ import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
 import org.miradi.dialogs.tablerenderers.RowColumnSelectionProvider;
 import org.miradi.dialogs.tablerenderers.SingleLineObjectTableCellEditorOrRendererFactory;
 import org.miradi.ids.BaseId;
+import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -90,9 +91,10 @@ abstract public class UpperPanelBaseObjectTable extends EditableBaseObjectTable 
 	public boolean isCellEditable(int row, int tableColumn)
 	{
 		int modelColumn = convertColumnIndexToModel(tableColumn);
-		if (getObjectTableModel().isCodeListColumn(modelColumn))
+		UpperPanelBaseObjectTableModel model = getObjectTableModel();
+		if (model.isCodeListColumn(modelColumn))
 			return false;
-		if(getObjectTableModel().isMultiLineTextCell(row, tableColumn))
+		if(model.isMultiLineTextCell(row, tableColumn))
 			return false;
 		
 		return super.isCellEditable(row, tableColumn);
@@ -120,17 +122,19 @@ abstract public class UpperPanelBaseObjectTable extends EditableBaseObjectTable 
 	public TableCellEditor getCellEditor(int row, int tableColumn)
 	{
 		int modelColumn = convertColumnIndexToModel(tableColumn);
-		if (getObjectTableModel().isChoiceItemColumn(modelColumn))
+		UpperPanelBaseObjectTableModel model = getObjectTableModel();
+		if (model.isChoiceItemColumn(modelColumn))
 		{
 			return statusQuestionRenderer;
 		}
 		
-		if (getObjectTableModel().isSingleLineTextCell(row, modelColumn))
+		if (model.isSingleLineTextCell(row, modelColumn))
 		{
 			return singleLineRendererOrEditorFactory;
 		}
 		
-		throw new RuntimeException("This cell is not yet editable");
+		EAM.logWarning("This cell is not yet editable: " + row + "," + tableColumn + ": " + model.getColumnTag(modelColumn));
+		return null;
 	}
 	
 	public BaseObject getBaseObjectForRowColumn(int row, int column)

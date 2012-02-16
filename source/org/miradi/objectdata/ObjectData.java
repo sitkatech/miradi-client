@@ -57,6 +57,11 @@ abstract public class ObjectData
 		return toString().length() == 0;
 	}
 	
+	public boolean isCurrentValue(String text)
+	{
+		return get().equals(text);
+	}
+
 	public boolean isPseudoField()
 	{
 		return false;
@@ -72,7 +77,7 @@ abstract public class ObjectData
 		return false;
 	}
 	
-	public boolean isUserTextWithNewlines()
+	public boolean isUserTextWithHtmlFormatting()
 	{
 		return false;
 	}

@@ -41,10 +41,17 @@ abstract public class UpperPanelBaseObjectTableModel extends EditableObjectTable
 	@Override
 	public boolean isCellEditable(int row, int column)
 	{
+		// NOTE: This logic MUST match table.getCellEditor!
 		if (isPseudoFieldColumn(column))
 			return false;
+
+		if(isChoiceItemColumn(column))
+			return true;
 		
-		return true;
+		if(isSingleLineTextCell(row, column))
+			return true;
+		
+		return false;
 	}
 	
 	public boolean isPseudoFieldColumn(int column)
@@ -78,7 +85,7 @@ abstract public class UpperPanelBaseObjectTableModel extends EditableObjectTable
 		catch(Exception e)
 		{
 			EAM.logException(e);
-			throw new RuntimeException("TeamModel.getObjectFromRow error. row = " + row);
+			throw new RuntimeException("model getObjectFromRow error. row = " + row);
 		}
 	}
 	
