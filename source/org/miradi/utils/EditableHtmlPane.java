@@ -23,14 +23,19 @@ package org.miradi.utils;
 import java.awt.Point;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.io.IOException;
 import java.io.StringReader;
+import java.io.Writer;
 import java.net.URL;
 
 import javax.swing.JEditorPane;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
+import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
+import javax.swing.text.html.HTMLDocument;
 import javax.swing.text.html.HTMLEditorKit;
+import javax.swing.text.html.HTMLWriter;
 import javax.swing.text.html.StyleSheet;
 
 import net.atlanticbb.tantlinger.ui.text.CompoundUndoManager;
@@ -188,6 +193,41 @@ public class EditableHtmlPane extends MiradiTextPane
 				 editorPane.addMouseMotionListener(l);
 			 }
 		 }
+		 
+		 @Override
+		public void write(Writer out, Document doc, int pos, int len)
+				throws IOException, BadLocationException
+		{
+		    HTMLWriter w = new HTMLWriterWithoutIndenting(out, (HTMLDocument)doc, pos, len);
+		    w.write();
+		}
+	 }
+	 
+	 class HTMLWriterWithoutIndenting extends HTMLWriter
+	 {
+		public HTMLWriterWithoutIndenting(Writer out, HTMLDocument doc, int pos, int len)
+		{
+			super(out, doc, pos, len);
+		}
+		
+		@Override
+		protected void indent() throws IOException
+		{
+			// never indent
+		}
+		
+		@Override
+		protected void writeLineSeparator() throws IOException
+		{
+			// never write newlines
+		}
+		
+		@Override
+		protected void setCanWrapLines(boolean newValue)
+		{
+			// never wrap
+			super.setCanWrapLines(false);
+		}
 	 }
 	 
 	 private HyperlinkHandler handler;

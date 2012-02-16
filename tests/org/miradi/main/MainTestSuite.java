@@ -65,6 +65,7 @@ import org.miradi.ids.TestBaseId;
 import org.miradi.ids.TestIdList;
 import org.miradi.legacyprojects.TestDataUpgrader;
 import org.miradi.legacyprojects.TestDataUpgraderForMiradi3;
+import org.miradi.objectdata.TestAbstractUserStringDataWithHtmlFormatting;
 import org.miradi.objectdata.TestDateData;
 import org.miradi.objectdata.TestDateRangeData;
 import org.miradi.objectdata.TestIntegerData;
@@ -340,6 +341,7 @@ public class MainTestSuite extends TestSuite
 		addTest(new TestSuite(TestLinkCell.class));
 		
 		//objectdata package
+		addTest(new TestSuite(TestAbstractUserStringDataWithHtmlFormatting.class));
 		addTest(new TestSuite(TestDateData.class));
 		addTest(new TestSuite(TestDateRangeData.class));
 		addTest(new TestSuite(TestIntegerData.class));

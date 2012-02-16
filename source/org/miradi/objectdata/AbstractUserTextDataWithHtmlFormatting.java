@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objectdata;
 
+import org.miradi.utils.HtmlUtilities;
+
 public class AbstractUserTextDataWithHtmlFormatting extends UserTextData
 {
 	public AbstractUserTextDataWithHtmlFormatting(String tagToUse)
@@ -31,6 +33,20 @@ public class AbstractUserTextDataWithHtmlFormatting extends UserTextData
 	public boolean isUserTextWithHtmlFormatting()
 	{
 		return true;
+	}
+	
+	@Override
+	public void set(String newValue) throws Exception
+	{
+		super.set(HtmlUtilities.getNormalizedAndSanitizedHtmlText(newValue, getAllowedHtmlTags()));
+	}
+	
+	@Override
+	public boolean isCurrentValue(String text)
+	{
+		String currentValue = HtmlUtilities.getNormalizedAndSanitizedHtmlText(get(), getAllowedHtmlTags());
+		String otherValue = HtmlUtilities.getNormalizedAndSanitizedHtmlText(text, getAllowedHtmlTags());
+		return currentValue.equals(otherValue);
 	}
 
 	public static String[] getAllowedHtmlTags()
