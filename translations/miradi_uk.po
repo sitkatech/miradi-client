@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-15 11:05-0600\n"
+"POT-Creation-Date: 2012-02-16 10:58-0600\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: Miradi/source/org/miradi/main/EAM.java:410
+#: Miradi/source/org/miradi/main/EAM.java:418
 msgid ""
 "\n"
 "\n"
@@ -27,7 +27,7 @@ msgstr ""
 "\n"
 "Міраді спробувала зберегти ваші останні зміни і зараз закриється"
 
-#: Miradi/source/org/miradi/main/EAM.java:407
+#: Miradi/source/org/miradi/main/EAM.java:415
 msgid ""
 "\n"
 "\n"
@@ -298,7 +298,7 @@ msgid "(Definition Not Available)"
 msgstr "(Немає визначення)"
 
 #: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:118
-#: Miradi/source/org/miradi/dialogs/base/UpperPanelBaseObjectTableModel.java:118
+#: Miradi/source/org/miradi/dialogs/base/UpperPanelBaseObjectTableModel.java:125
 msgid "(Error)"
 msgstr "(Помилка)"
 
@@ -2090,7 +2090,7 @@ msgstr ""
 msgid "An internal error prevented this operation"
 msgstr "Внутрішня помилка перешкодила цій операції"
 
-#: Miradi/source/org/miradi/main/EAM.java:453
+#: Miradi/source/org/miradi/main/EAM.java:461
 msgid "An unexpected error has occurred"
 msgstr "Сталася нечекана помилка"
 
@@ -2098,7 +2098,7 @@ msgstr "Сталася нечекана помилка"
 msgid "An unexpected error has occurred."
 msgstr "Сталася нечекана помилка"
 
-#: Miradi/source/org/miradi/main/EAM.java:406
+#: Miradi/source/org/miradi/main/EAM.java:414
 msgid "An unexpected error occurred: "
 msgstr "Сталася нечекана помилка:"
 
@@ -3118,8 +3118,8 @@ msgstr "Визначити сферу дій проекту"
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:61
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:75
-#: Miradi/source/org/miradi/main/EAM.java:510
-#: Miradi/source/org/miradi/main/EAM.java:511
+#: Miradi/source/org/miradi/main/EAM.java:518
+#: Miradi/source/org/miradi/main/EAM.java:519
 msgid "Delete"
 msgstr "Видалити"
 
@@ -3448,7 +3448,7 @@ msgid "Entire Project Duration"
 msgstr ""
 
 #: Miradi/source/org/miradi/objecthelpers/ThreatTargetVirtualLinkHelper.java:102
-#: Miradi/source/org/miradi/main/EAM.java:419
+#: Miradi/source/org/miradi/main/EAM.java:427
 #: Miradi/source/org/miradi/dialogfields/ReadOnlyCodeListField.java:87
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:80
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetThreatLinkTableModel.java:76
@@ -5916,7 +5916,7 @@ msgid "Results Monitoring Plan"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:61
-#: Miradi/source/org/miradi/main/EAM.java:510
+#: Miradi/source/org/miradi/main/EAM.java:518
 msgid "Retain"
 msgstr "Утримувати"
 
@@ -7526,11 +7526,11 @@ msgstr "Рамка для тексту"
 msgid "Text Box Properties"
 msgstr "Складові Текстової рамки"
 
-#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:154
+#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:157
 msgid "Text|Dates must be in YYYY-MM-DD format"
 msgstr "Text|Дані мусять бути у YYYY-MM-DD форматі"
 
-#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:166
+#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:169
 msgid "Text|Unknown error prevented saving this data"
 msgstr "Text|Невідома помилка перешкодила збереженню цих даних"
 
@@ -7724,7 +7724,7 @@ msgstr ""
 "відкривати його треба перевести у поточний формат даних. Спочатку треба "
 "зберегти дублікат на випадок збою. Здійснити автоматичний перехід? "
 
-#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:172
+#: Miradi/source/org/miradi/dialogfields/ObjectDataInputField.java:175
 msgid ""
 "This value must be numeric<br><br>Currency symbols and percent signs are not "
 "allowed"
@@ -7881,7 +7881,7 @@ msgstr "Title|Складові Діаграми"
 msgid "Title|Direct Threat Properties"
 msgstr "Title|Складові Прямої загрози"
 
-#: Miradi/source/org/miradi/main/EAM.java:458
+#: Miradi/source/org/miradi/main/EAM.java:466
 msgid "Title|Error"
 msgstr "Title|Помилка"
 
@@ -8485,7 +8485,7 @@ msgstr ""
 msgid "Who Override was: %s"
 msgstr "Ким було перевищено: %s"
 
-#: Miradi/source/org/miradi/main/EAM.java:666
+#: Miradi/source/org/miradi/main/EAM.java:674
 msgid "Wintitle|Information"
 msgstr "Wintitle|Інформація"
 
