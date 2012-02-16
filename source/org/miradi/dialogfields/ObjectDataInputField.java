@@ -125,10 +125,11 @@ abstract public class ObjectDataInputField extends ObjectDataField
 		if(!isValidObject())
 			return;
 		
+		if(!hasDataChanged())
+			return;
+		
 		String newValue = getText();
 		String existingValue = getProject().getObjectData(getORef(), getTag());
-		if(existingValue.equals(newValue))
-			return;
 
 		CommandSetObjectData cmd = new CommandSetObjectData(getORef(), getTag(), newValue);
 		try
