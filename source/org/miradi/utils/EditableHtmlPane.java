@@ -23,14 +23,19 @@ package org.miradi.utils;
 import java.awt.Point;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.io.IOException;
 import java.io.StringReader;
+import java.io.Writer;
 import java.net.URL;
 
 import javax.swing.JEditorPane;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
+import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
+import javax.swing.text.html.HTMLDocument;
 import javax.swing.text.html.HTMLEditorKit;
+import javax.swing.text.html.HTMLWriter;
 import javax.swing.text.html.StyleSheet;
 
 import net.atlanticbb.tantlinger.ui.text.CompoundUndoManager;
@@ -41,6 +46,7 @@ import org.miradi.dialogfields.ObjectScrollingMultilineInputField;
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.objectdata.AbstractUserTextDataWithHtmlFormatting;
 
 public class EditableHtmlPane extends MiradiTextPane
 {
@@ -90,7 +96,7 @@ public class EditableHtmlPane extends MiradiTextPane
 	public void setText(String text)
 	{
 		updateStyleSheet();
-		String topText = HtmlUtilities.removeAllExcept(text, getAllowedHtmlTags());
+		String topText = HtmlUtilities.removeAllExcept(text, AbstractUserTextDataWithHtmlFormatting.getAllowedHtmlTags());
 		// NOTE: Shef does not encode/decode apostrophes as we need for proper XML
 		topText = XmlUtilities2.getXmlDecodedApostrophes(topText);
 		super.setText("");
@@ -108,14 +114,9 @@ public class EditableHtmlPane extends MiradiTextPane
 	
 	public static String getNormalizedAndSanitizedHtmlText(final String text)
 	{
-		return HtmlUtilities.getNormalizedAndSanitizedHtmlText(text, getAllowedHtmlTags());
+		return HtmlUtilities.getNormalizedAndSanitizedHtmlText(text, AbstractUserTextDataWithHtmlFormatting.getAllowedHtmlTags());
 	}
 
-	public static String[] getAllowedHtmlTags()
-	{
-		return new String[] {"br", "b", "i", "ul", "ol", "li", "u", "strike", "a", };
-	}
-	
 	private void updateStyleSheet()
 	{
 		HTMLEditorKit htmlKit = (HTMLEditorKit)getEditorKit();
@@ -192,6 +193,41 @@ public class EditableHtmlPane extends MiradiTextPane
 				 editorPane.addMouseMotionListener(l);
 			 }
 		 }
+		 
+		 @Override
+		public void write(Writer out, Document doc, int pos, int len)
+				throws IOException, BadLocationException
+		{
+		    HTMLWriter w = new HTMLWriterWithoutIndenting(out, (HTMLDocument)doc, pos, len);
+		    w.write();
+		}
+	 }
+	 
+	 class HTMLWriterWithoutIndenting extends HTMLWriter
+	 {
+		public HTMLWriterWithoutIndenting(Writer out, HTMLDocument doc, int pos, int len)
+		{
+			super(out, doc, pos, len);
+		}
+		
+		@Override
+		protected void indent() throws IOException
+		{
+			// never indent
+		}
+		
+		@Override
+		protected void writeLineSeparator() throws IOException
+		{
+			// never write newlines
+		}
+		
+		@Override
+		protected void setCanWrapLines(boolean newValue)
+		{
+			// never wrap
+			super.setCanWrapLines(false);
+		}
 	 }
 	 
 	 private HyperlinkHandler handler;

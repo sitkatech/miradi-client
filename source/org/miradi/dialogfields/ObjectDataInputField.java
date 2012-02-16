@@ -26,7 +26,9 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
+import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.utils.InvalidDateException;
 import org.miradi.utils.InvalidNumberException;
@@ -97,8 +99,14 @@ abstract public class ObjectDataInputField extends ObjectDataField
 		if(getORef().isInvalid())
 			return;
 		
-		boolean currentDataMatchesSaved = getOldValue().equals(getText());
-		needsSave = !currentDataMatchesSaved;
+		needsSave = hasDataChanged();
+	}
+
+	private boolean hasDataChanged()
+	{
+		BaseObject object = BaseObject.find(getProject(), getORef());
+		ObjectData field = object.getField(getTag());
+		return !field.isCurrentValue(getText());
 	}
 	
 	public void clearNeedsSave()
@@ -117,10 +125,11 @@ abstract public class ObjectDataInputField extends ObjectDataField
 		if(!isValidObject())
 			return;
 		
-		String newValue = getText();
-		String existingValue = getOldValue();
-		if(existingValue.equals(newValue))
+		if(!hasDataChanged())
 			return;
+		
+		String newValue = getText();
+		String existingValue = getProject().getObjectData(getORef(), getTag());
 
 		CommandSetObjectData cmd = new CommandSetObjectData(getORef(), getTag(), newValue);
 		try
@@ -137,12 +146,6 @@ abstract public class ObjectDataInputField extends ObjectDataField
 		}
 	}
 
-	private String getOldValue()
-	{
-		String existingValue = getProject().getObjectData(getORef(), getTag());
-		return existingValue;
-	}
-	
 	private void notifyUserOfFailure(CommandFailedException cfe)
 	{
 		try

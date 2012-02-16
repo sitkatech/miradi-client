@@ -184,17 +184,17 @@ public class HtmlUtilities
 		{
 			//NOTE: Shef editor never splits text between lines, so we can safely ignore the text\ntext case
 			String line = lines[index];
-			String leadingSpacesRemoved = line.replaceAll("^[ \t]+", "");
+			String leadingSpacesRemoved = line.replaceAll("^[ \\t]+", "");
 			trimmedText += leadingSpacesRemoved;
 		}
 		
 		// NOTE: The Java HTML parser compresses all whitespace to a single space
 		// (http://java.sun.com/products/jfc/tsc/articles/bookmarks/)
-		trimmedText = trimmedText.replaceAll(XmlUtilities2.NON_BREAKING_SPACE_NAME, StringUtilities.EMPTY_SPACE);
-		trimmedText = trimmedText.replaceAll(XmlUtilities2.NON_BREAKING_SPACE_CODE, StringUtilities.EMPTY_SPACE);
 		trimmedText = removeNonHtmlNewLines(trimmedText);
 		trimmedText = appendNewlineToEndDivTags(trimmedText);
 		trimmedText = removeAllExcept(trimmedText, allowedHtmlTags);
+		trimmedText = trimmedText.replaceAll("\\t", " ");
+		trimmedText = trimmedText.replaceAll(" +", " ");
 		trimmedText = trimmedText.trim();
 		trimmedText = replaceNonHtmlNewlines(trimmedText);
 		//NOTE: Third party library  uses <br> instead of <br/>.  If we don't replace <br> then 
