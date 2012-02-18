@@ -73,5 +73,4 @@ public class XmlUtilities2
 	}
 
 	public static final String NON_BREAKING_SPACE_NAME = "&nbsp;";
-	public static final String NON_BREAKING_SPACE_CODE = "&#160;";
 }
