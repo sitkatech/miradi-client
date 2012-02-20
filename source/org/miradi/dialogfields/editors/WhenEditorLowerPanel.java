@@ -22,6 +22,7 @@ package org.miradi.dialogfields.editors;
 
 import java.awt.CardLayout;
 
+import org.miradi.dialogfields.FieldSaver;
 import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.project.ProjectCalendar;
@@ -53,6 +54,7 @@ public class WhenEditorLowerPanel extends DisposablePanel
 	@Override
 	public void dispose()
 	{
+		FieldSaver.savePendingEdits();
 		disposePanel(dayCard);
 		dayCard = null;
 		
