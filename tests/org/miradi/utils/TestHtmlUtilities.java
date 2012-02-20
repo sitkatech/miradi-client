@@ -48,6 +48,14 @@ public class TestHtmlUtilities extends MiradiTestCase
 
 		assertEquals("wrong new lines inserted?", "text on line 1 text on line 2 <br/>text on line 3", EditableHtmlPane.getNormalizedAndSanitizedHtmlText(htmlText));
 	}
+	
+	public void testRemoveTrailingSpaces()
+	{
+		final String htmlText = "<br/> sample value <br/>";
+		final String expectedValue = "<br/>sample value <br/>";
+
+		assertEquals("Trailing white space was not removed?", expectedValue, HtmlUtilities.removeTrailingSpaces(htmlText));
+	}
 
 	public void testReplaceNonEmptyBrTags()
 	{
