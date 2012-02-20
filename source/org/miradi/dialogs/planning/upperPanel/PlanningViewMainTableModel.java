@@ -248,7 +248,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			{
 				setWhenValue(baseObjectForRow, createCodeList(value));
 			}
-			if (isChoiceItemColumn(column))
+			else if (isChoiceItemColumn(column))
 			{
 				ChoiceItem choiceItem = (ChoiceItem) value;
 				setValueUsingCommand(baseObjectForRow.getRef(), getTagForCell(baseObjectForRow.getType(), column), choiceItem.getCode());
