@@ -54,7 +54,7 @@ public class TestHtmlUtilities extends MiradiTestCase
 		final String htmlText = "<br/> sample value <br/>";
 		final String expectedValue = "<br/>sample value <br/>";
 
-		assertEquals("Trailing white space was not removed?", expectedValue, HtmlUtilities.removeTrailingSpaces(htmlText));
+		assertEquals("Trailing white space was not removed?", expectedValue, HtmlUtilities.getWithoutSpacesAfterXmlElements(htmlText));
 	}
 
 	public void testReplaceNonEmptyBrTags()
