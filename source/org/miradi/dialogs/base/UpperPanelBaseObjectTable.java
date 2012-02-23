@@ -22,12 +22,14 @@ package org.miradi.dialogs.base;
 import java.awt.Rectangle;
 import java.util.Vector;
 
+import javax.swing.DefaultCellEditor;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.dialogs.fieldComponents.ChoiceItemComboBox;
 import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.CodeListRendererFactory;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
@@ -39,6 +41,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
+import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
 
 abstract public class UpperPanelBaseObjectTable extends EditableBaseObjectTable implements RowColumnSelectionProvider
@@ -125,7 +128,10 @@ abstract public class UpperPanelBaseObjectTable extends EditableBaseObjectTable 
 		UpperPanelBaseObjectTableModel model = getObjectTableModel();
 		if (model.isChoiceItemColumn(modelColumn))
 		{
-			return statusQuestionRenderer;
+			ChoiceQuestion question = getObjectTableModel().getColumnQuestion(modelColumn);
+			ChoiceItemComboBox comboBox = new ChoiceItemComboBox(question);
+			
+			return new DefaultCellEditor(comboBox);
 		}
 		
 		if (model.isSingleLineTextCell(row, modelColumn))
