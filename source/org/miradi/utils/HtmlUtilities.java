@@ -176,7 +176,7 @@ public class HtmlUtilities
 		return compiledRegex.matcher(text).replaceAll(EMPTY_STRING);
 	}
 	
-	public static String removeTrailingSpaces(final String text)
+	public static String getWithoutSpacesAfterXmlElements(final String text)
 	{
 		final String regex = "(<.+>) +";
 		final Pattern compiledRegex = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
@@ -208,7 +208,7 @@ public class HtmlUtilities
 		//NOTE: Third party library  uses <br> instead of <br/>.  If we don't replace <br> then 
 		//save method thinks there was a change and attempts to save.
 		trimmedText = replaceStartBrTagsWithEmptyBrTags(trimmedText);
-		trimmedText = removeTrailingSpaces(trimmedText);
+		trimmedText = getWithoutSpacesAfterXmlElements(trimmedText);
 		// NOTE: Shef does not encode/decode apostrophes as we need for proper XML
 		trimmedText = XmlUtilities2.getXmlEncodedApostrophes(trimmedText);
 		ensureNoCloseBrTags(trimmedText);
