@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-16 10:58-0600\n"
+"POT-Creation-Date: 2012-03-07 11:44-0600\n"
 "PO-Revision-Date: 2011-04-29 11:26+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -8415,7 +8415,7 @@ msgstr "Molto Piccolo"
 msgid "Viability Analysis Mode"
 msgstr "Modalità Analisi Vitalità"
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityRatingsSubPanel.java:72
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityRatingsSubPanel.java:98
 msgid "Viability Ratings"
 msgstr "Valutazioni Vitalità"
 

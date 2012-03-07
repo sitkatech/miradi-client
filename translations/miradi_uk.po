@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-16 10:58-0600\n"
+"POT-Creation-Date: 2012-03-07 11:44-0600\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -8296,7 +8296,7 @@ msgstr "Дуже маленький"
 msgid "Viability Analysis Mode"
 msgstr "Опція аналізу життєздатності"
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityRatingsSubPanel.java:72
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityRatingsSubPanel.java:98
 msgid "Viability Ratings"
 msgstr "Оцінки життєздатності"
 
