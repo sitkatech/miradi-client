@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-07 11:44-0600\n"
+"POT-Creation-Date: 2012-03-07 15:21-0600\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -7377,8 +7377,8 @@ msgid "Tab|Stresses"
 msgstr "Tab|Дарамтууд"
 
 #: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityTreeManagementPanel.java:91
-#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityManagementPanel.java:78
-#: Miradi/source/org/miradi/dialogs/viability/TargetKeaViabilityTreeManagementPanel.java:78
+#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityManagementPanel.java:70
+#: Miradi/source/org/miradi/dialogs/viability/TargetKeaViabilityTreeManagementPanel.java:75
 msgid "Tab|Viability"
 msgstr "Tab|Амьдрах чадвар"
 
