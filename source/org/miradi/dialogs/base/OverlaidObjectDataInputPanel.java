@@ -41,6 +41,13 @@ public abstract class OverlaidObjectDataInputPanel extends AbstractObjectDataInp
 		add(panelToAdd, panelToAdd.getPanelDescription());
 	}
 	
+	@Override
+	public void selectSectionForTag(String tag)
+	{
+		if(currentCard != null)
+			currentCard.selectSectionForTag(tag);
+	}
+	
 	private void deactivateCurrentCard()
 	{
 		if (currentCard != null)
