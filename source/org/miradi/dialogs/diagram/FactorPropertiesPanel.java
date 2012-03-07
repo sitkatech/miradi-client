@@ -468,7 +468,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		return event.isSetDataCommandWithThisTypeAndTag(HumanWelfareTarget.getObjectType(), AbstractTarget.TAG_VIABILITY_MODE);
 	}
 	
-	class CurrentFactorChangerComboBox extends ChoiceItemComboBox implements ItemListener 
+	private class CurrentFactorChangerComboBox extends ChoiceItemComboBox implements ItemListener 
 	{
 		public CurrentFactorChangerComboBox(ChoiceQuestion question)
 		{
@@ -528,7 +528,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		}
 	}
 	
-	class FactorPropertiesTabbedPane extends PanelTabbedPane
+	private class FactorPropertiesTabbedPane extends PanelTabbedPane
 	{
 		@Override
 		public void setSelectedIndex(int index)
