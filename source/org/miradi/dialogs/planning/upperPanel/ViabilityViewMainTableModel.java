@@ -204,16 +204,17 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 
 	private boolean isThresholdColumn(int modelColumn)
 	{
-		if (getColumnTag(modelColumn).equals(POOR))
+		final String columnTag = getColumnTag(modelColumn);
+		if (columnTag.equals(POOR))
 			return true;
 		
-		if (getColumnTag(modelColumn).equals(FAIR))
+		if (columnTag.equals(FAIR))
 			return true;
 		
-		if (getColumnTag(modelColumn).equals(GOOD))
+		if (columnTag.equals(GOOD))
 			return true;
 		
-		if (getColumnTag(modelColumn).equals(VERY_GOOD))
+		if (columnTag.equals(VERY_GOOD))
 			return true;
 		
 		return false;
