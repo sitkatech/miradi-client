@@ -32,7 +32,6 @@ import org.miradi.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTable
 import org.miradi.dialogs.planning.treenodes.PlanningTreeRootNodeAlwaysExpanded;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeMultiTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTable;
-import org.miradi.dialogs.planning.upperPanel.PlanningTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
 import org.miradi.dialogs.planning.upperPanel.PlanningUpperMultiTable;
 import org.miradi.dialogs.planning.upperPanel.TreeTableModelWithRebuilder;
@@ -42,6 +41,7 @@ import org.miradi.dialogs.planning.upperPanel.ViabilityTreeTableWithVisibleRootN
 import org.miradi.dialogs.planning.upperPanel.ViabilityUpperMultiTable;
 import org.miradi.dialogs.planning.upperPanel.ViabilityViewMainTableModel;
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
+import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
 
@@ -54,8 +54,9 @@ public class TargetViabilityTreeTablePanel extends PlanningTreeTablePanel
 		super(mainWindowToUse, treeToUse, modelToUse, buttonActions, rowColumnProviderToUse);
 	}
 	
-	public static PlanningTreeTablePanel createTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTableModel model, PlanningTreeRowColumnProvider rowColumnProvider) throws Exception
+	public static PlanningTreeTablePanel createTreeTablePanel(MainWindow mainWindowToUse, TreeTableNode rootNode, PlanningTreeRowColumnProvider rowColumnProvider) throws Exception
 	{
+		TreeTableModelWithRebuilder model = new ViabilityTreeTableModel(mainWindowToUse.getProject(), rootNode, rowColumnProvider);
 		ViabilityTreeTable treeTable = new ViabilityTreeTable(mainWindowToUse, model);
 
 		return new TargetViabilityTreeTablePanel(mainWindowToUse, treeTable, model, getButtonActions(), rowColumnProvider);

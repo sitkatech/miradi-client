@@ -27,8 +27,6 @@ import javax.swing.JComponent;
 import org.miradi.dialogs.base.ObjectListManagementPanel;
 import org.miradi.dialogs.planning.treenodes.PlanningTreeRootNodeAlwaysExpanded;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
-import org.miradi.dialogs.planning.upperPanel.TreeTableModelWithRebuilder;
-import org.miradi.dialogs.planning.upperPanel.ViabilityTreeTableModel;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.utils.BufferedImageFactory;
@@ -76,8 +74,7 @@ abstract public class AbstractViabilityManagementPanel extends ObjectListManagem
 	private PlanningTreeTablePanel createPlanningTreeTablePanel(String uniqueTreeTableModelIdentifier, PlanningTreeRowColumnProvider rowColumnProvider) throws Exception
 	{
 		PlanningTreeRootNodeAlwaysExpanded rootNode = new PlanningTreeRootNodeAlwaysExpanded(getMainWindow().getProject());
-		TreeTableModelWithRebuilder model = new ViabilityTreeTableModel(getMainWindow().getProject(), rootNode, rowColumnProvider);
-		PlanningTreeTablePanel treeTablePanel = TargetViabilityTreeTablePanel.createTreeTablePanel(getMainWindow(), model, rowColumnProvider);
+		PlanningTreeTablePanel treeTablePanel = TargetViabilityTreeTablePanel.createTreeTablePanel(getMainWindow(), rootNode, rowColumnProvider);
 		
 		return treeTablePanel;
 	}
