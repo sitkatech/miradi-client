@@ -239,20 +239,6 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		tabs.addTab(managementPanel.getPanelDescription(), managementPanel.getIcon(), managementPanel);
 	}
 
-	private class TabChangeHandler implements ChangeListener
-	{
-		public void stateChanged(ChangeEvent e)
-		{
-			int newTab = tabs.getSelectedIndex();
-			if (!ignoreTabChanges)
-			{
-				 deactivateCurrentTab();
-				 currentTabIndex = newTab;
-				 activateCurrentTab();
-			}
-		}
-	}
-
 	private void activateCurrentTab()
 	{
 		DisposablePanelWithDescription panel = getCastedCurrentTab();		
@@ -552,6 +538,20 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 			FactorPropertiesDialog dialog = getFactorPropertiesDialog();
 			if(dialog != null)
 				dialog.updateDirectionsEnabledState();
+		}
+	}
+	
+	private class TabChangeHandler implements ChangeListener
+	{
+		public void stateChanged(ChangeEvent e)
+		{
+			int newTab = tabs.getSelectedIndex();
+			if (!ignoreTabChanges)
+			{
+				 deactivateCurrentTab();
+				 currentTabIndex = newTab;
+				 activateCurrentTab();
+			}
 		}
 	}
 
