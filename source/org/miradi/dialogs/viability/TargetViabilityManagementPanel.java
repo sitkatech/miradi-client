@@ -22,11 +22,7 @@ package org.miradi.dialogs.viability;
 import javax.swing.Icon;
 
 import org.miradi.actions.jump.ActionJumpTargetViabilityMethodChoiceStep;
-import org.miradi.dialogs.planning.AbstractPlanningTreeRowColumnProvider;
-import org.miradi.dialogs.planning.treenodes.PlanningTreeRootNodeAlwaysExpanded;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
-import org.miradi.dialogs.planning.upperPanel.TreeTableModelWithRebuilder;
-import org.miradi.dialogs.planning.upperPanel.ViabilityTreeTableModel;
 import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -40,11 +36,7 @@ public class TargetViabilityManagementPanel extends AbstractViabilityManagementP
 	
 	public static TargetViabilityManagementPanel createManagementPanel(MainWindow mainWindowToUse) throws Exception
 	{
-		PlanningTreeRootNodeAlwaysExpanded rootNode = new PlanningTreeRootNodeAlwaysExpanded(mainWindowToUse.getProject());
-		AbstractPlanningTreeRowColumnProvider rowColumnProvider = new TargetViabilityRowColumnProvider(mainWindowToUse.getProject());
-		
-		TreeTableModelWithRebuilder model = new ViabilityTreeTableModel(mainWindowToUse.getProject(), rootNode, rowColumnProvider);
-		PlanningTreeTablePanel treeTablePanel = TargetViabilityTreeTablePanel.createTreeTableWithVisibleRootPanel(mainWindowToUse, model, rowColumnProvider);
+		PlanningTreeTablePanel treeTablePanel = TargetViabilityTreeTablePanel.createTreeTableWithVisibleRootPanel(mainWindowToUse);
 		TargetViabilityMultiPropertiesPanel propertiesPanel = new TargetViabilityMultiPropertiesPanel(mainWindowToUse);
 		
 		return new TargetViabilityManagementPanel(mainWindowToUse, treeTablePanel, propertiesPanel);
