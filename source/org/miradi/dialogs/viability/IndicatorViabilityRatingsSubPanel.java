@@ -65,6 +65,32 @@ public class IndicatorViabilityRatingsSubPanel extends ObjectDataInputPanel
 		ObjectDataInputField detailsField = createStringMapField(Indicator.getObjectType(), Indicator.TAG_THRESHOLD_DETAILS_MAP, choiceItem.getCode(), 30);
 		addFieldsOnOneLine(label, new ObjectDataInputField[]{mapField, detailsField});
 	}
+	
+	@Override
+	protected boolean doesSectionContainFieldWithTag(String tagToUse)
+	{
+		if (isThresholdTag(tagToUse))
+			return true;
+		
+		return super.doesSectionContainFieldWithTag(tagToUse);
+	}
+	
+	private boolean isThresholdTag(String tagToUse)
+	{
+		if (tagToUse.equals(StatusQuestion.POOR))
+			return true;
+		
+		if (tagToUse.equals(StatusQuestion.FAIR))
+			return true;
+		
+		if (tagToUse.equals(StatusQuestion.GOOD))
+			return true;
+
+		if (tagToUse.equals(StatusQuestion.VERY_GOOD))
+			return true;
+			
+		return false;
+	}
 
 	@Override
 	public String getPanelDescription()
