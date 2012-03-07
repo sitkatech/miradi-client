@@ -49,6 +49,7 @@ import org.jgraph.graph.VertexView;
 import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.main.MainWindow;
+import org.miradi.utils.XmlUtilities2;
 
 public class MultilineCellRenderer extends JComponent implements CellViewRenderer
 {
@@ -76,6 +77,7 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 
 	protected void setHtmlFormViewerText(String formattedLabel)
 	{
+		formattedLabel = XmlUtilities2.getXmlDecodedApostrophes(formattedLabel);
 		htmlFormViewer.setText(formattedLabel);
 	}
 	
