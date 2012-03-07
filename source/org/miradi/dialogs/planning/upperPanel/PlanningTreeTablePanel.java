@@ -370,7 +370,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		getPropertiesPanel().setObjectRefs(getPicker().getSelectionHierarchy().toArray(), selectedColumnTag);
 	}
 	
-	class TreeTableRowSelectionHandler implements ListSelectionListener
+	private class TreeTableRowSelectionHandler implements ListSelectionListener
 	{
 		public void valueChanged(ListSelectionEvent e)
 		{
@@ -378,7 +378,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		}
 	}
 	
-	class MainTableSelectionHandler  implements TableColumnModelListener, ListSelectionListener
+	private class MainTableSelectionHandler  implements TableColumnModelListener, ListSelectionListener
 	{
 		public void columnAdded(TableColumnModelEvent e)
 		{
