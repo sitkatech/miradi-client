@@ -370,59 +370,6 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		getPropertiesPanel().setObjectRefs(getPicker().getSelectionHierarchy().toArray(), selectedColumnTag);
 	}
 	
-	private class TreeTableRowSelectionHandler implements ListSelectionListener
-	{
-		public void valueChanged(ListSelectionEvent e)
-		{
-			selectSectionForTag(BaseObject.TAG_LABEL);
-		}
-	}
-	
-	private class MainTableSelectionHandler  implements TableColumnModelListener, ListSelectionListener
-	{
-		public void columnAdded(TableColumnModelEvent e)
-		{
-		}
-
-		public void columnMarginChanged(ChangeEvent e)
-		{
-		}
-
-		public void columnMoved(TableColumnModelEvent e)
-		{
-		}
-
-		public void columnRemoved(TableColumnModelEvent e)
-		{
-		}
-
-		public void columnSelectionChanged(ListSelectionEvent e)
-		{
-			selectSectionForColumn();
-		}
-
-		public void valueChanged(ListSelectionEvent e)
-		{
-			selectSectionForColumn();
-		}
-		
-		private void selectSectionForColumn()
-		{
-			String selectedColumnTag = getSelectedColumnTag();
-			selectSectionForTag(selectedColumnTag);
-		}
-
-		private String getSelectedColumnTag()
-		{
-			int selectedColumn = mainTable.getSelectedColumn();
-			if (selectedColumn < 0)
-				return "";
-			
-			int modelColumn = mainTable.convertColumnIndexToModel(selectedColumn);
-			return multiTableModel.getTagForCell(getSafeTypeForSelectedRow(), modelColumn);
-		}		
-	}
-	
 	private int getSafeTypeForSelectedRow()
 	{
 		if (getTree().getSelectedObjects().length > 0)
@@ -484,6 +431,59 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		private TableWithColumnWidthAndSequenceSaver table;
 		private int row;
 		private int column;
+	}
+	
+	private class TreeTableRowSelectionHandler implements ListSelectionListener
+	{
+		public void valueChanged(ListSelectionEvent e)
+		{
+			selectSectionForTag(BaseObject.TAG_LABEL);
+		}
+	}
+	
+	private class MainTableSelectionHandler  implements TableColumnModelListener, ListSelectionListener
+	{
+		public void columnAdded(TableColumnModelEvent e)
+		{
+		}
+
+		public void columnMarginChanged(ChangeEvent e)
+		{
+		}
+
+		public void columnMoved(TableColumnModelEvent e)
+		{
+		}
+
+		public void columnRemoved(TableColumnModelEvent e)
+		{
+		}
+
+		public void columnSelectionChanged(ListSelectionEvent e)
+		{
+			selectSectionForColumn();
+		}
+
+		public void valueChanged(ListSelectionEvent e)
+		{
+			selectSectionForColumn();
+		}
+		
+		private void selectSectionForColumn()
+		{
+			String selectedColumnTag = getSelectedColumnTag();
+			selectSectionForTag(selectedColumnTag);
+		}
+
+		private String getSelectedColumnTag()
+		{
+			int selectedColumn = mainTable.getSelectedColumn();
+			if (selectedColumn < 0)
+				return "";
+			
+			int modelColumn = mainTable.convertColumnIndexToModel(selectedColumn);
+			return multiTableModel.getTagForCell(getSafeTypeForSelectedRow(), modelColumn);
+		}		
 	}
 	
 	private PlanningTreeRowColumnProvider rowColumnProvider;
