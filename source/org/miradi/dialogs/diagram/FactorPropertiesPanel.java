@@ -158,34 +158,6 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		getProject().addCommandExecutedListener(this);
 	}
 	
-	class FactorPropertiesTabbedPane extends PanelTabbedPane
-	{
-		@Override
-		public void setSelectedIndex(int index)
-		{
-			super.setSelectedIndex(index);
-			ensureButtonsInProperState();
-		}
-
-		private void ensureButtonsInProperState()
-		{
-			// NOTE: This is a hack, but not a horrible one.
-			// We are not sure why switching KEA mode would not correctly enable buttons
-			// on the Viability tab, so the fix is to make sure that whenever the user 
-			// switches tabs, the buttons on that tab will be correctly enabled
-			mainWindow.updateActionStates();
-			
-			// NOTE: This is a weaker hack. We want to update the Directions button
-			// in the FactorPropertiesDialog, and there is no easy way to get from here
-			// (the only place that knows the update is needed) to there (where the 
-			// update can be done
-			FactorPropertiesDialog dialog = getFactorPropertiesDialog();
-			if(dialog != null)
-				dialog.updateDirectionsEnabledState();
-		}
-
-	}
-	
 	private FactorPropertiesDialog getFactorPropertiesDialog()
 	{
 		FactorPropertiesDialog dialog = (FactorPropertiesDialog)getTopLevelAncestor();
@@ -553,6 +525,33 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 			{
 				EAM.logException(e);
 			}	
+		}
+	}
+	
+	class FactorPropertiesTabbedPane extends PanelTabbedPane
+	{
+		@Override
+		public void setSelectedIndex(int index)
+		{
+			super.setSelectedIndex(index);
+			ensureButtonsInProperState();
+		}
+
+		private void ensureButtonsInProperState()
+		{
+			// NOTE: This is a hack, but not a horrible one.
+			// We are not sure why switching KEA mode would not correctly enable buttons
+			// on the Viability tab, so the fix is to make sure that whenever the user 
+			// switches tabs, the buttons on that tab will be correctly enabled
+			mainWindow.updateActionStates();
+			
+			// NOTE: This is a weaker hack. We want to update the Directions button
+			// in the FactorPropertiesDialog, and there is no easy way to get from here
+			// (the only place that knows the update is needed) to there (where the 
+			// update can be done
+			FactorPropertiesDialog dialog = getFactorPropertiesDialog();
+			if(dialog != null)
+				dialog.updateDirectionsEnabledState();
 		}
 	}
 
