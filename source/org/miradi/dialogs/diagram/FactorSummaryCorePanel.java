@@ -52,6 +52,7 @@ public class FactorSummaryCorePanel extends ObjectDataInputPanel
 	public FactorSummaryCorePanel(Project project, Actions actions, DiagramFactor diagramFactorToEdit) throws Exception
 	{
 		super(project, diagramFactorToEdit.getRef());
+		
 		Factor factorToEdit = diagramFactorToEdit.getWrappedFactor();
 		setObjectRefs(new ORef[] {factorToEdit.getRef(), diagramFactorToEdit.getRef(),});
 
