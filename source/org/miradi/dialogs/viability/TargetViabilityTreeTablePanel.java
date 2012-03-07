@@ -27,7 +27,6 @@ import org.miradi.actions.ActionDeleteKeyEcologicalAttribute;
 import org.miradi.actions.ActionDeleteKeyEcologicalAttributeIndicator;
 import org.miradi.actions.ActionDeleteKeyEcologicalAttributeMeasurement;
 import org.miradi.actions.ActionExpandToMenu;
-import org.miradi.dialogs.planning.AbstractPlanningTreeRowColumnProvider;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTableSyncedTableModel;
 import org.miradi.dialogs.planning.treenodes.PlanningTreeRootNodeAlwaysExpanded;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeMultiTableModel;
@@ -44,6 +43,7 @@ import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
+import org.miradi.project.Project;
 
 
 public class TargetViabilityTreeTablePanel extends PlanningTreeTablePanel
@@ -56,7 +56,7 @@ public class TargetViabilityTreeTablePanel extends PlanningTreeTablePanel
 	
 	public static PlanningTreeTablePanel createTreeTablePanel(MainWindow mainWindowToUse, TreeTableNode rootNode, PlanningTreeRowColumnProvider rowColumnProvider) throws Exception
 	{
-		TreeTableModelWithRebuilder model = new ViabilityTreeTableModel(mainWindowToUse.getProject(), rootNode, rowColumnProvider);
+		TreeTableModelWithRebuilder model = createViabilityTreeTableModel(mainWindowToUse.getProject(), rootNode, rowColumnProvider);
 		ViabilityTreeTable treeTable = new ViabilityTreeTable(mainWindowToUse, model);
 
 		return new TargetViabilityTreeTablePanel(mainWindowToUse, treeTable, model, getButtonActions(), rowColumnProvider);
@@ -64,13 +64,18 @@ public class TargetViabilityTreeTablePanel extends PlanningTreeTablePanel
 	
 	public static PlanningTreeTablePanel createTreeTableWithVisibleRootPanel(MainWindow mainWindowToUse) throws Exception
 	{
-		PlanningTreeRootNodeAlwaysExpanded rootNode = new PlanningTreeRootNodeAlwaysExpanded(mainWindowToUse.getProject());
-		AbstractPlanningTreeRowColumnProvider rowColumnProvider = new TargetViabilityRowColumnProvider(mainWindowToUse.getProject());
+		TreeTableNode rootNode = new PlanningTreeRootNodeAlwaysExpanded(mainWindowToUse.getProject());
+		PlanningTreeRowColumnProvider rowColumnProvider = new TargetViabilityRowColumnProvider(mainWindowToUse.getProject());
 		
-		TreeTableModelWithRebuilder model = new ViabilityTreeTableModel(mainWindowToUse.getProject(), rootNode, rowColumnProvider);
+		TreeTableModelWithRebuilder model = createViabilityTreeTableModel(mainWindowToUse.getProject(), rootNode, rowColumnProvider);
 		ViabilityTreeTable treeTable = new ViabilityTreeTableWithVisibleRootNode(mainWindowToUse, model);
 
 		return new TargetViabilityTreeTablePanel(mainWindowToUse, treeTable, model, getButtonActions(), rowColumnProvider);
+	}
+
+	private static ViabilityTreeTableModel createViabilityTreeTableModel(final Project project, TreeTableNode rootNode, PlanningTreeRowColumnProvider rowColumnProvider) throws Exception
+	{
+		return new ViabilityTreeTableModel(project, rootNode, rowColumnProvider);
 	}
 	
 	@Override
