@@ -57,13 +57,6 @@ public class TargetViabilityTreeTablePanel extends PlanningTreeTablePanel
 		return new TargetViabilityTreeTablePanel(mainWindowToUse, treeTable, model, getButtonActions(), rowColumnProvider);
 	}
 	
-	public static PlanningTreeTablePanel createTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTableModel model, Class[] buttonActions, PlanningTreeRowColumnProvider rowColumnProvider) throws Exception
-	{
-		ViabilityTreeTable treeTable = new ViabilityTreeTable(mainWindowToUse, model);
-
-		return new TargetViabilityTreeTablePanel(mainWindowToUse, treeTable, model, buttonActions, rowColumnProvider);
-	}
-	
 	public static PlanningTreeTablePanel createTreeTableWithVisibleRootPanel(MainWindow mainWindowToUse, PlanningTreeTableModel model, PlanningTreeRowColumnProvider rowColumnProvider) throws Exception
 	{
 		ViabilityTreeTable treeTable = new ViabilityTreeTableWithVisibleRootNode(mainWindowToUse, model);
