@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-07 15:21-0600\n"
+"POT-Creation-Date: 2012-03-07 15:59-0600\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -3607,7 +3607,7 @@ msgstr "FOS Training Type|Інший"
 msgid "FTE Days Per Year:"
 msgstr "FTE днів на рік"
 
-#: Miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:471
+#: Miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:429
 msgid "Factor Properties"
 msgstr "Фактори"
 
@@ -3747,7 +3747,7 @@ msgid "Folder Chooser"
 msgstr "Вибирач папки"
 
 #: Miradi/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:51
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:69
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:70
 msgid "Font"
 msgstr "Шрифт"
 
@@ -3897,7 +3897,7 @@ msgstr ""
 #: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:167
 #: Miradi/source/org/miradi/dialogs/task/ActivityDetailsPanelWithRelevancyOverrideFields.java:45
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:59
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:91
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:92
 msgid "Goals"
 msgstr "Мета"
 
@@ -4603,7 +4603,7 @@ msgid "Leader/Manager"
 msgstr "Керівник"
 
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:56
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:89
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:90
 msgid "Legacy TNC Ratings"
 msgstr "Оцінки функції TNC"
 
@@ -5305,7 +5305,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/task/ActivityDetailsPanelWithRelevancyOverrideFields.java:42
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:58
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:90
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:91
 #: Miradi/source/org/miradi/dialogs/diagram/RelatedItemsSubpanel.java:43
 msgid "Objectives"
 msgstr ""
@@ -5550,7 +5550,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/forms/objects/StrategyCoreSubForm.java:36
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:54
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:88
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:89
 msgid "Priority"
 msgstr "Пріоритети"
 
@@ -6472,7 +6472,7 @@ msgstr "Потрібні підкласи, щоб анулювати цей ме
 #: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:112
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:132
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:65
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:132
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:133
 msgid "Summary"
 msgstr "Резюме"
 
@@ -7380,7 +7380,7 @@ msgstr "Тег"
 msgid "Tagged Items"
 msgstr "Мічені пункти"
 
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:111
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:112
 msgid "Tags"
 msgstr "Ярлички"
 
@@ -8292,7 +8292,7 @@ msgstr "Дуже великий"
 msgid "Very Small"
 msgstr "Дуже маленький"
 
-#: Miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:406
+#: Miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:364
 msgid "Viability Analysis Mode"
 msgstr "Опція аналізу життєздатності"
 

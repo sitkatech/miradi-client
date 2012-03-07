@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-07 15:21-0600\n"
+"POT-Creation-Date: 2012-03-07 15:59-0600\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -3551,7 +3551,7 @@ msgstr "Lainnya"
 msgid "FTE Days Per Year:"
 msgstr "Sisipkan Pecahan FTE "
 
-#: Miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:471
+#: Miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:429
 msgid "Factor Properties"
 msgstr "Sifat-sifat Faktor "
 
@@ -3700,7 +3700,7 @@ msgid "Folder Chooser"
 msgstr "Pemilih Folder "
 
 #: Miradi/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:51
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:69
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:70
 msgid "Font"
 msgstr "Fon"
 
@@ -3853,7 +3853,7 @@ msgstr ""
 #: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:167
 #: Miradi/source/org/miradi/dialogs/task/ActivityDetailsPanelWithRelevancyOverrideFields.java:45
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:59
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:91
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:92
 msgid "Goals"
 msgstr "Sasaran "
 
@@ -4561,7 +4561,7 @@ msgid "Leader/Manager"
 msgstr "Pemimpin/Manajer"
 
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:56
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:89
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:90
 msgid "Legacy TNC Ratings"
 msgstr "Peringkat TNC versi sebelumnya "
 
@@ -5266,7 +5266,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/task/ActivityDetailsPanelWithRelevancyOverrideFields.java:42
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:58
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:90
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:91
 #: Miradi/source/org/miradi/dialogs/diagram/RelatedItemsSubpanel.java:43
 msgid "Objectives"
 msgstr ""
@@ -5509,7 +5509,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/forms/objects/StrategyCoreSubForm.java:36
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:54
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:88
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:89
 msgid "Priority"
 msgstr "Prioritas "
 
@@ -6436,7 +6436,7 @@ msgstr "Subkelas harus menggantikan metode ini. "
 #: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:112
 #: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:132
 #: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:65
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:132
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:133
 msgid "Summary"
 msgstr "Ringkasan "
 
@@ -7341,7 +7341,7 @@ msgstr "Tag"
 msgid "Tagged Items"
 msgstr "Butir yang Ditandai"
 
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:111
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:112
 msgid "Tags"
 msgstr "Tag "
 
@@ -8260,7 +8260,7 @@ msgstr "Sangat Besar"
 msgid "Very Small"
 msgstr "Sangat Kecil"
 
-#: Miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:406
+#: Miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:364
 msgid "Viability Analysis Mode"
 msgstr "Mode Analisis Kelangsungan "
 
