@@ -31,14 +31,14 @@ import org.miradi.dialogs.tablerenderers.TableCellPreferredHeightProvider;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 
-public class ChoiceItemComboBoxRenderer extends ChoiceItemComboBox implements TableCellRenderer, TableCellPreferredHeightProvider
+public class ChoiceItemComboBoxTableCellRenderer extends ChoiceItemComboBox implements TableCellRenderer, TableCellPreferredHeightProvider
 {
-	public ChoiceItemComboBoxRenderer(ChoiceQuestion question) 
+	public ChoiceItemComboBoxTableCellRenderer(ChoiceQuestion question) 
 	{
 		this(question.getChoices());
 	}
 
-	public ChoiceItemComboBoxRenderer(ChoiceItem[] items) 
+	public ChoiceItemComboBoxTableCellRenderer(ChoiceItem[] items) 
 	{
 		super(items);
 	}
