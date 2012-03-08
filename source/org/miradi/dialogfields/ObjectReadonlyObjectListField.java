@@ -60,12 +60,11 @@ public class ObjectReadonlyObjectListField extends ObjectDataInputField
 	{
 		try
 		{
-			ORefList orefList = new ORefList(newValue);
-			
+			ORefList refList = new ORefList(newValue);
 			Vector<String> names = new Vector<String>();
-			for (int index = 0; index < orefList.size(); ++index)
+			for (int index = 0; index < refList.size(); ++index)
 			{
-				ORef ref = orefList.get(index);
+				ORef ref = refList.get(index);
 				//TODO these invalid refs (orphaned DF)should get auto-repaired during project open at some point
 				if (ref.isInvalid())
 					continue;
