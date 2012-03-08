@@ -61,27 +61,7 @@ public class ObjectReadonlyObjectListField extends ObjectDataInputField
 		try
 		{
 			ORefList refList = new ORefList(newValue);
-			Vector<String> names = new Vector<String>();
-			for (int index = 0; index < refList.size(); ++index)
-			{
-				ORef ref = refList.get(index);
-				//TODO these invalid refs (orphaned DF)should get auto-repaired during project open at some point
-				if (ref.isInvalid())
-					continue;
-				
-				BaseObject object = getProject().findObject(ref); 
-				if(object == null)
-				{
-					EAM.logError("Ignored a missing object while in ObjectReadonlyObjectListField.setText(). Ref = " + ref);
-				}
-				else
-				{
-					String fullName = object.getFullName();
-					fullName = XmlUtilities2.getXmlDecoded(fullName);
-					names.add(fullName);
-				}
-			}
-			Collections.sort(names, new IgnoreCaseStringComparator());
+			Vector<String> names = createSortedBaseObjectFullNameList(refList);
 			
 			model.setRowCount(names.size());
 			for(int row = 0; row < names.size(); ++row)
@@ -97,6 +77,34 @@ public class ObjectReadonlyObjectListField extends ObjectDataInputField
 		{
 			EAM.logException(e);
 		}
+	}
+
+	private Vector<String> createSortedBaseObjectFullNameList(ORefList refList)
+	{
+		Vector<String> names = new Vector<String>();
+		for (int index = 0; index < refList.size(); ++index)
+		{
+			ORef ref = refList.get(index);
+			//TODO these invalid refs (orphaned DF)should get auto-repaired during project open at some point
+			if (ref.isInvalid())
+				continue;
+			
+			BaseObject object = getProject().findObject(ref); 
+			if(object == null)
+			{
+				EAM.logError("Ignored a missing object while in ObjectReadonlyObjectListField.setText(). Ref = " + ref);
+			}
+			else
+			{
+				String fullName = object.getFullName();
+				fullName = XmlUtilities2.getXmlDecoded(fullName);
+				names.add(fullName);
+			}
+		}
+		
+		Collections.sort(names, new IgnoreCaseStringComparator());
+		
+		return names;
 	}
 	
 	@Override
