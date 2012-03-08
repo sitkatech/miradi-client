@@ -33,7 +33,7 @@ import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
-import org.miradi.diagram.renderers.ChoiceItemComboBoxRenderer;
+import org.miradi.diagram.renderers.ChoiceItemComboBoxTableCellRenderer;
 import org.miradi.diagram.renderers.ComboBoxRenderer;
 import org.miradi.dialogs.fieldComponents.ChoiceItemComboBox;
 import org.miradi.dialogs.fieldComponents.PanelComboBox;
@@ -157,7 +157,7 @@ abstract public class EditableBaseObjectTable extends SortableRowTable  implemen
 	protected void createComboColumn(ChoiceItem[] choices, int tableColumn)
 	{
 		ChoiceItemComboBox comboBox = new ChoiceItemComboBox(choices);
-		ChoiceItemComboBoxRenderer rendererFactory = new ChoiceItemComboBoxRenderer(choices);
+		ChoiceItemComboBoxTableCellRenderer rendererFactory = new ChoiceItemComboBoxTableCellRenderer(choices);
 		DefaultCellEditor editorFactory = new DefaultCellEditor(comboBox);
 		setPlainRendererAndEditorFactories(tableColumn, rendererFactory, editorFactory);
 	}

@@ -24,7 +24,7 @@ import javax.swing.DefaultCellEditor;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 
-import org.miradi.diagram.renderers.ChoiceItemComboBoxRenderer;
+import org.miradi.diagram.renderers.ChoiceItemComboBoxTableCellRenderer;
 import org.miradi.dialogs.fieldComponents.ChoiceItemComboBox;
 import org.miradi.dialogs.planning.ViabilityTableHeader;
 import org.miradi.main.MainWindow;
@@ -53,7 +53,7 @@ public class ViabilityUpperMultiTable extends PlanningUpperMultiTable
 		if (questionClassName != null)
 		{
 			ChoiceQuestion question = StaticQuestionManager.getQuestion(questionClassName);
-			return new ChoiceItemComboBoxRenderer(question);
+			return new ChoiceItemComboBoxTableCellRenderer(question);
 		}
 
 		return super.getCellRenderer(row, tableColumn);
