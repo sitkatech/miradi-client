@@ -86,7 +86,9 @@ public class ObjectReadonlyObjectListField extends ObjectDataInputField
 			
 			model.setRowCount(names.size());
 			for(int row = 0; row < names.size(); ++row)
+			{
 				model.setValueAt(names.get(row), row, 0);
+			}
 			
 			table.resizeTable();
 			int ARBITRARY_REASONABLE_WIDTH = 300;
