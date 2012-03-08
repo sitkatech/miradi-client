@@ -62,12 +62,7 @@ public class ObjectReadonlyObjectListField extends ObjectDataInputField
 		{
 			ORefList refList = new ORefList(newValue);
 			Vector<String> names = createSortedBaseObjectFullNameList(refList);
-			
-			model.setRowCount(names.size());
-			for(int row = 0; row < names.size(); ++row)
-			{
-				model.setValueAt(names.get(row), row, 0);
-			}
+			setModelValues(names);
 			
 			table.resizeTable();
 			final int ARBITRARY_REASONABLE_WIDTH = 300;
@@ -76,6 +71,15 @@ public class ObjectReadonlyObjectListField extends ObjectDataInputField
 		catch (Exception e)
 		{
 			EAM.logException(e);
+		}
+	}
+
+	protected void setModelValues(Vector<String> names)
+	{
+		model.setRowCount(names.size());
+		for(int row = 0; row < names.size(); ++row)
+		{
+			model.setValueAt(names.get(row), row, 0);
 		}
 	}
 
