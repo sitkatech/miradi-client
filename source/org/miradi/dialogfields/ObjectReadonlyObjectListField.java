@@ -91,7 +91,7 @@ public class ObjectReadonlyObjectListField extends ObjectDataInputField
 			}
 			
 			table.resizeTable();
-			int ARBITRARY_REASONABLE_WIDTH = 300;
+			final int ARBITRARY_REASONABLE_WIDTH = 300;
 			table.setColumnWidth(0, ARBITRARY_REASONABLE_WIDTH);
 		}
 		catch (Exception e)
