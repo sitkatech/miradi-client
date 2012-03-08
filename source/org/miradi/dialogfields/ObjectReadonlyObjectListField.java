@@ -74,7 +74,7 @@ public class ObjectReadonlyObjectListField extends ObjectDataInputField
 		}
 	}
 
-	protected void setModelValues(Vector<String> names)
+	private void setModelValues(Vector<String> names)
 	{
 		model.setRowCount(names.size());
 		for(int row = 0; row < names.size(); ++row)
