@@ -41,7 +41,7 @@ public class ChoiceItemComboBox extends PanelComboBox
 	public ChoiceItemComboBox(ChoiceItem[] items)
 	{
 		super(items);
-		setRenderer(new ChoiceItemRenderer());
+		setRenderer(new ChoiceItemListCellRenderer());
 	}
 	
 	public void reloadComboBox(ChoiceQuestion question)
@@ -52,7 +52,7 @@ public class ChoiceItemComboBox extends PanelComboBox
 		setModel(comboBoxModel);
 	}
 
-	static class ChoiceItemRenderer extends DefaultListCellRenderer
+	static class ChoiceItemListCellRenderer extends DefaultListCellRenderer
 	{
 		@Override
 		public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) 
