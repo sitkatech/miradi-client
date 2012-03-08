@@ -52,7 +52,7 @@ public class ChoiceItemComboBox extends PanelComboBox
 		setModel(comboBoxModel);
 	}
 
-	static class ChoiceItemListCellRenderer extends DefaultListCellRenderer
+	private static class ChoiceItemListCellRenderer extends DefaultListCellRenderer
 	{
 		@Override
 		public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) 
