@@ -52,7 +52,7 @@ abstract public class ObjectQuestion extends DynamicChoiceQuestion
 	protected String getStringToDisplay(BaseObject thisObject)
 	{
 		String fullName = thisObject.getFullName();
-		fullName = XmlUtilities2.getXmlDecoded(fullName);
+		fullName = XmlUtilities2.getXmlDecodedApostrophes(fullName);
 		
 		return HtmlUtilities.wrapInHtmlTags(fullName);
 	}
