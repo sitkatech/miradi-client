@@ -33,6 +33,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.utils.GenericDefaultTableModel;
 import org.miradi.utils.IgnoreCaseStringComparator;
+import org.miradi.utils.XmlUtilities2;
 
 public class ObjectReadonlyObjectListField extends ObjectDataInputField
 {
@@ -76,7 +77,9 @@ public class ObjectReadonlyObjectListField extends ObjectDataInputField
 				}
 				else
 				{
-					names.add(object.getFullName());
+					String fullName = object.getFullName();
+					fullName = XmlUtilities2.getXmlDecoded(fullName);
+					names.add(fullName);
 				}
 			}
 			Collections.sort(names, new IgnoreCaseStringComparator());
