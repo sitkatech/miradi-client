@@ -141,31 +141,9 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 					indicatorText = "+";
 			}
 			
-			objectivesText = null;
-			if(diagram.areObjectivesVisible())
-			{
-				if(node.canHaveObjectives())
-				{
-					ORefList annotationRefs = node.getObjectiveRefs();
-					if(annotationRefs.size() == 1)
-						objectivesText = EAM.text("Obj") + " " + model.getProject().getObjectData(annotationRefs.get(0), Objective.TAG_SHORT_LABEL);
-					else if(annotationRefs.size() > 1)
-						objectivesText = "" + annotationRefs.size() + " " + EAM.text("Objs");
-				}
-			}
+			setObjectiveText(diagram, model);
 			
-			goalsText = null;
-			if(diagram.areGoalsVisible())
-			{
-				if(node.canHaveGoal())
-				{
-					ORefList annotationRefs = node.getGoalRefs();
-					if(annotationRefs.size() == 1)
-						goalsText = EAM.text("Goal") + " " + model.getProject().getObjectData(annotationRefs.get(0), Goal.TAG_SHORT_LABEL);
-					else if(annotationRefs.size() > 1)
-						goalsText = "" + annotationRefs.size() + " " + EAM.text("Goals");
-				}
-			}
+			setGoalText(diagram, model);
 			
 			isRelatedToSelectedFactor = checkIfRelatedToSelectedFactor(diagram, node);
 		}
@@ -175,6 +153,38 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		}
 		
 		return this;
+	}
+
+	private void setGoalText(DiagramComponent diagram, DiagramModel model) throws Exception
+	{
+		goalsText = null;
+		if(diagram.areGoalsVisible())
+		{
+			if(node.canHaveGoal())
+			{
+				ORefList annotationRefs = node.getGoalRefs();
+				if(annotationRefs.size() == 1)
+					goalsText = EAM.text("Goal") + " " + model.getProject().getObjectData(annotationRefs.get(0), Goal.TAG_SHORT_LABEL);
+				else if(annotationRefs.size() > 1)
+					goalsText = "" + annotationRefs.size() + " " + EAM.text("Goals");
+			}
+		}
+	}
+
+	private void setObjectiveText(DiagramComponent diagram, DiagramModel model) throws Exception
+	{
+		objectivesText = null;
+		if(diagram.areObjectivesVisible())
+		{
+			if(node.canHaveObjectives())
+			{
+				ORefList annotationRefs = node.getObjectiveRefs();
+				if(annotationRefs.size() == 1)
+					objectivesText = EAM.text("Obj") + " " + model.getProject().getObjectData(annotationRefs.get(0), Objective.TAG_SHORT_LABEL);
+				else if(annotationRefs.size() > 1)
+					objectivesText = "" + annotationRefs.size() + " " + EAM.text("Objs");
+			}
+		}
 	}
 	
 	private boolean checkIfRelatedToSelectedFactor(DiagramComponent diagram, FactorCell thisCell)
