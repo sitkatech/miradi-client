@@ -77,7 +77,6 @@ import org.miradi.ids.IdList;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Goal;
@@ -147,11 +146,11 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 			{
 				if(node.canHaveObjectives())
 				{
-					IdList objectiveIds = node.getObjectives();
-					if(objectiveIds.size() == 1)
-						objectivesText = EAM.text("Obj") + " " + model.getProject().getObjectData(ObjectType.OBJECTIVE, objectiveIds.get(0), Objective.TAG_SHORT_LABEL);
-					else if(objectiveIds.size() > 1)
-						objectivesText = "" + objectiveIds.size() + " " + EAM.text("Objs");
+					ORefList objectiveRefs = node.getObjectiveRefs();
+					if(objectiveRefs.size() == 1)
+						objectivesText = EAM.text("Obj") + " " + model.getProject().getObjectData(objectiveRefs.get(0), Objective.TAG_SHORT_LABEL);
+					else if(objectiveRefs.size() > 1)
+						objectivesText = "" + objectiveRefs.size() + " " + EAM.text("Objs");
 				}
 			}
 			
