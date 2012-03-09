@@ -78,9 +78,8 @@ import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.AbstractTarget;
+import org.miradi.objects.Desire;
 import org.miradi.objects.Factor;
-import org.miradi.objects.Goal;
-import org.miradi.objects.Objective;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
@@ -166,7 +165,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 				final String annotationSuffix = EAM.text("Goals");
 				ORefList annotationRefs = node.getGoalRefs();
 				if(annotationRefs.size() == 1)
-					goalsText = annotationPrefix + " " + model.getProject().getObjectData(annotationRefs.get(0), Goal.TAG_SHORT_LABEL);
+					goalsText = annotationPrefix + " " + model.getProject().getObjectData(annotationRefs.get(0), Desire.TAG_SHORT_LABEL);
 				else if(annotationRefs.size() > 1)
 					goalsText = "" + annotationRefs.size() + " " + annotationSuffix;
 			}
@@ -184,7 +183,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 				final String annotationSuffix = EAM.text("Objs");
 				ORefList annotationRefs = node.getObjectiveRefs();
 				if(annotationRefs.size() == 1)
-					objectivesText = annotationPrefix + " " + model.getProject().getObjectData(annotationRefs.get(0), Objective.TAG_SHORT_LABEL);
+					objectivesText = annotationPrefix + " " + model.getProject().getObjectData(annotationRefs.get(0), Desire.TAG_SHORT_LABEL);
 				else if(annotationRefs.size() > 1)
 					objectivesText = "" + annotationRefs.size() + " " + annotationSuffix;
 			}
