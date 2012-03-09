@@ -460,7 +460,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		return false;
 	}
 	
-	private FactorCell getFactorCell()
+	protected FactorCell getFactorCell()
 	{
 		return node;
 	}
@@ -468,7 +468,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 	protected static final int PRIORITY_WIDTH = 16;
 	protected static final int PRIORITY_HEIGHT = 8;
 	protected ChoiceItem priority;
-	protected FactorCell node;
+	private FactorCell node;
 	protected ChoiceItem rating;
 	private String indicatorText;
 	private String objectivesText;
