@@ -80,6 +80,8 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.Desire;
 import org.miradi.objects.Factor;
+import org.miradi.objects.Goal;
+import org.miradi.objects.Objective;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
@@ -161,7 +163,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		goalsText = null;
 		if(diagram.areGoalsVisible())
 		{
-			if(node.canHaveGoal())
+			if(node.canHaveType(Goal.getObjectType()))
 			{
 				ORefList annotationRefs = node.getGoalRefs();
 				goalsText = getAnnotationText(diagram.getProject(), EAM.text("Goal"), EAM.text("Goals"), annotationRefs);
@@ -175,7 +177,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		objectivesText = null;
 		if(diagram.areObjectivesVisible())
 		{
-			if(node.canHaveObjectives())
+			if(node.canHaveType(Objective.getObjectType()))
 			{
 				ORefList annotationRefs = node.getObjectiveRefs();
 				objectivesText = getAnnotationText(diagram.getProject(), EAM.text("Obj"), EAM.text("Objs"), annotationRefs);
