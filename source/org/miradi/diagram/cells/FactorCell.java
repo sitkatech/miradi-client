@@ -289,6 +289,11 @@ abstract public class FactorCell extends EAMGraphCell
 	{
 		return getWrappedFactor().getObjectiveIds();
 	}
+	
+	public ORefList getObjectiveRefs()
+	{
+		return getWrappedFactor().getObjectiveRefs();
+	}
 
 	@Override
 	abstract public Color getColor();
@@ -440,7 +445,7 @@ abstract public class FactorCell extends EAMGraphCell
 	
 	public boolean isPointInObjective(Point pointRelativeToOrigin)
 	{
-		if(getObjectives().size() == 0)
+		if(getObjectiveRefs().size() == 0)
 			return false;
 		return getObjectiveRectWithinNode().contains(pointRelativeToOrigin);
 	}
