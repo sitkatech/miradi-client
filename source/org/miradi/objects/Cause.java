@@ -106,7 +106,7 @@ public class Cause extends Factor
 	{
 		if (fieldTag.equals(PSEUDO_TAG_TAXONOMY_CODE_VALUE))
 		{
-			String code = getData(fieldTag);
+			String code = getData(TAG_TAXONOMY_CODE);
 			ThreatClassificationQuestion question = new ThreatClassificationQuestion();
 			ChoiceItem choice = question.findChoiceByCode(code);
 			return choice.getLabel();
