@@ -161,21 +161,15 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 	private void setGoalText(DiagramComponent diagram) throws Exception
 	{
 		goalsText = null;
-		if(diagram.isTypeVisible(Goal.OBJECT_NAME))
-		{
-			ORefList annotationRefs = node.getGoalRefs();
-			goalsText = getAnnotationText(diagram, Goal.getObjectType(), EAM.text("Goal"), EAM.text("Goals"), annotationRefs);
-		}
+		ORefList annotationRefs = node.getGoalRefs();
+		goalsText = getAnnotationText(diagram, Goal.getObjectType(), EAM.text("Goal"), EAM.text("Goals"), annotationRefs);
 	}
 
 	private void setObjectiveText(DiagramComponent diagram) throws Exception
 	{
 		objectivesText = null;
-		if(diagram.isTypeVisible(Objective.OBJECT_NAME))
-		{
-			ORefList annotationRefs = node.getObjectiveRefs();
-			objectivesText = getAnnotationText(diagram, Objective.getObjectType(), EAM.text("Obj"), EAM.text("Objs"), annotationRefs);
-		}
+		ORefList annotationRefs = node.getObjectiveRefs();
+		objectivesText = getAnnotationText(diagram, Objective.getObjectType(), EAM.text("Obj"), EAM.text("Objs"), annotationRefs);
 	}
 
 	private String getAnnotationText(final DiagramComponent diagram, int annotationType, final String annotationPrefix, final String annotationSuffix, ORefList annotationRefs) throws Exception
