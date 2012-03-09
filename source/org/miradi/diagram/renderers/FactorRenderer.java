@@ -165,10 +165,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 				final String annotationSuffix = EAM.text("Goals");
 				String text = null;
 				ORefList annotationRefs = node.getGoalRefs();
-				if(annotationRefs.size() == 1)
-					text = annotationPrefix + " " + model.getProject().getObjectData(annotationRefs.get(0), Desire.TAG_SHORT_LABEL);
-				else if(annotationRefs.size() > 1)
-					text = "" + annotationRefs.size() + " " + annotationSuffix;
+				text = getAnnotationText(model, annotationPrefix, annotationSuffix, annotationRefs);
 				
 				goalsText = text;
 			}
@@ -186,14 +183,22 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 				final String annotationSuffix = EAM.text("Objs");
 				String text = null;
 				ORefList annotationRefs = node.getObjectiveRefs();
-				if(annotationRefs.size() == 1)
-					text = annotationPrefix + " " + model.getProject().getObjectData(annotationRefs.get(0), Desire.TAG_SHORT_LABEL);
-				else if(annotationRefs.size() > 1)
-					text = "" + annotationRefs.size() + " " + annotationSuffix;
+				text = getAnnotationText(model, annotationPrefix, annotationSuffix, annotationRefs);
 
 				objectivesText = text;
 			}
 		}
+	}
+
+	protected String getAnnotationText(DiagramModel model, final String annotationPrefix, final String annotationSuffix, ORefList annotationRefs)
+	{
+		String text = null;
+		if(annotationRefs.size() == 1)
+			text = annotationPrefix + " " + model.getProject().getObjectData(annotationRefs.get(0), Desire.TAG_SHORT_LABEL);
+		else if(annotationRefs.size() > 1)
+			text = "" + annotationRefs.size() + " " + annotationSuffix;
+		
+		return text;
 	}
 	
 	private boolean checkIfRelatedToSelectedFactor(DiagramComponent diagram, FactorCell thisCell)
