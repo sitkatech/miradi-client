@@ -112,6 +112,11 @@ public class ChoiceItem implements Comparable<Object>
 		return descriptionProvider.getDescription();
 	}
 	
+	public void setLabel(final String labelToUse)
+	{
+		label = labelToUse;
+	}
+	
 	public void setIcon(Icon iconToUse)
 	{
 		icon = iconToUse;
