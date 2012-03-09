@@ -141,9 +141,9 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 					indicatorText = "+";
 			}
 			
-			setObjectiveText(diagram, model);
+			setObjectiveText(diagram);
 			
-			setGoalText(diagram, model);
+			setGoalText(diagram);
 			
 			isRelatedToSelectedFactor = checkIfRelatedToSelectedFactor(diagram, node);
 		}
@@ -155,7 +155,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		return this;
 	}
 
-	private void setGoalText(DiagramComponent diagram, DiagramModel model) throws Exception
+	private void setGoalText(DiagramComponent diagram) throws Exception
 	{
 		goalsText = null;
 		if(diagram.areGoalsVisible())
@@ -169,7 +169,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		}
 	}
 
-	private void setObjectiveText(DiagramComponent diagram, DiagramModel model) throws Exception
+	private void setObjectiveText(DiagramComponent diagram) throws Exception
 	{
 		objectivesText = null;
 		if(diagram.areObjectivesVisible())
