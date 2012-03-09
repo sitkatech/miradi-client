@@ -84,6 +84,7 @@ import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
+import org.miradi.project.Project;
 import org.miradi.project.threatrating.ThreatRatingFramework;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.StatusQuestion;
@@ -162,7 +163,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 			if(node.canHaveGoal())
 			{
 				ORefList annotationRefs = node.getGoalRefs();
-				goalsText = getAnnotationText(model, EAM.text("Goal"), EAM.text("Goals"), annotationRefs);
+				goalsText = getAnnotationText(model.getProject(), EAM.text("Goal"), EAM.text("Goals"), annotationRefs);
 				
 			}
 		}
@@ -176,16 +177,16 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 			if(node.canHaveObjectives())
 			{
 				ORefList annotationRefs = node.getObjectiveRefs();
-				objectivesText = getAnnotationText(model, EAM.text("Obj"), EAM.text("Objs"), annotationRefs);
+				objectivesText = getAnnotationText(diagram.getProject(), EAM.text("Obj"), EAM.text("Objs"), annotationRefs);
 			}
 		}
 	}
 
-	private String getAnnotationText(DiagramModel model, final String annotationPrefix, final String annotationSuffix, ORefList annotationRefs)
+	private String getAnnotationText(final Project project, final String annotationPrefix, final String annotationSuffix, ORefList annotationRefs)
 	{
 		if(annotationRefs.size() == 1)
 		{
-			return annotationPrefix + " " + model.getProject().getObjectData(annotationRefs.get(0), Desire.TAG_SHORT_LABEL);
+			return annotationPrefix + " " + project.getObjectData(annotationRefs.get(0), Desire.TAG_SHORT_LABEL);
 		}
 		else if(annotationRefs.size() > 1)
 		{
