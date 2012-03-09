@@ -159,7 +159,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 			{
 				if(node.canHaveGoal())
 				{
-					ORefList annotationRefs = ((AbstractTarget)node.getWrappedFactor()).getGoalRefs();
+					ORefList annotationRefs = node.getGoalRefs();
 					if(annotationRefs.size() == 1)
 						goalsText = EAM.text("Goal") + " " + model.getProject().getObjectData(annotationRefs.get(0), Goal.TAG_SHORT_LABEL);
 					else if(annotationRefs.size() > 1)
