@@ -285,11 +285,6 @@ abstract public class FactorCell extends EAMGraphCell
 		return  new ORefList();
 	}
 	
-	public IdList getObjectives()
-	{
-		return getWrappedFactor().getObjectiveIds();
-	}
-	
 	public ORefList getObjectiveRefs()
 	{
 		return getWrappedFactor().getObjectiveRefs();
