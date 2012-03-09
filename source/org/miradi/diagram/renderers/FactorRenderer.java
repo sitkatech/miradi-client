@@ -163,11 +163,12 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 			if(node.canHaveGoal())
 			{
 				final String annotationPrefix = EAM.text("Goal");
+				final String annotationSuffix = EAM.text("Goals");
 				ORefList annotationRefs = node.getGoalRefs();
 				if(annotationRefs.size() == 1)
 					goalsText = annotationPrefix + " " + model.getProject().getObjectData(annotationRefs.get(0), Goal.TAG_SHORT_LABEL);
 				else if(annotationRefs.size() > 1)
-					goalsText = "" + annotationRefs.size() + " " + EAM.text("Goals");
+					goalsText = "" + annotationRefs.size() + " " + annotationSuffix;
 			}
 		}
 	}
@@ -180,11 +181,12 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 			if(node.canHaveObjectives())
 			{
 				final String annotationPrefix = EAM.text("Obj");
+				final String annotationSuffix = EAM.text("Objs");
 				ORefList annotationRefs = node.getObjectiveRefs();
 				if(annotationRefs.size() == 1)
 					objectivesText = annotationPrefix + " " + model.getProject().getObjectData(annotationRefs.get(0), Objective.TAG_SHORT_LABEL);
 				else if(annotationRefs.size() > 1)
-					objectivesText = "" + annotationRefs.size() + " " + EAM.text("Objs");
+					objectivesText = "" + annotationRefs.size() + " " + annotationSuffix;
 			}
 		}
 	}
