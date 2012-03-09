@@ -89,6 +89,7 @@ import org.miradi.project.threatrating.ThreatRatingFramework;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.utils.Utility;
+import org.miradi.utils.XmlUtilities2;
 
 
 public abstract class FactorRenderer extends MultilineCellRenderer implements CellViewRenderer
@@ -186,7 +187,9 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 	{
 		if(annotationRefs.size() == 1)
 		{
-			return annotationPrefix + " " + project.getObjectData(annotationRefs.get(0), Desire.TAG_SHORT_LABEL);
+			String shortLabel = project.getObjectData(annotationRefs.get(0), Desire.TAG_SHORT_LABEL);
+			shortLabel = XmlUtilities2.getXmlDecoded(shortLabel);
+			return annotationPrefix + " " + shortLabel;
 		}
 		else if(annotationRefs.size() > 1)
 		{
