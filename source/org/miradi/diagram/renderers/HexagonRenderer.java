@@ -57,7 +57,7 @@ public class HexagonRenderer extends FactorRenderer
 	
 	boolean isDraft()
 	{
-		return node.isStatusDraft();
+		return getFactorCell().isStatusDraft();
 	}
 
 	BasicStroke getDashedStroke(BasicStroke originalStroke)
