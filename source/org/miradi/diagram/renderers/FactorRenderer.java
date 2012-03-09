@@ -191,7 +191,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 			shortLabel = XmlUtilities2.getXmlDecoded(shortLabel);
 			return annotationPrefix + " " + shortLabel;
 		}
-		else if(annotationRefs.size() > 1)
+		if(annotationRefs.size() > 1)
 		{
 			return "" + annotationRefs.size() + " " + annotationSuffix;
 		}
