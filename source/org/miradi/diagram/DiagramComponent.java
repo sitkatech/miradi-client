@@ -224,6 +224,11 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		diagramContextMenuHandler.showContextMenu(e);
 	}
 	
+	public boolean isTypeVisible(final String objectName) throws Exception
+	{
+		return getLayerManager().isTypeVisible(objectName);
+	}
+	
 	public boolean areGoalsVisible() throws Exception
 	{
 		return getLayerManager().areGoalsVisible();
