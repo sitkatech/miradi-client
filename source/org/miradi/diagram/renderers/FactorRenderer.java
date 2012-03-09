@@ -109,27 +109,27 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 			DiagramModel model = diagram.getDiagramModel();
 			ThreatRatingFramework framework = model.getThreatRatingFramework();
 			priority = null;
-			if(node.isDirectThreat())
+			if(getFactorCell().isDirectThreat())
 			{
-				priority = framework.getThreatThreatRatingValue(node.getWrappedFactorRef());
+				priority = framework.getThreatThreatRatingValue(getFactorCell().getWrappedFactorRef());
 			}
-			if(node.isTarget() || node.isHumanWelfareTarget())
+			if(getFactorCell().isTarget() || getFactorCell().isHumanWelfareTarget())
 			{
-				AbstractTarget target = (AbstractTarget)node.getWrappedFactor();
+				AbstractTarget target = (AbstractTarget)getFactorCell().getWrappedFactor();
 				String ratingCode = model.getProject().getObjectData(target.getRef(), Target.PSEUDO_TAG_TARGET_VIABILITY);
 				StatusQuestion question = new StatusQuestion();
 				rating = question.findChoiceByCode(ratingCode);
 			}
 			
-			if(node.isStrategy())
+			if(getFactorCell().isStrategy())
 			{
-				Strategy strategy = (Strategy)node.getWrappedFactor();
+				Strategy strategy = (Strategy)getFactorCell().getWrappedFactor();
 				rating = strategy.getStrategyRating();
 				stragetyInResultsChain = shouldDisplayResultsChainIcon(model, strategy);
 			}
 			
 			isAliased = shouldMarkAsShared(model);
-			isOwnedByGroup = node.getDiagramFactor().isCoveredByGroupBox();
+			isOwnedByGroup = getFactorCell().getDiagramFactor().isCoveredByGroupBox();
 			
 			EAMGraphCell cell = (EAMGraphCell)view.getCell();
 			setHtmlFormViewerText(getAdditionalHtmlFontTags() + cell.toString());
@@ -137,7 +137,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 			indicatorText = null;
 			if(diagram.areIndicatorsVisible())
 			{
-				IdList indicators = node.getWrappedFactor().getDirectOrIndirectIndicators();
+				IdList indicators = getFactorCell().getWrappedFactor().getDirectOrIndirectIndicators();
 				if(indicators.size() == 1)
 					indicatorText = "";
 				else if(indicators.size() > 1)
@@ -148,7 +148,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 			
 			setGoalText(diagram);
 			
-			isRelatedToSelectedFactor = checkIfRelatedToSelectedFactor(diagram, node);
+			isRelatedToSelectedFactor = checkIfRelatedToSelectedFactor(diagram, getFactorCell());
 		}
 		catch (Exception e)
 		{
@@ -160,13 +160,13 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 
 	private void setGoalText(DiagramComponent diagram) throws Exception
 	{
-		ORefList annotationRefs = node.getGoalRefs();
+		ORefList annotationRefs = getFactorCell().getGoalRefs();
 		goalsText = getAnnotationText(diagram, Goal.getObjectType(), EAM.text("Goal"), EAM.text("Goals"), annotationRefs);
 	}
 
 	private void setObjectiveText(DiagramComponent diagram) throws Exception
 	{
-		ORefList annotationRefs = node.getObjectiveRefs();
+		ORefList annotationRefs = getFactorCell().getObjectiveRefs();
 		objectivesText = getAnnotationText(diagram, Objective.getObjectType(), EAM.text("Obj"), EAM.text("Objs"), annotationRefs);
 	}
 
@@ -178,7 +178,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		{
 			return null;
 		}	
-		if (!node.canHaveType(annotationType))
+		if (!getFactorCell().canHaveType(annotationType))
 		{
 			return null;
 		}
@@ -252,7 +252,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 
 	private boolean shouldMarkAsShared(DiagramModel model)
 	{
-		boolean isSharedInCoceptualModel = model.isSharedInConceptualModel(node.getDiagramFactor());
+		boolean isSharedInCoceptualModel = model.isSharedInConceptualModel(getFactorCell().getDiagramFactor());
 		if(isSharedInCoceptualModel)
 			   return true;
 
@@ -260,7 +260,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		if(! isResultsChain)
 			 return false;
 		
-		return model.isSharedInResultsChain(node.getDiagramFactor());
+		return model.isSharedInResultsChain(getFactorCell().getDiagramFactor());
 	}
 	protected String getAdditionalHtmlFontTags()
 	{
@@ -274,7 +274,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 	
 	private String getDiagramFactorFontColor()
 	{
-		String fontColor = node.getDiagramFactor().getFontColor();
+		String fontColor = getFactorCell().getDiagramFactor().getFontColor();
 		if (fontColor.length() != 0)
 			return fontColor = "color=" + fontColor;
 		
@@ -283,7 +283,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 	
 	private String getDiagramFactorFontStyle()
 	{
-		String fontStyle = node.getDiagramFactor().getFontStyle();
+		String fontStyle = getFactorCell().getDiagramFactor().getFontStyle();
 		if (fontStyle.length() != 0)
 			return fontStyle;
 		
@@ -362,24 +362,24 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 	
 	private Rectangle getResultChainRectWithinNode()
 	{
-		return node.getResultChainRectWithinNode();
+		return getFactorCell().getResultChainRectWithinNode();
 	}
 	
 	private Rectangle getIndicatorRectWithinNode()
 	{
-		return node.getIndicatorRectWithinNode();
+		return getFactorCell().getIndicatorRectWithinNode();
 	}
 
 	@Override
 	Color getFillColor()
 	{
-		return node.getColor();
+		return getFactorCell().getColor();
 	}
 	
 	@Override
 	Dimension getInsetDimension()
 	{
-		return node.getInsetDimension();
+		return getFactorCell().getInsetDimension();
 	}
 	
 	@Override
@@ -411,7 +411,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 	{
 		Rectangle smallRect = new Rectangle();
 		smallRect.x = rect.x;
-		if (node.isCause())
+		if (getFactorCell().isCause())
 			smallRect.y  = rect.y;
 		else
 			smallRect.y = getSize().height/2 - PRIORITY_HEIGHT/2;
@@ -458,6 +458,11 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 	{
 		// NOTE: We have disabled comment triangles for this release
 		return false;
+	}
+	
+	private FactorCell getFactorCell()
+	{
+		return node;
 	}
 
 	protected static final int PRIORITY_WIDTH = 16;
