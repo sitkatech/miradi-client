@@ -181,15 +181,14 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		}
 	}
 
-	protected String getAnnotationText(DiagramModel model, final String annotationPrefix, final String annotationSuffix, ORefList annotationRefs)
+	private String getAnnotationText(DiagramModel model, final String annotationPrefix, final String annotationSuffix, ORefList annotationRefs)
 	{
-		String text = null;
 		if(annotationRefs.size() == 1)
-			text = annotationPrefix + " " + model.getProject().getObjectData(annotationRefs.get(0), Desire.TAG_SHORT_LABEL);
+			return annotationPrefix + " " + model.getProject().getObjectData(annotationRefs.get(0), Desire.TAG_SHORT_LABEL);
 		else if(annotationRefs.size() > 1)
-			text = "" + annotationRefs.size() + " " + annotationSuffix;
+			return "" + annotationRefs.size() + " " + annotationSuffix;
 		
-		return text;
+		return null;
 	}
 	
 	private boolean checkIfRelatedToSelectedFactor(DiagramComponent diagram, FactorCell thisCell)
