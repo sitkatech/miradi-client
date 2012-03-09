@@ -160,14 +160,12 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 
 	private void setGoalText(DiagramComponent diagram) throws Exception
 	{
-		goalsText = null;
 		ORefList annotationRefs = node.getGoalRefs();
 		goalsText = getAnnotationText(diagram, Goal.getObjectType(), EAM.text("Goal"), EAM.text("Goals"), annotationRefs);
 	}
 
 	private void setObjectiveText(DiagramComponent diagram) throws Exception
 	{
-		objectivesText = null;
 		ORefList annotationRefs = node.getObjectiveRefs();
 		objectivesText = getAnnotationText(diagram, Objective.getObjectType(), EAM.text("Obj"), EAM.text("Objs"), annotationRefs);
 	}
