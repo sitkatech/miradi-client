@@ -184,9 +184,13 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 	private String getAnnotationText(DiagramModel model, final String annotationPrefix, final String annotationSuffix, ORefList annotationRefs)
 	{
 		if(annotationRefs.size() == 1)
+		{
 			return annotationPrefix + " " + model.getProject().getObjectData(annotationRefs.get(0), Desire.TAG_SHORT_LABEL);
+		}
 		else if(annotationRefs.size() > 1)
+		{
 			return "" + annotationRefs.size() + " " + annotationSuffix;
+		}
 		
 		return null;
 	}
