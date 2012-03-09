@@ -272,6 +272,20 @@ abstract public class Factor extends BaseObject
 		return false;
 	}
 	
+	public boolean canHaveType(final int type)
+	{
+		if (Goal.is(type))
+			return canHaveGoal();
+		
+		if (Objective.is(type))
+			return canHaveObjectives();
+		
+		if (Indicator.is(type))
+			return canHaveIndicators();
+		
+		return false;
+	}
+	
 	public boolean canHaveIndicators()
 	{
 		return true;

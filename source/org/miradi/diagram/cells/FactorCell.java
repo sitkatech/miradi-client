@@ -227,6 +227,11 @@ abstract public class FactorCell extends EAMGraphCell
 	{
 		return getWrappedFactor().canHaveGoal();
 	}
+	
+	public boolean canHaveType(final int type)
+	{
+		return getWrappedFactor().canHaveType(type);
+	}
 
 	public boolean isCause()
 	{
