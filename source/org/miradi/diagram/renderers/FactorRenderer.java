@@ -161,7 +161,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 	private void setGoalText(DiagramComponent diagram) throws Exception
 	{
 		goalsText = null;
-		if(diagram.areGoalsVisible())
+		if(diagram.isTypeVisible(Goal.OBJECT_NAME))
 		{
 			ORefList annotationRefs = node.getGoalRefs();
 			goalsText = getAnnotationText(diagram.getProject(), Goal.getObjectType(), EAM.text("Goal"), EAM.text("Goals"), annotationRefs);
@@ -171,7 +171,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 	private void setObjectiveText(DiagramComponent diagram) throws Exception
 	{
 		objectivesText = null;
-		if(diagram.areObjectivesVisible())
+		if(diagram.isTypeVisible(Objective.OBJECT_NAME))
 		{
 			ORefList annotationRefs = node.getObjectiveRefs();
 			objectivesText = getAnnotationText(diagram.getProject(), Objective.getObjectType(), EAM.text("Obj"), EAM.text("Objs"), annotationRefs);
