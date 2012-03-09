@@ -19,10 +19,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogfields;
 
+import java.awt.Component;
 import java.util.Collections;
 import java.util.Vector;
 
 import javax.swing.JComponent;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableModel;
 
 import org.miradi.dialogs.fieldComponents.PanelTable;
 import org.miradi.ids.BaseId;
@@ -43,10 +48,8 @@ public class ObjectReadonlyObjectListField extends ObjectDataInputField
 		
 		model = new GenericDefaultTableModel();
 		model.setColumnCount(1);
-		table = new PanelTable(mainWindowToUse, model);
+		table = new TableWithDecodingRenderer(mainWindowToUse, model);
 		setDefaultFieldBorder();
-		table.setForeground(EAM.READONLY_FOREGROUND_COLOR);
-		table.setBackground(EAM.READONLY_BACKGROUND_COLOR);
 	}
 	
 	@Override
@@ -121,6 +124,35 @@ public class ObjectReadonlyObjectListField extends ObjectDataInputField
 	public JComponent getComponent()
 	{
 		return table;
+	}
+	
+	private class TableWithDecodingRenderer extends PanelTable
+	{
+		public TableWithDecodingRenderer(MainWindow mainWindowToUse, TableModel model)
+		{
+			super(mainWindowToUse, model);
+			
+			setForeground(EAM.READONLY_FOREGROUND_COLOR);
+			setBackground(EAM.READONLY_BACKGROUND_COLOR);
+		}
+		
+		@Override
+		public TableCellRenderer getCellRenderer(int row, int column)
+		{
+			return new DecodedTableCellRenderer();
+		}
+	}
+	
+	private class DecodedTableCellRenderer extends DefaultTableCellRenderer
+	{
+		@Override
+		public Component getTableCellRendererComponent(JTable tableToUse, Object value, boolean isSelected, boolean hasFocus, int row, int column)
+		{
+			String valueAsString = value.toString();
+			valueAsString = XmlUtilities2.getXmlDecoded(valueAsString);
+			
+			return super.getTableCellRendererComponent(tableToUse, valueAsString, isSelected, hasFocus, row, column);
+		}
 	}
 	
 	private GenericDefaultTableModel model;
