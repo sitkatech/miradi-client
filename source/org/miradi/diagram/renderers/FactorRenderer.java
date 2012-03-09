@@ -164,7 +164,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		if(diagram.isTypeVisible(Goal.OBJECT_NAME))
 		{
 			ORefList annotationRefs = node.getGoalRefs();
-			goalsText = getAnnotationText(diagram.getProject(), Goal.getObjectType(), EAM.text("Goal"), EAM.text("Goals"), annotationRefs);
+			goalsText = getAnnotationText(diagram, Goal.getObjectType(), EAM.text("Goal"), EAM.text("Goals"), annotationRefs);
 		}
 	}
 
@@ -174,12 +174,13 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		if(diagram.isTypeVisible(Objective.OBJECT_NAME))
 		{
 			ORefList annotationRefs = node.getObjectiveRefs();
-			objectivesText = getAnnotationText(diagram.getProject(), Objective.getObjectType(), EAM.text("Obj"), EAM.text("Objs"), annotationRefs);
+			objectivesText = getAnnotationText(diagram, Objective.getObjectType(), EAM.text("Obj"), EAM.text("Objs"), annotationRefs);
 		}
 	}
 
-	private String getAnnotationText(final Project project, int annotationType, final String annotationPrefix, final String annotationSuffix, ORefList annotationRefs)
+	private String getAnnotationText(final DiagramComponent diagram, int annotationType, final String annotationPrefix, final String annotationSuffix, ORefList annotationRefs)
 	{
+		final Project project = diagram.getProject();
 		if (!node.canHaveType(annotationType))
 		{
 			return null;
