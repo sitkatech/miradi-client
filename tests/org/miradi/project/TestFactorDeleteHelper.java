@@ -64,7 +64,7 @@ public class TestFactorDeleteHelper extends MiradiTestCase
 		project.addItemToFactorList(causeCell.getWrappedFactorRef(), Objective.getObjectType(), Factor.TAG_OBJECTIVE_IDS);
 		
 		assertEquals("didn't add indicators?", 2, causeCell.getIndicators().size());
-		assertEquals("didn't add objective?", 1, causeCell.getObjectives().size());
+		assertEquals("didn't add objective?", 1, causeCell.getObjectiveRefs().size());
 		
 		CausePool causePool = project.getCausePool();
 		IndicatorPool indicatorPool = project.getIndicatorPool();
