@@ -178,9 +178,14 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		}
 	}
 
-	private String getAnnotationText(final DiagramComponent diagram, int annotationType, final String annotationPrefix, final String annotationSuffix, ORefList annotationRefs)
+	private String getAnnotationText(final DiagramComponent diagram, int annotationType, final String annotationPrefix, final String annotationSuffix, ORefList annotationRefs) throws Exception
 	{
 		final Project project = diagram.getProject();
+		final String objectName = project.getObjectManager().getInternalObjectTypeName(annotationType);
+		if (!diagram.isTypeVisible(objectName))
+		{
+			return null;
+		}	
 		if (!node.canHaveType(annotationType))
 		{
 			return null;
