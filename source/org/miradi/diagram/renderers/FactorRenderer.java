@@ -163,12 +163,8 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		goalsText = null;
 		if(diagram.areGoalsVisible())
 		{
-			if(node.canHaveType(Goal.getObjectType()))
-			{
-				ORefList annotationRefs = node.getGoalRefs();
-				goalsText = getAnnotationText(diagram.getProject(), EAM.text("Goal"), EAM.text("Goals"), annotationRefs);
-				
-			}
+			ORefList annotationRefs = node.getGoalRefs();
+			goalsText = getAnnotationText(diagram.getProject(), Goal.getObjectType(), EAM.text("Goal"), EAM.text("Goals"), annotationRefs);
 		}
 	}
 
@@ -177,16 +173,18 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		objectivesText = null;
 		if(diagram.areObjectivesVisible())
 		{
-			if(node.canHaveType(Objective.getObjectType()))
-			{
-				ORefList annotationRefs = node.getObjectiveRefs();
-				objectivesText = getAnnotationText(diagram.getProject(), EAM.text("Obj"), EAM.text("Objs"), annotationRefs);
-			}
+			ORefList annotationRefs = node.getObjectiveRefs();
+			objectivesText = getAnnotationText(diagram.getProject(), Objective.getObjectType(), EAM.text("Obj"), EAM.text("Objs"), annotationRefs);
 		}
 	}
 
-	private String getAnnotationText(final Project project, final String annotationPrefix, final String annotationSuffix, ORefList annotationRefs)
+	private String getAnnotationText(final Project project, int annotationType, final String annotationPrefix, final String annotationSuffix, ORefList annotationRefs)
 	{
+		if (!node.canHaveType(annotationType))
+		{
+			return null;
+		}
+		
 		if(annotationRefs.size() == 1)
 		{
 			String shortLabel = project.getObjectData(annotationRefs.get(0), Desire.TAG_SHORT_LABEL);
