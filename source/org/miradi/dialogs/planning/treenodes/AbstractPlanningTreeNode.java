@@ -28,6 +28,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.XmlUtilities2;
 
 abstract public class AbstractPlanningTreeNode extends TreeTableNode
 {
@@ -95,7 +96,8 @@ abstract public class AbstractPlanningTreeNode extends TreeTableNode
 		if (getObject() == null)
 			return "";
 		
-		return getObject().getFullName();
+		final String fullName = getObject().getFullName();
+		return XmlUtilities2.getXmlDecodedApostrophes(fullName);
 	}
 
 	public String getObjectTypeName()
