@@ -30,7 +30,7 @@ import javax.swing.JList;
 import org.miradi.icons.RatingIcon;
 import org.miradi.questions.ChoiceItem;
 
-public class ChoiceItemListCellRenderer extends DefaultListCellRenderer
+public class ChoiceItemHtmlEncodedListCellRenderer extends DefaultListCellRenderer
 {
 	@Override
 	public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) 

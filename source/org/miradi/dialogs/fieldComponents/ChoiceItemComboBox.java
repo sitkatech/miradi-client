@@ -21,7 +21,7 @@ package org.miradi.dialogs.fieldComponents;
 
 import javax.swing.DefaultComboBoxModel;
 
-import org.miradi.diagram.renderers.ChoiceItemListCellRenderer;
+import org.miradi.diagram.renderers.ChoiceItemHtmlEncodedListCellRenderer;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 
@@ -38,9 +38,9 @@ public class ChoiceItemComboBox extends AbstractChoiceItemComboBox
 	}
 
 	@Override
-	protected ChoiceItemListCellRenderer createListCellRenderer()
+	protected ChoiceItemHtmlEncodedListCellRenderer createListCellRenderer()
 	{
-		return new ChoiceItemListCellRenderer();
+		return new ChoiceItemHtmlEncodedListCellRenderer();
 	}
 	
 	public void reloadComboBox(ChoiceQuestion question)
