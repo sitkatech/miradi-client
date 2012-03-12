@@ -23,14 +23,13 @@ package org.miradi.diagram.renderers;
 import java.awt.Color;
 import java.awt.Component;
 
-import javax.swing.DefaultListCellRenderer;
 import javax.swing.Icon;
 import javax.swing.JList;
 
 import org.miradi.icons.RatingIcon;
 import org.miradi.questions.ChoiceItem;
 
-public class ChoiceItemHtmlEncodedListCellRenderer extends DefaultListCellRenderer
+public class ChoiceItemHtmlEncodedListCellRenderer extends AbstractChoiceItemListCellRenderer
 {
 	@Override
 	public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) 
