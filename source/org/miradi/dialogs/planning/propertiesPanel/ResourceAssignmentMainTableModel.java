@@ -29,6 +29,7 @@ import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.questions.ChoiceItemBaseObjectWrapper;
 
 public class ResourceAssignmentMainTableModel extends AbstractSummaryTableModel
 {
@@ -76,7 +77,7 @@ public class ResourceAssignmentMainTableModel extends AbstractSummaryTableModel
 		ORef resourceAssignmentRef = getRefForRow(row);
 		ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), resourceAssignmentRef);
 		if (isResourceColumn(column))
-			return findProjectResource(resourceAssignment);
+			return new ChoiceItemBaseObjectWrapper(findProjectResource(resourceAssignment));
 		
 		if (isResourceCostPerUnitColumn(column))
 			return getResourceCostPerUnit(resourceAssignment);	
@@ -128,7 +129,7 @@ public class ResourceAssignmentMainTableModel extends AbstractSummaryTableModel
 		if (! isResourceColumn(column))
 			return;
 
-		ProjectResource projectResource = (ProjectResource)value;
+		ProjectResource projectResource = (ProjectResource) ((ChoiceItemBaseObjectWrapper)value).getBaseObject();
 		BaseId resourceId = projectResource.getId();
 		setValueUsingCommand(resourceAssignmentRefForRow, ResourceAssignment.TAG_RESOURCE_ID, resourceId);
 	}

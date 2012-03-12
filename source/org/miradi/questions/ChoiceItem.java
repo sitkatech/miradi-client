@@ -26,6 +26,7 @@ import javax.swing.Icon;
 
 import org.miradi.dialogs.dashboard.AbstractLongDescriptionProvider;
 import org.miradi.dialogs.dashboard.StaticLongDescriptionProvider;
+import org.miradi.utils.XmlUtilities2;
 
 public class ChoiceItem implements Comparable<Object>
 {
@@ -97,6 +98,16 @@ public class ChoiceItem implements Comparable<Object>
 		return label;
 	}
 	
+	public String getXmlLabel()
+	{
+		return XmlUtilities2.getXmlDecoded(getLabel());
+	}
+	
+	public String getHtmlLabel()
+	{
+		return XmlUtilities2.getXmlDecodedApostrophes(getLabel());
+	}
+	
 	public Color getColor()
 	{
 		return color;
@@ -125,6 +136,8 @@ public class ChoiceItem implements Comparable<Object>
 	@Override
 	public String toString()
 	{
+		//TODO urgent - uncomment and fix all cases that call toString();
+		//EAM.logWarning("ChoiceItem.toString should not be called,  please use a specific label getter.")
 		return getLabel();
 	}
 	

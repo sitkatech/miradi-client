@@ -30,6 +30,9 @@ import org.miradi.objects.BudgetCategoryTwo;
 import org.miradi.objects.FundingSource;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.questions.ChoiceItemBaseObjectWrapper;
+import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.utils.ColumnTagProvider;
 
 abstract public class AbstractSummaryTableModel extends PlanningViewAbstractAssignmentTableModel implements ColumnTagProvider
@@ -73,16 +76,16 @@ abstract public class AbstractSummaryTableModel extends PlanningViewAbstractAssi
 		ORef baseObjectRefForRow = getRefForRow(row);
 		BaseObject baseObjectForRow = getProject().findObject(baseObjectRefForRow);
 		if (isFundingSourceColumn(column))
-			return getFundingSource(baseObjectForRow);
+			return new ChoiceItemBaseObjectWrapper(getFundingSource(baseObjectForRow));
 		
 		if (isAccountingCodeColumn(column))
-			return getAccountingCode(baseObjectForRow);
+			return new ChoiceItemBaseObjectWrapper(getAccountingCode(baseObjectForRow));
 		
 		if (isBudgetCategoryOneColumn(column))
-			return getBaseObject(baseObjectForRow, Assignment.TAG_CATEGORY_ONE_REF, BudgetCategoryOne.getObjectType(), BudgetCategoryOne.OBJECT_NAME);
+			return new ChoiceItemBaseObjectWrapper(getBaseObject(baseObjectForRow, Assignment.TAG_CATEGORY_ONE_REF, BudgetCategoryOne.getObjectType(), BudgetCategoryOne.OBJECT_NAME));
 		
 		if (isBudgetCategoryTwoColumn(column))
-			return getBaseObject(baseObjectForRow, Assignment.TAG_CATEGORY_TWO_REF, BudgetCategoryTwo.getObjectType(), BudgetCategoryTwo.OBJECT_NAME);
+			return new ChoiceItemBaseObjectWrapper(getBaseObject(baseObjectForRow, Assignment.TAG_CATEGORY_TWO_REF, BudgetCategoryTwo.getObjectType(), BudgetCategoryTwo.OBJECT_NAME));
 		
 		return null;
 	}
@@ -101,21 +104,21 @@ abstract public class AbstractSummaryTableModel extends PlanningViewAbstractAssi
 	{
 		ORef refForRow = getRefForRow(row);
 		if (isAccountingCodeColumn(column))
-			setAccountingCode(((BaseObject) value).getRef(), refForRow, column);
+			setAccountingCode(ORef.createFromString(((ChoiceItem) value).getCode()), refForRow, column);
 		
 		if (isFundingSourceColumn(column))
-			setFundingSource(((BaseObject) value).getRef(), refForRow, column);
+			setFundingSource(ORef.createFromString(((ChoiceItem) value).getCode()), refForRow, column);
 		
 		if (isBudgetCategoryOneColumn(column))
-			setRefValue(refForRow, Assignment.TAG_CATEGORY_ONE_REF, (BaseObject) value);
+			setRefValue(refForRow, Assignment.TAG_CATEGORY_ONE_REF, (ChoiceItem) value);
 		
 		if (isBudgetCategoryTwoColumn(column))
-			setRefValue(refForRow, Assignment.TAG_CATEGORY_TWO_REF, (BaseObject) value);
+			setRefValue(refForRow, Assignment.TAG_CATEGORY_TWO_REF, (ChoiceItem) value);
 	}
 	
-	private void setRefValue(ORef refForRow, String destinationTag, BaseObject baseObject)
+	private void setRefValue(ORef refForRow, String destinationTag, ChoiceItem choiceItem)
 	{
-		setValueUsingCommand(refForRow, destinationTag, baseObject.getRef());
+		setValueUsingCommand(refForRow, destinationTag, ORef.createFromString(choiceItem.getCode()));
 	}
 
 	public String getColumnTag(int column)

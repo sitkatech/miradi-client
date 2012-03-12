@@ -34,15 +34,14 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
 import org.miradi.diagram.renderers.ChoiceItemComboBoxTableCellRenderer;
-import org.miradi.diagram.renderers.ComboBoxRenderer;
 import org.miradi.dialogs.fieldComponents.ChoiceItemComboBox;
-import org.miradi.dialogs.fieldComponents.PanelComboBox;
 import org.miradi.dialogs.tablerenderers.BasicTableCellEditorOrRendererFactory;
+import org.miradi.dialogs.tablerenderers.ChoiceItemComboBoxRendererOrEditorFactory;
 import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.DateTableCellEditorOrRendererFactory;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
-import org.miradi.dialogs.tablerenderers.FloatingPointRestrictedTableCellRendererEditorFactory;
 import org.miradi.dialogs.tablerenderers.ExpandingReadonlyTableCellEditorOrRendererFactory;
+import org.miradi.dialogs.tablerenderers.FloatingPointRestrictedTableCellRendererEditorFactory;
 import org.miradi.dialogs.tablerenderers.NonNegativeIntegerRestrictedTableCellRendererEditorFactory;
 import org.miradi.dialogs.tablerenderers.StressBasedThreatRatingQuestionPopupCellEditorOrRendererFactory;
 import org.miradi.dialogs.treetables.TreeTableNode;
@@ -51,6 +50,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.ObjectManager;
+import org.miradi.questions.ChoiceItemBaseObjectWrapper;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.SortableRowTable;
@@ -147,11 +147,10 @@ abstract public class EditableBaseObjectTable extends SortableRowTable  implemen
 	protected void createComboColumn(BaseObject[] content, int tableColumn, BaseObject invalidObject)
 	{
 		Arrays.sort(content, new SorterByToString());
-		BaseObject[] comboContent = addEmptySpaceAtStart(content, invalidObject);
-		PanelComboBox comboBox = new PanelComboBox(comboContent);
-		ComboBoxRenderer rendererFactory = new ComboBoxRenderer(comboContent);
-		DefaultCellEditor editorFactory = new DefaultCellEditor(comboBox);
-		setPlainRendererAndEditorFactories(tableColumn, rendererFactory, editorFactory);
+		Vector<ChoiceItem> comboContent = addEmptySpaceAtStart(content, invalidObject);
+		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
+		ChoiceItemComboBoxRendererOrEditorFactory renderer = new ChoiceItemComboBoxRendererOrEditorFactory(model, fontProvider, comboContent);
+		setPlainRendererAndEditorFactories(tableColumn, renderer, renderer);
 	}
 	
 	protected void createComboColumn(ChoiceItem[] choices, int tableColumn)
@@ -178,13 +177,16 @@ abstract public class EditableBaseObjectTable extends SortableRowTable  implemen
 		setPlainRendererAndEditorFactories(tableColumn, rendererFactory, null);
 	}
 	
-	private BaseObject[] addEmptySpaceAtStart(BaseObject[] content, BaseObject invalidObject)
+	private Vector<ChoiceItem> addEmptySpaceAtStart(BaseObject[] content, BaseObject invalidObject)
 	{
-		final int EMPTY_SPACE = 0;
-		BaseObject[]  comboContent = new BaseObject[content.length + 1];
-		comboContent[EMPTY_SPACE] = invalidObject;
+		Vector<ChoiceItem> comboContent = new Vector<ChoiceItem>();
+		comboContent.add(new ChoiceItemBaseObjectWrapper(invalidObject));
 	
-		System.arraycopy(content, 0, comboContent, 1, content.length);	
+		for (int index = 0; index < content.length; ++index)
+		{
+			comboContent.add(new ChoiceItemBaseObjectWrapper(content[index]));
+		}
+		
 		return comboContent;
 	}
 	
