@@ -20,13 +20,16 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.fieldComponents;
 
+import javax.swing.DefaultListCellRenderer;
+
 import org.miradi.questions.ChoiceItem;
 
-public class AbstractChoiceItemComboBox extends PanelComboBox
+abstract public class AbstractChoiceItemComboBox extends PanelComboBox
 {
 	public AbstractChoiceItemComboBox(ChoiceItem[] items)
 	{
 		super(items);
 	}
 	
+	abstract protected DefaultListCellRenderer createListCellRenderer();
 }
