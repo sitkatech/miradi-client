@@ -30,9 +30,8 @@ import org.miradi.objects.BudgetCategoryTwo;
 import org.miradi.objects.FundingSource;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.questions.ChoiceItemBaseObjectWrapper;
 import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.EmptyChoiceItem;
+import org.miradi.questions.ChoiceItemBaseObjectWrapper;
 import org.miradi.utils.ColumnTagProvider;
 
 abstract public class AbstractSummaryTableModel extends PlanningViewAbstractAssignmentTableModel implements ColumnTagProvider
