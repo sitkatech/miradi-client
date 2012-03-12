@@ -30,7 +30,6 @@ import javax.swing.JList;
 import org.miradi.icons.RatingIcon;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
-import org.miradi.utils.XmlUtilities2;
 
 public class ChoiceItemComboBox extends AbstractChoiceItemComboBox
 {	
@@ -59,7 +58,7 @@ public class ChoiceItemComboBox extends AbstractChoiceItemComboBox
 		public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) 
 		{
 			ChoiceItem thisOption = (ChoiceItem)value;
-			thisOption.setLabel(XmlUtilities2.getXmlDecodedApostrophes(thisOption.getLabel()));
+			thisOption.setLabel(thisOption.getHtmlLabel());
 			
 			Component cell = super.getListCellRendererComponent(list, thisOption, index, isSelected,	cellHasFocus);
 			if (value!=null)
