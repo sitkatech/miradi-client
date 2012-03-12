@@ -33,7 +33,7 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 
 //FIXME this is duplicate of ChoiceItemComboBox with the exception of decoding for xml vs html
-public class ChoiceItemWithXmlRendererComboBox extends PanelComboBox
+public class ChoiceItemWithXmlRendererComboBox extends AbstractChoiceItemBox
 {
 	public ChoiceItemWithXmlRendererComboBox(ChoiceQuestion question)
 	{
