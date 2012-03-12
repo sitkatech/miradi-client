@@ -20,15 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.fieldComponents;
 
-import java.awt.Color;
-import java.awt.Component;
 import java.util.Vector;
 
 import javax.swing.DefaultListCellRenderer;
-import javax.swing.Icon;
-import javax.swing.JList;
 
-import org.miradi.icons.RatingIcon;
+import org.miradi.diagram.renderers.ChoiceItemXmlEncodedListCellRenderer;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 
@@ -51,38 +47,8 @@ public class ChoiceItemWithXmlRendererComboBox extends AbstractChoiceItemComboBo
 	}
 
 	@Override
-	protected ChoiceItemListCellRenderer createListCellRenderer()
+	protected DefaultListCellRenderer createListCellRenderer()
 	{
-		return new ChoiceItemListCellRenderer();
-	}
-	
-	private class ChoiceItemListCellRenderer extends DefaultListCellRenderer
-	{
-		@Override
-		public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) 
-		{
-			Component cell = super.getListCellRendererComponent(list, value, index, isSelected,	cellHasFocus);
-			ChoiceItem choiceItem = (ChoiceItem) value;
-			setText(choiceItem.getXmlLabel());
-			if (value!=null)
-			{
-				Icon icon = getOrCreateIcon((ChoiceItem)value); 
-				setIcon(icon);
-			}
-			return cell;
-		}
-
-		private Icon getOrCreateIcon(ChoiceItem thisOption)
-		{
-			Icon icon = thisOption.getIcon();
-			if(icon != null)
-				return icon;
-			
-			Color color = thisOption.getColor();
-			if(color != null)
-				return new RatingIcon(thisOption);
-			
-			return null;
-		}		
+		return new ChoiceItemXmlEncodedListCellRenderer();
 	}
 }
