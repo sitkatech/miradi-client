@@ -44,6 +44,7 @@ public class ChoiceItemComboBox extends AbstractChoiceItemComboBox
 		setRenderer(createListCellRenderer());
 	}
 
+	@Override
 	protected ChoiceItemListCellRenderer createListCellRenderer()
 	{
 		return new ChoiceItemListCellRenderer();
