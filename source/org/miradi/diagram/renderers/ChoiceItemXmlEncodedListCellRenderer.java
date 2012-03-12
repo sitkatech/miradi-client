@@ -20,29 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.diagram.renderers;
 
-import java.awt.Component;
-
-import javax.swing.Icon;
-import javax.swing.JList;
-
 import org.miradi.questions.ChoiceItem;
 
 public class ChoiceItemXmlEncodedListCellRenderer extends AbstractChoiceItemListCellRenderer
 {
-	@Override
-	public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) 
-	{
-		Component cell = super.getListCellRendererComponent(list, value, index, isSelected,	cellHasFocus);
-		ChoiceItem choiceItem = (ChoiceItem) value;
-		setText(getText(choiceItem));
-		if (value!=null)
-		{
-			Icon icon = getOrCreateIcon((ChoiceItem)value); 
-			setIcon(icon);
-		}
-		return cell;
-	}
-
 	@Override
 	protected String getText(ChoiceItem choiceItem)
 	{
