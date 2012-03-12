@@ -21,16 +21,32 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.diagram.renderers;
 
 import java.awt.Color;
+import java.awt.Component;
 
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.Icon;
+import javax.swing.JList;
 
 import org.miradi.icons.RatingIcon;
 import org.miradi.questions.ChoiceItem;
 
 abstract public class AbstractChoiceItemListCellRenderer extends DefaultListCellRenderer
 {
-	protected Icon getOrCreateIcon(ChoiceItem thisOption)
+	@Override
+	public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) 
+	{
+		Component cell = super.getListCellRendererComponent(list, value, index, isSelected,	cellHasFocus);
+		ChoiceItem choiceItem = (ChoiceItem)value;
+		setText(getText(choiceItem));
+		if (value!=null)
+		{
+			Icon icon = getOrCreateIcon(choiceItem); 
+			setIcon(icon);
+		}
+		return cell;
+	}
+
+	private Icon getOrCreateIcon(ChoiceItem thisOption)
 	{
 		Icon icon = thisOption.getIcon();
 		if(icon != null)
