@@ -32,7 +32,7 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.XmlUtilities2;
 
-public class ChoiceItemComboBox extends AbstractChoiceItemBox
+public class ChoiceItemComboBox extends AbstractChoiceItemComboBox
 {	
 	public ChoiceItemComboBox(ChoiceQuestion question)
 	{

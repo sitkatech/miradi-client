@@ -22,9 +22,9 @@ package org.miradi.dialogs.fieldComponents;
 
 import org.miradi.questions.ChoiceItem;
 
-public class AbstractChoiceItemBox extends PanelComboBox
+public class AbstractChoiceItemComboBox extends PanelComboBox
 {
-	public AbstractChoiceItemBox(ChoiceItem[] items)
+	public AbstractChoiceItemComboBox(ChoiceItem[] items)
 	{
 		super(items);
 	}
