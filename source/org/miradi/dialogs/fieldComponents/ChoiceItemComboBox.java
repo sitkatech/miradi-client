@@ -41,7 +41,12 @@ public class ChoiceItemComboBox extends AbstractChoiceItemComboBox
 	public ChoiceItemComboBox(ChoiceItem[] items)
 	{
 		super(items);
-		setRenderer(new ChoiceItemListCellRenderer());
+		setRenderer(createListCellRenderer());
+	}
+
+	protected ChoiceItemListCellRenderer createListCellRenderer()
+	{
+		return new ChoiceItemListCellRenderer();
 	}
 	
 	public void reloadComboBox(ChoiceQuestion question)
