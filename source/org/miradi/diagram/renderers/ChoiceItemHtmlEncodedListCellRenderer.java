@@ -35,7 +35,7 @@ public class ChoiceItemHtmlEncodedListCellRenderer extends AbstractChoiceItemLis
 	public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) 
 	{
 		ChoiceItem thisOption = (ChoiceItem)value;
-		thisOption.setLabel(thisOption.getHtmlLabel());
+		thisOption.setLabel(getText(thisOption));
 		
 		Component cell = super.getListCellRendererComponent(list, thisOption, index, isSelected,	cellHasFocus);
 		if (value!=null)
@@ -57,5 +57,11 @@ public class ChoiceItemHtmlEncodedListCellRenderer extends AbstractChoiceItemLis
 			return new RatingIcon(thisOption);
 		
 		return null;
+	}
+	
+	@Override
+	protected String getText(ChoiceItem choiceItem)
+	{
+		return choiceItem.getHtmlLabel();
 	}
 }

@@ -36,7 +36,7 @@ public class ChoiceItemXmlEncodedListCellRenderer extends AbstractChoiceItemList
 	{
 		Component cell = super.getListCellRendererComponent(list, value, index, isSelected,	cellHasFocus);
 		ChoiceItem choiceItem = (ChoiceItem) value;
-		setText(choiceItem.getXmlLabel());
+		setText(getText(choiceItem));
 		if (value!=null)
 		{
 			Icon icon = getOrCreateIcon((ChoiceItem)value); 
@@ -56,5 +56,11 @@ public class ChoiceItemXmlEncodedListCellRenderer extends AbstractChoiceItemList
 			return new RatingIcon(thisOption);
 		
 		return null;
-	}		
+	}
+	
+	@Override
+	protected String getText(ChoiceItem choiceItem)
+	{
+		return choiceItem.getXmlLabel();
+	}
 }
