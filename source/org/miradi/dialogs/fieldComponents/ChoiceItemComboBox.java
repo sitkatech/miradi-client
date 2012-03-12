@@ -35,13 +35,12 @@ public class ChoiceItemComboBox extends AbstractChoiceItemComboBox
 {	
 	public ChoiceItemComboBox(ChoiceQuestion question)
 	{
-		this(question.getChoices());
+		super(question.getChoices());
 	}
 
 	public ChoiceItemComboBox(ChoiceItem[] items)
 	{
 		super(items);
-		setRenderer(createListCellRenderer());
 	}
 
 	@Override

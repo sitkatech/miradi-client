@@ -37,19 +37,17 @@ public class ChoiceItemWithXmlRendererComboBox extends AbstractChoiceItemComboBo
 {
 	public ChoiceItemWithXmlRendererComboBox(ChoiceQuestion question)
 	{
-		this(question.getChoices());
+		super(question.getChoices());
 	}
 
 	public ChoiceItemWithXmlRendererComboBox(Vector<ChoiceItem> items)
 	{
-		this(items.toArray(new ChoiceItem[0]));
+		super(items.toArray(new ChoiceItem[0]));
 	}
 	
 	public ChoiceItemWithXmlRendererComboBox(ChoiceItem[] items)
 	{
 		super(items);
-		
-		setRenderer(createListCellRenderer());
 	}
 
 	@Override
