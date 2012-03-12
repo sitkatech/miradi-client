@@ -29,6 +29,8 @@ abstract public class AbstractChoiceItemComboBox extends PanelComboBox
 	public AbstractChoiceItemComboBox(ChoiceItem[] items)
 	{
 		super(items);
+		
+		setRenderer(createListCellRenderer());
 	}
 	
 	abstract protected DefaultListCellRenderer createListCellRenderer();
