@@ -32,13 +32,12 @@ public class ChoiceItemHtmlEncodedListCellRenderer extends AbstractChoiceItemLis
 	@Override
 	public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) 
 	{
-		ChoiceItem thisOption = (ChoiceItem)value;
-		thisOption.setLabel(getText(thisOption));
-		
-		Component cell = super.getListCellRendererComponent(list, thisOption, index, isSelected,	cellHasFocus);
+		Component cell = super.getListCellRendererComponent(list, value, index, isSelected,	cellHasFocus);
+		ChoiceItem choiceItem = (ChoiceItem)value;
+		setText(getText(choiceItem));
 		if (value!=null)
 		{
-			Icon icon = getOrCreateIcon(thisOption); 
+			Icon icon = getOrCreateIcon(choiceItem); 
 			setIcon(icon);
 		}
 		return cell;
