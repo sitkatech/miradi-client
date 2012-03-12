@@ -22,7 +22,10 @@ package org.miradi.diagram.renderers;
 
 import javax.swing.DefaultListCellRenderer;
 
-public class AbstractChoiceItemListCellRenderer extends DefaultListCellRenderer
+import org.miradi.questions.ChoiceItem;
+
+abstract public class AbstractChoiceItemListCellRenderer extends DefaultListCellRenderer
 {
 
+	abstract protected String getText(ChoiceItem choiceItem);
 }
