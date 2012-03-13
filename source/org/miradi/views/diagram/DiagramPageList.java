@@ -50,8 +50,8 @@ abstract public class DiagramPageList extends ObjectPoolTable
 	protected DiagramPageList(MainWindow mainWindowToUse, ObjectPoolTableModel objectPoolTableModel)
 	{
 		super(mainWindowToUse, objectPoolTableModel, SORTABLE_COLUMN_INDEX);
-		project = mainWindowToUse.getProject();
 		
+		project = mainWindowToUse.getProject();
 		getSelectionModel().addListSelectionListener(new DiagramObjectListSelectionListener(project));
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		setBorder(BorderFactory.createEtchedBorder());
