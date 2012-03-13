@@ -26,6 +26,7 @@ import javax.swing.JTree;
 import javax.swing.tree.DefaultTreeCellRenderer;
 
 import org.miradi.main.MainWindow;
+import org.miradi.utils.XmlUtilities2;
 
 public class VariableHeightTreeCellRenderer extends DefaultTreeCellRenderer
 {
@@ -58,6 +59,12 @@ public class VariableHeightTreeCellRenderer extends DefaultTreeCellRenderer
 	private void resetPreferredSizeToAvoidTruncatingNextValue()
 	{
 		setPreferredSize(null);
+	}
+	
+	@Override
+	public String getText()
+	{
+		return XmlUtilities2.getXmlDecodedApostrophes(super.getText());
 	}
 	
 	private TreeTableWithRowHeightSaver treeTable;
