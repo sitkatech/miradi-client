@@ -20,9 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.fieldComponents;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListCellRenderer;
 
 import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ChoiceQuestion;
 
 abstract public class AbstractChoiceItemComboBox extends PanelComboBox
 {
@@ -31,6 +33,14 @@ abstract public class AbstractChoiceItemComboBox extends PanelComboBox
 		super(items);
 		
 		setRenderer(createListCellRenderer());
+	}
+	
+	public void reloadComboBox(ChoiceQuestion question)
+	{
+		removeAllItems();
+		
+		DefaultComboBoxModel comboBoxModel = new DefaultComboBoxModel(question.getChoices());
+		setModel(comboBoxModel);
 	}
 	
 	abstract protected DefaultListCellRenderer createListCellRenderer();

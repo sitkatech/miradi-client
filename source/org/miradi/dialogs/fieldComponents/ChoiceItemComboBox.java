@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.fieldComponents;
 
-import javax.swing.DefaultComboBoxModel;
-
 import org.miradi.diagram.renderers.ChoiceItemHtmlEncodedListCellRenderer;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
@@ -41,13 +39,5 @@ public class ChoiceItemComboBox extends AbstractChoiceItemComboBox
 	protected ChoiceItemHtmlEncodedListCellRenderer createListCellRenderer()
 	{
 		return new ChoiceItemHtmlEncodedListCellRenderer();
-	}
-	
-	public void reloadComboBox(ChoiceQuestion question)
-	{
-		removeAllItems();
-		
-		DefaultComboBoxModel comboBoxModel = new DefaultComboBoxModel(question.getChoices());
-		setModel(comboBoxModel);
 	}
 }
