@@ -94,7 +94,7 @@ abstract public class AbstractQuestionEditorComponent extends SavebleComponent
 
 	private JComponent createLeftColumnComponent(ChoiceItem choiceItem)
 	{
-		JToggleButton toggleButton = createToggleButton(choiceItem.getLabel());
+		JToggleButton toggleButton = createToggleButton(choiceItem.getXmlLabel());
 		toggleButton.setBackground(choiceItem.getColor());
 		toggleButton.addActionListener(new ToggleButtonHandler());
 		choiceItemToToggleButtonMap.put(choiceItem, toggleButton);
