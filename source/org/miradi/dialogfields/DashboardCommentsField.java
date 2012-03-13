@@ -26,6 +26,7 @@ import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
+import org.miradi.utils.XmlUtilities2;
 
 public class DashboardCommentsField extends AbstractDashboardClickableField
 {
@@ -44,7 +45,7 @@ public class DashboardCommentsField extends AbstractDashboardClickableField
 		if (newlineAt >= 0)
 			firstLine = mapValue.substring(0, newlineAt) + "...";
 		
-		labelComponentToUse.setText(firstLine);
+		labelComponentToUse.setText(XmlUtilities2.getXmlDecoded(firstLine));
 	}
 	
 	public boolean hasComments() throws Exception
