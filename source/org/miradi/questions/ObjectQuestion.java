@@ -23,7 +23,6 @@ import java.util.Arrays;
 import java.util.Vector;
 
 import org.miradi.objects.BaseObject;
-import org.miradi.utils.HtmlUtilities;
 
 abstract public class ObjectQuestion extends DynamicChoiceQuestion
 {
@@ -50,7 +49,7 @@ abstract public class ObjectQuestion extends DynamicChoiceQuestion
 
 	protected String getStringToDisplay(BaseObject thisObject)
 	{
-		return HtmlUtilities.wrapInHtmlTags(thisObject.getFullName());
+		return thisObject.getFullName();
 	}
 	
 	public void setObjects(BaseObject[] objectsToUse)

@@ -40,7 +40,7 @@ import org.miradi.dialogs.base.DisposablePanelWithDescription;
 import org.miradi.dialogs.base.ModelessDialogPanel;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.base.ObjectManagementPanel;
-import org.miradi.dialogs.fieldComponents.ChoiceItemComboBox;
+import org.miradi.dialogs.fieldComponents.ChoiceItemWithXmlRendererComboBox;
 import org.miradi.dialogs.fieldComponents.PanelTabbedPane;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.goal.GoalListManagementPanel;
@@ -454,7 +454,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		return event.isSetDataCommandWithThisTypeAndTag(HumanWelfareTarget.getObjectType(), AbstractTarget.TAG_VIABILITY_MODE);
 	}
 	
-	private class CurrentFactorChangerComboBox extends ChoiceItemComboBox implements ItemListener 
+	private class CurrentFactorChangerComboBox extends ChoiceItemWithXmlRendererComboBox implements ItemListener 
 	{
 		public CurrentFactorChangerComboBox(ChoiceQuestion question)
 		{
