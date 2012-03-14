@@ -44,15 +44,15 @@ public class TwoLevelQuestion extends DynamicChoiceQuestion
 		try 
 		{
 			Vector<ChoiceItem> chocies = new Vector<ChoiceItem>();
-			TwoLevelEntry[] twoLevelEntry = twoLevelFileLoader.load();
+			TwoLevelEntry[] twoLevelEntries = twoLevelFileLoader.load();
 
-			for (int i = 0; i < twoLevelEntry.length; ++i)
+			for (int i = 0; i < twoLevelEntries.length; ++i)
 			{
-				String code = twoLevelEntry[i].getEntryCode();
-				String label = XmlUtilities2.getXmlEncoded(twoLevelEntry[i].getEntryLabel());
-				String description  = XmlUtilities2.getXmlEncoded(twoLevelEntry[i].getDescription());
-				ChoiceItem choice = createChoiceItem(code, label, description, twoLevelEntry[i].getLongDescription());
-				choice.setSelectable(twoLevelEntry[i].isSelectable());
+				String code = twoLevelEntries[i].getEntryCode();
+				String label = XmlUtilities2.getXmlEncoded(twoLevelEntries[i].getEntryLabel());
+				String description  = XmlUtilities2.getXmlEncoded(twoLevelEntries[i].getDescription());
+				ChoiceItem choice = createChoiceItem(code, label, description, twoLevelEntries[i].getLongDescription());
+				choice.setSelectable(twoLevelEntries[i].isSelectable());
 				chocies.add(choice);
 			}
 			
