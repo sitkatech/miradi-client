@@ -26,7 +26,7 @@ public class ChoiceItemBaseObjectWrapper extends ChoiceItem
 {
 	public ChoiceItemBaseObjectWrapper(final BaseObject thisBaseObject)
 	{
-		super(thisBaseObject.getRef().toString(), thisBaseObject.getLabel());
+		super(thisBaseObject.getRef().toString(), thisBaseObject.getFullName());
 		
 		baseObject = thisBaseObject;
 	}
@@ -34,7 +34,7 @@ public class ChoiceItemBaseObjectWrapper extends ChoiceItem
 	@Override
 	public String getLabel()
 	{
-		return getBaseObject().getLabel();
+		return getBaseObject().getFullName();
 	}
 	
 	public BaseObject getBaseObject()
