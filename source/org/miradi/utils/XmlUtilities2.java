@@ -42,7 +42,7 @@ public class XmlUtilities2
 		value = value.replaceAll("&#38;", "&");
 		value = value.replaceAll("&amp;", "&");
 		
-		value = convertXmlTextToHtml(value);
+		value = decodeApostrophes(value);
 		
 		return value;
 	}
@@ -64,6 +64,11 @@ public class XmlUtilities2
 	}
 	
 	public static String convertXmlTextToHtml(String value)
+	{
+		return decodeApostrophes(value);
+	}
+
+	private static String decodeApostrophes(String value)
 	{
 		value = value.replaceAll("&#39;", "'");
 		value = value.replaceAll("&#x27;", "'");
