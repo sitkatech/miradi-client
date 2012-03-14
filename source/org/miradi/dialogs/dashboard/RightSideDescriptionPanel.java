@@ -35,6 +35,7 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.FastScrollPane;
 import org.miradi.utils.FlexibleWidthHtmlViewer;
+import org.miradi.utils.XmlUtilities2;
 import org.miradi.views.umbrella.ViewSwitchDoer;
 
 public class RightSideDescriptionPanel extends JPanel implements ListSelectionListener
@@ -83,7 +84,9 @@ public class RightSideDescriptionPanel extends JPanel implements ListSelectionLi
 
 	private void setRightSideHtmlContent(AbstractLongDescriptionProvider descriptionProvider) throws Exception
 	{
-		viewer.setText(descriptionProvider.getDescription());
+		String description = descriptionProvider.getDescription();
+		description = XmlUtilities2.getXmlDecodedApostrophes(description);
+		viewer.setText(description);
 	}
 	
 	private MainWindow getMainWindow()
