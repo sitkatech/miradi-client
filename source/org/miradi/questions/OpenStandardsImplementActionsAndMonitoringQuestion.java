@@ -50,7 +50,7 @@ public class OpenStandardsImplementActionsAndMonitoringQuestion extends DynamicC
 	
 	public static String getHeaderLabel()
 	{
-		return EAM.text("Menu|3. Implement Actions &  Monitoring");
+		return EAM.text("Menu|3. Implement Actions and Monitoring");
 	}
 	
 	public static String getProcessStep3a()
