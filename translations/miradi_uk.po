@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-14 11:08-0500\n"
+"POT-Creation-Date: 2012-03-14 13:54-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -5272,7 +5272,7 @@ msgstr ""
 msgid "Nov"
 msgstr "Листопад"
 
-#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:170
+#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:171
 msgid "Obj"
 msgstr "Завдання"
 
@@ -5322,7 +5322,7 @@ msgstr ""
 msgid "Objectives:"
 msgstr "Завдання:"
 
-#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:170
+#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:171
 msgid "Objs"
 msgstr "Завдання"
 
@@ -6164,7 +6164,7 @@ msgid "Share feedback formally or informally"
 msgstr "Розподіляти зворотню реакцію формально і неформально"
 
 #: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:51
-msgid "Share success &amp; failures with other teams"
+msgid "Share success and failures with other teams"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:606
