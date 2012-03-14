@@ -40,7 +40,7 @@ public class OpenStandardsCaptureAndShareLearningQuestion extends DynamicChoiceW
 		processStep5bChoiceItem.addChild(new ChoiceItem("DevelopCommunicationsStrategy", EAM.text("Develop communications strategy"), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_5B_FILENAME)));
 		processStep5bChoiceItem.addChild(new ChoiceItem("ReportToProjectTeamAndStakeholders", EAM.text("Report to project team and stakeholders"), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_5B_FILENAME)));
 		processStep5bChoiceItem.addChild(new ChoiceItem("DevelopAndShareCommunicationProducts", EAM.text("Develop and share communication products"), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_5B_FILENAME)));
-		processStep5bChoiceItem.addChild(new ChoiceItem("UseOthersCommunicationProducts", EAM.text("Use other's communication products"), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_5B_FILENAME)));
+		processStep5bChoiceItem.addChild(new ChoiceItem("UseOthersCommunicationProducts", EAM.text("Use other&apos;s communication products"), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_5B_FILENAME)));
 		
 		ChoiceItemWithChildren processStep5cChoiceItem = new ChoiceItemWithChildren(PROCESS_STEP_5C_CODE, getProcessStep5cLabel(), EAM.emptyText(), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_5C_FILENAME));
 		headerChoiceItem.addChild(processStep5cChoiceItem);
@@ -48,7 +48,7 @@ public class OpenStandardsCaptureAndShareLearningQuestion extends DynamicChoiceW
 		processStep5cChoiceItem.addChild(new ChoiceItem("ConductEvaluationsAndOrAuditsAtAppropriateTimesDuringTheProjectCycle", EAM.text("Conduct evaluations and/or audits"), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_5C_FILENAME)));
 		processStep5cChoiceItem.addChild(new ChoiceItem("DemonstrateCommitmentFromLeadersToLearningAndInnovation", EAM.text("Demonstrate commitment to learning"), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_5C_FILENAME)));
 		processStep5cChoiceItem.addChild(new ChoiceItem("ProvideASafeEnvironmentForEncouragingExperimentation", EAM.text("Provide a safe environment for experimentation"), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_5C_FILENAME)));
-		processStep5cChoiceItem.addChild(new ChoiceItem("ShareSuccessAndFailuresWithPractitionersAroundTheWorld", EAM.text("Share success & failures with other teams"), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_5C_FILENAME)));
+		processStep5cChoiceItem.addChild(new ChoiceItem("ShareSuccessAndFailuresWithPractitionersAroundTheWorld", EAM.text("Share success &amp; failures with other teams"), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_5C_FILENAME)));
 
 		return headerChoiceItem;
 	}

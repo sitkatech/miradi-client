@@ -81,7 +81,7 @@ public class OpenStandardsPlanActionsAndMonitoringQuestion extends DynamicChoice
 		
 	public static String getIdentifyKeyFactorsAndDraftStrategiesLabel()
 	{
-		return EAM.text("Identify \"key factors\" and draft strategies"); 
+		return EAM.text("Identify &quot;key factors&quot; and draft strategies"); 
 	}
 	
 	public static String getRankDraftStrategiesLabel()

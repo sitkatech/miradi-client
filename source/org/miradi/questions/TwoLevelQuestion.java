@@ -26,6 +26,7 @@ import java.util.Vector;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.TwoLevelEntry;
 import org.miradi.objecthelpers.TwoLevelFileLoader;
+import org.miradi.utils.XmlUtilities2;
 
 public class TwoLevelQuestion extends DynamicChoiceQuestion
 {
@@ -48,8 +49,8 @@ public class TwoLevelQuestion extends DynamicChoiceQuestion
 			for (int i = 0; i < twoLevelEntry.length; ++i)
 			{
 				String code = twoLevelEntry[i].getEntryCode();
-				String label = twoLevelEntry[i].getEntryLabel();
-				String description  = twoLevelEntry[i].getDescription();
+				String label = XmlUtilities2.getXmlEncoded(twoLevelEntry[i].getEntryLabel());
+				String description  = XmlUtilities2.getXmlEncoded(twoLevelEntry[i].getDescription());
 				ChoiceItem choice = createChoiceItem(code, label, description, twoLevelEntry[i].getLongDescription());
 				choice.setSelectable(twoLevelEntry[i].isSelectable());
 				chocies.add(choice);

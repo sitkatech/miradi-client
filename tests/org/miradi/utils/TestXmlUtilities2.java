@@ -28,6 +28,31 @@ public class TestXmlUtilities2 extends MiradiTestCase
 	{
 		super(name);
 	}
+	
+	public void testIsValidXml()
+	{
+		verifyValidXml();
+		verifyNotValidXml();
+	}
+
+	private void verifyValidXml()
+	{
+		assertTrue(XmlUtilities2.isValidXml("AB"));
+		assertTrue(XmlUtilities2.isValidXml("A&amp;B"));
+		assertTrue(XmlUtilities2.isValidXml("A&lt;B"));
+		assertTrue(XmlUtilities2.isValidXml("A&gt;B"));
+		assertTrue(XmlUtilities2.isValidXml("A&apos;B"));
+		assertTrue(XmlUtilities2.isValidXml("A&quot;B"));
+	}
+
+	private void verifyNotValidXml()
+	{
+		assertFalse(XmlUtilities2.isValidXml("A&B"));
+		assertFalse(XmlUtilities2.isValidXml("A<B"));
+		assertFalse(XmlUtilities2.isValidXml("A>B"));
+		assertFalse(XmlUtilities2.isValidXml("A'B"));
+		assertFalse(XmlUtilities2.isValidXml("A\"B"));
+	}
 
 	public void testGetXmlDecoded()
 	{
