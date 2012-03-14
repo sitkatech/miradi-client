@@ -71,4 +71,12 @@ public class XmlUtilities2
 		
 		return value;
 	}
+	
+	public static boolean isValidXml(final String value)
+	{
+		final String decodedValue = getXmlDecoded(value);
+		final String encodedValue = getXmlEncoded(decodedValue);
+		
+		return encodedValue.equals(value);
+	}
 }

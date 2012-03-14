@@ -115,7 +115,7 @@ public class HabitatAssociationQuestion extends StaticChoiceQuestion
 				new ChoiceItemWithLongDescriptionProvider("11.1.2", EAM.text("Marine Deep Benthic - Continental Slope/Bathyl Zone - Soft Substrate")), 
 				new ChoiceItemWithLongDescriptionProvider("11.2", EAM.text("Marine Deep Benthic - Abyssal Plain (4,000-6,000 m)")), 
 				new ChoiceItemWithLongDescriptionProvider("11.3", EAM.text("Marine Deep Benthic - Abyssal Mountain/Hills (4,000-6,000 m)")), 
-				new ChoiceItemWithLongDescriptionProvider("11.4", EAM.text("Marine Deep Benthic - Hadal/Deep Sea Trench (>6,000 m)")), 
+				new ChoiceItemWithLongDescriptionProvider("11.4", EAM.text("Marine Deep Benthic - Hadal/Deep Sea Trench (&gt;6,000 m)")), 
 				new ChoiceItemWithLongDescriptionProvider("11.5", EAM.text("Marine Deep Benthic - Seamount")), 
 				new ChoiceItemWithLongDescriptionProvider("11.6", EAM.text("Marine Deep Benthic - Deep Sea Vents (Rifts/Seeps)")), 
 				new ChoiceItemWithLongDescriptionProvider("12", EAM.text("Marine Intertidal")),

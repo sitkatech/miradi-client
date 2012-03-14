@@ -86,6 +86,14 @@ public class ChoiceItem implements Comparable<Object>
 		color = colorToUse;
 		descriptionProvider = descriptionProviderToUse;
 		selectable = true;
+		
+		ensureValidXmlLabel();
+	}
+
+	private void ensureValidXmlLabel()
+	{
+		if (label != null && !XmlUtilities2.isValidXml(label))
+			throw new RuntimeException("Invalid xml ChoiceItem label =" + label);
 	}
 
 	public String getCode()
