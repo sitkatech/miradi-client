@@ -31,6 +31,12 @@ public class ChoiceItemBaseObjectWrapper extends ChoiceItem
 		baseObject = thisBaseObject;
 	}
 	
+	@Override
+	public String getLabel()
+	{
+		return getBaseObject().getLabel();
+	}
+	
 	public BaseObject getBaseObject()
 	{
 		return baseObject;
