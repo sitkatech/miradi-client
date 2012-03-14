@@ -84,4 +84,24 @@ public class XmlUtilities2
 		
 		return encodedValue.equals(value);
 	}
+	
+	public static boolean hasEncoded(final String value)
+	{
+		if (value.contains("&amp;"))
+			return true;
+		
+		if (value.contains("&lt;"))
+			return true;
+		
+		if (value.contains("&gt;"))
+			return true;
+		
+		if (value.contains("&apos;"))
+			return true;
+		
+		if (value.contains("&quot;"))
+			return true;
+		
+		return false;
+	}
 }

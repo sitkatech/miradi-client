@@ -50,8 +50,8 @@ public class TwoLevelQuestion extends DynamicChoiceQuestion
 			{
 				final TwoLevelEntry twoLevelEntry = twoLevelEntries[i];
 				String code = twoLevelEntry.getEntryCode();
-				String label = XmlUtilities2.getXmlEncoded(twoLevelEntry.getEntryLabel());
-				String description  = XmlUtilities2.getXmlEncoded(twoLevelEntry.getDescription());
+				String label = getSafeEncodedValue(twoLevelEntry.getEntryLabel());
+				String description  = getSafeEncodedValue(twoLevelEntry.getDescription());
 				ChoiceItem choice = createChoiceItem(code, label, description, twoLevelEntry.getLongDescription());
 				choice.setSelectable(twoLevelEntry.isSelectable());
 				chocies.add(choice);
@@ -64,6 +64,14 @@ public class TwoLevelQuestion extends DynamicChoiceQuestion
 			EAM.logException(e);
 			throw new RuntimeException("error processing two level entry inside:" + twoLevelFileLoader.getFileName());
 		}
+	}
+
+	protected String getSafeEncodedValue(final String value)
+	{
+		if (XmlUtilities2.hasEncoded(value))
+			throw new RuntimeException("Value in TwoLevelQuestion is already encoded, value= "+ value);
+		
+		return XmlUtilities2.getXmlEncoded(value);
 	}
 
 	protected ChoiceItem createChoiceItem(String code, String label, String description, String longDescription) throws Exception

@@ -29,6 +29,32 @@ public class TestXmlUtilities2 extends MiradiTestCase
 		super(name);
 	}
 	
+	public void testHasEncoded()
+	{
+		verifyDoesHaveEncodedValue("A&amp;B");
+		verifyDoesHaveEncodedValue("A&lt;B");
+		verifyDoesHaveEncodedValue("A&gt;B");
+		verifyDoesHaveEncodedValue("A&apos;B");
+		verifyDoesHaveEncodedValue("A&quot;B");
+
+		verifyDoesNotHaveEncodedValue("AB");
+		verifyDoesNotHaveEncodedValue("A&B");
+		verifyDoesNotHaveEncodedValue("A<B");
+		verifyDoesNotHaveEncodedValue("A>B");
+		verifyDoesNotHaveEncodedValue("A'B");
+		verifyDoesNotHaveEncodedValue("A\"B");
+	}
+	
+	private void verifyDoesHaveEncodedValue(final String value)
+	{
+		assertTrue(XmlUtilities2.hasEncoded(value));
+	}
+	
+	private void verifyDoesNotHaveEncodedValue(final String value)
+	{
+		assertFalse(XmlUtilities2.hasEncoded(value));
+	}
+
 	public void testIsValidXml()
 	{
 		verifyValidXml();
