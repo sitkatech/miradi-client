@@ -103,9 +103,7 @@ public class ObjectReadonlyObjectListField extends ObjectDataInputField
 			}
 			else
 			{
-				String fullName = object.getFullName();
-				fullName = XmlUtilities2.getXmlDecoded(fullName);
-				names.add(fullName);
+				names.add(object.getFullName());
 			}
 		}
 		
