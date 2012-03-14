@@ -58,7 +58,7 @@ public class XmlUtilities2
 		return value;
 	}
 
-	public static String getXmlEncodedApostrophes(String value)
+	private static String getXmlEncodedApostrophes(String value)
 	{
 		return value.replaceAll("'", "&apos;");
 	}
