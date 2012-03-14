@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-12 16:52-0500\n"
+"POT-Creation-Date: 2012-03-14 11:08-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -4002,8 +4002,8 @@ msgid "IUCN Redlist Species"
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/OpenStandardsPlanActionsAndMonitoringQuestion.java:84
-msgid "Identify \"key factors\" and draft strategies"
-msgstr "Kenali \"faktor kunci\" dan rancangan strategi "
+msgid "Identify &quot;key factors&quot; and draft strategies"
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/OpenStandardsConceptualizeQuestion.java:123
 msgid "Identify direct threats"
@@ -4735,8 +4735,8 @@ msgid "Marine Deep Benthic - Deep Sea Vents (Rifts/Seeps)"
 msgstr "Perairan Laut Dalam – Lubang Laut Dalam (Celah/Resapan)"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:118
-msgid "Marine Deep Benthic - Hadal/Deep Sea Trench (>6,000 m)"
-msgstr "Perairan Laut Dalam – Palung Laut Dalam/Hadal (>6.000 m)"
+msgid "Marine Deep Benthic - Hadal/Deep Sea Trench (&gt;6,000 m)"
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:119
 msgid "Marine Deep Benthic - Seamount"
@@ -4935,8 +4935,8 @@ msgid "Menu|2. Plan Actions and Monitoring"
 msgstr "2. Rencanakan Tindakan dan Pemantauan "
 
 #: Miradi/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:53
-msgid "Menu|3. Implement Actions &  Monitoring"
-msgstr "3. Laksanakan Tindakan & Pemantauan "
+msgid "Menu|3. Implement Actions and Monitoring"
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/OpenStandardsAnalyzeUseAndAdaptQuestion.java:53
 msgid "Menu|4. Analyze, Use, Adapt"
@@ -6125,7 +6125,7 @@ msgid "Share feedback formally or informally"
 msgstr "Berikan umpan balik secara formal atau tidak formal "
 
 #: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:51
-msgid "Share success & failures with other teams"
+msgid "Share success &amp; failures with other teams"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:606
@@ -8212,8 +8212,8 @@ msgid "Updating locations..."
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:43
-msgid "Use other's communication products"
-msgstr "Gunakan produk komunikasi pihak lain "
+msgid "Use other&apos;s communication products"
+msgstr ""
 
 #: Miradi/source/org/miradi/utils/UserDefinedFileFilter.java:49
 msgid "User Defined Extension"
@@ -17355,8 +17355,8 @@ msgid ""
 "Goals, strategies, assumptions, andobjectives</h1><h2>Goals</"
 "h2><p>Developing a clear idea of what you would like to accomplish is the "
 "essential first part ofputting together your action plan. <strong>Goals</"
-"strong> are linked to your project's conservation targets andrepresent the "
-"desired status of the targets over the long-term -- they are formal "
+"strong> are linked to your project&apos;s conservation targets andrepresent "
+"the desired status of the targets over the long-term -- they are formal "
 "statements ofthe ultimate impacts you hope to achieve. A good goal meets the "
 "criteria of being <i>linked totargets, impact oriented, measurable, time "
 "limited, and specific</i>.</p><h2>Strategies</h2><p>Once you determine what "
@@ -32259,6 +32259,18 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "Identify \"key factors\" and draft strategies"
+#~ msgstr "Kenali \"faktor kunci\" dan rancangan strategi "
+
+#~ msgid "Marine Deep Benthic - Hadal/Deep Sea Trench (>6,000 m)"
+#~ msgstr "Perairan Laut Dalam – Palung Laut Dalam/Hadal (>6.000 m)"
+
+#~ msgid "Menu|3. Implement Actions &  Monitoring"
+#~ msgstr "3. Laksanakan Tindakan & Pemantauan "
+
+#~ msgid "Use other's communication products"
+#~ msgstr "Gunakan produk komunikasi pihak lain "
 
 #~ msgid "Save %s"
 #~ msgstr "Simpan %s "
