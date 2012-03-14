@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-14 11:08-0500\n"
+"POT-Creation-Date: 2012-03-14 13:54-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -5083,7 +5083,7 @@ msgstr ""
 msgid "Nov"
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:170
+#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:171
 msgid "Obj"
 msgstr "分目标 \t\t"
 
@@ -5132,7 +5132,7 @@ msgstr ""
 msgid "Objectives:"
 msgstr "分目标组： \t\t"
 
-#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:170
+#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:171
 msgid "Objs"
 msgstr "分目标组 \t\t"
 
@@ -5943,7 +5943,7 @@ msgid "Share feedback formally or informally"
 msgstr "正式地或者非正式地共享反馈信息 \t\t"
 
 #: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:51
-msgid "Share success &amp; failures with other teams"
+msgid "Share success and failures with other teams"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:606

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-14 11:08-0500\n"
+"POT-Creation-Date: 2012-03-14 13:54-0500\n"
 "PO-Revision-Date: 2011-03-28 15:06-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -5266,7 +5266,7 @@ msgstr ""
 msgid "Nov"
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:170
+#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:171
 msgid "Obj"
 msgstr "Meta"
 
@@ -5318,7 +5318,7 @@ msgstr ""
 msgid "Objectives:"
 msgstr "Metas:"
 
-#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:170
+#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:171
 msgid "Objs"
 msgstr "Metas"
 
@@ -6165,7 +6165,7 @@ msgid "Share feedback formally or informally"
 msgstr "Compartir comentarios de modo formal o informal"
 
 #: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:51
-msgid "Share success &amp; failures with other teams"
+msgid "Share success and failures with other teams"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:606
