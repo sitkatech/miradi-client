@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-12 16:52-0500\n"
+"POT-Creation-Date: 2012-03-14 11:08-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -4046,8 +4046,8 @@ msgid "IUCN Redlist Species"
 msgstr "Види червоного списку IUCN"
 
 #: Miradi/source/org/miradi/questions/OpenStandardsPlanActionsAndMonitoringQuestion.java:84
-msgid "Identify \"key factors\" and draft strategies"
-msgstr "Ідентифікувати \"ключові фактори\" і проекти стратегій"
+msgid "Identify &quot;key factors&quot; and draft strategies"
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/OpenStandardsConceptualizeQuestion.java:123
 msgid "Identify direct threats"
@@ -4777,9 +4777,8 @@ msgid "Marine Deep Benthic - Deep Sea Vents (Rifts/Seeps)"
 msgstr "Морська Глибинна Бентична - Глибинні морські кратери (Тріщини)"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:118
-msgid "Marine Deep Benthic - Hadal/Deep Sea Trench (>6,000 m)"
+msgid "Marine Deep Benthic - Hadal/Deep Sea Trench (&gt;6,000 m)"
 msgstr ""
-"Морська Глибинна Бентична - Абіссальний/Глибока Морська котловина (>6,000 м)"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:119
 msgid "Marine Deep Benthic - Seamount"
@@ -4977,8 +4976,8 @@ msgid "Menu|2. Plan Actions and Monitoring"
 msgstr "Menu|2. Плановані дії і моніторинг"
 
 #: Miradi/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:53
-msgid "Menu|3. Implement Actions &  Monitoring"
-msgstr "Menu|3. Реалізувати дії і моніторинг"
+msgid "Menu|3. Implement Actions and Monitoring"
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/OpenStandardsAnalyzeUseAndAdaptQuestion.java:53
 msgid "Menu|4. Analyze, Use, Adapt"
@@ -6165,7 +6164,7 @@ msgid "Share feedback formally or informally"
 msgstr "Розподіляти зворотню реакцію формально і неформально"
 
 #: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:51
-msgid "Share success & failures with other teams"
+msgid "Share success &amp; failures with other teams"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:606
@@ -8245,8 +8244,8 @@ msgid "Updating locations..."
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:43
-msgid "Use other's communication products"
-msgstr "Використати інші комунікаційні продукти"
+msgid "Use other&apos;s communication products"
+msgstr ""
 
 #: Miradi/source/org/miradi/utils/UserDefinedFileFilter.java:49
 msgid "User Defined Extension"
@@ -17324,8 +17323,8 @@ msgid ""
 "Goals, strategies, assumptions, andobjectives</h1><h2>Goals</"
 "h2><p>Developing a clear idea of what you would like to accomplish is the "
 "essential first part ofputting together your action plan. <strong>Goals</"
-"strong> are linked to your project's conservation targets andrepresent the "
-"desired status of the targets over the long-term -- they are formal "
+"strong> are linked to your project&apos;s conservation targets andrepresent "
+"the desired status of the targets over the long-term -- they are formal "
 "statements ofthe ultimate impacts you hope to achieve. A good goal meets the "
 "criteria of being <i>linked totargets, impact oriented, measurable, time "
 "limited, and specific</i>.</p><h2>Strategies</h2><p>Once you determine what "
@@ -33924,6 +33923,20 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid "Identify \"key factors\" and draft strategies"
+#~ msgstr "Ідентифікувати \"ключові фактори\" і проекти стратегій"
+
+#~ msgid "Marine Deep Benthic - Hadal/Deep Sea Trench (>6,000 m)"
+#~ msgstr ""
+#~ "Морська Глибинна Бентична - Абіссальний/Глибока Морська котловина (>6,000 "
+#~ "м)"
+
+#~ msgid "Menu|3. Implement Actions &  Monitoring"
+#~ msgstr "Menu|3. Реалізувати дії і моніторинг"
+
+#~ msgid "Use other's communication products"
+#~ msgstr "Використати інші комунікаційні продукти"
 
 #~ msgid "Save %s"
 #~ msgstr "Зберегти %s"
