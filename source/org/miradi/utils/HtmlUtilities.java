@@ -210,7 +210,7 @@ public class HtmlUtilities
 		trimmedText = replaceStartBrTagsWithEmptyBrTags(trimmedText);
 		trimmedText = getWithoutSpacesAfterXmlElements(trimmedText);
 		// NOTE: Shef does not encode/decode apostrophes as we need for proper XML
-		trimmedText = XmlUtilities2.getXmlEncodedApostrophes(trimmedText);
+		trimmedText = XmlUtilities2.convertXmlTextToHtml(trimmedText);
 		ensureNoCloseBrTags(trimmedText);
 		
 		return trimmedText;
