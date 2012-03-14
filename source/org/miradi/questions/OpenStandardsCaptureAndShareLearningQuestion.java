@@ -48,7 +48,7 @@ public class OpenStandardsCaptureAndShareLearningQuestion extends DynamicChoiceW
 		processStep5cChoiceItem.addChild(new ChoiceItem("ConductEvaluationsAndOrAuditsAtAppropriateTimesDuringTheProjectCycle", EAM.text("Conduct evaluations and/or audits"), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_5C_FILENAME)));
 		processStep5cChoiceItem.addChild(new ChoiceItem("DemonstrateCommitmentFromLeadersToLearningAndInnovation", EAM.text("Demonstrate commitment to learning"), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_5C_FILENAME)));
 		processStep5cChoiceItem.addChild(new ChoiceItem("ProvideASafeEnvironmentForEncouragingExperimentation", EAM.text("Provide a safe environment for experimentation"), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_5C_FILENAME)));
-		processStep5cChoiceItem.addChild(new ChoiceItem("ShareSuccessAndFailuresWithPractitionersAroundTheWorld", EAM.text("Share success &amp; failures with other teams"), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_5C_FILENAME)));
+		processStep5cChoiceItem.addChild(new ChoiceItem("ShareSuccessAndFailuresWithPractitionersAroundTheWorld", EAM.text("Share success and failures with other teams"), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_5C_FILENAME)));
 
 		return headerChoiceItem;
 	}
