@@ -64,7 +64,7 @@ public class VariableHeightTreeCellRenderer extends DefaultTreeCellRenderer
 	@Override
 	public String getText()
 	{
-		return XmlUtilities2.getXmlDecodedApostrophes(super.getText());
+		return XmlUtilities2.convertXmlTextToHtml(super.getText());
 	}
 	
 	private TreeTableWithRowHeightSaver treeTable;

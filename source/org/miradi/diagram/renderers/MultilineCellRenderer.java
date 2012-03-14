@@ -77,7 +77,7 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 
 	protected void setHtmlFormViewerText(String formattedLabel)
 	{
-		formattedLabel = XmlUtilities2.getXmlDecodedApostrophes(formattedLabel);
+		formattedLabel = XmlUtilities2.convertXmlTextToHtml(formattedLabel);
 		htmlFormViewer.setText(formattedLabel);
 	}
 	
