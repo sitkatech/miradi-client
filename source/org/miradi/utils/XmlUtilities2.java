@@ -84,9 +84,9 @@ public class XmlUtilities2
 		if (value == null)
 			return;
 		
-		String valueToTest = value;
-		valueToTest = HtmlUtilities.stripAllHtmlTags(valueToTest);
-		ensureValidXml(valueToTest);
+		String valueWithoutHtmlTags = value;
+		valueWithoutHtmlTags = HtmlUtilities.stripAllHtmlTags(valueWithoutHtmlTags);
+		ensureValidXml(valueWithoutHtmlTags);
 	}
 	
 	private static void ensureValidXml(final String value)
