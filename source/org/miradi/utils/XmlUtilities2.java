@@ -80,7 +80,7 @@ public class XmlUtilities2
 	public static void ensureValidXmlLabel(final String value)
 	{
 		if (value != null && !isValidXml(value))
-			throw new RuntimeException("Invalid xml ChoiceItem label =" + value);
+			throw new RuntimeException("Invalid xml value =" + value);
 	}
 	
 	public static boolean isValidXml(final String value)
