@@ -50,8 +50,8 @@ public class TwoLevelQuestion extends DynamicChoiceQuestion
 			{
 				final TwoLevelEntry twoLevelEntry = twoLevelEntries[i];
 				String code = twoLevelEntry.getEntryCode();
-				String label = getSafeEncodedValue(twoLevelEntry.getEntryLabel());
-				String description  = getSafeEncodedValue(twoLevelEntry.getDescription());
+				String label = getSafeXmlEncodedValue(twoLevelEntry.getEntryLabel());
+				String description  = getSafeXmlEncodedValue(twoLevelEntry.getDescription());
 				ChoiceItem choice = createChoiceItem(code, label, description, twoLevelEntry.getLongDescription());
 				choice.setSelectable(twoLevelEntry.isSelectable());
 				chocies.add(choice);
@@ -66,7 +66,7 @@ public class TwoLevelQuestion extends DynamicChoiceQuestion
 		}
 	}
 
-	protected String getSafeEncodedValue(final String value)
+	protected String getSafeXmlEncodedValue(final String value)
 	{
 		if (XmlUtilities2.hasEncoded(value))
 			throw new RuntimeException("Value in TwoLevelQuestion is already encoded, value= "+ value);
