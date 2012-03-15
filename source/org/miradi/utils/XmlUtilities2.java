@@ -70,13 +70,6 @@ public class XmlUtilities2
 		return decodeApostrophes(value);
 	}
 
-	private static void ensureValidXmlExceptForHtmlTags(final String value)
-	{
-		String valueToTest = value;
-		valueToTest = HtmlUtilities.stripAllHtmlTags(valueToTest);
-		ensureValidXml(valueToTest);
-	}
-
 	private static String decodeApostrophes(String value)
 	{
 		value = value.replaceAll("&#39;", "'");
@@ -84,6 +77,13 @@ public class XmlUtilities2
 		value = value.replaceAll("&apos;", "'");
 		
 		return value;
+	}
+	
+	private static void ensureValidXmlExceptForHtmlTags(final String value)
+	{
+		String valueToTest = value;
+		valueToTest = HtmlUtilities.stripAllHtmlTags(valueToTest);
+		ensureValidXml(valueToTest);
 	}
 	
 	public static void ensureValidXml(final String value)
