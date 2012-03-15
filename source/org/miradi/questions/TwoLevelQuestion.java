@@ -66,7 +66,7 @@ public class TwoLevelQuestion extends DynamicChoiceQuestion
 		}
 	}
 
-	protected String getSafeXmlEncodedValue(final String value)
+	private String getSafeXmlEncodedValue(final String value)
 	{
 		if (XmlUtilities2.hasEncoded(value))
 			throw new RuntimeException("Value in TwoLevelQuestion is already encoded, value= "+ value);
