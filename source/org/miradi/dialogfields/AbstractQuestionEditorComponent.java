@@ -41,6 +41,7 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.FillerLabel;
 import org.miradi.utils.FlexibleWidthHtmlViewer;
+import org.miradi.utils.XmlUtilities2;
 
 import com.jhlabs.awt.BasicGridLayout;
 import com.jhlabs.awt.GridLayoutPlus;
@@ -220,7 +221,8 @@ abstract public class AbstractQuestionEditorComponent extends SavebleComponent
 			try
 			{
 				JToggleButton item = (JToggleButton) event.getSource();
-				ChoiceItem choiceItem = getQuestion().findChoiceByLabel(item.getText());
+				final String encodedToMatchValueUsedToConstructChoiceItem = XmlUtilities2.getXmlEncoded(item.getText());
+				ChoiceItem choiceItem = getQuestion().findChoiceByLabel(encodedToMatchValueUsedToConstructChoiceItem);
 				toggleButtonStateChanged(choiceItem, item.isSelected());
 			}
 			catch (Exception e)
