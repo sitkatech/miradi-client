@@ -79,17 +79,20 @@ public class XmlUtilities2
 		return value;
 	}
 	
-	private static void ensureValidXmlExceptForHtmlTags(final String value)
+	public static void ensureValidXmlExceptForHtmlTags(final String value)
 	{
+		if (value == null)
+			return;
+		
 		String valueToTest = value;
 		valueToTest = HtmlUtilities.stripAllHtmlTags(valueToTest);
 		ensureValidXml(valueToTest);
 	}
 	
-	public static void ensureValidXml(final String value)
+	private static void ensureValidXml(final String value)
 	{
 		//NOTE: this safety mechanism might be a speed concern
-		if (value != null && !isValidXml(value))
+		if (!isValidXml(value))
 			throw new RuntimeException("Invalid xml value =" + value);
 	}
 	
