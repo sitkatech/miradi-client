@@ -63,9 +63,18 @@ public class XmlUtilities2
 		return value.replaceAll("'", "&apos;");
 	}
 	
-	public static String convertXmlTextToHtml(String value)
+	public static String convertXmlTextToHtml(final String value)
 	{
+		ensureValidXmlExceptForHtmlTags(value);
+		
 		return decodeApostrophes(value);
+	}
+
+	private static void ensureValidXmlExceptForHtmlTags(final String value)
+	{
+		String valueToTest = value;
+		valueToTest = HtmlUtilities.stripAllHtmlTags(valueToTest);
+		ensureValidXmlLabel(valueToTest);
 	}
 
 	private static String decodeApostrophes(String value)
@@ -79,6 +88,7 @@ public class XmlUtilities2
 	
 	public static void ensureValidXmlLabel(final String value)
 	{
+		//NOTE: this safety mechanism might be a speed concern
 		if (value != null && !isValidXml(value))
 			throw new RuntimeException("Invalid xml value =" + value);
 	}
