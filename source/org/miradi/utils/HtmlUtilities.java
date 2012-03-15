@@ -150,7 +150,7 @@ public class HtmlUtilities
 		return "<\\/\\s*" + tag + "\\s*>";
 	}
 	
-	private static String replaceAll(final String regex, String text, final String replacement)
+	private static String replaceAll(final String regex, final String text, final String replacement)
 	{
 		final Pattern compiledRegex = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
 		
@@ -178,10 +178,11 @@ public class HtmlUtilities
 	
 	public static String getWithoutSpacesAfterXmlElements(final String text)
 	{
-		final String regex = "(<.+>) +";
-		final Pattern compiledRegex = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
+		String result = replaceAll(" +(<.+>)", text, " $1");
+		result = replaceAll("(<.+>) +", result, "$1 ");
+		result = replaceAll("(<br/>) +", result, "$1");
 		
-		return compiledRegex.matcher(text).replaceAll("$1");
+		return result;
 	}
 
 	public static String getNormalizedAndSanitizedHtmlText(final String text, String[] allowedHtmlTags)
