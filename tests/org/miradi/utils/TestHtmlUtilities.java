@@ -55,6 +55,23 @@ public class TestHtmlUtilities extends MiradiTestCase
 		assertEquals("wrong new lines inserted?", "we&apos;ll", EditableHtmlPane.getNormalizedAndSanitizedHtmlText(htmlText));
 	}
 	
+	public void testSpacesAroundElementShouldNotBeCompletelyRemoved()
+	{
+		verifySpaceRemovalAroundElement("X</b>Y", "X</b>Y");
+		verifySpaceRemovalAroundElement("X</b> Y", "X</b> Y");
+		verifySpaceRemovalAroundElement("X</b> Y", "X</b>   Y");
+		verifySpaceRemovalAroundElement("X </b>Y", "X    </b>Y");
+		verifySpaceRemovalAroundElement("X </b> Y", "X    </b>   Y");
+		verifySpaceRemovalAroundElement("X</b>", "X</b>");
+		verifySpaceRemovalAroundElement("X</b>", "X</b>   ");
+		verifySpaceRemovalAroundElement("X </b>", "X    </b>   ");
+	}
+
+	private void verifySpaceRemovalAroundElement(final String expectedValue, final String htmlText)
+	{
+		assertEquals("incorrect spacing around element?", expectedValue, EditableHtmlPane.getNormalizedAndSanitizedHtmlText(htmlText));
+	}
+	
 	public void testGetWithoutSpacesAfterXmlElements()
 	{
 		final String htmlText = "<br/> sample value <br/>";
