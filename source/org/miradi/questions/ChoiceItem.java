@@ -87,7 +87,7 @@ public class ChoiceItem implements Comparable<Object>
 		descriptionProvider = descriptionProviderToUse;
 		selectable = true;
 		
-		XmlUtilities2.ensureValidXmlLabel(label);
+		XmlUtilities2.ensureValidXml(label);
 	}
 
 	public String getCode()

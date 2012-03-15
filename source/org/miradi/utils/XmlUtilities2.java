@@ -74,7 +74,7 @@ public class XmlUtilities2
 	{
 		String valueToTest = value;
 		valueToTest = HtmlUtilities.stripAllHtmlTags(valueToTest);
-		ensureValidXmlLabel(valueToTest);
+		ensureValidXml(valueToTest);
 	}
 
 	private static String decodeApostrophes(String value)
@@ -86,7 +86,7 @@ public class XmlUtilities2
 		return value;
 	}
 	
-	public static void ensureValidXmlLabel(final String value)
+	public static void ensureValidXml(final String value)
 	{
 		//NOTE: this safety mechanism might be a speed concern
 		if (value != null && !isValidXml(value))
