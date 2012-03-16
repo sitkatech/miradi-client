@@ -88,6 +88,7 @@ public class ChoiceItem implements Comparable<Object>
 		selectable = true;
 		
 		XmlUtilities2.ensureValidXmlExceptForHtmlTags(label);
+		XmlUtilities2.ensureValidXmlExceptForHtmlTags(descriptionProvider.getDescription());
 	}
 
 	public String getCode()
