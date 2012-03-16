@@ -65,7 +65,7 @@ public class XmlUtilities2
 	
 	public static String convertXmlTextToHtml(final String value)
 	{
-		ensureValidXmlExceptForHtmlTags(value);
+		ensureValidXmlWithHtmlTags(value);
 		
 		return decodeApostrophes(value);
 	}
@@ -79,17 +79,17 @@ public class XmlUtilities2
 		return value;
 	}
 	
-	public static void ensureValidXmlExceptForHtmlTags(final String value)
+	public static void ensureValidXmlWithHtmlTags(final String value)
 	{
 		if (value == null)
 			return;
 		
 		String valueWithoutHtmlTags = value;
 		valueWithoutHtmlTags = HtmlUtilities.stripAllHtmlTags(valueWithoutHtmlTags);
-		ensureValidXml(valueWithoutHtmlTags);
+		ensureValidXmlWithNoHtmlTags(valueWithoutHtmlTags);
 	}
 	
-	private static void ensureValidXml(final String value)
+	private static void ensureValidXmlWithNoHtmlTags(final String value)
 	{
 		//NOTE: this safety mechanism might be a speed concern
 		if (!isValidXml(value))
