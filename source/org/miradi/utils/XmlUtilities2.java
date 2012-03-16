@@ -84,8 +84,7 @@ public class XmlUtilities2
 		if (value == null)
 			return;
 		
-		String valueWithoutHtmlTags = value;
-		valueWithoutHtmlTags = HtmlUtilities.stripAllHtmlTags(valueWithoutHtmlTags);
+		String valueWithoutHtmlTags = HtmlUtilities.stripAllHtmlTags(value);
 		//NOTE: this safety mechanism might be a speed concern
 		if (!isValidXmlWithNoHtmlTags(valueWithoutHtmlTags))
 			throw new RuntimeException("Invalid xml value =" + valueWithoutHtmlTags);
