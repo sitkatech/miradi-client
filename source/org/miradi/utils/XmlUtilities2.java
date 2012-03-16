@@ -92,11 +92,11 @@ public class XmlUtilities2
 	private static void ensureValidXmlWithNoHtmlTags(final String value)
 	{
 		//NOTE: this safety mechanism might be a speed concern
-		if (!isValidXml(value))
+		if (!isValidXmlWithNoHtmlTags(value))
 			throw new RuntimeException("Invalid xml value =" + value);
 	}
 	
-	public static boolean isValidXml(final String value)
+	public static boolean isValidXmlWithNoHtmlTags(final String value)
 	{
 		final String decodedValue = getXmlDecoded(value);
 		final String encodedValue = getXmlEncoded(decodedValue);
