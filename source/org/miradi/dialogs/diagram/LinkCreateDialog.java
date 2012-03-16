@@ -41,7 +41,7 @@ import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.dialogs.base.DialogWithButtonBar;
 import org.miradi.dialogs.fieldComponents.PanelButton;
-import org.miradi.dialogs.fieldComponents.PanelList;
+import org.miradi.dialogs.fieldComponents.ListWithHtmlRenderer;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
@@ -149,7 +149,7 @@ public class LinkCreateDialog extends DialogWithButtonBar implements ActionListe
 		}
 
 		Collections.sort(dropDownItems, new IgnoreCaseStringComparator());
-		UiList list = new PanelList(dropDownItems);
+		UiList list = new ListWithHtmlRenderer(dropDownItems);
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		return list;
 	}
