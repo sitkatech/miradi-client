@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-15 14:32-0500\n"
+"POT-Creation-Date: 2012-03-16 10:36-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -5037,7 +5037,7 @@ msgstr ""
 msgid "Not Effective"
 msgstr "无效的 "
 
-#: Miradi/source/org/miradi/objecthelpers/TaxonomyFileLoader.java:37
+#: Miradi/source/org/miradi/objecthelpers/TaxonomyFileLoader.java:38
 #: Miradi/source/org/miradi/questions/ThreatStressRatingChoiceQuestion.java:36
 #: Miradi/source/org/miradi/questions/StrategyImpactQuestion.java:37
 #: Miradi/source/org/miradi/questions/StatusConfidenceQuestion.java:35
