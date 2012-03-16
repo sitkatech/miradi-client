@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-16 10:36-0500\n"
+"POT-Creation-Date: 2012-03-16 11:33-0500\n"
 "PO-Revision-Date: 2011-04-05 11:46+0100\n"
 "Last-Translator: Emanuela Leonardi <e.leonardi@gmail.com>\n"
 "Language-Team: none\n"
@@ -3476,7 +3476,7 @@ msgstr "Entrer sous :"
 msgid "Enter New Name"
 msgstr "Entrer Nouveau nom"
 
-#: Miradi/source/org/miradi/views/diagram/doers/CreateNamedTaggedObjectSetDoer.java:47
+#: Miradi/source/org/miradi/views/diagram/doers/CreateNamedTaggedObjectSetDoer.java:48
 msgid "Enter Tag Name"
 msgstr "Entrer Nom balise"
 
@@ -8312,21 +8312,21 @@ msgstr "Non défini"
 msgid "Underline"
 msgstr "Souligner"
 
-#: Miradi/source/org/miradi/dialogfields/FactorTagListEditor.java:87
+#: Miradi/source/org/miradi/dialogfields/FactorTagListEditor.java:88
 msgid "Unexpected call to addListSelectionListener"
 msgstr "Appel inattendu vers addListSelectionListener"
 
 #: Miradi/source/org/miradi/dialogfields/AbstractQuestionBasedComponent.java:143
-#: Miradi/source/org/miradi/dialogfields/FactorTagListEditor.java:75
+#: Miradi/source/org/miradi/dialogfields/FactorTagListEditor.java:76
 msgid "Unexpected call to getText"
 msgstr "Appel inattendu vers getText"
 
-#: Miradi/source/org/miradi/dialogfields/FactorTagListEditor.java:93
+#: Miradi/source/org/miradi/dialogfields/FactorTagListEditor.java:94
 msgid "Unexpected call to removeListSelectionListener"
 msgstr "Appel inattendu vers  removeListSelectionListener"
 
 #: Miradi/source/org/miradi/dialogfields/AbstractQuestionBasedComponent.java:149
-#: Miradi/source/org/miradi/dialogfields/FactorTagListEditor.java:81
+#: Miradi/source/org/miradi/dialogfields/FactorTagListEditor.java:82
 msgid "Unexpected call to setText"
 msgstr "Appel inattendu vers  setText"
 
