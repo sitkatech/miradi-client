@@ -222,6 +222,9 @@ abstract public class AbstractQuestionEditorComponent extends SavebleComponent
 			{
 				JToggleButton item = (JToggleButton) event.getSource();
 				final String encodedToMatchValueUsedToConstructChoiceItem = XmlUtilities2.getXmlEncoded(item.getText());
+				//FIXME medium -  Should not be using label to find ChoiceItem.  This broke when it was not encoded and 
+				//can break again if label differs when going in vs coming out.
+				//Should be replaced with a better solution.  
 				ChoiceItem choiceItem = getQuestion().findChoiceByLabel(encodedToMatchValueUsedToConstructChoiceItem);
 				toggleButtonStateChanged(choiceItem, item.isSelected());
 			}
