@@ -113,7 +113,7 @@ abstract public class ObjectTreeTable extends TreeTableWithColumnWidthSaving imp
 	public static String getToolTipString(BaseObject object)
 	{
 		String typeName = EAM.fieldLabel(object.getType(), object.getTypeName());
-		return ("<html><b>" + typeName + "</b><br>") + object.getFullName();
+		return "<html><b>" + typeName + "</b><br>" + object.getFullName() + "</html>";
 	}
 	
 	public static Font createFristLevelFont(Font defaultFontToUse)
