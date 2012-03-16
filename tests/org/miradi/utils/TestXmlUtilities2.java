@@ -63,21 +63,21 @@ public class TestXmlUtilities2 extends MiradiTestCase
 
 	private void verifyValidXml()
 	{
-		assertTrue(XmlUtilities2.isValidXml("AB"));
-		assertTrue(XmlUtilities2.isValidXml("A&amp;B"));
-		assertTrue(XmlUtilities2.isValidXml("A&lt;B"));
-		assertTrue(XmlUtilities2.isValidXml("A&gt;B"));
-		assertTrue(XmlUtilities2.isValidXml("A&apos;B"));
-		assertTrue(XmlUtilities2.isValidXml("A&quot;B"));
+		assertTrue(XmlUtilities2.isValidXmlWithNoHtmlTags("AB"));
+		assertTrue(XmlUtilities2.isValidXmlWithNoHtmlTags("A&amp;B"));
+		assertTrue(XmlUtilities2.isValidXmlWithNoHtmlTags("A&lt;B"));
+		assertTrue(XmlUtilities2.isValidXmlWithNoHtmlTags("A&gt;B"));
+		assertTrue(XmlUtilities2.isValidXmlWithNoHtmlTags("A&apos;B"));
+		assertTrue(XmlUtilities2.isValidXmlWithNoHtmlTags("A&quot;B"));
 	}
 
 	private void verifyNotValidXml()
 	{
-		assertFalse(XmlUtilities2.isValidXml("A&B"));
-		assertFalse(XmlUtilities2.isValidXml("A<B"));
-		assertFalse(XmlUtilities2.isValidXml("A>B"));
-		assertFalse(XmlUtilities2.isValidXml("A'B"));
-		assertFalse(XmlUtilities2.isValidXml("A\"B"));
+		assertFalse(XmlUtilities2.isValidXmlWithNoHtmlTags("A&B"));
+		assertFalse(XmlUtilities2.isValidXmlWithNoHtmlTags("A<B"));
+		assertFalse(XmlUtilities2.isValidXmlWithNoHtmlTags("A>B"));
+		assertFalse(XmlUtilities2.isValidXmlWithNoHtmlTags("A'B"));
+		assertFalse(XmlUtilities2.isValidXmlWithNoHtmlTags("A\"B"));
 	}
 
 	public void testGetXmlDecoded()
