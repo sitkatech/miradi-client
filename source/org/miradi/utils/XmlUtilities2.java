@@ -86,14 +86,9 @@ public class XmlUtilities2
 		
 		String valueWithoutHtmlTags = value;
 		valueWithoutHtmlTags = HtmlUtilities.stripAllHtmlTags(valueWithoutHtmlTags);
-		ensureValidXmlWithNoHtmlTags(valueWithoutHtmlTags);
-	}
-	
-	private static void ensureValidXmlWithNoHtmlTags(final String value)
-	{
 		//NOTE: this safety mechanism might be a speed concern
-		if (!isValidXmlWithNoHtmlTags(value))
-			throw new RuntimeException("Invalid xml value =" + value);
+		if (!isValidXmlWithNoHtmlTags(valueWithoutHtmlTags))
+			throw new RuntimeException("Invalid xml value =" + valueWithoutHtmlTags);
 	}
 	
 	public static boolean isValidXmlWithNoHtmlTags(final String value)
