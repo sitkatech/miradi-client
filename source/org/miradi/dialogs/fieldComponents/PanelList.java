@@ -1,5 +1,4 @@
 /* 
-Copyright 2005-2009, Foundations of Success, Bethesda, Maryland 
 (on behalf of the Conservation Measures Partnership, "CMP") and 
 Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 
@@ -19,15 +18,23 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.fieldComponents;
 
+import java.util.Vector;
+
+import javax.swing.DefaultListCellRenderer;
+
 import org.martus.swing.UiList;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.utils.HtmlUtilities;
+import org.miradi.utils.XmlUtilities2;
 
 public class PanelList extends UiList
 {
-	public PanelList(Object[] objects)
+	public PanelList(Vector list)
 	{
-		super(objects);
+		super(list);
+		
+		setCellRenderer(new HtmlRenderer());
 		setFont(getMainWindow().getUserDataPanelFont());
 	}
 	
@@ -35,5 +42,18 @@ public class PanelList extends UiList
 	public MainWindow getMainWindow()
 	{
 		return EAM.getMainWindow();
+	}
+	
+	private class HtmlRenderer extends DefaultListCellRenderer
+	{
+		@Override
+		public String getText()
+		{
+			String text = super.getText();
+			text = XmlUtilities2.convertXmlTextToHtml(text);
+			text = HtmlUtilities.wrapInHtmlTags(text);
+			
+			return text;
+		}
 	}
 }
