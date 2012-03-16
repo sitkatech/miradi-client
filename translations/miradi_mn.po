@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-15 14:32-0500\n"
+"POT-Creation-Date: 2012-03-16 10:36-0500\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -5228,7 +5228,7 @@ msgstr ""
 msgid "Not Effective"
 msgstr "Үр ашиггүй"
 
-#: Miradi/source/org/miradi/objecthelpers/TaxonomyFileLoader.java:37
+#: Miradi/source/org/miradi/objecthelpers/TaxonomyFileLoader.java:38
 #: Miradi/source/org/miradi/questions/ThreatStressRatingChoiceQuestion.java:36
 #: Miradi/source/org/miradi/questions/StrategyImpactQuestion.java:37
 #: Miradi/source/org/miradi/questions/StatusConfidenceQuestion.java:35

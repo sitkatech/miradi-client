@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-15 14:32-0500\n"
+"POT-Creation-Date: 2012-03-16 10:36-0500\n"
 "PO-Revision-Date: 2011-03-28 15:06-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -5220,7 +5220,7 @@ msgstr ""
 msgid "Not Effective"
 msgstr "No efectivo "
 
-#: Miradi/source/org/miradi/objecthelpers/TaxonomyFileLoader.java:37
+#: Miradi/source/org/miradi/objecthelpers/TaxonomyFileLoader.java:38
 #: Miradi/source/org/miradi/questions/ThreatStressRatingChoiceQuestion.java:36
 #: Miradi/source/org/miradi/questions/StrategyImpactQuestion.java:37
 #: Miradi/source/org/miradi/questions/StatusConfidenceQuestion.java:35
