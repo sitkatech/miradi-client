@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-16 13:27-0500\n"
+"POT-Creation-Date: 2012-03-16 14:22-0500\n"
 "PO-Revision-Date: 2011-03-28 15:06-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -8162,21 +8162,21 @@ msgstr "Sin definir"
 msgid "Underline"
 msgstr "Subrayar "
 
-#: Miradi/source/org/miradi/dialogfields/FactorTagListEditor.java:88
+#: Miradi/source/org/miradi/dialogfields/FactorTagListEditor.java:89
 msgid "Unexpected call to addListSelectionListener"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/AbstractQuestionBasedComponent.java:143
-#: Miradi/source/org/miradi/dialogfields/FactorTagListEditor.java:76
+#: Miradi/source/org/miradi/dialogfields/FactorTagListEditor.java:77
 msgid "Unexpected call to getText"
 msgstr "Llamada inesperada a getText"
 
-#: Miradi/source/org/miradi/dialogfields/FactorTagListEditor.java:94
+#: Miradi/source/org/miradi/dialogfields/FactorTagListEditor.java:95
 msgid "Unexpected call to removeListSelectionListener"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/AbstractQuestionBasedComponent.java:149
-#: Miradi/source/org/miradi/dialogfields/FactorTagListEditor.java:82
+#: Miradi/source/org/miradi/dialogfields/FactorTagListEditor.java:83
 msgid "Unexpected call to setText"
 msgstr "Llamada inesperada a setText"
 
