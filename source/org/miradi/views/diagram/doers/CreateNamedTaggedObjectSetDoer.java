@@ -28,6 +28,7 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.TaggedObjectSet;
+import org.miradi.utils.XmlUtilities2;
 import org.miradi.views.ObjectsDoer;
 
 public class CreateNamedTaggedObjectSetDoer extends ObjectsDoer
@@ -45,6 +46,7 @@ public class CreateNamedTaggedObjectSetDoer extends ObjectsDoer
 			return;
 		
 		String newTagName = new JOptionPane().showInputDialog(EAM.text("Enter Tag Name"));
+		newTagName = XmlUtilities2.getXmlEncoded(newTagName);
 		boolean dialogWasCanceled = (newTagName == null);
 		if (dialogWasCanceled)
 			return;
