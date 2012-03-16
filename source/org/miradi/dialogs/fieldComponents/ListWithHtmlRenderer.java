@@ -28,9 +28,9 @@ import org.miradi.main.MainWindow;
 import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.XmlUtilities2;
 
-public class PanelList extends UiList
+public class ListWithHtmlRenderer extends UiList
 {
-	public PanelList(Vector list)
+	public ListWithHtmlRenderer(Vector list)
 	{
 		super(list);
 		
