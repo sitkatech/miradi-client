@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-16 11:33-0500\n"
+"POT-Creation-Date: 2012-03-16 13:27-0500\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -3204,7 +3204,7 @@ msgstr "Тодорхой арга зүй, үүрэг даалгавар, ба х
 msgid "Details"
 msgstr "Дэлгэрэнгүй байдал"
 
-#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:111
+#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:112
 msgid "Details:"
 msgstr "Дэлгэрэнгүй байдал:"
 
@@ -3906,7 +3906,7 @@ msgstr "Зорилгууд"
 msgid "Goals Only"
 msgstr "Зөвхөн зорилгууд"
 
-#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:99
+#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:100
 msgid "Goals:"
 msgstr "Зорилгууд:"
 
@@ -4222,7 +4222,7 @@ msgstr "Шалгуур үзүүлэлтүүд"
 msgid "Indicators Only"
 msgstr "Зөвхөн шалгуур үзүүлэлтүүд"
 
-#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:93
+#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:94
 msgid "Indicators:"
 msgstr "Шалгуур үзүүлэлтүүд:"
 
@@ -5320,7 +5320,7 @@ msgstr "Зөвхөн зорилтууд"
 msgid "Objectives contain Strategies"
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:105
+#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:106
 msgid "Objectives:"
 msgstr "Зорилтууд:"
 
