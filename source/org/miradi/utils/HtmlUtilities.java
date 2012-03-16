@@ -181,6 +181,7 @@ public class HtmlUtilities
 		String result = replaceAll(" +(<.+>)", text, " $1");
 		result = replaceAll("(<.+>) +", result, "$1 ");
 		result = replaceAll("(<br/>) +", result, "$1");
+		result = replaceAll(" +(<br/>)", result, "$1");
 		
 		return result;
 	}

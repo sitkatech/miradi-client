@@ -46,7 +46,7 @@ public class TestHtmlUtilities extends MiradiTestCase
 		  "\t</body>\n" +
 		  "	</html>\n";
 
-		assertEquals("wrong new lines inserted?", "text on line 1 text on line 2 <br/>text on line 3", EditableHtmlPane.getNormalizedAndSanitizedHtmlText(htmlText));
+		assertEquals("wrong new lines inserted?", "text on line 1 text on line 2<br/>text on line 3", EditableHtmlPane.getNormalizedAndSanitizedHtmlText(htmlText));
 	}
 	
 	public void testIncorrectEncodingOfApostrophe()
@@ -65,6 +65,7 @@ public class TestHtmlUtilities extends MiradiTestCase
 		verifySpaceRemovalAroundElement("X</b>", "X</b>");
 		verifySpaceRemovalAroundElement("X</b>", "X</b>   ");
 		verifySpaceRemovalAroundElement("X </b>", "X    </b>   ");
+		verifySpaceRemovalAroundElement("X<br/>Y", "X <br/>Y");
 	}
 
 	private void verifySpaceRemovalAroundElement(final String expectedValue, final String htmlText)
@@ -75,7 +76,7 @@ public class TestHtmlUtilities extends MiradiTestCase
 	public void testGetWithoutSpacesAfterXmlElements()
 	{
 		final String htmlText = "<br/> sample value <br/>";
-		final String expectedValue = "<br/>sample value <br/>";
+		final String expectedValue = "<br/>sample value<br/>";
 
 		assertEquals("Trailing white space was not removed?", expectedValue, HtmlUtilities.getWithoutSpacesAfterXmlElements(htmlText));
 	}
