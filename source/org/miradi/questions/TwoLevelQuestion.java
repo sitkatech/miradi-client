@@ -52,7 +52,7 @@ public class TwoLevelQuestion extends DynamicChoiceQuestion
 				String code = twoLevelEntry.getEntryCode();
 				String label = getSafeXmlEncodedValue(twoLevelEntry.getEntryLabel());
 				String description  = getSafeXmlEncodedValue(twoLevelEntry.getDescription());
-				String longDescription = twoLevelEntry.getLongDescription();
+				String longDescription = getSafeXmlEncodedValue(twoLevelEntry.getLongDescription());
 				ChoiceItem choice = createChoiceItem(code, label, description, longDescription);
 				choice.setSelectable(twoLevelEntry.isSelectable());
 				chocies.add(choice);

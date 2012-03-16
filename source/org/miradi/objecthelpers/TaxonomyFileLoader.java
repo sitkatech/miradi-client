@@ -22,6 +22,7 @@ package org.miradi.objecthelpers;
 import java.util.Vector;
 
 import org.miradi.main.EAM;
+import org.miradi.utils.HtmlUtilities;
 
 public class TaxonomyFileLoader extends TwoLevelFileLoader
 {
@@ -47,7 +48,7 @@ public class TaxonomyFileLoader extends TwoLevelFileLoader
 			String code = (String) row.get(0);
 			String level1Descriptor = (String) row.get(1);
 			String level2Descriptor = (String) row.get(2);
-			String longDescription = (String) row.get(3) + "<br>" + (String) row.get(4) + "<br>" + (String) row.get(5);
+			String longDescription = (String) row.get(3) + HtmlUtilities.NEW_LINE + (String) row.get(4) + HtmlUtilities.NEW_LINE + (String) row.get(5);
 
 			if(!getLevel1Code(code).equals(prevLevel1Code))
 			{
