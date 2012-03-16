@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-16 14:22-0500\n"
+"POT-Creation-Date: 2012-03-16 14:58-0500\n"
 "PO-Revision-Date: 2011-04-05 11:46+0100\n"
 "Last-Translator: Emanuela Leonardi <e.leonardi@gmail.com>\n"
 "Language-Team: none\n"
@@ -879,7 +879,7 @@ msgstr ""
 "<b>détruire ou d'éliminer</b> la cible ou de réduire sa population de <b>71-"
 "100%</b> dans dix ans ou trois générations.</html>"
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:108
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:109
 msgid ""
 "<html><br><em><strong>HINT:</strong> You can quickly add links by selecting "
 "both factors in the diagram before hitting the Create Link button. <br>On "
@@ -2513,7 +2513,7 @@ msgstr "Règles groupées"
 #: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:54
 #: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:66
 #: Miradi/source/org/miradi/dialogs/confirm/ConfirmDialogTemplate.java:51
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:241
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:242
 #: Miradi/source/org/miradi/dialogs/ImageExportScaleDialog.java:80
 msgid "Button|Cancel"
 msgstr "Annuler"
@@ -2564,7 +2564,7 @@ msgstr "Déplacer"
 msgid "Button|No"
 msgstr "Non"
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:238
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:239
 msgid "Button|OK"
 msgstr "OK"
 
@@ -4225,7 +4225,7 @@ msgstr "À l'avant"
 msgid "In Progress"
 msgstr "En cours"
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:258
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:259
 msgid "Incomplete Link"
 msgstr "Lien incomplet"
 
@@ -4307,7 +4307,7 @@ msgstr "Insérer"
 msgid "Insert FTE Fraction"
 msgstr "Insérer fraction ETP"
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:227
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:228
 msgid "Insert Factor Link dialog|No Label Specified"
 msgstr "Aucune étiquette spécifiée"
 
@@ -4477,7 +4477,7 @@ msgstr "(Source de financement non définie)"
 msgid "Label|(Undefined Resource)"
 msgstr "(Ressource non définie)"
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:97
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:98
 msgid "Label|--- affects -->"
 msgstr "--- affecte-->"
 
@@ -8095,7 +8095,7 @@ msgstr "Propriétés de l'attribut écologique important"
 msgid "Title|Legacy TNC Strategy Editor Ranking Properties"
 msgstr "Propriétés de classement editeur de la stratégie Legacy TNC"
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:64
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:65
 msgid "Title|Link Create Dialog"
 msgstr "Lien créer boîte de dialogue"
 
@@ -8763,7 +8763,7 @@ msgstr ""
 "cette raison il/elle n'apparaîtra plus dans la liste des membres de l'équipe "
 "dans l'affichage résumé."
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:259
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:260
 msgid "You must select one item in each of the two lists"
 msgstr "Vous devez sélectionner un élément dans chacune des deux listes"
 

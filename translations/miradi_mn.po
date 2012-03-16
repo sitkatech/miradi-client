@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-16 14:22-0500\n"
+"POT-Creation-Date: 2012-03-16 14:58-0500\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -868,7 +868,7 @@ msgstr ""
 "эсвэл устгах </b> магадлалтай, эсвэл түүнй тоо толгойг бууруулах <b>71-100%</"
 "b> арван жилйн дотор эсвэл гурван үе.</html>"
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:108
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:109
 msgid ""
 "<html><br><em><strong>HINT:</strong> You can quickly add links by selecting "
 "both factors in the diagram before hitting the Create Link button. <br>On "
@@ -2479,7 +2479,7 @@ msgstr "Багц Дүрэм"
 #: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:54
 #: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:66
 #: Miradi/source/org/miradi/dialogs/confirm/ConfirmDialogTemplate.java:51
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:241
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:242
 #: Miradi/source/org/miradi/dialogs/ImageExportScaleDialog.java:80
 msgid "Button|Cancel"
 msgstr "Товчлуур|Цуцлах"
@@ -2530,7 +2530,7 @@ msgstr "Товчлуур|Байрлал өөрчлөх"
 msgid "Button|No"
 msgstr "Товчлуур|Үгүй"
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:238
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:239
 msgid "Button|OK"
 msgstr "Товчлуур|Зөвшөөрөн сонгох"
 
@@ -4167,7 +4167,7 @@ msgstr "Урд тал"
 msgid "In Progress"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:258
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:259
 msgid "Incomplete Link"
 msgstr "Link бүрэн бус"
 
@@ -4247,7 +4247,7 @@ msgstr "Оруулах"
 msgid "Insert FTE Fraction"
 msgstr "FTE хэсгийг оруулах"
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:227
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:228
 msgid "Insert Factor Link dialog|No Label Specified"
 msgstr "Insert Factor Link dialog|No Label Specified"
 
@@ -4416,7 +4416,7 @@ msgstr "Хаяг|(Санхүүгийн эх үүсвэр тодорхой бус
 msgid "Label|(Undefined Resource)"
 msgstr "Хаяг|(Нөөц тодохрой бус)"
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:97
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:98
 msgid "Label|--- affects -->"
 msgstr "Хаяг|--- нөлөөлөх -->"
 
@@ -7968,7 +7968,7 @@ msgid "Title|Legacy TNC Strategy Editor Ranking Properties"
 msgstr ""
 "Гарчиг |TNC-ийн өвлөж ирсэн Стратегийн зэрэглэлийг Хянан Засварлах Properties"
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:64
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:65
 msgid "Title|Link Create Dialog"
 msgstr "Гарчиг|Харилуан ярилах цонх үүсгэх линк"
 
@@ -8637,7 +8637,7 @@ msgstr ""
 "Та энэ нөөцийг төслийн багаас хасаж байна, тиймээс Summary View дэх Багийн "
 "Гишүүдийн жагсаалтанд түүний нэр дахин гарч ирэхгүй. "
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:259
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:260
 msgid "You must select one item in each of the two lists"
 msgstr "Хоёр жагсаалтын тус бүрээс нэг зүйлийг Та сонгох ёстой."
 

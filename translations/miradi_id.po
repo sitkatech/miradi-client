@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-16 14:22-0500\n"
+"POT-Creation-Date: 2012-03-16 14:58-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -822,7 +822,7 @@ msgid ""
 "within ten years or three generations.</html>"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:108
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:109
 msgid ""
 "<html><br><em><strong>HINT:</strong> You can quickly add links by selecting "
 "both factors in the diagram before hitting the Create Link button. <br>On "
@@ -2421,7 +2421,7 @@ msgstr "Aturan Bundel"
 #: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:54
 #: Miradi/source/org/miradi/legacyprojects/DataUpgrader.java:66
 #: Miradi/source/org/miradi/dialogs/confirm/ConfirmDialogTemplate.java:51
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:241
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:242
 #: Miradi/source/org/miradi/dialogs/ImageExportScaleDialog.java:80
 msgid "Button|Cancel"
 msgstr "Batalkan "
@@ -2472,7 +2472,7 @@ msgstr "Pindahkan "
 msgid "Button|No"
 msgstr "Tidak "
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:238
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:239
 msgid "Button|OK"
 msgstr "OK "
 
@@ -4120,7 +4120,7 @@ msgstr "Di Depan "
 msgid "In Progress"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:258
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:259
 msgid "Incomplete Link"
 msgstr "Tautan Tidak Lengkap "
 
@@ -4201,7 +4201,7 @@ msgstr "Sisipkan "
 msgid "Insert FTE Fraction"
 msgstr "Sisipkan Pecahan FTE "
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:227
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:228
 msgid "Insert Factor Link dialog|No Label Specified"
 msgstr ""
 
@@ -4370,7 +4370,7 @@ msgstr "(Sumber Dana Tidak Jelas) "
 msgid "Label|(Undefined Resource)"
 msgstr " (Sumber Daya Tak Terdefinisi) "
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:97
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:98
 msgid "Label|--- affects -->"
 msgstr "--- mempengaruhi --> "
 
@@ -7903,7 +7903,7 @@ msgstr "Sifat-sifat Atribut Ekologi Kunci "
 msgid "Title|Legacy TNC Strategy Editor Ranking Properties"
 msgstr "Sifat-sifat Peringkat Editor Strategi TNC versi sebelumnya "
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:64
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:65
 msgid "Title|Link Create Dialog"
 msgstr "Dialog Membuat Tautan "
 
@@ -8563,7 +8563,7 @@ msgstr ""
 "Anda menghilangkan sumber daya ini dari tim proyek, sehingga tidak lagi "
 "muncul di daftar Anggota Tim dalam Tampilan Ringkasan"
 
-#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:259
+#: Miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:260
 msgid "You must select one item in each of the two lists"
 msgstr "Anda harus memilih satu butir dalam masing-masing dari kedua daftar. "
 
