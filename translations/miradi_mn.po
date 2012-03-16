@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-16 10:36-0500\n"
+"POT-Creation-Date: 2012-03-16 11:33-0500\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -3436,7 +3436,7 @@ msgstr "-ээр орох: "
 msgid "Enter New Name"
 msgstr "Шинэ нэр өгөх"
 
-#: Miradi/source/org/miradi/views/diagram/doers/CreateNamedTaggedObjectSetDoer.java:47
+#: Miradi/source/org/miradi/views/diagram/doers/CreateNamedTaggedObjectSetDoer.java:48
 msgid "Enter Tag Name"
 msgstr "Хаягийн нэрийг оруулах"
 
@@ -8184,21 +8184,21 @@ msgstr "Тогтоогдоогүй"
 msgid "Underline"
 msgstr "Үгийн доогуур зурах"
 
-#: Miradi/source/org/miradi/dialogfields/FactorTagListEditor.java:87
+#: Miradi/source/org/miradi/dialogfields/FactorTagListEditor.java:88
 msgid "Unexpected call to addListSelectionListener"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/AbstractQuestionBasedComponent.java:143
-#: Miradi/source/org/miradi/dialogfields/FactorTagListEditor.java:75
+#: Miradi/source/org/miradi/dialogfields/FactorTagListEditor.java:76
 msgid "Unexpected call to getText"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/FactorTagListEditor.java:93
+#: Miradi/source/org/miradi/dialogfields/FactorTagListEditor.java:94
 msgid "Unexpected call to removeListSelectionListener"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/AbstractQuestionBasedComponent.java:149
-#: Miradi/source/org/miradi/dialogfields/FactorTagListEditor.java:81
+#: Miradi/source/org/miradi/dialogfields/FactorTagListEditor.java:82
 msgid "Unexpected call to setText"
 msgstr ""
 
