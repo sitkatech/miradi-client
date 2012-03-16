@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-16 11:33-0500\n"
+"POT-Creation-Date: 2012-03-16 13:27-0500\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -3333,7 +3333,7 @@ msgstr "Methoden, Aufgaben und Verantwortlichkeiten näher beschreiben"
 msgid "Details"
 msgstr "Details"
 
-#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:111
+#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:112
 msgid "Details:"
 msgstr "Details:"
 
@@ -4060,7 +4060,7 @@ msgstr "Schutzziele"
 msgid "Goals Only"
 msgstr "Nur Schutzziele"
 
-#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:99
+#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:100
 msgid "Goals:"
 msgstr "Schutzziele:"
 
@@ -4387,7 +4387,7 @@ msgstr "Indikatoren"
 msgid "Indicators Only"
 msgstr "Nur Indikatoren"
 
-#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:93
+#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:94
 msgid "Indicators:"
 msgstr "Indikatoren:"
 
@@ -5488,7 +5488,7 @@ msgstr "Nur Zwischenziele"
 msgid "Objectives contain Strategies"
 msgstr "Zwischenziele beinhalten Strategien"
 
-#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:105
+#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:106
 msgid "Objectives:"
 msgstr "Zwischenziele:"
 
