@@ -66,6 +66,7 @@ public class TestHtmlUtilities extends MiradiTestCase
 		verifySpaceRemovalAroundElement("X</b>", "X</b>   ");
 		verifySpaceRemovalAroundElement("X </b>", "X    </b>   ");
 		verifySpaceRemovalAroundElement("X<br/>Y", "X <br/>Y");
+		verifySpaceRemovalAroundElement("X<br/>Y", "X <br/> Y");
 	}
 
 	private void verifySpaceRemovalAroundElement(final String expectedValue, final String htmlText)
