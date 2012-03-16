@@ -41,6 +41,7 @@ import org.miradi.objects.TaggedObjectSet;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.TaggedObjectSetQuestion;
+import org.miradi.utils.XmlUtilities2;
 
 public class FactorTagListEditor extends AbstractQuestionEditorComponent implements CommandExecutedListener
 {
@@ -102,7 +103,9 @@ public class FactorTagListEditor extends AbstractQuestionEditorComponent impleme
 		try
 		{
 			Icon factorIcon = IconManager.getImage(selectedFactor);
-			labelPanelWithIcon.add(new PanelTitleLabel(selectedFactor.toString(), factorIcon));
+			String label = selectedFactor.toString();
+			label = XmlUtilities2.getXmlDecoded(label);
+			labelPanelWithIcon.add(new PanelTitleLabel(label, factorIcon));
 		}
 		catch(Exception e)
 		{
