@@ -50,6 +50,7 @@ import org.miradi.objects.Objective;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.utils.Utility;
+import org.miradi.utils.XmlUtilities2;
 
 abstract public class FactorCell extends EAMGraphCell
 {
@@ -113,7 +114,7 @@ abstract public class FactorCell extends EAMGraphCell
 		}
 		
 		if(bullets.size() == 0)
-			return tip;
+			return XmlUtilities2.convertXmlTextToHtml(tip);
 		
 		tip += "<BR>" + header + "<UL>";
 		
@@ -126,7 +127,7 @@ abstract public class FactorCell extends EAMGraphCell
 		tip += "</UL>";
 		
 		tip += "</TD></TR></TABLE>";
-		return tip;
+		return XmlUtilities2.convertXmlTextToHtml(tip);
 	}
 
 	private Vector<BaseObject> getSortedBullets(ORefList refsAsbullets)
