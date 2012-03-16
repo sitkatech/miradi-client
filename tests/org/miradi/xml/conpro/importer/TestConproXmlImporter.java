@@ -86,7 +86,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 			
 			ORefList targetRefs = projectAfterImport.getTargetPool().getRefList();
 			Target importedTarget = Target.find(projectAfterImport, targetRefs.getFirstElement());
-			assertEquals("html tags not stripped?", "Target with <br/>2 lines of text", importedTarget.getLabel());
+			assertEquals("html tags not stripped?", "Target with<br/>2 lines of text", importedTarget.getLabel());
 		}
 		finally
 		{
