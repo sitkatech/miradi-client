@@ -48,6 +48,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objectpools.EAMObjectPool;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
+import org.miradi.utils.XmlUtilities2;
 import org.miradi.views.umbrella.ObjectPicker;
 
 import com.java.sun.jtreetable.TreeTableModelAdapter;
@@ -115,7 +116,7 @@ abstract public class ObjectTreeTable extends TreeTableWithColumnWidthSaving imp
 		String typeName = EAM.fieldLabel(object.getType(), object.getTypeName());
 		String tooltip = "<html><b>" + typeName + "</b><br>";
 		
-		return tooltip + object.getFullName();
+		return XmlUtilities2.getXmlDecoded(tooltip + object.getFullName());
 	}
 	
 	public static Font createFristLevelFont(Font defaultFontToUse)
