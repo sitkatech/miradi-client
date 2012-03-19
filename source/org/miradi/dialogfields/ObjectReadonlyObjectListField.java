@@ -37,6 +37,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.utils.GenericDefaultTableModel;
+import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.IgnoreCaseStringComparator;
 import org.miradi.utils.XmlUtilities2;
 
@@ -147,7 +148,8 @@ public class ObjectReadonlyObjectListField extends ObjectDataInputField
 		public Component getTableCellRendererComponent(JTable tableToUse, Object value, boolean isSelected, boolean hasFocus, int row, int column)
 		{
 			String valueAsString = value.toString();
-			valueAsString = XmlUtilities2.getXmlDecoded(valueAsString);
+			valueAsString = XmlUtilities2.convertXmlTextToHtml(valueAsString);
+			valueAsString = HtmlUtilities.wrapInHtmlTags(valueAsString);
 			
 			return super.getTableCellRendererComponent(tableToUse, valueAsString, isSelected, hasFocus, row, column);
 		}
