@@ -57,27 +57,43 @@ public class TestXmlUtilities2 extends MiradiTestCase
 
 	public void testIsValidXml()
 	{
-		verifyValidXml();
-		verifyNotValidXml();
+		verifyValidXml(null);
+		verifyValidXml("AB");
+		verifyValidXml("A&amp;B");
+		verifyValidXml("A&lt;B");
+		verifyValidXml("A&gt;B");
+		verifyValidXml("A&apos;B");
+		verifyValidXml("A&quot;B");
+		
+		verifyInvalidXml("A&B");
+		verifyInvalidXml("A<B");
+		verifyInvalidXml("A>B");
+		verifyInvalidXml("A'B");
+		verifyInvalidXml("A\"B");
 	}
 
-	private void verifyValidXml()
+	private void verifyValidXml(final String value)
 	{
-		assertTrue(XmlUtilities2.isValidXmlWithNoHtmlTags("AB"));
-		assertTrue(XmlUtilities2.isValidXmlWithNoHtmlTags("A&amp;B"));
-		assertTrue(XmlUtilities2.isValidXmlWithNoHtmlTags("A&lt;B"));
-		assertTrue(XmlUtilities2.isValidXmlWithNoHtmlTags("A&gt;B"));
-		assertTrue(XmlUtilities2.isValidXmlWithNoHtmlTags("A&apos;B"));
-		assertTrue(XmlUtilities2.isValidXmlWithNoHtmlTags("A&quot;B"));
+		try
+		{
+			XmlUtilities2.ensureValidXmlWithHtmlTags(value);
+		}
+		catch (Exception e)
+		{
+			fail("Value should have been a valid xml: " + value);
+		}
 	}
 
-	private void verifyNotValidXml()
+	private void verifyInvalidXml(final String value)
 	{
-		assertFalse(XmlUtilities2.isValidXmlWithNoHtmlTags("A&B"));
-		assertFalse(XmlUtilities2.isValidXmlWithNoHtmlTags("A<B"));
-		assertFalse(XmlUtilities2.isValidXmlWithNoHtmlTags("A>B"));
-		assertFalse(XmlUtilities2.isValidXmlWithNoHtmlTags("A'B"));
-		assertFalse(XmlUtilities2.isValidXmlWithNoHtmlTags("A\"B"));
+		try
+		{
+			XmlUtilities2.ensureValidXmlWithHtmlTags(value);
+			fail("Value is not a valid xml: " + value);
+		}
+		catch (Exception ignoreException)
+		{
+		}
 	}
 
 	public void testGetXmlDecoded()

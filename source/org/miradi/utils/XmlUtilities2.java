@@ -90,7 +90,7 @@ public class XmlUtilities2
 			throw new RuntimeException("Invalid xml value =" + valueWithoutHtmlTags);
 	}
 	
-	public static boolean isValidXmlWithNoHtmlTags(final String value)
+	private static boolean isValidXmlWithNoHtmlTags(final String value)
 	{
 		final String decodedValue = getXmlDecoded(value);
 		final String encodedValue = getXmlEncoded(decodedValue);
