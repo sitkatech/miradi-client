@@ -329,7 +329,7 @@ public class MpzToMpfConverter
 			return;
 		
 		String contents = readIntoString(quarantineEntry);
-		contents = HtmlUtilities.convertToHtmlText(contents);
+		contents = HtmlUtilities.convertPlainTextToHtmlText(contents);
 		project.appendToQuarantineFile(contents);
 	}
 
@@ -408,7 +408,7 @@ public class MpzToMpfConverter
 		}
 		
 		String exceptionLog = safeConvertUtf8BytesToString(exceptionLogBytes);
-		exceptionLog = HtmlUtilities.convertToHtmlText(exceptionLog);
+		exceptionLog = HtmlUtilities.convertPlainTextToHtmlText(exceptionLog);
 		project.appendToExceptionLog(exceptionLog);
 	}
 
