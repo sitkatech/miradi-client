@@ -138,11 +138,11 @@ public class ObjectReadonlyObjectListField extends ObjectDataInputField
 		@Override
 		public TableCellRenderer getCellRenderer(int row, int column)
 		{
-			return new DecodedTableCellRenderer();
+			return new HtmlTableCellRenderer();
 		}
 	}
 	
-	private class DecodedTableCellRenderer extends DefaultTableCellRenderer
+	private class HtmlTableCellRenderer extends DefaultTableCellRenderer
 	{
 		@Override
 		public Component getTableCellRendererComponent(JTable tableToUse, Object value, boolean isSelected, boolean hasFocus, int row, int column)
