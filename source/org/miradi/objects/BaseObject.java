@@ -730,7 +730,7 @@ abstract public class BaseObject
 	
 	public String getDataAsNonHtml(String fieldTag)
 	{
-		return  HtmlUtilities.convertToNonHtml(getData(fieldTag));
+		return  HtmlUtilities.convertHtmlToPlainText(getData(fieldTag));
 	}
 
 	public void setData(String fieldTag, String dataValue) throws Exception

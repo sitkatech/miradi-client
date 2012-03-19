@@ -85,7 +85,7 @@ public class HtmlUtilities
 		return nonHtmlText;
 	}
 	
-	public static String convertToNonHtml(String htmlDataValue)
+	public static String convertHtmlToPlainText(String htmlDataValue)
 	{
 		htmlDataValue = replaceHtmlBrsWithNewlines(htmlDataValue);
 		htmlDataValue = XmlUtilities2.getXmlDecoded(htmlDataValue);

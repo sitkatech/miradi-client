@@ -61,7 +61,7 @@ public class RunXlsTemplateDoer extends ObjectsDoer
 		
 		BaseObject selectedObject = getSingleSelectedObject();
 		String xlsTemplate = selectedObject.getData(XslTemplate.TAG_TEMPLATE_CONTENTS);
-		xlsTemplate = HtmlUtilities.convertToNonHtml(xlsTemplate);
+		xlsTemplate = HtmlUtilities.convertHtmlToPlainText(xlsTemplate);
 		
 		final String extension = selectedObject.getData(XslTemplate.TAG_FILE_EXTENSION);
 		
