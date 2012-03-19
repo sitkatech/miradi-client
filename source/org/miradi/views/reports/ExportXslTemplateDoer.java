@@ -54,7 +54,7 @@ public class ExportXslTemplateDoer extends ObjectsDoer
 		UnicodeWriter writer = new UnicodeWriter(userChosenFile);
 		try
 		{
-			xsl = HtmlUtilities.convertToNonHtml(xsl);
+			xsl = HtmlUtilities.convertHtmlToPlainText(xsl);
 			writer.write(xsl);
 		}
 		finally

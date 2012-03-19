@@ -65,7 +65,7 @@ public class ObjectStringInputField extends ObjectTextInputField
 	public void setText(String newValue)
 	{
 		newValue.replaceAll("\n", " ");
-		newValue = HtmlUtilities.convertToNonHtml(newValue);
+		newValue = HtmlUtilities.convertHtmlToPlainText(newValue);
 		
 		super.setText(newValue);
 	}

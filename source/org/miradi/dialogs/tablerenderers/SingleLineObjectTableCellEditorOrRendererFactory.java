@@ -91,7 +91,7 @@ public class SingleLineObjectTableCellEditorOrRendererFactory extends ObjectTabl
 
 		public void setText(String text)
 		{
-			text = HtmlUtilities.convertToNonHtml(text);
+			text = HtmlUtilities.convertHtmlToPlainText(text);
 			
 			getTextEditorComponent().setText(text);
 		}
@@ -110,7 +110,7 @@ public class SingleLineObjectTableCellEditorOrRendererFactory extends ObjectTabl
 		@Override
 		public void setText(String text)
 		{
-			text = HtmlUtilities.convertToNonHtml(text);
+			text = HtmlUtilities.convertHtmlToPlainText(text);
 			super.setText(text);
 		}
 	}
