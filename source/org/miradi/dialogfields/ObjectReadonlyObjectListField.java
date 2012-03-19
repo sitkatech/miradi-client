@@ -49,7 +49,7 @@ public class ObjectReadonlyObjectListField extends ObjectDataInputField
 		
 		model = new GenericDefaultTableModel();
 		model.setColumnCount(1);
-		table = new TableWithDecodingRenderer(mainWindowToUse, model);
+		table = new TableWithHtmlRenderer(mainWindowToUse, model);
 		setDefaultFieldBorder();
 	}
 	
@@ -125,9 +125,9 @@ public class ObjectReadonlyObjectListField extends ObjectDataInputField
 		return table;
 	}
 	
-	private class TableWithDecodingRenderer extends PanelTable
+	private class TableWithHtmlRenderer extends PanelTable
 	{
-		public TableWithDecodingRenderer(MainWindow mainWindowToUse, TableModel model)
+		public TableWithHtmlRenderer(MainWindow mainWindowToUse, TableModel model)
 		{
 			super(mainWindowToUse, model);
 			
