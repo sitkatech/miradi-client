@@ -74,7 +74,7 @@ public class ObjectStringInputField extends ObjectTextInputField
 	public String getText()
 	{
 		String text = super.getText();
-		text = HtmlUtilities.convertToHtmlText(text);
+		text = HtmlUtilities.convertPlainTextToHtmlText(text);
 		
 		return text;
 	}

@@ -77,7 +77,7 @@ public class HtmlUtilities
 		return rule;
 	}
 
-	public static String convertToHtmlText(String nonHtmlText)
+	public static String convertPlainTextToHtmlText(String nonHtmlText)
 	{
 		nonHtmlText = XmlUtilities2.getXmlEncoded(nonHtmlText);
 		nonHtmlText = replaceNonHtmlNewlines(nonHtmlText);

@@ -99,7 +99,7 @@ public class SingleLineObjectTableCellEditorOrRendererFactory extends ObjectTabl
 		public String getText()
 		{
 			String text = getTextEditorComponent().getText();
-			text = HtmlUtilities.convertToHtmlText(text);
+			text = HtmlUtilities.convertPlainTextToHtmlText(text);
 			
 			return text;
 		}
