@@ -28,27 +28,27 @@ import javax.swing.KeyStroke;
 import org.miradi.utils.LocationHolder;
 import org.miradi.utils.XmlUtilities2;
 
-public class MiradiMenuItem extends JMenuItem implements LocationHolder
+public class MiradiHtmlMenuItem extends JMenuItem implements LocationHolder
 {
-    public MiradiMenuItem(Action action, int mnemonic, KeyStroke accelerator)
+    public MiradiHtmlMenuItem(Action action, int mnemonic, KeyStroke accelerator)
     {
         this(action, mnemonic);
         setAccelerator(accelerator);
     }
     
-    public MiradiMenuItem(Action action, KeyStroke accelerator)
+    public MiradiHtmlMenuItem(Action action, KeyStroke accelerator)
     {
         this(action);
         setAccelerator(accelerator);
     }
     
-    public MiradiMenuItem(Action action, int mnemonic)
+    public MiradiHtmlMenuItem(Action action, int mnemonic)
     {
         this(action);
         setMnemonic(mnemonic);
     }
     
-    public MiradiMenuItem(Action action)
+    public MiradiHtmlMenuItem(Action action)
     {
         super(action);
     }
