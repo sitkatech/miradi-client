@@ -26,6 +26,7 @@ import javax.swing.JTree;
 import javax.swing.tree.DefaultTreeCellRenderer;
 
 import org.miradi.main.MainWindow;
+import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.XmlUtilities2;
 
 public class VariableHeightTreeCellRenderer extends DefaultTreeCellRenderer
@@ -39,6 +40,7 @@ public class VariableHeightTreeCellRenderer extends DefaultTreeCellRenderer
 	public Component getTreeCellRendererComponent(JTree tree, Object value, boolean sel, boolean expanded, boolean leaf, int row, boolean hasFocusToUse)
 	{
 		String valuAsString = XmlUtilities2.convertXmlTextToHtml(value.toString());
+		valuAsString = HtmlUtilities.wrapInHtmlTags(valuAsString);
 		resetPreferredSizeToAvoidTruncatingNextValue();
 		Component rendererComponent = getTreeCellRendererComponentWithPreferredHeight(tree, valuAsString, sel, expanded, leaf, row, hasFocusToUse);
 		Dimension size = new Dimension(rendererComponent.getPreferredSize());

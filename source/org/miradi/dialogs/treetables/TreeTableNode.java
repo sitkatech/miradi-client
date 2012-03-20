@@ -46,7 +46,7 @@ public abstract class TreeTableNode implements Comparable<TreeTableNode>
 	@Override
 	public String toString()
 	{
-		return "<html>" + toRawString();
+		return toRawString();
 	}
 
 	public String toRawString()
