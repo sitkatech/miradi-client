@@ -28,6 +28,7 @@ import org.miradi.main.EAM;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.XmlUtilities2;
 
 abstract public class AbstractQuestionBasedComponent extends AbstractDataValueListComponent
@@ -89,7 +90,7 @@ abstract public class AbstractQuestionBasedComponent extends AbstractDataValueLi
 			JToggleButton toggleButton = choiceItemToToggleButtonMap.get(choiceItem);
 			if (toggleButton.isSelected() )
 			{
-				partialToolTip += XmlUtilities2.getXmlEncoded(choiceItem.getLabel()) + "<BR>";
+				partialToolTip += XmlUtilities2.getXmlEncoded(choiceItem.getLabel()) + HtmlUtilities.BR_TAG;
 				++selectionCount;
 			}
 		}
@@ -99,7 +100,7 @@ abstract public class AbstractQuestionBasedComponent extends AbstractDataValueLi
 			moreText = "...more";
 		
 		String rawCombinedText = partialToolTip + moreText;
-		String toolTip = "<HTML>" + rawCombinedText + "</HTML>";
+		String toolTip = HtmlUtilities.wrapInHtmlTags(rawCombinedText);
 		for(ChoiceItem choiceItem : choices)
 		{
 			JToggleButton toggleButton = choiceItemToToggleButtonMap.get(choiceItem);
