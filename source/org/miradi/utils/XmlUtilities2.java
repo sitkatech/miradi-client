@@ -65,13 +65,13 @@ public class XmlUtilities2
 
 	public static String convertXmlTextToHtmlWithHtmlTags(final String value)
 	{
-		String html = XmlUtilities2.convertXmlTextToHtml(value);
+		String html = XmlUtilities2.convertXmlTextToHtmlWithoutHtmlTags(value);
 		html = HtmlUtilities.wrapInHtmlTags(html);
 
 		return html;
 	}
 	
-	public static String convertXmlTextToHtml(final String value)
+	public static String convertXmlTextToHtmlWithoutHtmlTags(final String value)
 	{
 		ensureValidXmlWithHtmlTags(value);
 		
