@@ -26,6 +26,7 @@ import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
 import org.miradi.utils.LocationHolder;
+import org.miradi.utils.XmlUtilities2;
 
 public class MiradiMenuItem extends JMenuItem implements LocationHolder
 {
@@ -55,6 +56,12 @@ public class MiradiMenuItem extends JMenuItem implements LocationHolder
 	public boolean hasLocation()
 	{
 		return false;
+	}
+	
+	@Override
+	public String getText()
+	{
+		return XmlUtilities2.convertXmlTextToHtml(super.getText());
 	}
     
 	final static KeyStroke KEY_CTL_P = KeyStroke.getKeyStroke(KeyEvent.VK_P ,KeyEvent.CTRL_MASK,true);
