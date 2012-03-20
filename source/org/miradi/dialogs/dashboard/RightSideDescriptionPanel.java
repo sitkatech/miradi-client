@@ -85,7 +85,7 @@ public class RightSideDescriptionPanel extends JPanel implements ListSelectionLi
 	private void setRightSideHtmlContent(AbstractLongDescriptionProvider descriptionProvider) throws Exception
 	{
 		String description = descriptionProvider.getDescription();
-		description = XmlUtilities2.convertXmlTextToHtml(description);
+		description = XmlUtilities2.convertXmlTextToHtmlWithoutHtmlTags(description);
 		viewer.setText(description);
 	}
 	
