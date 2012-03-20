@@ -131,8 +131,8 @@ abstract public class AbstractMiradiProjectSaver
 	public static final String TAB = "\t";
 	public static final String EQUALS = "=";
 
-	public static final int VERSION_LOW = 2;
-	public static final int VERSION_HIGH = 2;
+	public static final int VERSION_LOW = 3;
+	public static final int VERSION_HIGH = 3;
 	
 	public static final String UPDATE_LAST_MODIFIED_TIME_CODE = "UL";
 	public static final String UPDATE_PROJECT_INFO_CODE = "UP";
