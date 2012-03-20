@@ -50,8 +50,7 @@ public class ListWithHtmlRenderer extends UiList
 		public String getText()
 		{
 			String text = super.getText();
-			text = XmlUtilities2.convertXmlTextToHtml(text);
-			text = HtmlUtilities.wrapInHtmlTags(text);
+			text = XmlUtilities2.convertXmlTextToHtmlWithHtmlTags(text);
 			
 			return text;
 		}

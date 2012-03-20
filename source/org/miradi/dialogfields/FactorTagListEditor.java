@@ -105,8 +105,7 @@ public class FactorTagListEditor extends AbstractQuestionEditorComponent impleme
 		{
 			Icon factorIcon = IconManager.getImage(selectedFactor);
 			String label = selectedFactor.toString();
-			label = XmlUtilities2.convertXmlTextToHtml(label);
-			label = HtmlUtilities.wrapInHtmlTags(label);
+			label = XmlUtilities2.convertXmlTextToHtmlWithHtmlTags(label);
 			labelPanelWithIcon.add(new PanelTitleLabel(label, factorIcon));
 		}
 		catch(Exception e)
