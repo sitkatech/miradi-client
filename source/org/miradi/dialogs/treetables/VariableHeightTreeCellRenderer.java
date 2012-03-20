@@ -26,7 +26,6 @@ import javax.swing.JTree;
 import javax.swing.tree.DefaultTreeCellRenderer;
 
 import org.miradi.main.MainWindow;
-import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.XmlUtilities2;
 
 public class VariableHeightTreeCellRenderer extends DefaultTreeCellRenderer
