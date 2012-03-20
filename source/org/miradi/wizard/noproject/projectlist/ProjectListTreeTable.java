@@ -262,7 +262,7 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving impleme
 		}
 	}
 	
-	static class ProjectListItemRenderer extends VariableHeightTreeCellRenderer
+	private static class ProjectListItemRenderer extends VariableHeightTreeCellRenderer
 	{
 		public ProjectListItemRenderer(TreeTableWithRowHeightSaver treeTableToUse)
 		{
@@ -271,7 +271,7 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving impleme
 		}
 	}
 	
-	public static class Renderer extends VariableHeightTreeCellRenderer
+	private static class Renderer extends VariableHeightTreeCellRenderer
 	{		
 		public Renderer(TreeTableWithRowHeightSaver treeTable)
 		{	
@@ -333,6 +333,6 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving impleme
 		private	VariableHeightTreeCellRenderer unusableRenderer;
 	}
 
-	DefaultTableCellRendererWithPreferredHeightFactory dateRenderer;
+	private DefaultTableCellRendererWithPreferredHeightFactory dateRenderer;
 	private static final int ROOT_ROW_INDEX = 0;
 }
