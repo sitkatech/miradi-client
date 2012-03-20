@@ -61,6 +61,7 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.DynamicChoiceWithRootChoiceItem;
 import org.miradi.questions.OpenStandardsProgressStatusQuestion;
 import org.miradi.utils.FillerLabel;
+import org.miradi.utils.XmlUtilities2;
 import org.miradi.wizard.WizardManager;
 
 import com.jhlabs.awt.GridLayoutPlus;
@@ -251,6 +252,7 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 
 	private PanelLabelWithSelectableText createLabelWithSelectableText(int level, String label)
 	{
+		label = XmlUtilities2.getXmlDecoded(label);
 		PanelLabelWithSelectableText component = new PanelLabelWithSelectableText(label);
 		new TextAreaRightClickMouseHandler(getMainWindow().getActions(), component);		
 		component.setOpaque(true);
