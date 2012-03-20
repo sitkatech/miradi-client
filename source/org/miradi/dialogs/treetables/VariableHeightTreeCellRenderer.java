@@ -39,8 +39,7 @@ public class VariableHeightTreeCellRenderer extends DefaultTreeCellRenderer
 	@Override
 	public Component getTreeCellRendererComponent(JTree tree, Object value, boolean sel, boolean expanded, boolean leaf, int row, boolean hasFocusToUse)
 	{
-		String valuAsString = XmlUtilities2.convertXmlTextToHtml(value.toString());
-		valuAsString = HtmlUtilities.wrapInHtmlTags(valuAsString);
+		String valuAsString = XmlUtilities2.convertXmlTextToHtmlWithHtmlTags(value.toString());
 		resetPreferredSizeToAvoidTruncatingNextValue();
 		Component rendererComponent = getTreeCellRendererComponentWithPreferredHeight(tree, valuAsString, sel, expanded, leaf, row, hasFocusToUse);
 		Dimension size = new Dimension(rendererComponent.getPreferredSize());

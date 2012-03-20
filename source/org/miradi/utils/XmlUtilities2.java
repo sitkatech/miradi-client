@@ -62,6 +62,14 @@ public class XmlUtilities2
 	{
 		return value.replaceAll("'", "&apos;");
 	}
+
+	public static String convertXmlTextToHtmlWithHtmlTags(final String value)
+	{
+		String html = XmlUtilities2.convertXmlTextToHtml(value);
+		html = HtmlUtilities.wrapInHtmlTags(html);
+
+		return html;
+	}
 	
 	public static String convertXmlTextToHtml(final String value)
 	{
