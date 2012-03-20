@@ -147,7 +147,7 @@ public class ObjectReadonlyObjectListField extends ObjectDataInputField
 		public Component getTableCellRendererComponent(JTable tableToUse, Object value, boolean isSelected, boolean hasFocus, int row, int column)
 		{
 			String valueAsString = value.toString();
-			valueAsString = XmlUtilities2.convertXmlTextToHtmlWithHtmlTags(valueAsString);
+			valueAsString = XmlUtilities2.convertXmlTextToHtml(valueAsString);
 			
 			return super.getTableCellRendererComponent(tableToUse, valueAsString, isSelected, hasFocus, row, column);
 		}
