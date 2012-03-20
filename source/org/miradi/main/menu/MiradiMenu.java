@@ -23,7 +23,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
 import org.miradi.actions.Actions;
-import org.miradi.main.MiradiMenuItem;
+import org.miradi.main.MiradiHtmlMenuItem;
 
 public abstract class MiradiMenu extends JMenu
 {
@@ -35,7 +35,7 @@ public abstract class MiradiMenu extends JMenu
 	
 	void addMenuItem(Class actionClass, int mnemonic)
 	{
-		MiradiMenuItem menuItemNewProject = new MiradiMenuItem(actions.get(actionClass), mnemonic);
+		MiradiHtmlMenuItem menuItemNewProject = new MiradiHtmlMenuItem(actions.get(actionClass), mnemonic);
 		add(menuItemNewProject);
 	}
 	

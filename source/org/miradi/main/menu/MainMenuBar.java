@@ -36,7 +36,7 @@ import org.miradi.actions.jump.ActionJumpCloseTheLoop;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.main.Miradi;
-import org.miradi.main.MiradiMenuItem;
+import org.miradi.main.MiradiHtmlMenuItem;
 import org.miradi.main.ViewSwitcher;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceItemWithChildren;
@@ -562,7 +562,7 @@ public class MainMenuBar extends JMenuBar
 			}
 			else
 			{
-				subHeaderMenu.add(new MiradiMenuItem(action, action.getMnemonic()));
+				subHeaderMenu.add(new MiradiHtmlMenuItem(action, action.getMnemonic()));
 			}
 		}
 	}
@@ -634,14 +634,14 @@ public class MainMenuBar extends JMenuBar
 	
 	private JMenuItem addMenuItem(Actions actions, JMenu menu, Class class1)
 	{
-		MiradiMenuItem menuItemNewProject = new MiradiMenuItem(actions.get(class1));
+		MiradiHtmlMenuItem menuItemNewProject = new MiradiHtmlMenuItem(actions.get(class1));
 		menu.add(menuItemNewProject);
 		return menuItemNewProject; 
 	}
 	
 	private JMenuItem addMenuItem(Actions actions, JMenu menu, Class class1, int mnemonic)
 	{
-		MiradiMenuItem menuItemNewProject = new MiradiMenuItem(actions.get(class1), mnemonic);
+		MiradiHtmlMenuItem menuItemNewProject = new MiradiHtmlMenuItem(actions.get(class1), mnemonic);
 		menu.add(menuItemNewProject);
 		return menuItemNewProject; 
 	}
