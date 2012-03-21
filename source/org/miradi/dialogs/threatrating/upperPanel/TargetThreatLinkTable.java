@@ -23,6 +23,7 @@ import java.awt.Dimension;
 
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import javax.swing.table.TableColumn;
 
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
 import org.miradi.dialogs.tablerenderers.PlainTextTableHeaderRenderer;
@@ -54,8 +55,9 @@ public class TargetThreatLinkTable extends AbstractTableWithChoiceItemRenderer
 		PlainTextTableHeaderRenderer plainTextTableHeaderRenderer = new PlainTextTableHeaderRenderer();
 		for (int i = 0; i < getColumnCount(); ++i)
 		{
-			getColumnModel().getColumn(i).setCellRenderer(renderer);
-			getColumnModel().getColumn(i).setHeaderRenderer(plainTextTableHeaderRenderer);
+			final TableColumn tableColumn = getColumnModel().getColumn(i);
+			tableColumn.setCellRenderer(renderer);
+			tableColumn.setHeaderRenderer(plainTextTableHeaderRenderer);
 		}
 	}
 
