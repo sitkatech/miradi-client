@@ -46,5 +46,5 @@ public class XslTemplateManagmentPanel extends ObjectPoolManagementPanel
 		return new XslTemplateIcon();
 	}
 	
-	private static String PANEL_DESCRIPTION = EAM.text("Tab|Xsl Templates"); 
+	private static String PANEL_DESCRIPTION = EAM.text("Tab|XSL Templates"); 
 }
