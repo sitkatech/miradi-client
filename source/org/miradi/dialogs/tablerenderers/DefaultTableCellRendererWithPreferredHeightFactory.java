@@ -25,6 +25,8 @@ import javax.swing.JComponent;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 
+import org.miradi.utils.HtmlUtilities;
+
 public class DefaultTableCellRendererWithPreferredHeightFactory extends
 		BasicTableCellEditorOrRendererFactory implements TableCellPreferredHeightProvider
 {
@@ -36,7 +38,15 @@ public class DefaultTableCellRendererWithPreferredHeightFactory extends
 	@Override
 	public JComponent getRendererComponent(JTable table, boolean isSelected, boolean hasFocus, int row, int tableColumn, Object value)
 	{
-		return (JComponent)rendererComponent.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, tableColumn);
+		return (JComponent)rendererComponent.getTableCellRendererComponent(table, getValueWrappedInHtml(value), isSelected, hasFocus, row, tableColumn);
+	}
+
+	private Object getValueWrappedInHtml(Object value)
+	{
+		if (value == null)
+			return value;
+
+		return  HtmlUtilities.wrapInHtmlTags(value.toString());
 	}
 
 	public int getPreferredHeight(JTable table, int row, int column, Object value)
