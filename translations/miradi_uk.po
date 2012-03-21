@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-20 09:03-0500\n"
+"POT-Creation-Date: 2012-03-21 09:27-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -7366,7 +7366,7 @@ msgid "Tab|Work Plan"
 msgstr "Tab|Робочий план"
 
 #: Miradi/source/org/miradi/dialogs/xslTemplate/XslTemplateManagmentPanel.java:49
-msgid "Tab|Xsl Templates"
+msgid "Tab|XSL Templates"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/doers/DeleteTaggedObjectSetDoer.java:37

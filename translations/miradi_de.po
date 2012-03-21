@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-20 09:03-0500\n"
+"POT-Creation-Date: 2012-03-21 09:27-0500\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -7609,7 +7609,7 @@ msgid "Tab|Work Plan"
 msgstr "Arbeitsplan"
 
 #: Miradi/source/org/miradi/dialogs/xslTemplate/XslTemplateManagmentPanel.java:49
-msgid "Tab|Xsl Templates"
+msgid "Tab|XSL Templates"
 msgstr ""
 
 # würde vorschalgen Tag bleibt Tag (Felix)
