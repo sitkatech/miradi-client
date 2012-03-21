@@ -58,7 +58,7 @@ public class ReadOnlyCodeListComponent extends AbstractReadOnlyComponent
 				ChoiceItem choiceItem = choiceItems[choiceIndex];
 				if (codeList.contains(choiceItem.getCode()))
 				{
-					PanelTitleLabel label = new PanelTitleLabel(choiceItem.getLabel());
+					PanelTitleLabel label = new PanelTitleLabel(choiceItem.getTextAsHtmlWrappedLabel());
 					if (choiceItem.getColor() != null)
 						label.setIcon(new RatingIcon(choiceItem));
 					
