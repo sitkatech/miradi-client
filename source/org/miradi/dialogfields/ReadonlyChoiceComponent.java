@@ -61,7 +61,7 @@ public class ReadonlyChoiceComponent extends AbstractReadOnlyComponent
 		{
 			currentCode = code;
 			ChoiceItem choiceItem = question.findChoiceByCode(code);
-			PanelTitleLabel label = new PanelTitleLabel(choiceItem.getLabel());
+			PanelTitleLabel label = new PanelTitleLabel(choiceItem.getTextAsHtmlWrappedLabel());
 			if (choiceItem.getColor() != null)
 				label.setIcon(new RatingIcon(choiceItem));
 
