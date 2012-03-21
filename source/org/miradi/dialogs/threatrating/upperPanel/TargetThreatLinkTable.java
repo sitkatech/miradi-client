@@ -25,6 +25,7 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
+import org.miradi.dialogs.tablerenderers.PlainTextTableHeaderRenderer;
 import org.miradi.dialogs.tablerenderers.ThreatTargetTableCellRendererFactory;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.MainWindow;
@@ -37,8 +38,8 @@ public class TargetThreatLinkTable extends AbstractTableWithChoiceItemRenderer
 	public TargetThreatLinkTable(MainWindow mainWindowToUse, TargetThreatLinkTableModel tableModel)
 	{
 		super(mainWindowToUse, tableModel, tableModel.getUniqueTableModelIdentifier());
-		setBackground(AppPreferences.getDataPanelBackgroundColor());
 
+		setBackground(AppPreferences.getDataPanelBackgroundColor());
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		setCellSelectionEnabled(true);
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -50,9 +51,11 @@ public class TargetThreatLinkTable extends AbstractTableWithChoiceItemRenderer
 	{
 		AbstractThreatPerRowTableModel model = (AbstractThreatPerRowTableModel) getModel();
 		ThreatTargetTableCellRendererFactory renderer = new ThreatTargetTableCellRendererFactory(getMainWindow().getAppPreferences(), model, new DefaultFontProvider(getMainWindow()));
+		PlainTextTableHeaderRenderer plainTextTableHeaderRenderer = new PlainTextTableHeaderRenderer();
 		for (int i = 0; i < getColumnCount(); ++i)
 		{
 			getColumnModel().getColumn(i).setCellRenderer(renderer);
+			getColumnModel().getColumn(i).setHeaderRenderer(plainTextTableHeaderRenderer);
 		}
 	}
 
