@@ -34,8 +34,7 @@ public class DefaultTableCellRendererWithPreferredHeightFactory extends
 	}
 	
 	@Override
-	public JComponent getRendererComponent(JTable table, boolean isSelected,
-			boolean hasFocus, int row, int tableColumn, Object value)
+	public JComponent getRendererComponent(JTable table, boolean isSelected, boolean hasFocus, int row, int tableColumn, Object value)
 	{
 		return (JComponent)rendererComponent.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, tableColumn);
 	}
