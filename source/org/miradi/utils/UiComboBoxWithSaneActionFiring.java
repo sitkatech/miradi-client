@@ -21,16 +21,12 @@ package org.miradi.utils;
 
 import javax.swing.event.EventListenerList;
 
-import org.miradi.dialogs.fieldComponents.PanelComboBox;
+import org.miradi.dialogs.fieldComponents.ChoiceItemWithXmlRendererComboBox;
+import org.miradi.questions.ChoiceItem;
 
-public class UiComboBoxWithSaneActionFiring extends PanelComboBox
+public class UiComboBoxWithSaneActionFiring extends ChoiceItemWithXmlRendererComboBox
 {
-	public UiComboBoxWithSaneActionFiring()
-	{
-		super();
-	}
-	
-	public UiComboBoxWithSaneActionFiring(Object[] choices)
+	public UiComboBoxWithSaneActionFiring(ChoiceItem[] choices)
 	{
 		super(choices);
 	}
