@@ -53,9 +53,9 @@ public class TargetThreatLinkTable extends AbstractTableWithChoiceItemRenderer
 		AbstractThreatPerRowTableModel model = (AbstractThreatPerRowTableModel) getModel();
 		ThreatTargetTableCellRendererFactory renderer = new ThreatTargetTableCellRendererFactory(getMainWindow().getAppPreferences(), model, new DefaultFontProvider(getMainWindow()));
 		PlainTextTableHeaderRenderer plainTextTableHeaderRenderer = new PlainTextTableHeaderRenderer();
-		for (int i = 0; i < getColumnCount(); ++i)
+		for (int columnIndex = 0; columnIndex < getColumnCount(); ++columnIndex)
 		{
-			final TableColumn tableColumn = getColumnModel().getColumn(i);
+			final TableColumn tableColumn = getColumnModel().getColumn(columnIndex);
 			tableColumn.setCellRenderer(renderer);
 			tableColumn.setHeaderRenderer(plainTextTableHeaderRenderer);
 		}
