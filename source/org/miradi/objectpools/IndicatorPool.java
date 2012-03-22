@@ -90,13 +90,11 @@ public class IndicatorPool extends EAMNormalObjectPool
 		fieldSchemas.add(new FieldSchemaMultiLineUserText(getObjectType(), Indicator.OBJECT_NAME, Indicator.TAG_DETAIL));
 		fieldSchemas.add(new FieldSchemaMultiLineUserText(getObjectType(), Indicator.OBJECT_NAME, Indicator.TAG_COMMENTS));
 		fieldSchemas.add(new FieldSchemaMultiLineUserText(getObjectType(), Indicator.OBJECT_NAME, Indicator.TAG_VIABILITY_RATINGS_COMMENTS));
-
 		fieldSchemas.add(new FieldSchemaChoice(getObjectType(), Indicator.OBJECT_NAME, Indicator.TAG_FUTURE_STATUS_RATING, getQuestion(StatusQuestion.class)));
 		fieldSchemas.add(new FieldSchemaDate(getObjectType(), Indicator.OBJECT_NAME, Indicator.TAG_FUTURE_STATUS_DATE));
 		fieldSchemas.add(new FieldSchemaSingleLineUserText(getObjectType(), Indicator.OBJECT_NAME, Indicator.TAG_FUTURE_STATUS_SUMMARY));
 		fieldSchemas.add(new FieldSchemaMultiLineUserText(getObjectType(), Indicator.OBJECT_NAME, Indicator.TAG_FUTURE_STATUS_DETAIL));
 		fieldSchemas.add(new FieldSchemaMultiLineUserText(getObjectType(), Indicator.OBJECT_NAME, Indicator.TAG_FUTURE_STATUS_COMMENTS));
-
 		
 		return new BaseObjectSchema(fieldSchemas);
 	}
