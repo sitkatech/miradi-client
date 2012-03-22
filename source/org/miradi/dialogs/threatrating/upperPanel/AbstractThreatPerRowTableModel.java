@@ -31,7 +31,7 @@ abstract public class AbstractThreatPerRowTableModel extends AbstractThreatTarge
 	
 	public int getRowCount()
 	{
-		return threatRows.length;
+		return getDirectThreats().length;
 	}
 	
 	public BaseObject getBaseObjectForRowColumn(int row, int column)

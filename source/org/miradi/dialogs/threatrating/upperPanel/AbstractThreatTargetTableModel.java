@@ -222,6 +222,6 @@ abstract public class AbstractThreatTargetTableModel extends SortableTableModel
 	}
 	
 	private Project project;
-	protected Factor[] threatRows;
+	private Factor[] threatRows;
 	private Target[] targetColumns;
 }
