@@ -20,14 +20,31 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.tablerenderers;
 
-import org.miradi.utils.HtmlUtilities;
+import java.awt.Component;
 
+import javax.swing.JTable;
+import javax.swing.UIManager;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.JTableHeader;
 
-public class PlainTextTableHeaderRenderer extends MiradiDefaultTableCellHeaderRenderer
+public class MiradiDefaultTableCellHeaderRenderer extends DefaultTableCellRenderer
 {
 	@Override
-	public void setText(String text)
+	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) 
 	{
-		super.setText(HtmlUtilities.convertHtmlToPlainText(text));
+		if (table != null) 
+		{
+			JTableHeader header = table.getTableHeader();
+			if (header != null) {
+				setForeground(header.getForeground());
+				setBackground(header.getBackground());
+				setFont(header.getFont());
+			}
+		}
+
+		setText((value == null) ? "" : value.toString());
+		setBorder(UIManager.getBorder("TableHeader.cellBorder"));
+		
+		return this;
 	}
 }

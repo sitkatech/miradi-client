@@ -26,7 +26,6 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
 import org.miradi.objects.Cause;
 import org.miradi.project.Project;
-import org.miradi.utils.XmlUtilities2;
 
 public class TargetThreatLinkTableModel extends AbstractThreatPerRowTableModel
 {
@@ -49,8 +48,7 @@ public class TargetThreatLinkTableModel extends AbstractThreatPerRowTableModel
 	@Override
 	public String getColumnName(int column)
 	{
-		final String columnName = targetColumns[column].toString();
-		return XmlUtilities2.getXmlDecoded(columnName);
+		return targetColumns[column].toString();
 	}
 	
 	public Object getValueAt(int row, int column)
