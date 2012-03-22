@@ -64,7 +64,7 @@ public class IndicatorPool extends EAMNormalObjectPool
 	@Override
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId)
 	{
-		return new Indicator(objectManager, new IndicatorId(actualId.asInt()));
+		return new Indicator(objectManager, new IndicatorId(actualId.asInt()), createSchema());
 	}
 	
 	public Indicator[] getAllIndicators()
