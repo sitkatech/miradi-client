@@ -42,7 +42,7 @@ public class TargetThreatLinkTableModel extends AbstractThreatPerRowTableModel
 
 	public int getColumnCount()
 	{
-		return targetColumns.length;
+		return getTargetCount();
 	}
 	
 	@Override
