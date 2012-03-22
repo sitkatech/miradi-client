@@ -29,6 +29,7 @@ import javax.swing.table.JTableHeader;
 
 public class MiradiDefaultTableCellHeaderRenderer extends DefaultTableCellRenderer
 {
+	//TODO this code should be replaced with java 1.6's DefaultTableCellHeaderRenderer when we start supporting 1.6
 	@Override
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) 
 	{
