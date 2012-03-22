@@ -25,9 +25,9 @@ import org.miradi.objectdata.ObjectData;
 
 public class FieldSchemaMultiLineUserText extends AbstractFieldSchema
 {
-	public FieldSchemaMultiLineUserText(int objectTypeToUse,final String objectNameToUse, final String tagToUse)
+	public FieldSchemaMultiLineUserText(final String tagToUse)
 	{
-		super(objectTypeToUse, objectNameToUse, tagToUse);
+		super(tagToUse);
 	}
 
 	@Override
