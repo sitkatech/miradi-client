@@ -142,7 +142,7 @@ abstract public class AbstractThreatTargetTableModel extends SortableTableModel
 	
 	public Factor getDirectThreat(int row)
 	{
-		return threatRows[row];
+		return getDirectThreats()[row];
 	}
 	
 	public Target getTarget(int modelColumn)
