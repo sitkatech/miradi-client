@@ -165,7 +165,7 @@ abstract public class AbstractThreatTargetTableModel extends SortableTableModel
 		return getThreat(threatIndex).getLabel();
 	}
 	
-	public String getTargetName(int targetIndex)
+	protected String getTargetName(int targetIndex)
 	{
 		return getTargets()[targetIndex].getLabel();
 	}
