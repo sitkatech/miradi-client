@@ -25,24 +25,27 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.ids.IndicatorId;
 import org.miradi.objectdata.CodeToUserStringMapData;
+import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objecthelpers.DirectThreatSet;
 import org.miradi.objecthelpers.NonDraftStrategySet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objecthelpers.TargetSet;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.questions.PriorityRatingQuestion;
-import org.miradi.questions.RatingSourceQuestion;
-import org.miradi.questions.StatusQuestion;
+import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class Indicator extends BaseObject
 {
+	public Indicator(final ObjectManager objectManager, final IndicatorId idToUse, final BaseObjectSchema schemaToUse)
+	{
+		super(objectManager, idToUse, schemaToUse);
+	}
+	
 	public Indicator(ObjectManager objectManager, IndicatorId idToUse)
 	{
 		super(objectManager, idToUse);
@@ -393,23 +396,23 @@ public class Indicator extends BaseObject
 	void clear()
 	{
 		super.clear();
-		
-		createSingleLineUserTextField(TAG_SHORT_LABEL);
-		createChoiceField(TAG_PRIORITY, PriorityRatingQuestion.class);
-		createIdListField(TAG_METHOD_IDS, Task.getObjectType());
-		createCodeToUserStringMapField(TAG_THRESHOLDS_MAP);
-		createCodeToUserStringMapField(TAG_THRESHOLD_DETAILS_MAP);
-		createChoiceField(TAG_RATING_SOURCE, RatingSourceQuestion.class);
-		createRefListField(TAG_MEASUREMENT_REFS);
-		createMultiLineUserTextField(TAG_DETAIL);
-		createMultiLineUserTextField(TAG_COMMENTS);
-		createMultiLineUserTextField(TAG_VIABILITY_RATINGS_COMMENTS);
-
-		createChoiceField(TAG_FUTURE_STATUS_RATING, StatusQuestion.class);
-		createDateField(TAG_FUTURE_STATUS_DATE);
-		createSingleLineUserTextField(TAG_FUTURE_STATUS_SUMMARY);
-		createMultiLineUserTextField(TAG_FUTURE_STATUS_DETAIL);
-		createMultiLineUserTextField(TAG_FUTURE_STATUS_COMMENTS);
+//FIXME urgent - these fields are temporarly being fed to clear through a schema		
+//		createSingleLineUserTextField(TAG_SHORT_LABEL);
+//		createChoiceField(TAG_PRIORITY, PriorityRatingQuestion.class);
+//		createIdListField(TAG_METHOD_IDS, Task.getObjectType());
+//		createCodeToUserStringMapField(TAG_THRESHOLDS_MAP);
+//		createCodeToUserStringMapField(TAG_THRESHOLD_DETAILS_MAP);
+//		createChoiceField(TAG_RATING_SOURCE, RatingSourceQuestion.class);
+//		createRefListField(TAG_MEASUREMENT_REFS);
+//		createMultiLineUserTextField(TAG_DETAIL);
+//		createMultiLineUserTextField(TAG_COMMENTS);
+//		createMultiLineUserTextField(TAG_VIABILITY_RATINGS_COMMENTS);
+//
+//		createChoiceField(TAG_FUTURE_STATUS_RATING, StatusQuestion.class);
+//		createDateField(TAG_FUTURE_STATUS_DATE);
+//		createSingleLineUserTextField(TAG_FUTURE_STATUS_SUMMARY);
+//		createMultiLineUserTextField(TAG_FUTURE_STATUS_DETAIL);
+//		createMultiLineUserTextField(TAG_FUTURE_STATUS_COMMENTS);
 		
 		createPseudoStringField(PSEUDO_TAG_TARGETS);
 		createPseudoStringField(PSEUDO_TAG_DIRECT_THREATS);

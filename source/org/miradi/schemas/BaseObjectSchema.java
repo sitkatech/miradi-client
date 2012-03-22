@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import java.util.HashMap;
 import java.util.Vector;
 
 import org.miradi.objectdata.ObjectData;
@@ -36,13 +37,13 @@ public class BaseObjectSchema
 		return fieldSchemas;
 	}
 	
-	public Vector<ObjectData> createFields()
+	public HashMap<String, ObjectData> createTagFieldMap()
 	{
-		Vector<ObjectData> fields = new Vector<ObjectData>();
+		HashMap<String, ObjectData> fields = new HashMap<String, ObjectData>();
 		for(AbstractFieldSchema fieldSchema : getFieldSchemas())
 		{
 			ObjectData field = fieldSchema.createField();
-			fields.add(field);
+			fields.put(fieldSchema.getTag(), field);
 		}
 		
 		return fields;

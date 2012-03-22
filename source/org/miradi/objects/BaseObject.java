@@ -94,6 +94,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.StaticQuestionManager;
+import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.DateRange;
@@ -106,6 +107,14 @@ import org.miradi.utils.XmlUtilities2;
 
 abstract public class BaseObject
 {
+	public BaseObject(final ObjectManager objectManagerToUse, final BaseId idToUse, final BaseObjectSchema schemaToUse)
+	{
+		objectManager = objectManagerToUse;
+		schema = schemaToUse;
+		setId(idToUse);
+		clear();
+	}
+
 	public BaseObject(ObjectManager objectManagerToUse, BaseId idToUse)
 	{
 		objectManager = objectManagerToUse;
@@ -980,6 +989,7 @@ abstract public class BaseObject
 	void clear()
 	{
 		fields = new HashMap<String, ObjectData>();
+		fields.putAll(createFieldsFromBaseObjectSchema());
 		nonUserFields = new HashSet<String>();
 
 		createExpandingUserTextField(TAG_LABEL);
@@ -1697,6 +1707,14 @@ abstract public class BaseObject
 		
 		return result.toString();
 	}
+	
+	private HashMap<String, ObjectData> createFieldsFromBaseObjectSchema()
+	{
+		if (schema == null)
+			return new HashMap<String, ObjectData>();
+		
+		return schema.createTagFieldMap();
+	}
 
 	public static final String TAG_TIME_STAMP_MODIFIED = "TimeStampModified";
 	public static final String TAG_ID = "Id";
@@ -1719,4 +1737,5 @@ abstract public class BaseObject
 	protected ObjectManager objectManager;
 	private HashMap<String, ObjectData> fields;
 	private HashSet<String> nonUserFields; 
+	private BaseObjectSchema schema;
 }
