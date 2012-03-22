@@ -71,7 +71,7 @@ public class ThreatSummaryColumnTableModel extends AbstractThreatPerRowTableMode
 	{
 		try
 		{
-			int calculatedValue = calculateThreatSummaryRatingValue(threatRows[row]);
+			int calculatedValue = calculateThreatSummaryRatingValue(getDirectThreat(row));
 			return convertIntToString(calculatedValue);
 		}
 		catch (Exception e)
