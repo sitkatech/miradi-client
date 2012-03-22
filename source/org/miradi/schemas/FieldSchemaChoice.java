@@ -26,9 +26,9 @@ import org.miradi.questions.ChoiceQuestion;
 
 public class FieldSchemaChoice extends AbstractQuestionBasedFieldSchema
 {
-	public FieldSchemaChoice(final int objectTypeToUse, final String objectNameToUse, final String tagToUse, final ChoiceQuestion questionToUse)
+	public FieldSchemaChoice(final String tagToUse, final ChoiceQuestion questionToUse)
 	{
-		super(objectTypeToUse, objectNameToUse, tagToUse, questionToUse);
+		super(tagToUse, questionToUse);
 	}
 
 	@Override

@@ -25,9 +25,9 @@ import org.miradi.objectdata.ObjectData;
 
 public class FieldSchemaCodeToUserStringMap extends AbstractFieldSchema
 {
-	public FieldSchemaCodeToUserStringMap(int objectTypeToUse, String objectNameToUse, String tagToUse)
+	public FieldSchemaCodeToUserStringMap(String tagToUse)
 	{
-		super(objectTypeToUse, objectNameToUse, tagToUse);
+		super(tagToUse);
 	}
 
 	@Override

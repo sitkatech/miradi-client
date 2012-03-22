@@ -25,9 +25,9 @@ import org.miradi.objectdata.ObjectData;
 
 public class FieldSchemaDate extends AbstractFieldSchema
 {
-	public FieldSchemaDate(final int objectTypeToUse, final String objectNameToUse, final String tagToUse)
+	public FieldSchemaDate(final String tagToUse)
 	{
-		super(objectTypeToUse, objectNameToUse, tagToUse);
+		super(tagToUse);
 	}
 
 	@Override

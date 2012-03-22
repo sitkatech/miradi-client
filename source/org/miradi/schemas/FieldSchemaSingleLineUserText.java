@@ -25,9 +25,9 @@ import org.miradi.objectdata.SingleLineUserTextData;
 
 public class FieldSchemaSingleLineUserText extends AbstractFieldSchema
 {
-	public FieldSchemaSingleLineUserText(final int objectTypeToUse, final String objectNameToUse, final String tagToUse)
+	public FieldSchemaSingleLineUserText(final String tagToUse)
 	{
-		super(objectTypeToUse, objectNameToUse, tagToUse);
+		super(tagToUse);
 	}
 	
 	@Override

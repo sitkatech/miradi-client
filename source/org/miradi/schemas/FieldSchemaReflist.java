@@ -25,9 +25,9 @@ import org.miradi.objectdata.RefListData;
 
 public class FieldSchemaReflist extends AbstractFieldSchema
 {
-	public FieldSchemaReflist(int objectTypeToUse, String objectNameToUse, String tagToUse)
+	public FieldSchemaReflist(String tagToUse)
 	{
-		super(objectTypeToUse, objectNameToUse, tagToUse);
+		super(tagToUse);
 	}
 
 	@Override

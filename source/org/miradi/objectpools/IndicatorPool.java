@@ -80,21 +80,21 @@ public class IndicatorPool extends EAMNormalObjectPool
 	public BaseObjectSchema createSchema()
 	{
 		Vector<AbstractFieldSchema> fieldSchemas = new Vector<AbstractFieldSchema>();
-		fieldSchemas.add(new FieldSchemaSingleLineUserText(getObjectType(), Indicator.OBJECT_NAME, Indicator.TAG_SHORT_LABEL));
-		fieldSchemas.add(new FieldSchemaChoice(getObjectType(), Indicator.OBJECT_NAME, Indicator.TAG_PRIORITY, getQuestion(PriorityRatingQuestion.class)));
-		fieldSchemas.add(new FieldSchemaIdList(getObjectType(), Indicator.OBJECT_NAME, Indicator.TAG_METHOD_IDS, Task.getObjectType()));
-		fieldSchemas.add(new FieldSchemaCodeToUserStringMap(getObjectType(), Indicator.OBJECT_NAME, Indicator.TAG_THRESHOLDS_MAP));
-		fieldSchemas.add(new FieldSchemaCodeToUserStringMap(getObjectType(), Indicator.OBJECT_NAME, Indicator.TAG_THRESHOLD_DETAILS_MAP));
-		fieldSchemas.add(new FieldSchemaChoice(getObjectType(), Indicator.OBJECT_NAME, Indicator.TAG_RATING_SOURCE, getQuestion(RatingSourceQuestion.class)));
-		fieldSchemas.add(new FieldSchemaReflist(getObjectType(), Indicator.OBJECT_NAME, Indicator.TAG_MEASUREMENT_REFS));
-		fieldSchemas.add(new FieldSchemaMultiLineUserText(getObjectType(), Indicator.OBJECT_NAME, Indicator.TAG_DETAIL));
-		fieldSchemas.add(new FieldSchemaMultiLineUserText(getObjectType(), Indicator.OBJECT_NAME, Indicator.TAG_COMMENTS));
-		fieldSchemas.add(new FieldSchemaMultiLineUserText(getObjectType(), Indicator.OBJECT_NAME, Indicator.TAG_VIABILITY_RATINGS_COMMENTS));
-		fieldSchemas.add(new FieldSchemaChoice(getObjectType(), Indicator.OBJECT_NAME, Indicator.TAG_FUTURE_STATUS_RATING, getQuestion(StatusQuestion.class)));
-		fieldSchemas.add(new FieldSchemaDate(getObjectType(), Indicator.OBJECT_NAME, Indicator.TAG_FUTURE_STATUS_DATE));
-		fieldSchemas.add(new FieldSchemaSingleLineUserText(getObjectType(), Indicator.OBJECT_NAME, Indicator.TAG_FUTURE_STATUS_SUMMARY));
-		fieldSchemas.add(new FieldSchemaMultiLineUserText(getObjectType(), Indicator.OBJECT_NAME, Indicator.TAG_FUTURE_STATUS_DETAIL));
-		fieldSchemas.add(new FieldSchemaMultiLineUserText(getObjectType(), Indicator.OBJECT_NAME, Indicator.TAG_FUTURE_STATUS_COMMENTS));
+		fieldSchemas.add(new FieldSchemaSingleLineUserText(Indicator.TAG_SHORT_LABEL));
+		fieldSchemas.add(new FieldSchemaChoice(Indicator.TAG_PRIORITY, getQuestion(PriorityRatingQuestion.class)));
+		fieldSchemas.add(new FieldSchemaIdList(Indicator.TAG_METHOD_IDS, Task.getObjectType()));
+		fieldSchemas.add(new FieldSchemaCodeToUserStringMap(Indicator.TAG_THRESHOLDS_MAP));
+		fieldSchemas.add(new FieldSchemaCodeToUserStringMap(Indicator.TAG_THRESHOLD_DETAILS_MAP));
+		fieldSchemas.add(new FieldSchemaChoice(Indicator.TAG_RATING_SOURCE, getQuestion(RatingSourceQuestion.class)));
+		fieldSchemas.add(new FieldSchemaReflist(Indicator.TAG_MEASUREMENT_REFS));
+		fieldSchemas.add(new FieldSchemaMultiLineUserText(Indicator.TAG_DETAIL));
+		fieldSchemas.add(new FieldSchemaMultiLineUserText(Indicator.TAG_COMMENTS));
+		fieldSchemas.add(new FieldSchemaMultiLineUserText(Indicator.TAG_VIABILITY_RATINGS_COMMENTS));
+		fieldSchemas.add(new FieldSchemaChoice(Indicator.TAG_FUTURE_STATUS_RATING, getQuestion(StatusQuestion.class)));
+		fieldSchemas.add(new FieldSchemaDate(Indicator.TAG_FUTURE_STATUS_DATE));
+		fieldSchemas.add(new FieldSchemaSingleLineUserText(Indicator.TAG_FUTURE_STATUS_SUMMARY));
+		fieldSchemas.add(new FieldSchemaMultiLineUserText(Indicator.TAG_FUTURE_STATUS_DETAIL));
+		fieldSchemas.add(new FieldSchemaMultiLineUserText(Indicator.TAG_FUTURE_STATUS_COMMENTS));
 		
 		return new BaseObjectSchema(fieldSchemas);
 	}

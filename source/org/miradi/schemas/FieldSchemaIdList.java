@@ -25,9 +25,11 @@ import org.miradi.objectdata.ObjectData;
 
 public class FieldSchemaIdList extends AbstractFieldSchema
 {
-	public FieldSchemaIdList(int objectTypeToUse, String objectNameToUse, String tagToUse, final int idListTypeToUse)
+	public FieldSchemaIdList(String tagToUse, final int idListTypeToUse)
 	{
-		super(objectTypeToUse, objectNameToUse, tagToUse);
+		super(tagToUse);
+		
+		idListType = idListTypeToUse;
 	}
 
 	@Override

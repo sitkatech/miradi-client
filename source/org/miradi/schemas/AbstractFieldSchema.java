@@ -24,10 +24,8 @@ import org.miradi.objectdata.ObjectData;
 
 abstract public class AbstractFieldSchema
 {
-	public AbstractFieldSchema(final int objectTypeToUse, final String objectNameToUse,	final String tagToUse)
+	public AbstractFieldSchema(final String tagToUse)
 	{
-		objectType = objectTypeToUse;
-		objectName = objectNameToUse;
 		tag = tagToUse;
 	}
 	
@@ -36,19 +34,7 @@ abstract public class AbstractFieldSchema
 		return tag;
 	}
 	
-	protected String getObjectName()
-	{
-		return objectName;
-	}
-	
-	protected int getObjectType()
-	{
-		return objectType;
-	}
-	
 	abstract public ObjectData createField();
 
-	private int objectType;
-	private String objectName;
 	private String tag;
 }
