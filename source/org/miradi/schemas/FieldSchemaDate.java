@@ -23,9 +23,9 @@ package org.miradi.schemas;
 import org.miradi.objectdata.DateData;
 import org.miradi.objectdata.ObjectData;
 
-public class FieldSchemDate extends AbstractFieldSchema
+public class FieldSchemaDate extends AbstractFieldSchema
 {
-	public FieldSchemDate(final int objectTypeToUse, final String objectNameToUse, final String tagToUse)
+	public FieldSchemaDate(final int objectTypeToUse, final String objectNameToUse, final String tagToUse)
 	{
 		super(objectTypeToUse, objectNameToUse, tagToUse);
 	}
