@@ -44,7 +44,7 @@ public class TargetSummaryRowTableModel extends AbstractThreatTargetTableModel
 
 	public int getColumnCount()
 	{
-		return targetColumns.length;
+		return getTargetCount();
 	}
 
 	public Object getValueAt(int row, int column)
@@ -57,7 +57,7 @@ public class TargetSummaryRowTableModel extends AbstractThreatTargetTableModel
 	{
 		try
 		{
-			int calculatedValue = calculateThreatSummaryRatingValue(targetColumns[column]);
+			int calculatedValue = calculateThreatSummaryRatingValue(getTarget(column));
 			return convertIntToString(calculatedValue);
 		}
 		catch (Exception e)
@@ -74,7 +74,7 @@ public class TargetSummaryRowTableModel extends AbstractThreatTargetTableModel
 
 	public BaseObject getBaseObjectForRowColumn(int row, int column)
 	{
-		return targetColumns[column];
+		return getTarget(column);
 	}
 
 	private static final String UNIQUE_IDENTIFIER = "TargetSummaryRowTableModel";

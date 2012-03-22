@@ -150,7 +150,7 @@ abstract public class AbstractThreatTargetTableModel extends SortableTableModel
 		return targetColumns[modelColumn];
 	}
 
-	public int getTargetCount()
+	protected int getTargetCount()
 	{
 		return getTargets().length;
 	}
@@ -223,5 +223,5 @@ abstract public class AbstractThreatTargetTableModel extends SortableTableModel
 	
 	private Project project;
 	protected Factor[] threatRows;
-	protected Target[] targetColumns;
+	private Target[] targetColumns;
 }
