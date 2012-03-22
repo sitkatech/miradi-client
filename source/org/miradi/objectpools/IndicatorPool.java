@@ -59,7 +59,4 @@ public class IndicatorPool extends EAMNormalObjectPool
 			
 		return allIndicators;
 	}
-
-
-
 }
