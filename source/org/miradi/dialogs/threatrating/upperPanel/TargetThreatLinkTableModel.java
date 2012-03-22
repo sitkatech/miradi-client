@@ -48,7 +48,7 @@ public class TargetThreatLinkTableModel extends AbstractThreatPerRowTableModel
 	@Override
 	public String getColumnName(int column)
 	{
-		return targetColumns[column].getLabel();
+		return getTargetName(column);
 	}
 	
 	public Object getValueAt(int row, int column)
