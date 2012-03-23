@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objectpools;
 
-import java.util.Vector;
-
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.ids.IndicatorId;
@@ -34,7 +32,6 @@ import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.StatusQuestion;
-import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.FieldSchemaChoice;
 import org.miradi.schemas.FieldSchemaCodeToUserStringMap;
@@ -79,24 +76,24 @@ public class IndicatorPool extends EAMNormalObjectPool
 	
 	public BaseObjectSchema createSchema()
 	{
-		Vector<AbstractFieldSchema> fieldSchemas = new Vector<AbstractFieldSchema>();
-		fieldSchemas.add(new FieldSchemaSingleLineUserText(Indicator.TAG_SHORT_LABEL));
-		fieldSchemas.add(new FieldSchemaChoice(Indicator.TAG_PRIORITY, getQuestion(PriorityRatingQuestion.class)));
-		fieldSchemas.add(new FieldSchemaIdList(Indicator.TAG_METHOD_IDS, Task.getObjectType()));
-		fieldSchemas.add(new FieldSchemaCodeToUserStringMap(Indicator.TAG_THRESHOLDS_MAP));
-		fieldSchemas.add(new FieldSchemaCodeToUserStringMap(Indicator.TAG_THRESHOLD_DETAILS_MAP));
-		fieldSchemas.add(new FieldSchemaChoice(Indicator.TAG_RATING_SOURCE, getQuestion(RatingSourceQuestion.class)));
-		fieldSchemas.add(new FieldSchemaReflist(Indicator.TAG_MEASUREMENT_REFS));
-		fieldSchemas.add(new FieldSchemaMultiLineUserText(Indicator.TAG_DETAIL));
-		fieldSchemas.add(new FieldSchemaMultiLineUserText(Indicator.TAG_COMMENTS));
-		fieldSchemas.add(new FieldSchemaMultiLineUserText(Indicator.TAG_VIABILITY_RATINGS_COMMENTS));
-		fieldSchemas.add(new FieldSchemaChoice(Indicator.TAG_FUTURE_STATUS_RATING, getQuestion(StatusQuestion.class)));
-		fieldSchemas.add(new FieldSchemaDate(Indicator.TAG_FUTURE_STATUS_DATE));
-		fieldSchemas.add(new FieldSchemaSingleLineUserText(Indicator.TAG_FUTURE_STATUS_SUMMARY));
-		fieldSchemas.add(new FieldSchemaMultiLineUserText(Indicator.TAG_FUTURE_STATUS_DETAIL));
-		fieldSchemas.add(new FieldSchemaMultiLineUserText(Indicator.TAG_FUTURE_STATUS_COMMENTS));
+		BaseObjectSchema schema = new BaseObjectSchema();
+		schema.addFieldSchema(new FieldSchemaSingleLineUserText(Indicator.TAG_SHORT_LABEL));
+		schema.addFieldSchema(new FieldSchemaChoice(Indicator.TAG_PRIORITY, getQuestion(PriorityRatingQuestion.class)));
+		schema.addFieldSchema(new FieldSchemaIdList(Indicator.TAG_METHOD_IDS, Task.getObjectType()));
+		schema.addFieldSchema(new FieldSchemaCodeToUserStringMap(Indicator.TAG_THRESHOLDS_MAP));
+		schema.addFieldSchema(new FieldSchemaCodeToUserStringMap(Indicator.TAG_THRESHOLD_DETAILS_MAP));
+		schema.addFieldSchema(new FieldSchemaChoice(Indicator.TAG_RATING_SOURCE, getQuestion(RatingSourceQuestion.class)));
+		schema.addFieldSchema(new FieldSchemaReflist(Indicator.TAG_MEASUREMENT_REFS));
+		schema.addFieldSchema(new FieldSchemaMultiLineUserText(Indicator.TAG_DETAIL));
+		schema.addFieldSchema(new FieldSchemaMultiLineUserText(Indicator.TAG_COMMENTS));
+		schema.addFieldSchema(new FieldSchemaMultiLineUserText(Indicator.TAG_VIABILITY_RATINGS_COMMENTS));
+		schema.addFieldSchema(new FieldSchemaChoice(Indicator.TAG_FUTURE_STATUS_RATING, getQuestion(StatusQuestion.class)));
+		schema.addFieldSchema(new FieldSchemaDate(Indicator.TAG_FUTURE_STATUS_DATE));
+		schema.addFieldSchema(new FieldSchemaSingleLineUserText(Indicator.TAG_FUTURE_STATUS_SUMMARY));
+		schema.addFieldSchema(new FieldSchemaMultiLineUserText(Indicator.TAG_FUTURE_STATUS_DETAIL));
+		schema.addFieldSchema(new FieldSchemaMultiLineUserText(Indicator.TAG_FUTURE_STATUS_COMMENTS));
 		
-		return new BaseObjectSchema(fieldSchemas);
+		return schema;
 	}
 
 	private ChoiceQuestion getQuestion(final Class questionClass)
