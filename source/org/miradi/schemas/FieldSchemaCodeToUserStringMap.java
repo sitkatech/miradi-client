@@ -22,6 +22,7 @@ package org.miradi.schemas;
 
 import org.miradi.objectdata.CodeToUserStringMapData;
 import org.miradi.objectdata.ObjectData;
+import org.miradi.objects.BaseObject;
 
 public class FieldSchemaCodeToUserStringMap extends AbstractFieldSchema
 {
@@ -31,7 +32,7 @@ public class FieldSchemaCodeToUserStringMap extends AbstractFieldSchema
 	}
 
 	@Override
-	public ObjectData createField()
+	public ObjectData createField(final BaseObject baseObjectToUse)
 	{
 		return new CodeToUserStringMapData(getTag());
 	}

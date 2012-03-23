@@ -392,25 +392,6 @@ public class Indicator extends BaseObject
 		return find(project.getObjectManager(), indicatorRef);
 	}
 	
-	@Override
-	void clear()
-	{
-		super.clear();
-
-		createPseudoStringField(PSEUDO_TAG_TARGETS);
-		createPseudoStringField(PSEUDO_TAG_DIRECT_THREATS);
-		createPseudoStringField(PSEUDO_TAG_STRATEGIES);
-		createPseudoStringField(PSEUDO_TAG_FACTOR);
-		createPseudoStringField(PSEUDO_TAG_METHODS);
-		createPseudoStringField(PSEUDO_TAG_INDICATOR_THRESHOLD_VALUE);
-		createPseudoQuestionField(PSEUDO_TAG_PRIORITY_VALUE);
-		createPseudoQuestionField(PSEUDO_TAG_STATUS_VALUE);
-		createPseudoQuestionField(PSEUDO_TAG_RATING_SOURCE_VALUE);
-		createPseudoQuestionField(PSEUDO_TAG_LATEST_MEASUREMENT_REF);
-		
-		createPseudoQuestionField(PSEUDO_TAG_FUTURE_STATUS_RATING_VALUE);
-	}
-
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
 	public static final String TAG_PRIORITY = "Priority";
 	

@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.schemas;
 
 import org.miradi.objectdata.ObjectData;
+import org.miradi.objects.BaseObject;
 
 abstract public class AbstractFieldSchema
 {
@@ -34,7 +35,7 @@ abstract public class AbstractFieldSchema
 		return tag;
 	}
 	
-	abstract public ObjectData createField();
+	abstract public ObjectData createField(final BaseObject baseObjectToUse);
 
 	private String tag;
 }

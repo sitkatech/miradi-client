@@ -87,6 +87,18 @@ public class IndicatorPool extends EAMNormalObjectPool
 		schema.createFieldSchemaMultiLineUserText(Indicator.TAG_FUTURE_STATUS_DETAIL);
 		schema.createFieldSchemaMultiLineUserText(Indicator.TAG_FUTURE_STATUS_COMMENTS);
 		
+		schema.createPseudoStringField(Indicator.PSEUDO_TAG_TARGETS);
+		schema.createPseudoStringField(Indicator.PSEUDO_TAG_DIRECT_THREATS);
+		schema.createPseudoStringField(Indicator.PSEUDO_TAG_STRATEGIES);
+		schema.createPseudoStringField(Indicator.PSEUDO_TAG_FACTOR);
+		schema.createPseudoStringField(Indicator.PSEUDO_TAG_METHODS);
+		schema.createPseudoStringField(Indicator.PSEUDO_TAG_INDICATOR_THRESHOLD_VALUE);
+		schema.createPseudoQuestionField(Indicator.PSEUDO_TAG_PRIORITY_VALUE);
+		schema.createPseudoQuestionField(Indicator.PSEUDO_TAG_STATUS_VALUE);
+		schema.createPseudoQuestionField(Indicator.PSEUDO_TAG_RATING_SOURCE_VALUE);
+		schema.createPseudoQuestionField(Indicator.PSEUDO_TAG_LATEST_MEASUREMENT_REF);
+		schema.createPseudoQuestionField(Indicator.PSEUDO_TAG_FUTURE_STATUS_RATING_VALUE);
+		
 		return schema;
 	}
 

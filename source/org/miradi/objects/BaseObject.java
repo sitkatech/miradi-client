@@ -1534,7 +1534,7 @@ abstract public class BaseObject
 	
 	private void createFieldsFromBaseObjectSchema()
 	{
-		final Vector<ObjectData> fieldSchemas = schema.createFields();
+		final Vector<ObjectData> fieldSchemas = schema.createFields(this);
 		for(ObjectData objectData : fieldSchemas)
 		{
 			fields.put(objectData.getTag(), objectData);

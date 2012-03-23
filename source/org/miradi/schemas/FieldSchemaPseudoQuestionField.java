@@ -20,20 +20,20 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
-import org.miradi.objectdata.DateData;
 import org.miradi.objectdata.ObjectData;
+import org.miradi.objectdata.PseudoQuestionData;
 import org.miradi.objects.BaseObject;
 
-public class FieldSchemaDate extends AbstractFieldSchema
+public class FieldSchemaPseudoQuestionField extends AbstractFieldSchema
 {
-	public FieldSchemaDate(final String tagToUse)
+	public FieldSchemaPseudoQuestionField(String tagToUse)
 	{
 		super(tagToUse);
 	}
 
 	@Override
-	public ObjectData createField(final BaseObject baseObjectToUse)
+	public ObjectData createField(BaseObject baseObjectToUse)
 	{
-		return new DateData(getTag());
+		return new PseudoQuestionData(baseObjectToUse, getTag());
 	}
 }
