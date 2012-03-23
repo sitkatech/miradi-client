@@ -1534,15 +1534,11 @@ abstract public class BaseObject
 	
 	private void createFieldsFromBaseObjectSchema()
 	{
-		HashMap<String, ObjectData> tagToFieldMap = new HashMap<String, ObjectData>();
 		final Vector<ObjectData> fieldSchemas = schema.createFields();
 		for(ObjectData objectData : fieldSchemas)
 		{
-			tagToFieldMap.put(objectData.getTag(), objectData);
+			fields.put(objectData.getTag(), objectData);
 		}
-		
-		
-		fields.putAll(tagToFieldMap);
 	}
 	
 	abstract public int getType();
