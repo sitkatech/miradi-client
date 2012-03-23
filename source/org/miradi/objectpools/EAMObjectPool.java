@@ -26,6 +26,7 @@ import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
+import org.miradi.schemas.BaseObjectSchema;
 
 public class EAMObjectPool extends ObjectPool
 {
@@ -75,5 +76,10 @@ public class EAMObjectPool extends ObjectPool
 		}
 		
 		return allObjects;
+	}
+	
+	public BaseObjectSchema createSchema()
+	{
+		return new BaseObjectSchema();
 	}
 }

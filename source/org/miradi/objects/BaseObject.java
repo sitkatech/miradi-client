@@ -121,7 +121,12 @@ abstract public class BaseObject
 	
 	BaseObject(ObjectManager objectManagerToUse, BaseId idToUse, EnhancedJsonObject json) throws Exception
 	{
-		this(objectManagerToUse, idToUse);
+		this(objectManagerToUse, idToUse, json, new BaseObjectSchema());
+	}
+	
+	public BaseObject(ObjectManager objectManagerToUse, BaseId baseId, EnhancedJsonObject json, BaseObjectSchema schemaToUse) throws Exception
+	{
+		this(objectManagerToUse, baseId, schemaToUse);
 		
 		loadFromJson(json);
 	}

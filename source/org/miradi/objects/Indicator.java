@@ -53,9 +53,9 @@ public class Indicator extends BaseObject
 		clear();
 	}
 
-	public Indicator(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
+	public Indicator(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json, BaseObjectSchema schema) throws Exception
 	{
-		super(objectManager, new BaseId(idAsInt), json);
+		super(objectManager, new BaseId(idAsInt), json, schema);
 	}
 	
 	public IdList getMethodIds()
