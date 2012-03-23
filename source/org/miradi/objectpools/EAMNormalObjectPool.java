@@ -23,6 +23,8 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.ObjectManager;
+import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.StaticQuestionManager;
 
 abstract public class EAMNormalObjectPool extends PoolWithIdAssigner
 {
@@ -37,6 +39,11 @@ abstract public class EAMNormalObjectPool extends PoolWithIdAssigner
 		BaseObject created = createRawObject(objectManager, actualId);
 		put(created.getId(), created);
 		return created;
+	}
+	
+	protected ChoiceQuestion getQuestion(final Class questionClass)
+	{
+		return StaticQuestionManager.getQuestion(questionClass);
 	}
 	
 	abstract BaseObject createRawObject(ObjectManager objectManager, BaseId actualId) throws Exception;
