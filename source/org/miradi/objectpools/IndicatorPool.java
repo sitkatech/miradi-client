@@ -74,6 +74,7 @@ public class IndicatorPool extends EAMNormalObjectPool
 		return allIndicators;
 	}
 	
+	@Override
 	public BaseObjectSchema createSchema()
 	{
 		BaseObjectSchema schema = new BaseObjectSchema();

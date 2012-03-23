@@ -23,6 +23,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.ObjectManager;
+import org.miradi.schemas.BaseObjectSchema;
 
 abstract public class EAMNormalObjectPool extends PoolWithIdAssigner
 {
@@ -37,6 +38,11 @@ abstract public class EAMNormalObjectPool extends PoolWithIdAssigner
 		BaseObject created = createRawObject(objectManager, actualId);
 		put(created.getId(), created);
 		return created;
+	}
+	
+	public BaseObjectSchema createSchema()
+	{
+		return new BaseObjectSchema();
 	}
 	
 	abstract BaseObject createRawObject(ObjectManager objectManager, BaseId actualId) throws Exception;
