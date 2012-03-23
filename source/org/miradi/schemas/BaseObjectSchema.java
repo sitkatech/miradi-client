@@ -23,6 +23,7 @@ package org.miradi.schemas;
 import java.util.Vector;
 
 import org.miradi.objectdata.ObjectData;
+import org.miradi.objects.BaseObject;
 import org.miradi.questions.ChoiceQuestion;
 
 public class BaseObjectSchema
@@ -77,12 +78,22 @@ public class BaseObjectSchema
 		addFieldSchema(new FieldSchemaDate(fieldTag));
 	}
 	
-	public Vector<ObjectData> createFields()
+	public void createPseudoStringField(final String fieldTag)
+	{
+		addFieldSchema(new FieldSchemaPseudoStringField(fieldTag));
+	}
+	
+	public void createPseudoQuestionField(final String fieldTag)
+	{
+		addFieldSchema(new FieldSchemaPseudoQuestionField(fieldTag));
+	}
+	
+	public Vector<ObjectData> createFields(BaseObject baseObjectToUse)
 	{
 		Vector<ObjectData> fields = new Vector<ObjectData>();
 		for(AbstractFieldSchema fieldSchema : getFieldSchemas())
 		{
-			ObjectData field = fieldSchema.createField();
+			ObjectData field = fieldSchema.createField(baseObjectToUse);
 			fields.add(field);
 		}
 		

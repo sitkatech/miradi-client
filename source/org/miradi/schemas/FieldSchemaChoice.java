@@ -22,6 +22,7 @@ package org.miradi.schemas;
 
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.ObjectData;
+import org.miradi.objects.BaseObject;
 import org.miradi.questions.ChoiceQuestion;
 
 public class FieldSchemaChoice extends AbstractQuestionBasedFieldSchema
@@ -32,7 +33,7 @@ public class FieldSchemaChoice extends AbstractQuestionBasedFieldSchema
 	}
 
 	@Override
-	public ObjectData createField()
+	public ObjectData createField(final BaseObject baseObjectToUse)
 	{
 		return new ChoiceData(getTag(), getQuestion());
 	}

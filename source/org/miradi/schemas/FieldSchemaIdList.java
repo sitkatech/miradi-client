@@ -22,6 +22,7 @@ package org.miradi.schemas;
 
 import org.miradi.objectdata.IdListData;
 import org.miradi.objectdata.ObjectData;
+import org.miradi.objects.BaseObject;
 
 public class FieldSchemaIdList extends AbstractFieldSchema
 {
@@ -33,7 +34,7 @@ public class FieldSchemaIdList extends AbstractFieldSchema
 	}
 
 	@Override
-	public ObjectData createField()
+	public ObjectData createField(final BaseObject baseObjectToUse)
 	{
 		return new IdListData(getTag(), idListType);
 	}

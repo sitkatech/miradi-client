@@ -22,6 +22,7 @@ package org.miradi.schemas;
 
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objectdata.SingleLineUserTextData;
+import org.miradi.objects.BaseObject;
 
 public class FieldSchemaSingleLineUserText extends AbstractFieldSchema
 {
@@ -31,7 +32,7 @@ public class FieldSchemaSingleLineUserText extends AbstractFieldSchema
 	}
 	
 	@Override
-	public ObjectData createField()
+	public ObjectData createField(final BaseObject baseObjectToUse)
 	{
 		return new SingleLineUserTextData(getTag());
 	}
