@@ -45,7 +45,7 @@ public class TestFactorLink extends ObjectTestCase
 	{
 		FactorLink original = createFactorLink();
 		EnhancedJsonObject json = original.toJson();
-		FactorLink gotBack = (FactorLink)BaseObject.createFromJson(getProject().getObjectManager(), original.getType(), json);
+		FactorLink gotBack = (FactorLink)ObjectTestCase.createFromJson(getProject().getObjectManager(), original.getType(), json);
 		assertEquals("wrong id?", original.getId(), gotBack.getId());
 		assertEquals("wrong from?", original.getFromFactorRef(), gotBack.getFromFactorRef());
 		assertEquals("wrong to?", original.getToFactorRef(), gotBack.getToFactorRef());

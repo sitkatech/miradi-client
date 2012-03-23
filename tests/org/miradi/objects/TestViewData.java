@@ -58,7 +58,7 @@ public class TestViewData extends TestCaseWithProject
 		vd.setData(modeTag, sampleMode);
 		assertEquals("Set/get didn't work?", sampleMode, vd.getData(modeTag));
 		
-		ViewData got = (ViewData)BaseObject.createFromJson(getObjectManager(), vd.getType(), vd.toJson());
+		ViewData got = (ViewData)ObjectTestCase.createFromJson(getObjectManager(), vd.getType(), vd.toJson());
 		assertEquals("json didn't preserve mode?", vd.getData(modeTag), got.getData(modeTag));
 	}
 	
@@ -71,7 +71,7 @@ public class TestViewData extends TestCaseWithProject
 		vd.setData(ORefsTag, sampleORefs.toString());
 		assertEquals("Set/get didn't work?", sampleORefs, new ORefList(vd.getData(ORefsTag)));
 
-		ViewData got = (ViewData)BaseObject.createFromJson(getObjectManager(), vd.getType(), vd.toJson());
+		ViewData got = (ViewData)ObjectTestCase.createFromJson(getObjectManager(), vd.getType(), vd.toJson());
 		assertEquals("json didn't preserve ids?", vd.getData(ORefsTag), got.getData(ORefsTag));
 	}
 

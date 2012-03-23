@@ -85,7 +85,7 @@ public class TestProjectMetadata extends TestCaseWithProject
 		info.setData(tag, data);
 		assertEquals(data, info.getData(tag));
 		
-		ProjectMetadata got = (ProjectMetadata)ProjectMetadata.createFromJson(getProject().getObjectManager(), info.getType(), info.toJson());
+		ProjectMetadata got = (ProjectMetadata)ObjectTestCase.createFromJson(getProject().getObjectManager(), info.getType(), info.toJson());
 		assertEquals("Didn't jsonize " + tag + "?", info.getData(tag), got.getData(tag));
 	}
 }

@@ -23,7 +23,6 @@ import java.awt.Color;
 
 import org.miradi.ids.BaseId;
 import org.miradi.main.TestCaseWithProject;
-import org.miradi.objects.BaseObject;
 import org.miradi.objects.ValueOption;
 
 public class TestValueOption extends TestCaseWithProject
@@ -117,7 +116,7 @@ public class TestValueOption extends TestCaseWithProject
 		option.setData(ValueOption.TAG_NUMERIC, Integer.toString(numeric));
 		option.setData(ValueOption.TAG_COLOR, Integer.toString(color.getRGB()));
 		
-		ValueOption loaded = (ValueOption)BaseObject.createFromJson(getObjectManager(), option.getType(), option.toJson());
+		ValueOption loaded = (ValueOption)ObjectTestCase.createFromJson(getObjectManager(), option.getType(), option.toJson());
 		assertEquals(option.getId(), loaded.getId());
 		assertEquals(option.getLabel(), loaded.getLabel());
 		assertEquals(option.getNumericValue(), loaded.getNumericValue());
