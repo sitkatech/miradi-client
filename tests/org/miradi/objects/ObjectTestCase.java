@@ -77,6 +77,7 @@ import org.miradi.project.ProjectSaver;
 import org.miradi.project.TestDateUnit;
 import org.miradi.questions.InternalQuestionWithoutValues;
 import org.miradi.questions.StaticQuestionManager;
+import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateUnitEffort;
@@ -407,6 +408,7 @@ public class ObjectTestCase extends TestCaseWithProject
 
 	public static BaseObject createFromJson(ObjectManager objectManager, int type, EnhancedJsonObject json) throws Exception
 	{
+		BaseObjectSchema schema = objectManager.getPool(type).createSchema();
 		int idAsInt = json.getInt(BaseObject.TAG_ID);
 		switch(type)
 		{
@@ -453,7 +455,7 @@ public class ObjectTestCase extends TestCaseWithProject
 				return new ProjectResource(objectManager, idAsInt, json);
 				
 			case ObjectType.INDICATOR:
-				return new Indicator(objectManager, idAsInt, json);
+				return new Indicator(objectManager, idAsInt, json, schema);
 				
 			case ObjectType.OBJECTIVE:
 				return new Objective(objectManager, idAsInt, json);
