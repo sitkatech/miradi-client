@@ -33,13 +33,6 @@ import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.schemas.BaseObjectSchema;
-import org.miradi.schemas.FieldSchemaChoice;
-import org.miradi.schemas.FieldSchemaCodeToUserStringMap;
-import org.miradi.schemas.FieldSchemaDate;
-import org.miradi.schemas.FieldSchemaIdList;
-import org.miradi.schemas.FieldSchemaMultiLineUserText;
-import org.miradi.schemas.FieldSchemaReflist;
-import org.miradi.schemas.FieldSchemaSingleLineUserText;
 
 public class IndicatorPool extends EAMNormalObjectPool
 {
@@ -78,21 +71,21 @@ public class IndicatorPool extends EAMNormalObjectPool
 	public BaseObjectSchema createSchema()
 	{
 		BaseObjectSchema schema = new BaseObjectSchema();
-		schema.addFieldSchema(new FieldSchemaSingleLineUserText(Indicator.TAG_SHORT_LABEL));
-		schema.addFieldSchema(new FieldSchemaChoice(Indicator.TAG_PRIORITY, getQuestion(PriorityRatingQuestion.class)));
-		schema.addFieldSchema(new FieldSchemaIdList(Indicator.TAG_METHOD_IDS, Task.getObjectType()));
-		schema.addFieldSchema(new FieldSchemaCodeToUserStringMap(Indicator.TAG_THRESHOLDS_MAP));
-		schema.addFieldSchema(new FieldSchemaCodeToUserStringMap(Indicator.TAG_THRESHOLD_DETAILS_MAP));
-		schema.addFieldSchema(new FieldSchemaChoice(Indicator.TAG_RATING_SOURCE, getQuestion(RatingSourceQuestion.class)));
-		schema.addFieldSchema(new FieldSchemaReflist(Indicator.TAG_MEASUREMENT_REFS));
-		schema.addFieldSchema(new FieldSchemaMultiLineUserText(Indicator.TAG_DETAIL));
-		schema.addFieldSchema(new FieldSchemaMultiLineUserText(Indicator.TAG_COMMENTS));
-		schema.addFieldSchema(new FieldSchemaMultiLineUserText(Indicator.TAG_VIABILITY_RATINGS_COMMENTS));
-		schema.addFieldSchema(new FieldSchemaChoice(Indicator.TAG_FUTURE_STATUS_RATING, getQuestion(StatusQuestion.class)));
-		schema.addFieldSchema(new FieldSchemaDate(Indicator.TAG_FUTURE_STATUS_DATE));
-		schema.addFieldSchema(new FieldSchemaSingleLineUserText(Indicator.TAG_FUTURE_STATUS_SUMMARY));
-		schema.addFieldSchema(new FieldSchemaMultiLineUserText(Indicator.TAG_FUTURE_STATUS_DETAIL));
-		schema.addFieldSchema(new FieldSchemaMultiLineUserText(Indicator.TAG_FUTURE_STATUS_COMMENTS));
+		schema.createFieldSchemaSingleLineUserText(Indicator.TAG_SHORT_LABEL);
+		schema.createFieldSchemaChoice(Indicator.TAG_PRIORITY, getQuestion(PriorityRatingQuestion.class));
+		schema.createFieldSchemaIdList(Indicator.TAG_METHOD_IDS, Task.getObjectType());
+		schema.createFieldSchemaCodeToUserStringMap(Indicator.TAG_THRESHOLDS_MAP);
+		schema.createFieldSchemaCodeToUserStringMap(Indicator.TAG_THRESHOLD_DETAILS_MAP);
+		schema.createFieldSchemaChoice(Indicator.TAG_RATING_SOURCE, getQuestion(RatingSourceQuestion.class));
+		schema.createFieldSchemaReflist(Indicator.TAG_MEASUREMENT_REFS);
+		schema.createFieldSchemaMultiLineUserText(Indicator.TAG_DETAIL);
+		schema.createFieldSchemaMultiLineUserText(Indicator.TAG_COMMENTS);
+		schema.createFieldSchemaMultiLineUserText(Indicator.TAG_VIABILITY_RATINGS_COMMENTS);
+		schema.createFieldSchemaChoice(Indicator.TAG_FUTURE_STATUS_RATING, getQuestion(StatusQuestion.class));
+		schema.createFieldSchemaDate(Indicator.TAG_FUTURE_STATUS_DATE);
+		schema.createFieldSchemaSingleLineUserText(Indicator.TAG_FUTURE_STATUS_SUMMARY);
+		schema.createFieldSchemaMultiLineUserText(Indicator.TAG_FUTURE_STATUS_DETAIL);
+		schema.createFieldSchemaMultiLineUserText(Indicator.TAG_FUTURE_STATUS_COMMENTS);
 		
 		return schema;
 	}

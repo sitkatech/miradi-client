@@ -23,6 +23,7 @@ package org.miradi.schemas;
 import java.util.Vector;
 
 import org.miradi.objectdata.ObjectData;
+import org.miradi.questions.ChoiceQuestion;
 
 public class BaseObjectSchema
 {
@@ -31,7 +32,7 @@ public class BaseObjectSchema
 		fieldSchemas = new Vector<AbstractFieldSchema>();
 	}
 	
-	public void addFieldSchema(final AbstractFieldSchema fieldSchema)
+	private void addFieldSchema(final AbstractFieldSchema fieldSchema)
 	{
 		fieldSchemas.add(fieldSchema);
 	}
@@ -39,6 +40,41 @@ public class BaseObjectSchema
 	public Vector<AbstractFieldSchema> getFieldSchemas()
 	{
 		return fieldSchemas;
+	}
+	
+	public void createFieldSchemaSingleLineUserText(String fieldTag)
+	{
+		addFieldSchema(new FieldSchemaSingleLineUserText(fieldTag));
+	}
+	
+	public void createFieldSchemaChoice(final String fieldTag, final ChoiceQuestion question)
+	{
+		addFieldSchema(new FieldSchemaChoice(fieldTag, question));
+	}
+	
+	public void createFieldSchemaIdList(final String fieldTag, final int objectType)
+	{
+		addFieldSchema(new FieldSchemaIdList(fieldTag, objectType));
+	}
+	
+	public void createFieldSchemaCodeToUserStringMap(final String fieldTag)
+	{
+		addFieldSchema(new FieldSchemaCodeToUserStringMap(fieldTag));
+	}
+	
+	public void createFieldSchemaReflist(final String fieldTag)
+	{
+		addFieldSchema(new FieldSchemaReflist(fieldTag));
+	}
+	
+	public void createFieldSchemaMultiLineUserText(final String fieldTag)
+	{
+		addFieldSchema(new FieldSchemaMultiLineUserText(fieldTag));
+	}
+	
+	public void createFieldSchemaDate(final String fieldTag)
+	{
+		addFieldSchema(new FieldSchemaDate(fieldTag));
 	}
 	
 	public Vector<ObjectData> createTagFields()
