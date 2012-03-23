@@ -27,9 +27,14 @@ import org.miradi.objectdata.ObjectData;
 
 public class BaseObjectSchema
 {
-	public BaseObjectSchema(final Vector<AbstractFieldSchema> fieldSchemasToUse)
+	public BaseObjectSchema()
 	{
-		fieldSchemas = fieldSchemasToUse;
+		fieldSchemas = new Vector<AbstractFieldSchema>();
+	}
+	
+	public void addFieldSchema(final AbstractFieldSchema fieldSchema)
+	{
+		fieldSchemas.add(fieldSchema);
 	}
 	
 	public Vector<AbstractFieldSchema> getFieldSchemas()
