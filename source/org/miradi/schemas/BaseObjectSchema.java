@@ -41,7 +41,7 @@ public class BaseObjectSchema
 		return fieldSchemas;
 	}
 	
-	public Vector<ObjectData> createTagFieldMap()
+	public Vector<ObjectData> createTagFields()
 	{
 		Vector<ObjectData> fields = new Vector<ObjectData>();
 		for(AbstractFieldSchema fieldSchema : getFieldSchemas())

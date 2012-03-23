@@ -1535,7 +1535,7 @@ abstract public class BaseObject
 	private HashMap<String, ObjectData> createFieldsFromBaseObjectSchema()
 	{
 		HashMap<String, ObjectData> tagToFieldMap = new HashMap<String, ObjectData>();
-		final Vector<ObjectData> fieldSchemas = schema.createTagFieldMap();
+		final Vector<ObjectData> fieldSchemas = schema.createTagFields();
 		for(ObjectData objectData : fieldSchemas)
 		{
 			tagToFieldMap.put(objectData.getTag(), objectData);
