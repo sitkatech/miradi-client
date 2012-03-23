@@ -119,7 +119,7 @@ abstract public class BaseObject
 		this(objectManagerToUse, idToUse, new BaseObjectSchema());
 	}
 	
-	BaseObject(ObjectManager objectManagerToUse, BaseId idToUse, EnhancedJsonObject json) throws Exception
+	public BaseObject(ObjectManager objectManagerToUse, BaseId idToUse, EnhancedJsonObject json) throws Exception
 	{
 		this(objectManagerToUse, idToUse, json, new BaseObjectSchema());
 	}
