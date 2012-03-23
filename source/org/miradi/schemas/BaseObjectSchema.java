@@ -77,7 +77,7 @@ public class BaseObjectSchema
 		addFieldSchema(new FieldSchemaDate(fieldTag));
 	}
 	
-	public Vector<ObjectData> createTagFields()
+	public Vector<ObjectData> createFields()
 	{
 		Vector<ObjectData> fields = new Vector<ObjectData>();
 		for(AbstractFieldSchema fieldSchema : getFieldSchemas())
