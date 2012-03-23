@@ -117,9 +117,7 @@ abstract public class BaseObject
 
 	public BaseObject(ObjectManager objectManagerToUse, BaseId idToUse)
 	{
-		objectManager = objectManagerToUse;
-		setId(idToUse);
-		clear();
+		this(objectManagerToUse, idToUse, new BaseObjectSchema());
 	}
 	
 	BaseObject(ObjectManager objectManagerToUse, BaseId idToUse, EnhancedJsonObject json) throws Exception
@@ -1710,9 +1708,6 @@ abstract public class BaseObject
 	
 	private HashMap<String, ObjectData> createFieldsFromBaseObjectSchema()
 	{
-		if (schema == null)
-			return new HashMap<String, ObjectData>();
-		
 		HashMap<String, ObjectData> tagToFieldMap = new HashMap<String, ObjectData>();
 		final Vector<ObjectData> fieldSchemas = schema.createTagFieldMap();
 		for(ObjectData objectData : fieldSchemas)
