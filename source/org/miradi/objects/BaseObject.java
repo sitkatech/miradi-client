@@ -813,8 +813,8 @@ abstract public class BaseObject
 	void clear()
 	{
 		fields = new HashMap<String, ObjectData>();
-		createFieldsFromBaseObjectSchema();
 		nonUserFields = new HashSet<String>();
+		createFieldsFromBaseObjectSchema();
 
 		createExpandingUserTextField(TAG_LABEL);
 		createIdListField(TAG_RESOURCE_ASSIGNMENT_IDS, ResourceAssignment.getObjectType());
@@ -1539,6 +1539,8 @@ abstract public class BaseObject
 		{
 			fields.put(objectData.getTag(), objectData);
 		}
+		
+		nonUserFields.addAll(schema.getNonUserFields());
 	}
 	
 	abstract public int getType();

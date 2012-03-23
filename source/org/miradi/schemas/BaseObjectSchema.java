@@ -32,6 +32,7 @@ public class BaseObjectSchema
 	public BaseObjectSchema()
 	{
 		fieldSchemas = new Vector<AbstractFieldSchema>();
+		nonUserFields = new HashSet<String>();
 	}
 	
 	private void addFieldSchema(final AbstractFieldSchema fieldSchema)

@@ -542,7 +542,7 @@ public class ObjectTestCase extends TestCaseWithProject
 				return new TaggedObjectSet(objectManager, idAsInt, json);
 				
 			case ObjectType.TABLE_SETTINGS:
-				return new TableSettings(objectManager, idAsInt, json);
+				return new TableSettings(objectManager, idAsInt, json, schema);
 				
 			case ObjectType.THREAT_RATING_COMMENTS_DATA:
 				return new ThreatRatingCommentsData(objectManager, idAsInt, json);
