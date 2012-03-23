@@ -396,24 +396,7 @@ public class Indicator extends BaseObject
 	void clear()
 	{
 		super.clear();
-//FIXME urgent - these fields are temporarly being fed to clear through a schema		
-//		createSingleLineUserTextField(TAG_SHORT_LABEL);
-//		createChoiceField(TAG_PRIORITY, PriorityRatingQuestion.class);
-//		createIdListField(TAG_METHOD_IDS, Task.getObjectType());
-//		createCodeToUserStringMapField(TAG_THRESHOLDS_MAP);
-//		createCodeToUserStringMapField(TAG_THRESHOLD_DETAILS_MAP);
-//		createChoiceField(TAG_RATING_SOURCE, RatingSourceQuestion.class);
-//		createRefListField(TAG_MEASUREMENT_REFS);
-//		createMultiLineUserTextField(TAG_DETAIL);
-//		createMultiLineUserTextField(TAG_COMMENTS);
-//		createMultiLineUserTextField(TAG_VIABILITY_RATINGS_COMMENTS);
-//
-//		createChoiceField(TAG_FUTURE_STATUS_RATING, StatusQuestion.class);
-//		createDateField(TAG_FUTURE_STATUS_DATE);
-//		createSingleLineUserTextField(TAG_FUTURE_STATUS_SUMMARY);
-//		createMultiLineUserTextField(TAG_FUTURE_STATUS_DETAIL);
-//		createMultiLineUserTextField(TAG_FUTURE_STATUS_COMMENTS);
-		
+
 		createPseudoStringField(PSEUDO_TAG_TARGETS);
 		createPseudoStringField(PSEUDO_TAG_DIRECT_THREATS);
 		createPseudoStringField(PSEUDO_TAG_STRATEGIES);
