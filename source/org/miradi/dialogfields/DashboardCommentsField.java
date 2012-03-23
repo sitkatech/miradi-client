@@ -45,7 +45,7 @@ public class DashboardCommentsField extends AbstractDashboardClickableField
 		if (newlineAt >= 0)
 			firstLine = mapValue.substring(0, newlineAt) + "...";
 		
-		labelComponentToUse.setText(XmlUtilities2.getXmlDecoded(firstLine));
+		labelComponentToUse.setText(XmlUtilities2.convertXmlTextToPlainText(firstLine));
 	}
 	
 	public boolean hasComments() throws Exception

@@ -22,7 +22,7 @@ package org.miradi.utils;
 
 public class XmlUtilities2
 {
-	public static String getXmlDecoded(String value)
+	public static String convertXmlTextToPlainText(String value)
 	{
 		value = value.replaceAll("&#60;", "<");
 		value = value.replaceAll("&#x3c;", "<");
@@ -100,7 +100,7 @@ public class XmlUtilities2
 	
 	private static boolean isValidXmlWithNoHtmlTags(final String value)
 	{
-		final String decodedValue = getXmlDecoded(value);
+		final String decodedValue = convertXmlTextToPlainText(value);
 		final String encodedValue = getXmlEncoded(decodedValue);
 		
 		return encodedValue.equals(value);
