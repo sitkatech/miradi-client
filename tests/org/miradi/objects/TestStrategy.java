@@ -116,7 +116,7 @@ public class TestStrategy extends AbstractObjectWithBudgetDataToDeleteTestCase
 		activityIds.add(new BaseId(37));
 		strategy.setData(Strategy.TAG_ACTIVITY_IDS, activityIds.toString());
 		
-		Strategy got = (Strategy)BaseObject.createFromJson(getProject().getObjectManager(), strategy.getType(), strategy.toJson());
+		Strategy got = (Strategy)ObjectTestCase.createFromJson(getProject().getObjectManager(), strategy.getType(), strategy.toJson());
 		assertTrue("Didn't restore status?", got.isStatusDraft());
 		assertEquals("Didn't read activities?", strategy.getActivityIds(), got.getActivityIds());
 	}

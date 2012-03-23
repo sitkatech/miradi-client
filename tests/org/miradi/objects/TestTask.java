@@ -178,7 +178,7 @@ public class TestTask extends AbstractObjectWithBudgetDataToDeleteTestCase
 	{
 		Task parent = createBasicTree();
 		
-		Task got = (Task)BaseObject.createFromJson(getObjectManager(), parent.getType(), parent.toJson());
+		Task got = (Task)ObjectTestCase.createFromJson(getObjectManager(), parent.getType(), parent.toJson());
 		assertEquals("wrong count?", parent.getSubtaskCount(), got.getSubtaskCount());
 	}
 	

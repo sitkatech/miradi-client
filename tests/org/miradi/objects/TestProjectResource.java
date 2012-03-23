@@ -97,7 +97,7 @@ public class TestProjectResource extends TestCaseWithProject
 		ProjectResource resource = new ProjectResource(getObjectManager(), new BaseId(22));
 		assertEquals(tag + " didn't default properly?", "", resource.getData(tag));
 		resource.setData(tag, value);
-		ProjectResource got = (ProjectResource)ProjectResource.createFromJson(getObjectManager(), resource.getType(), resource.toJson());
+		ProjectResource got = (ProjectResource)ObjectTestCase.createFromJson(getObjectManager(), resource.getType(), resource.toJson());
 		assertEquals(tag + " didn't survive json?", resource.getData(tag), got.getData(tag));
 	}
 	
