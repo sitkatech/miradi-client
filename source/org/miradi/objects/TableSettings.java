@@ -32,22 +32,21 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.questions.SortDirectionQuestion;
-import org.miradi.questions.WorkPlanVisibleRowsQuestion;
+import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class TableSettings extends BaseObject
 {
-	public TableSettings(ObjectManager objectManager, BaseId idToUse)
+	public TableSettings(ObjectManager objectManager, BaseId idToUse, final BaseObjectSchema schemaToUse)
 	{
-		super(objectManager, idToUse);
+		super(objectManager, idToUse, schemaToUse);
 		clear();
 	}
 		
-	public TableSettings(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
+	public TableSettings(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json, final BaseObjectSchema schemaToUse) throws Exception
 	{
-		super(objectManager, new BaseId(idAsInt), json);
+		super(objectManager, new BaseId(idAsInt), json, schemaToUse);
 	}
 	
 	@Override
@@ -173,31 +172,7 @@ public class TableSettings extends BaseObject
 	{
 		return find(project.getObjectManager(), tableSettingsRef);
 	}
-	
-	@Override
-	void clear()
-	{
-		super.clear();
-
-		createCodeField(TAG_TABLE_IDENTIFIER);
-		createIntegerField(TAG_ROW_HEIGHT);
-		createDateUnitListField(TAG_DATE_UNIT_LIST_DATA);
-		createCodeToCodeListMapField(TAG_TABLE_SETTINGS_MAP);
-		createChoiceField(TAG_WORK_PLAN_VISIBLE_NODES_CODE, getQuestion(WorkPlanVisibleRowsQuestion.class));
 		
-		createRefListListField(TAG_TREE_EXPANSION_LIST);
-		setNonUserField(TAG_TREE_EXPANSION_LIST);
-		createTagListField(TAG_COLUMN_SEQUENCE_CODES);
-		setNonUserField(TAG_COLUMN_SEQUENCE_CODES);
-		createCodeToCodeMapField(TAG_COLUMN_WIDTHS);
-		setNonUserField(TAG_COLUMN_WIDTHS);
-		createCodeField(TAG_COLUMN_SORT_TAG);
-		setNonUserField(TAG_COLUMN_SORT_TAG);
-		createChoiceField(TAG_COLUMN_SORT_DIRECTION, getQuestion(SortDirectionQuestion.class));
-		setNonUserField(TAG_COLUMN_SORT_DIRECTION);
-		
-	}
-	
 	public static final String OBJECT_NAME = "TableSettings";
 	
 	public static final String WORK_PLAN_PROJECT_RESOURCE_FILTER_CODELIST_KEY = "WorkPlanProjectResourceFilterCodeListKey";
