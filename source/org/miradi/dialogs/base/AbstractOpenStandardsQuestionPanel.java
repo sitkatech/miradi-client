@@ -252,7 +252,7 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 
 	private PanelLabelWithSelectableText createLabelWithSelectableText(int level, String label)
 	{
-		label = XmlUtilities2.getXmlDecoded(label);
+		label = XmlUtilities2.convertXmlTextToPlainText(label);
 		PanelLabelWithSelectableText component = new PanelLabelWithSelectableText(label);
 		new TextAreaRightClickMouseHandler(getMainWindow().getActions(), component);		
 		component.setOpaque(true);
