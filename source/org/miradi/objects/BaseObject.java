@@ -488,9 +488,6 @@ abstract public class BaseObject
 		return getObjectManager().getDiagramChainWalker();
 	}
 		
-	abstract public int getType();
-	abstract public String getTypeName();
-	
 	@Override
 	public int hashCode()
 	{
@@ -1541,6 +1538,10 @@ abstract public class BaseObject
 		
 		return tagToFieldMap;
 	}
+	
+	abstract public int getType();
+
+	abstract public String getTypeName();
 
 	public static final String TAG_TIME_STAMP_MODIFIED = "TimeStampModified";
 	public static final String TAG_ID = "Id";
