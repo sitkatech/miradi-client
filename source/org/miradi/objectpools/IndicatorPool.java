@@ -27,10 +27,8 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Task;
 import org.miradi.project.ObjectManager;
-import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.RatingSourceQuestion;
-import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.schemas.BaseObjectSchema;
 
@@ -100,10 +98,5 @@ public class IndicatorPool extends EAMNormalObjectPool
 		schema.createPseudoQuestionField(Indicator.PSEUDO_TAG_FUTURE_STATUS_RATING_VALUE);
 		
 		return schema;
-	}
-
-	private ChoiceQuestion getQuestion(final Class questionClass)
-	{
-		return StaticQuestionManager.getQuestion(questionClass);
 	}
 }

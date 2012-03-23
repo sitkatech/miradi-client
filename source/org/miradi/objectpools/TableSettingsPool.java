@@ -25,6 +25,9 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.TableSettings;
 import org.miradi.project.ObjectManager;
+import org.miradi.questions.SortDirectionQuestion;
+import org.miradi.questions.WorkPlanVisibleRowsQuestion;
+import org.miradi.schemas.BaseObjectSchema;
 
 public class TableSettingsPool extends EAMNormalObjectPool
 {
@@ -47,5 +50,30 @@ public class TableSettingsPool extends EAMNormalObjectPool
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId)
 	{
 		return new TableSettings(objectManager, actualId);
+	}
+	
+	@Override
+	public BaseObjectSchema createSchema()
+	{
+		final BaseObjectSchema schema = super.createSchema();
+		
+		schema.createFieldSchemaCodeField(TableSettings.TAG_TABLE_IDENTIFIER);
+		schema.createFieldSchemaIntegerField(TableSettings.TAG_ROW_HEIGHT);
+		schema.createFieldSchemaDateUnitListField(TableSettings.TAG_DATE_UNIT_LIST_DATA);
+		schema.createFieldSchemaCodeToCodeListMapField(TableSettings.TAG_TABLE_SETTINGS_MAP);
+		schema.createFieldSchemaChoice(TableSettings.TAG_WORK_PLAN_VISIBLE_NODES_CODE, getQuestion(WorkPlanVisibleRowsQuestion.class));
+		
+		schema.createFieldSchemaRefListList(TableSettings.TAG_TREE_EXPANSION_LIST);
+		schema.setNonUserField(TableSettings.TAG_TREE_EXPANSION_LIST);
+		schema.createFieldSchemaTagList(TableSettings.TAG_COLUMN_SEQUENCE_CODES);
+		schema.setNonUserField(TableSettings.TAG_COLUMN_SEQUENCE_CODES);
+		schema.createFieldSchemaCodeToCodeMapField(TableSettings.TAG_COLUMN_WIDTHS);
+		schema.setNonUserField(TableSettings.TAG_COLUMN_WIDTHS);
+		schema.createFieldSchemaCodeField(TableSettings.TAG_COLUMN_SORT_TAG);
+		schema.setNonUserField(TableSettings.TAG_COLUMN_SORT_TAG);
+		schema.createFieldSchemaChoice(TableSettings.TAG_COLUMN_SORT_DIRECTION, getQuestion(SortDirectionQuestion.class));
+		schema.setNonUserField(TableSettings.TAG_COLUMN_SORT_DIRECTION);
+		
+		return schema;
 	}
 }

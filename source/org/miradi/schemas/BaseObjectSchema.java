@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import java.util.HashSet;
 import java.util.Vector;
 
 import org.miradi.objectdata.ObjectData;
@@ -78,6 +79,41 @@ public class BaseObjectSchema
 		addFieldSchema(new FieldSchemaDate(fieldTag));
 	}
 	
+	public void createFieldSchemaCodeField(final String fieldTag)
+	{
+		addFieldSchema(new FieldSchemaCode(fieldTag));
+	}
+	
+	public void createFieldSchemaIntegerField(final String fieldTag)
+	{
+		addFieldSchema(new FieldSchemaInteger(fieldTag));
+	}
+
+	public void createFieldSchemaDateUnitListField(final String fieldTag)
+	{
+		addFieldSchema(new FieldSchemaDateUnitList(fieldTag));
+	}
+
+	public void createFieldSchemaCodeToCodeListMapField(final String fieldTag)
+	{
+		addFieldSchema(new FieldSchemaCodeToCodeListMap(fieldTag));
+	}
+
+	public void createFieldSchemaRefListList(final String fieldTag)
+	{
+		addFieldSchema(new FieldSchemaRefListList(fieldTag));
+	}
+
+	public void createFieldSchemaTagList(final String fieldTag)
+	{
+		addFieldSchema(new FieldSchemaTagList(fieldTag));
+	}
+
+	public void createFieldSchemaCodeToCodeMapField(final String fieldTag)
+	{
+		addFieldSchema(new FieldSchemaCodeToCodeMap(fieldTag));
+	}
+	
 	public void createPseudoStringField(final String fieldTag)
 	{
 		addFieldSchema(new FieldSchemaPseudoStringField(fieldTag));
@@ -86,6 +122,16 @@ public class BaseObjectSchema
 	public void createPseudoQuestionField(final String fieldTag)
 	{
 		addFieldSchema(new FieldSchemaPseudoQuestionField(fieldTag));
+	}
+	
+	public void setNonUserField(String fieldTag)
+	{
+		nonUserFields.add(fieldTag);
+	}
+	
+	public HashSet<String> getNonUserFields()
+	{
+		return nonUserFields;
 	}
 	
 	public Vector<ObjectData> createFields(BaseObject baseObjectToUse)
@@ -101,4 +147,5 @@ public class BaseObjectSchema
 	}
 	
 	private Vector<AbstractFieldSchema> fieldSchemas;
+	private HashSet<String> nonUserFields;
 }
