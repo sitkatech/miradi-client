@@ -1038,11 +1038,6 @@ abstract public class BaseObject
 		return nonUserFields.contains(tag);
 	}
 	
-	public boolean isUserField(String tag)
-	{
-		return !isNonUserField(tag);
-	}
-	
 	public String[] getFieldTags()
 	{
 		return getTags().toArray(new String[0]);
