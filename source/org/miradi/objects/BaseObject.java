@@ -813,7 +813,7 @@ abstract public class BaseObject
 	void clear()
 	{
 		fields = new HashMap<String, ObjectData>();
-		fields.putAll(createFieldsFromBaseObjectSchema());
+		createFieldsFromBaseObjectSchema();
 		nonUserFields = new HashSet<String>();
 
 		createExpandingUserTextField(TAG_LABEL);
@@ -1532,7 +1532,7 @@ abstract public class BaseObject
 		return result.toString();
 	}
 	
-	private HashMap<String, ObjectData> createFieldsFromBaseObjectSchema()
+	private void createFieldsFromBaseObjectSchema()
 	{
 		HashMap<String, ObjectData> tagToFieldMap = new HashMap<String, ObjectData>();
 		final Vector<ObjectData> fieldSchemas = schema.createTagFields();
@@ -1541,7 +1541,8 @@ abstract public class BaseObject
 			tagToFieldMap.put(objectData.getTag(), objectData);
 		}
 		
-		return tagToFieldMap;
+		
+		fields.putAll(tagToFieldMap);
 	}
 	
 	abstract public int getType();
