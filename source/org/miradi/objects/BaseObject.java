@@ -1713,7 +1713,14 @@ abstract public class BaseObject
 		if (schema == null)
 			return new HashMap<String, ObjectData>();
 		
-		return schema.createTagFieldMap();
+		HashMap<String, ObjectData> tagToFieldMap = new HashMap<String, ObjectData>();
+		final Vector<ObjectData> fieldSchemas = schema.createTagFieldMap();
+		for(ObjectData objectData : fieldSchemas)
+		{
+			tagToFieldMap.put(objectData.getTag(), objectData);
+		}
+		
+		return tagToFieldMap;
 	}
 
 	public static final String TAG_TIME_STAMP_MODIFIED = "TimeStampModified";
