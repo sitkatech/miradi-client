@@ -812,7 +812,6 @@ abstract public class BaseObject
 
 	void clear()
 	{
-		fields = new HashMap<String, ObjectData>();
 		nonUserFields = new HashSet<String>();
 		createFieldsFromBaseObjectSchema();
 
@@ -1529,6 +1528,7 @@ abstract public class BaseObject
 	
 	private void createFieldsFromBaseObjectSchema()
 	{
+		fields = new HashMap<String, ObjectData>();
 		final Vector<ObjectData> fieldSchemas = schema.createFields(this);
 		for(ObjectData objectData : fieldSchemas)
 		{
