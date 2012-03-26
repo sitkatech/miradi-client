@@ -167,6 +167,17 @@ abstract public class ObjectData
 		return dependencyTags;
 	}
 	
+	public void setNavigationField(final boolean isNavigationFieldToUse)
+	{
+		isNavigationField = isNavigationFieldToUse;
+	}
+	
+	public boolean isNavigationField()
+	{
+		return isNavigationField;
+	}
+	
 	private HashSet<String> dependencyTags;
 	private String tag;
+	private boolean isNavigationField;
 }
