@@ -30,7 +30,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Target;
 import org.miradi.project.ObjectManager;
 
-public class TargetPool extends FactorPool
+public class TargetPool extends AbstractTargetPool
 {
 
 	public TargetPool(IdAssigner idAssignerToUse)
