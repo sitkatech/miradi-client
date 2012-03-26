@@ -25,11 +25,7 @@ import org.miradi.ids.IndicatorId;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
-import org.miradi.objects.Task;
 import org.miradi.project.ObjectManager;
-import org.miradi.questions.PriorityRatingQuestion;
-import org.miradi.questions.RatingSourceQuestion;
-import org.miradi.questions.StatusQuestion;
 import org.miradi.schemas.BaseObjectSchema;
 
 public class IndicatorPool extends BaseObjectPool
@@ -68,34 +64,8 @@ public class IndicatorPool extends BaseObjectPool
 	@Override
 	public BaseObjectSchema createSchema()
 	{
-		BaseObjectSchema schema = new BaseObjectSchema();
-		schema.createFieldSchemaSingleLineUserText(Indicator.TAG_SHORT_LABEL);
-		schema.createFieldSchemaChoice(Indicator.TAG_PRIORITY, getQuestion(PriorityRatingQuestion.class));
-		schema.createFieldSchemaIdList(Indicator.TAG_METHOD_IDS, Task.getObjectType());
-		schema.createFieldSchemaCodeToUserStringMap(Indicator.TAG_THRESHOLDS_MAP);
-		schema.createFieldSchemaCodeToUserStringMap(Indicator.TAG_THRESHOLD_DETAILS_MAP);
-		schema.createFieldSchemaChoice(Indicator.TAG_RATING_SOURCE, getQuestion(RatingSourceQuestion.class));
-		schema.createFieldSchemaReflist(Indicator.TAG_MEASUREMENT_REFS);
-		schema.createFieldSchemaMultiLineUserText(Indicator.TAG_DETAIL);
-		schema.createFieldSchemaMultiLineUserText(Indicator.TAG_COMMENTS);
-		schema.createFieldSchemaMultiLineUserText(Indicator.TAG_VIABILITY_RATINGS_COMMENTS);
-		schema.createFieldSchemaChoice(Indicator.TAG_FUTURE_STATUS_RATING, getQuestion(StatusQuestion.class));
-		schema.createFieldSchemaDate(Indicator.TAG_FUTURE_STATUS_DATE);
-		schema.createFieldSchemaSingleLineUserText(Indicator.TAG_FUTURE_STATUS_SUMMARY);
-		schema.createFieldSchemaMultiLineUserText(Indicator.TAG_FUTURE_STATUS_DETAIL);
-		schema.createFieldSchemaMultiLineUserText(Indicator.TAG_FUTURE_STATUS_COMMENTS);
-		
-		schema.createPseudoStringField(Indicator.PSEUDO_TAG_TARGETS);
-		schema.createPseudoStringField(Indicator.PSEUDO_TAG_DIRECT_THREATS);
-		schema.createPseudoStringField(Indicator.PSEUDO_TAG_STRATEGIES);
-		schema.createPseudoStringField(Indicator.PSEUDO_TAG_FACTOR);
-		schema.createPseudoStringField(Indicator.PSEUDO_TAG_METHODS);
-		schema.createPseudoStringField(Indicator.PSEUDO_TAG_INDICATOR_THRESHOLD_VALUE);
-		schema.createPseudoQuestionField(Indicator.PSEUDO_TAG_PRIORITY_VALUE);
-		schema.createPseudoQuestionField(Indicator.PSEUDO_TAG_STATUS_VALUE);
-		schema.createPseudoQuestionField(Indicator.PSEUDO_TAG_RATING_SOURCE_VALUE);
-		schema.createPseudoQuestionField(Indicator.PSEUDO_TAG_LATEST_MEASUREMENT_REF);
-		schema.createPseudoQuestionField(Indicator.PSEUDO_TAG_FUTURE_STATUS_RATING_VALUE);
+		BaseObjectSchema schema = super.createSchema();
+		schema = Indicator.addSchemaFields(schema);
 		
 		return schema;
 	}

@@ -832,7 +832,7 @@ abstract public class BaseObject
 		return singleItemSet;
 	}
 	
-	protected ChoiceQuestion getQuestion(Class questionClass)
+	protected static ChoiceQuestion getQuestion(Class questionClass)
 	{
 		return StaticQuestionManager.getQuestion(questionClass);
 	}
