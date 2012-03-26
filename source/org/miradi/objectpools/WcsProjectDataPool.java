@@ -26,7 +26,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.WcsProjectData;
 import org.miradi.project.ObjectManager;
 
-public class WcsProjectDataPool extends EAMNormalObjectPool
+public class WcsProjectDataPool extends BaseObjectPool
 {
 	public WcsProjectDataPool(IdAssigner idAssignerToUse)
 	{

@@ -27,7 +27,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.XslTemplate;
 import org.miradi.project.ObjectManager;
 
-public class XslTemplatePool extends EAMNormalObjectPool
+public class XslTemplatePool extends BaseObjectPool
 {
 	public XslTemplatePool(IdAssigner idAssignerToUse)
 	{
