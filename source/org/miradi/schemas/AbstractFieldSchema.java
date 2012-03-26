@@ -35,7 +35,18 @@ abstract public class AbstractFieldSchema
 		return tag;
 	}
 	
+	public void setNavigationField(final boolean isNavigationFieldToUse)
+	{
+		isNavigationField = isNavigationFieldToUse;
+	}
+	
+	public boolean isNavigationField()
+	{
+		return isNavigationField;
+	}
+	
 	abstract public ObjectData createField(final BaseObject baseObjectToUse);
 
 	private String tag;
+	private boolean isNavigationField;
 }

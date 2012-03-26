@@ -63,16 +63,11 @@ public class TableSettingsPool extends EAMNormalObjectPool
 		schema.createFieldSchemaCodeToCodeListMapField(TableSettings.TAG_TABLE_SETTINGS_MAP);
 		schema.createFieldSchemaChoice(TableSettings.TAG_WORK_PLAN_VISIBLE_NODES_CODE, getQuestion(WorkPlanVisibleRowsQuestion.class));
 		
-		schema.createFieldSchemaRefListList(TableSettings.TAG_TREE_EXPANSION_LIST);
-		schema.setNonUserField(TableSettings.TAG_TREE_EXPANSION_LIST);
-		schema.createFieldSchemaTagList(TableSettings.TAG_COLUMN_SEQUENCE_CODES);
-		schema.setNonUserField(TableSettings.TAG_COLUMN_SEQUENCE_CODES);
-		schema.createFieldSchemaCodeToCodeMapField(TableSettings.TAG_COLUMN_WIDTHS);
-		schema.setNonUserField(TableSettings.TAG_COLUMN_WIDTHS);
-		schema.createFieldSchemaCodeField(TableSettings.TAG_COLUMN_SORT_TAG);
-		schema.setNonUserField(TableSettings.TAG_COLUMN_SORT_TAG);
-		schema.createFieldSchemaChoice(TableSettings.TAG_COLUMN_SORT_DIRECTION, getQuestion(SortDirectionQuestion.class));
-		schema.setNonUserField(TableSettings.TAG_COLUMN_SORT_DIRECTION);
+		schema.createFieldSchemaRefListList(TableSettings.TAG_TREE_EXPANSION_LIST).setNavigationField(true);
+		schema.createFieldSchemaTagList(TableSettings.TAG_COLUMN_SEQUENCE_CODES).setNavigationField(true);
+		schema.createFieldSchemaCodeToCodeMapField(TableSettings.TAG_COLUMN_WIDTHS).setNavigationField(true);
+		schema.createFieldSchemaCodeField(TableSettings.TAG_COLUMN_SORT_TAG).setNavigationField(true);
+		schema.createFieldSchemaChoice(TableSettings.TAG_COLUMN_SORT_DIRECTION, getQuestion(SortDirectionQuestion.class)).setNavigationField(true);
 		
 		return schema;
 	}

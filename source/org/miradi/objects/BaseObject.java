@@ -1533,9 +1533,9 @@ abstract public class BaseObject
 		for(ObjectData objectData : fieldSchemas)
 		{
 			fields.put(objectData.getTag(), objectData);
+			if (objectData.isNavigationField())
+				nonUserFields.add(objectData.getTag());
 		}
-		
-		nonUserFields.addAll(schema.getNonUserFields());
 	}
 	
 	abstract public int getType();
