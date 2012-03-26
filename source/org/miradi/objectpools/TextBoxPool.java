@@ -27,7 +27,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.TextBox;
 import org.miradi.project.ObjectManager;
 
-public class TextBoxPool extends BaseObjectPool
+public class TextBoxPool extends FactorPool
 {
 	public TextBoxPool(IdAssigner idAssignerToUse)
 	{
