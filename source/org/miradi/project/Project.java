@@ -51,7 +51,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.PlanningPreferencesChangeHandler;
 import org.miradi.objecthelpers.ThreatStressRatingEnsurer;
 import org.miradi.objecthelpers.TimePeriodCostsMapsCache;
-import org.miradi.objectpools.AssignmentPool;
+import org.miradi.objectpools.ResourceAssignmentPool;
 import org.miradi.objectpools.CausePool;
 import org.miradi.objectpools.ConceptualModelDiagramPool;
 import org.miradi.objectpools.DiagramFactorPool;
@@ -346,7 +346,7 @@ public class Project
 		return objectManager.getGoalPool();
 	}
 	
-	public AssignmentPool getAssignmentPool()
+	public ResourceAssignmentPool getAssignmentPool()
 	{
 		return objectManager.getAssignmentPool();
 	}
