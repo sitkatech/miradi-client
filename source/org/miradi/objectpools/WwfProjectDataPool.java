@@ -26,7 +26,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.WwfProjectData;
 import org.miradi.project.ObjectManager;
 
-public class WwfProjectDataPool extends EAMNormalObjectPool
+public class WwfProjectDataPool extends BaseObjectPool
 {
 	public WwfProjectDataPool(IdAssigner idAssignerToUse)
 	{

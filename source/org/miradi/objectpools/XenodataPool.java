@@ -26,7 +26,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Xenodata;
 import org.miradi.project.ObjectManager;
 
-public class XenodataPool extends EAMNormalObjectPool
+public class XenodataPool extends BaseObjectPool
 {
 	public XenodataPool(IdAssigner idAssignerToUse)
 	{
