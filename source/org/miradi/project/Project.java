@@ -57,7 +57,7 @@ import org.miradi.objectpools.ConceptualModelDiagramPool;
 import org.miradi.objectpools.DiagramFactorPool;
 import org.miradi.objectpools.DiagramLinkPool;
 import org.miradi.objectpools.EAMObjectPool;
-import org.miradi.objectpools.ExpensePool;
+import org.miradi.objectpools.ExpenseAssignmentPool;
 import org.miradi.objectpools.FactorLinkPool;
 import org.miradi.objectpools.FundingSourcePool;
 import org.miradi.objectpools.GoalPool;
@@ -351,7 +351,7 @@ public class Project
 		return objectManager.getAssignmentPool();
 	}
 	
-	public ExpensePool getExpenseAssignmentPool()
+	public ExpenseAssignmentPool getExpenseAssignmentPool()
 	{
 		return objectManager.getExpenseAssignmentPool();
 	}
