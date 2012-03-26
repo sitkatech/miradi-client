@@ -130,6 +130,7 @@ public class BaseObjectSchema
 		for(AbstractFieldSchema fieldSchema : getFieldSchemas())
 		{
 			ObjectData field = fieldSchema.createField(baseObjectToUse);
+			field.setNavigationField(fieldSchema.isNavigationField());
 			fields.add(field);
 		}
 		
