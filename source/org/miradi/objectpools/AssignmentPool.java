@@ -26,7 +26,7 @@ import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.ObjectManager;
 
-public class AssignmentPool extends BaseObjectPool
+public class AssignmentPool extends AbstractAssignmentPool
 {
 	public AssignmentPool(IdAssigner idAssignerToUse)
 	{
