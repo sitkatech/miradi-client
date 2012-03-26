@@ -187,13 +187,13 @@ public class ViewData extends BaseObject
 		createChoiceField(TAG_MONITORING_TREE_CONFIGURATION_CHOICE, getQuestion(MonitoringTreeConfigurationQuestion.class));
 
 		createCodeField(TAG_CURRENT_WIZARD_STEP);
-		setNonUserField(TAG_CURRENT_WIZARD_STEP);
+		setIsNavigationField(TAG_CURRENT_WIZARD_STEP);
 		createIntegerField(TAG_CURRENT_TAB);
-		setNonUserField(TAG_CURRENT_TAB);
+		setIsNavigationField(TAG_CURRENT_TAB);
 		createRefField(TAG_CURRENT_CONCEPTUAL_MODEL_REF);
-		setNonUserField(TAG_CURRENT_CONCEPTUAL_MODEL_REF);
+		setIsNavigationField(TAG_CURRENT_CONCEPTUAL_MODEL_REF);
 		createRefField(TAG_CURRENT_RESULTS_CHAIN_REF);
-		setNonUserField(TAG_CURRENT_RESULTS_CHAIN_REF);
+		setIsNavigationField(TAG_CURRENT_RESULTS_CHAIN_REF);
 	}
 
 	public static final String TAG_CURRENT_CONCEPTUAL_MODEL_REF = "CurrentConceptualModelRef";
