@@ -31,7 +31,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.AccountingCodePool;
-import org.miradi.objectpools.AssignmentPool;
+import org.miradi.objectpools.ResourceAssignmentPool;
 import org.miradi.objectpools.AudiencePool;
 import org.miradi.objectpools.BudgetCategoryOnePool;
 import org.miradi.objectpools.BudgetCategoryTwoPool;
@@ -166,7 +166,7 @@ public class ObjectManager
 		addNormalPool(new GoalPool(ida), Goal.OBJECT_NAME);
 		addNormalPool(new ProjectMetadataPool(ida), ProjectMetadata.OBJECT_NAME);
 		addNormalPool(new DiagramLinkPool(ida), DiagramLink.OBJECT_NAME);
-		addNormalPool(new AssignmentPool(ida), ResourceAssignment.OBJECT_NAME);
+		addNormalPool(new ResourceAssignmentPool(ida), ResourceAssignment.OBJECT_NAME);
 		addNormalPool(new AccountingCodePool(ida), AccountingCode.OBJECT_NAME);
 		addNormalPool(new FundingSourcePool(ida), FundingSource.OBJECT_NAME);
 		addNormalPool(new KeyEcologicalAttributePool(ida), KeyEcologicalAttribute.OBJECT_NAME);
@@ -298,9 +298,9 @@ public class ObjectManager
 		return (GoalPool)getPool(ObjectType.GOAL);
 	}
 
-	public AssignmentPool getAssignmentPool()
+	public ResourceAssignmentPool getAssignmentPool()
 	{
-		return (AssignmentPool)getPool(ObjectType.RESOURCE_ASSIGNMENT);
+		return (ResourceAssignmentPool)getPool(ObjectType.RESOURCE_ASSIGNMENT);
 	}
 	
 	public ExpenseAssignmentPool getExpenseAssignmentPool()
