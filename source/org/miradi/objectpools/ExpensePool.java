@@ -25,7 +25,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.project.ObjectManager;
 
-public class ExpensePool extends BaseObjectPool
+public class ExpensePool extends AbstractAssignmentPool
 {
 	public ExpensePool(IdAssigner idAssignerToUse)
 	{
