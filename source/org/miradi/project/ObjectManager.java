@@ -43,7 +43,7 @@ import org.miradi.objectpools.DiagramFactorPool;
 import org.miradi.objectpools.DiagramLinkPool;
 import org.miradi.objectpools.BaseObjectPool;
 import org.miradi.objectpools.EAMObjectPool;
-import org.miradi.objectpools.ExpensePool;
+import org.miradi.objectpools.ExpenseAssignmentPool;
 import org.miradi.objectpools.FactorLinkPool;
 import org.miradi.objectpools.FosProjectDataPool;
 import org.miradi.objectpools.FundingSourcePool;
@@ -201,7 +201,7 @@ public class ObjectManager
 		addNormalPool(new TableSettingsPool(ida), TableSettings.OBJECT_NAME);
 		addNormalPool(new ThreatRatingCommentsDataPool(ida), ThreatRatingCommentsData.OBJECT_NAME);
 		addNormalPool(new ScopeBoxPool(ida), ScopeBox.OBJECT_NAME);
-		addNormalPool(new ExpensePool(ida), ExpenseAssignment.OBJECT_NAME);
+		addNormalPool(new ExpenseAssignmentPool(ida), ExpenseAssignment.OBJECT_NAME);
 		addNormalPool(new HumanWelfareTargetPool(ida), HumanWelfareTarget.OBJECT_NAME);
 		addNormalPool(new IucnRedlistSpeciesPool(ida), IucnRedlistSpecies.OBJECT_NAME);
 		addNormalPool(new OtherNotableSpeciesPool(ida), OtherNotableSpecies.OBJECT_NAME);
@@ -303,9 +303,9 @@ public class ObjectManager
 		return (AssignmentPool)getPool(ObjectType.RESOURCE_ASSIGNMENT);
 	}
 	
-	public ExpensePool getExpenseAssignmentPool()
+	public ExpenseAssignmentPool getExpenseAssignmentPool()
 	{
-		return (ExpensePool)getPool(ExpenseAssignment.getObjectType());
+		return (ExpenseAssignmentPool)getPool(ExpenseAssignment.getObjectType());
 	}
 
 	public KeyEcologicalAttributePool getKeyEcologicalAttributePool()
