@@ -121,8 +121,8 @@ public class TestBaseObject extends TestCaseWithProject
 	{
 		Cause cause = getProject().createCause();
 		cause.setNonUserField(Cause.TAG_TAXONOMY_CODE);
-		assertTrue("is user tag?" , cause.isNonUserField(Cause.TAG_TAXONOMY_CODE));
-		assertFalse("is non user tag?", cause.isNonUserField(Cause.TAG_LABEL));
+		assertTrue("is user tag?" , cause.isNavigationField(Cause.TAG_TAXONOMY_CODE));
+		assertFalse("is non user tag?", cause.isNavigationField(Cause.TAG_LABEL));
 	}
 	
 	public void testEquals() throws Exception
