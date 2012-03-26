@@ -28,19 +28,19 @@ import org.miradi.diagram.renderers.ChoiceItemXmlEncodedListCellRenderer;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 
-public class ChoiceItemWithXmlRendererComboBox extends AbstractChoiceItemComboBox
+public class ChoiceItemWithXmlTextRendererComboBox extends AbstractChoiceItemComboBox
 {
-	public ChoiceItemWithXmlRendererComboBox(ChoiceQuestion question)
+	public ChoiceItemWithXmlTextRendererComboBox(ChoiceQuestion question)
 	{
 		super(question.getChoices());
 	}
 
-	public ChoiceItemWithXmlRendererComboBox(Vector<ChoiceItem> items)
+	public ChoiceItemWithXmlTextRendererComboBox(Vector<ChoiceItem> items)
 	{
 		super(items.toArray(new ChoiceItem[0]));
 	}
 	
-	public ChoiceItemWithXmlRendererComboBox(ChoiceItem[] items)
+	public ChoiceItemWithXmlTextRendererComboBox(ChoiceItem[] items)
 	{
 		super(items);
 	}

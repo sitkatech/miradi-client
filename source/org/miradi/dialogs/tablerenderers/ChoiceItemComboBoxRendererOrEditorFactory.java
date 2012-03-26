@@ -26,7 +26,7 @@ import java.util.Vector;
 import javax.swing.JComponent;
 import javax.swing.JTable;
 
-import org.miradi.dialogs.fieldComponents.ChoiceItemWithXmlRendererComboBox;
+import org.miradi.dialogs.fieldComponents.ChoiceItemWithXmlTextRendererComboBox;
 import org.miradi.questions.ChoiceItem;
 
 public class ChoiceItemComboBoxRendererOrEditorFactory extends ObjectTableCellEditorOrRendererFactory
@@ -67,7 +67,7 @@ public class ChoiceItemComboBoxRendererOrEditorFactory extends ObjectTableCellEd
 		return editorComponent.getSelectedItem();
 	}
 	
-	private class HtmlEncodedCellEditor extends ChoiceItemWithXmlRendererComboBox
+	private class HtmlEncodedCellEditor extends ChoiceItemWithXmlTextRendererComboBox
 	{
 		public HtmlEncodedCellEditor(Vector<ChoiceItem> items)
 		{
@@ -75,7 +75,7 @@ public class ChoiceItemComboBoxRendererOrEditorFactory extends ObjectTableCellEd
 		}
 	}
 	
-	private class HtmlEncodedCellRenderer extends ChoiceItemWithXmlRendererComboBox
+	private class HtmlEncodedCellRenderer extends ChoiceItemWithXmlTextRendererComboBox
 	{
 		public HtmlEncodedCellRenderer(Vector<ChoiceItem> items)
 		{
