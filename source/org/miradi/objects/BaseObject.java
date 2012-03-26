@@ -554,7 +554,7 @@ abstract public class BaseObject
 	
 	public void setHtmlDataFromNonHtml(final String fieldTag, String nonHtmlDataValue) throws Exception
 	{
-		if (isNonUserField(fieldTag))
+		if (isNavigationField(fieldTag))
 			throw new RuntimeException("Cannot convert non user data to html and set. Tag = " + fieldTag);
 		
 		nonHtmlDataValue = HtmlUtilities.convertPlainTextToHtmlText(nonHtmlDataValue);
@@ -1031,7 +1031,7 @@ abstract public class BaseObject
 		getField(tag).setNavigationField(true);
 	}
 	
-	public boolean isNonUserField(String tag)
+	public boolean isNavigationField(String tag)
 	{
 		return getField(tag).isNavigationField();
 	}
