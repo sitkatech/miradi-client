@@ -26,7 +26,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProgressReport;
 import org.miradi.project.ObjectManager;
 
-public class ProgressReportPool extends EAMNormalObjectPool
+public class ProgressReportPool extends BaseObjectPool
 {
 	public ProgressReportPool(IdAssigner idAssignerToUse)
 	{

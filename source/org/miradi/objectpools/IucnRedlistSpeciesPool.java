@@ -27,7 +27,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.IucnRedlistSpecies;
 import org.miradi.project.ObjectManager;
 
-public class IucnRedlistSpeciesPool extends EAMNormalObjectPool
+public class IucnRedlistSpeciesPool extends BaseObjectPool
 {
 	public IucnRedlistSpeciesPool(IdAssigner idAssignerToUse)
 	{

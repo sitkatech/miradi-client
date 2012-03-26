@@ -26,7 +26,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Measurement;
 import org.miradi.project.ObjectManager;
 
-public class MeasurementPool extends EAMNormalObjectPool
+public class MeasurementPool extends BaseObjectPool
 {
 	public MeasurementPool(IdAssigner idAssignerToUse)
 	{

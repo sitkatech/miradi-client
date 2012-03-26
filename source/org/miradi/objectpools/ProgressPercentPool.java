@@ -26,7 +26,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProgressPercent;
 import org.miradi.project.ObjectManager;
 
-public class ProgressPercentPool extends EAMNormalObjectPool
+public class ProgressPercentPool extends BaseObjectPool
 {
 	public ProgressPercentPool(IdAssigner idAssignerToUse)
 	{

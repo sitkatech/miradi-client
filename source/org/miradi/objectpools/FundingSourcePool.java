@@ -26,7 +26,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.FundingSource;
 import org.miradi.project.ObjectManager;
 
-public class FundingSourcePool extends EAMNormalObjectPool
+public class FundingSourcePool extends BaseObjectPool
 {
 	public FundingSourcePool(IdAssigner idAssignerToUse)
 	{

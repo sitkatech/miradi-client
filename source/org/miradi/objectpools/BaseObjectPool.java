@@ -26,9 +26,9 @@ import org.miradi.project.ObjectManager;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.StaticQuestionManager;
 
-abstract public class EAMNormalObjectPool extends PoolWithIdAssigner
+abstract public class BaseObjectPool extends PoolWithIdAssigner
 {
-	public EAMNormalObjectPool(IdAssigner idAssignerToUse, int objectTypeToStore)
+	public BaseObjectPool(IdAssigner idAssignerToUse, int objectTypeToStore)
 	{
 		super(objectTypeToStore, idAssignerToUse);
 	}

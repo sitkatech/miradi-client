@@ -27,7 +27,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.ObjectManager;
 
-public class ThreatReductionResultPool extends EAMNormalObjectPool
+public class ThreatReductionResultPool extends BaseObjectPool
 {
 	public ThreatReductionResultPool(IdAssigner idAssignerToUse)
 	{

@@ -23,7 +23,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.objects.Desire;
 
-abstract public class DesirePool extends EAMNormalObjectPool
+abstract public class DesirePool extends BaseObjectPool
 {
 	public DesirePool(IdAssigner idAssignerToUse, int objectTypeToStore)
 	{

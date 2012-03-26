@@ -27,7 +27,7 @@ import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.project.ObjectManager;
 
-public class ObjectTreeTableConfigurationPool extends EAMNormalObjectPool
+public class ObjectTreeTableConfigurationPool extends BaseObjectPool
 {
 	public ObjectTreeTableConfigurationPool(IdAssigner idAssignerToUse)
 	{

@@ -25,7 +25,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.FosProjectData;
 import org.miradi.project.ObjectManager;
 
-public class FosProjectDataPool extends EAMNormalObjectPool
+public class FosProjectDataPool extends BaseObjectPool
 {
 	public FosProjectDataPool(IdAssigner idAssignerToUse)
 	{

@@ -26,7 +26,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.ThreatRatingCommentsData;
 import org.miradi.project.ObjectManager;
 
-public class ThreatRatingCommentsDataPool extends EAMNormalObjectPool
+public class ThreatRatingCommentsDataPool extends BaseObjectPool
 {
 	public ThreatRatingCommentsDataPool(IdAssigner idAssignerToUse)
 	{

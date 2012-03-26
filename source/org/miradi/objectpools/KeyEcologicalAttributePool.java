@@ -27,7 +27,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.project.ObjectManager;
 
-public class KeyEcologicalAttributePool extends EAMNormalObjectPool
+public class KeyEcologicalAttributePool extends BaseObjectPool
 {
 	public KeyEcologicalAttributePool(IdAssigner idAssignerToUse)
 	{

@@ -26,7 +26,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.ObjectManager;
 
-public class ThreatStressRatingPool extends EAMNormalObjectPool
+public class ThreatStressRatingPool extends BaseObjectPool
 {
 	public ThreatStressRatingPool(IdAssigner idAssignerToUse)
 	{

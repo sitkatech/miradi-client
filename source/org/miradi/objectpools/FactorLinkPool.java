@@ -30,7 +30,7 @@ import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 import org.miradi.project.ObjectManager;
 
-public class FactorLinkPool extends EAMNormalObjectPool
+public class FactorLinkPool extends BaseObjectPool
 {
 	public FactorLinkPool(IdAssigner idAssignerToUse)
 	{

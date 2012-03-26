@@ -25,7 +25,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.TncProjectData;
 import org.miradi.project.ObjectManager;
 
-public class TncProjectDataPool extends EAMNormalObjectPool
+public class TncProjectDataPool extends BaseObjectPool
 {
 	public TncProjectDataPool(IdAssigner idAssignerToUse)
 	{

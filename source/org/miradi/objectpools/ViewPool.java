@@ -26,7 +26,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.ViewData;
 import org.miradi.project.ObjectManager;
 
-public class ViewPool extends EAMNormalObjectPool
+public class ViewPool extends BaseObjectPool
 {
 	public ViewPool(IdAssigner idAssignerToUse)
 	{

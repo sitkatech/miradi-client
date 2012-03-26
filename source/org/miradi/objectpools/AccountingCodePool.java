@@ -26,7 +26,7 @@ import org.miradi.objects.AccountingCode;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.ObjectManager;
 
-public class AccountingCodePool extends EAMNormalObjectPool
+public class AccountingCodePool extends BaseObjectPool
 {
 	public AccountingCodePool(IdAssigner idAssignerToUse)
 	{

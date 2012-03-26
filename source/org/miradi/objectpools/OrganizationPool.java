@@ -26,7 +26,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Organization;
 import org.miradi.project.ObjectManager;
 
-public class OrganizationPool extends EAMNormalObjectPool
+public class OrganizationPool extends BaseObjectPool
 {
 	public OrganizationPool(IdAssigner idAssignerToUse)
 	{

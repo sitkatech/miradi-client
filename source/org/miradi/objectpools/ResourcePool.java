@@ -29,7 +29,7 @@ import org.miradi.objects.ProjectResource;
 import org.miradi.project.ObjectManager;
 import org.miradi.questions.ResourceRoleQuestion;
 
-public class ResourcePool extends EAMNormalObjectPool
+public class ResourcePool extends BaseObjectPool
 {
 	public ResourcePool(IdAssigner idAssignerToUse)
 	{

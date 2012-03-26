@@ -26,7 +26,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.RareProjectData;
 import org.miradi.project.ObjectManager;
 
-public class RareProjectDataPool extends EAMNormalObjectPool
+public class RareProjectDataPool extends BaseObjectPool
 {
 	public RareProjectDataPool(IdAssigner idAssignerToUse)
 	{
