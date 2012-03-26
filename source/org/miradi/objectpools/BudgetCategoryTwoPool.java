@@ -27,7 +27,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.BudgetCategoryTwo;
 import org.miradi.project.ObjectManager;
 
-public class BudgetCategoryTwoPool extends BaseObjectPool
+public class BudgetCategoryTwoPool extends AbstractBudgetCategoryObjectPool
 {
 	public BudgetCategoryTwoPool(IdAssigner idAssignerToUse)
 	{
