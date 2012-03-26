@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
-import java.util.HashSet;
 import java.util.Vector;
 
 import org.miradi.objectdata.ObjectData;
@@ -32,12 +31,12 @@ public class BaseObjectSchema
 	public BaseObjectSchema()
 	{
 		fieldSchemas = new Vector<AbstractFieldSchema>();
-		nonUserFields = new HashSet<String>();
 	}
 	
-	private void addFieldSchema(final AbstractFieldSchema fieldSchema)
+	private AbstractFieldSchema addFieldSchema(final AbstractFieldSchema fieldSchema)
 	{
 		fieldSchemas.add(fieldSchema);
+		return fieldSchema;
 	}
 	
 	public Vector<AbstractFieldSchema> getFieldSchemas()
@@ -45,74 +44,74 @@ public class BaseObjectSchema
 		return fieldSchemas;
 	}
 	
-	public void createFieldSchemaSingleLineUserText(String fieldTag)
+	public AbstractFieldSchema createFieldSchemaSingleLineUserText(String fieldTag)
 	{
-		addFieldSchema(new FieldSchemaSingleLineUserText(fieldTag));
+		return addFieldSchema(new FieldSchemaSingleLineUserText(fieldTag));
 	}
 	
-	public void createFieldSchemaChoice(final String fieldTag, final ChoiceQuestion question)
+	public AbstractFieldSchema createFieldSchemaChoice(final String fieldTag, final ChoiceQuestion question)
 	{
-		addFieldSchema(new FieldSchemaChoice(fieldTag, question));
+		return addFieldSchema(new FieldSchemaChoice(fieldTag, question));
 	}
 	
-	public void createFieldSchemaIdList(final String fieldTag, final int objectType)
+	public AbstractFieldSchema createFieldSchemaIdList(final String fieldTag, final int objectType)
 	{
-		addFieldSchema(new FieldSchemaIdList(fieldTag, objectType));
+		return addFieldSchema(new FieldSchemaIdList(fieldTag, objectType));
 	}
 	
-	public void createFieldSchemaCodeToUserStringMap(final String fieldTag)
+	public AbstractFieldSchema createFieldSchemaCodeToUserStringMap(final String fieldTag)
 	{
-		addFieldSchema(new FieldSchemaCodeToUserStringMap(fieldTag));
+		return addFieldSchema(new FieldSchemaCodeToUserStringMap(fieldTag));
 	}
 	
-	public void createFieldSchemaReflist(final String fieldTag)
+	public AbstractFieldSchema createFieldSchemaReflist(final String fieldTag)
 	{
-		addFieldSchema(new FieldSchemaReflist(fieldTag));
+		return addFieldSchema(new FieldSchemaReflist(fieldTag));
 	}
 	
-	public void createFieldSchemaMultiLineUserText(final String fieldTag)
+	public AbstractFieldSchema createFieldSchemaMultiLineUserText(final String fieldTag)
 	{
-		addFieldSchema(new FieldSchemaMultiLineUserText(fieldTag));
+		return addFieldSchema(new FieldSchemaMultiLineUserText(fieldTag));
 	}
 	
-	public void createFieldSchemaDate(final String fieldTag)
+	public AbstractFieldSchema createFieldSchemaDate(final String fieldTag)
 	{
-		addFieldSchema(new FieldSchemaDate(fieldTag));
+		return addFieldSchema(new FieldSchemaDate(fieldTag));
 	}
 	
-	public void createFieldSchemaCodeField(final String fieldTag)
+	public AbstractFieldSchema createFieldSchemaCodeField(final String fieldTag)
 	{
-		addFieldSchema(new FieldSchemaCode(fieldTag));
+		return addFieldSchema(new FieldSchemaCode(fieldTag));
 	}
 	
-	public void createFieldSchemaIntegerField(final String fieldTag)
+	public AbstractFieldSchema createFieldSchemaIntegerField(final String fieldTag)
 	{
-		addFieldSchema(new FieldSchemaInteger(fieldTag));
+		return addFieldSchema(new FieldSchemaInteger(fieldTag));
 	}
 
-	public void createFieldSchemaDateUnitListField(final String fieldTag)
+	public AbstractFieldSchema createFieldSchemaDateUnitListField(final String fieldTag)
 	{
-		addFieldSchema(new FieldSchemaDateUnitList(fieldTag));
+		return addFieldSchema(new FieldSchemaDateUnitList(fieldTag));
 	}
 
-	public void createFieldSchemaCodeToCodeListMapField(final String fieldTag)
+	public AbstractFieldSchema createFieldSchemaCodeToCodeListMapField(final String fieldTag)
 	{
-		addFieldSchema(new FieldSchemaCodeToCodeListMap(fieldTag));
+		return addFieldSchema(new FieldSchemaCodeToCodeListMap(fieldTag));
 	}
 
-	public void createFieldSchemaRefListList(final String fieldTag)
+	public AbstractFieldSchema createFieldSchemaRefListList(final String fieldTag)
 	{
-		addFieldSchema(new FieldSchemaRefListList(fieldTag));
+		return addFieldSchema(new FieldSchemaRefListList(fieldTag));
 	}
 
-	public void createFieldSchemaTagList(final String fieldTag)
+	public AbstractFieldSchema createFieldSchemaTagList(final String fieldTag)
 	{
-		addFieldSchema(new FieldSchemaTagList(fieldTag));
+		return addFieldSchema(new FieldSchemaTagList(fieldTag));
 	}
 
-	public void createFieldSchemaCodeToCodeMapField(final String fieldTag)
+	public AbstractFieldSchema createFieldSchemaCodeToCodeMapField(final String fieldTag)
 	{
-		addFieldSchema(new FieldSchemaCodeToCodeMap(fieldTag));
+		return addFieldSchema(new FieldSchemaCodeToCodeMap(fieldTag));
 	}
 	
 	public void createPseudoStringField(final String fieldTag)
@@ -123,16 +122,6 @@ public class BaseObjectSchema
 	public void createPseudoQuestionField(final String fieldTag)
 	{
 		addFieldSchema(new FieldSchemaPseudoQuestionField(fieldTag));
-	}
-	
-	public void setNonUserField(String fieldTag)
-	{
-		nonUserFields.add(fieldTag);
-	}
-	
-	public HashSet<String> getNonUserFields()
-	{
-		return nonUserFields;
 	}
 	
 	public Vector<ObjectData> createFields(BaseObject baseObjectToUse)
@@ -148,5 +137,4 @@ public class BaseObjectSchema
 	}
 	
 	private Vector<AbstractFieldSchema> fieldSchemas;
-	private HashSet<String> nonUserFields;
 }
