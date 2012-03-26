@@ -27,7 +27,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.GroupBox;
 import org.miradi.project.ObjectManager;
 
-public class GroupBoxPool extends BaseObjectPool
+public class GroupBoxPool extends FactorPool
 {
 	public GroupBoxPool(IdAssigner idAssignerToUse)
 	{

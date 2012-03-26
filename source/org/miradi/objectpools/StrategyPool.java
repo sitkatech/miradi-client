@@ -32,7 +32,7 @@ import org.miradi.objects.Factor;
 import org.miradi.objects.Strategy;
 import org.miradi.project.ObjectManager;
 
-public class StrategyPool extends BaseObjectPool
+public class StrategyPool extends FactorPool
 {
 
 	public StrategyPool(IdAssigner idAssignerToUse)

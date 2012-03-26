@@ -27,7 +27,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.project.ObjectManager;
 
-public class IntermediateResultPool extends BaseObjectPool
+public class IntermediateResultPool extends FactorPool
 {
 	public IntermediateResultPool(IdAssigner idAssignerToUse)
 	{

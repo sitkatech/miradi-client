@@ -30,7 +30,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.project.ObjectManager;
 
-public class CausePool extends BaseObjectPool
+public class CausePool extends FactorPool
 {
 	public CausePool(IdAssigner idAssignerToUse)
 	{
