@@ -32,7 +32,7 @@ import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.schemas.BaseObjectSchema;
 
-public class IndicatorPool extends EAMNormalObjectPool
+public class IndicatorPool extends BaseObjectPool
 {
 	public IndicatorPool(IdAssigner idAssignerToUse)
 	{

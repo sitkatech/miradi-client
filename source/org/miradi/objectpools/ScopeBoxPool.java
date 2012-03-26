@@ -27,7 +27,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.ScopeBox;
 import org.miradi.project.ObjectManager;
 
-public class ScopeBoxPool extends EAMNormalObjectPool
+public class ScopeBoxPool extends BaseObjectPool
 {
 	public ScopeBoxPool(IdAssigner idAssignerToUse)
 	{

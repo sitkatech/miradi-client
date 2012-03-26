@@ -26,7 +26,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.SubTarget;
 import org.miradi.project.ObjectManager;
 
-public class SubTargetPool extends EAMNormalObjectPool
+public class SubTargetPool extends BaseObjectPool
 {
 	public SubTargetPool(IdAssigner idAssignerToUse)
 	{

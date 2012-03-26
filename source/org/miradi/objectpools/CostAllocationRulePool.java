@@ -26,7 +26,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.CostAllocationRule;
 import org.miradi.project.ObjectManager;
 
-public class CostAllocationRulePool extends EAMNormalObjectPool
+public class CostAllocationRulePool extends BaseObjectPool
 {
 	public CostAllocationRulePool(IdAssigner idAssignerToUse)
 	{

@@ -26,7 +26,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.ReportTemplate;
 import org.miradi.project.ObjectManager;
 
-public class ReportTemplatePool extends EAMNormalObjectPool
+public class ReportTemplatePool extends BaseObjectPool
 {
 	public ReportTemplatePool(IdAssigner idAssignerToUse)
 	{

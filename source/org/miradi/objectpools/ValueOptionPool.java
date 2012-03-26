@@ -26,7 +26,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.ValueOption;
 import org.miradi.project.ObjectManager;
 
-public class ValueOptionPool extends EAMNormalObjectPool
+public class ValueOptionPool extends BaseObjectPool
 {
 	public ValueOptionPool(IdAssigner idAssignerToUse)
 	{

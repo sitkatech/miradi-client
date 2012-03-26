@@ -26,7 +26,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.ObjectManager;
 
-public class ProjectMetadataPool extends EAMNormalObjectPool
+public class ProjectMetadataPool extends BaseObjectPool
 {
 	public ProjectMetadataPool(IdAssigner idAssignerToUse)
 	{

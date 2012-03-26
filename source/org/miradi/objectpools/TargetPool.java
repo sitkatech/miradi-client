@@ -30,7 +30,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Target;
 import org.miradi.project.ObjectManager;
 
-public class TargetPool extends EAMNormalObjectPool
+public class TargetPool extends BaseObjectPool
 {
 
 	public TargetPool(IdAssigner idAssignerToUse)

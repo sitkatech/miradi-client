@@ -30,7 +30,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.project.ObjectManager;
 
-public class TaggedObjectSetPool extends EAMNormalObjectPool
+public class TaggedObjectSetPool extends BaseObjectPool
 {
 	public TaggedObjectSetPool(IdAssigner idAssignerToUse)
 	{

@@ -26,7 +26,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.RatingCriterion;
 import org.miradi.project.ObjectManager;
 
-public class RatingCriterionPool extends EAMNormalObjectPool
+public class RatingCriterionPool extends BaseObjectPool
 {
 	public RatingCriterionPool(IdAssigner idAssignerToUse)
 	{

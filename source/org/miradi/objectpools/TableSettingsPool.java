@@ -29,7 +29,7 @@ import org.miradi.questions.SortDirectionQuestion;
 import org.miradi.questions.WorkPlanVisibleRowsQuestion;
 import org.miradi.schemas.BaseObjectSchema;
 
-public class TableSettingsPool extends EAMNormalObjectPool
+public class TableSettingsPool extends BaseObjectPool
 {
 	public TableSettingsPool(IdAssigner idAssignerToUse)
 	{

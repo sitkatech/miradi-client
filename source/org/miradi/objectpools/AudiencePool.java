@@ -27,7 +27,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.OtherNotableSpecies;
 import org.miradi.project.ObjectManager;
 
-public class AudiencePool extends EAMNormalObjectPool
+public class AudiencePool extends BaseObjectPool
 {
 	public AudiencePool(IdAssigner idAssignerToUse)
 	{

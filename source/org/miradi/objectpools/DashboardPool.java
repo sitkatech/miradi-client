@@ -27,7 +27,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Dashboard;
 import org.miradi.project.ObjectManager;
 
-public class DashboardPool extends EAMNormalObjectPool
+public class DashboardPool extends BaseObjectPool
 {
 	public DashboardPool(IdAssigner idAssignerToUse)
 	{

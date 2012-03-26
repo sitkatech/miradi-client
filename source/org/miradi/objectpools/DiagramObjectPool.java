@@ -25,7 +25,7 @@ import org.miradi.ids.IdAssigner;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 
-public abstract class DiagramObjectPool extends EAMNormalObjectPool
+public abstract class DiagramObjectPool extends BaseObjectPool
 {
 	public DiagramObjectPool(IdAssigner idAssignerToUse, int objectTypeToStore)
 	{

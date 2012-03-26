@@ -27,7 +27,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Stress;
 import org.miradi.project.ObjectManager;
 
-public class StressPool extends EAMNormalObjectPool
+public class StressPool extends BaseObjectPool
 {
 	public StressPool(IdAssigner idAssignerToUse)
 	{

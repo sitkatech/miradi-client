@@ -29,7 +29,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Task;
 import org.miradi.project.ObjectManager;
 
-public class TaskPool extends EAMNormalObjectPool
+public class TaskPool extends BaseObjectPool
 {
 	public TaskPool(IdAssigner idAssignerToUse)
 	{

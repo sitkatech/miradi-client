@@ -27,7 +27,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.OtherNotableSpecies;
 import org.miradi.project.ObjectManager;
 
-public class OtherNotableSpeciesPool extends EAMNormalObjectPool
+public class OtherNotableSpeciesPool extends BaseObjectPool
 {
 	public OtherNotableSpeciesPool(IdAssigner idAssignerToUse)
 	{

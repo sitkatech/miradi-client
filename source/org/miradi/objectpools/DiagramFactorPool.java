@@ -27,7 +27,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.project.ObjectManager;
 
-public class DiagramFactorPool extends EAMNormalObjectPool
+public class DiagramFactorPool extends BaseObjectPool
 {
 	public DiagramFactorPool(IdAssigner idAssignerToUse)
 	{

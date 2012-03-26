@@ -30,7 +30,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.project.ObjectManager;
 
-public class HumanWelfareTargetPool extends EAMNormalObjectPool
+public class HumanWelfareTargetPool extends BaseObjectPool
 {
 	public HumanWelfareTargetPool(IdAssigner idAssignerToUse)
 	{
