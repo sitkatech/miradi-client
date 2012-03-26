@@ -41,7 +41,7 @@ import org.miradi.objectpools.CostAllocationRulePool;
 import org.miradi.objectpools.DashboardPool;
 import org.miradi.objectpools.DiagramFactorPool;
 import org.miradi.objectpools.DiagramLinkPool;
-import org.miradi.objectpools.EAMNormalObjectPool;
+import org.miradi.objectpools.BaseObjectPool;
 import org.miradi.objectpools.EAMObjectPool;
 import org.miradi.objectpools.ExpensePool;
 import org.miradi.objectpools.FactorLinkPool;
@@ -341,7 +341,7 @@ public class ObjectManager
 	public BaseId createObject(int objectType, BaseId objectId) throws Exception
 	{
 		BaseId createdId = BaseId.INVALID;
-		EAMNormalObjectPool pool = (EAMNormalObjectPool)getPool(objectType);
+		BaseObjectPool pool = (BaseObjectPool)getPool(objectType);
 		if(pool == null)
 			throw new RuntimeException("No pool for " + objectType);
 		BaseObject created = pool.createObject(this, objectId);
