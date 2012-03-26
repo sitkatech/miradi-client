@@ -812,7 +812,6 @@ abstract public class BaseObject
 
 	void clear()
 	{
-		nonUserFields = new HashSet<String>();
 		createFieldsFromBaseObjectSchema();
 
 		createExpandingUserTextField(TAG_LABEL);
@@ -1029,12 +1028,12 @@ abstract public class BaseObject
 	
 	protected void setNonUserField(String tag)
 	{
-		nonUserFields.add(tag);
+		getField(tag).setNavigationField(true);
 	}
 	
 	public boolean isNonUserField(String tag)
 	{
-		return nonUserFields.contains(tag);
+		return getField(tag).isNavigationField();
 	}
 	
 	public String[] getFieldTags()
@@ -1533,8 +1532,6 @@ abstract public class BaseObject
 		for(ObjectData objectData : fieldSchemas)
 		{
 			fields.put(objectData.getTag(), objectData);
-			if (objectData.isNavigationField())
-				nonUserFields.add(objectData.getTag());
 		}
 	}
 	
@@ -1561,7 +1558,6 @@ abstract public class BaseObject
 	protected BaseId id;
 
 	protected ObjectManager objectManager;
-	private HashMap<String, ObjectData> fields;
-	private HashSet<String> nonUserFields; 
+	private HashMap<String, ObjectData> fields; 
 	private BaseObjectSchema schema;
 }
