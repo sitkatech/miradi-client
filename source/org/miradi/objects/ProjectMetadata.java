@@ -421,7 +421,7 @@ public class ProjectMetadata extends BaseObject
 		createMultiLineUserTextField(TAG_NEXT_STEPS);
 
 		createCodeField(TAG_CURRENT_WIZARD_SCREEN_NAME);
-		setNonUserField(TAG_CURRENT_WIZARD_SCREEN_NAME);
+		setIsNavigationField(TAG_CURRENT_WIZARD_SCREEN_NAME);
 
 
 		createMultiLineUserTextField(TAG_TNC_LESSONS_LEARNED);

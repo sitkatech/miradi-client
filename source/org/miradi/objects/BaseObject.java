@@ -1026,7 +1026,7 @@ abstract public class BaseObject
 		getFields().put(tag, data);
 	}
 	
-	protected void setNonUserField(String tag)
+	protected void setIsNavigationField(String tag)
 	{
 		getField(tag).setNavigationField(true);
 	}
