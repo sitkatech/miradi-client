@@ -26,19 +26,20 @@ import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.schemas.TaggedObjectSetSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class TaggedObjectSet extends BaseObject
 {
 	public TaggedObjectSet(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse);
+		super(objectManager, idToUse, new TaggedObjectSetSchema());
 		clear();
 	}
 		
 	public TaggedObjectSet(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
 	{
-		super(objectManager, new BaseId(idAsInt), json);
+		super(objectManager, new BaseId(idAsInt), json, new TaggedObjectSetSchema());
 	}
 	
 	@Override
@@ -112,16 +113,6 @@ public class TaggedObjectSet extends BaseObject
 	public static TaggedObjectSet find(Project project, ORef eportTemplateRef)
 	{
 		return find(project.getObjectManager(), eportTemplateRef);
-	}
-
-	@Override
-	void clear()
-	{
-		super.clear();
-
-		createSingleLineUserTextField(TAG_SHORT_LABEL);
-		createRefListField(TAG_TAGGED_OBJECT_REFS);
-		createMultiLineUserTextField(TAG_COMMENTS);
 	}
 
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
