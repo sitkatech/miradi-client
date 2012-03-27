@@ -35,6 +35,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.TargetSet;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -51,6 +52,16 @@ abstract public class Factor extends BaseObject
 		super(objectManager, idToUse, json);
 	}
 	
+	public Factor(ObjectManager objectManager, FactorId idToUse, BaseObjectSchema schemaToUse)
+	{
+		super(objectManager, idToUse, schemaToUse);
+	}
+
+	public Factor(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json, BaseObjectSchema schemaToUse) throws Exception
+	{
+		super(objectManager, idToUse, json, schemaToUse);
+	}
+
 	public FactorId getFactorId()
 	{
 		return new FactorId(getId().asInt());

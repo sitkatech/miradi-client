@@ -37,19 +37,20 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
+import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 
 abstract public class AbstractTarget extends Factor
 {
-	public AbstractTarget(ObjectManager objectManager, FactorId idToUse)
+	public AbstractTarget(ObjectManager objectManager, FactorId idToUse, final BaseObjectSchema schemaToUse)
 	{
-		super(objectManager, idToUse);
+		super(objectManager, idToUse, schemaToUse);
 	}
 	
-	public AbstractTarget(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception
+	public AbstractTarget(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json, final BaseObjectSchema schemaToUse) throws Exception
 	{
-		super(objectManager, idToUse, json);
+		super(objectManager, idToUse, json, schemaToUse);
 	}
 
 	@Override
@@ -334,23 +335,6 @@ abstract public class AbstractTarget extends Factor
 		return getRefListData(TAG_GOAL_IDS);
 	}
 	
-	@Override
-	protected void clear()
-	{
-		super.clear();
-			
-		createChoiceField(TAG_TARGET_STATUS, StatusQuestion.class);
-		createChoiceField(TAG_VIABILITY_MODE, ViabilityModeQuestion.class);
-		createMultiLineUserTextField(TAG_CURRENT_STATUS_JUSTIFICATION);
-		createRefListField(TAG_SUB_TARGET_REFS);
-		createIdListField(TAG_GOAL_IDS, Goal.getObjectType());
-		createIdListField(TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, KeyEcologicalAttribute.getObjectType());
-
-		createPseudoStringField(PSEUDO_TAG_TARGET_VIABILITY);
-		createPseudoQuestionField(PSEUDO_TAG_TARGET_STATUS_VALUE);
-		createPseudoQuestionField(PSEUDO_TAG_VIABILITY_MODE_VALUE);
-	}
-
 	public static final String TAG_TARGET_STATUS = "TargetStatus";
 	public static final String TAG_VIABILITY_MODE = "ViabilityMode";
 	public static final String TAG_CURRENT_STATUS_JUSTIFICATION = "CurrentStatusJustification";
