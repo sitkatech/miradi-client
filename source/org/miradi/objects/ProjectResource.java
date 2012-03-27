@@ -32,7 +32,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.ResourceRoleQuestion;
-import org.miradi.questions.ResourceTypeQuestion;
+import org.miradi.schemas.ProjectResourceSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DoubleUtilities;
 import org.miradi.utils.EnhancedJsonObject;
@@ -41,13 +41,13 @@ public class ProjectResource extends BaseObject
 {
 	public ProjectResource(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse);
+		super(objectManager, idToUse, new ProjectResourceSchema());
 		clear();
 	}
 	
 	public ProjectResource(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
 	{
-		super(objectManager, new ProjectResourceId(idAsInt), json);
+		super(objectManager, new ProjectResourceId(idAsInt), json, new ProjectResourceSchema());
 	}
 
 	
@@ -227,36 +227,6 @@ public class ProjectResource extends BaseObject
 	public static ProjectResource find(Project project, ORef projectResourceRef)
 	{
 		return find(project.getObjectManager(), projectResourceRef);
-	}
-	
-	@Override
-	public void clear()
-	{
-		super.clear();
-		
-		createChoiceField(TAG_RESOURCE_TYPE, getQuestion(ResourceTypeQuestion.class));
-		createSingleLineUserTextField(TAG_INITIALS);
-		createSingleLineUserTextField(TAG_GIVEN_NAME);
-		createSingleLineUserTextField(TAG_SUR_NAME);
-		createSingleLineUserTextField(TAG_POSITION);
-		createSingleLineUserTextField(TAG_PHONE_NUMBER);
-		createSingleLineUserTextField(TAG_EMAIL);
-		createNumberField(TAG_COST_PER_UNIT);
-		createSingleLineUserTextField(TAG_ORGANIZATION);
-		createCodeListField(TAG_ROLE_CODES, getQuestion(ResourceRoleQuestion.class));
-		createMultiLineUserTextField(TAG_COMMENTS);
-		createSingleLineUserTextField(TAG_LOCATION);
-		createSingleLineUserTextField(TAG_PHONE_NUMBER_MOBILE);
-		createSingleLineUserTextField(TAG_PHONE_NUMBER_HOME);
-		createSingleLineUserTextField(TAG_PHONE_NUMBER_OTHER);
-		createSingleLineUserTextField(TAG_ALTERNATIVE_EMAIL);
-		createSingleLineUserTextField(TAG_IM_ADDRESS);
-		createSingleLineUserTextField(TAG_IM_SERVICE);
-		createDateField(TAG_DATE_UPDATED);
-		createBooleanField(TAG_IS_CCN_COACH);
-		createSingleLineUserTextField(TAG_CUSTOM_FIELD_1);
-		createSingleLineUserTextField(TAG_CUSTOM_FIELD_2);
-		
 	}
 	
 	public static final String TAG_RESOURCE_TYPE = "ResourceType";
