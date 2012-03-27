@@ -26,20 +26,20 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.ProgressReportLongStatusQuestion;
+import org.miradi.schemas.ProgressReportSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class ProgressReport extends BaseObject
 {
 	public ProgressReport(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse);
+		super(objectManager, idToUse, new ProgressReportSchema());
 		clear();
 	}
 		
 	public ProgressReport(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
 	{
-		super(objectManager, new BaseId(idAsInt), json);
+		super(objectManager, new BaseId(idAsInt), json, new ProgressReportSchema());
 	}
 	
 	@Override
@@ -125,16 +125,6 @@ public class ProgressReport extends BaseObject
 	public static ProgressReport find(Project project, ORef progressReportRef)
 	{
 		return find(project.getObjectManager(), progressReportRef);
-	}
-	
-	@Override
-	void clear()
-	{
-		super.clear();
-		
-		createChoiceField(TAG_PROGRESS_STATUS, getQuestion(ProgressReportLongStatusQuestion.class));
-		createDateField(TAG_PROGRESS_DATE);
-		createMultiLineUserTextField(TAG_DETAILS);
 	}
 	
 	public static final String OBJECT_NAME = "ProgressReport";

@@ -30,22 +30,12 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.project.ObjectManager;
 import org.miradi.questions.BudgetTimePeriodQuestion;
-import org.miradi.questions.CountriesQuestion;
-import org.miradi.questions.CurrencyTypeQuestion;
 import org.miradi.questions.DiagramObjectDataInclusionQuestion;
-import org.miradi.questions.FiscalYearStartQuestion;
-import org.miradi.questions.FontFamiliyQuestion;
-import org.miradi.questions.FontSizeQuestion;
-import org.miradi.questions.LanguageQuestion;
 import org.miradi.questions.PlanningTreeTargetPositionQuestion;
-import org.miradi.questions.ProtectedAreaCategoryQuestion;
 import org.miradi.questions.QuarterColumnsVisibilityQuestion;
 import org.miradi.questions.TargetModeQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
-import org.miradi.questions.TncFreshwaterEcoRegionQuestion;
-import org.miradi.questions.TncMarineEcoRegionQuestion;
-import org.miradi.questions.TncOperatingUnitsQuestion;
-import org.miradi.questions.TncTerrestrialEcoRegionQuestion;
+import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DoubleUtilities;
 import org.miradi.utils.EnhancedJsonObject;
@@ -55,13 +45,13 @@ public class ProjectMetadata extends BaseObject
 {
 	public ProjectMetadata(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse);
+		super(objectManager, idToUse, new ProjectMetadataSchema());
 		clear();
 	}
 
 	public ProjectMetadata(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
 	{
-		super(objectManager, new BaseId(idAsInt), json);
+		super(objectManager, new BaseId(idAsInt), json, new ProjectMetadataSchema());
 	}
 	
 	@Override
@@ -361,93 +351,6 @@ public class ProjectMetadata extends BaseObject
 		return getProjectName();
 	}
 	
-	@Override
-	void clear()
-	{
-		super.clear();
-		
-		createSingleLineUserTextField(TAG_PROJECT_NAME);
-		createChoiceField(TAG_PROJECT_LANGUAGE, new LanguageQuestion());
-		createMultiLineUserTextField(TAG_PROJECT_DESCRIPTION);
-		createSingleLineUserTextField(TAG_PROJECT_URL);
-		createMultiLineUserTextField(TAG_PROJECT_SCOPE);
-		createSingleLineUserTextField(TAG_SHORT_PROJECT_SCOPE);
-		createMultiLineUserTextField(TAG_SCOPE_COMMENTS);
-		createMultiLineUserTextField(TAG_PROJECT_VISION);
-		
-		createDateField(TAG_START_DATE);
-		createDateField(TAG_EXPECTED_END_DATE);
-		createDateField(TAG_DATA_EFFECTIVE_DATE);
-		
-		createIntegerField(TAG_CURRENCY_DECIMAL_PLACES);
-		createChoiceField(TAG_CURRENCY_TYPE, getQuestion(CurrencyTypeQuestion.class));
-		createSingleLineUserTextField(TAG_CURRENCY_SYMBOL);
-		createNumberField(TAG_TOTAL_BUDGET_FOR_FUNDING);
-		createPercentageField(TAG_BUDGET_SECURED_PERCENT);
-		createChoiceField(TAG_FISCAL_YEAR_START, getQuestion(FiscalYearStartQuestion.class));
-		createNumberField(TAG_FULL_TIME_EMPLOYEE_DAYS_PER_YEAR);
-		createChoiceField(TAG_QUARTER_COLUMNS_VISIBILITY, getQuestion(QuarterColumnsVisibilityQuestion.class));
-		createChoiceField(TAG_PLANNING_TREE_TARGET_NODE_POSITION, getQuestion(PlanningTreeTargetPositionQuestion.class));
-		
-		createFloatField(TAG_PROJECT_LATITUDE);
-		createFloatField(TAG_PROJECT_LONGITUDE);
-		// NOTE: ProjectArea should be a float, but can't be for legacy reasons
-		createSingleLineUserTextField(TAG_PROJECT_AREA);
-		createMultiLineUserTextField(TAG_PROJECT_AREA_NOTES);
-
-		createCodeListField(TAG_COUNTRIES, getQuestion(CountriesQuestion.class));
-		createSingleLineUserTextField(TAG_STATE_AND_PROVINCES);
-		createSingleLineUserTextField(TAG_MUNICIPALITIES);
-		createSingleLineUserTextField(TAG_LEGISLATIVE_DISTRICTS);
-		createMultiLineUserTextField(TAG_LOCATION_DETAIL);
-		createMultiLineUserTextField(TAG_LOCATION_COMMENTS);
-
-		createMultiLineUserTextField(TAG_KEY_FUNDING_SOURCES);
-		createMultiLineUserTextField(TAG_FINANCIAL_COMMENTS);
-		createDateField(TAG_WORKPLAN_START_DATE);
-		createDateField(TAG_WORKPLAN_END_DATE);
-		createChoiceField(TAG_WORKPLAN_TIME_UNIT, getQuestion(BudgetTimePeriodQuestion.class));
-		createMultiLineUserTextField(TAG_PLANNING_COMMENTS);
-		
-		createIntegerField(TAG_HUMAN_POPULATION);
-		createMultiLineUserTextField(TAG_HUMAN_POPULATION_NOTES);
-		createMultiLineUserTextField(TAG_SOCIAL_CONTEXT);
-		createSingleLineUserTextField(TAG_SITE_MAP_REFERENCE);
-
-		createCodeListField(TAG_PROTECTED_AREA_CATEGORIES, getQuestion(ProtectedAreaCategoryQuestion.class));
-		createMultiLineUserTextField(TAG_PROTECTED_AREA_CATEGORY_NOTES);
-
-		createMultiLineUserTextField(TAG_PROJECT_STATUS);
-		createMultiLineUserTextField(TAG_NEXT_STEPS);
-
-		createCodeField(TAG_CURRENT_WIZARD_SCREEN_NAME);
-		setIsNavigationField(TAG_CURRENT_WIZARD_SCREEN_NAME);
-
-
-		createMultiLineUserTextField(TAG_TNC_LESSONS_LEARNED);
-		createSingleLineUserTextField(TAG_TNC_WORKBOOK_VERSION_NUMBER);
-		createDateField(TAG_TNC_WORKBOOK_VERSION_DATE);
-		createDateField(TAG_TNC_DATABASE_DOWNLOAD_DATE);
-		createMultiLineUserTextField(TAG_TNC_PLANNING_TEAM_COMMENTS);
-		createCodeListField(TAG_TNC_OPERATING_UNITS, getQuestion(TncOperatingUnitsQuestion.class));
-		createCodeListField(TAG_TNC_TERRESTRIAL_ECO_REGION, getQuestion(TncTerrestrialEcoRegionQuestion.class));
-		createCodeListField(TAG_TNC_MARINE_ECO_REGION, getQuestion(TncMarineEcoRegionQuestion.class));
-		createCodeListField(TAG_TNC_FRESHWATER_ECO_REGION, getQuestion(TncFreshwaterEcoRegionQuestion.class));
-		
-		createSingleLineUserTextField(TAG_OTHER_ORG_PROJECT_NUMBER);
-		createSingleLineUserTextField(TAG_OTHER_ORG_RELATED_PROJECTS);
-		
-		createChoiceField(TAG_DIAGRAM_FONT_SIZE, getQuestion(FontSizeQuestion.class));
-		createChoiceField(TAG_DIAGRAM_FONT_FAMILY, getQuestion(FontFamiliyQuestion.class));
-		createChoiceField(TAG_THREAT_RATING_MODE, getQuestion(ThreatRatingModeChoiceQuestion.class));
-		createStringRefMapField(TAG_XENODATA_STRING_REF_MAP);
-		createChoiceField(TAG_HUMAN_WELFARE_TARGET_MODE, getQuestion(TargetModeQuestion.class));
-		createChoiceField(TAG_WORK_PLAN_DIAGRAM_DATA_INCLUSION, getQuestion(DiagramObjectDataInclusionQuestion.class));
-		
-		createPseudoStringField(PSEUDO_TAG_PROJECT_FILENAME);
-		createPseudoStringField(PSEUDO_TAG_ALL_THREAT_CLASSIFICATIONS);
-	}
-
 	public static final String TAG_CURRENT_WIZARD_SCREEN_NAME = "CurrentWizardScreenName";
 	public static final String TAG_PROJECT_NAME = "ProjectName";
 	public static final String TAG_PROJECT_LANGUAGE = "ProjectLanguage";
