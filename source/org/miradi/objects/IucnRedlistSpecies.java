@@ -25,19 +25,20 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.schemas.IucnRedlistSpeciesSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class IucnRedlistSpecies extends BaseObject
 {
 	public IucnRedlistSpecies(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse);
+		super(objectManager, idToUse, new IucnRedlistSpeciesSchema());
 		clear();
 	}
 		
 	public IucnRedlistSpecies(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
 	{
-		super(objectManager, new BaseId(idAsInt), json);
+		super(objectManager, new BaseId(idAsInt), json, new IucnRedlistSpeciesSchema());
 	}
 	
 	@Override
