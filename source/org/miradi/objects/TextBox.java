@@ -25,19 +25,20 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.schemas.TextBoxSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class TextBox extends Factor
 {
 	public TextBox(ObjectManager objectManager, FactorId idToUse)
 	{
-		super(objectManager, idToUse);
+		super(objectManager, idToUse, new TextBoxSchema());
 		clear();
 	}
 	
 	public TextBox(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception
 	{
-		super(objectManager, idToUse, json);
+		super(objectManager, idToUse, json, new TextBoxSchema());
 	}
 	
 	@Override
