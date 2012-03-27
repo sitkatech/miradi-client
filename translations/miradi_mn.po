@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-27 13:16-0500\n"
+"POT-Creation-Date: 2012-03-27 13:45-0500\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -8663,7 +8663,7 @@ msgstr ""
 msgid "[Error]"
 msgstr "[Алдаа]"
 
-#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:129
+#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:122
 msgid "[Main Diagram]"
 msgstr "Үндсэн Диаграмм]"
 
@@ -8679,7 +8679,7 @@ msgstr "[Шинэ Үр Дүнгийн Гинжих Холбоос]"
 msgid "[No Project]"
 msgstr "Төсөл байхгүй]"
 
-#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:130
+#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:123
 msgid "[Not Named]"
 msgstr "[Нэрлээгүй"
 
