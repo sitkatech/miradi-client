@@ -25,8 +25,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.ProjectSharingQuestion;
-import org.miradi.questions.TncOrganizationalPrioritiesQuestion;
-import org.miradi.questions.TncProjectPlaceTypeQuestion;
+import org.miradi.schemas.TncProjectDataSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -34,13 +33,13 @@ public class TncProjectData extends BaseObject
 {
 	public TncProjectData(ObjectManager objectManager, BaseId id)
 	{
-		super(objectManager, id);
+		super(objectManager, id, new TncProjectDataSchema());
 		clear();
 	}
 	
 	public TncProjectData(ObjectManager objectManager, int idAsInt, EnhancedJsonObject jsonObject) throws Exception 
 	{
-		super(objectManager, new BaseId(idAsInt), jsonObject);
+		super(objectManager, new BaseId(idAsInt), jsonObject, new TncProjectDataSchema());
 	}
 	
 	public CodeList getOrganizationalPriorityCodes()
@@ -96,21 +95,6 @@ public class TncProjectData extends BaseObject
 		return find(project.getObjectManager(), tncProjectDataRef);
 	}
 		
-	@Override
-	void clear()
-	{
-		super.clear();
-		
-		createChoiceField(TAG_PROJECT_SHARING_CODE, ProjectSharingQuestion.class);
-		createCodeListField(TAG_PROJECT_PLACE_TYPES, getProject().getQuestion(TncProjectPlaceTypeQuestion.class));
-		createCodeListField(TAG_ORGANIZATIONAL_PRIORITIES, getProject().getQuestion(TncOrganizationalPrioritiesQuestion.class));
-		createMultiLineUserTextField(TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT);
-		createMultiLineUserTextField(TAG_PROJECT_RESOURCES_SCORECARD);
-		createMultiLineUserTextField(TAG_PROJECT_LEVEL_COMMENTS);
-		createMultiLineUserTextField(TAG_PROJECT_CITATIONS);
-		createMultiLineUserTextField(TAG_CAP_STANDARDS_SCORECARD);
-	}
-	
 	public static final String OBJECT_NAME = "TncProjectData";
 
 	public final static String TAG_PROJECT_SHARING_CODE = "ProjectSharingCode";
