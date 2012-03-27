@@ -34,11 +34,9 @@ import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.StrategyClassificationQuestion;
-import org.miradi.questions.StrategyFeasibilityQuestion;
-import org.miradi.questions.StrategyImpactQuestion;
 import org.miradi.questions.StrategyRatingSummaryQuestion;
 import org.miradi.questions.StrategyStatusQuestion;
-import org.miradi.questions.StrategyTaxonomyQuestion;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -47,13 +45,13 @@ public class Strategy extends Factor
 {
 	public Strategy(ObjectManager objectManager, FactorId idToUse)
 	{
-		super(objectManager, idToUse);
+		super(objectManager, idToUse, new StrategySchema());
 		clear();
 	}
 	
 	public Strategy(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception
 	{
-		super(objectManager, idToUse, json);
+		super(objectManager, idToUse, json, new StrategySchema());
 	}
 
 	
@@ -319,28 +317,6 @@ public class Strategy extends Factor
 		return objectType == getObjectType();
 	}
 	
-	@Override
-	void clear()
-	{
-		super.clear();
-		createChoiceField(TAG_STATUS, StrategyStatusQuestion.class);
-		createIdListField(TAG_ACTIVITY_IDS, Task.getObjectType());
-	
-		createChoiceField(TAG_TAXONOMY_CODE, getQuestion(StrategyTaxonomyQuestion.class));
-		createChoiceField(TAG_IMPACT_RATING, getQuestion(StrategyImpactQuestion.class));
-		createChoiceField(TAG_FEASIBILITY_RATING, getQuestion(StrategyFeasibilityQuestion.class));
-		createMultiLineUserTextField(TAG_LEGACY_TNC_STRATEGY_RANKING);
-	
-		createPseudoStringField(PSEUDO_TAG_RATING_SUMMARY);
-		createPseudoQuestionField(PSEUDO_TAG_IMPACT_RATING_VALUE);
-		createPseudoQuestionField(PSEUDO_TAG_FEASIBILITY_RATING_VALUE);
-		createPseudoQuestionField(PSEUDO_TAG_RATING_SUMMARY_VALUE);
-		createPseudoQuestionField(PSEUDO_TAG_TAXONOMY_CODE_VALUE);
-		createPseudoStringField(PSEUDO_TAG_ACTIVITIES);
-		createPseudoRefListField(PSEUDO_TAG_RELEVANT_GOAL_REFS);
-		createPseudoRefListField(PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS);
-	}
-
 	public static final String TAG_ACTIVITY_IDS = "ActivityIds";
 	public static final String TAG_STATUS = "Status";
 	
