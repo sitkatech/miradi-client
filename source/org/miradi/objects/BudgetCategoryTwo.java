@@ -26,20 +26,21 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.schemas.BudgetCategoryTwoSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class BudgetCategoryTwo extends AbstractBudgetCategoryObject
 {
 	public BudgetCategoryTwo(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse);
+		super(objectManager, idToUse, new BudgetCategoryTwoSchema());
 		
 		clear();
 	}
 		
 	public BudgetCategoryTwo(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
 	{
-		super(objectManager, new BaseId(idAsInt), json);
+		super(objectManager, new BaseId(idAsInt), json, new BudgetCategoryTwoSchema());
 	}
 	
 	@Override
