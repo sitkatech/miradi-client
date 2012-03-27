@@ -32,21 +32,21 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.schemas.TableSettingsSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class TableSettings extends BaseObject
 {
-	public TableSettings(ObjectManager objectManager, BaseId idToUse, final BaseObjectSchema schemaToUse)
+	public TableSettings(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse, schemaToUse);
+		super(objectManager, idToUse, new TableSettingsSchema());
 		clear();
 	}
 		
-	public TableSettings(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json, final BaseObjectSchema schemaToUse) throws Exception
+	public TableSettings(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
 	{
-		super(objectManager, new BaseId(idAsInt), json, schemaToUse);
+		super(objectManager, new BaseId(idAsInt), json, new TableSettingsSchema());
 	}
 	
 	@Override
