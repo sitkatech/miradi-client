@@ -985,11 +985,6 @@ abstract public class BaseObject
 		addField(new DateUnitListData(tag));
 	}
 	
-	protected void createPseudoRefListField(String tag)
-	{
-		addField(new PseudoRefListData(this, tag));
-	}
-	
 	private void addField(ObjectData data)
 	{
 		addField(data.getTag(), data);
