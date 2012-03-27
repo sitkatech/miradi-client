@@ -22,19 +22,20 @@ package org.miradi.objects;
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
+import org.miradi.schemas.CostAllocationRuleSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class CostAllocationRule extends BaseObject
 {
 	public CostAllocationRule(ObjectManager objectManager, BaseId id)
 	{
-		super(objectManager, id);
+		super(objectManager, id, new CostAllocationRuleSchema());
 		clear();
 	}
 	
 	public CostAllocationRule(ObjectManager objectManager, int idAsInt, EnhancedJsonObject jsonObject) throws Exception 
 	{
-		super(objectManager, new BaseId(idAsInt), jsonObject);
+		super(objectManager, new BaseId(idAsInt), jsonObject, new CostAllocationRuleSchema());
 	}
 	
 	@Override
@@ -63,16 +64,6 @@ public class CostAllocationRule extends BaseObject
 	public static boolean canReferToThisType(int type)
 	{
 		return false;
-	}
-	
-	@Override
-	void clear()
-	{
-		super.clear();
-		
-		createRefField(TAG_PARENT_REF);
-		createRefField(TAG_CHILD_REF);
-		createIntegerField(TAG_COST_PERCENTAGE);
 	}
 	
 	public static final String TAG_PARENT_REF = "ParentRef";
