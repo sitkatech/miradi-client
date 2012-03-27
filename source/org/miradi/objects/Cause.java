@@ -27,19 +27,20 @@ import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ThreatClassificationQuestion;
+import org.miradi.schemas.CauseSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class Cause extends Factor
 {
 	public Cause(ObjectManager objectManager, FactorId idToUse)
 	{
-		super(objectManager, idToUse);
+		super(objectManager, idToUse, new CauseSchema());
 		clear();
 	}
 	
 	public Cause(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception
 	{
-		super(objectManager, idToUse, json);
+		super(objectManager, idToUse, json, new CauseSchema());
 	}
 	
 	@Override
@@ -153,16 +154,6 @@ public class Cause extends Factor
 	{
 		return find(project.getObjectManager(), causeRef);
 	}
-	
-	@Override
-	void clear()
-	{
-		super.clear();
-		
-		createChoiceField(TAG_TAXONOMY_CODE, new ThreatClassificationQuestion());
-		createBooleanField(TAG_IS_DIRECT_THREAT);
-		createPseudoQuestionField(PSEUDO_TAG_TAXONOMY_CODE_VALUE);
-	}	
 	
 	public static final String TAG_TAXONOMY_CODE = "TaxonomyCode";
 	public static final String TAG_IS_DIRECT_THREAT = "IsDirectThreat";
