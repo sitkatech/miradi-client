@@ -26,20 +26,21 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class AccountingCode extends AbstractBudgetCategoryObject
 {
 	public AccountingCode(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse);
+		super(objectManager, idToUse, new AccountingCodeSchema());
 
 		clear();
 	}
 	
 	public AccountingCode(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
 	{
-		super(objectManager, new AccountingCodeId(idAsInt), json);
+		super(objectManager, new AccountingCodeId(idAsInt), json, new AccountingCodeSchema());
 	}
 	
 	@Override

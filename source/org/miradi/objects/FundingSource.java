@@ -26,20 +26,21 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class FundingSource extends AbstractBudgetCategoryObject
 {
 	public FundingSource(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse);
+		super(objectManager, idToUse, new FundingSourceSchema());
 
 		clear();
 	}
 	
 	public FundingSource(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
 	{
-		super(objectManager, new FundingSourceId(idAsInt), json);
+		super(objectManager, new FundingSourceId(idAsInt), json, new FundingSourceSchema());
 	}
 	
 	@Override

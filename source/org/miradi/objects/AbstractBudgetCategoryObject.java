@@ -22,18 +22,19 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.project.ObjectManager;
+import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
 abstract public class AbstractBudgetCategoryObject extends BaseObject
 {
-	public AbstractBudgetCategoryObject(ObjectManager objectManagerToUse, BaseId idToUse)
+	public AbstractBudgetCategoryObject(ObjectManager objectManagerToUse, BaseId idToUse, final BaseObjectSchema schemaToUse)
 	{
-		super(objectManagerToUse, idToUse);
+		super(objectManagerToUse, idToUse, schemaToUse);
 	}
 
-	public AbstractBudgetCategoryObject(ObjectManager objectManager, BaseId idToUse, EnhancedJsonObject json) throws Exception
+	public AbstractBudgetCategoryObject(ObjectManager objectManager, BaseId idToUse, EnhancedJsonObject json, final BaseObjectSchema schemaToUse) throws Exception
 	{
-		super(objectManager, idToUse, json);
+		super(objectManager, idToUse, json, schemaToUse);
 	}
 	
 	@Override
