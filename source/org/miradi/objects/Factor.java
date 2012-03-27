@@ -22,7 +22,6 @@ package org.miradi.objects;
 import java.text.ParseException;
 
 import org.miradi.diagram.ChainWalker;
-import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
@@ -41,16 +40,6 @@ import org.miradi.utils.EnhancedJsonObject;
 
 abstract public class Factor extends BaseObject
 {
-	protected Factor(ObjectManager objectManager, BaseId idToUse)
-	{
-		super(objectManager, idToUse);
-	}
-	
-	protected Factor(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception
-	{
-		super(objectManager, idToUse, json);
-	}
-	
 	public Factor(ObjectManager objectManager, FactorId idToUse, BaseObjectSchema schemaToUse)
 	{
 		super(objectManager, idToUse, schemaToUse);
@@ -499,25 +488,6 @@ abstract public class Factor extends BaseObject
 		return findFactor(project.getObjectManager(), factorRef);
 	}
 	
-	@Override
-	void clear()
-	{
-		super.clear();
-		createMultiLineUserTextField(TAG_COMMENTS);
-		createMultiLineUserTextField(TAG_TEXT);
-		createSingleLineUserTextField(TAG_SHORT_LABEL);
-	    createIdListField(TAG_INDICATOR_IDS, Indicator.getObjectType());
-		createIdListField(TAG_OBJECTIVE_IDS, Objective.getObjectType());
-		
-		createPseudoStringField(PSEUDO_TAG_OBJECTIVES);
-		createPseudoStringField(PSEUDO_TAG_DIRECT_THREATS);
-		createPseudoStringField(PSEUDO_TAG_TARGETS);
-		createPseudoStringField(PSEUDO_TAG_INDICATORS);
-		createPseudoRefListField(PSEUDO_TAG_CONCEPTUAL_DIAGRAM_REFS);
-		createPseudoRefListField(PSEUDO_TAG_RESULTS_CHAIN_REFS);
-		createPseudoRefListField(PSEUDO_TAG_REFERRING_TAG_REFS);
-	}
-
 	public static final String TAG_COMMENTS = "Comments";
 	public static final String TAG_TEXT = "Text";
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
