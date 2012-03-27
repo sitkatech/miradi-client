@@ -24,21 +24,20 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.ReportTemplateContentQuestion;
+import org.miradi.schemas.ReportTemplateSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class ReportTemplate extends BaseObject
 {
 	public ReportTemplate(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse);
+		super(objectManager, idToUse, new ReportTemplateSchema(objectManager.getProject()));
 		clear();
 	}
 		
 	public ReportTemplate(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
 	{
-		super(objectManager, new BaseId(idAsInt), json);
+		super(objectManager, new BaseId(idAsInt), json, new ReportTemplateSchema(objectManager.getProject()));
 	}
 	
 	@Override
@@ -93,17 +92,6 @@ public class ReportTemplate extends BaseObject
 	public static ReportTemplate find(Project project, ORef reportTemplateRef)
 	{
 		return find(project.getObjectManager(), reportTemplateRef);
-	}
-
-	@Override
-	void clear()
-	{
-		super.clear();
-
-		createSingleLineUserTextField(TAG_SHORT_LABEL);
-		ChoiceQuestion reportContentsQuestion = new ReportTemplateContentQuestion(getProject());
-		createCodeListField(TAG_INCLUDE_SECTION_CODES, reportContentsQuestion);
-		createMultiLineUserTextField(TAG_COMMENTS);
 	}
 
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
