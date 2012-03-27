@@ -24,19 +24,20 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.schemas.RareProjectDataSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class RareProjectData extends BaseObject
 {
 	public RareProjectData(ObjectManager objectManager, BaseId id)
 	{
-		super(objectManager, id);
+		super(objectManager, id, new RareProjectDataSchema());
 		clear();
 	}
 	
 	public RareProjectData(ObjectManager objectManager, int idAsInt, EnhancedJsonObject jsonObject) throws Exception 
 	{
-		super(objectManager, new BaseId(idAsInt), jsonObject);
+		super(objectManager, new BaseId(idAsInt), jsonObject, new RareProjectDataSchema());
 	}
 	
 	@Override
@@ -77,24 +78,6 @@ public class RareProjectData extends BaseObject
 		return find(project.getObjectManager(), rareProjectDataRef);
 	}
 	
-	@Override
-	void clear()
-	{
-		super.clear();
-		
-		createSingleLineUserTextField(TAG_FLAGSHIP_SPECIES_COMMON_NAME);
-		createSingleLineUserTextField(TAG_FLAGSHIP_SPECIES_SCIENTIFIC_NAME);
-		createMultiLineUserTextField(TAG_FLAGSHIP_SPECIES_DETAIL);
-		createMultiLineUserTextField(TAG_CAMPAIGN_SLOGAN);
-		createMultiLineUserTextField(TAG_CAMPAIGN_THEORY_OF_CHANGE);
-		createMultiLineUserTextField(TAG_SUMMARY_OF_KEY_MESSAGES);
-		createSingleLineUserTextField(TAG_BIODIVERSITY_HOTSPOTS);
-		createSingleLineUserTextField(TAG_COHORT);
-		createIntegerField(TAG_NUMBER_OF_COMMUNITIES_IN_CAMPAIGN_AREA);
-		createMultiLineUserTextField(LEGACY_TAG_THREATS_ADDRESSED_NOTES);
-		createMultiLineUserTextField(TAG_MAIN_ACTIVITIES_NOTES);
-	}
-
 	public static final String OBJECT_NAME = "RareProjectData";
 	
 	public static final String TAG_FLAGSHIP_SPECIES_COMMON_NAME = "FlagshipSpeciesCommonName";
