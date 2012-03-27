@@ -28,7 +28,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.project.TNCViabilityFormula;
-import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
+import org.miradi.schemas.KeyEcologicalAttributeSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -36,13 +36,13 @@ public class KeyEcologicalAttribute extends BaseObject
 {
 	public KeyEcologicalAttribute(ObjectManager objectManager, KeyEcologicalAttributeId idToUse)
 	{
-		super(objectManager, idToUse);
+		super(objectManager, idToUse, new KeyEcologicalAttributeSchema());
 		clear();
 	}
 
 	public KeyEcologicalAttribute(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
 	{
-		super(objectManager, new BaseId(idAsInt), json);
+		super(objectManager, new BaseId(idAsInt), json, new KeyEcologicalAttributeSchema());
 	}
 	
 	@Override
@@ -187,19 +187,6 @@ public class KeyEcologicalAttribute extends BaseObject
 		return find(project.getObjectManager(), keaRef);
 	}
 	
-	@Override
-	void clear()
-	{
-		super.clear();
-		createIdListField(TAG_INDICATOR_IDS, Indicator.getObjectType());
-		createMultiLineUserTextField(TAG_DESCRIPTION);
-		createMultiLineUserTextField(TAG_DETAILS);
-		createChoiceField(TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE, KeyEcologicalAttributeTypeQuestion.class);
-		createSingleLineUserTextField(TAG_SHORT_LABEL);
-		
-		createPseudoStringField(PSEUDO_TAG_VIABILITY_STATUS);
-	}
-		
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
 	public static final String TAG_INDICATOR_IDS = "IndicatorIds";
 	public static final String TAG_DESCRIPTION = "Description";
