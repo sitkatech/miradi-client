@@ -27,6 +27,7 @@ import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.OptionalDouble;
 
@@ -34,13 +35,13 @@ public class ExpenseAssignment extends Assignment
 {
 	public ExpenseAssignment(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse);
+		super(objectManager, idToUse, new ExpenseAssignmentSchema());
 		clear();
 	}
 		
 	public ExpenseAssignment(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
 	{
-		super(objectManager, new BaseId(idAsInt), json);
+		super(objectManager, new BaseId(idAsInt), json, new ExpenseAssignmentSchema());
 	}
 		
 	@Override
@@ -139,15 +140,6 @@ public class ExpenseAssignment extends Assignment
 	public static ExpenseAssignment find(Project project, ORef expenseRef)
 	{
 		return find(project.getObjectManager(), expenseRef);
-	}
-	
-	@Override
-	public void clear()
-	{
-		super.clear();
-		
-		createRefField(TAG_ACCOUNTING_CODE_REF);
-		createRefField(TAG_FUNDING_SOURCE_REF);
 	}
 	
 	public static final String OBJECT_NAME = "ExpenseAssignment";

@@ -28,6 +28,7 @@ import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.OptionalDouble;
@@ -36,13 +37,13 @@ public class ResourceAssignment extends Assignment
 {
 	public ResourceAssignment(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, new ResourceAssignmentId(idToUse.asInt()));
+		super(objectManager, new ResourceAssignmentId(idToUse.asInt()), new ResourceAssignmentSchema());
 		clear();
 	}
 	
 	public ResourceAssignment(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
 	{
-		super(objectManager, new ResourceAssignmentId(idAsInt), json);
+		super(objectManager, new ResourceAssignmentId(idAsInt), json, new ResourceAssignmentSchema());
 	}
 	
 	@Override
@@ -200,24 +201,11 @@ public class ResourceAssignment extends Assignment
 		return find(project.getObjectManager(), assignmentRef);
 	}
 	
-	@Override
-	public void clear()
-	{
-		super.clear();
-		createBaseIdField(TAG_RESOURCE_ID, ProjectResource.getObjectType());
-		createBaseIdField(TAG_ACCOUNTING_CODE_ID, AccountingCode.getObjectType());
-		createBaseIdField(TAG_FUNDING_SOURCE_ID, FundingSource.getObjectType());
-		
-		createPseudoStringField(PSEUDO_TAG_PROJECT_RESOURCE_LABEL);
-		createPseudoStringField(PSEUDO_TAG_OWNING_FACTOR_NAME);
-	}
-	
 	public static final String TAG_RESOURCE_ID = "ResourceId";
 	public static final String TAG_ACCOUNTING_CODE_ID = "AccountingCode";
 	public static final String TAG_FUNDING_SOURCE_ID = "FundingSource";
 	public static final String PSEUDO_TAG_PROJECT_RESOURCE_LABEL = "PseudoTagProjectResourceLabel";
 	public static final String PSEUDO_TAG_OWNING_FACTOR_NAME = "PseudoTagOwningFactorName";
-	
 	
 	public static final String OBJECT_NAME = "ResourceAssignment";
 }
