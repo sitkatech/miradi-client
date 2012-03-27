@@ -26,12 +26,5 @@ public class GoalSchema extends DesireSchema
 	{
 		super();
 	}
-	
-	@Override
-	protected void fillFieldSchemas()
-	{
-		super.fillFieldSchemas();
-		
-	}
 }
 
