@@ -33,6 +33,7 @@ import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.OptionalDouble;
@@ -41,13 +42,13 @@ public class Task extends Factor
 {
 	public Task(ObjectManager objectManager, FactorId idToUse)
 	{
-		super(objectManager, idToUse);
+		super(objectManager, idToUse, new TaskSchema());
 		clear();
 	}
 	
 	public Task(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception
 	{
-		super(objectManager, idToUse, json);
+		super(objectManager, idToUse, json, new TaskSchema());
 	}
 		
 	public CommandVector getDeleteSelfAndSubtasksCommands(Project project) throws Exception
@@ -497,19 +498,6 @@ public class Task extends Factor
 	public static Task find(Project project, ORef taskRef)
 	{
 		return find(project.getObjectManager(), taskRef);
-	}
-	
-	@Override
-	public void clear()
-	{
-		super.clear();
-		createIdListField(TAG_SUBTASK_IDS, Task.getObjectType());
-		createMultiLineUserTextField(TAG_DETAILS);
-		
-		createPseudoStringField(PSEUDO_TAG_STRATEGY_LABEL);
-		createPseudoStringField(PSEUDO_TAG_INDICATOR_LABEL);
-		createPseudoRefListField(PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS);
-		createPseudoRefListField(PSEUDO_TAG_RELEVANT_GOAL_REFS);
 	}
 	
 	public final static String TAG_SUBTASK_IDS = "SubtaskIds";
