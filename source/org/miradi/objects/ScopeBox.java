@@ -25,20 +25,20 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.questions.ScopeBoxTypeQuestion;
+import org.miradi.schemas.ScopeBoxSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class ScopeBox extends Factor
 {
 	public ScopeBox(ObjectManager objectManager, FactorId idToUse)
 	{
-		super(objectManager, idToUse);
+		super(objectManager, idToUse, new ScopeBoxSchema());
 		clear();
 	}
 	
 	public ScopeBox(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception
 	{
-		super(objectManager, idToUse, json);
+		super(objectManager, idToUse, json, new ScopeBoxSchema());
 	}
 	
 	@Override
@@ -105,14 +105,6 @@ public class ScopeBox extends Factor
 	public static ScopeBox find(Project project, ORef objectRef)
 	{
 		return find(project.getObjectManager(), objectRef);
-	}
-	
-	@Override
-	void clear()
-	{
-		super.clear();
-		
-		createChoiceField(TAG_SCOPE_BOX_TYPE_CODE, ScopeBoxTypeQuestion.createScopeBoxTypeQuestion());
 	}
 	
 	public static final String OBJECT_NAME = "ScopeBox";
