@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-27 14:46-0500\n"
+"POT-Creation-Date: 2012-03-27 16:19-0500\n"
 "PO-Revision-Date: 2011-04-29 11:26+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -4482,7 +4482,7 @@ msgstr "(Codice di contabilità non definito)"
 msgid "Label|(Undefined Funding Source)"
 msgstr "(Fonte di finanziamento non definita)"
 
-#: Miradi/source/org/miradi/objects/ProjectResource.java:121
+#: Miradi/source/org/miradi/objects/ProjectResource.java:120
 msgid "Label|(Undefined Resource)"
 msgstr "(Risorsa non definita)"
 
