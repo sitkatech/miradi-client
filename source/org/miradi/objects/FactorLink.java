@@ -24,19 +24,20 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.schemas.FactorLinkSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class FactorLink extends BaseObject
 {
 	public FactorLink(ObjectManager objectManager, BaseId id) throws Exception
 	{
-		super(objectManager, id);
+		super(objectManager, id, new FactorLinkSchema());
 		clear();
 	}
 
 	public FactorLink(ObjectManager objectManager, int idAsInt, EnhancedJsonObject jsonObject) throws Exception 
 	{
-		super(objectManager, new BaseId(idAsInt), jsonObject);
+		super(objectManager, new BaseId(idAsInt), jsonObject, new FactorLinkSchema());
 	}
 	
 	@Override
@@ -94,18 +95,9 @@ public class FactorLink extends BaseObject
 		return (FactorLink) project.getObjectManager().findObject(factorLinkRef);
 	}
 	
-	@Override
-	void clear()
-	{
-		super.clear();
-		createRefField(TAG_FROM_REF);
-		createRefField(TAG_TO_REF);
-		createBooleanField(TAG_BIDIRECTIONAL_LINK);
-	}
-	
 	public static final String TAG_FROM_REF = "FromRef";
 	public static final String TAG_TO_REF = "ToRef";
-	private static final String TAG_BIDIRECTIONAL_LINK = "BidirectionalLink";
+	public static final String TAG_BIDIRECTIONAL_LINK = "BidirectionalLink";
 	
 	public static final String OBJECT_NAME = "Link";
 }
