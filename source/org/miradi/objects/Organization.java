@@ -25,19 +25,20 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.schemas.OrganizationSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class Organization extends BaseObject
 {
 	public Organization(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse);
+		super(objectManager, idToUse, new OrganizationSchema());
 		clear();
 	}
 		
 	public Organization(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
 	{
-		super(objectManager, new BaseId(idAsInt), json);
+		super(objectManager, new BaseId(idAsInt), json, new OrganizationSchema());
 	}
 	
 	@Override
@@ -103,20 +104,6 @@ public class Organization extends BaseObject
 	public static Organization find(Project project, ORef organizationRef)
 	{
 		return find(project.getObjectManager(), organizationRef);
-	}
-	
-	@Override
-	void clear()
-	{
-		super.clear();
-		
-		createSingleLineUserTextField(TAG_SHORT_LABEL);
-		createSingleLineUserTextField(TAG_ROLES_DESCRIPTION);
-		createSingleLineUserTextField(TAG_CONTACT_FIRST_NAME);
-		createSingleLineUserTextField(TAG_CONTACT_LAST_NAME);
-		createSingleLineUserTextField(TAG_EMAIL);
-		createSingleLineUserTextField(TAG_PHONE_NUMBER);
-		createMultiLineUserTextField(TAG_COMMENTS);
 	}
 	
 	public static final String OBJECT_NAME = "Organization";
