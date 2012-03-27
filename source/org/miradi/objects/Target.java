@@ -29,6 +29,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.HabitatAssociationQuestion;
+import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -37,13 +38,13 @@ public class Target extends AbstractTarget
 {
 	public Target(ObjectManager objectManager, FactorId idToUse)
 	{
-		super(objectManager, idToUse);
+		super(objectManager, idToUse, new TargetSchema());
 		clear();
 	}
 	
 	public Target(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception
 	{
-		super(objectManager, idToUse, json);
+		super(objectManager, idToUse, json, new TargetSchema());
 	}
 	
 	@Override
@@ -157,16 +158,6 @@ public class Target extends AbstractTarget
 		return is(ref.getObjectType());
 	}
 	
-	@Override
-	protected void clear()
-	{
-		super.clear();
-		createRefListField(TAG_STRESS_REFS);
-		createSingleLineUserTextField(TAG_SPECIES_LATIN_NAME);
-		createCodeListField(TAG_HABITAT_ASSOCIATION, getHabitatAssociationQuestion());
-		
-		createPseudoQuestionField(PSEUDO_TAG_HABITAT_ASSOCIATION_VALUE);
-	}
 
 	public static final String OBJECT_NAME = "Target";
 	
