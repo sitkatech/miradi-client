@@ -40,33 +40,24 @@ import org.miradi.main.EAM;
 import org.miradi.objectdata.BaseIdData;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objectdata.ChoiceData;
-import org.miradi.objectdata.CodeData;
 import org.miradi.objectdata.CodeListData;
 import org.miradi.objectdata.CodeToChoiceMapData;
 import org.miradi.objectdata.CodeToCodeListMapData;
 import org.miradi.objectdata.CodeToCodeMapData;
 import org.miradi.objectdata.CodeToUserStringMapData;
 import org.miradi.objectdata.DateData;
-import org.miradi.objectdata.DateUnitEffortListData;
 import org.miradi.objectdata.DateUnitListData;
 import org.miradi.objectdata.DimensionData;
-import org.miradi.objectdata.ExpandingUserTextData;
 import org.miradi.objectdata.FloatData;
 import org.miradi.objectdata.IdListData;
 import org.miradi.objectdata.IntegerData;
-import org.miradi.objectdata.MultiLineUserTextData;
 import org.miradi.objectdata.NumberData;
 import org.miradi.objectdata.ORefData;
 import org.miradi.objectdata.ObjectData;
-import org.miradi.objectdata.PercentageData;
 import org.miradi.objectdata.PointData;
 import org.miradi.objectdata.PointListData;
-import org.miradi.objectdata.PseudoQuestionData;
-import org.miradi.objectdata.PseudoRefListData;
-import org.miradi.objectdata.PseudoStringData;
 import org.miradi.objectdata.RefListData;
 import org.miradi.objectdata.RefListListData;
-import org.miradi.objectdata.SingleLineUserTextData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objectdata.TagListData;
 import org.miradi.objecthelpers.BaseObjectByNameSorter;
@@ -827,43 +818,7 @@ abstract public class BaseObject
 	{
 		return StaticQuestionManager.getQuestion(questionClass);
 	}
-	
-	protected void createSingleLineUserTextField(String tag)
-	{
-		addField(new SingleLineUserTextData(tag));
-	}
-	
-	protected void createExpandingUserTextField(String tag)
-	{
-		addField(new ExpandingUserTextData(tag));
-	}
-	
-	protected void createMultiLineUserTextField(String tag)
-	{
-		addField(new MultiLineUserTextData(tag));
-	}
-	
-	protected void createChoiceField(String tag, Class questionClass)
-	{
-		ChoiceQuestion question = getQuestion(questionClass);
-		createChoiceField(tag, question);
-	}
 
-	protected void createChoiceField(String tag, ChoiceQuestion question)
-	{
-		addField(new ChoiceData(tag, question));
-	}
-	
-	protected void createBooleanField(String tag)
-	{
-		addField(new BooleanData(tag));
-	}
-	
-	protected void createCodeField(String tag)
-	{
-		addField(new CodeData(tag));
-	}
-	
 	protected void createCodeListField(String tag, Class questionClass)
 	{
 		ChoiceQuestion question = getQuestion(questionClass);
@@ -885,61 +840,6 @@ abstract public class BaseObject
 		addField(new RefListData(tag));
 	}
 	
-	protected void createBaseIdField(String tag, int storedType)
-	{
-		addField(new BaseIdData(tag, storedType));
-	}
-
-	protected void createRefField(String tag)
-	{
-		addField(new ORefData(tag));
-	}
-	
-	protected void createIntegerField(String tag)
-	{
-		addField(new IntegerData(tag));
-	}
-	
-	protected void createNumberField(String tag)
-	{
-		addField(new NumberData(tag));
-	}
-	
-	protected void createFloatField(String tag)
-	{
-		addField(new FloatData(tag));
-	}
-	
-	protected void createPercentageField(String tag)
-	{
-		addField(new PercentageData(tag));
-	}
-	
-	protected void createDateField(String tag)
-	{
-		addField(new DateData(tag));
-	}
-
-	protected void createPointField(String tag)
-	{
-		addField(new PointData(tag));
-	}
-	
-	protected void createPointListField(String tag)
-	{
-		addField(new PointListData(tag));
-	}
-
-	protected void createDimensionField(String tag)
-	{
-		addField(new DimensionData(tag));
-	}
-	
-	protected void createDateUnitEffortListField(String tag)
-	{
-		addField(new DateUnitEffortListData(tag));
-	}
-
 	private void addField(ObjectData data)
 	{
 		addField(data.getTag(), data);
