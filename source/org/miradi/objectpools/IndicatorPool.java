@@ -26,7 +26,6 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
 import org.miradi.project.ObjectManager;
-import org.miradi.schemas.IndicatorSchema;
 
 public class IndicatorPool extends BaseObjectPool
 {
@@ -48,7 +47,7 @@ public class IndicatorPool extends BaseObjectPool
 	@Override
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId)
 	{
-		return new Indicator(objectManager, new IndicatorId(actualId.asInt()), new IndicatorSchema());
+		return new Indicator(objectManager, new IndicatorId(actualId.asInt()));
 	}
 	
 	public Indicator[] getAllIndicators()

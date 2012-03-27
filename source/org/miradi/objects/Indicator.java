@@ -35,20 +35,25 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.TargetSet;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class Indicator extends BaseObject
 {
-	public Indicator(final ObjectManager objectManager, final IndicatorId idToUse, final BaseObjectSchema schemaToUse)
+	public Indicator(final ObjectManager objectManager, final IndicatorId idToUse)
 	{
-		super(objectManager, idToUse, schemaToUse);
+		super(objectManager, idToUse, createSchema());
+	}
+
+	public Indicator(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
+	{
+		super(objectManager, new BaseId(idAsInt), json, createSchema());
 	}
 	
-	public Indicator(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json, BaseObjectSchema schema) throws Exception
+	private static IndicatorSchema createSchema()
 	{
-		super(objectManager, new BaseId(idAsInt), json, schema);
+		return new IndicatorSchema();
 	}
 	
 	public IdList getMethodIds()
