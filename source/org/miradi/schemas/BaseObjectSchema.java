@@ -176,6 +176,11 @@ public class BaseObjectSchema
 		return addFieldSchema(new FieldSchemaNumber(tag));
 	}
 	
+	public AbstractFieldSchema createFieldSchemaPercentage(final String tag)
+	{
+		return addFieldSchema(new FieldSchemaPercentage(tag));
+	}
+	
 	public void createPseudoStringField(final String fieldTag)
 	{
 		addFieldSchema(new FieldSchemaPseudoStringField(fieldTag));
