@@ -819,13 +819,6 @@ abstract public class BaseObject
 		return StaticQuestionManager.getQuestion(questionClass);
 	}
 
-	private void addField(String tag, ObjectData data)
-	{
-		if(!data.getTag().equals(tag))
-			throw new RuntimeException("Wrong tag: " + tag + " in " + data.getTag() + " for " + getRef());
-		getFields().put(tag, data);
-	}
-	
 	protected void setIsNavigationField(String tag)
 	{
 		getField(tag).setNavigationField(true);
