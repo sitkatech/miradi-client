@@ -24,12 +24,11 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.questions.CustomPlanningColumnsQuestion;
-import org.miradi.questions.CustomPlanningRowsQuestion;
 import org.miradi.questions.DiagramObjectDataInclusionQuestion;
 import org.miradi.questions.PlanningTreeTargetPositionQuestion;
 import org.miradi.questions.StrategyObjectiveTreeOrderQuestion;
 import org.miradi.questions.WorkPlanVisibleRowsQuestion;
+import org.miradi.schemas.ObjectTreeTableConfigurationSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -37,14 +36,14 @@ public class ObjectTreeTableConfiguration extends BaseObject implements Planning
 {
 	public ObjectTreeTableConfiguration(ObjectManager objectManager, BaseId id)
 	{
-		super(objectManager, id);
+		super(objectManager, id, new ObjectTreeTableConfigurationSchema(objectManager.getProject()));
 		
 		clear();
 	}
 	
 	public ObjectTreeTableConfiguration(ObjectManager objectManager, int idAsInt, EnhancedJsonObject jsonObject) throws Exception 
 	{
-		super(objectManager, new BaseId(idAsInt), jsonObject);
+		super(objectManager, new BaseId(idAsInt), jsonObject, new ObjectTreeTableConfigurationSchema(objectManager.getProject()));
 	}
 	
 	public CodeList getRowCodesToShow() throws Exception
@@ -138,17 +137,6 @@ public class ObjectTreeTableConfiguration extends BaseObject implements Planning
 		return find(project.getObjectManager(), planningViewConfigurationRef);
 	}
 	
-	@Override
-	void clear()
-	{
-		super.clear();
-		createCodeListField(TAG_ROW_CONFIGURATION, new CustomPlanningRowsQuestion(getProject()));
-		createCodeListField(TAG_COL_CONFIGURATION, CustomPlanningColumnsQuestion.class);
-		createChoiceField(TAG_DIAGRAM_DATA_INCLUSION, DiagramObjectDataInclusionQuestion.class);
-		createChoiceField(TAG_STRATEGY_OBJECTIVE_ORDER, StrategyObjectiveTreeOrderQuestion.class);
-		createChoiceField(TAG_TARGET_NODE_POSITION, PlanningTreeTargetPositionQuestion.class);
-	}
-
 	public static final String TAG_ROW_CONFIGURATION = "TagRowConfiguration";
 	public static final String TAG_COL_CONFIGURATION = "TagColConfiguration";
 	public static final String TAG_DIAGRAM_DATA_INCLUSION = "TagDiagramDataInclusion";
