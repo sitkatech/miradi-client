@@ -117,7 +117,7 @@ public class TestBaseObject extends TestCaseWithProject
 		assertEquals("Had referenced objects?", 0, task.getAllReferencedObjects().size());
 	}
 	
-	public void testIsPresentationDataField() throws Exception
+	public void testIsNavigationField() throws Exception
 	{
 		Cause cause = getProject().createCause();
 		cause.setIsNavigationField(Cause.TAG_TAXONOMY_CODE);
