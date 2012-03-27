@@ -27,21 +27,20 @@ import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.project.threatrating.StressBasedThreatFormula;
 import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.StressScopeChoiceQuestion;
-import org.miradi.questions.StressSeverityChoiceQuestion;
+import org.miradi.schemas.StressSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class Stress extends Factor
 {
 	public Stress(ObjectManager objectManager, FactorId idToUse)
 	{
-		super(objectManager, idToUse);
+		super(objectManager, idToUse, new StressSchema());
 		clear();
 	}
 	
 	public Stress(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception
 	{
-		super(objectManager, idToUse, json);
+		super(objectManager, idToUse, json, new StressSchema());
 	}
 	
 	@Override
@@ -181,18 +180,6 @@ public class Stress extends Factor
 	public String toString()
 	{
 		return getLabel();
-	}
-	
-	@Override
-	public void clear()
-	{
-		super.clear();
-		
-		createSingleLineUserTextField(TAG_SHORT_LABEL);
-		createMultiLineUserTextField(TAG_DETAIL);
-		createChoiceField(TAG_SCOPE, getQuestion(StressScopeChoiceQuestion.class));
-		createChoiceField(TAG_SEVERITY, getQuestion(StressSeverityChoiceQuestion.class));
-		createPseudoQuestionField(PSEUDO_STRESS_RATING);
 	}
 	
 	public static final String TAG_DETAIL = "Detail";
