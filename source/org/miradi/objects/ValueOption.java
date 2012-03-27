@@ -26,13 +26,14 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.schemas.ValueOptionSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class ValueOption extends BaseObject
 {
 	public ValueOption(ObjectManager objectManager, BaseId idToUse) throws Exception
 	{
-		super(objectManager, idToUse);
+		super(objectManager, idToUse, new ValueOptionSchema());
 		
 		clear();
 		setData(TAG_COLOR, Integer.toString(Color.BLACK.getRGB()));
@@ -49,7 +50,7 @@ public class ValueOption extends BaseObject
 	
 	public ValueOption(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
 	{
-		super(objectManager, new BaseId(idAsInt), json);
+		super(objectManager, new BaseId(idAsInt), json, new ValueOptionSchema());
 	}
 	
 	@Override
@@ -105,15 +106,6 @@ public class ValueOption extends BaseObject
 		return getLabel();
 	}
 
-	@Override
-	void clear()
-	{
-		super.clear();
-		
-		createIntegerField(TAG_NUMERIC);
-		createIntegerField(TAG_COLOR);
-	}
-	
 	final public static String TAG_NUMERIC = "Numeric";
 	final public static String TAG_COLOR = "Color";
 	final private static Color INVALID_GRAY = new Color(200,200,200);
