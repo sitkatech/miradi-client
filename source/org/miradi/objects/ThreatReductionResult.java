@@ -25,19 +25,20 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.schemas.ThreatReductionResultSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class ThreatReductionResult extends Factor
 {
 	public ThreatReductionResult(ObjectManager objectManager, FactorId idToUse)
 	{
-		super(objectManager, idToUse);
+		super(objectManager, idToUse, new ThreatReductionResultSchema());
 		clear();
 	}
 	
 	public ThreatReductionResult(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception
 	{
-		super(objectManager, idToUse, json);
+		super(objectManager, idToUse, json, new ThreatReductionResultSchema());
 	}
 	
 	@Override
@@ -127,14 +128,6 @@ public class ThreatReductionResult extends Factor
 		return find(project.getObjectManager(), threatReductionResultRef);
 	}
 	
-	@Override
-	void clear()
-	{
-		super.clear();
-		
-		createRefField(TAG_RELATED_DIRECT_THREAT_REF);
-	}
-
 	public static final String TAG_RELATED_DIRECT_THREAT_REF = "RelatedDirectThreatRef";
 	public static final String OBJECT_NAME = "ThreatReductionResult";
 }
