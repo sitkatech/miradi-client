@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-27 14:46-0500\n"
+"POT-Creation-Date: 2012-03-27 16:19-0500\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -4576,7 +4576,7 @@ msgstr ""
 msgid "Label|(Undefined Funding Source)"
 msgstr ""
 
-#: Miradi/source/org/miradi/objects/ProjectResource.java:121
+#: Miradi/source/org/miradi/objects/ProjectResource.java:120
 msgid "Label|(Undefined Resource)"
 msgstr "(Undefinierte Ressource)"
 
