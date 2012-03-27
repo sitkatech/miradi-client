@@ -24,23 +24,20 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.questions.CountriesQuestion;
-import org.miradi.questions.WwfEcoRegionsQuestion;
-import org.miradi.questions.WwfManagingOfficesQuestion;
-import org.miradi.questions.WwfRegionsQuestion;
+import org.miradi.schemas.WwfProjectDataSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class WwfProjectData extends BaseObject
 {
 	public WwfProjectData(ObjectManager objectManager, BaseId id)
 	{
-		super(objectManager, id);
+		super(objectManager, id, new WwfProjectDataSchema());
 		clear();
 	}
 	
 	public WwfProjectData(ObjectManager objectManager, int idAsInt, EnhancedJsonObject jsonObject) throws Exception 
 	{
-		super(objectManager, new BaseId(idAsInt), jsonObject);
+		super(objectManager, new BaseId(idAsInt), jsonObject, new WwfProjectDataSchema());
 	}
 	
 	@Override
@@ -81,17 +78,6 @@ public class WwfProjectData extends BaseObject
 		return find(project.getObjectManager(), wwfProjectDataRef);
 	}
 	
-	@Override
-	void clear()
-	{
-		super.clear();
-		
-		createCodeListField(TAG_MANAGING_OFFICES, getQuestion(WwfManagingOfficesQuestion.class));
-		createCodeListField(TAG_REGIONS, getQuestion(WwfRegionsQuestion.class));
-		createCodeListField(TAG_COUNTRIES, getQuestion(CountriesQuestion.class));
-		createCodeListField(TAG_ECOREGIONS, getQuestion(WwfEcoRegionsQuestion.class));
-	}
-
 	public static final String TAG_MANAGING_OFFICES = "ManagingOffices";
 	public static final String TAG_REGIONS = "Regions";
 	public static final String TAG_COUNTRIES = "Countries";
