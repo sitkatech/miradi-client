@@ -27,6 +27,7 @@ import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectCalendar;
+import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
@@ -35,14 +36,14 @@ import org.miradi.utils.OptionalDouble;
 
 abstract public class Assignment extends BaseObject
 {
-	public Assignment(ObjectManager objectManagerToUse, BaseId idToUse)
+	public Assignment(ObjectManager objectManagerToUse, BaseId idToUse, final BaseObjectSchema schema)
 	{
-		super(objectManagerToUse, idToUse);
+		super(objectManagerToUse, idToUse, schema);
 	}
 	
-	public Assignment(ObjectManager objectManager, BaseId idToUse, EnhancedJsonObject json) throws Exception
+	public Assignment(ObjectManager objectManager, BaseId idToUse, EnhancedJsonObject json, final BaseObjectSchema schema) throws Exception
 	{
-		super(objectManager, idToUse, json);
+		super(objectManager, idToUse, json, schema);
 	}
 	
 	public DateUnitEffortList getDateUnitEffortList() throws Exception
@@ -247,16 +248,6 @@ abstract public class Assignment extends BaseObject
 	public static Assignment findAssignment(Project project, ORef assignmentRef)
 	{
 		return findAssignment(project.getObjectManager(), assignmentRef);
-	}
-	
-	@Override
-	public void clear()
-	{
-		super.clear();
-		
-		createDateUnitEffortListField(TAG_DATEUNIT_EFFORTS);
-		createRefField(TAG_CATEGORY_ONE_REF);
-		createRefField(TAG_CATEGORY_TWO_REF);
 	}
 	
 	abstract protected TimePeriodCosts createTimePeriodCosts(OptionalDouble quantity);

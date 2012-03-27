@@ -66,6 +66,16 @@ public class BaseObjectSchema
 		return addFieldSchema(new FieldSchemaCodeToUserStringMap(fieldTag));
 	}
 	
+	public AbstractFieldSchema createFieldSchemaBaseId(final String fieldTag, final int objectType)
+	{
+		return addFieldSchema(new FieldSchemaBaseId(fieldTag, objectType));
+	}
+	
+	public AbstractFieldSchema createFieldSchemaRef(final String fieldTag)
+	{
+		return addFieldSchema(new FieldSchemaRef(fieldTag));
+	}
+	
 	public AbstractFieldSchema createFieldSchemaReflist(final String fieldTag)
 	{
 		return addFieldSchema(new FieldSchemaReflist(fieldTag));
@@ -114,6 +124,11 @@ public class BaseObjectSchema
 	public AbstractFieldSchema createFieldSchemaCodeToCodeMapField(final String fieldTag)
 	{
 		return addFieldSchema(new FieldSchemaCodeToCodeMap(fieldTag));
+	}
+	
+	public AbstractFieldSchema createFieldSchemaDateUnitEffortList(final String fieldTag)
+	{
+		return addFieldSchema(new FieldSchemaDateUnitEffortList(fieldTag));
 	}
 	
 	public void createPseudoStringField(final String fieldTag)
