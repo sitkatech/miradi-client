@@ -29,12 +29,8 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.questions.ActionTreeConfigurationQuestion;
 import org.miradi.questions.DiagramModeQuestion;
-import org.miradi.questions.InternalQuestionWithoutValues;
-import org.miradi.questions.MonitoringTreeConfigurationQuestion;
-import org.miradi.questions.PlanningViewSingleLevelQuestion;
-import org.miradi.questions.WorkPlanCategoryTypesQuestion;
+import org.miradi.schemas.ViewDataSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -42,14 +38,14 @@ public class ViewData extends BaseObject
 {
 	public ViewData(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse);
+		super(objectManager, idToUse, new ViewDataSchema(objectManager.getProject()));
 
 		clear();
 	}
 
 	public ViewData(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
 	{
-		super(objectManager, new BaseId(idAsInt), json);
+		super(objectManager, new BaseId(idAsInt), json, new ViewDataSchema(objectManager.getProject()));
 	}
 
 	public Command[] buildCommandsToAddNode(ORef oRefToAdd) throws ParseException
@@ -170,30 +166,6 @@ public class ViewData extends BaseObject
 	public static boolean is(ORef ref)
 	{
 		return ref.getObjectType() == getObjectType();
-	}
-
-	@Override
-	void clear()
-	{
-		super.clear();
-
-		createChoiceField(TAG_CURRENT_MODE, DiagramModeQuestion.class);
-		createRefListField(TAG_CHAIN_MODE_FACTOR_REFS);
-		createCodeListField(TAG_DIAGRAM_HIDDEN_TYPES, getQuestion(InternalQuestionWithoutValues.class));
-		createCodeListField(TAG_BUDGET_ROLLUP_REPORT_TYPES, getQuestion(WorkPlanCategoryTypesQuestion.class));
-		createChoiceField(TAG_PLANNING_SINGLE_LEVEL_CHOICE, new PlanningViewSingleLevelQuestion(getProject()));
-		createRefField(TAG_TREE_CONFIGURATION_REF);
-		createChoiceField(TAG_ACTION_TREE_CONFIGURATION_CHOICE, getQuestion(ActionTreeConfigurationQuestion.class));
-		createChoiceField(TAG_MONITORING_TREE_CONFIGURATION_CHOICE, getQuestion(MonitoringTreeConfigurationQuestion.class));
-
-		createCodeField(TAG_CURRENT_WIZARD_STEP);
-		setIsNavigationField(TAG_CURRENT_WIZARD_STEP);
-		createIntegerField(TAG_CURRENT_TAB);
-		setIsNavigationField(TAG_CURRENT_TAB);
-		createRefField(TAG_CURRENT_CONCEPTUAL_MODEL_REF);
-		setIsNavigationField(TAG_CURRENT_CONCEPTUAL_MODEL_REF);
-		createRefField(TAG_CURRENT_RESULTS_CHAIN_REF);
-		setIsNavigationField(TAG_CURRENT_RESULTS_CHAIN_REF);
 	}
 
 	public static final String TAG_CURRENT_CONCEPTUAL_MODEL_REF = "CurrentConceptualModelRef";
