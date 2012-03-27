@@ -940,51 +940,6 @@ abstract public class BaseObject
 		addField(new DateUnitEffortListData(tag));
 	}
 
-	protected void createRelevancyOverrideSetField(String tag)
-	{
-		addField(new RelevancyOverrideSetData(tag));
-	}
-	
-	protected void createCodeToChoiceMapField(String tag)
-	{
-		addField(new CodeToChoiceMapData(tag));
-	}
-	
-	protected void createCodeToUserStringMapField(String tag)
-	{
-		addField(new CodeToUserStringMapData(tag));
-	}
-	
-	protected void createCodeToCodeMapField(String tag)
-	{
-		addField(new CodeToCodeMapData(tag));
-	}
-	
-	protected void createCodeToCodeListMapField(String tag)
-	{
-		addField(new CodeToCodeListMapData(tag));
-	}
-	
-	protected void createStringRefMapField(String tag)
-	{
-		addField(new StringRefMapData(tag));
-	}
-	
-	protected void createTagListField(String tag)
-	{
-		addField(new TagListData(tag));
-	}
-	
-	protected void createRefListListField(String tag)
-	{
-		addField(new RefListListData(tag));
-	}
-	
-	protected void createDateUnitListField(String tag)
-	{
-		addField(new DateUnitListData(tag));
-	}
-	
 	private void addField(ObjectData data)
 	{
 		addField(data.getTag(), data);
