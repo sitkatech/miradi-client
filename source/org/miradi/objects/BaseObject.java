@@ -990,11 +990,6 @@ abstract public class BaseObject
 		addField(new PseudoStringData(this, tag));
 	}
 	
-	protected void createPseudoQuestionField(String tag)
-	{
-		addField(new PseudoQuestionData(this, tag));
-	}
-
 	protected void createPseudoRefListField(String tag)
 	{
 		addField(new PseudoRefListData(this, tag));
