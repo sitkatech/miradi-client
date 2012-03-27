@@ -35,20 +35,21 @@ import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.TargetSet;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
 
 abstract public class Desire extends BaseObject
 {
-	public Desire(ObjectManager objectManager, BaseId idToUse)
+	public Desire(ObjectManager objectManager, BaseId idToUse, final BaseObjectSchema schemaToUse)
 	{
-		super(objectManager, idToUse);
+		super(objectManager, idToUse, schemaToUse);
 		clear();
 	}
 
-	public Desire(ObjectManager objectManager, BaseId idToUse, EnhancedJsonObject json) throws Exception
+	public Desire(ObjectManager objectManager, BaseId idToUse, EnhancedJsonObject json, final BaseObjectSchema schemaToUse) throws Exception
 	{
-		super(objectManager, idToUse, json);
+		super(objectManager, idToUse, json, schemaToUse);
 	}
 	
 	@Override
