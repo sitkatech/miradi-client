@@ -20,10 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import java.util.HashSet;
 import java.util.Vector;
 
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.StaticQuestionManager;
 
@@ -191,6 +193,11 @@ public class BaseObjectSchema
 		return addFieldSchema(new FieldSchemaFloat(tag));
 	}
 	
+	private AbstractFieldSchema createFieldSchemaExpandingUserText(String tag)
+	{
+		return addFieldSchema(new FieldSchemaExpandingUserText(tag));
+	}
+	
 	public void createPseudoStringField(final String fieldTag)
 	{
 		addFieldSchema(new FieldSchemaPseudoStringField(fieldTag));
@@ -199,6 +206,11 @@ public class BaseObjectSchema
 	public void createPseudoQuestionField(final String fieldTag)
 	{
 		addFieldSchema(new FieldSchemaPseudoQuestionField(fieldTag));
+	}
+	
+	public void createPseudoQuestionField(String tag, HashSet<String> set)
+	{
+		addFieldSchema(new FieldSchemaPseudoQuestionField(tag, set));
 	}
 	
 	public void createPseudoRefListField(String tag)
@@ -227,6 +239,14 @@ public class BaseObjectSchema
 	
 	protected void fillFieldSchemas()
 	{
+		createFieldSchemaExpandingUserText(BaseObject.TAG_LABEL);
+		createFieldSchemaIdList(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, ResourceAssignment.getObjectType());
+		createFieldSchemaReflist(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS);
+		createFieldSchemaReflist(BaseObject.TAG_PROGRESS_REPORT_REFS);
+		
+		createPseudoStringField(BaseObject.PSEUDO_TAG_WHEN_TOTAL);
+		createPseudoQuestionField(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, BaseObject.createSet(BaseObject.TAG_PROGRESS_REPORT_REFS));
+		createPseudoStringField(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS);
 	}
 	
 	private Vector<AbstractFieldSchema> fieldSchemas;

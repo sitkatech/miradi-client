@@ -20,31 +20,20 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
-import java.util.HashSet;
-
+import org.miradi.objectdata.ExpandingUserTextData;
 import org.miradi.objectdata.ObjectData;
-import org.miradi.objectdata.PseudoQuestionData;
 import org.miradi.objects.BaseObject;
 
-public class FieldSchemaPseudoQuestionField extends AbstractFieldSchema
+public class FieldSchemaExpandingUserText extends AbstractFieldSchema
 {
-	public FieldSchemaPseudoQuestionField(final String tagToUse)
-	{
-		this(tagToUse, new HashSet<String>());
-	}
-
-	public FieldSchemaPseudoQuestionField(final String tagToUse, HashSet<String> dependencySetToUse)
+	public FieldSchemaExpandingUserText(String tagToUse)
 	{
 		super(tagToUse);
-		
-		dependencySet = dependencySetToUse;
 	}
 
 	@Override
 	public ObjectData createField(BaseObject baseObjectToUse)
 	{
-		return new PseudoQuestionData(baseObjectToUse, getTag(), dependencySet);
+		return new ExpandingUserTextData(getTag());
 	}
-	
-	private HashSet<String> dependencySet;
 }
