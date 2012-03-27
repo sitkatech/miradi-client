@@ -141,6 +141,11 @@ public class BaseObjectSchema
 		return addFieldSchema(new FieldSchemaDateUnitEffortList(fieldTag));
 	}
 	
+	public AbstractFieldSchema createFieldSchemaRelevancyOverrideSet(String tag)
+	{
+		return addFieldSchema(new FieldSchemaRelevancyOverrideSetData(tag));
+	}
+	
 	public void createPseudoStringField(final String fieldTag)
 	{
 		addFieldSchema(new FieldSchemaPseudoStringField(fieldTag));
@@ -150,6 +155,12 @@ public class BaseObjectSchema
 	{
 		addFieldSchema(new FieldSchemaPseudoQuestionField(fieldTag));
 	}
+	
+	public void createPseudoRefListField(String tag)
+	{
+		addFieldSchema(new FieldSchemaPseudoRefListData(tag));
+	}
+
 	
 	public Vector<ObjectData> createFields(BaseObject baseObjectToUse)
 	{

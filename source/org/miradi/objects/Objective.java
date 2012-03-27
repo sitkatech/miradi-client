@@ -25,6 +25,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
 
@@ -32,14 +33,13 @@ public class Objective extends Desire
 {
 	public Objective(ObjectManager objectManager, BaseId id)
 	{
-		super(objectManager, new ObjectiveId(id.asInt()));
+		super(objectManager, new ObjectiveId(id.asInt()), new ObjectiveSchema());
 	}
 	
 	public Objective(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
 	{
-		super(objectManager, new ObjectiveId(idAsInt), json);
+		super(objectManager, new ObjectiveId(idAsInt), json, new ObjectiveSchema());
 	}
-	
 	
 	@Override
 	public int getType()
