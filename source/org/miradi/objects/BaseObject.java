@@ -819,32 +819,6 @@ abstract public class BaseObject
 		return StaticQuestionManager.getQuestion(questionClass);
 	}
 
-	protected void createCodeListField(String tag, Class questionClass)
-	{
-		ChoiceQuestion question = getQuestion(questionClass);
-		createCodeListField(tag, question);
-	}
-
-	protected void createCodeListField(String tag, ChoiceQuestion question)
-	{
-		addField(new CodeListData(tag, question));
-	}
-	
-	protected void createIdListField(String tag, int type)
-	{
-		addField(new IdListData(tag, type));
-	}
-
-	protected void createRefListField(String tag)
-	{
-		addField(new RefListData(tag));
-	}
-	
-	private void addField(ObjectData data)
-	{
-		addField(data.getTag(), data);
-	}
-
 	private void addField(String tag, ObjectData data)
 	{
 		if(!data.getTag().equals(tag))
