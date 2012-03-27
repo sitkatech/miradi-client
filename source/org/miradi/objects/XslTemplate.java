@@ -25,19 +25,20 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.schemas.XslTemplateSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class XslTemplate extends BaseObject
 {
 	public XslTemplate(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse);
+		super(objectManager, idToUse, new XslTemplateSchema());
 		clear();
 	}
 		
 	public XslTemplate(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
 	{
-		super(objectManager, new BaseId(idAsInt), json);
+		super(objectManager, new BaseId(idAsInt), json, new XslTemplateSchema());
 	}
 	
 	@Override
@@ -88,15 +89,6 @@ public class XslTemplate extends BaseObject
 		return find(project.getObjectManager(), xslTemplateRef);
 	}
 	
-	@Override
-	void clear()
-	{
-		super.clear();
-		
-		createMultiLineUserTextField(TAG_TEMPLATE_CONTENTS);
-		createSingleLineUserTextField(TAG_FILE_EXTENSION);
-	}
-
 	public static final String TAG_TEMPLATE_CONTENTS = "TemplateContents";
 	public static final String TAG_FILE_EXTENSION = "FileExtension";
 	

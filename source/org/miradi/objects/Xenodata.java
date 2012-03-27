@@ -24,19 +24,20 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.schemas.XenodataSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class Xenodata extends BaseObject
 {
 	public Xenodata(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse);
+		super(objectManager, idToUse, new XenodataSchema());
 		clear();
 	}
 		
 	public Xenodata(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
 	{
-		super(objectManager, new BaseId(idAsInt), json);
+		super(objectManager, new BaseId(idAsInt), json, new XenodataSchema());
 	}
 	
 	@Override
@@ -80,14 +81,6 @@ public class Xenodata extends BaseObject
 	public static Xenodata find(Project project, ORef xenodataRef)
 	{
 		return find(project.getObjectManager(), xenodataRef);
-	}
-	
-	@Override
-	void clear()
-	{
-		super.clear();
-		
-		createSingleLineUserTextField(TAG_PROJECT_ID);
 	}
 	
 	public static final String TAG_PROJECT_ID = "ProjectId";
