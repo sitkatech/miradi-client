@@ -156,6 +156,16 @@ public class BaseObjectSchema
 		return addFieldSchema(new FieldSchemaDimension(tag));
 	}
 	
+	public AbstractFieldSchema createFieldSchemaBoolean(String tag)
+	{
+		return addFieldSchema(new FieldSchemaBoolean(tag));
+	}
+
+	public AbstractFieldSchema createFieldSchemaPointList(String tag)
+	{
+		return addFieldSchema(new FieldSchemaPointList(tag));
+	}
+	
 	public void createPseudoStringField(final String fieldTag)
 	{
 		addFieldSchema(new FieldSchemaPseudoStringField(fieldTag));

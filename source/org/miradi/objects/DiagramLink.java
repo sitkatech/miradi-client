@@ -34,7 +34,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.DiagramLinkColorQuestion;
+import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.PointList;
@@ -43,12 +43,12 @@ public class DiagramLink extends BaseObject
 {
 	public DiagramLink(ObjectManager objectManager, BaseId idToUse) throws Exception
 	{
-		super(objectManager, new DiagramLinkId(idToUse.asInt()));
+		super(objectManager, new DiagramLinkId(idToUse.asInt()), new DiagramLinkSchema());
 	}
 	
 	public DiagramLink(ObjectManager objectManager, int idToUse, EnhancedJsonObject json) throws Exception
 	{
-		super(objectManager, new DiagramLinkId(idToUse), json);
+		super(objectManager, new DiagramLinkId(idToUse), json, new DiagramLinkSchema());
 		
 		setData(TAG_WRAPPED_ID, json.getId(TAG_WRAPPED_ID).toString());
 		setData(TAG_FROM_DIAGRAM_FACTOR_ID, json.getId(TAG_FROM_DIAGRAM_FACTOR_ID).toString());
@@ -376,20 +376,6 @@ public class DiagramLink extends BaseObject
 		return find(project.getObjectManager(), diagramLinkRef);
 	}
 		
-	@Override
-	void clear()
-	{
-		super.clear();
-
-		createBaseIdField(TAG_WRAPPED_ID, FactorLink.getObjectType());
-		createBaseIdField(TAG_FROM_DIAGRAM_FACTOR_ID, DiagramFactor.getObjectType());
-		createBaseIdField(TAG_TO_DIAGRAM_FACTOR_ID, DiagramFactor.getObjectType());
-		createPointListField(TAG_BEND_POINTS);
-		createRefListField(TAG_GROUPED_DIAGRAM_LINK_REFS);
-		createChoiceField(TAG_COLOR, DiagramLinkColorQuestion.class);
-		createBooleanField(TAG_IS_BIDIRECTIONAL_LINK);
-	}
-	
 	public static final String TAG_WRAPPED_ID = "WrappedLinkId";
 	public static final String TAG_FROM_DIAGRAM_FACTOR_ID = "FromDiagramFactorId";
 	public static final String TAG_TO_DIAGRAM_FACTOR_ID = "ToDiagramFactorId";
