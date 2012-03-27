@@ -25,20 +25,21 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.schemas.SubTargetSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class SubTarget extends BaseObject
 {
 	public SubTarget(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse);
+		super(objectManager, idToUse, new SubTargetSchema());
 		
 		clear();
 	}
 		
 	public SubTarget(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
 	{
-		super(objectManager, new BaseId(idAsInt), json);
+		super(objectManager, new BaseId(idAsInt), json, new SubTargetSchema());
 	}
 	
 	@Override
@@ -113,15 +114,6 @@ public class SubTarget extends BaseObject
 	public static SubTarget find(Project project, ORef subTargetRef)
 	{
 		return find(project.getObjectManager(), subTargetRef);
-	}
-	
-	@Override
-	void clear()
-	{
-		super.clear();
-		
-		createSingleLineUserTextField(TAG_SHORT_LABEL);
-		createMultiLineUserTextField(TAG_DETAIL);
 	}
 	
 	public static final String OBJECT_NAME = "SubTarget";
