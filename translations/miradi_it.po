@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-27 13:16-0500\n"
+"POT-Creation-Date: 2012-03-27 13:45-0500\n"
 "PO-Revision-Date: 2011-04-29 11:26+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -8737,7 +8737,7 @@ msgstr ""
 msgid "[Error]"
 msgstr "[Errore]"
 
-#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:129
+#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:122
 msgid "[Main Diagram]"
 msgstr "[Diagramma Principale]"
 
@@ -8753,7 +8753,7 @@ msgstr "[Nuova catena dei risultati]"
 msgid "[No Project]"
 msgstr "[Nessun Progetto]"
 
-#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:130
+#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:123
 msgid "[Not Named]"
 msgstr "[Non Nominato]"
 

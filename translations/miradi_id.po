@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-27 13:16-0500\n"
+"POT-Creation-Date: 2012-03-27 13:45-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -8590,7 +8590,7 @@ msgstr ""
 msgid "[Error]"
 msgstr "[Kesalahan] "
 
-#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:129
+#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:122
 msgid "[Main Diagram]"
 msgstr "[Diagram Utama] "
 
@@ -8606,7 +8606,7 @@ msgstr "[Rangkaian Hasil Baru] "
 msgid "[No Project]"
 msgstr "[Tidak Ada Proyek] "
 
-#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:130
+#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:123
 msgid "[Not Named]"
 msgstr "[Tidak Diberi Nama] "
 
