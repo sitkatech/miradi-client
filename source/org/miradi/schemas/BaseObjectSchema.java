@@ -25,12 +25,14 @@ import java.util.Vector;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objects.BaseObject;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.StaticQuestionManager;
 
 public class BaseObjectSchema
 {
 	public BaseObjectSchema()
 	{
 		fieldSchemas = new Vector<AbstractFieldSchema>();
+		fillFieldSchemas();
 	}
 	
 	private AbstractFieldSchema addFieldSchema(final AbstractFieldSchema fieldSchema)
@@ -135,6 +137,15 @@ public class BaseObjectSchema
 		}
 		
 		return fields;
+	}
+	
+	protected static ChoiceQuestion getQuestion(Class questionClass)
+	{
+		return StaticQuestionManager.getQuestion(questionClass);
+	}
+	
+	protected void fillFieldSchemas()
+	{
 	}
 	
 	private Vector<AbstractFieldSchema> fieldSchemas;
