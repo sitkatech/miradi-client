@@ -46,13 +46,6 @@ public class Indicator extends BaseObject
 		super(objectManager, idToUse, schemaToUse);
 	}
 	
-	public Indicator(ObjectManager objectManager, IndicatorId idToUse)
-	{
-		super(objectManager, idToUse);
-		
-		clear();
-	}
-
 	public Indicator(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json, BaseObjectSchema schema) throws Exception
 	{
 		super(objectManager, new BaseId(idAsInt), json, schema);
