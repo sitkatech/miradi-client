@@ -24,24 +24,21 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.questions.StatusConfidenceQuestion;
-import org.miradi.questions.StatusQuestion;
-import org.miradi.questions.TrendQuestion;
+import org.miradi.schemas.MeasurementSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class Measurement extends BaseObject
 {
 	public Measurement(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse);
+		super(objectManager, idToUse, new MeasurementSchema());
 		clear();
 	}
 	
 	public Measurement(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
 	{
-		super(objectManager, new BaseId(idAsInt), json);
+		super(objectManager, new BaseId(idAsInt), json, new MeasurementSchema());
 	}
-
 	
 	@Override
 	public int getType()
@@ -118,20 +115,6 @@ public class Measurement extends BaseObject
 	public static Measurement find(Project project, ORef measurementRef)
 	{
 		return find(project.getObjectManager(), measurementRef);
-	}
-	
-	@Override
-	public void clear()
-	{
-		super.clear();
-		
-		createChoiceField(TAG_TREND, TrendQuestion.class);
-		createChoiceField(TAG_STATUS, StatusQuestion.class);
-		createDateField(TAG_DATE);
-		createSingleLineUserTextField(TAG_SUMMARY);
-		createMultiLineUserTextField(TAG_DETAIL);
-		createChoiceField(TAG_STATUS_CONFIDENCE, StatusConfidenceQuestion.class);
-		createMultiLineUserTextField(TAG_COMMENTS);
 	}
 	
 	public static final String OBJECT_NAME = "Measurement";
