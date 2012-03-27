@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-22 09:30-0500\n"
+"POT-Creation-Date: 2012-03-27 10:53-0500\n"
 "PO-Revision-Date: 2011-04-29 11:26+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -4474,11 +4474,11 @@ msgstr "Attributo chiave"
 msgid "Key Ecological Attribute (KEA)"
 msgstr "Attributo ecologico chiave (KEA)"
 
-#: Miradi/source/org/miradi/objects/AccountingCode.java:71
+#: Miradi/source/org/miradi/objects/AccountingCode.java:72
 msgid "Label|(Undefined Accounting Code)"
 msgstr "(Codice di contabilità non definito)"
 
-#: Miradi/source/org/miradi/objects/FundingSource.java:71
+#: Miradi/source/org/miradi/objects/FundingSource.java:72
 msgid "Label|(Undefined Funding Source)"
 msgstr "(Fonte di finanziamento non definita)"
 
@@ -4495,11 +4495,11 @@ msgstr "--- influisce -->"
 msgid "Label|Biodiversity Area (hectares)"
 msgstr "Area di biodiversità (ettari)"
 
-#: Miradi/source/org/miradi/objects/BudgetCategoryOne.java:71
+#: Miradi/source/org/miradi/objects/BudgetCategoryOne.java:72
 msgid "Label|Budget Category One"
 msgstr ""
 
-#: Miradi/source/org/miradi/objects/BudgetCategoryTwo.java:71
+#: Miradi/source/org/miradi/objects/BudgetCategoryTwo.java:72
 msgid "Label|Budget Category Two"
 msgstr ""
 

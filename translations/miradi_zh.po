@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-22 09:30-0500\n"
+"POT-Creation-Date: 2012-03-27 10:53-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -4233,11 +4233,11 @@ msgstr "关键属性"
 msgid "Key Ecological Attribute (KEA)"
 msgstr "关键生态学属性(KEA) \t\t"
 
-#: Miradi/source/org/miradi/objects/AccountingCode.java:71
+#: Miradi/source/org/miradi/objects/AccountingCode.java:72
 msgid "Label|(Undefined Accounting Code)"
 msgstr "（未定义的会计代码） \t\t"
 
-#: Miradi/source/org/miradi/objects/FundingSource.java:71
+#: Miradi/source/org/miradi/objects/FundingSource.java:72
 msgid "Label|(Undefined Funding Source)"
 msgstr ""
 
@@ -4254,11 +4254,11 @@ msgstr "--- 影响 --> \t\t"
 msgid "Label|Biodiversity Area (hectares)"
 msgstr "生物多样性区域（公顷） \t\t"
 
-#: Miradi/source/org/miradi/objects/BudgetCategoryOne.java:71
+#: Miradi/source/org/miradi/objects/BudgetCategoryOne.java:72
 msgid "Label|Budget Category One"
 msgstr ""
 
-#: Miradi/source/org/miradi/objects/BudgetCategoryTwo.java:71
+#: Miradi/source/org/miradi/objects/BudgetCategoryTwo.java:72
 msgid "Label|Budget Category Two"
 msgstr ""
 
