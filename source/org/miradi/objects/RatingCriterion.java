@@ -22,18 +22,19 @@ package org.miradi.objects;
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
+import org.miradi.schemas.RatingCriterionSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class RatingCriterion extends BaseObject
 {
 	public RatingCriterion(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse);
+		super(objectManager, idToUse, new RatingCriterionSchema());
 	}
 	
 	public RatingCriterion(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
 	{
-		super(objectManager, new BaseId(idAsInt), json);
+		super(objectManager, new BaseId(idAsInt), json, new RatingCriterionSchema());
 	}
 	
 	@Override
