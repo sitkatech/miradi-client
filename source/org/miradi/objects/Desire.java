@@ -439,28 +439,6 @@ abstract public class Desire extends BaseObject
 		return Goal.is(objectType);
 	}
 
-	@Override
-	void clear()
-	{
-		super.clear();
-
-		createSingleLineUserTextField(TAG_SHORT_LABEL);
-		createMultiLineUserTextField(TAG_FULL_TEXT);
-		createMultiLineUserTextField(TAG_COMMENTS);
-		createRelevancyOverrideSetField(TAG_RELEVANT_INDICATOR_SET);
-		createRelevancyOverrideSetField(TAG_RELEVANT_STRATEGY_ACTIVITY_SET);
-		createRefListField(TAG_PROGRESS_PERCENT_REFS);
-		
-		createPseudoStringField(PSEUDO_TAG_TARGETS);
-		createPseudoStringField(PSEUDO_TAG_DIRECT_THREATS);
-		createPseudoStringField(PSEUDO_TAG_FACTOR);
-		createPseudoRefListField(PSEUDO_TAG_RELEVANT_INDICATOR_REFS);
-		createPseudoRefListField(PSEUDO_TAG_RELEVANT_STRATEGY_ACTIVITY_REFS);
-		createPseudoRefListField(PSEUDO_TAG_RELEVANT_ACTIVITY_REFS);
-		createPseudoStringField(PSEUDO_TAG_LATEST_PROGRESS_PERCENT_COMPLETE);
-		createPseudoStringField(PSEUDO_TAG_LATEST_PROGRESS_PERCENT_DETAILS);
-	}
-		
 	public final static String TAG_SHORT_LABEL = "ShortLabel";
 	public final static String TAG_FULL_TEXT = "FullText";
 	public final static String TAG_COMMENTS = "Comments";	
