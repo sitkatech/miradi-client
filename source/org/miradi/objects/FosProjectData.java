@@ -24,20 +24,20 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.questions.FosTrainingTypeQuestion;
+import org.miradi.schemas.FosProjectDataSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class FosProjectData extends BaseObject
 {
 	public FosProjectData(ObjectManager objectManager, BaseId id)
 	{
-		super(objectManager, id);
+		super(objectManager, id, new FosProjectDataSchema());
 		clear();
 	}
 	
 	public FosProjectData(ObjectManager objectManager, int idAsInt, EnhancedJsonObject jsonObject) throws Exception 
 	{
-		super(objectManager, new BaseId(idAsInt), jsonObject);
+		super(objectManager, new BaseId(idAsInt), jsonObject, new FosProjectDataSchema());
 	}
 	
 	@Override
@@ -81,17 +81,6 @@ public class FosProjectData extends BaseObject
 	public static FosProjectData find(Project project, ORef fosProjectDataRef)
 	{
 		return find(project.getObjectManager(), fosProjectDataRef);
-	}
-	
-	@Override
-	void clear()
-	{
-		super.clear();
-		
-		createChoiceField(TAG_TRAINING_TYPE, FosTrainingTypeQuestion.class);
-		createSingleLineUserTextField(TAG_TRAINING_DATES);
-		createSingleLineUserTextField(TAG_TRAINERS);
-		createSingleLineUserTextField(TAG_COACHES);
 	}
 	
 	public static final String OBJECT_NAME = "FosProjectData";
