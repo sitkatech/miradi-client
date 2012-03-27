@@ -24,19 +24,20 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.schemas.ProgressPercentSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class ProgressPercent extends BaseObject
 {
 	public ProgressPercent(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse);
+		super(objectManager, idToUse, new ProgressPercentSchema());
 		clear();
 	}
 		
 	public ProgressPercent(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
 	{
-		super(objectManager, new BaseId(idAsInt), json);
+		super(objectManager, new BaseId(idAsInt), json, new ProgressPercentSchema());
 	}
 	
 	@Override
@@ -89,16 +90,6 @@ public class ProgressPercent extends BaseObject
 	public static ProgressPercent find(Project project, ORef progressPercentRef)
 	{
 		return find(project.getObjectManager(), progressPercentRef);
-	}
-	
-	@Override
-	void clear()
-	{
-		super.clear();
-		
-		createDateField(TAG_DATE);
-		createPercentageField(TAG_PERCENT_COMPLETE);
-		createMultiLineUserTextField(TAG_PERCENT_COMPLETE_NOTES);
 	}
 	
 	public static final String TAG_DATE = "PercentDate";
