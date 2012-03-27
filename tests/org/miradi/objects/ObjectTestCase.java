@@ -78,7 +78,6 @@ import org.miradi.project.TestDateUnit;
 import org.miradi.questions.InternalQuestionWithoutValues;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.schemas.BaseObjectSchema;
-import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateUnitEffort;
@@ -456,7 +455,7 @@ public class ObjectTestCase extends TestCaseWithProject
 				return new ProjectResource(objectManager, idAsInt, json);
 				
 			case ObjectType.INDICATOR:
-				return new Indicator(objectManager, idAsInt, json, new IndicatorSchema());
+				return new Indicator(objectManager, idAsInt, json);
 				
 			case ObjectType.OBJECTIVE:
 				return new Objective(objectManager, idAsInt, json);
