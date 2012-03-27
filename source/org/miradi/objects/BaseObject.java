@@ -813,15 +813,6 @@ abstract public class BaseObject
 	void clear()
 	{
 		createFieldsFromBaseObjectSchema();
-
-		createExpandingUserTextField(TAG_LABEL);
-		createIdListField(TAG_RESOURCE_ASSIGNMENT_IDS, ResourceAssignment.getObjectType());
-		createRefListField(TAG_EXPENSE_ASSIGNMENT_REFS);
-		createRefListField(TAG_PROGRESS_REPORT_REFS);
-		
-		createPseudoStringField(PSEUDO_TAG_WHEN_TOTAL);
-		createPseudoQuestionField(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, createSet(TAG_PROGRESS_REPORT_REFS));
-		createPseudoStringField(PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS);
 	}
 	
 	public static HashSet<String> createSet(String parentTagToUse)
@@ -1002,11 +993,6 @@ abstract public class BaseObject
 	protected void createPseudoQuestionField(String tag)
 	{
 		addField(new PseudoQuestionData(this, tag));
-	}
-	
-	private void createPseudoQuestionField(String tag, HashSet<String> set)
-	{
-		addField(new PseudoQuestionData(this, tag, set));
 	}
 
 	protected void createPseudoRefListField(String tag)
