@@ -43,15 +43,6 @@ abstract public class AbstractBudgetCategoryObject extends BaseObject
 		return toFullNameWithCode(getData(TAG_CODE));
 	}
 	
-	@Override
-	public void clear()
-	{
-		super.clear();
-		
-		createSingleLineUserTextField(TAG_CODE);
-		createMultiLineUserTextField(TAG_COMMENTS);
-	}
-	
 	public static final String TAG_CODE = "Code";
 	public static final String TAG_COMMENTS = "Comments";
 }
