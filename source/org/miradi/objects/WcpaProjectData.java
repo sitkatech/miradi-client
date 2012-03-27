@@ -24,19 +24,20 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.schemas.WcpaProjectDataSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class WcpaProjectData extends BaseObject
 {
 	public WcpaProjectData(ObjectManager objectManager, BaseId id)
 	{
-		super(objectManager, id);
+		super(objectManager, id, new WcpaProjectDataSchema());
 		clear();
 	}
 	
 	public WcpaProjectData(ObjectManager objectManager, int idAsInt, EnhancedJsonObject jsonObject) throws Exception 
 	{
-		super(objectManager, new BaseId(idAsInt), jsonObject);
+		super(objectManager, new BaseId(idAsInt), jsonObject, new WcpaProjectDataSchema());
 	}
 	
 	@Override
@@ -77,24 +78,6 @@ public class WcpaProjectData extends BaseObject
 		return find(project.getObjectManager(), wcpaProjectDataRef);
 	}
 	
-	@Override
-	void clear()
-	{
-		super.clear();
-		
-		createMultiLineUserTextField(TAG_LEGAL_STATUS);
-		createMultiLineUserTextField(TAG_LEGISLATIVE);
-		createMultiLineUserTextField(TAG_PHYSICAL_DESCRIPTION);
-		createMultiLineUserTextField(TAG_BIOLOGICAL_DESCRIPTION);
-		createMultiLineUserTextField(TAG_SOCIO_ECONOMIC_INFORMATION);
-		createMultiLineUserTextField(TAG_HISTORICAL_DESCRIPTION);
-		createMultiLineUserTextField(TAG_CULTURAL_DESCRIPTION);
-		createMultiLineUserTextField(TAG_ACCESS_INFORMATION);
-		createMultiLineUserTextField(TAG_VISITATION_INFORMATION);
-		createMultiLineUserTextField(TAG_CURRENT_LAND_USES);
-		createMultiLineUserTextField(TAG_MANAGEMENT_RESOURCES);
-	}
-
 	public final static String TAG_LEGAL_STATUS = "LegalStatus";
 	public final static String TAG_LEGISLATIVE = "LegislativeContext";
 	public final static String TAG_PHYSICAL_DESCRIPTION = "PhysicalDescription";
