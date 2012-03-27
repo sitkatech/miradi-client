@@ -25,19 +25,20 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.schemas.AudienceSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class Audience extends BaseObject
 {
 	public Audience(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse);
+		super(objectManager, idToUse, new AudienceSchema());
 		clear();
 	}
 		
 	public Audience(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
 	{
-		super(objectManager, new BaseId(idAsInt), json);
+		super(objectManager, new BaseId(idAsInt), json, new AudienceSchema());
 	}
 	
 	@Override
@@ -86,15 +87,6 @@ public class Audience extends BaseObject
 	public static Audience find(Project project, ORef ref)
 	{
 		return find(project.getObjectManager(), ref);
-	}
-	
-	@Override
-	void clear()
-	{
-		super.clear();
-	
-		createIntegerField(TAG_PEOPLE_COUNT);
-		createMultiLineUserTextField(TAG_SUMMARY);
 	}
 	
 	public static final String OBJECT_NAME = "Audience";
