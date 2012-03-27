@@ -35,18 +35,15 @@ import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.questions.DiagramFactorBackgroundQuestion;
-import org.miradi.questions.DiagramFactorFontColorQuestion;
-import org.miradi.questions.DiagramFactorFontSizeQuestion;
-import org.miradi.questions.DiagramFactorFontStyleQuestion;
 import org.miradi.questions.TextBoxZOrderQuestion;
+import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class DiagramFactor extends BaseObject
 {
 	public DiagramFactor(ObjectManager objectManager, DiagramFactorId diagramFactorIdToUse) throws Exception
 	{
-		super(objectManager, diagramFactorIdToUse);
+		super(objectManager, diagramFactorIdToUse, new DiagramFactorSchema());
 		
 		clear();
 		setDimensionData(TAG_SIZE, getDefaultSize());
@@ -54,7 +51,7 @@ public class DiagramFactor extends BaseObject
 	
 	public DiagramFactor(ObjectManager objectManager, int idToUse, EnhancedJsonObject json) throws Exception
 	{
-		super(objectManager, new DiagramFactorId(idToUse), json);
+		super(objectManager, new DiagramFactorId(idToUse), json, new DiagramFactorSchema());
 		
 		ORef wrappedRef = ORef.createFromString(json.getString(TAG_WRAPPED_REF));
 		setRefData(TAG_WRAPPED_REF, wrappedRef);
@@ -329,22 +326,6 @@ public class DiagramFactor extends BaseObject
 		return find(project.getObjectManager(), diagramFactorRef);
 	}
 	
-	@Override
-	void clear()
-	{
-		super.clear();
-
-		createDimensionField(TAG_SIZE);
-		createPointField(TAG_LOCATION);
-		createRefField(TAG_WRAPPED_REF);
-		createChoiceField(TAG_FONT_SIZE, DiagramFactorFontSizeQuestion.class);
-		createChoiceField(TAG_FOREGROUND_COLOR, DiagramFactorFontColorQuestion.class);
-		createChoiceField(TAG_FONT_STYLE, DiagramFactorFontStyleQuestion.class);
-		createRefListField(TAG_GROUP_BOX_CHILDREN_REFS);
-		createChoiceField(TAG_BACKGROUND_COLOR, DiagramFactorBackgroundQuestion.class);
-		createChoiceField(TAG_TEXT_BOX_Z_ORDER_CODE, TextBoxZOrderQuestion.class);
-	}
-
 	public static final String TAG_LOCATION = "Location";
 	public static final String TAG_SIZE = "Size";
 	public static final String TAG_WRAPPED_REF = "WrappedFactorRef";
