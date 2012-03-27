@@ -166,6 +166,16 @@ public class BaseObjectSchema
 		return addFieldSchema(new FieldSchemaPointList(tag));
 	}
 	
+	public AbstractFieldSchema createFieldSchemaCodeList(final String tag, final ChoiceQuestion questionToUse)
+	{
+		return addFieldSchema(new FieldSchemaCodeList(tag, questionToUse));	
+	}
+
+	public AbstractFieldSchema createFieldSchemaNumber(final String tag)
+	{
+		return addFieldSchema(new FieldSchemaNumber(tag));
+	}
+	
 	public void createPseudoStringField(final String fieldTag)
 	{
 		addFieldSchema(new FieldSchemaPseudoStringField(fieldTag));

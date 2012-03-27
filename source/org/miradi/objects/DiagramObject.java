@@ -35,20 +35,20 @@ import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.questions.DiagramLegendQuestion;
+import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 
 abstract public class DiagramObject extends BaseObject
 {
-	public DiagramObject(ObjectManager objectManager, BaseId idToUse)
+	public DiagramObject(ObjectManager objectManager, BaseId idToUse, final BaseObjectSchema schemaToUse)
 	{
-		super(objectManager,idToUse);
+		super(objectManager,idToUse, schemaToUse);
 	}
 	
-	public DiagramObject(ObjectManager objectManager, int idToUse, EnhancedJsonObject json) throws Exception
+	public DiagramObject(ObjectManager objectManager, int idToUse, EnhancedJsonObject json, final BaseObjectSchema schemaToUse) throws Exception
 	{
-		super(objectManager, new DiagramContentsId(idToUse), json);
+		super(objectManager, new DiagramContentsId(idToUse), json, schemaToUse);
 	}
 
 	public HashSet<Factor> getAbstractTargets()
@@ -548,22 +548,6 @@ abstract public class DiagramObject extends BaseObject
 		return false;
 	}
 
-	@Override
-	public void clear()
-	{
-		super.clear();
-		
-		createIdListField(TAG_DIAGRAM_FACTOR_IDS, DiagramFactor.getObjectType());
-		createIdListField(TAG_DIAGRAM_FACTOR_LINK_IDS, DiagramLink.getObjectType());
-		createSingleLineUserTextField(TAG_SHORT_LABEL);
-		createMultiLineUserTextField(TAG_DETAIL);
-		createCodeListField(TAG_HIDDEN_TYPES, DiagramLegendQuestion.class);
-		createRefListField(TAG_SELECTED_TAGGED_OBJECT_SET_REFS);
-		createNumberField(TAG_ZOOM_SCALE);
-		
-		createPseudoStringField(PSEUDO_COMBINED_LABEL);
-	}
-	
 	public static final String TAG_DIAGRAM_FACTOR_IDS = "DiagramFactorIds";
 	public static final String TAG_DIAGRAM_FACTOR_LINK_IDS = "DiagramFactorLinkIds";
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
