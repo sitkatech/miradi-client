@@ -49,7 +49,6 @@ public class ProjectResource extends BaseObject
 	{
 		super(objectManager, new ProjectResourceId(idAsInt), json, new ProjectResourceSchema());
 	}
-
 	
 	@Override
 	public int getType()
