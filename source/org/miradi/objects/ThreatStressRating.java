@@ -26,22 +26,21 @@ import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.project.threatrating.StressBasedThreatFormula;
 import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.StressContributionQuestion;
-import org.miradi.questions.StressIrreversibilityQuestion;
+import org.miradi.schemas.ThreatStressRatingSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class ThreatStressRating extends BaseObject
 {
 	public ThreatStressRating(ObjectManager objectManager, BaseId idToUse) throws Exception
 	{
-		super(objectManager, idToUse);
+		super(objectManager, idToUse, new ThreatStressRatingSchema());
 		
 		clear();
 	}
 	
 	public ThreatStressRating(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
 	{
-		super(objectManager, new BaseId(idAsInt), json);
+		super(objectManager, new BaseId(idAsInt), json, new ThreatStressRatingSchema());
 	}
 
 	public boolean isActive()
@@ -153,18 +152,6 @@ public class ThreatStressRating extends BaseObject
 		return find(project.getObjectManager(), threatStressRatingRef);
 	}
 		
-	@Override
-	public void clear()
-	{
-		super.clear();
-		createChoiceField(TAG_CONTRIBUTION, getQuestion(StressContributionQuestion.class));
-		createChoiceField(TAG_IRREVERSIBILITY, getQuestion(StressIrreversibilityQuestion.class));
-		createRefField(TAG_STRESS_REF);
-		createRefField(TAG_THREAT_REF);
-		createBooleanField(TAG_IS_ACTIVE);
-		createPseudoQuestionField(PSEUDO_TAG_THREAT_RATING);
-	}
-	
 	public static final String OBJECT_NAME = "ThreatStressRating";
 	
 	public static final String TAG_CONTRIBUTION = "Contribution";
