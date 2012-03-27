@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-27 10:53-0500\n"
+"POT-Creation-Date: 2012-03-27 12:58-0500\n"
 "PO-Revision-Date: 2011-04-29 11:26+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -3523,7 +3523,7 @@ msgstr "E' occorso un errore durante l'ordinamento"
 msgid "Error Occurred please try saving under different name."
 msgstr "Errore nel salvataggio, prova salvando con un nome diverso."
 
-#: Miradi/source/org/miradi/objects/Dashboard.java:297
+#: Miradi/source/org/miradi/objects/Dashboard.java:298
 msgid "Error Retrieving Data"
 msgstr ""
 
