@@ -103,7 +103,7 @@ public class BaseObjectSchema
 		return addFieldSchema(new FieldSchemaInteger(fieldTag));
 	}
 
-	public AbstractFieldSchema createFieldSchemaDateUnitListField(final String fieldTag)
+	public AbstractFieldSchema createFieldSchemaDateUnitList(final String fieldTag)
 	{
 		return addFieldSchema(new FieldSchemaDateUnitList(fieldTag));
 	}
