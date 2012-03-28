@@ -801,7 +801,7 @@ abstract public class BaseObject
 		return relevantOverrides;
 	}
 
-	void clear()
+	protected final void clear()
 	{
 		createFieldsFromBaseObjectSchema();
 	}
