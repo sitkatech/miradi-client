@@ -37,7 +37,7 @@ public class TableSettingsSchema extends BaseObjectSchema
 		createFieldSchemaCode(TableSettings.TAG_TABLE_IDENTIFIER);
 		createFieldSchemaInteger(TableSettings.TAG_ROW_HEIGHT);
 		createFieldSchemaDateUnitListField(TableSettings.TAG_DATE_UNIT_LIST_DATA);
-		createFieldSchemaCodeToCodeListMapField(TableSettings.TAG_TABLE_SETTINGS_MAP);
+		createFieldSchemaCodeToCodeListMap(TableSettings.TAG_TABLE_SETTINGS_MAP);
 		createFieldSchemaChoice(TableSettings.TAG_WORK_PLAN_VISIBLE_NODES_CODE, getQuestion(WorkPlanVisibleRowsQuestion.class));
 		
 		createFieldSchemaRefListList(TableSettings.TAG_TREE_EXPANSION_LIST).setNavigationField();

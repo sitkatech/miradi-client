@@ -108,7 +108,7 @@ public class BaseObjectSchema
 		return addFieldSchema(new FieldSchemaDateUnitList(fieldTag));
 	}
 
-	public AbstractFieldSchema createFieldSchemaCodeToCodeListMapField(final String fieldTag)
+	public AbstractFieldSchema createFieldSchemaCodeToCodeListMap(final String fieldTag)
 	{
 		return addFieldSchema(new FieldSchemaCodeToCodeListMap(fieldTag));
 	}
