@@ -212,7 +212,6 @@ public class BaseObjectSchema
 	{
 		addFieldSchema(new FieldSchemaPseudoRefListData(tag));
 	}
-
 	
 	public Vector<ObjectData> createFields(BaseObject baseObjectToUse)
 	{
