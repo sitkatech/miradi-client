@@ -54,12 +54,12 @@ public class IndicatorSchema extends BaseObjectSchema
 		createFieldSchemaMultiLineUserText(Indicator.TAG_FUTURE_STATUS_DETAIL);
 		createFieldSchemaMultiLineUserText(Indicator.TAG_FUTURE_STATUS_COMMENTS);
 		
-		createPseudoStringField(Indicator.PSEUDO_TAG_TARGETS);
-		createPseudoStringField(Indicator.PSEUDO_TAG_DIRECT_THREATS);
-		createPseudoStringField(Indicator.PSEUDO_TAG_STRATEGIES);
-		createPseudoStringField(Indicator.PSEUDO_TAG_FACTOR);
-		createPseudoStringField(Indicator.PSEUDO_TAG_METHODS);
-		createPseudoStringField(Indicator.PSEUDO_TAG_INDICATOR_THRESHOLD_VALUE);
+		createPseudoString(Indicator.PSEUDO_TAG_TARGETS);
+		createPseudoString(Indicator.PSEUDO_TAG_DIRECT_THREATS);
+		createPseudoString(Indicator.PSEUDO_TAG_STRATEGIES);
+		createPseudoString(Indicator.PSEUDO_TAG_FACTOR);
+		createPseudoString(Indicator.PSEUDO_TAG_METHODS);
+		createPseudoString(Indicator.PSEUDO_TAG_INDICATOR_THRESHOLD_VALUE);
 		createPseudoQuestionField(Indicator.PSEUDO_TAG_PRIORITY_VALUE);
 		createPseudoQuestionField(Indicator.PSEUDO_TAG_STATUS_VALUE);
 		createPseudoQuestionField(Indicator.PSEUDO_TAG_RATING_SOURCE_VALUE);

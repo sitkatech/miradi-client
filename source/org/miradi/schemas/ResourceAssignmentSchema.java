@@ -41,8 +41,8 @@ public class ResourceAssignmentSchema extends AssignmentSchema
 		createFieldSchemaBaseId(ResourceAssignment.TAG_ACCOUNTING_CODE_ID, AccountingCode.getObjectType());
 		createFieldSchemaBaseId(ResourceAssignment.TAG_FUNDING_SOURCE_ID, FundingSource.getObjectType());
 		
-		createPseudoStringField(ResourceAssignment.PSEUDO_TAG_PROJECT_RESOURCE_LABEL);
-		createPseudoStringField(ResourceAssignment.PSEUDO_TAG_OWNING_FACTOR_NAME);
+		createPseudoString(ResourceAssignment.PSEUDO_TAG_PROJECT_RESOURCE_LABEL);
+		createPseudoString(ResourceAssignment.PSEUDO_TAG_OWNING_FACTOR_NAME);
 
 		
 	}

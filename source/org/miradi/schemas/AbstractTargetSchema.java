@@ -45,7 +45,7 @@ abstract public class AbstractTargetSchema extends FactorSchema
 		createFieldSchemaIdList(AbstractTarget.TAG_GOAL_IDS, Goal.getObjectType());
 		createFieldSchemaIdList(AbstractTarget.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, KeyEcologicalAttribute.getObjectType());
 
-		createPseudoStringField(AbstractTarget.PSEUDO_TAG_TARGET_VIABILITY);
+		createPseudoString(AbstractTarget.PSEUDO_TAG_TARGET_VIABILITY);
 		createPseudoQuestionField(AbstractTarget.PSEUDO_TAG_TARGET_STATUS_VALUE);
 		createPseudoQuestionField(AbstractTarget.PSEUDO_TAG_VIABILITY_MODE_VALUE);
 	}

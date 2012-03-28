@@ -127,7 +127,7 @@ public class ProjectMetadataSchema extends BaseObjectSchema
 		createFieldSchemaChoice(ProjectMetadata.TAG_HUMAN_WELFARE_TARGET_MODE, getQuestion(TargetModeQuestion.class));
 		createFieldSchemaChoice(ProjectMetadata.TAG_WORK_PLAN_DIAGRAM_DATA_INCLUSION, getQuestion(DiagramObjectDataInclusionQuestion.class));
 		
-		createPseudoStringField(ProjectMetadata.PSEUDO_TAG_PROJECT_FILENAME);
-		createPseudoStringField(ProjectMetadata.PSEUDO_TAG_ALL_THREAT_CLASSIFICATIONS);
+		createPseudoString(ProjectMetadata.PSEUDO_TAG_PROJECT_FILENAME);
+		createPseudoString(ProjectMetadata.PSEUDO_TAG_ALL_THREAT_CLASSIFICATIONS);
 	}
 }
