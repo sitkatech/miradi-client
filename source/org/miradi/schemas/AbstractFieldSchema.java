@@ -35,9 +35,9 @@ abstract public class AbstractFieldSchema
 		return tag;
 	}
 	
-	public void setNavigationField(final boolean isNavigationFieldToUse)
+	public void setNavigationField()
 	{
-		isNavigationField = isNavigationFieldToUse;
+		isNavigationField = true;
 	}
 	
 	public boolean isNavigationField()

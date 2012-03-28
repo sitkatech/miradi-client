@@ -40,10 +40,10 @@ public class TableSettingsSchema extends BaseObjectSchema
 		createFieldSchemaCodeToCodeListMapField(TableSettings.TAG_TABLE_SETTINGS_MAP);
 		createFieldSchemaChoice(TableSettings.TAG_WORK_PLAN_VISIBLE_NODES_CODE, getQuestion(WorkPlanVisibleRowsQuestion.class));
 		
-		createFieldSchemaRefListList(TableSettings.TAG_TREE_EXPANSION_LIST).setNavigationField(true);
-		createFieldSchemaTagList(TableSettings.TAG_COLUMN_SEQUENCE_CODES).setNavigationField(true);
-		createFieldSchemaCodeToCodeMapField(TableSettings.TAG_COLUMN_WIDTHS).setNavigationField(true);
-		createFieldSchemaCodeField(TableSettings.TAG_COLUMN_SORT_TAG).setNavigationField(true);
-		createFieldSchemaChoice(TableSettings.TAG_COLUMN_SORT_DIRECTION, getQuestion(SortDirectionQuestion.class)).setNavigationField(true);
+		createFieldSchemaRefListList(TableSettings.TAG_TREE_EXPANSION_LIST).setNavigationField();
+		createFieldSchemaTagList(TableSettings.TAG_COLUMN_SEQUENCE_CODES).setNavigationField();
+		createFieldSchemaCodeToCodeMapField(TableSettings.TAG_COLUMN_WIDTHS).setNavigationField();
+		createFieldSchemaCodeField(TableSettings.TAG_COLUMN_SORT_TAG).setNavigationField();
+		createFieldSchemaChoice(TableSettings.TAG_COLUMN_SORT_DIRECTION, getQuestion(SortDirectionQuestion.class)).setNavigationField();
 	}
 }
