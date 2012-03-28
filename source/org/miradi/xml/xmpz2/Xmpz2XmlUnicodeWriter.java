@@ -20,22 +20,20 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2;
 
-import java.io.File;
+import java.io.IOException;
 import java.io.OutputStream;
 
 import org.martus.util.UnicodeWriter;
 
 public class Xmpz2XmlUnicodeWriter extends UnicodeWriter
 {
-	public Xmpz2XmlUnicodeWriter(File file) throws Exception
-	{
-		super(file);
-		
-		writeln("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>");
-	}
-
 	public Xmpz2XmlUnicodeWriter(OutputStream bytes) throws Exception
 	{
 		super(bytes);
+	}
+	
+	public void writeXmlHeader() throws IOException
+	{
+		writeln("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>");
 	}
 }

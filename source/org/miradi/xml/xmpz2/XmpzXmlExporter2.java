@@ -35,7 +35,7 @@ import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class XmpzXmlExporter2 extends XmlExporter implements XmpzXmlConstants
 {
-	public XmpzXmlExporter2(Project projectToExport,final UnicodeWriter outToUse)
+	public XmpzXmlExporter2(Project projectToExport, final Xmpz2XmlUnicodeWriter outToUse)
 	{
 		super(projectToExport);
 		
@@ -45,6 +45,8 @@ public class XmpzXmlExporter2 extends XmlExporter implements XmpzXmlConstants
 	@Override
 	public void exportProject(UnicodeWriter outToUse) throws Exception
 	{
+		getWriter().writeXmlHeader();
+		
 		writeStartElementWithAttribute(getWriter(), CONSERVATION_PROJECT, XMLNS, NAME_SPACE);
 
 		exportPools();
@@ -115,10 +117,10 @@ public class XmpzXmlExporter2 extends XmlExporter implements XmpzXmlConstants
 		EAM.logWarning(code + " is a code that does not exist in the question:" + question.getClass().getSimpleName());
 	}
 	
-	private UnicodeWriter getWriter()
+	private Xmpz2XmlUnicodeWriter getWriter()
 	{
 		return out;
 	}
 
-	private UnicodeWriter out;
+	private Xmpz2XmlUnicodeWriter out;
 }
