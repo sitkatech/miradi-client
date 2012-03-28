@@ -20,20 +20,105 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2;
 
-import org.martus.util.UnicodeWriter;
-import org.miradi.project.Project;
-import org.miradi.xml.XmlExporter;
+import java.util.Vector;
 
-public class XmpzXmlExporter2 extends XmlExporter
+import org.martus.util.UnicodeWriter;
+import org.miradi.main.EAM;
+import org.miradi.objects.BaseObject;
+import org.miradi.objects.FosProjectData;
+import org.miradi.project.Project;
+import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ChoiceQuestion;
+import org.miradi.xml.XmlExporter;
+import org.miradi.xml.wcs.TagToElementNameMap;
+import org.miradi.xml.wcs.XmpzXmlConstants;
+
+public class XmpzXmlExporter2 extends XmlExporter implements XmpzXmlConstants
 {
-	public XmpzXmlExporter2(Project projectToExport)
+	public XmpzXmlExporter2(Project projectToExport,final UnicodeWriter outToUse)
 	{
 		super(projectToExport);
+		
+		out = outToUse;
 	}
 
 	@Override
-	public void exportProject(UnicodeWriter out) throws Exception
+	public void exportProject(UnicodeWriter outToUse) throws Exception
 	{
+		writeStartElementWithAttribute(getWriter(), CONSERVATION_PROJECT, XMLNS, NAME_SPACE);
+
+		exportPools();
 		
+		writeEndElement(out, CONSERVATION_PROJECT);
 	}
+
+	private void exportPools() throws Exception
+	{
+		writeFosProjectDataSchemaElement();
+	}
+	
+	private void writeFosProjectDataSchemaElement() throws Exception
+	{
+		writeStartElement(out, FOS_PROJECT_DATA);
+		
+		FosProjectData fosBaseObject = getFosProjectData();
+		Vector<String> fields = fosBaseObject.getStoredFieldTags();
+		for(String tag : fields)
+		{
+			writeOptionalElementWithSameTag(FOS_PROJECT_DATA, fosBaseObject, tag);
+		}
+		
+		writeEndElement(out, FOS_PROJECT_DATA);
+	}
+	
+	public void writeOptionalElementWithSameTag(String parentElementName, BaseObject object, String tag) throws Exception
+	{
+		writeOptionalElement(parentElementName, tag, object, tag);
+	}
+	
+	public void writeOptionalElement(String parentElementName, String elementName, BaseObject object, String tag) throws Exception
+	{
+		String convertedElementName = getConvertedElementName(parentElementName, elementName);
+		writeOptionalElement(getWriter(), parentElementName + convertedElementName, object, tag);
+	}
+	
+	public void writeCodeElement(String parentElementName, String elementName, ChoiceQuestion question, String code) throws Exception
+	{
+		String convertedElementName = getConvertedElementName(parentElementName, elementName);
+		writeStartElement(getWriter(), parentElementName + convertedElementName);
+		
+		if (doesCodeExist(question, code))
+			writeXmlEncodedData(getWriter(), question.convertToReadableCode(code));
+		else
+			logMissingCode(question, code);
+		
+		writeEndElement(getWriter(), parentElementName + convertedElementName);
+	}
+	
+	private String getConvertedElementName(String parentElementName,String elementName)
+	{
+		TagToElementNameMap map = new TagToElementNameMap();
+		return map.findElementName(parentElementName, elementName);
+	}
+	
+	private boolean doesCodeExist(ChoiceQuestion question, String code)
+	{
+		ChoiceItem choiceItem = question.findChoiceByCode(code);
+		if (choiceItem == null)
+			return false;
+		
+		return true;
+	}
+	
+	private void logMissingCode(ChoiceQuestion question, String code)
+	{
+		EAM.logWarning(code + " is a code that does not exist in the question:" + question.getClass().getSimpleName());
+	}
+	
+	private UnicodeWriter getWriter()
+	{
+		return out;
+	}
+
+	private UnicodeWriter out;
 }
