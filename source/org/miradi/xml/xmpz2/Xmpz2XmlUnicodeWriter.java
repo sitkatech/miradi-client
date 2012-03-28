@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 import org.martus.util.UnicodeWriter;
+import org.miradi.schemas.BaseObjectSchema;
 
 public class Xmpz2XmlUnicodeWriter extends UnicodeWriter
 {
@@ -35,5 +36,15 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter
 	public void writeXmlHeader() throws IOException
 	{
 		writeln("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>");
+	}
+	
+	public void writeStartElement(final BaseObjectSchema schema) throws Exception
+	{
+		writeln("<" + schema.getXmpz2ElementName() + ">");
+	}
+	
+	public void writeEndElement(final BaseObjectSchema schema) throws Exception
+	{
+		writeln("</" + schema.getXmpz2ElementName() + ">");
 	}
 }
