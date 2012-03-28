@@ -37,8 +37,8 @@ public class TaskSchema extends FactorSchema
 		createFieldSchemaIdList(Task.TAG_SUBTASK_IDS, Task.getObjectType());
 		createFieldSchemaMultiLineUserText(Task.TAG_DETAILS);
 		
-		createPseudoString(Task.PSEUDO_TAG_STRATEGY_LABEL);
-		createPseudoString(Task.PSEUDO_TAG_INDICATOR_LABEL);
+		createPseudoFieldSchemaString(Task.PSEUDO_TAG_STRATEGY_LABEL);
+		createPseudoFieldSchemaString(Task.PSEUDO_TAG_INDICATOR_LABEL);
 		createPseudoRefList(Task.PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS);
 		createPseudoRefList(Task.PSEUDO_TAG_RELEVANT_GOAL_REFS);
 	}

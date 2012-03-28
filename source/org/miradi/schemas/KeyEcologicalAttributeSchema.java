@@ -42,6 +42,6 @@ public class KeyEcologicalAttributeSchema extends BaseObjectSchema
 		createFieldSchemaChoice(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE, getQuestion(KeyEcologicalAttributeTypeQuestion.class));
 		createFieldSchemaSingleLineUserText(KeyEcologicalAttribute.TAG_SHORT_LABEL);
 		
-		createPseudoString(KeyEcologicalAttribute.PSEUDO_TAG_VIABILITY_STATUS);
+		createPseudoFieldSchemaString(KeyEcologicalAttribute.PSEUDO_TAG_VIABILITY_STATUS);
 	}
 }

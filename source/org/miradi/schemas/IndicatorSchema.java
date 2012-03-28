@@ -54,16 +54,16 @@ public class IndicatorSchema extends BaseObjectSchema
 		createFieldSchemaMultiLineUserText(Indicator.TAG_FUTURE_STATUS_DETAIL);
 		createFieldSchemaMultiLineUserText(Indicator.TAG_FUTURE_STATUS_COMMENTS);
 		
-		createPseudoString(Indicator.PSEUDO_TAG_TARGETS);
-		createPseudoString(Indicator.PSEUDO_TAG_DIRECT_THREATS);
-		createPseudoString(Indicator.PSEUDO_TAG_STRATEGIES);
-		createPseudoString(Indicator.PSEUDO_TAG_FACTOR);
-		createPseudoString(Indicator.PSEUDO_TAG_METHODS);
-		createPseudoString(Indicator.PSEUDO_TAG_INDICATOR_THRESHOLD_VALUE);
-		createPseudoQuestion(Indicator.PSEUDO_TAG_PRIORITY_VALUE);
-		createPseudoQuestion(Indicator.PSEUDO_TAG_STATUS_VALUE);
-		createPseudoQuestion(Indicator.PSEUDO_TAG_RATING_SOURCE_VALUE);
-		createPseudoQuestion(Indicator.PSEUDO_TAG_LATEST_MEASUREMENT_REF);
-		createPseudoQuestion(Indicator.PSEUDO_TAG_FUTURE_STATUS_RATING_VALUE);
+		createPseudoFieldSchemaString(Indicator.PSEUDO_TAG_TARGETS);
+		createPseudoFieldSchemaString(Indicator.PSEUDO_TAG_DIRECT_THREATS);
+		createPseudoFieldSchemaString(Indicator.PSEUDO_TAG_STRATEGIES);
+		createPseudoFieldSchemaString(Indicator.PSEUDO_TAG_FACTOR);
+		createPseudoFieldSchemaString(Indicator.PSEUDO_TAG_METHODS);
+		createPseudoFieldSchemaString(Indicator.PSEUDO_TAG_INDICATOR_THRESHOLD_VALUE);
+		createPseudoFieldSchemaQuestion(Indicator.PSEUDO_TAG_PRIORITY_VALUE);
+		createPseudoFieldSchemaQuestion(Indicator.PSEUDO_TAG_STATUS_VALUE);
+		createPseudoFieldSchemaQuestion(Indicator.PSEUDO_TAG_RATING_SOURCE_VALUE);
+		createPseudoFieldSchemaQuestion(Indicator.PSEUDO_TAG_LATEST_MEASUREMENT_REF);
+		createPseudoFieldSchemaQuestion(Indicator.PSEUDO_TAG_FUTURE_STATUS_RATING_VALUE);
 	}
 }
