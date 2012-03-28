@@ -29,6 +29,7 @@ import org.miradi.objects.FosProjectData;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.xml.XmlExporter;
 import org.miradi.xml.wcs.TagToElementNameMap;
 import org.miradi.xml.wcs.XmpzXmlConstants;
@@ -61,16 +62,16 @@ public class XmpzXmlExporter2 extends XmlExporter implements XmpzXmlConstants
 	
 	private void writeFosProjectDataSchemaElement() throws Exception
 	{
-		writeStartElement(out, FOS_PROJECT_DATA);
-		
 		FosProjectData fosBaseObject = getFosProjectData();
+		BaseObjectSchema schema = fosBaseObject.getSchema();
+		writeStartElement(out, schema.getXmpz2ElementName());
 		Vector<String> fields = fosBaseObject.getStoredFieldTags();
 		for(String tag : fields)
 		{
 			writeOptionalElementWithSameTag(FOS_PROJECT_DATA, fosBaseObject, tag);
 		}
 		
-		writeEndElement(out, FOS_PROJECT_DATA);
+		writeEndElement(out, schema.getXmpz2ElementName());
 	}
 	
 	public void writeOptionalElementWithSameTag(String parentElementName, BaseObject object, String tag) throws Exception
