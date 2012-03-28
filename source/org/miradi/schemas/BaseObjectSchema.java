@@ -198,7 +198,7 @@ public class BaseObjectSchema
 		addFieldSchema(new FieldSchemaPseudoStringField(fieldTag));
 	}
 	
-	public void createPseudoQuestionField(final String fieldTag)
+	public void createPseudoQuestion(final String fieldTag)
 	{
 		addFieldSchema(new FieldSchemaPseudoQuestionField(fieldTag));
 	}

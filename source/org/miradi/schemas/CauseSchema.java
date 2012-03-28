@@ -37,6 +37,6 @@ public class CauseSchema extends FactorSchema
 		
 		createFieldSchemaChoice(Cause.TAG_TAXONOMY_CODE, new ThreatClassificationQuestion());
 		createFieldSchemaBoolean(Cause.TAG_IS_DIRECT_THREAT);
-		createPseudoQuestionField(Cause.PSEUDO_TAG_TAXONOMY_CODE_VALUE);
+		createPseudoQuestion(Cause.PSEUDO_TAG_TAXONOMY_CODE_VALUE);
 	}
 }
