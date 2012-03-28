@@ -29,6 +29,7 @@ import org.miradi.objects.FosProjectData;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.xml.XmlExporter;
 import org.miradi.xml.wcs.TagToElementNameMap;
@@ -62,10 +63,10 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 		FosProjectData fosBaseObject = getFosProjectData();
 		BaseObjectSchema schema = fosBaseObject.getSchema();
 		getWriter().writeStartElement(schema);
-		Vector<String> fields = fosBaseObject.getStoredFieldTags();
-		for(String tag : fields)
+		Vector<AbstractFieldSchema> fieldSchemas = schema.getFieldSchemas();
+		for(AbstractFieldSchema fieldSchema : fieldSchemas)
 		{
-			writeOptionalElementWithSameTag(FOS_PROJECT_DATA, fosBaseObject, tag);
+			getWriter().writeElement(fosBaseObject, fieldSchema);
 		}
 		
 		getWriter().writeEndElement(schema);
