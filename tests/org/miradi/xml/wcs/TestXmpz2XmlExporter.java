@@ -29,9 +29,9 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.xml.xmpz2.XmpzXmlExporter2;
 import org.miradi.xml.xmpz2.XmpzXmlUnicodeWriter;
 
-public class TestXmpzXmlExporter2 extends TestCaseWithProject
+public class TestXmpz2XmlExporter extends TestCaseWithProject
 {
-	public TestXmpzXmlExporter2(String name)
+	public TestXmpz2XmlExporter(String name)
 	{
 		super(name);
 	}

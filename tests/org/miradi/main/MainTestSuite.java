@@ -229,7 +229,7 @@ import org.miradi.xml.conpro.TestConProCodeMapHelper;
 import org.miradi.xml.conpro.exporter.TestConproXmlExporter;
 import org.miradi.xml.conpro.importer.TestConproXmlImporter;
 import org.miradi.xml.wcs.TestXmpzExporter;
-import org.miradi.xml.wcs.TestXmpzXmlExporter2;
+import org.miradi.xml.wcs.TestXmpz2XmlExporter;
 
 public class MainTestSuite extends TestSuite
 {
@@ -498,7 +498,7 @@ public class MainTestSuite extends TestSuite
 		
 		//xml.export
 		addTest(new TestSuite(TestXmpzExporter.class));
-		addTest(new TestSuite(TestXmpzXmlExporter2.class));
+		addTest(new TestSuite(TestXmpz2XmlExporter.class));
 		
 		//xml.conpro
 		addTest(new TestSuite(TestConProCodeMapHelper.class));
