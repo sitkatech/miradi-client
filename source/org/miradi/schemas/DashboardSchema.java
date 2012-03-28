@@ -35,7 +35,7 @@ public class DashboardSchema extends BaseObjectSchema
 		super.fillFieldSchemas();
 	
 		createFieldSchemaCodeToChoiceMapField(Dashboard.TAG_PROGRESS_CHOICE_MAP);
-		createFieldSchemaCodeToUserStringMapField(Dashboard.TAG_COMMENTS_MAP);
+		createFieldSchemaCodeToUserStringMap(Dashboard.TAG_COMMENTS_MAP);
 		createFieldSchemaCodeToCodeListMapField(Dashboard.TAG_FLAGS_MAP);
 		createFieldSchemaCodeField(Dashboard.TAG_CURRENT_DASHBOARD_TAB).setNavigationField();
 
