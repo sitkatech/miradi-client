@@ -25,16 +25,16 @@ import java.io.OutputStream;
 
 import org.martus.util.UnicodeWriter;
 
-public class XmpzXmlUnicodeWriter extends UnicodeWriter
+public class Xmpz2XmlUnicodeWriter extends UnicodeWriter
 {
-	public XmpzXmlUnicodeWriter(File file) throws Exception
+	public Xmpz2XmlUnicodeWriter(File file) throws Exception
 	{
 		super(file);
 		
 		writeln("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>");
 	}
 
-	public XmpzXmlUnicodeWriter(OutputStream bytes) throws Exception
+	public Xmpz2XmlUnicodeWriter(OutputStream bytes) throws Exception
 	{
 		super(bytes);
 	}
