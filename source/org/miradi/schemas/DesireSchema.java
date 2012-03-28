@@ -41,13 +41,13 @@ public class DesireSchema extends BaseObjectSchema
 		createFieldSchemaRelevancyOverrideSet(Desire.TAG_RELEVANT_STRATEGY_ACTIVITY_SET);
 		createFieldSchemaReflist(Desire.TAG_PROGRESS_PERCENT_REFS);
 		
-		createPseudoStringField(Desire.PSEUDO_TAG_TARGETS);
-		createPseudoStringField(Desire.PSEUDO_TAG_DIRECT_THREATS);
-		createPseudoStringField(Desire.PSEUDO_TAG_FACTOR);
+		createPseudoString(Desire.PSEUDO_TAG_TARGETS);
+		createPseudoString(Desire.PSEUDO_TAG_DIRECT_THREATS);
+		createPseudoString(Desire.PSEUDO_TAG_FACTOR);
 		createPseudoRefListField(Desire.PSEUDO_TAG_RELEVANT_INDICATOR_REFS);
 		createPseudoRefListField(Desire.PSEUDO_TAG_RELEVANT_STRATEGY_ACTIVITY_REFS);
 		createPseudoRefListField(Desire.PSEUDO_TAG_RELEVANT_ACTIVITY_REFS);
-		createPseudoStringField(Desire.PSEUDO_TAG_LATEST_PROGRESS_PERCENT_COMPLETE);
-		createPseudoStringField(Desire.PSEUDO_TAG_LATEST_PROGRESS_PERCENT_DETAILS);
+		createPseudoString(Desire.PSEUDO_TAG_LATEST_PROGRESS_PERCENT_COMPLETE);
+		createPseudoString(Desire.PSEUDO_TAG_LATEST_PROGRESS_PERCENT_DETAILS);
 	}
 }

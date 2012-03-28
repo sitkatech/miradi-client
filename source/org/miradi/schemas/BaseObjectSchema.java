@@ -193,7 +193,7 @@ public class BaseObjectSchema
 		return addFieldSchema(new FieldSchemaExpandingUserText(tag));
 	}
 	
-	public void createPseudoStringField(final String fieldTag)
+	public void createPseudoString(final String fieldTag)
 	{
 		addFieldSchema(new FieldSchemaPseudoStringField(fieldTag));
 	}
@@ -239,9 +239,9 @@ public class BaseObjectSchema
 		createFieldSchemaReflist(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS);
 		createFieldSchemaReflist(BaseObject.TAG_PROGRESS_REPORT_REFS);
 		
-		createPseudoStringField(BaseObject.PSEUDO_TAG_WHEN_TOTAL);
+		createPseudoString(BaseObject.PSEUDO_TAG_WHEN_TOTAL);
 		createPseudoQuestionField(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, BaseObject.createSet(BaseObject.TAG_PROGRESS_REPORT_REFS));
-		createPseudoStringField(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS);
+		createPseudoString(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS);
 	}
 	
 	private Vector<AbstractFieldSchema> fieldSchemas;

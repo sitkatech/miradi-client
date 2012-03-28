@@ -47,12 +47,12 @@ public class StrategySchema extends FactorSchema
 		createFieldSchemaChoice(Strategy.TAG_FEASIBILITY_RATING, getQuestion(StrategyFeasibilityQuestion.class));
 		createFieldSchemaMultiLineUserText(Strategy.TAG_LEGACY_TNC_STRATEGY_RANKING);
 	
-		createPseudoStringField(Strategy.PSEUDO_TAG_RATING_SUMMARY);
+		createPseudoString(Strategy.PSEUDO_TAG_RATING_SUMMARY);
 		createPseudoQuestionField(Strategy.PSEUDO_TAG_IMPACT_RATING_VALUE);
 		createPseudoQuestionField(Strategy.PSEUDO_TAG_FEASIBILITY_RATING_VALUE);
 		createPseudoQuestionField(Strategy.PSEUDO_TAG_RATING_SUMMARY_VALUE);
 		createPseudoQuestionField(Strategy.PSEUDO_TAG_TAXONOMY_CODE_VALUE);
-		createPseudoStringField(Strategy.PSEUDO_TAG_ACTIVITIES);
+		createPseudoString(Strategy.PSEUDO_TAG_ACTIVITIES);
 		createPseudoRefListField(Strategy.PSEUDO_TAG_RELEVANT_GOAL_REFS);
 		createPseudoRefListField(Strategy.PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS);
 	}

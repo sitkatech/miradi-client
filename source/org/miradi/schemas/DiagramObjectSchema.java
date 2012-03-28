@@ -45,6 +45,6 @@ abstract public class DiagramObjectSchema extends BaseObjectSchema
 		createFieldSchemaReflist(DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS);
 		createFieldSchemaNumber(DiagramObject.TAG_ZOOM_SCALE);
 		
-		createPseudoStringField(DiagramObject.PSEUDO_COMBINED_LABEL);
+		createPseudoString(DiagramObject.PSEUDO_COMBINED_LABEL);
 	}
 }
