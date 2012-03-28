@@ -203,7 +203,7 @@ public class BaseObjectSchema
 		addFieldSchema(new FieldSchemaPseudoQuestionField(fieldTag));
 	}
 	
-	public void createPseudoQuestion(String tag, HashSet<String> set)
+	public void createPseudoFieldSchemaQuestion(String tag, HashSet<String> set)
 	{
 		addFieldSchema(new FieldSchemaPseudoQuestionField(tag, set));
 	}
@@ -240,7 +240,7 @@ public class BaseObjectSchema
 		createFieldSchemaReflist(BaseObject.TAG_PROGRESS_REPORT_REFS);
 		
 		createPseudoFieldSchemaString(BaseObject.PSEUDO_TAG_WHEN_TOTAL);
-		createPseudoQuestion(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, BaseObject.createSet(BaseObject.TAG_PROGRESS_REPORT_REFS));
+		createPseudoFieldSchemaQuestion(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, BaseObject.createSet(BaseObject.TAG_PROGRESS_REPORT_REFS));
 		createPseudoFieldSchemaString(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS);
 	}
 	
