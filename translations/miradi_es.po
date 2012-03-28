@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-27 16:19-0500\n"
+"POT-Creation-Date: 2012-03-28 10:10-0500\n"
 "PO-Revision-Date: 2011-03-28 15:06-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -323,7 +323,7 @@ msgstr "(Ver lengüeta Proyecto)"
 msgid "(Translation: %code %date)"
 msgstr "(Traducción: %code %date)"
 
-#: Miradi/source/org/miradi/objects/DiagramFactor.java:227
+#: Miradi/source/org/miradi/objects/DiagramFactor.java:226
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectList.java:70
 msgid "(Unknown)"
 msgstr "(Desconocido)"
@@ -3424,7 +3424,7 @@ msgstr ""
 msgid "Error Occurred please try saving under different name."
 msgstr "Se produjo un error. Intente grabar con un nombre diferente."
 
-#: Miradi/source/org/miradi/objects/Dashboard.java:298
+#: Miradi/source/org/miradi/objects/Dashboard.java:296
 msgid "Error Retrieving Data"
 msgstr ""
 
@@ -4378,15 +4378,15 @@ msgstr "Atributo clave "
 msgid "Key Ecological Attribute (KEA)"
 msgstr "Atributos ecológicos clave (AEC)"
 
-#: Miradi/source/org/miradi/objects/AccountingCode.java:72
+#: Miradi/source/org/miradi/objects/AccountingCode.java:70
 msgid "Label|(Undefined Accounting Code)"
 msgstr "(Código contable sin definir)"
 
-#: Miradi/source/org/miradi/objects/FundingSource.java:72
+#: Miradi/source/org/miradi/objects/FundingSource.java:70
 msgid "Label|(Undefined Funding Source)"
 msgstr "(Fuente de financiamiento sin definir)"
 
-#: Miradi/source/org/miradi/objects/ProjectResource.java:120
+#: Miradi/source/org/miradi/objects/ProjectResource.java:119
 msgid "Label|(Undefined Resource)"
 msgstr "(Recurso sin definir)"
 
@@ -4399,11 +4399,11 @@ msgstr "--- afecta -->"
 msgid "Label|Biodiversity Area (hectares)"
 msgstr "Área de biodiversidad (hectáreas)"
 
-#: Miradi/source/org/miradi/objects/BudgetCategoryOne.java:72
+#: Miradi/source/org/miradi/objects/BudgetCategoryOne.java:70
 msgid "Label|Budget Category One"
 msgstr ""
 
-#: Miradi/source/org/miradi/objects/BudgetCategoryTwo.java:72
+#: Miradi/source/org/miradi/objects/BudgetCategoryTwo.java:70
 msgid "Label|Budget Category Two"
 msgstr ""
 
@@ -7484,7 +7484,7 @@ msgstr ""
 "necesario, las tareas en sí mismas pueden dividirse en subtareas. En Miradi, "
 "una tarea está representada por un óvalo plano gris."
 
-#: Miradi/source/org/miradi/objects/Task.java:367
+#: Miradi/source/org/miradi/objects/Task.java:366
 msgid "Task does not have a parent"
 msgstr ""
 
