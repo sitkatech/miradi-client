@@ -128,7 +128,7 @@ public class BaseObjectSchema
 		return addFieldSchema(new FieldSchemaTagList(fieldTag));
 	}
 
-	public AbstractFieldSchema createFieldSchemaCodeToCodeMapField(final String fieldTag)
+	public AbstractFieldSchema createFieldSchemaCodeToCodeMap(final String fieldTag)
 	{
 		return addFieldSchema(new FieldSchemaCodeToCodeMap(fieldTag));
 	}

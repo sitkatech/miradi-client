@@ -42,7 +42,7 @@ public class TableSettingsSchema extends BaseObjectSchema
 		
 		createFieldSchemaRefListList(TableSettings.TAG_TREE_EXPANSION_LIST).setNavigationField();
 		createFieldSchemaTagList(TableSettings.TAG_COLUMN_SEQUENCE_CODES).setNavigationField();
-		createFieldSchemaCodeToCodeMapField(TableSettings.TAG_COLUMN_WIDTHS).setNavigationField();
+		createFieldSchemaCodeToCodeMap(TableSettings.TAG_COLUMN_WIDTHS).setNavigationField();
 		createFieldSchemaCode(TableSettings.TAG_COLUMN_SORT_TAG).setNavigationField();
 		createFieldSchemaChoice(TableSettings.TAG_COLUMN_SORT_DIRECTION, getQuestion(SortDirectionQuestion.class)).setNavigationField();
 	}
