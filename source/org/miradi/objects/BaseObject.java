@@ -1328,6 +1328,11 @@ abstract public class BaseObject
 		}
 	}
 	
+	public BaseObjectSchema getSchema()
+	{
+		return schema;
+	}
+	
 	abstract public int getType();
 
 	abstract public String getTypeName();

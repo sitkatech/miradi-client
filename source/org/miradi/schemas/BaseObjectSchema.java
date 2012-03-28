@@ -243,5 +243,10 @@ public class BaseObjectSchema
 		createPseudoFieldSchemaString(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS);
 	}
 	
+	public String getXmpz2ElementName()
+	{
+		throw new RuntimeException("This method should be overriden and correct value returned");
+	}
+	
 	private Vector<AbstractFieldSchema> fieldSchemas;
 }
