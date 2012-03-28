@@ -32,7 +32,6 @@ public class ProgressPercent extends BaseObject
 	public ProgressPercent(ObjectManager objectManager, BaseId idToUse)
 	{
 		super(objectManager, idToUse, new ProgressPercentSchema());
-		clear();
 	}
 		
 	public ProgressPercent(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception

@@ -32,7 +32,6 @@ public class Xenodata extends BaseObject
 	public Xenodata(ObjectManager objectManager, BaseId idToUse)
 	{
 		super(objectManager, idToUse, new XenodataSchema());
-		clear();
 	}
 		
 	public Xenodata(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception

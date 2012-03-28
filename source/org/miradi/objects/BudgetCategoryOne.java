@@ -34,8 +34,6 @@ public class BudgetCategoryOne extends AbstractBudgetCategoryObject
 	public BudgetCategoryOne(ObjectManager objectManager, BaseId idToUse)
 	{
 		super(objectManager, idToUse, new BudgetCategoryOneSchema());
-		
-		clear();
 	}
 		
 	public BudgetCategoryOne(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception

@@ -46,7 +46,6 @@ public class ProjectMetadata extends BaseObject
 	public ProjectMetadata(ObjectManager objectManager, BaseId idToUse)
 	{
 		super(objectManager, idToUse, new ProjectMetadataSchema());
-		clear();
 	}
 
 	public ProjectMetadata(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception

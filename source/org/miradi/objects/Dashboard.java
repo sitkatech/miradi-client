@@ -52,8 +52,6 @@ public class Dashboard extends BaseObject
 	public Dashboard(ObjectManager objectManager, BaseId idToUse)
 	{
 		super(objectManager, idToUse, new DashboardSchema());
-		
-		clear();
 	}
 		
 	public Dashboard(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception

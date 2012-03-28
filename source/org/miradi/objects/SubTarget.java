@@ -33,8 +33,6 @@ public class SubTarget extends BaseObject
 	public SubTarget(ObjectManager objectManager, BaseId idToUse)
 	{
 		super(objectManager, idToUse, new SubTargetSchema());
-		
-		clear();
 	}
 		
 	public SubTarget(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception

@@ -33,7 +33,6 @@ public class ThreatReductionResult extends Factor
 	public ThreatReductionResult(ObjectManager objectManager, FactorId idToUse)
 	{
 		super(objectManager, idToUse, new ThreatReductionResultSchema());
-		clear();
 	}
 	
 	public ThreatReductionResult(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception

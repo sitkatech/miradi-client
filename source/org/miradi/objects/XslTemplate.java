@@ -33,7 +33,6 @@ public class XslTemplate extends BaseObject
 	public XslTemplate(ObjectManager objectManager, BaseId idToUse)
 	{
 		super(objectManager, idToUse, new XslTemplateSchema());
-		clear();
 	}
 		
 	public XslTemplate(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception

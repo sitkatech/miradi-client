@@ -33,7 +33,6 @@ public class OtherNotableSpecies extends BaseObject
 	public OtherNotableSpecies(ObjectManager objectManager, BaseId idToUse)
 	{
 		super(objectManager, idToUse, new OtherNotableSpeciesSchema());
-		clear();
 	}
 		
 	public OtherNotableSpecies(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception

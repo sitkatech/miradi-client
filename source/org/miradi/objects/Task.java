@@ -43,7 +43,6 @@ public class Task extends Factor
 	public Task(ObjectManager objectManager, FactorId idToUse)
 	{
 		super(objectManager, idToUse, new TaskSchema());
-		clear();
 	}
 	
 	public Task(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception

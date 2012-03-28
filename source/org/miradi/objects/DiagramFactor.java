@@ -45,7 +45,6 @@ public class DiagramFactor extends BaseObject
 	{
 		super(objectManager, diagramFactorIdToUse, new DiagramFactorSchema());
 		
-		clear();
 		setDimensionData(TAG_SIZE, getDefaultSize());
 	}
 	

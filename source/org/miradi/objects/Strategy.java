@@ -46,7 +46,6 @@ public class Strategy extends Factor
 	public Strategy(ObjectManager objectManager, FactorId idToUse)
 	{
 		super(objectManager, idToUse, new StrategySchema());
-		clear();
 	}
 	
 	public Strategy(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception

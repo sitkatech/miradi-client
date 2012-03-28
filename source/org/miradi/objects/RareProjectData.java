@@ -32,7 +32,6 @@ public class RareProjectData extends BaseObject
 	public RareProjectData(ObjectManager objectManager, BaseId id)
 	{
 		super(objectManager, id, new RareProjectDataSchema());
-		clear();
 	}
 	
 	public RareProjectData(ObjectManager objectManager, int idAsInt, EnhancedJsonObject jsonObject) throws Exception 

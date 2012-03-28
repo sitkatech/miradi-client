@@ -33,7 +33,6 @@ public class ThreatRatingCommentsData extends BaseObject
 	public ThreatRatingCommentsData(ObjectManager objectManager, BaseId id)
 	{
 		super(objectManager, id, new ThreatRatingCommentsDataSchema());
-		clear();
 	}
 
 	public ThreatRatingCommentsData(ObjectManager objectManager, int idAsInt, EnhancedJsonObject jsonObject) throws Exception 

@@ -34,7 +34,6 @@ public class ProgressReport extends BaseObject
 	public ProgressReport(ObjectManager objectManager, BaseId idToUse)
 	{
 		super(objectManager, idToUse, new ProgressReportSchema());
-		clear();
 	}
 		
 	public ProgressReport(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception

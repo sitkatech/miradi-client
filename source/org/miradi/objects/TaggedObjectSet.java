@@ -34,7 +34,6 @@ public class TaggedObjectSet extends BaseObject
 	public TaggedObjectSet(ObjectManager objectManager, BaseId idToUse)
 	{
 		super(objectManager, idToUse, new TaggedObjectSetSchema());
-		clear();
 	}
 		
 	public TaggedObjectSet(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception

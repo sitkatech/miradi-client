@@ -33,7 +33,6 @@ public class Organization extends BaseObject
 	public Organization(ObjectManager objectManager, BaseId idToUse)
 	{
 		super(objectManager, idToUse, new OrganizationSchema());
-		clear();
 	}
 		
 	public Organization(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
