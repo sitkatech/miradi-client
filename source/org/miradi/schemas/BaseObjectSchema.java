@@ -98,7 +98,7 @@ public class BaseObjectSchema
 		return addFieldSchema(new FieldSchemaCode(fieldTag));
 	}
 	
-	public AbstractFieldSchema createFieldSchemaIntegerField(final String fieldTag)
+	public AbstractFieldSchema createFieldSchemaInteger(final String fieldTag)
 	{
 		return addFieldSchema(new FieldSchemaInteger(fieldTag));
 	}

@@ -64,7 +64,7 @@ public class ProjectMetadataSchema extends BaseObjectSchema
 		createFieldSchemaDate(ProjectMetadata.TAG_EXPECTED_END_DATE);
 		createFieldSchemaDate(ProjectMetadata.TAG_DATA_EFFECTIVE_DATE);
 		
-		createFieldSchemaIntegerField(ProjectMetadata.TAG_CURRENCY_DECIMAL_PLACES);
+		createFieldSchemaInteger(ProjectMetadata.TAG_CURRENCY_DECIMAL_PLACES);
 		createFieldSchemaChoice(ProjectMetadata.TAG_CURRENCY_TYPE, getQuestion(CurrencyTypeQuestion.class));
 		createFieldSchemaSingleLineUserText(ProjectMetadata.TAG_CURRENCY_SYMBOL);
 		createFieldSchemaNumber(ProjectMetadata.TAG_TOTAL_BUDGET_FOR_FUNDING);
@@ -94,7 +94,7 @@ public class ProjectMetadataSchema extends BaseObjectSchema
 		createFieldSchemaChoice(ProjectMetadata.TAG_WORKPLAN_TIME_UNIT, getQuestion(BudgetTimePeriodQuestion.class));
 		createFieldSchemaMultiLineUserText(ProjectMetadata.TAG_PLANNING_COMMENTS);
 		
-		createFieldSchemaIntegerField(ProjectMetadata.TAG_HUMAN_POPULATION);
+		createFieldSchemaInteger(ProjectMetadata.TAG_HUMAN_POPULATION);
 		createFieldSchemaMultiLineUserText(ProjectMetadata.TAG_HUMAN_POPULATION_NOTES);
 		createFieldSchemaMultiLineUserText(ProjectMetadata.TAG_SOCIAL_CONTEXT);
 		createFieldSchemaSingleLineUserText(ProjectMetadata.TAG_SITE_MAP_REFERENCE);

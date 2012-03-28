@@ -34,7 +34,7 @@ public class ValueOptionSchema extends BaseObjectSchema
 	{
 		super.fillFieldSchemas();
 		
-		createFieldSchemaIntegerField(ValueOption.TAG_NUMERIC);
-		createFieldSchemaIntegerField(ValueOption.TAG_COLOR);
+		createFieldSchemaInteger(ValueOption.TAG_NUMERIC);
+		createFieldSchemaInteger(ValueOption.TAG_COLOR);
 	}
 }
