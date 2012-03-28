@@ -45,6 +45,11 @@ abstract public class AbstractFieldSchema
 		return isNavigationField;
 	}
 	
+	public String getXmpz2ElementName()
+	{
+		return getTag();
+	}
+	
 	abstract public ObjectData createField(final BaseObject baseObjectToUse);
 
 	private String tag;

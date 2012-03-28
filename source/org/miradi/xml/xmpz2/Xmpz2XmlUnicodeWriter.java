@@ -25,8 +25,10 @@ import java.io.OutputStream;
 
 import org.martus.util.UnicodeWriter;
 import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.utils.HtmlUtilities;
+import org.miradi.xml.wcs.XmpzXmlConstants;
 
-public class Xmpz2XmlUnicodeWriter extends UnicodeWriter
+public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConstants
 {
 	public Xmpz2XmlUnicodeWriter(OutputStream bytes) throws Exception
 	{
@@ -38,13 +40,51 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter
 		writeln("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>");
 	}
 	
-	public void writeStartElement(final BaseObjectSchema schema) throws Exception
+	public void writeMainElementStart() throws Exception
 	{
-		writeln("<" + schema.getXmpz2ElementName() + ">");
+		writeln("<" + CONSERVATION_PROJECT + " " + XMLNS + "=\"" + NAME_SPACE + "\">");
 	}
 	
+	public void writeMainElementEnd() throws Exception
+	{
+		writeEndElement(CONSERVATION_PROJECT);
+	}
+	
+	public void writeStartElement(final BaseObjectSchema schema) throws Exception
+	{
+		writeStartElement(schema.getXmpz2ElementName());
+	}
+
 	public void writeEndElement(final BaseObjectSchema schema) throws Exception
 	{
-		writeln("</" + schema.getXmpz2ElementName() + ">");
+		writeEndElement(schema.getXmpz2ElementName());
+	}
+	
+	public void writeElement(String elementName, String data) throws Exception
+	{
+		if (data == null || data.length() == 0)
+			return;
+		
+		writeStartElement(elementName);
+		writeXmlEncodedData(data);
+		writeEndElement(elementName);
+		writeln();
+	}
+	
+	private void writeXmlEncodedData(String data) throws IOException
+	{
+		data = HtmlUtilities.replaceHtmlBrsWithNewlines(data);
+		data = HtmlUtilities.stripAllHtmlTags(data);
+		write(data);
+	}
+	
+	private void writeStartElement(final String elemnentName)	throws Exception
+	{
+		writeln("<" + elemnentName + ">");
+	}
+	
+	private void writeEndElement(final String elemnentName)	throws Exception
+	{
+		writeln("</" + elemnentName + ">");
 	}
 }
