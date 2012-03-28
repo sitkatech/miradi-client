@@ -93,7 +93,7 @@ public class BaseObjectSchema
 		return addFieldSchema(new FieldSchemaDate(fieldTag));
 	}
 	
-	public AbstractFieldSchema createFieldSchemaCodeField(final String fieldTag)
+	public AbstractFieldSchema createFieldSchemaCode(final String fieldTag)
 	{
 		return addFieldSchema(new FieldSchemaCode(fieldTag));
 	}

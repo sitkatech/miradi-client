@@ -34,7 +34,7 @@ public class TableSettingsSchema extends BaseObjectSchema
 	@Override
 	public void fillFieldSchemas()
 	{
-		createFieldSchemaCodeField(TableSettings.TAG_TABLE_IDENTIFIER);
+		createFieldSchemaCode(TableSettings.TAG_TABLE_IDENTIFIER);
 		createFieldSchemaInteger(TableSettings.TAG_ROW_HEIGHT);
 		createFieldSchemaDateUnitListField(TableSettings.TAG_DATE_UNIT_LIST_DATA);
 		createFieldSchemaCodeToCodeListMapField(TableSettings.TAG_TABLE_SETTINGS_MAP);
@@ -43,7 +43,7 @@ public class TableSettingsSchema extends BaseObjectSchema
 		createFieldSchemaRefListList(TableSettings.TAG_TREE_EXPANSION_LIST).setNavigationField();
 		createFieldSchemaTagList(TableSettings.TAG_COLUMN_SEQUENCE_CODES).setNavigationField();
 		createFieldSchemaCodeToCodeMapField(TableSettings.TAG_COLUMN_WIDTHS).setNavigationField();
-		createFieldSchemaCodeField(TableSettings.TAG_COLUMN_SORT_TAG).setNavigationField();
+		createFieldSchemaCode(TableSettings.TAG_COLUMN_SORT_TAG).setNavigationField();
 		createFieldSchemaChoice(TableSettings.TAG_COLUMN_SORT_DIRECTION, getQuestion(SortDirectionQuestion.class)).setNavigationField();
 	}
 }
