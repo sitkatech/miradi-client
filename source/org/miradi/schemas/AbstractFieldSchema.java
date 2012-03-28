@@ -30,7 +30,7 @@ abstract public class AbstractFieldSchema
 		tag = tagToUse;
 	}
 	
-	protected String getTag()
+	public String getTag()
 	{
 		return tag;
 	}
