@@ -33,7 +33,6 @@ public class IntermediateResult extends Factor
 	public IntermediateResult(ObjectManager objectManager, FactorId idToUse)
 	{
 		super(objectManager, idToUse, new IntermediateResultSchema());
-		clear();
 	}
 	
 	public IntermediateResult(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception

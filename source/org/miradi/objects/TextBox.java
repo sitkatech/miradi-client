@@ -33,7 +33,6 @@ public class TextBox extends Factor
 	public TextBox(ObjectManager objectManager, FactorId idToUse)
 	{
 		super(objectManager, idToUse, new TextBoxSchema());
-		clear();
 	}
 	
 	public TextBox(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception

@@ -36,7 +36,6 @@ public class ExpenseAssignment extends Assignment
 	public ExpenseAssignment(ObjectManager objectManager, BaseId idToUse)
 	{
 		super(objectManager, idToUse, new ExpenseAssignmentSchema());
-		clear();
 	}
 		
 	public ExpenseAssignment(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception

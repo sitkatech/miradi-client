@@ -35,7 +35,6 @@ public class Cause extends Factor
 	public Cause(ObjectManager objectManager, FactorId idToUse)
 	{
 		super(objectManager, idToUse, new CauseSchema());
-		clear();
 	}
 	
 	public Cause(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception

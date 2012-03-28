@@ -38,7 +38,6 @@ public class ResourceAssignment extends Assignment
 	public ResourceAssignment(ObjectManager objectManager, BaseId idToUse)
 	{
 		super(objectManager, new ResourceAssignmentId(idToUse.asInt()), new ResourceAssignmentSchema());
-		clear();
 	}
 	
 	public ResourceAssignment(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception

@@ -35,7 +35,6 @@ public class ValueOption extends BaseObject
 	{
 		super(objectManager, idToUse, new ValueOptionSchema());
 		
-		clear();
 		setData(TAG_COLOR, Integer.toString(Color.BLACK.getRGB()));
 	}
 	

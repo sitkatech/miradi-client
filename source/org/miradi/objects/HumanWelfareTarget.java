@@ -33,7 +33,6 @@ public class HumanWelfareTarget extends AbstractTarget
 	public HumanWelfareTarget(ObjectManager objectManager, FactorId idToUse)
 	{
 		super(objectManager, idToUse, new HumanWelfareTargetSchema());
-		clear();
 	}
 	
 	public HumanWelfareTarget(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception

@@ -42,7 +42,6 @@ public class ProjectResource extends BaseObject
 	public ProjectResource(ObjectManager objectManager, BaseId idToUse)
 	{
 		super(objectManager, idToUse, new ProjectResourceSchema());
-		clear();
 	}
 	
 	public ProjectResource(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception

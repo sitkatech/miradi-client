@@ -33,7 +33,6 @@ public class GroupBox extends Factor
 	public GroupBox(ObjectManager objectManager, FactorId idToUse)
 	{
 		super(objectManager, idToUse, new GroupBoxSchema());
-		clear();
 	}
 		
 	public GroupBox(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception

@@ -33,7 +33,6 @@ public class Audience extends BaseObject
 	public Audience(ObjectManager objectManager, BaseId idToUse)
 	{
 		super(objectManager, idToUse, new AudienceSchema());
-		clear();
 	}
 		
 	public Audience(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception

@@ -37,7 +37,6 @@ public class KeyEcologicalAttribute extends BaseObject
 	public KeyEcologicalAttribute(ObjectManager objectManager, KeyEcologicalAttributeId idToUse)
 	{
 		super(objectManager, idToUse, new KeyEcologicalAttributeSchema());
-		clear();
 	}
 
 	public KeyEcologicalAttribute(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception

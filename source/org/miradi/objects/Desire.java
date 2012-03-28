@@ -44,7 +44,6 @@ abstract public class Desire extends BaseObject
 	public Desire(ObjectManager objectManager, BaseId idToUse, final BaseObjectSchema schemaToUse)
 	{
 		super(objectManager, idToUse, schemaToUse);
-		clear();
 	}
 
 	public Desire(ObjectManager objectManager, BaseId idToUse, EnhancedJsonObject json, final BaseObjectSchema schemaToUse) throws Exception

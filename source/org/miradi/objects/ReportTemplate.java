@@ -32,7 +32,6 @@ public class ReportTemplate extends BaseObject
 	public ReportTemplate(ObjectManager objectManager, BaseId idToUse)
 	{
 		super(objectManager, idToUse, new ReportTemplateSchema(objectManager.getProject()));
-		clear();
 	}
 		
 	public ReportTemplate(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception

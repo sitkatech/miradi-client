@@ -41,7 +41,6 @@ public class TableSettings extends BaseObject
 	public TableSettings(ObjectManager objectManager, BaseId idToUse)
 	{
 		super(objectManager, idToUse, new TableSettingsSchema());
-		clear();
 	}
 		
 	public TableSettings(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception

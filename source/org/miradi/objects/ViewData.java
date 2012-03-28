@@ -39,8 +39,6 @@ public class ViewData extends BaseObject
 	public ViewData(ObjectManager objectManager, BaseId idToUse)
 	{
 		super(objectManager, idToUse, new ViewDataSchema(objectManager.getProject()));
-
-		clear();
 	}
 
 	public ViewData(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception

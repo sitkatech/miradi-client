@@ -32,7 +32,6 @@ public class FosProjectData extends BaseObject
 	public FosProjectData(ObjectManager objectManager, BaseId id)
 	{
 		super(objectManager, id, new FosProjectDataSchema());
-		clear();
 	}
 	
 	public FosProjectData(ObjectManager objectManager, int idAsInt, EnhancedJsonObject jsonObject) throws Exception 

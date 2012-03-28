@@ -32,7 +32,6 @@ public class FactorLink extends BaseObject
 	public FactorLink(ObjectManager objectManager, BaseId id) throws Exception
 	{
 		super(objectManager, id, new FactorLinkSchema());
-		clear();
 	}
 
 	public FactorLink(ObjectManager objectManager, int idAsInt, EnhancedJsonObject jsonObject) throws Exception 

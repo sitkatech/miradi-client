@@ -34,8 +34,6 @@ public class FundingSource extends AbstractBudgetCategoryObject
 	public FundingSource(ObjectManager objectManager, BaseId idToUse)
 	{
 		super(objectManager, idToUse, new FundingSourceSchema());
-
-		clear();
 	}
 	
 	public FundingSource(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception

@@ -32,7 +32,6 @@ public class WcsProjectData extends BaseObject
 	public WcsProjectData(ObjectManager objectManager, BaseId id)
 	{
 		super(objectManager, id, new WcsProjectDataSchema());
-		clear();
 	}
 	
 	public WcsProjectData(ObjectManager objectManager, int idAsInt, EnhancedJsonObject jsonObject) throws Exception 

@@ -37,8 +37,6 @@ public class ObjectTreeTableConfiguration extends BaseObject implements Planning
 	public ObjectTreeTableConfiguration(ObjectManager objectManager, BaseId id)
 	{
 		super(objectManager, id, new ObjectTreeTableConfigurationSchema(objectManager.getProject()));
-		
-		clear();
 	}
 	
 	public ObjectTreeTableConfiguration(ObjectManager objectManager, int idAsInt, EnhancedJsonObject jsonObject) throws Exception 

@@ -34,7 +34,6 @@ public class TncProjectData extends BaseObject
 	public TncProjectData(ObjectManager objectManager, BaseId id)
 	{
 		super(objectManager, id, new TncProjectDataSchema());
-		clear();
 	}
 	
 	public TncProjectData(ObjectManager objectManager, int idAsInt, EnhancedJsonObject jsonObject) throws Exception 

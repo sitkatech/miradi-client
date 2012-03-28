@@ -39,7 +39,6 @@ public class Target extends AbstractTarget
 	public Target(ObjectManager objectManager, FactorId idToUse)
 	{
 		super(objectManager, idToUse, new TargetSchema());
-		clear();
 	}
 	
 	public Target(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception

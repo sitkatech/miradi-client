@@ -30,7 +30,6 @@ public class CostAllocationRule extends BaseObject
 	public CostAllocationRule(ObjectManager objectManager, BaseId id)
 	{
 		super(objectManager, id, new CostAllocationRuleSchema());
-		clear();
 	}
 	
 	public CostAllocationRule(ObjectManager objectManager, int idAsInt, EnhancedJsonObject jsonObject) throws Exception 

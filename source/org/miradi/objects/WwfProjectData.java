@@ -32,7 +32,6 @@ public class WwfProjectData extends BaseObject
 	public WwfProjectData(ObjectManager objectManager, BaseId id)
 	{
 		super(objectManager, id, new WwfProjectDataSchema());
-		clear();
 	}
 	
 	public WwfProjectData(ObjectManager objectManager, int idAsInt, EnhancedJsonObject jsonObject) throws Exception 

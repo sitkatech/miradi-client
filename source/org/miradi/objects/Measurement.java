@@ -32,7 +32,6 @@ public class Measurement extends BaseObject
 	public Measurement(ObjectManager objectManager, BaseId idToUse)
 	{
 		super(objectManager, idToUse, new MeasurementSchema());
-		clear();
 	}
 	
 	public Measurement(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception

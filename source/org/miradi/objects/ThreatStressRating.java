@@ -34,8 +34,6 @@ public class ThreatStressRating extends BaseObject
 	public ThreatStressRating(ObjectManager objectManager, BaseId idToUse) throws Exception
 	{
 		super(objectManager, idToUse, new ThreatStressRatingSchema());
-		
-		clear();
 	}
 	
 	public ThreatStressRating(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception

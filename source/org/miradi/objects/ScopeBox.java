@@ -33,7 +33,6 @@ public class ScopeBox extends Factor
 	public ScopeBox(ObjectManager objectManager, FactorId idToUse)
 	{
 		super(objectManager, idToUse, new ScopeBoxSchema());
-		clear();
 	}
 	
 	public ScopeBox(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception

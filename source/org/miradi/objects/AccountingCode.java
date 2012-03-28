@@ -34,8 +34,6 @@ public class AccountingCode extends AbstractBudgetCategoryObject
 	public AccountingCode(ObjectManager objectManager, BaseId idToUse)
 	{
 		super(objectManager, idToUse, new AccountingCodeSchema());
-
-		clear();
 	}
 	
 	public AccountingCode(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception

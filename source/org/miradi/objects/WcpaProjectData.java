@@ -32,7 +32,6 @@ public class WcpaProjectData extends BaseObject
 	public WcpaProjectData(ObjectManager objectManager, BaseId id)
 	{
 		super(objectManager, id, new WcpaProjectDataSchema());
-		clear();
 	}
 	
 	public WcpaProjectData(ObjectManager objectManager, int idAsInt, EnhancedJsonObject jsonObject) throws Exception 
