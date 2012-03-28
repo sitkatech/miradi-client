@@ -34,6 +34,6 @@ public class ConceptualModelDiagramSchema extends DiagramObjectSchema
 	{
 		super.fillFieldSchemas();
 		
-		createPseudoRefList(ConceptualModelDiagram.PSEUDO_DRAFT_STRATEGY_REFS);
+		createPseudoFieldSchemaRefList(ConceptualModelDiagram.PSEUDO_DRAFT_STRATEGY_REFS);
 	}
 }
