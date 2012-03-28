@@ -53,7 +53,7 @@ public class ViewDataSchema extends BaseObjectSchema
 		createFieldSchemaChoice(ViewData.TAG_MONITORING_TREE_CONFIGURATION_CHOICE, getQuestion(MonitoringTreeConfigurationQuestion.class));
 
 		createFieldSchemaCodeField(ViewData.TAG_CURRENT_WIZARD_STEP).setNavigationField();
-		createFieldSchemaIntegerField(ViewData.TAG_CURRENT_TAB).setNavigationField();
+		createFieldSchemaInteger(ViewData.TAG_CURRENT_TAB).setNavigationField();
 		createFieldSchemaRef(ViewData.TAG_CURRENT_CONCEPTUAL_MODEL_REF).setNavigationField();
 		createFieldSchemaRef(ViewData.TAG_CURRENT_RESULTS_CHAIN_REF).setNavigationField();
 	}

@@ -35,7 +35,7 @@ public class AudienceSchema extends BaseObjectSchema
 	{
 		super.fillFieldSchemas();
 		
-		createFieldSchemaIntegerField(Audience.TAG_PEOPLE_COUNT);
+		createFieldSchemaInteger(Audience.TAG_PEOPLE_COUNT);
 		createFieldSchemaMultiLineUserText(Audience.TAG_SUMMARY);
 	}
 }

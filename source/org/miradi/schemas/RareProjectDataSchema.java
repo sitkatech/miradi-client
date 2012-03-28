@@ -42,7 +42,7 @@ public class RareProjectDataSchema extends BaseObjectSchema
 		createFieldSchemaMultiLineUserText(RareProjectData.TAG_SUMMARY_OF_KEY_MESSAGES);
 		createFieldSchemaSingleLineUserText(RareProjectData.TAG_BIODIVERSITY_HOTSPOTS);
 		createFieldSchemaSingleLineUserText(RareProjectData.TAG_COHORT);
-		createFieldSchemaIntegerField(RareProjectData.TAG_NUMBER_OF_COMMUNITIES_IN_CAMPAIGN_AREA);
+		createFieldSchemaInteger(RareProjectData.TAG_NUMBER_OF_COMMUNITIES_IN_CAMPAIGN_AREA);
 		createFieldSchemaMultiLineUserText(RareProjectData.LEGACY_TAG_THREATS_ADDRESSED_NOTES);
 		createFieldSchemaMultiLineUserText(RareProjectData.TAG_MAIN_ACTIVITIES_NOTES);
 	}
