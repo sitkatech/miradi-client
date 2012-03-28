@@ -102,7 +102,7 @@ abstract public class BaseObject
 		objectManager = objectManagerToUse;
 		schema = schemaToUse;
 		setId(idToUse);
-		clear();
+		createFieldsFromBaseObjectSchema();
 	}
 
 	public BaseObject(ObjectManager objectManagerToUse, BaseId idToUse)
