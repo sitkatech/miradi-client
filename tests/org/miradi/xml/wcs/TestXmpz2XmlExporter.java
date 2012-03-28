@@ -26,7 +26,7 @@ import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objects.DiagramFactor;
-import org.miradi.xml.xmpz2.XmpzXmlExporter2;
+import org.miradi.xml.xmpz2.Xmpz2XmlExporter;
 import org.miradi.xml.xmpz2.Xmpz2XmlUnicodeWriter;
 
 public class TestXmpz2XmlExporter extends TestCaseWithProject
@@ -56,7 +56,7 @@ public class TestXmpz2XmlExporter extends TestCaseWithProject
 	{
 		ByteArrayOutputStream bytes = new ByteArrayOutputStream();
 		Xmpz2XmlUnicodeWriter writer = new Xmpz2XmlUnicodeWriter(bytes);
-		new XmpzXmlExporter2(getProject(), writer).exportProject(writer);
+		new Xmpz2XmlExporter(getProject(), writer).exportProject(writer);
 		writer.close();
 		String xml = new String(bytes.toByteArray(), "UTF-8");
 				

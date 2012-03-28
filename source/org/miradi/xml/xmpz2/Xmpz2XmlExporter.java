@@ -34,9 +34,9 @@ import org.miradi.xml.XmlExporter;
 import org.miradi.xml.wcs.TagToElementNameMap;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 
-public class XmpzXmlExporter2 extends XmlExporter implements XmpzXmlConstants
+public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 {
-	public XmpzXmlExporter2(Project projectToExport, final Xmpz2XmlUnicodeWriter outToUse)
+	public Xmpz2XmlExporter(Project projectToExport, final Xmpz2XmlUnicodeWriter outToUse)
 	{
 		super(projectToExport);
 		
