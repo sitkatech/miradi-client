@@ -42,10 +42,10 @@ abstract public class FactorSchema extends BaseObjectSchema
 	    createFieldSchemaIdList(Factor.TAG_INDICATOR_IDS, Indicator.getObjectType());
 		createFieldSchemaIdList(Factor.TAG_OBJECTIVE_IDS, Objective.getObjectType());
 		
-		createPseudoString(Factor.PSEUDO_TAG_OBJECTIVES);
-		createPseudoString(Factor.PSEUDO_TAG_DIRECT_THREATS);
-		createPseudoString(Factor.PSEUDO_TAG_TARGETS);
-		createPseudoString(Factor.PSEUDO_TAG_INDICATORS);
+		createPseudoFieldSchemaString(Factor.PSEUDO_TAG_OBJECTIVES);
+		createPseudoFieldSchemaString(Factor.PSEUDO_TAG_DIRECT_THREATS);
+		createPseudoFieldSchemaString(Factor.PSEUDO_TAG_TARGETS);
+		createPseudoFieldSchemaString(Factor.PSEUDO_TAG_INDICATORS);
 		createPseudoRefList(Factor.PSEUDO_TAG_CONCEPTUAL_DIAGRAM_REFS);
 		createPseudoRefList(Factor.PSEUDO_TAG_RESULTS_CHAIN_REFS);
 		createPseudoRefList(Factor.PSEUDO_TAG_REFERRING_TAG_REFS);
