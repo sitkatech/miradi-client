@@ -39,7 +39,7 @@ public class TaskSchema extends FactorSchema
 		
 		createPseudoFieldSchemaString(Task.PSEUDO_TAG_STRATEGY_LABEL);
 		createPseudoFieldSchemaString(Task.PSEUDO_TAG_INDICATOR_LABEL);
-		createPseudoRefList(Task.PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS);
-		createPseudoRefList(Task.PSEUDO_TAG_RELEVANT_GOAL_REFS);
+		createPseudoFieldSchemaRefList(Task.PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS);
+		createPseudoFieldSchemaRefList(Task.PSEUDO_TAG_RELEVANT_GOAL_REFS);
 	}
 }
