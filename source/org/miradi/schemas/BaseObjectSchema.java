@@ -63,11 +63,6 @@ public class BaseObjectSchema
 		return addFieldSchema(new FieldSchemaIdList(fieldTag, objectType));
 	}
 	
-	public AbstractFieldSchema createFieldSchemaCodeToUserStringMapField(String tag)
-	{
-		return addFieldSchema(new FieldSchemaCodeToUserStringMapData(tag));
-	}
-	
 	public AbstractFieldSchema createFieldSchemaCodeToUserStringMap(final String fieldTag)
 	{
 		return addFieldSchema(new FieldSchemaCodeToUserStringMap(fieldTag));
