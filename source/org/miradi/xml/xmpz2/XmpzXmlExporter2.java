@@ -64,7 +64,6 @@ public class XmpzXmlExporter2 extends XmlExporter implements XmpzXmlConstants
 	{
 		FosProjectData fosBaseObject = getFosProjectData();
 		BaseObjectSchema schema = fosBaseObject.getSchema();
-		writeStartElement(out, schema.getXmpz2ElementName());
 		getWriter().writeStartElement(schema);
 		Vector<String> fields = fosBaseObject.getStoredFieldTags();
 		for(String tag : fields)
