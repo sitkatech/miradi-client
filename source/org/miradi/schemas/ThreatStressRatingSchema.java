@@ -41,6 +41,6 @@ public class ThreatStressRatingSchema extends BaseObjectSchema
 		createFieldSchemaRef(ThreatStressRating.TAG_STRESS_REF);
 		createFieldSchemaRef(ThreatStressRating.TAG_THREAT_REF);
 		createFieldSchemaBoolean(ThreatStressRating.TAG_IS_ACTIVE);
-		createPseudoQuestionField(ThreatStressRating.PSEUDO_TAG_THREAT_RATING);
+		createPseudoQuestion(ThreatStressRating.PSEUDO_TAG_THREAT_RATING);
 	}
 }

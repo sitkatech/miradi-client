@@ -39,6 +39,6 @@ public class TargetSchema extends AbstractTargetSchema
 		createFieldSchemaSingleLineUserText(Target.TAG_SPECIES_LATIN_NAME);
 		createFieldSchemaCodeList(Target.TAG_HABITAT_ASSOCIATION, getQuestion(HabitatAssociationQuestion.class));
 		
-		createPseudoQuestionField(Target.PSEUDO_TAG_HABITAT_ASSOCIATION_VALUE);
+		createPseudoQuestion(Target.PSEUDO_TAG_HABITAT_ASSOCIATION_VALUE);
 	}
 }

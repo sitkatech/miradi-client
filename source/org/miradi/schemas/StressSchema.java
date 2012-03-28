@@ -40,6 +40,6 @@ public class StressSchema extends FactorSchema
 		createFieldSchemaMultiLineUserText(Stress.TAG_DETAIL);
 		createFieldSchemaChoice(Stress.TAG_SCOPE, getQuestion(StressScopeChoiceQuestion.class));
 		createFieldSchemaChoice(Stress.TAG_SEVERITY, getQuestion(StressSeverityChoiceQuestion.class));
-		createPseudoQuestionField(Stress.PSEUDO_STRESS_RATING);
+		createPseudoQuestion(Stress.PSEUDO_STRESS_RATING);
 	}
 }

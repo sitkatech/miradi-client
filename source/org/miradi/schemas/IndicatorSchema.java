@@ -60,10 +60,10 @@ public class IndicatorSchema extends BaseObjectSchema
 		createPseudoString(Indicator.PSEUDO_TAG_FACTOR);
 		createPseudoString(Indicator.PSEUDO_TAG_METHODS);
 		createPseudoString(Indicator.PSEUDO_TAG_INDICATOR_THRESHOLD_VALUE);
-		createPseudoQuestionField(Indicator.PSEUDO_TAG_PRIORITY_VALUE);
-		createPseudoQuestionField(Indicator.PSEUDO_TAG_STATUS_VALUE);
-		createPseudoQuestionField(Indicator.PSEUDO_TAG_RATING_SOURCE_VALUE);
-		createPseudoQuestionField(Indicator.PSEUDO_TAG_LATEST_MEASUREMENT_REF);
-		createPseudoQuestionField(Indicator.PSEUDO_TAG_FUTURE_STATUS_RATING_VALUE);
+		createPseudoQuestion(Indicator.PSEUDO_TAG_PRIORITY_VALUE);
+		createPseudoQuestion(Indicator.PSEUDO_TAG_STATUS_VALUE);
+		createPseudoQuestion(Indicator.PSEUDO_TAG_RATING_SOURCE_VALUE);
+		createPseudoQuestion(Indicator.PSEUDO_TAG_LATEST_MEASUREMENT_REF);
+		createPseudoQuestion(Indicator.PSEUDO_TAG_FUTURE_STATUS_RATING_VALUE);
 	}
 }
