@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-27 16:19-0500\n"
+"POT-Creation-Date: 2012-03-28 10:10-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -322,7 +322,7 @@ msgstr "(Дивись табулятор проекту)"
 msgid "(Translation: %code %date)"
 msgstr "(Перетворення: %code %date) "
 
-#: Miradi/source/org/miradi/objects/DiagramFactor.java:227
+#: Miradi/source/org/miradi/objects/DiagramFactor.java:226
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectList.java:70
 msgid "(Unknown)"
 msgstr ""
@@ -3471,7 +3471,7 @@ msgstr "Під час сортування сталася помилка"
 msgid "Error Occurred please try saving under different name."
 msgstr "Сталася помилка. Спробуйте зберегти під іншою назвою."
 
-#: Miradi/source/org/miradi/objects/Dashboard.java:298
+#: Miradi/source/org/miradi/objects/Dashboard.java:296
 msgid "Error Retrieving Data"
 msgstr ""
 
@@ -4400,15 +4400,15 @@ msgstr "Ключова властивість"
 msgid "Key Ecological Attribute (KEA)"
 msgstr "Ключова екологічна характеристика"
 
-#: Miradi/source/org/miradi/objects/AccountingCode.java:72
+#: Miradi/source/org/miradi/objects/AccountingCode.java:70
 msgid "Label|(Undefined Accounting Code)"
 msgstr "Label|(Невизначений код облікового запису)"
 
-#: Miradi/source/org/miradi/objects/FundingSource.java:72
+#: Miradi/source/org/miradi/objects/FundingSource.java:70
 msgid "Label|(Undefined Funding Source)"
 msgstr "Label|(Невизначене джерело фінансування)"
 
-#: Miradi/source/org/miradi/objects/ProjectResource.java:120
+#: Miradi/source/org/miradi/objects/ProjectResource.java:119
 msgid "Label|(Undefined Resource)"
 msgstr "Label|(Невизначений ресурс)"
 
@@ -4421,11 +4421,11 @@ msgstr "Label|--- affects -->"
 msgid "Label|Biodiversity Area (hectares)"
 msgstr "Label|Площа (гектари)"
 
-#: Miradi/source/org/miradi/objects/BudgetCategoryOne.java:72
+#: Miradi/source/org/miradi/objects/BudgetCategoryOne.java:70
 msgid "Label|Budget Category One"
 msgstr ""
 
-#: Miradi/source/org/miradi/objects/BudgetCategoryTwo.java:72
+#: Miradi/source/org/miradi/objects/BudgetCategoryTwo.java:70
 msgid "Label|Budget Category Two"
 msgstr ""
 
@@ -7476,7 +7476,7 @@ msgstr ""
 "задача при потребі може бути розбита на підзадачі. У Міраді задача "
 "показується сірим сплющеним овалом."
 
-#: Miradi/source/org/miradi/objects/Task.java:367
+#: Miradi/source/org/miradi/objects/Task.java:366
 msgid "Task does not have a parent"
 msgstr "Задача не має автора"
 
