@@ -47,12 +47,9 @@ public class XmpzXmlExporter2 extends XmlExporter implements XmpzXmlConstants
 	public void exportProject(UnicodeWriter outToUse) throws Exception
 	{
 		getWriter().writeXmlHeader();
-		
-		writeStartElementWithAttribute(getWriter(), CONSERVATION_PROJECT, XMLNS, NAME_SPACE);
-
+		getWriter().writeMainElementStart();
 		exportPools();
-		
-		writeEndElement(out, CONSERVATION_PROJECT);
+		getWriter().writeMainElementEnd();
 	}
 
 	private void exportPools() throws Exception
