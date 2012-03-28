@@ -24,8 +24,6 @@ import java.io.ByteArrayOutputStream;
 
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
-import org.miradi.exceptions.ValidationException;
-import org.miradi.main.EAM;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.xml.xmpz2.XmpzXmlExporter2;
