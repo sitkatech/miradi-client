@@ -53,7 +53,7 @@ public class StrategySchema extends FactorSchema
 		createPseudoQuestion(Strategy.PSEUDO_TAG_RATING_SUMMARY_VALUE);
 		createPseudoQuestion(Strategy.PSEUDO_TAG_TAXONOMY_CODE_VALUE);
 		createPseudoString(Strategy.PSEUDO_TAG_ACTIVITIES);
-		createPseudoRefListField(Strategy.PSEUDO_TAG_RELEVANT_GOAL_REFS);
-		createPseudoRefListField(Strategy.PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS);
+		createPseudoRefList(Strategy.PSEUDO_TAG_RELEVANT_GOAL_REFS);
+		createPseudoRefList(Strategy.PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS);
 	}
 }

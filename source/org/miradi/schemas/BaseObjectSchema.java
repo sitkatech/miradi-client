@@ -208,7 +208,7 @@ public class BaseObjectSchema
 		addFieldSchema(new FieldSchemaPseudoQuestionField(tag, set));
 	}
 	
-	public void createPseudoRefListField(String tag)
+	public void createPseudoRefList(String tag)
 	{
 		addFieldSchema(new FieldSchemaPseudoRefListData(tag));
 	}
