@@ -113,7 +113,7 @@ public class BaseObjectSchema
 		return addFieldSchema(new FieldSchemaCodeToCodeListMap(fieldTag));
 	}
 	
-	public AbstractFieldSchema createFieldSchemaCodeToChoiceMapField(String tag)
+	public AbstractFieldSchema createFieldSchemaCodeToChoiceMap(String tag)
 	{
 		return addFieldSchema(new FieldSchemaCodeToChoiceMapData(tag));
 	}
