@@ -83,7 +83,6 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 	private void writeTextData(String data) throws IOException
 	{
 		data = HtmlUtilities.replaceHtmlBrsWithNewlines(data);
-		data = HtmlUtilities.stripAllHtmlTags(data);
 		write(data);
 	}
 	
