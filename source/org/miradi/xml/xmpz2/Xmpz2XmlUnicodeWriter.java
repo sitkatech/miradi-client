@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 import org.martus.util.UnicodeWriter;
+import org.miradi.objectdata.ObjectData;
 import org.miradi.objects.BaseObject;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
@@ -64,9 +65,8 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 	
 	public void writeFieldElement(final BaseObject baseObject, final AbstractFieldSchema fieldSchema) throws Exception
 	{
-		final String data = baseObject.getData(fieldSchema.getTag());
-		final String elementName = baseObject.getSchema().getXmpz2ElementName() + fieldSchema.getXmpz2ElementName();
-		writeElement(elementName, data);
+		ObjectData field = baseObject.getField(fieldSchema.getTag());
+		field.writeAsXmpz2XmlData(this, baseObject.getSchema(), fieldSchema);
 	}
 	
 	private void writeElement(String elementName, String data) throws Exception
@@ -95,5 +95,15 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 	private void writeEndElement(final String elemnentName)	throws Exception
 	{
 		writeln("</" + elemnentName + ">");
+	}
+	
+	public void writeObjectData(final ObjectData objectData) throws Exception
+	{
+		writeElement(objectData.getTag(), objectData.get());
+	}
+
+	public void writeChoiceData(final BaseObjectSchema schema, final AbstractFieldSchema fieldSchema, final String data) throws Exception
+	{
+		writeElement(schema.getXmpz2ElementName() + fieldSchema.getTag(), data);
 	}
 }
