@@ -21,15 +21,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz2;
 
 import org.martus.util.UnicodeWriter;
-import org.miradi.main.EAM;
 import org.miradi.objects.FosProjectData;
 import org.miradi.project.Project;
-import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.ChoiceQuestion;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.xml.XmlExporter;
-import org.miradi.xml.wcs.TagToElementNameMap;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
@@ -66,39 +62,6 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 		}
 		
 		getWriter().writeObjectElementEnd(schema);
-	}
-	
-	public void writeCodeElement(String parentElementName, String elementName, ChoiceQuestion question, String code) throws Exception
-	{
-		String convertedElementName = getConvertedElementName(parentElementName, elementName);
-		writeStartElement(getWriter(), parentElementName + convertedElementName);
-		
-		if (doesCodeExist(question, code))
-			writeXmlEncodedData(getWriter(), question.convertToReadableCode(code));
-		else
-			logMissingCode(question, code);
-		
-		writeEndElement(getWriter(), parentElementName + convertedElementName);
-	}
-	
-	private String getConvertedElementName(String parentElementName,String elementName)
-	{
-		TagToElementNameMap map = new TagToElementNameMap();
-		return map.findElementName(parentElementName, elementName);
-	}
-	
-	private boolean doesCodeExist(ChoiceQuestion question, String code)
-	{
-		ChoiceItem choiceItem = question.findChoiceByCode(code);
-		if (choiceItem == null)
-			return false;
-		
-		return true;
-	}
-	
-	private void logMissingCode(ChoiceQuestion question, String code)
-	{
-		EAM.logWarning(code + " is a code that does not exist in the question:" + question.getClass().getSimpleName());
 	}
 	
 	private Xmpz2XmlUnicodeWriter getWriter()
