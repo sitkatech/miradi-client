@@ -106,4 +106,120 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 	{
 		writeElement(schema.getXmpz2ElementName() + fieldSchema.getTag(), data);
 	}
+
+	public void writeStringData(BaseObjectSchema schema, AbstractFieldSchema fieldSchema, String string)
+	{
+	}
+
+	public void writeCodeToCodeMapData(BaseObjectSchema schema,	AbstractFieldSchema fieldSchema, String string)
+	{
+	}
+
+	public void writeCodeToUserStringMapData(BaseObjectSchema schema, AbstractFieldSchema fieldSchema, String string)
+	{
+	}
+
+	public void writeCodeListData(BaseObjectSchema schema, AbstractFieldSchema fieldSchema, String string)
+	{
+	}
+
+	public void writeDateUnitListData(BaseObjectSchema schema, AbstractFieldSchema fieldSchema, String string)
+	{
+	}
+
+	public void writeRefListListData(BaseObjectSchema schema, AbstractFieldSchema fieldSchema, String string)
+	{
+	}
+
+	public void writeTagListData(BaseObjectSchema schema, AbstractFieldSchema fieldSchema, String string)
+	{
+	}
+
+	public void writeBaseIdData(BaseObjectSchema schema, AbstractFieldSchema fieldSchema, String string)
+	{
+	}
+
+	public void writeCodeToChoiceMapData(BaseObjectSchema schema, AbstractFieldSchema fieldSchema, String string)
+	{
+	}
+
+	public void writetCodeToCodeListMapData(BaseObjectSchema schema, AbstractFieldSchema fieldSchema, String string)
+	{
+	}
+
+	public void writetDateData(BaseObjectSchema schema,	AbstractFieldSchema fieldSchema, String string)
+	{
+	}
+
+	public void writetDateRangeData(BaseObjectSchema schema, AbstractFieldSchema fieldSchema, String string) 
+	{
+	}
+
+	public void writeDateUnitEffortListData(BaseObjectSchema schema, AbstractFieldSchema fieldSchema, String string)
+	{
+	}
+
+	public void writeDimensionData(BaseObjectSchema schema,	AbstractFieldSchema fieldSchema, String string)
+	{
+	}
+
+	public void writeFloatData(BaseObjectSchema schema,	AbstractFieldSchema fieldSchema, String string)
+	{
+	}
+
+	public void writeIdListData(BaseObjectSchema schema, AbstractFieldSchema fieldSchema, String string)
+	{
+	}
+
+	public void writeIntegerData(BaseObjectSchema schema, AbstractFieldSchema fieldSchema, String string)
+	{
+	}
+
+	public void writeBooleanData(BaseObjectSchema schema, AbstractFieldSchema fieldSchema, String string)
+	{
+	}
+
+	public void writeNumberData(BaseObjectSchema schema, AbstractFieldSchema fieldSchema, String string)
+	{
+	}
+
+	public void writePercentageData(BaseObjectSchema schema, AbstractFieldSchema fieldSchema, String string)
+	{
+	}
+
+	public void writeORefData(BaseObjectSchema schema, AbstractFieldSchema fieldSchema, String string)
+	{
+	}
+
+	public void writePointData(BaseObjectSchema schema,	AbstractFieldSchema fieldSchema, String string)
+	{
+	}
+
+	public void writePointListData(BaseObjectSchema schema, AbstractFieldSchema fieldSchema, String string)
+	{
+	}
+
+	public void writePseudoQuetionData(BaseObjectSchema schema,	AbstractFieldSchema fieldSchema, String string)
+	{
+	}
+
+	public void writePseudoRefListData(BaseObjectSchema schema,	AbstractFieldSchema fieldSchema, String string)
+	{
+	}
+
+	public void writeRefListData(BaseObjectSchema schema, AbstractFieldSchema fieldSchema, String string)
+	{
+	}
+
+	public void writeRelevancyOverrideSetData(BaseObjectSchema schema, AbstractFieldSchema fieldSchema, String string)
+	{
+	}
+
+	public void writeUserTextData(BaseObjectSchema schema, AbstractFieldSchema fieldSchema, String string)
+	{
+	}
+
+	public void writeRefMapData(BaseObjectSchema schema, AbstractFieldSchema fieldSchema, String string)
+	{
+	}
 }
