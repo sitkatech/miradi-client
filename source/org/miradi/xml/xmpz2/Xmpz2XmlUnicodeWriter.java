@@ -80,10 +80,10 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 		writeln();
 	}
 	
-	private void writeXmlText(String data) throws IOException
+	private void writeXmlText(String xmlText) throws IOException
 	{
-		data = HtmlUtilities.replaceHtmlBrsWithNewlines(data);
-		write(data);
+		xmlText = HtmlUtilities.replaceHtmlBrsWithNewlines(xmlText);
+		write(xmlText);
 	}
 	
 	private void writeStartElement(final String elemnentName)	throws Exception
