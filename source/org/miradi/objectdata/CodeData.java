@@ -26,5 +26,4 @@ public class CodeData extends StringData
 	{
 		super(tagToUse);
 	}
-
 }
