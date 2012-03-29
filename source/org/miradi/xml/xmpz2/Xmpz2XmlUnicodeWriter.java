@@ -62,7 +62,7 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 		writeEndElement(schema.getXmpz2ElementName());
 	}
 	
-	public void writeElement(final BaseObject baseObject, final AbstractFieldSchema fieldSchema) throws Exception
+	public void writeFieldElement(final BaseObject baseObject, final AbstractFieldSchema fieldSchema) throws Exception
 	{
 		final String data = baseObject.getData(fieldSchema.getTag());
 		final String elementName = baseObject.getSchema().getXmpz2ElementName() + fieldSchema.getXmpz2ElementName();
