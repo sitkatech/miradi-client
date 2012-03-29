@@ -17,9 +17,11 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.objecthelpers;
+package org.miradi.objectdata;
 
-import org.miradi.objectdata.ObjectData;
+import org.miradi.objecthelpers.ORefSet;
+import org.miradi.objecthelpers.RelevancyOverride;
+import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlUnicodeWriter;
