@@ -75,12 +75,12 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 			return;
 		
 		writeStartElement(elementName);
-		writeTextData(data);
+		writeXmlText(data);
 		writeEndElement(elementName);
 		writeln();
 	}
 	
-	private void writeTextData(String data) throws IOException
+	private void writeXmlText(String data) throws IOException
 	{
 		data = HtmlUtilities.replaceHtmlBrsWithNewlines(data);
 		write(data);
