@@ -52,12 +52,12 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 		writeEndElement(CONSERVATION_PROJECT);
 	}
 	
-	public void writeStartElement(final BaseObjectSchema schema) throws Exception
+	public void writeObjectElementStart(final BaseObjectSchema schema) throws Exception
 	{
 		writeStartElement(schema.getXmpz2ElementName());
 	}
 
-	public void writeEndElement(final BaseObjectSchema schema) throws Exception
+	public void writeObjectElementEnd(final BaseObjectSchema schema) throws Exception
 	{
 		writeEndElement(schema.getXmpz2ElementName());
 	}

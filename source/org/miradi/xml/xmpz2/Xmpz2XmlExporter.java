@@ -60,13 +60,13 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 	{
 		FosProjectData fosBaseObject = getFosProjectData();
 		BaseObjectSchema schema = fosBaseObject.getSchema();
-		getWriter().writeStartElement(schema);
+		getWriter().writeObjectElementStart(schema);
 		for(AbstractFieldSchema fieldSchema : schema)
 		{
 			getWriter().writeFieldElement(fosBaseObject, fieldSchema);
 		}
 		
-		getWriter().writeEndElement(schema);
+		getWriter().writeObjectElementEnd(schema);
 	}
 	
 	public void writeOptionalElementWithSameTag(String parentElementName, BaseObject object, String tag) throws Exception
