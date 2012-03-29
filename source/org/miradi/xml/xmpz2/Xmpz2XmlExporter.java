@@ -21,7 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz2;
 
 import org.martus.util.UnicodeWriter;
-import org.miradi.objects.FosProjectData;
+import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
@@ -48,17 +48,27 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 
 	private void exportPools() throws Exception
 	{
+		writeProjectMetadataDataSchemaElement();
 		writeFosProjectDataSchemaElement();
 	}
 	
+	private void writeProjectMetadataDataSchemaElement() throws Exception
+	{
+		writeBaseObjectDataSchemaElement(getProject().getMetadata());
+	}
+
 	private void writeFosProjectDataSchemaElement() throws Exception
 	{
-		FosProjectData fosBaseObject = getFosProjectData();
-		BaseObjectSchema schema = fosBaseObject.getSchema();
+		writeBaseObjectDataSchemaElement(getFosProjectData());
+	}
+
+	protected void writeBaseObjectDataSchemaElement(final BaseObject baseObject) throws Exception
+	{
+		BaseObjectSchema schema = baseObject.getSchema();
 		getWriter().writeObjectElementStart(schema);
 		for(AbstractFieldSchema fieldSchema : schema)
 		{
-			getWriter().writeFieldElement(fosBaseObject, fieldSchema);
+			getWriter().writeFieldElement(baseObject, fieldSchema);
 		}
 		
 		getWriter().writeObjectElementEnd(schema);
