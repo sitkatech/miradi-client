@@ -21,6 +21,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objectdata;
 
 import org.miradi.objects.BaseObject;
+import org.miradi.schemas.AbstractFieldSchema;
+import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.xml.xmpz2.Xmpz2XmlUnicodeWriter;
 
 public class PseudoRefListData extends RefListData
 {
@@ -48,6 +51,12 @@ public class PseudoRefListData extends RefListData
 	public String get()
 	{
 		return object.getPseudoData(getTag());
+	}
+	
+	@Override
+	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema schema, AbstractFieldSchema fieldSchema) throws Exception
+	{
+		writer.writePseudoRefListData(schema, fieldSchema, get());
 	}
 	
 	private BaseObject object;

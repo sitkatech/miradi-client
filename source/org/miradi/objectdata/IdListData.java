@@ -24,6 +24,9 @@ import java.text.ParseException;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.schemas.AbstractFieldSchema;
+import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.xml.xmpz2.Xmpz2XmlUnicodeWriter;
 
 public class IdListData extends ObjectData
 {
@@ -106,6 +109,12 @@ public class IdListData extends ObjectData
 	public boolean isIdListData()
 	{
 		return true;
+	}
+	
+	@Override
+	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema schema, AbstractFieldSchema fieldSchema) throws Exception
+	{
+		writer.writeIdListData(schema, fieldSchema, get());
 	}
 	
 	private IdList ids;

@@ -20,7 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objectdata;
 
 import org.miradi.main.EAM;
+import org.miradi.schemas.AbstractFieldSchema;
+import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.utils.DoubleUtilities;
+import org.miradi.xml.xmpz2.Xmpz2XmlUnicodeWriter;
 
 
 public class IntegerData extends ObjectData
@@ -82,6 +85,12 @@ public class IntegerData extends ObjectData
 	public int hashCode()
 	{
 		return value;
+	}
+	
+	@Override
+	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema schema, AbstractFieldSchema fieldSchema) throws Exception
+	{
+		writer.writeIntegerData(schema, fieldSchema, get());
 	}
 
 	private int value;

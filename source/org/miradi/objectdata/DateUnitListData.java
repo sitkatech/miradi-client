@@ -22,7 +22,10 @@ package org.miradi.objectdata;
 import java.util.Vector;
 
 import org.miradi.objecthelpers.DateUnit;
+import org.miradi.schemas.AbstractFieldSchema;
+import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.utils.CodeList;
+import org.miradi.xml.xmpz2.Xmpz2XmlUnicodeWriter;
 
 public class DateUnitListData extends AbstractStringListData
 {
@@ -52,5 +55,11 @@ public class DateUnitListData extends AbstractStringListData
 		}
 		
 		return dateUnitsAsCodeList;
+	}
+	
+	@Override
+	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema schema, AbstractFieldSchema fieldSchema) throws Exception
+	{
+		writer.writeDateUnitListData(schema, fieldSchema, get());
 	}
 }

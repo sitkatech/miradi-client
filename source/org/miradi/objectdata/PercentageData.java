@@ -21,7 +21,10 @@ package org.miradi.objectdata;
 
 import org.miradi.main.EAM;
 import org.miradi.project.FloatingNumberFormat;
+import org.miradi.schemas.AbstractFieldSchema;
+import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.utils.DoubleUtilities;
+import org.miradi.xml.xmpz2.Xmpz2XmlUnicodeWriter;
 
 
 public class PercentageData extends NumberData
@@ -57,5 +60,11 @@ public class PercentageData extends NumberData
 			EAM.logException(e);
 			return "";
 		}
+	}
+	
+	@Override
+	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema schema, AbstractFieldSchema fieldSchema) throws Exception
+	{
+		writer.writePercentageData(schema, fieldSchema, get());
 	}
 }

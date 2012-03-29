@@ -19,7 +19,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objectdata;
 
+import org.miradi.schemas.AbstractFieldSchema;
+import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.utils.DoubleUtilities;
+import org.miradi.xml.xmpz2.Xmpz2XmlUnicodeWriter;
 
 // FIXME Low: Can we get rid of this and just use NumberData instead?
 public class FloatData extends ObjectData
@@ -71,6 +74,12 @@ public class FloatData extends ObjectData
 	public int hashCode()
 	{
 		return new Float(value).hashCode();
+	}
+	
+	@Override
+	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema schema, AbstractFieldSchema fieldSchema) throws Exception
+	{
+		writer.writeFloatData(schema, fieldSchema, get());
 	}
 
 	private double value;

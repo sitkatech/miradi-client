@@ -22,6 +22,9 @@ package org.miradi.objectdata;
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.schemas.AbstractFieldSchema;
+import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.xml.xmpz2.Xmpz2XmlUnicodeWriter;
 
 public class BaseIdData extends ObjectData
 {
@@ -93,6 +96,12 @@ public class BaseIdData extends ObjectData
 	public int hashCode()
 	{
 		return id.hashCode();
+	}
+	
+	@Override
+	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema schema, AbstractFieldSchema fieldSchema) throws Exception
+	{
+		writer.writeBaseIdData(schema, fieldSchema, get());
 	}
 
 	int objectType;
