@@ -21,7 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.schemas;
 
 import org.miradi.objectdata.ObjectData;
-import org.miradi.objecthelpers.RelevancyOverrideSetData;
+import org.miradi.objectdata.RelevancyOverrideSetData;
 import org.miradi.objects.BaseObject;
 
 public class FieldSchemaRelevancyOverrideSetData extends AbstractFieldSchema

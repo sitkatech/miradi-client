@@ -26,13 +26,13 @@ import org.miradi.commands.Command;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
+import org.miradi.objectdata.RelevancyOverrideSetData;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
-import org.miradi.objecthelpers.RelevancyOverrideSetData;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.utils.CommandVector;
 

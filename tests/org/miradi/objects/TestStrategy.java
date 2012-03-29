@@ -23,12 +23,12 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
+import org.miradi.objectdata.RelevancyOverrideSetData;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
-import org.miradi.objecthelpers.RelevancyOverrideSetData;
 import org.miradi.questions.StrategyStatusQuestion;
 import org.miradi.utils.CommandVector;
 
