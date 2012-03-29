@@ -85,9 +85,9 @@ public class RelevancyOverrideSetData extends ObjectData
 	}
 	
 	@Override
-	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema schema, AbstractFieldSchema fieldSchema) throws Exception
+	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		writer.writeRelevancyOverrideSetData(schema, fieldSchema, get());
+		writer.writeRelevancyOverrideSetData(baseObjectSchema, fieldSchema, get());
 	}
 	
 	private RelevancyOverrideSet relevancyOverrideSet;

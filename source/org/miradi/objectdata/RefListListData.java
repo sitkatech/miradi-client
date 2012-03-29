@@ -79,8 +79,8 @@ public class RefListListData extends AbstractStringListData
 	}
 	
 	@Override
-	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema schema, AbstractFieldSchema fieldSchema) throws Exception
+	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		writer.writeRefListListData(schema, fieldSchema, get());
+		writer.writeRefListListData(baseObjectSchema, fieldSchema, get());
 	}
 }

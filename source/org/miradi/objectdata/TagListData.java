@@ -33,8 +33,8 @@ public class TagListData extends AbstractStringListData
 	
 
 	@Override
-	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema schema, AbstractFieldSchema fieldSchema) throws Exception
+	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		writer.writeTagListData(schema, fieldSchema, get());
+		writer.writeTagListData(baseObjectSchema, fieldSchema, get());
 	}
 }

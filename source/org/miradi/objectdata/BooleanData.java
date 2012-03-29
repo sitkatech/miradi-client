@@ -61,9 +61,9 @@ public class BooleanData extends IntegerData
 	}
 	
 	@Override
-	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema schema, AbstractFieldSchema fieldSchema) throws Exception
+	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		writer.writeBooleanData(schema, fieldSchema, get());
+		writer.writeBooleanData(baseObjectSchema, fieldSchema, get());
 	}
 	
 	static public final String BOOLEAN_FALSE = "";

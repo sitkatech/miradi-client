@@ -70,9 +70,9 @@ public class DateUnitEffortListData extends ObjectData
 	}
 	
 	@Override
-	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema schema, AbstractFieldSchema fieldSchema) throws Exception
+	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		writer.writeDateUnitEffortListData(schema, fieldSchema, get());
+		writer.writeDateUnitEffortListData(baseObjectSchema, fieldSchema, get());
 	}
 
 	private DateUnitEffortList dateUnitEffortList;

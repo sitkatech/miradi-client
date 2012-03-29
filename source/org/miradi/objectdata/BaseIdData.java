@@ -99,9 +99,9 @@ public class BaseIdData extends ObjectData
 	}
 	
 	@Override
-	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema schema, AbstractFieldSchema fieldSchema) throws Exception
+	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		writer.writeBaseIdData(schema, fieldSchema, get());
+		writer.writeBaseIdData(baseObjectSchema, fieldSchema, get());
 	}
 
 	int objectType;

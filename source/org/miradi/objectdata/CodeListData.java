@@ -46,9 +46,9 @@ public class CodeListData extends AbstractStringListData
 	}
 	
 	@Override
-	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema schema, AbstractFieldSchema fieldSchema) throws Exception
+	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		writer.writeCodeListData(schema, fieldSchema, get());
+		writer.writeCodeListData(baseObjectSchema, fieldSchema, get());
 	}
 	
 	private ChoiceQuestion question;

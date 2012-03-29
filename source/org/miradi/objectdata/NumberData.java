@@ -88,9 +88,9 @@ public class NumberData extends ObjectData
 	}
 	
 	@Override
-	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema schema, AbstractFieldSchema fieldSchema) throws Exception
+	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		writer.writeNumberData(schema, fieldSchema, get());
+		writer.writeNumberData(baseObjectSchema, fieldSchema, get());
 	}
 	
 	double value;

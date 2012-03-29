@@ -77,9 +77,9 @@ public class StringRefMapData extends ObjectData
 	}
 	
 	@Override
-	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema schema, AbstractFieldSchema fieldSchema) throws Exception
+	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		writer.writeRefMapData(schema, fieldSchema, get());
+		writer.writeRefMapData(baseObjectSchema, fieldSchema, get());
 	}
 
 	private StringRefMap data;
