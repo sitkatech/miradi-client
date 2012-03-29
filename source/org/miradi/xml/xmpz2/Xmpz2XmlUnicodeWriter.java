@@ -97,11 +97,6 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 		writeln("</" + elemnentName + ">");
 	}
 	
-	public void writeObjectData(final ObjectData objectData) throws Exception
-	{
-		writeElement(objectData.getTag(), objectData.get());
-	}
-
 	public void writeChoiceData(final BaseObjectSchema baseObjectSchema, final AbstractFieldSchema fieldSchema, final String data) throws Exception
 	{
 		final String elementName = appendParentNameToChildName(baseObjectSchema, fieldSchema);
