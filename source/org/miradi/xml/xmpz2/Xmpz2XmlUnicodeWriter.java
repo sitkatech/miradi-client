@@ -102,9 +102,9 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 		writeElement(objectData.getTag(), objectData.get());
 	}
 
-	public void writeChoiceData(final BaseObjectSchema schema, final AbstractFieldSchema fieldSchema, final String data) throws Exception
+	public void writeChoiceData(final BaseObjectSchema baseObjectSchema, final AbstractFieldSchema fieldSchema, final String data) throws Exception
 	{
-		writeElement(schema.getXmpz2ElementName() + fieldSchema.getTag(), data);
+		writeElement(baseObjectSchema.getXmpz2ElementName() + fieldSchema.getTag(), data);
 	}
 
 	public void writeStringData(BaseObjectSchema schema, AbstractFieldSchema fieldSchema, String string)
