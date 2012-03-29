@@ -21,7 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.schemas;
 
 import org.miradi.objectdata.ObjectData;
-import org.miradi.objecthelpers.StringRefMapData;
+import org.miradi.objectdata.StringRefMapData;
 import org.miradi.objects.BaseObject;
 
 public class FieldSchemaStringRefMap extends AbstractFieldSchema
