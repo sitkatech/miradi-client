@@ -20,8 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2;
 
-import java.util.Vector;
-
 import org.martus.util.UnicodeWriter;
 import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
@@ -63,8 +61,7 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 		FosProjectData fosBaseObject = getFosProjectData();
 		BaseObjectSchema schema = fosBaseObject.getSchema();
 		getWriter().writeStartElement(schema);
-		Vector<AbstractFieldSchema> fieldSchemas = schema.getFieldSchemas();
-		for(AbstractFieldSchema fieldSchema : fieldSchemas)
+		for(AbstractFieldSchema fieldSchema : schema)
 		{
 			getWriter().writeElement(fosBaseObject, fieldSchema);
 		}
