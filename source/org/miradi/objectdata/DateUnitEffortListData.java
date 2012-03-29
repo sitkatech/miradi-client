@@ -19,7 +19,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objectdata;
 
+import org.miradi.schemas.AbstractFieldSchema;
+import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.utils.DateUnitEffortList;
+import org.miradi.xml.xmpz2.Xmpz2XmlUnicodeWriter;
 
 public class DateUnitEffortListData extends ObjectData
 {
@@ -64,6 +67,12 @@ public class DateUnitEffortListData extends ObjectData
 			return false;
 		
 		return rawOther.toString().equals(toString());
+	}
+	
+	@Override
+	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema schema, AbstractFieldSchema fieldSchema) throws Exception
+	{
+		writer.writeDateUnitEffortListData(schema, fieldSchema, get());
 	}
 
 	private DateUnitEffortList dateUnitEffortList;

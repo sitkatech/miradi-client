@@ -21,7 +21,10 @@ package org.miradi.objectdata;
 
 import java.awt.Point;
 
+import org.miradi.schemas.AbstractFieldSchema;
+import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.xml.xmpz2.Xmpz2XmlUnicodeWriter;
 
 public class PointData extends ObjectData
 {
@@ -82,6 +85,12 @@ public class PointData extends ObjectData
 	public int hashCode()
 	{
 		return point.hashCode();
+	}
+	
+	@Override
+	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema schema, AbstractFieldSchema fieldSchema) throws Exception
+	{
+		writer.writePointData(schema, fieldSchema, get());
 	}
 
 	Point point;

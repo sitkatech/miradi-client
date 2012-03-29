@@ -20,7 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objectdata;
 
 import org.martus.util.MultiCalendar;
+import org.miradi.schemas.AbstractFieldSchema;
+import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.utils.InvalidDateException;
+import org.miradi.xml.xmpz2.Xmpz2XmlUnicodeWriter;
 
 public class DateData extends ObjectData
 {
@@ -76,6 +79,12 @@ public class DateData extends ObjectData
 	public int hashCode()
 	{
 		return date.hashCode();
+	}
+	
+	@Override
+	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema schema, AbstractFieldSchema fieldSchema) throws Exception
+	{
+		writer.writetDateData(schema, fieldSchema, get());
 	}
 	
 	private MultiCalendar date;

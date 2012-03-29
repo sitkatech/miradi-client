@@ -21,7 +21,10 @@ package org.miradi.objectdata;
 
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.schemas.AbstractFieldSchema;
+import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.xml.xmpz2.Xmpz2XmlUnicodeWriter;
 
 public class ORefData extends ObjectData
 {
@@ -93,6 +96,12 @@ public class ORefData extends ObjectData
 			ref = ORef.INVALID;
 		else
 			ref = new ORef(new EnhancedJsonObject(newValue));
+	}
+	
+	@Override
+	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema schema, AbstractFieldSchema fieldSchema) throws Exception
+	{
+		writer.writeORefData(schema, fieldSchema, get());
 	}
 
 	ORef ref;

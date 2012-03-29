@@ -20,6 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objecthelpers;
 
 import org.miradi.objectdata.ObjectData;
+import org.miradi.schemas.AbstractFieldSchema;
+import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.xml.xmpz2.Xmpz2XmlUnicodeWriter;
 
 public class StringRefMapData extends ObjectData
 {
@@ -69,6 +72,12 @@ public class StringRefMapData extends ObjectData
 	public int hashCode()
 	{
 		return toString().hashCode();
+	}
+	
+	@Override
+	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema schema, AbstractFieldSchema fieldSchema) throws Exception
+	{
+		writer.writeRefMapData(schema, fieldSchema, get());
 	}
 
 	private StringRefMap data;

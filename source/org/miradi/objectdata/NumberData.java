@@ -20,8 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objectdata;
 
 
+import org.miradi.schemas.AbstractFieldSchema;
+import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.utils.DoubleUtilities;
 import org.miradi.utils.InvalidNumberException;
+import org.miradi.xml.xmpz2.Xmpz2XmlUnicodeWriter;
 
 public class NumberData extends ObjectData
 {
@@ -82,6 +85,12 @@ public class NumberData extends ObjectData
 			return 0;
 
 		return value;
+	}
+	
+	@Override
+	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema schema, AbstractFieldSchema fieldSchema) throws Exception
+	{
+		writer.writeNumberData(schema, fieldSchema, get());
 	}
 	
 	double value;

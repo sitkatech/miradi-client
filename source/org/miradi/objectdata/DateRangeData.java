@@ -19,8 +19,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objectdata;
 
+import org.miradi.schemas.AbstractFieldSchema;
+import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.xml.xmpz2.Xmpz2XmlUnicodeWriter;
 
 public class DateRangeData extends ObjectData
 {
@@ -70,6 +73,12 @@ public class DateRangeData extends ObjectData
 	public int hashCode()
 	{
 		return dateRange.hashCode();
+	}
+	
+	@Override
+	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema schema, AbstractFieldSchema fieldSchema) throws Exception
+	{
+		writer.writetDateRangeData(schema, fieldSchema, get());
 	}
 	
 	private DateRange dateRange;

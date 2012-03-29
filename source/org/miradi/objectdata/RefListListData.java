@@ -23,7 +23,10 @@ package org.miradi.objectdata;
 import java.util.Vector;
 
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.schemas.AbstractFieldSchema;
+import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.utils.CodeList;
+import org.miradi.xml.xmpz2.Xmpz2XmlUnicodeWriter;
 
 public class RefListListData extends AbstractStringListData
 {
@@ -73,5 +76,11 @@ public class RefListListData extends AbstractStringListData
 		{
 			addList(listToAdd);
 		}
+	}
+	
+	@Override
+	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema schema, AbstractFieldSchema fieldSchema) throws Exception
+	{
+		writer.writeRefListListData(schema, fieldSchema, get());
 	}
 }

@@ -19,6 +19,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.objectdata;
 
+import org.miradi.schemas.AbstractFieldSchema;
+import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.xml.xmpz2.Xmpz2XmlUnicodeWriter;
+
 public class BooleanData extends IntegerData
 {
 	public BooleanData(String tagToUse)
@@ -54,6 +58,12 @@ public class BooleanData extends IntegerData
 		super.set(newValue);
 		if (asInt()<0 || asInt()>1)
 			throw new RuntimeException("Invalid boolean value :" + newValue);
+	}
+	
+	@Override
+	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema schema, AbstractFieldSchema fieldSchema) throws Exception
+	{
+		writer.writeBooleanData(schema, fieldSchema, get());
 	}
 	
 	static public final String BOOLEAN_FALSE = "";

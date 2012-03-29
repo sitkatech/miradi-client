@@ -21,7 +21,10 @@ package org.miradi.objectdata;
 
 import java.awt.Dimension;
 
+import org.miradi.schemas.AbstractFieldSchema;
+import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.xml.xmpz2.Xmpz2XmlUnicodeWriter;
 
 public class DimensionData extends ObjectData
 {
@@ -83,6 +86,12 @@ public class DimensionData extends ObjectData
 	public int hashCode()
 	{
 		return dimension.hashCode();
+	}
+	
+	@Override
+	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema schema, AbstractFieldSchema fieldSchema) throws Exception
+	{
+		writer.writeDimensionData(schema, fieldSchema, get());
 	}
 	
 	Dimension dimension;

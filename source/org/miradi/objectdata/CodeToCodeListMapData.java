@@ -21,6 +21,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objectdata;
 
 import org.miradi.objecthelpers.CodeToCodeListMap;
+import org.miradi.schemas.AbstractFieldSchema;
+import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.xml.xmpz2.Xmpz2XmlUnicodeWriter;
 
 public class CodeToCodeListMapData extends ObjectData
 {
@@ -68,6 +71,12 @@ public class CodeToCodeListMapData extends ObjectData
 	public boolean isCodeToCodeListMapData()
 	{
 		return true;
+	}
+	
+	@Override
+	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema schema, AbstractFieldSchema fieldSchema) throws Exception
+	{
+		writer.writetCodeToCodeListMapData(schema, fieldSchema, get());
 	}
 	
 	private CodeToCodeListMap data;
