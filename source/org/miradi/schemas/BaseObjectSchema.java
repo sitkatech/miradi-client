@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.schemas;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Vector;
 
 import org.miradi.objectdata.ObjectData;
@@ -29,7 +30,7 @@ import org.miradi.objects.ResourceAssignment;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.StaticQuestionManager;
 
-public class BaseObjectSchema
+public class BaseObjectSchema implements Iterable<AbstractFieldSchema>
 {
 	public BaseObjectSchema()
 	{
@@ -43,7 +44,7 @@ public class BaseObjectSchema
 		return fieldSchema;
 	}
 	
-	public Vector<AbstractFieldSchema> getFieldSchemas()
+	private Vector<AbstractFieldSchema> getFieldSchemas()
 	{
 		return fieldSchemas;
 	}
@@ -246,6 +247,11 @@ public class BaseObjectSchema
 	public String getXmpz2ElementName()
 	{
 		throw new RuntimeException("This method should be overriden and correct value returned");
+	}
+	
+	public Iterator<AbstractFieldSchema> iterator()
+	{
+		return fieldSchemas.iterator();
 	}
 	
 	private Vector<AbstractFieldSchema> fieldSchemas;
