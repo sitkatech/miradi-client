@@ -20,6 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objectdata;
 
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.schemas.AbstractFieldSchema;
+import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.xml.xmpz2.Xmpz2XmlUnicodeWriter;
 
 
 public class ChoiceData extends StringData
@@ -41,6 +44,12 @@ public class ChoiceData extends StringData
 	public ChoiceQuestion getChoiceQuestion()
 	{
 		return question;
+	}
+	
+	@Override
+	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema schema, AbstractFieldSchema fieldSchema) throws Exception
+	{
+		writer.writeChoiceData(schema, fieldSchema, get());
 	}
 
 	private ChoiceQuestion question;
