@@ -22,7 +22,6 @@ package org.miradi.xml.xmpz2;
 
 import org.martus.util.UnicodeWriter;
 import org.miradi.main.EAM;
-import org.miradi.objects.BaseObject;
 import org.miradi.objects.FosProjectData;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
@@ -67,17 +66,6 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 		}
 		
 		getWriter().writeObjectElementEnd(schema);
-	}
-	
-	public void writeOptionalElementWithSameTag(String parentElementName, BaseObject object, String tag) throws Exception
-	{
-		writeOptionalElement(parentElementName, tag, object, tag);
-	}
-	
-	public void writeOptionalElement(String parentElementName, String elementName, BaseObject object, String tag) throws Exception
-	{
-		String convertedElementName = getConvertedElementName(parentElementName, elementName);
-		writeOptionalElement(getWriter(), parentElementName + convertedElementName, object, tag);
 	}
 	
 	public void writeCodeElement(String parentElementName, String elementName, ChoiceQuestion question, String code) throws Exception
