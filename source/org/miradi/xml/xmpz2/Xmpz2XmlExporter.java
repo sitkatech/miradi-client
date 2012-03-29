@@ -64,14 +64,14 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 
 	protected void writeBaseObjectDataSchemaElement(final BaseObject baseObject) throws Exception
 	{
-		BaseObjectSchema schema = baseObject.getSchema();
-		getWriter().writeObjectElementStart(schema);
-		for(AbstractFieldSchema fieldSchema : schema)
+		BaseObjectSchema baseObjectSchema = baseObject.getSchema();
+		getWriter().writeObjectElementStart(baseObjectSchema);
+		for(AbstractFieldSchema fieldSchema : baseObjectSchema)
 		{
 			getWriter().writeFieldElement(baseObject, fieldSchema);
 		}
 		
-		getWriter().writeObjectElementEnd(schema);
+		getWriter().writeObjectElementEnd(baseObjectSchema);
 	}
 	
 	private Xmpz2XmlUnicodeWriter getWriter()
