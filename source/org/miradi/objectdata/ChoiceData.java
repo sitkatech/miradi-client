@@ -49,8 +49,7 @@ public class ChoiceData extends StringData
 	@Override
 	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		String readableCode = getChoiceQuestion().convertToReadableCode(get());
-		writer.writeChoiceData(baseObjectSchema, fieldSchema, readableCode);
+		writer.writeChoiceData(baseObjectSchema, fieldSchema, getChoiceQuestion(), get());
 	}
 
 	private ChoiceQuestion question;

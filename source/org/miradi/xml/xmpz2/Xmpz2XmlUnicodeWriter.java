@@ -26,6 +26,7 @@ import java.io.OutputStream;
 import org.martus.util.UnicodeWriter;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objects.BaseObject;
+import org.miradi.questions.ChoiceQuestion;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.utils.HtmlUtilities;
@@ -96,10 +97,11 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 		writeln("</" + elemnentName + ">");
 	}
 	
-	public void writeChoiceData(final BaseObjectSchema baseObjectSchema, final AbstractFieldSchema fieldSchema, final String data) throws Exception
+	public void writeChoiceData(final BaseObjectSchema baseObjectSchema, final AbstractFieldSchema fieldSchema, final ChoiceQuestion choiceQuestion, final String code) throws Exception
 	{
+		String readableCode = choiceQuestion.convertToReadableCode(code);
 		final String elementName = appendParentNameToChildName(baseObjectSchema, fieldSchema);
-		writeElement(elementName, data);
+		writeElement(elementName, readableCode);
 	}
 
 	private String appendParentNameToChildName(final BaseObjectSchema baseObjectSchema, final AbstractFieldSchema fieldSchema)
