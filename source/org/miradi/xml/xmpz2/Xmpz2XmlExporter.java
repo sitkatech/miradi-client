@@ -63,7 +63,7 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 		getWriter().writeStartElement(schema);
 		for(AbstractFieldSchema fieldSchema : schema)
 		{
-			getWriter().writeElement(fosBaseObject, fieldSchema);
+			getWriter().writeFieldElement(fosBaseObject, fieldSchema);
 		}
 		
 		getWriter().writeEndElement(schema);
