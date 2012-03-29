@@ -21,7 +21,6 @@ package org.miradi.objectdata;
 
 import java.util.HashSet;
 
-import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.questions.ChoiceQuestion;
@@ -181,11 +180,7 @@ abstract public class ObjectData
 		return isNavigationField;
 	}
 	
-	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema schema, AbstractFieldSchema fieldSchema) throws Exception
-	{
-		EAM.logWarning("This method should be overriden in subclasses to call back");
-		writer.writeObjectData(this);
-	}
+	abstract public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema schema, AbstractFieldSchema fieldSchema) throws Exception;
 	
 	private HashSet<String> dependencyTags;
 	private String tag;
