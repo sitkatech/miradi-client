@@ -53,14 +53,14 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 		writeEndElement(CONSERVATION_PROJECT);
 	}
 	
-	public void writeObjectElementStart(final BaseObjectSchema schema) throws Exception
+	public void writeObjectElementStart(final BaseObjectSchema baseObjectSchema) throws Exception
 	{
-		writeStartElement(schema.getXmpz2ElementName());
+		writeStartElement(baseObjectSchema.getXmpz2ElementName());
 	}
 
-	public void writeObjectElementEnd(final BaseObjectSchema schema) throws Exception
+	public void writeObjectElementEnd(final BaseObjectSchema baseObjectSchema) throws Exception
 	{
-		writeEndElement(schema.getXmpz2ElementName());
+		writeEndElement(baseObjectSchema.getXmpz2ElementName());
 	}
 	
 	public void writeFieldElement(final BaseObject baseObject, final AbstractFieldSchema fieldSchema) throws Exception
@@ -108,19 +108,19 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 		return baseObjectSchema.getXmpz2ElementName() + fieldSchema.getTag();
 	}
 
-	public void writeStringData(BaseObjectSchema schema, AbstractFieldSchema fieldSchema, String string)
+	public void writeStringData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string)
 	{
 	}
 
-	public void writeCodeToCodeMapData(BaseObjectSchema schema,	AbstractFieldSchema fieldSchema, String string)
+	public void writeCodeToCodeMapData(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema, String string)
 	{
 	}
 
-	public void writeCodeToUserStringMapData(BaseObjectSchema schema, AbstractFieldSchema fieldSchema, String string)
+	public void writeCodeToUserStringMapData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string)
 	{
 	}
 
-	public void writeCodeListData(BaseObjectSchema schema, AbstractFieldSchema fieldSchema, String string)
+	public void writeCodeListData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string)
 	{
 	}
 
@@ -128,99 +128,99 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 	{
 	}
 
-	public void writeRefListListData(BaseObjectSchema schema, AbstractFieldSchema fieldSchema, String string)
+	public void writeRefListListData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string)
 	{
 	}
 
-	public void writeTagListData(BaseObjectSchema schema, AbstractFieldSchema fieldSchema, String string)
+	public void writeTagListData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string)
 	{
 	}
 
-	public void writeBaseIdData(BaseObjectSchema schema, AbstractFieldSchema fieldSchema, String string)
+	public void writeBaseIdData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string)
 	{
 	}
 
-	public void writeCodeToChoiceMapData(BaseObjectSchema schema, AbstractFieldSchema fieldSchema, String string)
+	public void writeCodeToChoiceMapData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string)
 	{
 	}
 
-	public void writetCodeToCodeListMapData(BaseObjectSchema schema, AbstractFieldSchema fieldSchema, String string)
+	public void writetCodeToCodeListMapData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string)
 	{
 	}
 
-	public void writetDateData(BaseObjectSchema schema,	AbstractFieldSchema fieldSchema, String string)
+	public void writetDateData(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema, String string)
 	{
 	}
 
-	public void writetDateRangeData(BaseObjectSchema schema, AbstractFieldSchema fieldSchema, String string) 
+	public void writetDateRangeData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string) 
 	{
 	}
 
-	public void writeDateUnitEffortListData(BaseObjectSchema schema, AbstractFieldSchema fieldSchema, String string)
+	public void writeDateUnitEffortListData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string)
 	{
 	}
 
-	public void writeDimensionData(BaseObjectSchema schema,	AbstractFieldSchema fieldSchema, String string)
+	public void writeDimensionData(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema, String string)
 	{
 	}
 
-	public void writeFloatData(BaseObjectSchema schema,	AbstractFieldSchema fieldSchema, String string)
+	public void writeFloatData(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema, String string)
 	{
 	}
 
-	public void writeIdListData(BaseObjectSchema schema, AbstractFieldSchema fieldSchema, String string)
+	public void writeIdListData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string)
 	{
 	}
 
-	public void writeIntegerData(BaseObjectSchema schema, AbstractFieldSchema fieldSchema, String string)
+	public void writeIntegerData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string)
 	{
 	}
 
-	public void writeBooleanData(BaseObjectSchema schema, AbstractFieldSchema fieldSchema, String string)
+	public void writeBooleanData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string)
 	{
 	}
 
-	public void writeNumberData(BaseObjectSchema schema, AbstractFieldSchema fieldSchema, String string)
+	public void writeNumberData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string)
 	{
 	}
 
-	public void writePercentageData(BaseObjectSchema schema, AbstractFieldSchema fieldSchema, String string)
+	public void writePercentageData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string)
 	{
 	}
 
-	public void writeORefData(BaseObjectSchema schema, AbstractFieldSchema fieldSchema, String string)
+	public void writeORefData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string)
 	{
 	}
 
-	public void writePointData(BaseObjectSchema schema,	AbstractFieldSchema fieldSchema, String string)
+	public void writePointData(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema, String string)
 	{
 	}
 
-	public void writePointListData(BaseObjectSchema schema, AbstractFieldSchema fieldSchema, String string)
+	public void writePointListData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string)
 	{
 	}
 
-	public void writePseudoQuetionData(BaseObjectSchema schema,	AbstractFieldSchema fieldSchema, String string)
+	public void writePseudoQuetionData(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema, String string)
 	{
 	}
 
-	public void writePseudoRefListData(BaseObjectSchema schema,	AbstractFieldSchema fieldSchema, String string)
+	public void writePseudoRefListData(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema, String string)
 	{
 	}
 
-	public void writeRefListData(BaseObjectSchema schema, AbstractFieldSchema fieldSchema, String string)
+	public void writeRefListData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string)
 	{
 	}
 
-	public void writeRelevancyOverrideSetData(BaseObjectSchema schema, AbstractFieldSchema fieldSchema, String string)
+	public void writeRelevancyOverrideSetData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string)
 	{
 	}
 
-	public void writeUserTextData(BaseObjectSchema schema, AbstractFieldSchema fieldSchema, String string)
+	public void writeUserTextData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string)
 	{
 	}
 
-	public void writeRefMapData(BaseObjectSchema schema, AbstractFieldSchema fieldSchema, String string)
+	public void writeRefMapData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string)
 	{
 	}
 }
