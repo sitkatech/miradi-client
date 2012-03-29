@@ -69,7 +69,7 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 		writeElement(elementName, data);
 	}
 	
-	public void writeElement(String elementName, String data) throws Exception
+	private void writeElement(String elementName, String data) throws Exception
 	{
 		if (data == null || data.length() == 0)
 			return;
