@@ -60,9 +60,9 @@ abstract public class StringData extends ObjectData
 	}
 	
 	@Override
-	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema schema, AbstractFieldSchema fieldSchema) throws Exception
+	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		writer.writeStringData(schema, fieldSchema, get());
+		writer.writeStringData(baseObjectSchema, fieldSchema, get());
 	}
 
 	private String value;

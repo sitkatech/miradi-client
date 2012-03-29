@@ -63,8 +63,8 @@ public class PercentageData extends NumberData
 	}
 	
 	@Override
-	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema schema, AbstractFieldSchema fieldSchema) throws Exception
+	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		writer.writePercentageData(schema, fieldSchema, get());
+		writer.writePercentageData(baseObjectSchema, fieldSchema, get());
 	}
 }

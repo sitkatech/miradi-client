@@ -54,9 +54,9 @@ public class PseudoRefListData extends RefListData
 	}
 	
 	@Override
-	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema schema, AbstractFieldSchema fieldSchema) throws Exception
+	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		writer.writePseudoRefListData(schema, fieldSchema, get());
+		writer.writePseudoRefListData(baseObjectSchema, fieldSchema, get());
 	}
 	
 	private BaseObject object;

@@ -79,9 +79,9 @@ public class PseudoQuestionData  extends ObjectData
 	}
 	
 	@Override
-	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema schema, AbstractFieldSchema fieldSchema) throws Exception
+	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		writer.writePseudoQuetionData(schema, fieldSchema, get());
+		writer.writePseudoQuetionData(baseObjectSchema, fieldSchema, get());
 	}
 
 	private BaseObject object;

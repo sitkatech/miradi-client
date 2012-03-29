@@ -180,7 +180,7 @@ abstract public class ObjectData
 		return isNavigationField;
 	}
 	
-	abstract public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema schema, AbstractFieldSchema fieldSchema) throws Exception;
+	abstract public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception;
 	
 	private HashSet<String> dependencyTags;
 	private String tag;

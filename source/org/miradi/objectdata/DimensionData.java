@@ -89,9 +89,9 @@ public class DimensionData extends ObjectData
 	}
 	
 	@Override
-	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema schema, AbstractFieldSchema fieldSchema) throws Exception
+	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		writer.writeDimensionData(schema, fieldSchema, get());
+		writer.writeDimensionData(baseObjectSchema, fieldSchema, get());
 	}
 	
 	Dimension dimension;
