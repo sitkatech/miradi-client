@@ -23,7 +23,6 @@ import java.awt.Color;
 
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.schemas.ValueOptionSchema;
@@ -55,13 +54,13 @@ public class ValueOption extends BaseObject
 	@Override
 	public int getType()
 	{	
-		return getObjectType();
+		return ValueOptionSchema.getObjectType();
 	}
 
 	@Override
 	public String getTypeName()
 	{
-		return OBJECT_NAME;
+		return ValueOptionSchema.OBJECT_NAME;
 	}
 
 	@Override
@@ -69,12 +68,6 @@ public class ValueOption extends BaseObject
 	{
 		return NO_OWNERS;
 	}
-	
-	public static int getObjectType()
-	{
-		return ObjectType.VALUE_OPTION;
-	}
-	
 	
 	public int getNumericValue()
 	{
@@ -108,6 +101,4 @@ public class ValueOption extends BaseObject
 	final public static String TAG_NUMERIC = "Numeric";
 	final public static String TAG_COLOR = "Color";
 	final private static Color INVALID_GRAY = new Color(200,200,200);
-	
-	public static final String OBJECT_NAME = "ValueOption";
 }

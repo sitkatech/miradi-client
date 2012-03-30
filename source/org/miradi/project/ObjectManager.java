@@ -89,7 +89,6 @@ import org.miradi.objectpools.WwfProjectDataPool;
 import org.miradi.objectpools.XenodataPool;
 import org.miradi.objectpools.XslTemplatePool;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.ValueOption;
 import org.miradi.objects.ViewData;
 import org.miradi.objects.WcpaProjectData;
 import org.miradi.objects.WcsProjectData;
@@ -144,6 +143,7 @@ import org.miradi.schemas.ThreatRatingCommentsDataSchema;
 import org.miradi.schemas.ThreatReductionResultSchema;
 import org.miradi.schemas.ThreatStressRatingSchema;
 import org.miradi.schemas.TncProjectDataSchema;
+import org.miradi.schemas.ValueOptionSchema;
 
 public class ObjectManager
 {
@@ -157,7 +157,7 @@ public class ObjectManager
 		IdAssigner ida = getNormalIdAssigner();
 		addNormalPool(new FactorLinkPool(ida), FactorLinkSchema.OBJECT_NAME);
 		addNormalPool(new RatingCriterionPool(ida), RatingCriterionSchema.OBJECT_NAME);
-		addNormalPool(new ValueOptionPool(ida), ValueOption.OBJECT_NAME);
+		addNormalPool(new ValueOptionPool(ida), ValueOptionSchema.OBJECT_NAME);
 		addNormalPool(new TaskPool(ida), TaskSchema.OBJECT_NAME);
 		addNormalPool(new ViewPool(ida), ViewData.OBJECT_NAME);
 		addNormalPool(new ResourcePool(ida), ProjectResourceSchema.OBJECT_NAME);

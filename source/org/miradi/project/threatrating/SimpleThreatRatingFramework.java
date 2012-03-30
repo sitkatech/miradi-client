@@ -50,6 +50,7 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.RatingCriterionSchema;
 import org.miradi.schemas.TargetSchema;
+import org.miradi.schemas.ValueOptionSchema;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.Utility;
 
@@ -82,7 +83,7 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 		
 	public IdList getValueOptionIds()
 	{
-		IdList ids = new IdList(ValueOption.getObjectType());
+		IdList ids = new IdList(ValueOptionSchema.getObjectType());
 		for(int i = 0; i < getValueOptions().length; ++i)
 			ids.add(getValueOptions()[i].getId());
 		return ids;
@@ -108,7 +109,7 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 	
 	public ValueOption[] getValueOptions()
 	{
-		EAMObjectPool pool = getProject().getPool(ValueOption.getObjectType());
+		EAMObjectPool pool = getProject().getPool(ValueOptionSchema.getObjectType());
 		ORefList refs = pool.getORefList();
 		ValueOption[] valueOptions = new ValueOption[refs.size()];
 		for(int i = 0; i < refs.size(); ++i)
@@ -218,7 +219,7 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 	private int getNumericValue(ThreatRatingBundle bundle, RatingCriterion criterion)
 	{
 		BaseId valueId = bundle.getValueId(criterion.getId());
-		ValueOption valueOption = (ValueOption)getProject().findObject(ValueOption.getObjectType(), valueId);
+		ValueOption valueOption = (ValueOption)getProject().findObject(ValueOptionSchema.getObjectType(), valueId);
 		return valueOption.getNumericValue();
 	}
 

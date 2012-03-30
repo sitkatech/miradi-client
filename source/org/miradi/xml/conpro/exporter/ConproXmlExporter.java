@@ -78,6 +78,7 @@ import org.miradi.questions.StrategyClassificationQuestion;
 import org.miradi.questions.TncOperatingUnitsQuestion;
 import org.miradi.schemas.ThreatStressRatingSchema;
 import org.miradi.schemas.TncProjectDataSchema;
+import org.miradi.schemas.ValueOptionSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DoubleUtilities;
@@ -758,7 +759,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 
 	private ValueOption findValueOption(BaseId valueOptionId)
 	{
-		return (ValueOption)getProject().findObject(ValueOption.getObjectType(), valueOptionId);
+		return (ValueOption)getProject().findObject(ValueOptionSchema.getObjectType(), valueOptionId);
 	}
 	
 	private void writeNestedTargets(UnicodeWriter out, Target target) throws Exception
