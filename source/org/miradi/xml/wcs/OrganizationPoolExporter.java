@@ -23,12 +23,13 @@ package org.miradi.xml.wcs;
 import org.martus.util.UnicodeWriter;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Organization;
+import org.miradi.schemas.OrganizationSchema;
 
 public class OrganizationPoolExporter extends BaseObjectPoolExporter
 {
 	public OrganizationPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
-		super(wcsXmlExporterToUse, ORGANIZATION, Organization.getObjectType());
+		super(wcsXmlExporterToUse, ORGANIZATION, OrganizationSchema.getObjectType());
 	}
 	
 	@Override
