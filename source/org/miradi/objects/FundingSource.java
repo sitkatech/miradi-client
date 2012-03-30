@@ -49,7 +49,7 @@ public class FundingSource extends AbstractBudgetCategoryObject
 	@Override
 	public String getTypeName()
 	{
-		return OBJECT_NAME;
+		return FundingSourceSchema.OBJECT_NAME;
 	}
 
 	@Override
@@ -88,6 +88,4 @@ public class FundingSource extends AbstractBudgetCategoryObject
 	{
 		return is(ref.getObjectType());
 	}
-			
-	public static final String OBJECT_NAME = "FundingSource";
 }
