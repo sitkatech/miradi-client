@@ -45,7 +45,6 @@ import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
-import org.miradi.objects.TextBox;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.BudgetCategoryOneSchema;
@@ -60,6 +59,7 @@ import org.miradi.schemas.ScopeBoxSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.TaskSchema;
+import org.miradi.schemas.TextBoxSchema;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.views.diagram.LinkCreator;
 
@@ -198,7 +198,7 @@ public class TestProjectRepairer extends TestCaseWithProject
 		verifyFactorBeingReferredToByDiagramFactor(ThreatReductionResult.getObjectType());
 		verifyFactorBeingReferredToByDiagramFactor(IntermediateResultSchema.getObjectType());
 		verifyFactorBeingReferredToByDiagramFactor(GroupBoxSchema.getObjectType());
-		verifyFactorBeingReferredToByDiagramFactor(TextBox.getObjectType());
+		verifyFactorBeingReferredToByDiagramFactor(TextBoxSchema.getObjectType());
 	}
 
 	private void verifyFactorBeingReferredToByDiagramFactor(int factorType) throws Exception

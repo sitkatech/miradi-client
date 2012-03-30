@@ -20,12 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.wcs;
 
-import org.miradi.objects.TextBox;
+import org.miradi.schemas.TextBoxSchema;
 
 public class TextBoxPoolExporter extends FactorPoolExporter
 {
 	public TextBoxPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
-		super(wcsXmlExporterToUse, TEXT_BOX, TextBox.getObjectType());
+		super(wcsXmlExporterToUse, TEXT_BOX, TextBoxSchema.getObjectType());
 	}
 }

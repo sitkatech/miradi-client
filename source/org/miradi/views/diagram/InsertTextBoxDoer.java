@@ -21,7 +21,7 @@ package org.miradi.views.diagram;
 
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.TextBox;
+import org.miradi.schemas.TextBoxSchema;
 
 public class InsertTextBoxDoer extends InsertFactorDoer
 {
@@ -40,7 +40,7 @@ public class InsertTextBoxDoer extends InsertFactorDoer
 	@Override
 	public void forceVisibleInLayerManager() throws Exception
 	{
-		getCurrentLayerManager().setVisibility(TextBox.OBJECT_NAME, true);
+		getCurrentLayerManager().setVisibility(TextBoxSchema.OBJECT_NAME, true);
 	}
 
 	@Override

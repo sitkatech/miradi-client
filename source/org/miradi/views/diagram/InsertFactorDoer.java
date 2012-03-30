@@ -42,12 +42,12 @@ import org.miradi.objects.GroupBox;
 import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.Target;
-import org.miradi.objects.TextBox;
 import org.miradi.project.FactorCommandHelper;
 import org.miradi.project.Project;
 import org.miradi.schemas.ScopeBoxSchema;
 import org.miradi.schemas.StressSchema;
 import org.miradi.schemas.TaskSchema;
+import org.miradi.schemas.TextBoxSchema;
 
 abstract public class InsertFactorDoer extends LocationDoer
 {
@@ -329,7 +329,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 	
 	private boolean linkableType(int type)
 	{
-		if (type == TextBox.getObjectType())
+		if (type == TextBoxSchema.getObjectType())
 			return false;
 		
 		if (type == StressSchema.getObjectType())

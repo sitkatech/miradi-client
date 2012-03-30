@@ -150,6 +150,7 @@ import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.StressSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.TaskSchema;
+import org.miradi.schemas.TextBoxSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.DateRange;
@@ -828,7 +829,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public TextBox createTextBox() throws Exception
 	{
-		ORef textBoxRef = createObject(TextBox.getObjectType());
+		ORef textBoxRef = createObject(TextBoxSchema.getObjectType());
 		
 		return TextBox.find(this, textBoxRef);
 	}
