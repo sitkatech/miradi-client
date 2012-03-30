@@ -23,7 +23,7 @@ package org.miradi.xml.xmpz;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.AccountingCode;
 import org.miradi.objects.ExpenseAssignment;
-import org.miradi.objects.FundingSource;
+import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.w3c.dom.Node;
 
@@ -39,7 +39,7 @@ public class ExpenseAssignmentPoolImporter extends AbstractAssignmentPoolImporte
 	{
 		super.importFields(node, destinationRef);
 		
-		importOptionalRef(node, destinationRef, ExpenseAssignment.TAG_FUNDING_SOURCE_REF, XmpzXmlConstants.FUNDING_SOURCE, FundingSource.getObjectType());
+		importOptionalRef(node, destinationRef, ExpenseAssignment.TAG_FUNDING_SOURCE_REF, XmpzXmlConstants.FUNDING_SOURCE, FundingSourceSchema.getObjectType());
 		importOptionalRef(node, destinationRef, ExpenseAssignment.TAG_ACCOUNTING_CODE_REF, XmpzXmlConstants.ACCOUNTING_CODE, AccountingCode.getObjectType());
 	}
 	

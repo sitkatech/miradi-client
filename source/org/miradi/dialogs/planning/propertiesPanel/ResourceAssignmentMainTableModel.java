@@ -30,6 +30,7 @@ import org.miradi.objects.ResourceAssignment;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItemBaseObjectWrapper;
+import org.miradi.schemas.FundingSourceSchema;
 
 public class ResourceAssignmentMainTableModel extends AbstractSummaryTableModel
 {
@@ -287,7 +288,7 @@ public class ResourceAssignmentMainTableModel extends AbstractSummaryTableModel
 	
 	private BaseObject createInvalidFundingSource(ObjectManager objectManager)
 	{
-		return AbstractSummaryTableModel.createInvalidObject(objectManager, FundingSource.getObjectType(), FundingSource.OBJECT_NAME);
+		return AbstractSummaryTableModel.createInvalidObject(objectManager, FundingSourceSchema.getObjectType(), FundingSource.OBJECT_NAME);
 	}
 	
 	private BaseObject createInvalidAccountingCode(ObjectManager objectManager)

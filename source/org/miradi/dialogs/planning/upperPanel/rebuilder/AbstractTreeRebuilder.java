@@ -42,7 +42,6 @@ import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.Desire;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.ExpenseAssignment;
-import org.miradi.objects.FundingSource;
 import org.miradi.objects.Goal;
 import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Indicator;
@@ -60,6 +59,7 @@ import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
+import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.BaseObjectDateDescendingAndIdComparator;
 import org.miradi.utils.CodeList;
@@ -414,7 +414,7 @@ abstract public class AbstractTreeRebuilder
 			IndicatorSchema.getObjectType(),
 			ProjectResource.getObjectType(),
 			AccountingCode.getObjectType(),
-			FundingSource.getObjectType(),
+			FundingSourceSchema.getObjectType(),
 			BudgetCategoryOne.getObjectType(),
 			BudgetCategoryTwo.getObjectType(),
 			Task.getObjectType(),

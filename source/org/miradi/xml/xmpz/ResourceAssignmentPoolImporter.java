@@ -22,9 +22,9 @@ package org.miradi.xml.xmpz;
 
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.AccountingCode;
-import org.miradi.objects.FundingSource;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResourceAssignment;
+import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.xml.generic.XmlSchemaCreator;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.w3c.dom.Node;
@@ -42,7 +42,7 @@ public class ResourceAssignmentPoolImporter extends	AbstractAssignmentPoolImport
 		super.importFields(node, destinationRef);
 		
 		importOptionalId(node, destinationRef, ResourceAssignment.TAG_ACCOUNTING_CODE_ID, ACCOUNTING_CODE, AccountingCode.getObjectType());
-		importOptionalId(node, destinationRef, ResourceAssignment.TAG_FUNDING_SOURCE_ID, FUNDING_SOURCE, FundingSource.getObjectType());
+		importOptionalId(node, destinationRef, ResourceAssignment.TAG_FUNDING_SOURCE_ID, FUNDING_SOURCE, FundingSourceSchema.getObjectType());
 		importOptionalId(node, destinationRef, ResourceAssignment.TAG_RESOURCE_ID, XmlSchemaCreator.RESOURCE_ID_ELEMENT_NAME, ProjectResource.getObjectType());
 	}
 	

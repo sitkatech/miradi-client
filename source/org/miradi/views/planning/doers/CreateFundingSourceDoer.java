@@ -19,14 +19,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.planning.doers;
 
-import org.miradi.objects.FundingSource;
+import org.miradi.schemas.FundingSourceSchema;
 
 public class CreateFundingSourceDoer extends CreatePoolObjectDoer
 {
 	@Override
 	protected int getTypeToCreate()
 	{
-		return FundingSource.getObjectType();
+		return FundingSourceSchema.getObjectType();
 	}
 }
 

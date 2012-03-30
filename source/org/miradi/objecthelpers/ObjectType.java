@@ -32,7 +32,6 @@ import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.CostAllocationRule;
 import org.miradi.objects.Dashboard;
 import org.miradi.objects.FosProjectData;
-import org.miradi.objects.FundingSource;
 import org.miradi.objects.IucnRedlistSpecies;
 import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.objects.Organization;
@@ -55,6 +54,7 @@ import org.miradi.objects.WcsProjectData;
 import org.miradi.objects.WwfProjectData;
 import org.miradi.objects.XslTemplate;
 import org.miradi.project.Project;
+import org.miradi.schemas.FundingSourceSchema;
 
 public class ObjectType
 {
@@ -142,7 +142,7 @@ public class ObjectType
 			ProjectResource.getObjectType(),
 			ProjectMetadata.getObjectType(),
 			AccountingCode.getObjectType(),
-			FundingSource.getObjectType(),
+			FundingSourceSchema.getObjectType(),
 			ConceptualModelDiagram.getObjectType(),
 			ResultsChainDiagram.getObjectType(),
 			ObjectTreeTableConfiguration.getObjectType(),

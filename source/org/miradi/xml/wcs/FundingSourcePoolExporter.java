@@ -20,12 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.wcs;
 
-import org.miradi.objects.FundingSource;
+import org.miradi.schemas.FundingSourceSchema;
 
 public class FundingSourcePoolExporter extends AbstractBudgetCategoryPoolExporter
 {
 	public FundingSourcePoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
-		super(wcsXmlExporterToUse, FUNDING_SOURCE, FundingSource.getObjectType());
+		super(wcsXmlExporterToUse, FUNDING_SOURCE, FundingSourceSchema.getObjectType());
 	}
 }

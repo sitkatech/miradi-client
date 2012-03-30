@@ -21,14 +21,14 @@ package org.miradi.dialogs.fundingsource;
 
 import org.miradi.dialogs.base.AbsractBudgetCategoryPropertiesPanel;
 import org.miradi.main.EAM;
-import org.miradi.objects.FundingSource;
 import org.miradi.project.Project;
+import org.miradi.schemas.FundingSourceSchema;
 
 public class FundingSourcePropertiesPanel extends AbsractBudgetCategoryPropertiesPanel
 {
 	public FundingSourcePropertiesPanel(Project projectToUse) throws Exception
 	{
-		super(projectToUse, FundingSource.getObjectType());
+		super(projectToUse, FundingSourceSchema.getObjectType());
 	}
 
 	@Override

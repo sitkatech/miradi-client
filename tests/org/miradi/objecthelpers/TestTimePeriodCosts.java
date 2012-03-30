@@ -25,8 +25,8 @@ import org.miradi.main.TestCaseWithProject;
 import org.miradi.objects.AccountingCode;
 import org.miradi.objects.BudgetCategoryOne;
 import org.miradi.objects.BudgetCategoryTwo;
-import org.miradi.objects.FundingSource;
 import org.miradi.objects.ProjectResource;
+import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.utils.OptionalDouble;
 
 public class TestTimePeriodCosts extends TestCaseWithProject
@@ -122,7 +122,7 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 	
 	public void testFundingSourceWorkUnitsMapBasics() throws Exception
 	{
-		assertEquals("funding source should be empty?", 0, new TimePeriodCosts().getWorkUnitsRefSetForType(FundingSource.getObjectType()).size());
+		assertEquals("funding source should be empty?", 0, new TimePeriodCosts().getWorkUnitsRefSetForType(FundingSourceSchema.getObjectType()).size());
 		
 		ORef fundingSourceRef = createFundingSource();
 		TimePeriodCosts timePeriodCosts = new TimePeriodCosts(INVALID_RESOURCE_REF, fundingSourceRef, INVALID_ACCOUNTING_CODE_REF, INVALID_CATEGORY_ONE_REF, INVALID_CATEGORY_TWO_REF, new OptionalDouble(10.0));
@@ -133,7 +133,7 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 	
 	public void testFundingSourceExpenseMapBasics() throws Exception
 	{
-		assertEquals("funding source expense map should be empty?", 0, new TimePeriodCosts().getExpenseRefSetForType(FundingSource.getObjectType()).size());
+		assertEquals("funding source expense map should be empty?", 0, new TimePeriodCosts().getExpenseRefSetForType(FundingSourceSchema.getObjectType()).size());
 		
 		ORef fundingSourceRef = createFundingSource();
 		TimePeriodCosts timePeriodCosts = new TimePeriodCosts(fundingSourceRef, INVALID_ACCOUNTING_CODE_REF, INVALID_CATEGORY_ONE_REF, INVALID_CATEGORY_TWO_REF, new OptionalDouble(10.0));
@@ -243,23 +243,23 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		
 		withWorkUnits.retainWorkUnitDataRelatedToAnyOf(new ORefSet(jill));
 		assertFalse("fred was not filtered out?", withWorkUnits.getWorkUnitsRefSetForType(ProjectResource.getObjectType()).contains(fred.getRef()));
-		assertFalse("funding source for fred was not removed?", withWorkUnits.getWorkUnitsRefSetForType(FundingSource.getObjectType()).contains(fundingSourceRefForFred));
+		assertFalse("funding source for fred was not removed?", withWorkUnits.getWorkUnitsRefSetForType(FundingSourceSchema.getObjectType()).contains(fundingSourceRefForFred));
 		
 		withWorkUnits.retainWorkUnitDataRelatedToAnyOf(new ORefSet(fundingSourceRefForJill));
 		assertEquals("jill should not have been filtered out?", 1, withWorkUnits.getWorkUnitsRefSetForType(ProjectResource.getObjectType()).size());
-		assertEquals("funding source related to jill was filtered out?", 1, withWorkUnits.getWorkUnitsRefSetForType(FundingSource.getObjectType()).size());
+		assertEquals("funding source related to jill was filtered out?", 1, withWorkUnits.getWorkUnitsRefSetForType(FundingSourceSchema.getObjectType()).size());
 		
 		withWorkUnits.add(new TimePeriodCosts(jill.getRef(), fundingSourceRefForJill, INVALID_ACCOUNTING_CODE_REF, INVALID_CATEGORY_ONE_REF, INVALID_CATEGORY_TWO_REF, new OptionalDouble(12.0)));
 		withWorkUnits.add(new TimePeriodCosts(fred.getRef(), fundingSourceRefForFred, INVALID_ACCOUNTING_CODE_REF, INVALID_CATEGORY_ONE_REF, INVALID_CATEGORY_TWO_REF, new OptionalDouble(13.0)));
 		withWorkUnits.retainWorkUnitDataRelatedToAnyOf(new ORefSet(fundingSourceRefForJill));
 		assertFalse("fred was not filtered out?", withWorkUnits.getWorkUnitsRefSetForType(ProjectResource.getObjectType()).contains(fred.getRef()));
-		assertFalse("funding source for fred was not removed?", withWorkUnits.getWorkUnitsRefSetForType(FundingSource.getObjectType()).contains(fundingSourceRefForFred));
+		assertFalse("funding source for fred was not removed?", withWorkUnits.getWorkUnitsRefSetForType(FundingSourceSchema.getObjectType()).contains(fundingSourceRefForFred));
 		
 		TimePeriodCosts withExpenses = new TimePeriodCosts();
 		withExpenses.add(new TimePeriodCosts(fundingSourceRefForJill, INVALID_ACCOUNTING_CODE_REF, INVALID_CATEGORY_ONE_REF, INVALID_CATEGORY_TWO_REF, new OptionalDouble(10.0)));
 		withExpenses.add(new TimePeriodCosts(fundingSourceRefForFred, INVALID_ACCOUNTING_CODE_REF, INVALID_CATEGORY_ONE_REF, INVALID_CATEGORY_TWO_REF, new OptionalDouble(11.0)));
 		withExpenses.retainExpenseDataRelatedToAnyOf(new ORefSet(fundingSourceRefForJill));
-		assertFalse("fred was not filtered out?", withExpenses.getExpenseRefSetForType(FundingSource.getObjectType()).contains(fundingSourceRefForFred));
+		assertFalse("fred was not filtered out?", withExpenses.getExpenseRefSetForType(FundingSourceSchema.getObjectType()).contains(fundingSourceRefForFred));
 	}
 	
 	public void testFilterByMoreThanOneItem() throws Exception
@@ -336,7 +336,7 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 	}
 	
 	private ORef INVALID_RESOURCE_REF = ORef.createInvalidWithType(ProjectResource.getObjectType());
-	private ORef INVALID_FUNDING_SOURCE_REF = ORef.createInvalidWithType(FundingSource.getObjectType());
+	private ORef INVALID_FUNDING_SOURCE_REF = ORef.createInvalidWithType(FundingSourceSchema.getObjectType());
 	private ORef INVALID_ACCOUNTING_CODE_REF = ORef.createInvalidWithType(AccountingCode.getObjectType());
 	private ORef INVALID_CATEGORY_ONE_REF = ORef.createInvalidWithType(BudgetCategoryOne.getObjectType());
 	private ORef INVALID_CATEGORY_TWO_REF = ORef.createInvalidWithType(BudgetCategoryTwo.getObjectType());

@@ -55,7 +55,6 @@ import org.miradi.objects.DiagramObject;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
-import org.miradi.objects.FundingSource;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.ProjectResource;
@@ -69,6 +68,7 @@ import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.Project;
+import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
@@ -164,7 +164,7 @@ abstract public class DiagramPaster
 				return getCommandToFixId(pastedObjectMap, newObject, AccountingCode.getObjectType(), tag);
 
 			if (ResourceAssignment.TAG_FUNDING_SOURCE_ID.equals(tag))
-				return getCommandToFixId(pastedObjectMap, newObject, FundingSource.getObjectType(), tag);
+				return getCommandToFixId(pastedObjectMap, newObject, FundingSourceSchema.getObjectType(), tag);
 
 			if (ResourceAssignment.TAG_RESOURCE_ID.equals(tag))
 				return getCommandToFixId(pastedObjectMap, newObject, ProjectResource.getObjectType(), tag);
