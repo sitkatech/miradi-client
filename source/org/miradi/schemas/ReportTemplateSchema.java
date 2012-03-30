@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.ReportTemplate;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
@@ -50,5 +51,11 @@ public class ReportTemplateSchema extends BaseObjectSchema
 		return project;
 	}
 	
+	public static int getObjectType()
+	{
+		return ObjectType.REPORT_TEMPLATE;
+	}
+
 	private Project project;
+	public static final String OBJECT_NAME = "ReportTemplate";
 }

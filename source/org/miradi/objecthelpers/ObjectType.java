@@ -24,7 +24,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.miradi.main.EAM;
-import org.miradi.objects.ReportTemplate;
 import org.miradi.objects.TableSettings;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.ThreatRatingCommentsData;
@@ -54,6 +53,7 @@ import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.schemas.ProjectResourceSchema;
 import org.miradi.schemas.RareProjectDataSchema;
 import org.miradi.schemas.RatingCriterionSchema;
+import org.miradi.schemas.ReportTemplateSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 
 public class ObjectType
@@ -155,7 +155,7 @@ public class ObjectType
 			FosProjectDataSchema.getObjectType(),
 			OrganizationSchema.getObjectType(),
 			WcpaProjectData.getObjectType(),
-			ReportTemplate.getObjectType(),
+			ReportTemplateSchema.getObjectType(),
 			TaggedObjectSet.getObjectType(),
 			TableSettings.getObjectType(),
 			ThreatRatingCommentsData.getObjectType(),

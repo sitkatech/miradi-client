@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.reports.doers;
 
-import org.miradi.objects.ReportTemplate;
+import org.miradi.schemas.ReportTemplateSchema;
 import org.miradi.views.planning.doers.CreatePoolObjectDoer;
 
 public class CreateReportTemplateDoer extends CreatePoolObjectDoer
@@ -27,6 +27,6 @@ public class CreateReportTemplateDoer extends CreatePoolObjectDoer
 	@Override
 	protected int getTypeToCreate()
 	{
-		return ReportTemplate.getObjectType();
+		return ReportTemplateSchema.getObjectType();
 	}
 }

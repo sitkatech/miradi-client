@@ -28,6 +28,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.ReportTemplate;
 import org.miradi.rtf.ProjectRtfExporter;
 import org.miradi.rtf.RtfWriter;
+import org.miradi.schemas.ReportTemplateSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.RtfFileChooser;
 import org.miradi.views.ObjectsDoer;
@@ -37,7 +38,7 @@ public class RunReportTemplateDoer extends ObjectsDoer
 	@Override
 	public boolean isAvailable()
 	{
-		BaseObject selectedReportTemplate = getSingleSelected(ReportTemplate.getObjectType());
+		BaseObject selectedReportTemplate = getSingleSelected(ReportTemplateSchema.getObjectType());
 		return (selectedReportTemplate != null);
 	}
 
@@ -48,7 +49,7 @@ public class RunReportTemplateDoer extends ObjectsDoer
 			return;
 		try
 		{
-			BaseObject selectedReportTemplate = getSingleSelected(ReportTemplate.getObjectType());
+			BaseObject selectedReportTemplate = getSingleSelected(ReportTemplateSchema.getObjectType());
 			CodeList reportTemplateContent = selectedReportTemplate.getCodeList(ReportTemplate.TAG_INCLUDE_SECTION_CODES);
 			runReport(getMainWindow(), reportTemplateContent);
 		}
