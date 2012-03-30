@@ -289,7 +289,7 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 	
 	private void writeStartElement(final String elemnentName)	throws Exception
 	{
-		writeln("<" + elemnentName + ">");
+		write("<" + elemnentName + ">");
 	}
 	
 	private void writeEndElement(final String elemnentName)	throws Exception
