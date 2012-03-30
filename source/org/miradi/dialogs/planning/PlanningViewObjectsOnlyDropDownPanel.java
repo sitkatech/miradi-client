@@ -32,6 +32,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.PlanningViewSingleLevelQuestion;
 import org.miradi.schemas.GoalSchema;
+import org.miradi.schemas.ViewDataSchema;
 
 public class PlanningViewObjectsOnlyDropDownPanel extends PlanningViewCustomButtonPanel implements CommandExecutedListener
 {
@@ -74,7 +75,7 @@ public class PlanningViewObjectsOnlyDropDownPanel extends PlanningViewCustomButt
 	{
 		try
 		{
-			if (event.isSetDataCommandWithThisTypeAndTag(ViewData.getObjectType(), ViewData.TAG_PLANNING_SINGLE_LEVEL_CHOICE))
+			if (event.isSetDataCommandWithThisTypeAndTag(ViewDataSchema.getObjectType(), ViewData.TAG_PLANNING_SINGLE_LEVEL_CHOICE))
 				setSingleLevelComboSelection(event);
 		}
 		catch(Exception e)

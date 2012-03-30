@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.questions.ActionTreeConfigurationQuestion;
@@ -62,5 +63,11 @@ public class ViewDataSchema extends BaseObjectSchema
 		return project;
 	}
 	
+	public static int getObjectType()
+	{
+		return ObjectType.VIEW_DATA;
+	}
+
 	private Project project;
+	public static final String OBJECT_NAME = "ViewData";
 }

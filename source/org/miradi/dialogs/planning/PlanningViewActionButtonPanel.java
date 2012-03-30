@@ -24,14 +24,15 @@ import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.questions.ActionTreeConfigurationQuestion;
+import org.miradi.schemas.ViewDataSchema;
 
 public class PlanningViewActionButtonPanel extends ObjectDataInputPanel
 {
 	public PlanningViewActionButtonPanel(Project projectToUse) throws Exception
 	{
-		super(projectToUse, ViewData.getObjectType());
+		super(projectToUse, ViewDataSchema.getObjectType());
 		
-		addFieldWithoutLabelAlignment(createChoiceField(ViewData.getObjectType(), ViewData.TAG_ACTION_TREE_CONFIGURATION_CHOICE, getQuestion(ActionTreeConfigurationQuestion.class)));
+		addFieldWithoutLabelAlignment(createChoiceField(ViewDataSchema.getObjectType(), ViewData.TAG_ACTION_TREE_CONFIGURATION_CHOICE, getQuestion(ActionTreeConfigurationQuestion.class)));
 		
 		setObjectRef(getProject().getCurrentViewData().getRef());
 		updateFieldsFromProject();

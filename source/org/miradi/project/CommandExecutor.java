@@ -61,6 +61,7 @@ import org.miradi.schemas.StressSchema;
 import org.miradi.schemas.TableSettingsSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.TaskSchema;
+import org.miradi.schemas.ViewDataSchema;
 import org.miradi.utils.CommandVector;
 
 public class CommandExecutor
@@ -434,7 +435,7 @@ public class CommandExecutor
 		if (setCommand.isTypeAndTag(TargetSchema.getObjectType(), Target.TAG_VIABILITY_MODE))
 			return true;
 				
-		if (setCommand.isTypeAndTag(ViewData.getObjectType(), ViewData.TAG_CURRENT_TAB))
+		if (setCommand.isTypeAndTag(ViewDataSchema.getObjectType(), ViewData.TAG_CURRENT_TAB))
 			return true;
 		
 		if (setCommand.isTypeAndTag(TableSettingsSchema.getObjectType(), TableSettings.TAG_TREE_EXPANSION_LIST))
@@ -449,7 +450,7 @@ public class CommandExecutor
 		if (setCommand.isTypeAndTag(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_THREAT_RATING_MODE))
 			return true;
 		
-		if (setCommand.isTypeAndTag(ViewData.getObjectType(), ViewData.TAG_TREE_CONFIGURATION_REF))
+		if (setCommand.isTypeAndTag(ViewDataSchema.getObjectType(), ViewData.TAG_TREE_CONFIGURATION_REF))
 			return true;
 				
 		return false;
