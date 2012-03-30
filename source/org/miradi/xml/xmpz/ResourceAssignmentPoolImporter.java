@@ -21,9 +21,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz;
 
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.AccountingCode;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResourceAssignment;
+import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.xml.generic.XmlSchemaCreator;
 import org.miradi.xml.wcs.XmpzXmlConstants;
@@ -41,7 +41,7 @@ public class ResourceAssignmentPoolImporter extends	AbstractAssignmentPoolImport
 	{
 		super.importFields(node, destinationRef);
 		
-		importOptionalId(node, destinationRef, ResourceAssignment.TAG_ACCOUNTING_CODE_ID, ACCOUNTING_CODE, AccountingCode.getObjectType());
+		importOptionalId(node, destinationRef, ResourceAssignment.TAG_ACCOUNTING_CODE_ID, ACCOUNTING_CODE, AccountingCodeSchema.getObjectType());
 		importOptionalId(node, destinationRef, ResourceAssignment.TAG_FUNDING_SOURCE_ID, FUNDING_SOURCE, FundingSourceSchema.getObjectType());
 		importOptionalId(node, destinationRef, ResourceAssignment.TAG_RESOURCE_ID, XmlSchemaCreator.RESOURCE_ID_ELEMENT_NAME, ProjectResource.getObjectType());
 	}

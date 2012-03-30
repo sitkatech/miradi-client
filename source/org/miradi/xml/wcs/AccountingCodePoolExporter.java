@@ -20,12 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.wcs;
 
-import org.miradi.objects.AccountingCode;
+import org.miradi.schemas.AccountingCodeSchema;
 
 public class AccountingCodePoolExporter extends AbstractBudgetCategoryPoolExporter
 {
 	public AccountingCodePoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
-		super(wcsXmlExporterToUse, ACCOUNTING_CODE, AccountingCode.getObjectType());
+		super(wcsXmlExporterToUse, ACCOUNTING_CODE, AccountingCodeSchema.getObjectType());
 	}
 }

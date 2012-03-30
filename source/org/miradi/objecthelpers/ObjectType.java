@@ -24,7 +24,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.miradi.main.EAM;
-import org.miradi.objects.AccountingCode;
 import org.miradi.objects.Audience;
 import org.miradi.objects.BudgetCategoryOne;
 import org.miradi.objects.BudgetCategoryTwo;
@@ -54,6 +53,7 @@ import org.miradi.objects.WcsProjectData;
 import org.miradi.objects.WwfProjectData;
 import org.miradi.objects.XslTemplate;
 import org.miradi.project.Project;
+import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.FundingSourceSchema;
 
 public class ObjectType
@@ -141,7 +141,7 @@ public class ObjectType
 			ViewData.getObjectType(),
 			ProjectResource.getObjectType(),
 			ProjectMetadata.getObjectType(),
-			AccountingCode.getObjectType(),
+			AccountingCodeSchema.getObjectType(),
 			FundingSourceSchema.getObjectType(),
 			ConceptualModelDiagram.getObjectType(),
 			ResultsChainDiagram.getObjectType(),

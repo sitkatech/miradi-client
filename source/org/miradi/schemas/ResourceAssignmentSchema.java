@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
-import org.miradi.objects.AccountingCode;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResourceAssignment;
 
@@ -37,7 +36,7 @@ public class ResourceAssignmentSchema extends AssignmentSchema
 		super.fillFieldSchemas();
 		
 		createFieldSchemaBaseId(ResourceAssignment.TAG_RESOURCE_ID, ProjectResource.getObjectType());
-		createFieldSchemaBaseId(ResourceAssignment.TAG_ACCOUNTING_CODE_ID, AccountingCode.getObjectType());
+		createFieldSchemaBaseId(ResourceAssignment.TAG_ACCOUNTING_CODE_ID, AccountingCodeSchema.getObjectType());
 		createFieldSchemaBaseId(ResourceAssignment.TAG_FUNDING_SOURCE_ID, FundingSourceSchema.getObjectType());
 		
 		createPseudoFieldSchemaString(ResourceAssignment.PSEUDO_TAG_PROJECT_RESOURCE_LABEL);

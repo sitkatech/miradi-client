@@ -130,6 +130,7 @@ import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.questions.WwfEcoRegionsQuestion;
 import org.miradi.questions.WwfManagingOfficesQuestion;
 import org.miradi.questions.WwfRegionsQuestion;
+import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.CodeList;
@@ -916,7 +917,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public AccountingCode createAccountingCode() throws Exception
 	{
-		ORef accountingCodeRef = createObject(AccountingCode.getObjectType());
+		ORef accountingCodeRef = createObject(AccountingCodeSchema.getObjectType());
 		return AccountingCode.find(this, accountingCodeRef);
 	}
 	

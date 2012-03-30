@@ -45,7 +45,6 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.ThreatStressPair;
-import org.miradi.objects.AccountingCode;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
@@ -68,6 +67,7 @@ import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.Project;
+import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
@@ -161,7 +161,7 @@ abstract public class DiagramPaster
 		if (ResourceAssignment.getObjectType() == newObject.getType())
 		{
 			if (ResourceAssignment.TAG_ACCOUNTING_CODE_ID.equals(tag))
-				return getCommandToFixId(pastedObjectMap, newObject, AccountingCode.getObjectType(), tag);
+				return getCommandToFixId(pastedObjectMap, newObject, AccountingCodeSchema.getObjectType(), tag);
 
 			if (ResourceAssignment.TAG_FUNDING_SOURCE_ID.equals(tag))
 				return getCommandToFixId(pastedObjectMap, newObject, FundingSourceSchema.getObjectType(), tag);

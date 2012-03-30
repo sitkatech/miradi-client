@@ -41,6 +41,7 @@ import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
+import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.schemas.IndicatorSchema;
 
@@ -77,7 +78,7 @@ public class RtfStyleManager
 		createNewStyle(Task.METHOD_NAME,   	    				CS_27_RTF_ID, " \\f1\\fs18 ", MIRADI_STYLE_PREFIX + "Mthd");
 		createNewStyle(Task.OBJECT_NAME,   	    				CS_28_RTF_ID, " \\f1\\fs18 ", MIRADI_STYLE_PREFIX + "Task");
 		createNewStyle(Measurement.OBJECT_NAME,   	    		CS_29_RTF_ID, " \\f1\\fs18 ", MIRADI_STYLE_PREFIX + "Msrmnt");
-		createNewStyle(AccountingCode.OBJECT_NAME,  	    	CS_30_RTF_ID, " \\f1\\fs18 ", MIRADI_STYLE_PREFIX + "Accntng Cd");
+		createNewStyle(AccountingCodeSchema.OBJECT_NAME,  	    	CS_30_RTF_ID, " \\f1\\fs18 ", MIRADI_STYLE_PREFIX + "Accntng Cd");
 		createNewStyle(FundingSourceSchema.OBJECT_NAME, 	 	    	CS_31_RTF_ID, " \\f1\\fs18 ", MIRADI_STYLE_PREFIX + "Fndng Src");
 		createNewStyle(KeyEcologicalAttribute.OBJECT_NAME,   	CS_32_RTF_ID, " \\f1\\fs20 ", MIRADI_STYLE_PREFIX + "KEA");
 		createNewStyle(COLUMN_HEADER_STYLE_TAG, 				CS_33_RTF_ID, " \\f1\\b\\fs24 ", MIRADI_STYLE_PREFIX + "Col Hdr");
@@ -132,7 +133,7 @@ public class RtfStyleManager
 			return BudgetCategoryTwo.OBJECT_NAME;
 		
 		if (AccountingCode.is(objectType))
-			return AccountingCode.OBJECT_NAME;
+			return AccountingCodeSchema.OBJECT_NAME;
 		
 		if (FundingSource.is(objectType))
 			return FundingSourceSchema.OBJECT_NAME;
