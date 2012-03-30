@@ -131,6 +131,7 @@ import org.miradi.questions.WwfEcoRegionsQuestion;
 import org.miradi.questions.WwfManagingOfficesQuestion;
 import org.miradi.questions.WwfRegionsQuestion;
 import org.miradi.schemas.AccountingCodeSchema;
+import org.miradi.schemas.AudienceSchema;
 import org.miradi.schemas.BudgetCategoryOneSchema;
 import org.miradi.schemas.BudgetCategoryTwoSchema;
 import org.miradi.schemas.ExpenseAssignmentSchema;
@@ -829,7 +830,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public Audience createAudience() throws Exception
 	{
-		ORef audienceRef = createObject(Audience.getObjectType());
+		ORef audienceRef = createObject(AudienceSchema.getObjectType());
 		
 		return Audience.find(this, audienceRef);
 	}

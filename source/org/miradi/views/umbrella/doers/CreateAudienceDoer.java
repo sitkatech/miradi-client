@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.umbrella.doers;
 
-import org.miradi.objects.Audience;
+import org.miradi.schemas.AudienceSchema;
 import org.miradi.views.planning.doers.CreatePoolObjectDoer;
 
 public class CreateAudienceDoer extends CreatePoolObjectDoer
@@ -28,6 +28,6 @@ public class CreateAudienceDoer extends CreatePoolObjectDoer
 	@Override
 	protected int getTypeToCreate()
 	{
-		return Audience.getObjectType();
+		return AudienceSchema.getObjectType();
 	}
 }

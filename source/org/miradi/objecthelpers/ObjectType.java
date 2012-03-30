@@ -24,7 +24,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.miradi.main.EAM;
-import org.miradi.objects.Audience;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.CostAllocationRule;
 import org.miradi.objects.Dashboard;
@@ -52,6 +51,7 @@ import org.miradi.objects.WwfProjectData;
 import org.miradi.objects.XslTemplate;
 import org.miradi.project.Project;
 import org.miradi.schemas.AccountingCodeSchema;
+import org.miradi.schemas.AudienceSchema;
 import org.miradi.schemas.BudgetCategoryOneSchema;
 import org.miradi.schemas.BudgetCategoryTwoSchema;
 import org.miradi.schemas.FundingSourceSchema;
@@ -161,7 +161,7 @@ public class ObjectType
 			ThreatRatingCommentsData.getObjectType(),
 			IucnRedlistSpecies.getObjectType(),
 			OtherNotableSpecies.getObjectType(),
-			Audience.getObjectType(),
+			AudienceSchema.getObjectType(),
 			BudgetCategoryOneSchema.getObjectType(),
 			BudgetCategoryTwoSchema.getObjectType(),
 			Dashboard.getObjectType(),

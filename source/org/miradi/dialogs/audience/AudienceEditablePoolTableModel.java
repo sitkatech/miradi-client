@@ -23,6 +23,7 @@ package org.miradi.dialogs.audience;
 import org.miradi.dialogs.base.EditableObjectPoolRefsTableModel;
 import org.miradi.objects.Audience;
 import org.miradi.project.Project;
+import org.miradi.schemas.AudienceSchema;
 
 public class AudienceEditablePoolTableModel extends EditableObjectPoolRefsTableModel
 {
@@ -40,7 +41,7 @@ public class AudienceEditablePoolTableModel extends EditableObjectPoolRefsTableM
 	@Override
 	protected int getObjectType()
 	{
-		return Audience.getObjectType();
+		return AudienceSchema.getObjectType();
 	}
 	
 	public boolean isPeopleCountColumn(int modelColumn)

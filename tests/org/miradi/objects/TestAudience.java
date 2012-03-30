@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objects;
 
+import org.miradi.schemas.AudienceSchema;
+
 public class TestAudience extends ObjectTestCase
 {
 	public TestAudience(String name)
@@ -29,6 +31,6 @@ public class TestAudience extends ObjectTestCase
 	
 	public void testFields() throws Exception
 	{
-		verifyFields(Audience.getObjectType());
+		verifyFields(AudienceSchema.getObjectType());
 	}
 }

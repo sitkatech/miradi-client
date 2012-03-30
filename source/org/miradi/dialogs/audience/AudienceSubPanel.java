@@ -26,8 +26,8 @@ import org.miradi.actions.ActionCreateAudience;
 import org.miradi.actions.ActionDeleteAudience;
 import org.miradi.dialogs.base.EditableObjectPoolTableSubPanel;
 import org.miradi.main.EAM;
-import org.miradi.objects.Audience;
 import org.miradi.project.Project;
+import org.miradi.schemas.AudienceSchema;
 import org.miradi.views.umbrella.ObjectPicker;
 
 public class AudienceSubPanel extends EditableObjectPoolTableSubPanel
@@ -68,6 +68,6 @@ public class AudienceSubPanel extends EditableObjectPoolTableSubPanel
 
 	private static int getObjectType()
 	{
-		return Audience.getObjectType();
+		return AudienceSchema.getObjectType();
 	}
 }

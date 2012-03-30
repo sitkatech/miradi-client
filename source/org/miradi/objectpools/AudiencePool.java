@@ -26,12 +26,13 @@ import org.miradi.objects.Audience;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.OtherNotableSpecies;
 import org.miradi.project.ObjectManager;
+import org.miradi.schemas.AudienceSchema;
 
 public class AudiencePool extends BaseObjectPool
 {
 	public AudiencePool(IdAssigner idAssignerToUse)
 	{
-		super(idAssignerToUse, Audience.getObjectType());
+		super(idAssignerToUse, AudienceSchema.getObjectType());
 	}
 	
 	public void put(OtherNotableSpecies audience) throws Exception
