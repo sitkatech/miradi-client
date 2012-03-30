@@ -20,10 +20,19 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import org.miradi.objecthelpers.ObjectType;
+
 public class OtherNotableSpeciesSchema extends BaseObjectSchema
 {
+	public static final String OBJECT_NAME = "OtherNotableSpecies";
+
 	public OtherNotableSpeciesSchema()
 	{
 		super();
+	}
+
+	public static int getObjectType()
+	{
+		return ObjectType.OTHER_NOTABLE_SPECIES;
 	}
 }

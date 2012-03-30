@@ -20,12 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.wcs;
 
-import org.miradi.objects.OtherNotableSpecies;
+import org.miradi.schemas.OtherNotableSpeciesSchema;
 
 public class OtherNotableSpeciesPoolExporter extends BaseObjectPoolExporter
 {
 	public OtherNotableSpeciesPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
-		super(wcsXmlExporterToUse, OTHER_NOTABLE_SPECIES, OtherNotableSpecies.getObjectType());
+		super(wcsXmlExporterToUse, OTHER_NOTABLE_SPECIES, OtherNotableSpeciesSchema.getObjectType());
 	}
 }

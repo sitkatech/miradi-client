@@ -20,13 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz;
 
-import org.miradi.objects.OtherNotableSpecies;
+import org.miradi.schemas.OtherNotableSpeciesSchema;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class OtherNotableSpeciesPoolImporter extends AbstractBaseObjectPoolImporter
 {
 	public OtherNotableSpeciesPoolImporter(XmpzXmlImporter importerToUse)
 	{
-		super(importerToUse, XmpzXmlConstants.OTHER_NOTABLE_SPECIES, OtherNotableSpecies.getObjectType());
+		super(importerToUse, XmpzXmlConstants.OTHER_NOTABLE_SPECIES, OtherNotableSpeciesSchema.getObjectType());
 	}
 }

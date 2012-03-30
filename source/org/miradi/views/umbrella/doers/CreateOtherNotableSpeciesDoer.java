@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.umbrella.doers;
 
-import org.miradi.objects.OtherNotableSpecies;
+import org.miradi.schemas.OtherNotableSpeciesSchema;
 import org.miradi.views.planning.doers.CreatePoolObjectDoer;
 
 public class CreateOtherNotableSpeciesDoer extends CreatePoolObjectDoer
@@ -28,6 +28,6 @@ public class CreateOtherNotableSpeciesDoer extends CreatePoolObjectDoer
 	@Override
 	protected int getTypeToCreate()
 	{
-		return OtherNotableSpecies.getObjectType();
+		return OtherNotableSpeciesSchema.getObjectType();
 	}
 }

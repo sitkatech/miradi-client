@@ -22,7 +22,6 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.OtherNotableSpeciesSchema;
@@ -43,24 +42,19 @@ public class OtherNotableSpecies extends BaseObject
 	@Override
 	public int getType()
 	{
-		return getObjectType();
+		return OtherNotableSpeciesSchema.getObjectType();
 	}
 	
 	@Override
 	public String getTypeName()
 	{
-		return OBJECT_NAME;
+		return OtherNotableSpeciesSchema.OBJECT_NAME;
 	}
 
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;
-	}
-	
-	public static int getObjectType()
-	{
-		return ObjectType.OTHER_NOTABLE_SPECIES;
 	}
 	
 	public static boolean is(BaseObject object)
@@ -75,7 +69,7 @@ public class OtherNotableSpecies extends BaseObject
 	
 	public static boolean is(int objectType)
 	{
-		return objectType == getObjectType();
+		return objectType == OtherNotableSpeciesSchema.getObjectType();
 	}
 	
 	public static OtherNotableSpecies find(ObjectManager objectManager, ORef ref)
@@ -87,6 +81,4 @@ public class OtherNotableSpecies extends BaseObject
 	{
 		return find(project.getObjectManager(), ref);
 	}
-	
-	public static final String OBJECT_NAME = "OtherNotableSpecies";
 }

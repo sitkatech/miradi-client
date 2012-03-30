@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objects;
 
+import org.miradi.schemas.OtherNotableSpeciesSchema;
+
 public class TestOtherNotableSpecies extends ObjectTestCase
 {
 	public TestOtherNotableSpecies(String name)
@@ -29,6 +31,6 @@ public class TestOtherNotableSpecies extends ObjectTestCase
 	
 	public void testFields() throws Exception
 	{
-		verifyFields(OtherNotableSpecies.getObjectType());
+		verifyFields(OtherNotableSpeciesSchema.getObjectType());
 	}
 }
