@@ -83,7 +83,7 @@ public class Cause extends Factor
 	@Override
 	public int getType()
 	{
-		return getObjectType();
+		return CauseSchema.getObjectType();
 	}
 	
 	@Override
@@ -115,11 +115,6 @@ public class Cause extends Factor
 		return super.getPseudoData(fieldTag);
 	}
 
-	public static int getObjectType()
-	{
-		return ObjectType.CAUSE;
-	}
-	
 	public static boolean is(ORef ref)
 	{
 		return is(ref.getObjectType());
@@ -127,7 +122,7 @@ public class Cause extends Factor
 	
 	public static boolean is(int objectType)
 	{
-		return objectType == getObjectType();
+		return objectType == CauseSchema.getObjectType();
 	}
 	
 	public static boolean is(BaseObject object)
@@ -156,8 +151,6 @@ public class Cause extends Factor
 	
 	public static final String TAG_TAXONOMY_CODE = "TaxonomyCode";
 	public static final String TAG_IS_DIRECT_THREAT = "IsDirectThreat";
-	
-	public static final String OBJECT_NAME = "Cause";
 	
 	public static final String OBJECT_NAME_THREAT = "DirectThreat";
 	public static final String OBJECT_NAME_CONTRIBUTING_FACTOR = "ContributingFactor";

@@ -25,7 +25,7 @@ import java.io.PrintStream;
 import org.martus.util.TestCaseEnhanced;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
-import org.miradi.objects.Cause;
+import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.TargetSchema;
 
 public class TestORef extends TestCaseEnhanced
@@ -75,10 +75,10 @@ public class TestORef extends TestCaseEnhanced
 	
 	public void testEnsureType()
 	{
-		ORef ref = new ORef(Cause.getObjectType(), new BaseId(4));
+		ORef ref = new ORef(CauseSchema.getObjectType(), new BaseId(4));
 		try
 		{
-			ref.ensureExactType(Cause.getObjectType());
+			ref.ensureExactType(CauseSchema.getObjectType());
 		}
 		catch (Exception e)
 		{
@@ -97,7 +97,7 @@ public class TestORef extends TestCaseEnhanced
 	
 	public void testCreateInvalidWithType()
 	{
-		ORef invalidRef = ORef.createInvalidWithType(Cause.getObjectType());
-		assertEquals("wrong invalid type?", Cause.getObjectType(), invalidRef.getObjectType());
+		ORef invalidRef = ORef.createInvalidWithType(CauseSchema.getObjectType());
+		assertEquals("wrong invalid type?", CauseSchema.getObjectType(), invalidRef.getObjectType());
 	}
 }

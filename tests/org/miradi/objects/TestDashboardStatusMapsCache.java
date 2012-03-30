@@ -28,6 +28,7 @@ import org.miradi.objecthelpers.CodeToChoiceMap;
 import org.miradi.questions.OpenStandardsConceptualizeQuestion;
 import org.miradi.questions.OpenStandardsProgressStatusQuestion;
 import org.miradi.questions.OpenStandardsImplementActionsAndMonitoringQuestion;
+import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.DashboardSchema;
 import org.miradi.utils.CodeList;
 
@@ -58,7 +59,7 @@ public class TestDashboardStatusMapsCache extends TestCaseWithProject
 	public void testValidCacheAfterProjectOpen() throws Exception
 	{
 		initializeCache();
-		getProject().createAndAddFactorToDiagram(Cause.getObjectType());
+		getProject().createAndAddFactorToDiagram(CauseSchema.getObjectType());
 		AbstractStringToStringMap cachedMap = getProject().getCachedDashboardEffectiveMap();
 		
 		getDashboardStatusMapsCache().invalidateAllCachedMaps();

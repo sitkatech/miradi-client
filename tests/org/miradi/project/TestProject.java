@@ -64,6 +64,7 @@ import org.miradi.objects.FactorLink;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.ViewData;
+import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.schemas.IndicatorSchema;
@@ -871,7 +872,7 @@ public class TestProject extends MiradiTestCase
 
 	private void verifyOnScreenLocation(Point expectedPoint, Point initialPoint) throws Exception
 	{
-		DiagramFactor onScreenDiagramFactor = project.createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor onScreenDiagramFactor = project.createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
 		CommandSetObjectData setOnScreenLocation = new CommandSetObjectData(onScreenDiagramFactor.getRef(), DiagramFactor.TAG_LOCATION, EnhancedJsonObject.convertFromPoint(initialPoint));
 		getProject().executeCommand(setOnScreenLocation);
 		

@@ -45,6 +45,7 @@ import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.project.FactorCommandHelper;
 import org.miradi.project.Project;
+import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.schemas.TargetSchema;
@@ -141,12 +142,12 @@ public class MeglerArranger
 
 	private void ceateStrategyGroups() throws Exception
 	{
-		createGroupBoxes(strategies, DiagramLink.TO, Cause.getObjectType());
+		createGroupBoxes(strategies, DiagramLink.TO, CauseSchema.getObjectType());
 	}
 
 	private void createTargetGroups() throws Exception
 	{
-		createGroupBoxes(targets, DiagramLink.FROM, Cause.getObjectType());
+		createGroupBoxes(targets, DiagramLink.FROM, CauseSchema.getObjectType());
 	}
 
 	private void createGroupBoxes(Vector<DiagramFactor> diagramFactorsToGroup, int direction, int objectTypeInThatDirection) throws Exception

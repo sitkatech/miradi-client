@@ -52,6 +52,7 @@ import org.miradi.objects.ThreatReductionResult;
 import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.BudgetCategoryOneSchema;
 import org.miradi.schemas.BudgetCategoryTwoSchema;
+import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
@@ -155,7 +156,7 @@ public class TestProjectRepairer extends TestCaseWithProject
 	public void testRemoveInvalidDiagramLinkRefs() throws Exception
 	{
 		DiagramFactor targetDF = getProject().createAndAddFactorToDiagram(TargetSchema.getObjectType());
-		DiagramFactor causeDF = getProject().createAndAddFactorToDiagram(Cause.getObjectType());
+		DiagramFactor causeDF = getProject().createAndAddFactorToDiagram(CauseSchema.getObjectType());
 		LinkCreator creator = new LinkCreator(getProject());
 		creator.createFactorLinkAndAddToDiagramUsingCommands(getProject().getTestingDiagramObject(), causeDF, targetDF);
 		DiagramFactor strategyDF = getProject().createAndAddFactorToDiagram(Strategy.getObjectType());
@@ -189,7 +190,7 @@ public class TestProjectRepairer extends TestCaseWithProject
 		verifyFactorBeingReferredToByDiagramFactor(ScopeBox.getObjectType());
 		verifyFactorBeingReferredToByDiagramFactor(TargetSchema.getObjectType());
 		verifyFactorBeingReferredToByDiagramFactor(HumanWelfareTargetSchema.getObjectType());
-		verifyFactorBeingReferredToByDiagramFactor(Cause.getObjectType());
+		verifyFactorBeingReferredToByDiagramFactor(CauseSchema.getObjectType());
 		verifyFactorBeingReferredToByDiagramFactor(Strategy.getObjectType());
 		verifyFactorBeingReferredToByDiagramFactor(ThreatReductionResult.getObjectType());
 		verifyFactorBeingReferredToByDiagramFactor(IntermediateResult.getObjectType());
@@ -250,10 +251,10 @@ public class TestProjectRepairer extends TestCaseWithProject
 
 	private void createThreatThreatTargetLinkedFactors() throws Exception
 	{
-		DiagramFactor threat1 = getProject().createAndAddFactorToDiagram(Cause.getObjectType());
+		DiagramFactor threat1 = getProject().createAndAddFactorToDiagram(CauseSchema.getObjectType());
 		getProject().enableAsThreat((Cause) threat1.getWrappedFactor());
 		
-		DiagramFactor threat2 = getProject().createAndAddFactorToDiagram(Cause.getObjectType());
+		DiagramFactor threat2 = getProject().createAndAddFactorToDiagram(CauseSchema.getObjectType());
 		getProject().enableAsThreat((Cause) threat2.getWrappedFactor());
 		
 		DiagramFactor target = getProject().createAndAddFactorToDiagram(TargetSchema.getObjectType());
@@ -329,16 +330,16 @@ public class TestProjectRepairer extends TestCaseWithProject
 	
 	public void testRepairUnsnappedFactorSizes() throws Exception
 	{
-		DiagramFactor cause1 = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor cause1 = getProject().createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
 		cause1.setData(DiagramFactor.TAG_SIZE, EnhancedJsonObject.convertFromDimension(new Dimension(15, 15)));
 		
-		DiagramFactor cause2 = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor cause2 = getProject().createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
 		cause2.setData(DiagramFactor.TAG_SIZE, EnhancedJsonObject.convertFromDimension(new Dimension(30, 30)));
 		
-		DiagramFactor cause3 = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor cause3 = getProject().createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
 		cause3.setData(DiagramFactor.TAG_SIZE, EnhancedJsonObject.convertFromDimension(new Dimension(31, 31)));
 		
-		DiagramFactor cause4 = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor cause4 = getProject().createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
 		cause4.setData(DiagramFactor.TAG_SIZE, EnhancedJsonObject.convertFromDimension(new Dimension(45, 45)));
 		
 		repairer.repairProblemsWherePossible();

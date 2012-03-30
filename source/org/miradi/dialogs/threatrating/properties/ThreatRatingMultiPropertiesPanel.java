@@ -29,6 +29,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.views.umbrella.ObjectPicker;
 
@@ -79,7 +80,7 @@ public class ThreatRatingMultiPropertiesPanel extends OverlaidObjectDataInputPan
 	
 	private AbstractObjectDataInputPanel findPanel()
 	{
-		ORef causeRef = getRefForType(Cause.getObjectType());
+		ORef causeRef = getRefForType(CauseSchema.getObjectType());
 		if(causeRef.isInvalid())
 			return blankPropertiesPanel;
 		

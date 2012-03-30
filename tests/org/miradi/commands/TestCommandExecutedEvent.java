@@ -22,8 +22,8 @@ package org.miradi.commands;
 
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.TestCaseWithProject;
-import org.miradi.objects.Cause;
 import org.miradi.objects.Strategy;
+import org.miradi.schemas.CauseSchema;
 
 public class TestCommandExecutedEvent extends TestCaseWithProject
 {
@@ -34,7 +34,7 @@ public class TestCommandExecutedEvent extends TestCaseWithProject
 	
 	public void testIsSetDataCommandFor() throws Exception
 	{
-		CommandCreateObject createCommand = new CommandCreateObject(Cause.getObjectType());
+		CommandCreateObject createCommand = new CommandCreateObject(CauseSchema.getObjectType());
 		getProject().executeCommand(createCommand);
 		CommandExecutedEvent event = new CommandExecutedEvent(createCommand);
 		assertFalse("wrong event for command?", event.isSetDataCommandFor(createCommand.getObjectRef()));

@@ -59,6 +59,7 @@ import org.miradi.objects.SubTarget;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
+import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
@@ -133,7 +134,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 			if (HumanWelfareTarget.is(objectType))
 				return getHumanWelfareTargetPropertiesPanel();
 			
-			if (Cause.getObjectType() == objectType)
+			if (CauseSchema.getObjectType() == objectType)
 				return getCausePropertiesPanel(firstRef);
 			
 			if (IntermediateResult.getObjectType() == objectType)

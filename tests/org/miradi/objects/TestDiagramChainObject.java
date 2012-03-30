@@ -25,6 +25,7 @@ import java.util.Vector;
 import org.miradi.diagram.ChainWalker;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.TargetSchema;
 
 public class TestDiagramChainObject extends TestCaseWithProject
@@ -36,10 +37,10 @@ public class TestDiagramChainObject extends TestCaseWithProject
 	
 	public void testThreatToThreatToTargetChain() throws Exception
 	{
-		DiagramFactor threat1 = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor threat1 = getProject().createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
 		getProject().enableAsThreat(threat1.getWrappedORef());
 		
-		DiagramFactor threat2 = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor threat2 = getProject().createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
 		getProject().enableAsThreat(threat2.getWrappedORef());
 		
 		DiagramFactor target = getProject().createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
@@ -60,8 +61,8 @@ public class TestDiagramChainObject extends TestCaseWithProject
 	public void testBasics() throws Exception
 	{
 		DiagramFactor strategy = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
-		DiagramFactor causeLinkedTo = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
-		DiagramFactor causeLinkedToFrom = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor causeLinkedTo = getProject().createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
+		DiagramFactor causeLinkedToFrom = getProject().createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
 		
 		getProject().createDiagramLinkAndAddToDiagram(strategy, causeLinkedTo);
 		ORef diagramLinkRef = getProject().createDiagramLinkAndAddToDiagram(strategy, causeLinkedToFrom);

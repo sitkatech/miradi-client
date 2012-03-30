@@ -29,6 +29,7 @@ import org.miradi.objects.DiagramLink;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
 import org.miradi.objects.ThreatStressRating;
+import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.views.diagram.LinkCreator;
 import org.miradi.views.diagram.LinkDeletor;
@@ -119,7 +120,7 @@ public class TestThreatStressRatingEnsurer extends TestCaseWithProject
 
 	private void createThreat() throws Exception
 	{
-		threatDiagramFactor = getProject().createAndAddFactorToDiagram(Cause.getObjectType());
+		threatDiagramFactor = getProject().createAndAddFactorToDiagram(CauseSchema.getObjectType());
 		threat = (Cause) threatDiagramFactor.getWrappedFactor();
 		getProject().enableAsThreat(threat);
 	}

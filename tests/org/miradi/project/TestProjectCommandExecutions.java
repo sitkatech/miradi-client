@@ -28,9 +28,9 @@ import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.Cause;
 import org.miradi.objects.Stress;
 import org.miradi.objects.ThreatStressRating;
+import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.TargetSchema;
 
 public class TestProjectCommandExecutions extends TestCaseWithProject implements CommandExecutedListener
@@ -94,7 +94,7 @@ public class TestProjectCommandExecutions extends TestCaseWithProject implements
 			if (event.isCreateCommandForThisType(Stress.getObjectType()))
 			{
 				ORef stressRef = new ORef(Stress.getObjectType(), new BaseId(100));
-				ORef threatRef = new ORef(Cause.getObjectType(), new BaseId(400));
+				ORef threatRef = new ORef(CauseSchema.getObjectType(), new BaseId(400));
 				CommandCreateObject createThreatStressRating = new CommandCreateObject(ThreatStressRating.getObjectType());
 				getProject().executeAsSideEffect(createThreatStressRating);
 				

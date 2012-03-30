@@ -27,6 +27,7 @@ import org.miradi.objects.Cause;
 import org.miradi.objects.Target;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.Project;
+import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.TargetSchema;
 
 public class ThreatStressRatingHelper
@@ -44,7 +45,7 @@ public class ThreatStressRatingHelper
 	
 	public Vector<ThreatStressRating> getRelatedThreatStressRatings(ORef threatRef, ORef targetRef)
 	{
-		threatRef.ensureExactType(Cause.getObjectType());
+		threatRef.ensureExactType(CauseSchema.getObjectType());
 		targetRef.ensureExactType(TargetSchema.getObjectType());
 		
 		Target target = Target.find(getProject(), targetRef);

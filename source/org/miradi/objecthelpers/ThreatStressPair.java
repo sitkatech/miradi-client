@@ -19,10 +19,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objecthelpers;
 
-import org.miradi.objects.Cause;
 import org.miradi.objects.Stress;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.Project;
+import org.miradi.schemas.CauseSchema;
 
 public class ThreatStressPair 
 {		
@@ -34,7 +34,7 @@ public class ThreatStressPair
 	public ThreatStressPair(Project projectToUse, ORef threatRefToUse, ORef stressRefToUse)
 	{
 		project = projectToUse;
-		threatRefToUse.ensureExactType(Cause.getObjectType());
+		threatRefToUse.ensureExactType(CauseSchema.getObjectType());
 		stressRefToUse.ensureExactType(Stress.getObjectType());
 		
 		threatRef = threatRefToUse;

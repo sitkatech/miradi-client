@@ -31,6 +31,7 @@ import org.miradi.objects.Factor;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Strategy;
 import org.miradi.project.ResultsChainCreatorHelper;
+import org.miradi.schemas.CauseSchema;
 
 public class TestResultsChainCreatorHelper extends TestCaseWithProject
 {
@@ -41,7 +42,7 @@ public class TestResultsChainCreatorHelper extends TestCaseWithProject
 	
 	public void testTransferAnnotationsToNewlyCreatedFactorCoveredByGroupBox() throws Exception
 	{
-		DiagramFactor causeDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor causeDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
 		getProject().addObjective(causeDiagramFactor.getWrappedFactor());
 		DiagramFactor groupBoxDiagramFactor = getProject().createAndPopulateDiagramFactorGroupBox(causeDiagramFactor);
 		DiagramFactor strategyDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());

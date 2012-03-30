@@ -33,6 +33,7 @@ import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.threatrating.StressBasedThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingFramework;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
+import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.TargetSchema;
 
 public class TestStressBasedThreatRatingFramework extends TestCaseWithProject
@@ -52,7 +53,7 @@ public class TestStressBasedThreatRatingFramework extends TestCaseWithProject
 	public void testGetSummaryRating() throws Exception
 	{
 		DiagramFactor target = getProject().createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
-		DiagramFactor threat = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor threat = getProject().createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
 		getProject().enableAsThreat((Cause) threat.getWrappedFactor());
 		createThreatFactorLink(getProject(), threat, target);
 	
@@ -139,7 +140,7 @@ public class TestStressBasedThreatRatingFramework extends TestCaseWithProject
 	public void testGetThreatThreatRatingValue() throws Exception
 	{
 		DiagramFactor target = getProject().createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
-		DiagramFactor threat = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor threat = getProject().createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
 		createThreatFactorLink(getProject(), threat, target);
 		
 		getProject().enableAsThreat((Cause) threat.getWrappedFactor());		

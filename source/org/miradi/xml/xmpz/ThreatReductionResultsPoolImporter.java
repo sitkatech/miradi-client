@@ -22,8 +22,8 @@ package org.miradi.xml.xmpz;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.Cause;
 import org.miradi.objects.ThreatReductionResult;
+import org.miradi.schemas.CauseSchema;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.w3c.dom.Node;
 
@@ -53,7 +53,7 @@ public class ThreatReductionResultsPoolImporter extends FactorPoolImporter
 		Node threatIdNode = getImporter().getNode(relatedThreatIdNode, getPoolName() + XmpzXmlConstants.THREAT_ID);
 		Node idNode = getImporter().getNode(threatIdNode, XmpzXmlConstants.THREAT_ID);
 		BaseId relatedThreatId = new BaseId(idNode.getTextContent());
-		ORef relatedThreatRef = new ORef(Cause.getObjectType(), relatedThreatId);
+		ORef relatedThreatRef = new ORef(CauseSchema.getObjectType(), relatedThreatId);
 		getImporter().setData(destinationRef, ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF, relatedThreatRef.toString());
 	}
 }

@@ -27,12 +27,13 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ThreatRatingQuestion;
+import org.miradi.schemas.CauseSchema;
 
 public class CausePoolExporter extends FactorPoolExporter
 {	
 	public CausePoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
-		super(wcsXmlExporterToUse, CAUSE, Cause.getObjectType());
+		super(wcsXmlExporterToUse, CAUSE, CauseSchema.getObjectType());
 	}
 	
 	@Override

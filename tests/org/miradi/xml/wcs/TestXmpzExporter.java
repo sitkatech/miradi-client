@@ -56,6 +56,7 @@ import org.miradi.project.TestStressBasedThreatRatingFramework;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.questions.TncOperatingUnitsQuestion;
+import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.NullProgressMeter;
@@ -151,7 +152,7 @@ public class TestXmpzExporter extends TestCaseWithProject
 	{
 		getProject().setMetadata(ProjectMetadata.TAG_THREAT_RATING_MODE, ThreatRatingModeChoiceQuestion.STRESS_BASED_CODE);
 		DiagramFactor targetDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
-		DiagramFactor causeDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor causeDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
 		getProject().enableAsThreat((Cause) causeDiagramFactor.getWrappedFactor());
 		TestStressBasedThreatRatingFramework.createThreatFactorLink(getProject(), causeDiagramFactor, targetDiagramFactor);
 		validateProject();

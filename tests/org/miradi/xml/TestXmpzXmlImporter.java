@@ -59,6 +59,7 @@ import org.miradi.questions.DiagramLegendQuestion;
 import org.miradi.questions.OpenStandardsConceptualizeQuestion;
 import org.miradi.questions.OpenStandardsProgressStatusQuestion;
 import org.miradi.questions.TextBoxZOrderQuestion;
+import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.DashboardSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.CodeList;
@@ -364,7 +365,7 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 
 	private void createFilledDiagramFactor() throws Exception
 	{
-		DiagramFactor diagramFactor = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor diagramFactor = getProject().createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
 		getProject().fillObjectUsingCommand(diagramFactor, DiagramFactor.TAG_LOCATION, EnhancedJsonObject.convertFromPoint(new Point(100, 12)));
 		getProject().fillObjectUsingCommand(diagramFactor, DiagramFactor.TAG_SIZE, EnhancedJsonObject.convertFromDimension(new Dimension(45, 45)));
 		getProject().fillObjectUsingCommand(diagramFactor, DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE, TextBoxZOrderQuestion.FRONT_CODE);

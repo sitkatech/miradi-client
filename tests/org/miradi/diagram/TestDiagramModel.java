@@ -32,11 +32,11 @@ import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.Factor;
 import org.miradi.project.ProjectForTesting;
+import org.miradi.schemas.CauseSchema;
 import org.miradi.views.diagram.LinkCreator;
 
 public class TestDiagramModel extends MiradiTestCase
@@ -66,15 +66,15 @@ public class TestDiagramModel extends MiradiTestCase
 	
 	public void testRecursivelyGetNonOverlappingFactorPoint() throws Exception
 	{
-		DiagramFactor cause1 = project.createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor cause1 = project.createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
 		Point point1 = new Point(15, 15);
 		cause1.setLocation(point1);
 		
-		DiagramFactor cause2 = project.createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor cause2 = project.createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
 		Point point2 = new Point(30, 30);
 		cause2.setLocation(point2);
 		
-		DiagramFactor cause3 = project.createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor cause3 = project.createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
 		Point point3 = new Point(60, 60);
 		cause3.setLocation(point3);
 		

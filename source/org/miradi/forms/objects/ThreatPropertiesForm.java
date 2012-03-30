@@ -21,11 +21,12 @@ package org.miradi.forms.objects;
 
 import org.miradi.forms.FieldPanelSpec;
 import org.miradi.objects.Cause;
+import org.miradi.schemas.CauseSchema;
 
 public class ThreatPropertiesForm extends FieldPanelSpec
 {
 	public ThreatPropertiesForm()
 	{
-		addLabelAndField(Cause.getObjectType(), Cause.TAG_TAXONOMY_CODE);
+		addLabelAndField(CauseSchema.getObjectType(), Cause.TAG_TAXONOMY_CODE);
 	}
 }

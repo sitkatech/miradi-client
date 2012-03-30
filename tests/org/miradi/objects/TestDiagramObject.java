@@ -26,6 +26,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.project.Project;
+import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.schemas.TargetSchema;
 
@@ -39,7 +40,7 @@ public class TestDiagramObject extends ObjectTestCase
 	
 	public void testAreDiagramFactorsLinkedFromToNonBidirectional() throws Exception
 	{
-		DiagramFactor cause = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor cause = getProject().createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
 		DiagramFactor target = getProject().createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
 		DiagramObject diagramObject = getProject().getTestingDiagramObject();
 		assertFalse("link does exist?", diagramObject.areDiagramFactorsLinkedFromToNonBidirectional(cause.getRef(), target.getRef()));
@@ -53,7 +54,7 @@ public class TestDiagramObject extends ObjectTestCase
 		assertFalse("Bidi appears linked?", diagramObject.areDiagramFactorsLinkedFromToNonBidirectional(cause.getRef(), target.getRef()));
 		assertFalse("Bidi other direction appears linked?", diagramObject.areDiagramFactorsLinkedFromToNonBidirectional(target.getRef(), cause.getRef()));
 		
-		DiagramFactor nonLinkedCause = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor nonLinkedCause = getProject().createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
 		assertFalse("link does exist?", diagramObject.areDiagramFactorsLinkedFromToNonBidirectional(nonLinkedCause.getRef(), target.getRef()));
 		assertFalse("link does exist?", diagramObject.areDiagramFactorsLinkedFromToNonBidirectional(target.getRef(), nonLinkedCause.getRef()));
 	}
@@ -85,7 +86,7 @@ public class TestDiagramObject extends ObjectTestCase
 	{
 		DiagramObject diagramObject = getProject().getTestingDiagramModel().getDiagramObject();
 		assertEquals("diagram was not empty", 0, diagramObject.getAllWrappedFactors().length);
-		getProject().createAndAddFactorToDiagram(Cause.getObjectType());
+		getProject().createAndAddFactorToDiagram(CauseSchema.getObjectType());
 		getProject().createAndAddFactorToDiagram(TargetSchema.getObjectType());
 		
 		Factor[] allWrappedFactors = diagramObject.getAllWrappedFactors();
@@ -105,7 +106,7 @@ public class TestDiagramObject extends ObjectTestCase
 	{
 		DiagramObject diagramObject = getProject().getTestingDiagramModel().getDiagramObject();
 
-		DiagramFactor cause = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor cause = getProject().createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
 		DiagramFactor target = getProject().createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
 		DiagramLink diagramLink = createLinkAndAddToDiagram(cause, target);
 
@@ -117,7 +118,7 @@ public class TestDiagramObject extends ObjectTestCase
 		DiagramObject diagramObject = getProject().getTestingDiagramModel().getDiagramObject();
 
 		DiagramFactor strategy = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
-		DiagramFactor cause = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor cause = getProject().createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
 		DiagramFactor target = getProject().createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
 		createLinkAndAddToDiagram(cause, target);
 		
@@ -132,7 +133,7 @@ public class TestDiagramObject extends ObjectTestCase
 		DiagramObject diagramObject = getProject().getTestingDiagramModel().getDiagramObject();
 
 		DiagramFactor strategy = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
-		DiagramFactor cause = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor cause = getProject().createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
 		DiagramFactor target = getProject().createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
 		DiagramLink diagramLink = createLinkAndAddToDiagram(cause, target);
 		
@@ -146,7 +147,7 @@ public class TestDiagramObject extends ObjectTestCase
 		DiagramObject diagramObject = getProject().getTestingDiagramModel().getDiagramObject();
 
 		DiagramFactor strategy = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
-		DiagramFactor cause = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor cause = getProject().createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
 		DiagramFactor target = getProject().createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
 		DiagramLink diagramLink = createLinkAndAddToDiagram(cause, target);
 		

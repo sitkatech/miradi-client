@@ -25,6 +25,7 @@ import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.project.ProjectForTesting;
+import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.TargetSchema;
 
 public class TestChainWalker extends MiradiTestCase
@@ -57,10 +58,10 @@ public class TestChainWalker extends MiradiTestCase
 		FactorSet nothingUpstreamYet = walker.buildNormalChainAndGetFactors(target);
 		assertEquals("Already something upstream?", 1, nothingUpstreamYet.size());
 
-		DiagramFactor factorDiagramFactor = project.createAndAddFactorToDiagram(Cause.getObjectType());
+		DiagramFactor factorDiagramFactor = project.createAndAddFactorToDiagram(CauseSchema.getObjectType());
 		Factor factor = factorDiagramFactor.getWrappedFactor();
 	
-		DiagramFactor threatDiagramFactor = project.createAndAddFactorToDiagram(Cause.getObjectType());
+		DiagramFactor threatDiagramFactor = project.createAndAddFactorToDiagram(CauseSchema.getObjectType());
 		Factor threat = threatDiagramFactor.getWrappedFactor();
 		threat.setData(Cause.TAG_IS_DIRECT_THREAT, BooleanData.BOOLEAN_TRUE);
 
@@ -82,7 +83,7 @@ public class TestChainWalker extends MiradiTestCase
 		FactorSet nothingUpstreamYet = walker.buildNormalChainAndGetFactors(target);
 		assertEquals("Already something upstream?", 1, nothingUpstreamYet.size());
 
-		DiagramFactor threatDiagramFactor = project.createAndAddFactorToDiagram(Cause.getObjectType());
+		DiagramFactor threatDiagramFactor = project.createAndAddFactorToDiagram(CauseSchema.getObjectType());
 		Factor threat = threatDiagramFactor.getWrappedFactor();
 		threat.setData(Cause.TAG_IS_DIRECT_THREAT, BooleanData.BOOLEAN_TRUE);
 

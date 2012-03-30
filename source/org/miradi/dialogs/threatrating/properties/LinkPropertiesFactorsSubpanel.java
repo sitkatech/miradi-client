@@ -31,10 +31,10 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.Cause;
 import org.miradi.objects.Factor;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
+import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.TargetSchema;
 
 //TODO need to rename and remove link from name
@@ -80,7 +80,7 @@ public class LinkPropertiesFactorsSubpanel extends ObjectDataInputPanel
 	private void updateFieldLabels(ORef[] orefsToUse)
 	{
 		ORefList refs = new ORefList(orefsToUse);
-		ORef threatRef = refs.getRefForType(Cause.getObjectType());
+		ORef threatRef = refs.getRefForType(CauseSchema.getObjectType());
 		ORef targetRef = refs.getRefForType(TargetSchema.getObjectType());		
 		if(threatRef.isInvalid() || targetRef.isInvalid())
 		{

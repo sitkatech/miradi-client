@@ -35,6 +35,7 @@ import org.miradi.objects.Factor;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.project.ProjectForTesting;
+import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.TargetSchema;
 
 public class TestLayerManager extends MiradiTestCase
@@ -53,7 +54,7 @@ public class TestLayerManager extends MiradiTestCase
 		ORef targetRef = project.createObject(TargetSchema.getObjectType());
 		cmTarget = (Target) Factor.findFactor(project, targetRef);
 		cmTarget.setData(BaseObject.TAG_LABEL, "Target");
-		ORef causeRef = project.createObject(Cause.getObjectType());
+		ORef causeRef = project.createObject(CauseSchema.getObjectType());
 		cmFactor = (Cause) Factor.findFactor(project, causeRef);
 		cmFactor.setData(BaseObject.TAG_LABEL, "Factor");
 		ORef strategyRef = project.createObject(Strategy.getObjectType());

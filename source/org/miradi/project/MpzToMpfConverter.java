@@ -47,10 +47,10 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.Cause;
 import org.miradi.project.threatrating.RatingValueSet;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
+import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.EnhancedJsonArray;
 import org.miradi.utils.EnhancedJsonObject;
@@ -466,7 +466,7 @@ public class MpzToMpfConverter
 		int defaultValueId = jsonBundle.getInt("DefaultValueId");
 		EnhancedJsonObject jsonRatings = jsonBundle.getJson("Values");
 		
-		ORef threatRef = new ORef(Cause.getObjectType(), new BaseId(threatId));
+		ORef threatRef = new ORef(CauseSchema.getObjectType(), new BaseId(threatId));
 		ORef targetRef = new ORef(TargetSchema.getObjectType(), new BaseId(targetId));
 		ThreatRatingBundle bundle = framework.getBundle(threatRef, targetRef);
 		bundle.setDefaultValueId(new BaseId(defaultValueId));

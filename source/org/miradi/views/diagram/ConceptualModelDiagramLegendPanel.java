@@ -29,6 +29,7 @@ import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Stress;
+import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
 
 public class ConceptualModelDiagramLegendPanel extends DiagramLegendPanel
@@ -41,8 +42,8 @@ public class ConceptualModelDiagramLegendPanel extends DiagramLegendPanel
 	@Override
 	protected void createCustomLegendPanelSection(Actions actions, JPanel jpanel)
 	{
-		addButtonLineWithCheckBox(jpanel, Cause.getObjectType(), Cause.OBJECT_NAME_THREAT, actions.get(ActionInsertDirectThreat.class));
-		addButtonLineWithCheckBox(jpanel, Cause.getObjectType(),  Cause.OBJECT_NAME_CONTRIBUTING_FACTOR, actions.get(ActionInsertContributingFactor.class));
+		addButtonLineWithCheckBox(jpanel, CauseSchema.getObjectType(), Cause.OBJECT_NAME_THREAT, actions.get(ActionInsertDirectThreat.class));
+		addButtonLineWithCheckBox(jpanel, CauseSchema.getObjectType(),  Cause.OBJECT_NAME_CONTRIBUTING_FACTOR, actions.get(ActionInsertContributingFactor.class));
 	}
 	
 	@Override
