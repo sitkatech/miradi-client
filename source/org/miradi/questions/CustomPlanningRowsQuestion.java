@@ -41,7 +41,6 @@ import org.miradi.icons.TaskIcon;
 import org.miradi.icons.ThreatReductionResultIcon;
 import org.miradi.main.EAM;
 import org.miradi.objects.Cause;
-import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Measurement;
@@ -52,6 +51,7 @@ import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
+import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
@@ -75,7 +75,7 @@ public class CustomPlanningRowsQuestion extends DynamicChoiceQuestion
 	{	
 		Vector<ChoiceItem> choiceItems = new Vector<ChoiceItem>();
 
-		choiceItems.add(createChoiceItem(ConceptualModelDiagram.getObjectType(), ConceptualModelDiagram.OBJECT_NAME, new ConceptualModelIcon()));
+		choiceItems.add(createChoiceItem(ConceptualModelDiagramSchema.getObjectType(), ConceptualModelDiagramSchema.OBJECT_NAME, new ConceptualModelIcon()));
 		choiceItems.add(createChoiceItem(ResultsChainDiagram.getObjectType(), ResultsChainDiagram.OBJECT_NAME, new ResultsChainIcon()));
 		choiceItems.add(createChoiceItem(Target.getObjectType(), Target.OBJECT_NAME, new TargetIcon()));
 		

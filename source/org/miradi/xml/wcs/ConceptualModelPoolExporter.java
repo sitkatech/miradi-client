@@ -20,12 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.wcs;
 
-import org.miradi.objects.ConceptualModelDiagram;
+import org.miradi.schemas.ConceptualModelDiagramSchema;
 
 public class ConceptualModelPoolExporter extends DiagramObjectPoolExporter
 {
 	public ConceptualModelPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
-		super(wcsXmlExporterToUse, CONCEPTUAL_MODEL, ConceptualModelDiagram.getObjectType());
+		super(wcsXmlExporterToUse, CONCEPTUAL_MODEL, ConceptualModelDiagramSchema.getObjectType());
 	}
 }

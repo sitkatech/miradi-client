@@ -23,10 +23,10 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.TaggedObjectSet;
+import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.views.umbrella.doers.DeletePoolObjectDoer;
 
 public class DeleteTaggedObjectSetDoer extends DeletePoolObjectDoer
@@ -41,7 +41,7 @@ public class DeleteTaggedObjectSetDoer extends DeletePoolObjectDoer
 	protected void doWork(BaseObject objectToDelete) throws Exception
 	{
 		ORefList referringDiagramObjectRefs = objectToDelete.findObjectsThatReferToUs(ResultsChainDiagram.getObjectType());
-		referringDiagramObjectRefs.addAll(objectToDelete.findObjectsThatReferToUs(ConceptualModelDiagram.getObjectType()));
+		referringDiagramObjectRefs.addAll(objectToDelete.findObjectsThatReferToUs(ConceptualModelDiagramSchema.getObjectType()));
 		for (int index = 0; index < referringDiagramObjectRefs.size(); ++index)
 		{
 			DiagramObject diagramObject = DiagramObject.findDiagramObject(getProject(), referringDiagramObjectRefs.get(index));

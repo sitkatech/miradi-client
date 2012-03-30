@@ -46,6 +46,7 @@ import org.miradi.project.MpzToMpfConverter;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectLoader;
 import org.miradi.project.ProjectSaver;
+import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.utils.ConceptualModelByTargetSplitter;
 import org.miradi.utils.CpmzFileFilterForChooserDialog;
 import org.miradi.utils.FileUtilities;
@@ -231,7 +232,7 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 	private void splitMainDiagramByTargets(Project filledProject, ORef highOrAboveRankedThreatsTag) throws Exception
 	{
 		ORefList conceptualModelRefs = filledProject.getConceptualModelDiagramPool().getRefList();
-		ORef conceptualModelRef = conceptualModelRefs.getRefForType(ConceptualModelDiagram.getObjectType());
+		ORef conceptualModelRef = conceptualModelRefs.getRefForType(ConceptualModelDiagramSchema.getObjectType());
 		ConceptualModelDiagram conceptualModel = ConceptualModelDiagram.find(filledProject, conceptualModelRef);
 		new ConceptualModelByTargetSplitter(filledProject).splitByTarget(conceptualModel, highOrAboveRankedThreatsTag);
 		

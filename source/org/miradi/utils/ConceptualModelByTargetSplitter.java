@@ -40,6 +40,7 @@ import org.miradi.objects.FactorLink;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
+import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.views.diagram.DiagramAsSharedPaster;
 import org.miradi.views.diagram.doers.CreateMarginDoer;
 
@@ -91,7 +92,7 @@ public class ConceptualModelByTargetSplitter
 
 	private ConceptualModelDiagram createConceptualModelPage(String targetNameUsedAsDiagramName) throws Exception
 	{
-		CommandCreateObject createPage = new CommandCreateObject(ConceptualModelDiagram.getObjectType());
+		CommandCreateObject createPage = new CommandCreateObject(ConceptualModelDiagramSchema.getObjectType());
 		getProject().executeCommand(createPage);
 		
 		ORef newConceptualModelRef = createPage.getObjectRef();

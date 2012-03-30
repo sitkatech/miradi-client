@@ -24,7 +24,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.miradi.main.EAM;
-import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.FosProjectData;
 import org.miradi.objects.IucnRedlistSpecies;
 import org.miradi.objects.ObjectTreeTableConfiguration;
@@ -52,6 +51,7 @@ import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.AudienceSchema;
 import org.miradi.schemas.BudgetCategoryOneSchema;
 import org.miradi.schemas.BudgetCategoryTwoSchema;
+import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.CostAllocationRuleSchema;
 import org.miradi.schemas.DashboardSchema;
 import org.miradi.schemas.FundingSourceSchema;
@@ -143,7 +143,7 @@ public class ObjectType
 			ProjectMetadata.getObjectType(),
 			AccountingCodeSchema.getObjectType(),
 			FundingSourceSchema.getObjectType(),
-			ConceptualModelDiagram.getObjectType(),
+			ConceptualModelDiagramSchema.getObjectType(),
 			ResultsChainDiagram.getObjectType(),
 			ObjectTreeTableConfiguration.getObjectType(),
 			WwfProjectData.getObjectType(),

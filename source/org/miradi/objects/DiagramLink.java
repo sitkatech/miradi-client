@@ -33,6 +33,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
+import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.utils.CommandVector;
@@ -82,7 +83,7 @@ public class DiagramLink extends BaseObject
 	public int[] getTypesThatCanOwnUs()
 	{
 		return new int[] {
-			ConceptualModelDiagram.getObjectType(), 
+			ConceptualModelDiagramSchema.getObjectType(), 
 			ResultsChainDiagram.getObjectType()
 			};
 	}
@@ -197,7 +198,7 @@ public class DiagramLink extends BaseObject
 	
 	public DiagramObject getDiagramObject()
 	{
-		ORefList cmPageRefs = findObjectsThatReferToUs(ConceptualModelDiagram.getObjectType());
+		ORefList cmPageRefs = findObjectsThatReferToUs(ConceptualModelDiagramSchema.getObjectType());
 		if(cmPageRefs.size() > 0)
 			return ConceptualModelDiagram.find(objectManager, cmPageRefs.get(0));
 

@@ -38,7 +38,6 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
-import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
@@ -51,6 +50,7 @@ import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.project.FactorDeleteHelper;
 import org.miradi.project.ProjectRepairer;
+import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.schemas.IndicatorSchema;
@@ -345,15 +345,15 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		assertEquals("Orphaned groups?", 0, repairer.getFactorsWithoutDiagramFactors(GroupBox.getObjectType()).size());
 		assertEquals("Orphaned targets?", 0, repairer.getFactorsWithoutDiagramFactors(Target.getObjectType()).size());
 
-		assertEquals("Group not in diagram?", new ORefList(diagramModel.getDiagramObject().getRef()), groupDiagramFactor.findObjectsThatReferToUs(ConceptualModelDiagram.getObjectType()));
+		assertEquals("Group not in diagram?", new ORefList(diagramModel.getDiagramObject().getRef()), groupDiagramFactor.findObjectsThatReferToUs(ConceptualModelDiagramSchema.getObjectType()));
 		assertEquals("Group doesn't have one child?", 1, groupDiagramFactor.getGroupBoxChildrenSet().size());
 
 		DiagramFactor cdf = DiagramFactor.find(getProject(), groupDiagramFactor.getGroupBoxChildrenRefs().get(0));
-		assertEquals("Cause not in diagram?", new ORefList(diagramModel.getDiagramObject().getRef()), cdf.findObjectsThatReferToUs(ConceptualModelDiagram.getObjectType()));
+		assertEquals("Cause not in diagram?", new ORefList(diagramModel.getDiagramObject().getRef()), cdf.findObjectsThatReferToUs(ConceptualModelDiagramSchema.getObjectType()));
 
 		assertEquals("Not one target?", 1, diagramModel.getAllDiagramTargets().size());
 		DiagramFactor tdf = (diagramModel.getAllDiagramTargets().get(0)).getDiagramFactor();
-		assertEquals("Target not in diagram?", new ORefList(diagramModel.getDiagramObject().getRef()), tdf.findObjectsThatReferToUs(ConceptualModelDiagram.getObjectType()));
+		assertEquals("Target not in diagram?", new ORefList(diagramModel.getDiagramObject().getRef()), tdf.findObjectsThatReferToUs(ConceptualModelDiagramSchema.getObjectType()));
 
 		assertTrue("No threat-target link?", diagramModel.getDiagramObject().areDiagramFactorsLinkedFromToNonBidirectional(cdf.getRef(), tdf.getRef()));
 	}
@@ -439,7 +439,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 	private DiagramModel createDiagramModelToPasteInto() throws Exception
 	{
 		PersistentDiagramModel diagramModel = new PersistentDiagramModel(getProject());
-		ORef diagramObjectRef = getProject().createObject(ConceptualModelDiagram.getObjectType());
+		ORef diagramObjectRef = getProject().createObject(ConceptualModelDiagramSchema.getObjectType());
 		DiagramObject diagramObject = DiagramObject.findDiagramObject(getProject(), diagramObjectRef);
 		diagramModel.fillFrom(diagramObject);
 		new ModelUpdater(diagramModel);

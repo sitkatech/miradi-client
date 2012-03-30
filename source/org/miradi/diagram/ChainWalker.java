@@ -23,13 +23,13 @@ import java.util.HashSet;
 
 import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.project.Project;
+import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.DiagramFactorSchema;
 
 public class ChainWalker
@@ -273,7 +273,7 @@ public class ChainWalker
 		
 	private void initializeChain(DiagramFactor diagramFactor)
 	{
-		ORefList diagramReferrers = diagramFactor.findObjectsThatReferToUs(new int[]{ResultsChainDiagram.getObjectType(), ConceptualModelDiagram.getObjectType(), });
+		ORefList diagramReferrers = diagramFactor.findObjectsThatReferToUs(new int[]{ResultsChainDiagram.getObjectType(), ConceptualModelDiagramSchema.getObjectType(), });
 		if (diagramReferrers.isEmpty() || diagramReferrers.size() > 1)
 			throw new RuntimeException("DiagramFactor " + diagramFactor.getRef() + " is in zero or multiple diagrams: " + diagramReferrers);
 		

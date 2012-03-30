@@ -55,6 +55,7 @@ import org.miradi.objects.TableSettings;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ViewData;
+import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.utils.CommandVector;
 
@@ -435,7 +436,7 @@ public class CommandExecutor
 		if (setCommand.isTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_TREE_EXPANSION_LIST))
 			return true;
 		
-		if (setCommand.isTypeAndTag(ConceptualModelDiagram.getObjectType(), ConceptualModelDiagram.TAG_DIAGRAM_FACTOR_IDS))
+		if (setCommand.isTypeAndTag(ConceptualModelDiagramSchema.getObjectType(), ConceptualModelDiagram.TAG_DIAGRAM_FACTOR_IDS))
 			return wasWrappedTypeAddedOrRemoved(setCommand, Stress.getObjectType());
 		
 		if (setCommand.isTypeAndTag(ResultsChainDiagram.getObjectType(), ConceptualModelDiagram.TAG_DIAGRAM_FACTOR_IDS))

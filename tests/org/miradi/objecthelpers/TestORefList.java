@@ -22,9 +22,9 @@ package org.miradi.objecthelpers;
 import org.miradi.ids.BaseId;
 import org.miradi.main.MiradiTestCase;
 import org.miradi.objects.Cause;
-import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
+import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -150,7 +150,7 @@ public class TestORefList extends MiradiTestCase
 		ORef ref1 = new ORef(Cause.getObjectType(), new BaseId(10));
 		ORef ref2 = new ORef(Cause.getObjectType(), new BaseId(11));
 		ORef ref6 = new ORef(Target.getObjectType(), new BaseId(20));
-		ORef ref7 = new ORef(ConceptualModelDiagram.getObjectType(), new BaseId(21));	
+		ORef ref7 = new ORef(ConceptualModelDiagramSchema.getObjectType(), new BaseId(21));	
 		
 		ORefList refList = new ORefList();
 		refList.add(ref1);

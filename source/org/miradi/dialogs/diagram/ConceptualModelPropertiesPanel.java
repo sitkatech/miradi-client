@@ -26,6 +26,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramObject;
 import org.miradi.project.Project;
+import org.miradi.schemas.ConceptualModelDiagramSchema;
 
 public class ConceptualModelPropertiesPanel extends ObjectDataInputPanelWithSections
 {
@@ -34,12 +35,12 @@ public class ConceptualModelPropertiesPanel extends ObjectDataInputPanelWithSect
 		super(projectToUse, diagramObjectRef);
 		createSingleSection(EAM.text("CM Page"));
 		
-		ObjectDataInputField shortLabelField = createShortStringField(ConceptualModelDiagram.getObjectType(), DiagramObject.TAG_SHORT_LABEL);
-		ObjectDataInputField labelField = createMediumStringField(ConceptualModelDiagram.getObjectType(), DiagramObject.TAG_LABEL);
+		ObjectDataInputField shortLabelField = createShortStringField(ConceptualModelDiagramSchema.getObjectType(), DiagramObject.TAG_SHORT_LABEL);
+		ObjectDataInputField labelField = createMediumStringField(ConceptualModelDiagramSchema.getObjectType(), DiagramObject.TAG_LABEL);
 		addFieldsOnOneLine(EAM.text("Page:"), new ObjectDataInputField[]{shortLabelField, labelField});
 	
-		addField(createMultilineField(ConceptualModelDiagram.getObjectType(), DiagramObject.TAG_DETAIL));
-		addField(createReadOnlyObjectList(ConceptualModelDiagram.getObjectType(), ConceptualModelDiagram.PSEUDO_DRAFT_STRATEGY_REFS));
+		addField(createMultilineField(ConceptualModelDiagramSchema.getObjectType(), DiagramObject.TAG_DETAIL));
+		addField(createReadOnlyObjectList(ConceptualModelDiagramSchema.getObjectType(), ConceptualModelDiagram.PSEUDO_DRAFT_STRATEGY_REFS));
 
 		updateFieldsFromProject();
 	}

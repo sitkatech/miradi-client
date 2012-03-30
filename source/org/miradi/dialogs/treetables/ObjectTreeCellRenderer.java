@@ -62,7 +62,6 @@ import org.miradi.objects.AccountingCode;
 import org.miradi.objects.BudgetCategoryOne;
 import org.miradi.objects.BudgetCategoryTwo;
 import org.miradi.objects.Cause;
-import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FundingSource;
@@ -75,6 +74,7 @@ import org.miradi.objects.ScopeBox;
 import org.miradi.objects.SubTarget;
 import org.miradi.objects.Task;
 import org.miradi.objects.TextBox;
+import org.miradi.schemas.ConceptualModelDiagramSchema;
 
 public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 {		
@@ -200,7 +200,7 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 		TreeTableNode node = (TreeTableNode) value;
 		if (node.getType() == ObjectType.FAKE)
 			renderer  = stringNoIconRenderer;
-		else if(node.getType() == ConceptualModelDiagram.getObjectType())
+		else if(node.getType() == ConceptualModelDiagramSchema.getObjectType())
 			renderer = conceptualModelRenderer;
 		else if(node.getType() == ResultsChainDiagram.getObjectType())
 			renderer = resultsChainRenderer;

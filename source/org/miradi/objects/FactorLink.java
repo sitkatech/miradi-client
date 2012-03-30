@@ -24,6 +24,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.FactorLinkSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -60,7 +61,7 @@ public class FactorLink extends BaseObject
 	public int[] getTypesThatCanOwnUs()
 	{
 		return new int[] {
-			ConceptualModelDiagram.getObjectType(), 
+			ConceptualModelDiagramSchema.getObjectType(), 
 			ResultsChainDiagram.getObjectType()
 			};
 	}

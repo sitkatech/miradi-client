@@ -36,6 +36,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.TextBoxZOrderQuestion;
+import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -94,7 +95,7 @@ public class DiagramFactor extends BaseObject
 	public int[] getTypesThatCanOwnUs()
 	{
 		return new int[] {
-			ConceptualModelDiagram.getObjectType(), 
+			ConceptualModelDiagramSchema.getObjectType(), 
 			ResultsChainDiagram.getObjectType()
 			};
 	}
@@ -233,7 +234,7 @@ public class DiagramFactor extends BaseObject
 	public ORefList findDiagramsThatReferToUs()
 	{
 		ORefList result = new ORefList();
-		result.addAll(findObjectsThatReferToUs(ConceptualModelDiagram.getObjectType()));
+		result.addAll(findObjectsThatReferToUs(ConceptualModelDiagramSchema.getObjectType()));
 		result.addAll(findObjectsThatReferToUs(ResultsChainDiagram.getObjectType()));
 		return result;
 	}
