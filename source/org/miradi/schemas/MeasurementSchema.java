@@ -28,8 +28,6 @@ import org.miradi.questions.TrendQuestion;
 
 public class MeasurementSchema extends BaseObjectSchema
 {
-	public static final String OBJECT_NAME = "Measurement";
-
 	public MeasurementSchema()
 	{
 		super();
@@ -53,4 +51,6 @@ public class MeasurementSchema extends BaseObjectSchema
 	{
 		return ObjectType.MEASUREMENT;
 	}
+	
+	public static final String OBJECT_NAME = "Measurement";
 }

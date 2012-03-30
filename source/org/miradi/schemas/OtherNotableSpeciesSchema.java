@@ -24,8 +24,6 @@ import org.miradi.objecthelpers.ObjectType;
 
 public class OtherNotableSpeciesSchema extends BaseObjectSchema
 {
-	public static final String OBJECT_NAME = "OtherNotableSpecies";
-
 	public OtherNotableSpeciesSchema()
 	{
 		super();
@@ -35,4 +33,6 @@ public class OtherNotableSpeciesSchema extends BaseObjectSchema
 	{
 		return ObjectType.OTHER_NOTABLE_SPECIES;
 	}
+	
+	public static final String OBJECT_NAME = "OtherNotableSpecies";
 }

@@ -29,8 +29,6 @@ import org.miradi.questions.StrategyTaxonomyQuestion;
 
 public class StrategySchema extends FactorSchema
 {
-	public static final String OBJECT_NAME = "Strategy";
-
 	public StrategySchema()
 	{
 		super();
@@ -63,4 +61,6 @@ public class StrategySchema extends FactorSchema
 	{
 		return ObjectType.STRATEGY;
 	}
+	
+	public static final String OBJECT_NAME = "Strategy";
 }

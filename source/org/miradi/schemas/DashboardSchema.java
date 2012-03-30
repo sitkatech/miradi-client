@@ -25,8 +25,6 @@ import org.miradi.objects.Dashboard;
 
 public class DashboardSchema extends BaseObjectSchema
 {
-	public static final String OBJECT_NAME = "Dashboard";
-
 	public DashboardSchema()
 	{
 		super();
@@ -116,4 +114,6 @@ public class DashboardSchema extends BaseObjectSchema
 	{
 		return ObjectType.DASHBOARD;
 	}
+	
+	public static final String OBJECT_NAME = "Dashboard";
 }

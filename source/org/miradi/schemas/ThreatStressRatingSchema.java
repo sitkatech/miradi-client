@@ -27,8 +27,6 @@ import org.miradi.questions.StressIrreversibilityQuestion;
 
 public class ThreatStressRatingSchema extends BaseObjectSchema
 {
-	public static final String OBJECT_NAME = "ThreatStressRating";
-
 	public ThreatStressRatingSchema()
 	{
 		super();
@@ -51,4 +49,6 @@ public class ThreatStressRatingSchema extends BaseObjectSchema
 	{
 		return ObjectType.THREAT_STRESS_RATING;
 	}
+	
+	public static final String OBJECT_NAME = "ThreatStressRating";
 }

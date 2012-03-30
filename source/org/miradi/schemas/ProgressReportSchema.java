@@ -26,8 +26,6 @@ import org.miradi.questions.ProgressReportLongStatusQuestion;
 
 public class ProgressReportSchema extends BaseObjectSchema
 {
-	public static final String OBJECT_NAME = "ProgressReport";
-
 	public ProgressReportSchema()
 	{
 		super();
@@ -47,4 +45,6 @@ public class ProgressReportSchema extends BaseObjectSchema
 	{
 		return ObjectType.PROGRESS_REPORT;
 	}
+	
+	public static final String OBJECT_NAME = "ProgressReport";
 }

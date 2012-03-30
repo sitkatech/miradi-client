@@ -25,8 +25,6 @@ import org.miradi.objects.CostAllocationRule;
 
 public class CostAllocationRuleSchema extends BaseObjectSchema
 {
-	public static final String OBJECT_NAME = "CostAllocationRule";
-
 	public CostAllocationRuleSchema()
 	{
 		super();
@@ -46,4 +44,6 @@ public class CostAllocationRuleSchema extends BaseObjectSchema
 	{
 		return ObjectType.COST_ALLOCATION_RULE;
 	}
+	
+	public static final String OBJECT_NAME = "CostAllocationRule";
 }

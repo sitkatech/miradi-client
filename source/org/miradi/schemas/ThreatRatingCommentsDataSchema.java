@@ -25,8 +25,6 @@ import org.miradi.objects.ThreatRatingCommentsData;
 
 public class ThreatRatingCommentsDataSchema extends BaseObjectSchema
 {
-	public static final String OBJECT_NAME = "ThreatRatingCommentsData";
-
 	public ThreatRatingCommentsDataSchema()
 	{
 		super();
@@ -45,4 +43,6 @@ public class ThreatRatingCommentsDataSchema extends BaseObjectSchema
 	{
 		return ObjectType.THREAT_RATING_COMMENTS_DATA;
 	}
+	
+	public static final String OBJECT_NAME = "ThreatRatingCommentsData";
 }

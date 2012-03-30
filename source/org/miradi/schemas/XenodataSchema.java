@@ -25,8 +25,6 @@ import org.miradi.objects.Xenodata;
 
 public class XenodataSchema extends BaseObjectSchema
 {
-	public static final String OBJECT_NAME = "Xenodata";
-
 	public XenodataSchema()
 	{
 		super();
@@ -44,4 +42,6 @@ public class XenodataSchema extends BaseObjectSchema
 	{
 		return ObjectType.XENODATA;
 	}
+	
+	public static final String OBJECT_NAME = "Xenodata";
 }

@@ -42,8 +42,6 @@ import org.miradi.questions.TncTerrestrialEcoRegionQuestion;
 
 public class ProjectMetadataSchema extends BaseObjectSchema
 {
-	public static final String OBJECT_NAME = "ProjectMetadata";
-
 	public ProjectMetadataSchema()
 	{
 		super();
@@ -144,4 +142,6 @@ public class ProjectMetadataSchema extends BaseObjectSchema
 	{
 		return ObjectType.PROJECT_METADATA;
 	}
+	
+	public static final String OBJECT_NAME = "ProjectMetadata";
 }

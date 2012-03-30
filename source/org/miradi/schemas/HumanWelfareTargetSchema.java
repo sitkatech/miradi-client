@@ -24,8 +24,6 @@ import org.miradi.objecthelpers.ObjectType;
 
 public class HumanWelfareTargetSchema extends AbstractTargetSchema
 {
-	public static final String OBJECT_NAME = "HumanWelfareTarget";
-
 	public HumanWelfareTargetSchema()
 	{
 		super();
@@ -35,4 +33,6 @@ public class HumanWelfareTargetSchema extends AbstractTargetSchema
 	{
 		return ObjectType.HUMAN_WELFARE_TARGET;
 	}
+	
+	public static final String OBJECT_NAME = "HumanWelfareTarget";
 }

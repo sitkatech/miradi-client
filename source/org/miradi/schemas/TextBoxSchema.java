@@ -24,8 +24,6 @@ import org.miradi.objecthelpers.ObjectType;
 
 public class TextBoxSchema extends FactorSchema
 {
-	public static final String OBJECT_NAME = "TextBox";
-
 	public TextBoxSchema()
 	{
 		super();
@@ -35,4 +33,6 @@ public class TextBoxSchema extends FactorSchema
 	{
 		return ObjectType.TEXT_BOX;
 	}
+	
+	public static final String OBJECT_NAME = "TextBox";
 }

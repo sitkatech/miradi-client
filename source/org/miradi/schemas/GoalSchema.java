@@ -24,8 +24,6 @@ import org.miradi.objecthelpers.ObjectType;
 
 public class GoalSchema extends DesireSchema
 {
-	public static final String OBJECT_NAME = "Goal";
-
 	public GoalSchema()
 	{
 		super();
@@ -35,5 +33,7 @@ public class GoalSchema extends DesireSchema
 	{
 		return ObjectType.GOAL;
 	}
+	
+	public static final String OBJECT_NAME = "Goal";
 }
 

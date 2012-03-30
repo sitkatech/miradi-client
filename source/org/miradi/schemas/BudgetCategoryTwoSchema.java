@@ -24,8 +24,6 @@ import org.miradi.objecthelpers.ObjectType;
 
 public class BudgetCategoryTwoSchema extends AbstractBudgetCategorySchema
 {
-	public static final String OBJECT_NAME = "CategoryTwo";
-
 	public BudgetCategoryTwoSchema()
 	{
 		super();
@@ -35,4 +33,6 @@ public class BudgetCategoryTwoSchema extends AbstractBudgetCategorySchema
 	{
 		return ObjectType.BUDGET_CATEGORY_TWO;
 	}
+	
+	public static final String OBJECT_NAME = "CategoryTwo";
 }

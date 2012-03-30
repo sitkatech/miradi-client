@@ -25,8 +25,6 @@ import org.miradi.objects.ProgressPercent;
 
 public class ProgressPercentSchema extends BaseObjectSchema
 {
-	public static final String OBJECT_NAME = "ProgressPercent";
-
 	public ProgressPercentSchema()
 	{
 		super();
@@ -46,4 +44,6 @@ public class ProgressPercentSchema extends BaseObjectSchema
 	{
 		return ObjectType.PROGRESS_PERCENT;
 	}
+	
+	public static final String OBJECT_NAME = "ProgressPercent";
 }

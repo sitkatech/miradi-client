@@ -26,8 +26,6 @@ import org.miradi.questions.ThreatClassificationQuestion;
 
 public class CauseSchema extends FactorSchema
 {
-	public static final String OBJECT_NAME = "Cause";
-
 	public CauseSchema()
 	{
 		super();
@@ -47,4 +45,6 @@ public class CauseSchema extends FactorSchema
 	{
 		return ObjectType.CAUSE;
 	}
+	
+	public static final String OBJECT_NAME = "Cause";
 }

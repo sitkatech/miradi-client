@@ -24,8 +24,6 @@ import org.miradi.objecthelpers.ObjectType;
 
 public class IntermediateResultSchema extends FactorSchema
 {
-	public static final String OBJECT_NAME = "IntermediateResult";
-
 	public IntermediateResultSchema()
 	{
 		super();
@@ -35,4 +33,6 @@ public class IntermediateResultSchema extends FactorSchema
 	{
 		return ObjectType.INTERMEDIATE_RESULT;
 	}
+	
+	public static final String OBJECT_NAME = "IntermediateResult";
 }

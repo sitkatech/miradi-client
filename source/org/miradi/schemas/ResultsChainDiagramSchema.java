@@ -24,8 +24,6 @@ import org.miradi.objecthelpers.ObjectType;
 
 public class ResultsChainDiagramSchema extends DiagramObjectSchema
 {
-	public static final String OBJECT_NAME = "ResultsChainDiagram";
-
 	public ResultsChainDiagramSchema()
 	{
 		super();
@@ -35,4 +33,6 @@ public class ResultsChainDiagramSchema extends DiagramObjectSchema
 	{
 		return ObjectType.RESULTS_CHAIN_DIAGRAM;
 	}
+	
+	public static final String OBJECT_NAME = "ResultsChainDiagram";
 }

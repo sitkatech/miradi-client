@@ -25,8 +25,6 @@ import org.miradi.objects.ThreatReductionResult;
 
 public class ThreatReductionResultSchema extends FactorSchema
 {
-	public static final String OBJECT_NAME = "ThreatReductionResult";
-
 	public ThreatReductionResultSchema()
 	{
 		super();
@@ -44,4 +42,6 @@ public class ThreatReductionResultSchema extends FactorSchema
 	{
 		return ObjectType.THREAT_REDUCTION_RESULT;
 	}
+	
+	public static final String OBJECT_NAME = "ThreatReductionResult";
 }

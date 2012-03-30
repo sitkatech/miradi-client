@@ -26,8 +26,6 @@ import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class TaggedObjectSetSchema extends BaseObjectSchema
 {
-	public static final String OBJECT_NAME = "TaggedObjectSet";
-
 	public TaggedObjectSetSchema()
 	{
 		super();
@@ -47,4 +45,6 @@ public class TaggedObjectSetSchema extends BaseObjectSchema
 	{
 		return ObjectType.TAGGED_OBJECT_SET;
 	}
+	
+	public static final String OBJECT_NAME = "TaggedObjectSet";
 }

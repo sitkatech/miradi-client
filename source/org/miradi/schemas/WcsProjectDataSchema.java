@@ -25,8 +25,6 @@ import org.miradi.objects.WcsProjectData;
 
 public class WcsProjectDataSchema extends BaseObjectSchema
 {
-	public static final String OBJECT_NAME = "WcsProjectData";
-
 	public WcsProjectDataSchema()
 	{
 		super();
@@ -55,4 +53,6 @@ public class WcsProjectDataSchema extends BaseObjectSchema
 	{
 		return ObjectType.WCS_PROJECT_DATA;
 	}
+	
+	public static final String OBJECT_NAME = "WcsProjectData";
 }

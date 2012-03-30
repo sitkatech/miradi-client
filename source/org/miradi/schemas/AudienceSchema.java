@@ -26,8 +26,6 @@ import org.miradi.objects.Audience;
 
 public class AudienceSchema extends BaseObjectSchema
 {
-	public static final String OBJECT_NAME = "Audience";
-
 	public AudienceSchema()
 	{
 		super();
@@ -46,4 +44,6 @@ public class AudienceSchema extends BaseObjectSchema
 	{
 		return ObjectType.AUDIENCE;
 	}
+	
+	public static final String OBJECT_NAME = "Audience";
 }

@@ -26,8 +26,6 @@ import org.miradi.questions.ScopeBoxTypeQuestion;
 
 public class ScopeBoxSchema extends FactorSchema
 {
-	public static final String OBJECT_NAME = "ScopeBox";
-
 	public ScopeBoxSchema()
 	{
 		super();
@@ -45,4 +43,6 @@ public class ScopeBoxSchema extends FactorSchema
 	{
 		return ObjectType.SCOPE_BOX;
 	}
+	
+	public static final String OBJECT_NAME = "ScopeBox";
 }

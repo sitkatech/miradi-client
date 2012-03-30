@@ -27,8 +27,6 @@ import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class TargetSchema extends AbstractTargetSchema
 {
-	public static final String OBJECT_NAME = "Target";
-
 	public TargetSchema()
 	{
 		super();
@@ -50,4 +48,6 @@ public class TargetSchema extends AbstractTargetSchema
 	{
 		return ObjectType.TARGET;
 	}
+	
+	public static final String OBJECT_NAME = "Target";
 }

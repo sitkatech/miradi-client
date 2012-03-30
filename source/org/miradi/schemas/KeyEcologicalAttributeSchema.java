@@ -26,8 +26,6 @@ import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 
 public class KeyEcologicalAttributeSchema extends BaseObjectSchema
 {
-	public static final String OBJECT_NAME = "KeyEcologicalAttribute";
-
 	public KeyEcologicalAttributeSchema()
 	{
 		super();
@@ -51,4 +49,6 @@ public class KeyEcologicalAttributeSchema extends BaseObjectSchema
 	{
 		return ObjectType.KEY_ECOLOGICAL_ATTRIBUTE;
 	}
+	
+	public static final String OBJECT_NAME = "KeyEcologicalAttribute";
 }

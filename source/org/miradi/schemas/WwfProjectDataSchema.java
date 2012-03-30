@@ -29,8 +29,6 @@ import org.miradi.questions.WwfRegionsQuestion;
 
 public class WwfProjectDataSchema extends BaseObjectSchema
 {
-	public static final String OBJECT_NAME = "WwfProjectData";
-
 	public WwfProjectDataSchema()
 	{
 		super();
@@ -57,4 +55,6 @@ public class WwfProjectDataSchema extends BaseObjectSchema
 	{
 		return ObjectType.WWF_PROJECT_DATA;
 	}
+	
+	public static final String OBJECT_NAME = "WwfProjectData";
 }
