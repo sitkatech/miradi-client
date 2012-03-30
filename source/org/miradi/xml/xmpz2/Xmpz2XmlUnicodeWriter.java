@@ -169,7 +169,7 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 	{
 	}
 
-	public void writeDateData(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema, String isoData) throws Exception
+	public void writeDateData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String isoData) throws Exception
 	{
 		writeField(baseObjectSchema, fieldSchema, isoData);
 	}
@@ -182,11 +182,11 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 	{
 	}
 
-	public void writeDimensionData(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema, String string)
+	public void writeDimensionData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string)
 	{
 	}
 
-	public void writeFloatData(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema, String number) throws Exception
+	public void writeFloatData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String number) throws Exception
 	{
 		writeField(baseObjectSchema, fieldSchema, number);
 	}
