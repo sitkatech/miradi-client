@@ -73,4 +73,6 @@ public class IndicatorSchema extends BaseObjectSchema
 	{
 		return ObjectType.INDICATOR;
 	}
+	
+	public static final String OBJECT_NAME = "Indicator";
 }

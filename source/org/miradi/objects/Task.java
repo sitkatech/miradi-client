@@ -319,7 +319,7 @@ public class Task extends Factor
 			return Strategy.OBJECT_NAME;
 		
 		if(isMethod())
-			return Indicator.OBJECT_NAME;
+			return IndicatorSchema.OBJECT_NAME;
 		
 		Task owner = (Task)getOwner();
 		if(owner.isActivity())

@@ -21,9 +21,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.viability;
 
 import org.miradi.objects.Goal;
-import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
 import org.miradi.project.Project;
+import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.CodeList;
 
 public class IndicatorViabilityRowColumnProvider extends AbstractViabilityRowColumnProvider
@@ -36,7 +36,7 @@ public class IndicatorViabilityRowColumnProvider extends AbstractViabilityRowCol
 	public CodeList getRowCodesToShow() throws Exception
 	{
 		return new CodeList(new String[] {
-				Indicator.OBJECT_NAME,
+				IndicatorSchema.OBJECT_NAME,
 				Measurement.OBJECT_NAME,
 				Goal.OBJECT_NAME,
 		});

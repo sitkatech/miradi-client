@@ -278,7 +278,7 @@ public class Indicator extends BaseObject
 	@Override
 	public String getTypeName()
 	{
-		return OBJECT_NAME;
+		return IndicatorSchema.OBJECT_NAME;
 	}
 
 	@Override
@@ -417,6 +417,5 @@ public class Indicator extends BaseObject
 	
 	public static final String PSEUDO_TAG_RELATED_METHOD_OREF_LIST = "PseudoTagRelatedMethodORefList";
 
-	public static final String META_COLUMN_TAG = "IndicatorMetaColumnTag"; 
-	public static final String OBJECT_NAME = "Indicator";
+	public static final String META_COLUMN_TAG = "IndicatorMetaColumnTag";
 }

@@ -24,7 +24,6 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.CodeToCodeListMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ConceptualModelDiagram;
-import org.miradi.objects.Indicator;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.TableSettings;
@@ -32,6 +31,7 @@ import org.miradi.objects.Task;
 import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.questions.WorkPlanVisibleRowsQuestion;
+import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.CodeList;
 
 public class WorkPlanRowColumnProvider extends AbstractPlanningTreeRowColumnProvider
@@ -108,7 +108,7 @@ public class WorkPlanRowColumnProvider extends AbstractPlanningTreeRowColumnProv
 		return new CodeList(new String[] {
 				ConceptualModelDiagram.OBJECT_NAME,
 				ResultsChainDiagram.OBJECT_NAME,
-				Indicator.OBJECT_NAME,
+				IndicatorSchema.OBJECT_NAME,
 				Task.METHOD_NAME,
 				Task.OBJECT_NAME,
 				});
@@ -132,7 +132,7 @@ public class WorkPlanRowColumnProvider extends AbstractPlanningTreeRowColumnProv
 				ResultsChainDiagram.OBJECT_NAME,
 				Strategy.OBJECT_NAME,
 				Task.ACTIVITY_NAME,
-				Indicator.OBJECT_NAME,
+				IndicatorSchema.OBJECT_NAME,
 				Task.METHOD_NAME,
 				Task.OBJECT_NAME,
 				});
