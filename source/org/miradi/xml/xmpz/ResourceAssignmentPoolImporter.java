@@ -25,6 +25,7 @@ import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.FundingSourceSchema;
+import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.xml.generic.XmlSchemaCreator;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.w3c.dom.Node;
@@ -33,7 +34,7 @@ public class ResourceAssignmentPoolImporter extends	AbstractAssignmentPoolImport
 {
 	public ResourceAssignmentPoolImporter(XmpzXmlImporter importerToUse)
 	{
-		super(importerToUse, RESOURCE_ASSIGNMENT, ResourceAssignment.getObjectType());
+		super(importerToUse, RESOURCE_ASSIGNMENT, ResourceAssignmentSchema.getObjectType());
 	}
 	
 	@Override

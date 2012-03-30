@@ -136,6 +136,7 @@ import org.miradi.schemas.BudgetCategoryTwoSchema;
 import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.DateRange;
@@ -902,7 +903,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public ResourceAssignment createResourceAssignment() throws Exception
 	{
-		ORef assignmentRef = createObject(ResourceAssignment.getObjectType());
+		ORef assignmentRef = createObject(ResourceAssignmentSchema.getObjectType());
 		return ResourceAssignment.find(this, assignmentRef);
 	}
 	

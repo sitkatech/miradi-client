@@ -37,6 +37,7 @@ import org.miradi.objects.ResourceAssignment;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.DateUnitEffort;
@@ -161,7 +162,7 @@ public class WhoCodeListEditorComponent extends AbstractQuestionBasedComponent
 
 	private ResourceAssignment createNewResourceAssignment() throws Exception
 	{
-		CommandCreateObject createCommand = new CommandCreateObject(ResourceAssignment.getObjectType());
+		CommandCreateObject createCommand = new CommandCreateObject(ResourceAssignmentSchema.getObjectType());
 		getProject().executeCommand(createCommand);
 
 		ORef newResourceAssignmentRef = createCommand.getObjectRef();

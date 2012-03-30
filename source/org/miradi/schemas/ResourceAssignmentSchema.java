@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResourceAssignment;
 
@@ -44,4 +45,11 @@ public class ResourceAssignmentSchema extends AssignmentSchema
 
 		
 	}
+
+	public static int getObjectType()
+	{
+		return ObjectType.RESOURCE_ASSIGNMENT;
+	}
+	
+	public static final String OBJECT_NAME = "ResourceAssignment";
 }

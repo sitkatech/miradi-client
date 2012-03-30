@@ -116,7 +116,6 @@ import org.miradi.objects.ProjectResource;
 import org.miradi.objects.RareProjectData;
 import org.miradi.objects.RatingCriterion;
 import org.miradi.objects.ReportTemplate;
-import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.ScopeBox;
 import org.miradi.objects.Strategy;
@@ -144,6 +143,7 @@ import org.miradi.schemas.BudgetCategoryTwoSchema;
 import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.ResourceAssignmentSchema;
 
 public class ObjectManager
 {
@@ -166,7 +166,7 @@ public class ObjectManager
 		addNormalPool(new GoalPool(ida), Goal.OBJECT_NAME);
 		addNormalPool(new ProjectMetadataPool(ida), ProjectMetadata.OBJECT_NAME);
 		addNormalPool(new DiagramLinkPool(ida), DiagramLink.OBJECT_NAME);
-		addNormalPool(new ResourceAssignmentPool(ida), ResourceAssignment.OBJECT_NAME);
+		addNormalPool(new ResourceAssignmentPool(ida), ResourceAssignmentSchema.OBJECT_NAME);
 		addNormalPool(new AccountingCodePool(ida), AccountingCodeSchema.OBJECT_NAME);
 		addNormalPool(new FundingSourcePool(ida), FundingSourceSchema.OBJECT_NAME);
 		addNormalPool(new KeyEcologicalAttributePool(ida), KeyEcologicalAttribute.OBJECT_NAME);

@@ -27,6 +27,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.ResourceAssignmentSchema;
 
 public class TestObjectFindOwnerAndFindReferrer extends MiradiTestCase
 {
@@ -124,7 +125,7 @@ public class TestObjectFindOwnerAndFindReferrer extends MiradiTestCase
 		Task task = project.createTask(activity);
 		ORef assignmentRef = project.createResourceAssignment().getRef();
 		
-		IdList assignmentList = new IdList(ResourceAssignment.getObjectType(), new BaseId[] {assignmentRef.getObjectId()});
+		IdList assignmentList = new IdList(ResourceAssignmentSchema.getObjectType(), new BaseId[] {assignmentRef.getObjectId()});
 		project.setObjectData(ObjectType.TASK, task.getId(), Task.TAG_RESOURCE_ASSIGNMENT_IDS, assignmentList.toString());
 
 		//----------- start test -----------

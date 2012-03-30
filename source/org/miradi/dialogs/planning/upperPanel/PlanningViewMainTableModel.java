@@ -70,6 +70,7 @@ import org.miradi.questions.ResourceTypeQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
+import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.DateRange;
@@ -325,7 +326,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 
 	private void createResourceAssignment(BaseObject baseObjectForRow, CodeList datesAsCodeList) throws Exception
 	{
-		CommandCreateObject createResourceAssignment = new CommandCreateObject(ResourceAssignment.getObjectType());
+		CommandCreateObject createResourceAssignment = new CommandCreateObject(ResourceAssignmentSchema.getObjectType());
 		getProject().executeCommand(createResourceAssignment);
 
 		ORef resourceAssignmentRef = createResourceAssignment.getObjectRef();

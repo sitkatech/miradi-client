@@ -47,7 +47,6 @@ import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.objects.ProjectResource;
-import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.SubTarget;
@@ -61,6 +60,7 @@ import org.miradi.schemas.BudgetCategoryTwoSchema;
 import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.utils.BaseObjectDateDescendingAndIdComparator;
 import org.miradi.utils.CodeList;
 
@@ -178,7 +178,7 @@ abstract public class AbstractTreeRebuilder
 			Task.getObjectType(),
 			
 			Measurement.getObjectType(),
-			ResourceAssignment.getObjectType(),
+			ResourceAssignmentSchema.getObjectType(),
 			ExpenseAssignmentSchema.getObjectType(),
 		};
 		
@@ -418,7 +418,7 @@ abstract public class AbstractTreeRebuilder
 			BudgetCategoryOneSchema.getObjectType(),
 			BudgetCategoryTwoSchema.getObjectType(),
 			Task.getObjectType(),
-			ResourceAssignment.getObjectType(),
+			ResourceAssignmentSchema.getObjectType(),
 			ExpenseAssignmentSchema.getObjectType(),
 		};
 	}

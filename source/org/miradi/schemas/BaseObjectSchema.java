@@ -26,7 +26,6 @@ import java.util.Vector;
 
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.ResourceAssignment;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.xml.wcs.XmpzXmlConstants;
@@ -236,7 +235,7 @@ public class BaseObjectSchema implements Iterable<AbstractFieldSchema>
 	protected void fillFieldSchemas()
 	{
 		createFieldSchemaExpandingUserText(BaseObject.TAG_LABEL);
-		createFieldSchemaIdList(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, ResourceAssignment.getObjectType());
+		createFieldSchemaIdList(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, ResourceAssignmentSchema.getObjectType());
 		createFieldSchemaReflist(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS, XmpzXmlConstants.EXPENSE_ASSIGNMENT);
 		createFieldSchemaReflist(BaseObject.TAG_PROGRESS_REPORT_REFS, XmpzXmlConstants.PROGRESS_REPORT);
 		

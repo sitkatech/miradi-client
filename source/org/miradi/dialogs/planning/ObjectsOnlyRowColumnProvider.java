@@ -36,6 +36,7 @@ import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.utils.CodeList;
 
 public class ObjectsOnlyRowColumnProvider extends AbstractPlanningTreeRowColumnProvider
@@ -112,7 +113,7 @@ public class ObjectsOnlyRowColumnProvider extends AbstractPlanningTreeRowColumnP
 		if (propertyName.equals(Cause.OBJECT_NAME_THREAT) || propertyName.equals(Cause.OBJECT_NAME_CONTRIBUTING_FACTOR))
 			return ObjectsOnlyRowColumnProvider.getDirectThreatsColumns();
 		
-		if (propertyName.equals(ResourceAssignment.OBJECT_NAME))
+		if (propertyName.equals(ResourceAssignmentSchema.OBJECT_NAME))
 			return ObjectsOnlyRowColumnProvider.getAssignmentColumns();
 		
 		EAM.logError("getVisibleColumnsForSingleType unknown choice: " + propertyName);

@@ -32,6 +32,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItemBaseObjectWrapper;
 import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.FundingSourceSchema;
+import org.miradi.schemas.ResourceAssignmentSchema;
 
 public class ResourceAssignmentMainTableModel extends AbstractSummaryTableModel
 {
@@ -209,7 +210,7 @@ public class ResourceAssignmentMainTableModel extends AbstractSummaryTableModel
 	@Override
 	protected int getListType()
 	{
-		return ResourceAssignment.getObjectType();
+		return ResourceAssignmentSchema.getObjectType();
 	}
 	
 	@Override

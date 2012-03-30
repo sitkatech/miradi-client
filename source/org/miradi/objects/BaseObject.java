@@ -85,6 +85,7 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.DateRange;
@@ -451,7 +452,7 @@ abstract public class BaseObject
 	public int getAnnotationType(String tag)
 	{
 		if (tag.equals(TAG_RESOURCE_ASSIGNMENT_IDS))
-			return ResourceAssignment.getObjectType();
+			return ResourceAssignmentSchema.getObjectType();
 		
 		if (tag.equals(TAG_PROGRESS_REPORT_REFS))
 			return ProgressReport.getObjectType();
@@ -1176,7 +1177,7 @@ abstract public class BaseObject
 	
 	public ORefList getResourceAssignmentRefs()
 	{
-		return new ORefList(ResourceAssignment.getObjectType(), getIdListData(TAG_RESOURCE_ASSIGNMENT_IDS));
+		return new ORefList(ResourceAssignmentSchema.getObjectType(), getIdListData(TAG_RESOURCE_ASSIGNMENT_IDS));
 	}
 	
 	public ORefList getAllObjectsToDeepCopy(ORefList deepCopiedFactorRefs)

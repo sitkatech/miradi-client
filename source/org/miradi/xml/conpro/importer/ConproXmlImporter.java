@@ -102,6 +102,7 @@ import org.miradi.questions.TncTerrestrialEcoRegionQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateUnitEffort;
@@ -302,10 +303,10 @@ public class ConproXmlImporter implements ConProMiradiXml
 		String endDateAsString = getNodeContent(activityNode, ACTIVITY_END_DATE);
 		if (startDateAsString.length() > 0 && endDateAsString.length() > 0)
 		{
-			ORef resourceAssignmentRef = getProject().createObject(ResourceAssignment.getObjectType());
+			ORef resourceAssignmentRef = getProject().createObject(ResourceAssignmentSchema.getObjectType());
 			DateUnitEffortList dateUnitEffortList = createDateUnitEffortList(startDateAsString, endDateAsString);
 			setData(resourceAssignmentRef, ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());
-			setIdListFromRefListData(activityRef, ResourceAssignment.TAG_RESOURCE_ASSIGNMENT_IDS, new ORefList(resourceAssignmentRef), ResourceAssignment.getObjectType());
+			setIdListFromRefListData(activityRef, ResourceAssignment.TAG_RESOURCE_ASSIGNMENT_IDS, new ORefList(resourceAssignmentRef), ResourceAssignmentSchema.getObjectType());
 		}
 	}
 
