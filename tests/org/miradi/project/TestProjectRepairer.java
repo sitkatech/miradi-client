@@ -42,7 +42,6 @@ import org.miradi.objects.Goal;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.ResourceAssignment;
-import org.miradi.objects.ScopeBox;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
@@ -57,6 +56,7 @@ import org.miradi.schemas.GroupBoxSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.IntermediateResultSchema;
+import org.miradi.schemas.ScopeBoxSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.views.diagram.LinkCreator;
@@ -188,7 +188,7 @@ public class TestProjectRepairer extends TestCaseWithProject
 	
 	public void testGetFactorsWithoutDiagramFactors() throws Exception
 	{
-		verifyFactorBeingReferredToByDiagramFactor(ScopeBox.getObjectType());
+		verifyFactorBeingReferredToByDiagramFactor(ScopeBoxSchema.getObjectType());
 		verifyFactorBeingReferredToByDiagramFactor(TargetSchema.getObjectType());
 		verifyFactorBeingReferredToByDiagramFactor(HumanWelfareTargetSchema.getObjectType());
 		verifyFactorBeingReferredToByDiagramFactor(CauseSchema.getObjectType());

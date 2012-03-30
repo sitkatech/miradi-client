@@ -63,7 +63,6 @@ import org.miradi.objects.DiagramObject;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ResultsChainDiagram;
-import org.miradi.objects.ScopeBox;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.TaggedObjectSet;
@@ -80,6 +79,7 @@ import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.IntermediateResultSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
+import org.miradi.schemas.ScopeBoxSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.views.umbrella.LegendPanel;
@@ -138,7 +138,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 	
 	private void createLegendCheckBoxes()
 	{
-		createCheckBox(ScopeBox.OBJECT_NAME);
+		createCheckBox(ScopeBoxSchema.OBJECT_NAME);
 		createCheckBox(TargetSchema.OBJECT_NAME);
 		createCheckBox(HumanWelfareTargetSchema.OBJECT_NAME);
 		
@@ -149,7 +149,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		createCheckBox(Strategy.OBJECT_NAME);
 		createCheckBox(Strategy.OBJECT_NAME_DRAFT);
 		createCheckBox(TextBox.OBJECT_NAME);
-		createCheckBox(ScopeBox.OBJECT_NAME);
+		createCheckBox(ScopeBoxSchema.OBJECT_NAME);
 		createCheckBox(GroupBoxSchema.OBJECT_NAME);
 		
 		createCheckBox(FactorLink.OBJECT_NAME);
@@ -168,7 +168,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		jpanel.disableFill();
 		jpanel.setBackground(AppPreferences.getControlPanelBackgroundColor());
 		
-		addButtonLineWithCheckBox(jpanel, ScopeBox.getObjectType(), ScopeBox.OBJECT_NAME, actions.get(ActionInsertScopeBox.class));
+		addButtonLineWithCheckBox(jpanel, ScopeBoxSchema.getObjectType(), ScopeBoxSchema.OBJECT_NAME, actions.get(ActionInsertScopeBox.class));
 		
 		addButtonLineWithCheckBox(jpanel, TargetSchema.getObjectType(), TargetSchema.OBJECT_NAME, actions.get(ActionInsertTarget.class));
 		if (getProject().getMetadata().isHumanWelfareTargetMode())

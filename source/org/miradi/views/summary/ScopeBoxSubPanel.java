@@ -23,18 +23,19 @@ import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.objects.Factor;
 import org.miradi.objects.ScopeBox;
 import org.miradi.project.Project;
+import org.miradi.schemas.ScopeBoxSchema;
 
 public class ScopeBoxSubPanel extends ObjectDataInputPanel
 {
 	public ScopeBoxSubPanel(Project projectToUse) throws Exception
 	{
-		super(projectToUse, ScopeBox.getObjectType());
+		super(projectToUse, ScopeBoxSchema.getObjectType());
 		
-		addField(createReadonlyTextField(ScopeBox.getObjectType(), ScopeBox.TAG_LABEL));
-		addField(createReadonlyTextField(ScopeBox.getObjectType(), ScopeBox.TAG_TEXT));
+		addField(createReadonlyTextField(ScopeBoxSchema.getObjectType(), ScopeBox.TAG_LABEL));
+		addField(createReadonlyTextField(ScopeBoxSchema.getObjectType(), ScopeBox.TAG_TEXT));
 
-		addField(createReadOnlyObjectList(ScopeBox.getObjectType(), Factor.PSEUDO_TAG_CONCEPTUAL_DIAGRAM_REFS));
-		addField(createReadOnlyObjectList(ScopeBox.getObjectType(), Factor.PSEUDO_TAG_RESULTS_CHAIN_REFS));
+		addField(createReadOnlyObjectList(ScopeBoxSchema.getObjectType(), Factor.PSEUDO_TAG_CONCEPTUAL_DIAGRAM_REFS));
+		addField(createReadOnlyObjectList(ScopeBoxSchema.getObjectType(), Factor.PSEUDO_TAG_RESULTS_CHAIN_REFS));
 		
 		updateFieldsFromProject();
 	}

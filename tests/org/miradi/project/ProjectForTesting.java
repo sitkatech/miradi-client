@@ -145,6 +145,7 @@ import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
+import org.miradi.schemas.ScopeBoxSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
@@ -676,7 +677,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public ScopeBox createScopeBox() throws Exception
 	{
-		ORef scopeBoxRef = createObject(ScopeBox.getObjectType());
+		ORef scopeBoxRef = createObject(ScopeBoxSchema.getObjectType());
 		
 		return ScopeBox.find(this, scopeBoxRef);
 	}

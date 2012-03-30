@@ -25,6 +25,7 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.ScopeBox;
+import org.miradi.schemas.ScopeBoxSchema;
 import org.miradi.views.diagram.InsertFactorDoer;
 
 public class InsertScopeBoxDoer extends InsertFactorDoer
@@ -32,7 +33,7 @@ public class InsertScopeBoxDoer extends InsertFactorDoer
 	@Override
 	public void forceVisibleInLayerManager() throws Exception
 	{
-		getCurrentLayerManager().setVisibility(ScopeBox.OBJECT_NAME, true);
+		getCurrentLayerManager().setVisibility(ScopeBoxSchema.OBJECT_NAME, true);
 	}
 
 	@Override
@@ -44,7 +45,7 @@ public class InsertScopeBoxDoer extends InsertFactorDoer
 	@Override
 	public int getTypeToInsert()
 	{
-		return ScopeBox.getObjectType();
+		return ScopeBoxSchema.getObjectType();
 	}
 	
 	@Override

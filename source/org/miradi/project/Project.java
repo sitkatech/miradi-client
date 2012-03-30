@@ -97,7 +97,6 @@ import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.RareProjectData;
 import org.miradi.objects.RatingCriterion;
-import org.miradi.objects.ScopeBox;
 import org.miradi.objects.TableSettings;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.TextBox;
@@ -125,6 +124,7 @@ import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.DashboardSchema;
 import org.miradi.schemas.DiagramFactorSchema;
+import org.miradi.schemas.ScopeBoxSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
@@ -250,7 +250,7 @@ public class Project
 	
 	public ScopeBoxPool getScopeBoxPool()
 	{
-		return (ScopeBoxPool) getPool(ScopeBox.getObjectType());
+		return (ScopeBoxPool) getPool(ScopeBoxSchema.getObjectType());
 	}
 	
 	public CausePool getCausePool()

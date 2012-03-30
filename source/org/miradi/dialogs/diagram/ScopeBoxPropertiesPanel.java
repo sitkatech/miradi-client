@@ -33,6 +33,7 @@ import org.miradi.questions.DiagramFactorFontSizeQuestion;
 import org.miradi.questions.DiagramFactorFontStyleQuestion;
 import org.miradi.questions.ScopeBoxTypeQuestion;
 import org.miradi.schemas.DiagramFactorSchema;
+import org.miradi.schemas.ScopeBoxSchema;
 
 public class ScopeBoxPropertiesPanel extends ObjectDataInputPanel
 {
@@ -44,7 +45,7 @@ public class ScopeBoxPropertiesPanel extends ObjectDataInputPanel
 
 		addField(createExpandableField(ScopeBox.TAG_LABEL));
 		addField(createMultilineField(ScopeBox.TAG_TEXT));
-		addField(createChoiceField(ScopeBox.getObjectType(), ScopeBox.TAG_SCOPE_BOX_TYPE_CODE, ScopeBoxTypeQuestion.createScopeBoxTypeQuestion()));
+		addField(createChoiceField(ScopeBoxSchema.getObjectType(), ScopeBox.TAG_SCOPE_BOX_TYPE_CODE, ScopeBoxTypeQuestion.createScopeBoxTypeQuestion()));
 		
 		ObjectDataInputField fontField = createChoiceField(DiagramFactorSchema.getObjectType(), DiagramFactor.TAG_FONT_SIZE, new DiagramFactorFontSizeQuestion());
 		ObjectDataInputField colorField = createChoiceField(DiagramFactorSchema.getObjectType(), DiagramFactor.TAG_FOREGROUND_COLOR, new DiagramFactorFontColorQuestion());
