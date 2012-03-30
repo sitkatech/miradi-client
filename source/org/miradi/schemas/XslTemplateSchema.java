@@ -20,10 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.XslTemplate;
 
 public class XslTemplateSchema extends BaseObjectSchema
 {
+	public static final String OBJECT_NAME = "XslTemplate";
+
 	public XslTemplateSchema()
 	{
 		super();
@@ -36,5 +39,10 @@ public class XslTemplateSchema extends BaseObjectSchema
 		
 		createFieldSchemaMultiLineUserText(XslTemplate.TAG_TEMPLATE_CONTENTS);
 		createFieldSchemaSingleLineUserText(XslTemplate.TAG_FILE_EXTENSION);
+	}
+
+	public static int getObjectType()
+	{
+		return ObjectType.XSL_TEMPLATE;
 	}
 }

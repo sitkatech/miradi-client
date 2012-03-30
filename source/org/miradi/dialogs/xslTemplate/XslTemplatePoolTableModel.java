@@ -23,12 +23,13 @@ package org.miradi.dialogs.xslTemplate;
 import org.miradi.dialogs.base.ObjectPoolTableModel;
 import org.miradi.objects.XslTemplate;
 import org.miradi.project.Project;
+import org.miradi.schemas.XslTemplateSchema;
 
 public class XslTemplatePoolTableModel extends ObjectPoolTableModel
 {
 	public XslTemplatePoolTableModel(Project projectToUse)
 	{
-		super(projectToUse, XslTemplate.getObjectType(), COLUMN_TAGS);
+		super(projectToUse, XslTemplateSchema.getObjectType(), COLUMN_TAGS);
 	}
 	
 	@Override

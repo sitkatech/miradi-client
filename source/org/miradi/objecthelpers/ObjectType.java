@@ -24,7 +24,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.miradi.main.EAM;
-import org.miradi.objects.XslTemplate;
 import org.miradi.project.Project;
 import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.AudienceSchema;
@@ -55,6 +54,7 @@ import org.miradi.schemas.ViewDataSchema;
 import org.miradi.schemas.WcpaProjectDataSchema;
 import org.miradi.schemas.WcsProjectDataSchema;
 import org.miradi.schemas.WwfProjectDataSchema;
+import org.miradi.schemas.XslTemplateSchema;
 
 public class ObjectType
 {
@@ -165,7 +165,7 @@ public class ObjectType
 			BudgetCategoryOneSchema.getObjectType(),
 			BudgetCategoryTwoSchema.getObjectType(),
 			DashboardSchema.getObjectType(),
-			XslTemplate.getObjectType(),
+			XslTemplateSchema.getObjectType(),
 		};
 		
 		return new HashSet<Integer>(Arrays.asList(types));

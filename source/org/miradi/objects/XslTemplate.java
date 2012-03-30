@@ -22,7 +22,6 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.XslTemplateSchema;
@@ -43,24 +42,19 @@ public class XslTemplate extends BaseObject
 	@Override
 	public int getType()
 	{
-		return getObjectType();
+		return XslTemplateSchema.getObjectType();
 	}
 	
 	@Override
 	public String getTypeName()
 	{
-		return OBJECT_NAME;
+		return XslTemplateSchema.OBJECT_NAME;
 	}
 
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;
-	}
-	
-	public static int getObjectType()
-	{
-		return ObjectType.XSL_TEMPLATE;
 	}
 	
 	public static boolean is(BaseObject object)
@@ -75,7 +69,7 @@ public class XslTemplate extends BaseObject
 	
 	public static boolean is(int objectType)
 	{
-		return objectType == getObjectType();
+		return objectType == XslTemplateSchema.getObjectType();
 	}
 	
 	public static XslTemplate find(ObjectManager objectManager, ORef xslTemplateRef)
@@ -90,6 +84,4 @@ public class XslTemplate extends BaseObject
 	
 	public static final String TAG_TEMPLATE_CONTENTS = "TemplateContents";
 	public static final String TAG_FILE_EXTENSION = "FileExtension";
-	
-	public static final String OBJECT_NAME = "XslTemplate";
 }
