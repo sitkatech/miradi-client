@@ -64,6 +64,7 @@ import org.miradi.objects.FactorLink;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.ViewData;
+import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
@@ -736,7 +737,7 @@ public class TestProject extends MiradiTestCase
 
 		diskProject.createOrOpenWithDefaultObjectsAndDiagramHelp(projectFile, new NullProgressMeter());
 		
-		ORef conceptualModelRef = diskProject.getConceptualModelDiagramPool().getORefList().getRefForType(ConceptualModelDiagram.getObjectType());
+		ORef conceptualModelRef = diskProject.getConceptualModelDiagramPool().getORefList().getRefForType(ConceptualModelDiagramSchema.getObjectType());
 		ConceptualModelDiagram conceptualModel = ConceptualModelDiagram.find(diskProject, conceptualModelRef);
 		try
 		{

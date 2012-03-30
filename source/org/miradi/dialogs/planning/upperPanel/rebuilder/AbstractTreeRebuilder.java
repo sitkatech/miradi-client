@@ -35,7 +35,6 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
-import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.Desire;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Goal;
@@ -56,6 +55,7 @@ import org.miradi.project.Project;
 import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.BudgetCategoryOneSchema;
 import org.miradi.schemas.BudgetCategoryTwoSchema;
+import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.schemas.GoalSchema;
@@ -161,7 +161,7 @@ abstract public class AbstractTreeRebuilder
 	private AbstractPlanningTreeNode createChildNode(AbstractPlanningTreeNode parentNode, ORef refToAdd) throws Exception
 	{
 		int[] supportedTypes = new int[] {
-			ConceptualModelDiagram.getObjectType(),
+			ConceptualModelDiagramSchema.getObjectType(),
 			ResultsChainDiagram.getObjectType(),
 			
 			Strategy.getObjectType(),
@@ -403,7 +403,7 @@ abstract public class AbstractTreeRebuilder
 			HumanWelfareTarget.getObjectType(),
 			KeyEcologicalAttribute.getObjectType(),
 			ResultsChainDiagram.getObjectType(),
-			ConceptualModelDiagram.getObjectType(),
+			ConceptualModelDiagramSchema.getObjectType(),
 			Measurement.getObjectType(),
 			GoalSchema.getObjectType(),
 			SubTarget.getObjectType(),

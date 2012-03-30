@@ -122,6 +122,7 @@ import org.miradi.questions.FontSizeQuestion;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
+import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.DashboardSchema;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.utils.CodeList;
@@ -770,7 +771,7 @@ public class Project
 		if (getConceptualModelDiagramPool().getORefList().size() != 1)
 			return;
 		
-		ORef mainDiagramRef = getConceptualModelDiagramPool().getORefList().getRefForType(ConceptualModelDiagram.getObjectType());
+		ORef mainDiagramRef = getConceptualModelDiagramPool().getORefList().getRefForType(ConceptualModelDiagramSchema.getObjectType());
 		ConceptualModelDiagram mainDiagram = (ConceptualModelDiagram) findObject(mainDiagramRef);
 		ORefList diagramFactorRefs = mainDiagram.getAllDiagramFactorRefs();
 		if (diagramFactorRefs.size() != 0)

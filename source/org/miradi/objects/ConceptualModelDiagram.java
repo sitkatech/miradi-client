@@ -26,7 +26,6 @@ import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
@@ -47,7 +46,7 @@ public class ConceptualModelDiagram extends DiagramObject
 	@Override
 	public int getType()
 	{
-		return getObjectType();
+		return ConceptualModelDiagramSchema.getObjectType();
 	}
 
 	@Override
@@ -64,7 +63,7 @@ public class ConceptualModelDiagram extends DiagramObject
 	@Override
 	public String getTypeName()
 	{
-		return OBJECT_NAME;
+		return ConceptualModelDiagramSchema.OBJECT_NAME;
 	}
 
 	@Override
@@ -91,11 +90,6 @@ public class ConceptualModelDiagram extends DiagramObject
 		return new ORefList(new Vector<BaseObject>(allDraftStrategies)).toString();
 	}
 
-	public static int getObjectType()
-	{
-		return ObjectType.CONCEPTUAL_MODEL_DIAGRAM;
-	}
-	
 	public static boolean is(ORef ref)
 	{
 		return is(ref.getObjectType());
@@ -103,7 +97,7 @@ public class ConceptualModelDiagram extends DiagramObject
 	
 	public static boolean is(int objectType)
 	{
-		return objectType == getObjectType();
+		return objectType == ConceptualModelDiagramSchema.getObjectType();
 	}
 	
 	public static ConceptualModelDiagram find(ObjectManager objectManager, ORef conceptualModelRef)
@@ -118,7 +112,6 @@ public class ConceptualModelDiagram extends DiagramObject
 	
 	public static final String PSEUDO_DRAFT_STRATEGY_REFS = "PseudoDraftStrategies";
 	
-	public static final String OBJECT_NAME = "ConceptualModelDiagram";
 	public static final String DEFAULT_MAIN_NAME = EAM.text("[Main Diagram]");
 	public static final String DEFAULT_BLANK_NAME = EAM.text("[Not Named]");
 }

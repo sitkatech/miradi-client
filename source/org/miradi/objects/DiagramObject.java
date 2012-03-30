@@ -36,6 +36,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.utils.CodeList;
@@ -442,7 +443,7 @@ abstract public class DiagramObject extends BaseObject
 	private static ORefList findOwnersOfObject(Project projectToUse, ORef ref, int objectType)
 	{
 		ORefSet diagrams = new ORefSet();
-		diagrams.addAllRefs(findOwnersOfObject(projectToUse, ConceptualModelDiagram.getObjectType(), ref, objectType));
+		diagrams.addAllRefs(findOwnersOfObject(projectToUse, ConceptualModelDiagramSchema.getObjectType(), ref, objectType));
 		diagrams.addAllRefs(findOwnersOfObject(projectToUse, ResultsChainDiagram.getObjectType(), ref, objectType));
 		
 		return diagrams.toRefList();

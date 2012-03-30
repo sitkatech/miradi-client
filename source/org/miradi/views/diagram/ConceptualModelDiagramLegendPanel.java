@@ -28,8 +28,8 @@ import org.miradi.icons.StressIcon;
 import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.Cause;
-import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.Stress;
+import org.miradi.schemas.ConceptualModelDiagramSchema;
 
 public class ConceptualModelDiagramLegendPanel extends DiagramLegendPanel
 {
@@ -54,6 +54,6 @@ public class ConceptualModelDiagramLegendPanel extends DiagramLegendPanel
 	@Override
 	protected int getDiagramType()
 	{
-		return ConceptualModelDiagram.getObjectType();
+		return ConceptualModelDiagramSchema.getObjectType();
 	}
 }

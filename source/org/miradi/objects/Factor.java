@@ -35,6 +35,7 @@ import org.miradi.objecthelpers.TargetSet;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
@@ -407,7 +408,7 @@ abstract public class Factor extends BaseObject
 				return getBaseObjectLabelsOnASingleLine(getDirectOrIndirectIndicatorRefs());
 			
 			if(fieldTag.equals(PSEUDO_TAG_CONCEPTUAL_DIAGRAM_REFS))
-				return DiagramObject.getDiagramRefsContainingFactor(getProject(), ConceptualModelDiagram.getObjectType(), getRef()).toString();
+				return DiagramObject.getDiagramRefsContainingFactor(getProject(), ConceptualModelDiagramSchema.getObjectType(), getRef()).toString();
 			
 			if(fieldTag.equals(PSEUDO_TAG_RESULTS_CHAIN_REFS))
 				return DiagramObject.getDiagramRefsContainingFactor(getProject(), ResultsChainDiagram.getObjectType(), getRef()).toString();

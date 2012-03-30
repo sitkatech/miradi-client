@@ -23,7 +23,6 @@ import org.miradi.dialogs.planning.upperPanel.WorkPlanTreeTablePanel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.CodeToCodeListMap;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.TableSettings;
@@ -31,6 +30,7 @@ import org.miradi.objects.Task;
 import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.questions.WorkPlanVisibleRowsQuestion;
+import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.CodeList;
 
@@ -106,7 +106,7 @@ public class WorkPlanRowColumnProvider extends AbstractPlanningTreeRowColumnProv
 	private CodeList createMonitoringRelatedRowCodeList()
 	{
 		return new CodeList(new String[] {
-				ConceptualModelDiagram.OBJECT_NAME,
+				ConceptualModelDiagramSchema.OBJECT_NAME,
 				ResultsChainDiagram.OBJECT_NAME,
 				IndicatorSchema.OBJECT_NAME,
 				Task.METHOD_NAME,
@@ -117,7 +117,7 @@ public class WorkPlanRowColumnProvider extends AbstractPlanningTreeRowColumnProv
 	private CodeList createActionRelatedRowCodeList()
 	{
 		return new CodeList(new String[] {
-				ConceptualModelDiagram.OBJECT_NAME,
+				ConceptualModelDiagramSchema.OBJECT_NAME,
 				ResultsChainDiagram.OBJECT_NAME,
 				Strategy.OBJECT_NAME,
 				Task.ACTIVITY_NAME,
@@ -128,7 +128,7 @@ public class WorkPlanRowColumnProvider extends AbstractPlanningTreeRowColumnProv
 	protected CodeList createAllRowCodeList()
 	{
 		return new CodeList(new String[] {
-				ConceptualModelDiagram.OBJECT_NAME,
+				ConceptualModelDiagramSchema.OBJECT_NAME,
 				ResultsChainDiagram.OBJECT_NAME,
 				Strategy.OBJECT_NAME,
 				Task.ACTIVITY_NAME,

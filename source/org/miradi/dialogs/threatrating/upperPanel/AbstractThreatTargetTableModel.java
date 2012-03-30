@@ -26,7 +26,6 @@ import java.util.Vector;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Cause;
-import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Target;
@@ -36,6 +35,7 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.ThreatRatingQuestion;
+import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.utils.SortableTableModel;
 
 abstract public class AbstractThreatTargetTableModel extends SortableTableModel
@@ -66,7 +66,7 @@ abstract public class AbstractThreatTargetTableModel extends SortableTableModel
 		for (int index = 0; index < allTargets.length; ++index)
 		{
 			ORefList diagramRefsContainingTarget = DiagramObject.getDiagramRefsContainingFactor(projectToUse, allTargets[index].getRef());
-			ORef conceptualModelDiagramRef = diagramRefsContainingTarget.getRefForType(ConceptualModelDiagram.getObjectType());
+			ORef conceptualModelDiagramRef = diagramRefsContainingTarget.getRefForType(ConceptualModelDiagramSchema.getObjectType());
 			if (!conceptualModelDiagramRef.isInvalid())
 				targetsInConceptualModelDiagrams.add(allTargets[index]);
 		}

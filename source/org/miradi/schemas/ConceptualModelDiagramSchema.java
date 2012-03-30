@@ -20,10 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.ConceptualModelDiagram;
 
 public class ConceptualModelDiagramSchema extends DiagramObjectSchema
 {
+	public static final String OBJECT_NAME = "ConceptualModelDiagram";
+
 	public ConceptualModelDiagramSchema()
 	{
 		super();
@@ -35,5 +38,10 @@ public class ConceptualModelDiagramSchema extends DiagramObjectSchema
 		super.fillFieldSchemas();
 		
 		createPseudoFieldSchemaRefList(ConceptualModelDiagram.PSEUDO_DRAFT_STRATEGY_REFS);
+	}
+
+	public static int getObjectType()
+	{
+		return ObjectType.CONCEPTUAL_MODEL_DIAGRAM;
 	}
 }
