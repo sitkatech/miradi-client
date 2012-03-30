@@ -22,7 +22,6 @@ package org.miradi.objects;
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
@@ -47,13 +46,13 @@ public class ProgressReport extends BaseObject
 	@Override
 	public int getType()
 	{
-		return getObjectType();
+		return ProgressReportSchema.getObjectType();
 	}
 	
 	@Override
 	public String getTypeName()
 	{
-		return OBJECT_NAME;
+		return ProgressReportSchema.OBJECT_NAME;
 	}
 
 	@Override
@@ -64,11 +63,6 @@ public class ProgressReport extends BaseObject
 			IndicatorSchema.getObjectType(),
 			TaskSchema.getObjectType(),
 		};
-	}
-	
-	public static int getObjectType()
-	{
-		return ObjectType.PROGRESS_REPORT;
 	}
 	
 	public boolean canHaveIndicators()
@@ -116,7 +110,7 @@ public class ProgressReport extends BaseObject
 
 	public static boolean is(int objectType)
 	{
-		return (objectType == getObjectType());
+		return (objectType == ProgressReportSchema.getObjectType());
 	}
 	
 	public static ProgressReport find(ObjectManager objectManager, ORef progressReportRef)
@@ -128,8 +122,6 @@ public class ProgressReport extends BaseObject
 	{
 		return find(project.getObjectManager(), progressReportRef);
 	}
-	
-	public static final String OBJECT_NAME = "ProgressReport";
 	
 	public static final String TAG_PROGRESS_STATUS = "ProgressStatus";
 	public static final String TAG_PROGRESS_DATE = "ProgressDate";

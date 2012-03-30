@@ -19,8 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram.doers;
 
-import org.miradi.objects.ProgressReport;
 import org.miradi.objects.Strategy;
+import org.miradi.schemas.ProgressReportSchema;
 import org.miradi.views.diagram.CreateAnnotationDoer;
 
 public class CreateStrategyProgressReportDoer extends CreateAnnotationDoer
@@ -34,6 +34,6 @@ public class CreateStrategyProgressReportDoer extends CreateAnnotationDoer
 	@Override
 	public int getAnnotationType()
 	{
-		return ProgressReport.getObjectType();
+		return ProgressReportSchema.getObjectType();
 	}
 }

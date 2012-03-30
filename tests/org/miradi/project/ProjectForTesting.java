@@ -151,6 +151,7 @@ import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.OrganizationSchema;
 import org.miradi.schemas.OtherNotableSpeciesSchema;
 import org.miradi.schemas.ProgressPercentSchema;
+import org.miradi.schemas.ProgressReportSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.ScopeBoxSchema;
@@ -877,7 +878,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public ProgressReport createProgressReport() throws Exception
 	{
-		ORef progressReportRef = createObject(ProgressReport.getObjectType());
+		ORef progressReportRef = createObject(ProgressReportSchema.getObjectType());
 		return ProgressReport.find(this, progressReportRef);
 	}
 	

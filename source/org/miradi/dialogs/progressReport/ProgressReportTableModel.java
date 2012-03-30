@@ -31,6 +31,7 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.ProgressReportLongStatusQuestion;
 import org.miradi.questions.TaglessChoiceItem;
+import org.miradi.schemas.ProgressReportSchema;
 import org.miradi.views.diagram.doers.AbstractCreateProgressDoer;
 
 public class ProgressReportTableModel extends EditableObjectRefsTableModel
@@ -59,7 +60,7 @@ public class ProgressReportTableModel extends EditableObjectRefsTableModel
 	@Override
 	protected int getObjectType()
 	{
-		return ProgressReport.getObjectType();
+		return ProgressReportSchema.getObjectType();
 	}
 
 	public Object getValueAt(int rowIndex, int columnIndex)

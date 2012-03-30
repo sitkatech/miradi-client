@@ -20,11 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.ProgressReport;
 import org.miradi.questions.ProgressReportLongStatusQuestion;
 
 public class ProgressReportSchema extends BaseObjectSchema
 {
+	public static final String OBJECT_NAME = "ProgressReport";
+
 	public ProgressReportSchema()
 	{
 		super();
@@ -38,5 +41,10 @@ public class ProgressReportSchema extends BaseObjectSchema
 		createFieldSchemaChoice(ProgressReport.TAG_PROGRESS_STATUS, getQuestion(ProgressReportLongStatusQuestion.class));
 		createFieldSchemaDate(ProgressReport.TAG_PROGRESS_DATE);
 		createFieldSchemaMultiLineUserText(ProgressReport.TAG_DETAILS);
+	}
+
+	public static int getObjectType()
+	{
+		return ObjectType.PROGRESS_REPORT;
 	}
 }
