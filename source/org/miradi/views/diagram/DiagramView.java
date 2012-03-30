@@ -164,6 +164,7 @@ import org.miradi.questions.DiagramModeQuestion;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.DiagramLinkSchema;
+import org.miradi.schemas.GroupBoxSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.utils.DiagramCorruptionDetector;
 import org.miradi.utils.PointList;
@@ -754,7 +755,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 			if (event.isSetDataCommandWithThisTypeAndTag(DiagramFactorSchema.getObjectType(), DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE))
 				handleTextBoxZOrderChanged(setCommand.getObjectORef());
 			
-			if(event.isSetDataCommandWithThisTypeAndTag(GroupBox.getObjectType(), GroupBox.TAG_LABEL))
+			if(event.isSetDataCommandWithThisTypeAndTag(GroupBoxSchema.getObjectType(), GroupBox.TAG_LABEL))
 				getDiagramModel().updateGroupBoxCells();
 			
 			forceDiagramComponentRepaint();

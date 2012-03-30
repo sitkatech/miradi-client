@@ -28,7 +28,6 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.GroupBox;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.ScopeBox;
 import org.miradi.objects.Strategy;
@@ -43,6 +42,7 @@ import org.miradi.questions.DiagramFactorFontStyleQuestion;
 import org.miradi.questions.TextBoxZOrderQuestion;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.DiagramFactorSchema;
+import org.miradi.schemas.GroupBoxSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.EnhancedJsonObject;
@@ -143,7 +143,7 @@ public class DiagramFactorPoolImporter extends AbstractBaseObjectPoolImporter
 			return TextBox.getObjectType();
 		
 		if (objectTypeName.equals(GROUP_BOX))
-			return GroupBox.getObjectType();
+			return GroupBoxSchema.getObjectType();
 		
 		if (isTask(objectTypeName))
 			return Task.getObjectType();

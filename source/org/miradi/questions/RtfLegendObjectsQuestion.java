@@ -39,7 +39,6 @@ import org.miradi.icons.TextBoxIcon;
 import org.miradi.icons.ThreatReductionResultIcon;
 import org.miradi.main.EAM;
 import org.miradi.objects.Cause;
-import org.miradi.objects.GroupBox;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.ProjectMetadata;
@@ -50,6 +49,7 @@ import org.miradi.objects.TextBox;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.GoalSchema;
+import org.miradi.schemas.GroupBoxSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
@@ -79,7 +79,7 @@ public class RtfLegendObjectsQuestion extends StaticChoiceQuestion
 				new ChoiceItem(IndicatorSchema.OBJECT_NAME, EAM.text("Indicator"), IconManager.getIndicatorIcon()),
 				new ChoiceItem(Stress.OBJECT_NAME, EAM.text("Stress"), new StressIcon()),
 				new ChoiceItem(TextBox.OBJECT_NAME, EAM.text("Text Box"), new TextBoxIcon()),
-				new ChoiceItem(GroupBox.OBJECT_NAME, EAM.text("Group Box"), new GroupBoxIcon()),
+				new ChoiceItem(GroupBoxSchema.OBJECT_NAME, EAM.text("Group Box"), new GroupBoxIcon()),
 				new ChoiceItem(Task.OBJECT_NAME, EAM.text("Task"), new TaskIcon()),
 				new ChoiceItem(Task.METHOD_NAME, EAM.text("Method"), new MethodIcon()),
 				new ChoiceItem(Task.ACTIVITY_NAME, EAM.text("Activity"), new ActivityIcon()),

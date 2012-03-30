@@ -39,8 +39,8 @@ import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
-import org.miradi.objects.GroupBox;
 import org.miradi.schemas.DiagramFactorSchema;
+import org.miradi.schemas.GroupBoxSchema;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.PointList;
@@ -227,7 +227,7 @@ public class FactorMoveHandler
 		int deltaX = factorCell.getLocation().x - factorCell.getDiagramFactor().getLocation().x;
 		int deltaY = factorCell.getLocation().y - factorCell.getDiagramFactor().getLocation().y;
 		CommandVector commandsToMove = new CommandVector();
-		if (factorCell.getWrappedType() != GroupBox.getObjectType())
+		if (factorCell.getWrappedType() != GroupBoxSchema.getObjectType())
 			return new CommandVector();
 		
 		ORefList groupChildRefs = factorCell.getDiagramFactor().getGroupBoxChildrenRefs();

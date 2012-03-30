@@ -20,10 +20,19 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import org.miradi.objecthelpers.ObjectType;
+
 public class GroupBoxSchema extends FactorSchema
 {
+	public static final String OBJECT_NAME = "GroupBox";
+
 	public GroupBoxSchema()
 	{
 		super();
+	}
+
+	public static int getObjectType()
+	{
+		return ObjectType.GROUP_BOX;
 	}
 }

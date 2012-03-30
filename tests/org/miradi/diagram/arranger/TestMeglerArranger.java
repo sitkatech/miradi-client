@@ -33,11 +33,11 @@ import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
-import org.miradi.objects.GroupBox;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.TestDiagramObject;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.DiagramFactorSchema;
+import org.miradi.schemas.GroupBoxSchema;
 import org.miradi.schemas.TargetSchema;
 
 public class TestMeglerArranger extends TestCaseWithProject
@@ -115,7 +115,7 @@ public class TestMeglerArranger extends TestCaseWithProject
 		MeglerArranger arranger = new MeglerArranger(diagram);
 		arranger.arrange();
 		
-		Set<DiagramFactor> groupBoxDiagramFactors = diagram.getDiagramFactorsThatWrap(GroupBox.getObjectType());
+		Set<DiagramFactor> groupBoxDiagramFactors = diagram.getDiagramFactorsThatWrap(GroupBoxSchema.getObjectType());
 		assertEquals("Didn't create one group?", 1, groupBoxDiagramFactors.size());
 		DiagramFactor groupBoxDiagramFactor = groupBoxDiagramFactors.toArray(new DiagramFactor[0])[0];
 		ORefList children = groupBoxDiagramFactor.getGroupBoxChildrenRefs();
@@ -142,7 +142,7 @@ public class TestMeglerArranger extends TestCaseWithProject
 		MeglerArranger arranger = new MeglerArranger(diagram);
 		arranger.arrange();
 
-		Set<DiagramFactor> groupBoxDiagramFactors = diagram.getDiagramFactorsThatWrap(GroupBox.getObjectType());
+		Set<DiagramFactor> groupBoxDiagramFactors = diagram.getDiagramFactorsThatWrap(GroupBoxSchema.getObjectType());
 		assertEquals("Didn't create one group?", 1, groupBoxDiagramFactors.size());
 		ORefList children = groupBoxDiagramFactors.toArray(new DiagramFactor[0])[0].getGroupBoxChildrenRefs();
 		assertEquals("Didn't group top two targets?", 2, children.size());
@@ -164,7 +164,7 @@ public class TestMeglerArranger extends TestCaseWithProject
 		MeglerArranger arranger = new MeglerArranger(diagram);
 		arranger.arrange();
 		
-		Set<DiagramFactor> groupBoxDiagramFactors = diagram.getDiagramFactorsThatWrap(GroupBox.getObjectType());
+		Set<DiagramFactor> groupBoxDiagramFactors = diagram.getDiagramFactorsThatWrap(GroupBoxSchema.getObjectType());
 		assertEquals("Created a group?", 0, groupBoxDiagramFactors.size());
 	}
 	
@@ -189,7 +189,7 @@ public class TestMeglerArranger extends TestCaseWithProject
 		MeglerArranger arranger = new MeglerArranger(diagram);
 		arranger.arrange();
 
-		Set<DiagramFactor> groupBoxDiagramFactors = diagram.getDiagramFactorsThatWrap(GroupBox.getObjectType());
+		Set<DiagramFactor> groupBoxDiagramFactors = diagram.getDiagramFactorsThatWrap(GroupBoxSchema.getObjectType());
 		assertEquals("Didn't create two groups?", 2, groupBoxDiagramFactors.size());
 		DiagramFactor groupBoxDiagramFactor1 = groupBoxDiagramFactors.toArray(new DiagramFactor[0])[0];
 		ORefList children1 = groupBoxDiagramFactor1.getGroupBoxChildrenRefs();
@@ -223,7 +223,7 @@ public class TestMeglerArranger extends TestCaseWithProject
 		MeglerArranger arranger = new MeglerArranger(diagram);
 		arranger.arrange();
 		
-		Set<DiagramFactor> groupBoxDiagramFactors = diagram.getDiagramFactorsThatWrap(GroupBox.getObjectType());
+		Set<DiagramFactor> groupBoxDiagramFactors = diagram.getDiagramFactorsThatWrap(GroupBoxSchema.getObjectType());
 		assertEquals("Didn't create one group?", 1, groupBoxDiagramFactors.size());
 		DiagramFactor targetGroup = getGroup(targetDiagramFactor1);
 		
@@ -248,7 +248,7 @@ public class TestMeglerArranger extends TestCaseWithProject
 		ORefList targets1And2 = new ORefList(new DiagramFactor[] {targetDiagramFactor1, targetDiagramFactor2});
 		ORefList targets3And4 = new ORefList(new DiagramFactor[] {targetDiagramFactor3, targetDiagramFactor4});
 
-		DiagramFactor groupDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(GroupBox.getObjectType());
+		DiagramFactor groupDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(GroupBoxSchema.getObjectType());
 		CommandSetObjectData addChildren = new CommandSetObjectData(groupDiagramFactor.getRef(), DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, targets1And2.toString());
 		getProject().executeCommand(addChildren);
 		
@@ -256,7 +256,7 @@ public class TestMeglerArranger extends TestCaseWithProject
 		MeglerArranger arranger = new MeglerArranger(diagram);
 		arranger.arrange();
 		
-		Set<DiagramFactor> groupBoxDiagramFactors = diagram.getDiagramFactorsThatWrap(GroupBox.getObjectType());
+		Set<DiagramFactor> groupBoxDiagramFactors = diagram.getDiagramFactorsThatWrap(GroupBoxSchema.getObjectType());
 		assertEquals("Didn't create one new group?", 2, groupBoxDiagramFactors.size());
 		DiagramFactor groupBoxDiagramFactor1 = groupBoxDiagramFactors.toArray(new DiagramFactor[0])[0];
 		ORefList children1 = groupBoxDiagramFactor1.getGroupBoxChildrenRefs();
@@ -286,7 +286,7 @@ public class TestMeglerArranger extends TestCaseWithProject
 		MeglerArranger arranger = new MeglerArranger(diagram);
 		arranger.arrange();
 		
-		Set<DiagramFactor> groupBoxDiagramFactors = diagram.getDiagramFactorsThatWrap(GroupBox.getObjectType());
+		Set<DiagramFactor> groupBoxDiagramFactors = diagram.getDiagramFactorsThatWrap(GroupBoxSchema.getObjectType());
 		assertEquals("Created a group?", 0, groupBoxDiagramFactors.size());
 	}
 	
@@ -309,7 +309,7 @@ public class TestMeglerArranger extends TestCaseWithProject
 		MeglerArranger arranger = new MeglerArranger(diagram);
 		arranger.arrange();
 
-		Set<DiagramFactor> groupBoxDiagramFactors = diagram.getDiagramFactorsThatWrap(GroupBox.getObjectType());
+		Set<DiagramFactor> groupBoxDiagramFactors = diagram.getDiagramFactorsThatWrap(GroupBoxSchema.getObjectType());
 		assertEquals("Didn't create two threat groups?", 2, groupBoxDiagramFactors.size());
 		DiagramFactor groupBoxDiagramFactor1 = groupBoxDiagramFactors.toArray(new DiagramFactor[0])[0];
 		ORefSet children1 = new ORefSet(groupBoxDiagramFactor1.getGroupBoxChildrenRefs());
@@ -346,7 +346,7 @@ public class TestMeglerArranger extends TestCaseWithProject
 		MeglerArranger arranger = new MeglerArranger(diagram);
 		arranger.arrange();
 
-		Set<DiagramFactor> groupBoxDiagramFactors = diagram.getDiagramFactorsThatWrap(GroupBox.getObjectType());
+		Set<DiagramFactor> groupBoxDiagramFactors = diagram.getDiagramFactorsThatWrap(GroupBoxSchema.getObjectType());
 		assertEquals("Didn't create one threat group?", 1, groupBoxDiagramFactors.size());
 		DiagramFactor groupBoxDiagramFactor1 = groupBoxDiagramFactors.toArray(new DiagramFactor[0])[0];
 		ORefSet children1 = new ORefSet(groupBoxDiagramFactor1.getGroupBoxChildrenRefs());
@@ -373,7 +373,7 @@ public class TestMeglerArranger extends TestCaseWithProject
 		MeglerArranger arranger = new MeglerArranger(diagram);
 		arranger.arrange();
 		
-		Set<DiagramFactor> groupBoxDiagramFactors = diagram.getDiagramFactorsThatWrap(GroupBox.getObjectType());
+		Set<DiagramFactor> groupBoxDiagramFactors = diagram.getDiagramFactorsThatWrap(GroupBoxSchema.getObjectType());
 		assertEquals("Created more than one group?", 1, groupBoxDiagramFactors.size());
 	}
 
@@ -394,7 +394,7 @@ public class TestMeglerArranger extends TestCaseWithProject
 		MeglerArranger arranger = new MeglerArranger(diagram);
 		arranger.arrange();
 		
-		Set<DiagramFactor> groupBoxDiagramFactors = diagram.getDiagramFactorsThatWrap(GroupBox.getObjectType());
+		Set<DiagramFactor> groupBoxDiagramFactors = diagram.getDiagramFactorsThatWrap(GroupBoxSchema.getObjectType());
 		assertEquals("Created another group?", 1, groupBoxDiagramFactors.size());
 	}
 	
@@ -417,7 +417,7 @@ public class TestMeglerArranger extends TestCaseWithProject
 		MeglerArranger arranger = new MeglerArranger(diagram);
 		arranger.arrange();
 
-		Set<DiagramFactor> groupBoxDiagramFactors = diagram.getDiagramFactorsThatWrap(GroupBox.getObjectType());
+		Set<DiagramFactor> groupBoxDiagramFactors = diagram.getDiagramFactorsThatWrap(GroupBoxSchema.getObjectType());
 		assertEquals("Didn't create two strategy groups?", 2, groupBoxDiagramFactors.size());
 		DiagramFactor groupBoxDiagramFactor1 = groupBoxDiagramFactors.toArray(new DiagramFactor[0])[0];
 		ORefSet children1 = new ORefSet(groupBoxDiagramFactor1.getGroupBoxChildrenRefs());
@@ -457,7 +457,7 @@ public class TestMeglerArranger extends TestCaseWithProject
 		MeglerArranger arranger = new MeglerArranger(diagram);
 		arranger.arrange();
 		
-		Set<DiagramFactor> groupBoxDiagramFactors = diagram.getDiagramFactorsThatWrap(GroupBox.getObjectType());
+		Set<DiagramFactor> groupBoxDiagramFactors = diagram.getDiagramFactorsThatWrap(GroupBoxSchema.getObjectType());
 		assertEquals("Created a group?", 0, groupBoxDiagramFactors.size());
 	}
 	
@@ -535,7 +535,7 @@ public class TestMeglerArranger extends TestCaseWithProject
 		MeglerArranger arranger = new MeglerArranger(diagram);
 		arranger.arrange();
 		
-		Set<DiagramFactor> groupBoxDiagramFactors = diagram.getDiagramFactorsThatWrap(GroupBox.getObjectType());
+		Set<DiagramFactor> groupBoxDiagramFactors = diagram.getDiagramFactorsThatWrap(GroupBoxSchema.getObjectType());
 		assertEquals("Didn't create two threat groups?", 2, groupBoxDiagramFactors.size());
 		
 		DiagramFactor groupBoxDiagramFactor1 = groupBoxDiagramFactors.toArray(new DiagramFactor[0])[0];
@@ -593,7 +593,7 @@ public class TestMeglerArranger extends TestCaseWithProject
 		MeglerArranger arranger = new MeglerArranger(diagram);
 		arranger.arrange();
 		
-		Set<DiagramFactor> groupBoxDiagramFactors = diagram.getDiagramFactorsThatWrap(GroupBox.getObjectType());
+		Set<DiagramFactor> groupBoxDiagramFactors = diagram.getDiagramFactorsThatWrap(GroupBoxSchema.getObjectType());
 		assertEquals("Didn't create one threat group and one strategy group?", 2, groupBoxDiagramFactors.size());
 		
 		DiagramFactor groupBoxDiagramFactor1 = groupBoxDiagramFactors.toArray(new DiagramFactor[0])[0];
@@ -641,7 +641,7 @@ public class TestMeglerArranger extends TestCaseWithProject
 
 	private DiagramFactor createEmptyGroupBox() throws Exception
 	{
-		return getProject().createDiagramFactorAndAddToDiagram(GroupBox.getObjectType());
+		return getProject().createDiagramFactorAndAddToDiagram(GroupBoxSchema.getObjectType());
 	}
 
 	private DiagramFactor getGroup(DiagramFactor diagramfactor)

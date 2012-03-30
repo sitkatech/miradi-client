@@ -29,11 +29,11 @@ import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
-import org.miradi.objects.GroupBox;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Task;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.DiagramLinkSchema;
+import org.miradi.schemas.GroupBoxSchema;
 import org.miradi.schemas.TargetSchema;
 
 public class TestDiagramCorruptionDetector extends TestCaseWithProject
@@ -105,7 +105,7 @@ public class TestDiagramCorruptionDetector extends TestCaseWithProject
 		DiagramObject diagramObject = getProject().getTestingDiagramObject();
 		assertFalse("detected corrupted diagram links?", DiagramCorruptionDetector.getCorruptedDiagramLinksErrorMessages(getProject(), diagramObject).size() > 0);
 		
-		ORef groupBoxDiagramFactorRef = createDiagramFactorAndAddToDiagram(diagramObject, GroupBox.getObjectType());
+		ORef groupBoxDiagramFactorRef = createDiagramFactorAndAddToDiagram(diagramObject, GroupBoxSchema.getObjectType());
 		ORef targetDiagramFactorRef = createDiagramFactorAndAddToDiagram(diagramObject, TargetSchema.getObjectType());
 		
 		ORef causeDiagramFactorRef = createDiagramFactorAndAddToDiagram(diagramObject, TargetSchema.getObjectType());

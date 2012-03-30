@@ -31,6 +31,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.GroupBox;
+import org.miradi.schemas.GroupBoxSchema;
 import org.miradi.views.diagram.InsertFactorDoer;
 import org.miradi.views.diagram.LinkCreator;
 
@@ -135,7 +136,7 @@ public class InsertGroupBoxDoer extends InsertFactorDoer
 	@Override
 	public void forceVisibleInLayerManager() throws Exception
 	{
-		getMainWindow().getCurrentDiagramComponent().getLayerManager().setVisibility(GroupBox.OBJECT_NAME, true);
+		getMainWindow().getCurrentDiagramComponent().getLayerManager().setVisibility(GroupBoxSchema.OBJECT_NAME, true);
 	}
 
 	@Override
@@ -147,6 +148,6 @@ public class InsertGroupBoxDoer extends InsertFactorDoer
 	@Override
 	public int getTypeToInsert()
 	{
-		return GroupBox.getObjectType();
+		return GroupBoxSchema.getObjectType();
 	}
 }

@@ -22,7 +22,6 @@ package org.miradi.objects;
 import org.miradi.ids.FactorId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.GroupBoxSchema;
@@ -43,24 +42,19 @@ public class GroupBox extends Factor
 	@Override
 	public int getType()
 	{
-		return getObjectType();
+		return GroupBoxSchema.getObjectType();
 	}
 	
 	@Override
 	public String getTypeName()
 	{
-		return OBJECT_NAME;
+		return GroupBoxSchema.OBJECT_NAME;
 	}
 
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;
-	}
-	
-	public static int getObjectType()
-	{
-		return ObjectType.GROUP_BOX;
 	}
 	
 	@Override
@@ -88,7 +82,7 @@ public class GroupBox extends Factor
 	
 	public static boolean is(int objectType)
 	{
-		return objectType == getObjectType();
+		return objectType == GroupBoxSchema.getObjectType();
 	}
 	
 	public static GroupBox find(ObjectManager objectManager, ORef groupBoxRef)
@@ -100,6 +94,4 @@ public class GroupBox extends Factor
 	{
 		return find(project.getObjectManager(), groupBoxRef);
 	}
-	
-	public static final String OBJECT_NAME = "GroupBox";
 }

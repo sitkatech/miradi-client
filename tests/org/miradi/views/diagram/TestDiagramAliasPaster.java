@@ -43,7 +43,6 @@ import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.Goal;
-import org.miradi.objects.GroupBox;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
@@ -54,6 +53,7 @@ import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.DiagramLinkSchema;
+import org.miradi.schemas.GroupBoxSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.TargetSchema;
 
@@ -143,7 +143,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		// Copy/paste-shared grouped threat into other diagram a second time
 		pasteShared(diagramModelToPasteInto, transferableListBeforeCut);
 		
-		ORefSet problems = new ProjectRepairer(getProject()).getFactorsWithoutDiagramFactors(GroupBox.getObjectType());
+		ORefSet problems = new ProjectRepairer(getProject()).getFactorsWithoutDiagramFactors(GroupBoxSchema.getObjectType());
 		assertEquals("Created GB without DF?", 0, problems.size());
 	}
 
@@ -204,7 +204,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		
 		ProjectRepairer repairer = new ProjectRepairer(getProject());
 		assertEquals("Orphaned threats?", 0, repairer.getFactorsWithoutDiagramFactors(CauseSchema.getObjectType()).size());
-		assertEquals("Orphaned groups?", 0, repairer.getFactorsWithoutDiagramFactors(GroupBox.getObjectType()).size());
+		assertEquals("Orphaned groups?", 0, repairer.getFactorsWithoutDiagramFactors(GroupBoxSchema.getObjectType()).size());
 	}
 	
 	public void testPasteSharedGroupWithLinkOnlyThreatExists() throws Exception
@@ -331,7 +331,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		DiagramLink gdl = DiagramLink.find(getProject(), gdf.findObjectsThatReferToUs().getRefForType(DiagramLinkSchema.getObjectType()));
 		assertTrue("Isn't a group link?", gdl.isGroupBoxLink());
 		assertNull("Group link has an FL?", gdl.getWrappedFactorLink());
-		assertEquals("Group link not from group?", GroupBox.getObjectType(), gdl.getFromDiagramFactor().getWrappedType());
+		assertEquals("Group link not from group?", GroupBoxSchema.getObjectType(), gdl.getFromDiagramFactor().getWrappedType());
 		assertEquals("Group link not to target?", TargetSchema.getObjectType(), gdl.getToDiagramFactor().getWrappedType());
 		assertEquals("Group link doesn't have child?", 1, gdl.getGroupedDiagramLinkRefs().size());
 
@@ -344,7 +344,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 	{
 		ProjectRepairer repairer = new ProjectRepairer(getProject());
 		assertEquals("Orphaned threats?", 0, repairer.getFactorsWithoutDiagramFactors(CauseSchema.getObjectType()).size());
-		assertEquals("Orphaned groups?", 0, repairer.getFactorsWithoutDiagramFactors(GroupBox.getObjectType()).size());
+		assertEquals("Orphaned groups?", 0, repairer.getFactorsWithoutDiagramFactors(GroupBoxSchema.getObjectType()).size());
 		assertEquals("Orphaned targets?", 0, repairer.getFactorsWithoutDiagramFactors(TargetSchema.getObjectType()).size());
 
 		assertEquals("Group not in diagram?", new ORefList(diagramModel.getDiagramObject().getRef()), groupDiagramFactor.findObjectsThatReferToUs(ConceptualModelDiagramSchema.getObjectType()));
@@ -508,7 +508,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 	
 	private DiagramFactor createGroupBoxDiagramFactor(DiagramFactor groupBoxChild) throws Exception
 	{
-		DiagramFactor groupBox = getProject().createDiagramFactorAndAddToDiagram(GroupBox.getObjectType());
+		DiagramFactor groupBox = getProject().createDiagramFactorAndAddToDiagram(GroupBoxSchema.getObjectType());
 		ORefList groupBoxChildrenRefs = new ORefList(groupBoxChild);
 		
 		getProject().fillObjectUsingCommand(groupBox, DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, groupBoxChildrenRefs.toString());

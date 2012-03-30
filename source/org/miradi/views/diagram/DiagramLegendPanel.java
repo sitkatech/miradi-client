@@ -61,7 +61,6 @@ import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.FactorLink;
-import org.miradi.objects.GroupBox;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ResultsChainDiagram;
@@ -76,6 +75,7 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.DiagramLegendQuestion;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.GoalSchema;
+import org.miradi.schemas.GroupBoxSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
@@ -150,7 +150,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		createCheckBox(Strategy.OBJECT_NAME_DRAFT);
 		createCheckBox(TextBox.OBJECT_NAME);
 		createCheckBox(ScopeBox.OBJECT_NAME);
-		createCheckBox(GroupBox.OBJECT_NAME);
+		createCheckBox(GroupBoxSchema.OBJECT_NAME);
 		
 		createCheckBox(FactorLink.OBJECT_NAME);
 		createCheckBox(Stress.OBJECT_NAME);
@@ -190,7 +190,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		addActivityLine(jpanel);
 		
 		addButtonLineWithCheckBox(jpanel, TextBox.getObjectType(), TextBox.OBJECT_NAME, actions.get(ActionInsertTextBox.class));
-		addButtonLineWithCheckBox(jpanel, GroupBox.getObjectType(), GroupBox.OBJECT_NAME, actions.get(ActionInsertGroupBox.class));
+		addButtonLineWithCheckBox(jpanel, GroupBoxSchema.getObjectType(), GroupBoxSchema.OBJECT_NAME, actions.get(ActionInsertGroupBox.class));
 		
 		return jpanel;
 	}

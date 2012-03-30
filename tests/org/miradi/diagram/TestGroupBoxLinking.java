@@ -23,8 +23,8 @@ import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.GroupBox;
 import org.miradi.schemas.CauseSchema;
+import org.miradi.schemas.GroupBoxSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.views.diagram.LinkCreator;
 
@@ -246,7 +246,7 @@ public class TestGroupBoxLinking extends TestCaseWithProject
 	
 	private DiagramFactor createGroupBox(DiagramFactor[] groupBoxChildren) throws Exception
 	{
-		DiagramFactor groupBox = getProject().createDiagramFactorAndAddToDiagram(GroupBox.getObjectType());
+		DiagramFactor groupBox = getProject().createDiagramFactorAndAddToDiagram(GroupBoxSchema.getObjectType());
 		ORefList groupBoxChildrenRefs = new ORefList();
 		for (int index = 0; index < groupBoxChildren.length; ++index)
 		{

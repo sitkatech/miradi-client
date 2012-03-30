@@ -38,13 +38,13 @@ import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
-import org.miradi.objects.GroupBox;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.DiagramLinkSchema;
+import org.miradi.schemas.GroupBoxSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.TargetSchema;
 
@@ -428,7 +428,7 @@ public class LinkCreator
 							   ThreatReductionResult.getObjectType(), 
 							   TargetSchema.getObjectType(),
 							   HumanWelfareTargetSchema.getObjectType(),
-							   GroupBox.getObjectType(), };  
+							   GroupBoxSchema.getObjectType(), };  
 		
 		HashSet<Integer> linkableTypes = new HashSet<Integer>();
 		for (int i = 0; i < linkableTypesArray.length; ++i)
