@@ -31,6 +31,7 @@ import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.ViewData;
 import org.miradi.questions.WorkPlanCategoryTypesQuestion;
+import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.utils.CodeList;
 
 public class WorkPlanCategoryTreeTablePanel extends PlanningTreeTablePanel
@@ -119,7 +120,7 @@ public class WorkPlanCategoryTreeTablePanel extends PlanningTreeTablePanel
 				ExpenseAssignment.TAG_CATEGORY_TWO_REF,
 		};
 		
-		return wasAssignmentBudgetRelatedChange(event, ExpenseAssignment.getObjectType(), expenseAssignmentBudgetTags);
+		return wasAssignmentBudgetRelatedChange(event, ExpenseAssignmentSchema.getObjectType(), expenseAssignmentBudgetTags);
 	}
 
 	private boolean wasAssignmentBudgetRelatedChange(CommandExecutedEvent event, int objectType, String[] expenseAssignmentBudgetTags)

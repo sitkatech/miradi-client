@@ -100,6 +100,7 @@ import org.miradi.questions.TncFreshwaterEcoRegionQuestion;
 import org.miradi.questions.TncMarineEcoRegionQuestion;
 import org.miradi.questions.TncTerrestrialEcoRegionQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
+import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
@@ -315,7 +316,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 			return;
 		
 		double totalCost = DoubleUtilities.toDoubleFromDataFormat(totalCostAsString);
-		ORef expenseAssignmentRef = getProject().createObject(ExpenseAssignment.getObjectType());
+		ORef expenseAssignmentRef = getProject().createObject(ExpenseAssignmentSchema.getObjectType());
 		DateUnitEffortList dateUnitEffortList = createDateUnitEffortList(new DateUnit(), totalCost);
 		setData(expenseAssignmentRef, ExpenseAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());
 		setData(ref, BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS, new ORefList(expenseAssignmentRef));

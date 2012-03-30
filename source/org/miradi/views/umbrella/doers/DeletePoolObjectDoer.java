@@ -28,8 +28,8 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.ResourceAssignment;
+import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.utils.CommandVector;
 import org.miradi.views.ObjectsDoer;
 
@@ -99,7 +99,7 @@ abstract public class DeletePoolObjectDoer extends ObjectsDoer
 	
 	protected void removeExpenseAssignmentReferenceToObject(BaseObject objectToDelete, String referringTag) throws Exception
 	{
-		removeAssignmentReferenceToObject(objectToDelete, ExpenseAssignment.getObjectType(), referringTag);
+		removeAssignmentReferenceToObject(objectToDelete, ExpenseAssignmentSchema.getObjectType(), referringTag);
 	}
 
 	private void removeAssignmentReferenceToObject(BaseObject objectToDelete, int objectType, String referringTag) throws Exception

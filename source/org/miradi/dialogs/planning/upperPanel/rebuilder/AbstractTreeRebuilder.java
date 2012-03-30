@@ -38,7 +38,6 @@ import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.Desire;
 import org.miradi.objects.DiagramObject;
-import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Goal;
 import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Indicator;
@@ -59,6 +58,7 @@ import org.miradi.project.Project;
 import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.BudgetCategoryOneSchema;
 import org.miradi.schemas.BudgetCategoryTwoSchema;
+import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.BaseObjectDateDescendingAndIdComparator;
@@ -179,7 +179,7 @@ abstract public class AbstractTreeRebuilder
 			
 			Measurement.getObjectType(),
 			ResourceAssignment.getObjectType(),
-			ExpenseAssignment.getObjectType(),
+			ExpenseAssignmentSchema.getObjectType(),
 		};
 		
 		try
@@ -419,7 +419,7 @@ abstract public class AbstractTreeRebuilder
 			BudgetCategoryTwoSchema.getObjectType(),
 			Task.getObjectType(),
 			ResourceAssignment.getObjectType(),
-			ExpenseAssignment.getObjectType(),
+			ExpenseAssignmentSchema.getObjectType(),
 		};
 	}
 	

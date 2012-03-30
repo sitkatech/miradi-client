@@ -24,12 +24,13 @@ import org.miradi.ids.IdAssigner;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.project.ObjectManager;
+import org.miradi.schemas.ExpenseAssignmentSchema;
 
 public class ExpenseAssignmentPool extends AbstractAssignmentPool
 {
 	public ExpenseAssignmentPool(IdAssigner idAssignerToUse)
 	{
-		super(idAssignerToUse, ExpenseAssignment.getObjectType());
+		super(idAssignerToUse, ExpenseAssignmentSchema.getObjectType());
 	}
 	
 	public void put(ExpenseAssignment expense) throws Exception

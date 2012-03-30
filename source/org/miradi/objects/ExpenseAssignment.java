@@ -22,7 +22,6 @@ package org.miradi.objects;
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.project.ObjectManager;
@@ -104,18 +103,13 @@ public class ExpenseAssignment extends Assignment
 	@Override
 	public int getType()
 	{
-		return getObjectType();
+		return ExpenseAssignmentSchema.getObjectType();
 	}
 	
 	@Override
 	public String getTypeName()
 	{
-		return OBJECT_NAME;
-	}
-	
-	public static int getObjectType()
-	{
-		return ObjectType.EXPENSE_ASSIGNMENT;
+		return ExpenseAssignmentSchema.OBJECT_NAME;
 	}
 	
 	public static boolean is(ORef ref)
@@ -125,7 +119,7 @@ public class ExpenseAssignment extends Assignment
 	
 	public static boolean is(int objectType)
 	{
-		return objectType == getObjectType();
+		return objectType == ExpenseAssignmentSchema.getObjectType();
 	}
 	
 	public static boolean is(BaseObject baseObject)
@@ -142,8 +136,6 @@ public class ExpenseAssignment extends Assignment
 	{
 		return find(project.getObjectManager(), expenseRef);
 	}
-	
-	public static final String OBJECT_NAME = "ExpenseAssignment";
 	
 	public static final String TAG_ACCOUNTING_CODE_REF = "AccountingCodeRef";
 	public static final String TAG_FUNDING_SOURCE_REF = "FundingSourceRef";

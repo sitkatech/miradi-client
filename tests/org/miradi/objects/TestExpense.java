@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
+import org.miradi.schemas.ExpenseAssignmentSchema;
+
 
 public class TestExpense extends ObjectTestCase
 {
@@ -29,6 +31,6 @@ public class TestExpense extends ObjectTestCase
 	
 	public void testFields() throws Exception
 	{
-		verifyFields(ExpenseAssignment.getObjectType());
+		verifyFields(ExpenseAssignmentSchema.getObjectType());
 	}
 }
