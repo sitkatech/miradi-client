@@ -22,11 +22,17 @@ package org.miradi.xml.xmpz2;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.Set;
 
 import org.martus.util.UnicodeWriter;
+import org.miradi.main.EAM;
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.ObjectData;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.Xenodata;
+import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
@@ -36,9 +42,11 @@ import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConstants
 {
-	public Xmpz2XmlUnicodeWriter(OutputStream bytes) throws Exception
+	public Xmpz2XmlUnicodeWriter(Project projectToUse, OutputStream bytes) throws Exception
 	{
 		super(bytes);
+		
+		project = projectToUse;
 	}
 	
 	public void writeXmlHeader() throws IOException
@@ -239,8 +247,31 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 		writeField(baseObjectSchema, fieldSchema, string);
 	}
 
-	public void writeRefMapData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string)
+	public void writeRefMapData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String stringRefMapAsString) throws Exception
 	{
+		writeStartElement(appendParentNameToChildName(PROJECT_SUMMARY, Xenodata.TAG_PROJECT_ID));
+
+		StringRefMap stringRefMap = new StringRefMap(stringRefMapAsString);
+		Set<String> keys = stringRefMap.getKeys();
+		for(String key: keys)
+		{
+			ORef xenodataRef = stringRefMap.getValue(key);
+			if (xenodataRef.isInvalid())
+			{
+				EAM.logWarning("Invalid Xenodata ref found for key: " + key + " while exporting.");
+				continue;
+			}
+
+			Xenodata xenodata = Xenodata.find(getProject(), xenodataRef);
+			String projectId = xenodata.getData(Xenodata.TAG_PROJECT_ID);
+			writeStartElement(EXTERNAL_PROJECT_ID_ELEMENT_NAME);
+			writeElement(EXTERNAL_APP_ELEMENT_NAME, key);
+			writeElement(PROJECT_ID, projectId);
+			writeEndElement(EXTERNAL_PROJECT_ID_ELEMENT_NAME);
+		}
+		
+		writeEndElement(appendParentNameToChildName(PROJECT_SUMMARY, Xenodata.TAG_PROJECT_ID));
+
 	}
 	
 	private void writeField(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String data) throws Exception
@@ -251,11 +282,25 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 	
 	private String appendParentNameToChildName(final BaseObjectSchema baseObjectSchema, final AbstractFieldSchema fieldSchema)
 	{
-		return baseObjectSchema.getXmpz2ElementName() + fieldSchema.getTag();
+		final String xmpz2ElementName = baseObjectSchema.getXmpz2ElementName();
+		final String tag = fieldSchema.getTag();
+		return appendParentNameToChildName(xmpz2ElementName, tag);
+	}
+
+	private String appendParentNameToChildName(final String parentElementName,	final String childElementName)
+	{
+		return parentElementName + childElementName;
 	}
 	
 	private String createContainerElementName(String startElementName)
 	{
 		return startElementName + CONTAINER_ELEMENT_TAG;
 	}
+	
+	private Project getProject()
+	{
+		return project;
+	}
+	
+	private Project project;
 }

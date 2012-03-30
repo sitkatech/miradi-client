@@ -55,7 +55,7 @@ public class TestXmpz2XmlExporter extends TestCaseWithProject
 	private void validateProject() throws Exception
 	{
 		ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-		Xmpz2XmlUnicodeWriter writer = new Xmpz2XmlUnicodeWriter(bytes);
+		Xmpz2XmlUnicodeWriter writer = new Xmpz2XmlUnicodeWriter(getProject(), bytes);
 		new Xmpz2XmlExporter(getProject(), writer).exportProject(writer);
 		writer.close();
 		String xml = new String(bytes.toByteArray(), "UTF-8");
