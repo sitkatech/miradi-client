@@ -29,6 +29,7 @@ public class RefListData extends ObjectData
 	public RefListData(String tagToUse)
 	{
 		super(tagToUse);
+		
 		objectReferenceList = new ORefList();
 	}
 	
