@@ -19,13 +19,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.planning.doers;
 
-import org.miradi.objects.AccountingCode;
+import org.miradi.schemas.AccountingCodeSchema;
 
 public class CreateAccountingCodeDoer extends CreatePoolObjectDoer
 {
 	@Override
 	protected int getTypeToCreate()
 	{
-		return AccountingCode.getObjectType();
+		return AccountingCodeSchema.getObjectType();
 	}
 }

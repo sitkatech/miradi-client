@@ -23,7 +23,6 @@ import org.miradi.ids.AccountingCodeId;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.AccountingCodeSchema;
@@ -44,20 +43,15 @@ public class AccountingCode extends AbstractBudgetCategoryObject
 	@Override
 	public int getType()
 	{
-		return getObjectType();
+		return AccountingCodeSchema.getObjectType();
 	}
 	
 	@Override
 	public String getTypeName()
 	{
-		return OBJECT_NAME;
+		return AccountingCodeSchema.OBJECT_NAME;
 	}
 
-	public static int getObjectType()
-	{
-		return ObjectType.ACCOUNTING_CODE;
-	}
-	
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
@@ -77,7 +71,7 @@ public class AccountingCode extends AbstractBudgetCategoryObject
 	
 	public static boolean is(int objectType)
 	{
-		return objectType == getObjectType();
+		return objectType == AccountingCodeSchema.getObjectType();
 	}
 		
 	public static boolean is(ORef ref)
@@ -94,7 +88,5 @@ public class AccountingCode extends AbstractBudgetCategoryObject
 	{
 		return find(project.getObjectManager(), accountingCodeRef);
 	}
-		
-	public static final String OBJECT_NAME = "AccountingCode";
 
 }

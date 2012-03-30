@@ -21,14 +21,14 @@ package org.miradi.dialogs.accountingcode;
 
 import org.miradi.dialogs.base.AbsractBudgetCategoryPropertiesPanel;
 import org.miradi.main.EAM;
-import org.miradi.objects.AccountingCode;
 import org.miradi.project.Project;
+import org.miradi.schemas.AccountingCodeSchema;
 
 public class AccountingCodePropertiesPanel extends AbsractBudgetCategoryPropertiesPanel
 {
 	public AccountingCodePropertiesPanel(Project projectToUse) throws Exception
 	{
-		super(projectToUse, AccountingCode.getObjectType());
+		super(projectToUse, AccountingCodeSchema.getObjectType());
 	}
 
 	@Override

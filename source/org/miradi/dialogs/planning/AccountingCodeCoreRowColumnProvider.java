@@ -20,8 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning;
 
-import org.miradi.objects.AccountingCode;
 import org.miradi.project.Project;
+import org.miradi.schemas.AccountingCodeSchema;
 
 public class AccountingCodeCoreRowColumnProvider extends AbstractBudgetCategoryRowColumnProvider
 {
@@ -33,12 +33,12 @@ public class AccountingCodeCoreRowColumnProvider extends AbstractBudgetCategoryR
 	@Override
 	public String getObjectTypeName()
 	{
-		return AccountingCode.OBJECT_NAME;
+		return AccountingCodeSchema.OBJECT_NAME;
 	}
 	
 	@Override
 	public int getObjectType()
 	{
-		return AccountingCode.getObjectType();
+		return AccountingCodeSchema.getObjectType();
 	}
 }

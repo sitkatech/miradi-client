@@ -20,10 +20,19 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import org.miradi.objecthelpers.ObjectType;
+
 public class AccountingCodeSchema extends AbstractBudgetCategorySchema
 {
 	public AccountingCodeSchema()
 	{
 		super();
 	}
+
+	public static int getObjectType()
+	{
+		return ObjectType.ACCOUNTING_CODE;
+	}
+	
+	public static final String OBJECT_NAME = "AccountingCode";
 }

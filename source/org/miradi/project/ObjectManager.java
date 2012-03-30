@@ -88,7 +88,6 @@ import org.miradi.objectpools.WcsProjectDataPool;
 import org.miradi.objectpools.WwfProjectDataPool;
 import org.miradi.objectpools.XenodataPool;
 import org.miradi.objectpools.XslTemplatePool;
-import org.miradi.objects.AccountingCode;
 import org.miradi.objects.Audience;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.BudgetCategoryOne;
@@ -142,6 +141,7 @@ import org.miradi.objects.WcsProjectData;
 import org.miradi.objects.WwfProjectData;
 import org.miradi.objects.Xenodata;
 import org.miradi.objects.XslTemplate;
+import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.schemas.IndicatorSchema;
 
@@ -167,7 +167,7 @@ public class ObjectManager
 		addNormalPool(new ProjectMetadataPool(ida), ProjectMetadata.OBJECT_NAME);
 		addNormalPool(new DiagramLinkPool(ida), DiagramLink.OBJECT_NAME);
 		addNormalPool(new ResourceAssignmentPool(ida), ResourceAssignment.OBJECT_NAME);
-		addNormalPool(new AccountingCodePool(ida), AccountingCode.OBJECT_NAME);
+		addNormalPool(new AccountingCodePool(ida), AccountingCodeSchema.OBJECT_NAME);
 		addNormalPool(new FundingSourcePool(ida), FundingSourceSchema.OBJECT_NAME);
 		addNormalPool(new KeyEcologicalAttributePool(ida), KeyEcologicalAttribute.OBJECT_NAME);
 		addNormalPool(new DiagramFactorPool(ida), DiagramFactor.OBJECT_NAME);

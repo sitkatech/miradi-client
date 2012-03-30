@@ -20,13 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz;
 
-import org.miradi.objects.AccountingCode;
+import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class AccountingCodePoolImporter extends AbstractBudgetCategoryPoolImporter
 {
 	public AccountingCodePoolImporter(XmpzXmlImporter importerToUse)
 	{
-		super(importerToUse, XmpzXmlConstants.ACCOUNTING_CODE, AccountingCode.getObjectType());
+		super(importerToUse, XmpzXmlConstants.ACCOUNTING_CODE, AccountingCodeSchema.getObjectType());
 	}	
 }
