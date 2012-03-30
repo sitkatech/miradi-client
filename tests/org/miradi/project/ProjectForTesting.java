@@ -145,6 +145,7 @@ import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.GroupBoxSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.IucnRedlistSpeciesSchema;
+import org.miradi.schemas.KeyEcologicalAttributeSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
@@ -773,7 +774,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public KeyEcologicalAttribute createKea() throws Exception
 	{
-		ORef keaRef = createObject(KeyEcologicalAttribute.getObjectType());
+		ORef keaRef = createObject(KeyEcologicalAttributeSchema.getObjectType());
 		return KeyEcologicalAttribute.find(this, keaRef);
 	}
 	
@@ -1000,7 +1001,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(target, Target.TAG_SUB_TARGET_REFS, subTargetRefs.toString());
 		
 		KeyEcologicalAttribute kea = createAndPopulateKea();
-		IdList keaIds = new IdList(KeyEcologicalAttribute.getObjectType());
+		IdList keaIds = new IdList(KeyEcologicalAttributeSchema.getObjectType());
 		keaIds.addRef(kea.getRef());
 		fillObjectUsingCommand(target, Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, keaIds.toString());
 	}

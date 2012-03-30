@@ -107,6 +107,7 @@ import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.FactorLinkSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.IntermediateResultSchema;
+import org.miradi.schemas.KeyEcologicalAttributeSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
@@ -570,13 +571,13 @@ public class ConproXmlImporter implements ConProMiradiXml
 		for (int nodeIndex = 0; nodeIndex < keaNodeList.getLength(); ++nodeIndex) 
 		{
 			Node keaNode = keaNodeList.item(nodeIndex);
-			ORef keaRef = getProject().createObject(KeyEcologicalAttribute.getObjectType());
+			ORef keaRef = getProject().createObject(KeyEcologicalAttributeSchema.getObjectType());
 			importField(keaNode, NAME, keaRef, KeyEcologicalAttribute.TAG_LABEL);
 			importCodeField(keaNode, CATEGORY, keaRef, KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE, getCodeMapHelper().getConProToMiradiKeaTypeMap());
 			
 			setData(targetRef, Target.TAG_VIABILITY_MODE, ViabilityModeQuestion.TNC_STYLE_CODE);
 			String existingKeaIdsAsString = getProject().getObjectData(targetRef, Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
-			IdList keaIds = new IdList(KeyEcologicalAttribute.getObjectType(), existingKeaIdsAsString);
+			IdList keaIds = new IdList(KeyEcologicalAttributeSchema.getObjectType(), existingKeaIdsAsString);
 			if(!keaIds.contains(keaRef))
 				keaIds.add(keaRef.getObjectId());
 			

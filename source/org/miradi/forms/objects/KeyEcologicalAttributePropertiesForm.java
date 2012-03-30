@@ -23,12 +23,13 @@ import org.miradi.forms.FieldPanelSpec;
 import org.miradi.icons.KeyEcologicalAttributeIcon;
 import org.miradi.main.EAM;
 import org.miradi.objects.KeyEcologicalAttribute;
+import org.miradi.schemas.KeyEcologicalAttributeSchema;
 
 public class KeyEcologicalAttributePropertiesForm extends FieldPanelSpec
 {
 	public KeyEcologicalAttributePropertiesForm()
 	{
-		int type = KeyEcologicalAttribute.getObjectType();
+		int type = KeyEcologicalAttributeSchema.getObjectType();
 		addStandardNameRow(new KeyEcologicalAttributeIcon(), EAM.text("KEA"), type, new String[]{KeyEcologicalAttribute.TAG_SHORT_LABEL, KeyEcologicalAttribute.TAG_LABEL});
 		
 		addLabelAndField(type, KeyEcologicalAttribute.TAG_DETAILS);

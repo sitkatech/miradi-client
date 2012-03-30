@@ -20,11 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 
 public class KeyEcologicalAttributeSchema extends BaseObjectSchema
 {
+	public static final String OBJECT_NAME = "KeyEcologicalAttribute";
+
 	public KeyEcologicalAttributeSchema()
 	{
 		super();
@@ -42,5 +45,10 @@ public class KeyEcologicalAttributeSchema extends BaseObjectSchema
 		createFieldSchemaSingleLineUserText(KeyEcologicalAttribute.TAG_SHORT_LABEL);
 		
 		createPseudoFieldSchemaString(KeyEcologicalAttribute.PSEUDO_TAG_VIABILITY_STATUS);
+	}
+
+	public static int getObjectType()
+	{
+		return ObjectType.KEY_ECOLOGICAL_ATTRIBUTE;
 	}
 }

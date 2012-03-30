@@ -61,6 +61,7 @@ import org.miradi.questions.TrendQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.KeyEcologicalAttributeSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
@@ -113,7 +114,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		indicatorIds.add(keaIndicator.getId());
 		getProject().fillObjectUsingCommand(kea, KeyEcologicalAttribute.TAG_INDICATOR_IDS, indicatorIds);
 		
-		IdList keaIds = new IdList(KeyEcologicalAttribute.getObjectType());
+		IdList keaIds = new IdList(KeyEcologicalAttributeSchema.getObjectType());
 		keaIds.addRef(kea.getRef());
 		getProject().fillObjectUsingCommand(target, Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, keaIds.toString());
 		assertEquals("Incorrect indicator pool count?", 2, getProject().getIndicatorPool().size());

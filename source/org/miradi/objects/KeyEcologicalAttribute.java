@@ -68,13 +68,13 @@ public class KeyEcologicalAttribute extends BaseObject
 	@Override
 	public int getType()
 	{
-		return getObjectType();
+		return KeyEcologicalAttributeSchema.getObjectType();
 	}
 
 	@Override
 	public String getTypeName()
 	{
-		return OBJECT_NAME;
+		return KeyEcologicalAttributeSchema.OBJECT_NAME;
 	}
 
 	@Override
@@ -84,11 +84,6 @@ public class KeyEcologicalAttribute extends BaseObject
 			TargetSchema.getObjectType(),
 			HumanWelfareTargetSchema.getObjectType(),
 			};
-	}
-	
-	public static int getObjectType()
-	{
-		return ObjectType.KEY_ECOLOGICAL_ATTRIBUTE;
 	}
 	
 	@Override
@@ -176,7 +171,7 @@ public class KeyEcologicalAttribute extends BaseObject
 	
 	public static boolean is(int objectType)
 	{
-		return objectType == getObjectType();
+		return objectType == KeyEcologicalAttributeSchema.getObjectType();
 	}
 	
 	public static KeyEcologicalAttribute find(ObjectManager objectManager, ORef keaRef)
@@ -195,6 +190,4 @@ public class KeyEcologicalAttribute extends BaseObject
 	public static final String TAG_DETAILS = "Details";
 	public static final String TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE = "KeyEcologicalAttributeType";
 	public static final String PSEUDO_TAG_VIABILITY_STATUS = "ViabilityStatus";
-
-	public static final String OBJECT_NAME = "KeyEcologicalAttribute";
 }

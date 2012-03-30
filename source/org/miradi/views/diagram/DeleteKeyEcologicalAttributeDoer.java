@@ -22,7 +22,7 @@ package org.miradi.views.diagram;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.AbstractTarget;
-import org.miradi.objects.KeyEcologicalAttribute;
+import org.miradi.schemas.KeyEcologicalAttributeSchema;
 
 public class DeleteKeyEcologicalAttributeDoer extends DeleteAnnotationDoer
 {
@@ -55,6 +55,6 @@ public class DeleteKeyEcologicalAttributeDoer extends DeleteAnnotationDoer
 	@Override
 	public int getAnnotationType()
 	{
-		return KeyEcologicalAttribute.getObjectType();
+		return KeyEcologicalAttributeSchema.getObjectType();
 	}
 }

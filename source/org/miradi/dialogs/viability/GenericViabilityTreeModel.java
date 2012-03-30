@@ -22,12 +22,12 @@ package org.miradi.dialogs.viability;
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Target;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.KeyEcologicalAttributeSchema;
 import org.miradi.schemas.TargetSchema;
 
 abstract public class GenericViabilityTreeModel extends GenericTreeTableModel
@@ -71,7 +71,7 @@ abstract public class GenericViabilityTreeModel extends GenericTreeTableModel
 		else if(tag.equals(Measurement.TAG_SUMMARY))
 			return Measurement.getObjectType();
 		
-		return KeyEcologicalAttribute.getObjectType();
+		return KeyEcologicalAttributeSchema.getObjectType();
 	}
 	
 	public boolean isChoiceItemColumn(String columnTag)

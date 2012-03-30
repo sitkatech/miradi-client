@@ -28,6 +28,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.project.Project;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
+import org.miradi.schemas.KeyEcologicalAttributeSchema;
 
 public class TargetViabilityKeaPropertiesPanel extends ObjectDataInputPanelWithSections
 {
@@ -36,13 +37,13 @@ public class TargetViabilityKeaPropertiesPanel extends ObjectDataInputPanelWithS
 		super(projectToUse, ObjectType.TARGET);
 		createSingleSection(EAM.text("Summary"));
 
-		ObjectDataInputField shortLabelField = createShortStringField(KeyEcologicalAttribute.getObjectType(), KeyEcologicalAttribute.TAG_SHORT_LABEL);
-		ObjectDataInputField labelField = createExpandableField(KeyEcologicalAttribute.getObjectType(), KeyEcologicalAttribute.TAG_LABEL);		
+		ObjectDataInputField shortLabelField = createShortStringField(KeyEcologicalAttributeSchema.getObjectType(), KeyEcologicalAttribute.TAG_SHORT_LABEL);
+		ObjectDataInputField labelField = createExpandableField(KeyEcologicalAttributeSchema.getObjectType(), KeyEcologicalAttribute.TAG_LABEL);		
 		addFieldsOnOneLine(EAM.text("Key Ecological Attribute (KEA)"), new KeyEcologicalAttributeIcon(), new ObjectDataInputField[]{shortLabelField, labelField});
 		
-		addField(createMultilineField(KeyEcologicalAttribute.getObjectType(), KeyEcologicalAttribute.TAG_DETAILS));
-		addField(createChoiceField(KeyEcologicalAttribute.getObjectType(), KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE, new KeyEcologicalAttributeTypeQuestion()));
-		addField(createMultilineField(KeyEcologicalAttribute.getObjectType(), KeyEcologicalAttribute.TAG_DESCRIPTION));
+		addField(createMultilineField(KeyEcologicalAttributeSchema.getObjectType(), KeyEcologicalAttribute.TAG_DETAILS));
+		addField(createChoiceField(KeyEcologicalAttributeSchema.getObjectType(), KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE, new KeyEcologicalAttributeTypeQuestion()));
+		addField(createMultilineField(KeyEcologicalAttributeSchema.getObjectType(), KeyEcologicalAttribute.TAG_DESCRIPTION));
 		
 		updateFieldsFromProject();
 	}

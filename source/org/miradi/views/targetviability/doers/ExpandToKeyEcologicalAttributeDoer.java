@@ -20,13 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.targetviability.doers;
 
-import org.miradi.objects.KeyEcologicalAttribute;
+import org.miradi.schemas.KeyEcologicalAttributeSchema;
 
 public class ExpandToKeyEcologicalAttributeDoer extends AbstractExpandToDoer
 {
 	@Override
 	protected int getTypeToExpandTo()
 	{
-		return KeyEcologicalAttribute.getObjectType();
+		return KeyEcologicalAttributeSchema.getObjectType();
 	}
 }

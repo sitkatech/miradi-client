@@ -28,12 +28,12 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 import org.miradi.project.Project;
 import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.TrendQuestion;
+import org.miradi.schemas.KeyEcologicalAttributeSchema;
 
 public class MeasurementPropertiesPanel extends ObjectDataInputPanelWithSections
 {
@@ -70,7 +70,7 @@ public class MeasurementPropertiesPanel extends ObjectDataInputPanelWithSections
 		super.setObjectRefs(orefsToUse);
 	
 		boolean isVisible = true;
-		ORef foundRef = new ORefList(orefsToUse).getRefForType(KeyEcologicalAttribute.getObjectType());
+		ORef foundRef = new ORefList(orefsToUse).getRefForType(KeyEcologicalAttributeSchema.getObjectType());
 		if (foundRef.isInvalid())
 			isVisible = false;
 			

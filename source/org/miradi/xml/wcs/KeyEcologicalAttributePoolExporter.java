@@ -24,12 +24,13 @@ import org.martus.util.UnicodeWriter;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
+import org.miradi.schemas.KeyEcologicalAttributeSchema;
 
 public class KeyEcologicalAttributePoolExporter extends BaseObjectPoolExporter
 {
 	public KeyEcologicalAttributePoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
-		super(wcsXmlExporterToUse, KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttribute.getObjectType());
+		super(wcsXmlExporterToUse, KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttributeSchema.getObjectType());
 	}
 	
 	@Override

@@ -46,7 +46,6 @@ import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Factor;
-import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
@@ -58,6 +57,7 @@ import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.KeyEcologicalAttributeSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
@@ -208,9 +208,9 @@ public class TestDiagramPaster extends TestCaseWithProject
 		fixupRefs(CauseSchema.getObjectType(), IndicatorSchema.getObjectType(), Factor.TAG_INDICATOR_IDS);
 		fixupRefs(CauseSchema.getObjectType(), ObjectiveSchema.getObjectType(), Factor.TAG_OBJECTIVE_IDS);
 		fixupRefs(TargetSchema.getObjectType(), GoalSchema.getObjectType(), AbstractTarget.TAG_GOAL_IDS);
-		fixupRefs(TargetSchema.getObjectType(), KeyEcologicalAttribute.getObjectType(), AbstractTarget.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
+		fixupRefs(TargetSchema.getObjectType(), KeyEcologicalAttributeSchema.getObjectType(), AbstractTarget.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
 		fixupRefs(HumanWelfareTargetSchema.getObjectType(), GoalSchema.getObjectType(), AbstractTarget.TAG_GOAL_IDS);
-		fixupRefs(HumanWelfareTargetSchema.getObjectType(), KeyEcologicalAttribute.getObjectType(), AbstractTarget.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
+		fixupRefs(HumanWelfareTargetSchema.getObjectType(), KeyEcologicalAttributeSchema.getObjectType(), AbstractTarget.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
 	}
 		
 	public void fixupRefs(int factorType, int annotationType, String annotationFactorTag) throws Exception

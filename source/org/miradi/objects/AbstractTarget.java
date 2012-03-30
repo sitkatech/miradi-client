@@ -40,6 +40,7 @@ import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.KeyEcologicalAttributeSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -94,7 +95,7 @@ abstract public class AbstractTarget extends Factor
 
 	public ORefList getKeyEcologicalAttributeRefs()
 	{
-		return new ORefList(KeyEcologicalAttribute.getObjectType(), getKeyEcologicalAttributes());
+		return new ORefList(KeyEcologicalAttributeSchema.getObjectType(), getKeyEcologicalAttributes());
 	}
 
 	public IdList getKeyEcologicalAttributes()
@@ -142,7 +143,7 @@ abstract public class AbstractTarget extends Factor
 			return GoalSchema.getObjectType();
 		
 		if (tag.equals(TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS))
-			return KeyEcologicalAttribute.getObjectType();
+			return KeyEcologicalAttributeSchema.getObjectType();
 
 		return super.getAnnotationType(tag);
 	}

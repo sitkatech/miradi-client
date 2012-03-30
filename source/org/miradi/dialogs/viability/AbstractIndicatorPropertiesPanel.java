@@ -30,9 +30,9 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.project.Project;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.KeyEcologicalAttributeSchema;
 
 abstract public class AbstractIndicatorPropertiesPanel extends ObjectDataInputPanelWithSections
 {
@@ -62,7 +62,7 @@ abstract public class AbstractIndicatorPropertiesPanel extends ObjectDataInputPa
 	{
 		super.setObjectRefs(orefsToUse);
 		
-		ORef foundRef = new ORefList(orefsToUse).getRefForType(KeyEcologicalAttribute.getObjectType());
+		ORef foundRef = new ORefList(orefsToUse).getRefForType(KeyEcologicalAttributeSchema.getObjectType());
 		setTabEnabled(viabilityRatingsSubPanel.getPanelDescription(), foundRef.isValid());
 	}
 	

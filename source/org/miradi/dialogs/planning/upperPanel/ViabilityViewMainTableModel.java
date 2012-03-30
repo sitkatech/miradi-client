@@ -51,6 +51,7 @@ import org.miradi.questions.TextAndIconChoiceItem;
 import org.miradi.questions.TrendQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.KeyEcologicalAttributeSchema;
 import org.miradi.schemas.TargetSchema;
 
 public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
@@ -483,7 +484,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		else if(tag.equals(Measurement.TAG_SUMMARY))
 			return Measurement.getObjectType();
 		
-		return KeyEcologicalAttribute.getObjectType();
+		return KeyEcologicalAttributeSchema.getObjectType();
 	}
 	
 	@Override
