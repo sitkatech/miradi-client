@@ -33,9 +33,9 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
-import org.miradi.objects.Stress;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
+import org.miradi.schemas.StressSchema;
 import org.miradi.views.diagram.LinkCreator;
 
 public class TestUndoAndRedo extends MiradiTestCase
@@ -181,16 +181,16 @@ public class TestUndoAndRedo extends MiradiTestCase
 		
 		assertFalse("already an undoable?", p.canUndo());
 		assertFalse("already a redoable?", p.canRedo());
-		p.executeCommand(new CommandCreateObject(Stress.getObjectType()));
+		p.executeCommand(new CommandCreateObject(StressSchema.getObjectType()));
 		assertTrue("can't undo first?", p.canUndo());
 		assertFalse("redo before first undo?", p.canRedo());
-		p.executeCommand(new CommandCreateObject(Stress.getObjectType()));
+		p.executeCommand(new CommandCreateObject(StressSchema.getObjectType()));
 		assertTrue("can't undo second?", p.canUndo());
 		assertFalse("redo when still no undo?", p.canRedo());
 		p.undo();
 		assertTrue("can't undo twice?", p.canUndo());
 		assertTrue("can't redo first undo?", p.canRedo());
-		p.executeCommand(new CommandCreateObject(Stress.getObjectType()));
+		p.executeCommand(new CommandCreateObject(StressSchema.getObjectType()));
 		assertTrue("can't undo latest?", p.canUndo());
 		assertFalse("can redo when undo not last?", p.canRedo());
 		p.undo();

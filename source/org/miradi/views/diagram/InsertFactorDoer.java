@@ -40,7 +40,6 @@ import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.HumanWelfareTarget;
-import org.miradi.objects.Stress;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
@@ -48,6 +47,7 @@ import org.miradi.objects.TextBox;
 import org.miradi.project.FactorCommandHelper;
 import org.miradi.project.Project;
 import org.miradi.schemas.ScopeBoxSchema;
+import org.miradi.schemas.StressSchema;
 
 abstract public class InsertFactorDoer extends LocationDoer
 {
@@ -332,7 +332,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 		if (type == TextBox.getObjectType())
 			return false;
 		
-		if (type == Stress.getObjectType())
+		if (type == StressSchema.getObjectType())
 			return false;
 		
 		if (type == Task.getObjectType())

@@ -29,6 +29,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
+import org.miradi.schemas.StressSchema;
 import org.miradi.views.diagram.CreateAnnotationDoer;
 
 public class CreateStressFromKeaDoer extends CreateAnnotationDoer
@@ -94,6 +95,6 @@ public class CreateStressFromKeaDoer extends CreateAnnotationDoer
 	@Override
 	public int getAnnotationType()
 	{
-		return Stress.getObjectType();
+		return StressSchema.getObjectType();
 	}
 }

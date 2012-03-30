@@ -22,6 +22,7 @@ package org.miradi.objects;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.schemas.StressSchema;
 
 public class TestStress extends ObjectTestCase
 {
@@ -37,7 +38,7 @@ public class TestStress extends ObjectTestCase
 	
 	public void testCalculateStressRating() throws Exception
 	{
-		ORef stressRef = getProject().createObject(Stress.getObjectType());
+		ORef stressRef = getProject().createObject(StressSchema.getObjectType());
 		Stress stress = (Stress) getProject().findObject(stressRef);
 		assertEquals("has value?", "", stress.getCalculatedStressRating());
 		
@@ -60,7 +61,7 @@ public class TestStress extends ObjectTestCase
 		
 		assertTrue("Stress is not shared?", stress.mustBeDeletedBecauseParentIsGone());
 		
-		DiagramFactor diagramFactor = getProject().createDiagramFactorAndAddToDiagram(Stress.getObjectType());
+		DiagramFactor diagramFactor = getProject().createDiagramFactorAndAddToDiagram(StressSchema.getObjectType());
 		assertTrue("Stress is not shared?", diagramFactor.getWrappedFactor().mustBeDeletedBecauseParentIsGone());
 	}
 }

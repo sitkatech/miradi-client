@@ -26,12 +26,13 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.StressRatingChoiceQuestion;
 import org.miradi.questions.StressScopeChoiceQuestion;
 import org.miradi.questions.StressSeverityChoiceQuestion;
+import org.miradi.schemas.StressSchema;
 
 public class StressPoolTableModel extends ObjectPoolTableModel
 {
 	public StressPoolTableModel(Project projectToUse)
 	{
-		super(projectToUse, Stress.getObjectType(), getStressColumnTags(projectToUse));
+		super(projectToUse, StressSchema.getObjectType(), getStressColumnTags(projectToUse));
 	}
 	
 	@Override

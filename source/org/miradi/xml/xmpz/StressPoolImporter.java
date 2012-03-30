@@ -24,6 +24,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Stress;
 import org.miradi.questions.StressScopeChoiceQuestion;
 import org.miradi.questions.StressSeverityChoiceQuestion;
+import org.miradi.schemas.StressSchema;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.w3c.dom.Node;
 
@@ -31,7 +32,7 @@ public class StressPoolImporter extends FactorPoolImporter
 {
 	public StressPoolImporter(XmpzXmlImporter importerToUse)
 	{
-		super(importerToUse, XmpzXmlConstants.STRESS, Stress.getObjectType());
+		super(importerToUse, XmpzXmlConstants.STRESS, StressSchema.getObjectType());
 	}
 	
 	@Override

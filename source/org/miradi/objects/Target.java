@@ -28,6 +28,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.HabitatAssociationQuestion;
+import org.miradi.schemas.StressSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
@@ -95,7 +96,7 @@ public class Target extends AbstractTarget
 	public int getAnnotationType(String tag)
 	{
 		if (tag.equals(TAG_STRESS_REFS))
-			return Stress.getObjectType();
+			return StressSchema.getObjectType();
 	
 		return super.getAnnotationType(tag);
 	}

@@ -21,13 +21,13 @@ package org.miradi.dialogs.stress;
 
 import org.miradi.dialogs.base.ObjectPoolTablePanel;
 import org.miradi.main.MainWindow;
-import org.miradi.objects.Stress;
+import org.miradi.schemas.StressSchema;
 
 public class StressPoolTablePanel extends ObjectPoolTablePanel
 {
 	public StressPoolTablePanel(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, Stress.getObjectType(), 
+		super(mainWindowToUse, StressSchema.getObjectType(), 
 				new StressPoolTableModel(mainWindowToUse.getProject()) 
 		);
 	}

@@ -22,9 +22,9 @@ package org.miradi.main;
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.exceptions.CommandFailedException;
-import org.miradi.objects.Stress;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
+import org.miradi.schemas.StressSchema;
 
 public class TestCommandExecutedEvents extends MiradiTestCase
 {
@@ -35,7 +35,7 @@ public class TestCommandExecutedEvents extends MiradiTestCase
 
 	public void testBasics()
 	{
-		Command cmd = new CommandCreateObject(Stress.getObjectType());
+		Command cmd = new CommandCreateObject(StressSchema.getObjectType());
 		CommandExecutedEvent event = new CommandExecutedEvent(cmd);
 		assertEquals(cmd, event.getCommand());
 	}
@@ -58,9 +58,9 @@ public class TestCommandExecutedEvents extends MiradiTestCase
 		project.addCommandExecutedListener(listener);
 		assertEquals("executed not zero to start?", 0, listener.timesExecuted);
 		
-		project.executeCommand(new CommandCreateObject(Stress.getObjectType()));
+		project.executeCommand(new CommandCreateObject(StressSchema.getObjectType()));
 		assertEquals("execute didn't fire?", 1, listener.timesExecuted);
-		project.executeCommand(new CommandCreateObject(Stress.getObjectType()));
+		project.executeCommand(new CommandCreateObject(StressSchema.getObjectType()));
 		assertEquals("execute didn't fire again?", 2, listener.timesExecuted);
 
 		project.undo();

@@ -45,9 +45,9 @@ import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Measurement;
-import org.miradi.objects.Stress;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.StrategySchema;
+import org.miradi.schemas.StressSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
@@ -942,7 +942,7 @@ public class TestDataUpgrader extends AbstractMigrationTestCase
 		String stressRefsAsString = targetJson.getString("StressRefs");
 		ORefList stressRefs = new ORefList(stressRefsAsString);
 		assertEquals("wrong number of refs in list?", 1, stressRefs.size());
-		assertEquals("wrong ref in list?", new ORef(Stress.getObjectType(), new BaseId(16)), stressRefs.get(0));
+		assertEquals("wrong ref in list?", new ORef(StressSchema.getObjectType(), new BaseId(16)), stressRefs.get(0));
 		
 		int highestId = DataUpgrader.readHighestIdInProjectFile(jsonDir);
 		assertEquals("wrong highest Id?", 16, highestId);

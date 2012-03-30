@@ -35,6 +35,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ScopeStressBasedThreatRatingQuestion;
 import org.miradi.questions.SeverityStressBasedThreatRatingQuestion;
 import org.miradi.questions.StressRatingChoiceQuestion;
+import org.miradi.schemas.StressSchema;
 import org.miradi.utils.ObjectsActionButton;
 
 public class StressDetailsSubPanel extends ObjectDataInputPanel
@@ -54,7 +55,7 @@ public class StressDetailsSubPanel extends ObjectDataInputPanel
 			addRatingsFields();
 		
 		ObjectsActionButton chooseTagForFactorButton = createObjectsActionButton(getMainWindow().getActions().getObjectsAction(ActionManageFactorTags.class), getPicker());
-		ObjectDataInputField readOnlyTaggedObjects = createReadOnlyObjectList(Stress.getObjectType(), Factor.PSEUDO_TAG_REFERRING_TAG_REFS);
+		ObjectDataInputField readOnlyTaggedObjects = createReadOnlyObjectList(StressSchema.getObjectType(), Factor.PSEUDO_TAG_REFERRING_TAG_REFS);
 		addFieldWithEditButton(FactorSummaryCorePanel.getTagsLabel(), readOnlyTaggedObjects, chooseTagForFactorButton);
 		
 		updateFieldsFromProject();
@@ -62,11 +63,11 @@ public class StressDetailsSubPanel extends ObjectDataInputPanel
 
 	private void addRatingsFields() throws Exception
 	{
-		ObjectDataInputField scopeField = createPopupQuestionEditor(parentDialog, Stress.getObjectType(), Stress.TAG_SCOPE, ScopeStressBasedThreatRatingQuestion.class);
-		ObjectDataInputField severityField = createPopupQuestionEditor(parentDialog, Stress.getObjectType(), Stress.TAG_SEVERITY, SeverityStressBasedThreatRatingQuestion.class);		
+		ObjectDataInputField scopeField = createPopupQuestionEditor(parentDialog, StressSchema.getObjectType(), Stress.TAG_SCOPE, ScopeStressBasedThreatRatingQuestion.class);
+		ObjectDataInputField severityField = createPopupQuestionEditor(parentDialog, StressSchema.getObjectType(), Stress.TAG_SEVERITY, SeverityStressBasedThreatRatingQuestion.class);		
 		addFieldsOnOneLine(EAM.text("Ratings"), new ObjectDataInputField[]{scopeField, severityField});
 		
-		addField(createReadOnlyChoiceField(Stress.getObjectType(), Stress.PSEUDO_STRESS_RATING, new StressRatingChoiceQuestion()));
+		addField(createReadOnlyChoiceField(StressSchema.getObjectType(), Stress.PSEUDO_STRESS_RATING, new StressRatingChoiceQuestion()));
 	}
 
 	@Override

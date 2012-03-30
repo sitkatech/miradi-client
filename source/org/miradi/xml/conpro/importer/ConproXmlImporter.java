@@ -110,6 +110,7 @@ import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.StrategySchema;
+import org.miradi.schemas.StressSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
@@ -905,7 +906,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		NodeList stressNodes = getNodes(targetNode, STRESSES, STRESS);
 		for (int nodeIndex = 0; nodeIndex < stressNodes.getLength(); ++nodeIndex)
 		{
-			ORef stressRef = getProject().createObject(Stress.getObjectType());
+			ORef stressRef = getProject().createObject(StressSchema.getObjectType());
 			Node stressNode = stressNodes.item(nodeIndex);
 			
 			importField(stressNode, NAME, stressRef, Stress.TAG_LABEL); 

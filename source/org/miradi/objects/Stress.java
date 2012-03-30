@@ -22,7 +22,6 @@ package org.miradi.objects;
 import org.miradi.ids.FactorId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.project.threatrating.StressBasedThreatFormula;
@@ -46,12 +45,7 @@ public class Stress extends Factor
 	@Override
 	public int getType()
 	{
-		return getObjectType();
-	}
-	
-	public static int getObjectType()
-	{
-		return ObjectType.STRESS;
+		return StressSchema.getObjectType();
 	}
 	
 	@Override
@@ -108,7 +102,7 @@ public class Stress extends Factor
 	@Override
 	public String getTypeName()
 	{
-		return OBJECT_NAME;
+		return StressSchema.OBJECT_NAME;
 	}
 	
 	@Override
@@ -173,7 +167,7 @@ public class Stress extends Factor
 	
 	public static boolean is(int objectType)
 	{
-		return objectType == getObjectType();
+		return objectType == StressSchema.getObjectType();
 	}
 			
 	@Override
@@ -186,6 +180,4 @@ public class Stress extends Factor
 	public static final String TAG_SCOPE = "Scope";
 	public static final String TAG_SEVERITY = "Severity";
 	public static final String PSEUDO_STRESS_RATING = "PseudoStressRating";
-	
-	public static final String OBJECT_NAME = "Stress";
 }
