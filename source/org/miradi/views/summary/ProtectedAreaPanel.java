@@ -28,6 +28,7 @@ import org.miradi.objects.WcpaProjectData;
 import org.miradi.project.Project;
 import org.miradi.questions.ProtectedAreaCategoryQuestion;
 import org.miradi.schemas.ProjectMetadataSchema;
+import org.miradi.schemas.WcpaProjectDataSchema;
 
 public class ProtectedAreaPanel extends ObjectDataInputPanel
 {
@@ -39,17 +40,17 @@ public class ProtectedAreaPanel extends ObjectDataInputPanel
 		ObjectDataInputField protectedAreaStatusNotesField = createMultilineField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_PROTECTED_AREA_CATEGORY_NOTES, 25);
 		addFieldsOnOneLine(EAM.text("Label|Protected Area Categories"), new ObjectDataInputField[]{protectedAreaStatusField, protectedAreaStatusNotesField});
 		
-		addField(createMultilineField(WcpaProjectData.getObjectType(), WcpaProjectData.TAG_LEGAL_STATUS));
-		addField(createMultilineField(WcpaProjectData.getObjectType(), WcpaProjectData.TAG_LEGISLATIVE));
-		addField(createMultilineField(WcpaProjectData.getObjectType(), WcpaProjectData.TAG_PHYSICAL_DESCRIPTION));
-		addField(createMultilineField(WcpaProjectData.getObjectType(), WcpaProjectData.TAG_BIOLOGICAL_DESCRIPTION));
-		addField(createMultilineField(WcpaProjectData.getObjectType(), WcpaProjectData.TAG_SOCIO_ECONOMIC_INFORMATION));
-		addField(createMultilineField(WcpaProjectData.getObjectType(), WcpaProjectData.TAG_HISTORICAL_DESCRIPTION));
-		addField(createMultilineField(WcpaProjectData.getObjectType(), WcpaProjectData.TAG_CULTURAL_DESCRIPTION));
-		addField(createMultilineField(WcpaProjectData.getObjectType(), WcpaProjectData.TAG_ACCESS_INFORMATION));
-		addField(createMultilineField(WcpaProjectData.getObjectType(), WcpaProjectData.TAG_VISITATION_INFORMATION));
-		addField(createMultilineField(WcpaProjectData.getObjectType(), WcpaProjectData.TAG_CURRENT_LAND_USES));
-		addField(createMultilineField(WcpaProjectData.getObjectType(), WcpaProjectData.TAG_MANAGEMENT_RESOURCES));				
+		addField(createMultilineField(WcpaProjectDataSchema.getObjectType(), WcpaProjectData.TAG_LEGAL_STATUS));
+		addField(createMultilineField(WcpaProjectDataSchema.getObjectType(), WcpaProjectData.TAG_LEGISLATIVE));
+		addField(createMultilineField(WcpaProjectDataSchema.getObjectType(), WcpaProjectData.TAG_PHYSICAL_DESCRIPTION));
+		addField(createMultilineField(WcpaProjectDataSchema.getObjectType(), WcpaProjectData.TAG_BIOLOGICAL_DESCRIPTION));
+		addField(createMultilineField(WcpaProjectDataSchema.getObjectType(), WcpaProjectData.TAG_SOCIO_ECONOMIC_INFORMATION));
+		addField(createMultilineField(WcpaProjectDataSchema.getObjectType(), WcpaProjectData.TAG_HISTORICAL_DESCRIPTION));
+		addField(createMultilineField(WcpaProjectDataSchema.getObjectType(), WcpaProjectData.TAG_CULTURAL_DESCRIPTION));
+		addField(createMultilineField(WcpaProjectDataSchema.getObjectType(), WcpaProjectData.TAG_ACCESS_INFORMATION));
+		addField(createMultilineField(WcpaProjectDataSchema.getObjectType(), WcpaProjectData.TAG_VISITATION_INFORMATION));
+		addField(createMultilineField(WcpaProjectDataSchema.getObjectType(), WcpaProjectData.TAG_CURRENT_LAND_USES));
+		addField(createMultilineField(WcpaProjectDataSchema.getObjectType(), WcpaProjectData.TAG_MANAGEMENT_RESOURCES));				
 						
 
 	}

@@ -21,7 +21,6 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.WcpaProjectDataSchema;
@@ -42,24 +41,19 @@ public class WcpaProjectData extends BaseObject
 	@Override
 	public int getType()
 	{
-		return getObjectType();
+		return WcpaProjectDataSchema.getObjectType();
 	}
 
 	@Override
 	public String getTypeName()
 	{
-		return OBJECT_NAME;
+		return WcpaProjectDataSchema.OBJECT_NAME;
 	}
 
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;
-	}
-	
-	public static int getObjectType()
-	{
-		return ObjectType.WCPA_PROJECT_DATA;
 	}
 	
 	public static boolean canReferToThisType(int type)
@@ -88,6 +82,4 @@ public class WcpaProjectData extends BaseObject
 	public final static String TAG_VISITATION_INFORMATION = "VisitationInformation";
 	public final static String TAG_CURRENT_LAND_USES = "CurrentLandUses";
 	public final static String TAG_MANAGEMENT_RESOURCES = "ManagementResources";
-		
-	public static final String OBJECT_NAME = "WCPAProjectData";
 }

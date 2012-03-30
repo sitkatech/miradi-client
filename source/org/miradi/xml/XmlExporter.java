@@ -36,6 +36,7 @@ import org.miradi.project.Project;
 import org.miradi.schemas.FosProjectDataSchema;
 import org.miradi.schemas.RareProjectDataSchema;
 import org.miradi.schemas.TncProjectDataSchema;
+import org.miradi.schemas.WcpaProjectDataSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.HtmlUtilities;
 
@@ -164,7 +165,7 @@ public abstract class XmlExporter
 	
 	protected WcpaProjectData getWcpaProjectData()
 	{
-		ORef wcpaProjectDataRef = getProject().getSingletonObjectRef(WcpaProjectData.getObjectType());
+		ORef wcpaProjectDataRef = getProject().getSingletonObjectRef(WcpaProjectDataSchema.getObjectType());
 		return WcpaProjectData.find(getProject(), wcpaProjectDataRef);
 	}
 	

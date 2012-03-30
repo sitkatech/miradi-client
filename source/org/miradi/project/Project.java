@@ -100,7 +100,6 @@ import org.miradi.objects.TextBox;
 import org.miradi.objects.ThreatRatingCommentsData;
 import org.miradi.objects.ValueOption;
 import org.miradi.objects.ViewData;
-import org.miradi.objects.WcpaProjectData;
 import org.miradi.objects.WcsProjectData;
 import org.miradi.objects.WwfProjectData;
 import org.miradi.project.threatrating.SimpleThreatFormula;
@@ -130,6 +129,7 @@ import org.miradi.schemas.ThreatRatingCommentsDataSchema;
 import org.miradi.schemas.ThreatStressRatingSchema;
 import org.miradi.schemas.TncProjectDataSchema;
 import org.miradi.schemas.ValueOptionSchema;
+import org.miradi.schemas.WcpaProjectDataSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
@@ -235,7 +235,7 @@ public class Project
 	
 	public WcpaProjectDataPool getWcpaProjectDataPool()
 	{
-		return (WcpaProjectDataPool) getPool(WcpaProjectData.getObjectType());
+		return (WcpaProjectDataPool) getPool(WcpaProjectDataSchema.getObjectType());
 	}
 	
 	public ConceptualModelDiagramPool getConceptualModelDiagramPool()
@@ -889,7 +889,7 @@ public class Project
 		createDefaultProjectDataObject(WcsProjectData.getObjectType());
 		createDefaultProjectDataObject(TncProjectDataSchema.getObjectType());
 		createDefaultProjectDataObject(FosProjectDataSchema.getObjectType());
-		createDefaultProjectDataObject(WcpaProjectData.getObjectType());
+		createDefaultProjectDataObject(WcpaProjectDataSchema.getObjectType());
 		createDefaultProjectDataObject(ThreatRatingCommentsDataSchema.getObjectType());
 		createDefaultProjectDataObject(DashboardSchema.getObjectType());
 	}

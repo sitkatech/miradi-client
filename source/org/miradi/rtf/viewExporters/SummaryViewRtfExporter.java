@@ -39,7 +39,6 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.WcpaProjectData;
 import org.miradi.objects.WcsProjectData;
 import org.miradi.objects.WwfProjectData;
 import org.miradi.objects.Xenodata;
@@ -49,6 +48,7 @@ import org.miradi.rtf.RtfWriter;
 import org.miradi.schemas.FosProjectDataSchema;
 import org.miradi.schemas.RareProjectDataSchema;
 import org.miradi.schemas.TncProjectDataSchema;
+import org.miradi.schemas.WcpaProjectDataSchema;
 import org.miradi.utils.CodeList;
 
 public class SummaryViewRtfExporter extends RtfViewExporter
@@ -113,7 +113,7 @@ public class SummaryViewRtfExporter extends RtfViewExporter
 
 	private void exportScopeTab(RtfWriter writer) throws Exception
 	{
-		exportForm(writer, new ScopeTabForm(), WcpaProjectData.getObjectType());
+		exportForm(writer, new ScopeTabForm(), WcpaProjectDataSchema.getObjectType());
 		exportModel(writer, new IucnRedlistSpeciesEditablePoolTableModel(getProject()), EAM.text("IUCN Redlist Species"));
 		exportModel(writer, new OtherNotableSpeciesEditablePoolTableModel(getProject()), EAM.text("Other Notable Species"));
 	}

@@ -31,6 +31,7 @@ import org.miradi.objects.WcpaProjectData;
 import org.miradi.questions.ProtectedAreaCategoryQuestion;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.schemas.ProjectMetadataSchema;
+import org.miradi.schemas.WcpaProjectDataSchema;
 import org.miradi.views.summary.ProtectedAreaPanel;
 
 public class ScopeTabProtectedAreaSubPanelForm extends FieldPanelSpec
@@ -53,7 +54,7 @@ public class ScopeTabProtectedAreaSubPanelForm extends FieldPanelSpec
 	
 	void addWcpaFields()
 	{
-		int type = WcpaProjectData.getObjectType();
+		int type = WcpaProjectDataSchema.getObjectType();
 		
 		addLabelAndField(type, WcpaProjectData.TAG_LEGAL_STATUS);
 		addLabelAndField(type, WcpaProjectData.TAG_LEGISLATIVE);
