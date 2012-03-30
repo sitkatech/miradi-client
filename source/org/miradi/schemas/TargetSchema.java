@@ -22,6 +22,7 @@ package org.miradi.schemas;
 
 import org.miradi.objects.Target;
 import org.miradi.questions.HabitatAssociationQuestion;
+import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class TargetSchema extends AbstractTargetSchema
 {
@@ -35,7 +36,7 @@ public class TargetSchema extends AbstractTargetSchema
 	{
 		super.fillFieldSchemas();
 		
-		createFieldSchemaReflist(Target.TAG_STRESS_REFS);
+		createFieldSchemaReflist(Target.TAG_STRESS_REFS, XmpzXmlConstants.STRESS);
 		createFieldSchemaSingleLineUserText(Target.TAG_SPECIES_LATIN_NAME);
 		createFieldSchemaCodeList(Target.TAG_HABITAT_ASSOCIATION, getQuestion(HabitatAssociationQuestion.class));
 		

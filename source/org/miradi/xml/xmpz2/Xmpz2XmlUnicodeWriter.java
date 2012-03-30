@@ -29,6 +29,7 @@ import org.miradi.main.EAM;
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Xenodata;
@@ -36,6 +37,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.schemas.FieldSchemaReflist;
 import org.miradi.utils.CodeList;
 import org.miradi.xml.generic.XmlSchemaCreator;
 import org.miradi.xml.wcs.XmpzXmlConstants;
@@ -135,6 +137,7 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 
 	public void writeIdListData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string)
 	{
+		
 	}
 
 	public void writeIntegerData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String number) throws Exception
@@ -177,8 +180,21 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 	{
 	}
 
-	public void writeRefListData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string)
+	public void writeRefListData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, ORefList refListToUse) throws Exception
 	{
+		if (refListToUse.isEmpty())
+			return;
+		
+		final String idElementName = ((FieldSchemaReflist) fieldSchema).getTypeName();
+		final String elementName = appendParentNameToChildName(baseObjectSchema, fieldSchema);
+		writeStartElement(elementName);
+		for(ORef ref : refListToUse)
+		{
+			writeElement(idElementName, ref.getObjectId().toString());
+		}
+		
+		writeEndElement(elementName);
+
 	}
 
 	public void writeRelevancyOverrideSetData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string)

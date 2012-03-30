@@ -29,6 +29,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.StaticQuestionManager;
+import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class BaseObjectSchema implements Iterable<AbstractFieldSchema>
 {
@@ -79,9 +80,9 @@ public class BaseObjectSchema implements Iterable<AbstractFieldSchema>
 		return addFieldSchema(new FieldSchemaRef(fieldTag));
 	}
 	
-	public AbstractFieldSchema createFieldSchemaReflist(final String fieldTag)
+	public AbstractFieldSchema createFieldSchemaReflist(final String fieldTag, final String typeName)
 	{
-		return addFieldSchema(new FieldSchemaReflist(fieldTag));
+		return addFieldSchema(new FieldSchemaReflist(fieldTag, typeName));
 	}
 	
 	public AbstractFieldSchema createFieldSchemaMultiLineUserText(final String fieldTag)
@@ -236,8 +237,8 @@ public class BaseObjectSchema implements Iterable<AbstractFieldSchema>
 	{
 		createFieldSchemaExpandingUserText(BaseObject.TAG_LABEL);
 		createFieldSchemaIdList(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, ResourceAssignment.getObjectType());
-		createFieldSchemaReflist(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS);
-		createFieldSchemaReflist(BaseObject.TAG_PROGRESS_REPORT_REFS);
+		createFieldSchemaReflist(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS, XmpzXmlConstants.EXPENSE_ASSIGNMENT);
+		createFieldSchemaReflist(BaseObject.TAG_PROGRESS_REPORT_REFS, XmpzXmlConstants.PROGRESS_REPORT);
 		
 		createPseudoFieldSchemaString(BaseObject.PSEUDO_TAG_WHEN_TOTAL);
 		createPseudoFieldSchemaQuestion(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, BaseObject.createSet(BaseObject.TAG_PROGRESS_REPORT_REFS));

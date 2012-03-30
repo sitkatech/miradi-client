@@ -85,7 +85,7 @@ public class RefListData extends ObjectData
 	@Override
 	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		writer.writeRefListData(baseObjectSchema, fieldSchema, get());
+		writer.writeRefListData(baseObjectSchema, fieldSchema, refList);
 	}
 	
 	private ORefList refList;
