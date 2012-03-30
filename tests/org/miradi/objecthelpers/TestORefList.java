@@ -23,9 +23,9 @@ import org.miradi.ids.BaseId;
 import org.miradi.main.MiradiTestCase;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Strategy;
-import org.miradi.objects.Target;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class TestORefList extends MiradiTestCase
@@ -113,8 +113,8 @@ public class TestORefList extends MiradiTestCase
 		ORef foundCauseRef = sampleRefList.getRefForType(Cause.getObjectType());
 		assertEquals("wrong ref for type?", new ORef(Cause.getObjectType(), new BaseId(10)), foundCauseRef);
 		
-		ORef foundTargetRef = sampleRefList.getRefForType(Target.getObjectType());
-		assertEquals("wrong ref for type?", new ORef(Target.getObjectType(), new BaseId(20)), foundTargetRef);
+		ORef foundTargetRef = sampleRefList.getRefForType(TargetSchema.getObjectType());
+		assertEquals("wrong ref for type?", new ORef(TargetSchema.getObjectType(), new BaseId(20)), foundTargetRef);
 		
 		ORef foundStrategyRef = sampleRefList.getRefForType(Strategy.getObjectType());
 		assertEquals("wrong ref for invalid type", ORef.createInvalidWithType(Strategy.getObjectType()), foundStrategyRef);
@@ -122,7 +122,7 @@ public class TestORefList extends MiradiTestCase
 
 	public void testGetRefForTypes()
 	{
-		int[] types1 = {Target.getObjectType(), Cause.getObjectType(),};
+		int[] types1 = {TargetSchema.getObjectType(), Cause.getObjectType(),};
 		ORefList sampleRefList = getSampleRefList();
 		
 		ORef foundRef1 = sampleRefList.getRefForTypes(types1);
@@ -140,16 +140,16 @@ public class TestORefList extends MiradiTestCase
 		ORef foundRef4 = sampleRefList.getRefForTypes(types4);
 		assertEquals("found wrong ref?", new ORef(Cause.getObjectType(), new BaseId(10)), foundRef4);
 		
-		int[] types5 = {Strategy.getObjectType(), Target.getObjectType(), };
+		int[] types5 = {Strategy.getObjectType(), TargetSchema.getObjectType(), };
 		ORef foundRef5 = sampleRefList.getRefForTypes(types5);
-		assertEquals("found wrong ref?", new ORef(Target.getObjectType(), new BaseId(20)), foundRef5);
+		assertEquals("found wrong ref?", new ORef(TargetSchema.getObjectType(), new BaseId(20)), foundRef5);
 	}
 	
 	private ORefList getSampleRefList()
 	{
 		ORef ref1 = new ORef(Cause.getObjectType(), new BaseId(10));
 		ORef ref2 = new ORef(Cause.getObjectType(), new BaseId(11));
-		ORef ref6 = new ORef(Target.getObjectType(), new BaseId(20));
+		ORef ref6 = new ORef(TargetSchema.getObjectType(), new BaseId(20));
 		ORef ref7 = new ORef(ConceptualModelDiagramSchema.getObjectType(), new BaseId(21));	
 		
 		ORefList refList = new ORefList();

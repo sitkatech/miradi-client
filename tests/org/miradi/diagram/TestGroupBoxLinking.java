@@ -25,7 +25,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.GroupBox;
-import org.miradi.objects.Target;
+import org.miradi.schemas.TargetSchema;
 import org.miradi.views.diagram.LinkCreator;
 
 public class TestGroupBoxLinking extends TestCaseWithProject
@@ -43,7 +43,7 @@ public class TestGroupBoxLinking extends TestCaseWithProject
 		linkCreator = new LinkCreator(getProject());
 		cause1 = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
 		cause2 = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
-		target = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		target = getProject().createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
 		
 		causeGroupBox = createGroupBox(new DiagramFactor[]{cause1, cause2});
 		targetGroupBox = createGroupBox(new DiagramFactor[]{target});		

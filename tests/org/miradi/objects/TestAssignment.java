@@ -29,6 +29,7 @@ import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.BudgetCategoryOneSchema;
 import org.miradi.schemas.BudgetCategoryTwoSchema;
 import org.miradi.schemas.FundingSourceSchema;
+import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.OptionalDouble;
@@ -63,7 +64,7 @@ public class TestAssignment extends ObjectTestCase
 		
 		try
 		{
-			expenseAssignment.getTagForCategoryType(Target.getObjectType());
+			expenseAssignment.getTagForCategoryType(TargetSchema.getObjectType());
 			fail("Assignment should not have a tag for target?");
 		}
 		catch (Exception ignoreExpectedExcetion)

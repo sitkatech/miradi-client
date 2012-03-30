@@ -48,7 +48,7 @@ import org.miradi.objects.Factor;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
-import org.miradi.objects.Target;
+import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.NullProgressMeter;
@@ -373,7 +373,7 @@ public class TestDataUpgrader extends AbstractMigrationTestCase
 		EnhancedJsonObject threatRatingCommentsDataJson = new EnhancedJsonObject(readFile(singleThreatRatingCommentsDataFile));
 		
 		ORef threatRef = new ORef(Cause.getObjectType(), new BaseId(causeIds[0]));
-		ORef targetRef = new ORef(Target.getObjectType(), new BaseId(targetIds[0]));
+		ORef targetRef = new ORef(TargetSchema.getObjectType(), new BaseId(targetIds[0]));
 		String key = threatRef.toString() + targetRef.toString();
 		
 		CodeToUserStringMap simpleThreatRatingCommentsMap2 = new CodeToUserStringMap(threatRatingCommentsDataJson.optString("SimpleThreatRatingCommentsMap"));
@@ -497,7 +497,7 @@ public class TestDataUpgrader extends AbstractMigrationTestCase
 		DataUpgrader.initializeStaticDirectory(tempDirectory);
 		MigrationsOlderThanMiradiVersion2.upgradeToVersion35();
 	
-		verifyTypeDir(jsonDir, TARGET_FILE_NAME, Target.getObjectType(), targetJson);
+		verifyTypeDir(jsonDir, TARGET_FILE_NAME, TargetSchema.getObjectType(), targetJson);
 		verifyTypeDir(jsonDir, CAUSE_FILE_NAME, Cause.getObjectType(), causeJson);
 		verifyTypeDir(jsonDir, STRATEGY_FILE_NAME, Strategy.getObjectType(), strategyJson);
 		

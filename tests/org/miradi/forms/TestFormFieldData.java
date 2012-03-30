@@ -21,6 +21,7 @@ package org.miradi.forms;
 
 import org.miradi.main.MiradiTestCase;
 import org.miradi.objects.Target;
+import org.miradi.schemas.TargetSchema;
 
 public class TestFormFieldData extends MiradiTestCase
 {
@@ -31,9 +32,9 @@ public class TestFormFieldData extends MiradiTestCase
 	
 	public void testBasics()
 	{
-		FormFieldData formFieldData = new FormFieldData(Target.getObjectType(), Target.TAG_LABEL);
+		FormFieldData formFieldData = new FormFieldData(TargetSchema.getObjectType(), Target.TAG_LABEL);
 		assertTrue("is not form field Data?", formFieldData.isFormFieldData());
-		assertEquals("wrong form field data type?", Target.getObjectType(), formFieldData.getObjectType());
+		assertEquals("wrong form field data type?", TargetSchema.getObjectType(), formFieldData.getObjectType());
 		assertEquals("wrong form field data tag?", Target.TAG_LABEL, formFieldData.getObjectTag());
 	}
 }

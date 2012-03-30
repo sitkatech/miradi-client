@@ -54,6 +54,7 @@ import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.TargetSchema;
 
 public class TestDiagramAliasPaster extends TestCaseWithProject
 {
@@ -67,7 +68,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 	{
 		super.setUp();
 		
-		targetDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		targetDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
 		threatDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
 		
 		threat = (Cause) threatDiagramFactor.getWrappedFactor();
@@ -330,12 +331,12 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		assertTrue("Isn't a group link?", gdl.isGroupBoxLink());
 		assertNull("Group link has an FL?", gdl.getWrappedFactorLink());
 		assertEquals("Group link not from group?", GroupBox.getObjectType(), gdl.getFromDiagramFactor().getWrappedType());
-		assertEquals("Group link not to target?", Target.getObjectType(), gdl.getToDiagramFactor().getWrappedType());
+		assertEquals("Group link not to target?", TargetSchema.getObjectType(), gdl.getToDiagramFactor().getWrappedType());
 		assertEquals("Group link doesn't have child?", 1, gdl.getGroupedDiagramLinkRefs().size());
 
 		DiagramLink tdl = DiagramLink.find(getProject(), gdl.getGroupedDiagramLinkRefs().getFirstElement());
 		assertEquals("Threat link not from threat?", Cause.getObjectType(), tdl.getFromDiagramFactor().getWrappedType());
-		assertEquals("Threat link not to target?", Target.getObjectType(), tdl.getToDiagramFactor().getWrappedType());
+		assertEquals("Threat link not to target?", TargetSchema.getObjectType(), tdl.getToDiagramFactor().getWrappedType());
 	}
 
 	private void verifyGroupContainingThreatLinkedToTarget(DiagramModel diagramModel, DiagramFactor groupDiagramFactor)
@@ -343,7 +344,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		ProjectRepairer repairer = new ProjectRepairer(getProject());
 		assertEquals("Orphaned threats?", 0, repairer.getFactorsWithoutDiagramFactors(Cause.getObjectType()).size());
 		assertEquals("Orphaned groups?", 0, repairer.getFactorsWithoutDiagramFactors(GroupBox.getObjectType()).size());
-		assertEquals("Orphaned targets?", 0, repairer.getFactorsWithoutDiagramFactors(Target.getObjectType()).size());
+		assertEquals("Orphaned targets?", 0, repairer.getFactorsWithoutDiagramFactors(TargetSchema.getObjectType()).size());
 
 		assertEquals("Group not in diagram?", new ORefList(diagramModel.getDiagramObject().getRef()), groupDiagramFactor.findObjectsThatReferToUs(ConceptualModelDiagramSchema.getObjectType()));
 		assertEquals("Group doesn't have one child?", 1, groupDiagramFactor.getGroupBoxChildrenSet().size());

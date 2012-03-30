@@ -21,6 +21,7 @@ package org.miradi.forms;
 
 import org.miradi.main.MiradiTestCase;
 import org.miradi.objects.Target;
+import org.miradi.schemas.TargetSchema;
 
 public class TestFormFieldLabel extends MiradiTestCase
 {
@@ -31,9 +32,9 @@ public class TestFormFieldLabel extends MiradiTestCase
 	
 	public void testBasics()
 	{
-		FormFieldLabel formFieldLabel = new FormFieldLabel(Target.getObjectType(), Target.TAG_LABEL);
+		FormFieldLabel formFieldLabel = new FormFieldLabel(TargetSchema.getObjectType(), Target.TAG_LABEL);
 		assertTrue("is not a form field label?", formFieldLabel.isFormFieldLabel());
-		assertEquals("wrong form field label type?", Target.getObjectType(), formFieldLabel.getObjectType());
+		assertEquals("wrong form field label type?", TargetSchema.getObjectType(), formFieldLabel.getObjectType());
 		assertEquals("wrong form field label tag?", Target.TAG_LABEL, formFieldLabel.getObjectTag());
 	}
 }

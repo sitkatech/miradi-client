@@ -60,6 +60,7 @@ import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
+import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.views.umbrella.UndoDoer;
 
@@ -113,7 +114,7 @@ public class TestDiagramPaster extends TestCaseWithProject
 	{
 		DiagramFactor threatDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
 		getProject().enableAsThreat(threatDiagramFactor.getWrappedORef());
-		DiagramFactor targetDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramFactor targetDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
 		ORef diagramLinkRef = getProject().createDiagramLinkAndAddToDiagram(threatDiagramFactor, targetDiagramFactor);
 		
 		Stress stress = getProject().createStress();
@@ -205,8 +206,8 @@ public class TestDiagramPaster extends TestCaseWithProject
 	{
 		fixupRefs(Cause.getObjectType(), IndicatorSchema.getObjectType(), Factor.TAG_INDICATOR_IDS);
 		fixupRefs(Cause.getObjectType(), ObjectiveSchema.getObjectType(), Factor.TAG_OBJECTIVE_IDS);
-		fixupRefs(Target.getObjectType(), GoalSchema.getObjectType(), AbstractTarget.TAG_GOAL_IDS);
-		fixupRefs(Target.getObjectType(), KeyEcologicalAttribute.getObjectType(), AbstractTarget.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
+		fixupRefs(TargetSchema.getObjectType(), GoalSchema.getObjectType(), AbstractTarget.TAG_GOAL_IDS);
+		fixupRefs(TargetSchema.getObjectType(), KeyEcologicalAttribute.getObjectType(), AbstractTarget.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
 		fixupRefs(HumanWelfareTargetSchema.getObjectType(), GoalSchema.getObjectType(), AbstractTarget.TAG_GOAL_IDS);
 		fixupRefs(HumanWelfareTargetSchema.getObjectType(), KeyEcologicalAttribute.getObjectType(), AbstractTarget.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
 	}
@@ -266,7 +267,7 @@ public class TestDiagramPaster extends TestCaseWithProject
 	
 	public void testThreatStressRatingUndoPaste() throws Exception
 	{
-		DiagramFactor targetDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramFactor targetDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
 		Target target = (Target) targetDiagramFactor.getWrappedFactor();
 		ORefList stressRefs = new ORefList(getProject().createStress().getRef());
 		getProject().fillObjectUsingCommand(target, Target.TAG_STRESS_REFS, stressRefs.toString());

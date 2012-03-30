@@ -27,6 +27,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.project.Project;
 import org.miradi.schemas.DiagramLinkSchema;
+import org.miradi.schemas.TargetSchema;
 
 public class TestDiagramObject extends ObjectTestCase
 {
@@ -39,7 +40,7 @@ public class TestDiagramObject extends ObjectTestCase
 	public void testAreDiagramFactorsLinkedFromToNonBidirectional() throws Exception
 	{
 		DiagramFactor cause = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
-		DiagramFactor target = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramFactor target = getProject().createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
 		DiagramObject diagramObject = getProject().getTestingDiagramObject();
 		assertFalse("link does exist?", diagramObject.areDiagramFactorsLinkedFromToNonBidirectional(cause.getRef(), target.getRef()));
 		
@@ -68,15 +69,15 @@ public class TestDiagramObject extends ObjectTestCase
 	{
 		DiagramObject diagramObject = getProject().getTestingDiagramObject();
 		ORef stressRef = getProject().createFactorAndReturnRef(Stress.getObjectType());
-		DiagramFactor targetDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramFactor targetDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
 		
-		ORefList foundTargetReferrerRefs1 = diagramObject.findReferrersOnSameDiagram(stressRef, Target.getObjectType());
+		ORefList foundTargetReferrerRefs1 = diagramObject.findReferrersOnSameDiagram(stressRef, TargetSchema.getObjectType());
 		assertEquals("has referrers?", 0, foundTargetReferrerRefs1.size());
 		
 		ORefList stressRefs = new ORefList(stressRef);
 		Target target = (Target) targetDiagramFactor.getWrappedFactor();
 		target.setData(Target.TAG_STRESS_REFS, stressRefs.toString());
-		ORefList foundTargetReferrerRefs2 = diagramObject.findReferrersOnSameDiagram(stressRef, Target.getObjectType());
+		ORefList foundTargetReferrerRefs2 = diagramObject.findReferrersOnSameDiagram(stressRef, TargetSchema.getObjectType());
 		assertEquals("has no referrers?", 1, foundTargetReferrerRefs2.size());
 	}
 	
@@ -85,13 +86,13 @@ public class TestDiagramObject extends ObjectTestCase
 		DiagramObject diagramObject = getProject().getTestingDiagramModel().getDiagramObject();
 		assertEquals("diagram was not empty", 0, diagramObject.getAllWrappedFactors().length);
 		getProject().createAndAddFactorToDiagram(Cause.getObjectType());
-		getProject().createAndAddFactorToDiagram(Target.getObjectType());
+		getProject().createAndAddFactorToDiagram(TargetSchema.getObjectType());
 		
 		Factor[] allWrappedFactors = diagramObject.getAllWrappedFactors();
 		assertEquals("wrong factor count?", 2, allWrappedFactors.length);
 		
 		Vector<Integer> typesToFilterBy = new Vector<Integer>();
-		typesToFilterBy.add(Target.getObjectType());
+		typesToFilterBy.add(TargetSchema.getObjectType());
 		
 		Factor[] filteredFactors = diagramObject.getFactorsExcludingTypes(typesToFilterBy);
 		assertEquals("wrong factor count?", 1, filteredFactors.length);
@@ -105,7 +106,7 @@ public class TestDiagramObject extends ObjectTestCase
 		DiagramObject diagramObject = getProject().getTestingDiagramModel().getDiagramObject();
 
 		DiagramFactor cause = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
-		DiagramFactor target = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramFactor target = getProject().createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
 		DiagramLink diagramLink = createLinkAndAddToDiagram(cause, target);
 
 		assertEquals(diagramLink.getRef(), diagramObject.getDiagramLinkByWrappedRef(diagramLink.getWrappedRef()).getRef());
@@ -117,7 +118,7 @@ public class TestDiagramObject extends ObjectTestCase
 
 		DiagramFactor strategy = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
 		DiagramFactor cause = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
-		DiagramFactor target = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramFactor target = getProject().createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
 		createLinkAndAddToDiagram(cause, target);
 		
 		assertFalse("strategy is linked to cause?", diagramObject.areLinkedEitherDirection(strategy.getWrappedORef(), cause.getWrappedORef()));
@@ -132,7 +133,7 @@ public class TestDiagramObject extends ObjectTestCase
 
 		DiagramFactor strategy = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
 		DiagramFactor cause = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
-		DiagramFactor target = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramFactor target = getProject().createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
 		DiagramLink diagramLink = createLinkAndAddToDiagram(cause, target);
 		
 		assertNull("found a non-existant link?", diagramObject.getDiagramLink(strategy.getWrappedORef(), cause.getWrappedORef()));
@@ -146,7 +147,7 @@ public class TestDiagramObject extends ObjectTestCase
 
 		DiagramFactor strategy = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
 		DiagramFactor cause = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
-		DiagramFactor target = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramFactor target = getProject().createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
 		DiagramLink diagramLink = createLinkAndAddToDiagram(cause, target);
 		
 		assertNull("found a non-existant link?", getDiagramLinkRefFromDiagramFactors(diagramObject, strategy, cause));

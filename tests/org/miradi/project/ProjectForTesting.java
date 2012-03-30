@@ -143,6 +143,7 @@ import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
+import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.DateRange;
@@ -419,7 +420,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public DiagramLink createAndPopulateDirectThreatDiagramLink() throws Exception
 	{
-		DiagramFactor targetDiagramFactor = createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramFactor targetDiagramFactor = createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
 		Target target = (Target) targetDiagramFactor.getWrappedFactor();
 		populateTarget(target);
 		
@@ -616,7 +617,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public DiagramFactor createAndPopulateDiagramFactor() throws Exception
 	{
-		DiagramFactor diagramFactor = createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramFactor diagramFactor = createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
 		populateDiagramFactor(diagramFactor);
 		
 		return diagramFactor;
@@ -637,7 +638,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		DiagramFactor causeGroupBox = createDiagramFactorAndAddToDiagram(GroupBox.getObjectType());
 		fillObjectUsingCommand(causeGroupBox, DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, new ORefList(cause));
 		
-		DiagramFactor target = createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramFactor target = createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
 		DiagramFactor targetGroupBox = createDiagramFactorAndAddToDiagram(GroupBox.getObjectType());
 		fillObjectUsingCommand(targetGroupBox, DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, new ORefList(target));
 		
@@ -680,7 +681,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public Target createTarget() throws Exception
 	{
-		ORef targetRef = createObject(Target.getObjectType(), new FactorId(takeNextId(Target.getObjectType())));
+		ORef targetRef = createObject(TargetSchema.getObjectType(), new FactorId(takeNextId(TargetSchema.getObjectType())));
 		return Target.find(this, targetRef);
 	}
 	
@@ -727,7 +728,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public DiagramLink createThreatTargetDiagramLink() throws Exception
 	{
-		DiagramFactor diagramFactorTarget = createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramFactor diagramFactorTarget = createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
 		DiagramFactor diagramFactorCause = createDiagramFactorAndAddToDiagram(Cause.getObjectType());
 		Cause threat = (Cause) diagramFactorCause.getWrappedFactor();
 		enableAsThreat(threat);
@@ -1771,7 +1772,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 			next = nextStrategyId++;
 		else if(objectType == Cause.getObjectType())
 			next = nextCauseId++;
-		else if(objectType == Target.getObjectType())
+		else if(objectType == TargetSchema.getObjectType())
 			next = nextTargetId++;
 		else
 			next = nextOtherId++;
@@ -1941,7 +1942,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		DiagramFactor threat = createAndAddFactorToDiagram(ObjectType.CAUSE, takeNextId(Cause.getObjectType()));
 		enableAsThreat(threat.getWrappedORef());
-		DiagramFactor target = createAndAddFactorToDiagram(ObjectType.TARGET, takeNextId(Target.getObjectType()));
+		DiagramFactor target = createAndAddFactorToDiagram(ObjectType.TARGET, takeNextId(TargetSchema.getObjectType()));
 
 		
 		final ORef factorLinkRef = createObject(ObjectType.FACTOR_LINK);
@@ -1985,10 +1986,10 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public static ORef getDownstreamTargetRef(DiagramLink diagramLink) throws Exception
 	{
-		if (diagramLink.getToDiagramFactor().getWrappedORef().getObjectType() == Target.getObjectType())
+		if (diagramLink.getToDiagramFactor().getWrappedORef().getObjectType() == TargetSchema.getObjectType())
 			return diagramLink.getToWrappedRef();
 		
-		if (diagramLink.getFromDiagramFactor().getWrappedORef().getObjectType() == Target.getObjectType() && diagramLink.isBidirectional())
+		if (diagramLink.getFromDiagramFactor().getWrappedORef().getObjectType() == TargetSchema.getObjectType() && diagramLink.isBidirectional())
 			return diagramLink.getFromWrappedRef();
 		
 		throw new Exception();
