@@ -84,7 +84,7 @@ public class DateData extends ObjectData
 	@Override
 	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		writer.writetDateData(baseObjectSchema, fieldSchema, get());
+		writer.writeDateData(baseObjectSchema, fieldSchema, get());
 	}
 	
 	private MultiCalendar date;
