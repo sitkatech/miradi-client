@@ -39,7 +39,6 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.RareProjectData;
 import org.miradi.objects.TncProjectData;
 import org.miradi.objects.WcpaProjectData;
 import org.miradi.objects.WcsProjectData;
@@ -49,6 +48,7 @@ import org.miradi.questions.ReportTemplateContentQuestion;
 import org.miradi.rtf.RtfFormExporter;
 import org.miradi.rtf.RtfWriter;
 import org.miradi.schemas.FosProjectDataSchema;
+import org.miradi.schemas.RareProjectDataSchema;
 import org.miradi.utils.CodeList;
 
 public class SummaryViewRtfExporter extends RtfViewExporter
@@ -146,7 +146,7 @@ public class SummaryViewRtfExporter extends RtfViewExporter
 	
 	private void exportRareTab(RtfWriter writer) throws Exception
 	{
-		exportForm(writer, new RareTabForm(), RareProjectData.getObjectType());
+		exportForm(writer, new RareTabForm(), RareProjectDataSchema.getObjectType());
 		exportModel(writer, new AudienceEditablePoolTableModel(getProject()), EAM.text("Audience"));
 	}
 

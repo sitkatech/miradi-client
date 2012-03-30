@@ -34,6 +34,7 @@ import org.miradi.objects.WcsProjectData;
 import org.miradi.objects.WwfProjectData;
 import org.miradi.project.Project;
 import org.miradi.schemas.FosProjectDataSchema;
+import org.miradi.schemas.RareProjectDataSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.HtmlUtilities;
 
@@ -186,7 +187,7 @@ public abstract class XmlExporter
 	
 	protected RareProjectData getRareProjectData()
 	{
-		ORef rareProjectDataRef = getProject().getSingletonObjectRef(RareProjectData.getObjectType());
+		ORef rareProjectDataRef = getProject().getSingletonObjectRef(RareProjectDataSchema.getObjectType());
 		return RareProjectData.find(getProject(), rareProjectDataRef);
 	}
 	

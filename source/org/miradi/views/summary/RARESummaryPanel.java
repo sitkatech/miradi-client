@@ -25,25 +25,25 @@ import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.icons.RareIcon;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.RareProjectData;
 import org.miradi.project.Project;
 import org.miradi.questions.ReportTemplateContentQuestion;
 import org.miradi.rtf.RtfWriter;
 import org.miradi.rtf.viewExporters.SummaryViewRtfExporter;
 import org.miradi.schemas.ProjectMetadataSchema;
+import org.miradi.schemas.RareProjectDataSchema;
 import org.miradi.utils.CodeList;
 
 public class RARESummaryPanel extends ObjectDataInputPanelWithSections
 {
 	public RARESummaryPanel(Project projectToUse) throws Exception
 	{
-		super(projectToUse, RareProjectData.getObjectType());
+		super(projectToUse, RareProjectDataSchema.getObjectType());
 		
 		addSubPanelWithTitledBorder(new RareTrackingSummarySubPanel(projectToUse));
 		addSubPanelWithTitledBorder(new RareCampaignSummarySubPanel(projectToUse));
 		addSubPanelWithTitledBorder(new RareCampaignPlanningSummarySubPanel(projectToUse));
 
-		setObjectRefs(new ORef[] {projectToUse.getSingletonObjectRef(RareProjectData.getObjectType()), projectToUse.getSingletonObjectRef(ProjectMetadataSchema.getObjectType()),});
+		setObjectRefs(new ORef[] {projectToUse.getSingletonObjectRef(RareProjectDataSchema.getObjectType()), projectToUse.getSingletonObjectRef(ProjectMetadataSchema.getObjectType()),});
 	}
 
 	@Override

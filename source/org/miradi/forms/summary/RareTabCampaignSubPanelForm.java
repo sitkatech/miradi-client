@@ -25,6 +25,7 @@ import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.RareProjectData;
 import org.miradi.questions.ThreatClassificationQuestion;
 import org.miradi.schemas.ProjectMetadataSchema;
+import org.miradi.schemas.RareProjectDataSchema;
 import org.miradi.views.summary.RareCampaignSummarySubPanel;
 
 public class RareTabCampaignSubPanelForm extends FieldPanelSpec
@@ -33,17 +34,17 @@ public class RareTabCampaignSubPanelForm extends FieldPanelSpec
 	{		
 		setTranslatedTitle(RareCampaignSummarySubPanel.PANEL_DESCRIPTION);
 	
-		addLabelAndField(RareProjectData.getObjectType(), RareProjectData.LEGACY_TAG_THREATS_ADDRESSED_NOTES);
+		addLabelAndField(RareProjectDataSchema.getObjectType(), RareProjectData.LEGACY_TAG_THREATS_ADDRESSED_NOTES);
 		addCodeListField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.PSEUDO_TAG_ALL_THREAT_CLASSIFICATIONS, new ThreatClassificationQuestion());
 		addLeftRightConstants(THREATS_AT_SITE_CONSTANT, SEE_DIAGRAM_CONSTANT);
-		addLabelAndField(RareProjectData.getObjectType(), RareProjectData.TAG_NUMBER_OF_COMMUNITIES_IN_CAMPAIGN_AREA);
+		addLabelAndField(RareProjectDataSchema.getObjectType(), RareProjectData.TAG_NUMBER_OF_COMMUNITIES_IN_CAMPAIGN_AREA);
 		addLeftRightConstants(HUMAN_STAKEHOLDER_POP_SIZE_CONSTANT, SEE_SCOPE_TAB_CONSTANT);
 		addLeftRightConstants(BIODIVERSITY_AREA_HA_CONSTANT, SEE_SCOPE_TAB_CONSTANT);
 		addLeftRightConstants(HABITAT_CONSTANT, SEE_TNC_TAB_FOR_ECOREGIONS_CONSTANT);
-		addLabelAndField(RareProjectData.getObjectType(), RareProjectData.TAG_BIODIVERSITY_HOTSPOTS);
-		addLabelAndField(RareProjectData.getObjectType(), RareProjectData.TAG_FLAGSHIP_SPECIES_COMMON_NAME);
-		addLabelAndField(RareProjectData.getObjectType(), RareProjectData.TAG_FLAGSHIP_SPECIES_SCIENTIFIC_NAME);
-		addLabelAndField(RareProjectData.getObjectType(), RareProjectData.TAG_FLAGSHIP_SPECIES_DETAIL);
+		addLabelAndField(RareProjectDataSchema.getObjectType(), RareProjectData.TAG_BIODIVERSITY_HOTSPOTS);
+		addLabelAndField(RareProjectDataSchema.getObjectType(), RareProjectData.TAG_FLAGSHIP_SPECIES_COMMON_NAME);
+		addLabelAndField(RareProjectDataSchema.getObjectType(), RareProjectData.TAG_FLAGSHIP_SPECIES_SCIENTIFIC_NAME);
+		addLabelAndField(RareProjectDataSchema.getObjectType(), RareProjectData.TAG_FLAGSHIP_SPECIES_DETAIL);
 	}
 	
 	public static final String THREATS_AT_SITE_CONSTANT = EAM.text("Threats at Site");

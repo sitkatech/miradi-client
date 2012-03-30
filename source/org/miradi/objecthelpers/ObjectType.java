@@ -24,7 +24,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.miradi.main.EAM;
-import org.miradi.objects.RareProjectData;
 import org.miradi.objects.RatingCriterion;
 import org.miradi.objects.ReportTemplate;
 import org.miradi.objects.TableSettings;
@@ -54,6 +53,7 @@ import org.miradi.schemas.OrganizationSchema;
 import org.miradi.schemas.OtherNotableSpeciesSchema;
 import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.schemas.ProjectResourceSchema;
+import org.miradi.schemas.RareProjectDataSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 
 public class ObjectType
@@ -149,7 +149,7 @@ public class ObjectType
 			WwfProjectData.getObjectType(),
 			CostAllocationRuleSchema.getObjectType(),
 			ThreatStressRating.getObjectType(),
-			RareProjectData.getObjectType(),
+			RareProjectDataSchema.getObjectType(),
 			WcsProjectData.getObjectType(),
 			TncProjectData.getObjectType(),
 			FosProjectDataSchema.getObjectType(),

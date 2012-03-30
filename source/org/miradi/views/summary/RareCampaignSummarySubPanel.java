@@ -31,12 +31,13 @@ import org.miradi.project.Project;
 import org.miradi.questions.ThreatClassificationQuestion;
 import org.miradi.schemas.AudienceSchema;
 import org.miradi.schemas.ProjectMetadataSchema;
+import org.miradi.schemas.RareProjectDataSchema;
 
 public class RareCampaignSummarySubPanel extends ObjectDataInputPanel
 {
 	public RareCampaignSummarySubPanel(Project projectToUse) throws Exception
 	{
-		super(projectToUse, projectToUse.getSingletonObjectRef(RareProjectData.getObjectType()));
+		super(projectToUse, projectToUse.getSingletonObjectRef(RareProjectDataSchema.getObjectType()));
 		
 		addField(createReadonlyTextField(RareProjectData.LEGACY_TAG_THREATS_ADDRESSED_NOTES));
 		addField(createReadOnlyCodeListField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.PSEUDO_TAG_ALL_THREAT_CLASSIFICATIONS, new ThreatClassificationQuestion()));
