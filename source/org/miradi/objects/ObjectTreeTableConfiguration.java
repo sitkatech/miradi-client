@@ -21,7 +21,6 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.DiagramObjectDataInclusionQuestion;
@@ -57,13 +56,13 @@ public class ObjectTreeTableConfiguration extends BaseObject implements Planning
 	@Override
 	public int getType()
 	{
-		return getObjectType();
+		return ObjectTreeTableConfigurationSchema.getObjectType();
 	}
 
 	@Override
 	public String getTypeName()
 	{
-		return OBJECT_NAME;
+		return ObjectTreeTableConfigurationSchema.OBJECT_NAME;
 	}
 
 	@Override
@@ -71,11 +70,6 @@ public class ObjectTreeTableConfiguration extends BaseObject implements Planning
 	{
 		return NO_OWNERS;
 	}
-	
-	public static int getObjectType()
-	{
-		return ObjectType.OBJECT_TREE_TABLE_CONFIGURATION;
-	}	
 	
 	public boolean shouldPutTargetsAtTopLevelOfTree() throws Exception
 	{
@@ -122,7 +116,7 @@ public class ObjectTreeTableConfiguration extends BaseObject implements Planning
 	
 	public static boolean is(int objectType)
 	{
-		return objectType == getObjectType();
+		return objectType == ObjectTreeTableConfigurationSchema.getObjectType();
 	}
 	
 	public static ObjectTreeTableConfiguration find(ObjectManager objectManager, ORef planningViewConfigurationRef)
@@ -140,6 +134,4 @@ public class ObjectTreeTableConfiguration extends BaseObject implements Planning
 	public static final String TAG_DIAGRAM_DATA_INCLUSION = "TagDiagramDataInclusion";
 	public static final String TAG_STRATEGY_OBJECTIVE_ORDER = "StrategyObjectiveOrder";
 	public static final String TAG_TARGET_NODE_POSITION = "TargetNodePosition";
-	
-	public static final String OBJECT_NAME = "PlanningViewConfiguration";
 }

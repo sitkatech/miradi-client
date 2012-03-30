@@ -30,6 +30,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.ObjectTreeTableConfigurationQuestion;
+import org.miradi.schemas.ObjectTreeTableConfigurationSchema;
 
 public class PlanningViewConfigurableControlPanel extends PlanningViewCustomButtonPanel
 {
@@ -96,7 +97,7 @@ public class PlanningViewConfigurableControlPanel extends PlanningViewCustomButt
 			selectAppropriateConfiguredComboBoxItem();
 		}
 		
-		if(event.isSetDataCommandWithThisTypeAndTag(ObjectTreeTableConfiguration.getObjectType(), BaseObject.TAG_LABEL))
+		if(event.isSetDataCommandWithThisTypeAndTag(ObjectTreeTableConfigurationSchema.getObjectType(), BaseObject.TAG_LABEL))
 		{
 			configurationComboBox.repaint();
 		}

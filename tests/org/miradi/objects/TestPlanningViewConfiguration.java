@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
-import org.miradi.objects.ObjectTreeTableConfiguration;
+import org.miradi.schemas.ObjectTreeTableConfigurationSchema;
 
 
 public class TestPlanningViewConfiguration extends ObjectTestCase
@@ -31,6 +31,6 @@ public class TestPlanningViewConfiguration extends ObjectTestCase
 	
 	public void testFields() throws Exception
 	{
-		verifyFields(ObjectTreeTableConfiguration.getObjectType());
+		verifyFields(ObjectTreeTableConfigurationSchema.getObjectType());
 	}
 }

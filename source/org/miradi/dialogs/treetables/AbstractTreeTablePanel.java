@@ -51,6 +51,7 @@ import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.KeyEcologicalAttributeSchema;
 import org.miradi.schemas.MeasurementSchema;
+import org.miradi.schemas.ObjectTreeTableConfigurationSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.TaskSchema;
@@ -231,7 +232,7 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 		if (isCustomConfigurationCommand(event))
 			return true;
 		
-		if (event.isSetDataCommandWithThisTypeAndTag(ObjectTreeTableConfiguration.getObjectType(), ObjectTreeTableConfiguration.TAG_TARGET_NODE_POSITION))
+		if (event.isSetDataCommandWithThisTypeAndTag(ObjectTreeTableConfigurationSchema.getObjectType(), ObjectTreeTableConfiguration.TAG_TARGET_NODE_POSITION))
 			return true;
 		
 		if (event.isSetDataCommandWithThisTypeAndTag(ViewData.getObjectType(), ViewData.TAG_ACTION_TREE_CONFIGURATION_CHOICE))
@@ -364,16 +365,16 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 		if(event.isSetDataCommandWithThisTypeAndTag(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_WORK_PLAN_DIAGRAM_DATA_INCLUSION))
 			return true;
 		
-		if(event.isSetDataCommandWithThisTypeAndTag(ObjectTreeTableConfiguration.getObjectType(), ObjectTreeTableConfiguration.TAG_COL_CONFIGURATION))
+		if(event.isSetDataCommandWithThisTypeAndTag(ObjectTreeTableConfigurationSchema.getObjectType(), ObjectTreeTableConfiguration.TAG_COL_CONFIGURATION))
 			return true;
 		
-		if(event.isSetDataCommandWithThisTypeAndTag(ObjectTreeTableConfiguration.getObjectType(), ObjectTreeTableConfiguration.TAG_ROW_CONFIGURATION))
+		if(event.isSetDataCommandWithThisTypeAndTag(ObjectTreeTableConfigurationSchema.getObjectType(), ObjectTreeTableConfiguration.TAG_ROW_CONFIGURATION))
 			return true;
 		
-		if(event.isSetDataCommandWithThisTypeAndTag(ObjectTreeTableConfiguration.getObjectType(), ObjectTreeTableConfiguration.TAG_DIAGRAM_DATA_INCLUSION))
+		if(event.isSetDataCommandWithThisTypeAndTag(ObjectTreeTableConfigurationSchema.getObjectType(), ObjectTreeTableConfiguration.TAG_DIAGRAM_DATA_INCLUSION))
 			return true;
 		
-		if(event.isSetDataCommandWithThisTypeAndTag(ObjectTreeTableConfiguration.getObjectType(), ObjectTreeTableConfiguration.TAG_STRATEGY_OBJECTIVE_ORDER))
+		if(event.isSetDataCommandWithThisTypeAndTag(ObjectTreeTableConfigurationSchema.getObjectType(), ObjectTreeTableConfiguration.TAG_STRATEGY_OBJECTIVE_ORDER))
 			return true;
 				
 		return false;

@@ -29,6 +29,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
+import org.miradi.schemas.ObjectTreeTableConfigurationSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.views.ViewDoer;
 
@@ -78,7 +79,7 @@ abstract public class AbstractCreatePlanningViewConfigurationDoer extends ViewDo
 		String visibleRowsAsString = visibleRowCodes.toString();
 		String visibleColsAsString = visibleColumnCodes.toString();
 		
-		CommandCreateObject createConfiguration = new CommandCreateObject(ObjectTreeTableConfiguration.getObjectType());
+		CommandCreateObject createConfiguration = new CommandCreateObject(ObjectTreeTableConfigurationSchema.getObjectType());
 		projectToUse.executeCommand(createConfiguration);
 		
 		ORef newConfigurationRef = createConfiguration.getObjectRef();

@@ -26,12 +26,13 @@ import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.questions.DiagramObjectDataInclusionQuestion;
 import org.miradi.questions.PlanningTreeTargetPositionQuestion;
 import org.miradi.questions.StrategyObjectiveTreeOrderQuestion;
+import org.miradi.schemas.ObjectTreeTableConfigurationSchema;
 
 public class ObjectTreeTableConfigurationPoolExporter extends	BaseObjectPoolExporter
 {
 	public ObjectTreeTableConfigurationPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
-		super(wcsXmlExporterToUse, OBJECT_TREE_TABLE_CONFIGURATION, ObjectTreeTableConfiguration.getObjectType());
+		super(wcsXmlExporterToUse, OBJECT_TREE_TABLE_CONFIGURATION, ObjectTreeTableConfigurationSchema.getObjectType());
 	}
 	
 	@Override

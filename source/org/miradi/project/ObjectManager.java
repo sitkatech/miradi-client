@@ -89,7 +89,6 @@ import org.miradi.objectpools.WwfProjectDataPool;
 import org.miradi.objectpools.XenodataPool;
 import org.miradi.objectpools.XslTemplatePool;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.objects.Organization;
 import org.miradi.objects.OtherNotableSpecies;
 import org.miradi.objects.ProgressPercent;
@@ -134,6 +133,7 @@ import org.miradi.schemas.IntermediateResultSchema;
 import org.miradi.schemas.IucnRedlistSpeciesSchema;
 import org.miradi.schemas.KeyEcologicalAttributeSchema;
 import org.miradi.schemas.MeasurementSchema;
+import org.miradi.schemas.ObjectTreeTableConfigurationSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
@@ -179,7 +179,7 @@ public class ObjectManager
 		addNormalPool(new ConceptualModelDiagramPool(ida), ConceptualModelDiagramSchema.OBJECT_NAME);
 		addNormalPool(new ThreatReductionResultPool(ida), ThreatReductionResultSchema.OBJECT_NAME);
 		addNormalPool(new TextBoxPool(ida), TextBoxSchema.OBJECT_NAME);
-		addNormalPool(new ObjectTreeTableConfigurationPool(ida), ObjectTreeTableConfiguration.OBJECT_NAME);
+		addNormalPool(new ObjectTreeTableConfigurationPool(ida), ObjectTreeTableConfigurationSchema.OBJECT_NAME);
 		addNormalPool(new WwfProjectDataPool(ida), WwfProjectData.OBJECT_NAME);
 		addNormalPool(new CostAllocationRulePool(ida), CostAllocationRuleSchema.OBJECT_NAME);
 		addNormalPool(new MeasurementPool(ida), MeasurementSchema.OBJECT_NAME);
@@ -335,7 +335,7 @@ public class ObjectManager
 	
 	public ObjectTreeTableConfigurationPool getPlanningConfigurationPool()
 	{
-		return (ObjectTreeTableConfigurationPool) getPool(ObjectTreeTableConfiguration.getObjectType());
+		return (ObjectTreeTableConfigurationPool) getPool(ObjectTreeTableConfigurationSchema.getObjectType());
 	}
 
 	public BaseId createObject(int objectType, BaseId objectId) throws Exception

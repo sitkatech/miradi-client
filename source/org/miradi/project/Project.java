@@ -124,6 +124,7 @@ import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.DashboardSchema;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.FosProjectDataSchema;
+import org.miradi.schemas.ObjectTreeTableConfigurationSchema;
 import org.miradi.schemas.ScopeBoxSchema;
 import org.miradi.schemas.TextBoxSchema;
 import org.miradi.utils.CodeList;
@@ -727,7 +728,7 @@ public class Project
 
 	private void createDefaultPlanningCustomization() throws Exception
 	{
-		if (getPool(ObjectTreeTableConfiguration.getObjectType()).getORefList().size() > 0)
+		if (getPool(ObjectTreeTableConfigurationSchema.getObjectType()).getORefList().size() > 0)
 			return;
 
 		ViewData planningViewData = getViewData(PlanningView.getViewName());
@@ -739,7 +740,7 @@ public class Project
 		ORef configurationRef = ORef.createFromString(baseObject.getData(configurationTag));
 		if (configurationRef.isInvalid())
 		{
-			ORef createPlanningConfiguration = createObject(ObjectTreeTableConfiguration.getObjectType());
+			ORef createPlanningConfiguration = createObject(ObjectTreeTableConfigurationSchema.getObjectType());
 			setObjectData(createPlanningConfiguration, ObjectTreeTableConfiguration.TAG_LABEL, CreatePlanningViewEmptyConfigurationDoer.getConfigurationDefaultLabel(this));
 			setObjectData(baseObject.getRef(), configurationTag, createPlanningConfiguration.toString());
 		}

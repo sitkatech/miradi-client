@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
@@ -54,5 +55,11 @@ public class ObjectTreeTableConfigurationSchema extends BaseObjectSchema
 		return project;
 	}
 	
+	public static int getObjectType()
+	{
+		return ObjectType.OBJECT_TREE_TABLE_CONFIGURATION;
+	}
+
 	private Project project;
+	public static final String OBJECT_NAME = "PlanningViewConfiguration";
 }
