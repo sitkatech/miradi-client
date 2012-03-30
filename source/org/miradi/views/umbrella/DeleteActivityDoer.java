@@ -34,12 +34,12 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Indicator;
-import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.utils.CommandVector;
 import org.miradi.views.ObjectsDoer;
 
@@ -174,7 +174,7 @@ public class DeleteActivityDoer extends ObjectsDoer
 		{
 			ORef activityDiagramFactorRef = activityDiagramFactorReferrerRefs.get(index);
 			DiagramFactor activityDiagramFactor = DiagramFactor.find(project, activityDiagramFactorRef);
-			ORefList diagramObjectsWithAcitivities = activityDiagramFactor.findObjectsThatReferToUs(ResultsChainDiagram.getObjectType());
+			ORefList diagramObjectsWithAcitivities = activityDiagramFactor.findObjectsThatReferToUs(ResultsChainDiagramSchema.getObjectType());
 			for (int diagramObjectIndex = 0; diagramObjectIndex < diagramObjectsWithAcitivities.size(); ++diagramObjectIndex)
 			{
 				DiagramObject diagramObject = DiagramObject.findDiagramObject(project, diagramObjectsWithAcitivities.get(diagramObjectIndex));

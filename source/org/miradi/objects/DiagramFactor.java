@@ -38,6 +38,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.TextBoxZOrderQuestion;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.DiagramFactorSchema;
+import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class DiagramFactor extends BaseObject
@@ -96,7 +97,7 @@ public class DiagramFactor extends BaseObject
 	{
 		return new int[] {
 			ConceptualModelDiagramSchema.getObjectType(), 
-			ResultsChainDiagram.getObjectType()
+			ResultsChainDiagramSchema.getObjectType()
 			};
 	}
 	
@@ -235,7 +236,7 @@ public class DiagramFactor extends BaseObject
 	{
 		ORefList result = new ORefList();
 		result.addAll(findObjectsThatReferToUs(ConceptualModelDiagramSchema.getObjectType()));
-		result.addAll(findObjectsThatReferToUs(ResultsChainDiagram.getObjectType()));
+		result.addAll(findObjectsThatReferToUs(ResultsChainDiagramSchema.getObjectType()));
 		return result;
 	}
 

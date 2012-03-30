@@ -154,7 +154,6 @@ import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.GroupBox;
-import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
@@ -165,6 +164,7 @@ import org.miradi.questions.DiagramModeQuestion;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.DiagramLinkSchema;
+import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.utils.DiagramCorruptionDetector;
 import org.miradi.utils.PointList;
 import org.miradi.views.TabbedView;
@@ -454,7 +454,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 			
 			//TODO get tag using object type, diagram splitter has this info.  
 			ensureDiagramIsSelected(ConceptualModelDiagramSchema.getObjectType(), ViewData.TAG_CURRENT_CONCEPTUAL_MODEL_REF);
-			ensureDiagramIsSelected(ResultsChainDiagram.getObjectType(), ViewData.TAG_CURRENT_RESULTS_CHAIN_REF);
+			ensureDiagramIsSelected(ResultsChainDiagramSchema.getObjectType(), ViewData.TAG_CURRENT_RESULTS_CHAIN_REF);
 			
 			conceptualDiagramPanel.restoreSavedLocation();
 			resultsChainPanel.restoreSavedLocation();

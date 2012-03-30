@@ -20,12 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.wcs;
 
-import org.miradi.objects.ResultsChainDiagram;
+import org.miradi.schemas.ResultsChainDiagramSchema;
 
 public class ResultsChainPoolExporter extends DiagramObjectPoolExporter
 {
 	public ResultsChainPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
-		super(wcsXmlExporterToUse, RESULTS_CHAIN, ResultsChainDiagram.getObjectType());
+		super(wcsXmlExporterToUse, RESULTS_CHAIN, ResultsChainDiagramSchema.getObjectType());
 	}
 }

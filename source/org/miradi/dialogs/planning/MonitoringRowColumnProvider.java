@@ -22,7 +22,6 @@ package org.miradi.dialogs.planning;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Desire;
 import org.miradi.objects.Indicator;
-import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
@@ -30,6 +29,7 @@ import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
+import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.utils.CodeList;
 
 public class MonitoringRowColumnProvider extends AbstractPlanningTreeRowColumnProvider
@@ -54,7 +54,7 @@ public class MonitoringRowColumnProvider extends AbstractPlanningTreeRowColumnPr
 	public CodeList getRowCodesToShow() throws Exception
 	{
 		return new CodeList(new String[] {
-				ResultsChainDiagram.OBJECT_NAME,
+				ResultsChainDiagramSchema.OBJECT_NAME,
 				ConceptualModelDiagramSchema.OBJECT_NAME,
 				Target.OBJECT_NAME,
 				GoalSchema.OBJECT_NAME,

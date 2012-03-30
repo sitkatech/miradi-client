@@ -20,14 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.diagram;
 
-import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.project.Project;
+import org.miradi.schemas.ResultsChainDiagramSchema;
 
 public class ResultsChainPoolTableModel extends DiagramObjectPoolTableModel
 {
 	public ResultsChainPoolTableModel(Project project)
 	{
-		super(project, ResultsChainDiagram.getObjectType());
+		super(project, ResultsChainDiagramSchema.getObjectType());
 	}
 	
 	@Override

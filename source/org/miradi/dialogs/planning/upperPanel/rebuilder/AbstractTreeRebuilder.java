@@ -45,7 +45,6 @@ import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.objects.ProjectResource;
-import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.SubTarget;
 import org.miradi.objects.Target;
@@ -62,6 +61,7 @@ import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
+import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.utils.BaseObjectDateDescendingAndIdComparator;
 import org.miradi.utils.CodeList;
 
@@ -162,7 +162,7 @@ abstract public class AbstractTreeRebuilder
 	{
 		int[] supportedTypes = new int[] {
 			ConceptualModelDiagramSchema.getObjectType(),
-			ResultsChainDiagram.getObjectType(),
+			ResultsChainDiagramSchema.getObjectType(),
 			
 			Strategy.getObjectType(),
 			Target.getObjectType(),
@@ -402,7 +402,7 @@ abstract public class AbstractTreeRebuilder
 			Target.getObjectType(),
 			HumanWelfareTarget.getObjectType(),
 			KeyEcologicalAttribute.getObjectType(),
-			ResultsChainDiagram.getObjectType(),
+			ResultsChainDiagramSchema.getObjectType(),
 			ConceptualModelDiagramSchema.getObjectType(),
 			Measurement.getObjectType(),
 			GoalSchema.getObjectType(),

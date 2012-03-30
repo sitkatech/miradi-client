@@ -43,7 +43,6 @@ import org.miradi.objects.GroupBox;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.ProjectMetadata;
-import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
@@ -54,6 +53,7 @@ import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
+import org.miradi.schemas.ResultsChainDiagramSchema;
 
 public class RtfLegendObjectsQuestion extends StaticChoiceQuestion
 {
@@ -67,7 +67,7 @@ public class RtfLegendObjectsQuestion extends StaticChoiceQuestion
 		return new ChoiceItem[] {
 				new ChoiceItem(ProjectMetadata.OBJECT_NAME, EAM.text("Project"), new MiradiApplicationIcon()),
 				new ChoiceItem(ConceptualModelDiagramSchema.OBJECT_NAME, EAM.text("Conceptual Model"), new ConceptualModelIcon()),
-				new ChoiceItem(ResultsChainDiagram.OBJECT_NAME, EAM.text("Results Chain"), new ResultsChainIcon()),
+				new ChoiceItem(ResultsChainDiagramSchema.OBJECT_NAME, EAM.text("Results Chain"), new ResultsChainIcon()),
 				new ChoiceItem(Target.OBJECT_NAME, EAM.text("Target"), new TargetIcon()),
 				new ChoiceItem(Cause.OBJECT_NAME_THREAT, EAM.text("Direct Threat"), new DirectThreatIcon()),
 				new ChoiceItem(Cause.OBJECT_NAME_CONTRIBUTING_FACTOR, EAM.text("Contributing Factor"), new ContributingFactorIcon()),

@@ -39,6 +39,7 @@ import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
+import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -411,7 +412,7 @@ abstract public class Factor extends BaseObject
 				return DiagramObject.getDiagramRefsContainingFactor(getProject(), ConceptualModelDiagramSchema.getObjectType(), getRef()).toString();
 			
 			if(fieldTag.equals(PSEUDO_TAG_RESULTS_CHAIN_REFS))
-				return DiagramObject.getDiagramRefsContainingFactor(getProject(), ResultsChainDiagram.getObjectType(), getRef()).toString();
+				return DiagramObject.getDiagramRefsContainingFactor(getProject(), ResultsChainDiagramSchema.getObjectType(), getRef()).toString();
 			
 			if(fieldTag.equals(PSEUDO_TAG_REFERRING_TAG_REFS))
 				return getReferringTags();

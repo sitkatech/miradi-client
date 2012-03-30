@@ -142,6 +142,7 @@ import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
+import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.DateRange;
@@ -332,7 +333,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public ORef createResultsChainDiagram() throws Exception
 	{
-		ORef resultsChainRef = createObject(ResultsChainDiagram.getObjectType());
+		ORef resultsChainRef = createObject(ResultsChainDiagramSchema.getObjectType());
 		ResultsChainDiagram resultsChain = ResultsChainDiagram.find(this, resultsChainRef);
 		PersistentDiagramModel resultsChainDiagramModel = new PersistentDiagramModel(this);
 		resultsChainDiagramModel.fillFrom(resultsChain);

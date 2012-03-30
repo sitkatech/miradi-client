@@ -69,12 +69,12 @@ import org.miradi.objects.GroupBox;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResourceAssignment;
-import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.ScopeBox;
 import org.miradi.objects.SubTarget;
 import org.miradi.objects.Task;
 import org.miradi.objects.TextBox;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
+import org.miradi.schemas.ResultsChainDiagramSchema;
 
 public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 {		
@@ -202,7 +202,7 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 			renderer  = stringNoIconRenderer;
 		else if(node.getType() == ConceptualModelDiagramSchema.getObjectType())
 			renderer = conceptualModelRenderer;
-		else if(node.getType() == ResultsChainDiagram.getObjectType())
+		else if(node.getType() == ResultsChainDiagramSchema.getObjectType())
 			renderer = resultsChainRenderer;
 		else if(node.getType() == ObjectType.TARGET)
 			renderer = targetRenderer;

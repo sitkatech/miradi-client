@@ -34,7 +34,6 @@ import org.miradi.objects.ProjectResource;
 import org.miradi.objects.RareProjectData;
 import org.miradi.objects.RatingCriterion;
 import org.miradi.objects.ReportTemplate;
-import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.TableSettings;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.ThreatRatingCommentsData;
@@ -55,6 +54,7 @@ import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.CostAllocationRuleSchema;
 import org.miradi.schemas.DashboardSchema;
 import org.miradi.schemas.FundingSourceSchema;
+import org.miradi.schemas.ResultsChainDiagramSchema;
 
 public class ObjectType
 {
@@ -144,7 +144,7 @@ public class ObjectType
 			AccountingCodeSchema.getObjectType(),
 			FundingSourceSchema.getObjectType(),
 			ConceptualModelDiagramSchema.getObjectType(),
-			ResultsChainDiagram.getObjectType(),
+			ResultsChainDiagramSchema.getObjectType(),
 			ObjectTreeTableConfiguration.getObjectType(),
 			WwfProjectData.getObjectType(),
 			CostAllocationRuleSchema.getObjectType(),

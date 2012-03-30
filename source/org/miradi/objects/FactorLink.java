@@ -26,6 +26,7 @@ import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.FactorLinkSchema;
+import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class FactorLink extends BaseObject
@@ -62,7 +63,7 @@ public class FactorLink extends BaseObject
 	{
 		return new int[] {
 			ConceptualModelDiagramSchema.getObjectType(), 
-			ResultsChainDiagram.getObjectType()
+			ResultsChainDiagramSchema.getObjectType()
 			};
 	}
 	

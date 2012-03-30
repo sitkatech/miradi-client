@@ -35,7 +35,6 @@ import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
-import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
@@ -48,6 +47,7 @@ import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
+import org.miradi.schemas.ResultsChainDiagramSchema;
 
 public class RtfStyleManager
 {
@@ -69,7 +69,7 @@ public class RtfStyleManager
 		createNewStyle(ProjectMetadata.OBJECT_NAME,		 		CS_14_RTF_ID, " \\f1\\b\\i\\fs20 ", MIRADI_STYLE_PREFIX + "Project");
 		createNewStyle(COMMENT_STYLE_TAG, 						CS_15_RTF_ID, " \\f1\\fs18 ", MIRADI_STYLE_PREFIX + "Lng Txt");
 		createNewStyle(ConceptualModelDiagramSchema.OBJECT_NAME, 		CS_16_RTF_ID, " \\f1\\b\\fs20 ", MIRADI_STYLE_PREFIX + "CM");
-		createNewStyle(ResultsChainDiagram.OBJECT_NAME,    		CS_17_RTF_ID, " \\f1\\b\\fs20 ", MIRADI_STYLE_PREFIX + "RC");
+		createNewStyle(ResultsChainDiagramSchema.OBJECT_NAME,    		CS_17_RTF_ID, " \\f1\\b\\fs20 ", MIRADI_STYLE_PREFIX + "RC");
 		createNewStyle(Target.OBJECT_NAME,                 		CS_18_RTF_ID, " \\f1\\b\\fs20 ", MIRADI_STYLE_PREFIX + "Target");
 		createNewStyle(Cause.OBJECT_NAME_THREAT,           		CS_19_RTF_ID, " \\f1\\b\\fs20 ", MIRADI_STYLE_PREFIX + "DThrt");
 		createNewStyle(Cause.OBJECT_NAME_CONTRIBUTING_FACTOR,   CS_20_RTF_ID, " \\f1\\b\\fs20 ", MIRADI_STYLE_PREFIX + "CFctr");

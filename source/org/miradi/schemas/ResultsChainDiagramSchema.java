@@ -20,10 +20,19 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import org.miradi.objecthelpers.ObjectType;
+
 public class ResultsChainDiagramSchema extends DiagramObjectSchema
 {
+	public static final String OBJECT_NAME = "ResultsChainDiagram";
+
 	public ResultsChainDiagramSchema()
 	{
 		super();
+	}
+
+	public static int getObjectType()
+	{
+		return ObjectType.RESULTS_CHAIN_DIAGRAM;
 	}
 }

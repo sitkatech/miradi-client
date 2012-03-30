@@ -28,9 +28,9 @@ import org.miradi.icons.ActivityIcon;
 import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.IntermediateResult;
-import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
+import org.miradi.schemas.ResultsChainDiagramSchema;
 
 public class ResultsChainDiagramLegendPanel extends DiagramLegendPanel
 {
@@ -55,6 +55,6 @@ public class ResultsChainDiagramLegendPanel extends DiagramLegendPanel
 	@Override
 	protected int getDiagramType()
 	{
-		return ResultsChainDiagram.getObjectType();
+		return ResultsChainDiagramSchema.getObjectType();
 	}
 }

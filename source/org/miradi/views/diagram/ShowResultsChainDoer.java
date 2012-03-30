@@ -27,8 +27,8 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Factor;
-import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
+import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.views.ViewDoer;
 
 public class ShowResultsChainDoer extends ViewDoer
@@ -89,7 +89,7 @@ public class ShowResultsChainDoer extends ViewDoer
 		
 		Strategy strategy = (Strategy) selectedFactors[0];
 		ORefList resultsChains = strategy.getResultsChains();
-		ORef firstChain = resultsChains.getRefForType(ResultsChainDiagram.getObjectType());
+		ORef firstChain = resultsChains.getRefForType(ResultsChainDiagramSchema.getObjectType());
 		
 		CreateResultsChainDoer.selectResultsChain(diagramView.getProject(), diagramView, firstChain);
 	}

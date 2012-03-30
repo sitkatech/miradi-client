@@ -36,6 +36,7 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.DiagramLinkSchema;
+import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.PointList;
@@ -84,7 +85,7 @@ public class DiagramLink extends BaseObject
 	{
 		return new int[] {
 			ConceptualModelDiagramSchema.getObjectType(), 
-			ResultsChainDiagram.getObjectType()
+			ResultsChainDiagramSchema.getObjectType()
 			};
 	}
 	
@@ -202,7 +203,7 @@ public class DiagramLink extends BaseObject
 		if(cmPageRefs.size() > 0)
 			return ConceptualModelDiagram.find(objectManager, cmPageRefs.get(0));
 
-		ORefList rcRefs = findObjectsThatReferToUs(ResultsChainDiagram.getObjectType());
+		ORefList rcRefs = findObjectsThatReferToUs(ResultsChainDiagramSchema.getObjectType());
 		if(rcRefs.size() > 0)
 			return ResultsChainDiagram.find(objectManager, rcRefs.get(0));
 		
