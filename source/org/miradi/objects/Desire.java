@@ -38,6 +38,7 @@ import org.miradi.project.Project;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.StrategySchema;
+import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -345,7 +346,7 @@ abstract public class Desire extends BaseObject
 		ORefSet relevantRefList = new ORefSet(getDefaultRelevantStrategyRefs());
 		RelevancyOverrideSet relevantOverrides = getStrategyActivityRelevancyOverrideSet();
 	
-		return calculateRelevantRefList(relevantRefList, relevantOverrides).getFilteredBy(Task.getObjectType());
+		return calculateRelevantRefList(relevantRefList, relevantOverrides).getFilteredBy(TaskSchema.getObjectType());
 	}
 
 	public static CommandVector buildRemoveObjectFromRelevancyListCommands(Project project, int typeWithRelevacnyOverrideSetList, String relevancyTag, ORef relevantObjectRefToRemove) throws Exception

@@ -22,7 +22,6 @@ package org.miradi.schemas;
 
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Indicator;
-import org.miradi.objects.Task;
 import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.StatusQuestion;
@@ -42,7 +41,7 @@ public class IndicatorSchema extends BaseObjectSchema
 		
 		createFieldSchemaSingleLineUserText(Indicator.TAG_SHORT_LABEL);
 		createFieldSchemaChoice(Indicator.TAG_PRIORITY, getQuestion(PriorityRatingQuestion.class));
-		createFieldSchemaIdList(Indicator.TAG_METHOD_IDS, Task.getObjectType());
+		createFieldSchemaIdList(Indicator.TAG_METHOD_IDS, TaskSchema.getObjectType());
 		createFieldSchemaCodeToUserStringMap(Indicator.TAG_THRESHOLDS_MAP);
 		createFieldSchemaCodeToUserStringMap(Indicator.TAG_THRESHOLD_DETAILS_MAP);
 		createFieldSchemaChoice(Indicator.TAG_RATING_SOURCE, getQuestion(RatingSourceQuestion.class));

@@ -30,6 +30,7 @@ import org.miradi.objects.Task;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.StrategySchema;
+import org.miradi.schemas.TaskSchema;
 import org.miradi.views.diagram.DeleteAnnotationDoer;
 
 public class TestDeleteAnnotationDoer extends MiradiTestCase
@@ -59,7 +60,7 @@ public class TestDeleteAnnotationDoer extends MiradiTestCase
 		ORef strategyRef = project.createFactorAndReturnRef(StrategySchema.getObjectType());
 		ORef indicatorRef1 = project.createFactorAndReturnRef(IndicatorSchema.getObjectType());
 		ORef indicatorRef2 = project.createFactorAndReturnRef(IndicatorSchema.getObjectType());
-		ORef methodRef = project.createFactorAndReturnRef(Task.getObjectType());
+		ORef methodRef = project.createFactorAndReturnRef(TaskSchema.getObjectType());
 	
 		Strategy strategy = (Strategy) project.findObject(strategyRef);
 		Indicator indicator1 = (Indicator) project.findObject(indicatorRef1);

@@ -24,8 +24,8 @@ import org.miradi.dialogs.base.ObjectPoolTablePanel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Strategy;
-import org.miradi.objects.Task;
 import org.miradi.schemas.StrategySchema;
+import org.miradi.schemas.TaskSchema;
 import org.miradi.views.planning.doers.AbstractShareDoer;
 
 public class TreeNodeShareActivityDoer extends AbstractShareDoer
@@ -33,7 +33,7 @@ public class TreeNodeShareActivityDoer extends AbstractShareDoer
 	@Override
 	protected String getTaskTypeName()
 	{
-		return Task.ACTIVITY_NAME;
+		return TaskSchema.ACTIVITY_NAME;
 	}
 
 	@Override

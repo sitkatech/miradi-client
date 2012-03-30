@@ -65,6 +65,7 @@ import org.miradi.schemas.IntermediateResultSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
+import org.miradi.schemas.TaskSchema;
 
 public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPanel
 {
@@ -122,7 +123,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 			if (Task.isActivity(getProject(), firstRef))
 				return getActivityPropertiesPanel();
 			
-			if (Task.getObjectType() == objectType)
+			if (TaskSchema.getObjectType() == objectType)
 				return getTaskPropertiesPanel();
 			
 			if (Measurement.getObjectType() == objectType)

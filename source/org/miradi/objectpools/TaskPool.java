@@ -28,6 +28,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Task;
 import org.miradi.project.ObjectManager;
+import org.miradi.schemas.TaskSchema;
 
 public class TaskPool extends FactorPool
 {
@@ -64,17 +65,17 @@ public class TaskPool extends FactorPool
 
 	public Vector<Task> getAllActivities()
 	{
-		return getTasks(Task.ACTIVITY_NAME);
+		return getTasks(TaskSchema.ACTIVITY_NAME);
 	}
 	
 	public Vector<Task> getAllMethods()
 	{
-		return getTasks(Task.METHOD_NAME);
+		return getTasks(TaskSchema.METHOD_NAME);
 	}
 	
 	public Vector<Task> getAllTasks()
 	{
-		return getTasks(Task.OBJECT_NAME);
+		return getTasks(TaskSchema.OBJECT_NAME);
 	}
 	
 	public Vector<Task> getTasks(String taskTypeName)

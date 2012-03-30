@@ -39,6 +39,7 @@ import org.miradi.questions.StrategyStatusQuestion;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.StrategySchema;
+import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -108,7 +109,7 @@ public class Strategy extends Factor
 	
 	public ORefList getActivityRefs()
 	{
-		return new ORefList(Task.getObjectType(), getActivityIds());
+		return new ORefList(TaskSchema.getObjectType(), getActivityIds());
 	}
 	
 	public Vector<Task> getActivities()
@@ -250,7 +251,7 @@ public class Strategy extends Factor
 	public int getAnnotationType(String tag)
 	{
 		if (tag.equals(TAG_ACTIVITY_IDS))
-			return Task.getObjectType();
+			return TaskSchema.getObjectType();
 		
 		return super.getAnnotationType(tag);
 	}

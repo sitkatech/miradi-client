@@ -45,6 +45,7 @@ import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.StressSchema;
+import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.CommandVector;
 import org.miradi.views.diagram.DeleteAnnotationDoer;
 import org.miradi.views.umbrella.DeleteActivityDoer;
@@ -274,7 +275,7 @@ public class FactorDeleteHelper
 	{
 		ORefList hierarchyWithParent = new ORefList();
 		hierarchyWithParent.add(objectToDelete.getRef());
-		IdList ids = new IdList(Task.getObjectType(), objectToDelete.getData(annotationListTag));
+		IdList ids = new IdList(TaskSchema.getObjectType(), objectToDelete.getData(annotationListTag));
 		for(int annotationIndex = 0; annotationIndex < ids.size(); ++annotationIndex)
 		{
 			Task childTask = (Task)getProject().findObject(ObjectType.TASK, ids.get(annotationIndex));

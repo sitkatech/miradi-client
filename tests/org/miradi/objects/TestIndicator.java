@@ -36,6 +36,7 @@ import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
+import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.CommandVector;
 
 
@@ -132,7 +133,7 @@ public class TestIndicator extends AbstractObjectWithBudgetDataToDeleteTestCase
 		project.addResourceAssignment(task, 14, 2007, 2007);
 		project.addResourceAssignment(task, 15, 2006, 2006);
 		
-		IdList taskIdsFromObject = new IdList(Task.getObjectType(), baseObject.getData(taskTag));
+		IdList taskIdsFromObject = new IdList(TaskSchema.getObjectType(), baseObject.getData(taskTag));
 		assertEquals("wrong method count?", 1, taskIdsFromObject.size());
 		
 		DateUnit dateUnit = project.createDateUnit(2006, 2006);

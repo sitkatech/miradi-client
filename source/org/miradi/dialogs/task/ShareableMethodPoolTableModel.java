@@ -27,6 +27,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
+import org.miradi.schemas.TaskSchema;
 
 public class ShareableMethodPoolTableModel extends ObjectPoolTableModel
 {
@@ -64,7 +65,7 @@ public class ShareableMethodPoolTableModel extends ObjectPoolTableModel
 			filteredTaskRefs.add(taskRefs.get(i));
 		}
 				
-		return filteredTaskRefs.convertToIdList(Task.getObjectType());
+		return filteredTaskRefs.convertToIdList(TaskSchema.getObjectType());
 	}
 	
 	@Override

@@ -26,6 +26,7 @@ import org.miradi.ids.TaskId;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Task;
+import org.miradi.schemas.TaskSchema;
 
 public class TestCommandSetObjectData extends TestCaseWithProject
 {
@@ -54,7 +55,7 @@ public class TestCommandSetObjectData extends TestCaseWithProject
 		assertEquals("wrong type?", task.getType(), fromEmpty.getObjectType());
 		assertEquals("wrong id?", task.getId(), fromEmpty.getObjectId());
 		assertEquals("wrong tag", Task.TAG_SUBTASK_IDS, fromEmpty.getFieldTag());
-		IdList expected = new IdList(Task.getObjectType());
+		IdList expected = new IdList(TaskSchema.getObjectType());
 		expected.add(id1);
 		assertEquals("wrong data value?", expected.toString(), fromEmpty.getDataValue());
 		addSubtaskId(task, id1);

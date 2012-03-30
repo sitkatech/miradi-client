@@ -34,22 +34,23 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
+import org.miradi.schemas.TaskSchema;
 
 public class TaskDetailsPanel extends ObjectDataInputPanel
 {
 	public TaskDetailsPanel(Project projectToUse, Actions actionsToUse) throws Exception
 	{
-		super(projectToUse, Task.getObjectType());
+		super(projectToUse, TaskSchema.getObjectType());
 		
 		taskNameLabel = new PanelTitleLabel("x");
 		ObjectDataInputField taskNameField = createExpandableField(ObjectType.TASK, Task.TAG_LABEL);
 		ObjectDataInputField taskIdField = createShortStringField(ObjectType.TASK, Task.TAG_SHORT_LABEL);
 		addFieldsOnOneLine(taskNameLabel, new ObjectDataInputField[] {taskIdField, taskNameField,} );
-		addField(createMultilineField(Task.getObjectType(), Task.TAG_DETAILS));
+		addField(createMultilineField(TaskSchema.getObjectType(), Task.TAG_DETAILS));
 		
 		addCustomFields(actionsToUse);
 		
-		addField(createMultilineField(Task.getObjectType(), Task.TAG_COMMENTS));
+		addField(createMultilineField(TaskSchema.getObjectType(), Task.TAG_COMMENTS));
 	}
 
 	protected void addCustomFields(Actions actionsToUse)
@@ -91,7 +92,7 @@ public class TaskDetailsPanel extends ObjectDataInputPanel
 	
 	private Task getTask()
 	{
-		ORef ref = getRefForType(Task.getObjectType());
+		ORef ref = getRefForType(TaskSchema.getObjectType());
 		if(ref.isInvalid())
 			return null;
 		

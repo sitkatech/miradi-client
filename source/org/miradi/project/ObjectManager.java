@@ -107,7 +107,6 @@ import org.miradi.objects.ReportTemplate;
 import org.miradi.objects.SubTarget;
 import org.miradi.objects.TableSettings;
 import org.miradi.objects.TaggedObjectSet;
-import org.miradi.objects.Task;
 import org.miradi.objects.TextBox;
 import org.miradi.objects.ThreatRatingCommentsData;
 import org.miradi.objects.ThreatReductionResult;
@@ -144,6 +143,7 @@ import org.miradi.schemas.ScopeBoxSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.StressSchema;
 import org.miradi.schemas.TargetSchema;
+import org.miradi.schemas.TaskSchema;
 
 public class ObjectManager
 {
@@ -158,7 +158,7 @@ public class ObjectManager
 		addNormalPool(new FactorLinkPool(ida), FactorLink.OBJECT_NAME);
 		addNormalPool(new RatingCriterionPool(ida), RatingCriterion.OBJECT_NAME);
 		addNormalPool(new ValueOptionPool(ida), ValueOption.OBJECT_NAME);
-		addNormalPool(new TaskPool(ida), Task.OBJECT_NAME);
+		addNormalPool(new TaskPool(ida), TaskSchema.OBJECT_NAME);
 		addNormalPool(new ViewPool(ida), ViewData.OBJECT_NAME);
 		addNormalPool(new ResourcePool(ida), ProjectResource.OBJECT_NAME);
 		addNormalPool(new IndicatorPool(ida), IndicatorSchema.OBJECT_NAME);

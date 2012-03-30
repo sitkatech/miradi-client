@@ -30,7 +30,6 @@ import org.miradi.objects.Objective;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
-import org.miradi.objects.Task;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
@@ -41,6 +40,7 @@ import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
+import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.CodeList;
 
 public class ObjectsOnlyRowColumnProvider extends AbstractPlanningTreeRowColumnProvider
@@ -96,16 +96,16 @@ public class ObjectsOnlyRowColumnProvider extends AbstractPlanningTreeRowColumnP
 		if (propertyName.equals(StrategySchema.OBJECT_NAME))
 			return ObjectsOnlyRowColumnProvider.getStrategyColumns();
 		
-		if (propertyName.equals(Task.ACTIVITY_NAME))
+		if (propertyName.equals(TaskSchema.ACTIVITY_NAME))
 			return ObjectsOnlyRowColumnProvider.getActivityColumns();
 	
 		if (propertyName.equals(IndicatorSchema.OBJECT_NAME))
 			return ObjectsOnlyRowColumnProvider.getIndicatorColumns();
 	
-		if (propertyName.equals(Task.METHOD_NAME))
+		if (propertyName.equals(TaskSchema.METHOD_NAME))
 			return ObjectsOnlyRowColumnProvider.getMethodColumns();
 	
-		if (propertyName.equals(Task.OBJECT_NAME))
+		if (propertyName.equals(TaskSchema.OBJECT_NAME))
 			return ObjectsOnlyRowColumnProvider.getTaskColumns();
 		
 		if (propertyName.equals(Measurement.OBJECT_NAME))

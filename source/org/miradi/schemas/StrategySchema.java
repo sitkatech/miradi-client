@@ -22,7 +22,6 @@ package org.miradi.schemas;
 
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Strategy;
-import org.miradi.objects.Task;
 import org.miradi.questions.StrategyFeasibilityQuestion;
 import org.miradi.questions.StrategyImpactQuestion;
 import org.miradi.questions.StrategyStatusQuestion;
@@ -43,7 +42,7 @@ public class StrategySchema extends FactorSchema
 		super.fillFieldSchemas();
 		
 		createFieldSchemaChoice(Strategy.TAG_STATUS, getQuestion(StrategyStatusQuestion.class));
-		createFieldSchemaIdList(Strategy.TAG_ACTIVITY_IDS, Task.getObjectType());
+		createFieldSchemaIdList(Strategy.TAG_ACTIVITY_IDS, TaskSchema.getObjectType());
 	
 		createFieldSchemaChoice(Strategy.TAG_TAXONOMY_CODE, getQuestion(StrategyTaxonomyQuestion.class));
 		createFieldSchemaChoice(Strategy.TAG_IMPACT_RATING, getQuestion(StrategyImpactQuestion.class));

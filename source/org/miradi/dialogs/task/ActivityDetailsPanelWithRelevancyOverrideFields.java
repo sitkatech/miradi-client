@@ -27,6 +27,7 @@ import org.miradi.actions.ObjectsAction;
 import org.miradi.main.EAM;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
+import org.miradi.schemas.TaskSchema;
 
 public class ActivityDetailsPanelWithRelevancyOverrideFields extends TaskDetailsPanel
 {
@@ -39,9 +40,9 @@ public class ActivityDetailsPanelWithRelevancyOverrideFields extends TaskDetails
 	protected void addCustomFields(Actions actionsToUse)
 	{
 		ObjectsAction objectiveRelevancyEditAction = actionsToUse.getObjectsAction(ActionEditActivityObjectiveRelevancyList.class);
-		addFieldWithEditButton(EAM.text("Objectives"), createReadOnlyObjectList(Task.getObjectType(), Task.PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS), createObjectsActionButton(objectiveRelevancyEditAction, getPicker()));
+		addFieldWithEditButton(EAM.text("Objectives"), createReadOnlyObjectList(TaskSchema.getObjectType(), Task.PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS), createObjectsActionButton(objectiveRelevancyEditAction, getPicker()));
 		
 		ObjectsAction goalRelevancyEditAction = actionsToUse.getObjectsAction(ActionEditActivityGoalRelevancyList.class);
-		addFieldWithEditButton(EAM.text("Goals"), createReadOnlyObjectList(Task.getObjectType(), Task.PSEUDO_TAG_RELEVANT_GOAL_REFS), createObjectsActionButton(goalRelevancyEditAction, getPicker()));
+		addFieldWithEditButton(EAM.text("Goals"), createReadOnlyObjectList(TaskSchema.getObjectType(), Task.PSEUDO_TAG_RELEVANT_GOAL_REFS), createObjectsActionButton(goalRelevancyEditAction, getPicker()));
 	}
 }

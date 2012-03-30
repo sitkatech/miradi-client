@@ -24,8 +24,8 @@ import org.miradi.dialogs.task.ShareableMethodPoolTablePanel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Indicator;
-import org.miradi.objects.Task;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.TaskSchema;
 import org.miradi.views.planning.doers.AbstractShareDoer;
 
 public class TreeNodeShareMethodDoer extends AbstractShareDoer
@@ -33,7 +33,7 @@ public class TreeNodeShareMethodDoer extends AbstractShareDoer
 	@Override
 	protected String getTaskTypeName()
 	{
-		return Task.METHOD_NAME;
+		return TaskSchema.METHOD_NAME;
 	}
 
 	@Override

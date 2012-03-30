@@ -20,10 +20,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Task;
 
 public class TaskSchema extends FactorSchema
 {
+	public static final String OBJECT_NAME = "Task";
+	public static final String METHOD_NAME = "Method";
+	public static final String ACTIVITY_NAME = "Activity";
+
 	public TaskSchema()
 	{
 		super();
@@ -34,12 +39,17 @@ public class TaskSchema extends FactorSchema
 	{
 		super.fillFieldSchemas();
 		
-		createFieldSchemaIdList(Task.TAG_SUBTASK_IDS, Task.getObjectType());
+		createFieldSchemaIdList(Task.TAG_SUBTASK_IDS, TaskSchema.getObjectType());
 		createFieldSchemaMultiLineUserText(Task.TAG_DETAILS);
 		
 		createPseudoFieldSchemaString(Task.PSEUDO_TAG_STRATEGY_LABEL);
 		createPseudoFieldSchemaString(Task.PSEUDO_TAG_INDICATOR_LABEL);
 		createPseudoFieldSchemaRefList(Task.PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS);
 		createPseudoFieldSchemaRefList(Task.PSEUDO_TAG_RELEVANT_GOAL_REFS);
+	}
+
+	public static int getObjectType()
+	{
+		return ObjectType.TASK;
 	}
 }

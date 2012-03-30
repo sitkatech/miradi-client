@@ -22,7 +22,6 @@ package org.miradi.questions;
 import org.miradi.objects.Cause;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.Strategy;
-import org.miradi.objects.Task;
 import org.miradi.objects.TextBox;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.schemas.GoalSchema;
@@ -35,6 +34,7 @@ import org.miradi.schemas.ScopeBoxSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.StressSchema;
 import org.miradi.schemas.TargetSchema;
+import org.miradi.schemas.TaskSchema;
 
 public class DiagramLegendQuestion extends StaticChoiceQuestion
 {
@@ -59,7 +59,7 @@ public class DiagramLegendQuestion extends StaticChoiceQuestion
 				new ChoiceItem(TextBox.OBJECT_NAME, TextBox.OBJECT_NAME),
 				new ChoiceItem(ScopeBoxSchema.OBJECT_NAME, ScopeBoxSchema.OBJECT_NAME),
 				new ChoiceItem(STRESS_HIDDEN_TYPE_CODE, StressSchema.OBJECT_NAME),
-				new ChoiceItem(Task.ACTIVITY_NAME, Task.ACTIVITY_NAME),
+				new ChoiceItem(TaskSchema.ACTIVITY_NAME, TaskSchema.ACTIVITY_NAME),
 				new ChoiceItem(IntermediateResultSchema.OBJECT_NAME, IntermediateResultSchema.OBJECT_NAME),
 				new ChoiceItem(ThreatReductionResult.OBJECT_NAME, ThreatReductionResult.OBJECT_NAME),
 				new ChoiceItem(GroupBoxSchema.OBJECT_NAME, GroupBoxSchema.OBJECT_NAME),

@@ -27,10 +27,10 @@ import org.miradi.actions.Actions;
 import org.miradi.icons.ActivityIcon;
 import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.MainWindow;
-import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.schemas.IntermediateResultSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
+import org.miradi.schemas.TaskSchema;
 
 public class ResultsChainDiagramLegendPanel extends DiagramLegendPanel
 {
@@ -49,7 +49,7 @@ public class ResultsChainDiagramLegendPanel extends DiagramLegendPanel
 	@Override
 	protected void addActivityLine(TwoColumnPanel jpanel)
 	{
-		addIconLineWithCheckBox(jpanel, Task.getObjectType(), Task.ACTIVITY_NAME, new ActivityIcon());
+		addIconLineWithCheckBox(jpanel, TaskSchema.getObjectType(), TaskSchema.ACTIVITY_NAME, new ActivityIcon());
 	}
 	
 	@Override
