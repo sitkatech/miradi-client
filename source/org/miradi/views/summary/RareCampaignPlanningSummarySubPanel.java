@@ -25,14 +25,15 @@ import org.miradi.forms.summary.RareTabCampaignPlanningSubPanelForm;
 import org.miradi.main.EAM;
 import org.miradi.objects.RareProjectData;
 import org.miradi.project.Project;
+import org.miradi.schemas.RareProjectDataSchema;
 
 public class RareCampaignPlanningSummarySubPanel extends ObjectDataInputPanel
 {
 	public RareCampaignPlanningSummarySubPanel(Project projectToUse) throws Exception
 	{
-		super(projectToUse, projectToUse.getSingletonObjectRef(RareProjectData.getObjectType()));
+		super(projectToUse, projectToUse.getSingletonObjectRef(RareProjectDataSchema.getObjectType()));
 		
-		addField(createMultilineField(RareProjectData.getObjectType(), RareProjectData.TAG_CAMPAIGN_THEORY_OF_CHANGE));
+		addField(createMultilineField(RareProjectDataSchema.getObjectType(), RareProjectData.TAG_CAMPAIGN_THEORY_OF_CHANGE));
 		addField(createMultilineField(RareProjectData.TAG_CAMPAIGN_SLOGAN));
 		addField(createMultilineField(RareProjectData.TAG_SUMMARY_OF_KEY_MESSAGES));
 		addField(createMultilineField(RareProjectData.TAG_MAIN_ACTIVITIES_NOTES));

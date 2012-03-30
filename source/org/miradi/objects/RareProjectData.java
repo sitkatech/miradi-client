@@ -21,7 +21,6 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.RareProjectDataSchema;
@@ -42,24 +41,19 @@ public class RareProjectData extends BaseObject
 	@Override
 	public int getType()
 	{
-		return getObjectType();
+		return RareProjectDataSchema.getObjectType();
 	}
 
 	@Override
 	public String getTypeName()
 	{
-		return OBJECT_NAME;
+		return RareProjectDataSchema.OBJECT_NAME;
 	}
 
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;
-	}
-	
-	public static int getObjectType()
-	{
-		return ObjectType.RARE_PROJECT_DATA;
 	}
 	
 	public static boolean canReferToThisType(int type)
@@ -76,8 +70,6 @@ public class RareProjectData extends BaseObject
 	{
 		return find(project.getObjectManager(), rareProjectDataRef);
 	}
-	
-	public static final String OBJECT_NAME = "RareProjectData";
 	
 	public static final String TAG_FLAGSHIP_SPECIES_COMMON_NAME = "FlagshipSpeciesCommonName";
 	public static final String TAG_FLAGSHIP_SPECIES_SCIENTIFIC_NAME = "FlagshipSpeciesScientificName";

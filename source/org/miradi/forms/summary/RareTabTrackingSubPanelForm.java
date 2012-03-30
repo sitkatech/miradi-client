@@ -22,6 +22,7 @@ package org.miradi.forms.summary;
 import org.miradi.forms.FieldPanelSpec;
 import org.miradi.main.EAM;
 import org.miradi.objects.RareProjectData;
+import org.miradi.schemas.RareProjectDataSchema;
 import org.miradi.views.summary.RareTrackingSummarySubPanel;
 
 public class RareTabTrackingSubPanelForm extends FieldPanelSpec
@@ -31,7 +32,7 @@ public class RareTabTrackingSubPanelForm extends FieldPanelSpec
 		setTranslatedTitle(RareTrackingSummarySubPanel.PANEL_DESCRIPTION);
 		
 		addLeftRightConstants(PROJECT_NUMBER_CONSTANT, SEE_PROJECT_TAB_CONSTANT);
-		addLabelAndField(RareProjectData.getObjectType(), RareProjectData.TAG_COHORT);
+		addLabelAndField(RareProjectDataSchema.getObjectType(), RareProjectData.TAG_COHORT);
 		addLeftRightConstants(COUNTRY_CONSTANT, SEE_LOCATION_TAB_CONSTANT);
 	}
 	

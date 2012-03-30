@@ -153,6 +153,7 @@ import org.miradi.schemas.OtherNotableSpeciesSchema;
 import org.miradi.schemas.ProgressPercentSchema;
 import org.miradi.schemas.ProgressReportSchema;
 import org.miradi.schemas.ProjectResourceSchema;
+import org.miradi.schemas.RareProjectDataSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.ScopeBoxSchema;
@@ -278,7 +279,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	private void fillRareProjectData() throws Exception
 	{
-		ORef rareProjectDataRef = getSingletonObjectRef(RareProjectData.getObjectType());
+		ORef rareProjectDataRef = getSingletonObjectRef(RareProjectDataSchema.getObjectType());
 		
 		fillObjectWithSampleStringData(rareProjectDataRef, RareProjectData.TAG_COHORT);
 		fillObjectWithSampleStringData(rareProjectDataRef, RareProjectData.LEGACY_TAG_THREATS_ADDRESSED_NOTES);

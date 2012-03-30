@@ -94,7 +94,6 @@ import org.miradi.objects.Factor;
 import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
-import org.miradi.objects.RareProjectData;
 import org.miradi.objects.RatingCriterion;
 import org.miradi.objects.TableSettings;
 import org.miradi.objects.TaggedObjectSet;
@@ -125,6 +124,7 @@ import org.miradi.schemas.DashboardSchema;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.FosProjectDataSchema;
 import org.miradi.schemas.ObjectTreeTableConfigurationSchema;
+import org.miradi.schemas.RareProjectDataSchema;
 import org.miradi.schemas.ScopeBoxSchema;
 import org.miradi.schemas.TextBoxSchema;
 import org.miradi.utils.CodeList;
@@ -222,7 +222,7 @@ public class Project
 	
 	public RareProjectDataPool getRareProjectDataPool()
 	{
-		return (RareProjectDataPool) getPool(RareProjectData.getObjectType());
+		return (RareProjectDataPool) getPool(RareProjectDataSchema.getObjectType());
 	}
 	
 	public WcsProjectDataPool getWcsProjectDataPool()
@@ -882,7 +882,7 @@ public class Project
 		createMissingSimpleThreatRatingValueOptions();
 
 		createDefaultProjectDataObject(WwfProjectData.getObjectType());
-		createDefaultProjectDataObject(RareProjectData.getObjectType());
+		createDefaultProjectDataObject(RareProjectDataSchema.getObjectType());
 		createDefaultProjectDataObject(WcsProjectData.getObjectType());
 		createDefaultProjectDataObject(TncProjectData.getObjectType());
 		createDefaultProjectDataObject(FosProjectDataSchema.getObjectType());

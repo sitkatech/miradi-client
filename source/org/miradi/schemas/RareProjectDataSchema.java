@@ -20,10 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.RareProjectData;
 
 public class RareProjectDataSchema extends BaseObjectSchema
 {
+	public static final String OBJECT_NAME = "RareProjectData";
+
 	public RareProjectDataSchema()
 	{
 		super();
@@ -50,6 +53,11 @@ public class RareProjectDataSchema extends BaseObjectSchema
 	@Override
 	public String getXmpz2ElementName()
 	{
-		return RareProjectData.OBJECT_NAME;
+		return RareProjectDataSchema.OBJECT_NAME;
+	}
+
+	public static int getObjectType()
+	{
+		return ObjectType.RARE_PROJECT_DATA;
 	}
 }

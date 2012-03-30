@@ -25,12 +25,13 @@ import org.miradi.forms.summary.RareTabTrackingSubPanelForm;
 import org.miradi.main.EAM;
 import org.miradi.objects.RareProjectData;
 import org.miradi.project.Project;
+import org.miradi.schemas.RareProjectDataSchema;
 
 public class RareTrackingSummarySubPanel extends ObjectDataInputPanel
 {
 	public RareTrackingSummarySubPanel(Project projectToUse)
 	{
-		super(projectToUse, projectToUse.getSingletonObjectRef(RareProjectData.getObjectType()));
+		super(projectToUse, projectToUse.getSingletonObjectRef(RareProjectDataSchema.getObjectType()));
 		
 		add(new PanelTitleLabel(RareTabTrackingSubPanelForm.PROJECT_NUMBER_CONSTANT));
 		add(new PanelTitleLabel(RareTabTrackingSubPanelForm.SEE_PROJECT_TAB_CONSTANT));
