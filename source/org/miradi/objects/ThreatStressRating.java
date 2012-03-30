@@ -21,7 +21,6 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.project.threatrating.StressBasedThreatFormula;
@@ -49,18 +48,13 @@ public class ThreatStressRating extends BaseObject
 	@Override
 	public int getType()
 	{
-		return getObjectType();
+		return ThreatStressRatingSchema.getObjectType();
 	}
 	
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;
-	}
-	
-	public static int getObjectType()
-	{
-		return ObjectType.THREAT_STRESS_RATING;
 	}
 	
 	@Override
@@ -121,7 +115,7 @@ public class ThreatStressRating extends BaseObject
 	@Override
 	public String getTypeName()
 	{
-		return OBJECT_NAME;
+		return ThreatStressRatingSchema.OBJECT_NAME;
 	}
 	
 	@Override
@@ -137,7 +131,7 @@ public class ThreatStressRating extends BaseObject
 	
 	public static boolean is(int objectType)
 	{
-		return objectType == getObjectType();
+		return objectType == ThreatStressRatingSchema.getObjectType();
 	}
 		
 	public static ThreatStressRating find(ObjectManager objectManager, ORef threatStressRatingRef)
@@ -150,8 +144,6 @@ public class ThreatStressRating extends BaseObject
 		return find(project.getObjectManager(), threatStressRatingRef);
 	}
 		
-	public static final String OBJECT_NAME = "ThreatStressRating";
-	
 	public static final String TAG_CONTRIBUTION = "Contribution";
 	public static final String TAG_IRREVERSIBILITY = "Irreversibility";
 	public static final String TAG_STRESS_REF = "StressRef";

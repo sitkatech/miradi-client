@@ -23,6 +23,7 @@ import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.Project;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.StressSchema;
+import org.miradi.schemas.ThreatStressRatingSchema;
 
 public class ThreatStressPair 
 {		
@@ -47,7 +48,7 @@ public class ThreatStressPair
 		ORefList tsrReferrerRefsToThreat = getTsrReferrerRefsToThreat(projectToUse, threatRefToUse);
 		ORefList overLappingRefs = tsrReferrerRefsToStress.getOverlappingRefs(tsrReferrerRefsToThreat);
 		
-		return overLappingRefs.getRefForType(ThreatStressRating.getObjectType());		
+		return overLappingRefs.getRefForType(ThreatStressRatingSchema.getObjectType());		
 	}
 	
 	public ORef findMatchingThreatStressRating()
@@ -68,7 +69,7 @@ public class ThreatStressPair
 	private static ORefList getReferringThreatStressRatingRefs(Project projectToUse, ORef refToUse)
 	{
 		ORefList rawRefList = new ORefList(projectToUse.getObjectManager().getReferringObjects(refToUse));
-		return rawRefList.getFilteredBy(ThreatStressRating.getObjectType());
+		return rawRefList.getFilteredBy(ThreatStressRatingSchema.getObjectType());
 	}
 	
 	public ORef getThreatRef()

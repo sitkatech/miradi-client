@@ -51,7 +51,6 @@ import org.miradi.objects.ProjectResource;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
-import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.TncProjectData;
 import org.miradi.objects.Xenodata;
 import org.miradi.project.ProjectForTesting;
@@ -67,6 +66,7 @@ import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.TaskSchema;
+import org.miradi.schemas.ThreatStressRatingSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.NullProgressMeter;
@@ -437,8 +437,8 @@ public class TestConproXmlImporter extends TestCaseWithProject
 
 	private void verifyThreatStressRatingPoolContents(ProjectForTesting project, ProjectForTesting filledProject)
 	{
-		int originalProjectObjectCount =  getProject().getPool(ThreatStressRating.getObjectType()).getRefList().size();	
-		int filledProjectObjectCount =  filledProject.getPool(ThreatStressRating.getObjectType()).getRefList().size();
+		int originalProjectObjectCount =  getProject().getPool(ThreatStressRatingSchema.getObjectType()).getRefList().size();	
+		int filledProjectObjectCount =  filledProject.getPool(ThreatStressRatingSchema.getObjectType()).getRefList().size();
 		assertEquals("not same Threat stress rating object count?", originalProjectObjectCount, filledProjectObjectCount);
 	}
 

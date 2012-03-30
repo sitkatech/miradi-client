@@ -20,12 +20,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.questions.StressContributionQuestion;
 import org.miradi.questions.StressIrreversibilityQuestion;
 
 public class ThreatStressRatingSchema extends BaseObjectSchema
 {
+	public static final String OBJECT_NAME = "ThreatStressRating";
+
 	public ThreatStressRatingSchema()
 	{
 		super();
@@ -42,5 +45,10 @@ public class ThreatStressRatingSchema extends BaseObjectSchema
 		createFieldSchemaRef(ThreatStressRating.TAG_THREAT_REF);
 		createFieldSchemaBoolean(ThreatStressRating.TAG_IS_ACTIVE);
 		createPseudoFieldSchemaQuestion(ThreatStressRating.PSEUDO_TAG_THREAT_RATING);
+	}
+
+	public static int getObjectType()
+	{
+		return ObjectType.THREAT_STRESS_RATING;
 	}
 }

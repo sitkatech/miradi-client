@@ -76,6 +76,7 @@ import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.StrategyClassificationQuestion;
 import org.miradi.questions.TncOperatingUnitsQuestion;
+import org.miradi.schemas.ThreatStressRatingSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DoubleUtilities;
@@ -776,7 +777,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 
 	private void writeThreatStressRatings(UnicodeWriter out, Stress stress) throws Exception
 	{
-		ORefList referringRefs = stress.findObjectsThatReferToUs(ThreatStressRating.getObjectType());
+		ORefList referringRefs = stress.findObjectsThatReferToUs(ThreatStressRatingSchema.getObjectType());
 		referringRefs.sort(new ThreatStressRatingSorterByThreatRef());
 		writeStartElement(out, THREAT_STRESS_RATINGS);
 		for (int refIndex = 0; refIndex < referringRefs.size(); ++refIndex)

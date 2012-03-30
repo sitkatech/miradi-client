@@ -77,6 +77,7 @@ import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TaggedObjectSetSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.ThreatReductionResultSchema;
+import org.miradi.schemas.ThreatStressRatingSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
@@ -199,7 +200,7 @@ abstract public class DiagramPaster
 				return getCommandToFixRef(pastedObjectMap, newObject, tag);
 		}
 				
-		if (ThreatStressRating.getObjectType() == newObject.getType())
+		if (ThreatStressRatingSchema.getObjectType() == newObject.getType())
 		{
 			if (ThreatStressRating.TAG_STRESS_REF.equals(tag))
 				return getCommandToFixRef(pastedObjectMap, newObject, tag);

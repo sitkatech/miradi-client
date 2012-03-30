@@ -165,6 +165,7 @@ import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.schemas.TextBoxSchema;
 import org.miradi.schemas.ThreatReductionResultSchema;
+import org.miradi.schemas.ThreatStressRatingSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.DateRange;
@@ -767,7 +768,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 
 	public ThreatStressRating createThreatStressRating(ORef stressRef, ORef threatRef) throws Exception
 	{
-		ORef threatStressRatingRef = createObject(ThreatStressRating.getObjectType());
+		ORef threatStressRatingRef = createObject(ThreatStressRatingSchema.getObjectType());
 		setObjectData(threatStressRatingRef, ThreatStressRating.TAG_STRESS_REF, stressRef.toString());
 		setObjectData(threatStressRatingRef, ThreatStressRating.TAG_THREAT_REF, threatRef.toString());
 		setObjectData(threatStressRatingRef, ThreatStressRating.TAG_IS_ACTIVE, BooleanData.BOOLEAN_TRUE);

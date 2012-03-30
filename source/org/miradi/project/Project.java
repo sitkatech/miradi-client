@@ -98,7 +98,6 @@ import org.miradi.objects.RatingCriterion;
 import org.miradi.objects.TableSettings;
 import org.miradi.objects.TextBox;
 import org.miradi.objects.ThreatRatingCommentsData;
-import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.TncProjectData;
 import org.miradi.objects.ValueOption;
 import org.miradi.objects.ViewData;
@@ -129,6 +128,7 @@ import org.miradi.schemas.ScopeBoxSchema;
 import org.miradi.schemas.TaggedObjectSetSchema;
 import org.miradi.schemas.TextBoxSchema;
 import org.miradi.schemas.ThreatRatingCommentsDataSchema;
+import org.miradi.schemas.ThreatStressRatingSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
@@ -279,7 +279,7 @@ public class Project
 	
 	public ThreatStressRatingPool getThreatStressRatingPool()
 	{
-		return (ThreatStressRatingPool) getPool(ThreatStressRating.getObjectType());
+		return (ThreatStressRatingPool) getPool(ThreatStressRatingSchema.getObjectType());
 	}
 	
 	public StrategyPool getStrategyPool()

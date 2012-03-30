@@ -28,9 +28,9 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
-import org.miradi.objects.ThreatStressRating;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.TargetSchema;
+import org.miradi.schemas.ThreatStressRatingSchema;
 import org.miradi.views.diagram.LinkCreator;
 import org.miradi.views.diagram.LinkDeletor;
 
@@ -62,10 +62,10 @@ public class TestThreatStressRatingEnsurer extends TestCaseWithProject
 		createStress();
 		
 		getProject().createThreatStressRating(stress.getRef(), threat.getRef());
-		ORefList threatStressRatingReferrerRefs1 = threat.findObjectsThatReferToUs(ThreatStressRating.getObjectType());
+		ORefList threatStressRatingReferrerRefs1 = threat.findObjectsThatReferToUs(ThreatStressRatingSchema.getObjectType());
 		assertEquals("wrong threat stress rating count?", 1, threatStressRatingReferrerRefs1.size());
 		
-		ORefList threatStressRatingReferringToStressRefs = stress.findObjectsThatReferToUs(ThreatStressRating.getObjectType());
+		ORefList threatStressRatingReferringToStressRefs = stress.findObjectsThatReferToUs(ThreatStressRatingSchema.getObjectType());
 		assertEquals("wrong threat stress rating referring to stress count?", 1, threatStressRatingReferringToStressRefs.size());
 
 		ORefList threatStressRatingPoolRefs = getProject().getThreatStressRatingPool().getORefList();
@@ -109,7 +109,7 @@ public class TestThreatStressRatingEnsurer extends TestCaseWithProject
 
 	private void verifyThreatStressRatingReferrersToThreat(int expected)
 	{
-		ORefList threatStressRatingReferrerRefs = threat.findObjectsThatReferToUs(ThreatStressRating.getObjectType());
+		ORefList threatStressRatingReferrerRefs = threat.findObjectsThatReferToUs(ThreatStressRatingSchema.getObjectType());
 		assertEquals("incorrect threat stress ratings referring to threat?", expected, threatStressRatingReferrerRefs.size());
 	}
 	

@@ -40,6 +40,7 @@ import org.miradi.questions.ThreatStressRatingChoiceQuestion;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.StressSchema;
 import org.miradi.schemas.TargetSchema;
+import org.miradi.schemas.ThreatStressRatingSchema;
 import org.miradi.utils.ColumnTagProvider;
 import org.miradi.utils.ThreatStressRatingHelper;
 
@@ -162,7 +163,7 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 		if (isStressRatingColumn(column))
 			return EAM.fieldLabel(StressSchema.getObjectType(), getColumnTag(column));
 		
-		return EAM.fieldLabel(ThreatStressRating.getObjectType(), getColumnTag(column));
+		return EAM.fieldLabel(ThreatStressRatingSchema.getObjectType(), getColumnTag(column));
 	}
 	
 	public String getColumnTag(int column)
