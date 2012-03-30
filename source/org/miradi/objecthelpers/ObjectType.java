@@ -24,7 +24,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.miradi.main.EAM;
-import org.miradi.objects.TncProjectData;
 import org.miradi.objects.ValueOption;
 import org.miradi.objects.ViewData;
 import org.miradi.objects.WcpaProjectData;
@@ -55,6 +54,7 @@ import org.miradi.schemas.TableSettingsSchema;
 import org.miradi.schemas.TaggedObjectSetSchema;
 import org.miradi.schemas.ThreatRatingCommentsDataSchema;
 import org.miradi.schemas.ThreatStressRatingSchema;
+import org.miradi.schemas.TncProjectDataSchema;
 
 public class ObjectType
 {
@@ -151,7 +151,7 @@ public class ObjectType
 			ThreatStressRatingSchema.getObjectType(),
 			RareProjectDataSchema.getObjectType(),
 			WcsProjectData.getObjectType(),
-			TncProjectData.getObjectType(),
+			TncProjectDataSchema.getObjectType(),
 			FosProjectDataSchema.getObjectType(),
 			OrganizationSchema.getObjectType(),
 			WcpaProjectData.getObjectType(),

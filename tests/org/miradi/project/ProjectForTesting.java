@@ -166,6 +166,7 @@ import org.miradi.schemas.TaskSchema;
 import org.miradi.schemas.TextBoxSchema;
 import org.miradi.schemas.ThreatReductionResultSchema;
 import org.miradi.schemas.ThreatStressRatingSchema;
+import org.miradi.schemas.TncProjectDataSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.DateRange;
@@ -238,7 +239,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, createConproXenodata());
 		
-		ORef tncProjectDataRef = getSingletonObjectRef(TncProjectData.getObjectType());
+		ORef tncProjectDataRef = getSingletonObjectRef(TncProjectDataSchema.getObjectType());
 
 		TncProjectPlaceTypeQuestion projectPlaceTypeQuestion = new TncProjectPlaceTypeQuestion();
 		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_PROJECT_PLACE_TYPES, projectPlaceTypeQuestion.getAllCodes().toString());

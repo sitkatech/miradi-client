@@ -122,6 +122,7 @@ import org.miradi.schemas.TaggedObjectSetSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.schemas.ThreatStressRatingSchema;
+import org.miradi.schemas.TncProjectDataSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateUnitEffort;
@@ -741,7 +742,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 	
 	private ORef getSingletonTncProjectDataRef()
 	{
-		return getProject().getSingletonObjectRef(TncProjectData.getObjectType());
+		return getProject().getSingletonObjectRef(TncProjectDataSchema.getObjectType());
 	}
 	
 	private void importProjectId(Node projectSumaryNode, ORef metadataRef) throws Exception

@@ -47,6 +47,7 @@ import org.miradi.project.Project;
 import org.miradi.project.ProjectLoader;
 import org.miradi.project.ProjectSaver;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
+import org.miradi.schemas.TncProjectDataSchema;
 import org.miradi.utils.ConceptualModelByTargetSplitter;
 import org.miradi.utils.CpmzFileFilterForChooserDialog;
 import org.miradi.utils.FileUtilities;
@@ -212,7 +213,7 @@ public class CpmzProjectImporter extends AbstractZippedXmlImporter
 
 	private void importIfPresent(Project projectToFill, String fieldTag, ZipFile zipFile, String entryFilename) throws Exception
 	{
-		ORef tncDataRef = projectToFill.getSafeSingleObjectRef(TncProjectData.getObjectType());
+		ORef tncDataRef = projectToFill.getSafeSingleObjectRef(TncProjectDataSchema.getObjectType());
 		ZipEntry entry = zipFile.getEntry(entryFilename);
 		if(entry == null)
 			return;

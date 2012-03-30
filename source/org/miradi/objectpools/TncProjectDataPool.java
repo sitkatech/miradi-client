@@ -24,12 +24,13 @@ import org.miradi.ids.IdAssigner;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.TncProjectData;
 import org.miradi.project.ObjectManager;
+import org.miradi.schemas.TncProjectDataSchema;
 
 public class TncProjectDataPool extends BaseObjectPool
 {
 	public TncProjectDataPool(IdAssigner idAssignerToUse)
 	{
-		super(idAssignerToUse, TncProjectData.getObjectType());
+		super(idAssignerToUse, TncProjectDataSchema.getObjectType());
 	}
 	
 	public void put(TncProjectData tncProjectData) throws Exception

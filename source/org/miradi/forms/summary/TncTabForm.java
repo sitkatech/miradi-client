@@ -32,6 +32,7 @@ import org.miradi.questions.TncProjectPlaceTypeQuestion;
 import org.miradi.questions.ProjectSharingQuestion;
 import org.miradi.questions.TncTerrestrialEcoRegionQuestion;
 import org.miradi.schemas.ProjectMetadataSchema;
+import org.miradi.schemas.TncProjectDataSchema;
 import org.miradi.views.summary.TNCSummaryPanel;
 
 
@@ -45,20 +46,20 @@ public class TncTabForm extends FieldPanelSpec
 		int projectMetadataType = ProjectMetadataSchema.getObjectType();
 		addLabelAndField(projectMetadataType, ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE);
 		addLabelAndField(Xenodata.getObjectType(), Xenodata.TAG_PROJECT_ID);
-		addChoiceField(TncProjectData.getObjectType(), TncProjectData.TAG_PROJECT_SHARING_CODE, new ProjectSharingQuestion());
+		addChoiceField(TncProjectDataSchema.getObjectType(), TncProjectData.TAG_PROJECT_SHARING_CODE, new ProjectSharingQuestion());
 		addLabelAndField(projectMetadataType, ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
-		addCodeListField(TncProjectData.getObjectType(), TncProjectData.TAG_PROJECT_PLACE_TYPES, StaticQuestionManager.getQuestion(TncProjectPlaceTypeQuestion.class));
-		addCodeListField(TncProjectData.getObjectType(), TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES, StaticQuestionManager.getQuestion(TncOrganizationalPrioritiesQuestion.class));
+		addCodeListField(TncProjectDataSchema.getObjectType(), TncProjectData.TAG_PROJECT_PLACE_TYPES, StaticQuestionManager.getQuestion(TncProjectPlaceTypeQuestion.class));
+		addCodeListField(TncProjectDataSchema.getObjectType(), TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES, StaticQuestionManager.getQuestion(TncOrganizationalPrioritiesQuestion.class));
 		addLabelAndField(projectMetadataType, ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENTS);
-		addLabelAndField(TncProjectData.getObjectType(), TncProjectData.TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT);
+		addLabelAndField(TncProjectDataSchema.getObjectType(), TncProjectData.TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT);
 		addCodeListField(projectMetadataType, ProjectMetadata.TAG_TNC_OPERATING_UNITS, StaticQuestionManager.getQuestion(TncOperatingUnitsQuestion.class));
 		addCodeListField(projectMetadataType, ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION, StaticQuestionManager.getQuestion(TncTerrestrialEcoRegionQuestion.class));
 		addCodeListField(projectMetadataType, ProjectMetadata.TAG_TNC_MARINE_ECO_REGION, StaticQuestionManager.getQuestion(TncMarineEcoRegionQuestion.class));
 		addCodeListField(projectMetadataType, ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION, StaticQuestionManager.getQuestion(TncFreshwaterEcoRegionQuestion.class));
 		addLabelAndField(projectMetadataType, ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
-		addLabelAndField(TncProjectData.getObjectType(), TncProjectData.TAG_PROJECT_RESOURCES_SCORECARD);
-		addLabelAndField(TncProjectData.getObjectType(), TncProjectData.TAG_PROJECT_LEVEL_COMMENTS);
-		addLabelAndField(TncProjectData.getObjectType(), TncProjectData.TAG_PROJECT_CITATIONS);
-		addLabelAndField(TncProjectData.getObjectType(), TncProjectData.TAG_CAP_STANDARDS_SCORECARD);
+		addLabelAndField(TncProjectDataSchema.getObjectType(), TncProjectData.TAG_PROJECT_RESOURCES_SCORECARD);
+		addLabelAndField(TncProjectDataSchema.getObjectType(), TncProjectData.TAG_PROJECT_LEVEL_COMMENTS);
+		addLabelAndField(TncProjectDataSchema.getObjectType(), TncProjectData.TAG_PROJECT_CITATIONS);
+		addLabelAndField(TncProjectDataSchema.getObjectType(), TncProjectData.TAG_CAP_STANDARDS_SCORECARD);
 	}
 }

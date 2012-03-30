@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.TncProjectData;
 import org.miradi.questions.ProjectSharingQuestion;
 import org.miradi.questions.TncOrganizationalPrioritiesQuestion;
@@ -27,6 +28,8 @@ import org.miradi.questions.TncProjectPlaceTypeQuestion;
 
 public class TncProjectDataSchema extends BaseObjectSchema
 {
+	public static final String OBJECT_NAME = "TncProjectData";
+
 	public TncProjectDataSchema()
 	{
 		super();
@@ -50,6 +53,11 @@ public class TncProjectDataSchema extends BaseObjectSchema
 	@Override
 	public String getXmpz2ElementName()
 	{
-		return TncProjectData.OBJECT_NAME;
+		return TncProjectDataSchema.OBJECT_NAME;
+	}
+
+	public static int getObjectType()
+	{
+		return ObjectType.TNC_PROJECT_DATA;
 	}
 }

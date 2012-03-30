@@ -35,6 +35,7 @@ import org.miradi.objects.WwfProjectData;
 import org.miradi.project.Project;
 import org.miradi.schemas.FosProjectDataSchema;
 import org.miradi.schemas.RareProjectDataSchema;
+import org.miradi.schemas.TncProjectDataSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.HtmlUtilities;
 
@@ -169,7 +170,7 @@ public abstract class XmlExporter
 	
 	protected TncProjectData getTncProjectData()
 	{
-		ORef tncProjectDataRef = getProject().getSingletonObjectRef(TncProjectData.getObjectType());
+		ORef tncProjectDataRef = getProject().getSingletonObjectRef(TncProjectDataSchema.getObjectType());
 		return TncProjectData.find(getProject(), tncProjectDataRef);
 	}
 	
