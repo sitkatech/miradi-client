@@ -101,6 +101,7 @@ import org.miradi.questions.TncMarineEcoRegionQuestion;
 import org.miradi.questions.TncTerrestrialEcoRegionQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.schemas.DiagramFactorSchema;
+import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
@@ -1193,7 +1194,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		ORef fromDiagramFactorRef = wrappedToDiagramMap.get(fromRef);
 		ORef toDiagramFactorRef = wrappedToDiagramMap.get(toRef);
 			
-		ORef diagramLinkRef = getProject().createObject(DiagramLink.getObjectType());
+		ORef diagramLinkRef = getProject().createObject(DiagramLinkSchema.getObjectType());
 		
 		project.setObjectData(diagramLinkRef, DiagramLink.TAG_WRAPPED_ID, createdFactorLinkRef.getObjectId().toString());
     	project.setObjectData(diagramLinkRef, DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID, fromDiagramFactorRef.getObjectId().toString());

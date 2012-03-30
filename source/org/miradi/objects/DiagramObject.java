@@ -37,6 +37,7 @@ import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.DiagramFactorSchema;
+import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -105,7 +106,7 @@ abstract public class DiagramObject extends BaseObject
 			throw new RuntimeException(factorLinkRef + " is not a factor link ref");
 		
 		FactorLink link = FactorLink.find(getProject(), factorLinkRef);
-		ORefList wrappingDiagramLinkRefs = link.findObjectsThatReferToUs(DiagramLink.getObjectType());
+		ORefList wrappingDiagramLinkRefs = link.findObjectsThatReferToUs(DiagramLinkSchema.getObjectType());
 		ORefList diagramLinkOnThisDiagram = wrappingDiagramLinkRefs.getOverlappingRefs(getAllDiagramLinkRefs());
 		if(diagramLinkOnThisDiagram.size() == 1)
 			return DiagramLink.find(getProject(), diagramLinkOnThisDiagram.get(0));
@@ -279,8 +280,8 @@ abstract public class DiagramObject extends BaseObject
 		
 		DiagramFactor diagramFactor1 = DiagramFactor.find(getProject(), diagramFactorRef1);
 		DiagramFactor diagramFactor2 = DiagramFactor.find(getProject(), diagramFactorRef2);
-		ORefList diagramFactor1LinkReferrers = diagramFactor1.findObjectsThatReferToUs(DiagramLink.getObjectType());
-		ORefList diagramFactor2LinkReferrers = diagramFactor2.findObjectsThatReferToUs(DiagramLink.getObjectType());
+		ORefList diagramFactor1LinkReferrers = diagramFactor1.findObjectsThatReferToUs(DiagramLinkSchema.getObjectType());
+		ORefList diagramFactor2LinkReferrers = diagramFactor2.findObjectsThatReferToUs(DiagramLinkSchema.getObjectType());
 
 		ORefList sharedLinks = diagramFactor1LinkReferrers.getOverlappingRefs(diagramFactor2LinkReferrers);
 		if(sharedLinks.size() == 0)
@@ -319,7 +320,7 @@ abstract public class DiagramObject extends BaseObject
 
 	public ORefList getAllDiagramLinkRefs()
 	{
-		return new ORefList(DiagramLink.getObjectType(), getAllDiagramFactorLinkIds());
+		return new ORefList(DiagramLinkSchema.getObjectType(), getAllDiagramFactorLinkIds());
 	}
 	
 	public IdList getAllDiagramFactorLinkIds()
@@ -410,7 +411,7 @@ abstract public class DiagramObject extends BaseObject
 				list.addAll(new ORefList(DiagramFactorSchema.getObjectType(), getAllDiagramFactorIds()));
 				break;
 			case ObjectType.DIAGRAM_LINK: 
-				list.addAll(new ORefList(DiagramLink.getObjectType(), getAllDiagramFactorLinkIds()));
+				list.addAll(new ORefList(DiagramLinkSchema.getObjectType(), getAllDiagramFactorLinkIds()));
 				break;
 		}
 		return list;
@@ -435,7 +436,7 @@ abstract public class DiagramObject extends BaseObject
 		if (factorLinkRef.getObjectType() != FactorLink.getObjectType())
 			return new ORefList();
 
-		return findOwnersOfObject(projectToUse, factorLinkRef, DiagramLink.getObjectType());
+		return findOwnersOfObject(projectToUse, factorLinkRef, DiagramLinkSchema.getObjectType());
 	}
 	
 	private static ORefList findOwnersOfObject(Project projectToUse, ORef ref, int objectType)

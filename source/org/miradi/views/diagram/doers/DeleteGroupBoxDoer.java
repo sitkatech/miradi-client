@@ -29,8 +29,8 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.DiagramLink;
 import org.miradi.project.FactorDeleteHelper;
+import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.views.diagram.LinkDeletor;
 import org.miradi.views.diagram.LocationDoer;
 
@@ -63,7 +63,7 @@ public class DeleteGroupBoxDoer extends LocationDoer
 			for(FactorCell groupBoxCell : groupBoxCells)
 			{
 				removeAllChildrenFromGroupBox(groupBoxCell);
-				ORefList referringGroupBoxDiagramLinks = groupBoxCell.getDiagramFactor().findObjectsThatReferToUs(DiagramLink.getObjectType());
+				ORefList referringGroupBoxDiagramLinks = groupBoxCell.getDiagramFactor().findObjectsThatReferToUs(DiagramLinkSchema.getObjectType());
 				linkDeletor.deleteDiagramLinks(referringGroupBoxDiagramLinks);
 				deleteHelper.deleteFactorAndDiagramFactor(groupBoxCell.getDiagramFactor());	
 			}

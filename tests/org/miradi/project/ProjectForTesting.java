@@ -135,6 +135,7 @@ import org.miradi.schemas.AudienceSchema;
 import org.miradi.schemas.BudgetCategoryOneSchema;
 import org.miradi.schemas.BudgetCategoryTwoSchema;
 import org.miradi.schemas.DashboardSchema;
+import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.schemas.GoalSchema;
@@ -1889,7 +1890,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		if(!shouldCreateGroupBoxLink(from, to))
 			baseId = createFactorLinkWithCommand(from.getWrappedORef(), to.getWrappedORef()).getObjectId();
 		
-		CommandCreateObject createDiagramLink = new CommandCreateObject(DiagramLink.getObjectType());
+		CommandCreateObject createDiagramLink = new CommandCreateObject(DiagramLinkSchema.getObjectType());
 		executeCommand(createDiagramLink);
 
 		final ORef diagramLinkRef = createDiagramLink.getObjectRef();

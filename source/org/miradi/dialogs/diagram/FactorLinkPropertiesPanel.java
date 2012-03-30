@@ -31,6 +31,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramLink;
 import org.miradi.project.Project;
 import org.miradi.questions.DiagramLinkColorQuestion;
+import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.utils.CommandVector;
 
 public class FactorLinkPropertiesPanel extends ObjectDataInputPanel
@@ -44,8 +45,8 @@ public class FactorLinkPropertiesPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, link.getRef());
 
-		addField(createCheckBoxField(DiagramLink.getObjectType(), DiagramLink.TAG_IS_BIDIRECTIONAL_LINK, DiagramLink.BIDIRECTIONAL_LINK, BooleanData.BOOLEAN_FALSE));
-		addField(createChoiceField(DiagramLink.getObjectType(), DiagramLink.TAG_COLOR, new DiagramLinkColorQuestion()));
+		addField(createCheckBoxField(DiagramLinkSchema.getObjectType(), DiagramLink.TAG_IS_BIDIRECTIONAL_LINK, DiagramLink.BIDIRECTIONAL_LINK, BooleanData.BOOLEAN_FALSE));
+		addField(createChoiceField(DiagramLinkSchema.getObjectType(), DiagramLink.TAG_COLOR, new DiagramLinkColorQuestion()));
 		
 		setObjectRefs(new ORefList(link));
 		updateFieldsFromProject();
@@ -67,7 +68,7 @@ public class FactorLinkPropertiesPanel extends ObjectDataInputPanel
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		super.commandExecuted(event);
-		if (event.isSetDataCommandWithThisTypeAndTag(DiagramLink.getObjectType(), DiagramLink.TAG_IS_BIDIRECTIONAL_LINK))
+		if (event.isSetDataCommandWithThisTypeAndTag(DiagramLinkSchema.getObjectType(), DiagramLink.TAG_IS_BIDIRECTIONAL_LINK))
 			ensureSiblingsHaveEqualBidirectionality((CommandSetObjectData) event.getCommand());
 	}
 

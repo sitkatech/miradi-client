@@ -34,6 +34,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.project.Project;
+import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.utils.PointList;
 import org.miradi.views.diagram.LocationDoer;
 
@@ -97,7 +98,7 @@ abstract public class AbstractCreateJunctionDoer extends LocationDoer
 	protected Vector<DiagramLink> getDiagramLinks(DiagramFactor diagramFactor, int direction)
 	{
 		Vector<DiagramLink> diagramLinks = new Vector<DiagramLink>();
-		ORefList diagramLinkReferrerRefs = diagramFactor.findObjectsThatReferToUs(DiagramLink.getObjectType());
+		ORefList diagramLinkReferrerRefs = diagramFactor.findObjectsThatReferToUs(DiagramLinkSchema.getObjectType());
 		for (int refIndex = 0; refIndex < diagramLinkReferrerRefs.size(); ++refIndex)
 		{
 			DiagramLink diagramLink = DiagramLink.find(getProject(), diagramLinkReferrerRefs.get(refIndex));

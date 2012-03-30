@@ -84,6 +84,7 @@ import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
 import org.miradi.project.threatrating.ThreatRatingFramework;
 import org.miradi.schemas.DiagramFactorSchema;
+import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.views.diagram.GroupOfDiagrams;
 import org.miradi.views.diagram.LayerManager;
@@ -606,7 +607,7 @@ abstract public class DiagramModel extends DefaultGraphModel
 	
 	public boolean doesDiagramFactorLinkExist(DiagramLinkId linkId)
 	{
-		return doesDiagramFactorLinkExist(new ORef(DiagramLink.getObjectType(), linkId));	
+		return doesDiagramFactorLinkExist(new ORef(DiagramLinkSchema.getObjectType(), linkId));	
 	}
 	
 	public boolean doesDiagramFactorLinkExist(ORef diagramLinkRef)
@@ -816,7 +817,7 @@ abstract public class DiagramModel extends DefaultGraphModel
 	
 	public void addLinksToModel(EnhancedJsonObject json) throws Exception
 	{
-		IdList allDiagramFactorLinkIds = new IdList(DiagramLink.getObjectType(), json.getString(TAG_DIAGRAM_FACTOR_LINK_IDS));
+		IdList allDiagramFactorLinkIds = new IdList(DiagramLinkSchema.getObjectType(), json.getString(TAG_DIAGRAM_FACTOR_LINK_IDS));
 		for (int i = 0; i < allDiagramFactorLinkIds.size(); i++)
 		{
 			BaseId factorLinkId = allDiagramFactorLinkIds.get(i);

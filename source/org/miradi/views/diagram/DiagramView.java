@@ -164,6 +164,7 @@ import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.questions.DiagramModeQuestion;
 import org.miradi.schemas.DiagramFactorSchema;
+import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.utils.DiagramCorruptionDetector;
 import org.miradi.utils.PointList;
 import org.miradi.views.TabbedView;
@@ -892,7 +893,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	private ORef getParentOrSelf(ORef diagramLinkRef)
 	{
 		DiagramLink diagramLink = DiagramLink.find(getProject(), diagramLinkRef);		
-		ORefList groupBoxLinkReferrerRefs = diagramLink.findObjectsThatReferToUs(DiagramLink.getObjectType());
+		ORefList groupBoxLinkReferrerRefs = diagramLink.findObjectsThatReferToUs(DiagramLinkSchema.getObjectType());
 		if (groupBoxLinkReferrerRefs.size() > 0)
 			return groupBoxLinkReferrerRefs.get(0);
 		

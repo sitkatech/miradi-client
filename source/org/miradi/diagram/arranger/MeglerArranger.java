@@ -46,6 +46,7 @@ import org.miradi.objects.Target;
 import org.miradi.project.FactorCommandHelper;
 import org.miradi.project.Project;
 import org.miradi.schemas.DiagramFactorSchema;
+import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.utils.NullProgressMeter;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.views.diagram.LinkCreator;
@@ -217,7 +218,7 @@ public class MeglerArranger
 		{
 			ORefSet matchingDiagramLinkRefs = new ORefSet();
 			ORef thisRef = diagramFactor.getRef();
-			ORefList diagramLinkRefs = diagramFactor.findObjectsThatReferToUs(DiagramLink.getObjectType());
+			ORefList diagramLinkRefs = diagramFactor.findObjectsThatReferToUs(DiagramLinkSchema.getObjectType());
 			for(int i = 0; i < diagramLinkRefs.size(); ++i)
 			{
 				ORef diagramLinkRef = diagramLinkRefs.get(i);
@@ -241,7 +242,7 @@ public class MeglerArranger
 		HashSet<DiagramFactor> linkedToGroup = new HashSet<DiagramFactor>();
 		for(DiagramFactor diagramFactor : groupCandidates)
 		{
-			ORefList ourLinks = diagramFactor.findObjectsThatReferToUs(DiagramLink.getObjectType());
+			ORefList ourLinks = diagramFactor.findObjectsThatReferToUs(DiagramLinkSchema.getObjectType());
 			for(int i = 0; i < ourLinks.size(); ++i)
 			{
 				DiagramLink diagramLink = DiagramLink.find(diagramFactor.getProject(), ourLinks.get(i));
@@ -336,7 +337,7 @@ public class MeglerArranger
 
 	private ORefSet getRefsOfFactorsThatLink(DiagramFactor factor, int direction, int objectTypeInThatDirection)
 	{
-		ORefList linkRefs = factor.findObjectsThatReferToUs(DiagramLink.getObjectType());
+		ORefList linkRefs = factor.findObjectsThatReferToUs(DiagramLinkSchema.getObjectType());
 		ORefSet froms = new ORefSet();
 		for(int i = 0; i < linkRefs.size(); ++i)
 		{
@@ -362,7 +363,7 @@ public class MeglerArranger
 		Vector<DiagramFactor> unlinkedDiagramFactors = new Vector<DiagramFactor>();
 		for(DiagramFactor diagramFactor : candidates)
 		{
-			ORefList linkRefs = diagramFactor.findObjectsThatReferToUs(DiagramLink.getObjectType());
+			ORefList linkRefs = diagramFactor.findObjectsThatReferToUs(DiagramLinkSchema.getObjectType());
 			if(linkRefs.size() == 0)
 				unlinkedDiagramFactors.add(diagramFactor);
 		}

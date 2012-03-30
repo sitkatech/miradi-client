@@ -52,6 +52,7 @@ import org.miradi.objects.Task;
 import org.miradi.project.FactorDeleteHelper;
 import org.miradi.project.ProjectRepairer;
 import org.miradi.schemas.DiagramFactorSchema;
+import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.schemas.IndicatorSchema;
 
 public class TestDiagramAliasPaster extends TestCaseWithProject
@@ -325,7 +326,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		DiagramFactor tdf = DiagramFactor.find(getProject(), targetDiagramFactorRef);
 		assertTrue("No group-target link?", diagramModel.getDiagramObject().areDiagramFactorsLinkedFromToNonBidirectional(gdf.getRef(), tdf.getRef()));
 		
-		DiagramLink gdl = DiagramLink.find(getProject(), gdf.findObjectsThatReferToUs().getRefForType(DiagramLink.getObjectType()));
+		DiagramLink gdl = DiagramLink.find(getProject(), gdf.findObjectsThatReferToUs().getRefForType(DiagramLinkSchema.getObjectType()));
 		assertTrue("Isn't a group link?", gdl.isGroupBoxLink());
 		assertNull("Group link has an FL?", gdl.getWrappedFactorLink());
 		assertEquals("Group link not from group?", GroupBox.getObjectType(), gdl.getFromDiagramFactor().getWrappedType());
@@ -379,7 +380,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		DiagramFactor newGroupDiagramFactor = DiagramFactor.find(getProject(), groupDiagramFactorRefs.getFirstElement());
 		
 		assertEquals("Empty group has children?", 0, newGroupDiagramFactor.getGroupBoxChildrenSet().size());
-		ORefList groupLinkRefs = newGroupDiagramFactor.findObjectsThatReferToUs(DiagramLink.getObjectType());
+		ORefList groupLinkRefs = newGroupDiagramFactor.findObjectsThatReferToUs(DiagramLinkSchema.getObjectType());
 		assertEquals("Group is not linked?", 1, groupLinkRefs.size());
 		DiagramLink groupLink = DiagramLink.find(getProject(), groupLinkRefs.getFirstElement());
 		assertFalse("Group link is bidi?", groupLink.isBidirectional());

@@ -69,6 +69,7 @@ import org.miradi.objects.Factor;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
+import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.utils.LocationHolder;
 import org.miradi.utils.Utility;
 import org.miradi.views.diagram.LayerManager;
@@ -539,7 +540,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	{
 		HashSet<LinkCell> linkCells = new HashSet<LinkCell>();
 		DiagramModel diagramModel = getDiagramModel();
-		ORefList diagramLinkReferrerRefs = diagramFactor.findObjectsThatReferToUs(DiagramLink.getObjectType());
+		ORefList diagramLinkReferrerRefs = diagramFactor.findObjectsThatReferToUs(DiagramLinkSchema.getObjectType());
 		for (int referrrerIndex = 0; referrrerIndex < diagramLinkReferrerRefs.size(); ++referrrerIndex)
 		{
 			DiagramLink diagramLink = DiagramLink.find(getProject(), diagramLinkReferrerRefs.get(referrrerIndex));

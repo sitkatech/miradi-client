@@ -27,6 +27,7 @@ import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.schemas.DiagramFactorSchema;
+import org.miradi.schemas.DiagramLinkSchema;
 
 public class GroupBoxRemoveDiagramFactorDoer extends AbstractGroupBoxDoer
 {
@@ -89,7 +90,7 @@ public class GroupBoxRemoveDiagramFactorDoer extends AbstractGroupBoxDoer
 
 	private void removeGroupBoxDiagramLinkForDiagramFactor(DiagramFactor groupBoxDiagramFactor, DiagramFactor removedChildDiagramFactor) throws Exception
 	{	
-		ORefList removedChildDiagramLinkReferrerRefs = removedChildDiagramFactor.findObjectsThatReferToUs(DiagramLink.getObjectType());
+		ORefList removedChildDiagramLinkReferrerRefs = removedChildDiagramFactor.findObjectsThatReferToUs(DiagramLinkSchema.getObjectType());
 		for (int linkIndex = 0; linkIndex < removedChildDiagramLinkReferrerRefs.size(); ++linkIndex)
 		{
 			DiagramLink removedChildDiagramLink = DiagramLink.find(getProject(), removedChildDiagramLinkReferrerRefs.get(linkIndex));
@@ -99,7 +100,7 @@ public class GroupBoxRemoveDiagramFactorDoer extends AbstractGroupBoxDoer
 
 	private void removeChildLinkFromGroupBoxLinks(DiagramFactor groupBoxDiagramFactor, DiagramLink removedChildDiagramLink) throws Exception
 	{
-		ORefList referringGroupBoxDiagramLinkRefs = removedChildDiagramLink.findObjectsThatReferToUs(DiagramLink.getObjectType());
+		ORefList referringGroupBoxDiagramLinkRefs = removedChildDiagramLink.findObjectsThatReferToUs(DiagramLinkSchema.getObjectType());
 		for (int groupBoxLinkIndex = 0; groupBoxLinkIndex < referringGroupBoxDiagramLinkRefs.size(); ++groupBoxLinkIndex)
 		{
 			DiagramLink groupBoxDiagramLink = DiagramLink.find(getProject(), referringGroupBoxDiagramLinkRefs.get(groupBoxLinkIndex));

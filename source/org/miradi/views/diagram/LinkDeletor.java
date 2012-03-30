@@ -34,6 +34,7 @@ import org.miradi.objects.DiagramObject;
 import org.miradi.objects.FactorLink;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.utils.CommandVector;
 
 public class LinkDeletor
@@ -61,7 +62,7 @@ public class LinkDeletor
 	
 	private void deleteDiagramLinkAndReferrers(FactorLink factorLink) throws Exception
 	{
-		ORefList diagramLinkreferrers = factorLink.findObjectsThatReferToUs(DiagramLink.getObjectType());	
+		ORefList diagramLinkreferrers = factorLink.findObjectsThatReferToUs(DiagramLinkSchema.getObjectType());	
 		for (int referrerIndex = 0; referrerIndex < diagramLinkreferrers.size(); ++referrerIndex)
 		{
 			DiagramLink diagramLink = (DiagramLink) project.findObject(diagramLinkreferrers.get(referrerIndex));
@@ -72,7 +73,7 @@ public class LinkDeletor
 
 	private void deleteOurGroupDiagramLinkParents(DiagramLink diagramLink) throws Exception
 	{
-		ORefList groupBoxDiagramLinkReferrers = diagramLink.findObjectsThatReferToUs(DiagramLink.getObjectType());
+		ORefList groupBoxDiagramLinkReferrers = diagramLink.findObjectsThatReferToUs(DiagramLinkSchema.getObjectType());
 		for (int groupLinkIndex = 0; groupLinkIndex < groupBoxDiagramLinkReferrers.size(); ++groupLinkIndex)
 		{
 			DiagramLink groupDiagramLink = DiagramLink.find(getProject(), groupBoxDiagramLinkReferrers.get(groupLinkIndex));
@@ -133,7 +134,7 @@ public class LinkDeletor
 
 	private void removeFromGroupBoxDiagramLinkChildren(DiagramLink diagramLink) throws Exception
 	{
-		ORefList diagramBoxDiagramLinkReferrerRefs = diagramLink.findObjectsThatReferToUs(DiagramLink.getObjectType());
+		ORefList diagramBoxDiagramLinkReferrerRefs = diagramLink.findObjectsThatReferToUs(DiagramLinkSchema.getObjectType());
 		for (int i = 0; i < diagramBoxDiagramLinkReferrerRefs.size(); ++i)
 		{
 			DiagramLink groupBoxLink = DiagramLink.find(getProject(), diagramBoxDiagramLinkReferrerRefs.get(i));
@@ -145,7 +146,7 @@ public class LinkDeletor
 	private void deleteFactorLinkIfOrphaned(FactorLink factorLink) throws Exception
 	{
 		ObjectManager objectManager = project.getObjectManager();
-		ORefList diagramLinkReferrers = factorLink.findObjectsThatReferToUs(objectManager, DiagramLink.getObjectType(), factorLink.getRef());
+		ORefList diagramLinkReferrers = factorLink.findObjectsThatReferToUs(objectManager, DiagramLinkSchema.getObjectType(), factorLink.getRef());
 		
 		if (diagramLinkReferrers.size() != 0)
 			return;

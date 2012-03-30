@@ -25,13 +25,14 @@ import org.miradi.main.EAM;
 import org.miradi.objects.DiagramLink;
 import org.miradi.project.Project;
 import org.miradi.questions.DiagramLinkColorQuestion;
+import org.miradi.schemas.DiagramLinkSchema;
 
 public class DiagramLinkColorSubPanel extends ObjectDataInputPanel
 {
 	public DiagramLinkColorSubPanel(Project projectToUse, int type)	
 	{
 		super(projectToUse, type);
-		addField(createChoiceField(DiagramLink.getObjectType(), DiagramLink.TAG_COLOR, new DiagramLinkColorQuestion()));
+		addField(createChoiceField(DiagramLinkSchema.getObjectType(), DiagramLink.TAG_COLOR, new DiagramLinkColorQuestion()));
 		
 		updateFieldsFromProject();
 	}
