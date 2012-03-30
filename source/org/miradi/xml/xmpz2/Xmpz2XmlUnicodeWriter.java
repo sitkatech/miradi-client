@@ -104,11 +104,6 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 		writeElement(elementName, readableCode);
 	}
 
-	private String appendParentNameToChildName(final BaseObjectSchema baseObjectSchema, final AbstractFieldSchema fieldSchema)
-	{
-		return baseObjectSchema.getXmpz2ElementName() + fieldSchema.getTag();
-	}
-
 	public void writeStringData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string)
 	{
 	}
@@ -225,5 +220,10 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 
 	public void writeRefMapData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string)
 	{
+	}
+	
+	private String appendParentNameToChildName(final BaseObjectSchema baseObjectSchema, final AbstractFieldSchema fieldSchema)
+	{
+		return baseObjectSchema.getXmpz2ElementName() + fieldSchema.getTag();
 	}
 }
