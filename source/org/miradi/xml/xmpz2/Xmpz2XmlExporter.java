@@ -48,20 +48,10 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 
 	private void exportPools() throws Exception
 	{
-		writeProjectMetadataDataSchemaElement();
-		writeFosProjectDataSchemaElement();
-	}
-	
-	private void writeProjectMetadataDataSchemaElement() throws Exception
-	{
 		writeBaseObjectDataSchemaElement(getProject().getMetadata());
-	}
-
-	private void writeFosProjectDataSchemaElement() throws Exception
-	{
 		writeBaseObjectDataSchemaElement(getFosProjectData());
 	}
-
+	
 	protected void writeBaseObjectDataSchemaElement(final BaseObject baseObject) throws Exception
 	{
 		BaseObjectSchema baseObjectSchema = baseObject.getSchema();
