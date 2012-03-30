@@ -89,7 +89,6 @@ import org.miradi.objectpools.WwfProjectDataPool;
 import org.miradi.objectpools.XenodataPool;
 import org.miradi.objectpools.XslTemplatePool;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.WcpaProjectData;
 import org.miradi.objects.WcsProjectData;
 import org.miradi.objects.WwfProjectData;
 import org.miradi.objects.Xenodata;
@@ -144,6 +143,7 @@ import org.miradi.schemas.ThreatStressRatingSchema;
 import org.miradi.schemas.TncProjectDataSchema;
 import org.miradi.schemas.ValueOptionSchema;
 import org.miradi.schemas.ViewDataSchema;
+import org.miradi.schemas.WcpaProjectDataSchema;
 
 public class ObjectManager
 {
@@ -193,7 +193,7 @@ public class ObjectManager
 		addNormalPool(new TncProjectDataPool(ida), TncProjectDataSchema.OBJECT_NAME);
 		addNormalPool(new FosProjectDataPool(ida), FosProjectDataSchema.OBJECT_NAME);
 		addNormalPool(new OrganizationPool(ida), OrganizationSchema.OBJECT_NAME);
-		addNormalPool(new WcpaProjectDataPool(ida), WcpaProjectData.OBJECT_NAME);
+		addNormalPool(new WcpaProjectDataPool(ida), WcpaProjectDataSchema.OBJECT_NAME);
 		addNormalPool(new XenodataPool(ida), Xenodata.OBJECT_NAME);
 		addNormalPool(new ProgressPercentPool(ida), ProgressPercentSchema.OBJECT_NAME);
 		addNormalPool(new ReportTemplatePool(ida), ReportTemplateSchema.OBJECT_NAME);

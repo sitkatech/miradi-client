@@ -20,10 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.WcpaProjectData;
 
 public class WcpaProjectDataSchema extends BaseObjectSchema
 {
+	public static final String OBJECT_NAME = "WCPAProjectData";
+
 	public WcpaProjectDataSchema()
 	{
 		super();
@@ -50,6 +53,11 @@ public class WcpaProjectDataSchema extends BaseObjectSchema
 	@Override
 	public String getXmpz2ElementName()
 	{
-		return WcpaProjectData.OBJECT_NAME;
+		return WcpaProjectDataSchema.OBJECT_NAME;
+	}
+
+	public static int getObjectType()
+	{
+		return ObjectType.WCPA_PROJECT_DATA;
 	}
 }
