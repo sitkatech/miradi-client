@@ -29,6 +29,7 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
+import org.miradi.schemas.MeasurementSchema;
 import org.miradi.utils.CommandVector;
 
 public class DeleteKeyEcologicalAttributeMeasurementDoer extends AbstractKeyEcologicalAttributeDoer
@@ -37,7 +38,7 @@ public class DeleteKeyEcologicalAttributeMeasurementDoer extends AbstractKeyEcol
 	public Vector<Integer> getRequiredObjectTypes()
 	{
 		Vector<Integer> types = new Vector<Integer>(1);
-		types.add(Measurement.getObjectType());
+		types.add(MeasurementSchema.getObjectType());
 
 		return types;
 

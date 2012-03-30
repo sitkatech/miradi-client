@@ -40,6 +40,7 @@ import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.IntermediateResultSchema;
 import org.miradi.schemas.KeyEcologicalAttributeSchema;
+import org.miradi.schemas.MeasurementSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
@@ -256,7 +257,7 @@ public class Indicator extends BaseObject
 			return TaskSchema.getObjectType();
 		
 		if (tag.equals(TAG_MEASUREMENT_REFS))
-			return Measurement.getObjectType();
+			return MeasurementSchema.getObjectType();
 		
 		return super.getAnnotationType(tag);
 	}

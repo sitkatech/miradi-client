@@ -50,6 +50,7 @@ import org.miradi.objects.ViewData;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.KeyEcologicalAttributeSchema;
+import org.miradi.schemas.MeasurementSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.TaskSchema;
@@ -344,7 +345,7 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 		if (event.isSetDataCommandWithThisTypeAndTag(IndicatorSchema.getObjectType(), Indicator.TAG_MEASUREMENT_REFS))
 			return true;
 		
-		if (event.isSetDataCommandWithThisTypeAndTag(Measurement.getObjectType(), Measurement.TAG_DATE))
+		if (event.isSetDataCommandWithThisTypeAndTag(MeasurementSchema.getObjectType(), Measurement.TAG_DATE))
 			return true;
 		
 		return false;

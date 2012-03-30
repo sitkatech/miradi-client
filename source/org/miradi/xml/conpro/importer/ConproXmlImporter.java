@@ -108,6 +108,7 @@ import org.miradi.schemas.FactorLinkSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.IntermediateResultSchema;
 import org.miradi.schemas.KeyEcologicalAttributeSchema;
+import org.miradi.schemas.MeasurementSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
@@ -472,7 +473,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		for (int nodeIndex = 0; nodeIndex < measurementNodeList.getLength(); ++nodeIndex) 
 		{
 			Node measurementNode = measurementNodeList.item(nodeIndex);			
-			ORef measurementRef = getProject().createObject(Measurement.getObjectType());
+			ORef measurementRef = getProject().createObject(MeasurementSchema.getObjectType());
 			
 			importField(measurementNode, MEASUREMENT_SUMMARY, measurementRef, Measurement.TAG_SUMMARY);
 			importField(measurementNode, MEASUREMENT_COMMENT, measurementRef, Measurement.TAG_COMMENTS);

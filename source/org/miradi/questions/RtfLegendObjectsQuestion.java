@@ -39,13 +39,13 @@ import org.miradi.icons.TextBoxIcon;
 import org.miradi.icons.ThreatReductionResultIcon;
 import org.miradi.main.EAM;
 import org.miradi.objects.Cause;
-import org.miradi.objects.Measurement;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.GroupBoxSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.IntermediateResultSchema;
+import org.miradi.schemas.MeasurementSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.StrategySchema;
@@ -83,7 +83,7 @@ public class RtfLegendObjectsQuestion extends StaticChoiceQuestion
 				new ChoiceItem(TaskSchema.OBJECT_NAME, EAM.text("Task"), new TaskIcon()),
 				new ChoiceItem(TaskSchema.METHOD_NAME, EAM.text("Method"), new MethodIcon()),
 				new ChoiceItem(TaskSchema.ACTIVITY_NAME, EAM.text("Activity"), new ActivityIcon()),
-				new ChoiceItem(Measurement.OBJECT_NAME, EAM.text("Measurement"), new MeasurementIcon()),
+				new ChoiceItem(MeasurementSchema.OBJECT_NAME, EAM.text("Measurement"), new MeasurementIcon()),
 		};
 	}
 }

@@ -26,12 +26,13 @@ import org.miradi.objects.Measurement;
 import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.TrendQuestion;
+import org.miradi.schemas.MeasurementSchema;
 
 public class MeasurementPoolExporter extends BaseObjectPoolExporter
 {
 	public MeasurementPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
-		super(wcsXmlExporterToUse, MEASUREMENT, Measurement.getObjectType());
+		super(wcsXmlExporterToUse, MEASUREMENT, MeasurementSchema.getObjectType());
 	}
 	
 	@Override

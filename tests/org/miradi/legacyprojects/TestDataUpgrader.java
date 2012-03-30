@@ -44,8 +44,8 @@ import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.Factor;
-import org.miradi.objects.Measurement;
 import org.miradi.schemas.CauseSchema;
+import org.miradi.schemas.MeasurementSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.StressSchema;
 import org.miradi.schemas.TargetSchema;
@@ -1008,7 +1008,7 @@ public class TestDataUpgrader extends AbstractMigrationTestCase
 		String measurementRefsAsString = indicatorWithJsonObject.getString("MeasurementRefs");
 		ORefList measurementRefs = new ORefList(measurementRefsAsString);
 		assertEquals("wrong number of refs in list?", 1, measurementRefs.size());
-		assertEquals("wrong ref in list?", new ORef(Measurement.getObjectType(), new BaseId(19)), measurementRefs.get(0));
+		assertEquals("wrong ref in list?", new ORef(MeasurementSchema.getObjectType(), new BaseId(19)), measurementRefs.get(0));
 	}
 	
 	public void testUpgradeTo22ChangeWrappedIdsToRefs() throws Exception

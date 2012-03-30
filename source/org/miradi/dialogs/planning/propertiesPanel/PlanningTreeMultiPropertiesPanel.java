@@ -50,7 +50,6 @@ import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.FundingSource;
 import org.miradi.objects.HumanWelfareTarget;
-import org.miradi.objects.Measurement;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.SubTarget;
@@ -61,6 +60,7 @@ import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.IntermediateResultSchema;
+import org.miradi.schemas.MeasurementSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
@@ -126,7 +126,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 			if (TaskSchema.getObjectType() == objectType)
 				return getTaskPropertiesPanel();
 			
-			if (Measurement.getObjectType() == objectType)
+			if (MeasurementSchema.getObjectType() == objectType)
 				return getMeasurementPropertiesPanel();
 			
 			if (TargetSchema.getObjectType() == objectType)

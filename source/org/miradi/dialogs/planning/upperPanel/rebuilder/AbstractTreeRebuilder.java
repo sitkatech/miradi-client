@@ -56,6 +56,7 @@ import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.IntermediateResultSchema;
 import org.miradi.schemas.KeyEcologicalAttributeSchema;
+import org.miradi.schemas.MeasurementSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
@@ -179,7 +180,7 @@ abstract public class AbstractTreeRebuilder
 			IndicatorSchema.getObjectType(),
 			TaskSchema.getObjectType(),
 			
-			Measurement.getObjectType(),
+			MeasurementSchema.getObjectType(),
 			ResourceAssignmentSchema.getObjectType(),
 			ExpenseAssignmentSchema.getObjectType(),
 		};
@@ -405,7 +406,7 @@ abstract public class AbstractTreeRebuilder
 			KeyEcologicalAttributeSchema.getObjectType(),
 			ResultsChainDiagramSchema.getObjectType(),
 			ConceptualModelDiagramSchema.getObjectType(),
-			Measurement.getObjectType(),
+			MeasurementSchema.getObjectType(),
 			GoalSchema.getObjectType(),
 			SubTarget.getObjectType(),
 			CauseSchema.getObjectType(),

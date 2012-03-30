@@ -24,6 +24,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Measurement;
+import org.miradi.schemas.MeasurementSchema;
 
 public class TestBaseObjectDateAndIdComparator extends TestCaseWithProject
 {
@@ -39,7 +40,7 @@ public class TestBaseObjectDateAndIdComparator extends TestCaseWithProject
 		
 		Measurement measurementWithNoDate = getProject().createMeasurement();
 		
-		ORef measurementRef3 = getProject().createObject(Measurement.getObjectType(), new BaseId(9999));
+		ORef measurementRef3 = getProject().createObject(MeasurementSchema.getObjectType(), new BaseId(9999));
 		Measurement measurementWithNoDateAndId9999 = Measurement.find(getProject(), measurementRef3);
 	
 		assertEquals("identical without date?", 0, BaseObjectDateDescendingAndIdComparator.compare(measurementWithNoDate, measurementWithNoDate, Measurement.TAG_DATE));

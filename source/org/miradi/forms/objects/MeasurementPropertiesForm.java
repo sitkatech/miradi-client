@@ -23,16 +23,17 @@ import org.miradi.forms.FieldPanelSpec;
 import org.miradi.icons.MeasurementIcon;
 import org.miradi.main.EAM;
 import org.miradi.objects.Measurement;
+import org.miradi.schemas.MeasurementSchema;
 
 public class MeasurementPropertiesForm extends FieldPanelSpec
 {
 	public MeasurementPropertiesForm()
 	{
-		int type = Measurement.getObjectType();
-		addStandardNameRow(new MeasurementIcon(), EAM.text("Measurement"), Measurement.getObjectType(), new String[]{Measurement.TAG_DATE, Measurement.TAG_SUMMARY});
+		int type = MeasurementSchema.getObjectType();
+		addStandardNameRow(new MeasurementIcon(), EAM.text("Measurement"), MeasurementSchema.getObjectType(), new String[]{Measurement.TAG_DATE, Measurement.TAG_SUMMARY});
 		addLabelAndField(type, Measurement.TAG_DETAIL);
 		
-		addLabelAndFieldsWithLabels(EAM.text("Current Status"), Measurement.getObjectType(), new String[]{Measurement.TAG_STATUS, Measurement.TAG_TREND, });
+		addLabelAndFieldsWithLabels(EAM.text("Current Status"), MeasurementSchema.getObjectType(), new String[]{Measurement.TAG_STATUS, Measurement.TAG_TREND, });
 		addLabelAndField(type, Measurement.TAG_STATUS_CONFIDENCE);
 		addLabelAndField(type, Measurement.TAG_COMMENTS);
 	}

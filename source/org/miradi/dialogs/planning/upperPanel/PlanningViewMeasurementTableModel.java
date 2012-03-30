@@ -36,6 +36,7 @@ import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.questions.TrendQuestion;
+import org.miradi.schemas.MeasurementSchema;
 import org.miradi.utils.CodeList;
 
 public class PlanningViewMeasurementTableModel extends PlanningViewAbstractTreeTableSyncedTableModel
@@ -58,7 +59,7 @@ public class PlanningViewMeasurementTableModel extends PlanningViewAbstractTreeT
 	@Override
 	public String getColumnName(int column)
 	{
-		return EAM.fieldLabel(Measurement.getObjectType(), getColumnTag(column));
+		return EAM.fieldLabel(MeasurementSchema.getObjectType(), getColumnTag(column));
 	}
 	
 	public Object getValueAt(int row, int column)
@@ -110,7 +111,7 @@ public class PlanningViewMeasurementTableModel extends PlanningViewAbstractTreeT
 	{
 		try
 		{
-			return getVisibleRowCodes().contains(Measurement.OBJECT_NAME);
+			return getVisibleRowCodes().contains(MeasurementSchema.OBJECT_NAME);
 		}
 		catch (Exception e)
 		{

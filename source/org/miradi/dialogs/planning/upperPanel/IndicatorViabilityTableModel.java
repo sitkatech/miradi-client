@@ -33,6 +33,7 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.TaglessChoiceItem;
+import org.miradi.schemas.MeasurementSchema;
 import org.miradi.utils.CodeList;
 
 
@@ -96,7 +97,7 @@ public class IndicatorViabilityTableModel extends PlanningViewAbstractTreeTableS
 	@Override
 	public String getColumnName(int column)
 	{
-		return EAM.fieldLabel(Measurement.getObjectType(), getColumnTag(column));
+		return EAM.fieldLabel(MeasurementSchema.getObjectType(), getColumnTag(column));
 	}
 	
 	public Object getValueAt(int row, int column)

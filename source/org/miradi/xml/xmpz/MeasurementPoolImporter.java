@@ -25,6 +25,7 @@ import org.miradi.objects.Measurement;
 import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.TrendQuestion;
+import org.miradi.schemas.MeasurementSchema;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.w3c.dom.Node;
 
@@ -32,7 +33,7 @@ public class MeasurementPoolImporter extends AbstractBaseObjectPoolImporter
 {
 	public MeasurementPoolImporter(XmpzXmlImporter importerToUse)
 	{
-		super(importerToUse, XmpzXmlConstants.MEASUREMENT, Measurement.getObjectType());
+		super(importerToUse, XmpzXmlConstants.MEASUREMENT, MeasurementSchema.getObjectType());
 	}
 	
 	@Override

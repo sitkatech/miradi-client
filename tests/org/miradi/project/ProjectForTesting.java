@@ -146,6 +146,7 @@ import org.miradi.schemas.GroupBoxSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.IucnRedlistSpeciesSchema;
 import org.miradi.schemas.KeyEcologicalAttributeSchema;
+import org.miradi.schemas.MeasurementSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
@@ -810,7 +811,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public Measurement createMeasurement() throws Exception
 	{
-		ORef measurementRef = createObject(Measurement.getObjectType());
+		ORef measurementRef = createObject(MeasurementSchema.getObjectType());
 		return Measurement.find(this, measurementRef);
 	}
 	

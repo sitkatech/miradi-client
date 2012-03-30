@@ -24,6 +24,7 @@ import org.miradi.objects.Measurement;
 import org.miradi.project.Project;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.MeasurementSchema;
 import org.miradi.utils.CodeList;
 
 public class IndicatorViabilityRowColumnProvider extends AbstractViabilityRowColumnProvider
@@ -37,7 +38,7 @@ public class IndicatorViabilityRowColumnProvider extends AbstractViabilityRowCol
 	{
 		return new CodeList(new String[] {
 				IndicatorSchema.OBJECT_NAME,
-				Measurement.OBJECT_NAME,
+				MeasurementSchema.OBJECT_NAME,
 				GoalSchema.OBJECT_NAME,
 		});
 	}
