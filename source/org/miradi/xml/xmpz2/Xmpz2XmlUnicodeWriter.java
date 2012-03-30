@@ -100,8 +100,7 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 	public void writeChoiceData(final BaseObjectSchema baseObjectSchema, final AbstractFieldSchema fieldSchema, final ChoiceQuestion choiceQuestion, final String code) throws Exception
 	{
 		String readableCode = choiceQuestion.convertToReadableCode(code);
-		final String elementName = appendParentNameToChildName(baseObjectSchema, fieldSchema);
-		writeElement(elementName, readableCode);
+		writeField(baseObjectSchema, fieldSchema, readableCode);
 	}
 
 	public void writeStringData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string)
@@ -146,8 +145,7 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 
 	public void writetDateData(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema, String date) throws Exception
 	{
-		final String elementName = appendParentNameToChildName(baseObjectSchema, fieldSchema);
-		writeElement(elementName, date);
+		writeField(baseObjectSchema, fieldSchema, date);
 	}
 
 	public void writetDateRangeData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string) 
@@ -220,6 +218,12 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 
 	public void writeRefMapData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string)
 	{
+	}
+	
+	private void writeField(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String data) throws Exception
+	{
+		final String elementName = appendParentNameToChildName(baseObjectSchema, fieldSchema);
+		writeElement(elementName, data);
 	}
 	
 	private String appendParentNameToChildName(final BaseObjectSchema baseObjectSchema, final AbstractFieldSchema fieldSchema)
