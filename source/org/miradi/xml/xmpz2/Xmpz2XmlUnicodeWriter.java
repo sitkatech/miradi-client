@@ -165,7 +165,7 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 	{
 	}
 
-	public void writetCodeToCodeListMapData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string)
+	public void writeCodeToCodeListMapData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string)
 	{
 	}
 
