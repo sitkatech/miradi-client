@@ -90,12 +90,12 @@ import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.Objective;
 import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.rtf.RtfWriter;
 import org.miradi.schemas.GoalSchema;
+import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.FillerLabel;
 import org.miradi.utils.TableExporter;
@@ -548,7 +548,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ObjectDataField createObjectiveRelevancyOverrideListField(int objectType)
 	{
-		return new StrategyObjectiveOverrideListField(getProject(), getRefForType(objectType), Objective.getObjectType());
+		return new StrategyObjectiveOverrideListField(getProject(), getRefForType(objectType), ObjectiveSchema.getObjectType());
 	}
 
 	public ObjectDataInputField createSingleColumnCodeListField(int objectType, String tagToUse, ChoiceQuestion question)

@@ -21,7 +21,7 @@ package org.miradi.views.diagram;
 
 import org.miradi.main.EAM;
 import org.miradi.objects.Factor;
-import org.miradi.objects.Objective;
+import org.miradi.schemas.ObjectiveSchema;
 
 public class DeleteObjective extends DeleteAnnotationDoer
 {
@@ -40,6 +40,6 @@ public class DeleteObjective extends DeleteAnnotationDoer
 	@Override
 	public int getAnnotationType()
 	{
-		return Objective.getObjectType();
+		return ObjectiveSchema.getObjectType();
 	}
 }

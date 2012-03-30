@@ -21,11 +21,11 @@ package org.miradi.dialogs.planning;
 
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.IntermediateResult;
-import org.miradi.objects.Objective;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.objects.Task;
 import org.miradi.questions.WorkPlanVisibleRowsQuestion;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.utils.CodeList;
 
 public class ProgressReportRowColumnProvider implements RowColumnProvider, PlanningTreeRowColumnProvider
@@ -34,7 +34,7 @@ public class ProgressReportRowColumnProvider implements RowColumnProvider, Plann
 	{
 		return new CodeList(new String[] {
 				IntermediateResult.OBJECT_NAME,
-				Objective.OBJECT_NAME,
+				ObjectiveSchema.OBJECT_NAME,
 				IndicatorSchema.OBJECT_NAME,
 				Task.ACTIVITY_NAME,				
 		});

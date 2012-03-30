@@ -20,14 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.planning.doers;
 
 import org.miradi.objects.Factor;
-import org.miradi.objects.Objective;
+import org.miradi.schemas.ObjectiveSchema;
 
 public class TreeNodeCreateObjectiveDoer extends AbstractTreeCreateAnnotationDoer
 {
 	@Override
 	protected int getAnnotationType()
 	{
-		return Objective.getObjectType();
+		return ObjectiveSchema.getObjectType();
 	}
 
 	@Override
@@ -45,6 +45,6 @@ public class TreeNodeCreateObjectiveDoer extends AbstractTreeCreateAnnotationDoe
 	@Override
 	protected String getObjectName()
 	{
-		return Objective.OBJECT_NAME;
+		return ObjectiveSchema.OBJECT_NAME;
 	}
 }

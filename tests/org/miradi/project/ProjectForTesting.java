@@ -139,6 +139,7 @@ import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
@@ -800,7 +801,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public Objective createObjective(Factor owner) throws Exception
 	{
-		ORef objectiveRef = createObject(Objective.getObjectType());
+		ORef objectiveRef = createObject(ObjectiveSchema.getObjectType());
 		CommandSetObjectData append = CommandSetObjectData.createAppendIdCommand(owner, Factor.TAG_OBJECTIVE_IDS, objectiveRef.getObjectId());
 		executeCommand(append);
 		Objective objective = Objective.find(this, objectiveRef);
@@ -1256,7 +1257,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		activityIds.addRef(createAndPopulateTask(strategy, "Some activity Label").getRef());
 		fillObjectUsingCommand(strategy, Strategy.TAG_ACTIVITY_IDS, activityIds.toString());
 		
-		IdList objectiveIds = new IdList(Objective.getObjectType());
+		IdList objectiveIds = new IdList(ObjectiveSchema.getObjectType());
 		objectiveIds.addRef(createAndPopulateObjective(strategy).getRef());
 		objectiveIds.addRef(createAndPopulateObjective(strategy).getRef());
 		fillObjectUsingCommand(strategy, Strategy.TAG_OBJECTIVE_IDS, objectiveIds.toString());
@@ -1312,7 +1313,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public void addObjective(Factor factor) throws Exception
 	{
-		IdList objectiveIds = new IdList(Objective.getObjectType());
+		IdList objectiveIds = new IdList(ObjectiveSchema.getObjectType());
 		objectiveIds.addRef(createAndPopulateObjective(factor).getRef());
 		fillObjectUsingCommand(factor, Factor.TAG_OBJECTIVE_IDS, objectiveIds.toString());
 	}

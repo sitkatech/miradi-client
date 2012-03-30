@@ -19,13 +19,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella;
 
-import org.miradi.objects.Objective;
+import org.miradi.schemas.ObjectiveSchema;
 
 public class EditObjectiveIndicatorRelevancyListDoer extends AbstractRelevancyEditListDoer
 {
 	@Override
 	protected int getObjectType()
 	{
-		return Objective.getObjectType();
+		return ObjectiveSchema.getObjectType();
 	}
 }

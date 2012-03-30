@@ -61,11 +61,11 @@ import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
-import org.miradi.objects.Objective;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.ViewData;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.NullProgressMeter;
 import org.miradi.views.diagram.DiagramCopyPaster;
@@ -633,7 +633,7 @@ public class TestProject extends MiradiTestCase
 		
 		BaseId objectiveId1 = project.createObjectAndReturnId(ObjectType.OBJECTIVE);
 		
-		IdList objectiveId = new IdList(Objective.getObjectType());
+		IdList objectiveId = new IdList(ObjectiveSchema.getObjectType());
 		objectiveId.add(objectiveId1);
 
 		Factor cf = nodeContributingFactor.getWrappedFactor();

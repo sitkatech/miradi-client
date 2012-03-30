@@ -27,6 +27,7 @@ import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.utils.CommandVector;
 
 
@@ -50,7 +51,7 @@ public class TestObjective extends TestDesire
 		BaseId indicatorId = getProject().addItemToIndicatorList(causeRef, Cause.TAG_INDICATOR_IDS);
 		ORef indicatorRef = new ORef(IndicatorSchema.getObjectType(), indicatorId);
 		
-		Objective objective = Objective.find(getProject(), new ORef(Objective.getObjectType(), objectiveId));
+		Objective objective = Objective.find(getProject(), new ORef(ObjectiveSchema.getObjectType(), objectiveId));
 		assertEquals("wrong indicator count?", 1, objective.getIndicatorsOnSameFactor().size());
 		
 		verifyRelevancy(indicatorRef, objective, true, 1);

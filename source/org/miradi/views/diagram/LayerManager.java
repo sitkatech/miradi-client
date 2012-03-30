@@ -24,11 +24,11 @@ import org.miradi.diagram.cells.FactorCell;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramObject;
-import org.miradi.objects.Objective;
 import org.miradi.objects.Strategy;
 import org.miradi.questions.DiagramModeQuestion;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.utils.CodeList;
 
 public class LayerManager
@@ -104,7 +104,7 @@ public class LayerManager
 	
 	public boolean areObjectivesVisible() throws Exception
 	{
-		return isTypeVisible(Objective.OBJECT_NAME);
+		return isTypeVisible(ObjectiveSchema.OBJECT_NAME);
 	}
 	
 	public void setGoalsVisible(boolean newSetting) throws Exception
@@ -114,7 +114,7 @@ public class LayerManager
 	
 	public void setObjectivesVisible(boolean newSetting) throws Exception
 	{
-		setVisibility(Objective.OBJECT_NAME, newSetting);
+		setVisibility(ObjectiveSchema.OBJECT_NAME, newSetting);
 	}
 
 	public void setVisibility(String typeName, boolean isVisible) throws Exception

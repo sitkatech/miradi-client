@@ -36,6 +36,7 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.StrategyClassificationQuestion;
 import org.miradi.questions.StrategyRatingSummaryQuestion;
 import org.miradi.questions.StrategyStatusQuestion;
+import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
@@ -171,7 +172,7 @@ public class Strategy extends Factor
 
 	public ORefList getRelevantObjectiveRefs() throws Exception
 	{
-		ORefSet relevantObjectives = new ORefSet(Desire.findAllRelevantDesires(getProject(), getRef(), Objective.getObjectType()));
+		ORefSet relevantObjectives = new ORefSet(Desire.findAllRelevantDesires(getProject(), getRef(), ObjectiveSchema.getObjectType()));
 		RelevancyOverrideSet relevantOverrides = new RelevancyOverrideSet();
 		return calculateRelevantRefList(relevantObjectives, relevantOverrides);
 	}

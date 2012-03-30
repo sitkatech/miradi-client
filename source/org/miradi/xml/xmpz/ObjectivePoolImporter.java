@@ -20,13 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz;
 
-import org.miradi.objects.Objective;
+import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class ObjectivePoolImporter extends DesirePoolImporter
 {
 	public ObjectivePoolImporter(XmpzXmlImporter importerToUse)
 	{
-		super(importerToUse, XmpzXmlConstants.OBJECTIVE, Objective.getObjectType());
+		super(importerToUse, XmpzXmlConstants.OBJECTIVE, ObjectiveSchema.getObjectType());
 	}
 }

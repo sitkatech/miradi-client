@@ -64,7 +64,6 @@ import org.miradi.objects.FactorLink;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.IntermediateResult;
-import org.miradi.objects.Objective;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.ScopeBox;
@@ -79,6 +78,7 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.DiagramLegendQuestion;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.views.umbrella.LegendPanel;
 import org.miradi.views.umbrella.doers.AbstractPopUpEditDoer;
@@ -155,7 +155,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		createCheckBox(Task.ACTIVITY_NAME);
 		
 		createCheckBox(GoalSchema.OBJECT_NAME);
-		createCheckBox(Objective.OBJECT_NAME);
+		createCheckBox(ObjectiveSchema.OBJECT_NAME);
 		createCheckBox(IndicatorSchema.OBJECT_NAME);
 
 	}
@@ -181,7 +181,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		addButtonLineWithCheckBox(jpanel, FactorLink.getObjectType(), FactorLink.OBJECT_NAME, actions.get(ActionInsertLink.class));
 		
 		addIconLineWithCheckBox(jpanel, GoalSchema.getObjectType(), GoalSchema.OBJECT_NAME, new GoalIcon());
-		addIconLineWithCheckBox(jpanel, Objective.getObjectType(), Objective.OBJECT_NAME, new ObjectiveIcon());
+		addIconLineWithCheckBox(jpanel, ObjectiveSchema.getObjectType(), ObjectiveSchema.OBJECT_NAME, new ObjectiveIcon());
 		addIconLineWithCheckBox(jpanel, IndicatorSchema.getObjectType(), IndicatorSchema.OBJECT_NAME, IconManager.getIndicatorIcon());
 		
 		addStressLine(jpanel);

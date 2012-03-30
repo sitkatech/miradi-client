@@ -102,7 +102,6 @@ import org.miradi.objects.IucnRedlistSpecies;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.ObjectTreeTableConfiguration;
-import org.miradi.objects.Objective;
 import org.miradi.objects.Organization;
 import org.miradi.objects.OtherNotableSpecies;
 import org.miradi.objects.ProgressPercent;
@@ -143,6 +142,7 @@ import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 
 public class ObjectManager
@@ -162,7 +162,7 @@ public class ObjectManager
 		addNormalPool(new ViewPool(ida), ViewData.OBJECT_NAME);
 		addNormalPool(new ResourcePool(ida), ProjectResource.OBJECT_NAME);
 		addNormalPool(new IndicatorPool(ida), IndicatorSchema.OBJECT_NAME);
-		addNormalPool(new ObjectivePool(ida), Objective.OBJECT_NAME);
+		addNormalPool(new ObjectivePool(ida), ObjectiveSchema.OBJECT_NAME);
 		addNormalPool(new GoalPool(ida), GoalSchema.OBJECT_NAME);
 		addNormalPool(new ProjectMetadataPool(ida), ProjectMetadata.OBJECT_NAME);
 		addNormalPool(new DiagramLinkPool(ida), DiagramLink.OBJECT_NAME);

@@ -44,7 +44,6 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
-import org.miradi.objects.Objective;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResultsChainDiagram;
@@ -61,6 +60,7 @@ import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.utils.BaseObjectDateDescendingAndIdComparator;
 import org.miradi.utils.CodeList;
@@ -140,7 +140,7 @@ abstract public class AbstractTreeRebuilder
 
 	public static ORefList findRelevantObjectives(Project projectToUse, ORef strategyRef) throws Exception
 	{
-		return Desire.findRelevantDesires(projectToUse, strategyRef, Objective.getObjectType());
+		return Desire.findRelevantDesires(projectToUse, strategyRef, ObjectiveSchema.getObjectType());
 	}
 	
 	private void createAndAddChildren(AbstractPlanningTreeNode parent, ORefList childRefsToAdd) throws Exception
@@ -174,7 +174,7 @@ abstract public class AbstractTreeRebuilder
 			
 			SubTarget.getObjectType(),
 			GoalSchema.getObjectType(),
-			Objective.getObjectType(),
+			ObjectiveSchema.getObjectType(),
 			IndicatorSchema.getObjectType(),
 			Task.getObjectType(),
 			
@@ -410,7 +410,7 @@ abstract public class AbstractTreeRebuilder
 			Cause.getObjectType(),
 			ThreatReductionResult.getObjectType(),
 			IntermediateResult.getObjectType(),
-			Objective.getObjectType(),
+			ObjectiveSchema.getObjectType(),
 			Strategy.getObjectType(),
 			IndicatorSchema.getObjectType(),
 			ProjectResource.getObjectType(),

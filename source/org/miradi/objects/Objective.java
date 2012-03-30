@@ -22,7 +22,6 @@ package org.miradi.objects;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.ObjectiveId;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.ObjectiveSchema;
@@ -44,13 +43,13 @@ public class Objective extends Desire
 	@Override
 	public int getType()
 	{
-		return getObjectType();
+		return ObjectiveSchema.getObjectType();
 	}
 
 	@Override
 	public String getTypeName()
 	{
-		return OBJECT_NAME;
+		return ObjectiveSchema.OBJECT_NAME;
 	}
 
 	@Override
@@ -62,11 +61,6 @@ public class Objective extends Desire
 			IntermediateResult.getObjectType(),
 			ThreatReductionResult.getObjectType(),
 			};
-	}
-	
-	public static int getObjectType()
-	{
-		return ObjectType.OBJECTIVE;
 	}
 	
 	public static Objective find(ObjectManager objectManager, ORef objectiveRef)
@@ -86,13 +80,11 @@ public class Objective extends Desire
 	
 	public static boolean is(int nodeType)
 	{
-		return nodeType == getObjectType();
+		return nodeType == ObjectiveSchema.getObjectType();
 	}
 
 	public static boolean is(ORef ref)
 	{
 		return is(ref.getObjectType());
 	}
-	
-	public static final String OBJECT_NAME = "Objective";
 }
