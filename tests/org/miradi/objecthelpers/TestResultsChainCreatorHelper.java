@@ -29,10 +29,10 @@ import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Factor;
 import org.miradi.objects.IntermediateResult;
-import org.miradi.objects.Strategy;
 import org.miradi.project.ResultsChainCreatorHelper;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.IntermediateResultSchema;
+import org.miradi.schemas.StrategySchema;
 
 public class TestResultsChainCreatorHelper extends TestCaseWithProject
 {
@@ -46,7 +46,7 @@ public class TestResultsChainCreatorHelper extends TestCaseWithProject
 		DiagramFactor causeDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
 		getProject().addObjective(causeDiagramFactor.getWrappedFactor());
 		DiagramFactor groupBoxDiagramFactor = getProject().createAndPopulateDiagramFactorGroupBox(causeDiagramFactor);
-		DiagramFactor strategyDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
+		DiagramFactor strategyDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(StrategySchema.getObjectType());
 		getProject().createDiagramLinkAndAddToDiagram(strategyDiagramFactor, groupBoxDiagramFactor);
 		
 		HashSet<DiagramFactor> diagramFactorToClone = new HashSet<DiagramFactor>();

@@ -24,6 +24,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.views.diagram.doers.CloneStressDoer;
 
 public class CreateActivityNodeDoer extends AbstractCreateTaskNodeDoer
@@ -43,7 +44,7 @@ public class CreateActivityNodeDoer extends AbstractCreateTaskNodeDoer
 			return selectedRef;
 		
 		if (Task.isActivity(getProject(), selectedRef))
-			return selectionHierarchy.getRefForType(Strategy.getObjectType());
+			return selectionHierarchy.getRefForType(StrategySchema.getObjectType());
 		
 		return ORef.INVALID;
 	}

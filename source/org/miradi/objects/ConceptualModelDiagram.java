@@ -29,6 +29,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class ConceptualModelDiagram extends DiagramObject
@@ -83,7 +84,7 @@ public class ConceptualModelDiagram extends DiagramObject
 	
 	private String getDraftStrategyRefsAsString()
 	{
-		HashSet<Factor> strategies = getFactorsOfType(Strategy.getObjectType());
+		HashSet<Factor> strategies = getFactorsOfType(StrategySchema.getObjectType());
 		Vector<Strategy> allDraftStrategies = getProject().getStrategyPool().getDraftStrategiesAsVector();
 		allDraftStrategies.retainAll(strategies);
 		

@@ -40,6 +40,7 @@ import org.miradi.project.Project;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.utils.CommandVector;
 import org.miradi.views.ObjectsDoer;
 
@@ -138,7 +139,7 @@ public class DeleteActivityDoer extends ObjectsDoer
 		if (! task.isActivity())
 			return new CommandVector();
 		
-		return buildRemoveCommands(project, Strategy.getObjectType(), selectionHierachy, Strategy.TAG_ACTIVITY_IDS, task);
+		return buildRemoveCommands(project, StrategySchema.getObjectType(), selectionHierachy, Strategy.TAG_ACTIVITY_IDS, task);
 	}
 	
 	private static CommandVector buildRemoveCommandsForMethodIds(Project project, ORefList selectionHierarchy, Task task) throws Exception
@@ -167,7 +168,7 @@ public class DeleteActivityDoer extends ObjectsDoer
 		if (!task.isActivity())
 			return commands;
 		
-		ORef strategyRef = selectionHierachy.getRefForType(Strategy.getObjectType());
+		ORef strategyRef = selectionHierachy.getRefForType(StrategySchema.getObjectType());
 		ORefList activityDiagramFactorReferrerRefs = task.findObjectsThatReferToUs(DiagramFactorSchema.getObjectType());
 				
 		for (int index = 0; index < activityDiagramFactorReferrerRefs.size(); ++index)

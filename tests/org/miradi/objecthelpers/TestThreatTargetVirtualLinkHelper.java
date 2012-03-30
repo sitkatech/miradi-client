@@ -23,9 +23,9 @@ package org.miradi.objecthelpers;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.schemas.CauseSchema;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
 
 public class TestThreatTargetVirtualLinkHelper extends TestCaseWithProject
@@ -56,7 +56,7 @@ public class TestThreatTargetVirtualLinkHelper extends TestCaseWithProject
 	public void testGetDownstreamTargets() throws Exception
 	{
 		DiagramFactor threat = createThreatDiagramFactor();
-		DiagramFactor strategy = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
+		DiagramFactor strategy = getProject().createDiagramFactorAndAddToDiagram(StrategySchema.getObjectType());
 		DiagramFactor targetWithoutStresses = createTargetDiagramFactor();
 		DiagramFactor targetWithStresses = createTargetWithStresses();
 		

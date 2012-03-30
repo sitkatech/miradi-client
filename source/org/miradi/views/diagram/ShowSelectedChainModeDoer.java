@@ -42,6 +42,7 @@ import org.miradi.objects.Strategy;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.questions.DiagramModeQuestion;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.views.ViewDoer;
 import org.miradi.views.diagram.doers.SelectChainDoer;
 
@@ -183,7 +184,7 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 	private boolean isDraft(ORef wrappedRef)
 	{
 		BaseObject baseObject = getProject().findObject(wrappedRef);
-		if (baseObject.getType() != Strategy.getObjectType())
+		if (baseObject.getType() != StrategySchema.getObjectType())
 			return false;
 		
 		Strategy strategy = (Strategy) baseObject;

@@ -23,7 +23,6 @@ import java.util.Vector;
 
 import org.miradi.main.EAM;
 import org.miradi.objects.Cause;
-import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
 import org.miradi.schemas.GoalSchema;
@@ -31,6 +30,7 @@ import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
 
 public class PlanningViewSingleLevelQuestion extends DynamicChoiceQuestion
@@ -54,7 +54,7 @@ public class PlanningViewSingleLevelQuestion extends DynamicChoiceQuestion
 			choices.add(new ChoiceItem(HumanWelfareTargetSchema.OBJECT_NAME, EAM.text("Human Welfare Targets Only")));
 		
 		choices.add(new ChoiceItem(Cause.OBJECT_NAME_THREAT, EAM.text("Direct Threats Only")));
-		choices.add(new ChoiceItem(Strategy.OBJECT_NAME, EAM.text("Strategies Only")));
+		choices.add(new ChoiceItem(StrategySchema.OBJECT_NAME, EAM.text("Strategies Only")));
 		choices.add(new ChoiceItem(Task.ACTIVITY_NAME, EAM.text("Activities Only")));
 		choices.add(new ChoiceItem(IndicatorSchema.OBJECT_NAME, EAM.text("Indicators Only")));
 		choices.add(new ChoiceItem(Task.METHOD_NAME, EAM.text("Methods Only")));

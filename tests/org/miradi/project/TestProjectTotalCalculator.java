@@ -41,6 +41,7 @@ import org.miradi.questions.DiagramObjectDataInclusionQuestion;
 import org.miradi.questions.WorkPlanVisibleRowsQuestion;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.OptionalDouble;
 
@@ -269,7 +270,7 @@ public class TestProjectTotalCalculator extends TestCaseWithProject
 	
 	private DiagramFactor createNonDraftStrategyWithAssignment(DiagramObject diagramObject) throws Exception
 	{
-		DiagramFactor nonDraftStrategy = getProject().createAndAddFactorToDiagram(diagramObject, Strategy.getObjectType());
+		DiagramFactor nonDraftStrategy = getProject().createAndAddFactorToDiagram(diagramObject, StrategySchema.getObjectType());
 		addResourceAssignment(nonDraftStrategy.getWrappedFactor());
 		
 		return nonDraftStrategy;

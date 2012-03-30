@@ -40,6 +40,7 @@ import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.IntermediateResultSchema;
 import org.miradi.schemas.ObjectiveSchema;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
@@ -291,7 +292,7 @@ public class Indicator extends BaseObject
 	public int[] getTypesThatCanOwnUs()
 	{
 		return new int[] {
-			Strategy.getObjectType(),
+			StrategySchema.getObjectType(),
 			CauseSchema.getObjectType(),
 			IntermediateResultSchema.getObjectType(),
 			ThreatReductionResult.getObjectType(),

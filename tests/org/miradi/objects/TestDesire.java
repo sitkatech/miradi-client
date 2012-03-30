@@ -23,6 +23,7 @@ package org.miradi.objects;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.CommandVector;
 
@@ -38,10 +39,10 @@ public class TestDesire extends ObjectTestCase
 	{
 		super.setUp();
 		
-		DiagramFactor strategyDiagramFactor = getProject().createAndAddFactorToDiagram(Strategy.getObjectType());
+		DiagramFactor strategyDiagramFactor = getProject().createAndAddFactorToDiagram(StrategySchema.getObjectType());
 		strategy = (Strategy) strategyDiagramFactor.getWrappedFactor();
 		
-		DiagramFactor strategyWithObjectiveDiagramFactor = getProject().createAndAddFactorToDiagram(Strategy.getObjectType());
+		DiagramFactor strategyWithObjectiveDiagramFactor = getProject().createAndAddFactorToDiagram(StrategySchema.getObjectType());
 		strategyWithObjective = (Strategy) strategyWithObjectiveDiagramFactor.getWrappedFactor();
 		activity = getProject().createTask(strategyWithObjective);
 		objective = createObjective(strategyWithObjective);

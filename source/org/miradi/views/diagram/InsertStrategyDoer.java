@@ -21,7 +21,7 @@ package org.miradi.views.diagram;
 
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.Strategy;
+import org.miradi.schemas.StrategySchema;
 
 public class InsertStrategyDoer extends InsertFactorDoer
 {
@@ -49,7 +49,7 @@ public class InsertStrategyDoer extends InsertFactorDoer
 	@Override
 	public void forceVisibleInLayerManager() throws Exception
 	{
-		getCurrentLayerManager().setVisibility(Strategy.OBJECT_NAME, true);
+		getCurrentLayerManager().setVisibility(StrategySchema.OBJECT_NAME, true);
 	}
 	
 	

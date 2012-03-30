@@ -267,24 +267,19 @@ public class Strategy extends Factor
 	@Override
 	public int getType()
 	{
-		return getObjectType();
+		return StrategySchema.getObjectType();
 	}
 	
 	@Override
 	public String getTypeName()
 	{
-		return OBJECT_NAME;
+		return StrategySchema.OBJECT_NAME;
 	}
 
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;
-	}
-	
-	public static int getObjectType()
-	{
-		return ObjectType.STRATEGY;
 	}
 	
 	@Override
@@ -315,7 +310,7 @@ public class Strategy extends Factor
 	
 	public static boolean is(int objectType)
 	{
-		return objectType == getObjectType();
+		return objectType == StrategySchema.getObjectType();
 	}
 	
 	public static final String TAG_ACTIVITY_IDS = "ActivityIds";
@@ -334,7 +329,6 @@ public class Strategy extends Factor
 	public static final String PSEUDO_TAG_RELEVANT_GOAL_REFS = "PseudoStrategyRelevantGoalRefs";
 	public static final String PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS = "PseudoStrategyRelevantObjectiveRefs";
 	
-	public static final String OBJECT_NAME = "Strategy";
-	public static final String OBJECT_NAME_DRAFT = "Draft" + Strategy.OBJECT_NAME;
+	public static final String OBJECT_NAME_DRAFT = "Draft" + StrategySchema.OBJECT_NAME;
 	
 }

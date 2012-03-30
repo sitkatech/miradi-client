@@ -62,6 +62,7 @@ import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.HtmlUtilities;
@@ -381,7 +382,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 	private void unsplitStrategyLabels(ProjectForTesting projectAfterImport) throws Exception
 	{
 		String[] tags = new String[]{Strategy.TAG_SHORT_LABEL, Strategy.TAG_LABEL, Strategy.TAG_TEXT, };
-		unsplitLabels(projectAfterImport, Strategy.getObjectType(), tags);
+		unsplitLabels(projectAfterImport, StrategySchema.getObjectType(), tags);
 	}
 
 	private void unsplitLabels(ProjectForTesting projectAfterImport, int objectType, String[] tags) throws Exception

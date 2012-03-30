@@ -36,6 +36,7 @@ import org.miradi.project.Project;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
@@ -127,7 +128,7 @@ public class Task extends Factor
 	public int[] getTypesThatCanOwnUs()
 	{
 		return new int[] {
-			Strategy.getObjectType(),
+			StrategySchema.getObjectType(),
 			IndicatorSchema.getObjectType(),
 			Task.getObjectType(),
 		};
@@ -195,14 +196,14 @@ public class Task extends Factor
 		if (isSuperShared)
 			return true;
 		
-		ORefList referrers = findObjectsThatReferToUs(Strategy.getObjectType());
+		ORefList referrers = findObjectsThatReferToUs(StrategySchema.getObjectType());
 		
 		return referrers.size() > 0;
 	}
 	
 	private void ensureCachedTypeStringIsValid()
 	{
-		ORefList strategyReferrers = findObjectsThatReferToUs(Strategy.getObjectType());
+		ORefList strategyReferrers = findObjectsThatReferToUs(StrategySchema.getObjectType());
 		if(strategyReferrers.size() > 0)
 		{
 			cachedObjectTypeName = ACTIVITY_NAME;
@@ -318,7 +319,7 @@ public class Task extends Factor
 	public String getParentTypeCode()
 	{
 		if(isActivity())
-			return Strategy.OBJECT_NAME;
+			return StrategySchema.OBJECT_NAME;
 		
 		if(isMethod())
 			return IndicatorSchema.OBJECT_NAME;
@@ -391,7 +392,7 @@ public class Task extends Factor
 			return IndicatorSchema.getObjectType();
 		
 		if(isActivity())
-			return Strategy.getObjectType();
+			return StrategySchema.getObjectType();
 		
 		throw new UnknownTaskParentTypeException();
 	}
@@ -421,7 +422,7 @@ public class Task extends Factor
 	
 	public static String getChildTaskTypeCode(int parentType)
 	{
-		if(parentType == Strategy.getObjectType())
+		if(parentType == StrategySchema.getObjectType())
 			return ACTIVITY_NAME;
 		
 		if(parentType == IndicatorSchema.getObjectType())

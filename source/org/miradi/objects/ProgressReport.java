@@ -28,6 +28,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ProgressReportSchema;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class ProgressReport extends BaseObject
@@ -58,7 +59,7 @@ public class ProgressReport extends BaseObject
 	public int[] getTypesThatCanOwnUs()
 	{
 		return new int[] {
-			Strategy.getObjectType(),
+			StrategySchema.getObjectType(),
 			IndicatorSchema.getObjectType(),
 			Task.getObjectType(),
 		};

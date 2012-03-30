@@ -21,12 +21,13 @@ package org.miradi.forms.objects;
 
 import org.miradi.forms.FieldPanelSpec;
 import org.miradi.objects.Strategy;
+import org.miradi.schemas.StrategySchema;
 
 public class StrategyRelatedItemsSubForm extends FieldPanelSpec
 {
 	public StrategyRelatedItemsSubForm()
 	{		
-		int type = Strategy.getObjectType();
+		int type = StrategySchema.getObjectType();
 		addLabelAndField(type, Strategy.PSEUDO_TAG_TARGETS);
 		addLabelAndField(type, Strategy.PSEUDO_TAG_DIRECT_THREATS);
 		addLabelAndField(type, Strategy.PSEUDO_TAG_OBJECTIVES);

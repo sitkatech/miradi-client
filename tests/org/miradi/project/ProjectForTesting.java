@@ -146,6 +146,7 @@ import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.ScopeBoxSchema;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
@@ -858,7 +859,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public Strategy createStrategy() throws Exception
 	{
-		ORef strategyRef = createObject(Strategy.getObjectType(), new FactorId(takeNextId(Strategy.getObjectType())));
+		ORef strategyRef = createObject(StrategySchema.getObjectType(), new FactorId(takeNextId(StrategySchema.getObjectType())));
 		return Strategy.find(this, strategyRef);
 	}
 	
@@ -1771,7 +1772,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		
 		int next = -1;
 		
-		if(objectType == Strategy.getObjectType())
+		if(objectType == StrategySchema.getObjectType())
 			next = nextStrategyId++;
 		else if(objectType == CauseSchema.getObjectType())
 			next = nextCauseId++;

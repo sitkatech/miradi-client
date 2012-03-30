@@ -49,6 +49,7 @@ import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.OptionalDouble;
@@ -334,7 +335,7 @@ public class Dashboard extends BaseObject
 				TargetSchema.getObjectType(),
 				HumanWelfareTargetSchema.getObjectType(),
 				CauseSchema.getObjectType(),
-				Strategy.getObjectType(),
+				StrategySchema.getObjectType(),
 		};
 		
 		ORefSet conceptualModelRefs = getProject().getConceptualModelDiagramPool().getRefSet();
@@ -354,7 +355,7 @@ public class Dashboard extends BaseObject
 
 	private String getTotalActionBudget() throws Exception
 	{
-		return calculateTotalCostForType(Strategy.getObjectType());
+		return calculateTotalCostForType(StrategySchema.getObjectType());
 	}
 
 	private String getTotalMonitoringBudget() throws Exception

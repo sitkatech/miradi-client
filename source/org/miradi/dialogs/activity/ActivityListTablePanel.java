@@ -30,6 +30,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Strategy;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.views.umbrella.StaticPicker;
 
 public class ActivityListTablePanel extends ObjectListTablePanel
@@ -50,7 +51,7 @@ public class ActivityListTablePanel extends ObjectListTablePanel
 	{
 		super.handleCommandEventImmediately(event);
 		
-		if (event.isSetDataCommandWithThisTypeAndTag(Strategy.getObjectType(), Strategy.TAG_ACTIVITY_IDS))
+		if (event.isSetDataCommandWithThisTypeAndTag(StrategySchema.getObjectType(), Strategy.TAG_ACTIVITY_IDS))
 		{
 			ORef selectedObjectRef = getSelectedObjectRef();
 			getTable().getObjectTableModel().resetRows();

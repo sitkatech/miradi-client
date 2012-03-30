@@ -36,6 +36,7 @@ import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.schemas.CauseSchema;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
 
 public class TestLayerManager extends MiradiTestCase
@@ -57,7 +58,7 @@ public class TestLayerManager extends MiradiTestCase
 		ORef causeRef = project.createObject(CauseSchema.getObjectType());
 		cmFactor = (Cause) Factor.findFactor(project, causeRef);
 		cmFactor.setData(BaseObject.TAG_LABEL, "Factor");
-		ORef strategyRef = project.createObject(Strategy.getObjectType());
+		ORef strategyRef = project.createObject(StrategySchema.getObjectType());
 		cmIntervention = (Strategy) Factor.findFactor(project, strategyRef);
 		cmIntervention.setData(BaseObject.TAG_LABEL, "Strategy");
 		
@@ -87,7 +88,7 @@ public class TestLayerManager extends MiradiTestCase
 	public void testHide() throws Exception
 	{
 		LayerManager manager = new LayerManager(getProject().getTestingDiagramObject());
-		manager.setVisibility(Strategy.OBJECT_NAME, false);
+		manager.setVisibility(StrategySchema.OBJECT_NAME, false);
 		
 		DiagramFactor strategyDiagramFactor = getDiagramFactor(45);
 		DiagramFactor targetDiagramFactor = getDiagramFactor(67);
@@ -97,7 +98,7 @@ public class TestLayerManager extends MiradiTestCase
 		verifyVisibility("non-hidden type", true, new DiagramTargetCell(cmTarget, targetDiagramFactor), manager);
 		assertFalse("All layers still visible?", manager.areAllNodesVisible());
 		
-		manager.setVisibility(Strategy.OBJECT_NAME, true);
+		manager.setVisibility(StrategySchema.OBJECT_NAME, true);
 		verifyVisibility("unhidden type", true, new DiagramTargetCell(cmTarget, targetDiagramFactor2), manager);
 		assertTrue("All layers not visible again?", manager.areAllNodesVisible());
 	}
@@ -108,7 +109,7 @@ public class TestLayerManager extends MiradiTestCase
 		DiagramFactorId diagramFactorId = new DiagramFactorId(id + SOME_RANDOM_NUMBER);
 		FactorId strategyFactorId = new FactorId(id);
 		DiagramFactor strategyDiagramFactor = new DiagramFactor(project.getObjectManager(), diagramFactorId);
-		strategyDiagramFactor.setData(DiagramFactor.TAG_WRAPPED_REF, new ORef(Strategy.getObjectType(), strategyFactorId).toString());
+		strategyDiagramFactor.setData(DiagramFactor.TAG_WRAPPED_REF, new ORef(StrategySchema.getObjectType(), strategyFactorId).toString());
 		
 		return strategyDiagramFactor;
 	}

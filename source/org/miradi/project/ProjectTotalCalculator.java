@@ -36,6 +36,7 @@ import org.miradi.objects.Factor;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Strategy;
 import org.miradi.questions.WorkPlanVisibleRowsQuestion;
+import org.miradi.schemas.StrategySchema;
 
 public class ProjectTotalCalculator implements CommandExecutedListener
 {
@@ -171,7 +172,7 @@ public class ProjectTotalCalculator implements CommandExecutedListener
 	private Set<Strategy> getNonDraftStrategies(DiagramObject diagramObject)
 	{
 		Set<Strategy> nonDraftStrategies = new HashSet<Strategy>();
-		Set<Factor> strategies = diagramObject.getFactorsOfType(Strategy.getObjectType());
+		Set<Factor> strategies = diagramObject.getFactorsOfType(StrategySchema.getObjectType());
 		for(Factor factor : strategies)
 		{
 			Strategy strategy = (Strategy) factor;

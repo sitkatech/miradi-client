@@ -32,6 +32,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateUnitEffort;
 
@@ -186,7 +187,7 @@ public class TestTask extends AbstractObjectWithBudgetDataToDeleteTestCase
 	
 	public void testGetChildTaskTypeCode()
 	{
-		assertEquals(Task.ACTIVITY_NAME, Task.getChildTaskTypeCode(Strategy.getObjectType()));
+		assertEquals(Task.ACTIVITY_NAME, Task.getChildTaskTypeCode(StrategySchema.getObjectType()));
 		assertEquals(Task.METHOD_NAME, Task.getChildTaskTypeCode(IndicatorSchema.getObjectType()));
 		assertEquals(Task.OBJECT_NAME, Task.getChildTaskTypeCode(Task.getObjectType()));
 		assertEquals(Task.OBJECT_NAME, Task.getChildTaskTypeCode(AccountingCodeSchema.getObjectType()));

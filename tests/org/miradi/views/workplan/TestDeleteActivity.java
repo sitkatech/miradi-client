@@ -28,6 +28,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.views.umbrella.DeleteActivityDoer;
 import org.miradi.views.umbrella.UndoDoer;
 
@@ -40,7 +41,7 @@ public class TestDeleteActivity extends TestCaseWithProject
 
 	public void testDeleteActivity() throws Exception
 	{
-			ORef strategyRef = getProject().createObject(Strategy.getObjectType());
+			ORef strategyRef = getProject().createObject(StrategySchema.getObjectType());
 			Strategy strategy = (Strategy)getProject().findObject(strategyRef);
 
 			ORef parentHasChildRef = getProject().createObject(Task.getObjectType());

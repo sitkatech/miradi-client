@@ -30,6 +30,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Strategy;
 import org.miradi.project.Project;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.utils.ObjectsActionButton;
 
 public class LegacyTncStrategyRankingEditorPropertiesSubPanel extends ObjectDataInputPanel
@@ -59,7 +60,7 @@ public class LegacyTncStrategyRankingEditorPropertiesSubPanel extends ObjectData
 		super.setObjectRefs(orefsToUse);
 	
 		ORefList refList = new ORefList(orefsToUse);
-		ORef strategyRef = refList.getRefForType(Strategy.getObjectType());
+		ORef strategyRef = refList.getRefForType(StrategySchema.getObjectType());
 		rebuildThisPropertiesPanel(strategyRef);
 	}
 	

@@ -104,7 +104,6 @@ import org.miradi.objects.ProjectResource;
 import org.miradi.objects.RareProjectData;
 import org.miradi.objects.RatingCriterion;
 import org.miradi.objects.ReportTemplate;
-import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.SubTarget;
 import org.miradi.objects.TableSettings;
@@ -143,6 +142,7 @@ import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.ScopeBoxSchema;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
 
 public class ObjectManager
@@ -172,7 +172,7 @@ public class ObjectManager
 		addNormalPool(new KeyEcologicalAttributePool(ida), KeyEcologicalAttribute.OBJECT_NAME);
 		addNormalPool(new DiagramFactorPool(ida), DiagramFactorSchema.OBJECT_NAME);
 		addNormalPool(new CausePool(ida), CauseSchema.OBJECT_NAME);
-		addNormalPool(new StrategyPool(ida), Strategy.OBJECT_NAME);
+		addNormalPool(new StrategyPool(ida), StrategySchema.OBJECT_NAME);
 		addNormalPool(new TargetPool(ida), TargetSchema.OBJECT_NAME);
 		addNormalPool(new IntermediateResultPool(ida), IntermediateResultSchema.OBJECT_NAME);
 		addNormalPool(new ResultsChainDiagramPool(ida), ResultsChainDiagramSchema.OBJECT_NAME);

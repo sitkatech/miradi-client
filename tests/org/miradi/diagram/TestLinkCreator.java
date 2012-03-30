@@ -42,6 +42,7 @@ import org.miradi.objects.ThreatStressRating;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.schemas.GroupBoxSchema;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.ThreatStressRatingHelper;
 import org.miradi.views.diagram.LinkCreator;
@@ -127,7 +128,7 @@ public class TestLinkCreator extends TestCaseWithProject
 	
 	public void testCreateAllPossibleGroupLinksWithNoLinks() throws Exception
 	{
-		getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
+		getProject().createDiagramFactorAndAddToDiagram(StrategySchema.getObjectType());
 		DiagramFactor cause1 = getProject().createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
 		DiagramFactor cause2 = getProject().createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
 		getProject().createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
@@ -142,7 +143,7 @@ public class TestLinkCreator extends TestCaseWithProject
 
 	public void testCreateAllPossibleGroupLinksWithPartialLinks() throws Exception
 	{
-		DiagramFactor strategy1 = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
+		DiagramFactor strategy1 = getProject().createDiagramFactorAndAddToDiagram(StrategySchema.getObjectType());
 		DiagramFactor cause1 = getProject().createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
 		DiagramFactor cause2 = getProject().createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
 		DiagramFactor target1 = getProject().createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
@@ -160,8 +161,8 @@ public class TestLinkCreator extends TestCaseWithProject
 
 	public void testCreateAllPossibleGroupLinksWithSomeFullLinks() throws Exception
 	{
-		DiagramFactor strategy1 = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
-		getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
+		DiagramFactor strategy1 = getProject().createDiagramFactorAndAddToDiagram(StrategySchema.getObjectType());
+		getProject().createDiagramFactorAndAddToDiagram(StrategySchema.getObjectType());
 		DiagramFactor cause1 = getProject().createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
 		DiagramFactor cause2 = getProject().createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
 		DiagramFactor target1 = getProject().createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
@@ -214,7 +215,7 @@ public class TestLinkCreator extends TestCaseWithProject
 	{
 		DiagramFactor cause = getProject().createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
 		DiagramFactor groupBoxDiagramFactor = getProject().createAndPopulateDiagramFactorGroupBox(cause);
-		DiagramFactor strategy = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
+		DiagramFactor strategy = getProject().createDiagramFactorAndAddToDiagram(StrategySchema.getObjectType());
 		
 		ORef groupBoxDiagramLinkRef = getProject().createDiagramLinkAndAddToDiagram(groupBoxDiagramFactor, strategy);
 		DiagramLink groupBoxDiagramLink = DiagramLink.find(getProject(), groupBoxDiagramLinkRef);
@@ -241,7 +242,7 @@ public class TestLinkCreator extends TestCaseWithProject
 	private void verifyNonGroupBoxLinkedDiagramFactors() throws Exception
 	{
 		DiagramFactor cause = getProject().createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
-		DiagramFactor strategy = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
+		DiagramFactor strategy = getProject().createDiagramFactorAndAddToDiagram(StrategySchema.getObjectType());
 		ORef diagramLinkRef = getProject().createDiagramLinkAndAddToDiagram(cause, strategy);
 		DiagramLink diagramLink = DiagramLink.find(getProject(), diagramLinkRef);
 		ORef factorLinkRef = diagramLink.getWrappedRef();

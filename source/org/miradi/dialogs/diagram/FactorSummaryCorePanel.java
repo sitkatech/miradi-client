@@ -47,6 +47,7 @@ import org.miradi.questions.StrategyStatusQuestion;
 import org.miradi.questions.ThreatClassificationQuestion;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.DiagramFactorSchema;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.ObjectsActionButton;
 
@@ -84,15 +85,15 @@ public class FactorSummaryCorePanel extends ObjectDataInputPanel
 		if(factorToEdit.isStrategy())
 		{
 			addOptionalDraftStatusCheckBox(Strategy.TAG_STATUS);
-			addField(createRadioButtonEditorField(Strategy.getObjectType(), Strategy.TAG_TAXONOMY_CODE, new StrategyClassificationQuestion()));
+			addField(createRadioButtonEditorField(StrategySchema.getObjectType(), Strategy.TAG_TAXONOMY_CODE, new StrategyClassificationQuestion()));
 
-			ObjectDataInputField impactField = createRadioButtonEditorField(Strategy.getObjectType(), Strategy.TAG_IMPACT_RATING, getQuestion(StrategyImpactQuestion.class));
-			ObjectDataInputField feasibilityField = createRadioButtonEditorField(Strategy.getObjectType(), Strategy.TAG_FEASIBILITY_RATING, getQuestion(StrategyFeasibilityQuestion.class));
+			ObjectDataInputField impactField = createRadioButtonEditorField(StrategySchema.getObjectType(), Strategy.TAG_IMPACT_RATING, getQuestion(StrategyImpactQuestion.class));
+			ObjectDataInputField feasibilityField = createRadioButtonEditorField(StrategySchema.getObjectType(), Strategy.TAG_FEASIBILITY_RATING, getQuestion(StrategyFeasibilityQuestion.class));
 			ObjectDataInputField prioritySummaryField = createReadOnlyChoiceField(Strategy.PSEUDO_TAG_RATING_SUMMARY, getQuestion(StrategyRatingSummaryQuestion.class));
 			addFieldsOnOneLine(EAM.text("Priority"), new ObjectDataInputField[] {impactField, feasibilityField, prioritySummaryField});
 			addLabeledSubPanelWithoutBorder(new LegacyTncStrategyRankingEditorPropertiesSubPanel(getProject(), factorToEdit.getRef(), actions), EAM.text("Legacy TNC Ratings"));
-			addFieldWithEditButton(EAM.text("Objectives"), createReadOnlyObjectList(Strategy.getObjectType(), Strategy.PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS), createObjectsActionButton(actions.getObjectsAction(ActionEditStrategyObjectiveRelevancyList.class), getPicker()));
-			addFieldWithEditButton(EAM.text("Goals"), createReadOnlyObjectList(Strategy.getObjectType(), Strategy.PSEUDO_TAG_RELEVANT_GOAL_REFS), createObjectsActionButton(actions.getObjectsAction(ActionEditStrategyGoalRelevancyList.class), getPicker()));
+			addFieldWithEditButton(EAM.text("Objectives"), createReadOnlyObjectList(StrategySchema.getObjectType(), Strategy.PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS), createObjectsActionButton(actions.getObjectsAction(ActionEditStrategyObjectiveRelevancyList.class), getPicker()));
+			addFieldWithEditButton(EAM.text("Goals"), createReadOnlyObjectList(StrategySchema.getObjectType(), Strategy.PSEUDO_TAG_RELEVANT_GOAL_REFS), createObjectsActionButton(actions.getObjectsAction(ActionEditStrategyGoalRelevancyList.class), getPicker()));
 		}
 
 		if(factorToEdit.isTarget())

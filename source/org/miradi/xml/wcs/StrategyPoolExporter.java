@@ -26,12 +26,13 @@ import org.miradi.objects.Strategy;
 import org.miradi.questions.StrategyFeasibilityQuestion;
 import org.miradi.questions.StrategyImpactQuestion;
 import org.miradi.questions.StrategyTaxonomyQuestion;
+import org.miradi.schemas.StrategySchema;
 
 public class StrategyPoolExporter extends FactorPoolExporter
 {
 	public StrategyPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
-		super(wcsXmlExporterToUse, STRATEGY, Strategy.getObjectType());
+		super(wcsXmlExporterToUse, STRATEGY, StrategySchema.getObjectType());
 	}
 	
 	@Override

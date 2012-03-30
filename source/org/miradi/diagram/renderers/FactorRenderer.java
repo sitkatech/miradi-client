@@ -90,6 +90,7 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.ObjectiveSchema;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.Utility;
 import org.miradi.utils.XmlUtilities2;
@@ -221,7 +222,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 
 	private boolean checkIfOwningStrategyIsSelected(DiagramComponent diagram, Task activity)
 	{
-		return areAnyOfTheseFactorsSelected(diagram, activity.findObjectsThatReferToUs(Strategy.getObjectType()));
+		return areAnyOfTheseFactorsSelected(diagram, activity.findObjectsThatReferToUs(StrategySchema.getObjectType()));
 	}
 	
 	private boolean checkIfOwningTargetIsSelected(DiagramComponent diagram, Stress stress)

@@ -23,6 +23,7 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Strategy;
+import org.miradi.schemas.StrategySchema;
 
 public class DeleteLegacyTncStrategyRankingDoer extends AbstractLegacyTncRankingDoer
 {
@@ -35,7 +36,7 @@ public class DeleteLegacyTncStrategyRankingDoer extends AbstractLegacyTncRanking
 		if (!didUserConfirm())
 			return;
 
-		BaseObject strategy = getSingleSelected(Strategy.getObjectType());
+		BaseObject strategy = getSingleSelected(StrategySchema.getObjectType());
 		CommandSetObjectData clearLegacyRanking = new CommandSetObjectData(strategy.getRef(), Strategy.TAG_LEGACY_TNC_STRATEGY_RANKING, "");
 		getProject().executeCommand(clearLegacyRanking);
 	}

@@ -21,10 +21,10 @@ package org.miradi.objecthelpers;
 
 import org.miradi.ids.BaseId;
 import org.miradi.main.MiradiTestCase;
-import org.miradi.objects.Strategy;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -116,8 +116,8 @@ public class TestORefList extends MiradiTestCase
 		ORef foundTargetRef = sampleRefList.getRefForType(TargetSchema.getObjectType());
 		assertEquals("wrong ref for type?", new ORef(TargetSchema.getObjectType(), new BaseId(20)), foundTargetRef);
 		
-		ORef foundStrategyRef = sampleRefList.getRefForType(Strategy.getObjectType());
-		assertEquals("wrong ref for invalid type", ORef.createInvalidWithType(Strategy.getObjectType()), foundStrategyRef);
+		ORef foundStrategyRef = sampleRefList.getRefForType(StrategySchema.getObjectType());
+		assertEquals("wrong ref for invalid type", ORef.createInvalidWithType(StrategySchema.getObjectType()), foundStrategyRef);
 	}
 
 	public void testGetRefForTypes()
@@ -132,7 +132,7 @@ public class TestORefList extends MiradiTestCase
 		ORef foundRef2 = sampleRefList.getRefForTypes(types2);
 		assertEquals("found wrong ref?", new ORef(CauseSchema.getObjectType(), new BaseId(10)), foundRef2);
 		
-		int[] types3 = {Strategy.getObjectType(),  };
+		int[] types3 = {StrategySchema.getObjectType(),  };
 		ORef foundRef3 = sampleRefList.getRefForTypes(types3);
 		assertEquals("found wrong ref?", ORef.INVALID, foundRef3);
 		
@@ -140,7 +140,7 @@ public class TestORefList extends MiradiTestCase
 		ORef foundRef4 = sampleRefList.getRefForTypes(types4);
 		assertEquals("found wrong ref?", new ORef(CauseSchema.getObjectType(), new BaseId(10)), foundRef4);
 		
-		int[] types5 = {Strategy.getObjectType(), TargetSchema.getObjectType(), };
+		int[] types5 = {StrategySchema.getObjectType(), TargetSchema.getObjectType(), };
 		ORef foundRef5 = sampleRefList.getRefForTypes(types5);
 		assertEquals("found wrong ref?", new ORef(TargetSchema.getObjectType(), new BaseId(20)), foundRef5);
 	}

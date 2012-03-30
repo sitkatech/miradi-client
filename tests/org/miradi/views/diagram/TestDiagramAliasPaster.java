@@ -55,6 +55,7 @@ import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.schemas.GroupBoxSchema;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
 
 public class TestDiagramAliasPaster extends TestCaseWithProject
@@ -80,7 +81,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 	
 	public void testPasteSharedDeletingOrphanedStrategyWithChildren() throws Exception
 	{
-		DiagramFactor strategyDiagramFactor = getProject().createAndAddFactorToDiagram(Strategy.getObjectType());
+		DiagramFactor strategyDiagramFactor = getProject().createAndAddFactorToDiagram(StrategySchema.getObjectType());
 		Strategy strategy = (Strategy) strategyDiagramFactor.getWrappedFactor();
 		ORef activityRef = getProject().addActivityToStratey(strategy.getRef(), Strategy.TAG_ACTIVITY_IDS);
 		Task activity = Task.find(getProject(), activityRef);

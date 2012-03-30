@@ -80,6 +80,7 @@ import org.miradi.schemas.IntermediateResultSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.ScopeBoxSchema;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.views.umbrella.LegendPanel;
@@ -146,7 +147,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		createCheckBox(Cause.OBJECT_NAME_CONTRIBUTING_FACTOR);
 		createCheckBox(ThreatReductionResult.OBJECT_NAME);
 		createCheckBox(IntermediateResultSchema.OBJECT_NAME);
-		createCheckBox(Strategy.OBJECT_NAME);
+		createCheckBox(StrategySchema.OBJECT_NAME);
 		createCheckBox(Strategy.OBJECT_NAME_DRAFT);
 		createCheckBox(TextBox.OBJECT_NAME);
 		createCheckBox(ScopeBoxSchema.OBJECT_NAME);
@@ -176,9 +177,9 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		
 		createCustomLegendPanelSection(actions, jpanel);
 		
-		addButtonLineWithCheckBox(jpanel, Strategy.getObjectType(),Strategy.OBJECT_NAME, actions.get(ActionInsertStrategy.class));
+		addButtonLineWithCheckBox(jpanel, StrategySchema.getObjectType(),StrategySchema.OBJECT_NAME, actions.get(ActionInsertStrategy.class));
 		if (mainWindow.getDiagramView().isStategyBrainstormMode())
-			addButtonLineWithCheckBox(jpanel, Strategy.getObjectType(), Strategy.OBJECT_NAME_DRAFT, actions.get(ActionInsertDraftStrategy.class));
+			addButtonLineWithCheckBox(jpanel, StrategySchema.getObjectType(), Strategy.OBJECT_NAME_DRAFT, actions.get(ActionInsertDraftStrategy.class));
 
 		addButtonLineWithCheckBox(jpanel, FactorLink.getObjectType(), FactorLink.OBJECT_NAME, actions.get(ActionInsertLink.class));
 		

@@ -37,6 +37,7 @@ import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -336,7 +337,7 @@ abstract public class Desire extends BaseObject
 	
 	public ORefList getRelevantStrategyRefs() throws Exception
 	{
-		return getRelevantStrategyAndActivityRefs().getFilteredBy(Strategy.getObjectType());
+		return getRelevantStrategyAndActivityRefs().getFilteredBy(StrategySchema.getObjectType());
 	}
 
 	public ORefList getRelevantActivityRefs() throws Exception

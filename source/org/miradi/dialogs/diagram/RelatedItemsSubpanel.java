@@ -26,6 +26,7 @@ import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.main.EAM;
 import org.miradi.objects.Strategy;
 import org.miradi.project.Project;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.utils.ObjectsActionButton;
 
 public class RelatedItemsSubpanel extends ObjectDataInputPanel
@@ -39,7 +40,7 @@ public class RelatedItemsSubpanel extends ObjectDataInputPanel
 		
 		ObjectsAction objectsAction = getMainWindow().getActions().getObjectsAction(ActionEditStrategyObjectiveRelevancyList.class);
 		ObjectsActionButton actionsButton = createObjectsActionButton(objectsAction, getPicker());
-		ObjectDataInputField readonlyField = createReadOnlyObjectList(Strategy.getObjectType(), Strategy.PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS);
+		ObjectDataInputField readonlyField = createReadOnlyObjectList(StrategySchema.getObjectType(), Strategy.PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS);
 		addFieldWithEditButton(EAM.text("Objectives"), readonlyField, actionsButton);
 	}
 

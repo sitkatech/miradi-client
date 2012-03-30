@@ -59,7 +59,6 @@ import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.ResultsChainDiagram;
-import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.Task;
@@ -73,6 +72,7 @@ import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.schemas.IntermediateResultSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
@@ -950,7 +950,7 @@ abstract public class DiagramPaster
 			if (isPastingIntoConceptualModel())
 				return true;
 			
-			return !hasReferrersInDiagram(factorRef, Strategy.getObjectType());
+			return !hasReferrersInDiagram(factorRef, StrategySchema.getObjectType());
 		}
 		
 		if (Stress.is(factorRef))
