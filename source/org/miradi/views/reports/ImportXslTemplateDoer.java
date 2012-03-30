@@ -27,6 +27,7 @@ import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.objects.XslTemplate;
+import org.miradi.schemas.XslTemplateSchema;
 import org.miradi.utils.GenericFileOpenChooser;
 import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.XmlUtilities2;
@@ -57,7 +58,7 @@ public class ImportXslTemplateDoer extends ObjectsDoer
 		getProject().executeBeginTransaction();
 		try
 		{
-			CommandCreateObject createCommand = new CommandCreateObject(XslTemplate.getObjectType());
+			CommandCreateObject createCommand = new CommandCreateObject(XslTemplateSchema.getObjectType());
 			getProject().executeCommand(createCommand);
 			
 			CommandSetObjectData setXslField = new CommandSetObjectData(createCommand.getObjectRef(), XslTemplate.TAG_TEMPLATE_CONTENTS, xslFileContent);
