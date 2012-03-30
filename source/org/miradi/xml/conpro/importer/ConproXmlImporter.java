@@ -123,6 +123,7 @@ import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.schemas.ThreatStressRatingSchema;
 import org.miradi.schemas.TncProjectDataSchema;
+import org.miradi.schemas.XenodataSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateUnitEffort;
@@ -766,16 +767,16 @@ public class ConproXmlImporter implements ConProMiradiXml
 
 	private ORef findOrCreateXenodataObject() throws Exception
 	{
-		ORefList xenodataRefs = getProject().getPool(Xenodata.getObjectType()).getRefList();
+		ORefList xenodataRefs = getProject().getPool(XenodataSchema.getObjectType()).getRefList();
 		if (xenodataRefs.isEmpty())
-			return getProject().createObject(Xenodata.getObjectType());
+			return getProject().createObject(XenodataSchema.getObjectType());
 			
 		StringRefMap stringRefMap = getProject().getMetadata().getXenodataStringRefMap();
 		Set keys = stringRefMap.getKeys();
 		if (keys.size() == 0 && xenodataRefs.hasRefs())
 			throw new RuntimeException("All Xenodata objects are orphans. Count =" + xenodataRefs.size());
 		
-		return xenodataRefs.getRefForType(Xenodata.getObjectType());
+		return xenodataRefs.getRefForType(XenodataSchema.getObjectType());
 	}
 
 	private void importTeamMembers(Node projectSumaryNode, ORef metadataRef) throws Exception

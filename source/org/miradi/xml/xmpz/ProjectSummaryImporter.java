@@ -29,6 +29,7 @@ import org.miradi.questions.BudgetTimePeriodQuestion;
 import org.miradi.questions.ProjectSharingQuestion;
 import org.miradi.questions.QuarterColumnsVisibilityQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
+import org.miradi.schemas.XenodataSchema;
 import org.miradi.xml.AbstractXmpzObjectImporter;
 import org.miradi.xml.generic.XmlSchemaCreator;
 import org.miradi.xml.wcs.XmpzXmlConstants;
@@ -93,7 +94,7 @@ public class ProjectSummaryImporter extends AbstractXmpzObjectImporter
 			Node externalProjectIdNode = getImporter().getNode(node, XmpzXmlConstants.PROJECT_ID);
 			String externalProjectId = externalProjectIdNode.getTextContent();
 			
-			ORef xenodataRef = getProject().createObject(Xenodata.getObjectType());
+			ORef xenodataRef = getProject().createObject(XenodataSchema.getObjectType());
 			getImporter().setData(xenodataRef, Xenodata.TAG_PROJECT_ID, externalProjectId);
 			stringRefMap.add(externalAppThatAssignedId, xenodataRef);
 		}
