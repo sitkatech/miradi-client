@@ -29,6 +29,7 @@ import org.miradi.project.ProjectForTesting;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.DiagramLinkSchema;
+import org.miradi.schemas.FactorLinkSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.StrategySchema;
@@ -286,9 +287,9 @@ public class TestObjectFindOwnerAndFindReferrer extends MiradiTestCase
 	
 	private DiagramLink createDiagramFactorLink(DiagramFactor from, DiagramFactor to) throws Exception
 	{
-		BaseId linkId = project.createObjectAndReturnId(FactorLink.getObjectType());
+		BaseId linkId = project.createObjectAndReturnId(FactorLinkSchema.getObjectType());
 		
-		ORef factorLinkRef = new ORef(FactorLink.getObjectType(), linkId);
+		ORef factorLinkRef = new ORef(FactorLinkSchema.getObjectType(), linkId);
 		project.setObjectData(factorLinkRef, FactorLink.TAG_FROM_REF, from.getWrappedORef().toString());
 		project.setObjectData(factorLinkRef, FactorLink.TAG_TO_REF, to.getWrappedORef().toString());
 		

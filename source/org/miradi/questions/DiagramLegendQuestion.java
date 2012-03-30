@@ -20,8 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.questions;
 
 import org.miradi.objects.Cause;
-import org.miradi.objects.FactorLink;
 import org.miradi.objects.Strategy;
+import org.miradi.schemas.FactorLinkSchema;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.GroupBoxSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
@@ -52,7 +52,7 @@ public class DiagramLegendQuestion extends StaticChoiceQuestion
 				new ChoiceItem(Cause.OBJECT_NAME_THREAT, Cause.OBJECT_NAME_THREAT),
 				new ChoiceItem(TargetSchema.OBJECT_NAME, TargetSchema.OBJECT_NAME),
 				new ChoiceItem(HumanWelfareTargetSchema.OBJECT_NAME, HumanWelfareTargetSchema.OBJECT_NAME),
-				new ChoiceItem(FactorLink.OBJECT_NAME, FactorLink.OBJECT_NAME),
+				new ChoiceItem(FactorLinkSchema.OBJECT_NAME, FactorLinkSchema.OBJECT_NAME),
 				new ChoiceItem(GoalSchema.OBJECT_NAME, GoalSchema.OBJECT_NAME),
 				new ChoiceItem(ObjectiveSchema.OBJECT_NAME, ObjectiveSchema.OBJECT_NAME),
 				new ChoiceItem(IndicatorSchema.OBJECT_NAME, IndicatorSchema.OBJECT_NAME),

@@ -20,10 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.FactorLink;
 
 public class FactorLinkSchema extends BaseObjectSchema
 {
+	public static final String OBJECT_NAME = "Link";
+
 	public FactorLinkSchema()
 	{
 		super();
@@ -37,5 +40,10 @@ public class FactorLinkSchema extends BaseObjectSchema
 		createFieldSchemaRef(FactorLink.TAG_FROM_REF);
 		createFieldSchemaRef(FactorLink.TAG_TO_REF);
 		createFieldSchemaBoolean(FactorLink.TAG_BIDIRECTIONAL_LINK);
+	}
+
+	public static int getObjectType()
+	{
+		return ObjectType.FACTOR_LINK;
 	}
 }

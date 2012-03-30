@@ -29,6 +29,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 import org.miradi.project.ObjectManager;
+import org.miradi.schemas.FactorLinkSchema;
 
 public class FactorLinkPool extends BaseObjectPool
 {
@@ -54,8 +55,8 @@ public class FactorLinkPool extends BaseObjectPool
 	
 	public ORef getLinkedRef(Factor factor1, Factor factor2)
 	{
-		ORefList links1 = factor1.findObjectsThatReferToUs(FactorLink.getObjectType());
-		ORefList links2 = factor2.findObjectsThatReferToUs(FactorLink.getObjectType());
+		ORefList links1 = factor1.findObjectsThatReferToUs(FactorLinkSchema.getObjectType());
+		ORefList links2 = factor2.findObjectsThatReferToUs(FactorLinkSchema.getObjectType());
 		
 		ORefList overlap = links1.getOverlappingRefs(links2);
 		if(overlap.size() > 1)

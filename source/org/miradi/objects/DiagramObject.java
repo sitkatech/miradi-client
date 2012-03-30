@@ -39,6 +39,7 @@ import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.DiagramLinkSchema;
+import org.miradi.schemas.FactorLinkSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.TargetSchema;
@@ -437,7 +438,7 @@ abstract public class DiagramObject extends BaseObject
 	
 	public static ORefList getDiagramRefsContainingLink(Project projectToUse, ORef factorLinkRef)
 	{
-		if (factorLinkRef.getObjectType() != FactorLink.getObjectType())
+		if (factorLinkRef.getObjectType() != FactorLinkSchema.getObjectType())
 			return new ORefList();
 
 		return findOwnersOfObject(projectToUse, factorLinkRef, DiagramLinkSchema.getObjectType());

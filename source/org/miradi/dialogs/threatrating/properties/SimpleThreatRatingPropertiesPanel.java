@@ -25,15 +25,15 @@ import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.FactorLink;
 import org.miradi.project.Project;
+import org.miradi.schemas.FactorLinkSchema;
 import org.miradi.views.umbrella.ObjectPicker;
 
 public class SimpleThreatRatingPropertiesPanel extends ObjectDataInputPanel
 {
 	public SimpleThreatRatingPropertiesPanel(MainWindow mainWindowToUse, ObjectPicker objectPickerToUse) throws Exception
 	{
-		super(mainWindowToUse.getProject(), FactorLink.getObjectType(), BaseId.INVALID);
+		super(mainWindowToUse.getProject(), FactorLinkSchema.getObjectType(), BaseId.INVALID);
 		
 		setLayout(new OneColumnGridLayout());
 		

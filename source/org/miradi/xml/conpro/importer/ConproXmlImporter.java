@@ -104,6 +104,7 @@ import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.schemas.ExpenseAssignmentSchema;
+import org.miradi.schemas.FactorLinkSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.IntermediateResultSchema;
 import org.miradi.schemas.ObjectiveSchema;
@@ -1194,7 +1195,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		if (!foundFactorLinkRef.isInvalid())
 			return foundFactorLinkRef;
 		
-		ORef createdFactorLinkRef = getProject().createObject(FactorLink.getObjectType());
+		ORef createdFactorLinkRef = getProject().createObject(FactorLinkSchema.getObjectType());
 		project.setObjectData(createdFactorLinkRef, FactorLink.TAG_FROM_REF, fromRef.toString());
 		project.setObjectData(createdFactorLinkRef, FactorLink.TAG_TO_REF, toRef.toString());
 		

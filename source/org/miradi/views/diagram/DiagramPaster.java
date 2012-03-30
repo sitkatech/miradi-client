@@ -69,6 +69,7 @@ import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.DiagramLinkSchema;
+import org.miradi.schemas.FactorLinkSchema;
 import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.schemas.IntermediateResultSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
@@ -634,7 +635,7 @@ abstract public class DiagramPaster
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
 			BaseObject newObject = null;	
 			int type = getTypeFromJson(json);
-			if (type == FactorLink.getObjectType())
+			if (type == FactorLinkSchema.getObjectType())
 				newObject = createFactorLink(json);
 			
 			if (newObject != null)
@@ -740,7 +741,7 @@ abstract public class DiagramPaster
 		
 		ORef diagramFactorRef = getDiagramFactorId(json, diagramFactorEndTag);
 		BaseId factorLinkId = json.getId(DiagramLink.TAG_WRAPPED_ID);
-		ORef oldFactorLinkRef = new ORef(FactorLink.getObjectType(), factorLinkId);
+		ORef oldFactorLinkRef = new ORef(FactorLinkSchema.getObjectType(), factorLinkId);
 		if (oldFactorLinkRef.isInvalid())
 			return diagramFactorRef;
 		
@@ -750,7 +751,7 @@ abstract public class DiagramPaster
 	private ORef getWrappedLinkFactorEnd(EnhancedJsonObject json, int direction)
 	{
 		BaseId factorLinkId = json.getId(DiagramLink.TAG_WRAPPED_ID);
-		ORef oldFactorLinkRef = new ORef(FactorLink.getObjectType(), factorLinkId);
+		ORef oldFactorLinkRef = new ORef(FactorLinkSchema.getObjectType(), factorLinkId);
 		ORef newFactorLinkRef = getRefFromMap(oldFactorLinkRef);
 		FactorLink factorLink = FactorLink.find(getProject(), newFactorLinkRef);
 		if (factorLink == null)
@@ -782,7 +783,7 @@ abstract public class DiagramPaster
 	
 	protected FactorLink findFactorLink(ORef fromFactorRef, ORef toFactorRef)
 	{
-		ORefList allFactorLinks = getProject().getPool(FactorLink.getObjectType()).getRefList();
+		ORefList allFactorLinks = getProject().getPool(FactorLinkSchema.getObjectType()).getRefList();
 		for(int i = 0; i < allFactorLinks.size(); ++i)
 		{
 			FactorLink link = FactorLink.find(getProject(), allFactorLinks.get(i));
@@ -814,7 +815,7 @@ abstract public class DiagramPaster
 		getProject().executeCommands(commandsToLoadFromJson);
 
 		BaseId oldFactorLinkId = json.getId(FactorLink.TAG_ID);
-		getOldToNewObjectRefMap().put(new ORef(FactorLink.getObjectType(), oldFactorLinkId), newFactorLink.getRef());
+		getOldToNewObjectRefMap().put(new ORef(FactorLinkSchema.getObjectType(), oldFactorLinkId), newFactorLink.getRef());
 		
 		return newFactorLink;
 	}

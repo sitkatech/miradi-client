@@ -68,7 +68,6 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
-import org.miradi.objects.FactorLink;
 import org.miradi.objects.Goal;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.HumanWelfareTarget;
@@ -85,6 +84,7 @@ import org.miradi.project.Project;
 import org.miradi.project.threatrating.ThreatRatingFramework;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.DiagramLinkSchema;
+import org.miradi.schemas.FactorLinkSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.views.diagram.GroupOfDiagrams;
@@ -596,7 +596,7 @@ abstract public class DiagramModel extends DefaultGraphModel
 	
 	public boolean doesDiagramLinkExist(ORef factorLinkRef)
 	{
-		factorLinkRef.ensureExactType(FactorLink.getObjectType());
+		factorLinkRef.ensureExactType(FactorLinkSchema.getObjectType());
 		DiagramLink diagramLink = cellInventory.getFactorLinkByRef(factorLinkRef);
 		return (diagramLink != null);
 	}

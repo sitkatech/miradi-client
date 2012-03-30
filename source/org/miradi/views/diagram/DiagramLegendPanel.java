@@ -60,7 +60,6 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramObject;
-import org.miradi.objects.FactorLink;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
@@ -68,6 +67,7 @@ import org.miradi.objects.TaggedObjectSet;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.DiagramLegendQuestion;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
+import org.miradi.schemas.FactorLinkSchema;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.GroupBoxSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
@@ -153,7 +153,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		createCheckBox(ScopeBoxSchema.OBJECT_NAME);
 		createCheckBox(GroupBoxSchema.OBJECT_NAME);
 		
-		createCheckBox(FactorLink.OBJECT_NAME);
+		createCheckBox(FactorLinkSchema.OBJECT_NAME);
 		createCheckBox(StressSchema.OBJECT_NAME);
 		createCheckBox(TaskSchema.ACTIVITY_NAME);
 		
@@ -181,7 +181,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		if (mainWindow.getDiagramView().isStategyBrainstormMode())
 			addButtonLineWithCheckBox(jpanel, StrategySchema.getObjectType(), Strategy.OBJECT_NAME_DRAFT, actions.get(ActionInsertDraftStrategy.class));
 
-		addButtonLineWithCheckBox(jpanel, FactorLink.getObjectType(), FactorLink.OBJECT_NAME, actions.get(ActionInsertLink.class));
+		addButtonLineWithCheckBox(jpanel, FactorLinkSchema.getObjectType(), FactorLinkSchema.OBJECT_NAME, actions.get(ActionInsertLink.class));
 		
 		addIconLineWithCheckBox(jpanel, GoalSchema.getObjectType(), GoalSchema.OBJECT_NAME, new GoalIcon());
 		addIconLineWithCheckBox(jpanel, ObjectiveSchema.getObjectType(), ObjectiveSchema.OBJECT_NAME, new ObjectiveIcon());

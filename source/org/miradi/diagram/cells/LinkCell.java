@@ -40,8 +40,8 @@ import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.DiagramLink;
-import org.miradi.objects.FactorLink;
 import org.miradi.schemas.DiagramFactorSchema;
+import org.miradi.schemas.FactorLinkSchema;
 import org.miradi.utils.PointList;
 import org.miradi.utils.Utility;
 import org.miradi.views.diagram.LayerManager;
@@ -164,7 +164,7 @@ public class LinkCell extends EAMGraphCell implements Edge
 			return true;
 		
 		LayerManager layerManager = diagram.getLayerManager();
-		return layerManager.isTypeVisible(FactorLink.OBJECT_NAME);
+		return layerManager.isTypeVisible(FactorLinkSchema.OBJECT_NAME);
 	}
 	
 	private boolean isSelectedOrRelated(DiagramComponent diagram)

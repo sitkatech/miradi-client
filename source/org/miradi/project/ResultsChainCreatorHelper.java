@@ -47,7 +47,6 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
-import org.miradi.objects.FactorLink;
 import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
@@ -56,6 +55,7 @@ import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.DiagramLinkSchema;
+import org.miradi.schemas.FactorLinkSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.utils.PointList;
 import org.miradi.views.diagram.LinkCreator;
@@ -563,7 +563,7 @@ public class ResultsChainCreatorHelper
 		if (areSharingTheSameFactor(from, fromCloned, to, toCloned))
 			return new CreateDiagramLinkParameter(diagramLink.getWrappedRef(), fromCloned.getRef(), toCloned.getRef());
 
-		ORef factorLinkRef = new ORef(FactorLink.getObjectType(), BaseId.INVALID);
+		ORef factorLinkRef = new ORef(FactorLinkSchema.getObjectType(), BaseId.INVALID);
 		if(!diagramLink.isGroupBoxLink())
 			factorLinkRef = new LinkCreator(getProject()).createFactorLink(fromCloned, toCloned);
 
