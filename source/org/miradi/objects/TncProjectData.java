@@ -21,7 +21,6 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.ProjectSharingQuestion;
@@ -54,24 +53,19 @@ public class TncProjectData extends BaseObject
 	@Override
 	public int getType()
 	{
-		return getObjectType();
+		return TncProjectDataSchema.getObjectType();
 	}
 
 	@Override
 	public String getTypeName()
 	{
-		return OBJECT_NAME;
+		return TncProjectDataSchema.OBJECT_NAME;
 	}
 
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;
-	}
-	
-	public static int getObjectType()
-	{
-		return ObjectType.TNC_PROJECT_DATA;
 	}
 	
 	public boolean canShareOutsideOfTnc()
@@ -94,8 +88,6 @@ public class TncProjectData extends BaseObject
 		return find(project.getObjectManager(), tncProjectDataRef);
 	}
 		
-	public static final String OBJECT_NAME = "TncProjectData";
-
 	public final static String TAG_PROJECT_SHARING_CODE = "ProjectSharingCode";
 	public final static String TAG_PROJECT_PLACE_TYPES = "ProjectPlaceTypes";
 	public final static String TAG_ORGANIZATIONAL_PRIORITIES = "OrganizationalPriorities";

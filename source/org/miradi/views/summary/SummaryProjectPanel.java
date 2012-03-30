@@ -36,6 +36,7 @@ import org.miradi.questions.ProjectSharingQuestion;
 import org.miradi.rtf.RtfFormExporter;
 import org.miradi.rtf.RtfWriter;
 import org.miradi.schemas.ProjectMetadataSchema;
+import org.miradi.schemas.TncProjectDataSchema;
 
 public class SummaryProjectPanel extends ObjectDataInputPanel
 {
@@ -45,7 +46,7 @@ public class SummaryProjectPanel extends ObjectDataInputPanel
 		
 		addField(createStringField(ProjectMetadata.TAG_PROJECT_NAME));
 		ChoiceQuestion tncProjectSharingQuestion = getProject().getQuestion(ProjectSharingQuestion.class);
-		addRadioButtonFieldWithCustomLabelAndLink(TncProjectData.getObjectType(), TncProjectData.TAG_PROJECT_SHARING_CODE, tncProjectSharingQuestion, "", "ProjectSharingMessage.html");
+		addRadioButtonFieldWithCustomLabelAndLink(TncProjectDataSchema.getObjectType(), TncProjectData.TAG_PROJECT_SHARING_CODE, tncProjectSharingQuestion, "", "ProjectSharingMessage.html");
 		addField(createChoiceField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_PROJECT_LANGUAGE, new LanguageQuestion()));
 		addField(createDateChooserField(ProjectMetadata.TAG_DATA_EFFECTIVE_DATE));
 		addField(createReadonlyTextField(ProjectMetadata.PSEUDO_TAG_PROJECT_FILENAME));
@@ -59,7 +60,7 @@ public class SummaryProjectPanel extends ObjectDataInputPanel
 		addField(createMultilineField(ProjectMetadata.TAG_PROJECT_STATUS));
 		addField(createMultilineField(ProjectMetadata.TAG_NEXT_STEPS));
 		
-		setObjectRefs(new ORef[]{refToUse, getProject().getSingletonObjectRef(TncProjectData.getObjectType()), });
+		setObjectRefs(new ORef[]{refToUse, getProject().getSingletonObjectRef(TncProjectDataSchema.getObjectType()), });
 		updateFieldsFromProject();
 	}
 
