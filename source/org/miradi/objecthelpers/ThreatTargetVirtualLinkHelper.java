@@ -34,6 +34,7 @@ import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.TargetSchema;
+import org.miradi.schemas.ThreatStressRatingSchema;
 import org.miradi.utils.ThreatStressRatingHelper;
 import org.miradi.utils.Utility;
 
@@ -47,7 +48,7 @@ public class ThreatTargetVirtualLinkHelper
 	public ORefSet getDownstreamTargetsVisTSR(Cause threat)
 	{
 		ORefSet downstreamTargetRefs = new ORefSet();
-		ORefList referringThreatStressRatingRefs = threat.findObjectsThatReferToUs(ThreatStressRating.getObjectType());
+		ORefList referringThreatStressRatingRefs = threat.findObjectsThatReferToUs(ThreatStressRatingSchema.getObjectType());
 		for (int index = 0; index < referringThreatStressRatingRefs.size(); ++index)
 		{
 			ThreatStressRating threatStressRating = ThreatStressRating.find(getProject(), referringThreatStressRatingRefs.get(index));
@@ -77,7 +78,7 @@ public class ThreatTargetVirtualLinkHelper
 	private ORefSet getUpstreamThreatRefsViaTSR(Stress stress)
 	{
 		ORefSet upstreamOfStressThreatRefs = new ORefSet();
-		ORefList relevantRatingRefs = stress.findObjectsThatReferToUs(ThreatStressRating.getObjectType());
+		ORefList relevantRatingRefs = stress.findObjectsThatReferToUs(ThreatStressRatingSchema.getObjectType());
 		for(int ratingIndex = 0; ratingIndex < relevantRatingRefs.size(); ++ratingIndex)
 		{
 			ThreatStressRating rating = ThreatStressRating.find(getProject(), relevantRatingRefs.get(ratingIndex));
@@ -160,7 +161,7 @@ public class ThreatTargetVirtualLinkHelper
 				return threatStressRatingRef;
 		}
 		
-		return ORef.createInvalidWithType(ThreatStressRating.getObjectType());
+		return ORef.createInvalidWithType(ThreatStressRatingSchema.getObjectType());
 	}
 	
 	public ORefList getThreatStressRatingRefs(ORef threatRef, ORef targetRef)

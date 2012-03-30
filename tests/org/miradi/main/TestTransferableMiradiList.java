@@ -39,9 +39,9 @@ import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
-import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.FactorCommandHelper;
 import org.miradi.project.ProjectForTesting;
+import org.miradi.schemas.ThreatStressRatingSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.views.diagram.DiagramPaster;
@@ -170,7 +170,7 @@ public class TestTransferableMiradiList extends MiradiTestCase
 		assertEquals("wrong threat stress rating cound in transferable?", 1, threatStressRatingDeepCopies.size());
 		EnhancedJsonObject threatStressRatingJson = new EnhancedJsonObject(threatStressRatingDeepCopies.get(0));
 		int threatStressRatingType = threatStressRatingJson.getInt(DiagramPaster.FAKE_TAG_TYPE);
-		assertEquals("wrong type for threat stress rating?", ThreatStressRating.getObjectType(), threatStressRatingType);
+		assertEquals("wrong type for threat stress rating?", ThreatStressRatingSchema.getObjectType(), threatStressRatingType);
 		
 		EnhancedJsonObject diagramFactor2Json = new EnhancedJsonObject(diagramFactorDeepCopies.get(1));
 		int diagramFactor2Type = diagramFactor2Json.getInt(DiagramPaster.FAKE_TAG_TYPE);

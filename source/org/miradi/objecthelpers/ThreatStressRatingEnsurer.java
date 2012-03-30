@@ -36,6 +36,7 @@ import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.TargetSchema;
+import org.miradi.schemas.ThreatStressRatingSchema;
 import org.miradi.utils.CommandVector;
 
 public class ThreatStressRatingEnsurer implements CommandExecutedListener 
@@ -88,7 +89,7 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 		{
 			ORef stressRef = threatStressPair.getStressRef();
 			ORef threatRef = threatStressPair.getThreatRef();
-			CommandCreateObject createThreatStressRatingCommand = new CommandCreateObject(ThreatStressRating.getObjectType());
+			CommandCreateObject createThreatStressRatingCommand = new CommandCreateObject(ThreatStressRatingSchema.getObjectType());
 			getProject().executeAsSideEffect(createThreatStressRatingCommand);
 			getProject().setObjectData(createThreatStressRatingCommand.getObjectRef(), ThreatStressRating.TAG_STRESS_REF, stressRef.toString());
 			getProject().setObjectData(createThreatStressRatingCommand.getObjectRef(), ThreatStressRating.TAG_THREAT_REF, threatRef.toString());

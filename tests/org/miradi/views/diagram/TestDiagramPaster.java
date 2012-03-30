@@ -62,6 +62,7 @@ import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.ThreatReductionResultSchema;
+import org.miradi.schemas.ThreatStressRatingSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.views.umbrella.UndoDoer;
 
@@ -172,7 +173,7 @@ public class TestDiagramPaster extends TestCaseWithProject
 
 		public boolean hasRefChanged(CommandExecutedEvent event, final String tag)
 		{
-			if (!event.isSetDataCommandWithThisType(ThreatStressRating.getObjectType()))
+			if (!event.isSetDataCommandWithThisType(ThreatStressRatingSchema.getObjectType()))
 				return false;
 			
 			CommandSetObjectData setCommand = event.getSetCommand();

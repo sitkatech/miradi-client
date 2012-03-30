@@ -29,6 +29,7 @@ import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.Project;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.TargetSchema;
+import org.miradi.schemas.ThreatStressRatingSchema;
 
 public class ThreatStressRatingHelper
 {
@@ -51,7 +52,7 @@ public class ThreatStressRatingHelper
 		Target target = Target.find(getProject(), targetRef);
 		ORefList stressRefs = target.getStressRefs();
 		Cause threat = Cause.find(getProject(), threatRef);
-		ORefList threatStressRatingReferrerRefs = threat.findObjectsThatReferToUs(ThreatStressRating.getObjectType());
+		ORefList threatStressRatingReferrerRefs = threat.findObjectsThatReferToUs(ThreatStressRatingSchema.getObjectType());
 		Vector<ThreatStressRating> threatStressRatings = new Vector<ThreatStressRating>();
 		for (int index = 0; index < threatStressRatingReferrerRefs.size(); ++index)
 		{

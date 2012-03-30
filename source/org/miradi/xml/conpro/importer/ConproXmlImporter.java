@@ -121,6 +121,7 @@ import org.miradi.schemas.SubTargetSchema;
 import org.miradi.schemas.TaggedObjectSetSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.TaskSchema;
+import org.miradi.schemas.ThreatStressRatingSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateUnitEffort;
@@ -939,7 +940,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		ORefSet upstreatThreatRefs = threatTargetChainObject.getUpstreamThreatRefsFromTarget(target);
 		for(ORef threatRef : upstreatThreatRefs)
 		{
-			ORef threatStressRatingRef = getProject().createObject(ThreatStressRating.getObjectType());
+			ORef threatStressRatingRef = getProject().createObject(ThreatStressRatingSchema.getObjectType());
 			getProject().setObjectData(threatStressRatingRef, ThreatStressRating.TAG_STRESS_REF, stressRef.toString());
 			getProject().setObjectData(threatStressRatingRef, ThreatStressRating.TAG_THREAT_REF, threatRef.toString());
 		}

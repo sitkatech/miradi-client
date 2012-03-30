@@ -28,6 +28,7 @@ import org.miradi.project.threatrating.StressBasedThreatFormula;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.schemas.StressSchema;
 import org.miradi.schemas.TargetSchema;
+import org.miradi.schemas.ThreatStressRatingSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class Stress extends Factor
@@ -67,7 +68,7 @@ public class Stress extends Factor
 
 	private ORefList getThreatStressRatingsToDeepCopy(ORefList deepCopiedFactorRefs)
 	{
-		ORefList threatStressRatingReferrerRefs = findObjectsThatReferToUs(ThreatStressRating.getObjectType());
+		ORefList threatStressRatingReferrerRefs = findObjectsThatReferToUs(ThreatStressRatingSchema.getObjectType());
 		ORefList threatStressRatingsWithThreatInList = new ORefList();
 		for (int index = 0; index < threatStressRatingReferrerRefs.size(); ++index)
 		{
