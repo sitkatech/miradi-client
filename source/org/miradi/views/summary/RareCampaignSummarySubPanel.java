@@ -29,6 +29,7 @@ import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.RareProjectData;
 import org.miradi.project.Project;
 import org.miradi.questions.ThreatClassificationQuestion;
+import org.miradi.schemas.AudienceSchema;
 
 public class RareCampaignSummarySubPanel extends ObjectDataInputPanel
 {
@@ -42,7 +43,7 @@ public class RareCampaignSummarySubPanel extends ObjectDataInputPanel
 		
 		addField(createNumericField(RareProjectData.TAG_NUMBER_OF_COMMUNITIES_IN_CAMPAIGN_AREA));
 		
-		addLabel(Audience.getObjectType(), Audience.TAG_LABEL);
+		addLabel(AudienceSchema.getObjectType(), Audience.TAG_LABEL);
 		addSubPanelWithLineBorder(new AudienceSubPanel(getProject()));
 		
 		addLabelsOnSingleRow(RareTabCampaignSubPanelForm.HUMAN_STAKEHOLDER_POP_SIZE_CONSTANT, RareTabCampaignSubPanelForm.SEE_SCOPE_TAB_CONSTANT);

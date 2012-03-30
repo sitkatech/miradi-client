@@ -23,12 +23,13 @@ package org.miradi.xml.wcs;
 import org.martus.util.UnicodeWriter;
 import org.miradi.objects.Audience;
 import org.miradi.objects.BaseObject;
+import org.miradi.schemas.AudienceSchema;
 
 public class AudiencePoolExporter extends BaseObjectPoolExporter
 {
 	public AudiencePoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
-		super(wcsXmlExporterToUse, AUDIENCE, Audience.getObjectType());
+		super(wcsXmlExporterToUse, AUDIENCE, AudienceSchema.getObjectType());
 	}
 	
 	@Override

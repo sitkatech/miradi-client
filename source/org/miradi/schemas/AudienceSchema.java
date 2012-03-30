@@ -20,11 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Audience;
 
 
 public class AudienceSchema extends BaseObjectSchema
 {
+	public static final String OBJECT_NAME = "Audience";
+
 	public AudienceSchema()
 	{
 		super();
@@ -37,5 +40,10 @@ public class AudienceSchema extends BaseObjectSchema
 		
 		createFieldSchemaInteger(Audience.TAG_PEOPLE_COUNT);
 		createFieldSchemaMultiLineUserText(Audience.TAG_SUMMARY);
+	}
+
+	public static int getObjectType()
+	{
+		return ObjectType.AUDIENCE;
 	}
 }

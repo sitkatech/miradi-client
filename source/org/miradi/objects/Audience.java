@@ -22,7 +22,6 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.AudienceSchema;
@@ -43,24 +42,19 @@ public class Audience extends BaseObject
 	@Override
 	public int getType()
 	{
-		return getObjectType();
+		return AudienceSchema.getObjectType();
 	}
 	
 	@Override
 	public String getTypeName()
 	{
-		return OBJECT_NAME;
+		return AudienceSchema.OBJECT_NAME;
 	}
 
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;
-	}
-	
-	public static int getObjectType()
-	{
-		return ObjectType.AUDIENCE;
 	}
 	
 	public static boolean is(BaseObject object)
@@ -75,7 +69,7 @@ public class Audience extends BaseObject
 	
 	public static boolean is(int objectType)
 	{
-		return objectType == getObjectType();
+		return objectType == AudienceSchema.getObjectType();
 	}
 	
 	public static Audience find(ObjectManager objectManager, ORef ref)
@@ -87,8 +81,6 @@ public class Audience extends BaseObject
 	{
 		return find(project.getObjectManager(), ref);
 	}
-	
-	public static final String OBJECT_NAME = "Audience";
 	
 	public static final String TAG_PEOPLE_COUNT = "PeopleCount";
 	public static final String TAG_SUMMARY = "Summary";
