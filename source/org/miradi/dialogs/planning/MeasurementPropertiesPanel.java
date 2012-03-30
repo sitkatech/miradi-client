@@ -34,12 +34,13 @@ import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.TrendQuestion;
 import org.miradi.schemas.KeyEcologicalAttributeSchema;
+import org.miradi.schemas.MeasurementSchema;
 
 public class MeasurementPropertiesPanel extends ObjectDataInputPanelWithSections
 {
 	public MeasurementPropertiesPanel(Project projectToUse) throws Exception
 	{
-		super(projectToUse, Measurement.getObjectType());
+		super(projectToUse, MeasurementSchema.getObjectType());
 		
 		createSingleSection(EAM.text("Measurement"));
 		PanelTitleLabel measurementLabel = new PanelTitleLabel(EAM.text("Measurement"), new MeasurementIcon());

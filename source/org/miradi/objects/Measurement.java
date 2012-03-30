@@ -21,7 +21,6 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.IndicatorSchema;
@@ -43,24 +42,19 @@ public class Measurement extends BaseObject
 	@Override
 	public int getType()
 	{
-		return getObjectType();
+		return MeasurementSchema.getObjectType();
 	}
 	
 	@Override
 	public String getTypeName()
 	{
-		return OBJECT_NAME;
+		return MeasurementSchema.OBJECT_NAME;
 	}
 
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return new int[] {IndicatorSchema.getObjectType()};
-	}
-	
-	public static int getObjectType()
-	{
-		return ObjectType.MEASUREMENT;
 	}
 	
 	public static boolean canReferToThisType(int type)
@@ -104,7 +98,7 @@ public class Measurement extends BaseObject
 	
 	public static boolean is(int objectType)
 	{
-		return objectType == getObjectType();
+		return objectType == MeasurementSchema.getObjectType();
 	}
 	
 	public static Measurement find(ObjectManager objectManager, ORef measurementRef)
@@ -116,8 +110,6 @@ public class Measurement extends BaseObject
 	{
 		return find(project.getObjectManager(), measurementRef);
 	}
-	
-	public static final String OBJECT_NAME = "Measurement";
 	
 	public static final String TAG_TREND = "Trend";
 	public static final String TAG_STATUS  = "Status";

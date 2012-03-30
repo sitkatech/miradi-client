@@ -31,6 +31,7 @@ import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.schemas.FactorLinkSchema;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.MeasurementSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
@@ -217,7 +218,7 @@ public class TestObjectFindOwnerAndFindReferrer extends MiradiTestCase
 		IdList taskList = new IdList(TaskSchema.getObjectType(), new BaseId[] {taskRef.getObjectId()});
 		project.setObjectData(indicatorRef, Indicator.TAG_METHOD_IDS, taskList.toString());
 		
-		ORef measurementRef = project.createObject(Measurement.getObjectType());
+		ORef measurementRef = project.createObject(MeasurementSchema.getObjectType());
 		ORefList measurementList = new ORefList(new ORef[] {measurementRef});
 		project.setObjectData(indicatorRef, Indicator.TAG_MEASUREMENT_REFS, measurementList.toString());
 		

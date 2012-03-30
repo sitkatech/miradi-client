@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Measurement;
 import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.StatusQuestion;
@@ -27,6 +28,8 @@ import org.miradi.questions.TrendQuestion;
 
 public class MeasurementSchema extends BaseObjectSchema
 {
+	public static final String OBJECT_NAME = "Measurement";
+
 	public MeasurementSchema()
 	{
 		super();
@@ -44,5 +47,10 @@ public class MeasurementSchema extends BaseObjectSchema
 		createFieldSchemaMultiLineUserText(Measurement.TAG_DETAIL);
 		createFieldSchemaChoice(Measurement.TAG_STATUS_CONFIDENCE, getQuestion(StatusConfidenceQuestion.class));
 		createFieldSchemaMultiLineUserText(Measurement.TAG_COMMENTS);
+	}
+
+	public static int getObjectType()
+	{
+		return ObjectType.MEASUREMENT;
 	}
 }

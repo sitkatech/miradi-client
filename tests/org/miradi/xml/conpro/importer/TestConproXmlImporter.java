@@ -62,6 +62,7 @@ import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.KeyEcologicalAttributeSchema;
+import org.miradi.schemas.MeasurementSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
@@ -632,7 +633,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 			exportProject(firstExportedXmlFile, getProject());
 			importProject(firstExportedXmlFile, projectAfterImport);
 			
-			ORefList measurementRefs = projectAfterImport.getPool(Measurement.getObjectType()).getORefList();
+			ORefList measurementRefs = projectAfterImport.getPool(MeasurementSchema.getObjectType()).getORefList();
 			assertEquals("incorrect measurement count?", 1, measurementRefs.size());
 			ORef measurementRef = measurementRefs.get(0);
 			Measurement importedMeasurement = Measurement.find(projectAfterImport, measurementRef);

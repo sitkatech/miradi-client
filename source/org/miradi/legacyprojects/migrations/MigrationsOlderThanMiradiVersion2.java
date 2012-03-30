@@ -45,7 +45,6 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Cause;
-import org.miradi.objects.Measurement;
 import org.miradi.objects.Target;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.TncFreshwaterEcoRegionQuestion;
@@ -53,6 +52,7 @@ import org.miradi.questions.TncMarineEcoRegionQuestion;
 import org.miradi.questions.TncOperatingUnitsQuestion;
 import org.miradi.questions.TncTerrestrialEcoRegionQuestion;
 import org.miradi.questions.TwoLevelQuestion;
+import org.miradi.schemas.MeasurementSchema;
 import org.miradi.schemas.StressSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.CodeList;
@@ -1015,7 +1015,7 @@ public class MigrationsOlderThanMiradiVersion2
 			measurementJson.put("StatusConfidence", statusConfidence);
 		
 			ORefList measurementRefs = new ORefList();
-			measurementRefs.add(new ORef(Measurement.getObjectType(), new BaseId(highestId)));
+			measurementRefs.add(new ORef(MeasurementSchema.getObjectType(), new BaseId(highestId)));
 			indicatorJson.put("MeasurementRefs", measurementRefs.toString());
 			DataUpgrader.writeJson(indicatorFile, indicatorJson);
 			

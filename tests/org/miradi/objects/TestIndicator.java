@@ -35,6 +35,7 @@ import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.MeasurementSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.CommandVector;
@@ -79,8 +80,8 @@ public class TestIndicator extends AbstractObjectWithBudgetDataToDeleteTestCase
 		Indicator indicator = (Indicator) project.findObject(indicatorRef);
 		assertEquals("Found date?", ORef.INVALID, indicator.getLatestMeasurementRef());
 		
-		ORef measurementRef1 = project.createObject(Measurement.getObjectType());
-		ORef measurementRef2 = project.createObject(Measurement.getObjectType());
+		ORef measurementRef1 = project.createObject(MeasurementSchema.getObjectType());
+		ORef measurementRef2 = project.createObject(MeasurementSchema.getObjectType());
 		ORefList measurementRefList = new ORefList();
 		measurementRefList.add(measurementRef1);
 		measurementRefList.add(measurementRef2);
@@ -116,7 +117,7 @@ public class TestIndicator extends AbstractObjectWithBudgetDataToDeleteTestCase
 	{
 		ORef indicatorRef = project.createObject(IndicatorSchema.getObjectType());
 		Indicator indicator = (Indicator) project.findObject(indicatorRef);
-		assertEquals("is wrong annotation type?", Measurement.getObjectType(), indicator.getAnnotationType(Indicator.TAG_MEASUREMENT_REFS));
+		assertEquals("is wrong annotation type?", MeasurementSchema.getObjectType(), indicator.getAnnotationType(Indicator.TAG_MEASUREMENT_REFS));
 	}
 	
 	public void testGetWorkUnits() throws Exception

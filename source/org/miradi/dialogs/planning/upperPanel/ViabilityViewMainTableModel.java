@@ -52,6 +52,7 @@ import org.miradi.questions.TrendQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.KeyEcologicalAttributeSchema;
+import org.miradi.schemas.MeasurementSchema;
 import org.miradi.schemas.TargetSchema;
 
 public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
@@ -476,13 +477,13 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 			return TargetSchema.getObjectType();
 			
 		else if(tag.equals(Measurement.TAG_STATUS_CONFIDENCE))
-			return Measurement.getObjectType();
+			return MeasurementSchema.getObjectType();
 			
 		else if (tag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
 			return IndicatorSchema.getObjectType();
 		
 		else if(tag.equals(Measurement.TAG_SUMMARY))
-			return Measurement.getObjectType();
+			return MeasurementSchema.getObjectType();
 		
 		return KeyEcologicalAttributeSchema.getObjectType();
 	}

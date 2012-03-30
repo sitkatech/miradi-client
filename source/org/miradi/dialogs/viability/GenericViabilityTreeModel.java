@@ -28,6 +28,7 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.KeyEcologicalAttributeSchema;
+import org.miradi.schemas.MeasurementSchema;
 import org.miradi.schemas.TargetSchema;
 
 abstract public class GenericViabilityTreeModel extends GenericTreeTableModel
@@ -63,13 +64,13 @@ abstract public class GenericViabilityTreeModel extends GenericTreeTableModel
 			return TargetSchema.getObjectType();
 			
 		else if(tag.equals(Measurement.TAG_STATUS_CONFIDENCE))
-			return Measurement.getObjectType();
+			return MeasurementSchema.getObjectType();
 			
 		else if (tag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
 			return IndicatorSchema.getObjectType();
 		
 		else if(tag.equals(Measurement.TAG_SUMMARY))
-			return Measurement.getObjectType();
+			return MeasurementSchema.getObjectType();
 		
 		return KeyEcologicalAttributeSchema.getObjectType();
 	}
