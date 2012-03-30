@@ -26,6 +26,7 @@ import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.DiagramObjectDataInclusionQuestion;
+import org.miradi.schemas.ObjectTreeTableConfigurationSchema;
 
 public class CodeListPanelWithDiagramObjectDataInclusionDropDown extends CodeListEditorPanel
 {
@@ -37,7 +38,7 @@ public class CodeListPanelWithDiagramObjectDataInclusionDropDown extends CodeLis
 	@Override
 	protected void addExtraField()
 	{
-		addField(createChoiceField(ObjectTreeTableConfiguration.getObjectType(), ObjectTreeTableConfiguration.TAG_DIAGRAM_DATA_INCLUSION, getProject().getQuestion(DiagramObjectDataInclusionQuestion.class)));
+		addField(createChoiceField(ObjectTreeTableConfigurationSchema.getObjectType(), ObjectTreeTableConfiguration.TAG_DIAGRAM_DATA_INCLUSION, getProject().getQuestion(DiagramObjectDataInclusionQuestion.class)));
 	}
 	
 	@Override

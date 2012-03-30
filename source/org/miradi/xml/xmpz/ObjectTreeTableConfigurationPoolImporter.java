@@ -25,6 +25,7 @@ import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.questions.DiagramObjectDataInclusionQuestion;
 import org.miradi.questions.PlanningTreeTargetPositionQuestion;
 import org.miradi.questions.StrategyObjectiveTreeOrderQuestion;
+import org.miradi.schemas.ObjectTreeTableConfigurationSchema;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.w3c.dom.Node;
 
@@ -32,7 +33,7 @@ public class ObjectTreeTableConfigurationPoolImporter extends AbstractBaseObject
 {
 	public ObjectTreeTableConfigurationPoolImporter(XmpzXmlImporter importerToUse)
 	{
-		super(importerToUse, XmpzXmlConstants.OBJECT_TREE_TABLE_CONFIGURATION, ObjectTreeTableConfiguration.getObjectType());
+		super(importerToUse, XmpzXmlConstants.OBJECT_TREE_TABLE_CONFIGURATION, ObjectTreeTableConfigurationSchema.getObjectType());
 	}
 	
 	@Override

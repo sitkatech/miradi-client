@@ -24,8 +24,8 @@ import java.util.Vector;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objectpools.ObjectTreeTableConfigurationPool;
-import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.project.Project;
+import org.miradi.schemas.ObjectTreeTableConfigurationSchema;
 
 public class ObjectTreeTableConfigurationQuestion extends DynamicChoiceQuestion
 {
@@ -39,7 +39,7 @@ public class ObjectTreeTableConfigurationQuestion extends DynamicChoiceQuestion
 	@Override
 	public ChoiceItem[] getChoices()
 	{
-		ObjectTreeTableConfigurationPool configurationPool = (ObjectTreeTableConfigurationPool) getProject().getPool(ObjectTreeTableConfiguration.getObjectType());
+		ObjectTreeTableConfigurationPool configurationPool = (ObjectTreeTableConfigurationPool) getProject().getPool(ObjectTreeTableConfigurationSchema.getObjectType());
 		ORefList allConfigurationRefs = configurationPool.getORefList();
 
 		Vector<ChoiceItem> allCustomizations = new Vector<ChoiceItem>();

@@ -26,8 +26,8 @@ import java.util.Vector;
 import org.miradi.main.EAM;
 import org.miradi.objectpools.EAMObjectPool;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.project.Project;
+import org.miradi.schemas.ObjectTreeTableConfigurationSchema;
 
 public class ReportTemplateContentQuestion extends DynamicChoiceQuestion
 {
@@ -114,7 +114,7 @@ public class ReportTemplateContentQuestion extends DynamicChoiceQuestion
 	private Collection<ChoiceItem> createCustomSubviewChoices()
 	{
 		Vector<ChoiceItem> choices = new Vector<ChoiceItem>();
-		EAMObjectPool pool = getProject().getPool(ObjectTreeTableConfiguration.getObjectType());
+		EAMObjectPool pool = getProject().getPool(ObjectTreeTableConfigurationSchema.getObjectType());
 		Vector<BaseObject> subviews = pool.getAllObjects();
 		for(BaseObject subview : subviews)
 		{
