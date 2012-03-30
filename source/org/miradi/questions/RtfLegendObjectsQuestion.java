@@ -39,7 +39,6 @@ import org.miradi.icons.TextBoxIcon;
 import org.miradi.icons.ThreatReductionResultIcon;
 import org.miradi.main.EAM;
 import org.miradi.objects.Cause;
-import org.miradi.objects.ProjectMetadata;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.GroupBoxSchema;
@@ -47,6 +46,7 @@ import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.IntermediateResultSchema;
 import org.miradi.schemas.MeasurementSchema;
 import org.miradi.schemas.ObjectiveSchema;
+import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.StressSchema;
@@ -65,7 +65,7 @@ public class RtfLegendObjectsQuestion extends StaticChoiceQuestion
 	private static ChoiceItem[] getAllChoices()
 	{
 		return new ChoiceItem[] {
-				new ChoiceItem(ProjectMetadata.OBJECT_NAME, EAM.text("Project"), new MiradiApplicationIcon()),
+				new ChoiceItem(ProjectMetadataSchema.OBJECT_NAME, EAM.text("Project"), new MiradiApplicationIcon()),
 				new ChoiceItem(ConceptualModelDiagramSchema.OBJECT_NAME, EAM.text("Conceptual Model"), new ConceptualModelIcon()),
 				new ChoiceItem(ResultsChainDiagramSchema.OBJECT_NAME, EAM.text("Results Chain"), new ResultsChainIcon()),
 				new ChoiceItem(TargetSchema.OBJECT_NAME, EAM.text("Target"), new TargetIcon()),

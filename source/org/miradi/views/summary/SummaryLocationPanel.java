@@ -32,6 +32,7 @@ import org.miradi.questions.CountriesQuestion;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.rtf.RtfFormExporter;
 import org.miradi.rtf.RtfWriter;
+import org.miradi.schemas.ProjectMetadataSchema;
 
 public class SummaryLocationPanel extends ObjectDataInputPanel
 {
@@ -42,7 +43,7 @@ public class SummaryLocationPanel extends ObjectDataInputPanel
 		addFieldWithCustomLabelAndHint(createNumericField(ProjectMetadata.TAG_PROJECT_LATITUDE, 10), EAM.text("(Latitude must be -90.0000 to +90.0000)"));
 		addFieldWithCustomLabelAndHint(createNumericField(ProjectMetadata.TAG_PROJECT_LONGITUDE, 10), EAM.text("(Longitude must be -180.0000 to +180.0000)"));
 		
-		addField(createEditableCodeListField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_COUNTRIES, StaticQuestionManager.getQuestion(CountriesQuestion.class), 1));
+		addField(createEditableCodeListField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_COUNTRIES, StaticQuestionManager.getQuestion(CountriesQuestion.class), 1));
 		addField(createStringField(ProjectMetadata.TAG_STATE_AND_PROVINCES));
 		addField(createStringField(ProjectMetadata.TAG_MUNICIPALITIES));
 		addField(createStringField(ProjectMetadata.TAG_LEGISLATIVE_DISTRICTS));

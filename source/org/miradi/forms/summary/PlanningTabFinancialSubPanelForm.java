@@ -22,6 +22,7 @@ package org.miradi.forms.summary;
 import org.miradi.forms.FieldPanelSpec;
 import org.miradi.main.EAM;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.schemas.ProjectMetadataSchema;
 
 public class PlanningTabFinancialSubPanelForm extends FieldPanelSpec
 {
@@ -29,7 +30,7 @@ public class PlanningTabFinancialSubPanelForm extends FieldPanelSpec
 	{
 		setTranslatedTitle(EAM.text("Financial"));
 
-		int type = ProjectMetadata.getObjectType();
+		int type = ProjectMetadataSchema.getObjectType();
 		
 		addLabelAndFieldsWithLabels(EAM.text("Label|Currency"), type, 
 				new String[] {ProjectMetadata.TAG_CURRENCY_TYPE, ProjectMetadata.TAG_CURRENCY_SYMBOL});

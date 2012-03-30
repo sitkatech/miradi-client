@@ -29,6 +29,7 @@ import org.miradi.objects.ViewData;
 import org.miradi.questions.DiagramModeQuestion;
 import org.miradi.questions.FontFamiliyQuestion;
 import org.miradi.questions.FontSizeQuestion;
+import org.miradi.schemas.ProjectMetadataSchema;
 
 public class DiagramProjectPreferencesPanel extends ObjectDataInputPanel
 {
@@ -37,8 +38,8 @@ public class DiagramProjectPreferencesPanel extends ObjectDataInputPanel
 		super(mainWindowToUse.getProject(), mainWindowToUse.getProject().getMetadata().getRef());
 		
 		mainWindow = mainWindowToUse;
-		addField(createChoiceField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_DIAGRAM_FONT_SIZE, new FontSizeQuestion()));
-		addField(createChoiceField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_DIAGRAM_FONT_FAMILY, new FontFamiliyQuestion()));
+		addField(createChoiceField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_DIAGRAM_FONT_SIZE, new FontSizeQuestion()));
+		addField(createChoiceField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_DIAGRAM_FONT_FAMILY, new FontFamiliyQuestion()));
 		updateFieldsFromProject();
 	}
 
@@ -55,7 +56,7 @@ public class DiagramProjectPreferencesPanel extends ObjectDataInputPanel
 		
 		try
 		{
-			if(!event.isSetDataCommandWithThisType(ProjectMetadata.getObjectType()))
+			if(!event.isSetDataCommandWithThisType(ProjectMetadataSchema.getObjectType()))
 				return;
 			
 			CommandSetObjectData command = (CommandSetObjectData)event.getCommand();

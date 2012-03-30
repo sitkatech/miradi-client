@@ -29,30 +29,30 @@ import org.miradi.icons.ProjectScopeIcon;
 import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
 import org.miradi.questions.ReportTemplateContentQuestion;
 import org.miradi.rtf.RtfWriter;
 import org.miradi.rtf.viewExporters.SummaryViewRtfExporter;
+import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.utils.CodeList;
 
 public class SummaryScopeTabPanel extends ObjectDataInputPanelWithSections
 {
 	public SummaryScopeTabPanel(Project projectToUse, ORef[] orefsToUse) throws Exception
 	{
-		super(projectToUse, ProjectMetadata.getObjectType());
+		super(projectToUse, ProjectMetadataSchema.getObjectType());
 		setLayout(new OneColumnGridLayout());
 		
-		ScopeAndVisionPanel scopeVision = new ScopeAndVisionPanel(getProject(), getRefForType(ProjectMetadata.getObjectType()));
+		ScopeAndVisionPanel scopeVision = new ScopeAndVisionPanel(getProject(), getRefForType(ProjectMetadataSchema.getObjectType()));
 		addSubPanelWithTitledBorder(scopeVision);
 
-		BiodiversityPanel biodiversity = new BiodiversityPanel(getProject(), getRefForType(ProjectMetadata.getObjectType()));
+		BiodiversityPanel biodiversity = new BiodiversityPanel(getProject(), getRefForType(ProjectMetadataSchema.getObjectType()));
 		addSubPanelWithTitledBorder(biodiversity);
 		
 		addSubPanelWithTitledBorder(new IucnRedlistSpeciesSubPanel(getProject()));
 		addSubPanelWithTitledBorder(new OtherNotableSpeciesSubPanel(getProject()));
 		
-		HumanStakeholderPanel humans = new HumanStakeholderPanel(getProject(), getRefForType(ProjectMetadata.getObjectType()));
+		HumanStakeholderPanel humans = new HumanStakeholderPanel(getProject(), getRefForType(ProjectMetadataSchema.getObjectType()));
 		addSubPanelWithTitledBorder(humans);
 		
 		ProtectedAreaPanel protectedAreas = new ProtectedAreaPanel(getProject(), getSelectedRefs().toArray());

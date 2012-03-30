@@ -24,6 +24,7 @@ import org.miradi.main.EAM;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
+import org.miradi.schemas.ProjectMetadataSchema;
 
 public class ThreatRatingPreferencesPanel extends ObjectDataInputPanel
 {
@@ -31,7 +32,7 @@ public class ThreatRatingPreferencesPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, projectToUse.getMetadata().getRef());
 
-		addField(createChoiceField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_THREAT_RATING_MODE, new ThreatRatingModeChoiceQuestion()));
+		addField(createChoiceField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_THREAT_RATING_MODE, new ThreatRatingModeChoiceQuestion()));
 		updateFieldsFromProject();
 	}
 

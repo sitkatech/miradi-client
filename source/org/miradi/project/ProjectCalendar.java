@@ -33,6 +33,7 @@ import org.miradi.objects.ProjectMetadata;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.MonthAbbreviationsQuestion;
+import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.utils.DateRange;
 
 public class ProjectCalendar implements CommandExecutedListener
@@ -159,7 +160,7 @@ public class ProjectCalendar implements CommandExecutedListener
 			return;
 		
 		CommandSetObjectData cmd = (CommandSetObjectData) event.getCommand();
-		if(cmd.getObjectType() != ProjectMetadata.getObjectType())
+		if(cmd.getObjectType() != ProjectMetadataSchema.getObjectType())
 			return;
 		
 		try

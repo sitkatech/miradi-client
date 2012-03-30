@@ -27,11 +27,11 @@ import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.HumanWelfareTarget;
-import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.StatusQuestion;
+import org.miradi.schemas.ProjectMetadataSchema;
 
 public class ViabilityProjectNode extends TreeTableNode
 {
@@ -69,7 +69,7 @@ public class ViabilityProjectNode extends TreeTableNode
 	@Override
 	public int getType()
 	{
-		return ProjectMetadata.getObjectType();
+		return ProjectMetadataSchema.getObjectType();
 	}
 
 	@Override

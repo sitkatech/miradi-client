@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.questions.BudgetTimePeriodQuestion;
 import org.miradi.questions.CountriesQuestion;
@@ -41,6 +42,8 @@ import org.miradi.questions.TncTerrestrialEcoRegionQuestion;
 
 public class ProjectMetadataSchema extends BaseObjectSchema
 {
+	public static final String OBJECT_NAME = "ProjectMetadata";
+
 	public ProjectMetadataSchema()
 	{
 		super();
@@ -134,6 +137,11 @@ public class ProjectMetadataSchema extends BaseObjectSchema
 	@Override
 	public String getXmpz2ElementName()
 	{
-		return ProjectMetadata.OBJECT_NAME;
+		return ProjectMetadataSchema.OBJECT_NAME;
+	}
+
+	public static int getObjectType()
+	{
+		return ObjectType.PROJECT_METADATA;
 	}
 }

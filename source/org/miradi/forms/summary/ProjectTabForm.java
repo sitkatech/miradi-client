@@ -21,6 +21,7 @@ package org.miradi.forms.summary;
 
 import org.miradi.forms.FieldPanelSpec;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.views.summary.SummaryProjectPanel;
 
 public class ProjectTabForm extends FieldPanelSpec
@@ -29,7 +30,7 @@ public class ProjectTabForm extends FieldPanelSpec
 	{
 		setTranslatedTitle(SummaryProjectPanel.PANEL_DESCRIPTION);
 
-		int type = ProjectMetadata.getObjectType();
+		int type = ProjectMetadataSchema.getObjectType();
 		addLabelAndField(type, ProjectMetadata.TAG_PROJECT_NAME);
 		addLabelAndField(type, ProjectMetadata.TAG_PROJECT_LANGUAGE);
 		addLabelAndField(type, ProjectMetadata.TAG_DATA_EFFECTIVE_DATE);

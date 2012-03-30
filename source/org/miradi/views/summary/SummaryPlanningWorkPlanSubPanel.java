@@ -44,6 +44,7 @@ import org.miradi.questions.DiagramObjectDataInclusionQuestion;
 import org.miradi.questions.FiscalYearStartQuestion;
 import org.miradi.questions.QuarterColumnsVisibilityQuestion;
 import org.miradi.schemas.ExpenseAssignmentSchema;
+import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.MiradiTextPane;
 
@@ -67,17 +68,17 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		
 		addDataDateRangeTextField();
 
-		addField(createChoiceField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_FISCAL_YEAR_START, new FiscalYearStartQuestion()));
-		addField(createChoiceField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_WORK_PLAN_DIAGRAM_DATA_INCLUSION, getProject().getQuestion(DiagramObjectDataInclusionQuestion.class)));
-		addField(createNumericField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_FULL_TIME_EMPLOYEE_DAYS_PER_YEAR));
+		addField(createChoiceField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_FISCAL_YEAR_START, new FiscalYearStartQuestion()));
+		addField(createChoiceField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_WORK_PLAN_DIAGRAM_DATA_INCLUSION, getProject().getQuestion(DiagramObjectDataInclusionQuestion.class)));
+		addField(createNumericField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_FULL_TIME_EMPLOYEE_DAYS_PER_YEAR));
 		ChoiceQuestion quarterColumnsVisibilityQuestion = getProject().getQuestion(QuarterColumnsVisibilityQuestion.class);
-		quarterColumnVisibilityComponent = addRadioButtonFieldWithCustomLabel(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY, quarterColumnsVisibilityQuestion, "");
+		quarterColumnVisibilityComponent = addRadioButtonFieldWithCustomLabel(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY, quarterColumnsVisibilityQuestion, "");
 		addQuarterColumnVisibilityExplanationLabel();
 		addField(createMultilineField(ProjectMetadata.TAG_PLANNING_COMMENTS));
 		
 		updateQuarterColumnVisibilityEnableStatus();
 		
-		setObjectRefs(new ORef[] {orefToUse, projectToUse.getSingletonObjectRef(ProjectMetadata.getObjectType()), });
+		setObjectRefs(new ORef[] {orefToUse, projectToUse.getSingletonObjectRef(ProjectMetadataSchema.getObjectType()), });
 		updateFieldsFromProject();
 	}
 	

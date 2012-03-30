@@ -27,6 +27,7 @@ import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.WcpaProjectData;
 import org.miradi.project.Project;
 import org.miradi.questions.ProtectedAreaCategoryQuestion;
+import org.miradi.schemas.ProjectMetadataSchema;
 
 public class ProtectedAreaPanel extends ObjectDataInputPanel
 {
@@ -35,7 +36,7 @@ public class ProtectedAreaPanel extends ObjectDataInputPanel
 		super(projectToUse, orefsToUse);
 		
 		ObjectDataInputField protectedAreaStatusField = createEditableCodeListField(ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES, new ProtectedAreaCategoryQuestion(), 1);
-		ObjectDataInputField protectedAreaStatusNotesField = createMultilineField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_PROTECTED_AREA_CATEGORY_NOTES, 25);
+		ObjectDataInputField protectedAreaStatusNotesField = createMultilineField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_PROTECTED_AREA_CATEGORY_NOTES, 25);
 		addFieldsOnOneLine(EAM.text("Label|Protected Area Categories"), new ObjectDataInputField[]{protectedAreaStatusField, protectedAreaStatusNotesField});
 		
 		addField(createMultilineField(WcpaProjectData.getObjectType(), WcpaProjectData.TAG_LEGAL_STATUS));

@@ -55,6 +55,7 @@ import org.miradi.objects.ViewData;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
+import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.StressSchema;
 import org.miradi.schemas.TargetSchema;
@@ -444,7 +445,7 @@ public class CommandExecutor
 		if (setCommand.isTypeAndTag(ResultsChainDiagramSchema.getObjectType(), ConceptualModelDiagram.TAG_DIAGRAM_FACTOR_IDS))
 			return wasWrappedTypeAddedOrRemoved(setCommand, TaskSchema.getObjectType());
 		
-		if (setCommand.isTypeAndTag(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_THREAT_RATING_MODE))
+		if (setCommand.isTypeAndTag(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_THREAT_RATING_MODE))
 			return true;
 		
 		if (setCommand.isTypeAndTag(ViewData.getObjectType(), ViewData.TAG_TREE_CONFIGURATION_REF))

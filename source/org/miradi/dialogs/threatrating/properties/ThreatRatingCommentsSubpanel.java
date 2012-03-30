@@ -28,6 +28,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
+import org.miradi.schemas.ProjectMetadataSchema;
 
 public class ThreatRatingCommentsSubpanel extends ObjectDataInputPanel
 {
@@ -47,7 +48,7 @@ public class ThreatRatingCommentsSubpanel extends ObjectDataInputPanel
 	{
 		super.commandExecuted(event);
 		
-		if(event.isSetDataCommandWithThisTypeAndTag(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_THREAT_RATING_MODE))
+		if(event.isSetDataCommandWithThisTypeAndTag(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_THREAT_RATING_MODE))
 		{
 			setObjectRefs(getSelectedRefs());
 		}

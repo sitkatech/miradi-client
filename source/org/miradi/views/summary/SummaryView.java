@@ -45,6 +45,7 @@ import org.miradi.objects.WcsProjectData;
 import org.miradi.objects.WwfProjectData;
 import org.miradi.project.Project;
 import org.miradi.schemas.FosProjectDataSchema;
+import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.views.TabbedView;
 import org.miradi.views.summary.doers.CreateOranizationDoer;
 import org.miradi.views.summary.doers.DeleteOranizationDoer;
@@ -153,8 +154,8 @@ public class SummaryView extends TabbedView
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		super.commandExecuted(event);
-		if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_WORKPLAN_START_DATE) ||
-			event.isSetDataCommandWithThisTypeAndTag(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_START_DATE))
+		if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_WORKPLAN_START_DATE) ||
+			event.isSetDataCommandWithThisTypeAndTag(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_START_DATE))
 			handleWorkPlanStartDate();
 	}
 	

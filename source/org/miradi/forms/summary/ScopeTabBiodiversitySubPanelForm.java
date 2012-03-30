@@ -26,6 +26,7 @@ import org.miradi.forms.FormFieldLabel;
 import org.miradi.forms.FormRow;
 import org.miradi.main.EAM;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.views.summary.BiodiversityPanel;
 
 public class ScopeTabBiodiversitySubPanelForm extends FieldPanelSpec
@@ -34,7 +35,7 @@ public class ScopeTabBiodiversitySubPanelForm extends FieldPanelSpec
 	{
 		setTranslatedTitle(BiodiversityPanel.PANEL_DESCRIPTION);
 		
-		int type = ProjectMetadata.getObjectType();
+		int type = ProjectMetadataSchema.getObjectType();
 		
 		FormRow areaRow = new FormRow();
 		areaRow.addLeftFormItem(new FormConstant(EAM.text("Label|Biodiversity Area (hectares)")));

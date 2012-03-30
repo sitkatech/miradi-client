@@ -74,6 +74,7 @@ import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.IntermediateResultSchema;
 import org.miradi.schemas.ObjectiveSchema;
+import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.ScopeBoxSchema;
 import org.miradi.schemas.StrategySchema;
@@ -340,7 +341,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		if (isUpdateTaggedObjectSetsCommand(event))
 			return true;
 		
-		if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_HUMAN_WELFARE_TARGET_MODE))
+		if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_HUMAN_WELFARE_TARGET_MODE))
 			return true;
 		
 		if (event.isSetDataCommandWithThisTypeAndTag(ConceptualModelDiagramSchema.getObjectType(), ConceptualModelDiagram.TAG_HIDDEN_TYPES))

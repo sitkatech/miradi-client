@@ -21,6 +21,7 @@ package org.miradi.forms.summary;
 
 import org.miradi.forms.FieldPanelSpec;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.views.summary.ScopeAndVisionPanel;
 
 public class ScopeTabScopeSubPanelForm extends FieldPanelSpec
@@ -29,7 +30,7 @@ public class ScopeTabScopeSubPanelForm extends FieldPanelSpec
 	{
 		setTranslatedTitle(ScopeAndVisionPanel.PANEL_DESCRIPTION);
 		
-		int type = ProjectMetadata.getObjectType();
+		int type = ProjectMetadataSchema.getObjectType();
 		
 		addLabelAndField(type, ProjectMetadata.TAG_SHORT_PROJECT_SCOPE);
 		addLabelAndField(type, ProjectMetadata.TAG_PROJECT_SCOPE);

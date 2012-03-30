@@ -22,6 +22,7 @@ package org.miradi.forms.summary;
 import org.miradi.forms.FieldPanelSpec;
 import org.miradi.main.EAM;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.schemas.ProjectMetadataSchema;
 
 public class PlanningTabWorkPlanSubPanelForm extends FieldPanelSpec
 {
@@ -29,7 +30,7 @@ public class PlanningTabWorkPlanSubPanelForm extends FieldPanelSpec
 	{
 		setTranslatedTitle(EAM.text("Workplan"));
 
-		int type = ProjectMetadata.getObjectType();
+		int type = ProjectMetadataSchema.getObjectType();
 		
 		addLabelAndFieldsWithLabels(EAM.text("Label|Project Dates"), type, new String[] {ProjectMetadata.TAG_START_DATE, ProjectMetadata.TAG_EXPECTED_END_DATE});
 		addLabelAndFieldsWithLabels(EAM.text("Label|Workplan Dates"), type, new String[] {ProjectMetadata.TAG_WORKPLAN_START_DATE, ProjectMetadata.TAG_WORKPLAN_END_DATE});

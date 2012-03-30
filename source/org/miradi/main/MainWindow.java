@@ -77,6 +77,7 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.FontFamiliyQuestion;
 import org.miradi.questions.TableRowHeightModeQuestion;
 import org.miradi.schemas.ExpenseAssignmentSchema;
+import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.utils.DefaultHyperlinkHandler;
 import org.miradi.utils.FileLocker;
 import org.miradi.utils.HtmlViewPanel;
@@ -913,7 +914,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 	{
 		try
 		{
-			if(event.isSetDataCommandWithThisTypeAndTag(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_CURRENT_WIZARD_SCREEN_NAME))
+			if(event.isSetDataCommandWithThisTypeAndTag(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_CURRENT_WIZARD_SCREEN_NAME))
 			{
 				refreshWizard();
 			}
@@ -1184,7 +1185,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 	{
 		public void commandExecuted(CommandExecutedEvent event)
 		{
-			if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_HUMAN_WELFARE_TARGET_MODE))
+			if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_HUMAN_WELFARE_TARGET_MODE))
 				updateMenuOptions();
 		}
 	}

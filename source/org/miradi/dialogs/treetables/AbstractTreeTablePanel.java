@@ -52,6 +52,7 @@ import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.KeyEcologicalAttributeSchema;
 import org.miradi.schemas.MeasurementSchema;
 import org.miradi.schemas.ObjectTreeTableConfigurationSchema;
+import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.TaskSchema;
@@ -362,7 +363,7 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 		if(event.isSetDataCommandWithThisTypeAndTag(ViewData.getObjectType(), ViewData.TAG_TREE_CONFIGURATION_REF))
 			return true;
 		
-		if(event.isSetDataCommandWithThisTypeAndTag(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_WORK_PLAN_DIAGRAM_DATA_INCLUSION))
+		if(event.isSetDataCommandWithThisTypeAndTag(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_WORK_PLAN_DIAGRAM_DATA_INCLUSION))
 			return true;
 		
 		if(event.isSetDataCommandWithThisTypeAndTag(ObjectTreeTableConfigurationSchema.getObjectType(), ObjectTreeTableConfiguration.TAG_COL_CONFIGURATION))

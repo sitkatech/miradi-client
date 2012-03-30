@@ -27,6 +27,7 @@ import org.miradi.main.EAM;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
+import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.utils.CodeList;
 
 public class PlanningPreferencesChangeHandler implements CommandExecutedListener
@@ -62,22 +63,22 @@ public class PlanningPreferencesChangeHandler implements CommandExecutedListener
 	
 	private boolean shouldCollapseAllBudgetColumns(CommandExecutedEvent event)
 	{
-		if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY))
+		if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY))
 			return true;
 		
-		if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_WORKPLAN_END_DATE))
+		if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_WORKPLAN_END_DATE))
 			return true;
 		
-		if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_WORKPLAN_START_DATE))
+		if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_WORKPLAN_START_DATE))
 			return true;
 		
-		if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_START_DATE))
+		if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_START_DATE))
 			return true;
 		
-		if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_EXPECTED_END_DATE))
+		if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_EXPECTED_END_DATE))
 			return true;
 		
-		if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_FISCAL_YEAR_START))
+		if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_FISCAL_YEAR_START))
 			return true;
 
 		return false;

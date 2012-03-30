@@ -43,6 +43,7 @@ import org.miradi.schemas.IntermediateResultSchema;
 import org.miradi.schemas.KeyEcologicalAttributeSchema;
 import org.miradi.schemas.MeasurementSchema;
 import org.miradi.schemas.ObjectiveSchema;
+import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
@@ -66,7 +67,7 @@ public class RtfStyleManager
 		createNewStyle(HEADING_3_STYLE_TAG,						S_3_RTF_ID, HEADING_3_STYLE, "Heading 3");
 		
 		createNewStyle(GoalSchema.OBJECT_NAME,                 		CS_13_RTF_ID, " \\f1\\b\\fs20 ", MIRADI_STYLE_PREFIX + "Goal");
-		createNewStyle(ProjectMetadata.OBJECT_NAME,		 		CS_14_RTF_ID, " \\f1\\b\\i\\fs20 ", MIRADI_STYLE_PREFIX + "Project");
+		createNewStyle(ProjectMetadataSchema.OBJECT_NAME,		 		CS_14_RTF_ID, " \\f1\\b\\i\\fs20 ", MIRADI_STYLE_PREFIX + "Project");
 		createNewStyle(COMMENT_STYLE_TAG, 						CS_15_RTF_ID, " \\f1\\fs18 ", MIRADI_STYLE_PREFIX + "Lng Txt");
 		createNewStyle(ConceptualModelDiagramSchema.OBJECT_NAME, 		CS_16_RTF_ID, " \\f1\\b\\fs20 ", MIRADI_STYLE_PREFIX + "CM");
 		createNewStyle(ResultsChainDiagramSchema.OBJECT_NAME,    		CS_17_RTF_ID, " \\f1\\b\\fs20 ", MIRADI_STYLE_PREFIX + "RC");
@@ -125,7 +126,7 @@ public class RtfStyleManager
 			return ConceptualModelDiagramSchema.OBJECT_NAME;
 		
 		if (ProjectMetadata.is(objectType))
-			return ProjectMetadata.OBJECT_NAME;
+			return ProjectMetadataSchema.OBJECT_NAME;
 		
 		if (Goal.is(objectType))
 			return GoalSchema.OBJECT_NAME;
