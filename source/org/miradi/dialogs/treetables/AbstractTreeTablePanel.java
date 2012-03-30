@@ -57,6 +57,7 @@ import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TableSettingsSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.TaskSchema;
+import org.miradi.schemas.ViewDataSchema;
 import org.miradi.utils.TableWithColumnWidthAndSequenceSaver;
 
 abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
@@ -237,10 +238,10 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 		if (event.isSetDataCommandWithThisTypeAndTag(ObjectTreeTableConfigurationSchema.getObjectType(), ObjectTreeTableConfiguration.TAG_TARGET_NODE_POSITION))
 			return true;
 		
-		if (event.isSetDataCommandWithThisTypeAndTag(ViewData.getObjectType(), ViewData.TAG_ACTION_TREE_CONFIGURATION_CHOICE))
+		if (event.isSetDataCommandWithThisTypeAndTag(ViewDataSchema.getObjectType(), ViewData.TAG_ACTION_TREE_CONFIGURATION_CHOICE))
 			return true;
 		
-		if (event.isSetDataCommandWithThisTypeAndTag(ViewData.getObjectType(), ViewData.TAG_MONITORING_TREE_CONFIGURATION_CHOICE))
+		if (event.isSetDataCommandWithThisTypeAndTag(ViewDataSchema.getObjectType(), ViewData.TAG_MONITORING_TREE_CONFIGURATION_CHOICE))
 			return true;
 		
 		return false;
@@ -361,7 +362,7 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 	
 	private boolean isCustomConfigurationCommand(CommandExecutedEvent event)
 	{
-		if(event.isSetDataCommandWithThisTypeAndTag(ViewData.getObjectType(), ViewData.TAG_TREE_CONFIGURATION_REF))
+		if(event.isSetDataCommandWithThisTypeAndTag(ViewDataSchema.getObjectType(), ViewData.TAG_TREE_CONFIGURATION_REF))
 			return true;
 		
 		if(event.isSetDataCommandWithThisTypeAndTag(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_WORK_PLAN_DIAGRAM_DATA_INCLUSION))

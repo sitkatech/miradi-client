@@ -33,6 +33,7 @@ import org.miradi.objects.ViewData;
 import org.miradi.questions.WorkPlanCategoryTypesQuestion;
 import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
+import org.miradi.schemas.ViewDataSchema;
 import org.miradi.utils.CodeList;
 
 public class WorkPlanCategoryTreeTablePanel extends PlanningTreeTablePanel
@@ -65,7 +66,7 @@ public class WorkPlanCategoryTreeTablePanel extends PlanningTreeTablePanel
 		if (super.doesCommandForceRebuild(event))
 			return true;
 		
-		if (event.isSetDataCommandWithThisTypeAndTag(ViewData.getObjectType(), ViewData.TAG_BUDGET_ROLLUP_REPORT_TYPES))
+		if (event.isSetDataCommandWithThisTypeAndTag(ViewDataSchema.getObjectType(), ViewData.TAG_BUDGET_ROLLUP_REPORT_TYPES))
 			return true;
 		
 		if (wasBudgetTypeCreatedOrDeleted(event))

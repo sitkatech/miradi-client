@@ -26,7 +26,6 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.DiagramModeQuestion;
@@ -130,13 +129,13 @@ public class ViewData extends BaseObject
 	@Override
 	public int getType()
 	{
-		return getObjectType();
+		return ViewDataSchema.getObjectType();
 	}
 	
 	@Override
 	public String getTypeName()
 	{
-		return OBJECT_NAME;
+		return ViewDataSchema.OBJECT_NAME;
 	}
 
 	@Override
@@ -144,12 +143,6 @@ public class ViewData extends BaseObject
 	{
 		return NO_OWNERS;
 	}
-	
-	public static int getObjectType()
-	{
-		return ObjectType.VIEW_DATA;
-	}
-	
 	
 	public static ViewData find(ObjectManager objectManager, ORef viewDataRef)
 	{
@@ -163,7 +156,7 @@ public class ViewData extends BaseObject
 	
 	public static boolean is(ORef ref)
 	{
-		return ref.getObjectType() == getObjectType();
+		return ref.getObjectType() == ViewDataSchema.getObjectType();
 	}
 
 	public static final String TAG_CURRENT_CONCEPTUAL_MODEL_REF = "CurrentConceptualModelRef";
@@ -179,6 +172,4 @@ public class ViewData extends BaseObject
 	public static final String TAG_CURRENT_WIZARD_STEP = "CurrentWizardStep";
 	public static final String TAG_ACTION_TREE_CONFIGURATION_CHOICE = "ActionTreeConfigurationChoice";
 	public static final String TAG_MONITORING_TREE_CONFIGURATION_CHOICE = "MonitoringTreeConfigurationChoice";
-	
-	public static final String OBJECT_NAME = "ViewData";
 }

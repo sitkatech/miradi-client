@@ -23,8 +23,8 @@ package org.miradi.xml.xmpz;
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.ViewData;
 import org.miradi.schemas.TableSettingsSchema;
+import org.miradi.schemas.ViewDataSchema;
 import org.miradi.xml.AbstractXmpzObjectImporter;
 import org.miradi.xml.wcs.ExtraDataExporter;
 import org.w3c.dom.Node;
@@ -86,8 +86,8 @@ public class ExtraDataImporter extends AbstractXmpzObjectImporter
 
 	private int convertTypeNameToObjectType(String typeName)
 	{
-		if (typeName.equals(ViewData.OBJECT_NAME))
-			return ViewData.getObjectType();
+		if (typeName.equals(ViewDataSchema.OBJECT_NAME))
+			return ViewDataSchema.getObjectType();
 		
 		if (typeName.equals(TableSettingsSchema.OBJECT_NAME))
 			return TableSettingsSchema.getObjectType();

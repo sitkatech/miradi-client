@@ -27,6 +27,7 @@ import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.objects.ViewData;
+import org.miradi.schemas.ViewDataSchema;
 
 public class ObjectsOnlyPlanningTreeTablePanel extends PlanningTreeTablePanel
 {
@@ -62,7 +63,7 @@ public class ObjectsOnlyPlanningTreeTablePanel extends PlanningTreeTablePanel
 	
 	public boolean isSingleLevelChoice(CommandExecutedEvent event)
 	{
-		return event.isSetDataCommandWithThisTypeAndTag(ViewData.getObjectType(), ViewData.TAG_PLANNING_SINGLE_LEVEL_CHOICE);
+		return event.isSetDataCommandWithThisTypeAndTag(ViewDataSchema.getObjectType(), ViewData.TAG_PLANNING_SINGLE_LEVEL_CHOICE);
 	}
 		
 	@Override

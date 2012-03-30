@@ -22,8 +22,8 @@ package org.miradi.xml.wcs;
 
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.ViewData;
 import org.miradi.schemas.TableSettingsSchema;
+import org.miradi.schemas.ViewDataSchema;
 
 
 public class ExtraDataExporter extends AbstractXmlExporter
@@ -38,7 +38,7 @@ public class ExtraDataExporter extends AbstractXmlExporter
 	{
 		getWcsXmlExporter().writeStartElement(EXTRA_DATA);
 		getWcsXmlExporter().writeStartElementWithAttribute(getWcsXmlExporter().getWriter(), EXTRA_DATA_SECTION, EXTRA_DATA_SECTION_OWNER_ATTRIBUTE, MIRADI_CLIENT_EXTRA_DATA_SECTION);
-		exportPool(ViewData.getObjectType());
+		exportPool(ViewDataSchema.getObjectType());
 		exportPool(TableSettingsSchema.getObjectType());
 		getWcsXmlExporter().writeEndElement(EXTRA_DATA_SECTION);
 		getWcsXmlExporter().writeEndElement(EXTRA_DATA);
