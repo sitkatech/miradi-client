@@ -22,10 +22,11 @@ package org.miradi.utils;
 
 import java.text.ParseException;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
 
-public class StringList
+public class StringList implements Iterable<String>
 {
 	public StringList()
 	{
@@ -191,6 +192,11 @@ public class StringList
 	protected String getJsonTag()
 	{
 		return TAG_IDS;
+	}
+	
+	public Iterator<String> iterator()
+	{
+		return data.iterator();
 	}
 		
 	private static final String TAG_IDS = "List";

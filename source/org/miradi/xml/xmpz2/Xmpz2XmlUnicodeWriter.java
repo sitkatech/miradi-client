@@ -136,9 +136,9 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 		final String elementName = appendParentNameToChildName(baseObjectSchema, fieldSchema);
 		final String elementContainerName = createContainerElementName(elementName);
 		writeStartElement(elementContainerName);
-		for (int index = 0; index < codes.size(); ++index)
+		for(String code : codes)
 		{
-			writeElement(XmlSchemaCreator.CODE_ELEMENT_NAME, codes.get(index));
+			writeElement(XmlSchemaCreator.CODE_ELEMENT_NAME, code);
 		}
 		
 		writeEndElement(elementContainerName);
