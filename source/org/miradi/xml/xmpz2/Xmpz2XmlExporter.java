@@ -21,6 +21,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz2;
 
 import org.martus.util.UnicodeWriter;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objectpools.EAMObjectPool;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.schemas.AbstractFieldSchema;
@@ -55,8 +59,27 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 		writeBaseObjectDataSchemaElement(getWcpaProjectData());
 		writeBaseObjectDataSchemaElement(getWcsProjectData());
 		writeBaseObjectDataSchemaElement(getWwfProjectData());
+		
+		for(int objectType = ObjectType.FIRST_OBJECT_TYPE; objectType < ObjectType.OBJECT_TYPE_COUNT; ++objectType)
+		{
+			EAMObjectPool pool = getProject().getPool(objectType);
+			if(pool != null)
+			{
+				ORefList sortedRefList = pool.getSortedRefList();
+				exportBaseObjects(sortedRefList);
+			}
+		}
 	}
 	
+	private void exportBaseObjects(ORefList sortedRefList) throws Exception
+	{
+		for(ORef ref : sortedRefList)
+		{
+			BaseObject baseObject = BaseObject.find(getProject(), ref);
+			writeBaseObjectDataSchemaElement(baseObject);
+		}
+	}
+
 	protected void writeBaseObjectDataSchemaElement(final BaseObject baseObject) throws Exception
 	{
 		BaseObjectSchema baseObjectSchema = baseObject.getSchema();
