@@ -23,6 +23,7 @@ package org.miradi.dialogs.iucnRedlistSpecies;
 import org.miradi.dialogs.base.EditableObjectPoolRefsTableModel;
 import org.miradi.objects.IucnRedlistSpecies;
 import org.miradi.project.Project;
+import org.miradi.schemas.IucnRedlistSpeciesSchema;
 
 public class IucnRedlistSpeciesEditablePoolTableModel extends EditableObjectPoolRefsTableModel
 {
@@ -40,7 +41,7 @@ public class IucnRedlistSpeciesEditablePoolTableModel extends EditableObjectPool
 	@Override
 	protected int getObjectType()
 	{
-		return IucnRedlistSpecies.getObjectType();
+		return IucnRedlistSpeciesSchema.getObjectType();
 	}
 
 	@Override

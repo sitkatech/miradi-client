@@ -24,7 +24,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.miradi.main.EAM;
-import org.miradi.objects.IucnRedlistSpecies;
 import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.objects.Organization;
 import org.miradi.objects.OtherNotableSpecies;
@@ -54,6 +53,7 @@ import org.miradi.schemas.CostAllocationRuleSchema;
 import org.miradi.schemas.DashboardSchema;
 import org.miradi.schemas.FosProjectDataSchema;
 import org.miradi.schemas.FundingSourceSchema;
+import org.miradi.schemas.IucnRedlistSpeciesSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 
 public class ObjectType
@@ -159,7 +159,7 @@ public class ObjectType
 			TaggedObjectSet.getObjectType(),
 			TableSettings.getObjectType(),
 			ThreatRatingCommentsData.getObjectType(),
-			IucnRedlistSpecies.getObjectType(),
+			IucnRedlistSpeciesSchema.getObjectType(),
 			OtherNotableSpecies.getObjectType(),
 			AudienceSchema.getObjectType(),
 			BudgetCategoryOneSchema.getObjectType(),

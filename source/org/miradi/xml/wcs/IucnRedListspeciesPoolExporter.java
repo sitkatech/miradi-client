@@ -20,12 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.wcs;
 
-import org.miradi.objects.IucnRedlistSpecies;
+import org.miradi.schemas.IucnRedlistSpeciesSchema;
 
 public class IucnRedListspeciesPoolExporter extends BaseObjectPoolExporter
 {
 	public IucnRedListspeciesPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
-		super(wcsXmlExporterToUse, IUCN_REDLIST_SPECIES, IucnRedlistSpecies.getObjectType());
+		super(wcsXmlExporterToUse, IUCN_REDLIST_SPECIES, IucnRedlistSpeciesSchema.getObjectType());
 	}
 }

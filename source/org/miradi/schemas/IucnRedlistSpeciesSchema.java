@@ -20,12 +20,20 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.schemas.BaseObjectSchema;;
 
 public class IucnRedlistSpeciesSchema extends BaseObjectSchema
 {
+	public static final String OBJECT_NAME = "IucnRedlistSpecies";
+
 	public IucnRedlistSpeciesSchema()
 	{
 		super();
+	}
+
+	public static int getObjectType()
+	{
+		return ObjectType.IUCN_REDLIST_SPECIES;
 	}
 }

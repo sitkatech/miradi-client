@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objects;
 
+import org.miradi.schemas.IucnRedlistSpeciesSchema;
+
 public class TestIucnRedlistSpecies extends ObjectTestCase
 {
 	public TestIucnRedlistSpecies(String name)
@@ -29,6 +31,6 @@ public class TestIucnRedlistSpecies extends ObjectTestCase
 	
 	public void testFields() throws Exception
 	{
-		verifyFields(IucnRedlistSpecies.getObjectType());
+		verifyFields(IucnRedlistSpeciesSchema.getObjectType());
 	}
 }

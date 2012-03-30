@@ -144,6 +144,7 @@ import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.GroupBoxSchema;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.IucnRedlistSpeciesSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
@@ -859,7 +860,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public IucnRedlistSpecies createIucnRedlistSpecies() throws Exception
 	{
-		ORef iucnRedlistSpeciesRef = createObject(IucnRedlistSpecies.getObjectType());
+		ORef iucnRedlistSpeciesRef = createObject(IucnRedlistSpeciesSchema.getObjectType());
 		return IucnRedlistSpecies.find(this, iucnRedlistSpeciesRef);
 	}
 	
