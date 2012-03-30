@@ -46,4 +46,10 @@ public class WcpaProjectDataSchema extends BaseObjectSchema
 		createFieldSchemaMultiLineUserText(WcpaProjectData.TAG_CURRENT_LAND_USES);
 		createFieldSchemaMultiLineUserText(WcpaProjectData.TAG_MANAGEMENT_RESOURCES);
 	}
+	
+	@Override
+	public String getXmpz2ElementName()
+	{
+		return WcpaProjectData.OBJECT_NAME;
+	}
 }
