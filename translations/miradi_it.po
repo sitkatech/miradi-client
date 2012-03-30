@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-30 14:12-0500\n"
+"POT-Creation-Date: 2012-03-30 14:30-0500\n"
 "PO-Revision-Date: 2011-04-29 11:26+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -2103,8 +2103,8 @@ msgstr "Tutte le sottoattività all'interno di questo oggetto verranno rimosse."
 msgid "An Error Occurred During Sorting."
 msgstr "Si è verificato un errore durante l'ordinamento."
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAssignmentMainTableModel.java:75
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:116
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAssignmentMainTableModel.java:76
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:117
 msgid "An error has occured while writing assignment data."
 msgstr ""
 "Si è verificato un errore durante la scrittura dei dati di assegnazione"
@@ -3071,7 +3071,7 @@ msgstr ""
 msgid "Cut"
 msgstr "Taglia"
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:57
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:58
 msgid "Daily Rate"
 msgstr "Tariffa giornaliera"
 
@@ -3506,7 +3506,7 @@ msgstr "Durata totale del progetto"
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetThreatLinkTableModel.java:76
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetSummaryRowTableModel.java:66
 #: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:112
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:104
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:105
 #: Miradi/source/org/miradi/dialogs/progressPercent/ProgressPercentTableModel.java:98
 msgid "Error"
 msgstr "Errore"
@@ -4478,7 +4478,7 @@ msgstr "Attributo ecologico chiave (KEA)"
 msgid "Label|(Undefined Accounting Code)"
 msgstr "(Codice di contabilità non definito)"
 
-#: Miradi/source/org/miradi/objects/FundingSource.java:70
+#: Miradi/source/org/miradi/objects/FundingSource.java:64
 msgid "Label|(Undefined Funding Source)"
 msgstr "(Fonte di finanziamento non definita)"
 
@@ -5254,7 +5254,7 @@ msgid ""
 "available. <br>"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAssignmentMainTableModel.java:41
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAssignmentMainTableModel.java:42
 msgid "Name"
 msgstr "Nome"
 
@@ -5324,7 +5324,7 @@ msgstr "Non efficace"
 #: Miradi/source/org/miradi/questions/FosTrainingTypeQuestion.java:35
 #: Miradi/source/org/miradi/questions/TrendQuestion.java:37
 #: Miradi/source/org/miradi/utils/Translation.java:306
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:277
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:278
 #: Miradi/source/org/miradi/dialogs/planning/treenodes/UnspecifiedBaseObject.java:59
 msgid "Not Specified"
 msgstr "NOn specificato"
@@ -5958,7 +5958,7 @@ msgstr "Riferisci al gruppo di lavoro e ai portatori di interesse"
 msgid "Resource"
 msgstr "Risorsa"
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:54
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:55
 msgid "Resource (Who)"
 msgstr "Risorsa(chi)"
 

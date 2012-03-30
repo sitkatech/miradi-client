@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-30 14:12-0500\n"
+"POT-Creation-Date: 2012-03-30 14:30-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -2005,8 +2005,8 @@ msgstr "Semua subtugas dalam butir ini juga akan dihapus. "
 msgid "An Error Occurred During Sorting."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAssignmentMainTableModel.java:75
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:116
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAssignmentMainTableModel.java:76
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:117
 msgid "An error has occured while writing assignment data."
 msgstr "Terjadi kesalahan saat menulis data alokasi. "
 
@@ -2959,7 +2959,7 @@ msgstr ""
 msgid "Cut"
 msgstr "Potong "
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:57
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:58
 msgid "Daily Rate"
 msgstr "Upah Harian "
 
@@ -3393,7 +3393,7 @@ msgstr ""
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetThreatLinkTableModel.java:76
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetSummaryRowTableModel.java:66
 #: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:112
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:104
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:105
 #: Miradi/source/org/miradi/dialogs/progressPercent/ProgressPercentTableModel.java:98
 msgid "Error"
 msgstr "Kesalahan "
@@ -4362,7 +4362,7 @@ msgstr "Atribut Ekologi Kunci (AEK) "
 msgid "Label|(Undefined Accounting Code)"
 msgstr " (Kode Akuntansi Tak Terdefinisi) "
 
-#: Miradi/source/org/miradi/objects/FundingSource.java:70
+#: Miradi/source/org/miradi/objects/FundingSource.java:64
 msgid "Label|(Undefined Funding Source)"
 msgstr "(Sumber Dana Tidak Jelas) "
 
@@ -5135,7 +5135,7 @@ msgid ""
 "available. <br>"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAssignmentMainTableModel.java:41
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAssignmentMainTableModel.java:42
 msgid "Name"
 msgstr "Nama "
 
@@ -5205,7 +5205,7 @@ msgstr "Tidak Efektif"
 #: Miradi/source/org/miradi/questions/FosTrainingTypeQuestion.java:35
 #: Miradi/source/org/miradi/questions/TrendQuestion.java:37
 #: Miradi/source/org/miradi/utils/Translation.java:306
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:277
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:278
 #: Miradi/source/org/miradi/dialogs/planning/treenodes/UnspecifiedBaseObject.java:59
 msgid "Not Specified"
 msgstr "Tidak Terspesifikasi "
@@ -5833,7 +5833,7 @@ msgstr "Laporkan kepada pemilik kepentingan dan tim proyek "
 msgid "Resource"
 msgstr "Sumber daya"
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:54
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:55
 msgid "Resource (Who)"
 msgstr "Sumber Daya (Siapa) "
 
