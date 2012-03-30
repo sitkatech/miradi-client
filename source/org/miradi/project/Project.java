@@ -96,7 +96,6 @@ import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.RatingCriterion;
 import org.miradi.objects.TableSettings;
-import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.TextBox;
 import org.miradi.objects.ThreatRatingCommentsData;
 import org.miradi.objects.ThreatStressRating;
@@ -127,6 +126,7 @@ import org.miradi.schemas.ObjectTreeTableConfigurationSchema;
 import org.miradi.schemas.RareProjectDataSchema;
 import org.miradi.schemas.RatingCriterionSchema;
 import org.miradi.schemas.ScopeBoxSchema;
+import org.miradi.schemas.TaggedObjectSetSchema;
 import org.miradi.schemas.TextBoxSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
@@ -213,7 +213,7 @@ public class Project
 
 	public TaggedObjectSetPool getTaggedObjectSetPool()
 	{
-		return (TaggedObjectSetPool) getPool(TaggedObjectSet.getObjectType());
+		return (TaggedObjectSetPool) getPool(TaggedObjectSetSchema.getObjectType());
 	}
 		
 	public WwfProjectDataPool getWwfProjectDataPool()

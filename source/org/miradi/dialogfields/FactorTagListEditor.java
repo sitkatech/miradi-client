@@ -41,6 +41,7 @@ import org.miradi.objects.TaggedObjectSet;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.TaggedObjectSetQuestion;
+import org.miradi.schemas.TaggedObjectSetSchema;
 import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.XmlUtilities2;
 
@@ -149,13 +150,13 @@ public class FactorTagListEditor extends AbstractQuestionEditorComponent impleme
 	
 	private boolean isTaggedObjectRelatedCommand(CommandExecutedEvent event)
 	{
-		if (event.isCreateCommandForThisType(TaggedObjectSet.getObjectType()))
+		if (event.isCreateCommandForThisType(TaggedObjectSetSchema.getObjectType()))
 			return true;
 
-		if (event.isSetDataCommandWithThisTypeAndTag(TaggedObjectSet.getObjectType(), TaggedObjectSet.TAG_LABEL))
+		if (event.isSetDataCommandWithThisTypeAndTag(TaggedObjectSetSchema.getObjectType(), TaggedObjectSet.TAG_LABEL))
 			return true;
 		
-		if (event.isSetDataCommandWithThisTypeAndTag(TaggedObjectSet.getObjectType(), TaggedObjectSet.TAG_TAGGED_OBJECT_REFS))
+		if (event.isSetDataCommandWithThisTypeAndTag(TaggedObjectSetSchema.getObjectType(), TaggedObjectSet.TAG_TAGGED_OBJECT_REFS))
 			return true;
 		
 		return false;

@@ -21,14 +21,14 @@ package org.miradi.dialogs.taggedObjectSet;
 
 import org.miradi.dialogs.base.ObjectPoolTableModel;
 import org.miradi.objects.ReportTemplate;
-import org.miradi.objects.TaggedObjectSet;
 import org.miradi.project.Project;
+import org.miradi.schemas.TaggedObjectSetSchema;
 
 public class TaggedObjectSetPoolTableModel extends ObjectPoolTableModel
 {
 	public TaggedObjectSetPoolTableModel(Project projectToUse)
 	{
-		super(projectToUse, TaggedObjectSet.getObjectType(), COLUMN_TAGS);
+		super(projectToUse, TaggedObjectSetSchema.getObjectType(), COLUMN_TAGS);
 	}
 	
 	@Override

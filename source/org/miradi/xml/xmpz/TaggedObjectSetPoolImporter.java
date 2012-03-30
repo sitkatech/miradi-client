@@ -23,6 +23,7 @@ package org.miradi.xml.xmpz;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.TaggedObjectSet;
+import org.miradi.schemas.TaggedObjectSetSchema;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -30,7 +31,7 @@ public class TaggedObjectSetPoolImporter extends AbstractBaseObjectPoolImporter
 {
 	public TaggedObjectSetPoolImporter(XmpzXmlImporter importerToUse)
 	{
-		super(importerToUse, TAGGED_OBJECT_SET_ELEMENT_NAME, TaggedObjectSet.getObjectType());
+		super(importerToUse, TAGGED_OBJECT_SET_ELEMENT_NAME, TaggedObjectSetSchema.getObjectType());
 	}
 	
 	@Override

@@ -74,6 +74,7 @@ import org.miradi.schemas.IntermediateResultSchema;
 import org.miradi.schemas.ProjectResourceSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.StrategySchema;
+import org.miradi.schemas.TaggedObjectSetSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.ThreatReductionResultSchema;
 import org.miradi.utils.CodeList;
@@ -535,7 +536,7 @@ abstract public class DiagramPaster
 	{
 		for (int index = 0; index < needToCreateTagNames.size(); ++index)
 		{
-			CommandCreateObject createTaggedObjectSet = new CommandCreateObject(TaggedObjectSet.getObjectType());
+			CommandCreateObject createTaggedObjectSet = new CommandCreateObject(TaggedObjectSetSchema.getObjectType());
 			getProject().executeCommand(createTaggedObjectSet);
 			
 			ORef newTaggedObjectSetRef = createTaggedObjectSet.getObjectRef();

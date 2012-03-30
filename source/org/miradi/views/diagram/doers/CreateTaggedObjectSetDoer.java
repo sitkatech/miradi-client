@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram.doers;
 
-import org.miradi.objects.TaggedObjectSet;
+import org.miradi.schemas.TaggedObjectSetSchema;
 import org.miradi.views.planning.doers.CreatePoolObjectDoer;
 
 public class CreateTaggedObjectSetDoer extends CreatePoolObjectDoer
@@ -27,6 +27,6 @@ public class CreateTaggedObjectSetDoer extends CreatePoolObjectDoer
 	@Override
 	protected int getTypeToCreate()
 	{
-		return TaggedObjectSet.getObjectType();
+		return TaggedObjectSetSchema.getObjectType();
 	}
 }

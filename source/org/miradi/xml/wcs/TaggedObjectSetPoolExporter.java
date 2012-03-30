@@ -23,12 +23,13 @@ package org.miradi.xml.wcs;
 import org.martus.util.UnicodeWriter;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.TaggedObjectSet;
+import org.miradi.schemas.TaggedObjectSetSchema;
 
 public class TaggedObjectSetPoolExporter extends BaseObjectPoolExporter
 {
 	public TaggedObjectSetPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
-		super(wcsXmlExporterToUse, TAGGED_OBJECT_SET_ELEMENT_NAME, TaggedObjectSet.getObjectType());
+		super(wcsXmlExporterToUse, TAGGED_OBJECT_SET_ELEMENT_NAME, TaggedObjectSetSchema.getObjectType());
 	}
 	
 	@Override

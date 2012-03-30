@@ -118,6 +118,7 @@ import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.StressSchema;
 import org.miradi.schemas.SubTargetSchema;
+import org.miradi.schemas.TaggedObjectSetSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.CodeList;
@@ -1482,7 +1483,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 	
 	private ORef createLabeledTag(String tagLabel) throws CommandFailedException
 	{
-		CommandCreateObject createCommand = new CommandCreateObject(TaggedObjectSet.getObjectType());
+		CommandCreateObject createCommand = new CommandCreateObject(TaggedObjectSetSchema.getObjectType());
 		getProject().executeCommand(createCommand);
 		
 		ORef tagRef = createCommand.getObjectRef();

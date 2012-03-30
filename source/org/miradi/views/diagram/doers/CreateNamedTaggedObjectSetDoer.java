@@ -28,6 +28,7 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.TaggedObjectSet;
+import org.miradi.schemas.TaggedObjectSetSchema;
 import org.miradi.utils.XmlUtilities2;
 import org.miradi.views.ObjectsDoer;
 
@@ -54,7 +55,7 @@ public class CreateNamedTaggedObjectSetDoer extends ObjectsDoer
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
-			CommandCreateObject createCommand = new CommandCreateObject(TaggedObjectSet.getObjectType());
+			CommandCreateObject createCommand = new CommandCreateObject(TaggedObjectSetSchema.getObjectType());
 			getProject().executeCommand(createCommand);
 			
 			ORef newlyCreateTagRef = createCommand.getObjectRef();

@@ -23,7 +23,6 @@ import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.TaggedObjectSetSchema;
@@ -44,24 +43,19 @@ public class TaggedObjectSet extends BaseObject
 	@Override
 	public int getType()
 	{
-		return getObjectType();
+		return TaggedObjectSetSchema.getObjectType();
 	}
 	
 	@Override
 	public String getTypeName()
 	{
-		return OBJECT_NAME;
+		return TaggedObjectSetSchema.OBJECT_NAME;
 	}
 
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;
-	}
-	
-	public static int getObjectType()
-	{
-		return ObjectType.TAGGED_OBJECT_SET;
 	}
 	
 	@Override
@@ -101,7 +95,7 @@ public class TaggedObjectSet extends BaseObject
 	
 	public static boolean is(int objectType)
 	{
-		return objectType == getObjectType();
+		return objectType == TaggedObjectSetSchema.getObjectType();
 	}
 	
 	public static TaggedObjectSet find(ObjectManager objectManager, ORef objectTagRef)
@@ -117,6 +111,4 @@ public class TaggedObjectSet extends BaseObject
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
 	public static final String TAG_TAGGED_OBJECT_REFS = "TaggedObjectRefs";
 	public static final String TAG_COMMENTS = "Comments";
-	
-	public static final String OBJECT_NAME = "TaggedObjectSet";
 }
