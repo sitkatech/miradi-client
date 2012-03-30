@@ -26,9 +26,9 @@ import java.awt.event.MouseEvent;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.BudgetCategoryOne;
 import org.miradi.objects.BudgetCategoryTwo;
 import org.miradi.schemas.AccountingCodeSchema;
+import org.miradi.schemas.BudgetCategoryOneSchema;
 import org.miradi.schemas.FundingSourceSchema;
 
 public class AbstractAssignmentDetailsMainTable extends AbstractAssignmentDetailsTable
@@ -54,7 +54,7 @@ public class AbstractAssignmentDetailsMainTable extends AbstractAssignmentDetail
 		{
 			createComboColumnWithInvalidObject(tableColumn, FundingSourceSchema.getObjectType(), FundingSourceSchema.OBJECT_NAME);
 			createComboColumnWithInvalidObject(tableColumn, AccountingCodeSchema.getObjectType(), AccountingCodeSchema.OBJECT_NAME);
-			createComboColumnWithInvalidObject(tableColumn, BudgetCategoryOne.getObjectType(), BudgetCategoryOne.OBJECT_NAME);
+			createComboColumnWithInvalidObject(tableColumn, BudgetCategoryOneSchema.getObjectType(), BudgetCategoryOneSchema.OBJECT_NAME);
 			createComboColumnWithInvalidObject(tableColumn, BudgetCategoryTwo.getObjectType(), BudgetCategoryTwo.OBJECT_NAME);
 		}
 	}

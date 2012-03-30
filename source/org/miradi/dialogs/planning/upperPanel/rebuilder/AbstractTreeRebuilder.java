@@ -34,7 +34,6 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.BudgetCategoryOne;
 import org.miradi.objects.BudgetCategoryTwo;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
@@ -59,6 +58,7 @@ import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
 import org.miradi.schemas.AccountingCodeSchema;
+import org.miradi.schemas.BudgetCategoryOneSchema;
 import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.BaseObjectDateDescendingAndIdComparator;
@@ -415,7 +415,7 @@ abstract public class AbstractTreeRebuilder
 			ProjectResource.getObjectType(),
 			AccountingCodeSchema.getObjectType(),
 			FundingSourceSchema.getObjectType(),
-			BudgetCategoryOne.getObjectType(),
+			BudgetCategoryOneSchema.getObjectType(),
 			BudgetCategoryTwo.getObjectType(),
 			Task.getObjectType(),
 			ResourceAssignment.getObjectType(),

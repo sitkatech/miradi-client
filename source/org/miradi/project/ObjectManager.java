@@ -90,7 +90,6 @@ import org.miradi.objectpools.XenodataPool;
 import org.miradi.objectpools.XslTemplatePool;
 import org.miradi.objects.Audience;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.BudgetCategoryOne;
 import org.miradi.objects.BudgetCategoryTwo;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
@@ -142,6 +141,7 @@ import org.miradi.objects.WwfProjectData;
 import org.miradi.objects.Xenodata;
 import org.miradi.objects.XslTemplate;
 import org.miradi.schemas.AccountingCodeSchema;
+import org.miradi.schemas.BudgetCategoryOneSchema;
 import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.schemas.IndicatorSchema;
 
@@ -206,7 +206,7 @@ public class ObjectManager
 		addNormalPool(new IucnRedlistSpeciesPool(ida), IucnRedlistSpecies.OBJECT_NAME);
 		addNormalPool(new OtherNotableSpeciesPool(ida), OtherNotableSpecies.OBJECT_NAME);
 		addNormalPool(new AudiencePool(ida), Audience.OBJECT_NAME);
-		addNormalPool(new BudgetCategoryOnePool(ida), BudgetCategoryOne.OBJECT_NAME);
+		addNormalPool(new BudgetCategoryOnePool(ida), BudgetCategoryOneSchema.OBJECT_NAME);
 		addNormalPool(new BudgetCategoryTwoPool(ida), BudgetCategoryTwo.OBJECT_NAME);
 		addNormalPool(new DashboardPool(ida), Dashboard.OBJECT_NAME);
 		addNormalPool(new XslTemplatePool(ida), XslTemplate.OBJECT_NAME);

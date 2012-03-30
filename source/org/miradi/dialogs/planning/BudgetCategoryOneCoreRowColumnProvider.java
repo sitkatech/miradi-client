@@ -20,9 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning;
 
-import org.miradi.objects.BudgetCategoryOne;
 import org.miradi.project.Project;
 import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
+import org.miradi.schemas.BudgetCategoryOneSchema;
 import org.miradi.utils.CodeList;
 
 public class BudgetCategoryOneCoreRowColumnProvider extends AbstractBudgetCategoryRowColumnProvider
@@ -46,12 +46,12 @@ public class BudgetCategoryOneCoreRowColumnProvider extends AbstractBudgetCatego
 	@Override
 	public String getObjectTypeName()
 	{
-		return BudgetCategoryOne.OBJECT_NAME;
+		return BudgetCategoryOneSchema.OBJECT_NAME;
 	}
 	
 	@Override
 	public int getObjectType()
 	{
-		return BudgetCategoryOne.getObjectType();
+		return BudgetCategoryOneSchema.getObjectType();
 	}
 }

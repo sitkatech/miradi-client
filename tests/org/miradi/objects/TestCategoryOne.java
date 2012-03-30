@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objects;
 
+import org.miradi.schemas.BudgetCategoryOneSchema;
+
 public class TestCategoryOne extends ObjectTestCase
 {
 	public TestCategoryOne(String name)
@@ -29,6 +31,6 @@ public class TestCategoryOne extends ObjectTestCase
 	
 	public void testFields() throws Exception
 	{
-		verifyFields(BudgetCategoryOne.getObjectType());
+		verifyFields(BudgetCategoryOneSchema.getObjectType());
 	}
 }
