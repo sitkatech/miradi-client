@@ -55,9 +55,9 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
-import org.miradi.objects.ResourceAssignment;
 import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 import org.miradi.schemas.ExpenseAssignmentSchema;
+import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.FillerLabel;
 import org.miradi.utils.MultiTableCombinedAsOneExporter;
@@ -163,7 +163,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 	protected boolean wereAssignmentNodesAddedOrRemoved(CommandExecutedEvent event) throws Exception
 	{
 		CodeList rowCodes = getRowColumnProvider().getRowCodesToShow();
-		if (rowCodes.contains(ResourceAssignment.OBJECT_NAME) && event.isSetDataCommandWithThisTag(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS))
+		if (rowCodes.contains(ResourceAssignmentSchema.OBJECT_NAME) && event.isSetDataCommandWithThisTag(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS))
 			return true;
 
 		if (rowCodes.contains(ExpenseAssignmentSchema.OBJECT_NAME) && event.isSetDataCommandWithThisTag(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS))

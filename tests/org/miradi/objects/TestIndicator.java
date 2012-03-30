@@ -35,6 +35,7 @@ import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.utils.CommandVector;
 
 
@@ -175,7 +176,7 @@ public class TestIndicator extends AbstractObjectWithBudgetDataToDeleteTestCase
 		Cause indicatorOwner = getProject().createCause();
 		Indicator indicator = getProject().createIndicator(indicatorOwner);
 		ResourceAssignment assignment = getProject().createResourceAssignment();
-		IdList assignmentIds = new IdList(ResourceAssignment.getObjectType(), new BaseId[] { assignment.getId() });
+		IdList assignmentIds = new IdList(ResourceAssignmentSchema.getObjectType(), new BaseId[] { assignment.getId() });
 		indicator.setData(Indicator.TAG_RESOURCE_ASSIGNMENT_IDS, assignmentIds.toString());
 		Command[] commandsToClone = indicator.createCommandsToClone(indicator.getId());
 		Vector<String> modifiedTags = extractSetDataCommands(commandsToClone, indicator.getRef());

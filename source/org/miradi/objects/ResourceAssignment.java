@@ -23,7 +23,6 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.ResourceAssignmentId;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.project.ObjectManager;
@@ -48,20 +47,15 @@ public class ResourceAssignment extends Assignment
 	@Override
 	public int getType()
 	{
-		return getObjectType();
+		return ResourceAssignmentSchema.getObjectType();
 	}
 
 	@Override
 	public String getTypeName()
 	{
-		return OBJECT_NAME;
+		return ResourceAssignmentSchema.OBJECT_NAME;
 	}
 
-	public static int getObjectType()
-	{
-		return ObjectType.RESOURCE_ASSIGNMENT;
-	}
-	
 	@Override
 	public String getPseudoData(String fieldTag)
 	{
@@ -187,7 +181,7 @@ public class ResourceAssignment extends Assignment
 	
 	public static boolean is(int objectType)
 	{
-		return objectType == getObjectType();
+		return objectType == ResourceAssignmentSchema.getObjectType();
 	}
 	
 	public static ResourceAssignment find(ObjectManager objectManager, ORef assignmentRef)
@@ -205,6 +199,4 @@ public class ResourceAssignment extends Assignment
 	public static final String TAG_FUNDING_SOURCE_ID = "FundingSource";
 	public static final String PSEUDO_TAG_PROJECT_RESOURCE_LABEL = "PseudoTagProjectResourceLabel";
 	public static final String PSEUDO_TAG_OWNING_FACTOR_NAME = "PseudoTagOwningFactorName";
-	
-	public static final String OBJECT_NAME = "ResourceAssignment";
 }

@@ -69,6 +69,7 @@ import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.Project;
 import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.FundingSourceSchema;
+import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
@@ -158,7 +159,7 @@ abstract public class DiagramPaster
 	
 	private Command[] getCommandToFixUpIdRefs(HashMap pastedObjectMap, BaseObject newObject, String tag) throws Exception
 	{
-		if (ResourceAssignment.getObjectType() == newObject.getType())
+		if (ResourceAssignmentSchema.getObjectType() == newObject.getType())
 		{
 			if (ResourceAssignment.TAG_ACCOUNTING_CODE_ID.equals(tag))
 				return getCommandToFixId(pastedObjectMap, newObject, AccountingCodeSchema.getObjectType(), tag);
@@ -843,7 +844,7 @@ abstract public class DiagramPaster
 			String jsonAsString = factorDeepCopies.get(i);
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
 			int type = getTypeFromJson(json);
-			if (ResourceAssignment.getObjectType() == type)
+			if (ResourceAssignmentSchema.getObjectType() == type)
 				return true;
 		}
 		

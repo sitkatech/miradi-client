@@ -44,7 +44,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.StringRefMap;
-import org.miradi.objects.ResourceAssignment;
+import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
@@ -1468,7 +1468,7 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigrationTestCase
 	{
 		final int RESOURCE_ASSIGNMENT_TYPE = 14;
 		File resourceAssignmentDir = DataUpgrader.getObjectsDir(jsonDir, RESOURCE_ASSIGNMENT_TYPE);
-		IdList resourceAssignmentIds = json.getIdList(ResourceAssignment.getObjectType(), "AssignmentIds");
+		IdList resourceAssignmentIds = json.getIdList(ResourceAssignmentSchema.getObjectType(), "AssignmentIds");
 		assertEquals("wrong resource assignment count?", expectedResourceIds.size(), resourceAssignmentIds.size());
 		for (int index = 0; index < resourceAssignmentIds.size(); ++index)
 		{

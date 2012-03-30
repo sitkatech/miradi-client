@@ -32,6 +32,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.project.Project;
+import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.utils.OptionalDouble;
 
 abstract public class AbstractWorkUnitsTableModel extends AssignmentDateUnitsTableModel
@@ -57,7 +58,7 @@ abstract public class AbstractWorkUnitsTableModel extends AssignmentDateUnitsTab
 	@Override
 	protected int getAssignmentType()
 	{
-		return ResourceAssignment.getObjectType();
+		return ResourceAssignmentSchema.getObjectType();
 	}
 
 	@Override

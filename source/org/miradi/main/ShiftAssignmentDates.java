@@ -27,9 +27,9 @@ import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objectpools.EAMObjectPool;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.ResourceAssignment;
 import org.miradi.project.Project;
 import org.miradi.schemas.ExpenseAssignmentSchema;
+import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.NullProgressMeter;
@@ -56,7 +56,7 @@ public class ShiftAssignmentDates
 		Translation.initialize();
 		Project project = new Project();
 		project.createOrOpenWithDefaultObjects(projectFile, new NullProgressMeter());
-		showAllAssignmentDates(project, ResourceAssignment.getObjectType());
+		showAllAssignmentDates(project, ResourceAssignmentSchema.getObjectType());
 		showAllAssignmentDates(project, ExpenseAssignmentSchema.getObjectType());
 		
 // Methods that write to the file are commented out for safety. They do work.

@@ -23,13 +23,14 @@ package org.miradi.xml.wcs;
 import org.martus.util.UnicodeWriter;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ResourceAssignment;
+import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.xml.generic.XmlSchemaCreator;
 
 public class ResourceAssignmentPoolExporter extends AbstractAssignmentPoolExporter
 {
 	public ResourceAssignmentPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
-		super(wcsXmlExporterToUse, RESOURCE_ASSIGNMENT, ResourceAssignment.getObjectType());
+		super(wcsXmlExporterToUse, RESOURCE_ASSIGNMENT, ResourceAssignmentSchema.getObjectType());
 	}
 	
 	@Override

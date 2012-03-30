@@ -26,12 +26,12 @@ import org.miradi.objects.Cause;
 import org.miradi.objects.Goal;
 import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Objective;
-import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.ResourceAssignmentSchema;
 
 public class PlanningViewSingleLevelQuestion extends DynamicChoiceQuestion
 {
@@ -58,7 +58,7 @@ public class PlanningViewSingleLevelQuestion extends DynamicChoiceQuestion
 		choices.add(new ChoiceItem(Task.ACTIVITY_NAME, EAM.text("Activities Only")));
 		choices.add(new ChoiceItem(IndicatorSchema.OBJECT_NAME, EAM.text("Indicators Only")));
 		choices.add(new ChoiceItem(Task.METHOD_NAME, EAM.text("Methods Only")));
-		choices.add(new ChoiceItem(ResourceAssignment.OBJECT_NAME, EAM.text("Assigned Resources Only")));
+		choices.add(new ChoiceItem(ResourceAssignmentSchema.OBJECT_NAME, EAM.text("Assigned Resources Only")));
 	
 		return choices;
 	}

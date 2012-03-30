@@ -29,9 +29,9 @@ import org.miradi.objects.Desire;
 import org.miradi.objects.Factor;
 import org.miradi.objects.ProgressPercent;
 import org.miradi.objects.ProgressReport;
-import org.miradi.objects.ResourceAssignment;
 import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.xml.AbstractXmpzObjectImporter;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.w3c.dom.Node;
@@ -97,7 +97,7 @@ abstract public class AbstractBaseObjectPoolImporter extends AbstractXmpzObjectI
 
 	protected void importResourceAssignmentIds(Node node, ORef destinationRef) throws Exception
 	{
-		importIds(node, destinationRef, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, ResourceAssignment.getObjectType(), XmpzXmlConstants.RESOURCE_ASSIGNMENT);
+		importIds(node, destinationRef, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, ResourceAssignmentSchema.getObjectType(), XmpzXmlConstants.RESOURCE_ASSIGNMENT);
 	}
 	
 	protected void importIndicatorIds(Node node, ORef destinationRef) throws Exception
