@@ -22,12 +22,13 @@ package org.miradi.dialogs.reportTemplate;
 import org.miradi.dialogs.base.ObjectPoolTableModel;
 import org.miradi.objects.ReportTemplate;
 import org.miradi.project.Project;
+import org.miradi.schemas.ReportTemplateSchema;
 
 public class ReportTemplatePoolTableModel extends ObjectPoolTableModel
 {
 	public ReportTemplatePoolTableModel(Project projectToUse)
 	{
-		super(projectToUse, ReportTemplate.getObjectType(), COLUMN_TAGS);
+		super(projectToUse, ReportTemplateSchema.getObjectType(), COLUMN_TAGS);
 	}
 	
 	@Override

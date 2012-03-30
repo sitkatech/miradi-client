@@ -21,7 +21,6 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.ReportTemplateSchema;
@@ -42,24 +41,19 @@ public class ReportTemplate extends BaseObject
 	@Override
 	public int getType()
 	{
-		return getObjectType();
+		return ReportTemplateSchema.getObjectType();
 	}
 	
 	@Override
 	public String getTypeName()
 	{
-		return OBJECT_NAME;
+		return ReportTemplateSchema.OBJECT_NAME;
 	}
 
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;
-	}
-	
-	public static int getObjectType()
-	{
-		return ObjectType.REPORT_TEMPLATE;
 	}
 	
 	@Override
@@ -80,7 +74,7 @@ public class ReportTemplate extends BaseObject
 	
 	public static boolean is(int objectType)
 	{
-		return objectType == getObjectType();
+		return objectType == ReportTemplateSchema.getObjectType();
 	}
 	
 	public static ReportTemplate find(ObjectManager objectManager, ORef reportTemplateRef)
@@ -96,6 +90,4 @@ public class ReportTemplate extends BaseObject
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
 	public static final String TAG_INCLUDE_SECTION_CODES = "IncludeSectionCodes";
 	public static final String TAG_COMMENTS = "Comments";
-	
-	public static final String OBJECT_NAME = "ReportTemplate";
 }

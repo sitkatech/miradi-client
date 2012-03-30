@@ -28,19 +28,20 @@ import org.miradi.objects.ReportTemplate;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.ReportTemplateContentQuestion;
+import org.miradi.schemas.ReportTemplateSchema;
 
 public class ReportTemplatePropertiesPanel extends ObjectDataInputPanel
 {
 	public ReportTemplatePropertiesPanel(Project projectToUse) throws Exception
 	{
-		super(projectToUse, ReportTemplate.getObjectType(), BaseId.INVALID);
+		super(projectToUse, ReportTemplateSchema.getObjectType(), BaseId.INVALID);
 			
 		ObjectDataInputField shortLabelField = createStringField(ReportTemplate.TAG_SHORT_LABEL, 10);
 		ObjectDataInputField labelField = createExpandableField(ReportTemplate.TAG_LABEL);
 		addFieldsOnOneLine(EAM.text("Report Template"), new ReportTemplateIcon(), new ObjectDataInputField[]{shortLabelField, labelField,});
 		
 		ChoiceQuestion reportContentsQuestion = new ReportTemplateContentQuestion(getProject());
-		addField(createSingleColumnCodeListField(ReportTemplate.getObjectType(), ReportTemplate.TAG_INCLUDE_SECTION_CODES, reportContentsQuestion));
+		addField(createSingleColumnCodeListField(ReportTemplateSchema.getObjectType(), ReportTemplate.TAG_INCLUDE_SECTION_CODES, reportContentsQuestion));
 		addField(createMultilineField(ReportTemplate.TAG_COMMENTS));
 		updateFieldsFromProject();
 	}
