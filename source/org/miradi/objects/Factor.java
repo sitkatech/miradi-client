@@ -40,6 +40,7 @@ import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
+import org.miradi.schemas.TaggedObjectSetSchema;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -433,7 +434,7 @@ abstract public class Factor extends BaseObject
 	
 	public ORefList findReferringTagRefs()
 	{
-		return findObjectsThatReferToUs(TaggedObjectSet.getObjectType());
+		return findObjectsThatReferToUs(TaggedObjectSetSchema.getObjectType());
 	}
 	
 	protected CommandVector buildRemoveFromRelevancyListCommands(ORef relevantObjectRefToRemove) throws Exception

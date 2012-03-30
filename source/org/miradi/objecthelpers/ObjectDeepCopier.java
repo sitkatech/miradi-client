@@ -24,6 +24,7 @@ import java.util.Vector;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.project.Project;
+import org.miradi.schemas.TaggedObjectSetSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.views.diagram.DiagramPaster;
@@ -80,7 +81,7 @@ public class ObjectDeepCopier
 	private CodeList getTagNames(BaseObject objectToDeepCopy)
 	{
 		CodeList tagNames = new CodeList();
-		ORefList referringTaggedObjectSetRefs = objectToDeepCopy.findObjectsThatReferToUs(TaggedObjectSet.getObjectType());
+		ORefList referringTaggedObjectSetRefs = objectToDeepCopy.findObjectsThatReferToUs(TaggedObjectSetSchema.getObjectType());
 		for (int index = 0; index < referringTaggedObjectSetRefs.size(); ++index)
 		{
 			ORef taggedObjectSetRef = referringTaggedObjectSetRefs.get(index);

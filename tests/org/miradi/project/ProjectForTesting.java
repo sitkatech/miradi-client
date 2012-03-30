@@ -160,6 +160,7 @@ import org.miradi.schemas.ScopeBoxSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.StressSchema;
 import org.miradi.schemas.SubTargetSchema;
+import org.miradi.schemas.TaggedObjectSetSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.schemas.TextBoxSchema;
@@ -899,7 +900,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public TaggedObjectSet createTaggedObjectSet() throws Exception
 	{
-		ORef taggedObjectSetRef = createObject(TaggedObjectSet.getObjectType());
+		ORef taggedObjectSetRef = createObject(TaggedObjectSetSchema.getObjectType());
 		return TaggedObjectSet.find(this, taggedObjectSetRef);
 	}
 	

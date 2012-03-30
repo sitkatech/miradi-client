@@ -20,11 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class TaggedObjectSetSchema extends BaseObjectSchema
 {
+	public static final String OBJECT_NAME = "TaggedObjectSet";
+
 	public TaggedObjectSetSchema()
 	{
 		super();
@@ -38,5 +41,10 @@ public class TaggedObjectSetSchema extends BaseObjectSchema
 		createFieldSchemaSingleLineUserText(TaggedObjectSet.TAG_SHORT_LABEL);
 		createFieldSchemaReflist(TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, XmpzXmlConstants.TAGGED_FACTOR_IDS);
 		createFieldSchemaMultiLineUserText(TaggedObjectSet.TAG_COMMENTS);
+	}
+
+	public static int getObjectType()
+	{
+		return ObjectType.TAGGED_OBJECT_SET;
 	}
 }

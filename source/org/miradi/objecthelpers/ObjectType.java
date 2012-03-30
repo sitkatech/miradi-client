@@ -24,7 +24,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.miradi.main.EAM;
-import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.ThreatRatingCommentsData;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.TncProjectData;
@@ -55,6 +54,7 @@ import org.miradi.schemas.RatingCriterionSchema;
 import org.miradi.schemas.ReportTemplateSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.TableSettingsSchema;
+import org.miradi.schemas.TaggedObjectSetSchema;
 
 public class ObjectType
 {
@@ -156,7 +156,7 @@ public class ObjectType
 			OrganizationSchema.getObjectType(),
 			WcpaProjectData.getObjectType(),
 			ReportTemplateSchema.getObjectType(),
-			TaggedObjectSet.getObjectType(),
+			TaggedObjectSetSchema.getObjectType(),
 			TableSettingsSchema.getObjectType(),
 			ThreatRatingCommentsData.getObjectType(),
 			IucnRedlistSpeciesSchema.getObjectType(),

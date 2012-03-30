@@ -25,6 +25,7 @@ import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.taggedObjectSet.TaggedObjectSetTreeTablePanel;
 import org.miradi.main.EAM;
 import org.miradi.objects.TaggedObjectSet;
+import org.miradi.schemas.TaggedObjectSetSchema;
 import org.miradi.views.umbrella.doers.AbstractEditListDoer;
 
 public class EditTaggedObjectSetDoer extends AbstractEditListDoer
@@ -45,7 +46,7 @@ public class EditTaggedObjectSetDoer extends AbstractEditListDoer
 	@Override
 	protected int getObjectType()
 	{
-		return TaggedObjectSet.getObjectType();
+		return TaggedObjectSetSchema.getObjectType();
 	}
 	
 	@Override

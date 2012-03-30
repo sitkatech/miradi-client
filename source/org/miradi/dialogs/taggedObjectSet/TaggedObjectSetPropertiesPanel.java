@@ -27,19 +27,20 @@ import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.TaggedObjectSet;
+import org.miradi.schemas.TaggedObjectSetSchema;
 import org.miradi.views.umbrella.ObjectPicker;
 
 public class TaggedObjectSetPropertiesPanel extends ObjectDataInputPanel
 {
 	public TaggedObjectSetPropertiesPanel(MainWindow mainWindowToUse, ObjectPicker picker) throws Exception
 	{
-		super(mainWindowToUse.getProject(), TaggedObjectSet.getObjectType(), BaseId.INVALID);
+		super(mainWindowToUse.getProject(), TaggedObjectSetSchema.getObjectType(), BaseId.INVALID);
 			
 		ObjectDataInputField shortLabelField = createStringField(TaggedObjectSet.TAG_SHORT_LABEL, 10);
 		ObjectDataInputField labelField = createExpandableField(TaggedObjectSet.TAG_LABEL);
 		addFieldsOnOneLine(EAM.text("Tag"), new TaggedObjectSetIcon(), new ObjectDataInputField[]{shortLabelField, labelField,});
 		
-		addFieldWithEditButton(EAM.text("Tagged Items"), createReadOnlyObjectList(TaggedObjectSet.getObjectType(), TaggedObjectSet.TAG_TAGGED_OBJECT_REFS), createObjectsActionButton(mainWindowToUse.getActions().getObjectsAction(ActionEditTaggedObjectSet.class), picker));
+		addFieldWithEditButton(EAM.text("Tagged Items"), createReadOnlyObjectList(TaggedObjectSetSchema.getObjectType(), TaggedObjectSet.TAG_TAGGED_OBJECT_REFS), createObjectsActionButton(mainWindowToUse.getActions().getObjectsAction(ActionEditTaggedObjectSet.class), picker));
 		
 		addField(createMultilineField(TaggedObjectSet.TAG_COMMENTS));
 		updateFieldsFromProject();

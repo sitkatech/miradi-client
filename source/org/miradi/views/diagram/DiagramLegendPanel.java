@@ -79,6 +79,7 @@ import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.ScopeBoxSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.StressSchema;
+import org.miradi.schemas.TaggedObjectSetSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.schemas.TextBoxSchema;
@@ -95,7 +96,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		
 		mainWindow = mainWindowToUse;
 		getProject().addCommandExecutedListener(this);
-		editListPanel = new ObjectRefListEditorPanel(getProject(), ORef.createInvalidWithType(getDiagramType()), DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, TaggedObjectSet.getObjectType());
+		editListPanel = new ObjectRefListEditorPanel(getProject(), ORef.createInvalidWithType(getDiagramType()), DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, TaggedObjectSetSchema.getObjectType());
 		createLegendCheckBoxes();
 		addAllComponents();
 		updateLegendPanel(getLegendSettings(DiagramObject.TAG_HIDDEN_TYPES));	
@@ -368,7 +369,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 			return TaggedObjectSet.is(deleteCommand.getObjectType());
 		}
 		
-		return event.isSetDataCommandWithThisType(TaggedObjectSet.getObjectType());
+		return event.isSetDataCommandWithThisType(TaggedObjectSetSchema.getObjectType());
 	}
 	
 	private boolean isInvalidLayerManager(LayerManager manager)
