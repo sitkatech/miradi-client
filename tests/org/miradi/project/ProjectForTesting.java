@@ -149,6 +149,7 @@ import org.miradi.schemas.KeyEcologicalAttributeSchema;
 import org.miradi.schemas.MeasurementSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.OrganizationSchema;
+import org.miradi.schemas.OtherNotableSpeciesSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.ScopeBoxSchema;
@@ -857,7 +858,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public OtherNotableSpecies createOtherNotableSpecies() throws Exception
 	{
-		ORef otherNotableSpeciesRef = createObject(OtherNotableSpecies.getObjectType());
+		ORef otherNotableSpeciesRef = createObject(OtherNotableSpeciesSchema.getObjectType());
 		return OtherNotableSpecies.find(this, otherNotableSpeciesRef);
 	}
 	

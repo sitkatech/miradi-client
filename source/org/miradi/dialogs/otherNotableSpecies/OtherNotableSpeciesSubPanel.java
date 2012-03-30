@@ -26,8 +26,8 @@ import org.miradi.actions.ActionCreateOtherNotableSpecies;
 import org.miradi.actions.ActionDeleteOtherNotableSpecies;
 import org.miradi.dialogs.base.EditableObjectPoolTableSubPanel;
 import org.miradi.main.EAM;
-import org.miradi.objects.OtherNotableSpecies;
 import org.miradi.project.Project;
+import org.miradi.schemas.OtherNotableSpeciesSchema;
 import org.miradi.views.umbrella.ObjectPicker;
 
 public class OtherNotableSpeciesSubPanel extends EditableObjectPoolTableSubPanel
@@ -68,6 +68,6 @@ public class OtherNotableSpeciesSubPanel extends EditableObjectPoolTableSubPanel
 
 	private static int getObjectType()
 	{
-		return OtherNotableSpecies.getObjectType();
+		return OtherNotableSpeciesSchema.getObjectType();
 	}
 }

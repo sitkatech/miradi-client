@@ -23,6 +23,7 @@ package org.miradi.dialogs.otherNotableSpecies;
 import org.miradi.dialogs.base.EditableObjectPoolRefsTableModel;
 import org.miradi.objects.OtherNotableSpecies;
 import org.miradi.project.Project;
+import org.miradi.schemas.OtherNotableSpeciesSchema;
 
 public class OtherNotableSpeciesEditablePoolTableModel extends EditableObjectPoolRefsTableModel
 {
@@ -40,7 +41,7 @@ public class OtherNotableSpeciesEditablePoolTableModel extends EditableObjectPoo
 	@Override
 	protected int getObjectType()
 	{
-		return OtherNotableSpecies.getObjectType();
+		return OtherNotableSpeciesSchema.getObjectType();
 	}
 
 	@Override
