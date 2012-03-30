@@ -139,6 +139,7 @@ import org.miradi.schemas.DashboardSchema;
 import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.FactorLinkSchema;
+import org.miradi.schemas.FosProjectDataSchema;
 import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.GroupBoxSchema;
@@ -286,7 +287,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	private void fillFosProjectData() throws Exception
 	{
-		ORef fosProjectDataRef = getSingletonObjectRef(FosProjectData.getObjectType());
+		ORef fosProjectDataRef = getSingletonObjectRef(FosProjectDataSchema.getObjectType());
 		
 		fillObjectUsingCommand(fosProjectDataRef, FosProjectData.TAG_TRAINING_TYPE, FosTrainingTypeQuestion.ONLINE_CODE);
 		fillObjectWithSampleStringData(fosProjectDataRef, FosProjectData.TAG_TRAINING_DATES);

@@ -21,7 +21,6 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.FosProjectDataSchema;
@@ -42,24 +41,19 @@ public class FosProjectData extends BaseObject
 	@Override
 	public int getType()
 	{
-		return getObjectType();
+		return FosProjectDataSchema.getObjectType();
 	}
 
 	@Override
 	public String getTypeName()
 	{
-		return OBJECT_NAME;
+		return FosProjectDataSchema.OBJECT_NAME;
 	}
 
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;
-	}
-	
-	public static int getObjectType()
-	{
-		return ObjectType.FOS_PROJECT_DATA;
 	}
 	
 	public static boolean canOwnThisType(int type)
@@ -81,8 +75,6 @@ public class FosProjectData extends BaseObject
 	{
 		return find(project.getObjectManager(), fosProjectDataRef);
 	}
-	
-	public static final String OBJECT_NAME = "FosProjectData";
 	
 	public static final String TAG_TRAINING_TYPE = "TrainingType";
 	public static final String TAG_TRAINING_DATES = "TrainingDates";

@@ -30,14 +30,15 @@ import org.miradi.project.Project;
 import org.miradi.questions.FosTrainingTypeQuestion;
 import org.miradi.rtf.RtfFormExporter;
 import org.miradi.rtf.RtfWriter;
+import org.miradi.schemas.FosProjectDataSchema;
 
 public class FOSSummaryPanel extends ObjectDataInputPanel
 {
 	public FOSSummaryPanel(Project projectToUse)
 	{
-		super(projectToUse, projectToUse.getSingletonObjectRef(FosProjectData.getObjectType()));
+		super(projectToUse, projectToUse.getSingletonObjectRef(FosProjectDataSchema.getObjectType()));
 		
-		addField(createChoiceField(FosProjectData.getObjectType(), FosProjectData.TAG_TRAINING_TYPE, new FosTrainingTypeQuestion()));
+		addField(createChoiceField(FosProjectDataSchema.getObjectType(), FosProjectData.TAG_TRAINING_TYPE, new FosTrainingTypeQuestion()));
 		addField(createStringField(FosProjectData.TAG_TRAINING_DATES));
 		addField(createStringField(FosProjectData.TAG_TRAINERS));
 		addField(createStringField(FosProjectData.TAG_COACHES));
