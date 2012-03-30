@@ -129,6 +129,7 @@ import org.miradi.schemas.TextBoxSchema;
 import org.miradi.schemas.ThreatRatingCommentsDataSchema;
 import org.miradi.schemas.ThreatStressRatingSchema;
 import org.miradi.schemas.TncProjectDataSchema;
+import org.miradi.schemas.ValueOptionSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
@@ -912,7 +913,7 @@ public class Project
 
 	private void createMissingSimpleThreatRatingValueOptions() throws Exception
 	{
-		if(getPool(ValueOption.getObjectType()).size() > 0)
+		if(getPool(ValueOptionSchema.getObjectType()).size() > 0)
 			return;
 		
 		createDefaultValueOption("None", SimpleThreatRatingFramework.NONE_VALUE, Color.WHITE);
@@ -924,7 +925,7 @@ public class Project
 
 	private void createDefaultValueOption(String label, int numericValue, Color color) throws Exception
 	{
-		ORef createdRef = createObject(ValueOption.getObjectType());
+		ORef createdRef = createObject(ValueOptionSchema.getObjectType());
 		CommandSetObjectData setLabel = new CommandSetObjectData(createdRef, ValueOption.TAG_LABEL, label);
 		executeWithoutRecording(setLabel);
 		CommandSetObjectData setNumeric = new CommandSetObjectData(createdRef, ValueOption.TAG_NUMERIC, Integer.toString(numericValue));

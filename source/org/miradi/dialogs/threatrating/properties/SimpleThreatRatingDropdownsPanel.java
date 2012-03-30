@@ -53,6 +53,7 @@ import org.miradi.questions.SeverityThreatRatingQuestion;
 import org.miradi.questions.ThreatRatingQuestion;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.TargetSchema;
+import org.miradi.schemas.ValueOptionSchema;
 import org.miradi.utils.QuestionPopupEditorComponent;
 import org.miradi.utils.SimpleThreatRatingQuestionPopupEditorComponent;
 
@@ -200,7 +201,7 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 	private ChoiceItem getCurrentRating(ChoiceQuestion questionToUse, BaseId criterionId) throws Exception
 	{
 		ThreatRatingBundle bundle = getBundle(getThreatRef(), getTargetRef());
-		ORef valueOptionRef = new ORef(ValueOption.getObjectType(), bundle.getValueId(criterionId));
+		ORef valueOptionRef = new ORef(ValueOptionSchema.getObjectType(), bundle.getValueId(criterionId));
 		ValueOption valueOption = (ValueOption)getProject().findObject(valueOptionRef);
 		int numeric = valueOption.getNumericValue();
 		

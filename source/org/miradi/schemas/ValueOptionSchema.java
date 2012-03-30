@@ -20,10 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.ValueOption;
 
 public class ValueOptionSchema extends BaseObjectSchema
 {
+	public static final String OBJECT_NAME = "ValueOption";
+
 	public ValueOptionSchema()
 	{
 		super();
@@ -36,5 +39,10 @@ public class ValueOptionSchema extends BaseObjectSchema
 		
 		createFieldSchemaInteger(ValueOption.TAG_NUMERIC);
 		createFieldSchemaInteger(ValueOption.TAG_COLOR);
+	}
+
+	public static int getObjectType()
+	{
+		return ObjectType.VALUE_OPTION;
 	}
 }
