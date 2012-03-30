@@ -106,7 +106,6 @@ import org.miradi.objects.FundingSource;
 import org.miradi.objects.Goal;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.HumanWelfareTarget;
-import org.miradi.objects.Indicator;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.IucnRedlistSpecies;
 import org.miradi.objects.KeyEcologicalAttribute;
@@ -144,6 +143,7 @@ import org.miradi.objects.WcsProjectData;
 import org.miradi.objects.WwfProjectData;
 import org.miradi.objects.Xenodata;
 import org.miradi.objects.XslTemplate;
+import org.miradi.schemas.IndicatorSchema;
 
 public class ObjectManager
 {
@@ -161,7 +161,7 @@ public class ObjectManager
 		addNormalPool(new TaskPool(ida), Task.OBJECT_NAME);
 		addNormalPool(new ViewPool(ida), ViewData.OBJECT_NAME);
 		addNormalPool(new ResourcePool(ida), ProjectResource.OBJECT_NAME);
-		addNormalPool(new IndicatorPool(ida), Indicator.OBJECT_NAME);
+		addNormalPool(new IndicatorPool(ida), IndicatorSchema.OBJECT_NAME);
 		addNormalPool(new ObjectivePool(ida), Objective.OBJECT_NAME);
 		addNormalPool(new GoalPool(ida), Goal.OBJECT_NAME);
 		addNormalPool(new ProjectMetadataPool(ida), ProjectMetadata.OBJECT_NAME);

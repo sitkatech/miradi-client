@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.planning.doers;
 
 import org.miradi.objects.Factor;
-import org.miradi.objects.Indicator;
 import org.miradi.schemas.IndicatorSchema;
 
 public class TreeNodeCreateIndicatorDoer extends AbstractTreeCreateAnnotationDoer
@@ -46,6 +45,6 @@ public class TreeNodeCreateIndicatorDoer extends AbstractTreeCreateAnnotationDoe
 	@Override
 	protected String getObjectName()
 	{
-		return Indicator.OBJECT_NAME;
+		return IndicatorSchema.OBJECT_NAME;
 	}
 }

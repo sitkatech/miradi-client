@@ -35,6 +35,7 @@ import org.miradi.objects.Task;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
+import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.CodeList;
 
 public class ObjectsOnlyRowColumnProvider extends AbstractPlanningTreeRowColumnProvider
@@ -93,7 +94,7 @@ public class ObjectsOnlyRowColumnProvider extends AbstractPlanningTreeRowColumnP
 		if (propertyName.equals(Task.ACTIVITY_NAME))
 			return ObjectsOnlyRowColumnProvider.getActivityColumns();
 	
-		if (propertyName.equals(Indicator.OBJECT_NAME))
+		if (propertyName.equals(IndicatorSchema.OBJECT_NAME))
 			return ObjectsOnlyRowColumnProvider.getIndicatorColumns();
 	
 		if (propertyName.equals(Task.METHOD_NAME))

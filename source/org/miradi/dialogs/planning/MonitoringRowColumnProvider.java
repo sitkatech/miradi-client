@@ -29,6 +29,7 @@ import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
+import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.CodeList;
 
 public class MonitoringRowColumnProvider extends AbstractPlanningTreeRowColumnProvider
@@ -58,7 +59,7 @@ public class MonitoringRowColumnProvider extends AbstractPlanningTreeRowColumnPr
 				Target.OBJECT_NAME,
 				Goal.OBJECT_NAME,
 				Objective.OBJECT_NAME,
-				Indicator.OBJECT_NAME, });
+				IndicatorSchema.OBJECT_NAME, });
 	}
 
 	public boolean shouldIncludeResultsChain() throws Exception

@@ -21,12 +21,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.viability;
 
 import org.miradi.objects.Goal;
-import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
+import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.CodeList;
 
 public class TargetViabilityRowColumnProvider extends AbstractViabilityRowColumnProvider
@@ -42,7 +42,7 @@ public class TargetViabilityRowColumnProvider extends AbstractViabilityRowColumn
 				ProjectMetadata.OBJECT_NAME, 
 				Target.OBJECT_NAME,
 				KeyEcologicalAttribute.OBJECT_NAME,
-				Indicator.OBJECT_NAME,
+				IndicatorSchema.OBJECT_NAME,
 				Measurement.OBJECT_NAME,
 				Goal.OBJECT_NAME,
 		});

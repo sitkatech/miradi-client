@@ -25,10 +25,10 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Goal;
-import org.miradi.objects.Indicator;
 import org.miradi.objects.Objective;
 import org.miradi.objects.Strategy;
 import org.miradi.questions.DiagramModeQuestion;
+import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.CodeList;
 
 public class LayerManager
@@ -151,12 +151,12 @@ public class LayerManager
 
 	public boolean areIndicatorsVisible() throws Exception
 	{
-		return isTypeVisible(Indicator.OBJECT_NAME);
+		return isTypeVisible(IndicatorSchema.OBJECT_NAME);
 	}
 	
 	public void setIndicatorsVisible(boolean newSetting) throws Exception
 	{
-		setVisibility(Indicator.OBJECT_NAME, newSetting);
+		setVisibility(IndicatorSchema.OBJECT_NAME, newSetting);
 	}
 
 	public boolean isTypeVisible(String objectTypeName) throws Exception

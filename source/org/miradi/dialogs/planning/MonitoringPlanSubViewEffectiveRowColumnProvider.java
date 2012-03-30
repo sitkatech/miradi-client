@@ -23,10 +23,10 @@ package org.miradi.dialogs.planning;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Desire;
 import org.miradi.objects.Goal;
-import org.miradi.objects.Indicator;
 import org.miradi.objects.Objective;
 import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
+import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.CodeList;
 
 public class MonitoringPlanSubViewEffectiveRowColumnProvider extends AbstractPlanningTreeRowColumnProvider
@@ -50,7 +50,7 @@ public class MonitoringPlanSubViewEffectiveRowColumnProvider extends AbstractPla
 		return new CodeList(new String[] {
 				Goal.OBJECT_NAME,
 				Objective.OBJECT_NAME,
-				Indicator.OBJECT_NAME, });
+				IndicatorSchema.OBJECT_NAME, });
 	}
 
 	public boolean shouldIncludeResultsChain() throws Exception
