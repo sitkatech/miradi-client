@@ -29,7 +29,6 @@ import org.miradi.objects.BaseObject;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
-import org.miradi.utils.HtmlUtilities;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConstants
@@ -83,7 +82,6 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 	
 	private void writeXmlText(String xmlText) throws IOException
 	{
-		xmlText = HtmlUtilities.replaceHtmlBrsWithNewlines(xmlText);
 		write(xmlText);
 	}
 	
