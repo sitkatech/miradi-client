@@ -35,6 +35,7 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.project.FactorDeleteHelper;
+import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.views.diagram.DiagramCopyPaster;
@@ -163,7 +164,7 @@ public class PasteFactorContentDoer extends AbstractPasteDoer
 		HashMap<ORef, ORef> oldToNewFactorRefMap = paster.getOldToNewObjectRefMap();
 		ORef[] pastedRefsArray = oldToNewFactorRefMap.values().toArray(new ORef[0]);
 		ORefList pastedRefs = new ORefList(pastedRefsArray);
-		ORef diagramFactorRef = pastedRefs.getRefForType(DiagramFactor.getObjectType());
+		ORef diagramFactorRef = pastedRefs.getRefForType(DiagramFactorSchema.getObjectType());
 		
 		return DiagramFactor.find(getProject(), diagramFactorRef);
 	}

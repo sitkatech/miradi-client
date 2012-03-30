@@ -39,9 +39,9 @@ import org.miradi.ids.DiagramLinkId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.FactorLink;
+import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.utils.PointList;
 import org.miradi.utils.Utility;
 import org.miradi.views.diagram.LayerManager;
@@ -183,9 +183,9 @@ public class LinkCell extends EAMGraphCell implements Edge
 	
 	public boolean isLinkedToAnySelectedFactor(DiagramComponent diagram) throws Exception
 	{
-		IdList listOfGroupBoxesAndChildren = new IdList(DiagramFactor.getObjectType());
-		listOfGroupBoxesAndChildren.addAll(from.getDiagramFactor().getSelfAndChildren().convertToIdList(DiagramFactor.getObjectType()));
-		listOfGroupBoxesAndChildren.addAll(to.getDiagramFactor().getSelfAndChildren().convertToIdList(DiagramFactor.getObjectType()));
+		IdList listOfGroupBoxesAndChildren = new IdList(DiagramFactorSchema.getObjectType());
+		listOfGroupBoxesAndChildren.addAll(from.getDiagramFactor().getSelfAndChildren().convertToIdList(DiagramFactorSchema.getObjectType()));
+		listOfGroupBoxesAndChildren.addAll(to.getDiagramFactor().getSelfAndChildren().convertToIdList(DiagramFactorSchema.getObjectType()));
 		for (int i = 0; i < listOfGroupBoxesAndChildren.size(); ++i)
 		{			
 			FactorCell factorCell = diagram.getDiagramModel().getFactorCellByRef(listOfGroupBoxesAndChildren.getRef(i));

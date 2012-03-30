@@ -83,6 +83,7 @@ import org.miradi.objects.TextBox;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
 import org.miradi.project.threatrating.ThreatRatingFramework;
+import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.views.diagram.GroupOfDiagrams;
 import org.miradi.views.diagram.LayerManager;
@@ -525,7 +526,7 @@ abstract public class DiagramModel extends DefaultGraphModel
 	
 	public FactorCell getFactorCellByRef(ORef diagramFactorRef) throws Exception
 	{
-		diagramFactorRef.ensureExactType(DiagramFactor.getObjectType());
+		diagramFactorRef.ensureExactType(DiagramFactorSchema.getObjectType());
 		FactorCell factorCell = rawGetFactorCellByRef(diagramFactorRef);
 		if(factorCell == null)
 			throw new Exception("FactorCell doesn't exist, ref: " + diagramFactorRef);
@@ -552,7 +553,7 @@ abstract public class DiagramModel extends DefaultGraphModel
 	
 	public boolean containsDiagramFactor(ORef diagramFactorRef)
 	{
-		diagramFactorRef.ensureExactType(DiagramFactor.getObjectType());
+		diagramFactorRef.ensureExactType(DiagramFactorSchema.getObjectType());
 		FactorCell node = rawGetFactorCellByRef(diagramFactorRef);
 
 		return node != null;
@@ -761,7 +762,7 @@ abstract public class DiagramModel extends DefaultGraphModel
 	public EnhancedJsonObject toJson()
 	{
 		Vector factors = getAllFactorCells();
-		IdList diagramFactorIds = new IdList(DiagramFactor.getObjectType());
+		IdList diagramFactorIds = new IdList(DiagramFactorSchema.getObjectType());
 		for(int i=0; i < factors.size(); ++i)
 		{
 			FactorCell factorCell = (FactorCell)factors.get(i);
@@ -797,7 +798,7 @@ abstract public class DiagramModel extends DefaultGraphModel
 
 	private void addFactorsToModel(EnhancedJsonObject json) throws Exception
 	{
-		IdList diagramFactorIds = new IdList(DiagramFactor.getObjectType(), json.getString(TAG_DIAGRAM_FACTOR_IDS));
+		IdList diagramFactorIds = new IdList(DiagramFactorSchema.getObjectType(), json.getString(TAG_DIAGRAM_FACTOR_IDS));
 		for(int i = 0; i < diagramFactorIds.size(); ++i)
 		{
 			try

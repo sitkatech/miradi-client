@@ -36,6 +36,7 @@ import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.project.FactorCommandHelper;
 import org.miradi.project.FactorDeleteHelper;
+import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.utils.CommandVector;
 import org.miradi.views.ObjectsDoer;
 
@@ -121,7 +122,7 @@ abstract public class AbstractVisibilityDoer extends ObjectsDoer
 	protected ORefList getDiagramFactorReferrerRefs(ORef factorRef)
 	{
 		Factor factor = getFactor(factorRef);
-		ORefList diagramFactorReferrers = factor.findObjectsThatReferToUs(DiagramFactor.getObjectType());
+		ORefList diagramFactorReferrers = factor.findObjectsThatReferToUs(DiagramFactorSchema.getObjectType());
 		return diagramFactorReferrers;
 	}
 	

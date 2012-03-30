@@ -28,6 +28,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.project.Project;
+import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.views.diagram.LinkCreator;
 import org.miradi.views.diagram.LinkDeletor;
 
@@ -103,7 +104,7 @@ public class GroupBoxAddDiagramFactorDoer extends AbstractGroupBoxDoer
 
 	private boolean areSameTypeAsInGroup(DiagramFactor groupBoxDiagramFactor, ORefList nonGroupBoxDiagramFactorRefs)
 	{
-		ORef  firstChildRef = groupBoxDiagramFactor.getGroupBoxChildrenRefs().getRefForType(DiagramFactor.getObjectType());
+		ORef  firstChildRef = groupBoxDiagramFactor.getGroupBoxChildrenRefs().getRefForType(DiagramFactorSchema.getObjectType());
 		if (firstChildRef.isInvalid())
 			return true;
 		

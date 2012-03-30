@@ -30,6 +30,7 @@ import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.project.Project;
+import org.miradi.schemas.DiagramFactorSchema;
 
 public class ChainWalker
 {
@@ -164,7 +165,7 @@ public class ChainWalker
 	private HashSet<DiagramFactor> getReferrerDiagramFactors(Factor factor)
 	{
 		HashSet<DiagramFactor> diagramFactors = new HashSet<DiagramFactor>();
-		ORefList diagramFactorRefs = factor.findObjectsThatReferToUs(DiagramFactor.getObjectType());
+		ORefList diagramFactorRefs = factor.findObjectsThatReferToUs(DiagramFactorSchema.getObjectType());
 		for(int i = 0; i < diagramFactorRefs.size(); ++i)
 		{
 			DiagramFactor df = DiagramFactor.find(factor.getObjectManager(), diagramFactorRefs.get(i));

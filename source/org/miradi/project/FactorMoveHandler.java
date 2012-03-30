@@ -40,6 +40,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.GroupBox;
+import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.PointList;
@@ -241,8 +242,8 @@ public class FactorMoveHandler
 			currentLocation.translate(deltaX, deltaY);
 			Point snappedLocation = getProject().getSnapped(currentLocation);
 			String snappedLocationAsJson = EnhancedJsonObject.convertFromPoint(snappedLocation);
-			groupChildRef.ensureExactType(DiagramFactor.getObjectType());
-			commandsToMove.add(new CommandSetObjectData(DiagramFactor.getObjectType(), new DiagramFactorId(groupChildRef.getObjectId().asInt()), DiagramFactor.TAG_LOCATION, snappedLocationAsJson));
+			groupChildRef.ensureExactType(DiagramFactorSchema.getObjectType());
+			commandsToMove.add(new CommandSetObjectData(DiagramFactorSchema.getObjectType(), new DiagramFactorId(groupChildRef.getObjectId().asInt()), DiagramFactor.TAG_LOCATION, snappedLocationAsJson));
 		}
 				
 		return commandsToMove;

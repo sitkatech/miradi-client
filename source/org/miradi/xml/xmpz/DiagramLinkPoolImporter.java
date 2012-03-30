@@ -30,6 +30,7 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.FactorLink;
 import org.miradi.questions.DiagramLinkColorQuestion;
+import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.utils.PointList;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -87,8 +88,8 @@ public class DiagramLinkPoolImporter extends AbstractBaseObjectPoolImporter
 		DiagramFactorId fromId = new DiagramFactorId(fromDiagramFactorIdNode.getTextContent().trim());
 		DiagramFactorId toId = new DiagramFactorId(toDiagramFactorIdNode.getTextContent().trim());
 		
-		ORef fromDiagramFactorRef = new ORef(DiagramFactor.getObjectType(), fromId);
-		ORef toDiagramFactorRef = new ORef(DiagramFactor.getObjectType(), toId);
+		ORef fromDiagramFactorRef = new ORef(DiagramFactorSchema.getObjectType(), fromId);
+		ORef toDiagramFactorRef = new ORef(DiagramFactorSchema.getObjectType(), toId);
 		DiagramFactor fromDiagramFactor = DiagramFactor.find(getProject(), fromDiagramFactorRef);
 		DiagramFactor toDiagramFactor = DiagramFactor.find(getProject(), toDiagramFactorRef);	
 		ORef factorLinkRef = new ORef(ObjectType.FAKE, BaseId.INVALID);

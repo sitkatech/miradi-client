@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
-import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.FactorLink;
 import org.miradi.questions.DiagramLinkColorQuestion;
@@ -39,8 +38,8 @@ public class DiagramLinkSchema extends BaseObjectSchema
 		super.fillFieldSchemas();
 		
 		createFieldSchemaBaseId(DiagramLink.TAG_WRAPPED_ID, FactorLink.getObjectType());
-		createFieldSchemaBaseId(DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID, DiagramFactor.getObjectType());
-		createFieldSchemaBaseId(DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID, DiagramFactor.getObjectType());
+		createFieldSchemaBaseId(DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID, DiagramFactorSchema.getObjectType());
+		createFieldSchemaBaseId(DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID, DiagramFactorSchema.getObjectType());
 		createFieldSchemaPointList(DiagramLink.TAG_BEND_POINTS);
 		createFieldSchemaReflist(DiagramLink.TAG_GROUPED_DIAGRAM_LINK_REFS, XmpzXmlConstants.DIAGRAM_LINK);
 		createFieldSchemaChoice(DiagramLink.TAG_COLOR, getQuestion(DiagramLinkColorQuestion.class));

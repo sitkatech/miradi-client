@@ -55,6 +55,7 @@ import org.miradi.objects.TableSettings;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ViewData;
+import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.utils.CommandVector;
 
 public class CommandExecutor
@@ -453,8 +454,8 @@ public class CommandExecutor
 	{
 		try
 		{
-			ORefSet previousDiagramFactorIds = new ORefSet(new IdList(DiagramFactor.getObjectType(), setCommand.getPreviousDataValue()));
-			ORefSet currentDiagramFactorIds = new ORefSet(new IdList(DiagramFactor.getObjectType(), setCommand.getDataValue()));
+			ORefSet previousDiagramFactorIds = new ORefSet(new IdList(DiagramFactorSchema.getObjectType(), setCommand.getPreviousDataValue()));
+			ORefSet currentDiagramFactorIds = new ORefSet(new IdList(DiagramFactorSchema.getObjectType(), setCommand.getDataValue()));
 			ORefSet nonOverlappingRefs = ORefSet.getNonOverlappingRefs(previousDiagramFactorIds, currentDiagramFactorIds);
 			for(ORef diagramFactorRef : nonOverlappingRefs)
 			{

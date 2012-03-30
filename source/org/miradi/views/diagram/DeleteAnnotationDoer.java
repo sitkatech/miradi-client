@@ -40,6 +40,7 @@ import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Stress;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.project.Project;
+import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.utils.CommandVector;
 import org.miradi.views.ObjectsDoer;
 import org.miradi.views.diagram.doers.HideStressBubbleDoer;
@@ -147,7 +148,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 	private static CommandVector createCommandsToDeleteStressDiagramFactors(Project project, BaseObject annotationToDelete) throws Exception
 	{
 		CommandVector commandsToHide = new CommandVector();
-		ORefList diagramFactorRefs = annotationToDelete.findObjectsThatReferToUs(DiagramFactor.getObjectType());
+		ORefList diagramFactorRefs = annotationToDelete.findObjectsThatReferToUs(DiagramFactorSchema.getObjectType());
 		for (int index = 0; index < diagramFactorRefs.size(); ++index)
 		{
 			DiagramFactor diagramFactor = DiagramFactor.find(project, diagramFactorRefs.get(index));

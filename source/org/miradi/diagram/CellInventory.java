@@ -27,8 +27,8 @@ import java.util.Vector;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
+import org.miradi.schemas.DiagramFactorSchema;
 
 class CellInventory
 {
@@ -60,7 +60,7 @@ class CellInventory
 	
 	public FactorCell getFactorCellByDiagramFactorRef(ORef diagramFactorRef)
 	{
-		diagramFactorRef.ensureExactType(DiagramFactor.getObjectType());
+		diagramFactorRef.ensureExactType(DiagramFactorSchema.getObjectType());
 		return diagramFactorRefToCellMap.get(diagramFactorRef);
 	}
 	

@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
-import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.questions.DiagramLegendQuestion;
@@ -38,7 +37,7 @@ abstract public class DiagramObjectSchema extends BaseObjectSchema
 	{
 		super.fillFieldSchemas();
 		
-		createFieldSchemaIdList(DiagramObject.TAG_DIAGRAM_FACTOR_IDS, DiagramFactor.getObjectType());
+		createFieldSchemaIdList(DiagramObject.TAG_DIAGRAM_FACTOR_IDS, DiagramFactorSchema.getObjectType());
 		createFieldSchemaIdList(DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, DiagramLink.getObjectType());
 		createFieldSchemaSingleLineUserText(DiagramObject.TAG_SHORT_LABEL);
 		createFieldSchemaMultiLineUserText(DiagramObject.TAG_DETAIL);

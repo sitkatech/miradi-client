@@ -54,6 +54,7 @@ import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
+import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.utils.PointList;
 import org.miradi.views.diagram.LinkCreator;
 
@@ -78,7 +79,7 @@ public class ResultsChainCreatorHelper
 			
 			HashMap<DiagramFactor, DiagramFactor> clonedDiagramFactors = cloneDiagramFactors(selectedDiagramFactors);
 			ORefList clonedDiagramFactorRefs = extractClonedObjectRefs(clonedDiagramFactors);
-			IdList idList = clonedDiagramFactorRefs.convertToIdList(DiagramFactor.getObjectType());
+			IdList idList = clonedDiagramFactorRefs.convertToIdList(DiagramFactorSchema.getObjectType());
 			CommandSetObjectData addFactorsToChain = CommandSetObjectData.createAppendListCommand(resultsChain, ResultsChainDiagram.TAG_DIAGRAM_FACTOR_IDS, idList);
 			getProject().executeCommand(addFactorsToChain);
 			

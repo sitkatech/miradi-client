@@ -36,6 +36,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -299,7 +300,7 @@ abstract public class DiagramObject extends BaseObject
 	
 	public ORefList getAllDiagramFactorRefs()
 	{
-		return new ORefList(DiagramFactor.getObjectType(), getAllDiagramFactorIds());
+		return new ORefList(DiagramFactorSchema.getObjectType(), getAllDiagramFactorIds());
 	}
 	
 	public Set<DiagramFactor> getDiagramFactorsThatWrap(int objectType)
@@ -406,7 +407,7 @@ abstract public class DiagramObject extends BaseObject
 		switch(objectType)
 		{
 			case ObjectType.DIAGRAM_FACTOR: 
-				list.addAll(new ORefList(DiagramFactor.getObjectType(), getAllDiagramFactorIds()));
+				list.addAll(new ORefList(DiagramFactorSchema.getObjectType(), getAllDiagramFactorIds()));
 				break;
 			case ObjectType.DIAGRAM_LINK: 
 				list.addAll(new ORefList(DiagramLink.getObjectType(), getAllDiagramFactorLinkIds()));
@@ -417,7 +418,7 @@ abstract public class DiagramObject extends BaseObject
 	
 	public static ORefList getDiagramRefsContainingFactor(Project projectToUse, int parentDiagramType, ORef factorRef)
 	{
-		return findOwnersOfObject(projectToUse, parentDiagramType, factorRef, DiagramFactor.getObjectType());
+		return findOwnersOfObject(projectToUse, parentDiagramType, factorRef, DiagramFactorSchema.getObjectType());
 	}
 		
 	//TODO not sure this the right place for this method
@@ -426,7 +427,7 @@ abstract public class DiagramObject extends BaseObject
 		if (! Factor.isFactor(factorRef))
 			return new ORefList();
 		
-		return findOwnersOfObject(projectToUse, factorRef, DiagramFactor.getObjectType());
+		return findOwnersOfObject(projectToUse, factorRef, DiagramFactorSchema.getObjectType());
 	}
 	
 	public static ORefList getDiagramRefsContainingLink(Project projectToUse, ORef factorLinkRef)

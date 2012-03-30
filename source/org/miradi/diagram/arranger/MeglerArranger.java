@@ -45,6 +45,7 @@ import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.project.FactorCommandHelper;
 import org.miradi.project.Project;
+import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.utils.NullProgressMeter;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.views.diagram.LinkCreator;
@@ -307,7 +308,7 @@ public class MeglerArranger
 	{
 		ORefList childRefs = new ORefList(toBeGrouped.toArray(new DiagramFactor[0]));
 		FactorCommandHelper helper = new FactorCommandHelper(getProject(), diagram);
-		ORef newGroupDiagramFactorRef = new ORef(DiagramFactor.getObjectType(), helper.createFactorAndDiagramFactor(GroupBox.getObjectType()).getCreatedId());
+		ORef newGroupDiagramFactorRef = new ORef(DiagramFactorSchema.getObjectType(), helper.createFactorAndDiagramFactor(GroupBox.getObjectType()).getCreatedId());
 		CommandSetObjectData addChildren = new CommandSetObjectData(newGroupDiagramFactorRef, DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, childRefs.toString());
 		getProject().executeCommand(addChildren);
 		return newGroupDiagramFactorRef;
@@ -429,7 +430,7 @@ public class MeglerArranger
 
 	private DiagramFactor findGroup(DiagramFactor diagramFactor)
 	{
-		ORefList referringDiagramFactorRefs = diagramFactor.findObjectsThatReferToUs(DiagramFactor.getObjectType());
+		ORefList referringDiagramFactorRefs = diagramFactor.findObjectsThatReferToUs(DiagramFactorSchema.getObjectType());
 		if(referringDiagramFactorRefs.size() < 1)
 			return null;
 		
@@ -579,7 +580,7 @@ public class MeglerArranger
 	private boolean isAlreadyInGroup(DiagramFactor diagramFactor)
 	{
 		ORef childRef = diagramFactor.getRef();
-		ORefList likelyGroupRefs = diagramFactor.findObjectsThatReferToUs(DiagramFactor.getObjectType());
+		ORefList likelyGroupRefs = diagramFactor.findObjectsThatReferToUs(DiagramFactorSchema.getObjectType());
 		for(int i = 0; i < likelyGroupRefs.size(); ++i)
 		{
 			DiagramFactor possibleGroup = DiagramFactor.find(getProject(), likelyGroupRefs.get(i));

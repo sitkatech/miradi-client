@@ -37,6 +37,7 @@ import org.miradi.objects.GroupBox;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.objects.TestDiagramObject;
+import org.miradi.schemas.DiagramFactorSchema;
 
 public class TestMeglerArranger extends TestCaseWithProject
 {
@@ -644,7 +645,7 @@ public class TestMeglerArranger extends TestCaseWithProject
 
 	private DiagramFactor getGroup(DiagramFactor diagramfactor)
 	{
-		ORef groupRef = diagramfactor.findObjectsThatReferToUs(DiagramFactor.getObjectType()).get(0);
+		ORef groupRef = diagramfactor.findObjectsThatReferToUs(DiagramFactorSchema.getObjectType()).get(0);
 		DiagramFactor group = DiagramFactor.find(getProject(), groupRef);
 		return group;
 	}

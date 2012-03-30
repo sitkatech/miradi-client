@@ -123,6 +123,7 @@ import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 import org.miradi.schemas.DashboardSchema;
+import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
@@ -782,7 +783,7 @@ public class Project
 		int height = labelLineCount * NUMBER_OF_PIXELS_PER_LINE; 
 		
 		ORef textBoxRef = createObject(TextBox.getObjectType());
-		ORef diagramFactorRef = createObject(DiagramFactor.getObjectType());
+		ORef diagramFactorRef = createObject(DiagramFactorSchema.getObjectType());
 		setObjectData(diagramFactorRef, DiagramFactor.TAG_WRAPPED_REF, textBoxRef.toString());
 		
 		final int WIDTH = 300;
@@ -795,7 +796,7 @@ public class Project
 		htmlContent = HtmlUtilities.removeNonHtmlNewLines(htmlContent);
 		setObjectData(textBoxRef, TextBox.TAG_LABEL, htmlContent);
 		
-		IdList diagramFactorIdList = new IdList(DiagramFactor.getObjectType());
+		IdList diagramFactorIdList = new IdList(DiagramFactorSchema.getObjectType());
 		diagramFactorIdList.add(diagramFactorRef.getObjectId());
 		setObjectData(mainDiagramRef, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, diagramFactorIdList.toString());
 	}

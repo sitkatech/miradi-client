@@ -51,6 +51,7 @@ import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.project.FactorDeleteHelper;
 import org.miradi.project.ProjectRepairer;
+import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.IndicatorSchema;
 
 public class TestDiagramAliasPaster extends TestCaseWithProject
@@ -192,8 +193,8 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		assertEquals("Don't have threat+oldgroup and newgroup diagram factors?", 3, diagramFactorRefs.size());
 
 		assertEquals("Threat no longer wrapped?", threat.getRef(), pastedThreatDiagramFactor.getWrappedORef());
-		assertEquals("Threat factor shared?", 1, threat.findObjectsThatReferToUs(DiagramFactor.getObjectType()).size());
-		assertEquals("Threat diagram factor shared?", 1, threatDiagramFactor.findObjectsThatReferToUs(DiagramFactor.getObjectType()).size());
+		assertEquals("Threat factor shared?", 1, threat.findObjectsThatReferToUs(DiagramFactorSchema.getObjectType()).size());
+		assertEquals("Threat diagram factor shared?", 1, threatDiagramFactor.findObjectsThatReferToUs(DiagramFactorSchema.getObjectType()).size());
 
 		ORefSet children = pastedGroupDiagramFactor.getGroupBoxChildrenSet();
 		assertEquals("Pasted group isn't empty?", 0, children.size());
@@ -320,7 +321,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 
 		ORef targetRef = getProject().getTargetPool().getORefList().getFirstElement();
 		Target newTarget = Target.find(getProject(), targetRef);
-		ORef targetDiagramFactorRef = newTarget.findObjectsThatReferToUs(DiagramFactor.getObjectType()).getFirstElement();
+		ORef targetDiagramFactorRef = newTarget.findObjectsThatReferToUs(DiagramFactorSchema.getObjectType()).getFirstElement();
 		DiagramFactor tdf = DiagramFactor.find(getProject(), targetDiagramFactorRef);
 		assertTrue("No group-target link?", diagramModel.getDiagramObject().areDiagramFactorsLinkedFromToNonBidirectional(gdf.getRef(), tdf.getRef()));
 		
@@ -359,8 +360,8 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 	private void verifyEmptyGroupPlusGroupContainingThreatLinkedToTarget(DiagramModel diagramModel)
 	{
 		DiagramFactor newThreatDiagramFactor = diagramModel.getDiagramFactor(threat.getRef());
-		ORefList referrers = newThreatDiagramFactor.findObjectsThatReferToUs(DiagramFactor.getObjectType());
-		ORef oldGroupDiagramFactorRef = referrers.getRefForType(DiagramFactor.getObjectType());
+		ORefList referrers = newThreatDiagramFactor.findObjectsThatReferToUs(DiagramFactorSchema.getObjectType());
+		ORef oldGroupDiagramFactorRef = referrers.getRefForType(DiagramFactorSchema.getObjectType());
 		DiagramFactor nonEmptyGroupDiagramFactor = DiagramFactor.find(getProject(), oldGroupDiagramFactorRef);
 		assertEquals("Old group doesn't have one child?", 1, nonEmptyGroupDiagramFactor.getGroupBoxChildrenSet().size());
 		verifyGroupContainingThreatLinkedToTarget(diagramModel, nonEmptyGroupDiagramFactor);

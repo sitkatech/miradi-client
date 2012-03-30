@@ -44,6 +44,7 @@ import org.miradi.questions.DiagramFactorFontColorQuestion;
 import org.miradi.questions.DiagramFactorFontSizeQuestion;
 import org.miradi.questions.DiagramFactorFontStyleQuestion;
 import org.miradi.questions.TextBoxZOrderQuestion;
+import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.utils.EnhancedJsonObject;
 import org.w3c.dom.Node;
 
@@ -51,7 +52,7 @@ public class DiagramFactorPoolImporter extends AbstractBaseObjectPoolImporter
 {
 	public DiagramFactorPoolImporter(XmpzXmlImporter importerToUse)
 	{
-		super(importerToUse, DIAGRAM_FACTOR, DiagramFactor.getObjectType());
+		super(importerToUse, DIAGRAM_FACTOR, DiagramFactorSchema.getObjectType());
 	}
 	
 	@Override
@@ -61,7 +62,7 @@ public class DiagramFactorPoolImporter extends AbstractBaseObjectPoolImporter
 		
 		importDiagramFactorLocation(node, destinationRef);
 		importDiagramFactorSize(node, destinationRef);
-		importRefs(node, GROUP_BOX_CHILDREN_IDS, destinationRef, DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, DiagramFactor.getObjectType(), DIAGRAM_FACTOR);
+		importRefs(node, GROUP_BOX_CHILDREN_IDS, destinationRef, DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, DiagramFactorSchema.getObjectType(), DIAGRAM_FACTOR);
 		importCodeField(node, destinationRef, DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE, new TextBoxZOrderQuestion());
 		importFontStylingElements(node, destinationRef);
 	}
