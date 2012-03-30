@@ -26,9 +26,11 @@ import org.miradi.objects.BaseObject;
 
 public class FieldSchemaReflist extends AbstractFieldSchema
 {
-	public FieldSchemaReflist(String tagToUse)
+	public FieldSchemaReflist(String tagToUse, final String typeNameToUse)
 	{
 		super(tagToUse);
+		
+		typeName = typeNameToUse;
 	}
 
 	@Override
@@ -36,4 +38,11 @@ public class FieldSchemaReflist extends AbstractFieldSchema
 	{
 		return new RefListData(getTag());
 	}
+	
+	public String getTypeName()
+	{
+		return typeName;
+	}
+	
+	private String typeName;
 }

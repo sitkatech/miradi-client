@@ -44,7 +44,6 @@ public class ViewDataSchema extends BaseObjectSchema
 		super.fillFieldSchemas();
 		
 		createFieldSchemaChoice(ViewData.TAG_CURRENT_MODE, getQuestion(DiagramModeQuestion.class));
-		createFieldSchemaReflist(ViewData.TAG_CHAIN_MODE_FACTOR_REFS);
 		createFieldSchemaCodeList(ViewData.TAG_DIAGRAM_HIDDEN_TYPES, getQuestion(InternalQuestionWithoutValues.class));
 		createFieldSchemaCodeList(ViewData.TAG_BUDGET_ROLLUP_REPORT_TYPES, getQuestion(WorkPlanCategoryTypesQuestion.class));
 		createFieldSchemaChoice(ViewData.TAG_PLANNING_SINGLE_LEVEL_CHOICE, new PlanningViewSingleLevelQuestion(getProject()));

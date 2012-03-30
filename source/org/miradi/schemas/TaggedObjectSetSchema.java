@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.schemas;
 
 import org.miradi.objects.TaggedObjectSet;
+import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class TaggedObjectSetSchema extends BaseObjectSchema
 {
@@ -35,7 +36,7 @@ public class TaggedObjectSetSchema extends BaseObjectSchema
 		super.fillFieldSchemas();
 		
 		createFieldSchemaSingleLineUserText(TaggedObjectSet.TAG_SHORT_LABEL);
-		createFieldSchemaReflist(TaggedObjectSet.TAG_TAGGED_OBJECT_REFS);
+		createFieldSchemaReflist(TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, XmpzXmlConstants.TAGGED_FACTOR_IDS);
 		createFieldSchemaMultiLineUserText(TaggedObjectSet.TAG_COMMENTS);
 	}
 }

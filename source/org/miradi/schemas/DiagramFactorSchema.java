@@ -26,6 +26,7 @@ import org.miradi.questions.DiagramFactorFontColorQuestion;
 import org.miradi.questions.DiagramFactorFontSizeQuestion;
 import org.miradi.questions.DiagramFactorFontStyleQuestion;
 import org.miradi.questions.TextBoxZOrderQuestion;
+import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class DiagramFactorSchema extends BaseObjectSchema
 {
@@ -44,7 +45,7 @@ public class DiagramFactorSchema extends BaseObjectSchema
 		createFieldSchemaChoice(DiagramFactor.TAG_FONT_SIZE, getQuestion(DiagramFactorFontSizeQuestion.class));
 		createFieldSchemaChoice(DiagramFactor.TAG_FOREGROUND_COLOR, getQuestion(DiagramFactorFontColorQuestion.class));
 		createFieldSchemaChoice(DiagramFactor.TAG_FONT_STYLE, getQuestion(DiagramFactorFontStyleQuestion.class));
-		createFieldSchemaReflist(DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS);
+		createFieldSchemaReflist(DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, XmpzXmlConstants.DIAGRAM_FACTOR + XmpzXmlConstants.ID);
 		createFieldSchemaChoice(DiagramFactor.TAG_BACKGROUND_COLOR, getQuestion(DiagramFactorBackgroundQuestion.class));
 		createFieldSchemaChoice(DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE, getQuestion(TextBoxZOrderQuestion.class));
 	}
