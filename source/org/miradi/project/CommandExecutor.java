@@ -58,6 +58,7 @@ import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.StressSchema;
+import org.miradi.schemas.TableSettingsSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.CommandVector;
@@ -436,7 +437,7 @@ public class CommandExecutor
 		if (setCommand.isTypeAndTag(ViewData.getObjectType(), ViewData.TAG_CURRENT_TAB))
 			return true;
 		
-		if (setCommand.isTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_TREE_EXPANSION_LIST))
+		if (setCommand.isTypeAndTag(TableSettingsSchema.getObjectType(), TableSettings.TAG_TREE_EXPANSION_LIST))
 			return true;
 		
 		if (setCommand.isTypeAndTag(ConceptualModelDiagramSchema.getObjectType(), ConceptualModelDiagram.TAG_DIAGRAM_FACTOR_IDS))

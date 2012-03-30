@@ -45,6 +45,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.TableSettings;
+import org.miradi.schemas.TableSettingsSchema;
 import org.miradi.utils.FastScrollPane;
 import org.miradi.utils.FillerLabel;
 
@@ -245,7 +246,7 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 
 	protected boolean isTreeExpansionCommand(CommandExecutedEvent event)
 	{
-		return event.isSetDataCommandWithThisTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_TREE_EXPANSION_LIST);
+		return event.isSetDataCommandWithThisTypeAndTag(TableSettingsSchema.getObjectType(), TableSettings.TAG_TREE_EXPANSION_LIST);
 	}
 	
 	public static class ScrollPaneNoExtraWidth extends ScrollPaneWithHideableScrollBar

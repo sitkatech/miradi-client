@@ -38,6 +38,7 @@ import org.miradi.objectdata.RefListListData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.TableSettings;
+import org.miradi.schemas.TableSettingsSchema;
 import org.miradi.utils.EAMTreeTableModelAdapter;
 
 abstract public class TreeTableWithStateSaving extends ObjectTreeTable implements TreeExpansionListener, CommandExecutedListener
@@ -74,13 +75,13 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 	
 	public static boolean isRebuildTreeDueToSettingsChangeCommand(CommandExecutedEvent event)
 	{
-		if (event.isSetDataCommandWithThisTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_COLUMN_SEQUENCE_CODES))
+		if (event.isSetDataCommandWithThisTypeAndTag(TableSettingsSchema.getObjectType(), TableSettings.TAG_COLUMN_SEQUENCE_CODES))
 			return true;
 		
-		if (event.isSetDataCommandWithThisTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_COLUMN_WIDTHS))
+		if (event.isSetDataCommandWithThisTypeAndTag(TableSettingsSchema.getObjectType(), TableSettings.TAG_COLUMN_WIDTHS))
 			return true;
 		
-		if (event.isSetDataCommandWithThisTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_ROW_HEIGHT))
+		if (event.isSetDataCommandWithThisTypeAndTag(TableSettingsSchema.getObjectType(), TableSettings.TAG_ROW_HEIGHT))
 			return true;
 			
 		return false;

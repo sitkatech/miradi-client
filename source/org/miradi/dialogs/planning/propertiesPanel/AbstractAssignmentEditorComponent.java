@@ -38,6 +38,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.TableSettings;
+import org.miradi.schemas.TableSettingsSchema;
 import org.miradi.views.umbrella.ObjectPicker;
 
 import com.jhlabs.awt.GridLayoutPlus;
@@ -72,7 +73,7 @@ abstract public class AbstractAssignmentEditorComponent extends MultiTablePanel 
 	{
 		try
 		{
-			if (event.isSetDataCommandWithThisTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_DATE_UNIT_LIST_DATA))
+			if (event.isSetDataCommandWithThisTypeAndTag(TableSettingsSchema.getObjectType(), TableSettings.TAG_DATE_UNIT_LIST_DATA))
 				respondToExpandOrCollapseColumnEvent();
 
 			if (event.isSetDataCommand())

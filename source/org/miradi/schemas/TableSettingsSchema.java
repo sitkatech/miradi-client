@@ -20,12 +20,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.TableSettings;
 import org.miradi.questions.SortDirectionQuestion;
 import org.miradi.questions.WorkPlanVisibleRowsQuestion;
 
 public class TableSettingsSchema extends BaseObjectSchema
 {
+	public static final String OBJECT_NAME = "TableSettings";
+
 	public TableSettingsSchema()
 	{
 		super();
@@ -45,5 +48,10 @@ public class TableSettingsSchema extends BaseObjectSchema
 		createFieldSchemaCodeToCodeMap(TableSettings.TAG_COLUMN_WIDTHS).setNavigationField();
 		createFieldSchemaCode(TableSettings.TAG_COLUMN_SORT_TAG).setNavigationField();
 		createFieldSchemaChoice(TableSettings.TAG_COLUMN_SORT_DIRECTION, getQuestion(SortDirectionQuestion.class)).setNavigationField();
+	}
+
+	public static int getObjectType()
+	{
+		return ObjectType.TABLE_SETTINGS;
 	}
 }

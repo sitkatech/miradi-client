@@ -54,6 +54,7 @@ import org.miradi.schemas.MeasurementSchema;
 import org.miradi.schemas.ObjectTreeTableConfigurationSchema;
 import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.schemas.StrategySchema;
+import org.miradi.schemas.TableSettingsSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.TableWithColumnWidthAndSequenceSaver;
@@ -195,7 +196,7 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 	
 	protected boolean isColumnExpandCollapseCommand(CommandExecutedEvent event)
 	{
-		return event.isSetDataCommandWithThisTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_DATE_UNIT_LIST_DATA);
+		return event.isSetDataCommandWithThisTypeAndTag(TableSettingsSchema.getObjectType(), TableSettings.TAG_DATE_UNIT_LIST_DATA);
 	}
 	
 	protected boolean doesCommandForceRebuild(CommandExecutedEvent event) throws Exception
@@ -227,7 +228,7 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 		if(didAffectTableSettingsMapForBudgetColumns(event))
 			return true;
 		
-		if(event.isSetDataCommandWithThisTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_WORK_PLAN_VISIBLE_NODES_CODE))
+		if(event.isSetDataCommandWithThisTypeAndTag(TableSettingsSchema.getObjectType(), TableSettings.TAG_WORK_PLAN_VISIBLE_NODES_CODE))
 			return true;
 		
 		if (isCustomConfigurationCommand(event))
@@ -355,7 +356,7 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 	
 	private boolean didAffectTableSettingsMapForBudgetColumns(CommandExecutedEvent event)
 	{
-		return event.isSetDataCommandWithThisTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_TABLE_SETTINGS_MAP);
+		return event.isSetDataCommandWithThisTypeAndTag(TableSettingsSchema.getObjectType(), TableSettings.TAG_TABLE_SETTINGS_MAP);
 	}
 	
 	private boolean isCustomConfigurationCommand(CommandExecutedEvent event)

@@ -33,6 +33,7 @@ import org.miradi.project.ProjectForTesting;
 import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.StrategySchema;
+import org.miradi.schemas.TableSettingsSchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateUnitEffort;
@@ -300,7 +301,7 @@ public class TestTask extends AbstractObjectWithBudgetDataToDeleteTestCase
 		Task activity = getProject().createTask(strategy1);
 		assertFalse("activity should not be shared?", activity.isPartOfASharedTaskTree());
 		
-		ORef tableSettingsRef = getProject().createObject(TableSettings.getObjectType());
+		ORef tableSettingsRef = getProject().createObject(TableSettingsSchema.getObjectType());
 		getProject().fillObjectUsingCommand(tableSettingsRef, TableSettings.TAG_TREE_EXPANSION_LIST, new ORefList(activity).toString());
 		assertFalse("activity should not be shared?", activity.isPartOfASharedTaskTree());
 		

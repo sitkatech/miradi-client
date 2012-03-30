@@ -34,6 +34,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
 import org.miradi.questions.SortDirectionQuestion;
+import org.miradi.schemas.TableSettingsSchema;
 
 public class MultiTableRowSortController implements CommandExecutedListener
 {
@@ -132,8 +133,8 @@ public class MultiTableRowSortController implements CommandExecutedListener
 	{
 		try
 		{
-			if (event.isSetDataCommandWithThisTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_COLUMN_SORT_TAG) ||
-				event.isSetDataCommandWithThisTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_COLUMN_SORT_DIRECTION))
+			if (event.isSetDataCommandWithThisTypeAndTag(TableSettingsSchema.getObjectType(), TableSettings.TAG_COLUMN_SORT_TAG) ||
+				event.isSetDataCommandWithThisTypeAndTag(TableSettingsSchema.getObjectType(), TableSettings.TAG_COLUMN_SORT_DIRECTION))
 			{
 				sortAllTables();
 			}

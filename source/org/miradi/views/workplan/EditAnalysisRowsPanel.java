@@ -32,6 +32,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.WorkPlanAnalysisConfigurationQuestion;
 import org.miradi.questions.WorkPlanCategoryTypesQuestion;
+import org.miradi.schemas.TableSettingsSchema;
 import org.miradi.utils.FillerLabel;
 
 public class EditAnalysisRowsPanel extends ObjectDataInputPanel
@@ -48,7 +49,7 @@ public class EditAnalysisRowsPanel extends ObjectDataInputPanel
 		TableSettings workPlanTableSettings = TableSettings.findOrCreate(getProject(), AbstractWorkPlanStringMapEditorDoer.getTabSpecificModelIdentifier());
 		PanelTitleLabel label = new PanelTitleLabel(EAM.text("Column groups"));
 		ChoiceQuestion columnConfigurationQuestion = getProject().getQuestion(WorkPlanAnalysisConfigurationQuestion.class);
-		addFieldWithCustomLabel(createWorkPlanBudgetColumnCodeListEditor(workPlanTableSettings.getObjectType(), TableSettings.TAG_TABLE_SETTINGS_MAP, columnConfigurationQuestion), label);
+		addFieldWithCustomLabel(createWorkPlanBudgetColumnCodeListEditor(TableSettingsSchema.getObjectType(), TableSettings.TAG_TABLE_SETTINGS_MAP, columnConfigurationQuestion), label);
 
 		setObjectRefs(new ORef[]{getProject().getCurrentViewData().getRef(), workPlanTableSettings.getRef(), });
 		updateFieldsFromProject();
