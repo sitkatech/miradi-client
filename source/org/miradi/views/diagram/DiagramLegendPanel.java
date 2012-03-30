@@ -62,7 +62,6 @@ import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.GroupBox;
-import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ResultsChainDiagram;
@@ -78,6 +77,7 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.DiagramLegendQuestion;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.GoalSchema;
+import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
@@ -140,7 +140,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 	{
 		createCheckBox(ScopeBox.OBJECT_NAME);
 		createCheckBox(Target.OBJECT_NAME);
-		createCheckBox(HumanWelfareTarget.OBJECT_NAME);
+		createCheckBox(HumanWelfareTargetSchema.OBJECT_NAME);
 		
 		createCheckBox(Cause.OBJECT_NAME_THREAT);
 		createCheckBox(Cause.OBJECT_NAME_CONTRIBUTING_FACTOR);
@@ -172,7 +172,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		
 		addButtonLineWithCheckBox(jpanel, Target.getObjectType(), Target.OBJECT_NAME, actions.get(ActionInsertTarget.class));
 		if (getProject().getMetadata().isHumanWelfareTargetMode())
-			addButtonLineWithCheckBox(jpanel, HumanWelfareTarget.getObjectType(), HumanWelfareTarget.OBJECT_NAME, actions.get(ActionInsertHumanWelfareTarget.class));
+			addButtonLineWithCheckBox(jpanel, HumanWelfareTargetSchema.getObjectType(), HumanWelfareTargetSchema.OBJECT_NAME, actions.get(ActionInsertHumanWelfareTarget.class));
 		
 		createCustomLegendPanelSection(actions, jpanel);
 		

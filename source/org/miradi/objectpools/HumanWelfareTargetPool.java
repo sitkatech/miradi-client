@@ -29,12 +29,13 @@ import org.miradi.objecthelpers.BaseObjectByFullNameSorter;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.project.ObjectManager;
+import org.miradi.schemas.HumanWelfareTargetSchema;
 
 public class HumanWelfareTargetPool extends AbstractTargetPool
 {
 	public HumanWelfareTargetPool(IdAssigner idAssignerToUse)
 	{
-		super(idAssignerToUse, HumanWelfareTarget.getObjectType());
+		super(idAssignerToUse, HumanWelfareTargetSchema.getObjectType());
 	}
 	
 	public void put(HumanWelfareTarget humanWelfareTarget) throws Exception

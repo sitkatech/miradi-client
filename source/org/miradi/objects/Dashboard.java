@@ -44,6 +44,7 @@ import org.miradi.questions.StrategyRatingSummaryQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.schemas.DashboardSchema;
 import org.miradi.schemas.GoalSchema;
+import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
@@ -95,7 +96,7 @@ public class Dashboard extends BaseObject
 				return getObjectPoolCountAsString(Target.getObjectType());
 
 			if (fieldTag.equals(PSEUDO_HUMAN_WELFARE_TARGET_COUNT))
-				return getObjectPoolCountAsString(HumanWelfareTarget.getObjectType());
+				return getObjectPoolCountAsString(HumanWelfareTargetSchema.getObjectType());
 
 			if (fieldTag.equals(PSEUDO_TARGET_WITH_KEA_COUNT))
 				return getTargetWithKeaCount();
@@ -329,7 +330,7 @@ public class Dashboard extends BaseObject
 	{
 		int[] factorTypesToCount = new int[]{
 				Target.getObjectType(),
-				HumanWelfareTarget.getObjectType(),
+				HumanWelfareTargetSchema.getObjectType(),
 				Cause.getObjectType(),
 				Strategy.getObjectType(),
 		};

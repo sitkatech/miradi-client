@@ -40,13 +40,13 @@ import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.GroupBox;
-import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
 import org.miradi.schemas.DiagramLinkSchema;
+import org.miradi.schemas.HumanWelfareTargetSchema;
 
 
 //FIXME low: Examine all the methods and try to make it more uniform, simpler, etc....
@@ -427,7 +427,7 @@ public class LinkCreator
 							   IntermediateResult.getObjectType(), 
 							   ThreatReductionResult.getObjectType(), 
 							   Target.getObjectType(),
-							   HumanWelfareTarget.getObjectType(),
+							   HumanWelfareTargetSchema.getObjectType(),
 							   GroupBox.getObjectType(), };  
 		
 		HashSet<Integer> linkableTypes = new HashSet<Integer>();

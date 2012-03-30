@@ -30,7 +30,6 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.GroupBox;
-import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.ScopeBox;
 import org.miradi.objects.Strategy;
@@ -45,6 +44,7 @@ import org.miradi.questions.DiagramFactorFontSizeQuestion;
 import org.miradi.questions.DiagramFactorFontStyleQuestion;
 import org.miradi.questions.TextBoxZOrderQuestion;
 import org.miradi.schemas.DiagramFactorSchema;
+import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.utils.EnhancedJsonObject;
 import org.w3c.dom.Node;
 
@@ -125,7 +125,7 @@ public class DiagramFactorPoolImporter extends AbstractBaseObjectPoolImporter
 			return Target.getObjectType();
 		
 		if (objectTypeName.equals(HUMAN_WELFARE_TARGET))
-			return HumanWelfareTarget.getObjectType();
+			return HumanWelfareTargetSchema.getObjectType();
 		
 		if (objectTypeName.equals(CAUSE) || objectTypeName.equals(THREAT))
 			return Cause.getObjectType();

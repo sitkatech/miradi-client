@@ -60,6 +60,7 @@ import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.schemas.GoalSchema;
+import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
 
@@ -258,7 +259,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 	{
 		if(humanWelfareTargetPropertiesPanel == null)
 		{
-			humanWelfareTargetPropertiesPanel = new NonDiagramAbstractTargetPropertiesPanel(getProject(), HumanWelfareTarget.getObjectType());
+			humanWelfareTargetPropertiesPanel = new NonDiagramAbstractTargetPropertiesPanel(getProject(), HumanWelfareTargetSchema.getObjectType());
 			addPanel(humanWelfareTargetPropertiesPanel);
 		}
 		return humanWelfareTargetPropertiesPanel;

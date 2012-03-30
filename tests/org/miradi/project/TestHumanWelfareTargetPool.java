@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.project;
 
-import org.miradi.objects.HumanWelfareTarget;
+import org.miradi.schemas.HumanWelfareTargetSchema;
 
 public class TestHumanWelfareTargetPool extends TestFactorPool
 {
@@ -32,6 +32,6 @@ public class TestHumanWelfareTargetPool extends TestFactorPool
 	@Override
 	public int getObjectType()
 	{
-		return HumanWelfareTarget.getObjectType();
+		return HumanWelfareTargetSchema.getObjectType();
 	}
 }

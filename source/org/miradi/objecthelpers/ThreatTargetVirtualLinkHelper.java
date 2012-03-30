@@ -24,7 +24,6 @@ import java.util.Vector;
 import org.miradi.diagram.ThreatTargetChainWalker;
 import org.miradi.main.EAM;
 import org.miradi.objects.Cause;
-import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
 import org.miradi.objects.ThreatStressRating;
@@ -33,6 +32,7 @@ import org.miradi.project.Project;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
+import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.utils.ThreatStressRatingHelper;
 import org.miradi.utils.Utility;
 
@@ -52,7 +52,7 @@ public class ThreatTargetVirtualLinkHelper
 			ThreatStressRating threatStressRating = ThreatStressRating.find(getProject(), referringThreatStressRatingRefs.get(index));
 			Stress stress = Stress.find(getProject(), threatStressRating.getStressRef());
 			downstreamTargetRefs.addAllRefs(stress.findObjectsThatReferToUs(Target.getObjectType()));
- 			downstreamTargetRefs.addAllRefs(stress.findObjectsThatReferToUs(HumanWelfareTarget.getObjectType()));
+ 			downstreamTargetRefs.addAllRefs(stress.findObjectsThatReferToUs(HumanWelfareTargetSchema.getObjectType()));
 		}
 		
 		return downstreamTargetRefs;

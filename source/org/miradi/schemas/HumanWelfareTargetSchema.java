@@ -20,10 +20,19 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import org.miradi.objecthelpers.ObjectType;
+
 public class HumanWelfareTargetSchema extends AbstractTargetSchema
 {
+	public static final String OBJECT_NAME = "HumanWelfareTarget";
+
 	public HumanWelfareTargetSchema()
 	{
 		super();
+	}
+
+	public static int getObjectType()
+	{
+		return ObjectType.HUMAN_WELFARE_TARGET;
 	}
 }

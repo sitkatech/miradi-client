@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.targetviability.doers;
 
-import org.miradi.objects.HumanWelfareTarget;
+import org.miradi.schemas.HumanWelfareTargetSchema;
 
 public class ExpandToHumanWelfareTargetDoer extends AbstractExpandToDoer
 {
@@ -37,6 +37,6 @@ public class ExpandToHumanWelfareTargetDoer extends AbstractExpandToDoer
 	@Override
 	protected int getTypeToExpandTo()
 	{
-		return HumanWelfareTarget.getObjectType();
+		return HumanWelfareTargetSchema.getObjectType();
 	}
 }

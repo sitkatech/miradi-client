@@ -20,12 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.wcs;
 
-import org.miradi.objects.HumanWelfareTarget;
+import org.miradi.schemas.HumanWelfareTargetSchema;
 
 public class HumanWelfareTargetPoolExporter extends AbstractTargetPoolExporter
 {
 	public HumanWelfareTargetPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
-		super(wcsXmlExporterToUse, HUMAN_WELFARE_TARGET, HumanWelfareTarget.getObjectType());
+		super(wcsXmlExporterToUse, HUMAN_WELFARE_TARGET, HumanWelfareTargetSchema.getObjectType());
 	}
 }

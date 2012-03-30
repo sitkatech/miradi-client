@@ -30,6 +30,7 @@ import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.questions.StatusQuestion;
+import org.miradi.schemas.HumanWelfareTargetSchema;
 
 public class NonDiagramAbstractTargetPropertiesPanel extends ObjectDataInputPanelWithSections
 {
@@ -75,7 +76,7 @@ public class NonDiagramAbstractTargetPropertiesPanel extends ObjectDataInputPane
 		if (targetRef.isValid())
 			return targetRef;
 		
-		return refs.getRefForType(HumanWelfareTarget.getObjectType());
+		return refs.getRefForType(HumanWelfareTargetSchema.getObjectType());
 	}
 	
 	@Override

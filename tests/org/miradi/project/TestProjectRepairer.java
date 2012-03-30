@@ -40,7 +40,6 @@ import org.miradi.objects.Factor;
 import org.miradi.objects.FundingSource;
 import org.miradi.objects.Goal;
 import org.miradi.objects.GroupBox;
-import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.ResourceAssignment;
@@ -54,6 +53,7 @@ import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.BudgetCategoryOneSchema;
 import org.miradi.schemas.BudgetCategoryTwoSchema;
 import org.miradi.schemas.FundingSourceSchema;
+import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.views.diagram.LinkCreator;
@@ -187,7 +187,7 @@ public class TestProjectRepairer extends TestCaseWithProject
 	{
 		verifyFactorBeingReferredToByDiagramFactor(ScopeBox.getObjectType());
 		verifyFactorBeingReferredToByDiagramFactor(Target.getObjectType());
-		verifyFactorBeingReferredToByDiagramFactor(HumanWelfareTarget.getObjectType());
+		verifyFactorBeingReferredToByDiagramFactor(HumanWelfareTargetSchema.getObjectType());
 		verifyFactorBeingReferredToByDiagramFactor(Cause.getObjectType());
 		verifyFactorBeingReferredToByDiagramFactor(Strategy.getObjectType());
 		verifyFactorBeingReferredToByDiagramFactor(ThreatReductionResult.getObjectType());

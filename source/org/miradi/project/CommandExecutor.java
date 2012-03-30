@@ -56,6 +56,7 @@ import org.miradi.objects.Task;
 import org.miradi.objects.ViewData;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.DiagramFactorSchema;
+import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.utils.CommandVector;
 
@@ -424,7 +425,7 @@ public class CommandExecutor
 		if (setCommand.isRefAndTag(getProject().getMetadata().getRef(), ProjectMetadata.TAG_CURRENT_WIZARD_SCREEN_NAME))
 			return true;
 		
-		if (setCommand.isTypeAndTag(HumanWelfareTarget.getObjectType(), HumanWelfareTarget.TAG_VIABILITY_MODE))
+		if (setCommand.isTypeAndTag(HumanWelfareTargetSchema.getObjectType(), HumanWelfareTarget.TAG_VIABILITY_MODE))
 			return true;
 		
 		if (setCommand.isTypeAndTag(Target.getObjectType(), Target.TAG_VIABILITY_MODE))

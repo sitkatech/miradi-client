@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objects;
 
+import org.miradi.schemas.HumanWelfareTargetSchema;
+
 
 public class TestHumanWelfareTarget extends ObjectTestCase
 {
@@ -30,6 +32,6 @@ public class TestHumanWelfareTarget extends ObjectTestCase
 	
 	public void testFields() throws Exception
 	{
-		verifyFields(HumanWelfareTarget.getObjectType());
+		verifyFields(HumanWelfareTargetSchema.getObjectType());
 	}
 }
