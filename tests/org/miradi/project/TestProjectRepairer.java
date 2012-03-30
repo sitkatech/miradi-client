@@ -32,7 +32,6 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.BudgetCategoryTwo;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
@@ -53,6 +52,7 @@ import org.miradi.objects.TextBox;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.BudgetCategoryOneSchema;
+import org.miradi.schemas.BudgetCategoryTwoSchema;
 import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.EnhancedJsonObject;
@@ -78,7 +78,7 @@ public class TestProjectRepairer extends TestCaseWithProject
 		verifyRepair(resourceAssignment, ResourceAssignment.TAG_ACCOUNTING_CODE_ID, new BaseId(100).toString(), "");
 		verifyRepair(resourceAssignment, ResourceAssignment.TAG_FUNDING_SOURCE_ID, new BaseId(100).toString(), "");
 		verifyRepair(resourceAssignment, ResourceAssignment.TAG_CATEGORY_ONE_REF, new ORef(BudgetCategoryOneSchema.getObjectType(), new BaseId(100)).toString(), "");
-		verifyRepair(resourceAssignment, ResourceAssignment.TAG_CATEGORY_TWO_REF, new ORef(BudgetCategoryTwo.getObjectType(), new BaseId(100)).toString(), "");
+		verifyRepair(resourceAssignment, ResourceAssignment.TAG_CATEGORY_TWO_REF, new ORef(BudgetCategoryTwoSchema.getObjectType(), new BaseId(100)).toString(), "");
 		
 		verifyRepair(resourceAssignment, ResourceAssignment.TAG_ACCOUNTING_CODE_ID, BaseId.INVALID.toString(), "");
 		verifyRepair(resourceAssignment, ResourceAssignment.TAG_FUNDING_SOURCE_ID, BaseId.INVALID.toString(), "");
@@ -90,14 +90,14 @@ public class TestProjectRepairer extends TestCaseWithProject
 		ORef fundingSourceRef = getProject().createObject(FundingSourceSchema.getObjectType());
 		verifyRepair(resourceAssignment, ResourceAssignment.TAG_FUNDING_SOURCE_ID, fundingSourceRef.getObjectId().toString(), fundingSourceRef.getObjectId().toString());
 		verifyAssginmentReferringToExistingObject(resourceAssignment, ResourceAssignment.TAG_CATEGORY_ONE_REF, BudgetCategoryOneSchema.getObjectType());
-		verifyAssginmentReferringToExistingObject(resourceAssignment, ResourceAssignment.TAG_CATEGORY_TWO_REF, BudgetCategoryTwo.getObjectType());
+		verifyAssginmentReferringToExistingObject(resourceAssignment, ResourceAssignment.TAG_CATEGORY_TWO_REF, BudgetCategoryTwoSchema.getObjectType());
 		
 		
 		ExpenseAssignment expenseAssignment = getProject().createExpenseAssignment();
 		verifyRepair(expenseAssignment, ExpenseAssignment.TAG_ACCOUNTING_CODE_REF, new ORef(AccountingCodeSchema.getObjectType(), new BaseId(100)).toString(), "");
 		verifyRepair(expenseAssignment, ExpenseAssignment.TAG_FUNDING_SOURCE_REF, new ORef(FundingSourceSchema.getObjectType(), new BaseId(200)).toString(), "");
 		verifyRepair(expenseAssignment, ExpenseAssignment.TAG_CATEGORY_ONE_REF, new ORef(BudgetCategoryOneSchema.getObjectType(), new BaseId(300)).toString(), "");
-		verifyRepair(expenseAssignment, ExpenseAssignment.TAG_CATEGORY_TWO_REF, new ORef(BudgetCategoryTwo.getObjectType(), new BaseId(00)).toString(), "");
+		verifyRepair(expenseAssignment, ExpenseAssignment.TAG_CATEGORY_TWO_REF, new ORef(BudgetCategoryTwoSchema.getObjectType(), new BaseId(00)).toString(), "");
 		
 		verifyRepair(expenseAssignment, ExpenseAssignment.TAG_ACCOUNTING_CODE_REF, ORef.INVALID.toString(), "");
 		verifyRepair(expenseAssignment, ExpenseAssignment.TAG_FUNDING_SOURCE_REF, ORef.INVALID.toString(), "");
@@ -107,7 +107,7 @@ public class TestProjectRepairer extends TestCaseWithProject
 		verifyRepair(expenseAssignment, ExpenseAssignment.TAG_ACCOUNTING_CODE_REF, accountingCodeRef.toString(), accountingCodeRef.toString());
 		verifyRepair(expenseAssignment, ExpenseAssignment.TAG_FUNDING_SOURCE_REF, fundingSourceRef.toString(), fundingSourceRef.toString());
 		verifyAssginmentReferringToExistingObject(expenseAssignment, ExpenseAssignment.TAG_CATEGORY_ONE_REF, BudgetCategoryOneSchema.getObjectType());
-		verifyAssginmentReferringToExistingObject(expenseAssignment, ExpenseAssignment.TAG_CATEGORY_TWO_REF, BudgetCategoryTwo.getObjectType());
+		verifyAssginmentReferringToExistingObject(expenseAssignment, ExpenseAssignment.TAG_CATEGORY_TWO_REF, BudgetCategoryTwoSchema.getObjectType());
 	}
 	
 	private void verifyAssginmentReferringToExistingObject(Assignment assignment, String tag, int referrerType) throws Exception

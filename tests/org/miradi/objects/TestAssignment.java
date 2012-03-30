@@ -27,6 +27,7 @@ import org.miradi.project.ProjectForTesting;
 import org.miradi.project.TestDateUnit;
 import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.BudgetCategoryOneSchema;
+import org.miradi.schemas.BudgetCategoryTwoSchema;
 import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
@@ -51,13 +52,13 @@ public class TestAssignment extends ObjectTestCase
 		verifyTagForType(resourceAssignment, ResourceAssignment.TAG_FUNDING_SOURCE_ID, FundingSourceSchema.getObjectType());
 		verifyTagForType(resourceAssignment, ResourceAssignment.TAG_RESOURCE_ID, ProjectResource.getObjectType());
 		verifyTagForType(resourceAssignment, ResourceAssignment.TAG_CATEGORY_ONE_REF, BudgetCategoryOneSchema.getObjectType());
-		verifyTagForType(resourceAssignment, ResourceAssignment.TAG_CATEGORY_TWO_REF, BudgetCategoryTwo.getObjectType());
+		verifyTagForType(resourceAssignment, ResourceAssignment.TAG_CATEGORY_TWO_REF, BudgetCategoryTwoSchema.getObjectType());
 		
 		Assignment expenseAssignment = getProject().createExpenseAssignment();
 		verifyTagForType(expenseAssignment, ExpenseAssignment.TAG_ACCOUNTING_CODE_REF, AccountingCodeSchema.getObjectType());
 		verifyTagForType(expenseAssignment, ExpenseAssignment.TAG_FUNDING_SOURCE_REF, FundingSourceSchema.getObjectType());
 		verifyTagForType(expenseAssignment, ExpenseAssignment.TAG_CATEGORY_ONE_REF, BudgetCategoryOneSchema.getObjectType());
-		verifyTagForType(expenseAssignment, ExpenseAssignment.TAG_CATEGORY_TWO_REF, BudgetCategoryTwo.getObjectType());
+		verifyTagForType(expenseAssignment, ExpenseAssignment.TAG_CATEGORY_TWO_REF, BudgetCategoryTwoSchema.getObjectType());
 		verifyTagForType(expenseAssignment, null, ProjectResource.getObjectType());
 		
 		try

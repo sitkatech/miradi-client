@@ -25,7 +25,6 @@ import java.util.Set;
 
 import org.miradi.main.EAM;
 import org.miradi.objects.Audience;
-import org.miradi.objects.BudgetCategoryTwo;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.CostAllocationRule;
 import org.miradi.objects.Dashboard;
@@ -54,6 +53,7 @@ import org.miradi.objects.XslTemplate;
 import org.miradi.project.Project;
 import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.BudgetCategoryOneSchema;
+import org.miradi.schemas.BudgetCategoryTwoSchema;
 import org.miradi.schemas.FundingSourceSchema;
 
 public class ObjectType
@@ -163,7 +163,7 @@ public class ObjectType
 			OtherNotableSpecies.getObjectType(),
 			Audience.getObjectType(),
 			BudgetCategoryOneSchema.getObjectType(),
-			BudgetCategoryTwo.getObjectType(),
+			BudgetCategoryTwoSchema.getObjectType(),
 			Dashboard.getObjectType(),
 			XslTemplate.getObjectType(),
 		};
