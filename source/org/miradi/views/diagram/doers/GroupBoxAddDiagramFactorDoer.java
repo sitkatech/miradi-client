@@ -29,6 +29,7 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.project.Project;
 import org.miradi.schemas.DiagramFactorSchema;
+import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.views.diagram.LinkCreator;
 import org.miradi.views.diagram.LinkDeletor;
 
@@ -121,7 +122,7 @@ public class GroupBoxAddDiagramFactorDoer extends AbstractGroupBoxDoer
 
 	private void removeAnyGroupBoxToNonGroupBoxLinks(DiagramFactor groupBoxDiagramFactor, ORefList nonGroupBoxDiagramFactorRefs) throws Exception
 	{
-		ORefList diagramLinkReferrers = groupBoxDiagramFactor.findObjectsThatReferToUs(DiagramLink.getObjectType());
+		ORefList diagramLinkReferrers = groupBoxDiagramFactor.findObjectsThatReferToUs(DiagramLinkSchema.getObjectType());
 		LinkDeletor linkDeletor = new LinkDeletor(getProject());
 		for (int linkIndex = 0; linkIndex < diagramLinkReferrers.size(); ++linkIndex)
 		{
@@ -140,7 +141,7 @@ public class GroupBoxAddDiagramFactorDoer extends AbstractGroupBoxDoer
 	private void ensureNewlyAddedDiagramFactorIsLinked(DiagramFactor groupBoxDiagramFactor) throws Exception
 	{
 		LinkCreator linkCreator = new LinkCreator(getProject());
-		ORefList diagramLinkReferrers = groupBoxDiagramFactor.findObjectsThatReferToUs(DiagramLink.getObjectType());
+		ORefList diagramLinkReferrers = groupBoxDiagramFactor.findObjectsThatReferToUs(DiagramLinkSchema.getObjectType());
 		for (int i = 0; i < diagramLinkReferrers.size(); ++i)
 		{
 			DiagramLink diagramLink = DiagramLink.find(getProject(), diagramLinkReferrers.get(i));

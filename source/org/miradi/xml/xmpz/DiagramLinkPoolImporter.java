@@ -31,6 +31,7 @@ import org.miradi.objects.DiagramLink;
 import org.miradi.objects.FactorLink;
 import org.miradi.questions.DiagramLinkColorQuestion;
 import org.miradi.schemas.DiagramFactorSchema;
+import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.utils.PointList;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -39,7 +40,7 @@ public class DiagramLinkPoolImporter extends AbstractBaseObjectPoolImporter
 {
 	public DiagramLinkPoolImporter(XmpzXmlImporter importerToUse)
 	{
-		super(importerToUse, DIAGRAM_LINK, DiagramLink.getObjectType());
+		super(importerToUse, DIAGRAM_LINK, DiagramLinkSchema.getObjectType());
 	}
 	
 	@Override
@@ -47,7 +48,7 @@ public class DiagramLinkPoolImporter extends AbstractBaseObjectPoolImporter
 	{
 		super.importFields(node, destinationRef);
 		
-		importRefs(node, GROUP_BOX_DIAGRAM_LINK_CHILDREN_ID, destinationRef, DiagramLink.TAG_GROUPED_DIAGRAM_LINK_REFS, DiagramLink.getObjectType(), DIAGRAM_LINK);
+		importRefs(node, GROUP_BOX_DIAGRAM_LINK_CHILDREN_ID, destinationRef, DiagramLink.TAG_GROUPED_DIAGRAM_LINK_REFS, DiagramLinkSchema.getObjectType(), DIAGRAM_LINK);
 		importCodeField(node, destinationRef, DiagramLink.TAG_COLOR, new DiagramLinkColorQuestion());
 		DiagramLink diagramLink = DiagramLink.find(getProject(), destinationRef);
 		if (!diagramLink.isGroupBoxLink())

@@ -27,6 +27,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.schemas.DiagramFactorSchema;
+import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 
@@ -258,7 +259,7 @@ public class TestObjectFindOwnerAndFindReferrer extends MiradiTestCase
 		IdList factorList = new IdList(DiagramFactorSchema.getObjectType(), new BaseId[] {strategy.getId(), cause.getId(), target.getId()});
 		
 		DiagramLink link = createDiagramFactorLink(strategy, cause);
-		IdList linkList = new IdList(DiagramLink.getObjectType(), new BaseId[] {link.getId()});
+		IdList linkList = new IdList(DiagramLinkSchema.getObjectType(), new BaseId[] {link.getId()});
 		project.setObjectData(diagramRef, ResultsChainDiagram.TAG_DIAGRAM_FACTOR_IDS, factorList.toString());
 		project.setObjectData(diagramRef, ResultsChainDiagram.TAG_DIAGRAM_FACTOR_LINK_IDS, linkList.toString());
 		
@@ -287,7 +288,7 @@ public class TestObjectFindOwnerAndFindReferrer extends MiradiTestCase
 		project.setObjectData(factorLinkRef, FactorLink.TAG_FROM_REF, from.getWrappedORef().toString());
 		project.setObjectData(factorLinkRef, FactorLink.TAG_TO_REF, to.getWrappedORef().toString());
 		
-		ORef diagramLinkRef = project.createObject(DiagramLink.getObjectType());
+		ORef diagramLinkRef = project.createObject(DiagramLinkSchema.getObjectType());
 		project.setObjectData(diagramLinkRef, DiagramLink.TAG_WRAPPED_ID, linkId.toString());
     	project.setObjectData(diagramLinkRef, DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID, from.getId().toString());
     	project.setObjectData(diagramLinkRef, DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID, to.getId().toString());

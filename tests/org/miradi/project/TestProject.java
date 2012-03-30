@@ -64,6 +64,7 @@ import org.miradi.objects.FactorLink;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.ViewData;
+import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.utils.EnhancedJsonObject;
@@ -835,7 +836,7 @@ public class TestProject extends MiradiTestCase
 		getProject().setObjectData(factorLinkRef, FactorLink.TAG_TO_REF, toDiagramFactor.getWrappedORef().toString());
 
 		
-		ORef diagramLinkRef = project.createObject(DiagramLink.getObjectType());
+		ORef diagramLinkRef = project.createObject(DiagramLinkSchema.getObjectType());
 		getProject().setObjectData(diagramLinkRef, DiagramLink.TAG_WRAPPED_ID, createdId.toString());
     	getProject().setObjectData(diagramLinkRef, DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID, fromDiagramFactor.getId().toString());
     	getProject().setObjectData(diagramLinkRef, DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID, toDiagramFactor.getId().toString());

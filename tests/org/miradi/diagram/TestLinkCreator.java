@@ -39,6 +39,7 @@ import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.objects.ThreatStressRating;
+import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.utils.ThreatStressRatingHelper;
 import org.miradi.views.diagram.LinkCreator;
 
@@ -133,7 +134,7 @@ public class TestLinkCreator extends TestCaseWithProject
 		
 		LinkCreator linkCreator = new LinkCreator(getProject());
 		linkCreator.createAllPossibleGroupLinks(getDiagramModel().getDiagramObject(), groupBoxDiagramFactor);
-		assertEquals("Created links for no reason?", 0, groupBoxDiagramFactor.findObjectsThatReferToUs(DiagramLink.getObjectType()).size());
+		assertEquals("Created links for no reason?", 0, groupBoxDiagramFactor.findObjectsThatReferToUs(DiagramLinkSchema.getObjectType()).size());
 	}
 
 	public void testCreateAllPossibleGroupLinksWithPartialLinks() throws Exception
@@ -151,7 +152,7 @@ public class TestLinkCreator extends TestCaseWithProject
 		
 		LinkCreator linkCreator = new LinkCreator(getProject());
 		linkCreator.createAllPossibleGroupLinks(getDiagramModel().getDiagramObject(), groupBoxDiagramFactor);
-		assertEquals("Created links to factors that don't link to all children?", 0, groupBoxDiagramFactor.findObjectsThatReferToUs(DiagramLink.getObjectType()).size());
+		assertEquals("Created links to factors that don't link to all children?", 0, groupBoxDiagramFactor.findObjectsThatReferToUs(DiagramLinkSchema.getObjectType()).size());
 	}
 
 	public void testCreateAllPossibleGroupLinksWithSomeFullLinks() throws Exception
@@ -173,7 +174,7 @@ public class TestLinkCreator extends TestCaseWithProject
 
 		LinkCreator linkCreator = new LinkCreator(getProject());
 		linkCreator.createAllPossibleGroupLinks(getDiagramModel().getDiagramObject(), groupBoxDiagramFactor);
-		assertEquals("Didn't create one link in each direction?", 2, groupBoxDiagramFactor.findObjectsThatReferToUs(DiagramLink.getObjectType()).size());
+		assertEquals("Didn't create one link in each direction?", 2, groupBoxDiagramFactor.findObjectsThatReferToUs(DiagramLinkSchema.getObjectType()).size());
 	}
 	
 	public void testCreateAllPossibleGroupLinksGroupToGroup() throws Exception
@@ -195,15 +196,15 @@ public class TestLinkCreator extends TestCaseWithProject
 		addToGroup(causeGroupBoxDiagramFactor, cause1);
 		addToGroup(causeGroupBoxDiagramFactor, cause2);
 		linkCreator.createAllPossibleGroupLinks(getDiagramModel().getDiagramObject(), causeGroupBoxDiagramFactor);
-		assertEquals("Didn't create links to the group?", 2, causeGroupBoxDiagramFactor.findObjectsThatReferToUs(DiagramLink.getObjectType()).size());
-		assertEquals("Wrong number of links?", 6, getProject().getPool(DiagramLink.getObjectType()).size());
+		assertEquals("Didn't create links to the group?", 2, causeGroupBoxDiagramFactor.findObjectsThatReferToUs(DiagramLinkSchema.getObjectType()).size());
+		assertEquals("Wrong number of links?", 6, getProject().getPool(DiagramLinkSchema.getObjectType()).size());
 
 		DiagramFactor targetGroupBoxDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(GroupBox.getObjectType());
 		addToGroup(targetGroupBoxDiagramFactor, target1);
 		addToGroup(targetGroupBoxDiagramFactor, target2);
 		linkCreator.createAllPossibleGroupLinks(getDiagramModel().getDiagramObject(), targetGroupBoxDiagramFactor);
 		assertTrue("Didn't create a group to group link?", diagram.areDiagramFactorsLinkedFromToNonBidirectional(causeGroupBoxDiagramFactor.getRef(), targetGroupBoxDiagramFactor.getRef()));
-		assertEquals("Created too many links?", 7, getProject().getPool(DiagramLink.getObjectType()).size());
+		assertEquals("Created too many links?", 7, getProject().getPool(DiagramLinkSchema.getObjectType()).size());
 	}
 
 	private void verifyGroupBoxLinkedDiagramFactors() throws Exception

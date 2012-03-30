@@ -30,7 +30,6 @@ import org.miradi.ids.DiagramLinkId;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
@@ -70,20 +69,15 @@ public class DiagramLink extends BaseObject
 	@Override
 	public int getType()
 	{
-		return getObjectType();
+		return DiagramLinkSchema.getObjectType();
 	}
 
 	@Override
 	public String getTypeName()
 	{
-		return OBJECT_NAME;
+		return DiagramLinkSchema.OBJECT_NAME;
 	}
 
-	public static int getObjectType()
-	{
-		return ObjectType.DIAGRAM_LINK;
-	}
-	
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
@@ -218,7 +212,7 @@ public class DiagramLink extends BaseObject
 	public int getAnnotationType(String tag)
 	{
 		if (tag.equals(TAG_GROUPED_DIAGRAM_LINK_REFS))
-			return DiagramLink.getObjectType();
+			return DiagramLinkSchema.getObjectType();
 		
 		return super.getAnnotationType(tag);
 	}
@@ -330,7 +324,7 @@ public class DiagramLink extends BaseObject
 	
 	public boolean isCoveredByGroupBoxLink()
 	{
-		ORefList groupBoxLinks = findObjectsThatReferToUs(DiagramLink.getObjectType());
+		ORefList groupBoxLinks = findObjectsThatReferToUs(DiagramLinkSchema.getObjectType());
 		return (groupBoxLinks.size() > 0);
 	}
 	
@@ -364,7 +358,7 @@ public class DiagramLink extends BaseObject
 	
 	public static boolean is(int objectType)
 	{
-		return objectType == getObjectType();
+		return objectType == DiagramLinkSchema.getObjectType();
 	}
 
 	public static DiagramLink find(ObjectManager objectManager, ORef diagramLinkRef)
@@ -388,6 +382,4 @@ public class DiagramLink extends BaseObject
 	public static final int FROM = 1;
 	public static final int TO = 2;
 	public static final String BIDIRECTIONAL_LINK = BooleanData.BOOLEAN_TRUE;
-	
-	public static final String OBJECT_NAME = "DiagramLink";
 }

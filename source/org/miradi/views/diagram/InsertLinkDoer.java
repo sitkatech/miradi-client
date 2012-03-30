@@ -33,9 +33,9 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.FactorLink;
+import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.views.ViewDoer;
 
 public class InsertLinkDoer extends ViewDoer
@@ -104,8 +104,8 @@ public class InsertLinkDoer extends ViewDoer
 			return;
 
 		FactorLink factorLink = FactorLink.find(getProject(), factorLinkRef);
-		ORefList diagramLinkReferrerRefs = factorLink.findObjectsThatReferToUs(DiagramLink.getObjectType());
-		ORef diagramLinkReferrerRef = diagramLinkReferrerRefs.getRefForType(DiagramLink.getObjectType());
+		ORefList diagramLinkReferrerRefs = factorLink.findObjectsThatReferToUs(DiagramLinkSchema.getObjectType());
+		ORef diagramLinkReferrerRef = diagramLinkReferrerRefs.getRefForType(DiagramLinkSchema.getObjectType());
 		if(diagramLinkReferrerRef.isInvalid())
 		{
 			EAM.logWarning("Skipped inserting an invalid DL ref into the diagram");

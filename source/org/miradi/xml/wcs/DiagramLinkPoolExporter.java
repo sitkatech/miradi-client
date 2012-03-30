@@ -25,13 +25,14 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.Factor;
 import org.miradi.questions.DiagramLinkColorQuestion;
+import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.utils.PointList;
 
 public class DiagramLinkPoolExporter extends BaseObjectPoolExporter
 {
 	public DiagramLinkPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
-		super(wcsXmlExporterToUse, DIAGRAM_LINK, DiagramLink.getObjectType());
+		super(wcsXmlExporterToUse, DIAGRAM_LINK, DiagramLinkSchema.getObjectType());
 	}
 	
 	@Override

@@ -46,6 +46,7 @@ import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
+import org.miradi.schemas.DiagramLinkSchema;
 
 
 //FIXME low: Examine all the methods and try to make it more uniform, simpler, etc....
@@ -553,7 +554,7 @@ public class LinkCreator
 			ORef thisDiagramFactorRef = childRef;
 			DiagramFactor df = DiagramFactor.find(project, childRef);
 	
-			ORefList diagramLinkRefs = df.findObjectsThatReferToUs(DiagramLink.getObjectType());
+			ORefList diagramLinkRefs = df.findObjectsThatReferToUs(DiagramLinkSchema.getObjectType());
 			for(int diagramLinkIndex = 0; diagramLinkIndex < diagramLinkRefs.size(); ++diagramLinkIndex)
 			{
 				DiagramLink diagramLink = DiagramLink.find(project, diagramLinkRefs.get(diagramLinkIndex));

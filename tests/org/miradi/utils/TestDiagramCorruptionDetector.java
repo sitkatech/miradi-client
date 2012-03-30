@@ -34,6 +34,7 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.schemas.DiagramFactorSchema;
+import org.miradi.schemas.DiagramLinkSchema;
 
 public class TestDiagramCorruptionDetector extends TestCaseWithProject
 {
@@ -74,13 +75,13 @@ public class TestDiagramCorruptionDetector extends TestCaseWithProject
 		assertFalse("detected corrupted diagram links?", DiagramCorruptionDetector.getCorruptedDiagramLinksErrorMessages(getProject(), diagramObject).size() > 0);
 
 		BaseId bogusDiagramLinkId = new BaseId(9999);
-		IdList diagramLinkIdsWithBogusId = new IdList(DiagramLink.getObjectType());
+		IdList diagramLinkIdsWithBogusId = new IdList(DiagramLinkSchema.getObjectType());
 		diagramLinkIdsWithBogusId.add(bogusDiagramLinkId);
 		getProject().setObjectData(diagramObject.getRef(), DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLinkIdsWithBogusId.toString());
 		assertTrue("did not detect corrupted diagram with missing link?", DiagramCorruptionDetector.getCorruptedDiagramLinksErrorMessages(getProject(), diagramObject).size() > 0);
 		
 		ORef diagramLinkRef = getProject().createDiagramLink();
-		IdList diagramLinkIds = new IdList(DiagramLink.getObjectType());
+		IdList diagramLinkIds = new IdList(DiagramLinkSchema.getObjectType());
 		diagramLinkIds.addRef(diagramLinkRef);
 		getProject().setObjectData(diagramObject.getRef(), DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLinkIds.toString());
 		
@@ -122,12 +123,12 @@ public class TestDiagramCorruptionDetector extends TestCaseWithProject
 			ORef groupBoxDiagramFactorRef, ORef targetDiagramFactorRef)
 			throws Exception
 	{
-		ORef diagramLinkRef = getProject().createObject(DiagramLink.getObjectType());
+		ORef diagramLinkRef = getProject().createObject(DiagramLinkSchema.getObjectType());
 		//NOTE: we are not setting diagramLink's wrapped ref due to it being a Group box link
 		getProject().setObjectData(diagramLinkRef, DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID, targetDiagramFactorRef.getObjectId().toString());
     	getProject().setObjectData(diagramLinkRef, DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID, groupBoxDiagramFactorRef.getObjectId().toString());
 		
-		IdList diagramLinkIds = new IdList(DiagramLink.getObjectType());
+		IdList diagramLinkIds = new IdList(DiagramLinkSchema.getObjectType());
 		diagramLinkIds.addRef(diagramLinkRef);
 		getProject().setObjectData(diagramObject.getRef(), DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLinkIds.toString());
 		DiagramLink diagramLink = DiagramLink.find(getProject(), diagramLinkRef);

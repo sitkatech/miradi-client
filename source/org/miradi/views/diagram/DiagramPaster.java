@@ -69,6 +69,7 @@ import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.Project;
 import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.DiagramFactorSchema;
+import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.utils.CodeList;
@@ -646,7 +647,7 @@ abstract public class DiagramPaster
 			String jsonAsString = diagramLinkDeepCopies.get(i);
 			EnhancedJsonObject diagramLinkJson = new EnhancedJsonObject(jsonAsString);
 			BaseId diagramLinkId = diagramLinkJson.getId(DiagramLink.TAG_ID);
-			ORef diagramLinkRef = new ORef(DiagramLink.getObjectType(), diagramLinkId);
+			ORef diagramLinkRef = new ORef(DiagramLinkSchema.getObjectType(), diagramLinkId);
 			if (oldToNewPastedObjectMap.containsKey(diagramLinkRef))
 				continue;
 	

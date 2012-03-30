@@ -26,6 +26,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.project.Project;
+import org.miradi.schemas.DiagramLinkSchema;
 
 public class TestDiagramObject extends ObjectTestCase
 {
@@ -43,7 +44,7 @@ public class TestDiagramObject extends ObjectTestCase
 		assertFalse("link does exist?", diagramObject.areDiagramFactorsLinkedFromToNonBidirectional(cause.getRef(), target.getRef()));
 		
 		BaseId diagramLinkId = getProject().createDiagramFactorLink(cause, target);
-		ORef diagramLinkRef = new ORef(DiagramLink.getObjectType(), diagramLinkId);
+		ORef diagramLinkRef = new ORef(DiagramLinkSchema.getObjectType(), diagramLinkId);
 		getProject().addDiagramLinkToModel(diagramLinkId);
 		assertTrue("link does not exist?", diagramObject.areDiagramFactorsLinkedFromToNonBidirectional(cause.getRef(), target.getRef()));
 		assertFalse("wrong direction appears linked?", diagramObject.areDiagramFactorsLinkedFromToNonBidirectional(target.getRef(), cause.getRef()));
@@ -184,7 +185,7 @@ public class TestDiagramObject extends ObjectTestCase
 	private DiagramLink createLinkAndAddToDiagram(DiagramFactor cause, DiagramFactor target) throws Exception
 	{
 		BaseId diagramLinkId = getProject().createDiagramFactorLink(cause, target);
-		ORef diagramLinkRef = new ORef(DiagramLink.getObjectType(), diagramLinkId);
+		ORef diagramLinkRef = new ORef(DiagramLinkSchema.getObjectType(), diagramLinkId);
 		DiagramLink diagramLink = DiagramLink.find(getProject(), diagramLinkRef);
 		getProject().addDiagramLinkToModel(diagramLink.getId());
 		return diagramLink;
