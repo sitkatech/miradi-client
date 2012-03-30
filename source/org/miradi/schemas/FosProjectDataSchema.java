@@ -20,11 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.FosProjectData;
 import org.miradi.questions.FosTrainingTypeQuestion;
 
 public class FosProjectDataSchema extends BaseObjectSchema
 {
+	public static final String OBJECT_NAME = "FosProjectData";
+
 	public FosProjectDataSchema()
 	{
 		super();
@@ -44,6 +47,11 @@ public class FosProjectDataSchema extends BaseObjectSchema
 	@Override
 	public String getXmpz2ElementName()
 	{
-		return FosProjectData.OBJECT_NAME;
+		return FosProjectDataSchema.OBJECT_NAME;
+	}
+
+	public static int getObjectType()
+	{
+		return ObjectType.FOS_PROJECT_DATA;
 	}
 }

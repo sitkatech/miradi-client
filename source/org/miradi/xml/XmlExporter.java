@@ -33,6 +33,7 @@ import org.miradi.objects.WcpaProjectData;
 import org.miradi.objects.WcsProjectData;
 import org.miradi.objects.WwfProjectData;
 import org.miradi.project.Project;
+import org.miradi.schemas.FosProjectDataSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.HtmlUtilities;
 
@@ -191,7 +192,7 @@ public abstract class XmlExporter
 	
 	protected FosProjectData getFosProjectData()
 	{
-		ORef fosProjectDataRef = getProject().getSingletonObjectRef(FosProjectData.getObjectType());
+		ORef fosProjectDataRef = getProject().getSingletonObjectRef(FosProjectDataSchema.getObjectType());
 		return FosProjectData.find(getProject(), fosProjectDataRef);
 	}
 	

@@ -21,6 +21,7 @@ package org.miradi.forms.summary;
 
 import org.miradi.forms.FieldPanelSpec;
 import org.miradi.objects.FosProjectData;
+import org.miradi.schemas.FosProjectDataSchema;
 import org.miradi.views.summary.FOSSummaryPanel;
 
 public class FosTabForm extends FieldPanelSpec
@@ -29,9 +30,9 @@ public class FosTabForm extends FieldPanelSpec
 	{
 		setTranslatedTitle(FOSSummaryPanel.getFosPanelDescription());
 
-		addLabelAndField(FosProjectData.getObjectType(), FosProjectData.TAG_TRAINING_TYPE);
-		addLabelAndField(FosProjectData.getObjectType(), FosProjectData.TAG_TRAINING_DATES);
-		addLabelAndField(FosProjectData.getObjectType(), FosProjectData.TAG_TRAINERS);
-		addLabelAndField(FosProjectData.getObjectType(), FosProjectData.TAG_COACHES);		
+		addLabelAndField(FosProjectDataSchema.getObjectType(), FosProjectData.TAG_TRAINING_TYPE);
+		addLabelAndField(FosProjectDataSchema.getObjectType(), FosProjectData.TAG_TRAINING_DATES);
+		addLabelAndField(FosProjectDataSchema.getObjectType(), FosProjectData.TAG_TRAINERS);
+		addLabelAndField(FosProjectDataSchema.getObjectType(), FosProjectData.TAG_COACHES);		
 	}
 }

@@ -39,7 +39,6 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.FosProjectData;
 import org.miradi.objects.RareProjectData;
 import org.miradi.objects.TncProjectData;
 import org.miradi.objects.WcpaProjectData;
@@ -49,6 +48,7 @@ import org.miradi.objects.Xenodata;
 import org.miradi.questions.ReportTemplateContentQuestion;
 import org.miradi.rtf.RtfFormExporter;
 import org.miradi.rtf.RtfWriter;
+import org.miradi.schemas.FosProjectDataSchema;
 import org.miradi.utils.CodeList;
 
 public class SummaryViewRtfExporter extends RtfViewExporter
@@ -160,7 +160,7 @@ public class SummaryViewRtfExporter extends RtfViewExporter
 
 	private void exportFosTab(RtfWriter writer) throws Exception
 	{
-		exportForm(writer, new FosTabForm(), FosProjectData.getObjectType());
+		exportForm(writer, new FosTabForm(), FosProjectDataSchema.getObjectType());
 	}
 
 	private void exportForm(RtfWriter writer, PropertiesPanelSpec form, int otherProjectDataType) throws Exception

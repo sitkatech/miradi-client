@@ -24,12 +24,13 @@ import org.miradi.ids.IdAssigner;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.FosProjectData;
 import org.miradi.project.ObjectManager;
+import org.miradi.schemas.FosProjectDataSchema;
 
 public class FosProjectDataPool extends BaseObjectPool
 {
 	public FosProjectDataPool(IdAssigner idAssignerToUse)
 	{
-		super(idAssignerToUse, FosProjectData.getObjectType());
+		super(idAssignerToUse, FosProjectDataSchema.getObjectType());
 	}
 	
 	public void put(FosProjectData fosProjectData) throws Exception

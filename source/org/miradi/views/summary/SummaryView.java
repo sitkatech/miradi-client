@@ -37,7 +37,6 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.main.MiradiToolBar;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.FosProjectData;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.RareProjectData;
 import org.miradi.objects.TncProjectData;
@@ -45,6 +44,7 @@ import org.miradi.objects.WcpaProjectData;
 import org.miradi.objects.WcsProjectData;
 import org.miradi.objects.WwfProjectData;
 import org.miradi.project.Project;
+import org.miradi.schemas.FosProjectDataSchema;
 import org.miradi.views.TabbedView;
 import org.miradi.views.summary.doers.CreateOranizationDoer;
 import org.miradi.views.summary.doers.DeleteOranizationDoer;
@@ -91,7 +91,7 @@ public class SummaryView extends TabbedView
 			getProject().getSingletonObjectRef(WwfProjectData.getObjectType()),
 			getProject().getSingletonObjectRef(WcsProjectData.getObjectType()),
 			getProject().getSingletonObjectRef(RareProjectData.getObjectType()),
-			getProject().getSingletonObjectRef(FosProjectData.getObjectType()),
+			getProject().getSingletonObjectRef(FosProjectDataSchema.getObjectType()),
 			getProject().getSingletonObjectRef(WcpaProjectData.getObjectType()),
 		};
 		
