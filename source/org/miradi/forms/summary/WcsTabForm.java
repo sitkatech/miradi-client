@@ -26,6 +26,7 @@ import org.miradi.forms.FormFieldLabel;
 import org.miradi.forms.FormRow;
 import org.miradi.main.EAM;
 import org.miradi.objects.WcsProjectData;
+import org.miradi.schemas.WcsProjectDataSchema;
 import org.miradi.views.summary.WCSSummaryPanel;
 
 public class WcsTabForm extends FieldPanelSpec
@@ -34,24 +35,24 @@ public class WcsTabForm extends FieldPanelSpec
 	{
 		setTranslatedTitle(WCSSummaryPanel.getWcsPanelDescription());
 		
-		addLabelAndField(WcsProjectData.getObjectType(), WcsProjectData.TAG_ORGANIZATIONAL_FOCUS);
-		addLabelAndField(WcsProjectData.getObjectType(), WcsProjectData.TAG_ORGANIZATIONAL_LEVEL);
+		addLabelAndField(WcsProjectDataSchema.getObjectType(), WcsProjectData.TAG_ORGANIZATIONAL_FOCUS);
+		addLabelAndField(WcsProjectDataSchema.getObjectType(), WcsProjectData.TAG_ORGANIZATIONAL_LEVEL);
 				
 		FormRow swotAreaRow = new FormRow();
 		swotAreaRow.addLeftFormItem(new FormConstant(EAM.text("SWOT")));
-		swotAreaRow.addRightFormItem(new FormFieldLabel(WcsProjectData.getObjectType(), WcsProjectData.TAG_SWOT_COMPLETED));
-		swotAreaRow.addRightFormItem(new FormFieldData(WcsProjectData.getObjectType(), WcsProjectData.TAG_SWOT_COMPLETED));
+		swotAreaRow.addRightFormItem(new FormFieldLabel(WcsProjectDataSchema.getObjectType(), WcsProjectData.TAG_SWOT_COMPLETED));
+		swotAreaRow.addRightFormItem(new FormFieldData(WcsProjectDataSchema.getObjectType(), WcsProjectData.TAG_SWOT_COMPLETED));
 		
-		swotAreaRow.addRightFormItem(new FormFieldLabel(WcsProjectData.getObjectType(), WcsProjectData.TAG_SWOT_URL));
-		swotAreaRow.addRightFormItem(new FormFieldData(WcsProjectData.getObjectType(), WcsProjectData.TAG_SWOT_URL));
+		swotAreaRow.addRightFormItem(new FormFieldLabel(WcsProjectDataSchema.getObjectType(), WcsProjectData.TAG_SWOT_URL));
+		swotAreaRow.addRightFormItem(new FormFieldData(WcsProjectDataSchema.getObjectType(), WcsProjectData.TAG_SWOT_URL));
 		addFormRow(swotAreaRow);
 
 		FormRow stepAreaRow = new FormRow();
 		stepAreaRow.addLeftFormItem(new FormConstant(EAM.text("STEP")));
-		stepAreaRow.addRightFormItem(new FormFieldLabel(WcsProjectData.getObjectType(), WcsProjectData.TAG_STEP_COMPLETED));
-		stepAreaRow.addRightFormItem(new FormFieldData(WcsProjectData.getObjectType(), WcsProjectData.TAG_STEP_COMPLETED));
-		stepAreaRow.addRightFormItem(new FormFieldLabel(WcsProjectData.getObjectType(), WcsProjectData.TAG_STEP_URL));
-		stepAreaRow.addRightFormItem(new FormFieldData(WcsProjectData.getObjectType(), WcsProjectData.TAG_STEP_URL));
+		stepAreaRow.addRightFormItem(new FormFieldLabel(WcsProjectDataSchema.getObjectType(), WcsProjectData.TAG_STEP_COMPLETED));
+		stepAreaRow.addRightFormItem(new FormFieldData(WcsProjectDataSchema.getObjectType(), WcsProjectData.TAG_STEP_COMPLETED));
+		stepAreaRow.addRightFormItem(new FormFieldLabel(WcsProjectDataSchema.getObjectType(), WcsProjectData.TAG_STEP_URL));
+		stepAreaRow.addRightFormItem(new FormFieldData(WcsProjectDataSchema.getObjectType(), WcsProjectData.TAG_STEP_URL));
 		addFormRow(stepAreaRow);
 	}
 }

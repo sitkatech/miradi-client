@@ -30,13 +30,14 @@ import org.miradi.objects.WcsProjectData;
 import org.miradi.project.Project;
 import org.miradi.rtf.RtfFormExporter;
 import org.miradi.rtf.RtfWriter;
+import org.miradi.schemas.WcsProjectDataSchema;
 
 public class WCSSummaryPanel extends ObjectDataInputPanel
 {
 
 	public WCSSummaryPanel(Project projectToUse)
 	{
-		super(projectToUse, projectToUse.getSingletonObjectRef(WcsProjectData.getObjectType()));
+		super(projectToUse, projectToUse.getSingletonObjectRef(WcsProjectDataSchema.getObjectType()));
 
 		addField(createStringField(WcsProjectData.TAG_ORGANIZATIONAL_FOCUS));
 		addField(createStringField(WcsProjectData.TAG_ORGANIZATIONAL_LEVEL));

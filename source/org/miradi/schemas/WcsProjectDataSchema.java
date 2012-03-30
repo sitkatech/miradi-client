@@ -20,10 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.WcsProjectData;
 
 public class WcsProjectDataSchema extends BaseObjectSchema
 {
+	public static final String OBJECT_NAME = "WcsProjectData";
+
 	public WcsProjectDataSchema()
 	{
 		super();
@@ -45,6 +48,11 @@ public class WcsProjectDataSchema extends BaseObjectSchema
 	@Override
 	public String getXmpz2ElementName()
 	{
-		return WcsProjectData.OBJECT_NAME;
+		return WcsProjectDataSchema.OBJECT_NAME;
+	}
+
+	public static int getObjectType()
+	{
+		return ObjectType.WCS_PROJECT_DATA;
 	}
 }

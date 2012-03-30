@@ -167,6 +167,7 @@ import org.miradi.schemas.TextBoxSchema;
 import org.miradi.schemas.ThreatReductionResultSchema;
 import org.miradi.schemas.ThreatStressRatingSchema;
 import org.miradi.schemas.TncProjectDataSchema;
+import org.miradi.schemas.WcsProjectDataSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.DateRange;
@@ -272,7 +273,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	private void fillWcsProjectData() throws Exception
 	{
-		ORef wcsProjectDataRef = getSingletonObjectRef(WcsProjectData.getObjectType());
+		ORef wcsProjectDataRef = getSingletonObjectRef(WcsProjectDataSchema.getObjectType());
 		fillObjectUsingCommand(wcsProjectDataRef, WcsProjectData.TAG_ORGANIZATIONAL_FOCUS, "Sample Organizational Focus");
 		fillObjectUsingCommand(wcsProjectDataRef, WcsProjectData.TAG_ORGANIZATIONAL_LEVEL, "Sample Organizational Level");
 		fillObjectUsingCommand(wcsProjectDataRef, WcsProjectData.TAG_SWOT_COMPLETED, BooleanData.BOOLEAN_TRUE);

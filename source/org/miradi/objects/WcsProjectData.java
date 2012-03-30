@@ -21,7 +21,6 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.WcsProjectDataSchema;
@@ -42,24 +41,19 @@ public class WcsProjectData extends BaseObject
 	@Override
 	public int getType()
 	{
-		return getObjectType();
+		return WcsProjectDataSchema.getObjectType();
 	}
 
 	@Override
 	public String getTypeName()
 	{
-		return OBJECT_NAME;
+		return WcsProjectDataSchema.OBJECT_NAME;
 	}
 
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;
-	}
-	
-	public static int getObjectType()
-	{
-		return ObjectType.WCS_PROJECT_DATA;
 	}
 	
 	public static boolean canReferToThisType(int type)
@@ -76,8 +70,6 @@ public class WcsProjectData extends BaseObject
 	{
 		return find(project.getObjectManager(), wcsProjectDataRef);
 	}
-	
-	public static final String OBJECT_NAME = "WcsProjectData";
 	
 	public static final String TAG_ORGANIZATIONAL_FOCUS = "OrganizationalFocus";
 	public static final String TAG_ORGANIZATIONAL_LEVEL = "OrganizationalLevel";
