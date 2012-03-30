@@ -163,6 +163,7 @@ import org.miradi.objects.Task;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.questions.DiagramModeQuestion;
+import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.utils.DiagramCorruptionDetector;
 import org.miradi.utils.PointList;
 import org.miradi.views.TabbedView;
@@ -749,7 +750,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		
 			updateAllTabs(setCommand);
 			setToDefaultMode(setCommand);
-			if (event.isSetDataCommandWithThisTypeAndTag(DiagramFactor.getObjectType(), DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE))
+			if (event.isSetDataCommandWithThisTypeAndTag(DiagramFactorSchema.getObjectType(), DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE))
 				handleTextBoxZOrderChanged(setCommand.getObjectORef());
 			
 			if(event.isSetDataCommandWithThisTypeAndTag(GroupBox.getObjectType(), GroupBox.TAG_LABEL))
@@ -797,7 +798,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		if (diagramFactorRefForPropertiesDialog == null)
 			return true;
 		
-		IdList currentList = new IdList(DiagramFactor.getObjectType(), setCommand.getDataValue());
+		IdList currentList = new IdList(DiagramFactorSchema.getObjectType(), setCommand.getDataValue());
 		return !currentList.contains(diagramFactorRefForPropertiesDialog.getRef());
 	}
 

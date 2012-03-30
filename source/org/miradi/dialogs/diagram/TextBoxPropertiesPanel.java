@@ -31,6 +31,7 @@ import org.miradi.questions.DiagramFactorFontColorQuestion;
 import org.miradi.questions.DiagramFactorFontSizeQuestion;
 import org.miradi.questions.DiagramFactorFontStyleQuestion;
 import org.miradi.questions.TextBoxZOrderQuestion;
+import org.miradi.schemas.DiagramFactorSchema;
 
 public class TextBoxPropertiesPanel extends ObjectDataInputPanel
 {
@@ -41,13 +42,13 @@ public class TextBoxPropertiesPanel extends ObjectDataInputPanel
 		setObjectRefs(new ORef[] {diagramFactor.getWrappedORef(), diagramFactor.getRef()});
 
 		addField(createExpandableField(TextBox.TAG_LABEL));
-		addField(createChoiceField(DiagramFactor.getObjectType(), DiagramFactor.TAG_BACKGROUND_COLOR, new DiagramFactorBackgroundQuestion()));
-		addField(createChoiceField(DiagramFactor.getObjectType(), DiagramFactor.TAG_FONT_SIZE, new DiagramFactorFontSizeQuestion()));
-		addField(createChoiceField(DiagramFactor.getObjectType(), DiagramFactor.TAG_FOREGROUND_COLOR, new DiagramFactorFontColorQuestion()));
-		addField(createChoiceField(DiagramFactor.getObjectType(), DiagramFactor.TAG_FONT_STYLE, new DiagramFactorFontStyleQuestion()));
+		addField(createChoiceField(DiagramFactorSchema.getObjectType(), DiagramFactor.TAG_BACKGROUND_COLOR, new DiagramFactorBackgroundQuestion()));
+		addField(createChoiceField(DiagramFactorSchema.getObjectType(), DiagramFactor.TAG_FONT_SIZE, new DiagramFactorFontSizeQuestion()));
+		addField(createChoiceField(DiagramFactorSchema.getObjectType(), DiagramFactor.TAG_FOREGROUND_COLOR, new DiagramFactorFontColorQuestion()));
+		addField(createChoiceField(DiagramFactorSchema.getObjectType(), DiagramFactor.TAG_FONT_STYLE, new DiagramFactorFontStyleQuestion()));
 		
 		ChoiceQuestion zPositionQuestion = getProject().getQuestion(TextBoxZOrderQuestion.class);
-		addRadioButtonField(DiagramFactor.getObjectType(), DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE, zPositionQuestion);
+		addRadioButtonField(DiagramFactorSchema.getObjectType(), DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE, zPositionQuestion);
 
 		updateFieldsFromProject();
 	}

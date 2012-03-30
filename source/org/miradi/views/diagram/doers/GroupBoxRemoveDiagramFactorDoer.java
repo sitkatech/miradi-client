@@ -26,6 +26,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
+import org.miradi.schemas.DiagramFactorSchema;
 
 public class GroupBoxRemoveDiagramFactorDoer extends AbstractGroupBoxDoer
 {
@@ -66,7 +67,7 @@ public class GroupBoxRemoveDiagramFactorDoer extends AbstractGroupBoxDoer
 	protected void updateGroupBoxChildrenUsingCommands() throws Exception
 	{ 
 		ORefList groupBoxChildrenToRemove = getSelectedNonGroupBoxDiagramFactors();
-		ORef groupBoxDiagramFactorRef = getGroupBoxRefsContainingSelectedDiagramFactors().getRefForType(DiagramFactor.getObjectType());
+		ORef groupBoxDiagramFactorRef = getGroupBoxRefsContainingSelectedDiagramFactors().getRefForType(DiagramFactorSchema.getObjectType());
 		DiagramFactor groupBoxDiagramFactor = DiagramFactor.find(getProject(), groupBoxDiagramFactorRef);
 		ORefList groupBoxChildren = groupBoxDiagramFactor.getGroupBoxChildrenRefs();
 		

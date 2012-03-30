@@ -81,13 +81,13 @@ public class DiagramFactor extends BaseObject
 	@Override
 	public int getType()
 	{
-		return getObjectType();
+		return DiagramFactorSchema.getObjectType();
 	}
 
 	@Override
 	public String getTypeName()
 	{
-		return OBJECT_NAME;
+		return DiagramFactorSchema.OBJECT_NAME;
 	}
 
 	@Override
@@ -97,11 +97,6 @@ public class DiagramFactor extends BaseObject
 			ConceptualModelDiagram.getObjectType(), 
 			ResultsChainDiagram.getObjectType()
 			};
-	}
-	
-	public static int getObjectType()
-	{
-		return ObjectType.DIAGRAM_FACTOR;
 	}
 	
 	@Override
@@ -196,7 +191,7 @@ public class DiagramFactor extends BaseObject
 	public ORef getOwningGroupBoxRef()
 	{
 		ORefList diagramFactorReferers = findObjectsThatReferToUs();
-		ORef groupBoxDiagramFactorRef = diagramFactorReferers.getRefForType(DiagramFactor.getObjectType());
+		ORef groupBoxDiagramFactorRef = diagramFactorReferers.getRefForType(DiagramFactorSchema.getObjectType());
 
 		return groupBoxDiagramFactorRef;
 	}
@@ -289,7 +284,7 @@ public class DiagramFactor extends BaseObject
 	
 	public boolean isCoveredByGroupBox()
 	{
-		ORefList groupBoxFactors = findObjectsThatReferToUs(DiagramFactor.getObjectType());
+		ORefList groupBoxFactors = findObjectsThatReferToUs(DiagramFactorSchema.getObjectType());
 		return (groupBoxFactors.size() > 0);
 	}
 	
@@ -312,7 +307,7 @@ public class DiagramFactor extends BaseObject
 	
 	public static boolean is(int objectType)
 	{
-		return objectType == getObjectType();
+		return objectType == DiagramFactorSchema.getObjectType();
 	}
 	
 	public static DiagramFactor find(ObjectManager objectManager, ORef diagramFactorRef)
@@ -334,8 +329,6 @@ public class DiagramFactor extends BaseObject
 	public static final String TAG_GROUP_BOX_CHILDREN_REFS = "GroupBoxChildrenRefs";
 	public static final String TAG_BACKGROUND_COLOR = "BackgroundColor";
 	public static final String TAG_TEXT_BOX_Z_ORDER_CODE = "TextBoxZOrderCode";
-	
-	public static final String OBJECT_NAME = "DiagramFactor";
 	
 	public static final Dimension DEFAULT_STRESS_SIZE = new Dimension(60, 30);
 	public static final Dimension DEFAULT_ACTIVITY_SIZE = new Dimension(60, 30);

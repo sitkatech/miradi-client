@@ -25,6 +25,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Factor;
+import org.miradi.schemas.DiagramFactorSchema;
 
 public abstract class FactorPoolExporter extends BaseObjectPoolExporter
 {
@@ -60,7 +61,7 @@ public abstract class FactorPoolExporter extends BaseObjectPoolExporter
 	
 	protected DiagramFactor getCoveringDiagramFactor(BaseObject baseObject)
 	{
-		ORefList diagramFactorReferrers = baseObject.findObjectsThatReferToUs(DiagramFactor.getObjectType());
+		ORefList diagramFactorReferrers = baseObject.findObjectsThatReferToUs(DiagramFactorSchema.getObjectType());
 		if(diagramFactorReferrers.size() != 1)
 			throw new RuntimeException(baseObject.getTypeName() + " object does not have a diagram factor.");
 		

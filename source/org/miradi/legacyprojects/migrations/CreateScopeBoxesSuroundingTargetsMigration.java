@@ -35,7 +35,7 @@ import org.miradi.legacyprojects.ObjectManifest;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.DiagramFactor;
+import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class CreateScopeBoxesSuroundingTargetsMigration
@@ -296,7 +296,7 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 			EnhancedJsonObject diagramFactorJson = getAllDiagramFactorJsons().get(index);
 			ORefList groupBoxChildren = diagramFactorJson.optRefList("GroupBoxChildrenRefs");
 			BaseId targetDiagramFactorId = targetDiagramFactorJson.getId(ID);
-			if (groupBoxChildren.contains(new ORef(DiagramFactor.getObjectType(), targetDiagramFactorId)))
+			if (groupBoxChildren.contains(new ORef(DiagramFactorSchema.getObjectType(), targetDiagramFactorId)))
 				return diagramFactorJson;
 		}
 			

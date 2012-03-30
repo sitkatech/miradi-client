@@ -26,9 +26,9 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.project.ObjectManager;
+import org.miradi.schemas.DiagramFactorSchema;
 
 public class DiagramLinkPool extends BaseObjectPool
 {
@@ -63,8 +63,8 @@ public class DiagramLinkPool extends BaseObjectPool
 	//TODO this method needs to be more efficient.  Use link referrers and do an intersection
 	public DiagramLink getDiagramLink(ORef fromDiagramFactorRef, ORef toDiagramFactorRef)
 	{
-		fromDiagramFactorRef.ensureExactType(DiagramFactor.getObjectType());
-		toDiagramFactorRef.ensureExactType(DiagramFactor.getObjectType());
+		fromDiagramFactorRef.ensureExactType(DiagramFactorSchema.getObjectType());
+		toDiagramFactorRef.ensureExactType(DiagramFactorSchema.getObjectType());
 		
 		ORefList diagramLinkRefs = getORefList();
 		for(int i = 0; i < diagramLinkRefs.size(); ++i)

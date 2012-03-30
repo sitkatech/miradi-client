@@ -45,6 +45,7 @@ import org.miradi.questions.StrategyImpactQuestion;
 import org.miradi.questions.StrategyRatingSummaryQuestion;
 import org.miradi.questions.StrategyStatusQuestion;
 import org.miradi.questions.ThreatClassificationQuestion;
+import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.utils.ObjectsActionButton;
 
 public class FactorSummaryCorePanel extends ObjectDataInputPanel
@@ -64,9 +65,9 @@ public class FactorSummaryCorePanel extends ObjectDataInputPanel
 				new ObjectDataInputField[]{shortLabelField, labelField});
 		addField(createMultilineField(Factor.TAG_TEXT));
 
-		ObjectDataInputField fontField = createChoiceField(DiagramFactor.getObjectType(), DiagramFactor.TAG_FONT_SIZE, new DiagramFactorFontSizeQuestion());
-		ObjectDataInputField colorField = createChoiceField(DiagramFactor.getObjectType(), DiagramFactor.TAG_FOREGROUND_COLOR, new DiagramFactorFontColorQuestion());
-		ObjectDataInputField styleField = createChoiceField(DiagramFactor.getObjectType(), DiagramFactor.TAG_FONT_STYLE, new DiagramFactorFontStyleQuestion());
+		ObjectDataInputField fontField = createChoiceField(DiagramFactorSchema.getObjectType(), DiagramFactor.TAG_FONT_SIZE, new DiagramFactorFontSizeQuestion());
+		ObjectDataInputField colorField = createChoiceField(DiagramFactorSchema.getObjectType(), DiagramFactor.TAG_FOREGROUND_COLOR, new DiagramFactorFontColorQuestion());
+		ObjectDataInputField styleField = createChoiceField(DiagramFactorSchema.getObjectType(), DiagramFactor.TAG_FONT_STYLE, new DiagramFactorFontStyleQuestion());
 		addFieldsOnOneLine(EAM.text("Font"), new ObjectDataInputField[]{fontField, colorField, styleField});
 		
 		if (factorToEdit.isCause())

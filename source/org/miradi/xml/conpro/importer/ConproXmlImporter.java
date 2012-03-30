@@ -100,6 +100,7 @@ import org.miradi.questions.TncFreshwaterEcoRegionQuestion;
 import org.miradi.questions.TncMarineEcoRegionQuestion;
 import org.miradi.questions.TncTerrestrialEcoRegionQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
+import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
@@ -1172,7 +1173,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 	
 	private void createDiagramFactorAndAddToDiagram(ORef factorRef) throws Exception
 	{
-		ORef diagramFactorRef = getProject().createObject(DiagramFactor.getObjectType());
+		ORef diagramFactorRef = getProject().createObject(DiagramFactorSchema.getObjectType());
 		getProject().setObjectData(diagramFactorRef, DiagramFactor.TAG_WRAPPED_REF, factorRef.toString());
 		
 		wrappedToDiagramMap.put(factorRef, diagramFactorRef);
@@ -1300,7 +1301,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		DiagramFactor indicatorHolderDiagramFactor = DiagramFactor.find(getProject(), indicatorHolderDiagramFactorRef);
 		indicatorHolderRef = indicatorHolderDiagramFactor.getWrappedORef();
 		
-		IdList idList = new IdList(DiagramFactor.getObjectType());
+		IdList idList = new IdList(DiagramFactorSchema.getObjectType());
 		idList.addRef(objectiveHolderDiagramFactoRef);
 		idList.addRef(indicatorHolderDiagramFactorRef);
 		CommandSetObjectData addDiagramFactor = new CommandSetObjectData(createResultsChain.getObjectRef(), ResultsChainDiagram.TAG_DIAGRAM_FACTOR_IDS, idList.toString());
@@ -1315,7 +1316,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		CommandSetObjectData setName = new CommandSetObjectData(createIntermediateResults.getObjectRef(), IntermediateResult.TAG_LABEL, label);
 		getProject().executeCommand(setName);
 			
-		CommandCreateObject createDiagramFactor = new CommandCreateObject(DiagramFactor.getObjectType());
+		CommandCreateObject createDiagramFactor = new CommandCreateObject(DiagramFactorSchema.getObjectType());
 		getProject().executeCommand(createDiagramFactor);
 		
 		final CommandSetObjectData setWrappedRefCommand = new CommandSetObjectData(createDiagramFactor.getObjectRef(), DiagramFactor.TAG_WRAPPED_REF, createIntermediateResults.getObjectRef().toString());

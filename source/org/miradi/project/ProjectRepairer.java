@@ -50,6 +50,7 @@ import org.miradi.objects.TableSettings;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.ViewData;
+import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.utils.EnhancedJsonObject;
@@ -234,7 +235,7 @@ public class ProjectRepairer
 	public ORefSet getFactorsWithoutDiagramFactors(int factorType)
 	{
 		ORefSet possibleOrphanRefs = getProject().getPool(factorType).getRefSet();
-		int referringObjectType = DiagramFactor.getObjectType();
+		int referringObjectType = DiagramFactorSchema.getObjectType();
 
 		return getActualOrphanRefs(possibleOrphanRefs, new int[] {referringObjectType});
 	}

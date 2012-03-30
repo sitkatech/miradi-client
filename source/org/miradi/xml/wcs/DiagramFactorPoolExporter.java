@@ -30,12 +30,13 @@ import org.miradi.questions.DiagramFactorBackgroundQuestion;
 import org.miradi.questions.DiagramFactorFontColorQuestion;
 import org.miradi.questions.DiagramFactorFontSizeQuestion;
 import org.miradi.questions.DiagramFactorFontStyleQuestion;
+import org.miradi.schemas.DiagramFactorSchema;
 
 public class DiagramFactorPoolExporter extends BaseObjectPoolExporter
 {
 	public DiagramFactorPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
-		super(wcsXmlExporterToUse, DIAGRAM_FACTOR, DiagramFactor.getObjectType());
+		super(wcsXmlExporterToUse, DIAGRAM_FACTOR, DiagramFactorSchema.getObjectType());
 	}
 	
 	@Override

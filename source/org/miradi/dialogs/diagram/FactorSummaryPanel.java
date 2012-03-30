@@ -46,12 +46,13 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Strategy;
+import org.miradi.schemas.DiagramFactorSchema;
 
 public class FactorSummaryPanel extends ObjectDataInputPanelWithSections
 {
 	public FactorSummaryPanel(MainWindow mainWindowToUse, DiagramFactor diagramFactorToEdit) throws Exception
 	{
-		super(mainWindowToUse.getProject(), diagramFactorToEdit.getObjectType());
+		super(mainWindowToUse.getProject(), DiagramFactorSchema.getObjectType());
 		
 		mainWindow = mainWindowToUse;
 		currentDiagramFactor = diagramFactorToEdit;

@@ -33,6 +33,7 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.project.Project;
+import org.miradi.schemas.DiagramFactorSchema;
 
 public class DiagramModelUpdater
 {
@@ -68,8 +69,8 @@ public class DiagramModelUpdater
 
 		String dataValueBefore = setCommand.getPreviousDataValue();
 		String dataValueAfter = setCommand.getDataValue();
-		IdList factorIdsBefore = new IdList(DiagramFactor.getObjectType(), dataValueBefore);
-		IdList factorIdsAfter = new IdList(DiagramFactor.getObjectType(), dataValueAfter);
+		IdList factorIdsBefore = new IdList(DiagramFactorSchema.getObjectType(), dataValueBefore);
+		IdList factorIdsAfter = new IdList(DiagramFactorSchema.getObjectType(), dataValueAfter);
 
 		IdList factorIdsToAdd = getAddedIds(factorIdsBefore, factorIdsAfter); 
 		addDiagramFactors(factorIdsToAdd);

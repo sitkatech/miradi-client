@@ -33,6 +33,7 @@ import org.miradi.objects.GroupBox;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
+import org.miradi.schemas.DiagramFactorSchema;
 
 public class TestDiagramCorruptionDetector extends TestCaseWithProject
 {
@@ -49,9 +50,9 @@ public class TestDiagramCorruptionDetector extends TestCaseWithProject
 		
 		Indicator indicator = getProject().createIndicatorWithCauseParent();
 		Task method = getProject().createTask(indicator);
-		ORef diagramFactorRef = getProject().createObject(DiagramFactor.getObjectType());
+		ORef diagramFactorRef = getProject().createObject(DiagramFactorSchema.getObjectType());
 		getProject().setObjectData(diagramFactorRef, DiagramFactor.TAG_WRAPPED_REF, method.getRef().toString());
-		IdList diagramFactorIds = new IdList(DiagramFactor.getObjectType());
+		IdList diagramFactorIds = new IdList(DiagramFactorSchema.getObjectType());
 		diagramFactorIds.addRef(diagramFactorRef);
 		getProject().setObjectData(diagramObject.getRef(), DiagramObject.TAG_DIAGRAM_FACTOR_IDS, diagramFactorIds.toString());
 		
@@ -61,7 +62,7 @@ public class TestDiagramCorruptionDetector extends TestCaseWithProject
 		
 		assertTrue("didn't detect diagram factor that has no wrapped ref?", DiagramCorruptionDetector.getCorruptedDiagramFactorErrorMessages(getProject(), diagramObject).size() > 0);
 		
-		IdList idsWithNonExistingObjectId = new IdList(DiagramFactor.getObjectType());
+		IdList idsWithNonExistingObjectId = new IdList(DiagramFactorSchema.getObjectType());
 		idsWithNonExistingObjectId.add(new BaseId(9999));
 		getProject().setObjectData(diagramObject.getRef(), DiagramObject.TAG_DIAGRAM_FACTOR_IDS, idsWithNonExistingObjectId.toString());
 		assertTrue("didn't detect diagram factor that does not exist?", DiagramCorruptionDetector.getCorruptedDiagramFactorErrorMessages(getProject(), diagramObject).size() > 0);
@@ -137,10 +138,10 @@ public class TestDiagramCorruptionDetector extends TestCaseWithProject
 	private ORef createDiagramFactorAndAddToDiagram(DiagramObject diagramObject, int type) throws Exception
 	{
 		ORef ref = getProject().createObject(type);
-		ORef diagramFactorRef = getProject().createObject(DiagramFactor.getObjectType());
+		ORef diagramFactorRef = getProject().createObject(DiagramFactorSchema.getObjectType());
 		getProject().setObjectData(diagramFactorRef, DiagramFactor.TAG_WRAPPED_REF, ref.toString());
 		
-		IdList diagramFactorIds = diagramObject.getAllDiagramFactorRefs().convertToIdList(DiagramFactor.getObjectType());
+		IdList diagramFactorIds = diagramObject.getAllDiagramFactorRefs().convertToIdList(DiagramFactorSchema.getObjectType());
 		diagramFactorIds.addRef(diagramFactorRef);
 		getProject().setObjectData(diagramObject.getRef(), DiagramObject.TAG_DIAGRAM_FACTOR_IDS, diagramFactorIds.toString());
 		

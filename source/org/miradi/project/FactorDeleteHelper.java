@@ -44,6 +44,7 @@ import org.miradi.objects.SubTarget;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
+import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.utils.CommandVector;
 import org.miradi.views.diagram.DeleteAnnotationDoer;
 import org.miradi.views.umbrella.DeleteActivityDoer;
@@ -140,7 +141,7 @@ public class FactorDeleteHelper
 
 	private void deleteFactorDiagramFactorInCurrentDiagram(Factor factor) throws Exception
 	{
-		ORefList diagramFactorReferrerRefs = factor.findObjectsThatReferToUs(DiagramFactor.getObjectType());
+		ORefList diagramFactorReferrerRefs = factor.findObjectsThatReferToUs(DiagramFactorSchema.getObjectType());
 		ORefList currentContainedDiagramFactors = getDiagramObject().getAllDiagramFactorRefs();
 		for (int index = 0; index < diagramFactorReferrerRefs.size(); ++index)
 		{

@@ -34,6 +34,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
+import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
@@ -147,7 +148,7 @@ public class DiagramLink extends BaseObject
 	
 	public ORef getFromDiagramFactorRef()
 	{
-		return new ORef(DiagramFactor.getObjectType(), getFromDiagramFactorId());
+		return new ORef(DiagramFactorSchema.getObjectType(), getFromDiagramFactorId());
 	}
 	
 	public DiagramFactor getFromDiagramFactor()
@@ -162,7 +163,7 @@ public class DiagramLink extends BaseObject
 	
 	public ORef getToDiagramFactorRef()
 	{
-		return new ORef(DiagramFactor.getObjectType(), getToDiagramFactorId());
+		return new ORef(DiagramFactorSchema.getObjectType(), getToDiagramFactorId());
 	}
 	
 	public DiagramFactor getToDiagramFactor()

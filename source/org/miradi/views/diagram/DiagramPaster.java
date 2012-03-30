@@ -68,6 +68,7 @@ import org.miradi.objects.ThreatReductionResult;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.Project;
 import org.miradi.schemas.AccountingCodeSchema;
+import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.utils.CodeList;
@@ -201,7 +202,7 @@ abstract public class DiagramPaster
 				return getCommandToFixRef(pastedObjectMap, newObject, tag);
 		}
 		
-		if (DiagramFactor.getObjectType() == newObject.getType())
+		if (DiagramFactorSchema.getObjectType() == newObject.getType())
 		{
 			if (DiagramFactor.TAG_WRAPPED_REF.equals(tag))
 				return getCommandToFixRef(pastedObjectMap, newObject, tag);
@@ -434,7 +435,7 @@ abstract public class DiagramPaster
 
 	private ORef createDiagramFactor() throws CommandFailedException
 	{
-		return createObject(DiagramFactor.getObjectType()).getRef();
+		return createObject(DiagramFactorSchema.getObjectType()).getRef();
 	}
 
 	private void addToDiagramObject(DiagramObject diagramObjectToAddTo, ORef refToAppend, String tag) throws Exception
@@ -587,7 +588,7 @@ abstract public class DiagramPaster
 		boolean isGroupBox = GroupBox.is(oldWrappedRef);
 
 		DiagramFactorId diagramFactorId = new DiagramFactorId(json.getId(DiagramFactor.TAG_ID).asInt());
-		ORef diagramFactorRef = new ORef(DiagramFactor.getObjectType(), diagramFactorId);
+		ORef diagramFactorRef = new ORef(DiagramFactorSchema.getObjectType(), diagramFactorId);
 
 		// TODO: GB logic should probably be handled in DiagramAliasPaster, not here
 		if (!isGroupBox && oldToNewPastedObjectMap.containsKey(diagramFactorRef))

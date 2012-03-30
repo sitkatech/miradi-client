@@ -38,6 +38,7 @@ import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
+import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.CommandVector;
 import org.miradi.views.ObjectsDoer;
@@ -167,7 +168,7 @@ public class DeleteActivityDoer extends ObjectsDoer
 			return commands;
 		
 		ORef strategyRef = selectionHierachy.getRefForType(Strategy.getObjectType());
-		ORefList activityDiagramFactorReferrerRefs = task.findObjectsThatReferToUs(DiagramFactor.getObjectType());
+		ORefList activityDiagramFactorReferrerRefs = task.findObjectsThatReferToUs(DiagramFactorSchema.getObjectType());
 				
 		for (int index = 0; index < activityDiagramFactorReferrerRefs.size(); ++index)
 		{

@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.questions.DiagramFactorBackgroundQuestion;
 import org.miradi.questions.DiagramFactorFontColorQuestion;
@@ -30,6 +31,8 @@ import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class DiagramFactorSchema extends BaseObjectSchema
 {
+	public static final String OBJECT_NAME = "DiagramFactor";
+
 	public DiagramFactorSchema()
 	{
 	}
@@ -48,5 +51,10 @@ public class DiagramFactorSchema extends BaseObjectSchema
 		createFieldSchemaReflist(DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, XmpzXmlConstants.DIAGRAM_FACTOR + XmpzXmlConstants.ID);
 		createFieldSchemaChoice(DiagramFactor.TAG_BACKGROUND_COLOR, getQuestion(DiagramFactorBackgroundQuestion.class));
 		createFieldSchemaChoice(DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE, getQuestion(TextBoxZOrderQuestion.class));
+	}
+
+	public static int getObjectType()
+	{
+		return ObjectType.DIAGRAM_FACTOR;
 	}
 }

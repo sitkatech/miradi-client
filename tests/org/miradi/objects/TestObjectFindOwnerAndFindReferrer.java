@@ -26,6 +26,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ProjectForTesting;
+import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 
@@ -254,7 +255,7 @@ public class TestObjectFindOwnerAndFindReferrer extends MiradiTestCase
 		DiagramFactor strategy = createFactorAndDiagramFactor(Strategy.getObjectType());
 		DiagramFactor cause = createFactorAndDiagramFactor(Cause.getObjectType());
 		DiagramFactor target = createFactorAndDiagramFactor(Target.getObjectType());
-		IdList factorList = new IdList(DiagramFactor.getObjectType(), new BaseId[] {strategy.getId(), cause.getId(), target.getId()});
+		IdList factorList = new IdList(DiagramFactorSchema.getObjectType(), new BaseId[] {strategy.getId(), cause.getId(), target.getId()});
 		
 		DiagramLink link = createDiagramFactorLink(strategy, cause);
 		IdList linkList = new IdList(DiagramLink.getObjectType(), new BaseId[] {link.getId()});
@@ -272,7 +273,7 @@ public class TestObjectFindOwnerAndFindReferrer extends MiradiTestCase
 	private DiagramFactor createFactorAndDiagramFactor(int type) throws Exception
 	{
 		ORef factorRef = project.createObject(type);
-		ORef diagramFactorRef = project.createObject(DiagramFactor.getObjectType());
+		ORef diagramFactorRef = project.createObject(DiagramFactorSchema.getObjectType());
 		project.setObjectData(diagramFactorRef, DiagramFactor.TAG_WRAPPED_REF, factorRef.toString());
 		
 		return DiagramFactor.find(project, diagramFactorRef);

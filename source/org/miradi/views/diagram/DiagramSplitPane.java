@@ -56,6 +56,7 @@ import org.miradi.objects.DiagramObject;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
+import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.utils.AbstractTableRightClickHandler;
 import org.miradi.utils.FlexibleWidthHtmlViewer;
 import org.miradi.utils.MiradiScrollPane;
@@ -452,7 +453,7 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 
 	private void handleGroupBoxTypes(CommandSetObjectData commandSetObjectData) throws Exception
 	{
-		if (commandSetObjectData.getObjectType() != DiagramFactor.getObjectType())
+		if (commandSetObjectData.getObjectType() != DiagramFactorSchema.getObjectType())
 			return;
 		
 		if (getDiagramModel() == null)

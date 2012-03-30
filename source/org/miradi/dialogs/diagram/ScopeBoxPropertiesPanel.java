@@ -32,6 +32,7 @@ import org.miradi.questions.DiagramFactorFontColorQuestion;
 import org.miradi.questions.DiagramFactorFontSizeQuestion;
 import org.miradi.questions.DiagramFactorFontStyleQuestion;
 import org.miradi.questions.ScopeBoxTypeQuestion;
+import org.miradi.schemas.DiagramFactorSchema;
 
 public class ScopeBoxPropertiesPanel extends ObjectDataInputPanel
 {
@@ -45,9 +46,9 @@ public class ScopeBoxPropertiesPanel extends ObjectDataInputPanel
 		addField(createMultilineField(ScopeBox.TAG_TEXT));
 		addField(createChoiceField(ScopeBox.getObjectType(), ScopeBox.TAG_SCOPE_BOX_TYPE_CODE, ScopeBoxTypeQuestion.createScopeBoxTypeQuestion()));
 		
-		ObjectDataInputField fontField = createChoiceField(DiagramFactor.getObjectType(), DiagramFactor.TAG_FONT_SIZE, new DiagramFactorFontSizeQuestion());
-		ObjectDataInputField colorField = createChoiceField(DiagramFactor.getObjectType(), DiagramFactor.TAG_FOREGROUND_COLOR, new DiagramFactorFontColorQuestion());
-		ObjectDataInputField styleField = createChoiceField(DiagramFactor.getObjectType(), DiagramFactor.TAG_FONT_STYLE, new DiagramFactorFontStyleQuestion());
+		ObjectDataInputField fontField = createChoiceField(DiagramFactorSchema.getObjectType(), DiagramFactor.TAG_FONT_SIZE, new DiagramFactorFontSizeQuestion());
+		ObjectDataInputField colorField = createChoiceField(DiagramFactorSchema.getObjectType(), DiagramFactor.TAG_FOREGROUND_COLOR, new DiagramFactorFontColorQuestion());
+		ObjectDataInputField styleField = createChoiceField(DiagramFactorSchema.getObjectType(), DiagramFactor.TAG_FONT_STYLE, new DiagramFactorFontStyleQuestion());
 		addFieldsOnOneLine(EAM.text("Font"), new ObjectDataInputField[]{fontField, colorField, styleField});
 
 		updateFieldsFromProject();
