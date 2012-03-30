@@ -42,6 +42,7 @@ import org.miradi.schemas.IntermediateResultSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
+import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -69,7 +70,7 @@ public class Indicator extends BaseObject
 	
 	public ORefList getTaskRefs()
 	{
-		return new ORefList(Task.getObjectType(), getMethodIds());
+		return new ORefList(TaskSchema.getObjectType(), getMethodIds());
 	}
 	
 	public CodeToUserStringMapData getThresholdsMap()
@@ -216,7 +217,7 @@ public class Indicator extends BaseObject
 	
 	public ORefList getMethodRefs()
 	{
-		return new ORefList(Task.getObjectType(), getMethodIds());
+		return new ORefList(TaskSchema.getObjectType(), getMethodIds());
 	}
 	
 	public Vector<Task> getMethods()
@@ -250,7 +251,7 @@ public class Indicator extends BaseObject
 	public int getAnnotationType(String tag)
 	{
 		if (tag.equals(TAG_METHOD_IDS))
-			return Task.getObjectType();
+			return TaskSchema.getObjectType();
 		
 		if (tag.equals(TAG_MEASUREMENT_REFS))
 			return Measurement.getObjectType();

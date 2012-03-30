@@ -64,6 +64,7 @@ import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
+import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.NullProgressMeter;
@@ -254,7 +255,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		ProjectForTesting firstTry = ProjectForTesting.createProjectWithDefaultObjects(getName());
 		String xml = exportImportInto(firstTry);
 
-		ORefList taskRefs = firstTry.getPool(Task.getObjectType()).getORefList();
+		ORefList taskRefs = firstTry.getPool(TaskSchema.getObjectType()).getORefList();
 		taskRefs.remove(method.getRef());
 		ORef conflictingRef = taskRefs.get(0);
 		

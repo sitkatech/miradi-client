@@ -32,6 +32,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Task;
+import org.miradi.schemas.TaskSchema;
 
 
 abstract public class AbstractShareDoer extends AbstractTreeNodeTaskDoer
@@ -124,8 +125,8 @@ abstract public class AbstractShareDoer extends AbstractTreeNodeTaskDoer
 		{
 			BaseObject parent = BaseObject.find(getProject(), parentRef);
 			String taskIdsAsString = parent.getData(getParentTaskIdsTag());
-			IdList taskIds = new IdList(Task.getObjectType(), taskIdsAsString);
-			ORefList taskRefs = new ORefList(Task.getObjectType(), taskIds);
+			IdList taskIds = new IdList(TaskSchema.getObjectType(), taskIdsAsString);
+			ORefList taskRefs = new ORefList(TaskSchema.getObjectType(), taskIds);
 			
 			return getProject().getObjectManager().findObjectsAsVector(taskRefs);
 		}

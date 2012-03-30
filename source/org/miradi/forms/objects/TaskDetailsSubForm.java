@@ -22,14 +22,15 @@ package org.miradi.forms.objects;
 import org.miradi.forms.FieldPanelSpec;
 import org.miradi.main.EAM;
 import org.miradi.objects.Task;
+import org.miradi.schemas.TaskSchema;
 
 public class TaskDetailsSubForm extends FieldPanelSpec
 {
 	public TaskDetailsSubForm()
 	{
-		addLabelAndField(Task.getObjectType(), Task.TAG_LABEL);
-		addLabelAndField(Task.getObjectType(), Task.TAG_DETAILS);
+		addLabelAndField(TaskSchema.getObjectType(), Task.TAG_LABEL);
+		addLabelAndField(TaskSchema.getObjectType(), Task.TAG_DETAILS);
 		
-		addLabelAndFieldWithLabel(EAM.text("Progress Reports"), Task.getObjectType(), Task.TAG_PROGRESS_REPORT_REFS);
+		addLabelAndFieldWithLabel(EAM.text("Progress Reports"), TaskSchema.getObjectType(), Task.TAG_PROGRESS_REPORT_REFS);
 	}
 }

@@ -31,6 +31,7 @@ import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.questions.StrategyStatusQuestion;
 import org.miradi.schemas.StrategySchema;
+import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.CommandVector;
 
 public class TestStrategy extends AbstractObjectWithBudgetDataToDeleteTestCase
@@ -76,15 +77,15 @@ public class TestStrategy extends AbstractObjectWithBudgetDataToDeleteTestCase
 	{
 		FactorId strategyId = new FactorId(66);
 		Strategy strategy = new Strategy(getObjectManager(), strategyId);
-		IdList empty = new IdList(Task.getObjectType(), strategy.getData(Strategy.TAG_ACTIVITY_IDS));
+		IdList empty = new IdList(TaskSchema.getObjectType(), strategy.getData(Strategy.TAG_ACTIVITY_IDS));
 		assertEquals("not empty to start?", 0, empty.size());
 		
 		BaseId activityId = new BaseId(828);
-		IdList oneItem = new IdList(Task.getObjectType());
+		IdList oneItem = new IdList(TaskSchema.getObjectType());
 		oneItem.add(activityId);
 		strategy.setData(Strategy.TAG_ACTIVITY_IDS, oneItem.toString());
 		
-		IdList got = new IdList(Task.getObjectType(), strategy.getData(Strategy.TAG_ACTIVITY_IDS));
+		IdList got = new IdList(TaskSchema.getObjectType(), strategy.getData(Strategy.TAG_ACTIVITY_IDS));
 		assertEquals("round trip failed?", oneItem, got);
 	}
 	
@@ -112,7 +113,7 @@ public class TestStrategy extends AbstractObjectWithBudgetDataToDeleteTestCase
 		FactorId strategyId = new FactorId(17);
 		Strategy strategy = new Strategy(getObjectManager(), strategyId);
 		strategy.setData(Strategy.TAG_STATUS, StrategyStatusQuestion.STATUS_DRAFT_CODE);
-		IdList activityIds = new IdList(Task.getObjectType());
+		IdList activityIds = new IdList(TaskSchema.getObjectType());
 		activityIds.add(new BaseId(23));
 		activityIds.add(new BaseId(37));
 		strategy.setData(Strategy.TAG_ACTIVITY_IDS, activityIds.toString());

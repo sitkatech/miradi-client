@@ -22,11 +22,11 @@ package org.miradi.xml.xmpz;
 
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Strategy;
-import org.miradi.objects.Task;
 import org.miradi.questions.StrategyFeasibilityQuestion;
 import org.miradi.questions.StrategyImpactQuestion;
 import org.miradi.questions.StrategyTaxonomyQuestion;
 import org.miradi.schemas.StrategySchema;
+import org.miradi.schemas.TaskSchema;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.w3c.dom.Node;
 
@@ -44,7 +44,7 @@ public class StrategyPoolImporter extends FactorPoolImporter
 
 		importObjectiveIds(node, destinationRef);
 		
-		importIds(node, destinationRef, Strategy.TAG_ACTIVITY_IDS, Task.getObjectType(), XmpzXmlConstants.ACTIVITY);
+		importIds(node, destinationRef, Strategy.TAG_ACTIVITY_IDS, TaskSchema.getObjectType(), XmpzXmlConstants.ACTIVITY);
 		importField(node, destinationRef, Strategy.TAG_STATUS);
 		importCodeField(node, destinationRef, Strategy.TAG_TAXONOMY_CODE, new StrategyTaxonomyQuestion());
 		importCodeField(node, destinationRef, Strategy.TAG_IMPACT_RATING, new StrategyImpactQuestion());

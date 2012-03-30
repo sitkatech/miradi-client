@@ -28,7 +28,6 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.Task;
 import org.miradi.objects.TextBox;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.questions.DiagramFactorBackgroundQuestion;
@@ -45,6 +44,7 @@ import org.miradi.schemas.ScopeBoxSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.StressSchema;
 import org.miradi.schemas.TargetSchema;
+import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.EnhancedJsonObject;
 import org.w3c.dom.Node;
 
@@ -146,7 +146,7 @@ public class DiagramFactorPoolImporter extends AbstractBaseObjectPoolImporter
 			return GroupBoxSchema.getObjectType();
 		
 		if (isTask(objectTypeName))
-			return Task.getObjectType();
+			return TaskSchema.getObjectType();
 		
 		if (objectTypeName.equals(STRESS))
 			return StressSchema.getObjectType();
@@ -157,10 +157,10 @@ public class DiagramFactorPoolImporter extends AbstractBaseObjectPoolImporter
 
 	private static boolean isTask(String objectTypeName)
 	{
-		if (objectTypeName.equals(Task.ACTIVITY_NAME))
+		if (objectTypeName.equals(TaskSchema.ACTIVITY_NAME))
 			return true;
 		
-		if (objectTypeName.equals(Task.METHOD_NAME))
+		if (objectTypeName.equals(TaskSchema.METHOD_NAME))
 			return true;
 		
 		return objectTypeName.equals(TASK);

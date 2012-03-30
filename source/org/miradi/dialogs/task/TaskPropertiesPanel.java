@@ -28,14 +28,14 @@ import org.miradi.dialogs.progressReport.ProgressReportSubPanel;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.Target;
-import org.miradi.objects.Task;
 import org.miradi.schemas.TargetSchema;
+import org.miradi.schemas.TaskSchema;
 
 public abstract class TaskPropertiesPanel extends ObjectDataInputPanelWithSections
 {
 	protected TaskPropertiesPanel(MainWindow mainWindow) throws Exception
 	{
-		super(mainWindow.getProject(), Task.getObjectType());
+		super(mainWindow.getProject(), TaskSchema.getObjectType());
 		
 		addSubPanelWithTitledBorder(createDetailsPanel(mainWindow));
 
@@ -55,8 +55,8 @@ public abstract class TaskPropertiesPanel extends ObjectDataInputPanelWithSectio
 
 	protected void addBudgetSubPanels() throws Exception
 	{
-		addSubPanelWithTitledBorder(new AssignmentsPropertiesPanel(getMainWindow(), Task.getObjectType(), getPicker()));
-		addSubPanelWithTitledBorder(new ExpensesPropertiesPanel(getMainWindow(), Task.getObjectType(), getPicker()));
+		addSubPanelWithTitledBorder(new AssignmentsPropertiesPanel(getMainWindow(), TaskSchema.getObjectType(), getPicker()));
+		addSubPanelWithTitledBorder(new ExpensesPropertiesPanel(getMainWindow(), TaskSchema.getObjectType(), getPicker()));
 	}
 
 	@Override

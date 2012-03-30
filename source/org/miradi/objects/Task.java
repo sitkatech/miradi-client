@@ -91,7 +91,7 @@ public class Task extends Factor
 	public int getAnnotationType(String tag)
 	{
 		if (tag.equals(TAG_SUBTASK_IDS))
-			return Task.getObjectType();
+			return TaskSchema.getObjectType();
 		
 		return super.getAnnotationType(tag);
 	}
@@ -114,7 +114,7 @@ public class Task extends Factor
 	@Override
 	public int getType()
 	{
-		return getObjectType();
+		return TaskSchema.getObjectType();
 	}
 
 	@Override
@@ -130,7 +130,7 @@ public class Task extends Factor
 		return new int[] {
 			StrategySchema.getObjectType(),
 			IndicatorSchema.getObjectType(),
-			Task.getObjectType(),
+			TaskSchema.getObjectType(),
 		};
 	}
 	
@@ -138,11 +138,6 @@ public class Task extends Factor
 	public String getDetails()
 	{
 		return getData(TAG_DETAILS);
-	}
-	
-	public static int getObjectType()
-	{
-		return ObjectType.TASK;
 	}
 	
 	@Override
@@ -169,18 +164,18 @@ public class Task extends Factor
 	//but if it is a user level task as opposed to a method or an activity
 	public boolean isTask()
 	{
-		return is(OBJECT_NAME);
+		return is(TaskSchema.OBJECT_NAME);
 	}
 
 	@Override
 	public boolean isActivity()
 	{
-		return is(ACTIVITY_NAME);
+		return is(TaskSchema.ACTIVITY_NAME);
 	}
 
 	public boolean isMethod()
 	{
-		return is(METHOD_NAME);
+		return is(TaskSchema.METHOD_NAME);
 	}
 	
 	private boolean is(final String taskObjectTypeName)
@@ -206,14 +201,14 @@ public class Task extends Factor
 		ORefList strategyReferrers = findObjectsThatReferToUs(StrategySchema.getObjectType());
 		if(strategyReferrers.size() > 0)
 		{
-			cachedObjectTypeName = ACTIVITY_NAME;
+			cachedObjectTypeName = TaskSchema.ACTIVITY_NAME;
 			return;
 		}
 		
 		ORefList indicatorReferrers = findObjectsThatReferToUs(IndicatorSchema.getObjectType());
 		if(indicatorReferrers.size() > 0)
 		{
-			cachedObjectTypeName = METHOD_NAME;
+			cachedObjectTypeName = TaskSchema.METHOD_NAME;
 			return;
 		}
 
@@ -222,7 +217,7 @@ public class Task extends Factor
 		ORef ownerRef = getOwnerRef();
 		if (ownerRef != null && !ownerRef.isInvalid())
 		{
-			cachedObjectTypeName = OBJECT_NAME;
+			cachedObjectTypeName = TaskSchema.OBJECT_NAME;
 			return;
 		}
 		
@@ -326,17 +321,17 @@ public class Task extends Factor
 		
 		Task owner = (Task)getOwner();
 		if(owner.isActivity())
-			return ACTIVITY_NAME;
+			return TaskSchema.ACTIVITY_NAME;
 		if(owner.isMethod())
-			return METHOD_NAME;
+			return TaskSchema.METHOD_NAME;
 		
-		return OBJECT_NAME;
+		return TaskSchema.OBJECT_NAME;
 	}
 	
 	@Override
 	public ORefList getSubTaskRefs()
 	{
-		return new ORefList(Task.getObjectType(), getSubtaskIdList());
+		return new ORefList(TaskSchema.getObjectType(), getSubtaskIdList());
 	}
 	
 	@Override
@@ -386,7 +381,7 @@ public class Task extends Factor
 	public int getTypeOfParent() throws UnknownTaskParentTypeException
 	{
 		if(isTask())
-			return Task.getObjectType();
+			return TaskSchema.getObjectType();
 		
 		if(isMethod())
 			return IndicatorSchema.getObjectType();
@@ -423,12 +418,12 @@ public class Task extends Factor
 	public static String getChildTaskTypeCode(int parentType)
 	{
 		if(parentType == StrategySchema.getObjectType())
-			return ACTIVITY_NAME;
+			return TaskSchema.ACTIVITY_NAME;
 		
 		if(parentType == IndicatorSchema.getObjectType())
-			return METHOD_NAME;
+			return TaskSchema.METHOD_NAME;
 		
-		return OBJECT_NAME;
+		return TaskSchema.OBJECT_NAME;
 	}
 	
 	public static String getTaskIdsTag(BaseObject container) throws Exception
@@ -451,12 +446,12 @@ public class Task extends Factor
 	
 	public static boolean isMethod(Project projectToUse, ORef ref)
 	{
-		return is(projectToUse, ref, METHOD_NAME);	
+		return is(projectToUse, ref, TaskSchema.METHOD_NAME);	
 	}
 	
 	public static boolean isActivity(Project projectToUse, ORef ref)
 	{
-		return is(projectToUse, ref, ACTIVITY_NAME);
+		return is(projectToUse, ref, TaskSchema.ACTIVITY_NAME);
 	}
 	
 	private static boolean is(Project projectToUse, ORef ref, String objectTypeName)
@@ -490,7 +485,7 @@ public class Task extends Factor
 	
 	public static boolean is(int objectType)
 	{
-		return objectType == getObjectType();
+		return objectType == TaskSchema.getObjectType();
 	}
 	
 	public static Task find(ObjectManager objectManager, ORef taskRef)
@@ -510,10 +505,6 @@ public class Task extends Factor
 	public final static String PSEUDO_TAG_INDICATOR_LABEL = "IndicatorLabel";
 	public static final String PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS = "PseudoTaskRelevantObjectiveRefs";
 	public static final String PSEUDO_TAG_RELEVANT_GOAL_REFS = "PseudoTaskRelevantGoalRefs";
-	
-	public static final String OBJECT_NAME = "Task";
-	public static final String METHOD_NAME = "Method";
-	public static final String ACTIVITY_NAME = "Activity";
 	
 	private String cachedObjectTypeName;
 }

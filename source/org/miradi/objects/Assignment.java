@@ -30,6 +30,7 @@ import org.miradi.project.ProjectCalendar;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.StrategySchema;
+import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
@@ -59,7 +60,7 @@ abstract public class Assignment extends BaseObject
 		return new int[] {
 			StrategySchema.getObjectType(), 
 			IndicatorSchema.getObjectType(),
-			Task.getObjectType(),
+			TaskSchema.getObjectType(),
 			};
 	}
 	

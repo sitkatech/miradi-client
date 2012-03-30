@@ -112,6 +112,7 @@ import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.StressSchema;
 import org.miradi.schemas.TargetSchema;
+import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateUnitEffort;
@@ -293,7 +294,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		for (int nodeIndex = 0; nodeIndex < activityNodeList.getLength(); ++nodeIndex) 
 		{
 			Node activityNode = activityNodeList.item(nodeIndex);
-			ORef activityRef = getProject().createObject(Task.getObjectType());
+			ORef activityRef = getProject().createObject(TaskSchema.getObjectType());
 			activityRefs.add(activityRef);
 					
 			importField(activityNode, NAME, activityRef, Task.TAG_LABEL);
@@ -303,7 +304,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 			importProgressReports(activityNode, activityRef, Task.TAG_PROGRESS_REPORT_REFS);
 		}
 		
-		setIdListFromRefListData(strategyRef, Strategy.TAG_ACTIVITY_IDS, activityRefs, Task.getObjectType());
+		setIdListFromRefListData(strategyRef, Strategy.TAG_ACTIVITY_IDS, activityRefs, TaskSchema.getObjectType());
 	}
 
 	private void importWhenOverride(Node activityNode, ORef activityRef) throws Exception
@@ -421,7 +422,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		{
 			Node methodNode = methodNodeList.item(nodeIndex);
 			String methodId = getAttributeValue(methodNode, ID);
-			ORef methodRef = getProject().createObject(Task.getObjectType(), new BaseId(methodId));
+			ORef methodRef = getProject().createObject(TaskSchema.getObjectType(), new BaseId(methodId));
 			
 			importField(methodNode, METHOD_NAME, methodRef, Task.TAG_LABEL);
 			importField(methodNode, METHOD_DETAIL, methodRef, Task.TAG_DETAILS);
@@ -455,11 +456,11 @@ public class ConproXmlImporter implements ConProMiradiXml
 		{
 			Node methodNode = methodNodeList.item(nodeIndex);
 			String methodId = methodNode.getTextContent();
-			ORef methodRef = new ORef(Task.getObjectType(), new BaseId(methodId));
+			ORef methodRef = new ORef(TaskSchema.getObjectType(), new BaseId(methodId));
 			methodRefs.add(methodRef);
 		}
 			
-		setIdListFromRefListData(indicatorRef, Indicator.TAG_METHOD_IDS, methodRefs, Task.getObjectType());
+		setIdListFromRefListData(indicatorRef, Indicator.TAG_METHOD_IDS, methodRefs, TaskSchema.getObjectType());
 	}
 	
 	private void importMeasurements(Node indicatorNode, ORef indicatorRef) throws Exception

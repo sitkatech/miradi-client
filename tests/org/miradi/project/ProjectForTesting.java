@@ -149,6 +149,7 @@ import org.miradi.schemas.ScopeBoxSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.StressSchema;
 import org.miradi.schemas.TargetSchema;
+import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.DateRange;
@@ -794,7 +795,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public Task createTask(BaseObject owner) throws Exception
 	{
-		ORef taskRef = createObject(Task.getObjectType());
+		ORef taskRef = createObject(TaskSchema.getObjectType());
 		Task task = Task.find(this, taskRef);
 		String tag = Task.getTaskIdsTag(owner);
 		appendTaskToParentIdList(owner, task, tag);
@@ -1099,7 +1100,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(indicator, Indicator.TAG_RATING_SOURCE, RatingSourceQuestion.ONSITE_RESEARCH_CODE);
 		
 		Task task = createAndPopulateTask(indicator, "Some Method Name");
-		IdList taskIds = new IdList(Task.getObjectType());
+		IdList taskIds = new IdList(TaskSchema.getObjectType());
 		taskIds.addRef(task.getRef());
 		fillObjectUsingCommand(indicator, Indicator.TAG_METHOD_IDS, taskIds.toString());
 		
@@ -1261,7 +1262,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(strategy, Strategy.TAG_IMPACT_RATING, StrategyImpactQuestion.HIGH_CODE);
 		fillObjectUsingCommand(strategy, Strategy.TAG_FEASIBILITY_RATING, StrategyFeasibilityQuestion.LOW_CODE);
 		
-		IdList activityIds = new IdList(Task.getObjectType());
+		IdList activityIds = new IdList(TaskSchema.getObjectType());
 		activityIds.addRef(createAndPopulateTask(strategy, "Some activity Label").getRef());
 		fillObjectUsingCommand(strategy, Strategy.TAG_ACTIVITY_IDS, activityIds.toString());
 		
@@ -1664,17 +1665,17 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public BaseId addSubtaskToActivity(ORef ref, String tag) throws Exception
 	{
-		return addItemToList(ref, Task.getObjectType(), tag);
+		return addItemToList(ref, TaskSchema.getObjectType(), tag);
 	}
 	
 	public ORef addActivityToStratey(ORef strategyRef, String strategyTagForActivities) throws Exception
 	{
-		return new ORef(Task.getObjectType(), addItemToList(strategyRef, Task.getObjectType(), strategyTagForActivities));
+		return new ORef(TaskSchema.getObjectType(), addItemToList(strategyRef, TaskSchema.getObjectType(), strategyTagForActivities));
 	}
 	
 	public BaseId addActivityToStrateyList(ORef ref, String tag) throws Exception
 	{
-		return addItemToList(ref, Task.getObjectType(), tag);
+		return addItemToList(ref, TaskSchema.getObjectType(), tag);
 	}
 	
 	public BaseId addItemToIndicatorList(BaseId id, int type, String tag) throws Exception
@@ -2227,7 +2228,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	private void appendTaskToParentIdList(BaseObject parent, BaseObject child, String childListTag) throws Exception
 	{
 		ORefList childTaskRefs = new ORefList(child);
-		fillObjectUsingCommand(parent, childListTag, childTaskRefs.convertToIdList(Task.getObjectType()).toString());
+		fillObjectUsingCommand(parent, childListTag, childTaskRefs.convertToIdList(TaskSchema.getObjectType()).toString());
 	}
 	
 	public static double calculateTimePeriodCosts(BaseObject baseObject, DateUnit dateUnit) throws Exception

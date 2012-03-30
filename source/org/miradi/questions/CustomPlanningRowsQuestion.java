@@ -43,7 +43,6 @@ import org.miradi.main.EAM;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.SubTarget;
-import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
 import org.miradi.schemas.CauseSchema;
@@ -56,6 +55,7 @@ import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
+import org.miradi.schemas.TaskSchema;
 
 public class CustomPlanningRowsQuestion extends DynamicChoiceQuestion
 {
@@ -91,10 +91,10 @@ public class CustomPlanningRowsQuestion extends DynamicChoiceQuestion
 		choiceItems.add(createChoiceItem(ThreatReductionResult.getObjectType(), ThreatReductionResult.OBJECT_NAME, new ThreatReductionResultIcon()));
 		choiceItems.add(createChoiceItem(IntermediateResultSchema.getObjectType(), IntermediateResultSchema.OBJECT_NAME, new IntermediateResultIcon()));
 		choiceItems.add(createChoiceItem(StrategySchema.getObjectType(), StrategySchema.OBJECT_NAME, IconManager.getStrategyIcon()));
-		choiceItems.add(createChoiceItem(Task.getObjectType(), Task.ACTIVITY_NAME, new ActivityIcon()));
+		choiceItems.add(createChoiceItem(TaskSchema.getObjectType(), TaskSchema.ACTIVITY_NAME, new ActivityIcon()));
 		choiceItems.add(createChoiceItem(IndicatorSchema.getObjectType(), IndicatorSchema.OBJECT_NAME, IconManager.getIndicatorIcon()));
-		choiceItems.add(createChoiceItem(Task.getObjectType(), Task.METHOD_NAME, new MethodIcon()));
-		choiceItems.add(createChoiceItem(Task.getObjectType(), Task.OBJECT_NAME, new TaskIcon()));
+		choiceItems.add(createChoiceItem(TaskSchema.getObjectType(), TaskSchema.METHOD_NAME, new MethodIcon()));
+		choiceItems.add(createChoiceItem(TaskSchema.getObjectType(), TaskSchema.OBJECT_NAME, new TaskIcon()));
 		choiceItems.add(createChoiceItem(Measurement.getObjectType(), Measurement.OBJECT_NAME, new MeasurementIcon()));
 		
 		return choiceItems;

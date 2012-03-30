@@ -30,6 +30,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Task;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.StrategySchema;
+import org.miradi.schemas.TaskSchema;
 import org.miradi.views.ObjectsDoer;
 
 
@@ -92,7 +93,7 @@ abstract public class AbstractTaskChangeSequenceDoer extends ObjectsDoer
 		if(selected == null)
 			return null;
 		
-		if(selected.getType() != Task.getObjectType())
+		if(selected.getType() != TaskSchema.getObjectType())
 			return null;
 		
 		return (Task)selected;
@@ -102,11 +103,11 @@ abstract public class AbstractTaskChangeSequenceDoer extends ObjectsDoer
 	{
 		ORef parentRef = getSelectedParentRef(task);
 		if (parentRef.isInvalid())
-			return new IdList(Task.getObjectType());
+			return new IdList(TaskSchema.getObjectType());
 		
 		BaseObject parent = getProject().findObject(parentRef);
 		if(parent == null)
-			return new IdList(Task.getObjectType());
+			return new IdList(TaskSchema.getObjectType());
 		
 		return getCurrentTaskList(parent);
 	}
@@ -137,7 +138,7 @@ abstract public class AbstractTaskChangeSequenceDoer extends ObjectsDoer
 	private IdList getCurrentTaskList(BaseObject parent) throws Exception, ParseException
 	{
 		String parentTasksTag = Task.getTaskIdsTag(parent);
-		IdList siblings = new IdList(Task.getObjectType(), parent.getData(parentTasksTag));
+		IdList siblings = new IdList(TaskSchema.getObjectType(), parent.getData(parentTasksTag));
 		return siblings;
 	}
 	

@@ -34,7 +34,6 @@ import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
-import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.BudgetCategoryOneSchema;
@@ -48,6 +47,7 @@ import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
+import org.miradi.schemas.TaskSchema;
 
 public class RtfStyleManager
 {
@@ -77,10 +77,10 @@ public class RtfStyleManager
 		createNewStyle(IntermediateResultSchema.OBJECT_NAME,   	    CS_22_RTF_ID, " \\f1\\b\\fs20 ", MIRADI_STYLE_PREFIX + "IR");
 		createNewStyle(ObjectiveSchema.OBJECT_NAME,  	    			CS_23_RTF_ID, " \\f1\\b\\fs20 ", MIRADI_STYLE_PREFIX + "Obj");
 		createNewStyle(StrategySchema.OBJECT_NAME,  	    			CS_24_RTF_ID, " \\f1\\fs20 ", MIRADI_STYLE_PREFIX + "Strat");
-		createNewStyle(Task.ACTIVITY_NAME,  	    			CS_25_RTF_ID, " \\f1\\fs18 ", MIRADI_STYLE_PREFIX + "Act");
+		createNewStyle(TaskSchema.ACTIVITY_NAME,  	    			CS_25_RTF_ID, " \\f1\\fs18 ", MIRADI_STYLE_PREFIX + "Act");
 		createNewStyle(IndicatorSchema.OBJECT_NAME,  	    			CS_26_RTF_ID, " \\f1\\fs20 ", MIRADI_STYLE_PREFIX + "Ind");
-		createNewStyle(Task.METHOD_NAME,   	    				CS_27_RTF_ID, " \\f1\\fs18 ", MIRADI_STYLE_PREFIX + "Mthd");
-		createNewStyle(Task.OBJECT_NAME,   	    				CS_28_RTF_ID, " \\f1\\fs18 ", MIRADI_STYLE_PREFIX + "Task");
+		createNewStyle(TaskSchema.METHOD_NAME,   	    				CS_27_RTF_ID, " \\f1\\fs18 ", MIRADI_STYLE_PREFIX + "Mthd");
+		createNewStyle(TaskSchema.OBJECT_NAME,   	    				CS_28_RTF_ID, " \\f1\\fs18 ", MIRADI_STYLE_PREFIX + "Task");
 		createNewStyle(Measurement.OBJECT_NAME,   	    		CS_29_RTF_ID, " \\f1\\fs18 ", MIRADI_STYLE_PREFIX + "Msrmnt");
 		createNewStyle(AccountingCodeSchema.OBJECT_NAME,  	    	CS_30_RTF_ID, " \\f1\\fs18 ", MIRADI_STYLE_PREFIX + "Accntng Cd");
 		createNewStyle(FundingSourceSchema.OBJECT_NAME, 	 	    	CS_31_RTF_ID, " \\f1\\fs18 ", MIRADI_STYLE_PREFIX + "Fndng Src");

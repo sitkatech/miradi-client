@@ -23,12 +23,13 @@ package org.miradi.xml.wcs;
 import org.martus.util.UnicodeWriter;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Task;
+import org.miradi.schemas.TaskSchema;
 
 abstract public class AbstractTaskPoolExporter extends FactorPoolExporter
 {
 	public AbstractTaskPoolExporter(XmpzXmlExporter wcsXmlExporterToUse, String containerNameToUse)
 	{
-		super(wcsXmlExporterToUse, containerNameToUse, Task.getObjectType());
+		super(wcsXmlExporterToUse, containerNameToUse, TaskSchema.getObjectType());
 	}
 	
 	@Override

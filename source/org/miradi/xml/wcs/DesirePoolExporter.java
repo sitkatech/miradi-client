@@ -24,8 +24,8 @@ import org.martus.util.UnicodeWriter;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Desire;
-import org.miradi.objects.Task;
 import org.miradi.schemas.StrategySchema;
+import org.miradi.schemas.TaskSchema;
 
 abstract public class DesirePoolExporter extends BaseObjectPoolExporter
 {
@@ -62,7 +62,7 @@ abstract public class DesirePoolExporter extends BaseObjectPoolExporter
 	
 	protected void writeRelevantActivityIds(Desire desire) throws Exception
 	{
-		ORefList relevantActivityRefs = desire.getRelevantStrategyAndActivityRefs().getFilteredBy(Task.getObjectType());
+		ORefList relevantActivityRefs = desire.getRelevantStrategyAndActivityRefs().getFilteredBy(TaskSchema.getObjectType());
 		writeOptionalIds(XmpzXmlConstants.RELEVANT_ACTIVITY_IDS, XmpzXmlConstants.ACTIVITY, relevantActivityRefs);
 	}
 }

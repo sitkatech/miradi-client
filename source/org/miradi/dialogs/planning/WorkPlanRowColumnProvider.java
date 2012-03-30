@@ -24,7 +24,6 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.CodeToCodeListMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.TableSettings;
-import org.miradi.objects.Task;
 import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.questions.WorkPlanVisibleRowsQuestion;
@@ -32,6 +31,7 @@ import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.StrategySchema;
+import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.CodeList;
 
 public class WorkPlanRowColumnProvider extends AbstractPlanningTreeRowColumnProvider
@@ -109,8 +109,8 @@ public class WorkPlanRowColumnProvider extends AbstractPlanningTreeRowColumnProv
 				ConceptualModelDiagramSchema.OBJECT_NAME,
 				ResultsChainDiagramSchema.OBJECT_NAME,
 				IndicatorSchema.OBJECT_NAME,
-				Task.METHOD_NAME,
-				Task.OBJECT_NAME,
+				TaskSchema.METHOD_NAME,
+				TaskSchema.OBJECT_NAME,
 				});
 	}
 
@@ -120,8 +120,8 @@ public class WorkPlanRowColumnProvider extends AbstractPlanningTreeRowColumnProv
 				ConceptualModelDiagramSchema.OBJECT_NAME,
 				ResultsChainDiagramSchema.OBJECT_NAME,
 				StrategySchema.OBJECT_NAME,
-				Task.ACTIVITY_NAME,
-				Task.OBJECT_NAME,
+				TaskSchema.ACTIVITY_NAME,
+				TaskSchema.OBJECT_NAME,
 				});
 	}
 
@@ -131,10 +131,10 @@ public class WorkPlanRowColumnProvider extends AbstractPlanningTreeRowColumnProv
 				ConceptualModelDiagramSchema.OBJECT_NAME,
 				ResultsChainDiagramSchema.OBJECT_NAME,
 				StrategySchema.OBJECT_NAME,
-				Task.ACTIVITY_NAME,
+				TaskSchema.ACTIVITY_NAME,
 				IndicatorSchema.OBJECT_NAME,
-				Task.METHOD_NAME,
-				Task.OBJECT_NAME,
+				TaskSchema.METHOD_NAME,
+				TaskSchema.OBJECT_NAME,
 				});
 	}
 	

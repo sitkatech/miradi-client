@@ -32,6 +32,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 import org.miradi.project.ProjectForTesting;
+import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class TestObjectDeepCopier extends MiradiTestCase
@@ -58,12 +59,12 @@ public class TestObjectDeepCopier extends MiradiTestCase
 
 	public void testDeepCopy() throws Exception
 	{
-		ORef activityRef = project.createObject(Task.getObjectType());
+		ORef activityRef = project.createObject(TaskSchema.getObjectType());
 		Task activity = (Task) project.findObject(activityRef);
-		IdList activityIds = new IdList(Task.getObjectType());
+		IdList activityIds = new IdList(TaskSchema.getObjectType());
 		activityIds.add(activityRef.getObjectId());
 	
-		BaseId taskId = project.createObjectAndReturnId(Task.getObjectType());
+		BaseId taskId = project.createObjectAndReturnId(TaskSchema.getObjectType());
 		TestCommandSetObjectData.addSubtaskId(activity, taskId);
 		
 		ORef strategyRef = project.createObject(ObjectType.STRATEGY);

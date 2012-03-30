@@ -29,6 +29,7 @@ import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
 import org.miradi.schemas.StrategySchema;
+import org.miradi.schemas.TaskSchema;
 import org.miradi.views.umbrella.DeleteActivityDoer;
 import org.miradi.views.umbrella.UndoDoer;
 
@@ -44,13 +45,13 @@ public class TestDeleteActivity extends TestCaseWithProject
 			ORef strategyRef = getProject().createObject(StrategySchema.getObjectType());
 			Strategy strategy = (Strategy)getProject().findObject(strategyRef);
 
-			ORef parentHasChildRef = getProject().createObject(Task.getObjectType());
+			ORef parentHasChildRef = getProject().createObject(TaskSchema.getObjectType());
 			Task parentHasChild = (Task)getProject().findObject(parentHasChildRef);
 			
-			ORef parentHasNoChildRef  = getProject().createObject(Task.getObjectType());
+			ORef parentHasNoChildRef  = getProject().createObject(TaskSchema.getObjectType());
 			Task parentNoChild = (Task)getProject().findObject(parentHasNoChildRef);
 			
-			ORef leafChildRef = getProject().createObject(Task.getObjectType());
+			ORef leafChildRef = getProject().createObject(TaskSchema.getObjectType());
 			Task leafChild = (Task)getProject().findObject(leafChildRef);
 			
 			CommandSetObjectData addResource1 = CommandSetObjectData.createAppendIdCommand(strategy, Strategy.TAG_ACTIVITY_IDS, parentNoChild.getId());

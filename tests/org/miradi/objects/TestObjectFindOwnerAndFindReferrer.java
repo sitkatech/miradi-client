@@ -33,6 +33,7 @@ import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
+import org.miradi.schemas.TaskSchema;
 
 public class TestObjectFindOwnerAndFindReferrer extends MiradiTestCase
 {
@@ -99,7 +100,7 @@ public class TestObjectFindOwnerAndFindReferrer extends MiradiTestCase
 		BaseId objectiveId = project.addItemToFactorList(strategyRef, ObjectType.OBJECTIVE, Factor.TAG_OBJECTIVE_IDS);
 		
 		BaseId taskId = project.createTask(Strategy.find(project, strategyRef)).getId();
-		IdList taskList = new IdList(Task.getObjectType(), new BaseId[] {taskId});
+		IdList taskList = new IdList(TaskSchema.getObjectType(), new BaseId[] {taskId});
 		project.setObjectData(strategyRef, Strategy.TAG_ACTIVITY_IDS, taskList.toString());
 		
 		//----------- start test -----------
@@ -211,8 +212,8 @@ public class TestObjectFindOwnerAndFindReferrer extends MiradiTestCase
 	{
 		ORef indicatorRef = project.createObject(IndicatorSchema.getObjectType());
 	
-		ORef taskRef = project.createObject(Task.getObjectType());
-		IdList taskList = new IdList(Task.getObjectType(), new BaseId[] {taskRef.getObjectId()});
+		ORef taskRef = project.createObject(TaskSchema.getObjectType());
+		IdList taskList = new IdList(TaskSchema.getObjectType(), new BaseId[] {taskRef.getObjectId()});
 		project.setObjectData(indicatorRef, Indicator.TAG_METHOD_IDS, taskList.toString());
 		
 		ORef measurementRef = project.createObject(Measurement.getObjectType());

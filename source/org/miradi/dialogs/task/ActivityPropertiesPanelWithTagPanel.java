@@ -25,7 +25,7 @@ import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.diagram.FactorSummaryCorePanel;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.Factor;
-import org.miradi.objects.Task;
+import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.ObjectsActionButton;
 import org.miradi.views.umbrella.ObjectPicker;
 
@@ -37,7 +37,7 @@ public class ActivityPropertiesPanelWithTagPanel extends ActivityPropertiesPanel
 		
 		createSingleSection(FactorSummaryCorePanel.getTagsLabel());
 		ObjectsActionButton chooseTagForFactorButton = createObjectsActionButton(getMainWindow().getActions().getObjectsAction(ActionManageFactorTags.class), objectPickerToUse);
-		ObjectDataInputField readOnlyTaggedObjects = createReadOnlyObjectList(Task.getObjectType(), Factor.PSEUDO_TAG_REFERRING_TAG_REFS);
+		ObjectDataInputField readOnlyTaggedObjects = createReadOnlyObjectList(TaskSchema.getObjectType(), Factor.PSEUDO_TAG_REFERRING_TAG_REFS);
 		addFieldWithEditButton(FactorSummaryCorePanel.getTagsLabel(), readOnlyTaggedObjects, chooseTagForFactorButton);
 	}
 }

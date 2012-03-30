@@ -25,8 +25,8 @@ import java.util.Vector;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.Task;
 import org.miradi.project.Project;
+import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.Translation;
 
 public class ListAllFields
@@ -50,7 +50,7 @@ public class ListAllFields
 			BaseObject object = createObject(project, type);
 			
 			// NOTE: We create a task with no owner, so it doesn't have a type
-			if(type == Task.getObjectType())
+			if(type == TaskSchema.getObjectType())
 				System.out.println("Task/Activity/Method");
 			else
 				showObjectName(object);
@@ -92,7 +92,7 @@ public class ListAllFields
 	private static void showObjectName(BaseObject object)
 	{
 		String typeName = object.getTypeName();
-		if(object.getType() == Task.getObjectType())
+		if(object.getType() == TaskSchema.getObjectType())
 			typeName = "Activity/Method/Task";
 		System.out.println(typeName);
 	}

@@ -51,6 +51,7 @@ import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
+import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.OptionalDouble;
 
@@ -180,10 +181,10 @@ public class Dashboard extends BaseObject
 				return getActivitiesCount();
 			
 			if (fieldTag.equals(PSEUDO_ACTIVITIES_AND_TASKS_COUNT))
-				return getSpecifiedTaskTypeAndTasksCount(Task.ACTIVITY_NAME);
+				return getSpecifiedTaskTypeAndTasksCount(TaskSchema.ACTIVITY_NAME);
 			
 			if (fieldTag.equals(PSEUDO_ACTIVITIES_AND_TASKS_WITH_ASSIGNMENTS_COUNT))
-				return getSpecifiedTaskTypeAndTasksWithAssignmentsCount(Task.ACTIVITY_NAME);
+				return getSpecifiedTaskTypeAndTasksWithAssignmentsCount(TaskSchema.ACTIVITY_NAME);
 			
 			if (fieldTag.equals(PSEUDO_INDICATORS_WITH_METHODS_COUNT))
 				return getIndicatorsWithMethodsCount();
@@ -195,10 +196,10 @@ public class Dashboard extends BaseObject
 				return getObjectPoolCountAsString(IndicatorSchema.getObjectType());
 			
 			if (fieldTag.equals(PSEUDO_METHODS_AND_TASKS_COUNT))
-				return getSpecifiedTaskTypeAndTasksCount(Task.METHOD_NAME);
+				return getSpecifiedTaskTypeAndTasksCount(TaskSchema.METHOD_NAME);
 			
 			if (fieldTag.equals(PSEUDO_METHODS_AND_TASKS_WITH_ASSIGNMENT_COUNT))
-				return getSpecifiedTaskTypeAndTasksWithAssignmentsCount(Task.METHOD_NAME);
+				return getSpecifiedTaskTypeAndTasksWithAssignmentsCount(TaskSchema.METHOD_NAME);
 			
 			if (fieldTag.equals(PSEUDO_WORK_PLAN_START_DATE))
 				return getProject().getMetadata().getWorkPlanStartDateAsString();

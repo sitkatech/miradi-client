@@ -59,6 +59,7 @@ import org.miradi.schemas.IntermediateResultSchema;
 import org.miradi.schemas.ScopeBoxSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
+import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.views.diagram.LinkCreator;
 
@@ -322,7 +323,7 @@ public class TestProjectRepairer extends TestCaseWithProject
 		assertEquals("task not appended?", 1, indicator.getMethodRefs().size());		
 		assertEquals("Didn't detect non-existant method?", 1, repairer.findAllMissingObjects().size());
 		
-		ORef taskRef = getProject().createObject(Task.getObjectType());
+		ORef taskRef = getProject().createObject(TaskSchema.getObjectType());
 		Task task = (Task) getProject().findObject(taskRef);
 		CommandSetObjectData appendSubTask = CommandSetObjectData.createAppendIdCommand(task, Task.TAG_SUBTASK_IDS, nonExistantId);
 		getProject().executeCommand(appendSubTask);

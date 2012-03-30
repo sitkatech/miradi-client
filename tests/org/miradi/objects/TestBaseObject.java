@@ -25,6 +25,7 @@ import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.HtmlUtilities;
 
@@ -87,12 +88,12 @@ public class TestBaseObject extends TestCaseWithProject
 	
 	public void testGetOwnerRef() throws Exception
 	{
-		ORef taskRef = getProject().createFactorAndReturnRef(Task.getObjectType());
+		ORef taskRef = getProject().createFactorAndReturnRef(TaskSchema.getObjectType());
 		Task task = (Task)getProject().findObject(taskRef);
 		
-		ORef parentRef = getProject().createFactorAndReturnRef(Task.getObjectType());
+		ORef parentRef = getProject().createFactorAndReturnRef(TaskSchema.getObjectType());
 		Task parent = (Task)getProject().findObject(parentRef);
-		IdList children = new IdList(Task.getObjectType(), new BaseId[] {task.getId()});
+		IdList children = new IdList(TaskSchema.getObjectType(), new BaseId[] {task.getId()});
 		parent.setData(Task.TAG_SUBTASK_IDS, children.toString());
 		assertEquals("Owner not detected?", parentRef, task.getOwnerRef());
 	}
@@ -112,7 +113,7 @@ public class TestBaseObject extends TestCaseWithProject
 	
 	public void testGetReferredObjects() throws Exception
 	{
-		ORef taskRef = getProject().createObject(Task.getObjectType());
+		ORef taskRef = getProject().createObject(TaskSchema.getObjectType());
 		Task task = Task.find(getProject(), taskRef);
 		assertEquals("Had referenced objects?", 0, task.getAllReferencedObjects().size());
 	}

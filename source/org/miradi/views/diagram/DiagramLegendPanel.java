@@ -65,7 +65,6 @@ import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.TaggedObjectSet;
-import org.miradi.objects.Task;
 import org.miradi.objects.TextBox;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.questions.ChoiceItem;
@@ -82,6 +81,7 @@ import org.miradi.schemas.ScopeBoxSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.StressSchema;
 import org.miradi.schemas.TargetSchema;
+import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.views.umbrella.LegendPanel;
 import org.miradi.views.umbrella.doers.AbstractPopUpEditDoer;
@@ -155,7 +155,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		
 		createCheckBox(FactorLink.OBJECT_NAME);
 		createCheckBox(StressSchema.OBJECT_NAME);
-		createCheckBox(Task.ACTIVITY_NAME);
+		createCheckBox(TaskSchema.ACTIVITY_NAME);
 		
 		createCheckBox(GoalSchema.OBJECT_NAME);
 		createCheckBox(ObjectiveSchema.OBJECT_NAME);

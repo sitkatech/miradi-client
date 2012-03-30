@@ -28,9 +28,9 @@ import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
-import org.miradi.objects.Task;
 import org.miradi.project.Project;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.TaskSchema;
 import org.miradi.views.ObjectsDoer;
 
 public class CreateMethodDoer extends ObjectsDoer
@@ -54,7 +54,7 @@ public class CreateMethodDoer extends ObjectsDoer
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
-			ORef createdRef = createAndAppendId(indicator, Indicator.TAG_METHOD_IDS, Task.getObjectType());
+			ORef createdRef = createAndAppendId(indicator, Indicator.TAG_METHOD_IDS, TaskSchema.getObjectType());
 			getPicker().ensureOneCopyOfObjectSelectedAndVisible(createdRef);
 		}
 		catch (Exception e)

@@ -33,6 +33,7 @@ import org.miradi.project.ProjectForTesting;
 import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.StrategySchema;
+import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateUnitEffort;
 
@@ -46,7 +47,7 @@ public class TestTask extends AbstractObjectWithBudgetDataToDeleteTestCase
 	@Override
 	protected int getType()
 	{
-		return Task.getObjectType();
+		return TaskSchema.getObjectType();
 	}
 	
 	public void testIsAssignmentDataSuperseded() throws Exception
@@ -136,7 +137,7 @@ public class TestTask extends AbstractObjectWithBudgetDataToDeleteTestCase
 	
 	public void testData() throws Exception
 	{
-		IdList sampleIds = new IdList(Task.getObjectType());
+		IdList sampleIds = new IdList(TaskSchema.getObjectType());
 		sampleIds.add(1);
 		sampleIds.add(1527);
 		String sampleIdData = sampleIds.toString(); 
@@ -187,10 +188,10 @@ public class TestTask extends AbstractObjectWithBudgetDataToDeleteTestCase
 	
 	public void testGetChildTaskTypeCode()
 	{
-		assertEquals(Task.ACTIVITY_NAME, Task.getChildTaskTypeCode(StrategySchema.getObjectType()));
-		assertEquals(Task.METHOD_NAME, Task.getChildTaskTypeCode(IndicatorSchema.getObjectType()));
-		assertEquals(Task.OBJECT_NAME, Task.getChildTaskTypeCode(Task.getObjectType()));
-		assertEquals(Task.OBJECT_NAME, Task.getChildTaskTypeCode(AccountingCodeSchema.getObjectType()));
+		assertEquals(TaskSchema.ACTIVITY_NAME, Task.getChildTaskTypeCode(StrategySchema.getObjectType()));
+		assertEquals(TaskSchema.METHOD_NAME, Task.getChildTaskTypeCode(IndicatorSchema.getObjectType()));
+		assertEquals(TaskSchema.OBJECT_NAME, Task.getChildTaskTypeCode(TaskSchema.getObjectType()));
+		assertEquals(TaskSchema.OBJECT_NAME, Task.getChildTaskTypeCode(AccountingCodeSchema.getObjectType()));
 	}
 
 	private Task createBasicTree() throws Exception

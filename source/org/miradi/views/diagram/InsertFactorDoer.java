@@ -42,12 +42,12 @@ import org.miradi.objects.GroupBox;
 import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.Target;
-import org.miradi.objects.Task;
 import org.miradi.objects.TextBox;
 import org.miradi.project.FactorCommandHelper;
 import org.miradi.project.Project;
 import org.miradi.schemas.ScopeBoxSchema;
 import org.miradi.schemas.StressSchema;
+import org.miradi.schemas.TaskSchema;
 
 abstract public class InsertFactorDoer extends LocationDoer
 {
@@ -335,7 +335,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 		if (type == StressSchema.getObjectType())
 			return false;
 		
-		if (type == Task.getObjectType())
+		if (type == TaskSchema.getObjectType())
 			return false;
 		
 		if (type == ScopeBoxSchema.getObjectType())

@@ -21,6 +21,7 @@ package org.miradi.views.umbrella.doers;
 
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Task;
+import org.miradi.schemas.TaskSchema;
 import org.miradi.views.ObjectsDoer;
 import org.miradi.views.umbrella.DeleteActivityDoer;
 
@@ -50,7 +51,7 @@ public class DeleteMethodDoer extends ObjectsDoer
 		if(getSelectedHierarchies().length != 1)
 			return null;
 		
-		ORef methodRef = getSelectedHierarchies()[0].getRefForType(Task.getObjectType());
+		ORef methodRef = getSelectedHierarchies()[0].getRefForType(TaskSchema.getObjectType());
 		if(methodRef == null || methodRef.isInvalid())
 			return null;
 		
