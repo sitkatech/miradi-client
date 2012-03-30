@@ -31,6 +31,7 @@ import org.miradi.main.EAM;
 import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
 import org.miradi.questions.OpenStandardsProgressStatusQuestion;
+import org.miradi.schemas.DashboardSchema;
 import org.miradi.utils.CodeList;
 
 public class DashboardStatusMapsCache implements CommandExecutedListener
@@ -145,7 +146,7 @@ public class DashboardStatusMapsCache implements CommandExecutedListener
 	
 	private Dashboard getDashboardSingletonObject()
 	{
-		ORef dashboardRef = getProject().getSingletonObjectRef(Dashboard.getObjectType()); 
+		ORef dashboardRef = getProject().getSingletonObjectRef(DashboardSchema.getObjectType()); 
 		return Dashboard.find(getProject(), dashboardRef);
 	}
 	

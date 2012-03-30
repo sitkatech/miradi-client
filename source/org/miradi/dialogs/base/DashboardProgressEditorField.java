@@ -35,6 +35,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.OpenStandardsProgressStatusQuestion;
+import org.miradi.schemas.DashboardSchema;
 import org.miradi.utils.CodeList;
 
 public class DashboardProgressEditorField extends AbstractStringStringMapEditorField
@@ -58,7 +59,7 @@ public class DashboardProgressEditorField extends AbstractStringStringMapEditorF
 		try
 		{
 			boolean canBeCalculatedFromUserData = false;
-			ORef dashboardRef = getProject().getSingletonObjectRef(Dashboard.getObjectType());
+			ORef dashboardRef = getProject().getSingletonObjectRef(DashboardSchema.getObjectType());
 			Dashboard dashboard = Dashboard.find(getProject(), dashboardRef);
 			Vector<DashboardRowDefinition> rows = dashboard.getDashboardRowDefinitionManager().getRowDefinitions(getMapCode());
 			if(rows.size() > 0)

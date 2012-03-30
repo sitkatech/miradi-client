@@ -22,6 +22,7 @@ package org.miradi.objects;
 
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.schemas.DashboardSchema;
 
 public class TestDashboard extends ObjectTestCase
 {
@@ -40,7 +41,7 @@ public class TestDashboard extends ObjectTestCase
 	{
 		if (Dashboard.is(objectType))
 		{
-			ORef dashboardRef = getProject().getSingletonObjectRef(Dashboard.getObjectType());
+			ORef dashboardRef = getProject().getSingletonObjectRef(DashboardSchema.getObjectType());
 			return Dashboard.find(getProject(), dashboardRef);
 		}
 		

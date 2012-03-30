@@ -28,6 +28,7 @@ import org.miradi.objecthelpers.CodeToChoiceMap;
 import org.miradi.questions.OpenStandardsConceptualizeQuestion;
 import org.miradi.questions.OpenStandardsProgressStatusQuestion;
 import org.miradi.questions.OpenStandardsImplementActionsAndMonitoringQuestion;
+import org.miradi.schemas.DashboardSchema;
 import org.miradi.utils.CodeList;
 
 public class TestDashboardStatusMapsCache extends TestCaseWithProject
@@ -169,7 +170,7 @@ public class TestDashboardStatusMapsCache extends TestCaseWithProject
 	
 	private Dashboard getDashboard()
 	{
-		ORef dashboardRef = getProject().getSingletonObjectRef(Dashboard.getObjectType());
+		ORef dashboardRef = getProject().getSingletonObjectRef(DashboardSchema.getObjectType());
 		return Dashboard.find(getProject(), dashboardRef);
 	}
 

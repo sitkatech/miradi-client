@@ -34,6 +34,7 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
+import org.miradi.schemas.DashboardSchema;
 
 abstract public class AbstractDashboardClickableField extends ObjectDataField
 {
@@ -68,7 +69,7 @@ abstract public class AbstractDashboardClickableField extends ObjectDataField
 	{
 		try
 		{
-			ORef dashboardRef = getProject().getSingletonObjectRef(Dashboard.getObjectType());
+			ORef dashboardRef = getProject().getSingletonObjectRef(DashboardSchema.getObjectType());
 			Dashboard dashboard = Dashboard.find(getProject(), dashboardRef);
 			updateLabelComponent(labelComponent, dashboard);
 		}

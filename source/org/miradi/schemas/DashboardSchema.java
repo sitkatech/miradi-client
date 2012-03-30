@@ -20,10 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Dashboard;
 
 public class DashboardSchema extends BaseObjectSchema
 {
+	public static final String OBJECT_NAME = "Dashboard";
+
 	public DashboardSchema()
 	{
 		super();
@@ -107,5 +110,10 @@ public class DashboardSchema extends BaseObjectSchema
 		createPseudoFieldSchemaString(Dashboard.PSEUDO_TOTAL_ACTION_BUDGET);
 		createPseudoFieldSchemaString(Dashboard.PSEUDO_TOTAL_MONITORING_BUDGET);
 		createPseudoFieldSchemaString(Dashboard.PSEUDO_TOTAL_FACTOR_COUNT);
+	}
+
+	public static int getObjectType()
+	{
+		return ObjectType.DASHBOARD;
 	}
 }

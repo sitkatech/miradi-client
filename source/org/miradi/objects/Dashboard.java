@@ -33,7 +33,6 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.CodeToChoiceMap;
 import org.miradi.objecthelpers.CodeToCodeListMap;
 import org.miradi.objecthelpers.CodeToUserStringMap;
@@ -63,7 +62,7 @@ public class Dashboard extends BaseObject
 	@Override
 	public int getType()
 	{
-		return getObjectType();
+		return DashboardSchema.getObjectType();
 	}
 	
 	@Override
@@ -72,15 +71,10 @@ public class Dashboard extends BaseObject
 		return NO_OWNERS;
 	}
 	
-	public static int getObjectType()
-	{
-		return ObjectType.DASHBOARD;
-	}
-	
 	@Override
 	public String getTypeName()
 	{
-		return OBJECT_NAME;
+		return DashboardSchema.OBJECT_NAME;
 	}
 
 	@Override
@@ -1122,7 +1116,7 @@ public class Dashboard extends BaseObject
 	
 	public static boolean is(int objectType)
 	{
-		return objectType == getObjectType();
+		return objectType == DashboardSchema.getObjectType();
 	}
 	
 	public static Dashboard find(ObjectManager objectManager, ORef ref)
@@ -1134,8 +1128,6 @@ public class Dashboard extends BaseObject
 	{
 		return find(project.getObjectManager(), ref);
 	}
-	
-	public static final String OBJECT_NAME = "Dashboard";
 	
 	public static final String PSEUDO_TEMP_TAG = "TempTag";
 	public static final String PSEUDO_TEAM_MEMBER_COUNT = "TeamMemberCount";

@@ -60,6 +60,7 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.DynamicChoiceWithRootChoiceItem;
 import org.miradi.questions.OpenStandardsProgressStatusQuestion;
+import org.miradi.schemas.DashboardSchema;
 import org.miradi.utils.FillerLabel;
 import org.miradi.utils.XmlUtilities2;
 import org.miradi.wizard.WizardManager;
@@ -395,7 +396,7 @@ abstract public class AbstractOpenStandardsQuestionPanel extends AbstractObjectD
 	
 	private static Dashboard getDashboard(Project projectToUse)
 	{
-		ORef dashboardRef = projectToUse.getSingletonObjectRef(Dashboard.getObjectType());
+		ORef dashboardRef = projectToUse.getSingletonObjectRef(DashboardSchema.getObjectType());
 		return Dashboard.find(projectToUse, dashboardRef);
 	}
 	

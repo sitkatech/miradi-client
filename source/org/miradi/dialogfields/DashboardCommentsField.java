@@ -26,6 +26,7 @@ import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
+import org.miradi.schemas.DashboardSchema;
 import org.miradi.utils.XmlUtilities2;
 
 public class DashboardCommentsField extends AbstractDashboardClickableField
@@ -50,7 +51,7 @@ public class DashboardCommentsField extends AbstractDashboardClickableField
 	
 	public boolean hasComments() throws Exception
 	{
-		ORef dashboardRef = getProject().getSingletonObjectRef(Dashboard.getObjectType());
+		ORef dashboardRef = getProject().getSingletonObjectRef(DashboardSchema.getObjectType());
 		Dashboard dashboard = Dashboard.find(getProject(), dashboardRef);
 		CodeToUserStringMap commentsMap = dashboard.getCommentsMap();
 		String comment = commentsMap.getUserString(stringMapCode);
