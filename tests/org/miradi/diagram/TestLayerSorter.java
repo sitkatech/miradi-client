@@ -32,7 +32,7 @@ import org.miradi.objects.GroupBox;
 import org.miradi.objects.ScopeBox;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
-import org.miradi.objects.Target;
+import org.miradi.schemas.TargetSchema;
 import org.miradi.views.diagram.LayerSorter;
 
 public class TestLayerSorter extends TestCaseWithProject
@@ -47,7 +47,7 @@ public class TestLayerSorter extends TestCaseWithProject
 		getProject().createDiagramFactorAndAddToDiagram(ScopeBox.getObjectType());
 		getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
 		getProject().createDiagramFactorAndAddToDiagram(GroupBox.getObjectType());
-		DiagramFactor targetDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramFactor targetDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
 		DiagramFactor causeDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
 		getProject().createDiagramFactorAndAddToDiagram(GroupBox.getObjectType());
 		ORef diagramLinkRef = getProject().createDiagramLink(targetDiagramFactor, causeDiagramFactor);

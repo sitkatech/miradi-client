@@ -41,6 +41,7 @@ import org.miradi.objects.Target;
 import org.miradi.questions.DiagramObjectDataInclusionQuestion;
 import org.miradi.questions.WorkPlanVisibleRowsQuestion;
 import org.miradi.schemas.ResultsChainDiagramSchema;
+import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.OptionalDouble;
 
 public class TestProjectTotalCalculator extends TestCaseWithProject
@@ -86,7 +87,7 @@ public class TestProjectTotalCalculator extends TestCaseWithProject
 	
 	public void testKeaIndicatorInResultsChain() throws Exception
 	{
-		DiagramFactor target = getProject().createAndAddFactorToDiagram(getResultsChainDiagramObject(), Target.getObjectType());
+		DiagramFactor target = getProject().createAndAddFactorToDiagram(getResultsChainDiagramObject(), TargetSchema.getObjectType());
 		getProject().turnOnTncMode((Target) target.getWrappedFactor());
 		KeyEcologicalAttribute kea = getProject().createKea();
 		ORefList keaRefs = new ORefList(kea);

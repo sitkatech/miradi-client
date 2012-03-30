@@ -61,6 +61,7 @@ import org.miradi.questions.TrendQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
+import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.NullProgressMeter;
@@ -491,12 +492,12 @@ public class TestConproXmlImporter extends TestCaseWithProject
 	
 	public void testHighestId() throws Exception
 	{
-		getProject().createObject(Target.getObjectType(), new BaseId(400));
+		getProject().createObject(TargetSchema.getObjectType(), new BaseId(400));
 		int highestId1 = getProject().getNormalIdAssigner().getHighestAssignedId();
 		assertEquals("wrong highest greater than current highest id?", 400, highestId1);
 		
 		int highestId2 = getProject().getNormalIdAssigner().getHighestAssignedId();
-		ORef newTargetRef = getProject().createObject(Target.getObjectType(), new BaseId(20));
+		ORef newTargetRef = getProject().createObject(TargetSchema.getObjectType(), new BaseId(20));
 		assertEquals("wrong id?", 20, newTargetRef.getObjectId().asInt());
 
 		int highestId3 = getProject().getNormalIdAssigner().getHighestAssignedId();
@@ -513,7 +514,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		Indicator indicatorToBeShared = projectAfterImport.createIndicator(threat);
 		projectAfterImport.enableAsThreat(threat);
 		
-		DiagramFactor diagramFactorTarget = projectAfterImport.createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramFactor diagramFactorTarget = projectAfterImport.createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
 		projectAfterImport.createDiagramLink(diagramFactorThreat, diagramFactorTarget);
 		
 		Target target = (Target) diagramFactorTarget.getWrappedFactor();

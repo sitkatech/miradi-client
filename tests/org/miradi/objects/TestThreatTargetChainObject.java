@@ -24,6 +24,7 @@ import java.util.HashSet;
 import org.miradi.diagram.ThreatTargetChainWalker;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objectdata.BooleanData;
+import org.miradi.schemas.TargetSchema;
 
 public class TestThreatTargetChainObject extends TestCaseWithProject
 {
@@ -49,7 +50,7 @@ public class TestThreatTargetChainObject extends TestCaseWithProject
 		DiagramFactor threat2 = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Cause.getObjectType());
 		getProject().enableAsThreat(threat2.getWrappedORef());
 		
-		DiagramFactor target = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Target.getObjectType());
+		DiagramFactor target = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(TargetSchema.getObjectType());
 		DiagramFactor strategy = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Strategy.getObjectType());
 		
 		//threat1 -> threat2 -> strategy -> target
@@ -70,8 +71,8 @@ public class TestThreatTargetChainObject extends TestCaseWithProject
 		DiagramFactor threat1 = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Cause.getObjectType());
 		getProject().enableAsThreat(threat1.getWrappedORef());
 				
-		DiagramFactor target1 = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Target.getObjectType());
-		DiagramFactor target2 = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Target.getObjectType());
+		DiagramFactor target1 = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(TargetSchema.getObjectType());
+		DiagramFactor target2 = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(TargetSchema.getObjectType());
 		
 		//threat1 -> target1 -> target2
 		getProject().createDiagramLinkAndAddToDiagram(threat1, target1); 
@@ -99,7 +100,7 @@ public class TestThreatTargetChainObject extends TestCaseWithProject
 		DiagramFactor threat2 = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Cause.getObjectType());
 		getProject().enableAsThreat(threat2.getWrappedORef());
 		
-		DiagramFactor target = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Target.getObjectType());
+		DiagramFactor target = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(TargetSchema.getObjectType());
 		
 		//threat1 -> target
 		//threat2 -> target
@@ -117,8 +118,8 @@ public class TestThreatTargetChainObject extends TestCaseWithProject
 		DiagramFactor threat1 = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Cause.getObjectType());
 		getProject().enableAsThreat(threat1.getWrappedORef());
 				
-		DiagramFactor target1 = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Target.getObjectType());
-		DiagramFactor target2 = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Target.getObjectType());
+		DiagramFactor target1 = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(TargetSchema.getObjectType());
+		DiagramFactor target2 = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(TargetSchema.getObjectType());
 		
 		//threat1 -> target1
 		//threat1 -> target2
@@ -137,7 +138,7 @@ public class TestThreatTargetChainObject extends TestCaseWithProject
 		getProject().enableAsThreat(threat.getWrappedORef());
 				
 		DiagramFactor cause = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Cause.getObjectType());
-		DiagramFactor target = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Target.getObjectType());
+		DiagramFactor target = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(TargetSchema.getObjectType());
 		
 		getProject().createDiagramLinkAndAddToDiagram(threat, cause, isBidirectionalTag);
 		getProject().createDiagramLinkAndAddToDiagram(cause, target, isBidirectionalTag);			

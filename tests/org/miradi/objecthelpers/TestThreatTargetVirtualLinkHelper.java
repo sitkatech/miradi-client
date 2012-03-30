@@ -25,6 +25,7 @@ import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
+import org.miradi.schemas.TargetSchema;
 
 public class TestThreatTargetVirtualLinkHelper extends TestCaseWithProject
 {
@@ -89,6 +90,6 @@ public class TestThreatTargetVirtualLinkHelper extends TestCaseWithProject
 	
 	private DiagramFactor createTargetDiagramFactor() throws Exception
 	{
-		return getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		return getProject().createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
 	}
 }

@@ -35,9 +35,9 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.Strategy;
-import org.miradi.objects.Target;
 import org.miradi.objects.TestDiagramObject;
 import org.miradi.schemas.DiagramFactorSchema;
+import org.miradi.schemas.TargetSchema;
 
 public class TestMeglerArranger extends TestCaseWithProject
 {
@@ -635,7 +635,7 @@ public class TestMeglerArranger extends TestCaseWithProject
 	
 	private DiagramFactor createTarget() throws Exception
 	{
-		return getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		return getProject().createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
 	}
 
 	private DiagramFactor createEmptyGroupBox() throws Exception

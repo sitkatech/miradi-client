@@ -35,6 +35,7 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
+import org.miradi.schemas.TargetSchema;
 
 public class TestEAMGraphCellByFactorTypeSorter extends TestCaseWithProject
 {
@@ -48,7 +49,7 @@ public class TestEAMGraphCellByFactorTypeSorter extends TestCaseWithProject
 		DiagramFactor cause = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
 		DiagramCauseCell causeCell = new DiagramCauseCell((Cause) cause.getWrappedFactor(), cause);
 		
-		DiagramFactor target = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramFactor target = getProject().createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
 		DiagramTargetCell targetCell = new DiagramTargetCell((Target) target.getWrappedFactor(), target);
 		
 		DiagramFactor strategy = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());

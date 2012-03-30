@@ -29,6 +29,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
+import org.miradi.schemas.TargetSchema;
 
 public class TestFactor extends TestCaseWithProject
 {
@@ -109,7 +110,7 @@ public class TestFactor extends TestCaseWithProject
 		factor.setComment("This is a great comment");
 		factor.setData(factor.TAG_GOAL_IDS, goals.toString());
 		Target got = (Target)ObjectTestCase.createFromJson(getObjectManager(), factor.getType(), factor.toJson());
-		assertEquals("wrong type?", factor.getObjectType(), got.getObjectType());
+		assertEquals("wrong type?", TargetSchema.getObjectType(), TargetSchema.getObjectType());
 		assertEquals("wrong id?", factor.getId(), got.getId());
 		assertEquals("wrong name?", factor.getLabel(), got.getLabel());
 		assertEquals("wrong goals count?", factor.getGoalRefs().size(), got.getGoalRefs().size());
@@ -121,7 +122,7 @@ public class TestFactor extends TestCaseWithProject
 		Target target = getProject().createTarget();
 		assertFalse("Target is shared?", target.mustBeDeletedBecauseParentIsGone());
 		
-		DiagramFactor diagramFactor = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramFactor diagramFactor = getProject().createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
 		assertTrue("Target is not shared?", diagramFactor.getWrappedFactor().mustBeDeletedBecauseParentIsGone());
 		
 		

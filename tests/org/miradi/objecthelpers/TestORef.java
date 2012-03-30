@@ -26,7 +26,7 @@ import org.martus.util.TestCaseEnhanced;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objects.Cause;
-import org.miradi.objects.Target;
+import org.miradi.schemas.TargetSchema;
 
 public class TestORef extends TestCaseEnhanced
 {
@@ -87,7 +87,7 @@ public class TestORef extends TestCaseEnhanced
 		
 		try
 		{
-			ref.ensureExactType(Target.getObjectType());
+			ref.ensureExactType(TargetSchema.getObjectType());
 			fail("was suppose to fail due to wrong type?");
 		}
 		catch (Exception e)

@@ -30,8 +30,8 @@ import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Stress;
-import org.miradi.objects.Target;
 import org.miradi.objects.ThreatStressRating;
+import org.miradi.schemas.TargetSchema;
 
 public class TestProjectCommandExecutions extends TestCaseWithProject implements CommandExecutedListener
 {
@@ -69,7 +69,7 @@ public class TestProjectCommandExecutions extends TestCaseWithProject implements
 	private void verifySideEffectCommandOusideOfSideEffectMode()
 	{
 		assertTrue("should not be in side effect mode?", !getProject().isInCommandSideEffectMode());
-		CommandCreateObject createTarget = new CommandCreateObject(Target.getObjectType());
+		CommandCreateObject createTarget = new CommandCreateObject(TargetSchema.getObjectType());
 		
 		EAM.setLogToString();
 		try

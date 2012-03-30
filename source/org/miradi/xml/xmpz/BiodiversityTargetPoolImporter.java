@@ -23,6 +23,7 @@ package org.miradi.xml.xmpz;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
+import org.miradi.schemas.TargetSchema;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.w3c.dom.Node;
 
@@ -30,7 +31,7 @@ public class BiodiversityTargetPoolImporter extends AbstractTargetPoolImporter
 {
 	public BiodiversityTargetPoolImporter(XmpzXmlImporter importerToUse)
 	{
-		super(importerToUse, XmpzXmlConstants.BIODIVERSITY_TARGET, Target.getObjectType());
+		super(importerToUse, XmpzXmlConstants.BIODIVERSITY_TARGET, TargetSchema.getObjectType());
 	}
 	
 	@Override

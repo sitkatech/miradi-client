@@ -55,6 +55,7 @@ import org.miradi.schemas.BudgetCategoryTwoSchema;
 import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.views.diagram.LinkCreator;
 
@@ -153,7 +154,7 @@ public class TestProjectRepairer extends TestCaseWithProject
 	
 	public void testRemoveInvalidDiagramLinkRefs() throws Exception
 	{
-		DiagramFactor targetDF = getProject().createAndAddFactorToDiagram(Target.getObjectType());
+		DiagramFactor targetDF = getProject().createAndAddFactorToDiagram(TargetSchema.getObjectType());
 		DiagramFactor causeDF = getProject().createAndAddFactorToDiagram(Cause.getObjectType());
 		LinkCreator creator = new LinkCreator(getProject());
 		creator.createFactorLinkAndAddToDiagramUsingCommands(getProject().getTestingDiagramObject(), causeDF, targetDF);
@@ -186,7 +187,7 @@ public class TestProjectRepairer extends TestCaseWithProject
 	public void testGetFactorsWithoutDiagramFactors() throws Exception
 	{
 		verifyFactorBeingReferredToByDiagramFactor(ScopeBox.getObjectType());
-		verifyFactorBeingReferredToByDiagramFactor(Target.getObjectType());
+		verifyFactorBeingReferredToByDiagramFactor(TargetSchema.getObjectType());
 		verifyFactorBeingReferredToByDiagramFactor(HumanWelfareTargetSchema.getObjectType());
 		verifyFactorBeingReferredToByDiagramFactor(Cause.getObjectType());
 		verifyFactorBeingReferredToByDiagramFactor(Strategy.getObjectType());
@@ -255,7 +256,7 @@ public class TestProjectRepairer extends TestCaseWithProject
 		DiagramFactor threat2 = getProject().createAndAddFactorToDiagram(Cause.getObjectType());
 		getProject().enableAsThreat((Cause) threat2.getWrappedFactor());
 		
-		DiagramFactor target = getProject().createAndAddFactorToDiagram(Target.getObjectType());
+		DiagramFactor target = getProject().createAndAddFactorToDiagram(TargetSchema.getObjectType());
 		ORefList stressRefs = new ORefList(getProject().createAndPopulateStress().getRef());
 		getProject().fillObjectUsingCommand(target.getWrappedORef(), Target.TAG_STRESS_REFS, stressRefs.toString());
 		

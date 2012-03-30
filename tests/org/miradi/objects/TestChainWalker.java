@@ -25,6 +25,7 @@ import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.project.ProjectForTesting;
+import org.miradi.schemas.TargetSchema;
 
 public class TestChainWalker extends MiradiTestCase
 {
@@ -51,7 +52,7 @@ public class TestChainWalker extends MiradiTestCase
 
 	public void testThreatFactorTargetChain() throws Exception
 	{
-		DiagramFactor targetDiagramFactor = project.createAndAddFactorToDiagram(Target.getObjectType());
+		DiagramFactor targetDiagramFactor = project.createAndAddFactorToDiagram(TargetSchema.getObjectType());
 		Factor target = targetDiagramFactor.getWrappedFactor();
 		FactorSet nothingUpstreamYet = walker.buildNormalChainAndGetFactors(target);
 		assertEquals("Already something upstream?", 1, nothingUpstreamYet.size());
@@ -76,7 +77,7 @@ public class TestChainWalker extends MiradiTestCase
 	
 	public void testCacheClearing() throws Exception
 	{
-		DiagramFactor targetDiagramFactor = project.createAndAddFactorToDiagram(Target.getObjectType());
+		DiagramFactor targetDiagramFactor = project.createAndAddFactorToDiagram(TargetSchema.getObjectType());
 		Factor target = targetDiagramFactor.getWrappedFactor();
 		FactorSet nothingUpstreamYet = walker.buildNormalChainAndGetFactors(target);
 		assertEquals("Already something upstream?", 1, nothingUpstreamYet.size());

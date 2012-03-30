@@ -21,6 +21,7 @@ package org.miradi.forms;
 
 import org.miradi.main.MiradiTestCase;
 import org.miradi.objects.Target;
+import org.miradi.schemas.TargetSchema;
 
 public class TestFormRow extends MiradiTestCase
 {
@@ -36,12 +37,12 @@ public class TestFormRow extends MiradiTestCase
 		assertEquals("right form items list not empty", 0, formRow.getRightFormItemsCount());
 		
 		FormConstant formConstant = new FormConstant("SomeConstant");
-		FormFieldLabel formFieldLabel = new FormFieldLabel(Target.getObjectType(), Target.TAG_LABEL);
+		FormFieldLabel formFieldLabel = new FormFieldLabel(TargetSchema.getObjectType(), Target.TAG_LABEL);
 		FormRow formRowWithLeftAndRight = new FormRow(formConstant, formFieldLabel);
 		assertEquals("incorrect left form list size?", 1, formRowWithLeftAndRight.getLeftFormItemsCount());
 		assertEquals("incorrect right form list size?", 1, formRowWithLeftAndRight.getRightFormItemsCount());
 		
-		formRowWithLeftAndRight.addRightFormItem(new FormFieldData(Target.getObjectType(), Target.TAG_LABEL));
+		formRowWithLeftAndRight.addRightFormItem(new FormFieldData(TargetSchema.getObjectType(), Target.TAG_LABEL));
 		assertEquals("incorrect right form list size?", 2, formRowWithLeftAndRight.getRightFormItemsCount());
 	}
 }

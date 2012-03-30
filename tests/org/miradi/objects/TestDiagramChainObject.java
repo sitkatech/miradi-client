@@ -25,6 +25,7 @@ import java.util.Vector;
 import org.miradi.diagram.ChainWalker;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.schemas.TargetSchema;
 
 public class TestDiagramChainObject extends TestCaseWithProject
 {
@@ -41,7 +42,7 @@ public class TestDiagramChainObject extends TestCaseWithProject
 		DiagramFactor threat2 = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
 		getProject().enableAsThreat(threat2.getWrappedORef());
 		
-		DiagramFactor target = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramFactor target = getProject().createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
 		
 		getProject().createDiagramLinkAndAddToDiagram(threat1, threat2);
 		getProject().createDiagramLinkAndAddToDiagram(threat2, target);

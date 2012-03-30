@@ -26,11 +26,11 @@ import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Stress;
-import org.miradi.objects.Target;
 import org.miradi.objects.ThreatRatingCommentsData;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.questions.StressContributionQuestion;
 import org.miradi.questions.StressIrreversibilityQuestion;
+import org.miradi.schemas.TargetSchema;
 import org.miradi.xml.AbstractXmpzObjectImporter;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.w3c.dom.Node;
@@ -94,7 +94,7 @@ public class ThreatTargetThreatRatingElementImporter extends AbstractXmpzObjectI
 	private ORef getTargetRef(Node threatRatingNode) throws Exception
 	{
 		Node targetIdNode = getImporter().getNode(threatRatingNode, getPoolName() + TARGET + ID);
-		ORef targetRef = getImporter().getNodeAsRef(targetIdNode,  BIODIVERSITY_TARGET + ID, Target.getObjectType());
+		ORef targetRef = getImporter().getNodeAsRef(targetIdNode,  BIODIVERSITY_TARGET + ID, TargetSchema.getObjectType());
 		return targetRef;
 	}
 

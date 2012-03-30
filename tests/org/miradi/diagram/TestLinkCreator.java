@@ -40,6 +40,7 @@ import org.miradi.objects.Target;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.schemas.DiagramLinkSchema;
+import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.ThreatStressRatingHelper;
 import org.miradi.views.diagram.LinkCreator;
 
@@ -70,7 +71,7 @@ public class TestLinkCreator extends TestCaseWithProject
 		stressRefList.add(stressRef1);
 		stressRefList.add(stressRef2);
 		
-		DiagramFactor diagramTarget = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramFactor diagramTarget = getProject().createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
 		CommandSetObjectData appendStressRefs = new CommandSetObjectData(diagramTarget.getWrappedORef(), Target.TAG_STRESS_REFS, stressRefList.toString());
 		getProject().executeCommand(appendStressRefs);
 		
@@ -90,7 +91,7 @@ public class TestLinkCreator extends TestCaseWithProject
 	public void testAreGroupBoxOwnedFactorsLinked() throws Exception
 	{
 		DiagramFactor fromDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
-		DiagramFactor toDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramFactor toDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
 		
 		LinkCreator linkCreator = new LinkCreator(getProject());
 		assertFalse("diagram factors are not linked?", linkCreator.areGroupBoxOwnedFactorsLinked(getDiagramModel(), fromDiagramFactor, toDiagramFactor));
@@ -127,7 +128,7 @@ public class TestLinkCreator extends TestCaseWithProject
 		getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
 		DiagramFactor cause1 = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
 		DiagramFactor cause2 = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
-		getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		getProject().createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
 		
 		DiagramFactor groupBoxDiagramFactor = getProject().createAndPopulateDiagramFactorGroupBox(cause1);
 		addToGroup(groupBoxDiagramFactor, cause2);
@@ -142,7 +143,7 @@ public class TestLinkCreator extends TestCaseWithProject
 		DiagramFactor strategy1 = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
 		DiagramFactor cause1 = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
 		DiagramFactor cause2 = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
-		DiagramFactor target1 = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramFactor target1 = getProject().createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
 		
 		getProject().createDiagramLinkAndAddToDiagram(strategy1, cause1);
 		getProject().createDiagramLinkAndAddToDiagram(cause1, target1);
@@ -161,8 +162,8 @@ public class TestLinkCreator extends TestCaseWithProject
 		getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
 		DiagramFactor cause1 = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
 		DiagramFactor cause2 = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
-		DiagramFactor target1 = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
-		getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramFactor target1 = getProject().createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
+		getProject().createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
 		
 		getProject().createDiagramLinkAndAddToDiagram(strategy1, cause1);
 		getProject().createDiagramLinkAndAddToDiagram(strategy1, cause2);
@@ -184,8 +185,8 @@ public class TestLinkCreator extends TestCaseWithProject
 
 		DiagramFactor cause1 = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
 		DiagramFactor cause2 = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
-		DiagramFactor target1 = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
-		DiagramFactor target2 = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramFactor target1 = getProject().createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
+		DiagramFactor target2 = getProject().createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
 		
 		getProject().createDiagramLinkAndAddToDiagram(cause1, target1);
 		getProject().createDiagramLinkAndAddToDiagram(cause1, target2);
