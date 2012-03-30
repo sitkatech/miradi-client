@@ -110,6 +110,7 @@ import org.miradi.schemas.IntermediateResultSchema;
 import org.miradi.schemas.KeyEcologicalAttributeSchema;
 import org.miradi.schemas.MeasurementSchema;
 import org.miradi.schemas.ObjectiveSchema;
+import org.miradi.schemas.ProgressPercentSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.StrategySchema;
@@ -379,7 +380,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		for (int nodeIndex = 0; nodeIndex < progressPercentNodeList.getLength(); ++nodeIndex) 
 		{
 			Node progressPercentNode = progressPercentNodeList.item(nodeIndex);			
-			ORef progressPercentRef = getProject().createObject(ProgressPercent.getObjectType());
+			ORef progressPercentRef = getProject().createObject(ProgressPercentSchema.getObjectType());
 			
 			importField(progressPercentNode, PROGRESS_PERCENT_COMPLETE, progressPercentRef, ProgressPercent.TAG_PERCENT_COMPLETE);
 			importField(progressPercentNode, PROGRESS_PERCENT_DATE, progressPercentRef, ProgressPercent.TAG_DATE);

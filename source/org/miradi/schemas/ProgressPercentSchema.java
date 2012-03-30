@@ -20,10 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.ProgressPercent;
 
 public class ProgressPercentSchema extends BaseObjectSchema
 {
+	public static final String OBJECT_NAME = "ProgressPercent";
+
 	public ProgressPercentSchema()
 	{
 		super();
@@ -37,5 +40,10 @@ public class ProgressPercentSchema extends BaseObjectSchema
 		createFieldSchemaDate(ProgressPercent.TAG_DATE);
 		createFieldSchemaPercentage(ProgressPercent.TAG_PERCENT_COMPLETE);
 		createFieldSchemaMultiLineUserText(ProgressPercent.TAG_PERCENT_COMPLETE_NOTES);
+	}
+
+	public static int getObjectType()
+	{
+		return ObjectType.PROGRESS_PERCENT;
 	}
 }

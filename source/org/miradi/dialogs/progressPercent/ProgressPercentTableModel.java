@@ -30,6 +30,7 @@ import org.miradi.objects.ProgressPercent;
 import org.miradi.project.Project;
 import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.TaglessChoiceItem;
+import org.miradi.schemas.ProgressPercentSchema;
 import org.miradi.utils.DoubleUtilities;
 import org.miradi.views.diagram.doers.AbstractCreateProgressDoer;
 
@@ -62,7 +63,7 @@ public class ProgressPercentTableModel extends EditableObjectRefsTableModel
 	@Override
 	protected int getObjectType()
 	{
-		return ProgressPercent.getObjectType();
+		return ProgressPercentSchema.getObjectType();
 	}
 
 	public Object getValueAt(int rowIndex, int columnIndex)

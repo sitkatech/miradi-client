@@ -27,10 +27,10 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Desire;
 import org.miradi.objects.Factor;
-import org.miradi.objects.ProgressPercent;
 import org.miradi.objects.ProgressReport;
 import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.ProgressPercentSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.xml.AbstractXmpzObjectImporter;
 import org.miradi.xml.wcs.XmpzXmlConstants;
@@ -87,7 +87,7 @@ abstract public class AbstractBaseObjectPoolImporter extends AbstractXmpzObjectI
 	
 	protected void importProgressPercentRefs(Node node, ORef destinationRef) throws Exception
 	{
-		importRefs(node, XmpzXmlConstants.PROGRESS_PERCENT_IDS, destinationRef, Desire.TAG_PROGRESS_PERCENT_REFS, ProgressPercent.getObjectType(), XmpzXmlConstants.PROGRESS_PERCENT );
+		importRefs(node, XmpzXmlConstants.PROGRESS_PERCENT_IDS, destinationRef, Desire.TAG_PROGRESS_PERCENT_REFS, ProgressPercentSchema.getObjectType(), XmpzXmlConstants.PROGRESS_PERCENT );
 	}
 	
 	protected void importExpenseAssignmentRefs(Node node, ORef destinationRef) throws Exception

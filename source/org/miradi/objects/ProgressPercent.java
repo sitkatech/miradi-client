@@ -21,7 +21,6 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.GoalSchema;
@@ -44,13 +43,13 @@ public class ProgressPercent extends BaseObject
 	@Override
 	public int getType()
 	{
-		return getObjectType();
+		return ProgressPercentSchema.getObjectType();
 	}
 	
 	@Override
 	public String getTypeName()
 	{
-		return OBJECT_NAME;
+		return ProgressPercentSchema.OBJECT_NAME;
 	}
 
 	@Override
@@ -60,11 +59,6 @@ public class ProgressPercent extends BaseObject
 			GoalSchema.getObjectType(), 
 			ObjectiveSchema.getObjectType(),
 			};
-	}
-	
-	public static int getObjectType()
-	{
-		return ObjectType.PROGRESS_PERCENT;
 	}
 	
 	@Override
@@ -80,7 +74,7 @@ public class ProgressPercent extends BaseObject
 	
 	public static boolean is(int objectType)
 	{
-		return objectType == getObjectType();
+		return objectType == ProgressPercentSchema.getObjectType();
 	}
 	
 	public static ProgressPercent find(ObjectManager objectManager, ORef progressPercentRef)
@@ -96,6 +90,4 @@ public class ProgressPercent extends BaseObject
 	public static final String TAG_DATE = "PercentDate";
 	public static final String TAG_PERCENT_COMPLETE = "PercentComplete";
 	public static final String TAG_PERCENT_COMPLETE_NOTES = "PercentCompleteNotes";
-	
-	public static final String OBJECT_NAME = "ProgressPercent";
 }
