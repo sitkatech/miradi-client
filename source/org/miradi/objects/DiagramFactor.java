@@ -38,6 +38,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.TextBoxZOrderQuestion;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.DiagramFactorSchema;
+import org.miradi.schemas.GroupBoxSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -226,7 +227,7 @@ public class DiagramFactor extends BaseObject
 	
 	public boolean isGroupBoxFactor()
 	{
-		if (getWrappedType() == GroupBox.getObjectType())
+		if (getWrappedType() == GroupBoxSchema.getObjectType())
 			return true;
 		
 		return false;
@@ -244,7 +245,7 @@ public class DiagramFactor extends BaseObject
 	public int getAnnotationType(String tag)
 	{
 		if (tag.equals(TAG_GROUP_BOX_CHILDREN_REFS))
-			return GroupBox.getObjectType();
+			return GroupBoxSchema.getObjectType();
 		
 		return super.getAnnotationType(tag);
 	}

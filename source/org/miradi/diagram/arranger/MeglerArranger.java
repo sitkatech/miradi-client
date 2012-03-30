@@ -40,7 +40,6 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
-import org.miradi.objects.GroupBox;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.project.FactorCommandHelper;
@@ -48,6 +47,7 @@ import org.miradi.project.Project;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.DiagramLinkSchema;
+import org.miradi.schemas.GroupBoxSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.NullProgressMeter;
 import org.miradi.utils.ProgressInterface;
@@ -248,7 +248,7 @@ public class MeglerArranger
 			for(int i = 0; i < ourLinks.size(); ++i)
 			{
 				DiagramLink diagramLink = DiagramLink.find(diagramFactor.getProject(), ourLinks.get(i));
-				if(diagramLink.getDiagramFactor(direction).getWrappedType() == GroupBox.getObjectType())
+				if(diagramLink.getDiagramFactor(direction).getWrappedType() == GroupBoxSchema.getObjectType())
 					linkedToGroup.add(diagramFactor);
 			}
 		}
@@ -311,7 +311,7 @@ public class MeglerArranger
 	{
 		ORefList childRefs = new ORefList(toBeGrouped.toArray(new DiagramFactor[0]));
 		FactorCommandHelper helper = new FactorCommandHelper(getProject(), diagram);
-		ORef newGroupDiagramFactorRef = new ORef(DiagramFactorSchema.getObjectType(), helper.createFactorAndDiagramFactor(GroupBox.getObjectType()).getCreatedId());
+		ORef newGroupDiagramFactorRef = new ORef(DiagramFactorSchema.getObjectType(), helper.createFactorAndDiagramFactor(GroupBoxSchema.getObjectType()).getCreatedId());
 		CommandSetObjectData addChildren = new CommandSetObjectData(newGroupDiagramFactorRef, DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, childRefs.toString());
 		getProject().executeCommand(addChildren);
 		return newGroupDiagramFactorRef;
@@ -353,7 +353,7 @@ public class MeglerArranger
 	private void createGroupLinks() throws Exception
 	{
 		LinkCreator linkCreator = new LinkCreator(getProject());
-		Set<DiagramFactor> groupBoxDiagramFactors = diagram.getDiagramFactorsThatWrap(GroupBox.getObjectType());
+		Set<DiagramFactor> groupBoxDiagramFactors = diagram.getDiagramFactorsThatWrap(GroupBoxSchema.getObjectType());
 		for(DiagramFactor groupBoxDiagramFactor : groupBoxDiagramFactors)
 		{
 			linkCreator.createAllPossibleGroupLinks(diagram, groupBoxDiagramFactor);

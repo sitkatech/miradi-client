@@ -20,13 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz;
 
-import org.miradi.objects.GroupBox;
+import org.miradi.schemas.GroupBoxSchema;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class GroupBoxPoolImporter extends FactorPoolImporter
 {
 	public GroupBoxPoolImporter(XmpzXmlImporter importerToUse)
 	{
-		super(importerToUse, XmpzXmlConstants.GROUP_BOX, GroupBox.getObjectType());
+		super(importerToUse, XmpzXmlConstants.GROUP_BOX, GroupBoxSchema.getObjectType());
 	}
 }

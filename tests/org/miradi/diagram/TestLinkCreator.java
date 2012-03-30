@@ -41,6 +41,7 @@ import org.miradi.objects.ThreatReductionResult;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.DiagramLinkSchema;
+import org.miradi.schemas.GroupBoxSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.ThreatStressRatingHelper;
 import org.miradi.views.diagram.LinkCreator;
@@ -97,7 +98,7 @@ public class TestLinkCreator extends TestCaseWithProject
 		LinkCreator linkCreator = new LinkCreator(getProject());
 		assertFalse("diagram factors are not linked?", linkCreator.areGroupBoxOwnedFactorsLinked(getDiagramModel(), fromDiagramFactor, toDiagramFactor));
 		
-		DiagramFactor groupBoxDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(GroupBox.getObjectType());
+		DiagramFactor groupBoxDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(GroupBoxSchema.getObjectType());
 		addToGroup(groupBoxDiagramFactor, fromDiagramFactor);
 		assertTrue("diagramFactor is not groupBox?", groupBoxDiagramFactor.isGroupBoxFactor());
 		
@@ -194,14 +195,14 @@ public class TestLinkCreator extends TestCaseWithProject
 		getProject().createDiagramLinkAndAddToDiagram(cause2, target1);
 		getProject().createDiagramLinkAndAddToDiagram(cause2, target2);
 		
-		DiagramFactor causeGroupBoxDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(GroupBox.getObjectType());
+		DiagramFactor causeGroupBoxDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(GroupBoxSchema.getObjectType());
 		addToGroup(causeGroupBoxDiagramFactor, cause1);
 		addToGroup(causeGroupBoxDiagramFactor, cause2);
 		linkCreator.createAllPossibleGroupLinks(getDiagramModel().getDiagramObject(), causeGroupBoxDiagramFactor);
 		assertEquals("Didn't create links to the group?", 2, causeGroupBoxDiagramFactor.findObjectsThatReferToUs(DiagramLinkSchema.getObjectType()).size());
 		assertEquals("Wrong number of links?", 6, getProject().getPool(DiagramLinkSchema.getObjectType()).size());
 
-		DiagramFactor targetGroupBoxDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(GroupBox.getObjectType());
+		DiagramFactor targetGroupBoxDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(GroupBoxSchema.getObjectType());
 		addToGroup(targetGroupBoxDiagramFactor, target1);
 		addToGroup(targetGroupBoxDiagramFactor, target2);
 		linkCreator.createAllPossibleGroupLinks(getDiagramModel().getDiagramObject(), targetGroupBoxDiagramFactor);

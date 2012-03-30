@@ -20,12 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.wcs;
 
-import org.miradi.objects.GroupBox;
+import org.miradi.schemas.GroupBoxSchema;
 
 public class GroupBoxPoolExporter extends FactorPoolExporter
 {
 	public GroupBoxPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
-		super(wcsXmlExporterToUse, GROUP_BOX, GroupBox.getObjectType());
+		super(wcsXmlExporterToUse, GROUP_BOX, GroupBoxSchema.getObjectType());
 	}
 }

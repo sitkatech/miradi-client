@@ -65,7 +65,6 @@ import org.miradi.objects.Cause;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FundingSource;
-import org.miradi.objects.GroupBox;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResourceAssignment;
@@ -74,6 +73,7 @@ import org.miradi.objects.SubTarget;
 import org.miradi.objects.Task;
 import org.miradi.objects.TextBox;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
+import org.miradi.schemas.GroupBoxSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 
 public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
@@ -236,7 +236,7 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 			renderer = projectMetaDataRenderer;
 		else if(node.getType() == TextBox.getObjectType())
 			renderer = textBoxRenderer;
-		else if(node.getType() == GroupBox.getObjectType())
+		else if(node.getType() == GroupBoxSchema.getObjectType())
 			renderer = groupBoxRenderer;
 		else if(ResourceAssignment.is(node.getType()))
 			renderer = assignmentRenderer;

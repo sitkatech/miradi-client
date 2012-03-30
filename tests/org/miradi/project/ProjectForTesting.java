@@ -140,6 +140,7 @@ import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.schemas.GoalSchema;
+import org.miradi.schemas.GroupBoxSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
@@ -578,7 +579,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public DiagramFactor createAndPopulateDiagramFactorGroupBox(DiagramFactor groupBoxChild) throws Exception
 	{
-		DiagramFactor diagramFactorGroupBox = createDiagramFactorAndAddToDiagram(GroupBox.getObjectType());
+		DiagramFactor diagramFactorGroupBox = createDiagramFactorAndAddToDiagram(GroupBoxSchema.getObjectType());
 		populateDiagramFactorGroupBox(diagramFactorGroupBox, groupBoxChild);
 		
 		return diagramFactorGroupBox;	 
@@ -636,11 +637,11 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public DiagramLink createAndPopulateGroupBoxDiagramLink() throws Exception
 	{	
 		DiagramFactor cause = createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
-		DiagramFactor causeGroupBox = createDiagramFactorAndAddToDiagram(GroupBox.getObjectType());
+		DiagramFactor causeGroupBox = createDiagramFactorAndAddToDiagram(GroupBoxSchema.getObjectType());
 		fillObjectUsingCommand(causeGroupBox, DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, new ORefList(cause));
 		
 		DiagramFactor target = createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
-		DiagramFactor targetGroupBox = createDiagramFactorAndAddToDiagram(GroupBox.getObjectType());
+		DiagramFactor targetGroupBox = createDiagramFactorAndAddToDiagram(GroupBoxSchema.getObjectType());
 		fillObjectUsingCommand(targetGroupBox, DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, new ORefList(target));
 		
 		DiagramLink causeTargetLink = createDiagramLinkAndAddToDiagramModel(cause, target);
@@ -830,7 +831,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public GroupBox createGroupBox() throws Exception
 	{
-		ORef groupBoxRef = createObject(GroupBox.getObjectType());
+		ORef groupBoxRef = createObject(GroupBoxSchema.getObjectType());
 		
 		return GroupBox.find(this, groupBoxRef);
 	}
