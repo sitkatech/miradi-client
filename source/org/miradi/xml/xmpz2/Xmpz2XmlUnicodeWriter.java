@@ -85,7 +85,6 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 		}
 		
 		writeEndElement(elementContainerName);
-	
 	}
 
 	public void writeDateUnitListData(BaseObjectSchema schema, AbstractFieldSchema fieldSchema, String string)
