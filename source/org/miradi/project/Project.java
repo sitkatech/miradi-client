@@ -125,6 +125,7 @@ import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.DashboardSchema;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.ScopeBoxSchema;
+import org.miradi.schemas.TextBoxSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
@@ -783,7 +784,7 @@ public class Project
 		final int NUMBER_OF_PIXELS_PER_LINE = 20;
 		int height = labelLineCount * NUMBER_OF_PIXELS_PER_LINE; 
 		
-		ORef textBoxRef = createObject(TextBox.getObjectType());
+		ORef textBoxRef = createObject(TextBoxSchema.getObjectType());
 		ORef diagramFactorRef = createObject(DiagramFactorSchema.getObjectType());
 		setObjectData(diagramFactorRef, DiagramFactor.TAG_WRAPPED_REF, textBoxRef.toString());
 		

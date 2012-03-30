@@ -22,7 +22,6 @@ package org.miradi.objects;
 import org.miradi.ids.FactorId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.TextBoxSchema;
@@ -43,24 +42,19 @@ public class TextBox extends Factor
 	@Override
 	public int getType()
 	{
-		return getObjectType();
+		return TextBoxSchema.getObjectType();
 	}
 	
 	@Override
 	public String getTypeName()
 	{
-		return OBJECT_NAME;
+		return TextBoxSchema.OBJECT_NAME;
 	}
 
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;
-	}
-	
-	public static int getObjectType()
-	{
-		return ObjectType.TEXT_BOX;
 	}
 	
 	@Override
@@ -88,7 +82,7 @@ public class TextBox extends Factor
 	
 	public static boolean is(int objectType)
 	{
-		return objectType == getObjectType();
+		return objectType == TextBoxSchema.getObjectType();
 	}
 	
 	public static TextBox find(ObjectManager objectManager, ORef objectRef)
@@ -100,6 +94,4 @@ public class TextBox extends Factor
 	{
 		return find(project.getObjectManager(), objectRef);
 	}
-	
-	public static final String OBJECT_NAME = "TextBox";
 }

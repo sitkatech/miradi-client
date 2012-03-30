@@ -20,10 +20,19 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import org.miradi.objecthelpers.ObjectType;
+
 public class TextBoxSchema extends FactorSchema
 {
+	public static final String OBJECT_NAME = "TextBox";
+
 	public TextBoxSchema()
 	{
 		super();
+	}
+
+	public static int getObjectType()
+	{
+		return ObjectType.TEXT_BOX;
 	}
 }
