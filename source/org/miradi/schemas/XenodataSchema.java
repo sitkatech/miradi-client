@@ -20,10 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Xenodata;
 
 public class XenodataSchema extends BaseObjectSchema
 {
+	public static final String OBJECT_NAME = "Xenodata";
+
 	public XenodataSchema()
 	{
 		super();
@@ -35,5 +38,10 @@ public class XenodataSchema extends BaseObjectSchema
 		super.fillFieldSchemas();
 		
 		createFieldSchemaSingleLineUserText(Xenodata.TAG_PROJECT_ID);
+	}
+
+	public static int getObjectType()
+	{
+		return ObjectType.XENODATA;
 	}
 }

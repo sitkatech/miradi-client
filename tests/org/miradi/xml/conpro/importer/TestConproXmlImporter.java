@@ -68,6 +68,7 @@ import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.schemas.ThreatStressRatingSchema;
 import org.miradi.schemas.TncProjectDataSchema;
+import org.miradi.schemas.XenodataSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.NullProgressMeter;
@@ -189,7 +190,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 	{
 		ProjectForTesting projectToExport = createProjectWithNoXenodata(PROJECT_FOR_EXPORTING_NAME_TAG);
 		StringRefMap refMap = new StringRefMap();
-		ORef nonExistingXenodataObjectRef = new ORef(Xenodata.getObjectType(), new BaseId(999999));
+		ORef nonExistingXenodataObjectRef = new ORef(XenodataSchema.getObjectType(), new BaseId(999999));
 		refMap.add(ConProMiradiXml.CONPRO_CONTEXT, nonExistingXenodataObjectRef);
 		projectToExport.fillObjectUsingCommand(projectToExport.getMetadata().getRef(), ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, refMap.toJsonString());
 		try
@@ -247,7 +248,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 	private void verifyProjectHasNoXenodata(ProjectForTesting projectToImportInto)
 	{
 		assertEquals("metadata xeno field is not empty?", 0, projectToImportInto.getMetadata().getData(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP).length());
-		assertEquals("should not have any xenodata objects?", 0, projectToImportInto.getPool(Xenodata.getObjectType()).size());
+		assertEquals("should not have any xenodata objects?", 0, projectToImportInto.getPool(XenodataSchema.getObjectType()).size());
 	}
 
 	public void testAvoidConflictingActivityAndMethodIds() throws Exception

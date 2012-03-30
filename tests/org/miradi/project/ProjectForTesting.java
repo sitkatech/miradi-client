@@ -169,6 +169,7 @@ import org.miradi.schemas.ThreatStressRatingSchema;
 import org.miradi.schemas.TncProjectDataSchema;
 import org.miradi.schemas.WcsProjectDataSchema;
 import org.miradi.schemas.WwfProjectDataSchema;
+import org.miradi.schemas.XenodataSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.DateRange;
@@ -898,7 +899,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	private Xenodata createXenodata() throws Exception
 	{
-		ORef xenodataRef = createObject(Xenodata.getObjectType());
+		ORef xenodataRef = createObject(XenodataSchema.getObjectType());
 		return Xenodata.find(this, xenodataRef);
 	}
 	

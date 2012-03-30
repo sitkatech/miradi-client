@@ -39,7 +39,6 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.Xenodata;
 import org.miradi.questions.ReportTemplateContentQuestion;
 import org.miradi.rtf.RtfFormExporter;
 import org.miradi.rtf.RtfWriter;
@@ -49,6 +48,7 @@ import org.miradi.schemas.TncProjectDataSchema;
 import org.miradi.schemas.WcpaProjectDataSchema;
 import org.miradi.schemas.WcsProjectDataSchema;
 import org.miradi.schemas.WwfProjectDataSchema;
+import org.miradi.schemas.XenodataSchema;
 import org.miradi.utils.CodeList;
 
 public class SummaryViewRtfExporter extends RtfViewExporter
@@ -167,7 +167,7 @@ public class SummaryViewRtfExporter extends RtfViewExporter
 	{
 		ORefList singletonRefPlusMetadataRef = new ORefList(getProject().getSingletonObjectRef(otherProjectDataType));
 		singletonRefPlusMetadataRef.add(getProjectMetadataRef());
-		singletonRefPlusMetadataRef.add(getProject().getSafeSingleObjectRef(Xenodata.getObjectType()));
+		singletonRefPlusMetadataRef.add(getProject().getSafeSingleObjectRef(XenodataSchema.getObjectType()));
 		exportForm(writer, form, singletonRefPlusMetadataRef);
 	}
 	

@@ -40,6 +40,7 @@ import org.miradi.rtf.RtfFormExporter;
 import org.miradi.rtf.RtfWriter;
 import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.schemas.TncProjectDataSchema;
+import org.miradi.schemas.XenodataSchema;
 
 public class TNCSummaryPanel extends ObjectDataInputPanel
 {
@@ -48,7 +49,7 @@ public class TNCSummaryPanel extends ObjectDataInputPanel
 		super(projectToUse, metadata.getRef());
 
 		addField(createReadonlyTextField(ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE));
-		addField(createReadonlyTextField(Xenodata.getObjectType(), Xenodata.TAG_PROJECT_ID));
+		addField(createReadonlyTextField(XenodataSchema.getObjectType(), Xenodata.TAG_PROJECT_ID));
 		
 		addField(createStringField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS));
 		addField(createSingleColumnCodeListField(TncProjectDataSchema.getObjectType(), TncProjectData.TAG_PROJECT_PLACE_TYPES, getProject().getQuestion(TncProjectPlaceTypeQuestion.class)));
@@ -69,7 +70,7 @@ public class TNCSummaryPanel extends ObjectDataInputPanel
 		addField(createMultilineField(TncProjectDataSchema.getObjectType(), TncProjectData.TAG_PROJECT_CITATIONS));
 		addField(createMultilineField(TncProjectDataSchema.getObjectType(), TncProjectData.TAG_CAP_STANDARDS_SCORECARD));
 
-		setObjectRefs(new ORef[]{metadata.getRef(), getProject().getSingletonObjectRef(TncProjectDataSchema.getObjectType()), getProject().getSafeSingleObjectRef(Xenodata.getObjectType())});
+		setObjectRefs(new ORef[]{metadata.getRef(), getProject().getSingletonObjectRef(TncProjectDataSchema.getObjectType()), getProject().getSafeSingleObjectRef(XenodataSchema.getObjectType())});
 	}
 	
 	@Override
