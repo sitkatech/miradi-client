@@ -134,6 +134,7 @@ import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.AudienceSchema;
 import org.miradi.schemas.BudgetCategoryOneSchema;
 import org.miradi.schemas.BudgetCategoryTwoSchema;
+import org.miradi.schemas.DashboardSchema;
 import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.schemas.IndicatorSchema;
@@ -1462,7 +1463,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 
 	private void populateDashboard() throws Exception
 	{
-		ORef dashboardRef = getSingletonObjectRef(Dashboard.getObjectType());
+		ORef dashboardRef = getSingletonObjectRef(DashboardSchema.getObjectType());
 		CodeToChoiceMap progressChoiceMap = new CodeToChoiceMap();
 		progressChoiceMap.putChoiceCode(OpenStandardsConceptualizeQuestion.SELECT_INTIAL_TEAM_MEMBERS_CODE, OpenStandardsProgressStatusQuestion.IN_PROGRESS_CODE);
 		fillObjectUsingCommand(dashboardRef, Dashboard.TAG_PROGRESS_CHOICE_MAP, progressChoiceMap.toJsonString());

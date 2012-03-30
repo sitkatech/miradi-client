@@ -87,7 +87,6 @@ import org.miradi.objectpools.WcsProjectDataPool;
 import org.miradi.objectpools.WwfProjectDataPool;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ConceptualModelDiagram;
-import org.miradi.objects.Dashboard;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
@@ -123,6 +122,7 @@ import org.miradi.questions.FontSizeQuestion;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
+import org.miradi.schemas.DashboardSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
@@ -884,7 +884,7 @@ public class Project
 		createDefaultProjectDataObject(FosProjectData.getObjectType());
 		createDefaultProjectDataObject(WcpaProjectData.getObjectType());
 		createDefaultProjectDataObject(ThreatRatingCommentsData.getObjectType());
-		createDefaultProjectDataObject(Dashboard.getObjectType());
+		createDefaultProjectDataObject(DashboardSchema.getObjectType());
 	}
 
 	private void createMissingSimpleThreatRatingCriteria() throws Exception

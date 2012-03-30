@@ -9,6 +9,7 @@ import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.Dashboard;
+import org.miradi.schemas.DashboardSchema;
 
 /* 
 Copyright 2005-2011, Foundations of Success, Bethesda, Maryland 
@@ -75,11 +76,11 @@ abstract public class OpenStandardsDashboardTab extends SplitterPanelWithRightSi
 
 	private boolean eventForcesRebuild(CommandExecutedEvent event)
 	{
-		if(event.isSetDataCommandWithThisTypeAndTag(Dashboard.getObjectType(), Dashboard.TAG_PROGRESS_CHOICE_MAP))
+		if(event.isSetDataCommandWithThisTypeAndTag(DashboardSchema.getObjectType(), Dashboard.TAG_PROGRESS_CHOICE_MAP))
 			return true;
-		if(event.isSetDataCommandWithThisTypeAndTag(Dashboard.getObjectType(), Dashboard.TAG_COMMENTS_MAP))
+		if(event.isSetDataCommandWithThisTypeAndTag(DashboardSchema.getObjectType(), Dashboard.TAG_COMMENTS_MAP))
 			return true;
-		if(event.isSetDataCommandWithThisTypeAndTag(Dashboard.getObjectType(), Dashboard.TAG_FLAGS_MAP))
+		if(event.isSetDataCommandWithThisTypeAndTag(DashboardSchema.getObjectType(), Dashboard.TAG_FLAGS_MAP))
 			return true;
 
 		return false;

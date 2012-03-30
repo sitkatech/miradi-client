@@ -59,6 +59,7 @@ import org.miradi.questions.DiagramLegendQuestion;
 import org.miradi.questions.OpenStandardsConceptualizeQuestion;
 import org.miradi.questions.OpenStandardsProgressStatusQuestion;
 import org.miradi.questions.TextBoxZOrderQuestion;
+import org.miradi.schemas.DashboardSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
@@ -84,7 +85,7 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 	
 	private Dashboard getDashboard() throws Exception
 	{
-		ORef dashbaordRef = getProject().getSingletonObjectRef(Dashboard.getObjectType());
+		ORef dashbaordRef = getProject().getSingletonObjectRef(DashboardSchema.getObjectType());
 		
 		return Dashboard.find(getProject(), dashbaordRef);
 	}

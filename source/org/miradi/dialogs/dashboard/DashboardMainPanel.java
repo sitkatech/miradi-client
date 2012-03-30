@@ -34,6 +34,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Dashboard;
 import org.miradi.project.Project;
+import org.miradi.schemas.DashboardSchema;
 
 public class DashboardMainPanel extends DisposablePanel
 {
@@ -132,7 +133,7 @@ public class DashboardMainPanel extends DisposablePanel
 		ignoreTabChanges = true;
 		try
 		{
-			ORef dashboardRef = getProject().getSingletonObjectRef(Dashboard.getObjectType());
+			ORef dashboardRef = getProject().getSingletonObjectRef(DashboardSchema.getObjectType());
 			Dashboard dashboard = Dashboard.find(getProject(), dashboardRef);
 			String dashboardTabCode = dashboard.getData(Dashboard.TAG_CURRENT_DASHBOARD_TAB);
 			currentTab = codeToTabMap.get(dashboardTabCode);		
@@ -182,7 +183,7 @@ public class DashboardMainPanel extends DisposablePanel
 		{
 			try
 			{
-				ORef dashboardRef = getProject().getSingletonObjectRef(Dashboard.getObjectType());
+				ORef dashboardRef = getProject().getSingletonObjectRef(DashboardSchema.getObjectType());
 				CommandSetObjectData setTabCommand = new CommandSetObjectData(dashboardRef, Dashboard.TAG_CURRENT_DASHBOARD_TAB, selectedTab.getTabCode());
 				getProject().executeCommand(setTabCommand);
 			}

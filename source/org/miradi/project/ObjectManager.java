@@ -91,7 +91,6 @@ import org.miradi.objectpools.XslTemplatePool;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
-import org.miradi.objects.Dashboard;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.FactorLink;
@@ -140,6 +139,7 @@ import org.miradi.schemas.AudienceSchema;
 import org.miradi.schemas.BudgetCategoryOneSchema;
 import org.miradi.schemas.BudgetCategoryTwoSchema;
 import org.miradi.schemas.CostAllocationRuleSchema;
+import org.miradi.schemas.DashboardSchema;
 import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.schemas.IndicatorSchema;
@@ -208,7 +208,7 @@ public class ObjectManager
 		addNormalPool(new AudiencePool(ida), AudienceSchema.OBJECT_NAME);
 		addNormalPool(new BudgetCategoryOnePool(ida), BudgetCategoryOneSchema.OBJECT_NAME);
 		addNormalPool(new BudgetCategoryTwoPool(ida), BudgetCategoryTwoSchema.OBJECT_NAME);
-		addNormalPool(new DashboardPool(ida), Dashboard.OBJECT_NAME);
+		addNormalPool(new DashboardPool(ida), DashboardSchema.OBJECT_NAME);
 		addNormalPool(new XslTemplatePool(ida), XslTemplate.OBJECT_NAME);
 	}
 	

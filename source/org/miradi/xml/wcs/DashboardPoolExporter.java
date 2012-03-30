@@ -27,13 +27,14 @@ import org.miradi.objecthelpers.CodeToCodeListMap;
 import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Dashboard;
+import org.miradi.schemas.DashboardSchema;
 import org.miradi.utils.CodeList;
 
 public class DashboardPoolExporter extends BaseObjectPoolExporter
 {
 	public DashboardPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
-		super(wcsXmlExporterToUse, DASHBOARD, Dashboard.getObjectType());
+		super(wcsXmlExporterToUse, DASHBOARD, DashboardSchema.getObjectType());
 	}
 	
 	@Override

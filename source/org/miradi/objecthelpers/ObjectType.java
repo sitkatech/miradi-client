@@ -25,7 +25,6 @@ import java.util.Set;
 
 import org.miradi.main.EAM;
 import org.miradi.objects.ConceptualModelDiagram;
-import org.miradi.objects.Dashboard;
 import org.miradi.objects.FosProjectData;
 import org.miradi.objects.IucnRedlistSpecies;
 import org.miradi.objects.ObjectTreeTableConfiguration;
@@ -54,6 +53,7 @@ import org.miradi.schemas.AudienceSchema;
 import org.miradi.schemas.BudgetCategoryOneSchema;
 import org.miradi.schemas.BudgetCategoryTwoSchema;
 import org.miradi.schemas.CostAllocationRuleSchema;
+import org.miradi.schemas.DashboardSchema;
 import org.miradi.schemas.FundingSourceSchema;
 
 public class ObjectType
@@ -164,7 +164,7 @@ public class ObjectType
 			AudienceSchema.getObjectType(),
 			BudgetCategoryOneSchema.getObjectType(),
 			BudgetCategoryTwoSchema.getObjectType(),
-			Dashboard.getObjectType(),
+			DashboardSchema.getObjectType(),
 			XslTemplate.getObjectType(),
 		};
 		
