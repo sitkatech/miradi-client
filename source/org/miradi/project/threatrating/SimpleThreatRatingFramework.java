@@ -48,6 +48,7 @@ import org.miradi.objects.ValueOption;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.schemas.CauseSchema;
+import org.miradi.schemas.RatingCriterionSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.Utility;
@@ -89,7 +90,7 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 	
 	public IdList getCriterionIds()
 	{
-		IdList ids = new IdList(RatingCriterion.getObjectType());
+		IdList ids = new IdList(RatingCriterionSchema.getObjectType());
 		for(int i = 0; i < getCriteria().length; ++i)
 			ids.add(getCriteria()[i].getId());
 		return ids;
@@ -141,7 +142,7 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 	
 	public RatingCriterion[] getCriteria()
 	{
-		EAMObjectPool pool = getProject().getPool(RatingCriterion.getObjectType());
+		EAMObjectPool pool = getProject().getPool(RatingCriterionSchema.getObjectType());
 		ORefList refs = pool.getORefList();
 		RatingCriterion[] criteria = new RatingCriterion[refs.size()];
 		for(int i = 0; i < refs.size(); ++i)

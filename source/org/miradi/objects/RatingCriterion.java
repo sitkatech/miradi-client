@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.schemas.RatingCriterionSchema;
 import org.miradi.utils.EnhancedJsonObject;
@@ -40,24 +39,19 @@ public class RatingCriterion extends BaseObject
 	@Override
 	public int getType()
 	{
-		return getObjectType();
+		return RatingCriterionSchema.getObjectType();
 	}
 
 	@Override
 	public String getTypeName()
 	{
-		return OBJECT_NAME;
+		return RatingCriterionSchema.OBJECT_NAME;
 	}
 
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;
-	}
-	
-	public static int getObjectType()
-	{
-		return ObjectType.RATING_CRITERION;
 	}
 	
 	@Override
@@ -67,6 +61,4 @@ public class RatingCriterion extends BaseObject
 
 		return json;
 	}
-
-	public static final String OBJECT_NAME = "RatingCriterion";
 }
