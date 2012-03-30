@@ -24,7 +24,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.miradi.main.EAM;
-import org.miradi.objects.WwfProjectData;
 import org.miradi.objects.XslTemplate;
 import org.miradi.project.Project;
 import org.miradi.schemas.AccountingCodeSchema;
@@ -55,6 +54,7 @@ import org.miradi.schemas.ValueOptionSchema;
 import org.miradi.schemas.ViewDataSchema;
 import org.miradi.schemas.WcpaProjectDataSchema;
 import org.miradi.schemas.WcsProjectDataSchema;
+import org.miradi.schemas.WwfProjectDataSchema;
 
 public class ObjectType
 {
@@ -146,7 +146,7 @@ public class ObjectType
 			ConceptualModelDiagramSchema.getObjectType(),
 			ResultsChainDiagramSchema.getObjectType(),
 			ObjectTreeTableConfigurationSchema.getObjectType(),
-			WwfProjectData.getObjectType(),
+			WwfProjectDataSchema.getObjectType(),
 			CostAllocationRuleSchema.getObjectType(),
 			ThreatStressRatingSchema.getObjectType(),
 			RareProjectDataSchema.getObjectType(),

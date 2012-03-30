@@ -89,7 +89,6 @@ import org.miradi.objectpools.WwfProjectDataPool;
 import org.miradi.objectpools.XenodataPool;
 import org.miradi.objectpools.XslTemplatePool;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.WwfProjectData;
 import org.miradi.objects.Xenodata;
 import org.miradi.objects.XslTemplate;
 import org.miradi.schemas.AccountingCodeSchema;
@@ -144,6 +143,7 @@ import org.miradi.schemas.ValueOptionSchema;
 import org.miradi.schemas.ViewDataSchema;
 import org.miradi.schemas.WcpaProjectDataSchema;
 import org.miradi.schemas.WcsProjectDataSchema;
+import org.miradi.schemas.WwfProjectDataSchema;
 
 public class ObjectManager
 {
@@ -180,7 +180,7 @@ public class ObjectManager
 		addNormalPool(new ThreatReductionResultPool(ida), ThreatReductionResultSchema.OBJECT_NAME);
 		addNormalPool(new TextBoxPool(ida), TextBoxSchema.OBJECT_NAME);
 		addNormalPool(new ObjectTreeTableConfigurationPool(ida), ObjectTreeTableConfigurationSchema.OBJECT_NAME);
-		addNormalPool(new WwfProjectDataPool(ida), WwfProjectData.OBJECT_NAME);
+		addNormalPool(new WwfProjectDataPool(ida), WwfProjectDataSchema.OBJECT_NAME);
 		addNormalPool(new CostAllocationRulePool(ida), CostAllocationRuleSchema.OBJECT_NAME);
 		addNormalPool(new MeasurementPool(ida), MeasurementSchema.OBJECT_NAME);
 		addNormalPool(new StressPool(ida), StressSchema.OBJECT_NAME);

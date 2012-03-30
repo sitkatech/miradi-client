@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.WwfProjectData;
 import org.miradi.questions.CountriesQuestion;
 import org.miradi.questions.WwfEcoRegionsQuestion;
@@ -28,6 +29,8 @@ import org.miradi.questions.WwfRegionsQuestion;
 
 public class WwfProjectDataSchema extends BaseObjectSchema
 {
+	public static final String OBJECT_NAME = "WwfProjectData";
+
 	public WwfProjectDataSchema()
 	{
 		super();
@@ -47,6 +50,11 @@ public class WwfProjectDataSchema extends BaseObjectSchema
 	@Override
 	public String getXmpz2ElementName()
 	{
-		return WwfProjectData.OBJECT_NAME;
+		return WwfProjectDataSchema.OBJECT_NAME;
+	}
+
+	public static int getObjectType()
+	{
+		return ObjectType.WWF_PROJECT_DATA;
 	}
 }

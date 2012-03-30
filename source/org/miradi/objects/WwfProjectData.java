@@ -21,7 +21,6 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.WwfProjectDataSchema;
@@ -42,24 +41,19 @@ public class WwfProjectData extends BaseObject
 	@Override
 	public int getType()
 	{
-		return getObjectType();
+		return WwfProjectDataSchema.getObjectType();
 	}
 
 	@Override
 	public String getTypeName()
 	{
-		return OBJECT_NAME;
+		return WwfProjectDataSchema.OBJECT_NAME;
 	}
 
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;
-	}
-	
-	public static int getObjectType()
-	{
-		return ObjectType.WWF_PROJECT_DATA;
 	}
 	
 	public static boolean canReferToThisType(int type)
@@ -81,6 +75,4 @@ public class WwfProjectData extends BaseObject
 	public static final String TAG_REGIONS = "Regions";
 	public static final String TAG_COUNTRIES = "Countries";
 	public static final String TAG_ECOREGIONS = "EcoRegions";
-	
-	public static final String OBJECT_NAME = "WwfProjectData";
 }

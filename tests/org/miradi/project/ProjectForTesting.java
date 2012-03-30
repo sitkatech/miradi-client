@@ -168,6 +168,7 @@ import org.miradi.schemas.ThreatReductionResultSchema;
 import org.miradi.schemas.ThreatStressRatingSchema;
 import org.miradi.schemas.TncProjectDataSchema;
 import org.miradi.schemas.WcsProjectDataSchema;
+import org.miradi.schemas.WwfProjectDataSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.DateRange;
@@ -264,7 +265,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 
 	private void fillWwfProjectData() throws Exception
 	{
-		ORef wwfProjectDataRef = getSingletonObjectRef(WwfProjectData.getObjectType());
+		ORef wwfProjectDataRef = getSingletonObjectRef(WwfProjectDataSchema.getObjectType());
 		fillObjectUsingCommand(wwfProjectDataRef, WwfProjectData.TAG_MANAGING_OFFICES, new WwfManagingOfficesQuestion().getAllCodes().toString());
 		fillObjectUsingCommand(wwfProjectDataRef, WwfProjectData.TAG_REGIONS, new WwfRegionsQuestion().getAllCodes().toString());
 		fillObjectUsingCommand(wwfProjectDataRef, WwfProjectData.TAG_COUNTRIES, new CountriesQuestion().getAllCodes().toString());

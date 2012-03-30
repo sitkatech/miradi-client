@@ -39,7 +39,6 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.WwfProjectData;
 import org.miradi.objects.Xenodata;
 import org.miradi.questions.ReportTemplateContentQuestion;
 import org.miradi.rtf.RtfFormExporter;
@@ -49,6 +48,7 @@ import org.miradi.schemas.RareProjectDataSchema;
 import org.miradi.schemas.TncProjectDataSchema;
 import org.miradi.schemas.WcpaProjectDataSchema;
 import org.miradi.schemas.WcsProjectDataSchema;
+import org.miradi.schemas.WwfProjectDataSchema;
 import org.miradi.utils.CodeList;
 
 public class SummaryViewRtfExporter extends RtfViewExporter
@@ -136,7 +136,7 @@ public class SummaryViewRtfExporter extends RtfViewExporter
 
 	private void exportWwfTab(RtfWriter writer) throws Exception
 	{
-		exportForm(writer, new WwfTabForm(), WwfProjectData.getObjectType());
+		exportForm(writer, new WwfTabForm(), WwfProjectDataSchema.getObjectType());
 	}
 
 	private void exportWcsTab(RtfWriter writer) throws Exception
