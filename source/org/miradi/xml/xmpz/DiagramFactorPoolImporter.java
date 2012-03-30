@@ -28,7 +28,6 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.ScopeBox;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Task;
@@ -44,6 +43,7 @@ import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.GroupBoxSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IntermediateResultSchema;
+import org.miradi.schemas.ScopeBoxSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.EnhancedJsonObject;
 import org.w3c.dom.Node;
@@ -119,7 +119,7 @@ public class DiagramFactorPoolImporter extends AbstractBaseObjectPoolImporter
 		String objectTypeName = removeAppendedId(nodeName);
 		
 		if (objectTypeName.equals(SCOPE_BOX))
-			return ScopeBox.getObjectType();
+			return ScopeBoxSchema.getObjectType();
 		
 		if (objectTypeName.equals(BIODIVERSITY_TARGET))
 			return TargetSchema.getObjectType();

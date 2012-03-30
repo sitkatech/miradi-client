@@ -20,11 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.ScopeBox;
 import org.miradi.questions.ScopeBoxTypeQuestion;
 
 public class ScopeBoxSchema extends FactorSchema
 {
+	public static final String OBJECT_NAME = "ScopeBox";
+
 	public ScopeBoxSchema()
 	{
 		super();
@@ -36,5 +39,10 @@ public class ScopeBoxSchema extends FactorSchema
 		super.fillFieldSchemas();
 		
 		createFieldSchemaChoice(ScopeBox.TAG_SCOPE_BOX_TYPE_CODE, ScopeBoxTypeQuestion.createScopeBoxTypeQuestion());
+	}
+
+	public static int getObjectType()
+	{
+		return ObjectType.SCOPE_BOX;
 	}
 }

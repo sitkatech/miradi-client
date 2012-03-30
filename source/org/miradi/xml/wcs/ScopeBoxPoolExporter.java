@@ -24,13 +24,14 @@ import org.martus.util.UnicodeWriter;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ScopeBox;
 import org.miradi.questions.ScopeBoxTypeQuestion;
+import org.miradi.schemas.ScopeBoxSchema;
 import org.miradi.xml.generic.XmlSchemaCreator;
 
 public class ScopeBoxPoolExporter extends FactorPoolExporter
 {
 	public ScopeBoxPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
-		super(wcsXmlExporterToUse, SCOPE_BOX, ScopeBox.getObjectType());
+		super(wcsXmlExporterToUse, SCOPE_BOX, ScopeBoxSchema.getObjectType());
 	}
 	
 	@Override

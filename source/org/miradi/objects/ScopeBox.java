@@ -22,7 +22,6 @@ package org.miradi.objects;
 import org.miradi.ids.FactorId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.ScopeBoxSchema;
@@ -43,24 +42,19 @@ public class ScopeBox extends Factor
 	@Override
 	public int getType()
 	{
-		return getObjectType();
+		return ScopeBoxSchema.getObjectType();
 	}
 	
 	@Override
 	public String getTypeName()
 	{
-		return OBJECT_NAME;
+		return ScopeBoxSchema.OBJECT_NAME;
 	}
 
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;
-	}
-	
-	public static int getObjectType()
-	{
-		return ObjectType.SCOPE_BOX;
 	}
 	
 	@Override
@@ -93,7 +87,7 @@ public class ScopeBox extends Factor
 	
 	public static boolean is(int objectType)
 	{
-		return objectType == getObjectType();
+		return objectType == ScopeBoxSchema.getObjectType();
 	}
 	
 	public static ScopeBox find(ObjectManager objectManager, ORef objectRef)
@@ -105,8 +99,6 @@ public class ScopeBox extends Factor
 	{
 		return find(project.getObjectManager(), objectRef);
 	}
-	
-	public static final String OBJECT_NAME = "ScopeBox";
 	
 	public static final String TAG_SCOPE_BOX_TYPE_CODE = "ScopeBoxColorCode";
 }

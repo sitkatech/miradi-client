@@ -104,7 +104,6 @@ import org.miradi.objects.ProjectResource;
 import org.miradi.objects.RareProjectData;
 import org.miradi.objects.RatingCriterion;
 import org.miradi.objects.ReportTemplate;
-import org.miradi.objects.ScopeBox;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.SubTarget;
@@ -143,6 +142,7 @@ import org.miradi.schemas.IntermediateResultSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
+import org.miradi.schemas.ScopeBoxSchema;
 import org.miradi.schemas.TargetSchema;
 
 public class ObjectManager
@@ -200,7 +200,7 @@ public class ObjectManager
 		addNormalPool(new TaggedObjectSetPool(ida), TaggedObjectSet.OBJECT_NAME);
 		addNormalPool(new TableSettingsPool(ida), TableSettings.OBJECT_NAME);
 		addNormalPool(new ThreatRatingCommentsDataPool(ida), ThreatRatingCommentsData.OBJECT_NAME);
-		addNormalPool(new ScopeBoxPool(ida), ScopeBox.OBJECT_NAME);
+		addNormalPool(new ScopeBoxPool(ida), ScopeBoxSchema.OBJECT_NAME);
 		addNormalPool(new ExpenseAssignmentPool(ida), ExpenseAssignmentSchema.OBJECT_NAME);
 		addNormalPool(new HumanWelfareTargetPool(ida), HumanWelfareTargetSchema.OBJECT_NAME);
 		addNormalPool(new IucnRedlistSpeciesPool(ida), IucnRedlistSpecies.OBJECT_NAME);

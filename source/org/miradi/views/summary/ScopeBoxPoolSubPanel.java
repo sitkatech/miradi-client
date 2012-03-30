@@ -24,14 +24,14 @@ import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.ScopeBox;
 import org.miradi.project.Project;
+import org.miradi.schemas.ScopeBoxSchema;
 
 public class ScopeBoxPoolSubPanel extends ObjectDataInputPanel
 {
 	public ScopeBoxPoolSubPanel(Project projectToUse) throws Exception
 	{
-		super(projectToUse, ScopeBox.getObjectType());
+		super(projectToUse, ScopeBoxSchema.getObjectType());
 		
 		setLayout(new OneColumnGridLayout());
 		
