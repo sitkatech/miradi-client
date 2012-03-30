@@ -33,11 +33,11 @@ import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
-import org.miradi.objects.Strategy;
 import org.miradi.objects.TestDiagramObject;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.GroupBoxSchema;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
 
 public class TestMeglerArranger extends TestCaseWithProject
@@ -622,7 +622,7 @@ public class TestMeglerArranger extends TestCaseWithProject
 	
 	private DiagramFactor createStrategy() throws Exception
 	{
-		return getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
+		return getProject().createDiagramFactorAndAddToDiagram(StrategySchema.getObjectType());
 	}
 
 	private DiagramFactor createThreat() throws Exception, UnexpectedNonSideEffectException, CommandFailedException

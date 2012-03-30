@@ -57,6 +57,7 @@ import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.IntermediateResultSchema;
 import org.miradi.schemas.ScopeBoxSchema;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.views.diagram.LinkCreator;
@@ -160,7 +161,7 @@ public class TestProjectRepairer extends TestCaseWithProject
 		DiagramFactor causeDF = getProject().createAndAddFactorToDiagram(CauseSchema.getObjectType());
 		LinkCreator creator = new LinkCreator(getProject());
 		creator.createFactorLinkAndAddToDiagramUsingCommands(getProject().getTestingDiagramObject(), causeDF, targetDF);
-		DiagramFactor strategyDF = getProject().createAndAddFactorToDiagram(Strategy.getObjectType());
+		DiagramFactor strategyDF = getProject().createAndAddFactorToDiagram(StrategySchema.getObjectType());
 		creator.createFactorLinkAndAddToDiagramUsingCommands(getProject().getTestingDiagramObject(), strategyDF, causeDF);
 
 		DiagramObject mainDiagram = getProject().getMainDiagramObject();
@@ -192,7 +193,7 @@ public class TestProjectRepairer extends TestCaseWithProject
 		verifyFactorBeingReferredToByDiagramFactor(TargetSchema.getObjectType());
 		verifyFactorBeingReferredToByDiagramFactor(HumanWelfareTargetSchema.getObjectType());
 		verifyFactorBeingReferredToByDiagramFactor(CauseSchema.getObjectType());
-		verifyFactorBeingReferredToByDiagramFactor(Strategy.getObjectType());
+		verifyFactorBeingReferredToByDiagramFactor(StrategySchema.getObjectType());
 		verifyFactorBeingReferredToByDiagramFactor(ThreatReductionResult.getObjectType());
 		verifyFactorBeingReferredToByDiagramFactor(IntermediateResultSchema.getObjectType());
 		verifyFactorBeingReferredToByDiagramFactor(GroupBoxSchema.getObjectType());

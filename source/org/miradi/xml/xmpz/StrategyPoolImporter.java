@@ -26,6 +26,7 @@ import org.miradi.objects.Task;
 import org.miradi.questions.StrategyFeasibilityQuestion;
 import org.miradi.questions.StrategyImpactQuestion;
 import org.miradi.questions.StrategyTaxonomyQuestion;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.w3c.dom.Node;
 
@@ -33,7 +34,7 @@ public class StrategyPoolImporter extends FactorPoolImporter
 {
 	public StrategyPoolImporter(XmpzXmlImporter importerToUse)
 	{
-		super(importerToUse, XmpzXmlConstants.STRATEGY, Strategy.getObjectType());
+		super(importerToUse, XmpzXmlConstants.STRATEGY, StrategySchema.getObjectType());
 	}
 	
 	@Override

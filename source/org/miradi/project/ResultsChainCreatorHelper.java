@@ -56,6 +56,7 @@ import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.DiagramLinkSchema;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.utils.PointList;
 import org.miradi.views.diagram.LinkCreator;
 
@@ -275,7 +276,7 @@ public class ResultsChainCreatorHelper
 
 	private boolean containsRelatedStrategy(HashSet<DiagramFactor> selectedDiagramFactors, Task activity)
 	{
-		ORefList strategyReferrerRefs = activity.findObjectsThatReferToUs(Strategy.getObjectType());
+		ORefList strategyReferrerRefs = activity.findObjectsThatReferToUs(StrategySchema.getObjectType());
 		for (int index = 0; index < strategyReferrerRefs.size(); ++index)
 		{
 			ORef strategyRef = strategyReferrerRefs.get(index);

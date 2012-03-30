@@ -23,14 +23,14 @@ package org.miradi.views.umbrella.doers;
 import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.base.RelevancyObjectivePanel;
 import org.miradi.main.EAM;
-import org.miradi.objects.Strategy;
+import org.miradi.schemas.StrategySchema;
 
 public class EditStrategyObjectiveRelevancyListDoer extends	AbstractEditListDoer
 {
 	@Override
 	protected int getObjectType()
 	{
-		return Strategy.getObjectType();
+		return StrategySchema.getObjectType();
 	}
 
 	@Override

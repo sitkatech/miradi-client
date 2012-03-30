@@ -42,7 +42,6 @@ import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.objects.ProjectResource;
-import org.miradi.objects.Strategy;
 import org.miradi.objects.SubTarget;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
@@ -61,6 +60,7 @@ import org.miradi.schemas.IntermediateResultSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.BaseObjectDateDescendingAndIdComparator;
 import org.miradi.utils.CodeList;
@@ -164,7 +164,7 @@ abstract public class AbstractTreeRebuilder
 			ConceptualModelDiagramSchema.getObjectType(),
 			ResultsChainDiagramSchema.getObjectType(),
 			
-			Strategy.getObjectType(),
+			StrategySchema.getObjectType(),
 			TargetSchema.getObjectType(),
 			HumanWelfareTargetSchema.getObjectType(),
 			KeyEcologicalAttribute.getObjectType(),
@@ -411,7 +411,7 @@ abstract public class AbstractTreeRebuilder
 			ThreatReductionResult.getObjectType(),
 			IntermediateResultSchema.getObjectType(),
 			ObjectiveSchema.getObjectType(),
-			Strategy.getObjectType(),
+			StrategySchema.getObjectType(),
 			IndicatorSchema.getObjectType(),
 			ProjectResource.getObjectType(),
 			AccountingCodeSchema.getObjectType(),

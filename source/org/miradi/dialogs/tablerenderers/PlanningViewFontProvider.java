@@ -23,11 +23,11 @@ import java.awt.Font;
 
 import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
+import org.miradi.schemas.StrategySchema;
 
 public class PlanningViewFontProvider extends FontForObjectProvider
 {
@@ -55,7 +55,7 @@ public class PlanningViewFontProvider extends FontForObjectProvider
 			return true;
 		if(objectType == ObjectiveSchema.getObjectType())
 			return true;
-		if(objectType == Strategy.getObjectType())
+		if(objectType == StrategySchema.getObjectType())
 			return true;
 		if(objectType == IndicatorSchema.getObjectType())
 			return true;

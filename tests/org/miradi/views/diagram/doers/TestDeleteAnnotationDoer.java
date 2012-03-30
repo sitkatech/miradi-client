@@ -29,6 +29,7 @@ import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.views.diagram.DeleteAnnotationDoer;
 
 public class TestDeleteAnnotationDoer extends MiradiTestCase
@@ -55,7 +56,7 @@ public class TestDeleteAnnotationDoer extends MiradiTestCase
 	
 	public void testBuildCommandsToDeleteAnnotation() throws Exception
 	{
-		ORef strategyRef = project.createFactorAndReturnRef(Strategy.getObjectType());
+		ORef strategyRef = project.createFactorAndReturnRef(StrategySchema.getObjectType());
 		ORef indicatorRef1 = project.createFactorAndReturnRef(IndicatorSchema.getObjectType());
 		ORef indicatorRef2 = project.createFactorAndReturnRef(IndicatorSchema.getObjectType());
 		ORef methodRef = project.createFactorAndReturnRef(Task.getObjectType());

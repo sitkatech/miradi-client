@@ -27,6 +27,7 @@ import org.miradi.objects.Cause;
 import org.miradi.objects.Strategy;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class TestIdList extends MiradiTestCase
@@ -153,7 +154,7 @@ public class TestIdList extends MiradiTestCase
 	public void testIdListWithType() throws Exception
 	{
 		Project project = ProjectForTesting.createProjectWithDefaultObjects(getName());
-		IdList idListWithStrategyType = new IdList(Strategy.getObjectType());
+		IdList idListWithStrategyType = new IdList(StrategySchema.getObjectType());
 		Strategy strategy = new Strategy(project.getObjectManager(), new FactorId(1));	
 		Cause cause = new Cause(project.getObjectManager(), new FactorId(2));
 		idListWithStrategyType.addRef(strategy.getRef());

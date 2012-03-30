@@ -21,12 +21,12 @@ package org.miradi.forms.objects;
 
 import org.miradi.forms.FieldPanelSpec;
 import org.miradi.objects.Factor;
-import org.miradi.objects.Strategy;
+import org.miradi.schemas.StrategySchema;
 
 public class StrategySummaryCommentsSubForm extends FieldPanelSpec
 {
 	public StrategySummaryCommentsSubForm()
 	{
-		addLabelAndField(Strategy.getObjectType(), Factor.TAG_COMMENTS);
+		addLabelAndField(StrategySchema.getObjectType(), Factor.TAG_COMMENTS);
 	}
 }

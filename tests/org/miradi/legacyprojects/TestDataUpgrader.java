@@ -45,9 +45,9 @@ import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Measurement;
-import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.schemas.CauseSchema;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
@@ -499,7 +499,7 @@ public class TestDataUpgrader extends AbstractMigrationTestCase
 	
 		verifyTypeDir(jsonDir, TARGET_FILE_NAME, TargetSchema.getObjectType(), targetJson);
 		verifyTypeDir(jsonDir, CAUSE_FILE_NAME, CauseSchema.getObjectType(), causeJson);
-		verifyTypeDir(jsonDir, STRATEGY_FILE_NAME, Strategy.getObjectType(), strategyJson);
+		verifyTypeDir(jsonDir, STRATEGY_FILE_NAME, StrategySchema.getObjectType(), strategyJson);
 		
 		assertFalse("factor dir was not deleted?", factorDir.exists());
 		assertFalse("target in factor dir was not deleted?", factorDirTargetFile.exists());

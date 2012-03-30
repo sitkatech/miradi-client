@@ -22,6 +22,7 @@ package org.miradi.views.umbrella.doers;
 import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Strategy;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.utils.HtmlViewPanel;
 
 public class ViewLegacyTncStrategyRankingDoer extends AbstractLegacyTncRankingDoer
@@ -32,7 +33,7 @@ public class ViewLegacyTncStrategyRankingDoer extends AbstractLegacyTncRankingDo
 		if (!isAvailable())
 			return;
 		
-		BaseObject strategy = getSingleSelected(Strategy.getObjectType());
+		BaseObject strategy = getSingleSelected(StrategySchema.getObjectType());
 		String legacyRankingData = strategy.getData(Strategy.TAG_LEGACY_TNC_STRATEGY_RANKING);
 		HtmlViewPanel htmlViwer = new HtmlViewPanel(getMainWindow(), EAM.text("Title|View..."), preFormatToHtml(legacyRankingData), null);
 		htmlViwer.showAsModelessOkDialog();

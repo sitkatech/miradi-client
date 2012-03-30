@@ -109,6 +109,7 @@ import org.miradi.schemas.IntermediateResultSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
@@ -240,7 +241,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		{
 			Node strategyNode = strategyNodeList.item(nodeIndex);
 			String strategyId = getAttributeValue(strategyNode, ID);
-			ORef strategyRef = getProject().createObject(Strategy.getObjectType(), new BaseId(strategyId));
+			ORef strategyRef = getProject().createObject(StrategySchema.getObjectType(), new BaseId(strategyId));
 			importField(strategyNode, NAME, strategyRef, Strategy.TAG_LABEL);
 			importField(strategyNode, TAXONOMY_CODE, strategyRef, Strategy.TAG_TAXONOMY_CODE);
 			
@@ -841,7 +842,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		{
 			Node strategyThreatAssociationNode = strategyThreatAssociations.item(nodeIndex);
 			ORef threatRef = getNodeAsRef(strategyThreatAssociationNode, THREAT_ID, CauseSchema.getObjectType());
-			ORef strategyRef = getNodeAsRef(strategyThreatAssociationNode, STRATEGY_ID, Strategy.getObjectType());
+			ORef strategyRef = getNodeAsRef(strategyThreatAssociationNode, STRATEGY_ID, StrategySchema.getObjectType());
 			createFactorLinkAndAddToDiagram(strategyRef, threatRef);
 		}
 	}
@@ -1379,7 +1380,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 			BaseId strategyId = new BaseId(strategyIdAsString);
 		
 			NodeList objectiveNodeList = getNodes(strategyNode, OBJECTIVES, OBJECTIVE_ID);
-			updateObjectiveRelevancyList(new ORef(Strategy.getObjectType(), strategyId), objectiveNodeList);
+			updateObjectiveRelevancyList(new ORef(StrategySchema.getObjectType(), strategyId), objectiveNodeList);
 		}
 	}
 	

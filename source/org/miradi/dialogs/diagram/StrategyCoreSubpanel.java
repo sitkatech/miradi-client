@@ -33,6 +33,7 @@ import org.miradi.questions.StrategyClassificationQuestion;
 import org.miradi.questions.StrategyFeasibilityQuestion;
 import org.miradi.questions.StrategyImpactQuestion;
 import org.miradi.questions.StrategyRatingSummaryQuestion;
+import org.miradi.schemas.StrategySchema;
 
 
 public class StrategyCoreSubpanel extends ObjectDataInputPanel
@@ -41,22 +42,22 @@ public class StrategyCoreSubpanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, objectType);
 
-		ObjectDataInputField shortLabelField = createStringField(Strategy.getObjectType(), Strategy.TAG_SHORT_LABEL,10);
-		ObjectDataInputField labelField = createExpandableField(Strategy.getObjectType(), Strategy.TAG_LABEL);
+		ObjectDataInputField shortLabelField = createStringField(StrategySchema.getObjectType(), Strategy.TAG_SHORT_LABEL,10);
+		ObjectDataInputField labelField = createExpandableField(StrategySchema.getObjectType(), Strategy.TAG_LABEL);
 		addFieldsOnOneLine(EAM.text("Strategy"), IconManager.getStrategyIcon(), new ObjectDataInputField[]{shortLabelField, labelField,});
-		addField(createMultilineField(Strategy.getObjectType(), Factor.TAG_TEXT));
+		addField(createMultilineField(StrategySchema.getObjectType(), Factor.TAG_TEXT));
 
-		addField(createRadioButtonEditorField(Strategy.getObjectType(), Strategy.TAG_TAXONOMY_CODE, new StrategyClassificationQuestion()));
+		addField(createRadioButtonEditorField(StrategySchema.getObjectType(), Strategy.TAG_TAXONOMY_CODE, new StrategyClassificationQuestion()));
 		
-		ObjectDataInputField impactField = createRadioButtonEditorField(Strategy.getObjectType(), Strategy.TAG_IMPACT_RATING, getQuestion(StrategyImpactQuestion.class));
-		ObjectDataInputField feasibilityField = createRadioButtonEditorField(Strategy.getObjectType(), Strategy.TAG_FEASIBILITY_RATING, getQuestion(StrategyFeasibilityQuestion.class));
+		ObjectDataInputField impactField = createRadioButtonEditorField(StrategySchema.getObjectType(), Strategy.TAG_IMPACT_RATING, getQuestion(StrategyImpactQuestion.class));
+		ObjectDataInputField feasibilityField = createRadioButtonEditorField(StrategySchema.getObjectType(), Strategy.TAG_FEASIBILITY_RATING, getQuestion(StrategyFeasibilityQuestion.class));
 		ObjectDataInputField prioritySummaryField = createReadOnlyChoiceField(Strategy.PSEUDO_TAG_RATING_SUMMARY, getQuestion(StrategyRatingSummaryQuestion.class));
 		addFieldsOnOneLine(EAM.text("Priority"), new ObjectDataInputField[] {impactField, feasibilityField, prioritySummaryField});
 		
-		addLabeledSubPanelWithoutBorder(new LegacyTncStrategyRankingEditorPropertiesSubPanel(getProject(), getRefForType(Strategy.getObjectType()), actions), EAM.text("Legacy TNC Ratings"));
+		addLabeledSubPanelWithoutBorder(new LegacyTncStrategyRankingEditorPropertiesSubPanel(getProject(), getRefForType(StrategySchema.getObjectType()), actions), EAM.text("Legacy TNC Ratings"));
 		
-		addFieldWithEditButton(EAM.text("Objectives"), createReadOnlyObjectList(Strategy.getObjectType(), Strategy.PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS), createObjectsActionButton(actions.getObjectsAction(ActionEditStrategyObjectiveRelevancyList.class), getPicker()));
-		addFieldWithEditButton(EAM.text("Goals"), createReadOnlyObjectList(Strategy.getObjectType(), Strategy.PSEUDO_TAG_RELEVANT_GOAL_REFS), createObjectsActionButton(actions.getObjectsAction(ActionEditStrategyGoalRelevancyList.class), getPicker()));
+		addFieldWithEditButton(EAM.text("Objectives"), createReadOnlyObjectList(StrategySchema.getObjectType(), Strategy.PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS), createObjectsActionButton(actions.getObjectsAction(ActionEditStrategyObjectiveRelevancyList.class), getPicker()));
+		addFieldWithEditButton(EAM.text("Goals"), createReadOnlyObjectList(StrategySchema.getObjectType(), Strategy.PSEUDO_TAG_RELEVANT_GOAL_REFS), createObjectsActionButton(actions.getObjectsAction(ActionEditStrategyGoalRelevancyList.class), getPicker()));
 	}
 
 	@Override

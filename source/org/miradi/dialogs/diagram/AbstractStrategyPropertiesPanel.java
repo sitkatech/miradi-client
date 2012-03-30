@@ -24,20 +24,20 @@ import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.dialogs.progressReport.ProgressReportSubPanel;
 import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.EAM;
-import org.miradi.objects.Strategy;
 import org.miradi.project.Project;
+import org.miradi.schemas.StrategySchema;
 
 abstract public class AbstractStrategyPropertiesPanel extends ObjectDataInputPanelWithSections
 {
 	public AbstractStrategyPropertiesPanel(Project projectToUse) throws Exception
 	{
-		super(projectToUse, Strategy.getObjectType());
+		super(projectToUse, StrategySchema.getObjectType());
 		
 		setLayout(new OneColumnGridLayout());
 		
-		addSubPanelWithTitledBorder(new StrategyCoreSubpanel(getProject(), getMainWindow().getActions(), Strategy.getObjectType()));
-		addSubPanelWithTitledBorder(new RelatedItemsSubpanel(getProject(), Strategy.getObjectType()));
-		addSubPanelWithTitledBorder(new FactorSummaryCommentsPanel(getProject(), getMainWindow().getActions(), Strategy.getObjectType()));
+		addSubPanelWithTitledBorder(new StrategyCoreSubpanel(getProject(), getMainWindow().getActions(), StrategySchema.getObjectType()));
+		addSubPanelWithTitledBorder(new RelatedItemsSubpanel(getProject(), StrategySchema.getObjectType()));
+		addSubPanelWithTitledBorder(new FactorSummaryCommentsPanel(getProject(), getMainWindow().getActions(), StrategySchema.getObjectType()));
 		addSubPanelWithTitledBorder(new ProgressReportSubPanel(getMainWindow()));
 		addBudgetSubPanels();
 		

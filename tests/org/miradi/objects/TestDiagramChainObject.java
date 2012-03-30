@@ -26,6 +26,7 @@ import org.miradi.diagram.ChainWalker;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.schemas.CauseSchema;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
 
 public class TestDiagramChainObject extends TestCaseWithProject
@@ -60,7 +61,7 @@ public class TestDiagramChainObject extends TestCaseWithProject
 	
 	public void testBasics() throws Exception
 	{
-		DiagramFactor strategy = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
+		DiagramFactor strategy = getProject().createDiagramFactorAndAddToDiagram(StrategySchema.getObjectType());
 		DiagramFactor causeLinkedTo = getProject().createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
 		DiagramFactor causeLinkedToFrom = getProject().createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
 		

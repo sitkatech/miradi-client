@@ -30,6 +30,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.questions.StrategyStatusQuestion;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.utils.CommandVector;
 
 public class TestStrategy extends AbstractObjectWithBudgetDataToDeleteTestCase
@@ -123,7 +124,7 @@ public class TestStrategy extends AbstractObjectWithBudgetDataToDeleteTestCase
 	
 	public void testGetWorkUnits() throws Exception
 	{
-		TestIndicator.verifyGetWorkUnits(getProject(), Strategy.getObjectType(), Strategy.TAG_ACTIVITY_IDS);
+		TestIndicator.verifyGetWorkUnits(getProject(), StrategySchema.getObjectType(), Strategy.TAG_ACTIVITY_IDS);
 	}
 	
 	public void testIsAssignmentDataSuperseded() throws Exception

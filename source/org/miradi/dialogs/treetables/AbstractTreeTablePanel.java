@@ -49,6 +49,7 @@ import org.miradi.objects.Task;
 import org.miradi.objects.ViewData;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.TableWithColumnWidthAndSequenceSaver;
 
@@ -271,7 +272,7 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 		String tag = setCommand.getFieldTag();
 		if(type == Task.getObjectType() && tag.equals(Task.TAG_SUBTASK_IDS))
 			return true;
-		if(type == Strategy.getObjectType() && tag.equals(Strategy.TAG_ACTIVITY_IDS))
+		if(type == StrategySchema.getObjectType() && tag.equals(Strategy.TAG_ACTIVITY_IDS))
 			return true;
 		if(type == IndicatorSchema.getObjectType() && tag.equals(Indicator.TAG_METHOD_IDS))
 			return true;

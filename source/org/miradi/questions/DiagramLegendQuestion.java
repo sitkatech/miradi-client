@@ -33,6 +33,7 @@ import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.IntermediateResultSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ScopeBoxSchema;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
 
 public class DiagramLegendQuestion extends StaticChoiceQuestion
@@ -45,7 +46,7 @@ public class DiagramLegendQuestion extends StaticChoiceQuestion
 	static ChoiceItem[] getLegendChoices()
 	{
 		return new ChoiceItem[] {
-				new ChoiceItem(Strategy.OBJECT_NAME, Strategy.OBJECT_NAME),
+				new ChoiceItem(StrategySchema.OBJECT_NAME, StrategySchema.OBJECT_NAME),
 				new ChoiceItem(Strategy.OBJECT_NAME_DRAFT, Strategy.OBJECT_NAME_DRAFT),
 				new ChoiceItem(Cause.OBJECT_NAME_CONTRIBUTING_FACTOR, Cause.OBJECT_NAME_CONTRIBUTING_FACTOR),
 				new ChoiceItem(Cause.OBJECT_NAME_THREAT, Cause.OBJECT_NAME_THREAT),

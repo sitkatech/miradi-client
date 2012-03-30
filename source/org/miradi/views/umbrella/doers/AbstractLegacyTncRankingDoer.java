@@ -21,6 +21,7 @@ package org.miradi.views.umbrella.doers;
 
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Strategy;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.views.ObjectsDoer;
 
 abstract public class AbstractLegacyTncRankingDoer extends ObjectsDoer
@@ -28,7 +29,7 @@ abstract public class AbstractLegacyTncRankingDoer extends ObjectsDoer
 	@Override
 	public boolean isAvailable()
 	{
-		BaseObject baseObject = getSingleSelected(Strategy.getObjectType());
+		BaseObject baseObject = getSingleSelected(StrategySchema.getObjectType());
 		if (baseObject == null)
 			return false;
 		

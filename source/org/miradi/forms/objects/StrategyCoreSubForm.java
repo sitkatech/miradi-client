@@ -23,12 +23,13 @@ import org.miradi.forms.FieldPanelSpec;
 import org.miradi.main.EAM;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Strategy;
+import org.miradi.schemas.StrategySchema;
 
 public class StrategyCoreSubForm extends FieldPanelSpec
 {
 	public StrategyCoreSubForm()
 	{
-		int type = Strategy.getObjectType();
+		int type = StrategySchema.getObjectType();
 		
 		addLabelAndFieldsWithLabels(EAM.text("Strategy"), type, new String[]{Strategy.TAG_SHORT_LABEL, Strategy.TAG_LABEL});
 		addLabelAndField(type, Factor.TAG_TEXT);

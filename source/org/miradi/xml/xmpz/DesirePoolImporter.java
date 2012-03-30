@@ -24,9 +24,9 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objects.Desire;
-import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.w3c.dom.Node;
 
@@ -62,7 +62,7 @@ abstract public class DesirePoolImporter extends AbstractBaseObjectPoolImporter
 	private void importRelevantStrategyAndActivityIds(Node node, ORef destinationDesireRef) throws Exception
 	{
 		ORefList importedStrategyAndActivityRefs = new ORefList();
-		importedStrategyAndActivityRefs.addAll(extractRefs(node, XmpzXmlConstants.RELEVANT_STRATEGY_IDS, Strategy.getObjectType(), XmpzXmlConstants.STRATEGY + XmpzXmlConstants.ID));
+		importedStrategyAndActivityRefs.addAll(extractRefs(node, XmpzXmlConstants.RELEVANT_STRATEGY_IDS, StrategySchema.getObjectType(), XmpzXmlConstants.STRATEGY + XmpzXmlConstants.ID));
 		importedStrategyAndActivityRefs.addAll(extractRefs(node, XmpzXmlConstants.RELEVANT_ACTIVITY_IDS, Task.getObjectType(), XmpzXmlConstants.ACTIVITY + XmpzXmlConstants.ID));
 		
 		Desire desire = Desire.findDesire(getProject(), destinationDesireRef);

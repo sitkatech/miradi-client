@@ -48,7 +48,6 @@ import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Factor;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.ResourceAssignment;
-import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
@@ -60,6 +59,7 @@ import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.views.umbrella.UndoDoer;
@@ -73,7 +73,7 @@ public class TestDiagramPaster extends TestCaseWithProject
 	
 	public void testBudgetItemPasteIntoDifferentProject() throws Exception
 	{
-		DiagramFactor strategyDiagramFactor = getProject().createAndAddFactorToDiagram(Strategy.getObjectType());
+		DiagramFactor strategyDiagramFactor = getProject().createAndAddFactorToDiagram(StrategySchema.getObjectType());
 		Task activity = getProject().createTask(strategyDiagramFactor.getWrappedFactor());
 		
 		ResourceAssignment resourceAssignment = getProject().createAndPopulateResourceAssignment();

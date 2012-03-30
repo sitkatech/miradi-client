@@ -23,6 +23,7 @@ import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProgressReport;
 import org.miradi.objects.Strategy;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.views.diagram.DeleteAnnotationDoer;
 
 public class DeleteStrategyProgressReportDoer extends DeleteAnnotationDoer
@@ -30,7 +31,7 @@ public class DeleteStrategyProgressReportDoer extends DeleteAnnotationDoer
 	@Override
 	protected BaseObject getParent(BaseObject annotationToDelete)
 	{
-		return getSingleSelected(Strategy.getObjectType());  
+		return getSingleSelected(StrategySchema.getObjectType());  
 	}
 
 	@Override

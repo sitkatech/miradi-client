@@ -25,6 +25,7 @@ import org.miradi.diagram.ThreatTargetChainWalker;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.schemas.CauseSchema;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
 
 public class TestThreatTargetChainObject extends TestCaseWithProject
@@ -52,7 +53,7 @@ public class TestThreatTargetChainObject extends TestCaseWithProject
 		getProject().enableAsThreat(threat2.getWrappedORef());
 		
 		DiagramFactor target = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(TargetSchema.getObjectType());
-		DiagramFactor strategy = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Strategy.getObjectType());
+		DiagramFactor strategy = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(StrategySchema.getObjectType());
 		
 		//threat1 -> threat2 -> strategy -> target
 		getProject().createDiagramLinkAndAddToDiagram(threat1, threat2); 

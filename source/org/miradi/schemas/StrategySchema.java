@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 import org.miradi.questions.StrategyFeasibilityQuestion;
@@ -29,6 +30,8 @@ import org.miradi.questions.StrategyTaxonomyQuestion;
 
 public class StrategySchema extends FactorSchema
 {
+	public static final String OBJECT_NAME = "Strategy";
+
 	public StrategySchema()
 	{
 		super();
@@ -55,5 +58,10 @@ public class StrategySchema extends FactorSchema
 		createPseudoFieldSchemaString(Strategy.PSEUDO_TAG_ACTIVITIES);
 		createPseudoFieldSchemaRefList(Strategy.PSEUDO_TAG_RELEVANT_GOAL_REFS);
 		createPseudoFieldSchemaRefList(Strategy.PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS);
+	}
+
+	public static int getObjectType()
+	{
+		return ObjectType.STRATEGY;
 	}
 }

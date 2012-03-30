@@ -28,6 +28,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.project.Project;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.DiagramLinkSchema;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
 
 public class TestDiagramObject extends ObjectTestCase
@@ -117,7 +118,7 @@ public class TestDiagramObject extends ObjectTestCase
 	{
 		DiagramObject diagramObject = getProject().getTestingDiagramModel().getDiagramObject();
 
-		DiagramFactor strategy = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
+		DiagramFactor strategy = getProject().createDiagramFactorAndAddToDiagram(StrategySchema.getObjectType());
 		DiagramFactor cause = getProject().createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
 		DiagramFactor target = getProject().createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
 		createLinkAndAddToDiagram(cause, target);
@@ -132,7 +133,7 @@ public class TestDiagramObject extends ObjectTestCase
 	{
 		DiagramObject diagramObject = getProject().getTestingDiagramModel().getDiagramObject();
 
-		DiagramFactor strategy = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
+		DiagramFactor strategy = getProject().createDiagramFactorAndAddToDiagram(StrategySchema.getObjectType());
 		DiagramFactor cause = getProject().createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
 		DiagramFactor target = getProject().createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
 		DiagramLink diagramLink = createLinkAndAddToDiagram(cause, target);
@@ -146,7 +147,7 @@ public class TestDiagramObject extends ObjectTestCase
 	{
 		DiagramObject diagramObject = getProject().getTestingDiagramModel().getDiagramObject();
 
-		DiagramFactor strategy = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
+		DiagramFactor strategy = getProject().createDiagramFactorAndAddToDiagram(StrategySchema.getObjectType());
 		DiagramFactor cause = getProject().createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
 		DiagramFactor target = getProject().createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
 		DiagramLink diagramLink = createLinkAndAddToDiagram(cause, target);

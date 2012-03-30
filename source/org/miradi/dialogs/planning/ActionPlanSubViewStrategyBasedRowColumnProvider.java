@@ -22,13 +22,13 @@ package org.miradi.dialogs.planning;
 
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Desire;
-import org.miradi.objects.Strategy;
 import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.CodeList;
 
@@ -57,7 +57,7 @@ public class ActionPlanSubViewStrategyBasedRowColumnProvider extends AbstractPla
 		TargetSchema.OBJECT_NAME,
 		GoalSchema.OBJECT_NAME,
 		ObjectiveSchema.OBJECT_NAME,
-		Strategy.OBJECT_NAME,
+		StrategySchema.OBJECT_NAME,
 		});
 	}
 	
