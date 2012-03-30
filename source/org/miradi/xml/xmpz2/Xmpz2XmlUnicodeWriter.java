@@ -49,64 +49,7 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 		project = projectToUse;
 	}
 	
-	public void writeXmlHeader() throws IOException
-	{
-		writeln("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>");
-	}
-	
-	public void writeMainElementStart() throws Exception
-	{
-		writeln("<" + CONSERVATION_PROJECT + " " + XMLNS + "=\"" + NAME_SPACE + "\">");
-	}
-	
-	public void writeMainElementEnd() throws Exception
-	{
-		writeEndElement(CONSERVATION_PROJECT);
-	}
-	
-	public void writeObjectElementStart(final BaseObjectSchema baseObjectSchema) throws Exception
-	{
-		writeStartElement(baseObjectSchema.getXmpz2ElementName());
-	}
-
-	public void writeObjectElementEnd(final BaseObjectSchema baseObjectSchema) throws Exception
-	{
-		writeEndElement(baseObjectSchema.getXmpz2ElementName());
-	}
-	
-	public void writeFieldElement(final BaseObject baseObject, final AbstractFieldSchema fieldSchema) throws Exception
-	{
-		ObjectData field = baseObject.getField(fieldSchema.getTag());
-		field.writeAsXmpz2XmlData(this, baseObject.getSchema(), fieldSchema);
-	}
-	
-	private void writeElement(String elementName, String data) throws Exception
-	{
-		if (data == null || data.length() == 0)
-			return;
-		
-		writeStartElement(elementName);
-		writeXmlText(data);
-		writeEndElement(elementName);
-		writeln();
-	}
-	
-	private void writeXmlText(String xmlText) throws IOException
-	{
-		write(xmlText);
-	}
-	
-	private void writeStartElement(final String elemnentName)	throws Exception
-	{
-		writeln("<" + elemnentName + ">");
-	}
-	
-	private void writeEndElement(final String elemnentName)	throws Exception
-	{
-		writeln("</" + elemnentName + ">");
-	}
-	
-	public void writeChoiceData(final BaseObjectSchema baseObjectSchema, final AbstractFieldSchema fieldSchema, final ChoiceData choiceData) throws Exception
+		public void writeChoiceData(final BaseObjectSchema baseObjectSchema, final AbstractFieldSchema fieldSchema, final ChoiceData choiceData) throws Exception
 	{
 		final ChoiceQuestion choiceQuestion = choiceData.getChoiceQuestion();
 		final String code = choiceData.get();
@@ -295,6 +238,63 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 	private String createContainerElementName(String startElementName)
 	{
 		return startElementName + CONTAINER_ELEMENT_TAG;
+	}
+	
+	public void writeXmlHeader() throws IOException
+	{
+		writeln("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>");
+	}
+	
+	public void writeMainElementStart() throws Exception
+	{
+		writeln("<" + CONSERVATION_PROJECT + " " + XMLNS + "=\"" + NAME_SPACE + "\">");
+	}
+	
+	public void writeMainElementEnd() throws Exception
+	{
+		writeEndElement(CONSERVATION_PROJECT);
+	}
+	
+	public void writeObjectElementStart(final BaseObjectSchema baseObjectSchema) throws Exception
+	{
+		writeStartElement(baseObjectSchema.getXmpz2ElementName());
+	}
+
+	public void writeObjectElementEnd(final BaseObjectSchema baseObjectSchema) throws Exception
+	{
+		writeEndElement(baseObjectSchema.getXmpz2ElementName());
+	}
+	
+	public void writeFieldElement(final BaseObject baseObject, final AbstractFieldSchema fieldSchema) throws Exception
+	{
+		ObjectData field = baseObject.getField(fieldSchema.getTag());
+		field.writeAsXmpz2XmlData(this, baseObject.getSchema(), fieldSchema);
+	}
+	
+	private void writeElement(String elementName, String data) throws Exception
+	{
+		if (data == null || data.length() == 0)
+			return;
+		
+		writeStartElement(elementName);
+		writeXmlText(data);
+		writeEndElement(elementName);
+		writeln();
+	}
+	
+	private void writeXmlText(String xmlText) throws IOException
+	{
+		write(xmlText);
+	}
+	
+	private void writeStartElement(final String elemnentName)	throws Exception
+	{
+		writeln("<" + elemnentName + ">");
+	}
+	
+	private void writeEndElement(final String elemnentName)	throws Exception
+	{
+		writeln("</" + elemnentName + ">");
 	}
 	
 	private Project getProject()
