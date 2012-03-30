@@ -20,10 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.SubTarget;
 
 public class SubTargetSchema extends BaseObjectSchema
 {
+	public static final String OBJECT_NAME = "SubTarget";
+
 	public SubTargetSchema()
 	{
 		super();
@@ -36,5 +39,10 @@ public class SubTargetSchema extends BaseObjectSchema
 
 		createFieldSchemaSingleLineUserText(SubTarget.TAG_SHORT_LABEL);
 		createFieldSchemaMultiLineUserText(SubTarget.TAG_DETAIL);
+	}
+
+	public static int getObjectType()
+	{
+		return ObjectType.SUB_TARGET;
 	}
 }

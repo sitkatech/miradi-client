@@ -23,12 +23,13 @@ package org.miradi.xml.wcs;
 import org.martus.util.UnicodeWriter;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.SubTarget;
+import org.miradi.schemas.SubTargetSchema;
 
 public class SubTargetPoolExporter extends BaseObjectPoolExporter
 {
 	public SubTargetPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
-		super(wcsXmlExporterToUse, SUB_TARGET, SubTarget.getObjectType());
+		super(wcsXmlExporterToUse, SUB_TARGET, SubTargetSchema.getObjectType());
 	}
 	
 	@Override

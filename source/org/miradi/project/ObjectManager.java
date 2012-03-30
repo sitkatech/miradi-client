@@ -89,7 +89,6 @@ import org.miradi.objectpools.WwfProjectDataPool;
 import org.miradi.objectpools.XenodataPool;
 import org.miradi.objectpools.XslTemplatePool;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.SubTarget;
 import org.miradi.objects.TableSettings;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.ThreatRatingCommentsData;
@@ -140,6 +139,7 @@ import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.ScopeBoxSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.StressSchema;
+import org.miradi.schemas.SubTargetSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.schemas.TextBoxSchema;
@@ -186,7 +186,7 @@ public class ObjectManager
 		addNormalPool(new StressPool(ida), StressSchema.OBJECT_NAME);
 		addNormalPool(new ThreatStressRatingPool(ida), ThreatStressRating.OBJECT_NAME);
 		addNormalPool(new GroupBoxPool(ida), GroupBoxSchema.OBJECT_NAME);
-		addNormalPool(new SubTargetPool(ida), SubTarget.OBJECT_NAME);
+		addNormalPool(new SubTargetPool(ida), SubTargetSchema.OBJECT_NAME);
 		addNormalPool(new ProgressReportPool(ida), ProgressReportSchema.OBJECT_NAME);
 		addNormalPool(new RareProjectDataPool(ida), RareProjectDataSchema.OBJECT_NAME);
 		addNormalPool(new WcsProjectDataPool(ida), WcsProjectData.OBJECT_NAME);
@@ -280,7 +280,7 @@ public class ObjectManager
 
 	public SubTargetPool getSubTargetPool()
 	{
-		return (SubTargetPool) getPool(SubTarget.getObjectType());
+		return (SubTargetPool) getPool(SubTargetSchema.getObjectType());
 	}
 
 	public IndicatorPool getIndicatorPool()

@@ -19,8 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram;
 
-import org.miradi.objects.SubTarget;
 import org.miradi.objects.Target;
+import org.miradi.schemas.SubTargetSchema;
 
 
 public class CreateSubTargetDoer extends CreateAnnotationDoer
@@ -34,6 +34,6 @@ public class CreateSubTargetDoer extends CreateAnnotationDoer
 	@Override
 	public int getAnnotationType()
 	{
-		return SubTarget.getObjectType();
+		return SubTargetSchema.getObjectType();
 	}
 }

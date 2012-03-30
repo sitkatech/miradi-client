@@ -159,6 +159,7 @@ import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.ScopeBoxSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.StressSchema;
+import org.miradi.schemas.SubTargetSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.schemas.TextBoxSchema;
@@ -775,7 +776,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public SubTarget createSubTarget() throws Exception
 	{
-		ORef subTargetRef = createObject(SubTarget.getObjectType());
+		ORef subTargetRef = createObject(SubTargetSchema.getObjectType());
 		return SubTarget.find(this, subTargetRef);
 	}
 	
