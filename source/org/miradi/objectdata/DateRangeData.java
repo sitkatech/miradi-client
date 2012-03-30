@@ -78,7 +78,7 @@ public class DateRangeData extends ObjectData
 	@Override
 	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		writer.writetDateRangeData(baseObjectSchema, fieldSchema, get());
+		writer.writeDateRangeData(baseObjectSchema, fieldSchema, get());
 	}
 	
 	private DateRange dateRange;
