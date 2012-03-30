@@ -30,7 +30,7 @@ public class RefListData extends ObjectData
 	{
 		super(tagToUse);
 		
-		objectReferenceList = new ORefList();
+		refList = new ORefList();
 	}
 	
 	@Override
@@ -45,18 +45,18 @@ public class RefListData extends ObjectData
 	@Override
 	public String get()
 	{
-		return objectReferenceList.toString();
+		return refList.toString();
 	}
 
 	@Override
 	public ORefList getRefList()
 	{
-		return new ORefList(objectReferenceList);
+		return new ORefList(refList);
 	}
 	
 	public ORefList getORefList(int objectTypeToFilterOn)
 	{
-		return objectReferenceList.getFilteredBy(objectTypeToFilterOn);
+		return refList.getFilteredBy(objectTypeToFilterOn);
 	}
 	
 	@Override
@@ -79,7 +79,7 @@ public class RefListData extends ObjectData
 
 	private void set(ORefList objectReferenceToUse)
 	{
-		objectReferenceList = objectReferenceToUse;
+		refList = objectReferenceToUse;
 	}
 	
 	@Override
@@ -88,5 +88,5 @@ public class RefListData extends ObjectData
 		writer.writeRefListData(baseObjectSchema, fieldSchema, get());
 	}
 	
-	private ORefList objectReferenceList;
+	private ORefList refList;
 }
