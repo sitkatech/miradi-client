@@ -25,7 +25,6 @@ import java.util.Set;
 
 import org.miradi.main.EAM;
 import org.miradi.objects.ConceptualModelDiagram;
-import org.miradi.objects.CostAllocationRule;
 import org.miradi.objects.Dashboard;
 import org.miradi.objects.FosProjectData;
 import org.miradi.objects.IucnRedlistSpecies;
@@ -54,6 +53,7 @@ import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.AudienceSchema;
 import org.miradi.schemas.BudgetCategoryOneSchema;
 import org.miradi.schemas.BudgetCategoryTwoSchema;
+import org.miradi.schemas.CostAllocationRuleSchema;
 import org.miradi.schemas.FundingSourceSchema;
 
 public class ObjectType
@@ -147,7 +147,7 @@ public class ObjectType
 			ResultsChainDiagram.getObjectType(),
 			ObjectTreeTableConfiguration.getObjectType(),
 			WwfProjectData.getObjectType(),
-			CostAllocationRule.getObjectType(),
+			CostAllocationRuleSchema.getObjectType(),
 			ThreatStressRating.getObjectType(),
 			RareProjectData.getObjectType(),
 			WcsProjectData.getObjectType(),

@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.schemas.CostAllocationRuleSchema;
 import org.miradi.utils.EnhancedJsonObject;
@@ -40,7 +39,7 @@ public class CostAllocationRule extends BaseObject
 	@Override
 	public int getType()
 	{
-		return getObjectType();
+		return CostAllocationRuleSchema.getObjectType();
 	}
 
 	@Override
@@ -52,14 +51,9 @@ public class CostAllocationRule extends BaseObject
 	@Override
 	public String getTypeName()
 	{
-		return OBJECT_NAME;
+		return CostAllocationRuleSchema.OBJECT_NAME;
 	}
 
-	public static int getObjectType()
-	{
-		return ObjectType.COST_ALLOCATION_RULE;
-	}
-	
 	public static boolean canReferToThisType(int type)
 	{
 		return false;
@@ -67,7 +61,5 @@ public class CostAllocationRule extends BaseObject
 	
 	public static final String TAG_PARENT_REF = "ParentRef";
 	public static final String TAG_CHILD_REF = "ChildRef";
-	public static final String TAG_COST_PERCENTAGE = "CostPercentage"; 
-	
-	public static final String OBJECT_NAME = "CostAllocationRule";
+	public static final String TAG_COST_PERCENTAGE = "CostPercentage";
 }
