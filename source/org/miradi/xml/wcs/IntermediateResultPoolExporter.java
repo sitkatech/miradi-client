@@ -23,12 +23,13 @@ package org.miradi.xml.wcs;
 import org.martus.util.UnicodeWriter;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.IntermediateResult;
+import org.miradi.schemas.IntermediateResultSchema;
 
 public class IntermediateResultPoolExporter extends FactorPoolExporter
 {
 	public IntermediateResultPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
-		super(wcsXmlExporterToUse, INTERMEDIATE_RESULTS, IntermediateResult.getObjectType());
+		super(wcsXmlExporterToUse, INTERMEDIATE_RESULTS, IntermediateResultSchema.getObjectType());
 	}
 	
 	@Override

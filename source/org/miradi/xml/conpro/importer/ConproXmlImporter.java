@@ -105,6 +105,7 @@ import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.IntermediateResultSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
@@ -1314,7 +1315,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 
 	private ORef createIntermediateResultAsContainer(String label, Point location)	throws CommandFailedException
 	{
-		CommandCreateObject createIntermediateResults = new CommandCreateObject(IntermediateResult.getObjectType());
+		CommandCreateObject createIntermediateResults = new CommandCreateObject(IntermediateResultSchema.getObjectType());
 		getProject().executeCommand(createIntermediateResults);
 		
 		CommandSetObjectData setName = new CommandSetObjectData(createIntermediateResults.getObjectRef(), IntermediateResult.TAG_LABEL, label);

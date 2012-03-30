@@ -71,6 +71,7 @@ import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.schemas.FundingSourceSchema;
+import org.miradi.schemas.IntermediateResultSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.CodeList;
@@ -889,7 +890,7 @@ abstract public class DiagramPaster
 			if(factor != null && factor.isDirectThreat())
 				return ThreatReductionResult.getObjectType();
 
-			return IntermediateResult.getObjectType();
+			return IntermediateResultSchema.getObjectType();
 		}
 
 		return oldObjectRef.getObjectType();

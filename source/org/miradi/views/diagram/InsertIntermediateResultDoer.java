@@ -21,7 +21,7 @@ package org.miradi.views.diagram;
 
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.IntermediateResult;
+import org.miradi.schemas.IntermediateResultSchema;
 
 public class InsertIntermediateResultDoer extends InsertFactorDoer
 {
@@ -38,7 +38,7 @@ public class InsertIntermediateResultDoer extends InsertFactorDoer
 	@Override
 	public void forceVisibleInLayerManager() throws Exception
 	{
-		getCurrentLayerManager().setVisibility(IntermediateResult.OBJECT_NAME, true);
+		getCurrentLayerManager().setVisibility(IntermediateResultSchema.OBJECT_NAME, true);
 	}
 
 	@Override

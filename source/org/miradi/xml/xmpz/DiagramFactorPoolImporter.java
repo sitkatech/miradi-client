@@ -28,7 +28,6 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.ScopeBox;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
@@ -44,6 +43,7 @@ import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.GroupBoxSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
+import org.miradi.schemas.IntermediateResultSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.EnhancedJsonObject;
 import org.w3c.dom.Node;
@@ -134,7 +134,7 @@ public class DiagramFactorPoolImporter extends AbstractBaseObjectPoolImporter
 			return Strategy.getObjectType();
 		
 		if (objectTypeName.equals(INTERMEDIATE_RESULTS))
-			return IntermediateResult.getObjectType();
+			return IntermediateResultSchema.getObjectType();
 		
 		if (objectTypeName.equals(THREAT_REDUCTION_RESULTS))
 			return ThreatReductionResult.getObjectType();
