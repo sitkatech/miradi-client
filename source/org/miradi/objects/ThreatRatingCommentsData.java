@@ -21,7 +21,6 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
@@ -43,24 +42,19 @@ public class ThreatRatingCommentsData extends BaseObject
 	@Override
 	public int getType()
 	{
-		return getObjectType();
+		return ThreatRatingCommentsDataSchema.getObjectType();
 	}
 
 	@Override
 	public String getTypeName()
 	{
-		return OBJECT_NAME;
+		return ThreatRatingCommentsDataSchema.OBJECT_NAME;
 	}
 
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;
-	}
-	
-	public static int getObjectType()
-	{
-		return ObjectType.THREAT_RATING_COMMENTS_DATA;
 	}
 	
 	public String findComment(ORef threatRef, ORef targetRef)
@@ -124,8 +118,6 @@ public class ThreatRatingCommentsData extends BaseObject
 		return find(project.getObjectManager(), threatRatingCommentsDataRef);
 	}
 
-	public static final String OBJECT_NAME = "ThreatRatingCommentsData";
-	
 	public static final String TAG_SIMPLE_THREAT_RATING_COMMENTS_MAP = "SimpleThreatRatingCommentsMap";
 	public static final String TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAP = "StressBasedThreatRatingCommentsMap";
 }

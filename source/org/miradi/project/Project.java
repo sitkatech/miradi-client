@@ -128,6 +128,7 @@ import org.miradi.schemas.RatingCriterionSchema;
 import org.miradi.schemas.ScopeBoxSchema;
 import org.miradi.schemas.TaggedObjectSetSchema;
 import org.miradi.schemas.TextBoxSchema;
+import org.miradi.schemas.ThreatRatingCommentsDataSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
@@ -378,7 +379,7 @@ public class Project
 	
 	public ThreatRatingCommentsData getSingletonThreatRatingCommentsData()
 	{
-		ORef threatRatingCommentsDataRef = getSingletonObjectRef(ThreatRatingCommentsData.getObjectType());
+		ORef threatRatingCommentsDataRef = getSingletonObjectRef(ThreatRatingCommentsDataSchema.getObjectType());
 		return ThreatRatingCommentsData.find(this, threatRatingCommentsDataRef);
 	}
 	
@@ -888,7 +889,7 @@ public class Project
 		createDefaultProjectDataObject(TncProjectData.getObjectType());
 		createDefaultProjectDataObject(FosProjectDataSchema.getObjectType());
 		createDefaultProjectDataObject(WcpaProjectData.getObjectType());
-		createDefaultProjectDataObject(ThreatRatingCommentsData.getObjectType());
+		createDefaultProjectDataObject(ThreatRatingCommentsDataSchema.getObjectType());
 		createDefaultProjectDataObject(DashboardSchema.getObjectType());
 	}
 
