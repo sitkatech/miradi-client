@@ -59,6 +59,7 @@ import org.miradi.schemas.BudgetCategoryOneSchema;
 import org.miradi.schemas.BudgetCategoryTwoSchema;
 import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.FundingSourceSchema;
+import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.utils.BaseObjectDateDescendingAndIdComparator;
@@ -134,7 +135,7 @@ abstract public class AbstractTreeRebuilder
 	
 	public static ORefList findRelevantGoals(Project projectToUse, ORef strategyRef) throws Exception
 	{
-		return Desire.findRelevantDesires(projectToUse, strategyRef, Goal.getObjectType());
+		return Desire.findRelevantDesires(projectToUse, strategyRef, GoalSchema.getObjectType());
 	}
 
 	public static ORefList findRelevantObjectives(Project projectToUse, ORef strategyRef) throws Exception
@@ -172,7 +173,7 @@ abstract public class AbstractTreeRebuilder
 			ThreatReductionResult.getObjectType(),
 			
 			SubTarget.getObjectType(),
-			Goal.getObjectType(),
+			GoalSchema.getObjectType(),
 			Objective.getObjectType(),
 			IndicatorSchema.getObjectType(),
 			Task.getObjectType(),
@@ -404,7 +405,7 @@ abstract public class AbstractTreeRebuilder
 			ResultsChainDiagram.getObjectType(),
 			ConceptualModelDiagram.getObjectType(),
 			Measurement.getObjectType(),
-			Goal.getObjectType(),
+			GoalSchema.getObjectType(),
 			SubTarget.getObjectType(),
 			Cause.getObjectType(),
 			ThreatReductionResult.getObjectType(),

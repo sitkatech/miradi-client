@@ -20,9 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.viability;
 
-import org.miradi.objects.Goal;
 import org.miradi.objects.Measurement;
 import org.miradi.project.Project;
+import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.CodeList;
 
@@ -38,7 +38,7 @@ public class IndicatorViabilityRowColumnProvider extends AbstractViabilityRowCol
 		return new CodeList(new String[] {
 				IndicatorSchema.OBJECT_NAME,
 				Measurement.OBJECT_NAME,
-				Goal.OBJECT_NAME,
+				GoalSchema.OBJECT_NAME,
 		});
 	}
 

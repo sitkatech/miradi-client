@@ -23,10 +23,10 @@ import java.awt.Font;
 
 import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.Goal;
 import org.miradi.objects.Objective;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
+import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
 
 public class PlanningViewFontProvider extends FontForObjectProvider
@@ -51,7 +51,7 @@ public class PlanningViewFontProvider extends FontForObjectProvider
 
 	private boolean shouldBeBold(int objectType)
 	{
-		if(objectType == Goal.getObjectType())
+		if(objectType == GoalSchema.getObjectType())
 			return true;
 		if(objectType == Objective.getObjectType())
 			return true;

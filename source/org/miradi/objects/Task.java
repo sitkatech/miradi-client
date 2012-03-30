@@ -33,6 +33,7 @@ import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.CommandVector;
@@ -270,7 +271,7 @@ public class Task extends Factor
 			return getRelevantDesireRefsAsString(Objective.getObjectType());
 		
 		if (fieldTag.equals(PSEUDO_TAG_RELEVANT_GOAL_REFS))
-			return getRelevantDesireRefsAsString(Goal.getObjectType());
+			return getRelevantDesireRefsAsString(GoalSchema.getObjectType());
 		
 		return super.getPseudoData(fieldTag);
 	}

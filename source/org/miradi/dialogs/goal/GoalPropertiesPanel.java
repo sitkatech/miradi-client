@@ -31,6 +31,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Desire;
 import org.miradi.objects.Goal;
 import org.miradi.project.Project;
+import org.miradi.schemas.GoalSchema;
 
 public class GoalPropertiesPanel extends ObjectDataInputPanelWithSections
 {
@@ -39,14 +40,14 @@ public class GoalPropertiesPanel extends ObjectDataInputPanelWithSections
 		super(projectToUse, ObjectType.GOAL);
 		
 		createSingleSection(EAM.text("Goal"));
-		ObjectDataInputField shortLabelField = createShortStringField(Goal.getObjectType(), Goal.TAG_SHORT_LABEL);
-		ObjectDataInputField labelField = createExpandableField(Goal.getObjectType(), Goal.TAG_LABEL);
+		ObjectDataInputField shortLabelField = createShortStringField(GoalSchema.getObjectType(), Goal.TAG_SHORT_LABEL);
+		ObjectDataInputField labelField = createExpandableField(GoalSchema.getObjectType(), Goal.TAG_LABEL);
 		addFieldsOnOneLine(EAM.text("Goal"), new GoalIcon(), new ObjectDataInputField[]{shortLabelField, labelField,});
-		addField(createMultilineField(Goal.getObjectType(), Desire.TAG_FULL_TEXT));
+		addField(createMultilineField(GoalSchema.getObjectType(), Desire.TAG_FULL_TEXT));
 		addField(createReadonlyTextField(Goal.PSEUDO_TAG_FACTOR));
 		addField(createReadonlyTextField(Goal.PSEUDO_TAG_DIRECT_THREATS));
-		addFieldWithEditButton(EAM.text("Indicators"), createReadOnlyObjectList(Goal.getObjectType(), Goal.PSEUDO_TAG_RELEVANT_INDICATOR_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditGoalIndicatorRelevancyList.class), getPicker()));
-		addFieldWithEditButton(EAM.text("Strategies And Activities"), createReadOnlyObjectList(Goal.getObjectType(), Goal.PSEUDO_TAG_RELEVANT_STRATEGY_ACTIVITY_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditGoalStrategyActivityRelevancyList.class), getPicker()));
+		addFieldWithEditButton(EAM.text("Indicators"), createReadOnlyObjectList(GoalSchema.getObjectType(), Goal.PSEUDO_TAG_RELEVANT_INDICATOR_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditGoalIndicatorRelevancyList.class), getPicker()));
+		addFieldWithEditButton(EAM.text("Strategies And Activities"), createReadOnlyObjectList(GoalSchema.getObjectType(), Goal.PSEUDO_TAG_RELEVANT_STRATEGY_ACTIVITY_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditGoalStrategyActivityRelevancyList.class), getPicker()));
 		addSubPanelWithTitledBorder(new ProgressPercentSubPanel(getProject()));
 		addField(createMultilineField(Goal.TAG_COMMENTS));
 		

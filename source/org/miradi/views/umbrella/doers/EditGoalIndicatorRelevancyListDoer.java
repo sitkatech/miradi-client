@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella.doers;
 
-import org.miradi.objects.Goal;
+import org.miradi.schemas.GoalSchema;
 import org.miradi.views.umbrella.AbstractRelevancyEditListDoer;
 
 public class EditGoalIndicatorRelevancyListDoer extends AbstractRelevancyEditListDoer
@@ -27,6 +27,6 @@ public class EditGoalIndicatorRelevancyListDoer extends AbstractRelevancyEditLis
 	@Override
 	protected int getObjectType()
 	{
-		return Goal.getObjectType();
+		return GoalSchema.getObjectType();
 	}	
 }

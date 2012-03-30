@@ -45,6 +45,7 @@ import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.BudgetCategoryOneSchema;
 import org.miradi.schemas.BudgetCategoryTwoSchema;
 import org.miradi.schemas.FundingSourceSchema;
+import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
 
 public class RtfStyleManager
@@ -63,7 +64,7 @@ public class RtfStyleManager
 		createNewStyle(HEADING_2_STYLE_TAG,						S_2_RTF_ID, HEADING_2_STYLE, "Heading 2");
 		createNewStyle(HEADING_3_STYLE_TAG,						S_3_RTF_ID, HEADING_3_STYLE, "Heading 3");
 		
-		createNewStyle(Goal.OBJECT_NAME,                 		CS_13_RTF_ID, " \\f1\\b\\fs20 ", MIRADI_STYLE_PREFIX + "Goal");
+		createNewStyle(GoalSchema.OBJECT_NAME,                 		CS_13_RTF_ID, " \\f1\\b\\fs20 ", MIRADI_STYLE_PREFIX + "Goal");
 		createNewStyle(ProjectMetadata.OBJECT_NAME,		 		CS_14_RTF_ID, " \\f1\\b\\i\\fs20 ", MIRADI_STYLE_PREFIX + "Project");
 		createNewStyle(COMMENT_STYLE_TAG, 						CS_15_RTF_ID, " \\f1\\fs18 ", MIRADI_STYLE_PREFIX + "Lng Txt");
 		createNewStyle(ConceptualModelDiagram.OBJECT_NAME, 		CS_16_RTF_ID, " \\f1\\b\\fs20 ", MIRADI_STYLE_PREFIX + "CM");
@@ -126,7 +127,7 @@ public class RtfStyleManager
 			return ProjectMetadata.OBJECT_NAME;
 		
 		if (Goal.is(objectType))
-			return Goal.OBJECT_NAME;
+			return GoalSchema.OBJECT_NAME;
 		
 		if (BudgetCategoryOne.is(objectType))
 			return BudgetCategoryOneSchema.OBJECT_NAME;

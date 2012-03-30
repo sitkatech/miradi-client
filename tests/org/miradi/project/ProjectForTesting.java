@@ -137,6 +137,7 @@ import org.miradi.schemas.BudgetCategoryTwoSchema;
 import org.miradi.schemas.DashboardSchema;
 import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.FundingSourceSchema;
+import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.utils.CodeList;
@@ -808,7 +809,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public Goal createGoal(Target targetOwner) throws Exception
 	{
-		ORef goalRef = createObject(Goal.getObjectType());
+		ORef goalRef = createObject(GoalSchema.getObjectType());
 		CommandSetObjectData append = CommandSetObjectData.createAppendIdCommand(targetOwner, Target.TAG_GOAL_IDS, goalRef.getObjectId());
 		executeCommand(append);
 		

@@ -21,7 +21,7 @@ package org.miradi.views.diagram;
 
 import org.miradi.main.EAM;
 import org.miradi.objects.AbstractTarget;
-import org.miradi.objects.Goal;
+import org.miradi.schemas.GoalSchema;
 
 public class DeleteGoal extends DeleteAnnotationDoer
 {
@@ -40,6 +40,6 @@ public class DeleteGoal extends DeleteAnnotationDoer
 	@Override
 	public int getAnnotationType()
 	{
-		return Goal.getObjectType();
+		return GoalSchema.getObjectType();
 	}
 }
