@@ -47,6 +47,7 @@ import org.miradi.objects.TableSettings;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ViewData;
+import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.TableWithColumnWidthAndSequenceSaver;
 
@@ -249,7 +250,7 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 	
 	private boolean wereKeasAddedOrRemoved(CommandExecutedEvent event)
 	{
-		if (event.isSetDataCommandWithThisTypeAndTag(HumanWelfareTarget.getObjectType(), HumanWelfareTarget.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS))
+		if (event.isSetDataCommandWithThisTypeAndTag(HumanWelfareTargetSchema.getObjectType(), HumanWelfareTarget.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS))
 			return true;
 		
 		return event.isSetDataCommandWithThisTypeAndTag(Target.getObjectType(), Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);

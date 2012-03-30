@@ -28,6 +28,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.project.TNCViabilityFormula;
+import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.KeyEcologicalAttributeSchema;
 import org.miradi.utils.CodeList;
@@ -80,7 +81,7 @@ public class KeyEcologicalAttribute extends BaseObject
 	{
 		return new int[] {
 			Target.getObjectType(),
-			HumanWelfareTarget.getObjectType(),
+			HumanWelfareTargetSchema.getObjectType(),
 			};
 	}
 	

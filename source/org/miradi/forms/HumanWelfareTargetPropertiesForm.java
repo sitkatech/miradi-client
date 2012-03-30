@@ -24,7 +24,7 @@ import org.miradi.forms.objects.AbstractTargetPropertiesForm;
 import org.miradi.icons.AbstractMiradiIcon;
 import org.miradi.icons.HumanWelfareTargetIcon;
 import org.miradi.main.EAM;
-import org.miradi.objects.HumanWelfareTarget;
+import org.miradi.schemas.HumanWelfareTargetSchema;
 
 public class HumanWelfareTargetPropertiesForm extends AbstractTargetPropertiesForm
 {
@@ -43,7 +43,7 @@ public class HumanWelfareTargetPropertiesForm extends AbstractTargetPropertiesFo
 	@Override
 	protected int getTargetType()
 	{
-		return HumanWelfareTarget.getObjectType();
+		return HumanWelfareTargetSchema.getObjectType();
 	}
 
 	@Override

@@ -22,7 +22,6 @@ package org.miradi.objects;
 
 import org.miradi.ids.FactorId;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.HumanWelfareTargetSchema;
@@ -49,20 +48,15 @@ public class HumanWelfareTarget extends AbstractTarget
 	@Override
 	public int getType()
 	{
-		return getObjectType();
+		return HumanWelfareTargetSchema.getObjectType();
 	}
 	
 	@Override
 	public String getTypeName()
 	{
-		return OBJECT_NAME;
+		return HumanWelfareTargetSchema.OBJECT_NAME;
 	}
 
-	public static int getObjectType()
-	{
-		return ObjectType.HUMAN_WELFARE_TARGET;
-	}
-	
 	public static HumanWelfareTarget find(ObjectManager objectManager, ORef humanWelfareTargetRef)
 	{
 		return (HumanWelfareTarget) objectManager.findObject(humanWelfareTargetRef);
@@ -80,13 +74,11 @@ public class HumanWelfareTarget extends AbstractTarget
 	
 	public static boolean is(int objectType)
 	{
-		return objectType == getObjectType();
+		return objectType == HumanWelfareTargetSchema.getObjectType();
 	}
 		
 	public static boolean is(ORef ref)
 	{
 		return is(ref.getObjectType());
-	}
-	
-	public static final String OBJECT_NAME = "HumanWelfareTarget";	
+	}	
 }

@@ -21,7 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.diagram.doers;
 
 import org.miradi.main.EAM;
-import org.miradi.objects.HumanWelfareTarget;
+import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.views.diagram.InsertFactorDoer;
 
 public class InsertHumanWelfareTargetDoer extends InsertFactorDoer
@@ -29,7 +29,7 @@ public class InsertHumanWelfareTargetDoer extends InsertFactorDoer
 	@Override
 	public int getTypeToInsert()
 	{
-		return HumanWelfareTarget.getObjectType();
+		return HumanWelfareTargetSchema.getObjectType();
 	}
 
 	@Override
@@ -41,6 +41,6 @@ public class InsertHumanWelfareTargetDoer extends InsertFactorDoer
 	@Override
 	public void forceVisibleInLayerManager() throws Exception
 	{
-		getCurrentLayerManager().setVisibility(HumanWelfareTarget.OBJECT_NAME, true);
+		getCurrentLayerManager().setVisibility(HumanWelfareTargetSchema.OBJECT_NAME, true);
 	}
 }

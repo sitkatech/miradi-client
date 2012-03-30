@@ -25,6 +25,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.SubTargetSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -57,7 +58,7 @@ public class SubTarget extends BaseObject
 	{
 		return new int[] {
 			Target.getObjectType(),
-			HumanWelfareTarget.getObjectType(),
+			HumanWelfareTargetSchema.getObjectType(),
 			};
 	}
 	
