@@ -20,13 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz;
 
-import org.miradi.objects.IucnRedlistSpecies;
+import org.miradi.schemas.IucnRedlistSpeciesSchema;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class IucnRedListspeciesPoolImporter extends AbstractBaseObjectPoolImporter
 {
 	public IucnRedListspeciesPoolImporter(XmpzXmlImporter importerToUse)
 	{
-		super(importerToUse, XmpzXmlConstants.IUCN_REDLIST_SPECIES, IucnRedlistSpecies.getObjectType());
+		super(importerToUse, XmpzXmlConstants.IUCN_REDLIST_SPECIES, IucnRedlistSpeciesSchema.getObjectType());
 	}
 }

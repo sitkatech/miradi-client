@@ -26,8 +26,8 @@ import org.miradi.actions.ActionCreateIucnRedlistSpecies;
 import org.miradi.actions.ActionDeleteIucnRedlistSpecies;
 import org.miradi.dialogs.base.EditableObjectPoolTableSubPanel;
 import org.miradi.main.EAM;
-import org.miradi.objects.IucnRedlistSpecies;
 import org.miradi.project.Project;
+import org.miradi.schemas.IucnRedlistSpeciesSchema;
 import org.miradi.views.umbrella.ObjectPicker;
 
 public class IucnRedlistSpeciesSubPanel extends EditableObjectPoolTableSubPanel
@@ -68,6 +68,6 @@ public class IucnRedlistSpeciesSubPanel extends EditableObjectPoolTableSubPanel
 
 	private static int getObjectType()
 	{
-		return IucnRedlistSpecies.getObjectType();
+		return IucnRedlistSpeciesSchema.getObjectType();
 	}
 }

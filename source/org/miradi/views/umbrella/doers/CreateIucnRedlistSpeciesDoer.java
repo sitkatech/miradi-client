@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.umbrella.doers;
 
-import org.miradi.objects.IucnRedlistSpecies;
+import org.miradi.schemas.IucnRedlistSpeciesSchema;
 import org.miradi.views.planning.doers.CreatePoolObjectDoer;
 
 public class CreateIucnRedlistSpeciesDoer extends CreatePoolObjectDoer
@@ -28,6 +28,6 @@ public class CreateIucnRedlistSpeciesDoer extends CreatePoolObjectDoer
 	@Override
 	protected int getTypeToCreate()
 	{
-		return IucnRedlistSpecies.getObjectType();
+		return IucnRedlistSpeciesSchema.getObjectType();
 	}
 }
