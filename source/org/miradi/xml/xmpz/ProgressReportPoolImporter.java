@@ -23,6 +23,7 @@ package org.miradi.xml.xmpz;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ProgressReport;
 import org.miradi.questions.ProgressReportLongStatusQuestion;
+import org.miradi.schemas.ProgressReportSchema;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.w3c.dom.Node;
 
@@ -30,7 +31,7 @@ public class ProgressReportPoolImporter extends AbstractBaseObjectPoolImporter
 {
 	public ProgressReportPoolImporter(XmpzXmlImporter importerToUse)
 	{
-		super(importerToUse, XmpzXmlConstants.PROGRESS_REPORT, ProgressReport.getObjectType());
+		super(importerToUse, XmpzXmlConstants.PROGRESS_REPORT, ProgressReportSchema.getObjectType());
 	}
 	
 	@Override

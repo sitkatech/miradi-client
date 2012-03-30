@@ -22,9 +22,9 @@ package org.miradi.views.diagram.doers;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
-import org.miradi.objects.ProgressReport;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
+import org.miradi.schemas.ProgressReportSchema;
 
 public class CreateProgressReportDoer extends AbstractCreateProgressDoer
 {
@@ -58,6 +58,6 @@ public class CreateProgressReportDoer extends AbstractCreateProgressDoer
 	@Override
 	public int getAnnotationType()
 	{
-		return ProgressReport.getObjectType();
+		return ProgressReportSchema.getObjectType();
 	}
 }

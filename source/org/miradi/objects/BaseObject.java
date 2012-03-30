@@ -85,6 +85,7 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.schemas.ProgressReportSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
@@ -455,7 +456,7 @@ abstract public class BaseObject
 			return ResourceAssignmentSchema.getObjectType();
 		
 		if (tag.equals(TAG_PROGRESS_REPORT_REFS))
-			return ProgressReport.getObjectType();
+			return ProgressReportSchema.getObjectType();
 		
 		throw new RuntimeException("Cannot find annotation type for " + tag);
 	}

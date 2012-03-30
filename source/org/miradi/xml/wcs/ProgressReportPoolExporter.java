@@ -24,12 +24,13 @@ import org.martus.util.UnicodeWriter;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProgressReport;
 import org.miradi.questions.ProgressReportLongStatusQuestion;
+import org.miradi.schemas.ProgressReportSchema;
 
 public class ProgressReportPoolExporter extends BaseObjectPoolExporter
 {
 	public ProgressReportPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
-		super(wcsXmlExporterToUse, PROGRESS_REPORT, ProgressReport.getObjectType());
+		super(wcsXmlExporterToUse, PROGRESS_REPORT, ProgressReportSchema.getObjectType());
 	}
 	
 	@Override

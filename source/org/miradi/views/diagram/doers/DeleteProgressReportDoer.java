@@ -21,7 +21,7 @@ package org.miradi.views.diagram.doers;
 
 import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.ProgressReport;
+import org.miradi.schemas.ProgressReportSchema;
 import org.miradi.views.diagram.DeleteAnnotationDoer;
 
 public class DeleteProgressReportDoer extends DeleteAnnotationDoer
@@ -41,7 +41,7 @@ public class DeleteProgressReportDoer extends DeleteAnnotationDoer
 	@Override
 	public int getAnnotationType()
 	{
-		return ProgressReport.getObjectType();
+		return ProgressReportSchema.getObjectType();
 	}
 
 	@Override

@@ -30,6 +30,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.questions.StrategyStatusQuestion;
+import org.miradi.schemas.ProgressReportSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.CommandVector;
@@ -137,7 +138,7 @@ public class TestStrategy extends AbstractObjectWithBudgetDataToDeleteTestCase
 	public void testCreateCommandsToDeleteChildren() throws Exception
 	{
 		Strategy strategy = getProject().createStrategy();		
-		TestObjective.verifyAnnotationIsDeletedFromParent(getProject(), strategy, Strategy.TAG_PROGRESS_REPORT_REFS, ProgressReport.getObjectType());
+		TestObjective.verifyAnnotationIsDeletedFromParent(getProject(), strategy, Strategy.TAG_PROGRESS_REPORT_REFS, ProgressReportSchema.getObjectType());
 	}
 	
 	public void testStrategyIsRemovedFromObjectiveRelevancyList() throws Exception
