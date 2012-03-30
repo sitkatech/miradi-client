@@ -28,7 +28,6 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.ThreatReductionResult;
 import org.miradi.questions.DiagramFactorBackgroundQuestion;
 import org.miradi.questions.DiagramFactorFontColorQuestion;
 import org.miradi.questions.DiagramFactorFontSizeQuestion;
@@ -45,6 +44,7 @@ import org.miradi.schemas.StressSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.schemas.TextBoxSchema;
+import org.miradi.schemas.ThreatReductionResultSchema;
 import org.miradi.utils.EnhancedJsonObject;
 import org.w3c.dom.Node;
 
@@ -137,7 +137,7 @@ public class DiagramFactorPoolImporter extends AbstractBaseObjectPoolImporter
 			return IntermediateResultSchema.getObjectType();
 		
 		if (objectTypeName.equals(THREAT_REDUCTION_RESULTS))
-			return ThreatReductionResult.getObjectType();
+			return ThreatReductionResultSchema.getObjectType();
 		
 		if (objectTypeName.equals(TEXT_BOX))
 			return TextBoxSchema.getObjectType();

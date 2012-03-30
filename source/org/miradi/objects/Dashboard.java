@@ -52,6 +52,7 @@ import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.TaskSchema;
+import org.miradi.schemas.ThreatReductionResultSchema;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.OptionalDouble;
 
@@ -484,7 +485,7 @@ public class Dashboard extends BaseObject
 
 	private String getThreatReductionResultIndicatorsCount()
 	{
-		int factorType = ThreatReductionResult.getObjectType();
+		int factorType = ThreatReductionResultSchema.getObjectType();
 		ORefSet factorRefs = getProject().getPool(factorType).getRefSet();
 		return getIndicatorCountForFactors(factorRefs);
 	}

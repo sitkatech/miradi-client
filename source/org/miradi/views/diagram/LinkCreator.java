@@ -38,7 +38,6 @@ import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
-import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.DiagramLinkSchema;
@@ -47,6 +46,7 @@ import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IntermediateResultSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
+import org.miradi.schemas.ThreatReductionResultSchema;
 
 
 //FIXME low: Examine all the methods and try to make it more uniform, simpler, etc....
@@ -425,7 +425,7 @@ public class LinkCreator
 		int[] linkableTypesArray = {StrategySchema.getObjectType(), 
 							   CauseSchema.getObjectType(), 
 							   IntermediateResultSchema.getObjectType(), 
-							   ThreatReductionResult.getObjectType(), 
+							   ThreatReductionResultSchema.getObjectType(), 
 							   TargetSchema.getObjectType(),
 							   HumanWelfareTargetSchema.getObjectType(),
 							   GroupBoxSchema.getObjectType(), };  

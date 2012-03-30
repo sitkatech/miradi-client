@@ -44,7 +44,6 @@ import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.SubTarget;
 import org.miradi.objects.Task;
-import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
 import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.BudgetCategoryOneSchema;
@@ -63,6 +62,7 @@ import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.TaskSchema;
+import org.miradi.schemas.ThreatReductionResultSchema;
 import org.miradi.utils.BaseObjectDateDescendingAndIdComparator;
 import org.miradi.utils.CodeList;
 
@@ -171,7 +171,7 @@ abstract public class AbstractTreeRebuilder
 			KeyEcologicalAttribute.getObjectType(),
 			CauseSchema.getObjectType(),
 			IntermediateResultSchema.getObjectType(),
-			ThreatReductionResult.getObjectType(),
+			ThreatReductionResultSchema.getObjectType(),
 			
 			SubTarget.getObjectType(),
 			GoalSchema.getObjectType(),
@@ -409,7 +409,7 @@ abstract public class AbstractTreeRebuilder
 			GoalSchema.getObjectType(),
 			SubTarget.getObjectType(),
 			CauseSchema.getObjectType(),
-			ThreatReductionResult.getObjectType(),
+			ThreatReductionResultSchema.getObjectType(),
 			IntermediateResultSchema.getObjectType(),
 			ObjectiveSchema.getObjectType(),
 			StrategySchema.getObjectType(),

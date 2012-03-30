@@ -20,10 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.ThreatReductionResult;
 
 public class ThreatReductionResultSchema extends FactorSchema
 {
+	public static final String OBJECT_NAME = "ThreatReductionResult";
+
 	public ThreatReductionResultSchema()
 	{
 		super();
@@ -35,5 +38,10 @@ public class ThreatReductionResultSchema extends FactorSchema
 		super.fillFieldSchemas();
 		
 		createFieldSchemaRef(ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF);
+	}
+
+	public static int getObjectType()
+	{
+		return ObjectType.THREAT_REDUCTION_RESULT;
 	}
 }

@@ -151,6 +151,7 @@ import org.miradi.schemas.StressSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.schemas.TextBoxSchema;
+import org.miradi.schemas.ThreatReductionResultSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.DateRange;
@@ -953,7 +954,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 
 	public ThreatReductionResult createThreatReductionResult() throws Exception
 	{
-		ORef threatReductionResultRef = createObject(ThreatReductionResult.getObjectType());
+		ORef threatReductionResultRef = createObject(ThreatReductionResultSchema.getObjectType());
 		return ThreatReductionResult.find(this, threatReductionResultRef);
 	}
 	

@@ -28,6 +28,7 @@ import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.IntermediateResultSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.StrategySchema;
+import org.miradi.schemas.ThreatReductionResultSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
 
@@ -62,7 +63,7 @@ public class Objective extends Desire
 			StrategySchema.getObjectType(),
 			CauseSchema.getObjectType(),
 			IntermediateResultSchema.getObjectType(),
-			ThreatReductionResult.getObjectType(),
+			ThreatReductionResultSchema.getObjectType(),
 			};
 	}
 	

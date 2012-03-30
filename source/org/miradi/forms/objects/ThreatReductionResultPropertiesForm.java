@@ -21,11 +21,12 @@ package org.miradi.forms.objects;
 
 import org.miradi.forms.FieldPanelSpec;
 import org.miradi.objects.ThreatReductionResult;
+import org.miradi.schemas.ThreatReductionResultSchema;
 
 public class ThreatReductionResultPropertiesForm extends FieldPanelSpec
 {
 	public ThreatReductionResultPropertiesForm()
 	{
-		addLabelAndField(ThreatReductionResult.getObjectType(), ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF);
+		addLabelAndField(ThreatReductionResultSchema.getObjectType(), ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF);
 	}
 }

@@ -21,14 +21,14 @@ package org.miradi.dialogs.planning.propertiesPanel;
 
 import org.miradi.icons.ThreatReductionResultIcon;
 import org.miradi.main.EAM;
-import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
+import org.miradi.schemas.ThreatReductionResultSchema;
 
 public class PlanningViewThreatReductionResultPropertiesPanel extends MinimalFactorPropertiesPanel
 {
 	public PlanningViewThreatReductionResultPropertiesPanel(Project projectToUse) throws Exception
 	{
-		super(projectToUse, ThreatReductionResult.getObjectType());
+		super(projectToUse, ThreatReductionResultSchema.getObjectType());
 		
 		createAndAddFields(EAM.text("Threat Reduction Result"), new ThreatReductionResultIcon());
 	}

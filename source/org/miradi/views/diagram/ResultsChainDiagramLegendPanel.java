@@ -27,10 +27,10 @@ import org.miradi.actions.Actions;
 import org.miradi.icons.ActivityIcon;
 import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.MainWindow;
-import org.miradi.objects.ThreatReductionResult;
 import org.miradi.schemas.IntermediateResultSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.TaskSchema;
+import org.miradi.schemas.ThreatReductionResultSchema;
 
 public class ResultsChainDiagramLegendPanel extends DiagramLegendPanel
 {
@@ -42,7 +42,7 @@ public class ResultsChainDiagramLegendPanel extends DiagramLegendPanel
 	@Override
 	protected void createCustomLegendPanelSection(Actions actions, JPanel jpanel)
 	{
-		addButtonLineWithCheckBox(jpanel, ThreatReductionResult.getObjectType(), ThreatReductionResult.OBJECT_NAME, actions.get(ActionInsertThreatReductionResult.class));
+		addButtonLineWithCheckBox(jpanel, ThreatReductionResultSchema.getObjectType(), ThreatReductionResultSchema.OBJECT_NAME, actions.get(ActionInsertThreatReductionResult.class));
 		addButtonLineWithCheckBox(jpanel, IntermediateResultSchema.getObjectType(), IntermediateResultSchema.OBJECT_NAME, actions.get(ActionInsertIntermediateResult.class));
 	}
 	

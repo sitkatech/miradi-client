@@ -43,24 +43,19 @@ public class ThreatReductionResult extends Factor
 	@Override
 	public int getType()
 	{
-		return getObjectType();
+		return ThreatReductionResultSchema.getObjectType();
 	}
 	
 	@Override
 	public String getTypeName()
 	{
-		return OBJECT_NAME;
+		return ThreatReductionResultSchema.OBJECT_NAME;
 	}
 
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;
-	}
-	
-	public static int getObjectType()
-	{
-		return ObjectType.THREAT_REDUCTION_RESULT;
 	}
 	
 	@Override
@@ -114,7 +109,7 @@ public class ThreatReductionResult extends Factor
 	
 	public static boolean is(int objectType)
 	{
-		return objectType == getObjectType();
+		return objectType == ThreatReductionResultSchema.getObjectType();
 	}
 	
 	public static ThreatReductionResult find(ObjectManager objectManager, ORef threatReductionResultRef)
@@ -128,5 +123,4 @@ public class ThreatReductionResult extends Factor
 	}
 	
 	public static final String TAG_RELATED_DIRECT_THREAT_REF = "RelatedDirectThreatRef";
-	public static final String OBJECT_NAME = "ThreatReductionResult";
 }

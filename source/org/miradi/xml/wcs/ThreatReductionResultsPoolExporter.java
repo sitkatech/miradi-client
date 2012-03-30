@@ -24,12 +24,13 @@ import org.martus.util.UnicodeWriter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ThreatReductionResult;
+import org.miradi.schemas.ThreatReductionResultSchema;
 
 public class ThreatReductionResultsPoolExporter extends FactorPoolExporter
 {
 	public ThreatReductionResultsPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
-		super(wcsXmlExporterToUse, THREAT_REDUCTION_RESULTS, ThreatReductionResult.getObjectType());
+		super(wcsXmlExporterToUse, THREAT_REDUCTION_RESULTS, ThreatReductionResultSchema.getObjectType());
 	}
 	
 	@Override
