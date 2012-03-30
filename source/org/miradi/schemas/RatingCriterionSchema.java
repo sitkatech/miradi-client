@@ -20,10 +20,19 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import org.miradi.objecthelpers.ObjectType;
+
 public class RatingCriterionSchema extends BaseObjectSchema
 {
+	public static final String OBJECT_NAME = "RatingCriterion";
+
 	public RatingCriterionSchema()
 	{
 		super();
+	}
+
+	public static int getObjectType()
+	{
+		return ObjectType.RATING_CRITERION;
 	}
 }

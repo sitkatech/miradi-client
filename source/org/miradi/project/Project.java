@@ -125,6 +125,7 @@ import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.FosProjectDataSchema;
 import org.miradi.schemas.ObjectTreeTableConfigurationSchema;
 import org.miradi.schemas.RareProjectDataSchema;
+import org.miradi.schemas.RatingCriterionSchema;
 import org.miradi.schemas.ScopeBoxSchema;
 import org.miradi.schemas.TextBoxSchema;
 import org.miradi.utils.CodeList;
@@ -893,7 +894,7 @@ public class Project
 
 	private void createMissingSimpleThreatRatingCriteria() throws Exception
 	{
-		if(getPool(RatingCriterion.getObjectType()).size() > 0)
+		if(getPool(RatingCriterionSchema.getObjectType()).size() > 0)
 			return;
 		
 		createDefaultRatingCriterion("Scope"); 
@@ -903,7 +904,7 @@ public class Project
 
 	private void createDefaultRatingCriterion(String label) throws Exception
 	{
-		ORef createdRef = createObject(RatingCriterion.getObjectType());
+		ORef createdRef = createObject(RatingCriterionSchema.getObjectType());
 		CommandSetObjectData setLabel = new CommandSetObjectData(createdRef, RatingCriterion.TAG_LABEL, label);
 		executeWithoutRecording(setLabel);		
 	}
