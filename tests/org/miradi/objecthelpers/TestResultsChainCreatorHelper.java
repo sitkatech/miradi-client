@@ -32,6 +32,7 @@ import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Strategy;
 import org.miradi.project.ResultsChainCreatorHelper;
 import org.miradi.schemas.CauseSchema;
+import org.miradi.schemas.IntermediateResultSchema;
 
 public class TestResultsChainCreatorHelper extends TestCaseWithProject
 {
@@ -70,7 +71,7 @@ public class TestResultsChainCreatorHelper extends TestCaseWithProject
 	{
 		Cause cause = getProject().createCause();
 		ORef causeRef = cause.getRef();
-		ORef intermediateResultRef = getProject().createObject(IntermediateResult.getObjectType());
+		ORef intermediateResultRef = getProject().createObject(IntermediateResultSchema.getObjectType());
 		IntermediateResult intermediateResult = IntermediateResult.find(getProject(), intermediateResultRef);
 		
 		ResultsChainCreatorHelper helper = new ResultsChainCreatorHelper(getProject(), getDiagramModel(), new FactorCell[0]);

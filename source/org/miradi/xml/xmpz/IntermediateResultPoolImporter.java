@@ -21,7 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz;
 
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.IntermediateResult;
+import org.miradi.schemas.IntermediateResultSchema;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.w3c.dom.Node;
 
@@ -29,7 +29,7 @@ public class IntermediateResultPoolImporter extends FactorPoolImporter
 {
 	public IntermediateResultPoolImporter(XmpzXmlImporter importerToUse)
 	{
-		super(importerToUse, XmpzXmlConstants.INTERMEDIATE_RESULTS, IntermediateResult.getObjectType());
+		super(importerToUse, XmpzXmlConstants.INTERMEDIATE_RESULTS, IntermediateResultSchema.getObjectType());
 	}
 	
 	@Override

@@ -38,7 +38,6 @@ import org.miradi.objects.Desire;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
-import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
@@ -58,6 +57,7 @@ import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.IntermediateResultSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
@@ -169,7 +169,7 @@ abstract public class AbstractTreeRebuilder
 			HumanWelfareTargetSchema.getObjectType(),
 			KeyEcologicalAttribute.getObjectType(),
 			CauseSchema.getObjectType(),
-			IntermediateResult.getObjectType(),
+			IntermediateResultSchema.getObjectType(),
 			ThreatReductionResult.getObjectType(),
 			
 			SubTarget.getObjectType(),
@@ -409,7 +409,7 @@ abstract public class AbstractTreeRebuilder
 			SubTarget.getObjectType(),
 			CauseSchema.getObjectType(),
 			ThreatReductionResult.getObjectType(),
-			IntermediateResult.getObjectType(),
+			IntermediateResultSchema.getObjectType(),
 			ObjectiveSchema.getObjectType(),
 			Strategy.getObjectType(),
 			IndicatorSchema.getObjectType(),

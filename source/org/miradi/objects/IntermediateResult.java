@@ -49,24 +49,19 @@ public class IntermediateResult extends Factor
 	@Override
 	public int getType()
 	{
-		return getObjectType();
+		return IntermediateResultSchema.getObjectType();
 	}
 	
 	@Override
 	public String getTypeName()
 	{
-		return OBJECT_NAME;
+		return IntermediateResultSchema.OBJECT_NAME;
 	}
 
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;
-	}
-	
-	public static int getObjectType()
-	{
-		return ObjectType.INTERMEDIATE_RESULT;
 	}
 	
 	@Override
@@ -96,7 +91,7 @@ public class IntermediateResult extends Factor
 	
 	public static boolean is(int objectType)
 	{
-		return objectType == getObjectType();
+		return objectType == IntermediateResultSchema.getObjectType();
 	}
 	
 	public static IntermediateResult find(ObjectManager objectManager, ORef intermediateResultRef)
@@ -108,6 +103,4 @@ public class IntermediateResult extends Factor
 	{
 		return find(project.getObjectManager(), intermediateResultRef);
 	}
-	
-	public static final String OBJECT_NAME = "IntermediateResult";
 }

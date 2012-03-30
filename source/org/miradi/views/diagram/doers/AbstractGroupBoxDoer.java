@@ -27,12 +27,12 @@ import org.miradi.diagram.cells.FactorCell;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.GroupBoxSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
+import org.miradi.schemas.IntermediateResultSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.views.diagram.LocationDoer;
 
@@ -131,7 +131,7 @@ abstract public class AbstractGroupBoxDoer extends LocationDoer
 				type == HumanWelfareTargetSchema.getObjectType() ||
 				type == CauseSchema.getObjectType() || 
 				type == Strategy.getObjectType() ||
-				type == IntermediateResult.getObjectType() || 
+				type == IntermediateResultSchema.getObjectType() || 
 				type == ThreatReductionResult.getObjectType());
 	}
 	

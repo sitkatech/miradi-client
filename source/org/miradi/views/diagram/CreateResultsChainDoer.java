@@ -30,12 +30,12 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Factor;
-import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.project.ResultsChainCreatorHelper;
+import org.miradi.schemas.IntermediateResultSchema;
 import org.miradi.views.ViewDoer;
 
 public class CreateResultsChainDoer extends ViewDoer
@@ -95,7 +95,7 @@ public class CreateResultsChainDoer extends ViewDoer
 		ResultsChainDiagram resultsChain = ResultsChainDiagram.find(project, newResultsChainRef);
 		HashSet<Factor> factors = new HashSet<Factor>();
 		factors.addAll(resultsChain.getFactorsOfType(ThreatReductionResult.getObjectType()));
-		factors.addAll(resultsChain.getFactorsOfType(IntermediateResult.getObjectType()));
+		factors.addAll(resultsChain.getFactorsOfType(IntermediateResultSchema.getObjectType()));
 		for (Factor factor :factors)
 		{
 			if (factor.getDirectOrIndirectIndicatorRefs().hasRefs())
