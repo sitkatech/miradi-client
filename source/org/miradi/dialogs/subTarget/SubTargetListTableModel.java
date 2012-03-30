@@ -24,12 +24,13 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.SubTarget;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
+import org.miradi.schemas.SubTargetSchema;
 
 public class SubTargetListTableModel extends ObjectListTableModel
 {
 	public SubTargetListTableModel(Project projectToUse, ORef nodeRef)
 	{
-		super(projectToUse, nodeRef, Target.TAG_SUB_TARGET_REFS, SubTarget.getObjectType(), COLUMN_TAGS);
+		super(projectToUse, nodeRef, Target.TAG_SUB_TARGET_REFS, SubTargetSchema.getObjectType(), COLUMN_TAGS);
 	}
 	
 	@Override

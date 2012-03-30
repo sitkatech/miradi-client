@@ -26,12 +26,13 @@ import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objects.SubTarget;
 import org.miradi.project.Project;
+import org.miradi.schemas.SubTargetSchema;
 
 public class SubTargetPropertiesPanel extends ObjectDataInputPanel
 {
 	public SubTargetPropertiesPanel(Project projectToUse) throws Exception
 	{
-		super(projectToUse, SubTarget.getObjectType(), BaseId.INVALID);
+		super(projectToUse, SubTargetSchema.getObjectType(), BaseId.INVALID);
 			
 		ObjectDataInputField shortLabelField = createShortStringField(SubTarget.TAG_SHORT_LABEL);
 		ObjectDataInputField labelField = createExpandableField(SubTarget.TAG_LABEL);

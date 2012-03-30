@@ -41,6 +41,7 @@ import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.KeyEcologicalAttributeSchema;
+import org.miradi.schemas.SubTargetSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -137,7 +138,7 @@ abstract public class AbstractTarget extends Factor
 	public int getAnnotationType(String tag)
 	{
 		if (tag.equals(TAG_SUB_TARGET_REFS))
-			return SubTarget.getObjectType();
+			return SubTargetSchema.getObjectType();
 		
 		if (tag.equals(TAG_GOAL_IDS))
 			return GoalSchema.getObjectType();

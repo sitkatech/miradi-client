@@ -40,7 +40,6 @@ import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
-import org.miradi.objects.SubTarget;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
 import org.miradi.schemas.AccountingCodeSchema;
@@ -61,6 +60,7 @@ import org.miradi.schemas.ProjectResourceSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.StrategySchema;
+import org.miradi.schemas.SubTargetSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.schemas.ThreatReductionResultSchema;
@@ -174,7 +174,7 @@ abstract public class AbstractTreeRebuilder
 			IntermediateResultSchema.getObjectType(),
 			ThreatReductionResultSchema.getObjectType(),
 			
-			SubTarget.getObjectType(),
+			SubTargetSchema.getObjectType(),
 			GoalSchema.getObjectType(),
 			ObjectiveSchema.getObjectType(),
 			IndicatorSchema.getObjectType(),
@@ -408,7 +408,7 @@ abstract public class AbstractTreeRebuilder
 			ConceptualModelDiagramSchema.getObjectType(),
 			MeasurementSchema.getObjectType(),
 			GoalSchema.getObjectType(),
-			SubTarget.getObjectType(),
+			SubTargetSchema.getObjectType(),
 			CauseSchema.getObjectType(),
 			ThreatReductionResultSchema.getObjectType(),
 			IntermediateResultSchema.getObjectType(),

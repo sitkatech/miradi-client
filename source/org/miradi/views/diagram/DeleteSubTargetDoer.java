@@ -21,8 +21,8 @@ package org.miradi.views.diagram;
 
 import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.SubTarget;
 import org.miradi.objects.Target;
+import org.miradi.schemas.SubTargetSchema;
 
 public class DeleteSubTargetDoer extends DeleteAnnotationDoer
 {	
@@ -41,7 +41,7 @@ public class DeleteSubTargetDoer extends DeleteAnnotationDoer
 	@Override
 	public int getAnnotationType()
 	{
-		return SubTarget.getObjectType();
+		return SubTargetSchema.getObjectType();
 	}
 
 	@Override

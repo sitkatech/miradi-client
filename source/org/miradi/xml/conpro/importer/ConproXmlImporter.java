@@ -117,6 +117,7 @@ import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.StressSchema;
+import org.miradi.schemas.SubTargetSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.CodeList;
@@ -895,7 +896,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		NodeList subTargetNodes = getNodes(targetNode, NESTED_TARGETS, NESTED_TARGET);
 		for (int nodeIndex = 0; nodeIndex < subTargetNodes.getLength(); ++nodeIndex)
 		{
-			ORef subTargetRef = getProject().createObject(SubTarget.getObjectType());
+			ORef subTargetRef = getProject().createObject(SubTargetSchema.getObjectType());
 			Node subTargetNode = subTargetNodes.item(nodeIndex);
 			
 			importField(subTargetNode, NAME, subTargetRef, SubTarget.TAG_LABEL);
