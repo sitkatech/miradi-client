@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-28 10:10-0500\n"
+"POT-Creation-Date: 2012-03-30 14:09-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -1997,7 +1997,7 @@ msgstr "Sepakati peran tim "
 msgid "All on One Page"
 msgstr "Semua dalam Satu Halaman"
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:78
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:79
 msgid "All subtasks within this item will be removed as well."
 msgstr "Semua subtugas dalam butir ini juga akan dihapus. "
 
@@ -2436,7 +2436,7 @@ msgstr "Tutup "
 msgid "Button|Continue"
 msgstr "Lanjutkan "
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:79
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:80
 msgid "Button|Delete"
 msgstr "Hapus "
 
@@ -2504,7 +2504,7 @@ msgstr "Ganti "
 msgid "Button|Replace Backup"
 msgstr "Ganti Cadangan  "
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:79
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:80
 msgid "Button|Retain"
 msgstr "Pertahankan "
 
@@ -3016,7 +3016,7 @@ msgstr "Lokasi Data"
 msgid "Data was exported as tab delimited."
 msgstr "Data diekspor sebagai data yang dipisahkan oleh tab. "
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:52
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:53
 #: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:46
 msgid "Date"
 msgstr "Tanggal "
@@ -3103,7 +3103,7 @@ msgid "Desert - Temperate"
 msgstr "Gurun - Sedang"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:329
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:80
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:81
 msgid "Desired Future Status"
 msgstr "Status Masa Depan yang Diinginkan "
 
@@ -3118,11 +3118,11 @@ msgstr ""
 "suatu waktu di masa yang akan datang. Biasanya sama dengan sub-sasaran "
 "proyek. "
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:87
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:88
 msgid "Desired Future Value"
 msgstr "Nilai Masa Depan yang Diinginkan "
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:113
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:114
 msgid "Desired Value/Status"
 msgstr "Status/Nilai yang Diinginkan "
 
@@ -3145,7 +3145,7 @@ msgstr "Rinci tindakan, tugas dan pertanggungjawaban "
 msgid "Details"
 msgstr "Perincian "
 
-#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:112
+#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:113
 msgid "Details:"
 msgstr "Rincian: "
 
@@ -3410,7 +3410,7 @@ msgstr ""
 msgid "Error Occurred please try saving under different name."
 msgstr "Terjadi Kesalahan, harap simpan dengan nama lain. "
 
-#: Miradi/source/org/miradi/objects/Dashboard.java:296
+#: Miradi/source/org/miradi/objects/Dashboard.java:297
 msgid "Error Retrieving Data"
 msgstr ""
 
@@ -3580,7 +3580,7 @@ msgstr ""
 "Nama berkas harus mengandung huruf dan angka dan/atau karakter '_' saja. "
 
 #: Miradi/source/org/miradi/xml/AbstractXmlImporter.java:95
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:174
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:175
 msgid "File to import does not validate."
 msgstr "Berkas yang akan diimpor tidak bisa divalidasi. "
 
@@ -3861,7 +3861,7 @@ msgstr "Sasaran "
 msgid "Goals Only"
 msgstr "Sasaran Saja "
 
-#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:100
+#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:101
 msgid "Goals:"
 msgstr "Sasaran: "
 
@@ -3944,7 +3944,7 @@ msgstr ""
 msgid "High"
 msgstr "Tinggi"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1395
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1396
 msgid "High/Very-High Threat Chains"
 msgstr "Rangkaian Ancaman Tinggi/Sangat Tinggi "
 
@@ -4133,10 +4133,10 @@ msgid ""
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:134
-#: Miradi/source/org/miradi/forms/objects/IndicatorSubForm.java:32
+#: Miradi/source/org/miradi/forms/objects/IndicatorSubForm.java:33
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:79
-#: Miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:38
-#: Miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:50
+#: Miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:39
+#: Miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:51
 msgid "Indicator"
 msgstr "Indikator "
 
@@ -4155,7 +4155,7 @@ msgstr ""
 "konsisten, dan sensitif. Dalam Miradi, indikator diwakili oleh bentuk "
 "segitiga warna ungu."
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1293
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1294
 msgid "Indicator Holder"
 msgstr "Pemilik Indikator "
 
@@ -4176,7 +4176,7 @@ msgstr "Indikator "
 msgid "Indicators Only"
 msgstr "Indikator Saja "
 
-#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:94
+#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:95
 msgid "Indicators:"
 msgstr "Indikator: "
 
@@ -4427,7 +4427,7 @@ msgstr "Alamat IM "
 msgid "Label|Initials"
 msgstr "Inisial "
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorMonitoringPlanSubPanel.java:42
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorMonitoringPlanSubPanel.java:43
 msgid "Label|Methods"
 msgstr "Metode "
 
@@ -4642,7 +4642,7 @@ msgstr ""
 msgid "Low"
 msgstr "Rendah"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1396
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1397
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr "Rangkaian Ancaman Rendah/Sedang/Tak Terukur "
 
@@ -4660,11 +4660,11 @@ msgstr ""
 msgid "Manage Stresses for "
 msgstr "Mengelola Tekanan untuk "
 
-#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:406
+#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:407
 msgid "Manage Tagged Object Sets"
 msgstr "Mengelola Kumpulan Obyek yang Ditandai"
 
-#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:132
+#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:133
 msgid "Manage Tags (BETA)..."
 msgstr "Mengelola Tag (BETA)…"
 
@@ -5071,7 +5071,7 @@ msgstr "Ikhtisar Pemantauan "
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:151
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:204
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorMonitoringPlanSubPanel.java:68
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorMonitoringPlanSubPanel.java:69
 msgid "Monitoring Plan"
 msgstr "Rencana Pemantauan "
 
@@ -5214,7 +5214,7 @@ msgstr "Tidak Terspesifikasi "
 msgid "Not Started"
 msgstr "Tidak Dimulai"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:648
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:649
 msgid "Not all classification Codes could imported."
 msgstr "Tidak semua Kode klasifikasi dapat diimpor. "
 
@@ -5256,7 +5256,7 @@ msgstr ""
 "diinginkan dari suatu proyek, seperti mengurangi ancaman kritis. Dalam "
 "Miradi, sasaran diwakili oleh persegi empat kecil warna biru."
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1287
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1288
 msgid "Objective Holder"
 msgstr "Pemilik Tujuan "
 
@@ -5280,7 +5280,7 @@ msgstr "Tujuan Instruksional Saja "
 msgid "Objectives contain Strategies"
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:106
+#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:107
 msgid "Objectives:"
 msgstr "Tujuan Instruksional: "
 
@@ -5429,7 +5429,7 @@ msgstr "Merah Muda"
 msgid "Place scope on diagram"
 msgstr "Tempatkan cakupan pada diagram "
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1283
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1284
 msgid "Placeholder - From ConPro"
 msgstr "Placeholder - Dari ConPro "
 
@@ -6116,7 +6116,7 @@ msgstr "Bagi "
 msgid "Share Activity"
 msgstr "Berbagi Kegiatan "
 
-#: Miradi/source/org/miradi/views/umbrella/doers/TreeNodeShareMethodDoer.java:53
+#: Miradi/source/org/miradi/views/umbrella/doers/TreeNodeShareMethodDoer.java:54
 msgid "Share Method"
 msgstr "Berbagi Metode "
 
@@ -7441,7 +7441,7 @@ msgstr ""
 "subtugas-subtugas. Dalam Miradi, tugas diwakili oleh bentuk oval pipih warna "
 "abu-abu."
 
-#: Miradi/source/org/miradi/objects/Task.java:366
+#: Miradi/source/org/miradi/objects/Task.java:367
 msgid "Task does not have a parent"
 msgstr ""
 
@@ -7647,7 +7647,7 @@ msgstr ""
 "mengekspor ulang proyek ke format lebih lama (yang didukung versi saat "
 "ini).  "
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:76
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:77
 msgid "This item is shared, so will be deleted from multiple places."
 msgstr ""
 "Butir ini digunakan bersama, jadi akan dihapus dari lebih dari satu tempat. "
@@ -7829,7 +7829,7 @@ msgstr "Properti Faktor Kontribusi "
 msgid "Title|Customize Table"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:80
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:81
 msgid "Title|Delete"
 msgstr "Hapus "
 
@@ -8219,7 +8219,7 @@ msgstr ""
 msgid "User Defined Extension"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:54
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:55
 #: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:48
 msgid "Value"
 msgstr "Nilai "
@@ -8264,7 +8264,7 @@ msgstr "Sangat Kecil"
 msgid "Viability Analysis Mode"
 msgstr "Mode Analisis Kelangsungan "
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityRatingsSubPanel.java:98
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityRatingsSubPanel.java:99
 msgid "Viability Ratings"
 msgstr "Peringkat Kelangsungan "
 

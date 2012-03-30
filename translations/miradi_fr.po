@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-28 10:10-0500\n"
+"POT-Creation-Date: 2012-03-30 14:09-0500\n"
 "PO-Revision-Date: 2011-04-05 11:46+0100\n"
 "Last-Translator: Emanuela Leonardi <e.leonardi@gmail.com>\n"
 "Language-Team: none\n"
@@ -2085,7 +2085,7 @@ msgstr "Accepter les rôles de l'équipe"
 msgid "All on One Page"
 msgstr "Tous sur une page"
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:78
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:79
 msgid "All subtasks within this item will be removed as well."
 msgstr "Toutes les tâches subordonnées dans cet élément seront enlevées."
 
@@ -2528,7 +2528,7 @@ msgstr "Fermer"
 msgid "Button|Continue"
 msgstr "Continuer"
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:79
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:80
 msgid "Button|Delete"
 msgstr "Supprimer"
 
@@ -2596,7 +2596,7 @@ msgstr "Remplacer"
 msgid "Button|Replace Backup"
 msgstr "Remplacer sauvegarde"
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:79
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:80
 msgid "Button|Retain"
 msgstr "Conserver"
 
@@ -3113,7 +3113,7 @@ msgstr "Emplacement de données"
 msgid "Data was exported as tab delimited."
 msgstr "Le données ont été exportées comme tabulations séparées."
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:52
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:53
 #: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:46
 msgid "Date"
 msgstr "Date"
@@ -3200,7 +3200,7 @@ msgid "Desert - Temperate"
 msgstr "Désert - Tempéré"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:329
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:80
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:81
 msgid "Desired Future Status"
 msgstr "État futur recherché"
 
@@ -3215,11 +3215,11 @@ msgstr ""
 "moment spécifique dans le futur. En général équivalent à un sous-but du "
 "projet."
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:87
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:88
 msgid "Desired Future Value"
 msgstr "Valeur future souhaitée"
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:113
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:114
 msgid "Desired Value/Status"
 msgstr "Valeur/État souhaité"
 
@@ -3242,7 +3242,7 @@ msgstr "Détail des méthodes, des tâches et des responsabilités"
 msgid "Details"
 msgstr "Détails"
 
-#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:112
+#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:113
 msgid "Details:"
 msgstr "Détails :"
 
@@ -3509,7 +3509,7 @@ msgid "Error Occurred please try saving under different name."
 msgstr ""
 "Une erreur s'est produite. Essayer d'enregistrer sous un nom différent."
 
-#: Miradi/source/org/miradi/objects/Dashboard.java:296
+#: Miradi/source/org/miradi/objects/Dashboard.java:297
 msgid "Error Retrieving Data"
 msgstr "Erreur dans la récupération des données"
 
@@ -3687,7 +3687,7 @@ msgstr ""
 "'_'"
 
 #: Miradi/source/org/miradi/xml/AbstractXmlImporter.java:95
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:174
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:175
 msgid "File to import does not validate."
 msgstr "Impossible de valider le fichier à importer."
 
@@ -3965,7 +3965,7 @@ msgstr "Buts"
 msgid "Goals Only"
 msgstr "Seulement buts"
 
-#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:100
+#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:101
 msgid "Goals:"
 msgstr "Buts :"
 
@@ -4048,7 +4048,7 @@ msgstr "Masquer colonnes trimestre"
 msgid "High"
 msgstr "Haut"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1395
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1396
 msgid "High/Very-High Threat Chains"
 msgstr "Chaînes de menace haute/très haute"
 
@@ -4238,10 +4238,10 @@ msgid ""
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:134
-#: Miradi/source/org/miradi/forms/objects/IndicatorSubForm.java:32
+#: Miradi/source/org/miradi/forms/objects/IndicatorSubForm.java:33
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:79
-#: Miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:38
-#: Miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:50
+#: Miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:39
+#: Miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:51
 msgid "Indicator"
 msgstr "Indicateur"
 
@@ -4259,7 +4259,7 @@ msgstr ""
 "suivants : être mesurable, précis, stable et sensible. Dans Miradi un "
 "indicateur est représenté par un triangle violet."
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1293
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1294
 msgid "Indicator Holder"
 msgstr "Détenteur de l'indicateur"
 
@@ -4280,7 +4280,7 @@ msgstr "Indicateurs"
 msgid "Indicators Only"
 msgstr "Seulement indicateurs"
 
-#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:94
+#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:95
 msgid "Indicators:"
 msgstr "Indicateurs :"
 
@@ -4534,7 +4534,7 @@ msgstr "Adresse IM"
 msgid "Label|Initials"
 msgstr "Initiaux"
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorMonitoringPlanSubPanel.java:42
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorMonitoringPlanSubPanel.java:43
 msgid "Label|Methods"
 msgstr "Méthodes"
 
@@ -4749,7 +4749,7 @@ msgstr ""
 msgid "Low"
 msgstr "Bas"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1396
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1397
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr "Chaînes de menace Basses/Moyennes/Non évaluées"
 
@@ -4767,11 +4767,11 @@ msgstr ""
 msgid "Manage Stresses for "
 msgstr "Gérer les tensions pour"
 
-#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:406
+#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:407
 msgid "Manage Tagged Object Sets"
 msgstr "Gérer l'ensemble d'objets marqués"
 
-#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:132
+#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:133
 msgid "Manage Tags (BETA)..."
 msgstr "Gérer les balises (BETA) ..."
 
@@ -5191,7 +5191,7 @@ msgstr "Aperçu suivi"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:151
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:204
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorMonitoringPlanSubPanel.java:68
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorMonitoringPlanSubPanel.java:69
 msgid "Monitoring Plan"
 msgstr "Plan de suivi"
 
@@ -5341,7 +5341,7 @@ msgstr "Non spécifié"
 msgid "Not Started"
 msgstr "Non démarré"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:648
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:649
 msgid "Not all classification Codes could imported."
 msgstr "Importation partielle des Codes de classification"
 
@@ -5384,7 +5384,7 @@ msgstr ""
 "réduire une menace critique. Dans Miradi un objectif est représenté par un "
 "petit rectangle bleu."
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1287
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1288
 msgid "Objective Holder"
 msgstr "Détenteur objectif"
 
@@ -5408,7 +5408,7 @@ msgstr "Uniquement objectifs"
 msgid "Objectives contain Strategies"
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:106
+#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:107
 msgid "Objectives:"
 msgstr "Objectifs :"
 
@@ -5562,7 +5562,7 @@ msgstr "Rose"
 msgid "Place scope on diagram"
 msgstr "Placer la portée sur le diagramme"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1283
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1284
 msgid "Placeholder - From ConPro"
 msgstr "Espace réservé - De ConPro"
 
@@ -6257,7 +6257,7 @@ msgstr "Partager"
 msgid "Share Activity"
 msgstr "Partager activité"
 
-#: Miradi/source/org/miradi/views/umbrella/doers/TreeNodeShareMethodDoer.java:53
+#: Miradi/source/org/miradi/views/umbrella/doers/TreeNodeShareMethodDoer.java:54
 msgid "Share Method"
 msgstr "Partager méthode"
 
@@ -7610,7 +7610,7 @@ msgstr ""
 "tâches, si nécessaire. Dans Miradi une tâche est représentée par un ovale "
 "aplati gris."
 
-#: Miradi/source/org/miradi/objects/Task.java:366
+#: Miradi/source/org/miradi/objects/Task.java:367
 msgid "Task does not have a parent"
 msgstr "La tâche n'a pas un parent"
 
@@ -7833,7 +7833,7 @@ msgstr ""
 "attendre la version plus récente qui supporte ce format, <br>ou réexporter "
 "le projet à une version du format plus ancien (supportée)."
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:76
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:77
 msgid "This item is shared, so will be deleted from multiple places."
 msgstr ""
 "L'élément est partagé et donc il sera supprimé dans plusieurs emplacements."
@@ -8021,7 +8021,7 @@ msgstr "Propriétés du facteur concourant"
 msgid "Title|Customize Table"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:80
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:81
 msgid "Title|Delete"
 msgstr "Supprimer"
 
@@ -8411,7 +8411,7 @@ msgstr ""
 msgid "User Defined Extension"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:54
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:55
 #: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:48
 msgid "Value"
 msgstr "Valeur"
@@ -8455,7 +8455,7 @@ msgstr "Très petit"
 msgid "Viability Analysis Mode"
 msgstr "Mode viabilité de l'analyse"
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityRatingsSubPanel.java:98
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityRatingsSubPanel.java:99
 msgid "Viability Ratings"
 msgstr "Évaluations de la viabilité"
 

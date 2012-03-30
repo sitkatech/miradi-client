@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-28 10:10-0500\n"
+"POT-Creation-Date: 2012-03-30 14:09-0500\n"
 "PO-Revision-Date: 2011-12-14 10:20-0600\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -1898,7 +1898,7 @@ msgstr ""
 msgid "All on One Page"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:78
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:79
 msgid "All subtasks within this item will be removed as well."
 msgstr ""
 
@@ -2316,7 +2316,7 @@ msgstr ""
 msgid "Button|Continue"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:79
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:80
 msgid "Button|Delete"
 msgstr ""
 
@@ -2384,7 +2384,7 @@ msgstr ""
 msgid "Button|Replace Backup"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:79
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:80
 msgid "Button|Retain"
 msgstr ""
 
@@ -2874,7 +2874,7 @@ msgstr ""
 msgid "Data was exported as tab delimited."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:52
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:53
 #: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:46
 msgid "Date"
 msgstr ""
@@ -2961,7 +2961,7 @@ msgid "Desert - Temperate"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:329
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:80
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:81
 msgid "Desired Future Status"
 msgstr ""
 
@@ -2972,11 +2972,11 @@ msgid ""
 "time in the future. Generally equivalent to a project sub-goal."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:87
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:88
 msgid "Desired Future Value"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:113
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:114
 msgid "Desired Value/Status"
 msgstr ""
 
@@ -2999,7 +2999,7 @@ msgstr ""
 msgid "Details"
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:112
+#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:113
 msgid "Details:"
 msgstr ""
 
@@ -3251,7 +3251,7 @@ msgstr ""
 msgid "Error Occurred please try saving under different name."
 msgstr ""
 
-#: Miradi/source/org/miradi/objects/Dashboard.java:296
+#: Miradi/source/org/miradi/objects/Dashboard.java:297
 msgid "Error Retrieving Data"
 msgstr ""
 
@@ -3413,7 +3413,7 @@ msgid "File name must contain only alpha numeric and/or '_' characters."
 msgstr ""
 
 #: Miradi/source/org/miradi/xml/AbstractXmlImporter.java:95
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:174
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:175
 msgid "File to import does not validate."
 msgstr ""
 
@@ -3675,7 +3675,7 @@ msgstr ""
 msgid "Goals Only"
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:100
+#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:101
 msgid "Goals:"
 msgstr ""
 
@@ -3758,7 +3758,7 @@ msgstr ""
 msgid "High"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1395
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1396
 msgid "High/Very-High Threat Chains"
 msgstr ""
 
@@ -3944,10 +3944,10 @@ msgid ""
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:134
-#: Miradi/source/org/miradi/forms/objects/IndicatorSubForm.java:32
+#: Miradi/source/org/miradi/forms/objects/IndicatorSubForm.java:33
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:79
-#: Miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:38
-#: Miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:50
+#: Miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:39
+#: Miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:51
 msgid "Indicator"
 msgstr ""
 
@@ -3960,7 +3960,7 @@ msgid ""
 "by a purple triangle."
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1293
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1294
 msgid "Indicator Holder"
 msgstr ""
 
@@ -3981,7 +3981,7 @@ msgstr ""
 msgid "Indicators Only"
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:94
+#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:95
 msgid "Indicators:"
 msgstr ""
 
@@ -4224,7 +4224,7 @@ msgstr ""
 msgid "Label|Initials"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorMonitoringPlanSubPanel.java:42
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorMonitoringPlanSubPanel.java:43
 msgid "Label|Methods"
 msgstr ""
 
@@ -4439,7 +4439,7 @@ msgstr ""
 msgid "Low"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1396
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1397
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr ""
 
@@ -4455,11 +4455,11 @@ msgstr ""
 msgid "Manage Stresses for "
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:406
+#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:407
 msgid "Manage Tagged Object Sets"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:132
+#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:133
 msgid "Manage Tags (BETA)..."
 msgstr ""
 
@@ -4846,7 +4846,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:151
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:204
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorMonitoringPlanSubPanel.java:68
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorMonitoringPlanSubPanel.java:69
 msgid "Monitoring Plan"
 msgstr ""
 
@@ -4979,7 +4979,7 @@ msgstr ""
 msgid "Not Started"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:648
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:649
 msgid "Not all classification Codes could imported."
 msgstr ""
 
@@ -5018,7 +5018,7 @@ msgid ""
 "by a small blue rectangle."
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1287
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1288
 msgid "Objective Holder"
 msgstr ""
 
@@ -5042,7 +5042,7 @@ msgstr ""
 msgid "Objectives contain Strategies"
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:106
+#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:107
 msgid "Objectives:"
 msgstr ""
 
@@ -5191,7 +5191,7 @@ msgstr ""
 msgid "Place scope on diagram"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1283
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1284
 msgid "Placeholder - From ConPro"
 msgstr ""
 
@@ -5834,7 +5834,7 @@ msgstr ""
 msgid "Share Activity"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/doers/TreeNodeShareMethodDoer.java:53
+#: Miradi/source/org/miradi/views/umbrella/doers/TreeNodeShareMethodDoer.java:54
 msgid "Share Method"
 msgstr ""
 
@@ -7111,7 +7111,7 @@ msgid ""
 "task is represented by a grey flattened oval."
 msgstr ""
 
-#: Miradi/source/org/miradi/objects/Task.java:366
+#: Miradi/source/org/miradi/objects/Task.java:367
 msgid "Task does not have a parent"
 msgstr ""
 
@@ -7300,7 +7300,7 @@ msgid ""
 "an older (supported) format."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:76
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:77
 msgid "This item is shared, so will be deleted from multiple places."
 msgstr ""
 
@@ -7465,7 +7465,7 @@ msgstr ""
 msgid "Title|Customize Table"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:80
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:81
 msgid "Title|Delete"
 msgstr ""
 
@@ -7844,7 +7844,7 @@ msgstr ""
 msgid "User Defined Extension"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:54
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:55
 #: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:48
 msgid "Value"
 msgstr ""
@@ -7888,7 +7888,7 @@ msgstr ""
 msgid "Viability Analysis Mode"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityRatingsSubPanel.java:98
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityRatingsSubPanel.java:99
 msgid "Viability Ratings"
 msgstr ""
 

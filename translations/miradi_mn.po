@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-28 10:10-0500\n"
+"POT-Creation-Date: 2012-03-30 14:09-0500\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -2062,7 +2062,7 @@ msgstr "Багийн дүрмийг тохирох"
 msgid "All on One Page"
 msgstr "Бүгдийг нэг хуудсанд"
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:78
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:79
 msgid "All subtasks within this item will be removed as well."
 msgstr "Энэ зүйл дэх бүх дагалдах үүрэг мөн адил арилах болно."
 
@@ -2494,7 +2494,7 @@ msgstr "Товчлуур|Хаах"
 msgid "Button|Continue"
 msgstr "Товчлуур|Үргэлжлүүлэх"
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:79
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:80
 msgid "Button|Delete"
 msgstr "Товчлуур|Устгах"
 
@@ -2562,7 +2562,7 @@ msgstr "Товчлуур|Солих"
 msgid "Button|Replace Backup"
 msgstr "Точлуур|Backup солих"
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:79
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:80
 msgid "Button|Retain"
 msgstr "Товчлуур|Хэвээр нь үлдээх"
 
@@ -3075,7 +3075,7 @@ msgstr "Мэдээллийн байршил"
 msgid "Data was exported as tab delimited."
 msgstr "Мэдээлэл таб-тай экспортлогдсон"
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:52
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:53
 #: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:46
 msgid "Date"
 msgstr "Огноо"
@@ -3162,7 +3162,7 @@ msgid "Desert - Temperate"
 msgstr "Цөл - Сэрүүн"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:329
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:80
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:81
 msgid "Desired Future Status"
 msgstr "Хүсэж буй ирээдүйн статус"
 
@@ -3177,11 +3177,11 @@ msgstr ""
 "үзүүлэлтийн ач холбогдлын хэмжээ эсвэл үнэлгээ. Ерөнхийдөө төслийн дэд "
 "зорилготой адил."
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:87
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:88
 msgid "Desired Future Value"
 msgstr "Хүсэж буй ирээдүйн үнэлэмж"
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:113
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:114
 msgid "Desired Value/Status"
 msgstr "Хүсэж буй Үнэлэмж/Статус"
 
@@ -3204,7 +3204,7 @@ msgstr "Тодорхой арга зүй, үүрэг даалгавар, ба х
 msgid "Details"
 msgstr "Дэлгэрэнгүй байдал"
 
-#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:112
+#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:113
 msgid "Details:"
 msgstr "Дэлгэрэнгүй байдал:"
 
@@ -3468,7 +3468,7 @@ msgstr "Ангилахад алдаа"
 msgid "Error Occurred please try saving under different name."
 msgstr "Алдаа гарсан тул өөр нэр өгч хадгалах."
 
-#: Miradi/source/org/miradi/objects/Dashboard.java:296
+#: Miradi/source/org/miradi/objects/Dashboard.java:297
 msgid "Error Retrieving Data"
 msgstr ""
 
@@ -3632,7 +3632,7 @@ msgid "File name must contain only alpha numeric and/or '_' characters."
 msgstr "Файлын нэр зөвхөн альфа тоо ба/ '_'тэмдэгтүүдийг агуулах ёстой."
 
 #: Miradi/source/org/miradi/xml/AbstractXmlImporter.java:95
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:174
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:175
 msgid "File to import does not validate."
 msgstr "Оруулах файл хүчин төгөлдөр болохгүй байна."
 
@@ -3906,7 +3906,7 @@ msgstr "Зорилгууд"
 msgid "Goals Only"
 msgstr "Зөвхөн зорилгууд"
 
-#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:100
+#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:101
 msgid "Goals:"
 msgstr "Зорилгууд:"
 
@@ -3991,7 +3991,7 @@ msgstr "Баганы дөрөвний нэгийг нуух"
 msgid "High"
 msgstr "Өндөр"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1395
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1396
 msgid "High/Very-High Threat Chains"
 msgstr "Өндөр/Маш-Өндөр Аюул Заналын Гинжин Холбоо"
 
@@ -4180,10 +4180,10 @@ msgid ""
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:134
-#: Miradi/source/org/miradi/forms/objects/IndicatorSubForm.java:32
+#: Miradi/source/org/miradi/forms/objects/IndicatorSubForm.java:33
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:79
-#: Miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:38
-#: Miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:50
+#: Miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:39
+#: Miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:51
 msgid "Indicator"
 msgstr "Шалгуур үзүүлэлт"
 
@@ -4201,7 +4201,7 @@ msgstr ""
 "хангасан байдаг : хэмжигдэхүйц, тодорхой, тогтвортой ба мэдрэмтгий.  Шалгуур "
 "үзүүлэлтийг Miradi-д нил ягаан гурвалжингаар төлөөлүүлсэн."
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1293
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1294
 msgid "Indicator Holder"
 msgstr "Indicator Holder"
 
@@ -4222,7 +4222,7 @@ msgstr "Шалгуур үзүүлэлтүүд"
 msgid "Indicators Only"
 msgstr "Зөвхөн шалгуур үзүүлэлтүүд"
 
-#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:94
+#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:95
 msgid "Indicators:"
 msgstr "Шалгуур үзүүлэлтүүд:"
 
@@ -4473,7 +4473,7 @@ msgstr "Хаяг|IM хаяг"
 msgid "Label|Initials"
 msgstr "Хаяг|Нэрийн эхний үсгүүд"
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorMonitoringPlanSubPanel.java:42
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorMonitoringPlanSubPanel.java:43
 msgid "Label|Methods"
 msgstr "Хаяг|Арга зүй"
 
@@ -4688,7 +4688,7 @@ msgstr ""
 msgid "Low"
 msgstr "Сул, бага, доогуур"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1396
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1397
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr "Сул/Дундаж/Үнэлэгдээгүй Аюулын Гинжин холбоос"
 
@@ -4704,11 +4704,11 @@ msgstr "Гол асуудлууд - Анхаарал хандуулах ёсто
 msgid "Manage Stresses for "
 msgstr ".....ны Дарамтыг Удирдах "
 
-#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:406
+#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:407
 msgid "Manage Tagged Object Sets"
 msgstr "Тэмдэглэгдсэн Багц Зорилтыг Удирдах"
 
-#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:132
+#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:133
 msgid "Manage Tags (BETA)..."
 msgstr "Тэмдэглэгээнүүдийг Удирдах (BETA)..."
 
@@ -5108,7 +5108,7 @@ msgstr "Хяналтын тойм үнэлгээ"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:151
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:204
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorMonitoringPlanSubPanel.java:68
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorMonitoringPlanSubPanel.java:69
 msgid "Monitoring Plan"
 msgstr "Хяналтын төлөвлөгөө"
 
@@ -5254,7 +5254,7 @@ msgstr "Тодорхой тайлбарлагдаагүй"
 msgid "Not Started"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:648
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:649
 msgid "Not all classification Codes could imported."
 msgstr "Ангиллын бүх код орсонгүй. "
 
@@ -5296,7 +5296,7 @@ msgstr ""
 "албан ёсны мэдэгдэл. Зорилт нь Miradi-д жижиг цэнхэр тэгш өнцөгтөөр "
 "төлөөллөгдсөн."
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1287
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1288
 msgid "Objective Holder"
 msgstr "Зорилтуудын Хайрцаг"
 
@@ -5320,7 +5320,7 @@ msgstr "Зөвхөн зорилтууд"
 msgid "Objectives contain Strategies"
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:106
+#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:107
 msgid "Objectives:"
 msgstr "Зорилтууд:"
 
@@ -5469,7 +5469,7 @@ msgstr "Ягаан"
 msgid "Place scope on diagram"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1283
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1284
 msgid "Placeholder - From ConPro"
 msgstr ""
 
@@ -6160,7 +6160,7 @@ msgstr "Солилцох"
 msgid "Share Activity"
 msgstr "Солилцох Үйл Ажиллагаа"
 
-#: Miradi/source/org/miradi/views/umbrella/doers/TreeNodeShareMethodDoer.java:53
+#: Miradi/source/org/miradi/views/umbrella/doers/TreeNodeShareMethodDoer.java:54
 msgid "Share Method"
 msgstr "Солилцох Арга Зүй"
 
@@ -7500,7 +7500,7 @@ msgstr ""
 "хуваагдаж болно. Даалгаварыг Miradi-д хавтгай саарал зууван дүрсээр "
 "төлөөлүүлсэн."
 
-#: Miradi/source/org/miradi/objects/Task.java:366
+#: Miradi/source/org/miradi/objects/Task.java:367
 msgid "Task does not have a parent"
 msgstr "Даалгавар гарал үүсэлгүй байна."
 
@@ -7709,7 +7709,7 @@ msgstr ""
 "шинэлэг хувилбарыг хүлээж байгаа, <br> аль эсвэл төслийг хуучин формат руу"
 "(дэмжигддэг) re-export хийж оруул."
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:76
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:77
 msgid "This item is shared, so will be deleted from multiple places."
 msgstr "Энэ зүйлийг хамтаар хэрэглэдэг тул олон газраас устгагдах болно."
 
@@ -7893,7 +7893,7 @@ msgstr "Гарчиг|Хувь нэмэр оруулж буй хүчин зүйл
 msgid "Title|Customize Table"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:80
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:81
 msgid "Title|Delete"
 msgstr "Гарчиг|Устгах"
 
@@ -8282,7 +8282,7 @@ msgstr ""
 msgid "User Defined Extension"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:54
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:55
 #: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:48
 msgid "Value"
 msgstr "ҮнэтЗүйл"
@@ -8326,7 +8326,7 @@ msgstr "Маш Жижигl"
 msgid "Viability Analysis Mode"
 msgstr "Амьдрах Чадварын дүн шинжилгээний горим"
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityRatingsSubPanel.java:98
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityRatingsSubPanel.java:99
 msgid "Viability Ratings"
 msgstr "Амьдрах Чадварын Үнэлгээ"
 

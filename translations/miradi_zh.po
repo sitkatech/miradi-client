@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-28 10:10-0500\n"
+"POT-Creation-Date: 2012-03-30 14:09-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -1930,7 +1930,7 @@ msgstr "就团队角色达成一致 \t\t"
 msgid "All on One Page"
 msgstr "所有内容在一页显示"
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:78
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:79
 msgid "All subtasks within this item will be removed as well."
 msgstr "在本条目之内的所有子任务也将会被删除。 \t\t"
 
@@ -2354,7 +2354,7 @@ msgstr "关闭 \t\t"
 msgid "Button|Continue"
 msgstr "继续 \t\t"
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:79
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:80
 msgid "Button|Delete"
 msgstr "删除 \t\t"
 
@@ -2422,7 +2422,7 @@ msgstr ""
 msgid "Button|Replace Backup"
 msgstr "按钮|替换备份 \t\t"
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:79
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:80
 msgid "Button|Retain"
 msgstr "保留 \t\t"
 
@@ -2927,7 +2927,7 @@ msgstr "数据位置"
 msgid "Data was exported as tab delimited."
 msgstr "数据以制表符分隔格式导出 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:52
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:53
 #: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:46
 msgid "Date"
 msgstr ""
@@ -3014,7 +3014,7 @@ msgid "Desert - Temperate"
 msgstr "沙漠-温带 "
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:329
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:80
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:81
 msgid "Desired Future Status"
 msgstr "期望的未来地位 \t\t"
 
@@ -3026,11 +3026,11 @@ msgid ""
 "time in the future. Generally equivalent to a project sub-goal."
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:87
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:88
 msgid "Desired Future Value"
 msgstr "期望的未来价值 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:113
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:114
 msgid "Desired Value/Status"
 msgstr "期望的价值/地位 \t\t"
 
@@ -3053,7 +3053,7 @@ msgstr "详尽的方法、任务及职责 \t\t"
 msgid "Details"
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:112
+#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:113
 msgid "Details:"
 msgstr "详情： \t\t"
 
@@ -3312,7 +3312,7 @@ msgstr ""
 msgid "Error Occurred please try saving under different name."
 msgstr "出错，请尝试用不同的文件名保存。 \t\t"
 
-#: Miradi/source/org/miradi/objects/Dashboard.java:296
+#: Miradi/source/org/miradi/objects/Dashboard.java:297
 msgid "Error Retrieving Data"
 msgstr ""
 
@@ -3478,7 +3478,7 @@ msgid "File name must contain only alpha numeric and/or '_' characters."
 msgstr "文件名只能包含文字数字和/或'_'字符。 \t\t"
 
 #: Miradi/source/org/miradi/xml/AbstractXmlImporter.java:95
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:174
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:175
 msgid "File to import does not validate."
 msgstr "要导入的文件不正确 \t\t"
 
@@ -3745,7 +3745,7 @@ msgstr "总目标组 \t\t"
 msgid "Goals Only"
 msgstr "仅限于总目标 \t\t"
 
-#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:100
+#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:101
 msgid "Goals:"
 msgstr "总目标组: \t\t"
 
@@ -3828,7 +3828,7 @@ msgstr ""
 msgid "High"
 msgstr "高"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1395
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1396
 msgid "High/Very-High Threat Chains"
 msgstr ""
 
@@ -4014,10 +4014,10 @@ msgid ""
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:134
-#: Miradi/source/org/miradi/forms/objects/IndicatorSubForm.java:32
+#: Miradi/source/org/miradi/forms/objects/IndicatorSubForm.java:33
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:79
-#: Miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:38
-#: Miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:50
+#: Miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:39
+#: Miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:51
 msgid "Indicator"
 msgstr "指示物"
 
@@ -4033,7 +4033,7 @@ msgstr ""
 "或为达到某分目标而取得的进展等）。良好的指示物应满足的标准是：可测量性、精确"
 "性、一致性和敏感性。在Miradi中，指示物是以紫色三角形来代表的。"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1293
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1294
 msgid "Indicator Holder"
 msgstr ""
 
@@ -4054,7 +4054,7 @@ msgstr "指示物 \t\t"
 msgid "Indicators Only"
 msgstr "仅限于指示物 \t\t"
 
-#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:94
+#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:95
 msgid "Indicators:"
 msgstr "指示物: \t\t"
 
@@ -4302,7 +4302,7 @@ msgstr "IM地址 \t\t"
 msgid "Label|Initials"
 msgstr "缩写名 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorMonitoringPlanSubPanel.java:42
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorMonitoringPlanSubPanel.java:43
 msgid "Label|Methods"
 msgstr "方法 \t\t"
 
@@ -4517,7 +4517,7 @@ msgstr ""
 msgid "Low"
 msgstr "低"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1396
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1397
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr ""
 
@@ -4533,11 +4533,11 @@ msgstr "主要问题——正在进行中、需要注意到的主要问题"
 msgid "Manage Stresses for "
 msgstr "管理压力对象 \t\t"
 
-#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:406
+#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:407
 msgid "Manage Tagged Object Sets"
 msgstr "管理加标签的分目标集"
 
-#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:132
+#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:133
 msgid "Manage Tags (BETA)..."
 msgstr "管理标签（BETA）…"
 
@@ -4927,7 +4927,7 @@ msgstr "监控总览 \t\t"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:151
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:204
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorMonitoringPlanSubPanel.java:68
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorMonitoringPlanSubPanel.java:69
 msgid "Monitoring Plan"
 msgstr "监控计划 \t\t"
 
@@ -5063,7 +5063,7 @@ msgstr "未指定 \t\t"
 msgid "Not Started"
 msgstr "未开始"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:648
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:649
 msgid "Not all classification Codes could imported."
 msgstr ""
 
@@ -5104,7 +5104,7 @@ msgstr ""
 "分目标——指的是一个正式的声明，它详细列出了项目所期望的结果，如某种临界威胁因"
 "子的减少。在Miradi中，分目标是以蓝色小长方形来代表的。 "
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1287
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1288
 msgid "Objective Holder"
 msgstr ""
 
@@ -5128,7 +5128,7 @@ msgstr "仅限于分目标组 \t\t"
 msgid "Objectives contain Strategies"
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:106
+#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:107
 msgid "Objectives:"
 msgstr "分目标组： \t\t"
 
@@ -5277,7 +5277,7 @@ msgstr "粉红色"
 msgid "Place scope on diagram"
 msgstr "在图表上设置范围 \t\t"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1283
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1284
 msgid "Placeholder - From ConPro"
 msgstr ""
 
@@ -5934,7 +5934,7 @@ msgstr "共享 \t\t"
 msgid "Share Activity"
 msgstr "共享活动 \t\t"
 
-#: Miradi/source/org/miradi/views/umbrella/doers/TreeNodeShareMethodDoer.java:53
+#: Miradi/source/org/miradi/views/umbrella/doers/TreeNodeShareMethodDoer.java:54
 msgid "Share Method"
 msgstr "共享方法 \t\t"
 
@@ -7235,7 +7235,7 @@ msgstr ""
 "任务——指为展开某个活动或实施某个方法所需的专门行动。如果有必要，任务本身可以"
 "分解成亚任务。在Miradi中，任务是以灰色扁椭圆形来代表的。"
 
-#: Miradi/source/org/miradi/objects/Task.java:366
+#: Miradi/source/org/miradi/objects/Task.java:367
 msgid "Task does not have a parent"
 msgstr ""
 
@@ -7433,7 +7433,7 @@ msgstr ""
 "是最新版本的Miradi。如果您 <br>正在运行的已经是最新版本的Miradi，您可以等待能"
 "够支持本格式的更新版本，<br>或者重新将该项目导出为旧版（可被支持）格式。 \t\t"
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:76
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:77
 msgid "This item is shared, so will be deleted from multiple places."
 msgstr "本条目是共享的，因此将会从多个地方删除。 \t\t"
 
@@ -7605,7 +7605,7 @@ msgstr ""
 msgid "Title|Customize Table"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:80
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:81
 msgid "Title|Delete"
 msgstr "删除 \t\t"
 
@@ -7992,7 +7992,7 @@ msgstr ""
 msgid "User Defined Extension"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:54
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:55
 #: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:48
 msgid "Value"
 msgstr ""
@@ -8036,7 +8036,7 @@ msgstr "非常小"
 msgid "Viability Analysis Mode"
 msgstr "生存力分析模式 \t\t"
 
-#: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityRatingsSubPanel.java:98
+#: Miradi/source/org/miradi/dialogs/viability/IndicatorViabilityRatingsSubPanel.java:99
 msgid "Viability Ratings"
 msgstr "生存力分级 \t\t"
 
