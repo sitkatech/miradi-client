@@ -31,6 +31,7 @@ import org.miradi.questions.TncOrganizationalPrioritiesQuestion;
 import org.miradi.questions.TncProjectPlaceTypeQuestion;
 import org.miradi.questions.ProjectSharingQuestion;
 import org.miradi.questions.TncTerrestrialEcoRegionQuestion;
+import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.views.summary.TNCSummaryPanel;
 
 
@@ -41,7 +42,7 @@ public class TncTabForm extends FieldPanelSpec
 	{
 		setTranslatedTitle(TNCSummaryPanel.getTncPanelDescription());
 		
-		int projectMetadataType = ProjectMetadata.getObjectType();
+		int projectMetadataType = ProjectMetadataSchema.getObjectType();
 		addLabelAndField(projectMetadataType, ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE);
 		addLabelAndField(Xenodata.getObjectType(), Xenodata.TAG_PROJECT_ID);
 		addChoiceField(TncProjectData.getObjectType(), TncProjectData.TAG_PROJECT_SHARING_CODE, new ProjectSharingQuestion());

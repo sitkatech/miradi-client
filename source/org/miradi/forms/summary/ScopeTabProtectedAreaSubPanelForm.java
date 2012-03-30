@@ -30,6 +30,7 @@ import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.WcpaProjectData;
 import org.miradi.questions.ProtectedAreaCategoryQuestion;
 import org.miradi.questions.StaticQuestionManager;
+import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.views.summary.ProtectedAreaPanel;
 
 public class ScopeTabProtectedAreaSubPanelForm extends FieldPanelSpec
@@ -38,7 +39,7 @@ public class ScopeTabProtectedAreaSubPanelForm extends FieldPanelSpec
 	{
 		setTranslatedTitle(ProtectedAreaPanel.PANEL_DESCRIPTION);
 		
-		int type = ProjectMetadata.getObjectType();
+		int type = ProjectMetadataSchema.getObjectType();
 		
 		FormRow categoryRow = new FormRow();
 		categoryRow.addLeftFormItem(new FormConstant(EAM.text("Label|Protected Area Categories")));

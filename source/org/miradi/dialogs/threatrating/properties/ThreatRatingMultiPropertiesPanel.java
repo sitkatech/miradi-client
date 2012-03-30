@@ -30,6 +30,7 @@ import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.schemas.CauseSchema;
+import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.views.umbrella.ObjectPicker;
 
@@ -48,7 +49,7 @@ public class ThreatRatingMultiPropertiesPanel extends OverlaidObjectDataInputPan
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		super.commandExecuted(event);
-		if(event.isSetDataCommandWithThisTypeAndTag(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_THREAT_RATING_MODE))
+		if(event.isSetDataCommandWithThisTypeAndTag(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_THREAT_RATING_MODE))
 			reloadSelectedRefs();
 	}
 	

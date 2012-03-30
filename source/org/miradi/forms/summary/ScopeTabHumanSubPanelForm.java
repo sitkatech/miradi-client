@@ -26,6 +26,7 @@ import org.miradi.forms.FormFieldLabel;
 import org.miradi.forms.FormRow;
 import org.miradi.main.EAM;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.views.summary.HumanStakeholderPanel;
 
 public class ScopeTabHumanSubPanelForm extends FieldPanelSpec
@@ -34,7 +35,7 @@ public class ScopeTabHumanSubPanelForm extends FieldPanelSpec
 	{
 		setTranslatedTitle(HumanStakeholderPanel.PANEL_DESCRIPTION);
 		
-		int type = ProjectMetadata.getObjectType();
+		int type = ProjectMetadataSchema.getObjectType();
 		
 		FormRow populationRow = new FormRow();
 		populationRow.addLeftFormItem(new FormConstant(EAM.text("Label|Human Stakeholder Pop Size")));

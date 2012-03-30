@@ -25,6 +25,7 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.questions.PlanningTreeTargetPositionQuestion;
+import org.miradi.schemas.ProjectMetadataSchema;
 
 //TODO low - this class can be removed.  The Target node position is now in the ObjectTreeTableConfiguration object.
 public class SummaryPlanningStrategicSubPanel extends ObjectDataInputPanel
@@ -33,7 +34,7 @@ public class SummaryPlanningStrategicSubPanel extends ObjectDataInputPanel
 	{
 		super(mainWindowToUse.getProject(), mainWindowToUse.getProject().getMetadata().getRef());
 		
-		addRadioButtonFieldWithCustomLabel(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_PLANNING_TREE_TARGET_NODE_POSITION, getProject().getQuestion(PlanningTreeTargetPositionQuestion.class), "");
+		addRadioButtonFieldWithCustomLabel(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_PLANNING_TREE_TARGET_NODE_POSITION, getProject().getQuestion(PlanningTreeTargetPositionQuestion.class), "");
 		
 		updateFieldsFromProject();
 	}

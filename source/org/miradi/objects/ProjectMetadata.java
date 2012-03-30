@@ -26,7 +26,6 @@ import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.project.ObjectManager;
 import org.miradi.questions.BudgetTimePeriodQuestion;
@@ -56,24 +55,19 @@ public class ProjectMetadata extends BaseObject
 	@Override
 	public int getType()
 	{
-		return getObjectType();
+		return ProjectMetadataSchema.getObjectType();
 	}
 
 	@Override
 	public String getTypeName()
 	{
-		return OBJECT_NAME;
+		return ProjectMetadataSchema.OBJECT_NAME;
 	}
 
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;
-	}
-	
-	public static int getObjectType()
-	{
-		return ObjectType.PROJECT_METADATA;
 	}
 	
 	@Override
@@ -341,7 +335,7 @@ public class ProjectMetadata extends BaseObject
 	
 	public static boolean is(int objectType)
 	{
-		return objectType == getObjectType();
+		return objectType == ProjectMetadataSchema.getObjectType();
 	}
 	
 	@Override
@@ -419,6 +413,4 @@ public class ProjectMetadata extends BaseObject
 	
 	public static final String TAG_XENODATA_STRING_REF_MAP = "XenodataRefs";
 	public static final String TAG_HUMAN_WELFARE_TARGET_MODE = "TargetMode";
-	
-	public static final String OBJECT_NAME = "ProjectMetadata";
 }

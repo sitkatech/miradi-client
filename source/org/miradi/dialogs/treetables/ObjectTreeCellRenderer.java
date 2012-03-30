@@ -65,7 +65,6 @@ import org.miradi.objects.Cause;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FundingSource;
-import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.ScopeBox;
@@ -73,6 +72,7 @@ import org.miradi.objects.SubTarget;
 import org.miradi.objects.Task;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.GroupBoxSchema;
+import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.TextBoxSchema;
 
@@ -83,7 +83,7 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 		super(treeTableToUse);
 		
 		projectMetaDataRenderer = createRenderer(treeTableToUse);
-		setRendererDefaults(projectMetaDataRenderer, IconManager.getImage(ProjectMetadata.getObjectType()), getBoldFont());
+		setRendererDefaults(projectMetaDataRenderer, IconManager.getImage(ProjectMetadataSchema.getObjectType()), getBoldFont());
 
 		targetRenderer = createRenderer(treeTableToUse);
 		setRendererDefaults(targetRenderer, new TargetIcon(), getBoldFont());
@@ -232,7 +232,7 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 			renderer = subTargetRenderer;
 		else if(node.getType() == ObjectType.MEASUREMENT)
 			renderer = measurementRenderer;
-		else if(node.getType() == ProjectMetadata.getObjectType())
+		else if(node.getType() == ProjectMetadataSchema.getObjectType())
 			renderer = projectMetaDataRenderer;
 		else if(node.getType() == TextBoxSchema.getObjectType())
 			renderer = textBoxRenderer;

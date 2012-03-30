@@ -41,6 +41,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.rtf.RtfWriter;
+import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.utils.BufferedImageFactory;
 import org.miradi.views.CardedView;
 import org.miradi.views.MiradiTabContentsPanelInterface;
@@ -186,7 +187,7 @@ public class ThreatMatrixView extends CardedView
 
 	private void updateCardToShow(CommandExecutedEvent event)
 	{
-		if (!event.isSetDataCommandWithThisTypeAndTag(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_THREAT_RATING_MODE))
+		if (!event.isSetDataCommandWithThisTypeAndTag(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_THREAT_RATING_MODE))
 			return;
 		
 		CommandSetObjectData command = (CommandSetObjectData) event.getCommand();
