@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.umbrella.doers;
 
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.ExpenseAssignment;
+import org.miradi.schemas.ExpenseAssignmentSchema;
 
 public class CreateExpenseDoer extends CreateListedObjectDoer
 {
@@ -33,6 +33,6 @@ public class CreateExpenseDoer extends CreateListedObjectDoer
 	@Override
 	protected int getTypeToCreate()
 	{
-		return ExpenseAssignment.getObjectType();
+		return ExpenseAssignmentSchema.getObjectType();
 	}
 }

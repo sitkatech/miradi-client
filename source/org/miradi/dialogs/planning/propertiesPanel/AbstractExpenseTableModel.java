@@ -35,6 +35,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.CurrencyFormattedChoiceItem;
 import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
+import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.utils.OptionalDouble;
 
 abstract public class AbstractExpenseTableModel extends AssignmentDateUnitsTableModel
@@ -84,7 +85,7 @@ abstract public class AbstractExpenseTableModel extends AssignmentDateUnitsTable
 	@Override
 	protected int getAssignmentType()
 	{
-		return ExpenseAssignment.getObjectType();
+		return ExpenseAssignmentSchema.getObjectType();
 	}
 
 	@Override

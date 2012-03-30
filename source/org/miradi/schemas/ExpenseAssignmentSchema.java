@@ -20,10 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.ExpenseAssignment;
 
 public class ExpenseAssignmentSchema extends AssignmentSchema
 {
+	public static final String OBJECT_NAME = "ExpenseAssignment";
+
 	public ExpenseAssignmentSchema()
 	{
 		super();
@@ -36,5 +39,10 @@ public class ExpenseAssignmentSchema extends AssignmentSchema
 		
 		createFieldSchemaRef(ExpenseAssignment.TAG_ACCOUNTING_CODE_REF);
 		createFieldSchemaRef(ExpenseAssignment.TAG_FUNDING_SOURCE_REF);
+	}
+
+	public static int getObjectType()
+	{
+		return ObjectType.EXPENSE_ASSIGNMENT;
 	}
 }

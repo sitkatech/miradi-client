@@ -27,6 +27,7 @@ import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.FundingSource;
 import org.miradi.project.Project;
 import org.miradi.schemas.AccountingCodeSchema;
+import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.FundingSourceSchema;
 
 public class ExpenseAssignmentMainTableModel extends AbstractSummaryTableModel
@@ -153,7 +154,7 @@ public class ExpenseAssignmentMainTableModel extends AbstractSummaryTableModel
 	@Override
 	protected int getListType()
 	{
-		return ExpenseAssignment.getObjectType();
+		return ExpenseAssignmentSchema.getObjectType();
 	}
 	
 	@Override

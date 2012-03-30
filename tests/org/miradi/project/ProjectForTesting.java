@@ -133,6 +133,7 @@ import org.miradi.questions.WwfRegionsQuestion;
 import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.BudgetCategoryOneSchema;
 import org.miradi.schemas.BudgetCategoryTwoSchema;
+import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.CodeList;
@@ -907,7 +908,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public ExpenseAssignment createExpenseAssignment() throws Exception
 	{
-		ORef expenseAssignmentRef = createObject(ExpenseAssignment.getObjectType());
+		ORef expenseAssignmentRef = createObject(ExpenseAssignmentSchema.getObjectType());
 		return ExpenseAssignment.find(this, expenseAssignmentRef);
 	}
 	
@@ -2017,7 +2018,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public ExpenseAssignment addExpenseAssignment(BaseObject baseObject, DateUnitEffortList dateUnitEffortList) throws Exception
 	{
-		ORef expenseRef = createObject(ExpenseAssignment.getObjectType());
+		ORef expenseRef = createObject(ExpenseAssignmentSchema.getObjectType());
 		ExpenseAssignment assignment = ExpenseAssignment.find(this, expenseRef);
 		setObjectData(assignment, ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());
 		

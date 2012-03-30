@@ -52,12 +52,12 @@ import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
+import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.FillerLabel;
 import org.miradi.utils.MultiTableCombinedAsOneExporter;
@@ -166,7 +166,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		if (rowCodes.contains(ResourceAssignment.OBJECT_NAME) && event.isSetDataCommandWithThisTag(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS))
 			return true;
 
-		if (rowCodes.contains(ExpenseAssignment.OBJECT_NAME) && event.isSetDataCommandWithThisTag(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS))
+		if (rowCodes.contains(ExpenseAssignmentSchema.OBJECT_NAME) && event.isSetDataCommandWithThisTag(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS))
 			return true;
 		
 		return false;

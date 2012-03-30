@@ -23,12 +23,13 @@ package org.miradi.xml.wcs;
 import org.martus.util.UnicodeWriter;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ExpenseAssignment;
+import org.miradi.schemas.ExpenseAssignmentSchema;
 
 public class ExpenseAssignmentPoolExporter extends AbstractAssignmentPoolExporter
 {
 	public ExpenseAssignmentPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
-		super(wcsXmlExporterToUse, EXPENSE_ASSIGNMENT, ExpenseAssignment.getObjectType());
+		super(wcsXmlExporterToUse, EXPENSE_ASSIGNMENT, ExpenseAssignmentSchema.getObjectType());
 	}
 	
 	@Override

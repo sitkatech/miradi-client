@@ -50,6 +50,7 @@ import org.miradi.objects.TableSettings;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.ViewData;
+import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class ProjectRepairer
@@ -121,7 +122,7 @@ public class ProjectRepairer
 		expenseAssignmentTagsToFix.add(ExpenseAssignment.TAG_FUNDING_SOURCE_REF);
 		expenseAssignmentTagsToFix.add(ExpenseAssignment.TAG_CATEGORY_ONE_REF);
 		expenseAssignmentTagsToFix.add(ExpenseAssignment.TAG_CATEGORY_TWO_REF);
-		fixResourceAssignment(ExpenseAssignment.getObjectType(), expenseAssignmentTagsToFix);
+		fixResourceAssignment(ExpenseAssignmentSchema.getObjectType(), expenseAssignmentTagsToFix);
 	}
 
 	private void fixResourceAssignment(int assignmentType, Vector<String> assignmentTagsToFix) throws Exception

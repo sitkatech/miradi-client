@@ -68,7 +68,6 @@ import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.TwoLevelEntry;
 import org.miradi.objects.Assignment;
-import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
@@ -77,6 +76,7 @@ import org.miradi.project.ProjectRepairer;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.FontFamiliyQuestion;
 import org.miradi.questions.TableRowHeightModeQuestion;
+import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.utils.DefaultHyperlinkHandler;
 import org.miradi.utils.FileLocker;
 import org.miradi.utils.HtmlViewPanel;
@@ -871,7 +871,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 	{
 		ORefList assignmentRefs = new ORefList();
 		assignmentRefs.addAll(projectToUse.getAssignmentPool().getORefList());
-		assignmentRefs.addAll(projectToUse.getPool(ExpenseAssignment.getObjectType()).getRefList());
+		assignmentRefs.addAll(projectToUse.getPool(ExpenseAssignmentSchema.getObjectType()).getRefList());
 		for (int index = 0; index < assignmentRefs.size(); ++index)
 		{
 			Assignment assignment = Assignment.findAssignment(projectToUse, assignmentRefs.get(index));

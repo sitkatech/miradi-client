@@ -37,13 +37,13 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.objects.Assignment;
-import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.DiagramObjectDataInclusionQuestion;
 import org.miradi.questions.FiscalYearStartQuestion;
 import org.miradi.questions.QuarterColumnsVisibilityQuestion;
+import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.MiradiTextPane;
 
@@ -253,7 +253,7 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 	{
 		ORefList assignmentRefs = new ORefList();
 		assignmentRefs.addAll(projectToUse.getAssignmentPool().getORefList());
-		assignmentRefs.addAll(projectToUse.getPool(ExpenseAssignment.getObjectType()).getRefList());
+		assignmentRefs.addAll(projectToUse.getPool(ExpenseAssignmentSchema.getObjectType()).getRefList());
 		
 		TimePeriodCostsMap tpcm = new TimePeriodCostsMap();
 		for (int index = 0; index < assignmentRefs.size(); ++index)
