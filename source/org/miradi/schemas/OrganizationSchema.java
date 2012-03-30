@@ -20,10 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Organization;
 
 public class OrganizationSchema extends BaseObjectSchema
 {
+	public static final String OBJECT_NAME = "Organization";
+
 	public OrganizationSchema()
 	{
 		super();
@@ -41,5 +44,10 @@ public class OrganizationSchema extends BaseObjectSchema
 		createFieldSchemaSingleLineUserText(Organization.TAG_EMAIL);
 		createFieldSchemaSingleLineUserText(Organization.TAG_PHONE_NUMBER);
 		createFieldSchemaMultiLineUserText(Organization.TAG_COMMENTS);
+	}
+
+	public static int getObjectType()
+	{
+		return ObjectType.ORGANIZATION;
 	}
 }

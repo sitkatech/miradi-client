@@ -148,6 +148,7 @@ import org.miradi.schemas.IucnRedlistSpeciesSchema;
 import org.miradi.schemas.KeyEcologicalAttributeSchema;
 import org.miradi.schemas.MeasurementSchema;
 import org.miradi.schemas.ObjectiveSchema;
+import org.miradi.schemas.OrganizationSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.ScopeBoxSchema;
@@ -965,7 +966,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public Organization createOrganization() throws Exception
 	{
-		ORef organizationRef = createObject(Organization.getObjectType());
+		ORef organizationRef = createObject(OrganizationSchema.getObjectType());
 		return Organization.find(this, organizationRef);
 	}
 	

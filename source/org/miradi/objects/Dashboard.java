@@ -48,6 +48,7 @@ import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
+import org.miradi.schemas.OrganizationSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
@@ -260,7 +261,7 @@ public class Dashboard extends BaseObject
 				return getThreatReductionResultIndicatorsCount();
 			
 			if (fieldTag.equals(PSEUDO_OTHER_ORGANIZATION_COUNT))
-				return getObjectPoolCountAsString(Organization.getObjectType());
+				return getObjectPoolCountAsString(OrganizationSchema.getObjectType());
 			
 			if (fieldTag.equals(PSEUDO_INDICATORS_WITH_DESIRED_FUTURE_STATUS_SPECIFIED_PERCENTAGE))
 				return getIndicatorsWithDesiredFutureStatusSpecifiedPercentage();

@@ -22,7 +22,6 @@ package org.miradi.objects;
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.OrganizationSchema;
@@ -43,24 +42,19 @@ public class Organization extends BaseObject
 	@Override
 	public int getType()
 	{
-		return getObjectType();
+		return OrganizationSchema.getObjectType();
 	}
 	
 	@Override
 	public String getTypeName()
 	{
-		return OBJECT_NAME;
+		return OrganizationSchema.OBJECT_NAME;
 	}
 
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;
-	}
-	
-	public static int getObjectType()
-	{
-		return ObjectType.ORGANIZATION;
 	}
 	
 	public boolean canHaveIndicators()
@@ -92,7 +86,7 @@ public class Organization extends BaseObject
 	
 	public static boolean is(int objectType)
 	{
-		return objectType == getObjectType();
+		return objectType == OrganizationSchema.getObjectType();
 	}
 
 	public static Organization find(ObjectManager objectManager, ORef organizationRef)
@@ -104,8 +98,6 @@ public class Organization extends BaseObject
 	{
 		return find(project.getObjectManager(), organizationRef);
 	}
-	
-	public static final String OBJECT_NAME = "Organization";
 	
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
 	public static final String TAG_ROLES_DESCRIPTION = "RolesDescription";

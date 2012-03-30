@@ -22,12 +22,13 @@ package org.miradi.forms.objects;
 import org.miradi.forms.FieldPanelSpec;
 import org.miradi.main.EAM;
 import org.miradi.objects.Organization;
+import org.miradi.schemas.OrganizationSchema;
 
 public class OrganizationPropertiesForm extends FieldPanelSpec
 {
 	public OrganizationPropertiesForm()
 	{
-		int type = Organization.getObjectType();
+		int type = OrganizationSchema.getObjectType();
 		addLabelAndFieldsWithLabels(EAM.text("Label|Organization"), type, new String[]{Organization.TAG_LABEL, Organization.TAG_SHORT_LABEL});
 		addLabelAndField(type, Organization.TAG_ROLES_DESCRIPTION);
 		addLabelAndFieldsWithLabels(EAM.text("Label|Org Contact"), type, new String[]{Organization.TAG_CONTACT_FIRST_NAME, Organization.TAG_CONTACT_LAST_NAME});

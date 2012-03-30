@@ -24,7 +24,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.miradi.main.EAM;
-import org.miradi.objects.Organization;
 import org.miradi.objects.OtherNotableSpecies;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
@@ -54,6 +53,7 @@ import org.miradi.schemas.FosProjectDataSchema;
 import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.schemas.IucnRedlistSpeciesSchema;
 import org.miradi.schemas.ObjectTreeTableConfigurationSchema;
+import org.miradi.schemas.OrganizationSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 
 public class ObjectType
@@ -153,7 +153,7 @@ public class ObjectType
 			WcsProjectData.getObjectType(),
 			TncProjectData.getObjectType(),
 			FosProjectDataSchema.getObjectType(),
-			Organization.getObjectType(),
+			OrganizationSchema.getObjectType(),
 			WcpaProjectData.getObjectType(),
 			ReportTemplate.getObjectType(),
 			TaggedObjectSet.getObjectType(),

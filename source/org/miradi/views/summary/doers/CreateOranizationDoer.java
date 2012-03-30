@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.summary.doers;
 
-import org.miradi.objects.Organization;
+import org.miradi.schemas.OrganizationSchema;
 import org.miradi.views.planning.doers.CreatePoolObjectDoer;
 
 public class CreateOranizationDoer extends CreatePoolObjectDoer
@@ -27,6 +27,6 @@ public class CreateOranizationDoer extends CreatePoolObjectDoer
 	@Override
 	protected int getTypeToCreate()
 	{
-		return Organization.getObjectType();
+		return OrganizationSchema.getObjectType();
 	}
 }
