@@ -76,7 +76,7 @@ public class CodeToCodeListMapData extends ObjectData
 	@Override
 	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		writer.writetCodeToCodeListMapData(baseObjectSchema, fieldSchema, get());
+		writer.writeCodeToCodeListMapData(baseObjectSchema, fieldSchema, get());
 	}
 	
 	private CodeToCodeListMap data;
