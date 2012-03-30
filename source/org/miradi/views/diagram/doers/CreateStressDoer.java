@@ -24,10 +24,10 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.Stress;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
+import org.miradi.schemas.StressSchema;
 import org.miradi.views.diagram.CreateAnnotationDoer;
 
 public class CreateStressDoer extends CreateAnnotationDoer
@@ -35,7 +35,7 @@ public class CreateStressDoer extends CreateAnnotationDoer
 	@Override
 	public int getAnnotationType()
 	{
-		return Stress.getObjectType();
+		return StressSchema.getObjectType();
 	}
 	@Override
 	public String getAnnotationListTag()

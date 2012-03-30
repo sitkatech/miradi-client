@@ -104,7 +104,6 @@ import org.miradi.objects.ProjectResource;
 import org.miradi.objects.RareProjectData;
 import org.miradi.objects.RatingCriterion;
 import org.miradi.objects.ReportTemplate;
-import org.miradi.objects.Stress;
 import org.miradi.objects.SubTarget;
 import org.miradi.objects.TableSettings;
 import org.miradi.objects.TaggedObjectSet;
@@ -143,6 +142,7 @@ import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.ScopeBoxSchema;
 import org.miradi.schemas.StrategySchema;
+import org.miradi.schemas.StressSchema;
 import org.miradi.schemas.TargetSchema;
 
 public class ObjectManager
@@ -183,7 +183,7 @@ public class ObjectManager
 		addNormalPool(new WwfProjectDataPool(ida), WwfProjectData.OBJECT_NAME);
 		addNormalPool(new CostAllocationRulePool(ida), CostAllocationRuleSchema.OBJECT_NAME);
 		addNormalPool(new MeasurementPool(ida), Measurement.OBJECT_NAME);
-		addNormalPool(new StressPool(ida), Stress.OBJECT_NAME);
+		addNormalPool(new StressPool(ida), StressSchema.OBJECT_NAME);
 		addNormalPool(new ThreatStressRatingPool(ida), ThreatStressRating.OBJECT_NAME);
 		addNormalPool(new GroupBoxPool(ida), GroupBoxSchema.OBJECT_NAME);
 		addNormalPool(new SubTargetPool(ida), SubTarget.OBJECT_NAME);

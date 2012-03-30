@@ -49,7 +49,6 @@ import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.ProjectMetadata;
-import org.miradi.objects.Stress;
 import org.miradi.objects.TableSettings;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
@@ -58,6 +57,7 @@ import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
+import org.miradi.schemas.StressSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.CommandVector;
 
@@ -439,7 +439,7 @@ public class CommandExecutor
 			return true;
 		
 		if (setCommand.isTypeAndTag(ConceptualModelDiagramSchema.getObjectType(), ConceptualModelDiagram.TAG_DIAGRAM_FACTOR_IDS))
-			return wasWrappedTypeAddedOrRemoved(setCommand, Stress.getObjectType());
+			return wasWrappedTypeAddedOrRemoved(setCommand, StressSchema.getObjectType());
 		
 		if (setCommand.isTypeAndTag(ResultsChainDiagramSchema.getObjectType(), ConceptualModelDiagram.TAG_DIAGRAM_FACTOR_IDS))
 			return wasWrappedTypeAddedOrRemoved(setCommand, Task.getObjectType());

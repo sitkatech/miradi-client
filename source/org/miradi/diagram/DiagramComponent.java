@@ -66,10 +66,10 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
-import org.miradi.objects.Stress;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
 import org.miradi.schemas.DiagramLinkSchema;
+import org.miradi.schemas.StressSchema;
 import org.miradi.utils.LocationHolder;
 import org.miradi.utils.Utility;
 import org.miradi.views.diagram.LayerManager;
@@ -252,7 +252,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 			Object[] selectedCells = getOnlySelectedCells();
 			HashSet<EAMGraphCell> cellVector = getDiagramModel().getAllSelectedCellsWithRelatedLinkages(selectedCells);
 			
-			Vector<EAMGraphCell> stressCells = extractType(cellVector, Stress.getObjectType());
+			Vector<EAMGraphCell> stressCells = extractType(cellVector, StressSchema.getObjectType());
 			Vector<EAMGraphCell> activityCells = extractType(cellVector, Task.getObjectType());
 			Vector<EAMGraphCell> allCells = new Vector<EAMGraphCell>(cellVector);
 			

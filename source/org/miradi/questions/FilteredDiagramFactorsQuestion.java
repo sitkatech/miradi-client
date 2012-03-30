@@ -22,11 +22,11 @@ package org.miradi.questions;
 import java.util.Vector;
 
 import org.miradi.objects.DiagramObject;
-import org.miradi.objects.Stress;
 import org.miradi.objects.Task;
 import org.miradi.objects.TextBox;
 import org.miradi.schemas.GroupBoxSchema;
 import org.miradi.schemas.ScopeBoxSchema;
+import org.miradi.schemas.StressSchema;
 
 public class FilteredDiagramFactorsQuestion extends ObjectQuestion
 {
@@ -40,7 +40,7 @@ public class FilteredDiagramFactorsQuestion extends ObjectQuestion
 		Vector<Integer> typesToExclude = new Vector<Integer>();
 		typesToExclude.add(TextBox.getObjectType());
 		typesToExclude.add(GroupBoxSchema.getObjectType());
-		typesToExclude.add(Stress.getObjectType());
+		typesToExclude.add(StressSchema.getObjectType());
 		typesToExclude.add(Task.getObjectType());
 		typesToExclude.add(ScopeBoxSchema.getObjectType());
 		

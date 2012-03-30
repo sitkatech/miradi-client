@@ -39,12 +39,12 @@ import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Strategy;
-import org.miradi.objects.Stress;
 import org.miradi.objects.SubTarget;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.schemas.DiagramFactorSchema;
+import org.miradi.schemas.StressSchema;
 import org.miradi.utils.CommandVector;
 import org.miradi.views.diagram.DeleteAnnotationDoer;
 import org.miradi.views.umbrella.DeleteActivityDoer;
@@ -244,7 +244,7 @@ public class FactorDeleteHelper
 		
 		if (Target.is(factorToDelete))
 		{
-			deleteAnnotationRefs(factorToDelete, Stress.getObjectType(), Target.TAG_STRESS_REFS);
+			deleteAnnotationRefs(factorToDelete, StressSchema.getObjectType(), Target.TAG_STRESS_REFS);
 		}
 	}
 

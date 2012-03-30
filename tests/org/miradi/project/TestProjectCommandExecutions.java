@@ -28,9 +28,9 @@ import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.Stress;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.schemas.CauseSchema;
+import org.miradi.schemas.StressSchema;
 import org.miradi.schemas.TargetSchema;
 
 public class TestProjectCommandExecutions extends TestCaseWithProject implements CommandExecutedListener
@@ -62,7 +62,7 @@ public class TestProjectCommandExecutions extends TestCaseWithProject implements
 
 	private void verifyNormalCommand() throws CommandFailedException
 	{
-		CommandCreateObject createStress = new CommandCreateObject(Stress.getObjectType());
+		CommandCreateObject createStress = new CommandCreateObject(StressSchema.getObjectType());
 		getProject().executeCommand(createStress);
 	}
 
@@ -91,9 +91,9 @@ public class TestProjectCommandExecutions extends TestCaseWithProject implements
 	{
 		try
 		{
-			if (event.isCreateCommandForThisType(Stress.getObjectType()))
+			if (event.isCreateCommandForThisType(StressSchema.getObjectType()))
 			{
-				ORef stressRef = new ORef(Stress.getObjectType(), new BaseId(100));
+				ORef stressRef = new ORef(StressSchema.getObjectType(), new BaseId(100));
 				ORef threatRef = new ORef(CauseSchema.getObjectType(), new BaseId(400));
 				CommandCreateObject createThreatStressRating = new CommandCreateObject(ThreatStressRating.getObjectType());
 				getProject().executeAsSideEffect(createThreatStressRating);

@@ -28,11 +28,11 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.GroupBox;
-import org.miradi.objects.Stress;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.GroupBoxSchema;
 import org.miradi.schemas.ScopeBoxSchema;
 import org.miradi.schemas.StrategySchema;
+import org.miradi.schemas.StressSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.views.diagram.LayerSorter;
 
@@ -55,7 +55,7 @@ public class TestLayerSorter extends TestCaseWithProject
 		DiagramLink diagramLink = DiagramLink.find(getProject(), diagramLinkRef);
 		getProject().addDiagramLinkToModel(diagramLink);
 		
-		getProject().createDiagramFactorAndAddToDiagram(Stress.getObjectType());
+		getProject().createDiagramFactorAndAddToDiagram(StressSchema.getObjectType());
 		
 		List<EAMGraphCell> orderedCells = getProject().getTestingDiagramModel().getAllRootCells();	
 		Collections.sort(orderedCells, new LayerSorter());

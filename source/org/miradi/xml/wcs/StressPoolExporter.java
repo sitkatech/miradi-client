@@ -25,12 +25,13 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Stress;
 import org.miradi.questions.StressScopeChoiceQuestion;
 import org.miradi.questions.StressSeverityChoiceQuestion;
+import org.miradi.schemas.StressSchema;
 
 public class StressPoolExporter extends FactorPoolExporter
 {
 	public StressPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
-		super(wcsXmlExporterToUse, STRESS, Stress.getObjectType());
+		super(wcsXmlExporterToUse, STRESS, StressSchema.getObjectType());
 	}
 	
 	@Override

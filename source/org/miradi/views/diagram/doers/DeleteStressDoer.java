@@ -21,8 +21,8 @@ package org.miradi.views.diagram.doers;
 
 import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
+import org.miradi.schemas.StressSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.views.diagram.DeleteAnnotationDoer;
 
@@ -34,7 +34,7 @@ public class DeleteStressDoer extends DeleteAnnotationDoer
 		if (getObjects().length == 0)
 			return false;
 		
-		if (getSelectedObjectType() != Stress.getObjectType())
+		if (getSelectedObjectType() != StressSchema.getObjectType())
 			return false;
 		
 		return true;
@@ -61,6 +61,6 @@ public class DeleteStressDoer extends DeleteAnnotationDoer
 	@Override
 	public int getAnnotationType()
 	{
-		return Stress.getObjectType();
+		return StressSchema.getObjectType();
 	}
 }

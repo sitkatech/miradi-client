@@ -35,7 +35,6 @@ import org.miradi.objects.GroupBox;
 import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Strategy;
-import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.objects.ThreatStressRating;
@@ -43,6 +42,7 @@ import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.schemas.GroupBoxSchema;
 import org.miradi.schemas.StrategySchema;
+import org.miradi.schemas.StressSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.ThreatStressRatingHelper;
 import org.miradi.views.diagram.LinkCreator;
@@ -68,8 +68,8 @@ public class TestLinkCreator extends TestCaseWithProject
 	
 	public void testCreateThreatStressRatingsFromTarget() throws Exception
 	{
-		ORef stressRef1 = getProject().createObject(Stress.getObjectType());
-		ORef stressRef2 = getProject().createObject(Stress.getObjectType());
+		ORef stressRef1 = getProject().createObject(StressSchema.getObjectType());
+		ORef stressRef2 = getProject().createObject(StressSchema.getObjectType());
 		ORefList stressRefList = new ORefList();
 		stressRefList.add(stressRef1);
 		stressRefList.add(stressRef2);

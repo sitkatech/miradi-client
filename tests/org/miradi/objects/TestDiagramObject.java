@@ -29,6 +29,7 @@ import org.miradi.project.Project;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.schemas.StrategySchema;
+import org.miradi.schemas.StressSchema;
 import org.miradi.schemas.TargetSchema;
 
 public class TestDiagramObject extends ObjectTestCase
@@ -70,7 +71,7 @@ public class TestDiagramObject extends ObjectTestCase
 	public void testFindReferrersOnSameDiagram() throws Exception
 	{
 		DiagramObject diagramObject = getProject().getTestingDiagramObject();
-		ORef stressRef = getProject().createFactorAndReturnRef(Stress.getObjectType());
+		ORef stressRef = getProject().createFactorAndReturnRef(StressSchema.getObjectType());
 		DiagramFactor targetDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
 		
 		ORefList foundTargetReferrerRefs1 = diagramObject.findReferrersOnSameDiagram(stressRef, TargetSchema.getObjectType());

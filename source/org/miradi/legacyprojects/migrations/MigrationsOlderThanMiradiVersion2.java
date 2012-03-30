@@ -46,7 +46,6 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Measurement;
-import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.TncFreshwaterEcoRegionQuestion;
@@ -54,6 +53,7 @@ import org.miradi.questions.TncMarineEcoRegionQuestion;
 import org.miradi.questions.TncOperatingUnitsQuestion;
 import org.miradi.questions.TncTerrestrialEcoRegionQuestion;
 import org.miradi.questions.TwoLevelQuestion;
+import org.miradi.schemas.StressSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
@@ -931,7 +931,7 @@ public class MigrationsOlderThanMiradiVersion2
 			DataUpgrader.createFile(stressFile, stressJson.toString());
 			
 			ORefList stressRefs = new ORefList();
-			stressRefs.add(new ORef(Stress.getObjectType(), new BaseId(id)));
+			stressRefs.add(new ORef(StressSchema.getObjectType(), new BaseId(id)));
 			targetJson.put("StressRefs", stressRefs.toString());
 			DataUpgrader.writeJson(targetFile, targetJson);
 			

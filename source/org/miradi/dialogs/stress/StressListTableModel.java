@@ -21,16 +21,16 @@ package org.miradi.dialogs.stress;
 
 import org.miradi.dialogs.base.ObjectListTableModel;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.schemas.StressSchema;
 
 public class StressListTableModel extends ObjectListTableModel
 {
 	public StressListTableModel(Project projectToUse, ORef nodeRef)
 	{
-		super(projectToUse, nodeRef, Target.TAG_STRESS_REFS, Stress.getObjectType(), getColumnTags(projectToUse));
+		super(projectToUse, nodeRef, Target.TAG_STRESS_REFS, StressSchema.getObjectType(), getColumnTags(projectToUse));
 	}
 
 	@Override

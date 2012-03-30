@@ -20,12 +20,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Stress;
 import org.miradi.questions.StressScopeChoiceQuestion;
 import org.miradi.questions.StressSeverityChoiceQuestion;
 
 public class StressSchema extends FactorSchema
 {
+	public static final String OBJECT_NAME = "Stress";
+
 	public StressSchema()
 	{
 		super();
@@ -41,5 +44,10 @@ public class StressSchema extends FactorSchema
 		createFieldSchemaChoice(Stress.TAG_SCOPE, getQuestion(StressScopeChoiceQuestion.class));
 		createFieldSchemaChoice(Stress.TAG_SEVERITY, getQuestion(StressSeverityChoiceQuestion.class));
 		createPseudoFieldSchemaQuestion(Stress.PSEUDO_STRESS_RATING);
+	}
+
+	public static int getObjectType()
+	{
+		return ObjectType.STRESS;
 	}
 }

@@ -21,8 +21,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz;
 
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
+import org.miradi.schemas.StressSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.w3c.dom.Node;
@@ -39,7 +39,7 @@ public class BiodiversityTargetPoolImporter extends AbstractTargetPoolImporter
 	{
 		super.importFields(node, destinationRef);
 		
-		importRefs(node, XmpzXmlConstants.STRESS_IDS_ELEMENT, destinationRef, Target.TAG_STRESS_REFS, Stress.getObjectType(), XmpzXmlConstants.STRESS);
+		importRefs(node, XmpzXmlConstants.STRESS_IDS_ELEMENT, destinationRef, Target.TAG_STRESS_REFS, StressSchema.getObjectType(), XmpzXmlConstants.STRESS);
 		importCodeListField(node, destinationRef, Target.TAG_HABITAT_ASSOCIATION);
 		importField(node, destinationRef, Target.TAG_SPECIES_LATIN_NAME);
 	}

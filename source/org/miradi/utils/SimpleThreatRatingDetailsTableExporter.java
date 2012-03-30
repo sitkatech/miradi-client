@@ -36,6 +36,7 @@ import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.TaglessChoiceItem;
+import org.miradi.schemas.StressSchema;
 
 public class SimpleThreatRatingDetailsTableExporter extends AbstractThreatRatingDetailsTableExporter
 {
@@ -61,7 +62,7 @@ public class SimpleThreatRatingDetailsTableExporter extends AbstractThreatRating
 		if (getColumnTag(modelColumn).equals(Stress.PSEUDO_STRESS_RATING))
 			return ThreatSummaryColumnTableModel.getThreatSummartRatingLabel(); 
 
-		return EAM.fieldLabel(Stress.getObjectType(), getColumnTag(modelColumn));
+		return EAM.fieldLabel(StressSchema.getObjectType(), getColumnTag(modelColumn));
 	}
 
 	@Override

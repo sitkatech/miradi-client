@@ -24,12 +24,12 @@ import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
-import org.miradi.objects.Stress;
 import org.miradi.objects.ThreatRatingCommentsData;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.questions.StressContributionQuestion;
 import org.miradi.questions.StressIrreversibilityQuestion;
 import org.miradi.schemas.CauseSchema;
+import org.miradi.schemas.StressSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.xml.AbstractXmpzObjectImporter;
 import org.miradi.xml.wcs.XmpzXmlConstants;
@@ -167,7 +167,7 @@ public class ThreatTargetThreatRatingElementImporter extends AbstractXmpzObjectI
 	private ORef getStressRef(Node stressBasedThreatRatingNode)	throws Exception
 	{
 		Node stressIdNode = getImporter().getNode(stressBasedThreatRatingNode, STRESS_BASED_THREAT_RATING + STRESS + ID);
-		ORef stressRef = getImporter().getNodeAsRef(stressIdNode,  STRESS+ ID, Stress.getObjectType());
+		ORef stressRef = getImporter().getNodeAsRef(stressIdNode,  STRESS+ ID, StressSchema.getObjectType());
 		return stressRef;
 	}
 }

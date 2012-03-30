@@ -35,6 +35,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.TaglessChoiceItem;
+import org.miradi.schemas.StressSchema;
 
 public class ThreatStressRatingDetailsTableExporter extends	AbstractThreatRatingDetailsTableExporter
 {
@@ -73,7 +74,7 @@ public class ThreatStressRatingDetailsTableExporter extends	AbstractThreatRating
 		if (isThreatNameColumn(modelColumn))
 			return getThreatColumnName();
 
-		return EAM.fieldLabel(Stress.getObjectType(), getColumnTag(modelColumn));
+		return EAM.fieldLabel(StressSchema.getObjectType(), getColumnTag(modelColumn));
 	}
 	
 	@Override
