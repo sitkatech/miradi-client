@@ -102,7 +102,6 @@ import org.miradi.objects.DiagramLink;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.FosProjectData;
-import org.miradi.objects.FundingSource;
 import org.miradi.objects.Goal;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.HumanWelfareTarget;
@@ -143,6 +142,7 @@ import org.miradi.objects.WcsProjectData;
 import org.miradi.objects.WwfProjectData;
 import org.miradi.objects.Xenodata;
 import org.miradi.objects.XslTemplate;
+import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.schemas.IndicatorSchema;
 
 public class ObjectManager
@@ -168,7 +168,7 @@ public class ObjectManager
 		addNormalPool(new DiagramLinkPool(ida), DiagramLink.OBJECT_NAME);
 		addNormalPool(new ResourceAssignmentPool(ida), ResourceAssignment.OBJECT_NAME);
 		addNormalPool(new AccountingCodePool(ida), AccountingCode.OBJECT_NAME);
-		addNormalPool(new FundingSourcePool(ida), FundingSource.OBJECT_NAME);
+		addNormalPool(new FundingSourcePool(ida), FundingSourceSchema.OBJECT_NAME);
 		addNormalPool(new KeyEcologicalAttributePool(ida), KeyEcologicalAttribute.OBJECT_NAME);
 		addNormalPool(new DiagramFactorPool(ida), DiagramFactor.OBJECT_NAME);
 		addNormalPool(new CausePool(ida), Cause.OBJECT_NAME);

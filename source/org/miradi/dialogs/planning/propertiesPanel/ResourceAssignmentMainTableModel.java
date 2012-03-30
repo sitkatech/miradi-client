@@ -288,7 +288,7 @@ public class ResourceAssignmentMainTableModel extends AbstractSummaryTableModel
 	
 	private BaseObject createInvalidFundingSource(ObjectManager objectManager)
 	{
-		return AbstractSummaryTableModel.createInvalidObject(objectManager, FundingSourceSchema.getObjectType(), FundingSource.OBJECT_NAME);
+		return AbstractSummaryTableModel.createInvalidObject(objectManager, FundingSourceSchema.getObjectType(), FundingSourceSchema.OBJECT_NAME);
 	}
 	
 	private BaseObject createInvalidAccountingCode(ObjectManager objectManager)

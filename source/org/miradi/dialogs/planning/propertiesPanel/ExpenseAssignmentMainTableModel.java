@@ -161,7 +161,7 @@ public class ExpenseAssignmentMainTableModel extends AbstractSummaryTableModel
 		ExpenseAssignment expense = (ExpenseAssignment) baseObjectToUse;
 		ORef fundingSourceRef = expense.getFundingSourceRef();
 		if (fundingSourceRef.isInvalid())
-			return createInvalidObject(getObjectManager(), FundingSourceSchema.getObjectType(), FundingSource.OBJECT_NAME);
+			return createInvalidObject(getObjectManager(), FundingSourceSchema.getObjectType(), FundingSourceSchema.OBJECT_NAME);
 		
 		return FundingSource.find(getProject(), fundingSourceRef);
 	}

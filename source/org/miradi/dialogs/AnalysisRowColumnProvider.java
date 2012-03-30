@@ -28,10 +28,10 @@ import org.miradi.objecthelpers.CodeToCodeListMap;
 import org.miradi.objects.AccountingCode;
 import org.miradi.objects.BudgetCategoryOne;
 import org.miradi.objects.BudgetCategoryTwo;
-import org.miradi.objects.FundingSource;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
+import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.views.workplan.WorkPlanView;
 
@@ -54,7 +54,7 @@ public class AnalysisRowColumnProvider extends AbstractBudgetCategoryRowColumnPr
 		return new CodeList(new String[] {
 				ProjectResource.OBJECT_NAME,
 				AccountingCode.OBJECT_NAME,
-				FundingSource.OBJECT_NAME,
+				FundingSourceSchema.OBJECT_NAME,
 				BudgetCategoryOne.OBJECT_NAME,
 				BudgetCategoryTwo.OBJECT_NAME,
 		});
