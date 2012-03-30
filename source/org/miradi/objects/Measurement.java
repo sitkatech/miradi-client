@@ -24,6 +24,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.MeasurementSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -54,7 +55,7 @@ public class Measurement extends BaseObject
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
-		return new int[] {Indicator.getObjectType()};
+		return new int[] {IndicatorSchema.getObjectType()};
 	}
 	
 	public static int getObjectType()

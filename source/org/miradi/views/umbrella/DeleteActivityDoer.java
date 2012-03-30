@@ -38,6 +38,7 @@ import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
+import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.CommandVector;
 import org.miradi.views.ObjectsDoer;
 
@@ -144,7 +145,7 @@ public class DeleteActivityDoer extends ObjectsDoer
 		if (! task.isMethod())
 			return new CommandVector();
 		
-		return buildRemoveCommands(project, Indicator.getObjectType(), selectionHierarchy, Indicator.TAG_METHOD_IDS, task);
+		return buildRemoveCommands(project, IndicatorSchema.getObjectType(), selectionHierarchy, Indicator.TAG_METHOD_IDS, task);
 	}
 	
 	private static CommandVector buildRemoveCommandsForTaskIds(Project project, Task task) throws ParseException

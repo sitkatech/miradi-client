@@ -23,9 +23,9 @@ import org.miradi.ids.BaseId;
 import org.miradi.main.MiradiTestCase;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
-import org.miradi.objects.Indicator;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
+import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class TestORefList extends MiradiTestCase
@@ -86,24 +86,24 @@ public class TestORefList extends MiradiTestCase
 		assertFalse("contains refs from other list?", orefList1.containsAnyOf(orefList2));
 		assertFalse("contains refs from other list?", orefList2.containsAnyOf(orefList1));
 		
-		orefList2.add(new ORef(Indicator.getObjectType(), new BaseId(4)));
-		orefList2.add(new ORef(Indicator.getObjectType(), new BaseId(5)));
+		orefList2.add(new ORef(IndicatorSchema.getObjectType(), new BaseId(4)));
+		orefList2.add(new ORef(IndicatorSchema.getObjectType(), new BaseId(5)));
 		assertFalse("contains refs from other list?", orefList1.containsAnyOf(orefList2));
 		
-		orefList1.add(new ORef(Indicator.getObjectType(), new BaseId(5)));
+		orefList1.add(new ORef(IndicatorSchema.getObjectType(), new BaseId(5)));
 		assertTrue("does not contain ref from other list?", orefList1.containsAnyOf(orefList2));
 	}
 	
 	public void testGetOverlappingRefs()
 	{
 		ORefList orefList1 = new ORefList();
-		orefList1.add(new ORef(Indicator.getObjectType(), new BaseId(5)));
+		orefList1.add(new ORef(IndicatorSchema.getObjectType(), new BaseId(5)));
 		
 		ORefList orefList2 = new ORefList();
 		assertEquals("has overlapping refs?", 0, orefList1.getOverlappingRefs(orefList2).size());
 		
-		orefList2.add(new ORef(Indicator.getObjectType(), new BaseId(4)));
-		orefList2.add(new ORef(Indicator.getObjectType(), new BaseId(5)));
+		orefList2.add(new ORef(IndicatorSchema.getObjectType(), new BaseId(4)));
+		orefList2.add(new ORef(IndicatorSchema.getObjectType(), new BaseId(5)));
 		assertEquals("has overlapping refs?", 1, orefList1.getOverlappingRefs(orefList2).size());
 	}
 	

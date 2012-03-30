@@ -35,6 +35,7 @@ import org.miradi.objecthelpers.TargetSet;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -76,7 +77,7 @@ abstract public class Factor extends BaseObject
 	
 	public ORefList getDirectOrIndirectIndicatorRefs()
 	{
-		return new ORefList(Indicator.getObjectType(), getDirectOrIndirectIndicators()); 
+		return new ORefList(IndicatorSchema.getObjectType(), getDirectOrIndirectIndicators()); 
 	}
 	
 	public IdList getDirectOrIndirectIndicators()
@@ -110,12 +111,12 @@ abstract public class Factor extends BaseObject
 		ORefList activeIndicatorRefs = new ORefList();
 		for(int index = 0; index < rawDirectIndicatorIds.size(); ++index)
 		{
-			ORef indicatorRef = new ORef(Indicator.getObjectType(), rawDirectIndicatorIds.get(index));
+			ORef indicatorRef = new ORef(IndicatorSchema.getObjectType(), rawDirectIndicatorIds.get(index));
 			Indicator indicator = Indicator.find(getObjectManager(), indicatorRef);
 			if(indicator.isActive())
 				activeIndicatorRefs.add(indicatorRef);
 		}
-		return activeIndicatorRefs.convertToIdList(Indicator.getObjectType());
+		return activeIndicatorRefs.convertToIdList(IndicatorSchema.getObjectType());
 	}
 	
 	public ORefList getActiveAndInactiveDirectIndicatorRefs() throws Exception
@@ -125,7 +126,7 @@ abstract public class Factor extends BaseObject
 	
 	public ORefList getOnlyDirectIndicatorRefs()
 	{
-		return new ORefList(Indicator.getObjectType(), getOnlyDirectIndicatorIds());
+		return new ORefList(IndicatorSchema.getObjectType(), getOnlyDirectIndicatorIds());
 	}
 	
 	public ORefList getObjectiveRefs()
@@ -366,7 +367,7 @@ abstract public class Factor extends BaseObject
 	public int getAnnotationType(String tag)
 	{
 		if (tag.equals(TAG_INDICATOR_IDS))
-			return Indicator.getObjectType();
+			return IndicatorSchema.getObjectType();
 		
 		if (tag.equals(TAG_OBJECTIVE_IDS))
 			return Objective.getObjectType();

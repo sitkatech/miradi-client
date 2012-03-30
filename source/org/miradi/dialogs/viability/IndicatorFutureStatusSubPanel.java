@@ -37,12 +37,13 @@ import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.questions.StatusQuestion;
+import org.miradi.schemas.IndicatorSchema;
 
 public class IndicatorFutureStatusSubPanel extends ObjectDataInputPanel
 {
 	public IndicatorFutureStatusSubPanel(Project project) throws Exception
 	{
-		this(project, new ORef(Indicator.getObjectType(), BaseId.INVALID));
+		this(project, new ORef(IndicatorSchema.getObjectType(), BaseId.INVALID));
 	}
 	
 	public IndicatorFutureStatusSubPanel(Project projectToUse, ORef orefToUse) throws Exception
@@ -65,8 +66,8 @@ public class IndicatorFutureStatusSubPanel extends ObjectDataInputPanel
 				};
 		addFieldsOnOneLine(futureStatusLabel, components);
 
-		addField(createMultilineField(Indicator.getObjectType(), Indicator.TAG_FUTURE_STATUS_DETAIL));
-		addField(createMultilineField(Indicator.getObjectType(), Indicator.TAG_FUTURE_STATUS_COMMENTS));
+		addField(createMultilineField(IndicatorSchema.getObjectType(), Indicator.TAG_FUTURE_STATUS_DETAIL));
+		addField(createMultilineField(IndicatorSchema.getObjectType(), Indicator.TAG_FUTURE_STATUS_COMMENTS));
 		
 		updateFieldsFromProject();
 	}

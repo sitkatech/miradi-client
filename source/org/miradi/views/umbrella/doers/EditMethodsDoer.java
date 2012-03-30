@@ -22,13 +22,13 @@ package org.miradi.views.umbrella.doers;
 import org.miradi.dialogs.activity.MethodListManagementPanel;
 import org.miradi.dialogs.base.ObjectListManagementPanel;
 import org.miradi.main.EAM;
-import org.miradi.objects.Indicator;
+import org.miradi.schemas.IndicatorSchema;
 
 public class EditMethodsDoer extends AbstractPopUpEditDoer
 {
 	public EditMethodsDoer()
 	{
-		super(Indicator.getObjectType(), EAM.text("Edit Methods"));
+		super(IndicatorSchema.getObjectType(), EAM.text("Edit Methods"));
 	}
 
 	@Override

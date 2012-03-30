@@ -39,6 +39,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Indicator;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
+import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.NullProgressMeter;
 
 public class TestMpzToMpfConverter extends TestCaseWithProject
@@ -113,7 +114,7 @@ public class TestMpzToMpfConverter extends TestCaseWithProject
 			ThreatRatingBundle bundle = simpleThreatRatingFramework.getBundle(new FactorId(41), new FactorId(39));
 			assertEquals("Didn't convert actual threat ratings?", new BaseId(6), bundle.getValueId(new BaseId(3)));
 
-			Indicator indicator = Indicator.find(project2, new ORef(Indicator.getObjectType(), new BaseId(155)));
+			Indicator indicator = Indicator.find(project2, new ORef(IndicatorSchema.getObjectType(), new BaseId(155)));
 			CodeToUserStringMap thresholdMap = indicator.getCodeToUserStringMapData(Indicator.TAG_THRESHOLDS_MAP);
 			assertEquals("71 - 90%", thresholdMap.getUserString("3"));
 			assertNotContains("Didn't XML-encode?", "<", thresholdMap.getUserString("1"));

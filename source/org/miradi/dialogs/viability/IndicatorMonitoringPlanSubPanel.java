@@ -27,6 +27,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Indicator;
 import org.miradi.project.Project;
 import org.miradi.questions.PriorityRatingQuestion;
+import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.ObjectsActionButton;
 
 public class IndicatorMonitoringPlanSubPanel extends ObjectDataInputPanel
@@ -35,13 +36,13 @@ public class IndicatorMonitoringPlanSubPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, orefToUse);
 		
-		addField(createReadonlyTextField(Indicator.getObjectType(), Indicator.PSEUDO_TAG_FACTOR));
+		addField(createReadonlyTextField(IndicatorSchema.getObjectType(), Indicator.PSEUDO_TAG_FACTOR));
 		
 		ObjectsAction editMethods = getMainWindow().getActions().getObjectsAction(ActionEditMethods.class);
 		editMethodsButton = new ObjectsActionButton(editMethods, getPicker());
-		addFieldWithEditButton(EAM.text("Label|Methods"), createReadonlyTextField(Indicator.getObjectType(), Indicator.PSEUDO_TAG_METHODS), editMethodsButton);
+		addFieldWithEditButton(EAM.text("Label|Methods"), createReadonlyTextField(IndicatorSchema.getObjectType(), Indicator.PSEUDO_TAG_METHODS), editMethodsButton);
 
-		addField(createRatingChoiceField(Indicator.getObjectType(), Indicator.TAG_PRIORITY, new PriorityRatingQuestion()));
+		addField(createRatingChoiceField(IndicatorSchema.getObjectType(), Indicator.TAG_PRIORITY, new PriorityRatingQuestion()));
 		
 		updateFieldsFromProject();
 	}

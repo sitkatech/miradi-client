@@ -38,6 +38,7 @@ import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -176,12 +177,12 @@ abstract public class AbstractTarget extends Factor
 
 	public ORefList findAllKeaIndicatorRefs()
 	{
-		return new ORefList(Indicator.getObjectType(), findAllKeaIndicators());
+		return new ORefList(IndicatorSchema.getObjectType(), findAllKeaIndicators());
 	}
 
 	public IdList findAllKeaIndicators()
 	{
-		IdList list = new IdList(Indicator.getObjectType());
+		IdList list = new IdList(IndicatorSchema.getObjectType());
 		IdList keas = getKeyEcologicalAttributes();
 		for (int j=0; j<keas.size(); ++j)
 		{

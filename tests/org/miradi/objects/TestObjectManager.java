@@ -39,6 +39,7 @@ import org.miradi.project.ProjectLoader;
 import org.miradi.project.ProjectSaver;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
+import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.NullProgressMeter;
 
 
@@ -126,7 +127,7 @@ public class TestObjectManager extends MiradiTestCase
 
 	private Indicator createIndicator(String status) throws Exception
 	{
-		ORef indicatorRef = project.createObject(Indicator.getObjectType());
+		ORef indicatorRef = project.createObject(IndicatorSchema.getObjectType());
 		ORef measurementRef = project.createObject(Measurement.getObjectType());
 		project.setObjectData(measurementRef, Measurement.TAG_STATUS, status);
 		ORefList measurementRefs = new ORefList();
@@ -141,7 +142,7 @@ public class TestObjectManager extends MiradiTestCase
 		KeyEcologicalAttributeId keaId1 = (KeyEcologicalAttributeId)project.createObjectAndReturnId(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE);
 		KeyEcologicalAttribute kea = (KeyEcologicalAttribute)project.findObject(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, keaId1);
 
-		IdList indicatorIds = new IdList(Indicator.getObjectType());
+		IdList indicatorIds = new IdList(IndicatorSchema.getObjectType());
 		for(int i = 0; i < indicators.length; ++i)
 			indicatorIds.add(indicators[i].getId());
 		kea.setData(KeyEcologicalAttribute.TAG_INDICATOR_IDS, indicatorIds.toString());

@@ -31,7 +31,6 @@ import org.miradi.objecthelpers.NonDraftStrategySet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.TargetSet;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
@@ -120,7 +119,7 @@ public class Indicator extends BaseObject
 		for (int index = 0; index < annotationRefs.size(); ++index)
 		{
 			BaseObject annotationToDelete = BaseObject.find(getProject(), annotationRefs.get(index));
-			ORefList referrers = annotationToDelete.findObjectsThatReferToUs(getObjectType());
+			ORefList referrers = annotationToDelete.findObjectsThatReferToUs(IndicatorSchema.getObjectType());
 			if (referrers.size() == 1)
 				commandsToDeleteAnnotation.addAll(annotationToDelete.createCommandsToDeleteChildrenAndObject());
 		}
@@ -273,7 +272,7 @@ public class Indicator extends BaseObject
 	@Override
 	public int getType()
 	{
-		return getObjectType();
+		return IndicatorSchema.getObjectType();
 	}
 
 	@Override
@@ -295,12 +294,6 @@ public class Indicator extends BaseObject
 			KeyEcologicalAttribute.getObjectType(),
 		};
 	}
-	
-	public static int getObjectType()
-	{
-		return ObjectType.INDICATOR;
-	}
-	
 	
 	public String getFutureStatusRating()
 	{
@@ -377,7 +370,7 @@ public class Indicator extends BaseObject
 	
 	public static boolean is(int objectType)
 	{
-		return objectType == getObjectType();
+		return objectType == IndicatorSchema.getObjectType();
 	}
 	
 	public static Indicator find(ObjectManager objectManager, ORef indicatorRef)

@@ -22,16 +22,17 @@ package org.miradi.forms.objects;
 import org.miradi.forms.FieldPanelSpec;
 import org.miradi.icons.GoalIcon;
 import org.miradi.objects.Indicator;
+import org.miradi.schemas.IndicatorSchema;
 
 public class IndicatorFutureStatusSubForm extends FieldPanelSpec
 {
 	public IndicatorFutureStatusSubForm()
 	{
-		addStandardNameRow(new GoalIcon(), "", Indicator.getObjectType(), new String[]{Indicator.TAG_FUTURE_STATUS_DATE, 
+		addStandardNameRow(new GoalIcon(), "", IndicatorSchema.getObjectType(), new String[]{Indicator.TAG_FUTURE_STATUS_DATE, 
 																				Indicator.TAG_FUTURE_STATUS_SUMMARY,
 																				Indicator.TAG_FUTURE_STATUS_RATING,});
 		
-		addLabelAndField(Indicator.getObjectType(), Indicator.TAG_FUTURE_STATUS_DETAIL);
-		addLabelAndField(Indicator.getObjectType(), Indicator.TAG_FUTURE_STATUS_COMMENTS);
+		addLabelAndField(IndicatorSchema.getObjectType(), Indicator.TAG_FUTURE_STATUS_DETAIL);
+		addLabelAndField(IndicatorSchema.getObjectType(), Indicator.TAG_FUTURE_STATUS_COMMENTS);
 	}
 }

@@ -26,6 +26,7 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Indicator;
 import org.miradi.project.Project;
+import org.miradi.schemas.IndicatorSchema;
 
 public class IndicatorSubPanel extends ObjectDataInputPanel
 {
@@ -33,13 +34,13 @@ public class IndicatorSubPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, orefToUse);
 
-		ObjectDataInputField shortLabelField = createStringField(Indicator.getObjectType(), Indicator.TAG_SHORT_LABEL,10);
-		ObjectDataInputField labelField = createExpandableField(Indicator.getObjectType(), Indicator.TAG_LABEL);
+		ObjectDataInputField shortLabelField = createStringField(IndicatorSchema.getObjectType(), Indicator.TAG_SHORT_LABEL,10);
+		ObjectDataInputField labelField = createExpandableField(IndicatorSchema.getObjectType(), Indicator.TAG_LABEL);
 		addFieldsOnOneLine(EAM.text("Indicator"), IconManager.getIndicatorIcon(), new ObjectDataInputField[]{shortLabelField, labelField,});
 
 		final int COLUMNS = 75;
-		addField(createMultilineField(Indicator.getObjectType(), Indicator.TAG_DETAIL, COLUMNS));
-		addField(createMultilineField(Indicator.getObjectType(), Indicator.TAG_COMMENTS, COLUMNS));
+		addField(createMultilineField(IndicatorSchema.getObjectType(), Indicator.TAG_DETAIL, COLUMNS));
+		addField(createMultilineField(IndicatorSchema.getObjectType(), Indicator.TAG_COMMENTS, COLUMNS));
 		
 		updateFieldsFromProject();
 	}

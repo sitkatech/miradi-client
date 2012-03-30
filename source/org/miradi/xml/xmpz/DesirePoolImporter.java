@@ -24,9 +24,9 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objects.Desire;
-import org.miradi.objects.Indicator;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
+import org.miradi.schemas.IndicatorSchema;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.w3c.dom.Node;
 
@@ -53,7 +53,7 @@ abstract public class DesirePoolImporter extends AbstractBaseObjectPoolImporter
 
 	private void importRelevantIndicatorIds(Node node, ORef destinationDesireRef) throws Exception
 	{
-		ORefList importedRelevantRefs = extractRefs(node, XmpzXmlConstants.RELEVANT_INDICATOR_IDS, Indicator.getObjectType(), XmpzXmlConstants.INDICATOR + XmpzXmlConstants.ID);
+		ORefList importedRelevantRefs = extractRefs(node, XmpzXmlConstants.RELEVANT_INDICATOR_IDS, IndicatorSchema.getObjectType(), XmpzXmlConstants.INDICATOR + XmpzXmlConstants.ID);
 		Desire desire = Desire.findDesire(getProject(), destinationDesireRef);
 		RelevancyOverrideSet set = desire.getCalculatedRelevantIndicatorOverrides(importedRelevantRefs);		
 		getImporter().setData(destinationDesireRef, Desire.TAG_RELEVANT_INDICATOR_SET, set.toString());

@@ -53,6 +53,7 @@ import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.TextBox;
 import org.miradi.objects.ThreatReductionResult;
+import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.views.diagram.LinkCreator;
 
@@ -308,7 +309,7 @@ public class TestProjectRepairer extends TestCaseWithProject
 	
 	public void testScanForCorruptedObjects() throws Exception
 	{
-		ORef indicatorRef = getProject().createObject(Indicator.getObjectType());
+		ORef indicatorRef = getProject().createObject(IndicatorSchema.getObjectType());
 		Indicator indicator = (Indicator) getProject().findObject(indicatorRef);
 		BaseId nonExistantId = new BaseId(500);
 		CommandSetObjectData appendTask = CommandSetObjectData.createAppendIdCommand(indicator, Indicator.TAG_METHOD_IDS, nonExistantId);

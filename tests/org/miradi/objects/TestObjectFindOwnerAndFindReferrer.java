@@ -26,6 +26,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ProjectForTesting;
+import org.miradi.schemas.IndicatorSchema;
 
 public class TestObjectFindOwnerAndFindReferrer extends MiradiTestCase
 {
@@ -202,7 +203,7 @@ public class TestObjectFindOwnerAndFindReferrer extends MiradiTestCase
 	
 	public void testIndicatorOwn() throws Exception
 	{
-		ORef indicatorRef = project.createObject(Indicator.getObjectType());
+		ORef indicatorRef = project.createObject(IndicatorSchema.getObjectType());
 	
 		ORef taskRef = project.createObject(Task.getObjectType());
 		IdList taskList = new IdList(Task.getObjectType(), new BaseId[] {taskRef.getObjectId()});

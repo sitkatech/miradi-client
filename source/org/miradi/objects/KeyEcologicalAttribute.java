@@ -28,6 +28,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.project.TNCViabilityFormula;
+import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.KeyEcologicalAttributeSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
@@ -48,7 +49,7 @@ public class KeyEcologicalAttribute extends BaseObject
 	public int getAnnotationType(String tag)
 	{
 		if (tag.equals(TAG_INDICATOR_IDS))
-			return Indicator.getObjectType();
+			return IndicatorSchema.getObjectType();
 		
 		return super.getAnnotationType(tag);
 	}
@@ -131,7 +132,7 @@ public class KeyEcologicalAttribute extends BaseObject
 		IdList indicatorIds = getIndicatorIds();
 		for(int i = 0; i < indicatorIds.size(); ++i)
 		{
-			Indicator indicator = (Indicator) objectManager.findObject(new ORef(Indicator.getObjectType(), indicatorIds.get(i)));
+			Indicator indicator = (Indicator) objectManager.findObject(new ORef(IndicatorSchema.getObjectType(), indicatorIds.get(i)));
 			ORef latestMeasurementRef = indicator.getLatestMeasurementRef();
 			if (latestMeasurementRef.isInvalid())
 				continue;

@@ -45,6 +45,7 @@ import org.miradi.objects.SubTarget;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
+import org.miradi.schemas.IndicatorSchema;
 
 public class NormalTreeRebuilder extends AbstractTreeRebuilder
 {
@@ -152,7 +153,7 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		AbstractTarget target = AbstractTarget.findTarget(getProject(), targetRef);
 		childRefs.addAll(target.getSubTargetRefs());
 		childRefs.addAll(target.getOwnedObjects(Goal.getObjectType()));
-		childRefs.addAll(new ORefList(Indicator.getObjectType(), target.getDirectOrIndirectIndicators()));
+		childRefs.addAll(new ORefList(IndicatorSchema.getObjectType(), target.getDirectOrIndirectIndicators()));
 		childRefs.addAll(getDirectlyLinkedNonDraftStrategies(target, diagram));
 		
 		return childRefs;
@@ -193,7 +194,7 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		if (doStrategiesContainObjectives())
 			childRefs.addAll(findRelevantObjectivesAndGoals(parentRef));
 		
-		childRefs.addAll(strategy.getOwnedObjects(Indicator.getObjectType()));
+		childRefs.addAll(strategy.getOwnedObjects(IndicatorSchema.getObjectType()));
 		return childRefs;
 	}
 	

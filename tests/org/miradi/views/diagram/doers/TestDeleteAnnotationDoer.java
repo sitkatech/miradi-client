@@ -28,6 +28,7 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 import org.miradi.project.ProjectForTesting;
+import org.miradi.schemas.IndicatorSchema;
 import org.miradi.views.diagram.DeleteAnnotationDoer;
 
 public class TestDeleteAnnotationDoer extends MiradiTestCase
@@ -55,8 +56,8 @@ public class TestDeleteAnnotationDoer extends MiradiTestCase
 	public void testBuildCommandsToDeleteAnnotation() throws Exception
 	{
 		ORef strategyRef = project.createFactorAndReturnRef(Strategy.getObjectType());
-		ORef indicatorRef1 = project.createFactorAndReturnRef(Indicator.getObjectType());
-		ORef indicatorRef2 = project.createFactorAndReturnRef(Indicator.getObjectType());
+		ORef indicatorRef1 = project.createFactorAndReturnRef(IndicatorSchema.getObjectType());
+		ORef indicatorRef2 = project.createFactorAndReturnRef(IndicatorSchema.getObjectType());
 		ORef methodRef = project.createFactorAndReturnRef(Task.getObjectType());
 	
 		Strategy strategy = (Strategy) project.findObject(strategyRef);
@@ -87,7 +88,7 @@ public class TestDeleteAnnotationDoer extends MiradiTestCase
 		Task foundMethod = (Task) project.findObject(methodRef);
 		assertEquals("method was deleted?", method.getRef(), foundMethod.getRef());
 		
-		ORefList referrers = method.findObjectsThatReferToUs(Indicator.getObjectType());
+		ORefList referrers = method.findObjectsThatReferToUs(IndicatorSchema.getObjectType());
 		assertEquals("wrong number of referrers?", 1, referrers.size());
 		assertEquals("incorrect referrer?", indicator2.getRef(), referrers.get(0));
 		

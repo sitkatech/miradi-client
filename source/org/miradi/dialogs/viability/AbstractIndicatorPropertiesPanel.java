@@ -30,15 +30,15 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.project.Project;
+import org.miradi.schemas.IndicatorSchema;
 
 abstract public class AbstractIndicatorPropertiesPanel extends ObjectDataInputPanelWithSections
 {
 	public AbstractIndicatorPropertiesPanel(Project projectToUse) throws Exception
 	{
-		super(projectToUse, Indicator.getObjectType());
+		super(projectToUse, IndicatorSchema.getObjectType());
 		
 		setLayout(new OneColumnGridLayout());
 		addSubPanelWithTitledBorder(new IndicatorSubPanel(getProject(), getInvalidTargetRef()));

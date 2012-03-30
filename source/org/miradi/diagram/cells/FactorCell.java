@@ -49,6 +49,7 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.Objective;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
+import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.Utility;
 import org.miradi.utils.XmlUtilities2;
 
@@ -93,7 +94,7 @@ abstract public class FactorCell extends EAMGraphCell
 		{
 			header = EAM.text("Indicators:");
 			detailsTag = Indicator.TAG_DETAIL;
-			bullets = new ORefList(Indicator.getObjectType(), factor.getDirectOrIndirectIndicators());
+			bullets = new ORefList(IndicatorSchema.getObjectType(), factor.getDirectOrIndirectIndicators());
 		}
 		else if(isPointInGoal(pointRelativeToCellOrigin))
 		{

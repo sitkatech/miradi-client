@@ -61,11 +61,11 @@ import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
-import org.miradi.objects.Indicator;
 import org.miradi.objects.Objective;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.ViewData;
+import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.NullProgressMeter;
 import org.miradi.views.diagram.DiagramCopyPaster;
@@ -657,7 +657,7 @@ public class TestProject extends MiradiTestCase
 		FactorCell nodeDirectThreat = project.createFactorCell(ObjectType.CAUSE);
 		
 		IndicatorId indicatorId1 = (IndicatorId)project.createObjectAndReturnId(ObjectType.INDICATOR);
-		IdList indicators1 = new IdList(Indicator.getObjectType());
+		IdList indicators1 = new IdList(IndicatorSchema.getObjectType());
 		indicators1.add(indicatorId1);
 
 		Factor cf = nodeContributingFactor.getWrappedFactor();

@@ -31,6 +31,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.TaglessChoiceItem;
+import org.miradi.schemas.IndicatorSchema;
 
 public class PlanningViewFutureStatusTableModel extends PlanningViewAbstractTreeTableSyncedTableModel
 {
@@ -52,7 +53,7 @@ public class PlanningViewFutureStatusTableModel extends PlanningViewAbstractTree
 	@Override
 	public String getColumnName(int column)
 	{
-		return EAM.fieldLabel(Indicator.getObjectType(), getColumnTag(column));
+		return EAM.fieldLabel(IndicatorSchema.getObjectType(), getColumnTag(column));
 	}
 	
 	public Object getValueAt(int row, int column)

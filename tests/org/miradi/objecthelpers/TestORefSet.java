@@ -21,7 +21,7 @@ package org.miradi.objecthelpers;
 
 import org.martus.util.TestCaseEnhanced;
 import org.miradi.ids.BaseId;
-import org.miradi.objects.Indicator;
+import org.miradi.schemas.IndicatorSchema;
 
 public class TestORefSet extends TestCaseEnhanced
 {
@@ -60,12 +60,12 @@ public class TestORefSet extends TestCaseEnhanced
 		assertTrue("Two empty list should have no nonOverlapping refs?", ORefSet.getNonOverlappingRefs(orefSet1, orefSet2).isEmpty());
 		assertTrue("Two empty list should have no nonOverlapping refs?", ORefSet.getNonOverlappingRefs(orefSet2, orefSet1).isEmpty());
 		
-		ORef nonOverlappingRef1 = new ORef(Indicator.getObjectType(), new BaseId(9999));
+		ORef nonOverlappingRef1 = new ORef(IndicatorSchema.getObjectType(), new BaseId(9999));
 		orefSet1.add(nonOverlappingRef1);
 		assertTrue("Should have one non overlapping ref?", ORefSet.getNonOverlappingRefs(orefSet1, orefSet2).hasData());
 		assertTrue("Should have one non overlapping ref?", ORefSet.getNonOverlappingRefs(orefSet2, orefSet1).hasData());
 		
-		ORef nonOverlappingRef2 = new ORef(Indicator.getObjectType(), new BaseId(8888));
+		ORef nonOverlappingRef2 = new ORef(IndicatorSchema.getObjectType(), new BaseId(8888));
 		orefSet2.add(nonOverlappingRef2);
 		assertTrue("Should have two non overlapping ref?", ORefSet.getNonOverlappingRefs(orefSet1, orefSet2).hasData());
 		assertTrue("Should have two non overlapping ref?", ORefSet.getNonOverlappingRefs(orefSet2, orefSet1).hasData());

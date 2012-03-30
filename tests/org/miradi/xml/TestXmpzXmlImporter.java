@@ -59,6 +59,7 @@ import org.miradi.questions.DiagramLegendQuestion;
 import org.miradi.questions.OpenStandardsConceptualizeQuestion;
 import org.miradi.questions.OpenStandardsProgressStatusQuestion;
 import org.miradi.questions.TextBoxZOrderQuestion;
+import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateUnitEffort;
@@ -115,7 +116,7 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 		keaIds.addRef(kea.getRef());
 		getProject().fillObjectUsingCommand(target, Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, keaIds.toString());
 		
-		IdList indicatorIds = new IdList(Indicator.getObjectType());
+		IdList indicatorIds = new IdList(IndicatorSchema.getObjectType());
 		final Indicator keaIndicator = getProject().createIndicator(kea);
 		indicatorIds.add(keaIndicator.getId());
 		getProject().fillObjectUsingCommand(kea, KeyEcologicalAttribute.TAG_INDICATOR_IDS, indicatorIds);

@@ -27,9 +27,9 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.Indicator;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
+import org.miradi.schemas.IndicatorSchema;
 import org.miradi.views.ObjectsDoer;
 
 
@@ -127,7 +127,7 @@ abstract public class AbstractTaskChangeSequenceDoer extends ObjectsDoer
 	private ORefList getAllReferrersAndOwners(Task task)
 	{
 		ORefList allReferrers = new ORefList();
-		allReferrers.addAll(task.findObjectsThatReferToUs(Indicator.getObjectType()));
+		allReferrers.addAll(task.findObjectsThatReferToUs(IndicatorSchema.getObjectType()));
 		allReferrers.addAll(task.findObjectsThatReferToUs(Strategy.getObjectType()));
 		allReferrers.add(task.getOwnerRef());
 		

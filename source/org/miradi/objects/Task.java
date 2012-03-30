@@ -33,6 +33,7 @@ import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
@@ -125,7 +126,7 @@ public class Task extends Factor
 	{
 		return new int[] {
 			Strategy.getObjectType(),
-			Indicator.getObjectType(),
+			IndicatorSchema.getObjectType(),
 			Task.getObjectType(),
 		};
 	}
@@ -206,7 +207,7 @@ public class Task extends Factor
 			return;
 		}
 		
-		ORefList indicatorReferrers = findObjectsThatReferToUs(Indicator.getObjectType());
+		ORefList indicatorReferrers = findObjectsThatReferToUs(IndicatorSchema.getObjectType());
 		if(indicatorReferrers.size() > 0)
 		{
 			cachedObjectTypeName = METHOD_NAME;
@@ -385,7 +386,7 @@ public class Task extends Factor
 			return Task.getObjectType();
 		
 		if(isMethod())
-			return Indicator.getObjectType();
+			return IndicatorSchema.getObjectType();
 		
 		if(isActivity())
 			return Strategy.getObjectType();
@@ -421,7 +422,7 @@ public class Task extends Factor
 		if(parentType == Strategy.getObjectType())
 			return ACTIVITY_NAME;
 		
-		if(parentType == Indicator.getObjectType())
+		if(parentType == IndicatorSchema.getObjectType())
 			return METHOD_NAME;
 		
 		return OBJECT_NAME;

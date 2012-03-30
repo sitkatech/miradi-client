@@ -59,6 +59,7 @@ import org.miradi.questions.ProjectSharingQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.TrendQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
+import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.NullProgressMeter;
@@ -102,7 +103,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		getProject().createIndicator(target);
 		KeyEcologicalAttribute kea = getProject().createKea();
 		
-		IdList indicatorIds = new IdList(Indicator.getObjectType());
+		IdList indicatorIds = new IdList(IndicatorSchema.getObjectType());
 		final Indicator keaIndicator = getProject().createIndicator(kea);
 		indicatorIds.add(keaIndicator.getId());
 		getProject().fillObjectUsingCommand(kea, KeyEcologicalAttribute.TAG_INDICATOR_IDS, indicatorIds);

@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
-import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 
@@ -36,7 +35,7 @@ public class KeyEcologicalAttributeSchema extends BaseObjectSchema
 	{
 		super.fillFieldSchemas();
 		
-		createFieldSchemaIdList(KeyEcologicalAttribute.TAG_INDICATOR_IDS, Indicator.getObjectType());
+		createFieldSchemaIdList(KeyEcologicalAttribute.TAG_INDICATOR_IDS, IndicatorSchema.getObjectType());
 		createFieldSchemaMultiLineUserText(KeyEcologicalAttribute.TAG_DESCRIPTION);
 		createFieldSchemaMultiLineUserText(KeyEcologicalAttribute.TAG_DETAILS);
 		createFieldSchemaChoice(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE, getQuestion(KeyEcologicalAttributeTypeQuestion.class));
