@@ -47,6 +47,7 @@ import org.miradi.project.FactorCommandHelper;
 import org.miradi.project.Project;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.DiagramLinkSchema;
+import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.NullProgressMeter;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.views.diagram.LinkCreator;
@@ -135,7 +136,7 @@ public class MeglerArranger
 
 	private void createThreatGroupsBasedOnTargets() throws Exception
 	{
-		createGroupBoxes(threats, DiagramLink.TO, Target.getObjectType());
+		createGroupBoxes(threats, DiagramLink.TO, TargetSchema.getObjectType());
 	}
 
 	private void ceateStrategyGroups() throws Exception

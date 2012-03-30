@@ -38,6 +38,7 @@ import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
+import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -292,7 +293,7 @@ public class Indicator extends BaseObject
 			Cause.getObjectType(),
 			IntermediateResult.getObjectType(),
 			ThreatReductionResult.getObjectType(),
-			Target.getObjectType(),
+			TargetSchema.getObjectType(),
 			HumanWelfareTargetSchema.getObjectType(),
 			KeyEcologicalAttribute.getObjectType(),
 		};

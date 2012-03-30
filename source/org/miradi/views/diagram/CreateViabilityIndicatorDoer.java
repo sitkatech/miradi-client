@@ -33,6 +33,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Target;
+import org.miradi.schemas.TargetSchema;
 import org.miradi.views.targetviability.doers.AbstractKeyEcologicalAttributeDoer;
 
 public class CreateViabilityIndicatorDoer extends AbstractKeyEcologicalAttributeDoer
@@ -53,7 +54,7 @@ public class CreateViabilityIndicatorDoer extends AbstractKeyEcologicalAttribute
 		if (!keaRef.isInvalid())
 			return true;
 		
-		ORef targetRef = selectedHierarchy.getRefForType(Target.getObjectType());
+		ORef targetRef = selectedHierarchy.getRefForType(TargetSchema.getObjectType());
 		if (targetRef.isInvalid())
 			return false;
 		
@@ -68,7 +69,7 @@ public class CreateViabilityIndicatorDoer extends AbstractKeyEcologicalAttribute
 	public Vector<Integer> getRequiredObjectTypes()
 	{
 		Vector<Integer> types = new Vector<Integer>();
-		types.add(Target.getObjectType());
+		types.add(TargetSchema.getObjectType());
 		types.add(KeyEcologicalAttribute.getObjectType());
 
 		return types;

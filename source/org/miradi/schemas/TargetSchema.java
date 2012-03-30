@@ -20,12 +20,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Target;
 import org.miradi.questions.HabitatAssociationQuestion;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class TargetSchema extends AbstractTargetSchema
 {
+	public static final String OBJECT_NAME = "Target";
+
 	public TargetSchema()
 	{
 		super();
@@ -41,5 +44,10 @@ public class TargetSchema extends AbstractTargetSchema
 		createFieldSchemaCodeList(Target.TAG_HABITAT_ASSOCIATION, getQuestion(HabitatAssociationQuestion.class));
 		
 		createPseudoFieldSchemaQuestion(Target.PSEUDO_TAG_HABITAT_ASSOCIATION_VALUE);
+	}
+
+	public static int getObjectType()
+	{
+		return ObjectType.TARGET;
 	}
 }

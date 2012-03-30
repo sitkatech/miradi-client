@@ -23,6 +23,7 @@ import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
+import org.miradi.schemas.TargetSchema;
 import org.miradi.views.diagram.DeleteAnnotationDoer;
 
 public class DeleteStressDoer extends DeleteAnnotationDoer
@@ -42,7 +43,7 @@ public class DeleteStressDoer extends DeleteAnnotationDoer
 	@Override
 	protected BaseObject getParent(BaseObject annotationToDelete)
 	{
-		return getSingleSelected(Target.getObjectType());  
+		return getSingleSelected(TargetSchema.getObjectType());  
 	}
 
 	@Override

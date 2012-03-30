@@ -54,6 +54,7 @@ import org.miradi.questions.TncMarineEcoRegionQuestion;
 import org.miradi.questions.TncOperatingUnitsQuestion;
 import org.miradi.questions.TncTerrestrialEcoRegionQuestion;
 import org.miradi.questions.TwoLevelQuestion;
+import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.PointList;
@@ -954,10 +955,10 @@ public class MigrationsOlderThanMiradiVersion2
 	{
 		ORef fromRef = factorLinkJson.getRef("FromRef");
 		ORef toRef = factorLinkJson.getRef("ToRef");
-		if (toRef.getObjectType() == Target.getObjectType())
+		if (toRef.getObjectType() == TargetSchema.getObjectType())
 			return toRef;
 		
-		if (fromRef.getObjectType() == Target.getObjectType())
+		if (fromRef.getObjectType() == TargetSchema.getObjectType())
 			return fromRef;
 		
 		return ORef.INVALID;

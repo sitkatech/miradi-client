@@ -28,6 +28,7 @@ import org.miradi.objects.Target;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.TargetSchema;
 
 abstract public class GenericViabilityTreeModel extends GenericTreeTableModel
 {
@@ -59,7 +60,7 @@ abstract public class GenericViabilityTreeModel extends GenericTreeTableModel
 	private int getObjectTypeForColumnLabel(String tag)
 	{
 		if(tag.equals(Target.TAG_VIABILITY_MODE))
-			return Target.getObjectType();
+			return TargetSchema.getObjectType();
 			
 		else if(tag.equals(Measurement.TAG_STATUS_CONFIDENCE))
 			return Measurement.getObjectType();

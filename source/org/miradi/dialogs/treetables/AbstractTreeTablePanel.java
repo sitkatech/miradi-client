@@ -49,6 +49,7 @@ import org.miradi.objects.Task;
 import org.miradi.objects.ViewData;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.TableWithColumnWidthAndSequenceSaver;
 
 abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
@@ -253,7 +254,7 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 		if (event.isSetDataCommandWithThisTypeAndTag(HumanWelfareTargetSchema.getObjectType(), HumanWelfareTarget.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS))
 			return true;
 		
-		return event.isSetDataCommandWithThisTypeAndTag(Target.getObjectType(), Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
+		return event.isSetDataCommandWithThisTypeAndTag(TargetSchema.getObjectType(), Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
 	}
 	
 	//TODO this should use that getTasksTag (or something like that) method
@@ -332,7 +333,7 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 	
 	private boolean isTargetModeChange (CommandExecutedEvent event)
 	{
-		return event.isSetDataCommandWithThisTypeAndTag(Target.getObjectType(), Target.TAG_VIABILITY_MODE);
+		return event.isSetDataCommandWithThisTypeAndTag(TargetSchema.getObjectType(), Target.TAG_VIABILITY_MODE);
 	}
 	
 	private boolean didAffectMeasurementInTree(CommandExecutedEvent event)

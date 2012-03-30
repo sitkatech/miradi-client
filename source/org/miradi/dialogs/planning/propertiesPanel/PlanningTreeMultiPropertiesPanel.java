@@ -63,6 +63,7 @@ import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
+import org.miradi.schemas.TargetSchema;
 
 public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPanel
 {
@@ -126,7 +127,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 			if (Measurement.getObjectType() == objectType)
 				return getMeasurementPropertiesPanel();
 			
-			if (Target.getObjectType() == objectType)
+			if (TargetSchema.getObjectType() == objectType)
 				return getBiodiversityTargetPropertiesPanel();
 			
 			if (HumanWelfareTarget.is(objectType))
@@ -249,7 +250,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 	{
 		if(targetPropertiesPanel == null)
 		{
-			targetPropertiesPanel = new NonDiagramAbstractTargetPropertiesPanel(getProject(), Target.getObjectType());
+			targetPropertiesPanel = new NonDiagramAbstractTargetPropertiesPanel(getProject(), TargetSchema.getObjectType());
 			addPanel(targetPropertiesPanel);
 		}
 		return targetPropertiesPanel;
@@ -399,7 +400,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 	{
 		super.commandExecuted(event);
 			
-		if (event.isSetDataCommandWithThisTypeAndTag(Target.getObjectType(), Target.TAG_VIABILITY_MODE))
+		if (event.isSetDataCommandWithThisTypeAndTag(TargetSchema.getObjectType(), Target.TAG_VIABILITY_MODE))
 			reloadSelectedRefs();
 	}
 

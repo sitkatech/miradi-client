@@ -47,6 +47,7 @@ import org.miradi.objects.Target;
 import org.miradi.objects.ValueOption;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
+import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.Utility;
 
@@ -347,7 +348,7 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 		if(threat == null)
 			return false;
 		
-		ORef targetRef = new ORef(Target.getObjectType(), bundle.getTargetId());
+		ORef targetRef = new ORef(TargetSchema.getObjectType(), bundle.getTargetId());
 		ThreatTargetVirtualLinkHelper helper = new ThreatTargetVirtualLinkHelper(getProject());
 	
 		return helper.canSupportThreatRatings(getProject(), threat, targetRef);		

@@ -28,6 +28,7 @@ import org.miradi.project.Project;
 import org.miradi.project.threatrating.StressBasedThreatFormula;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.schemas.StressSchema;
+import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class Stress extends Factor
@@ -57,7 +58,7 @@ public class Stress extends Factor
 	public int[] getTypesThatCanOwnUs()
 	{
 		return new int[] {
-			Target.getObjectType(),
+			TargetSchema.getObjectType(),
 			};
 	}
 	
@@ -99,7 +100,7 @@ public class Stress extends Factor
 		if (isSuperShared)
 			return true;
 		
-		ORefList referrers = findObjectsThatReferToUs(Target.getObjectType());
+		ORefList referrers = findObjectsThatReferToUs(TargetSchema.getObjectType());
 		
 		return referrers.size() > 0;
 	}

@@ -69,7 +69,6 @@ import org.miradi.objects.ScopeBox;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.TaggedObjectSet;
-import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.TextBox;
 import org.miradi.objects.ThreatReductionResult;
@@ -81,6 +80,7 @@ import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
+import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.views.umbrella.LegendPanel;
 import org.miradi.views.umbrella.doers.AbstractPopUpEditDoer;
@@ -139,7 +139,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 	private void createLegendCheckBoxes()
 	{
 		createCheckBox(ScopeBox.OBJECT_NAME);
-		createCheckBox(Target.OBJECT_NAME);
+		createCheckBox(TargetSchema.OBJECT_NAME);
 		createCheckBox(HumanWelfareTargetSchema.OBJECT_NAME);
 		
 		createCheckBox(Cause.OBJECT_NAME_THREAT);
@@ -170,7 +170,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		
 		addButtonLineWithCheckBox(jpanel, ScopeBox.getObjectType(), ScopeBox.OBJECT_NAME, actions.get(ActionInsertScopeBox.class));
 		
-		addButtonLineWithCheckBox(jpanel, Target.getObjectType(), Target.OBJECT_NAME, actions.get(ActionInsertTarget.class));
+		addButtonLineWithCheckBox(jpanel, TargetSchema.getObjectType(), TargetSchema.OBJECT_NAME, actions.get(ActionInsertTarget.class));
 		if (getProject().getMetadata().isHumanWelfareTargetMode())
 			addButtonLineWithCheckBox(jpanel, HumanWelfareTargetSchema.getObjectType(), HumanWelfareTargetSchema.OBJECT_NAME, actions.get(ActionInsertHumanWelfareTarget.class));
 		

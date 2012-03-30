@@ -29,6 +29,7 @@ import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
+import org.miradi.schemas.TargetSchema;
 
 public abstract class TaskPropertiesPanel extends ObjectDataInputPanelWithSections
 {
@@ -63,7 +64,7 @@ public abstract class TaskPropertiesPanel extends ObjectDataInputPanelWithSectio
 	{
 		super.commandExecuted(event);
 			
-		if (event.isSetDataCommandWithThisTypeAndTag(Target.getObjectType(), Target.TAG_VIABILITY_MODE))
+		if (event.isSetDataCommandWithThisTypeAndTag(TargetSchema.getObjectType(), Target.TAG_VIABILITY_MODE))
 			reloadSelectedRefs();
 	}
 	

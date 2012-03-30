@@ -31,6 +31,7 @@ import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.schemas.HumanWelfareTargetSchema;
+import org.miradi.schemas.TargetSchema;
 
 public class NonDiagramAbstractTargetPropertiesPanel extends ObjectDataInputPanelWithSections
 {
@@ -72,7 +73,7 @@ public class NonDiagramAbstractTargetPropertiesPanel extends ObjectDataInputPane
 	
 	private ORef extractTargetRef(ORefList refs)
 	{
-		ORef targetRef = refs.getRefForType(Target.getObjectType());
+		ORef targetRef = refs.getRefForType(TargetSchema.getObjectType());
 		if (targetRef.isValid())
 			return targetRef;
 		

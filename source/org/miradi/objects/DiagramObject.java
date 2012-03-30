@@ -41,6 +41,7 @@ import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
+import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -58,7 +59,7 @@ abstract public class DiagramObject extends BaseObject
 
 	public HashSet<Factor> getAbstractTargets()
 	{
-		HashSet<Factor> diagramAbstractTargets = getFactorsOfType(Target.getObjectType());
+		HashSet<Factor> diagramAbstractTargets = getFactorsOfType(TargetSchema.getObjectType());
 		diagramAbstractTargets.addAll(getFactorsOfType(HumanWelfareTargetSchema.getObjectType()));
 		
 		return diagramAbstractTargets;

@@ -39,6 +39,7 @@ import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
+import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.CodeList;
 
 public class ObjectsOnlyRowColumnProvider extends AbstractPlanningTreeRowColumnProvider
@@ -109,7 +110,7 @@ public class ObjectsOnlyRowColumnProvider extends AbstractPlanningTreeRowColumnP
 		if (propertyName.equals(Measurement.OBJECT_NAME))
 			return ObjectsOnlyRowColumnProvider.getMeasurementColumns();
 		
-		if (propertyName.equals(Target.OBJECT_NAME) || propertyName.equals(HumanWelfareTargetSchema.OBJECT_NAME))
+		if (propertyName.equals(TargetSchema.OBJECT_NAME) || propertyName.equals(HumanWelfareTargetSchema.OBJECT_NAME))
 			return ObjectsOnlyRowColumnProvider.getTargetColumns();
 		
 		if (propertyName.equals(Cause.OBJECT_NAME_THREAT) || propertyName.equals(Cause.OBJECT_NAME_CONTRIBUTING_FACTOR))

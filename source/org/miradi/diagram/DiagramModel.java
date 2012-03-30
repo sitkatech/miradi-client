@@ -85,6 +85,7 @@ import org.miradi.project.Project;
 import org.miradi.project.threatrating.ThreatRatingFramework;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.DiagramLinkSchema;
+import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.views.diagram.GroupOfDiagrams;
 import org.miradi.views.diagram.LayerManager;
@@ -878,7 +879,7 @@ abstract public class DiagramModel extends DefaultGraphModel
 	
 	public Vector<FactorCell> getAllDiagramTargets()
 	{
-		return getFactorCells(Target.getObjectType());
+		return getFactorCells(TargetSchema.getObjectType());
 	}
 
 	public Vector<FactorCell> getFactorCells(int wrappedType)

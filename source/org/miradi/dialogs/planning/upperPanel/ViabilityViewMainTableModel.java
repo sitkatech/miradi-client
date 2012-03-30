@@ -51,6 +51,7 @@ import org.miradi.questions.TextAndIconChoiceItem;
 import org.miradi.questions.TrendQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.TargetSchema;
 
 public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 {
@@ -471,7 +472,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 	private int getObjectTypeForColumnLabel(String tag)
 	{
 		if(tag.equals(Target.TAG_VIABILITY_MODE))
-			return Target.getObjectType();
+			return TargetSchema.getObjectType();
 			
 		else if(tag.equals(Measurement.TAG_STATUS_CONFIDENCE))
 			return Measurement.getObjectType();
