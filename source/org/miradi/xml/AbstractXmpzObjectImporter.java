@@ -24,7 +24,6 @@ import org.miradi.ids.BaseId;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.WwfProjectData;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.schemas.DashboardSchema;
@@ -33,6 +32,7 @@ import org.miradi.schemas.RareProjectDataSchema;
 import org.miradi.schemas.TncProjectDataSchema;
 import org.miradi.schemas.WcpaProjectDataSchema;
 import org.miradi.schemas.WcsProjectDataSchema;
+import org.miradi.schemas.WwfProjectDataSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.xml.generic.XmlSchemaCreator;
 import org.miradi.xml.wcs.TagToElementNameMap;
@@ -76,7 +76,7 @@ abstract public class AbstractXmpzObjectImporter implements XmpzXmlConstants
 	
 	protected ORef getWwfProjectDataRef()
 	{
-		return getSingletonObject(WwfProjectData.getObjectType());
+		return getSingletonObject(WwfProjectDataSchema.getObjectType());
 	}
 	
 	protected ORef getRareProjectDataRef()

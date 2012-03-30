@@ -36,6 +36,7 @@ import org.miradi.questions.WwfManagingOfficesQuestion;
 import org.miradi.questions.WwfRegionsQuestion;
 import org.miradi.rtf.RtfFormExporter;
 import org.miradi.rtf.RtfWriter;
+import org.miradi.schemas.WwfProjectDataSchema;
 
 public class WWFSummaryPanel extends ObjectDataInputPanel
 {
@@ -44,9 +45,9 @@ public class WWFSummaryPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, ORef.INVALID);
 
-		addField(createEditableCodeListField(WwfProjectData.getObjectType(), WwfProjectData.TAG_MANAGING_OFFICES, new WwfManagingOfficesQuestion(), 1));
-		addField(createEditableCodeListField(WwfProjectData.getObjectType(), WwfProjectData.TAG_REGIONS, new WwfRegionsQuestion(), 1));
-		addField(createQuestionFieldWithDescriptionPanel(WwfProjectData.getObjectType(), WwfProjectData.TAG_ECOREGIONS, new WwfEcoRegionsQuestion()));
+		addField(createEditableCodeListField(WwfProjectDataSchema.getObjectType(), WwfProjectData.TAG_MANAGING_OFFICES, new WwfManagingOfficesQuestion(), 1));
+		addField(createEditableCodeListField(WwfProjectDataSchema.getObjectType(), WwfProjectData.TAG_REGIONS, new WwfRegionsQuestion(), 1));
+		addField(createQuestionFieldWithDescriptionPanel(WwfProjectDataSchema.getObjectType(), WwfProjectData.TAG_ECOREGIONS, new WwfEcoRegionsQuestion()));
 		
 		setObjectRefs(new ORef[] {metaDataToUse.getRef(), getWwfProjectDataRef()});
 	}
