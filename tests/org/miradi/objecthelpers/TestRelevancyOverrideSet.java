@@ -24,7 +24,7 @@ import org.miradi.main.MiradiTestCase;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
-import org.miradi.objects.Cause;
+import org.miradi.schemas.CauseSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class TestRelevancyOverrideSet extends MiradiTestCase
@@ -36,8 +36,8 @@ public class TestRelevancyOverrideSet extends MiradiTestCase
 	
 	public void testToJson() throws Exception
 	{
-		RelevancyOverride override1 = new RelevancyOverride(new ORef(Cause.getObjectType(), new BaseId(44)), true);
-		RelevancyOverride override2 = new RelevancyOverride(new ORef(Cause.getObjectType(), new BaseId(55)), false);
+		RelevancyOverride override1 = new RelevancyOverride(new ORef(CauseSchema.getObjectType(), new BaseId(44)), true);
+		RelevancyOverride override2 = new RelevancyOverride(new ORef(CauseSchema.getObjectType(), new BaseId(55)), false);
 		
 		RelevancyOverrideSet relevancyOverrides = new RelevancyOverrideSet();
 		relevancyOverrides.add(override1);
@@ -52,8 +52,8 @@ public class TestRelevancyOverrideSet extends MiradiTestCase
 	
 	public void testFind()
 	{
-		ORef ref1 = new ORef(Cause.getObjectType(), new BaseId(44));
-		ORef ref2 = new ORef(Cause.getObjectType(), new BaseId(55));
+		ORef ref1 = new ORef(CauseSchema.getObjectType(), new BaseId(44));
+		ORef ref2 = new ORef(CauseSchema.getObjectType(), new BaseId(55));
 		
 		RelevancyOverride override1 = new RelevancyOverride(ref1, true);
 		RelevancyOverride override2 = new RelevancyOverride(ref2, false);
@@ -69,8 +69,8 @@ public class TestRelevancyOverrideSet extends MiradiTestCase
 	
 	public void testRemove()
 	{
-		ORef ref1 = new ORef(Cause.getObjectType(), new BaseId(44));
-		ORef ref2 = new ORef(Cause.getObjectType(), new BaseId(55));
+		ORef ref1 = new ORef(CauseSchema.getObjectType(), new BaseId(44));
+		ORef ref2 = new ORef(CauseSchema.getObjectType(), new BaseId(55));
 		
 		RelevancyOverride override1 = new RelevancyOverride(ref1, true);
 		RelevancyOverride override2 = new RelevancyOverride(ref2, false);
@@ -85,14 +85,14 @@ public class TestRelevancyOverrideSet extends MiradiTestCase
 		assertEquals("wrong count after remove?", 1, relevancyOverrides.size());
 		assertTrue("wrong ref removed?", relevancyOverrides.find(ref2) != null);
 		
-		ORef refNotInList = new ORef(Cause.getObjectType(), new BaseId(33));
+		ORef refNotInList = new ORef(CauseSchema.getObjectType(), new BaseId(33));
 		relevancyOverrides.remove(refNotInList);
 	}
 	
 	public void testContains()
 	{
-		ORef ref1 = new ORef(Cause.getObjectType(), new BaseId(44));
-		ORef ref2 = new ORef(Cause.getObjectType(), new BaseId(55));
+		ORef ref1 = new ORef(CauseSchema.getObjectType(), new BaseId(44));
+		ORef ref2 = new ORef(CauseSchema.getObjectType(), new BaseId(55));
 		
 		RelevancyOverride override1 = new RelevancyOverride(ref1, true);
 		new RelevancyOverride(ref2, false);

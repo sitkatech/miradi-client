@@ -24,12 +24,13 @@ import org.miradi.main.EAM;
 import org.miradi.objects.Cause;
 import org.miradi.project.Project;
 import org.miradi.questions.ThreatClassificationQuestion;
+import org.miradi.schemas.CauseSchema;
 
 public class PlanningViewDirectThreatPropertiesPanel extends MinimalFactorPropertiesPanel
 {
 	public PlanningViewDirectThreatPropertiesPanel(Project projectToUse) throws Exception
 	{
-		super(projectToUse, Cause.getObjectType());
+		super(projectToUse, CauseSchema.getObjectType());
 		
 		createAndAddFields(EAM.text("Threat"), new DirectThreatIcon());
 	}
@@ -39,7 +40,7 @@ public class PlanningViewDirectThreatPropertiesPanel extends MinimalFactorProper
 	{
 		super.addCustomInBetweenFields();
 		
-		addField(createRadioButtonEditorField(Cause.getObjectType(), Cause.TAG_TAXONOMY_CODE, new ThreatClassificationQuestion()));
+		addField(createRadioButtonEditorField(CauseSchema.getObjectType(), Cause.TAG_TAXONOMY_CODE, new ThreatClassificationQuestion()));
 	}
 
 	@Override

@@ -42,6 +42,7 @@ import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.StrategyRatingSummaryQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
+import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.DashboardSchema;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
@@ -332,7 +333,7 @@ public class Dashboard extends BaseObject
 		int[] factorTypesToCount = new int[]{
 				TargetSchema.getObjectType(),
 				HumanWelfareTargetSchema.getObjectType(),
-				Cause.getObjectType(),
+				CauseSchema.getObjectType(),
 				Strategy.getObjectType(),
 		};
 		

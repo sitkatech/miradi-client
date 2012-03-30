@@ -21,9 +21,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objecthelpers;
 
 import org.miradi.main.TestCaseWithProject;
-import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.IntermediateResult;
+import org.miradi.schemas.CauseSchema;
 
 public class TestOldToNewDiagramFactorMap extends TestCaseWithProject
 {
@@ -34,7 +34,7 @@ public class TestOldToNewDiagramFactorMap extends TestCaseWithProject
 	
 	public void testPut() throws Exception
 	{
-		DiagramFactor cause = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor cause = getProject().createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
 		DiagramFactor intermediateResult = getProject().createAndAddFactorToDiagram(IntermediateResult.getObjectType());
 		
 		OldToNewDiagramFactorMap map = new OldToNewDiagramFactorMap();
@@ -52,7 +52,7 @@ public class TestOldToNewDiagramFactorMap extends TestCaseWithProject
 	
 	public void testPutAll() throws Exception
 	{
-		DiagramFactor cause = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor cause = getProject().createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
 		DiagramFactor intermediateResult = getProject().createAndAddFactorToDiagram(IntermediateResult.getObjectType());
 		
 		OldToNewDiagramFactorMap map1 = new OldToNewDiagramFactorMap();

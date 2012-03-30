@@ -77,6 +77,7 @@ import org.miradi.project.ProjectSaver;
 import org.miradi.project.TestDateUnit;
 import org.miradi.questions.InternalQuestionWithoutValues;
 import org.miradi.questions.StaticQuestionManager;
+import org.miradi.schemas.CauseSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateUnitEffort;
@@ -353,7 +354,7 @@ public class ObjectTestCase extends TestCaseWithProject
 		}
 		else if (field instanceof RelevancyOverrideSetData)
 		{
-			RelevancyOverride test = new RelevancyOverride(new ORef(Cause.getObjectType(), new BaseId(44)), true);
+			RelevancyOverride test = new RelevancyOverride(new ORef(CauseSchema.getObjectType(), new BaseId(44)), true);
 			RelevancyOverrideSet overrideSet = new RelevancyOverrideSet();
 			overrideSet.add(test);
 			
@@ -392,7 +393,7 @@ public class ObjectTestCase extends TestCaseWithProject
 		}
 		else if (field instanceof RefListListData)
 		{
-			ORefList refList = new ORefList(new ORef(Cause.getObjectType(), new BaseId(9999)));
+			ORefList refList = new ORefList(new ORef(CauseSchema.getObjectType(), new BaseId(9999)));
 			RefListListData refListListData = new RefListListData("");
 			refListListData.addList(refList);
 			

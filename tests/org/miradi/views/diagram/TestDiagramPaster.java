@@ -41,7 +41,6 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
 import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.Assignment;
-import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
@@ -56,6 +55,7 @@ import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.ProjectForTesting;
+import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
@@ -112,7 +112,7 @@ public class TestDiagramPaster extends TestCaseWithProject
 
 	public void testThreatStressRatingPasteIntoDiffererentProject() throws Exception
 	{
-		DiagramFactor threatDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor threatDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
 		getProject().enableAsThreat(threatDiagramFactor.getWrappedORef());
 		DiagramFactor targetDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
 		ORef diagramLinkRef = getProject().createDiagramLinkAndAddToDiagram(threatDiagramFactor, targetDiagramFactor);
@@ -186,7 +186,7 @@ public class TestDiagramPaster extends TestCaseWithProject
 	{
 		DiagramFactor diagramFactor = getProject().createDiagramFactorAndAddToDiagram(ThreatReductionResult.getObjectType());
 		ThreatReductionResult threatReductionResult = (ThreatReductionResult) diagramFactor.getWrappedFactor(); 
-		ORef nonExistingThreatRef = new ORef(Cause.getObjectType(), new BaseId(99999));
+		ORef nonExistingThreatRef = new ORef(CauseSchema.getObjectType(), new BaseId(99999));
 		getProject().fillObjectUsingCommand(threatReductionResult, ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF, nonExistingThreatRef.toString());
 		
 		ProjectForTesting projectToPasteInto = createNewProject();
@@ -204,8 +204,8 @@ public class TestDiagramPaster extends TestCaseWithProject
 
 	public void testFixupAllIndicatorRefs() throws Exception
 	{
-		fixupRefs(Cause.getObjectType(), IndicatorSchema.getObjectType(), Factor.TAG_INDICATOR_IDS);
-		fixupRefs(Cause.getObjectType(), ObjectiveSchema.getObjectType(), Factor.TAG_OBJECTIVE_IDS);
+		fixupRefs(CauseSchema.getObjectType(), IndicatorSchema.getObjectType(), Factor.TAG_INDICATOR_IDS);
+		fixupRefs(CauseSchema.getObjectType(), ObjectiveSchema.getObjectType(), Factor.TAG_OBJECTIVE_IDS);
 		fixupRefs(TargetSchema.getObjectType(), GoalSchema.getObjectType(), AbstractTarget.TAG_GOAL_IDS);
 		fixupRefs(TargetSchema.getObjectType(), KeyEcologicalAttribute.getObjectType(), AbstractTarget.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
 		fixupRefs(HumanWelfareTargetSchema.getObjectType(), GoalSchema.getObjectType(), AbstractTarget.TAG_GOAL_IDS);
@@ -272,7 +272,7 @@ public class TestDiagramPaster extends TestCaseWithProject
 		ORefList stressRefs = new ORefList(getProject().createStress().getRef());
 		getProject().fillObjectUsingCommand(target, Target.TAG_STRESS_REFS, stressRefs.toString());
 		
-		DiagramFactor threatDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor threatDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
 		getProject().enableAsThreat(threatDiagramFactor.getWrappedORef());
 		
 		ORef diagramLinkRef = getProject().createDiagramLinkWithCommand(threatDiagramFactor, targetDiagramFactor);

@@ -23,7 +23,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.main.MiradiTestCase;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.RelevancyOverride;
-import org.miradi.objects.Cause;
+import org.miradi.schemas.CauseSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class TestRelevancyOverride extends MiradiTestCase
@@ -66,6 +66,6 @@ public class TestRelevancyOverride extends MiradiTestCase
 	
 	private ORef getRandomRef()
 	{
-		return new ORef(Cause.getObjectType(), new BaseId(44));
+		return new ORef(CauseSchema.getObjectType(), new BaseId(44));
 	}
 }

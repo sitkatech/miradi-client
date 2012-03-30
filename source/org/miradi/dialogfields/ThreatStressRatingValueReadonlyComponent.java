@@ -36,11 +36,11 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
-import org.miradi.objects.Cause;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.ThreatRatingQuestion;
+import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.TargetSchema;
 
 public class ThreatStressRatingValueReadonlyComponent extends MiradiPanel
@@ -63,7 +63,7 @@ public class ThreatStressRatingValueReadonlyComponent extends MiradiPanel
 	
 	public void setObjectRefs(ORefList selectedHeirearchy)
 	{
-		ORef threatRef = selectedHeirearchy.getRefForType(Cause.getObjectType());
+		ORef threatRef = selectedHeirearchy.getRefForType(CauseSchema.getObjectType());
 		ORef targetRef = selectedHeirearchy.getRefForType(TargetSchema.getObjectType());
 		String threatRatingBundleValueCode = "";
 		if (!threatRef.isInvalid() && !targetRef.isInvalid())

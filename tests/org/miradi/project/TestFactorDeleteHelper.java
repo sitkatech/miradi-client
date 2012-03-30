@@ -25,9 +25,9 @@ import org.miradi.main.MiradiTestCase;
 import org.miradi.objectpools.CausePool;
 import org.miradi.objectpools.IndicatorPool;
 import org.miradi.objectpools.ObjectivePool;
-import org.miradi.objects.Cause;
 import org.miradi.objects.Factor;
 import org.miradi.project.FactorDeleteHelper;
+import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
 
@@ -55,7 +55,7 @@ public class TestFactorDeleteHelper extends MiradiTestCase
 	
 	public void testDeleteFactor() throws Exception
 	{
-		FactorCell causeCell = project.createFactorCell(Cause.getObjectType());
+		FactorCell causeCell = project.createFactorCell(CauseSchema.getObjectType());
 		
 		assertEquals("wrong indicator count?", 0, causeCell.getIndicators().size());
 		assertEquals("wrong objective count?", 0, causeCell.getIndicators().size());

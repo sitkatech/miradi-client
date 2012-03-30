@@ -100,6 +100,7 @@ import org.miradi.questions.TncFreshwaterEcoRegionQuestion;
 import org.miradi.questions.TncMarineEcoRegionQuestion;
 import org.miradi.questions.TncTerrestrialEcoRegionQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
+import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.schemas.ExpenseAssignmentSchema;
@@ -507,7 +508,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		{
 			Node threatNode = threatNodeList.item(nodeIndex);
 			String threatId = getAttributeValue(threatNode, ID);
-			ORef threatRef = getProject().createObject(Cause.getObjectType(), new BaseId(threatId));
+			ORef threatRef = getProject().createObject(CauseSchema.getObjectType(), new BaseId(threatId));
 			setData(threatRef, Cause.TAG_IS_DIRECT_THREAT, BooleanData.BOOLEAN_TRUE);
 			
 			importField(threatNode, NAME, threatRef, Cause.TAG_LABEL);
@@ -838,7 +839,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		for (int nodeIndex = 0; nodeIndex < strategyThreatAssociations.getLength(); ++nodeIndex)
 		{
 			Node strategyThreatAssociationNode = strategyThreatAssociations.item(nodeIndex);
-			ORef threatRef = getNodeAsRef(strategyThreatAssociationNode, THREAT_ID, Cause.getObjectType());
+			ORef threatRef = getNodeAsRef(strategyThreatAssociationNode, THREAT_ID, CauseSchema.getObjectType());
 			ORef strategyRef = getNodeAsRef(strategyThreatAssociationNode, STRATEGY_ID, Strategy.getObjectType());
 			createFactorLinkAndAddToDiagram(strategyRef, threatRef);
 		}
@@ -852,7 +853,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		for (int nodeIndex = 0; nodeIndex < threatTargetAssociations.getLength(); ++nodeIndex)
 		{
 			Node threatTargetAssociationNode = threatTargetAssociations.item(nodeIndex);
-			ORef threatRef = getNodeAsRef(threatTargetAssociationNode, THREAT_ID, Cause.getObjectType());
+			ORef threatRef = getNodeAsRef(threatTargetAssociationNode, THREAT_ID, CauseSchema.getObjectType());
 			createFactorLinkAndAddToDiagram(threatRef, targetRef);
 			
 			ThreatRatingBundle bundle = framework.getBundle(threatRef, targetRef);
@@ -940,7 +941,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		{
 			Node threatStressRatingNode = threatStressRatingNodes.item(nodeIndex);
 			
-			ORef threatRef = getNodeAsRef(threatStressRatingNode, THREAT_ID, Cause.getObjectType());			
+			ORef threatRef = getNodeAsRef(threatStressRatingNode, THREAT_ID, CauseSchema.getObjectType());			
 			ORef threatStressRatingRef = threatTargetVirtualLink.findThreatStressRatingReferringToStress(threatRef, targetRef, stressRef);
 			
 			importCodeField(threatStressRatingNode, CONTRIBUTING_RANK, threatStressRatingRef, ThreatStressRating.TAG_CONTRIBUTION, getCodeMapHelper().getConProToMiradiRatingMap());
@@ -1263,7 +1264,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		ORefList draftStrategyRefs = new ORefList(getProject().getStrategyPool().getDraftAndNonDraftStrategies());
 		setDiagramFactorLocation(draftStrategyRefs, DRAFT_STRATEGY_X_COLUMN);
 		
-		setDiagramFactorLocation(getProject().getPool(Cause.getObjectType()).getORefList(), CAUSE_X_COLUMN);
+		setDiagramFactorLocation(getProject().getPool(CauseSchema.getObjectType()).getORefList(), CAUSE_X_COLUMN);
 		setDiagramFactorLocation(getProject().getPool(TargetSchema.getObjectType()).getORefList(), TARGET_X_COLUMN);
 	}
 			

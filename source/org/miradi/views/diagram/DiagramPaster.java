@@ -67,6 +67,7 @@ import org.miradi.objects.ThreatReductionResult;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.Project;
 import org.miradi.schemas.AccountingCodeSchema;
+import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.schemas.FundingSourceSchema;
@@ -877,10 +878,10 @@ abstract public class DiagramPaster
 			return oldObjectRef.getObjectType();
 
 		if (IntermediateResult.is(oldObjectRef))
-			return Cause.getObjectType();
+			return CauseSchema.getObjectType();
 		
 		if (ThreatReductionResult.is(oldObjectRef))
-			return Cause.getObjectType();
+			return CauseSchema.getObjectType();
 		
 		if (Cause.is(oldObjectRef))
 		{

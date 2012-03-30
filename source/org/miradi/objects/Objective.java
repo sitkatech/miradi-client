@@ -24,6 +24,7 @@ import org.miradi.ids.ObjectiveId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -57,7 +58,7 @@ public class Objective extends Desire
 	{
 		return new int[] {
 			Strategy.getObjectType(),
-			Cause.getObjectType(),
+			CauseSchema.getObjectType(),
 			IntermediateResult.getObjectType(),
 			ThreatReductionResult.getObjectType(),
 			};

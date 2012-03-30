@@ -59,6 +59,7 @@ import org.miradi.questions.ProjectSharingQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.TrendQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
+import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.TargetSchema;
@@ -509,7 +510,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		File xmlFile = createTempFileFromName("$$$$conproVersion2BeforeImport.xml");
 		ProjectForTesting projectAfterImport = ProjectForTesting.createProjectWithDefaultObjects("ProjectToFill");
 		
-		DiagramFactor diagramFactorThreat = projectAfterImport.createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor diagramFactorThreat = projectAfterImport.createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
 		Cause threat = (Cause) diagramFactorThreat.getWrappedFactor();
 		Indicator indicatorToBeShared = projectAfterImport.createIndicator(threat);
 		projectAfterImport.enableAsThreat(threat);

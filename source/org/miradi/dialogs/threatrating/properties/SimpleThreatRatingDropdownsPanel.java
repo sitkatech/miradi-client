@@ -41,7 +41,6 @@ import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.Cause;
 import org.miradi.objects.ValueOption;
 import org.miradi.project.Project;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
@@ -52,6 +51,7 @@ import org.miradi.questions.IrreversibilityThreatRatingQuestion;
 import org.miradi.questions.ScopeThreatRatingQuestion;
 import org.miradi.questions.SeverityThreatRatingQuestion;
 import org.miradi.questions.ThreatRatingQuestion;
+import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.QuestionPopupEditorComponent;
 import org.miradi.utils.SimpleThreatRatingQuestionPopupEditorComponent;
@@ -186,7 +186,7 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 	
 	private ORef getThreatRef()
 	{
-		return getRefForType(Cause.getObjectType());
+		return getRefForType(CauseSchema.getObjectType());
 	}
 		
 	private void updateRatingComponent(ChoiceQuestion questionToUse, BaseId criterionId, SimpleThreatRatingQuestionPopupEditorComponent ratingComponent) throws Exception

@@ -28,7 +28,6 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Indicator;
@@ -40,6 +39,7 @@ import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.questions.DiagramObjectDataInclusionQuestion;
 import org.miradi.questions.WorkPlanVisibleRowsQuestion;
+import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.OptionalDouble;
@@ -277,7 +277,7 @@ public class TestProjectTotalCalculator extends TestCaseWithProject
 	
 	private void createCauseWithIndicatorWithAssignment(DiagramObject diagramObject) throws Exception
 	{
-		DiagramFactor diagramFactor = getProject().createAndAddFactorToDiagram(diagramObject, Cause.getObjectType());
+		DiagramFactor diagramFactor = getProject().createAndAddFactorToDiagram(diagramObject, CauseSchema.getObjectType());
 		Indicator indicator = getProject().createIndicator(diagramFactor.getWrappedFactor());
 		addResourceAssignment(indicator);
 	}

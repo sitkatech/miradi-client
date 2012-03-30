@@ -75,6 +75,7 @@ import org.miradi.questions.DirectThreatPoolQuestion;
 import org.miradi.questions.FilteredDiagramFactorsQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
+import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.TargetSchema;
 
@@ -445,7 +446,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 
 	private boolean shouldRebuildPanel(CommandExecutedEvent event)
 	{
-		if (event.isSetDataCommandWithThisTypeAndTag(Cause.getObjectType(), Cause.TAG_IS_DIRECT_THREAT))
+		if (event.isSetDataCommandWithThisTypeAndTag(CauseSchema.getObjectType(), Cause.TAG_IS_DIRECT_THREAT))
 			return true;
 		
 		if (event.isSetDataCommandWithThisTypeAndTag(TargetSchema.getObjectType(), AbstractTarget.TAG_VIABILITY_MODE))

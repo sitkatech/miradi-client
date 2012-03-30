@@ -45,6 +45,7 @@ import org.miradi.questions.StrategyImpactQuestion;
 import org.miradi.questions.StrategyRatingSummaryQuestion;
 import org.miradi.questions.StrategyStatusQuestion;
 import org.miradi.questions.ThreatClassificationQuestion;
+import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.ObjectsActionButton;
@@ -73,11 +74,11 @@ public class FactorSummaryCorePanel extends ObjectDataInputPanel
 		
 		if (factorToEdit.isCause())
 		{
-			addField(createCheckBoxField(Cause.getObjectType(), Cause.TAG_IS_DIRECT_THREAT, BooleanData.BOOLEAN_TRUE, BooleanData.BOOLEAN_FALSE));
+			addField(createCheckBoxField(CauseSchema.getObjectType(), Cause.TAG_IS_DIRECT_THREAT, BooleanData.BOOLEAN_TRUE, BooleanData.BOOLEAN_FALSE));
 		}
 		if (factorToEdit.isDirectThreat())
 		{
-			addField(createRadioButtonEditorField(Cause.getObjectType(), Cause.TAG_TAXONOMY_CODE, new ThreatClassificationQuestion()));
+			addField(createRadioButtonEditorField(CauseSchema.getObjectType(), Cause.TAG_TAXONOMY_CODE, new ThreatClassificationQuestion()));
 		}
 		
 		if(factorToEdit.isStrategy())

@@ -32,6 +32,7 @@ import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Target;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.Project;
+import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.TargetSchema;
@@ -172,7 +173,7 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 		if (event.isSetDataCommandWithThisTypeAndTag(TargetSchema.getObjectType(), Target.TAG_STRESS_REFS))
 			return true;
 		
-		if (event.isSetDataCommandWithThisTypeAndTag(Cause.getObjectType(), Cause.TAG_IS_DIRECT_THREAT))
+		if (event.isSetDataCommandWithThisTypeAndTag(CauseSchema.getObjectType(), Cause.TAG_IS_DIRECT_THREAT))
 			return true;
 				
 		return false;

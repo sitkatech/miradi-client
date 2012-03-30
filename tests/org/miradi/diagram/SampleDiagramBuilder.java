@@ -28,11 +28,11 @@ import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.DiagramFactorPool;
-import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.project.ProjectForTesting;
+import org.miradi.schemas.CauseSchema;
 
 public class SampleDiagramBuilder
 {
@@ -88,7 +88,7 @@ public class SampleDiagramBuilder
 
 	private static void createThreatAndSetLabel(ProjectForTesting project, final int interventionIndex) throws Exception
 	{
-		Factor threat = createObjectAndSetLabel(project, Cause.getObjectType(), interventionIndex);
+		Factor threat = createObjectAndSetLabel(project, CauseSchema.getObjectType(), interventionIndex);
 		project.enableAsThreat(threat.getRef());
 	}
 	

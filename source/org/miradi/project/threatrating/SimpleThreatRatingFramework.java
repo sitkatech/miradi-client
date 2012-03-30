@@ -47,6 +47,7 @@ import org.miradi.objects.Target;
 import org.miradi.objects.ValueOption;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
+import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.Utility;
@@ -343,7 +344,7 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 	public boolean isBundleForLinkedThreatAndTarget(ThreatRatingBundle bundle)
 	{
 		FactorId threatId = bundle.getThreatId();
-		ORef threatRef = new ORef(Cause.getObjectType(), threatId);
+		ORef threatRef = new ORef(CauseSchema.getObjectType(), threatId);
 		Cause threat = Cause.find(getProject(), threatRef);
 		if(threat == null)
 			return false;

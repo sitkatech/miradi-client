@@ -134,6 +134,7 @@ import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.AudienceSchema;
 import org.miradi.schemas.BudgetCategoryOneSchema;
 import org.miradi.schemas.BudgetCategoryTwoSchema;
+import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.DashboardSchema;
 import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.schemas.ExpenseAssignmentSchema;
@@ -424,7 +425,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		Target target = (Target) targetDiagramFactor.getWrappedFactor();
 		populateTarget(target);
 		
-		DiagramFactor threatDiagramFactor = createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor threatDiagramFactor = createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
 		final Cause threat = (Cause) threatDiagramFactor.getWrappedFactor();
 		enableAsThreat(threat);
 		populateCause(threat);
@@ -437,7 +438,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	private DiagramLink createAndPopulateDirectThreatLink(Target target) throws Exception
 	{
-		DiagramFactor diagramFactor = createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor diagramFactor = createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
 		enableAsThreat(diagramFactor.getWrappedORef());
 		Cause threat = Cause.find(this, diagramFactor.getWrappedORef());
 		populateCause(threat);
@@ -634,7 +635,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public DiagramLink createAndPopulateGroupBoxDiagramLink() throws Exception
 	{	
-		DiagramFactor cause = createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor cause = createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
 		DiagramFactor causeGroupBox = createDiagramFactorAndAddToDiagram(GroupBox.getObjectType());
 		fillObjectUsingCommand(causeGroupBox, DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, new ORefList(cause));
 		
@@ -693,7 +694,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public Cause createCause() throws Exception
 	{
-		ORef threatRef = createObject(Cause.getObjectType());
+		ORef threatRef = createObject(CauseSchema.getObjectType());
 		return Cause.find(this, threatRef);
 	}
 	
@@ -729,7 +730,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public DiagramLink createThreatTargetDiagramLink() throws Exception
 	{
 		DiagramFactor diagramFactorTarget = createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
-		DiagramFactor diagramFactorCause = createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor diagramFactorCause = createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
 		Cause threat = (Cause) diagramFactorCause.getWrappedFactor();
 		enableAsThreat(threat);
 		ORef diagramLink = createDiagramFactorLinkAndAddToDiagram(diagramFactorCause, diagramFactorTarget);
@@ -1770,7 +1771,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		
 		if(objectType == Strategy.getObjectType())
 			next = nextStrategyId++;
-		else if(objectType == Cause.getObjectType())
+		else if(objectType == CauseSchema.getObjectType())
 			next = nextCauseId++;
 		else if(objectType == TargetSchema.getObjectType())
 			next = nextTargetId++;
@@ -1829,8 +1830,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 
 	public ORef createDiagramLink() throws Exception
 	{
-		DiagramFactor from = createAndAddFactorToDiagram(ObjectType.CAUSE, takeNextId(Cause.getObjectType()));
-		DiagramFactor to = createAndAddFactorToDiagram(ObjectType.CAUSE, takeNextId(Cause.getObjectType()));
+		DiagramFactor from = createAndAddFactorToDiagram(ObjectType.CAUSE, takeNextId(CauseSchema.getObjectType()));
+		DiagramFactor to = createAndAddFactorToDiagram(ObjectType.CAUSE, takeNextId(CauseSchema.getObjectType()));
 		return createDiagramLink(from, to);
 	}
 
@@ -1940,7 +1941,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public ORef createThreatTargetLink() throws Exception
 	{
-		DiagramFactor threat = createAndAddFactorToDiagram(ObjectType.CAUSE, takeNextId(Cause.getObjectType()));
+		DiagramFactor threat = createAndAddFactorToDiagram(ObjectType.CAUSE, takeNextId(CauseSchema.getObjectType()));
 		enableAsThreat(threat.getWrappedORef());
 		DiagramFactor target = createAndAddFactorToDiagram(ObjectType.TARGET, takeNextId(TargetSchema.getObjectType()));
 

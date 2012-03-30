@@ -26,6 +26,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.project.ProjectForTesting;
+import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.utils.CommandVector;
@@ -45,7 +46,7 @@ public class TestObjective extends TestDesire
 	
 	public void testGetRelevantRefList() throws Exception
 	{		
-		ORef causeRef = getProject().createFactorAndReturnRef(Cause.getObjectType());
+		ORef causeRef = getProject().createFactorAndReturnRef(CauseSchema.getObjectType());
 
 		BaseId objectiveId = getProject().addItemToObjectiveList(causeRef, Cause.TAG_OBJECTIVE_IDS);
 		BaseId indicatorId = getProject().addItemToIndicatorList(causeRef, Cause.TAG_INDICATOR_IDS);

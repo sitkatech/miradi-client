@@ -34,6 +34,7 @@ import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.TargetSet;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
@@ -290,7 +291,7 @@ public class Indicator extends BaseObject
 	{
 		return new int[] {
 			Strategy.getObjectType(),
-			Cause.getObjectType(),
+			CauseSchema.getObjectType(),
 			IntermediateResult.getObjectType(),
 			ThreatReductionResult.getObjectType(),
 			TargetSchema.getObjectType(),

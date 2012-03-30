@@ -20,11 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Cause;
 import org.miradi.questions.ThreatClassificationQuestion;
 
 public class CauseSchema extends FactorSchema
 {
+	public static final String OBJECT_NAME = "Cause";
+
 	public CauseSchema()
 	{
 		super();
@@ -38,5 +41,10 @@ public class CauseSchema extends FactorSchema
 		createFieldSchemaChoice(Cause.TAG_TAXONOMY_CODE, new ThreatClassificationQuestion());
 		createFieldSchemaBoolean(Cause.TAG_IS_DIRECT_THREAT);
 		createPseudoFieldSchemaQuestion(Cause.PSEUDO_TAG_TAXONOMY_CODE_VALUE);
+	}
+
+	public static int getObjectType()
+	{
+		return ObjectType.CAUSE;
 	}
 }

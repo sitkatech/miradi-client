@@ -26,6 +26,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ProjectForTesting;
+import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.schemas.IndicatorSchema;
@@ -255,7 +256,7 @@ public class TestObjectFindOwnerAndFindReferrer extends MiradiTestCase
 		ORef diagramRef = new ORef(ObjectType.RESULTS_CHAIN_DIAGRAM, resultsChainId);
 
 		DiagramFactor strategy = createFactorAndDiagramFactor(Strategy.getObjectType());
-		DiagramFactor cause = createFactorAndDiagramFactor(Cause.getObjectType());
+		DiagramFactor cause = createFactorAndDiagramFactor(CauseSchema.getObjectType());
 		DiagramFactor target = createFactorAndDiagramFactor(TargetSchema.getObjectType());
 		IdList factorList = new IdList(DiagramFactorSchema.getObjectType(), new BaseId[] {strategy.getId(), cause.getId(), target.getId()});
 		

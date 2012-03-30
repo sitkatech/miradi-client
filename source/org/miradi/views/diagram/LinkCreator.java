@@ -33,7 +33,6 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
@@ -44,6 +43,7 @@ import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
+import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.TargetSchema;
@@ -423,7 +423,7 @@ public class LinkCreator
 	private static HashSet getLinkableTypes()
 	{
 		int[] linkableTypesArray = {Strategy.getObjectType(), 
-							   Cause.getObjectType(), 
+							   CauseSchema.getObjectType(), 
 							   IntermediateResult.getObjectType(), 
 							   ThreatReductionResult.getObjectType(), 
 							   TargetSchema.getObjectType(),

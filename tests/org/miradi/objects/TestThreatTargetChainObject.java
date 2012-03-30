@@ -24,6 +24,7 @@ import java.util.HashSet;
 import org.miradi.diagram.ThreatTargetChainWalker;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objectdata.BooleanData;
+import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.TargetSchema;
 
 public class TestThreatTargetChainObject extends TestCaseWithProject
@@ -44,10 +45,10 @@ public class TestThreatTargetChainObject extends TestCaseWithProject
 
 	private void verifyThreatThreatStrategyTarget() throws Exception
 	{
-		DiagramFactor threat1 = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor threat1 = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(CauseSchema.getObjectType());
 		getProject().enableAsThreat(threat1.getWrappedORef());
 				
-		DiagramFactor threat2 = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor threat2 = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(CauseSchema.getObjectType());
 		getProject().enableAsThreat(threat2.getWrappedORef());
 		
 		DiagramFactor target = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(TargetSchema.getObjectType());
@@ -68,7 +69,7 @@ public class TestThreatTargetChainObject extends TestCaseWithProject
 	
 	private void verifyThreatTargetTarget() throws Exception
 	{
-		DiagramFactor threat1 = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor threat1 = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(CauseSchema.getObjectType());
 		getProject().enableAsThreat(threat1.getWrappedORef());
 				
 		DiagramFactor target1 = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(TargetSchema.getObjectType());
@@ -94,10 +95,10 @@ public class TestThreatTargetChainObject extends TestCaseWithProject
 	
 	private void veriftThreat1TargetThreat2Target() throws Exception
 	{
-		DiagramFactor threat1 = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor threat1 = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(CauseSchema.getObjectType());
 		getProject().enableAsThreat(threat1.getWrappedORef());
 				
-		DiagramFactor threat2 = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor threat2 = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(CauseSchema.getObjectType());
 		getProject().enableAsThreat(threat2.getWrappedORef());
 		
 		DiagramFactor target = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(TargetSchema.getObjectType());
@@ -115,7 +116,7 @@ public class TestThreatTargetChainObject extends TestCaseWithProject
 	
 	private void verifyThreatTarget1ThreatTarget2() throws Exception
 	{
-		DiagramFactor threat1 = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor threat1 = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(CauseSchema.getObjectType());
 		getProject().enableAsThreat(threat1.getWrappedORef());
 				
 		DiagramFactor target1 = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(TargetSchema.getObjectType());
@@ -134,10 +135,10 @@ public class TestThreatTargetChainObject extends TestCaseWithProject
 
 	private void verifyThreatCauseTargetWithOptionalBidi(String isBidirectionalTag) throws Exception
 	{
-		DiagramFactor threat = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor threat = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(CauseSchema.getObjectType());
 		getProject().enableAsThreat(threat.getWrappedORef());
 				
-		DiagramFactor cause = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor cause = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(CauseSchema.getObjectType());
 		DiagramFactor target = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(TargetSchema.getObjectType());
 		
 		getProject().createDiagramLinkAndAddToDiagram(threat, cause, isBidirectionalTag);

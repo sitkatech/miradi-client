@@ -41,13 +41,13 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.CodeToUserStringMap;
-import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
+import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
@@ -372,7 +372,7 @@ public class TestDataUpgrader extends AbstractMigrationTestCase
 		File singleThreatRatingCommentsDataFile = new File(threatRatingCommentsDataDir, singleThreatRatingCommentsDataId.toString());
 		EnhancedJsonObject threatRatingCommentsDataJson = new EnhancedJsonObject(readFile(singleThreatRatingCommentsDataFile));
 		
-		ORef threatRef = new ORef(Cause.getObjectType(), new BaseId(causeIds[0]));
+		ORef threatRef = new ORef(CauseSchema.getObjectType(), new BaseId(causeIds[0]));
 		ORef targetRef = new ORef(TargetSchema.getObjectType(), new BaseId(targetIds[0]));
 		String key = threatRef.toString() + targetRef.toString();
 		
@@ -498,7 +498,7 @@ public class TestDataUpgrader extends AbstractMigrationTestCase
 		MigrationsOlderThanMiradiVersion2.upgradeToVersion35();
 	
 		verifyTypeDir(jsonDir, TARGET_FILE_NAME, TargetSchema.getObjectType(), targetJson);
-		verifyTypeDir(jsonDir, CAUSE_FILE_NAME, Cause.getObjectType(), causeJson);
+		verifyTypeDir(jsonDir, CAUSE_FILE_NAME, CauseSchema.getObjectType(), causeJson);
 		verifyTypeDir(jsonDir, STRATEGY_FILE_NAME, Strategy.getObjectType(), strategyJson);
 		
 		assertFalse("factor dir was not deleted?", factorDir.exists());

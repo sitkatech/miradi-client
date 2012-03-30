@@ -21,8 +21,8 @@ package org.miradi.objecthelpers;
 
 import org.miradi.ids.BaseId;
 import org.miradi.main.MiradiTestCase;
-import org.miradi.objects.Cause;
 import org.miradi.objects.Strategy;
+import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.TargetSchema;
@@ -110,8 +110,8 @@ public class TestORefList extends MiradiTestCase
 	public void testGetRefForType()
 	{
 		ORefList sampleRefList = getSampleRefList();
-		ORef foundCauseRef = sampleRefList.getRefForType(Cause.getObjectType());
-		assertEquals("wrong ref for type?", new ORef(Cause.getObjectType(), new BaseId(10)), foundCauseRef);
+		ORef foundCauseRef = sampleRefList.getRefForType(CauseSchema.getObjectType());
+		assertEquals("wrong ref for type?", new ORef(CauseSchema.getObjectType(), new BaseId(10)), foundCauseRef);
 		
 		ORef foundTargetRef = sampleRefList.getRefForType(TargetSchema.getObjectType());
 		assertEquals("wrong ref for type?", new ORef(TargetSchema.getObjectType(), new BaseId(20)), foundTargetRef);
@@ -122,23 +122,23 @@ public class TestORefList extends MiradiTestCase
 
 	public void testGetRefForTypes()
 	{
-		int[] types1 = {TargetSchema.getObjectType(), Cause.getObjectType(),};
+		int[] types1 = {TargetSchema.getObjectType(), CauseSchema.getObjectType(),};
 		ORefList sampleRefList = getSampleRefList();
 		
 		ORef foundRef1 = sampleRefList.getRefForTypes(types1);
-		assertEquals("found wrong ref?", new ORef(Cause.getObjectType(), new BaseId(10)), foundRef1);
+		assertEquals("found wrong ref?", new ORef(CauseSchema.getObjectType(), new BaseId(10)), foundRef1);
 		
-		int[] types2 = {Cause.getObjectType(),  };
+		int[] types2 = {CauseSchema.getObjectType(),  };
 		ORef foundRef2 = sampleRefList.getRefForTypes(types2);
-		assertEquals("found wrong ref?", new ORef(Cause.getObjectType(), new BaseId(10)), foundRef2);
+		assertEquals("found wrong ref?", new ORef(CauseSchema.getObjectType(), new BaseId(10)), foundRef2);
 		
 		int[] types3 = {Strategy.getObjectType(),  };
 		ORef foundRef3 = sampleRefList.getRefForTypes(types3);
 		assertEquals("found wrong ref?", ORef.INVALID, foundRef3);
 		
-		int[] types4 = {Cause.getObjectType(), Cause.getObjectType(), };
+		int[] types4 = {CauseSchema.getObjectType(), CauseSchema.getObjectType(), };
 		ORef foundRef4 = sampleRefList.getRefForTypes(types4);
-		assertEquals("found wrong ref?", new ORef(Cause.getObjectType(), new BaseId(10)), foundRef4);
+		assertEquals("found wrong ref?", new ORef(CauseSchema.getObjectType(), new BaseId(10)), foundRef4);
 		
 		int[] types5 = {Strategy.getObjectType(), TargetSchema.getObjectType(), };
 		ORef foundRef5 = sampleRefList.getRefForTypes(types5);
@@ -147,8 +147,8 @@ public class TestORefList extends MiradiTestCase
 	
 	private ORefList getSampleRefList()
 	{
-		ORef ref1 = new ORef(Cause.getObjectType(), new BaseId(10));
-		ORef ref2 = new ORef(Cause.getObjectType(), new BaseId(11));
+		ORef ref1 = new ORef(CauseSchema.getObjectType(), new BaseId(10));
+		ORef ref2 = new ORef(CauseSchema.getObjectType(), new BaseId(11));
 		ORef ref6 = new ORef(TargetSchema.getObjectType(), new BaseId(20));
 		ORef ref7 = new ORef(ConceptualModelDiagramSchema.getObjectType(), new BaseId(21));	
 		
@@ -192,10 +192,10 @@ public class TestORefList extends MiradiTestCase
 		{
 		}
 		
-		ORef firstRef = new ORef(Cause.getObjectType(), new BaseId(999));
+		ORef firstRef = new ORef(CauseSchema.getObjectType(), new BaseId(999));
 		refList.add(firstRef);
 		
-		ORef secondRef = new ORef(Cause.getObjectType(), new BaseId(888));
+		ORef secondRef = new ORef(CauseSchema.getObjectType(), new BaseId(888));
 		refList.add(secondRef);
 		
 		assertEquals("wrong first element?", firstRef, refList.getFirstElement());
