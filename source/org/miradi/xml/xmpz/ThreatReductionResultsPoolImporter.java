@@ -24,6 +24,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.schemas.CauseSchema;
+import org.miradi.schemas.ThreatReductionResultSchema;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.w3c.dom.Node;
 
@@ -31,7 +32,7 @@ public class ThreatReductionResultsPoolImporter extends FactorPoolImporter
 {
 	public ThreatReductionResultsPoolImporter(XmpzXmlImporter importerToUse)
 	{
-		super(importerToUse, XmpzXmlConstants.THREAT_REDUCTION_RESULTS, ThreatReductionResult.getObjectType());
+		super(importerToUse, XmpzXmlConstants.THREAT_REDUCTION_RESULTS, ThreatReductionResultSchema.getObjectType());
 	}
 	
 	@Override

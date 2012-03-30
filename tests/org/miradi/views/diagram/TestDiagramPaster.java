@@ -61,6 +61,7 @@ import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
+import org.miradi.schemas.ThreatReductionResultSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.views.umbrella.UndoDoer;
 
@@ -184,7 +185,7 @@ public class TestDiagramPaster extends TestCaseWithProject
 	
 	public void testThreatReductionResultWithNonExistingRelatedThreatRef() throws Exception
 	{
-		DiagramFactor diagramFactor = getProject().createDiagramFactorAndAddToDiagram(ThreatReductionResult.getObjectType());
+		DiagramFactor diagramFactor = getProject().createDiagramFactorAndAddToDiagram(ThreatReductionResultSchema.getObjectType());
 		ThreatReductionResult threatReductionResult = (ThreatReductionResult) diagramFactor.getWrappedFactor(); 
 		ORef nonExistingThreatRef = new ORef(CauseSchema.getObjectType(), new BaseId(99999));
 		getProject().fillObjectUsingCommand(threatReductionResult, ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF, nonExistingThreatRef.toString());

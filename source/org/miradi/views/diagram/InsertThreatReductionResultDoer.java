@@ -21,7 +21,7 @@ package org.miradi.views.diagram;
 
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.ThreatReductionResult;
+import org.miradi.schemas.ThreatReductionResultSchema;
 
 public class InsertThreatReductionResultDoer extends InsertFactorDoer
 {
@@ -49,6 +49,6 @@ public class InsertThreatReductionResultDoer extends InsertFactorDoer
 	@Override
 	public void forceVisibleInLayerManager() throws Exception
 	{
-		getCurrentLayerManager().setVisibility(ThreatReductionResult.OBJECT_NAME, true);
+		getCurrentLayerManager().setVisibility(ThreatReductionResultSchema.OBJECT_NAME, true);
 	}
 }

@@ -108,7 +108,6 @@ import org.miradi.objects.SubTarget;
 import org.miradi.objects.TableSettings;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.ThreatRatingCommentsData;
-import org.miradi.objects.ThreatReductionResult;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.TncProjectData;
 import org.miradi.objects.ValueOption;
@@ -144,6 +143,7 @@ import org.miradi.schemas.StressSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.schemas.TextBoxSchema;
+import org.miradi.schemas.ThreatReductionResultSchema;
 
 public class ObjectManager
 {
@@ -177,7 +177,7 @@ public class ObjectManager
 		addNormalPool(new IntermediateResultPool(ida), IntermediateResultSchema.OBJECT_NAME);
 		addNormalPool(new ResultsChainDiagramPool(ida), ResultsChainDiagramSchema.OBJECT_NAME);
 		addNormalPool(new ConceptualModelDiagramPool(ida), ConceptualModelDiagramSchema.OBJECT_NAME);
-		addNormalPool(new ThreatReductionResultPool(ida), ThreatReductionResult.OBJECT_NAME);
+		addNormalPool(new ThreatReductionResultPool(ida), ThreatReductionResultSchema.OBJECT_NAME);
 		addNormalPool(new TextBoxPool(ida), TextBoxSchema.OBJECT_NAME);
 		addNormalPool(new ObjectTreeTableConfigurationPool(ida), ObjectTreeTableConfiguration.OBJECT_NAME);
 		addNormalPool(new WwfProjectDataPool(ida), WwfProjectData.OBJECT_NAME);

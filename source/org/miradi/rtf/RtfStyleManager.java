@@ -34,7 +34,6 @@ import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
-import org.miradi.objects.ThreatReductionResult;
 import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.BudgetCategoryOneSchema;
 import org.miradi.schemas.BudgetCategoryTwoSchema;
@@ -48,6 +47,7 @@ import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.TaskSchema;
+import org.miradi.schemas.ThreatReductionResultSchema;
 
 public class RtfStyleManager
 {
@@ -73,7 +73,7 @@ public class RtfStyleManager
 		createNewStyle(TargetSchema.OBJECT_NAME,                 		CS_18_RTF_ID, " \\f1\\b\\fs20 ", MIRADI_STYLE_PREFIX + "Target");
 		createNewStyle(Cause.OBJECT_NAME_THREAT,           		CS_19_RTF_ID, " \\f1\\b\\fs20 ", MIRADI_STYLE_PREFIX + "DThrt");
 		createNewStyle(Cause.OBJECT_NAME_CONTRIBUTING_FACTOR,   CS_20_RTF_ID, " \\f1\\b\\fs20 ", MIRADI_STYLE_PREFIX + "CFctr");
-		createNewStyle(ThreatReductionResult.OBJECT_NAME,  	 	CS_21_RTF_ID, " \\f1\\b\\fs20 ", MIRADI_STYLE_PREFIX + "TRR");
+		createNewStyle(ThreatReductionResultSchema.OBJECT_NAME,  	 	CS_21_RTF_ID, " \\f1\\b\\fs20 ", MIRADI_STYLE_PREFIX + "TRR");
 		createNewStyle(IntermediateResultSchema.OBJECT_NAME,   	    CS_22_RTF_ID, " \\f1\\b\\fs20 ", MIRADI_STYLE_PREFIX + "IR");
 		createNewStyle(ObjectiveSchema.OBJECT_NAME,  	    			CS_23_RTF_ID, " \\f1\\b\\fs20 ", MIRADI_STYLE_PREFIX + "Obj");
 		createNewStyle(StrategySchema.OBJECT_NAME,  	    			CS_24_RTF_ID, " \\f1\\fs20 ", MIRADI_STYLE_PREFIX + "Strat");

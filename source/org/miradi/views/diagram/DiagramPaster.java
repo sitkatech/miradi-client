@@ -74,6 +74,7 @@ import org.miradi.schemas.IntermediateResultSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
+import org.miradi.schemas.ThreatReductionResultSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
@@ -888,7 +889,7 @@ abstract public class DiagramPaster
 		{
 			Factor factor = Factor.findFactor(getProject(), oldObjectRef);
 			if(factor != null && factor.isDirectThreat())
-				return ThreatReductionResult.getObjectType();
+				return ThreatReductionResultSchema.getObjectType();
 
 			return IntermediateResultSchema.getObjectType();
 		}
