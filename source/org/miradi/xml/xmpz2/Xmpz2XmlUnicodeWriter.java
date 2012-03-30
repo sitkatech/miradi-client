@@ -30,6 +30,8 @@ import org.miradi.objects.BaseObject;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.utils.CodeList;
+import org.miradi.xml.generic.XmlSchemaCreator;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConstants
@@ -104,8 +106,9 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 		writeField(baseObjectSchema, fieldSchema, readableCode);
 	}
 
-	public void writeStringData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string)
+	public void writeStringData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string) throws Exception
 	{
+		writeField(baseObjectSchema, fieldSchema, string);
 	}
 
 	public void writeCodeToCodeMapData(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema, String string)
@@ -116,8 +119,22 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 	{
 	}
 
-	public void writeCodeListData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string)
+	public void writeCodeListData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String codeListAsString) throws Exception
 	{
+		CodeList codes = new CodeList(codeListAsString);
+		if (codes.isEmpty())
+			return;
+		
+		final String elementName = appendParentNameToChildName(baseObjectSchema, fieldSchema);
+		final String elementContainerName = createContainerElementName(elementName);
+		writeStartElement(elementContainerName);
+		for (int index = 0; index < codes.size(); ++index)
+		{
+			writeElement(XmlSchemaCreator.CODE_ELEMENT_NAME, codes.get(index));
+		}
+		
+		writeEndElement(elementContainerName);
+	
 	}
 
 	public void writeDateUnitListData(BaseObjectSchema schema, AbstractFieldSchema fieldSchema, String string)
@@ -161,16 +178,18 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 	{
 	}
 
-	public void writeFloatData(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema, String string)
+	public void writeFloatData(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema, String number) throws Exception
 	{
+		writeField(baseObjectSchema, fieldSchema, number);
 	}
 
 	public void writeIdListData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string)
 	{
 	}
 
-	public void writeIntegerData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string)
+	public void writeIntegerData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String number) throws Exception
 	{
+		writeField(baseObjectSchema, fieldSchema, number);
 	}
 
 	public void writeBooleanData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string)
@@ -230,5 +249,10 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 	private String appendParentNameToChildName(final BaseObjectSchema baseObjectSchema, final AbstractFieldSchema fieldSchema)
 	{
 		return baseObjectSchema.getXmpz2ElementName() + fieldSchema.getTag();
+	}
+	
+	private String createContainerElementName(String startElementName)
+	{
+		return startElementName + CONTAINER_ELEMENT_TAG;
 	}
 }
