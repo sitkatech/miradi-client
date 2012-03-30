@@ -21,6 +21,7 @@ package org.miradi.objects;
 
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.ProjectForTesting;
+import org.miradi.schemas.ThreatRatingCommentsDataSchema;
 
 
 public class TestThreatRatingCommentsData extends ObjectTestCase
@@ -32,12 +33,12 @@ public class TestThreatRatingCommentsData extends ObjectTestCase
 	
 	public void testFields() throws Exception
 	{
-		verifyFields(ThreatRatingCommentsData.getObjectType());
+		verifyFields(ThreatRatingCommentsDataSchema.getObjectType());
 	}
 	
 	public void testFindComment() throws Exception
 	{
-		ORef threatRatingCommentsDataRef = getProject().getSingletonObjectRef(ThreatRatingCommentsData.getObjectType());
+		ORef threatRatingCommentsDataRef = getProject().getSingletonObjectRef(ThreatRatingCommentsDataSchema.getObjectType());
 		assertTrue("singlton threat rating comments data does not exist?", !threatRatingCommentsDataRef.isInvalid());
 		ThreatRatingCommentsData threatRatingCommentsData = ThreatRatingCommentsData.find(getProject(), threatRatingCommentsDataRef);
 		Cause cause = getProject().createCause();

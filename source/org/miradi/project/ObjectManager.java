@@ -89,7 +89,6 @@ import org.miradi.objectpools.WwfProjectDataPool;
 import org.miradi.objectpools.XenodataPool;
 import org.miradi.objectpools.XslTemplatePool;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.ThreatRatingCommentsData;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.TncProjectData;
 import org.miradi.objects.ValueOption;
@@ -143,6 +142,7 @@ import org.miradi.schemas.TaggedObjectSetSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.schemas.TextBoxSchema;
+import org.miradi.schemas.ThreatRatingCommentsDataSchema;
 import org.miradi.schemas.ThreatReductionResultSchema;
 
 public class ObjectManager
@@ -199,7 +199,7 @@ public class ObjectManager
 		addNormalPool(new ReportTemplatePool(ida), ReportTemplateSchema.OBJECT_NAME);
 		addNormalPool(new TaggedObjectSetPool(ida), TaggedObjectSetSchema.OBJECT_NAME);
 		addNormalPool(new TableSettingsPool(ida), TableSettingsSchema.OBJECT_NAME);
-		addNormalPool(new ThreatRatingCommentsDataPool(ida), ThreatRatingCommentsData.OBJECT_NAME);
+		addNormalPool(new ThreatRatingCommentsDataPool(ida), ThreatRatingCommentsDataSchema.OBJECT_NAME);
 		addNormalPool(new ScopeBoxPool(ida), ScopeBoxSchema.OBJECT_NAME);
 		addNormalPool(new ExpenseAssignmentPool(ida), ExpenseAssignmentSchema.OBJECT_NAME);
 		addNormalPool(new HumanWelfareTargetPool(ida), HumanWelfareTargetSchema.OBJECT_NAME);
