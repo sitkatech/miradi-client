@@ -112,6 +112,7 @@ import org.miradi.schemas.MeasurementSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ProgressPercentSchema;
 import org.miradi.schemas.ProgressReportSchema;
+import org.miradi.schemas.ProjectResourceSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.StrategySchema;
@@ -779,7 +780,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		for (int nodeIndex = 0; nodeIndex < teamMemberNodeList.getLength(); ++nodeIndex) 
 		{
 			Node teamMemberNode = teamMemberNodeList.item(nodeIndex);
-			ORef projectResourceRef = getProject().createObject(ProjectResource.getObjectType());
+			ORef projectResourceRef = getProject().createObject(ProjectResourceSchema.getObjectType());
 			
 			importProjectResourceRoles(teamMemberNode, projectResourceRef);		
 			importField(teamMemberNode, GIVEN_NAME, projectResourceRef, ProjectResource.TAG_GIVEN_NAME);

@@ -25,6 +25,7 @@ import org.miradi.dialogs.base.ObjectPoolTablePanel;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.ProjectResource;
+import org.miradi.schemas.ProjectResourceSchema;
 
 public class TeamPoolTablePanel extends ObjectPoolTablePanel
 {
@@ -40,7 +41,7 @@ public class TeamPoolTablePanel extends ObjectPoolTablePanel
 	public void handleCommandEventImmediately(CommandExecutedEvent event)
 	{
 		super.handleCommandEventImmediately(event);
-		if (event.isSetDataCommandWithThisTypeAndTag(ProjectResource.getObjectType(), ProjectResource.TAG_ROLE_CODES))
+		if (event.isSetDataCommandWithThisTypeAndTag(ProjectResourceSchema.getObjectType(), ProjectResource.TAG_ROLE_CODES))
 			getTable().getObjectTableModel().rowsWereAddedOrRemoved();
 	}
 }

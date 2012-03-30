@@ -32,11 +32,11 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.schemas.ProjectResourceSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
@@ -137,7 +137,7 @@ public class WhoCodeListEditorComponent extends AbstractQuestionBasedComponent
 
 	private ResourceAssignment findResourceAssignmentWithoutResource() throws Exception
 	{
-		ORef invalidResourceRef = ORef.createInvalidWithType(ProjectResource.getObjectType());
+		ORef invalidResourceRef = ORef.createInvalidWithType(ProjectResourceSchema.getObjectType());
 		Vector<ResourceAssignment> resourceAssignmentsWithoutResource = extractResourceAssignments(invalidResourceRef);
 		if (resourceAssignmentsWithoutResource.size() == 0)
 			return null;

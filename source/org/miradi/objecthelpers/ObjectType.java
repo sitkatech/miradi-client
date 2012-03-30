@@ -24,7 +24,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.miradi.main.EAM;
-import org.miradi.objects.ProjectResource;
 import org.miradi.objects.RareProjectData;
 import org.miradi.objects.RatingCriterion;
 import org.miradi.objects.ReportTemplate;
@@ -54,6 +53,7 @@ import org.miradi.schemas.ObjectTreeTableConfigurationSchema;
 import org.miradi.schemas.OrganizationSchema;
 import org.miradi.schemas.OtherNotableSpeciesSchema;
 import org.miradi.schemas.ProjectMetadataSchema;
+import org.miradi.schemas.ProjectResourceSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 
 public class ObjectType
@@ -139,7 +139,7 @@ public class ObjectType
 			RatingCriterion.getObjectType(),
 			ValueOption.getObjectType(),
 			ViewData.getObjectType(),
-			ProjectResource.getObjectType(),
+			ProjectResourceSchema.getObjectType(),
 			ProjectMetadataSchema.getObjectType(),
 			AccountingCodeSchema.getObjectType(),
 			FundingSourceSchema.getObjectType(),

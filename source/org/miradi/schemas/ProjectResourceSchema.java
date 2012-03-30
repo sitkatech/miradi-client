@@ -20,12 +20,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.ProjectResource;
 import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.ResourceTypeQuestion;
 
 public class ProjectResourceSchema extends BaseObjectSchema
 {
+	public static final String OBJECT_NAME = "ProjectResource";
+
 	public ProjectResourceSchema()
 	{
 		super();
@@ -58,5 +61,10 @@ public class ProjectResourceSchema extends BaseObjectSchema
 		createFieldSchemaBoolean(ProjectResource.TAG_IS_CCN_COACH);
 		createFieldSchemaSingleLineUserText(ProjectResource.TAG_CUSTOM_FIELD_1);
 		createFieldSchemaSingleLineUserText(ProjectResource.TAG_CUSTOM_FIELD_2);
+	}
+
+	public static int getObjectType()
+	{
+		return ObjectType.PROJECT_RESOURCE;
 	}
 }

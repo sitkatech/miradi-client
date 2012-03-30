@@ -56,7 +56,6 @@ import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.IntermediateResult;
-import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Stress;
@@ -72,6 +71,7 @@ import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.schemas.FactorLinkSchema;
 import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.schemas.IntermediateResultSchema;
+import org.miradi.schemas.ProjectResourceSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
@@ -174,7 +174,7 @@ abstract public class DiagramPaster
 				return getCommandToFixId(pastedObjectMap, newObject, FundingSourceSchema.getObjectType(), tag);
 
 			if (ResourceAssignment.TAG_RESOURCE_ID.equals(tag))
-				return getCommandToFixId(pastedObjectMap, newObject, ProjectResource.getObjectType(), tag);
+				return getCommandToFixId(pastedObjectMap, newObject, ProjectResourceSchema.getObjectType(), tag);
 			
 			if (ResourceAssignment.TAG_CATEGORY_ONE_REF.equals(tag))
 				return getCommandToFixRef(pastedObjectMap, newObject, tag);

@@ -30,8 +30,8 @@ import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Factor;
-import org.miradi.objects.ProjectResource;
 import org.miradi.objects.Target;
+import org.miradi.schemas.ProjectResourceSchema;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.OptionalDouble;
 
@@ -148,7 +148,7 @@ abstract public class BaseObjectPoolExporter extends ObjectPoolExporter
 			getWcsXmlExporter().writeElement(getWriter(), CALCULATED_END_DATE, totalDateRange.getEndDate().toIsoDateString());
 			getWcsXmlExporter().writeElement(getWriter(),	CALCULATED_TOTAL_BUDGET_COST, totalCostValue.toString());
 
-			writeResourceIds(CALCULATED_WHO, totalBudgetCost.getWorkUnitsRefSetForType(ProjectResource.getObjectType()));
+			writeResourceIds(CALCULATED_WHO, totalBudgetCost.getWorkUnitsRefSetForType(ProjectResourceSchema.getObjectType()));
 			writeOptionalTotalCost(CALCULATED_EXPENSE_TOTAL, totalBudgetCost.getTotalExpense());
 
 			writeOptionalTotalCost(CALCULATED_WORK_UNITS_TOTAL, totalBudgetCost.getTotalWorkUnits());			

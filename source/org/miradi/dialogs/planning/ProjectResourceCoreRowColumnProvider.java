@@ -23,6 +23,7 @@ package org.miradi.dialogs.planning;
 import org.miradi.objects.ProjectResource;
 import org.miradi.project.Project;
 import org.miradi.questions.WorkPlanVisibleRowsQuestion;
+import org.miradi.schemas.ProjectResourceSchema;
 import org.miradi.utils.CodeList;
 
 public class ProjectResourceCoreRowColumnProvider extends AbstractBudgetCategoryRowColumnProvider
@@ -56,7 +57,7 @@ public class ProjectResourceCoreRowColumnProvider extends AbstractBudgetCategory
 	public CodeList getRowCodesToShow() throws Exception
 	{
 		return new CodeList(new String[] {
-				ProjectResource.OBJECT_NAME,
+				ProjectResourceSchema.OBJECT_NAME,
 		});
 	}
 
@@ -93,12 +94,12 @@ public class ProjectResourceCoreRowColumnProvider extends AbstractBudgetCategory
 	@Override
 	public int getObjectType()
 	{
-		return ProjectResource.getObjectType();
+		return ProjectResourceSchema.getObjectType();
 	}
 
 	@Override
 	public String getObjectTypeName()
 	{
-		return ProjectResource.OBJECT_NAME;
+		return ProjectResourceSchema.OBJECT_NAME;
 	}
 }

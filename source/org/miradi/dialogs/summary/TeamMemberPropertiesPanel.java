@@ -27,13 +27,14 @@ import org.miradi.main.EAM;
 import org.miradi.objects.ProjectResource;
 import org.miradi.project.Project;
 import org.miradi.questions.ResourceRoleQuestion;
+import org.miradi.schemas.ProjectResourceSchema;
 import org.miradi.utils.CodeList;
 
 public class TeamMemberPropertiesPanel extends ObjectDataInputPanel
 {
 	public TeamMemberPropertiesPanel(Project projectToUse) throws Exception
 	{
-		super(projectToUse, ProjectResource.getObjectType(), BaseId.INVALID);
+		super(projectToUse, ProjectResourceSchema.getObjectType(), BaseId.INVALID);
 
 		ObjectDataInputField givenNameField = createMediumStringField(ProjectResource.TAG_GIVEN_NAME);
 		ObjectDataInputField surNameField = createMediumStringField(ProjectResource.TAG_SUR_NAME);
@@ -44,8 +45,8 @@ public class TeamMemberPropertiesPanel extends ObjectDataInputPanel
 				initialField
 				};
 		String[] nameLabelTexts = new String[] {
-				EAM.fieldLabel(ProjectResource.getObjectType(), ProjectResource.TAG_GIVEN_NAME),
-				EAM.fieldLabel(ProjectResource.getObjectType(), ProjectResource.TAG_SUR_NAME),
+				EAM.fieldLabel(ProjectResourceSchema.getObjectType(), ProjectResource.TAG_GIVEN_NAME),
+				EAM.fieldLabel(ProjectResourceSchema.getObjectType(), ProjectResource.TAG_SUR_NAME),
 				EAM.text("Label|Initials"),
 				};
 		addFieldsOnOneLine(EAM.text("Label|Team Member"), new ProjectResourceIcon(), nameLabelTexts, nameFields);

@@ -36,6 +36,7 @@ import org.miradi.objects.ProjectResource;
 import org.miradi.project.Project;
 import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.ResourceTypeQuestion;
+import org.miradi.schemas.ProjectResourceSchema;
 import org.miradi.utils.CodeList;
 
 public class ResourcePropertiesPanel extends ObjectDataInputPanel
@@ -47,7 +48,7 @@ public class ResourcePropertiesPanel extends ObjectDataInputPanel
 		teamMemberCheckBoxHandler = new TeamMemberHandler();
 		
 		ResourceTypeQuestion resourceTypeQuestion = new ResourceTypeQuestion();
-		addField(createRadioChoiceField(ProjectResource.getObjectType(), idToEdit, ProjectResource.TAG_RESOURCE_TYPE, resourceTypeQuestion));
+		addField(createRadioChoiceField(ProjectResourceSchema.getObjectType(), idToEdit, ProjectResource.TAG_RESOURCE_TYPE, resourceTypeQuestion));
 
 		ObjectDataInputField givenNameField = createMediumStringField(ProjectResource.TAG_GIVEN_NAME);
 		ObjectDataInputField surNameField = createMediumStringField(ProjectResource.TAG_SUR_NAME);
@@ -105,7 +106,7 @@ public class ResourcePropertiesPanel extends ObjectDataInputPanel
 	{
 		super.commandExecuted(event);
 		
-		if(event.isSetDataCommandWithThisTypeAndTag(ProjectResource.getObjectType(), ProjectResource.TAG_RESOURCE_TYPE))
+		if(event.isSetDataCommandWithThisTypeAndTag(ProjectResourceSchema.getObjectType(), ProjectResource.TAG_RESOURCE_TYPE))
 		{
 			updateVisibilityOfRoleCodeField();
 		}
@@ -113,11 +114,11 @@ public class ResourcePropertiesPanel extends ObjectDataInputPanel
 	
 	private void updateVisibilityOfRoleCodeField()
 	{
-		BaseId idBeingEdited = getObjectIdForType(ProjectResource.getObjectType());
+		BaseId idBeingEdited = getObjectIdForType(ProjectResourceSchema.getObjectType());
 		if(idBeingEdited == null || idBeingEdited.isInvalid())
 			return;
 		
-		ORef ref = new ORef(ProjectResource.getObjectType(), idBeingEdited);
+		ORef ref = new ORef(ProjectResourceSchema.getObjectType(), idBeingEdited);
 		ProjectResource beingEdited = ProjectResource.find(getProject(), ref);
 		boolean isPerson = beingEdited.isPerson();
 		roleCodeField.setEditable(isPerson);

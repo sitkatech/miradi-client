@@ -25,7 +25,7 @@ import org.miradi.actions.ActionDeleteResource;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
-import org.miradi.objects.ProjectResource;
+import org.miradi.schemas.ProjectResourceSchema;
 
 public class ProjectResourceTreeTablePanel  extends PlanningTreeTablePanel
 {
@@ -53,7 +53,7 @@ public class ProjectResourceTreeTablePanel  extends PlanningTreeTablePanel
 		if (super.doesCommandForceRebuild(event))
 			return true;
 		
-		return wasTypeCreatedOrDeleted(event, ProjectResource.getObjectType());
+		return wasTypeCreatedOrDeleted(event, ProjectResourceSchema.getObjectType());
 	}
 	
 	private static Class[] getButtonActions()

@@ -23,6 +23,7 @@ package org.miradi.dialogs.planning;
 import org.miradi.objects.ProjectResource;
 import org.miradi.project.Project;
 import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
+import org.miradi.schemas.ProjectResourceSchema;
 import org.miradi.utils.CodeList;
 
 public class ProjectResourceRowColumnProvider extends AbstractBudgetCategoryRowColumnProvider
@@ -46,12 +47,12 @@ public class ProjectResourceRowColumnProvider extends AbstractBudgetCategoryRowC
 	@Override
 	public int getObjectType()
 	{
-		return ProjectResource.getObjectType();
+		return ProjectResourceSchema.getObjectType();
 	}
 
 	@Override
 	public String getObjectTypeName()
 	{
-		return ProjectResource.OBJECT_NAME;
+		return ProjectResourceSchema.OBJECT_NAME;
 	}
 }

@@ -28,7 +28,6 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.BaseObjectByFullNameSorter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefSet;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.ResourceRoleQuestion;
@@ -52,24 +51,19 @@ public class ProjectResource extends BaseObject
 	@Override
 	public int getType()
 	{
-		return getObjectType();
+		return ProjectResourceSchema.getObjectType();
 	}
 
 	@Override
 	public String getTypeName()
 	{
-		return OBJECT_NAME;
+		return ProjectResourceSchema.OBJECT_NAME;
 	}
 
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;
-	}
-	
-	public static int getObjectType()
-	{
-		return ObjectType.PROJECT_RESOURCE;
 	}
 	
 	public boolean hasRole(String code) throws Exception
@@ -209,7 +203,7 @@ public class ProjectResource extends BaseObject
 	
 	public static boolean is(int objectType)
 	{
-		return objectType == getObjectType();
+		return objectType == ProjectResourceSchema.getObjectType();
 	}
 		
 	public static boolean is(ORef ref)
@@ -251,6 +245,4 @@ public class ProjectResource extends BaseObject
 	
 	public static final String TAG_CUSTOM_FIELD_1 = "Custom.Custom1";
 	public static final String TAG_CUSTOM_FIELD_2 = "Custom.Custom2";
-
-	public static final String OBJECT_NAME = "ProjectResource";
 }

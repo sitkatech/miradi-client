@@ -21,7 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.schemas;
 
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResourceAssignment;
 
 public class ResourceAssignmentSchema extends AssignmentSchema
@@ -36,7 +35,7 @@ public class ResourceAssignmentSchema extends AssignmentSchema
 	{
 		super.fillFieldSchemas();
 		
-		createFieldSchemaBaseId(ResourceAssignment.TAG_RESOURCE_ID, ProjectResource.getObjectType());
+		createFieldSchemaBaseId(ResourceAssignment.TAG_RESOURCE_ID, ProjectResourceSchema.getObjectType());
 		createFieldSchemaBaseId(ResourceAssignment.TAG_ACCOUNTING_CODE_ID, AccountingCodeSchema.getObjectType());
 		createFieldSchemaBaseId(ResourceAssignment.TAG_FUNDING_SOURCE_ID, FundingSourceSchema.getObjectType());
 		

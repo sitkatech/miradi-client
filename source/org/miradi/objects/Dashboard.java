@@ -49,6 +49,7 @@ import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.OrganizationSchema;
+import org.miradi.schemas.ProjectResourceSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
@@ -93,7 +94,7 @@ public class Dashboard extends BaseObject
 		try
 		{
 			if (fieldTag.equals(PSEUDO_TEAM_MEMBER_COUNT))
-				return getObjectPoolCountAsString(ProjectResource.getObjectType());
+				return getObjectPoolCountAsString(ProjectResourceSchema.getObjectType());
 
 			if (fieldTag.equals(PSEUDO_PROJECT_SCOPE_WORD_COUNT))
 				return getProjectScopeWordCount();

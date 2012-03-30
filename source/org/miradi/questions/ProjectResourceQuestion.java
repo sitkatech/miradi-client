@@ -20,13 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.questions;
 
-import org.miradi.objects.ProjectResource;
 import org.miradi.project.Project;
+import org.miradi.schemas.ProjectResourceSchema;
 
 public class ProjectResourceQuestion extends ObjectPoolChoiceQuestion
 {
 	public ProjectResourceQuestion(Project projectToUse)
 	{
-		super(projectToUse, ProjectResource.getObjectType());	
+		super(projectToUse, ProjectResourceSchema.getObjectType());	
 	}	
 }

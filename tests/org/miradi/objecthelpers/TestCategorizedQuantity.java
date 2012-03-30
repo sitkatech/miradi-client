@@ -22,11 +22,11 @@ package org.miradi.objecthelpers;
 
 import org.miradi.ids.BaseId;
 import org.miradi.main.TestCaseWithProject;
-import org.miradi.objects.ProjectResource;
 import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.BudgetCategoryOneSchema;
 import org.miradi.schemas.BudgetCategoryTwoSchema;
 import org.miradi.schemas.FundingSourceSchema;
+import org.miradi.schemas.ProjectResourceSchema;
 import org.miradi.utils.OptionalDouble;
 
 public class TestCategorizedQuantity extends TestCaseWithProject
@@ -62,7 +62,7 @@ public class TestCategorizedQuantity extends TestCaseWithProject
 		ORef categoryTwoRef = ORef.INVALID;
 		CategorizedQuantity categorizedQuantity = new CategorizedQuantity(resourceRef, fundingSourceRef, accountingCodeRef, categoryOneRef, categoryTwoRef, new OptionalDouble(14.0));
 		
-		verifyContainsMethods(categorizedQuantity, new ORef(ProjectResource.getObjectType(), BaseId.INVALID));
+		verifyContainsMethods(categorizedQuantity, new ORef(ProjectResourceSchema.getObjectType(), BaseId.INVALID));
 		verifyContainsMethods(categorizedQuantity, new ORef(FundingSourceSchema.getObjectType(), BaseId.INVALID));
 		verifyContainsMethods(categorizedQuantity, new ORef(AccountingCodeSchema.getObjectType(), BaseId.INVALID));
 		verifyContainsMethods(categorizedQuantity, new ORef(BudgetCategoryOneSchema.getObjectType(), BaseId.INVALID));

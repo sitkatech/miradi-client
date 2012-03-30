@@ -24,12 +24,13 @@ import org.martus.util.UnicodeWriter;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProjectResource;
 import org.miradi.questions.ResourceTypeQuestion;
+import org.miradi.schemas.ProjectResourceSchema;
 
 public class ProjectResourcePoolExporter extends BaseObjectPoolExporter
 {
 	public ProjectResourcePoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
-		super(wcsXmlExporterToUse, PROJECT_RESOURCE, ProjectResource.getObjectType());
+		super(wcsXmlExporterToUse, PROJECT_RESOURCE, ProjectResourceSchema.getObjectType());
 	}
 	
 	@Override
