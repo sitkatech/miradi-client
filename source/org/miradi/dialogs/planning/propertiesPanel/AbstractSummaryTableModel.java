@@ -32,6 +32,7 @@ import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceItemBaseObjectWrapper;
+import org.miradi.schemas.BudgetCategoryOneSchema;
 import org.miradi.utils.ColumnTagProvider;
 
 abstract public class AbstractSummaryTableModel extends PlanningViewAbstractAssignmentTableModel implements ColumnTagProvider
@@ -81,7 +82,7 @@ abstract public class AbstractSummaryTableModel extends PlanningViewAbstractAssi
 			return new ChoiceItemBaseObjectWrapper(getAccountingCode(baseObjectForRow));
 		
 		if (isBudgetCategoryOneColumn(column))
-			return new ChoiceItemBaseObjectWrapper(getBaseObject(baseObjectForRow, Assignment.TAG_CATEGORY_ONE_REF, BudgetCategoryOne.getObjectType(), BudgetCategoryOne.OBJECT_NAME));
+			return new ChoiceItemBaseObjectWrapper(getBaseObject(baseObjectForRow, Assignment.TAG_CATEGORY_ONE_REF, BudgetCategoryOneSchema.getObjectType(), BudgetCategoryOneSchema.OBJECT_NAME));
 		
 		if (isBudgetCategoryTwoColumn(column))
 			return new ChoiceItemBaseObjectWrapper(getBaseObject(baseObjectForRow, Assignment.TAG_CATEGORY_TWO_REF, BudgetCategoryTwo.getObjectType(), BudgetCategoryTwo.OBJECT_NAME));

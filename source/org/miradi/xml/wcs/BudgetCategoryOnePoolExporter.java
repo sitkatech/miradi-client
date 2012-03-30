@@ -20,12 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.wcs;
 
-import org.miradi.objects.BudgetCategoryOne;
+import org.miradi.schemas.BudgetCategoryOneSchema;
 
 public class BudgetCategoryOnePoolExporter extends AbstractBudgetCategoryPoolExporter
 {
 	public BudgetCategoryOnePoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
-		super(wcsXmlExporterToUse, BUDGET_CATEGORY_ONE, BudgetCategoryOne.getObjectType());
+		super(wcsXmlExporterToUse, BUDGET_CATEGORY_ONE, BudgetCategoryOneSchema.getObjectType());
 	}
 }

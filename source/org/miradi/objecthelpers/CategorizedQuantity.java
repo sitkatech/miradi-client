@@ -20,10 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objecthelpers;
 
-import org.miradi.objects.BudgetCategoryOne;
 import org.miradi.objects.BudgetCategoryTwo;
 import org.miradi.objects.ProjectResource;
 import org.miradi.schemas.AccountingCodeSchema;
+import org.miradi.schemas.BudgetCategoryOneSchema;
 import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.utils.OptionalDouble;
 
@@ -34,7 +34,7 @@ public class CategorizedQuantity
 		resourceRef = ensureRefHasCorrectType(resourceRefToUse, ProjectResource.getObjectType());
 		fundingSourceRef = ensureRefHasCorrectType(fundingSourceRefToUse, FundingSourceSchema.getObjectType());
 		accountingCodeRef = ensureRefHasCorrectType(accountingCodeRefToUse, AccountingCodeSchema.getObjectType());
-		categoryOneRef = ensureRefHasCorrectType(categoryOneRefToUse, BudgetCategoryOne.getObjectType());
+		categoryOneRef = ensureRefHasCorrectType(categoryOneRefToUse, BudgetCategoryOneSchema.getObjectType());
 		categoryTwoRef = ensureRefHasCorrectType(categoryTwoRefToUse, BudgetCategoryTwo.getObjectType());
 		
 		quantity = quantityToUse;

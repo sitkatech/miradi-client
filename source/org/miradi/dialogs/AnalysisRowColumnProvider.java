@@ -25,12 +25,12 @@ import org.miradi.dialogs.planning.WorkPlanCategoryTreeRowColumnProvider;
 import org.miradi.dialogs.planning.upperPanel.WorkPlanTreeTablePanel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.CodeToCodeListMap;
-import org.miradi.objects.BudgetCategoryOne;
 import org.miradi.objects.BudgetCategoryTwo;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
 import org.miradi.schemas.AccountingCodeSchema;
+import org.miradi.schemas.BudgetCategoryOneSchema;
 import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.views.workplan.WorkPlanView;
@@ -55,7 +55,7 @@ public class AnalysisRowColumnProvider extends AbstractBudgetCategoryRowColumnPr
 				ProjectResource.OBJECT_NAME,
 				AccountingCodeSchema.OBJECT_NAME,
 				FundingSourceSchema.OBJECT_NAME,
-				BudgetCategoryOne.OBJECT_NAME,
+				BudgetCategoryOneSchema.OBJECT_NAME,
 				BudgetCategoryTwo.OBJECT_NAME,
 		});
 	}

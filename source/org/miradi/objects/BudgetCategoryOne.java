@@ -23,7 +23,6 @@ package org.miradi.objects;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.BudgetCategoryOneSchema;
@@ -44,24 +43,19 @@ public class BudgetCategoryOne extends AbstractBudgetCategoryObject
 	@Override
 	public int getType()
 	{
-		return getObjectType();
+		return BudgetCategoryOneSchema.getObjectType();
 	}
 	
 	@Override
 	public String getTypeName()
 	{
-		return OBJECT_NAME;
+		return BudgetCategoryOneSchema.OBJECT_NAME;
 	}
 
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;
-	}
-	
-	public static int getObjectType()
-	{
-		return ObjectType.BUDGET_CATEGORY_ONE;
 	}
 	
 	@Override
@@ -82,7 +76,7 @@ public class BudgetCategoryOne extends AbstractBudgetCategoryObject
 	
 	public static boolean is(int objectType)
 	{
-		return objectType == getObjectType();
+		return objectType == BudgetCategoryOneSchema.getObjectType();
 	}
 	
 	public static BudgetCategoryOne find(ObjectManager objectManager, ORef ref)
@@ -94,6 +88,4 @@ public class BudgetCategoryOne extends AbstractBudgetCategoryObject
 	{
 		return find(project.getObjectManager(), ref);
 	}
-	
-	public static final String OBJECT_NAME = "CategoryOne";
 }
