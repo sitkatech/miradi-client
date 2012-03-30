@@ -24,8 +24,8 @@ import org.martus.util.MultiCalendar;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Assignment;
-import org.miradi.objects.BudgetCategoryTwo;
 import org.miradi.schemas.BudgetCategoryOneSchema;
+import org.miradi.schemas.BudgetCategoryTwoSchema;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.DoubleUtilities;
@@ -46,7 +46,7 @@ abstract public class AbstractAssignmentPoolImporter extends AbstractBaseObjectP
 		super.importFields(node, destinationRef);
 		
 		importOptionalRef(node, destinationRef, Assignment.TAG_CATEGORY_ONE_REF, XmpzXmlConstants.BUDGET_CATEGORY_ONE, BudgetCategoryOneSchema.getObjectType());
-		importOptionalRef(node, destinationRef, Assignment.TAG_CATEGORY_TWO_REF, XmpzXmlConstants.BUDGET_CATEGORY_TWO, BudgetCategoryTwo.getObjectType());
+		importOptionalRef(node, destinationRef, Assignment.TAG_CATEGORY_TWO_REF, XmpzXmlConstants.BUDGET_CATEGORY_TWO, BudgetCategoryTwoSchema.getObjectType());
 		importDateUnitEffortList(node, destinationRef);
 	}
 

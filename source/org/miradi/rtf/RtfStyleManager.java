@@ -43,6 +43,7 @@ import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.BudgetCategoryOneSchema;
+import org.miradi.schemas.BudgetCategoryTwoSchema;
 import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.schemas.IndicatorSchema;
 
@@ -131,7 +132,7 @@ public class RtfStyleManager
 			return BudgetCategoryOneSchema.OBJECT_NAME;
 		
 		if (BudgetCategoryTwo.is(objectType))
-			return BudgetCategoryTwo.OBJECT_NAME;
+			return BudgetCategoryTwoSchema.OBJECT_NAME;
 		
 		if (AccountingCode.is(objectType))
 			return AccountingCodeSchema.OBJECT_NAME;

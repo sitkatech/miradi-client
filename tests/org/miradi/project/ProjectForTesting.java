@@ -132,6 +132,7 @@ import org.miradi.questions.WwfManagingOfficesQuestion;
 import org.miradi.questions.WwfRegionsQuestion;
 import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.BudgetCategoryOneSchema;
+import org.miradi.schemas.BudgetCategoryTwoSchema;
 import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.CodeList;
@@ -930,7 +931,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public BudgetCategoryTwo createCategoryTwo() throws Exception
 	{
-		ORef categoryTwoRef = createObject(BudgetCategoryTwo.getObjectType());
+		ORef categoryTwoRef = createObject(BudgetCategoryTwoSchema.getObjectType());
 		return BudgetCategoryTwo.find(this, categoryTwoRef);
 	}
 
