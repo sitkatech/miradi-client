@@ -51,6 +51,7 @@ import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.project.FactorDeleteHelper;
 import org.miradi.project.ProjectRepairer;
+import org.miradi.schemas.IndicatorSchema;
 
 public class TestDiagramAliasPaster extends TestCaseWithProject
 {
@@ -110,7 +111,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 	private void deleteIndicatorBeforePasteAsShared(Indicator indicator) throws Exception
 	{
 		getProject().executeCommands(indicator.createCommandsToDeleteChildrenAndObject());
-		getProject().fillObjectUsingCommand(threat, Cause.TAG_INDICATOR_IDS, new IdList(Indicator.getObjectType()));
+		getProject().fillObjectUsingCommand(threat, Cause.TAG_INDICATOR_IDS, new IdList(IndicatorSchema.getObjectType()));
 	}
 	
 	private Goal createOrphanGoal() throws Exception

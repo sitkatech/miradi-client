@@ -50,6 +50,7 @@ import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.questions.TextAndIconChoiceItem;
 import org.miradi.questions.TrendQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
+import org.miradi.schemas.IndicatorSchema;
 
 public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 {
@@ -411,7 +412,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 	{
 		ORefList objectHiearchy = getRowColumnObjectProvider().getObjectHiearchy(row, column);
 		
-		return objectHiearchy.getRefForType(Indicator.getObjectType());
+		return objectHiearchy.getRefForType(IndicatorSchema.getObjectType());
 	}
 
 	private ChoiceItem getStatusColumnChoiceItem(String tag, BaseObject baseObject, final String summaryTag, final String statusTag, final Icon icon)
@@ -476,7 +477,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 			return Measurement.getObjectType();
 			
 		else if (tag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
-			return Indicator.getObjectType();
+			return IndicatorSchema.getObjectType();
 		
 		else if(tag.equals(Measurement.TAG_SUMMARY))
 			return Measurement.getObjectType();

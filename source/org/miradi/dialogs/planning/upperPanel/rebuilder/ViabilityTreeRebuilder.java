@@ -40,6 +40,7 @@ import org.miradi.objects.Measurement;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
+import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.CodeList;
 
 public class ViabilityTreeRebuilder extends AbstractTreeRebuilder
@@ -111,7 +112,7 @@ public class ViabilityTreeRebuilder extends AbstractTreeRebuilder
 	{
 		ORefList childRefs = new ORefList();
 		AbstractTarget target = AbstractTarget.findTarget(getProject(), targetRef);
-		childRefs.addAll(new ORefList(Indicator.getObjectType(), target.getDirectOrIndirectIndicators()));
+		childRefs.addAll(new ORefList(IndicatorSchema.getObjectType(), target.getDirectOrIndirectIndicators()));
 		
 		if (target.isViabilityModeTNC()) 
 			childRefs.addAll(getSortedKeaRefs(target));

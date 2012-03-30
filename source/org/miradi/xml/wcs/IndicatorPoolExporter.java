@@ -29,13 +29,14 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.StatusQuestion;
+import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.CodeList;
 
 public class IndicatorPoolExporter extends BaseObjectPoolExporter
 {
 	public IndicatorPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
-		super(wcsXmlExporterToUse, INDICATOR, Indicator.getObjectType());
+		super(wcsXmlExporterToUse, INDICATOR, IndicatorSchema.getObjectType());
 	}
 	
 	@Override

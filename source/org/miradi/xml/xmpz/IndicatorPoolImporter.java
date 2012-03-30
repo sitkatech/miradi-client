@@ -28,6 +28,7 @@ import org.miradi.objects.Task;
 import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.StatusQuestion;
+import org.miradi.schemas.IndicatorSchema;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -36,7 +37,7 @@ public class IndicatorPoolImporter extends AbstractBaseObjectPoolImporter
 {
 	public IndicatorPoolImporter(XmpzXmlImporter importerToUse)
 	{
-		super(importerToUse, XmpzXmlConstants.INDICATOR, Indicator.getObjectType());
+		super(importerToUse, XmpzXmlConstants.INDICATOR, IndicatorSchema.getObjectType());
 	}
 	
 	@Override

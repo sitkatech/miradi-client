@@ -100,6 +100,7 @@ import org.miradi.questions.TncFreshwaterEcoRegionQuestion;
 import org.miradi.questions.TncMarineEcoRegionQuestion;
 import org.miradi.questions.TncTerrestrialEcoRegionQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
+import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateUnitEffort;
@@ -395,7 +396,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		{
 			Node indicatorNode = indicatorIdNodes.item(nodeIndex);
 			BaseId indicatorId = new BaseId(indicatorNode.getTextContent());
-			ORef indicatorRef = new ORef(Indicator.getObjectType(), indicatorId);
+			ORef indicatorRef = new ORef(IndicatorSchema.getObjectType(), indicatorId);
 			indicatorRefs.add(indicatorRef);
 		}
 		
@@ -424,7 +425,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		{
 			Node indicatorNode = indicatorNodeList.item(nodeIndex);
 			String indicatorId = getAttributeValue(indicatorNode, ID);
-			ORef indicatorRef = getProject().createObject(Indicator.getObjectType(), new BaseId(indicatorId));
+			ORef indicatorRef = getProject().createObject(IndicatorSchema.getObjectType(), new BaseId(indicatorId));
 			
 			importField(indicatorNode, NAME, indicatorRef, Indicator.TAG_LABEL);
 			updateIndicatorMethodList(indicatorNode, indicatorRef);
@@ -505,7 +506,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 			importField(threatNode, NAME, threatRef, Cause.TAG_LABEL);
 			importField(threatNode, THREAT_TAXONOMY_CODE, threatRef, Cause.TAG_TAXONOMY_CODE);
 			ORefSet indicatorRefs = getIndicators(threatNode);
-			setData(threatRef, Cause.TAG_INDICATOR_IDS, indicatorRefs.toIdList(Indicator.getObjectType()).toString());
+			setData(threatRef, Cause.TAG_INDICATOR_IDS, indicatorRefs.toIdList(IndicatorSchema.getObjectType()).toString());
 			
 			createDiagramFactorAndAddToDiagram(threatRef);
 		}
@@ -517,13 +518,13 @@ public class ConproXmlImporter implements ConProMiradiXml
 		for (int nodeIndex = 0; nodeIndex < keaNodeList.getLength(); ++nodeIndex) 
 		{
 			Node viabilityAssessmentNode = keaNodeList.item(nodeIndex);
-			ORef indicatorRef = getNodeAsRef(viabilityAssessmentNode, INDICATOR_ID, Indicator.getObjectType());
+			ORef indicatorRef = getNodeAsRef(viabilityAssessmentNode, INDICATOR_ID, IndicatorSchema.getObjectType());
 			ORefSet allKeaIndicatorRefsTobeImported = new ORefSet(indicatorRef);
 			KeyEcologicalAttribute kea = KeyEcologicalAttribute.find(getProject(), keaRef);
 			ORefList currentKeaIndicators = kea.getIndicatorRefs();
 			allKeaIndicatorRefsTobeImported.addAllRefs(currentKeaIndicators);
 			ORefList indicatorRefList = new ORefList(allKeaIndicatorRefsTobeImported);
-			setData(keaRef, KeyEcologicalAttribute.TAG_INDICATOR_IDS, indicatorRefList.convertToIdList(Indicator.getObjectType()).toString());
+			setData(keaRef, KeyEcologicalAttribute.TAG_INDICATOR_IDS, indicatorRefList.convertToIdList(IndicatorSchema.getObjectType()).toString());
 			
 			importIndicatorThresholds(viabilityAssessmentNode, indicatorRef);		
 			
@@ -1340,13 +1341,13 @@ public class ConproXmlImporter implements ConProMiradiXml
 	
 	private void attachIndicatorsToHolder() throws Exception
 	{
-		IdList indicatorIds = new IdList(Indicator.getObjectType());
+		IdList indicatorIds = new IdList(IndicatorSchema.getObjectType());
 		NodeList indicatorNodeList = getNodes(getRootNode(), INDICATORS, INDICATOR);
 		for (int nodeIndex = 0; nodeIndex < indicatorNodeList.getLength(); ++nodeIndex) 
 		{
 			Node indicatorNode = indicatorNodeList.item(nodeIndex);
 			String indicatorId = getAttributeValue(indicatorNode, ID);
-			ORef indicatorRef = new ORef(Indicator.getObjectType(), new BaseId(indicatorId));
+			ORef indicatorRef = new ORef(IndicatorSchema.getObjectType(), new BaseId(indicatorId));
 			Indicator indicator = Indicator.find(getProject(), indicatorRef);
 			if (indicator.findObjectsThatReferToUs().size() > 1)
 				throw new Exception("Indicator has more than one referrer: " + indicator.getRef());

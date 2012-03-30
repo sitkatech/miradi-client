@@ -21,13 +21,14 @@ package org.miradi.views.planning.doers;
 
 import org.miradi.objects.Factor;
 import org.miradi.objects.Indicator;
+import org.miradi.schemas.IndicatorSchema;
 
 public class TreeNodeCreateIndicatorDoer extends AbstractTreeCreateAnnotationDoer
 {
 	@Override
 	protected int getAnnotationType()
 	{
-		return Indicator.getObjectType();
+		return IndicatorSchema.getObjectType();
 	}
 	
 	@Override

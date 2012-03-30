@@ -28,8 +28,8 @@ import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.Indicator;
 import org.miradi.project.Project;
+import org.miradi.schemas.IndicatorSchema;
 import org.miradi.views.targetviability.doers.AbstractKeyEcologicalAttributeDoer;
 
 public class DeleteViabilityIndicatorDoer extends AbstractKeyEcologicalAttributeDoer
@@ -38,7 +38,7 @@ public class DeleteViabilityIndicatorDoer extends AbstractKeyEcologicalAttribute
 	public Vector<Integer> getRequiredObjectTypes()
 	{
 		Vector<Integer> types = new Vector<Integer>(1);
-		types.add(Indicator.getObjectType());
+		types.add(IndicatorSchema.getObjectType());
 
 		return types;
 	}

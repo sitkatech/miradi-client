@@ -21,7 +21,7 @@ package org.miradi.views.diagram;
 
 import org.miradi.main.EAM;
 import org.miradi.objects.Factor;
-import org.miradi.objects.Indicator;
+import org.miradi.schemas.IndicatorSchema;
 
 public class DeleteIndicator extends DeleteAnnotationDoer
 {
@@ -31,7 +31,7 @@ public class DeleteIndicator extends DeleteAnnotationDoer
 		if (getObjects().length == 0)
 			return false;
 		
-		if (getSelectedObjectType() != Indicator.getObjectType())
+		if (getSelectedObjectType() != IndicatorSchema.getObjectType())
 			return false;
 		
 		return true;
@@ -52,6 +52,6 @@ public class DeleteIndicator extends DeleteAnnotationDoer
 	@Override
 	public int getAnnotationType()
 	{
-		return Indicator.getObjectType();
+		return IndicatorSchema.getObjectType();
 	}
 }

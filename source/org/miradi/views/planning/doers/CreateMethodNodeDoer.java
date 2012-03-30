@@ -24,6 +24,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Task;
+import org.miradi.schemas.IndicatorSchema;
 
 public class CreateMethodNodeDoer extends AbstractCreateTaskNodeDoer
 {
@@ -42,7 +43,7 @@ public class CreateMethodNodeDoer extends AbstractCreateTaskNodeDoer
 			return selectedRef;
 		
 		if (Task.isMethod(getProject(), selectedRef))
-			return selectionHierarchy.getRefForType(Indicator.getObjectType());
+			return selectionHierarchy.getRefForType(IndicatorSchema.getObjectType());
 		
 		return ORef.INVALID;
 	}

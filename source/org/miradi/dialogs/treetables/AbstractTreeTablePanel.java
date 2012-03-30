@@ -47,6 +47,7 @@ import org.miradi.objects.TableSettings;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ViewData;
+import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.TableWithColumnWidthAndSequenceSaver;
 
 abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
@@ -270,7 +271,7 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 			return true;
 		if(type == Strategy.getObjectType() && tag.equals(Strategy.TAG_ACTIVITY_IDS))
 			return true;
-		if(type == Indicator.getObjectType() && tag.equals(Indicator.TAG_METHOD_IDS))
+		if(type == IndicatorSchema.getObjectType() && tag.equals(Indicator.TAG_METHOD_IDS))
 			return true;
 		
 		return false;
@@ -335,7 +336,7 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 	
 	private boolean didAffectMeasurementInTree(CommandExecutedEvent event)
 	{
-		if (event.isSetDataCommandWithThisTypeAndTag(Indicator.getObjectType(), Indicator.TAG_MEASUREMENT_REFS))
+		if (event.isSetDataCommandWithThisTypeAndTag(IndicatorSchema.getObjectType(), Indicator.TAG_MEASUREMENT_REFS))
 			return true;
 		
 		if (event.isSetDataCommandWithThisTypeAndTag(Measurement.getObjectType(), Measurement.TAG_DATE))

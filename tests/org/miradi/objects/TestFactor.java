@@ -26,6 +26,7 @@ import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.schemas.IndicatorSchema;
 
 public class TestFactor extends TestCaseWithProject
 {
@@ -61,7 +62,7 @@ public class TestFactor extends TestCaseWithProject
 		
 		String[] sampleData = {
 			"Whatever comment",
-			new IdList(Indicator.getObjectType(), sampleIds).toString(),
+			new IdList(IndicatorSchema.getObjectType(), sampleIds).toString(),
 			new IdList(Goal.getObjectType(), sampleIds).toString(),
 			new IdList(Objective.getObjectType(), sampleIds).toString(),
 		};

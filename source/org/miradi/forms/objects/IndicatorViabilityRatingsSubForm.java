@@ -24,6 +24,7 @@ import org.miradi.objects.Indicator;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.StatusQuestion;
+import org.miradi.schemas.IndicatorSchema;
 
 public class IndicatorViabilityRatingsSubForm extends FieldPanelSpec
 {
@@ -35,12 +36,12 @@ public class IndicatorViabilityRatingsSubForm extends FieldPanelSpec
 		createThreshholdField(statusQuestion.findChoiceByCode(StatusQuestion.GOOD));
 		createThreshholdField(statusQuestion.findChoiceByCode(StatusQuestion.VERY_GOOD));
 				
-		addLabelAndField(Indicator.getObjectType(), Indicator.TAG_RATING_SOURCE);
-		addLabelAndField(Indicator.getObjectType(), Indicator.TAG_VIABILITY_RATINGS_COMMENTS);
+		addLabelAndField(IndicatorSchema.getObjectType(), Indicator.TAG_RATING_SOURCE);
+		addLabelAndField(IndicatorSchema.getObjectType(), Indicator.TAG_VIABILITY_RATINGS_COMMENTS);
 	}
 	
 	private void createThreshholdField(ChoiceItem choiceItem)
 	{
-		addLabelAndFieldsWithLabels(choiceItem.getLabel(), Indicator.getObjectType(), new String[]{Indicator.TAG_THRESHOLDS_MAP, Indicator.TAG_THRESHOLD_DETAILS_MAP});
+		addLabelAndFieldsWithLabels(choiceItem.getLabel(), IndicatorSchema.getObjectType(), new String[]{Indicator.TAG_THRESHOLDS_MAP, Indicator.TAG_THRESHOLD_DETAILS_MAP});
 	}
 }

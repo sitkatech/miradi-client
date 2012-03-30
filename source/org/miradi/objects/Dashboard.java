@@ -44,6 +44,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.StrategyRatingSummaryQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.schemas.DashboardSchema;
+import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.OptionalDouble;
 
@@ -190,7 +191,7 @@ public class Dashboard extends BaseObject
 				return getMethodsCount();
 			
 			if (fieldTag.equals(PSEUDO_INDICATORS_COUNT))
-				return getObjectPoolCountAsString(Indicator.getObjectType());
+				return getObjectPoolCountAsString(IndicatorSchema.getObjectType());
 			
 			if (fieldTag.equals(PSEUDO_METHODS_AND_TASKS_COUNT))
 				return getSpecifiedTaskTypeAndTasksCount(Task.METHOD_NAME);
@@ -358,7 +359,7 @@ public class Dashboard extends BaseObject
 
 	private String getTotalMonitoringBudget() throws Exception
 	{
-		return calculateTotalCostForType(Indicator.getObjectType());
+		return calculateTotalCostForType(IndicatorSchema.getObjectType());
 	}
 	
 	private String calculateTotalCostForType(int objectType) throws Exception
@@ -430,7 +431,7 @@ public class Dashboard extends BaseObject
 	
 	private String getMeasurementCount(final int LOWER_BOUND, final int UPPER_BOUND) throws Exception
 	{
-		return getAnnotationCountWithinBounds(Indicator.getObjectType(), Indicator.TAG_MEASUREMENT_REFS, LOWER_BOUND, UPPER_BOUND);
+		return getAnnotationCountWithinBounds(IndicatorSchema.getObjectType(), Indicator.TAG_MEASUREMENT_REFS, LOWER_BOUND, UPPER_BOUND);
 	}
 	
 	private String getAnnotationCountWithinBounds(int objectType, String tag, final int LOWER_BOUND, final int UPPER_BOUND)	throws Exception

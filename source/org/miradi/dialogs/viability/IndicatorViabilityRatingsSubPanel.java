@@ -33,6 +33,7 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.StatusQuestion;
+import org.miradi.schemas.IndicatorSchema;
 
 public class IndicatorViabilityRatingsSubPanel extends ObjectDataInputPanel
 {
@@ -61,8 +62,8 @@ public class IndicatorViabilityRatingsSubPanel extends ObjectDataInputPanel
 		label.setOpaque(true);
 		label.setBackground(choiceItem.getColor());
 		
-		ObjectDataInputField mapField = createStringMapField(Indicator.getObjectType(), Indicator.TAG_THRESHOLDS_MAP, choiceItem.getCode(), 10);
-		ObjectDataInputField detailsField = createStringMapField(Indicator.getObjectType(), Indicator.TAG_THRESHOLD_DETAILS_MAP, choiceItem.getCode(), 30);
+		ObjectDataInputField mapField = createStringMapField(IndicatorSchema.getObjectType(), Indicator.TAG_THRESHOLDS_MAP, choiceItem.getCode(), 10);
+		ObjectDataInputField detailsField = createStringMapField(IndicatorSchema.getObjectType(), Indicator.TAG_THRESHOLD_DETAILS_MAP, choiceItem.getCode(), 30);
 		addFieldsOnOneLine(label, new ObjectDataInputField[]{mapField, detailsField});
 	}
 	

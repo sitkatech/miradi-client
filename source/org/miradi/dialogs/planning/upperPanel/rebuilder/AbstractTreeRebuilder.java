@@ -60,6 +60,7 @@ import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
+import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.BaseObjectDateDescendingAndIdComparator;
 import org.miradi.utils.CodeList;
 
@@ -173,7 +174,7 @@ abstract public class AbstractTreeRebuilder
 			SubTarget.getObjectType(),
 			Goal.getObjectType(),
 			Objective.getObjectType(),
-			Indicator.getObjectType(),
+			IndicatorSchema.getObjectType(),
 			Task.getObjectType(),
 			
 			Measurement.getObjectType(),
@@ -410,7 +411,7 @@ abstract public class AbstractTreeRebuilder
 			IntermediateResult.getObjectType(),
 			Objective.getObjectType(),
 			Strategy.getObjectType(),
-			Indicator.getObjectType(),
+			IndicatorSchema.getObjectType(),
 			ProjectResource.getObjectType(),
 			AccountingCode.getObjectType(),
 			FundingSource.getObjectType(),

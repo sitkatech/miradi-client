@@ -25,6 +25,7 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Task;
+import org.miradi.schemas.IndicatorSchema;
 import org.miradi.views.planning.doers.AbstractShareDoer;
 
 public class TreeNodeShareMethodDoer extends AbstractShareDoer
@@ -44,7 +45,7 @@ public class TreeNodeShareMethodDoer extends AbstractShareDoer
 	@Override
 	protected int getParentType()
 	{
-		return Indicator.getObjectType();
+		return IndicatorSchema.getObjectType();
 	}
 	
 	@Override

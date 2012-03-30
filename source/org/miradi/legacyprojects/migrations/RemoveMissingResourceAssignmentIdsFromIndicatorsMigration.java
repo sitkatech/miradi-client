@@ -28,14 +28,14 @@ import org.miradi.ids.IdList;
 import org.miradi.legacyprojects.DataUpgrader;
 import org.miradi.legacyprojects.JSONFile;
 import org.miradi.legacyprojects.ObjectManifest;
-import org.miradi.objects.Indicator;
+import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class RemoveMissingResourceAssignmentIdsFromIndicatorsMigration
 {
 	public static IdList removeMissingResourceAssignmentId() throws Exception
 	{	
-		IdList cleanedUpIndicatorIds = new IdList(Indicator.getObjectType());
+		IdList cleanedUpIndicatorIds = new IdList(IndicatorSchema.getObjectType());
 		if (!getIndicatorDir().exists())
 			return cleanedUpIndicatorIds;
 		

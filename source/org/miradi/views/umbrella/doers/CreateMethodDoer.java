@@ -30,6 +30,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
+import org.miradi.schemas.IndicatorSchema;
 import org.miradi.views.ObjectsDoer;
 
 public class CreateMethodDoer extends ObjectsDoer
@@ -84,7 +85,7 @@ public class CreateMethodDoer extends ObjectsDoer
 		if(getSelectedHierarchies().length != 1)
 			return null;
 		
-		ORef indicatorRef = getSelectedHierarchies()[0].getRefForType(Indicator.getObjectType());
+		ORef indicatorRef = getSelectedHierarchies()[0].getRefForType(IndicatorSchema.getObjectType());
 		if(indicatorRef == null || indicatorRef.isInvalid())
 			return null;
 		

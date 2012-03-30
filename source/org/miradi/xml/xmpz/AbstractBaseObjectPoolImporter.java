@@ -28,10 +28,10 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Desire;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Factor;
-import org.miradi.objects.Indicator;
 import org.miradi.objects.ProgressPercent;
 import org.miradi.objects.ProgressReport;
 import org.miradi.objects.ResourceAssignment;
+import org.miradi.schemas.IndicatorSchema;
 import org.miradi.xml.AbstractXmpzObjectImporter;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.w3c.dom.Node;
@@ -102,7 +102,7 @@ abstract public class AbstractBaseObjectPoolImporter extends AbstractXmpzObjectI
 	
 	protected void importIndicatorIds(Node node, ORef destinationRef) throws Exception
 	{
-		importIds(node, destinationRef, Factor.TAG_INDICATOR_IDS, Indicator.getObjectType(), XmpzXmlConstants.INDICATOR);
+		importIds(node, destinationRef, Factor.TAG_INDICATOR_IDS, IndicatorSchema.getObjectType(), XmpzXmlConstants.INDICATOR);
 	}
 	
 	protected Point extractPointFromNode(Node pointNode) throws Exception

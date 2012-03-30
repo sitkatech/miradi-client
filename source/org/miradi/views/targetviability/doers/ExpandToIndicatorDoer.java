@@ -20,13 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.targetviability.doers;
 
-import org.miradi.objects.Indicator;
+import org.miradi.schemas.IndicatorSchema;
 
 public class ExpandToIndicatorDoer extends AbstractExpandToDoer
 {
 	@Override
 	protected int getTypeToExpandTo()
 	{
-		return Indicator.getObjectType();
+		return IndicatorSchema.getObjectType();
 	}
 }

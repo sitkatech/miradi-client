@@ -29,6 +29,7 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Indicator;
+import org.miradi.schemas.IndicatorSchema;
 
 public class CreateKeyEcologicalAttributeMeasurementDoer extends AbstractKeyEcologicalAttributeDoer
 {
@@ -36,7 +37,7 @@ public class CreateKeyEcologicalAttributeMeasurementDoer extends AbstractKeyEcol
 	public Vector<Integer> getRequiredObjectTypes()
 	{
 		Vector<Integer> types = new Vector<Integer>(1);
-		types.add(Indicator.getObjectType());
+		types.add(IndicatorSchema.getObjectType());
 
 		return types;
 	}

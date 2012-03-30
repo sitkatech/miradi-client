@@ -27,9 +27,9 @@ import org.miradi.objectpools.IndicatorPool;
 import org.miradi.objectpools.ObjectivePool;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Factor;
-import org.miradi.objects.Indicator;
 import org.miradi.objects.Objective;
 import org.miradi.project.FactorDeleteHelper;
+import org.miradi.schemas.IndicatorSchema;
 
 public class TestFactorDeleteHelper extends MiradiTestCase
 {
@@ -59,8 +59,8 @@ public class TestFactorDeleteHelper extends MiradiTestCase
 		
 		assertEquals("wrong indicator count?", 0, causeCell.getIndicators().size());
 		assertEquals("wrong objective count?", 0, causeCell.getIndicators().size());
-		project.addItemToFactorList(causeCell.getWrappedFactorRef(), Indicator.getObjectType(), Factor.TAG_INDICATOR_IDS);
-		project.addItemToFactorList(causeCell.getWrappedFactorRef(), Indicator.getObjectType(), Factor.TAG_INDICATOR_IDS);
+		project.addItemToFactorList(causeCell.getWrappedFactorRef(), IndicatorSchema.getObjectType(), Factor.TAG_INDICATOR_IDS);
+		project.addItemToFactorList(causeCell.getWrappedFactorRef(), IndicatorSchema.getObjectType(), Factor.TAG_INDICATOR_IDS);
 		project.addItemToFactorList(causeCell.getWrappedFactorRef(), Objective.getObjectType(), Factor.TAG_OBJECTIVE_IDS);
 		
 		assertEquals("didn't add indicators?", 2, causeCell.getIndicators().size());

@@ -22,12 +22,13 @@ package org.miradi.forms.objects;
 import org.miradi.forms.FieldPanelSpec;
 import org.miradi.objects.Indicator;
 import org.miradi.questions.ProgressReportShortStatusQuestion;
+import org.miradi.schemas.IndicatorSchema;
 
 public class IndicatorMonitoringPlanSubForm extends FieldPanelSpec
 {
 	public IndicatorMonitoringPlanSubForm()
 	{
-		int type = Indicator.getObjectType();
+		int type = IndicatorSchema.getObjectType();
 		addLabelAndField(type, Indicator.PSEUDO_TAG_FACTOR);
 		addLabelAndField(type, Indicator.PSEUDO_TAG_METHODS);
 		addLabelAndField(type, Indicator.TAG_PRIORITY);

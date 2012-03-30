@@ -130,6 +130,7 @@ import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.questions.WwfEcoRegionsQuestion;
 import org.miradi.questions.WwfManagingOfficesQuestion;
 import org.miradi.questions.WwfRegionsQuestion;
+import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.DateRange;
@@ -515,7 +516,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		Cause threat = createAndPopulateThreat();
 		ORefList indicatorRefs = threat.getDirectOrIndirectIndicatorRefs();
-		ORef indicatorRef = indicatorRefs.getRefForType(Indicator.getObjectType());
+		ORef indicatorRef = indicatorRefs.getRefForType(IndicatorSchema.getObjectType());
 		Indicator indicator = Indicator.find(this, indicatorRef);
 		
 		final String STRING_TO_TRIM = "<br/>\t  \t";
@@ -754,8 +755,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public Indicator createIndicator(BaseObject owner) throws Exception
 	{
-		ORef indicatorRef = createObject(Indicator.getObjectType());
-		IdList indicatorIds = new IdList(Indicator.getObjectType());
+		ORef indicatorRef = createObject(IndicatorSchema.getObjectType());
+		IdList indicatorIds = new IdList(IndicatorSchema.getObjectType());
 		indicatorIds.addRef(indicatorRef);	
 		fillObjectUsingCommand(owner, Factor.TAG_INDICATOR_IDS, indicatorIds.toString());
 		return Indicator.find(this, indicatorRef);
@@ -998,7 +999,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		final int FIRST_CODE = 0;
 		fillObjectUsingCommand(cause.getRef(), Cause.TAG_TAXONOMY_CODE, question.getCode(FIRST_CODE));
 		
-		IdList indicatorIds = new IdList(Indicator.getObjectType());
+		IdList indicatorIds = new IdList(IndicatorSchema.getObjectType());
 		indicatorIds.addRef(createAndPopulateIndicator(cause).getRef());	
 		fillObjectUsingCommand(cause, Cause.TAG_INDICATOR_IDS, indicatorIds.toString());
 	}
@@ -1061,7 +1062,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(kea, KeyEcologicalAttribute.TAG_DETAILS, "Some kea details text");
 		fillObjectUsingCommand(kea, KeyEcologicalAttribute.TAG_DESCRIPTION, "Some kea description text");
 		
-		IdList indicatorIds = new IdList(Indicator.getObjectType());
+		IdList indicatorIds = new IdList(IndicatorSchema.getObjectType());
 		indicatorIds.add(createAndPopulateIndicator(kea).getId());
 		indicatorIds.add(createAndPopulateIndicator(kea).getId());
 		Indicator indicatorWithoutThreshold = createAndPopulateIndicator(kea);
@@ -1640,7 +1641,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public BaseId addItemToIndicatorList(ORef ref, String tag) throws Exception
 	{
-		return addItemToList(ref, Indicator.getObjectType(), tag);
+		return addItemToList(ref, IndicatorSchema.getObjectType(), tag);
 	}
 	
 	public BaseId addSubtaskToActivity(ORef ref, String tag) throws Exception

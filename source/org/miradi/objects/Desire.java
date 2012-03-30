@@ -36,6 +36,7 @@ import org.miradi.objecthelpers.TargetSet;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -171,7 +172,7 @@ abstract public class Desire extends BaseObject
 				BaseId indicatorId = indicatorIds.get(idIndex);
 				if(indicatorId.isInvalid())
 					continue;
-				indicatorRefs.add(new ORef(Indicator.getObjectType(), indicatorId));
+				indicatorRefs.add(new ORef(IndicatorSchema.getObjectType(), indicatorId));
 			}
 		}
 		

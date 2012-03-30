@@ -34,6 +34,7 @@ import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.project.ProjectForTesting;
+import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.CommandVector;
 
 
@@ -62,7 +63,7 @@ public class TestIndicator extends AbstractObjectWithBudgetDataToDeleteTestCase
 	@Override
 	protected int getType()
 	{
-		return Indicator.getObjectType();
+		return IndicatorSchema.getObjectType();
 	}
 
 	public void testFields() throws Exception
@@ -72,7 +73,7 @@ public class TestIndicator extends AbstractObjectWithBudgetDataToDeleteTestCase
 	
 	public void testGetLatestMeasurementRef() throws Exception
 	{
-		ORef indicatorRef = project.createObject(Indicator.getObjectType());
+		ORef indicatorRef = project.createObject(IndicatorSchema.getObjectType());
 		Indicator indicator = (Indicator) project.findObject(indicatorRef);
 		assertEquals("Found date?", ORef.INVALID, indicator.getLatestMeasurementRef());
 		
@@ -104,21 +105,21 @@ public class TestIndicator extends AbstractObjectWithBudgetDataToDeleteTestCase
 	
 	public void testIsRefList() throws Exception
 	{
-		ORef indicatorRef = project.createObject(Indicator.getObjectType());
+		ORef indicatorRef = project.createObject(IndicatorSchema.getObjectType());
 		Indicator indicator = (Indicator) project.findObject(indicatorRef);
 		assertTrue("is not measurment ref tag?", indicator.isRefList(Indicator.TAG_MEASUREMENT_REFS));
 	}
 
 	public void testGetAnnotationType() throws Exception
 	{
-		ORef indicatorRef = project.createObject(Indicator.getObjectType());
+		ORef indicatorRef = project.createObject(IndicatorSchema.getObjectType());
 		Indicator indicator = (Indicator) project.findObject(indicatorRef);
 		assertEquals("is wrong annotation type?", Measurement.getObjectType(), indicator.getAnnotationType(Indicator.TAG_MEASUREMENT_REFS));
 	}
 	
 	public void testGetWorkUnits() throws Exception
 	{
-		verifyGetWorkUnits(getProject(), Indicator.getObjectType(), Indicator.TAG_METHOD_IDS);
+		verifyGetWorkUnits(getProject(), IndicatorSchema.getObjectType(), Indicator.TAG_METHOD_IDS);
 	}
 	
 	public static void verifyGetWorkUnits(ProjectForTesting project, int objectType, String taskTag) throws Exception

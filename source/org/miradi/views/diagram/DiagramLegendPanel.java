@@ -79,6 +79,7 @@ import org.miradi.objects.TextBox;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.DiagramLegendQuestion;
+import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.views.umbrella.LegendPanel;
 import org.miradi.views.umbrella.doers.AbstractPopUpEditDoer;
@@ -182,7 +183,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		
 		addIconLineWithCheckBox(jpanel, Goal.getObjectType(), Goal.OBJECT_NAME, new GoalIcon());
 		addIconLineWithCheckBox(jpanel, Objective.getObjectType(), Objective.OBJECT_NAME, new ObjectiveIcon());
-		addIconLineWithCheckBox(jpanel, Indicator.getObjectType(), Indicator.OBJECT_NAME, IconManager.getIndicatorIcon());
+		addIconLineWithCheckBox(jpanel, IndicatorSchema.getObjectType(), Indicator.OBJECT_NAME, IconManager.getIndicatorIcon());
 		
 		addStressLine(jpanel);
 		addActivityLine(jpanel);

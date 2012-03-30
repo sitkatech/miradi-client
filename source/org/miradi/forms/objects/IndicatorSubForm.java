@@ -23,12 +23,13 @@ import org.miradi.forms.FieldPanelSpec;
 import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
 import org.miradi.objects.Indicator;
+import org.miradi.schemas.IndicatorSchema;
 
 public class IndicatorSubForm extends FieldPanelSpec
 {
 	public IndicatorSubForm()
 	{
-		int type = Indicator.getObjectType();
+		int type = IndicatorSchema.getObjectType();
 		addStandardNameRow(IconManager.getIndicatorIcon(), EAM.text("Indicator"), type, new String[]{Indicator.TAG_SHORT_LABEL, Indicator.TAG_LABEL});
 		addLabelAndField(type, Indicator.TAG_DETAIL);
 		addLabelAndField(type, Indicator.TAG_COMMENTS);
