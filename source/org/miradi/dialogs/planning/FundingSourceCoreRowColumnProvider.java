@@ -22,6 +22,7 @@ package org.miradi.dialogs.planning;
 
 import org.miradi.objects.FundingSource;
 import org.miradi.project.Project;
+import org.miradi.schemas.FundingSourceSchema;
 
 public class FundingSourceCoreRowColumnProvider extends AbstractBudgetCategoryRowColumnProvider
 {
@@ -39,6 +40,6 @@ public class FundingSourceCoreRowColumnProvider extends AbstractBudgetCategoryRo
 	@Override
 	public int getObjectType()
 	{
-		return FundingSource.getObjectType();
+		return FundingSourceSchema.getObjectType();
 	}
 }

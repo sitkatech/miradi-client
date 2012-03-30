@@ -26,6 +26,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.FundingSource;
 import org.miradi.project.Project;
+import org.miradi.schemas.FundingSourceSchema;
 
 public class ExpenseAssignmentMainTableModel extends AbstractSummaryTableModel
 {
@@ -160,7 +161,7 @@ public class ExpenseAssignmentMainTableModel extends AbstractSummaryTableModel
 		ExpenseAssignment expense = (ExpenseAssignment) baseObjectToUse;
 		ORef fundingSourceRef = expense.getFundingSourceRef();
 		if (fundingSourceRef.isInvalid())
-			return createInvalidObject(getObjectManager(), FundingSource.getObjectType(), FundingSource.OBJECT_NAME);
+			return createInvalidObject(getObjectManager(), FundingSourceSchema.getObjectType(), FundingSource.OBJECT_NAME);
 		
 		return FundingSource.find(getProject(), fundingSourceRef);
 	}

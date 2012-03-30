@@ -25,8 +25,8 @@ import org.miradi.main.TestCaseWithProject;
 import org.miradi.objects.AccountingCode;
 import org.miradi.objects.BudgetCategoryOne;
 import org.miradi.objects.BudgetCategoryTwo;
-import org.miradi.objects.FundingSource;
 import org.miradi.objects.ProjectResource;
+import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.utils.OptionalDouble;
 
 public class TestCategorizedQuantity extends TestCaseWithProject
@@ -63,7 +63,7 @@ public class TestCategorizedQuantity extends TestCaseWithProject
 		CategorizedQuantity categorizedQuantity = new CategorizedQuantity(resourceRef, fundingSourceRef, accountingCodeRef, categoryOneRef, categoryTwoRef, new OptionalDouble(14.0));
 		
 		verifyContainsMethods(categorizedQuantity, new ORef(ProjectResource.getObjectType(), BaseId.INVALID));
-		verifyContainsMethods(categorizedQuantity, new ORef(FundingSource.getObjectType(), BaseId.INVALID));
+		verifyContainsMethods(categorizedQuantity, new ORef(FundingSourceSchema.getObjectType(), BaseId.INVALID));
 		verifyContainsMethods(categorizedQuantity, new ORef(AccountingCode.getObjectType(), BaseId.INVALID));
 		verifyContainsMethods(categorizedQuantity, new ORef(BudgetCategoryOne.getObjectType(), BaseId.INVALID));
 		verifyContainsMethods(categorizedQuantity, new ORef(BudgetCategoryTwo.getObjectType(), BaseId.INVALID));
@@ -121,7 +121,7 @@ public class TestCategorizedQuantity extends TestCaseWithProject
 
 		ORefSet listWithSomeMatchingRefs = new ORefSet();
 		listWithSomeMatchingRefs.add(resourceRef);
-		listWithSomeMatchingRefs.add(new ORef(FundingSource.getObjectType(), new BaseId(9999)));
+		listWithSomeMatchingRefs.add(new ORef(FundingSourceSchema.getObjectType(), new BaseId(9999)));
 		assertFalse("should not contain list with non matching refs", categorizedQuantity.containsAll(listWithSomeMatchingRefs));
 		
 		ORefSet listWithTwoMatchingRefs = new ORefSet();

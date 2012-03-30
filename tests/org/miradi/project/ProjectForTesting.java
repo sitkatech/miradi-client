@@ -130,6 +130,7 @@ import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.questions.WwfEcoRegionsQuestion;
 import org.miradi.questions.WwfManagingOfficesQuestion;
 import org.miradi.questions.WwfRegionsQuestion;
+import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
@@ -909,7 +910,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public FundingSource createFundingSource() throws Exception
 	{
-		ORef fundingSourceRef = createObject(FundingSource.getObjectType());
+		ORef fundingSourceRef = createObject(FundingSourceSchema.getObjectType());
 		return FundingSource.find(this, fundingSourceRef);
 	}
 	

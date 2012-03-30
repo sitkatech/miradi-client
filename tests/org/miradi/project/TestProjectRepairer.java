@@ -53,6 +53,7 @@ import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.TextBox;
 import org.miradi.objects.ThreatReductionResult;
+import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.views.diagram.LinkCreator;
@@ -86,7 +87,7 @@ public class TestProjectRepairer extends TestCaseWithProject
 		
 		ORef accountingCodeRef = getProject().createObject(AccountingCode.getObjectType());
 		verifyRepair(resourceAssignment, ResourceAssignment.TAG_ACCOUNTING_CODE_ID, accountingCodeRef.getObjectId().toString(), accountingCodeRef.getObjectId().toString());
-		ORef fundingSourceRef = getProject().createObject(FundingSource.getObjectType());
+		ORef fundingSourceRef = getProject().createObject(FundingSourceSchema.getObjectType());
 		verifyRepair(resourceAssignment, ResourceAssignment.TAG_FUNDING_SOURCE_ID, fundingSourceRef.getObjectId().toString(), fundingSourceRef.getObjectId().toString());
 		verifyAssginmentReferringToExistingObject(resourceAssignment, ResourceAssignment.TAG_CATEGORY_ONE_REF, BudgetCategoryOne.getObjectType());
 		verifyAssginmentReferringToExistingObject(resourceAssignment, ResourceAssignment.TAG_CATEGORY_TWO_REF, BudgetCategoryTwo.getObjectType());
@@ -94,7 +95,7 @@ public class TestProjectRepairer extends TestCaseWithProject
 		
 		ExpenseAssignment expenseAssignment = getProject().createExpenseAssignment();
 		verifyRepair(expenseAssignment, ExpenseAssignment.TAG_ACCOUNTING_CODE_REF, new ORef(AccountingCode.getObjectType(), new BaseId(100)).toString(), "");
-		verifyRepair(expenseAssignment, ExpenseAssignment.TAG_FUNDING_SOURCE_REF, new ORef(FundingSource.getObjectType(), new BaseId(200)).toString(), "");
+		verifyRepair(expenseAssignment, ExpenseAssignment.TAG_FUNDING_SOURCE_REF, new ORef(FundingSourceSchema.getObjectType(), new BaseId(200)).toString(), "");
 		verifyRepair(expenseAssignment, ExpenseAssignment.TAG_CATEGORY_ONE_REF, new ORef(BudgetCategoryOne.getObjectType(), new BaseId(300)).toString(), "");
 		verifyRepair(expenseAssignment, ExpenseAssignment.TAG_CATEGORY_TWO_REF, new ORef(BudgetCategoryTwo.getObjectType(), new BaseId(00)).toString(), "");
 		

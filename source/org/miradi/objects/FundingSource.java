@@ -23,7 +23,6 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.FundingSourceId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.FundingSourceSchema;
@@ -44,7 +43,7 @@ public class FundingSource extends AbstractBudgetCategoryObject
 	@Override
 	public int getType()
 	{
-		return getObjectType();
+		return FundingSourceSchema.getObjectType();
 	}
 
 	@Override
@@ -57,11 +56,6 @@ public class FundingSource extends AbstractBudgetCategoryObject
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;
-	}
-	
-	public static int getObjectType()
-	{
-		return ObjectType.FUNDING_SOURCE;
 	}
 	
 	@Override
@@ -87,7 +81,7 @@ public class FundingSource extends AbstractBudgetCategoryObject
 	
 	public static boolean is(int objectType)
 	{
-		return objectType == getObjectType();
+		return objectType == FundingSourceSchema.getObjectType();
 	}
 		
 	public static boolean is(ORef ref)

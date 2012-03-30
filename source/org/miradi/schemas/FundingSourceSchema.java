@@ -20,10 +20,17 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import org.miradi.objecthelpers.ObjectType;
+
 public class FundingSourceSchema extends AbstractBudgetCategorySchema
 {
 	public FundingSourceSchema()
 	{
 		super();
+	}
+
+	public static int getObjectType()
+	{
+		return ObjectType.FUNDING_SOURCE;
 	}
 }

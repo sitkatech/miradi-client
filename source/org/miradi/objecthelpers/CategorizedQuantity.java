@@ -23,8 +23,8 @@ package org.miradi.objecthelpers;
 import org.miradi.objects.AccountingCode;
 import org.miradi.objects.BudgetCategoryOne;
 import org.miradi.objects.BudgetCategoryTwo;
-import org.miradi.objects.FundingSource;
 import org.miradi.objects.ProjectResource;
+import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.utils.OptionalDouble;
 
 public class CategorizedQuantity 
@@ -32,7 +32,7 @@ public class CategorizedQuantity
 	public CategorizedQuantity(ORef resourceRefToUse, ORef fundingSourceRefToUse, ORef accountingCodeRefToUse, ORef categoryOneRefToUse, ORef categoryTwoRefToUse, OptionalDouble quantityToUse)
 	{
 		resourceRef = ensureRefHasCorrectType(resourceRefToUse, ProjectResource.getObjectType());
-		fundingSourceRef = ensureRefHasCorrectType(fundingSourceRefToUse, FundingSource.getObjectType());
+		fundingSourceRef = ensureRefHasCorrectType(fundingSourceRefToUse, FundingSourceSchema.getObjectType());
 		accountingCodeRef = ensureRefHasCorrectType(accountingCodeRefToUse, AccountingCode.getObjectType());
 		categoryOneRef = ensureRefHasCorrectType(categoryOneRefToUse, BudgetCategoryOne.getObjectType());
 		categoryTwoRef = ensureRefHasCorrectType(categoryTwoRefToUse, BudgetCategoryTwo.getObjectType());

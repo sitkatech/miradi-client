@@ -28,6 +28,7 @@ import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.ExpenseAssignmentSchema;
+import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.OptionalDouble;
 
@@ -66,7 +67,7 @@ public class ExpenseAssignment extends Assignment
 	{
 		ORef ref = getRefData(TAG_FUNDING_SOURCE_REF);
 		if (ref.isInvalid())
-			return ORef.createInvalidWithType(FundingSource.getObjectType());
+			return ORef.createInvalidWithType(FundingSourceSchema.getObjectType());
 		
 		return ref;
 	}
