@@ -35,6 +35,7 @@ import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
@@ -268,7 +269,7 @@ public class Task extends Factor
 			return getLabelOfTaskParent();
 		
 		if (fieldTag.equals(PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS))
-			return getRelevantDesireRefsAsString(Objective.getObjectType());
+			return getRelevantDesireRefsAsString(ObjectiveSchema.getObjectType());
 		
 		if (fieldTag.equals(PSEUDO_TAG_RELEVANT_GOAL_REFS))
 			return getRelevantDesireRefsAsString(GoalSchema.getObjectType());

@@ -45,6 +45,7 @@ import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.schemas.DashboardSchema;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.OptionalDouble;
 
@@ -141,7 +142,7 @@ public class Dashboard extends BaseObject
 				return getObjectPoolCountAsString(ResultsChainDiagram.getObjectType());
 			
 			if (fieldTag.equals(PSEUDO_OBJECTIVE_COUNT))
-				return getObjectPoolCountAsString(Objective.getObjectType());
+				return getObjectPoolCountAsString(ObjectiveSchema.getObjectType());
 			
 			if (fieldTag.equals(PSEUDO_RESULTS_CHAIN_WITH_OBJECTIVE_COUNT))
 				return getResultsChainWithObjectiveCount();
@@ -421,7 +422,7 @@ public class Dashboard extends BaseObject
 
 	private String getProgressPercentCount(final int LOWER_BOUND, final int UPPER_BOUND) throws Exception
 	{
-		return getAnnotationCountWithinBounds(Objective.getObjectType(), Objective.TAG_PROGRESS_PERCENT_REFS, LOWER_BOUND, UPPER_BOUND);
+		return getAnnotationCountWithinBounds(ObjectiveSchema.getObjectType(), Objective.TAG_PROGRESS_PERCENT_REFS, LOWER_BOUND, UPPER_BOUND);
 	}
 	
 	private String getMeasurementCount(final int LOWER_BOUND, final int UPPER_BOUND) throws Exception

@@ -60,6 +60,7 @@ import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.TrendQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.NullProgressMeter;
@@ -372,7 +373,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		}
 		
 		String[] tags = new String[]{Objective.TAG_SHORT_LABEL, Objective.TAG_LABEL, Objective.TAG_FULL_TEXT, };
-		unsplitLabels(projectAfterImport, Objective.getObjectType(), tags);
+		unsplitLabels(projectAfterImport, ObjectiveSchema.getObjectType(), tags);
 	}
 	
 	private void unsplitStrategyLabels(ProjectForTesting projectAfterImport) throws Exception

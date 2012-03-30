@@ -25,6 +25,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.GoalSchema;
+import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ProgressPercentSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -57,7 +58,7 @@ public class ProgressPercent extends BaseObject
 	{
 		return new int[] {
 			GoalSchema.getObjectType(), 
-			Objective.getObjectType(),
+			ObjectiveSchema.getObjectType(),
 			};
 	}
 	

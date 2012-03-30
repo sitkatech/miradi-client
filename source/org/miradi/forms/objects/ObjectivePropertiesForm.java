@@ -24,12 +24,13 @@ import org.miradi.main.EAM;
 import org.miradi.objects.Desire;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Objective;
+import org.miradi.schemas.ObjectiveSchema;
 
 public class ObjectivePropertiesForm extends FieldPanelSpec
 {
 	public ObjectivePropertiesForm()
 	{
-		int type = Objective.getObjectType();
+		int type = ObjectiveSchema.getObjectType();
 		addLabelAndFieldsWithLabels(EAM.text("Objective"), type, new String[]{Objective.TAG_SHORT_LABEL, Objective.TAG_LABEL});
 		addLabelAndField(type, Desire.TAG_FULL_TEXT);
 		addLabelAndField(type, Objective.PSEUDO_TAG_FACTOR);

@@ -37,6 +37,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.utils.CodeList;
 
@@ -87,7 +88,7 @@ public class ObjectsOnlyRowColumnProvider extends AbstractPlanningTreeRowColumnP
 		if (propertyName.equals(GoalSchema.OBJECT_NAME))
 			return ObjectsOnlyRowColumnProvider.getGoalColumns();
 	
-		if (propertyName.equals(Objective.OBJECT_NAME))
+		if (propertyName.equals(ObjectiveSchema.OBJECT_NAME))
 			return ObjectsOnlyRowColumnProvider.getObjectiveColumns();
 		
 		if (propertyName.equals(Strategy.OBJECT_NAME))

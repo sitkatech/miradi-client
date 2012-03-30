@@ -102,6 +102,7 @@ import org.miradi.questions.TncTerrestrialEcoRegionQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
@@ -350,7 +351,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		{
 			Node objectiveNode = objectiveNodeList.item(nodeIndex);
 			String objectiveId = getAttributeValue(objectiveNode, ID);
-			ORef objectiveRef = getProject().createObject(Objective.getObjectType(), new BaseId(objectiveId));
+			ORef objectiveRef = getProject().createObject(ObjectiveSchema.getObjectType(), new BaseId(objectiveId));
 			
 			importRelevantIndicators(objectiveNode, objectiveRef);
 			importField(objectiveNode, NAME, objectiveRef, Objective.TAG_LABEL);
@@ -1328,7 +1329,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 	
 	private void attachObjectivesToHolder() throws Exception
 	{
-		IdList objectiveIds = new IdList(Objective.getObjectType());
+		IdList objectiveIds = new IdList(ObjectiveSchema.getObjectType());
 		NodeList objectiveNodeList = getNodes(getRootNode(), OBJECTIVES, OBJECTIVE);
 		for (int nodeIndex = 0; nodeIndex < objectiveNodeList.getLength(); ++nodeIndex) 
 		{
@@ -1382,7 +1383,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		{
 			Node objectiveNode = objectiveNodeList.item(nodeIndex);
 			String objectiveId = objectiveNode.getTextContent();
-			ORef objectiveRef = new ORef(Objective.getObjectType(), new BaseId(objectiveId));
+			ORef objectiveRef = new ORef(ObjectiveSchema.getObjectType(), new BaseId(objectiveId));
 			
 			RelevancyOverrideSet relevancyOverrideSet = new RelevancyOverrideSet();
 			Objective objective = Objective.find(getProject(), objectiveRef);

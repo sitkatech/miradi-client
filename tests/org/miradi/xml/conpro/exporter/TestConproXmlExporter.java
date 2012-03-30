@@ -45,6 +45,7 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.StrategyClassificationQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.questions.TncOperatingUnitsQuestion;
+import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.TestTranslations;
 import org.miradi.utils.Translation;
@@ -218,7 +219,7 @@ public class TestConproXmlExporter extends TestCaseWithProject
 		ORef someNonExistingThreatRef = new ORef(Cause.getObjectType(), SOME_BOGUS_NON_EXISTING_ID);
 		getProject().fillObjectUsingCommand(threatReductionResult, ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF, someNonExistingThreatRef.toString());
 		
-		IdList objectiveIds = new IdList(Objective.getObjectType());
+		IdList objectiveIds = new IdList(ObjectiveSchema.getObjectType());
 		objectiveIds.add(objective.getId());
 		getProject().fillObjectUsingCommand(threatReductionResult, ThreatReductionResult.TAG_OBJECTIVE_IDS, objectiveIds.toString());
 		

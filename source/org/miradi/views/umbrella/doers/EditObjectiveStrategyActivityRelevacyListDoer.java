@@ -19,13 +19,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella.doers;
 
-import org.miradi.objects.Objective;
+import org.miradi.schemas.ObjectiveSchema;
 
 public class EditObjectiveStrategyActivityRelevacyListDoer extends AbstractStrategyActivityRelevancyListDoer
 {
 	@Override
 	protected int getObjectType()
 	{
-		return Objective.getObjectType();
+		return ObjectiveSchema.getObjectType();
 	}
 }

@@ -20,10 +20,19 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import org.miradi.objecthelpers.ObjectType;
+
 public class ObjectiveSchema extends DesireSchema
 {
+	public static final String OBJECT_NAME = "Objective";
+
 	public ObjectiveSchema()
 	{
 		super();
+	}
+
+	public static int getObjectType()
+	{
+		return ObjectType.OBJECTIVE;
 	}
 }

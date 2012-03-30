@@ -37,6 +37,7 @@ import org.miradi.project.Project;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -132,7 +133,7 @@ abstract public class Factor extends BaseObject
 	
 	public ORefList getObjectiveRefs()
 	{
-		return new ORefList(Objective.getObjectType(), getObjectiveIds());
+		return new ORefList(ObjectiveSchema.getObjectType(), getObjectiveIds());
 	}
 	
 	public IdList getObjectiveIds()
@@ -371,7 +372,7 @@ abstract public class Factor extends BaseObject
 			return IndicatorSchema.getObjectType();
 		
 		if (tag.equals(TAG_OBJECTIVE_IDS))
-			return Objective.getObjectType();
+			return ObjectiveSchema.getObjectType();
 		
 		return super.getAnnotationType(tag);
 	}
@@ -436,7 +437,7 @@ abstract public class Factor extends BaseObject
 	protected CommandVector buildRemoveFromRelevancyListCommands(ORef relevantObjectRefToRemove) throws Exception
 	{
 		CommandVector removeFromRelevancyListCommands = new CommandVector();
-		removeFromRelevancyListCommands.addAll(Desire.buildRemoveObjectFromRelevancyListCommands(getProject(), Objective.getObjectType(), Objective.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevantObjectRefToRemove));
+		removeFromRelevancyListCommands.addAll(Desire.buildRemoveObjectFromRelevancyListCommands(getProject(), ObjectiveSchema.getObjectType(), Objective.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevantObjectRefToRemove));
 		removeFromRelevancyListCommands.addAll(Desire.buildRemoveObjectFromRelevancyListCommands(getProject(), GoalSchema.getObjectType(), Goal.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevantObjectRefToRemove));
 		
 		return removeFromRelevancyListCommands;
@@ -462,7 +463,7 @@ abstract public class Factor extends BaseObject
 	
 	private String getFactorObjectivesAsMultiline() throws ParseException
 	{
-		IdList theseDesireIds = new IdList(Objective.getObjectType(), getData(TAG_OBJECTIVE_IDS));
+		IdList theseDesireIds = new IdList(ObjectiveSchema.getObjectType(), getData(TAG_OBJECTIVE_IDS));
 		return getDesiresAsMultiline(ObjectType.OBJECTIVE, theseDesireIds);
 	}
 	

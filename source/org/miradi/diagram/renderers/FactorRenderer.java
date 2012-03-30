@@ -80,7 +80,6 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.Desire;
 import org.miradi.objects.Factor;
-import org.miradi.objects.Objective;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
@@ -90,6 +89,7 @@ import org.miradi.project.threatrating.ThreatRatingFramework;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.schemas.GoalSchema;
+import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.utils.Utility;
 import org.miradi.utils.XmlUtilities2;
 
@@ -168,7 +168,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 	private void setObjectiveText(DiagramComponent diagram) throws Exception
 	{
 		ORefList annotationRefs = getFactorCell().getObjectiveRefs();
-		final String computedText = getAnnotationText(diagram, Objective.getObjectType(), EAM.text("Obj"), EAM.text("Objs"), annotationRefs);
+		final String computedText = getAnnotationText(diagram, ObjectiveSchema.getObjectType(), EAM.text("Obj"), EAM.text("Objs"), annotationRefs);
 		objectivesText = computedText;
 	}
 

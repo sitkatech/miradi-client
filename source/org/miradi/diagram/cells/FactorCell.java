@@ -50,6 +50,7 @@ import org.miradi.objects.Objective;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.utils.Utility;
 import org.miradi.utils.XmlUtilities2;
 
@@ -106,7 +107,7 @@ abstract public class FactorCell extends EAMGraphCell
 		{
 			header = EAM.text("Objectives:");
 			detailsTag = Objective.TAG_FULL_TEXT;
-			bullets = new ORefList(Objective.getObjectType(), factor.getObjectiveIds());
+			bullets = new ORefList(ObjectiveSchema.getObjectType(), factor.getObjectiveIds());
 		}
 		else if(factor.getDetails().length() > 0)
 		{

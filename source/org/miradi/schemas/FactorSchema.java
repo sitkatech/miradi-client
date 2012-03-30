@@ -21,7 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.schemas;
 
 import org.miradi.objects.Factor;
-import org.miradi.objects.Objective;
 
 abstract public class FactorSchema extends BaseObjectSchema
 {
@@ -39,7 +38,7 @@ abstract public class FactorSchema extends BaseObjectSchema
 		createFieldSchemaMultiLineUserText(Factor.TAG_TEXT);
 		createFieldSchemaSingleLineUserText(Factor.TAG_SHORT_LABEL);
 	    createFieldSchemaIdList(Factor.TAG_INDICATOR_IDS, IndicatorSchema.getObjectType());
-		createFieldSchemaIdList(Factor.TAG_OBJECTIVE_IDS, Objective.getObjectType());
+		createFieldSchemaIdList(Factor.TAG_OBJECTIVE_IDS, ObjectiveSchema.getObjectType());
 		
 		createPseudoFieldSchemaString(Factor.PSEUDO_TAG_OBJECTIVES);
 		createPseudoFieldSchemaString(Factor.PSEUDO_TAG_DIRECT_THREATS);

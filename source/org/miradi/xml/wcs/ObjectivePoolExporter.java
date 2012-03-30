@@ -20,12 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.wcs;
 
-import org.miradi.objects.Objective;
+import org.miradi.schemas.ObjectiveSchema;
 
 public class ObjectivePoolExporter extends DesirePoolExporter
 {
 	public ObjectivePoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
-		super(wcsXmlExporterToUse, OBJECTIVE, Objective.getObjectType());
+		super(wcsXmlExporterToUse, OBJECTIVE, ObjectiveSchema.getObjectType());
 	}
 }

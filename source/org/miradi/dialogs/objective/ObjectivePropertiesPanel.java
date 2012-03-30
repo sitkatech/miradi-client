@@ -32,6 +32,7 @@ import org.miradi.objects.Desire;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Objective;
 import org.miradi.project.Project;
+import org.miradi.schemas.ObjectiveSchema;
 
 public class ObjectivePropertiesPanel extends ObjectDataInputPanelWithSections
 {
@@ -41,18 +42,18 @@ public class ObjectivePropertiesPanel extends ObjectDataInputPanelWithSections
 		
 		createSingleSection(EAM.text("Objective"));
 		
-		ObjectDataInputField shortLabelField = createShortStringField(Objective.getObjectType(), Objective.TAG_SHORT_LABEL);
-		ObjectDataInputField labelField = createExpandableField(Objective.getObjectType(), Objective.TAG_LABEL);
+		ObjectDataInputField shortLabelField = createShortStringField(ObjectiveSchema.getObjectType(), Objective.TAG_SHORT_LABEL);
+		ObjectDataInputField labelField = createExpandableField(ObjectiveSchema.getObjectType(), Objective.TAG_LABEL);
 		addFieldsOnOneLine(EAM.text("Objective"), new ObjectiveIcon(), new ObjectDataInputField[]{shortLabelField, labelField,});
 
-		addField(createMultilineField(Objective.getObjectType(), Desire.TAG_FULL_TEXT));
+		addField(createMultilineField(ObjectiveSchema.getObjectType(), Desire.TAG_FULL_TEXT));
 
 		addField(createReadonlyTextField(Objective.PSEUDO_TAG_FACTOR));
 		addField(createReadonlyTextField(Objective.PSEUDO_TAG_DIRECT_THREATS));
 		addField(createReadonlyTextField(Objective.PSEUDO_TAG_TARGETS));
 		
-		addFieldWithEditButton(EAM.text("Indicators"), createReadOnlyObjectList(Objective.getObjectType(), Objective.PSEUDO_TAG_RELEVANT_INDICATOR_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditObjectiveIndicatorRelevancyList.class), getPicker()));
-		addFieldWithEditButton(EAM.text("Strategies And Activities"), createReadOnlyObjectList(Objective.getObjectType(), Objective.PSEUDO_TAG_RELEVANT_STRATEGY_ACTIVITY_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditObjectiveStrategyActivityRelevancyList.class), getPicker()));
+		addFieldWithEditButton(EAM.text("Indicators"), createReadOnlyObjectList(ObjectiveSchema.getObjectType(), Objective.PSEUDO_TAG_RELEVANT_INDICATOR_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditObjectiveIndicatorRelevancyList.class), getPicker()));
+		addFieldWithEditButton(EAM.text("Strategies And Activities"), createReadOnlyObjectList(ObjectiveSchema.getObjectType(), Objective.PSEUDO_TAG_RELEVANT_STRATEGY_ACTIVITY_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditObjectiveStrategyActivityRelevancyList.class), getPicker()));
 		
 		addSubPanelWithTitledBorder(new ProgressPercentSubPanel(getProject()));
 		
