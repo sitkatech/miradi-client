@@ -28,8 +28,6 @@ import org.miradi.questions.TncProjectPlaceTypeQuestion;
 
 public class TncProjectDataSchema extends BaseObjectSchema
 {
-	public static final String OBJECT_NAME = "TncProjectData";
-
 	public TncProjectDataSchema()
 	{
 		super();
@@ -60,4 +58,6 @@ public class TncProjectDataSchema extends BaseObjectSchema
 	{
 		return ObjectType.TNC_PROJECT_DATA;
 	}
+	
+	public static final String OBJECT_NAME = "TncProjectData";
 }

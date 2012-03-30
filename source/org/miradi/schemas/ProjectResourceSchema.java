@@ -27,8 +27,6 @@ import org.miradi.questions.ResourceTypeQuestion;
 
 public class ProjectResourceSchema extends BaseObjectSchema
 {
-	public static final String OBJECT_NAME = "ProjectResource";
-
 	public ProjectResourceSchema()
 	{
 		super();
@@ -67,4 +65,6 @@ public class ProjectResourceSchema extends BaseObjectSchema
 	{
 		return ObjectType.PROJECT_RESOURCE;
 	}
+	
+	public static final String OBJECT_NAME = "ProjectResource";
 }

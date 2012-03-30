@@ -24,8 +24,6 @@ import org.miradi.objecthelpers.ObjectType;
 
 public class FundingSourceSchema extends AbstractBudgetCategorySchema
 {
-	public static final String OBJECT_NAME = "FundingSource";
-
 	public FundingSourceSchema()
 	{
 		super();
@@ -35,4 +33,6 @@ public class FundingSourceSchema extends AbstractBudgetCategorySchema
 	{
 		return ObjectType.FUNDING_SOURCE;
 	}
+	
+	public static final String OBJECT_NAME = "FundingSource";
 }

@@ -26,8 +26,6 @@ import org.miradi.questions.FosTrainingTypeQuestion;
 
 public class FosProjectDataSchema extends BaseObjectSchema
 {
-	public static final String OBJECT_NAME = "FosProjectData";
-
 	public FosProjectDataSchema()
 	{
 		super();
@@ -54,4 +52,6 @@ public class FosProjectDataSchema extends BaseObjectSchema
 	{
 		return ObjectType.FOS_PROJECT_DATA;
 	}
+	
+	public static final String OBJECT_NAME = "FosProjectData";
 }

@@ -25,8 +25,6 @@ import org.miradi.objects.ExpenseAssignment;
 
 public class ExpenseAssignmentSchema extends AssignmentSchema
 {
-	public static final String OBJECT_NAME = "ExpenseAssignment";
-
 	public ExpenseAssignmentSchema()
 	{
 		super();
@@ -45,4 +43,6 @@ public class ExpenseAssignmentSchema extends AssignmentSchema
 	{
 		return ObjectType.EXPENSE_ASSIGNMENT;
 	}
+	
+	public static final String OBJECT_NAME = "ExpenseAssignment";
 }

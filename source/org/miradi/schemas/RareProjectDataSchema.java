@@ -25,8 +25,6 @@ import org.miradi.objects.RareProjectData;
 
 public class RareProjectDataSchema extends BaseObjectSchema
 {
-	public static final String OBJECT_NAME = "RareProjectData";
-
 	public RareProjectDataSchema()
 	{
 		super();
@@ -60,4 +58,6 @@ public class RareProjectDataSchema extends BaseObjectSchema
 	{
 		return ObjectType.RARE_PROJECT_DATA;
 	}
+	
+	public static final String OBJECT_NAME = "RareProjectData";
 }

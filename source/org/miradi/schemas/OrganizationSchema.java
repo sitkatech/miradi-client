@@ -25,8 +25,6 @@ import org.miradi.objects.Organization;
 
 public class OrganizationSchema extends BaseObjectSchema
 {
-	public static final String OBJECT_NAME = "Organization";
-
 	public OrganizationSchema()
 	{
 		super();
@@ -50,4 +48,6 @@ public class OrganizationSchema extends BaseObjectSchema
 	{
 		return ObjectType.ORGANIZATION;
 	}
+	
+	public static final String OBJECT_NAME = "Organization";
 }

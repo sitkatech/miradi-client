@@ -25,8 +25,6 @@ import org.miradi.objects.SubTarget;
 
 public class SubTargetSchema extends BaseObjectSchema
 {
-	public static final String OBJECT_NAME = "SubTarget";
-
 	public SubTargetSchema()
 	{
 		super();
@@ -45,4 +43,6 @@ public class SubTargetSchema extends BaseObjectSchema
 	{
 		return ObjectType.SUB_TARGET;
 	}
+	
+	public static final String OBJECT_NAME = "SubTarget";
 }

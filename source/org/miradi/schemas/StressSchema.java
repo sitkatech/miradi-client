@@ -27,8 +27,6 @@ import org.miradi.questions.StressSeverityChoiceQuestion;
 
 public class StressSchema extends FactorSchema
 {
-	public static final String OBJECT_NAME = "Stress";
-
 	public StressSchema()
 	{
 		super();
@@ -50,4 +48,6 @@ public class StressSchema extends FactorSchema
 	{
 		return ObjectType.STRESS;
 	}
+	
+	public static final String OBJECT_NAME = "Stress";
 }

@@ -25,8 +25,6 @@ import org.miradi.objects.ConceptualModelDiagram;
 
 public class ConceptualModelDiagramSchema extends DiagramObjectSchema
 {
-	public static final String OBJECT_NAME = "ConceptualModelDiagram";
-
 	public ConceptualModelDiagramSchema()
 	{
 		super();
@@ -44,4 +42,6 @@ public class ConceptualModelDiagramSchema extends DiagramObjectSchema
 	{
 		return ObjectType.CONCEPTUAL_MODEL_DIAGRAM;
 	}
+	
+	public static final String OBJECT_NAME = "ConceptualModelDiagram";
 }

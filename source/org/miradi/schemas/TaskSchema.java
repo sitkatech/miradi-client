@@ -25,10 +25,6 @@ import org.miradi.objects.Task;
 
 public class TaskSchema extends FactorSchema
 {
-	public static final String OBJECT_NAME = "Task";
-	public static final String METHOD_NAME = "Method";
-	public static final String ACTIVITY_NAME = "Activity";
-
 	public TaskSchema()
 	{
 		super();
@@ -52,4 +48,8 @@ public class TaskSchema extends FactorSchema
 	{
 		return ObjectType.TASK;
 	}
+	
+	public static final String OBJECT_NAME = "Task";
+	public static final String METHOD_NAME = "Method";
+	public static final String ACTIVITY_NAME = "Activity";
 }

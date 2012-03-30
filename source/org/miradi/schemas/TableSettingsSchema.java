@@ -27,8 +27,6 @@ import org.miradi.questions.WorkPlanVisibleRowsQuestion;
 
 public class TableSettingsSchema extends BaseObjectSchema
 {
-	public static final String OBJECT_NAME = "TableSettings";
-
 	public TableSettingsSchema()
 	{
 		super();
@@ -54,4 +52,6 @@ public class TableSettingsSchema extends BaseObjectSchema
 	{
 		return ObjectType.TABLE_SETTINGS;
 	}
+	
+	public static final String OBJECT_NAME = "TableSettings";
 }

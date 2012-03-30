@@ -27,8 +27,6 @@ import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class DiagramLinkSchema extends BaseObjectSchema
 {
-	public static final String OBJECT_NAME = "DiagramLink";
-
 	public DiagramLinkSchema()
 	{
 		super();
@@ -52,4 +50,6 @@ public class DiagramLinkSchema extends BaseObjectSchema
 	{
 		return ObjectType.DIAGRAM_LINK;
 	}
+	
+	public static final String OBJECT_NAME = "DiagramLink";
 }

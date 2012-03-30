@@ -25,8 +25,6 @@ import org.miradi.schemas.BaseObjectSchema;;
 
 public class IucnRedlistSpeciesSchema extends BaseObjectSchema
 {
-	public static final String OBJECT_NAME = "IucnRedlistSpecies";
-
 	public IucnRedlistSpeciesSchema()
 	{
 		super();
@@ -36,4 +34,6 @@ public class IucnRedlistSpeciesSchema extends BaseObjectSchema
 	{
 		return ObjectType.IUCN_REDLIST_SPECIES;
 	}
+	
+	public static final String OBJECT_NAME = "IucnRedlistSpecies";
 }

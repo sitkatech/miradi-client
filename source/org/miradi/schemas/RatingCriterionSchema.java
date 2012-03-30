@@ -24,8 +24,6 @@ import org.miradi.objecthelpers.ObjectType;
 
 public class RatingCriterionSchema extends BaseObjectSchema
 {
-	public static final String OBJECT_NAME = "RatingCriterion";
-
 	public RatingCriterionSchema()
 	{
 		super();
@@ -35,4 +33,6 @@ public class RatingCriterionSchema extends BaseObjectSchema
 	{
 		return ObjectType.RATING_CRITERION;
 	}
+	
+	public static final String OBJECT_NAME = "RatingCriterion";
 }

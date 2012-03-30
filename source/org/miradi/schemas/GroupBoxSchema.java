@@ -24,8 +24,6 @@ import org.miradi.objecthelpers.ObjectType;
 
 public class GroupBoxSchema extends FactorSchema
 {
-	public static final String OBJECT_NAME = "GroupBox";
-
 	public GroupBoxSchema()
 	{
 		super();
@@ -35,4 +33,6 @@ public class GroupBoxSchema extends FactorSchema
 	{
 		return ObjectType.GROUP_BOX;
 	}
+	
+	public static final String OBJECT_NAME = "GroupBox";
 }

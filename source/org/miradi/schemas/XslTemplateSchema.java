@@ -25,8 +25,6 @@ import org.miradi.objects.XslTemplate;
 
 public class XslTemplateSchema extends BaseObjectSchema
 {
-	public static final String OBJECT_NAME = "XslTemplate";
-
 	public XslTemplateSchema()
 	{
 		super();
@@ -45,4 +43,6 @@ public class XslTemplateSchema extends BaseObjectSchema
 	{
 		return ObjectType.XSL_TEMPLATE;
 	}
+	
+	public static final String OBJECT_NAME = "XslTemplate";
 }

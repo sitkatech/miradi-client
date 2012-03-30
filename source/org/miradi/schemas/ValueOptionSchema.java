@@ -25,8 +25,6 @@ import org.miradi.objects.ValueOption;
 
 public class ValueOptionSchema extends BaseObjectSchema
 {
-	public static final String OBJECT_NAME = "ValueOption";
-
 	public ValueOptionSchema()
 	{
 		super();
@@ -45,4 +43,6 @@ public class ValueOptionSchema extends BaseObjectSchema
 	{
 		return ObjectType.VALUE_OPTION;
 	}
+	
+	public static final String OBJECT_NAME = "ValueOption";
 }

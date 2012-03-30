@@ -25,8 +25,6 @@ import org.miradi.objects.FactorLink;
 
 public class FactorLinkSchema extends BaseObjectSchema
 {
-	public static final String OBJECT_NAME = "Link";
-
 	public FactorLinkSchema()
 	{
 		super();
@@ -46,4 +44,6 @@ public class FactorLinkSchema extends BaseObjectSchema
 	{
 		return ObjectType.FACTOR_LINK;
 	}
+	
+	public static final String OBJECT_NAME = "Link";
 }

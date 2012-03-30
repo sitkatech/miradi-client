@@ -25,8 +25,6 @@ import org.miradi.objects.WcpaProjectData;
 
 public class WcpaProjectDataSchema extends BaseObjectSchema
 {
-	public static final String OBJECT_NAME = "WCPAProjectData";
-
 	public WcpaProjectDataSchema()
 	{
 		super();
@@ -60,4 +58,6 @@ public class WcpaProjectDataSchema extends BaseObjectSchema
 	{
 		return ObjectType.WCPA_PROJECT_DATA;
 	}
+	
+	public static final String OBJECT_NAME = "WCPAProjectData";
 }

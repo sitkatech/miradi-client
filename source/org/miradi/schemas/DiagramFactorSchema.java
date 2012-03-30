@@ -31,8 +31,6 @@ import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class DiagramFactorSchema extends BaseObjectSchema
 {
-	public static final String OBJECT_NAME = "DiagramFactor";
-
 	public DiagramFactorSchema()
 	{
 	}
@@ -57,4 +55,6 @@ public class DiagramFactorSchema extends BaseObjectSchema
 	{
 		return ObjectType.DIAGRAM_FACTOR;
 	}
+	
+	public static final String OBJECT_NAME = "DiagramFactor";
 }
