@@ -40,6 +40,7 @@ import org.miradi.objects.Measurement;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
+import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.CodeList;
 
@@ -103,7 +104,7 @@ public class ViabilityTreeRebuilder extends AbstractTreeRebuilder
 		ORefList childRefs = new ORefList();
 		Indicator indicator = Indicator.find(getProject(), parentRef);
 		childRefs.addAll(getSortedByDateMeasurementRefs(indicator));
-		childRefs.add(new UnspecifiedBaseObject(getProject().getObjectManager(), Goal.getObjectType(), Goal.OBJECT_NAME));
+		childRefs.add(new UnspecifiedBaseObject(getProject().getObjectManager(), GoalSchema.getObjectType(), GoalSchema.OBJECT_NAME));
 		
 		return childRefs;
 	}

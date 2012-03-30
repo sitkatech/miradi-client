@@ -23,13 +23,13 @@ import java.util.Vector;
 
 import org.miradi.main.EAM;
 import org.miradi.objects.Cause;
-import org.miradi.objects.Goal;
 import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Objective;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
+import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 
@@ -46,7 +46,7 @@ public class PlanningViewSingleLevelQuestion extends DynamicChoiceQuestion
 	{
 		Vector<ChoiceItem> choices = new Vector<ChoiceItem>();
 
-		choices.add(new ChoiceItem(Goal.OBJECT_NAME, EAM.text("Goals Only")));
+		choices.add(new ChoiceItem(GoalSchema.OBJECT_NAME, EAM.text("Goals Only")));
 		choices.add(new ChoiceItem(Objective.OBJECT_NAME, EAM.text("Objectives Only")));
 		choices.add(new ChoiceItem(Target.OBJECT_NAME, EAM.text("Targets Only")));
 		

@@ -27,11 +27,11 @@ import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
-import org.miradi.objects.Goal;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.PlanningViewSingleLevelQuestion;
+import org.miradi.schemas.GoalSchema;
 
 public class PlanningViewObjectsOnlyDropDownPanel extends PlanningViewCustomButtonPanel implements CommandExecutedListener
 {
@@ -65,7 +65,7 @@ public class PlanningViewObjectsOnlyDropDownPanel extends PlanningViewCustomButt
 		String singleLevelChoice = viewData.getData(ViewData.TAG_PLANNING_SINGLE_LEVEL_CHOICE);
 		boolean shouldReturnDefault = singleLevelChoice.trim().equals("");
 		if (shouldReturnDefault)
-			return Goal.OBJECT_NAME;
+			return GoalSchema.OBJECT_NAME;
 
 		return singleLevelChoice;
 	}

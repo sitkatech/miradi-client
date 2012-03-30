@@ -35,6 +35,7 @@ import org.miradi.objects.Task;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
+import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.utils.CodeList;
@@ -70,7 +71,7 @@ public class ObjectsOnlyRowColumnProvider extends AbstractPlanningTreeRowColumnP
 	{
 		String singleType = viewData.getData(ViewData.TAG_PLANNING_SINGLE_LEVEL_CHOICE);
 		if(singleType.length() == 0)
-			singleType = Goal.OBJECT_NAME;
+			singleType = GoalSchema.OBJECT_NAME;
 		
 		CodeList codes = new CodeList();
 		codes.add(singleType);
@@ -83,7 +84,7 @@ public class ObjectsOnlyRowColumnProvider extends AbstractPlanningTreeRowColumnP
 		if(propertyName.length() == 0)
 			return ObjectsOnlyRowColumnProvider.getGoalColumns();
 		
-		if (propertyName.equals(Goal.OBJECT_NAME))
+		if (propertyName.equals(GoalSchema.OBJECT_NAME))
 			return ObjectsOnlyRowColumnProvider.getGoalColumns();
 	
 		if (propertyName.equals(Objective.OBJECT_NAME))

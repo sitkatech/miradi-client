@@ -49,7 +49,6 @@ import org.miradi.objects.BudgetCategoryTwo;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.FundingSource;
-import org.miradi.objects.Goal;
 import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Measurement;
@@ -61,6 +60,7 @@ import org.miradi.objects.SubTarget;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
+import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
 
 public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPanel
@@ -104,7 +104,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		{
 			ORef firstRef = orefsToUse[DEEPEST_INDEX];
 			int objectType = firstRef.getObjectType();
-			if (Goal.getObjectType() == objectType)
+			if (GoalSchema.getObjectType() == objectType)
 				return getGoalPropertiesPanel();
 			
 			if (Objective.getObjectType() == objectType)

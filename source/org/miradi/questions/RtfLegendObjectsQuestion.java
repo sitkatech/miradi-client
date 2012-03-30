@@ -40,7 +40,6 @@ import org.miradi.icons.ThreatReductionResultIcon;
 import org.miradi.main.EAM;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
-import org.miradi.objects.Goal;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Measurement;
@@ -53,6 +52,7 @@ import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.TextBox;
 import org.miradi.objects.ThreatReductionResult;
+import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
 
 public class RtfLegendObjectsQuestion extends StaticChoiceQuestion
@@ -74,7 +74,7 @@ public class RtfLegendObjectsQuestion extends StaticChoiceQuestion
 				new ChoiceItem(IntermediateResult.OBJECT_NAME, EAM.text("Intermediate Result"), new IntermediateResultIcon()),
 				new ChoiceItem(ThreatReductionResult.OBJECT_NAME, EAM.text("Threat Reduction Result"), new ThreatReductionResultIcon()),
 				new ChoiceItem(Strategy.OBJECT_NAME, EAM.text("Strategy"), IconManager.getStrategyIcon()),
-				new ChoiceItem(Goal.OBJECT_NAME, EAM.text("Goal"), new GoalIcon()),
+				new ChoiceItem(GoalSchema.OBJECT_NAME, EAM.text("Goal"), new GoalIcon()),
 				new ChoiceItem(Objective.OBJECT_NAME, EAM.text("Objective"), new ObjectiveIcon()),
 				new ChoiceItem(IndicatorSchema.OBJECT_NAME, EAM.text("Indicator"), IconManager.getIndicatorIcon()),
 				new ChoiceItem(Stress.OBJECT_NAME, EAM.text("Stress"), new StressIcon()),

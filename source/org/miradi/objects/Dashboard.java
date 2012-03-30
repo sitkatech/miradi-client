@@ -43,6 +43,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.StrategyRatingSummaryQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.schemas.DashboardSchema;
+import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.OptionalDouble;
@@ -122,7 +123,7 @@ public class Dashboard extends BaseObject
 				return getTargetWithGoalCount();
 			
 			if (fieldTag.equals(PSEUDO_GOAL_COUNT))
-				return getObjectPoolCountAsString(Goal.getObjectType());
+				return getObjectPoolCountAsString(GoalSchema.getObjectType());
 			
 			if (fieldTag.equals(PSEUDO_DRAFT_STRATEGY_COUNT))
 				return getDraftStrategyCount();

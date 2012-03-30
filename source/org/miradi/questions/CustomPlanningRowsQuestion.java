@@ -42,7 +42,6 @@ import org.miradi.icons.ThreatReductionResultIcon;
 import org.miradi.main.EAM;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
-import org.miradi.objects.Goal;
 import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Measurement;
@@ -54,6 +53,7 @@ import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
+import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
 
 public class CustomPlanningRowsQuestion extends DynamicChoiceQuestion
@@ -83,7 +83,7 @@ public class CustomPlanningRowsQuestion extends DynamicChoiceQuestion
 			choiceItems.add(createChoiceItem(HumanWelfareTarget.getObjectType(), HumanWelfareTarget.OBJECT_NAME, new HumanWelfareTargetIcon()));
 		
 		choiceItems.add(createChoiceItem(SubTarget.getObjectType(), SubTarget.OBJECT_NAME, new SubTargetIcon()));
-		choiceItems.add(createChoiceItem(Goal.getObjectType(), Goal.OBJECT_NAME, new GoalIcon()));
+		choiceItems.add(createChoiceItem(GoalSchema.getObjectType(), GoalSchema.OBJECT_NAME, new GoalIcon()));
 		choiceItems.add(createChoiceItem(Objective.getObjectType(), Objective.OBJECT_NAME, new ObjectiveIcon()));
 		choiceItems.add(createChoiceItem(Cause.getObjectType(), Cause.OBJECT_NAME_THREAT, new DirectThreatIcon()));
 		choiceItems.add(createChoiceItem(Cause.getObjectType(), Cause.OBJECT_NAME_CONTRIBUTING_FACTOR, new ContributingFactorIcon())); 

@@ -21,7 +21,6 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.GoalSchema;
@@ -43,13 +42,13 @@ public class Goal extends Desire
 	@Override
 	public int getType()
 	{
-		return getObjectType();
+		return GoalSchema.getObjectType();
 	}
 
 	@Override
 	public String getTypeName()
 	{
-		return OBJECT_NAME;
+		return GoalSchema.OBJECT_NAME;
 	}
 
 	@Override
@@ -59,11 +58,6 @@ public class Goal extends Desire
 			Target.getObjectType(),
 			HumanWelfareTarget.getObjectType(),
 		};
-	}
-	
-	public static int getObjectType()
-	{
-		return ObjectType.GOAL;
 	}
 	
 	public static boolean is(BaseObject baseObject)
@@ -78,7 +72,7 @@ public class Goal extends Desire
 	
 	public static boolean is(int objectType)
 	{
-		return objectType == getObjectType();
+		return objectType == GoalSchema.getObjectType();
 	}
 	
 	public static Goal find(ObjectManager objectManager, ORef goalRef)
@@ -90,6 +84,4 @@ public class Goal extends Desire
 	{
 		return find(project.getObjectManager(), goalRef);
 	}
-	
-	public static final String OBJECT_NAME = "Goal";
 }

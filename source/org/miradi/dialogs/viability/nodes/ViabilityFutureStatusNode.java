@@ -29,6 +29,7 @@ import org.miradi.objects.Indicator;
 import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.TextAndIconChoiceItem;
+import org.miradi.schemas.GoalSchema;
 
 public class ViabilityFutureStatusNode extends TreeTableNode
 {
@@ -47,13 +48,13 @@ public class ViabilityFutureStatusNode extends TreeTableNode
 	@Override
 	public ORef getObjectReference()
 	{
-		return new ORef(Goal.getObjectType(), BaseId.INVALID);
+		return new ORef(GoalSchema.getObjectType(), BaseId.INVALID);
 	}
 	
 	@Override
 	public int getType()
 	{
-		return Goal.getObjectType();
+		return GoalSchema.getObjectType();
 	}
 
 	@Override

@@ -95,7 +95,6 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.FosProjectData;
-import org.miradi.objects.Goal;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.IntermediateResult;
@@ -142,6 +141,7 @@ import org.miradi.schemas.CostAllocationRuleSchema;
 import org.miradi.schemas.DashboardSchema;
 import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.FundingSourceSchema;
+import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 
@@ -163,7 +163,7 @@ public class ObjectManager
 		addNormalPool(new ResourcePool(ida), ProjectResource.OBJECT_NAME);
 		addNormalPool(new IndicatorPool(ida), IndicatorSchema.OBJECT_NAME);
 		addNormalPool(new ObjectivePool(ida), Objective.OBJECT_NAME);
-		addNormalPool(new GoalPool(ida), Goal.OBJECT_NAME);
+		addNormalPool(new GoalPool(ida), GoalSchema.OBJECT_NAME);
 		addNormalPool(new ProjectMetadataPool(ida), ProjectMetadata.OBJECT_NAME);
 		addNormalPool(new DiagramLinkPool(ida), DiagramLink.OBJECT_NAME);
 		addNormalPool(new ResourceAssignmentPool(ida), ResourceAssignmentSchema.OBJECT_NAME);

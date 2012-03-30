@@ -34,6 +34,7 @@ import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.TargetSet;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
@@ -88,7 +89,7 @@ public class Indicator extends BaseObject
 	{
 		CommandVector removeFromRelevancyListCommands = new CommandVector();
 		removeFromRelevancyListCommands.addAll(Desire.buildRemoveObjectFromRelevancyListCommands(getProject(), Objective.getObjectType(), Objective.TAG_RELEVANT_INDICATOR_SET, relevantIndicatorRefToRemove));
-		removeFromRelevancyListCommands.addAll(Desire.buildRemoveObjectFromRelevancyListCommands(getProject(), Goal.getObjectType(), Goal.TAG_RELEVANT_INDICATOR_SET, relevantIndicatorRefToRemove));
+		removeFromRelevancyListCommands.addAll(Desire.buildRemoveObjectFromRelevancyListCommands(getProject(), GoalSchema.getObjectType(), Goal.TAG_RELEVANT_INDICATOR_SET, relevantIndicatorRefToRemove));
 		
 		return removeFromRelevancyListCommands;
 	}

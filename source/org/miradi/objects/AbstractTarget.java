@@ -38,6 +38,7 @@ import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
@@ -138,7 +139,7 @@ abstract public class AbstractTarget extends Factor
 			return SubTarget.getObjectType();
 		
 		if (tag.equals(TAG_GOAL_IDS))
-			return Goal.getObjectType();
+			return GoalSchema.getObjectType();
 		
 		if (tag.equals(TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS))
 			return KeyEcologicalAttribute.getObjectType();

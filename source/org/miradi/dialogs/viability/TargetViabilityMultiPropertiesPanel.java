@@ -31,11 +31,11 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.Goal;
 import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Target;
+import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
 
 public class TargetViabilityMultiPropertiesPanel extends OverlaidObjectDataInputPanel
@@ -86,7 +86,7 @@ public class TargetViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 			return targetViabilityIndicatorPropertiesPanel;
 		if(objectType == Measurement.getObjectType())
 			return targetViabilityMeasurementPropertiesPanel;
-		if(objectType == Goal.getObjectType())
+		if(objectType == GoalSchema.getObjectType())
 			return futureStatusPropertiesPanel;
 
 		return blankPropertiesPanel;

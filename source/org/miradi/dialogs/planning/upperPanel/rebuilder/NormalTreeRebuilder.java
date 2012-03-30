@@ -33,7 +33,6 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Factor;
-import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Measurement;
@@ -45,6 +44,7 @@ import org.miradi.objects.SubTarget;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
+import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
 
 public class NormalTreeRebuilder extends AbstractTreeRebuilder
@@ -152,7 +152,7 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		ORefList childRefs = new ORefList();
 		AbstractTarget target = AbstractTarget.findTarget(getProject(), targetRef);
 		childRefs.addAll(target.getSubTargetRefs());
-		childRefs.addAll(target.getOwnedObjects(Goal.getObjectType()));
+		childRefs.addAll(target.getOwnedObjects(GoalSchema.getObjectType()));
 		childRefs.addAll(new ORefList(IndicatorSchema.getObjectType(), target.getDirectOrIndirectIndicators()));
 		childRefs.addAll(getDirectlyLinkedNonDraftStrategies(target, diagram));
 		
@@ -215,7 +215,7 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		Indicator indicator = Indicator.find(getProject(), parentRef);
 		childRefs.addAll(indicator.getMethodRefs());
 		childRefs.addAll(getSortedByDateMeasurementRefs(indicator));
-		childRefs.add(new UnspecifiedBaseObject(getProject().getObjectManager(), Goal.getObjectType(), Goal.OBJECT_NAME));
+		childRefs.add(new UnspecifiedBaseObject(getProject().getObjectManager(), GoalSchema.getObjectType(), GoalSchema.OBJECT_NAME));
 		
 		return childRefs;
 	}

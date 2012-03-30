@@ -20,13 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.targetviability.doers;
 
-import org.miradi.objects.Goal;
+import org.miradi.schemas.GoalSchema;
 
 public class ExpandToGoalDoer extends AbstractExpandToDoer
 {
 	@Override
 	protected int getTypeToExpandTo()
 	{
-		return Goal.getObjectType();
+		return GoalSchema.getObjectType();
 	}
 }
