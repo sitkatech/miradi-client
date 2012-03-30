@@ -23,7 +23,6 @@ package org.miradi.objects;
 import org.miradi.ids.FactorId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
@@ -118,20 +117,15 @@ public class Target extends AbstractTarget
 	@Override
 	public int getType()
 	{
-		return getObjectType();
+		return TargetSchema.getObjectType();
 	}
 	
 	@Override
 	public String getTypeName()
 	{
-		return OBJECT_NAME;
+		return TargetSchema.OBJECT_NAME;
 	}
 
-	public static int getObjectType()
-	{
-		return ObjectType.TARGET;
-	}
-	
 	public static Target find(ObjectManager objectManager, ORef targetRef)
 	{
 		return (Target) objectManager.findObject(targetRef);
@@ -149,7 +143,7 @@ public class Target extends AbstractTarget
 	
 	public static boolean is(int objectType)
 	{
-		return objectType == getObjectType();
+		return objectType == TargetSchema.getObjectType();
 	}
 		
 	public static boolean is(ORef ref)
@@ -158,8 +152,6 @@ public class Target extends AbstractTarget
 	}
 	
 
-	public static final String OBJECT_NAME = "Target";
-	
 	public static final String TAG_STRESS_REFS = "StressRefs";
 	public static final String TAG_HABITAT_ASSOCIATION = "HabitatAssociation";
 	public static final String TAG_SPECIES_LATIN_NAME = "SpeciesLatinName";

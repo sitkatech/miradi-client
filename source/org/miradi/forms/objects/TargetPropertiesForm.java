@@ -24,6 +24,7 @@ import org.miradi.icons.TargetIcon;
 import org.miradi.main.EAM;
 import org.miradi.objects.Target;
 import org.miradi.questions.HabitatAssociationQuestion;
+import org.miradi.schemas.TargetSchema;
 
 public class TargetPropertiesForm extends AbstractTargetPropertiesForm
 {
@@ -42,13 +43,13 @@ public class TargetPropertiesForm extends AbstractTargetPropertiesForm
 	@Override
 	protected int getTargetType()
 	{
-		return Target.getObjectType();
+		return TargetSchema.getObjectType();
 	}
 	
 	@Override
 	protected void addCustomFields()
 	{
-		addLabelAndField(Target.getObjectType(), Target.TAG_SPECIES_LATIN_NAME);
-		addCodeListField(Target.getObjectType(), Target.TAG_HABITAT_ASSOCIATION, new HabitatAssociationQuestion());
+		addLabelAndField(TargetSchema.getObjectType(), Target.TAG_SPECIES_LATIN_NAME);
+		addCodeListField(TargetSchema.getObjectType(), Target.TAG_HABITAT_ASSOCIATION, new HabitatAssociationQuestion());
 	}
 }

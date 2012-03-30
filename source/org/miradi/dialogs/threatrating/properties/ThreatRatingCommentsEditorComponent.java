@@ -33,9 +33,9 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objects.Cause;
-import org.miradi.objects.Target;
 import org.miradi.objects.ThreatRatingCommentsData;
 import org.miradi.project.Project;
+import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.EditableHtmlPane;
 import org.miradi.utils.HtmlEditorRightClickMouseHandler;
 import org.miradi.utils.MiradiScrollPane;
@@ -91,7 +91,7 @@ public class ThreatRatingCommentsEditorComponent extends SavableField
 	
 	private ORef getTargetRef()
 	{
-		return getSeletedHeirarchy().getRefForType(Target.getObjectType());
+		return getSeletedHeirarchy().getRefForType(TargetSchema.getObjectType());
 	}
 
 	private ORef getThreatRef()

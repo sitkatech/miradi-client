@@ -23,10 +23,10 @@ package org.miradi.dialogs.viability;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.ProjectMetadata;
-import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.CodeList;
 
 public class TargetViabilityRowColumnProvider extends AbstractViabilityRowColumnProvider
@@ -40,7 +40,7 @@ public class TargetViabilityRowColumnProvider extends AbstractViabilityRowColumn
 	{
 		return new CodeList(new String[] {
 				ProjectMetadata.OBJECT_NAME, 
-				Target.OBJECT_NAME,
+				TargetSchema.OBJECT_NAME,
 				KeyEcologicalAttribute.OBJECT_NAME,
 				IndicatorSchema.OBJECT_NAME,
 				Measurement.OBJECT_NAME,

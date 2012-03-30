@@ -38,6 +38,7 @@ import org.miradi.objects.Target;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.TargetSchema;
 
 public class TargetViabilityMultiPropertiesPanel extends OverlaidObjectDataInputPanel
 {
@@ -46,7 +47,7 @@ public class TargetViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 		super(mainWindow, new ORef(ObjectType.TARGET, new FactorId(BaseId.INVALID.asInt())));		
 				
 		blankPropertiesPanel = new BlankPropertiesPanel(getProject());
-		targetPropertiesPanel = new NonDiagramAbstractTargetPropertiesPanel(getProject(), Target.getObjectType());
+		targetPropertiesPanel = new NonDiagramAbstractTargetPropertiesPanel(getProject(), TargetSchema.getObjectType());
 		humanWelfareTargetPropertiesPanel = new NonDiagramAbstractTargetPropertiesPanel(getProject(), HumanWelfareTargetSchema.getObjectType());
 		targetViabilityKeaPropertiesPanel = new TargetViabilityKeaPropertiesPanel(getProject(), mainWindow.getActions());
 		targetViabilityIndicatorPropertiesPanel = new IndicatorPropertiesPanelWithoutBudgetPanels(getProject());
@@ -97,7 +98,7 @@ public class TargetViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		super.commandExecuted(event);
-		if (event.isSetDataCommandWithThisTypeAndTag(Target.getObjectType(), Target.TAG_VIABILITY_MODE))
+		if (event.isSetDataCommandWithThisTypeAndTag(TargetSchema.getObjectType(), Target.TAG_VIABILITY_MODE))
 			reloadSelectedRefs();		
 	}
 

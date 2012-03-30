@@ -30,7 +30,6 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Stress;
-import org.miradi.objects.Target;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
@@ -38,6 +37,7 @@ import org.miradi.questions.IrreversibilityThreatRatingQuestion;
 import org.miradi.questions.StressContributionQuestion;
 import org.miradi.questions.StressRatingChoiceQuestion;
 import org.miradi.questions.ThreatStressRatingChoiceQuestion;
+import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.ColumnTagProvider;
 import org.miradi.utils.ThreatStressRatingHelper;
 
@@ -82,7 +82,7 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 	{
 		ratings = new ThreatStressRating[0];
 		threatRef = hierarchyToSelectedRef.getRefForType(Cause.getObjectType());
-		targetRef = hierarchyToSelectedRef.getRefForType(Target.getObjectType());
+		targetRef = hierarchyToSelectedRef.getRefForType(TargetSchema.getObjectType());
 		if (threatRef.isInvalid() || targetRef.isInvalid())
 			return;
 		

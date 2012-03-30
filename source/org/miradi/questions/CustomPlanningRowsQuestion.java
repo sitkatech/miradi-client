@@ -45,7 +45,6 @@ import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.SubTarget;
-import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
@@ -55,6 +54,7 @@ import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
+import org.miradi.schemas.TargetSchema;
 
 public class CustomPlanningRowsQuestion extends DynamicChoiceQuestion
 {
@@ -77,7 +77,7 @@ public class CustomPlanningRowsQuestion extends DynamicChoiceQuestion
 
 		choiceItems.add(createChoiceItem(ConceptualModelDiagramSchema.getObjectType(), ConceptualModelDiagramSchema.OBJECT_NAME, new ConceptualModelIcon()));
 		choiceItems.add(createChoiceItem(ResultsChainDiagramSchema.getObjectType(), ResultsChainDiagramSchema.OBJECT_NAME, new ResultsChainIcon()));
-		choiceItems.add(createChoiceItem(Target.getObjectType(), Target.OBJECT_NAME, new TargetIcon()));
+		choiceItems.add(createChoiceItem(TargetSchema.getObjectType(), TargetSchema.OBJECT_NAME, new TargetIcon()));
 		
 		if (getProject().getMetadata().isHumanWelfareTargetMode())
 			choiceItems.add(createChoiceItem(HumanWelfareTargetSchema.getObjectType(), HumanWelfareTargetSchema.OBJECT_NAME, new HumanWelfareTargetIcon()));

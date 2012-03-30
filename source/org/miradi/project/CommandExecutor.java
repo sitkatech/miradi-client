@@ -58,6 +58,7 @@ import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
+import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.CommandVector;
 
 public class CommandExecutor
@@ -428,7 +429,7 @@ public class CommandExecutor
 		if (setCommand.isTypeAndTag(HumanWelfareTargetSchema.getObjectType(), HumanWelfareTarget.TAG_VIABILITY_MODE))
 			return true;
 		
-		if (setCommand.isTypeAndTag(Target.getObjectType(), Target.TAG_VIABILITY_MODE))
+		if (setCommand.isTypeAndTag(TargetSchema.getObjectType(), Target.TAG_VIABILITY_MODE))
 			return true;
 				
 		if (setCommand.isTypeAndTag(ViewData.getObjectType(), ViewData.TAG_CURRENT_TAB))

@@ -23,13 +23,14 @@ package org.miradi.xml.wcs;
 import org.martus.util.UnicodeWriter;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Target;
+import org.miradi.schemas.TargetSchema;
 import org.miradi.xml.generic.XmlSchemaCreator;
 
 public class BiodiversityTargetPoolExporter extends AbstractTargetPoolExporter
 {
 	public BiodiversityTargetPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
-		super(wcsXmlExporterToUse, BIODIVERSITY_TARGET, Target.getObjectType());
+		super(wcsXmlExporterToUse, BIODIVERSITY_TARGET, TargetSchema.getObjectType());
 	}
 	
 	@Override

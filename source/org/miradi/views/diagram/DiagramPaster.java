@@ -62,7 +62,6 @@ import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.TaggedObjectSet;
-import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.objects.ThreatStressRating;
@@ -72,6 +71,7 @@ import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
+import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
@@ -959,7 +959,7 @@ abstract public class DiagramPaster
 			if (isPastingIntoResultsChain())
 				return true;
 			
-			return !hasReferrersInDiagram(factorRef, Target.getObjectType());
+			return !hasReferrersInDiagram(factorRef, TargetSchema.getObjectType());
 		}
 		
 		return false;

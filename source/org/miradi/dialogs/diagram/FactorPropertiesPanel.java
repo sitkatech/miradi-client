@@ -67,7 +67,6 @@ import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
-import org.miradi.objects.Target;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
@@ -77,6 +76,7 @@ import org.miradi.questions.FilteredDiagramFactorsQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.schemas.HumanWelfareTargetSchema;
+import org.miradi.schemas.TargetSchema;
 
 public class FactorPropertiesPanel extends ModelessDialogPanel implements CommandExecutedListener
 {
@@ -448,7 +448,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		if (event.isSetDataCommandWithThisTypeAndTag(Cause.getObjectType(), Cause.TAG_IS_DIRECT_THREAT))
 			return true;
 		
-		if (event.isSetDataCommandWithThisTypeAndTag(Target.getObjectType(), AbstractTarget.TAG_VIABILITY_MODE))
+		if (event.isSetDataCommandWithThisTypeAndTag(TargetSchema.getObjectType(), AbstractTarget.TAG_VIABILITY_MODE))
 			return true;
 		
 		return event.isSetDataCommandWithThisTypeAndTag(HumanWelfareTargetSchema.getObjectType(), AbstractTarget.TAG_VIABILITY_MODE);

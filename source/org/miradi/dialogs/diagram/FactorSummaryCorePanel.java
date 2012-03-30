@@ -46,6 +46,7 @@ import org.miradi.questions.StrategyRatingSummaryQuestion;
 import org.miradi.questions.StrategyStatusQuestion;
 import org.miradi.questions.ThreatClassificationQuestion;
 import org.miradi.schemas.DiagramFactorSchema;
+import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.ObjectsActionButton;
 
 public class FactorSummaryCorePanel extends ObjectDataInputPanel
@@ -97,7 +98,7 @@ public class FactorSummaryCorePanel extends ObjectDataInputPanel
 		{
 			addField(createMultilineField(Target.TAG_CURRENT_STATUS_JUSTIFICATION));
 			addField(createStringField(Target.TAG_SPECIES_LATIN_NAME));
-			addField(createQuestionFieldWithDescriptionPanel(Target.getObjectType(), Target.TAG_HABITAT_ASSOCIATION, new HabitatAssociationQuestion()));
+			addField(createQuestionFieldWithDescriptionPanel(TargetSchema.getObjectType(), Target.TAG_HABITAT_ASSOCIATION, new HabitatAssociationQuestion()));
 		}
 		
 		addField(createReadOnlyObjectList(factorToEdit.getType(), Factor.PSEUDO_TAG_CONCEPTUAL_DIAGRAM_REFS));

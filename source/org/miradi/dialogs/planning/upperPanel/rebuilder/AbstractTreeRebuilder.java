@@ -46,7 +46,6 @@ import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.SubTarget;
-import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
@@ -62,6 +61,7 @@ import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
+import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.BaseObjectDateDescendingAndIdComparator;
 import org.miradi.utils.CodeList;
 
@@ -165,7 +165,7 @@ abstract public class AbstractTreeRebuilder
 			ResultsChainDiagramSchema.getObjectType(),
 			
 			Strategy.getObjectType(),
-			Target.getObjectType(),
+			TargetSchema.getObjectType(),
 			HumanWelfareTargetSchema.getObjectType(),
 			KeyEcologicalAttribute.getObjectType(),
 			Cause.getObjectType(),
@@ -399,7 +399,7 @@ abstract public class AbstractTreeRebuilder
 	private int[] getNodeSortOrder()
 	{
 		return new int[] {
-			Target.getObjectType(),
+			TargetSchema.getObjectType(),
 			HumanWelfareTargetSchema.getObjectType(),
 			KeyEcologicalAttribute.getObjectType(),
 			ResultsChainDiagramSchema.getObjectType(),

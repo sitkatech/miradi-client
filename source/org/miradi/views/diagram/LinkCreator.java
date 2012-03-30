@@ -42,11 +42,11 @@ import org.miradi.objects.FactorLink;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Strategy;
-import org.miradi.objects.Target;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
 import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
+import org.miradi.schemas.TargetSchema;
 
 
 //FIXME low: Examine all the methods and try to make it more uniform, simpler, etc....
@@ -426,7 +426,7 @@ public class LinkCreator
 							   Cause.getObjectType(), 
 							   IntermediateResult.getObjectType(), 
 							   ThreatReductionResult.getObjectType(), 
-							   Target.getObjectType(),
+							   TargetSchema.getObjectType(),
 							   HumanWelfareTargetSchema.getObjectType(),
 							   GroupBox.getObjectType(), };  
 		

@@ -42,7 +42,6 @@ import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Cause;
-import org.miradi.objects.Target;
 import org.miradi.objects.ValueOption;
 import org.miradi.project.Project;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
@@ -53,6 +52,7 @@ import org.miradi.questions.IrreversibilityThreatRatingQuestion;
 import org.miradi.questions.ScopeThreatRatingQuestion;
 import org.miradi.questions.SeverityThreatRatingQuestion;
 import org.miradi.questions.ThreatRatingQuestion;
+import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.QuestionPopupEditorComponent;
 import org.miradi.utils.SimpleThreatRatingQuestionPopupEditorComponent;
 
@@ -181,7 +181,7 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 	
 	private ORef getTargetRef()
 	{
-		return getRefForType(Target.getObjectType());
+		return getRefForType(TargetSchema.getObjectType());
 	}
 	
 	private ORef getThreatRef()

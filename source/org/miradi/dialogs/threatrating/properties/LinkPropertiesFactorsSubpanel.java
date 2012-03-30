@@ -34,8 +34,8 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Factor;
 import org.miradi.objects.ProjectMetadata;
-import org.miradi.objects.Target;
 import org.miradi.project.Project;
+import org.miradi.schemas.TargetSchema;
 
 //TODO need to rename and remove link from name
 public class LinkPropertiesFactorsSubpanel extends ObjectDataInputPanel
@@ -81,7 +81,7 @@ public class LinkPropertiesFactorsSubpanel extends ObjectDataInputPanel
 	{
 		ORefList refs = new ORefList(orefsToUse);
 		ORef threatRef = refs.getRefForType(Cause.getObjectType());
-		ORef targetRef = refs.getRefForType(Target.getObjectType());		
+		ORef targetRef = refs.getRefForType(TargetSchema.getObjectType());		
 		if(threatRef.isInvalid() || targetRef.isInvalid())
 		{
 			threatLabel.setText("");

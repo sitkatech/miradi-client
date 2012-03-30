@@ -38,9 +38,9 @@ import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.TaggedObjectSet;
-import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
+import org.miradi.schemas.TargetSchema;
 import org.miradi.views.diagram.DiagramAsSharedPaster;
 import org.miradi.views.diagram.doers.CreateMarginDoer;
 
@@ -57,7 +57,7 @@ public class ConceptualModelByTargetSplitter
 		setDiagramObjectToSplit(mainConceptualModelToSplit);
 		setHighOrAboveRankedThreatsTag(highOrAboveRankedThreatsTagToUse);
 		
-		HashSet<DiagramFactor> targetDiagramFactors = mainConceptualModelToSplit.getFactorsFromDiagram(Target.getObjectType());
+		HashSet<DiagramFactor> targetDiagramFactors = mainConceptualModelToSplit.getFactorsFromDiagram(TargetSchema.getObjectType());
 		for(DiagramFactor targetDiagramFactor : targetDiagramFactors)
 		{
 			createDiagramForTarget(targetDiagramFactor);

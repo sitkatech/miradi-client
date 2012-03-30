@@ -21,7 +21,7 @@ package org.miradi.views.diagram;
 
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.Target;
+import org.miradi.schemas.TargetSchema;
 
 public class InsertTargetDoer extends InsertFactorDoer
 {
@@ -40,6 +40,6 @@ public class InsertTargetDoer extends InsertFactorDoer
 	@Override
 	public void forceVisibleInLayerManager() throws Exception
 	{
-		getCurrentLayerManager().setVisibility(Target.OBJECT_NAME, true);
+		getCurrentLayerManager().setVisibility(TargetSchema.OBJECT_NAME, true);
 	}
 }

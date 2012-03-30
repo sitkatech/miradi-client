@@ -25,6 +25,7 @@ import org.miradi.dialogs.stress.StressListManagementPanel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Target;
+import org.miradi.schemas.TargetSchema;
 import org.miradi.views.ObjectsDoer;
 
 public class ManageStressesDoer extends ObjectsDoer
@@ -32,7 +33,7 @@ public class ManageStressesDoer extends ObjectsDoer
 	@Override
 	public boolean isAvailable()
 	{
-		if (getSingleSelected(Target.getObjectType()) == null)
+		if (getSingleSelected(TargetSchema.getObjectType()) == null)
 			return false;
 		
 		return true;
@@ -46,7 +47,7 @@ public class ManageStressesDoer extends ObjectsDoer
 		
 		try
 		{
-			BaseObject selectedTarget = getSingleSelected(Target.getObjectType());
+			BaseObject selectedTarget = getSingleSelected(TargetSchema.getObjectType());
 			// NOTE: Should create Stress panel without visibility panel
 			ManageStressesDialog manageStressesDialog = new ManageStressesDialog(getMainWindow(), (Target)selectedTarget);
 			StressListManagementPanel stressListManagementPanel = StressListManagementPanel.createStressManagementPanelWithoutVisibilityPanel(manageStressesDialog, getMainWindow(), selectedTarget.getRef());

@@ -34,10 +34,10 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
-import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.TargetSchema;
 
 public class IndicatorFutureStatusSubPanel extends ObjectDataInputPanel
 {
@@ -95,7 +95,7 @@ public class IndicatorFutureStatusSubPanel extends ObjectDataInputPanel
 	
 	private Icon getGoalOrObjectiveIcon(ORefList selectedHierarchy)
 	{
-		ORef foundTargetRef = selectedHierarchy.getRefForType(Target.getObjectType());
+		ORef foundTargetRef = selectedHierarchy.getRefForType(TargetSchema.getObjectType());
 		if(foundTargetRef.isInvalid())
 			return new ObjectiveIcon();
 

@@ -31,9 +31,9 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Strategy;
-import org.miradi.objects.Target;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.schemas.HumanWelfareTargetSchema;
+import org.miradi.schemas.TargetSchema;
 import org.miradi.views.diagram.LocationDoer;
 
 abstract public class AbstractGroupBoxDoer extends LocationDoer
@@ -127,7 +127,7 @@ abstract public class AbstractGroupBoxDoer extends LocationDoer
 
 	public static boolean isAcceptableFactor(int type)
 	{
-		return (type == Target.getObjectType() || 
+		return (type == TargetSchema.getObjectType() || 
 				type == HumanWelfareTargetSchema.getObjectType() ||
 				type == Cause.getObjectType() || 
 				type == Strategy.getObjectType() ||

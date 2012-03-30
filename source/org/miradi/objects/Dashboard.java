@@ -48,6 +48,7 @@ import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
+import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.OptionalDouble;
 
@@ -93,7 +94,7 @@ public class Dashboard extends BaseObject
 				return getProjectScopeWordCount();
 
 			if (fieldTag.equals(PSEUDO_TARGET_COUNT))
-				return getObjectPoolCountAsString(Target.getObjectType());
+				return getObjectPoolCountAsString(TargetSchema.getObjectType());
 
 			if (fieldTag.equals(PSEUDO_HUMAN_WELFARE_TARGET_COUNT))
 				return getObjectPoolCountAsString(HumanWelfareTargetSchema.getObjectType());
@@ -329,7 +330,7 @@ public class Dashboard extends BaseObject
 	private String getTotalUniqueFactorCount()
 	{
 		int[] factorTypesToCount = new int[]{
-				Target.getObjectType(),
+				TargetSchema.getObjectType(),
 				HumanWelfareTargetSchema.getObjectType(),
 				Cause.getObjectType(),
 				Strategy.getObjectType(),

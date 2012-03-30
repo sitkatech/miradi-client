@@ -25,6 +25,7 @@ import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
+import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.EnhancedJsonObject;
 
 
@@ -56,7 +57,7 @@ public class Goal extends Desire
 	public int[] getTypesThatCanOwnUs()
 	{
 		return new int[] {
-			Target.getObjectType(),
+			TargetSchema.getObjectType(),
 			HumanWelfareTargetSchema.getObjectType(),
 		};
 	}

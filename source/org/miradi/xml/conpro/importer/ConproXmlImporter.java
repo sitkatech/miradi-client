@@ -107,6 +107,7 @@ import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
+import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateUnitEffort;
@@ -801,7 +802,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		{
 			Node targetNode = targetNodeList.item(nodeIndex);
 			String targetId = getAttributeValue(targetNode, ID);
-			ORef targetRef = getProject().createObject(Target.getObjectType(), new BaseId(targetId));
+			ORef targetRef = getProject().createObject(TargetSchema.getObjectType(), new BaseId(targetId));
 			
 			importField(targetNode, TARGET_NAME, targetRef, Target.TAG_LABEL);
 			importField(targetNode, TARGET_DESCRIPTION, targetRef, Target.TAG_TEXT);
@@ -1263,7 +1264,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		setDiagramFactorLocation(draftStrategyRefs, DRAFT_STRATEGY_X_COLUMN);
 		
 		setDiagramFactorLocation(getProject().getPool(Cause.getObjectType()).getORefList(), CAUSE_X_COLUMN);
-		setDiagramFactorLocation(getProject().getPool(Target.getObjectType()).getORefList(), TARGET_X_COLUMN);
+		setDiagramFactorLocation(getProject().getPool(TargetSchema.getObjectType()).getORefList(), TARGET_X_COLUMN);
 	}
 			
 	private void setDiagramFactorLocation(ORefList factorRefs, int xPosition) throws Exception
