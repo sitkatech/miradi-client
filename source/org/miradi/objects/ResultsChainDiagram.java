@@ -21,7 +21,6 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.ResultsChainDiagramSchema;
@@ -42,24 +41,19 @@ public class ResultsChainDiagram extends DiagramObject
 	@Override
 	public int getType()
 	{
-		return getObjectType();
+		return ResultsChainDiagramSchema.getObjectType();
 	}
 
 	@Override
 	public String getTypeName()
 	{
-		return OBJECT_NAME;
+		return ResultsChainDiagramSchema.OBJECT_NAME;
 	}
 
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;
-	}
-	
-	public static int getObjectType()
-	{
-		return ObjectType.RESULTS_CHAIN_DIAGRAM;
 	}
 	
 	public static boolean is(ORef ref)
@@ -69,7 +63,7 @@ public class ResultsChainDiagram extends DiagramObject
 	
 	public static boolean is(int objectType)
 	{
-		return objectType == getObjectType();
+		return objectType == ResultsChainDiagramSchema.getObjectType();
 	}
 	
 	public static ResultsChainDiagram find(ObjectManager objectManager, ORef refToFind)
@@ -94,6 +88,4 @@ public class ResultsChainDiagram extends DiagramObject
 		
 		return super.canContainFactorType(objectType);
 	}
-	
-	public static final String OBJECT_NAME = "ResultsChainDiagram";
 }

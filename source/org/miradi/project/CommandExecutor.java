@@ -49,7 +49,6 @@ import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.ProjectMetadata;
-import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Stress;
 import org.miradi.objects.TableSettings;
 import org.miradi.objects.Target;
@@ -57,6 +56,7 @@ import org.miradi.objects.Task;
 import org.miradi.objects.ViewData;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.DiagramFactorSchema;
+import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.utils.CommandVector;
 
 public class CommandExecutor
@@ -439,7 +439,7 @@ public class CommandExecutor
 		if (setCommand.isTypeAndTag(ConceptualModelDiagramSchema.getObjectType(), ConceptualModelDiagram.TAG_DIAGRAM_FACTOR_IDS))
 			return wasWrappedTypeAddedOrRemoved(setCommand, Stress.getObjectType());
 		
-		if (setCommand.isTypeAndTag(ResultsChainDiagram.getObjectType(), ConceptualModelDiagram.TAG_DIAGRAM_FACTOR_IDS))
+		if (setCommand.isTypeAndTag(ResultsChainDiagramSchema.getObjectType(), ConceptualModelDiagram.TAG_DIAGRAM_FACTOR_IDS))
 			return wasWrappedTypeAddedOrRemoved(setCommand, Task.getObjectType());
 		
 		if (setCommand.isTypeAndTag(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_THREAT_RATING_MODE))

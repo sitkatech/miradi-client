@@ -39,6 +39,7 @@ import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.DiagramLinkSchema;
+import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -444,7 +445,7 @@ abstract public class DiagramObject extends BaseObject
 	{
 		ORefSet diagrams = new ORefSet();
 		diagrams.addAllRefs(findOwnersOfObject(projectToUse, ConceptualModelDiagramSchema.getObjectType(), ref, objectType));
-		diagrams.addAllRefs(findOwnersOfObject(projectToUse, ResultsChainDiagram.getObjectType(), ref, objectType));
+		diagrams.addAllRefs(findOwnersOfObject(projectToUse, ResultsChainDiagramSchema.getObjectType(), ref, objectType));
 		
 		return diagrams.toRefList();
 	}

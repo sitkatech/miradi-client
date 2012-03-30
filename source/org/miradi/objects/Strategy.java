@@ -37,6 +37,7 @@ import org.miradi.questions.StrategyClassificationQuestion;
 import org.miradi.questions.StrategyRatingSummaryQuestion;
 import org.miradi.questions.StrategyStatusQuestion;
 import org.miradi.schemas.ObjectiveSchema;
+import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
@@ -59,7 +60,7 @@ public class Strategy extends Factor
 	{
 		
 		ORefList diagramRefs = new ORefList();
-		ORefList resultsChainRefs = getProject().getPool(ResultsChainDiagram.getObjectType()).getORefList();
+		ORefList resultsChainRefs = getProject().getPool(ResultsChainDiagramSchema.getObjectType()).getORefList();
 		for(int diagramIndex = 0; diagramIndex < resultsChainRefs.size(); ++diagramIndex)
 		{
 			ORef diagramRef = resultsChainRefs.get(diagramIndex);

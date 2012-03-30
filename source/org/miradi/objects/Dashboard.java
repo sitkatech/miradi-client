@@ -46,6 +46,7 @@ import org.miradi.schemas.DashboardSchema;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
+import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.OptionalDouble;
 
@@ -139,7 +140,7 @@ public class Dashboard extends BaseObject
 				return getStrategyWithTaxonomyCount();
 			
 			if (fieldTag.equals(PSEUDO_RESULTS_CHAIN_COUNT))
-				return getObjectPoolCountAsString(ResultsChainDiagram.getObjectType());
+				return getObjectPoolCountAsString(ResultsChainDiagramSchema.getObjectType());
 			
 			if (fieldTag.equals(PSEUDO_OBJECTIVE_COUNT))
 				return getObjectPoolCountAsString(ObjectiveSchema.getObjectType());

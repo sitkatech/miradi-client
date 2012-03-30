@@ -33,6 +33,7 @@ import org.miradi.objects.Target;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.Project;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
+import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.utils.CommandVector;
 
 public class ThreatStressRatingEnsurer implements CommandExecutedListener 
@@ -161,7 +162,7 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 
 	private boolean isThreatStressRatingAffectingCommand(CommandExecutedEvent event)
 	{
-		if (event.isSetDataCommandWithThisTypeAndTag(ResultsChainDiagram.getObjectType(), ResultsChainDiagram.TAG_DIAGRAM_FACTOR_LINK_IDS))
+		if (event.isSetDataCommandWithThisTypeAndTag(ResultsChainDiagramSchema.getObjectType(), ResultsChainDiagram.TAG_DIAGRAM_FACTOR_LINK_IDS))
 			return true;
 		
 		if (event.isSetDataCommandWithThisTypeAndTag(ConceptualModelDiagramSchema.getObjectType(), ConceptualModelDiagram.TAG_DIAGRAM_FACTOR_LINK_IDS))

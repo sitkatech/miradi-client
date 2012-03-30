@@ -40,6 +40,7 @@ import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.questions.DiagramObjectDataInclusionQuestion;
 import org.miradi.questions.WorkPlanVisibleRowsQuestion;
+import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.utils.OptionalDouble;
 
 public class TestProjectTotalCalculator extends TestCaseWithProject
@@ -54,7 +55,7 @@ public class TestProjectTotalCalculator extends TestCaseWithProject
 	{
 		super.setUp();
 		
-		ORef resultsChainRef = getProject().createObject(ResultsChainDiagram.getObjectType());
+		ORef resultsChainRef = getProject().createObject(ResultsChainDiagramSchema.getObjectType());
 		ResultsChainDiagram resultsChain = ResultsChainDiagram.find(getProject(), resultsChainRef);
 		resultsChainDiagramModel = new PersistentDiagramModel(getProject());
 		resultsChainDiagramModel.fillFrom(resultsChain);

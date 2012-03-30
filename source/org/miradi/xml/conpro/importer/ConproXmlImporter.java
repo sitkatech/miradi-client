@@ -106,6 +106,7 @@ import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
+import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateUnitEffort;
@@ -1283,7 +1284,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 	
 	private void createDefaultObjects() throws Exception
 	{
-		CommandCreateObject createResultsChain = new CommandCreateObject(ResultsChainDiagram.getObjectType());
+		CommandCreateObject createResultsChain = new CommandCreateObject(ResultsChainDiagramSchema.getObjectType());
 		getProject().executeCommand(createResultsChain);
 		
 		String DEFAUL_RESULTS_CHAIN_LABEL = EAM.text("Placeholder - From ConPro");
