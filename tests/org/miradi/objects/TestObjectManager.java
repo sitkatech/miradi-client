@@ -40,6 +40,7 @@ import org.miradi.project.ProjectSaver;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.KeyEcologicalAttributeSchema;
 import org.miradi.utils.NullProgressMeter;
 
 
@@ -112,7 +113,7 @@ public class TestObjectManager extends MiradiTestCase
 		Indicator condition1Indicator = createIndicator(FAIR);
 		KeyEcologicalAttribute conditionKea = createKEA(new Indicator[] {condition1Indicator});
 
-		IdList keas = new IdList(KeyEcologicalAttribute.getObjectType());
+		IdList keas = new IdList(KeyEcologicalAttributeSchema.getObjectType());
 		keas.add(conditionKea.id);
 		target.setData(Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, keas.toString());
 

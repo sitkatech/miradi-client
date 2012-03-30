@@ -37,13 +37,13 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
-import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.SubTarget;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.schemas.DiagramFactorSchema;
+import org.miradi.schemas.KeyEcologicalAttributeSchema;
 import org.miradi.schemas.StressSchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.CommandVector;
@@ -239,7 +239,7 @@ public class FactorDeleteHelper
 		if (AbstractTarget.isAbstractTarget(factorToDelete))
 		{
 			deleteAnnotationIds(factorToDelete, ObjectType.GOAL, AbstractTarget.TAG_GOAL_IDS);
-			deleteAnnotationIds(factorToDelete, KeyEcologicalAttribute.getObjectType(), Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
+			deleteAnnotationIds(factorToDelete, KeyEcologicalAttributeSchema.getObjectType(), Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
 			deleteAnnotationRefs(factorToDelete, SubTarget.getObjectType(), Target.TAG_SUB_TARGET_REFS);
 		}
 		

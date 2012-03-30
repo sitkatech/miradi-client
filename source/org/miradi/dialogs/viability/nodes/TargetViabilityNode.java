@@ -36,6 +36,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
+import org.miradi.schemas.KeyEcologicalAttributeSchema;
 
 public class TargetViabilityNode extends TreeTableNode
 {
@@ -143,7 +144,7 @@ public class TargetViabilityNode extends TreeTableNode
 		Vector<KeyEcologicalAttributeNode> keyEcologicalAttributesVector = new Vector<KeyEcologicalAttributeNode>();
 		for(int i = 0; i < keas.size(); ++i)
 		{
-			KeyEcologicalAttribute kea = (KeyEcologicalAttribute)project.findObject(new ORef(KeyEcologicalAttribute.getObjectType(),keas.get(i)));
+			KeyEcologicalAttribute kea = (KeyEcologicalAttribute)project.findObject(new ORef(KeyEcologicalAttributeSchema.getObjectType(),keas.get(i)));
 			keyEcologicalAttributesVector.add(new KeyEcologicalAttributeNode(project, kea));
 		}
 		

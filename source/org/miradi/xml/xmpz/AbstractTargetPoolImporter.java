@@ -22,11 +22,11 @@ package org.miradi.xml.xmpz;
 
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.AbstractTarget;
-import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.SubTarget;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.schemas.GoalSchema;
+import org.miradi.schemas.KeyEcologicalAttributeSchema;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.w3c.dom.Node;
 
@@ -46,7 +46,7 @@ abstract public class AbstractTargetPoolImporter extends FactorPoolImporter
 		importCodeField(node, destinationRef, AbstractTarget.TAG_VIABILITY_MODE, new ViabilityModeQuestion());
 		importField(node, destinationRef, AbstractTarget.TAG_CURRENT_STATUS_JUSTIFICATION);
 		importRefs(node, XmpzXmlConstants.SUB_TARGET_IDS_ELEMENT, destinationRef, AbstractTarget.TAG_SUB_TARGET_REFS, SubTarget.getObjectType(), XmpzXmlConstants.SUB_TARGET);
-		importIds(node, destinationRef, AbstractTarget.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, KeyEcologicalAttribute.getObjectType(), XmpzXmlConstants.KEY_ECOLOGICAL_ATTRIBUTE);
+		importIds(node, destinationRef, AbstractTarget.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, KeyEcologicalAttributeSchema.getObjectType(), XmpzXmlConstants.KEY_ECOLOGICAL_ATTRIBUTE);
 		importIds(node, destinationRef, AbstractTarget.TAG_GOAL_IDS, GoalSchema.getObjectType(), XmpzXmlConstants.GOAL);	
 		importIndicatorIds(node, destinationRef);
 	}	

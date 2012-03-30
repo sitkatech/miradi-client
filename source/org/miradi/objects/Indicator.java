@@ -39,6 +39,7 @@ import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.IntermediateResultSchema;
+import org.miradi.schemas.KeyEcologicalAttributeSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
@@ -300,7 +301,7 @@ public class Indicator extends BaseObject
 			ThreatReductionResultSchema.getObjectType(),
 			TargetSchema.getObjectType(),
 			HumanWelfareTargetSchema.getObjectType(),
-			KeyEcologicalAttribute.getObjectType(),
+			KeyEcologicalAttributeSchema.getObjectType(),
 		};
 	}
 	
@@ -361,7 +362,7 @@ public class Indicator extends BaseObject
 	
 	public boolean isViabilityIndicator()
 	{
-		ORefList keaReferrerRefs = findObjectsThatReferToUs(KeyEcologicalAttribute.getObjectType());
+		ORefList keaReferrerRefs = findObjectsThatReferToUs(KeyEcologicalAttributeSchema.getObjectType());
 		return keaReferrerRefs.size() > 0;
 	}
 	

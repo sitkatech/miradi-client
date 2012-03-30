@@ -40,6 +40,7 @@ import org.miradi.objects.Target;
 import org.miradi.questions.DiagramObjectDataInclusionQuestion;
 import org.miradi.questions.WorkPlanVisibleRowsQuestion;
 import org.miradi.schemas.CauseSchema;
+import org.miradi.schemas.KeyEcologicalAttributeSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
@@ -92,7 +93,7 @@ public class TestProjectTotalCalculator extends TestCaseWithProject
 		getProject().turnOnTncMode((Target) target.getWrappedFactor());
 		KeyEcologicalAttribute kea = getProject().createKea();
 		ORefList keaRefs = new ORefList(kea);
-		getProject().fillObjectUsingCommand(target.getWrappedORef(), Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, keaRefs.convertToIdList(KeyEcologicalAttribute.getObjectType()).toString());
+		getProject().fillObjectUsingCommand(target.getWrappedORef(), Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, keaRefs.convertToIdList(KeyEcologicalAttributeSchema.getObjectType()).toString());
 		
 		Indicator indicatorWithResourceAssignment = getProject().createIndicator(kea);
 		addResourceAssignment(indicatorWithResourceAssignment);

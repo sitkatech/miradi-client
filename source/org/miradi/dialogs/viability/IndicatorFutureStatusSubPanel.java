@@ -33,10 +33,10 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Indicator;
-import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.project.Project;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.KeyEcologicalAttributeSchema;
 import org.miradi.schemas.TargetSchema;
 
 public class IndicatorFutureStatusSubPanel extends ObjectDataInputPanel
@@ -81,7 +81,7 @@ public class IndicatorFutureStatusSubPanel extends ObjectDataInputPanel
 		String futureStatusText = EAM.text("Desired Future Status");
 		
 		ORefList refList = new ORefList(orefsToUse);
-		ORef foundKeaRef = refList.getRefForType(KeyEcologicalAttribute.getObjectType());
+		ORef foundKeaRef = refList.getRefForType(KeyEcologicalAttributeSchema.getObjectType());
 		if (foundKeaRef.isInvalid())
 		{
 			isRatingFieldVisible = false;

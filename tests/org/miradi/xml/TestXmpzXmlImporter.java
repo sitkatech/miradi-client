@@ -62,6 +62,7 @@ import org.miradi.questions.TextBoxZOrderQuestion;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.DashboardSchema;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.KeyEcologicalAttributeSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateUnitEffort;
@@ -114,7 +115,7 @@ public class TestXmpzXmlImporter extends TestCaseWithProject
 		getProject().turnOnTncMode(target);
 		
 		KeyEcologicalAttribute kea = getProject().createKea();
-		IdList keaIds = new IdList(KeyEcologicalAttribute.getObjectType());
+		IdList keaIds = new IdList(KeyEcologicalAttributeSchema.getObjectType());
 		keaIds.addRef(kea.getRef());
 		getProject().fillObjectUsingCommand(target, Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, keaIds.toString());
 		

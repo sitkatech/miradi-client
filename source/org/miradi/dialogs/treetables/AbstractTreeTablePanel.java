@@ -49,6 +49,7 @@ import org.miradi.objects.Task;
 import org.miradi.objects.ViewData;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.KeyEcologicalAttributeSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.TaskSchema;
@@ -292,7 +293,7 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 		if(Factor.isFactor(type))
 			return isValidFactorTag(tag);
 		
-		if(type == KeyEcologicalAttribute.getObjectType() && tag.equals(KeyEcologicalAttribute.TAG_INDICATOR_IDS))
+		if(type == KeyEcologicalAttributeSchema.getObjectType() && tag.equals(KeyEcologicalAttribute.TAG_INDICATOR_IDS))
 			return true;
 				
 		return false;

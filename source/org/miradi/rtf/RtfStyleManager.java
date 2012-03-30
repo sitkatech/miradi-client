@@ -30,7 +30,6 @@ import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.FundingSource;
 import org.miradi.objects.Goal;
-import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
@@ -42,6 +41,7 @@ import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.IntermediateResultSchema;
+import org.miradi.schemas.KeyEcologicalAttributeSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.StrategySchema;
@@ -84,7 +84,7 @@ public class RtfStyleManager
 		createNewStyle(Measurement.OBJECT_NAME,   	    		CS_29_RTF_ID, " \\f1\\fs18 ", MIRADI_STYLE_PREFIX + "Msrmnt");
 		createNewStyle(AccountingCodeSchema.OBJECT_NAME,  	    	CS_30_RTF_ID, " \\f1\\fs18 ", MIRADI_STYLE_PREFIX + "Accntng Cd");
 		createNewStyle(FundingSourceSchema.OBJECT_NAME, 	 	    	CS_31_RTF_ID, " \\f1\\fs18 ", MIRADI_STYLE_PREFIX + "Fndng Src");
-		createNewStyle(KeyEcologicalAttribute.OBJECT_NAME,   	CS_32_RTF_ID, " \\f1\\fs20 ", MIRADI_STYLE_PREFIX + "KEA");
+		createNewStyle(KeyEcologicalAttributeSchema.OBJECT_NAME,   	CS_32_RTF_ID, " \\f1\\fs20 ", MIRADI_STYLE_PREFIX + "KEA");
 		createNewStyle(COLUMN_HEADER_STYLE_TAG, 				CS_33_RTF_ID, " \\f1\\b\\fs24 ", MIRADI_STYLE_PREFIX + "Col Hdr");
 	}
 
