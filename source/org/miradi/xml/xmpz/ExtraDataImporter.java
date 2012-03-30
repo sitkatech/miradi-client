@@ -23,8 +23,8 @@ package org.miradi.xml.xmpz;
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.TableSettings;
 import org.miradi.objects.ViewData;
+import org.miradi.schemas.TableSettingsSchema;
 import org.miradi.xml.AbstractXmpzObjectImporter;
 import org.miradi.xml.wcs.ExtraDataExporter;
 import org.w3c.dom.Node;
@@ -89,8 +89,8 @@ public class ExtraDataImporter extends AbstractXmpzObjectImporter
 		if (typeName.equals(ViewData.OBJECT_NAME))
 			return ViewData.getObjectType();
 		
-		if (typeName.equals(TableSettings.OBJECT_NAME))
-			return TableSettings.getObjectType();
+		if (typeName.equals(TableSettingsSchema.OBJECT_NAME))
+			return TableSettingsSchema.getObjectType();
 		
 		throw new RuntimeException("Object type name is not recognized as type, " + typeName);
 	}

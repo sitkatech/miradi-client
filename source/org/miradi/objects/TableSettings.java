@@ -29,7 +29,6 @@ import org.miradi.objecthelpers.CodeToCodeMap;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.TableSettingsSchema;
@@ -51,13 +50,13 @@ public class TableSettings extends BaseObject
 	@Override
 	public int getType()
 	{
-		return getObjectType();
+		return TableSettingsSchema.getObjectType();
 	}
 	
 	@Override
 	public String getTypeName()
 	{
-		return OBJECT_NAME;
+		return TableSettingsSchema.OBJECT_NAME;
 	}
 	
 	@Override
@@ -110,11 +109,6 @@ public class TableSettings extends BaseObject
 		return new CommandSetObjectData(this, TAG_DATE_UNIT_LIST_DATA, dateUnits.toString());
 	}
 
-	public static int getObjectType()
-	{
-		return ObjectType.TABLE_SETTINGS;
-	}
-	
 	public String getUniqueIdentifier()
 	{
 		return getData(TAG_TABLE_IDENTIFIER);
@@ -132,7 +126,7 @@ public class TableSettings extends BaseObject
 		if (foundTableSettings != null)
 			return foundTableSettings;
 		
-		ORef newlyCreateTableSettings = projectToUse.createObject(TableSettings.getObjectType());
+		ORef newlyCreateTableSettings = projectToUse.createObject(TableSettingsSchema.getObjectType());
 		projectToUse.setObjectData(newlyCreateTableSettings, TableSettings.TAG_TABLE_IDENTIFIER, uniqueTableIdentifier);
 		
 		return TableSettings.find(projectToUse, newlyCreateTableSettings);
@@ -159,7 +153,7 @@ public class TableSettings extends BaseObject
 	
 	public static boolean is(int objectType)
 	{
-		return objectType == getObjectType();
+		return objectType == TableSettingsSchema.getObjectType();
 	}
 	
 	public static TableSettings find(ObjectManager objectManager, ORef tableSettingsRef)
@@ -172,8 +166,6 @@ public class TableSettings extends BaseObject
 		return find(project.getObjectManager(), tableSettingsRef);
 	}
 		
-	public static final String OBJECT_NAME = "TableSettings";
-	
 	public static final String WORK_PLAN_PROJECT_RESOURCE_FILTER_CODELIST_KEY = "WorkPlanProjectResourceFilterCodeListKey";
 	public static final String WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY = "WorkPlanBudgetColumnCodeListKey";
 	
