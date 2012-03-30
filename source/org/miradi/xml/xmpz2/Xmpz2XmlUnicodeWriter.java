@@ -169,7 +169,7 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 	{
 	}
 
-	public void writetDateData(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema, String date) throws Exception
+	public void writeDateData(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema, String date) throws Exception
 	{
 		writeField(baseObjectSchema, fieldSchema, date);
 	}
