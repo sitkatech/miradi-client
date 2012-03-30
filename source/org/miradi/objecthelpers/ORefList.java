@@ -22,6 +22,7 @@ package org.miradi.objecthelpers;
 import java.text.ParseException;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
 
@@ -32,7 +33,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.utils.EnhancedJsonArray;
 import org.miradi.utils.EnhancedJsonObject;
 
-public class ORefList
+public class ORefList implements Iterable<ORef>
 {
 	public ORefList()
 	{
@@ -347,6 +348,11 @@ public class ORefList
 	public boolean containsAll(ORefList containedRefs)
 	{
 		return data.containsAll(containedRefs.data);
+	}
+	
+	public Iterator<ORef> iterator()
+	{
+		return data.iterator();
 	}
 		
 	private Vector<ORef> data;
