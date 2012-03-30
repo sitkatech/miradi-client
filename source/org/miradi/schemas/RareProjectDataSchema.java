@@ -46,4 +46,10 @@ public class RareProjectDataSchema extends BaseObjectSchema
 		createFieldSchemaMultiLineUserText(RareProjectData.LEGACY_TAG_THREATS_ADDRESSED_NOTES);
 		createFieldSchemaMultiLineUserText(RareProjectData.TAG_MAIN_ACTIVITIES_NOTES);
 	}
+
+	@Override
+	public String getXmpz2ElementName()
+	{
+		return RareProjectData.OBJECT_NAME;
+	}
 }

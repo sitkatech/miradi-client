@@ -43,4 +43,10 @@ public class WwfProjectDataSchema extends BaseObjectSchema
 		createFieldSchemaCodeList(WwfProjectData.TAG_COUNTRIES, getQuestion(CountriesQuestion.class));
 		createFieldSchemaCodeList(WwfProjectData.TAG_ECOREGIONS, getQuestion(WwfEcoRegionsQuestion.class));
 	}
+	
+	@Override
+	public String getXmpz2ElementName()
+	{
+		return WwfProjectData.OBJECT_NAME;
+	}
 }

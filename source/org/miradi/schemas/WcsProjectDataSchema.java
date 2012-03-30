@@ -41,4 +41,10 @@ public class WcsProjectDataSchema extends BaseObjectSchema
 		createFieldSchemaBoolean(WcsProjectData.TAG_STEP_COMPLETED);
 		createFieldSchemaSingleLineUserText(WcsProjectData.TAG_STEP_URL);
 	}
+	
+	@Override
+	public String getXmpz2ElementName()
+	{
+		return WcsProjectData.OBJECT_NAME;
+	}
 }

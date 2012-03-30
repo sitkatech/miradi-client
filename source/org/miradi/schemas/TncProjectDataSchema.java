@@ -46,4 +46,10 @@ public class TncProjectDataSchema extends BaseObjectSchema
 		createFieldSchemaMultiLineUserText(TncProjectData.TAG_PROJECT_CITATIONS);
 		createFieldSchemaMultiLineUserText(TncProjectData.TAG_CAP_STANDARDS_SCORECARD);
 	}
+	
+	@Override
+	public String getXmpz2ElementName()
+	{
+		return TncProjectData.OBJECT_NAME;
+	}
 }

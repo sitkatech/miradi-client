@@ -50,6 +50,11 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 	{
 		writeBaseObjectDataSchemaElement(getProject().getMetadata());
 		writeBaseObjectDataSchemaElement(getFosProjectData());
+		writeBaseObjectDataSchemaElement(getRareProjectData());
+		writeBaseObjectDataSchemaElement(getTncProjectData());
+		writeBaseObjectDataSchemaElement(getWcpaProjectData());
+		writeBaseObjectDataSchemaElement(getWcsProjectData());
+		writeBaseObjectDataSchemaElement(getWwfProjectData());
 	}
 	
 	protected void writeBaseObjectDataSchemaElement(final BaseObject baseObject) throws Exception
