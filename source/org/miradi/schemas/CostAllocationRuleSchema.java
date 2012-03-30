@@ -20,10 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.CostAllocationRule;
 
 public class CostAllocationRuleSchema extends BaseObjectSchema
 {
+	public static final String OBJECT_NAME = "CostAllocationRule";
+
 	public CostAllocationRuleSchema()
 	{
 		super();
@@ -37,5 +40,10 @@ public class CostAllocationRuleSchema extends BaseObjectSchema
 		createFieldSchemaRef(CostAllocationRule.TAG_PARENT_REF);
 		createFieldSchemaRef(CostAllocationRule.TAG_CHILD_REF);
 		createFieldSchemaInteger(CostAllocationRule.TAG_COST_PERCENTAGE);
+	}
+
+	public static int getObjectType()
+	{
+		return ObjectType.COST_ALLOCATION_RULE;
 	}
 }
