@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-30 14:09-0500\n"
+"POT-Creation-Date: 2012-03-30 14:12-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -4700,11 +4700,11 @@ msgstr "Важлива справа - Діюча важлива справа, щ
 msgid "Manage Stresses for "
 msgstr "Управляти стресом для"
 
-#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:407
+#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:406
 msgid "Manage Tagged Object Sets"
 msgstr "Управляти міченими наборами завдань"
 
-#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:133
+#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:132
 msgid "Manage Tags (BETA)..."
 msgstr "Маніпуляції з ярличками (BETA)..."
 
