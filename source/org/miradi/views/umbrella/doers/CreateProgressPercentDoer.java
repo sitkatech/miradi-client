@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.umbrella.doers;
 
 import org.miradi.objects.Desire;
-import org.miradi.objects.ProgressPercent;
+import org.miradi.schemas.ProgressPercentSchema;
 import org.miradi.views.diagram.doers.AbstractCreateProgressDoer;
 
 public class CreateProgressPercentDoer extends AbstractCreateProgressDoer
@@ -34,6 +34,6 @@ public class CreateProgressPercentDoer extends AbstractCreateProgressDoer
 	@Override
 	public int getAnnotationType()
 	{
-		return ProgressPercent.getObjectType();
+		return ProgressPercentSchema.getObjectType();
 	}
 }

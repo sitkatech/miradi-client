@@ -22,7 +22,7 @@ package org.miradi.views.umbrella.doers;
 import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Desire;
-import org.miradi.objects.ProgressPercent;
+import org.miradi.schemas.ProgressPercentSchema;
 import org.miradi.views.diagram.DeleteAnnotationDoer;
 
 public class DeleteProgressPercentDoer extends DeleteAnnotationDoer
@@ -42,7 +42,7 @@ public class DeleteProgressPercentDoer extends DeleteAnnotationDoer
 	@Override
 	public int getAnnotationType()
 	{
-		return ProgressPercent.getObjectType();
+		return ProgressPercentSchema.getObjectType();
 	}
 
 	@Override

@@ -150,6 +150,7 @@ import org.miradi.schemas.MeasurementSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.OrganizationSchema;
 import org.miradi.schemas.OtherNotableSpeciesSchema;
+import org.miradi.schemas.ProgressPercentSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.ScopeBoxSchema;
@@ -882,7 +883,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public ProgressPercent createProgressPercent() throws Exception
 	{
-		ORef progressPercentRef = createObject(ProgressPercent.getObjectType());
+		ORef progressPercentRef = createObject(ProgressPercentSchema.getObjectType());
 		return ProgressPercent.find(this, progressPercentRef);
 	}
 	

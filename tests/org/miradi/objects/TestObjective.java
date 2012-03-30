@@ -29,6 +29,7 @@ import org.miradi.project.ProjectForTesting;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
+import org.miradi.schemas.ProgressPercentSchema;
 import org.miradi.utils.CommandVector;
 
 
@@ -77,7 +78,7 @@ public class TestObjective extends TestDesire
 		Strategy strategy = projectToUse.createStrategy();
 		Objective objective = projectToUse.createObjective(strategy);
 		
-		verifyAnnotationIsDeletedFromParent(projectToUse, objective, Objective.TAG_PROGRESS_PERCENT_REFS, ProgressPercent.getObjectType());
+		verifyAnnotationIsDeletedFromParent(projectToUse, objective, Objective.TAG_PROGRESS_PERCENT_REFS, ProgressPercentSchema.getObjectType());
 	}
 
 	public static void verifyAnnotationIsDeletedFromParent(ProjectForTesting projectToUse, BaseObject parent, String annotationTag, int annotationType) throws Exception

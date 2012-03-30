@@ -28,8 +28,8 @@ import org.miradi.dialogs.base.EditableObjectListTableSubPanel;
 import org.miradi.main.EAM;
 import org.miradi.objects.Desire;
 import org.miradi.objects.Objective;
-import org.miradi.objects.ProgressPercent;
 import org.miradi.project.Project;
+import org.miradi.schemas.ProgressPercentSchema;
 import org.miradi.views.umbrella.ObjectPicker;
 
 public class ProgressPercentSubPanel extends EditableObjectListTableSubPanel
@@ -70,7 +70,7 @@ public class ProgressPercentSubPanel extends EditableObjectListTableSubPanel
 
 	private static int getObjectType()
 	{
-		return ProgressPercent.getObjectType();
+		return ProgressPercentSchema.getObjectType();
 	}
 
 	@Override

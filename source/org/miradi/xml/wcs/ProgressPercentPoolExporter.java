@@ -23,12 +23,13 @@ package org.miradi.xml.wcs;
 import org.martus.util.UnicodeWriter;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProgressPercent;
+import org.miradi.schemas.ProgressPercentSchema;
 
 public class ProgressPercentPoolExporter extends BaseObjectPoolExporter
 {
 	public ProgressPercentPoolExporter(XmpzXmlExporter wcsXmlExporterToUse)
 	{
-		super(wcsXmlExporterToUse, PROGRESS_PERCENT, ProgressPercent.getObjectType());
+		super(wcsXmlExporterToUse, PROGRESS_PERCENT, ProgressPercentSchema.getObjectType());
 	}
 	
 	@Override

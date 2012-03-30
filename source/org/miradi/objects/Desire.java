@@ -37,6 +37,7 @@ import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.ProgressPercentSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.CommandVector;
@@ -67,7 +68,7 @@ abstract public class Desire extends BaseObject
 	public int getAnnotationType(String tag)
 	{
 		if (tag.equals(TAG_PROGRESS_PERCENT_REFS))
-			return ProgressPercent.getObjectType();
+			return ProgressPercentSchema.getObjectType();
 				
 		return super.getAnnotationType(tag);
 	}
