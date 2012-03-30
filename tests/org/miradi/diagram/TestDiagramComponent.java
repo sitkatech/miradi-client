@@ -32,6 +32,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.FactorLink;
 import org.miradi.project.FactorCommandHelper;
+import org.miradi.schemas.FactorLinkSchema;
 import org.miradi.views.diagram.LinkCreator;
 
 public class TestDiagramComponent extends TestCaseWithProject
@@ -64,8 +65,8 @@ public class TestDiagramComponent extends TestCaseWithProject
 		DiagramCauseCell visibleNode = (DiagramCauseCell) createNode(ObjectType.CAUSE);
 		ORef visibleRef = visibleNode.getWrappedFactorRef();
 		
-		BaseId id = getObjectManager().createObject(FactorLink.getObjectType(), new BaseId(100));
-		ORef linkRef = new ORef(FactorLink.getObjectType(), id);
+		BaseId id = getObjectManager().createObject(FactorLinkSchema.getObjectType(), new BaseId(100));
+		ORef linkRef = new ORef(FactorLinkSchema.getObjectType(), id);
 		FactorLink cmLinkage =	FactorLink.find(getProject(), linkRef);
 		ORef factorLinkRef = cmLinkage.getRef();
 		getProject().setObjectData(factorLinkRef, FactorLink.TAG_FROM_REF, hiddenRef.toString());

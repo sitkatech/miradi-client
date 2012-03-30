@@ -89,7 +89,6 @@ import org.miradi.objectpools.WwfProjectDataPool;
 import org.miradi.objectpools.XenodataPool;
 import org.miradi.objectpools.XslTemplatePool;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.FactorLink;
 import org.miradi.objects.FosProjectData;
 import org.miradi.objects.IucnRedlistSpecies;
 import org.miradi.objects.KeyEcologicalAttribute;
@@ -128,6 +127,7 @@ import org.miradi.schemas.DashboardSchema;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.schemas.ExpenseAssignmentSchema;
+import org.miradi.schemas.FactorLinkSchema;
 import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.GroupBoxSchema;
@@ -155,7 +155,7 @@ public class ObjectManager
 
 		pools = new HashMap<Integer, BaseObjectInformation>();
 		IdAssigner ida = getNormalIdAssigner();
-		addNormalPool(new FactorLinkPool(ida), FactorLink.OBJECT_NAME);
+		addNormalPool(new FactorLinkPool(ida), FactorLinkSchema.OBJECT_NAME);
 		addNormalPool(new RatingCriterionPool(ida), RatingCriterion.OBJECT_NAME);
 		addNormalPool(new ValueOptionPool(ida), ValueOption.OBJECT_NAME);
 		addNormalPool(new TaskPool(ida), TaskSchema.OBJECT_NAME);

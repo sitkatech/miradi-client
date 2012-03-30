@@ -36,10 +36,10 @@ import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
-import org.miradi.objects.FactorLink;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.project.Project;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
+import org.miradi.schemas.FactorLinkSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.views.diagram.DiagramAsSharedPaster;
 import org.miradi.views.diagram.doers.CreateMarginDoer;
@@ -137,7 +137,7 @@ public class ConceptualModelByTargetSplitter
 	private void hideLinkLayer(ORef conceptualModelRef) throws Exception
 	{
 		CodeList codeListWithHiddenLinkLayer = new CodeList();
-		codeListWithHiddenLinkLayer.add(FactorLink.OBJECT_NAME);
+		codeListWithHiddenLinkLayer.add(FactorLinkSchema.OBJECT_NAME);
 		
 		CommandSetObjectData setLegendSettingsCommand = new CommandSetObjectData(conceptualModelRef, DiagramObject.TAG_HIDDEN_TYPES, codeListWithHiddenLinkLayer.toString());
 		getProject().executeCommand(setLegendSettingsCommand);

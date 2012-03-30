@@ -138,6 +138,7 @@ import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.DashboardSchema;
 import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.schemas.ExpenseAssignmentSchema;
+import org.miradi.schemas.FactorLinkSchema;
 import org.miradi.schemas.FundingSourceSchema;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.GroupBoxSchema;
@@ -1913,7 +1914,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public ORef createFactorLinkWithCommand(ORef fromFactorRef, ORef toFactorRef) throws Exception
 	{
-		CommandCreateObject createFactorLink = new CommandCreateObject(FactorLink.getObjectType());
+		CommandCreateObject createFactorLink = new CommandCreateObject(FactorLinkSchema.getObjectType());
 		executeCommand(createFactorLink);
 		
 		final ORef objectRef = createFactorLink.getObjectRef();

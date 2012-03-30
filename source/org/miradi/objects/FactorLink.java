@@ -21,7 +21,6 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
@@ -44,20 +43,15 @@ public class FactorLink extends BaseObject
 	@Override
 	public int getType()
 	{
-		return getObjectType();
+		return FactorLinkSchema.getObjectType();
 	}
 
 	@Override
 	public String getTypeName()
 	{
-		return OBJECT_NAME;
+		return FactorLinkSchema.OBJECT_NAME;
 	}
 
-	public static int getObjectType()
-	{
-		return ObjectType.FACTOR_LINK;
-	}
-	
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
@@ -88,7 +82,7 @@ public class FactorLink extends BaseObject
 
 	public static boolean is(int objectType)
 	{
-		return objectType == getObjectType();
+		return objectType == FactorLinkSchema.getObjectType();
 	}
 	
 	public static FactorLink find(Project project, ORef factorLinkRef)
@@ -99,6 +93,4 @@ public class FactorLink extends BaseObject
 	public static final String TAG_FROM_REF = "FromRef";
 	public static final String TAG_TO_REF = "ToRef";
 	public static final String TAG_BIDIRECTIONAL_LINK = "BidirectionalLink";
-	
-	public static final String OBJECT_NAME = "Link";
 }

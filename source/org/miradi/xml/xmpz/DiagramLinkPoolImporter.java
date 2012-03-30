@@ -32,6 +32,7 @@ import org.miradi.objects.FactorLink;
 import org.miradi.questions.DiagramLinkColorQuestion;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.DiagramLinkSchema;
+import org.miradi.schemas.FactorLinkSchema;
 import org.miradi.utils.PointList;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -96,7 +97,7 @@ public class DiagramLinkPoolImporter extends AbstractBaseObjectPoolImporter
 		ORef factorLinkRef = new ORef(ObjectType.FAKE, BaseId.INVALID);
 		if (!fromDiagramFactor.isGroupBoxFactor() && !toDiagramFactor.isGroupBoxFactor())
 		{
-			factorLinkRef = getProject().createObject(FactorLink.getObjectType());
+			factorLinkRef = getProject().createObject(FactorLinkSchema.getObjectType());
 			getProject().setObjectData(factorLinkRef, FactorLink.TAG_FROM_REF, fromDiagramFactor.getWrappedORef().toString());
 			getProject().setObjectData(factorLinkRef, FactorLink.TAG_TO_REF, toDiagramFactor.getWrappedORef().toString());
 		}
