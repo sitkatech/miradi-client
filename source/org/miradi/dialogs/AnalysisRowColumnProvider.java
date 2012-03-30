@@ -25,13 +25,13 @@ import org.miradi.dialogs.planning.WorkPlanCategoryTreeRowColumnProvider;
 import org.miradi.dialogs.planning.upperPanel.WorkPlanTreeTablePanel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.CodeToCodeListMap;
-import org.miradi.objects.ProjectResource;
 import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
 import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.BudgetCategoryOneSchema;
 import org.miradi.schemas.BudgetCategoryTwoSchema;
 import org.miradi.schemas.FundingSourceSchema;
+import org.miradi.schemas.ProjectResourceSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.views.workplan.WorkPlanView;
 
@@ -52,7 +52,7 @@ public class AnalysisRowColumnProvider extends AbstractBudgetCategoryRowColumnPr
 	public CodeList getRowCodesToShow() throws Exception
 	{
 		return new CodeList(new String[] {
-				ProjectResource.OBJECT_NAME,
+				ProjectResourceSchema.OBJECT_NAME,
 				AccountingCodeSchema.OBJECT_NAME,
 				FundingSourceSchema.OBJECT_NAME,
 				BudgetCategoryOneSchema.OBJECT_NAME,

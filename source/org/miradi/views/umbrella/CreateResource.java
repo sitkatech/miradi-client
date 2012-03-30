@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella;
 
-import org.miradi.objects.ProjectResource;
+import org.miradi.schemas.ProjectResourceSchema;
 import org.miradi.views.planning.doers.CreatePoolObjectDoer;
 
 public class CreateResource extends CreatePoolObjectDoer
@@ -27,6 +27,6 @@ public class CreateResource extends CreatePoolObjectDoer
 	@Override
 	protected int getTypeToCreate()
 	{
-		return ProjectResource.getObjectType();
+		return ProjectResourceSchema.getObjectType();
 	}
 }

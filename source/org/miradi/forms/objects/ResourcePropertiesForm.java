@@ -22,12 +22,13 @@ package org.miradi.forms.objects;
 import org.miradi.forms.FieldPanelSpec;
 import org.miradi.main.EAM;
 import org.miradi.objects.ProjectResource;
+import org.miradi.schemas.ProjectResourceSchema;
 
 public class ResourcePropertiesForm extends FieldPanelSpec
 {
 	public ResourcePropertiesForm()
 	{
-		int type = ProjectResource.getObjectType();
+		int type = ProjectResourceSchema.getObjectType();
 		addLabelAndField(type, ProjectResource.TAG_RESOURCE_TYPE);
 		addLabelAndFieldsWithLabels(EAM.text("Label|Resource"), type, new String[]{ProjectResource.TAG_GIVEN_NAME, ProjectResource.TAG_SUR_NAME, ProjectResource.TAG_INITIALS});		
 		addLabelAndFieldsWithLabels(EAM.text("Label|Roles (people only)"), type, new String[]{ProjectResource.TAG_ORGANIZATION, ProjectResource.TAG_POSITION, ProjectResource.TAG_LOCATION});

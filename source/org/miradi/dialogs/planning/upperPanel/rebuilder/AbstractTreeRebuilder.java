@@ -40,7 +40,6 @@ import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
-import org.miradi.objects.ProjectResource;
 import org.miradi.objects.SubTarget;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
@@ -58,6 +57,7 @@ import org.miradi.schemas.IntermediateResultSchema;
 import org.miradi.schemas.KeyEcologicalAttributeSchema;
 import org.miradi.schemas.MeasurementSchema;
 import org.miradi.schemas.ObjectiveSchema;
+import org.miradi.schemas.ProjectResourceSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.StrategySchema;
@@ -415,7 +415,7 @@ abstract public class AbstractTreeRebuilder
 			ObjectiveSchema.getObjectType(),
 			StrategySchema.getObjectType(),
 			IndicatorSchema.getObjectType(),
-			ProjectResource.getObjectType(),
+			ProjectResourceSchema.getObjectType(),
 			AccountingCodeSchema.getObjectType(),
 			FundingSourceSchema.getObjectType(),
 			BudgetCategoryOneSchema.getObjectType(),

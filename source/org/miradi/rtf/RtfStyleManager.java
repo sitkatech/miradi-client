@@ -44,6 +44,7 @@ import org.miradi.schemas.KeyEcologicalAttributeSchema;
 import org.miradi.schemas.MeasurementSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ProjectMetadataSchema;
+import org.miradi.schemas.ProjectResourceSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
@@ -144,7 +145,7 @@ public class RtfStyleManager
 			return FundingSourceSchema.OBJECT_NAME;
 		
 		if (ProjectResource.is(objectType))
-			return ProjectResource.OBJECT_NAME;
+			return ProjectResourceSchema.OBJECT_NAME;
 		
 		if (ObjectType.FAKE == objectType)
 			return "";

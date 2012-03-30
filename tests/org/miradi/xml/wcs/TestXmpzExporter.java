@@ -57,6 +57,7 @@ import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.questions.TncOperatingUnitsQuestion;
 import org.miradi.schemas.CauseSchema;
+import org.miradi.schemas.ProjectResourceSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.NullProgressMeter;
@@ -252,7 +253,7 @@ public class TestXmpzExporter extends TestCaseWithProject
 		assertEquals("Wrong number of resources?", resourceRefs.size(), matchingNodes.size());
 		for(int index = 0; index < matchingNodes.size(); ++index)
 		{
-			ORef nodeRef = new ORef(ProjectResource.getObjectType(), new BaseId(matchingNodes.get(index).getTextContent()));
+			ORef nodeRef = new ORef(ProjectResourceSchema.getObjectType(), new BaseId(matchingNodes.get(index).getTextContent()));
 			assertEquals("Wrong resource ref?", resourceRefs.get(index), nodeRef);
 		}
 	}
