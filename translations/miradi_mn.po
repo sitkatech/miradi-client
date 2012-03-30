@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-30 14:30-0500\n"
+"POT-Creation-Date: 2012-03-30 16:03-0500\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -291,19 +291,19 @@ msgstr "(Тодорхойлолт байхгүй)"
 msgid "(Error)"
 msgstr "(Алдаа)"
 
-#: Miradi/source/org/miradi/views/summary/SummaryLocationPanel.java:42
+#: Miradi/source/org/miradi/views/summary/SummaryLocationPanel.java:43
 msgid "(Latitude must be -90.0000 to +90.0000)"
 msgstr "(Байх ёстой өргөрөг -90.0000 to +90.0000)"
 
-#: Miradi/source/org/miradi/views/summary/SummaryLocationPanel.java:43
+#: Miradi/source/org/miradi/views/summary/SummaryLocationPanel.java:44
 msgid "(Longitude must be -180.0000 to +180.0000)"
 msgstr "(Байх ёстой уртраг -180.0000 to +180.0000)"
 
-#: Miradi/source/org/miradi/forms/summary/RareTabTrackingSubPanelForm.java:41
+#: Miradi/source/org/miradi/forms/summary/RareTabTrackingSubPanelForm.java:42
 msgid "(See Location tab)"
 msgstr "(Байршилын тэмдэглэлийг харна уу)"
 
-#: Miradi/source/org/miradi/forms/summary/RareTabTrackingSubPanelForm.java:38
+#: Miradi/source/org/miradi/forms/summary/RareTabTrackingSubPanelForm.java:39
 msgid "(See Project tab)"
 msgstr "(Төслийн тэмдэглэлийг харна уу)"
 
@@ -311,24 +311,24 @@ msgstr "(Төслийн тэмдэглэлийг харна уу)"
 msgid "(Translation: %code %date)"
 msgstr "(Орчуулга: %код %огноо)"
 
-#: Miradi/source/org/miradi/objects/DiagramFactor.java:226
+#: Miradi/source/org/miradi/objects/DiagramFactor.java:224
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectList.java:70
 msgid "(Unknown)"
 msgstr ""
 
-#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:49
+#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:51
 msgid "(see Diagram)"
 msgstr "(Диаграммыг харна уу)"
 
-#: Miradi/source/org/miradi/forms/summary/RareTabCampaignPlanningSubPanelForm.java:41
+#: Miradi/source/org/miradi/forms/summary/RareTabCampaignPlanningSubPanelForm.java:42
 msgid "(see Project tab)"
 msgstr "(Төслийн тэмдэглэлийг харна уу)"
 
-#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:51
+#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:53
 msgid "(see Scope tab)"
 msgstr "(Хамрах хүрээний тэмдэглэлийг харна уу)"
 
-#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:54
+#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:56
 msgid "(see TNC tab for Ecoregions)"
 msgstr "(TNC-гийн Экологийн бүсийн тэмдэглэлийг харна уу)"
 
@@ -503,7 +503,7 @@ msgstr "7B. Сурч мэдсэн зүйлээ хуваалцах "
 msgid "7C. Create a Learning Environment"
 msgstr "7C. Сурах орчинг бүрдүүлэх"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1256
+#: Miradi/source/org/miradi/main/MainWindow.java:1257
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -800,7 +800,7 @@ msgstr ""
 msgid "<html><b>Overall<br>Project<br>Rating</b></html>"
 msgstr "<html><b>Нийт<br>Төсөлt<br>Үнэлгээ</b></html>"
 
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:96
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:97
 msgid "<html><b>Summary<br>Target-Threat<br>Rating"
 msgstr "<html><b>Дүгнэлт<br>Хмагаалах объект- Аюул заналTarget<br>Үнэлгээ"
 
@@ -982,7 +982,7 @@ msgstr ""
 "энгээдтоод хэсэгт хар <code class='toolbarbutton'>&lt;Data Location&gt;</"
 "code> tab."
 
-#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:41
+#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:42
 msgid "<html>Select which column groups to display."
 msgstr "<html>Аль бүлгийн баганыг харуулахыг сонгох."
 
@@ -1049,7 +1049,7 @@ msgstr ""
 msgid "A project or file by this name already exists: "
 msgstr "Ийм нэр бүхий төсөл эсвэл файл байна:"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:516
+#: Miradi/source/org/miradi/main/MainWindow.java:517
 msgid "A project with this name already exists."
 msgstr ""
 
@@ -1110,7 +1110,7 @@ msgstr ""
 msgid "AccountingCodes"
 msgstr "Тооцооны кодууд"
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:54
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:56
 msgid "Acct Code"
 msgstr "Acct Код"
 
@@ -1994,7 +1994,7 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:198
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:85
-#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:85
+#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:86
 msgid "Activity"
 msgstr "Үйл ажиллагаа"
 
@@ -2058,25 +2058,25 @@ msgstr "Үүрэг ба хариуцлагыг тохиролцох"
 msgid "Agree upon team roles"
 msgstr "Багийн дүрмийг тохирох"
 
-#: Miradi/source/org/miradi/utils/ConceptualModelByTargetSplitter.java:55
+#: Miradi/source/org/miradi/utils/ConceptualModelByTargetSplitter.java:56
 msgid "All on One Page"
 msgstr "Бүгдийг нэг хуудсанд"
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:79
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:81
 msgid "All subtasks within this item will be removed as well."
 msgstr "Энэ зүйл дэх бүх дагалдах үүрэг мөн адил арилах болно."
 
-#: Miradi/source/org/miradi/utils/MultiTableRowSortController.java:144
+#: Miradi/source/org/miradi/utils/MultiTableRowSortController.java:145
 msgid "An Error Occurred During Sorting."
 msgstr "Сортлох явцад алдаа гарлаа."
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAssignmentMainTableModel.java:76
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:117
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAssignmentMainTableModel.java:78
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:119
 msgid "An error has occured while writing assignment data."
 msgstr "Даалгаварын огноо бичилтэнд алдаа гарлаа."
 
-#: Miradi/source/org/miradi/views/diagram/DiagramSplitPane.java:333
-#: Miradi/source/org/miradi/diagram/DiagramModel.java:787
+#: Miradi/source/org/miradi/views/diagram/DiagramSplitPane.java:335
+#: Miradi/source/org/miradi/diagram/DiagramModel.java:790
 msgid ""
 "An error is preventing this diagram from displaying correctly. Most likely, "
 "the project has gotten corrupted. Please contact the Miradi team for help "
@@ -2174,11 +2174,11 @@ msgid "Are you sure you want to delete this Progress Percent?"
 msgstr "Хэрэгжилтийн хувийг устгах уу?"
 
 #: Miradi/source/org/miradi/views/diagram/doers/DeleteProgressReportDoer.java:50
-#: Miradi/source/org/miradi/views/diagram/doers/DeleteStrategyProgressReportDoer.java:51
+#: Miradi/source/org/miradi/views/diagram/doers/DeleteStrategyProgressReportDoer.java:52
 msgid "Are you sure you want to delete this Progress Report?"
 msgstr "Хэрэгжилтийн тайланг устгах уу?"
 
-#: Miradi/source/org/miradi/views/diagram/doers/DeleteStressDoer.java:51
+#: Miradi/source/org/miradi/views/diagram/doers/DeleteStressDoer.java:52
 msgid "Are you sure you want to delete this Stress?"
 msgstr "Энэ дарамтыг устгах уу?"
 
@@ -2193,7 +2193,7 @@ msgstr ""
 msgid "Are you sure you want to delete this old-format Miradi project? "
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:46
+#: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:47
 msgid "Are you sure?"
 msgstr "Та итгэлтэй байна уу?"
 
@@ -2209,15 +2209,15 @@ msgstr ""
 msgid "Arranging Diagram"
 msgstr "Диаграммыг бүтээх"
 
-#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:480
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:485
 msgid "Arranging Strategies..."
 msgstr "Arranging Strategies..."
 
-#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:473
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:478
 msgid "Arranging Targets..."
 msgstr "Хамгаалах объектыг цэгцлэх..."
 
-#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:462
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:467
 msgid "Arranging Threats..."
 msgstr "Аюулыг цэгцлэх..."
 
@@ -2394,7 +2394,7 @@ msgstr "Автомат"
 msgid "Behind"
 msgstr "Ард"
 
-#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:52
+#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:54
 msgid "Biodiversity Area (ha)"
 msgstr "Биологийн төрөл зүйлийн газар нутаг (га)"
 
@@ -2471,7 +2471,7 @@ msgid "Bundle Rules"
 msgstr "Багц Дүрэм"
 
 #: Miradi/source/org/miradi/views/diagram/doers/AbstractPasteDoer.java:83
-#: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:52
+#: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:53
 #: Miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:229
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/DirectoryChooserDialog.java:76
 #: Miradi/source/org/miradi/main/InitialSplashPanel.java:127
@@ -2494,7 +2494,7 @@ msgstr "Товчлуур|Хаах"
 msgid "Button|Continue"
 msgstr "Товчлуур|Үргэлжлүүлэх"
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:80
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:82
 msgid "Button|Delete"
 msgstr "Товчлуур|Устгах"
 
@@ -2534,7 +2534,7 @@ msgstr "Товчлуур|Үгүй"
 msgid "Button|OK"
 msgstr "Товчлуур|Зөвшөөрөн сонгох"
 
-#: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:51
+#: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:52
 msgid "Button|Ok"
 msgstr "Товчлуур|Зөвшөөрөн сонгох"
 
@@ -2546,7 +2546,7 @@ msgstr ""
 msgid "Button|Paste As Copies"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/doers/PasteFactorContentDoer.java:194
+#: Miradi/source/org/miradi/views/diagram/doers/PasteFactorContentDoer.java:195
 msgid "Button|Paste Contents"
 msgstr "Товчлуур|Өөр газраас хуулсан агуулгыг оруулах"
 
@@ -2562,7 +2562,7 @@ msgstr "Товчлуур|Солих"
 msgid "Button|Replace Backup"
 msgstr "Точлуур|Backup солих"
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:80
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:82
 msgid "Button|Retain"
 msgstr "Товчлуур|Хэвээр нь үлдээх"
 
@@ -2586,7 +2586,7 @@ msgstr "Улирлаар"
 msgid "By Year"
 msgstr "Жилээр"
 
-#: Miradi/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:35
+#: Miradi/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:36
 msgid "CM Page"
 msgstr "CM Хуудас"
 
@@ -2602,16 +2602,16 @@ msgstr "Хуанли"
 msgid "Calibri"
 msgstr "Calibri"
 
-#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:109
-#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:118
+#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:110
+#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:119
 msgid "Can't Create Link"
 msgstr "Холбоос үүсэхгүй байна"
 
-#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:117
+#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:118
 msgid "Can't link a group to an item it contains"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:108
+#: Miradi/source/org/miradi/views/diagram/LinkCreator.java:109
 msgid "Can't link an item to itself"
 msgstr "Нэг зүйлийг өөртэй нь холбож болохгүй байна"
 
@@ -2621,7 +2621,7 @@ msgstr "Нэг зүйлийг өөртэй нь холбож болохгүй б
 msgid "Cancel"
 msgstr "Цуцлах"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:534
+#: Miradi/source/org/miradi/main/MainWindow.java:535
 msgid "Cancelled"
 msgstr ""
 
@@ -2683,12 +2683,12 @@ msgid "Category Ib: Wilderness area"
 msgstr "Категори Ib: Зэрлэг онгон газар нутаг"
 
 #: Miradi/source/org/miradi/views/workplan/doers/DeleteCategoryOneDoer.java:34
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:60
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:62
 msgid "Category One"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/workplan/doers/DeleteCategoryTwoDoer.java:34
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:63
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:65
 msgid "Category Two"
 msgstr ""
 
@@ -2743,7 +2743,7 @@ msgstr "Эхлэл үүсгэлийн Зорилгыг сонгох"
 msgid "Choose Indicator to Create from"
 msgstr "Эхлэл үүсгэлийн Шалгуур Үзүүлэлтийг сонгох"
 
-#: Miradi/source/org/miradi/views/diagram/doers/CreateStressFromKeaDoer.java:60
+#: Miradi/source/org/miradi/views/diagram/doers/CreateStressFromKeaDoer.java:61
 msgid "Choose Key Ecological Attribute to Create from"
 msgstr "Эхлэл үүсгэлийн Экологийн Гол Хүчин Зүйлийг сонгох"
 
@@ -2797,8 +2797,8 @@ msgstr ""
 msgid "Collapse Selected Column"
 msgstr "Сонгосон баганыг нураах"
 
-#: Miradi/source/org/miradi/views/workplan/EditAnalysisRowsPanel.java:49
-#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:43
+#: Miradi/source/org/miradi/views/workplan/EditAnalysisRowsPanel.java:50
+#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:44
 msgid "Column groups"
 msgstr ""
 
@@ -2890,7 +2890,7 @@ msgstr ""
 "эх үүсвэрээс оруулсан хүлээгдэж буй хувь нэмэр гэж тодорхологддог. ( given "
 "the continuation of the existing management/conservation situation)."
 
-#: Miradi/source/org/miradi/views/diagram/DiagramSplitPane.java:176
+#: Miradi/source/org/miradi/views/diagram/DiagramSplitPane.java:178
 msgid "Control Bar"
 msgstr "Control Bar"
 
@@ -2914,7 +2914,7 @@ msgstr ""
 msgid "Could not find tableColumn in map. tableColumn = "
 msgstr "map. tableColumn =-аас хүснэгтийн багана(tableColumn) олдсонгүй"
 
-#: Miradi/source/org/miradi/forms/summary/RareTabTrackingSubPanelForm.java:40
+#: Miradi/source/org/miradi/forms/summary/RareTabTrackingSubPanelForm.java:41
 msgid "Country"
 msgstr "Улс"
 
@@ -2935,7 +2935,7 @@ msgstr "Амжилтгүй болсныг үүсгэх:"
 msgid "Create Folder"
 msgstr "Фолдэр үүсгэх"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:613
+#: Miradi/source/org/miradi/main/MainWindow.java:614
 msgid "Create Project"
 msgstr ""
 
@@ -2959,7 +2959,7 @@ msgstr "Таамаглалыг харуулах үр дүнгийн гинжин
 msgid "Create..."
 msgstr "Үүсгэх..."
 
-#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:77
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:82
 msgid "Creating group boxes..."
 msgstr "Бүлгийн хайрцгуудыг үүсгэх..."
 
@@ -2975,8 +2975,8 @@ msgstr "Бүх үйлдлйин систем Serif"
 msgid "Currency|Other"
 msgstr "Мөнгөн тэмдэгт|Бусад"
 
-#: Miradi/source/org/miradi/forms/objects/MeasurementPropertiesForm.java:35
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:54
+#: Miradi/source/org/miradi/forms/objects/MeasurementPropertiesForm.java:36
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:55
 msgid "Current Status"
 msgstr "Одоогийн статус"
 
@@ -3018,7 +3018,7 @@ msgstr ""
 msgid "Cut"
 msgstr "Хасах"
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:58
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:60
 msgid "Daily Rate"
 msgstr "Өдрийн ханш"
 
@@ -3076,7 +3076,7 @@ msgid "Data was exported as tab delimited."
 msgstr "Мэдээлэл таб-тай экспортлогдсон"
 
 #: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:53
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:46
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:47
 msgid "Date"
 msgstr "Огноо"
 
@@ -3112,8 +3112,8 @@ msgstr "Төслийн цар хүрээг тодорхойлох"
 #: Miradi/source/org/miradi/views/noproject/DeleteProject.java:33
 #: Miradi/source/org/miradi/views/noproject/DeleteOldProject.java:45
 #: Miradi/source/org/miradi/views/noproject/DeleteOldProject.java:46
-#: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:61
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
+#: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:65
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:75
 #: Miradi/source/org/miradi/main/EAM.java:518
 #: Miradi/source/org/miradi/main/EAM.java:519
@@ -3128,7 +3128,7 @@ msgstr "Устгах %s"
 msgid "Delete Resource"
 msgstr "Нөөцийг устгах"
 
-#: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:45
+#: Miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:46
 #: Miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:98
 msgid "Delete..."
 msgstr "...устгах"
@@ -3200,11 +3200,11 @@ msgstr "Тодорхой үйл ажиллагаа/арга зүй, үүрэг �
 msgid "Detail methods, tasks, and responsibilities"
 msgstr "Тодорхой арга зүй, үүрэг даалгавар, ба хариуцлага"
 
-#: Miradi/source/org/miradi/dialogs/viability/ModelessTargetSubPanel.java:55
+#: Miradi/source/org/miradi/dialogs/viability/ModelessTargetSubPanel.java:56
 msgid "Details"
 msgstr "Дэлгэрэнгүй байдал"
 
-#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:113
+#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:114
 msgid "Details:"
 msgstr "Дэлгэрэнгүй байдал:"
 
@@ -3276,11 +3276,11 @@ msgstr "Хамгаалах объектын амьдрах чадварыг бо
 msgid "Diagram"
 msgstr "Диаграмм"
 
-#: Miradi/source/org/miradi/dialogs/base/CodeListPanelWithDiagramObjectDataInclusionDropDown.java:46
+#: Miradi/source/org/miradi/dialogs/base/CodeListPanelWithDiagramObjectDataInclusionDropDown.java:47
 msgid "Diagram Data Inclusion Chooser"
 msgstr "Диаграммын Мэдээллийг Багтаах Сонгогч"
 
-#: Miradi/source/org/miradi/dialogs/diagram/DiagramLinkColorSubPanel.java:43
+#: Miradi/source/org/miradi/dialogs/diagram/DiagramLinkColorSubPanel.java:44
 msgid "Diagram Link Color Panel"
 msgstr "Диаграмм холбоос Өнгөт Дэлгэцl"
 
@@ -3436,7 +3436,7 @@ msgstr "-ээр орох: "
 msgid "Enter New Name"
 msgstr "Шинэ нэр өгөх"
 
-#: Miradi/source/org/miradi/views/diagram/doers/CreateNamedTaggedObjectSetDoer.java:48
+#: Miradi/source/org/miradi/views/diagram/doers/CreateNamedTaggedObjectSetDoer.java:49
 msgid "Enter Tag Name"
 msgstr "Хаягийн нэрийг оруулах"
 
@@ -3444,15 +3444,15 @@ msgstr "Хаягийн нэрийг оруулах"
 msgid "Entire Project Duration"
 msgstr "Төсөл үргэлжлэх нийт хугацаа"
 
-#: Miradi/source/org/miradi/objecthelpers/ThreatTargetVirtualLinkHelper.java:102
+#: Miradi/source/org/miradi/objecthelpers/ThreatTargetVirtualLinkHelper.java:104
 #: Miradi/source/org/miradi/main/EAM.java:427
 #: Miradi/source/org/miradi/dialogfields/ReadOnlyCodeListField.java:87
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:80
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetThreatLinkTableModel.java:76
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetSummaryRowTableModel.java:66
 #: Miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:112
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:105
-#: Miradi/source/org/miradi/dialogs/progressPercent/ProgressPercentTableModel.java:98
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:107
+#: Miradi/source/org/miradi/dialogs/progressPercent/ProgressPercentTableModel.java:99
 msgid "Error"
 msgstr "Алдаа"
 
@@ -3460,7 +3460,7 @@ msgstr "Алдаа"
 msgid "Error Creating: %s"
 msgstr "Алдаа үүсгэх: %s"
 
-#: Miradi/source/org/miradi/utils/MultiTableRowSortController.java:173
+#: Miradi/source/org/miradi/utils/MultiTableRowSortController.java:174
 msgid "Error Occurred During Sorting"
 msgstr "Ангилахад алдаа"
 
@@ -3468,7 +3468,7 @@ msgstr "Ангилахад алдаа"
 msgid "Error Occurred please try saving under different name."
 msgstr "Алдаа гарсан тул өөр нэр өгч хадгалах."
 
-#: Miradi/source/org/miradi/objects/Dashboard.java:297
+#: Miradi/source/org/miradi/objects/Dashboard.java:302
 msgid "Error Retrieving Data"
 msgstr ""
 
@@ -3508,7 +3508,7 @@ msgstr "Error occurred while switching threat rating mode."
 msgid "Error occurred while trying to export current page as RTF.\n"
 msgstr "Хуудсыг RTF байдлаар гаргах үед алдаа гарлаа.\n"
 
-#: Miradi/source/org/miradi/views/reports/doers/RunReportTemplateDoer.java:78
+#: Miradi/source/org/miradi/views/reports/doers/RunReportTemplateDoer.java:79
 msgid ""
 "Error occurred while trying to export selected report template as RTF.\n"
 msgstr ""
@@ -3529,7 +3529,7 @@ msgstr "Алдаа унших %s. Zip file хүчингүй байж болзо�
 msgid "Error renaming project: "
 msgstr "Төслийн нэрийг солиход алдаа: "
 
-#: Miradi/source/org/miradi/dialogs/treetables/TreeTablePanel.java:126
+#: Miradi/source/org/miradi/dialogs/treetables/TreeTablePanel.java:127
 msgid "Error restoring tree state"
 msgstr "Алдаа сэргээгдэж байна Error restoring tree state"
 
@@ -3541,7 +3541,7 @@ msgstr "Үйл ажиллагаа ба мониторингийн өртгийн
 msgid "Euro"
 msgstr "Евро"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:834
+#: Miradi/source/org/miradi/main/MainWindow.java:835
 msgid "Existing data for a different fiscal year is being excluded"
 msgstr "Өөр санхүүгийн жилийн одоогийн мэдээлэл хасагдаж байна."
 
@@ -3588,7 +3588,7 @@ msgid ""
 " CodeList= %s"
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:561
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:566
 msgid "Extracting factors..."
 msgstr "Хүчин зүйлүүдийг...гаргаж авах"
 
@@ -3604,7 +3604,7 @@ msgstr "FOS Сургалтын төрөл|Бусад"
 msgid "FTE Days Per Year:"
 msgstr "Үндсэн ажилтны нэг жил дэх ажлын өдрүүд:"
 
-#: Miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:429
+#: Miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:430
 msgid "Factor Properties"
 msgstr "Хүчин Зүйлийн Properties"
 
@@ -3632,7 +3632,7 @@ msgid "File name must contain only alpha numeric and/or '_' characters."
 msgstr "Файлын нэр зөвхөн альфа тоо ба/ '_'тэмдэгтүүдийг агуулах ёстой."
 
 #: Miradi/source/org/miradi/xml/AbstractXmlImporter.java:95
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:175
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:198
 msgid "File to import does not validate."
 msgstr "Оруулах файл хүчин төгөлдөр болохгүй байна."
 
@@ -3704,7 +3704,7 @@ msgstr "Төслийн концепцийн загварыг эцэслэн ду
 msgid "Finalize strategic plan"
 msgstr "Стратеги төлөвлөгөөг эцэслэн дуусгах"
 
-#: Miradi/source/org/miradi/forms/summary/PlanningTabFinancialSubPanelForm.java:30
+#: Miradi/source/org/miradi/forms/summary/PlanningTabFinancialSubPanelForm.java:31
 msgid "Financial"
 msgstr "Санхүүгийн"
 
@@ -3716,11 +3716,11 @@ msgstr ""
 msgid "Financial Settings"
 msgstr "Санхүүгийн Settings"
 
-#: Miradi/source/org/miradi/project/ProjectCalendar.java:368
+#: Miradi/source/org/miradi/project/ProjectCalendar.java:369
 msgid "Fiscal Quarter Prefix|FQ"
 msgstr "Санхүүгийн жилийн улиралын угтвар үг|СЖУ"
 
-#: Miradi/source/org/miradi/project/ProjectCalendar.java:358
+#: Miradi/source/org/miradi/project/ProjectCalendar.java:359
 msgid "Fiscal Year|FY"
 msgstr "Санхүүгийн жил|СЖ"
 
@@ -3748,8 +3748,8 @@ msgstr ""
 msgid "Folder Chooser"
 msgstr "Фолдэр Сонгогч"
 
-#: Miradi/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:51
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:70
+#: Miradi/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:53
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:74
 msgid "Font"
 msgstr "Үсгийн фонд"
 
@@ -3803,7 +3803,7 @@ msgstr "Ой - Субтропикийн/Тропикийн Намаг"
 msgid "Forest - Temperate"
 msgstr "Ой- Сэрүүн бүсийн"
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:485
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:488
 msgid "Found Corrupted Data:"
 msgstr "Эвдэрсэн мэдээлэл олдсон:"
 
@@ -3857,7 +3857,7 @@ msgstr "Бүрэн тайлан"
 
 #: Miradi/source/org/miradi/views/planning/doers/DeleteFundingSourceDoer.java:34
 #: Miradi/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:49
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:57
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:59
 msgid "Funding Source"
 msgstr "Санхүүжүүлэх эх үүсвэр"
 
@@ -3872,11 +3872,11 @@ msgid "Funding Sources - The sources of money available to your project."
 msgstr "Санхүүжүүлэх эх үүсвэрүүд - Таны төслийн мөнгөний эх үүсвэрүүд."
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:31
-#: Miradi/source/org/miradi/forms/objects/GoalPropertiesForm.java:31
+#: Miradi/source/org/miradi/forms/objects/GoalPropertiesForm.java:32
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:77
-#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:164
-#: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:41
-#: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:44
+#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:166
+#: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:42
+#: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:45
 msgid "Goal"
 msgstr "Зорилгоl"
 
@@ -3895,10 +3895,10 @@ msgstr ""
 msgid "Goal Relevancy Panel"
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:164
-#: Miradi/source/org/miradi/dialogs/task/ActivityDetailsPanelWithRelevancyOverrideFields.java:45
-#: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:59
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:92
+#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:166
+#: Miradi/source/org/miradi/dialogs/task/ActivityDetailsPanelWithRelevancyOverrideFields.java:46
+#: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:60
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:96
 msgid "Goals"
 msgstr "Зорилгууд"
 
@@ -3906,7 +3906,7 @@ msgstr "Зорилгууд"
 msgid "Goals Only"
 msgstr "Зөвхөн зорилгууд"
 
-#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:101
+#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:102
 msgid "Goals:"
 msgstr "Зорилгууд:"
 
@@ -3960,7 +3960,7 @@ msgstr "Бодит-байдал ба хянан засварлахзагвар"
 msgid "Group Box"
 msgstr "Бүлгийн хайрцаг"
 
-#: Miradi/source/org/miradi/dialogs/diagram/GroupBoxPropertiesPanel.java:54
+#: Miradi/source/org/miradi/dialogs/diagram/GroupBoxPropertiesPanel.java:55
 msgid "Group Box Properties"
 msgstr "Бүлгийн хайрцгийн Properties"
 
@@ -3968,7 +3968,7 @@ msgstr "Бүлгийн хайрцгийн Properties"
 msgid "Group by"
 msgstr ""
 
-#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:53
+#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:55
 msgid "Habitat"
 msgstr "Амьдрах орчин"
 
@@ -3991,7 +3991,7 @@ msgstr "Баганы дөрөвний нэгийг нуух"
 msgid "High"
 msgstr "Өндөр"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1396
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1419
 msgid "High/Very-High Threat Chains"
 msgstr "Өндөр/Маш-Өндөр Аюул Заналын Гинжин Холбоо"
 
@@ -3999,7 +3999,7 @@ msgstr "Өндөр/Маш-Өндөр Аюул Заналын Гинжин Хол
 msgid "How Reports Work"
 msgstr "Тайлан Хэрхэн Ажиллах"
 
-#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:50
+#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:52
 msgid "Human Stakeholder Pop Size"
 msgstr "Оролцогч Хүн Амын Тоо"
 
@@ -4082,7 +4082,7 @@ msgid ""
 "at your project site?"
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:99
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:104
 msgid "Ignoring unlinked factors..."
 msgstr "Холбоогүй хүчин зүйлүүдийг анхаарахгүй байх..."
 
@@ -4139,7 +4139,7 @@ msgstr "Оруулах..."
 msgid "ImportZip"
 msgstr "Zip-ийг оруулах"
 
-#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:185
+#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:187
 msgid "Importing ConPro Data..."
 msgstr ""
 
@@ -4147,7 +4147,7 @@ msgstr ""
 msgid "Importing MPZ"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:109
+#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:111
 msgid "Importing Miradi Data..."
 msgstr ""
 
@@ -4201,7 +4201,7 @@ msgstr ""
 "хангасан байдаг : хэмжигдэхүйц, тодорхой, тогтвортой ба мэдрэмтгий.  Шалгуур "
 "үзүүлэлтийг Miradi-д нил ягаан гурвалжингаар төлөөлүүлсэн."
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1294
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1317
 msgid "Indicator Holder"
 msgstr "Indicator Holder"
 
@@ -4209,12 +4209,12 @@ msgstr "Indicator Holder"
 msgid "Indicator Relevancy Panel"
 msgstr "Шалгуур үзүүлэлттэй холбоотой жагсаалт"
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:155
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:158
 msgid "Indicator does not have a direct/indirect factor parent. "
 msgstr "Шалгуур үзүүлэлт нь шууд/шууд бус хүчин зүйлийн эх сурвалжгүй байна."
 
-#: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:48
-#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:54
+#: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:49
+#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:55
 msgid "Indicators"
 msgstr "Шалгуур үзүүлэлтүүд"
 
@@ -4222,7 +4222,7 @@ msgstr "Шалгуур үзүүлэлтүүд"
 msgid "Indicators Only"
 msgstr "Зөвхөн шалгуур үзүүлэлтүүд"
 
-#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:95
+#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:96
 msgid "Indicators:"
 msgstr "Шалгуур үзүүлэлтүүд:"
 
@@ -4321,7 +4321,7 @@ msgid "Invalid project name:"
 msgstr "Төслийн нэр танигдахгүй:"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:223
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:105
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:106
 msgid "Irreversibility"
 msgstr "Эргэшгүй"
 
@@ -4362,7 +4362,7 @@ msgid "Jun"
 msgstr "Зургаан сар"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:141
-#: Miradi/source/org/miradi/forms/objects/KeyEcologicalAttributePropertiesForm.java:32
+#: Miradi/source/org/miradi/forms/objects/KeyEcologicalAttributePropertiesForm.java:33
 msgid "KEA"
 msgstr "ЭЧХЗ"
 
@@ -4400,11 +4400,11 @@ msgstr "Хадгалах"
 msgid "Key Attribute"
 msgstr "Чухал Хүчин Зүйл"
 
-#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:41
+#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:42
 msgid "Key Ecological Attribute (KEA)"
 msgstr "Экологийн Чухал Хүчин Зүйл (ЭЧХЗ)"
 
-#: Miradi/source/org/miradi/objects/AccountingCode.java:70
+#: Miradi/source/org/miradi/objects/AccountingCode.java:64
 msgid "Label|(Undefined Accounting Code)"
 msgstr "Хаяг|( Тооцооны код тодорхой бус)"
 
@@ -4412,7 +4412,7 @@ msgstr "Хаяг|( Тооцооны код тодорхой бус)"
 msgid "Label|(Undefined Funding Source)"
 msgstr "Хаяг|(Санхүүгийн эх үүсвэр тодорхой бус)"
 
-#: Miradi/source/org/miradi/objects/ProjectResource.java:119
+#: Miradi/source/org/miradi/objects/ProjectResource.java:113
 msgid "Label|(Undefined Resource)"
 msgstr "Хаяг|(Нөөц тодохрой бус)"
 
@@ -4421,32 +4421,32 @@ msgid "Label|--- affects -->"
 msgstr "Хаяг|--- нөлөөлөх -->"
 
 #: Miradi/source/org/miradi/views/summary/BiodiversityPanel.java:37
-#: Miradi/source/org/miradi/forms/summary/ScopeTabBiodiversitySubPanelForm.java:40
+#: Miradi/source/org/miradi/forms/summary/ScopeTabBiodiversitySubPanelForm.java:41
 msgid "Label|Biodiversity Area (hectares)"
 msgstr "Хаяг|Биологийн төрөл зүйлийн газар нутаг (гектар)"
 
-#: Miradi/source/org/miradi/objects/BudgetCategoryOne.java:70
+#: Miradi/source/org/miradi/objects/BudgetCategoryOne.java:64
 msgid "Label|Budget Category One"
 msgstr ""
 
-#: Miradi/source/org/miradi/objects/BudgetCategoryTwo.java:70
+#: Miradi/source/org/miradi/objects/BudgetCategoryTwo.java:64
 msgid "Label|Budget Category Two"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/RareCampaignSummarySubPanel.java:69
+#: Miradi/source/org/miradi/views/summary/RareCampaignSummarySubPanel.java:72
 msgid "Label|Campaign"
 msgstr "Хаяг|Кампанит ажил"
 
-#: Miradi/source/org/miradi/views/summary/RareCampaignPlanningSummarySubPanel.java:56
+#: Miradi/source/org/miradi/views/summary/RareCampaignPlanningSummarySubPanel.java:57
 msgid "Label|Campaign Planning"
 msgstr "Хаяг|Төлөвлөлтийн кампанит ажил"
 
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/ThreatRatingCommentsSubpanel.java:38
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/ThreatRatingCommentsSubpanel.java:39
 msgid "Label|Comments"
 msgstr "Хаяг|Тайлбар"
 
 #: Miradi/source/org/miradi/views/summary/SummaryPlanningFinancialSubPanel.java:39
-#: Miradi/source/org/miradi/forms/summary/PlanningTabFinancialSubPanelForm.java:34
+#: Miradi/source/org/miradi/forms/summary/PlanningTabFinancialSubPanelForm.java:35
 msgid "Label|Currency"
 msgstr "Хаяг|Мөнгөний нэгж"
 
@@ -4454,22 +4454,22 @@ msgstr "Хаяг|Мөнгөний нэгж"
 msgid "Label|Existing Projects:"
 msgstr "Хаяг|Хэрэгжиж буй төслүүд:"
 
-#: Miradi/source/org/miradi/views/summary/FOSSummaryPanel.java:56
+#: Miradi/source/org/miradi/views/summary/FOSSummaryPanel.java:57
 msgid "Label|FOS"
 msgstr "Хаяг|FOS"
 
 #: Miradi/source/org/miradi/views/summary/HumanStakeholderPanel.java:37
-#: Miradi/source/org/miradi/forms/summary/ScopeTabHumanSubPanelForm.java:40
+#: Miradi/source/org/miradi/forms/summary/ScopeTabHumanSubPanelForm.java:41
 msgid "Label|Human Stakeholder Pop Size"
 msgstr "Хаяг|Оролцогч Хүн Амын Тоо"
 
-#: Miradi/source/org/miradi/forms/objects/ResourcePropertiesForm.java:38
-#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:72
-#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:76
+#: Miradi/source/org/miradi/forms/objects/ResourcePropertiesForm.java:39
+#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:73
+#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:77
 msgid "Label|IM Address"
 msgstr "Хаяг|IM хаяг"
 
-#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:49
+#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:50
 msgid "Label|Initials"
 msgstr "Хаяг|Нэрийн эхний үсгүүд"
 
@@ -4486,7 +4486,7 @@ msgstr "Хаяг|Шинэ стратегийн төсөл"
 msgid "Label|New Factor"
 msgstr "Хаяг|Шинэ хүчин зүйл"
 
-#: Miradi/source/org/miradi/views/diagram/doers/InsertGroupBoxDoer.java:144
+#: Miradi/source/org/miradi/views/diagram/doers/InsertGroupBoxDoer.java:145
 msgid "Label|New Group Box"
 msgstr "Хаяг|Шинэ бүлгийн хайрцаг"
 
@@ -4498,7 +4498,7 @@ msgstr "Хаяг|Нийгмийн хангамжийн шинэ зорилт"
 msgid "Label|New Intermediate Result"
 msgstr "Хаяг|Шинэ завсрын үр дүн"
 
-#: Miradi/source/org/miradi/views/diagram/doers/InsertScopeBoxDoer.java:41
+#: Miradi/source/org/miradi/views/diagram/doers/InsertScopeBoxDoer.java:42
 msgid "Label|New Scope Box"
 msgstr "Хаяг|Үйлчлэх хүрээний шинэ хайрцаг"
 
@@ -4518,29 +4518,29 @@ msgstr "Хаяг|Шинэ текстийн хайрцаг"
 msgid "Label|New Threat Reduction Result"
 msgstr "Хаяг|Аюулыг бууруулах шинэ үр дүн"
 
-#: Miradi/source/org/miradi/forms/objects/OrganizationPropertiesForm.java:33
+#: Miradi/source/org/miradi/forms/objects/OrganizationPropertiesForm.java:34
 #: Miradi/source/org/miradi/dialogs/organization/OrganizationPropertiesPanel.java:45
 msgid "Label|Org Contact"
 msgstr "Хаяг|Харилцаа байгууллагуудтай"
 
-#: Miradi/source/org/miradi/forms/objects/OrganizationPropertiesForm.java:31
+#: Miradi/source/org/miradi/forms/objects/OrganizationPropertiesForm.java:32
 #: Miradi/source/org/miradi/dialogs/organization/OrganizationPropertiesPanel.java:39
 msgid "Label|Organization"
 msgstr "Хаяг|Байгууллага"
 
-#: Miradi/source/org/miradi/forms/objects/ResourcePropertiesForm.java:34
-#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:61
-#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:65
+#: Miradi/source/org/miradi/forms/objects/ResourcePropertiesForm.java:35
+#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:62
+#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:66
 msgid "Label|Phone Numbers"
 msgstr "Хаяг|Утасны дугаарууд"
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:61
-#: Miradi/source/org/miradi/forms/summary/PlanningTabWorkPlanSubPanelForm.java:34
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:62
+#: Miradi/source/org/miradi/forms/summary/PlanningTabWorkPlanSubPanelForm.java:35
 msgid "Label|Project Dates"
 msgstr "Хаяг|Төслийн огноо"
 
-#: Miradi/source/org/miradi/views/summary/ProtectedAreaPanel.java:39
-#: Miradi/source/org/miradi/forms/summary/ScopeTabProtectedAreaSubPanelForm.java:44
+#: Miradi/source/org/miradi/views/summary/ProtectedAreaPanel.java:41
+#: Miradi/source/org/miradi/forms/summary/ScopeTabProtectedAreaSubPanelForm.java:46
 msgid "Label|Protected Area Categories"
 msgstr "Хаяг|Тусгай Хамгаалалттай Газруудын Ангилал"
 
@@ -4548,37 +4548,37 @@ msgstr "Хаяг|Тусгай Хамгаалалттай Газруудын Ан
 msgid "Label|RARE"
 msgstr "Хаяг|Ховор"
 
-#: Miradi/source/org/miradi/views/summary/RareTrackingSummarySubPanel.java:52
+#: Miradi/source/org/miradi/views/summary/RareTrackingSummarySubPanel.java:53
 msgid "Label|Rare Tracking"
 msgstr "Хаяг|Ховор ажиглагддаг"
 
-#: Miradi/source/org/miradi/forms/objects/ResourcePropertiesForm.java:32
-#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:55
+#: Miradi/source/org/miradi/forms/objects/ResourcePropertiesForm.java:33
+#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:56
 msgid "Label|Resource"
 msgstr "Хаяг|Нөөц"
 
-#: Miradi/source/org/miradi/forms/objects/ResourcePropertiesForm.java:33
-#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:58
+#: Miradi/source/org/miradi/forms/objects/ResourcePropertiesForm.java:34
+#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:59
 msgid "Label|Roles (people only)"
 msgstr "Хаяг|Үүрэг роль (зөвхөн хүмүүс)"
 
-#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:51
+#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:52
 msgid "Label|Team Member"
 msgstr "Хаяг|Багийн гишүүн"
 
-#: Miradi/source/org/miradi/views/summary/WCSSummaryPanel.java:63
+#: Miradi/source/org/miradi/views/summary/WCSSummaryPanel.java:64
 msgid "Label|WCS"
 msgstr "Хаяг|Зэрлэг Амьтан Хамгаалах Нийгэмлэг"
 
-#: Miradi/source/org/miradi/views/summary/WWFSummaryPanel.java:72
+#: Miradi/source/org/miradi/views/summary/WWFSummaryPanel.java:73
 msgid "Label|WWF"
 msgstr "Хаяг|Дэлхийн Байгаль Хамгаалах Сан"
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:66
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:67
 msgid "Label|Work Plan Dates"
 msgstr "Label|Work Plan Dates"
 
-#: Miradi/source/org/miradi/forms/summary/PlanningTabWorkPlanSubPanelForm.java:35
+#: Miradi/source/org/miradi/forms/summary/PlanningTabWorkPlanSubPanelForm.java:36
 msgid "Label|Workplan Dates"
 msgstr "Хаяг|Ажлын төлөвлөгөөний огноо"
 
@@ -4606,8 +4606,8 @@ msgstr "Давхарга, үе"
 msgid "Leader/Manager"
 msgstr "Манлайлагч/ Менежер"
 
-#: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:56
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:90
+#: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:57
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:94
 msgid "Legacy TNC Ratings"
 msgstr "TNC-ийн өвлөн ирсэн үнэлгээ"
 
@@ -4661,7 +4661,7 @@ msgstr "Цайвар шар"
 msgid "Link Direct Threats to Targets"
 msgstr "Шууд аюулыг хамгаалах объекттэй холбох "
 
-#: Miradi/source/org/miradi/dialogs/diagram/FactorLinkPropertiesPanel.java:57
+#: Miradi/source/org/miradi/dialogs/diagram/FactorLinkPropertiesPanel.java:58
 msgid "Link Properties"
 msgstr "Properties холбоос"
 
@@ -4669,7 +4669,7 @@ msgstr "Properties холбоос"
 msgid "Lists"
 msgstr "Жагсаалтууд"
 
-#: Miradi/source/org/miradi/views/summary/SummaryLocationPanel.java:64
+#: Miradi/source/org/miradi/views/summary/SummaryLocationPanel.java:65
 msgid "Location"
 msgstr "Байршил"
 
@@ -4688,7 +4688,7 @@ msgstr ""
 msgid "Low"
 msgstr "Сул, бага, доогуур"
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1397
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1420
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr "Сул/Дундаж/Үнэлэгдээгүй Аюулын Гинжин холбоос"
 
@@ -4704,11 +4704,11 @@ msgstr "Гол асуудлууд - Анхаарал хандуулах ёсто
 msgid "Manage Stresses for "
 msgstr ".....ны Дарамтыг Удирдах "
 
-#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:406
+#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:411
 msgid "Manage Tagged Object Sets"
 msgstr "Тэмдэглэгдсэн Багц Зорилтыг Удирдах"
 
-#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:132
+#: Miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:137
 msgid "Manage Tags (BETA)..."
 msgstr "Тэмдэглэгээнүүдийг Удирдах (BETA)..."
 
@@ -4907,10 +4907,10 @@ msgid "May"
 msgstr "Таван сар"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:323
-#: Miradi/source/org/miradi/forms/objects/MeasurementPropertiesForm.java:32
+#: Miradi/source/org/miradi/forms/objects/MeasurementPropertiesForm.java:33
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:86
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:44
 #: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:45
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:46
 msgid "Measurement"
 msgstr "Хэмжигдэхүүн"
 
@@ -5012,7 +5012,7 @@ msgstr "Цэс|Сонгосон Зүйлээс(үүдээс) Зүүлтийг х
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:146
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:84
-#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:87
+#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:88
 msgid "Method"
 msgstr "Арга зүй"
 
@@ -5092,7 +5092,7 @@ msgstr "Оруулах боломжтой Файл: %s гэж  Miradi таниа
 msgid "Miradi does not recognize %s as a project file"
 msgstr "Файлыг Miradi төслийн файл гэж танихгүй байна"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:678
+#: Miradi/source/org/miradi/main/MainWindow.java:679
 msgid ""
 "Miradi has detected one or more problems with this project which could cause "
 "errors or further damage in the future. \n"
@@ -5158,7 +5158,7 @@ msgstr ""
 "Тайлбар: Төслийн файлын нэр нь үсэг, тоо, зай, үе, зураас, үгийн доогуур "
 "зурах зэргийг агуулсан байж болно."
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:116
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:117
 msgid ""
 "NOTE: Quarter columns cannot be hidden because this project already has data "
 "for some quarters."
@@ -5174,7 +5174,7 @@ msgid ""
 "available. <br>"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAssignmentMainTableModel.java:42
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAssignmentMainTableModel.java:44
 msgid "Name"
 msgstr "Нэр"
 
@@ -5182,7 +5182,7 @@ msgstr "Нэр"
 msgid "Needs Attention"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/subTarget/SubTargetPropertiesPanel.java:38
+#: Miradi/source/org/miradi/dialogs/subTarget/SubTargetPropertiesPanel.java:39
 msgid "Nested Target"
 msgstr "Давхар хамгаалагдах объект"
 
@@ -5245,7 +5245,7 @@ msgstr "Үр ашиггүй"
 #: Miradi/source/org/miradi/questions/FosTrainingTypeQuestion.java:35
 #: Miradi/source/org/miradi/questions/TrendQuestion.java:37
 #: Miradi/source/org/miradi/utils/Translation.java:306
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:278
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:280
 #: Miradi/source/org/miradi/dialogs/planning/treenodes/UnspecifiedBaseObject.java:59
 msgid "Not Specified"
 msgstr "Тодорхой тайлбарлагдаагүй"
@@ -5254,11 +5254,11 @@ msgstr "Тодорхой тайлбарлагдаагүй"
 msgid "Not Started"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:649
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:672
 msgid "Not all classification Codes could imported."
 msgstr "Ангиллын бүх код орсонгүй. "
 
-#: Miradi/source/org/miradi/views/diagram/DiagramSplitPane.java:422
+#: Miradi/source/org/miradi/views/diagram/DiagramSplitPane.java:424
 msgid "Not all factors are being shown because %s tag(s) are checked"
 msgstr "Бүх хүчин зүйлс харагдахгүй, яагаад гэвэл %s тэмдэглэгээг шалгаж байна"
 
@@ -5274,15 +5274,15 @@ msgstr ""
 msgid "Nov"
 msgstr "Арван нэгдүгээр сар"
 
-#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:171
+#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:173
 msgid "Obj"
 msgstr "Зор"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:169
-#: Miradi/source/org/miradi/forms/objects/ObjectivePropertiesForm.java:33
+#: Miradi/source/org/miradi/forms/objects/ObjectivePropertiesForm.java:34
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:78
-#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:42
-#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:46
+#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:43
+#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:47
 msgid "Objective"
 msgstr "Зорилт"
 
@@ -5296,7 +5296,7 @@ msgstr ""
 "албан ёсны мэдэгдэл. Зорилт нь Miradi-д жижиг цэнхэр тэгш өнцөгтөөр "
 "төлөөллөгдсөн."
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1288
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1311
 msgid "Objective Holder"
 msgstr "Зорилтуудын Хайрцаг"
 
@@ -5304,10 +5304,10 @@ msgstr "Зорилтуудын Хайрцаг"
 msgid "Objective Relevancy Panel"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogs/task/ActivityDetailsPanelWithRelevancyOverrideFields.java:42
-#: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:58
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:91
-#: Miradi/source/org/miradi/dialogs/diagram/RelatedItemsSubpanel.java:43
+#: Miradi/source/org/miradi/dialogs/task/ActivityDetailsPanelWithRelevancyOverrideFields.java:43
+#: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:59
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:95
+#: Miradi/source/org/miradi/dialogs/diagram/RelatedItemsSubpanel.java:44
 msgid "Objectives"
 msgstr ""
 
@@ -5320,11 +5320,11 @@ msgstr "Зөвхөн зорилтууд"
 msgid "Objectives contain Strategies"
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:107
+#: Miradi/source/org/miradi/diagram/cells/FactorCell.java:108
 msgid "Objectives:"
 msgstr "Зорилтууд:"
 
-#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:171
+#: Miradi/source/org/miradi/diagram/renderers/FactorRenderer.java:173
 msgid "Objs"
 msgstr "Зор-ууд"
 
@@ -5374,7 +5374,7 @@ msgid "Open Anyway"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:153
-#: Miradi/source/org/miradi/main/MainWindow.java:615
+#: Miradi/source/org/miradi/main/MainWindow.java:616
 msgid "Open Project"
 msgstr "Төсөл нээх"
 
@@ -5430,7 +5430,7 @@ msgid "Overall Threat Rating"
 msgstr "Аюулын ерөнхий зэрэглэл"
 
 #: Miradi/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:39
-#: Miradi/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:39
+#: Miradi/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:40
 msgid "Page:"
 msgstr "Хуудас:"
 
@@ -5438,7 +5438,7 @@ msgstr "Хуудас:"
 msgid "Paste"
 msgstr "Оруулах"
 
-#: Miradi/source/org/miradi/views/diagram/doers/PasteFactorContentDoer.java:102
+#: Miradi/source/org/miradi/views/diagram/doers/PasteFactorContentDoer.java:103
 msgid "Paste Content..."
 msgstr "Хуулсан агуулгыг оруулах..."
 
@@ -5469,7 +5469,7 @@ msgstr "Ягаан"
 msgid "Place scope on diagram"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1284
+#: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1307
 msgid "Placeholder - From ConPro"
 msgstr ""
 
@@ -5494,7 +5494,7 @@ msgstr "Төлөвлөлт"
 msgid "Planning Parameters"
 msgstr "Өгөгдөхүүнийг төлөвлөх"
 
-#: Miradi/source/org/miradi/views/planning/doers/AbstractCreatePlanningViewConfigurationDoer.java:101
+#: Miradi/source/org/miradi/views/planning/doers/AbstractCreatePlanningViewConfigurationDoer.java:102
 msgid "PlanningSubViewName|Custom"
 msgstr "ТөлөвлөлтДэдХарагдацНэр|Үйлчлүүлэгч"
 
@@ -5544,13 +5544,13 @@ msgstr "Pound (Нэгдсэн Вант Улс)"
 msgid "Preferences"
 msgstr "Сонголт"
 
-#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:375
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:380
 msgid "Preparing groups..."
 msgstr "...Бүлгүүдийг бэлтгэх"
 
-#: Miradi/source/org/miradi/forms/objects/StrategyCoreSubForm.java:36
-#: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:54
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:89
+#: Miradi/source/org/miradi/forms/objects/StrategyCoreSubForm.java:37
+#: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:55
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:93
 msgid "Priority"
 msgstr "Тэргүүлэх ач холбогдол"
 
@@ -5646,11 +5646,11 @@ msgstr "Үйл явцын үе шат|5B. Сургамжыг хуваалцах"
 msgid "ProcessStep|5C. Create a Learning Environment"
 msgstr "Үйл явцын үе шат|5C. Сурах Орчинг Бүрдүүлэх"
 
-#: Miradi/source/org/miradi/forms/objects/StrategyCoreSubForm.java:38
+#: Miradi/source/org/miradi/forms/objects/StrategyCoreSubForm.java:39
 msgid "Progress"
 msgstr "Хэрэгжилт"
 
-#: Miradi/source/org/miradi/forms/objects/ObjectivePropertiesForm.java:40
+#: Miradi/source/org/miradi/forms/objects/ObjectivePropertiesForm.java:41
 msgid "Progress Percents"
 msgstr "Хэрэгжилтийн хувь"
 
@@ -5658,11 +5658,11 @@ msgstr "Хэрэгжилтийн хувь"
 msgid "Progress Report"
 msgstr "Хэрэгжилтийн тайлан"
 
-#: Miradi/source/org/miradi/forms/objects/TaskDetailsSubForm.java:33
+#: Miradi/source/org/miradi/forms/objects/TaskDetailsSubForm.java:34
 msgid "Progress Reports"
 msgstr "Хэрэгжилтийн тайлангууд"
 
-#: Miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:96
+#: Miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:98
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:240
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:102
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:68
@@ -5673,11 +5673,11 @@ msgstr "Төсөл"
 msgid "Project Advisor"
 msgstr "Төслийн зөвлөх"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:676
+#: Miradi/source/org/miradi/main/MainWindow.java:677
 msgid "Project Corruption Detected"
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:923
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:926
 msgid "Project Description:"
 msgstr "Project Description:"
 
@@ -5689,7 +5689,7 @@ msgstr "Төслийн шилжилт зайлшгүй шаардалагата�
 msgid "Project Name - Located in Summary View, Project Tab, Project Name field"
 msgstr ""
 
-#: Miradi/source/org/miradi/forms/summary/RareTabTrackingSubPanelForm.java:39
+#: Miradi/source/org/miradi/forms/summary/RareTabTrackingSubPanelForm.java:40
 msgid "Project Number"
 msgstr "Төслийн дугаар"
 
@@ -5706,7 +5706,7 @@ msgstr "Төслийн нөөц"
 msgid "Project Resource Filter Editor"
 msgstr "Төслийн Нөөцийн Шүүлтүүрийн Хянан Засварлагч"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:832
+#: Miradi/source/org/miradi/main/MainWindow.java:833
 msgid "Project Resource Filter Is On"
 msgstr "Төслийн Нөөцийн Шүүлтүүр ажиллагаатай"
 
@@ -5716,12 +5716,12 @@ msgstr "Төслийн Нөөцийн Шүүлтүүр ажиллагаатай"
 msgid "Project Resources"
 msgstr "Төслийн нөөцүүд"
 
-#: Miradi/source/org/miradi/views/diagram/doers/InsertScopeBoxDoer.java:72
+#: Miradi/source/org/miradi/views/diagram/doers/InsertScopeBoxDoer.java:73
 #: Miradi/source/org/miradi/legacyprojects/migrations/CreateScopeBoxesSuroundingTargetsMigration.java:312
 msgid "Project Scope"
 msgstr "Төслийн цар хүрээ"
 
-#: Miradi/source/org/miradi/views/ProjectSettingsPanel.java:46
+#: Miradi/source/org/miradi/views/ProjectSettingsPanel.java:47
 #: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:115
 msgid "Project Settings"
 msgstr "Төслийн нөхцөл байдал"
@@ -5758,7 +5758,7 @@ msgstr "Төслийг мэдээллийн одоо хэрэглэж буй ф�
 msgid "Projected Expenses"
 msgstr "Төслийн зардал"
 
-#: Miradi/source/org/miradi/views/summary/ProtectedAreaPanel.java:62
+#: Miradi/source/org/miradi/views/summary/ProtectedAreaPanel.java:64
 msgid "Protected Area Information"
 msgstr "Тусгай Хамгаалалттай Газрын тухай мэдээлэл"
 
@@ -5784,7 +5784,7 @@ msgstr ""
 "хэрэглэж байгаа бол ерөнхийдөө 1 дүгээр улиралд 1-3 сар, 2 дугаар улиралд 4-"
 "6 сар, 3 дугаар улиралд 7-9 сар, 4 дүгээр улиралд 10-12 сар хамаардаг. "
 
-#: Miradi/source/org/miradi/project/ProjectCalendar.java:363
+#: Miradi/source/org/miradi/project/ProjectCalendar.java:364
 msgid "Quarter Prefix|Q"
 msgstr "Улиралын товчлол|У"
 
@@ -5812,7 +5812,7 @@ msgstr "Стратегийн төслийг зэрэглэх"
 msgid "Rapid Assessment"
 msgstr "Шуурхай Үнэлгээ"
 
-#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:67
+#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:68
 msgid "Ratings"
 msgstr "Үнэлгээ"
 
@@ -5828,11 +5828,11 @@ msgstr ""
 msgid "Red"
 msgstr "Улаан"
 
-#: Miradi/source/org/miradi/dialogs/diagram/RelatedItemsSubpanel.java:49
+#: Miradi/source/org/miradi/dialogs/diagram/RelatedItemsSubpanel.java:50
 msgid "Related Items"
 msgstr "Хамааралтай зүйлүүд"
 
-#: Miradi/source/org/miradi/forms/summary/RareTabCampaignPlanningSubPanelForm.java:40
+#: Miradi/source/org/miradi/forms/summary/RareTabCampaignPlanningSubPanelForm.java:41
 msgid "Related Projects"
 msgstr "Хамааралтай төслүүд"
 
@@ -5840,7 +5840,7 @@ msgstr "Хамааралтай төслүүд"
 msgid "Relevant Strategies and Activities"
 msgstr "Холбогдох стратеги ба үйл ажиллагаа"
 
-#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:144
+#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:145
 msgid "Remove Team Member"
 msgstr "Багийн гишүүнийг хасах"
 
@@ -5863,7 +5863,7 @@ msgid "Report Completed"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/reports/doers/DeleteReportTemplateDoer.java:32
-#: Miradi/source/org/miradi/dialogs/reportTemplate/ReportTemplatePropertiesPanel.java:40
+#: Miradi/source/org/miradi/dialogs/reportTemplate/ReportTemplatePropertiesPanel.java:41
 msgid "Report Template"
 msgstr "Тайлангийн Загвар"
 
@@ -5875,7 +5875,7 @@ msgstr "Төслийн баг ба оролцогч талуудад тайла�
 msgid "Resource"
 msgstr "Нөөц"
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:55
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:57
 msgid "Resource (Who)"
 msgstr "Нөөц (Хэн)"
 
@@ -5897,7 +5897,7 @@ msgstr "Нөөцүүд"
 msgid "Resources:"
 msgstr "Нөөцүүд:"
 
-#: Miradi/source/org/miradi/project/ResultsChainCreatorHelper.java:193
+#: Miradi/source/org/miradi/project/ResultsChainCreatorHelper.java:196
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:70
 #: Miradi/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:35
 msgid "Results Chain"
@@ -5916,7 +5916,7 @@ msgstr "Үр дүнгийн гинжин хоолбоосууд"
 msgid "Results Monitoring Plan"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:61
+#: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
 #: Miradi/source/org/miradi/main/EAM.java:518
 msgid "Retain"
 msgstr "Хэвээр хадгалж үлдэх"
@@ -5958,13 +5958,13 @@ msgstr "Рубль (Орос улс)"
 msgid "Run..."
 msgstr "...Эхлүүлэх"
 
-#: Miradi/source/org/miradi/views/summary/WCSSummaryPanel.java:50
-#: Miradi/source/org/miradi/forms/summary/WcsTabForm.java:50
+#: Miradi/source/org/miradi/views/summary/WCSSummaryPanel.java:51
+#: Miradi/source/org/miradi/forms/summary/WcsTabForm.java:51
 msgid "STEP"
 msgstr "Үе Шат"
 
-#: Miradi/source/org/miradi/views/summary/WCSSummaryPanel.java:46
-#: Miradi/source/org/miradi/forms/summary/WcsTabForm.java:41
+#: Miradi/source/org/miradi/views/summary/WCSSummaryPanel.java:47
+#: Miradi/source/org/miradi/forms/summary/WcsTabForm.java:42
 msgid "SWOT"
 msgstr "SWOT"
 
@@ -6005,7 +6005,7 @@ msgstr "Ирээдүйд хэрэгжүүлэхээр хуваарьт урьд�
 #: Miradi/source/org/miradi/views/summary/SummaryScopeTabPanel.java:73
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:113
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:68
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:103
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:104
 msgid "Scope"
 msgstr "Цар хүрээ"
 
@@ -6119,7 +6119,7 @@ msgstr ""
 msgid "Select..."
 msgstr "Сонгох..."
 
-#: Miradi/source/org/miradi/views/reports/doers/RunReportTemplateDoer.java:71
+#: Miradi/source/org/miradi/views/reports/doers/RunReportTemplateDoer.java:72
 msgid "Selected Report Template Was Exported as RTF."
 msgstr "Сонгосон тайлангийн загвар RTF-ээр гарсан (Exported) байна."
 
@@ -6132,7 +6132,7 @@ msgid "Sep"
 msgstr "9 дүгээр сар"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:227
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:104
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:105
 msgid "Severity"
 msgstr "Ноцтой байдал"
 
@@ -6156,7 +6156,7 @@ msgstr ""
 msgid "Share"
 msgstr "Солилцох"
 
-#: Miradi/source/org/miradi/views/umbrella/doers/TreeNodeShareActivityDoer.java:47
+#: Miradi/source/org/miradi/views/umbrella/doers/TreeNodeShareActivityDoer.java:48
 msgid "Share Activity"
 msgstr "Солилцох Үйл Ажиллагаа"
 
@@ -6245,7 +6245,7 @@ msgstr "Аюулын Хялбар Үнэлгээний Горим"
 msgid "Simple viability"
 msgstr "Ердийн амьдрах чадвар"
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:928
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:931
 msgid "Site/Scope Description:"
 msgstr "ГазарНутаг/Цар Хүрээ Тодорхойлолт:"
 
@@ -6265,7 +6265,7 @@ msgstr ""
 " Зарим нэг мэдээллийг  зөвхөн хуучин төсөлд байгаа бусад мэдээлэлд "
 "хамаатуулж байгаа тул энэ төсөлд шилжүүлэх боломжгшй байна."
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:102
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:103
 msgid ""
 "Some work plan data is currently hidden and not included in calculated "
 "totals. If the data is outside the planning date range, it will be visible "
@@ -6298,7 +6298,7 @@ msgstr "Онцлог улирал(ууд)"
 msgid "Specific Year(s)"
 msgstr "Онцлог Жил Year(үүд)"
 
-#: Miradi/source/org/miradi/views/workplan/EditAnalysisRowsPanel.java:44
+#: Miradi/source/org/miradi/views/workplan/EditAnalysisRowsPanel.java:45
 msgid ""
 "Specify values in the drop downs to group work and expense assignments for "
 "analysis."
@@ -6312,7 +6312,7 @@ msgstr "Оролцогч тал"
 msgid "Standard Reports"
 msgstr "Стандарт тайлан"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:866
+#: Miradi/source/org/miradi/main/MainWindow.java:867
 msgid ""
 "Start date (currently %startDate) must be earlier than end date (currently %"
 "endDate)"
@@ -6324,7 +6324,7 @@ msgstr ""
 msgid "Start:"
 msgstr "Эхлэх:"
 
-#: Miradi/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:48
+#: Miradi/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:50
 msgid "Status"
 msgstr "Статус"
 
@@ -6356,7 +6356,7 @@ msgstr "Үе шат (боломжгүй)"
 msgid "Stop"
 msgstr "Зогсоох"
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningStrategicSubPanel.java:44
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningStrategicSubPanel.java:45
 msgid "Strategic Planning"
 msgstr "Стратеги Төлөвлөлт"
 
@@ -6373,8 +6373,8 @@ msgstr ""
 msgid "StrategicPlan"
 msgstr "Стратеги Төлөвлөгөө"
 
-#: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:49
-#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:55
+#: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:50
+#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:56
 msgid "Strategies And Activities"
 msgstr "Стратегууд ба Үйл ажиллагаа"
 
@@ -6388,9 +6388,9 @@ msgid "Strategies contain Objectives"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:180
-#: Miradi/source/org/miradi/forms/objects/StrategyCoreSubForm.java:33
+#: Miradi/source/org/miradi/forms/objects/StrategyCoreSubForm.java:34
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:76
-#: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:46
+#: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:47
 msgid "Strategy"
 msgstr "Стратеги"
 
@@ -6426,8 +6426,8 @@ msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:60
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:80
-#: Miradi/source/org/miradi/utils/ThreatStressRatingDetailsTableExporter.java:71
-#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:50
+#: Miradi/source/org/miradi/utils/ThreatStressRatingDetailsTableExporter.java:72
+#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:51
 msgid "Stress"
 msgstr "Дарамт"
 
@@ -6449,7 +6449,7 @@ msgstr ""
 msgid "Stress Based Threat Rating Mode"
 msgstr "Дарамтыг харгалзаж аюулыг үнэлэх горим"
 
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/ThreatStressRatingTableModel.java:159
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/ThreatStressRatingTableModel.java:162
 msgid "Stress Name"
 msgstr "Дарамтын Нэр"
 
@@ -6485,12 +6485,12 @@ msgid "Sub classes need to override this method."
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:67
-#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:37
+#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:38
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:35
-#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:112
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:132
-#: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:65
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:133
+#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:113
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:133
+#: Miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:66
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:137
 msgid "Summary"
 msgstr "Дүгнэлт"
 
@@ -6510,7 +6510,7 @@ msgstr "Аюулын Үнэлгээний Дүгнэлт"
 msgid "Systemwide"
 msgstr "Нийт системээр"
 
-#: Miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:81
+#: Miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:84
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:71
 msgid "TNC"
 msgstr "TNC"
@@ -7332,7 +7332,7 @@ msgstr "Tab-аар тусгаарлагдсан файл"
 msgid "Table Row Height Mode"
 msgstr "Table Row Height Mode"
 
-#: Miradi/source/org/miradi/dialogs/planning/PlanningViewObjectsOnlyDropDownPanel.java:50
+#: Miradi/source/org/miradi/dialogs/planning/PlanningViewObjectsOnlyDropDownPanel.java:51
 msgid "Table:"
 msgstr ""
 
@@ -7391,16 +7391,16 @@ msgid "Tab|XSL Templates"
 msgstr ""
 
 #: Miradi/source/org/miradi/views/diagram/doers/DeleteTaggedObjectSetDoer.java:37
-#: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:40
+#: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:41
 msgid "Tag"
 msgstr "Тэмдэглэгээ"
 
-#: Miradi/source/org/miradi/views/diagram/doers/EditTaggedObjectSetDoer.java:54
-#: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:42
+#: Miradi/source/org/miradi/views/diagram/doers/EditTaggedObjectSetDoer.java:55
+#: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:43
 msgid "Tagged Items"
 msgstr "Тэмдэглэгээ хийсэн зүйлс"
 
-#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:112
+#: Miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:116
 msgid "Tags"
 msgstr "Тэмдэглэгээнүүд"
 
@@ -7414,9 +7414,9 @@ msgstr "Tahoma"
 msgid "Tan"
 msgstr "Ухаа шаргал"
 
-#: Miradi/source/org/miradi/forms/objects/TargetPropertiesForm.java:33
+#: Miradi/source/org/miradi/forms/objects/TargetPropertiesForm.java:34
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:71
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:354
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:357
 #: Miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:53
 msgid "Target"
 msgstr "Хамгаалах объект"
@@ -7429,7 +7429,7 @@ msgstr "Хамгаалах объектын амьдрах чадвар - Дэл
 msgid "Target Viability - Table"
 msgstr "Хамгаалах объектын амьдрах чадвар - Хүснэгт"
 
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/ThreatRatingCommonPropertiesSubpanel.java:48
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/ThreatRatingCommonPropertiesSubpanel.java:49
 msgid "Target-Threat Rating"
 msgstr "Хамгаалах объект-Аюулын Үнэлгээ"
 
@@ -7485,7 +7485,7 @@ msgstr "Диаграмм дахь хамгаалах Объектууд"
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:202
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:83
-#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:89
+#: Miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:90
 msgid "Task"
 msgstr "Даалгавар"
 
@@ -7500,7 +7500,7 @@ msgstr ""
 "хуваагдаж болно. Даалгаварыг Miradi-д хавтгай саарал зууван дүрсээр "
 "төлөөлүүлсэн."
 
-#: Miradi/source/org/miradi/objects/Task.java:367
+#: Miradi/source/org/miradi/objects/Task.java:365
 msgid "Task does not have a parent"
 msgstr "Даалгавар гарал үүсэлгүй байна."
 
@@ -7545,7 +7545,7 @@ msgstr ""
 msgid "Text Box"
 msgstr "Текст бичих хайрцаг (Text Box)"
 
-#: Miradi/source/org/miradi/dialogs/diagram/TextBoxPropertiesPanel.java:58
+#: Miradi/source/org/miradi/dialogs/diagram/TextBoxPropertiesPanel.java:59
 msgid "Text Box Properties"
 msgstr "Тэкст бичих Хайрцгийн Properties"
 
@@ -7557,7 +7557,7 @@ msgstr "Текст|Огноог ЖЖЖЖ-СС-ӨӨ форматаар бичнэ
 msgid "Text|Unknown error prevented saving this data"
 msgstr "Текст|Мэдээллийг хадгалахад үл мэдэгдэх алдаа саад болж байна."
 
-#: Miradi/source/org/miradi/main/MainWindow.java:558
+#: Miradi/source/org/miradi/main/MainWindow.java:559
 msgid "That file is not a valid Miradi project"
 msgstr ""
 
@@ -7569,19 +7569,19 @@ msgstr "Тэр хэлний багцыг хэдийнээ байна.  Түүн�
 msgid "That language pack is already installed"
 msgstr "Тэр хэлний багцыг хэдийнээ суулгасан байна."
 
-#: Miradi/source/org/miradi/main/MainWindow.java:566
-#: Miradi/source/org/miradi/main/MainWindow.java:570
+#: Miradi/source/org/miradi/main/MainWindow.java:567
+#: Miradi/source/org/miradi/main/MainWindow.java:571
 msgid ""
 "That project cannot be opened because it was created by a newer version of "
 "Miradi"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/MainWindow.java:574
+#: Miradi/source/org/miradi/main/MainWindow.java:575
 msgid ""
 "That project cannot be opened until it is migrated to the current data format"
 msgstr "Тэр төслийг мэдээллийн энэ форматад шилжүүлэхээс нааш нээх боломжгүй."
 
-#: Miradi/source/org/miradi/main/MainWindow.java:554
+#: Miradi/source/org/miradi/main/MainWindow.java:555
 msgid "That project is in use by another copy of this application"
 msgstr "Энэ программын өөр хуулбарт тэр төслийг хэрэглэж байна"
 
@@ -7595,7 +7595,7 @@ msgstr ""
 "Мэдээллийн орчин үеийн хэлбэрт шилжүүлэхийн тулд та  Miradi 1.0-ийг ашиглах "
 "боломжтой ба үүний дараа түүнийг нээж мөн энэ хувилбарт шилжүүлж болно."
 
-#: Miradi/source/org/miradi/main/MainWindow.java:562
+#: Miradi/source/org/miradi/main/MainWindow.java:563
 msgid "That project is too old to be opened with this version of Miradi"
 msgstr ""
 
@@ -7709,7 +7709,7 @@ msgstr ""
 "шинэлэг хувилбарыг хүлээж байгаа, <br> аль эсвэл төслийг хуучин формат руу"
 "(дэмжигддэг) re-export хийж оруул."
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:77
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:79
 msgid "This item is shared, so will be deleted from multiple places."
 msgstr "Энэ зүйлийг хамтаар хэрэглэдэг тул олон газраас устгагдах болно."
 
@@ -7730,7 +7730,7 @@ msgstr ""
 "мэдээллийн шинэ форматад байна. Miradi-ийг сүүлийн хувилбар хүртэл "
 "сайжруулна уу."
 
-#: Miradi/source/org/miradi/main/MainWindow.java:667
+#: Miradi/source/org/miradi/main/MainWindow.java:668
 msgid ""
 "This project has been optimized to remove data that is no longer needed.\n"
 msgstr ""
@@ -7759,7 +7759,7 @@ msgstr ""
 "Үнэлэмж тоон хэлбэрээр байх ёстойc<br><br>Мөнгөний нэгжийн болон хувь "
 "процентийн тэмдэгүүдийг тавихийг хориглоно."
 
-#: Miradi/source/org/miradi/views/diagram/doers/PasteFactorContentDoer.java:103
+#: Miradi/source/org/miradi/views/diagram/doers/PasteFactorContentDoer.java:104
 msgid ""
 "This will replace all the selected factor's contents with the contents of "
 "the factor that was cut/copied earlier. Are you sure you want to do this?"
@@ -7772,9 +7772,9 @@ msgstr ""
 msgid "This will replace the existing file."
 msgstr "Энэ нь байгаа файлыг солих болно."
 
-#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:379
+#: Miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:382
 #: Miradi/source/org/miradi/utils/AbstractThreatRatingDetailsTableExporter.java:59
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:34
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:35
 msgid "Threat"
 msgstr "Аюул занал"
 
@@ -7783,7 +7783,7 @@ msgstr "Аюул занал"
 msgid "Threat Calculations"
 msgstr "Аюул заналыг тооцох"
 
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/ThreatStressRatingTableModel.java:157
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/ThreatStressRatingTableModel.java:160
 msgid "Threat Name"
 msgstr "Аюул заналын Нэр"
 
@@ -7791,11 +7791,11 @@ msgstr "Аюул заналын Нэр"
 msgid "Threat Rating Details"
 msgstr "Аюул заналыг Үнэлэх дэлгэрэнгүй байдал"
 
-#: Miradi/source/org/miradi/dialogs/threatrating/ThreatRatingPreferencesPanel.java:41
+#: Miradi/source/org/miradi/dialogs/threatrating/ThreatRatingPreferencesPanel.java:42
 msgid "Threat Rating Preferences Panel"
 msgstr "Аюул заналыг үнэлэхэд эрхэмлэн үзэх зүйлсийн жагсаалт"
 
-#: Miradi/source/org/miradi/dialogs/threatrating/properties/ThreatRatingMultiPropertiesPanel.java:71
+#: Miradi/source/org/miradi/dialogs/threatrating/properties/ThreatRatingMultiPropertiesPanel.java:73
 msgid "Threat Rating Properties Panel"
 msgstr ""
 
@@ -7849,7 +7849,7 @@ msgstr "Аюул заналыг Бууруулах Үр Дүн"
 msgid "Threats"
 msgstr "Аюул заналууд"
 
-#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:48
+#: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:50
 msgid "Threats at Site"
 msgstr "Төслийн газар нутаг дахь Аюул Занал"
 
@@ -7893,7 +7893,7 @@ msgstr "Гарчиг|Хувь нэмэр оруулж буй хүчин зүйл
 msgid "Title|Customize Table"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:81
+#: Miradi/source/org/miradi/views/umbrella/DeleteActivityDoer.java:83
 msgid "Title|Delete"
 msgstr "Гарчиг|Устгах"
 
@@ -7901,11 +7901,11 @@ msgstr "Гарчиг|Устгах"
 msgid "Title|Diagram Panel"
 msgstr "Гарчиг|Диаграммын жагсаалт"
 
-#: Miradi/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:50
+#: Miradi/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:51
 msgid "Title|Diagram Properties"
 msgstr "Гарчиг|Диаграммын Properties"
 
-#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:48
+#: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:49
 msgid "Title|Direct Threat Properties"
 msgstr "Гарчиг|Шууд үйлчлэх Аюул Заналын Properties"
 
@@ -7917,7 +7917,7 @@ msgstr "Гарчиг|Алдаа"
 msgid "Title|Export Image Scale"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:974
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:977
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:57
 msgid "Title|Factor Properties"
 msgstr "Гарчиг|Хүчин зүйлийн Properties"
@@ -7934,11 +7934,11 @@ msgstr "Гарчиг|Эвдэрсэн Link-ууд олдлоо"
 msgid "Title|Funding Source Properties"
 msgstr "Гарчиг|Санхүүжилтийн эх үүсвэрийн Properties"
 
-#: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:59
+#: Miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:60
 msgid "Title|Goal Properties"
 msgstr "Гарчиг|Зорилгын Properties"
 
-#: Miradi/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:85
+#: Miradi/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:87
 msgid "Title|Human Welfare Target Properties"
 msgstr "Гарчиг|Нийгмийн Халамжийн Зорилтын Properties"
 
@@ -7959,11 +7959,11 @@ msgstr "Гарчиг|Мэдээлэл"
 msgid "Title|Intermediate Result Properties"
 msgstr "Гарчиг|Завсрын Үр дүнгийн Properties"
 
-#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:53
+#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:54
 msgid "Title|Key Ecological Attribute Properties"
 msgstr "Гарчиг|Экологийн Гол Хүчин Зүйлийн Properties"
 
-#: Miradi/source/org/miradi/dialogs/diagram/LegacyTncStrategyRankingEditorPropertiesSubPanel.java:92
+#: Miradi/source/org/miradi/dialogs/diagram/LegacyTncStrategyRankingEditorPropertiesSubPanel.java:93
 msgid "Title|Legacy TNC Strategy Editor Ranking Properties"
 msgstr ""
 "Гарчиг |TNC-ийн өвлөж ирсэн Стратегийн зэрэглэлийг Хянан Засварлах Properties"
@@ -7972,7 +7972,7 @@ msgstr ""
 msgid "Title|Link Create Dialog"
 msgstr "Гарчиг|Харилуан ярилах цонх үүсгэх линк"
 
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:89
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:90
 msgid "Title|Measurement Properties"
 msgstr "Гарчиг|Хэмжих нэгжийн Properties"
 
@@ -7980,11 +7980,11 @@ msgstr "Гарчиг|Хэмжих нэгжийн Properties"
 msgid "Title|Method Properties"
 msgstr "гарчиг|Арга Зүйн Properties"
 
-#: Miradi/source/org/miradi/dialogs/subTarget/SubTargetPropertiesPanel.java:48
+#: Miradi/source/org/miradi/dialogs/subTarget/SubTargetPropertiesPanel.java:49
 msgid "Title|Nested Target Properties"
 msgstr "Гарчиг|Давхар хамгаалагдах зүйлийн Properties"
 
-#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:67
+#: Miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:68
 msgid "Title|Objective Properties"
 msgstr "Гарчиг|Зорилтын Properties"
 
@@ -7992,7 +7992,7 @@ msgstr "Гарчиг|Зорилтын Properties"
 msgid "Title|Open"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/AbstractDashboardClickableField.java:104
+#: Miradi/source/org/miradi/dialogfields/AbstractDashboardClickableField.java:105
 msgid "Title|Open Standards Status"
 msgstr ""
 
@@ -8025,11 +8025,11 @@ msgstr "Гарчиг|Явцын Тайлан"
 msgid "Title|Project Filename"
 msgstr "Гарчиг|Төслийн Файлын Нэр"
 
-#: Miradi/source/org/miradi/dialogs/reportTemplate/ReportTemplatePropertiesPanel.java:51
+#: Miradi/source/org/miradi/dialogs/reportTemplate/ReportTemplatePropertiesPanel.java:52
 msgid "Title|Report Template Properties"
 msgstr "Гарчиг|Тайлангийн Загварын Properties"
 
-#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:93
+#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:94
 msgid "Title|Resource Properties"
 msgstr "Гарчиг|Нөөцийн Properties"
 
@@ -8041,7 +8041,7 @@ msgstr "Гарчиг|Үр Дүнгийн Гинжин Холбооны Propertie
 msgid "Title|Save %s File"
 msgstr "Гарчиг|Файлыг %s Хадгалах"
 
-#: Miradi/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:59
+#: Miradi/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:61
 msgid "Title|Scope Box Properties"
 msgstr "Гарчиг|ЦахХүрээнийХайрцагШинжүүд"
 
@@ -8061,7 +8061,7 @@ msgstr "Гарчиг|Стратегийн Properties"
 msgid "Title|Stress Comments"
 msgstr "Гарчиг|Дарамтын Тайлбар"
 
-#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:75
+#: Miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:76
 msgid "Title|Stress Details"
 msgstr "Гарчиг|Дарамтын Дэлгэрэнгүй"
 
@@ -8077,15 +8077,15 @@ msgstr "Гарчиг|Дарамтын Илрэх Байдал"
 msgid "Title|Stress-Based Threat Rating"
 msgstr "Гарчиг|Дарамтад суурилсан Аюул Заналын Үнэлгээ"
 
-#: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:51
+#: Miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:52
 msgid "Title|Tag Properties Panel"
 msgstr "Гарчиг|Тэмдэглэгээ Шинжүүдийн Самбар"
 
-#: Miradi/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:87
+#: Miradi/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:89
 msgid "Title|Target Properties"
 msgstr "Гарчиг|Хамгаалах зүйлийн Properties"
 
-#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityMultiPropertiesPanel.java:69
+#: Miradi/source/org/miradi/dialogs/viability/TargetViabilityMultiPropertiesPanel.java:71
 msgid "Title|Target Viability Properties"
 msgstr "Гарчиг|Хамгаалах зүйлийн Амьдрах Чадварын Properties"
 
@@ -8097,7 +8097,7 @@ msgstr "Гарчиг|Даалгаварын Properties"
 msgid "Title|Team"
 msgstr "Гарчиг|Баг"
 
-#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:89
+#: Miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:90
 msgid "Title|Team Properties"
 msgstr "Гарчиг|Багийн Properties"
 
@@ -8109,16 +8109,16 @@ msgstr "Гарчиг|Аюул Заналыг Бууруулсан Үр Дүнг�
 msgid "Title|View Layers"
 msgstr "Гарчиг|Үе Давхаргын Харагдац (View)"
 
-#: Miradi/source/org/miradi/views/umbrella/doers/ViewLegacyTncStrategyRankingDoer.java:37
+#: Miradi/source/org/miradi/views/umbrella/doers/ViewLegacyTncStrategyRankingDoer.java:38
 msgid "Title|View..."
 msgstr "Гарчиг|Үзэх(View)..."
 
-#: Miradi/source/org/miradi/dialogs/xslTemplate/XslTemplatePropertiesPanel.java:46
+#: Miradi/source/org/miradi/dialogs/xslTemplate/XslTemplatePropertiesPanel.java:47
 msgid "Title|XSL Template Properties"
 msgstr ""
 
-#: Miradi/source/org/miradi/project/ProjectCalendar.java:63
-#: Miradi/source/org/miradi/project/ProjectCalendar.java:202
+#: Miradi/source/org/miradi/project/ProjectCalendar.java:64
+#: Miradi/source/org/miradi/project/ProjectCalendar.java:203
 msgid "Total"
 msgstr "Нийтl"
 
@@ -8142,7 +8142,7 @@ msgstr ""
 "Энэ программын өөр хуулбарт энэ төслийг ашиглаж байгаа учир энэ төслийг "
 "устгах боломжгүй байна:\n"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1240
+#: Miradi/source/org/miradi/main/MainWindow.java:1241
 msgid "Unable to launch external web browser"
 msgstr "Unable to launch external web browser"
 
@@ -8163,7 +8163,7 @@ msgstr ""
 "Энэ төслийг программын өөр хуулбарт хэрэглэж байгаа тул нэрийг нь өөрчлөх "
 "боломжгүй байна:\n"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:1023
+#: Miradi/source/org/miradi/main/MainWindow.java:1024
 msgid "Unable to save preferences"
 msgstr "\"preference\"-ийг хадгалах боломжгүй байна"
 
@@ -8184,21 +8184,21 @@ msgstr "Тогтоогдоогүй"
 msgid "Underline"
 msgstr "Үгийн доогуур зурах"
 
-#: Miradi/source/org/miradi/dialogfields/FactorTagListEditor.java:89
+#: Miradi/source/org/miradi/dialogfields/FactorTagListEditor.java:90
 msgid "Unexpected call to addListSelectionListener"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/AbstractQuestionBasedComponent.java:144
-#: Miradi/source/org/miradi/dialogfields/FactorTagListEditor.java:77
+#: Miradi/source/org/miradi/dialogfields/FactorTagListEditor.java:78
 msgid "Unexpected call to getText"
 msgstr ""
 
-#: Miradi/source/org/miradi/dialogfields/FactorTagListEditor.java:95
+#: Miradi/source/org/miradi/dialogfields/FactorTagListEditor.java:96
 msgid "Unexpected call to removeListSelectionListener"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogfields/AbstractQuestionBasedComponent.java:150
-#: Miradi/source/org/miradi/dialogfields/FactorTagListEditor.java:83
+#: Miradi/source/org/miradi/dialogfields/FactorTagListEditor.java:84
 msgid "Unexpected call to setText"
 msgstr ""
 
@@ -8229,7 +8229,7 @@ msgstr "Их сургууль"
 msgid "Unknown"
 msgstr "Тодорхой бус"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:549
+#: Miradi/source/org/miradi/main/MainWindow.java:550
 msgid ""
 "Unknown Command\n"
 "You are probably trying to load an old project that contains obsolete "
@@ -8243,11 +8243,11 @@ msgstr ""
 msgid "Unknown code: "
 msgstr "Тодорхой бус код: "
 
-#: Miradi/source/org/miradi/views/diagram/DiagramView.java:412
+#: Miradi/source/org/miradi/views/diagram/DiagramView.java:415
 msgid "Unknown error displaying diagram"
 msgstr "Тодорхой бус шалтгаанаар диаграмм ыг үзүүлэх боломжгүй"
 
-#: Miradi/source/org/miradi/main/MainWindow.java:579
+#: Miradi/source/org/miradi/main/MainWindow.java:580
 msgid "Unknown error prevented opening that project"
 msgstr "Энэ төсөл тодорхой бус алдаанаас болж нээгдэхгүй байна."
 
@@ -8265,12 +8265,12 @@ msgstr "Цагийн хуваарьгүй"
 msgid "Unspecified"
 msgstr "Тодруулан заагаагүй"
 
-#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:113
-#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:133
+#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:115
+#: Miradi/source/org/miradi/views/umbrella/CpmzProjectImporter.java:135
 msgid "Updating ConPro Project Number..."
 msgstr ""
 
-#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:387
+#: Miradi/source/org/miradi/diagram/arranger/MeglerArranger.java:392
 msgid "Updating locations..."
 msgstr "Байршилыг шинэчлэх..."
 
@@ -8283,7 +8283,7 @@ msgid "User Defined Extension"
 msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:55
-#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:48
+#: Miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:49
 msgid "Value"
 msgstr "ҮнэтЗүйл"
 
@@ -8322,7 +8322,7 @@ msgstr "Маш Том"
 msgid "Very Small"
 msgstr "Маш Жижигl"
 
-#: Miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:364
+#: Miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:365
 msgid "Viability Analysis Mode"
 msgstr "Амьдрах Чадварын дүн шинжилгээний горим"
 
@@ -8570,15 +8570,15 @@ msgstr ""
 "нь цаг хугацааг болон даалгавар бүрийн дарааллыг түүнчлэн тэдгээрийг "
 "хэрэгжүүлэхэд шаардлагатай тодорхой нөөцийг ч бас өөртөө агуулсан байдаг."
 
-#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:53
+#: Miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:54
 msgid "Work Plan Column Editor"
 msgstr "Ажлын Төлөвлөгөө Баган Редактор"
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:286
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:287
 msgid "Work Plan Settings"
 msgstr "Ажлын Төлөвлөгөөний Тохиргоо(Settings)"
 
-#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:90
+#: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:91
 msgid "Work plan data currently exists for %startDate - %endDate"
 msgstr " %эхлэхОгноо - %дуусахОгноо зориулсан Ажлын Төлөвлөгөөний Мэдээлэл бий"
 
@@ -8586,11 +8586,11 @@ msgstr " %эхлэхОгноо - %дуусахОгноо зориулсан Аж
 msgid "Work plan overview"
 msgstr "Ажлын төлөвлөгөөний тойм"
 
-#: Miradi/source/org/miradi/views/summary/SummaryView.java:169
+#: Miradi/source/org/miradi/views/summary/SummaryView.java:170
 msgid "Work plan start date is before project start date"
 msgstr "Ажлын төлөвлөгөө эхэлсэн огноо төсөл эхэлсэн огнооноос өмнө байна"
 
-#: Miradi/source/org/miradi/forms/summary/PlanningTabWorkPlanSubPanelForm.java:30
+#: Miradi/source/org/miradi/forms/summary/PlanningTabWorkPlanSubPanelForm.java:31
 msgid "Workplan"
 msgstr "Ажлын төлөвлөгөө"
 
@@ -8629,7 +8629,7 @@ msgstr "Иен (Япон)"
 msgid "Yes"
 msgstr "Тийм"
 
-#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:145
+#: Miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:146
 msgid ""
 "You are removing this resource from the project team, so he/she will no "
 "longer appear in the list of Team Members in the Summary View. "
@@ -8659,27 +8659,27 @@ msgstr ""
 "гэдгийг анхаарна уу. Форматыг шилжүүлж байхад үүссэн төслийн backup-д ч "
 "Miradi мөн адил  zip файл үүсгэнэ.  "
 
-#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:566
+#: Miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:568
 msgid "[Error]"
 msgstr "[Алдаа]"
 
-#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:122
+#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:116
 msgid "[Main Diagram]"
 msgstr "Үндсэн Диаграмм]"
 
-#: Miradi/source/org/miradi/views/diagram/doers/CreateStressFromKeaDoer.java:75
+#: Miradi/source/org/miradi/views/diagram/doers/CreateStressFromKeaDoer.java:76
 msgid "[NOT SPECIFIED]"
 msgstr "[ТОДОРХОЙ ЗААГДААГҮЙ]"
 
-#: Miradi/source/org/miradi/project/ResultsChainCreatorHelper.java:171
+#: Miradi/source/org/miradi/project/ResultsChainCreatorHelper.java:174
 msgid "[New Results Chain]"
 msgstr "[Шинэ Үр Дүнгийн Гинжих Холбоос]"
 
-#: Miradi/source/org/miradi/project/Project.java:951
+#: Miradi/source/org/miradi/project/Project.java:958
 msgid "[No Project]"
 msgstr "Төсөл байхгүй]"
 
-#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:123
+#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:117
 msgid "[Not Named]"
 msgstr "[Нэрлээгүй"
 
