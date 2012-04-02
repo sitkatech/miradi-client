@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-02 08:01-0500\n"
+"POT-Creation-Date: 2012-04-02 15:23-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -323,7 +323,7 @@ msgstr "(Lihat tab Proyek) "
 msgid "(Translation: %code %date)"
 msgstr "(Penerjemahan: : %code %date) "
 
-#: Miradi/source/org/miradi/objects/DiagramFactor.java:224
+#: Miradi/source/org/miradi/objects/DiagramFactor.java:212
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectList.java:70
 msgid "(Unknown)"
 msgstr "(Tidak Dikenal) "
@@ -3410,7 +3410,7 @@ msgstr ""
 msgid "Error Occurred please try saving under different name."
 msgstr "Terjadi Kesalahan, harap simpan dengan nama lain. "
 
-#: Miradi/source/org/miradi/objects/Dashboard.java:302
+#: Miradi/source/org/miradi/objects/Dashboard.java:290
 msgid "Error Retrieving Data"
 msgstr ""
 
@@ -4358,15 +4358,15 @@ msgstr "Atribut Kunci"
 msgid "Key Ecological Attribute (KEA)"
 msgstr "Atribut Ekologi Kunci (AEK) "
 
-#: Miradi/source/org/miradi/objects/AccountingCode.java:64
+#: Miradi/source/org/miradi/objects/AccountingCode.java:52
 msgid "Label|(Undefined Accounting Code)"
 msgstr " (Kode Akuntansi Tak Terdefinisi) "
 
-#: Miradi/source/org/miradi/objects/FundingSource.java:64
+#: Miradi/source/org/miradi/objects/FundingSource.java:52
 msgid "Label|(Undefined Funding Source)"
 msgstr "(Sumber Dana Tidak Jelas) "
 
-#: Miradi/source/org/miradi/objects/ProjectResource.java:113
+#: Miradi/source/org/miradi/objects/ProjectResource.java:101
 msgid "Label|(Undefined Resource)"
 msgstr " (Sumber Daya Tak Terdefinisi) "
 
@@ -4379,11 +4379,11 @@ msgstr "--- mempengaruhi --> "
 msgid "Label|Biodiversity Area (hectares)"
 msgstr "Daerah Keanekaragaman Hayati (hektar) "
 
-#: Miradi/source/org/miradi/objects/BudgetCategoryOne.java:64
+#: Miradi/source/org/miradi/objects/BudgetCategoryOne.java:52
 msgid "Label|Budget Category One"
 msgstr ""
 
-#: Miradi/source/org/miradi/objects/BudgetCategoryTwo.java:64
+#: Miradi/source/org/miradi/objects/BudgetCategoryTwo.java:52
 msgid "Label|Budget Category Two"
 msgstr ""
 
@@ -7441,7 +7441,7 @@ msgstr ""
 "subtugas-subtugas. Dalam Miradi, tugas diwakili oleh bentuk oval pipih warna "
 "abu-abu."
 
-#: Miradi/source/org/miradi/objects/Task.java:365
+#: Miradi/source/org/miradi/objects/Task.java:360
 msgid "Task does not have a parent"
 msgstr ""
 
@@ -8590,7 +8590,7 @@ msgstr ""
 msgid "[Error]"
 msgstr "[Kesalahan] "
 
-#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:116
+#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:104
 msgid "[Main Diagram]"
 msgstr "[Diagram Utama] "
 
@@ -8606,7 +8606,7 @@ msgstr "[Rangkaian Hasil Baru] "
 msgid "[No Project]"
 msgstr "[Tidak Ada Proyek] "
 
-#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:117
+#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:105
 msgid "[Not Named]"
 msgstr "[Tidak Diberi Nama] "
 
