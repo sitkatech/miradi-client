@@ -37,18 +37,6 @@ public class RatingCriterion extends BaseObject
 	}
 	
 	@Override
-	public int getType()
-	{
-		return RatingCriterionSchema.getObjectType();
-	}
-
-	@Override
-	public String getTypeName()
-	{
-		return RatingCriterionSchema.OBJECT_NAME;
-	}
-
-	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;

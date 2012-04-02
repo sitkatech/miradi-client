@@ -48,18 +48,6 @@ public class TableSettings extends BaseObject
 	}
 	
 	@Override
-	public int getType()
-	{
-		return TableSettingsSchema.getObjectType();
-	}
-	
-	@Override
-	public String getTypeName()
-	{
-		return TableSettingsSchema.OBJECT_NAME;
-	}
-	
-	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;

@@ -82,18 +82,6 @@ public class DiagramFactor extends BaseObject
 	}
 	
 	@Override
-	public int getType()
-	{
-		return DiagramFactorSchema.getObjectType();
-	}
-
-	@Override
-	public String getTypeName()
-	{
-		return DiagramFactorSchema.OBJECT_NAME;
-	}
-
-	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return new int[] {

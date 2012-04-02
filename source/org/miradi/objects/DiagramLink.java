@@ -69,18 +69,6 @@ public class DiagramLink extends BaseObject
 	}
 
 	@Override
-	public int getType()
-	{
-		return DiagramLinkSchema.getObjectType();
-	}
-
-	@Override
-	public String getTypeName()
-	{
-		return DiagramLinkSchema.OBJECT_NAME;
-	}
-
-	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return new int[] {

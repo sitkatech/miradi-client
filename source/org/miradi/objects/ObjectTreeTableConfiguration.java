@@ -54,18 +54,6 @@ public class ObjectTreeTableConfiguration extends BaseObject implements Planning
 	}
 	
 	@Override
-	public int getType()
-	{
-		return ObjectTreeTableConfigurationSchema.getObjectType();
-	}
-
-	@Override
-	public String getTypeName()
-	{
-		return ObjectTreeTableConfigurationSchema.OBJECT_NAME;
-	}
-
-	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;

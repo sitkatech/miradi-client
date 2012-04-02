@@ -40,18 +40,6 @@ public class XslTemplate extends BaseObject
 	}
 	
 	@Override
-	public int getType()
-	{
-		return XslTemplateSchema.getObjectType();
-	}
-	
-	@Override
-	public String getTypeName()
-	{
-		return XslTemplateSchema.OBJECT_NAME;
-	}
-
-	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;

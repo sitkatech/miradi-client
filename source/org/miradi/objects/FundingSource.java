@@ -41,18 +41,6 @@ public class FundingSource extends AbstractBudgetCategoryObject
 	}
 	
 	@Override
-	public int getType()
-	{
-		return FundingSourceSchema.getObjectType();
-	}
-
-	@Override
-	public String getTypeName()
-	{
-		return FundingSourceSchema.OBJECT_NAME;
-	}
-
-	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;

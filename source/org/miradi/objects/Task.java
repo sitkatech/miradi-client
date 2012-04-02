@@ -110,13 +110,8 @@ public class Task extends Factor
 	{
 		return super.isRefList(tag);
 	}
-	
-	@Override
-	public int getType()
-	{
-		return TaskSchema.getObjectType();
-	}
 
+	//FIXME urgent - should this method be removed?
 	@Override
 	public String getTypeName()
 	{

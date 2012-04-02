@@ -266,18 +266,6 @@ public class Strategy extends Factor
 	}
 	
 	@Override
-	public int getType()
-	{
-		return StrategySchema.getObjectType();
-	}
-	
-	@Override
-	public String getTypeName()
-	{
-		return StrategySchema.OBJECT_NAME;
-	}
-
-	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;

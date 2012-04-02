@@ -47,18 +47,6 @@ public class IntermediateResult extends Factor
 	}
 	
 	@Override
-	public int getType()
-	{
-		return IntermediateResultSchema.getObjectType();
-	}
-	
-	@Override
-	public String getTypeName()
-	{
-		return IntermediateResultSchema.OBJECT_NAME;
-	}
-
-	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;

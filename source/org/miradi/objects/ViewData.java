@@ -127,18 +127,6 @@ public class ViewData extends BaseObject
 	}
 
 	@Override
-	public int getType()
-	{
-		return ViewDataSchema.getObjectType();
-	}
-	
-	@Override
-	public String getTypeName()
-	{
-		return ViewDataSchema.OBJECT_NAME;
-	}
-
-	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;

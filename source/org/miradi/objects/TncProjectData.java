@@ -51,18 +51,6 @@ public class TncProjectData extends BaseObject
 	}
 	
 	@Override
-	public int getType()
-	{
-		return TncProjectDataSchema.getObjectType();
-	}
-
-	@Override
-	public String getTypeName()
-	{
-		return TncProjectDataSchema.OBJECT_NAME;
-	}
-
-	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;

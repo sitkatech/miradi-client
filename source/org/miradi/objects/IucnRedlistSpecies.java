@@ -40,18 +40,6 @@ public class IucnRedlistSpecies extends BaseObject
 	}
 	
 	@Override
-	public int getType()
-	{
-		return IucnRedlistSpeciesSchema.getObjectType();
-	}
-	
-	@Override
-	public String getTypeName()
-	{
-		return IucnRedlistSpeciesSchema.OBJECT_NAME;
-	}
-
-	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;

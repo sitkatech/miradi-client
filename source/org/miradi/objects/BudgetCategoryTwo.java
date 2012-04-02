@@ -41,18 +41,6 @@ public class BudgetCategoryTwo extends AbstractBudgetCategoryObject
 	}
 	
 	@Override
-	public int getType()
-	{
-		return BudgetCategoryTwoSchema.getObjectType();
-	}
-	
-	@Override
-	public String getTypeName()
-	{
-		return BudgetCategoryTwoSchema.OBJECT_NAME;
-	}
-
-	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;

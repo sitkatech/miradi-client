@@ -45,18 +45,6 @@ public class HumanWelfareTarget extends AbstractTarget
 		return true;
 	}
 	
-	@Override
-	public int getType()
-	{
-		return HumanWelfareTargetSchema.getObjectType();
-	}
-	
-	@Override
-	public String getTypeName()
-	{
-		return HumanWelfareTargetSchema.OBJECT_NAME;
-	}
-
 	public static HumanWelfareTarget find(ObjectManager objectManager, ORef humanWelfareTargetRef)
 	{
 		return (HumanWelfareTarget) objectManager.findObject(humanWelfareTargetRef);

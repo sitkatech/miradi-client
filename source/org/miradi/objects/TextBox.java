@@ -40,18 +40,6 @@ public class TextBox extends Factor
 	}
 	
 	@Override
-	public int getType()
-	{
-		return TextBoxSchema.getObjectType();
-	}
-	
-	@Override
-	public String getTypeName()
-	{
-		return TextBoxSchema.OBJECT_NAME;
-	}
-
-	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;

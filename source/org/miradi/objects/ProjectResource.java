@@ -49,18 +49,6 @@ public class ProjectResource extends BaseObject
 	}
 	
 	@Override
-	public int getType()
-	{
-		return ProjectResourceSchema.getObjectType();
-	}
-
-	@Override
-	public String getTypeName()
-	{
-		return ProjectResourceSchema.OBJECT_NAME;
-	}
-
-	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;

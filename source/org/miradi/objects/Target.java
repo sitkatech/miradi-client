@@ -115,18 +115,6 @@ public class Target extends AbstractTarget
 		return getQuestion(HabitatAssociationQuestion.class);
 	}
 	
-	@Override
-	public int getType()
-	{
-		return TargetSchema.getObjectType();
-	}
-	
-	@Override
-	public String getTypeName()
-	{
-		return TargetSchema.OBJECT_NAME;
-	}
-
 	public static Target find(ObjectManager objectManager, ORef targetRef)
 	{
 		return (Target) objectManager.findObject(targetRef);

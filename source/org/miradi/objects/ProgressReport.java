@@ -44,18 +44,6 @@ public class ProgressReport extends BaseObject
 	}
 	
 	@Override
-	public int getType()
-	{
-		return ProgressReportSchema.getObjectType();
-	}
-	
-	@Override
-	public String getTypeName()
-	{
-		return ProgressReportSchema.OBJECT_NAME;
-	}
-
-	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return new int[] {

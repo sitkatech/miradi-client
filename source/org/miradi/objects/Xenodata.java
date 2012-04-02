@@ -39,18 +39,6 @@ public class Xenodata extends BaseObject
 	}
 	
 	@Override
-	public int getType()
-	{
-		return XenodataSchema.getObjectType();
-	}
-	
-	@Override
-	public String getTypeName()
-	{
-		return XenodataSchema.OBJECT_NAME;
-	}
-
-	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;

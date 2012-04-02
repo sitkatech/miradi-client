@@ -71,23 +71,11 @@ public class Dashboard extends BaseObject
 	}
 	
 	@Override
-	public int getType()
-	{
-		return DashboardSchema.getObjectType();
-	}
-	
-	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;
 	}
 	
-	@Override
-	public String getTypeName()
-	{
-		return DashboardSchema.OBJECT_NAME;
-	}
-
 	@Override
 	public String getPseudoData(String fieldTag)
 	{

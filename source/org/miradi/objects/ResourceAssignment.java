@@ -45,18 +45,6 @@ public class ResourceAssignment extends Assignment
 	}
 	
 	@Override
-	public int getType()
-	{
-		return ResourceAssignmentSchema.getObjectType();
-	}
-
-	@Override
-	public String getTypeName()
-	{
-		return ResourceAssignmentSchema.OBJECT_NAME;
-	}
-
-	@Override
 	public String getPseudoData(String fieldTag)
 	{
 		if (fieldTag.equals(PSEUDO_TAG_PROJECT_RESOURCE_LABEL))

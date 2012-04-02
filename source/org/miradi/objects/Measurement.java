@@ -40,18 +40,6 @@ public class Measurement extends BaseObject
 	}
 	
 	@Override
-	public int getType()
-	{
-		return MeasurementSchema.getObjectType();
-	}
-	
-	@Override
-	public String getTypeName()
-	{
-		return MeasurementSchema.OBJECT_NAME;
-	}
-
-	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return new int[] {IndicatorSchema.getObjectType()};

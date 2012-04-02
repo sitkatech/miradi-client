@@ -46,12 +46,6 @@ public class ThreatStressRating extends BaseObject
 	}
 	
 	@Override
-	public int getType()
-	{
-		return ThreatStressRatingSchema.getObjectType();
-	}
-	
-	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;
@@ -110,12 +104,6 @@ public class ThreatStressRating extends BaseObject
 	public ChoiceItem getIrreversibility()
 	{
 		return getChoiceItemData(TAG_IRREVERSIBILITY);
-	}
-	
-	@Override
-	public String getTypeName()
-	{
-		return ThreatStressRatingSchema.OBJECT_NAME;
 	}
 	
 	@Override

@@ -41,18 +41,6 @@ public class ProgressPercent extends BaseObject
 	}
 	
 	@Override
-	public int getType()
-	{
-		return ProgressPercentSchema.getObjectType();
-	}
-	
-	@Override
-	public String getTypeName()
-	{
-		return ProgressPercentSchema.OBJECT_NAME;
-	}
-
-	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return new int[] {

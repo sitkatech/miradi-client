@@ -100,18 +100,6 @@ public class ExpenseAssignment extends Assignment
 		return getLabel();
 	}
 	
-	@Override
-	public int getType()
-	{
-		return ExpenseAssignmentSchema.getObjectType();
-	}
-	
-	@Override
-	public String getTypeName()
-	{
-		return ExpenseAssignmentSchema.OBJECT_NAME;
-	}
-	
 	public static boolean is(ORef ref)
 	{
 		return is(ref.getObjectType());

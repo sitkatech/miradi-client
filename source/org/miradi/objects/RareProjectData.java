@@ -37,18 +37,6 @@ public class RareProjectData extends BaseObject
 	{
 		super(objectManager, new BaseId(idAsInt), jsonObject, new RareProjectDataSchema());
 	}
-	
-	@Override
-	public int getType()
-	{
-		return RareProjectDataSchema.getObjectType();
-	}
-
-	@Override
-	public String getTypeName()
-	{
-		return RareProjectDataSchema.OBJECT_NAME;
-	}
 
 	@Override
 	public int[] getTypesThatCanOwnUs()

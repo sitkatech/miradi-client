@@ -45,18 +45,6 @@ public class Objective extends Desire
 	}
 	
 	@Override
-	public int getType()
-	{
-		return ObjectiveSchema.getObjectType();
-	}
-
-	@Override
-	public String getTypeName()
-	{
-		return ObjectiveSchema.OBJECT_NAME;
-	}
-
-	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return new int[] {

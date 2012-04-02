@@ -41,18 +41,6 @@ public class TaggedObjectSet extends BaseObject
 	}
 	
 	@Override
-	public int getType()
-	{
-		return TaggedObjectSetSchema.getObjectType();
-	}
-	
-	@Override
-	public String getTypeName()
-	{
-		return TaggedObjectSetSchema.OBJECT_NAME;
-	}
-
-	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;

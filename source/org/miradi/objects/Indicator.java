@@ -281,18 +281,6 @@ public class Indicator extends BaseObject
 	}
 	
 	@Override
-	public int getType()
-	{
-		return IndicatorSchema.getObjectType();
-	}
-
-	@Override
-	public String getTypeName()
-	{
-		return IndicatorSchema.OBJECT_NAME;
-	}
-
-	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return new int[] {
