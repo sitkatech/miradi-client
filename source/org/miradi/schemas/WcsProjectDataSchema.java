@@ -43,12 +43,6 @@ public class WcsProjectDataSchema extends BaseObjectSchema
 		createFieldSchemaSingleLineUserText(WcsProjectData.TAG_STEP_URL);
 	}
 	
-	@Override
-	public String getXmpz2ElementName()
-	{
-		return WcsProjectDataSchema.OBJECT_NAME;
-	}
-
 	public static int getObjectType()
 	{
 		return ObjectType.WCS_PROJECT_DATA;

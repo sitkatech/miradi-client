@@ -42,12 +42,6 @@ public class FosProjectDataSchema extends BaseObjectSchema
 		createFieldSchemaSingleLineUserText(FosProjectData.TAG_COACHES);
 	}
 	
-	@Override
-	public String getXmpz2ElementName()
-	{
-		return FosProjectDataSchema.OBJECT_NAME;
-	}
-
 	public static int getObjectType()
 	{
 		return ObjectType.FOS_PROJECT_DATA;

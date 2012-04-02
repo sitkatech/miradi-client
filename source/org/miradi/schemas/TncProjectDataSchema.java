@@ -48,12 +48,6 @@ public class TncProjectDataSchema extends BaseObjectSchema
 		createFieldSchemaMultiLineUserText(TncProjectData.TAG_CAP_STANDARDS_SCORECARD);
 	}
 	
-	@Override
-	public String getXmpz2ElementName()
-	{
-		return TncProjectDataSchema.OBJECT_NAME;
-	}
-
 	public static int getObjectType()
 	{
 		return ObjectType.TNC_PROJECT_DATA;
