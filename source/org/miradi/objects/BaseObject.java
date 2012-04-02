@@ -112,11 +112,6 @@ abstract public class BaseObject
 		this(objectManagerToUse, idToUse, new BaseObjectSchema());
 	}
 	
-	public BaseObject(ObjectManager objectManagerToUse, BaseId idToUse, EnhancedJsonObject json) throws Exception
-	{
-		this(objectManagerToUse, idToUse, json, new BaseObjectSchema());
-	}
-	
 	public BaseObject(ObjectManager objectManagerToUse, BaseId baseId, EnhancedJsonObject json, BaseObjectSchema schemaToUse) throws Exception
 	{
 		this(objectManagerToUse, baseId, schemaToUse);
