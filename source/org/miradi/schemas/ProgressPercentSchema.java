@@ -48,7 +48,7 @@ public class ProgressPercentSchema extends BaseObjectSchema
 	@Override
 	public int getType()
 	{
-		return ObjectType.FAKE;
+		return getObjectType();
 	}
 
 	@Override

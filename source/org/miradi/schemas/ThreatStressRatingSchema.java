@@ -53,7 +53,7 @@ public class ThreatStressRatingSchema extends BaseObjectSchema
 	@Override
 	public int getType()
 	{
-		return ObjectType.FAKE;
+		return getObjectType();
 	}
 
 	@Override
