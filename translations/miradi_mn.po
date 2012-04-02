@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-02 15:23-0500\n"
+"POT-Creation-Date: 2012-04-02 15:28-0500\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -5246,7 +5246,7 @@ msgstr "Үр ашиггүй"
 #: Miradi/source/org/miradi/questions/TrendQuestion.java:37
 #: Miradi/source/org/miradi/utils/Translation.java:306
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:280
-#: Miradi/source/org/miradi/dialogs/planning/treenodes/UnspecifiedBaseObject.java:60
+#: Miradi/source/org/miradi/dialogs/planning/treenodes/UnspecifiedBaseObject.java:45
 msgid "Not Specified"
 msgstr "Тодорхой тайлбарлагдаагүй"
 

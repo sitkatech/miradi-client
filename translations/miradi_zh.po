@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-02 15:23-0500\n"
+"POT-Creation-Date: 2012-04-02 15:28-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -5055,7 +5055,7 @@ msgstr "无效的 "
 #: Miradi/source/org/miradi/questions/TrendQuestion.java:37
 #: Miradi/source/org/miradi/utils/Translation.java:306
 #: Miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:280
-#: Miradi/source/org/miradi/dialogs/planning/treenodes/UnspecifiedBaseObject.java:60
+#: Miradi/source/org/miradi/dialogs/planning/treenodes/UnspecifiedBaseObject.java:45
 msgid "Not Specified"
 msgstr "未指定 \t\t"
 
