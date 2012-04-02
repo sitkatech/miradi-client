@@ -43,5 +43,17 @@ public class ConceptualModelDiagramSchema extends DiagramObjectSchema
 		return ObjectType.CONCEPTUAL_MODEL_DIAGRAM;
 	}
 	
+	@Override
+	public int getType()
+	{
+		return getObjectType();
+	}
+
+	@Override
+	public String getObjectName()
+	{
+		return OBJECT_NAME;
+	}
+	
 	public static final String OBJECT_NAME = "ConceptualModelDiagram";
 }

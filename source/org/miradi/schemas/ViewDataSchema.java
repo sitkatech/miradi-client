@@ -67,6 +67,18 @@ public class ViewDataSchema extends BaseObjectSchema
 	{
 		return ObjectType.VIEW_DATA;
 	}
+	
+	@Override
+	public int getType()
+	{
+		return getObjectType();
+	}
+
+	@Override
+	public String getObjectName()
+	{
+		return OBJECT_NAME;
+	}
 
 	private Project project;
 	public static final String OBJECT_NAME = "ViewData";

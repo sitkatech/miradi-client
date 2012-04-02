@@ -43,5 +43,17 @@ public class ThreatReductionResultSchema extends FactorSchema
 		return ObjectType.THREAT_REDUCTION_RESULT;
 	}
 	
+	@Override
+	public int getType()
+	{
+		return ObjectType.FAKE;
+	}
+
+	@Override
+	public String getObjectName()
+	{
+		return OBJECT_NAME;
+	}
+	
 	public static final String OBJECT_NAME = "ThreatReductionResult";
 }

@@ -44,5 +44,17 @@ public class XslTemplateSchema extends BaseObjectSchema
 		return ObjectType.XSL_TEMPLATE;
 	}
 	
+	@Override
+	public int getType()
+	{
+		return ObjectType.FAKE;
+	}
+
+	@Override
+	public String getObjectName()
+	{
+		return OBJECT_NAME;
+	}
+	
 	public static final String OBJECT_NAME = "XslTemplate";
 }

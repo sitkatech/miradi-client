@@ -46,5 +46,17 @@ public class CauseSchema extends FactorSchema
 		return ObjectType.CAUSE;
 	}
 	
+	@Override
+	public int getType()
+	{
+		return getObjectType();
+	}
+
+	@Override
+	public String getObjectName()
+	{
+		return OBJECT_NAME;
+	}
+	
 	public static final String OBJECT_NAME = "Cause";
 }

@@ -53,5 +53,17 @@ public class FosProjectDataSchema extends BaseObjectSchema
 		return ObjectType.FOS_PROJECT_DATA;
 	}
 	
+	@Override
+	public int getType()
+	{
+		return getObjectType();
+	}
+
+	@Override
+	public String getObjectName()
+	{
+		return OBJECT_NAME;
+	}
+	
 	public static final String OBJECT_NAME = "FosProjectData";
 }

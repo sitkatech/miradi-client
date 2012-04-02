@@ -46,5 +46,17 @@ public class TaggedObjectSetSchema extends BaseObjectSchema
 		return ObjectType.TAGGED_OBJECT_SET;
 	}
 	
+	@Override
+	public int getType()
+	{
+		return ObjectType.FAKE;
+	}
+
+	@Override
+	public String getObjectName()
+	{
+		return OBJECT_NAME;
+	}
+	
 	public static final String OBJECT_NAME = "TaggedObjectSet";
 }

@@ -41,13 +41,23 @@ public class ResourceAssignmentSchema extends AssignmentSchema
 		
 		createPseudoFieldSchemaString(ResourceAssignment.PSEUDO_TAG_PROJECT_RESOURCE_LABEL);
 		createPseudoFieldSchemaString(ResourceAssignment.PSEUDO_TAG_OWNING_FACTOR_NAME);
-
-		
 	}
 
 	public static int getObjectType()
 	{
 		return ObjectType.RESOURCE_ASSIGNMENT;
+	}
+	
+	@Override
+	public int getType()
+	{
+		return getObjectType();
+	}
+
+	@Override
+	public String getObjectName()
+	{
+		return OBJECT_NAME;
 	}
 	
 	public static final String OBJECT_NAME = "ResourceAssignment";

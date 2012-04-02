@@ -34,5 +34,17 @@ public class TextBoxSchema extends FactorSchema
 		return ObjectType.TEXT_BOX;
 	}
 	
+	@Override
+	public int getType()
+	{
+		return ObjectType.FAKE;
+	}
+
+	@Override
+	public String getObjectName()
+	{
+		return OBJECT_NAME;
+	}
+	
 	public static final String OBJECT_NAME = "TextBox";
 }

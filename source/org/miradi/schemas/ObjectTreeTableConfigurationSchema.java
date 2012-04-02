@@ -59,6 +59,18 @@ public class ObjectTreeTableConfigurationSchema extends BaseObjectSchema
 	{
 		return ObjectType.OBJECT_TREE_TABLE_CONFIGURATION;
 	}
+	
+	@Override
+	public int getType()
+	{
+		return getObjectType();
+	}
+
+	@Override
+	public String getObjectName()
+	{
+		return OBJECT_NAME;
+	}
 
 	private Project project;
 	public static final String OBJECT_NAME = "PlanningViewConfiguration";

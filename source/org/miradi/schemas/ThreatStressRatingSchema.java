@@ -50,5 +50,17 @@ public class ThreatStressRatingSchema extends BaseObjectSchema
 		return ObjectType.THREAT_STRESS_RATING;
 	}
 	
+	@Override
+	public int getType()
+	{
+		return ObjectType.FAKE;
+	}
+
+	@Override
+	public String getObjectName()
+	{
+		return OBJECT_NAME;
+	}
+	
 	public static final String OBJECT_NAME = "ThreatStressRating";
 }

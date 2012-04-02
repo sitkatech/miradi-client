@@ -49,5 +49,17 @@ public class OrganizationSchema extends BaseObjectSchema
 		return ObjectType.ORGANIZATION;
 	}
 	
+	@Override
+	public int getType()
+	{
+		return getObjectType();
+	}
+
+	@Override
+	public String getObjectName()
+	{
+		return OBJECT_NAME;
+	}
+	
 	public static final String OBJECT_NAME = "Organization";
 }

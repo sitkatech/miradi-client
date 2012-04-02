@@ -20,10 +20,26 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import org.miradi.objecthelpers.ObjectType;
+
 public class UnspecifiedBaseObjectSchema extends BaseObjectSchema
 {
 	public UnspecifiedBaseObjectSchema()
 	{
 		super();
 	}
+	
+	@Override
+	public int getType()
+	{
+		return ObjectType.FAKE;
+	}
+
+	@Override
+	public String getObjectName()
+	{
+		return OBJECT_NAME;
+	}
+
+	private static final String OBJECT_NAME = "UnspecifiedBaseObject";
 }

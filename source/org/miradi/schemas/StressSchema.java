@@ -49,5 +49,17 @@ public class StressSchema extends FactorSchema
 		return ObjectType.STRESS;
 	}
 	
+	@Override
+	public int getType()
+	{
+		return ObjectType.FAKE;
+	}
+
+	@Override
+	public String getObjectName()
+	{
+		return OBJECT_NAME;
+	}
+	
 	public static final String OBJECT_NAME = "Stress";
 }
