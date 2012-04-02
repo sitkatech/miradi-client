@@ -24,12 +24,13 @@ import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.ObjectManager;
+import org.miradi.schemas.UnspecifiedBaseObjectSchema;
 
 public class UnspecifiedBaseObject extends BaseObject
 {
 	public UnspecifiedBaseObject(ObjectManager objectManagerToUse, int objectTypeToUse, String objectNameToUse)
 	{
-		super(objectManagerToUse, BaseId.INVALID);
+		super(objectManagerToUse, BaseId.INVALID, new UnspecifiedBaseObjectSchema());
 		
 		objectType = objectTypeToUse;
 		objectName = objectNameToUse;
