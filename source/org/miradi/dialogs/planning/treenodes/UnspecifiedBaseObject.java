@@ -30,24 +30,9 @@ public class UnspecifiedBaseObject extends BaseObject
 {
 	public UnspecifiedBaseObject(ObjectManager objectManagerToUse, int objectTypeToUse, String objectNameToUse)
 	{
-		super(objectManagerToUse, BaseId.INVALID, new UnspecifiedBaseObjectSchema());
-		
-		objectType = objectTypeToUse;
-		objectName = objectNameToUse;
+		super(objectManagerToUse, BaseId.INVALID, new UnspecifiedBaseObjectSchema(objectTypeToUse, objectNameToUse));
 	}
 
-	@Override
-	public int getType()
-	{
-		return objectType;
-	}
-
-	@Override
-	public String getTypeName()
-	{
-		return objectName;
-	}
-	
 	@Override
 	public String getLabel()
 	{
@@ -65,7 +50,4 @@ public class UnspecifiedBaseObject extends BaseObject
 	{
 		return NO_OWNERS;
 	}
-	
-	private int objectType;
-	private String objectName;
 }
