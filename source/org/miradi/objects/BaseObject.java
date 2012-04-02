@@ -1325,9 +1325,15 @@ abstract public class BaseObject
 		return schema;
 	}
 	
-	abstract public int getType();
+	public int getType()
+	{
+		return getSchema().getType();
+	}
 
-	abstract public String getTypeName();
+	public String getTypeName()
+	{
+		return getSchema().getObjectName();
+	}
 
 	public static final String TAG_TIME_STAMP_MODIFIED = "TimeStampModified";
 	public static final String TAG_ID = "Id";
