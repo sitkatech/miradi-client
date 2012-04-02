@@ -40,18 +40,6 @@ public class Audience extends BaseObject
 	}
 	
 	@Override
-	public int getType()
-	{
-		return AudienceSchema.getObjectType();
-	}
-	
-	@Override
-	public String getTypeName()
-	{
-		return AudienceSchema.OBJECT_NAME;
-	}
-
-	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;

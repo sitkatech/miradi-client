@@ -39,18 +39,6 @@ public class ResultsChainDiagram extends DiagramObject
 	}
 
 	@Override
-	public int getType()
-	{
-		return ResultsChainDiagramSchema.getObjectType();
-	}
-
-	@Override
-	public String getTypeName()
-	{
-		return ResultsChainDiagramSchema.OBJECT_NAME;
-	}
-
-	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;

@@ -41,18 +41,6 @@ public class ThreatReductionResult extends Factor
 	}
 	
 	@Override
-	public int getType()
-	{
-		return ThreatReductionResultSchema.getObjectType();
-	}
-	
-	@Override
-	public String getTypeName()
-	{
-		return ThreatReductionResultSchema.OBJECT_NAME;
-	}
-
-	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;

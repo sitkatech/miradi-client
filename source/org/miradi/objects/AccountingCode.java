@@ -41,18 +41,6 @@ public class AccountingCode extends AbstractBudgetCategoryObject
 	}
 	
 	@Override
-	public int getType()
-	{
-		return AccountingCodeSchema.getObjectType();
-	}
-	
-	@Override
-	public String getTypeName()
-	{
-		return AccountingCodeSchema.OBJECT_NAME;
-	}
-
-	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;

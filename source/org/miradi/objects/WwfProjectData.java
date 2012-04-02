@@ -39,18 +39,6 @@ public class WwfProjectData extends BaseObject
 	}
 	
 	@Override
-	public int getType()
-	{
-		return WwfProjectDataSchema.getObjectType();
-	}
-
-	@Override
-	public String getTypeName()
-	{
-		return WwfProjectDataSchema.OBJECT_NAME;
-	}
-
-	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;

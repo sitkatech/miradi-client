@@ -40,18 +40,6 @@ public class OtherNotableSpecies extends BaseObject
 	}
 	
 	@Override
-	public int getType()
-	{
-		return OtherNotableSpeciesSchema.getObjectType();
-	}
-	
-	@Override
-	public String getTypeName()
-	{
-		return OtherNotableSpeciesSchema.OBJECT_NAME;
-	}
-
-	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;

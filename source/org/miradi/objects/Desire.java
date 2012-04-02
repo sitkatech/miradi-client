@@ -97,9 +97,6 @@ abstract public class Desire extends BaseObject
 	}
 	
 	@Override
-	abstract public int getType();
-
-	@Override
 	public String getShortLabel()
 	{
 		return getData(TAG_SHORT_LABEL);

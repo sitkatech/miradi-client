@@ -42,18 +42,6 @@ public class Goal extends Desire
 	}
 	
 	@Override
-	public int getType()
-	{
-		return GoalSchema.getObjectType();
-	}
-
-	@Override
-	public String getTypeName()
-	{
-		return GoalSchema.OBJECT_NAME;
-	}
-
-	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return new int[] {

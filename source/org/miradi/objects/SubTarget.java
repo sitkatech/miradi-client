@@ -42,18 +42,6 @@ public class SubTarget extends BaseObject
 	}
 	
 	@Override
-	public int getType()
-	{
-		return SubTargetSchema.getObjectType();
-	}
-	
-	@Override
-	public String getTypeName()
-	{
-		return SubTargetSchema.OBJECT_NAME;
-	}
-
-	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return new int[] {

@@ -53,18 +53,6 @@ public class ProjectMetadata extends BaseObject
 	}
 	
 	@Override
-	public int getType()
-	{
-		return ProjectMetadataSchema.getObjectType();
-	}
-
-	@Override
-	public String getTypeName()
-	{
-		return ProjectMetadataSchema.OBJECT_NAME;
-	}
-
-	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;

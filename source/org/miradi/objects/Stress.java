@@ -44,12 +44,6 @@ public class Stress extends Factor
 	}
 	
 	@Override
-	public int getType()
-	{
-		return StressSchema.getObjectType();
-	}
-	
-	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return new int[] {
@@ -98,12 +92,6 @@ public class Stress extends Factor
 		ORefList referrers = findObjectsThatReferToUs(TargetSchema.getObjectType());
 		
 		return referrers.size() > 0;
-	}
-	
-	@Override
-	public String getTypeName()
-	{
-		return StressSchema.OBJECT_NAME;
 	}
 	
 	@Override

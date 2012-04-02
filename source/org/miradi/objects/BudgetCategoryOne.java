@@ -39,18 +39,6 @@ public class BudgetCategoryOne extends AbstractBudgetCategoryObject
 	{
 		super(objectManager, new BaseId(idAsInt), json, new BudgetCategoryOneSchema());
 	}
-	
-	@Override
-	public int getType()
-	{
-		return BudgetCategoryOneSchema.getObjectType();
-	}
-	
-	@Override
-	public String getTypeName()
-	{
-		return BudgetCategoryOneSchema.OBJECT_NAME;
-	}
 
 	@Override
 	public int[] getTypesThatCanOwnUs()

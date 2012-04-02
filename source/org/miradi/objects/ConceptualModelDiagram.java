@@ -45,12 +45,6 @@ public class ConceptualModelDiagram extends DiagramObject
 	}
 	
 	@Override
-	public int getType()
-	{
-		return ConceptualModelDiagramSchema.getObjectType();
-	}
-
-	@Override
 	public boolean canContainFactorType(int objectType)
 	{
 		if(Cause.is(objectType))
@@ -59,12 +53,6 @@ public class ConceptualModelDiagram extends DiagramObject
 			return true;
 		
 		return super.canContainFactorType(objectType);
-	}
-
-	@Override
-	public String getTypeName()
-	{
-		return ConceptualModelDiagramSchema.OBJECT_NAME;
 	}
 
 	@Override

@@ -40,18 +40,6 @@ public class Organization extends BaseObject
 	}
 	
 	@Override
-	public int getType()
-	{
-		return OrganizationSchema.getObjectType();
-	}
-	
-	@Override
-	public String getTypeName()
-	{
-		return OrganizationSchema.OBJECT_NAME;
-	}
-
-	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;

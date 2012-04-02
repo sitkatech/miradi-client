@@ -39,18 +39,6 @@ public class WcpaProjectData extends BaseObject
 	}
 	
 	@Override
-	public int getType()
-	{
-		return WcpaProjectDataSchema.getObjectType();
-	}
-
-	@Override
-	public String getTypeName()
-	{
-		return WcpaProjectDataSchema.OBJECT_NAME;
-	}
-
-	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;

@@ -80,12 +80,7 @@ public class Cause extends Factor
 		return true;
 	}
 	
-	@Override
-	public int getType()
-	{
-		return CauseSchema.getObjectType();
-	}
-	
+	//FIXME urgent - should this method be removed?
 	@Override
 	public String getTypeName()
 	{

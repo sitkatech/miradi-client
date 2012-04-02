@@ -52,18 +52,6 @@ public class ValueOption extends BaseObject
 	}
 	
 	@Override
-	public int getType()
-	{	
-		return ValueOptionSchema.getObjectType();
-	}
-
-	@Override
-	public String getTypeName()
-	{
-		return ValueOptionSchema.OBJECT_NAME;
-	}
-
-	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;

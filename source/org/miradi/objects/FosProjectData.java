@@ -39,18 +39,6 @@ public class FosProjectData extends BaseObject
 	}
 	
 	@Override
-	public int getType()
-	{
-		return FosProjectDataSchema.getObjectType();
-	}
-
-	@Override
-	public String getTypeName()
-	{
-		return FosProjectDataSchema.OBJECT_NAME;
-	}
-
-	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;

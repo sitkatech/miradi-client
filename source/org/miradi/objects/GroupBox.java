@@ -40,18 +40,6 @@ public class GroupBox extends Factor
 	}
 	
 	@Override
-	public int getType()
-	{
-		return GroupBoxSchema.getObjectType();
-	}
-	
-	@Override
-	public String getTypeName()
-	{
-		return GroupBoxSchema.OBJECT_NAME;
-	}
-
-	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;

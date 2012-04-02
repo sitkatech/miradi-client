@@ -66,18 +66,6 @@ public class KeyEcologicalAttribute extends BaseObject
 	}
 	
 	@Override
-	public int getType()
-	{
-		return KeyEcologicalAttributeSchema.getObjectType();
-	}
-
-	@Override
-	public String getTypeName()
-	{
-		return KeyEcologicalAttributeSchema.OBJECT_NAME;
-	}
-
-	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return new int[] {

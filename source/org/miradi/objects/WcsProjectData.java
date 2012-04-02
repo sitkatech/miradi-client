@@ -39,18 +39,6 @@ public class WcsProjectData extends BaseObject
 	}
 	
 	@Override
-	public int getType()
-	{
-		return WcsProjectDataSchema.getObjectType();
-	}
-
-	@Override
-	public String getTypeName()
-	{
-		return WcsProjectDataSchema.OBJECT_NAME;
-	}
-
-	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;

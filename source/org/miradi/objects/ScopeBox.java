@@ -40,18 +40,6 @@ public class ScopeBox extends Factor
 	}
 	
 	@Override
-	public int getType()
-	{
-		return ScopeBoxSchema.getObjectType();
-	}
-	
-	@Override
-	public String getTypeName()
-	{
-		return ScopeBoxSchema.OBJECT_NAME;
-	}
-
-	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;

@@ -41,18 +41,6 @@ public class FactorLink extends BaseObject
 	}
 	
 	@Override
-	public int getType()
-	{
-		return FactorLinkSchema.getObjectType();
-	}
-
-	@Override
-	public String getTypeName()
-	{
-		return FactorLinkSchema.OBJECT_NAME;
-	}
-
-	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return new int[] {

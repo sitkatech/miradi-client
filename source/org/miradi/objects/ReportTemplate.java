@@ -39,18 +39,6 @@ public class ReportTemplate extends BaseObject
 	}
 	
 	@Override
-	public int getType()
-	{
-		return ReportTemplateSchema.getObjectType();
-	}
-	
-	@Override
-	public String getTypeName()
-	{
-		return ReportTemplateSchema.OBJECT_NAME;
-	}
-
-	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;

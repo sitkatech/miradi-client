@@ -40,18 +40,6 @@ public class ThreatRatingCommentsData extends BaseObject
 	}
 
 	@Override
-	public int getType()
-	{
-		return ThreatRatingCommentsDataSchema.getObjectType();
-	}
-
-	@Override
-	public String getTypeName()
-	{
-		return ThreatRatingCommentsDataSchema.OBJECT_NAME;
-	}
-
-	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;
