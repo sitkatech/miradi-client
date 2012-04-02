@@ -29,6 +29,7 @@ import org.miradi.questions.InternalQuestionWithoutValues;
 import org.miradi.questions.MonitoringTreeConfigurationQuestion;
 import org.miradi.questions.PlanningViewSingleLevelQuestion;
 import org.miradi.questions.WorkPlanCategoryTypesQuestion;
+import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class ViewDataSchema extends BaseObjectSchema
 {
@@ -56,6 +57,7 @@ public class ViewDataSchema extends BaseObjectSchema
 		createFieldSchemaInteger(ViewData.TAG_CURRENT_TAB).setNavigationField();
 		createFieldSchemaRef(ViewData.TAG_CURRENT_CONCEPTUAL_MODEL_REF).setNavigationField();
 		createFieldSchemaRef(ViewData.TAG_CURRENT_RESULTS_CHAIN_REF).setNavigationField();
+		createFieldSchemaReflist(ViewData.TAG_CHAIN_MODE_FACTOR_REFS, XmpzXmlConstants.CHAIN_MODE_FACTORS);
 	}
 	
 	private Project getProject()
