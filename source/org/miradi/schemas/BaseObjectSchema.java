@@ -30,7 +30,7 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 
-public class BaseObjectSchema implements Iterable<AbstractFieldSchema>
+abstract public class BaseObjectSchema implements Iterable<AbstractFieldSchema>
 {
 	public BaseObjectSchema()
 	{
