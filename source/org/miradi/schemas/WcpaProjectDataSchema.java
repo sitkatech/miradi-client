@@ -48,12 +48,6 @@ public class WcpaProjectDataSchema extends BaseObjectSchema
 		createFieldSchemaMultiLineUserText(WcpaProjectData.TAG_MANAGEMENT_RESOURCES);
 	}
 	
-	@Override
-	public String getXmpz2ElementName()
-	{
-		return WcpaProjectDataSchema.OBJECT_NAME;
-	}
-
 	public static int getObjectType()
 	{
 		return ObjectType.WCPA_PROJECT_DATA;

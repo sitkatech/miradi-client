@@ -48,12 +48,6 @@ public class RareProjectDataSchema extends BaseObjectSchema
 		createFieldSchemaMultiLineUserText(RareProjectData.TAG_MAIN_ACTIVITIES_NOTES);
 	}
 
-	@Override
-	public String getXmpz2ElementName()
-	{
-		return RareProjectDataSchema.OBJECT_NAME;
-	}
-
 	public static int getObjectType()
 	{
 		return ObjectType.RARE_PROJECT_DATA;

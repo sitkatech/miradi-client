@@ -246,7 +246,7 @@ abstract public class BaseObjectSchema implements Iterable<AbstractFieldSchema>
 	
 	public String getXmpz2ElementName()
 	{
-		throw new RuntimeException("This method should be overriden and correct value returned");
+		return getObjectName();
 	}
 	
 	public Iterator<AbstractFieldSchema> iterator()
