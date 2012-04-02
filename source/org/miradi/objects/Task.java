@@ -111,7 +111,6 @@ public class Task extends Factor
 		return super.isRefList(tag);
 	}
 
-	//FIXME urgent - should this method be removed?
 	@Override
 	public String getTypeName()
 	{

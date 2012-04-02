@@ -80,7 +80,6 @@ public class Cause extends Factor
 		return true;
 	}
 	
-	//FIXME urgent - should this method be removed?
 	@Override
 	public String getTypeName()
 	{
