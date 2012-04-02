@@ -49,6 +49,18 @@ public class TaskSchema extends FactorSchema
 		return ObjectType.TASK;
 	}
 	
+	@Override
+	public int getType()
+	{
+		return ObjectType.FAKE;
+	}
+
+	@Override
+	public String getObjectName()
+	{
+		return OBJECT_NAME;
+	}
+	
 	public static final String OBJECT_NAME = "Task";
 	public static final String METHOD_NAME = "Method";
 	public static final String ACTIVITY_NAME = "Activity";

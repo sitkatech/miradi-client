@@ -45,5 +45,17 @@ public class FactorLinkSchema extends BaseObjectSchema
 		return ObjectType.FACTOR_LINK;
 	}
 	
+	@Override
+	public int getType()
+	{
+		return getObjectType();
+	}
+
+	@Override
+	public String getObjectName()
+	{
+		return OBJECT_NAME;
+	}
+	
 	public static final String OBJECT_NAME = "Link";
 }

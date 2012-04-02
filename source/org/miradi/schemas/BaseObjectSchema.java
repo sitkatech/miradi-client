@@ -254,5 +254,9 @@ abstract public class BaseObjectSchema implements Iterable<AbstractFieldSchema>
 		return fieldSchemas.iterator();
 	}
 	
+	abstract public int getType();
+	
+	abstract public String getObjectName();
+	
 	private Vector<AbstractFieldSchema> fieldSchemas;
 }

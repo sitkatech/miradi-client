@@ -51,5 +51,17 @@ public class DiagramLinkSchema extends BaseObjectSchema
 		return ObjectType.DIAGRAM_LINK;
 	}
 	
+	@Override
+	public int getType()
+	{
+		return getObjectType();
+	}
+
+	@Override
+	public String getObjectName()
+	{
+		return OBJECT_NAME;
+	}
+	
 	public static final String OBJECT_NAME = "DiagramLink";
 }

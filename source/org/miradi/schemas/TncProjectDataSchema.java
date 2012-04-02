@@ -59,5 +59,17 @@ public class TncProjectDataSchema extends BaseObjectSchema
 		return ObjectType.TNC_PROJECT_DATA;
 	}
 	
+	@Override
+	public int getType()
+	{
+		return ObjectType.FAKE;
+	}
+
+	@Override
+	public String getObjectName()
+	{
+		return OBJECT_NAME;
+	}
+	
 	public static final String OBJECT_NAME = "TncProjectData";
 }

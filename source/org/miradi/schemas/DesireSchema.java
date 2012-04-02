@@ -23,7 +23,7 @@ package org.miradi.schemas;
 import org.miradi.objects.Desire;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 
-public class DesireSchema extends BaseObjectSchema
+abstract public class DesireSchema extends BaseObjectSchema
 {
 	public DesireSchema()
 	{

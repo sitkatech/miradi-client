@@ -55,6 +55,18 @@ public class ReportTemplateSchema extends BaseObjectSchema
 	{
 		return ObjectType.REPORT_TEMPLATE;
 	}
+	
+	@Override
+	public int getType()
+	{
+		return getObjectType();
+	}
+
+	@Override
+	public String getObjectName()
+	{
+		return OBJECT_NAME;
+	}
 
 	private Project project;
 	public static final String OBJECT_NAME = "ReportTemplate";

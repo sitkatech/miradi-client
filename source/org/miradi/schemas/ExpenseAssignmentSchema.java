@@ -44,5 +44,17 @@ public class ExpenseAssignmentSchema extends AssignmentSchema
 		return ObjectType.EXPENSE_ASSIGNMENT;
 	}
 	
+	@Override
+	public int getType()
+	{
+		return getObjectType();
+	}
+
+	@Override
+	public String getObjectName()
+	{
+		return OBJECT_NAME;
+	}
+	
 	public static final String OBJECT_NAME = "ExpenseAssignment";
 }

@@ -34,5 +34,17 @@ public class BudgetCategoryTwoSchema extends AbstractBudgetCategorySchema
 		return ObjectType.BUDGET_CATEGORY_TWO;
 	}
 	
+	@Override
+	public int getType()
+	{
+		return getObjectType();
+	}
+
+	@Override
+	public String getObjectName()
+	{
+		return OBJECT_NAME;
+	}
+	
 	public static final String OBJECT_NAME = "CategoryTwo";
 }
