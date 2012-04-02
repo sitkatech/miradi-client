@@ -107,11 +107,6 @@ abstract public class BaseObject
 		createFieldsFromBaseObjectSchema();
 	}
 
-	public BaseObject(ObjectManager objectManagerToUse, BaseId idToUse)
-	{
-		this(objectManagerToUse, idToUse, new BaseObjectSchema());
-	}
-	
 	public BaseObject(ObjectManager objectManagerToUse, BaseId baseId, EnhancedJsonObject json, BaseObjectSchema schemaToUse) throws Exception
 	{
 		this(objectManagerToUse, baseId, schemaToUse);
