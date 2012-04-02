@@ -46,7 +46,7 @@ public class ThreatReductionResultSchema extends FactorSchema
 	@Override
 	public int getType()
 	{
-		return ObjectType.FAKE;
+		return getObjectType();
 	}
 
 	@Override
