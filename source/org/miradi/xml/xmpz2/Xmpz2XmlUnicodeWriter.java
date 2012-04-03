@@ -106,10 +106,6 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 		writeField(baseObjectSchema, fieldSchema, isoDate);
 	}
 
-	public void writeDateRangeData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string) 
-	{
-	}
-
 	public void writeDateUnitEffortListData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string)
 	{
 	}
