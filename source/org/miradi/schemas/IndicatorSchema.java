@@ -60,7 +60,6 @@ public class IndicatorSchema extends BaseObjectSchema
 		createPseudoFieldSchemaString(Indicator.PSEUDO_TAG_STRATEGIES);
 		createPseudoFieldSchemaString(Indicator.PSEUDO_TAG_FACTOR);
 		createPseudoFieldSchemaString(Indicator.PSEUDO_TAG_METHODS);
-		createPseudoFieldSchemaString(Indicator.PSEUDO_TAG_INDICATOR_THRESHOLD_VALUE);
 		createPseudoFieldSchemaQuestion(Indicator.PSEUDO_TAG_PRIORITY_VALUE);
 		createPseudoFieldSchemaQuestion(Indicator.PSEUDO_TAG_STATUS_VALUE);
 		createPseudoFieldSchemaQuestion(Indicator.PSEUDO_TAG_RATING_SOURCE_VALUE);
