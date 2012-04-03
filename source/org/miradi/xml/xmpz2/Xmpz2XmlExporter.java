@@ -26,6 +26,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.EAMObjectPool;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
@@ -77,6 +78,9 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 			return null;
 		
 		if (objectType ==  ObjectType.VALUE_OPTION)
+			return null;
+		
+		if (TableSettings.is(objectType))
 			return null;
 
 		return getProject().getPool(objectType);
