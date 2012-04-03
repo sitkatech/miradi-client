@@ -104,6 +104,6 @@ public class BaseIdData extends ObjectData
 		writer.writeBaseIdData(baseObjectSchema, fieldSchema, getRef());
 	}
 
-	int objectType;
-	BaseId id;
+	private int objectType;
+	private BaseId id;
 }
