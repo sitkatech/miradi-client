@@ -101,7 +101,7 @@ public class BaseIdData extends ObjectData
 	@Override
 	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		writer.writeBaseIdData(baseObjectSchema, fieldSchema, get());
+		writer.writeBaseIdData(baseObjectSchema, fieldSchema, getRef());
 	}
 
 	int objectType;
