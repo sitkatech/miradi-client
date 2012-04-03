@@ -114,7 +114,7 @@ public class IdListData extends ObjectData
 	@Override
 	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		writer.writeIdListData(baseObjectSchema, fieldSchema, get());
+		writer.writeIdListData(baseObjectSchema, fieldSchema, getRefList());
 	}
 	
 	private IdList ids;
