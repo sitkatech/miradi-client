@@ -60,6 +60,6 @@ public class DateUnitListData extends AbstractStringListData
 	@Override
 	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		writer.writeDateUnitListData(baseObjectSchema, fieldSchema, get());
+		throw new RuntimeException("This method should not be called since the field is only used by TableSettings, which is not exported");
 	}
 }

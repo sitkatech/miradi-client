@@ -88,10 +88,6 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 		writeEndElement(elementContainerName);
 	}
 
-	public void writeDateUnitListData(BaseObjectSchema schema, AbstractFieldSchema fieldSchema, String string)
-	{
-	}
-
 	public void writeBaseIdData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, ORef ref) throws Exception
 	{
 		writeORefData(baseObjectSchema, fieldSchema, ref);
