@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2;
 
+import java.awt.Dimension;
 import java.awt.Point;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -128,8 +129,15 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 	{
 	}
 
-	public void writeDimensionData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string)
+	public void writeDimensionData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, Dimension dimension) throws Exception
 	{
+		final String sizeElementName = appendParentNameToChildName(baseObjectSchema.getObjectName(), SIZE);
+		writeStartElement(sizeElementName);
+		writeStartElement(DIAGRAM_SIZE_ELEMENT_NAME);
+		writeElement(WIDTH_ELEMENT_NAME, dimension.getWidth());		
+		writeElement(HEIGHT_ELEMENT_NAME, dimension.getHeight());
+		writeEndElement(DIAGRAM_SIZE_ELEMENT_NAME);
+		writeEndElement(sizeElementName);
 	}
 
 	public void writeFloatData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String number) throws Exception
@@ -199,8 +207,8 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 	private void writePoint(final String pointElementName, Point point) throws Exception
 	{
 		writeStartElement(pointElementName);
-		writeElement(X_ELEMENT_NAME, Integer.toString(point.x));
-		writeElement(Y_ELEMENT_NAME, Integer.toString(point.y));
+		writeElement(X_ELEMENT_NAME, point.x);
+		writeElement(Y_ELEMENT_NAME, point.y);
 		writeEndElement(pointElementName);
 	}
 
@@ -318,6 +326,16 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 	{
 		ObjectData field = baseObject.getField(fieldSchema.getTag());
 		field.writeAsXmpz2XmlData(this, baseObject.getSchema(), fieldSchema);
+	}
+	
+	private void writeElement(final String elementName, final double data) throws Exception
+	{
+		writeElement(elementName, Double.toString(data));
+	}
+	
+	private void writeElement(final String elementName, final int data) throws Exception
+	{
+		writeElement(elementName, Integer.toString(data));
 	}
 	
 	private void writeElement(String elementName, String data) throws Exception
