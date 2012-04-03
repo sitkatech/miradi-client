@@ -188,8 +188,9 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 	{
 	}
 
-	public void writePseudoRefListData(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema, String string)
+	public void writePseudoRefListData(final BaseObjectSchema baseObjectSchema, final AbstractFieldSchema fieldSchema, String string) throws Exception, Exception
 	{
+		writeRefListData(baseObjectSchema, fieldSchema, new ORefList(string));
 	}
 
 	public void writeRefListData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, ORefList refListToUse) throws Exception
