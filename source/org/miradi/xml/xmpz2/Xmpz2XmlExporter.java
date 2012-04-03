@@ -71,7 +71,7 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 		}
 	}
 
-	protected EAMObjectPool getBaseObjectPoolToExport(int objectType)
+	private EAMObjectPool getBaseObjectPoolToExport(final int objectType)
 	{
 		if (objectType == ObjectType.RATING_CRITERION)
 			return null;
