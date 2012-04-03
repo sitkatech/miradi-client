@@ -142,9 +142,6 @@ public class Indicator extends BaseObject
 	@Override
 	public String getPseudoData(String fieldTag)
 	{
-		if(fieldTag.equals(PSEUDO_TAG_INDICATOR_THRESHOLD_VALUE))
-			return getChoiceItemData(TAG_THRESHOLDS_MAP).getLabel();
-			
 		if(fieldTag.equals(PSEUDO_TAG_TARGETS))
 			return getRelatedLabelsAsMultiLine(new TargetSet());
 		
@@ -407,7 +404,6 @@ public class Indicator extends BaseObject
 	public static final String PSEUDO_TAG_DIRECT_THREATS = "DirectThreats";
 	public static final String PSEUDO_TAG_STRATEGIES = "Strategies";
 	public static final String PSEUDO_TAG_METHODS = "Methods";
-	public static final String PSEUDO_TAG_INDICATOR_THRESHOLD_VALUE = "IndicatorThresholdValue";
 	public static final String PSEUDO_TAG_RATING_SOURCE_VALUE = "RatingSourceValue";
 	public static final String PSEUDO_TAG_PRIORITY_VALUE = "PriorityValue";
 	public static final String PSEUDO_TAG_FUTURE_STATUS_RATING_VALUE  = "FutureStatusRatingValue";
