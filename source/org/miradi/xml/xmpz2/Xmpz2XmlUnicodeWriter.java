@@ -160,8 +160,20 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 		writeField(baseObjectSchema, fieldSchema, number);
 	}
 
-	public void writeORefData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string)
+	public void writeORefData(final BaseObjectSchema baseObjectSchema, final AbstractFieldSchema fieldSchema, final ORef ref) throws Exception
 	{
+		if (ref.isValid())
+		{
+			final String parentElementName = appendParentNameToChildName(baseObjectSchema, fieldSchema);
+			final BaseObject baseObject = BaseObject.find(getProject(), ref);
+			final String idElementName = baseObject.getTypeName() + ID_ELEMENT_NAME;
+			
+			writeStartElement(parentElementName);
+			writeStartElement(idElementName);
+			write(ref.getObjectId().toString());
+			writeEndElement(idElementName);
+			writeEndElement(parentElementName);
+		}
 	}
 
 	public void writePointData(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema, String string)
