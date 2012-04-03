@@ -54,7 +54,7 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 		project = projectToUse;
 	}
 	
-		public void writeChoiceData(final BaseObjectSchema baseObjectSchema, final AbstractFieldSchema fieldSchema, final ChoiceData choiceData) throws Exception
+	public void writeChoiceData(final BaseObjectSchema baseObjectSchema, final AbstractFieldSchema fieldSchema, final ChoiceData choiceData) throws Exception
 	{
 		final ChoiceQuestion choiceQuestion = choiceData.getChoiceQuestion();
 		final String code = choiceData.get();
