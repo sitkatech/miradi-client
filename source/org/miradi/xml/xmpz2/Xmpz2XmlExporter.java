@@ -62,16 +62,24 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 		
 		for(int objectType = ObjectType.FIRST_OBJECT_TYPE; objectType < ObjectType.OBJECT_TYPE_COUNT; ++objectType)
 		{
-			if (objectType == ObjectType.RATING_CRITERION || objectType ==  ObjectType.VALUE_OPTION)
-				continue;
-			
-			EAMObjectPool pool = getProject().getPool(objectType);
+			EAMObjectPool pool = getBaseObjectPoolToExport(objectType);
 			if(pool != null)
 			{
 				ORefList sortedRefList = pool.getSortedRefList();
 				exportBaseObjects(sortedRefList);
 			}
 		}
+	}
+
+	protected EAMObjectPool getBaseObjectPoolToExport(int objectType)
+	{
+		if (objectType == ObjectType.RATING_CRITERION)
+			return null;
+		
+		if (objectType ==  ObjectType.VALUE_OPTION)
+			return null;
+
+		return getProject().getPool(objectType);
 	}
 	
 	private void exportBaseObjects(ORefList sortedRefList) throws Exception
