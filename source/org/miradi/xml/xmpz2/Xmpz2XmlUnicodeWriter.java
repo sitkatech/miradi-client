@@ -178,8 +178,10 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 		}
 	}
 
-	public void writePointData(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema, String string)
+	public void writePointData(BaseObjectSchema baseObjectSchema, final AbstractFieldSchema fieldSchema, final Point point) throws Exception
 	{
+		final String elementName = appendParentNameToChildName(baseObjectSchema, fieldSchema);
+		writePoint(elementName, point);
 	}
 
 	public void writePointListData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, PointList points) throws Exception
@@ -188,18 +190,18 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 		writeStartElement(elemnentName);
 		for (int index = 0; index < points.size(); ++index)
 		{
-			writeDiagramPoint(points.get(index));
+			writePoint(DIAGRAM_POINT_ELEMENT_NAME, points.get(index));
 		}
 		
 		writeEndElement(elemnentName);
 	}
 	
-	public void writeDiagramPoint(Point point) throws Exception
+	private void writePoint(final String pointElementName, Point point) throws Exception
 	{
-		writeStartElement(DIAGRAM_POINT_ELEMENT_NAME);
+		writeStartElement(pointElementName);
 		writeElement(X_ELEMENT_NAME, Integer.toString(point.x));
 		writeElement(Y_ELEMENT_NAME, Integer.toString(point.y));
-		writeEndElement(DIAGRAM_POINT_ELEMENT_NAME);
+		writeEndElement(pointElementName);
 	}
 
 	public void writePseudoQuetionData(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema, String string)

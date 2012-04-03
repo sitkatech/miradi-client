@@ -90,7 +90,7 @@ public class PointData extends ObjectData
 	@Override
 	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		writer.writePointData(baseObjectSchema, fieldSchema, get());
+		writer.writePointData(baseObjectSchema, fieldSchema, point);
 	}
 
 	Point point;
