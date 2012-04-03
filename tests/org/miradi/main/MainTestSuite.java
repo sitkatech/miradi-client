@@ -67,7 +67,6 @@ import org.miradi.legacyprojects.TestDataUpgrader;
 import org.miradi.legacyprojects.TestDataUpgraderForMiradi3;
 import org.miradi.objectdata.TestAbstractUserStringDataWithHtmlFormatting;
 import org.miradi.objectdata.TestDateData;
-import org.miradi.objectdata.TestDateRangeData;
 import org.miradi.objectdata.TestIntegerData;
 import org.miradi.objectdata.TestNumberData;
 import org.miradi.objectdata.TestRefListListData;
@@ -228,8 +227,8 @@ import org.miradi.xml.TestXmpzXmlImporter;
 import org.miradi.xml.conpro.TestConProCodeMapHelper;
 import org.miradi.xml.conpro.exporter.TestConproXmlExporter;
 import org.miradi.xml.conpro.importer.TestConproXmlImporter;
-import org.miradi.xml.wcs.TestXmpzExporter;
 import org.miradi.xml.wcs.TestXmpz2XmlExporter;
+import org.miradi.xml.wcs.TestXmpzExporter;
 
 public class MainTestSuite extends TestSuite
 {
@@ -344,7 +343,6 @@ public class MainTestSuite extends TestSuite
 		//objectdata package
 		addTest(new TestSuite(TestAbstractUserStringDataWithHtmlFormatting.class));
 		addTest(new TestSuite(TestDateData.class));
-		addTest(new TestSuite(TestDateRangeData.class));
 		addTest(new TestSuite(TestIntegerData.class));
 		addTest(new TestSuite(TestNumberData.class));
 		addTest(new TestSuite(TestRefListListData.class));
