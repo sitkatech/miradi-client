@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2;
 
+import java.awt.Point;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Set;
@@ -39,6 +40,7 @@ import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.FieldSchemaReflist;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.PointList;
 import org.miradi.xml.generic.XmlSchemaCreator;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 
@@ -180,8 +182,24 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 	{
 	}
 
-	public void writePointListData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string)
+	public void writePointListData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, PointList points) throws Exception
 	{
+		final String elemnentName = baseObjectSchema.getObjectName() + BEND_POINTS_ELEMENT_NAME;
+		writeStartElement(elemnentName);
+		for (int index = 0; index < points.size(); ++index)
+		{
+			writeDiagramPoint(points.get(index));
+		}
+		
+		writeEndElement(elemnentName);
+	}
+	
+	public void writeDiagramPoint(Point point) throws Exception
+	{
+		writeStartElement(DIAGRAM_POINT_ELEMENT_NAME);
+		writeElement(X_ELEMENT_NAME, Integer.toString(point.x));
+		writeElement(Y_ELEMENT_NAME, Integer.toString(point.y));
+		writeEndElement(DIAGRAM_POINT_ELEMENT_NAME);
 	}
 
 	public void writePseudoQuetionData(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema, String string)
