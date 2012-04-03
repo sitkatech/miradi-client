@@ -92,10 +92,6 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 	{
 	}
 
-	public void writeRefListListData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string)
-	{
-	}
-
 	public void writeBaseIdData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, ORef ref) throws Exception
 	{
 		writeORefData(baseObjectSchema, fieldSchema, ref);
