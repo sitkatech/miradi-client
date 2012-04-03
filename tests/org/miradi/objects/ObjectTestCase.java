@@ -43,7 +43,6 @@ import org.miradi.objectdata.CodeToCodeListMapData;
 import org.miradi.objectdata.CodeToCodeMapData;
 import org.miradi.objectdata.CodeToUserStringMapData;
 import org.miradi.objectdata.DateData;
-import org.miradi.objectdata.DateRangeData;
 import org.miradi.objectdata.DateUnitEffortListData;
 import org.miradi.objectdata.DateUnitListData;
 import org.miradi.objectdata.IdListData;
@@ -79,7 +78,6 @@ import org.miradi.questions.InternalQuestionWithoutValues;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.utils.CodeList;
-import org.miradi.utils.DateRange;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.EnhancedJsonObject;
@@ -365,17 +363,6 @@ public class ObjectTestCase extends TestCaseWithProject
 		else if (field instanceof NumberData)
 		{
 			return "27.65";
-		}
-		else if (field instanceof DateRangeData)
-		{
-			MultiCalendar startDate = MultiCalendar.createFromGregorianYearMonthDay(2007, 7, 7);
-			MultiCalendar endDate = MultiCalendar.createFromGregorianYearMonthDay(2008, 8, 8);
-			DateRange dateRange = new DateRange(startDate, endDate);
-			
-			DateRangeData dateRangeData = new DateRangeData("");
-			dateRangeData.set(dateRange.toJson().toString());
-			
-			return dateRangeData.toString();
 		}
 		else if (field instanceof DateUnitListData)
 		{
