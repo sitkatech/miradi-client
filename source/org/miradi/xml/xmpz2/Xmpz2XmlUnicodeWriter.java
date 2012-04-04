@@ -27,13 +27,18 @@ import java.io.OutputStream;
 import java.util.Set;
 
 import org.martus.util.UnicodeWriter;
+import org.miradi.dialogs.dashboard.DashboardRowDefinitionManager;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.ObjectData;
+import org.miradi.objecthelpers.CodeToChoiceMap;
+import org.miradi.objecthelpers.CodeToCodeListMap;
+import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.Dashboard;
 import org.miradi.objects.Xenodata;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
@@ -78,6 +83,11 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 			return;
 		
 		final String elementName = appendParentNameToChildName(baseObjectSchema, fieldSchema);
+		writeCodeListElement(elementName, codes);
+	}
+
+	private void writeCodeListElement(final String elementName, final CodeList codes)	throws Exception
+	{
 		final String elementContainerName = createContainerElementName(elementName);
 		writeStartElement(elementContainerName);
 		for(String code : codes)
@@ -252,7 +262,36 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 		}
 		
 		writeEndElement(appendParentNameToChildName(PROJECT_SUMMARY, Xenodata.TAG_PROJECT_ID));
+	}
+	
+	public void writeDashboardSchemaElement(Dashboard dashboard) throws Exception
+	{
+		final CodeToUserStringMap commentsMap = dashboard.getCommentsMap();
+		final CodeToChoiceMap progressMap = dashboard.getProgressChoiceMap();
+		final CodeToCodeListMap flagsMap = dashboard.getFlagsMap();
 
+		DashboardRowDefinitionManager manager = new DashboardRowDefinitionManager();
+		final CodeList allThirdLevelRowCodes = manager.getThirdLevelCodes();
+		final String parentElementName = appendParentNameToChildName(DASHBOARD, DASHBOARD_STATUS_ENTRIES);
+		writeStartElement(parentElementName);
+		for (String thirdLevelCode : allThirdLevelRowCodes)
+		{
+			final boolean hasCommentsValue = commentsMap.contains(thirdLevelCode);
+			final boolean hasProgressValue = progressMap.contains(thirdLevelCode);
+			final boolean hasFlagValue = flagsMap.contains(thirdLevelCode);
+			if (hasCommentsValue || hasProgressValue || hasFlagValue)
+			{
+				writeStartElementWithAttribute(DASHBOARD_STATUS_ENTRY, KEY_ATTRIBUTE_NAME, thirdLevelCode);
+
+				writeElement(DASHBOARD_PROGRESS, progressMap.getChoiceCode(thirdLevelCode));
+				writeCodeListElement(appendParentNameToChildName(DASHBOARD, DASHBOARD_FLAGS), flagsMap.getCodeList(thirdLevelCode));
+				writeElement(DASHBOARD_COMMENTS, commentsMap.getUserString(thirdLevelCode));
+
+				writeEndElement(DASHBOARD_STATUS_ENTRY);
+			}
+		}
+
+		writeEndElement(parentElementName);
 	}
 	
 	private void writeField(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String data) throws Exception
@@ -285,7 +324,12 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 	
 	public void writeMainElementStart() throws Exception
 	{
-		writeln("<" + CONSERVATION_PROJECT + " " + XMLNS + "=\"" + NAME_SPACE + "\">");
+		writeStartElementWithAttribute(CONSERVATION_PROJECT, XMLNS, NAME_SPACE);
+	}
+	
+	public void writeStartElementWithAttribute(String startElementName, String attributeName, String attributeValue) throws IOException
+	{
+		writeln("<" + startElementName + " " + attributeName + "=\"" + attributeValue + "\">");
 	}
 	
 	public void writeMainElementEnd() throws Exception
