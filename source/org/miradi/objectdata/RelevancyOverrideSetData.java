@@ -22,9 +22,6 @@ package org.miradi.objectdata;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
-import org.miradi.schemas.AbstractFieldSchema;
-import org.miradi.schemas.BaseObjectSchema;
-import org.miradi.xml.xmpz2.Xmpz2XmlUnicodeWriter;
 
 public class RelevancyOverrideSetData extends ObjectData
 {
@@ -82,12 +79,6 @@ public class RelevancyOverrideSetData extends ObjectData
 	private void set(RelevancyOverrideSet relevancyOverrideSetToUse)
 	{
 		relevancyOverrideSet = relevancyOverrideSetToUse;
-	}
-	
-	@Override
-	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
-	{
-		writer.writeRelevancyOverrideSetData(baseObjectSchema, fieldSchema, get());
 	}
 	
 	private RelevancyOverrideSet relevancyOverrideSet;

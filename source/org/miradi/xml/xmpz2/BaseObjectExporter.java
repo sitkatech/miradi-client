@@ -23,8 +23,9 @@ package org.miradi.xml.xmpz2;
 import org.miradi.objects.BaseObject;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.xml.wcs.XmpzXmlConstants;
 
-public class BaseObjectExporter
+public class BaseObjectExporter implements XmpzXmlConstants
 {
 	public BaseObjectExporter(final Xmpz2XmlUnicodeWriter writerToUse)
 	{
