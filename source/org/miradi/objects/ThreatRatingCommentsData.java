@@ -20,8 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
-import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.CodeToUserStringMap;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.ThreatRatingCommentsDataSchema;
@@ -104,6 +104,21 @@ public class ThreatRatingCommentsData extends BaseObject
 	public static ThreatRatingCommentsData find(Project project, ORef threatRatingCommentsDataRef)
 	{
 		return find(project.getObjectManager(), threatRatingCommentsDataRef);
+	}
+	
+	public static boolean is(BaseObject object)
+	{
+		return is(object.getRef());
+	}
+	
+	public static boolean is(ORef ref)
+	{
+		return is(ref.getObjectType());
+	}
+	
+	public static boolean is(int objectType)
+	{
+		return objectType == ThreatRatingCommentsDataSchema.getObjectType();
 	}
 
 	public static final String TAG_SIMPLE_THREAT_RATING_COMMENTS_MAP = "SimpleThreatRatingCommentsMap";
