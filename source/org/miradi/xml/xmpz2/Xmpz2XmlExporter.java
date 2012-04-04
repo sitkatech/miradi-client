@@ -29,8 +29,6 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Dashboard;
 import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
-import org.miradi.schemas.AbstractFieldSchema;
-import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.xml.XmlExporter;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 
@@ -90,21 +88,14 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 			}	
 			else
 			{
-			writeBaseObjectDataSchemaElement(baseObject);
+				createBaseObjectExporter().writeBaseObjectDataSchemaElement(baseObject);
 			}
 		}
 	}
 
-	protected void writeBaseObjectDataSchemaElement(final BaseObject baseObject) throws Exception
+	private BaseObjectExporter createBaseObjectExporter()
 	{
-		BaseObjectSchema baseObjectSchema = baseObject.getSchema();
-		getWriter().writeObjectElementStart(baseObjectSchema);
-		for(AbstractFieldSchema fieldSchema : baseObjectSchema)
-		{
-			getWriter().writeFieldElement(baseObject, fieldSchema);
-		}
-		
-		getWriter().writeObjectElementEnd(baseObjectSchema);
+		return new BaseObjectExporter(getWriter());
 	}
 	
 	private Xmpz2XmlUnicodeWriter getWriter()
