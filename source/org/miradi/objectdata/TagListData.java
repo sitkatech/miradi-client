@@ -19,9 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objectdata;
 
-import org.miradi.schemas.AbstractFieldSchema;
-import org.miradi.schemas.BaseObjectSchema;
-import org.miradi.xml.xmpz2.Xmpz2XmlUnicodeWriter;
 
 
 public class TagListData extends AbstractStringListData
@@ -29,11 +26,5 @@ public class TagListData extends AbstractStringListData
 	public TagListData(String tagToUse)
 	{
 		super(tagToUse);
-	}
-
-	@Override
-	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
-	{
-		throw new RuntimeException("This method should not be called since the field is only used by TableSettings, which is not exported");	
 	}
 }

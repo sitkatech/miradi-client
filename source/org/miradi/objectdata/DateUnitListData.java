@@ -22,10 +22,7 @@ package org.miradi.objectdata;
 import java.util.Vector;
 
 import org.miradi.objecthelpers.DateUnit;
-import org.miradi.schemas.AbstractFieldSchema;
-import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.utils.CodeList;
-import org.miradi.xml.xmpz2.Xmpz2XmlUnicodeWriter;
 
 public class DateUnitListData extends AbstractStringListData
 {
@@ -56,10 +53,4 @@ public class DateUnitListData extends AbstractStringListData
 		
 		return dateUnitsAsCodeList;
 	}
-	
-	@Override
-	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
-	{
-		throw new RuntimeException("This method should not be called since the field is only used by TableSettings, which is not exported");
-	}
-}
+}	

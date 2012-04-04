@@ -21,9 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objectdata;
 
 import org.miradi.objecthelpers.CodeToCodeMap;
-import org.miradi.schemas.AbstractFieldSchema;
-import org.miradi.schemas.BaseObjectSchema;
-import org.miradi.xml.xmpz2.Xmpz2XmlUnicodeWriter;
 
 public class CodeToCodeMapData extends AbstractCodeToStringMapData
 {
@@ -71,12 +68,6 @@ public class CodeToCodeMapData extends AbstractCodeToStringMapData
 	public boolean isCodeToCodeMapData()
 	{
 		return true;
-	}
-	
-	@Override
-	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
-	{
-		throw new RuntimeException("This method should not be called since the field is only used by TableSettings, which is not exported");
 	}
 	
 	private CodeToCodeMap data;
