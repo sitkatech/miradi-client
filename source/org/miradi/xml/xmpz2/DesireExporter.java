@@ -45,6 +45,18 @@ public class DesireExporter extends BaseObjectExporter
 		writeRelevantActivityIds(desire);
 	}
 	
+	@Override
+	protected boolean isCustomField(final String tag)
+	{
+		if (tag.equals(Desire.TAG_RELEVANT_INDICATOR_SET))
+			return true;
+		
+		if (tag.equals(Desire.TAG_RELEVANT_STRATEGY_ACTIVITY_SET))
+			return true;
+		
+		return super.isCustomField(tag);
+	}
+	
 	private void writeRelevantIndicatorIds(Desire desire) throws Exception
 	{
 		getWriter().writeReflist(RELEVANT_INDICATOR_IDS, INDICATOR, desire.getRelevantIndicatorRefList());
