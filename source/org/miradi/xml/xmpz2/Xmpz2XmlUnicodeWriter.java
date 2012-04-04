@@ -103,14 +103,6 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 		writeORefData(baseObjectSchema, fieldSchema, ref);
 	}
 
-	public void writeCodeToChoiceMapData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string)
-	{
-	}
-
-	public void writeCodeToCodeListMapData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string)
-	{
-	}
-
 	public void writeDateData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String isoDate) throws Exception
 	{
 		writeField(baseObjectSchema, fieldSchema, isoDate);
