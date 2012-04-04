@@ -21,32 +21,20 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz2;
 
 import org.miradi.objects.BaseObject;
-import org.miradi.schemas.AbstractFieldSchema;
-import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.objects.Indicator;
 
-public class BaseObjectExporter
+public class IndicatorExporter extends BaseObjectExporter
 {
-	public BaseObjectExporter(final Xmpz2XmlUnicodeWriter writerToUse)
+	public IndicatorExporter(Xmpz2XmlUnicodeWriter writerToUse)
 	{
-		writer = writerToUse;
+		super(writerToUse);
 	}
 	
-	public void writeBaseObjectDataSchemaElement(final BaseObject baseObject) throws Exception
+	@Override
+	public void writeBaseObjectDataSchemaElement(BaseObject baseObject)	throws Exception
 	{
-		BaseObjectSchema baseObjectSchema = baseObject.getSchema();
-		getWriter().writeObjectElementStart(baseObjectSchema);
-		for(AbstractFieldSchema fieldSchema : baseObjectSchema)
-		{
-			getWriter().writeFieldElement(baseObject, fieldSchema);
-		}
+		super.writeBaseObjectDataSchemaElement(baseObject);
 		
-		getWriter().writeObjectElementEnd(baseObjectSchema);
+		getWriter().writeThreshold((Indicator) baseObject);
 	}
-
-	protected Xmpz2XmlUnicodeWriter getWriter()
-	{
-		return writer;
-	}
-
-	private Xmpz2XmlUnicodeWriter writer;
 }
