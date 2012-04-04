@@ -74,10 +74,6 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 		writeField(baseObjectSchema, fieldSchema, string);
 	}
 
-	public void writeCodeToUserStringMapData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string)
-	{
-	}
-
 	public void writeCodeListData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String codeListAsString) throws Exception
 	{
 		CodeList codes = new CodeList(codeListAsString);

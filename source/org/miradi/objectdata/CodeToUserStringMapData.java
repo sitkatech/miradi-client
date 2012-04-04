@@ -20,9 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objectdata;
 
 import org.miradi.objecthelpers.CodeToUserStringMap;
-import org.miradi.schemas.AbstractFieldSchema;
-import org.miradi.schemas.BaseObjectSchema;
-import org.miradi.xml.xmpz2.Xmpz2XmlUnicodeWriter;
 
 public class CodeToUserStringMapData extends AbstractCodeToStringMapData
 {
@@ -70,12 +67,6 @@ public class CodeToUserStringMapData extends AbstractCodeToStringMapData
 	public boolean isCodeToUserStringMapData()
 	{
 		return true;
-	}
-	
-	@Override
-	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
-	{
-		writer.writeCodeToUserStringMapData(baseObjectSchema, fieldSchema, get());
 	}
 	
 	private CodeToUserStringMap data;
