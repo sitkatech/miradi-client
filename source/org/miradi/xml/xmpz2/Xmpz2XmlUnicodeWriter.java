@@ -204,23 +204,23 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 
 	public void writeRefListData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, ORefList refListToUse) throws Exception
 	{
-		if (refListToUse.isEmpty())
-			return;
-		
 		final String idElementName = ((FieldSchemaReflist) fieldSchema).getTypeName();
 		final String elementName = appendParentNameToChildName(baseObjectSchema, fieldSchema);
-		writeStartElement(elementName);
-		for(ORef ref : refListToUse)
-		{
-			writeElement(idElementName, ref.getObjectId().toString());
-		}
-		
-		writeEndElement(elementName);
-
+		writeReflist(elementName, idElementName, refListToUse);
 	}
 
-	public void writeRelevancyOverrideSetData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string)
+	public void writeReflist(final String elementContainerName, final String elementTypeName, ORefList refListToUse) throws Exception
 	{
+		if (refListToUse.isEmpty())
+			return;
+
+		writeStartElement(elementContainerName);
+		for(ORef ref : refListToUse)
+		{
+			writeElement(elementTypeName, ref.getObjectId().toString());
+		}
+		
+		writeEndElement(elementContainerName);
 	}
 
 	public void writeUserTextData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string) throws Exception
