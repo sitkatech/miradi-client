@@ -38,10 +38,18 @@ public class BaseObjectExporter implements XmpzXmlConstants
 		getWriter().writeObjectElementStart(baseObjectSchema);
 		for(AbstractFieldSchema fieldSchema : baseObjectSchema)
 		{
-			getWriter().writeFieldElement(baseObject, fieldSchema);
+			if (!isCustomField(fieldSchema.getTag()))
+			{
+				getWriter().writeFieldElement(baseObject, fieldSchema);
+			}
 		}
 		
 		getWriter().writeObjectElementEnd(baseObjectSchema);
+	}
+
+	protected boolean isCustomField(final String tag)
+	{
+		return false;
 	}
 
 	protected Xmpz2XmlUnicodeWriter getWriter()

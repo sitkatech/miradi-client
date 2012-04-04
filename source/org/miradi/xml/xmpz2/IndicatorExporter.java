@@ -29,12 +29,24 @@ public class IndicatorExporter extends BaseObjectExporter
 	{
 		super(writerToUse);
 	}
-	
+
 	@Override
 	public void writeBaseObjectDataSchemaElement(BaseObject baseObject)	throws Exception
 	{
 		super.writeBaseObjectDataSchemaElement(baseObject);
 		
 		getWriter().writeThreshold((Indicator) baseObject);
+	}
+
+	@Override
+	protected boolean isCustomField(final String tag)
+	{
+		if (tag.equals(Indicator.TAG_THRESHOLDS_MAP))
+			return true;
+		
+		if (tag.equals(Indicator.TAG_THRESHOLD_DETAILS_MAP))
+			return true;
+		
+		return super.isCustomField(tag);
 	}
 }
