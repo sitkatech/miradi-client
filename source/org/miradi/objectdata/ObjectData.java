@@ -180,7 +180,10 @@ abstract public class ObjectData
 		return isNavigationField;
 	}
 	
-	abstract public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception;
+	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
+	{
+		throw new RuntimeException("This method should not be called since the field is only used by TableSettings, which is not exported");
+	}
 	
 	private HashSet<String> dependencyTags;
 	private String tag;
