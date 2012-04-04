@@ -27,6 +27,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.EAMObjectPool;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Dashboard;
+import org.miradi.objects.Indicator;
 import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
 import org.miradi.xml.XmlExporter;
@@ -82,19 +83,18 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 		for(ORef ref : sortedRefList)
 		{
 			BaseObject baseObject = BaseObject.find(getProject(), ref);
-			if (Dashboard.is(baseObject))
-			{
-				getWriter().writeDashboardSchemaElement((Dashboard)baseObject);
-			}	
-			else
-			{
-				createBaseObjectExporter().writeBaseObjectDataSchemaElement(baseObject);
-			}
+			createBaseObjectExporter(baseObject).writeBaseObjectDataSchemaElement(baseObject);
 		}
 	}
 
-	private BaseObjectExporter createBaseObjectExporter()
+	private BaseObjectExporter createBaseObjectExporter(final BaseObject baseObject)
 	{
+		if (Dashboard.is(baseObject))
+			return new DashboardExporter(getWriter());
+		
+		if (Indicator.is(baseObject))
+			return new IndicatorExporter(getWriter());
+			
 		return new BaseObjectExporter(getWriter());
 	}
 	

@@ -39,9 +39,11 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Dashboard;
+import org.miradi.objects.Indicator;
 import org.miradi.objects.Xenodata;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.StatusQuestion;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.FieldSchemaReflist;
@@ -286,6 +288,33 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 		writeEndElement(parentElementName);
 	}
 	
+	public void writeThreshold(Indicator indicator) throws Exception
+	{
+		CodeToUserStringMap thresholdValues = indicator.getThresholdsMap().getCodeToUserStringMap();
+		CodeToUserStringMap thresholdDetails = indicator.getThresholdDetailsMap();
+		if (thresholdValues.size() == 0 && thresholdDetails.size() == 0)
+			return;
+		
+		final String elementName = appendParentNameToChildName(INDICATOR, THRESHOLDS);
+		writeStartElement(elementName);
+		ChoiceQuestion question = getProject().getQuestion(StatusQuestion.class);
+		CodeList allCodes = question.getAllCodes();
+		for(int index = 0; index < allCodes.size(); ++index)
+		{
+			String code = allCodes.get(index);
+			if (code.equals(StatusQuestion.UNSPECIFIED))
+				continue;
+			
+			writeStartElement(THRESHOLD);
+			writeElement(STATUS_CODE, code);
+			writeElement(THRESHOLD_VALUE, thresholdValues.getUserString(code));
+			writeElement(THRESHOLD_DETAILS, thresholdDetails.getUserString(code));
+			writeEndElement(THRESHOLD);			
+		}
+		
+		writeEndElement(elementName);
+	}
+
 	private void writeField(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String data) throws Exception
 	{
 		final String elementName = appendParentNameToChildName(baseObjectSchema, fieldSchema);
