@@ -54,14 +54,6 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 
 	private void exportPools() throws Exception
 	{
-		writeBaseObjectDataSchemaElement(getProject().getMetadata());
-		writeBaseObjectDataSchemaElement(getFosProjectData());
-		writeBaseObjectDataSchemaElement(getRareProjectData());
-		writeBaseObjectDataSchemaElement(getTncProjectData());
-		writeBaseObjectDataSchemaElement(getWcpaProjectData());
-		writeBaseObjectDataSchemaElement(getWcsProjectData());
-		writeBaseObjectDataSchemaElement(getWwfProjectData());
-		
 		for(int objectType = ObjectType.FIRST_OBJECT_TYPE; objectType < ObjectType.OBJECT_TYPE_COUNT; ++objectType)
 		{
 			EAMObjectPool pool = getBaseObjectPoolToExport(objectType);
