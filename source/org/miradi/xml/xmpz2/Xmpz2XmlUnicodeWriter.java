@@ -46,6 +46,7 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.schemas.FieldSchemaIdList;
 import org.miradi.schemas.FieldSchemaReflist;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.PointList;
@@ -128,7 +129,10 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 
 	public void writeIdListData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, ORefList refList) throws Exception
 	{
-		writeRefListData(baseObjectSchema, fieldSchema, refList);
+		FieldSchemaIdList fieldSchemaIdList = (FieldSchemaIdList) fieldSchema;
+		final String elementTypeName = project.getObjectManager().getInternalObjectTypeName(fieldSchemaIdList.getIdListType());
+		final String elementContainerName = appendParentNameToChildName(baseObjectSchema, fieldSchema);
+		writeReflist(elementContainerName, elementTypeName, refList);
 	}
 
 	public void writeIntegerData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String number) throws Exception

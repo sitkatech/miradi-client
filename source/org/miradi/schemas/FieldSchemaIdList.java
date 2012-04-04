@@ -36,7 +36,12 @@ public class FieldSchemaIdList extends AbstractFieldSchema
 	@Override
 	public ObjectData createField(final BaseObject baseObjectToUse)
 	{
-		return new IdListData(getTag(), idListType);
+		return new IdListData(getTag(), getIdListType());
+	}
+	
+	public int getIdListType()
+	{
+		return idListType;
 	}
 	
 	private int idListType;
