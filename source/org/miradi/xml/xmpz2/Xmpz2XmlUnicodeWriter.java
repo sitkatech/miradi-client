@@ -27,18 +27,14 @@ import java.io.OutputStream;
 import java.util.Set;
 
 import org.martus.util.UnicodeWriter;
-import org.miradi.dialogs.dashboard.DashboardRowDefinitionManager;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.ObjectData;
-import org.miradi.objecthelpers.CodeToChoiceMap;
-import org.miradi.objecthelpers.CodeToCodeListMap;
 import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.Dashboard;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Xenodata;
 import org.miradi.project.Project;
@@ -85,7 +81,7 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 		writeCodeListElement(elementName, codes);
 	}
 
-	private void writeCodeListElement(final String elementName, final CodeList codes)	throws Exception
+	public void writeCodeListElement(final String elementName, final CodeList codes)	throws Exception
 	{
 		final String elementContainerName = createContainerElementName(elementName);
 		writeStartElement(elementContainerName);
@@ -254,36 +250,6 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 		writeEndElement(appendParentNameToChildName(PROJECT_SUMMARY, Xenodata.TAG_PROJECT_ID));
 	}
 	
-	public void writeDashboardSchemaElement(Dashboard dashboard) throws Exception
-	{
-		final CodeToUserStringMap commentsMap = dashboard.getCommentsMap();
-		final CodeToChoiceMap progressMap = dashboard.getProgressChoiceMap();
-		final CodeToCodeListMap flagsMap = dashboard.getFlagsMap();
-
-		DashboardRowDefinitionManager manager = new DashboardRowDefinitionManager();
-		final CodeList allThirdLevelRowCodes = manager.getThirdLevelCodes();
-		final String parentElementName = appendParentNameToChildName(DASHBOARD, DASHBOARD_STATUS_ENTRIES);
-		writeStartElement(parentElementName);
-		for (String thirdLevelCode : allThirdLevelRowCodes)
-		{
-			final boolean hasCommentsValue = commentsMap.contains(thirdLevelCode);
-			final boolean hasProgressValue = progressMap.contains(thirdLevelCode);
-			final boolean hasFlagValue = flagsMap.contains(thirdLevelCode);
-			if (hasCommentsValue || hasProgressValue || hasFlagValue)
-			{
-				writeStartElementWithAttribute(DASHBOARD_STATUS_ENTRY, KEY_ATTRIBUTE_NAME, thirdLevelCode);
-
-				writeElement(DASHBOARD_PROGRESS, progressMap.getChoiceCode(thirdLevelCode));
-				writeCodeListElement(appendParentNameToChildName(DASHBOARD, DASHBOARD_FLAGS), flagsMap.getCodeList(thirdLevelCode));
-				writeElement(DASHBOARD_COMMENTS, commentsMap.getUserString(thirdLevelCode));
-
-				writeEndElement(DASHBOARD_STATUS_ENTRY);
-			}
-		}
-
-		writeEndElement(parentElementName);
-	}
-	
 	public void writeThreshold(Indicator indicator) throws Exception
 	{
 		CodeToUserStringMap thresholdValues = indicator.getThresholdsMap().getCodeToUserStringMap();
@@ -324,7 +290,7 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 		return appendParentNameToChildName(xmpz2ElementName, tag);
 	}
 
-	private String appendParentNameToChildName(final String parentElementName,	final String childElementName)
+	public String appendParentNameToChildName(final String parentElementName,	final String childElementName)
 	{
 		return parentElementName + childElementName;
 	}
@@ -398,7 +364,7 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 		writeElement(elementName, Integer.toString(data));
 	}
 	
-	private void writeElement(String elementName, String data) throws Exception
+	public void writeElement(String elementName, String data) throws Exception
 	{
 		if (data == null || data.length() == 0)
 			return;
