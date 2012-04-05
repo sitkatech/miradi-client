@@ -44,6 +44,7 @@ import org.miradi.schemas.FieldSchemaReflist;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.PointList;
 import org.miradi.xml.generic.XmlSchemaCreator;
+import org.miradi.xml.wcs.TagToElementNameMap;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConstants
@@ -53,6 +54,21 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 		super(bytes);
 		
 		project = projectToUse;
+	}
+	
+	public void writeStartPoolElement(String startElementName) throws Exception
+	{
+		writeStartElement(createPoolElementName(startElementName));
+	}
+
+	public void writeEndPoolElement(String endElementName) throws Exception
+	{
+		writeEndElement(createPoolElementName(endElementName));
+	}
+	
+	private String createPoolElementName(String startElementName)
+	{
+		return startElementName + POOL_ELEMENT_TAG;
 	}
 	
 	public void writeChoiceData(final BaseObjectSchema baseObjectSchema, final AbstractFieldSchema fieldSchema, final ChoiceData choiceData) throws Exception
@@ -262,7 +278,7 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 
 	public String appendParentNameToChildName(final String parentElementName,	final String childElementName)
 	{
-		return parentElementName + childElementName;
+		return parentElementName + getConvertedElementName(parentElementName, childElementName);
 	}
 	
 	private String createContainerElementName(String startElementName)
@@ -352,12 +368,18 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 	
 	public void writeStartElement(final String elemnentName)	throws Exception
 	{
-		write("<" + elemnentName + ">");
+		writeln("<" + elemnentName + ">");
 	}
 	
 	public void writeEndElement(final String elemnentName)	throws Exception
 	{
-		writeln("</" + elemnentName + ">");
+		write("</" + elemnentName + ">");
+	}
+	
+	private String getConvertedElementName(String parentElementName,String elementName)
+	{
+		TagToElementNameMap map = new TagToElementNameMap();
+		return map.findElementName(parentElementName, elementName);
 	}
 	
 	public Project getProject()
