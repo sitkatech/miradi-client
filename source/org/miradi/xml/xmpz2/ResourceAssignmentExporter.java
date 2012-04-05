@@ -23,7 +23,7 @@ package org.miradi.xml.xmpz2;
 import org.miradi.objects.Assignment;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 
-public class ResourceAssignmentExporter extends AssignmentExporter
+public class ResourceAssignmentExporter extends AbstractAssignmentExporter
 {
 	public ResourceAssignmentExporter(Xmpz2XmlUnicodeWriter writerToUse)
 	{

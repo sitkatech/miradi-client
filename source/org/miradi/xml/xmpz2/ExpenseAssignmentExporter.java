@@ -22,7 +22,7 @@ package org.miradi.xml.xmpz2;
 
 import org.miradi.xml.wcs.XmpzXmlConstants;
 
-public class ExpenseAssignmentExporter extends AssignmentExporter
+public class ExpenseAssignmentExporter extends AbstractAssignmentExporter
 {
 	public ExpenseAssignmentExporter(Xmpz2XmlUnicodeWriter writerToUse)
 	{
