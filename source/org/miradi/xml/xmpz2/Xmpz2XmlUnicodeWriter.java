@@ -319,8 +319,7 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 	public void writeObjectElementStart(final BaseObject baseObject) throws Exception
 	{
 		BaseObjectSchema baseObjectSchema = baseObject.getSchema();
-		writeStartElementWithAttribute(baseObjectSchema.getObjectName(), ID, baseObject.getId().toString());
-		writeStartElement(baseObjectSchema.getXmpz2ElementName());
+		writeStartElementWithAttribute(baseObjectSchema.getXmpz2ElementName(), ID, baseObject.getId().toString());
 	}
 
 	public void writeObjectElementEnd(final BaseObjectSchema baseObjectSchema) throws Exception
@@ -360,7 +359,6 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 		writeStartElement(elementName);
 		writeXmlText(data);
 		writeEndElement(elementName);
-		writeln();
 	}
 	
 	private void writeXmlText(String xmlText) throws IOException
@@ -376,6 +374,7 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 	public void writeEndElement(final String elemnentName)	throws Exception
 	{
 		write("</" + elemnentName + ">");
+		writeln();
 	}
 	
 	private String getConvertedElementName(String parentElementName,String elementName)
