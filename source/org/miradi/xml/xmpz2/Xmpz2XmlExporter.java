@@ -52,6 +52,7 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 		getWriter().writeXmlHeader();
 		getWriter().writeMainElementStart();
 		exportPools();
+		getWriter().writeElement(DELETED_ORPHANS_ELEMENT_NAME, getProject().getQuarantineFileContents());
 		getWriter().writeMainElementEnd();
 	}
 
@@ -64,7 +65,8 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 			{
 				final String poolName = getProject().getObjectManager().getInternalObjectTypeName(pool.getObjectType());
 				ORefList sortedRefList = pool.getSortedRefList();
-				exportBaseObjects(poolName, sortedRefList);
+				if (sortedRefList.hasRefs())
+					exportBaseObjects(poolName, sortedRefList);
 			}
 		}
 	}
