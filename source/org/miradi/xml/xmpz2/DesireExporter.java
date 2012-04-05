@@ -23,6 +23,7 @@ package org.miradi.xml.xmpz2;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Desire;
+import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.xml.wcs.XmpzXmlConstants;
@@ -35,9 +36,9 @@ public class DesireExporter extends BaseObjectExporter
 	}
 	
 	@Override
-	public void writeBaseObjectDataSchemaElement(BaseObject baseObject)	throws Exception
+	protected void writeFields(final BaseObject baseObject,	BaseObjectSchema baseObjectSchema) throws Exception
 	{
-		super.writeBaseObjectDataSchemaElement(baseObject);
+		super.writeFields(baseObject, baseObjectSchema);
 
 		final Desire desire = (Desire) baseObject;
 		writeRelevantIndicatorIds(desire);

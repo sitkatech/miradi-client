@@ -32,10 +32,16 @@ public class BaseObjectExporter implements XmpzXmlConstants
 		writer = writerToUse;
 	}
 	
-	public void writeBaseObjectDataSchemaElement(final BaseObject baseObject) throws Exception
+	public final void writeBaseObjectDataSchemaElement(final BaseObject baseObject) throws Exception
 	{
 		BaseObjectSchema baseObjectSchema = baseObject.getSchema();
 		getWriter().writeObjectElementStart(baseObjectSchema);
+		writeFields(baseObject, baseObjectSchema);
+		getWriter().writeObjectElementEnd(baseObjectSchema);
+	}
+
+	protected void writeFields(final BaseObject baseObject,	BaseObjectSchema baseObjectSchema) throws Exception
+	{
 		for(AbstractFieldSchema fieldSchema : baseObjectSchema)
 		{
 			if (!doesFieldRequireSpecialHandling(fieldSchema.getTag()))
@@ -43,8 +49,6 @@ public class BaseObjectExporter implements XmpzXmlConstants
 				getWriter().writeFieldElement(baseObject, fieldSchema);
 			}
 		}
-		
-		getWriter().writeObjectElementEnd(baseObjectSchema);
 	}
 
 	protected boolean doesFieldRequireSpecialHandling(final String tag)

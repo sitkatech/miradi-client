@@ -22,6 +22,7 @@ package org.miradi.xml.xmpz2;
 
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
+import org.miradi.schemas.BaseObjectSchema;
 
 public class IndicatorExporter extends BaseObjectExporter
 {
@@ -31,9 +32,9 @@ public class IndicatorExporter extends BaseObjectExporter
 	}
 
 	@Override
-	public void writeBaseObjectDataSchemaElement(BaseObject baseObject)	throws Exception
+	protected void writeFields(final BaseObject baseObject,	BaseObjectSchema baseObjectSchema) throws Exception
 	{
-		super.writeBaseObjectDataSchemaElement(baseObject);
+		super.writeFields(baseObject, baseObjectSchema);
 		
 		getWriter().writeThreshold((Indicator) baseObject);
 	}
