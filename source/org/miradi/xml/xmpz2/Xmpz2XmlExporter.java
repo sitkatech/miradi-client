@@ -96,7 +96,7 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 			BaseObject baseObject = BaseObject.find(getProject(), ref);
 			createBaseObjectExporter(baseObject).writeBaseObjectDataSchemaElement(baseObject);
 		}
-		getWriter().writeStartPoolElement(poolName);
+		getWriter().writeEndPoolElement(poolName);
 	}
 
 	private BaseObjectExporter createBaseObjectExporter(final BaseObject baseObject)
