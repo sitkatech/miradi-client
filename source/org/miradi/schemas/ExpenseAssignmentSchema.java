@@ -23,7 +23,7 @@ package org.miradi.schemas;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.ExpenseAssignment;
 
-public class ExpenseAssignmentSchema extends AssignmentSchema
+public class ExpenseAssignmentSchema extends AbstractAssignmentSchema
 {
 	public ExpenseAssignmentSchema()
 	{
