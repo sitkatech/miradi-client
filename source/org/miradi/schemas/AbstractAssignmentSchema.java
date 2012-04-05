@@ -22,9 +22,9 @@ package org.miradi.schemas;
 
 import org.miradi.objects.Assignment;
 
-abstract public class AssignmentSchema extends BaseObjectSchema
+abstract public class AbstractAssignmentSchema extends BaseObjectSchema
 {
-	public AssignmentSchema()
+	public AbstractAssignmentSchema()
 	{
 		super();
 	}

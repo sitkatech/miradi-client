@@ -23,7 +23,7 @@ package org.miradi.schemas;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.ResourceAssignment;
 
-public class ResourceAssignmentSchema extends AssignmentSchema
+public class ResourceAssignmentSchema extends AbstractAssignmentSchema
 {
 	public ResourceAssignmentSchema()
 	{
