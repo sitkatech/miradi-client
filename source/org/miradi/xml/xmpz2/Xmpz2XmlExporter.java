@@ -28,7 +28,9 @@ import org.miradi.objectpools.EAMObjectPool;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Dashboard;
 import org.miradi.objects.Desire;
+import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Indicator;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.TableSettings;
 import org.miradi.objects.ThreatRatingCommentsData;
 import org.miradi.project.Project;
@@ -102,6 +104,12 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 		
 		if (Desire.isDesire(baseObject.getRef()))
 			return new DesireExporter(getWriter());
+		
+		if (ResourceAssignment.is(baseObject))
+			return new ResourceAssignmentExporter(getWriter());
+		
+		if (ExpenseAssignment.is(baseObject))
+			return new ExpenseAssignmentExporter(getWriter());
 			
 		return new BaseObjectExporter(getWriter());
 	}
