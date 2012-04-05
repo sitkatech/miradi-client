@@ -30,6 +30,7 @@ import org.miradi.objects.Dashboard;
 import org.miradi.objects.Desire;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Indicator;
+import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.TableSettings;
 import org.miradi.objects.ThreatRatingCommentsData;
@@ -64,12 +65,20 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 			EAMObjectPool pool = getBaseObjectPoolToExport(objectType);
 			if(pool != null)
 			{
-				final String poolName = getProject().getObjectManager().getInternalObjectTypeName(pool.getObjectType());
+				final String poolName = getPoolName(objectType);
 				ORefList sortedRefList = pool.getSortedRefList();
 				if (sortedRefList.hasRefs())
 					exportBaseObjects(poolName, sortedRefList);
 			}
 		}
+	}
+
+	private String getPoolName(int objectType)
+	{
+		if (ProjectMetadata.is(objectType))
+			return PROJECT_SUMMARY;
+		
+		return getProject().getObjectManager().getInternalObjectTypeName(objectType);
 	}
 
 	private EAMObjectPool getBaseObjectPoolToExport(final int objectType)
@@ -119,6 +128,9 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 		
 		if (ExpenseAssignment.is(baseObject))
 			return new ExpenseAssignmentExporter(getWriter());
+		
+		if (ProjectMetadata.is(baseObject))
+			return new ProjectMetadataExporter(getWriter());
 			
 		return new BaseObjectExporter(getWriter());
 	}
