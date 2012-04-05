@@ -298,7 +298,7 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 	
 	public void writeStartElementWithAttribute(String startElementName, String attributeName, String attributeValue) throws IOException
 	{
-		writeln("<" + startElementName + " " + attributeName + "=\"" + attributeValue + "\">");
+		write("<" + startElementName + " " + attributeName + "=\"" + attributeValue + "\">");
 	}
 	
 	public void writeStartElementWithTwoAttributes(String startElementName, String attributeName1, int attributeValue1, String attributeName2, int attributeValue2) throws IOException
