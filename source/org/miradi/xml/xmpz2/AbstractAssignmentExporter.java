@@ -28,9 +28,9 @@ import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.DoubleUtilities;
 
-abstract public class AssignmentExporter extends BaseObjectExporter
+abstract public class AbstractAssignmentExporter extends BaseObjectExporter
 {
-	public AssignmentExporter(Xmpz2XmlUnicodeWriter writerToUse)
+	public AbstractAssignmentExporter(Xmpz2XmlUnicodeWriter writerToUse)
 	{
 		super(writerToUse);
 	}
