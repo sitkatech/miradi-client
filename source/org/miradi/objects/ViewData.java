@@ -144,7 +144,12 @@ public class ViewData extends BaseObject
 	
 	public static boolean is(ORef ref)
 	{
-		return ref.getObjectType() == ViewDataSchema.getObjectType();
+		return is(ref.getObjectType());
+	}
+
+	public static boolean is(final int objectType)
+	{
+		return objectType == ViewDataSchema.getObjectType();
 	}
 
 	public static final String TAG_CURRENT_CONCEPTUAL_MODEL_REF = "CurrentConceptualModelRef";

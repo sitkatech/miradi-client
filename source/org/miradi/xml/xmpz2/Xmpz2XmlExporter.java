@@ -33,6 +33,7 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.TableSettings;
 import org.miradi.objects.ThreatRatingCommentsData;
+import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.xml.XmlExporter;
 import org.miradi.xml.wcs.XmpzXmlConstants;
@@ -83,6 +84,9 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 			return null;
 		
 		if (ThreatRatingCommentsData.is(objectType))
+			return null;
+		
+		if (ViewData.is(objectType))
 			return null;
 
 		return getProject().getPool(objectType);
