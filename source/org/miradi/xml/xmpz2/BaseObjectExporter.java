@@ -38,7 +38,7 @@ public class BaseObjectExporter implements XmpzXmlConstants
 		getWriter().writeObjectElementStart(baseObjectSchema);
 		for(AbstractFieldSchema fieldSchema : baseObjectSchema)
 		{
-			if (!isCustomField(fieldSchema.getTag()))
+			if (!isCustomExportedField(fieldSchema.getTag()))
 			{
 				getWriter().writeFieldElement(baseObject, fieldSchema);
 			}
@@ -47,7 +47,7 @@ public class BaseObjectExporter implements XmpzXmlConstants
 		getWriter().writeObjectElementEnd(baseObjectSchema);
 	}
 
-	protected boolean isCustomField(final String tag)
+	protected boolean isCustomExportedField(final String tag)
 	{
 		return false;
 	}
