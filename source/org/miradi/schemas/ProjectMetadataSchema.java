@@ -131,6 +131,12 @@ public class ProjectMetadataSchema extends BaseObjectSchema
 		createPseudoFieldSchemaString(ProjectMetadata.PSEUDO_TAG_PROJECT_FILENAME);
 		createPseudoFieldSchemaString(ProjectMetadata.PSEUDO_TAG_ALL_THREAT_CLASSIFICATIONS);
 	}
+
+	@Override
+	public String getXmpz2ElementName()
+	{
+		return PROJECT_SUMMARY;
+	}
 	
 	public static int getObjectType()
 	{
