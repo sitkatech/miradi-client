@@ -20,9 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2;
 
+import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
+import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.StatusQuestion;
 import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.utils.CodeList;
 
 public class IndicatorExporter extends BaseObjectExporter
 {
@@ -36,7 +40,7 @@ public class IndicatorExporter extends BaseObjectExporter
 	{
 		super.writeFields(baseObject, baseObjectSchema);
 		
-		getWriter().writeThreshold((Indicator) baseObject);
+		writeThreshold((Indicator) baseObject);
 	}
 
 	@Override
@@ -49,5 +53,32 @@ public class IndicatorExporter extends BaseObjectExporter
 			return true;
 		
 		return super.doesFieldRequireSpecialHandling(tag);
+	}
+	
+	private void writeThreshold(Indicator indicator) throws Exception
+	{
+		CodeToUserStringMap thresholdValues = indicator.getThresholdsMap().getCodeToUserStringMap();
+		CodeToUserStringMap thresholdDetails = indicator.getThresholdDetailsMap();
+		if (thresholdValues.size() == 0 && thresholdDetails.size() == 0)
+			return;
+		
+		final String elementName = getWriter().appendParentNameToChildName(INDICATOR, THRESHOLDS);
+		getWriter().writeStartElement(elementName);
+		ChoiceQuestion question = getWriter().getProject().getQuestion(StatusQuestion.class);
+		CodeList allCodes = question.getAllCodes();
+		for(int index = 0; index < allCodes.size(); ++index)
+		{
+			String code = allCodes.get(index);
+			if (code.equals(StatusQuestion.UNSPECIFIED))
+				continue;
+			
+			getWriter().writeStartElement(THRESHOLD);
+			getWriter().writeElement(STATUS_CODE, code);
+			getWriter().writeElement(THRESHOLD_VALUE, thresholdValues.getUserString(code));
+			getWriter().writeElement(THRESHOLD_DETAILS, thresholdDetails.getUserString(code));
+			getWriter().writeEndElement(THRESHOLD);			
+		}
+		
+		getWriter().writeEndElement(elementName);
 	}
 }
