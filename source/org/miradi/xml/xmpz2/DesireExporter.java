@@ -46,7 +46,7 @@ public class DesireExporter extends BaseObjectExporter
 	}
 	
 	@Override
-	protected boolean isCustomExportedField(final String tag)
+	protected boolean doesFieldRequireSpecialHandling(final String tag)
 	{
 		if (tag.equals(Desire.TAG_RELEVANT_INDICATOR_SET))
 			return true;
@@ -54,7 +54,7 @@ public class DesireExporter extends BaseObjectExporter
 		if (tag.equals(Desire.TAG_RELEVANT_STRATEGY_ACTIVITY_SET))
 			return true;
 		
-		return super.isCustomExportedField(tag);
+		return super.doesFieldRequireSpecialHandling(tag);
 	}
 	
 	private void writeRelevantIndicatorIds(Desire desire) throws Exception

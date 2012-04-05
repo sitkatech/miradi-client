@@ -45,12 +45,12 @@ abstract public class AbstractAssignmentExporter extends BaseObjectExporter
 	}
 
 	@Override
-	protected boolean isCustomExportedField(String tag)
+	protected boolean doesFieldRequireSpecialHandling(String tag)
 	{
 		if (tag.equals(Assignment.TAG_DATEUNIT_EFFORTS))
 			return true;
 		
-		return super.isCustomExportedField(tag);
+		return super.doesFieldRequireSpecialHandling(tag);
 	}
 	
 	protected void exportDateUnitEfforList(DateUnitEffortList dateUnitEffortList, String dateUnitsElementName) throws Exception
