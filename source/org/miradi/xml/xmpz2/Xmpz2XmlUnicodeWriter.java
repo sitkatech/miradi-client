@@ -107,10 +107,6 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 		writeField(baseObjectSchema, fieldSchema, isoDate);
 	}
 
-	public void writeDateUnitEffortListData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string)
-	{
-	}
-
 	public void writeDimensionData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, Dimension dimension) throws Exception
 	{
 		final String sizeElementName = appendParentNameToChildName(baseObjectSchema.getObjectName(), SIZE);
@@ -353,6 +349,16 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 		writeln("<" + startElementName + " " + attributeName + "=\"" + attributeValue + "\">");
 	}
 	
+	public void writeStartElementWithTwoAttributes(String startElementName, String attributeName1, int attributeValue1, String attributeName2, int attributeValue2) throws IOException
+	{
+		writeStartElementWithTwoAttributes(startElementName, attributeName1, Integer.toString(attributeValue1), attributeName2, Integer.toString(attributeValue2));
+	}
+	
+	public void writeStartElementWithTwoAttributes(String startElementName, String attributeName1, String attributeValue1, String attributeName2, String attributeValue2) throws IOException
+	{
+		write("<" + startElementName + " " + attributeName1 + "=\"" + attributeValue1 + "\" " + attributeName2 + "=\"" + attributeValue2 + "\">");
+	}
+	
 	public void writeMainElementEnd() throws Exception
 	{
 		writeEndElement(CONSERVATION_PROJECT);
@@ -408,12 +414,12 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 		write(xmlText);
 	}
 	
-	private void writeStartElement(final String elemnentName)	throws Exception
+	public void writeStartElement(final String elemnentName)	throws Exception
 	{
 		write("<" + elemnentName + ">");
 	}
 	
-	private void writeEndElement(final String elemnentName)	throws Exception
+	public void writeEndElement(final String elemnentName)	throws Exception
 	{
 		writeln("</" + elemnentName + ">");
 	}
