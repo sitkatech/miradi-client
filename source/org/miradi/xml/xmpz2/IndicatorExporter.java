@@ -39,7 +39,7 @@ public class IndicatorExporter extends BaseObjectExporter
 	}
 
 	@Override
-	protected boolean isCustomExportedField(final String tag)
+	protected boolean doesFieldRequireSpecialHandling(final String tag)
 	{
 		if (tag.equals(Indicator.TAG_THRESHOLDS_MAP))
 			return true;
@@ -47,6 +47,6 @@ public class IndicatorExporter extends BaseObjectExporter
 		if (tag.equals(Indicator.TAG_THRESHOLD_DETAILS_MAP))
 			return true;
 		
-		return super.isCustomExportedField(tag);
+		return super.doesFieldRequireSpecialHandling(tag);
 	}
 }
