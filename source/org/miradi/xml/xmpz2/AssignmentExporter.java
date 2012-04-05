@@ -24,7 +24,6 @@ import org.martus.util.MultiCalendar;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.ExpenseAssignment;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.DoubleUtilities;
@@ -41,7 +40,7 @@ abstract public class AssignmentExporter extends BaseObjectExporter
 	{
 		super.writeBaseObjectDataSchemaElement(baseObject);
 		
-		ExpenseAssignment expenseAssignment = (ExpenseAssignment) baseObject;
+		Assignment expenseAssignment = (Assignment) baseObject;
 		exportDateUnitEfforList(expenseAssignment.getDateUnitEffortList(), getDateUnitsElementName());
 	}
 
