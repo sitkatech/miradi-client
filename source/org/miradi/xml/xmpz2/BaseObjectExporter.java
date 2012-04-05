@@ -35,7 +35,7 @@ public class BaseObjectExporter implements XmpzXmlConstants
 	public final void writeBaseObjectDataSchemaElement(final BaseObject baseObject) throws Exception
 	{
 		BaseObjectSchema baseObjectSchema = baseObject.getSchema();
-		getWriter().writeObjectElementStart(baseObjectSchema);
+		getWriter().writeObjectElementStart(baseObject);
 		writeFields(baseObject, baseObjectSchema);
 		getWriter().writeObjectElementEnd(baseObjectSchema);
 	}
