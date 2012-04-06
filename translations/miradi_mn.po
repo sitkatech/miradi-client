@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-06 13:04-0500\n"
+"POT-Creation-Date: 2012-04-06 13:42-0500\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -7500,7 +7500,7 @@ msgstr ""
 "хуваагдаж болно. Даалгаварыг Miradi-д хавтгай саарал зууван дүрсээр "
 "төлөөлүүлсэн."
 
-#: Miradi/source/org/miradi/objects/Task.java:370
+#: Miradi/source/org/miradi/objects/Task.java:379
 msgid "Task does not have a parent"
 msgstr "Даалгавар гарал үүсэлгүй байна."
 
