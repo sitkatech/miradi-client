@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz2;
 
 import org.miradi.objects.BaseObject;
+import org.miradi.project.Project;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.xml.wcs.XmpzXmlConstants;
@@ -32,7 +33,7 @@ public class BaseObjectExporter implements XmpzXmlConstants
 		writer = writerToUse;
 	}
 	
-	public final void writeBaseObjectDataSchemaElement(final BaseObject baseObject) throws Exception
+	public void writeBaseObjectDataSchemaElement(final BaseObject baseObject) throws Exception
 	{
 		BaseObjectSchema baseObjectSchema = baseObject.getSchema();
 		getWriter().writeObjectElementStart(baseObject);
@@ -59,6 +60,11 @@ public class BaseObjectExporter implements XmpzXmlConstants
 	protected Xmpz2XmlUnicodeWriter getWriter()
 	{
 		return writer;
+	}
+	
+	protected Project getProject()
+	{
+		return getWriter().getProject();
 	}
 
 	private Xmpz2XmlUnicodeWriter writer;
