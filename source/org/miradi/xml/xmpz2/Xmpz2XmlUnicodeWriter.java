@@ -66,7 +66,7 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 		writeEndElement(createPoolElementName(endElementName));
 	}
 	
-	private String createPoolElementName(String startElementName)
+	public String createPoolElementName(String startElementName)
 	{
 		return startElementName + POOL_ELEMENT_TAG;
 	}
@@ -361,7 +361,7 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 		writeEndElement(elementName);
 	}
 	
-	private void writeXmlText(String xmlText) throws IOException
+	public void writeXmlText(String xmlText) throws IOException
 	{
 		write(xmlText);
 	}
