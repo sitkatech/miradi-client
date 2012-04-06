@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-06 13:04-0500\n"
+"POT-Creation-Date: 2012-04-06 13:42-0500\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -7729,7 +7729,7 @@ msgstr ""
 "notwendig ist. Aufgaben können in Teilaufgaben untergliedert werden. In "
 "Miradi wird eine Aufgabe durch ein graues, abgeflachtes Oval dargestellt.  "
 
-#: Miradi/source/org/miradi/objects/Task.java:370
+#: Miradi/source/org/miradi/objects/Task.java:379
 msgid "Task does not have a parent"
 msgstr "Für diese Aufgabe ist noch niemand zuständig"
 
