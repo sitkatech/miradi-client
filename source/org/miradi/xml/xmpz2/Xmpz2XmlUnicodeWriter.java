@@ -221,8 +221,8 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 
 	public void writeReflist(final String elementContainerName, final String elementTypeName, ORefList refListToUse) throws Exception
 	{
-		if (refListToUse.isEmpty())
-			return;
+//		if (refListToUse.isEmpty())
+//			return;
 
 		writeStartElement(elementContainerName);
 		for(ORef ref : refListToUse)
