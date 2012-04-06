@@ -43,16 +43,6 @@ public class CommandSetObjectData extends Command
 		return new CommandSetObjectData(object.getType(), object.getId(), listTag, newListAsString);
 	}
 	
-	static public CommandSetObjectData createAppendIdsCommand(BaseObject object, String idListTag, IdList idsToAppend) throws ParseException
-	{
-		ensureIdList(object, idListTag);
-		
-		IdList newList = new IdList(idsToAppend.getObjectType(), object.getData(idListTag));
-		newList.addAll(idsToAppend);
-		
-		return new CommandSetObjectData(object.getType(), object.getId(), idListTag, newList.toString());
-	}
-	
 	public static CommandSetObjectData createAppendIdCommand(BaseObject object, String idListTag, ORef ref) throws ParseException
 	{
 		return createAppendIdCommand(object, idListTag, ref.getObjectId());
@@ -76,11 +66,6 @@ public class CommandSetObjectData extends Command
 		return new CommandSetObjectData(object.getType(), object.getId(), idListTag, newList.toString());
 	}
 	
-	public static CommandSetObjectData createRemoveIdCommand(BaseObject object, String idListTag, ORef refToRemove) throws ParseException
-	{
-		return createRemoveIdCommand(object, idListTag, refToRemove.getObjectId());
-	}
-
 	static public CommandSetObjectData createRemoveIdCommand(BaseObject object, String idListTag, BaseId idToRemove) throws ParseException
 	{
 		ensureIdList(object, idListTag);
