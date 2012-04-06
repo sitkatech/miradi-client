@@ -104,12 +104,21 @@ public class Task extends Factor
 		if (tag.equals(TAG_SUBTASK_IDS))
 			return true;
 		
+		if (tag.equals(TAG_RESOURCE_ASSIGNMENT_IDS))
+			return true;
+		
 		return super.isIdListTag(tag);
 	}
 
 	@Override
 	public boolean isRefList(String tag)
 	{
+		if (tag.equals(TAG_EXPENSE_ASSIGNMENT_REFS))
+			return true;
+		
+		if (tag.equals(TAG_PROGRESS_REPORT_REFS))
+			return true;
+
 		return super.isRefList(tag);
 	}
 
