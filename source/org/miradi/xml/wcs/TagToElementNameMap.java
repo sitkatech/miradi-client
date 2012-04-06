@@ -297,6 +297,7 @@ public class TagToElementNameMap implements XmpzXmlConstants
 		map.put(DiagramObject.TAG_SHORT_LABEL, "Id");
 		map.put(DiagramObject.TAG_DETAIL, DETAILS);
 		map.put(DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, DIAGRAM_LINK_IDS);
+		map.put(DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, SELECTED_TAGGED_OBJECT_SET_IDS);
 		
 		return map;
 	}

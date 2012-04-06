@@ -27,21 +27,31 @@ import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.FosProjectData;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.RareProjectData;
 import org.miradi.objects.Target;
 import org.miradi.objects.TncProjectData;
 import org.miradi.objects.WcpaProjectData;
+import org.miradi.objects.WcsProjectData;
+import org.miradi.objects.WwfProjectData;
 import org.miradi.objects.Xenodata;
 import org.miradi.project.Project;
 import org.miradi.questions.BudgetTimePeriodQuestion;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.FosTrainingTypeQuestion;
 import org.miradi.questions.QuarterColumnsVisibilityQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
+import org.miradi.questions.TncOperatingUnitsQuestion;
 import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.schemas.FosProjectDataSchema;
+import org.miradi.schemas.RareProjectDataSchema;
 import org.miradi.schemas.TncProjectDataSchema;
 import org.miradi.schemas.WcpaProjectDataSchema;
+import org.miradi.schemas.WcsProjectDataSchema;
+import org.miradi.schemas.WwfProjectDataSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.xml.generic.XmlSchemaCreator;
 import org.miradi.xml.wcs.XmpzXmlConstants;
@@ -62,6 +72,12 @@ public class ProjectMetadataExporter implements XmpzXmlConstants
 		writeProjectSummaryScopeSchemaElement();
 		writeProjectSummaryLocationSchemaElement();
 		writeProjectSummaryPlanningSchemaElement();
+		
+		writeTncProjectDataSchemaElement();
+		writeWwfProjectDataSchemaElement();
+		writeWcsDataSchemaElement();
+		writeRareProjectDataSchemaElement();
+		writeFosProjectDataSchemaElement();
 	}
 
 	private ProjectMetadata getMetadata()
@@ -154,16 +170,40 @@ public class ProjectMetadataExporter implements XmpzXmlConstants
 		getWriter().writeEndElement(getWriter().appendParentNameToChildName(PROJECT_SUMMARY, Xenodata.TAG_PROJECT_ID));
 	}
 
-	private TncProjectData getTncProjectData()
-	{
-		final ORef ref = getWriter().getProject().getSingletonObjectRef(TncProjectDataSchema.getObjectType());
-		return TncProjectData.find(getWriter().getProject(), ref);
-	}
-	
-	private WcpaProjectData getWcpaProjectData()
+	protected WcpaProjectData getWcpaProjectData()
 	{
 		ORef wcpaProjectDataRef = getProject().getSingletonObjectRef(WcpaProjectDataSchema.getObjectType());
 		return WcpaProjectData.find(getProject(), wcpaProjectDataRef);
+	}
+	
+	protected TncProjectData getTncProjectData()
+	{
+		ORef tncProjectDataRef = getProject().getSingletonObjectRef(TncProjectDataSchema.getObjectType());
+		return TncProjectData.find(getProject(), tncProjectDataRef);
+	}
+	
+	protected WwfProjectData getWwfProjectData()
+	{
+		ORef wwfProjectDataRef = getProject().getSingletonObjectRef(WwfProjectDataSchema.getObjectType());
+		return WwfProjectData.find(getProject(), wwfProjectDataRef);
+	}
+
+	protected WcsProjectData getWcsProjectData()
+	{
+		ORef wwfProjectDataRef = getProject().getSingletonObjectRef(WcsProjectDataSchema.getObjectType());
+		return WcsProjectData.find(getProject(), wwfProjectDataRef);
+	}
+	
+	protected RareProjectData getRareProjectData()
+	{
+		ORef rareProjectDataRef = getProject().getSingletonObjectRef(RareProjectDataSchema.getObjectType());
+		return RareProjectData.find(getProject(), rareProjectDataRef);
+	}
+	
+	protected FosProjectData getFosProjectData()
+	{
+		ORef fosProjectDataRef = getProject().getSingletonObjectRef(FosProjectDataSchema.getObjectType());
+		return FosProjectData.find(getProject(), fosProjectDataRef);
 	}
 	
 	private void writeProjectSummaryScopeSchemaElement() throws Exception
@@ -250,6 +290,108 @@ public class ProjectMetadataExporter implements XmpzXmlConstants
 		writeElementWithSameTag(PROJECT_SUMMARY_PLANNING, getMetadata(),ProjectMetadata.TAG_FINANCIAL_COMMENTS);
 		
 		getWriter().writeEndElement(PROJECT_SUMMARY_PLANNING);
+	}
+	
+	private void writeTncProjectDataSchemaElement() throws Exception
+	{
+		getWriter().writeStartElement(TNC_PROJECT_DATA);
+		
+		writeElementWithSameTag(TNC_PROJECT_DATA, getMetadata(), ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE);
+		writeElementWithSameTag(TNC_PROJECT_DATA, getMetadata(), ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
+		writeCodeListElement(TNC_PROJECT_DATA, XmlSchemaCreator.TNC_PROJECT_PLACE_TYPES, getTncProjectData(), TncProjectData.TAG_PROJECT_PLACE_TYPES);
+		writeCodeListElement(TNC_PROJECT_DATA, XmlSchemaCreator.TNC_ORGANIZATIONAL_PRIORITIES, getTncProjectData(), TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES);
+		writeElementWithSameTag(TNC_PROJECT_DATA, getMetadata(), ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENTS);
+		writeElementWithSameTag(TNC_PROJECT_DATA, getTncProjectData(), TncProjectData.TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT);
+		exportTncOperatingUnits();
+		writeCodeListElement(TNC_PROJECT_DATA, XmlSchemaCreator.TNC_TERRESTRIAL_ECO_REGION, getMetadata(), ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION);
+		writeCodeListElement(TNC_PROJECT_DATA, XmlSchemaCreator.TNC_MARINE_ECO_REGION, getMetadata(), ProjectMetadata.TAG_TNC_MARINE_ECO_REGION);
+		writeCodeListElement(TNC_PROJECT_DATA, XmlSchemaCreator.TNC_FRESHWATER_ECO_REGION, getMetadata(), ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION);
+		writeElementWithSameTag(TNC_PROJECT_DATA, getMetadata(), ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
+		
+		writeElementWithSameTag(TNC_PROJECT_DATA, getTncProjectData(), TncProjectData.TAG_PROJECT_RESOURCES_SCORECARD);
+		writeElementWithSameTag(TNC_PROJECT_DATA, getTncProjectData(), TncProjectData.TAG_PROJECT_LEVEL_COMMENTS);
+		writeElementWithSameTag(TNC_PROJECT_DATA, getTncProjectData(), TncProjectData.TAG_PROJECT_CITATIONS);
+		writeElementWithSameTag(TNC_PROJECT_DATA, getTncProjectData(), TncProjectData.TAG_CAP_STANDARDS_SCORECARD);
+		
+		getWriter().writeEndElement(TNC_PROJECT_DATA);
+	}
+	
+	private void writeWwfProjectDataSchemaElement() throws Exception
+	{
+		getWriter().writeStartElement(WWF_PROJECT_DATA);
+		
+		writeCodeListElement(WWF_PROJECT_DATA, XmlSchemaCreator.WWF_MANAGING_OFFICES, getWwfProjectData(), WwfProjectData.TAG_MANAGING_OFFICES);
+		writeCodeListElement(WWF_PROJECT_DATA, XmlSchemaCreator.WWF_REGIONS, getWwfProjectData(), WwfProjectData.TAG_REGIONS);
+		writeCodeListElement(WWF_PROJECT_DATA, XmlSchemaCreator.WWF_ECOREGIONS, getWwfProjectData(), WwfProjectData.TAG_ECOREGIONS);
+		
+		getWriter().writeEndElement(WWF_PROJECT_DATA);
+	}
+	
+	private void writeWcsDataSchemaElement() throws Exception
+	{
+		getWriter().writeStartElement(WCS_PROJECT_DATA);
+
+		writeElementWithSameTag(WCS_PROJECT_DATA, getWcsProjectData(), WcsProjectData.TAG_ORGANIZATIONAL_FOCUS);
+		writeElementWithSameTag(WCS_PROJECT_DATA, getWcsProjectData(), WcsProjectData.TAG_ORGANIZATIONAL_LEVEL);
+		writeElementWithSameTag(WCS_PROJECT_DATA, getWcsProjectData(), WcsProjectData.TAG_SWOT_COMPLETED);
+		writeElementWithSameTag(WCS_PROJECT_DATA, getWcsProjectData(), WcsProjectData.TAG_SWOT_URL);
+		writeElementWithSameTag(WCS_PROJECT_DATA, getWcsProjectData(), WcsProjectData.TAG_STEP_COMPLETED);
+		writeElementWithSameTag(WCS_PROJECT_DATA, getWcsProjectData(), WcsProjectData.TAG_STEP_URL);
+		
+		getWriter().writeEndElement(WCS_PROJECT_DATA);
+	}
+	
+	private void writeRareProjectDataSchemaElement() throws Exception
+	{
+		String rareParentElementName = RARE_PROJECT_DATA;
+		getWriter().writeStartElement(rareParentElementName);
+		 
+		writeElementWithSameTag(rareParentElementName, getRareProjectData(), RareProjectData.TAG_COHORT);
+		writeElementWithSameTag(rareParentElementName, getRareProjectData(), RareProjectData.LEGACY_TAG_THREATS_ADDRESSED_NOTES);
+		writeElementWithSameTag(rareParentElementName, getRareProjectData(), RareProjectData.TAG_NUMBER_OF_COMMUNITIES_IN_CAMPAIGN_AREA);
+		writeElementWithSameTag(rareParentElementName, getRareProjectData(), RareProjectData.TAG_BIODIVERSITY_HOTSPOTS);
+		writeElementWithSameTag(rareParentElementName, getRareProjectData(), RareProjectData.TAG_FLAGSHIP_SPECIES_COMMON_NAME);
+		writeElementWithSameTag(rareParentElementName, getRareProjectData(), RareProjectData.TAG_FLAGSHIP_SPECIES_SCIENTIFIC_NAME);
+		writeElementWithSameTag(rareParentElementName, getRareProjectData(), RareProjectData.TAG_FLAGSHIP_SPECIES_DETAIL);
+		writeElementWithSameTag(rareParentElementName, getRareProjectData(), RareProjectData.TAG_CAMPAIGN_THEORY_OF_CHANGE);
+		writeElementWithSameTag(rareParentElementName, getRareProjectData(), RareProjectData.TAG_CAMPAIGN_SLOGAN);
+		writeElementWithSameTag(rareParentElementName, getRareProjectData(), RareProjectData.TAG_SUMMARY_OF_KEY_MESSAGES);
+		writeElementWithSameTag(rareParentElementName, getRareProjectData(), RareProjectData.TAG_MAIN_ACTIVITIES_NOTES);
+		
+		getWriter().writeEndElement(rareParentElementName);
+	}
+	
+	private void writeFosProjectDataSchemaElement() throws Exception
+	{
+		getWriter().writeStartElement(FOS_PROJECT_DATA);
+		
+		getWriter().writeCodeElement(FOS_PROJECT_DATA, FosProjectData.TAG_TRAINING_TYPE, new FosTrainingTypeQuestion(), getFosProjectData().getData(FosProjectData.TAG_TRAINING_TYPE));
+		writeElementWithSameTag(FOS_PROJECT_DATA, getFosProjectData(), FosProjectData.TAG_TRAINING_DATES);
+		writeElementWithSameTag(FOS_PROJECT_DATA, getFosProjectData(), FosProjectData.TAG_TRAINERS);
+		writeElementWithSameTag(FOS_PROJECT_DATA, getFosProjectData(), FosProjectData.TAG_COACHES);
+		
+		getWriter().writeEndElement(FOS_PROJECT_DATA);
+	}
+	
+	public void exportTncOperatingUnits() throws Exception
+	{
+		CodeList codes = getOperatingUnitsWithoutLegacyCode(getMetadata());
+		if (codes.hasData())
+			getWriter().writeCodeListElement(TNC_PROJECT_DATA + XmlSchemaCreator.TNC_OPERATING_UNITS, codes);
+	}
+	
+	public static CodeList getOperatingUnitsWithoutLegacyCode(ProjectMetadata projectMetadata) throws Exception
+	{
+		CodeList codes = projectMetadata.getCodeList(ProjectMetadata.TAG_TNC_OPERATING_UNITS);
+		final String LEGACY_CODE_TO_BE_REMOVED = "PACIF";
+		if (codes.contains(LEGACY_CODE_TO_BE_REMOVED))
+		{
+			codes.removeCode(LEGACY_CODE_TO_BE_REMOVED);
+			if (!codes.contains(TncOperatingUnitsQuestion.TNC_SUPERSEDED_OU_CODE))
+				codes.add(TncOperatingUnitsQuestion.TNC_SUPERSEDED_OU_CODE);
+		}
+		
+		return codes;
 	}
 	
 	private void writeElementWithSameTag(String parentElementName, BaseObject object, String tag) throws Exception

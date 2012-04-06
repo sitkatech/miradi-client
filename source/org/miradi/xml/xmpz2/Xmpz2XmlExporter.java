@@ -37,6 +37,12 @@ import org.miradi.objects.TableSettings;
 import org.miradi.objects.ThreatRatingCommentsData;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
+import org.miradi.schemas.FosProjectDataSchema;
+import org.miradi.schemas.RareProjectDataSchema;
+import org.miradi.schemas.TncProjectDataSchema;
+import org.miradi.schemas.WcpaProjectDataSchema;
+import org.miradi.schemas.WcsProjectDataSchema;
+import org.miradi.schemas.WwfProjectDataSchema;
 import org.miradi.xml.XmlExporter;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 
@@ -55,6 +61,7 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 		getWriter().writeXmlHeader();
 		getWriter().writeMainElementStart();
 		new ProjectMetadataExporter(getWriter()).writeBaseObjectDataSchemaElement();
+		new ThreatRatingExporter(getWriter()).writeThreatRatings();
 		exportPools();
 		new ExtraDataExporter(getProject(), getWriter()).exportExtraData();
 		getWriter().writeElement(DELETED_ORPHANS_ELEMENT_NAME, getProject().getQuarantineFileContents());
@@ -108,6 +115,24 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 		if (ProjectMetadata.is(objectType))
 			return null;
 
+		if (TncProjectDataSchema.getObjectType() == objectType)
+			return null;
+		
+		if (WwfProjectDataSchema.getObjectType() == objectType)
+			return null;
+		
+		if (WcsProjectDataSchema.getObjectType() == objectType)
+			return null;
+		
+		if (RareProjectDataSchema.getObjectType() == objectType)
+			return null;
+
+		if (FosProjectDataSchema.getObjectType() == objectType)
+			return null;
+		
+		if (WcpaProjectDataSchema.getObjectType() == objectType)
+			return null;
+		
 		return getProject().getPool(objectType);
 	}
 	
