@@ -225,6 +225,16 @@ public class Strategy extends Factor
 	}
 	
 	@Override
+	public CommandVector createCommandsToDeleteChildren() throws Exception
+	{
+		CommandVector commandsToDeleteChildren  = super.createCommandsToDeleteChildren();
+		commandsToDeleteChildren.addAll(createCommandsToDeleteBudgetChildren());
+		commandsToDeleteChildren.addAll(createCommandsToDeleteRefs(TAG_PROGRESS_REPORT_REFS));
+		
+		return commandsToDeleteChildren;
+	}
+	
+	@Override
 	protected CommandVector createCommandsToDereferenceObject() throws Exception
 	{
 		CommandVector commandsToDereferences = super.createCommandsToDereferenceObject();
@@ -242,6 +252,15 @@ public class Strategy extends Factor
 		{
 			case ObjectType.OBJECTIVE: 
 				list.addAll(new ORefList(objectType, getObjectiveIds()));
+				break;
+			case ObjectType.RESOURCE_ASSIGNMENT: 
+				list.addAll(getResourceAssignmentRefs());
+				break;
+			case ObjectType.EXPENSE_ASSIGNMENT:
+				list.addAll(getExpenseAssignmentRefs());
+				break;
+			case ObjectType.PROGRESS_REPORT:
+				list.addAll(getRefListData(TAG_PROGRESS_REPORT_REFS));
 				break;
 		}
 		return list;

@@ -103,12 +103,10 @@ public class TestBaseObject extends TestCaseWithProject
 		ORef causeRef = getProject().createObject(ObjectType.CAUSE);
 		getProject().addItemToFactorList(causeRef, ObjectType.INDICATOR, Factor.TAG_INDICATOR_IDS);
 		getProject().addItemToFactorList(causeRef, ObjectType.OBJECTIVE, Factor.TAG_OBJECTIVE_IDS);
-		ProgressReport progressReport = getProject().createProgressReport();
-		getProject().fillObjectUsingCommand(causeRef, BaseObject.TAG_PROGRESS_REPORT_REFS, new ORefList(progressReport).toString());
 		
 	   	BaseObject ownerObject = getProject().findObject(causeRef);	
 	   	ORefList allOwnedObjects = ownerObject.getAllOwnedObjects();
-	   	assertEquals("incorrect owned object count?", 3, allOwnedObjects.size());
+	   	assertEquals("incorrect owned object count?", 2, allOwnedObjects.size());
 	}
 	
 	public void testGetReferredObjects() throws Exception

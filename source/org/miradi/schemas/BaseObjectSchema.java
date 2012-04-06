@@ -235,11 +235,20 @@ abstract public class BaseObjectSchema implements Iterable<AbstractFieldSchema>,
 	protected void fillFieldSchemas()
 	{
 		createFieldSchemaExpandingUserText(BaseObject.TAG_LABEL);
+	}
+
+	protected void createExpensesSchema()
+	{
 		createFieldSchemaIdList(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, ResourceAssignmentSchema.getObjectType());
 		createFieldSchemaReflist(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS, XmpzXmlConstants.EXPENSE_ASSIGNMENT);
-		createFieldSchemaReflist(BaseObject.TAG_PROGRESS_REPORT_REFS, XmpzXmlConstants.PROGRESS_REPORT);
 		
 		createPseudoFieldSchemaString(BaseObject.PSEUDO_TAG_WHEN_TOTAL);
+	}
+
+	protected void createProgressReportSchema()
+	{
+		createFieldSchemaReflist(BaseObject.TAG_PROGRESS_REPORT_REFS, XmpzXmlConstants.PROGRESS_REPORT);
+		
 		createPseudoFieldSchemaQuestion(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, BaseObject.createSet(BaseObject.TAG_PROGRESS_REPORT_REFS));
 		createPseudoFieldSchemaString(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS);
 	}

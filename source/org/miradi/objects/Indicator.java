@@ -31,6 +31,7 @@ import org.miradi.objecthelpers.NonDraftStrategySet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.TargetSet;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
@@ -87,6 +88,26 @@ public class Indicator extends BaseObject
 	}
 	
 	@Override
+	public ORefList getOwnedObjects(int objectType)
+	{
+		ORefList list = super.getOwnedObjects(objectType);
+		
+		switch(objectType)
+		{
+			case ObjectType.RESOURCE_ASSIGNMENT: 
+				list.addAll(getResourceAssignmentRefs());
+				break;
+			case ObjectType.EXPENSE_ASSIGNMENT:
+				list.addAll(getExpenseAssignmentRefs());
+				break;
+			case ObjectType.PROGRESS_REPORT:
+				list.addAll(getRefListData(TAG_PROGRESS_REPORT_REFS));
+				break;
+		}
+		return list;
+	}
+	
+	@Override
 	protected CommandVector createCommandsToDereferenceObject() throws Exception
 	{
 		CommandVector commandsToDereferences = super.createCommandsToDereferenceObject();
@@ -108,6 +129,8 @@ public class Indicator extends BaseObject
 	public CommandVector createCommandsToDeleteChildren() throws Exception
 	{
 		CommandVector commandsToDeleteChildren  = super.createCommandsToDeleteChildren();
+		commandsToDeleteChildren.addAll(createCommandsToDeleteRefs(TAG_PROGRESS_REPORT_REFS));
+		commandsToDeleteChildren.addAll(createCommandsToDeleteBudgetChildren());
 		commandsToDeleteChildren.addAll(createCommandsToDeleteMethods());
 		commandsToDeleteChildren.addAll(createCommandsToDeleteMeasurements());
 		
