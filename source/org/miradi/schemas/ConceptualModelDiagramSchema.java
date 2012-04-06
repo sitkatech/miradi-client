@@ -54,6 +54,12 @@ public class ConceptualModelDiagramSchema extends DiagramObjectSchema
 	{
 		return OBJECT_NAME;
 	}
+
+	@Override
+	public String getXmpz2ElementName()
+	{
+		return CONCEPTUAL_MODEL;
+	}
 	
 	public static final String OBJECT_NAME = "ConceptualModelDiagram";
 }

@@ -26,6 +26,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.EAMObjectPool;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.Dashboard;
 import org.miradi.objects.Desire;
 import org.miradi.objects.ExpenseAssignment;
@@ -53,6 +54,7 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 	{
 		getWriter().writeXmlHeader();
 		getWriter().writeMainElementStart();
+		new ProjectMetadataExporter(getWriter()).writeBaseObjectDataSchemaElement();
 		exportPools();
 		new ExtraDataExporter(getProject(), getWriter()).exportExtraData();
 		getWriter().writeElement(DELETED_ORPHANS_ELEMENT_NAME, getProject().getQuarantineFileContents());
@@ -79,6 +81,9 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 		if (ProjectMetadata.is(objectType))
 			return PROJECT_SUMMARY;
 		
+		if (ConceptualModelDiagram.is(objectType))
+			return getWriter().createPoolElementName(CONCEPTUAL_MODEL);
+		
 		final String internalObjectTypeName = getProject().getObjectManager().getInternalObjectTypeName(objectType);
 		return getWriter().createPoolElementName(internalObjectTypeName);
 	}
@@ -98,6 +103,9 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 			return null;
 		
 		if (ViewData.is(objectType))
+			return null;
+		
+		if (ProjectMetadata.is(objectType))
 			return null;
 
 		return getProject().getPool(objectType);
@@ -131,9 +139,6 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 		if (ExpenseAssignment.is(baseObject))
 			return new ExpenseAssignmentExporter(getWriter());
 		
-		if (ProjectMetadata.is(baseObject))
-			return new ProjectMetadataExporter(getWriter());
-			
 		return new BaseObjectExporter(getWriter());
 	}
 	
