@@ -79,6 +79,6 @@ public class ExpenseAssignmentExporter extends AbstractAssignmentExporter
 	@Override
 	protected String getPoolName()
 	{
-		return RESOURCE_ASSIGNMENT;
+		return EXPENSE_ASSIGNMENT;
 	}
 }
