@@ -48,6 +48,8 @@ public class StrategySchema extends FactorSchema
 		createFieldSchemaMultiLineUserText(Strategy.TAG_LEGACY_TNC_STRATEGY_RANKING);
 		createExpensesSchema();
 		createProgressReportSchema();
+	    writeIndicatorIds();
+		writeObjectiveIds();
 	
 		createPseudoFieldSchemaString(Strategy.PSEUDO_TAG_RATING_SUMMARY);
 		createPseudoFieldSchemaQuestion(Strategy.PSEUDO_TAG_IMPACT_RATING_VALUE);

@@ -28,6 +28,15 @@ public class IntermediateResultSchema extends FactorSchema
 	{
 		super();
 	}
+	
+	@Override
+	protected void fillFieldSchemas()
+	{
+		super.fillFieldSchemas();
+		
+	    writeIndicatorIds();
+		writeObjectiveIds();
+	}
 
 	public static int getObjectType()
 	{

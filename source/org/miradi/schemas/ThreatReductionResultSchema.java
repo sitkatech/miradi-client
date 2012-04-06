@@ -36,6 +36,8 @@ public class ThreatReductionResultSchema extends FactorSchema
 		super.fillFieldSchemas();
 		
 		createFieldSchemaRef(ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF);
+	    writeIndicatorIds();
+		writeObjectiveIds();
 	}
 
 	public static int getObjectType()

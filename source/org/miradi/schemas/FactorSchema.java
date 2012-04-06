@@ -37,8 +37,6 @@ abstract public class FactorSchema extends BaseObjectSchema
 		createFieldSchemaMultiLineUserText(Factor.TAG_COMMENTS);
 		createFieldSchemaMultiLineUserText(Factor.TAG_TEXT);
 		createFieldSchemaSingleLineUserText(Factor.TAG_SHORT_LABEL);
-	    createFieldSchemaIdList(Factor.TAG_INDICATOR_IDS, IndicatorSchema.getObjectType());
-		createFieldSchemaIdList(Factor.TAG_OBJECTIVE_IDS, ObjectiveSchema.getObjectType());
 		
 		createPseudoFieldSchemaString(Factor.PSEUDO_TAG_OBJECTIVES);
 		createPseudoFieldSchemaString(Factor.PSEUDO_TAG_DIRECT_THREATS);
@@ -47,5 +45,15 @@ abstract public class FactorSchema extends BaseObjectSchema
 		createPseudoFieldSchemaRefList(Factor.PSEUDO_TAG_CONCEPTUAL_DIAGRAM_REFS);
 		createPseudoFieldSchemaRefList(Factor.PSEUDO_TAG_RESULTS_CHAIN_REFS);
 		createPseudoFieldSchemaRefList(Factor.PSEUDO_TAG_REFERRING_TAG_REFS);
+	}
+
+	protected void writeObjectiveIds()
+	{
+		createFieldSchemaIdList(Factor.TAG_OBJECTIVE_IDS, ObjectiveSchema.getObjectType());
+	}
+
+	protected void writeIndicatorIds()
+	{
+		createFieldSchemaIdList(Factor.TAG_INDICATOR_IDS, IndicatorSchema.getObjectType());
 	}
 }
