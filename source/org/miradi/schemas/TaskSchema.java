@@ -37,7 +37,7 @@ public class TaskSchema extends FactorSchema
 		
 		createFieldSchemaIdList(Task.TAG_SUBTASK_IDS, TaskSchema.getObjectType());
 		createFieldSchemaMultiLineUserText(Task.TAG_DETAILS);
-		createExpensesSchema();
+		createBudgetSchemas();
 		createProgressReportSchema();
 		
 		createPseudoFieldSchemaString(Task.PSEUDO_TAG_STRATEGY_LABEL);

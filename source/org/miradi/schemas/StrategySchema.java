@@ -46,7 +46,7 @@ public class StrategySchema extends FactorSchema
 		createFieldSchemaChoice(Strategy.TAG_IMPACT_RATING, getQuestion(StrategyImpactQuestion.class));
 		createFieldSchemaChoice(Strategy.TAG_FEASIBILITY_RATING, getQuestion(StrategyFeasibilityQuestion.class));
 		createFieldSchemaMultiLineUserText(Strategy.TAG_LEGACY_TNC_STRATEGY_RANKING);
-		createExpensesSchema();
+		createBudgetSchemas();
 		createProgressReportSchema();
 	    writeIndicatorIds();
 		writeObjectiveIds();
