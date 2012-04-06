@@ -73,6 +73,8 @@ public class Task extends Factor
 	public CommandVector createCommandsToDeleteChildren() throws Exception
 	{
 		CommandVector commandsToDeleteChildren  = super.createCommandsToDeleteChildren();
+		commandsToDeleteChildren.addAll(createCommandsToDeleteBudgetChildren());
+		commandsToDeleteChildren.addAll(createCommandsToDeleteRefs(TAG_PROGRESS_REPORT_REFS));
 		commandsToDeleteChildren.addAll(getDeleteSelfAndSubtasksCommands(getProject()));
 		
 		return commandsToDeleteChildren;
@@ -149,6 +151,15 @@ public class Task extends Factor
 		{
 			case ObjectType.TASK: 
 				list.addAll(new ORefList(objectType, getSubtaskIdList()));
+				break;
+			case ObjectType.RESOURCE_ASSIGNMENT: 
+				list.addAll(getResourceAssignmentRefs());
+				break;
+			case ObjectType.EXPENSE_ASSIGNMENT:
+				list.addAll(getExpenseAssignmentRefs());
+				break;
+			case ObjectType.PROGRESS_REPORT:
+				list.addAll(getRefListData(TAG_PROGRESS_REPORT_REFS));
 				break;
 		}
 		return list;

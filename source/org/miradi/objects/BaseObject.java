@@ -880,11 +880,7 @@ abstract public class BaseObject
 
 	public CommandVector createCommandsToDeleteChildren() throws Exception
 	{
-		CommandVector commandsToDeleteChildren  = new CommandVector();
-		commandsToDeleteChildren.addAll(createCommandsToDeleteBudgetChildren());
-		commandsToDeleteChildren.addAll(createCommandsToDeleteRefs(TAG_PROGRESS_REPORT_REFS));
-		
-		return commandsToDeleteChildren;
+		return new CommandVector();
 	}
 	
 	protected CommandVector createCommandsToDeleteBudgetChildren() throws Exception
@@ -1144,21 +1140,7 @@ abstract public class BaseObject
 	
 	public ORefList getOwnedObjects(int objectType)
 	{
-		ORefList list = new ORefList();
-		switch(objectType)
-		{
-			case ObjectType.RESOURCE_ASSIGNMENT: 
-				list.addAll(getResourceAssignmentRefs());
-				break;
-			case ObjectType.EXPENSE_ASSIGNMENT:
-				list.addAll(getExpenseAssignmentRefs());
-				break;
-			case ObjectType.PROGRESS_REPORT:
-				list.addAll(getRefListData(TAG_PROGRESS_REPORT_REFS));
-				break;
-		}
-		
-		return list;
+		return new ORefList();
 	}
 
 	public ORefList getExpenseAssignmentRefs()
