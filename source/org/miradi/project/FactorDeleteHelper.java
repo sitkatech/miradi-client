@@ -222,8 +222,12 @@ public class FactorDeleteHelper
 	
 	public void deleteAnnotations(Factor factorToDelete) throws Exception
 	{
-		deleteAnnotationIds(factorToDelete, ObjectType.OBJECTIVE, factorToDelete.TAG_OBJECTIVE_IDS);
-		deleteAnnotationIds(factorToDelete, ObjectType.INDICATOR, factorToDelete.TAG_INDICATOR_IDS);
+		if (factorToDelete.canHaveObjectives())
+			deleteAnnotationIds(factorToDelete, ObjectType.OBJECTIVE, factorToDelete.TAG_OBJECTIVE_IDS);
+		
+		if (factorToDelete.canHaveIndicators())
+			deleteAnnotationIds(factorToDelete, ObjectType.INDICATOR, factorToDelete.TAG_INDICATOR_IDS);
+		
 		//TODO: there is much common code between DeleteAnnotationDoer and DeleteActivity classes and this class; 
 		// for example DeleteActivity.deleteTaskTree( is general and and good not just for activities
 		// I am thinking that each object Task should be able to handle its own deletion so when you call it it would delete all its own 

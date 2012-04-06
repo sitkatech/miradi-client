@@ -331,8 +331,11 @@ public class ResultsChainCreatorHelper
 		getProject().executeCommand(createCommand);
 		
 		ORef newlyCreatedRef = createCommand.getObjectRef();
-		transferAnnotationsToNewFactor(factor.getRef(), newlyCreatedRef, Factor.TAG_INDICATOR_IDS);
-		transferAnnotationsToNewFactor(factor.getRef(), newlyCreatedRef, Factor.TAG_OBJECTIVE_IDS);
+		if (factor.canHaveIndicators())
+			transferAnnotationsToNewFactor(factor.getRef(), newlyCreatedRef, Factor.TAG_INDICATOR_IDS);
+		
+		if (factor.canHaveObjectives())
+			transferAnnotationsToNewFactor(factor.getRef(), newlyCreatedRef, Factor.TAG_OBJECTIVE_IDS);
 		
 		String clonedLabel = new String("[ " + factor.getLabel() + " ]");
 		CommandSetObjectData setLabelCommand = new CommandSetObjectData(newlyCreatedRef, Factor.TAG_LABEL, clonedLabel);

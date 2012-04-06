@@ -28,7 +28,6 @@ import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
-import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.TargetSchema;
 
 public class TestFactor extends TestCaseWithProject
@@ -56,7 +55,6 @@ public class TestFactor extends TestCaseWithProject
 			Factor.TAG_COMMENTS,
 			Factor.TAG_INDICATOR_IDS,
 			AbstractTarget.TAG_GOAL_IDS,
-			Factor.TAG_OBJECTIVE_IDS,
 		};
 
 		Vector<BaseId> sampleIds = new Vector<BaseId>();
@@ -67,7 +65,6 @@ public class TestFactor extends TestCaseWithProject
 			"Whatever comment",
 			new IdList(IndicatorSchema.getObjectType(), sampleIds).toString(),
 			new IdList(GoalSchema.getObjectType(), sampleIds).toString(),
-			new IdList(ObjectiveSchema.getObjectType(), sampleIds).toString(),
 		};
 		
 		for(int i = 0; i < tags.length; ++i)
