@@ -237,7 +237,7 @@ abstract public class BaseObjectSchema implements Iterable<AbstractFieldSchema>,
 		createFieldSchemaExpandingUserText(BaseObject.TAG_LABEL);
 	}
 
-	protected void createExpensesSchema()
+	protected void createBudgetSchemas()
 	{
 		createFieldSchemaIdList(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, ResourceAssignmentSchema.getObjectType());
 		createFieldSchemaReflist(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS, XmpzXmlConstants.EXPENSE_ASSIGNMENT);
