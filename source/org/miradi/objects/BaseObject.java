@@ -224,6 +224,13 @@ abstract public class BaseObject
 	
 	public IdList getIdListData(String fieldTag)
 	{
+		//NOTE: BaseObject used to always have these fields
+		if (!doesFieldExist(fieldTag))
+		{
+			final int objectType = getAnnotationType(fieldTag);
+			return new IdList(objectType);
+		}
+
 		ObjectData field = getField(fieldTag);
 		if(field.isIdListData())
 			return ((IdListData)field).getIdList().createClone();
@@ -233,6 +240,12 @@ abstract public class BaseObject
 	
 	public ORefList getRefListData(String fieldTag)
 	{
+		//NOTE: BaseObject used to always have these fields
+		if (!doesFieldExist(fieldTag))
+		{
+			return new ORefList();
+		}
+
 		ObjectData field = getField(fieldTag);
 		if(field.isRefListData())
 		{
@@ -408,20 +421,11 @@ abstract public class BaseObject
 	
 	public boolean isIdListTag(String tag)
 	{
-		if (tag.equals(TAG_RESOURCE_ASSIGNMENT_IDS))
-			return true;
-		
 		return false;
 	}
 	
 	public boolean isRefList(String tag)
 	{
-		if (tag.equals(TAG_EXPENSE_ASSIGNMENT_REFS))
-			return true;
-		
-		if (tag.equals(TAG_PROGRESS_REPORT_REFS))
-			return true;
-		
 		return false;
 	}
 	

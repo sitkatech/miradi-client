@@ -288,6 +288,9 @@ public class Indicator extends BaseObject
 		if (tag.equals(TAG_METHOD_IDS))
 			return true;
 		
+		if (tag.equals(TAG_RESOURCE_ASSIGNMENT_IDS))
+			return true;
+		
 		return super.isIdListTag(tag);
 	}
 	
@@ -295,6 +298,12 @@ public class Indicator extends BaseObject
 	public boolean isRefList(String tag)
 	{
 		if (tag.equals(TAG_MEASUREMENT_REFS))
+			return true;
+		
+		if (tag.equals(TAG_EXPENSE_ASSIGNMENT_REFS))
+			return true;
+		
+		if (tag.equals(TAG_PROGRESS_REPORT_REFS))
 			return true;
 		
 		return super.isRefList(tag);
