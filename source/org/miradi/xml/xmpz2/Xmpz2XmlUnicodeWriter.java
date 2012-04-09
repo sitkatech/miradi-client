@@ -234,6 +234,12 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 		writeEndElement(convertRefsToIdsSuffix(elementContainerName));
 	}
 
+	public void writeReflist(final String parentName, final String elementContainerName, final String elementTypeName, ORefList refListToUse) throws Exception
+	{
+		final String elementName = appendParentNameToChildName(parentName, elementContainerName);
+		writeReflist(elementName, elementTypeName, refListToUse);
+	}
+	
 	public void writeReflist(final String elementContainerName, final String elementTypeName, ORefList refListToUse) throws Exception
 	{
 		if (refListToUse.isEmpty())

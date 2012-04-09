@@ -41,11 +41,18 @@ public class DesireExporter extends BaseObjectExporter
 		super.writeFields(baseObject, baseObjectSchema);
 
 		final Desire desire = (Desire) baseObject;
-		writeRelevantIndicatorIds(desire);
-		writeRelevantStrategyIds(desire);
-		writeRelevantActivityIds(desire);
+		final String objectName = baseObjectSchema.getObjectName();
+		writeRelevantIndicatorIds(objectName, desire);
+		writeRelevantStrategyIds(objectName, desire);
+		writeRelevantActivityIds(objectName, desire);
+		writeProgressPercentIds(objectName, desire.getProgressPercentRefs());
 	}
 	
+	private void writeProgressPercentIds(final String parentName, ORefList progressPercentRefs) throws Exception
+	{
+		getWriter().writeReflist(parentName + XmpzXmlConstants.PROGRESS_PERCENT_IDS, XmpzXmlConstants.PROGRESS_PERCENT, progressPercentRefs);
+	}
+
 	@Override
 	protected boolean doesFieldRequireSpecialHandling(final String tag)
 	{
@@ -55,23 +62,26 @@ public class DesireExporter extends BaseObjectExporter
 		if (tag.equals(Desire.TAG_RELEVANT_STRATEGY_ACTIVITY_SET))
 			return true;
 		
+		if (tag.equals(Desire.TAG_PROGRESS_PERCENT_REFS))
+			return true;
+		
 		return super.doesFieldRequireSpecialHandling(tag);
 	}
 	
-	private void writeRelevantIndicatorIds(Desire desire) throws Exception
+	private void writeRelevantIndicatorIds(final String objectName, Desire desire) throws Exception
 	{
-		getWriter().writeReflist(RELEVANT_INDICATOR_IDS, INDICATOR, desire.getRelevantIndicatorRefList());
+		getWriter().writeReflist(objectName, RELEVANT_INDICATOR_IDS, INDICATOR, desire.getRelevantIndicatorRefList());
 	}
 	
-	private void writeRelevantStrategyIds(Desire desire) throws Exception
+	private void writeRelevantStrategyIds(final String objectName, Desire desire) throws Exception
 	{
 		ORefList relevantStrategyRefs = desire.getRelevantStrategyAndActivityRefs().getFilteredBy(StrategySchema.getObjectType());
-		getWriter().writeReflist(RELEVANT_STRATEGY_IDS, STRATEGY, relevantStrategyRefs);
+		getWriter().writeReflist(objectName, RELEVANT_STRATEGY_IDS, STRATEGY, relevantStrategyRefs);
 	}
 	
-	private void writeRelevantActivityIds(Desire desire) throws Exception
+	private void writeRelevantActivityIds(final String objectName, Desire desire) throws Exception
 	{
 		ORefList relevantActivityRefs = desire.getRelevantStrategyAndActivityRefs().getFilteredBy(TaskSchema.getObjectType());
-		getWriter().writeReflist(XmpzXmlConstants.RELEVANT_ACTIVITY_IDS, XmpzXmlConstants.ACTIVITY, relevantActivityRefs);
+		getWriter().writeReflist(objectName, XmpzXmlConstants.RELEVANT_ACTIVITY_IDS, XmpzXmlConstants.ACTIVITY, relevantActivityRefs);
 	}
 }
