@@ -39,10 +39,10 @@ public class DashboardExporter extends BaseObjectExporter
 	@Override
 	protected void writeFields(final BaseObject baseObject,	BaseObjectSchema baseObjectSchema) throws Exception
 	{
-		writeDashboardSchemaElement((Dashboard)baseObject);
+		writeDashboardElement((Dashboard)baseObject);
 	}
 	
-	private void writeDashboardSchemaElement(Dashboard dashboard) throws Exception
+	private void writeDashboardElement(Dashboard dashboard) throws Exception
 	{
 		final CodeToUserStringMap commentsMap = dashboard.getCommentsMap();
 		final CodeToChoiceMap progressMap = dashboard.getProgressChoiceMap();
