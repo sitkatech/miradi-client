@@ -86,9 +86,6 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 
 	private String getPoolName(int objectType)
 	{
-		if (ProjectMetadata.is(objectType))
-			return PROJECT_SUMMARY;
-		
 		if (ConceptualModelDiagram.is(objectType))
 			return getWriter().createPoolElementName(CONCEPTUAL_MODEL);
 		
