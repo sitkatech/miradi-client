@@ -38,6 +38,7 @@ import org.miradi.objects.Task;
 import org.miradi.objects.ThreatRatingCommentsData;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
+import org.miradi.schemas.FactorLinkSchema;
 import org.miradi.schemas.FosProjectDataSchema;
 import org.miradi.schemas.RareProjectDataSchema;
 import org.miradi.schemas.TncProjectDataSchema;
@@ -129,6 +130,9 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 			return null;
 		
 		if (WcpaProjectDataSchema.getObjectType() == objectType)
+			return null;
+		
+		if (FactorLinkSchema.getObjectType() == objectType)
 			return null;
 		
 		return getProject().getPool(objectType);
