@@ -40,7 +40,14 @@ public class IndicatorExporter extends BaseObjectExporter
 	{
 		super.writeFields(baseObject, baseObjectSchema);
 		
-		writeThreshold((Indicator) baseObject);
+		final Indicator indicator = (Indicator) baseObject;
+		writeMethodRefs(baseObjectSchema, indicator);
+		writeThreshold(indicator);
+	}
+
+	private void writeMethodRefs(BaseObjectSchema baseObjectSchema, final Indicator indicator) throws Exception
+	{
+		getWriter().writeReflist(baseObjectSchema.getObjectName() + METHOD_IDS, METHOD, indicator.getMethodRefs());
 	}
 
 	@Override
@@ -50,6 +57,9 @@ public class IndicatorExporter extends BaseObjectExporter
 			return true;
 		
 		if (tag.equals(Indicator.TAG_THRESHOLD_DETAILS_MAP))
+			return true;
+		
+		if (tag.equals(Indicator.TAG_METHOD_IDS))
 			return true;
 		
 		return super.doesFieldRequireSpecialHandling(tag);
