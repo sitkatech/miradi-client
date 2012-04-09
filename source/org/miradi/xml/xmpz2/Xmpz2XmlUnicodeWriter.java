@@ -218,19 +218,34 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 		final String elementName = appendParentNameToChildName(baseObjectSchema, fieldSchema);
 		writeReflist(elementName, idElementName, refListToUse);
 	}
+	
+	public void writeReflist(final String elementContainerName, ORefList refListToUse) throws Exception
+	{
+		//if (refListToUse.isEmpty())
+		//	return;
+		
+		writeStartElement(elementContainerName.replaceAll("Refs", "Ids"));
+		for(ORef ref : refListToUse)
+		{
+			BaseObject baseObject = BaseObject.find(getProject(), ref);
+			writeElement(baseObject.getTypeName() + ID_ELEMENT_NAME, ref.getObjectId().toString());
+		}
+		
+		writeEndElement(elementContainerName.replaceAll("Refs", "Ids"));
+	}
 
 	public void writeReflist(final String elementContainerName, final String elementTypeName, ORefList refListToUse) throws Exception
 	{
-//		if (refListToUse.isEmpty())
-//			return;
-
-		writeStartElement(elementContainerName);
+		if (refListToUse.isEmpty())
+			return;
+		
+		writeStartElement(elementContainerName.replaceAll("Refs", "Ids"));
 		for(ORef ref : refListToUse)
 		{
-			writeElement(elementTypeName, ref.getObjectId().toString());
+			writeElement(elementTypeName + ID_ELEMENT_NAME, ref.getObjectId().toString());
 		}
 		
-		writeEndElement(elementContainerName);
+		writeEndElement(elementContainerName.replaceAll("Refs", "Ids"));
 	}
 
 	public void writeUserTextData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string) throws Exception
