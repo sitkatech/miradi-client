@@ -47,9 +47,14 @@ public class BaseObjectExporter implements XmpzXmlConstants
 		{
 			if (!doesFieldRequireSpecialHandling(fieldSchema.getTag()))
 			{
-				getWriter().writeFieldElement(baseObject, fieldSchema);
+				writeField(baseObject, fieldSchema);
 			}
 		}
+	}
+
+	protected void writeField(final BaseObject baseObject, final AbstractFieldSchema fieldSchema) throws Exception
+	{
+		getWriter().writeFieldElement(baseObject, fieldSchema);
 	}
 
 	protected boolean doesFieldRequireSpecialHandling(final String tag)

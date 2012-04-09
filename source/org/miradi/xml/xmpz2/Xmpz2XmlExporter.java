@@ -32,6 +32,7 @@ import org.miradi.objects.Desire;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.TableSettings;
 import org.miradi.objects.Task;
@@ -168,6 +169,9 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 		
 		if (Task.is(baseObject))
 			return new TaskExporter(getWriter());
+		
+		if (ProjectResource.is(baseObject))
+			return new ProjectResourceExporter(getWriter());
 		
 		return new BaseObjectExporter(getWriter());
 	}
