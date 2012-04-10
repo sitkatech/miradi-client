@@ -20,12 +20,38 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2;
 
+import org.miradi.objects.BaseObject;
+import org.miradi.objects.ResourceAssignment;
+import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.xml.generic.XmlSchemaCreator;
+import org.miradi.xml.wcs.XmpzXmlConstants;
+
 
 public class ResourceAssignmentExporter extends AbstractAssignmentExporter
 {
 	public ResourceAssignmentExporter(Xmpz2XmlUnicodeWriter writerToUse)
 	{
 		super(writerToUse);
+	}
+	
+	@Override
+	protected void writeFields(BaseObject baseObject, final BaseObjectSchema baseObjectSchema) throws Exception
+	{
+		super.writeFields(baseObject, baseObjectSchema);
+		
+		ResourceAssignment resourceAssignment = (ResourceAssignment) baseObject;
+		String idElementName = XmlSchemaCreator.RESOURCE_ID_ELEMENT_NAME + XmpzXmlConstants.ID;
+		
+		getWriter().writeRef(baseObjectSchema.getObjectName(), idElementName, resourceAssignment.getResourceRef());
+	}
+	
+	@Override
+	protected boolean doesFieldRequireSpecialHandling(String tag)
+	{
+		if (tag.equals(ResourceAssignment.TAG_RESOURCE_ID))
+			return true;
+		
+		return super.doesFieldRequireSpecialHandling(tag);
 	}
 
 	@Override
