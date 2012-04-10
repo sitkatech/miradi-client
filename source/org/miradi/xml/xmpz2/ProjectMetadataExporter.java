@@ -145,7 +145,8 @@ public class ProjectMetadataExporter implements XmpzXmlConstants
 	
 	private void writeExternalAppIds() throws Exception
 	{
-		getWriter().writeStartElement(getWriter().appendParentNameToChildName(PROJECT_SUMMARY, Xenodata.TAG_PROJECT_ID));
+		final String elementName = getWriter().appendParentNameToChildName(PROJECT_SUMMARY, Xenodata.TAG_PROJECT_ID);
+		getWriter().writeStartElement(elementName);
 
 		String stringRefMapAsString = getMetadata().getData(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP);
 		StringRefMap stringRefMap = new StringRefMap(stringRefMapAsString);
@@ -167,7 +168,7 @@ public class ProjectMetadataExporter implements XmpzXmlConstants
 			getWriter().writeEndElement(EXTERNAL_PROJECT_ID_ELEMENT_NAME);
 		}
 		
-		getWriter().writeEndElement(getWriter().appendParentNameToChildName(PROJECT_SUMMARY, Xenodata.TAG_PROJECT_ID));
+		getWriter().writeEndElement(elementName);
 	}
 
 	protected WcpaProjectData getWcpaProjectData()
