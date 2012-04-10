@@ -43,7 +43,9 @@ import org.miradi.objects.TableSettings;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatRatingCommentsData;
+import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.ViewData;
+import org.miradi.objects.Xenodata;
 import org.miradi.project.Project;
 import org.miradi.schemas.FactorLinkSchema;
 import org.miradi.schemas.FosProjectDataSchema;
@@ -132,6 +134,12 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 			return null;
 		
 		if (FactorLinkSchema.getObjectType() == objectType)
+			return null;
+		
+		if (ThreatStressRating.is(objectType))
+			return null;
+		
+		if (Xenodata.is(objectType))
 			return null;
 		
 		return getProject().getPool(objectType);
