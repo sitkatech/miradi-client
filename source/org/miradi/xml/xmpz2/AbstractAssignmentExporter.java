@@ -39,10 +39,13 @@ abstract public class AbstractAssignmentExporter extends BaseObjectExporter
 	@Override
 	protected void writeFields(final BaseObject baseObject,	BaseObjectSchema baseObjectSchema) throws Exception
 	{
-		super.writeFields(baseObject, baseObjectSchema);
+		Assignment assignment = (Assignment) baseObject;
+		exportDateUnitEfforList(assignment.getDateUnitEffortList(), getDateUnitsElementName());
 		
-		Assignment expenseAssignment = (Assignment) baseObject;
-		exportDateUnitEfforList(expenseAssignment.getDateUnitEffortList(), getDateUnitsElementName());
+		getWriter().writeRef(baseObjectSchema.getObjectName(), FUNDING_SOURCE_ID, assignment.getFundingSourceRef());
+		getWriter().writeRef(baseObjectSchema.getObjectName(), ACCOUNTING_CODE_ID, assignment.getAccountingCodeRef());
+		getWriter().writeRef(baseObjectSchema.getObjectName(), BUDGET_CATEGORY_ONE_ID, assignment.getCategoryOneRef());
+		getWriter().writeRef(baseObjectSchema.getObjectName(), BUDGET_CATEGORY_TWO_ID, assignment.getCategoryTwoRef());
 	}
 
 	@Override

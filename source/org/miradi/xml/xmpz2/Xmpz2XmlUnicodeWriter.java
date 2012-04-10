@@ -176,6 +176,20 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 			writeEndElement(parentElementName);
 		}
 	}
+	
+	public void writeRef(final String parentElementName, final String idElementName, final ORef ref) throws Exception, IOException
+	{
+		if (ref.isValid())
+		{
+			writeStartElement(parentElementName + idElementName);
+			writeStartElement(idElementName);
+
+			write(ref.getObjectId().toString());
+
+			writeEndElement(idElementName);
+			writeEndElement(parentElementName + idElementName);
+		}
+	}
 
 	public void writePointData(BaseObjectSchema baseObjectSchema, final AbstractFieldSchema fieldSchema, final Point point) throws Exception
 	{
