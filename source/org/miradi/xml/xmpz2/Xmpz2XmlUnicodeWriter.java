@@ -402,7 +402,7 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 		writeElement(parentElementName + convertedElementName, data);
 	}
 	
-	public void writeCodeElement(String parentElementName, String elementName, ChoiceQuestion question, String code) throws Exception
+	public void writeNonOptionalCodeElement(String parentElementName, String elementName, ChoiceQuestion question, String code) throws Exception
 	{
 		String convertedElementName = getConvertedElementName(parentElementName, elementName);
 		writeStartElement(parentElementName + convertedElementName);
