@@ -212,8 +212,10 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 	public void writePoint(final String pointElementName, Point point) throws Exception
 	{
 		writeStartElement(pointElementName);
+		writeStartElement(DIAGRAM_POINT_ELEMENT_NAME);
 		writeElement(X_ELEMENT_NAME, point.x);
 		writeElement(Y_ELEMENT_NAME, point.y);
+		writeEndElement(DIAGRAM_POINT_ELEMENT_NAME);
 		writeEndElement(pointElementName);
 	}
 
