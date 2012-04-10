@@ -65,6 +65,16 @@ public class ProjectMetadataExporter implements XmpzXmlConstants
 	
 	public void writeBaseObjectDataSchemaElement() throws Exception
 	{
+		writeProjectMetadata();
+		writeTncElement();
+		writeWwfElement();
+		writeWcsElement();
+		writeRareElement();
+		writeFosElement();
+	}
+
+	private void writeProjectMetadata() throws Exception
+	{
 		ProjectMetadata projectMetadata = getMetadata();
 		BaseObjectSchema baseObjectSchema = projectMetadata.getSchema();
 
@@ -72,12 +82,6 @@ public class ProjectMetadataExporter implements XmpzXmlConstants
 		writeProjectSummaryScopeSchemaElement();
 		writeProjectSummaryLocationSchemaElement();
 		writeProjectSummaryPlanningSchemaElement();
-		
-		writeTncElement();
-		writeWwfElement();
-		writeWcsElement();
-		writeRareElement();
-		writeFosElement();
 	}
 
 	private ProjectMetadata getMetadata()
