@@ -35,6 +35,7 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResourceAssignment;
+import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.TableSettings;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatRatingCommentsData;
@@ -171,6 +172,9 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 		
 		if (ConceptualModelDiagram.is(objectType))
 			return new ConceptualModelDiagramExporter(getWriter());
+		
+		if (ResultsChainDiagram.is(objectType))
+			return new ResultsChainExporter(getWriter());
 		
 		return new BaseObjectExporter(getWriter());
 	}

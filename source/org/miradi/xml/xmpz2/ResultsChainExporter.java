@@ -20,17 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2;
 
-
-public class ConceptualModelDiagramExporter extends AbstractDiagramObjectExporter
+public class ResultsChainExporter extends AbstractDiagramObjectExporter
 {
-	public ConceptualModelDiagramExporter(Xmpz2XmlUnicodeWriter writerToUse)
+	public ResultsChainExporter(Xmpz2XmlUnicodeWriter writerToUse)
 	{
 		super(writerToUse);
-	}
-	
-	@Override
-	public String getPoolName(int objectType)
-	{
-		return getWriter().createPoolElementName(CONCEPTUAL_MODEL);
 	}
 }
