@@ -34,6 +34,7 @@ import org.miradi.objects.DiagramLink;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Indicator;
+import org.miradi.objects.IucnRedlistSpecies;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResourceAssignment;
@@ -203,6 +204,9 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 		
 		if (TaggedObjectSet.is(objectType))
 			return new TaggedObjectSetExporter(getWriter());
+		
+		if (IucnRedlistSpecies.is(objectType))
+			return new IucnRedlistSpeciesExporter(getWriter());
 		
 		return new BaseObjectExporter(getWriter());
 	}
