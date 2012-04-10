@@ -122,8 +122,8 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 		final String sizeElementName = appendParentNameToChildName(baseObjectSchema.getObjectName(), SIZE);
 		writeStartElement(sizeElementName);
 		writeStartElement(DIAGRAM_SIZE_ELEMENT_NAME);
-		writeElement(WIDTH_ELEMENT_NAME, dimension.getWidth());		
-		writeElement(HEIGHT_ELEMENT_NAME, dimension.getHeight());
+		writeElement(WIDTH_ELEMENT_NAME, dimension.width);		
+		writeElement(HEIGHT_ELEMENT_NAME, dimension.height);
 		writeEndElement(DIAGRAM_SIZE_ELEMENT_NAME);
 		writeEndElement(sizeElementName);
 	}
@@ -418,11 +418,6 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 			return false;
 		
 		return true;
-	}
-	
-	private void writeElement(final String elementName, final double data) throws Exception
-	{
-		writeElement(elementName, Double.toString(data));
 	}
 	
 	private void writeElement(final String elementName, final int data) throws Exception
