@@ -74,10 +74,10 @@ public class ProjectMetadataExporter implements XmpzXmlConstants
 		writeProjectSummaryPlanningSchemaElement();
 		
 		writeTncElement();
-		writeWwfProjectDataSchemaElement();
-		writeWcsDataSchemaElement();
-		writeRareProjectDataSchemaElement();
-		writeFosProjectDataSchemaElement();
+		writeWwfElement();
+		writeWcsElement();
+		writeRareElement();
+		writeFosElement();
 	}
 
 	private ProjectMetadata getMetadata()
@@ -312,7 +312,7 @@ public class ProjectMetadataExporter implements XmpzXmlConstants
 		getWriter().writeEndElement(TNC_PROJECT_DATA);
 	}
 	
-	private void writeWwfProjectDataSchemaElement() throws Exception
+	private void writeWwfElement() throws Exception
 	{
 		getWriter().writeStartElement(WWF_PROJECT_DATA);
 		
@@ -323,7 +323,7 @@ public class ProjectMetadataExporter implements XmpzXmlConstants
 		getWriter().writeEndElement(WWF_PROJECT_DATA);
 	}
 	
-	private void writeWcsDataSchemaElement() throws Exception
+	private void writeWcsElement() throws Exception
 	{
 		getWriter().writeStartElement(WCS_PROJECT_DATA);
 
@@ -337,7 +337,7 @@ public class ProjectMetadataExporter implements XmpzXmlConstants
 		getWriter().writeEndElement(WCS_PROJECT_DATA);
 	}
 	
-	private void writeRareProjectDataSchemaElement() throws Exception
+	private void writeRareElement() throws Exception
 	{
 		String rareParentElementName = RARE_PROJECT_DATA;
 		getWriter().writeStartElement(rareParentElementName);
@@ -357,7 +357,7 @@ public class ProjectMetadataExporter implements XmpzXmlConstants
 		getWriter().writeEndElement(rareParentElementName);
 	}
 	
-	private void writeFosProjectDataSchemaElement() throws Exception
+	private void writeFosElement() throws Exception
 	{
 		getWriter().writeStartElement(FOS_PROJECT_DATA);
 		
