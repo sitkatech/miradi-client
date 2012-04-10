@@ -26,6 +26,8 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.EAMObjectPool;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.BudgetCategoryOne;
+import org.miradi.objects.BudgetCategoryTwo;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.Dashboard;
 import org.miradi.objects.Desire;
@@ -207,6 +209,12 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 		
 		if (IucnRedlistSpecies.is(objectType))
 			return new IucnRedlistSpeciesExporter(getWriter());
+		
+		if (BudgetCategoryOne.is(objectType))
+			return new BudgetCategoryOneExporter(getWriter());
+		
+		if (BudgetCategoryTwo.is(objectType))
+			return new BudgetCategoryTwoExporter(getWriter());
 		
 		return new BaseObjectExporter(getWriter());
 	}
