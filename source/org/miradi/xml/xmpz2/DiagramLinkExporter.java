@@ -21,10 +21,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz2;
 
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.Factor;
-import org.miradi.objects.Target;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.utils.PointList;
 import org.miradi.xml.wcs.XmpzXmlConstants;
@@ -121,16 +119,5 @@ public class DiagramLinkExporter extends BaseObjectExporter
 			return true;
 
 		return super.doesFieldRequireSpecialHandling(tag);
-	}
-	
-	private String getFactorTypeName(Factor wrappedFactor)
-	{
-		if (Target.is(wrappedFactor))
-			return XmpzXmlConstants.BIODIVERSITY_TARGET;
-		
-		if (Cause.is(wrappedFactor))
-			return XmpzXmlConstants.CAUSE;
-		
-		return wrappedFactor.getTypeName();
 	}
 }

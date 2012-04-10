@@ -40,6 +40,7 @@ import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.TableSettings;
+import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatRatingCommentsData;
@@ -199,6 +200,9 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 		
 		if (HumanWelfareTarget.is(objectType))
 			return new HumanWelfareTargetExporter(getWriter());
+		
+		if (TaggedObjectSet.is(objectType))
+			return new TaggedObjectSetExporter(getWriter());
 		
 		return new BaseObjectExporter(getWriter());
 	}
