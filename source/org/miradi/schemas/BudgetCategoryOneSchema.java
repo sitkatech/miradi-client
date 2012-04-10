@@ -46,5 +46,11 @@ public class BudgetCategoryOneSchema extends AbstractBudgetCategorySchema
 		return OBJECT_NAME;
 	}
 	
+	@Override
+	public String getXmpz2ElementName()
+	{
+		return BUDGET_CATEGORY_ONE;
+	}
+	
 	public static final String OBJECT_NAME = "CategoryOne";
 }

@@ -18,39 +18,19 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.schemas;
+package org.miradi.xml.xmpz2;
 
-import org.miradi.objecthelpers.ObjectType;
 
-public class BudgetCategoryTwoSchema extends AbstractBudgetCategorySchema
+public class BudgetCategoryOneExporter extends BaseObjectExporter
 {
-	public BudgetCategoryTwoSchema()
+	public BudgetCategoryOneExporter(Xmpz2XmlUnicodeWriter writerToUse)
 	{
-		super();
-	}
-
-	public static int getObjectType()
-	{
-		return ObjectType.BUDGET_CATEGORY_TWO;
+		super(writerToUse);
 	}
 	
 	@Override
-	public int getType()
+	public String getPoolName(int objectType)
 	{
-		return getObjectType();
+		return getWriter().createPoolElementName(BUDGET_CATEGORY_ONE);
 	}
-
-	@Override
-	public String getObjectName()
-	{
-		return OBJECT_NAME;
-	}
-	
-	@Override
-	public String getXmpz2ElementName()
-	{
-		return BUDGET_CATEGORY_TWO;
-	}
-	
-	public static final String OBJECT_NAME = "CategoryTwo";
 }
