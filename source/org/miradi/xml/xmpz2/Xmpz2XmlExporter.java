@@ -80,21 +80,12 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 			if(pool != null)
 			{
 				final BaseObjectExporter baseObjectExporter = createBaseObjectExporter(objectType);
-				final String poolName = getPoolName(objectType);
+				final String poolName = baseObjectExporter.getPoolName(objectType);
 				ORefList sortedRefList = pool.getSortedRefList();
 				if (sortedRefList.hasRefs())
 					exportBaseObjects(poolName, sortedRefList, baseObjectExporter);
 			}
 		}
-	}
-
-	private String getPoolName(int objectType)
-	{
-		if (ConceptualModelDiagram.is(objectType))
-			return getWriter().createPoolElementName(CONCEPTUAL_MODEL);
-		
-		final String internalObjectTypeName = getProject().getObjectManager().getInternalObjectTypeName(objectType);
-		return getWriter().createPoolElementName(internalObjectTypeName);
 	}
 
 	private EAMObjectPool getBaseObjectPoolToExport(final int objectType)
@@ -177,6 +168,9 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 		
 		if (DiagramLink.is(objectType))
 			return new DiagramLinkExporter(getWriter());
+		
+		if (ConceptualModelDiagram.is(objectType))
+			return new ConceptualModelDiagramExporter(getWriter());
 		
 		return new BaseObjectExporter(getWriter());
 	}
