@@ -27,6 +27,9 @@ import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Strategy;
+import org.miradi.questions.StrategyFeasibilityQuestion;
+import org.miradi.questions.StrategyImpactQuestion;
+import org.miradi.questions.StrategyTaxonomyQuestion;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.ProjectResourceSchema;
 import org.miradi.utils.DateRange;
@@ -47,12 +50,25 @@ public class StrategyExporter extends BaseObjectExporter
 		final Strategy strategy = (Strategy) baseObject;
 		writeMethodRefs(baseObjectSchema, strategy);
 		writeOptionalCalculatedTimePeriodCosts(strategy, baseObjectSchema);
+		
+		getWriter().writeCodeElement(baseObjectSchema.getObjectName(), Strategy.TAG_TAXONOMY_CODE, new StrategyTaxonomyQuestion(), strategy.getTaxonomyCode());
+		getWriter().writeCodeElement(baseObjectSchema.getObjectName(), Strategy.TAG_IMPACT_RATING, new StrategyImpactQuestion(), strategy.getChoiceItemData(Strategy.TAG_IMPACT_RATING).getCode());
+		getWriter().writeCodeElement(baseObjectSchema.getObjectName(), Strategy.TAG_FEASIBILITY_RATING, new StrategyFeasibilityQuestion(), strategy.getChoiceItemData(Strategy.TAG_FEASIBILITY_RATING).getCode());		
 	}
 	
 	@Override
 	protected boolean doesFieldRequireSpecialHandling(String tag)
 	{
 		if (tag.equals(Strategy.TAG_ACTIVITY_IDS))
+			return true;
+		
+		if (tag.equals(Strategy.TAG_TAXONOMY_CODE))
+			return true;
+		
+		if (tag.equals(Strategy.TAG_IMPACT_RATING))
+			return true;
+		
+		if (tag.equals(Strategy.TAG_FEASIBILITY_RATING))
 			return true;
 		
 		return super.doesFieldRequireSpecialHandling(tag);
