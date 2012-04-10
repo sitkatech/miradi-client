@@ -79,10 +79,11 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 			EAMObjectPool pool = getBaseObjectPoolToExport(objectType);
 			if(pool != null)
 			{
+				final BaseObjectExporter baseObjectExporter = createBaseObjectExporter(objectType);
 				final String poolName = getPoolName(objectType);
 				ORefList sortedRefList = pool.getSortedRefList();
 				if (sortedRefList.hasRefs())
-					exportBaseObjects(poolName, sortedRefList);
+					exportBaseObjects(poolName, sortedRefList, baseObjectExporter);
 			}
 		}
 	}
@@ -140,13 +141,13 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 		return getProject().getPool(objectType);
 	}
 	
-	private void exportBaseObjects(final String poolName, ORefList sortedRefList) throws Exception
+	private void exportBaseObjects(final String poolName, ORefList sortedRefList, final BaseObjectExporter baseObjectExporter) throws Exception
 	{
 		getWriter().writeStartElement(poolName);
 		for(ORef ref : sortedRefList)
 		{
 			BaseObject baseObject = BaseObject.find(getProject(), ref);
-			createBaseObjectExporter(baseObject.getType()).writeBaseObjectDataSchemaElement(baseObject);
+			baseObjectExporter.writeBaseObjectDataSchemaElement(baseObject);
 		}
 		getWriter().writeEndElement(poolName);
 	}
