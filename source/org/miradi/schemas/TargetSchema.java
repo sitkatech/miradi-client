@@ -61,5 +61,11 @@ public class TargetSchema extends AbstractTargetSchema
 		return OBJECT_NAME;
 	}
 	
+	@Override
+	public String getXmpz2ElementName()
+	{
+		return BIODIVERSITY_TARGET;
+	}
+	
 	public static final String OBJECT_NAME = "Target";
 }
