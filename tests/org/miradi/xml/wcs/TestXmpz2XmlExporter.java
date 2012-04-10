@@ -24,6 +24,8 @@ import java.io.ByteArrayOutputStream;
 
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
+import org.miradi.exceptions.ValidationException;
+import org.miradi.main.EAM;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.xml.xmpz2.Xmpz2XmlExporter;
@@ -63,8 +65,7 @@ public class TestXmpz2XmlExporter extends TestCaseWithProject
 		InputStreamWithSeek inputStream = new StringInputStreamWithSeek(xml);
 		if (!new WcsMiradiXmlValidator().isValid(inputStream))
 		{
-			//FIXME urgent - uncomment when tests should be passing
-			//throw new ValidationException(EAM.text("File to import does not validate."));
+			throw new ValidationException(EAM.text("File to import does not validate."));
 		}
 	}
 }
