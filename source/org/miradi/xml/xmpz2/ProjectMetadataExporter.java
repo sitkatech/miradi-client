@@ -260,14 +260,15 @@ public class ProjectMetadataExporter implements XmpzXmlConstants
 		if(latitude.length()==0 && longitude.length()==0)
 			return;
 
-		getWriter().writeStartElement(getWriter().appendParentNameToChildName(PROJECT_SUMMARY_LOCATION, PROJECT_LOCATION));
+		final String elementName = getWriter().appendParentNameToChildName(PROJECT_SUMMARY_LOCATION, PROJECT_LOCATION);
+		getWriter().writeStartElement(elementName);
 		
 		getWriter().writeStartElement(GEOSPATIAL_LOCATION);
 		getWriter().writeElement(LATITUDE, latitude);
 		getWriter().writeElement(LONGITUDE, longitude);
 		getWriter().writeEndElement(GEOSPATIAL_LOCATION);
 		
-		getWriter().writeEndElement(getWriter().appendParentNameToChildName(PROJECT_SUMMARY_LOCATION, PROJECT_LOCATION));
+		getWriter().writeEndElement(elementName);
 	}
 	
 	private void writeProjectSummaryPlanningSchemaElement() throws Exception
