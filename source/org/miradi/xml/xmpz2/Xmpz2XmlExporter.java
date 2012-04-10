@@ -146,14 +146,13 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 		for(ORef ref : sortedRefList)
 		{
 			BaseObject baseObject = BaseObject.find(getProject(), ref);
-			createBaseObjectExporter(baseObject).writeBaseObjectDataSchemaElement(baseObject);
+			createBaseObjectExporter(baseObject.getType()).writeBaseObjectDataSchemaElement(baseObject);
 		}
 		getWriter().writeEndElement(poolName);
 	}
 
-	private BaseObjectExporter createBaseObjectExporter(final BaseObject baseObject)
+	private BaseObjectExporter createBaseObjectExporter(final int objectType)
 	{
-		final int objectType = baseObject.getType();
 		if (Dashboard.is(objectType))
 			return new DashboardExporter(getWriter());
 		
