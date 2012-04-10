@@ -153,28 +153,29 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 
 	private BaseObjectExporter createBaseObjectExporter(final BaseObject baseObject)
 	{
-		if (Dashboard.is(baseObject))
+		final int objectType = baseObject.getType();
+		if (Dashboard.is(objectType))
 			return new DashboardExporter(getWriter());
 		
-		if (Indicator.is(baseObject))
+		if (Indicator.is(objectType))
 			return new IndicatorExporter(getWriter());
 		
-		if (Desire.isDesire(baseObject.getRef()))
+		if (Desire.isDesire(objectType))
 			return new DesireExporter(getWriter());
 		
-		if (ResourceAssignment.is(baseObject))
+		if (ResourceAssignment.is(objectType))
 			return new ResourceAssignmentExporter(getWriter());
 		
-		if (ExpenseAssignment.is(baseObject))
+		if (ExpenseAssignment.is(objectType))
 			return new ExpenseAssignmentExporter(getWriter());
 		
-		if (Task.is(baseObject))
+		if (Task.is(objectType))
 			return new TaskExporter(getWriter());
 		
-		if (ProjectResource.is(baseObject))
+		if (ProjectResource.is(objectType))
 			return new ProjectResourceExporter(getWriter());
 		
-		if (DiagramLink.is(baseObject.getType()))
+		if (DiagramLink.is(objectType))
 			return new DiagramLinkExporter(getWriter());
 		
 		return new BaseObjectExporter(getWriter());
