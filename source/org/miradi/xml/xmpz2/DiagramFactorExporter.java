@@ -109,13 +109,13 @@ public class DiagramFactorExporter extends BaseObjectExporter
 		getWriter().writeStartElement(STYLING_ELEMENT_NAME);
 		
 		getWriter().writeStartElement(STYLING);
-		getWriter().writeCodeElement(DIAGRAM_FACTOR, DiagramFactor.TAG_FONT_SIZE, new DiagramFactorFontSizeQuestion(), diagramFactor.getFontSize());
-		getWriter().writeCodeElement(DIAGRAM_FACTOR, DiagramFactor.TAG_FONT_STYLE, new DiagramFactorFontStyleQuestion(), XmlUtilities2.convertXmlTextToHtml(diagramFactor.getFontStyle()));
-		getWriter().writeCodeElement(DIAGRAM_FACTOR, DiagramFactor.TAG_FOREGROUND_COLOR, new DiagramFactorFontColorQuestion(), diagramFactor.getFontColor());
+		getWriter().writeNonOptionalCodeElement(DIAGRAM_FACTOR, DiagramFactor.TAG_FONT_SIZE, new DiagramFactorFontSizeQuestion(), diagramFactor.getFontSize());
+		getWriter().writeNonOptionalCodeElement(DIAGRAM_FACTOR, DiagramFactor.TAG_FONT_STYLE, new DiagramFactorFontStyleQuestion(), XmlUtilities2.convertXmlTextToHtml(diagramFactor.getFontStyle()));
+		getWriter().writeNonOptionalCodeElement(DIAGRAM_FACTOR, DiagramFactor.TAG_FOREGROUND_COLOR, new DiagramFactorFontColorQuestion(), diagramFactor.getFontColor());
 		
 		Factor wrappedFactor = diagramFactor.getWrappedFactor();
 		if (wrappedFactor.isGroupBox() || wrappedFactor.isTextBox())
-			getWriter().writeCodeElement(DIAGRAM_FACTOR, DiagramFactor.TAG_BACKGROUND_COLOR, new DiagramFactorBackgroundQuestion(), diagramFactor.getBackgroundColor());
+			getWriter().writeNonOptionalCodeElement(DIAGRAM_FACTOR, DiagramFactor.TAG_BACKGROUND_COLOR, new DiagramFactorBackgroundQuestion(), diagramFactor.getBackgroundColor());
 		
 		getWriter().writeEndElement(STYLING);
 		

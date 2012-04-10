@@ -51,9 +51,9 @@ public class StrategyExporter extends BaseObjectExporter
 		writeMethodRefs(baseObjectSchema, strategy);
 		writeOptionalCalculatedTimePeriodCosts(strategy, baseObjectSchema);
 		
-		getWriter().writeCodeElement(baseObjectSchema.getObjectName(), Strategy.TAG_TAXONOMY_CODE, new StrategyTaxonomyQuestion(), strategy.getTaxonomyCode());
-		getWriter().writeCodeElement(baseObjectSchema.getObjectName(), Strategy.TAG_IMPACT_RATING, new StrategyImpactQuestion(), strategy.getChoiceItemData(Strategy.TAG_IMPACT_RATING).getCode());
-		getWriter().writeCodeElement(baseObjectSchema.getObjectName(), Strategy.TAG_FEASIBILITY_RATING, new StrategyFeasibilityQuestion(), strategy.getChoiceItemData(Strategy.TAG_FEASIBILITY_RATING).getCode());		
+		getWriter().writeNonOptionalCodeElement(baseObjectSchema.getObjectName(), Strategy.TAG_TAXONOMY_CODE, new StrategyTaxonomyQuestion(), strategy.getTaxonomyCode());
+		getWriter().writeNonOptionalCodeElement(baseObjectSchema.getObjectName(), Strategy.TAG_IMPACT_RATING, new StrategyImpactQuestion(), strategy.getChoiceItemData(Strategy.TAG_IMPACT_RATING).getCode());
+		getWriter().writeNonOptionalCodeElement(baseObjectSchema.getObjectName(), Strategy.TAG_FEASIBILITY_RATING, new StrategyFeasibilityQuestion(), strategy.getChoiceItemData(Strategy.TAG_FEASIBILITY_RATING).getCode());		
 	}
 	
 	@Override

@@ -106,13 +106,13 @@ public class ProjectMetadataExporter implements XmpzXmlConstants
 		writeOverallProjectThreatRating();
 		writeOverallProjectViabilityRating();
 		writeExternalAppIds();
-		getWriter().writeCodeElement(PROJECT_SUMMARY, ProjectMetadata.TAG_THREAT_RATING_MODE, new ThreatRatingModeChoiceQuestion(), getMetadata().getThreatRatingMode());
+		getWriter().writeNonOptionalCodeElement(PROJECT_SUMMARY, ProjectMetadata.TAG_THREAT_RATING_MODE, new ThreatRatingModeChoiceQuestion(), getMetadata().getThreatRatingMode());
 
 		ChoiceQuestion quarterColumnsVisibilityQuestion = getProject().getQuestion(QuarterColumnsVisibilityQuestion.class);
-		getWriter().writeCodeElement(PROJECT_SUMMARY, ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY, quarterColumnsVisibilityQuestion, getMetadata().getData(ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY));
+		getWriter().writeNonOptionalCodeElement(PROJECT_SUMMARY, ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY, quarterColumnsVisibilityQuestion, getMetadata().getData(ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY));
 
 		ChoiceQuestion budgetTimePeriodQuestion = getProject().getQuestion(BudgetTimePeriodQuestion.class);
-		getWriter().writeCodeElement(PROJECT_SUMMARY, ProjectMetadata.TAG_WORKPLAN_TIME_UNIT, budgetTimePeriodQuestion, getMetadata().getData(ProjectMetadata.TAG_WORKPLAN_TIME_UNIT));
+		getWriter().writeNonOptionalCodeElement(PROJECT_SUMMARY, ProjectMetadata.TAG_WORKPLAN_TIME_UNIT, budgetTimePeriodQuestion, getMetadata().getData(ProjectMetadata.TAG_WORKPLAN_TIME_UNIT));
 
 		getWriter().writeEndElement(PROJECT_SUMMARY);
 	}
@@ -367,7 +367,7 @@ public class ProjectMetadataExporter implements XmpzXmlConstants
 	{
 		getWriter().writeStartElement(FOS_PROJECT_DATA);
 		
-		getWriter().writeCodeElement(FOS_PROJECT_DATA, FosProjectData.TAG_TRAINING_TYPE, new FosTrainingTypeQuestion(), getFosProjectData().getData(FosProjectData.TAG_TRAINING_TYPE));
+		getWriter().writeNonOptionalCodeElement(FOS_PROJECT_DATA, FosProjectData.TAG_TRAINING_TYPE, new FosTrainingTypeQuestion(), getFosProjectData().getData(FosProjectData.TAG_TRAINING_TYPE));
 		writeElement(FOS_PROJECT_DATA, getFosProjectData(), FosProjectData.TAG_TRAINING_DATES);
 		writeElement(FOS_PROJECT_DATA, getFosProjectData(), FosProjectData.TAG_TRAINERS);
 		writeElement(FOS_PROJECT_DATA, getFosProjectData(), FosProjectData.TAG_COACHES);
