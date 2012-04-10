@@ -73,7 +73,7 @@ public class ProjectMetadataExporter implements XmpzXmlConstants
 		writeProjectSummaryLocationSchemaElement();
 		writeProjectSummaryPlanningSchemaElement();
 		
-		writeTncProjectDataSchemaElement();
+		writeTncElement();
 		writeWwfProjectDataSchemaElement();
 		writeWcsDataSchemaElement();
 		writeRareProjectDataSchemaElement();
@@ -288,7 +288,7 @@ public class ProjectMetadataExporter implements XmpzXmlConstants
 		getWriter().writeEndElement(PROJECT_SUMMARY_PLANNING);
 	}
 	
-	private void writeTncProjectDataSchemaElement() throws Exception
+	private void writeTncElement() throws Exception
 	{
 		getWriter().writeStartElement(TNC_PROJECT_DATA);
 		
