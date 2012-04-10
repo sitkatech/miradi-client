@@ -128,9 +128,7 @@ public class ProjectMetadataExporter implements XmpzXmlConstants
 		if (rawOverallProjectThreatRatingCode == 0)
 			return;
 		
-		getWriter().writeStartElement(PROJECT_SUMMARY + OVERALL_PROJECT_THREAT_RATING);
-		getWriter().writeXmlText(Integer.toString(rawOverallProjectThreatRatingCode));
-		getWriter().writeEndElement(PROJECT_SUMMARY + OVERALL_PROJECT_THREAT_RATING);
+		getWriter().writeElement(PROJECT_SUMMARY + OVERALL_PROJECT_THREAT_RATING, Integer.toString(rawOverallProjectThreatRatingCode));
 	}
 	
 	private void writeOverallProjectViabilityRating() throws Exception
@@ -138,9 +136,7 @@ public class ProjectMetadataExporter implements XmpzXmlConstants
 		String code = Target.computeTNCViability(getProject());
 		ChoiceItem choiceItem = getProject().getQuestion(StatusQuestion.class).findChoiceByCode(code);
 		
-		getWriter().writeStartElement(PROJECT_SUMMARY + OVERALL_PROJECT_VIABILITY_RATING);
-		getWriter().writeXmlText(choiceItem.getCode());
-		getWriter().writeEndElement(PROJECT_SUMMARY + OVERALL_PROJECT_VIABILITY_RATING);
+		getWriter().writeElement(PROJECT_SUMMARY + OVERALL_PROJECT_VIABILITY_RATING, choiceItem.getCode());
 	}
 	
 	private void writeExternalAppIds() throws Exception
