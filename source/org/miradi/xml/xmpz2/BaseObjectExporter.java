@@ -21,6 +21,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz2;
 
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.Cause;
+import org.miradi.objects.Factor;
+import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
@@ -77,6 +80,17 @@ public class BaseObjectExporter implements XmpzXmlConstants
 	protected Project getProject()
 	{
 		return getWriter().getProject();
+	}
+	
+	protected String getFactorTypeName(Factor wrappedFactor)
+	{
+		if (Target.is(wrappedFactor))
+			return XmpzXmlConstants.BIODIVERSITY_TARGET;
+		
+		if (Cause.is(wrappedFactor))
+			return XmpzXmlConstants.CAUSE;
+		
+		return wrappedFactor.getTypeName();
 	}
 
 	private Xmpz2XmlUnicodeWriter writer;

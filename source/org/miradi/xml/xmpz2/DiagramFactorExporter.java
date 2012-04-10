@@ -21,17 +21,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz2;
 
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Factor;
-import org.miradi.objects.Target;
 import org.miradi.questions.DiagramFactorBackgroundQuestion;
 import org.miradi.questions.DiagramFactorFontColorQuestion;
 import org.miradi.questions.DiagramFactorFontSizeQuestion;
 import org.miradi.questions.DiagramFactorFontStyleQuestion;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.utils.XmlUtilities2;
-import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class DiagramFactorExporter extends BaseObjectExporter
 {
@@ -90,17 +87,6 @@ public class DiagramFactorExporter extends BaseObjectExporter
 		getWriter().writeElement(factorTypeName, ID_ELEMENT_NAME, wrappedFactor.getFactorId().toString());
 		
 		getWriter().writeEndElement(WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME);
-	}
-	
-	private String getFactorTypeName(Factor wrappedFactor)
-	{
-		if (Target.is(wrappedFactor))
-			return XmpzXmlConstants.BIODIVERSITY_TARGET;
-		
-		if (Cause.is(wrappedFactor))
-			return XmpzXmlConstants.CAUSE;
-		
-		return wrappedFactor.getTypeName();
 	}
 	
 	private void exportFontStylingElements(DiagramFactor diagramFactor) throws Exception
