@@ -32,6 +32,7 @@ import org.miradi.objects.Desire;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.ExpenseAssignment;
+import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
@@ -39,6 +40,7 @@ import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.TableSettings;
+import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatRatingCommentsData;
 import org.miradi.objects.ViewData;
@@ -183,6 +185,12 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 		
 		if (Strategy.is(objectType))
 			return new StrategyExporter(getWriter());
+		
+		if (Target.is(objectType))
+			return new TargetExporter(getWriter());
+		
+		if (HumanWelfareTarget.is(objectType))
+			return new HumanWelfareTargetExporter(getWriter());
 		
 		return new BaseObjectExporter(getWriter());
 	}
