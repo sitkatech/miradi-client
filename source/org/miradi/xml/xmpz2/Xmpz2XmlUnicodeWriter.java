@@ -195,7 +195,7 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 		writeEndElement(elemnentName);
 	}
 	
-	private void writePoint(final String pointElementName, Point point) throws Exception
+	public void writePoint(final String pointElementName, Point point) throws Exception
 	{
 		writeStartElement(pointElementName);
 		writeElement(X_ELEMENT_NAME, point.x);
@@ -245,6 +245,11 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 		if (refListToUse.isEmpty())
 			return;
 		
+		writeNonOptionalReflist(elementContainerName, elementTypeName, refListToUse);
+	}
+
+	public void writeNonOptionalReflist(final String elementContainerName, final String elementTypeName, ORefList refListToUse) throws Exception
+	{
 		writeStartElement(convertRefsToIdsSuffix(elementContainerName));
 		for(ORef ref : refListToUse)
 		{
@@ -372,7 +377,13 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 	public void writeElement(String parentElementName, String elementName, BaseObject object, String tag) throws Exception
 	{
 		String convertedElementName = getConvertedElementName(parentElementName, elementName);
-		writeElement(parentElementName + convertedElementName, object.getData(tag));
+		writeElement(parentElementName, convertedElementName, object.getData(tag));
+	}
+	
+	public void writeElement(String parentElementName, String elementName, String data) throws Exception
+	{
+		String convertedElementName = getConvertedElementName(parentElementName, elementName);
+		writeElement(parentElementName + convertedElementName, data);
 	}
 	
 	public void writeCodeElement(String parentElementName, String elementName, ChoiceQuestion question, String code) throws Exception

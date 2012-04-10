@@ -29,6 +29,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.Dashboard;
 import org.miradi.objects.Desire;
+import org.miradi.objects.DiagramLink;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.ProjectMetadata;
@@ -172,6 +173,9 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 		
 		if (ProjectResource.is(baseObject))
 			return new ProjectResourceExporter(getWriter());
+		
+		if (DiagramLink.is(baseObject.getType()))
+			return new DiagramLinkExporter(getWriter());
 		
 		return new BaseObjectExporter(getWriter());
 	}
