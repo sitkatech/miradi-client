@@ -20,40 +20,43 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2;
 
+import java.util.HashMap;
+
 import org.martus.util.UnicodeWriter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.EAMObjectPool;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.BudgetCategoryOne;
-import org.miradi.objects.BudgetCategoryTwo;
-import org.miradi.objects.ConceptualModelDiagram;
-import org.miradi.objects.Dashboard;
-import org.miradi.objects.Desire;
-import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.DiagramLink;
-import org.miradi.objects.ExpenseAssignment;
-import org.miradi.objects.HumanWelfareTarget;
-import org.miradi.objects.Indicator;
-import org.miradi.objects.IucnRedlistSpecies;
 import org.miradi.objects.ProjectMetadata;
-import org.miradi.objects.ProjectResource;
-import org.miradi.objects.ResourceAssignment;
-import org.miradi.objects.ResultsChainDiagram;
-import org.miradi.objects.Strategy;
 import org.miradi.objects.TableSettings;
-import org.miradi.objects.TaggedObjectSet;
-import org.miradi.objects.Target;
-import org.miradi.objects.Task;
 import org.miradi.objects.ThreatRatingCommentsData;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.ViewData;
 import org.miradi.objects.Xenodata;
 import org.miradi.project.Project;
+import org.miradi.schemas.BudgetCategoryOneSchema;
+import org.miradi.schemas.BudgetCategoryTwoSchema;
+import org.miradi.schemas.ConceptualModelDiagramSchema;
+import org.miradi.schemas.DashboardSchema;
+import org.miradi.schemas.DiagramFactorSchema;
+import org.miradi.schemas.DiagramLinkSchema;
+import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.FactorLinkSchema;
 import org.miradi.schemas.FosProjectDataSchema;
+import org.miradi.schemas.GoalSchema;
+import org.miradi.schemas.HumanWelfareTargetSchema;
+import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.IucnRedlistSpeciesSchema;
+import org.miradi.schemas.ObjectiveSchema;
+import org.miradi.schemas.ProjectResourceSchema;
 import org.miradi.schemas.RareProjectDataSchema;
+import org.miradi.schemas.ResourceAssignmentSchema;
+import org.miradi.schemas.ResultsChainDiagramSchema;
+import org.miradi.schemas.StrategySchema;
+import org.miradi.schemas.TaggedObjectSetSchema;
+import org.miradi.schemas.TargetSchema;
+import org.miradi.schemas.TaskSchema;
 import org.miradi.schemas.TncProjectDataSchema;
 import org.miradi.schemas.WcpaProjectDataSchema;
 import org.miradi.schemas.WcsProjectDataSchema;
@@ -68,6 +71,7 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 		super(projectToExport);
 		
 		out = outToUse;
+		createTypeToExporterMap();
 	}
 
 	@Override
@@ -160,61 +164,34 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 		getWriter().writeEndElement(poolName);
 	}
 
+	private void createTypeToExporterMap()
+	{
+		objectTypeToExporterMap = new HashMap<Integer, BaseObjectExporter>();
+		objectTypeToExporterMap.put(DashboardSchema.getObjectType(), new DashboardExporter(getWriter()));
+		objectTypeToExporterMap.put(IndicatorSchema.getObjectType(), new IndicatorExporter(getWriter()));
+		objectTypeToExporterMap.put(GoalSchema.getObjectType(), new DesireExporter(getWriter()));
+		objectTypeToExporterMap.put(ObjectiveSchema.getObjectType(), new DesireExporter(getWriter()));
+		objectTypeToExporterMap.put(ResourceAssignmentSchema.getObjectType(), new ResourceAssignmentExporter(getWriter()));
+		objectTypeToExporterMap.put(ExpenseAssignmentSchema.getObjectType(), new ExpenseAssignmentExporter(getWriter()));
+		objectTypeToExporterMap.put(TaskSchema.getObjectType(), new TaskExporter(getWriter()));
+		objectTypeToExporterMap.put(ProjectResourceSchema.getObjectType(), new ProjectResourceExporter(getWriter()));
+		objectTypeToExporterMap.put(DiagramLinkSchema.getObjectType(), new DiagramLinkExporter(getWriter()));
+		objectTypeToExporterMap.put(ConceptualModelDiagramSchema.getObjectType(), new ConceptualModelDiagramExporter(getWriter()));
+		objectTypeToExporterMap.put(ResultsChainDiagramSchema.getObjectType(), new ResultsChainExporter(getWriter()));
+		objectTypeToExporterMap.put(DiagramFactorSchema.getObjectType(), new DiagramFactorExporter(getWriter()));
+		objectTypeToExporterMap.put(StrategySchema.getObjectType(), new StrategyExporter(getWriter()));
+		objectTypeToExporterMap.put(TargetSchema.getObjectType(), new TargetExporter(getWriter()));
+		objectTypeToExporterMap.put(HumanWelfareTargetSchema.getObjectType(), new HumanWelfareTargetExporter(getWriter()));
+		objectTypeToExporterMap.put(TaggedObjectSetSchema.getObjectType(), new TaggedObjectSetExporter(getWriter()));
+		objectTypeToExporterMap.put(IucnRedlistSpeciesSchema.getObjectType(), new IucnRedlistSpeciesExporter(getWriter()));
+		objectTypeToExporterMap.put(BudgetCategoryOneSchema.getObjectType(), new BudgetCategoryOneExporter(getWriter()));
+		objectTypeToExporterMap.put(BudgetCategoryTwoSchema.getObjectType(), new BudgetCategoryTwoExporter(getWriter()));
+	}
+	
 	private BaseObjectExporter createBaseObjectExporter(final int objectType)
 	{
-		if (Dashboard.is(objectType))
-			return new DashboardExporter(getWriter());
-		
-		if (Indicator.is(objectType))
-			return new IndicatorExporter(getWriter());
-		
-		if (Desire.isDesire(objectType))
-			return new DesireExporter(getWriter());
-		
-		if (ResourceAssignment.is(objectType))
-			return new ResourceAssignmentExporter(getWriter());
-		
-		if (ExpenseAssignment.is(objectType))
-			return new ExpenseAssignmentExporter(getWriter());
-		
-		if (Task.is(objectType))
-			return new TaskExporter(getWriter());
-		
-		if (ProjectResource.is(objectType))
-			return new ProjectResourceExporter(getWriter());
-		
-		if (DiagramLink.is(objectType))
-			return new DiagramLinkExporter(getWriter());
-		
-		if (ConceptualModelDiagram.is(objectType))
-			return new ConceptualModelDiagramExporter(getWriter());
-		
-		if (ResultsChainDiagram.is(objectType))
-			return new ResultsChainExporter(getWriter());
-		
-		if (DiagramFactor.is(objectType))
-			return new DiagramFactorExporter(getWriter());
-		
-		if (Strategy.is(objectType))
-			return new StrategyExporter(getWriter());
-		
-		if (Target.is(objectType))
-			return new TargetExporter(getWriter());
-		
-		if (HumanWelfareTarget.is(objectType))
-			return new HumanWelfareTargetExporter(getWriter());
-		
-		if (TaggedObjectSet.is(objectType))
-			return new TaggedObjectSetExporter(getWriter());
-		
-		if (IucnRedlistSpecies.is(objectType))
-			return new IucnRedlistSpeciesExporter(getWriter());
-		
-		if (BudgetCategoryOne.is(objectType))
-			return new BudgetCategoryOneExporter(getWriter());
-		
-		if (BudgetCategoryTwo.is(objectType))
-			return new BudgetCategoryTwoExporter(getWriter());
+		if (objectTypeToExporterMap.containsKey(objectType))
+			return objectTypeToExporterMap.get(objectType);
 		
 		return new BaseObjectExporter(getWriter());
 	}
@@ -225,4 +202,5 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 	}
 
 	private Xmpz2XmlUnicodeWriter out;
+	private HashMap<Integer, BaseObjectExporter> objectTypeToExporterMap;
 }
