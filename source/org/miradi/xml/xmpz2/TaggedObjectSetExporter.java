@@ -54,7 +54,7 @@ public class TaggedObjectSetExporter extends BaseObjectExporter
 	
 	private void writeFactorIds(String parentElementName, String childElementName, ORefList refList) throws Exception
 	{
-		final String elementName = getWriter().appendParentNameToChildName(parentElementName, childElementName);
+		final String elementName = getWriter().appendChildNameToParentName(parentElementName, childElementName);
 		getWriter().writeStartElement(elementName);
 		for (int index = 0; index < refList.size(); ++index)
 		{

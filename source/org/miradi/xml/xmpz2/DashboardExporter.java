@@ -50,7 +50,7 @@ public class DashboardExporter extends BaseObjectExporter
 
 		DashboardRowDefinitionManager manager = new DashboardRowDefinitionManager();
 		final CodeList allThirdLevelRowCodes = manager.getThirdLevelCodes();
-		final String parentElementName = getWriter().appendParentNameToChildName(DASHBOARD, DASHBOARD_STATUS_ENTRIES);
+		final String parentElementName = getWriter().appendChildNameToParentName(DASHBOARD, DASHBOARD_STATUS_ENTRIES);
 		getWriter().writeStartElement(parentElementName);
 		for (String thirdLevelCode : allThirdLevelRowCodes)
 		{
@@ -62,7 +62,7 @@ public class DashboardExporter extends BaseObjectExporter
 				getWriter().writeStartElementWithAttribute(DASHBOARD_STATUS_ENTRY, KEY_ATTRIBUTE_NAME, thirdLevelCode);
 
 				getWriter().writeElement(DASHBOARD_PROGRESS, progressMap.getChoiceCode(thirdLevelCode));
-				getWriter().writeCodeListElement(getWriter().appendParentNameToChildName(DASHBOARD, DASHBOARD_FLAGS), flagsMap.getCodeList(thirdLevelCode));
+				getWriter().writeCodeListElement(getWriter().appendChildNameToParentName(DASHBOARD, DASHBOARD_FLAGS), flagsMap.getCodeList(thirdLevelCode));
 				getWriter().writeElement(DASHBOARD_COMMENTS, commentsMap.getUserString(thirdLevelCode));
 
 				getWriter().writeEndElement(DASHBOARD_STATUS_ENTRY);

@@ -72,7 +72,7 @@ public class IndicatorExporter extends BaseObjectExporter
 		if (thresholdValues.size() == 0 && thresholdDetails.size() == 0)
 			return;
 		
-		final String elementName = getWriter().appendParentNameToChildName(INDICATOR, THRESHOLDS);
+		final String elementName = getWriter().appendChildNameToParentName(INDICATOR, THRESHOLDS);
 		getWriter().writeStartElement(elementName);
 		ChoiceQuestion question = getWriter().getProject().getQuestion(StatusQuestion.class);
 		CodeList allCodes = question.getAllCodes();
