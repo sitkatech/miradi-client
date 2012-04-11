@@ -246,6 +246,11 @@ abstract public class BaseObject
 			return new ORefList();
 		}
 
+		return getReflist(fieldTag);
+	}
+
+	private ORefList getReflist(String fieldTag)
+	{
 		ObjectData field = getField(fieldTag);
 		if(field.isRefListData())
 		{
