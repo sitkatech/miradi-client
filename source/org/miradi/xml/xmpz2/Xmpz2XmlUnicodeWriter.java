@@ -169,26 +169,25 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 			final BaseObject baseObject = BaseObject.find(getProject(), ref);
 			final String idElementName = baseObject.getTypeName() + ID_ELEMENT_NAME;
 			
-			writeStartElement(parentElementName);
-			writeStartElement(idElementName);
-			write(ref.getObjectId().toString());
-			writeEndElement(idElementName);
-			writeEndElement(parentElementName);
+			writeRef(ref, parentElementName, idElementName);
 		}
 	}
-	
+
 	public void writeValidRef(final String parentElementName, final String idElementName, final ORef ref) throws Exception, IOException
 	{
 		if (ref.isValid())
 		{
-			writeStartElement(parentElementName + idElementName);
-			writeStartElement(idElementName);
-
-			write(ref.getObjectId().toString());
-
-			writeEndElement(idElementName);
-			writeEndElement(parentElementName + idElementName);
+			writeRef(ref, parentElementName + idElementName, idElementName);
 		}
+	}
+	
+	private void writeRef(final ORef ref, final String parentElementName, final String idElementName) throws Exception, IOException
+	{
+		writeStartElement(parentElementName);
+		writeStartElement(idElementName);
+		write(ref.getObjectId().toString());
+		writeEndElement(idElementName);
+		writeEndElement(parentElementName);
 	}
 
 	public void writePointData(BaseObjectSchema baseObjectSchema, final AbstractFieldSchema fieldSchema, final Point point) throws Exception
