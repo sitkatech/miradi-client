@@ -238,6 +238,17 @@ abstract public class BaseObject
 		throw new RuntimeException("Attempted to get IdList data from non-IdList field " + fieldTag);
 	}
 	
+	public ORefList getRefList(String tag) throws Exception
+	{
+		return getRefListForField(getField(tag));
+	}
+	
+	protected ORefList getRefListForField(ObjectData field)
+	{
+		ORefList refList = field.getRefList();
+		return refList;
+	}
+	
 	public ORefList getRefListData(String fieldTag)
 	{
 		//NOTE: BaseObject used to always have these fields
@@ -427,11 +438,6 @@ abstract public class BaseObject
 	public boolean isRefList(String tag)
 	{
 		return false;
-	}
-	
-	public ORefList getRefList(String tag) throws Exception
-	{
-		return getRefListForField(getField(tag));
 	}
 	
 	public ORef getRef(String tag)
@@ -1118,12 +1124,6 @@ abstract public class BaseObject
 		return list;
 	}
 
-	protected ORefList getRefListForField(ObjectData field)
-	{
-		ORefList refList = field.getRefList();
-		return refList;
-	}
-	
 	public ORefList createRefList(String tag, String unknonwListTypeAsString) throws ParseException 
 	{
 		if (isRefList(tag))
