@@ -172,7 +172,7 @@ public class ThreatRatingExporter implements XmpzXmlConstants
 		
 		ThreatStressRating threatStressRating = ThreatStressRatingDetailsTableExporter.findThreatStressRating(getProject(), target.getRef(), threat.getRef(), stress);
 		if (threatStressRating != null)
-			getWriter().writeElement(STRESS_BASED_THREAT_RATING, IS_ACTIVE, threatStressRating, ThreatStressRating.TAG_IS_ACTIVE);
+			getWriter().writeElement(STRESS_BASED_THREAT_RATING, threatStressRating, ThreatStressRating.TAG_IS_ACTIVE);
 		
 		exportStressBasedStressRating(stress.getCalculatedStressRating());
 		exportStressBasedThreatStressRating(target.getRef(), threat.getRef());
