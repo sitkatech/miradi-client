@@ -240,7 +240,7 @@ abstract public class BaseObject
 	
 	public ORefList getRefList(String tag) throws Exception
 	{
-		return getField(tag).getRefList();
+		return getRefListData(tag);
 	}
 	
 	public ORefList getRefListData(String fieldTag)
