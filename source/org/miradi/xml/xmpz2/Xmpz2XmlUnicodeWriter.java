@@ -177,7 +177,7 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 		}
 	}
 	
-	public void writeRef(final String parentElementName, final String idElementName, final ORef ref) throws Exception, IOException
+	public void writeValidRef(final String parentElementName, final String idElementName, final ORef ref) throws Exception, IOException
 	{
 		if (ref.isValid())
 		{

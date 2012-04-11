@@ -42,10 +42,10 @@ abstract public class AbstractAssignmentExporter extends BaseObjectExporter
 		Assignment assignment = (Assignment) baseObject;
 		exportDateUnitEfforList(assignment.getDateUnitEffortList(), getDateUnitsElementName());
 		
-		getWriter().writeRef(baseObjectSchema.getObjectName(), FUNDING_SOURCE_ID, assignment.getFundingSourceRef());
-		getWriter().writeRef(baseObjectSchema.getObjectName(), ACCOUNTING_CODE_ID, assignment.getAccountingCodeRef());
-		getWriter().writeRef(baseObjectSchema.getObjectName(), BUDGET_CATEGORY_ONE_ID, assignment.getCategoryOneRef());
-		getWriter().writeRef(baseObjectSchema.getObjectName(), BUDGET_CATEGORY_TWO_ID, assignment.getCategoryTwoRef());
+		getWriter().writeValidRef(baseObjectSchema.getObjectName(), FUNDING_SOURCE_ID, assignment.getFundingSourceRef());
+		getWriter().writeValidRef(baseObjectSchema.getObjectName(), ACCOUNTING_CODE_ID, assignment.getAccountingCodeRef());
+		getWriter().writeValidRef(baseObjectSchema.getObjectName(), BUDGET_CATEGORY_ONE_ID, assignment.getCategoryOneRef());
+		getWriter().writeValidRef(baseObjectSchema.getObjectName(), BUDGET_CATEGORY_TWO_ID, assignment.getCategoryTwoRef());
 	}
 
 	@Override

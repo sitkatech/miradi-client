@@ -62,11 +62,11 @@ abstract public class AbstractTimePeriodCostsWriter2 implements XmpzXmlConstants
 			getWriter().writeStartElement(dateUnitsDetailsParentElementName);
 			
 			
-			getWriter().writeRef(dateUnitsDetailsParentElementName, RESOURCE_ID, categorizedQuantity.getResourceRef());
-			getWriter().writeRef(dateUnitsDetailsParentElementName, FUNDING_SOURCE_ID, categorizedQuantity.getFundingSourceRef());
-			getWriter().writeRef(dateUnitsDetailsParentElementName, ACCOUNTING_CODE_ID, categorizedQuantity.getAccountingCodeRef());
-			getWriter().writeRef(dateUnitsDetailsParentElementName, BUDGET_CATEGORY_ONE_ID, categorizedQuantity.getCategoryOneRef());
-			getWriter().writeRef(dateUnitsDetailsParentElementName, BUDGET_CATEGORY_TWO_ID, categorizedQuantity.getCategoryTwoRef());
+			getWriter().writeValidRef(dateUnitsDetailsParentElementName, RESOURCE_ID, categorizedQuantity.getResourceRef());
+			getWriter().writeValidRef(dateUnitsDetailsParentElementName, FUNDING_SOURCE_ID, categorizedQuantity.getFundingSourceRef());
+			getWriter().writeValidRef(dateUnitsDetailsParentElementName, ACCOUNTING_CODE_ID, categorizedQuantity.getAccountingCodeRef());
+			getWriter().writeValidRef(dateUnitsDetailsParentElementName, BUDGET_CATEGORY_ONE_ID, categorizedQuantity.getCategoryOneRef());
+			getWriter().writeValidRef(dateUnitsDetailsParentElementName, BUDGET_CATEGORY_TWO_ID, categorizedQuantity.getCategoryTwoRef());
 			if (categorizedQuantity.getQuantity().hasValue())
 				writeEffortDetails(dateUnitsDetailsParentElementName + DETAILS, dateUnit, categorizedQuantity.getQuantity().getValue());
 			
