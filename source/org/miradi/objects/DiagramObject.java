@@ -301,7 +301,7 @@ abstract public class DiagramObject extends BaseObject
 	
 	public IdList getAllDiagramFactorIds()
 	{
-		return getIdListData(TAG_DIAGRAM_FACTOR_IDS);
+		return getSafeIdListData(TAG_DIAGRAM_FACTOR_IDS);
 	}
 	
 	public ORefList getAllDiagramFactorRefs()
@@ -330,7 +330,7 @@ abstract public class DiagramObject extends BaseObject
 	
 	public IdList getAllDiagramFactorLinkIds()
 	{
-		return getIdListData(TAG_DIAGRAM_FACTOR_LINK_IDS);
+		return getSafeIdListData(TAG_DIAGRAM_FACTOR_LINK_IDS);
 	}
 	
 	public CodeList getHiddenTypes() throws Exception

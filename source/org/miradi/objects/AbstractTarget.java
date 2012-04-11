@@ -101,7 +101,7 @@ abstract public class AbstractTarget extends Factor
 
 	public IdList getKeyEcologicalAttributes()
 	{
-		return getIdListData(TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
+		return getSafeIdListData(TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
 	}
 
 	@Override

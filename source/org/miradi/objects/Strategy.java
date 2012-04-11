@@ -104,7 +104,7 @@ public class Strategy extends Factor
 	
 	public IdList getActivityIds()
 	{
-		return getIdListData(TAG_ACTIVITY_IDS);
+		return getSafeIdListData(TAG_ACTIVITY_IDS);
 	}
 	
 	public ORefList getActivityRefs()

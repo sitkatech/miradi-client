@@ -260,7 +260,7 @@ public class Task extends Factor
 	
 	public IdList getSubtaskIdList()
 	{
-		return getIdListData(TAG_SUBTASK_IDS);
+		return getSafeIdListData(TAG_SUBTASK_IDS);
 	}
 	
 	@Override

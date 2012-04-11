@@ -69,7 +69,7 @@ public class Indicator extends BaseObject
 	
 	public IdList getMethodIds()
 	{
-		return getIdListData(TAG_METHOD_IDS);
+		return getSafeIdListData(TAG_METHOD_IDS);
 	}
 	
 	public ORefList getTaskRefs()
