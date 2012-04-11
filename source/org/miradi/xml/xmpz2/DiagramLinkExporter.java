@@ -25,7 +25,6 @@ import org.miradi.objects.DiagramLink;
 import org.miradi.objects.Factor;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.utils.PointList;
-import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class DiagramLinkExporter extends BaseObjectExporter
 {
@@ -45,7 +44,7 @@ public class DiagramLinkExporter extends BaseObjectExporter
 		writeDiagramLinkBendPoints(diagramLink);
 		
 		final String objectName = diagramLink.getSchema().getObjectName();
-		getWriter().writeNonOptionalReflist(objectName + GROUP_BOX_DIAGRAM_LINK_CHILDREN_ID, XmpzXmlConstants.DIAGRAM_LINK, diagramLink.getGroupedDiagramLinkRefs());
+		getWriter().writeNonOptionalReflist(objectName + GROUP_BOX_DIAGRAM_LINK_CHILDREN_ID, DIAGRAM_LINK, diagramLink.getGroupedDiagramLinkRefs());
 		writeBidirectionalCode(objectName, diagramLink);
 	}
 
