@@ -198,7 +198,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 			if (hasConflictingValue(baseObjectForRow, getDateUnit(column)))
 				return false;
 			
-			ORefList assignmentRefs = baseObjectForRow.getRefList(getAssignmentsTag());
+			ORefList assignmentRefs = baseObjectForRow.getRefListData(getAssignmentsTag());
 			if (assignmentRefs.size() >  1)
 				return canEditMultipleAssignments(baseObjectForRow, getDateUnit(column));
 			
@@ -242,7 +242,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 
 	private Assignment getSingleAssignmentForBaseObject(BaseObject baseObjectForRow) throws Exception
 	{
-		ORefList assignmentRefsForRowObject = baseObjectForRow.getRefList(getAssignmentsTag());
+		ORefList assignmentRefsForRowObject = baseObjectForRow.getRefListData(getAssignmentsTag());
 		return Assignment.findAssignment(getProject(), assignmentRefsForRowObject.get(0));
 	}
 
@@ -438,7 +438,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 			return convertToVector(assignmentForRow);
 		
 		BaseObject baseObjectForRowColumn = getBaseObjectForRowColumn(row, 0);
-		ORefList assignmentRefsForRowObject = baseObjectForRowColumn.getRefList(getAssignmentsTag());
+		ORefList assignmentRefsForRowObject = baseObjectForRowColumn.getRefListData(getAssignmentsTag());
 		if (assignmentRefsForRowObject.size() > 0)
 			return refsToAssignments(assignmentRefsForRowObject);
 		

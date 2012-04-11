@@ -238,11 +238,6 @@ abstract public class BaseObject
 		throw new RuntimeException("Attempted to get IdList data from non-IdList field " + fieldTag);
 	}
 	
-	public ORefList getRefList(String tag) throws Exception
-	{
-		return getRefListData(tag);
-	}
-	
 	public ORefList getRefListData(String fieldTag)
 	{
 		//NOTE: BaseObject used to always have these fields
@@ -706,7 +701,7 @@ abstract public class BaseObject
 	protected TimePeriodCostsMap getTotalTimePeriodCostsMapForAssignments(String tag) throws Exception
 	{
 		TimePeriodCostsMap timePeriodCostsMap = new TimePeriodCostsMap();
-		ORefList assignmentRefs = getRefList(tag);
+		ORefList assignmentRefs = getRefListData(tag);
 		for(int i = 0; i < assignmentRefs.size(); ++i)
 		{
 			BaseObject assignment = BaseObject.find(getObjectManager(), assignmentRefs.get(i));
@@ -724,7 +719,7 @@ abstract public class BaseObject
 	public ORefSet getAssignedResourceRefs() throws Exception
 	{
 		ORefSet projectResourceRefs = new ORefSet();
-		ORefList resourceAssignmentRefs = getRefList(TAG_RESOURCE_ASSIGNMENT_IDS);
+		ORefList resourceAssignmentRefs = getRefListData(TAG_RESOURCE_ASSIGNMENT_IDS);
 		for (int index = 0; index < resourceAssignmentRefs.size(); ++index)
 		{
 			ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(),resourceAssignmentRefs.get(index)); 
@@ -898,7 +893,7 @@ abstract public class BaseObject
 
 	protected CommandVector createCommandsToDeleteRefs(String tag) throws Exception
 	{
-		ORefList refsToDelete = getRefList(tag);
+		ORefList refsToDelete = getRefListData(tag);
 		CommandVector commandsToDeleteRefList = new CommandVector();
 		commandsToDeleteRefList.add(new CommandSetObjectData(this, tag, ""));
 		commandsToDeleteRefList.addAll(createDeleteCommands(refsToDelete));

@@ -142,4 +142,16 @@ public class TestBaseObject extends TestCaseWithProject
 		getProject().addResourceAssignment(indicator, 20.0, 2006, 2006);
 		assertEquals("wrong total budget cost?", 200.0, indicator.getTotalBudgetCost().getValue());
 	}
+	
+	public void testGetRefList() throws Exception
+	{
+		fail();
+		Strategy strategy = getProject().createAndPopulateStrategy();
+		final ORefList indicatorRefs = strategy.getRefListData(Strategy.TAG_INDICATOR_IDS);
+		assertTrue("strategy should have indicators?", indicatorRefs.hasRefs());
+		
+		final ORefList subtargetRefs = strategy.getRefListData(Target.TAG_SUB_TARGET_REFS);
+		assertNotNull("even though its not a strategy field, a null should not be returned?", subtargetRefs);
+		assertFalse("strategy should have subtargets?", subtargetRefs.hasRefs());
+	}
 }
