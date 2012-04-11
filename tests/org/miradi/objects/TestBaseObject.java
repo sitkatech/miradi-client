@@ -145,7 +145,6 @@ public class TestBaseObject extends TestCaseWithProject
 	
 	public void testGetRefList() throws Exception
 	{
-		fail();
 		Strategy strategy = getProject().createAndPopulateStrategy();
 		final ORefList indicatorRefs = strategy.getRefListData(Strategy.TAG_INDICATOR_IDS);
 		assertTrue("strategy should have indicators?", indicatorRefs.hasRefs());
