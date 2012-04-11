@@ -146,8 +146,8 @@ public class TestBaseObject extends TestCaseWithProject
 	public void testGetRefList() throws Exception
 	{
 		Strategy strategy = getProject().createAndPopulateStrategy();
-		final ORefList indicatorRefs = strategy.getRefListData(Strategy.TAG_INDICATOR_IDS);
-		assertTrue("strategy should have indicators?", indicatorRefs.hasRefs());
+		final ORefList objectiveRefs = strategy.getRefListData(Strategy.TAG_OBJECTIVE_IDS);
+		assertTrue("strategy should have objectives?", objectiveRefs.hasRefs());
 		
 		final ORefList subtargetRefs = strategy.getRefListData(Target.TAG_SUB_TARGET_REFS);
 		assertNotNull("even though its not a strategy field, a null should not be returned?", subtargetRefs);
