@@ -24,7 +24,6 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.Factor;
 import org.miradi.schemas.BaseObjectSchema;
-import org.miradi.utils.PointList;
 
 public class DiagramLinkExporter extends BaseObjectExporter
 {
@@ -60,14 +59,7 @@ public class DiagramLinkExporter extends BaseObjectExporter
 	
 	private void writeDiagramLinkBendPoints(DiagramLink diagramLink) throws Exception
 	{
-		getWriter().writeStartElement(DIAGRAM_LINK + BEND_POINTS_ELEMENT_NAME);
-		PointList bendPoints = diagramLink.getBendPoints();
-		for (int index = 0; index < bendPoints.size(); ++index)
-		{
-			getWriter().writePoint(DIAGRAM_POINT_ELEMENT_NAME, bendPoints.get(index));
-		}
-		
-		getWriter().writeEndElement(DIAGRAM_LINK + BEND_POINTS_ELEMENT_NAME);
+		getWriter().writePointList(DIAGRAM_LINK, diagramLink.getBendPoints());
 	}
 
 	private void writeFromDiagramFactorId(DiagramLink diagramLink) throws Exception
