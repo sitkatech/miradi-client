@@ -245,8 +245,7 @@ abstract public class BaseObject
 	
 	private ORefList getRefListForField(ObjectData field)
 	{
-		ORefList refList = field.getRefList();
-		return refList;
+		return field.getRefList();
 	}
 	
 	public ORefList getRefListData(String fieldTag)
