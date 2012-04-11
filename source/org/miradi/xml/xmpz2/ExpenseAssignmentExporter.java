@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2;
 
-import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class ExpenseAssignmentExporter extends AbstractAssignmentExporter
 {
@@ -31,7 +30,7 @@ public class ExpenseAssignmentExporter extends AbstractAssignmentExporter
 	@Override
 	protected String getDateUnitElementName()
 	{
-		return XmpzXmlConstants.EXPENSES_DATE_UNIT;
+		return EXPENSES_DATE_UNIT;
 	}
 	
 	@Override
@@ -67,13 +66,13 @@ public class ExpenseAssignmentExporter extends AbstractAssignmentExporter
 	@Override
 	protected String getQuantatityElementName()
 	{
-		return XmpzXmlConstants.EXPENSE;
+		return EXPENSE;
 	}
 
 	@Override
 	protected String getDateUnitsElementName()
 	{
-		return XmpzXmlConstants.DATE_UNITS_EXPENSE;
+		return DATE_UNITS_EXPENSE;
 	}
 	
 	@Override
