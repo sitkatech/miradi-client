@@ -145,7 +145,7 @@ public class ProjectMetadataExporter implements XmpzXmlConstants
 	
 	private void writeExternalAppIds() throws Exception
 	{
-		final String elementName = getWriter().appendParentNameToChildName(PROJECT_SUMMARY, Xenodata.TAG_PROJECT_ID);
+		final String elementName = getWriter().appendChildNameToParentName(PROJECT_SUMMARY, Xenodata.TAG_PROJECT_ID);
 		getWriter().writeStartElement(elementName);
 
 		String stringRefMapAsString = getMetadata().getData(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP);
@@ -260,7 +260,7 @@ public class ProjectMetadataExporter implements XmpzXmlConstants
 		if(latitude.length()==0 && longitude.length()==0)
 			return;
 
-		final String elementName = getWriter().appendParentNameToChildName(PROJECT_SUMMARY_LOCATION, PROJECT_LOCATION);
+		final String elementName = getWriter().appendChildNameToParentName(PROJECT_SUMMARY_LOCATION, PROJECT_LOCATION);
 		getWriter().writeStartElement(elementName);
 		
 		getWriter().writeStartElement(GEOSPATIAL_LOCATION);
@@ -398,7 +398,7 @@ public class ProjectMetadataExporter implements XmpzXmlConstants
 	
 	private void writeElement(String parentElementName, BaseObject object, String tag) throws Exception
 	{
-		String convertedElementName = getWriter().appendParentNameToChildName(parentElementName, tag);
+		String convertedElementName = getWriter().appendChildNameToParentName(parentElementName, tag);
 		getWriter().writeElement(convertedElementName, object.getData(tag));
 	}
 	

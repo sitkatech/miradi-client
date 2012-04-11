@@ -91,7 +91,7 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 		if (codes.isEmpty())
 			return;
 		
-		final String elementName = appendParentNameToChildName(baseObjectSchema, fieldSchema);
+		final String elementName = appendChildNameToParentName(baseObjectSchema, fieldSchema);
 		writeCodeListElement(elementName, codes);
 	}
 
@@ -119,7 +119,7 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 
 	public void writeDimensionData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, Dimension dimension) throws Exception
 	{
-		final String sizeElementName = appendParentNameToChildName(baseObjectSchema.getObjectName(), SIZE);
+		final String sizeElementName = appendChildNameToParentName(baseObjectSchema.getObjectName(), SIZE);
 		writeStartElement(sizeElementName);
 		writeStartElement(DIAGRAM_SIZE_ELEMENT_NAME);
 		writeElement(WIDTH_ELEMENT_NAME, dimension.width);		
@@ -137,7 +137,7 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 	{
 		FieldSchemaIdList fieldSchemaIdList = (FieldSchemaIdList) fieldSchema;
 		final String elementTypeName = project.getObjectManager().getInternalObjectTypeName(fieldSchemaIdList.getIdListType());
-		final String elementContainerName = appendParentNameToChildName(baseObjectSchema, fieldSchema);
+		final String elementContainerName = appendChildNameToParentName(baseObjectSchema, fieldSchema);
 		writeReflist(elementContainerName, elementTypeName, refList);
 	}
 
@@ -165,7 +165,7 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 	{
 		if (ref.isValid())
 		{
-			final String parentElementName = appendParentNameToChildName(baseObjectSchema, fieldSchema);
+			final String parentElementName = appendChildNameToParentName(baseObjectSchema, fieldSchema);
 			final BaseObject baseObject = BaseObject.find(getProject(), ref);
 			final String idElementName = baseObject.getTypeName() + ID_ELEMENT_NAME;
 			
@@ -193,7 +193,7 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 
 	public void writePointData(BaseObjectSchema baseObjectSchema, final AbstractFieldSchema fieldSchema, final Point point) throws Exception
 	{
-		final String elementName = appendParentNameToChildName(baseObjectSchema, fieldSchema);
+		final String elementName = appendChildNameToParentName(baseObjectSchema, fieldSchema);
 		writePoint(elementName, point);
 	}
 
@@ -231,7 +231,7 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 	public void writeRefListData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, ORefList refListToUse) throws Exception
 	{
 		final String idElementName = ((FieldSchemaReflist) fieldSchema).getTypeName();
-		final String elementName = appendParentNameToChildName(baseObjectSchema, fieldSchema);
+		final String elementName = appendChildNameToParentName(baseObjectSchema, fieldSchema);
 		writeReflist(elementName, idElementName, refListToUse);
 	}
 	
@@ -252,7 +252,7 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 
 	public void writeReflist(final String parentName, final String elementContainerName, final String elementTypeName, ORefList refListToUse) throws Exception
 	{
-		final String elementName = appendParentNameToChildName(parentName, elementContainerName);
+		final String elementName = appendChildNameToParentName(parentName, elementContainerName);
 		writeReflist(elementName, elementTypeName, refListToUse);
 	}
 	
@@ -287,7 +287,7 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 
 	public void writeRefMapData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String stringRefMapAsString) throws Exception
 	{
-		writeStartElement(appendParentNameToChildName(PROJECT_SUMMARY, Xenodata.TAG_PROJECT_ID));
+		writeStartElement(appendChildNameToParentName(PROJECT_SUMMARY, Xenodata.TAG_PROJECT_ID));
 
 		StringRefMap stringRefMap = new StringRefMap(stringRefMapAsString);
 		Set<String> keys = stringRefMap.getKeys();
@@ -308,23 +308,23 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 			writeEndElement(EXTERNAL_PROJECT_ID_ELEMENT_NAME);
 		}
 		
-		writeEndElement(appendParentNameToChildName(PROJECT_SUMMARY, Xenodata.TAG_PROJECT_ID));
+		writeEndElement(appendChildNameToParentName(PROJECT_SUMMARY, Xenodata.TAG_PROJECT_ID));
 	}
 
 	private void writeField(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String data) throws Exception
 	{
-		final String elementName = appendParentNameToChildName(baseObjectSchema, fieldSchema);
+		final String elementName = appendChildNameToParentName(baseObjectSchema, fieldSchema);
 		writeElement(elementName, data);
 	}
 	
-	private String appendParentNameToChildName(final BaseObjectSchema baseObjectSchema, final AbstractFieldSchema fieldSchema)
+	private String appendChildNameToParentName(final BaseObjectSchema baseObjectSchema, final AbstractFieldSchema fieldSchema)
 	{
 		final String xmpz2ElementName = baseObjectSchema.getXmpz2ElementName();
 		final String tag = fieldSchema.getTag();
-		return appendParentNameToChildName(xmpz2ElementName, tag);
+		return appendChildNameToParentName(xmpz2ElementName, tag);
 	}
 
-	public String appendParentNameToChildName(final String parentElementName,	final String childElementName)
+	public String appendChildNameToParentName(final String parentElementName,	final String childElementName)
 	{
 		return parentElementName + getConvertedElementName(parentElementName, childElementName);
 	}
