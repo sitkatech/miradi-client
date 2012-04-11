@@ -29,9 +29,9 @@ public class TargetExporter extends AbstractTargetExporter
 	}
 	
 	@Override
-	public String getPoolName(int objectType)
+	public String getExporterContainerName(int objectType)
 	{
-		return getWriter().createPoolElementName(getTargetElementName());
+		return getTargetElementName();
 	}
 	
 	@Override

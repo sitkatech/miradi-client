@@ -95,7 +95,8 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 			if(pool != null)
 			{
 				final BaseObjectExporter baseObjectExporter = getBaseObjectExporter(objectType);
-				final String poolName = baseObjectExporter.getPoolName(objectType);
+				final String containerName = baseObjectExporter.getExporterContainerName(objectType);
+				final String poolName = getWriter().createPoolElementName(containerName);
 				ORefList sortedRefList = pool.getSortedRefList();
 				if (sortedRefList.hasRefs())
 					exportBaseObjects(poolName, sortedRefList, baseObjectExporter);
