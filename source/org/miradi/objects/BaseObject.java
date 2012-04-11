@@ -222,7 +222,7 @@ abstract public class BaseObject
 		return data.getCodeList();
 	}
 	
-	public IdList getIdListData(String fieldTag)
+	public IdList getSafeIdListData(String fieldTag)
 	{
 		//NOTE: BaseObject used to always have these fields
 		if (!doesFieldExist(fieldTag))
@@ -259,7 +259,7 @@ abstract public class BaseObject
 		
 		if(field.isIdListData())
 		{
-			IdList isList = getIdListData(fieldTag);
+			IdList isList = getSafeIdListData(fieldTag);
 			ORefList refList = new ORefList(isList);
 			return new ORefList(refList);
 		}
@@ -1146,7 +1146,7 @@ abstract public class BaseObject
 	
 	public ORefList getResourceAssignmentRefs()
 	{
-		return new ORefList(ResourceAssignmentSchema.getObjectType(), getIdListData(TAG_RESOURCE_ASSIGNMENT_IDS));
+		return new ORefList(ResourceAssignmentSchema.getObjectType(), getSafeIdListData(TAG_RESOURCE_ASSIGNMENT_IDS));
 	}
 	
 	public ORefList getAllObjectsToDeepCopy(ORefList deepCopiedFactorRefs)

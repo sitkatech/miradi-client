@@ -112,7 +112,7 @@ abstract public class Factor extends BaseObject
 
 	public IdList getOnlyDirectIndicatorIds()
 	{
-		IdList rawDirectIndicatorIds = getIdListData(TAG_INDICATOR_IDS);
+		IdList rawDirectIndicatorIds = getSafeIdListData(TAG_INDICATOR_IDS);
 		ORefList activeIndicatorRefs = new ORefList();
 		for(int index = 0; index < rawDirectIndicatorIds.size(); ++index)
 		{
@@ -141,7 +141,7 @@ abstract public class Factor extends BaseObject
 	
 	public IdList getObjectiveIds()
 	{
-		return getIdListData(TAG_OBJECTIVE_IDS);
+		return getSafeIdListData(TAG_OBJECTIVE_IDS);
 	}
 
 	@Override

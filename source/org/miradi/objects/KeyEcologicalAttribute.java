@@ -95,7 +95,7 @@ public class KeyEcologicalAttribute extends BaseObject
 	
 	public IdList getIndicatorIds()
 	{
-		return getIdListData(TAG_INDICATOR_IDS);
+		return getSafeIdListData(TAG_INDICATOR_IDS);
 	}
 	
 	public String getKeyEcologicalAttributeType()
