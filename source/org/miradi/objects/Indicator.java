@@ -101,7 +101,7 @@ public class Indicator extends BaseObject
 				list.addAll(getExpenseAssignmentRefs());
 				break;
 			case ObjectType.PROGRESS_REPORT:
-				list.addAll(getRefListData(TAG_PROGRESS_REPORT_REFS));
+				list.addAll(getSafeRefListData(TAG_PROGRESS_REPORT_REFS));
 				break;
 		}
 		return list;
@@ -267,7 +267,7 @@ public class Indicator extends BaseObject
 	
 	public ORefList getMeasurementRefs()
 	{
-		return getRefListData(TAG_MEASUREMENT_REFS);
+		return getSafeRefListData(TAG_MEASUREMENT_REFS);
 	}
 	
 	@Override

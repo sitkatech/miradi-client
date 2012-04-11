@@ -80,7 +80,7 @@ public class Target extends AbstractTarget
 	
 	public ORefList getStressRefs()
 	{
-		return getRefListData(TAG_STRESS_REFS);
+		return getSafeRefListData(TAG_STRESS_REFS);
 	}
 	
 	@Override

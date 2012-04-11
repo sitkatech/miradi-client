@@ -63,7 +63,7 @@ public class TaggedObjectSet extends BaseObject
 	
 	public ORefList getTaggedObjectRefs()
 	{
-		return getRefListData(TAG_TAGGED_OBJECT_REFS);
+		return getSafeRefListData(TAG_TAGGED_OBJECT_REFS);
 	}
 	
 	public ORefSet getTaggedObjectRefsSet()

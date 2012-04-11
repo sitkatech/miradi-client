@@ -136,7 +136,7 @@ abstract public class DiagramObject extends BaseObject
 	
 	public ORefList getSelectedTaggedObjectSetRefs()
 	{
-		return getRefListData(TAG_SELECTED_TAGGED_OBJECT_SET_REFS);
+		return getSafeRefListData(TAG_SELECTED_TAGGED_OBJECT_SET_REFS);
 	}
 	
 	// TODO: This really should have a test

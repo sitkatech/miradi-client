@@ -259,7 +259,7 @@ public class TestConproXmlExporter extends TestCaseWithProject
 		getProject().fillObjectUsingCommand(progressReport, ProgressReport.TAG_PROGRESS_DATE, date);
 		getProject().fillObjectUsingCommand(progressReport, ProgressReport.TAG_DETAILS, details);
 		
-		ORefList progressReportRefs = indicator.getRefListData(BaseObject.TAG_PROGRESS_REPORT_REFS);
+		ORefList progressReportRefs = indicator.getSafeRefListData(BaseObject.TAG_PROGRESS_REPORT_REFS);
 		progressReportRefs.add(progressReport);
 		getProject().fillObjectUsingCommand(indicator, Indicator.TAG_PROGRESS_REPORT_REFS, progressReportRefs);
 	}

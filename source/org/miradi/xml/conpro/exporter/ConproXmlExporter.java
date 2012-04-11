@@ -140,7 +140,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		writeOptionalElement(out, COMMENT, indicator, Indicator.TAG_COMMENTS);
 		writeMeasurements(out, indicator.getMeasurementRefs());		
 		writeIds(out, indicator.getMethodRefs(), METHODS,	METHOD_ID);
-		writeProgressReports(out, indicator.getRefListData(BaseObject.TAG_PROGRESS_REPORT_REFS));
+		writeProgressReports(out, indicator.getSafeRefListData(BaseObject.TAG_PROGRESS_REPORT_REFS));
 
 		writeEndElement(out, INDICATOR);
 	}
@@ -179,7 +179,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			writeOptionalElement(out, COMMENT, strategy, Strategy.TAG_COMMENTS);
 			writeOptionalElement(out, LEGACY_TNC_STRATEGY_RATING , strategy, Strategy.TAG_LEGACY_TNC_STRATEGY_RANKING);
 			writeOptionalElement(out, STRATEGY_TOTAL_COST, strategy.getTotalBudgetCostWithoutRollup().toString());
-			writeProgressReports(out, strategy.getRefListData(BaseObject.TAG_PROGRESS_REPORT_REFS));
+			writeProgressReports(out, strategy.getSafeRefListData(BaseObject.TAG_PROGRESS_REPORT_REFS));
 			writeActivities(out, strategy.getActivityRefs());
 						
 			writeEndElement(out, STRATEGY);
@@ -237,7 +237,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			}
 			writeOptionalElement(out, ACTIVITY_TOTAL_COST, activity.getTotalBudgetCost().toString());
 			writeOptionalElement(out, ACTIVITY_DETAILS, activity, Task.TAG_DETAILS);
-			writeProgressReports(out, activity.getRefListData(BaseObject.TAG_PROGRESS_REPORT_REFS));
+			writeProgressReports(out, activity.getSafeRefListData(BaseObject.TAG_PROGRESS_REPORT_REFS));
 			
 			writeEndElement(out, ACTIVITY);
 		}

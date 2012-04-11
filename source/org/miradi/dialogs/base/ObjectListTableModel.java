@@ -80,7 +80,7 @@ abstract public class ObjectListTableModel extends UpperPanelBaseObjectTableMode
 			if(getContainingRef().isInvalid())
 				return new ORefList();
 			
-			return getContainingObject().getRefListData(tagOfList);
+			return getContainingObject().getSafeRefListData(tagOfList);
 		}
 		catch(Exception e)
 		{
