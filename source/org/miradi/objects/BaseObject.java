@@ -240,12 +240,7 @@ abstract public class BaseObject
 	
 	public ORefList getRefList(String tag) throws Exception
 	{
-		return getRefListForField(getField(tag));
-	}
-	
-	private ORefList getRefListForField(ObjectData field)
-	{
-		return field.getRefList();
+		return getField(tag).getRefList();
 	}
 	
 	public ORefList getRefListData(String fieldTag)
@@ -1117,7 +1112,7 @@ abstract public class BaseObject
 		ORefSet list = new ORefSet();
 		for(ObjectData field : getFields().values())
 		{
-			ORefList refList = getRefListForField(field);
+			ORefList refList = field.getRefList();
 			list.addAllRefs(refList);
 		}
 		return list;
