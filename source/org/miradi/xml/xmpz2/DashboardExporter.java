@@ -62,7 +62,7 @@ public class DashboardExporter extends BaseObjectExporter
 				getWriter().writeStartElementWithAttribute(DASHBOARD_STATUS_ENTRY, KEY_ATTRIBUTE_NAME, thirdLevelCode);
 
 				getWriter().writeElement(DASHBOARD_PROGRESS, progressMap.getChoiceCode(thirdLevelCode));
-				getWriter().writeCodeListElement(getWriter().appendChildNameToParentName(DASHBOARD, DASHBOARD_FLAGS), flagsMap.getCodeList(thirdLevelCode));
+				getWriter().writeNonOptionalCodeListElement(getWriter().appendChildNameToParentName(DASHBOARD, DASHBOARD_FLAGS), flagsMap.getCodeList(thirdLevelCode));
 				getWriter().writeElement(DASHBOARD_COMMENTS, commentsMap.getUserString(thirdLevelCode));
 
 				getWriter().writeEndElement(DASHBOARD_STATUS_ENTRY);
