@@ -29,8 +29,8 @@ public class ConceptualModelDiagramExporter extends AbstractDiagramObjectExporte
 	}
 	
 	@Override
-	public String getPoolName(int objectType)
+	public String getExporterContainerName(int objectType)
 	{
-		return getWriter().createPoolElementName(CONCEPTUAL_MODEL);
+		return CONCEPTUAL_MODEL;
 	}
 }

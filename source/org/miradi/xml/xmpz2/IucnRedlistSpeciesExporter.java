@@ -39,8 +39,8 @@ public class IucnRedlistSpeciesExporter extends BaseObjectExporter
 	}
 
 	@Override
-	public String getPoolName(int objectType)
+	public String getExporterContainerName(int objectType)
 	{
-		return getWriter().createPoolElementName(IUCN_REDLIST_SPECIES);
+		return IUCN_REDLIST_SPECIES;
 	}
 }

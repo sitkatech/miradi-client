@@ -65,11 +65,11 @@ public class BaseObjectExporter implements XmpzXmlConstants
 		return false;
 	}
 	
-	public String getPoolName(final int objectType)
+	public String getExporterContainerName(final int objectType)
 	{
 		final String internalObjectTypeName = getProject().getObjectManager().getInternalObjectTypeName(objectType);
 		
-		return getWriter().createPoolElementName(internalObjectTypeName);
+		return internalObjectTypeName;
 	}
 
 	protected Xmpz2XmlUnicodeWriter getWriter()

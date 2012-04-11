@@ -28,8 +28,8 @@ public class BudgetCategoryTwoExporter extends BaseObjectExporter
 	}
 	
 	@Override
-	public String getPoolName(int objectType)
+	public String getExporterContainerName(int objectType)
 	{
-		return getWriter().createPoolElementName(BUDGET_CATEGORY_TWO);
+		return BUDGET_CATEGORY_TWO;
 	}
 }
