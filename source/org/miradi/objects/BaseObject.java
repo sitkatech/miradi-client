@@ -243,7 +243,7 @@ abstract public class BaseObject
 		return getRefListForField(getField(tag));
 	}
 	
-	protected ORefList getRefListForField(ObjectData field)
+	private ORefList getRefListForField(ObjectData field)
 	{
 		ORefList refList = field.getRefList();
 		return refList;
