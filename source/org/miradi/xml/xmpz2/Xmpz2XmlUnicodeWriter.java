@@ -133,14 +133,6 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 		writeField(baseObjectSchema, fieldSchema, number);
 	}
 
-	public void writeIdListData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, ORefList refList) throws Exception
-	{
-		FieldSchemaIdList fieldSchemaIdList = (FieldSchemaIdList) fieldSchema;
-		final String elementTypeName = project.getObjectManager().getInternalObjectTypeName(fieldSchemaIdList.getIdListType());
-		final String elementContainerName = appendChildNameToParentName(baseObjectSchema, fieldSchema);
-		writeReflist(elementContainerName, elementTypeName, refList);
-	}
-
 	public void writeIntegerData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String number) throws Exception
 	{
 		writeField(baseObjectSchema, fieldSchema, number);
@@ -232,6 +224,14 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 		writeRefList(baseObjectSchema, fieldSchema, new ORefList(string));
 	}
 
+	public void writeIdListData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, ORefList refList) throws Exception
+	{
+		FieldSchemaIdList fieldSchemaIdList = (FieldSchemaIdList) fieldSchema;
+		final String elementTypeName = project.getObjectManager().getInternalObjectTypeName(fieldSchemaIdList.getIdListType());
+		final String elementContainerName = appendChildNameToParentName(baseObjectSchema, fieldSchema);
+		writeReflist(elementContainerName, elementTypeName, refList);
+	}
+	
 	public void writeRefList(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, ORefList refListToUse) throws Exception
 	{
 		final String idElementName = ((FieldSchemaReflist) fieldSchema).getTypeName();
