@@ -379,7 +379,7 @@ public class ProjectMetadataExporter implements XmpzXmlConstants
 	{
 		CodeList codes = getOperatingUnitsWithoutLegacyCode(getMetadata());
 		if (codes.hasData())
-			getWriter().writeCodeListElement(TNC_PROJECT_DATA + XmlSchemaCreator.TNC_OPERATING_UNITS, codes);
+			getWriter().writeNonOptionalCodeListElement(TNC_PROJECT_DATA + XmlSchemaCreator.TNC_OPERATING_UNITS, codes);
 	}
 	
 	public static CodeList getOperatingUnitsWithoutLegacyCode(ProjectMetadata projectMetadata) throws Exception
@@ -406,7 +406,7 @@ public class ProjectMetadataExporter implements XmpzXmlConstants
 	{
 		CodeList codes = object.getCodeList(tag);
 		if (codes.hasData())
-			getWriter().writeCodeListElement(parentElementName + poolElementName, codes);
+			getWriter().writeNonOptionalCodeListElement(parentElementName + poolElementName, codes);
 	}
 	
 	private Xmpz2XmlUnicodeWriter getWriter()

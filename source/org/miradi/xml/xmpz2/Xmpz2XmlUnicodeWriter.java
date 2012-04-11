@@ -92,10 +92,10 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 			return;
 		
 		final String elementName = appendChildNameToParentName(baseObjectSchema, fieldSchema);
-		writeCodeListElement(elementName, codes);
+		writeNonOptionalCodeListElement(elementName, codes);
 	}
 
-	public void writeCodeListElement(final String elementName, final CodeList codes)	throws Exception
+	public void writeNonOptionalCodeListElement(final String elementName, final CodeList codes)	throws Exception
 	{
 		final String elementContainerName = createContainerElementName(elementName);
 		writeStartElement(elementContainerName);
