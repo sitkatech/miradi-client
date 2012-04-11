@@ -240,14 +240,15 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 		if (refListToUse.isEmpty())
 			return;
 		
-		writeStartElement(convertRefsToIdsSuffix(elementContainerName));
+		final String elementName = convertRefsToIdsSuffix(elementContainerName);
+		writeStartElement(elementName);
 		for(ORef ref : refListToUse)
 		{
 			BaseObject baseObject = BaseObject.find(getProject(), ref);
 			writeElement(baseObject.getTypeName() + ID_ELEMENT_NAME, ref.getObjectId().toString());
 		}
 		
-		writeEndElement(convertRefsToIdsSuffix(elementContainerName));
+		writeEndElement(elementName);
 	}
 
 	public void writeReflist(final String parentName, final String elementContainerName, final String elementTypeName, ORefList refListToUse) throws Exception
