@@ -389,11 +389,9 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 		return false;
 	}
 
-	//FIXME these are duplicated from xmpz1,  just to get xmpz2 running
 	public void writeElement(String parentElementName, BaseObject object, String tag) throws Exception
 	{
-		String convertedElementName = getConvertedElementName(parentElementName, tag);
-		writeElement(parentElementName, convertedElementName, object.getData(tag));
+		writeElement(parentElementName, tag, object.getData(tag));
 	}
 	
 	public void writeElement(String parentElementName, String elementName, String data) throws Exception
