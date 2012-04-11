@@ -260,7 +260,7 @@ public class Strategy extends Factor
 				list.addAll(getExpenseAssignmentRefs());
 				break;
 			case ObjectType.PROGRESS_REPORT:
-				list.addAll(getRefListData(TAG_PROGRESS_REPORT_REFS));
+				list.addAll(getSafeRefListData(TAG_PROGRESS_REPORT_REFS));
 				break;
 		}
 		return list;

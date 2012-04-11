@@ -54,7 +54,7 @@ public class ProgressReportTableModel extends EditableObjectRefsTableModel
 		if (progressReportParent == null)
 			return new ORefList();
 		
-		return progressReportParent.getRefListData(BaseObject.TAG_PROGRESS_REPORT_REFS);
+		return progressReportParent.getSafeRefListData(BaseObject.TAG_PROGRESS_REPORT_REFS);
 	}
 
 	@Override

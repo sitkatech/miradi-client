@@ -50,7 +50,7 @@ abstract public class BaseObjectPoolExporter extends ObjectPoolExporter
 	
 	protected void writeProgressReportIds(BaseObject baseObject) throws Exception
 	{
-		writeOptionalIds(XmpzXmlConstants.PROGRESS_REPORT_IDS, XmpzXmlConstants.PROGRESS_REPORT, baseObject.getRefListData(BaseObject.TAG_PROGRESS_REPORT_REFS));
+		writeOptionalIds(XmpzXmlConstants.PROGRESS_REPORT_IDS, XmpzXmlConstants.PROGRESS_REPORT, baseObject.getSafeRefListData(BaseObject.TAG_PROGRESS_REPORT_REFS));
 	}
 	
 	protected void writeProgressPercetIds(ORefList progressPercentRefs) throws Exception
@@ -60,7 +60,7 @@ abstract public class BaseObjectPoolExporter extends ObjectPoolExporter
 	
 	protected void writeExpenseAssignmentIds(BaseObject baseObject) throws Exception
 	{
-		writeOptionalIds(XmpzXmlConstants.EXPENSE_IDS, XmpzXmlConstants.EXPENSE_ASSIGNMENT, baseObject.getRefListData(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS));
+		writeOptionalIds(XmpzXmlConstants.EXPENSE_IDS, XmpzXmlConstants.EXPENSE_ASSIGNMENT, baseObject.getSafeRefListData(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS));
 	}
 	
 	protected void writeResourceAssignmentIds(BaseObject baseObject) throws Exception

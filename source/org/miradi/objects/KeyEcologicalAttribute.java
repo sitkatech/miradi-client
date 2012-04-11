@@ -90,7 +90,7 @@ public class KeyEcologicalAttribute extends BaseObject
 	
 	public ORefList getIndicatorRefs()
 	{
-		return getRefListData(TAG_INDICATOR_IDS);
+		return getSafeRefListData(TAG_INDICATOR_IDS);
 	}
 	
 	public IdList getIndicatorIds()

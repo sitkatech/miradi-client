@@ -238,7 +238,7 @@ abstract public class BaseObject
 		throw new RuntimeException("Attempted to get IdList data from non-IdList field " + fieldTag);
 	}
 	
-	public ORefList getRefListData(String fieldTag)
+	public ORefList getSafeRefListData(String fieldTag)
 	{
 		//NOTE: BaseObject used to always have these fields
 		if (!doesFieldExist(fieldTag))
@@ -701,7 +701,7 @@ abstract public class BaseObject
 	protected TimePeriodCostsMap getTotalTimePeriodCostsMapForAssignments(String tag) throws Exception
 	{
 		TimePeriodCostsMap timePeriodCostsMap = new TimePeriodCostsMap();
-		ORefList assignmentRefs = getRefListData(tag);
+		ORefList assignmentRefs = getSafeRefListData(tag);
 		for(int i = 0; i < assignmentRefs.size(); ++i)
 		{
 			BaseObject assignment = BaseObject.find(getObjectManager(), assignmentRefs.get(i));
@@ -719,7 +719,7 @@ abstract public class BaseObject
 	public ORefSet getAssignedResourceRefs() throws Exception
 	{
 		ORefSet projectResourceRefs = new ORefSet();
-		ORefList resourceAssignmentRefs = getRefListData(TAG_RESOURCE_ASSIGNMENT_IDS);
+		ORefList resourceAssignmentRefs = getSafeRefListData(TAG_RESOURCE_ASSIGNMENT_IDS);
 		for (int index = 0; index < resourceAssignmentRefs.size(); ++index)
 		{
 			ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(),resourceAssignmentRefs.get(index)); 
@@ -893,7 +893,7 @@ abstract public class BaseObject
 
 	protected CommandVector createCommandsToDeleteRefs(String tag) throws Exception
 	{
-		ORefList refsToDelete = getRefListData(tag);
+		ORefList refsToDelete = getSafeRefListData(tag);
 		CommandVector commandsToDeleteRefList = new CommandVector();
 		commandsToDeleteRefList.add(new CommandSetObjectData(this, tag, ""));
 		commandsToDeleteRefList.addAll(createDeleteCommands(refsToDelete));
@@ -1138,7 +1138,7 @@ abstract public class BaseObject
 
 	public ORefList getExpenseAssignmentRefs()
 	{
-		return getRefListData(TAG_EXPENSE_ASSIGNMENT_REFS);
+		return getSafeRefListData(TAG_EXPENSE_ASSIGNMENT_REFS);
 	}
 	
 	public ORefList getResourceAssignmentRefs()
@@ -1204,7 +1204,7 @@ abstract public class BaseObject
 
 	public ProgressReport getLatestProgressReport()
 	{
-		return (ProgressReport) getLatestObject(getObjectManager(), getRefListData(TAG_PROGRESS_REPORT_REFS), ProgressReport.TAG_PROGRESS_DATE);
+		return (ProgressReport) getLatestObject(getObjectManager(), getSafeRefListData(TAG_PROGRESS_REPORT_REFS), ProgressReport.TAG_PROGRESS_DATE);
 	}
 
 	protected static BaseObject getLatestObject(ObjectManager objectManagerToUse, ORefList objectRefs, String dateTag)

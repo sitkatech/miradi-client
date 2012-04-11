@@ -126,7 +126,7 @@ abstract public class Factor extends BaseObject
 	
 	public ORefList getActiveAndInactiveDirectIndicatorRefs() throws Exception
 	{
-		return getRefListData(TAG_INDICATOR_IDS);
+		return getSafeRefListData(TAG_INDICATOR_IDS);
 	}
 	
 	public ORefList getOnlyDirectIndicatorRefs()

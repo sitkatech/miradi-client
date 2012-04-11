@@ -93,7 +93,7 @@ abstract public class Desire extends BaseObject
 
 	public ORefList getProgressPercentRefs()
 	{
-		return getRefListData(TAG_PROGRESS_PERCENT_REFS);
+		return getSafeRefListData(TAG_PROGRESS_PERCENT_REFS);
 	}
 	
 	@Override

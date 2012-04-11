@@ -40,12 +40,12 @@ abstract public class AbstractObjectWithBudgetDataToDeleteTestCase extends Objec
 	private void verifyChildren(String tag) throws Exception
 	{
 		BaseObject baseObject = createObjectWithChildrenToDelete();
-		ORefList assignmentRefs = baseObject.getRefListData(tag);
+		ORefList assignmentRefs = baseObject.getSafeRefListData(tag);
 		assertTrue("should have atleast one assignment?", assignmentRefs.size() > 0);
 
 		CommandVector commandToDeleteChildren = baseObject.createCommandsToDeleteChildren();
 		getProject().executeCommands(commandToDeleteChildren);
-		assertEquals("should not have any children?", 0, baseObject.getRefListData(tag).size());
+		assertEquals("should not have any children?", 0, baseObject.getSafeRefListData(tag).size());
 
 		verifyChildrenNoLongerExist(assignmentRefs);
 	}

@@ -171,7 +171,7 @@ public class DiagramFactor extends BaseObject
 	
 	public ORefList getGroupBoxChildrenRefs()
 	{
-		return getRefListData(TAG_GROUP_BOX_CHILDREN_REFS);
+		return getSafeRefListData(TAG_GROUP_BOX_CHILDREN_REFS);
 	}
 	
 	public ORefSet getGroupBoxChildrenSet()

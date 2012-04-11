@@ -433,7 +433,7 @@ public class Dashboard extends BaseObject
 		ORefSet baseObjectsWithAnnotationCountWithinBounds = new ORefSet();
 		for(BaseObject baseObject : baseObjects)
 		{
-			int listSize = baseObject.getRefListData(tag).size();
+			int listSize = baseObject.getSafeRefListData(tag).size();
 			if (listSize >= LOWER_BOUND && listSize <= UPPER_BOUND)
 				baseObjectsWithAnnotationCountWithinBounds.addRef(baseObject);
 		}
@@ -684,7 +684,7 @@ public class Dashboard extends BaseObject
 		Vector<BaseObject> objectsWithProgressReports = new Vector<BaseObject>();
 		for (BaseObject baseObject : baseObjects)
 		{
-			if (baseObject.getRefListData(BaseObject.TAG_PROGRESS_REPORT_REFS).hasRefs())
+			if (baseObject.getSafeRefListData(BaseObject.TAG_PROGRESS_REPORT_REFS).hasRefs())
 				objectsWithProgressReports.add(baseObject);
 		}
 		
@@ -747,10 +747,10 @@ public class Dashboard extends BaseObject
 		HashSet<Task> tasksWithAssignments = new HashSet<Task>();
 		for (Task task : specifiedTaskAndTasks)
 		{
-			if (task.getRefListData(Task.TAG_EXPENSE_ASSIGNMENT_REFS).hasRefs())
+			if (task.getSafeRefListData(Task.TAG_EXPENSE_ASSIGNMENT_REFS).hasRefs())
 				tasksWithAssignments.add(task);
 			
-			if (task.getRefListData(Task.TAG_RESOURCE_ASSIGNMENT_IDS).hasRefs())
+			if (task.getSafeRefListData(Task.TAG_RESOURCE_ASSIGNMENT_IDS).hasRefs())
 				tasksWithAssignments.add(task);
 		}
 		
@@ -1049,7 +1049,7 @@ public class Dashboard extends BaseObject
 		for (ORef targetRef : targetRefs)
 		{
 			Target target = Target.find(getProject(), targetRef);
-			if (target.getRefListData(tag).hasRefs())
+			if (target.getSafeRefListData(tag).hasRefs())
 				++count;
 		}
 		

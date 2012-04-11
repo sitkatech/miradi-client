@@ -91,7 +91,7 @@ abstract public class AbstractTarget extends Factor
 
 	public ORefList getSubTargetRefs()
 	{
-		return getRefListData(TAG_SUB_TARGET_REFS);
+		return getSafeRefListData(TAG_SUB_TARGET_REFS);
 	}
 
 	public ORefList getKeyEcologicalAttributeRefs()
@@ -336,7 +336,7 @@ abstract public class AbstractTarget extends Factor
 	@Override
 	public ORefList getGoalRefs()
 	{
-		return getRefListData(TAG_GOAL_IDS);
+		return getSafeRefListData(TAG_GOAL_IDS);
 	}
 	
 	public static final String TAG_TARGET_STATUS = "TargetStatus";

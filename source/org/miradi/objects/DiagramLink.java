@@ -172,7 +172,7 @@ public class DiagramLink extends BaseObject
 	
 	public ORefList getGroupedDiagramLinkRefs()
 	{
-		return getRefListData(TAG_GROUPED_DIAGRAM_LINK_REFS);
+		return getSafeRefListData(TAG_GROUPED_DIAGRAM_LINK_REFS);
 	}
 	
 	public ORef getWrappedRef()

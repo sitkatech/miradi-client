@@ -44,7 +44,7 @@ public class WorkPlanWorkUnitsTableModel extends AbstractWorkUnitsTableModel
 	@Override
 	protected boolean canEditMultipleAssignments(BaseObject baseObjectForRow, DateUnit dateUnit) throws Exception
 	{
-		ORefList assignmentRefs = baseObjectForRow.getRefListData(getAssignmentsTag());
+		ORefList assignmentRefs = baseObjectForRow.getSafeRefListData(getAssignmentsTag());
 		if (!isHorizontallyEditable(assignmentRefs, dateUnit))
 			return false;
 			
