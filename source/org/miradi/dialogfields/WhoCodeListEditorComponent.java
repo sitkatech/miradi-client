@@ -236,7 +236,7 @@ public class WhoCodeListEditorComponent extends AbstractQuestionBasedComponent
 	
 	private ORefList getResourceAssignmentRefs() throws Exception
 	{
-		return getParentObject().getRefList(getResourceAssignmentTag());
+		return getParentObject().getRefListData(getResourceAssignmentTag());
 	}
 	
 	private String getResourceAssignmentTag()
