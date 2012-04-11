@@ -93,16 +93,16 @@ public class ProjectMetadataExporter implements XmpzXmlConstants
 	{
 		getWriter().writeStartElement(PROJECT_SUMMARY);
 
-		getWriter().writeElement(PROJECT_SUMMARY, ProjectMetadata.TAG_PROJECT_NAME, getMetadata(), ProjectMetadata.TAG_PROJECT_NAME);
+		getWriter().writeElement(PROJECT_SUMMARY, getMetadata(), ProjectMetadata.TAG_PROJECT_NAME);
 		writeShareOutsideOrganizationElement();
-		getWriter().writeElement(PROJECT_SUMMARY, ProjectMetadata.TAG_PROJECT_LANGUAGE, getMetadata(), ProjectMetadata.TAG_PROJECT_LANGUAGE);
-		getWriter().writeElement(PROJECT_SUMMARY, ProjectMetadata.TAG_DATA_EFFECTIVE_DATE, getMetadata(), ProjectMetadata.TAG_DATA_EFFECTIVE_DATE);
-		getWriter().writeElement(PROJECT_SUMMARY, ProjectMetadata.TAG_OTHER_ORG_PROJECT_NUMBER, getMetadata(), ProjectMetadata.TAG_OTHER_ORG_PROJECT_NUMBER);
-		getWriter().writeElement(PROJECT_SUMMARY, ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS, getMetadata(), ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
-		getWriter().writeElement(PROJECT_SUMMARY, ProjectMetadata.TAG_PROJECT_URL, getMetadata(), ProjectMetadata.TAG_PROJECT_URL);
-		getWriter().writeElement(PROJECT_SUMMARY, ProjectMetadata.TAG_PROJECT_DESCRIPTION, getMetadata(), ProjectMetadata.TAG_PROJECT_DESCRIPTION);
-		getWriter().writeElement(PROJECT_SUMMARY, ProjectMetadata.TAG_PROJECT_STATUS, getMetadata(), ProjectMetadata.TAG_PROJECT_STATUS);
-		getWriter().writeElement(PROJECT_SUMMARY, ProjectMetadata.TAG_NEXT_STEPS, getMetadata(), ProjectMetadata.TAG_NEXT_STEPS);
+		getWriter().writeElement(PROJECT_SUMMARY, getMetadata(), ProjectMetadata.TAG_PROJECT_LANGUAGE);
+		getWriter().writeElement(PROJECT_SUMMARY, getMetadata(), ProjectMetadata.TAG_DATA_EFFECTIVE_DATE);
+		getWriter().writeElement(PROJECT_SUMMARY, getMetadata(), ProjectMetadata.TAG_OTHER_ORG_PROJECT_NUMBER);
+		getWriter().writeElement(PROJECT_SUMMARY, getMetadata(), ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
+		getWriter().writeElement(PROJECT_SUMMARY, getMetadata(), ProjectMetadata.TAG_PROJECT_URL);
+		getWriter().writeElement(PROJECT_SUMMARY, getMetadata(), ProjectMetadata.TAG_PROJECT_DESCRIPTION);
+		getWriter().writeElement(PROJECT_SUMMARY, getMetadata(), ProjectMetadata.TAG_PROJECT_STATUS);
+		getWriter().writeElement(PROJECT_SUMMARY, getMetadata(), ProjectMetadata.TAG_NEXT_STEPS);
 		writeOverallProjectThreatRating();
 		writeOverallProjectViabilityRating();
 		writeExternalAppIds();
