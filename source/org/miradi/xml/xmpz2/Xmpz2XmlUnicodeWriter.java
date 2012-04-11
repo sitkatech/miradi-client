@@ -266,13 +266,14 @@ public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConst
 
 	public void writeNonOptionalReflist(final String elementContainerName, final String elementTypeName, ORefList refListToUse) throws Exception
 	{
-		writeStartElement(convertRefsToIdsSuffix(elementContainerName));
+		final String elementName = convertRefsToIdsSuffix(elementContainerName);
+		writeStartElement(elementName);
 		for(ORef ref : refListToUse)
 		{
 			writeElement(elementTypeName + ID_ELEMENT_NAME, ref.getObjectId().toString());
 		}
 		
-		writeEndElement(convertRefsToIdsSuffix(elementContainerName));
+		writeEndElement(elementName);
 	}
 	
 	private String convertRefsToIdsSuffix(final String elementContainerName)
