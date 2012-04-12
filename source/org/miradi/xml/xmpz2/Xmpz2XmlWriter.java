@@ -364,17 +364,12 @@ public class Xmpz2XmlWriter extends UnicodeWriter implements XmpzXmlConstants
 	public void writeFieldElement(final BaseObject baseObject, final AbstractFieldSchema fieldSchema) throws Exception
 	{
 		ObjectData field = baseObject.getField(fieldSchema.getTag());
-		if (field.isPseudoField() && !isExportedPseudo(baseObject, fieldSchema.getTag()))
+		if (field.isPseudoField())
 			return;
 				
 		field.writeAsXmpz2XmlData(this, baseObject.getSchema(), fieldSchema);
 	}
 	
-	private boolean isExportedPseudo(BaseObject baseObject, String tag)
-	{
-		return false;
-	}
-
 	public void writeElement(String parentElementName, BaseObject object, String tag) throws Exception
 	{
 		writeElement(parentElementName, tag, object.getData(tag));
