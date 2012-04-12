@@ -123,9 +123,11 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 				continue;
 
 			EAMObjectPool pool = getProject().getPool(objectType);
+			if (pool.isEmpty())
+				continue;
+			
 			ORefList sortedRefList = pool.getSortedRefList();
-			if (sortedRefList.hasRefs())
-				exportBaseObjects(sortedRefList, objectType);
+			exportBaseObjects(sortedRefList, objectType);
 		}
 	}
 
