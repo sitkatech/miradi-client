@@ -119,12 +119,12 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 	{
 		for(int objectType = ObjectType.FIRST_OBJECT_TYPE; objectType < ObjectType.OBJECT_TYPE_COUNT; ++objectType)
 		{
-			if (!objectTypeToExporterMap.containsKey(objectType))
+			if (!getObjectTypeToExporterMap().containsKey(objectType))
 				continue;
 
 			EAMObjectPool pool = getProject().getPool(objectType);
 			ORefList sortedRefList = pool.getSortedRefList();
-			final BaseObjectExporter baseObjectExporter = objectTypeToExporterMap.get(objectType);
+			final BaseObjectExporter baseObjectExporter = getObjectTypeToExporterMap().get(objectType);
 			if (sortedRefList.hasRefs())
 				exportBaseObjects(sortedRefList, baseObjectExporter, objectType);
 		}
@@ -189,6 +189,11 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 		map.put(XslTemplateSchema.getObjectType(), new BaseObjectExporter(getWriter()));
 		
 		return map;
+	}
+	
+	private HashMap<Integer, BaseObjectExporter> getObjectTypeToExporterMap()
+	{
+		return objectTypeToExporterMap;
 	}
 	
 	private Xmpz2XmlUnicodeWriter getWriter()
