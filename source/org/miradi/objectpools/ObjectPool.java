@@ -99,6 +99,11 @@ public class ObjectPool
 	{
 		map.remove(id);
 	}
+	
+	public boolean isEmpty()
+	{
+		return size() == 0;
+	}
 
 	private int objectType;
 	private HashMap<BaseId, BaseObject> map;
