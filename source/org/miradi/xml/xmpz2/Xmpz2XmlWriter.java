@@ -217,6 +217,7 @@ public class Xmpz2XmlWriter extends UnicodeWriter implements XmpzXmlConstants
 
 	public void writePseudoQuestionData(BaseObjectSchema baseObjectSchema,	AbstractFieldSchema fieldSchema, String string)
 	{
+		//NOTE: Don't export pseudodata
 	}
 
 	public void writePseudoRefListData(final BaseObjectSchema baseObjectSchema, final AbstractFieldSchema fieldSchema, String string) throws Exception, Exception
