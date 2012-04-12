@@ -20,10 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2;
 
+import org.miradi.schemas.ResultsChainDiagramSchema;
+
 public class ResultsChainExporter extends AbstractDiagramObjectExporter
 {
 	public ResultsChainExporter(Xmpz2XmlUnicodeWriter writerToUse)
 	{
-		super(writerToUse);
+		super(writerToUse, ResultsChainDiagramSchema.getObjectType());
 	}
 }

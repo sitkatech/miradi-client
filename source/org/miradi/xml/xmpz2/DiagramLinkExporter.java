@@ -24,12 +24,13 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.Factor;
 import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.schemas.DiagramLinkSchema;
 
 public class DiagramLinkExporter extends BaseObjectExporter
 {
 	public DiagramLinkExporter(Xmpz2XmlUnicodeWriter writerToUse)
 	{
-		super(writerToUse);
+		super(writerToUse, DiagramLinkSchema.getObjectType());
 	}
 	
 	@Override

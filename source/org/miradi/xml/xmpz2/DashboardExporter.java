@@ -27,13 +27,14 @@ import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Dashboard;
 import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.schemas.DashboardSchema;
 import org.miradi.utils.CodeList;
 
 public class DashboardExporter extends BaseObjectExporter
 {
 	public DashboardExporter(Xmpz2XmlUnicodeWriter writerToUse)
 	{
-		super(writerToUse);
+		super(writerToUse, DashboardSchema.getObjectType());
 	}
 	
 	@Override

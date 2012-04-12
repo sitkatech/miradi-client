@@ -26,13 +26,14 @@ import org.miradi.objects.Indicator;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.CodeList;
 
 public class IndicatorExporter extends BaseObjectExporter
 {
 	public IndicatorExporter(Xmpz2XmlUnicodeWriter writerToUse)
 	{
-		super(writerToUse);
+		super(writerToUse, IndicatorSchema.getObjectType());
 	}
 
 	@Override

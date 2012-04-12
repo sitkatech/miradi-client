@@ -22,12 +22,13 @@ package org.miradi.xml.xmpz2;
 
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.IucnRedlistSpecies;
+import org.miradi.schemas.IucnRedlistSpeciesSchema;
 
 public class IucnRedlistSpeciesExporter extends BaseObjectExporter
 {
 	public IucnRedlistSpeciesExporter(Xmpz2XmlUnicodeWriter writerToUse)
 	{
-		super(writerToUse);
+		super(writerToUse, IucnRedlistSpeciesSchema.getObjectType());
 	}
 	
 	@Override

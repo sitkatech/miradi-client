@@ -20,11 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2;
 
+import org.miradi.schemas.HumanWelfareTargetSchema;
+
 public class HumanWelfareTargetExporter extends AbstractTargetExporter
 {
 	public HumanWelfareTargetExporter(Xmpz2XmlUnicodeWriter writerToUse)
 	{
-		super(writerToUse);
+		super(writerToUse, HumanWelfareTargetSchema.getObjectType());
 	}
 	
 	@Override

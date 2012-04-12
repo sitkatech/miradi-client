@@ -20,12 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2;
 
+import org.miradi.schemas.ExpenseAssignmentSchema;
+
 
 public class ExpenseAssignmentExporter extends AbstractAssignmentExporter
 {
 	public ExpenseAssignmentExporter(Xmpz2XmlUnicodeWriter writerToUse)
 	{
-		super(writerToUse);
+		super(writerToUse, ExpenseAssignmentSchema.getObjectType());
 	}
 	@Override
 	protected String getDateUnitElementName()

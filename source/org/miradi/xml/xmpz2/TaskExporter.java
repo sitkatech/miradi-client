@@ -23,12 +23,13 @@ package org.miradi.xml.xmpz2;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Task;
 import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.schemas.TaskSchema;
 
 public class TaskExporter extends BaseObjectExporter
 {
 	public TaskExporter(Xmpz2XmlUnicodeWriter writerToUse)
 	{
-		super(writerToUse);
+		super(writerToUse, TaskSchema.getObjectType());
 	}
 	
 	@Override

@@ -23,6 +23,7 @@ package org.miradi.xml.xmpz2;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.xml.generic.XmlSchemaCreator;
 
 
@@ -30,7 +31,7 @@ public class ResourceAssignmentExporter extends AbstractAssignmentExporter
 {
 	public ResourceAssignmentExporter(Xmpz2XmlUnicodeWriter writerToUse)
 	{
-		super(writerToUse);
+		super(writerToUse, ResourceAssignmentSchema.getObjectType());
 	}
 	
 	@Override
