@@ -24,7 +24,7 @@ import org.miradi.schemas.ObjectiveSchema;
 
 public class ObjectiveExporter extends DesireExporter
 {
-	public ObjectiveExporter(Xmpz2XmlUnicodeWriter writerToUse)
+	public ObjectiveExporter(Xmpz2XmlWriter writerToUse)
 	{
 		super(writerToUse, ObjectiveSchema.getObjectType());
 	}

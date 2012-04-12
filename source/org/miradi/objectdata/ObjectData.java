@@ -26,7 +26,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
-import org.miradi.xml.xmpz2.Xmpz2XmlUnicodeWriter;
+import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
 
 abstract public class ObjectData
@@ -180,7 +180,7 @@ abstract public class ObjectData
 		return isNavigationField;
 	}
 	
-	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
+	public void writeAsXmpz2XmlData(Xmpz2XmlWriter writer, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
 		throw new RuntimeException("This method should not be called since the field is only used by TableSettings, which is not exported");
 	}

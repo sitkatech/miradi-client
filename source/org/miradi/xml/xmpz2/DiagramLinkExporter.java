@@ -28,7 +28,7 @@ import org.miradi.schemas.DiagramLinkSchema;
 
 public class DiagramLinkExporter extends BaseObjectExporter
 {
-	public DiagramLinkExporter(Xmpz2XmlUnicodeWriter writerToUse)
+	public DiagramLinkExporter(Xmpz2XmlWriter writerToUse)
 	{
 		super(writerToUse, DiagramLinkSchema.getObjectType());
 	}

@@ -55,7 +55,7 @@ import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 {
-	public Xmpz2XmlExporter(Project projectToExport, final Xmpz2XmlUnicodeWriter outToUse)
+	public Xmpz2XmlExporter(Project projectToExport, final Xmpz2XmlWriter outToUse)
 	{
 		super(projectToExport);
 		
@@ -187,11 +187,11 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 		return objectTypeToExporterMap;
 	}
 	
-	private Xmpz2XmlUnicodeWriter getWriter()
+	private Xmpz2XmlWriter getWriter()
 	{
 		return out;
 	}
 
-	private Xmpz2XmlUnicodeWriter out;
+	private Xmpz2XmlWriter out;
 	private HashMap<Integer, BaseObjectExporter> objectTypeToExporterMap;
 }

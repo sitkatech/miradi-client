@@ -33,7 +33,7 @@ import org.miradi.utils.XmlUtilities2;
 
 public class DiagramFactorExporter extends BaseObjectExporter
 {
-	public DiagramFactorExporter(Xmpz2XmlUnicodeWriter writerToUse)
+	public DiagramFactorExporter(Xmpz2XmlWriter writerToUse)
 	{
 		super(writerToUse, DiagramFactorSchema.getObjectType());
 	}

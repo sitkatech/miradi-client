@@ -32,7 +32,7 @@ import org.miradi.utils.CodeList;
 
 public class DashboardExporter extends BaseObjectExporter
 {
-	public DashboardExporter(Xmpz2XmlUnicodeWriter writerToUse)
+	public DashboardExporter(Xmpz2XmlWriter writerToUse)
 	{
 		super(writerToUse, DashboardSchema.getObjectType());
 	}

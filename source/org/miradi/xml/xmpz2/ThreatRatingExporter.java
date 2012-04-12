@@ -51,7 +51,7 @@ import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class ThreatRatingExporter implements XmpzXmlConstants
 {
-	public ThreatRatingExporter(Xmpz2XmlUnicodeWriter writerToUse)
+	public ThreatRatingExporter(Xmpz2XmlWriter writerToUse)
 	{
 		writer = writerToUse;
 	}
@@ -248,7 +248,7 @@ public class ThreatRatingExporter implements XmpzXmlConstants
 		return getProject().getSimpleThreatRatingFramework();
 	}
 	
-	private Xmpz2XmlUnicodeWriter getWriter()
+	private Xmpz2XmlWriter getWriter()
 	{
 		return writer;
 	}
@@ -258,5 +258,5 @@ public class ThreatRatingExporter implements XmpzXmlConstants
 		return getWriter().getProject();
 	}
 
-	private Xmpz2XmlUnicodeWriter writer;
+	private Xmpz2XmlWriter writer;
 }

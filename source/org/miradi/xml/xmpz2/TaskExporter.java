@@ -27,7 +27,7 @@ import org.miradi.schemas.TaskSchema;
 
 public class TaskExporter extends BaseObjectExporter
 {
-	public TaskExporter(Xmpz2XmlUnicodeWriter writerToUse)
+	public TaskExporter(Xmpz2XmlWriter writerToUse)
 	{
 		super(writerToUse, TaskSchema.getObjectType());
 	}

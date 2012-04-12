@@ -32,7 +32,7 @@ import org.miradi.xml.generic.XmlSchemaCreator;
 
 abstract public class AbstractTargetExporter extends BaseObjectExporter
 {
-	public AbstractTargetExporter(final Xmpz2XmlUnicodeWriter writerToUse, final int objectTypeToUse)
+	public AbstractTargetExporter(final Xmpz2XmlWriter writerToUse, final int objectTypeToUse)
 	{
 		super(writerToUse, objectTypeToUse);
 	}

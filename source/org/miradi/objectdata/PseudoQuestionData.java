@@ -25,7 +25,7 @@ import java.util.HashSet;
 import org.miradi.objects.BaseObject;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
-import org.miradi.xml.xmpz2.Xmpz2XmlUnicodeWriter;
+import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
 public class PseudoQuestionData  extends ObjectData
 {
@@ -79,7 +79,7 @@ public class PseudoQuestionData  extends ObjectData
 	}
 	
 	@Override
-	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
+	public void writeAsXmpz2XmlData(Xmpz2XmlWriter writer, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
 		writer.writePseudoQuetionData(baseObjectSchema, fieldSchema, get());
 	}

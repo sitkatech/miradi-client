@@ -24,7 +24,7 @@ import org.miradi.schemas.BudgetCategoryTwoSchema;
 
 public class BudgetCategoryTwoExporter extends BaseObjectExporter
 {
-	public BudgetCategoryTwoExporter(Xmpz2XmlUnicodeWriter writerToUse)
+	public BudgetCategoryTwoExporter(Xmpz2XmlWriter writerToUse)
 	{
 		super(writerToUse, BudgetCategoryTwoSchema.getObjectType());
 	}

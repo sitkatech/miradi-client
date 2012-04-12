@@ -25,7 +25,7 @@ import org.miradi.schemas.ExpenseAssignmentSchema;
 
 public class ExpenseAssignmentExporter extends AbstractAssignmentExporter
 {
-	public ExpenseAssignmentExporter(Xmpz2XmlUnicodeWriter writerToUse)
+	public ExpenseAssignmentExporter(Xmpz2XmlWriter writerToUse)
 	{
 		super(writerToUse, ExpenseAssignmentSchema.getObjectType());
 	}

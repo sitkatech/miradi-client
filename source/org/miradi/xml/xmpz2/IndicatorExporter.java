@@ -31,7 +31,7 @@ import org.miradi.utils.CodeList;
 
 public class IndicatorExporter extends BaseObjectExporter
 {
-	public IndicatorExporter(Xmpz2XmlUnicodeWriter writerToUse)
+	public IndicatorExporter(Xmpz2XmlWriter writerToUse)
 	{
 		super(writerToUse, IndicatorSchema.getObjectType());
 	}

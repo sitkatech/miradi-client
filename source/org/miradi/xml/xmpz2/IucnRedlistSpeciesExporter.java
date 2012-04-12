@@ -26,7 +26,7 @@ import org.miradi.schemas.IucnRedlistSpeciesSchema;
 
 public class IucnRedlistSpeciesExporter extends BaseObjectExporter
 {
-	public IucnRedlistSpeciesExporter(Xmpz2XmlUnicodeWriter writerToUse)
+	public IucnRedlistSpeciesExporter(Xmpz2XmlWriter writerToUse)
 	{
 		super(writerToUse, IucnRedlistSpeciesSchema.getObjectType());
 	}

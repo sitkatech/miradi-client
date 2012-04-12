@@ -30,7 +30,7 @@ import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class TaggedObjectSetExporter extends BaseObjectExporter
 {
-	public TaggedObjectSetExporter(Xmpz2XmlUnicodeWriter writerToUse)
+	public TaggedObjectSetExporter(Xmpz2XmlWriter writerToUse)
 	{
 		super(writerToUse, TaggedObjectSetSchema.getObjectType());
 	}
