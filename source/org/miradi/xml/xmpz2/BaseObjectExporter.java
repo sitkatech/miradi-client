@@ -31,9 +31,10 @@ import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class BaseObjectExporter implements XmpzXmlConstants
 {
-	public BaseObjectExporter(final Xmpz2XmlUnicodeWriter writerToUse)
+	public BaseObjectExporter(final Xmpz2XmlUnicodeWriter writerToUse, final int objectTypeToUse)
 	{
 		writer = writerToUse;
+		objectType = objectTypeToUse;
 	}
 	
 	public void writeBaseObjectDataSchemaElement(final BaseObject baseObject) throws Exception
@@ -65,9 +66,9 @@ public class BaseObjectExporter implements XmpzXmlConstants
 		return false;
 	}
 	
-	public String getExporterContainerName(final int objectType)
+	public String getExporterContainerName(final int objectTypeToUse)
 	{
-		final String internalObjectTypeName = getProject().getObjectManager().getInternalObjectTypeName(objectType);
+		final String internalObjectTypeName = getProject().getObjectManager().getInternalObjectTypeName(objectTypeToUse);
 		
 		return internalObjectTypeName;
 	}
@@ -92,6 +93,12 @@ public class BaseObjectExporter implements XmpzXmlConstants
 		
 		return wrappedFactor.getTypeName();
 	}
+	
+	public int getObjectType()
+	{
+		return objectType;
+	}
 
 	private Xmpz2XmlUnicodeWriter writer;
+	private int objectType;
 }

@@ -20,12 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2;
 
+import org.miradi.schemas.TargetSchema;
+
 
 public class TargetExporter extends AbstractTargetExporter
 {
 	public TargetExporter(Xmpz2XmlUnicodeWriter writerToUse)
 	{
-		super(writerToUse);
+		super(writerToUse, TargetSchema.getObjectType());
 	}
 	
 	@Override

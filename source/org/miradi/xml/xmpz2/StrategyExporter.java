@@ -32,6 +32,7 @@ import org.miradi.questions.StrategyImpactQuestion;
 import org.miradi.questions.StrategyTaxonomyQuestion;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.ProjectResourceSchema;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.OptionalDouble;
 
@@ -39,7 +40,7 @@ public class StrategyExporter extends BaseObjectExporter
 {
 	public StrategyExporter(Xmpz2XmlUnicodeWriter writerToUse)
 	{
-		super(writerToUse);
+		super(writerToUse, StrategySchema.getObjectType());
 	}
 	
 	@Override

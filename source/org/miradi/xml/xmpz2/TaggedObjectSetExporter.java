@@ -25,13 +25,14 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.schemas.TaggedObjectSetSchema;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class TaggedObjectSetExporter extends BaseObjectExporter
 {
 	public TaggedObjectSetExporter(Xmpz2XmlUnicodeWriter writerToUse)
 	{
-		super(writerToUse);
+		super(writerToUse, TaggedObjectSetSchema.getObjectType());
 	}
 	
 	@Override

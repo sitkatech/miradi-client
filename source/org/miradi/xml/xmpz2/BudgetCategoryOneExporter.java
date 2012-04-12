@@ -20,12 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2;
 
+import org.miradi.schemas.BudgetCategoryOneSchema;
+
 
 public class BudgetCategoryOneExporter extends BaseObjectExporter
 {
 	public BudgetCategoryOneExporter(Xmpz2XmlUnicodeWriter writerToUse)
 	{
-		super(writerToUse);
+		super(writerToUse, BudgetCategoryOneSchema.getObjectType());
 	}
 	
 	@Override

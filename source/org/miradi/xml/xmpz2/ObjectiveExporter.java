@@ -20,24 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2;
 
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.ProjectResource;
-import org.miradi.schemas.AbstractFieldSchema;
-import org.miradi.schemas.ProjectResourceSchema;
+import org.miradi.schemas.ObjectiveSchema;
 
-public class ProjectResourceExporter extends BaseObjectExporter
+public class ObjectiveExporter extends DesireExporter
 {
-	public ProjectResourceExporter(Xmpz2XmlUnicodeWriter writerToUse)
+	public ObjectiveExporter(Xmpz2XmlUnicodeWriter writerToUse)
 	{
-		super(writerToUse, ProjectResourceSchema.getObjectType());
-	}
-
-	@Override
-	protected void writeField(final BaseObject baseObject, final AbstractFieldSchema fieldSchema) throws Exception
-	{
-		if (fieldSchema.getTag().equals(ProjectResource.TAG_LABEL))
-			return;
-		
-		super.writeField(baseObject, fieldSchema);
+		super(writerToUse, ObjectiveSchema.getObjectType());
 	}
 }

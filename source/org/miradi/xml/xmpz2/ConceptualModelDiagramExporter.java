@@ -20,12 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2;
 
+import org.miradi.schemas.ConceptualModelDiagramSchema;
+
 
 public class ConceptualModelDiagramExporter extends AbstractDiagramObjectExporter
 {
 	public ConceptualModelDiagramExporter(Xmpz2XmlUnicodeWriter writerToUse)
 	{
-		super(writerToUse);
+		super(writerToUse, ConceptualModelDiagramSchema.getObjectType());
 	}
 	
 	@Override

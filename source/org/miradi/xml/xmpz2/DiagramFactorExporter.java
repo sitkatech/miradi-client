@@ -28,13 +28,14 @@ import org.miradi.questions.DiagramFactorFontColorQuestion;
 import org.miradi.questions.DiagramFactorFontSizeQuestion;
 import org.miradi.questions.DiagramFactorFontStyleQuestion;
 import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.utils.XmlUtilities2;
 
 public class DiagramFactorExporter extends BaseObjectExporter
 {
 	public DiagramFactorExporter(Xmpz2XmlUnicodeWriter writerToUse)
 	{
-		super(writerToUse);
+		super(writerToUse, DiagramFactorSchema.getObjectType());
 	}
 	
 	@Override

@@ -31,9 +31,9 @@ import org.miradi.utils.DoubleUtilities;
 
 abstract public class AbstractAssignmentExporter extends BaseObjectExporter
 {
-	public AbstractAssignmentExporter(Xmpz2XmlUnicodeWriter writerToUse)
+	public AbstractAssignmentExporter(Xmpz2XmlUnicodeWriter writerToUse, final int objectTypeToUse)
 	{
-		super(writerToUse);
+		super(writerToUse, objectTypeToUse);
 	}
 	
 	@Override
