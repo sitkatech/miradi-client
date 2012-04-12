@@ -61,7 +61,7 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 		
 		out = outToUse;
 		objectTypeToExporterMap = new HashMap<Integer, BaseObjectExporter>(); 
-		createTypeToExporterMap();
+		fillTypeToExporterMap();
 	}
 
 	@Override
@@ -127,9 +127,8 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 		getWriter().writeEndElement(poolName);
 	}
 
-	private HashMap<Integer, BaseObjectExporter> createTypeToExporterMap()
+	private void fillTypeToExporterMap()
 	{
-		HashMap<Integer, BaseObjectExporter> map = new HashMap<Integer, BaseObjectExporter>();
 		addExporterToMap(new DashboardExporter(getWriter()));
 		addExporterToMap(new IndicatorExporter(getWriter()));
 		addExporterToMap(new GoalExporter(getWriter()));
@@ -171,8 +170,6 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 		addGenericExporterToMap(OtherNotableSpeciesSchema.getObjectType());
 		addGenericExporterToMap(AudienceSchema.getObjectType());
 		addGenericExporterToMap(XslTemplateSchema.getObjectType());
-		
-		return map;
 	}
 	
 	private void addGenericExporterToMap(final int objectType)
