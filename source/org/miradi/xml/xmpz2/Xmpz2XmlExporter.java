@@ -87,12 +87,32 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 	{
 		getWriter().writeXmlHeader();
 		getWriter().writeMainElementStart();
-		new ProjectMetadataExporter(getWriter()).writeBaseObjectDataSchemaElement();
-		new ThreatRatingExporter(getWriter()).writeThreatRatings();
+		exportProjectSummary();
+		exportThreatRatings();
 		exportPools();
-		new ExtraDataExporter(getProject(), getWriter()).exportExtraData();
-		getWriter().writeElement(DELETED_ORPHANS_ELEMENT_NAME, getProject().getQuarantineFileContents());
+		exportExtraData();
+		exportQuarantinedFileContents();
 		getWriter().writeMainElementEnd();
+	}
+
+	private void exportProjectSummary() throws Exception
+	{
+		new ProjectMetadataExporter(getWriter()).writeBaseObjectDataSchemaElement();
+	}
+	
+	private void exportThreatRatings() throws Exception
+	{
+		new ThreatRatingExporter(getWriter()).writeThreatRatings();
+	}
+	
+	private void exportExtraData() throws Exception
+	{
+		new ExtraDataExporter(getProject(), getWriter()).exportExtraData();
+	}
+	
+	private void exportQuarantinedFileContents() throws Exception
+	{
+		getWriter().writeElement(DELETED_ORPHANS_ELEMENT_NAME, getProject().getQuarantineFileContents());
 	}
 
 	private void exportPools() throws Exception
