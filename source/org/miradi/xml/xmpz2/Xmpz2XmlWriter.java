@@ -36,7 +36,6 @@ import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Xenodata;
 import org.miradi.project.Project;
-import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
@@ -386,19 +385,10 @@ public class Xmpz2XmlWriter extends UnicodeWriter implements XmpzXmlConstants
 		String convertedElementName = getConvertedElementName(parentElementName, elementName);
 		writeStartElement(parentElementName + convertedElementName);
 		
-		if (doesCodeExist(question, code))
+		if (question.doesCodeExist(code))
 			writeXmlText(question.convertToReadableCode(code));
 		
 		writeEndElement(parentElementName + convertedElementName);
-	}
-	
-	private boolean doesCodeExist(ChoiceQuestion question, String code)
-	{
-		ChoiceItem choiceItem = question.findChoiceByCode(code);
-		if (choiceItem == null)
-			return false;
-		
-		return true;
 	}
 	
 	private void writeElement(final String elementName, final int data) throws Exception

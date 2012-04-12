@@ -187,6 +187,15 @@ public abstract class ChoiceQuestion
 		return false;
 	}
 	
+	public boolean doesCodeExist(final String code)
+	{
+		ChoiceItem choiceItem = findChoiceByCode(code);
+		if (choiceItem == null)
+			return false;
+		
+		return true;
+	}
+	
 	public static final Color COLOR_ALERT = Color.RED;
 	public static final Color COLOR_CAUTION = ColorManager.DARK_YELLOW;
 	public static final Color COLOR_OK = ColorManager.LIGHT_GREEN;
