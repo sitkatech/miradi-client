@@ -60,7 +60,8 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 		super(projectToExport);
 		
 		out = outToUse;
-		objectTypeToExporterMap = createTypeToExporterMap();
+		objectTypeToExporterMap = new HashMap<Integer, BaseObjectExporter>(); 
+		createTypeToExporterMap();
 	}
 
 	@Override
@@ -149,29 +150,34 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 		addExporterToMap(new BudgetCategoryOneExporter(getWriter()));
 		addExporterToMap(new BudgetCategoryTwoExporter(getWriter()));
 		
-		map.put(AccountingCodeSchema.getObjectType(), new BaseObjectExporter(getWriter(), AccountingCodeSchema.getObjectType()));
-		map.put(FundingSourceSchema.getObjectType(), new BaseObjectExporter(getWriter(), FundingSourceSchema.getObjectType()));
-		map.put(KeyEcologicalAttributeSchema.getObjectType(), new BaseObjectExporter(getWriter(), KeyEcologicalAttributeSchema.getObjectType()));
-		map.put(CauseSchema.getObjectType(), new BaseObjectExporter(getWriter(), CauseSchema.getObjectType()));
-		map.put(IntermediateResultSchema.getObjectType(), new BaseObjectExporter(getWriter(), IntermediateResultSchema.getObjectType()));
-		map.put(ThreatReductionResultSchema.getObjectType(), new BaseObjectExporter(getWriter(), ThreatReductionResultSchema.getObjectType()));
-		map.put(TextBoxSchema.getObjectType(), new BaseObjectExporter(getWriter(), TextBoxSchema.getObjectType()));
-		map.put(ObjectTreeTableConfigurationSchema.getObjectType(), new BaseObjectExporter(getWriter(), ObjectTreeTableConfigurationSchema.getObjectType()));
-		map.put(CostAllocationRuleSchema.getObjectType(), new BaseObjectExporter(getWriter(), CostAllocationRuleSchema.getObjectType()));
-		map.put(MeasurementSchema.getObjectType(), new BaseObjectExporter(getWriter(), MeasurementSchema.getObjectType()));
-		map.put(StressSchema.getObjectType(), new BaseObjectExporter(getWriter(), StressSchema.getObjectType()));
-		map.put(GroupBoxSchema.getObjectType(), new BaseObjectExporter(getWriter(), GroupBoxSchema.getObjectType()));
-		map.put(SubTargetSchema.getObjectType(), new BaseObjectExporter(getWriter(), SubTargetSchema.getObjectType()));
-		map.put(ProgressReportSchema.getObjectType(), new BaseObjectExporter(getWriter(), ProgressReportSchema.getObjectType()));
-		map.put(OrganizationSchema.getObjectType(), new BaseObjectExporter(getWriter(), OrganizationSchema.getObjectType()));
-		map.put(ProgressPercentSchema.getObjectType(), new BaseObjectExporter(getWriter(), ProgressPercentSchema.getObjectType()));
-		map.put(ReportTemplateSchema.getObjectType(), new BaseObjectExporter(getWriter(), ReportTemplateSchema.getObjectType()));
-		map.put(ScopeBoxSchema.getObjectType(), new BaseObjectExporter(getWriter(), ScopeBoxSchema.getObjectType()));
-		map.put(OtherNotableSpeciesSchema.getObjectType(), new BaseObjectExporter(getWriter(), OtherNotableSpeciesSchema.getObjectType()));
-		map.put(AudienceSchema.getObjectType(), new BaseObjectExporter(getWriter(), AudienceSchema.getObjectType()));
-		map.put(XslTemplateSchema.getObjectType(), new BaseObjectExporter(getWriter(), XslTemplateSchema.getObjectType()));
+		addGenericExporterToMap(AccountingCodeSchema.getObjectType());
+		addGenericExporterToMap(FundingSourceSchema.getObjectType());
+		addGenericExporterToMap(KeyEcologicalAttributeSchema.getObjectType());
+		addGenericExporterToMap(CauseSchema.getObjectType());
+		addGenericExporterToMap(IntermediateResultSchema.getObjectType());
+		addGenericExporterToMap(ThreatReductionResultSchema.getObjectType());
+		addGenericExporterToMap(TextBoxSchema.getObjectType());
+		addGenericExporterToMap(ObjectTreeTableConfigurationSchema.getObjectType());
+		addGenericExporterToMap(CostAllocationRuleSchema.getObjectType());
+		addGenericExporterToMap(MeasurementSchema.getObjectType());
+		addGenericExporterToMap(StressSchema.getObjectType());
+		addGenericExporterToMap(GroupBoxSchema.getObjectType());
+		addGenericExporterToMap(SubTargetSchema.getObjectType());
+		addGenericExporterToMap(ProgressReportSchema.getObjectType());
+		addGenericExporterToMap(OrganizationSchema.getObjectType());
+		addGenericExporterToMap(ProgressPercentSchema.getObjectType());
+		addGenericExporterToMap(ReportTemplateSchema.getObjectType());
+		addGenericExporterToMap(ScopeBoxSchema.getObjectType());
+		addGenericExporterToMap(OtherNotableSpeciesSchema.getObjectType());
+		addGenericExporterToMap(AudienceSchema.getObjectType());
+		addGenericExporterToMap(XslTemplateSchema.getObjectType());
 		
 		return map;
+	}
+	
+	private void addGenericExporterToMap(final int objectType)
+	{
+		getObjectTypeToExporterMap().put(objectType, new BaseObjectExporter(getWriter(), objectType));
 	}
 	
 	private void addExporterToMap(final BaseObjectExporter baseObjectExporter)
