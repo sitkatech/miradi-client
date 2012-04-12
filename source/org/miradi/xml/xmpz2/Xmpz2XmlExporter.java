@@ -31,41 +31,22 @@ import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.AudienceSchema;
-import org.miradi.schemas.BudgetCategoryOneSchema;
-import org.miradi.schemas.BudgetCategoryTwoSchema;
 import org.miradi.schemas.CauseSchema;
-import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.CostAllocationRuleSchema;
-import org.miradi.schemas.DashboardSchema;
-import org.miradi.schemas.DiagramFactorSchema;
-import org.miradi.schemas.DiagramLinkSchema;
-import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.FundingSourceSchema;
-import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.GroupBoxSchema;
-import org.miradi.schemas.HumanWelfareTargetSchema;
-import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.IntermediateResultSchema;
-import org.miradi.schemas.IucnRedlistSpeciesSchema;
 import org.miradi.schemas.KeyEcologicalAttributeSchema;
 import org.miradi.schemas.MeasurementSchema;
 import org.miradi.schemas.ObjectTreeTableConfigurationSchema;
-import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.OrganizationSchema;
 import org.miradi.schemas.OtherNotableSpeciesSchema;
 import org.miradi.schemas.ProgressPercentSchema;
 import org.miradi.schemas.ProgressReportSchema;
-import org.miradi.schemas.ProjectResourceSchema;
 import org.miradi.schemas.ReportTemplateSchema;
-import org.miradi.schemas.ResourceAssignmentSchema;
-import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.ScopeBoxSchema;
-import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.StressSchema;
 import org.miradi.schemas.SubTargetSchema;
-import org.miradi.schemas.TaggedObjectSetSchema;
-import org.miradi.schemas.TargetSchema;
-import org.miradi.schemas.TaskSchema;
 import org.miradi.schemas.TextBoxSchema;
 import org.miradi.schemas.ThreatReductionResultSchema;
 import org.miradi.schemas.XslTemplateSchema;
@@ -148,25 +129,25 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 	private HashMap<Integer, BaseObjectExporter> createTypeToExporterMap()
 	{
 		HashMap<Integer, BaseObjectExporter> map = new HashMap<Integer, BaseObjectExporter>();
-		map.put(DashboardSchema.getObjectType(), new DashboardExporter(getWriter()));
-		map.put(IndicatorSchema.getObjectType(), new IndicatorExporter(getWriter()));
-		map.put(GoalSchema.getObjectType(), new GoalExporter(getWriter()));
-		map.put(ObjectiveSchema.getObjectType(), new ObjectiveExporter(getWriter()));
-		map.put(ResourceAssignmentSchema.getObjectType(), new ResourceAssignmentExporter(getWriter()));
-		map.put(ExpenseAssignmentSchema.getObjectType(), new ExpenseAssignmentExporter(getWriter()));
-		map.put(TaskSchema.getObjectType(), new TaskExporter(getWriter()));
-		map.put(ProjectResourceSchema.getObjectType(), new ProjectResourceExporter(getWriter()));
-		map.put(DiagramLinkSchema.getObjectType(), new DiagramLinkExporter(getWriter()));
-		map.put(ConceptualModelDiagramSchema.getObjectType(), new ConceptualModelDiagramExporter(getWriter()));
-		map.put(ResultsChainDiagramSchema.getObjectType(), new ResultsChainExporter(getWriter()));
-		map.put(DiagramFactorSchema.getObjectType(), new DiagramFactorExporter(getWriter()));
-		map.put(StrategySchema.getObjectType(), new StrategyExporter(getWriter()));
-		map.put(TargetSchema.getObjectType(), new TargetExporter(getWriter()));
-		map.put(HumanWelfareTargetSchema.getObjectType(), new HumanWelfareTargetExporter(getWriter()));
-		map.put(TaggedObjectSetSchema.getObjectType(), new TaggedObjectSetExporter(getWriter()));
-		map.put(IucnRedlistSpeciesSchema.getObjectType(), new IucnRedlistSpeciesExporter(getWriter()));
-		map.put(BudgetCategoryOneSchema.getObjectType(), new BudgetCategoryOneExporter(getWriter()));
-		map.put(BudgetCategoryTwoSchema.getObjectType(), new BudgetCategoryTwoExporter(getWriter()));
+		addExporterToMap(new DashboardExporter(getWriter()));
+		addExporterToMap(new IndicatorExporter(getWriter()));
+		addExporterToMap(new GoalExporter(getWriter()));
+		addExporterToMap(new ObjectiveExporter(getWriter()));
+		addExporterToMap(new ResourceAssignmentExporter(getWriter()));
+		addExporterToMap(new ExpenseAssignmentExporter(getWriter()));
+		addExporterToMap(new TaskExporter(getWriter()));
+		addExporterToMap(new ProjectResourceExporter(getWriter()));
+		addExporterToMap(new DiagramLinkExporter(getWriter()));
+		addExporterToMap(new ConceptualModelDiagramExporter(getWriter()));
+		addExporterToMap(new ResultsChainExporter(getWriter()));
+		addExporterToMap(new DiagramFactorExporter(getWriter()));
+		addExporterToMap(new StrategyExporter(getWriter()));
+		addExporterToMap(new TargetExporter(getWriter()));
+		addExporterToMap(new HumanWelfareTargetExporter(getWriter()));
+		addExporterToMap(new TaggedObjectSetExporter(getWriter()));
+		addExporterToMap(new IucnRedlistSpeciesExporter(getWriter()));
+		addExporterToMap(new BudgetCategoryOneExporter(getWriter()));
+		addExporterToMap(new BudgetCategoryTwoExporter(getWriter()));
 		
 		map.put(AccountingCodeSchema.getObjectType(), new BaseObjectExporter(getWriter(), AccountingCodeSchema.getObjectType()));
 		map.put(FundingSourceSchema.getObjectType(), new BaseObjectExporter(getWriter(), FundingSourceSchema.getObjectType()));
@@ -191,6 +172,11 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 		map.put(XslTemplateSchema.getObjectType(), new BaseObjectExporter(getWriter(), XslTemplateSchema.getObjectType()));
 		
 		return map;
+	}
+	
+	private void addExporterToMap(final BaseObjectExporter baseObjectExporter)
+	{
+		getObjectTypeToExporterMap().put(baseObjectExporter.getObjectType(), baseObjectExporter);
 	}
 	
 	private HashMap<Integer, BaseObjectExporter> getObjectTypeToExporterMap()
