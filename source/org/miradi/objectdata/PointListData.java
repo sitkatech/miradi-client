@@ -101,7 +101,7 @@ public class PointListData extends ObjectData
 	@Override
 	public void writeAsXmpz2XmlData(Xmpz2XmlWriter writer, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		writer.writePointListData(baseObjectSchema, fieldSchema, points);
+		writer.writeBendPointListData(baseObjectSchema, fieldSchema, points);
 	}
 	
 	PointList points;

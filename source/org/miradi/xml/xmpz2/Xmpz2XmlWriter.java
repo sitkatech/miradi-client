@@ -188,12 +188,12 @@ public class Xmpz2XmlWriter extends UnicodeWriter implements XmpzXmlConstants
 		writePoint(elementName, point);
 	}
 
-	public void writePointListData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, PointList points) throws Exception
+	public void writeBendPointListData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, PointList points) throws Exception
 	{
-		writePointList(baseObjectSchema.getObjectName(), points);
+		writeBendPointList(baseObjectSchema.getObjectName(), points);
 	}
 
-	public void writePointList(final String objectTypeName, PointList points) throws Exception
+	public void writeBendPointList(final String objectTypeName, PointList points) throws Exception
 	{
 		final String elemnentName = objectTypeName + BEND_POINTS_ELEMENT_NAME;
 		writeStartElement(elemnentName);
