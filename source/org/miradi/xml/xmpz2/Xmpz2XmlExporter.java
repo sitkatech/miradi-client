@@ -119,13 +119,13 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 	{
 		for(int objectType = ObjectType.FIRST_OBJECT_TYPE; objectType < ObjectType.OBJECT_TYPE_COUNT; ++objectType)
 		{
-			EAMObjectPool pool = getProject().getPool(objectType);
 			final BaseObjectExporter baseObjectExporter = getBaseObjectExporter(objectType);
 			if (baseObjectExporter == null)
 				continue;
 			
 			final String containerName = baseObjectExporter.getExporterContainerName(objectType);
 			final String poolName = getWriter().createPoolElementName(containerName);
+			EAMObjectPool pool = getProject().getPool(objectType);
 			ORefList sortedRefList = pool.getSortedRefList();
 			if (sortedRefList.hasRefs())
 				exportBaseObjects(poolName, sortedRefList, baseObjectExporter);
