@@ -271,9 +271,9 @@ public class Xmpz2XmlWriter extends UnicodeWriter implements XmpzXmlConstants
 		return elementContainerName.replaceAll("Refs", "Ids");
 	}
 
-	public void writeUserTextData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string) throws Exception
+	public void writeUserTextData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String xmlFormattedText) throws Exception
 	{
-		writeField(baseObjectSchema, fieldSchema, string);
+		writeField(baseObjectSchema, fieldSchema, xmlFormattedText);
 	}
 
 	public void writeRefMapData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String stringRefMapAsString) throws Exception
