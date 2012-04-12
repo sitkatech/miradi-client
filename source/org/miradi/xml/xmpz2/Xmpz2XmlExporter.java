@@ -177,7 +177,7 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 	
 	private void addGenericExporterToMap(final int objectType)
 	{
-		getObjectTypeToExporterMap().put(objectType, new BaseObjectExporter(getWriter(), objectType));
+		addExporterToMap(new BaseObjectExporter(getWriter(), objectType));
 	}
 	
 	private void addExporterToMap(final BaseObjectExporter baseObjectExporter)
