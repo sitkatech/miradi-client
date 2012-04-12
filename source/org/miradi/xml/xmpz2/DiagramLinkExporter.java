@@ -60,7 +60,7 @@ public class DiagramLinkExporter extends BaseObjectExporter
 	
 	private void writeDiagramLinkBendPoints(DiagramLink diagramLink) throws Exception
 	{
-		getWriter().writePointList(DIAGRAM_LINK, diagramLink.getBendPoints());
+		getWriter().writeBendPointList(DIAGRAM_LINK, diagramLink.getBendPoints());
 	}
 
 	private void writeFromDiagramFactorId(DiagramLink diagramLink) throws Exception
