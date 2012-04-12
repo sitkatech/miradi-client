@@ -58,7 +58,7 @@ import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class ProjectMetadataExporter implements XmpzXmlConstants
 {
-	public ProjectMetadataExporter(Xmpz2XmlUnicodeWriter writerToUse)
+	public ProjectMetadataExporter(Xmpz2XmlWriter writerToUse)
 	{
 		writer = writerToUse;
 	}
@@ -409,7 +409,7 @@ public class ProjectMetadataExporter implements XmpzXmlConstants
 			getWriter().writeNonOptionalCodeListElement(parentElementName + poolElementName, codes);
 	}
 	
-	private Xmpz2XmlUnicodeWriter getWriter()
+	private Xmpz2XmlWriter getWriter()
 	{
 		return writer;
 	}
@@ -419,5 +419,5 @@ public class ProjectMetadataExporter implements XmpzXmlConstants
 		return getWriter().getProject();
 	}
 
-	private Xmpz2XmlUnicodeWriter writer;
+	private Xmpz2XmlWriter writer;
 }

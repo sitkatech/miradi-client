@@ -29,7 +29,7 @@ import org.miradi.main.EAM;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.xml.xmpz2.Xmpz2XmlExporter;
-import org.miradi.xml.xmpz2.Xmpz2XmlUnicodeWriter;
+import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
 public class TestXmpz2XmlExporter extends TestCaseWithProject
 {
@@ -57,7 +57,7 @@ public class TestXmpz2XmlExporter extends TestCaseWithProject
 	private void validateProject() throws Exception
 	{
 		ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-		Xmpz2XmlUnicodeWriter writer = new Xmpz2XmlUnicodeWriter(getProject(), bytes);
+		Xmpz2XmlWriter writer = new Xmpz2XmlWriter(getProject(), bytes);
 		new Xmpz2XmlExporter(getProject(), writer).exportProject(writer);
 		writer.close();
 		String xml = new String(bytes.toByteArray(), "UTF-8");

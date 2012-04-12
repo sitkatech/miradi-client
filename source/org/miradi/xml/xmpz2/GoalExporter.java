@@ -24,7 +24,7 @@ import org.miradi.schemas.GoalSchema;
 
 public class GoalExporter extends DesireExporter
 {
-	public GoalExporter(Xmpz2XmlUnicodeWriter writerToUse)
+	public GoalExporter(Xmpz2XmlWriter writerToUse)
 	{
 		super(writerToUse, GoalSchema.getObjectType());
 	}

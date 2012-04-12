@@ -23,7 +23,7 @@ package org.miradi.objectdata;
 import org.miradi.objecthelpers.CodeToCodeListMap;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
-import org.miradi.xml.xmpz2.Xmpz2XmlUnicodeWriter;
+import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
 public class CodeToCodeListMapData extends ObjectData
 {
@@ -74,7 +74,7 @@ public class CodeToCodeListMapData extends ObjectData
 	}
 	
 	@Override
-	public void writeAsXmpz2XmlData(Xmpz2XmlUnicodeWriter writer, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
+	public void writeAsXmpz2XmlData(Xmpz2XmlWriter writer, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
 		throw new RuntimeException("This method should not be called since the field is only used by TableSettings, which is not exported");
 	}

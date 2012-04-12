@@ -32,12 +32,12 @@ import org.miradi.xml.wcs.XmpzXmlConstants;
 
 abstract public class AbstractTimePeriodCostsWriter2 implements XmpzXmlConstants
 {
-	public AbstractTimePeriodCostsWriter2(final Xmpz2XmlUnicodeWriter writerToUse)
+	public AbstractTimePeriodCostsWriter2(final Xmpz2XmlWriter writerToUse)
 	{
 		writer = writerToUse;
 	}
 
-	private Xmpz2XmlUnicodeWriter getWriter()
+	private Xmpz2XmlWriter getWriter()
 	{
 		return writer;
 	}
@@ -172,5 +172,5 @@ abstract public class AbstractTimePeriodCostsWriter2 implements XmpzXmlConstants
 
 	abstract protected String getEntryElementName();
 	
-	private Xmpz2XmlUnicodeWriter writer;
+	private Xmpz2XmlWriter writer;
 }

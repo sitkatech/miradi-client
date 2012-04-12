@@ -29,7 +29,7 @@ import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class ExtraDataExporter implements XmpzXmlConstants
 {
-	public ExtraDataExporter(final Project projectToUse, final Xmpz2XmlUnicodeWriter writerToUse)
+	public ExtraDataExporter(final Project projectToUse, final Xmpz2XmlWriter writerToUse)
 	{
 		project = projectToUse;
 		out = writerToUse;
@@ -72,7 +72,7 @@ public class ExtraDataExporter implements XmpzXmlConstants
 		}
 	}
 	
-	private Xmpz2XmlUnicodeWriter getWriter()
+	private Xmpz2XmlWriter getWriter()
 	{
 		return out;
 	}
@@ -83,6 +83,6 @@ public class ExtraDataExporter implements XmpzXmlConstants
 	}
 	
 	private Project project;
-	private Xmpz2XmlUnicodeWriter out;
+	private Xmpz2XmlWriter out;
 	private static final String TYPE_ID_TAG_SPLIT_TOKEN = ".";
 }

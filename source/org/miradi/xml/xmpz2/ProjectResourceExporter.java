@@ -27,7 +27,7 @@ import org.miradi.schemas.ProjectResourceSchema;
 
 public class ProjectResourceExporter extends BaseObjectExporter
 {
-	public ProjectResourceExporter(Xmpz2XmlUnicodeWriter writerToUse)
+	public ProjectResourceExporter(Xmpz2XmlWriter writerToUse)
 	{
 		super(writerToUse, ProjectResourceSchema.getObjectType());
 	}

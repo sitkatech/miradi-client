@@ -48,9 +48,9 @@ import org.miradi.xml.generic.XmlSchemaCreator;
 import org.miradi.xml.wcs.TagToElementNameMap;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 
-public class Xmpz2XmlUnicodeWriter extends UnicodeWriter implements XmpzXmlConstants
+public class Xmpz2XmlWriter extends UnicodeWriter implements XmpzXmlConstants
 {
-	public Xmpz2XmlUnicodeWriter(Project projectToUse, OutputStream bytes) throws Exception
+	public Xmpz2XmlWriter(Project projectToUse, OutputStream bytes) throws Exception
 	{
 		super(bytes);
 		

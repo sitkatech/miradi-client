@@ -30,7 +30,7 @@ import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class DesireExporter extends BaseObjectExporter
 {
-	public DesireExporter(Xmpz2XmlUnicodeWriter writerToUse, int objectTypeToUse)
+	public DesireExporter(Xmpz2XmlWriter writerToUse, int objectTypeToUse)
 	{
 		super(writerToUse, objectTypeToUse);
 	}

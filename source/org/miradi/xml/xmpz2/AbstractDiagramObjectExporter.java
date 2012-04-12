@@ -27,7 +27,7 @@ import org.miradi.schemas.BaseObjectSchema;
 
 abstract public class AbstractDiagramObjectExporter extends BaseObjectExporter
 {
-	public AbstractDiagramObjectExporter(Xmpz2XmlUnicodeWriter writerToUse, final int objectTypeToUse)
+	public AbstractDiagramObjectExporter(Xmpz2XmlWriter writerToUse, final int objectTypeToUse)
 	{
 		super(writerToUse, objectTypeToUse);
 	}

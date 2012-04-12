@@ -24,7 +24,7 @@ import org.miradi.schemas.ResultsChainDiagramSchema;
 
 public class ResultsChainExporter extends AbstractDiagramObjectExporter
 {
-	public ResultsChainExporter(Xmpz2XmlUnicodeWriter writerToUse)
+	public ResultsChainExporter(Xmpz2XmlWriter writerToUse)
 	{
 		super(writerToUse, ResultsChainDiagramSchema.getObjectType());
 	}

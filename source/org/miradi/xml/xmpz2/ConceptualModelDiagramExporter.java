@@ -25,7 +25,7 @@ import org.miradi.schemas.ConceptualModelDiagramSchema;
 
 public class ConceptualModelDiagramExporter extends AbstractDiagramObjectExporter
 {
-	public ConceptualModelDiagramExporter(Xmpz2XmlUnicodeWriter writerToUse)
+	public ConceptualModelDiagramExporter(Xmpz2XmlWriter writerToUse)
 	{
 		super(writerToUse, ConceptualModelDiagramSchema.getObjectType());
 	}

@@ -28,7 +28,7 @@ import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class ExpenseTimePeriodCostsWriter2 extends AbstractTimePeriodCostsWriter2
 {
-	public ExpenseTimePeriodCostsWriter2(Xmpz2XmlUnicodeWriter writerToUse)
+	public ExpenseTimePeriodCostsWriter2(Xmpz2XmlWriter writerToUse)
 	{
 		super(writerToUse);
 	}

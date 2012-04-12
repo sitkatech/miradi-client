@@ -38,7 +38,7 @@ import org.miradi.utils.OptionalDouble;
 
 public class StrategyExporter extends BaseObjectExporter
 {
-	public StrategyExporter(Xmpz2XmlUnicodeWriter writerToUse)
+	public StrategyExporter(Xmpz2XmlWriter writerToUse)
 	{
 		super(writerToUse, StrategySchema.getObjectType());
 	}

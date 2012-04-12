@@ -29,7 +29,7 @@ import org.miradi.xml.generic.XmlSchemaCreator;
 
 public class ResourceAssignmentExporter extends AbstractAssignmentExporter
 {
-	public ResourceAssignmentExporter(Xmpz2XmlUnicodeWriter writerToUse)
+	public ResourceAssignmentExporter(Xmpz2XmlWriter writerToUse)
 	{
 		super(writerToUse, ResourceAssignmentSchema.getObjectType());
 	}

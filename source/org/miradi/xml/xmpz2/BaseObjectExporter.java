@@ -31,7 +31,7 @@ import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class BaseObjectExporter implements XmpzXmlConstants
 {
-	public BaseObjectExporter(final Xmpz2XmlUnicodeWriter writerToUse, final int objectTypeToUse)
+	public BaseObjectExporter(final Xmpz2XmlWriter writerToUse, final int objectTypeToUse)
 	{
 		writer = writerToUse;
 		objectType = objectTypeToUse;
@@ -73,7 +73,7 @@ public class BaseObjectExporter implements XmpzXmlConstants
 		return internalObjectTypeName;
 	}
 
-	protected Xmpz2XmlUnicodeWriter getWriter()
+	protected Xmpz2XmlWriter getWriter()
 	{
 		return writer;
 	}
@@ -99,6 +99,6 @@ public class BaseObjectExporter implements XmpzXmlConstants
 		return objectType;
 	}
 
-	private Xmpz2XmlUnicodeWriter writer;
+	private Xmpz2XmlWriter writer;
 	private int objectType;
 }

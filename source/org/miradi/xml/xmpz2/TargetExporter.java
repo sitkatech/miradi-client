@@ -25,7 +25,7 @@ import org.miradi.schemas.TargetSchema;
 
 public class TargetExporter extends AbstractTargetExporter
 {
-	public TargetExporter(Xmpz2XmlUnicodeWriter writerToUse)
+	public TargetExporter(Xmpz2XmlWriter writerToUse)
 	{
 		super(writerToUse, TargetSchema.getObjectType());
 	}
