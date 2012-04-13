@@ -29,6 +29,7 @@ import java.util.Set;
 import org.martus.util.MultiCalendar;
 import org.martus.util.UnicodeWriter;
 import org.miradi.main.EAM;
+import org.miradi.objectdata.BooleanData;
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.DateUnit;
@@ -142,6 +143,15 @@ public class Xmpz2XmlWriter extends UnicodeWriter implements XmpzXmlConstants
 	public void writeBooleanData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String booleanAsString) throws Exception
 	{
 		writeField(baseObjectSchema, fieldSchema, booleanAsString);
+	}
+	
+	public void writeBooleanElement(final String elementName, final boolean isTrue) throws Exception
+	{
+		String booleanAsString = "0";
+		if (isTrue)
+			booleanAsString = BooleanData.BOOLEAN_TRUE;
+		
+		writeElement(elementName, booleanAsString);
 	}
 
 	public void writeNumberData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String number) throws Exception
