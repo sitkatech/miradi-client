@@ -22,6 +22,7 @@ package org.miradi.xml.xmpz2.objectExporters;
 
 import org.martus.util.MultiCalendar;
 import org.miradi.objecthelpers.DateUnit;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.schemas.BaseObjectSchema;
@@ -44,10 +45,15 @@ abstract public class AbstractAssignmentExporter extends BaseObjectExporter
 		Assignment assignment = (Assignment) baseObject;
 		exportDateUnitEfforList(assignment.getDateUnitEffortList(), getDateUnitsElementName());
 		
-		getWriter().writeValidRef(baseObjectSchema.getObjectName(), FUNDING_SOURCE_ID, assignment.getFundingSourceRef());
-		getWriter().writeValidRef(baseObjectSchema.getObjectName(), ACCOUNTING_CODE_ID, assignment.getAccountingCodeRef());
-		getWriter().writeValidRef(baseObjectSchema.getObjectName(), BUDGET_CATEGORY_ONE_ID, assignment.getCategoryOneRef());
-		getWriter().writeValidRef(baseObjectSchema.getObjectName(), BUDGET_CATEGORY_TWO_ID, assignment.getCategoryTwoRef());
+		writeBudgetRef(baseObjectSchema, FUNDING_SOURCE_ID, assignment.getFundingSourceRef());
+		writeBudgetRef(baseObjectSchema, ACCOUNTING_CODE_ID, assignment.getAccountingCodeRef());
+		writeBudgetRef(baseObjectSchema, BUDGET_CATEGORY_ONE_ID, assignment.getCategoryOneRef());
+		writeBudgetRef(baseObjectSchema, BUDGET_CATEGORY_TWO_ID, assignment.getCategoryTwoRef());
+	}
+	
+	private void writeBudgetRef(final BaseObjectSchema baseObjectSchema, final String elementName, final ORef ref) throws Exception
+	{
+		getWriter().writeValidRef(baseObjectSchema.getObjectName(), elementName, ref);
 	}
 
 	@Override
