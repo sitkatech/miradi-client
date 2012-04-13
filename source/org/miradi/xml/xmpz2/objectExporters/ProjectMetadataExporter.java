@@ -212,17 +212,17 @@ public class ProjectMetadataExporter implements XmpzXmlConstants
 	{
 		getWriter().writeStartElement(PROJECT_SUMMARY_SCOPE);
 		
-		writeElement(XmpzXmlConstants.PROJECT_SUMMARY_SCOPE, getMetadata(), ProjectMetadata.TAG_SHORT_PROJECT_SCOPE);
-		writeElement(XmpzXmlConstants.PROJECT_SUMMARY_SCOPE, getMetadata(), ProjectMetadata.TAG_PROJECT_SCOPE);
-		writeElement(XmpzXmlConstants.PROJECT_SUMMARY_SCOPE, getMetadata(), ProjectMetadata.TAG_PROJECT_VISION);
-		writeElement(XmpzXmlConstants.PROJECT_SUMMARY_SCOPE, getMetadata(), ProjectMetadata.TAG_SCOPE_COMMENTS);		
-		writeElement(XmpzXmlConstants.PROJECT_SUMMARY_SCOPE, getMetadata(), ProjectMetadata.TAG_PROJECT_AREA);
-		writeElement(XmpzXmlConstants.PROJECT_SUMMARY_SCOPE, getMetadata(), ProjectMetadata.TAG_PROJECT_AREA_NOTES);
-		writeElement(XmpzXmlConstants.PROJECT_SUMMARY_SCOPE, getMetadata(), ProjectMetadata.TAG_HUMAN_POPULATION);
-		writeElement(XmpzXmlConstants.PROJECT_SUMMARY_SCOPE, getMetadata(), ProjectMetadata.TAG_HUMAN_POPULATION_NOTES);
-		writeElement(XmpzXmlConstants.PROJECT_SUMMARY_SCOPE, getMetadata(), ProjectMetadata.TAG_SOCIAL_CONTEXT);
+		writeProjectMetadataElement(XmpzXmlConstants.PROJECT_SUMMARY_SCOPE, ProjectMetadata.TAG_SHORT_PROJECT_SCOPE);
+		writeProjectMetadataElement(XmpzXmlConstants.PROJECT_SUMMARY_SCOPE, ProjectMetadata.TAG_PROJECT_SCOPE);
+		writeProjectMetadataElement(XmpzXmlConstants.PROJECT_SUMMARY_SCOPE, ProjectMetadata.TAG_PROJECT_VISION);
+		writeProjectMetadataElement(XmpzXmlConstants.PROJECT_SUMMARY_SCOPE, ProjectMetadata.TAG_SCOPE_COMMENTS);		
+		writeProjectMetadataElement(XmpzXmlConstants.PROJECT_SUMMARY_SCOPE, ProjectMetadata.TAG_PROJECT_AREA);
+		writeProjectMetadataElement(XmpzXmlConstants.PROJECT_SUMMARY_SCOPE, ProjectMetadata.TAG_PROJECT_AREA_NOTES);
+		writeProjectMetadataElement(XmpzXmlConstants.PROJECT_SUMMARY_SCOPE, ProjectMetadata.TAG_HUMAN_POPULATION);
+		writeProjectMetadataElement(XmpzXmlConstants.PROJECT_SUMMARY_SCOPE, ProjectMetadata.TAG_HUMAN_POPULATION_NOTES);
+		writeProjectMetadataElement(XmpzXmlConstants.PROJECT_SUMMARY_SCOPE, ProjectMetadata.TAG_SOCIAL_CONTEXT);
 		writeCodeListElement(XmpzXmlConstants.PROJECT_SUMMARY_SCOPE, ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES, getMetadata(), ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES);		
-		writeElement(XmpzXmlConstants.PROJECT_SUMMARY_SCOPE, getMetadata(), ProjectMetadata.TAG_PROTECTED_AREA_CATEGORY_NOTES);
+		writeProjectMetadataElement(XmpzXmlConstants.PROJECT_SUMMARY_SCOPE, ProjectMetadata.TAG_PROTECTED_AREA_CATEGORY_NOTES);
 		writeElement(XmpzXmlConstants.PROJECT_SUMMARY_SCOPE, getWcpaProjectData(), WcpaProjectData.TAG_LEGAL_STATUS);
 		writeElement(XmpzXmlConstants.PROJECT_SUMMARY_SCOPE, getWcpaProjectData(), WcpaProjectData.TAG_LEGISLATIVE);
 		writeElement(XmpzXmlConstants.PROJECT_SUMMARY_SCOPE, getWcpaProjectData(), WcpaProjectData.TAG_PHYSICAL_DESCRIPTION);
@@ -244,12 +244,12 @@ public class ProjectMetadataExporter implements XmpzXmlConstants
 		
 		createGeospatialLocationField();
 		writeCodeListElement(XmpzXmlConstants.PROJECT_SUMMARY_LOCATION, ProjectMetadata.TAG_COUNTRIES, getMetadata(), ProjectMetadata.TAG_COUNTRIES);
-		writeElement(PROJECT_SUMMARY_LOCATION, getMetadata(), ProjectMetadata.TAG_STATE_AND_PROVINCES);
-		writeElement(PROJECT_SUMMARY_LOCATION, getMetadata(), ProjectMetadata.TAG_MUNICIPALITIES);
-		writeElement(PROJECT_SUMMARY_LOCATION, getMetadata(), ProjectMetadata.TAG_LEGISLATIVE_DISTRICTS);
-		writeElement(PROJECT_SUMMARY_LOCATION, getMetadata(), ProjectMetadata.TAG_LOCATION_DETAIL);
-		writeElement(PROJECT_SUMMARY_LOCATION, getMetadata(), ProjectMetadata.TAG_SITE_MAP_REFERENCE);
-		writeElement(PROJECT_SUMMARY_LOCATION, getMetadata(), ProjectMetadata.TAG_LOCATION_COMMENTS);
+		writeProjectMetadataElement(PROJECT_SUMMARY_LOCATION, ProjectMetadata.TAG_STATE_AND_PROVINCES);
+		writeProjectMetadataElement(PROJECT_SUMMARY_LOCATION, ProjectMetadata.TAG_MUNICIPALITIES);
+		writeProjectMetadataElement(PROJECT_SUMMARY_LOCATION, ProjectMetadata.TAG_LEGISLATIVE_DISTRICTS);
+		writeProjectMetadataElement(PROJECT_SUMMARY_LOCATION, ProjectMetadata.TAG_LOCATION_DETAIL);
+		writeProjectMetadataElement(PROJECT_SUMMARY_LOCATION, ProjectMetadata.TAG_SITE_MAP_REFERENCE);
+		writeProjectMetadataElement(PROJECT_SUMMARY_LOCATION, ProjectMetadata.TAG_LOCATION_COMMENTS);
 			
 		getWriter().writeEndElement(PROJECT_SUMMARY_LOCATION);
 	}
@@ -299,17 +299,17 @@ public class ProjectMetadataExporter implements XmpzXmlConstants
 	{
 		getWriter().writeStartElement(TNC_PROJECT_DATA);
 		
-		writeElement(TNC_PROJECT_DATA, getMetadata(), ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE);
-		writeElement(TNC_PROJECT_DATA, getMetadata(), ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
+		writeProjectMetadataElement(TNC_PROJECT_DATA, ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE);
+		writeProjectMetadataElement(TNC_PROJECT_DATA, ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
 		writeCodeListElement(TNC_PROJECT_DATA, XmlSchemaCreator.TNC_PROJECT_PLACE_TYPES, getTncProjectData(), TncProjectData.TAG_PROJECT_PLACE_TYPES);
 		writeCodeListElement(TNC_PROJECT_DATA, XmlSchemaCreator.TNC_ORGANIZATIONAL_PRIORITIES, getTncProjectData(), TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES);
-		writeElement(TNC_PROJECT_DATA, getMetadata(), ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENTS);
+		writeProjectMetadataElement(TNC_PROJECT_DATA, ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENTS);
 		writeElement(TNC_PROJECT_DATA, getTncProjectData(), TncProjectData.TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT);
 		exportTncOperatingUnits();
 		writeCodeListElement(TNC_PROJECT_DATA, XmlSchemaCreator.TNC_TERRESTRIAL_ECO_REGION, getMetadata(), ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION);
 		writeCodeListElement(TNC_PROJECT_DATA, XmlSchemaCreator.TNC_MARINE_ECO_REGION, getMetadata(), ProjectMetadata.TAG_TNC_MARINE_ECO_REGION);
 		writeCodeListElement(TNC_PROJECT_DATA, XmlSchemaCreator.TNC_FRESHWATER_ECO_REGION, getMetadata(), ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION);
-		writeElement(TNC_PROJECT_DATA, getMetadata(), ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
+		writeProjectMetadataElement(TNC_PROJECT_DATA, ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
 		
 		writeElement(TNC_PROJECT_DATA, getTncProjectData(), TncProjectData.TAG_PROJECT_RESOURCES_SCORECARD);
 		writeElement(TNC_PROJECT_DATA, getTncProjectData(), TncProjectData.TAG_PROJECT_LEVEL_COMMENTS);
