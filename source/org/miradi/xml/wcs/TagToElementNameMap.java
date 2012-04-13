@@ -167,6 +167,7 @@ public class TagToElementNameMap implements XmpzXmlConstants
 		objectiveMap.put(Objective.TAG_LABEL, "Name");
 		objectiveMap.put(Objective.TAG_SHORT_LABEL, "Id");
 		objectiveMap.put(Objective.TAG_FULL_TEXT, DETAILS);
+		objectiveMap.put(Objective.TAG_PROGRESS_PERCENT_REFS, PROGRESS_PERCENT_IDS);
 		
 		return objectiveMap;
 	}
@@ -177,6 +178,7 @@ public class TagToElementNameMap implements XmpzXmlConstants
 		goalMap.put(Goal.TAG_LABEL, "Name");
 		goalMap.put(Goal.TAG_SHORT_LABEL, "Id");
 		goalMap.put(Goal.TAG_FULL_TEXT, DETAILS);
+		goalMap.put(Goal.TAG_PROGRESS_PERCENT_REFS, PROGRESS_PERCENT_IDS);
 
 		return goalMap;
 	}
