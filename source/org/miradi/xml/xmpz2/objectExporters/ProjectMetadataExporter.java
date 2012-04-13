@@ -373,8 +373,7 @@ public class ProjectMetadataExporter implements XmpzXmlConstants
 	private void writeCodeListElement(String parentElementName, String poolElementName, BaseObject object, String tag) throws Exception
 	{
 		CodeList codes = object.getCodeList(tag);
-		if (codes.hasData())
-			getWriter().writeNonOptionalCodeListElement(parentElementName + poolElementName, codes);
+		getWriter().writeCodeList(parentElementName + poolElementName, codes);
 	}
 	
 	private void writeWcpaElement(final String tag) throws Exception
