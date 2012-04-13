@@ -18,26 +18,22 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.xml.xmpz2;
+package org.miradi.xml.xmpz2.objectExporters;
 
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.ProjectResource;
-import org.miradi.schemas.AbstractFieldSchema;
-import org.miradi.schemas.ProjectResourceSchema;
+import org.miradi.schemas.ConceptualModelDiagramSchema;
+import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
-public class ProjectResourceExporter extends BaseObjectExporter
+
+public class ConceptualModelDiagramExporter extends AbstractDiagramObjectExporter
 {
-	public ProjectResourceExporter(Xmpz2XmlWriter writerToUse)
+	public ConceptualModelDiagramExporter(Xmpz2XmlWriter writerToUse)
 	{
-		super(writerToUse, ProjectResourceSchema.getObjectType());
+		super(writerToUse, ConceptualModelDiagramSchema.getObjectType());
 	}
-
+	
 	@Override
-	protected void writeField(final BaseObject baseObject, final AbstractFieldSchema fieldSchema) throws Exception
+	public String getExporterContainerName(int objectType)
 	{
-		if (fieldSchema.getTag().equals(ProjectResource.TAG_LABEL))
-			return;
-		
-		super.writeField(baseObject, fieldSchema);
+		return CONCEPTUAL_MODEL;
 	}
 }

@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.xml.xmpz2;
+package org.miradi.xml.xmpz2.objectExporters;
 
 import java.util.Set;
 
@@ -35,6 +35,10 @@ import org.miradi.schemas.ProjectResourceSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.OptionalDouble;
+import org.miradi.xml.xmpz2.BaseObjectExporter;
+import org.miradi.xml.xmpz2.ExpenseTimePeriodCostsWriter2;
+import org.miradi.xml.xmpz2.WorkUnitsTimePeriodCostsWriter2;
+import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
 public class StrategyExporter extends BaseObjectExporter
 {

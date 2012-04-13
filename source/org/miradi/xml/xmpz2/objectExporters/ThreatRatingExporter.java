@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.xml.xmpz2;
+package org.miradi.xml.xmpz2.objectExporters;
 
 import java.util.Collections;
 import java.util.Vector;
@@ -48,6 +48,7 @@ import org.miradi.questions.ThreatRatingQuestion;
 import org.miradi.questions.ThreatStressRatingChoiceQuestion;
 import org.miradi.utils.ThreatStressRatingDetailsTableExporter;
 import org.miradi.xml.wcs.XmpzXmlConstants;
+import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
 public class ThreatRatingExporter implements XmpzXmlConstants
 {

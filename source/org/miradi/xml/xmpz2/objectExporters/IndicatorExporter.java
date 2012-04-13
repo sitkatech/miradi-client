@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.xml.xmpz2;
+package org.miradi.xml.xmpz2.objectExporters;
 
 import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objects.BaseObject;
@@ -28,6 +28,8 @@ import org.miradi.questions.StatusQuestion;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.CodeList;
+import org.miradi.xml.xmpz2.BaseObjectExporter;
+import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
 public class IndicatorExporter extends BaseObjectExporter
 {

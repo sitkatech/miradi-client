@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.xml.xmpz2;
+package org.miradi.xml.xmpz2.objectExporters;
 
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
@@ -27,6 +27,8 @@ import org.miradi.objects.TaggedObjectSet;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.TaggedObjectSetSchema;
 import org.miradi.xml.wcs.XmpzXmlConstants;
+import org.miradi.xml.xmpz2.BaseObjectExporter;
+import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
 public class TaggedObjectSetExporter extends BaseObjectExporter
 {

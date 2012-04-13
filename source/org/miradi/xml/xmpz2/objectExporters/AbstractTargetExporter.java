@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.xml.xmpz2;
+package org.miradi.xml.xmpz2.objectExporters;
 
 import org.miradi.dialogs.threatrating.upperPanel.AbstractThreatPerRowTableModel;
 import org.miradi.objects.AbstractTarget;
@@ -29,6 +29,8 @@ import org.miradi.questions.ThreatRatingQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.xml.generic.XmlSchemaCreator;
+import org.miradi.xml.xmpz2.BaseObjectExporter;
+import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
 abstract public class AbstractTargetExporter extends BaseObjectExporter
 {
