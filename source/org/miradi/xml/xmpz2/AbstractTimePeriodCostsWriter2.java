@@ -108,36 +108,43 @@ abstract public class AbstractTimePeriodCostsWriter2 implements XmpzXmlConstants
 
 	private void writeDay(DateUnit dateUnit) throws Exception
 	{
-		getWriter().writeStartElementWithAttribute(getDayElementName(), DATE, dateUnit.toString());
-		getWriter().writeEndElement(getDayElementName());
+		writeElement(getDayElementName(), DATE, dateUnit.toString());
 	}
 
 
 	private void writeMonth(DateUnit dateUnit) throws Exception
 	{
-		getWriter().writeStartElementWithTwoAttributes(getMonthElementName(), YEAR, dateUnit.getYear(), MONTH, dateUnit.getMonth());
-		getWriter().writeEndElement(getMonthElementName());
+		writeElement(getMonthElementName(), YEAR, dateUnit.getYear(), MONTH, dateUnit.getMonth());
 	}
 
 	private void writeQuarter(DateUnit dateUnit) throws Exception
 	{
 		MultiCalendar start = dateUnit.getQuarterDateRange().getStartDate();
-		getWriter().writeStartElementWithTwoAttributes(getQuarterElementName(), YEAR, start.getGregorianYear(), START_MONTH, start.getGregorianMonth());
-		getWriter().writeEndElement(getQuarterElementName());
+		writeElement(getQuarterElementName(), YEAR, start.getGregorianYear(), START_MONTH, start.getGregorianMonth());
 	}
 
 	private void writeYear(DateUnit dateUnit) throws Exception
 	{
-		int yearStartMonth = dateUnit.getYearStartMonth();
-		int year2 = Integer.parseInt(dateUnit.getYearYearString());
-		getWriter().writeStartElementWithTwoAttributes(getYearElementName(), START_YEAR, year2, START_MONTH, yearStartMonth);
-		getWriter().writeEndElement(getYearElementName());
+		final int yearStartMonth = dateUnit.getYearStartMonth();
+		final int startYear = Integer.parseInt(dateUnit.getYearYearString());
+		writeElement(getYearElementName(), START_YEAR, startYear, START_MONTH, yearStartMonth);
 	}
 
 	private void writeProjectTotal(DateUnit dateUnit) throws Exception
 	{		
-		getWriter().writeStartElementWithAttribute(getFullProjectTimespanElementName(), FULL_PROJECT_TIMESPAN, "Total");
-		getWriter().writeEndElement(getFullProjectTimespanElementName());
+		writeElement(getFullProjectTimespanElementName(), FULL_PROJECT_TIMESPAN, "Total");
+	}
+
+	private void writeElement(final String elementName, final String attributeName, final String attributeValue) throws Exception
+	{
+		getWriter().writeStartElementWithAttribute(elementName, attributeName, attributeValue);
+		getWriter().writeEndElement(elementName);
+	}
+	
+	private void writeElement(final String elementName, final String attributeName1, final int attributeValue1, final String attributeName2, final int attributeValue2) throws Exception
+	{
+		getWriter().writeStartElementWithTwoAttributes(elementName, attributeName1, attributeValue1, attributeName2, attributeValue2);
+		getWriter().writeEndElement(elementName);
 	}
 
 	private void writeQuantity(double expense) throws Exception
