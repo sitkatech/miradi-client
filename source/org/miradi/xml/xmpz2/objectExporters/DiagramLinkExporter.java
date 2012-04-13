@@ -43,7 +43,6 @@ public class DiagramLinkExporter extends BaseObjectExporter
 		DiagramLink diagramLink = (DiagramLink) baseObject;
 		writeFromDiagramFactorId(diagramLink);
 		writeToDiagramFactorId(diagramLink);
-		writeDiagramLinkBendPoints(diagramLink);
 		
 		final String objectName = diagramLink.getSchema().getObjectName();
 		getWriter().writeNonOptionalReflist(objectName + GROUP_BOX_DIAGRAM_LINK_CHILDREN_ID, DIAGRAM_LINK, diagramLink.getGroupedDiagramLinkRefs());
@@ -60,11 +59,6 @@ public class DiagramLinkExporter extends BaseObjectExporter
 		getWriter().writeElement(poolName + DiagramLink.TAG_IS_BIDIRECTIONAL_LINK, isBidirectional);
 	}
 	
-	private void writeDiagramLinkBendPoints(DiagramLink diagramLink) throws Exception
-	{
-		getWriter().writeBendPointList(DIAGRAM_LINK, diagramLink.getBendPoints());
-	}
-
 	private void writeFromDiagramFactorId(DiagramLink diagramLink) throws Exception
 	{
 		getWriter().writeStartElement(DIAGRAM_LINK + FROM_DIAGRAM_FACTOR_ID);
@@ -104,9 +98,6 @@ public class DiagramLinkExporter extends BaseObjectExporter
 			return true;
 		
 		if (tag.equals(DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID))
-			return true;
-		
-		if (tag.equals(DiagramLink.TAG_BEND_POINTS))
 			return true;
 		
 		if (tag.equals(DiagramLink.TAG_GROUPED_DIAGRAM_LINK_REFS))
