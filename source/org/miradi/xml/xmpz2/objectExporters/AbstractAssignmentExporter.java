@@ -20,8 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2.objectExporters;
 
-import java.io.IOException;
-
 import org.martus.util.MultiCalendar;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
@@ -108,40 +106,28 @@ abstract public class AbstractAssignmentExporter extends BaseObjectExporter
 
 	private void writeDay(DateUnit dateUnit) throws Exception
 	{
-		writeElement(getDayElementName(), DATE, dateUnit.toString());
+		getWriter().writeEnclosedElement(getDayElementName(), DATE, dateUnit.toString());
 	}
 
 	private void writeMonth(DateUnit dateUnit) throws Exception
 	{
-		writeElement(getMonthElementName(), YEAR, dateUnit.getYear(), MONTH, dateUnit.getMonth());
+		getWriter().writeSelfEnclosedElement(getMonthElementName(), YEAR, dateUnit.getYear(), MONTH, dateUnit.getMonth());
 	}
 
 	private void writeQuarter(DateUnit dateUnit) throws Exception
 	{
 		MultiCalendar start = dateUnit.getQuarterDateRange().getStartDate();
-		writeElement(getQuarterElementName(), YEAR, start.getGregorianYear(), START_MONTH, start.getGregorianMonth());
+		getWriter().writeSelfEnclosedElement(getQuarterElementName(), YEAR, start.getGregorianYear(), START_MONTH, start.getGregorianMonth());
 	}
 
 	private void writeYear(DateUnit dateUnit) throws Exception
 	{
-		writeElement(getYearElementName(), START_YEAR, Integer.parseInt(dateUnit.getYearYearString()), START_MONTH, dateUnit.getYearStartMonth());
+		getWriter().writeSelfEnclosedElement(getYearElementName(), START_YEAR, Integer.parseInt(dateUnit.getYearYearString()), START_MONTH, dateUnit.getYearStartMonth());
 	}
 
 	private void writeProjectTotal(DateUnit dateUnit) throws Exception
 	{		
-		writeElement(getFullProjectTimespanElementName(), FULL_PROJECT_TIMESPAN, "Total");
-	}
-
-	private void writeElement(final String elementName, final String attributeName, final String attributeValue) throws Exception
-	{
-		getWriter().writeStartElementWithAttribute(elementName, attributeName, attributeValue);
-		getWriter().writeEndElement(elementName);
-	}
-	
-	private void writeElement(final String monthElementName, final String attributeName1, final int attributeValue1, final String attributeName2, final int attributeValue2) throws IOException, Exception
-	{
-		getWriter().writeStartElementWithTwoAttributes(monthElementName, attributeName1, attributeValue1, attributeName2, attributeValue2);
-		getWriter().writeEndElement(monthElementName);
+		getWriter().writeEnclosedElement(getFullProjectTimespanElementName(), FULL_PROJECT_TIMESPAN, "Total");
 	}
 
 	private void writeQuantity(double expense) throws Exception
