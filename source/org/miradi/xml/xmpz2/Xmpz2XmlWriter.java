@@ -26,10 +26,12 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Set;
 
+import org.martus.util.MultiCalendar;
 import org.martus.util.UnicodeWriter;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.ObjectData;
+import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.StringRefMap;
@@ -332,6 +334,34 @@ public class Xmpz2XmlWriter extends UnicodeWriter implements XmpzXmlConstants
 	public void writeMainElementStart() throws Exception
 	{
 		writeStartElementWithAttribute(CONSERVATION_PROJECT, XMLNS, NAME_SPACE);
+	}
+	
+	public void writeDay(DateUnit dateUnit, final String dayElementName) throws Exception
+	{
+		writeEnclosedElement(dayElementName, DATE, dateUnit.toString());
+	}
+
+	public void writeMonth(DateUnit dateUnit, final String monthElementName) throws Exception
+	{
+		writeSelfEnclosedElement(monthElementName, YEAR, dateUnit.getYear(), MONTH, dateUnit.getMonth());
+	}
+
+	public void writeQuarter(DateUnit dateUnit, final String quarterElementName) throws Exception
+	{
+		MultiCalendar start = dateUnit.getQuarterDateRange().getStartDate();
+		writeSelfEnclosedElement(quarterElementName, YEAR, start.getGregorianYear(), START_MONTH, start.getGregorianMonth());
+	}
+
+	public void writeYear(DateUnit dateUnit, final String yearElementName) throws Exception
+	{
+		final int yearStartMonth = dateUnit.getYearStartMonth();
+		final int startYear = Integer.parseInt(dateUnit.getYearYearString());
+		writeSelfEnclosedElement(yearElementName, START_YEAR, startYear, START_MONTH, yearStartMonth);
+	}
+
+	public void writeProjectTotal(DateUnit dateUnit, final String fullProjectTimespanElementName) throws Exception
+	{		
+		writeEnclosedElement(fullProjectTimespanElementName, FULL_PROJECT_TIMESPAN, "Total");
 	}
 	
 	public void writeEnclosedElement(final String elementName, final String attributeName, final String attributeValue) throws Exception

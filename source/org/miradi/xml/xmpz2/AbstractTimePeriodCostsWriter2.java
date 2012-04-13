@@ -23,7 +23,6 @@ package org.miradi.xml.xmpz2;
 import java.util.HashMap;
 import java.util.Vector;
 
-import org.martus.util.MultiCalendar;
 import org.miradi.objecthelpers.CategorizedQuantity;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.TimePeriodCosts;
@@ -89,50 +88,21 @@ abstract public class AbstractTimePeriodCostsWriter2 implements XmpzXmlConstants
 		getWriter().writeStartElement(getDateUnitElementName());
 		
 		if (dateUnit.isProjectTotal())
-			writeProjectTotal(dateUnit);
+			getWriter().writeProjectTotal(dateUnit, getFullProjectTimespanElementName());
 		
 		if (dateUnit.isYear())
-			writeYear(dateUnit);
+			getWriter().writeYear(dateUnit, getYearElementName());
 		
 		if (dateUnit.isQuarter())
-			writeQuarter(dateUnit);
+			getWriter().writeQuarter(dateUnit, getQuarterElementName());
 		
 		if (dateUnit.isMonth())
-			writeMonth(dateUnit);
+			getWriter().writeMonth(dateUnit, getMonthElementName());
 		
 		if (dateUnit.isDay())
-			writeDay(dateUnit);
+			getWriter().writeDay(dateUnit, getDayElementName());
 		
 		getWriter().writeEndElement(getDateUnitElementName());
-	}
-
-	private void writeDay(DateUnit dateUnit) throws Exception
-	{
-		getWriter().writeEnclosedElement(getDayElementName(), DATE, dateUnit.toString());
-	}
-
-
-	private void writeMonth(DateUnit dateUnit) throws Exception
-	{
-		getWriter().writeSelfEnclosedElement(getMonthElementName(), YEAR, dateUnit.getYear(), MONTH, dateUnit.getMonth());
-	}
-
-	private void writeQuarter(DateUnit dateUnit) throws Exception
-	{
-		MultiCalendar start = dateUnit.getQuarterDateRange().getStartDate();
-		getWriter().writeSelfEnclosedElement(getQuarterElementName(), YEAR, start.getGregorianYear(), START_MONTH, start.getGregorianMonth());
-	}
-
-	private void writeYear(DateUnit dateUnit) throws Exception
-	{
-		final int yearStartMonth = dateUnit.getYearStartMonth();
-		final int startYear = Integer.parseInt(dateUnit.getYearYearString());
-		getWriter().writeSelfEnclosedElement(getYearElementName(), START_YEAR, startYear, START_MONTH, yearStartMonth);
-	}
-
-	private void writeProjectTotal(DateUnit dateUnit) throws Exception
-	{		
-		getWriter().writeEnclosedElement(getFullProjectTimespanElementName(), FULL_PROJECT_TIMESPAN, "Total");
 	}
 
 	private void writeQuantity(double expense) throws Exception
