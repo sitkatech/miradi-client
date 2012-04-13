@@ -90,10 +90,15 @@ public class Xmpz2XmlWriter extends UnicodeWriter implements XmpzXmlConstants
 	public void writeCodeListData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String codeListAsString) throws Exception
 	{
 		CodeList codes = new CodeList(codeListAsString);
+		final String elementName = appendChildNameToParentName(baseObjectSchema, fieldSchema);
+		writeCodeList(elementName, codes);
+	}
+
+	public void writeCodeList(final String elementName, CodeList codes)	throws Exception
+	{
 		if (codes.isEmpty())
 			return;
-		
-		final String elementName = appendChildNameToParentName(baseObjectSchema, fieldSchema);
+
 		writeNonOptionalCodeListElement(elementName, codes);
 	}
 
