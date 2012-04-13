@@ -20,12 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2.objectExporters;
 
-import java.util.Set;
-
-import org.miradi.main.EAM;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.FosProjectData;
 import org.miradi.objects.ProjectMetadata;
@@ -35,7 +31,6 @@ import org.miradi.objects.TncProjectData;
 import org.miradi.objects.WcpaProjectData;
 import org.miradi.objects.WcsProjectData;
 import org.miradi.objects.WwfProjectData;
-import org.miradi.objects.Xenodata;
 import org.miradi.project.Project;
 import org.miradi.questions.BudgetTimePeriodQuestion;
 import org.miradi.questions.ChoiceItem;
@@ -146,30 +141,8 @@ public class ProjectMetadataExporter implements XmpzXmlConstants
 	
 	private void writeExternalAppIds() throws Exception
 	{
-		final String elementName = getWriter().appendChildNameToParentName(PROJECT_SUMMARY, Xenodata.TAG_PROJECT_ID);
-		getWriter().writeStartElement(elementName);
-
 		String stringRefMapAsString = getMetadata().getData(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP);
-		StringRefMap stringRefMap = new StringRefMap(stringRefMapAsString);
-		Set<String> keys = stringRefMap.getKeys();
-		for(String key: keys)
-		{
-			ORef xenodataRef = stringRefMap.getValue(key);
-			if (xenodataRef.isInvalid())
-			{
-				EAM.logWarning("Invalid Xenodata ref found for key: " + key + " while exporting.");
-				continue;
-			}
-
-			Xenodata xenodata = Xenodata.find(getProject(), xenodataRef);
-			String projectId = xenodata.getData(Xenodata.TAG_PROJECT_ID);
-			getWriter().writeStartElement(EXTERNAL_PROJECT_ID_ELEMENT_NAME);
-			getWriter().writeElement(EXTERNAL_APP_ELEMENT_NAME, key);
-			getWriter().writeElement(PROJECT_ID, projectId);
-			getWriter().writeEndElement(EXTERNAL_PROJECT_ID_ELEMENT_NAME);
-		}
-		
-		getWriter().writeEndElement(elementName);
+		getWriter().writeRefMapXenoData(stringRefMapAsString);
 	}
 
 	protected WcpaProjectData getWcpaProjectData()
