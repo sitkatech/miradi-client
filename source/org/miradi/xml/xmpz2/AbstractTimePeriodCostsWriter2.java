@@ -48,8 +48,8 @@ abstract public class AbstractTimePeriodCostsWriter2 implements XmpzXmlConstants
 		for (DateUnit dateUnit : dateUnitTimePeriodCostsMap.keySet())
 		{
 			TimePeriodCosts timePeriodCosts = dateUnitTimePeriodCostsMap.get(dateUnit);
-			Vector<CategorizedQuantity> categorizedQuantaties = getCategorizedQuantaties(timePeriodCosts);
-			writeCategorizedQuantaties(dateUnit, categorizedQuantaties, getEntryElementName());
+			Vector<CategorizedQuantity> categorizedQuantities = getCategorizedQuantaties(timePeriodCosts);
+			writeCategorizedQuantaties(dateUnit, categorizedQuantities, getEntryElementName());
 		}
 		
 		getWriter().writeEndElement(getCalculatedEntriesElementName());
