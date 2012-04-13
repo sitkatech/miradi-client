@@ -334,6 +334,18 @@ public class Xmpz2XmlWriter extends UnicodeWriter implements XmpzXmlConstants
 		writeStartElementWithAttribute(CONSERVATION_PROJECT, XMLNS, NAME_SPACE);
 	}
 	
+	public void writeEnclosedElement(final String elementName, final String attributeName, final String attributeValue) throws Exception
+	{
+		writeStartElementWithAttribute(elementName, attributeName, attributeValue);
+		writeEndElement(elementName);
+	}
+	
+	public void writeSelfEnclosedElement(final String elementName, final String attributeName1, final int attributeValue1, final String attributeName2, final int attributeValue2) throws Exception
+	{
+		writeStartElementWithTwoAttributes(elementName, attributeName1, attributeValue1, attributeName2, attributeValue2);
+		writeEndElement(elementName);
+	}
+	
 	public void writeStartElementWithAttribute(String startElementName, String attributeName, String attributeValue) throws IOException
 	{
 		write("<" + startElementName + " " + attributeName + "=\"" + attributeValue + "\">");
