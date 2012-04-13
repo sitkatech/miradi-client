@@ -96,10 +96,8 @@ public class Xmpz2XmlWriter extends UnicodeWriter implements XmpzXmlConstants
 
 	public void writeCodeList(final String elementName, CodeList codes)	throws Exception
 	{
-		if (codes.isEmpty())
-			return;
-
-		writeNonOptionalCodeListElement(elementName, codes);
+		if (codes.hasData())
+			writeNonOptionalCodeListElement(elementName, codes);
 	}
 
 	public void writeNonOptionalCodeListElement(final String elementName, final CodeList codes)	throws Exception
