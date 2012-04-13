@@ -45,7 +45,7 @@ abstract public class AbstractTargetExporter extends BaseObjectExporter
 		super.writeFields(baseObject, baseObjectSchema);
 		
 		AbstractTarget abstractTarget = (AbstractTarget) baseObject;
-		exportThreatRatingThreatTargetRating(abstractTarget);
+		exportThreatTargetRating(abstractTarget);
 		getWriter().writeNonOptionalCodeElement(getTargetElementName(), XmlSchemaCreator.TARGET_STATUS_ELEMENT_NAME, getProject().getQuestion(StatusQuestion.class), abstractTarget.getTargetViability());
 		getWriter().writeNonOptionalCodeElement(getTargetElementName(), AbstractTarget.TAG_VIABILITY_MODE, new ViabilityModeQuestion(), abstractTarget.getViabilityMode());
 	}
@@ -62,7 +62,7 @@ abstract public class AbstractTargetExporter extends BaseObjectExporter
 		return super.doesFieldRequireSpecialHandling(tag);
 	}
 	
-	private void exportThreatRatingThreatTargetRating(AbstractTarget abstractTarget) throws Exception
+	private void exportThreatTargetRating(AbstractTarget abstractTarget) throws Exception
 	{
 		if (getProject().isStressBaseMode())
 			exportStressBasedThreatRatingThreatTargetRating(abstractTarget);
