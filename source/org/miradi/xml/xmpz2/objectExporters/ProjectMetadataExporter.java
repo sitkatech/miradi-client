@@ -96,14 +96,14 @@ public class ProjectMetadataExporter implements XmpzXmlConstants
 
 		getWriter().writeElement(PROJECT_SUMMARY, getMetadata(), ProjectMetadata.TAG_PROJECT_NAME);
 		writeShareOutsideOrganizationElement();
-		getWriter().writeElement(PROJECT_SUMMARY, getMetadata(), ProjectMetadata.TAG_PROJECT_LANGUAGE);
-		getWriter().writeElement(PROJECT_SUMMARY, getMetadata(), ProjectMetadata.TAG_DATA_EFFECTIVE_DATE);
-		getWriter().writeElement(PROJECT_SUMMARY, getMetadata(), ProjectMetadata.TAG_OTHER_ORG_PROJECT_NUMBER);
-		getWriter().writeElement(PROJECT_SUMMARY, getMetadata(), ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
-		getWriter().writeElement(PROJECT_SUMMARY, getMetadata(), ProjectMetadata.TAG_PROJECT_URL);
-		getWriter().writeElement(PROJECT_SUMMARY, getMetadata(), ProjectMetadata.TAG_PROJECT_DESCRIPTION);
-		getWriter().writeElement(PROJECT_SUMMARY, getMetadata(), ProjectMetadata.TAG_PROJECT_STATUS);
-		getWriter().writeElement(PROJECT_SUMMARY, getMetadata(), ProjectMetadata.TAG_NEXT_STEPS);
+		writeProjectSummaryElement(ProjectMetadata.TAG_PROJECT_LANGUAGE);
+		writeProjectSummaryElement(ProjectMetadata.TAG_DATA_EFFECTIVE_DATE);
+		writeProjectSummaryElement(ProjectMetadata.TAG_OTHER_ORG_PROJECT_NUMBER);
+		writeProjectSummaryElement(ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
+		writeProjectSummaryElement(ProjectMetadata.TAG_PROJECT_URL);
+		writeProjectSummaryElement(ProjectMetadata.TAG_PROJECT_DESCRIPTION);
+		writeProjectSummaryElement(ProjectMetadata.TAG_PROJECT_STATUS);
+		writeProjectSummaryElement(ProjectMetadata.TAG_NEXT_STEPS);
 		writeOverallProjectThreatRating();
 		writeOverallProjectViabilityRating();
 		writeExternalAppIds();
@@ -276,21 +276,21 @@ public class ProjectMetadataExporter implements XmpzXmlConstants
 	{
 		getWriter().writeStartElement(PROJECT_SUMMARY_PLANNING);
 
-		writeElement(PROJECT_SUMMARY_PLANNING, getMetadata(),ProjectMetadata.TAG_START_DATE);
-		writeElement(PROJECT_SUMMARY_PLANNING, getMetadata(),ProjectMetadata.TAG_EXPECTED_END_DATE);
-		writeElement(PROJECT_SUMMARY_PLANNING, getMetadata(),ProjectMetadata.TAG_WORKPLAN_START_DATE);
-		writeElement(PROJECT_SUMMARY_PLANNING, getMetadata(),ProjectMetadata.TAG_WORKPLAN_END_DATE);
-		writeElement(PROJECT_SUMMARY_PLANNING, getMetadata(),ProjectMetadata.TAG_FISCAL_YEAR_START);
-		writeElement(PROJECT_SUMMARY_PLANNING, getMetadata(),ProjectMetadata.TAG_FULL_TIME_EMPLOYEE_DAYS_PER_YEAR);
-		writeElement(PROJECT_SUMMARY_PLANNING, getMetadata(),ProjectMetadata.TAG_PLANNING_COMMENTS);
+		writeProjectSummaryPlanningElement(ProjectMetadata.TAG_START_DATE);
+		writeProjectSummaryPlanningElement(ProjectMetadata.TAG_EXPECTED_END_DATE);
+		writeProjectSummaryPlanningElement(ProjectMetadata.TAG_WORKPLAN_START_DATE);
+		writeProjectSummaryPlanningElement(ProjectMetadata.TAG_WORKPLAN_END_DATE);
+		writeProjectSummaryPlanningElement(ProjectMetadata.TAG_FISCAL_YEAR_START);
+		writeProjectSummaryPlanningElement(ProjectMetadata.TAG_FULL_TIME_EMPLOYEE_DAYS_PER_YEAR);
+		writeProjectSummaryPlanningElement(ProjectMetadata.TAG_PLANNING_COMMENTS);
 		
-		writeElement(PROJECT_SUMMARY_PLANNING, getMetadata(),ProjectMetadata.TAG_CURRENCY_TYPE);
-		writeElement(PROJECT_SUMMARY_PLANNING, getMetadata(),ProjectMetadata.TAG_CURRENCY_SYMBOL);
-		writeElement(PROJECT_SUMMARY_PLANNING, getMetadata(),ProjectMetadata.TAG_CURRENCY_DECIMAL_PLACES);
-		writeElement(PROJECT_SUMMARY_PLANNING, getMetadata(),ProjectMetadata.TAG_TOTAL_BUDGET_FOR_FUNDING);
-		writeElement(PROJECT_SUMMARY_PLANNING, getMetadata(),ProjectMetadata.TAG_BUDGET_SECURED_PERCENT);
-		writeElement(PROJECT_SUMMARY_PLANNING, getMetadata(),ProjectMetadata.TAG_KEY_FUNDING_SOURCES);
-		writeElement(PROJECT_SUMMARY_PLANNING, getMetadata(),ProjectMetadata.TAG_FINANCIAL_COMMENTS);
+		writeProjectSummaryPlanningElement(ProjectMetadata.TAG_CURRENCY_TYPE);
+		writeProjectSummaryPlanningElement(ProjectMetadata.TAG_CURRENCY_SYMBOL);
+		writeProjectSummaryPlanningElement(ProjectMetadata.TAG_CURRENCY_DECIMAL_PLACES);
+		writeProjectSummaryPlanningElement(ProjectMetadata.TAG_TOTAL_BUDGET_FOR_FUNDING);
+		writeProjectSummaryPlanningElement(ProjectMetadata.TAG_BUDGET_SECURED_PERCENT);
+		writeProjectSummaryPlanningElement(ProjectMetadata.TAG_KEY_FUNDING_SOURCES);
+		writeProjectSummaryPlanningElement(ProjectMetadata.TAG_FINANCIAL_COMMENTS);
 		
 		getWriter().writeEndElement(PROJECT_SUMMARY_PLANNING);
 	}
@@ -408,6 +408,21 @@ public class ProjectMetadataExporter implements XmpzXmlConstants
 		CodeList codes = object.getCodeList(tag);
 		if (codes.hasData())
 			getWriter().writeNonOptionalCodeListElement(parentElementName + poolElementName, codes);
+	}
+	
+	private void writeProjectSummaryPlanningElement(final String tag) throws Exception
+	{
+		writeProjectMetadataElement(PROJECT_SUMMARY_PLANNING, tag);
+	}
+	
+	private void writeProjectSummaryElement(final String tag) throws Exception
+	{
+		writeProjectMetadataElement(PROJECT_SUMMARY, tag);
+	}
+	
+	private void writeProjectMetadataElement(final String elementName, final String tag) throws Exception
+	{
+		getWriter().writeElement(elementName, getMetadata(), tag);
 	}
 	
 	private Xmpz2XmlWriter getWriter()
