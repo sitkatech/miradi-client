@@ -57,6 +57,17 @@ public class DiagramFactorExporter extends BaseObjectExporter
 		if (tag.equals(DiagramFactor.TAG_WRAPPED_REF))
 			return true;
 		
+		if (tag.equals(DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS))
+			return true;
+		
+		if (isFontStyleField(tag))
+			return true;
+		
+		return super.doesFieldRequireSpecialHandling(tag);
+	}
+	
+	private boolean isFontStyleField(String tag)
+	{
 		if (tag.equals(DiagramFactor.TAG_FONT_SIZE))
 			return true;
 		
@@ -68,13 +79,10 @@ public class DiagramFactorExporter extends BaseObjectExporter
 		
 		if (tag.equals(DiagramFactor.TAG_FOREGROUND_COLOR))
 			return true;
-		
-		if (tag.equals(DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS))
-			return true;
-		
-		return super.doesFieldRequireSpecialHandling(tag);
+
+		return false;
 	}
-	
+
 	protected void writeWrappedFactorId(Factor wrappedFactor) throws Exception
 	{
 		getWriter().writeStartElement(DIAGRAM_FACTOR + WRAPPED_FACTOR_ID_ELEMENT_NAME);
