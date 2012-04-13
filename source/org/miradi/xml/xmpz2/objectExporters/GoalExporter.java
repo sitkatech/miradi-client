@@ -18,20 +18,15 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.xml.xmpz2;
+package org.miradi.xml.xmpz2.objectExporters;
 
-import org.miradi.schemas.HumanWelfareTargetSchema;
+import org.miradi.schemas.GoalSchema;
+import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
-public class HumanWelfareTargetExporter extends AbstractTargetExporter
+public class GoalExporter extends DesireExporter
 {
-	public HumanWelfareTargetExporter(Xmpz2XmlWriter writerToUse)
+	public GoalExporter(Xmpz2XmlWriter writerToUse)
 	{
-		super(writerToUse, HumanWelfareTargetSchema.getObjectType());
-	}
-	
-	@Override
-	protected String getTargetElementName()
-	{
-		return HUMAN_WELFARE_TARGET;
+		super(writerToUse, GoalSchema.getObjectType());
 	}
 }

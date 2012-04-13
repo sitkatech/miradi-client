@@ -18,21 +18,21 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.xml.xmpz2;
+package org.miradi.xml.xmpz2.objectExporters;
 
-import org.miradi.schemas.BudgetCategoryOneSchema;
+import org.miradi.schemas.HumanWelfareTargetSchema;
+import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
-
-public class BudgetCategoryOneExporter extends BaseObjectExporter
+public class HumanWelfareTargetExporter extends AbstractTargetExporter
 {
-	public BudgetCategoryOneExporter(Xmpz2XmlWriter writerToUse)
+	public HumanWelfareTargetExporter(Xmpz2XmlWriter writerToUse)
 	{
-		super(writerToUse, BudgetCategoryOneSchema.getObjectType());
+		super(writerToUse, HumanWelfareTargetSchema.getObjectType());
 	}
 	
 	@Override
-	public String getExporterContainerName(int objectType)
+	protected String getTargetElementName()
 	{
-		return BUDGET_CATEGORY_ONE;
+		return HUMAN_WELFARE_TARGET;
 	}
 }

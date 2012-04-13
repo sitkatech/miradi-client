@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.xml.xmpz2;
+package org.miradi.xml.xmpz2.objectExporters;
 
 import org.miradi.dialogs.dashboard.DashboardRowDefinitionManager;
 import org.miradi.objecthelpers.CodeToChoiceMap;
@@ -29,6 +29,8 @@ import org.miradi.objects.Dashboard;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.DashboardSchema;
 import org.miradi.utils.CodeList;
+import org.miradi.xml.xmpz2.BaseObjectExporter;
+import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
 public class DashboardExporter extends BaseObjectExporter
 {

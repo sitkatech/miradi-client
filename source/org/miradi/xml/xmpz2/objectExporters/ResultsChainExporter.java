@@ -18,27 +18,15 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.xml.xmpz2;
+package org.miradi.xml.xmpz2.objectExporters;
 
-import org.miradi.schemas.TargetSchema;
+import org.miradi.schemas.ResultsChainDiagramSchema;
+import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
-
-public class TargetExporter extends AbstractTargetExporter
+public class ResultsChainExporter extends AbstractDiagramObjectExporter
 {
-	public TargetExporter(Xmpz2XmlWriter writerToUse)
+	public ResultsChainExporter(Xmpz2XmlWriter writerToUse)
 	{
-		super(writerToUse, TargetSchema.getObjectType());
-	}
-	
-	@Override
-	public String getExporterContainerName(int objectType)
-	{
-		return getTargetElementName();
-	}
-	
-	@Override
-	protected String getTargetElementName()
-	{
-		return BIODIVERSITY_TARGET;
+		super(writerToUse, ResultsChainDiagramSchema.getObjectType());
 	}
 }

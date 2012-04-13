@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.xml.xmpz2;
+package org.miradi.xml.xmpz2.objectExporters;
 
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramFactor;
@@ -30,6 +30,8 @@ import org.miradi.questions.DiagramFactorFontStyleQuestion;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.utils.XmlUtilities2;
+import org.miradi.xml.xmpz2.BaseObjectExporter;
+import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
 public class DiagramFactorExporter extends BaseObjectExporter
 {

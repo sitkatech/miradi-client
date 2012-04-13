@@ -52,6 +52,28 @@ import org.miradi.schemas.ThreatReductionResultSchema;
 import org.miradi.schemas.XslTemplateSchema;
 import org.miradi.xml.XmlExporter;
 import org.miradi.xml.wcs.XmpzXmlConstants;
+import org.miradi.xml.xmpz2.objectExporters.BudgetCategoryOneExporter;
+import org.miradi.xml.xmpz2.objectExporters.BudgetCategoryTwoExporter;
+import org.miradi.xml.xmpz2.objectExporters.ConceptualModelDiagramExporter;
+import org.miradi.xml.xmpz2.objectExporters.DashboardExporter;
+import org.miradi.xml.xmpz2.objectExporters.DiagramFactorExporter;
+import org.miradi.xml.xmpz2.objectExporters.DiagramLinkExporter;
+import org.miradi.xml.xmpz2.objectExporters.ExpenseAssignmentExporter;
+import org.miradi.xml.xmpz2.objectExporters.ExtraDataExporter;
+import org.miradi.xml.xmpz2.objectExporters.GoalExporter;
+import org.miradi.xml.xmpz2.objectExporters.HumanWelfareTargetExporter;
+import org.miradi.xml.xmpz2.objectExporters.IndicatorExporter;
+import org.miradi.xml.xmpz2.objectExporters.IucnRedlistSpeciesExporter;
+import org.miradi.xml.xmpz2.objectExporters.ObjectiveExporter;
+import org.miradi.xml.xmpz2.objectExporters.ProjectMetadataExporter;
+import org.miradi.xml.xmpz2.objectExporters.ProjectResourceExporter;
+import org.miradi.xml.xmpz2.objectExporters.ResourceAssignmentExporter;
+import org.miradi.xml.xmpz2.objectExporters.ResultsChainExporter;
+import org.miradi.xml.xmpz2.objectExporters.StrategyExporter;
+import org.miradi.xml.xmpz2.objectExporters.TaggedObjectSetExporter;
+import org.miradi.xml.xmpz2.objectExporters.TargetExporter;
+import org.miradi.xml.xmpz2.objectExporters.TaskExporter;
+import org.miradi.xml.xmpz2.objectExporters.ThreatRatingExporter;
 
 public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 {
