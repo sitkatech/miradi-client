@@ -47,14 +47,8 @@ public class DesireExporter extends BaseObjectExporter
 		writeRelevantIndicatorIds(objectName, desire);
 		writeRelevantStrategyIds(objectName, desire);
 		writeRelevantActivityIds(objectName, desire);
-		writeProgressPercentIds(objectName, desire.getProgressPercentRefs());
 	}
 	
-	private void writeProgressPercentIds(final String parentName, ORefList progressPercentRefs) throws Exception
-	{
-		getWriter().writeReflist(parentName + XmpzXmlConstants.PROGRESS_PERCENT_IDS, XmpzXmlConstants.PROGRESS_PERCENT, progressPercentRefs);
-	}
-
 	@Override
 	protected boolean doesFieldRequireSpecialHandling(final String tag)
 	{
@@ -62,9 +56,6 @@ public class DesireExporter extends BaseObjectExporter
 			return true;
 		
 		if (tag.equals(Desire.TAG_RELEVANT_STRATEGY_ACTIVITY_SET))
-			return true;
-		
-		if (tag.equals(Desire.TAG_PROGRESS_PERCENT_REFS))
 			return true;
 		
 		return super.doesFieldRequireSpecialHandling(tag);
