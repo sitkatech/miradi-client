@@ -37,6 +37,7 @@ public class ProjectResourceExporter extends BaseObjectExporter
 	@Override
 	protected void writeField(final BaseObject baseObject, final AbstractFieldSchema fieldSchema) throws Exception
 	{
+		 // NOTE: Names are used in place of Label in this object
 		if (fieldSchema.getTag().equals(ProjectResource.TAG_LABEL))
 			return;
 		
