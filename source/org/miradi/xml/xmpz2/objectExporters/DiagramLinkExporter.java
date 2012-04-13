@@ -51,12 +51,7 @@ public class DiagramLinkExporter extends BaseObjectExporter
 
 	private void writeBidirectionalCode(String poolName, DiagramLink diagramLink) throws Exception
 	{
-		String NON_BIDIRECTIONAL_LINK = "0";
-		String isBidirectional = NON_BIDIRECTIONAL_LINK; 
-		if (diagramLink.isBidirectional())
-			isBidirectional = DiagramLink.BIDIRECTIONAL_LINK;
-		
-		getWriter().writeElement(poolName + DiagramLink.TAG_IS_BIDIRECTIONAL_LINK, isBidirectional);
+		getWriter().writeBooleanElement(poolName + DiagramLink.TAG_IS_BIDIRECTIONAL_LINK, diagramLink.isBidirectional());
 	}
 	
 	private void writeFromDiagramFactorId(DiagramLink diagramLink) throws Exception

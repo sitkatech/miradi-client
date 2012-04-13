@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2.objectExporters;
 
-import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.FosProjectData;
@@ -115,11 +114,7 @@ public class ProjectMetadataExporter implements XmpzXmlConstants
 	
 	private void writeShareOutsideOrganizationElement() throws Exception
 	{
-		String shareOutSideOfTnc = "0";
-		if (getTncProjectData().canShareOutsideOfTnc())
-			shareOutSideOfTnc = BooleanData.BOOLEAN_TRUE;
-		
-		getWriter().writeElement(PROJECT_SUMMARY + XmlSchemaCreator.PROJECT_SHARE_OUTSIDE_ORGANIZATION, shareOutSideOfTnc);
+		getWriter().writeBooleanElement(PROJECT_SUMMARY + XmlSchemaCreator.PROJECT_SHARE_OUTSIDE_ORGANIZATION, getTncProjectData().canShareOutsideOfTnc());
 	}
 	
 	private void writeOverallProjectThreatRating() throws Exception
