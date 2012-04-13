@@ -59,7 +59,7 @@ abstract public class AbstractAssignmentExporter extends BaseObjectExporter
 		return super.doesFieldRequireSpecialHandling(tag);
 	}
 	
-	protected void exportDateUnitEfforList(DateUnitEffortList dateUnitEffortList, String dateUnitsElementName) throws Exception
+	private void exportDateUnitEfforList(DateUnitEffortList dateUnitEffortList, String dateUnitsElementName) throws Exception
 	{
 		final String dateUnitEffortsElementName = getPoolName() + Assignment.TAG_DATEUNIT_EFFORTS;
 		getWriter().writeStartElement(dateUnitEffortsElementName);
