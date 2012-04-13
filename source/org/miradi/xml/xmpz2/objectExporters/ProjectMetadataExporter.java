@@ -334,12 +334,12 @@ public class ProjectMetadataExporter implements XmpzXmlConstants
 	{
 		getWriter().writeStartElement(WCS_PROJECT_DATA);
 
-		writeElement(WCS_PROJECT_DATA, getWcsProjectData(), WcsProjectData.TAG_ORGANIZATIONAL_FOCUS);
-		writeElement(WCS_PROJECT_DATA, getWcsProjectData(), WcsProjectData.TAG_ORGANIZATIONAL_LEVEL);
-		writeElement(WCS_PROJECT_DATA, getWcsProjectData(), WcsProjectData.TAG_SWOT_COMPLETED);
-		writeElement(WCS_PROJECT_DATA, getWcsProjectData(), WcsProjectData.TAG_SWOT_URL);
-		writeElement(WCS_PROJECT_DATA, getWcsProjectData(), WcsProjectData.TAG_STEP_COMPLETED);
-		writeElement(WCS_PROJECT_DATA, getWcsProjectData(), WcsProjectData.TAG_STEP_URL);
+		writeWcsProjectDataField(WcsProjectData.TAG_ORGANIZATIONAL_FOCUS);
+		writeWcsProjectDataField(WcsProjectData.TAG_ORGANIZATIONAL_LEVEL);
+		writeWcsProjectDataField(WcsProjectData.TAG_SWOT_COMPLETED);
+		writeWcsProjectDataField(WcsProjectData.TAG_SWOT_URL);
+		writeWcsProjectDataField(WcsProjectData.TAG_STEP_COMPLETED);
+		writeWcsProjectDataField(WcsProjectData.TAG_STEP_URL);
 		
 		getWriter().writeEndElement(WCS_PROJECT_DATA);
 	}
@@ -349,17 +349,17 @@ public class ProjectMetadataExporter implements XmpzXmlConstants
 		String rareParentElementName = RARE_PROJECT_DATA;
 		getWriter().writeStartElement(rareParentElementName);
 		 
-		writeElement(rareParentElementName, getRareProjectData(), RareProjectData.TAG_COHORT);
-		writeElement(rareParentElementName, getRareProjectData(), RareProjectData.LEGACY_TAG_THREATS_ADDRESSED_NOTES);
-		writeElement(rareParentElementName, getRareProjectData(), RareProjectData.TAG_NUMBER_OF_COMMUNITIES_IN_CAMPAIGN_AREA);
-		writeElement(rareParentElementName, getRareProjectData(), RareProjectData.TAG_BIODIVERSITY_HOTSPOTS);
-		writeElement(rareParentElementName, getRareProjectData(), RareProjectData.TAG_FLAGSHIP_SPECIES_COMMON_NAME);
-		writeElement(rareParentElementName, getRareProjectData(), RareProjectData.TAG_FLAGSHIP_SPECIES_SCIENTIFIC_NAME);
-		writeElement(rareParentElementName, getRareProjectData(), RareProjectData.TAG_FLAGSHIP_SPECIES_DETAIL);
-		writeElement(rareParentElementName, getRareProjectData(), RareProjectData.TAG_CAMPAIGN_THEORY_OF_CHANGE);
-		writeElement(rareParentElementName, getRareProjectData(), RareProjectData.TAG_CAMPAIGN_SLOGAN);
-		writeElement(rareParentElementName, getRareProjectData(), RareProjectData.TAG_SUMMARY_OF_KEY_MESSAGES);
-		writeElement(rareParentElementName, getRareProjectData(), RareProjectData.TAG_MAIN_ACTIVITIES_NOTES);
+		writeRareElement(RareProjectData.TAG_COHORT);
+		writeRareElement(RareProjectData.LEGACY_TAG_THREATS_ADDRESSED_NOTES);
+		writeRareElement(RareProjectData.TAG_NUMBER_OF_COMMUNITIES_IN_CAMPAIGN_AREA);
+		writeRareElement(RareProjectData.TAG_BIODIVERSITY_HOTSPOTS);
+		writeRareElement(RareProjectData.TAG_FLAGSHIP_SPECIES_COMMON_NAME);
+		writeRareElement(RareProjectData.TAG_FLAGSHIP_SPECIES_SCIENTIFIC_NAME);
+		writeRareElement(RareProjectData.TAG_FLAGSHIP_SPECIES_DETAIL);
+		writeRareElement(RareProjectData.TAG_CAMPAIGN_THEORY_OF_CHANGE);
+		writeRareElement(RareProjectData.TAG_CAMPAIGN_SLOGAN);
+		writeRareElement(RareProjectData.TAG_SUMMARY_OF_KEY_MESSAGES);
+		writeRareElement(RareProjectData.TAG_MAIN_ACTIVITIES_NOTES);
 		
 		getWriter().writeEndElement(rareParentElementName);
 	}
@@ -408,6 +408,16 @@ public class ProjectMetadataExporter implements XmpzXmlConstants
 		CodeList codes = object.getCodeList(tag);
 		if (codes.hasData())
 			getWriter().writeNonOptionalCodeListElement(parentElementName + poolElementName, codes);
+	}
+	
+	private void writeRareElement(final String tag) throws Exception
+	{
+		writeElement(RARE_PROJECT_DATA, getRareProjectData(), tag);
+	}
+	
+	private void writeWcsProjectDataField(final String tag) throws Exception
+	{
+		writeElement(WCS_PROJECT_DATA, getWcsProjectData(), tag);
 	}
 	
 	private void writeProjectSummaryPlanningElement(final String tag) throws Exception
