@@ -212,28 +212,28 @@ public class ProjectMetadataExporter implements XmpzXmlConstants
 	{
 		getWriter().writeStartElement(PROJECT_SUMMARY_SCOPE);
 		
-		writeProjectMetadataElement(XmpzXmlConstants.PROJECT_SUMMARY_SCOPE, ProjectMetadata.TAG_SHORT_PROJECT_SCOPE);
-		writeProjectMetadataElement(XmpzXmlConstants.PROJECT_SUMMARY_SCOPE, ProjectMetadata.TAG_PROJECT_SCOPE);
-		writeProjectMetadataElement(XmpzXmlConstants.PROJECT_SUMMARY_SCOPE, ProjectMetadata.TAG_PROJECT_VISION);
-		writeProjectMetadataElement(XmpzXmlConstants.PROJECT_SUMMARY_SCOPE, ProjectMetadata.TAG_SCOPE_COMMENTS);		
-		writeProjectMetadataElement(XmpzXmlConstants.PROJECT_SUMMARY_SCOPE, ProjectMetadata.TAG_PROJECT_AREA);
-		writeProjectMetadataElement(XmpzXmlConstants.PROJECT_SUMMARY_SCOPE, ProjectMetadata.TAG_PROJECT_AREA_NOTES);
-		writeProjectMetadataElement(XmpzXmlConstants.PROJECT_SUMMARY_SCOPE, ProjectMetadata.TAG_HUMAN_POPULATION);
-		writeProjectMetadataElement(XmpzXmlConstants.PROJECT_SUMMARY_SCOPE, ProjectMetadata.TAG_HUMAN_POPULATION_NOTES);
-		writeProjectMetadataElement(XmpzXmlConstants.PROJECT_SUMMARY_SCOPE, ProjectMetadata.TAG_SOCIAL_CONTEXT);
+		writeProjetScopeElement(ProjectMetadata.TAG_SHORT_PROJECT_SCOPE);
+		writeProjetScopeElement(ProjectMetadata.TAG_PROJECT_SCOPE);
+		writeProjetScopeElement(ProjectMetadata.TAG_PROJECT_VISION);
+		writeProjetScopeElement(ProjectMetadata.TAG_SCOPE_COMMENTS);		
+		writeProjetScopeElement(ProjectMetadata.TAG_PROJECT_AREA);
+		writeProjetScopeElement(ProjectMetadata.TAG_PROJECT_AREA_NOTES);
+		writeProjetScopeElement(ProjectMetadata.TAG_HUMAN_POPULATION);
+		writeProjetScopeElement(ProjectMetadata.TAG_HUMAN_POPULATION_NOTES);
+		writeProjetScopeElement(ProjectMetadata.TAG_SOCIAL_CONTEXT);
 		writeCodeListElement(XmpzXmlConstants.PROJECT_SUMMARY_SCOPE, ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES, getMetadata(), ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES);		
-		writeProjectMetadataElement(XmpzXmlConstants.PROJECT_SUMMARY_SCOPE, ProjectMetadata.TAG_PROTECTED_AREA_CATEGORY_NOTES);
-		writeElement(XmpzXmlConstants.PROJECT_SUMMARY_SCOPE, getWcpaProjectData(), WcpaProjectData.TAG_LEGAL_STATUS);
-		writeElement(XmpzXmlConstants.PROJECT_SUMMARY_SCOPE, getWcpaProjectData(), WcpaProjectData.TAG_LEGISLATIVE);
-		writeElement(XmpzXmlConstants.PROJECT_SUMMARY_SCOPE, getWcpaProjectData(), WcpaProjectData.TAG_PHYSICAL_DESCRIPTION);
-		writeElement(XmpzXmlConstants.PROJECT_SUMMARY_SCOPE, getWcpaProjectData(), WcpaProjectData.TAG_BIOLOGICAL_DESCRIPTION);
-		writeElement(XmpzXmlConstants.PROJECT_SUMMARY_SCOPE, getWcpaProjectData(), WcpaProjectData.TAG_SOCIO_ECONOMIC_INFORMATION);
-		writeElement(XmpzXmlConstants.PROJECT_SUMMARY_SCOPE, getWcpaProjectData(), WcpaProjectData.TAG_HISTORICAL_DESCRIPTION);
-		writeElement(XmpzXmlConstants.PROJECT_SUMMARY_SCOPE, getWcpaProjectData(), WcpaProjectData.TAG_CULTURAL_DESCRIPTION);
-		writeElement(XmpzXmlConstants.PROJECT_SUMMARY_SCOPE, getWcpaProjectData(), WcpaProjectData.TAG_ACCESS_INFORMATION);
-		writeElement(XmpzXmlConstants.PROJECT_SUMMARY_SCOPE, getWcpaProjectData(), WcpaProjectData.TAG_VISITATION_INFORMATION);
-		writeElement(XmpzXmlConstants.PROJECT_SUMMARY_SCOPE, getWcpaProjectData(), WcpaProjectData.TAG_CURRENT_LAND_USES);
-		writeElement(XmpzXmlConstants.PROJECT_SUMMARY_SCOPE, getWcpaProjectData(), WcpaProjectData.TAG_MANAGEMENT_RESOURCES);				
+		writeProjetScopeElement(ProjectMetadata.TAG_PROTECTED_AREA_CATEGORY_NOTES);
+		writeWcpaElement(WcpaProjectData.TAG_LEGAL_STATUS);
+		writeWcpaElement(WcpaProjectData.TAG_LEGISLATIVE);
+		writeWcpaElement(WcpaProjectData.TAG_PHYSICAL_DESCRIPTION);
+		writeWcpaElement(WcpaProjectData.TAG_BIOLOGICAL_DESCRIPTION);
+		writeWcpaElement(WcpaProjectData.TAG_SOCIO_ECONOMIC_INFORMATION);
+		writeWcpaElement(WcpaProjectData.TAG_HISTORICAL_DESCRIPTION);
+		writeWcpaElement(WcpaProjectData.TAG_CULTURAL_DESCRIPTION);
+		writeWcpaElement(WcpaProjectData.TAG_ACCESS_INFORMATION);
+		writeWcpaElement(WcpaProjectData.TAG_VISITATION_INFORMATION);
+		writeWcpaElement(WcpaProjectData.TAG_CURRENT_LAND_USES);
+		writeWcpaElement(WcpaProjectData.TAG_MANAGEMENT_RESOURCES);				
 		
 		getWriter().writeEndElement(PROJECT_SUMMARY_SCOPE);
 	}
@@ -244,12 +244,12 @@ public class ProjectMetadataExporter implements XmpzXmlConstants
 		
 		createGeospatialLocationField();
 		writeCodeListElement(XmpzXmlConstants.PROJECT_SUMMARY_LOCATION, ProjectMetadata.TAG_COUNTRIES, getMetadata(), ProjectMetadata.TAG_COUNTRIES);
-		writeProjectMetadataElement(PROJECT_SUMMARY_LOCATION, ProjectMetadata.TAG_STATE_AND_PROVINCES);
-		writeProjectMetadataElement(PROJECT_SUMMARY_LOCATION, ProjectMetadata.TAG_MUNICIPALITIES);
-		writeProjectMetadataElement(PROJECT_SUMMARY_LOCATION, ProjectMetadata.TAG_LEGISLATIVE_DISTRICTS);
-		writeProjectMetadataElement(PROJECT_SUMMARY_LOCATION, ProjectMetadata.TAG_LOCATION_DETAIL);
-		writeProjectMetadataElement(PROJECT_SUMMARY_LOCATION, ProjectMetadata.TAG_SITE_MAP_REFERENCE);
-		writeProjectMetadataElement(PROJECT_SUMMARY_LOCATION, ProjectMetadata.TAG_LOCATION_COMMENTS);
+		writeProjectLocationElement(ProjectMetadata.TAG_STATE_AND_PROVINCES);
+		writeProjectLocationElement(ProjectMetadata.TAG_MUNICIPALITIES);
+		writeProjectLocationElement(ProjectMetadata.TAG_LEGISLATIVE_DISTRICTS);
+		writeProjectLocationElement(ProjectMetadata.TAG_LOCATION_DETAIL);
+		writeProjectLocationElement(ProjectMetadata.TAG_SITE_MAP_REFERENCE);
+		writeProjectLocationElement(ProjectMetadata.TAG_LOCATION_COMMENTS);
 			
 		getWriter().writeEndElement(PROJECT_SUMMARY_LOCATION);
 	}
@@ -311,10 +311,10 @@ public class ProjectMetadataExporter implements XmpzXmlConstants
 		writeCodeListElement(TNC_PROJECT_DATA, XmlSchemaCreator.TNC_FRESHWATER_ECO_REGION, getMetadata(), ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION);
 		writeProjectMetadataElement(TNC_PROJECT_DATA, ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
 		
-		writeElement(TNC_PROJECT_DATA, getTncProjectData(), TncProjectData.TAG_PROJECT_RESOURCES_SCORECARD);
-		writeElement(TNC_PROJECT_DATA, getTncProjectData(), TncProjectData.TAG_PROJECT_LEVEL_COMMENTS);
-		writeElement(TNC_PROJECT_DATA, getTncProjectData(), TncProjectData.TAG_PROJECT_CITATIONS);
-		writeElement(TNC_PROJECT_DATA, getTncProjectData(), TncProjectData.TAG_CAP_STANDARDS_SCORECARD);
+		writeTncElement(TncProjectData.TAG_PROJECT_RESOURCES_SCORECARD);
+		writeTncElement(TncProjectData.TAG_PROJECT_LEVEL_COMMENTS);
+		writeTncElement(TncProjectData.TAG_PROJECT_CITATIONS);
+		writeTncElement(TncProjectData.TAG_CAP_STANDARDS_SCORECARD);
 		
 		getWriter().writeEndElement(TNC_PROJECT_DATA);
 	}
@@ -369,9 +369,9 @@ public class ProjectMetadataExporter implements XmpzXmlConstants
 		getWriter().writeStartElement(FOS_PROJECT_DATA);
 		
 		getWriter().writeNonOptionalCodeElement(FOS_PROJECT_DATA, FosProjectData.TAG_TRAINING_TYPE, new FosTrainingTypeQuestion(), getFosProjectData().getData(FosProjectData.TAG_TRAINING_TYPE));
-		writeElement(FOS_PROJECT_DATA, getFosProjectData(), FosProjectData.TAG_TRAINING_DATES);
-		writeElement(FOS_PROJECT_DATA, getFosProjectData(), FosProjectData.TAG_TRAINERS);
-		writeElement(FOS_PROJECT_DATA, getFosProjectData(), FosProjectData.TAG_COACHES);
+		writeFosElement(FosProjectData.TAG_TRAINING_DATES);
+		writeFosElement(FosProjectData.TAG_TRAINERS);
+		writeFosElement(FosProjectData.TAG_COACHES);
 		
 		getWriter().writeEndElement(FOS_PROJECT_DATA);
 	}
@@ -410,6 +410,21 @@ public class ProjectMetadataExporter implements XmpzXmlConstants
 			getWriter().writeNonOptionalCodeListElement(parentElementName + poolElementName, codes);
 	}
 	
+	private void writeWcpaElement(final String tag) throws Exception
+	{
+		writeElement(XmpzXmlConstants.PROJECT_SUMMARY_SCOPE, getWcpaProjectData(), tag);
+	}
+	
+	private void writeTncElement(final String tag) throws Exception
+	{
+		writeElement(TNC_PROJECT_DATA, getTncProjectData(), tag);
+	}
+	
+	private void writeFosElement(final String tag) throws Exception
+	{
+		writeElement(FOS_PROJECT_DATA, getFosProjectData(), tag);
+	}
+	
 	private void writeRareElement(final String tag) throws Exception
 	{
 		writeElement(RARE_PROJECT_DATA, getRareProjectData(), tag);
@@ -428,6 +443,16 @@ public class ProjectMetadataExporter implements XmpzXmlConstants
 	private void writeProjectSummaryElement(final String tag) throws Exception
 	{
 		writeProjectMetadataElement(PROJECT_SUMMARY, tag);
+	}
+	
+	private void writeProjetScopeElement(final String tag) throws Exception
+	{
+		writeProjectMetadataElement(XmpzXmlConstants.PROJECT_SUMMARY_SCOPE, tag);
+	}
+	
+	private void writeProjectLocationElement(final String tag) throws Exception
+	{
+		writeProjectMetadataElement(PROJECT_SUMMARY_LOCATION, tag);
 	}
 	
 	private void writeProjectMetadataElement(final String elementName, final String tag) throws Exception
