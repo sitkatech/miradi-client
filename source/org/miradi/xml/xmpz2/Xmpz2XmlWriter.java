@@ -361,7 +361,7 @@ public class Xmpz2XmlWriter extends UnicodeWriter implements XmpzXmlConstants
 
 	public void writeProjectTotal(DateUnit dateUnit, final String fullProjectTimespanElementName) throws Exception
 	{		
-		writeEnclosedElement(fullProjectTimespanElementName, FULL_PROJECT_TIMESPAN, "Total");
+		writeEnclosedElement(fullProjectTimespanElementName, FULL_PROJECT_TIMESPAN, TOTAL);
 	}
 	
 	public void writeEnclosedElement(final String elementName, final String attributeName, final String attributeValue) throws Exception
