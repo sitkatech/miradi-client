@@ -347,8 +347,7 @@ public class ProjectMetadataExporter implements XmpzXmlConstants
 	public void exportTncOperatingUnits() throws Exception
 	{
 		CodeList codes = getOperatingUnitsWithoutLegacyCode(getMetadata());
-		if (codes.hasData())
-			getWriter().writeNonOptionalCodeListElement(TNC_PROJECT_DATA + XmlSchemaCreator.TNC_OPERATING_UNITS, codes);
+		getWriter().writeCodeList(TNC_PROJECT_DATA + XmlSchemaCreator.TNC_OPERATING_UNITS, codes);
 	}
 	
 	public static CodeList getOperatingUnitsWithoutLegacyCode(ProjectMetadata projectMetadata) throws Exception
