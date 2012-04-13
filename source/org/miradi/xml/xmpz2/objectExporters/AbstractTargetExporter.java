@@ -24,6 +24,7 @@ import org.miradi.dialogs.threatrating.upperPanel.AbstractThreatPerRowTableModel
 import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.BaseObject;
 import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.ThreatRatingQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
@@ -46,8 +47,14 @@ abstract public class AbstractTargetExporter extends BaseObjectExporter
 		
 		AbstractTarget abstractTarget = (AbstractTarget) baseObject;
 		exportThreatTargetRating(abstractTarget);
-		getWriter().writeNonOptionalCodeElement(getTargetElementName(), XmlSchemaCreator.TARGET_STATUS_ELEMENT_NAME, getProject().getQuestion(StatusQuestion.class), abstractTarget.getTargetViability());
-		getWriter().writeNonOptionalCodeElement(getTargetElementName(), AbstractTarget.TAG_VIABILITY_MODE, new ViabilityModeQuestion(), abstractTarget.getViabilityMode());
+		writeNonOptionalCodeElement(XmlSchemaCreator.TARGET_STATUS_ELEMENT_NAME, StatusQuestion.class, abstractTarget.getTargetViability());
+		writeNonOptionalCodeElement(AbstractTarget.TAG_VIABILITY_MODE, ViabilityModeQuestion.class, abstractTarget.getViabilityMode());
+	}
+
+	private void writeNonOptionalCodeElement(final String elementName, final Class questionClass, final String code) throws Exception
+	{
+		final ChoiceQuestion choiceQuestion = getProject().getQuestion(questionClass);
+		getWriter().writeNonOptionalCodeElement(getTargetElementName(), elementName, choiceQuestion, code);
 	}
 	
 	@Override
