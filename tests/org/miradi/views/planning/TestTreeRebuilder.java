@@ -20,7 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.planning;
 
+import org.miradi.dialogs.planning.upperPanel.rebuilder.NormalTreeRebuilder;
 import org.miradi.main.TestCaseWithProject;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.ObjectiveSchema;
+import org.miradi.schemas.StrategySchema;
+import org.miradi.schemas.TaskSchema;
 
 public class TestTreeRebuilder extends TestCaseWithProject
 {
@@ -29,9 +35,33 @@ public class TestTreeRebuilder extends TestCaseWithProject
 		super(name);
 	}
 	
-	public void testBasics()
+	public void testShouldSortChildren()
 	{
-		//FIXME urgent - add basic tests here.
+		ORef taskRef = ORef.createInvalidWithType(TaskSchema.getObjectType());
+		verifyShouldNotSort("Sorted subtasks within task?", taskRef, taskRef);
+
+		ORef strategyRef = ORef.createInvalidWithType(StrategySchema.getObjectType());
+		verifyShouldNotSort("Sorted activities within strategy?", strategyRef, taskRef);
+
+		ORef indicatorRef = ORef.createInvalidWithType(IndicatorSchema.getObjectType());
+		verifyShouldNotSort("Sorted methods within indicator?", indicatorRef, taskRef);
+		
+		ORef objectiveRef = ORef.createInvalidWithType(ObjectiveSchema.getObjectType());
+		verifyShouldSort("Didn't sort tasks within objective?", objectiveRef, taskRef);
+		
+		verifyShouldSort("Didn't sort top-level tasks?", ORef.INVALID, taskRef);
+	}
+
+	private void verifyShouldSort(String string, ORef parentRef, ORef childRef)
+	{
+		NormalTreeRebuilder rebuilder = new NormalTreeRebuilder(getProject(), null);
+		assertTrue(string, rebuilder.shouldSortChildren(parentRef, childRef));
+	}
+	
+	private void verifyShouldNotSort(String string, ORef parentRef, ORef childRef)
+	{
+		NormalTreeRebuilder rebuilder = new NormalTreeRebuilder(getProject(), null);
+		assertFalse(string, rebuilder.shouldSortChildren(parentRef, childRef));
 	}
 	
 //FIXME urgent - The below commented code is from test classes.  They were testing old nodes.  Need
