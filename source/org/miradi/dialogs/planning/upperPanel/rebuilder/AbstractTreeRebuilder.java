@@ -40,6 +40,7 @@ import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
+import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
 import org.miradi.schemas.AccountingCodeSchema;
@@ -288,9 +289,9 @@ abstract public class AbstractTreeRebuilder
 		sortChildren(existingNode, destination);
 	}
 
-	protected void sortChildren(AbstractPlanningTreeNode existingNode, Vector<AbstractPlanningTreeNode> destination)
+	protected void sortChildren(AbstractPlanningTreeNode parentNode, Vector<AbstractPlanningTreeNode> childNodes)
 	{
-		Collections.sort(destination, createNodeSorter());
+		Collections.sort(childNodes, createNodeSorter(parentNode.getObjectReference()));
 	}
 	
 	private boolean isChildOfAnyNodeInList(Vector<AbstractPlanningTreeNode> destination, AbstractPlanningTreeNode newChild)
@@ -325,21 +326,29 @@ abstract public class AbstractTreeRebuilder
 		}
 	}
 
-	private boolean shouldSortChildType(ORef childRef)
+	public boolean shouldSortChildren(ORef parentRef, ORef childRef)
 	{
-		if (Task.is(childRef))
+		if (!Task.is(childRef))
+			return true;
+
+		if(Task.is(parentRef) || Strategy.is(parentRef) || Indicator.is(parentRef))
 			return false;
 		
 		return true;
 	}
 
-	private NodeSorter createNodeSorter()
+	private NodeSorter createNodeSorter(ORef parentRefToUse)
 	{
-		return new NodeSorter();
+		return new NodeSorter(parentRefToUse);
 	}
 
 	private class NodeSorter implements Comparator<AbstractPlanningTreeNode>
 	{
+		public NodeSorter(ORef parentRefToUse)
+		{
+			parentRef = parentRefToUse;
+		}
+		
 		public int compare(AbstractPlanningTreeNode nodeA, AbstractPlanningTreeNode nodeB)
 		{
 			int typeSortLocationA = getTypeSortLocation(nodeA.getType());
@@ -357,7 +366,7 @@ abstract public class AbstractTreeRebuilder
 				return 1;
 
 			final int LEAVE_IN_CURRENT_ORDER = -1;			
-			if (!shouldSortChildType(refA) || !shouldSortChildType(refB))
+			if (!shouldSortChildren(parentRef, refA) || !shouldSortChildren(parentRef, refB))
 				return LEAVE_IN_CURRENT_ORDER;
 			
 			return compareNodes(nodeA, nodeB);
@@ -396,6 +405,8 @@ abstract public class AbstractTreeRebuilder
 			EAM.logError("NodeSorter unknown type: " + type);
 			return sortOrder.length;
 		}
+		
+		private ORef parentRef;
 	}
 	
 	private int[] getNodeSortOrder()
