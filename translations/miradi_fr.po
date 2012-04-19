@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-06 13:42-0500\n"
+"POT-Creation-Date: 2012-04-19 16:27-0500\n"
 "PO-Revision-Date: 2011-04-05 11:46+0100\n"
 "Last-Translator: Emanuela Leonardi <e.leonardi@gmail.com>\n"
 "Language-Team: none\n"
@@ -4494,6 +4494,14 @@ msgstr "Budget catégorie un"
 msgid "Label|Budget Category Two"
 msgstr "Budget catégorie deux"
 
+#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:47
+msgid "Label|Business Planning"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/summary/TncCapLegacySummarySubPanel.java:52
+msgid "Label|CAP Legacy"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/summary/RareCampaignSummarySubPanel.java:72
 msgid "Label|Campaign"
 msgstr "Campagne"
@@ -4599,6 +4607,10 @@ msgstr "Numéros de téléphone"
 #: Miradi/source/org/miradi/forms/summary/PlanningTabWorkPlanSubPanelForm.java:35
 msgid "Label|Project Dates"
 msgstr "Dates du projet"
+
+#: Miradi/source/org/miradi/views/summary/TncProjectSummarySubPanel.java:68
+msgid "Label|Project Info"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/summary/ProtectedAreaPanel.java:41
 #: Miradi/source/org/miradi/forms/summary/ScopeTabProtectedAreaSubPanelForm.java:46
@@ -6612,7 +6624,7 @@ msgstr "Résumé évaluation de la cible"
 msgid "Systemwide"
 msgstr "Systemwide"
 
-#: Miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:84
+#: Miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:60
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:71
 msgid "TNC"
 msgstr "TNC"
@@ -10177,6 +10189,15 @@ msgstr "Citations"
 
 msgid "FieldLabel|40.CapStandardsScorecard|CAP Standards Scorecard"
 msgstr "Carte de performance standard de CAP"
+
+msgid "FieldLabel|40.MakingTheCase|Making the Case"
+msgstr ""
+
+msgid "FieldLabel|40.Risks|Risks"
+msgstr ""
+
+msgid "FieldLabel|40.CapacityAndFunding|Capacity and Funding"
+msgstr ""
 
 msgid "FieldLabel|41.FosProjectData|FOS Project Data"
 msgstr "Données de projet FOS"

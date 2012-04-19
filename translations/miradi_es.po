@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-06 13:42-0500\n"
+"POT-Creation-Date: 2012-04-19 16:27-0500\n"
 "PO-Revision-Date: 2011-03-28 15:06-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -4407,6 +4407,14 @@ msgstr ""
 msgid "Label|Budget Category Two"
 msgstr ""
 
+#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:47
+msgid "Label|Business Planning"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/summary/TncCapLegacySummarySubPanel.java:52
+msgid "Label|CAP Legacy"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/summary/RareCampaignSummarySubPanel.java:72
 msgid "Label|Campaign"
 msgstr "Campaña"
@@ -4512,6 +4520,10 @@ msgstr "Números de teléfono"
 #: Miradi/source/org/miradi/forms/summary/PlanningTabWorkPlanSubPanelForm.java:35
 msgid "Label|Project Dates"
 msgstr "Fechas de proyectos"
+
+#: Miradi/source/org/miradi/views/summary/TncProjectSummarySubPanel.java:68
+msgid "Label|Project Info"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/summary/ProtectedAreaPanel.java:41
 #: Miradi/source/org/miradi/forms/summary/ScopeTabProtectedAreaSubPanelForm.java:46
@@ -6495,7 +6507,7 @@ msgstr "Calificación de amenazas"
 msgid "Systemwide"
 msgstr "En todo el sistema"
 
-#: Miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:84
+#: Miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:60
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:71
 msgid "TNC"
 msgstr "TNC"
@@ -10014,6 +10026,15 @@ msgid "FieldLabel|40.ProjectCitations|Citations"
 msgstr ""
 
 msgid "FieldLabel|40.CapStandardsScorecard|CAP Standards Scorecard"
+msgstr ""
+
+msgid "FieldLabel|40.MakingTheCase|Making the Case"
+msgstr ""
+
+msgid "FieldLabel|40.Risks|Risks"
+msgstr ""
+
+msgid "FieldLabel|40.CapacityAndFunding|Capacity and Funding"
 msgstr ""
 
 msgid "FieldLabel|41.FosProjectData|FOS Project Data"

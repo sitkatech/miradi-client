@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-06 13:42-0500\n"
+"POT-Creation-Date: 2012-04-19 16:27-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -4262,6 +4262,14 @@ msgstr ""
 msgid "Label|Budget Category Two"
 msgstr ""
 
+#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:47
+msgid "Label|Business Planning"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/summary/TncCapLegacySummarySubPanel.java:52
+msgid "Label|CAP Legacy"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/summary/RareCampaignSummarySubPanel.java:72
 msgid "Label|Campaign"
 msgstr "运动 \t\t"
@@ -4367,6 +4375,10 @@ msgstr "电话号码 \t\t"
 #: Miradi/source/org/miradi/forms/summary/PlanningTabWorkPlanSubPanelForm.java:35
 msgid "Label|Project Dates"
 msgstr "项目日期 \t\t"
+
+#: Miradi/source/org/miradi/views/summary/TncProjectSummarySubPanel.java:68
+msgid "Label|Project Info"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/summary/ProtectedAreaPanel.java:41
 #: Miradi/source/org/miradi/forms/summary/ScopeTabProtectedAreaSubPanelForm.java:46
@@ -6264,7 +6276,7 @@ msgstr "威胁因子分级摘要 \t\t"
 msgid "Systemwide"
 msgstr "系统范围"
 
-#: Miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:84
+#: Miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:60
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:71
 msgid "TNC"
 msgstr "大自然保护协会 \t\t"
@@ -9721,6 +9733,15 @@ msgid "FieldLabel|40.ProjectCitations|Citations"
 msgstr ""
 
 msgid "FieldLabel|40.CapStandardsScorecard|CAP Standards Scorecard"
+msgstr ""
+
+msgid "FieldLabel|40.MakingTheCase|Making the Case"
+msgstr ""
+
+msgid "FieldLabel|40.Risks|Risks"
+msgstr ""
+
+msgid "FieldLabel|40.CapacityAndFunding|Capacity and Funding"
 msgstr ""
 
 msgid "FieldLabel|41.FosProjectData|FOS Project Data"
