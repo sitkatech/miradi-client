@@ -46,6 +46,9 @@ public class TncProjectDataSchema extends BaseObjectSchema
 		createFieldSchemaMultiLineUserText(TncProjectData.TAG_PROJECT_LEVEL_COMMENTS);
 		createFieldSchemaMultiLineUserText(TncProjectData.TAG_PROJECT_CITATIONS);
 		createFieldSchemaMultiLineUserText(TncProjectData.TAG_CAP_STANDARDS_SCORECARD);
+		createFieldSchemaMultiLineUserText(TncProjectData.TAG_MAKING_THE_CASE);
+		createFieldSchemaMultiLineUserText(TncProjectData.TAG_RISKS);
+		createFieldSchemaMultiLineUserText(TncProjectData.TAG_CAPACITY_AND_FUNDING);
 	}
 	
 	public static int getObjectType()

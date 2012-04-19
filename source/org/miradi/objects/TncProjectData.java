@@ -84,4 +84,7 @@ public class TncProjectData extends BaseObject
 	public final static String TAG_PROJECT_LEVEL_COMMENTS = "ProjectLevelComments";
 	public final static String TAG_PROJECT_CITATIONS = "ProjectCitations";
 	public final static String TAG_CAP_STANDARDS_SCORECARD = "CapStandardsScorecard";
+	public final static String TAG_MAKING_THE_CASE = "MakingTheCase";
+	public final static String TAG_RISKS = "Risks";
+	public final static String TAG_CAPACITY_AND_FUNDING = "CapacityAndFunding";
 }

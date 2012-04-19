@@ -284,6 +284,10 @@ public class ProjectMetadataExporter implements XmpzXmlConstants
 		writeTncElement(TncProjectData.TAG_PROJECT_CITATIONS);
 		writeTncElement(TncProjectData.TAG_CAP_STANDARDS_SCORECARD);
 		
+		writeTncElement(TncProjectData.TAG_MAKING_THE_CASE);
+		writeTncElement(TncProjectData.TAG_RISKS);
+		writeTncElement(TncProjectData.TAG_CAPACITY_AND_FUNDING);
+
 		getWriter().writeEndElement(TNC_PROJECT_DATA);
 	}
 	

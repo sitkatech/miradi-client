@@ -45,6 +45,7 @@ public class TNCSummaryPanel extends ObjectDataInputPanelWithSections
 		ORef[] refs = new ORef[]{metadataRef, tncObjectRef, xenodataRef};
 
 		addSubPanelWithTitledBorder(new TncProjectSummarySubPanel(projectToUse, refs));
+		addSubPanelWithTitledBorder(new TncBusinessPlanningSummarySubPanel(projectToUse, refs));
 		addSubPanelWithTitledBorder(new TncCapLegacySummarySubPanel(projectToUse, refs));
 	}
 	
