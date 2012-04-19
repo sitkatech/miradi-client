@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
+import org.miradi.objects.WwfProjectData;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 
 
@@ -29,8 +30,8 @@ public class WwfProjectDataSchemaElement extends ObjectSchemaElement
 	{
 		super(XmpzXmlConstants.WWF_PROJECT_DATA);
 		
-		createOptionalCodeListField(XmlSchemaCreator.WWF_MANAGING_OFFICES);
-		createOptionalCodeListField(XmlSchemaCreator.WWF_REGIONS);
-		createOptionalCodeListField(XmlSchemaCreator.WWF_ECOREGIONS);
+		createOptionalCodeListField(WwfProjectData.TAG_MANAGING_OFFICES);
+		createOptionalCodeListField(WwfProjectData.TAG_REGIONS);
+		createOptionalCodeListField(WwfProjectData.TAG_ECOREGIONS);
 	}
 }
