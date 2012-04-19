@@ -33,16 +33,16 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.objectdata.BooleanData;
+import org.miradi.objecthelpers.CodeToChoiceMap;
+import org.miradi.objecthelpers.CodeToCodeListMap;
+import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
-import org.miradi.objecthelpers.CodeToChoiceMap;
-import org.miradi.objecthelpers.CodeToCodeListMap;
 import org.miradi.objecthelpers.StringRefMap;
-import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objects.AbstractBudgetCategoryObject;
 import org.miradi.objects.AccountingCode;
@@ -309,6 +309,15 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectWithSampleStringData(fosProjectDataRef, FosProjectData.TAG_TRAINING_DATES);
 		fillObjectWithSampleStringData(fosProjectDataRef, FosProjectData.TAG_TRAINERS);
 		fillObjectWithSampleStringData(fosProjectDataRef, FosProjectData.TAG_COACHES);	
+	}
+	
+	private void fillTncProjectData() throws Exception
+	{
+		ORef tncProjectDataRef = getSingletonObjectRef(TncProjectDataSchema.getObjectType());
+
+		fillObjectWithSampleStringData(tncProjectDataRef, TncProjectData.TAG_MAKING_THE_CASE);
+		fillObjectWithSampleStringData(tncProjectDataRef, TncProjectData.TAG_RISKS);
+		fillObjectWithSampleStringData(tncProjectDataRef, TncProjectData.TAG_CAPACITY_AND_FUNDING);
 	}
 	
 	public void setFiscalYearStartMonth(int startMonth) throws Exception
@@ -1463,6 +1472,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillWcsProjectData();
 		fillRareProjectData();
 		fillFosProjectData();
+		fillTncProjectData();
 		createAndPopulateHumanWelfareScopeBox();
 		createAndPopulateBiodiversityScopeBox();
 		createAndPopulateDirectThreatLink();

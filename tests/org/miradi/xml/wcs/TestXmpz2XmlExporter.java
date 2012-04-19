@@ -45,6 +45,9 @@ public class TestXmpz2XmlExporter extends TestCaseWithProject
 	
 	public void testValidateFilledProject() throws Exception
 	{
+		// FIXME urgent: This needs to do a better job of populating everything
+		// It should auto-populate any newly created field so they are immediately 
+		// flagged as needing to be added to the schema.
 		getProject().populateEverything();
 		DiagramFactor diagramFactor1 = getProject().createAndPopulateDiagramFactor();
 		DiagramFactor diagramFactor2 = getProject().createAndPopulateDiagramFactor();
@@ -63,7 +66,7 @@ public class TestXmpz2XmlExporter extends TestCaseWithProject
 		String xml = new String(bytes.toByteArray(), "UTF-8");
 				
 		InputStreamWithSeek inputStream = new StringInputStreamWithSeek(xml);
-		if (!new WcsMiradiXmlValidator().isValid(inputStream))
+		if (!new Xmpz2XmlValidator().isValid(inputStream))
 		{
 			throw new ValidationException(EAM.text("File to import does not validate."));
 		}
