@@ -291,11 +291,16 @@ public class ProjectMetadataExporter implements XmpzXmlConstants
 	{
 		getWriter().writeStartElement(WWF_PROJECT_DATA);
 		
-		writeCodeListElement(WWF_PROJECT_DATA, XmlSchemaCreator.WWF_MANAGING_OFFICES, getWwfProjectData(), WwfProjectData.TAG_MANAGING_OFFICES);
-		writeCodeListElement(WWF_PROJECT_DATA, XmlSchemaCreator.WWF_REGIONS, getWwfProjectData(), WwfProjectData.TAG_REGIONS);
-		writeCodeListElement(WWF_PROJECT_DATA, XmlSchemaCreator.WWF_ECOREGIONS, getWwfProjectData(), WwfProjectData.TAG_ECOREGIONS);
+		writeWwfCodeListElement(WwfProjectData.TAG_MANAGING_OFFICES);
+		writeWwfCodeListElement(WwfProjectData.TAG_REGIONS);
+		writeWwfCodeListElement(WwfProjectData.TAG_ECOREGIONS);
 		
 		getWriter().writeEndElement(WWF_PROJECT_DATA);
+	}
+
+	private void writeWwfCodeListElement(String tag) throws Exception
+	{
+		writeCodeListElement(WWF_PROJECT_DATA, tag, getWwfProjectData(), tag);
 	}
 	
 	private void writeWcsElement() throws Exception

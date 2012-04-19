@@ -192,9 +192,9 @@ public class XmpzXmlExporter extends XmlExporter implements XmpzXmlConstants
 	{
 		writeStartElement(out, WWF_PROJECT_DATA);
 		
-		writeOptionalCodeListElement(WWF_PROJECT_DATA, XmlSchemaCreator.WWF_MANAGING_OFFICES, getWwfProjectData(), WwfProjectData.TAG_MANAGING_OFFICES);
-		writeOptionalCodeListElement(WWF_PROJECT_DATA, XmlSchemaCreator.WWF_REGIONS, getWwfProjectData(), WwfProjectData.TAG_REGIONS);
-		writeOptionalCodeListElement(WWF_PROJECT_DATA, XmlSchemaCreator.WWF_ECOREGIONS, getWwfProjectData(), WwfProjectData.TAG_ECOREGIONS);
+		writeOptionalCodeListElement(WWF_PROJECT_DATA, WwfProjectData.TAG_MANAGING_OFFICES, getWwfProjectData(), WwfProjectData.TAG_MANAGING_OFFICES);
+		writeOptionalCodeListElement(WWF_PROJECT_DATA, WwfProjectData.TAG_REGIONS, getWwfProjectData(), WwfProjectData.TAG_REGIONS);
+		writeOptionalCodeListElement(WWF_PROJECT_DATA, WwfProjectData.TAG_ECOREGIONS, getWwfProjectData(), WwfProjectData.TAG_ECOREGIONS);
 		
 		writeEndElement(out, WWF_PROJECT_DATA);
 	}

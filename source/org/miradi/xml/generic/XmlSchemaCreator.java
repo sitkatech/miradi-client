@@ -302,9 +302,9 @@ public class XmlSchemaCreator implements XmpzXmlConstants
 		defineVocabularyDefinedAlias(writer, XmpzXmlConstants.TNC_PROJECT_DATA, VOCABULARY_TNC_TERRESTRIAL_ECO_REGION, TNC_TERRESTRIAL_ECO_REGION);
 		defineVocabularyDefinedAlias(writer, XmpzXmlConstants.TNC_PROJECT_DATA, VOCABULARY_TNC_MARINE_ECO_REGION, TNC_MARINE_ECO_REGION);
 		defineVocabularyDefinedAlias(writer, XmpzXmlConstants.TNC_PROJECT_DATA, VOCABULARY_TNC_FRESHWATER_ECO_REGION, TNC_FRESHWATER_ECO_REGION);
-		defineVocabularyDefinedAlias(writer, XmpzXmlConstants.WWF_PROJECT_DATA, VOCABULARY_WWF_MANAGING_OFFICES, WWF_MANAGING_OFFICES);
-		defineVocabularyDefinedAlias(writer, XmpzXmlConstants.WWF_PROJECT_DATA, VOCABULARY_WWF_REGIONS, WWF_REGIONS);
-		defineVocabularyDefinedAlias(writer, XmpzXmlConstants.WWF_PROJECT_DATA, VOCABULARY_WWF_ECOREGIONS, WWF_ECOREGIONS);
+		defineVocabularyDefinedAlias(writer, XmpzXmlConstants.WWF_PROJECT_DATA, VOCABULARY_WWF_MANAGING_OFFICES, WwfProjectData.TAG_MANAGING_OFFICES);
+		defineVocabularyDefinedAlias(writer, XmpzXmlConstants.WWF_PROJECT_DATA, VOCABULARY_WWF_REGIONS, WwfProjectData.TAG_REGIONS);
+		defineVocabularyDefinedAlias(writer, XmpzXmlConstants.WWF_PROJECT_DATA, VOCABULARY_WWF_ECOREGIONS, WwfProjectData.TAG_ECOREGIONS);
 		defineVocabularyDefinedAlias(writer, XmpzXmlConstants.PROJECT_SUMMARY_LOCATION, VOCABULARY_COUNTRIES, COUNTRIES);
 		defineVocabularyDefinedAlias(writer, DASHBOARD, VOCABULARY_DASHBOARD_ROW_FLAGS, DASHBOARD_FLAGS);
 		
@@ -706,9 +706,6 @@ public class XmlSchemaCreator implements XmpzXmlConstants
 	public static final String TNC_MARINE_ECO_REGION = "TNCMarineEcoRegion";
 	public static final String TNC_FRESHWATER_ECO_REGION = "TNCFreshwaterEcoRegion";
 	public static final String PROJECT_SHARE_OUTSIDE_ORGANIZATION = "ShareOutsideOrganization";
-	public static final String WWF_MANAGING_OFFICES = WwfProjectData.TAG_MANAGING_OFFICES;
-	public static final String WWF_REGIONS = WwfProjectData.TAG_REGIONS;
-	public static final String WWF_ECOREGIONS = WwfProjectData.TAG_ECOREGIONS;
 	public static final String PROGRESS_REPORT_STATUS = ProgressReport.TAG_PROGRESS_STATUS;
 	public static final String MEASUREMENT_TREND = Measurement.TAG_TREND;
 	public static final String MEASUREMENT_STATUS = Measurement.TAG_STATUS;	
