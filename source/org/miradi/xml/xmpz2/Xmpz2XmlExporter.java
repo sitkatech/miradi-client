@@ -131,11 +131,11 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 				continue;
 			
 			ORefList sortedRefList = pool.getSortedRefList();
-			exportBaseObjects(sortedRefList, objectType);
+			exportBaseObjects(objectType, sortedRefList);
 		}
 	}
 
-	private void exportBaseObjects(ORefList sortedRefList, final int objectType) throws Exception
+	private void exportBaseObjects(final int objectType, ORefList sortedRefList) throws Exception
 	{
 		final BaseObjectExporter baseObjectExporter = getObjectTypeToExporterMap().get(objectType);
 		final String containerName = baseObjectExporter.getExporterContainerName(objectType);
