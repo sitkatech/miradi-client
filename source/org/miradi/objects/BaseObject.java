@@ -241,13 +241,13 @@ abstract public class BaseObject
 	public ORefList getSafeRefListData(String fieldTag)
 	{
 		if (doesFieldExist(fieldTag))
-			return getReflist(fieldTag);
+			return getRefList(fieldTag);
 		
 		//NOTE: BaseObject used to always have these fields
 		return new ORefList();
 	}
 
-	private ORefList getReflist(String fieldTag)
+	private ORefList getRefList(String fieldTag)
 	{
 		ObjectData field = getField(fieldTag);
 		if(field.isRefListData())
