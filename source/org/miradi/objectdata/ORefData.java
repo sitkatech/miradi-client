@@ -101,7 +101,7 @@ public class ORefData extends ObjectData
 	@Override
 	public void writeAsXmpz2XmlData(Xmpz2XmlWriter writer, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		writer.writeValidRefData(baseObjectSchema, fieldSchema, ref);
+		writer.writeRefDataIfValid(baseObjectSchema, fieldSchema, ref);
 	}
 
 	ORef ref;

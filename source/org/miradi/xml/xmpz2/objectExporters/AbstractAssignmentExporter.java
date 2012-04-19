@@ -52,7 +52,7 @@ abstract public class AbstractAssignmentExporter extends BaseObjectExporter
 	
 	private void writeBudgetRef(final BaseObjectSchema baseObjectSchema, final String elementName, final ORef ref) throws Exception
 	{
-		getWriter().writeValidRef(baseObjectSchema.getObjectName(), elementName, ref);
+		getWriter().writeRefIfValid(baseObjectSchema.getObjectName(), elementName, ref);
 	}
 
 	@Override

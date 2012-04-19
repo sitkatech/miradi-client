@@ -114,7 +114,7 @@ public class Xmpz2XmlWriter extends UnicodeWriter implements XmpzXmlConstants
 
 	public void writeBaseIdData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, ORef ref) throws Exception
 	{
-		writeValidRefData(baseObjectSchema, fieldSchema, ref);
+		writeRefDataIfValid(baseObjectSchema, fieldSchema, ref);
 	}
 
 	public void writeDateData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String isoDate) throws Exception
@@ -167,7 +167,7 @@ public class Xmpz2XmlWriter extends UnicodeWriter implements XmpzXmlConstants
 		writeField(baseObjectSchema, fieldSchema, number);
 	}
 
-	public void writeValidRefData(final BaseObjectSchema baseObjectSchema, final AbstractFieldSchema fieldSchema, final ORef ref) throws Exception
+	public void writeRefDataIfValid(final BaseObjectSchema baseObjectSchema, final AbstractFieldSchema fieldSchema, final ORef ref) throws Exception
 	{
 		if (ref.isValid())
 		{
@@ -179,7 +179,7 @@ public class Xmpz2XmlWriter extends UnicodeWriter implements XmpzXmlConstants
 		}
 	}
 
-	public void writeValidRef(final String parentElementName, final String idElementName, final ORef ref) throws Exception, IOException
+	public void writeRefIfValid(final String parentElementName, final String idElementName, final ORef ref) throws Exception, IOException
 	{
 		if (ref.isValid())
 		{

@@ -43,7 +43,7 @@ public class ResourceAssignmentExporter extends AbstractAssignmentExporter
 		ResourceAssignment resourceAssignment = (ResourceAssignment) baseObject;
 		String idElementName = XmlSchemaCreator.RESOURCE_ID_ELEMENT_NAME + ID;
 		
-		getWriter().writeValidRef(baseObjectSchema.getObjectName(), idElementName, resourceAssignment.getResourceRef());
+		getWriter().writeRefIfValid(baseObjectSchema.getObjectName(), idElementName, resourceAssignment.getResourceRef());
 	}
 	
 	@Override
