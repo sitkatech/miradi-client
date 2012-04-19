@@ -21,56 +21,31 @@ package org.miradi.views.summary;
 
 import javax.swing.Icon;
 
-import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.forms.summary.TncTabForm;
 import org.miradi.icons.TncIcon;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ProjectMetadata;
-import org.miradi.objects.TncProjectData;
-import org.miradi.objects.Xenodata;
 import org.miradi.project.Project;
-import org.miradi.questions.TncFreshwaterEcoRegionQuestion;
-import org.miradi.questions.TncMarineEcoRegionQuestion;
-import org.miradi.questions.TncOperatingUnitsQuestion;
-import org.miradi.questions.TncOrganizationalPrioritiesQuestion;
-import org.miradi.questions.TncProjectPlaceTypeQuestion;
-import org.miradi.questions.TncTerrestrialEcoRegionQuestion;
 import org.miradi.rtf.RtfFormExporter;
 import org.miradi.rtf.RtfWriter;
-import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.schemas.TncProjectDataSchema;
 import org.miradi.schemas.XenodataSchema;
 
-public class TNCSummaryPanel extends ObjectDataInputPanel
+public class TNCSummaryPanel extends ObjectDataInputPanelWithSections
 {
 	public TNCSummaryPanel(Project projectToUse, ProjectMetadata metadata) throws Exception
 	{
-		super(projectToUse, metadata.getRef());
+		super(projectToUse, ORef.INVALID);
 
-		addField(createReadonlyTextField(ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE));
-		addField(createReadonlyTextField(XenodataSchema.getObjectType(), Xenodata.TAG_PROJECT_ID));
-		
-		addField(createStringField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS));
-		addField(createSingleColumnCodeListField(TncProjectDataSchema.getObjectType(), TncProjectData.TAG_PROJECT_PLACE_TYPES, getProject().getQuestion(TncProjectPlaceTypeQuestion.class)));
-		addField(createSingleColumnCodeListField(TncProjectDataSchema.getObjectType(), TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES, getProject().getQuestion(TncOrganizationalPrioritiesQuestion.class)));
+		ORef metadataRef = getProject().getMetadata().getRef();
+		ORef tncObjectRef = getProject().getSingletonObjectRef(TncProjectDataSchema.getObjectType());
+		ORef xenodataRef = getProject().getSafeSingleObjectRef(XenodataSchema.getObjectType());
+		ORef[] refs = new ORef[]{metadataRef, tncObjectRef, xenodataRef};
 
-		addField(createStringField(ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENTS));
-		addField(createReadonlyTextField(TncProjectDataSchema.getObjectType(), TncProjectData.TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT));
-
-		addField(createSingleColumnCodeListField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_TNC_OPERATING_UNITS, new TncOperatingUnitsQuestion()));
-
-		addField(createQuestionFieldWithDescriptionPanel(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION, new TncTerrestrialEcoRegionQuestion()));
-		addField(createSingleColumnCodeListField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_TNC_MARINE_ECO_REGION, new TncMarineEcoRegionQuestion()));
-		addField(createSingleColumnCodeListField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION, new TncFreshwaterEcoRegionQuestion()));
-		addField(createMultilineField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_TNC_LESSONS_LEARNED));
-		
-		addField(createMultilineField(TncProjectDataSchema.getObjectType(), TncProjectData.TAG_PROJECT_RESOURCES_SCORECARD));
-		addField(createMultilineField(TncProjectDataSchema.getObjectType(), TncProjectData.TAG_PROJECT_LEVEL_COMMENTS));
-		addField(createMultilineField(TncProjectDataSchema.getObjectType(), TncProjectData.TAG_PROJECT_CITATIONS));
-		addField(createMultilineField(TncProjectDataSchema.getObjectType(), TncProjectData.TAG_CAP_STANDARDS_SCORECARD));
-
-		setObjectRefs(new ORef[]{metadata.getRef(), getProject().getSingletonObjectRef(TncProjectDataSchema.getObjectType()), getProject().getSafeSingleObjectRef(XenodataSchema.getObjectType())});
+		addSubPanelWithTitledBorder(new TncProjectSummarySubPanel(projectToUse, refs));
+		addSubPanelWithTitledBorder(new TncCapLegacySummarySubPanel(projectToUse, refs));
 	}
 	
 	@Override
