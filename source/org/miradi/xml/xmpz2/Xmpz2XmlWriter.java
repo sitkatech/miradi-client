@@ -351,39 +351,39 @@ public class Xmpz2XmlWriter extends UnicodeWriter implements XmpzXmlConstants
 	
 	public void writeDay(DateUnit dateUnit, final String dayElementName) throws Exception
 	{
-		writeEnclosedElement(dayElementName, DATE, dateUnit.toString());
+		writeDatalessElementWithAttribute(dayElementName, DATE, dateUnit.toString());
 	}
 
 	public void writeMonth(DateUnit dateUnit, final String monthElementName) throws Exception
 	{
-		writeSelfEnclosedElement(monthElementName, YEAR, dateUnit.getYear(), MONTH, dateUnit.getMonth());
+		writeDatalessElementWithTwoAttributes(monthElementName, YEAR, dateUnit.getYear(), MONTH, dateUnit.getMonth());
 	}
 
 	public void writeQuarter(DateUnit dateUnit, final String quarterElementName) throws Exception
 	{
 		MultiCalendar start = dateUnit.getQuarterDateRange().getStartDate();
-		writeSelfEnclosedElement(quarterElementName, YEAR, start.getGregorianYear(), START_MONTH, start.getGregorianMonth());
+		writeDatalessElementWithTwoAttributes(quarterElementName, YEAR, start.getGregorianYear(), START_MONTH, start.getGregorianMonth());
 	}
 
 	public void writeYear(DateUnit dateUnit, final String yearElementName) throws Exception
 	{
 		final int yearStartMonth = dateUnit.getYearStartMonth();
 		final int startYear = Integer.parseInt(dateUnit.getYearYearString());
-		writeSelfEnclosedElement(yearElementName, START_YEAR, startYear, START_MONTH, yearStartMonth);
+		writeDatalessElementWithTwoAttributes(yearElementName, START_YEAR, startYear, START_MONTH, yearStartMonth);
 	}
 
 	public void writeProjectTotal(DateUnit dateUnit, final String fullProjectTimespanElementName) throws Exception
 	{		
-		writeEnclosedElement(fullProjectTimespanElementName, FULL_PROJECT_TIMESPAN, TOTAL);
+		writeDatalessElementWithAttribute(fullProjectTimespanElementName, FULL_PROJECT_TIMESPAN, TOTAL);
 	}
 	
-	public void writeEnclosedElement(final String elementName, final String attributeName, final String attributeValue) throws Exception
+	public void writeDatalessElementWithAttribute(final String elementName, final String attributeName, final String attributeValue) throws Exception
 	{
 		writeStartElementWithAttribute(elementName, attributeName, attributeValue);
 		writeEndElement(elementName);
 	}
 	
-	public void writeSelfEnclosedElement(final String elementName, final String attributeName1, final int attributeValue1, final String attributeName2, final int attributeValue2) throws Exception
+	public void writeDatalessElementWithTwoAttributes(final String elementName, final String attributeName1, final int attributeValue1, final String attributeName2, final int attributeValue2) throws Exception
 	{
 		writeStartElementWithTwoAttributes(elementName, attributeName1, attributeValue1, attributeName2, attributeValue2);
 		writeEndElement(elementName);
