@@ -199,7 +199,7 @@ public class Xmpz2XmlWriter extends UnicodeWriter implements XmpzXmlConstants
 	public void writePointData(BaseObjectSchema baseObjectSchema, final AbstractFieldSchema fieldSchema, final Point point) throws Exception
 	{
 		final String elementName = appendChildNameToParentName(baseObjectSchema, fieldSchema);
-		writePoint(elementName, point);
+		writeDiagramPoint(elementName, point);
 	}
 
 	public void writeBendPointListData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, PointList points) throws Exception
@@ -213,13 +213,13 @@ public class Xmpz2XmlWriter extends UnicodeWriter implements XmpzXmlConstants
 		writeStartElement(elemnentName);
 		for (int index = 0; index < points.size(); ++index)
 		{
-			writePoint(DIAGRAM_POINT_ELEMENT_NAME, points.get(index));
+			writeDiagramPoint(DIAGRAM_POINT_ELEMENT_NAME, points.get(index));
 		}
 		
 		writeEndElement(elemnentName);
 	}
 	
-	public void writePoint(final String pointElementName, Point point) throws Exception
+	public void writeDiagramPoint(final String pointElementName, Point point) throws Exception
 	{
 		writeStartElement(pointElementName);
 		writeStartElement(DIAGRAM_POINT_ELEMENT_NAME);
