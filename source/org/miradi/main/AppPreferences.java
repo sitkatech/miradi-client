@@ -31,7 +31,7 @@ import java.util.Iterator;
 import org.miradi.diagram.DiagramConstants;
 import org.miradi.legacyprojects.JSONFile;
 import org.miradi.objectdata.DimensionData;
-import org.miradi.objectdata.PointData;
+import org.miradi.objectdata.DiagramPointData;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
@@ -458,7 +458,7 @@ public class AppPreferences
 		newsDate = json.optString(TAG_NEWS_DATE);
 		installedSampleVersions = new CodeList(json.optString(TAG_INSTALLED_SAMPLE_VERSIONS));
 		
-		dashboardWindowPosition = new PointData(TAG_DASHBOARD_WINDOW_POSITION, json.optPoint(TAG_DASHBOARD_WINDOW_POSITION));
+		dashboardWindowPosition = new DiagramPointData(TAG_DASHBOARD_WINDOW_POSITION, json.optPoint(TAG_DASHBOARD_WINDOW_POSITION));
 		dashboardWindowSize = new DimensionData(TAG_DASHBOARD_WINDOW_SIZE, json.optDimension(TAG_DASHBOARD_WINDOW_SIZE));
 		
 		wizardFontFamily = json.optString(TAG_WIZARD_FONT_FAMILY);
@@ -774,7 +774,7 @@ public class AppPreferences
 	private String newsDate;
 	private CodeList installedSampleVersions;
 	private DimensionData dashboardWindowSize;
-	private PointData dashboardWindowPosition;
+	private DiagramPointData dashboardWindowPosition;
 	private CodeList notifyDialogsToNeverShowAgain;
 	
 	private String wizardFontFamily;

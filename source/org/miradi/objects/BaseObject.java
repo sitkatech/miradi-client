@@ -54,7 +54,7 @@ import org.miradi.objectdata.IntegerData;
 import org.miradi.objectdata.NumberData;
 import org.miradi.objectdata.ORefData;
 import org.miradi.objectdata.ObjectData;
-import org.miradi.objectdata.PointData;
+import org.miradi.objectdata.DiagramPointData;
 import org.miradi.objectdata.PointListData;
 import org.miradi.objectdata.RefListData;
 import org.miradi.objectdata.RefListListData;
@@ -194,7 +194,7 @@ abstract public class BaseObject
 	
 	public Point getPointData(String tag)
 	{
-		PointData data = (PointData)getField(tag);
+		DiagramPointData data = (DiagramPointData)getField(tag);
 		return data.getPoint();
 	}
 	
@@ -206,7 +206,7 @@ abstract public class BaseObject
 	
 	public void setPointData(String tag, Point point)
 	{
-		PointData data = (PointData)getField(tag);
+		DiagramPointData data = (DiagramPointData)getField(tag);
 		data.setPoint(point);
 	}
 	
