@@ -21,7 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.schemas;
 
 import org.miradi.objectdata.ObjectData;
-import org.miradi.objectdata.PointData;
+import org.miradi.objectdata.DiagramPointData;
 import org.miradi.objects.BaseObject;
 
 public class FieldSchemaPoint extends AbstractFieldSchema
@@ -34,6 +34,6 @@ public class FieldSchemaPoint extends AbstractFieldSchema
 	@Override
 	public ObjectData createField(BaseObject baseObjectToUse)
 	{
-		return new PointData(getTag());
+		return new DiagramPointData(getTag());
 	}
 }

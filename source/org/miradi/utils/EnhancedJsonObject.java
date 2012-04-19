@@ -30,7 +30,7 @@ import org.json.JSONObject;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.objectdata.DimensionData;
-import org.miradi.objectdata.PointData;
+import org.miradi.objectdata.DiagramPointData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 
@@ -203,7 +203,7 @@ public class EnhancedJsonObject extends JSONObject
 	{
 		if (has(tag))
 		{
-			PointData dataValue = new PointData(tag);
+			DiagramPointData dataValue = new DiagramPointData(tag);
 			dataValue.set(getString(tag));
 			
 			return dataValue.getPoint();

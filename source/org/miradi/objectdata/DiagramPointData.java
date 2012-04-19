@@ -26,14 +26,14 @@ import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
-public class PointData extends ObjectData
+public class DiagramPointData extends ObjectData
 {
-	public PointData(String tagToUse)
+	public DiagramPointData(String tagToUse)
 	{
 		this(tagToUse, new Point(0, 0));
 	}
 	
-	public PointData(String tagToUse, Point pointToUse)
+	public DiagramPointData(String tagToUse, Point pointToUse)
 	{
 		super(tagToUse);
 		
@@ -74,10 +74,10 @@ public class PointData extends ObjectData
 	@Override
 	public boolean equals(Object rawOther)
 	{
-		if(!(rawOther instanceof PointData))
+		if(!(rawOther instanceof DiagramPointData))
 			return false;
 		
-		PointData other = (PointData)rawOther;
+		DiagramPointData other = (DiagramPointData)rawOther;
 		return point.equals(other.point);
 	}
 
