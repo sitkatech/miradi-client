@@ -196,7 +196,7 @@ public class Xmpz2XmlWriter extends UnicodeWriter implements XmpzXmlConstants
 		writeEndElement(parentElementName);
 	}
 
-	public void writePointData(BaseObjectSchema baseObjectSchema, final AbstractFieldSchema fieldSchema, final Point point) throws Exception
+	public void writeDiagramPointData(BaseObjectSchema baseObjectSchema, final AbstractFieldSchema fieldSchema, final Point point) throws Exception
 	{
 		final String elementName = appendChildNameToParentName(baseObjectSchema, fieldSchema);
 		writeDiagramPoint(elementName, point);
