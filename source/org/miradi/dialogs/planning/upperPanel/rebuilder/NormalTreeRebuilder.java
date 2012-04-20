@@ -79,8 +79,14 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		if(IntermediateResult.is(parentRef))
 			return getChildrenOfBasicFactor(parentRef, diagram);
 		
-		if(Desire.isDesire(parentRef) && parentRef.isValid())
+		if(Desire.isDesire(parentRef))
+		{
+			boolean isActuallyAFutureStatus = parentRef.isInvalid(); 
+			if(isActuallyAFutureStatus)
+				return noChildren;
+				
 			return getChildrenOfDesire(parentRef, diagram);
+		}
 		
 		if(Indicator.is(parentRef))
 			return getChildrenOfIndicator(parentRef, diagram);
@@ -100,6 +106,12 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		if(SubTarget.is(parentRef))
 			return noChildren;
 
+		if(parentRef.isInvalid())
+		{
+			EAM.logDebug("NormalTreeRebuilder.getChildRefs called for INVALID, type=" + parentRef.getObjectType());
+			return noChildren;
+		}
+		
 		EAM.logDebug("Don't know how to get children of " + parentRef);
 		return new ORefList();
 	}
