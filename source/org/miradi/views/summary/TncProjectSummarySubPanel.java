@@ -57,6 +57,8 @@ public class TncProjectSummarySubPanel extends ObjectDataInputPanel
 		addField(createQuestionFieldWithDescriptionPanel(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION, new TncTerrestrialEcoRegionQuestion()));
 		addField(createSingleColumnCodeListField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_TNC_MARINE_ECO_REGION, new TncMarineEcoRegionQuestion()));
 		addField(createSingleColumnCodeListField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION, new TncFreshwaterEcoRegionQuestion()));
+		
+		updateFieldsFromProject();
 	}
 
 	@Override
