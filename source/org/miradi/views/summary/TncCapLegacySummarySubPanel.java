@@ -41,6 +41,8 @@ public class TncCapLegacySummarySubPanel extends ObjectDataInputPanel
 		addField(createMultilineField(TncProjectDataSchema.getObjectType(), TncProjectData.TAG_PROJECT_LEVEL_COMMENTS));
 		addField(createMultilineField(TncProjectDataSchema.getObjectType(), TncProjectData.TAG_PROJECT_CITATIONS));
 		addField(createMultilineField(TncProjectDataSchema.getObjectType(), TncProjectData.TAG_CAP_STANDARDS_SCORECARD));
+		
+		updateFieldsFromProject();
 	}
 
 	@Override

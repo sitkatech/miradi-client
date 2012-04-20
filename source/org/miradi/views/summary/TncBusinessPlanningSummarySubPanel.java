@@ -36,6 +36,8 @@ public class TncBusinessPlanningSummarySubPanel extends ObjectDataInputPanel
 		addField(createMultilineField(TncProjectDataSchema.getObjectType(), TncProjectData.TAG_MAKING_THE_CASE));
 		addField(createMultilineField(TncProjectDataSchema.getObjectType(), TncProjectData.TAG_RISKS));
 		addField(createMultilineField(TncProjectDataSchema.getObjectType(), TncProjectData.TAG_CAPACITY_AND_FUNDING));
+		
+		updateFieldsFromProject();
 	}
 
 	@Override

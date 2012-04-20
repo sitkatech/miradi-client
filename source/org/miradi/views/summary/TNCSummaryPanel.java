@@ -47,6 +47,8 @@ public class TNCSummaryPanel extends ObjectDataInputPanelWithSections
 		addSubPanelWithTitledBorder(new TncProjectSummarySubPanel(projectToUse, refs));
 		addSubPanelWithTitledBorder(new TncBusinessPlanningSummarySubPanel(projectToUse, refs));
 		addSubPanelWithTitledBorder(new TncCapLegacySummarySubPanel(projectToUse, refs));
+		
+		setObjectRefs(refs);
 	}
 	
 	@Override
