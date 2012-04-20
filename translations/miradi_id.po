@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-19 16:27-0500\n"
+"POT-Creation-Date: 2012-04-20 13:02-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -4387,11 +4387,11 @@ msgstr ""
 msgid "Label|Budget Category Two"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:47
+#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:49
 msgid "Label|Business Planning"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/TncCapLegacySummarySubPanel.java:52
+#: Miradi/source/org/miradi/views/summary/TncCapLegacySummarySubPanel.java:54
 msgid "Label|CAP Legacy"
 msgstr ""
 
@@ -4501,7 +4501,7 @@ msgstr "Nomor Telepon "
 msgid "Label|Project Dates"
 msgstr "Tanggal Proyek "
 
-#: Miradi/source/org/miradi/views/summary/TncProjectSummarySubPanel.java:68
+#: Miradi/source/org/miradi/views/summary/TncProjectSummarySubPanel.java:70
 msgid "Label|Project Info"
 msgstr ""
 
@@ -6468,7 +6468,7 @@ msgstr "Ringkasan Peringkat Ancaman "
 msgid "Systemwide"
 msgstr "Di seluruh bagian sistem"
 
-#: Miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:60
+#: Miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:62
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:71
 msgid "TNC"
 msgstr "TNC "
