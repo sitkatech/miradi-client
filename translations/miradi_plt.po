@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-19 16:27-0500\n"
+"POT-Creation-Date: 2012-04-20 13:02-0500\n"
 "PO-Revision-Date: 2011-03-17 08:40-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -4184,11 +4184,11 @@ msgstr ""
 msgid "Label|Budget Category Two"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:47
+#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:49
 msgid "Label|Business Planning"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/TncCapLegacySummarySubPanel.java:52
+#: Miradi/source/org/miradi/views/summary/TncCapLegacySummarySubPanel.java:54
 msgid "Label|CAP Legacy"
 msgstr ""
 
@@ -4298,7 +4298,7 @@ msgstr ""
 msgid "Label|Project Dates"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/TncProjectSummarySubPanel.java:68
+#: Miradi/source/org/miradi/views/summary/TncProjectSummarySubPanel.java:70
 msgid "Label|Project Info"
 msgstr ""
 
@@ -6162,7 +6162,7 @@ msgstr ""
 msgid "Systemwide"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:60
+#: Miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:62
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:71
 msgid "TNC"
 msgstr ""
