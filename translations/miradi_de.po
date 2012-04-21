@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-20 13:02-0500\n"
+"POT-Creation-Date: 2012-04-20 20:52-0500\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -2952,6 +2952,13 @@ msgstr "Konzeptionelles Modell Eignschaften"
 msgid "Conceptual Model Pages and Results Chains"
 msgstr "Konzeptionelle(s) Modell(e) und Ergebniswirkungskette(n)"
 
+#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:51
+msgid ""
+"Conceptual Model diagrams (including Brainstorm mode to capture all draft "
+"strategies considered that were not selected). Strategy Ranking fields of: "
+"Potential Impact and Feasibility"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:107
 msgid ""
 "Conceptual model - A diagram of a set of relationships between certain "
@@ -2969,6 +2976,10 @@ msgstr "Arbeitsplananalyse anpassen"
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:45
 msgid "Conservation Targets"
 msgstr "Schutzobjekt"
+
+#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:62
+msgid "Context"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:101
 #: Miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:73
@@ -3426,6 +3437,26 @@ msgstr ""
 #: Miradi/source/org/miradi/dialogs/diagram/DiagramLinkColorSubPanel.java:44
 msgid "Diagram Link Color Panel"
 msgstr "Liste der Farben für Verbindungen"
+
+#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:47
+msgid ""
+"Diagram View - Conceptual Model diagram showing key drivers and "
+"opportunities and their relationships to ultimate outcomes. Text field for "
+"alternative or supplemental narrative description of conceptual model "
+"(available via right-click menu on all diagrams - Diagram Properties)"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:57
+msgid ""
+"Diagram View - Indicators explicitly linked to conservation outcomes (goals) "
+"and intermediate results (objectives)"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:46
+msgid ""
+"Diagram View - Targets and Target Goals for both biodiversity and human well-"
+"being targets"
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/jump/ActionJumpDiagramOverviewStep.java:35
 msgid "Diagram overview"
@@ -4597,7 +4628,7 @@ msgstr "Budgekategorie Eins"
 msgid "Label|Budget Category Two"
 msgstr "Budgekategorie Zwei"
 
-#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:49
+#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:97
 msgid "Label|Business Planning"
 msgstr ""
 
@@ -5102,6 +5133,10 @@ msgid ""
 msgstr ""
 "Messung - Ermittlung eines indikatorenwertes zu einem bestimmten Zeitpunkt. "
 "Messungen können sowohl quantitativ als auch qualitativ sein."
+
+#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:74
+msgid "Measures"
+msgstr ""
 
 #: Miradi/source/org/miradi/questions/ThreatStressRatingChoiceQuestion.java:38
 #: Miradi/source/org/miradi/questions/StrategyImpactQuestion.java:39
@@ -5614,6 +5649,10 @@ msgstr "Andere bedeutende Art(en)"
 msgid "Other Orgs"
 msgstr "Andere Org."
 
+#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:65
+msgid "Outcomes"
+msgstr ""
+
 # wurde warscheinlich mit projekt gesamt bewertung übersetzt
 #: Miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:218
 msgid "Overall Threat Rating"
@@ -6104,6 +6143,15 @@ msgstr "Ergebniswirkungskette"
 msgid "Results Chain Properties"
 msgstr "Eigenschaften - Ergebniswirkungskette"
 
+#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:53
+msgid ""
+"Results Chain diagrams for entering intermediate results linking strategies "
+"to targets. Text field for alternative or supplemental narrative description "
+"of conceptual model (available via right-click menu on all diagrams - "
+"Diagram Properties). Objectives field for specifying measurable desired "
+"results"
+msgstr ""
+
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:83
 #: Miradi/source/org/miradi/dialogs/diagram/ResultsChainDiagramPanel.java:50
 msgid "Results Chains"
@@ -6470,6 +6518,10 @@ msgstr "Einfache Lebensfähigkeit"
 msgid "Site/Scope Description:"
 msgstr "Gebiets-/Planungsraumbeschreibung"
 
+#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:67
+msgid "Situation Analysis"
+msgstr ""
+
 #: Miradi/source/org/miradi/questions/DiagramFactorFontSizeQuestion.java:38
 msgid "Small"
 msgstr "Klein"
@@ -6709,6 +6761,10 @@ msgstr "Zusammenfassung Schutzobjektsbewertung"
 #: Miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:56
 msgid "Summary Threat Rating"
 msgstr "Zusammenfassung Bedrohungsbewertung"
+
+#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:45
+msgid "Summary View - Project Description, Scope, and Vision fields"
+msgstr ""
 
 #: Miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:107
 msgid "Systemwide"
@@ -7945,6 +8001,14 @@ msgstr ""
 msgid "Then by"
 msgstr "Dann nach"
 
+#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:71
+msgid "Theory of Change<br/>- Strategy Logic"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:69
+msgid "Theory of Change<br/>- Strategy Selection"
+msgstr ""
+
 #: Miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:52
 #, fuzzy
 msgid ""
@@ -8794,6 +8858,17 @@ msgstr ""
 #: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:287
 msgid "Work Plan Settings"
 msgstr "Einstellungen - Arbeitsplan"
+
+#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:59
+msgid ""
+"Work Plan View - Flexible management of work planning (Activity, Task with "
+"who, when information)  and budget information including work effort, "
+"expenses, and funding sources"
+msgstr ""
+
+#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:76
+msgid "Work Planning"
+msgstr ""
 
 #: Miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:91
 msgid "Work plan data currently exists for %startDate - %endDate"
