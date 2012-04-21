@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.base;
 
 import org.miradi.dialogfields.ObjectDataInputField;
+import org.miradi.forms.FormConstant;
 import org.miradi.forms.FormFieldData;
 import org.miradi.forms.FormFieldLabel;
 import org.miradi.forms.FormItem;
@@ -29,6 +30,8 @@ import org.miradi.forms.PropertiesPanelSpec;
 import org.miradi.forms.objects.BudgetCategoryPropertiesForm;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
+import org.miradi.utils.DataPanelFlexibleWidthHtmlViewer;
+import org.miradi.utils.FlexibleWidthHtmlViewer;
 
 abstract public class AbstractObjectDataInputPanelWithCreationFromForms extends
 		AbstractObjectDataInputPanelWithActivation
@@ -49,6 +52,12 @@ abstract public class AbstractObjectDataInputPanelWithCreationFromForms extends
 			addFieldFromForm(formRow);
 		}
 	}
+	
+	protected void addLabelAndFieldFromForm(FormRow formRow) throws Exception
+	{
+		addLabelFromForm(formRow);
+		addFieldFromForm(formRow);
+	}
 
 	protected void addLabelFromForm(FormRow formRow)
 	{
@@ -57,6 +66,13 @@ abstract public class AbstractObjectDataInputPanelWithCreationFromForms extends
 					+ ": Don't know how to add multiple labels");
 
 		FormItem formItem = formRow.getLeftFormItem(0);
+		if(formItem.isFormConstant())
+		{
+			FormConstant fc = (FormConstant) formItem;
+			addLabel(fc.getConstant());
+			return;
+		}
+		
 		if(!formItem.isFormFieldLabel())
 			throw new RuntimeException(getClass().getName()
 					+ ": Don't know how to add non-label " + formItem);
@@ -73,6 +89,15 @@ abstract public class AbstractObjectDataInputPanelWithCreationFromForms extends
 					+ ": Don't know how to add multiple fields");
 
 		FormItem formItem = formRow.getRightFormItem(0);
+		if(formItem.isFormConstant())
+		{
+			FormConstant fc = (FormConstant) formItem;
+			String text = fc.getConstant();
+			FlexibleWidthHtmlViewer viewer = new DataPanelFlexibleWidthHtmlViewer(getMainWindow(), text);
+			addFieldComponent(viewer);
+			return;
+		}
+		
 		if(!formItem.isFormFieldData())
 			throw new RuntimeException(getClass().getName()
 					+ ": Don't know how to add non-field " + formItem);
@@ -80,8 +105,7 @@ abstract public class AbstractObjectDataInputPanelWithCreationFromForms extends
 		int objectType = data.getObjectType();
 		String fieldTag = data.getObjectTag();
 		int dataEntryType = data.getDataEntryType();
-		addFieldWithoutLabel(createDataField(objectType, fieldTag,
-				dataEntryType));
+		addFieldWithoutLabel(createDataField(objectType, fieldTag, dataEntryType));
 	}
 
 	private ObjectDataInputField createDataField(int objectType,
