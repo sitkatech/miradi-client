@@ -46,6 +46,7 @@ import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.MeasurementSchema;
 
 public class NormalTreeRebuilder extends AbstractTreeRebuilder
 {
@@ -226,8 +227,11 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		ORefList childRefs = new ORefList();
 		Indicator indicator = Indicator.find(getProject(), parentRef);
 		childRefs.addAll(indicator.getMethodRefs());
-		childRefs.addAll(getSortedByDateMeasurementRefs(indicator));
-		childRefs.add(new UnspecifiedBaseObject(getProject().getObjectManager(), GoalSchema.getObjectType(), GoalSchema.OBJECT_NAME));
+		if(getRowColumnProvider().getRowCodesToShow().contains(MeasurementSchema.OBJECT_NAME))
+		{
+			childRefs.addAll(getSortedByDateMeasurementRefs(indicator));
+			childRefs.add(new UnspecifiedBaseObject(getProject().getObjectManager(), GoalSchema.getObjectType(), GoalSchema.OBJECT_NAME));
+		}
 		
 		return childRefs;
 	}
