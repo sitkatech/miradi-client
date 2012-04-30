@@ -1287,18 +1287,18 @@ abstract public class BaseObject
 	public static final String TAG_ID = "Id";
 	public static final String TAG_LABEL = "Label";
 	public static final String TAG_EMPTY = "EMPTY";
+	public static final String TAG_RESOURCE_ASSIGNMENT_IDS = "AssignmentIds";
+	public static final String TAG_EXPENSE_ASSIGNMENT_REFS = "ExpenseRefs";
+	public static final String TAG_PROGRESS_REPORT_REFS = "ProgressReportRefs";
+	
+	public final static String PSEUDO_TAG_WHEN_TOTAL = "EffortDatesTotal";
+	public static final String PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE = "PseudoLatestProgressReportCode";
+	public static final String PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS = "PseudoLatestProgressReportDetails";
+
 	protected static final int[] NO_OWNERS = new int[] {};
 	
 	public static final String DEFAULT_LABEL = "";
 	
-	public final static String PSEUDO_TAG_WHEN_TOTAL = "EffortDatesTotal";
-	
-	public static final String PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE = "PseudoLatestProgressReportCode";
-	public static final String PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS = "PseudoLatestProgressReportDetails";
-	public static final String TAG_RESOURCE_ASSIGNMENT_IDS = "AssignmentIds";
-	public static final String TAG_EXPENSE_ASSIGNMENT_REFS = "ExpenseRefs";
-	public static final String TAG_PROGRESS_REPORT_REFS = "ProgressReportRefs";
-
 	protected BaseId id;
 
 	protected ObjectManager objectManager;
