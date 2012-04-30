@@ -25,7 +25,6 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.OrganizationSchema;
-import org.miradi.utils.EnhancedJsonObject;
 
 public class Organization extends BaseObject
 {
@@ -34,11 +33,6 @@ public class Organization extends BaseObject
 		super(objectManager, idToUse, new OrganizationSchema());
 	}
 		
-	public Organization(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
-	{
-		super(objectManager, new BaseId(idAsInt), json, new OrganizationSchema());
-	}
-	
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{

@@ -27,7 +27,6 @@ import org.martus.util.UnicodeStringReader;
 import org.martus.util.UnicodeStringWriter;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.ids.BaseId;
-import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.ids.TaskId;
 import org.miradi.main.EAM;
@@ -68,7 +67,6 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
-import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.project.ProjectLoader;
@@ -80,7 +78,6 @@ import org.miradi.schemas.CauseSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
-import org.miradi.utils.EnhancedJsonObject;
 
 public class ObjectTestCase extends TestCaseWithProject
 {
@@ -195,8 +192,6 @@ public class ObjectTestCase extends TestCaseWithProject
 		assertTrue("current contents mismatch?", object.getField(tag).isCurrentValue(sampleData));
 		
 		assertEquals("did't set " + tag + "?", sampleData, object.getData(tag));
-		BaseObject got = createFromJson(project.getObjectManager(), object.getType(), object.toJson());
-		assertEquals("didn't jsonize " + tag + "?", object.getData(tag), got.getData(tag));
 		
 		Vector<CommandSetObjectData> commandsToClear = object.createCommandsToClear();
 		for(int i = 0; i < commandsToClear.size(); ++i)
@@ -392,179 +387,5 @@ public class ObjectTestCase extends TestCaseWithProject
 			throw new RuntimeException("Need to add sample data for " + object.getType() + ":" + tag + " type: " + field.getClass().getSimpleName());
 		}
 	}
-
-	public static BaseObject createFromJson(ObjectManager objectManager, int type, EnhancedJsonObject json) throws Exception
-	{
-		int idAsInt = json.getInt(BaseObject.TAG_ID);
-		switch(type)
-		{
-			case ObjectType.RATING_CRITERION:
-				return new RatingCriterion(objectManager, idAsInt, json);
-				
-			case ObjectType.VALUE_OPTION:
-				return new ValueOption(objectManager, idAsInt, json);
-				
-			case ObjectType.TASK:
-				return new Task(objectManager, new FactorId(idAsInt), json);
-			
-			case ObjectType.STRESS:
-				return new Stress(objectManager, new FactorId(idAsInt), json);
-	
-			case ObjectType.GROUP_BOX:
-				return new GroupBox(objectManager, new FactorId(idAsInt), json);
-	
-			case ObjectType.TEXT_BOX:
-				return new TextBox(objectManager, new FactorId(idAsInt), json);
-	
-			case ObjectType.THREAT_REDUCTION_RESULT:
-				return new ThreatReductionResult(objectManager, new FactorId(idAsInt), json);
-	
-			case ObjectType.INTERMEDIATE_RESULT:	
-				return new IntermediateResult(objectManager, new FactorId(idAsInt), json);
-	
-			case ObjectType.CAUSE:
-				return new Cause(objectManager, new FactorId(idAsInt), json);
-				
-			case ObjectType.STRATEGY:
-				return new Strategy(objectManager, new FactorId(idAsInt), json);
-				
-			case ObjectType.TARGET:
-				return new Target(objectManager, new FactorId(idAsInt), json);
-	
-			case ObjectType.VIEW_DATA:
-				return new ViewData(objectManager, idAsInt, json);
-				
-			case ObjectType.FACTOR_LINK:
-				return new FactorLink(objectManager, idAsInt, json);
-				
-			case ObjectType.PROJECT_RESOURCE:
-				return new ProjectResource(objectManager, idAsInt, json);
-				
-			case ObjectType.INDICATOR:
-				return new Indicator(objectManager, idAsInt, json);
-				
-			case ObjectType.OBJECTIVE:
-				return new Objective(objectManager, idAsInt, json);
-				
-			case ObjectType.GOAL:
-				return new Goal(objectManager, idAsInt, json);
-				
-			case ObjectType.PROJECT_METADATA:
-				return new ProjectMetadata(objectManager, idAsInt, json);
-				
-			case ObjectType.DIAGRAM_LINK:
-				return new DiagramLink(objectManager, idAsInt, json);
-				
-			case ObjectType.RESOURCE_ASSIGNMENT:
-				return new ResourceAssignment(objectManager, idAsInt, json);
-				
-			case ObjectType.ACCOUNTING_CODE:
-				return new AccountingCode(objectManager, idAsInt, json);
-				
-			case ObjectType.FUNDING_SOURCE:
-				return new FundingSource(objectManager, idAsInt, json);
-				
-			case ObjectType.KEY_ECOLOGICAL_ATTRIBUTE:
-				return new KeyEcologicalAttribute(objectManager, idAsInt, json);
-			
-			case ObjectType.DIAGRAM_FACTOR:
-				return new DiagramFactor(objectManager, idAsInt, json);
-				
-			case ObjectType.CONCEPTUAL_MODEL_DIAGRAM:
-				return new ConceptualModelDiagram(objectManager, idAsInt, json);
-			
-			case ObjectType.RESULTS_CHAIN_DIAGRAM:
-				return new ResultsChainDiagram(objectManager, idAsInt, json);
-				
-			case ObjectType.OBJECT_TREE_TABLE_CONFIGURATION:
-				return new ObjectTreeTableConfiguration(objectManager, idAsInt, json);
-				
-			case ObjectType.WWF_PROJECT_DATA:
-				return new WwfProjectData(objectManager, idAsInt, json);
-			
-			case ObjectType.COST_ALLOCATION_RULE:
-				return new CostAllocationRule(objectManager, idAsInt, json);
-				
-			case ObjectType.MEASUREMENT:
-				return new Measurement(objectManager, idAsInt, json);
-			
-			case ObjectType.THREAT_STRESS_RATING:
-				return new ThreatStressRating(objectManager, idAsInt, json);
-			
-			case ObjectType.SUB_TARGET:
-				return new SubTarget(objectManager, idAsInt, json);
-			
-			case ObjectType.PROGRESS_REPORT:
-				return new ProgressReport(objectManager, idAsInt, json);
-			
-			case ObjectType.RARE_PROJECT_DATA:
-				return new RareProjectData(objectManager, idAsInt, json);
-				
-			case ObjectType.WCS_PROJECT_DATA:
-				return new WcsProjectData(objectManager, idAsInt, json);	
-			
-			case ObjectType.TNC_PROJECT_DATA:
-				return new TncProjectData(objectManager, idAsInt, json);
-				
-			case ObjectType.FOS_PROJECT_DATA:
-				return new FosProjectData(objectManager, idAsInt, json);
-			
-			case ObjectType.ORGANIZATION:
-				return new Organization(objectManager, idAsInt, json);
-				
-			case ObjectType.WCPA_PROJECT_DATA:
-				return new WcpaProjectData(objectManager, idAsInt, json);
-	
-			case ObjectType.XENODATA:
-				return new Xenodata(objectManager, idAsInt, json);
-			
-			case ObjectType.PROGRESS_PERCENT:
-				return new ProgressPercent(objectManager, idAsInt, json);
-				
-			case ObjectType.REPORT_TEMPLATE:
-				return new ReportTemplate(objectManager, idAsInt, json);
-				
-			case ObjectType.TAGGED_OBJECT_SET:
-				return new TaggedObjectSet(objectManager, idAsInt, json);
-				
-			case ObjectType.TABLE_SETTINGS:
-				return new TableSettings(objectManager, idAsInt, json);
-				
-			case ObjectType.THREAT_RATING_COMMENTS_DATA:
-				return new ThreatRatingCommentsData(objectManager, idAsInt, json);
-				
-			case ObjectType.SCOPE_BOX:
-				return new ScopeBox(objectManager, new FactorId(idAsInt), json);
-				
-			case ObjectType.EXPENSE_ASSIGNMENT:
-				return new ExpenseAssignment(objectManager, idAsInt, json);
-				
-			case ObjectType.HUMAN_WELFARE_TARGET:
-				return new HumanWelfareTarget(objectManager, new FactorId(idAsInt), json);
-				
-			case ObjectType.IUCN_REDLIST_SPECIES:
-				return new IucnRedlistSpecies(objectManager, idAsInt, json);
-				
-			case ObjectType.OTHER_NOTABLE_SPECIES:
-				return new OtherNotableSpecies(objectManager, idAsInt, json);
-				
-			case ObjectType.AUDIENCE:
-				return new Audience(objectManager, idAsInt, json);
-			
-			case ObjectType.BUDGET_CATEGORY_ONE:
-				return new BudgetCategoryOne(objectManager, idAsInt, json);
-				
-			case ObjectType.BUDGET_CATEGORY_TWO:
-				return new BudgetCategoryTwo(objectManager, idAsInt, json);
-			
-			case ObjectType.DASHBOARD:
-				return new Dashboard(objectManager, idAsInt, json);
-			
-			case ObjectType.XSL_TEMPLATE:
-				return new XslTemplate(objectManager, idAsInt, json);
-				
-			default:
-				throw new RuntimeException("Attempted to create unknown EAMObject type " + type);
-		}
-	}
 }
+

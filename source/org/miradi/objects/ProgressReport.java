@@ -29,7 +29,6 @@ import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ProgressReportSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TaskSchema;
-import org.miradi.utils.EnhancedJsonObject;
 
 public class ProgressReport extends BaseObject
 {
@@ -38,11 +37,6 @@ public class ProgressReport extends BaseObject
 		super(objectManager, idToUse, new ProgressReportSchema());
 	}
 		
-	public ProgressReport(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
-	{
-		super(objectManager, new BaseId(idAsInt), json, new ProgressReportSchema());
-	}
-	
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{

@@ -23,7 +23,6 @@ import java.util.Collections;
 import java.util.Vector;
 
 import org.miradi.ids.BaseId;
-import org.miradi.ids.ProjectResourceId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.BaseObjectByFullNameSorter;
 import org.miradi.objecthelpers.ORef;
@@ -34,18 +33,12 @@ import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.schemas.ProjectResourceSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DoubleUtilities;
-import org.miradi.utils.EnhancedJsonObject;
 
 public class ProjectResource extends BaseObject
 {
 	public ProjectResource(ObjectManager objectManager, BaseId idToUse)
 	{
 		super(objectManager, idToUse, new ProjectResourceSchema());
-	}
-	
-	public ProjectResource(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
-	{
-		super(objectManager, new ProjectResourceId(idAsInt), json, new ProjectResourceSchema());
 	}
 	
 	@Override

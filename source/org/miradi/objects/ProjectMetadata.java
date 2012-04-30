@@ -37,7 +37,6 @@ import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DoubleUtilities;
-import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.OptionalDouble;
 
 public class ProjectMetadata extends BaseObject
@@ -47,11 +46,6 @@ public class ProjectMetadata extends BaseObject
 		super(objectManager, idToUse, new ProjectMetadataSchema());
 	}
 
-	public ProjectMetadata(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
-	{
-		super(objectManager, new BaseId(idAsInt), json, new ProjectMetadataSchema());
-	}
-	
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{

@@ -24,18 +24,12 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.WcpaProjectDataSchema;
-import org.miradi.utils.EnhancedJsonObject;
 
 public class WcpaProjectData extends BaseObject
 {
 	public WcpaProjectData(ObjectManager objectManager, BaseId id)
 	{
 		super(objectManager, id, new WcpaProjectDataSchema());
-	}
-	
-	public WcpaProjectData(ObjectManager objectManager, int idAsInt, EnhancedJsonObject jsonObject) throws Exception 
-	{
-		super(objectManager, new BaseId(idAsInt), jsonObject, new WcpaProjectDataSchema());
 	}
 	
 	@Override

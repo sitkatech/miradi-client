@@ -27,7 +27,6 @@ import org.miradi.project.Project;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.SubTargetSchema;
 import org.miradi.schemas.TargetSchema;
-import org.miradi.utils.EnhancedJsonObject;
 
 public class SubTarget extends BaseObject
 {
@@ -36,11 +35,6 @@ public class SubTarget extends BaseObject
 		super(objectManager, idToUse, new SubTargetSchema());
 	}
 		
-	public SubTarget(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
-	{
-		super(objectManager, new BaseId(idAsInt), json, new SubTargetSchema());
-	}
-	
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{

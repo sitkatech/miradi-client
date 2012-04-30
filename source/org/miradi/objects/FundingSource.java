@@ -20,24 +20,17 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
-import org.miradi.ids.FundingSourceId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.FundingSourceSchema;
-import org.miradi.utils.EnhancedJsonObject;
 
 public class FundingSource extends AbstractBudgetCategoryObject
 {
 	public FundingSource(ObjectManager objectManager, BaseId idToUse)
 	{
 		super(objectManager, idToUse, new FundingSourceSchema());
-	}
-	
-	public FundingSource(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
-	{
-		super(objectManager, new FundingSourceId(idAsInt), json, new FundingSourceSchema());
 	}
 	
 	@Override

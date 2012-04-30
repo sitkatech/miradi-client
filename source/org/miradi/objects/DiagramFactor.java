@@ -51,14 +51,6 @@ public class DiagramFactor extends BaseObject
 		setDimensionData(TAG_SIZE, getDefaultSize());
 	}
 	
-	public DiagramFactor(ObjectManager objectManager, int idToUse, EnhancedJsonObject json) throws Exception
-	{
-		super(objectManager, new DiagramFactorId(idToUse), json, new DiagramFactorSchema());
-		
-		ORef wrappedRef = ORef.createFromString(json.getString(TAG_WRAPPED_REF));
-		setRefData(TAG_WRAPPED_REF, wrappedRef);
-	}
-	
 	@Override
 	public EnhancedJsonObject toJson()
 	{

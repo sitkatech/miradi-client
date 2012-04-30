@@ -28,18 +28,12 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ThreatClassificationQuestion;
 import org.miradi.schemas.CauseSchema;
-import org.miradi.utils.EnhancedJsonObject;
 
 public class Cause extends Factor
 {
 	public Cause(ObjectManager objectManager, FactorId idToUse)
 	{
 		super(objectManager, idToUse, new CauseSchema());
-	}
-	
-	public Cause(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception
-	{
-		super(objectManager, idToUse, json, new CauseSchema());
 	}
 	
 	@Override

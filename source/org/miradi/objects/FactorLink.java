@@ -26,7 +26,6 @@ import org.miradi.project.Project;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.FactorLinkSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
-import org.miradi.utils.EnhancedJsonObject;
 
 public class FactorLink extends BaseObject
 {
@@ -35,11 +34,6 @@ public class FactorLink extends BaseObject
 		super(objectManager, id, new FactorLinkSchema());
 	}
 
-	public FactorLink(ObjectManager objectManager, int idAsInt, EnhancedJsonObject jsonObject) throws Exception 
-	{
-		super(objectManager, new BaseId(idAsInt), jsonObject, new FactorLinkSchema());
-	}
-	
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{

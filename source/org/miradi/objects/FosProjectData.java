@@ -24,18 +24,12 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.FosProjectDataSchema;
-import org.miradi.utils.EnhancedJsonObject;
 
 public class FosProjectData extends BaseObject
 {
 	public FosProjectData(ObjectManager objectManager, BaseId id)
 	{
 		super(objectManager, id, new FosProjectDataSchema());
-	}
-	
-	public FosProjectData(ObjectManager objectManager, int idAsInt, EnhancedJsonObject jsonObject) throws Exception 
-	{
-		super(objectManager, new BaseId(idAsInt), jsonObject, new FosProjectDataSchema());
 	}
 	
 	@Override

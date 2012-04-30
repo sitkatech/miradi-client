@@ -26,18 +26,12 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.ThreatReductionResultSchema;
-import org.miradi.utils.EnhancedJsonObject;
 
 public class ThreatReductionResult extends Factor
 {
 	public ThreatReductionResult(ObjectManager objectManager, FactorId idToUse)
 	{
 		super(objectManager, idToUse, new ThreatReductionResultSchema());
-	}
-	
-	public ThreatReductionResult(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception
-	{
-		super(objectManager, idToUse, json, new ThreatReductionResultSchema());
 	}
 	
 	@Override

@@ -24,7 +24,6 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.RareProjectDataSchema;
-import org.miradi.utils.EnhancedJsonObject;
 
 public class RareProjectData extends BaseObject
 {
@@ -33,11 +32,6 @@ public class RareProjectData extends BaseObject
 		super(objectManager, id, new RareProjectDataSchema());
 	}
 	
-	public RareProjectData(ObjectManager objectManager, int idAsInt, EnhancedJsonObject jsonObject) throws Exception 
-	{
-		super(objectManager, new BaseId(idAsInt), jsonObject, new RareProjectDataSchema());
-	}
-
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{

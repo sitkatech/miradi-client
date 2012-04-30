@@ -41,7 +41,6 @@ import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.CommandVector;
-import org.miradi.utils.EnhancedJsonObject;
 
 
 public class Strategy extends Factor
@@ -50,12 +49,6 @@ public class Strategy extends Factor
 	{
 		super(objectManager, idToUse, new StrategySchema());
 	}
-	
-	public Strategy(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception
-	{
-		super(objectManager, idToUse, json, new StrategySchema());
-	}
-
 	
 	public ORefList getResultsChains()
 	{

@@ -109,21 +109,6 @@ public class TestStrategy extends AbstractObjectWithBudgetDataToDeleteTestCase
 		
 	}
 	
-	public void testJson() throws Exception
-	{
-		FactorId strategyId = new FactorId(17);
-		Strategy strategy = new Strategy(getObjectManager(), strategyId);
-		strategy.setData(Strategy.TAG_STATUS, StrategyStatusQuestion.STATUS_DRAFT_CODE);
-		IdList activityIds = new IdList(TaskSchema.getObjectType());
-		activityIds.add(new BaseId(23));
-		activityIds.add(new BaseId(37));
-		strategy.setData(Strategy.TAG_ACTIVITY_IDS, activityIds.toString());
-		
-		Strategy got = (Strategy)ObjectTestCase.createFromJson(getProject().getObjectManager(), strategy.getType(), strategy.toJson());
-		assertTrue("Didn't restore status?", got.isStatusDraft());
-		assertEquals("Didn't read activities?", strategy.getActivityIds(), got.getActivityIds());
-	}
-	
 	public void testGetWorkUnits() throws Exception
 	{
 		TestIndicator.verifyGetWorkUnits(getProject(), StrategySchema.getObjectType(), Strategy.TAG_ACTIVITY_IDS);

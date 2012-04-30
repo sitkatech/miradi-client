@@ -26,7 +26,6 @@ import org.miradi.project.Project;
 import org.miradi.project.threatrating.StressBasedThreatFormula;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.schemas.ThreatStressRatingSchema;
-import org.miradi.utils.EnhancedJsonObject;
 
 public class ThreatStressRating extends BaseObject
 {
@@ -35,11 +34,6 @@ public class ThreatStressRating extends BaseObject
 		super(objectManager, idToUse, new ThreatStressRatingSchema());
 	}
 	
-	public ThreatStressRating(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
-	{
-		super(objectManager, new BaseId(idAsInt), json, new ThreatStressRatingSchema());
-	}
-
 	public boolean isActive()
 	{
 		return getBooleanData(TAG_IS_ACTIVE);

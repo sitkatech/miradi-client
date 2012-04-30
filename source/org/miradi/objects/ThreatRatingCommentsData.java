@@ -25,18 +25,12 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.ThreatRatingCommentsDataSchema;
-import org.miradi.utils.EnhancedJsonObject;
 
 public class ThreatRatingCommentsData extends BaseObject
 {
 	public ThreatRatingCommentsData(ObjectManager objectManager, BaseId id)
 	{
 		super(objectManager, id, new ThreatRatingCommentsDataSchema());
-	}
-
-	public ThreatRatingCommentsData(ObjectManager objectManager, int idAsInt, EnhancedJsonObject jsonObject) throws Exception 
-	{
-		super(objectManager, new BaseId(idAsInt), jsonObject, new ThreatRatingCommentsDataSchema());
 	}
 
 	@Override

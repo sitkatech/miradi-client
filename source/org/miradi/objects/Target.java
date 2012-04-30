@@ -31,7 +31,6 @@ import org.miradi.questions.HabitatAssociationQuestion;
 import org.miradi.schemas.StressSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.CodeList;
-import org.miradi.utils.EnhancedJsonObject;
 
 
 public class Target extends AbstractTarget
@@ -39,11 +38,6 @@ public class Target extends AbstractTarget
 	public Target(ObjectManager objectManager, FactorId idToUse)
 	{
 		super(objectManager, idToUse, new TargetSchema());
-	}
-	
-	public Target(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception
-	{
-		super(objectManager, idToUse, json, new TargetSchema());
 	}
 	
 	@Override

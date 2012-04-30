@@ -39,7 +39,6 @@ import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.CommandVector;
-import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.OptionalDouble;
 
 public class Task extends Factor
@@ -49,11 +48,6 @@ public class Task extends Factor
 		super(objectManager, idToUse, new TaskSchema());
 	}
 	
-	public Task(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception
-	{
-		super(objectManager, idToUse, json, new TaskSchema());
-	}
-		
 	public CommandVector getDeleteSelfAndSubtasksCommands(Project project) throws Exception
 	{
 		CommandVector deleteIds = new CommandVector();

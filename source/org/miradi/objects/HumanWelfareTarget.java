@@ -25,18 +25,12 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.HumanWelfareTargetSchema;
-import org.miradi.utils.EnhancedJsonObject;
 
 public class HumanWelfareTarget extends AbstractTarget
 {
 	public HumanWelfareTarget(ObjectManager objectManager, FactorId idToUse)
 	{
 		super(objectManager, idToUse, new HumanWelfareTargetSchema());
-	}
-	
-	public HumanWelfareTarget(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception
-	{
-		super(objectManager, idToUse, json, new HumanWelfareTargetSchema());
 	}
 	
 	@Override

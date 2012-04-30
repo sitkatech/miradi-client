@@ -105,22 +105,4 @@ public class TestValueOption extends TestCaseWithProject
 		assertFalse("equal to some other class?", a.equals(new Object()));
 	}
 	
-	public void testJson() throws Exception
-	{
-		BaseId id = new BaseId(283);
-		String label = "eifjjfi";
-		int numeric = -234;
-		Color color = Color.GRAY;
-		ValueOption option = new ValueOption(getObjectManager(), id);
-		option.setData(ValueOption.TAG_LABEL, label);
-		option.setData(ValueOption.TAG_NUMERIC, Integer.toString(numeric));
-		option.setData(ValueOption.TAG_COLOR, Integer.toString(color.getRGB()));
-		
-		ValueOption loaded = (ValueOption)ObjectTestCase.createFromJson(getObjectManager(), option.getType(), option.toJson());
-		assertEquals(option.getId(), loaded.getId());
-		assertEquals(option.getLabel(), loaded.getLabel());
-		assertEquals(option.getNumericValue(), loaded.getNumericValue());
-		assertEquals(option.getColor(), loaded.getColor());
-		
-	}
 }

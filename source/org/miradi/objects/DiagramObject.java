@@ -25,7 +25,6 @@ import java.util.Set;
 import java.util.Vector;
 
 import org.miradi.ids.BaseId;
-import org.miradi.ids.DiagramContentsId;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
@@ -44,7 +43,6 @@ import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.CodeList;
-import org.miradi.utils.EnhancedJsonObject;
 
 abstract public class DiagramObject extends BaseObject
 {
@@ -53,11 +51,6 @@ abstract public class DiagramObject extends BaseObject
 		super(objectManager,idToUse, schemaToUse);
 	}
 	
-	public DiagramObject(ObjectManager objectManager, int idToUse, EnhancedJsonObject json, final BaseObjectSchema schemaToUse) throws Exception
-	{
-		super(objectManager, new DiagramContentsId(idToUse), json, schemaToUse);
-	}
-
 	public HashSet<Factor> getAbstractTargets()
 	{
 		HashSet<Factor> diagramAbstractTargets = getFactorsOfType(TargetSchema.getObjectType());

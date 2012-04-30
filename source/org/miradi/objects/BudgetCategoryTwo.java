@@ -26,7 +26,6 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.BudgetCategoryTwoSchema;
-import org.miradi.utils.EnhancedJsonObject;
 
 public class BudgetCategoryTwo extends AbstractBudgetCategoryObject
 {
@@ -35,11 +34,6 @@ public class BudgetCategoryTwo extends AbstractBudgetCategoryObject
 		super(objectManager, idToUse, new BudgetCategoryTwoSchema());
 	}
 		
-	public BudgetCategoryTwo(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
-	{
-		super(objectManager, new BaseId(idAsInt), json, new BudgetCategoryTwoSchema());
-	}
-	
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{

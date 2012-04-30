@@ -41,7 +41,6 @@ import org.miradi.schemas.ProgressPercentSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.CommandVector;
-import org.miradi.utils.EnhancedJsonObject;
 
 abstract public class Desire extends BaseObject
 {
@@ -50,11 +49,6 @@ abstract public class Desire extends BaseObject
 		super(objectManager, idToUse, schemaToUse);
 	}
 
-	public Desire(ObjectManager objectManager, BaseId idToUse, EnhancedJsonObject json, final BaseObjectSchema schemaToUse) throws Exception
-	{
-		super(objectManager, idToUse, json, schemaToUse);
-	}
-	
 	@Override
 	public CommandVector createCommandsToDeleteChildren() throws Exception
 	{

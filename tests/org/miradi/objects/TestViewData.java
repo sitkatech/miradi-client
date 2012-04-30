@@ -43,9 +43,6 @@ public class TestViewData extends TestCaseWithProject
 		int tab = 6;
 		vd.setData(ViewData.TAG_CURRENT_TAB, Integer.toString(tab));
 		assertEquals(6, new Integer(vd.getData(ViewData.TAG_CURRENT_TAB)).intValue());
-		
-		ViewData got = new ViewData(getObjectManager(), 55, vd.toJson());
-		assertEquals(vd.getData(ViewData.TAG_CURRENT_TAB), got.getData(ViewData.TAG_CURRENT_TAB));
 	}
 
 	
@@ -57,9 +54,6 @@ public class TestViewData extends TestCaseWithProject
 		String sampleMode = "Brainstorm";
 		vd.setData(modeTag, sampleMode);
 		assertEquals("Set/get didn't work?", sampleMode, vd.getData(modeTag));
-		
-		ViewData got = (ViewData)ObjectTestCase.createFromJson(getObjectManager(), vd.getType(), vd.toJson());
-		assertEquals("json didn't preserve mode?", vd.getData(modeTag), got.getData(modeTag));
 	}
 	
 	public void testBrainstormNodeIds() throws Exception
@@ -70,9 +64,6 @@ public class TestViewData extends TestCaseWithProject
 		ORefList sampleORefs = createSampleORefList();
 		vd.setData(ORefsTag, sampleORefs.toString());
 		assertEquals("Set/get didn't work?", sampleORefs, new ORefList(vd.getData(ORefsTag)));
-
-		ViewData got = (ViewData)ObjectTestCase.createFromJson(getObjectManager(), vd.getType(), vd.toJson());
-		assertEquals("json didn't preserve ids?", vd.getData(ORefsTag), got.getData(ORefsTag));
 	}
 
 	private ORefList createSampleORefList()

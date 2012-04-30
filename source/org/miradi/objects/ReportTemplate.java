@@ -24,7 +24,6 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.ReportTemplateSchema;
-import org.miradi.utils.EnhancedJsonObject;
 
 public class ReportTemplate extends BaseObject
 {
@@ -33,11 +32,6 @@ public class ReportTemplate extends BaseObject
 		super(objectManager, idToUse, new ReportTemplateSchema(objectManager.getProject()));
 	}
 		
-	public ReportTemplate(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
-	{
-		super(objectManager, new BaseId(idAsInt), json, new ReportTemplateSchema(objectManager.getProject()));
-	}
-	
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{

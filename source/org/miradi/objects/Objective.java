@@ -29,7 +29,6 @@ import org.miradi.schemas.IntermediateResultSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.ThreatReductionResultSchema;
-import org.miradi.utils.EnhancedJsonObject;
 
 
 public class Objective extends Desire
@@ -37,11 +36,6 @@ public class Objective extends Desire
 	public Objective(ObjectManager objectManager, BaseId id)
 	{
 		super(objectManager, new ObjectiveId(id.asInt()), new ObjectiveSchema());
-	}
-	
-	public Objective(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
-	{
-		super(objectManager, new ObjectiveId(idAsInt), json, new ObjectiveSchema());
 	}
 	
 	@Override

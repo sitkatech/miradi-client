@@ -29,7 +29,6 @@ import org.miradi.project.Project;
 import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.FundingSourceSchema;
-import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.OptionalDouble;
 
 public class ExpenseAssignment extends Assignment
@@ -37,11 +36,6 @@ public class ExpenseAssignment extends Assignment
 	public ExpenseAssignment(ObjectManager objectManager, BaseId idToUse)
 	{
 		super(objectManager, idToUse, new ExpenseAssignmentSchema());
-	}
-		
-	public ExpenseAssignment(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
-	{
-		super(objectManager, new BaseId(idAsInt), json, new ExpenseAssignmentSchema());
 	}
 		
 	@Override

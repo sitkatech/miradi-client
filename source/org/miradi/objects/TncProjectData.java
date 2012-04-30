@@ -26,18 +26,12 @@ import org.miradi.project.Project;
 import org.miradi.questions.ProjectSharingQuestion;
 import org.miradi.schemas.TncProjectDataSchema;
 import org.miradi.utils.CodeList;
-import org.miradi.utils.EnhancedJsonObject;
 
 public class TncProjectData extends BaseObject
 {
 	public TncProjectData(ObjectManager objectManager, BaseId id)
 	{
 		super(objectManager, id, new TncProjectDataSchema());
-	}
-	
-	public TncProjectData(ObjectManager objectManager, int idAsInt, EnhancedJsonObject jsonObject) throws Exception 
-	{
-		super(objectManager, new BaseId(idAsInt), jsonObject, new TncProjectDataSchema());
 	}
 	
 	public CodeList getOrganizationalPriorityCodes()

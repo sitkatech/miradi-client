@@ -25,7 +25,6 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.GroupBoxSchema;
-import org.miradi.utils.EnhancedJsonObject;
 
 public class GroupBox extends Factor
 {
@@ -34,11 +33,6 @@ public class GroupBox extends Factor
 		super(objectManager, idToUse, new GroupBoxSchema());
 	}
 		
-	public GroupBox(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception
-	{
-		super(objectManager, idToUse, json, new GroupBoxSchema());
-	}
-	
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{

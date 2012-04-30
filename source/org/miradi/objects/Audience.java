@@ -25,7 +25,6 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.AudienceSchema;
-import org.miradi.utils.EnhancedJsonObject;
 
 public class Audience extends BaseObject
 {
@@ -34,11 +33,6 @@ public class Audience extends BaseObject
 		super(objectManager, idToUse, new AudienceSchema());
 	}
 		
-	public Audience(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
-	{
-		super(objectManager, new BaseId(idAsInt), json, new AudienceSchema());
-	}
-	
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{

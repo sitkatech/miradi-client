@@ -25,18 +25,12 @@ import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.MeasurementSchema;
-import org.miradi.utils.EnhancedJsonObject;
 
 public class Measurement extends BaseObject
 {
 	public Measurement(ObjectManager objectManager, BaseId idToUse)
 	{
 		super(objectManager, idToUse, new MeasurementSchema());
-	}
-	
-	public Measurement(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
-	{
-		super(objectManager, new BaseId(idAsInt), json, new MeasurementSchema());
 	}
 	
 	@Override

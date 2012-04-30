@@ -25,7 +25,6 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.XslTemplateSchema;
-import org.miradi.utils.EnhancedJsonObject;
 
 public class XslTemplate extends BaseObject
 {
@@ -34,11 +33,6 @@ public class XslTemplate extends BaseObject
 		super(objectManager, idToUse, new XslTemplateSchema());
 	}
 		
-	public XslTemplate(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
-	{
-		super(objectManager, new BaseId(idAsInt), json, new XslTemplateSchema());
-	}
-	
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
