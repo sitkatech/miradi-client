@@ -114,7 +114,6 @@ public class CommandExecutor
 		return true;
 	}
 
-	// FIXME urgent: Probably still need this in some form
 	private boolean shouldUpdateLastModfiedTime(Command command)
 	{
 		if (command.getCommandName().equals(CommandDeleteObject.COMMAND_NAME))
