@@ -60,7 +60,7 @@ abstract public class UpperPanelBaseObjectTable extends EditableBaseObjectTable 
 		singleLineRendererOrEditorFactory = new SingleLineObjectTableCellEditorOrRendererFactory(this, fontProvider);
 	}
 	
-	// FIXME:urgent: This code no longer has any effect, so any useful bits
+	// FIXME urgent: This code no longer has any effect, so any useful bits
 	// need to be moved into getCellEditor/Renderer
 //	@Override
 //	public void rebuildColumnEditorsAndRenderers()
