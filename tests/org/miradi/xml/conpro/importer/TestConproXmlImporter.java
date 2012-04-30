@@ -21,6 +21,8 @@ package org.miradi.xml.conpro.importer;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
@@ -450,11 +452,9 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		FileInputStreamWithSeek fileInputStream = new FileInputStreamWithSeek(firstExportedXmlFile); 
 		try
 		{
-			//FIXME urgent: this is a temp method to output the xml into a file. remove when class is done
-			// maybe use a runtime flag to decide whether to putput for debugging or not?
-			//The first time this is needed again while debugging conpro use the current debugging flag and make 
-			//sure the .xml file is placed in the project dir.
-			//OutputToFileForDevelopment(fileInputStream);
+			if(shouldOutputXmlForDebugging)
+				outputToFileForDebugging(fileInputStream);
+			
 			conProXmlImporter.importConProProject(fileInputStream);
 		}
 		finally
@@ -463,20 +463,21 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		}
 	}
 
-//	private void OutputToFileForDevelopment(FileInputStreamWithSeek fileInputStream) throws FileNotFoundException, IOException
-//	{
-//		File outFile = new File("c:\\conproImportTempFile.xml");
-//		FileOutputStream out = new FileOutputStream(outFile);
-//		byte buf[]=new byte[1024];
-//		int len;
-//		while((len=fileInputStream.read(buf))>0)
-//		{
-//			out.write(buf,0,len);
-//		}
-//		out.close();
-//		
-//		fileInputStream.seek(0);
-//	}
+	private void outputToFileForDebugging(FileInputStreamWithSeek fileInputStream) throws FileNotFoundException, IOException
+	{
+		File outFile = File.createTempFile("$$$ConproXml", "xml");
+		FileOutputStream out = new FileOutputStream(outFile);
+		byte buf[]=new byte[1024];
+		int len;
+		while((len=fileInputStream.read(buf))>0)
+		{
+			out.write(buf,0,len);
+		}
+		out.close();
+		EAM.logDebug("Conpro XML sent to " + outFile.getAbsolutePath());
+		
+		fileInputStream.seek(0);
+	}
 
 	private void exportProject(File afterXmlOutFile, ProjectForTesting projectToExport) throws Exception
 	{
@@ -703,6 +704,8 @@ public class TestConproXmlImporter extends TestCaseWithProject
 			projectAfterImport.close();
 		}
 	}
+	
+	private static boolean shouldOutputXmlForDebugging = false;
 	
 	private static final String CONPRO_PROJECT_ID = "4444";
 	private static final String PROJECT_FOR_IMPORTING_NAME_TAG = "ForImporting";
