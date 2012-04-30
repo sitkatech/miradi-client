@@ -25,7 +25,6 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.IucnRedlistSpeciesSchema;
-import org.miradi.utils.EnhancedJsonObject;
 
 public class IucnRedlistSpecies extends BaseObject
 {
@@ -34,11 +33,6 @@ public class IucnRedlistSpecies extends BaseObject
 		super(objectManager, idToUse, new IucnRedlistSpeciesSchema());
 	}
 		
-	public IucnRedlistSpecies(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
-	{
-		super(objectManager, new BaseId(idAsInt), json, new IucnRedlistSpeciesSchema());
-	}
-	
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{

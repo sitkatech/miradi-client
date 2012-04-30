@@ -42,18 +42,12 @@ import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.TaggedObjectSetSchema;
 import org.miradi.utils.CommandVector;
-import org.miradi.utils.EnhancedJsonObject;
 
 abstract public class Factor extends BaseObject
 {
 	public Factor(ObjectManager objectManager, FactorId idToUse, BaseObjectSchema schemaToUse)
 	{
 		super(objectManager, idToUse, schemaToUse);
-	}
-
-	public Factor(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json, BaseObjectSchema schemaToUse) throws Exception
-	{
-		super(objectManager, idToUse, json, schemaToUse);
 	}
 
 	public FactorId getFactorId()

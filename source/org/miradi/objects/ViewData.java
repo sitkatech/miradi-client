@@ -31,18 +31,12 @@ import org.miradi.project.Project;
 import org.miradi.questions.DiagramModeQuestion;
 import org.miradi.schemas.ViewDataSchema;
 import org.miradi.utils.CodeList;
-import org.miradi.utils.EnhancedJsonObject;
 
 public class ViewData extends BaseObject
 {
 	public ViewData(ObjectManager objectManager, BaseId idToUse)
 	{
 		super(objectManager, idToUse, new ViewDataSchema(objectManager.getProject()));
-	}
-
-	public ViewData(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
-	{
-		super(objectManager, new BaseId(idAsInt), json, new ViewDataSchema(objectManager.getProject()));
 	}
 
 	public Command[] buildCommandsToAddNode(ORef oRefToAdd) throws ParseException

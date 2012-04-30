@@ -33,7 +33,6 @@ import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.TableSettingsSchema;
 import org.miradi.utils.CodeList;
-import org.miradi.utils.EnhancedJsonObject;
 
 public class TableSettings extends BaseObject
 {
@@ -42,11 +41,6 @@ public class TableSettings extends BaseObject
 		super(objectManager, idToUse, new TableSettingsSchema());
 	}
 		
-	public TableSettings(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
-	{
-		super(objectManager, new BaseId(idAsInt), json, new TableSettingsSchema());
-	}
-	
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{

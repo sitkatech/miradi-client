@@ -21,7 +21,6 @@ package org.miradi.objects;
 
 import java.util.Vector;
 
-import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.ids.IndicatorId;
 import org.miradi.objectdata.CodeToUserStringMapData;
@@ -48,7 +47,6 @@ import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.schemas.ThreatReductionResultSchema;
 import org.miradi.utils.CommandVector;
-import org.miradi.utils.EnhancedJsonObject;
 
 public class Indicator extends BaseObject
 {
@@ -57,11 +55,6 @@ public class Indicator extends BaseObject
 		super(objectManager, idToUse, createSchema());
 	}
 
-	public Indicator(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
-	{
-		super(objectManager, new BaseId(idAsInt), json, createSchema());
-	}
-	
 	private static IndicatorSchema createSchema()
 	{
 		return new IndicatorSchema();

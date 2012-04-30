@@ -24,18 +24,12 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.WcsProjectDataSchema;
-import org.miradi.utils.EnhancedJsonObject;
 
 public class WcsProjectData extends BaseObject
 {
 	public WcsProjectData(ObjectManager objectManager, BaseId id)
 	{
 		super(objectManager, id, new WcsProjectDataSchema());
-	}
-	
-	public WcsProjectData(ObjectManager objectManager, int idAsInt, EnhancedJsonObject jsonObject) throws Exception 
-	{
-		super(objectManager, new BaseId(idAsInt), jsonObject, new WcsProjectDataSchema());
 	}
 	
 	@Override

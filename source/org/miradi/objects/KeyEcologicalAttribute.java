@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
-import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.ids.KeyEcologicalAttributeId;
 import org.miradi.objecthelpers.ORef;
@@ -33,7 +32,6 @@ import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.KeyEcologicalAttributeSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.CodeList;
-import org.miradi.utils.EnhancedJsonObject;
 
 public class KeyEcologicalAttribute extends BaseObject
 {
@@ -42,11 +40,6 @@ public class KeyEcologicalAttribute extends BaseObject
 		super(objectManager, idToUse, new KeyEcologicalAttributeSchema());
 	}
 
-	public KeyEcologicalAttribute(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
-	{
-		super(objectManager, new BaseId(idAsInt), json, new KeyEcologicalAttributeSchema());
-	}
-	
 	@Override
 	public int getAnnotationType(String tag)
 	{

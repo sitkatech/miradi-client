@@ -27,24 +27,21 @@ import java.util.HashMap;
 import java.util.NoSuchElementException;
 import java.util.Vector;
 
-
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.ids.IdList;
-import org.miradi.legacyprojects.DataUpgrader;
-import org.miradi.legacyprojects.JSONFile;
-import org.miradi.legacyprojects.ObjectManifest;
 import org.miradi.legacyprojects.migrations.MigrationsForMiradi3;
 import org.miradi.legacyprojects.migrations.MigrationsOlderThanMiradiVersion2;
 import org.miradi.objectdata.BooleanData;
+import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objecthelpers.CodeToUserStringMap;
-import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramLink;
+import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.schemas.CauseSchema;
+import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.MeasurementSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.StressSchema;
@@ -1147,9 +1144,8 @@ public class TestDataUpgrader extends AbstractMigrationTestCase
 			BaseId baseId = diagramLinks[i];
 			String idAsString = Integer.toString(baseId.asInt());
 			EnhancedJsonObject diagramLinkJson = DataUpgrader.readFile(new File(diagramLinkDir, idAsString));
-			DiagramLink diagramLink = new DiagramLink(getObjectManager(), baseId.asInt(), diagramLinkJson);
-			int fromId = diagramLink.getFromDiagramFactorId().asInt();
-			int toId = diagramLink.getToDiagramFactorId().asInt();
+			int fromId = diagramLinkJson.getInt(DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID);
+			int toId = diagramLinkJson.getInt(DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID);
 
 			if (toId == rcTarget28Wrapper)
 				assertEquals("the from is not correct?", rcTarget27Wrapper, fromId);
@@ -1366,8 +1362,7 @@ public class TestDataUpgrader extends AbstractMigrationTestCase
 		EnhancedJsonObject json = new EnhancedJsonObject(readFile(object14File));
 		int id = json.getInt("Id");
 		assertEquals("wrong object id?", id, 14);
-		ConceptualModelDiagram diagramContents = new ConceptualModelDiagram(getObjectManager(), id, json);
-		IdList allDiagramFactorIds = diagramContents.getAllDiagramFactorIds();
+		IdList allDiagramFactorIds = json.optIdList(DiagramFactorSchema.getObjectType(), DiagramObject.TAG_DIAGRAM_FACTOR_IDS);
 		assertEquals("wrong id count?", 3, allDiagramFactorIds.size());
 		
 		assertTrue("missing 676?", allDiagramFactorIds.contains(new BaseId(676)));
@@ -1425,26 +1420,22 @@ public class TestDataUpgrader extends AbstractMigrationTestCase
 		assertTrue("diagram link file 135 exists?", file1.exists());
 		
 		EnhancedJsonObject json1 = new EnhancedJsonObject(readFile(file1));
-		DiagramLink diagramLink = new DiagramLink(getObjectManager(), 135, json1);
-		assertEquals("same wrapped id?", 57, diagramLink.getWrappedId().asInt());
-		String fromDiagramLinkId = diagramLink.getData(DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID);
-		String toDiagramLinkId = diagramLink.getData(DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID);
-		assertEquals("same from diagram link id?", Integer.toString(93), fromDiagramLinkId);
-		assertEquals("same from diagram link id?", Integer.toString(94), toDiagramLinkId);
+		assertEquals("same wrapped id?", 57, json1.getId(DiagramLink.TAG_WRAPPED_ID).asInt());
+		BaseId fromDiagramLinkId = json1.getId(DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID);
+		BaseId toDiagramLinkId = json1.getId(DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID);
+		assertEquals("same from diagram link id?", 93, fromDiagramLinkId.asInt());
+		assertEquals("same from diagram link id?", 94, toDiagramLinkId.asInt());
 	
 		
 		File file2 = new File(objects13Dir, "136");
 		assertTrue("diagram link file 136 exists?", file2.exists());
 		
 		EnhancedJsonObject json2 = new EnhancedJsonObject(readFile(file2));
-		DiagramLink diagramLink2 = new DiagramLink(getObjectManager(), 136, json2);
-		assertEquals("same wrapped id?", 56, diagramLink2.getWrappedId().asInt());
-		String fromDiagramLinkId2 = diagramLink2.getData(DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID);
-		String toDiagramLinkId2 = diagramLink2.getData(DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID);
-		assertEquals("same from diagram link id?", Integer.toString(91), fromDiagramLinkId2);
-		assertEquals("same from diagram link id?", Integer.toString(92), toDiagramLinkId2);
-	
-	
+		assertEquals("same wrapped id?", 56, json2.getId(DiagramLink.TAG_WRAPPED_ID).asInt());
+		BaseId fromDiagramLinkId2 = json2.getId(DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID);
+		BaseId toDiagramLinkId2 = json2.getId(DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID);
+		assertEquals("same from diagram link id?", 91, fromDiagramLinkId2.asInt());
+		assertEquals("same from diagram link id?", 92, toDiagramLinkId2.asInt());
 	}
 	
 	public void testCreateDiagramFactorsFromRawFactors() throws Exception

@@ -24,18 +24,12 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.ResultsChainDiagramSchema;
-import org.miradi.utils.EnhancedJsonObject;
 
 public class ResultsChainDiagram extends DiagramObject
 {
 	public ResultsChainDiagram(ObjectManager objectManager, BaseId idToUse)
 	{
 		super(objectManager, idToUse, new ResultsChainDiagramSchema());
-	}
-
-	public ResultsChainDiagram(ObjectManager objectManager, int idToUse, EnhancedJsonObject json) throws Exception
-	{
-		super(objectManager, idToUse, json, new ResultsChainDiagramSchema());
 	}
 
 	@Override

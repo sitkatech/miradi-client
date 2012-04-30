@@ -28,11 +28,10 @@ import org.jgraph.graph.GraphConstants;
 import org.miradi.ids.IdAssigner;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
-import org.miradi.main.MiradiTestCase;
 import org.miradi.main.MainWindow;
+import org.miradi.main.MiradiTestCase;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Target;
 import org.miradi.project.ProjectForTesting;
@@ -130,21 +129,6 @@ public class TestDiagramFactor extends MiradiTestCase
 		assertEquals("node size height incorrect?", 60.0, target.getSize().getHeight(), TOLERANCE);
 	}
 	
-	public void testJson() throws Exception
-	{
-		FactorCell factorCell = project.createFactorCell(ObjectType.CAUSE);
-		DiagramFactor diagramFactor = factorCell.getDiagramFactor();
-		diagramFactor.setLocation(new Point(100, 200));
-		diagramFactor.setSize(new Dimension(50, 75));
-		
-		DiagramFactor diagramFactor2 = new DiagramFactor(project.getObjectManager(), diagramFactor.getDiagramFactorId().asInt(), diagramFactor.toJson());
-		
-		assertEquals("location", diagramFactor.getLocation(), diagramFactor2.getLocation());
-		assertEquals("size", diagramFactor.getSize(), diagramFactor2.getSize());
-		assertEquals("id", diagramFactor.getDiagramFactorId(), diagramFactor2.getDiagramFactorId());
-		assertEquals("wrapped id", diagramFactor.getWrappedId(), diagramFactor2.getWrappedId());
-	}
-
 	static final double TOLERANCE = 0.00;
 	
 	ProjectForTesting project;

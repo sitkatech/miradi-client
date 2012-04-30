@@ -48,15 +48,6 @@ public class DiagramLink extends BaseObject
 		super(objectManager, new DiagramLinkId(idToUse.asInt()), new DiagramLinkSchema());
 	}
 	
-	public DiagramLink(ObjectManager objectManager, int idToUse, EnhancedJsonObject json) throws Exception
-	{
-		super(objectManager, new DiagramLinkId(idToUse), json, new DiagramLinkSchema());
-		
-		setData(TAG_WRAPPED_ID, json.getId(TAG_WRAPPED_ID).toString());
-		setData(TAG_FROM_DIAGRAM_FACTOR_ID, json.getId(TAG_FROM_DIAGRAM_FACTOR_ID).toString());
-		setData(TAG_TO_DIAGRAM_FACTOR_ID, json.getId(TAG_TO_DIAGRAM_FACTOR_ID).toString());
-	}
-	
 	@Override
 	public EnhancedJsonObject toJson()
 	{

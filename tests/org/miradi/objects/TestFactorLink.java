@@ -41,16 +41,6 @@ public class TestFactorLink extends ObjectTestCase
 		verifyFields(ObjectType.FACTOR_LINK);
 	}
 	
-	public void testToJson() throws Exception
-	{
-		FactorLink original = createFactorLink();
-		EnhancedJsonObject json = original.toJson();
-		FactorLink gotBack = (FactorLink)ObjectTestCase.createFromJson(getProject().getObjectManager(), original.getType(), json);
-		assertEquals("wrong id?", original.getId(), gotBack.getId());
-		assertEquals("wrong from?", original.getFromFactorRef(), gotBack.getFromFactorRef());
-		assertEquals("wrong to?", original.getToFactorRef(), gotBack.getToFactorRef());
-	}
-
 	private FactorLink createFactorLink() throws Exception
 	{
 		DiagramFactor cause1 = getProject().createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);

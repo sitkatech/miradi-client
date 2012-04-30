@@ -179,14 +179,6 @@ public class TestTask extends AbstractObjectWithBudgetDataToDeleteTestCase
 		assertEquals("modified the actual list?", 2, parent.getSubtaskIdList().size());
 	}
 	
-	public void testJson() throws Exception
-	{
-		Task parent = createBasicTree();
-		
-		Task got = (Task)ObjectTestCase.createFromJson(getObjectManager(), parent.getType(), parent.toJson());
-		assertEquals("wrong count?", parent.getSubtaskCount(), got.getSubtaskCount());
-	}
-	
 	public void testGetChildTaskTypeCode()
 	{
 		assertEquals(TaskSchema.ACTIVITY_NAME, Task.getChildTaskTypeCode(StrategySchema.getObjectType()));

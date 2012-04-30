@@ -43,7 +43,6 @@ import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.KeyEcologicalAttributeSchema;
 import org.miradi.schemas.SubTargetSchema;
 import org.miradi.utils.CodeList;
-import org.miradi.utils.EnhancedJsonObject;
 
 abstract public class AbstractTarget extends Factor
 {
@@ -52,11 +51,6 @@ abstract public class AbstractTarget extends Factor
 		super(objectManager, idToUse, schemaToUse);
 	}
 	
-	public AbstractTarget(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json, final BaseObjectSchema schemaToUse) throws Exception
-	{
-		super(objectManager, idToUse, json, schemaToUse);
-	}
-
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{

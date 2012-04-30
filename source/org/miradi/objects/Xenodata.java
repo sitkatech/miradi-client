@@ -24,7 +24,6 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.XenodataSchema;
-import org.miradi.utils.EnhancedJsonObject;
 
 public class Xenodata extends BaseObject
 {
@@ -33,11 +32,6 @@ public class Xenodata extends BaseObject
 		super(objectManager, idToUse, new XenodataSchema());
 	}
 		
-	public Xenodata(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
-	{
-		super(objectManager, new BaseId(idAsInt), json, new XenodataSchema());
-	}
-	
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{

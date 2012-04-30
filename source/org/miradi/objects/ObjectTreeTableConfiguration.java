@@ -29,18 +29,12 @@ import org.miradi.questions.StrategyObjectiveTreeOrderQuestion;
 import org.miradi.questions.WorkPlanVisibleRowsQuestion;
 import org.miradi.schemas.ObjectTreeTableConfigurationSchema;
 import org.miradi.utils.CodeList;
-import org.miradi.utils.EnhancedJsonObject;
 
 public class ObjectTreeTableConfiguration extends BaseObject implements PlanningTreeRowColumnProvider
 {
 	public ObjectTreeTableConfiguration(ObjectManager objectManager, BaseId id)
 	{
 		super(objectManager, id, new ObjectTreeTableConfigurationSchema(objectManager.getProject()));
-	}
-	
-	public ObjectTreeTableConfiguration(ObjectManager objectManager, int idAsInt, EnhancedJsonObject jsonObject) throws Exception 
-	{
-		super(objectManager, new BaseId(idAsInt), jsonObject, new ObjectTreeTableConfigurationSchema(objectManager.getProject()));
 	}
 	
 	public CodeList getRowCodesToShow() throws Exception

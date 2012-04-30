@@ -26,7 +26,6 @@ import org.miradi.objecthelpers.ORefSet;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.TaggedObjectSetSchema;
-import org.miradi.utils.EnhancedJsonObject;
 
 public class TaggedObjectSet extends BaseObject
 {
@@ -35,11 +34,6 @@ public class TaggedObjectSet extends BaseObject
 		super(objectManager, idToUse, new TaggedObjectSetSchema());
 	}
 		
-	public TaggedObjectSet(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
-	{
-		super(objectManager, new BaseId(idAsInt), json, new TaggedObjectSetSchema());
-	}
-	
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{

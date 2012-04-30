@@ -29,7 +29,6 @@ import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.utils.DateRange;
-import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.OptionalDouble;
 
 public class ResourceAssignment extends Assignment
@@ -37,11 +36,6 @@ public class ResourceAssignment extends Assignment
 	public ResourceAssignment(ObjectManager objectManager, BaseId idToUse)
 	{
 		super(objectManager, new ResourceAssignmentId(idToUse.asInt()), new ResourceAssignmentSchema());
-	}
-	
-	public ResourceAssignment(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
-	{
-		super(objectManager, new ResourceAssignmentId(idAsInt), json, new ResourceAssignmentSchema());
 	}
 	
 	@Override

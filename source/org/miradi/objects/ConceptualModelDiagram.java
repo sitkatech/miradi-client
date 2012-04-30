@@ -30,18 +30,12 @@ import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.StrategySchema;
-import org.miradi.utils.EnhancedJsonObject;
 
 public class ConceptualModelDiagram extends DiagramObject
 {
 	public ConceptualModelDiagram(ObjectManager objectManager, BaseId idToUse)
 	{
 		super(objectManager, idToUse, new ConceptualModelDiagramSchema());
-	}
-	
-	public ConceptualModelDiagram(ObjectManager objectManager, int idToUse, EnhancedJsonObject json) throws Exception
-	{
-		super(objectManager, idToUse, json, new ConceptualModelDiagramSchema());
 	}
 	
 	@Override

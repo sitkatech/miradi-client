@@ -26,7 +26,6 @@ import org.miradi.project.Project;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ProgressPercentSchema;
-import org.miradi.utils.EnhancedJsonObject;
 
 public class ProgressPercent extends BaseObject
 {
@@ -35,11 +34,6 @@ public class ProgressPercent extends BaseObject
 		super(objectManager, idToUse, new ProgressPercentSchema());
 	}
 		
-	public ProgressPercent(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
-	{
-		super(objectManager, new BaseId(idAsInt), json, new ProgressPercentSchema());
-	}
-	
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{

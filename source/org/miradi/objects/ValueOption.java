@@ -26,7 +26,6 @@ import org.miradi.main.EAM;
 import org.miradi.project.ObjectManager;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.schemas.ValueOptionSchema;
-import org.miradi.utils.EnhancedJsonObject;
 
 public class ValueOption extends BaseObject
 {
@@ -44,11 +43,6 @@ public class ValueOption extends BaseObject
 		setData(TAG_LABEL, labelToUse);
 		setData(TAG_NUMERIC, Integer.toString(numericToUse));
 		setData(TAG_COLOR, Integer.toString(colorToUse.getRGB()));
-	}
-	
-	public ValueOption(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
-	{
-		super(objectManager, new BaseId(idAsInt), json, new ValueOptionSchema());
 	}
 	
 	@Override

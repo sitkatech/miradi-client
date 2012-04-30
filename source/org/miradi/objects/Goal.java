@@ -26,7 +26,6 @@ import org.miradi.project.Project;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.TargetSchema;
-import org.miradi.utils.EnhancedJsonObject;
 
 
 public class Goal extends Desire 
@@ -34,11 +33,6 @@ public class Goal extends Desire
 	public Goal(ObjectManager objectManager, BaseId idToUse)
 	{
 		super(objectManager, idToUse, new GoalSchema());
-	}
-	
-	public Goal(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
-	{
-		super(objectManager, new BaseId(idAsInt), json, new GoalSchema());
 	}
 	
 	@Override

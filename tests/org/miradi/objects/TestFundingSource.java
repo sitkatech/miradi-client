@@ -60,8 +60,6 @@ public class TestFundingSource extends ObjectTestCase
 		FundingSource fundingSource = new FundingSource(getObjectManager(), new BaseId(22));
 		assertEquals(tag + " didn't default properly?", "", fundingSource.getData(tag));
 		fundingSource.setData(tag, value);
-		FundingSource got = (FundingSource)ObjectTestCase.createFromJson(project.getObjectManager(), fundingSource.getType(), fundingSource.toJson());
-		assertEquals(tag + " didn't survive json?", fundingSource.getData(tag), got.getData(tag));
 	}
 	
 	ProjectForTesting project;

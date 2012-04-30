@@ -29,18 +29,12 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.schemas.StressSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.ThreatStressRatingSchema;
-import org.miradi.utils.EnhancedJsonObject;
 
 public class Stress extends Factor
 {
 	public Stress(ObjectManager objectManager, FactorId idToUse)
 	{
 		super(objectManager, idToUse, new StressSchema());
-	}
-	
-	public Stress(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception
-	{
-		super(objectManager, idToUse, json, new StressSchema());
 	}
 	
 	@Override

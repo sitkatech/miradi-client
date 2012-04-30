@@ -34,7 +34,6 @@ import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
-import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.OptionalDouble;
 
 abstract public class Assignment extends BaseObject
@@ -42,11 +41,6 @@ abstract public class Assignment extends BaseObject
 	public Assignment(ObjectManager objectManagerToUse, BaseId idToUse, final BaseObjectSchema schema)
 	{
 		super(objectManagerToUse, idToUse, schema);
-	}
-	
-	public Assignment(ObjectManager objectManager, BaseId idToUse, EnhancedJsonObject json, final BaseObjectSchema schema) throws Exception
-	{
-		super(objectManager, idToUse, json, schema);
 	}
 	
 	public DateUnitEffortList getDateUnitEffortList() throws Exception

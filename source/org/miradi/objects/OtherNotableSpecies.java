@@ -25,7 +25,6 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.OtherNotableSpeciesSchema;
-import org.miradi.utils.EnhancedJsonObject;
 
 public class OtherNotableSpecies extends BaseObject
 {
@@ -34,11 +33,6 @@ public class OtherNotableSpecies extends BaseObject
 		super(objectManager, idToUse, new OtherNotableSpeciesSchema());
 	}
 		
-	public OtherNotableSpecies(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
-	{
-		super(objectManager, new BaseId(idAsInt), json, new OtherNotableSpeciesSchema());
-	}
-	
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
