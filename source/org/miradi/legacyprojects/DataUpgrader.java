@@ -516,7 +516,7 @@ public class DataUpgrader
 
 	private static void createProjectZipFile(File projectDirectory, File destinationZip) throws FileNotFoundException, Exception, IOException
 	{
-		// FIXME: This should just do a raw recursive zip of the directory
+		// FIXME urgent: This should just do a raw recursive zip of the directory
 		throw new RuntimeException("Writing MPZ files is not supported");
 	}
 

@@ -119,7 +119,7 @@ public class TestMpzToMpfConverter extends TestCaseWithProject
 			assertEquals("71 - 90%", thresholdMap.getUserString("3"));
 			assertNotContains("Didn't XML-encode?", "<", thresholdMap.getUserString("1"));
 
-			//FIXME: Need to spot-check various other items
+			//FIXME urgent: Need to spot-check various other items
 			// text field with newlines
 			// numeric field
 			// date field
