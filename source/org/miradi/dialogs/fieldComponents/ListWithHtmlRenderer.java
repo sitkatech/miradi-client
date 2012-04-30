@@ -25,7 +25,6 @@ import javax.swing.DefaultListCellRenderer;
 import org.martus.swing.UiList;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.XmlUtilities2;
 
 public class ListWithHtmlRenderer extends UiList

@@ -42,7 +42,6 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.TaggedObjectSetQuestion;
 import org.miradi.schemas.TaggedObjectSetSchema;
-import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.XmlUtilities2;
 
 public class FactorTagListEditor extends AbstractQuestionEditorComponent implements CommandExecutedListener

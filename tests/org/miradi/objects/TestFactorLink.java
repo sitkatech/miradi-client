@@ -21,7 +21,6 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.utils.EnhancedJsonObject;
 
 public class TestFactorLink extends ObjectTestCase
 {
