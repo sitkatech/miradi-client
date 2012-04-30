@@ -107,13 +107,6 @@ abstract public class BaseObject
 		createFieldsFromBaseObjectSchema();
 	}
 
-	public BaseObject(ObjectManager objectManagerToUse, BaseId baseId, EnhancedJsonObject json, BaseObjectSchema schemaToUse) throws Exception
-	{
-		this(objectManagerToUse, baseId, schemaToUse);
-		
-		loadFromJson(json);
-	}
-	
 	public String getData(String fieldTag)
 	{
 		if(TAG_ID.equals(fieldTag))
@@ -377,29 +370,6 @@ abstract public class BaseObject
 		}
 		
 		return map.toJsonString();
-	}
-
-	//FIXME This method will be removed during json legacy code cleanup
-	public void loadFromJson(EnhancedJsonObject json) throws Exception
-	{
-		Set<String> tags = getTags();
-		for (String tag : tags)
-		{
-			if (!getField(tag).isPseudoField())
-			{
-				String value = json.optString(tag);
-				try
-				{
-					setData(tag, value);
-				}
-				catch(InvalidNumberException e)
-				{
-					String newValue = value.replaceAll("[^0-9\\-\\.,]", "");
-					EAM.logWarning("Fixing bad numeric data in " + tag + " from " + value + " to " + newValue);
-					setData(tag, newValue);
-				}
-			}
-		}
 	}
 
 	private Set<String> getTags()
