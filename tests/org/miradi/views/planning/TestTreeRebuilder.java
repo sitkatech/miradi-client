@@ -33,38 +33,24 @@ import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.ObjectTreeTableConfiguration;
-import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.Objective;
 import org.miradi.objects.Strategy;
-import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.project.ProjectForTesting;
+import org.miradi.questions.StrategyObjectiveTreeOrderQuestion;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.StrategySchema;
-import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.CommandVector;
 
 public class TestTreeRebuilder extends TestCaseWithProject
 {
 	public TestTreeRebuilder(String name)
 	{
 		super(name);
-	}
-	
-	@Override
-	public void setUp() throws Exception
-	{
-		super.setUp();
-		setupFactors();
-	}
-	
-	@Override
-	public void tearDown() throws Exception
-	{
-		// TODO Auto-generated method stub
-		super.tearDown();
 	}
 	
 	public void testShouldSortChildren()
@@ -96,115 +82,90 @@ public class TestTreeRebuilder extends TestCaseWithProject
 		assertFalse(string, rebuilder.shouldSortChildren(parentRef, childRef));
 	}
 	
-//FIXME urgent - The below commented code is from test classes.  They were testing old nodes.  Need
-// to convert the test to test new TreeRebuilder. 
+// TODO: Should have tests for all the basic "children of" cases
 	
-//	public void testPlanningTreeStrategyNode() throws Exception
-//	{
-//		ORefList activityRefs = getStrategy().getActivityRefs();
-//		assertEquals("wrong activity count?", 1, activityRefs.size());
-//		assertTrue("wrong type returned?", isActivity(activityRefs.get(0)));
-//	}
-//	
-//	private boolean isActivity(ORef ref)
-//	{
-//		Task task = (Task) project.findObject(ref);
-//		return task.isActivity();
-//	}
-	
-	
-//	public void testPlanningTreeActivityNode() throws Exception
-//	{
-//		ORefList taskRefs = getTask().getSubTaskRefs();
-//		assertEquals("wrong subtask count?", 1, taskRefs.size());
-//		assertEquals("wrong type returned?", Task.getObjectType(), taskRefs.get(0).getObjectType());
-//	}
-//
-//	public void testSubtasks() throws Exception
-//	{
-//		AbstractProjectNode root = createCompleteTree();
-//		ORefSet refsInTree = root.getAllRefsInTree();
-//		assertTrue("Didn't add subtask to tree?", refsInTree.contains(getSubtask().getRef()));
-//	}
-//
-	public void testMerging() throws Exception
+	public void testSimple() throws Exception
 	{
+		setupFactors();
+
+		CodeList rowCodes = new CodeList();
+		rowCodes.add(Cause.OBJECT_NAME_CONTRIBUTING_FACTOR);
+		AbstractPlanningTreeNode rootNode = createAndBuildTree(rowCodes);
+
+		assertEquals(1, rootNode.getChildCount());
+
+		final TreeTableNode firstChild = rootNode.getChild(0);
+		assertEquals(diagramCause.getWrappedORef(), firstChild.getObjectReference());
+		assertEquals(1, firstChild.getProportionShares());
+		assertFalse("Full proportion task is allocated?", firstChild.areBudgetValuesAllocated());
+
+	}
+
+	public void testMergePromotedChildren() throws Exception
+	{
+		setupFactors();
+
 		CodeList rowCodes = new CodeList();
 		rowCodes.add(TaskSchema.ACTIVITY_NAME);
+		AbstractPlanningTreeNode rootNode = createAndBuildTree(rowCodes);
+		
+		assertEquals("More than one activity?", 1, rootNode.getChildCount());
+		AbstractPlanningTreeNode childNode = (AbstractPlanningTreeNode) rootNode.getChild(0);
+		assertEquals("Not the activity?", activityId, childNode.getObjectReference().getObjectId());
+		assertEquals(2, childNode.getProportionShares());
+		assertFalse("Full proportion task is allocated?", childNode.areBudgetValuesAllocated());
+	}
+	
+	public void testDeleteUncles() throws Exception
+	{
+		CodeList rowCodes = new CodeList();
+		rowCodes.add(StrategySchema.OBJECT_NAME);
+		rowCodes.add(ObjectiveSchema.OBJECT_NAME);
+
+		ProjectForTesting project = getProject();
+		
+		diagramStrategy1 = project.createDiagramFactorAndAddToDiagram(StrategySchema.getObjectType());		
+		diagramStrategy2 = project.createDiagramFactorAndAddToDiagram(StrategySchema.getObjectType());		
+		diagramCause = project.createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
+		project.createDiagramLinkAndAddToDiagram(diagramStrategy1, diagramCause).getObjectId();		
+		objectiveId = project.addItemToObjectiveList(diagramCause.getWrappedORef(), Cause.TAG_OBJECTIVE_IDS);
+		
 		ObjectTreeTableConfiguration configuration = new ObjectTreeTableConfiguration(getObjectManager(), BaseId.INVALID);
 		configuration.setData(ObjectTreeTableConfiguration.TAG_ROW_CONFIGURATION, rowCodes.toString());
+		configuration.setData(ObjectTreeTableConfiguration.TAG_STRATEGY_OBJECTIVE_ORDER, StrategyObjectiveTreeOrderQuestion.STRATEGY_CONTAINS_OBJECTIVE_CODE);
 		CustomTablePlanningTreeRowColumnProvider rowColumnProvider = new CustomTablePlanningTreeRowColumnProvider(getProject(), configuration);
 		NormalTreeRebuilder rebuilder = new NormalTreeRebuilder(getProject(), rowColumnProvider);
 		AbstractPlanningTreeNode rootNode = new PlanningTreeRootNodeAlwaysExpanded(getProject());
 		rebuilder.rebuildTree(rootNode);
-		assertEquals(1, rootNode.getChildCount());
 
-		final TreeTableNode firstChild = rootNode.getChild(0);
-		assertEquals(TaskSchema.getObjectType(), firstChild.getType());
-		assertEquals(2, firstChild.getProportionShares());
-		assertFalse("Full proportion task is allocated?", firstChild.areBudgetValuesAllocated());
-
+		assertEquals("Didn't put Strats at top level?", 2, rootNode.getChildCount());
+		TreeTableNode parentOfObjectiveNode = null;
+		TreeTableNode strategyNode1 = rootNode.getChild(0);
+		assertEquals(StrategySchema.getObjectType(), strategyNode1.getType());
+		if(strategyNode1.getObjectReference().equals(diagramStrategy1.getWrappedORef()))
+			parentOfObjectiveNode = strategyNode1;
+		TreeTableNode strategyNode2 = rootNode.getChild(1);
+		assertEquals(StrategySchema.getObjectType(), strategyNode2.getType());
+		if(strategyNode2.getObjectReference().equals(diagramStrategy1.getWrappedORef()))
+			parentOfObjectiveNode = strategyNode2;
+		
+		assertEquals("Missing objective child?", 1, parentOfObjectiveNode.getChildCount());
+		ORef objectiveRef = new ORef(ObjectiveSchema.getObjectType(), objectiveId);
+		assertEquals(objectiveRef, parentOfObjectiveNode.getChild(0).getObjectReference());
 	}
-	
-	
-//	public void testPlanningTreeIndicatorNode() throws Exception
-//	{
-//		String relatedMethods = getIndicator().getPseudoData(Indicator.PSEUDO_TAG_RELATED_METHOD_OREF_LIST);
-//		ORefList methodRefs = new ORefList(relatedMethods);
-//		assertEquals("wrong method count?", 1, methodRefs.size());
-//		assertTrue("wrong type returned?", isMethod(methodRefs.get(0)));
-//	}
-//	
-//	private boolean isMethod(ORef ref)
-//	{
-//		Task task = (Task) project.findObject(ref);
-//		return task.isMethod();
-//	}
-
-	
-//	public void testMergeChildIntoList() throws Exception
-//	{
-//		Strategy strategy = getProject().createStrategy();
-//		Task activity = getProject().createTask(strategy);
-//		ORefList relevantActivityRefs = new ORefList(activity);
-//		RelevancyOverrideSet relevantActivities = new RelevancyOverrideSet();
-//		for (int index = 0; index < relevantActivityRefs.size(); ++index)
-//		{
-//			relevantActivities.add(new RelevancyOverride(relevantActivityRefs.get(index), true));
-//		}
-//		
-//		Cause factor = getProject().createCause();
-//		Objective objective = getProject().createObjective(factor);
-//		getProject().fillObjectUsingCommand(objective, Objective.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevantActivities.toString());
-//		
-//		PlanningTreeObjectiveNode objectiveNode = new PlanningTreeObjectiveNode(getProject(), getProject().getTestingDiagramObject(), objective.getRef(), new CodeList());	
-//		assertEquals("Wrong objectice children count?", 1, objectiveNode.getChildCount());
-//		
-//		Vector<AbstractPlanningTreeNode> destination = new Vector<AbstractPlanningTreeNode>();
-//		destination.add(objectiveNode);
-//		
-//		PlanningTreeTaskNode activityNode = new PlanningTreeTaskNode(getProject(), strategy.getRef(), activity.getRef(), new CodeList());
-//		AbstractPlanningTreeNode.mergeChildIntoList(destination, activityNode);
-//		
-//		assertEquals("Activity node should not have been added since its a child of the objective?", 1, destination.size());
-//	}
 	
 	private void setupFactors() throws Exception
 	{
 		ProjectForTesting project = getProject();
 		
-		projectMetadata = project.getMetadata();
 		diagramStrategy1 = project.createDiagramFactorAndAddToDiagram(StrategySchema.getObjectType());		
 		diagramStrategy2 = project.createDiagramFactorAndAddToDiagram(StrategySchema.getObjectType());		
 		diagramCause = project.createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
-		diagramTarget = project.createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
 		
-		stratToCauseLinkId = project.createDiagramLinkAndAddToDiagram(diagramStrategy1, diagramCause).getObjectId();		
-		causeToTargetLinkId = project.createDiagramLinkAndAddToDiagram(diagramCause, diagramTarget).getObjectId();
+		project.createDiagramLinkAndAddToDiagram(diagramStrategy1, diagramCause).getObjectId();		
 		
 		objectiveId = project.addItemToObjectiveList(diagramCause.getWrappedORef(), Cause.TAG_OBJECTIVE_IDS);
 		indicatorId = project.addItemToIndicatorList(diagramCause.getWrappedORef(), Cause.TAG_INDICATOR_IDS);
-		goalId = project.addItemToGoalList(diagramTarget.getWrappedORef(), Target.TAG_GOAL_IDS);
 		taskId = project.addItemToIndicatorList(indicatorId, TaskSchema.getObjectType(), Indicator.TAG_METHOD_IDS);
 		activityId = project.addActivityToStrateyList(diagramStrategy1.getWrappedORef(), Strategy.TAG_ACTIVITY_IDS);
 		subtaskId = project.addSubtaskToActivity(getTask().getRef(), Task.TAG_SUBTASK_IDS);
@@ -212,43 +173,30 @@ public class TestTreeRebuilder extends TestCaseWithProject
 		IdList activityIds = new IdList(TaskSchema.getObjectType(), new BaseId[] {activityId});
 		project.setObjectData(diagramStrategy2.getWrappedORef(), Strategy.TAG_ACTIVITY_IDS, activityIds.toString());
 		
-		strategyResourceAssignmentRef = project.addResourceAssignment(getStrategy(), 1, 2001, 2001).getRef();
-		indicatorResourceAssignmentRef = project.addResourceAssignment(getIndicator(), 2, 2002, 2002).getRef();
-		subtaskResourceAssignmentRef = project.addResourceAssignment(getSubtask(), 4, 2004, 2004).getRef();
+		ORef objectiveRef = new ORef(ObjectiveSchema.getObjectType(), objectiveId);
+		Objective objective = Objective.find(getProject(), objectiveRef);
+		CommandVector commands = objective.createCommandsToEnsureStrategyOrActivityIsRelevant(diagramStrategy1.getWrappedORef());
+		project.executeCommands(commands);
 	}
-//	
-//	public AbstractProjectNode createCompleteTree() throws Exception
-//	{
-//		ChoiceQuestion rowChoiceQuestion= new CustomPlanningRowsQuestion(project);
-//		HiddenConfigurableProjectRootNode root = new HiddenConfigurableProjectRootNode(project, rowChoiceQuestion.getAllCodes());
-//		return root;
-//	}
-//	
-//	public Goal getGoal()
-//	{
-//		return (Goal) project.findObject(new ORef(Goal.getObjectType(), goalId));
-//	}
-//	
-//	public Objective getObjective()
-//	{
-//		return (Objective) project.findObject(new ORef(Objective.getObjectType(), objectiveId));
-//	}
-//	
+
+	private AbstractPlanningTreeNode createAndBuildTree(CodeList rowCodes) throws Exception
+	{
+		ObjectTreeTableConfiguration configuration = new ObjectTreeTableConfiguration(getObjectManager(), BaseId.INVALID);
+		configuration.setData(ObjectTreeTableConfiguration.TAG_ROW_CONFIGURATION, rowCodes.toString());
+		configuration.setData(ObjectTreeTableConfiguration.TAG_STRATEGY_OBJECTIVE_ORDER, StrategyObjectiveTreeOrderQuestion.STRATEGY_CONTAINS_OBJECTIVE_CODE);
+		CustomTablePlanningTreeRowColumnProvider rowColumnProvider = new CustomTablePlanningTreeRowColumnProvider(getProject(), configuration);
+		NormalTreeRebuilder rebuilder = new NormalTreeRebuilder(getProject(), rowColumnProvider);
+		AbstractPlanningTreeNode rootNode = new PlanningTreeRootNodeAlwaysExpanded(getProject());
+		rebuilder.rebuildTree(rootNode);
+		return rootNode;
+	}
+		
+
 	public Strategy getStrategy()
 	{
 		return (Strategy) getProject().findObject(diagramStrategy1.getWrappedORef());
 	}
-//	
-//	public Strategy getStrategy2()
-//	{
-//		return (Strategy) project.findObject(diagramStrategy2.getWrappedORef());
-//	}
-//	
-//	public Task getActivity()
-//	{
-//		return Task.find(project, new ORef(Task.getObjectType(), activityId));
-//	}
-//	
+
 	public Indicator getIndicator()
 	{
 		return (Indicator) getProject().findObject(new ORef(IndicatorSchema.getObjectType(), indicatorId));
@@ -263,51 +211,13 @@ public class TestTreeRebuilder extends TestCaseWithProject
 	{
 		return (Task) getProject().findObject(new ORef(TaskSchema.getObjectType(), subtaskId));
 	}
-//	
-//	public Target getTarget()
-//	{
-//		return (Target) project.findObject(diagramTarget.getWrappedORef());
-//	}
-//	
-//	public Cause getThreat()
-//	{
-//		return (Cause) project.findObject(diagramCause.getWrappedORef());
-//	}
-//	
-//	public ProjectMetadata getProjectMetadata()
-//	{
-//		return projectMetadata;
-//	}
-//	
-//	public ResourceAssignment getStrategyResourceAssignment()
-//	{
-//		return ResourceAssignment.find(project, strategyResourceAssignmentRef);
-//	}
-//	
-//	public ResourceAssignment getIndicatorResourceAssignment()
-//	{
-//		return ResourceAssignment.find(project, indicatorResourceAssignmentRef);
-//	}
-//	
-//	public ResourceAssignment getSubtaskResourceAssignment()
-//	{
-//		return ResourceAssignment.find(project, subtaskResourceAssignmentRef);
-//	}
 
-	private ProjectMetadata projectMetadata;
 	private DiagramFactor diagramStrategy1;
 	private DiagramFactor diagramStrategy2;
 	private DiagramFactor diagramCause;
-	private DiagramFactor diagramTarget;
-	private BaseId stratToCauseLinkId;
-	private BaseId causeToTargetLinkId;
 	private BaseId objectiveId;
-	private BaseId goalId;
 	private BaseId activityId;
 	private BaseId indicatorId;
 	private BaseId subtaskId;
 	private BaseId taskId;
-	private ORef strategyResourceAssignmentRef;
-	private ORef indicatorResourceAssignmentRef;
-	private ORef subtaskResourceAssignmentRef;
 }

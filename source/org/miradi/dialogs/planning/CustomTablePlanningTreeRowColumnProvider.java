@@ -58,6 +58,12 @@ public class CustomTablePlanningTreeRowColumnProvider extends AbstractPlanningTr
 	{
 		return configuration.shouldPutTargetsAtTopLevelOfTree();
 	}
+	
+	@Override
+	public boolean doObjectivesContainStrategies() throws Exception
+	{
+		return configuration.doObjectivesContainStrategies();
+	}
 
 	private ObjectTreeTableConfiguration configuration;
 }
