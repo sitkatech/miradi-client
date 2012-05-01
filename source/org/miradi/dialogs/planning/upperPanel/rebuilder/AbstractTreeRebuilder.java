@@ -80,8 +80,8 @@ abstract public class AbstractTreeRebuilder
 	{
 		CodeList rows = getRowColumnProvider().getRowCodesToShow();
 		rebuildTree(rootNode, null, rows);
-		deleteUnclesAndTheirChildren(rootNode);
 		removeUnwantedLayersAndPromoteChildren(rootNode, rows);
+		deleteUnclesAndTheirChildren(rootNode);
 	}
 
 	private void rebuildTree(AbstractPlanningTreeNode parentNode, DiagramObject diagram, CodeList rows)
