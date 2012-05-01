@@ -471,6 +471,18 @@ abstract public class AbstractTreeRebuilder
 		}	
 	}
 
+	public static void dumpTreeToConsole(TreeTableNode node, int level)
+	{
+		for(int indent = 0; indent < level; ++indent)
+			System.out.print("  ");
+
+		ORef ref = node.getObjectReference();
+		System.out.println(node.getObject().getTypeName()  + " (" + ref.getObjectId() + ") " + node.toString());
+		for(int child = 0; child < node.getChildCount(); ++child)
+			dumpTreeToConsole(node.getChild(child), level + 1);
+	}
+
+
 	private Project project;
 	private PlanningTreeRowColumnProvider rowColumnProvider;
 }
