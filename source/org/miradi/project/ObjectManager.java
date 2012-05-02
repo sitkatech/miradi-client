@@ -1,0 +1,563 @@
+/* 
+Copyright 2005-2009, Foundations of Success, Bethesda, Maryland 
+(on behalf of the Conservation Measures Partnership, "CMP") and 
+Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
+
+This file is part of Miradi
+
+Miradi is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License version 3, 
+as published by the Free Software Foundation.
+
+Miradi is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
+*/ 
+package org.miradi.project;
+
+import java.util.HashMap;
+import java.util.Vector;
+
+import org.miradi.diagram.ChainWalker;
+import org.miradi.ids.BaseId;
+import org.miradi.ids.IdAssigner;
+import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
+import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objectpools.AccountingCodePool;
+import org.miradi.objectpools.ResourceAssignmentPool;
+import org.miradi.objectpools.AudiencePool;
+import org.miradi.objectpools.BudgetCategoryOnePool;
+import org.miradi.objectpools.BudgetCategoryTwoPool;
+import org.miradi.objectpools.CausePool;
+import org.miradi.objectpools.ConceptualModelDiagramPool;
+import org.miradi.objectpools.CostAllocationRulePool;
+import org.miradi.objectpools.DashboardPool;
+import org.miradi.objectpools.DiagramFactorPool;
+import org.miradi.objectpools.DiagramLinkPool;
+import org.miradi.objectpools.BaseObjectPool;
+import org.miradi.objectpools.EAMObjectPool;
+import org.miradi.objectpools.ExpenseAssignmentPool;
+import org.miradi.objectpools.FactorLinkPool;
+import org.miradi.objectpools.FosProjectDataPool;
+import org.miradi.objectpools.FundingSourcePool;
+import org.miradi.objectpools.GoalPool;
+import org.miradi.objectpools.GroupBoxPool;
+import org.miradi.objectpools.HumanWelfareTargetPool;
+import org.miradi.objectpools.IndicatorPool;
+import org.miradi.objectpools.IntermediateResultPool;
+import org.miradi.objectpools.IucnRedlistSpeciesPool;
+import org.miradi.objectpools.KeyEcologicalAttributePool;
+import org.miradi.objectpools.MeasurementPool;
+import org.miradi.objectpools.ObjectTreeTableConfigurationPool;
+import org.miradi.objectpools.ObjectivePool;
+import org.miradi.objectpools.OrganizationPool;
+import org.miradi.objectpools.OtherNotableSpeciesPool;
+import org.miradi.objectpools.PoolWithIdAssigner;
+import org.miradi.objectpools.ProgressPercentPool;
+import org.miradi.objectpools.ProgressReportPool;
+import org.miradi.objectpools.ProjectMetadataPool;
+import org.miradi.objectpools.RareProjectDataPool;
+import org.miradi.objectpools.RatingCriterionPool;
+import org.miradi.objectpools.ReportTemplatePool;
+import org.miradi.objectpools.ResourcePool;
+import org.miradi.objectpools.ResultsChainDiagramPool;
+import org.miradi.objectpools.ScopeBoxPool;
+import org.miradi.objectpools.StrategyPool;
+import org.miradi.objectpools.StressPool;
+import org.miradi.objectpools.SubTargetPool;
+import org.miradi.objectpools.TableSettingsPool;
+import org.miradi.objectpools.TaggedObjectSetPool;
+import org.miradi.objectpools.TargetPool;
+import org.miradi.objectpools.TaskPool;
+import org.miradi.objectpools.TextBoxPool;
+import org.miradi.objectpools.ThreatRatingCommentsDataPool;
+import org.miradi.objectpools.ThreatReductionResultPool;
+import org.miradi.objectpools.ThreatStressRatingPool;
+import org.miradi.objectpools.TncProjectDataPool;
+import org.miradi.objectpools.ValueOptionPool;
+import org.miradi.objectpools.ViewPool;
+import org.miradi.objectpools.WcpaProjectDataPool;
+import org.miradi.objectpools.WcsProjectDataPool;
+import org.miradi.objectpools.WwfProjectDataPool;
+import org.miradi.objectpools.XenodataPool;
+import org.miradi.objectpools.XslTemplatePool;
+import org.miradi.objects.BaseObject;
+import org.miradi.schemas.AccountingCodeSchema;
+import org.miradi.schemas.AudienceSchema;
+import org.miradi.schemas.BudgetCategoryOneSchema;
+import org.miradi.schemas.BudgetCategoryTwoSchema;
+import org.miradi.schemas.CauseSchema;
+import org.miradi.schemas.ConceptualModelDiagramSchema;
+import org.miradi.schemas.CostAllocationRuleSchema;
+import org.miradi.schemas.DashboardSchema;
+import org.miradi.schemas.DiagramFactorSchema;
+import org.miradi.schemas.DiagramLinkSchema;
+import org.miradi.schemas.ExpenseAssignmentSchema;
+import org.miradi.schemas.FactorLinkSchema;
+import org.miradi.schemas.FosProjectDataSchema;
+import org.miradi.schemas.FundingSourceSchema;
+import org.miradi.schemas.GoalSchema;
+import org.miradi.schemas.GroupBoxSchema;
+import org.miradi.schemas.HumanWelfareTargetSchema;
+import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.IntermediateResultSchema;
+import org.miradi.schemas.IucnRedlistSpeciesSchema;
+import org.miradi.schemas.KeyEcologicalAttributeSchema;
+import org.miradi.schemas.MeasurementSchema;
+import org.miradi.schemas.ObjectTreeTableConfigurationSchema;
+import org.miradi.schemas.ObjectiveSchema;
+import org.miradi.schemas.OrganizationSchema;
+import org.miradi.schemas.OtherNotableSpeciesSchema;
+import org.miradi.schemas.ProgressPercentSchema;
+import org.miradi.schemas.ProgressReportSchema;
+import org.miradi.schemas.ProjectMetadataSchema;
+import org.miradi.schemas.ProjectResourceSchema;
+import org.miradi.schemas.RareProjectDataSchema;
+import org.miradi.schemas.RatingCriterionSchema;
+import org.miradi.schemas.ReportTemplateSchema;
+import org.miradi.schemas.ResourceAssignmentSchema;
+import org.miradi.schemas.ResultsChainDiagramSchema;
+import org.miradi.schemas.ScopeBoxSchema;
+import org.miradi.schemas.StrategySchema;
+import org.miradi.schemas.StressSchema;
+import org.miradi.schemas.SubTargetSchema;
+import org.miradi.schemas.TableSettingsSchema;
+import org.miradi.schemas.TaggedObjectSetSchema;
+import org.miradi.schemas.TargetSchema;
+import org.miradi.schemas.TaskSchema;
+import org.miradi.schemas.TextBoxSchema;
+import org.miradi.schemas.ThreatRatingCommentsDataSchema;
+import org.miradi.schemas.ThreatReductionResultSchema;
+import org.miradi.schemas.ThreatStressRatingSchema;
+import org.miradi.schemas.TncProjectDataSchema;
+import org.miradi.schemas.ValueOptionSchema;
+import org.miradi.schemas.ViewDataSchema;
+import org.miradi.schemas.WcpaProjectDataSchema;
+import org.miradi.schemas.WcsProjectDataSchema;
+import org.miradi.schemas.WwfProjectDataSchema;
+import org.miradi.schemas.XenodataSchema;
+import org.miradi.schemas.XslTemplateSchema;
+
+public class ObjectManager
+{
+	public ObjectManager(Project projectToUse)
+	{
+		project = projectToUse;
+		diagramChainWalker = new ChainWalker();
+		referrerCache = new HashMap<ORef, ORefSet>();
+
+		pools = new HashMap<Integer, BaseObjectInformation>();
+		IdAssigner ida = getNormalIdAssigner();
+		addNormalPool(new FactorLinkPool(ida), FactorLinkSchema.OBJECT_NAME);
+		addNormalPool(new RatingCriterionPool(ida), RatingCriterionSchema.OBJECT_NAME);
+		addNormalPool(new ValueOptionPool(ida), ValueOptionSchema.OBJECT_NAME);
+		addNormalPool(new TaskPool(ida), TaskSchema.OBJECT_NAME);
+		addNormalPool(new ViewPool(ida), ViewDataSchema.OBJECT_NAME);
+		addNormalPool(new ResourcePool(ida), ProjectResourceSchema.OBJECT_NAME);
+		addNormalPool(new IndicatorPool(ida), IndicatorSchema.OBJECT_NAME);
+		addNormalPool(new ObjectivePool(ida), ObjectiveSchema.OBJECT_NAME);
+		addNormalPool(new GoalPool(ida), GoalSchema.OBJECT_NAME);
+		addNormalPool(new ProjectMetadataPool(ida), ProjectMetadataSchema.OBJECT_NAME);
+		addNormalPool(new DiagramLinkPool(ida), DiagramLinkSchema.OBJECT_NAME);
+		addNormalPool(new ResourceAssignmentPool(ida), ResourceAssignmentSchema.OBJECT_NAME);
+		addNormalPool(new AccountingCodePool(ida), AccountingCodeSchema.OBJECT_NAME);
+		addNormalPool(new FundingSourcePool(ida), FundingSourceSchema.OBJECT_NAME);
+		addNormalPool(new KeyEcologicalAttributePool(ida), KeyEcologicalAttributeSchema.OBJECT_NAME);
+		addNormalPool(new DiagramFactorPool(ida), DiagramFactorSchema.OBJECT_NAME);
+		addNormalPool(new CausePool(ida), CauseSchema.OBJECT_NAME);
+		addNormalPool(new StrategyPool(ida), StrategySchema.OBJECT_NAME);
+		addNormalPool(new TargetPool(ida), TargetSchema.OBJECT_NAME);
+		addNormalPool(new IntermediateResultPool(ida), IntermediateResultSchema.OBJECT_NAME);
+		addNormalPool(new ResultsChainDiagramPool(ida), ResultsChainDiagramSchema.OBJECT_NAME);
+		addNormalPool(new ConceptualModelDiagramPool(ida), ConceptualModelDiagramSchema.OBJECT_NAME);
+		addNormalPool(new ThreatReductionResultPool(ida), ThreatReductionResultSchema.OBJECT_NAME);
+		addNormalPool(new TextBoxPool(ida), TextBoxSchema.OBJECT_NAME);
+		addNormalPool(new ObjectTreeTableConfigurationPool(ida), ObjectTreeTableConfigurationSchema.OBJECT_NAME);
+		addNormalPool(new WwfProjectDataPool(ida), WwfProjectDataSchema.OBJECT_NAME);
+		addNormalPool(new CostAllocationRulePool(ida), CostAllocationRuleSchema.OBJECT_NAME);
+		addNormalPool(new MeasurementPool(ida), MeasurementSchema.OBJECT_NAME);
+		addNormalPool(new StressPool(ida), StressSchema.OBJECT_NAME);
+		addNormalPool(new ThreatStressRatingPool(ida), ThreatStressRatingSchema.OBJECT_NAME);
+		addNormalPool(new GroupBoxPool(ida), GroupBoxSchema.OBJECT_NAME);
+		addNormalPool(new SubTargetPool(ida), SubTargetSchema.OBJECT_NAME);
+		addNormalPool(new ProgressReportPool(ida), ProgressReportSchema.OBJECT_NAME);
+		addNormalPool(new RareProjectDataPool(ida), RareProjectDataSchema.OBJECT_NAME);
+		addNormalPool(new WcsProjectDataPool(ida), WcsProjectDataSchema.OBJECT_NAME);
+		addNormalPool(new TncProjectDataPool(ida), TncProjectDataSchema.OBJECT_NAME);
+		addNormalPool(new FosProjectDataPool(ida), FosProjectDataSchema.OBJECT_NAME);
+		addNormalPool(new OrganizationPool(ida), OrganizationSchema.OBJECT_NAME);
+		addNormalPool(new WcpaProjectDataPool(ida), WcpaProjectDataSchema.OBJECT_NAME);
+		addNormalPool(new XenodataPool(ida), XenodataSchema.OBJECT_NAME);
+		addNormalPool(new ProgressPercentPool(ida), ProgressPercentSchema.OBJECT_NAME);
+		addNormalPool(new ReportTemplatePool(ida), ReportTemplateSchema.OBJECT_NAME);
+		addNormalPool(new TaggedObjectSetPool(ida), TaggedObjectSetSchema.OBJECT_NAME);
+		addNormalPool(new TableSettingsPool(ida), TableSettingsSchema.OBJECT_NAME);
+		addNormalPool(new ThreatRatingCommentsDataPool(ida), ThreatRatingCommentsDataSchema.OBJECT_NAME);
+		addNormalPool(new ScopeBoxPool(ida), ScopeBoxSchema.OBJECT_NAME);
+		addNormalPool(new ExpenseAssignmentPool(ida), ExpenseAssignmentSchema.OBJECT_NAME);
+		addNormalPool(new HumanWelfareTargetPool(ida), HumanWelfareTargetSchema.OBJECT_NAME);
+		addNormalPool(new IucnRedlistSpeciesPool(ida), IucnRedlistSpeciesSchema.OBJECT_NAME);
+		addNormalPool(new OtherNotableSpeciesPool(ida), OtherNotableSpeciesSchema.OBJECT_NAME);
+		addNormalPool(new AudiencePool(ida), AudienceSchema.OBJECT_NAME);
+		addNormalPool(new BudgetCategoryOnePool(ida), BudgetCategoryOneSchema.OBJECT_NAME);
+		addNormalPool(new BudgetCategoryTwoPool(ida), BudgetCategoryTwoSchema.OBJECT_NAME);
+		addNormalPool(new DashboardPool(ida), DashboardSchema.OBJECT_NAME);
+		addNormalPool(new XslTemplatePool(ida), XslTemplateSchema.OBJECT_NAME);
+	}
+	
+	public ChainWalker getDiagramChainWalker()
+	{
+		return diagramChainWalker;
+	}
+
+	private void addNormalPool(PoolWithIdAssigner pool, String objectName)
+	{
+		BaseObjectInformation baseObjectInformation = new BaseObjectInformation(pool, objectName);
+		pools.put(new Integer(pool.getObjectType()), baseObjectInformation);
+	}
+
+	private IdAssigner getNormalIdAssigner()
+	{
+		return getProject().getNormalIdAssigner();
+	}
+
+	public EAMObjectPool getPool(int objectType)
+	{
+		if (pools.containsKey(objectType))
+		{
+			BaseObjectInformation objectBundle = pools.get(new Integer(objectType));
+			return objectBundle.getPool();
+		}
+		
+		return null;
+	}
+	
+	public String getInternalObjectTypeName(int objectType)
+	{
+		if (pools.containsKey(objectType))
+			return pools.get(objectType).getObjectName();
+		
+		return null;
+	}
+
+	public FactorLinkPool getLinkagePool()
+	{
+		return (FactorLinkPool)getPool(ObjectType.FACTOR_LINK);
+	}
+
+	public TaskPool getTaskPool()
+	{
+		return (TaskPool)getPool(ObjectType.TASK);
+	}
+
+	public ViewPool getViewPool()
+	{
+		return (ViewPool)getPool(ObjectType.VIEW_DATA);
+	}
+
+	public ResourcePool getResourcePool()
+	{
+		return (ResourcePool)getPool(ObjectType.PROJECT_RESOURCE);
+	}
+	
+	public AccountingCodePool getAccountingCodePool()
+	{
+		return (AccountingCodePool)getPool(ObjectType.ACCOUNTING_CODE);
+	}
+
+	
+	public FundingSourcePool getFundingSourcePool()
+	{
+		return (FundingSourcePool)getPool(ObjectType.FUNDING_SOURCE);
+	}
+
+	public SubTargetPool getSubTargetPool()
+	{
+		return (SubTargetPool) getPool(SubTargetSchema.getObjectType());
+	}
+
+	public IndicatorPool getIndicatorPool()
+	{
+		return (IndicatorPool)getPool(ObjectType.INDICATOR);
+	}
+
+	public ObjectivePool getObjectivePool()
+	{
+		return (ObjectivePool)getPool(ObjectType.OBJECTIVE);
+	}
+
+	public GoalPool getGoalPool()
+	{
+		return (GoalPool)getPool(ObjectType.GOAL);
+	}
+
+	public ResourceAssignmentPool getAssignmentPool()
+	{
+		return (ResourceAssignmentPool)getPool(ObjectType.RESOURCE_ASSIGNMENT);
+	}
+	
+	public ExpenseAssignmentPool getExpenseAssignmentPool()
+	{
+		return (ExpenseAssignmentPool)getPool(ExpenseAssignmentSchema.getObjectType());
+	}
+
+	public KeyEcologicalAttributePool getKeyEcologicalAttributePool()
+	{
+		return (KeyEcologicalAttributePool)getPool(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE);
+	}
+	
+	public DiagramFactorPool getDiagramFactorPool()
+	{
+		return (DiagramFactorPool) getPool(ObjectType.DIAGRAM_FACTOR);
+	}
+	
+	public DiagramLinkPool getDiagramFactorLinkPool()
+	{
+		return (DiagramLinkPool) getPool(ObjectType.DIAGRAM_LINK);
+	}
+	
+	public ConceptualModelDiagramPool getConceptualModelDiagramPool()
+	{
+		return (ConceptualModelDiagramPool) getPool(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
+	}
+	
+	public ResultsChainDiagramPool getResultsChainDiagramPool()
+	{
+		return (ResultsChainDiagramPool) getPool(ObjectType.RESULTS_CHAIN_DIAGRAM);
+	}
+	
+	public ObjectTreeTableConfigurationPool getPlanningConfigurationPool()
+	{
+		return (ObjectTreeTableConfigurationPool) getPool(ObjectTreeTableConfigurationSchema.getObjectType());
+	}
+
+	public BaseId createObject(int objectType, BaseId objectId) throws Exception
+	{
+		BaseId createdId = BaseId.INVALID;
+		BaseObjectPool pool = (BaseObjectPool)getPool(objectType);
+		if(pool == null)
+			throw new RuntimeException("No pool for " + objectType);
+		BaseObject created = pool.createObject(this, objectId);
+		createdId = created.getId();
+		return createdId;
+	}
+
+	public void deleteObject(BaseObject object) throws Exception
+	{
+		ORef objectRef = object.getRef();
+		removeFromReferrerCache(objectRef);
+		int objectType = object.getType();
+		BaseId objectId = object.getId();
+		EAMObjectPool pool = getPool(objectType);
+		if(pool.findObject(objectId) == null)
+			throw new RuntimeException("Attempted to delete missing object: " + objectType + ":" + objectId);
+		pool.remove(objectId);
+	}
+	
+	public void setObjectData(ORef objectRef, String fieldTag, String dataValue) throws Exception
+	{
+		BaseObject object = findObject(objectRef);
+		object.setData(fieldTag, dataValue);
+	}
+	
+	public BaseObject findObject(ORef ref)
+	{
+		return findObject(ref.getObjectType(), ref.getObjectId());
+	}
+	
+	public BaseObject findObject(int objectType, BaseId objectId)
+	{		
+		EAMObjectPool pool = getPool(objectType);
+		if(pool == null)
+			throw new RuntimeException("Attempted to find object of unknown type: " + objectType);
+		return pool.findObject(objectId);
+	}
+	
+	public String getObjectData(int objectType, BaseId objectId, String fieldTag)
+	{
+		return getObjectData(new ORef(objectType, objectId), fieldTag);
+	}
+	
+	public String getObjectData(ORef ref, String fieldTag)
+	{
+		BaseObject object = findObject(ref);
+		if(object == null)
+			EAM.logDebug("getObjectData no such object: " + ref + " fieldTag=" + fieldTag);
+		return object.getData(fieldTag);
+	}
+
+	public static int[] getAllObjectTypes()
+	{
+		//NOTE: Pools must be loaded in a specific sequence
+		int[] types = {
+			ObjectType.CAUSE,
+			ObjectType.STRATEGY,
+			ObjectType.TARGET,
+			ObjectType.FACTOR_LINK,
+			ObjectType.TASK,
+			ObjectType.VIEW_DATA,
+			ObjectType.PROJECT_RESOURCE,
+			ObjectType.INDICATOR,
+			ObjectType.OBJECTIVE,
+			ObjectType.GOAL,
+			ObjectType.RATING_CRITERION,
+			ObjectType.VALUE_OPTION,
+			ObjectType.PROJECT_METADATA,
+			ObjectType.DIAGRAM_LINK,
+			ObjectType.RESOURCE_ASSIGNMENT,
+			ObjectType.ACCOUNTING_CODE,
+			ObjectType.FUNDING_SOURCE,
+			ObjectType.KEY_ECOLOGICAL_ATTRIBUTE,
+			ObjectType.DIAGRAM_FACTOR,
+			ObjectType.CONCEPTUAL_MODEL_DIAGRAM,
+			ObjectType.RESULTS_CHAIN_DIAGRAM,
+			ObjectType.INTERMEDIATE_RESULT,
+			ObjectType.THREAT_REDUCTION_RESULT,
+			ObjectType.TEXT_BOX,
+			ObjectType.OBJECT_TREE_TABLE_CONFIGURATION,
+			ObjectType.WWF_PROJECT_DATA,
+			ObjectType.COST_ALLOCATION_RULE,
+			ObjectType.MEASUREMENT,
+			ObjectType.STRESS,
+			ObjectType.THREAT_STRESS_RATING,
+			ObjectType.GROUP_BOX,
+			ObjectType.SUB_TARGET,
+			ObjectType.PROGRESS_REPORT,
+			ObjectType.RARE_PROJECT_DATA,
+			ObjectType.WCS_PROJECT_DATA,
+			ObjectType.TNC_PROJECT_DATA,
+			ObjectType.FOS_PROJECT_DATA,
+			ObjectType.ORGANIZATION,
+			ObjectType.WCPA_PROJECT_DATA,
+			ObjectType.XENODATA,
+			ObjectType.PROGRESS_PERCENT,
+			ObjectType.REPORT_TEMPLATE,
+			ObjectType.TAGGED_OBJECT_SET,
+			ObjectType.TABLE_SETTINGS,
+			ObjectType.THREAT_RATING_COMMENTS_DATA,
+			ObjectType.SCOPE_BOX,
+			ObjectType.EXPENSE_ASSIGNMENT,
+			ObjectType.HUMAN_WELFARE_TARGET,
+			ObjectType.IUCN_REDLIST_SPECIES,
+			ObjectType.OTHER_NOTABLE_SPECIES,
+			ObjectType.AUDIENCE,
+			ObjectType.BUDGET_CATEGORY_ONE,
+			ObjectType.BUDGET_CATEGORY_TWO,
+			ObjectType.DASHBOARD,
+		};
+		return types;
+	}
+
+	public Project getProject()
+	{
+		return project;
+	}
+
+	//TODO: there should be a better way to get to the project file name then having to expose it here
+	//Maybe in-line this method?
+	public String getFileName()
+	{
+		return getProject().getFilename();
+	}
+	
+	public Vector<BaseObject> findObjectsAsVector(ORefList refList)
+	{
+		Vector<BaseObject> foundObjects = new Vector<BaseObject>();
+		for (int i = 0; i < refList.size(); ++i)
+		{
+			foundObjects.add(findObject(refList.get(i)));
+		}
+		
+		return foundObjects;
+	}
+	
+	public ORefList getAllDiagramObjectRefs()
+	{
+		ORefList conceptualModels = getConceptualModelDiagramPool().getORefList();
+		ORefList resultsChains = getResultsChainDiagramPool().getORefList();
+		
+		ORefList combinedORefList = new ORefList();
+		combinedORefList.addAll(conceptualModels);
+		combinedORefList.addAll(resultsChains);
+		
+		return combinedORefList;
+
+	}
+
+	public void updateReferrerCache(ORef referrerRef, ORefSet oldReferrals, ORefSet newReferrals)
+	{
+		ORefSet removedReferrals = ORefSet.subtract(oldReferrals, newReferrals);
+		for(ORef referredRef : removedReferrals)
+		{
+			getReferrerRefsSet(referredRef).remove(referrerRef);
+		}
+
+		ORefSet addedReferrals = ORefSet.subtract(newReferrals, oldReferrals);
+		for(ORef referredRef: addedReferrals)
+		{
+			if(referredRef.isValid())
+				getReferrerRefsSet(referredRef).add(referrerRef);
+		}
+	}
+
+	public ORefSet getReferringObjects(ORef ref)
+	{
+		return getReferrerRefsSet(ref);
+	}
+
+	private ORefSet getReferrerRefsSet(ORef referredRef)
+	{
+		ORefSet referringRefs = referrerCache.get(referredRef);
+		if(referringRefs == null)
+		{
+			referringRefs = new ORefSet();
+			referrerCache.put(referredRef, referringRefs);
+		}
+		return referringRefs;
+	}
+	
+	private void removeFromReferrerCache(ORef refToRemove)
+	{
+		BaseObject object = findObject(refToRemove);
+		ORefSet referencedObjectRefs = object.getAllReferencedObjects();
+		for(ORef referencedRef : referencedObjectRefs)
+		{
+			getReferrerRefsSet(referencedRef).remove(refToRemove);
+		}
+		referrerCache.remove(refToRemove);
+	}
+
+	private class BaseObjectInformation 
+	{
+		private BaseObjectInformation(PoolWithIdAssigner poolToUse, String objectNameToUse)
+		{
+			pool = poolToUse;
+			objectName = objectNameToUse;
+		}
+		
+		private PoolWithIdAssigner getPool()
+		{
+			return pool;
+		}
+		
+		private String getObjectName()
+		{
+			return objectName;
+		}
+		
+		private PoolWithIdAssigner pool;
+		private String objectName;
+	}
+	
+	private Project project;
+	private ChainWalker diagramChainWalker;
+	private HashMap<Integer, BaseObjectInformation> pools;
+	private HashMap<ORef, ORefSet> referrerCache;
+}
