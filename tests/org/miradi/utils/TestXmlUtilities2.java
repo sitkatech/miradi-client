@@ -76,7 +76,7 @@ public class TestXmlUtilities2 extends MiradiTestCase
 	{
 		try
 		{
-			XmlUtilities2.ensureValidXmlWithHtmlTags(value);
+			XmlUtilities2.throwIfInvalidXmlWithHtmlTags(value);
 		}
 		catch (Exception e)
 		{
@@ -88,7 +88,7 @@ public class TestXmlUtilities2 extends MiradiTestCase
 	{
 		try
 		{
-			XmlUtilities2.ensureValidXmlWithHtmlTags(value);
+			XmlUtilities2.throwIfInvalidXmlWithHtmlTags(value);
 			fail("Value is not a valid xml: " + value);
 		}
 		catch (Exception ignoreException)

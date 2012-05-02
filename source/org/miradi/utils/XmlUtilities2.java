@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
+import org.miradi.main.EAM;
+
 public class XmlUtilities2
 {
 	public static String convertXmlTextToPlainText(String value)
@@ -71,10 +73,18 @@ public class XmlUtilities2
 		return html;
 	}
 	
-	public static String convertXmlTextToHtmlWithoutHtmlTags(final String value)
+	public static String convertXmlTextToHtmlWithoutHtmlTags(final String value) throws RuntimeException
 	{
-		ensureValidXmlWithHtmlTags(value);
-		
+		try
+		{
+			throwIfInvalidXmlWithHtmlTags(value);
+		}
+		catch(Exception e)
+		{
+			EAM.logError("Invalid XML: " + value);
+			EAM.logException(e);
+		}
+
 		return decodeApostrophes(value);
 	}
 
@@ -87,7 +97,7 @@ public class XmlUtilities2
 		return value;
 	}
 	
-	public static void ensureValidXmlWithHtmlTags(final String value)
+	public static void throwIfInvalidXmlWithHtmlTags(final String value)
 	{
 		if (value == null)
 			return;
