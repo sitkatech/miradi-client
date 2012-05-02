@@ -36,6 +36,7 @@ import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileSystemView;
 
 import org.martus.swing.UiNotifyDlg;
+import org.martus.util.xml.XmlUtilities;
 import org.miradi.project.Project;
 import org.miradi.utils.HtmlViewPanel;
 import org.miradi.utils.HtmlViewPanelWithMargins;
@@ -289,9 +290,10 @@ public class EAM
 
 		if (Miradi.isAlphaTesterMode())
 		{
-			if(text.length() > 200)
-				text = text.substring(0, 200);
-			errorDialog("<HTML>There is a console error: <BR>" + text);
+			String safeText = XmlUtilities.getXmlEncoded(text);
+			if(safeText.length() > 200)
+				safeText = safeText.substring(0, 200);
+			errorDialog("<HTML>There is a console error: <BR>" + safeText);
 		}
 	}
 	
