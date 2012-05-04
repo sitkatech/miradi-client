@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-02 18:14-0500\n"
+"POT-Creation-Date: 2012-05-03 22:40-0500\n"
 "PO-Revision-Date: 2011-04-29 11:26+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -5992,7 +5992,7 @@ msgstr "Rinomina..."
 msgid "Replace Language Pack"
 msgstr "Sostituisci il pacchetto di lingua"
 
-#: Miradi/source/org/miradi/views/reports/RunXlsTemplateDoer.java:87
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:87
 msgid "Report Completed"
 msgstr ""
 
@@ -8769,7 +8769,7 @@ msgstr ""
 msgid "Writing..."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/reports/DeleteXlsTemplateDoer.java:39
+#: Miradi/source/org/miradi/views/reports/DeleteXslTemplateDoer.java:39
 msgid "XSL Template"
 msgstr ""
 
