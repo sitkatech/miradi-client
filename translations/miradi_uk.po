@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-02 18:14-0500\n"
+"POT-Creation-Date: 2012-05-03 22:40-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -5908,7 +5908,7 @@ msgstr "Перейменувати..."
 msgid "Replace Language Pack"
 msgstr "Замінити мовний пакет"
 
-#: Miradi/source/org/miradi/views/reports/RunXlsTemplateDoer.java:87
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:87
 msgid "Report Completed"
 msgstr ""
 
@@ -8636,7 +8636,7 @@ msgstr ""
 msgid "Writing..."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/reports/DeleteXlsTemplateDoer.java:39
+#: Miradi/source/org/miradi/views/reports/DeleteXslTemplateDoer.java:39
 msgid "XSL Template"
 msgstr ""
 
