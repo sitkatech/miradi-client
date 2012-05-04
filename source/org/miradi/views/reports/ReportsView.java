@@ -59,8 +59,8 @@ public class ReportsView extends TabbedView
 		addDoerToMap(ActionRunReportTemplate.class, new RunReportTemplateDoer());
 		
 		addDoerToMap(ActionImportXslTemplate.class, new ImportXslTemplateDoer());
-		addDoerToMap(ActionRunXslTemplate.class, new RunXlsTemplateDoer());
-		addDoerToMap(ActionDeleteXslTemplate.class, new DeleteXlsTemplateDoer());
+		addDoerToMap(ActionRunXslTemplate.class, new RunXslTemplateDoer());
+		addDoerToMap(ActionDeleteXslTemplate.class, new DeleteXslTemplateDoer());
 		addDoerToMap(ActionExportXslTemplate.class, new ExportXslTemplateDoer());
 	}
 

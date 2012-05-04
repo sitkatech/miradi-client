@@ -25,7 +25,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.XslTemplate;
 import org.miradi.views.umbrella.doers.DeletePoolObjectDoer;
 
-public class DeleteXlsTemplateDoer extends DeletePoolObjectDoer
+public class DeleteXslTemplateDoer extends DeletePoolObjectDoer
 {
 	@Override
 	protected boolean canDelete(BaseObject singleSelectedObject)
