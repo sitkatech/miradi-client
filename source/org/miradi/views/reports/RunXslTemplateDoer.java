@@ -42,7 +42,7 @@ import org.miradi.xml.wcs.XmpzXmlExporter;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 
-public class RunXlsTemplateDoer extends ObjectsDoer
+public class RunXslTemplateDoer extends ObjectsDoer
 {
 	@Override
 	public boolean isAvailable()
