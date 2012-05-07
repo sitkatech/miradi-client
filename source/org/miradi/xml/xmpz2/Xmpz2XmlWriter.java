@@ -112,11 +112,6 @@ public class Xmpz2XmlWriter extends UnicodeWriter implements XmpzXmlConstants
 		writeEndElement(elementContainerName);
 	}
 
-	public void writeBaseIdData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, ORef ref) throws Exception
-	{
-		writeRefDataIfValid(baseObjectSchema, fieldSchema, ref);
-	}
-
 	public void writeDateData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String isoDate) throws Exception
 	{
 		writeField(baseObjectSchema, fieldSchema, isoDate);
