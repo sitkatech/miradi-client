@@ -90,23 +90,20 @@ public class ImportAccountingCodesDoer extends ViewDoer
 
 	static public AccountingCode[] importCodes(Reader fileToImport, Project project) throws Exception 
 	{
-		AccountingCodeData[] accountingCodes = new AccountingCodeData[0];
-
 		project.executeCommand(new CommandBeginTransaction());
 		try
 		{
-			accountingCodes = AccountingCodeLoader.load(fileToImport);
+			AccountingCodeData[] accountingCodes = AccountingCodeLoader.load(fileToImport);
+			return createAccountingCodeObjectsFromDataObjects(project, accountingCodes);
 		}
 		catch (Exception e)
 		{
-			throw(new ImportFileErrorException());
+			throw(new ImportFileErrorException(e));
 		}
 		finally
 		{
 			project.executeCommand(new CommandEndTransaction());
 		}
-		
-		return createAccountingCodeObjectsFromDataObjects(project, accountingCodes);
 	}
 
 
@@ -136,7 +133,7 @@ public class ImportAccountingCodesDoer extends ViewDoer
 					ObjectType.ACCOUNTING_CODE, baseId, 
 					AccountingCode.TAG_CODE, AccountingCodeData.getCode()));
 		}
-
+		
 		AccountingCode[] toArray = accountingCodeVector.toArray(new AccountingCode[0]);
 		return toArray;
 	}
@@ -144,7 +141,17 @@ public class ImportAccountingCodesDoer extends ViewDoer
 }
 
 
-class ImportFileErrorException extends Exception {}
+class ImportFileErrorException extends Exception
+{
+	public ImportFileErrorException()
+	{
+	}
+	
+	public ImportFileErrorException(Exception causedBy)
+	{
+		super(causedBy);
+	}
+}
 
 class AccountingCodesDataMap extends HashMap<String, String>
 {

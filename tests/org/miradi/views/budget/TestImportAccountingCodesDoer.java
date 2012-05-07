@@ -24,10 +24,12 @@ import java.io.StringReader;
 
 import org.miradi.main.MiradiTestCase;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objectpools.EAMObjectPool;
 import org.miradi.objects.AccountingCode;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
+import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.views.planning.doers.ImportAccountingCodesDoer;
 
 public class TestImportAccountingCodesDoer extends MiradiTestCase
@@ -72,6 +74,20 @@ public class TestImportAccountingCodesDoer extends MiradiTestCase
 		String data = "code1A \t label1A \n code1B \t label1B";
 		ImportAccountingCodesDoer.importCodes(new BufferedReader(new StringReader(data)),project);
 		assertEquals(2, project.getPool(ObjectType.ACCOUNTING_CODE).size());
+	}
+	
+	public void testTransaction() throws Exception
+	{
+		String data = "code1A \t label1A \n code1B \t label1B";
+		ImportAccountingCodesDoer.importCodes(new BufferedReader(new StringReader(data)),project);
+		getProject().undo();
+		EAMObjectPool accountingCodePool = getProject().getPool(AccountingCodeSchema.getObjectType());
+		assertEquals("Import wasn't a single transaction?", 0, accountingCodePool.size());
+	}
+	
+	private Project getProject()
+	{
+		return project;
 	}
 	
 	Project project;
