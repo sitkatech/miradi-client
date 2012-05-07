@@ -1,0 +1,5 @@
+HTML files are very portable, but have some limitations:
+- Large project HTML files might not be editable with MS Word or OpenOffice Writer
+- The images are stored in a separate directory, rather than being embedded within the single HTML document
+- HTML files do not have page breaks
+
