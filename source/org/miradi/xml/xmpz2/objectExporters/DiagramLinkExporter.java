@@ -60,7 +60,7 @@ public class DiagramLinkExporter extends BaseObjectExporter
 		getWriter().writeStartElement(LINKABLE_FACTOR_ID);
 		
 		Factor fromFactor = diagramLink.getFromDiagramFactor().getWrappedFactor();
-		String fromFactorTypeName = getFactorTypeName(fromFactor);
+		String fromFactorTypeName = getDiagramFactorWrappedFactorTypeName(fromFactor);
 		getWriter().writeElement(fromFactorTypeName, ID_ELEMENT_NAME, diagramLink.getFromDiagramFactorId().toString());
 		
 		getWriter().writeEndElement(LINKABLE_FACTOR_ID);
@@ -73,7 +73,7 @@ public class DiagramLinkExporter extends BaseObjectExporter
 		getWriter().writeStartElement(LINKABLE_FACTOR_ID);
 		
 		Factor toFactor = diagramLink.getToDiagramFactor().getWrappedFactor();
-		String toFactorTypeName = getFactorTypeName(toFactor);
+		String toFactorTypeName = getDiagramFactorWrappedFactorTypeName(toFactor);
 		getWriter().writeElement(toFactorTypeName, ID_ELEMENT_NAME, diagramLink.getToDiagramFactorId().toString());
 		
 		getWriter().writeEndElement(LINKABLE_FACTOR_ID);
