@@ -83,7 +83,7 @@ public class BaseObjectExporter implements XmpzXmlConstants
 		return getWriter().getProject();
 	}
 	
-	protected String getFactorTypeName(Factor wrappedFactor)
+	protected String getDiagramFactorWrappedFactorTypeName(Factor wrappedFactor)
 	{
 		if (Target.is(wrappedFactor))
 			return XmpzXmlConstants.BIODIVERSITY_TARGET;

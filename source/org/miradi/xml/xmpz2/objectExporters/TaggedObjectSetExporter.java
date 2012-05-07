@@ -72,7 +72,7 @@ public class TaggedObjectSetExporter extends BaseObjectExporter
 	{
 		getWriter().writeStartElement(WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME);
 		
-		String factorTypeName = getFactorTypeName(wrappedFactor);
+		String factorTypeName = getDiagramFactorWrappedFactorTypeName(wrappedFactor);
 		getWriter().writeElement(factorTypeName, ID_ELEMENT_NAME, wrappedFactor.getFactorId().toString());
 		
 		getWriter().writeEndElement(WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME);
