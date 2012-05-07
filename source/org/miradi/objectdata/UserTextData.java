@@ -40,6 +40,6 @@ abstract public class UserTextData extends StringData
 	@Override
 	public void writeAsXmpz2XmlData(Xmpz2XmlWriter writer, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		writer.writeUserTextData(baseObjectSchema, fieldSchema, get());
+		writer.writeXmlFormattedText(baseObjectSchema, fieldSchema, get());
 	}
 }
