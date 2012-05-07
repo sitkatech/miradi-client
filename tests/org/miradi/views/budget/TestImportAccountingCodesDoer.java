@@ -30,10 +30,10 @@ import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.views.planning.doers.ImportAccountingCodesDoer;
 
-public class ImportAccountingCodesDoerTest extends MiradiTestCase
+public class TestImportAccountingCodesDoer extends MiradiTestCase
 {
 
-	public ImportAccountingCodesDoerTest(String name)
+	public TestImportAccountingCodesDoer(String name)
 	{
 		super(name);
 	}
