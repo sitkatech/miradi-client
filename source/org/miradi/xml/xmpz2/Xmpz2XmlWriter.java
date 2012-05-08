@@ -163,30 +163,27 @@ public class Xmpz2XmlWriter extends UnicodeWriter implements XmpzXmlConstants
 
 	public void writeRefDataIfValid(final BaseObjectSchema baseObjectSchema, final AbstractFieldSchema fieldSchema, final ORef ref) throws Exception
 	{
-		if (ref.isValid())
-		{
-			final String parentElementName = appendChildNameToParentName(baseObjectSchema, fieldSchema);
-			final String idName = getConvertedElementName(baseObjectSchema.getObjectName(), fieldSchema.getTag());
-			
-			writeRef(ref, parentElementName, idName);
-		}
+		final String parentElementName = appendChildNameToParentName(baseObjectSchema, fieldSchema);
+		final String idElementName = getConvertedElementName(baseObjectSchema.getObjectName(), fieldSchema.getTag());
+
+		writeRef(ref, parentElementName, idElementName);
 	}
 
 	public void writeRefIfValid(final String parentElementName, final String idElementName, final ORef ref) throws Exception, IOException
 	{
-		if (ref.isValid())
-		{
-			writeRef(ref, parentElementName + idElementName, idElementName);
-		}
+		writeRef(ref, parentElementName + idElementName, idElementName);
 	}
 	
 	private void writeRef(final ORef ref, final String parentElementName, final String idElementName) throws Exception, IOException
 	{
-		writeStartElement(parentElementName);
-		writeStartElement(idElementName);
-		write(ref.getObjectId().toString());
-		writeEndElement(idElementName);
-		writeEndElement(parentElementName);
+		if (ref.isValid())
+		{
+			writeStartElement(parentElementName);
+			writeStartElement(idElementName);
+			write(ref.getObjectId().toString());
+			writeEndElement(idElementName);
+			writeEndElement(parentElementName);
+		}
 	}
 
 	public void writeDiagramPointData(BaseObjectSchema baseObjectSchema, final AbstractFieldSchema fieldSchema, final Point point) throws Exception
