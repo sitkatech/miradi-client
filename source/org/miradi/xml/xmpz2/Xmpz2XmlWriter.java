@@ -164,9 +164,9 @@ public class Xmpz2XmlWriter extends UnicodeWriter implements XmpzXmlConstants
 	public void writeRefDataIfValid(final BaseObjectSchema baseObjectSchema, final AbstractFieldSchema fieldSchema, final ORef ref) throws Exception
 	{
 		final String parentElementName = appendChildNameToParentName(baseObjectSchema, fieldSchema);
-		final String idElementName = getConvertedElementName(baseObjectSchema.getObjectName(), fieldSchema.getTag());
+		final String idName = getConvertedElementName(baseObjectSchema.getObjectName(), fieldSchema.getTag());
 
-		writeRef(ref, parentElementName, idElementName);
+		writeRef(ref, parentElementName, idName);
 	}
 
 	public void writeRefIfValid(final String parentElementName, final String idElementName, final ORef ref) throws Exception, IOException
