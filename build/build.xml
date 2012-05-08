@@ -42,6 +42,7 @@
 
 	<!-- third-party jars -->
 	<property name="browserlauncher.jar" value="${dist.temp.jars}/BrowserLauncher2/BrowserLauncher2-all-10rc4.jar"/>
+	<property name="commons-lang3.jar" value="${dist.temp.jars}/commons-lang3/commons-lang3-3.1.jar"/>
 	<property name="miradi-jgraph.jar" value="${dist.temp.jars}/jgraph/miradi-jgraph-5.12.2.2b.jar"/>
 	<property name="jcalendar.jar" value="${dist.temp.jars}/jcalendar-1.3.2/jcalendar-1.3.2.jar"/>
 	<property name="jing.jar" value="${dist.temp.jars}/jing/bin/jing.jar" />
@@ -62,6 +63,7 @@
         <pathelement path="${martus-swing.jar}/"/>
         <pathelement path="${martus-utils.jar}/"/>
 		<pathelement path="${browserlauncher.jar}"/>
+    	<pathelement path="${commons-lang3.jar}"/>
 		<pathelement path="${miradi-jgraph.jar}"/>
     	<pathelement path="${jxl.jar}"/>
     	<pathelement path="${jcalendar.jar}"/>
@@ -519,6 +521,8 @@
     	<!-- ThirdParty jars -->
     	<zipfileset dir="${dist.temp.jars}/BrowserLauncher2/" prefix='${JarFolder}' includes="BrowserLauncher*.jar" />
     	<zipfileset dir="${dist.temp.jars}/BrowserLauncher2/" prefix='${JarFolder}' includes="BrowserLauncher2-license.txt" />
+    	<zipfileset dir="${dist.temp.jars}/commons-lang3/3.1/" prefix="${JarFolder}" includes="commons-lang3-3.1.jar" />
+    	<zipfileset dir="${dist.temp.jars}/commons-lang3/3.1/" prefix="${JarFolder}" includes="LICENSE.txt" />
     	<zipfileset dir="${dist.temp.jars}/jcalendar-1.3.2/" prefix='${JarFolder}' includes="jcalendar*.jar" />
     	<zipfileset dir="${dist.temp.jars}/jcalendar-1.3.2/" prefix='${JarFolder}' includes="jcalendar-license.txt" />
     	<zipfileset dir="${dist.temp.jars}/jgraph/" prefix='${JarFolder}' includes="miradi-jgraph-5.12.2.2b.jar" />
@@ -540,8 +544,6 @@
        	<zipfileset dir="${dist.temp.jars}/shef/0.5/" prefix="${JarFolder}" includes="LICENSE-sam.jar" />
        	<zipfileset dir="${dist.temp.jars}/shef/0.5/" prefix="${JarFolder}" includes="jtidy-8.0.jar" />
         <zipfileset dir="${dist.temp.jars}/shef/0.5/" prefix="${JarFolder}" includes="LICENSE-jtidy.txt" />
-    	<zipfileset dir="${dist.temp.jars}/commons-lang3/3.1/" prefix="${JarFolder}" includes="commons-lang3-3.1.jar" />
-    	<zipfileset dir="${dist.temp.jars}/commons-lang3/3.1/" prefix="${JarFolder}" includes="LICENSE.txt" />
     </zip>
 	
 	<!-- Third-party source code -->
