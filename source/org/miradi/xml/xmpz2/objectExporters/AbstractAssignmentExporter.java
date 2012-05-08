@@ -21,7 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz2.objectExporters;
 
 import org.miradi.objecthelpers.DateUnit;
-import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.schemas.BaseObjectSchema;
@@ -41,20 +40,12 @@ abstract public class AbstractAssignmentExporter extends BaseObjectExporter
 	@Override
 	protected void writeFields(final BaseObject baseObject,	BaseObjectSchema baseObjectSchema) throws Exception
 	{
+		super.writeFields(baseObject, baseObjectSchema);
+
 		Assignment assignment = (Assignment) baseObject;
 		exportDateUnitEfforList(assignment.getDateUnitEffortList(), getDateUnitsElementName());
-		
-		writeBudgetRef(baseObjectSchema, FUNDING_SOURCE_ID, assignment.getFundingSourceRef());
-		writeBudgetRef(baseObjectSchema, ACCOUNTING_CODE_ID, assignment.getAccountingCodeRef());
-		writeBudgetRef(baseObjectSchema, BUDGET_CATEGORY_ONE_ID, assignment.getCategoryOneRef());
-		writeBudgetRef(baseObjectSchema, BUDGET_CATEGORY_TWO_ID, assignment.getCategoryTwoRef());
 	}
 	
-	private void writeBudgetRef(final BaseObjectSchema baseObjectSchema, final String elementName, final ORef ref) throws Exception
-	{
-		getWriter().writeRefIfValid(baseObjectSchema.getObjectName(), elementName, ref);
-	}
-
 	@Override
 	protected boolean doesFieldRequireSpecialHandling(String tag)
 	{
