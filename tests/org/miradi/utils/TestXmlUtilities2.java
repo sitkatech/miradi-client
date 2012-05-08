@@ -36,6 +36,7 @@ public class TestXmlUtilities2 extends MiradiTestCase
 		verifyDoesHaveEncodedValue("A&gt;B");
 		verifyDoesHaveEncodedValue("A&apos;B");
 		verifyDoesHaveEncodedValue("A&quot;B");
+		verifyDoesHaveEncodedValue("A&#8211;B");
 
 		verifyDoesNotHaveEncodedValue("AB");
 		verifyDoesNotHaveEncodedValue("A&B");
@@ -118,6 +119,7 @@ public class TestXmlUtilities2 extends MiradiTestCase
 		verifyDecoding("\"", "&#34;");
 		verifyDecoding("'", "&#39;");
 		verifyDecoding("&", "&#38;");
+		verifyDecoding("\u2013", "&#8211;");
 	}
 	
 	public void testGetXmlEncoded()

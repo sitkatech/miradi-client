@@ -20,44 +20,19 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.miradi.main.EAM;
 
 public class XmlUtilities2
 {
 	public static String convertXmlTextToPlainText(String value)
 	{
-		value = value.replaceAll("&#60;", "<");
-		value = value.replaceAll("&#x3c;", "<");
-		value = value.replaceAll("&#x3C;", "<");
-		value = value.replaceAll("&lt;", "<");
-
-		value = value.replaceAll("&gt;", ">");
-		value = value.replaceAll("&#x3E;", ">");
-		value = value.replaceAll("&#x3e;", ">");
-		value = value.replaceAll("&#62;", ">");
-
-		value = value.replaceAll("&quot;", "\"");
-		value = value.replaceAll("&#x22;", "\"");
-		value = value.replaceAll("&#34;", "\"");
-		
-		value = value.replaceAll("&#x26;", "&");
-		value = value.replaceAll("&#38;", "&");
-		value = value.replaceAll("&amp;", "&");
-		
-		value = decodeApostrophes(value);
-		
-		return value;
+		return StringEscapeUtils.unescapeXml(value);
 	}
 
 	public static String getXmlEncoded(String value)
 	{
-		value = value.replaceAll("&", "&amp;");
-		value = value.replaceAll("<", "&lt;");
-		value = value.replaceAll(">", "&gt;");
-		value = value.replaceAll("\"", "&quot;");
-		value = getXmlEncodedApostrophes(value);
-		
-		return value;
+		return StringEscapeUtils.escapeXml(value);
 	}
 
 	public static String getXmlEncodedApostrophes(String value)

@@ -19,5 +19,6 @@
 	<classpathentry kind="lib" path="/miradi-thirdparty/xalan/2.7.1/bin/xercesImpl.jar"/>
 	<classpathentry kind="lib" path="/miradi-thirdparty/xalan/2.7.1/bin/serializer.jar"/>
 	<classpathentry kind="lib" path="/miradi-thirdparty/xalan/2.7.1/bin/xml-apis.jar"/>
+	<classpathentry kind="lib" path="/miradi-thirdparty/commons-lang3-3.1/commons-lang3-3.1.jar" sourcepath="/miradi-thirdparty/commons-lang3-3.1/commons-lang3-3.1-sources.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
