@@ -526,8 +526,8 @@
        	<zipfileset dir="${dist.temp.jars}/shef/0.5/" prefix="${JarFolder}" includes="LICENSE-sam.jar" />
        	<zipfileset dir="${dist.temp.jars}/shef/0.5/" prefix="${JarFolder}" includes="jtidy-8.0.jar" />
         <zipfileset dir="${dist.temp.jars}/shef/0.5/" prefix="${JarFolder}" includes="LICENSE-jtidy.txt" />
-    	<zipfileset dir="${dist.temp.jars}/commons-lang3-3.1/" prefix="${JarFolder}" includes="commons-lang3-3.1jar" />
-    	<zipfileset dir="${dist.temp.jars}/commons-lang3-3.1/" prefix="${JarFolder}" includes="LICENSE.txt" />
+    	<zipfileset dir="${dist.temp.jars}/commons-lang3/3.1/" prefix="${JarFolder}" includes="commons-lang3-3.1.jar" />
+    	<zipfileset dir="${dist.temp.jars}/commons-lang3/3.1/" prefix="${JarFolder}" includes="LICENSE.txt" />
     </zip>
 	
 	<!-- Third-party source code -->
