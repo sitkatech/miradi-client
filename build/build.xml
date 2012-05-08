@@ -266,15 +266,15 @@
 	<move file="${dist.temp.jars}/BrowserLauncher2/License.BrowserLauncher2" tofile="${dist.temp.jars}/BrowserLauncher2/BrowserLauncher2-license.txt"/>
 
 	<antcall target='download'>
-		<param name='directory' value='commons-lang3' />
+		<param name='directory' value='commons-lang3/3.1' />
 		<param name='filename' value='commons-lang3-3.1-sources.jar' />
 	</antcall>
 	<antcall target='download'>
-		<param name='directory' value='commons-lang3' />
+		<param name='directory' value='commons-lang3/3.1' />
 		<param name='filename' value='commons-lang3-3.1.jar' />
 	</antcall>
 	<antcall target='download'>
-		<param name='directory' value='commons-lang3' />
+		<param name='directory' value='commons-lang3/3.1' />
 		<param name='filename' value='LICENSE.TXT' />
 	</antcall>
 	<move file="${dist.temp.jars}/commons-lang3/LICENSE.txt" tofile="${dist.temp.jars}/commons-lang3/ApacheCommons-license.txt"/>
@@ -547,6 +547,7 @@
 	<!-- Third-party source code -->
 	<zip destfile="${dist.dir}/Miradi-Thirdparty-Source.zip">
     	<zipfileset dir="${dist.temp.jars}/BrowserLauncher2/" prefix='source' includes="BrowserLauncher2-all-10rc4.jar" />
+    	<zipfileset dir="${dist.temp.jars}/commons-lang3/3.1/" prefix="source" includes="commons-lang3-3.1.jar" />
     	<zipfileset dir="${dist.temp.jars}/jcalendar-1.3.2/" prefix='source' includes="jcalendar-1.3.2-src.zip" />
     	<zipfileset dir="${dist.temp.jars}/jgraph/" prefix='source' includes="miradi-jgraph-5.12.2.2b-src.zip" />
     	<zipfileset dir="${dist.temp.jars}/martus-swing/source/" prefix='source' includes="martus-swing-src.jar" />
