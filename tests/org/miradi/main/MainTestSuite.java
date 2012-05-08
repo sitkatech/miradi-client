@@ -212,7 +212,7 @@ import org.miradi.utils.TestTaxonomyFileLoader;
 import org.miradi.utils.TestThreatStressRatingHelper;
 import org.miradi.utils.TestTranslations;
 import org.miradi.utils.TestXmlUtilities2;
-import org.miradi.views.budget.ImportAccountingCodesDoerTest;
+import org.miradi.views.budget.TestImportAccountingCodesDoer;
 import org.miradi.views.diagram.TestDiagramAliasPaster;
 import org.miradi.views.diagram.TestLinkBendPointsMoveHandler;
 import org.miradi.views.diagram.doers.TestDeleteAnnotationDoer;
@@ -478,7 +478,7 @@ public class MainTestSuite extends TestSuite
 		addTest(new TestSuite(TestDeleteActivity.class));
 		
 		// view.buget
-		addTest(new TestSuite(ImportAccountingCodesDoerTest.class));
+		addTest(new TestSuite(TestImportAccountingCodesDoer.class));
 		
 		// view.threatmatrix package
 		addTest(new TestSuite(TestTargetSummartyRowTableModel.class));
