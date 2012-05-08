@@ -47,7 +47,6 @@ import org.miradi.schemas.FieldSchemaReflist;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.PointList;
 import org.miradi.xml.generic.XmlSchemaCreator;
-import org.miradi.xml.wcs.TagToElementNameMap;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 
 public class Xmpz2XmlWriter extends UnicodeWriter implements XmpzXmlConstants
@@ -167,10 +166,9 @@ public class Xmpz2XmlWriter extends UnicodeWriter implements XmpzXmlConstants
 		if (ref.isValid())
 		{
 			final String parentElementName = appendChildNameToParentName(baseObjectSchema, fieldSchema);
-			final BaseObject baseObject = BaseObject.find(getProject(), ref);
-			final String idElementName = baseObject.getTypeName() + ID_ELEMENT_NAME;
+			final String idName = getConvertedElementName(baseObjectSchema.getObjectName(), fieldSchema.getTag());
 			
-			writeRef(ref, parentElementName, idElementName);
+			writeRef(ref, parentElementName, idName);
 		}
 	}
 
@@ -474,7 +472,7 @@ public class Xmpz2XmlWriter extends UnicodeWriter implements XmpzXmlConstants
 	
 	private String getConvertedElementName(String parentElementName,String elementName)
 	{
-		TagToElementNameMap map = new TagToElementNameMap();
+		Xmpz2TagToElementNameMap map = new Xmpz2TagToElementNameMap();
 		return map.findElementName(parentElementName, elementName);
 	}
 	
