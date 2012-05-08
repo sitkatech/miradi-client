@@ -275,7 +275,7 @@
 	</antcall>
 	<antcall target='download'>
 		<param name='directory' value='commons-lang3/3.1' />
-		<param name='filename' value='LICENSE.TXT' />
+		<param name='filename' value='LICENSE.txt' />
 	</antcall>
 	<move file="${dist.temp.jars}/commons-lang3/LICENSE.txt" tofile="${dist.temp.jars}/commons-lang3/ApacheCommons-license.txt"/>
 
