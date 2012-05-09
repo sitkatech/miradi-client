@@ -137,6 +137,7 @@ public class FactorDeleteHelper
 		{
 			Factor factor = (Factor) getProject().findObject(factorRefs.get(index));
 			deleteFactorDiagramFactorInCurrentDiagram(factor);
+			removeFromTaggedObjectSets(factor.getRef());
 		}
 	}
 
