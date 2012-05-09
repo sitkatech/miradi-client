@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.umbrella;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
 import javax.swing.JFileChooser;
@@ -37,8 +39,8 @@ import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
-import org.miradi.utils.MiradiFileSaveChooser;
 import org.miradi.utils.MiradiBackgroundWorkerThread;
+import org.miradi.utils.MiradiFileSaveChooser;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.views.noproject.NoProjectView;
 import org.miradi.views.noproject.RenameProjectDoer;
@@ -195,7 +197,12 @@ public abstract class AbstractProjectImporter
 	
 	protected InputStreamWithSeek getProjectAsInputStream(ZipFile zipFile) throws Exception
 	{
-		return new ZipEntryInputStreamWithSeek(zipFile, zipFile.getEntry(ExportCpmzDoer.PROJECT_XML_FILE_NAME));
+		String xmlFileName = ExportCpmzDoer.PROJECT_XML_FILE_NAME;
+		ZipEntry zipEntry = zipFile.getEntry(xmlFileName);
+		if(zipEntry == null)
+			throw new FileNotFoundException("Invalid XMPZ file: Could not find " + xmlFileName);
+		
+		return new ZipEntryInputStreamWithSeek(zipFile, zipEntry);
 	}
 
 	protected MainWindow getMainWindow()
