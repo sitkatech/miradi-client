@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-09 15:03-0500\n"
+"POT-Creation-Date: 2012-05-09 18:42-0500\n"
 "PO-Revision-Date: 2011-04-05 11:46+0100\n"
 "Last-Translator: Emanuela Leonardi <e.leonardi@gmail.com>\n"
 "Language-Team: none\n"
@@ -949,7 +949,7 @@ msgstr ""
 "comme la proportion de l'occurrence de la cible. Pour les espèces, mesurée "
 "comme la proportion de la population cible.</html>"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:176
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:178
 msgid "<html>Import failed: <br><p> %s </p></html>"
 msgstr "<html>Échec de l'importation : <br><p> %s </p></html>"
 
@@ -4204,11 +4204,11 @@ msgstr "Importer les Codes de comptabilité"
 msgid "Import Completed"
 msgstr "Importation terminée"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:155
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:157
 msgid "Import Completed.  Would you like to open %s?"
 msgstr "Importation terminée. Souhaitez-vous ouvrir %s ?"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:58
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:60
 msgid "Import Project"
 msgstr "Importer projet"
 
@@ -4216,7 +4216,7 @@ msgstr "Importer projet"
 msgid "Import a Miradi Project Zipfile (.mpz)"
 msgstr "Importer un fichier Zip du projet Miradi (.mpz)"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:73
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:75
 msgid "Import was canceled!"
 msgstr ""
 
@@ -4244,7 +4244,7 @@ msgstr ""
 msgid "Importing XML..."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:113
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:115
 msgid "Importing..."
 msgstr ""
 
@@ -5508,7 +5508,7 @@ msgstr "Ouvrir"
 msgid "Open Anyway"
 msgstr "Ouvrir malgré tout"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:156
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:158
 #: Miradi/source/org/miradi/main/MainWindow.java:616
 msgid "Open Project"
 msgstr "Ouvrir projet"
@@ -7894,7 +7894,7 @@ msgstr ""
 "prochaines versions de Miradi exporteront les données dans des formats "
 "différents."
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:207
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:214
 msgid ""
 "This file cannot be imported because it is a newer format than this version "
 "of Miradi supports. <br>Please make sure you are running the latest version "
@@ -7921,7 +7921,7 @@ msgstr ""
 "Ce modèle n'est pas pour une attribution simple et il n'a pas d'information "
 "d'attribution"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:83
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:85
 msgid ""
 "This project cannot be imported by this version of Miradi because it \n"
 "is in a newer data format. Please upgrade to the latest version of Miradi."
@@ -8406,7 +8406,7 @@ msgstr "Appel inattendu vers  removeListSelectionListener"
 msgid "Unexpected call to setText"
 msgstr "Appel inattendu vers  setText"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:175
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:177
 msgid "Unexpected error"
 msgstr ""
 
