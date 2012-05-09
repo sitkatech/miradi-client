@@ -63,7 +63,6 @@ public class ChoiceItemComboBoxRendererOrEditorFactory extends ObjectTableCellEd
 	@Override
 	public Object getCellEditorValue()
 	{
-		System.out.println("GetCellEditValue");
 		return editorComponent.getSelectedItem();
 	}
 	
