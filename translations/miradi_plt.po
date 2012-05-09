@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-09 15:03-0500\n"
+"POT-Creation-Date: 2012-05-09 18:42-0500\n"
 "PO-Revision-Date: 2011-03-17 08:40-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -822,7 +822,7 @@ msgid ""
 "proportion of the target's population.</html>"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:176
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:178
 msgid "<html>Import failed: <br><p> %s </p></html>"
 msgstr ""
 
@@ -3910,11 +3910,11 @@ msgstr ""
 msgid "Import Completed"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:155
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:157
 msgid "Import Completed.  Would you like to open %s?"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:58
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:60
 msgid "Import Project"
 msgstr ""
 
@@ -3922,7 +3922,7 @@ msgstr ""
 msgid "Import a Miradi Project Zipfile (.mpz)"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:73
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:75
 msgid "Import was canceled!"
 msgstr ""
 
@@ -3950,7 +3950,7 @@ msgstr ""
 msgid "Importing XML..."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:113
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:115
 msgid "Importing..."
 msgstr ""
 
@@ -5142,7 +5142,7 @@ msgstr ""
 msgid "Open Anyway"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:156
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:158
 #: Miradi/source/org/miradi/main/MainWindow.java:616
 msgid "Open Project"
 msgstr ""
@@ -7367,7 +7367,7 @@ msgid ""
 "the data in different formats."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:207
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:214
 msgid ""
 "This file cannot be imported because it is a newer format than this version "
 "of Miradi supports. <br>Please make sure you are running the latest version "
@@ -7385,7 +7385,7 @@ msgid ""
 "This model is not for a single assignment and has no assignment information"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:83
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:85
 msgid ""
 "This project cannot be imported by this version of Miradi because it \n"
 "is in a newer data format. Please upgrade to the latest version of Miradi."
@@ -7843,7 +7843,7 @@ msgstr ""
 msgid "Unexpected call to setText"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:175
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:177
 msgid "Unexpected error"
 msgstr ""
 
