@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-03 22:40-0500\n"
+"POT-Creation-Date: 2012-05-08 20:16-0500\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -936,7 +936,7 @@ msgstr ""
 "харьцаагаар хэмжигддэг. Төрөл зүйлийн хувьд бол хамгаалах объектын тоо "
 "толгойн харьцаагаар хэмжигдэнэ. </html>"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:173
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:176
 msgid "<html>Import failed: <br><p> %s </p></html>"
 msgstr "<html>Import амжилтгүй болсон: <br><p> %s </p></html>"
 
@@ -4146,7 +4146,7 @@ msgstr "Тооцооны код оруулах"
 msgid "Import Completed"
 msgstr "Оролт бүрэн дууссан"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:152
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:155
 msgid "Import Completed.  Would you like to open %s?"
 msgstr "Оролт бүрэн дууссан. Хувийг нээж харах уу%?"
 
@@ -4186,7 +4186,7 @@ msgstr ""
 msgid "Importing XML..."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:110
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:113
 msgid "Importing..."
 msgstr ""
 
@@ -5420,7 +5420,7 @@ msgstr "Нээх"
 msgid "Open Anyway"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:153
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:156
 #: Miradi/source/org/miradi/main/MainWindow.java:616
 msgid "Open Project"
 msgstr "Төсөл нээх"
@@ -7770,7 +7770,7 @@ msgid ""
 "the data in different formats."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:204
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:207
 msgid ""
 "This file cannot be imported because it is a newer format than this version "
 "of Miradi supports. <br>Please make sure you are running the latest version "
@@ -8278,7 +8278,7 @@ msgstr ""
 msgid "Unexpected call to setText"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:172
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:175
 msgid "Unexpected error"
 msgstr ""
 

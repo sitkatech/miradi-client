@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-03 22:40-0500\n"
+"POT-Creation-Date: 2012-05-08 20:16-0500\n"
 "PO-Revision-Date: 2011-04-29 11:26+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -955,7 +955,7 @@ msgstr ""
 "è misurata come la proporzione della popolazione del Valore di "
 "Conservazione</html>"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:173
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:176
 msgid "<html>Import failed: <br><p> %s </p></html>"
 msgstr "<html>Importazione fallita: <br><p> %s </p></html>"
 
@@ -4212,7 +4212,7 @@ msgstr "Importa Codici di Contabilità"
 msgid "Import Completed"
 msgstr "Importazione completata"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:152
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:155
 msgid "Import Completed.  Would you like to open %s?"
 msgstr "Importazione completata. Vuoi aprire %s?"
 
@@ -4252,7 +4252,7 @@ msgstr ""
 msgid "Importing XML..."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:110
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:113
 msgid "Importing..."
 msgstr ""
 
@@ -5502,7 +5502,7 @@ msgstr "Apri"
 msgid "Open Anyway"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:153
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:156
 #: Miradi/source/org/miradi/main/MainWindow.java:616
 msgid "Open Project"
 msgstr "Apri progetto"
@@ -7864,7 +7864,7 @@ msgstr ""
 "dati di progetto ma lo schema XML è in evoluzione. Le prossime versioni "
 "esporteranno i dati in diversi formati."
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:204
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:207
 msgid ""
 "This file cannot be imported because it is a newer format than this version "
 "of Miradi supports. <br>Please make sure you are running the latest version "
@@ -8365,7 +8365,7 @@ msgstr ""
 msgid "Unexpected call to setText"
 msgstr "Chiamata inaspettata al setText"
 
-#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:172
+#: Miradi/source/org/miradi/views/umbrella/AbstractProjectImporter.java:175
 msgid "Unexpected error"
 msgstr ""
 
