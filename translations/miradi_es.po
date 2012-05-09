@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-09 13:17-0500\n"
+"POT-Creation-Date: 2012-05-09 15:03-0500\n"
 "PO-Revision-Date: 2011-03-28 15:06-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -4718,7 +4718,7 @@ msgid "Major Issues - Ongoing, major issues that need attention"
 msgstr ""
 "Problemas importantes – Activo, problemas importantes que requieren atención "
 
-#: Miradi/source/org/miradi/dialogs/stress/ManageStressesDialog.java:36
+#: Miradi/source/org/miradi/dialogs/stress/ManageStressesDialog.java:41
 msgid "Manage Stresses for "
 msgstr "Manejar presiones para"
 
