@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-08 20:16-0500\n"
+"POT-Creation-Date: 2012-05-09 13:17-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -2714,7 +2714,7 @@ msgstr ""
 msgid "Conservation Targets"
 msgstr "保护对象 "
 
-#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:62
+#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:61
 msgid "Context"
 msgstr ""
 
@@ -3152,7 +3152,7 @@ msgid ""
 "(available via right-click menu on all diagrams - Diagram Properties)"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:57
+#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:56
 msgid ""
 "Diagram View - Indicators explicitly linked to conservation outcomes (goals) "
 "and intermediate results (objectives)"
@@ -4293,7 +4293,7 @@ msgstr ""
 msgid "Label|Budget Category Two"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:97
+#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:96
 msgid "Label|Business Planning"
 msgstr ""
 
@@ -4790,7 +4790,7 @@ msgid ""
 "Measurements can be either quantitative or qualitative."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:74
+#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:73
 msgid "Measures"
 msgstr ""
 
@@ -5280,7 +5280,7 @@ msgstr ""
 msgid "Other Orgs"
 msgstr "其它组织 \t\t"
 
-#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:65
+#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:64
 msgid "Outcomes"
 msgstr ""
 
@@ -5758,9 +5758,9 @@ msgstr "结果链属性 \t\t"
 msgid ""
 "Results Chain diagrams for entering intermediate results linking strategies "
 "to targets. Text field for alternative or supplemental narrative description "
-"of conceptual model (available via right-click menu on all diagrams - "
+"of results chain diagrams (available via right-click menu on all diagrams - "
 "Diagram Properties). Objectives field for specifying measurable desired "
-"results"
+"results."
 msgstr ""
 
 #: Miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:83
@@ -6082,7 +6082,7 @@ msgstr "简单生存力 \t\t"
 msgid "Site/Scope Description:"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:67
+#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:66
 msgid "Situation Analysis"
 msgstr ""
 
@@ -7482,11 +7482,11 @@ msgstr ""
 msgid "Then by"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:71
+#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:70
 msgid "Theory of Change<br/>- Strategy Logic"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:69
+#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:68
 msgid "Theory of Change<br/>- Strategy Selection"
 msgstr ""
 
@@ -8329,14 +8329,14 @@ msgstr ""
 msgid "Work Plan Settings"
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:59
+#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:58
 msgid ""
-"Work Plan View - Flexible management of work planning (Activity, Task with "
-"who, when information)  and budget information including work effort, "
-"expenses, and funding sources"
+"Work Plan View - Flexible management of work planning (Strategies, "
+"Activities, and Tasks with who and when information) and budget information "
+"including work effort, expenses, and funding sources."
 msgstr ""
 
-#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:76
+#: Miradi/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:75
 msgid "Work Planning"
 msgstr ""
 
