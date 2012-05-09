@@ -97,7 +97,10 @@ public abstract class AbstractProjectImporter
 		catch(Exception e)
 		{
 			EAM.logException(e);
-			showImportFailedErrorDialog(e.getMessage());
+			String message = e.getMessage();
+			if(message == null)
+				message = "";
+			showImportFailedErrorDialog(message);
 		}
 	}
 
