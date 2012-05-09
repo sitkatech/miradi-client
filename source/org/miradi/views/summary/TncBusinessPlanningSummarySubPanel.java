@@ -50,14 +50,13 @@ public class TncBusinessPlanningSummarySubPanel extends ObjectDataInputPanel
 												"Diagram Properties)");
 		String strategySelectionRowContent = EAM.text("Conceptual Model diagrams (including Brainstorm mode to capture all draft strategies " +
 												"considered that were not selected). Strategy Ranking fields of: Potential Impact and Feasibility");
-		String strategyLogicRowContent = EAM.text("Results Chain diagrams for entering intermediate results linking strategies to targets. " +
-												"Text field for alternative or supplemental narrative description of conceptual model " +
-												"(available via right-click menu on all diagrams - Diagram Properties). Objectives field " +
-												"for specifying measurable desired results");
+		String strategyLogicRowContent = EAM.text("Results Chain diagrams for entering intermediate results linking strategies to targets. Text field " +
+												"for alternative or supplemental narrative description of results chain diagrams (available via right-click " +
+												"menu on all diagrams - Diagram Properties). Objectives field for specifying measurable desired results.");
 		String measuresRowContent = EAM.text("Diagram View - Indicators explicitly linked to conservation outcomes (goals) and " +
 												"intermediate results (objectives)");
-		String workPlanRowContent = EAM.text("Work Plan View - Flexible management of work planning (Activity, Task with who, when information) " +
-												" and budget information including work effort, expenses, and funding sources");
+		String workPlanRowContent = EAM.text("Work Plan View - Flexible management of work planning (Strategies, Activities, and Tasks with who and when information) " +
+											"and budget information including work effort, expenses, and funding sources.");
 		
 		FormRow contextRow = createReadonlyTextFormRow(EAM.text("Context"), summaryRowContent);
 		addLabelAndFieldFromForm(contextRow);
