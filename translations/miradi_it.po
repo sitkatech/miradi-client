@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-09 13:17-0500\n"
+"POT-Creation-Date: 2012-05-09 15:03-0500\n"
 "PO-Revision-Date: 2011-04-29 11:26+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -4815,7 +4815,7 @@ msgstr ""
 "Principali problematiche - Le questioni più importanti in corso che hanno "
 "bisogno di attenzione"
 
-#: Miradi/source/org/miradi/dialogs/stress/ManageStressesDialog.java:36
+#: Miradi/source/org/miradi/dialogs/stress/ManageStressesDialog.java:41
 msgid "Manage Stresses for "
 msgstr "Gestisci le pressioni(Stress) per "
 

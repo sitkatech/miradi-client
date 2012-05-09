@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-09 13:17-0500\n"
+"POT-Creation-Date: 2012-05-09 15:03-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -4739,7 +4739,7 @@ msgstr "Головне питання"
 msgid "Major Issues - Ongoing, major issues that need attention"
 msgstr "Важлива справа - Діюча важлива справа, що потребує уваги"
 
-#: Miradi/source/org/miradi/dialogs/stress/ManageStressesDialog.java:36
+#: Miradi/source/org/miradi/dialogs/stress/ManageStressesDialog.java:41
 msgid "Manage Stresses for "
 msgstr "Управляти стресом для"
 

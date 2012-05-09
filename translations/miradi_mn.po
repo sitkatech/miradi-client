@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-09 13:17-0500\n"
+"POT-Creation-Date: 2012-05-09 15:03-0500\n"
 "PO-Revision-Date: 2011-01-24 13:54+0800\n"
 "Last-Translator: Altanchimeg <altan0220@yahoo.com>\n"
 "Language-Team: none\n"
@@ -4743,7 +4743,7 @@ msgstr "Гол асуудлууд"
 msgid "Major Issues - Ongoing, major issues that need attention"
 msgstr "Гол асуудлууд - Анхаарал хандуулах ёстой одоо болж буй гол асуудлууд"
 
-#: Miradi/source/org/miradi/dialogs/stress/ManageStressesDialog.java:36
+#: Miradi/source/org/miradi/dialogs/stress/ManageStressesDialog.java:41
 msgid "Manage Stresses for "
 msgstr ".....ны Дарамтыг Удирдах "
 
