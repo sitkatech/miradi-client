@@ -23,6 +23,7 @@ import org.miradi.dialogs.base.ModalDialogWithClose;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.Target;
+import org.miradi.utils.HtmlUtilities;
 
 public class ManageStressesDialog extends ModalDialogWithClose
 {
@@ -33,7 +34,11 @@ public class ManageStressesDialog extends ModalDialogWithClose
 
 	private static String createTitle(Target target)
 	{
-		return EAM.text("Manage Stresses for ") + target.combineShortLabelAndLabel();
+		String label = target.combineShortLabelAndLabel();
+		label = HtmlUtilities.replaceHtmlBrsWithNewlines(label);
+		label = HtmlUtilities.stripAllHtmlTags(label);
+		
+		return EAM.text("Manage Stresses for ") + label;
 	}
 	
 }
