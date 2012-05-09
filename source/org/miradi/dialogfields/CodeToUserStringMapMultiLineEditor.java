@@ -59,7 +59,9 @@ public class CodeToUserStringMapMultiLineEditor extends ObjectScrollingMultiline
 	{
 		String mapAsString = getProject().getObjectData(getORef(), getTag());
 		CodeToUserStringMap stringMap = new CodeToUserStringMap(mapAsString);
-		stringMap.putUserString(code, newValue);
+		final String existingValue = stringMap.getUserString(code);
+		if (!existingValue.equals(newValue))
+			stringMap.putUserString(code, newValue);
 
 		return stringMap.toJsonString();
 	}
