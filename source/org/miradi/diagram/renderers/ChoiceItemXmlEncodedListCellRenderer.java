@@ -21,12 +21,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.diagram.renderers;
 
 import org.miradi.questions.ChoiceItem;
+import org.miradi.utils.HtmlUtilities;
 
 public class ChoiceItemXmlEncodedListCellRenderer extends AbstractChoiceItemListCellRenderer
 {
 	@Override
 	protected String getText(ChoiceItem choiceItem)
 	{
-		return choiceItem.getXmlLabel();
+		return HtmlUtilities.wrapInHtmlTags(choiceItem.getXmlLabel());
 	}
 }
