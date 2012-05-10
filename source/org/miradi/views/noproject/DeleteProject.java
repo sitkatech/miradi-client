@@ -21,8 +21,10 @@ package org.miradi.views.noproject;
 
 import java.io.File;
 
+import org.miradi.main.AutomaticProjectSaver;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.utils.FileUtilities;
 
 public class DeleteProject
 {
@@ -34,6 +36,15 @@ public class DeleteProject
 			return;
 		
 		projectFileToDelete.delete();
+		deleteReleatedProjectFiles(projectFileToDelete);
+	}
+
+	private static void deleteReleatedProjectFiles(File projectFileToDelete) throws Exception
+	{
+		FileUtilities.deleteIfExists(AutomaticProjectSaver.getSessionFile(projectFileToDelete));
+		FileUtilities.deleteIfExists(AutomaticProjectSaver.getOldFile(projectFileToDelete));
+		FileUtilities.deleteIfExists(AutomaticProjectSaver.getLockFile(projectFileToDelete));
+		FileUtilities.deleteIfExists(AutomaticProjectSaver.getNewFile(projectFileToDelete));
 	}
 
 	private static String getDeleteMessage(File projectFileToDelete)
