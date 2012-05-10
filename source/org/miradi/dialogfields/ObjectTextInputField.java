@@ -125,5 +125,5 @@ public class ObjectTextInputField extends ObjectDataInputField
 		getTextField().setSelectionEnd(getTextField().getSize().width);
 	}
 
-	JTextComponent field;
+	private JTextComponent field;
 }
