@@ -69,4 +69,20 @@ public class FileUtilities
 		if(!file.delete())
 			throw new IOException("Delete failed: " + file.getAbsolutePath());
 	}
+	
+	public static void renameIfExists(File fromFile, File toFile) throws IOException
+	{
+		if(!fromFile.exists())
+			return;
+		
+		rename(fromFile, toFile);
+	}
+
+	public static void rename(File fromFile, File toFile) throws IOException
+	{
+		if(!fromFile.renameTo(toFile))
+			throw new IOException("Rename failed: " + fromFile.getAbsolutePath() + "->" + toFile.getAbsolutePath());
+	}
+
+
 }
