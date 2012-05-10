@@ -113,29 +113,24 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 	
 	public static File getSessionFile(final File currentFile)
 	{
-		return getFileWithSuffix(currentFile, SESSION_EXTENTION);
+		return FileUtilities.getFileWithSuffix(currentFile, SESSION_EXTENTION);
 	}
 
 	public static File getOldFile(File currentFile)
 	{
-		return getFileWithSuffix(currentFile, OLD_EXTENSION);
+		return FileUtilities.getFileWithSuffix(currentFile, OLD_EXTENSION);
 	}
 
 	public static File getNewFile(File currentFile)
 	{
-		return getFileWithSuffix(currentFile, NEW_EXTENSION);
+		return FileUtilities.getFileWithSuffix(currentFile, NEW_EXTENSION);
 	}
 
 	public static File getLockFile(File currentFile)
 	{
-		return getFileWithSuffix(currentFile, ".lock");
+		return FileUtilities.getFileWithSuffix(currentFile, ".lock");
 	}
 
-	private static File getFileWithSuffix(File currentFile, String suffix)
-	{
-		return new File(currentFile.getAbsolutePath() + suffix);
-	}
-	
 	private void save(File file) throws Exception
 	{
 		long startedAt = System.currentTimeMillis();
