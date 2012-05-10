@@ -84,7 +84,7 @@ public class ObjectStringInputField extends ObjectTextInputField
 	{
 		super.focusGained(e);
 		
-		selectAllText();
+		selectAllIfNothingSelected();
 	}
 
 	//FIXME medium - this handler is here to remove new lines entered by the user.

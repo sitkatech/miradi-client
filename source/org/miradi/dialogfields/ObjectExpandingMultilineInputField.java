@@ -36,6 +36,6 @@ public class ObjectExpandingMultilineInputField extends ObjectMultilineInputFiel
 	{
 		super.focusGained(e);
 		
-		selectAllText();
+		selectAllIfNothingSelected();
 	}
 }

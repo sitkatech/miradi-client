@@ -119,7 +119,7 @@ public class ObjectTextInputField extends ObjectDataInputField
 		return field;
 	}
 
-	protected void selectAllText()
+	protected void selectAllIfNothingSelected()
 	{
 		if (field.getSelectedText() == null)
 		{
