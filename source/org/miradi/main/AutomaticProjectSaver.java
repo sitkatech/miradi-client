@@ -55,7 +55,7 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 	
 	private void ensureSingleSessionProjectFile() throws Exception
 	{
-		File sessionFile = new File(projectFile.getAbsolutePath() + SESSION_EXTENTION);
+		File sessionFile = getSessionFile(projectFile);
 		FileUtilities.deleteIfExists(sessionFile);
 		Utility.copyFile(projectFile, sessionFile);
 	}
@@ -109,6 +109,11 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 		// 1. if valid new file exists, use it, else
 		// 2. if valid current file exists, use it, else
 		// 3. if valid old file exists, use it
+	}
+	
+	public static File getSessionFile(final File currentFile)
+	{
+		return getFileWithSuffix(currentFile, SESSION_EXTENTION);
 	}
 
 	public static File getOldFile(File currentFile)
