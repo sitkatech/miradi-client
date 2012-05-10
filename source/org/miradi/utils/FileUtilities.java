@@ -60,5 +60,13 @@ public class FileUtilities
 		tempDirectory.mkdir();
 		return tempDirectory;
 	}
-
+	
+	public static void deleteIfExists(File file) throws IOException
+	{
+		if(!file.exists())
+			return;
+		
+		if(!file.delete())
+			throw new IOException("Delete failed: " + file.getAbsolutePath());
+	}
 }

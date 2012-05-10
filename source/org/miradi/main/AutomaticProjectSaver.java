@@ -28,6 +28,7 @@ import org.martus.util.UnicodeWriter;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectSaver;
 import org.miradi.utils.FileLocker;
+import org.miradi.utils.FileUtilities;
 import org.miradi.utils.Utility;
 
 public class AutomaticProjectSaver implements CommandExecutedListener
@@ -55,7 +56,7 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 	private void ensureSingleSessionProjectFile() throws Exception
 	{
 		File sessionFile = new File(projectFile.getAbsolutePath() + SESSION_EXTENTION);
-		deleteIfExists(sessionFile);
+		FileUtilities.deleteIfExists(sessionFile);
 		Utility.copyFile(projectFile, sessionFile);
 	}
 
@@ -96,10 +97,10 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 		File oldFile = getOldFile(currentFile);
 		File newFile = getNewFile(currentFile);
 
-		deleteIfExists(newFile);
+		FileUtilities.deleteIfExists(newFile);
 		save(newFile);
 
-		deleteIfExists(oldFile);
+		FileUtilities.deleteIfExists(oldFile);
 		renameIfExists(currentFile, oldFile);
 
 		rename(newFile, currentFile);
@@ -108,15 +109,6 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 		// 1. if valid new file exists, use it, else
 		// 2. if valid current file exists, use it, else
 		// 3. if valid old file exists, use it
-	}
-
-	private void deleteIfExists(File file) throws IOException
-	{
-		if(!file.exists())
-			return;
-		
-		if(!file.delete())
-			throw new IOException("Delete failed: " + file.getAbsolutePath());
 	}
 
 	private void renameIfExists(File fromFile, File toFile) throws IOException
