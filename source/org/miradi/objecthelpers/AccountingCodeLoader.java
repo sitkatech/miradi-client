@@ -24,6 +24,7 @@ import java.io.StringReader;
 import java.util.Vector;
 
 import org.miradi.utils.DelimitedFileLoader;
+import org.miradi.utils.XmlUtilities2;
 
 public class AccountingCodeLoader extends DelimitedFileLoader
 {
@@ -44,11 +45,15 @@ public class AccountingCodeLoader extends DelimitedFileLoader
 		for(int vectorIndex = 0; vectorIndex < fileVector.size(); ++vectorIndex)
 		{
 			Vector row = (Vector) fileVector.get(vectorIndex);
-			String code = (String) row.get(0);
-			String label = (String) row.get(1);
+			String code = getXmlEscapedRowData(row, 0);
+			String label = getXmlEscapedRowData(row, 1);
 			AccountingCodeData.add(new AccountingCodeData(code, label));
 		}
 		return AccountingCodeData.toArray(new AccountingCodeData[0]);
 	}
 
+	private static String getXmlEscapedRowData(Vector row, final int rowIndex)
+	{
+		return XmlUtilities2.getXmlEncoded((String) row.get(rowIndex));
+	}
 }
