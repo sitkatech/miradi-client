@@ -84,6 +84,11 @@ public class ObjectStringInputField extends ObjectTextInputField
 	{
 		super.focusGained(e);
 		
+		selectAllText();
+	}
+
+	protected void selectAllText()
+	{
 		field.setSelectionStart(0);
 		field.setSelectionEnd(field.getSize().width);
 	}
