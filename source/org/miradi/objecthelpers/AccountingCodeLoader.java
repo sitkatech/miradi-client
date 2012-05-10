@@ -44,16 +44,16 @@ public class AccountingCodeLoader extends DelimitedFileLoader
 		Vector<AccountingCodeData> AccountingCodeData = new Vector<AccountingCodeData>();
 		for(int vectorIndex = 0; vectorIndex < fileVector.size(); ++vectorIndex)
 		{
-			Vector row = (Vector) fileVector.get(vectorIndex);
-			String code = getXmlEscapedRowData(row, 0);
-			String label = getXmlEscapedRowData(row, 1);
+			Vector columnIndex = (Vector) fileVector.get(vectorIndex);
+			String code = getXmlEscapedRowData(columnIndex, 0);
+			String label = getXmlEscapedRowData(columnIndex, 1);
 			AccountingCodeData.add(new AccountingCodeData(code, label));
 		}
 		return AccountingCodeData.toArray(new AccountingCodeData[0]);
 	}
 
-	private static String getXmlEscapedRowData(Vector row, final int rowIndex)
+	private static String getXmlEscapedRowData(Vector row, final int columnIndex)
 	{
-		return XmlUtilities2.getXmlEncoded((String) row.get(rowIndex));
+		return XmlUtilities2.getXmlEncoded((String) row.get(columnIndex));
 	}
 }
