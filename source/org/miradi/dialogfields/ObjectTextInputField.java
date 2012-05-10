@@ -121,8 +121,8 @@ public class ObjectTextInputField extends ObjectDataInputField
 
 	protected void selectAllText()
 	{
-		field.setSelectionStart(0);
-		field.setSelectionEnd(field.getSize().width);
+		getTextField().setSelectionStart(0);
+		getTextField().setSelectionEnd(getTextField().getSize().width);
 	}
 
 	JTextComponent field;
