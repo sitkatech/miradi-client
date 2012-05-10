@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-09 18:42-0500\n"
+"POT-Creation-Date: 2012-05-10 11:57-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -2151,7 +2151,7 @@ msgstr "Ви впевнені, що хочете видалити цей Інд�
 msgid "Are you sure you want to delete this Key Ecological Attribute?"
 msgstr "Ви впевнені, що хочете видалити цю Ключову екологіну характеристику?"
 
-#: Miradi/source/org/miradi/views/noproject/DeleteProject.java:41
+#: Miradi/source/org/miradi/views/noproject/DeleteProject.java:52
 msgid "Are you sure you want to delete this Miradi project?"
 msgstr ""
 
@@ -3122,8 +3122,8 @@ msgstr "Визначити індикатори"
 msgid "Define project scope"
 msgstr "Визначити сферу дій проекту"
 
-#: Miradi/source/org/miradi/views/noproject/DeleteProject.java:32
-#: Miradi/source/org/miradi/views/noproject/DeleteProject.java:33
+#: Miradi/source/org/miradi/views/noproject/DeleteProject.java:34
+#: Miradi/source/org/miradi/views/noproject/DeleteProject.java:35
 #: Miradi/source/org/miradi/views/noproject/DeleteOldProject.java:45
 #: Miradi/source/org/miradi/views/noproject/DeleteOldProject.java:46
 #: Miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
@@ -4418,7 +4418,7 @@ msgstr ""
 msgid "KEA Type|Size"
 msgstr "KEA Type|Розмір"
 
-#: Miradi/source/org/miradi/views/noproject/DeleteProject.java:32
+#: Miradi/source/org/miradi/views/noproject/DeleteProject.java:34
 #: Miradi/source/org/miradi/views/noproject/DeleteOldProject.java:45
 msgid "Keep"
 msgstr "Зберігати"
