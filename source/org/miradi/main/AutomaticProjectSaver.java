@@ -101,28 +101,14 @@ public class AutomaticProjectSaver implements CommandExecutedListener
 		save(newFile);
 
 		FileUtilities.deleteIfExists(oldFile);
-		renameIfExists(currentFile, oldFile);
+		FileUtilities.renameIfExists(currentFile, oldFile);
 
-		rename(newFile, currentFile);
+		FileUtilities.rename(newFile, currentFile);
 		
 		// NOTE: recovery steps:
 		// 1. if valid new file exists, use it, else
 		// 2. if valid current file exists, use it, else
 		// 3. if valid old file exists, use it
-	}
-
-	private void renameIfExists(File fromFile, File toFile) throws IOException
-	{
-		if(!fromFile.exists())
-			return;
-		
-		rename(fromFile, toFile);
-	}
-
-	private void rename(File fromFile, File toFile) throws IOException
-	{
-		if(!fromFile.renameTo(toFile))
-			throw new IOException("Rename failed: " + fromFile.getAbsolutePath() + "->" + toFile.getAbsolutePath());
 	}
 
 	public static File getOldFile(File currentFile)
