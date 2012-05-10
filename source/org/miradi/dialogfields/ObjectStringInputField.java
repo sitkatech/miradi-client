@@ -87,12 +87,6 @@ public class ObjectStringInputField extends ObjectTextInputField
 		selectAllText();
 	}
 
-	protected void selectAllText()
-	{
-		field.setSelectionStart(0);
-		field.setSelectionEnd(field.getSize().width);
-	}
-	
 	//FIXME medium - this handler is here to remove new lines entered by the user.
 	// this mechanism should be replaced with a Document that does not allow new lines.
 	private class DocumentEventHandler implements UndoableEditListener

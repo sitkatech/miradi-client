@@ -38,10 +38,4 @@ public class ObjectExpandingMultilineInputField extends ObjectMultilineInputFiel
 		
 		selectAllText();
 	}
-
-	protected void selectAllText()
-	{
-		field.setSelectionStart(0);
-		field.setSelectionEnd(field.getSize().width);
-	}
 }
