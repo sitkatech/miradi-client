@@ -36,10 +36,10 @@ public class DeleteProject
 			return;
 		
 		projectFileToDelete.delete();
-		deleteReleatedProjectFiles(projectFileToDelete);
+		deleteRelatedProjectFiles(projectFileToDelete);
 	}
 
-	private static void deleteReleatedProjectFiles(File projectFileToDelete) throws Exception
+	private static void deleteRelatedProjectFiles(File projectFileToDelete) throws Exception
 	{
 		FileUtilities.deleteIfExists(AutomaticProjectSaver.getSessionFile(projectFileToDelete));
 		FileUtilities.deleteIfExists(AutomaticProjectSaver.getOldFile(projectFileToDelete));
