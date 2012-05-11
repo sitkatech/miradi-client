@@ -35,13 +35,13 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
 import javax.swing.text.html.HTMLDocument;
 import javax.swing.text.html.HTMLEditorKit;
-import javax.swing.text.html.HTMLWriter;
 import javax.swing.text.html.StyleSheet;
 
 import net.atlanticbb.tantlinger.ui.text.CompoundUndoManager;
 import net.atlanticbb.tantlinger.ui.text.HTMLUtils;
 import net.atlanticbb.tantlinger.ui.text.WysiwygHTMLEditorKit;
 
+import org.gnu.classpath.javax.swing.text.html.GnuHtmlWriter;
 import org.miradi.dialogfields.ObjectScrollingMultilineInputField;
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.main.EAM;
@@ -197,12 +197,12 @@ public class EditableHtmlPane extends MiradiTextPane
 		public void write(Writer out, Document doc, int pos, int len)
 				throws IOException, BadLocationException
 		{
-		    HTMLWriter w = new HTMLWriterWithoutIndenting(out, (HTMLDocument)doc, pos, len);
+		    GnuHtmlWriter w = new HTMLWriterWithoutIndenting(out, (HTMLDocument)doc, pos, len);
 		    w.write();
 		}
 	 }
 	 
-	 class HTMLWriterWithoutIndenting extends HTMLWriter
+	 class HTMLWriterWithoutIndenting extends GnuHtmlWriter
 	 {
 		public HTMLWriterWithoutIndenting(Writer out, HTMLDocument doc, int pos, int len)
 		{
