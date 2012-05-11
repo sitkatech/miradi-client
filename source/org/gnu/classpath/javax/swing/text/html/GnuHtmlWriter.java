@@ -50,6 +50,7 @@ import javax.swing.text.Document;
 import javax.swing.text.Element;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.html.HTML;
+import javax.swing.text.html.HTML.Tag;
 import javax.swing.text.html.HTMLDocument;
 import javax.swing.text.html.Option;
 
@@ -65,7 +66,8 @@ public class GnuHtmlWriter extends AbstractWriter
 	/**
 	 * We keep a reference of the writer passed by the construct.
 	 */
-	private Writer outWriter = null;
+	// Modified 2012-05-11 by miradi.org to avoid complier warnings; no copyright claim is made for this change
+	//private Writer outWriter = null;
 
 	/**
 	 * We keep a reference of the HTMLDocument passed by the construct.
@@ -75,7 +77,8 @@ public class GnuHtmlWriter extends AbstractWriter
 	/**
 	 * Used to keep track of which embeded has been written out.
 	 */
-	private HashSet openEmbededTagHashSet = null;
+	// Modified 2012-05-11 by miradi.org to avoid complier warnings; no copyright claim is made for this change
+	private HashSet<HTML.Tag> openEmbededTagHashSet = null;
 
 	private String new_line_str = "" + NEWLINE;
 
@@ -89,7 +92,8 @@ public class GnuHtmlWriter extends AbstractWriter
 	private int doc_len = -1;
 	private int doc_offset_remaining = -1;
 	private int doc_len_remaining = -1;
-	private HashSet htmlFragmentParentHashSet = null;
+	// Modified 2012-05-11 by miradi.org to avoid complier warnings; no copyright claim is made for this change
+	private HashSet<Element> htmlFragmentParentHashSet = null;
 	private Element startElem = null;
 	private Element endElem = null;
 	private boolean fg_pass_start_elem = false;
@@ -104,9 +108,12 @@ public class GnuHtmlWriter extends AbstractWriter
 	public GnuHtmlWriter(Writer writer, HTMLDocument doc)
 	{
 		super(writer, doc);
-		outWriter = writer;
+		// Modified 2012-05-11 by miradi.org to avoid complier warnings; no copyright claim is made for this change
+		//outWriter = writer;
+
 		htmlDoc = doc;
-		openEmbededTagHashSet = new HashSet();
+		// Modified 2012-05-11 by miradi.org to avoid complier warnings; no copyright claim is made for this change
+		openEmbededTagHashSet = new HashSet<HTML.Tag>();
 	} // public HTMLWriter(Writer writer, HTMLDocument doc)
 
 	/**
@@ -121,15 +128,19 @@ public class GnuHtmlWriter extends AbstractWriter
 	public GnuHtmlWriter(Writer writer, HTMLDocument doc, int pos, int len)
 	{
 		super(writer, doc, pos, len);
-		outWriter = writer;
+		// Modified 2012-05-11 by miradi.org to avoid complier warnings; no copyright claim is made for this change
+		//outWriter = writer;
+		
 		htmlDoc = doc;
-		openEmbededTagHashSet = new HashSet();
+		// Modified 2012-05-11 by miradi.org to avoid complier warnings; no copyright claim is made for this change
+		openEmbededTagHashSet = new HashSet<HTML.Tag>();
 
 		doc_pos = pos;
 		doc_offset_remaining = pos;
 		doc_len = len;
 		doc_len_remaining = len;
-		htmlFragmentParentHashSet = new HashSet();
+		// Modified 2012-05-11 by miradi.org to avoid complier warnings; no copyright claim is made for this change
+		htmlFragmentParentHashSet = new HashSet<Element>();
 	} // public HTMLWriter(Writer writer, HTMLDocument doc, int pos, int len)
 
 	/**
@@ -139,8 +150,9 @@ public class GnuHtmlWriter extends AbstractWriter
 	 * @throws BadLocationException if a pos is not a valid position in the
 	 *                              html doc element
 	 */
-	public void write()
-	throws IOException, BadLocationException
+	// Added @Override annotations 2012-05-11 miradi.org; no copyright claim is made for this change
+	@Override
+	public void write()	throws IOException, BadLocationException
 	{
 		Element rootElem = htmlDoc.getDefaultRootElement();
 
@@ -210,8 +222,9 @@ public class GnuHtmlWriter extends AbstractWriter
 	 *
 	 * @throws IOException on any I/O exceptions
 	 */
-	protected void writeAttributes(AttributeSet attrSet)
-	throws IOException
+	// Added @Override annotations 2012-05-11 miradi.org; no copyright claim is made for this change
+	@Override
+	protected void writeAttributes(AttributeSet attrSet) throws IOException
 	{
 		Enumeration attrNameEnum = attrSet.getAttributeNames();
 
@@ -337,8 +350,9 @@ public class GnuHtmlWriter extends AbstractWriter
 	 * @throws BadLocationException if a pos is not a valid position in the
 	 *                              html doc element
 	 */
-	protected void text(Element paramElem)
-	throws IOException, BadLocationException
+	// Added @Override annotations 2012-05-11 miradi.org; no copyright claim is made for this change
+	@Override
+	protected void text(Element paramElem) throws IOException, BadLocationException
 	{
 		int offset =  paramElem.getStartOffset();
 		int len =  paramElem.getEndOffset() -  paramElem.getStartOffset();
@@ -457,8 +471,8 @@ public class GnuHtmlWriter extends AbstractWriter
 		if (tagType == HTML.Tag.CONTENT || tagType == HTML.Tag.COMMENT
 				|| tagType == HTML.Tag.IMPLIED)
 			return true;
-		else
-			return false;
+		// Modified 2012-05-11 by miradi.org to avoid complier warnings; no copyright claim is made for this change
+		return false;
 	} // protected boolean synthesizedElement(Element element)
 
 	/**
@@ -479,8 +493,9 @@ public class GnuHtmlWriter extends AbstractWriter
 
 		if (tagType == tag)
 			return true;
-		else
-			return false;
+
+		// Modified 2012-05-11 by miradi.org to avoid complier warnings; no copyright claim is made for this change
+		return false;
 	} // protected boolean matchNameAttribute(AttributeSet attrSet,
 	//   HTML.Tag tag)
 
@@ -510,7 +525,8 @@ public class GnuHtmlWriter extends AbstractWriter
 					writeRaw("<" + key);
 					writeAttributes((AttributeSet) value);
 					writeRaw(">");
-					openEmbededTagHashSet.add(key);
+					// Modified 2012-05-11 by miradi.org to avoid complier warnings; no copyright claim is made for this change
+					openEmbededTagHashSet.add((Tag) key);
 				} // if(!openEmbededTagHashSet.contains(key))
 			} // if(key instanceof HTML.Tag)
 		} // while(attrNameEnum.hasMoreElements())
@@ -551,8 +567,9 @@ public class GnuHtmlWriter extends AbstractWriter
 	 *
 	 * @throws IOException on any I/O exceptions.
 	 */
-	protected void writeLineSeparator()
-	throws IOException
+	// Added @Override annotations 2012-05-11 miradi.org; no copyright claim is made for this change
+	@Override
+	protected void writeLineSeparator() throws IOException
 	{
 		writeRaw(new_line_str);
 	} // protected void writeLineSeparator() throws IOException
@@ -567,8 +584,9 @@ public class GnuHtmlWriter extends AbstractWriter
 	 *
 	 * @throws IOException on any I/O exceptions
 	 */
-	protected void output(char[] chars, int off, int len)
-	throws IOException
+	// Added @Override annotations 2012-05-11 miradi.org; no copyright claim is made for this change
+	@Override
+	protected void output(char[] chars, int off, int len) throws IOException
 	{
 		StringBuffer strBuffer = new StringBuffer();
 
@@ -987,22 +1005,22 @@ public class GnuHtmlWriter extends AbstractWriter
 	 *
 	 * @throws IOException on any I/O exceptions
 	 */
-	private void writeAllAttributes(AttributeSet attrSet)
-	throws IOException
-	{
-		Enumeration attrNameEnum = attrSet.getAttributeNames();
-
-		while (attrNameEnum.hasMoreElements())
-		{
-			Object key = attrNameEnum.nextElement();
-			Object value = attrSet.getAttribute(key);
-
-			writeRaw(" " + key + "=\"" + value + "\"");
-			writeRaw(" " + key.getClass().toString() + "=\""
-					+ value.getClass().toString() + "\"");
-		} // while(attrNameEnum.hasMoreElements())
-
-	} // private void writeAllAttributes(AttributeSet attrSet)
+	// Modified 2012-05-11 by miradi.org to avoid complier warnings; no copyright claim is made for this change
+//	private void writeAllAttributes(AttributeSet attrSet) throws IOException
+//	{
+//		Enumeration attrNameEnum = attrSet.getAttributeNames();
+//
+//		while (attrNameEnum.hasMoreElements())
+//		{
+//			Object key = attrNameEnum.nextElement();
+//			Object value = attrSet.getAttribute(key);
+//
+//			writeRaw(" " + key + "=\"" + value + "\"");
+//			writeRaw(" " + key.getClass().toString() + "=\""
+//					+ value.getClass().toString() + "\"");
+//		} // while(attrNameEnum.hasMoreElements())
+//
+//	} // private void writeAllAttributes(AttributeSet attrSet)
 	//   throws IOException
 
 	/**
