@@ -21,6 +21,7 @@ package org.miradi.dialogfields;
 
 
 import java.awt.Color;
+import java.awt.event.FocusEvent;
 
 import javax.swing.JComponent;
 import javax.swing.text.DefaultCaret;
@@ -119,14 +120,24 @@ public class ObjectTextInputField extends ObjectDataInputField
 		return field;
 	}
 
-	protected void selectAllIfNothingSelected()
+	protected void selectAll()
 	{
-		if (field.getSelectedText() == null)
-		{
-			field.setSelectionStart(0);
-			field.setSelectionEnd(field.getSize().width);
-		}
+		field.setSelectionStart(0);
+		field.setSelectionEnd(field.getSize().width);
+	}
+	
+	@Override
+	public void focusLost(FocusEvent e)
+	{
+		isTempFocusLost = e.isTemporary();
+		super.focusLost(e);
+	}
+	
+	protected boolean hasFocusBeenLostTemporarily()
+	{
+		return isTempFocusLost;
 	}
 
+	private boolean isTempFocusLost;
 	private JTextComponent field;
 }
