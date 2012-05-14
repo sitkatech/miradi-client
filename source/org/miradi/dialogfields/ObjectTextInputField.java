@@ -133,7 +133,7 @@ public class ObjectTextInputField extends ObjectDataInputField
 		super.focusLost(e);
 	}
 	
-	protected boolean hasFocusBeenLostTemporarily()
+	protected boolean wasFocusLostTemporarily()
 	{
 		return isTempFocusLost;
 	}
