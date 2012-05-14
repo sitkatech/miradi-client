@@ -84,7 +84,7 @@ public class ObjectStringInputField extends ObjectTextInputField
 	{
 		super.focusGained(e);
 		
-		if (!hasFocusBeenLostTemporarily())
+		if (!wasFocusLostTemporarily())
 			selectAll();
 	}
 
