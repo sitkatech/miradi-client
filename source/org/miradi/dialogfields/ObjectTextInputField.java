@@ -129,15 +129,15 @@ public class ObjectTextInputField extends ObjectDataInputField
 	@Override
 	public void focusLost(FocusEvent e)
 	{
-		isTempFocusLost = e.isTemporary();
+		isTemporaryFocusLoss = e.isTemporary();
 		super.focusLost(e);
 	}
 	
 	protected boolean wasFocusLostTemporarily()
 	{
-		return isTempFocusLost;
+		return isTemporaryFocusLoss;
 	}
 
-	private boolean isTempFocusLost;
+	private boolean isTemporaryFocusLoss;
 	private JTextComponent field;
 }
