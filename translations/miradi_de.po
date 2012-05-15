@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-10 11:57-0500\n"
+"POT-Creation-Date: 2012-05-15 10:08-0500\n"
 "PO-Revision-Date: 2011-09-02 18:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: German Translation Squad\n"
@@ -6091,7 +6091,7 @@ msgstr "Umbenennen..."
 msgid "Replace Language Pack"
 msgstr "Sprachpaket ersetzen"
 
-#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:87
+#: Miradi/source/org/miradi/views/reports/RunXslTemplateDoer.java:80
 msgid "Report Completed"
 msgstr ""
 
