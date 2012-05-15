@@ -67,7 +67,6 @@ public class RunXslTemplateDoer extends ObjectsDoer
 	private void transform(final String xslTemplate, final String extensionToUse) throws Exception 
 	{
 		final StreamSource projectXmlInputSource = getExportedProjectXmlAsString(); 
-		System.setProperty("javax.xml.transform.TransformerFactory", "net.sf.saxon.TransformerFactoryImpl");
 		final StreamSource xslStreamSource = new StreamSource(new UnicodeStringReader(xslTemplate));
 		TransformerFactory transformerFactory = TransformerFactory.newInstance();
 		Transformer transformer = transformerFactory.newTransformer(xslStreamSource);
