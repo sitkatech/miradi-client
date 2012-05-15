@@ -23,10 +23,8 @@ package org.miradi.views.reports;
 import java.io.File;
 import java.io.FileOutputStream;
 
-import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
@@ -39,8 +37,6 @@ import org.miradi.utils.FileSaveChooserWithUserDefinedFileFilter;
 import org.miradi.utils.HtmlUtilities;
 import org.miradi.views.ObjectsDoer;
 import org.miradi.xml.wcs.XmpzXmlExporter;
-import org.w3c.dom.Document;
-import org.xml.sax.InputSource;
 
 public class RunXslTemplateDoer extends ObjectsDoer
 {
@@ -70,25 +66,22 @@ public class RunXslTemplateDoer extends ObjectsDoer
 	
 	private void transform(final String xslTemplate, final String extensionToUse) throws Exception 
 	{
-		final InputSource projectXmlInputSource = getExportedProjectXmlAsString(); 
-
-		DocumentBuilderFactory dfactory = DocumentBuilderFactory.newInstance();
-		dfactory.setNamespaceAware(true);
-		Document doc = dfactory.newDocumentBuilder().parse(projectXmlInputSource);
-		TransformerFactory transformerFactory = TransformerFactory.newInstance();
+		final StreamSource projectXmlInputSource = getExportedProjectXmlAsString(); 
+		System.setProperty("javax.xml.transform.TransformerFactory", "net.sf.saxon.TransformerFactoryImpl");
 		final StreamSource xslStreamSource = new StreamSource(new UnicodeStringReader(xslTemplate));
+		TransformerFactory transformerFactory = TransformerFactory.newInstance();
 		Transformer transformer = transformerFactory.newTransformer(xslStreamSource);
-		
 		FileSaveChooserWithUserDefinedFileFilter fileChooser = new FileSaveChooserWithUserDefinedFileFilter(getMainWindow(), extensionToUse);
 		final File outputFile = fileChooser.displayChooser();
 		if (outputFile != null)
-		{				
-			transformer.transform(new DOMSource(doc), new StreamResult(new FileOutputStream(outputFile)));
+		{
+			final StreamResult output = new StreamResult(new FileOutputStream(outputFile));
+			transformer.transform(projectXmlInputSource, output);
 			EAM.notifyDialog(EAM.text("Report Completed"));
 		}
 	}
 	
-	private InputSource getExportedProjectXmlAsString() throws Exception
+	private StreamSource getExportedProjectXmlAsString() throws Exception
 	{
 		UnicodeStringWriter projectWriter = UnicodeStringWriter.create();
 		try
@@ -98,7 +91,7 @@ public class RunXslTemplateDoer extends ObjectsDoer
 			final String projectXmlAsString = projectWriter.toString();
 			UnicodeStringReader reader = new UnicodeStringReader(projectXmlAsString);
 			
-			return new InputSource(reader);
+			return new StreamSource(reader);
 		}
 		finally
 		{

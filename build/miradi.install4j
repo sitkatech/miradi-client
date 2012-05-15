@@ -59,11 +59,8 @@
       <fileEntry mountPoint="95" file="../dist/temp/jars/shef/0.5/LICENSE-sam.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="95" file="../dist/temp/jars/shef/0.5/shef.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="95" file="../dist/temp/jars/shef/0.5/LICENSE-shef.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
-      <fileEntry mountPoint="95" file="../dist/temp/jars/xalan/2.7.1/bin/serializer.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
-      <fileEntry mountPoint="95" file="../dist/temp/jars/xalan/2.7.1/bin/xalan.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
-      <fileEntry mountPoint="95" file="../dist/temp/jars/xalan/2.7.1/bin/xercesImpl.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
-      <fileEntry mountPoint="95" file="../dist/temp/jars/xalan/2.7.1/bin/xml-apis.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
-      <fileEntry mountPoint="95" file="../dist/temp/jars/xalan/2.7.1/LICENSE-xalan.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
+      <fileEntry mountPoint="95" file="../dist/temp/jars/saxon/HE9.4.0.3J/saxon9he.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
+      <fileEntry mountPoint="95" file="../dist/temp/jars/saxon/HE9.4.0.3J/LICENSE.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="95" file="../dist/temp/jars/commons-lang3/3.1/LICENSE.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="95" file="../dist/temp/jars/commons-lang3/3.1/commons-lang3-3.1.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="17" file="./installer/BuildFiles/MarineExample-4.0.0.mpz" overwrite="4" shared="false" mode="644" uninstallMode="0" />
