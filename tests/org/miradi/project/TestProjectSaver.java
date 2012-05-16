@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.project;
 
+import java.io.IOException;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Vector;
@@ -169,8 +170,24 @@ public class TestProjectSaver extends TestCaseWithProject
 
 	public void testSaveAndLoadSimpleThreatRating() throws Exception
 	{
-		String contents = saveProjectToString();
+		saveAndLoadProjectWithDefaultObjects();
+	}
 
+	public void testEqualsTokenInExpcetion() throws Exception
+	{
+		getProject().appendToExceptionLog("1 = one");
+		saveAndLoadProjectWithDefaultObjects();
+	}
+	
+	public void testEqualsTokenInQuarantine() throws Exception
+	{
+		getProject().appendToQuarantineFile("1 = one");
+		saveAndLoadProjectWithDefaultObjects();
+	}
+	
+	protected void saveAndLoadProjectWithDefaultObjects() throws Exception, IOException
+	{
+		String contents = saveProjectToString();
 		ProjectForTesting project2 = ProjectForTesting.createProjectWithDefaultObjects(getName());
 		UnicodeStringReader reader = new UnicodeStringReader(contents);
 		ProjectLoader.loadProject(reader, project2);

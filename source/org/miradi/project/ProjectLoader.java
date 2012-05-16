@@ -213,14 +213,9 @@ public class ProjectLoader
 
 	private String[] parseTagValueLine(String line) throws Exception
 	{
-		StringTokenizer tokenizer = new StringTokenizer(line);
-		/*String command =*/ tokenizer.nextToken();
-		String tag = tokenizer.nextToken(EQUALS_DELIMITER_TAB_PREFIXED);
-		String value = "";
-		final boolean hasData = tokenizer.hasMoreTokens();
-		if (hasData)
-			value = tokenizer.nextToken(EQUALS_DELIMITER_NEWLINE_POSTFIXED);
-		
+		final String tag = line.substring(line.indexOf(AbstractMiradiProjectSaver.TAB) + 1, line.indexOf(AbstractMiradiProjectSaver.EQUALS));
+		final String value = StringUtilities.substringAfter(line, AbstractMiradiProjectSaver.EQUALS);;
+
 		return new String[] {tag, value};
 	}
 
