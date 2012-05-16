@@ -1,0 +1,1 @@
+rsync -vaHSz -r --exclude=CVS/ --exclude=.svn * fxa.org:/var/www/MiradiServer/
