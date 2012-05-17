@@ -336,7 +336,8 @@ public class Xmpz2XmlWriter extends UnicodeWriter implements XmpzXmlConstants
 	
 	public void writeMainElementStart() throws Exception
 	{
-		writeStartElementWithAttribute(CONSERVATION_PROJECT, XMLNS, NAME_SPACE);
+		write("<" + CONSERVATION_PROJECT + " " + "xmlns:miradi" + "=\"" + NAME_SPACE + "\">");
+		writeln();
 	}
 	
 	public void writeDay(DateUnit dateUnit, final String dayElementName) throws Exception
@@ -381,17 +382,18 @@ public class Xmpz2XmlWriter extends UnicodeWriter implements XmpzXmlConstants
 	
 	public void writeStartElementWithAttribute(String startElementName, String attributeName, String attributeValue) throws IOException
 	{
-		write("<" + startElementName + " " + attributeName + "=\"" + attributeValue + "\">");
+		write("<" + MIRADI_NAMSPACE + COLON + startElementName + " " + attributeName + "=\"" + attributeValue + "\">");
 	}
 	
 	public void writeStartElementWithTwoAttributes(String startElementName, String attributeName1, int attributeValue1, String attributeName2, int attributeValue2) throws IOException
 	{
-		write("<" + startElementName + " " + attributeName1 + "=\"" + Integer.toString(attributeValue1) + "\" " + attributeName2 + "=\"" + Integer.toString(attributeValue2) + "\">");
+		write("<" + MIRADI_NAMSPACE + COLON+ startElementName + " " + attributeName1 + "=\"" + Integer.toString(attributeValue1) + "\" " + attributeName2 + "=\"" + Integer.toString(attributeValue2) + "\">");
 	}
 	
 	public void writeMainElementEnd() throws Exception
 	{
-		writeEndElement(CONSERVATION_PROJECT);
+		write("</" + CONSERVATION_PROJECT + ">");
+		writeln();
 	}
 	
 	public void writeObjectElementStart(final BaseObject baseObject) throws Exception
@@ -458,12 +460,12 @@ public class Xmpz2XmlWriter extends UnicodeWriter implements XmpzXmlConstants
 	
 	public void writeStartElement(final String elemnentName)	throws Exception
 	{
-		write("<" + elemnentName + ">");
+		write("<" + MIRADI_NAMSPACE + COLON + elemnentName + ">");
 	}
 	
 	public void writeEndElement(final String elemnentName)	throws Exception
 	{
-		write("</" + elemnentName + ">");
+		write("</" + MIRADI_NAMSPACE + COLON + elemnentName + ">");
 		writeln();
 	}
 	
@@ -479,4 +481,6 @@ public class Xmpz2XmlWriter extends UnicodeWriter implements XmpzXmlConstants
 	}
 	
 	private Project project;
+	private static final String MIRADI_NAMSPACE = "miradi";
+	private static final String COLON = ":";
 }

@@ -28,6 +28,7 @@ import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objects.DiagramFactor;
+import org.miradi.objects.ProjectMetadata;
 import org.miradi.xml.xmpz2.Xmpz2XmlExporter;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
@@ -40,6 +41,12 @@ public class TestXmpz2XmlExporter extends TestCaseWithProject
 	
 	public void testValidateEmptyProject() throws Exception
 	{
+		validateProject();
+	}
+	
+	public void testUserTextFieldWithHtml() throws Exception
+	{
+		getProject().fillObjectUsingCommand(getProject().getMetadata(), ProjectMetadata.TAG_PROJECT_DESCRIPTION, "<br/>");
 		validateProject();
 	}
 	
