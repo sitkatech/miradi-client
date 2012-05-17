@@ -69,6 +69,6 @@ public class TestStringUtilities extends MiradiTestCase
 	
 	private void verifySubstring(final String expectedValue, final String testString, final String fromChar, final String toChar)
 	{
-		assertEquals("did not split correctly?", expectedValue, StringUtilities.substring(testString, fromChar, toChar));
+		assertEquals("did not split correctly?", expectedValue, StringUtilities.substringBetween(testString, fromChar, toChar));
 	}
 }

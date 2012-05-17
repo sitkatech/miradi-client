@@ -31,7 +31,7 @@ public class StringUtilities
 		return "";
 	}
 	
-	public static String substring(String line, final String delimeterBefore, final String delimeterAfter)
+	public static String substringBetween(String line, final String delimeterBefore, final String delimeterAfter)
 	{
 		final int indexAfterFirstFromChar = line.indexOf(delimeterBefore) + 1;
 		final int firstIndexOfToChar = line.indexOf(delimeterAfter, indexAfterFirstFromChar);
