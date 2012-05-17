@@ -213,7 +213,9 @@ public class ProjectLoader
 
 	private String[] parseTagValueLine(String line) throws Exception
 	{
-		final String tag = line.substring(line.indexOf(AbstractMiradiProjectSaver.TAB) + 1, line.indexOf(AbstractMiradiProjectSaver.EQUALS));
+		final int firstIndexOfTabChar = line.indexOf(AbstractMiradiProjectSaver.TAB) + 1;
+		final int firstIndexOfEqualsChar = line.indexOf(AbstractMiradiProjectSaver.EQUALS);
+		final String tag = line.substring(firstIndexOfTabChar, firstIndexOfEqualsChar);
 		final String value = StringUtilities.substringAfter(line, AbstractMiradiProjectSaver.EQUALS);;
 
 		return new String[] {tag, value};
