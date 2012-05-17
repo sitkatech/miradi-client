@@ -31,10 +31,10 @@ public class StringUtilities
 		return "";
 	}
 	
-	public static String substring(String line, final String from, final String to)
+	public static String substring(String line, final String delimeterBefore, final String delimeterAfter)
 	{
-		final int indexAfterFirstFromChar = line.indexOf(from) + 1;
-		final int firstIndexOfToChar = line.indexOf(to, indexAfterFirstFromChar);
+		final int indexAfterFirstFromChar = line.indexOf(delimeterBefore) + 1;
+		final int firstIndexOfToChar = line.indexOf(delimeterAfter, indexAfterFirstFromChar);
 		final String substring = line.substring(indexAfterFirstFromChar, firstIndexOfToChar);
 		return substring;
 	}
