@@ -678,8 +678,21 @@ ExtraData.element = element miradi:ExtraData
 ExtraDataSection.element *
 }
 
+formatted_text = ( text | 
+	element.br | 
+	element.b | 
+	element.i | 
+	element.u | 
+	element.strike | 
+	element.ul 
+	)*
 element.br = element br { empty }
-formatted_text =  mixed { element.br* }   
+element.b = element b { formatted_text }
+element.i = element b { formatted_text }
+element.u = element b { formatted_text }
+element.strike = element strike { formatted_text }
+element.ul = element ul { element.li* }
+element.li = element li { formatted_text }
 
 vocabulary_full_project_timespan = xsd:NMTOKEN { pattern = 'Total' } 
 vocabulary_year = xsd:NMTOKEN { pattern = '[0-9]{4}' } 
