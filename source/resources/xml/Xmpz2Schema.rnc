@@ -679,7 +679,7 @@ ExtraDataSection.element *
 }
 
 element.br = element br { empty }
-formatted_text =  mixed { element.br? }   
+formatted_text =  mixed { element.br* }   
 
 vocabulary_full_project_timespan = xsd:NMTOKEN { pattern = 'Total' } 
 vocabulary_year = xsd:NMTOKEN { pattern = '[0-9]{4}' } 

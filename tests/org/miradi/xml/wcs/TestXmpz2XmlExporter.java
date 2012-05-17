@@ -46,7 +46,7 @@ public class TestXmpz2XmlExporter extends TestCaseWithProject
 	
 	public void testUserTextFieldWithHtml() throws Exception
 	{
-		getProject().fillObjectUsingCommand(getProject().getMetadata(), ProjectMetadata.TAG_PROJECT_DESCRIPTION, "<br/>");
+		getProject().fillObjectUsingCommand(getProject().getMetadata(), ProjectMetadata.TAG_PROJECT_DESCRIPTION, "one <br/> and <br/> two");
 		validateProject();
 	}
 	
