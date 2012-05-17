@@ -31,6 +31,14 @@ public class StringUtilities
 		return "";
 	}
 	
+	public static String substring(String line, final String from, final String to)
+	{
+		final int indexAfterFirstTabChar = line.indexOf(from) + 1;
+		final int firstIndexOfEqualsChar = line.indexOf(to);
+		final String substring = line.substring(indexAfterFirstTabChar, firstIndexOfEqualsChar);
+		return substring;
+	}
+	
 	public static String joinWithOr(String[] tagsToKeep)
 	{
 		return join(tagsToKeep, "|");
