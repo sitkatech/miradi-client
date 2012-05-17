@@ -35,8 +35,8 @@ public class StringUtilities
 	{
 		final int indexAfterFirstFromChar = line.indexOf(delimeterBefore) + 1;
 		final int firstIndexOfToChar = line.indexOf(delimeterAfter, indexAfterFirstFromChar);
-		final String substring = line.substring(indexAfterFirstFromChar, firstIndexOfToChar);
-		return substring;
+		
+		return line.substring(indexAfterFirstFromChar, firstIndexOfToChar);
 	}
 	
 	public static String joinWithOr(String[] tagsToKeep)
