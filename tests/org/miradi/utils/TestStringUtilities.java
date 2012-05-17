@@ -45,6 +45,11 @@ public class TestStringUtilities extends MiradiTestCase
 	{
 		assertEquals("did not contcatenate correctly?", expected, StringUtilities.joinWithOr(strings));
 	}
+	
+	public void testSubstring()
+	{
+		verifySubstring("two", "one-two-three", "-", "-");
+	}
 
 	public void testSubStringAfter()
 	{
@@ -58,5 +63,10 @@ public class TestStringUtilities extends MiradiTestCase
 	private void verifySubstringAfter(final String expectedValue, final String testString)
 	{
 		assertEquals("did not split correctly?", expectedValue, StringUtilities.substringAfter(testString, "="));
+	}
+	
+	private void verifySubstring(final String expectedValue, final String testString, final String fromChar, final String toChar)
+	{
+		assertEquals("did not split correctly?", expectedValue, StringUtilities.substring(testString, fromChar, toChar));
 	}
 }

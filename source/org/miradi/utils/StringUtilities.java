@@ -34,7 +34,7 @@ public class StringUtilities
 	public static String substring(String line, final String from, final String to)
 	{
 		final int indexAfterFirstFromChar = line.indexOf(from) + 1;
-		final int firstIndexOfToChar = line.indexOf(to);
+		final int firstIndexOfToChar = line.indexOf(to, indexAfterFirstFromChar);
 		final String substring = line.substring(indexAfterFirstFromChar, firstIndexOfToChar);
 		return substring;
 	}
