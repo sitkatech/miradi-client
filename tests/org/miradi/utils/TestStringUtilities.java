@@ -48,7 +48,9 @@ public class TestStringUtilities extends MiradiTestCase
 	
 	public void testSubstring()
 	{
+		verifySubstring("one", "-one-two", "-", "-");
 		verifySubstring("two", "one-two-three", "-", "-");
+		verifySubstring("two", "one-two-", "-", "-");
 	}
 
 	public void testSubStringAfter()
