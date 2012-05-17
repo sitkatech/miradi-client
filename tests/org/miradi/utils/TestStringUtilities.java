@@ -46,11 +46,11 @@ public class TestStringUtilities extends MiradiTestCase
 		assertEquals("did not contcatenate correctly?", expected, StringUtilities.joinWithOr(strings));
 	}
 	
-	public void testSubstring()
+	public void testSubstringBetween()
 	{
-		verifySubstring("one", "-one-two", "-", "-");
-		verifySubstring("two", "one-two-three", "-", "-");
-		verifySubstring("two", "one-two-", "-", "-");
+		verifySubstringBetween("one", "-one-two", "-", "-");
+		verifySubstringBetween("two", "one-two-three", "-", "-");
+		verifySubstringBetween("two", "one-two-", "-", "-");
 	}
 
 	public void testSubStringAfter()
@@ -67,7 +67,7 @@ public class TestStringUtilities extends MiradiTestCase
 		assertEquals("did not split correctly?", expectedValue, StringUtilities.substringAfter(testString, "="));
 	}
 	
-	private void verifySubstring(final String expectedValue, final String testString, final String fromChar, final String toChar)
+	private void verifySubstringBetween(final String expectedValue, final String testString, final String fromChar, final String toChar)
 	{
 		assertEquals("did not split correctly?", expectedValue, StringUtilities.substringBetween(testString, fromChar, toChar));
 	}
