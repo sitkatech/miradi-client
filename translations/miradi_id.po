@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-15 13:48-0500\n"
+"POT-Creation-Date: 2012-05-18 11:57-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -346,6 +346,7 @@ msgstr "(lihat tab TNC untuk Wilayah Ekologi) "
 
 #: Miradi/source/org/miradi/utils/XmpzFileFilter.java:30
 #: Miradi/source/org/miradi/utils/MpfFileFilter.java:30
+#: Miradi/source/org/miradi/utils/Xmpz2FileFilter.java:30
 msgid ")"
 msgstr ""
 
@@ -3667,6 +3668,10 @@ msgstr "XML (*.xml) "
 
 #: Miradi/source/org/miradi/utils/XmpzFileFilter.java:30
 msgid "FileFilter|XMPZ (*"
+msgstr ""
+
+#: Miradi/source/org/miradi/utils/Xmpz2FileFilter.java:30
+msgid "FileFilter|XMPZ2 (*"
 msgstr ""
 
 #: Miradi/source/org/miradi/utils/ZIPFileFilter.java:47
