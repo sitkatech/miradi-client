@@ -46,5 +46,11 @@ public class ResultsChainDiagramSchema extends DiagramObjectSchema
 		return OBJECT_NAME;
 	}
 	
+	@Override
+	public String getXmpz2ElementName()
+	{
+		return "ResultsChain";
+	}
+	
 	public static final String OBJECT_NAME = "ResultsChainDiagram";
 }
