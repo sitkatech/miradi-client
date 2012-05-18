@@ -50,7 +50,7 @@ ConservationProject.element = element ConservationProject
   DashboardPool.element ?  &
   TaggedObjectSetPool.element ?  &
   ExtraData.element &
-  element miradi:DeletedOrphans{ text }?
+  element miradi:DeletedOrphans{ formatted_text }?
 }
 
 ProjectSummary.element = element miradi:ProjectSummary
@@ -345,7 +345,7 @@ StrategyPool.element = element miradi:StrategyPool { Strategy.element* }
 Strategy.element = element miradi:Strategy
 {
   attribute Id {xsd:integer}  &
-  element miradi:StrategyName { text }? &
+  element miradi:StrategyName { formatted_text }? &
   element miradi:StrategyId { text }? &
   element miradi:StrategyDetails {formatted_text }? &
   element miradi:StrategyComments {formatted_text }? &
