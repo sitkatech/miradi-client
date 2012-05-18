@@ -23,7 +23,6 @@ package org.miradi.xml.xmpz2;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.util.Set;
 
 import org.martus.util.MultiCalendar;
@@ -49,13 +48,12 @@ import org.miradi.utils.PointList;
 import org.miradi.xml.generic.XmlSchemaCreator;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 
-public class Xmpz2XmlWriter extends UnicodeWriter implements XmpzXmlConstants
+public class Xmpz2XmlWriter implements XmpzXmlConstants
 {
-	public Xmpz2XmlWriter(Project projectToUse, OutputStream bytes) throws Exception
+	public Xmpz2XmlWriter(Project projectToUse, UnicodeWriter writerToUse) throws Exception
 	{
-		super(bytes);
-		
 		project = projectToUse;
+		writer = writerToUse;
 	}
 	
 	public void writeStartPoolElement(String startElementName) throws Exception
@@ -329,7 +327,7 @@ public class Xmpz2XmlWriter extends UnicodeWriter implements XmpzXmlConstants
 		return startElementName + CONTAINER_ELEMENT_TAG;
 	}
 	
-	public void writeXmlHeader() throws IOException
+	public void writeXmlHeader() throws Exception
 	{
 		writeln("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>");
 	}
@@ -380,12 +378,12 @@ public class Xmpz2XmlWriter extends UnicodeWriter implements XmpzXmlConstants
 		writeEndElement(elementName);
 	}
 	
-	public void writeStartElementWithAttribute(String startElementName, String attributeName, String attributeValue) throws IOException
+	public void writeStartElementWithAttribute(String startElementName, String attributeName, String attributeValue) throws Exception
 	{
 		write("<" + MIRADI_NAMSPACE + COLON + startElementName + " " + attributeName + "=\"" + attributeValue + "\">");
 	}
 	
-	public void writeStartElementWithTwoAttributes(String startElementName, String attributeName1, int attributeValue1, String attributeName2, int attributeValue2) throws IOException
+	public void writeStartElementWithTwoAttributes(String startElementName, String attributeName1, int attributeValue1, String attributeName2, int attributeValue2) throws Exception
 	{
 		write("<" + MIRADI_NAMSPACE + COLON+ startElementName + " " + attributeName1 + "=\"" + Integer.toString(attributeValue1) + "\" " + attributeName2 + "=\"" + Integer.toString(attributeValue2) + "\">");
 	}
@@ -453,7 +451,7 @@ public class Xmpz2XmlWriter extends UnicodeWriter implements XmpzXmlConstants
 		writeEndElement(elementName);
 	}
 	
-	public void writeXmlText(String xmlText) throws IOException
+	public void writeXmlText(String xmlText) throws Exception
 	{
 		write(xmlText);
 	}
@@ -475,12 +473,33 @@ public class Xmpz2XmlWriter extends UnicodeWriter implements XmpzXmlConstants
 		return map.findElementName(parentElementName, elementName);
 	}
 	
+	public void write(final String value) throws Exception
+	{
+		getWriter().write(value);
+	}
+	
+	private void writeln(final String value) throws Exception
+	{
+		getWriter().writeln(value);
+	}
+	
+	private void writeln() throws Exception
+	{
+		getWriter().writeln();
+	}
+	
 	public Project getProject()
 	{
 		return project;
 	}
 	
+	private UnicodeWriter getWriter()
+	{
+		return writer;
+	}
+	
 	private Project project;
+	private UnicodeWriter writer;
 	private static final String MIRADI_NAMSPACE = "miradi";
 	private static final String COLON = ":";
 }

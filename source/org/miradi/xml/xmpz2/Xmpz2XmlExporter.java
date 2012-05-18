@@ -77,18 +77,18 @@ import org.miradi.xml.xmpz2.objectExporters.ThreatRatingExporter;
 
 public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 {
-	public Xmpz2XmlExporter(Project projectToExport, final Xmpz2XmlWriter outToUse)
+	public Xmpz2XmlExporter(Project projectToExport)
 	{
 		super(projectToExport);
 		
-		out = outToUse;
 		objectTypeToExporterMap = new HashMap<Integer, BaseObjectExporter>(); 
-		fillTypeToExporterMap();
 	}
 
 	@Override
 	public void exportProject(UnicodeWriter outToUse) throws Exception
 	{
+		out = new Xmpz2XmlWriter(getProject(), outToUse);
+		fillTypeToExporterMap();
 		getWriter().writeXmlHeader();
 		getWriter().writeMainElementStart();
 		exportProjectSummary();
