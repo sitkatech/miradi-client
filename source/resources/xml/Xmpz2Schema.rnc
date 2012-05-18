@@ -685,7 +685,6 @@ formatted_text = ( text |
 	element.u | 
 	element.strike | 
 	element.ul |
-	element.li |
 	element.ol 
 	)*
 
