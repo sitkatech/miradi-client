@@ -695,8 +695,8 @@ element.i = element i { formatted_text }
 element.u = element u { formatted_text }
 element.strike = element strike { formatted_text }
 element.ul = element ul { element.li* }
-element.li = element li { formatted_text }
 element.ol = element ol { element.li* }
+element.li = element li { formatted_text }
 
 element.a = element a 
 {
