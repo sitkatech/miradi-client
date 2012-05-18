@@ -707,7 +707,6 @@ element.a = element a
   	formatted_text  
 }
 
-
 vocabulary_full_project_timespan = xsd:NMTOKEN { pattern = 'Total' } 
 vocabulary_year = xsd:NMTOKEN { pattern = '[0-9]{4}' } 
 vocabulary_month = xsd:integer { minInclusive='1' maxInclusive='12' } 
