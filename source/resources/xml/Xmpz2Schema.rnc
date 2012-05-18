@@ -684,8 +684,11 @@ formatted_text = ( text |
 	element.i | 
 	element.u | 
 	element.strike | 
-	element.ul 
+	element.ul |
+	element.li |
+	element.ol 
 	)*
+
 element.br = element br { empty }
 element.b = element b { formatted_text }
 element.i = element i { formatted_text }
@@ -693,6 +696,7 @@ element.u = element u { formatted_text }
 element.strike = element strike { formatted_text }
 element.ul = element ul { element.li* }
 element.li = element li { formatted_text }
+element.ol = element ol { formatted_text }
 
 vocabulary_full_project_timespan = xsd:NMTOKEN { pattern = 'Total' } 
 vocabulary_year = xsd:NMTOKEN { pattern = '[0-9]{4}' } 
