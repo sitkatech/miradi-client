@@ -185,6 +185,7 @@ public class Actions
 		registerAction(new ActionExportCpmz(mainWindow));
 		registerAction(new ActionImportXmpz(mainWindow));
 		registerAction(new ActionExportXmpz(mainWindow));
+		registerAction(new ActionExportXmpz2(mainWindow));
 		registerAction(new ActionExportWcsProjectZip(mainWindow));
 		registerAction(new ActionProperties(mainWindow));
 		registerAction(new ActionSaveImageJPEG(mainWindow));

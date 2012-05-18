@@ -18,21 +18,26 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.xml.xmpz2.objectExporters;
+package org.miradi.actions;
 
-import org.miradi.schemas.ResultsChainDiagramSchema;
-import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
+import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 
-public class ResultsChainExporter extends AbstractDiagramObjectExporter
+public class ActionExportXmpz2 extends MainWindowAction
 {
-	public ResultsChainExporter(Xmpz2XmlWriter writerToUse)
+	public ActionExportXmpz2(MainWindow mainWindowToUse)
 	{
-		super(writerToUse, ResultsChainDiagramSchema.getObjectType());
+		super(mainWindowToUse, getLabel());
 	}
-	
-	@Override
-	public String getExporterContainerName(int objectType)
+
+	public static String getLabel()
 	{
-		return RESULTS_CHAIN;
+		return EAM.text("Action|XMPZ2 (BETA) ");
+	}
+
+	@Override
+	public String getToolTipText()
+	{
+		return EAM.text("TT|Export entire project as an XML file");
 	}
 }

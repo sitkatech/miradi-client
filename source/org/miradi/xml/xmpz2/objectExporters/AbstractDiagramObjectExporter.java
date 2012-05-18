@@ -39,7 +39,7 @@ abstract public class AbstractDiagramObjectExporter extends BaseObjectExporter
 	{
 		super.writeFields(baseObject, baseObjectSchema);
 		
-		ConceptualModelDiagram conceptualModel = (ConceptualModelDiagram) baseObject;
+		DiagramObject conceptualModel = (DiagramObject) baseObject;
 		
 		final String objectName = baseObjectSchema.getXmpz2ElementName();
 		getWriter().writeNonOptionalReflist(objectName + DiagramObject.TAG_DIAGRAM_FACTOR_IDS, DIAGRAM_FACTOR, conceptualModel.getAllDiagramFactorRefs());
