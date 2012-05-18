@@ -43,4 +43,5 @@ public class WcsZipFileChooser extends MiradiFileSaveChooser
 		return ZIP_UI_EXTENSION_TAG;
 	}
 	
-	private static final String ZIP_UI_EXTENSION_TAG = "ZIP";}
+	private static final String ZIP_UI_EXTENSION_TAG = "ZIP";
+}
