@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-18 11:57-0500\n"
+"POT-Creation-Date: 2012-05-18 12:49-0500\n"
 "PO-Revision-Date: 2012-03-27 16:14+0800\n"
 "Last-Translator: tuguldur <tenkhtsetseg@tnc.org>\n"
 "Language-Team: none\n"
@@ -1976,6 +1976,10 @@ msgstr ""
 #: Miradi/source/org/miradi/actions/ActionExportXmpz.java:34
 msgid "Action|XML Miradi Project ZIP (BETA) "
 msgstr "Арга хэмжээ|XML Миради төсөл ZIP (BETA) "
+
+#: Miradi/source/org/miradi/actions/ActionExportXmpz2.java:35
+msgid "Action|XMPZ2 (BETA) "
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionZoomIn.java:34
 msgid "Action|Zoom In"
@@ -4997,11 +5001,11 @@ msgstr "Дундаж"
 msgid "Medium (Default)"
 msgstr "Дундаж (Default)"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:240
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:241
 msgid "MenuBar|Actions"
 msgstr "Цэсийн системийн команд|Үйлдлүүд"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:170
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:171
 msgid "MenuBar|Edit"
 msgstr "Цэсийн системийн команд|Засах"
 
@@ -5009,15 +5013,15 @@ msgstr "Цэсийн системийн команд|Засах"
 msgid "MenuBar|File"
 msgstr "Цэсийн системийн команд|Файл"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:572
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:573
 msgid "MenuBar|Help"
 msgstr "Цэсийн системийн команд|Тусламж"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:503
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:504
 msgid "MenuBar|Step-by-Step"
 msgstr "Цэсийн системийн команд|Алхам алхамаар"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:432
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:433
 msgid "MenuBar|View"
 msgstr "Цэсийн системийн команд|Харах"
 
@@ -5045,7 +5049,7 @@ msgstr "Цэс|5. Дүрслэн гаргах ба Сургамжтай зүйл
 msgid "Menu|Add Tag to %n Selected Item(s)"
 msgstr "Цэс|Сонгосон зүйлд(үүдэд) Тэмдэглэл нэмэх"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:139
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:140
 msgid "Menu|Export Current Page as..."
 msgstr "Цэс|Идэвхитэй хуудсанд экспорт хийх (Export)"
 
@@ -5054,11 +5058,11 @@ msgid "Menu|Export Current Project as..."
 msgstr "Цэс|Одоогийн төсөлд экспорт хийх (Export)"
 
 #: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:282
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:420
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:421
 msgid "Menu|Group Box"
 msgstr "Цэс|Бүлгийн хайрцаг"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:152
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:153
 msgid "Menu|Import"
 msgstr "Цэс|Импорт хийх"
 
@@ -7078,6 +7082,7 @@ msgid "TT|Export entire project as a WCS Miradi Project ZIP file"
 msgstr "TT|Төслийг бүхэлд нь WCS Miradi Project ZIP файлаар экспорт хийх"
 
 #: Miradi/source/org/miradi/actions/ActionExportXmpz.java:40
+#: Miradi/source/org/miradi/actions/ActionExportXmpz2.java:41
 msgid "TT|Export entire project as an XML file"
 msgstr "TT|Төслийг бүхэлд нь XML файлаар экспорт хийх"
 

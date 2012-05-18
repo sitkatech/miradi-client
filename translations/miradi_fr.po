@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-18 11:57-0500\n"
+"POT-Creation-Date: 2012-05-18 12:49-0500\n"
 "PO-Revision-Date: 2011-04-05 11:46+0100\n"
 "Last-Translator: Emanuela Leonardi <e.leonardi@gmail.com>\n"
 "Language-Team: none\n"
@@ -1992,6 +1992,10 @@ msgstr "ZIP XML du Projet Miradi (BETA)"
 #: Miradi/source/org/miradi/actions/ActionExportXmpz.java:34
 msgid "Action|XML Miradi Project ZIP (BETA) "
 msgstr "ZIP XML du Projet Miradi (BETA)"
+
+#: Miradi/source/org/miradi/actions/ActionExportXmpz2.java:35
+msgid "Action|XMPZ2 (BETA) "
+msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionZoomIn.java:34
 msgid "Action|Zoom In"
@@ -5064,11 +5068,11 @@ msgstr "Moyen"
 msgid "Medium (Default)"
 msgstr "Moyen (Par défaut)"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:240
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:241
 msgid "MenuBar|Actions"
 msgstr "Actions"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:170
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:171
 msgid "MenuBar|Edit"
 msgstr "Modifier"
 
@@ -5076,15 +5080,15 @@ msgstr "Modifier"
 msgid "MenuBar|File"
 msgstr "Fichier"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:572
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:573
 msgid "MenuBar|Help"
 msgstr "Aide"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:503
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:504
 msgid "MenuBar|Step-by-Step"
 msgstr "Étape par étape"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:432
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:433
 msgid "MenuBar|View"
 msgstr "Afficher"
 
@@ -5112,7 +5116,7 @@ msgstr "5. Considérer et partager l'apprentissage"
 msgid "Menu|Add Tag to %n Selected Item(s)"
 msgstr "Ajouter baliser à %n élément(s) sélectionné(s)"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:139
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:140
 msgid "Menu|Export Current Page as..."
 msgstr "Exporter page actuelle sous..."
 
@@ -5121,11 +5125,11 @@ msgid "Menu|Export Current Project as..."
 msgstr "Exporter projet actuel sous..."
 
 #: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:282
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:420
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:421
 msgid "Menu|Group Box"
 msgstr "Boîte de regroupement"
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:152
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:153
 msgid "Menu|Import"
 msgstr "Importer"
 
@@ -7170,6 +7174,7 @@ msgid "TT|Export entire project as a WCS Miradi Project ZIP file"
 msgstr "Exporter tout le projet sous un fichier WCS Miradi Project Zip"
 
 #: Miradi/source/org/miradi/actions/ActionExportXmpz.java:40
+#: Miradi/source/org/miradi/actions/ActionExportXmpz2.java:41
 msgid "TT|Export entire project as an XML file"
 msgstr "Exporter tout le projet sous un fichier XML"
 
