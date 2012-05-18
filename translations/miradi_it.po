@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi-3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-16 11:54-0500\n"
+"POT-Creation-Date: 2012-05-18 11:57-0500\n"
 "PO-Revision-Date: 2012-05-04 10:58+0100\n"
 "Last-Translator: saul ciriaco <saul@ciriaco.it>\n"
 "Language-Team: saul ciriaco <saul@ciriaco.it>\n"
@@ -349,6 +349,7 @@ msgstr "(guarda la sezione TNC per le Ecoregioni)"
 
 #: Miradi/source/org/miradi/utils/XmpzFileFilter.java:30
 #: Miradi/source/org/miradi/utils/MpfFileFilter.java:30
+#: Miradi/source/org/miradi/utils/Xmpz2FileFilter.java:30
 msgid ")"
 msgstr ")"
 
@@ -3778,6 +3779,10 @@ msgstr "XML (*.xml)"
 #: Miradi/source/org/miradi/utils/XmpzFileFilter.java:30
 msgid "FileFilter|XMPZ (*"
 msgstr "XMPZ (*"
+
+#: Miradi/source/org/miradi/utils/Xmpz2FileFilter.java:30
+msgid "FileFilter|XMPZ2 (*"
+msgstr ""
 
 #: Miradi/source/org/miradi/utils/ZIPFileFilter.java:47
 msgid "FileFilter|ZIP (*.zip)"
