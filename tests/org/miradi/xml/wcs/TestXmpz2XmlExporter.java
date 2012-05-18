@@ -22,6 +22,7 @@ package org.miradi.xml.wcs;
 
 import java.io.ByteArrayOutputStream;
 
+import org.martus.util.UnicodeWriter;
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
 import org.miradi.exceptions.ValidationException;
@@ -30,7 +31,6 @@ import org.miradi.main.TestCaseWithProject;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.xml.xmpz2.Xmpz2XmlExporter;
-import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
 public class TestXmpz2XmlExporter extends TestCaseWithProject
 {
@@ -73,8 +73,8 @@ public class TestXmpz2XmlExporter extends TestCaseWithProject
 	private void validateProject() throws Exception
 	{
 		ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-		Xmpz2XmlWriter writer = new Xmpz2XmlWriter(getProject(), bytes);
-		new Xmpz2XmlExporter(getProject(), writer).exportProject(writer);
+		final UnicodeWriter writer = new UnicodeWriter(bytes);
+		new Xmpz2XmlExporter(getProject()).exportProject(writer);
 		writer.close();
 		String xml = new String(bytes.toByteArray(), "UTF-8");
 				
