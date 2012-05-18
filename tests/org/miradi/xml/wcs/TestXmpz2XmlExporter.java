@@ -49,6 +49,7 @@ public class TestXmpz2XmlExporter extends TestCaseWithProject
 		String sampleText = "one <br/> and <b>some bold</b> <br/>" +
 				"two <b>spanning lines<br/>" +
 				"</b>" +
+				"<a href=\"www.miradi.org\">link</a>" +
 				"<i>some <u><strike>combining</strike></u></i>" +
 				"<ul><li>test one</li><li><b>bold item</b></li></ul>";
 		getProject().fillObjectUsingCommand(getProject().getMetadata(), ProjectMetadata.TAG_PROJECT_DESCRIPTION, sampleText);
