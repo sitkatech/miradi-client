@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-18 11:57-0500\n"
+"POT-Creation-Date: 2012-05-18 12:49-0500\n"
 "PO-Revision-Date: 2011-03-17 08:40-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -1817,6 +1817,10 @@ msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionExportXmpz.java:34
 msgid "Action|XML Miradi Project ZIP (BETA) "
+msgstr ""
+
+#: Miradi/source/org/miradi/actions/ActionExportXmpz2.java:35
+msgid "Action|XMPZ2 (BETA) "
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionZoomIn.java:34
@@ -4735,11 +4739,11 @@ msgstr ""
 msgid "Medium (Default)"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:240
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:241
 msgid "MenuBar|Actions"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:170
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:171
 msgid "MenuBar|Edit"
 msgstr ""
 
@@ -4747,15 +4751,15 @@ msgstr ""
 msgid "MenuBar|File"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:572
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:573
 msgid "MenuBar|Help"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:503
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:504
 msgid "MenuBar|Step-by-Step"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:432
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:433
 msgid "MenuBar|View"
 msgstr ""
 
@@ -4783,7 +4787,7 @@ msgstr ""
 msgid "Menu|Add Tag to %n Selected Item(s)"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:139
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:140
 msgid "Menu|Export Current Page as..."
 msgstr ""
 
@@ -4792,11 +4796,11 @@ msgid "Menu|Export Current Project as..."
 msgstr ""
 
 #: Miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:282
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:420
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:421
 msgid "Menu|Group Box"
 msgstr ""
 
-#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:152
+#: Miradi/source/org/miradi/main/menu/MainMenuBar.java:153
 msgid "Menu|Import"
 msgstr ""
 
@@ -6706,6 +6710,7 @@ msgid "TT|Export entire project as a WCS Miradi Project ZIP file"
 msgstr ""
 
 #: Miradi/source/org/miradi/actions/ActionExportXmpz.java:40
+#: Miradi/source/org/miradi/actions/ActionExportXmpz2.java:41
 msgid "TT|Export entire project as an XML file"
 msgstr ""
 
