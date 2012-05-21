@@ -47,7 +47,12 @@ public class Strategy extends Factor
 {
 	public Strategy(ObjectManager objectManager, FactorId idToUse)
 	{
-		super(objectManager, idToUse, new StrategySchema());
+		super(objectManager, idToUse, createSchema());
+	}
+
+	public static StrategySchema createSchema()
+	{
+		return new StrategySchema();
 	}
 	
 	public ORefList getResultsChains()

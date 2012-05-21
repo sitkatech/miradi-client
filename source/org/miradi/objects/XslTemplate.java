@@ -30,7 +30,12 @@ public class XslTemplate extends BaseObject
 {
 	public XslTemplate(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse, new XslTemplateSchema());
+		super(objectManager, idToUse, createSchema());
+	}
+
+	public static XslTemplateSchema createSchema()
+	{
+		return new XslTemplateSchema();
 	}
 		
 	@Override

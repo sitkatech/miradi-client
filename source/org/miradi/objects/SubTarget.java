@@ -32,7 +32,12 @@ public class SubTarget extends BaseObject
 {
 	public SubTarget(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse, new SubTargetSchema());
+		super(objectManager, idToUse, createSchema());
+	}
+
+	public static SubTargetSchema createSchema()
+	{
+		return new SubTargetSchema();
 	}
 		
 	@Override

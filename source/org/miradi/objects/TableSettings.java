@@ -38,7 +38,12 @@ public class TableSettings extends BaseObject
 {
 	public TableSettings(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse, new TableSettingsSchema());
+		super(objectManager, idToUse, createSchema());
+	}
+
+	public static TableSettingsSchema createSchema()
+	{
+		return new TableSettingsSchema();
 	}
 		
 	@Override

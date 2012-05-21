@@ -29,7 +29,12 @@ public class WcpaProjectData extends BaseObject
 {
 	public WcpaProjectData(ObjectManager objectManager, BaseId id)
 	{
-		super(objectManager, id, new WcpaProjectDataSchema());
+		super(objectManager, id, createSchema());
+	}
+
+	public static WcpaProjectDataSchema createSchema()
+	{
+		return new WcpaProjectDataSchema();
 	}
 	
 	@Override

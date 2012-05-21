@@ -27,7 +27,12 @@ public class CostAllocationRule extends BaseObject
 {
 	public CostAllocationRule(ObjectManager objectManager, BaseId id)
 	{
-		super(objectManager, id, new CostAllocationRuleSchema());
+		super(objectManager, id, createSchema());
+	}
+
+	public static CostAllocationRuleSchema createSchema()
+	{
+		return new CostAllocationRuleSchema();
 	}
 	
 	@Override

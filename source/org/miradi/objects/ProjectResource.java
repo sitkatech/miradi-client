@@ -38,7 +38,12 @@ public class ProjectResource extends BaseObject
 {
 	public ProjectResource(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse, new ProjectResourceSchema());
+		super(objectManager, idToUse, createSchema());
+	}
+
+	public static ProjectResourceSchema createSchema()
+	{
+		return new ProjectResourceSchema();
 	}
 	
 	@Override

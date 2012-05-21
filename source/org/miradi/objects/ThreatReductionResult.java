@@ -31,7 +31,12 @@ public class ThreatReductionResult extends Factor
 {
 	public ThreatReductionResult(ObjectManager objectManager, FactorId idToUse)
 	{
-		super(objectManager, idToUse, new ThreatReductionResultSchema());
+		super(objectManager, idToUse, createSchema());
+	}
+
+	public static ThreatReductionResultSchema createSchema()
+	{
+		return new ThreatReductionResultSchema();
 	}
 	
 	@Override

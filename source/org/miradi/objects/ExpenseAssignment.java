@@ -35,7 +35,12 @@ public class ExpenseAssignment extends Assignment
 {
 	public ExpenseAssignment(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse, new ExpenseAssignmentSchema());
+		super(objectManager, idToUse, createSchema());
+	}
+
+	public static ExpenseAssignmentSchema createSchema()
+	{
+		return new ExpenseAssignmentSchema();
 	}
 		
 	@Override

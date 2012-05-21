@@ -31,7 +31,12 @@ public class BudgetCategoryTwo extends AbstractBudgetCategoryObject
 {
 	public BudgetCategoryTwo(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse, new BudgetCategoryTwoSchema());
+		super(objectManager, idToUse, createSchema());
+	}
+
+	public static BudgetCategoryTwoSchema createSchema()
+	{
+		return new BudgetCategoryTwoSchema();
 	}
 		
 	@Override

@@ -34,7 +34,12 @@ public class ProgressReport extends BaseObject
 {
 	public ProgressReport(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse, new ProgressReportSchema());
+		super(objectManager, idToUse, createSchema());
+	}
+
+	public static ProgressReportSchema createSchema()
+	{
+		return new ProgressReportSchema();
 	}
 		
 	@Override

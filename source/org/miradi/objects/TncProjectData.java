@@ -31,7 +31,12 @@ public class TncProjectData extends BaseObject
 {
 	public TncProjectData(ObjectManager objectManager, BaseId id)
 	{
-		super(objectManager, id, new TncProjectDataSchema());
+		super(objectManager, id, createSchema());
+	}
+
+	public static TncProjectDataSchema createSchema()
+	{
+		return new TncProjectDataSchema();
 	}
 	
 	public CodeList getOrganizationalPriorityCodes()

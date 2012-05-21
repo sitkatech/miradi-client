@@ -35,7 +35,12 @@ public class ResourceAssignment extends Assignment
 {
 	public ResourceAssignment(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, new ResourceAssignmentId(idToUse.asInt()), new ResourceAssignmentSchema());
+		super(objectManager, new ResourceAssignmentId(idToUse.asInt()), createSchema());
+	}
+
+	public static ResourceAssignmentSchema createSchema()
+	{
+		return new ResourceAssignmentSchema();
 	}
 	
 	@Override

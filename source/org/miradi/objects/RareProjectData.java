@@ -29,7 +29,12 @@ public class RareProjectData extends BaseObject
 {
 	public RareProjectData(ObjectManager objectManager, BaseId id)
 	{
-		super(objectManager, id, new RareProjectDataSchema());
+		super(objectManager, id, createSchema());
+	}
+
+	public static RareProjectDataSchema createSchema()
+	{
+		return new RareProjectDataSchema();
 	}
 	
 	@Override

@@ -29,7 +29,12 @@ public class Xenodata extends BaseObject
 {
 	public Xenodata(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse, new XenodataSchema());
+		super(objectManager, idToUse, createSchema());
+	}
+
+	public static XenodataSchema createSchema()
+	{
+		return new XenodataSchema();
 	}
 		
 	@Override

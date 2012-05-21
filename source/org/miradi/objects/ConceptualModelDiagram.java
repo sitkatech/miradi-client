@@ -35,7 +35,12 @@ public class ConceptualModelDiagram extends DiagramObject
 {
 	public ConceptualModelDiagram(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse, new ConceptualModelDiagramSchema());
+		super(objectManager, idToUse, createSchema());
+	}
+
+	public static ConceptualModelDiagramSchema createSchema()
+	{
+		return new ConceptualModelDiagramSchema();
 	}
 	
 	@Override

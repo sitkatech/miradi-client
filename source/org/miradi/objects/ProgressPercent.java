@@ -31,7 +31,12 @@ public class ProgressPercent extends BaseObject
 {
 	public ProgressPercent(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse, new ProgressPercentSchema());
+		super(objectManager, idToUse, createSchema());
+	}
+
+	public static ProgressPercentSchema createSchema()
+	{
+		return new ProgressPercentSchema();
 	}
 		
 	@Override

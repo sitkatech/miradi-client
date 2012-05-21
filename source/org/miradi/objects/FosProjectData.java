@@ -29,7 +29,12 @@ public class FosProjectData extends BaseObject
 {
 	public FosProjectData(ObjectManager objectManager, BaseId id)
 	{
-		super(objectManager, id, new FosProjectDataSchema());
+		super(objectManager, id, createSchema());
+	}
+
+	public static FosProjectDataSchema createSchema()
+	{
+		return new FosProjectDataSchema();
 	}
 	
 	@Override

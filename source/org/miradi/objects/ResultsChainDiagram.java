@@ -29,7 +29,12 @@ public class ResultsChainDiagram extends DiagramObject
 {
 	public ResultsChainDiagram(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse, new ResultsChainDiagramSchema());
+		super(objectManager, idToUse, createSchema());
+	}
+
+	public static ResultsChainDiagramSchema createSchema()
+	{
+		return new ResultsChainDiagramSchema();
 	}
 
 	@Override

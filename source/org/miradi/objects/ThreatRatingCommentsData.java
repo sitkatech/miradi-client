@@ -30,7 +30,12 @@ public class ThreatRatingCommentsData extends BaseObject
 {
 	public ThreatRatingCommentsData(ObjectManager objectManager, BaseId id)
 	{
-		super(objectManager, id, new ThreatRatingCommentsDataSchema());
+		super(objectManager, id, createSchema());
+	}
+
+	public static ThreatRatingCommentsDataSchema createSchema()
+	{
+		return new ThreatRatingCommentsDataSchema();
 	}
 
 	@Override

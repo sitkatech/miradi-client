@@ -35,7 +35,12 @@ public class Objective extends Desire
 {
 	public Objective(ObjectManager objectManager, BaseId id)
 	{
-		super(objectManager, new ObjectiveId(id.asInt()), new ObjectiveSchema());
+		super(objectManager, new ObjectiveId(id.asInt()), createSchema());
+	}
+
+	public static ObjectiveSchema createSchema()
+	{
+		return new ObjectiveSchema();
 	}
 	
 	@Override

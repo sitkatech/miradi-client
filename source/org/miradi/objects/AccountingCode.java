@@ -30,7 +30,12 @@ public class AccountingCode extends AbstractBudgetCategoryObject
 {
 	public AccountingCode(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse, new AccountingCodeSchema());
+		super(objectManager, idToUse, createSchema());
+	}
+
+	public static AccountingCodeSchema createSchema()
+	{
+		return new AccountingCodeSchema();
 	}
 	
 	@Override

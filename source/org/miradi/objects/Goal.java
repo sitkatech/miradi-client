@@ -32,7 +32,12 @@ public class Goal extends Desire
 {
 	public Goal(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse, new GoalSchema());
+		super(objectManager, idToUse, createSchema());
+	}
+
+	public static GoalSchema createSchema()
+	{
+		return new GoalSchema();
 	}
 	
 	@Override

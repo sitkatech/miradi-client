@@ -30,7 +30,12 @@ public class TextBox extends Factor
 {
 	public TextBox(ObjectManager objectManager, FactorId idToUse)
 	{
-		super(objectManager, idToUse, new TextBoxSchema());
+		super(objectManager, idToUse, createSchema());
+	}
+
+	public static TextBoxSchema createSchema()
+	{
+		return new TextBoxSchema();
 	}
 	
 	@Override

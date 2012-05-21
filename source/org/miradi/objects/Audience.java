@@ -30,7 +30,12 @@ public class Audience extends BaseObject
 {
 	public Audience(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse, new AudienceSchema());
+		super(objectManager, idToUse, createSchema());
+	}
+
+	public static AudienceSchema createSchema()
+	{
+		return new AudienceSchema();
 	}
 		
 	@Override
