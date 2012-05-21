@@ -31,6 +31,7 @@ import org.miradi.utils.ProgressInterface;
 import org.miradi.utils.XmlUtilities2;
 import org.miradi.xml.AbstractXmlImporter;
 import org.miradi.xml.AbstractXmpzObjectImporter;
+import org.miradi.xml.MiradiXmlValidator;
 import org.miradi.xml.wcs.WcsMiradiXmlValidator;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.w3c.dom.Node;
@@ -188,7 +189,7 @@ public class XmpzXmlImporter extends AbstractXmlImporter implements XmpzXmlConst
 	}
 	
 	@Override
-	protected WcsMiradiXmlValidator createXmlValidator()
+	protected MiradiXmlValidator createXmlValidator()
 	{
 		return new WcsMiradiXmlValidator();
 	}
