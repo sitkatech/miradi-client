@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-21 13:18-0500\n"
+"POT-Creation-Date: 2012-05-21 13:56-0500\n"
 "PO-Revision-Date: 2009-12-17 09:22-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -343,12 +343,6 @@ msgstr "(lihat tab Cakupan) "
 #: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:56
 msgid "(see TNC tab for Ecoregions)"
 msgstr "(lihat tab TNC untuk Wilayah Ekologi) "
-
-#: Miradi/source/org/miradi/utils/XmpzFileFilter.java:30
-#: Miradi/source/org/miradi/utils/MpfFileFilter.java:30
-#: Miradi/source/org/miradi/utils/Xmpz2FileFilter.java:30
-msgid ")"
-msgstr ""
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:85
 msgid "- Caves"
@@ -3633,7 +3627,7 @@ msgid "FileFilter|MTE (*.mte)"
 msgstr "MTE (*.mte) "
 
 #: Miradi/source/org/miradi/utils/MpfFileFilter.java:30
-msgid "FileFilter|Miradi (*"
+msgid "FileFilter|Miradi (*%s)"
 msgstr ""
 
 #: Miradi/source/org/miradi/utils/LanguagePackFileFilter.java:56
@@ -3671,11 +3665,11 @@ msgid "FileFilter|XML (*.xml)"
 msgstr "XML (*.xml) "
 
 #: Miradi/source/org/miradi/utils/XmpzFileFilter.java:30
-msgid "FileFilter|XMPZ (*"
+msgid "FileFilter|XMPZ (*%s)"
 msgstr ""
 
 #: Miradi/source/org/miradi/utils/Xmpz2FileFilter.java:30
-msgid "FileFilter|XMPZ2 (*"
+msgid "FileFilter|XMPZ2 (*%s)"
 msgstr ""
 
 #: Miradi/source/org/miradi/utils/ZIPFileFilter.java:47
