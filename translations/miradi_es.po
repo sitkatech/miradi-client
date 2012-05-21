@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-21 13:56-0500\n"
+"POT-Creation-Date: 2012-05-21 16:01-0500\n"
 "PO-Revision-Date: 2011-03-28 15:06-0800\n"
 "Last-Translator: Jeremy <jeremyy@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -323,7 +323,7 @@ msgstr "(Ver lengüeta Proyecto)"
 msgid "(Translation: %code %date)"
 msgstr "(Traducción: %code %date)"
 
-#: Miradi/source/org/miradi/objects/DiagramFactor.java:204
+#: Miradi/source/org/miradi/objects/DiagramFactor.java:209
 #: Miradi/source/org/miradi/wizard/noproject/projectlist/ProjectList.java:70
 msgid "(Unknown)"
 msgstr "(Desconocido)"
@@ -3454,7 +3454,7 @@ msgstr ""
 msgid "Error Occurred please try saving under different name."
 msgstr "Se produjo un error. Intente grabar con un nombre diferente."
 
-#: Miradi/source/org/miradi/objects/Dashboard.java:284
+#: Miradi/source/org/miradi/objects/Dashboard.java:289
 msgid "Error Retrieving Data"
 msgstr ""
 
@@ -4412,15 +4412,15 @@ msgstr "Atributo clave "
 msgid "Key Ecological Attribute (KEA)"
 msgstr "Atributos ecológicos clave (AEC)"
 
-#: Miradi/source/org/miradi/objects/AccountingCode.java:45
+#: Miradi/source/org/miradi/objects/AccountingCode.java:50
 msgid "Label|(Undefined Accounting Code)"
 msgstr "(Código contable sin definir)"
 
-#: Miradi/source/org/miradi/objects/FundingSource.java:45
+#: Miradi/source/org/miradi/objects/FundingSource.java:50
 msgid "Label|(Undefined Funding Source)"
 msgstr "(Fuente de financiamiento sin definir)"
 
-#: Miradi/source/org/miradi/objects/ProjectResource.java:94
+#: Miradi/source/org/miradi/objects/ProjectResource.java:99
 msgid "Label|(Undefined Resource)"
 msgstr "(Recurso sin definir)"
 
@@ -4433,11 +4433,11 @@ msgstr "--- afecta -->"
 msgid "Label|Biodiversity Area (hectares)"
 msgstr "Área de biodiversidad (hectáreas)"
 
-#: Miradi/source/org/miradi/objects/BudgetCategoryOne.java:46
+#: Miradi/source/org/miradi/objects/BudgetCategoryOne.java:51
 msgid "Label|Budget Category One"
 msgstr ""
 
-#: Miradi/source/org/miradi/objects/BudgetCategoryTwo.java:46
+#: Miradi/source/org/miradi/objects/BudgetCategoryTwo.java:51
 msgid "Label|Budget Category Two"
 msgstr ""
 
@@ -7556,7 +7556,7 @@ msgstr ""
 "necesario, las tareas en sí mismas pueden dividirse en subtareas. En Miradi, "
 "una tarea está representada por un óvalo plano gris."
 
-#: Miradi/source/org/miradi/objects/Task.java:373
+#: Miradi/source/org/miradi/objects/Task.java:378
 msgid "Task does not have a parent"
 msgstr ""
 
@@ -8717,7 +8717,7 @@ msgstr ""
 msgid "[Error]"
 msgstr "[Error]"
 
-#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:98
+#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:103
 msgid "[Main Diagram]"
 msgstr "[Diagrama principal]"
 
@@ -8733,7 +8733,7 @@ msgstr "[Nueva cadena de resultados]"
 msgid "[No Project]"
 msgstr "[Sin proyecto]"
 
-#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:99
+#: Miradi/source/org/miradi/objects/ConceptualModelDiagram.java:104
 msgid "[Not Named]"
 msgstr "[Sin nombre]"
 
