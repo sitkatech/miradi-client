@@ -45,7 +45,6 @@ import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.XmlUtilities2;
-import org.miradi.xml.wcs.WcsMiradiXmlValidator;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
@@ -358,7 +357,7 @@ abstract public class AbstractXmlImporter
 	
 	abstract protected NamespaceContext getNamespaceContext();
 	
-	abstract protected WcsMiradiXmlValidator createXmlValidator();
+	abstract protected MiradiXmlValidator createXmlValidator();
 
 	abstract protected String getNamespaceURI();
 
