@@ -70,7 +70,7 @@ abstract public class AbstractXmlImporter
 		InputSource inputSource = new InputSource(projectAsInputStream);
 		document = createDocument(inputSource);
 				
-		String nameSpaceUri = document.getDocumentElement().getNamespaceURI();
+		String nameSpaceUri = getDocument().getDocumentElement().getNamespaceURI();
 		if (!isSameNameSpace(nameSpaceUri))
 		{
 			throw new Exception("Name space mismatch should be: " + getPartialNameSpace() + " <br> however it is: " + nameSpaceUri); 
