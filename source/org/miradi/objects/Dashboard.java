@@ -61,7 +61,12 @@ public class Dashboard extends BaseObject
 {
 	public Dashboard(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse, new DashboardSchema());
+		super(objectManager, idToUse, createSchema());
+	}
+
+	public static DashboardSchema createSchema()
+	{
+		return new DashboardSchema();
 	}
 		
 	@Override

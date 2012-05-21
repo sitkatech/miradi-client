@@ -43,7 +43,12 @@ public class ProjectMetadata extends BaseObject
 {
 	public ProjectMetadata(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse, new ProjectMetadataSchema());
+		super(objectManager, idToUse, createSchema());
+	}
+
+	public static ProjectMetadataSchema createSchema()
+	{
+		return new ProjectMetadataSchema();
 	}
 
 	@Override

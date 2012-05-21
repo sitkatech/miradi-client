@@ -30,7 +30,12 @@ public class OtherNotableSpecies extends BaseObject
 {
 	public OtherNotableSpecies(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse, new OtherNotableSpeciesSchema());
+		super(objectManager, idToUse, createSchema());
+	}
+
+	public static OtherNotableSpeciesSchema createSchema()
+	{
+		return new OtherNotableSpeciesSchema();
 	}
 		
 	@Override

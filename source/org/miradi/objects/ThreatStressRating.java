@@ -31,7 +31,12 @@ public class ThreatStressRating extends BaseObject
 {
 	public ThreatStressRating(ObjectManager objectManager, BaseId idToUse) throws Exception
 	{
-		super(objectManager, idToUse, new ThreatStressRatingSchema());
+		super(objectManager, idToUse, createSchema());
+	}
+
+	public static ThreatStressRatingSchema createSchema()
+	{
+		return new ThreatStressRatingSchema();
 	}
 	
 	public boolean isActive()

@@ -31,7 +31,12 @@ public class TaggedObjectSet extends BaseObject
 {
 	public TaggedObjectSet(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse, new TaggedObjectSetSchema());
+		super(objectManager, idToUse, createSchema());
+	}
+
+	public static TaggedObjectSetSchema createSchema()
+	{
+		return new TaggedObjectSetSchema();
 	}
 		
 	@Override

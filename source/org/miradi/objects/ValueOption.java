@@ -31,9 +31,14 @@ public class ValueOption extends BaseObject
 {
 	public ValueOption(ObjectManager objectManager, BaseId idToUse) throws Exception
 	{
-		super(objectManager, idToUse, new ValueOptionSchema());
+		super(objectManager, idToUse, createSchema());
 		
 		setData(TAG_COLOR, Integer.toString(Color.BLACK.getRGB()));
+	}
+
+	public static ValueOptionSchema createSchema()
+	{
+		return new ValueOptionSchema();
 	}
 	
 	public ValueOption(ObjectManager objectManager, BaseId idToUse, String labelToUse, int numericToUse, Color colorToUse) throws Exception

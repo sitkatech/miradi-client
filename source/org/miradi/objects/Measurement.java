@@ -30,7 +30,12 @@ public class Measurement extends BaseObject
 {
 	public Measurement(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse, new MeasurementSchema());
+		super(objectManager, idToUse, createSchema());
+	}
+
+	public static MeasurementSchema createSchema()
+	{
+		return new MeasurementSchema();
 	}
 	
 	@Override

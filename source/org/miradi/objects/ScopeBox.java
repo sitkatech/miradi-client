@@ -30,7 +30,12 @@ public class ScopeBox extends Factor
 {
 	public ScopeBox(ObjectManager objectManager, FactorId idToUse)
 	{
-		super(objectManager, idToUse, new ScopeBoxSchema());
+		super(objectManager, idToUse, createSchema());
+	}
+
+	public static ScopeBoxSchema createSchema()
+	{
+		return new ScopeBoxSchema();
 	}
 	
 	@Override

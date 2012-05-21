@@ -28,7 +28,12 @@ public class RatingCriterion extends BaseObject
 {
 	public RatingCriterion(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse, new RatingCriterionSchema());
+		super(objectManager, idToUse, createSchema());
+	}
+
+	public static RatingCriterionSchema createSchema()
+	{
+		return new RatingCriterionSchema();
 	}
 	
 	@Override

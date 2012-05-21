@@ -31,7 +31,12 @@ public class IntermediateResult extends Factor
 {
 	public IntermediateResult(ObjectManager objectManager, FactorId idToUse)
 	{
-		super(objectManager, idToUse, new IntermediateResultSchema());
+		super(objectManager, idToUse, createSchema());
+	}
+
+	public static IntermediateResultSchema createSchema()
+	{
+		return new IntermediateResultSchema();
 	}
 	
 	@Override

@@ -30,7 +30,12 @@ public class Organization extends BaseObject
 {
 	public Organization(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse, new OrganizationSchema());
+		super(objectManager, idToUse, createSchema());
+	}
+
+	public static OrganizationSchema createSchema()
+	{
+		return new OrganizationSchema();
 	}
 		
 	@Override

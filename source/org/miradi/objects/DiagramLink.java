@@ -45,7 +45,12 @@ public class DiagramLink extends BaseObject
 {
 	public DiagramLink(ObjectManager objectManager, BaseId idToUse) throws Exception
 	{
-		super(objectManager, new DiagramLinkId(idToUse.asInt()), new DiagramLinkSchema());
+		super(objectManager, new DiagramLinkId(idToUse.asInt()), createSchema());
+	}
+
+	public static DiagramLinkSchema createSchema()
+	{
+		return new DiagramLinkSchema();
 	}
 	
 	@Override

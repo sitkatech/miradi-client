@@ -37,7 +37,12 @@ public class KeyEcologicalAttribute extends BaseObject
 {
 	public KeyEcologicalAttribute(ObjectManager objectManager, KeyEcologicalAttributeId idToUse)
 	{
-		super(objectManager, idToUse, new KeyEcologicalAttributeSchema());
+		super(objectManager, idToUse, createSchema());
+	}
+
+	public static KeyEcologicalAttributeSchema createSchema()
+	{
+		return new KeyEcologicalAttributeSchema();
 	}
 
 	@Override

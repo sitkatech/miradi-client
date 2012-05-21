@@ -30,7 +30,12 @@ public class HumanWelfareTarget extends AbstractTarget
 {
 	public HumanWelfareTarget(ObjectManager objectManager, FactorId idToUse)
 	{
-		super(objectManager, idToUse, new HumanWelfareTargetSchema());
+		super(objectManager, idToUse, createSchema());
+	}
+
+	public static HumanWelfareTargetSchema createSchema()
+	{
+		return new HumanWelfareTargetSchema();
 	}
 	
 	@Override

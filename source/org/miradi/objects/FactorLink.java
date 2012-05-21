@@ -31,7 +31,12 @@ public class FactorLink extends BaseObject
 {
 	public FactorLink(ObjectManager objectManager, BaseId id) throws Exception
 	{
-		super(objectManager, id, new FactorLinkSchema());
+		super(objectManager, id, createSchema());
+	}
+
+	public static FactorLinkSchema createSchema()
+	{
+		return new FactorLinkSchema();
 	}
 
 	@Override

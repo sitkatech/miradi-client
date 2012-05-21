@@ -33,7 +33,12 @@ public class Cause extends Factor
 {
 	public Cause(ObjectManager objectManager, FactorId idToUse)
 	{
-		super(objectManager, idToUse, new CauseSchema());
+		super(objectManager, idToUse, createSchema());
+	}
+
+	public static CauseSchema createSchema()
+	{
+		return new CauseSchema();
 	}
 	
 	@Override

@@ -45,7 +45,12 @@ public class Task extends Factor
 {
 	public Task(ObjectManager objectManager, FactorId idToUse)
 	{
-		super(objectManager, idToUse, new TaskSchema());
+		super(objectManager, idToUse, createSchema());
+	}
+
+	public static TaskSchema createSchema()
+	{
+		return new TaskSchema();
 	}
 	
 	public CommandVector getDeleteSelfAndSubtasksCommands(Project project) throws Exception

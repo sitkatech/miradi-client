@@ -34,7 +34,12 @@ public class Stress extends Factor
 {
 	public Stress(ObjectManager objectManager, FactorId idToUse)
 	{
-		super(objectManager, idToUse, new StressSchema());
+		super(objectManager, idToUse, createSchema());
+	}
+
+	public static StressSchema createSchema()
+	{
+		return new StressSchema();
 	}
 	
 	@Override

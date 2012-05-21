@@ -46,9 +46,14 @@ public class DiagramFactor extends BaseObject
 {
 	public DiagramFactor(ObjectManager objectManager, DiagramFactorId diagramFactorIdToUse) throws Exception
 	{
-		super(objectManager, diagramFactorIdToUse, new DiagramFactorSchema());
+		super(objectManager, diagramFactorIdToUse, createSchema());
 		
 		setDimensionData(TAG_SIZE, getDefaultSize());
+	}
+
+	public static DiagramFactorSchema createSchema()
+	{
+		return new DiagramFactorSchema();
 	}
 	
 	@Override

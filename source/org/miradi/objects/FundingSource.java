@@ -30,7 +30,12 @@ public class FundingSource extends AbstractBudgetCategoryObject
 {
 	public FundingSource(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse, new FundingSourceSchema());
+		super(objectManager, idToUse, createSchema());
+	}
+
+	public static FundingSourceSchema createSchema()
+	{
+		return new FundingSourceSchema();
 	}
 	
 	@Override

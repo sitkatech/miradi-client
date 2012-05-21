@@ -29,7 +29,12 @@ public class WcsProjectData extends BaseObject
 {
 	public WcsProjectData(ObjectManager objectManager, BaseId id)
 	{
-		super(objectManager, id, new WcsProjectDataSchema());
+		super(objectManager, id, createSchema());
+	}
+
+	public static WcsProjectDataSchema createSchema()
+	{
+		return new WcsProjectDataSchema();
 	}
 	
 	@Override

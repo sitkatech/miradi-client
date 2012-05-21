@@ -30,7 +30,12 @@ public class GroupBox extends Factor
 {
 	public GroupBox(ObjectManager objectManager, FactorId idToUse)
 	{
-		super(objectManager, idToUse, new GroupBoxSchema());
+		super(objectManager, idToUse, createSchema());
+	}
+
+	public static GroupBoxSchema createSchema()
+	{
+		return new GroupBoxSchema();
 	}
 		
 	@Override

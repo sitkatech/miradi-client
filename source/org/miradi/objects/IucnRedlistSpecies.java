@@ -30,7 +30,12 @@ public class IucnRedlistSpecies extends BaseObject
 {
 	public IucnRedlistSpecies(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse, new IucnRedlistSpeciesSchema());
+		super(objectManager, idToUse, createSchema());
+	}
+
+	public static IucnRedlistSpeciesSchema createSchema()
+	{
+		return new IucnRedlistSpeciesSchema();
 	}
 		
 	@Override

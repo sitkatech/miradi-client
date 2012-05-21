@@ -37,7 +37,12 @@ public class Target extends AbstractTarget
 {
 	public Target(ObjectManager objectManager, FactorId idToUse)
 	{
-		super(objectManager, idToUse, new TargetSchema());
+		super(objectManager, idToUse, createSchema());
+	}
+
+	public static TargetSchema createSchema()
+	{
+		return new TargetSchema();
 	}
 	
 	@Override
