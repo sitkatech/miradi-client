@@ -70,7 +70,7 @@ abstract public class AbstractXmlImporter
 		InputSource inputSource = new InputSource(projectAsInputStream);
 		document = createDocument(inputSource);
 				
-		String nameSpaceUri = getDocument().getDocumentElement().getNamespaceURI();
+		String nameSpaceUri = getNamespaceURI();
 		if (!isSameNameSpace(nameSpaceUri))
 		{
 			throw new Exception("Name space mismatch should be: " + getPartialNameSpace() + " <br> however it is: " + nameSpaceUri); 
@@ -96,6 +96,11 @@ abstract public class AbstractXmlImporter
 		}
 		
 		xPath = createXPath();
+	}
+
+	protected String getNamespaceURI()
+	{
+		return getDocument().getDocumentElement().getNamespaceURI();
 	}
 
 	private String getXmlTextForDebugging(InputStreamWithSeek projectAsInputStream) throws Exception
