@@ -88,7 +88,7 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 	public void exportProject(UnicodeWriter outToUse) throws Exception
 	{
 		out = new Xmpz2XmlWriter(getProject(), outToUse);
-		fillTypeToExporterMap();
+		fillTypeToExporterMap(getWriter());
 		getWriter().writeXmlHeader();
 		getWriter().writeMainElementStart();
 		exportProjectSummary();
@@ -149,27 +149,27 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 		getWriter().writeEndElement(poolName);
 	}
 
-	private void fillTypeToExporterMap()
+	private void fillTypeToExporterMap(final Xmpz2XmlWriter writerToUse)
 	{
-		addExporterToMap(new DashboardExporter(getWriter()));
-		addExporterToMap(new IndicatorExporter(getWriter()));
-		addExporterToMap(new GoalExporter(getWriter()));
-		addExporterToMap(new ObjectiveExporter(getWriter()));
-		addExporterToMap(new ResourceAssignmentExporter(getWriter()));
-		addExporterToMap(new ExpenseAssignmentExporter(getWriter()));
-		addExporterToMap(new TaskExporter(getWriter()));
-		addExporterToMap(new ProjectResourceExporter(getWriter()));
-		addExporterToMap(new DiagramLinkExporter(getWriter()));
-		addExporterToMap(new ConceptualModelDiagramExporter(getWriter()));
-		addExporterToMap(new ResultsChainExporter(getWriter()));
-		addExporterToMap(new DiagramFactorExporter(getWriter()));
-		addExporterToMap(new StrategyExporter(getWriter()));
-		addExporterToMap(new TargetExporter(getWriter()));
-		addExporterToMap(new HumanWelfareTargetExporter(getWriter()));
-		addExporterToMap(new TaggedObjectSetExporter(getWriter()));
-		addExporterToMap(new IucnRedlistSpeciesExporter(getWriter()));
-		addExporterToMap(new BudgetCategoryOneExporter(getWriter()));
-		addExporterToMap(new BudgetCategoryTwoExporter(getWriter()));
+		addExporterToMap(new DashboardExporter(writerToUse));
+		addExporterToMap(new IndicatorExporter(writerToUse));
+		addExporterToMap(new GoalExporter(writerToUse));
+		addExporterToMap(new ObjectiveExporter(writerToUse));
+		addExporterToMap(new ResourceAssignmentExporter(writerToUse));
+		addExporterToMap(new ExpenseAssignmentExporter(writerToUse));
+		addExporterToMap(new TaskExporter(writerToUse));
+		addExporterToMap(new ProjectResourceExporter(writerToUse));
+		addExporterToMap(new DiagramLinkExporter(writerToUse));
+		addExporterToMap(new ConceptualModelDiagramExporter(writerToUse));
+		addExporterToMap(new ResultsChainExporter(writerToUse));
+		addExporterToMap(new DiagramFactorExporter(writerToUse));
+		addExporterToMap(new StrategyExporter(writerToUse));
+		addExporterToMap(new TargetExporter(writerToUse));
+		addExporterToMap(new HumanWelfareTargetExporter(writerToUse));
+		addExporterToMap(new TaggedObjectSetExporter(writerToUse));
+		addExporterToMap(new IucnRedlistSpeciesExporter(writerToUse));
+		addExporterToMap(new BudgetCategoryOneExporter(writerToUse));
+		addExporterToMap(new BudgetCategoryTwoExporter(writerToUse));
 		
 		addGenericExporterToMap(AccountingCodeSchema.getObjectType());
 		addGenericExporterToMap(FundingSourceSchema.getObjectType());
