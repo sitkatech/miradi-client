@@ -23,8 +23,10 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.ObjectManager;
+import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.StaticQuestionManager;
+import org.miradi.schemas.BaseObjectSchema;
 
 abstract public class BaseObjectPool extends PoolWithIdAssigner
 {
@@ -38,6 +40,7 @@ abstract public class BaseObjectPool extends PoolWithIdAssigner
 		BaseId actualId = idAssigner.obtainRealId(objectId);
 		BaseObject created = createRawObject(objectManager, actualId);
 		put(created.getId(), created);
+		
 		return created;
 	}
 	
@@ -47,4 +50,6 @@ abstract public class BaseObjectPool extends PoolWithIdAssigner
 	}
 	
 	abstract BaseObject createRawObject(ObjectManager objectManager, BaseId actualId) throws Exception;
+	
+	abstract public BaseObjectSchema createBaseObjectSchema(final Project projectToUse);
 }

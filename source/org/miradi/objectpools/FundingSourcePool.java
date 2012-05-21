@@ -25,6 +25,8 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.FundingSource;
 import org.miradi.project.ObjectManager;
+import org.miradi.project.Project;
+import org.miradi.schemas.BaseObjectSchema;
 
 public class FundingSourcePool extends AbstractBudgetCategoryObjectPool
 {
@@ -52,5 +54,11 @@ public class FundingSourcePool extends AbstractBudgetCategoryObjectPool
 			allFundingSources[i] = find(allIds[i]);
 			
 		return allFundingSources;
+	}
+	
+	@Override
+	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
+	{
+		return FundingSource.createSchema();
 	}
 }

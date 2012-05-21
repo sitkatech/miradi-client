@@ -25,6 +25,8 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ThreatRatingCommentsData;
 import org.miradi.project.ObjectManager;
+import org.miradi.project.Project;
+import org.miradi.schemas.BaseObjectSchema;
 
 public class ThreatRatingCommentsDataPool extends BaseObjectPool
 {
@@ -47,5 +49,11 @@ public class ThreatRatingCommentsDataPool extends BaseObjectPool
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId)
 	{
 		return new ThreatRatingCommentsData(objectManager, new BaseId(actualId.asInt()));
+	}
+	
+	@Override
+	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
+	{
+		return ThreatRatingCommentsData.createSchema();
 	}
 }

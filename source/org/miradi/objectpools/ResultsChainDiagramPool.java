@@ -26,6 +26,8 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.project.ObjectManager;
+import org.miradi.project.Project;
+import org.miradi.schemas.BaseObjectSchema;
 
 public class ResultsChainDiagramPool extends DiagramObjectPool
 {
@@ -48,5 +50,11 @@ public class ResultsChainDiagramPool extends DiagramObjectPool
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId) throws Exception
 	{
 		return new ResultsChainDiagram(objectManager ,new DiagramContentsId(actualId.asInt()));
+	}
+	
+	@Override
+	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
+	{
+		return ResultsChainDiagram.createSchema();
 	}
 }

@@ -31,6 +31,8 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Strategy;
 import org.miradi.project.ObjectManager;
+import org.miradi.project.Project;
+import org.miradi.schemas.BaseObjectSchema;
 
 public class StrategyPool extends FactorPool
 {
@@ -115,5 +117,11 @@ public class StrategyPool extends FactorPool
 				nonDraftStrategies.add(strategy);
 		}
 		return nonDraftStrategies;
+	}
+	
+	@Override
+	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
+	{
+		return Strategy.createSchema();
 	}
 }

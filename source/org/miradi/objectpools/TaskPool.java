@@ -28,6 +28,8 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Task;
 import org.miradi.project.ObjectManager;
+import org.miradi.project.Project;
+import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.TaskSchema;
 
 public class TaskPool extends FactorPool
@@ -89,5 +91,11 @@ public class TaskPool extends FactorPool
 		}
 		
 		return allTypedTasks;
+	}
+	
+	@Override
+	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
+	{
+		return Task.createSchema();
 	}
 }

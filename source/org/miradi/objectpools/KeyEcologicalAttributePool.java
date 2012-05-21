@@ -26,6 +26,8 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.project.ObjectManager;
+import org.miradi.project.Project;
+import org.miradi.schemas.BaseObjectSchema;
 
 public class KeyEcologicalAttributePool extends BaseObjectPool
 {
@@ -58,6 +60,12 @@ public class KeyEcologicalAttributePool extends BaseObjectPool
 			allKeyEcologicalAttribute[i] = find(allIds[i]);
 			
 		return allKeyEcologicalAttribute;
+	}
+	
+	@Override
+	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
+	{
+		return KeyEcologicalAttribute.createSchema();
 	}
 }
 

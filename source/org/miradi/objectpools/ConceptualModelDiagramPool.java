@@ -26,6 +26,8 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.project.ObjectManager;
+import org.miradi.project.Project;
+import org.miradi.schemas.BaseObjectSchema;
 
 public class ConceptualModelDiagramPool extends DiagramObjectPool
 {
@@ -48,5 +50,11 @@ public class ConceptualModelDiagramPool extends DiagramObjectPool
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId) throws Exception
 	{
 		return new ConceptualModelDiagram(objectManager ,new DiagramContentsId(actualId.asInt()));
+	}
+	
+	@Override
+	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
+	{
+		return ConceptualModelDiagram.createSchema();
 	}
 }

@@ -25,6 +25,8 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ViewData;
 import org.miradi.project.ObjectManager;
+import org.miradi.project.Project;
+import org.miradi.schemas.BaseObjectSchema;
 
 public class ViewPool extends BaseObjectPool
 {
@@ -59,5 +61,11 @@ public class ViewPool extends BaseObjectPool
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId)
 	{
 		return new ViewData(objectManager, actualId);
+	}
+	
+	@Override
+	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
+	{
+		return ViewData.createSchema(projectToUse);
 	}
 }

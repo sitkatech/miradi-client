@@ -36,12 +36,12 @@ public class ViewData extends BaseObject
 {
 	public ViewData(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse, createSchema(objectManager));
+		super(objectManager, idToUse, createSchema(objectManager.getProject()));
 	}
 
-	public static ViewDataSchema createSchema(ObjectManager objectManager)
+	public static ViewDataSchema createSchema(final Project projectToUse)
 	{
-		return new ViewDataSchema(objectManager.getProject());
+		return new ViewDataSchema(projectToUse);
 	}
 
 	public Command[] buildCommandsToAddNode(ORef oRefToAdd) throws ParseException

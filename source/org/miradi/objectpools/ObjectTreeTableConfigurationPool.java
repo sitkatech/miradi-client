@@ -26,6 +26,8 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.ObjectTreeTableConfiguration;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.project.ObjectManager;
+import org.miradi.project.Project;
+import org.miradi.schemas.BaseObjectSchema;
 
 public class ObjectTreeTableConfigurationPool extends BaseObjectPool
 {
@@ -55,5 +57,11 @@ public class ObjectTreeTableConfigurationPool extends BaseObjectPool
 		}
 			
 		return allPlanningViewConfigurations;
+	}
+	
+	@Override
+	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
+	{
+		return ObjectTreeTableConfiguration.createSchema(projectToUse);
 	}
 }

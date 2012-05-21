@@ -29,12 +29,12 @@ public class ReportTemplate extends BaseObject
 {
 	public ReportTemplate(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, idToUse, createSchema(objectManager));
+		super(objectManager, idToUse, createSchema(objectManager.getProject()));
 	}
 
-	public static ReportTemplateSchema createSchema(ObjectManager objectManager)
+	public static ReportTemplateSchema createSchema(final Project projectToUse)
 	{
-		return new ReportTemplateSchema(objectManager.getProject());
+		return new ReportTemplateSchema(projectToUse);
 	}
 		
 	@Override

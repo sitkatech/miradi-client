@@ -28,6 +28,8 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramLink;
 import org.miradi.project.ObjectManager;
+import org.miradi.project.Project;
+import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.DiagramFactorSchema;
 
 public class DiagramLinkPool extends BaseObjectPool
@@ -80,4 +82,10 @@ public class DiagramLinkPool extends BaseObjectPool
 		}
 		return null;
 	}		
+	
+	@Override
+	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
+	{
+		return DiagramLink.createSchema();
+	}
 }

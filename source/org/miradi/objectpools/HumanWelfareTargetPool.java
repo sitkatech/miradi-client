@@ -29,6 +29,8 @@ import org.miradi.objecthelpers.BaseObjectByFullNameSorter;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.project.ObjectManager;
+import org.miradi.project.Project;
+import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 
 public class HumanWelfareTargetPool extends AbstractTargetPool
@@ -59,5 +61,11 @@ public class HumanWelfareTargetPool extends AbstractTargetPool
 		HumanWelfareTarget[] humanWelfareTargets = getValues().toArray(new HumanWelfareTarget[0]);
 		Arrays.sort(humanWelfareTargets, new BaseObjectByFullNameSorter());
 		return humanWelfareTargets;
+	}
+	
+	@Override
+	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
+	{
+		return HumanWelfareTarget.createSchema();
 	}
 }

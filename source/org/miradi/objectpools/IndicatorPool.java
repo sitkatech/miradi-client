@@ -26,6 +26,8 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
 import org.miradi.project.ObjectManager;
+import org.miradi.project.Project;
+import org.miradi.schemas.BaseObjectSchema;
 
 public class IndicatorPool extends BaseObjectPool
 {
@@ -58,5 +60,11 @@ public class IndicatorPool extends BaseObjectPool
 			allIndicators[i] = find(allIds[i]);
 			
 		return allIndicators;
+	}
+	
+	@Override
+	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
+	{
+		return Indicator.createSchema();
 	}
 }

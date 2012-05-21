@@ -29,6 +29,8 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 import org.miradi.project.ObjectManager;
+import org.miradi.project.Project;
+import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.FactorLinkSchema;
 
 public class FactorLinkPool extends BaseObjectPool
@@ -81,4 +83,9 @@ public class FactorLinkPool extends BaseObjectPool
 		return new FactorLink(objectManager, realId);
 	}
 	
+	@Override
+	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
+	{
+		return FactorLink.createSchema();
+	}
 }

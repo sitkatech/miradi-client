@@ -24,6 +24,8 @@ import org.miradi.ids.IdAssigner;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.project.ObjectManager;
+import org.miradi.project.Project;
+import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.ExpenseAssignmentSchema;
 
 public class ExpenseAssignmentPool extends AbstractAssignmentPool
@@ -47,5 +49,11 @@ public class ExpenseAssignmentPool extends AbstractAssignmentPool
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId)
 	{
 		return new ExpenseAssignment(objectManager, actualId);
+	}
+	
+	@Override
+	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
+	{
+		return ExpenseAssignment.createSchema();
 	}
 }

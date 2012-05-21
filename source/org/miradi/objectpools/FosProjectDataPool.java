@@ -24,6 +24,8 @@ import org.miradi.ids.IdAssigner;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.FosProjectData;
 import org.miradi.project.ObjectManager;
+import org.miradi.project.Project;
+import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.FosProjectDataSchema;
 
 public class FosProjectDataPool extends BaseObjectPool
@@ -47,5 +49,11 @@ public class FosProjectDataPool extends BaseObjectPool
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId)
 	{
 		return new FosProjectData(objectManager, new BaseId(actualId.asInt()));
+	}
+	
+	@Override
+	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
+	{
+		return FosProjectData.createSchema();
 	}
 }

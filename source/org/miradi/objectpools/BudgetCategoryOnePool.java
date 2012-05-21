@@ -26,6 +26,8 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.BudgetCategoryOne;
 import org.miradi.project.ObjectManager;
+import org.miradi.project.Project;
+import org.miradi.schemas.BaseObjectSchema;
 
 public class BudgetCategoryOnePool extends AbstractBudgetCategoryObjectPool
 {
@@ -48,5 +50,11 @@ public class BudgetCategoryOnePool extends AbstractBudgetCategoryObjectPool
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId)
 	{
 		return new BudgetCategoryOne(objectManager, actualId);
+	}
+	
+	@Override
+	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
+	{
+		return BudgetCategoryOne.createSchema();
 	}
 }

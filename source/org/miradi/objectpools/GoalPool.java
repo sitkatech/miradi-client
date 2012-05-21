@@ -25,6 +25,8 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Goal;
 import org.miradi.project.ObjectManager;
+import org.miradi.project.Project;
+import org.miradi.schemas.BaseObjectSchema;
 
 public class GoalPool extends DesirePool
 {
@@ -43,5 +45,10 @@ public class GoalPool extends DesirePool
 	{
 		return new Goal(objectManager, actualId);
 	}
-
+	
+	@Override
+	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
+	{
+		return Goal.createSchema();
+	}
 }

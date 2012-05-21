@@ -26,6 +26,8 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.project.ObjectManager;
+import org.miradi.project.Project;
+import org.miradi.schemas.BaseObjectSchema;
 
 public class IntermediateResultPool extends FactorPool
 {
@@ -48,5 +50,11 @@ public class IntermediateResultPool extends FactorPool
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId) throws Exception
 	{
 		return new IntermediateResult(objectManager ,new FactorId(actualId.asInt()));
+	}
+	
+	@Override
+	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
+	{
+		return IntermediateResult.createSchema();
 	}
 }
