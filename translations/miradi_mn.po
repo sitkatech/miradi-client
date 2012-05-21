@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-21 13:18-0500\n"
+"POT-Creation-Date: 2012-05-21 13:56-0500\n"
 "PO-Revision-Date: 2012-03-27 16:14+0800\n"
 "Last-Translator: tuguldur <tenkhtsetseg@tnc.org>\n"
 "Language-Team: none\n"
@@ -331,12 +331,6 @@ msgstr "(Хамрах хүрээний тэмдэглэлийг харна уу)
 #: Miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:56
 msgid "(see TNC tab for Ecoregions)"
 msgstr "(TNC-гийн Экологийн бүсийн тэмдэглэлийг харна уу)"
-
-#: Miradi/source/org/miradi/utils/XmpzFileFilter.java:30
-#: Miradi/source/org/miradi/utils/MpfFileFilter.java:30
-#: Miradi/source/org/miradi/utils/Xmpz2FileFilter.java:30
-msgid ")"
-msgstr ")"
 
 #: Miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:85
 msgid "- Caves"
@@ -3692,7 +3686,7 @@ msgid "FileFilter|MTE (*.mte)"
 msgstr "FileFilter|MTE (*.mte)"
 
 #: Miradi/source/org/miradi/utils/MpfFileFilter.java:30
-msgid "FileFilter|Miradi (*"
+msgid "FileFilter|Miradi (*%s)"
 msgstr ""
 
 #: Miradi/source/org/miradi/utils/LanguagePackFileFilter.java:56
@@ -3728,11 +3722,11 @@ msgid "FileFilter|XML (*.xml)"
 msgstr "FileFilter|XML (*.xml)"
 
 #: Miradi/source/org/miradi/utils/XmpzFileFilter.java:30
-msgid "FileFilter|XMPZ (*"
-msgstr "FileFilter|XMPZ (*"
+msgid "FileFilter|XMPZ (*%s)"
+msgstr ""
 
 #: Miradi/source/org/miradi/utils/Xmpz2FileFilter.java:30
-msgid "FileFilter|XMPZ2 (*"
+msgid "FileFilter|XMPZ2 (*%s)"
 msgstr ""
 
 #: Miradi/source/org/miradi/utils/ZIPFileFilter.java:47
@@ -31973,6 +31967,12 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid ")"
+#~ msgstr ")"
+
+#~ msgid "FileFilter|XMPZ (*"
+#~ msgstr "FileFilter|XMPZ (*"
 
 #~ msgid " A project by this name already exists: "
 #~ msgstr "Ийм нэр бүхий төсөл хэдийнээ байгаа:"
