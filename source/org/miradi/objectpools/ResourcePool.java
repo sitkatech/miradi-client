@@ -27,7 +27,9 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProjectResource;
 import org.miradi.project.ObjectManager;
+import org.miradi.project.Project;
 import org.miradi.questions.ResourceRoleQuestion;
+import org.miradi.schemas.BaseObjectSchema;
 
 public class ResourcePool extends BaseObjectPool
 {
@@ -83,5 +85,11 @@ public class ResourcePool extends BaseObjectPool
 			EAM.logException(e);
 			return new ORefList();
 		}
+	}
+	
+	@Override
+	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
+	{
+		return ProjectResource.createSchema();
 	}
 }

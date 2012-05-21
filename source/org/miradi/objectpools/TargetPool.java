@@ -29,6 +29,8 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Target;
 import org.miradi.project.ObjectManager;
+import org.miradi.project.Project;
+import org.miradi.schemas.BaseObjectSchema;
 
 public class TargetPool extends AbstractTargetPool
 {
@@ -60,5 +62,10 @@ public class TargetPool extends AbstractTargetPool
 		Arrays.sort(targets, new BaseObjectByFullNameSorter());
 		return targets;
 	}
-
+	
+	@Override
+	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
+	{
+		return Target.createSchema();
+	}
 }

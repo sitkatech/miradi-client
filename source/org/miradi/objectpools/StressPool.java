@@ -26,6 +26,8 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Stress;
 import org.miradi.project.ObjectManager;
+import org.miradi.project.Project;
+import org.miradi.schemas.BaseObjectSchema;
 
 public class StressPool extends FactorPool
 {
@@ -43,5 +45,11 @@ public class StressPool extends FactorPool
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId)
 	{
 		return new Stress(objectManager, new FactorId(actualId.asInt()));
+	}
+	
+	@Override
+	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
+	{
+		return Stress.createSchema();
 	}
 }

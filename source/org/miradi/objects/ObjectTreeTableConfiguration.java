@@ -34,12 +34,12 @@ public class ObjectTreeTableConfiguration extends BaseObject implements Planning
 {
 	public ObjectTreeTableConfiguration(ObjectManager objectManager, BaseId id)
 	{
-		super(objectManager, id, createSchema(objectManager));
+		super(objectManager, id, createSchema(objectManager.getProject()));
 	}
 
-	public static ObjectTreeTableConfigurationSchema createSchema(final ObjectManager objectManager)
+	public static ObjectTreeTableConfigurationSchema createSchema(final Project projectToUse)
 	{
-		return new ObjectTreeTableConfigurationSchema(objectManager.getProject());
+		return new ObjectTreeTableConfigurationSchema(projectToUse);
 	}
 	
 	public CodeList getRowCodesToShow() throws Exception

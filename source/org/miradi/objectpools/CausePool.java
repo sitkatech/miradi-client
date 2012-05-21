@@ -29,6 +29,8 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.project.ObjectManager;
+import org.miradi.project.Project;
+import org.miradi.schemas.BaseObjectSchema;
 
 public class CausePool extends FactorPool
 {
@@ -80,5 +82,11 @@ public class CausePool extends FactorPool
 				causes.add(cause);
 		}
 		return causes;
+	}
+	
+	@Override
+	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
+	{
+		return Cause.createSchema();
 	}
 }

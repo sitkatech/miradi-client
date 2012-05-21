@@ -25,6 +25,8 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.AccountingCode;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.ObjectManager;
+import org.miradi.project.Project;
+import org.miradi.schemas.BaseObjectSchema;
 
 public class AccountingCodePool extends AbstractBudgetCategoryObjectPool
 {
@@ -54,4 +56,9 @@ public class AccountingCodePool extends AbstractBudgetCategoryObjectPool
 		return allAccountingCodes;
 	}
 
+	@Override
+	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
+	{
+		return AccountingCode.createSchema();
+	}
 }

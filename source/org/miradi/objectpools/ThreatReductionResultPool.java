@@ -26,6 +26,8 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.ObjectManager;
+import org.miradi.project.Project;
+import org.miradi.schemas.BaseObjectSchema;
 
 public class ThreatReductionResultPool extends FactorPool
 {
@@ -48,5 +50,11 @@ public class ThreatReductionResultPool extends FactorPool
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId) throws Exception
 	{
 		return new ThreatReductionResult(objectManager ,new FactorId(actualId.asInt()));
+	}
+	
+	@Override
+	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
+	{
+		return ThreatReductionResult.createSchema();
 	}
 }

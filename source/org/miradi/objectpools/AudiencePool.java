@@ -26,7 +26,9 @@ import org.miradi.objects.Audience;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.OtherNotableSpecies;
 import org.miradi.project.ObjectManager;
+import org.miradi.project.Project;
 import org.miradi.schemas.AudienceSchema;
+import org.miradi.schemas.BaseObjectSchema;
 
 public class AudiencePool extends BaseObjectPool
 {
@@ -49,5 +51,11 @@ public class AudiencePool extends BaseObjectPool
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId)
 	{
 		return new Audience(objectManager, actualId);
+	}
+	
+	@Override
+	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
+	{
+		return Audience.createSchema();
 	}
 }

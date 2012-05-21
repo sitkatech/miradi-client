@@ -25,6 +25,8 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.RatingCriterion;
 import org.miradi.project.ObjectManager;
+import org.miradi.project.Project;
+import org.miradi.schemas.BaseObjectSchema;
 
 public class RatingCriterionPool extends BaseObjectPool
 {
@@ -38,5 +40,10 @@ public class RatingCriterionPool extends BaseObjectPool
 	{
 		return new RatingCriterion(objectManager, actualId);
 	}
-
+	
+	@Override
+	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
+	{
+		return RatingCriterion.createSchema();
+	}
 }

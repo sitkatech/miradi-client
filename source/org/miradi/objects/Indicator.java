@@ -55,7 +55,7 @@ public class Indicator extends BaseObject
 		super(objectManager, idToUse, createSchema());
 	}
 
-	private static IndicatorSchema createSchema()
+	public static IndicatorSchema createSchema()
 	{
 		return new IndicatorSchema();
 	}
