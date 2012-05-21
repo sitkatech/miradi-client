@@ -90,12 +90,17 @@ abstract public class AbstractXmlImporter
 		EAM.logVerbose("XML being imported:");
 		EAM.logVerbose(getXmlTextForDebugging(projectAsInputStream));
 		
-		if (!new WcsMiradiXmlValidator().isValid(projectAsInputStream))
+		if (!createXmlValidator().isValid(projectAsInputStream))
 		{
 			throw new ValidationException(EAM.text("File to import does not validate."));
 		}
 		
 		xPath = createXPath();
+	}
+
+	protected WcsMiradiXmlValidator createXmlValidator()
+	{
+		return new WcsMiradiXmlValidator();
 	}
 
 	protected String getNamespaceURI()
