@@ -27,7 +27,7 @@ public class MpfFileFilter extends GenericMiradiFileFilter
 	@Override
 	public String getDescription()
 	{
-		return EAM.text("FileFilter|Miradi (*" + getFileExtension() + ")");
+		return EAM.substitute(EAM.text("FileFilter|Miradi (*%s)"),getFileExtension());
 	}
 	
 	public String getFileExtension()
