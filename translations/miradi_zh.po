@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-18 12:49-0500\n"
+"POT-Creation-Date: 2012-05-21 13:18-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -3513,7 +3513,7 @@ msgstr ""
 msgid "File name must contain only alpha numeric and/or '_' characters."
 msgstr "文件名只能包含文字数字和/或'_'字符。 \t\t"
 
-#: Miradi/source/org/miradi/xml/AbstractXmlImporter.java:95
+#: Miradi/source/org/miradi/xml/AbstractXmlImporter.java:94
 #: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:198
 msgid "File to import does not validate."
 msgstr "要导入的文件不正确 \t\t"
@@ -4025,7 +4025,7 @@ msgstr ""
 msgid "Importing Miradi Data..."
 msgstr ""
 
-#: Miradi/source/org/miradi/xml/xmpz/XmpzXmlImporter.java:106
+#: Miradi/source/org/miradi/xml/xmpz/XmpzXmlImporter.java:108
 msgid "Importing XML..."
 msgstr ""
 
