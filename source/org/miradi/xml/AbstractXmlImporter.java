@@ -98,16 +98,6 @@ abstract public class AbstractXmlImporter
 		xPath = createXPath();
 	}
 
-	protected WcsMiradiXmlValidator createXmlValidator()
-	{
-		return new WcsMiradiXmlValidator();
-	}
-
-	protected String getNamespaceURI()
-	{
-		return getDocument().getDocumentElement().getNamespaceURI();
-	}
-
 	private String getXmlTextForDebugging(InputStreamWithSeek projectAsInputStream) throws Exception
 	{
 		UnicodeReader reader = new UnicodeReader(projectAsInputStream);
@@ -367,6 +357,10 @@ abstract public class AbstractXmlImporter
 	abstract protected String getPrefix();
 	
 	abstract protected NamespaceContext getNamespaceContext();
+	
+	abstract protected WcsMiradiXmlValidator createXmlValidator();
+
+	abstract protected String getNamespaceURI();
 
 	private Project project;
 	private XPath xPath;
