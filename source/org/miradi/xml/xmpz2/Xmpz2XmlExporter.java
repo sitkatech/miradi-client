@@ -87,7 +87,7 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 	@Override
 	public void exportProject(UnicodeWriter outToUse) throws Exception
 	{
-		out = new Xmpz2XmlWriter(getProject(), outToUse);
+		out = createWriter(outToUse);
 		fillTypeToExporterMap(getWriter());
 		getWriter().writeXmlHeader();
 		getWriter().writeMainElementStart();
@@ -97,6 +97,11 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 		exportExtraData();
 		exportQuarantinedFileContents();
 		getWriter().writeMainElementEnd();
+	}
+
+	protected Xmpz2XmlWriter createWriter(UnicodeWriter outToUse) throws Exception
+	{
+		return new Xmpz2XmlWriter(getProject(), outToUse);
 	}
 
 	private void exportProjectSummary() throws Exception
