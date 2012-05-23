@@ -27,6 +27,7 @@ import javax.xml.namespace.NamespaceContext;
 
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
+import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -34,6 +35,7 @@ import org.miradi.objectpools.BaseObjectPool;
 import org.miradi.objects.Dashboard;
 import org.miradi.objects.RatingCriterion;
 import org.miradi.project.Project;
+import org.miradi.questions.ChoiceQuestion;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.CauseSchema;
@@ -51,8 +53,10 @@ import org.miradi.schemas.TaskSchema;
 import org.miradi.schemas.TextBoxSchema;
 import org.miradi.schemas.ThreatReductionResultSchema;
 import org.miradi.schemas.ValueOptionSchema;
+import org.miradi.utils.CodeList;
 import org.miradi.xml.AbstractXmlImporter;
 import org.miradi.xml.MiradiXmlValidator;
+import org.miradi.xml.generic.XmlSchemaCreator;
 import org.miradi.xml.wcs.TagToElementNameMap;
 import org.miradi.xml.wcs.Xmpz2XmlValidator;
 import org.miradi.xml.wcs.XmpzXmlConstants;
@@ -173,6 +177,30 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements XmpzXmlCons
 		return importedRefs;
 	}
 	
+	public void importCodeListField(Node node, String elementContainerName, ORef destinationRef, String destinationTag) throws Exception
+	{
+		TagToElementNameMap map = new TagToElementNameMap();
+		String elementName = map.findElementName(elementContainerName, destinationTag);
+		String containerElementName = elementContainerName + elementName + XmpzXmlConstants.CONTAINER_ELEMENT_TAG;
+		CodeList codesToImport = getCodeList(node, containerElementName);
+		
+		setData(destinationRef, destinationTag, codesToImport.toString());
+	}
+
+	public CodeList getCodeList(Node node, String containerElementName) throws Exception
+	{
+		NodeList codeNodes = getNodes(node, new String[]{containerElementName, XmlSchemaCreator.CODE_ELEMENT_NAME});
+		CodeList codesToImport = new CodeList();
+		for (int index = 0; index < codeNodes.getLength(); ++index)
+		{
+			Node codeNode = codeNodes.item(index);
+			String code = getSafeNodeContent(codeNode);
+			codesToImport.add(code);
+		}
+		
+		return codesToImport;
+	}
+	
 	public int getObjectTypeOfNode(Node typedIdNode)
 	{
 		String nodeName = typedIdNode.getNodeName();
@@ -243,6 +271,25 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements XmpzXmlCons
 		return objectTypeName.equals(TASK);
 	}
 	
+	public void importBooleanField(Node node, ORef destinationRefToUse,	BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
+	{
+		Node booleanNode = getNode(node, baseObjectSchema.getXmpz2ElementName() + fieldSchema.getTag());
+		String isValue = BooleanData.BOOLEAN_FALSE;
+		if (booleanNode != null && isTrue(booleanNode.getTextContent()))
+			isValue = BooleanData.BOOLEAN_TRUE;
+
+		setData(destinationRefToUse, fieldSchema.getTag(), isValue);
+	}
+	
+	public void importChoiceField(Node node, String parentElementName, ORef destinationRefToUse, String tag, ChoiceQuestion question) throws Exception
+	{
+		Xmpz2TagToElementNameMap map = new Xmpz2TagToElementNameMap();
+		String choiceElementName = map.findElementName(parentElementName, tag);
+		String importedReadableCode = getPathData(node, new String[]{parentElementName + choiceElementName, });
+		String internalCode = question.convertToInternalCode(importedReadableCode);
+		importField(destinationRefToUse, tag, internalCode);
+	}
+
 	public void importStringField(Node node, String poolName, ORef destinationRef, String destinationTag) throws Exception
 	{
 		Xmpz2TagToElementNameMap map = new Xmpz2TagToElementNameMap();
