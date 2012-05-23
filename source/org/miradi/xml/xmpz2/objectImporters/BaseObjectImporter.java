@@ -20,8 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2.objectImporters;
 
+import org.miradi.ids.BaseId;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.schemas.AbstractFieldSchema;
@@ -36,7 +38,7 @@ import org.w3c.dom.NodeList;
 
 public class BaseObjectImporter implements XmpzXmlConstants
 {
-	public BaseObjectImporter(final Xmpz2XmlImporter importerToUse, final BaseObjectSchema baseObjectSchemaToUse)
+	public BaseObjectImporter(final Xmpz2XmlImporter importerToUse, BaseObjectSchema baseObjectSchemaToUse)
 	{
 		importer = importerToUse;
 		baseObjectSchema = baseObjectSchemaToUse; 
@@ -48,28 +50,27 @@ public class BaseObjectImporter implements XmpzXmlConstants
 		
 		for(AbstractFieldSchema fieldSchema : getBaseObjectSchema())
 		{
-			final String fieldTag = fieldSchema.getTag();
 			ObjectData objectData = fieldSchema.createField(baseObject);
-			if (objectData.isCodeListData())
-				importCodeListField(baseObjectNode, refToUse, fieldTag);
-			else
-				importField(baseObjectNode, refToUse, fieldTag);
+			if (objectData.isPseudoField())
+				continue;
+			
+			objectData.readAsXmpz2XmlData(importer, baseObjectNode, refToUse, baseObjectSchema, fieldSchema);
 		}
 	}
 	
-	protected void importField(Node node, ORef destinationRef, String destinationTag) throws Exception
+	public void importField(Node node, ORef destinationRef, String destinationTag) throws Exception
 	{
 		TagToElementNameMap map = new TagToElementNameMap();
 		String elementName = map.findElementName(getBaseObjectSchema().getXmpz2ElementName(), destinationTag);
 		getImporter().importField(node, getBaseObjectSchema().getXmpz2ElementName() + elementName, destinationRef, destinationTag);
 	}
 	
-	protected void importCodeListField(Node node, ORef destinationRef, String destinationTag) throws Exception
+	public void importCodeListField(Node node, ORef destinationRef, String destinationTag) throws Exception
 	{
 		importCodeListField(node, getPoolName(), destinationRef, destinationTag);
 	}
 	
-	protected void importCodeListField(Node node, String elementContainerName, ORef destinationRef, String destinationTag) throws Exception
+	public void importCodeListField(Node node, String elementContainerName, ORef destinationRef, String destinationTag) throws Exception
 	{
 		TagToElementNameMap map = new TagToElementNameMap();
 		String elementName = map.findElementName(elementContainerName, destinationTag);
@@ -79,7 +80,7 @@ public class BaseObjectImporter implements XmpzXmlConstants
 		getImporter().setData(destinationRef, destinationTag, codesToImport.toString());
 	}
 
-	protected CodeList getCodeList(Node node, String containerElementName) throws Exception
+	public CodeList getCodeList(Node node, String containerElementName) throws Exception
 	{
 		NodeList codeNodes = getImporter().getNodes(node, new String[]{containerElementName, XmlSchemaCreator.CODE_ELEMENT_NAME});
 		CodeList codesToImport = new CodeList();
@@ -92,6 +93,40 @@ public class BaseObjectImporter implements XmpzXmlConstants
 		return codesToImport;
 	}
 	
+	public void importIds(Node node, ORef destinationRef, String destinationTag, int idsType, String idElementName) throws Exception
+	{
+		ORefList importedRefs = extractRefs(node, destinationTag, idsType, idElementName + ID);
+		
+		getImporter().setData(destinationRef, destinationTag, importedRefs.convertToIdList(idsType));
+	}
+
+	public void importRefs(Node node, String elementName, ORef destinationRef, String destinationTag, int idsType, String idElementName) throws Exception
+	{
+		ORefList importedRefs = extractRefs(node, elementName, idsType, idElementName + ID);
+		
+		getImporter().setData(destinationRef, destinationTag, importedRefs);
+	}
+
+	protected ORefList extractRefs(Node node, String idsElementName, int idsType, String idElementName) throws Exception
+	{
+		TagToElementNameMap map = new TagToElementNameMap();
+		String elementName = map.findElementName(getPoolName(), idsElementName);
+		NodeList idNodes = getImporter().getNodes(node, new String[]{getPoolName() + elementName, idElementName});
+		ORefList importedRefs = new ORefList();
+		for (int index = 0; index < idNodes.getLength(); ++index)
+		{
+			Node idNode = idNodes.item(index);
+			String id = getImporter().getSafeNodeContent(idNode);
+			importedRefs.add(new ORef(idsType, new BaseId(id)));
+		}
+		
+		return importedRefs;
+	}
+	
+	public void postCreateFix(ORef ref, Node baseObjectNode) throws Exception
+	{
+	}
+	
 	protected String getPoolName()
 	{
 		return getBaseObjectSchema().getXmpz2ElementName();
@@ -102,7 +137,7 @@ public class BaseObjectImporter implements XmpzXmlConstants
 		return importer;
 	}
 	
-	protected BaseObjectSchema getBaseObjectSchema()
+	public BaseObjectSchema getBaseObjectSchema()
 	{
 		return baseObjectSchema;
 	}

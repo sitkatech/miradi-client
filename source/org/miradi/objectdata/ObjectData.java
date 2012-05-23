@@ -26,7 +26,9 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
+import org.w3c.dom.Node;
 
 
 abstract public class ObjectData
@@ -183,6 +185,11 @@ abstract public class ObjectData
 	public void writeAsXmpz2XmlData(Xmpz2XmlWriter writer, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
 		throw new RuntimeException("This method should not be called since the field is only used by TableSettings, which is not exported");
+	}
+	
+	public void readAsXmpz2XmlData(Xmpz2XmlImporter importer, Node node, ORef destinationRefToUse, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
+	{
+		throw new RuntimeException("This method should be overriden and must call back into the importer");
 	}
 	
 	private HashSet<String> dependencyTags;
