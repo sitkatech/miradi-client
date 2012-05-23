@@ -340,7 +340,7 @@ abstract public class AbstractXmlImporter
 		return xPath;
 	}
 	
-	protected Project getProject()
+	public Project getProject()
 	{
 		return project;
 	}
