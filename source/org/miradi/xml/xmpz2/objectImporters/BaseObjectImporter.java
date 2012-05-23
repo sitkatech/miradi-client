@@ -28,8 +28,6 @@ import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
-import org.miradi.utils.CodeList;
-import org.miradi.xml.generic.XmlSchemaCreator;
 import org.miradi.xml.wcs.TagToElementNameMap;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
@@ -64,35 +62,7 @@ public class BaseObjectImporter implements XmpzXmlConstants
 		String elementName = map.findElementName(getBaseObjectSchema().getXmpz2ElementName(), destinationTag);
 		getImporter().importField(node, getBaseObjectSchema().getXmpz2ElementName() + elementName, destinationRef, destinationTag);
 	}
-	
-	public void importCodeListField(Node node, ORef destinationRef, String destinationTag) throws Exception
-	{
-		importCodeListField(node, getPoolName(), destinationRef, destinationTag);
-	}
-	
-	public void importCodeListField(Node node, String elementContainerName, ORef destinationRef, String destinationTag) throws Exception
-	{
-		TagToElementNameMap map = new TagToElementNameMap();
-		String elementName = map.findElementName(elementContainerName, destinationTag);
-		String containerElementName = elementContainerName + elementName + XmpzXmlConstants.CONTAINER_ELEMENT_TAG;
-		CodeList codesToImport = getCodeList(node, containerElementName);
 		
-		getImporter().setData(destinationRef, destinationTag, codesToImport.toString());
-	}
-
-	public CodeList getCodeList(Node node, String containerElementName) throws Exception
-	{
-		NodeList codeNodes = getImporter().getNodes(node, new String[]{containerElementName, XmlSchemaCreator.CODE_ELEMENT_NAME});
-		CodeList codesToImport = new CodeList();
-		for (int index = 0; index < codeNodes.getLength(); ++index)
-		{
-			Node codeNode = codeNodes.item(index);
-			String code = getImporter().getSafeNodeContent(codeNode);
-			codesToImport.add(code);
-		}
-		return codesToImport;
-	}
-	
 	public void importIds(Node node, ORef destinationRef, String destinationTag, int idsType, String idElementName) throws Exception
 	{
 		ORefList importedRefs = extractRefs(node, destinationTag, idsType, idElementName + ID);

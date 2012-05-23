@@ -19,10 +19,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objectdata;
 
+import org.miradi.objecthelpers.ORef;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
+import org.w3c.dom.Node;
 
 
 public class ChoiceData extends StringData
@@ -50,6 +53,12 @@ public class ChoiceData extends StringData
 	public void writeAsXmpz2XmlData(Xmpz2XmlWriter writer, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
 		writer.writeChoiceData(baseObjectSchema, fieldSchema, this);
+	}
+	
+	@Override
+	public void readAsXmpz2XmlData(Xmpz2XmlImporter importer, Node node, ORef destinationRefToUse, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
+	{
+		importer.importChoiceField(node, baseObjectSchema.getXmpz2ElementName(), destinationRefToUse, fieldSchema.getTag(), getChoiceQuestion());
 	}
 
 	private ChoiceQuestion question;

@@ -169,7 +169,7 @@ abstract public class AbstractXmlImporter
 		return getXPath().evaluate(generatedPath, node);
 	}
 
-	private void importField(ORef ref, String destinationTag, String data)	throws Exception
+	public void importField(ORef ref, String destinationTag, String data)	throws Exception
 	{
 		setData(ref, destinationTag, data);
 	}
