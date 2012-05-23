@@ -37,6 +37,7 @@ import org.miradi.xml.wcs.Xmpz2XmlValidator;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.miradi.xml.xmpz.XmpzNameSpaceContext;
 import org.miradi.xml.xmpz2.objectImporters.BaseObjectImporter;
+import org.miradi.xml.xmpz2.objectImporters.Xmpz2ExtraDataImporter;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -51,6 +52,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements XmpzXmlCons
 	protected void importXml() throws Exception
 	{
 		importPools();
+		importExtraData();
 	}
 	
 	private void importPools() throws Exception
@@ -103,6 +105,11 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements XmpzXmlCons
 			final BaseObjectImporter baseObjectImporter = new BaseObjectImporter(this, baseObjectSchema);
 			baseObjectImporter.importFields(baseObjectNode, ref); 
 		}
+	}
+	
+	private void importExtraData() throws Exception
+	{
+		new Xmpz2ExtraDataImporter(this).importFields(null, null);
 	}
 
 	@Override
