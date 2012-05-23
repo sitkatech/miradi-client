@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j 2ee-hudson\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-21 16:01-0500\n"
+"POT-Creation-Date: 2012-05-23 15:50-0500\n"
 "PO-Revision-Date: 2011-05-12 10:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Language UK\n"
@@ -3663,7 +3663,7 @@ msgstr "Файли існують: Не можна перезаписати не
 msgid "File name must contain only alpha numeric and/or '_' characters."
 msgstr "Назва файла має містити тільки альфа цифрові і або  '_' символи."
 
-#: Miradi/source/org/miradi/xml/AbstractXmlImporter.java:94
+#: Miradi/source/org/miradi/xml/AbstractXmlImporter.java:96
 #: Miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:198
 msgid "File to import does not validate."
 msgstr "Файл для імпорту відсутній"
