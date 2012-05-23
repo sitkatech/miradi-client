@@ -20,10 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objectdata;
 
 import org.martus.util.MultiCalendar;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.utils.InvalidDateException;
+import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
+import org.w3c.dom.Node;
 
 public class DateData extends ObjectData
 {
@@ -85,6 +88,12 @@ public class DateData extends ObjectData
 	public void writeAsXmpz2XmlData(Xmpz2XmlWriter writer, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
 		writer.writeDateData(baseObjectSchema, fieldSchema, get());
+	}
+	
+	@Override
+	public void readAsXmpz2XmlData(Xmpz2XmlImporter importer, Node node, ORef destinationRefToUse, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
+	{
+		importer.importDateField(node, destinationRefToUse, baseObjectSchema, fieldSchema);
 	}
 	
 	private MultiCalendar date;
