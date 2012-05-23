@@ -20,23 +20,46 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2;
 
+import java.util.Collection;
+import java.util.LinkedHashMap;
+
 import javax.xml.namespace.NamespaceContext;
 
 import org.miradi.ids.BaseId;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.BaseObjectPool;
 import org.miradi.objects.Dashboard;
 import org.miradi.objects.RatingCriterion;
 import org.miradi.project.Project;
+import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.schemas.CauseSchema;
+import org.miradi.schemas.DiagramFactorSchema;
+import org.miradi.schemas.DiagramLinkSchema;
+import org.miradi.schemas.GroupBoxSchema;
+import org.miradi.schemas.HumanWelfareTargetSchema;
+import org.miradi.schemas.IntermediateResultSchema;
+import org.miradi.schemas.ProgressPercentSchema;
+import org.miradi.schemas.ScopeBoxSchema;
+import org.miradi.schemas.StrategySchema;
+import org.miradi.schemas.StressSchema;
+import org.miradi.schemas.TargetSchema;
+import org.miradi.schemas.TaskSchema;
+import org.miradi.schemas.TextBoxSchema;
+import org.miradi.schemas.ThreatReductionResultSchema;
 import org.miradi.schemas.ValueOptionSchema;
 import org.miradi.xml.AbstractXmlImporter;
 import org.miradi.xml.MiradiXmlValidator;
+import org.miradi.xml.wcs.TagToElementNameMap;
 import org.miradi.xml.wcs.Xmpz2XmlValidator;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.miradi.xml.xmpz.XmpzNameSpaceContext;
 import org.miradi.xml.xmpz2.objectImporters.BaseObjectImporter;
+import org.miradi.xml.xmpz2.objectImporters.DiagramFactorImporter;
+import org.miradi.xml.xmpz2.objectImporters.DiagramLinkImporter;
 import org.miradi.xml.xmpz2.objectImporters.Xmpz2ExtraDataImporter;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -51,12 +74,17 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements XmpzXmlCons
 	@Override
 	protected void importXml() throws Exception
 	{
-		importPools();
+		LinkedHashMap<Integer, BaseObjectImporter> typeToImporterMap = fillTypeToImporterMap();
+		importPools(typeToImporterMap);
 		importExtraData();
 	}
 	
-	private void importPools() throws Exception
+	private LinkedHashMap<Integer, BaseObjectImporter> fillTypeToImporterMap()
 	{
+		LinkedHashMap<Integer, BaseObjectImporter> typeToImporterMap = new LinkedHashMap<Integer, BaseObjectImporter>();
+		typeToImporterMap.put(DiagramFactorSchema.getObjectType(), new DiagramFactorImporter(this, new DiagramFactorSchema()));
+		typeToImporterMap.put(DiagramLinkSchema.getObjectType(), new DiagramLinkImporter(this, new DiagramLinkSchema()));
+		
 		for(int objectType = ObjectType.FIRST_OBJECT_TYPE; objectType < ObjectType.OBJECT_TYPE_COUNT; ++objectType)
 		{
 			if (isCustomImport(objectType))
@@ -66,9 +94,22 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements XmpzXmlCons
 			if (pool == null)
 				continue;
 			
-			BaseObjectSchema baseObjectSchema = pool.createBaseObjectSchema(getProject());
+			if (typeToImporterMap.containsKey(objectType))
+				continue;
 			
-			importBaseObjects(baseObjectSchema);
+			BaseObjectSchema baseObjectSchema = pool.createBaseObjectSchema(getProject());
+			typeToImporterMap.put(objectType, new BaseObjectImporter(this, baseObjectSchema));
+		}
+		
+		return typeToImporterMap;
+	}
+
+	private void importPools(LinkedHashMap<Integer, BaseObjectImporter> typeToImporterMap) throws Exception
+	{
+		Collection<BaseObjectImporter> importers = typeToImporterMap.values();
+		for(BaseObjectImporter importer : importers)
+		{
+			importBaseObjects(importer);
 		}
 	}
 
@@ -86,9 +127,9 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements XmpzXmlCons
 		return false;
 	}
 
-	private void importBaseObjects(final BaseObjectSchema baseObjectSchema) throws Exception
+	private void importBaseObjects(final BaseObjectImporter importer) throws Exception
 	{
-		final String elementObjectName = baseObjectSchema.getXmpz2ElementName();
+		final String elementObjectName = importer.getBaseObjectSchema().getXmpz2ElementName();
 		final String containerElementName = elementObjectName + XmpzXmlConstants.POOL_ELEMENT_TAG;
 		final Node rootNode = getRootNode();
 		final NodeList baseObjectNodes = getNodes(rootNode, new String[]{containerElementName, elementObjectName, });
@@ -96,15 +137,117 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements XmpzXmlCons
 		{
 			Node baseObjectNode = baseObjectNodes.item(index);
 			String intIdAsString = getAttributeValue(baseObjectNode, XmpzXmlConstants.ID);
-			ORef ref = getProject().createObject(baseObjectSchema.getType(), new BaseId(intIdAsString));
+			ORef ref = getProject().createObject(importer.getBaseObjectSchema().getType(), new BaseId(intIdAsString));
 			
-			//FIXME urgent - this loop is still under construction, but postCreateFix needs to be uncommented and 
-			//needs to hook DF to its F and DL to FL.  See xmpz1 for pattern.
-			//postCreateFix(ref, baseObjectNode);
-			
-			final BaseObjectImporter baseObjectImporter = new BaseObjectImporter(this, baseObjectSchema);
-			baseObjectImporter.importFields(baseObjectNode, ref); 
+			importer.importFields(baseObjectNode, ref);
+			importer.postCreateFix(ref, baseObjectNode);
 		}
+	}
+
+	public void importRefs(Node node, ORef destinationRef, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String reflistTypeName) throws Exception
+	{
+		importRefs(node, baseObjectSchema.getXmpz2ElementName(), fieldSchema, destinationRef, reflistTypeName);
+	}
+	
+	public void importRefs(Node node, String poolName, AbstractFieldSchema fieldSchema, ORef destinationRef, String idElementName) throws Exception
+	{
+		ORefList importedRefs = extractRefs(node, poolName, fieldSchema.getTag(), idElementName + ID);
+		
+		setData(destinationRef, fieldSchema.getTag(), importedRefs);
+	}
+
+	protected ORefList extractRefs(Node node, String poolName, String idsElementName, String idElementName) throws Exception
+	{
+		TagToElementNameMap map = new TagToElementNameMap();
+		String elementName = map.findElementName(poolName, idsElementName);
+		NodeList idNodes = getNodes(node, new String[]{poolName + elementName, idElementName});
+		ORefList importedRefs = new ORefList();
+		for (int index = 0; index < idNodes.getLength(); ++index)
+		{
+			Node idNode = idNodes.item(index);
+			String id = getSafeNodeContent(idNode);
+			int idsType = getObjectTypeOfNode(idNode);
+			importedRefs.add(new ORef(idsType, new BaseId(id)));
+		}
+		
+		return importedRefs;
+	}
+	
+	public int getObjectTypeOfNode(Node typedIdNode)
+	{
+		String nodeName = typedIdNode.getNodeName();
+		String objectTypeNameWithNamespace = removeAppendedId(nodeName);
+		String objectTypeName = removeNamepsacePrefix(objectTypeNameWithNamespace);
+		
+		if (objectTypeName.equals(SCOPE_BOX))
+			return ScopeBoxSchema.getObjectType();
+		
+		if (objectTypeName.equals(BIODIVERSITY_TARGET))
+			return TargetSchema.getObjectType();
+		
+		if (objectTypeName.equals(HUMAN_WELFARE_TARGET))
+			return HumanWelfareTargetSchema.getObjectType();
+		
+		if (objectTypeName.equals(CAUSE) || objectTypeName.equals(THREAT))
+			return CauseSchema.getObjectType();
+		
+		if (objectTypeName.equals(STRATEGY))
+			return StrategySchema.getObjectType();
+		
+		if (objectTypeName.equals(INTERMEDIATE_RESULTS))
+			return IntermediateResultSchema.getObjectType();
+		
+		if (objectTypeName.equals(THREAT_REDUCTION_RESULTS))
+			return ThreatReductionResultSchema.getObjectType();
+		
+		if (objectTypeName.equals(TEXT_BOX))
+			return TextBoxSchema.getObjectType();
+		
+		if (objectTypeName.equals(GROUP_BOX))
+			return GroupBoxSchema.getObjectType();
+		
+		if (isTask(objectTypeName))
+			return TaskSchema.getObjectType();
+		
+		if (objectTypeName.equals(STRESS))
+			return StressSchema.getObjectType();
+		
+		if (objectTypeName.equals(PROGRESS_PERCENT))
+			return ProgressPercentSchema.getObjectType();
+		
+		if (objectTypeName.equals(BIODIVERSITY_TARGET))
+			return TargetSchema.getObjectType();
+		
+		EAM.logError("Could not find type for node: " + objectTypeName);
+		return ObjectType.FAKE;
+	}
+	
+	private String removeNamepsacePrefix(String objectTypeNameWithNamespace)
+	{
+		return objectTypeNameWithNamespace.replaceFirst(getPrefix(), "");
+	}
+
+	private static String removeAppendedId(String nodeName)
+	{
+		return nodeName.replaceFirst(ID, "");
+	}
+	
+	private static boolean isTask(String objectTypeName)
+	{
+		if (objectTypeName.equals(TaskSchema.ACTIVITY_NAME))
+			return true;
+		
+		if (objectTypeName.equals(TaskSchema.METHOD_NAME))
+			return true;
+		
+		return objectTypeName.equals(TASK);
+	}
+	
+	public void importStringField(Node node, String poolName, ORef destinationRef, String destinationTag) throws Exception
+	{
+		Xmpz2TagToElementNameMap map = new Xmpz2TagToElementNameMap();
+		String elementName = map.findElementName(poolName, destinationTag);
+		importField(node, poolName + elementName, destinationRef, destinationTag);
 	}
 	
 	private void importExtraData() throws Exception

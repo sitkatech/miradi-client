@@ -189,7 +189,7 @@ abstract public class AbstractXmlImporter
 		getProject().setObjectData(ref, tag, refList.toString());
 	}
 	
-	protected void setData(ORef ref, String tag, IdList idList) throws Exception
+	public void setData(ORef ref, String tag, IdList idList) throws Exception
 	{
 		getProject().setObjectData(ref, tag, idList.toString());
 	}
