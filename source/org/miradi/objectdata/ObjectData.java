@@ -189,7 +189,7 @@ abstract public class ObjectData
 	
 	public void readAsXmpz2XmlData(Xmpz2XmlImporter importer, Node node, ORef destinationRefToUse, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		throw new RuntimeException("This method should be overriden and must call back into the importer");
+		throw new RuntimeException("This method should be overriden and must call back into the importer.  Class needing to override = " +  getClass().getSimpleName());
 	}
 	
 	private HashSet<String> dependencyTags;
