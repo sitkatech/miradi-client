@@ -23,10 +23,14 @@ import java.text.ParseException;
 
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.schemas.FieldSchemaIdList;
+import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
+import org.w3c.dom.Node;
 
 public class IdListData extends ObjectData
 {
@@ -115,6 +119,12 @@ public class IdListData extends ObjectData
 	public void writeAsXmpz2XmlData(Xmpz2XmlWriter writer, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
 		writer.writeIdListData(baseObjectSchema, fieldSchema, getRefList());
+	}
+	
+	@Override
+	public void readAsXmpz2XmlData(Xmpz2XmlImporter importer, Node node, ORef destinationRefToUse, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
+	{
+		importer.importRefs(node, destinationRefToUse, baseObjectSchema, fieldSchema, ((FieldSchemaIdList)fieldSchema).getIdListType());
 	}
 	
 	private IdList ids;
