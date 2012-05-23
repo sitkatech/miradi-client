@@ -20,27 +20,48 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2.objectImporters;
 
+import org.miradi.objecthelpers.ORef;
+import org.miradi.schemas.AbstractFieldSchema;
+import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.xml.wcs.TagToElementNameMap;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
+import org.w3c.dom.Node;
 
 public class BaseObjectImporter implements XmpzXmlConstants
 {
-	public BaseObjectImporter(final Xmpz2XmlImporter importerToUse, final int objectTypeToUse)
+	public BaseObjectImporter(final Xmpz2XmlImporter importerToUse, final BaseObjectSchema baseObjectSchemaToUse)
 	{
 		importer = importerToUse;
-		objectType = objectTypeToUse; 
+		baseObjectSchema = baseObjectSchemaToUse; 
 	}
 	
+	public void importFields(Node baseObjectNode, ORef refToUse) throws Exception
+	{
+		for(AbstractFieldSchema fieldSchema : getBaseObjectSchema())
+		{
+			final String fieldTag = fieldSchema.getTag();
+			importField(baseObjectNode, refToUse, fieldTag);
+		}
+	}
+	
+	protected void importField(Node node, ORef destinationRef, String destinationTag) throws Exception
+	{
+		TagToElementNameMap map = new TagToElementNameMap();
+		String elementName = map.findElementName(getBaseObjectSchema().getXmpz2ElementName(), destinationTag);
+		getImporter().importField(node, getBaseObjectSchema().getXmpz2ElementName() + elementName, destinationRef, destinationTag);
+	}
+
 	protected Xmpz2XmlImporter getImporter()
 	{
 		return importer;
 	}
 	
-	protected int getObjectType()
+	protected BaseObjectSchema getBaseObjectSchema()
 	{
-		return objectType;
+		return baseObjectSchema;
 	}
 	
 	private Xmpz2XmlImporter importer;
-	private int objectType;
+	private BaseObjectSchema baseObjectSchema;
 }

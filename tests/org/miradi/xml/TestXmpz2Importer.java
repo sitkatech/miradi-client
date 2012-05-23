@@ -22,37 +22,26 @@ package org.miradi.xml;
 
 import org.martus.util.UnicodeStringWriter;
 import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
-import org.miradi.main.MiradiTestCase;
+import org.miradi.main.TestCaseWithProject;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.xml.xmpz2.Xmpz2XmlExporter;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 
-public class TestXmpz2Importer extends MiradiTestCase
+public class TestXmpz2Importer extends TestCaseWithProject
 {
 	public TestXmpz2Importer(String name)
 	{
 		super(name);
 	}
 	
-	@Override
-	public void setUp() throws Exception
-	{
-		super.setUp();
-		
-		project = ProjectForTesting.createProjectWithoutDefaultObjects(getName());
-	}
-
-	@Override
-	public void tearDown() throws Exception
-	{
-		project.close();
-		project = null;
-		
-		super.tearDown();
-	}
-	
 	public void testImportEmptyProject() throws Exception
 	{
+		validateUsingStringWriter();
+	}
+	
+	public void testImportFilledProject() throws Exception
+	{
+		getProject().createAndPopulateProjectResource();
 		validateUsingStringWriter();
 	}
 	
@@ -89,11 +78,4 @@ public class TestXmpz2Importer extends MiradiTestCase
 		
 		return writer;
 	}
-	
-	private ProjectForTesting getProject()
-	{
-		return project;
-	}
-	
-	private ProjectForTesting project;
 }

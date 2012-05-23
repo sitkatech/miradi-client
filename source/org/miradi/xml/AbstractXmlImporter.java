@@ -138,7 +138,7 @@ abstract public class AbstractXmlImporter
 		return thisXPath;
 	}
 
-	protected void importField(Node node, String path, ORef ref, String destinationTag) throws Exception
+	public void importField(Node node, String path, ORef ref, String destinationTag) throws Exception
 	{
 		importField(node, new String[]{path,}, ref, destinationTag);
 	}

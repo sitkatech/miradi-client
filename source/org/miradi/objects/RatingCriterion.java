@@ -49,4 +49,9 @@ public class RatingCriterion extends BaseObject
 
 		return json;
 	}
+	
+	public static boolean is(final int onbjectType)
+	{
+		return RatingCriterionSchema.getObjectType() == onbjectType;
+	}
 }
