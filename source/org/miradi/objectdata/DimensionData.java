@@ -21,10 +21,13 @@ package org.miradi.objectdata;
 
 import java.awt.Dimension;
 
+import org.miradi.objecthelpers.ORef;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
+import org.w3c.dom.Node;
 
 public class DimensionData extends ObjectData
 {
@@ -92,6 +95,12 @@ public class DimensionData extends ObjectData
 	public void writeAsXmpz2XmlData(Xmpz2XmlWriter writer, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
 		writer.writeDimensionData(baseObjectSchema, fieldSchema, getDimension());
+	}
+	
+	@Override
+	public void readAsXmpz2XmlData(Xmpz2XmlImporter importer, Node node, ORef destinationRefToUse, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
+	{
+		importer.importDimensionField(node, destinationRefToUse, baseObjectSchema, fieldSchema);
 	}
 	
 	Dimension dimension;

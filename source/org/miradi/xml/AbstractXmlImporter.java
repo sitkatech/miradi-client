@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.xml;
 
+import java.awt.Point;
 import java.util.Vector;
 
 import javax.xml.namespace.NamespaceContext;
@@ -45,6 +46,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.XmlUtilities2;
+import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
@@ -155,6 +157,21 @@ abstract public class AbstractXmlImporter
 		String importedReadableCode = getPathData(node, new String[]{elementName, });
 		String internalCode = question.convertToInternalCode(importedReadableCode);		
 		importField(destinationRef, destinationTag, internalCode);
+	}
+	
+	protected Point extractPointFromNode(Node pointNode) throws Exception
+	{
+		Node xNode = getNode(pointNode, XmpzXmlConstants.X_ELEMENT_NAME);
+		Node yNode = getNode(pointNode, XmpzXmlConstants.Y_ELEMENT_NAME);
+		int x = extractNodeTextContentAsInt(xNode);
+		int y = extractNodeTextContentAsInt(yNode);
+		
+		return new Point(x, y);
+	}
+	
+	protected int extractNodeTextContentAsInt(Node node) throws Exception
+	{
+		return Integer.parseInt(node.getTextContent());
 	}
 
 	public String getPathData(Node node, String element) throws XPathExpressionException

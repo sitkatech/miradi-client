@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2;
 
+import java.awt.Dimension;
+import java.awt.Point;
 import java.util.Collection;
 import java.util.LinkedHashMap;
 
@@ -33,6 +35,8 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.BaseObjectPool;
 import org.miradi.objects.Dashboard;
+import org.miradi.objects.DiagramFactor;
+import org.miradi.objects.DiagramLink;
 import org.miradi.objects.RatingCriterion;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
@@ -54,6 +58,8 @@ import org.miradi.schemas.TextBoxSchema;
 import org.miradi.schemas.ThreatReductionResultSchema;
 import org.miradi.schemas.ValueOptionSchema;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.utils.PointList;
 import org.miradi.xml.AbstractXmlImporter;
 import org.miradi.xml.MiradiXmlValidator;
 import org.miradi.xml.generic.XmlSchemaCreator;
@@ -325,6 +331,72 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements XmpzXmlCons
 		importField(node, poolName + elementName, destinationRef, destinationTag);
 	}
 	
+	public void importDimensionField(Node node, ORef destinationRef, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
+	{
+		Node diagramFactorSizeNode = getNode(node, baseObjectSchema.getXmpz2ElementName() + SIZE);
+		Node sizNode = getNode(diagramFactorSizeNode, DIAGRAM_SIZE_ELEMENT_NAME);
+		Node widthNode = getNode(sizNode, WIDTH_ELEMENT_NAME);
+		Node heightNode = getNode(sizNode, HEIGHT_ELEMENT_NAME);
+		int width = extractNodeTextContentAsInt(widthNode);
+		int height = extractNodeTextContentAsInt(heightNode);
+		String dimensionAsString = EnhancedJsonObject.convertFromDimension(new Dimension(width, height));
+		setData(destinationRef, DiagramFactor.TAG_SIZE, dimensionAsString);
+	}
+	
+	public void importDiagramPointField(Node node, ORef destinationRef, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
+	{
+		Node locationNode = getNode(node, baseObjectSchema.getXmpz2ElementName() + LOCATION);
+		Node pointNode = getNode(locationNode, DIAGRAM_POINT_ELEMENT_NAME);
+		Point point = extractPointFromNode(pointNode);
+		String pointAsString = EnhancedJsonObject.convertFromPoint(point);
+		setData(destinationRef, DiagramFactor.TAG_LOCATION, pointAsString);
+	}
+	
+	public void importRefField(Node node, ORef destinationRefToUse,	BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
+	{
+		ORef refToImport = getRefToImport(node, baseObjectSchema.getXmpz2ElementName(), fieldSchema.getTag());
+		if (refToImport.isValid())
+			setData(destinationRefToUse, fieldSchema.getTag(), refToImport.toString());
+	}
+	
+	public void importIdField(Node node, ORef destinationRefToUse, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
+	{
+		ORef refToImport = getRefToImport(node, baseObjectSchema.getXmpz2ElementName(), fieldSchema.getTag());
+		setData(destinationRefToUse, fieldSchema.getTag(), refToImport.getObjectId().toString());
+	}
+
+	private ORef getRefToImport(Node node, String poolName, String idElementName) throws Exception
+	{
+		String element = poolName + idElementName + XmpzXmlConstants.ID;
+		Node idNode = getNode(node, element);
+		if (idNode == null)
+			return ORef.INVALID;
+
+		//TODO this code was copied, make sure FIXME still applies
+		//FIXME low: We don not understand where a new line is coming from.  
+		//Due to lack of source and debugging capabilies, the string is trimmed.
+		//Need to understand where the new line is coming from and remove the trim.
+		String trimmedIdAsString = idNode.getTextContent().trim();
+		BaseId baseObjectIdToImport = new BaseId(trimmedIdAsString);
+		
+		return new ORef(getObjectTypeOfNode(idNode), baseObjectIdToImport);
+	}
+	
+	public void importPointListField(Node node, ORef destinationRef, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
+	{
+		Node bendPointsNode = getNode(node, baseObjectSchema.getXmpz2ElementName() + BEND_POINTS_ELEMENT_NAME);
+		NodeList bendPointNodes = getNodes(bendPointsNode, new String[]{DIAGRAM_POINT_ELEMENT_NAME, });
+		PointList bendPoints = new PointList();
+		for (int index = 0; index < bendPointNodes.getLength(); ++index)
+		{
+			Node bendPointNode = bendPointNodes.item(index);
+			Point bendPoint = extractPointFromNode(bendPointNode);
+			bendPoints.add(bendPoint);
+		}
+
+		setData(destinationRef, DiagramLink.TAG_BEND_POINTS, bendPoints.toString());
+	}
+
 	private void importExtraData() throws Exception
 	{
 		new Xmpz2ExtraDataImporter(this).importFields(null, null);

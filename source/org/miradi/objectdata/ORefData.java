@@ -24,7 +24,9 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
+import org.w3c.dom.Node;
 
 public class ORefData extends ObjectData
 {
@@ -102,6 +104,12 @@ public class ORefData extends ObjectData
 	public void writeAsXmpz2XmlData(Xmpz2XmlWriter writer, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
 		writer.writeRefDataIfValid(baseObjectSchema, fieldSchema, ref);
+	}
+	
+	@Override
+	public void readAsXmpz2XmlData(Xmpz2XmlImporter importer, Node node, ORef destinationRefToUse, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
+	{
+		importer.importRefField(node, destinationRefToUse, baseObjectSchema, fieldSchema);
 	}
 
 	ORef ref;
