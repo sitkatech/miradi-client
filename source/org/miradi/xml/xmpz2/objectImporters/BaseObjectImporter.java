@@ -51,11 +51,19 @@ public class BaseObjectImporter implements XmpzXmlConstants
 			ObjectData objectData = fieldSchema.createField(baseObject);
 			if (objectData.isPseudoField())
 				continue;
+
+			if (isCustomImportField(fieldSchema.getTag()))
+				continue;
 			
 			objectData.readAsXmpz2XmlData(importer, baseObjectNode, refToUse, baseObjectSchema, fieldSchema);
 		}
 	}
 	
+	protected boolean isCustomImportField(String tag)
+	{
+		return false;
+	}
+
 	public void importField(Node node, ORef destinationRef, String destinationTag) throws Exception
 	{
 		TagToElementNameMap map = new TagToElementNameMap();
