@@ -22,10 +22,13 @@ package org.miradi.objectdata;
 import java.awt.Point;
 import java.util.List;
 
+import org.miradi.objecthelpers.ORef;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.utils.PointList;
+import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
+import org.w3c.dom.Node;
 
 public class PointListData extends ObjectData
 {
@@ -102,6 +105,12 @@ public class PointListData extends ObjectData
 	public void writeAsXmpz2XmlData(Xmpz2XmlWriter writer, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
 		writer.writeBendPointListData(baseObjectSchema, fieldSchema, points);
+	}
+	
+	@Override
+	public void readAsXmpz2XmlData(Xmpz2XmlImporter importer, Node node, ORef destinationRefToUse, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
+	{
+		importer.importPointListField(node, destinationRefToUse, baseObjectSchema, fieldSchema);
 	}
 	
 	PointList points;
