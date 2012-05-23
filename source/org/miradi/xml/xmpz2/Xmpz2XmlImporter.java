@@ -22,13 +22,23 @@ package org.miradi.xml.xmpz2;
 
 import javax.xml.namespace.NamespaceContext;
 
+import org.miradi.ids.BaseId;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objectpools.BaseObjectPool;
+import org.miradi.objects.Dashboard;
+import org.miradi.objects.RatingCriterion;
 import org.miradi.project.Project;
+import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.schemas.ValueOptionSchema;
 import org.miradi.xml.AbstractXmlImporter;
 import org.miradi.xml.MiradiXmlValidator;
 import org.miradi.xml.wcs.Xmpz2XmlValidator;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.miradi.xml.xmpz.XmpzNameSpaceContext;
+import org.miradi.xml.xmpz2.objectImporters.BaseObjectImporter;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 public class Xmpz2XmlImporter extends AbstractXmlImporter implements XmpzXmlConstants
 {
@@ -47,21 +57,52 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements XmpzXmlCons
 	{
 		for(int objectType = ObjectType.FIRST_OBJECT_TYPE; objectType < ObjectType.OBJECT_TYPE_COUNT; ++objectType)
 		{
-			importBaseObjects(objectType);
+			if (isCustomImport(objectType))
+				continue;
+			
+			BaseObjectPool pool = (BaseObjectPool) getProject().getPool(objectType);
+			if (pool == null)
+				continue;
+			
+			BaseObjectSchema baseObjectSchema = pool.createBaseObjectSchema(getProject());
+			
+			importBaseObjects(baseObjectSchema);
 		}
 	}
 
-	private void importBaseObjects(final int objectType) throws Exception
+	private boolean isCustomImport(int objectType)
 	{
-		//FIXME urgent - uncomment and make work
-//		final BaseObjectImporter baseObjectImporter = new BaseObjectImporter(this, objectType);
-//		final String containerName = baseObjectImporter.getExporterContainerName(objectType);
-//		final String poolName = getWriter().createPoolElementName(containerName);
-//		for(ORef ref : sortedRefList)
-//		{
-//			BaseObject baseObject = BaseObject.find(getProject(), ref);
-//			baseObjectImporter.writeBaseObjectDataSchemaElement(baseObject);
-//		}
+		if (RatingCriterion.is(objectType))
+			return true;
+		
+		if (ValueOptionSchema.getObjectType() == objectType)
+			return true;
+		
+		if (Dashboard.is(objectType))
+			return true;
+		
+		return false;
+	}
+
+	private void importBaseObjects(final BaseObjectSchema baseObjectSchema) throws Exception
+	{
+		final String elementObjectName = baseObjectSchema.getXmpz2ElementName();
+		final String containerElementName = elementObjectName + XmpzXmlConstants.POOL_ELEMENT_TAG;
+		final Node rootNode = getRootNode();
+		final NodeList baseObjectNodes = getNodes(rootNode, new String[]{containerElementName, elementObjectName, });
+		for (int index = 0; index < baseObjectNodes.getLength(); ++index)
+		{
+			Node baseObjectNode = baseObjectNodes.item(index);
+			String intIdAsString = getAttributeValue(baseObjectNode, XmpzXmlConstants.ID);
+			ORef ref = getProject().createObject(baseObjectSchema.getType(), new BaseId(intIdAsString));
+			
+			//FIXME urgent - this loop is still under construction, but postCreateFix needs to be uncommented and 
+			//needs to hook DF to its F and DL to FL.  See xmpz1 for pattern.
+			//postCreateFix(ref, baseObjectNode);
+			
+			final BaseObjectImporter baseObjectImporter = new BaseObjectImporter(this, baseObjectSchema);
+			baseObjectImporter.importFields(baseObjectNode, ref); 
+		}
 	}
 
 	@Override

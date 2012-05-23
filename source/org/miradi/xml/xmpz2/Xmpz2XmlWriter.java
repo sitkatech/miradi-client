@@ -334,7 +334,7 @@ public class Xmpz2XmlWriter implements XmpzXmlConstants
 	
 	public void writeMainElementStart() throws Exception
 	{
-		write("<" + CONSERVATION_PROJECT + " " + "xmlns:miradi" + "=\"" + NAME_SPACE + "\">");
+		write("<miradi:" + CONSERVATION_PROJECT + " " + "xmlns:miradi" + "=\"" + NAME_SPACE + "\">");
 		writeln();
 	}
 	
@@ -390,7 +390,7 @@ public class Xmpz2XmlWriter implements XmpzXmlConstants
 	
 	public void writeMainElementEnd() throws Exception
 	{
-		write("</" + CONSERVATION_PROJECT + ">");
+		write("</miradi:" + CONSERVATION_PROJECT + ">");
 		writeln();
 	}
 	

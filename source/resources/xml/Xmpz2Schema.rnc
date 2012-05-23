@@ -1,6 +1,6 @@
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/73'
 start = ConservationProject.element
-ConservationProject.element = element ConservationProject
+ConservationProject.element = element miradi:ConservationProject
 {
   ProjectSummary.element &
   ProjectSummaryScope.element &
