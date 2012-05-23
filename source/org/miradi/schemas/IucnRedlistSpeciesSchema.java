@@ -47,5 +47,11 @@ public class IucnRedlistSpeciesSchema extends BaseObjectSchema
 		return OBJECT_NAME;
 	}
 	
+	@Override
+	public String getXmpz2ElementName()
+	{
+		return IUCN_REDLIST_SPECIES;
+	}
+	
 	public static final String OBJECT_NAME = "IucnRedlistSpecies";
 }
