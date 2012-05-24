@@ -53,7 +53,6 @@ public class DiagramLinkImporter extends BaseObjectImporter
 		ORef toDiagramFactorRef = new ORef(DiagramFactorSchema.getObjectType(), toId);
 		DiagramFactor fromDiagramFactor = DiagramFactor.find(getProject(), fromDiagramFactorRef);
 		DiagramFactor toDiagramFactor = DiagramFactor.find(getProject(), toDiagramFactorRef);
-		System.out.println("SIZE= " + getProject().getDiagramFactorPool().size());
 		ORef factorLinkRef = new ORef(ObjectType.FAKE, BaseId.INVALID);
 		if (!fromDiagramFactor.isGroupBoxFactor() && !toDiagramFactor.isGroupBoxFactor())
 		{
