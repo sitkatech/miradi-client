@@ -124,7 +124,7 @@ public class IdListData extends ObjectData
 	@Override
 	public void readAsXmpz2XmlData(Xmpz2XmlImporter importer, Node node, ORef destinationRefToUse, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		importer.importRefs(node, destinationRefToUse, baseObjectSchema, fieldSchema, ((FieldSchemaIdList)fieldSchema).getIdListType());
+		importer.importIds(node, destinationRefToUse, baseObjectSchema, fieldSchema, ((FieldSchemaIdList)fieldSchema).getIdListType());
 	}
 	
 	private IdList ids;
