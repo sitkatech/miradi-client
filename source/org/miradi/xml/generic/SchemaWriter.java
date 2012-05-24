@@ -22,6 +22,7 @@ package org.miradi.xml.generic;
 
 import java.io.PrintStream;
 import java.io.PrintWriter;
+import java.util.Vector;
 
 public class SchemaWriter extends PrintWriter
 {
@@ -61,5 +62,37 @@ public class SchemaWriter extends PrintWriter
 		println();
 	}
 
+	public void writeNamespace(String uri)
+	{
+		println("namespace " + prefix + " = " + "'" + uri + "'");
+	}
+
+	public void startElementDefinition(String name)
+	{
+		println(name + ".element = element " + name);
+		startBlock();
+	}
+
+	public void endElementDefinition(String name)
+	{
+		endBlock();
+	}
+	
+	public void writeContentsList(Vector<String> contents)
+	{
+		for(int element = 0; element < contents.size(); ++element)
+		{
+			String item = contents.get(element);
+			printIndented(item);
+			if(element+1 < contents.size())
+				print(" &");
+			println();
+		}
+		
+	}
+
+	private static final String prefix = "miradi:";
+
 	private int indentLevel;
+
 }

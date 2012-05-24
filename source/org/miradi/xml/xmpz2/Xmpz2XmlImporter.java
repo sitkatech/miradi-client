@@ -126,7 +126,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements XmpzXmlCons
 		}
 	}
 
-	private boolean isCustomImport(int objectType)
+	public static boolean isCustomImport(int objectType)
 	{
 		if (RatingCriterion.is(objectType))
 			return true;
