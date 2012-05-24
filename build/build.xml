@@ -734,6 +734,12 @@
 		<arg value="Updated PO files: ${version.timestamp}"/>
 	</exec>
 	<exec executable="hg" failonerror="true" dir="${miradi.root.dir}">
+		<arg value="--config"/>
+		<arg value="auth.google.prefix=https://miradi-client.googlecode.com"/>
+		<arg value="--config"/>
+		<arg value="auth.google.username=${hguser}"/>
+		<arg value="--config"/>
+		<arg value="auth.google.password=${hgpassword}"/>
 		<arg value="push"/>
 		<arg value="-r"/>
 		<arg value="."/>
@@ -803,8 +809,8 @@
 <!-- ================================================================== -->
 <target name="macdmgfile" depends="macappbundle" description="create a mac dmg file">
 	<property name="rawdmgfile" value="../mac-client-build-dependencies/images/Miradi.dmg" />
-	<property name="dmgsizemegs" value="16" />
-	<property name="dmgmount" value="/home/j2ee-hudson/.hudson/slaves/miradi/mac-client-build-dependencies/mounts/dmgfile" />
+	<property name="dmgsizemegs" value="17" />
+	<property name="dmgmount" value="/home/jenkins/.jenkins/slaves/miradi/mac-client-build-dependencies/mounts/dmgfile" />
 
 	<exec os="Linux"  executable="umount" failonerror="false">
 		<arg value="-d"/>
