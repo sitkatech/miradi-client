@@ -50,7 +50,7 @@ ConservationProject.element = element miradi:ConservationProject
   DashboardPool.element ?  &
   TaggedObjectSetPool.element ?  &
   ExtraData.element &
-  element miradi:DeletedOrphans{ formatted_text }?
+  element miradi:DeletedOrphans{ text }?
 }
 
 ProjectSummary.element = element miradi:ProjectSummary

@@ -44,6 +44,12 @@ public class TestXmpz2XmlExporter extends TestCaseWithProject
 		validateProject();
 	}
 	
+	public void testProjectWithHtmlInQuarantinedContent() throws Exception
+	{
+		getProject().appendToQuarantineFile("some <br/> random <b>bolded</b> text");
+		validateProject();
+	}
+	
 	public void testUserTextFieldWithHtml() throws Exception
 	{
 		String sampleText = "one <br/> and <b>some bold</b> <br/>" +

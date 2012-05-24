@@ -50,6 +50,7 @@ import org.miradi.schemas.SubTargetSchema;
 import org.miradi.schemas.TextBoxSchema;
 import org.miradi.schemas.ThreatReductionResultSchema;
 import org.miradi.schemas.XslTemplateSchema;
+import org.miradi.utils.XmlUtilities2;
 import org.miradi.xml.XmlExporter;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.miradi.xml.xmpz2.objectExporters.BudgetCategoryOneExporter;
@@ -121,7 +122,9 @@ public class Xmpz2XmlExporter extends XmlExporter implements XmpzXmlConstants
 	
 	private void exportQuarantinedFileContents() throws Exception
 	{
-		getWriter().writeElement(DELETED_ORPHANS_ELEMENT_NAME, getProject().getQuarantineFileContents());
+		String quarantineFileContents = getProject().getQuarantineFileContents();
+		quarantineFileContents = XmlUtilities2.getXmlEncoded(quarantineFileContents);
+		getWriter().writeElement(DELETED_ORPHANS_ELEMENT_NAME, quarantineFileContents);
 	}
 
 	private void exportPools() throws Exception
