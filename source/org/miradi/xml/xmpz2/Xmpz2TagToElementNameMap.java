@@ -138,13 +138,13 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 	{
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put(BaseObject.TAG_LABEL, "Name");
+		map.put(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS, EXPENSE_IDS);
 		return map;
 	}
 
 	private HashMap<String, String> createTaskMap()
 	{
-		HashMap<String, String> taskMap = new HashMap<String, String>();
-		taskMap.put(Task.TAG_LABEL, "Name");
+		HashMap<String, String> taskMap = createBaseObjectMap();
 		taskMap.put(Task.TAG_SHORT_LABEL, "Id");
 		taskMap.put(Task.TAG_SUBTASK_IDS, XmpzXmlConstants.SUB_TASK_IDS);
 		return taskMap;
@@ -161,6 +161,9 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 		indicatorMap.put(Indicator.TAG_METHOD_IDS, XmpzXmlConstants.METHOD_IDS);
 		indicatorMap.put(Indicator.TAG_FUTURE_STATUS_COMMENTS, "FutureStatusComments");
 		indicatorMap.put(Indicator.TAG_VIABILITY_RATINGS_COMMENTS, "ViabilityRatingsComments");
+		indicatorMap.put(Indicator.TAG_MEASUREMENT_REFS, MEASUREMENT_IDS);
+		indicatorMap.put(Indicator.TAG_PROGRESS_REPORT_REFS, PROGRESS_REPORT_IDS);
+		indicatorMap.put(Indicator.TAG_RESOURCE_ASSIGNMENT_IDS, RESOURCE_ASSIGNMENT + "Ids");
 		
 		return indicatorMap;
 	}

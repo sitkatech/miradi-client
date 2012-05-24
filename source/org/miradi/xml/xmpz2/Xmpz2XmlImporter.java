@@ -81,6 +81,7 @@ import org.miradi.xml.xmpz2.objectImporters.GoalImporter;
 import org.miradi.xml.xmpz2.objectImporters.IndicatorImporter;
 import org.miradi.xml.xmpz2.objectImporters.ObjectiveImporter;
 import org.miradi.xml.xmpz2.objectImporters.ResourceAssignmentImporter;
+import org.miradi.xml.xmpz2.objectImporters.TaskImporter;
 import org.miradi.xml.xmpz2.objectImporters.Xmpz2ExtraDataImporter;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -111,6 +112,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements XmpzXmlCons
 		typeToImporterMap.put(ExpenseAssignmentSchema.getObjectType(), new ExpenseAssignmentImporter(this, new ExpenseAssignmentSchema()));
 		typeToImporterMap.put(ObjectiveSchema.getObjectType(), new ObjectiveImporter(this, new ObjectiveSchema()));
 		typeToImporterMap.put(GoalSchema.getObjectType(), new GoalImporter(this, new GoalSchema()));
+		typeToImporterMap.put(TaskSchema.getObjectType(), new TaskImporter(this));
 		
 		for(int objectType = ObjectType.FIRST_OBJECT_TYPE; objectType < ObjectType.OBJECT_TYPE_COUNT; ++objectType)
 		{
@@ -176,6 +178,13 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements XmpzXmlCons
 		importRefs(node, baseObjectSchema.getXmpz2ElementName(), fieldSchema, destinationRef, reflistTypeName);
 	}
 	
+	public void importRefs(Node node, String poolName, String tag, ORef destinationRef, String idElementName) throws Exception
+	{
+		ORefList importedRefs = extractRefs(node, poolName, tag, idElementName);
+		
+		setData(destinationRef, tag, importedRefs);
+	}
+	
 	public void importRefs(Node node, String poolName, AbstractFieldSchema fieldSchema, ORef destinationRef, String idElementName) throws Exception
 	{
 		ORefList importedRefs = extractRefs(node, poolName, fieldSchema.getTag(), idElementName);
@@ -205,7 +214,8 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements XmpzXmlCons
 	{
 		Xmpz2TagToElementNameMap map = new Xmpz2TagToElementNameMap();
 		String elementName = map.findElementName(poolName, fieldSchema.getTag());
-		NodeList idNodes = getNodes(node, new String[]{poolName + elementName, elementName});
+		String idElementName = convertIdsToIdString(elementName);
+		NodeList idNodes = getNodes(node, new String[]{poolName + elementName, idElementName});
 		ORefList importedRefs = new ORefList();
 		for (int index = 0; index < idNodes.getLength(); ++index)
 		{
@@ -216,6 +226,16 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements XmpzXmlCons
 		}
 		
 		return importedRefs;
+	}
+
+	private String convertIdsToIdString(String elementName)
+	{
+		return removeLastChar(elementName);
+	}
+
+	private String removeLastChar(String elementName)
+	{
+		return elementName.substring(0, elementName.length() - 1);
 	}
 
 	protected ORefList extractRefs(Node node, String poolName, String idsElementName, String idElementName) throws Exception
@@ -314,6 +334,15 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements XmpzXmlCons
 		
 		if (objectTypeName.equals(DIAGRAM_LINK))
 			return DiagramLinkSchema.getObjectType();
+		
+		if (objectTypeName.equals(INDICATOR))
+			return IndicatorSchema.getObjectType();
+		
+		if (objectTypeName.equals(RESOURCE_ASSIGNMENT))
+			return ResourceAssignmentSchema.getObjectType();
+		
+		if (objectTypeName.equals(EXPENSE_ASSIGNMENT))
+			return ExpenseAssignmentSchema.getObjectType();
 		
 		EAM.logError("Could not find type for node: " + objectTypeName);
 		return ObjectType.FAKE;
