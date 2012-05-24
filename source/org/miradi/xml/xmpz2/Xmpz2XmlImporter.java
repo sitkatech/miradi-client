@@ -43,6 +43,7 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.CauseSchema;
+import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.schemas.ExpenseAssignmentSchema;
@@ -68,11 +69,11 @@ import org.miradi.utils.PointList;
 import org.miradi.xml.AbstractXmlImporter;
 import org.miradi.xml.MiradiXmlValidator;
 import org.miradi.xml.generic.XmlSchemaCreator;
-import org.miradi.xml.wcs.TagToElementNameMap;
 import org.miradi.xml.wcs.Xmpz2XmlValidator;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.miradi.xml.xmpz.XmpzNameSpaceContext;
 import org.miradi.xml.xmpz2.objectImporters.BaseObjectImporter;
+import org.miradi.xml.xmpz2.objectImporters.ConceptualModelDiagramImporter;
 import org.miradi.xml.xmpz2.objectImporters.DiagramFactorImporter;
 import org.miradi.xml.xmpz2.objectImporters.DiagramLinkImporter;
 import org.miradi.xml.xmpz2.objectImporters.ExpenseAssignmentImporter;
@@ -101,7 +102,8 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements XmpzXmlCons
 	
 	private LinkedHashMap<Integer, BaseObjectImporter> fillTypeToImporterMap()
 	{
-		LinkedHashMap<Integer, BaseObjectImporter> typeToImporterMap = new LinkedHashMap<Integer, BaseObjectImporter>();
+		LinkedHashMap<Integer, BaseObjectImporter> typeToImporterMap = new LinkedHashMap<Integer, BaseObjectImporter>();		
+		typeToImporterMap.put(ConceptualModelDiagramSchema.getObjectType(), new ConceptualModelDiagramImporter(this, new ConceptualModelDiagramSchema()));
 		typeToImporterMap.put(DiagramFactorSchema.getObjectType(), new DiagramFactorImporter(this, new DiagramFactorSchema()));
 		typeToImporterMap.put(DiagramLinkSchema.getObjectType(), new DiagramLinkImporter(this, new DiagramLinkSchema()));
 		typeToImporterMap.put(IndicatorSchema.getObjectType(), new IndicatorImporter(this, new IndicatorSchema()));
@@ -176,7 +178,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements XmpzXmlCons
 	
 	public void importRefs(Node node, String poolName, AbstractFieldSchema fieldSchema, ORef destinationRef, String idElementName) throws Exception
 	{
-		ORefList importedRefs = extractRefs(node, poolName, fieldSchema.getTag(), idElementName + ID);
+		ORefList importedRefs = extractRefs(node, poolName, fieldSchema.getTag(), idElementName);
 		
 		setData(destinationRef, fieldSchema.getTag(), importedRefs);
 	}
@@ -187,11 +189,23 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements XmpzXmlCons
 		setData(destinationRefToUse, fieldSchema.getTag(), importedRefs);
 	}
 	
+	public void importIds(Node baseObjectNode, ORef destinationRef,	BaseObjectSchema baseObjectSchema, String idsElementName, int idListType, String idElementName) throws Exception
+	{
+		ORefList importedRefs = extractRefs(baseObjectNode, baseObjectSchema.getXmpz2ElementName(), idsElementName, idElementName);
+		setData(destinationRef, idsElementName, importedRefs.convertToIdList(idListType));
+	}
+	
+	public void importIds(Node node, ORef destinationRefToUse,	BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema,	int idListType) throws Exception
+	{
+		ORefList importedRefs = extractRefs(node, baseObjectSchema.getXmpz2ElementName(), fieldSchema, idListType);
+		setData(destinationRefToUse, fieldSchema.getTag(), importedRefs.convertToIdList(idListType));
+	}
+	
 	private ORefList extractRefs(Node node, String poolName, AbstractFieldSchema fieldSchema, int listObjectType) throws Exception
 	{
-		TagToElementNameMap map = new TagToElementNameMap();
+		Xmpz2TagToElementNameMap map = new Xmpz2TagToElementNameMap();
 		String elementName = map.findElementName(poolName, fieldSchema.getTag());
-		NodeList idNodes = getNodes(node, new String[]{poolName + elementName, fieldSchema.getTag()});
+		NodeList idNodes = getNodes(node, new String[]{poolName + elementName, elementName});
 		ORefList importedRefs = new ORefList();
 		for (int index = 0; index < idNodes.getLength(); ++index)
 		{
@@ -206,9 +220,9 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements XmpzXmlCons
 
 	protected ORefList extractRefs(Node node, String poolName, String idsElementName, String idElementName) throws Exception
 	{
-		TagToElementNameMap map = new TagToElementNameMap();
+		Xmpz2TagToElementNameMap map = new Xmpz2TagToElementNameMap();
 		String elementName = map.findElementName(poolName, idsElementName);
-		NodeList idNodes = getNodes(node, new String[]{poolName + elementName, idElementName});
+		NodeList idNodes = getNodes(node, new String[]{poolName + elementName, idElementName + ID});
 		ORefList importedRefs = new ORefList();
 		for (int index = 0; index < idNodes.getLength(); ++index)
 		{
@@ -223,7 +237,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements XmpzXmlCons
 	
 	public void importCodeListField(Node node, String elementContainerName, ORef destinationRef, String destinationTag) throws Exception
 	{
-		TagToElementNameMap map = new TagToElementNameMap();
+		Xmpz2TagToElementNameMap map = new Xmpz2TagToElementNameMap();
 		String elementName = map.findElementName(elementContainerName, destinationTag);
 		String containerElementName = elementContainerName + elementName + XmpzXmlConstants.CONTAINER_ELEMENT_TAG;
 		CodeList codesToImport = getCodeList(node, containerElementName);
@@ -294,6 +308,12 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements XmpzXmlCons
 		
 		if (objectTypeName.equals(BIODIVERSITY_TARGET))
 			return TargetSchema.getObjectType();
+		
+		if (objectTypeName.equals(DIAGRAM_FACTOR))
+			return DiagramFactorSchema.getObjectType();
+		
+		if (objectTypeName.equals(DIAGRAM_LINK))
+			return DiagramLinkSchema.getObjectType();
 		
 		EAM.logError("Could not find type for node: " + objectTypeName);
 		return ObjectType.FAKE;
@@ -369,9 +389,14 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements XmpzXmlCons
 	
 	public void importRefField(Node node, ORef destinationRefToUse,	BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		ORef refToImport = getRefToImport(node, baseObjectSchema.getXmpz2ElementName(), fieldSchema.getTag());
+		importRefField(node, destinationRefToUse, baseObjectSchema.getXmpz2ElementName(), fieldSchema.getTag());
+	}
+
+	public void importRefField(Node node, ORef destinationRefToUse, final String xmpz2ElementName, final String tag) throws Exception
+	{
+		ORef refToImport = getRefToImport(node, xmpz2ElementName, tag);
 		if (refToImport.isValid())
-			setData(destinationRefToUse, fieldSchema.getTag(), refToImport.toString());
+			setData(destinationRefToUse, tag, refToImport.toString());
 	}
 	
 	public void importIdField(Node node, ORef destinationRefToUse, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
@@ -382,7 +407,9 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements XmpzXmlCons
 
 	private ORef getRefToImport(Node node, String poolName, String idElementName) throws Exception
 	{
-		String element = poolName + idElementName + XmpzXmlConstants.ID;
+		Xmpz2TagToElementNameMap map = new Xmpz2TagToElementNameMap();
+		String elementName = map.findElementName(poolName, idElementName);
+		String element = poolName + elementName;
 		Node idNode = getNode(node, element);
 		if (idNode == null)
 			return ORef.INVALID;
@@ -411,6 +438,17 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements XmpzXmlCons
 
 		setData(destinationRef, DiagramLink.TAG_BEND_POINTS, bendPoints.toString());
 	}
+
+//FIXME urgent - uncomment and make work	
+//	private void importSummaryData() throws Exception
+//	{
+//		new Xmpz2ProjectSummaryImporter(this).importFields();
+//	}
+//	
+//	private void importThreatTargetRatings() throws Exception
+//	{
+//		new ThreatTargetRatingImporter(this).importFields();
+//	}
 
 	private void importExtraData() throws Exception
 	{
