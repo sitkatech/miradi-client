@@ -46,10 +46,12 @@ import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.schemas.ExpenseAssignmentSchema;
+import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.GroupBoxSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.IntermediateResultSchema;
+import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ProgressPercentSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.ScopeBoxSchema;
@@ -74,7 +76,9 @@ import org.miradi.xml.xmpz2.objectImporters.BaseObjectImporter;
 import org.miradi.xml.xmpz2.objectImporters.DiagramFactorImporter;
 import org.miradi.xml.xmpz2.objectImporters.DiagramLinkImporter;
 import org.miradi.xml.xmpz2.objectImporters.ExpenseAssignmentImporter;
+import org.miradi.xml.xmpz2.objectImporters.GoalImporter;
 import org.miradi.xml.xmpz2.objectImporters.IndicatorImporter;
+import org.miradi.xml.xmpz2.objectImporters.ObjectiveImporter;
 import org.miradi.xml.xmpz2.objectImporters.ResourceAssignmentImporter;
 import org.miradi.xml.xmpz2.objectImporters.Xmpz2ExtraDataImporter;
 import org.w3c.dom.Node;
@@ -103,6 +107,8 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements XmpzXmlCons
 		typeToImporterMap.put(IndicatorSchema.getObjectType(), new IndicatorImporter(this, new IndicatorSchema()));
 		typeToImporterMap.put(ResourceAssignmentSchema.getObjectType(), new ResourceAssignmentImporter(this, new ResourceAssignmentSchema()));
 		typeToImporterMap.put(ExpenseAssignmentSchema.getObjectType(), new ExpenseAssignmentImporter(this, new ExpenseAssignmentSchema()));
+		typeToImporterMap.put(ObjectiveSchema.getObjectType(), new ObjectiveImporter(this, new ObjectiveSchema()));
+		typeToImporterMap.put(GoalSchema.getObjectType(), new GoalImporter(this, new GoalSchema()));
 		
 		for(int objectType = ObjectType.FIRST_OBJECT_TYPE; objectType < ObjectType.OBJECT_TYPE_COUNT; ++objectType)
 		{
