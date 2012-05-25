@@ -27,7 +27,6 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
-import org.miradi.schemas.DashboardSchema;
 import org.miradi.schemas.FosProjectDataSchema;
 import org.miradi.schemas.RareProjectDataSchema;
 import org.miradi.schemas.TncProjectDataSchema;
@@ -154,16 +153,6 @@ public class BaseObjectImporter extends AbstractXmpz2ObjectImporter
 	protected ORef getFosProjectDataRef()
 	{
 		return getSingletonObject(FosProjectDataSchema.getObjectType());
-	}
-	
-	protected ORef getDashboardRef()
-	{
-		return getSingletonObject(DashboardSchema.getObjectType());
-	}
-	
-	private ORef getSingletonObject(int objectType)
-	{
-		return getProject().getSingletonObjectRef(objectType);
 	}
 	
 	private BaseObjectSchema baseObjectSchema;
