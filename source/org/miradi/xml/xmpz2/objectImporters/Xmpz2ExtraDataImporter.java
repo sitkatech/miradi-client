@@ -37,12 +37,6 @@ public class Xmpz2ExtraDataImporter extends BaseObjectImporter
 		super(importerToUse, null);
 	}
 	
-	@Override
-	public void importFields(Node baseObjectNode, ORef refToUse) throws Exception
-	{
-		importFields();
-	}
-	
 	public void importFields() throws Exception
 	{
 		Node extraDataNode = getImporter().getNode(getImporter().getRootNode(), EXTRA_DATA);

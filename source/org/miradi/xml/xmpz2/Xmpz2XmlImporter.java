@@ -543,7 +543,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements XmpzXmlCons
 
 	private void importExtraData() throws Exception
 	{
-		new Xmpz2ExtraDataImporter(this).importFields(null, null);
+		new Xmpz2ExtraDataImporter(this).importFields();
 	}
 
 	@Override
