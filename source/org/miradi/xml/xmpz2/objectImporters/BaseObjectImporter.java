@@ -27,12 +27,6 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
-import org.miradi.schemas.FosProjectDataSchema;
-import org.miradi.schemas.RareProjectDataSchema;
-import org.miradi.schemas.TncProjectDataSchema;
-import org.miradi.schemas.WcpaProjectDataSchema;
-import org.miradi.schemas.WcsProjectDataSchema;
-import org.miradi.schemas.WwfProjectDataSchema;
 import org.miradi.xml.wcs.TagToElementNameMap;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.w3c.dom.Node;
@@ -118,41 +112,6 @@ public class BaseObjectImporter extends AbstractXmpz2ObjectImporter
 	public BaseObjectSchema getBaseObjectSchema()
 	{
 		return baseObjectSchema;
-	}
-	
-	protected ORef getMetadataRef()
-	{
-		return getProject().getMetadata().getRef();
-	}
-	
-	protected ORef getWcpaProjectDataRef()
-	{
-		return getSingletonObject(WcpaProjectDataSchema.getObjectType());
-	}
-	
-	protected ORef getWcsProjectDataRef()
-	{
-		return getSingletonObject(WcsProjectDataSchema.getObjectType());
-	}
-
-	protected ORef getTncProjectDataRef()
-	{
-		return getSingletonObject(TncProjectDataSchema.getObjectType());
-	}
-	
-	protected ORef getWwfProjectDataRef()
-	{
-		return getSingletonObject(WwfProjectDataSchema.getObjectType());
-	}
-	
-	protected ORef getRareProjectDataRef()
-	{
-		return getSingletonObject(RareProjectDataSchema.getObjectType());
-	}
-	
-	protected ORef getFosProjectDataRef()
-	{
-		return getSingletonObject(FosProjectDataSchema.getObjectType());
 	}
 	
 	private BaseObjectSchema baseObjectSchema;
