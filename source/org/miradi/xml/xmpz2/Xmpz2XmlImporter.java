@@ -47,6 +47,7 @@ import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.schemas.ExpenseAssignmentSchema;
+import org.miradi.schemas.FosProjectDataSchema;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.GroupBoxSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
@@ -56,6 +57,7 @@ import org.miradi.schemas.KeyEcologicalAttributeSchema;
 import org.miradi.schemas.MeasurementSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ProgressPercentSchema;
+import org.miradi.schemas.RareProjectDataSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.ScopeBoxSchema;
 import org.miradi.schemas.StrategySchema;
@@ -64,7 +66,10 @@ import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.schemas.TextBoxSchema;
 import org.miradi.schemas.ThreatReductionResultSchema;
+import org.miradi.schemas.TncProjectDataSchema;
 import org.miradi.schemas.ValueOptionSchema;
+import org.miradi.schemas.WcsProjectDataSchema;
+import org.miradi.schemas.WwfProjectDataSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.PointList;
@@ -83,6 +88,7 @@ import org.miradi.xml.xmpz2.objectImporters.GoalImporter;
 import org.miradi.xml.xmpz2.objectImporters.IndicatorImporter;
 import org.miradi.xml.xmpz2.objectImporters.ObjectiveImporter;
 import org.miradi.xml.xmpz2.objectImporters.ResourceAssignmentImporter;
+import org.miradi.xml.xmpz2.objectImporters.SingletonObjectImporter;
 import org.miradi.xml.xmpz2.objectImporters.StrateyImporter;
 import org.miradi.xml.xmpz2.objectImporters.TaskImporter;
 import org.miradi.xml.xmpz2.objectImporters.ThreatTargetRatingImporter;
@@ -101,6 +107,11 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements XmpzXmlCons
 	protected void importXml() throws Exception
 	{
 		LinkedHashMap<Integer, BaseObjectImporter> typeToImporterMap = fillTypeToImporterMap();
+		importSingletonObject(new TncProjectDataSchema());
+		importSingletonObject(new WwfProjectDataSchema());
+		importSingletonObject(new WcsProjectDataSchema());
+		importSingletonObject(new FosProjectDataSchema());
+		importSingletonObject(new RareProjectDataSchema());
 		importPools(typeToImporterMap);
 		importThreatTargetRatings();
 		importExtraData();
@@ -131,6 +142,9 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements XmpzXmlCons
 			
 			if (typeToImporterMap.containsKey(objectType))
 				continue;
+			
+			if (objectType == 40)
+				System.out.println("hererer");
 			
 			BaseObjectSchema baseObjectSchema = pool.createBaseObjectSchema(getProject());
 			typeToImporterMap.put(objectType, new BaseObjectImporter(this, baseObjectSchema));
@@ -177,6 +191,17 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements XmpzXmlCons
 			importer.importFields(baseObjectNode, ref);
 			importer.postCreateFix(ref, baseObjectNode);
 		}
+	}
+	
+	private void importSingletonObject(BaseObjectSchema baseObjectSchema) throws Exception
+	{
+		final Node singletonNode = getNode(getRootNode(), baseObjectSchema.getXmpz2ElementName());
+		new SingletonObjectImporter(this, baseObjectSchema).importFields(singletonNode, getSingletonObject(baseObjectSchema.getType()));
+	}
+	
+	private ORef getSingletonObject(int objectType)
+	{
+		return getProject().getSingletonObjectRef(objectType);
 	}
 
 	public void importRefs(Node node, ORef destinationRef, BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String reflistTypeName) throws Exception
