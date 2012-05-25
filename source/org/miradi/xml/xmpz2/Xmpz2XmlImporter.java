@@ -398,17 +398,6 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements XmpzXmlCons
 		return nodeName.replaceFirst(ID, "");
 	}
 	
-	private static boolean isTask(String objectTypeName)
-	{
-		if (objectTypeName.equals(TaskSchema.ACTIVITY_NAME))
-			return true;
-		
-		if (objectTypeName.equals(TaskSchema.METHOD_NAME))
-			return true;
-		
-		return objectTypeName.equals(TASK);
-	}
-	
 	public void importBooleanField(Node node, ORef destinationRefToUse,	BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema) throws Exception
 	{
 		Node booleanNode = getNode(node, baseObjectSchema.getXmpz2ElementName() + fieldSchema.getTag());
