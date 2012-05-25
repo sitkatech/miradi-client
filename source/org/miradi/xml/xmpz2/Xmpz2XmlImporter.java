@@ -77,6 +77,7 @@ import org.miradi.utils.PointList;
 import org.miradi.xml.AbstractXmlImporter;
 import org.miradi.xml.MiradiXmlValidator;
 import org.miradi.xml.generic.XmlSchemaCreator;
+import org.miradi.xml.wcs.TagToElementNameMap;
 import org.miradi.xml.wcs.Xmpz2XmlValidator;
 import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.miradi.xml.xmpz.XmpzNameSpaceContext;
@@ -267,6 +268,23 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements XmpzXmlCons
 			Node idNode = idNodes.item(index);
 			String id = getSafeNodeContent(idNode);
 			int idsType = getObjectTypeOfNode(idNode);
+			importedRefs.add(new ORef(idsType, new BaseId(id)));
+		}
+		
+		return importedRefs;
+	}
+	
+	public ORefList extractRefs(Node node, String poolName, String idsElementName, int idsType, String idElementName) throws Exception
+	{
+		idElementName += ID;
+		TagToElementNameMap map = new TagToElementNameMap();
+		String elementName = map.findElementName(poolName, idsElementName);
+		NodeList idNodes = getNodes(node, new String[]{poolName + elementName, idElementName});
+		ORefList importedRefs = new ORefList();
+		for (int index = 0; index < idNodes.getLength(); ++index)
+		{
+			Node idNode = idNodes.item(index);
+			String id = getSafeNodeContent(idNode);
 			importedRefs.add(new ORef(idsType, new BaseId(id)));
 		}
 		

@@ -63,7 +63,7 @@ abstract public class DesireImporter extends BaseObjectImporter
 	
 	private void importRelevantIndicatorIds(Node node, ORef destinationDesireRef) throws Exception
 	{
-		ORefList importedRelevantRefs = extractRefs(node, XmpzXmlConstants.RELEVANT_INDICATOR_IDS, IndicatorSchema.getObjectType(), XmpzXmlConstants.INDICATOR + XmpzXmlConstants.ID);
+		ORefList importedRelevantRefs = getImporter().extractRefs(node, getPoolName(), XmpzXmlConstants.RELEVANT_INDICATOR_IDS, IndicatorSchema.getObjectType(), XmpzXmlConstants.INDICATOR);
 		Desire desire = Desire.findDesire(getProject(), destinationDesireRef);
 		RelevancyOverrideSet set = desire.getCalculatedRelevantIndicatorOverrides(importedRelevantRefs);		
 		getImporter().setData(destinationDesireRef, Desire.TAG_RELEVANT_INDICATOR_SET, set.toString());
@@ -72,8 +72,8 @@ abstract public class DesireImporter extends BaseObjectImporter
 	private void importRelevantStrategyAndActivityIds(Node node, ORef destinationDesireRef) throws Exception
 	{
 		ORefList importedStrategyAndActivityRefs = new ORefList();
-		importedStrategyAndActivityRefs.addAll(extractRefs(node, XmpzXmlConstants.RELEVANT_STRATEGY_IDS, StrategySchema.getObjectType(), XmpzXmlConstants.STRATEGY + XmpzXmlConstants.ID));
-		importedStrategyAndActivityRefs.addAll(extractRefs(node, XmpzXmlConstants.RELEVANT_ACTIVITY_IDS, TaskSchema.getObjectType(), XmpzXmlConstants.ACTIVITY + XmpzXmlConstants.ID));
+		importedStrategyAndActivityRefs.addAll(getImporter().extractRefs(node, getPoolName(), XmpzXmlConstants.RELEVANT_STRATEGY_IDS, StrategySchema.getObjectType(), XmpzXmlConstants.STRATEGY));
+		importedStrategyAndActivityRefs.addAll(getImporter().extractRefs(node, getPoolName(), XmpzXmlConstants.RELEVANT_ACTIVITY_IDS, TaskSchema.getObjectType(), XmpzXmlConstants.ACTIVITY));
 		
 		Desire desire = Desire.findDesire(getProject(), destinationDesireRef);
 		RelevancyOverrideSet set = desire.getCalculatedRelevantStrategyActivityOverrides(importedStrategyAndActivityRefs);
