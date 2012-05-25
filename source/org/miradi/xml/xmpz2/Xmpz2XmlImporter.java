@@ -301,7 +301,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements XmpzXmlCons
 		return elementName.substring(0, elementName.length() - 1);
 	}
 
-	protected ORefList extractRefs(Node node, String poolName, String idsElementName, String idElementName) throws Exception
+	private ORefList extractRefs(Node node, String poolName, String idsElementName, String idElementName) throws Exception
 	{
 		Xmpz2TagToElementNameMap map = new Xmpz2TagToElementNameMap();
 		String elementName = map.findElementName(poolName, idsElementName);
