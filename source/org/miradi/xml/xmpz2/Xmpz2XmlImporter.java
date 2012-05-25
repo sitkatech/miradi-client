@@ -110,7 +110,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter
 	{
 		super(projectToFill);
 		
-		map = new Xmpz2TagToElementNameMap();
+		tagToElementNameMap = new Xmpz2TagToElementNameMap();
 	}
 		
 	@Override
@@ -565,8 +565,8 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter
 	
 	private Xmpz2TagToElementNameMap getTagToElementNameMap()
 	{
-		return map;
+		return tagToElementNameMap;
 	}
 	
-	private Xmpz2TagToElementNameMap map;
+	private Xmpz2TagToElementNameMap tagToElementNameMap;
 }
