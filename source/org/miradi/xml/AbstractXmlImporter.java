@@ -45,6 +45,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.XmlUtilities2;
 import org.miradi.xml.wcs.TagToElementNameMap;
 import org.miradi.xml.wcs.XmpzXmlConstants;
@@ -54,7 +55,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
-abstract public class AbstractXmlImporter 
+abstract public class AbstractXmlImporter implements XmpzXmlConstants
 {
 	public AbstractXmlImporter(Project projectToFill) throws Exception
 	{
@@ -343,6 +344,17 @@ abstract public class AbstractXmlImporter
 		String versionAsString = nameSpaceUri.substring(lastSlashIndexBeforeVersion + 1, nameSpaceUri.length());
 		
 		return versionAsString;
+	}
+	
+	public static boolean isTask(String objectTypeName)
+	{
+		if (objectTypeName.equals(TaskSchema.ACTIVITY_NAME))
+			return true;
+		
+		if (objectTypeName.equals(TaskSchema.METHOD_NAME))
+			return true;
+		
+		return objectTypeName.equals(TASK);
 	}
 	
 	protected ORef getProjectMetadataRef()

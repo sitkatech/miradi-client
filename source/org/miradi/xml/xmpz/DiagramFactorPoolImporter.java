@@ -46,6 +46,7 @@ import org.miradi.schemas.TaskSchema;
 import org.miradi.schemas.TextBoxSchema;
 import org.miradi.schemas.ThreatReductionResultSchema;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.xml.AbstractXmlImporter;
 import org.w3c.dom.Node;
 
 public class DiagramFactorPoolImporter extends AbstractBaseObjectPoolImporter
@@ -145,7 +146,7 @@ public class DiagramFactorPoolImporter extends AbstractBaseObjectPoolImporter
 		if (objectTypeName.equals(GROUP_BOX))
 			return GroupBoxSchema.getObjectType();
 		
-		if (isTask(objectTypeName))
+		if (AbstractXmlImporter.isTask(objectTypeName))
 			return TaskSchema.getObjectType();
 		
 		if (objectTypeName.equals(STRESS))
@@ -153,17 +154,6 @@ public class DiagramFactorPoolImporter extends AbstractBaseObjectPoolImporter
 		
 		EAM.logError("Could not find type for node: " + objectTypeName);
 		return ObjectType.FAKE;
-	}
-
-	private static boolean isTask(String objectTypeName)
-	{
-		if (objectTypeName.equals(TaskSchema.ACTIVITY_NAME))
-			return true;
-		
-		if (objectTypeName.equals(TaskSchema.METHOD_NAME))
-			return true;
-		
-		return objectTypeName.equals(TASK);
 	}
 
 	private static String removeAppendedId(String nodeName)
