@@ -40,8 +40,8 @@ public class TaskImporter extends BaseObjectImporter
 	{
 		super.importFields(baseObjectNode, refToUse);
 		
-		getImporter().importIds(baseObjectNode, refToUse, getBaseObjectSchema(), BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, ResourceAssignmentSchema.getObjectType(), RESOURCE_ASSIGNMENT);
-		getImporter().importIds(baseObjectNode, refToUse, getBaseObjectSchema(), Task.TAG_SUBTASK_IDS, TaskSchema.getObjectType(), SUB_TASK);
+		getImporter().importIds(baseObjectNode, refToUse, getBaseObjectSchema(), BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, RESOURCE_ASSIGNMENT, ResourceAssignmentSchema.getObjectType());
+		getImporter().importIds(baseObjectNode, refToUse, getBaseObjectSchema(), Task.TAG_SUBTASK_IDS, SUB_TASK, TaskSchema.getObjectType());
 	}
 	
 	@Override
