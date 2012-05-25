@@ -109,6 +109,8 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter
 	public Xmpz2XmlImporter(Project projectToFill) throws Exception
 	{
 		super(projectToFill);
+		
+		map = new Xmpz2TagToElementNameMap();
 	}
 		
 	@Override
@@ -244,7 +246,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter
 	
 	private ORefList extractRefs(Node node, String poolName, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		Xmpz2TagToElementNameMap map = new Xmpz2TagToElementNameMap();
+		
 		String elementName = map.findElementName(poolName, fieldSchema.getTag());
 		String idElementName = convertIdsToIdString(elementName);
 		return extractRefsFromNodes(node, poolName, elementName, idElementName);
@@ -252,7 +254,6 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter
 	
 	public ORefList extractRefs(Node node, String poolName, String idsElementName, String idElementName) throws Exception
 	{
-		Xmpz2TagToElementNameMap map = new Xmpz2TagToElementNameMap();
 		String elementName = map.findElementName(poolName, idsElementName);
 		return extractRefsFromNodes(node, poolName, elementName,  idElementName + ID);
 	}
@@ -285,7 +286,6 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter
 
 	public void importCodeListField(Node node, String elementContainerName, ORef destinationRef, String destinationTag) throws Exception
 	{
-		Xmpz2TagToElementNameMap map = new Xmpz2TagToElementNameMap();
 		String elementName = map.findElementName(elementContainerName, destinationTag);
 		String containerElementName = elementContainerName + elementName + XmpzXmlConstants.CONTAINER_ELEMENT_TAG;
 		CodeList codesToImport = getCodeList(node, containerElementName);
@@ -410,7 +410,6 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter
 	
 	public void importChoiceField(Node node, String parentElementName, ORef destinationRefToUse, String tag, ChoiceQuestion question) throws Exception
 	{
-		Xmpz2TagToElementNameMap map = new Xmpz2TagToElementNameMap();
 		String choiceElementName = map.findElementName(parentElementName, tag);
 		String importedReadableCode = getPathData(node, new String[]{parentElementName + choiceElementName, });
 		String internalCode = question.convertToInternalCode(importedReadableCode);
@@ -419,7 +418,6 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter
 
 	public void importStringField(Node node, String poolName, ORef destinationRef, String destinationTag) throws Exception
 	{
-		Xmpz2TagToElementNameMap map = new Xmpz2TagToElementNameMap();
 		String elementName = map.findElementName(poolName, destinationTag);
 		importField(node, poolName + elementName, destinationRef, destinationTag);
 	}
@@ -465,7 +463,6 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter
 
 	private ORef getRefToImport(Node node, String poolName, String idElementName) throws Exception
 	{
-		Xmpz2TagToElementNameMap map = new Xmpz2TagToElementNameMap();
 		String elementName = map.findElementName(poolName, idElementName);
 		String element = poolName + elementName;
 		Node idNode = getNode(node, element);
@@ -561,4 +558,6 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter
 	{
 		return getDocument().lookupNamespaceURI("miradi");
 	}
+	
+	private Xmpz2TagToElementNameMap map;
 }
