@@ -25,7 +25,6 @@ import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
-import org.miradi.project.Project;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.DashboardSchema;
@@ -36,16 +35,16 @@ import org.miradi.schemas.WcpaProjectDataSchema;
 import org.miradi.schemas.WcsProjectDataSchema;
 import org.miradi.schemas.WwfProjectDataSchema;
 import org.miradi.xml.wcs.TagToElementNameMap;
-import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-public class BaseObjectImporter implements XmpzXmlConstants
+public class BaseObjectImporter extends AbstractXmpz2ObjectImporter
 {
 	public BaseObjectImporter(final Xmpz2XmlImporter importerToUse, BaseObjectSchema baseObjectSchemaToUse)
 	{
-		importer = importerToUse;
+		super(importerToUse);
+		
 		baseObjectSchema = baseObjectSchemaToUse; 
 	}
 	
@@ -62,7 +61,7 @@ public class BaseObjectImporter implements XmpzXmlConstants
 			if (isCustomImportField(fieldSchema.getTag()))
 				continue;
 			
-			objectData.readAsXmpz2XmlData(importer, baseObjectNode, refToUse, baseObjectSchema, fieldSchema);
+			objectData.readAsXmpz2XmlData(getImporter(), baseObjectNode, refToUse, baseObjectSchema, fieldSchema);
 		}
 	}
 	
@@ -117,19 +116,9 @@ public class BaseObjectImporter implements XmpzXmlConstants
 		return getBaseObjectSchema().getXmpz2ElementName();
 	}
 
-	protected Xmpz2XmlImporter getImporter()
-	{
-		return importer;
-	}
-	
 	public BaseObjectSchema getBaseObjectSchema()
 	{
 		return baseObjectSchema;
-	}
-	
-	protected Project getProject()
-	{
-		return getImporter().getProject();
 	}
 	
 	protected ORef getMetadataRef()
@@ -177,6 +166,5 @@ public class BaseObjectImporter implements XmpzXmlConstants
 		return getProject().getSingletonObjectRef(objectType);
 	}
 	
-	private Xmpz2XmlImporter importer;
 	private BaseObjectSchema baseObjectSchema;
 }

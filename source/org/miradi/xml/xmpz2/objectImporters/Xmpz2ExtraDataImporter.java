@@ -30,11 +30,11 @@ import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-public class Xmpz2ExtraDataImporter extends BaseObjectImporter
+public class Xmpz2ExtraDataImporter extends AbstractXmpz2ObjectImporter
 {
 	public Xmpz2ExtraDataImporter(Xmpz2XmlImporter importerToUse)
 	{
-		super(importerToUse, null);
+		super(importerToUse);
 	}
 	
 	public void importFields() throws Exception
