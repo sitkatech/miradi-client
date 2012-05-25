@@ -21,18 +21,17 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz2.objectImporters;
 
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.Task;
-import org.miradi.schemas.ResourceAssignmentSchema;
+import org.miradi.objects.Strategy;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.w3c.dom.Node;
 
-public class TaskImporter extends BaseObjectImporter
+public class StrateyImporter extends BaseObjectImporter
 {
-	public TaskImporter(Xmpz2XmlImporter importerToUse)
+	public StrateyImporter(Xmpz2XmlImporter importerToUse)
 	{
-		super(importerToUse, new TaskSchema());
+		super(importerToUse, new StrategySchema());
 	}
 	
 	@Override
@@ -40,14 +39,13 @@ public class TaskImporter extends BaseObjectImporter
 	{
 		super.importFields(baseObjectNode, refToUse);
 		
-		getImporter().importIds(baseObjectNode, refToUse, getBaseObjectSchema(), BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, ResourceAssignmentSchema.getObjectType(), RESOURCE_ASSIGNMENT);
-		getImporter().importIds(baseObjectNode, refToUse, getBaseObjectSchema(), Task.TAG_SUBTASK_IDS, TaskSchema.getObjectType(), SUB_TASK);
+		getImporter().importIds(baseObjectNode, refToUse, getBaseObjectSchema(), Strategy.TAG_ACTIVITY_IDS, TaskSchema.getObjectType(), ACTIVITY);
 	}
 	
 	@Override
 	protected boolean isCustomImportField(String tag)
 	{
-		if (tag.equals(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS))
+		if (tag.equals(Strategy.TAG_ACTIVITY_IDS))
 			return true;
 		
 		return super.isCustomImportField(tag);
