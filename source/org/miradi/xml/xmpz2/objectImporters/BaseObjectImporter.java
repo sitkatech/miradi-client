@@ -20,17 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2.objectImporters;
 
-import org.miradi.ids.BaseId;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.xml.wcs.TagToElementNameMap;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 
 public class BaseObjectImporter extends AbstractXmpz2ObjectImporter
 {
@@ -70,22 +67,6 @@ public class BaseObjectImporter extends AbstractXmpz2ObjectImporter
 		getImporter().importField(node, getBaseObjectSchema().getXmpz2ElementName() + elementName, destinationRef, destinationTag);
 	}
 		
-	protected ORefList extractRefs(Node node, String idsElementName, int idsType, String idElementName) throws Exception
-	{
-		TagToElementNameMap map = new TagToElementNameMap();
-		String elementName = map.findElementName(getPoolName(), idsElementName);
-		NodeList idNodes = getImporter().getNodes(node, new String[]{getPoolName() + elementName, idElementName});
-		ORefList importedRefs = new ORefList();
-		for (int index = 0; index < idNodes.getLength(); ++index)
-		{
-			Node idNode = idNodes.item(index);
-			String id = getImporter().getSafeNodeContent(idNode);
-			importedRefs.add(new ORef(idsType, new BaseId(id)));
-		}
-		
-		return importedRefs;
-	}
-	
 	public void postCreateFix(ORef ref, Node baseObjectNode) throws Exception
 	{
 	}
