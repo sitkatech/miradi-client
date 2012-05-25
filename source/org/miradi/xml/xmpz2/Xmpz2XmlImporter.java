@@ -67,6 +67,7 @@ import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.schemas.TextBoxSchema;
 import org.miradi.schemas.ThreatReductionResultSchema;
+import org.miradi.schemas.TncProjectDataSchema;
 import org.miradi.schemas.ValueOptionSchema;
 import org.miradi.schemas.WcsProjectDataSchema;
 import org.miradi.schemas.WwfProjectDataSchema;
@@ -202,7 +203,8 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements XmpzXmlCons
 	
 	public void importTncProjectData() throws Exception
 	{
-		new TncProjectDataImporter(this).importFields();
+		final Node singletonNode = getNode(getRootNode(), new TncProjectDataSchema().getXmpz2ElementName());
+		new TncProjectDataImporter(this).importFields(singletonNode, getSingletonObject(new TncProjectDataSchema().getType()));
 	}
 	
 	private void importSingletonObject(BaseObjectSchema baseObjectSchema) throws Exception
