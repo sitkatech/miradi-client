@@ -203,7 +203,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter
 		}
 	}
 	
-	public void importTncProjectData() throws Exception
+	private void importTncProjectData() throws Exception
 	{
 		final Node singletonNode = getNode(getRootNode(), new TncProjectDataSchema().getXmpz2ElementName());
 		new TncProjectDataImporter(this).importFields(singletonNode, getSingletonObject(new TncProjectDataSchema().getType()));
