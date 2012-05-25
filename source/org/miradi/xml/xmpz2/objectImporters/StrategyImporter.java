@@ -27,9 +27,9 @@ import org.miradi.schemas.TaskSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.w3c.dom.Node;
 
-public class StrateyImporter extends BaseObjectImporter
+public class StrategyImporter extends BaseObjectImporter
 {
-	public StrateyImporter(Xmpz2XmlImporter importerToUse)
+	public StrategyImporter(Xmpz2XmlImporter importerToUse)
 	{
 		super(importerToUse, new StrategySchema());
 	}
