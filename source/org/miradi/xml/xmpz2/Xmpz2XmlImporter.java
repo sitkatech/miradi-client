@@ -104,7 +104,7 @@ import org.miradi.xml.xmpz2.objectImporters.Xmpz2ProjectSummaryImporter;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-public class Xmpz2XmlImporter extends AbstractXmlImporter implements XmpzXmlConstants
+public class Xmpz2XmlImporter extends AbstractXmlImporter
 {
 	public Xmpz2XmlImporter(Project projectToFill) throws Exception
 	{
