@@ -1,5 +1,5 @@
 /* 
-Copyright 2005-2011, Foundations of Success, Bethesda, Maryland 
+Copyright 2005-2012, Foundations of Success, Bethesda, Maryland 
 (on behalf of the Conservation Measures Partnership, "CMP") and 
 Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 
@@ -18,26 +18,25 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.xml.xmpz;
+package org.miradi.xml.xmpz2.objectImporters;
 
 import org.miradi.objecthelpers.CodeToChoiceMap;
 import org.miradi.objecthelpers.CodeToCodeListMap;
 import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objects.Dashboard;
 import org.miradi.utils.CodeList;
-import org.miradi.xml.AbstractXmpzObjectImporter;
+import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-public class DashboardPoolImporter extends AbstractXmpzObjectImporter
+public class DashboardImporter extends BaseObjectImporter
 {
-	public DashboardPoolImporter(XmpzXmlImporter importerToUse)
+	public DashboardImporter(Xmpz2XmlImporter importerToUse)
 	{
-		super(importerToUse, DASHBOARD);
+		super(importerToUse, null);
 	}
 	
-	@Override
-	public void importElement() throws Exception
+	public void importFields() throws Exception
 	{
 		Node dashboardPoolNode = getImporter().getNode(getImporter().getRootNode(), getPoolName() + POOL_ELEMENT_TAG);
 		Node dashboardNode = getImporter().getNode(dashboardPoolNode, getPoolName());
@@ -74,10 +73,14 @@ public class DashboardPoolImporter extends AbstractXmpzObjectImporter
 		getImporter().setData(getDashboardRef(), Dashboard.TAG_COMMENTS_MAP, userCommentsMap.toJsonString());
 	}
 
+	@Override
+	public String getPoolName()
+	{
+		return DASHBOARD;
+	}
+
 	private CodeList getFlagsCodeList(Node flagsNode) throws Exception
 	{
-		return getCodeList(flagsNode, DASHBOARD + DASHBOARD_FLAGS + CONTAINER_ELEMENT_TAG);
+		return getImporter().getCodeList(flagsNode, DASHBOARD + DASHBOARD_FLAGS + CONTAINER_ELEMENT_TAG);
 	}
-	
-	
 }

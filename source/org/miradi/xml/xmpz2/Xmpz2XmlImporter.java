@@ -81,6 +81,7 @@ import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.miradi.xml.xmpz.XmpzNameSpaceContext;
 import org.miradi.xml.xmpz2.objectImporters.BaseObjectImporter;
 import org.miradi.xml.xmpz2.objectImporters.ConceptualModelDiagramImporter;
+import org.miradi.xml.xmpz2.objectImporters.DashboardImporter;
 import org.miradi.xml.xmpz2.objectImporters.DiagramFactorImporter;
 import org.miradi.xml.xmpz2.objectImporters.DiagramLinkImporter;
 import org.miradi.xml.xmpz2.objectImporters.ExpenseAssignmentImporter;
@@ -120,6 +121,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements XmpzXmlCons
 		importSingletonObject(new RareProjectDataSchema());
 		importPools(typeToImporterMap);
 		importThreatTargetRatings();
+		importDashboardData();
 		importExtraData();
 	}
 	
@@ -531,6 +533,11 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements XmpzXmlCons
 	private void importThreatTargetRatings() throws Exception
 	{
 		new ThreatTargetRatingImporter(this).importFields();
+	}
+	
+	private void importDashboardData() throws Exception
+	{
+		new DashboardImporter(this).importFields();
 	}
 
 	private void importExtraData() throws Exception
