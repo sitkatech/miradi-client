@@ -146,7 +146,7 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 	{
 		HashMap<String, String> taskMap = createBaseObjectMap();
 		taskMap.put(Task.TAG_SHORT_LABEL, "Id");
-		taskMap.put(Task.TAG_SUBTASK_IDS, XmpzXmlConstants.SUB_TASK_IDS);
+		taskMap.put(Task.TAG_SUBTASK_IDS, SUB_TASK_IDS);
 		return taskMap;
 	}
 
@@ -265,6 +265,9 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 		map.put(Strategy.TAG_TAXONOMY_CODE, "StandardClassification");
 		map.put(Strategy.TAG_TEXT, DETAILS);
 		map.put(Strategy.TAG_ACTIVITY_IDS, SORTED_ACTIVITY_IDS);
+		map.put(Strategy.TAG_RESOURCE_ASSIGNMENT_IDS, RESOURCE_ASSIGNMENT + "Ids");
+		map.put(Strategy.TAG_EXPENSE_ASSIGNMENT_REFS, EXPENSE_IDS);
+		map.put(Strategy.TAG_PROGRESS_REPORT_REFS, PROGRESS_REPORT_IDS);
 		
 		return map;
 	}
@@ -275,6 +278,8 @@ public class Xmpz2TagToElementNameMap implements XmpzXmlConstants
 		map.put(Target.TAG_LABEL, "Name");
 		map.put(Target.TAG_SHORT_LABEL, "Id");
 		map.put(Target.TAG_TEXT, DETAILS);
+		map.put(Target.TAG_SUB_TARGET_REFS, SUB_TARGET_IDS_ELEMENT);
+		map.put(Target.TAG_STRESS_REFS, STRESS_IDS_ELEMENT);
 		
 		return map;
 	}

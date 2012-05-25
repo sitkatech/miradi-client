@@ -52,6 +52,8 @@ import org.miradi.schemas.GroupBoxSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.IntermediateResultSchema;
+import org.miradi.schemas.KeyEcologicalAttributeSchema;
+import org.miradi.schemas.MeasurementSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ProgressPercentSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
@@ -81,7 +83,9 @@ import org.miradi.xml.xmpz2.objectImporters.GoalImporter;
 import org.miradi.xml.xmpz2.objectImporters.IndicatorImporter;
 import org.miradi.xml.xmpz2.objectImporters.ObjectiveImporter;
 import org.miradi.xml.xmpz2.objectImporters.ResourceAssignmentImporter;
+import org.miradi.xml.xmpz2.objectImporters.StrateyImporter;
 import org.miradi.xml.xmpz2.objectImporters.TaskImporter;
+import org.miradi.xml.xmpz2.objectImporters.ThreatTargetRatingImporter;
 import org.miradi.xml.xmpz2.objectImporters.Xmpz2ExtraDataImporter;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -98,6 +102,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements XmpzXmlCons
 	{
 		LinkedHashMap<Integer, BaseObjectImporter> typeToImporterMap = fillTypeToImporterMap();
 		importPools(typeToImporterMap);
+		importThreatTargetRatings();
 		importExtraData();
 	}
 	
@@ -107,6 +112,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements XmpzXmlCons
 		typeToImporterMap.put(ConceptualModelDiagramSchema.getObjectType(), new ConceptualModelDiagramImporter(this, new ConceptualModelDiagramSchema()));
 		typeToImporterMap.put(DiagramFactorSchema.getObjectType(), new DiagramFactorImporter(this, new DiagramFactorSchema()));
 		typeToImporterMap.put(DiagramLinkSchema.getObjectType(), new DiagramLinkImporter(this, new DiagramLinkSchema()));
+		typeToImporterMap.put(StrategySchema.getObjectType(), new StrateyImporter(this));
 		typeToImporterMap.put(IndicatorSchema.getObjectType(), new IndicatorImporter(this, new IndicatorSchema()));
 		typeToImporterMap.put(ResourceAssignmentSchema.getObjectType(), new ResourceAssignmentImporter(this, new ResourceAssignmentSchema()));
 		typeToImporterMap.put(ExpenseAssignmentSchema.getObjectType(), new ExpenseAssignmentImporter(this, new ExpenseAssignmentSchema()));
@@ -344,6 +350,18 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements XmpzXmlCons
 		if (objectTypeName.equals(EXPENSE_ASSIGNMENT))
 			return ExpenseAssignmentSchema.getObjectType();
 		
+		if (objectTypeName.equals(KEY_ECOLOGICAL_ATTRIBUTE))
+			return KeyEcologicalAttributeSchema.getObjectType();
+		
+		if (objectTypeName.equals(MEASUREMENT))
+			return MeasurementSchema.getObjectType();
+		
+		if (objectTypeName.equals(OBJECTIVE))
+			return ObjectiveSchema.getObjectType();
+		
+		if (objectTypeName.equals(SUB_TASK))
+			return TaskSchema.getObjectType();
+		
 		EAM.logError("Could not find type for node: " + objectTypeName);
 		return ObjectType.FAKE;
 	}
@@ -474,10 +492,10 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements XmpzXmlCons
 //		new Xmpz2ProjectSummaryImporter(this).importFields();
 //	}
 //	
-//	private void importThreatTargetRatings() throws Exception
-//	{
-//		new ThreatTargetRatingImporter(this).importFields();
-//	}
+	private void importThreatTargetRatings() throws Exception
+	{
+		new ThreatTargetRatingImporter(this).importFields();
+	}
 
 	private void importExtraData() throws Exception
 	{
