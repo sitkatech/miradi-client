@@ -28,7 +28,6 @@ import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TaskSchema;
-import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.w3c.dom.Node;
 
@@ -63,7 +62,7 @@ abstract public class DesireImporter extends BaseObjectImporter
 	
 	private void importRelevantIndicatorIds(Node node, ORef destinationDesireRef) throws Exception
 	{
-		ORefList importedRelevantRefs = getImporter().extractRefs(node, getPoolName(), XmpzXmlConstants.RELEVANT_INDICATOR_IDS, IndicatorSchema.getObjectType(), XmpzXmlConstants.INDICATOR);
+		ORefList importedRelevantRefs = getImporter().extractRefs(node, getPoolName(), RELEVANT_INDICATOR_IDS, IndicatorSchema.getObjectType(), INDICATOR);
 		Desire desire = Desire.findDesire(getProject(), destinationDesireRef);
 		RelevancyOverrideSet set = desire.getCalculatedRelevantIndicatorOverrides(importedRelevantRefs);		
 		getImporter().setData(destinationDesireRef, Desire.TAG_RELEVANT_INDICATOR_SET, set.toString());
@@ -72,8 +71,8 @@ abstract public class DesireImporter extends BaseObjectImporter
 	private void importRelevantStrategyAndActivityIds(Node node, ORef destinationDesireRef) throws Exception
 	{
 		ORefList importedStrategyAndActivityRefs = new ORefList();
-		importedStrategyAndActivityRefs.addAll(getImporter().extractRefs(node, getPoolName(), XmpzXmlConstants.RELEVANT_STRATEGY_IDS, StrategySchema.getObjectType(), XmpzXmlConstants.STRATEGY));
-		importedStrategyAndActivityRefs.addAll(getImporter().extractRefs(node, getPoolName(), XmpzXmlConstants.RELEVANT_ACTIVITY_IDS, TaskSchema.getObjectType(), XmpzXmlConstants.ACTIVITY));
+		importedStrategyAndActivityRefs.addAll(getImporter().extractRefs(node, getPoolName(), RELEVANT_STRATEGY_IDS, StrategySchema.getObjectType(), STRATEGY));
+		importedStrategyAndActivityRefs.addAll(getImporter().extractRefs(node, getPoolName(), RELEVANT_ACTIVITY_IDS, TaskSchema.getObjectType(), ACTIVITY));
 		
 		Desire desire = Desire.findDesire(getProject(), destinationDesireRef);
 		RelevancyOverrideSet set = desire.getCalculatedRelevantStrategyActivityOverrides(importedStrategyAndActivityRefs);
