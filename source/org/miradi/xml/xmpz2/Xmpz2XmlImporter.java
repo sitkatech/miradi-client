@@ -92,7 +92,12 @@ import org.miradi.xml.xmpz2.objectImporters.SingletonObjectImporter;
 import org.miradi.xml.xmpz2.objectImporters.StrateyImporter;
 import org.miradi.xml.xmpz2.objectImporters.TaskImporter;
 import org.miradi.xml.xmpz2.objectImporters.ThreatTargetRatingImporter;
+import org.miradi.xml.xmpz2.objectImporters.TncProjectDataImporter;
 import org.miradi.xml.xmpz2.objectImporters.Xmpz2ExtraDataImporter;
+import org.miradi.xml.xmpz2.objectImporters.Xmpz2ProjectLocationImporter;
+import org.miradi.xml.xmpz2.objectImporters.Xmpz2ProjectPlanningImporter;
+import org.miradi.xml.xmpz2.objectImporters.Xmpz2ProjectScopeImporter;
+import org.miradi.xml.xmpz2.objectImporters.Xmpz2ProjectSummaryImporter;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -107,7 +112,8 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements XmpzXmlCons
 	protected void importXml() throws Exception
 	{
 		LinkedHashMap<Integer, BaseObjectImporter> typeToImporterMap = fillTypeToImporterMap();
-		importSingletonObject(new TncProjectDataSchema());
+		importSummaryData();
+		importTncProjectData();
 		importSingletonObject(new WwfProjectDataSchema());
 		importSingletonObject(new WcsProjectDataSchema());
 		importSingletonObject(new FosProjectDataSchema());
@@ -142,9 +148,6 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements XmpzXmlCons
 			
 			if (typeToImporterMap.containsKey(objectType))
 				continue;
-			
-			if (objectType == 40)
-				System.out.println("hererer");
 			
 			BaseObjectSchema baseObjectSchema = pool.createBaseObjectSchema(getProject());
 			typeToImporterMap.put(objectType, new BaseObjectImporter(this, baseObjectSchema));
@@ -191,6 +194,12 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements XmpzXmlCons
 			importer.importFields(baseObjectNode, ref);
 			importer.postCreateFix(ref, baseObjectNode);
 		}
+	}
+	
+	public void importTncProjectData() throws Exception
+	{
+		final TncProjectDataSchema baseObjectSchema = new TncProjectDataSchema();
+		new TncProjectDataImporter(this, baseObjectSchema).importFields();
 	}
 	
 	private void importSingletonObject(BaseObjectSchema baseObjectSchema) throws Exception
@@ -511,12 +520,14 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements XmpzXmlCons
 		setData(destinationRef, DiagramLink.TAG_BEND_POINTS, bendPoints.toString());
 	}
 
-//FIXME urgent - uncomment and make work	
-//	private void importSummaryData() throws Exception
-//	{
-//		new Xmpz2ProjectSummaryImporter(this).importFields();
-//	}
-//	
+	private void importSummaryData() throws Exception
+	{
+		new Xmpz2ProjectSummaryImporter(this).importFields();
+		new Xmpz2ProjectScopeImporter(this).importFields();
+		new Xmpz2ProjectLocationImporter(this).importFields();
+		new Xmpz2ProjectPlanningImporter(this).importFields();
+	}
+
 	private void importThreatTargetRatings() throws Exception
 	{
 		new ThreatTargetRatingImporter(this).importFields();

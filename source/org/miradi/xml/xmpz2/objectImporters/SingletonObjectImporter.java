@@ -29,5 +29,4 @@ public class SingletonObjectImporter extends BaseObjectImporter
 	{
 		super(importerToUse, baseObjectSchemaToUse);
 	}
-	
 }
