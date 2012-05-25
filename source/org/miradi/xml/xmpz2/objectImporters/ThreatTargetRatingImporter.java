@@ -44,14 +44,9 @@ public class ThreatTargetRatingImporter extends BaseObjectImporter
 		super(xmpz2XmlImporter, null);
 	}
 	
-	private void endUsingCommandsToSetData()
+	@Override
+	public void importFields(Node baseObjectNode, ORef refToUse) throws Exception
 	{
-		getProject().endCommandSideEffectMode();
-	}
-
-	private void beginUsingCommandsToSetData()
-	{
-		getProject().beginCommandSideEffectMode();
 	}
 	
 	public void importFields() throws Exception
@@ -75,6 +70,16 @@ public class ThreatTargetRatingImporter extends BaseObjectImporter
 			Node threatRatingNode = threatRatingNodes.item(index);
 			importThreatRatings(threatRatingNode);
 		}		
+	}
+	
+	private void endUsingCommandsToSetData()
+	{
+		getProject().endCommandSideEffectMode();
+	}
+
+	private void beginUsingCommandsToSetData()
+	{
+		getProject().beginCommandSideEffectMode();
 	}
 
 	private void importThreatRatings(Node threatRatingNode) throws Exception
