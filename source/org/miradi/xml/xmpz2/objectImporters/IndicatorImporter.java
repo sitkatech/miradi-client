@@ -24,6 +24,7 @@ import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Indicator;
 import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.schemas.TaskSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -41,6 +42,7 @@ public class IndicatorImporter extends BaseObjectImporter
 		super.importFields(baseObjectNode, refToUse);
 		
 		importThresholds(baseObjectNode, refToUse);
+		getImporter().importIds(baseObjectNode, refToUse, getBaseObjectSchema(), Indicator.TAG_METHOD_IDS, TaskSchema.getObjectType(), METHOD);
 	}
 
 	@Override
@@ -50,6 +52,9 @@ public class IndicatorImporter extends BaseObjectImporter
 			return true;
 		
 		if (tag.equals(Indicator.TAG_THRESHOLD_DETAILS_MAP))
+			return true;
+		
+		if (tag.equals(Indicator.TAG_METHOD_IDS))
 			return true;
 		
 		return false;
