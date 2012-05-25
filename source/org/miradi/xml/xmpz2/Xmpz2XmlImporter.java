@@ -274,33 +274,6 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements XmpzXmlCons
 		return importedRefs;
 	}
 	
-	public ORefList extractRefs(Node node, String poolName, String idsElementName, int idsType, String idElementName) throws Exception
-	{
-		idElementName += ID;
-		TagToElementNameMap map = new TagToElementNameMap();
-		String elementName = map.findElementName(poolName, idsElementName);
-		NodeList idNodes = getNodes(node, new String[]{poolName + elementName, idElementName});
-		ORefList importedRefs = new ORefList();
-		for (int index = 0; index < idNodes.getLength(); ++index)
-		{
-			Node idNode = idNodes.item(index);
-			String id = getSafeNodeContent(idNode);
-			importedRefs.add(new ORef(idsType, new BaseId(id)));
-		}
-		
-		return importedRefs;
-	}
-
-	private String convertIdsToIdString(String elementName)
-	{
-		return removeLastChar(elementName);
-	}
-
-	private String removeLastChar(String elementName)
-	{
-		return elementName.substring(0, elementName.length() - 1);
-	}
-
 	private ORefList extractRefs(Node node, String poolName, String idsElementName, String idElementName) throws Exception
 	{
 		Xmpz2TagToElementNameMap map = new Xmpz2TagToElementNameMap();
@@ -318,6 +291,33 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements XmpzXmlCons
 		return importedRefs;
 	}
 	
+	public ORefList extractRefs(Node node, String poolName, String idsElementName, int idsType, String idElementName) throws Exception
+	{
+		idElementName += ID;
+		TagToElementNameMap map = new TagToElementNameMap();
+		String elementName = map.findElementName(poolName, idsElementName);
+		NodeList idNodes = getNodes(node, new String[]{poolName + elementName, idElementName});
+		ORefList importedRefs = new ORefList();
+		for (int index = 0; index < idNodes.getLength(); ++index)
+		{
+			Node idNode = idNodes.item(index);
+			String id = getSafeNodeContent(idNode);
+			importedRefs.add(new ORef(idsType, new BaseId(id)));
+		}
+		
+		return importedRefs;
+	}
+	
+	private String convertIdsToIdString(String elementName)
+	{
+		return removeLastChar(elementName);
+	}
+
+	private String removeLastChar(String elementName)
+	{
+		return elementName.substring(0, elementName.length() - 1);
+	}
+
 	public void importCodeListField(Node node, String elementContainerName, ORef destinationRef, String destinationTag) throws Exception
 	{
 		Xmpz2TagToElementNameMap map = new Xmpz2TagToElementNameMap();
