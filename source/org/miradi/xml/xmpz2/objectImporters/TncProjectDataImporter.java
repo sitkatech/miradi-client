@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2.objectImporters;
 
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.TncProjectData;
 import org.miradi.schemas.TncProjectDataSchema;
@@ -36,7 +37,23 @@ public class TncProjectDataImporter extends SingletonObjectImporter
 	@Override
 	protected boolean isCustomImportField(String tag)
 	{
-		return true;
+		if (isImportedElseWhere(tag))
+			return true;
+		
+		return super.isCustomImportField(tag);
+	}
+
+	private boolean isImportedElseWhere(String tag)
+	{
+		return tag.equals(TncProjectData.TAG_PROJECT_SHARING_CODE);
+	}
+	
+	@Override
+	public void importFields(Node baseObjectNode, ORef refToUse) throws Exception
+	{
+		super.importFields(baseObjectNode, refToUse);
+		
+		importFields();
 	}
 	
 	public void importFields() throws Exception
@@ -49,27 +66,11 @@ public class TncProjectDataImporter extends SingletonObjectImporter
 		getImporter().importCodeListField(tncProjectDataNode, TNC_PROJECT_DATA, getMetadataRef(), ProjectMetadata.TAG_TNC_OPERATING_UNITS);
 		getImporter().importCodeListField(tncProjectDataNode, TNC_PROJECT_DATA, getMetadataRef(), ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION);
 		getImporter().importCodeListField(tncProjectDataNode, TNC_PROJECT_DATA, getMetadataRef(), ProjectMetadata.TAG_TNC_MARINE_ECO_REGION);
-		getImporter().importCodeListField(tncProjectDataNode, TNC_PROJECT_DATA, getMetadataRef(), ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION);
-		
-		importTncProjectDataField(tncProjectDataNode, TncProjectData.TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT);
-		importTncProjectDataField(tncProjectDataNode, TncProjectData.TAG_PROJECT_RESOURCES_SCORECARD);
-		importTncProjectDataField(tncProjectDataNode, TncProjectData.TAG_PROJECT_LEVEL_COMMENTS);
-		importTncProjectDataField(tncProjectDataNode, TncProjectData.TAG_PROJECT_CITATIONS);
-		importTncProjectDataField(tncProjectDataNode, TncProjectData.TAG_CAP_STANDARDS_SCORECARD);
-		importTncProjectDataField(tncProjectDataNode, TncProjectData.TAG_MAKING_THE_CASE);
-		importTncProjectDataField(tncProjectDataNode, TncProjectData.TAG_RISKS);
-		importTncProjectDataField(tncProjectDataNode, TncProjectData.TAG_CAPACITY_AND_FUNDING);
-		getImporter().importCodeListField(tncProjectDataNode, TNC_PROJECT_DATA, getTncProjectDataRef(), TncProjectData.TAG_PROJECT_PLACE_TYPES);
-		getImporter().importCodeListField(tncProjectDataNode, TNC_PROJECT_DATA, getTncProjectDataRef(), TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES);
+		getImporter().importCodeListField(tncProjectDataNode, TNC_PROJECT_DATA, getMetadataRef(), ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION);		
 	}
 	
 	private void importProjectMetadataField(Node projectSummaryNode, String tag) throws Exception
 	{
 		importField(projectSummaryNode, getMetadataRef(), tag);
-	}
-	
-	private void importTncProjectDataField(Node projectSummaryNode, String tag) throws Exception
-	{
-		importField(projectSummaryNode, getTncProjectDataRef(), tag);
 	}
 }
