@@ -59,6 +59,7 @@ import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ProgressPercentSchema;
 import org.miradi.schemas.RareProjectDataSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
+import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.ScopeBoxSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.StressSchema;
@@ -89,6 +90,7 @@ import org.miradi.xml.xmpz2.objectImporters.GoalImporter;
 import org.miradi.xml.xmpz2.objectImporters.IndicatorImporter;
 import org.miradi.xml.xmpz2.objectImporters.ObjectiveImporter;
 import org.miradi.xml.xmpz2.objectImporters.ResourceAssignmentImporter;
+import org.miradi.xml.xmpz2.objectImporters.ResultsChainDiagramImporter;
 import org.miradi.xml.xmpz2.objectImporters.SingletonObjectImporter;
 import org.miradi.xml.xmpz2.objectImporters.StrategyImporter;
 import org.miradi.xml.xmpz2.objectImporters.TaskImporter;
@@ -129,6 +131,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements XmpzXmlCons
 	{
 		LinkedHashMap<Integer, BaseObjectImporter> typeToImporterMap = new LinkedHashMap<Integer, BaseObjectImporter>();		
 		typeToImporterMap.put(ConceptualModelDiagramSchema.getObjectType(), new ConceptualModelDiagramImporter(this, new ConceptualModelDiagramSchema()));
+		typeToImporterMap.put(ResultsChainDiagramSchema.getObjectType(), new ResultsChainDiagramImporter(this));
 		typeToImporterMap.put(DiagramFactorSchema.getObjectType(), new DiagramFactorImporter(this, new DiagramFactorSchema()));
 		typeToImporterMap.put(DiagramLinkSchema.getObjectType(), new DiagramLinkImporter(this, new DiagramLinkSchema()));
 		typeToImporterMap.put(StrategySchema.getObjectType(), new StrategyImporter(this));
