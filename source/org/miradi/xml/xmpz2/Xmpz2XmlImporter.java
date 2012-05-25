@@ -224,13 +224,6 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements XmpzXmlCons
 		importRefs(node, baseObjectSchema.getXmpz2ElementName(), fieldSchema, destinationRef, reflistTypeName);
 	}
 	
-	public void importRefs(Node node, String poolName, String tag, ORef destinationRef, String idElementName) throws Exception
-	{
-		ORefList importedRefs = extractRefs(node, poolName, tag, idElementName);
-		
-		setData(destinationRef, tag, importedRefs);
-	}
-	
 	public void importRefs(Node node, String poolName, AbstractFieldSchema fieldSchema, ORef destinationRef, String idElementName) throws Exception
 	{
 		ORefList importedRefs = extractRefs(node, poolName, fieldSchema.getTag(), idElementName);
