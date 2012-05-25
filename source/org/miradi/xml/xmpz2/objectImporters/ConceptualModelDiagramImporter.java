@@ -29,7 +29,7 @@ import org.miradi.xml.wcs.XmpzXmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.w3c.dom.Node;
 
-public class ConceptualModelDiagramImporter extends BaseObjectImporter
+public class ConceptualModelDiagramImporter extends AbstractDiagramObjectImporter
 {
 	public ConceptualModelDiagramImporter(Xmpz2XmlImporter importerToUse, BaseObjectSchema baseObjectSchemaToUse)
 	{
