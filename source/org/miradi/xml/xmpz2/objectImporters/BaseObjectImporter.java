@@ -70,20 +70,6 @@ public class BaseObjectImporter extends AbstractXmpz2ObjectImporter
 		getImporter().importField(node, getBaseObjectSchema().getXmpz2ElementName() + elementName, destinationRef, destinationTag);
 	}
 		
-	public void importIds(Node node, ORef destinationRef, String destinationTag, int idsType, String idElementName) throws Exception
-	{
-		ORefList importedRefs = extractRefs(node, destinationTag, idsType, idElementName + ID);
-		
-		getImporter().setData(destinationRef, destinationTag, importedRefs.convertToIdList(idsType));
-	}
-
-	public void importRefs(Node node, String elementName, ORef destinationRef, String destinationTag, int idsType, String idElementName) throws Exception
-	{
-		ORefList importedRefs = extractRefs(node, elementName, idsType, idElementName + ID);
-		
-		getImporter().setData(destinationRef, destinationTag, importedRefs);
-	}
-
 	protected ORefList extractRefs(Node node, String idsElementName, int idsType, String idElementName) throws Exception
 	{
 		TagToElementNameMap map = new TagToElementNameMap();
