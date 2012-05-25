@@ -247,24 +247,20 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements XmpzXmlCons
 		Xmpz2TagToElementNameMap map = new Xmpz2TagToElementNameMap();
 		String elementName = map.findElementName(poolName, fieldSchema.getTag());
 		String idElementName = convertIdsToIdString(elementName);
-		NodeList idNodes = getNodes(node, new String[]{poolName + elementName, idElementName});
-		ORefList importedRefs = new ORefList();
-		for (int index = 0; index < idNodes.getLength(); ++index)
-		{
-			Node idNode = idNodes.item(index);
-			String id = getSafeNodeContent(idNode);
-			int idsType = getObjectTypeOfNode(idNode);
-			importedRefs.add(new ORef(idsType, new BaseId(id)));
-		}
-		
-		return importedRefs;
+		return extractRefsFromNodes(node, poolName, elementName, idElementName);
 	}
 	
 	public ORefList extractRefs(Node node, String poolName, String idsElementName, String idElementName) throws Exception
 	{
 		Xmpz2TagToElementNameMap map = new Xmpz2TagToElementNameMap();
 		String elementName = map.findElementName(poolName, idsElementName);
-		NodeList idNodes = getNodes(node, new String[]{poolName + elementName, idElementName + ID});
+		return extractRefsFromNodes(node, poolName, elementName,  idElementName + ID);
+	}
+	
+	private ORefList extractRefsFromNodes(Node node, final String poolName, final String elementName, final String idElementName) throws Exception
+	{
+		final String idsContainerName = poolName + elementName;
+		NodeList idNodes = getNodes(node, new String[]{idsContainerName, idElementName});
 		ORefList importedRefs = new ORefList();
 		for (int index = 0; index < idNodes.getLength(); ++index)
 		{
